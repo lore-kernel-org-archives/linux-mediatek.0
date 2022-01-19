@@ -4,64 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D0E9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 22:25:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A91E8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 23:19:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n2gG7UcZ1vjtC3LRLjWz9lPDNd/0wQFiQYE0auyzEP0=; b=QbRpQ2+hULUKFg
-	X3beooMfGQtEZM0ZB33w9rruH+y0b0FeCIqygctYld5BuTa1c2TYOvo9JdoPUiSy1cNiCAsShaVFT
-	BJZu/8tprCuWOIf2utR5J1xxE9nMyCK+OBt3zNwNYd8ZU+iWwgF5+my9LlKouAaMzXiIhf1keVawo
-	h28/cpjmShkmf9A3pB9O3qUfW4OFvR/buMWFEcOSRvLfASz7o5hvXhfNu2U0mtjKtrgvCV/u5kNR9
-	TB5P6M+F6ZeZNOsPTlMYKcXcB6p+6Jr9zlTAy9X9Ti3Qhorx413/383YMgPtiMwnm5o9s6QG3qDNK
-	VtkNEAzkNKkbiyOn7pzA==;
+	List-Owner; bh=iQJDrnages0r+GOY1krtMt1bhzgH/4kHneyeQncEzuI=; b=S+AQPTAPEAyevB
+	lS//V95oaukHKU2JzcF9NYPnEA2Ttdk7Un5zreK8d8eDC5ZAd03UIHwWZQXnoW19h+TaDHWrIqjEr
+	PnlHot31ekdFBJVpetUiW1x5yHdpg2lj8fA/Zgm/AmdMuVVPjm+sKYAw5ntSSvxmqhpD2Uoufl85j
+	e/wG5oitaJnpeo7KxgSnXHr6cY//PTgSUaM6aeQXn9ui2uhm//xgg/8hy2Ykgwl12e36IXLnFk+0a
+	wbpYvwQQwztqyv+y1XoewtH/EYHf6oXb1ZCvrZmT8m34Ir3w5op3cyDKC6K41n+Vr/1keE6NgyKbz
+	P4MaJ4DihvjbrTQnyVEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nAJNr-007efV-Hc; Wed, 19 Jan 2022 22:24:51 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nAKEp-007oBX-CQ; Wed, 19 Jan 2022 23:19:35 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nAJNe-007edr-QZ; Wed, 19 Jan 2022 22:24:40 +0000
+ id 1nAKEc-007o8v-NK; Wed, 19 Jan 2022 23:19:24 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id B323FB81C20;
- Wed, 19 Jan 2022 22:24:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0EBBC004E1;
- Wed, 19 Jan 2022 22:24:33 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 8D7FF61456;
+ Wed, 19 Jan 2022 23:19:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3B20C340E7;
+ Wed, 19 Jan 2022 23:19:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1642631075;
- bh=0jBGR02fN6H1zzjvAYwH0kWyOwJiEIrutKpH14iVCX0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=a2OxolgRUeuVQ4A76MWglOme0L9gxUJecPsswNRdEXwCfA6XyVOZLYixPzpEL/cEo
- NswAwlNy35u8wXci64ajUsZP5lYtHy4+jcVfPzZ37A6Q7E6vMsLxIEhzK4CczDPVhK
- Iy1g7WqRW35KvXgYB45TIWMVIY9qkZYS6lE0P0XT6Tf+Aa1JTo3eL8iJLoZQklMfSh
- thQhwS3JPO4XrQD4xy/25V2xSPYWtpbTwKseDRLJ2tCv7q6rQgsfWcWv3nqxpOi4/d
- aHj3CqBTkixBndNgsNBfF9p5TM2/Z3Z1A+hRXazWpvhvU9bEBclLiIvbn0ua/YEhLM
- kTeXMIbl2m30A==
-Date: Wed, 19 Jan 2022 15:24:31 -0700
-From: Nathan Chancellor <nathan@kernel.org>
-To: "Jason A. Donenfeld" <Jason@zx2c4.com>
-Cc: Miles Chen <miles.chen@mediatek.com>, Ard Biesheuvel <ardb@kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-mediatek@lists.infradead.org,
- Nick Desaulniers <ndesaulniers@google.com>,
- Sami Tolvanen <samitolvanen@google.com>
-Subject: Re: [PATCH] lib/crypto: blake2s: avoid indirect calls to compression
- function for Clang CFI
-Message-ID: <YeiPn8Mo1AM7X9Ud@archlinux-ax161>
-References: <CAHmME9qVMomgb53rABKsucCoEhwsk+=KzDdEcGKtecOXuahTZw@mail.gmail.com>
- <20220119135450.564115-1-Jason@zx2c4.com>
+ s=k20201202; t=1642634361;
+ bh=/VsvxrK8zyc2yNu4lRcxY8d4fLjYuopTGzFBWIpaZuU=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=WIzZvK3GtHo1SKGL3nZdobAbhHjEPpNeTEfI34CqWXsYRIBuTAruaBZVRj8jcx1Ds
+ Y5H5up3k8FgNKOZSpqmDHRlwA4WRfNB8G9XLg0iwICGdDflSawqY+nCV3QY5z9MHVj
+ JD313HNVbb+cF0UwToqBEv3Q8ktX1Xy7AEo3wojE/In9rIAbhSyFAn8N90R9qmHuD/
+ pGNJsvYU0cD51Ig65oCM1IOfcyBf9uJqeoYzJabOulkddlDz6PHGOMvV320YwxVjOh
+ t+116mj9rKdAeAFuce02xdM23Ln1eKKm3lAoxg6cd89Nz4ilJev+5lmaBO4Aldcok7
+ QtlizF6lLYTGw==
+Received: by mail-ed1-f45.google.com with SMTP id c24so18167593edy.4;
+ Wed, 19 Jan 2022 15:19:20 -0800 (PST)
+X-Gm-Message-State: AOAM530yyGrxHWFpnzFbuUZe+/vUmWFjrtaqi9TvZgYSSFzO4iq3ctJF
+ /csjmiXMlxTWHu5yNKCptgsaCKoDzCzQ/NCUVg==
+X-Google-Smtp-Source: ABdhPJwC0NWnP7oymINNszu43Ouc3/FDCJmqCWPyJrv0Hx/yq+CETJQGIdgZZ3LK4mRd6SWiVqRx6NjLUZo8svP5CpY=
+X-Received: by 2002:a17:906:6c1:: with SMTP id
+ v1mr25764169ejb.638.1642634359331; 
+ Wed, 19 Jan 2022 15:19:19 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220119135450.564115-1-Jason@zx2c4.com>
+References: <20220119022543.26093-1-rex-bc.chen@mediatek.com>
+ <20220119022543.26093-3-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220119022543.26093-3-rex-bc.chen@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 20 Jan 2022 07:19:05 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__xbhyOaL-4BZP0n_HdvYz3f6SZzh-WSw-gVv=Yufjy8A@mail.gmail.com>
+Message-ID: <CAAOTY__xbhyOaL-4BZP0n_HdvYz3f6SZzh-WSw-gVv=Yufjy8A@mail.gmail.com>
+Subject: Re: [v10,2/3] drm/mediatek: implement the DSI HS packets aligned
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Neil Armstrong <narmstrong@baylibre.com>, Robert Foss <robert.foss@linaro.org>,
+ andrzej.hajda@intel.com, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Xin Ji <xji@analogixsemi.com>, 
+ Jitao Shi <jitao.shi@mediatek.com>, xinlei.lee@mediatek.com, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220119_142439_189266_4F5F4BAA 
-X-CRM114-Status: GOOD (  30.71  )
+X-CRM114-CacheID: sfid-20220119_151922_887237_0CDACBDF 
+X-CRM114-Status: GOOD (  23.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,245 +85,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 19, 2022 at 02:54:50PM +0100, Jason A. Donenfeld wrote:
-> blake2s_compress_generic is weakly aliased to blake2s_generic. The
-
-Isn't it the other way around?
-
-> current harness for function selection uses a function pointer, which is
-> ordinarily inlined and resolved at compile time. But when Clang's CFI is
-> enabled, CFI still triggers when making an indirect call via a weak
-> symbol. This seems like a bug in Clang's CFI, as though it's bucketing
-> weak symbols and strong symbols differently. It also only seems to
-> trigger when "full LTO" mode is used, rather than "thin LTO".
-> 
-> [    0.000000][    T0] Kernel panic - not syncing: CFI failure (target: blake2s_compress_generic+0x0/0x1444)
-> [    0.000000][    T0] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.16.0-mainline-06981-g076c855b846e #1
-> [    0.000000][    T0] Hardware name: MT6873 (DT)
-> [    0.000000][    T0] Call trace:
-> [    0.000000][    T0]  dump_backtrace+0xfc/0x1dc
-> [    0.000000][    T0]  dump_stack_lvl+0xa8/0x11c
-> [    0.000000][    T0]  panic+0x194/0x464
-> [    0.000000][    T0]  __cfi_check_fail+0x54/0x58
-> [    0.000000][    T0]  __cfi_slowpath_diag+0x354/0x4b0
-> [    0.000000][    T0]  blake2s_update+0x14c/0x178
-> [    0.000000][    T0]  _extract_entropy+0xf4/0x29c
-> [    0.000000][    T0]  crng_initialize_primary+0x24/0x94
-> [    0.000000][    T0]  rand_initialize+0x2c/0x6c
-> [    0.000000][    T0]  start_kernel+0x2f8/0x65c
-> [    0.000000][    T0]  __primary_switched+0xc4/0x7be4
-> [    0.000000][    T0] Rebooting in 5 seconds..
-> 
-> Nonetheless, the function pointer method isn't so terrific anyway, so
-> this patch replaces it with a simple boolean, which also gets inlined
-> away. This successfully works around the Clang bug.
-> 
-> In general, I'm not too keen on all of the indirection involved here; it
-> clearly does more harm than good. Hopefully the whole thing can get
-> cleaned up down the road when lib/crypto is overhauled more
-> comprehensively. But for now, we go with a simple bandaid.
-> 
-> Fixes: 6048fdcc5f26 ("lib/crypto: blake2s: include as built-in")
-> Reported-by: Miles Chen <miles.chen@mediatek.com>
-> Cc: Nick Desaulniers <ndesaulniers@google.com>
-> Cc: Sami Tolvanen <samitolvanen@google.com>
-> Cc: Ard Biesheuvel <ardb@kernel.org>
-> Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
-
-I am not familiar enough with the inner workings of CFI to comment on
-what could be going wrong here in LLVM (perhaps Sami can?) but
-eliminating the indirect call resolves the issue for me as well.
-
-Tested-by: Nathan Chancellor <nathan@kernel.org>
-
-> ---
->  arch/arm/crypto/blake2s-shash.c   |  4 ++--
->  arch/x86/crypto/blake2s-shash.c   |  4 ++--
->  crypto/blake2s_generic.c          |  4 ++--
->  include/crypto/internal/blake2s.h | 36 ++++++++++++++++++-------------
->  lib/crypto/blake2s.c              |  4 ++--
->  5 files changed, 29 insertions(+), 23 deletions(-)
-> 
-> diff --git a/arch/arm/crypto/blake2s-shash.c b/arch/arm/crypto/blake2s-shash.c
-> index 17c1c3bfe2f5..763c73beea2d 100644
-> --- a/arch/arm/crypto/blake2s-shash.c
-> +++ b/arch/arm/crypto/blake2s-shash.c
-> @@ -13,12 +13,12 @@
->  static int crypto_blake2s_update_arm(struct shash_desc *desc,
->  				     const u8 *in, unsigned int inlen)
->  {
-> -	return crypto_blake2s_update(desc, in, inlen, blake2s_compress);
-> +	return crypto_blake2s_update(desc, in, inlen, false);
->  }
->  
->  static int crypto_blake2s_final_arm(struct shash_desc *desc, u8 *out)
->  {
-> -	return crypto_blake2s_final(desc, out, blake2s_compress);
-> +	return crypto_blake2s_final(desc, out, false);
->  }
->  
->  #define BLAKE2S_ALG(name, driver_name, digest_size)			\
-> diff --git a/arch/x86/crypto/blake2s-shash.c b/arch/x86/crypto/blake2s-shash.c
-> index f9e2fecdb761..59ae28abe35c 100644
-> --- a/arch/x86/crypto/blake2s-shash.c
-> +++ b/arch/x86/crypto/blake2s-shash.c
-> @@ -18,12 +18,12 @@
->  static int crypto_blake2s_update_x86(struct shash_desc *desc,
->  				     const u8 *in, unsigned int inlen)
->  {
-> -	return crypto_blake2s_update(desc, in, inlen, blake2s_compress);
-> +	return crypto_blake2s_update(desc, in, inlen, false);
->  }
->  
->  static int crypto_blake2s_final_x86(struct shash_desc *desc, u8 *out)
->  {
-> -	return crypto_blake2s_final(desc, out, blake2s_compress);
-> +	return crypto_blake2s_final(desc, out, false);
->  }
->  
->  #define BLAKE2S_ALG(name, driver_name, digest_size)			\
-> diff --git a/crypto/blake2s_generic.c b/crypto/blake2s_generic.c
-> index 72fe480f9bd6..5f96a21f8788 100644
-> --- a/crypto/blake2s_generic.c
-> +++ b/crypto/blake2s_generic.c
-> @@ -15,12 +15,12 @@
->  static int crypto_blake2s_update_generic(struct shash_desc *desc,
->  					 const u8 *in, unsigned int inlen)
->  {
-> -	return crypto_blake2s_update(desc, in, inlen, blake2s_compress_generic);
-> +	return crypto_blake2s_update(desc, in, inlen, true);
->  }
->  
->  static int crypto_blake2s_final_generic(struct shash_desc *desc, u8 *out)
->  {
-> -	return crypto_blake2s_final(desc, out, blake2s_compress_generic);
-> +	return crypto_blake2s_final(desc, out, true);
->  }
->  
->  #define BLAKE2S_ALG(name, driver_name, digest_size)			\
-> diff --git a/include/crypto/internal/blake2s.h b/include/crypto/internal/blake2s.h
-> index d39cfa0d333e..e2da9b413d44 100644
-> --- a/include/crypto/internal/blake2s.h
-> +++ b/include/crypto/internal/blake2s.h
-> @@ -24,14 +24,11 @@ static inline void blake2s_set_lastblock(struct blake2s_state *state)
->  	state->f[0] = -1;
->  }
->  
-> -typedef void (*blake2s_compress_t)(struct blake2s_state *state,
-> -				   const u8 *block, size_t nblocks, u32 inc);
-> -
->  /* Helper functions for BLAKE2s shared by the library and shash APIs */
->  
-> -static inline void __blake2s_update(struct blake2s_state *state,
-> -				    const u8 *in, size_t inlen,
-> -				    blake2s_compress_t compress)
-> +static __always_inline void __blake2s_update(struct blake2s_state *state,
-> +					     const u8 *in, size_t inlen,
-> +					     bool force_generic)
->  {
->  	const size_t fill = BLAKE2S_BLOCK_SIZE - state->buflen;
->  
-> @@ -39,7 +36,10 @@ static inline void __blake2s_update(struct blake2s_state *state,
->  		return;
->  	if (inlen > fill) {
->  		memcpy(state->buf + state->buflen, in, fill);
-> -		(*compress)(state, state->buf, 1, BLAKE2S_BLOCK_SIZE);
-> +		if (force_generic)
-> +			blake2s_compress_generic(state, state->buf, 1, BLAKE2S_BLOCK_SIZE);
-> +		else
-> +			blake2s_compress(state, state->buf, 1, BLAKE2S_BLOCK_SIZE);
->  		state->buflen = 0;
->  		in += fill;
->  		inlen -= fill;
-> @@ -47,7 +47,10 @@ static inline void __blake2s_update(struct blake2s_state *state,
->  	if (inlen > BLAKE2S_BLOCK_SIZE) {
->  		const size_t nblocks = DIV_ROUND_UP(inlen, BLAKE2S_BLOCK_SIZE);
->  		/* Hash one less (full) block than strictly possible */
-> -		(*compress)(state, in, nblocks - 1, BLAKE2S_BLOCK_SIZE);
-> +		if (force_generic)
-> +			blake2s_compress_generic(state, in, nblocks - 1, BLAKE2S_BLOCK_SIZE);
-> +		else
-> +			blake2s_compress(state, in, nblocks - 1, BLAKE2S_BLOCK_SIZE);
->  		in += BLAKE2S_BLOCK_SIZE * (nblocks - 1);
->  		inlen -= BLAKE2S_BLOCK_SIZE * (nblocks - 1);
->  	}
-> @@ -55,13 +58,16 @@ static inline void __blake2s_update(struct blake2s_state *state,
->  	state->buflen += inlen;
->  }
->  
-> -static inline void __blake2s_final(struct blake2s_state *state, u8 *out,
-> -				   blake2s_compress_t compress)
-> +static __always_inline void __blake2s_final(struct blake2s_state *state, u8 *out,
-> +					    bool force_generic)
->  {
->  	blake2s_set_lastblock(state);
->  	memset(state->buf + state->buflen, 0,
->  	       BLAKE2S_BLOCK_SIZE - state->buflen); /* Padding */
-> -	(*compress)(state, state->buf, 1, state->buflen);
-> +	if (force_generic)
-> +		blake2s_compress_generic(state, state->buf, 1, state->buflen);
-> +	else
-> +		blake2s_compress(state, state->buf, 1, state->buflen);
->  	cpu_to_le32_array(state->h, ARRAY_SIZE(state->h));
->  	memcpy(out, state->h, state->outlen);
->  }
-> @@ -99,20 +105,20 @@ static inline int crypto_blake2s_init(struct shash_desc *desc)
->  
->  static inline int crypto_blake2s_update(struct shash_desc *desc,
->  					const u8 *in, unsigned int inlen,
-> -					blake2s_compress_t compress)
-> +					bool force_generic)
->  {
->  	struct blake2s_state *state = shash_desc_ctx(desc);
->  
-> -	__blake2s_update(state, in, inlen, compress);
-> +	__blake2s_update(state, in, inlen, force_generic);
->  	return 0;
->  }
->  
->  static inline int crypto_blake2s_final(struct shash_desc *desc, u8 *out,
-> -				       blake2s_compress_t compress)
-> +				       bool force_generic)
->  {
->  	struct blake2s_state *state = shash_desc_ctx(desc);
->  
-> -	__blake2s_final(state, out, compress);
-> +	__blake2s_final(state, out, force_generic);
->  	return 0;
->  }
->  
-> diff --git a/lib/crypto/blake2s.c b/lib/crypto/blake2s.c
-> index 9364f79937b8..c71c09621c09 100644
-> --- a/lib/crypto/blake2s.c
-> +++ b/lib/crypto/blake2s.c
-> @@ -18,14 +18,14 @@
->  
->  void blake2s_update(struct blake2s_state *state, const u8 *in, size_t inlen)
->  {
-> -	__blake2s_update(state, in, inlen, blake2s_compress);
-> +	__blake2s_update(state, in, inlen, false);
->  }
->  EXPORT_SYMBOL(blake2s_update);
->  
->  void blake2s_final(struct blake2s_state *state, u8 *out)
->  {
->  	WARN_ON(IS_ENABLED(DEBUG) && !out);
-> -	__blake2s_final(state, out, blake2s_compress);
-> +	__blake2s_final(state, out, false);
->  	memzero_explicit(state, sizeof(*state));
->  }
->  EXPORT_SYMBOL(blake2s_final);
-> -- 
-> 2.34.1
-> 
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIFJleDoKClJleC1CQyBDaGVuIDxyZXgtYmMuY2hlbkBtZWRpYXRlay5jb20+IOaWvCAyMDIy
+5bm0MeaciDE55pelIOmAseS4iSDkuIrljYgxMDoyNuWvq+mBk++8mgo+Cj4gU29tZSBEU0kgUlgg
+ZGV2aWNlcyAoZm9yIGV4YW1wbGUsIGFueDc2MjUpIHJlcXVpcmUgbGFzdCBhbGlnbm1lbnQgb2YK
+PiBwYWNrZXRzIG9uIGFsbCBsYW5lcyBhZnRlciBlYWNoIHJvdyBvZiBkYXRhIGlzIHNlbnQuCj4g
+T3RoZXJ3aXNlLCB0aGVyZSB3aWxsIGJlIHNvbWUgaXNzdWVzIG9mIHNoaWZ0IG9yIHNjcm9sbCBm
+b3Igc2NyZWVuLgo+Cj4gVGFrZSBob3Jpem9udGFsX3N5bmNfYWN0aXZlX2J5dGUgZm9yIGEgZXhh
+bXBsZSwKPiB3ZSByb3VuZHVwIHRoZSBIU0EgcGFja2V0IGRhdGEgdG8gbGFuZSBudW1iZXIsIGFu
+ZCB0aGUgc3VidHJhY3Rpb24gb2YgMgo+IGlzIHRoZSBwYWNrZXQgZGF0YSB2YWx1ZSBhZGRlZCBi
+eSB0aGUgcm91bmR1cCBvcGVyYXRpb24sIG1ha2luZyB0aGUKPiBsb25nIHBhY2tldHMgYXJlIGlu
+dGVnZXIgbXVsdGlwbGVzIG9mIGxhbmUgbnVtYmVyLgo+IFRoaXMgdmFsdWUgKDIpIHZhcmllcyB3
+aXRoIHRoZSBsYW5lIG51bWJlciwgYW5kIHRoYXQgaXMgdGhlIHJlYXNvbiB3ZQo+IGRvIHRoaXMg
+b3BlcmF0aW9uIHdoZW4gdGhlIGxhbmUgbnVtYmVyIGlzIDQuCj4KPiBJbiB0aGUgcHJldmlvdXMg
+b3BlcmF0aW9uIG9mIGZ1bmN0aW9uICJtdGtfZHNpX2NvbmZpZ192ZG9fdGltaW5nIiwKPiB0aGUg
+bGVuZ3RoIG9mIEhTQSBhbmQgSEZQIGRhdGEgcGFja2V0cyBoYXMgYmVlbiBhZGp1c3RlZCB0byBh
+bgo+IGludGVncmF0aW9uIG11bHRpcGxlIG9mIGxhbmUgbnVtYmVyLgo+IFNpbmNlIHRoZSBudW1i
+ZXIgb2YgUkdCIGRhdGEgcGFja2V0cyBjYW5ub3QgYmUgZ3VhcmFudGVlZCB0byBiZSBhbgo+IGlu
+dGVnZXIgbXVsdGlwbGUgb2YgbGFuZSBudW1iZXIsIHdlIG1vZGlmeSB0aGUgZGF0YSBwYWNrZXQg
+bGVuZ3RoIG9mCj4gSEJQIHNvIHRoYXQgdGhlIG51bWJlciBvZiBIQlAgKyBSR0IgaXMgZXF1YWwg
+dG8gdGhlIGxhbmUgbnVtYmVyLgo+IFNvIGFmdGVyIHNlbmRpbmcgYSBsaW5lIG9mIGRhdGEgKEhT
+QSArIEhCUCArIFJHQiArIEhGUCksIHRoZSBkYXRhCj4gbGFuZXMgYXJlIGFsaWduZWQuCgpBY2tl
+ZC1ieTogQ2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmc+Cgo+Cj4gU2lnbmVk
+LW9mZi1ieTogSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPgo+IFNpZ25lZC1vZmYt
+Ynk6IFJleC1CQyBDaGVuIDxyZXgtYmMuY2hlbkBtZWRpYXRlay5jb20+Cj4gU2lnbmVkLW9mZi1i
+eTogWGlubGVpIExlZSA8eGlubGVpLmxlZUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCAxMiArKysrKysrKysrKysKPiAgMSBmaWxlIGNo
+YW5nZWQsIDEyIGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2RzaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+
+IGluZGV4IDVkOTBkMmViMDAxOS4uZTkxYjNmZmY0MzQyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RzaS5jCj4gQEAgLTUwMCw2ICs1MDAsMTggQEAgc3RhdGljIHZvaWQgbXRrX2RzaV9j
+b25maWdfdmRvX3RpbWluZyhzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ICAgICAgICAgICAgICAgICBE
+Uk1fV0FSTigiSEZQICsgSEJQIGxlc3MgdGhhbiBkLXBoeSwgRlBTIHdpbGwgdW5kZXIgNjBIelxu
+Iik7Cj4gICAgICAgICB9Cj4KPiArICAgICAgIGlmICgoZHNpLT5tb2RlX2ZsYWdzICYgTUlQSV9E
+U0lfSFNfUEtUX0VORF9BTElHTkVEKSAmJgo+ICsgICAgICAgICAgIChkc2ktPmxhbmVzID09IDQp
+KSB7Cj4gKyAgICAgICAgICAgICAgIGhvcml6b250YWxfc3luY19hY3RpdmVfYnl0ZSA9Cj4gKyAg
+ICAgICAgICAgICAgICAgICAgICAgcm91bmR1cChob3Jpem9udGFsX3N5bmNfYWN0aXZlX2J5dGUs
+IGRzaS0+bGFuZXMpIC0gMjsKPiArICAgICAgICAgICAgICAgaG9yaXpvbnRhbF9mcm9udHBvcmNo
+X2J5dGUgPQo+ICsgICAgICAgICAgICAgICAgICAgICAgIHJvdW5kdXAoaG9yaXpvbnRhbF9mcm9u
+dHBvcmNoX2J5dGUsIGRzaS0+bGFuZXMpIC0gMjsKPiArICAgICAgICAgICAgICAgaG9yaXpvbnRh
+bF9iYWNrcG9yY2hfYnl0ZSA9Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgcm91bmR1cChob3Jp
+em9udGFsX2JhY2twb3JjaF9ieXRlLCBkc2ktPmxhbmVzKSAtIDI7Cj4gKyAgICAgICAgICAgICAg
+IGhvcml6b250YWxfYmFja3BvcmNoX2J5dGUgLT0KPiArICAgICAgICAgICAgICAgICAgICAgICAo
+dm0tPmhhY3RpdmUgKiBkc2lfdG1wX2J1Zl9icHAgKyAyKSAlIGRzaS0+bGFuZXM7Cj4gKyAgICAg
+ICB9Cj4gKwo+ICAgICAgICAgd3JpdGVsKGhvcml6b250YWxfc3luY19hY3RpdmVfYnl0ZSwgZHNp
+LT5yZWdzICsgRFNJX0hTQV9XQyk7Cj4gICAgICAgICB3cml0ZWwoaG9yaXpvbnRhbF9iYWNrcG9y
+Y2hfYnl0ZSwgZHNpLT5yZWdzICsgRFNJX0hCUF9XQyk7Cj4gICAgICAgICB3cml0ZWwoaG9yaXpv
+bnRhbF9mcm9udHBvcmNoX2J5dGUsIGRzaS0+cmVncyArIERTSV9IRlBfV0MpOwo+IC0tCj4gMi4x
+OC4wCj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVk
+aWF0ZWsK
