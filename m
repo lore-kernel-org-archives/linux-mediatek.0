@@ -4,81 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16661C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 13:45:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35378C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 13:55:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ED0NeMPztuMCWA+Gdphe2dVA/nCmHWvMvcSjosmco7E=; b=RuWm6oBVfEoBAC
-	492In9sAKEWsHdLVbrLXdI7GhLdHx0Xxz5P82b6Ll0zYgT9OxOMFUK7nXUpwt2U6rTUVjD/kAvF1C
-	MJWuREt4sIXiIaR8AnTx1Uo2pHrEhWtFyXYJIQwyVC7tHSbaNglgGrBVO+IgkoZprEWZao5ZMLZaj
-	QOpFI9v78ZZe3Ko7O9MGmyzNQ1CbZLUwxX7nHNj3YkQbPuYhRoINKHgnEdkHKRXXihBGxQ1IxdTXH
-	Tz+jiyBBESY+CPKLodsvGjvPCpGMtE+VmLCWbiBojW19Bizt7fyruMtR3rAFa7YzVj8iCRgD+hCbh
-	+Iqs/KnWQFDTUWGpfV7g==;
+	List-Owner; bh=wb9MyOOt7KkbP2eGNsd86oJ804EJrj6ouD6OHDzFUbE=; b=u1srr6brz9rdg1
+	4JX03hz7AMJ/B1fFTpYvIwevVpz8FLC/kNohm2qAA3zG63e+VDWzrfEaJidEF5e79/+dL7zBH+WCc
+	Sg2ta4AXElWBb4iZuprawNamizajU621NSFmTWze5Ndh2uUyB61xV8U+9i+IpwXd58Y8C4n2TodIP
+	xJ8fcjKpx5sU5y7mnkcrrfmB6ST0szpM/JzThVCPoI4iWJh5O1etl+cliVaS+1jqO0mwTc3ZCD9P7
+	Xob2RSyNWmOc2zbbkamyBPJOa0HrvpBkl55I1SkehfAWohThf0ZpIerghkW+UHtmtZdLbAX417+uo
+	kqVu0eifSgsl8bPmB/Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nABHR-005iDi-HJ; Wed, 19 Jan 2022 13:45:41 +0000
-Received: from mail-oi1-f179.google.com ([209.85.167.179])
+	id 1nABR6-005mgP-08; Wed, 19 Jan 2022 13:55:40 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nABGj-005hrx-Er; Wed, 19 Jan 2022 13:44:59 +0000
-Received: by mail-oi1-f179.google.com with SMTP id w188so4108475oiw.13;
- Wed, 19 Jan 2022 05:44:56 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=XV9jT834GTvMWeTq6hEN66D6w6Wl6MYdp1wgd9hHuME=;
- b=VTAxNfFoSgdAH8inCeNSIl8iLqoe/tUq979vmnuGQvq4TeKcJD9yvzrZ0JXJrDOHu6
- k9JZBt3jb3dKAYvuiKA+rcpRlkAFDTBjkOh2hjZeFQN1EkfnR6Tb/NvPez45zpBOFoB/
- GA/2dFCWx51UFnSgG6EYAYS2FHIe5XWOcMmTr7TuL4Fiu/TtiLp7GwZ+XVL5BGV5bB9S
- 312xDrrAy/n9tngILGOpzMm1VxC6k6A0fK9tTiiKVkk6QU+/vcenVb07Q5k+QgOFbFEH
- 5ZjG5bQo/h6iYcT3Do9onLTxuxKBBciqyMbFAczkT6EMDsNXDiFkxVOvhYGF56eF3TwD
- GOVw==
-X-Gm-Message-State: AOAM530mOtdl25XkKYl3ABl9kMO83nh/X6R0dfhyzYexP3+Gq/mypzS2
- DiN2AxD+ZT4OR3j3KXXF6g==
-X-Google-Smtp-Source: ABdhPJxUUuS7hqkZPCQ8sIm3JLv/JeOvqkPe8W72D50Yil+vhGBPzkLoBuX99vvWBlQ4Q8Xh/tgZFA==
-X-Received: by 2002:a05:6808:2018:: with SMTP id
- q24mr3090344oiw.117.1642599896005; 
- Wed, 19 Jan 2022 05:44:56 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id c26sm8539217otr.65.2022.01.19.05.44.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Jan 2022 05:44:54 -0800 (PST)
-Received: (nullmailer pid 3448746 invoked by uid 1000);
- Wed, 19 Jan 2022 13:44:53 -0000
-Date: Wed, 19 Jan 2022 07:44:53 -0600
-From: Rob Herring <robh@kernel.org>
-To: Irui Wang <irui.wang@mediatek.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Tzung-Bi Shih <tzungbi@chromium.org>,
- Alexandre Courbot <acourbot@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>,
- Yong Wu <yong.wu@mediatek.com>, angelogioacchino.delregno@collabora.com,
- Hsin-Yi Wang <hsinyi@chromium.org>, Maoguang Meng <maoguang.meng@mediatek.com>,
- Longfei Wang <longfei.wang@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, Fritz Koenig <frkoenig@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v2, 03/10] dt-bindings: media: mtk-vcodec: Adds encoder
- cores dt-bindings for mt8195
-Message-ID: <YegV1SQ7V/F3GAFL@robh.at.kernel.org>
-References: <20220117120615.21687-1-irui.wang@mediatek.com>
- <20220117120615.21687-4-irui.wang@mediatek.com>
+ id 1nABQs-005md3-TB; Wed, 19 Jan 2022 13:55:28 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 54DC061266;
+ Wed, 19 Jan 2022 13:55:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0CD27C004E1;
+ Wed, 19 Jan 2022 13:55:24 +0000 (UTC)
+Authentication-Results: smtp.kernel.org;
+ dkim=pass (1024-bit key) header.d=zx2c4.com header.i=@zx2c4.com
+ header.b="aX2pw9mN"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zx2c4.com; s=20210105; 
+ t=1642600523;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VVLlEq/NVqn71IeXBS7gWbZgsEB+7ur+0OXQEYCjiyc=;
+ b=aX2pw9mNODlEQE36AFSyNIcCNWw59qX8/iB/ZM0jNJV9byC6xerslmiXZYt1k6d030UWEX
+ UsYa6QKxzlUVXrpARKHn2e0uPxRE0BLlXp68JlVxHDZp0RgwNHkP38KhevQEZAPhGCMWAW
+ 6CWH1OUTL+wC9NvQSMOqFEefxhSdo1c=
+Received: by mail.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id 77f1b5b1
+ (TLSv1.3:AEAD-AES256-GCM-SHA384:256:NO); 
+ Wed, 19 Jan 2022 13:55:23 +0000 (UTC)
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+To: Miles Chen <miles.chen@mediatek.com>, Ard Biesheuvel <ardb@kernel.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-mediatek@lists.infradead.org
+Cc: "Jason A. Donenfeld" <Jason@zx2c4.com>,
+ Nick Desaulniers <ndesaulniers@google.com>,
+ Sami Tolvanen <samitolvanen@google.com>
+Subject: [PATCH] lib/crypto: blake2s: avoid indirect calls to compression
+ function for Clang CFI
+Date: Wed, 19 Jan 2022 14:54:50 +0100
+Message-Id: <20220119135450.564115-1-Jason@zx2c4.com>
+In-Reply-To: <CAHmME9qVMomgb53rABKsucCoEhwsk+=KzDdEcGKtecOXuahTZw@mail.gmail.com>
+References: <CAHmME9qVMomgb53rABKsucCoEhwsk+=KzDdEcGKtecOXuahTZw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220117120615.21687-4-irui.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220119_054457_555267_B5259983 
-X-CRM114-Status: GOOD (  24.27  )
+X-CRM114-CacheID: sfid-20220119_055527_053073_22FEA865 
+X-CRM114-Status: GOOD (  21.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,264 +82,226 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 17, 2022 at 08:06:08PM +0800, Irui Wang wrote:
-> Adds encoder cores dt-bindings for mt8195
-> 
-> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
-> ---
->  .../media/mediatek,vcodec-encoder-core.yaml   | 214 ++++++++++++++++++
->  1 file changed, 214 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml
-> new file mode 100644
-> index 000000000000..d1e7bfa50bce
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml
-> @@ -0,0 +1,214 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +
-> +%YAML 1.2
-> +---
-> +$id: "http://devicetree.org/schemas/media/mediatek,vcodec-encoder-core.yaml#"
-> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-> +
-> +title: Mediatek Video Encoder Accelerator With Multi Core
-> +
-> +maintainers:
-> +  - Irui Wang <irui.wang@mediatek.com>
-> +
-> +description: |
-> +  Mediatek Video Encode is the video encode hardware present in Mediatek
-> +  SoCs which supports high resolution encoding functionalities. Required
-> +  parent and child device node.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8195-vcodec-enc
-> +
-> +  mediatek,scp:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
+blake2s_compress_generic is weakly aliased to blake2s_generic. The
+current harness for function selection uses a function pointer, which is
+ordinarily inlined and resolved at compile time. But when Clang's CFI is
+enabled, CFI still triggers when making an indirect call via a weak
+symbol. This seems like a bug in Clang's CFI, as though it's bucketing
+weak symbols and strong symbols differently. It also only seems to
+trigger when "full LTO" mode is used, rather than "thin LTO".
 
-'phandle' is already 1 item. Drop.
+[    0.000000][    T0] Kernel panic - not syncing: CFI failure (target: blake2s_compress_generic+0x0/0x1444)
+[    0.000000][    T0] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.16.0-mainline-06981-g076c855b846e #1
+[    0.000000][    T0] Hardware name: MT6873 (DT)
+[    0.000000][    T0] Call trace:
+[    0.000000][    T0]  dump_backtrace+0xfc/0x1dc
+[    0.000000][    T0]  dump_stack_lvl+0xa8/0x11c
+[    0.000000][    T0]  panic+0x194/0x464
+[    0.000000][    T0]  __cfi_check_fail+0x54/0x58
+[    0.000000][    T0]  __cfi_slowpath_diag+0x354/0x4b0
+[    0.000000][    T0]  blake2s_update+0x14c/0x178
+[    0.000000][    T0]  _extract_entropy+0xf4/0x29c
+[    0.000000][    T0]  crng_initialize_primary+0x24/0x94
+[    0.000000][    T0]  rand_initialize+0x2c/0x6c
+[    0.000000][    T0]  start_kernel+0x2f8/0x65c
+[    0.000000][    T0]  __primary_switched+0xc4/0x7be4
+[    0.000000][    T0] Rebooting in 5 seconds..
 
-> +    description: |
-> +      The node of system control processor (SCP), using
-> +      the remoteproc & rpmsg framework.
-> +
-> +  iommus:
-> +    minItems: 1
-> +    maxItems: 32
-> +    description: |
-> +      List of the hardware port in respective IOMMU block for current Socs.
-> +      Refer to bindings/iommu/mediatek,iommu.yaml.
-> +
-> +  dma-ranges:
-> +    maxItems: 1
-> +    description: |
-> +      Describes the physical address space of IOMMU maps to memory.
-> +
-> +  "#address-cells":
-> +    const: 1
-> +
-> +  "#size-cells":
-> +    const: 1
-> +
-> +  ranges: true
-> +
-> +# Required child node:
-> +patternProperties:
-> +  "venc_core0@1a020000":
+Nonetheless, the function pointer method isn't so terrific anyway, so
+this patch replaces it with a simple boolean, which also gets inlined
+away. This successfully works around the Clang bug.
 
-Address should generally not be defined in the node name schema:
+In general, I'm not too keen on all of the indirection involved here; it
+clearly does more harm than good. Hopefully the whole thing can get
+cleaned up down the road when lib/crypto is overhauled more
+comprehensively. But for now, we go with a simple bandaid.
 
-'^venc-core0@'
+Fixes: 6048fdcc5f26 ("lib/crypto: blake2s: include as built-in")
+Reported-by: Miles Chen <miles.chen@mediatek.com>
+Cc: Nick Desaulniers <ndesaulniers@google.com>
+Cc: Sami Tolvanen <samitolvanen@google.com>
+Cc: Ard Biesheuvel <ardb@kernel.org>
+Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
+---
+ arch/arm/crypto/blake2s-shash.c   |  4 ++--
+ arch/x86/crypto/blake2s-shash.c   |  4 ++--
+ crypto/blake2s_generic.c          |  4 ++--
+ include/crypto/internal/blake2s.h | 36 ++++++++++++++++++-------------
+ lib/crypto/blake2s.c              |  4 ++--
+ 5 files changed, 29 insertions(+), 23 deletions(-)
 
-Though I think you should also drop the '0' here. The unit-address is 
-enough to distinguish each instance. Then the schemas for each child 
-node can be combined.
+diff --git a/arch/arm/crypto/blake2s-shash.c b/arch/arm/crypto/blake2s-shash.c
+index 17c1c3bfe2f5..763c73beea2d 100644
+--- a/arch/arm/crypto/blake2s-shash.c
++++ b/arch/arm/crypto/blake2s-shash.c
+@@ -13,12 +13,12 @@
+ static int crypto_blake2s_update_arm(struct shash_desc *desc,
+ 				     const u8 *in, unsigned int inlen)
+ {
+-	return crypto_blake2s_update(desc, in, inlen, blake2s_compress);
++	return crypto_blake2s_update(desc, in, inlen, false);
+ }
+ 
+ static int crypto_blake2s_final_arm(struct shash_desc *desc, u8 *out)
+ {
+-	return crypto_blake2s_final(desc, out, blake2s_compress);
++	return crypto_blake2s_final(desc, out, false);
+ }
+ 
+ #define BLAKE2S_ALG(name, driver_name, digest_size)			\
+diff --git a/arch/x86/crypto/blake2s-shash.c b/arch/x86/crypto/blake2s-shash.c
+index f9e2fecdb761..59ae28abe35c 100644
+--- a/arch/x86/crypto/blake2s-shash.c
++++ b/arch/x86/crypto/blake2s-shash.c
+@@ -18,12 +18,12 @@
+ static int crypto_blake2s_update_x86(struct shash_desc *desc,
+ 				     const u8 *in, unsigned int inlen)
+ {
+-	return crypto_blake2s_update(desc, in, inlen, blake2s_compress);
++	return crypto_blake2s_update(desc, in, inlen, false);
+ }
+ 
+ static int crypto_blake2s_final_x86(struct shash_desc *desc, u8 *out)
+ {
+-	return crypto_blake2s_final(desc, out, blake2s_compress);
++	return crypto_blake2s_final(desc, out, false);
+ }
+ 
+ #define BLAKE2S_ALG(name, driver_name, digest_size)			\
+diff --git a/crypto/blake2s_generic.c b/crypto/blake2s_generic.c
+index 72fe480f9bd6..5f96a21f8788 100644
+--- a/crypto/blake2s_generic.c
++++ b/crypto/blake2s_generic.c
+@@ -15,12 +15,12 @@
+ static int crypto_blake2s_update_generic(struct shash_desc *desc,
+ 					 const u8 *in, unsigned int inlen)
+ {
+-	return crypto_blake2s_update(desc, in, inlen, blake2s_compress_generic);
++	return crypto_blake2s_update(desc, in, inlen, true);
+ }
+ 
+ static int crypto_blake2s_final_generic(struct shash_desc *desc, u8 *out)
+ {
+-	return crypto_blake2s_final(desc, out, blake2s_compress_generic);
++	return crypto_blake2s_final(desc, out, true);
+ }
+ 
+ #define BLAKE2S_ALG(name, driver_name, digest_size)			\
+diff --git a/include/crypto/internal/blake2s.h b/include/crypto/internal/blake2s.h
+index d39cfa0d333e..e2da9b413d44 100644
+--- a/include/crypto/internal/blake2s.h
++++ b/include/crypto/internal/blake2s.h
+@@ -24,14 +24,11 @@ static inline void blake2s_set_lastblock(struct blake2s_state *state)
+ 	state->f[0] = -1;
+ }
+ 
+-typedef void (*blake2s_compress_t)(struct blake2s_state *state,
+-				   const u8 *block, size_t nblocks, u32 inc);
+-
+ /* Helper functions for BLAKE2s shared by the library and shash APIs */
+ 
+-static inline void __blake2s_update(struct blake2s_state *state,
+-				    const u8 *in, size_t inlen,
+-				    blake2s_compress_t compress)
++static __always_inline void __blake2s_update(struct blake2s_state *state,
++					     const u8 *in, size_t inlen,
++					     bool force_generic)
+ {
+ 	const size_t fill = BLAKE2S_BLOCK_SIZE - state->buflen;
+ 
+@@ -39,7 +36,10 @@ static inline void __blake2s_update(struct blake2s_state *state,
+ 		return;
+ 	if (inlen > fill) {
+ 		memcpy(state->buf + state->buflen, in, fill);
+-		(*compress)(state, state->buf, 1, BLAKE2S_BLOCK_SIZE);
++		if (force_generic)
++			blake2s_compress_generic(state, state->buf, 1, BLAKE2S_BLOCK_SIZE);
++		else
++			blake2s_compress(state, state->buf, 1, BLAKE2S_BLOCK_SIZE);
+ 		state->buflen = 0;
+ 		in += fill;
+ 		inlen -= fill;
+@@ -47,7 +47,10 @@ static inline void __blake2s_update(struct blake2s_state *state,
+ 	if (inlen > BLAKE2S_BLOCK_SIZE) {
+ 		const size_t nblocks = DIV_ROUND_UP(inlen, BLAKE2S_BLOCK_SIZE);
+ 		/* Hash one less (full) block than strictly possible */
+-		(*compress)(state, in, nblocks - 1, BLAKE2S_BLOCK_SIZE);
++		if (force_generic)
++			blake2s_compress_generic(state, in, nblocks - 1, BLAKE2S_BLOCK_SIZE);
++		else
++			blake2s_compress(state, in, nblocks - 1, BLAKE2S_BLOCK_SIZE);
+ 		in += BLAKE2S_BLOCK_SIZE * (nblocks - 1);
+ 		inlen -= BLAKE2S_BLOCK_SIZE * (nblocks - 1);
+ 	}
+@@ -55,13 +58,16 @@ static inline void __blake2s_update(struct blake2s_state *state,
+ 	state->buflen += inlen;
+ }
+ 
+-static inline void __blake2s_final(struct blake2s_state *state, u8 *out,
+-				   blake2s_compress_t compress)
++static __always_inline void __blake2s_final(struct blake2s_state *state, u8 *out,
++					    bool force_generic)
+ {
+ 	blake2s_set_lastblock(state);
+ 	memset(state->buf + state->buflen, 0,
+ 	       BLAKE2S_BLOCK_SIZE - state->buflen); /* Padding */
+-	(*compress)(state, state->buf, 1, state->buflen);
++	if (force_generic)
++		blake2s_compress_generic(state, state->buf, 1, state->buflen);
++	else
++		blake2s_compress(state, state->buf, 1, state->buflen);
+ 	cpu_to_le32_array(state->h, ARRAY_SIZE(state->h));
+ 	memcpy(out, state->h, state->outlen);
+ }
+@@ -99,20 +105,20 @@ static inline int crypto_blake2s_init(struct shash_desc *desc)
+ 
+ static inline int crypto_blake2s_update(struct shash_desc *desc,
+ 					const u8 *in, unsigned int inlen,
+-					blake2s_compress_t compress)
++					bool force_generic)
+ {
+ 	struct blake2s_state *state = shash_desc_ctx(desc);
+ 
+-	__blake2s_update(state, in, inlen, compress);
++	__blake2s_update(state, in, inlen, force_generic);
+ 	return 0;
+ }
+ 
+ static inline int crypto_blake2s_final(struct shash_desc *desc, u8 *out,
+-				       blake2s_compress_t compress)
++				       bool force_generic)
+ {
+ 	struct blake2s_state *state = shash_desc_ctx(desc);
+ 
+-	__blake2s_final(state, out, compress);
++	__blake2s_final(state, out, force_generic);
+ 	return 0;
+ }
+ 
+diff --git a/lib/crypto/blake2s.c b/lib/crypto/blake2s.c
+index 9364f79937b8..c71c09621c09 100644
+--- a/lib/crypto/blake2s.c
++++ b/lib/crypto/blake2s.c
+@@ -18,14 +18,14 @@
+ 
+ void blake2s_update(struct blake2s_state *state, const u8 *in, size_t inlen)
+ {
+-	__blake2s_update(state, in, inlen, blake2s_compress);
++	__blake2s_update(state, in, inlen, false);
+ }
+ EXPORT_SYMBOL(blake2s_update);
+ 
+ void blake2s_final(struct blake2s_state *state, u8 *out)
+ {
+ 	WARN_ON(IS_ENABLED(DEBUG) && !out);
+-	__blake2s_final(state, out, blake2s_compress);
++	__blake2s_final(state, out, false);
+ 	memzero_explicit(state, sizeof(*state));
+ }
+ EXPORT_SYMBOL(blake2s_final);
+-- 
+2.34.1
 
-> +    type: object
-> +
-> +    properties:
-> +      compatible:
-> +        const: mediatek,mtk-venc-core0
-
-Is the programming model for each core the same, but just different 
-codecs implemented? I'd just add a property to indicate which codec if 
-that's not discoverable.
-
-> +
-> +      reg:
-> +        maxItems: 1
-> +
-> +      iommus:
-> +        minItems: 1
-> +        maxItems: 32
-> +        description: |
-> +          List of the hardware port in respective IOMMU block for current Socs.
-> +          Refer to bindings/iommu/mediatek,iommu.yaml.
-> +
-> +      interrupts:
-> +        maxItems: 1
-> +
-> +      clocks:
-> +        maxItems: 1
-> +
-> +      clock-names:
-> +        items:
-> +          - const: MT_CG_VENC0
-
-The name is supposed to be local to the instance reflecting what the 
-clock drives rather than a top-level or clock controller name. Lowercase 
-is also the norm. Given there's only 1 clock, I'd just drop the name.
-
-> +
-> +      assigned-clocks:
-> +        maxItems: 1
-> +
-> +      assigned-clock-parents:
-> +        maxItems: 1
-
-These are always allowed and shouldn't be required.
-
-> +
-> +      power-domains:
-> +        maxItems: 1
-> +
-> +    required:
-> +      - compatible
-> +      - reg
-> +      - iommus
-> +      - interrupts
-> +      - clocks
-> +      - clock-names
-> +      - assigned-clocks
-> +      - assigned-clock-parents
-> +      - power-domains
-> +
-> +    additionalProperties: false
-> +
-> +  "venc_core1@1b020000":
-> +    type: object
-> +
-> +    properties:
-> +      compatible:
-> +        const: mediatek,mtk-venc-core1
-> +
-> +      reg:
-> +        maxItems: 1
-> +
-> +      iommus:
-> +        minItems: 1
-> +        maxItems: 32
-> +        description: |
-> +          List of the hardware port in respective IOMMU block for current Socs.
-> +          Refer to bindings/iommu/mediatek,iommu.yaml.
-> +
-> +      interrupts:
-> +        maxItems: 1
-> +
-> +      clocks:
-> +        maxItems: 1
-> +
-> +      clock-names:
-> +        items:
-> +          - const: MT_CG_VENC1
-> +
-> +      assigned-clocks:
-> +        maxItems: 1
-> +
-> +      assigned-clock-parents:
-> +        maxItems: 1
-> +
-> +      power-domains:
-> +        maxItems: 1
-> +
-> +    required:
-> +      - compatible
-> +      - reg
-> +      - iommus
-> +      - interrupts
-> +      - clocks
-> +      - clock-names
-> +      - assigned-clocks
-> +      - assigned-clock-parents
-> +      - power-domains
-> +
-> +    additionalProperties: false
-> +
-> +required:
-> +  - compatible
-> +  - mediatek,scp
-> +  - iommus
-> +  - dma-ranges
-> +  - ranges
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/memory/mt8195-memory-port.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/clock/mt8195-clk.h>
-> +    #include <dt-bindings/power/mt8195-power.h>
-> +
-> +    venc {
-> +        compatible = "mediatek,mt8195-vcodec-enc";
-> +        mediatek,scp = <&scp>;
-> +        iommus = <&iommu_vdo M4U_PORT_L19_VENC_RCPU>;
-> +        dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
-> +        #address-cells = <1>;
-> +        #size-cells = <1>;
-> +        ranges;
-> +
-> +        venc_core0@1a020000 {
-> +            compatible = "mediatek,mtk-venc-core0";
-> +            reg = <0x1a020000 0x10000>;
-> +            iommus = <&iommu_vdo M4U_PORT_L19_VENC_RCPU>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_REC>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_BSDMA>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_SV_COMV>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_RD_COMV>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_CUR_LUMA>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_CUR_CHROMA>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_REF_LUMA>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_REF_CHROMA>;
-> +            interrupts = <GIC_SPI 341 IRQ_TYPE_LEVEL_HIGH 0>;
-> +            clocks = <&vencsys CLK_VENC_VENC>;
-> +            clock-names = "MT_CG_VENC0";
-> +            assigned-clocks = <&topckgen CLK_TOP_VENC>;
-> +            assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
-> +            power-domains = <&spm MT8195_POWER_DOMAIN_VENC>;
-> +        };
-> +
-> +        venc_core1@1b020000 {
-> +            compatible = "mediatek,mtk-venc-core1";
-> +            reg = <0x1b020000 0x10000>;
-> +            iommus = <&iommu_vpp M4U_PORT_L20_VENC_RCPU>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_REC>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_BSDMA>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_SV_COMV>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_RD_COMV>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_CUR_LUMA>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_CUR_CHROMA>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_REF_LUMA>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_REF_CHROMA>;
-> +            interrupts = <GIC_SPI 346 IRQ_TYPE_LEVEL_HIGH 0>;
-> +            clocks = <&vencsys_core1 CLK_VENC_CORE1_VENC>;
-> +            clock-names = "MT_CG_VENC1";
-> +            assigned-clocks = <&topckgen CLK_TOP_VENC>;
-> +            assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
-> +            power-domains = <&spm MT8195_POWER_DOMAIN_VENC_CORE1>;
-> +        };
-> +    };
-> -- 
-> 2.18.0
-> 
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
