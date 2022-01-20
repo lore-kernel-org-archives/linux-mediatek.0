@@ -4,108 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C5F4C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jan 2022 11:27:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B1E1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jan 2022 13:57:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:References:CC:To:Subject:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=0O4/IkHcCmpGJRJ6i/Mg2neacRmDcvyw5acHvaW0Ex0=; b=tjeQqwbEoXxsj+tm7UE8mi8Vdc
-	QWfe0RKCVwQXOa+UPoJJYbsViQp6l3+fvWwlof1BVAmthHL1Z3DRzZQrbd5ZcS/ob8k84QiUBWLf/
-	uCEpAmhqpirJWaarm9WbwSi/HgknVspDo/n9y5h0qIV2vmoC5WLXM7GNGBjzEGCIUu0wZp2G2BFTm
-	uAqYq/gzmeje82E0B/+yov+P+T4R3YtHP6i3spmwGMxu4rXr3C6iAzu2xtA7vHSqwx0a7SSGSik3G
-	V1Al3Keb5GBEeTqbkodhE2zYnasgUVC5rj1uFdyDy/pFBN8UfQAdl67UsbCHg3qaICDnR0iXPt9Qx
-	M/+5fqmw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=khent0y+NM5jEH+iBgVxGBfd7cpG4skGg1A7Cj7+c90=; b=f8mOLlXo8oAgjU
+	C/T21aniy7B9Ntw6keMnUHF8nZivlOKUdSC2E4sG0DaI/n11TGNX2u8l+GOA5rI1dZWK30zRpiZPa
+	rSnTw41n8W/YslckyP7Q81ICHB4B9tEM10+f2qort0N+vmxcvrmbMOQlcTwSdJ5h8CvQvqhoUWaXs
+	GIT9Gjn+9aPNmIvzyjqNzAnjXqpznjDsq5t6AFWN7U0SYZB9xRFpXC1hXHRQH5tTg76eUav4HHtaZ
+	T6Vv/jKwToY1pmM72khlGs0pSKWFyRMQFeMrJSFZG2ON3S+S+Z/vMzayDT5Co4zSENo2Em8O1LRWk
+	aU3E2WDt7u91Igq5i/Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nAVbI-00B43L-V1; Thu, 20 Jan 2022 11:27:32 +0000
-Received: from mxout01.lancloud.ru ([45.84.86.81])
+	id 1nAXwj-00BoBv-TC; Thu, 20 Jan 2022 13:57:49 +0000
+Received: from mga05.intel.com ([192.55.52.43])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nAVbE-00B40J-0o; Thu, 20 Jan 2022 11:27:30 +0000
-Received: from LanCloud
-DKIM-Filter: OpenDKIM Filter v2.11.0 mxout01.lancloud.ru BF82F20E4C10
-Received: from LanCloud
-Received: from LanCloud
-Received: from LanCloud
-From: Sergey Shtylyov <s.shtylyov@omp.ru>
-Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
-To: Geert Uytterhoeven <geert@linux-m68k.org>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>
-CC: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
- Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, <linux-iio@vger.kernel.org>, "Linus
- Walleij" <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>, "ALSA
- Development Mailing List" <alsa-devel@alsa-project.org>, Andy Shevchenko
- <andriy.shevchenko@linux.intel.com>, Jaroslav Kysela <perex@perex.cz>,
- Guenter Roeck <groeck@chromium.org>, Thierry Reding
- <thierry.reding@gmail.com>, MTD Maling List <linux-mtd@lists.infradead.org>,
- Linux I2C <linux-i2c@vger.kernel.org>, Miquel Raynal
- <miquel.raynal@bootlin.com>, <linux-phy@lists.infradead.org>, Jiri Slaby
- <jirislaby@kernel.org>, <openipmi-developer@lists.sourceforge.net>, "Khuong
- Dinh" <khuong@os.amperecomputing.com>, Florian Fainelli
- <f.fainelli@gmail.com>, Matthias Schiffer
- <matthias.schiffer@ew.tq-group.com>, Joakim Zhang <qiangqing.zhang@nxp.com>,
- Kamal Dasu <kdasu.kdev@gmail.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Lee Jones <lee.jones@linaro.org>, "Bartosz
- Golaszewski" <brgl@bgdev.pl>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- "Tony Luck" <tony.luck@intel.com>, Kishon Vijay Abraham I <kishon@ti.com>,
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, "open
- list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>, Jakub Kicinski
- <kuba@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Linux PWM List
- <linux-pwm@vger.kernel.org>, Robert Richter <rric@kernel.org>, "Saravanan
- Sekar" <sravanhome@gmail.com>, Corey Minyard <minyard@acm.org>, Linux PM list
- <linux-pm@vger.kernel.org>, Linux Kernel Mailing List
- <linux-kernel@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- John Garry <john.garry@huawei.com>, Peter Korsgaard <peter@korsgaard.com>,
- William Breathitt Gray <vilhelm.gray@gmail.com>, Mark Gross
- <markgross@kernel.org>, "open list:GPIO SUBSYSTEM"
- <linux-gpio@vger.kernel.org>, Alex Williamson <alex.williamson@redhat.com>,
- Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>, "Sebastian
- Reichel" <sre@kernel.org>, Eric Auger <eric.auger@redhat.com>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, Takashi Iwai <tiwai@suse.com>,
- <platform-driver-x86@vger.kernel.org>, Benson Leung <bleung@chromium.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- <linux-edac@vger.kernel.org>, Mun Yew Tham <mun.yew.tham@intel.com>, "Hans de
- Goede" <hdegoede@redhat.com>, netdev <netdev@vger.kernel.org>, "Yoshihiro
- Shimoda" <yoshihiro.shimoda.uh@renesas.com>, Cornelia Huck
- <cohuck@redhat.com>, Linux MMC List <linux-mmc@vger.kernel.org>, "Liam
- Girdwood" <lgirdwood@gmail.com>, linux-spi <linux-spi@vger.kernel.org>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>, Vinod Koul
- <vkoul@kernel.org>, James Morse <james.morse@arm.com>, Zha Qipeng
- <qipeng.zha@intel.com>, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Richard Weinberger <richard@nod.at>, =?UTF-8?Q?Niklas_S=c3=b6derlund?=
- <niklas.soderlund@ragnatech.se>, <linux-mediatek@lists.infradead.org>, "Brian
- Norris" <computersforpeace@gmail.com>, "David S. Miller"
- <davem@davemloft.net>
-References: <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
- <Yd9L9SZ+g13iyKab@sirena.org.uk>
- <29f0c65d-77f2-e5b2-f6cc-422add8a707d@omp.ru>
- <20220114092557.jrkfx7ihg26ekzci@pengutronix.de>
- <61b80939-357d-14f5-df99-b8d102a4e1a1@omp.ru>
- <20220114202226.ugzklxv4wzr6egwj@pengutronix.de>
- <c9026f17-2b3f-ee94-0ea3-5630f981fbc1@omp.ru>
- <CAMuHMdXVbRudGs69f9ZzaP1PXhteDNZiXA658eMFAwP4nr9r3w@mail.gmail.com>
- <20220117092444.opoedfcf5k5u6otq@pengutronix.de>
- <CAMuHMdUgZUeraHadRAi2Z=DV+NuNBrKPkmAKsvFvir2MuquVoA@mail.gmail.com>
- <20220117114923.d5vajgitxneec7j7@pengutronix.de>
- <CAMuHMdWCKERO20R2iVHq8P=BaoauoBAtiampWzfMRYihi3Sb0g@mail.gmail.com>
-Organization: Open Mobile Platform
-Message-ID: <b8fda2ae-07b7-af30-2b0d-213a60a7b802@omp.ru>
-Date: Thu, 20 Jan 2022 14:27:08 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ id 1nAXwh-00BoAy-FD; Thu, 20 Jan 2022 13:57:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1642687067; x=1674223067;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=MtPKbTXvTh6ak1y3SGppvN/XkoH+ghr8tdmxMpz+yQ4=;
+ b=f4p7cvSzKSFI5FsMFB6Lw2SzWs6yqOZ5xbtk5qJNoPiwxC9f//m0WH3K
+ AKrfwtGhNrB2o49Hv8BShdnRv6lfESSB/woybHrRRy9/ForAHTBS26wuW
+ kThq0lii9EQpRo1Z9BnqfIcGdxFjI+oxwXZzsEF5Su98a3X8LAZV6W5PB
+ J6pg4o2x3PubTz9Xxfc8fLC1gkybRQn5VYSYUO5t3pHKD1VcByMlLLoyI
+ zFgi6BtQ5M80wRuv5ALM77o5rvAIkdQ0835N3OAw3riTh5dWhJGWEBHtV
+ qej7s7TgaAFQRuPl6zyHrglSzlbWN7W38ZhIkwWzaf/ARCiikKLzhry60 w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10232"; a="331705440"
+X-IronPort-AV: E=Sophos;i="5.88,302,1635231600"; d="scan'208";a="331705440"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jan 2022 05:57:46 -0800
+X-IronPort-AV: E=Sophos;i="5.88,302,1635231600"; d="scan'208";a="477793978"
+Received: from smile.fi.intel.com ([10.237.72.61])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jan 2022 05:57:40 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.95)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1nAXvS-00CWgc-Kv; Thu, 20 Jan 2022 15:56:30 +0200
+Date: Thu, 20 Jan 2022 15:56:30 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Axe Yang <axe.yang@mediatek.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Satya Tangirala <satyat@google.com>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ Lucas Stach <dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd <swboyd@chromium.org>,
+ Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>,
+ Tian Tao <tiantao6@hisilicon.com>,
+ angelogioacchino.delregno@collabora.com, linux-mmc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Yong Mao <yong.mao@mediatek.com>
+Subject: Re: [PATCH v4 3/3] mmc: mediatek: add support for SDIO eint IRQ
+Message-ID: <YelqDifksEmtMv44@smile.fi.intel.com>
+References: <20220119103212.13158-1-axe.yang@mediatek.com>
+ <20220119103212.13158-4-axe.yang@mediatek.com>
+ <Yehq7L36yfJ8D/j2@smile.fi.intel.com>
+ <0b6ef0ce05bb92cd458043be2441101e20166242.camel@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <CAMuHMdWCKERO20R2iVHq8P=BaoauoBAtiampWzfMRYihi3Sb0g@mail.gmail.com>
-Content-Language: en-US
-X-Originating-IP: [192.168.11.198]
-X-ClientProxiedBy: LFEXT02.lancloud.ru (fd00:f066::142) To
- LFEX1907.lancloud.ru (fd00:f066::207)
+Content-Disposition: inline
+In-Reply-To: <0b6ef0ce05bb92cd458043be2441101e20166242.camel@mediatek.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220120_032728_496726_62296D20 
-X-CRM114-Status: GOOD (  20.31  )
+X-CRM114-CacheID: sfid-20220120_055747_555732_0A578332 
+X-CRM114-Status: GOOD (  18.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,56 +95,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1/17/22 4:08 PM, Geert Uytterhoeven wrote:
+On Thu, Jan 20, 2022 at 01:34:08PM +0800, Axe Yang wrote:
+> On Wed, 2022-01-19 at 21:47 +0200, Andy Shevchenko wrote:
+> > On Wed, Jan 19, 2022 at 06:32:12PM +0800, Axe Yang wrote:
 
-[...]
->>> But as we were all in a hurry to kill the non-applicable error
->>> message, we went for the quick and dirty fix.
->>>
->>>> Also I fail to see how a caller of (today's) platform_get_irq_optional()
->>>> is simpler than a caller of platform_get_irq() given that there is no
->>>> semantic difference between the two. Please show me a single
->>>> conversion from platform_get_irq to platform_get_irq_optional that
->>>> yielded a simplification.
->>>
->>> That's exactly why we want to change the latter to return 0 ;-)
->>
->> OK. So you agree to my statement "The reason for
->> platform_get_irq_optional()'s existence is just that platform_get_irq()
->> emits an error message [...]". Actually you don't want to oppose but
->> say: It's unfortunate that the silent variant of platform_get_irq() took
->> the obvious name of a function that could have an improved return code
->> semantic.
->>
->> So my suggestion to rename todays platform_get_irq_optional() to
->> platform_get_irq_silently() and then introducing
->> platform_get_irq_optional() with your suggested semantic seems
->> intriguing and straigt forward to me.
+...
+
+> > > Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+> > 
+> > The submitters SoB must be last among all SoB tags. Please, read
+> > Submitting
+> > Patches document carefully.
+> > 
+> > > Signed-off-by: Yong Mao <yong.mao@mediatek.com>
+> > 
+> > Who is they, why their SoB appeared here?
 > 
-> I don't really see the point of needing platform_get_irq_silently(),
-> unless as an intermediary step, where it's going to be removed again
-> once the conversion has completed.
-> Still, the rename would touch all users at once anyway.
+> Yong Mao is the co-developer of this patch, I will reorder the SoB
+> chains.
+
+And you will need to add a corresponding tag.
+
+...
+
+> > > - * Copyright (c) 2014-2015 MediaTek Inc.
+> > > + * Copyright (c) 2022 MediaTek Inc.
+> > 
+> > This doesn't feel right. Why did you remove old years?
 > 
->> Another thought: platform_get_irq emits an error message for all
->> problems. Wouldn't it be consistent to let platform_get_irq_optional()
->> emit an error message for all problems but "not found"?
->> Alternatively remove the error printk from platform_get_irq().
-> 
-> Yes, all problems but not found are real errors.
+> I should keep the publish year 2014 of this driver.
+> But I still think range 2014-2022 is the most appropriate way to change
+> the copyright time. Over these years, mediatek is keeping maintaining
+> this driver continuously. What do you think?
 
-   ACK for using dev_err_probe() in platfrom_get_irq_optional()
-for the real errors...
-   I've also noted that only platfrom_get_irq_optional() got converted
-from dev_err() to dev_err_probe() but not platfrom_get_irq_byname_optional()...
+I guess I already showed my opinion on the topic? The common sense tells
+me that it should be as simple as '2014-2015,2022' there.
 
-[...]
+-- 
+With Best Regards,
+Andy Shevchenko
 
-> Gr{oetje,eeting}s,
-> 
->                         Geert
 
-MBR, Sergey
 
 _______________________________________________
 Linux-mediatek mailing list
