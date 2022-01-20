@@ -4,59 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71DB0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jan 2022 08:59:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1D94C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jan 2022 09:44:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=eN4T6vBfA8VBMBhsUjDVag96OmZpLkfGWdZH/4aTvSg=; b=YQ8MdAUITCx45j
-	MoeY3ZkXIddPzN4EnlVa2IF/4l0zt8MTxKZeQz3eBR/fkYuHJ2V8c8gu/6ggkDov4FJLfMBx00qir
-	IdfD5e5H+5/XWytGy0DO540dWHpvh0BMluZfWyxKd4qz4mtD3EpQAwcjycTm7IatNL6LjKSNkuSVE
-	3sxO5yhRUgz7WprNdYLfLxNtMFWUcUFT8L8byIqSSE4mN+l+8I0CqgF0IzSY/FA5dUiNi9lTcE7J2
-	FWsM/IF5NVItMKokvtVUeMoMjxAVOOG+O9q76/4XjJfae3/lHvmUIm+nsSPz8fZsNiabliePeCRMU
-	Mt/lY0qnLSlAYGCH9sOA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UU4ojE6G2tB62Ub9STyvHjFWjW0+HbTaSjzN8LtnnLI=; b=uk0GAZ8phDEGC0
+	OQOmqcOTYEk99KLazgsvlHcVxdkSputkqU9jFcAATlv5pQtdvFCEWuQwlShwhEzfqSU51gtP5tmhW
+	nEdAvMqao9OwxrchmEAdPTTF/t5ATRho2yCrXtLaWqd4jpCO4CciMbnZWytorWG+IX0t+6cnvO04M
+	pBzI+r6MFqX4u+O15+8hA4WRoYtM2gHOdKYaLUYJ6QZU2yLxbT94PNhuJxBwQmXl3D7nHG5y8MklT
+	M2fj2xnVbtIN+/CmEDwyanZSTww0JKo6gJeUR9QCjLfHcg3JVZ5CimX78GMpXsewWKOSUeNXDWzxE
+	qd2mzKy8rDTa4i0pbaBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nATII-009zUG-4H; Thu, 20 Jan 2022 08:59:46 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nATzW-00AKhR-8n; Thu, 20 Jan 2022 09:44:26 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nATHs-009zBd-AL; Thu, 20 Jan 2022 08:59:22 +0000
-Received: from benjamin-XPS-13-9310.. (unknown
- [IPv6:2a01:e0a:120:3210:3368:5e43:a228:ee75])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ id 1nATzI-00AKdb-50; Thu, 20 Jan 2022 09:44:13 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 668331F44C70;
- Thu, 20 Jan 2022 08:59:16 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1642669156;
- bh=70J/M3Mn2wuN/O5yaZDjpp/xB3BHC/zkHmIcZktdScY=;
- h=From:To:Cc:Subject:Date:From;
- b=ZO8Jmz4j0cx8AicUqq06pX/TskR7JHRp/Q1GVsO9dQou6RdjZ79D8dDzmeBKhXD6R
- cRrLyTQC1rBbV2kYb61ZWuP4kxkgY39mpa+8M4zz+n24Lbz1BcvWOEoOh/JDubO7Im
- 3mh765ifD5U/1ch+i/uyY7bD6drbjTz3LvACB/pgwvzvFAnUjUe20e4Uk1bDy9+VJd
- N7wXwUCFU1teeNPJeZKEvzaAaJBFE3hGh4SwKp6Uhp+krOCvWbnBpT4qkLOEyu/9+h
- 57IHZCu2wK9AMTdWI++wbVJJ0c8L/Mi03LQDfP+kjA8Mzn3SmYO+lsPQd6ZcR9X3Xh
- n/N9teIDupRxA==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com, mchehab@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.co.uk
-Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2] media: platform: mtk-vcodec: Do not force /dev/videoX node
- number
-Date: Thu, 20 Jan 2022 09:59:09 +0100
-Message-Id: <20220120085909.103886-1-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.30.2
+ by sin.source.kernel.org (Postfix) with ESMTPS id 7AE2CCE202E;
+ Thu, 20 Jan 2022 09:44:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A840BC340E5;
+ Thu, 20 Jan 2022 09:44:07 +0000 (UTC)
+Authentication-Results: smtp.kernel.org;
+ dkim=pass (1024-bit key) header.d=zx2c4.com header.i=@zx2c4.com
+ header.b="fssD5vvD"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zx2c4.com; s=20210105; 
+ t=1642671844;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=G1vhBKyxUeexYoEpFA7C2RgBVPR3wFJ965AiyzZ7d1Y=;
+ b=fssD5vvDonTjf+Ob+Bpl1G3vPKMhEseK8iREJoFAg6ynOzq+BSSo6lVquWfZvAcYlh6Lvu
+ bkC7lhUCYYe16qmc0QIe3GrcAbiqnG1eqnXBufblVHz5zhcqCzPLluqfWpy6rtBhSxckFH
+ s+P22Zx6skyLld3jyUnagQF/dm3ahQs=
+Received: by mail.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id dc7f3180
+ (TLSv1.3:AEAD-AES256-GCM-SHA384:256:NO); 
+ Thu, 20 Jan 2022 09:44:04 +0000 (UTC)
+Received: by mail-yb1-f181.google.com with SMTP id m1so16053013ybo.5;
+ Thu, 20 Jan 2022 01:44:03 -0800 (PST)
+X-Gm-Message-State: AOAM531Dl7czNfriOtHYI8QORkoPU/YRVXHTlQiWFY5U86YKf9x1mctv
+ j4qPb+2ruPlPmImgVwBaHGHcpJEDoxR/+M4umnk=
+X-Google-Smtp-Source: ABdhPJzg1g/gym62qyvrV0DrQk1jKs3WkH/OEe7OV9zyQPzVSRgVDI0hITqpB3HjmG/WYqbbT3zIOQtxb62GLCP4W9k=
+X-Received: by 2002:a25:854f:: with SMTP id f15mr45690101ybn.121.1642671843070; 
+ Thu, 20 Jan 2022 01:44:03 -0800 (PST)
 MIME-Version: 1.0
+Received: by 2002:a05:7110:209:b0:11c:1b85:d007 with HTTP; Thu, 20 Jan 2022
+ 01:44:02 -0800 (PST)
+In-Reply-To: <YeiPn8Mo1AM7X9Ud@archlinux-ax161>
+References: <CAHmME9qVMomgb53rABKsucCoEhwsk+=KzDdEcGKtecOXuahTZw@mail.gmail.com>
+ <20220119135450.564115-1-Jason@zx2c4.com> <YeiPn8Mo1AM7X9Ud@archlinux-ax161>
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Thu, 20 Jan 2022 10:44:02 +0100
+X-Gmail-Original-Message-ID: <CAHmME9rPy=T=0Ddbw+01bFycXNPfuxgMm+U80DzDSLy0Cdh_Gg@mail.gmail.com>
+Message-ID: <CAHmME9rPy=T=0Ddbw+01bFycXNPfuxgMm+U80DzDSLy0Cdh_Gg@mail.gmail.com>
+Subject: Re: [PATCH] lib/crypto: blake2s: avoid indirect calls to compression
+ function for Clang CFI
+To: Nathan Chancellor <nathan@kernel.org>
+Cc: Miles Chen <miles.chen@mediatek.com>, Ard Biesheuvel <ardb@kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-mediatek@lists.infradead.org, 
+ Nick Desaulniers <ndesaulniers@google.com>,
+ Sami Tolvanen <samitolvanen@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220120_005920_740921_91B4AE8F 
-X-CRM114-Status: GOOD (  13.35  )
+X-CRM114-CacheID: sfid-20220120_014412_414761_AC68645C 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,113 +92,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Let's v4l2 framework use a free /dev/videoX node for decode and encoder.
-For the decoder call video_register_device() before register the media
-controller device so the mapping between ins correctly done.
-Since the registering sequence has changed rework exiting errors case too.
+On 1/19/22, Nathan Chancellor <nathan@kernel.org> wrote:
+> On Wed, Jan 19, 2022 at 02:54:50PM +0100, Jason A. Donenfeld wrote:
+>> blake2s_compress_generic is weakly aliased to blake2s_generic. The
+>
+> Isn't it the other way around?
 
-Fixes: 590577a4e525 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Decoder Driver")
-Fixes: 4e855a6efa54 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Encoder Driver")
+Thanks. Changed that 'to' to a 'by'.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
-version 2:
- - add Fixes and Reviewed-by tags as suggested by Angelo
- .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 27 +++++++++----------
- .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  2 +-
- 2 files changed, 13 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-index 86b639d82be8..a4a3f9631d04 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-@@ -374,7 +374,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 	if (IS_ERR((__force void *)dev->m2m_dev_dec)) {
- 		mtk_v4l2_err("Failed to init mem2mem dec device");
- 		ret = PTR_ERR((__force void *)dev->m2m_dev_dec);
--		goto err_dec_mem_init;
-+		goto err_dec_alloc;
- 	}
- 
- 	dev->decode_workqueue =
-@@ -391,10 +391,16 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 					   &pdev->dev);
- 		if (ret) {
- 			mtk_v4l2_err("Main device of_platform_populate failed.");
--			goto err_event_workq;
-+			goto err_reg_cont;
- 		}
- 	}
- 
-+	ret = video_register_device(vfd_dec, VFL_TYPE_VIDEO, -1);
-+	if (ret) {
-+		mtk_v4l2_err("Failed to register video device");
-+		goto err_reg_cont;
-+	}
-+
- 	if (dev->vdec_pdata->uses_stateless_api) {
- 		dev->mdev_dec.dev = &pdev->dev;
- 		strscpy(dev->mdev_dec.model, MTK_VCODEC_DEC_NAME,
-@@ -408,7 +414,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 							 MEDIA_ENT_F_PROC_VIDEO_DECODER);
- 		if (ret) {
- 			mtk_v4l2_err("Failed to register media controller");
--			goto err_reg_cont;
-+			goto err_dec_mem_init;
- 		}
- 
- 		ret = media_device_register(&dev->mdev_dec);
-@@ -419,30 +425,21 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 
- 		mtk_v4l2_debug(0, "media registered as /dev/media%d", vfd_dec->minor);
- 	}
--	ret = video_register_device(vfd_dec, VFL_TYPE_VIDEO, 0);
--	if (ret) {
--		mtk_v4l2_err("Failed to register video device");
--		goto err_dec_reg;
--	}
- 
- 	mtk_v4l2_debug(0, "decoder registered as /dev/video%d", vfd_dec->minor);
- 
- 	return 0;
- 
--err_dec_reg:
--	if (dev->vdec_pdata->uses_stateless_api)
--		media_device_unregister(&dev->mdev_dec);
- err_media_reg:
--	if (dev->vdec_pdata->uses_stateless_api)
--		v4l2_m2m_unregister_media_controller(dev->m2m_dev_dec);
-+	v4l2_m2m_unregister_media_controller(dev->m2m_dev_dec);
-+err_dec_mem_init:
-+	video_unregister_device(vfd_dec);
- err_reg_cont:
- 	if (dev->vdec_pdata->uses_stateless_api)
- 		media_device_cleanup(&dev->mdev_dec);
- 	destroy_workqueue(dev->decode_workqueue);
- err_event_workq:
- 	v4l2_m2m_release(dev->m2m_dev_dec);
--err_dec_mem_init:
--	video_unregister_device(vfd_dec);
- err_dec_alloc:
- 	v4l2_device_unregister(&dev->v4l2_dev);
- err_core_workq:
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-index 507ad1ea2104..3975613b75b3 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-@@ -350,7 +350,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL))
- 		dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
- 
--	ret = video_register_device(vfd_enc, VFL_TYPE_VIDEO, 1);
-+	ret = video_register_device(vfd_enc, VFL_TYPE_VIDEO, -1);
- 	if (ret) {
- 		mtk_v4l2_err("Failed to register video device");
- 		goto err_enc_reg;
--- 
-2.30.2
-
+Jason
 
 _______________________________________________
 Linux-mediatek mailing list
