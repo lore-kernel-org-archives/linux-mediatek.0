@@ -4,137 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 144B9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jan 2022 08:27:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83C7CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jan 2022 08:52:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VtHJSA5iolzNtAVSwaBAuWqxV/YikapKNh5w0CvfFrs=; b=c+VetNbLI67VPNeNsAbkfnSatG
-	dtx9uAcA94SfmwR+NYaKEWcFkunds/RBSTIIqXyAQcWs3vasDLkfY51NuzK78w+ndj799qGp8rUm9
-	75O885ufrceu8Czf0FKg8uLyXjWdtSkMLllSCQkFWgWZCYgkXCVn6+ONRoDSOoZq3nvc2laTRmJ/i
-	voYDPBAzPZFLBo4SmT2xchrTGsdy+uBkW4P1XYrlpQgo+PdT6X6B+xloiWe7+QBx96b96s4ItAi7h
-	AXsX5bNdRkmorr23DgbZwdS2QvKsrGWCE5p0jx08quEvgILXeY9FAsmwH6ee90paiTDjnrMPfDvCR
-	dDRq7r+g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XUEqy/l0VQPgVkLGtpIIwPxPCS4uglQXswFwGX82GcA=; b=sTPJjKT2v1++aY
+	/lpLLNYCz/lyo9BbBLlXV35wFkJ0GuUa/oMqU00kXofNL3NCNSQHW+mh5AHGBy4iY4TLrxFCr/LDF
+	2rkVtyWksZqbfseTOOlOQ+vFuThcqLo3wSyBZNifkknxZslEKPTudN8R9ZLNpwtSd0Lxm9/OKy5m6
+	ghM2xukpItWv5AraKXZpMgaQesAMMnmFxZO6Bv9a6dNc9S/OiVT7ZQCSaj6Zs9i7EE4wqENwaMoh2
+	tEfLnWBaMGDNZPVaP99NnFpCYXLHAfXDLc124Mtu8fgL7ynSlmMp6osaeRcqviADrA9DikqfhNunb
+	JfBUadXshoPNqd7sP7ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nASnB-009kcH-9c; Thu, 20 Jan 2022 08:27:37 +0000
-Received: from mail-mw2nam12on2087.outbound.protection.outlook.com
- ([40.107.244.87] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+	id 1nATBB-009wHt-1Y; Thu, 20 Jan 2022 08:52:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nASmt-009kTL-Tc; Thu, 20 Jan 2022 08:27:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=j1wuLaJilpk/JTY8rUCCZd5s+1CXDnZb8CEhIjET7u9JTXkwPXz2REbcMp2c0A49IreXQyVc8qnVuzn6+7nT3kajLH3uM9/++d/Z2LZeDmiZ0MCZSkMfZEPd4ms6ex2f1YTrS5seAMTwp++J3WzFsRgHgFF/gYAxqpomW5vi81XOWuNmh7gNJ8E5Nc60EWuIR8AxpB3dP6SjBQddbhyuU/2iaxCdMOSiZypIdeg3HFEFarzD90nrlOooF9ye8JqY0vJx6YMoBXhxy3L2xhfJ5GNF8zQZQSdZ39NDOWPV+prSw30GaFlav9dAloR0/28ixO73HoUoylZHDngLURMgmQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=1rysZiG4UGhNNNvhAM3cux+5flXBDTqhEIgIn35uiOs=;
- b=S+asW6jkzsxbY7h2iSKuYKNttmWFISdxh/QzbDzlVpoFBJEbmYPL4Px1mk18ycMNCifB+4KVGF4Yy2ZiORQjz8awZqp9VSj/V29+x74OjgiEtkN4BXWvt+raEKdOvcEIdyXSDk683LL5iDBw3z+SwMzsbHXG4uZNoDV9AsCcS3nVS0DH2uTRHYYe/KfzPTER5H8sbeVnzg8NpqhFFF8fU/etGJTnJ4IhLt5/22rcTke1LuHkR1hn73GvpADd87XKXckNSzU4d1DBk6WijRFRBSvehPAD8UT6jLXsg+PB1WtRZk4ba5jlev51c7nz+SO2h47iMhyUL1jrBd0UURegbA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1rysZiG4UGhNNNvhAM3cux+5flXBDTqhEIgIn35uiOs=;
- b=eDI70+aX0Bu6PEbe2dx8HQVHfUIHsvoSU03ug0j9q94dokcSuhw3OMA61ZN1eew7Yv3oWoui8twEOoNHeieZ4pYjRVn4e3nzj9jlN9Vf2WnHYfR3Oa+ASqqx0/F+HiEynHN8DXdVDnCbz/FjU3r63JLzbEGWGhH7miOCyR9uZRg=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Received: from BN8PR12MB3587.namprd12.prod.outlook.com (2603:10b6:408:43::13)
- by CY4PR1201MB0166.namprd12.prod.outlook.com (2603:10b6:910:24::23)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4888.12; Thu, 20 Jan
- 2022 08:27:15 +0000
-Received: from BN8PR12MB3587.namprd12.prod.outlook.com
- ([fe80::b03b:7df9:d733:13b2]) by BN8PR12MB3587.namprd12.prod.outlook.com
- ([fe80::b03b:7df9:d733:13b2%5]) with mapi id 15.20.4888.014; Thu, 20 Jan 2022
- 08:27:15 +0000
-Subject: Re: [PATCH v5] dma-buf: system_heap: Add a size check for allocation
-To: guangming.cao@mediatek.com, john.stultz@linaro.org
-Cc: benjamin.gaignard@linaro.org, bo.song@mediatek.com,
- caoguangming34@gmail.com, dri-devel@lists.freedesktop.org,
- jianjiao.zeng@mediatek.com, labbott@redhat.com, libo.kang@mediatek.com,
- linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org, lmark@codeaurora.org,
- matthias.bgg@gmail.com, michael.j.ruhl@intel.com, mingyuan.ma@mediatek.com,
- sumit.semwal@linaro.org, wsd_upstream@mediatek.com, yf.wang@mediatek.com
-References: <CALAqxLW5uEZCGHGk3rYoiOGzN5XMKb39JzoPB1iEX9k3UsiT-A@mail.gmail.com>
- <20220120070850.95495-1-guangming.cao@mediatek.com>
-From: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
-Message-ID: <4f2631d3-0845-cae6-6fc0-9c00ce6301ce@amd.com>
-Date: Thu, 20 Jan 2022 09:27:07 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
-In-Reply-To: <20220120070850.95495-1-guangming.cao@mediatek.com>
-Content-Language: en-US
-X-ClientProxiedBy: AM6P193CA0123.EURP193.PROD.OUTLOOK.COM
- (2603:10a6:209:85::28) To BN8PR12MB3587.namprd12.prod.outlook.com
- (2603:10b6:408:43::13)
+ id 1nATB4-009wCk-Oo; Thu, 20 Jan 2022 08:52:22 +0000
+X-UUID: 7cdba5cdbd494ac28ea34d09dff1d48d-20220120
+X-UUID: 7cdba5cdbd494ac28ea34d09dff1d48d-20220120
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <guangming.cao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1687681759; Thu, 20 Jan 2022 01:52:16 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 20 Jan 2022 00:52:15 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 20 Jan 2022 16:52:01 +0800
+Received: from mszswglt01.gcn.mediatek.inc (10.16.20.20) by
+ mtkcas11.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Thu, 20 Jan 2022 16:52:00 +0800
+From: <guangming.cao@mediatek.com>
+To: <christian.koenig@amd.com>
+CC: <benjamin.gaignard@linaro.org>, <bo.song@mediatek.com>,
+ <caoguangming34@gmail.com>, <dri-devel@lists.freedesktop.org>,
+ <guangming.cao@mediatek.com>, <jianjiao.zeng@mediatek.com>,
+ <john.stultz@linaro.org>, <labbott@redhat.com>, <libo.kang@mediatek.com>,
+ <linaro-mm-sig@lists.linaro.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <lmark@codeaurora.org>,
+ <matthias.bgg@gmail.com>, <michael.j.ruhl@intel.com>,
+ <mingyuan.ma@mediatek.com>, <sumit.semwal@linaro.org>,
+ <wsd_upstream@mediatek.com>, <yf.wang@mediatek.com>, Guangming
+ <Guangming.Cao@mediatek.com>
+Subject: [PATCH v6] dma-buf: system_heap: Add a size check for allocation
+Date: Thu, 20 Jan 2022 16:52:59 +0800
+Message-ID: <20220120085259.98147-1-guangming.cao@mediatek.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <4f2631d3-0845-cae6-6fc0-9c00ce6301ce@amd.com>
+References: <4f2631d3-0845-cae6-6fc0-9c00ce6301ce@amd.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: cdcad070-091e-4af3-3ec8-08d9dbeeaa34
-X-MS-TrafficTypeDiagnostic: CY4PR1201MB0166:EE_
-X-Microsoft-Antispam-PRVS: <CY4PR1201MB01665B4EC85C1B28C20F9560835A9@CY4PR1201MB0166.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:1091;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: QZgypRwSv5fmwZzn3GRLr53Qxt+34q7AwKC/H967ngLLgBiWeiox5Usv9ctAubcx5rcAf923ZKro0NZFEUBxQ5uFyM40Kv8Ih5LH44k/2WaZG9FazQx+JAbREVjMC8vLaMPwRZkuPvIQzcnvHN/jaYamy4u+vRUJDpr8MCsnPCmaglKqX6PBKin+m+uS6KibWtlqz3C2JwKtHS6PFv/TnvgdzgU6g+8B962WLhPmF0AZSISCH3SAzCPzFQOj13L3Wp74Uvbv29MUsC68q5aeENYmcaZINCbDI9qw8gMMMdfGxZdgsEpl6GveI40pQZh+nBxk8BR4FUOdeQddg3rtFqxex5oXcn4UqMEl9awVtmFCLz/NAmnEiBLB9T9iLVWfYPgLpK4s7djtjq6QCAAuzabJZ2BXHIPT3G1abqg2Ww730wob4rWt9h7/J1o9CEv3K8JaI8qTvk1HBL7gA6+SUYCX73NdV/UPEQJpOSY6BcCTMmNtN0FEKc5gQIzvHM21aasn0o+sY2U145uAptcViOKDCepnDtirFtpc6oi8TZay+Rbm8FZdkdddWmkRUfJhNHD2bGsHjRsJfU1mhFDTQ9qZWYGktGvIFZ3Bwb4ss380twKLaJtoa1Rd+JC/SMfrvqaX0SPg1rBVr0LO0NvKflhxwO2ggNHfnIH1dO+cZoAnVWCGYK42aMuzk282lL5QjwCxDPn08pOpIw4www/FlcDyhQZ31vWddUUFcORWSJ0uykUOX3YhC2JywGmuTzv/
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BN8PR12MB3587.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(7416002)(31686004)(6666004)(38100700002)(508600001)(5660300002)(2906002)(8676002)(86362001)(316002)(66556008)(66476007)(66946007)(186003)(8936002)(26005)(6486002)(6506007)(6512007)(2616005)(36756003)(31696002)(4326008)(43740500002)(45980500001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Z3JRMEdGYWhqcTR3dVpzRTBvM3ZZMk1SalpzMDZabUU0T01ZY09WTThQNkFT?=
- =?utf-8?B?OUo2SUtDMHl0Y2hSbmYvRkUvV1dHa2hvWFBBZEJmalVDMU5UaVlSSVVGbWZB?=
- =?utf-8?B?QVhwenBMd1gwaHpYeUN0STNCZk4xcjQvZDJwRzRyeSt1VE93a3BtdGhvVE5z?=
- =?utf-8?B?ZjVmK0Ivdnk3UmhUUGxBQndrRmR5UnZwcjhHU3NHRkU3eUFBV1dFN2lhanNs?=
- =?utf-8?B?ekYwdGlIdkdocFQ3M3Jsb0FlcVdIVURyV1MxWFRPa3BITG9zdFg0NG5hNVFx?=
- =?utf-8?B?MTlaTlFSVklkL2tDWXJCTGNwUG9memtJbG55K3JCTldWTFN6d3Vjd0xZVEtp?=
- =?utf-8?B?Z2JTejU3cnh4KzFaaDAzOVMvTlVhcUx1UGJkMFpjZWF4YU1pKzY1TXEzazNt?=
- =?utf-8?B?NmtFUWtzcXJkbTJTMHdrN1U0UVZNUUlvbW9vVG5CRFZ4cUdsNTQ1ay9iNHVN?=
- =?utf-8?B?d0o2Rkt5eUZXRUxxY2w3MVpYSjA3QjhMYU9FdUJCMHpUOGVwRy9NSzl3dlZJ?=
- =?utf-8?B?TnNzTWRLSTFSckhkdk02N3Nlc1N4OHNNNUVwcFY2S2Q4Y2pOL1RlN1JIRkZw?=
- =?utf-8?B?WXVZNFc0c2w5RkpVUm9JWm15b01iYmgzVVNYcllucU9zb0c0SkRIbGNESFNP?=
- =?utf-8?B?ZDRxVG45aWQrWmM4S0huOG5aTUFwTUI2UUtQdm1TQVJUVkNjRHBCQTFFVGxp?=
- =?utf-8?B?WENKSzdGQTRCc2VvV2VNTkdNaUl3UVFmOXJzd3lCRjVvZHdPTmtjU2djMHB0?=
- =?utf-8?B?SmNtd0dpL2NxUjBPYVlvYVpQM3dvMVpUVUc0ZWw0M0JlTTBUNTU5QjNZRHVu?=
- =?utf-8?B?bWZDUWlTRHgyazNlQjVwMHdEQXZDbDR5dG5hZ0s0VzlmOE5TUFgrcDlJNDFr?=
- =?utf-8?B?cU5OMTVkRjZNdXA2b0hIeHFtdnpXR3NvNTdyanNlN2ZySk5wSVo1YmlITlE3?=
- =?utf-8?B?SEFRVnJFajV1blNKbTBSTUFXZFhzZnRnc2VpS2c4eFExWXBSSHowbXE0L2N4?=
- =?utf-8?B?K09vRHBFUlg5WUhFc0xWVjFSTzludGJER0x3RmFzZ1N0NFQwdWptbDZpMEVo?=
- =?utf-8?B?WGYrbTkxM1ZCYjRDU3o4dnl3MHNxUjdjbHliVE5XR3daT3ZUeUpieDhZUkxr?=
- =?utf-8?B?QmtGSGNITjNlcTFFNkQydWdsamROT2xKMVBLRzBFd1VPZUQ1b2lBZVEzWHlT?=
- =?utf-8?B?TEJINDlCRm0wV01LMVppNWxCWCs1eG1UUmQxaUJ3V29FYllPT2JwYWpNdEta?=
- =?utf-8?B?U3c2dVVjZkZVMUtLY3hvaTRhTVhYQUZxM0UxVUMrandsNzNPZHVON2ZWY2VE?=
- =?utf-8?B?dWI3V0J4Ymg0bVlHcmxkRDV2aGhSSDVUMnVkYnp5TWJiUkpaNS9RRGlyd1NI?=
- =?utf-8?B?Mk1valdrR1FSSkpYTjRTYWdRMFNFRTJwTUtFdGl4dkZYVnpBODJWQVZZSDFH?=
- =?utf-8?B?K3JCRFcybkpYS1Q1V0w4L2UrMnZFb0d3MFlYM2lIbzhNRmlBTXdLaVZxVUM0?=
- =?utf-8?B?MEkrN2N1SmtIVzhhRlFYRnQ0cm91bjhxVmJpaXlacFBzNEpzbFdCWll2ZG95?=
- =?utf-8?B?cWkwWUY4TFgxTk4rR0pNcVZkT1JQTTlqdWhVSWliY0loZDdxK0ZvL21ucXF5?=
- =?utf-8?B?SEpMRkVsay9yU1dFa1hWRS9YYUl3OEZhVUJxa3crUUpXMjluVHlCc2hGdGVy?=
- =?utf-8?B?N0I4STRHZGlaSHNSTnVOMUtsdnZsTDJyT0QzbVdOcDREQTZLdHhJU01wMWc0?=
- =?utf-8?B?QndRYlNEaFNwLzg3SEs5b3lDOGc3NDYreTkrbHdmTXpxdGVaN00yVzhucGZo?=
- =?utf-8?B?QWh0Vml5NHc1dnhZRENCUGx6ZUhJUjJtNEN0KzJCOTFKYWl2bFd1eFZXR04z?=
- =?utf-8?B?WGdLamJab0oyREh4QlVkMnIxYTRMcXpkU21lOUZiQkl0c3BTU3lNMkN4QXdu?=
- =?utf-8?B?bndSVGJUeUZTUHA5ZmRodVVoS1MyYk16R2Y1ZWJTS2c5ZnViRGxrcXpVV0w0?=
- =?utf-8?B?dWdBTlBRYTQ0SjFmOWZXRjljNjZyZ0hJdWdyOE9melhBOGVBRTBPZWFCbG5x?=
- =?utf-8?B?MWNXL0hmM1J2czBtM3Byczl2UUVCdWJnSDJGcTJMQXFXaEUrVGF1VkV6MEVJ?=
- =?utf-8?Q?TFRQ=3D?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cdcad070-091e-4af3-3ec8-08d9dbeeaa34
-X-MS-Exchange-CrossTenant-AuthSource: BN8PR12MB3587.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jan 2022 08:27:15.5604 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: /o2k/W03+DevVZf7n8BPiWZHnvvDANPP8ZZTRp/KyTLOcYSAczgmR194EnU+v0u5
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR1201MB0166
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220120_002720_010681_EE64A17C 
-X-CRM114-Status: GOOD (  20.64  )
+X-CRM114-CacheID: sfid-20220120_005218_816432_99AE9AAC 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,51 +74,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Guangming <Guangming.Cao@mediatek.com>
 
+Add a size check for allocation since the allocation size should be
+always less than the total DRAM size on system heap.
+Adding this check can prevent comsuming too much time for invalid allocations.
 
-Am 20.01.22 um 08:08 schrieb guangming.cao@mediatek.com:
-> From: Guangming <Guangming.Cao@mediatek.com>
->
-> Add a size check for allocation since the allocation size should be
-> always less than the total DRAM size on system heap.
-> Adding this check can prevent comsuming too much time for invalid allocations.
->
-> Signed-off-by: Guangming <Guangming.Cao@mediatek.com>
-> ---
->   drivers/dma-buf/heaps/system_heap.c | 8 ++++++++
->   1 file changed, 8 insertions(+)
->
-> diff --git a/drivers/dma-buf/heaps/system_heap.c b/drivers/dma-buf/heaps/system_heap.c
-> index 23a7e74ef966..459dc18bc4a2 100644
-> --- a/drivers/dma-buf/heaps/system_heap.c
-> +++ b/drivers/dma-buf/heaps/system_heap.c
-> @@ -347,6 +347,14 @@ static struct dma_buf *system_heap_allocate(struct dma_heap *heap,
->   	struct page *page, *tmp_page;
->   	int i, ret = -ENOMEM;
->   
-> +	/*
-> +	 * Size check. The "len" should be less than totalram since system_heap
-> +	 * memory is comes from system. Adding check here can prevent comsuming
-> +	 * too much time for invalid allocations.
-> +	 */
-> +	if (len >> PAGE_SHIFT > totalram_pages())
+Signed-off-by: Guangming <Guangming.Cao@mediatek.com>
+---
+ drivers/dma-buf/heaps/system_heap.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-Maybe use PFN_UP() or PFN_DOWN() here instead of open coding this.
-
-Apart from that looks good to me.
-
-Christian.
-
-> +		return ERR_PTR(-EINVAL);
-> +
->   	buffer = kzalloc(sizeof(*buffer), GFP_KERNEL);
->   	if (!buffer)
->   		return ERR_PTR(-ENOMEM);
+diff --git a/drivers/dma-buf/heaps/system_heap.c b/drivers/dma-buf/heaps/system_heap.c
+index 23a7e74ef966..b65e597a742f 100644
+--- a/drivers/dma-buf/heaps/system_heap.c
++++ b/drivers/dma-buf/heaps/system_heap.c
+@@ -347,6 +347,14 @@ static struct dma_buf *system_heap_allocate(struct dma_heap *heap,
+ 	struct page *page, *tmp_page;
+ 	int i, ret = -ENOMEM;
+ 
++	/*
++	 * Size check. The "len" should be less than totalram since system_heap
++	 * memory is comes from system. Adding check here can prevent comsuming
++	 * too much time for invalid allocations.
++	 */
++	if (PFN_DOWN(len) > totalram_pages())
++		return ERR_PTR(-EINVAL);
++
+ 	buffer = kzalloc(sizeof(*buffer), GFP_KERNEL);
+ 	if (!buffer)
+ 		return ERR_PTR(-ENOMEM);
+-- 
+2.17.1
 
 
 _______________________________________________
