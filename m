@@ -4,64 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7B92C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jan 2022 08:01:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AE07C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jan 2022 08:07:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O1f6oGIbxILt0VdT4fydoMWag2cOQl3mmNJ+HeRIohQ=; b=hnqEnE4STdy3i5
-	8wTz3gd3FTgZGSC8/TIZiJs3Kb728dABV7tFGkyDMnZoDDvzXtKvhcEYoTDBObi5Bg13CiUfjL0+z
-	VZrtENMg6X1CLPlC2pLHhXcMeEq2pnYKhhHqlU3YAB/oDV2r8baOIRaYG22xLBOZCtNj9ZDUma5PZ
-	jeIEI6Sfct8gXGC5hE2ajIyl0XelLStUyONyDo6+7wip2tJY+cTxYu4xCd3YNtOb7cq9s6b9Fh/79
-	Svjjo+ZAz0fOCuJ8e5wb1r34s4SWOXypzKIpUpXXq8JrufOwp2/1HGt0ZlcnZnMHPIzO3iXAUvLqp
-	S6wQMFj833M1nnq0+/dg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JuuYiQAtLjM2uGOlkq0nP5gxJXvIugiT1O2AIHEQez0=; b=nNLkYFz2QX3+XFFtiJxCDeuOtc
+	pxeqOYIFzVWfG2tGwD0JxkRN7ckNjQ0/LZWS5fXWL47onaH+OA2lK/9+ld0IfGKjCtFIWIzuCJ86I
+	zPd1WaFitRNiaPRV95SXFyPHKlijrQcUpHNJjfeCp97VwBgNVEpzBMrXCSUhVUV8d2JSG5E2JFN4K
+	xqv0zzfQOsap2HfYogmdDr5EscmHJMUL8MGl8okagpZFxG870obuBbdzbJeiLqeQEwxQSoKYalPcf
+	gJA+0B/unLxFhDBjTdFwy/Qsy7gB1xCZnp/u5+K1yRtAR3LW2uKbgAv4qUjAgyxfKCPNsVPHNwcKn
+	CbMDO4Cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nASO1-009Xbg-1G; Thu, 20 Jan 2022 08:01:37 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nASTR-009bIG-JL; Thu, 20 Jan 2022 08:07:13 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nAS6L-009Pds-CH; Thu, 20 Jan 2022 07:43:22 +0000
-X-UUID: 7f6296824e764ec2a2f65e2c6586d0d2-20220120
-X-UUID: 7f6296824e764ec2a2f65e2c6586d0d2-20220120
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <yongqiang.niu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1460628571; Thu, 20 Jan 2022 00:43:17 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 19 Jan 2022 23:43:16 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 20 Jan 2022 15:43:15 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 20 Jan 2022 15:43:14 +0800
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, "David
- Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Jassi Brar
- <jassisinghbrar@gmail.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
- Fabien Parent <fparent@baylibre.com>, Dennis YC Hsieh
- <dennis-yc.hsieh@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
- <hsinyi@chromium.org>, mtk18742 <moudy.ho@mediatek.com>
-Subject: [PATCH v1, 1/1] soc: mediatek: cmdq: add cmdq_pkt_poll_addr function
-Date: Thu, 20 Jan 2022 15:43:11 +0800
-Message-ID: <20220120074311.2243-2-yongqiang.niu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220120074311.2243-1-yongqiang.niu@mediatek.com>
-References: <20220120074311.2243-1-yongqiang.niu@mediatek.com>
+ id 1nASLh-009Wbr-V3
+ for linux-mediatek@lists.infradead.org; Thu, 20 Jan 2022 07:59:16 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1nASK7-0002RI-3O; Thu, 20 Jan 2022 08:57:35 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+ by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1nASJu-00BJom-IA; Thu, 20 Jan 2022 08:57:21 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1nASJt-000Bvo-3V; Thu, 20 Jan 2022 08:57:21 +0100
+Date: Thu, 20 Jan 2022 08:57:18 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>,
+ ALSA Development Mailing List <alsa-devel@alsa-project.org>,
+ Jaroslav Kysela <perex@perex.cz>, Guenter Roeck <groeck@chromium.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ MTD Maling List <linux-mtd@lists.infradead.org>,
+ Linux I2C <linux-i2c@vger.kernel.org>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ linux-phy@lists.infradead.org, Jiri Slaby <jirislaby@kernel.org>,
+ openipmi-developer@lists.sourceforge.net,
+ Khuong Dinh <khuong@os.amperecomputing.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
+ Joakim Zhang <qiangqing.zhang@nxp.com>, Kamal Dasu <kdasu.kdev@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Lee Jones <lee.jones@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Geert Uytterhoeven <geert@linux-m68k.org>,
+ "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ Zhang Rui <rui.zhang@intel.com>,
+ Linux PWM List <linux-pwm@vger.kernel.org>,
+ Robert Richter <rric@kernel.org>, Saravanan Sekar <sravanhome@gmail.com>,
+ Corey Minyard <minyard@acm.org>, Linux PM list <linux-pm@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ John Garry <john.garry@huawei.com>, Peter Korsgaard <peter@korsgaard.com>,
+ William Breathitt Gray <vilhelm.gray@gmail.com>,
+ Mark Gross <markgross@kernel.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>,
+ Sebastian Reichel <sre@kernel.org>, Eric Auger <eric.auger@redhat.com>,
+ Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Takashi Iwai <tiwai@suse.com>, platform-driver-x86@vger.kernel.org,
+ Benson Leung <bleung@chromium.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ linux-edac@vger.kernel.org, Tony Luck <tony.luck@intel.com>,
+ Mun Yew Tham <mun.yew.tham@intel.com>,
+ Hans de Goede <hdegoede@redhat.com>, netdev@vger.kernel.org,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Linux MMC List <linux-mmc@vger.kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, linux-spi <linux-spi@vger.kernel.org>,
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ Sergey Shtylyov <s.shtylyov@omp.ru>, Vinod Koul <vkoul@kernel.org>,
+ James Morse <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Richard Weinberger <richard@nod.at>,
+ Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
+ linux-mediatek@lists.infradead.org,
+ Brian Norris <computersforpeace@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>
+Subject: Re: [PATCH] driver core: platform: Rename
+ platform_get_irq_optional() to platform_get_irq_silent()
+Message-ID: <20220120075718.5qtrpc543kkykaow@pengutronix.de>
+References: <20220112085009.dbasceh3obfok5dc@pengutronix.de>
+ <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
+ <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
+ <Yd9L9SZ+g13iyKab@sirena.org.uk>
+ <20220113110831.wvwbm75hbfysbn2d@pengutronix.de>
+ <YeA7CjOyJFkpuhz/@sirena.org.uk>
+ <20220113194358.xnnbhsoyetihterb@pengutronix.de>
+ <YeF05vBOzkN+xYCq@smile.fi.intel.com>
+ <20220115154539.j3tsz5ioqexq2yuu@pengutronix.de>
+ <YehdsUPiOTwgZywq@smile.fi.intel.com>
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <YehdsUPiOTwgZywq@smile.fi.intel.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220119_234321_464369_8724B336 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20220119_235914_187628_C047A970 
+X-CRM114-Status: GOOD (  44.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,100 +131,149 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8574195381308026207=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: mtk18742 <moudy.ho@mediatek.com>
 
-add cmdq_pkt_poll_addr function in cmdq helper functions
+--===============8574195381308026207==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="vtmtr3soi3npiqhl"
+Content-Disposition: inline
 
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
----
- drivers/soc/mediatek/mtk-cmdq-helper.c   | 39 ++++++++++++++++++++++++
- include/linux/mailbox/mtk-cmdq-mailbox.h |  1 +
- include/linux/soc/mediatek/mtk-cmdq.h    |  2 ++
- 3 files changed, 42 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-index 3c8e4212d941..6c5cfb284140 100644
---- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-+++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-@@ -344,6 +344,45 @@ int cmdq_pkt_set_event(struct cmdq_pkt *pkt, u16 event)
- }
- EXPORT_SYMBOL(cmdq_pkt_set_event);
- 
-+s32 cmdq_pkt_poll_addr(struct cmdq_pkt *pkt, u32 value, u32 addr, u32 mask, u8 reg_gpr)
-+{
-+	struct cmdq_instruction inst = { {0} };
-+
-+	s32 err;
-+
-+	if (mask != 0xffffffff) {
-+		inst.op = CMDQ_CODE_MASK;
-+		inst.mask = ~mask;
-+		err = cmdq_pkt_append_command(pkt, inst);
-+		if (err != 0)
-+			return err;
-+
-+		addr = addr | 0x1;
-+	}
-+
-+	/* Move extra handle APB address to GPR */
-+	inst.op = CMDQ_CODE_MOVE;
-+	inst.value = addr;
-+	inst.sop = reg_gpr;
-+	inst.dst_t = 1;
-+	err = cmdq_pkt_append_command(pkt, inst);
-+	if (err != 0)
-+		pr_err("%s fail append command move addr to reg err:%d",
-+			__func__, err);
-+
-+	inst.op = CMDQ_CODE_POLL;
-+	inst.value = value;
-+	inst.sop = reg_gpr;
-+	inst.dst_t = 1;
-+	err = cmdq_pkt_append_command(pkt, inst);
-+	if (err != 0)
-+		pr_err("%s fail append command poll err:%d",
-+			__func__, err);
-+
-+	return err;
-+}
-+EXPORT_SYMBOL(cmdq_pkt_poll_addr);
-+
- int cmdq_pkt_poll(struct cmdq_pkt *pkt, u8 subsys,
- 		  u16 offset, u32 value)
- {
-diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
-index 44365aab043c..a27329fd7c7f 100644
---- a/include/linux/mailbox/mtk-cmdq-mailbox.h
-+++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
-@@ -54,6 +54,7 @@
-  */
- enum cmdq_code {
- 	CMDQ_CODE_MASK = 0x02,
-+	CMDQ_CODE_MOVE = 0x02,
- 	CMDQ_CODE_WRITE = 0x04,
- 	CMDQ_CODE_POLL = 0x08,
- 	CMDQ_CODE_JUMP = 0x10,
-diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-index ac6b5f3cba95..28dc5ce0ff03 100644
---- a/include/linux/soc/mediatek/mtk-cmdq.h
-+++ b/include/linux/soc/mediatek/mtk-cmdq.h
-@@ -280,4 +280,6 @@ int cmdq_pkt_finalize(struct cmdq_pkt *pkt);
- int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
- 			 void *data);
- 
-+s32 cmdq_pkt_poll_addr(struct cmdq_pkt *pkt, u32 value, u32 addr, u32 mask, u8 reg_gpr);
-+
- #endif	/* __MTK_CMDQ_H__ */
--- 
-2.25.1
+--vtmtr3soi3npiqhl
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Wed, Jan 19, 2022 at 08:51:29PM +0200, Andy Shevchenko wrote:
+> On Sat, Jan 15, 2022 at 04:45:39PM +0100, Uwe Kleine-K=F6nig wrote:
+> > On Fri, Jan 14, 2022 at 03:04:38PM +0200, Andy Shevchenko wrote:
+> > > On Thu, Jan 13, 2022 at 08:43:58PM +0100, Uwe Kleine-K=F6nig wrote:
+> > > > > It'd certainly be good to name anything that doesn't correspond t=
+o one
+> > > > > of the existing semantics for the API (!) something different rat=
+her
+> > > > > than adding yet another potentially overloaded meaning.
+> > > >=20
+> > > > It seems we're (at least) three who agree about this. Here is a pat=
+ch
+> > > > fixing the name.
+> > >=20
+> > > And similar number of people are on the other side.
+> >=20
+> > If someone already opposed to the renaming (and not only the name) I
+> > must have missed that.
+> >=20
+> > So you think it's a good idea to keep the name
+> > platform_get_irq_optional() despite the "not found" value returned by it
+> > isn't usable as if it were a normal irq number?
+>=20
+> I meant that on the other side people who are in favour of Sergey's patch.
+> Since that I commented already that I opposed the renaming being a standa=
+lone
+> change.
+>=20
+> Do you agree that we have several issues with platform_get_irq*() APIs?
+>=20
+> 1. The unfortunate naming
+
+unfortunate naming for the currently implemented semantic, yes.
+
+> 2. The vIRQ0 handling: a) WARN() followed by b) returned value 0
+
+I'm happy with the vIRQ0 handling. Today platform_get_irq() and it's
+silent variant returns either a valid and usuable irq number or a
+negative error value. That's totally fine.
+
+> 3. The specific cookie for "IRQ not found, while no error happened" case
+
+Not sure what you mean here. I have no problem that a situation I can
+cope with is called an error for the query function. I just do error
+handling and continue happily. So the part "while no error happened" is
+irrelevant to me.
+
+Additionally I see the problems:
+
+4. The semantic as implemented in Sergey's patch isn't better than the
+current one. platform_get_irq*() is still considerably different from
+(clk|gpiod)_get* because the not-found value for the _optional variant
+isn't usuable for the irq case. For clk and gpio I get rid of a whole if
+branch, for irq I only change the if-condition. (And if that change is
+considered good or bad seems to be subjective.)
+
+For the idea to add a warning to platform_get_irq_optional for all but
+-ENXIO (and -EPROBE_DEFER), I see the problem:
+
+5. platform_get_irq*() issuing an error message is only correct most of
+the time and given proper error handling in the caller (which might be
+able to handle not only -ENXIO but maybe also -EINVAL[1]) the error message
+is irritating. Today platform_get_irq() emits an error message for all
+but -EPROBE_DEFER. As soon as we find a driver that handles -EINVAL we
+need a function platform_get_irq_variant1 to be silent for -EINVAL,
+-EPROBE_DEFER and -ENXIO (or platform_get_irq_variant2 that is only
+silent for -EINVAL and -EPROBE_DEFER?)
+
+IMHO a query function should always be silent and let the caller do the
+error handling. And if it's only because
+
+	mydev: IRQ index 0 not found
+
+is worse than
+
+	mydev: neither TX irq not a muxed RX/TX irq found
+
+=2E Also "index 0" is irritating for devices that are expected to have
+only a single irq (i.e. the majority of all devices).
+
+Yes, I admit, we can safe some code by pushing the error message in a
+query function. But that doesn't only have advantages.
+
+Best regards
+Uwe
+
+[1] Looking through the source I wonder: What are the errors that can happen
+    in platform_get_irq*()? (calling everything but a valid irq number
+    an error) Looking at many callers, they only seem to expect "not
+    found" and some "probe defer" (even platform_get_irq() interprets
+    everything but -EPROBE_DEFER as "IRQ index %u not found\n".)
+    IMHO before we should consider to introduce a platform_get_irq*()
+    variant with improved semantics, some cleanup in the internals of
+    the irq lookup are necessary.
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--vtmtr3soi3npiqhl
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmHpFdoACgkQwfwUeK3K
+7AlpCwf8CIVWD1ztALs4saPfU+hCAXGdHPMYsVb4ZTfj+uT0g5uOPF3Vn08Dfosw
+tyqmKEnwGKIMZpavCJ+pScDwmT2FfANDq+R3xZzWj1hEcEvhjMFWB/IDU+s33/IB
+9pbnCAE8Oa/2PGjM3+FGf5OA6q8vCcuO8XHluolGQqPqvajsCulKZytLIFnnTc9t
+UXm+5HxATeIlvcxF5NHMcNFRt2ADkTGVGj0zrEOxinsiT3edhaWLDR5/vSnbXySV
+NKWnnkWO/T3Huohcr85IS2dVfqbqxuMmfU6RyQKdMat7ZUzOqtffi2I6KdXRRjog
+OHR+PLT7KSOdf6ODGMs+9P8AMEotwg==
+=El6G
+-----END PGP SIGNATURE-----
+
+--vtmtr3soi3npiqhl--
+
+
+--===============8574195381308026207==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============8574195381308026207==--
+
