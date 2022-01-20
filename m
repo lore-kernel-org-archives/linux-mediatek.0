@@ -4,122 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AE07C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jan 2022 08:07:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 144B9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jan 2022 08:27:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JuuYiQAtLjM2uGOlkq0nP5gxJXvIugiT1O2AIHEQez0=; b=nNLkYFz2QX3+XFFtiJxCDeuOtc
-	pxeqOYIFzVWfG2tGwD0JxkRN7ckNjQ0/LZWS5fXWL47onaH+OA2lK/9+ld0IfGKjCtFIWIzuCJ86I
-	zPd1WaFitRNiaPRV95SXFyPHKlijrQcUpHNJjfeCp97VwBgNVEpzBMrXCSUhVUV8d2JSG5E2JFN4K
-	xqv0zzfQOsap2HfYogmdDr5EscmHJMUL8MGl8okagpZFxG870obuBbdzbJeiLqeQEwxQSoKYalPcf
-	gJA+0B/unLxFhDBjTdFwy/Qsy7gB1xCZnp/u5+K1yRtAR3LW2uKbgAv4qUjAgyxfKCPNsVPHNwcKn
-	CbMDO4Cw==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VtHJSA5iolzNtAVSwaBAuWqxV/YikapKNh5w0CvfFrs=; b=c+VetNbLI67VPNeNsAbkfnSatG
+	dtx9uAcA94SfmwR+NYaKEWcFkunds/RBSTIIqXyAQcWs3vasDLkfY51NuzK78w+ndj799qGp8rUm9
+	75O885ufrceu8Czf0FKg8uLyXjWdtSkMLllSCQkFWgWZCYgkXCVn6+ONRoDSOoZq3nvc2laTRmJ/i
+	voYDPBAzPZFLBo4SmT2xchrTGsdy+uBkW4P1XYrlpQgo+PdT6X6B+xloiWe7+QBx96b96s4ItAi7h
+	AXsX5bNdRkmorr23DgbZwdS2QvKsrGWCE5p0jx08quEvgILXeY9FAsmwH6ee90paiTDjnrMPfDvCR
+	dDRq7r+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nASTR-009bIG-JL; Thu, 20 Jan 2022 08:07:13 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nASnB-009kcH-9c; Thu, 20 Jan 2022 08:27:37 +0000
+Received: from mail-mw2nam12on2087.outbound.protection.outlook.com
+ ([40.107.244.87] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nASLh-009Wbr-V3
- for linux-mediatek@lists.infradead.org; Thu, 20 Jan 2022 07:59:16 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1nASK7-0002RI-3O; Thu, 20 Jan 2022 08:57:35 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
- by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1nASJu-00BJom-IA; Thu, 20 Jan 2022 08:57:21 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1nASJt-000Bvo-3V; Thu, 20 Jan 2022 08:57:21 +0100
-Date: Thu, 20 Jan 2022 08:57:18 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
- Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>,
- ALSA Development Mailing List <alsa-devel@alsa-project.org>,
- Jaroslav Kysela <perex@perex.cz>, Guenter Roeck <groeck@chromium.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- MTD Maling List <linux-mtd@lists.infradead.org>,
- Linux I2C <linux-i2c@vger.kernel.org>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- linux-phy@lists.infradead.org, Jiri Slaby <jirislaby@kernel.org>,
- openipmi-developer@lists.sourceforge.net,
- Khuong Dinh <khuong@os.amperecomputing.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
- Joakim Zhang <qiangqing.zhang@nxp.com>, Kamal Dasu <kdasu.kdev@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Lee Jones <lee.jones@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Kishon Vijay Abraham I <kishon@ti.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
- Zhang Rui <rui.zhang@intel.com>,
- Linux PWM List <linux-pwm@vger.kernel.org>,
- Robert Richter <rric@kernel.org>, Saravanan Sekar <sravanhome@gmail.com>,
- Corey Minyard <minyard@acm.org>, Linux PM list <linux-pm@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- John Garry <john.garry@huawei.com>, Peter Korsgaard <peter@korsgaard.com>,
- William Breathitt Gray <vilhelm.gray@gmail.com>,
- Mark Gross <markgross@kernel.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- Alex Williamson <alex.williamson@redhat.com>,
- Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>,
- Sebastian Reichel <sre@kernel.org>, Eric Auger <eric.auger@redhat.com>,
- Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Takashi Iwai <tiwai@suse.com>, platform-driver-x86@vger.kernel.org,
- Benson Leung <bleung@chromium.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-edac@vger.kernel.org, Tony Luck <tony.luck@intel.com>,
- Mun Yew Tham <mun.yew.tham@intel.com>,
- Hans de Goede <hdegoede@redhat.com>, netdev@vger.kernel.org,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Cornelia Huck <cohuck@redhat.com>,
- Linux MMC List <linux-mmc@vger.kernel.org>,
- Liam Girdwood <lgirdwood@gmail.com>, linux-spi <linux-spi@vger.kernel.org>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- Sergey Shtylyov <s.shtylyov@omp.ru>, Vinod Koul <vkoul@kernel.org>,
- James Morse <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Richard Weinberger <richard@nod.at>,
- Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
- linux-mediatek@lists.infradead.org,
- Brian Norris <computersforpeace@gmail.com>,
- "David S. Miller" <davem@davemloft.net>
-Subject: Re: [PATCH] driver core: platform: Rename
- platform_get_irq_optional() to platform_get_irq_silent()
-Message-ID: <20220120075718.5qtrpc543kkykaow@pengutronix.de>
-References: <20220112085009.dbasceh3obfok5dc@pengutronix.de>
- <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
- <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
- <Yd9L9SZ+g13iyKab@sirena.org.uk>
- <20220113110831.wvwbm75hbfysbn2d@pengutronix.de>
- <YeA7CjOyJFkpuhz/@sirena.org.uk>
- <20220113194358.xnnbhsoyetihterb@pengutronix.de>
- <YeF05vBOzkN+xYCq@smile.fi.intel.com>
- <20220115154539.j3tsz5ioqexq2yuu@pengutronix.de>
- <YehdsUPiOTwgZywq@smile.fi.intel.com>
+ id 1nASmt-009kTL-Tc; Thu, 20 Jan 2022 08:27:21 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=j1wuLaJilpk/JTY8rUCCZd5s+1CXDnZb8CEhIjET7u9JTXkwPXz2REbcMp2c0A49IreXQyVc8qnVuzn6+7nT3kajLH3uM9/++d/Z2LZeDmiZ0MCZSkMfZEPd4ms6ex2f1YTrS5seAMTwp++J3WzFsRgHgFF/gYAxqpomW5vi81XOWuNmh7gNJ8E5Nc60EWuIR8AxpB3dP6SjBQddbhyuU/2iaxCdMOSiZypIdeg3HFEFarzD90nrlOooF9ye8JqY0vJx6YMoBXhxy3L2xhfJ5GNF8zQZQSdZ39NDOWPV+prSw30GaFlav9dAloR0/28ixO73HoUoylZHDngLURMgmQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=1rysZiG4UGhNNNvhAM3cux+5flXBDTqhEIgIn35uiOs=;
+ b=S+asW6jkzsxbY7h2iSKuYKNttmWFISdxh/QzbDzlVpoFBJEbmYPL4Px1mk18ycMNCifB+4KVGF4Yy2ZiORQjz8awZqp9VSj/V29+x74OjgiEtkN4BXWvt+raEKdOvcEIdyXSDk683LL5iDBw3z+SwMzsbHXG4uZNoDV9AsCcS3nVS0DH2uTRHYYe/KfzPTER5H8sbeVnzg8NpqhFFF8fU/etGJTnJ4IhLt5/22rcTke1LuHkR1hn73GvpADd87XKXckNSzU4d1DBk6WijRFRBSvehPAD8UT6jLXsg+PB1WtRZk4ba5jlev51c7nz+SO2h47iMhyUL1jrBd0UURegbA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=1rysZiG4UGhNNNvhAM3cux+5flXBDTqhEIgIn35uiOs=;
+ b=eDI70+aX0Bu6PEbe2dx8HQVHfUIHsvoSU03ug0j9q94dokcSuhw3OMA61ZN1eew7Yv3oWoui8twEOoNHeieZ4pYjRVn4e3nzj9jlN9Vf2WnHYfR3Oa+ASqqx0/F+HiEynHN8DXdVDnCbz/FjU3r63JLzbEGWGhH7miOCyR9uZRg=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from BN8PR12MB3587.namprd12.prod.outlook.com (2603:10b6:408:43::13)
+ by CY4PR1201MB0166.namprd12.prod.outlook.com (2603:10b6:910:24::23)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4888.12; Thu, 20 Jan
+ 2022 08:27:15 +0000
+Received: from BN8PR12MB3587.namprd12.prod.outlook.com
+ ([fe80::b03b:7df9:d733:13b2]) by BN8PR12MB3587.namprd12.prod.outlook.com
+ ([fe80::b03b:7df9:d733:13b2%5]) with mapi id 15.20.4888.014; Thu, 20 Jan 2022
+ 08:27:15 +0000
+Subject: Re: [PATCH v5] dma-buf: system_heap: Add a size check for allocation
+To: guangming.cao@mediatek.com, john.stultz@linaro.org
+Cc: benjamin.gaignard@linaro.org, bo.song@mediatek.com,
+ caoguangming34@gmail.com, dri-devel@lists.freedesktop.org,
+ jianjiao.zeng@mediatek.com, labbott@redhat.com, libo.kang@mediatek.com,
+ linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, lmark@codeaurora.org,
+ matthias.bgg@gmail.com, michael.j.ruhl@intel.com, mingyuan.ma@mediatek.com,
+ sumit.semwal@linaro.org, wsd_upstream@mediatek.com, yf.wang@mediatek.com
+References: <CALAqxLW5uEZCGHGk3rYoiOGzN5XMKb39JzoPB1iEX9k3UsiT-A@mail.gmail.com>
+ <20220120070850.95495-1-guangming.cao@mediatek.com>
+From: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
+Message-ID: <4f2631d3-0845-cae6-6fc0-9c00ce6301ce@amd.com>
+Date: Thu, 20 Jan 2022 09:27:07 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
+In-Reply-To: <20220120070850.95495-1-guangming.cao@mediatek.com>
+Content-Language: en-US
+X-ClientProxiedBy: AM6P193CA0123.EURP193.PROD.OUTLOOK.COM
+ (2603:10a6:209:85::28) To BN8PR12MB3587.namprd12.prod.outlook.com
+ (2603:10b6:408:43::13)
 MIME-Version: 1.0
-In-Reply-To: <YehdsUPiOTwgZywq@smile.fi.intel.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: cdcad070-091e-4af3-3ec8-08d9dbeeaa34
+X-MS-TrafficTypeDiagnostic: CY4PR1201MB0166:EE_
+X-Microsoft-Antispam-PRVS: <CY4PR1201MB01665B4EC85C1B28C20F9560835A9@CY4PR1201MB0166.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:1091;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: QZgypRwSv5fmwZzn3GRLr53Qxt+34q7AwKC/H967ngLLgBiWeiox5Usv9ctAubcx5rcAf923ZKro0NZFEUBxQ5uFyM40Kv8Ih5LH44k/2WaZG9FazQx+JAbREVjMC8vLaMPwRZkuPvIQzcnvHN/jaYamy4u+vRUJDpr8MCsnPCmaglKqX6PBKin+m+uS6KibWtlqz3C2JwKtHS6PFv/TnvgdzgU6g+8B962WLhPmF0AZSISCH3SAzCPzFQOj13L3Wp74Uvbv29MUsC68q5aeENYmcaZINCbDI9qw8gMMMdfGxZdgsEpl6GveI40pQZh+nBxk8BR4FUOdeQddg3rtFqxex5oXcn4UqMEl9awVtmFCLz/NAmnEiBLB9T9iLVWfYPgLpK4s7djtjq6QCAAuzabJZ2BXHIPT3G1abqg2Ww730wob4rWt9h7/J1o9CEv3K8JaI8qTvk1HBL7gA6+SUYCX73NdV/UPEQJpOSY6BcCTMmNtN0FEKc5gQIzvHM21aasn0o+sY2U145uAptcViOKDCepnDtirFtpc6oi8TZay+Rbm8FZdkdddWmkRUfJhNHD2bGsHjRsJfU1mhFDTQ9qZWYGktGvIFZ3Bwb4ss380twKLaJtoa1Rd+JC/SMfrvqaX0SPg1rBVr0LO0NvKflhxwO2ggNHfnIH1dO+cZoAnVWCGYK42aMuzk282lL5QjwCxDPn08pOpIw4www/FlcDyhQZ31vWddUUFcORWSJ0uykUOX3YhC2JywGmuTzv/
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN8PR12MB3587.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(7416002)(31686004)(6666004)(38100700002)(508600001)(5660300002)(2906002)(8676002)(86362001)(316002)(66556008)(66476007)(66946007)(186003)(8936002)(26005)(6486002)(6506007)(6512007)(2616005)(36756003)(31696002)(4326008)(43740500002)(45980500001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Z3JRMEdGYWhqcTR3dVpzRTBvM3ZZMk1SalpzMDZabUU0T01ZY09WTThQNkFT?=
+ =?utf-8?B?OUo2SUtDMHl0Y2hSbmYvRkUvV1dHa2hvWFBBZEJmalVDMU5UaVlSSVVGbWZB?=
+ =?utf-8?B?QVhwenBMd1gwaHpYeUN0STNCZk4xcjQvZDJwRzRyeSt1VE93a3BtdGhvVE5z?=
+ =?utf-8?B?ZjVmK0Ivdnk3UmhUUGxBQndrRmR5UnZwcjhHU3NHRkU3eUFBV1dFN2lhanNs?=
+ =?utf-8?B?ekYwdGlIdkdocFQ3M3Jsb0FlcVdIVURyV1MxWFRPa3BITG9zdFg0NG5hNVFx?=
+ =?utf-8?B?MTlaTlFSVklkL2tDWXJCTGNwUG9memtJbG55K3JCTldWTFN6d3Vjd0xZVEtp?=
+ =?utf-8?B?Z2JTejU3cnh4KzFaaDAzOVMvTlVhcUx1UGJkMFpjZWF4YU1pKzY1TXEzazNt?=
+ =?utf-8?B?NmtFUWtzcXJkbTJTMHdrN1U0UVZNUUlvbW9vVG5CRFZ4cUdsNTQ1ay9iNHVN?=
+ =?utf-8?B?d0o2Rkt5eUZXRUxxY2w3MVpYSjA3QjhMYU9FdUJCMHpUOGVwRy9NSzl3dlZJ?=
+ =?utf-8?B?TnNzTWRLSTFSckhkdk02N3Nlc1N4OHNNNUVwcFY2S2Q4Y2pOL1RlN1JIRkZw?=
+ =?utf-8?B?WXVZNFc0c2w5RkpVUm9JWm15b01iYmgzVVNYcllucU9zb0c0SkRIbGNESFNP?=
+ =?utf-8?B?ZDRxVG45aWQrWmM4S0huOG5aTUFwTUI2UUtQdm1TQVJUVkNjRHBCQTFFVGxp?=
+ =?utf-8?B?WENKSzdGQTRCc2VvV2VNTkdNaUl3UVFmOXJzd3lCRjVvZHdPTmtjU2djMHB0?=
+ =?utf-8?B?SmNtd0dpL2NxUjBPYVlvYVpQM3dvMVpUVUc0ZWw0M0JlTTBUNTU5QjNZRHVu?=
+ =?utf-8?B?bWZDUWlTRHgyazNlQjVwMHdEQXZDbDR5dG5hZ0s0VzlmOE5TUFgrcDlJNDFr?=
+ =?utf-8?B?cU5OMTVkRjZNdXA2b0hIeHFtdnpXR3NvNTdyanNlN2ZySk5wSVo1YmlITlE3?=
+ =?utf-8?B?SEFRVnJFajV1blNKbTBSTUFXZFhzZnRnc2VpS2c4eFExWXBSSHowbXE0L2N4?=
+ =?utf-8?B?K09vRHBFUlg5WUhFc0xWVjFSTzludGJER0x3RmFzZ1N0NFQwdWptbDZpMEVo?=
+ =?utf-8?B?WGYrbTkxM1ZCYjRDU3o4dnl3MHNxUjdjbHliVE5XR3daT3ZUeUpieDhZUkxr?=
+ =?utf-8?B?QmtGSGNITjNlcTFFNkQydWdsamROT2xKMVBLRzBFd1VPZUQ1b2lBZVEzWHlT?=
+ =?utf-8?B?TEJINDlCRm0wV01LMVppNWxCWCs1eG1UUmQxaUJ3V29FYllPT2JwYWpNdEta?=
+ =?utf-8?B?U3c2dVVjZkZVMUtLY3hvaTRhTVhYQUZxM0UxVUMrandsNzNPZHVON2ZWY2VE?=
+ =?utf-8?B?dWI3V0J4Ymg0bVlHcmxkRDV2aGhSSDVUMnVkYnp5TWJiUkpaNS9RRGlyd1NI?=
+ =?utf-8?B?Mk1valdrR1FSSkpYTjRTYWdRMFNFRTJwTUtFdGl4dkZYVnpBODJWQVZZSDFH?=
+ =?utf-8?B?K3JCRFcybkpYS1Q1V0w4L2UrMnZFb0d3MFlYM2lIbzhNRmlBTXdLaVZxVUM0?=
+ =?utf-8?B?MEkrN2N1SmtIVzhhRlFYRnQ0cm91bjhxVmJpaXlacFBzNEpzbFdCWll2ZG95?=
+ =?utf-8?B?cWkwWUY4TFgxTk4rR0pNcVZkT1JQTTlqdWhVSWliY0loZDdxK0ZvL21ucXF5?=
+ =?utf-8?B?SEpMRkVsay9yU1dFa1hWRS9YYUl3OEZhVUJxa3crUUpXMjluVHlCc2hGdGVy?=
+ =?utf-8?B?N0I4STRHZGlaSHNSTnVOMUtsdnZsTDJyT0QzbVdOcDREQTZLdHhJU01wMWc0?=
+ =?utf-8?B?QndRYlNEaFNwLzg3SEs5b3lDOGc3NDYreTkrbHdmTXpxdGVaN00yVzhucGZo?=
+ =?utf-8?B?QWh0Vml5NHc1dnhZRENCUGx6ZUhJUjJtNEN0KzJCOTFKYWl2bFd1eFZXR04z?=
+ =?utf-8?B?WGdLamJab0oyREh4QlVkMnIxYTRMcXpkU21lOUZiQkl0c3BTU3lNMkN4QXdu?=
+ =?utf-8?B?bndSVGJUeUZTUHA5ZmRodVVoS1MyYk16R2Y1ZWJTS2c5ZnViRGxrcXpVV0w0?=
+ =?utf-8?B?dWdBTlBRYTQ0SjFmOWZXRjljNjZyZ0hJdWdyOE9melhBOGVBRTBPZWFCbG5x?=
+ =?utf-8?B?MWNXL0hmM1J2czBtM3Byczl2UUVCdWJnSDJGcTJMQXFXaEUrVGF1VkV6MEVJ?=
+ =?utf-8?Q?TFRQ=3D?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cdcad070-091e-4af3-3ec8-08d9dbeeaa34
+X-MS-Exchange-CrossTenant-AuthSource: BN8PR12MB3587.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jan 2022 08:27:15.5604 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: /o2k/W03+DevVZf7n8BPiWZHnvvDANPP8ZZTRp/KyTLOcYSAczgmR194EnU+v0u5
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR1201MB0166
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220119_235914_187628_C047A970 
-X-CRM114-Status: GOOD (  44.28  )
+X-CRM114-CacheID: sfid-20220120_002720_010681_EE64A17C 
+X-CRM114-Status: GOOD (  20.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,149 +146,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8574195381308026207=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============8574195381308026207==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="vtmtr3soi3npiqhl"
-Content-Disposition: inline
 
+Am 20.01.22 um 08:08 schrieb guangming.cao@mediatek.com:
+> From: Guangming <Guangming.Cao@mediatek.com>
+>
+> Add a size check for allocation since the allocation size should be
+> always less than the total DRAM size on system heap.
+> Adding this check can prevent comsuming too much time for invalid allocations.
+>
+> Signed-off-by: Guangming <Guangming.Cao@mediatek.com>
+> ---
+>   drivers/dma-buf/heaps/system_heap.c | 8 ++++++++
+>   1 file changed, 8 insertions(+)
+>
+> diff --git a/drivers/dma-buf/heaps/system_heap.c b/drivers/dma-buf/heaps/system_heap.c
+> index 23a7e74ef966..459dc18bc4a2 100644
+> --- a/drivers/dma-buf/heaps/system_heap.c
+> +++ b/drivers/dma-buf/heaps/system_heap.c
+> @@ -347,6 +347,14 @@ static struct dma_buf *system_heap_allocate(struct dma_heap *heap,
+>   	struct page *page, *tmp_page;
+>   	int i, ret = -ENOMEM;
+>   
+> +	/*
+> +	 * Size check. The "len" should be less than totalram since system_heap
+> +	 * memory is comes from system. Adding check here can prevent comsuming
+> +	 * too much time for invalid allocations.
+> +	 */
+> +	if (len >> PAGE_SHIFT > totalram_pages())
 
---vtmtr3soi3npiqhl
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Maybe use PFN_UP() or PFN_DOWN() here instead of open coding this.
 
-On Wed, Jan 19, 2022 at 08:51:29PM +0200, Andy Shevchenko wrote:
-> On Sat, Jan 15, 2022 at 04:45:39PM +0100, Uwe Kleine-K=F6nig wrote:
-> > On Fri, Jan 14, 2022 at 03:04:38PM +0200, Andy Shevchenko wrote:
-> > > On Thu, Jan 13, 2022 at 08:43:58PM +0100, Uwe Kleine-K=F6nig wrote:
-> > > > > It'd certainly be good to name anything that doesn't correspond t=
-o one
-> > > > > of the existing semantics for the API (!) something different rat=
-her
-> > > > > than adding yet another potentially overloaded meaning.
-> > > >=20
-> > > > It seems we're (at least) three who agree about this. Here is a pat=
-ch
-> > > > fixing the name.
-> > >=20
-> > > And similar number of people are on the other side.
-> >=20
-> > If someone already opposed to the renaming (and not only the name) I
-> > must have missed that.
-> >=20
-> > So you think it's a good idea to keep the name
-> > platform_get_irq_optional() despite the "not found" value returned by it
-> > isn't usable as if it were a normal irq number?
->=20
-> I meant that on the other side people who are in favour of Sergey's patch.
-> Since that I commented already that I opposed the renaming being a standa=
-lone
-> change.
->=20
-> Do you agree that we have several issues with platform_get_irq*() APIs?
->=20
-> 1. The unfortunate naming
+Apart from that looks good to me.
 
-unfortunate naming for the currently implemented semantic, yes.
+Christian.
 
-> 2. The vIRQ0 handling: a) WARN() followed by b) returned value 0
+> +		return ERR_PTR(-EINVAL);
+> +
+>   	buffer = kzalloc(sizeof(*buffer), GFP_KERNEL);
+>   	if (!buffer)
+>   		return ERR_PTR(-ENOMEM);
 
-I'm happy with the vIRQ0 handling. Today platform_get_irq() and it's
-silent variant returns either a valid and usuable irq number or a
-negative error value. That's totally fine.
-
-> 3. The specific cookie for "IRQ not found, while no error happened" case
-
-Not sure what you mean here. I have no problem that a situation I can
-cope with is called an error for the query function. I just do error
-handling and continue happily. So the part "while no error happened" is
-irrelevant to me.
-
-Additionally I see the problems:
-
-4. The semantic as implemented in Sergey's patch isn't better than the
-current one. platform_get_irq*() is still considerably different from
-(clk|gpiod)_get* because the not-found value for the _optional variant
-isn't usuable for the irq case. For clk and gpio I get rid of a whole if
-branch, for irq I only change the if-condition. (And if that change is
-considered good or bad seems to be subjective.)
-
-For the idea to add a warning to platform_get_irq_optional for all but
--ENXIO (and -EPROBE_DEFER), I see the problem:
-
-5. platform_get_irq*() issuing an error message is only correct most of
-the time and given proper error handling in the caller (which might be
-able to handle not only -ENXIO but maybe also -EINVAL[1]) the error message
-is irritating. Today platform_get_irq() emits an error message for all
-but -EPROBE_DEFER. As soon as we find a driver that handles -EINVAL we
-need a function platform_get_irq_variant1 to be silent for -EINVAL,
--EPROBE_DEFER and -ENXIO (or platform_get_irq_variant2 that is only
-silent for -EINVAL and -EPROBE_DEFER?)
-
-IMHO a query function should always be silent and let the caller do the
-error handling. And if it's only because
-
-	mydev: IRQ index 0 not found
-
-is worse than
-
-	mydev: neither TX irq not a muxed RX/TX irq found
-
-=2E Also "index 0" is irritating for devices that are expected to have
-only a single irq (i.e. the majority of all devices).
-
-Yes, I admit, we can safe some code by pushing the error message in a
-query function. But that doesn't only have advantages.
-
-Best regards
-Uwe
-
-[1] Looking through the source I wonder: What are the errors that can happen
-    in platform_get_irq*()? (calling everything but a valid irq number
-    an error) Looking at many callers, they only seem to expect "not
-    found" and some "probe defer" (even platform_get_irq() interprets
-    everything but -EPROBE_DEFER as "IRQ index %u not found\n".)
-    IMHO before we should consider to introduce a platform_get_irq*()
-    variant with improved semantics, some cleanup in the internals of
-    the irq lookup are necessary.
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---vtmtr3soi3npiqhl
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmHpFdoACgkQwfwUeK3K
-7AlpCwf8CIVWD1ztALs4saPfU+hCAXGdHPMYsVb4ZTfj+uT0g5uOPF3Vn08Dfosw
-tyqmKEnwGKIMZpavCJ+pScDwmT2FfANDq+R3xZzWj1hEcEvhjMFWB/IDU+s33/IB
-9pbnCAE8Oa/2PGjM3+FGf5OA6q8vCcuO8XHluolGQqPqvajsCulKZytLIFnnTc9t
-UXm+5HxATeIlvcxF5NHMcNFRt2ADkTGVGj0zrEOxinsiT3edhaWLDR5/vSnbXySV
-NKWnnkWO/T3Huohcr85IS2dVfqbqxuMmfU6RyQKdMat7ZUzOqtffi2I6KdXRRjog
-OHR+PLT7KSOdf6ODGMs+9P8AMEotwg==
-=El6G
------END PGP SIGNATURE-----
-
---vtmtr3soi3npiqhl--
-
-
---===============8574195381308026207==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8574195381308026207==--
-
