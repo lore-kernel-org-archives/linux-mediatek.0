@@ -4,72 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F7FFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jan 2022 15:11:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC22FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jan 2022 18:59:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dYJ0lGIkw/hHPe4a2hDhf6o0oDp4a7qb33EFlg7Tomc=; b=Tt7s2RAoY4v+PUlcdcvM3i/y10
-	TpA3chQERndWxiCsIiKGnSbxFhWdxLRhj2dAxVZ467kIc/0gxuqbxuO1bD7CAJzESAi+ckgm+7NEq
-	51JL5/jY8oj3Sc3zSwBms7UzgJ8Q2WwMd9j5Fkk9kt4meY3xVTvPvR7cildMucM0B4GU1Nomn1i6g
-	g7jBFCY2b2TjKpsRwpE/GG3Gee6JmO525QvKiea3p13MJ+swnCrOyA/GmrFuw6e9t8uRG3JJGtNEE
-	fI9MddIJkPo4Zwekb7XvP4GwM4SCgpPQBoRIdzZgAIL7357EfJIRTW+ZpBxLMuDxRGlByqMgXnT5g
-	UOTqF1MA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Qx3fwpVfSFUefu/Q28rpg6am++QBfN9eedbF0ufVzuE=; b=ifbJVwCe7H5IbS
+	OqUYIJzF68sNKivqJ2EFn4X2b2HEaCp1KY5Z9+gfOVC2DT65tKeF1Vnwy8dN3QfZ5lQ7lAGBVsVpn
+	T6hmDmPvOE4RRvLSZ5bn/yv96zUhmP2HjjNBQGxahh+6UrmegEqlTuuFUnAKgKMIAOD/gndT2Oi63
+	2LgjeOEv3Io6lVWGXKN8hySyR/8GA73qC0IY5IfPjpTCpG8PO0NTKtOYnWOvOVAGTq/bM+sVggRGE
+	9aU2l2hCOXn0YUuoSJyBPk+CowBIVdWBRS/fJNo9yPR0WN/IbyXTL6A/HhL7oa1o212EqPF1w8EJ9
+	0D1/83Rpu1C0iJZL/0ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nAZ5l-00C4X9-IP; Thu, 20 Jan 2022 15:11:13 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nAcee-00CtJH-U0; Thu, 20 Jan 2022 18:59:28 +0000
+Received: from eu-shark1.inbox.eu ([195.216.236.81])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nAZ5O-00C4N2-TB; Thu, 20 Jan 2022 15:10:54 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id F19781F450C9
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1642691449;
- bh=nEgdR/KgZQL268DaWFkTldrCGXi81p2iJGObIq7IsQI=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=jGyNvUF/+bUkr+B77ANFgiANv+ajUnEut7lHvYvwMcYD956oUd0c9QGS6Vsyp1PEC
- 3J3nD8FbM3+3o91h2oK/TYXV222XN5bkP/n3G79iUCk6nQ0Of7R+8sSzbFBqliKYjz
- 5cVCT5j82I7Nz6fwXZcaj5EvkPr/bI3uq/iBzb+lRlTlPb07jVFt63PgGtVgnS92kc
- mMzfc1rxCcx4oQGiWhzqk7chzzcj9uEUTpaFFQgEmbPel1Z7VTj58OAtdrEqtC1FLE
- XuvgBNN6j9Xt1awidfoTvWeWeE9GoqTgMlio5lvPjoleU1F1vEibJOCKlVj/12fhg/
- eRaoxYZUPvHvg==
-Subject: Re: [PATCH v5, 12/15] media: mtk-vcodec: Extract H264 common code
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
- <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-Cc: George Sun <george.sun@mediatek.com>,
- Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>, dri-devel
- <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
- Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220117094001.20049-1-yunfei.dong@mediatek.com>
- <20220117094001.20049-13-yunfei.dong@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <651387eb-561f-06b4-f269-7b5f7873fc59@collabora.com>
-Date: Thu, 20 Jan 2022 16:10:45 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1nAceG-00CtCR-RF; Thu, 20 Jan 2022 18:59:07 +0000
+Received: from eu-shark1.inbox.eu (localhost [127.0.0.1])
+ by eu-shark1-out.inbox.eu (Postfix) with ESMTP id D607B6C00731;
+ Thu, 20 Jan 2022 20:58:58 +0200 (EET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mail.ee; s=20150108;
+ t=1642705138; bh=504oCiTJWeqX2jIHwWg0su7+30XUh6cTSgg/DGfLsnE=;
+ h=From:To:Cc:Subject:Date:Message-Id:X-ESPOL:from:date:to:cc;
+ b=0dRKQo4EXfmf93758hL/sxQhMycvRQ87y0cIVDnwd3q6TCE33BEm4CKHqQWDJ7soE
+ ATMB9dRsgF8BgINqCH2saY/8/ArGMcJAV5ncyza3z9nsAARERwIxNSKmihguE/E2Oa
+ qT4ReOhBNmP3zDyymvLl/CthVLmzXKIc4MJKutSI=
+Received: from localhost (localhost [127.0.0.1])
+ by eu-shark1-in.inbox.eu (Postfix) with ESMTP id C8CE76C006AE;
+ Thu, 20 Jan 2022 20:58:58 +0200 (EET)
+Received: from eu-shark1.inbox.eu ([127.0.0.1])
+ by localhost (eu-shark1.inbox.eu [127.0.0.1]) (spamfilter, port 35)
+ with ESMTP id r9CYafVpjFgf; Thu, 20 Jan 2022 20:58:58 +0200 (EET)
+Received: from mail.inbox.eu (eu-pop1 [127.0.0.1])
+ by eu-shark1-in.inbox.eu (Postfix) with ESMTP id 7C0916C0049B;
+ Thu, 20 Jan 2022 20:58:58 +0200 (EET)
+From: Boris Lysov <arzamas-16@mail.ee>
+To: linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Cc: qii.wang@mediatek.com
+Subject: [PATCH 0/2] i2c: mediatek: remove mt6577 support
+Date: Thu, 20 Jan 2022 21:58:51 +0300
+Message-Id: <20220120185853.24266-1-arzamas-16@mail.ee>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <20220117094001.20049-13-yunfei.dong@mediatek.com>
-Content-Language: en-US
+X-Virus-Scanned: OK
+X-ESPOL: 885ml41QGzuilFygRWXfAQ4r3FlEJo35mZS31AE76Hb7NCeCfEAJVBS0gR8IQDzn/iM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220120_071051_268206_663D6C84 
-X-CRM114-Status: GOOD (  24.72  )
+X-CRM114-CacheID: sfid-20220120_105905_217740_522E75B8 
+X-CRM114-Status: UNSURE (   6.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,122 +68,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/01/22 10:39, Yunfei Dong ha scritto:
-> Mt8192 can use some of common code with mt8183. Moves them to
-> a new file in order to reuse.
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
->   drivers/media/platform/mtk-vcodec/Makefile    |   1 +
->   .../mtk-vcodec/vdec/vdec_h264_req_common.c    | 307 ++++++++++++++
->   .../mtk-vcodec/vdec/vdec_h264_req_common.h    | 253 +++++++++++
->   .../mtk-vcodec/vdec/vdec_h264_req_if.c        | 395 +-----------------
->   4 files changed, 579 insertions(+), 377 deletions(-)
->   create mode 100644 drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_common.c
->   create mode 100644 drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_common.h
-> 
-> diff --git a/drivers/media/platform/mtk-vcodec/Makefile b/drivers/media/platform/mtk-vcodec/Makefile
-> index 359619653a0e..3f41d748eee5 100644
-> --- a/drivers/media/platform/mtk-vcodec/Makefile
-> +++ b/drivers/media/platform/mtk-vcodec/Makefile
-> @@ -9,6 +9,7 @@ mtk-vcodec-dec-y := vdec/vdec_h264_if.o \
->   		vdec/vdec_vp8_if.o \
->   		vdec/vdec_vp9_if.o \
->   		vdec/vdec_h264_req_if.o \
-> +		vdec/vdec_h264_req_common.o \
->   		mtk_vcodec_dec_drv.o \
->   		vdec_drv_if.o \
->   		vdec_vpu_if.o \
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_common.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_common.c
-> new file mode 100644
-> index 000000000000..90e8c4906e2a
-> --- /dev/null
-> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_common.c
-> @@ -0,0 +1,307 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2021 MediaTek Inc.
-> + * Author: Yunfei Dong <yunfei.dong@mediatek.com>
-> + */
-> +
-> +#include "vdec_h264_req_common.h"
-> +
-> +/* get used parameters for sps/pps */
-> +#define GET_MTK_VDEC_FLAG(cond, flag) \
-> +	{ dst_param->cond = ((src_param->flags & flag) ? (1) : (0)); }
-> +#define GET_MTK_VDEC_PARAM(param) \
-> +	{ dst_param->param = src_param->param; }
-> +
-> +/*
-> + * The firmware expects unused reflist entries to have the value 0x20.
-> + */
-> +void mtk_vdec_h264_fixup_ref_list(u8 *ref_list, size_t num_valid)
-> +{
-> +	memset(&ref_list[num_valid], 0x20, 32 - num_valid);
-> +}
-> +
-> +void *mtk_vdec_h264_get_ctrl_ptr(struct mtk_vcodec_ctx *ctx, int id)
-> +{
-> +	struct v4l2_ctrl *ctrl = v4l2_ctrl_find(&ctx->ctrl_hdl, id);
-> +
+This small patch series removes mt6577 support from the i2c-mt65xx driver and
+devicectree binding documentation.
 
-Like written in the review for the VP8 driver, please perform a NULL check and
-handle the error case properly in the caller...
+The existing i2c-mt65xx driver relies on DMA since it was first introduced.
+mt6577 does not support DMA [1] for I2C and SoC's Generic DMA engine cannot
+be used for this purpose, too, which makes this particular driver incompatible
+with mt6577 and other similar SoCs with same I2C IP.
 
-> +	return ctrl->p_cur.p;
-> +}
-> +
-> +void mtk_vdec_h264_fill_dpb_info(struct mtk_vcodec_ctx *ctx,
-> +				 struct slice_api_h264_decode_param *decode_params,
-> +				 mtk_h264_dpb_info *h264_dpb_info)
+[1] see references in
+https://lists.infradead.org/pipermail/linux-mediatek/2021-October/030333.html
 
-				struct mtk_h264_dpb_info *h264_dpb_info)
-				^^^^^^
-Oops! This typo makes this code unable to be compiled.
+Boris Lysov (2):
+  dt-bindings: i2c: i2c-mt65xx: remove compatibility with mt6577
+  i2c: mediatek: remove compatibility with mt6577
 
-> +{
-> +	struct vb2_queue *vq;
-> +	struct vb2_buffer *vb;
-> +	struct vb2_v4l2_buffer *vb2_v4l2;
-> +	int index;
-> +
-> +	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
-> +
-> +	for (index = 0; index < V4L2_H264_NUM_DPB_ENTRIES; index++) {
-> +		const struct slice_h264_dpb_entry *dpb;
-> +		int vb2_index;
-> +
+ .../devicetree/bindings/i2c/i2c-mt65xx.txt    |  9 +++---
+ drivers/i2c/busses/i2c-mt65xx.c               | 28 +++++++++----------
+ 2 files changed, 18 insertions(+), 19 deletions(-)
 
-...snip...
+-- 
+2.20.1
 
-> +void mtk_vdec_h264_copy_scaling_matrix(struct slice_api_h264_scaling_matrix *dst_matrix,
-> +				       const struct v4l2_ctrl_h264_scaling_matrix *src_matrix)
-> +{
-> +	memcpy(dst_matrix->scaling_list_4x4, src_matrix->scaling_list_4x4,
-> +	       sizeof(dst_matrix->scaling_list_4x4));
-> +
-> +	memcpy(dst_matrix->scaling_list_8x8, src_matrix->scaling_list_8x8,
-> +	       sizeof(dst_matrix->scaling_list_8x8));
-> +}
-> +
-> +void
-> +mtk_vdec_h264_copy_decode_params(struct slice_api_h264_decode_param *dst_params,
-> +				 const struct v4l2_ctrl_h264_decode_params *src_params,
-> +				 const struct v4l2_h264_dpb_entry dpb[V4L2_H264_NUM_DPB_ENTRIES]);
-
-There's another overlook here:
-				const struct v4l2_h264_dpb_entry *dpb)
-
-> +{
-> +	int i;
-
-Regards,
-Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
