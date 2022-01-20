@@ -4,63 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6971C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jan 2022 21:39:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9F95C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jan 2022 22:42:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O30upPb/j+2O8njTI3M+Fzt0ggp12A3UmehyxxA3QQY=; b=vWBTsyh3W1CcjH
-	hs1AgXfLMHGW7yuawa/DsKcmQoMFgK95K3mwE5KVMEYNCy6QKTMztFF1mYE7+v6jeWG4OOpt+U5FA
-	BXMaYsl1ntZvDLWYoHD/7YRKU3bqZXI3E6+Lnvtnf/KpknW+Jwd3zozl4VId1hoMNlXWNmNffTp/z
-	ZoClCBoDVLAlVIKhNl9y1UjL3fSH2BTtuuS6OsZyCkhvkvAZKSsK38maBbr6QPyeQycnnFNfxzQD4
-	+MPaC6kS8pzPAocnFoiF8spKU0A/Au4PmnGrXzEHwFOu+Wgv2eMq5CklKpESH6r6S1RcMOw7moOmf
-	YOvRz1sI/tde3z/5DixQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=iMGYuk5XXKztSATu+C6KAdPb+NAX10Usp68C7quWAmc=; b=w9NhZ4LtdzgFMU
+	JHlsJEmUNBJAC/wLixH3ZX6uM1gDy0Dm3hh6if60pb/PaMMYuEfYmAtrFRyfQHHsjafViPMOovbUQ
+	dLg6koEY9scK3xpb5zjOdpF8eUs9lDEJaD2towR5sL2K66NIYJb6LAls8Au3MZk6NvkgE4t1XLOy5
+	jhby5h5u6zKv6/rXY1lunDXkP4YC3EhJpTeRnl/3lWnM7TDU2T8nakIdJxL9yQ/5l5opH7FbFyeT3
+	IQ69ZXCDvQQkoGNH2chqpVBZA9lsHxphqbCux9XSQZRUJm/tgOJgCxkduvYBzhmIY4yIya5BXXrMe
+	uJrS6dHPnJJpCUnctsNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nAf95-00DDYg-C8; Thu, 20 Jan 2022 21:39:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nAg8k-00DK8Q-QJ; Thu, 20 Jan 2022 22:42:46 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nAf91-00DDW9-DJ
- for linux-mediatek@lists.infradead.org; Thu, 20 Jan 2022 21:39:02 +0000
-X-UUID: b4f7d115f19b499b8f743cbe8915ca74-20220120
-X-UUID: b4f7d115f19b499b8f743cbe8915ca74-20220120
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 927385717; Thu, 20 Jan 2022 14:38:55 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 20 Jan 2022 13:38:54 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 21 Jan 2022 05:38:52 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 21 Jan 2022 05:38:52 +0800
-Message-ID: <4e35b66a36f7dc48397f0e2f8941cbd031b29bcb.camel@mediatek.com>
-Subject: Re: [PATCH v4 05/12] mt76: mt7915: add firmware support for mt7916
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Ben Greear <greearb@candelatech.com>, Bo Jiao <bo.jiao@mediatek.com>,
- Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Xing Song
- <xing.song@mediatek.com>, Sujuan Chen <sujuan.chen@mediatek.com>, "Shayne
- Chen" <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-Date: Fri, 21 Jan 2022 05:38:52 +0800
-In-Reply-To: <edd5b78c-5277-e192-b404-1b771e1a5242@candelatech.com>
-References: <cover.1639965732.git.Bo.Jiao@mediatek.com>
- <6b2d86cbbe6426a5ed0d91b8248b95ac3390885f.1639965732.git.Bo.Jiao@mediatek.com>
- <edd5b78c-5277-e192-b404-1b771e1a5242@candelatech.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nAg8Z-00DK5H-7N; Thu, 20 Jan 2022 22:42:36 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id D44951F40EF6
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1642718549;
+ bh=n9nzvUGdd1YQiFhmJQVwJMExyCSnYF3MN5S9On1se6k=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Gx5LGmfVs1pDMMfMa4ZSil6InBzCwhMelXygPbxag4PlZhUA9YcwTAYl3Qn1lShLR
+ Ri9pMcNH1Wxs/JEAEQBMZIrYjI0I7nAxpAQQUZ0rwR/v+cOUQl5fuC2iTyxBIQMNmH
+ 3ZbngxScmE/R8tVwzUkpdJQRY9uuym5U4ANVRTVzaxOO4UbWMSzhqrFLBbp9Td4qSY
+ Mh+A0iDMvExPLmIo0SRKHOUxIcPur+beeqjRquZaPTm6EGmQTDiaeGknjW3fzPHftS
+ yDC15r8UABRks9IXEmfmcZgB09bgbdx+eDmiXsM+zF5WppR3+DHB1A6+vYW6tGeCwK
+ G3fEtBwmR1bNw==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
+ <nfraprado@collabora.com>
+To: Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Robert Foss <robert.foss@linaro.org>, Xin Ji <xji@analogixsemi.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com, =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
+ <nfraprado@collabora.com>
+Subject: [PATCH] arm64: dts: mt8183: jacuzzi: Fix bus properties in anx's DSI
+ endpoint
+Date: Thu, 20 Jan 2022 17:42:04 -0500
+Message-Id: <20220120224204.773117-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220120_133859_500244_2FE1BD45 
-X-CRM114-Status: GOOD (  24.10  )
+X-CRM114-CacheID: sfid-20220120_144235_443576_513A1854 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,72 +65,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-01-20 at 13:29 -0800, Ben Greear wrote:
-> On 12/19/21 6:17 PM, Bo Jiao wrote:
-> > From: Bo Jiao <Bo.Jiao@mediatek.com>
-> > 
-> > Update firmware initialization for mt7916.
-> > This is an intermediate patch to add mt7916 support.
-> > 
-> > Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
-> > Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-> > Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
-> > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> > Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
-> > ---
-> > v3:
-> > - modify the function mt7915_wfsys_reset to support mt7916
-> > ---
-> >   .../net/wireless/mediatek/mt76/mt7915/init.c  | 75 ++++++++----
-> > -----
-> >   .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 81
-> > +++++++++++++++----
-> >   .../wireless/mediatek/mt76/mt7915/mt7915.h    |  4 +
-> >   .../net/wireless/mediatek/mt76/mt7915/pci.c   |  3 +
-> >   .../net/wireless/mediatek/mt76/mt7915/regs.h  |  6 +-
-> >   5 files changed, 115 insertions(+), 54 deletions(-)
-> > 
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-> > b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-> > index 2da342d..edf0d7e 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-> > @@ -511,41 +511,53 @@ static void mt7915_init_work(struct
-> > work_struct *work)
-> >   
-> >   static void mt7915_wfsys_reset(struct mt7915_dev *dev)
-> >   {
-> > -	u32 val = MT_TOP_PWR_KEY | MT_TOP_PWR_SW_PWR_ON |
-> > MT_TOP_PWR_PWR_ON;
-> > +	u32 val;
-> >   
-> >   #define MT_MCU_DUMMY_RANDOM	GENMASK(15, 0)
-> >   #define MT_MCU_DUMMY_DEFAULT	GENMASK(31, 16)
-> > +	if (is_mt7915(&dev->mt76)) {
-> > +		mt76_wr(dev, MT_MCU_WFDMA0_DUMMY_CR,
-> > MT_MCU_DUMMY_RANDOM);
-> > +
-> > +		/* change to software control */
-> > +		val |= MT_TOP_PWR_SW_RST;
-> > +		mt76_wr(dev, MT_TOP_PWR_CTRL, val);
-> 
-> val is not properly initialized in this path.  I also notice this is
-> not the version of the patch
-> that was applied to nbd's tree.  The 'else nic is 7916' clause that
-> this patch creates is also different
-> in nbd's tree vs this patch.
-> 
-He sent a follow up to fix this and had been folded into nbd's tree.
-
-Ryder
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+bXQ4MTgzLWt1a3VpLWphY3V6emkgaGFzIGFuIGFueDc2MjUgYnJpZGdlIGNvbm5lY3RlZCB0byB0
+aGUgb3V0cHV0IG9mCml0cyBEU0kgaG9zdC4gSG93ZXZlciwgYWZ0ZXIgZmQwMzEwYjZmZTdkICgi
+ZHJtL2JyaWRnZTogYW54NzYyNTogYWRkCk1JUEkgRFBJIGlucHV0IGZlYXR1cmUiKSwgYSBidXMt
+dHlwZSBwcm9wZXJ0eSBzdGFydGVkIGJlaW5nIHJlcXVpcmVkIGluCnRoZSBlbmRwb2ludCBub2Rl
+IGJ5IHRoZSBkcml2ZXIgdG8gaW5kaWNhdGUgd2hldGhlciBpdCBpcyBEU0kgb3IgRFBJLgoKQWRk
+IHRoZSBtaXNzaW5nIGJ1cy10eXBlIHByb3BlcnR5IGFuZCBzZXQgaXQgdG8gNQooVjRMMl9GV05P
+REVfQlVTX1RZUEVfUEFSQUxMRUwpIHNvIHRoYXQgdGhlIGRyaXZlciBoYXMgaXRzIGlucHV0CmNv
+bmZpZ3VyZWQgdG8gRFNJIGFuZCB0aGUgZGlzcGxheSBwaXBlbGluZSBjYW4gcHJvYmUgY29ycmVj
+dGx5LgoKV2hpbGUgYXQgaXQsIGFsc28gc2V0IHRoZSBkYXRhLWxhbmVzIHByb3BlcnR5IHRoYXQg
+d2FzIGFsc28gaW50cm9kdWNlZAppbiB0aGF0IHNhbWUgY29tbWl0LCBzbyB0aGF0IHdlIGRvbid0
+IHJlbHkgb24gdGhlIGRlZmF1bHQgdmFsdWUuCgpGaXhlczogZmQwMzEwYjZmZTdkICgiZHJtL2Jy
+aWRnZTogYW54NzYyNTogYWRkIE1JUEkgRFBJIGlucHV0IGZlYXR1cmUiKQpTaWduZWQtb2ZmLWJ5
+OiBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyA8bmZyYXByYWRvQGNvbGxhYm9yYS5jb20+Ci0tLQog
+YXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxODMta3VrdWktamFjdXp6aS5kdHNpIHwg
+MiArKwogMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2FyY2gv
+YXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLWt1a3VpLWphY3V6emkuZHRzaSBiL2FyY2gv
+YXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLWt1a3VpLWphY3V6emkuZHRzaQppbmRleCA4
+ZjdiZjMzZjYwN2QuLmU4ZjEzM2RjOTZiOSAxMDA2NDQKLS0tIGEvYXJjaC9hcm02NC9ib290L2R0
+cy9tZWRpYXRlay9tdDgxODMta3VrdWktamFjdXp6aS5kdHNpCisrKyBiL2FyY2gvYXJtNjQvYm9v
+dC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLWt1a3VpLWphY3V6emkuZHRzaQpAQCAtMTcxLDYgKzE3MSw4
+IEBAIHBvcnRAMCB7CiAKIAkJCWFueDc2MjVfaW46IGVuZHBvaW50IHsKIAkJCQlyZW1vdGUtZW5k
+cG9pbnQgPSA8JmRzaV9vdXQ+OworCQkJCWJ1cy10eXBlID0gPDU+OworCQkJCWRhdGEtbGFuZXMg
+PSA8MCAxIDIgMz47CiAJCQl9OwogCQl9OwogCi0tIAoyLjM0LjEKCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxp
+c3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
