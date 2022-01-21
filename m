@@ -4,81 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7116C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jan 2022 14:05:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3EFDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jan 2022 16:27:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z75PLQFF6MBsYNZ8Gk/5zXO71niZdUcwk0ZmJXJ+pVE=; b=2WyPn6LkDuCjcw
-	uoLSAZx/4W/RbPZlxt4SI9UONs6FxN33S0Nt3L4A0AIg4N4uVH68zsAuFfugDxlX29H/yWkxbKoX3
-	TnAib3GSNfISK/hEhP8hQaO6SYAyvfrPKc8QybP0/Hlc4j1tTnycbBPhL954WRj/C7X/14aG2ICdK
-	sxSg3gjAFGSlsNF+hFiTwh7Zkk7uR4zzKjaf7fSB23BVsiotLX1ukC8eiQ3Pwea4AO2OiwMCrLUzP
-	nZUBQzPspEqNgA3StvyxaCVCsVc4dNma1bjQb9SNX+J+erSlCQV7s3Ox/VkQAytVepiQVSzte9cBW
-	0da97tJDmAsS9rU2Jgug==;
+	List-Owner; bh=uxt3xEtjxHLnb8je0SdbnT5sqkx/6wPhDfa/PcqTmpo=; b=AAV+xyybOTpvtC
+	u42wVL8x44WW1pKPlWLmhFWaTCz3t2U8R32Z8g9/O2SjGcmgDdspBOAMUV0g49xq5MMXULOUY6jVe
+	a/WDOYVci4hpiav4LkJXuChzdVlf8cfnsvc2FhoFexVMjGC034lHQNnf4tCbIKBgTQ2uFVMCcFKBK
+	4HxIzyVnpuYZMlXP+dt3pJSIUZTV1GgF+I6lVcdQuPL/YSDL4TaMslQxt8tXHqPY+ggtIesea+/NM
+	YzY18s1MZUSKM3aPw+Q+/Z/Ov1nme6BFV6msrIMaPFgHFtqWFgctBWgAiOIERnPKEt3SzlB03dN3+
+	nK6ydkCSKySHHvrWBSng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nAuXf-00FId2-Oj; Fri, 21 Jan 2022 14:05:27 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1nAwl0-00FYb3-AX; Fri, 21 Jan 2022 16:27:22 +0000
+Received: from mga14.intel.com ([192.55.52.115])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nAuVn-00FHgw-DS
- for linux-mediatek@lists.infradead.org; Fri, 21 Jan 2022 14:03:36 +0000
-Received: by mail-wm1-x330.google.com with SMTP id
- l35-20020a05600c1d2300b0034d477271c1so22565613wms.3
- for <linux-mediatek@lists.infradead.org>; Fri, 21 Jan 2022 06:03:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=uRUXk6sZwU1Dm8EnlU4ajTADGqEPVssNhNqpXeZPCjA=;
- b=HF6giAfhg21Z5Qj/qkjxfQOUQRc4KU/MZ+sn7rii/tbyuHasWMuJsBSluXAxe4GNXJ
- Zf4CRVGJdDzd8MfK56tOy81sGGzsz7dUREw+lld47qx2EM3EZ5/NMkVE17dMaLJLYsXW
- Jtj4wx8GmbAn82DoRfiSPGxlPpgBB5bPWQRZCsAXuAyUoe8XmHNOwcK8SSxTtUe2fZpW
- BNjoK3EJ/C4FE99eD+JnZ2wX3VwrUrTwiiVWc3XE2t9OtufQN6fhh2RPEMEKQYQ0hzc3
- ZDlKrgnk52QFWuXf7vmkMHVvIIOeINFUsQnOJ5JFSXC4R80SXAipnRwAj11JoRcb2jHw
- 38kQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=uRUXk6sZwU1Dm8EnlU4ajTADGqEPVssNhNqpXeZPCjA=;
- b=v9bNj2yc2ki+fU+8dz9JB+xJR5GeBGSHW2WVKoNZ5HgDRs33A/wMTTQkdxKR4HssXS
- D3vd7roaZUENBvYs1z2Rh0Yr3H/LkUplCr1I9gBfCVcQS1MHubSYzIQ2r2NuaZXfZOxW
- O0RdCLoIItmaxySAvWflse7sPL0jWB3bThR9jHsTJlN5/BEO6cj3zGQMNf9z6w2Ul03L
- 5BaEdnA+Nl4bnFdwizq2LGL66VHt6Q49AnsGm7iTBhf2DmjkzIl14ggPr93c7Q3mHtKd
- uhQRYP9+F+E1lOgunaV1K+xXvfjP53MM6vDOkmIta3HY4tXfhdIZ6/LYXdykBmFYpsmq
- nBsg==
-X-Gm-Message-State: AOAM533aFzXpjDMfKz+k+EwbJBrQX4kfIblUVgGBKzv4JLX23X+EQidf
- BL/+r7PqWOvWWUNOnqvp0EjlXg==
-X-Google-Smtp-Source: ABdhPJztvymbqeQLyXvFc9GTnJXQZ2XHJGlWZcHHjT1pmHeXoPL3qFS4e4Uv1hxCx2kJb08Byfirbg==
-X-Received: by 2002:a05:6000:1687:: with SMTP id
- y7mr3998916wrd.495.1642773810098; 
- Fri, 21 Jan 2022 06:03:30 -0800 (PST)
-Received: from groot.home (lfbn-tou-1-205-205.w86-201.abo.wanadoo.fr.
- [86.201.52.205])
- by smtp.gmail.com with ESMTPSA id p29sm9225129wms.5.2022.01.21.06.03.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Jan 2022 06:03:29 -0800 (PST)
-From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Fabien Parent <fparent@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
- linux-input@vger.kernel.org, devicetree@vger.kernel.org,
+ id 1nAwkw-00FYZs-H0; Fri, 21 Jan 2022 16:27:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1642782438; x=1674318438;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=vDuE8cqCW35QLJGTolUKf/UtD4Dd5SuIQhcEDPlzQS8=;
+ b=eig9YvYO9EYpuiVpj//gF4GHSO9oDrTOO+FC8eNj35mfUFNaOy8331F9
+ 65wZUi0BSppwcNVRlOQcYnUNwo/HEt9VfGmoTk7wTGP+g8vn4HWq9nV9y
+ ULIJjO5eZBwpd7WWqKRv1fyCeMILK93uLfbLGbO3793unHKAxPtdQ0gTt
+ 5L+3/d6nV/kEaBuQPa0Goo59zhTDXricUliXglyEeMaQC9EATLgYkxOsH
+ ztZACQa8k5IGdlerfpbuzjAE8mtvM3sAuxwZ1DPmE70vcpB9BCuMMjSuZ
+ d272aIZ6bR2sBrffp/CJh1uF/tGcaq97XGItsFUnqbEveA2j+8aA4gLgN A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10234"; a="245909269"
+X-IronPort-AV: E=Sophos;i="5.88,304,1635231600"; d="scan'208";a="245909269"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Jan 2022 08:27:14 -0800
+X-IronPort-AV: E=Sophos;i="5.88,304,1635231600"; d="scan'208";a="765749887"
+Received: from smile.fi.intel.com ([10.237.72.61])
+ by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Jan 2022 08:27:06 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.95)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1nAwjd-00D0Ik-Du; Fri, 21 Jan 2022 18:25:57 +0200
+Date: Fri, 21 Jan 2022 18:25:57 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Axe Yang <axe.yang@mediatek.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Satya Tangirala <satyat@google.com>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ Lucas Stach <dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd <swboyd@chromium.org>,
+ Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>,
+ Tian Tao <tiantao6@hisilicon.com>,
+ angelogioacchino.delregno@collabora.com, linux-mmc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Mattijs Korpershoek <mkorpershoek@baylibre.com>
-Subject: [PATCH v4 3/4] Input: mtk-pmic-keys - add support for MT6358
-Date: Fri, 21 Jan 2022 15:03:22 +0100
-Message-Id: <20220121140323.4080640-4-mkorpershoek@baylibre.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220121140323.4080640-1-mkorpershoek@baylibre.com>
-References: <20220121140323.4080640-1-mkorpershoek@baylibre.com>
+ Yong Mao <yong.mao@mediatek.com>
+Subject: Re: [PATCH v5 3/3] mmc: mediatek: add support for SDIO eint IRQ
+Message-ID: <YerelftLTFS3HRWx@smile.fi.intel.com>
+References: <20220121071942.11601-1-axe.yang@mediatek.com>
+ <20220121071942.11601-4-axe.yang@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220121071942.11601-4-axe.yang@mediatek.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220121_060331_493926_FC5802D5 
-X-CRM114-Status: GOOD (  18.69  )
+X-CRM114-CacheID: sfid-20220121_082718_830929_C4003644 
+X-CRM114-Status: GOOD (  35.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,131 +93,273 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT6358 pmic keys behave differently than mt6397 and mt6323: there are
-two interrupts per key: one for press, the other one for release (_r)
+On Fri, Jan 21, 2022 at 03:19:42PM +0800, Axe Yang wrote:
+> Add support for eint IRQ when MSDC is used as an SDIO host. This
+> feature requires SDIO device support async IRQ function. With this
+> feature, SDIO host can be awakened by SDIO card in suspend state,
+> without additional pin.
+> 
+> MSDC driver will time-share the SDIO DAT1 pin. During suspend, MSDC
+> turn off clock and switch SDIO DAT1 pin to GPIO mode. And during
+> resume, switch GPIO function back to DAT1 mode then turn on clock.
+> 
+> Some device tree property should be added or modified in MSDC node
+> to support SDIO eint IRQ. Pinctrls named state_dat1 and state_eint
+> are mandatory. And cap-sdio-async-irq flag is necessary since this
+> feature depends on asynchronous interrupt:
+>         &mmcX {
+>                 ...
+>                 pinctrl-names = "default", "state_uhs", "state_eint",
+>                                 "state_dat1";
+>                 ...
+>                 pinctrl-2 = <&mmc2_pins_eint>;
+>                 pinctrl-3 = <&mmc2_pins_dat1>;
+>                 ...
+>                 cap-sdio-async-irq;
+>                 ...
+>         };
 
-Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
----
- drivers/input/keyboard/mtk-pmic-keys.c | 48 ++++++++++++++++++++++++--
- 1 file changed, 46 insertions(+), 2 deletions(-)
+LGTM, so FWIW,
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-index d1abf95d5701..c31ab4368388 100644
---- a/drivers/input/keyboard/mtk-pmic-keys.c
-+++ b/drivers/input/keyboard/mtk-pmic-keys.c
-@@ -9,6 +9,7 @@
- #include <linux/interrupt.h>
- #include <linux/kernel.h>
- #include <linux/mfd/mt6323/registers.h>
-+#include <linux/mfd/mt6358/registers.h>
- #include <linux/mfd/mt6397/core.h>
- #include <linux/mfd/mt6397/registers.h>
- #include <linux/module.h>
-@@ -74,11 +75,22 @@ static const struct mtk_pmic_regs mt6323_regs = {
- 	.pmic_rst_reg = MT6323_TOP_RST_MISC,
- };
- 
-+static const struct mtk_pmic_regs mt6358_regs = {
-+	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
-+		MTK_PMIC_KEYS_REGS(MT6358_TOPSTATUS,
-+				   0x2, MT6358_PSC_TOP_INT_CON0, 0x5),
-+	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
-+		MTK_PMIC_KEYS_REGS(MT6358_TOPSTATUS,
-+				   0x8, MT6358_PSC_TOP_INT_CON0, 0xa),
-+	.pmic_rst_reg = MT6358_TOP_RST_MISC,
-+};
-+
- struct mtk_pmic_keys_info {
- 	struct mtk_pmic_keys *keys;
- 	const struct mtk_pmic_keys_regs *regs;
- 	unsigned int keycode;
- 	int irq;
-+	int irq_r; /* optional: release irq if different */
- 	bool wakeup:1;
- };
- 
-@@ -188,6 +200,18 @@ static int mtk_pmic_key_setup(struct mtk_pmic_keys *keys,
- 		return ret;
- 	}
- 
-+	if (info->irq_r > 0) {
-+		ret = devm_request_threaded_irq(keys->dev, info->irq_r, NULL,
-+						mtk_pmic_keys_irq_handler_thread,
-+						IRQF_ONESHOT | IRQF_TRIGGER_HIGH,
-+						"mtk-pmic-keys", info);
-+		if (ret) {
-+			dev_err(keys->dev, "Failed to request IRQ_r: %d: %d\n",
-+				info->irq, ret);
-+			return ret;
-+		}
-+	}
-+
- 	input_set_capability(keys->input_dev, EV_KEY, info->keycode);
- 
- 	return 0;
-@@ -199,8 +223,11 @@ static int __maybe_unused mtk_pmic_keys_suspend(struct device *dev)
- 	int index;
- 
- 	for (index = 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
--		if (keys->keys[index].wakeup)
-+		if (keys->keys[index].wakeup) {
- 			enable_irq_wake(keys->keys[index].irq);
-+			if (keys->keys[index].irq_r > 0)
-+				enable_irq_wake(keys->keys[index].irq_r);
-+		}
- 	}
- 
- 	return 0;
-@@ -212,8 +239,11 @@ static int __maybe_unused mtk_pmic_keys_resume(struct device *dev)
- 	int index;
- 
- 	for (index = 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
--		if (keys->keys[index].wakeup)
-+		if (keys->keys[index].wakeup) {
- 			disable_irq_wake(keys->keys[index].irq);
-+			if (keys->keys[index].irq_r > 0)
-+				disable_irq_wake(keys->keys[index].irq_r);
-+		}
- 	}
- 
- 	return 0;
-@@ -229,6 +259,9 @@ static const struct of_device_id of_mtk_pmic_keys_match_tbl[] = {
- 	}, {
- 		.compatible = "mediatek,mt6323-keys",
- 		.data = &mt6323_regs,
-+	}, {
-+		.compatible = "mediatek,mt6358-keys",
-+		.data = &mt6358_regs,
- 	}, {
- 		/* sentinel */
- 	}
-@@ -242,6 +275,7 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
- 	struct mt6397_chip *pmic_chip = dev_get_drvdata(pdev->dev.parent);
- 	struct device_node *node = pdev->dev.of_node, *child;
- 	static const char *const irqnames[] = { "powerkey", "homekey" };
-+	static const char *const irqnames_r[] = { "powerkey_r", "homekey_r" };
- 	struct mtk_pmic_keys *keys;
- 	const struct mtk_pmic_regs *mtk_pmic_regs;
- 	struct input_dev *input_dev;
-@@ -285,6 +319,16 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
- 			return keys->keys[index].irq;
- 		}
- 
-+		if (of_device_is_compatible(node, "mediatek,mt6358-keys")) {
-+			keys->keys[index].irq_r = platform_get_irq_byname(pdev,
-+									  irqnames_r[index]);
-+
-+			if (keys->keys[index].irq_r < 0) {
-+				of_node_put(child);
-+				return keys->keys[index].irq_r;
-+			}
-+		}
-+
- 		error = of_property_read_u32(child,
- 			"linux,keycodes", &keys->keys[index].keycode);
- 		if (error) {
+
+> Co-developed-by: Yong Mao <yong.mao@mediatek.com>
+> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
+> Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+> ---
+>  drivers/mmc/host/mtk-sd.c | 123 +++++++++++++++++++++++++++++++++++---
+>  1 file changed, 115 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 65037e1d7723..f8e38228d810 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -1,6 +1,6 @@
+>  // SPDX-License-Identifier: GPL-2.0-only
+>  /*
+> - * Copyright (c) 2014-2015 MediaTek Inc.
+> + * Copyright (c) 2014-2015, 2022 MediaTek Inc.
+>   * Author: Chaotian.Jing <chaotian.jing@mediatek.com>
+>   */
+>  
+> @@ -9,6 +9,7 @@
+>  #include <linux/clk.h>
+>  #include <linux/delay.h>
+>  #include <linux/dma-mapping.h>
+> +#include <linux/gpio/consumer.h>
+>  #include <linux/iopoll.h>
+>  #include <linux/ioport.h>
+>  #include <linux/irq.h>
+> @@ -440,8 +441,12 @@ struct msdc_host {
+>  	struct pinctrl *pinctrl;
+>  	struct pinctrl_state *pins_default;
+>  	struct pinctrl_state *pins_uhs;
+> +	struct pinctrl_state *pins_eint;
+> +	struct pinctrl_state *pins_dat1;
+>  	struct delayed_work req_timeout;
+>  	int irq;		/* host interrupt */
+> +	int eint_irq;		/* device interrupt */
+> +	int sdio_irq_cnt;	/* irq enable cnt */
+>  	struct reset_control *reset;
+>  
+>  	struct clk *src_clk;	/* msdc source clock */
+> @@ -465,6 +470,7 @@ struct msdc_host {
+>  	bool hs400_tuning;	/* hs400 mode online tuning */
+>  	bool internal_cd;	/* Use internal card-detect logic */
+>  	bool cqhci;		/* support eMMC hw cmdq */
+> +	bool sdio_eint_ready;	/* Ready to support SDIO eint interrupt */
+>  	struct msdc_save_para save_para; /* used when gate HCLK */
+>  	struct msdc_tune_para def_tune_para; /* default tune setting */
+>  	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
+> @@ -1527,10 +1533,12 @@ static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
+>  	__msdc_enable_sdio_irq(host, enb);
+>  	spin_unlock_irqrestore(&host->lock, flags);
+>  
+> -	if (enb)
+> -		pm_runtime_get_noresume(host->dev);
+> -	else
+> -		pm_runtime_put_noidle(host->dev);
+> +	if (mmc->card && !mmc->card->cccr.enable_async_irq) {
+> +		if (enb)
+> +			pm_runtime_get_noresume(host->dev);
+> +		else
+> +			pm_runtime_put_noidle(host->dev);
+> +	}
+>  }
+>  
+>  static irqreturn_t msdc_cmdq_irq(struct msdc_host *host, u32 intsts)
+> @@ -2461,6 +2469,48 @@ static const struct mmc_host_ops mt_msdc_ops = {
+>  	.hw_reset = msdc_hw_reset,
+>  };
+>  
+> +static irqreturn_t msdc_sdio_eint_irq(int irq, void *dev_id)
+> +{
+> +	struct msdc_host *host = dev_id;
+> +	struct mmc_host *mmc = mmc_from_priv(host);
+> +
+> +	spin_lock(&host->lock);
+> +	if (likely(host->sdio_irq_cnt > 0)) {
+> +		disable_irq_nosync(host->eint_irq);
+> +		disable_irq_wake(host->eint_irq);
+> +		host->sdio_irq_cnt--;
+> +	}
+> +	spin_unlock(&host->lock);
+> +
+> +	sdio_signal_irq(mmc);
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +static int msdc_request_dat1_eint_irq(struct msdc_host *host)
+> +{
+> +	struct gpio_desc *desc;
+> +	int irq, ret;
+> +
+> +	desc = devm_gpiod_get(host->dev, "eint", GPIOD_IN);
+> +	if (IS_ERR(desc))
+> +		return PTR_ERR(desc);
+> +
+> +	irq = gpiod_to_irq(desc);
+> +	if (irq < 0)
+> +		return irq;
+> +
+> +	ret = devm_request_threaded_irq(host->dev, irq, NULL, msdc_sdio_eint_irq,
+> +					IRQF_TRIGGER_LOW | IRQF_ONESHOT | IRQF_NO_AUTOEN,
+> +					"sdio-eint", host);
+> +	if (ret)
+> +		return ret;
+> +
+> +	host->eint_irq = irq;
+> +
+> +	return 0;
+> +}
+> +
+>  static const struct cqhci_host_ops msdc_cmdq_ops = {
+>  	.enable         = msdc_cqe_enable,
+>  	.disable        = msdc_cqe_disable,
+> @@ -2631,6 +2681,23 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>  		goto host_free;
+>  	}
+>  
+> +	if (!(mmc->caps2 & MMC_CAP2_NO_SDIO) && (mmc->caps2 & MMC_CAP2_SDIO_ASYNC_IRQ)) {
+> +		/* Support for SDIO eint irq */
+> +		host->pins_eint = pinctrl_lookup_state(host->pinctrl, "state_eint");
+> +		if (IS_ERR(host->pins_eint)) {
+> +			dev_dbg(&pdev->dev, "Cannot find pinctrl eint!\n");
+> +		} else {
+> +			host->pins_dat1 = pinctrl_lookup_state(host->pinctrl, "state_dat1");
+> +			if (IS_ERR(host->pins_dat1)) {
+> +				ret = dev_err_probe(&pdev->dev, PTR_ERR(host->pins_dat1),
+> +						    "Cannot find pinctrl dat1!\n");
+> +				goto host_free;
+> +			}
+> +
+> +			host->sdio_eint_ready = true;
+> +		}
+> +	}
+> +
+>  	msdc_of_property_parse(pdev, host);
+>  
+>  	host->dev = &pdev->dev;
+> @@ -2722,6 +2789,16 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>  	if (ret)
+>  		goto release;
+>  
+> +	if (host->sdio_eint_ready) {
+> +		ret = msdc_request_dat1_eint_irq(host);
+> +		if (ret) {
+> +			dev_err(host->dev, "Failed to register data1 eint irq!\n");
+> +			goto release;
+> +		}
+> +
+> +		pinctrl_select_state(host->pinctrl, host->pins_dat1);
+> +	}
+> +
+>  	pm_runtime_set_active(host->dev);
+>  	pm_runtime_set_autosuspend_delay(host->dev, MTK_MMC_AUTOSUSPEND_DELAY);
+>  	pm_runtime_use_autosuspend(host->dev);
+> @@ -2843,8 +2920,22 @@ static int __maybe_unused msdc_runtime_suspend(struct device *dev)
+>  {
+>  	struct mmc_host *mmc = dev_get_drvdata(dev);
+>  	struct msdc_host *host = mmc_priv(mmc);
+> +	unsigned long flags;
+>  
+>  	msdc_save_reg(host);
+> +
+> +	if (host->sdio_eint_ready) {
+> +		disable_irq(host->irq);
+> +		pinctrl_select_state(host->pinctrl, host->pins_eint);
+> +		spin_lock_irqsave(&host->lock, flags);
+> +		if (host->sdio_irq_cnt == 0) {
+> +			enable_irq(host->eint_irq);
+> +			enable_irq_wake(host->eint_irq);
+> +			host->sdio_irq_cnt++;
+> +		}
+> +		sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+> +		spin_unlock_irqrestore(&host->lock, flags);
+> +	}
+>  	msdc_gate_clock(host);
+>  	return 0;
+>  }
+> @@ -2853,6 +2944,7 @@ static int __maybe_unused msdc_runtime_resume(struct device *dev)
+>  {
+>  	struct mmc_host *mmc = dev_get_drvdata(dev);
+>  	struct msdc_host *host = mmc_priv(mmc);
+> +	unsigned long flags;
+>  	int ret;
+>  
+>  	ret = msdc_ungate_clock(host);
+> @@ -2860,10 +2952,25 @@ static int __maybe_unused msdc_runtime_resume(struct device *dev)
+>  		return ret;
+>  
+>  	msdc_restore_reg(host);
+> +
+> +	if (host->sdio_eint_ready) {
+> +		spin_lock_irqsave(&host->lock, flags);
+> +		if (host->sdio_irq_cnt > 0) {
+> +			disable_irq_nosync(host->eint_irq);
+> +			disable_irq_wake(host->eint_irq);
+> +			host->sdio_irq_cnt--;
+> +			sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+> +		} else {
+> +			sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
+> +		}
+> +		spin_unlock_irqrestore(&host->lock, flags);
+> +		pinctrl_select_state(host->pinctrl, host->pins_uhs);
+> +		enable_irq(host->irq);
+> +	}
+>  	return 0;
+>  }
+>  
+> -static int __maybe_unused msdc_suspend(struct device *dev)
+> +static int __maybe_unused msdc_suspend_noirq(struct device *dev)
+>  {
+>  	struct mmc_host *mmc = dev_get_drvdata(dev);
+>  	int ret;
+> @@ -2877,13 +2984,13 @@ static int __maybe_unused msdc_suspend(struct device *dev)
+>  	return pm_runtime_force_suspend(dev);
+>  }
+>  
+> -static int __maybe_unused msdc_resume(struct device *dev)
+> +static int __maybe_unused msdc_resume_noirq(struct device *dev)
+>  {
+>  	return pm_runtime_force_resume(dev);
+>  }
+>  
+>  static const struct dev_pm_ops msdc_dev_pm_ops = {
+> -	SET_SYSTEM_SLEEP_PM_OPS(msdc_suspend, msdc_resume)
+> +	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(msdc_suspend_noirq, msdc_resume_noirq)
+>  	SET_RUNTIME_PM_OPS(msdc_runtime_suspend, msdc_runtime_resume, NULL)
+>  };
+>  
+> -- 
+> 2.25.1
+> 
+
 -- 
-2.32.0
+With Best Regards,
+Andy Shevchenko
+
 
 
 _______________________________________________
