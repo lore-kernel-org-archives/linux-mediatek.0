@@ -4,75 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B589DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jan 2022 20:52:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52F0EC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jan 2022 21:07:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8Yp/M2nXRKhaVrrCRiUqUlQQA9aEJHHJ9VS2IScoQcQ=; b=b2gewRLIKTBv2v
-	qB3/R42v+f2Km24zDVAJQe4PmJHsIEmIFnrGJRN1/f7JUrWusX8dFyKAeTe+s/enCbFjGbvNiMylI
-	kPBryJrhxPXd54wQFndVhrXxCB4uWGtWnu4ug3kT/n3a6lclslw6jqY+prNCwuVfhL9YbOOe8dwGu
-	VNoZanjmMHkgCzEN+uH6JdDfnx8SPy6v0lZjxmE70oO05cOomsyGactMdKwZN/HFT8G4uC/Ob9nWZ
-	yNG4KyMC0vCS/bHMlInVP0WpLiIjHoK6A7SyXGhvvEKCa17zLkf5XyF4t7B058bxjDBIzyBQ56RMT
-	GdIt0L2QVqKnb5YSsTAg==;
+	List-Owner; bh=rn8K0mYoXTmovoku5UKsuYmNedT4um9uTY3Acea2Nbg=; b=dHAZX8aqbgvkNM
+	TVnTea6nkrhYO0k7HUuYh5mNMSkW21o8IIQlRMMWAyeyp5ERitztm58zFHKpw97bqkLqD2u4wtWuY
+	nG9Wji0aINng4oLoWTbO5a0Zgo2NrzH7sJvdLuy+Ro7iyeO1W6K47wBpHQOiPALu9M/nSkjbpbzhn
+	le86YcPTbuLdqoLa9vPWHaTGRYpl+F0/0uo01r8dY33TXgCZNjAVeH3OSR9JuwwCJYQqGQnrvSc2j
+	qIYLkACIRM2VzQxzuTB9vGLK2rAXt6ViUMAd7VrVjCbxl5u1u/Tp45SVK7fDbQBnUNVd4RF7t7xMm
+	kZ8Fqvr2bc9u4IJIKrnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nB0t6-00G3nu-3Z; Fri, 21 Jan 2022 20:52:00 +0000
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+	id 1nB181-00G4tT-HC; Fri, 21 Jan 2022 21:07:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nB0t2-00G3mJ-RO
- for linux-mediatek@lists.infradead.org; Fri, 21 Jan 2022 20:51:58 +0000
-Received: by mail-yb1-xb35.google.com with SMTP id p5so30843772ybd.13
- for <linux-mediatek@lists.infradead.org>; Fri, 21 Jan 2022 12:51:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yx8Sp5yK+IdSrHNRElqCQeGwi3Mhv+uJHX0dumssPUA=;
- b=YjZAfWsIl22u4X60/fbS0dbemyatmDIkYev6n1TbCuzrDC87OZ3vL1EMl1GajyVlDf
- AelgkM6pKJ0kXs/tVKF3zcI07cEMv0w9EAYpMNi5c3CNWfYRphBxeQBYSK/rDzUD2Aoc
- O/9vGAd1++8iH81q0OyiG5sdMKU2Jii8KEkzgUDk+l8Bj9KfRDLw9nVEnd9csn9q1in7
- jIU40jwptembCj0iK/B4OXLRvkqGP5fdzwuauK1L2dBBPlFB84oZEhR3dut2uFSqfMfY
- 8nRZkKg0C73kq764VJ8P9MK8Kx0P/kX0fdX46xbVvRNhonRy8dadYg8FYS9E1G/Gvfrv
- RSYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=yx8Sp5yK+IdSrHNRElqCQeGwi3Mhv+uJHX0dumssPUA=;
- b=Himc1vGJjhYnfaUorlCYZspjD8aUJ6G/U6s/gM0z6ZT9alkw4CL6WIx+t7hn0hC65l
- LPEbVLS5/Goi3mj5SZlsB8OBC6j4TXuWBOsDieCUa1EoeuMFtQNIeXe8eZFQLbi8AtLG
- edS6UC1xZCwTsBb/syKhsIrfjm77O2F5cXOzyWUTCZGenYRe/8OAcmxvlm07+ePJGdTu
- ujwEU1USXh2NMhKNf4imLhGtuleYHzZ4jRZ0h/XTOGYe8UHFwC/DxSYZczk8DNC2MxYA
- 5JZwhy3gTqt+oQ5W4x3hcN3UQjtLQbf9dh8T1kBzlr87PMFUuSy72w/JtKHSm/Gy+Bqy
- etYA==
-X-Gm-Message-State: AOAM533RWA/RGipT19NtxpDjjyzBRxUyRHC/XZpHOSWNVSwCvL9rYFcg
- Pz3O1AHvuBayY4DOODs45VSeCgkv33ouTIvY7ZJLfA==
-X-Google-Smtp-Source: ABdhPJxkhXZrcRureYqCap4kFxTZxfwvDGSic4fyFA+HyhmO213hyixgvNMr4MNs1ShbFviWARp8lDLRAfZc4ikUV+s=
-X-Received: by 2002:a25:c841:: with SMTP id y62mr8672404ybf.196.1642798311679; 
- Fri, 21 Jan 2022 12:51:51 -0800 (PST)
+ id 1nB17p-00G4ra-Br; Fri, 21 Jan 2022 21:07:15 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id EBED661862;
+ Fri, 21 Jan 2022 21:07:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DECF5C36AE3;
+ Fri, 21 Jan 2022 21:07:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1642799230;
+ bh=089tvZeJfnrUsvrEacemjg/8ubghXaxBlNFpompPN9s=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=u3ESIMNf26/2y58DPKWZwUwPGob5WnqdLJuBFldic8ux6SzmVOsuZXMt9zUM81rH9
+ sQDopliPwWT/2YX9BZfrRlhFmFL+6/VBqrPXPqY7N0zTg3L6RZ+Y5oxHosqxIzJBHH
+ BfWGf/X5lkhuCEe5yVyXyot2FHdkJYDwQjA3T3kAo6/lDqvyjn1QtunFpz3k1+0b0h
+ AdyDpdZvcZLqTS2ilSli0/24KcckzWnsnq8SOTOor+1bJNdG0d03qDaTHePUZD7iIV
+ AJ4IRE7dNOzYOEYXlHj7+zxUZxPO0zs+jjlgrURugGWpjB9n7aeqm58yeIitteg/hC
+ vv8rC8TAl0X6Q==
+Received: by mail-ej1-f46.google.com with SMTP id a8so3337904ejc.8;
+ Fri, 21 Jan 2022 13:07:10 -0800 (PST)
+X-Gm-Message-State: AOAM533VbWk8fQv2ofKw9dqRN5kxgd59XKeVW9LJle8gxAxLemkcjAFW
+ Q9vlfbcdKACXFOM+yxZgpPVF69xqNO8dFa4vfQ==
+X-Google-Smtp-Source: ABdhPJzqTexivh1nIIrrin0+gSI1gf48e0Cr+GAzce0ilw9MmhV+9Yl/P/ftNrRo9eCqJTDvBx9AEGTjE43kmQN8KcE=
+X-Received: by 2002:a17:906:7801:: with SMTP id
+ u1mr4650474ejm.82.1642799229094; 
+ Fri, 21 Jan 2022 13:07:09 -0800 (PST)
 MIME-Version: 1.0
-References: <CAHmME9qVMomgb53rABKsucCoEhwsk+=KzDdEcGKtecOXuahTZw@mail.gmail.com>
- <20220119135450.564115-1-Jason@zx2c4.com> <YesPesOhftSzp2ft@sol.localdomain>
- <CAHmME9ow7TxCaYYayRn9rdJJSdQ48tWQgdrW00g7mHaWvVJ+Zw@mail.gmail.com>
-In-Reply-To: <CAHmME9ow7TxCaYYayRn9rdJJSdQ48tWQgdrW00g7mHaWvVJ+Zw@mail.gmail.com>
-From: Sami Tolvanen <samitolvanen@google.com>
-Date: Fri, 21 Jan 2022 12:51:40 -0800
-Message-ID: <CABCJKuf=eHuFfNjD-7FBTeft3XNTkEc4G9cDvYpMJgH_se12eg@mail.gmail.com>
-Subject: Re: [PATCH] lib/crypto: blake2s: avoid indirect calls to compression
- function for Clang CFI
-To: "Jason A. Donenfeld" <Jason@zx2c4.com>
-Cc: Eric Biggers <ebiggers@kernel.org>, Miles Chen <miles.chen@mediatek.com>, 
- Ard Biesheuvel <ardb@kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- Linux Crypto Mailing List <linux-crypto@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
- Nick Desaulniers <ndesaulniers@google.com>
+References: <20220117055254.9777-1-roy-cw.yeh@mediatek.com>
+ <20220117055254.9777-15-roy-cw.yeh@mediatek.com>
+In-Reply-To: <20220117055254.9777-15-roy-cw.yeh@mediatek.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Fri, 21 Jan 2022 15:06:57 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqLcT4_h+5_ci5423rKzd8E8uJZyt7nus-zs+X=ZozPM6A@mail.gmail.com>
+Message-ID: <CAL_JsqLcT4_h+5_ci5423rKzd8E8uJZyt7nus-zs+X=ZozPM6A@mail.gmail.com>
+Subject: Re: [PATCH v1 14/14] dt-bindings: media: mediatek: mdp3: add yaml for
+ new modules added in mt8195
+To: "roy-cw.yeh" <roy-cw.yeh@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Fabien Parent <fparent@baylibre.com>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>, 
+ daoyuan huang <daoyuan.huang@mediatek.com>,
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, 
+ Moudy Ho <moudy.ho@mediatek.com>, "river . cheng" <river.cheng@mediatek.com>, 
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220121_125156_906282_D425D461 
-X-CRM114-Status: GOOD (  16.56  )
+X-CRM114-CacheID: sfid-20220121_130713_524633_CE8533EE 
+X-CRM114-Status: GOOD (  21.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,30 +93,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jason,
+On Sun, Jan 16, 2022 at 11:53 PM roy-cw.yeh <roy-cw.yeh@mediatek.com> wrote:
+>
+> From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
+>
+> Add yaml for new modules added in mt8195
+>
+> Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
+> ---
+> This patch is base on [1]
+> [1] dt-bindings: arm: mediatek: move out common module from display folder
+> - https://patchwork.kernel.org/project/linux-mediatek/patch/20220107101425.6917-8-jason-jh.lin@mediatek.com/
 
-On Fri, Jan 21, 2022 at 12:23 PM Jason A. Donenfeld <Jason@zx2c4.com> wrote:
->
-> On Fri, Jan 21, 2022 at 8:54 PM Eric Biggers <ebiggers@kernel.org> wrote:
-> > There are some lines over 80 columns in this patch.
->
-> I'll fix that up.
->
-> > Otherwise this looks fine.  It would be really nice to fix this in clang,
-> > though.
->
-> I agree. I'm wondering whether it makes sense to roll with this patch,
-> or to just not change anything and lean on Clang upstream to fix their
-> bug. Full LTO is marked as "experimental" still. On the other hand,
-> Android ships with it turned on, so how "experimental" can it really
-> be? I don't have a strong read on the Clang ecosystem to know what
-> makes most sense, to apply this or not. Do you have an opinion?
+Looks to me like this is based on:
 
-We'll work on fixing the compiler, but please note that it's most
-likely going to take a while, so I would prefer to work around the
-issue in the kernel for now.
+https://lore.kernel.org/r/20220105093758.6850-1-moudy.ho@mediatek.com
 
-Sami
+Can we have some coordination between all the MDP3 series. I have no
+idea how all these sub-blocks fit together to provide any meaningful
+review.
+
+> ---
+>  .../bindings/arm/mediatek/mediatek,mmsys.yaml |  2 +
+>  .../bindings/media/mediatek,mdp3-aal.yaml     | 56 +++++++++++++++++
+>  .../bindings/media/mediatek,mdp3-color.yaml   | 56 +++++++++++++++++
+>  .../bindings/media/mediatek,mdp3-fg.yaml      | 55 +++++++++++++++++
+>  .../bindings/media/mediatek,mdp3-hdr.yaml     | 55 +++++++++++++++++
+>  .../bindings/media/mediatek,mdp3-merge.yaml   | 54 ++++++++++++++++
+>  .../bindings/media/mediatek,mdp3-ovl.yaml     | 53 ++++++++++++++++
+>  .../bindings/media/mediatek,mdp3-pad.yaml     | 56 +++++++++++++++++
+>  .../bindings/media/mediatek,mdp3-rdma.yaml    | 28 +++++++++
+>  .../bindings/media/mediatek,mdp3-rsz.yaml     |  2 +
+>  .../bindings/media/mediatek,mdp3-split.yaml   | 58 ++++++++++++++++++
+>  .../bindings/media/mediatek,mdp3-stitch.yaml  | 53 ++++++++++++++++
+>  .../bindings/media/mediatek,mdp3-tcc.yaml     | 54 ++++++++++++++++
+>  .../bindings/media/mediatek,mdp3-tdshp.yaml   | 61 +++++++++++++++++++
+>  .../bindings/media/mediatek,mdp3-wrot.yaml    |  3 +
+>  .../bindings/soc/mediatek/mediatek,mutex.yaml |  6 ++
+>  16 files changed, 652 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-aal.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-color.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-merge.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-ovl.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-pad.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-split.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
+>
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+> index 763c62323a74..9e59c8b738bb 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+> @@ -31,6 +31,8 @@ properties:
+>                - mediatek,mt8183-mmsys
+>                - mediatek,mt8192-mmsys
+>                - mediatek,mt8365-mmsys
+> +              - mediatek,mt8195-vppsys0
+> +              - mediatek,mt8195-vppsys1
+
+What's the difference between 0 and 1? Defining instance indices is
+not how things are described in DT. If this is just the same block
+with different connections, then you should be describing the
+connections (with the graph binding). If there's some other
+difference, then maybe those should be properties. I'm pretty sure
+I've said this before.
+
+The same question applies to the rest of the schemas with numbering.
+
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
