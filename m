@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 830ABC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jan 2022 23:35:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5823EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jan 2022 23:38:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vYzQS2sqNe8ZhxPOEPgmkMuT4JqgX2syZ5A7L9y4OJc=; b=ewOiFMPSNf3D+Z
-	G/DT5pr1SiHKQ0rdlN4bVN4+zMk0n9YcRuQJp88t2BA9M26n3GfoJNuuHt4q3E5b+XuOGNtmBfKA4
-	J8vIybn2dxor3n6hhdYW63cUbRE3FLLUejZIhFVUVI1oxEed5hl3Hobny6AOxJO/IFt7+SA1Ihvc7
-	qCmPRPPOlk3gYWGf4CPloTVnVZk6qN0ZSXgT1MVaT0KGPKLvcsjm4gGCs5lhkdQ/QoPJk0QbTnQhy
-	YRO92n9jxD9K1By7D1U1ENCzGNhfeXEB8VA/6qJ3DSTfj+8p/tjAaLGYhbhsxBMewoPAjfURnQrsR
-	9amy2MIrt8cUDXSpsiKQ==;
+	List-Owner; bh=JG4Fl7yYfdp+Fmh85HhEsfM7trOtuKYtbjX9b5YYWJo=; b=xZ3A3gVuFpWHog
+	nHfrwiXF47H/Ya61Ee2PAZzq6ogiXsoaRZrSbpmMsov3UaCtG9G1COOJ7xkV6B2XTNCC3Cg/z+5uF
+	oJ2m3K/9Ptupxt+AR0pB0aYgLdU9yRr7fhsJI49exDZg+rneI8zTbaLqNE7j5LJlVnbJGGY+kFPBL
+	OO9hD5MHKWipFoLCB/gb/UP7giuVcVLXfNELg9Xy1ch7fdYW10uJTQbQ/Q4dOLhsMk/SMDDJwK1xe
+	qCTXQjk24szJssBaQnfA2v0ShVeBCu2tUVAsGTUQA/RvOMMFMrzxlYKNDppZq7YexLlObSYLwAt70
+	nRzU3iPnYLv8FDgWSM+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nB3RN-00GFki-5q; Fri, 21 Jan 2022 23:35:33 +0000
-Received: from mail-oo1-f50.google.com ([209.85.161.50])
+	id 1nB3UD-00GGNy-Jj; Fri, 21 Jan 2022 23:38:29 +0000
+Received: from mail-ot1-f49.google.com ([209.85.210.49])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nB3RA-00GFgw-EU; Fri, 21 Jan 2022 23:35:21 +0000
-Received: by mail-oo1-f50.google.com with SMTP id
- p4-20020a4a8e84000000b002e598a51d60so468153ook.2; 
- Fri, 21 Jan 2022 15:35:18 -0800 (PST)
+ id 1nB3U0-00GGKW-JR; Fri, 21 Jan 2022 23:38:17 +0000
+Received: by mail-ot1-f49.google.com with SMTP id
+ y11-20020a0568302a0b00b0059a54d66106so13784534otu.0; 
+ Fri, 21 Jan 2022 15:38:11 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=lKHiq2AsZWPinKuXt6G3c62yHGQDekscNMsLmGJgK2k=;
- b=t6DsyJD/1YHKWArLjVRHH7rkXI5L5UJ9o85OQj+ABXVV+lz4nNYZRhDp0mIWZZqqVZ
- MbyJHjzQQ6M12J7nYPv4aTv3YupmoDca5Z0+mx8WbuwMouRdL33Ck+371MU3k/jz1DWb
- p9744XteGkxgeysw+0sDl5DQrUmexkXDydmseqaxI1AbzK+siSYPYPMbKbyTKhnTMKLR
- ViOaDpx2uMFta9b5yWdPw/jezlt3CXwLd0pLmzecfy4M/hCHycwm7a9eqS0X4Z1OB9Tj
- MQ8wWkF/ADoPjM029Poebq+NuKn1m4KvI8rwUX0ATzLhg4j2wVajZ4chOfznjSOnJXzr
- Vf6Q==
-X-Gm-Message-State: AOAM533kIbUtpAJzwDrUcAruHWcbYOyc4WuA9W7C4hPoeZGeLyeEkwxw
- OduT2ISc9BgHUJH1cezcIA==
-X-Google-Smtp-Source: ABdhPJyV292K3EFqdUiuUDNzx8/jE1xrtTcg1jtIEpo3bwTOmFomBtGk7ogEx3SZ6y8XVzqgHm9JTA==
-X-Received: by 2002:a05:6820:151b:: with SMTP id
- ay27mr4069888oob.47.1642808118263; 
- Fri, 21 Jan 2022 15:35:18 -0800 (PST)
+ bh=e23Qd0fm0GuK2sIIse882pkUGPnMfjGNce/vSbHSQdE=;
+ b=ufYkOy0yj3AbY927ezP3j3D8f/UjCRqcz/vantQfOQAhBK2htnLECTwHdh0ogM21KJ
+ A7NewSGKUoUcfsQavBhOlPhhlgHGLbslIH8sSTjmQrFulCsp/h6GOcZOmFMiFScUCuCp
+ 2Z3k/FuTKS0y+FqlQOhYf+GqvHhYS+nyIQ6B5YuhkbpDQ5KsI7RP8IlMG284s2hom6q0
+ ZYrTW8Zn1R8aFDJdCLzZk9ENDXAtqokXRKOlj6EEPgNhiWDynuzC6+TOait6ugPwDrcJ
+ b2sX5NxyoZC01VloOWsbVOpKTLcRfPxJlFzz4cc0F0Yi+3EODQuRFPI8Krv2CJY2xgNh
+ uSeg==
+X-Gm-Message-State: AOAM533FxTpJl7qojOsY9tRf+yDb3qGkTA0e+C3UYNjJ1ucCcFnCmJyq
+ q+uYXs5++p0y8nOkMWbIvg==
+X-Google-Smtp-Source: ABdhPJx8DELQ9xc5SKlrpkpLS4lSCx/gVdpoSqAojzwmxkwoW4TLkPA8rhSCwN3hTZgsaKBeYeeRDg==
+X-Received: by 2002:a05:6830:1f56:: with SMTP id
+ u22mr4325700oth.138.1642808291144; 
+ Fri, 21 Jan 2022 15:38:11 -0800 (PST)
 Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
  [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id w13sm2213974oik.52.2022.01.21.15.35.17
+ by smtp.gmail.com with ESMTPSA id f6sm1399162oos.7.2022.01.21.15.38.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Jan 2022 15:35:17 -0800 (PST)
-Received: (nullmailer pid 1823399 invoked by uid 1000);
- Fri, 21 Jan 2022 23:35:16 -0000
-Date: Fri, 21 Jan 2022 17:35:16 -0600
+ Fri, 21 Jan 2022 15:38:10 -0800 (PST)
+Received: (nullmailer pid 1827883 invoked by uid 1000);
+ Fri, 21 Jan 2022 23:38:09 -0000
+Date: Fri, 21 Jan 2022 17:38:09 -0600
 From: Rob Herring <robh@kernel.org>
-To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
- Nicolas Boichat <drinkcat@chromium.org>, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- srv_heupstream@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [v2 2/3] dt-bindings: ARM: Mediatek: Remove vppsys in MT8195
- clock document
-Message-ID: <YetDNPs8Xo/Alndj@robh.at.kernel.org>
-References: <20220110005902.27148-1-chun-jie.chen@mediatek.com>
- <20220110005902.27148-3-chun-jie.chen@mediatek.com>
+To: Guodong Liu <guodong.liu@mediatek.com>
+Cc: linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ Zhiyong Tao <zhiyong.tao@mediatek.com>, linux-iio@vger.kernel.org,
+ Jonathan Cameron <jic23@kernel.org>, linux-mediatek@lists.infradead.org,
+ Lars-Peter Clausen <lars@metafoo.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org
+Subject: Re: [PATCH v1 1/2] dt-bindings: iio: adc: Add compatible for
+ Mediatek MT8186
+Message-ID: <YetD4SehEDxLkrzH@robh.at.kernel.org>
+References: <20220110084841.575-1-guodong.liu@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220110005902.27148-3-chun-jie.chen@mediatek.com>
+In-Reply-To: <20220110084841.575-1-guodong.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220121_153520_511249_4D70DD41 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20220121_153816_670677_D63210AB 
+X-CRM114-Status: UNSURE (   9.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,68 +88,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 10, 2022 at 08:59:01AM +0800, Chun-Jie Chen wrote:
-> vppsys0 and vppsys1 sub-system are both integrated with mmsys driver,
-> should be describe in mediatek,mmsys.yaml
-
-Driver partitioning is not a reason to change the DT. This needs a 
-better description answering why you are doing this and what are the 
-implications (is this breaking the ABI?).
-
+On Mon, 10 Jan 2022 16:48:40 +0800, Guodong Liu wrote:
+> This commit adds dt-binding documentation of auxadc for Mediatek MT8186 SoC
+> Platform.
 > 
-> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
 > ---
->  .../arm/mediatek/mediatek,mt8195-clock.yaml      | 16 ----------------
->  1 file changed, 16 deletions(-)
+>  .../devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml      | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8195-clock.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8195-clock.yaml
-> index 17fcbb45d121..d62d60181147 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8195-clock.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8195-clock.yaml
-> @@ -28,11 +28,9 @@ properties:
->            - mediatek,mt8195-imp_iic_wrap_s
->            - mediatek,mt8195-imp_iic_wrap_w
->            - mediatek,mt8195-mfgcfg
-> -          - mediatek,mt8195-vppsys0
->            - mediatek,mt8195-wpesys
->            - mediatek,mt8195-wpesys_vpp0
->            - mediatek,mt8195-wpesys_vpp1
-> -          - mediatek,mt8195-vppsys1
->            - mediatek,mt8195-imgsys
->            - mediatek,mt8195-imgsys1_dip_top
->            - mediatek,mt8195-imgsys1_dip_nr
-> @@ -92,13 +90,6 @@ examples:
->          #clock-cells = <1>;
->      };
->  
-> -  - |
-> -    vppsys0: clock-controller@14000000 {
-> -        compatible = "mediatek,mt8195-vppsys0";
-> -        reg = <0x14000000 0x1000>;
-> -        #clock-cells = <1>;
-> -    };
-> -
->    - |
->      wpesys: clock-controller@14e00000 {
->          compatible = "mediatek,mt8195-wpesys";
-> @@ -120,13 +111,6 @@ examples:
->          #clock-cells = <1>;
->      };
->  
-> -  - |
-> -    vppsys1: clock-controller@14f00000 {
-> -        compatible = "mediatek,mt8195-vppsys1";
-> -        reg = <0x14f00000 0x1000>;
-> -        #clock-cells = <1>;
-> -    };
-> -
->    - |
->      imgsys: clock-controller@15000000 {
->          compatible = "mediatek,mt8195-imgsys";
-> -- 
-> 2.18.0
-> 
-> 
+
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
