@@ -4,70 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75D72C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jan 2022 11:58:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07BDFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jan 2022 14:03:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MUsGYFyg5sbgzlcpdYPtji/xTduVkXG1/2BJTSYhLfY=; b=kiXDHYAM6b3L2UuZydcxDMkSY9
-	lf0XXU4t2LgRvJFmHLJNDEQl2ot+hmOnfz68bfkFwFfWSzRPKdVwj9xGsL1q89fPT5epoY8CbuFC/
-	bNy0PzaNBW/sNDewN+WYNjKbZUu3yTSj5DMjCbYFUxTvm8WU3XTlwixWX32k5NS9Rk2VLVJ4VDYts
-	OQdwK5Prwld8vNG9gH2prpuS9BuGn1b1l+DiADvHAwDFQIHklGzNdrUGUOwqSAG25sZ2fYc+lVCxw
-	yFiZ7qnb2JFwUVyBGwjBV481i4pLK1WsnUp9KOjOm0uh1oLuqzEqQg2rVX9Gg16n1g+ek2monkJiZ
-	p9tKCVmA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=m9Bot3QfF0DZktPCx5YLDgpgc1L2k1s7EiMFJ9SJlOs=; b=1A7MespwMhJJXe
+	7nUmxL++vjE9lo6miohXIe0DgT39BxQjjRWWXHo/vjIMQ2aRMlrun/gt9rIsZQaVqAVwILDiM4IHK
+	jA3VOO20Yeg+bB4gclHgEbKDXu07XniK5UUhmOk1TgnG56Txz6TevYAxOGNM0tFMmx/vUO5xwPW0D
+	+wpAjP4DC3xTAhUnIkdnv5KehjDLg2FH63l5EtJc171W3n/rtX2Y3JJ8eqEzDn13UVwIVjboli4i1
+	/BjHxMN0K+YeQXxXFVl8agLPKMlM0Y91hDVq3UarBGEdy01zLc5Iyj5xzEQXrdf0R2IXHp6zOqiWc
+	LcIKLWSQSQntA8h4s2/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nAsZ1-00ErgA-N8; Fri, 21 Jan 2022 11:58:43 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nAuVq-00FHjb-UY; Fri, 21 Jan 2022 14:03:35 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nAsYk-00Erbl-Fy; Fri, 21 Jan 2022 11:58:28 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id C608D1F452FD
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1642766305;
- bh=sve0CVVBkT42bUYJR3+ftznqAKSkXJa/FBYt+PZbAAw=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=J+sk2ZTFVI1EG9Pgo8xj/GoOcEC+Zk981jYXrwz0V4a8/PPTgCVdBUw1bzubErSo8
- Xfh+zOWj4NsU6sb/XWAi0q/tFkWul03sOgHfl7WUGd39TXyzIz8ZHShWy09iyK+0a/
- xiiNaHIfpx7dgd2NvJ1wZZj4niROw1byWj5TbvQHk2Fy6RzjbF7C3raUcH1TZqIcKf
- yLZVyWgLQzMoZhdX4hZTA+H6mRdPoUFWZdT6njhP/Ao3YW63dfoWnMPUj05DU3v22V
- 7/f2sDyDraE0b1+II1nfHrWMe/ZKiNpz0aruAxOK391XNUxbzQQy/nWNWTNhb1ZEDl
- ZCDx5f3Ov8V0A==
-Subject: Re: [PATCH v11 2/3] dts: arm64: mt8183: add Mediatek MDP3 nodes
-To: Moudy Ho <moudy.ho@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Jernej Skrabec <jernej.skrabec@siol.net>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>, Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ id 1nAuVl-00FHew-W0
+ for linux-mediatek@lists.infradead.org; Fri, 21 Jan 2022 14:03:32 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id
+ l35-20020a05600c1d2300b0034d477271c1so22565413wms.3
+ for <linux-mediatek@lists.infradead.org>; Fri, 21 Jan 2022 06:03:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=4l1jtRGL+pYHVAZJF8KgIUHpCfnZhhgBRKh+OiDvorY=;
+ b=fhwTlzKWGaMzqfsup3wVctsfoZXTOQaOFb5R5Juixld0ttqy1JeVP0UBAnOO4SFypl
+ Df1prkauSmcDUosFSq4FqwsGSKYVOkw/bqBDtx72ou6iRRmwyUXBMV/RtyPni7/T2Db8
+ wsjOpwr9rNKpmvWP9ckaqB/Sf/UZl+6/jpWbyHCWRAm91Ee79b8icLN1nQTbu4Lb/aht
+ jBZCoO75QW8Jm5JEjSctOPETtHCTvm8cM5kB4K2d/gItxQd+q1lB4g+qprWSUABunWlE
+ /kJbwx6fRw7U+uCgbcEu959QoZL6efdJOqgrjmamXjX8Ycdi+of9m5uF9YbOdqAzLMcC
+ ZRbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=4l1jtRGL+pYHVAZJF8KgIUHpCfnZhhgBRKh+OiDvorY=;
+ b=8CI6H0gRDOVwG2fPKFQGlgHRv/YfafnEGnB0bOuoqelgRqHOC43PbCi/ggNICAGcHd
+ lERvpyKQAtz82bHn/hLAJ2rknysMiT/F31Zru+DiAYo1ltJVhlrQOdHbVNqDufCRvbHM
+ kq1KLfP7f7efEyw27Shxd5EKdnzf6RjAORhUjR32AgPBzwaRG9KOOsEwCUoyQ4zK/1oR
+ xuFxZJ5rqZlXb+trQjuiAmJI88S9/DmDAw3tgEAyP0U7cyeWRRk3iodZyoVkeAQlsG6l
+ mZFzvThFouHG84ka1iWgISXt/TAy2fRZxoUeaPaKbuMw6aR4T2nFBqA921lShFryZ25f
+ L4UQ==
+X-Gm-Message-State: AOAM530Lquk+f3B6A6C0oEjV0Dqzmw38WA9N/eNH5LkmA+WWZlz2+kum
+ Zzz+24fJOWyfqFQJV1GNMFSinmJyjErlBw==
+X-Google-Smtp-Source: ABdhPJwSn5xqcnOw4GAEgDzNJvgvtqvE75JH7mto0ajETAzgXi5MCr9UUfks/or68aOUSSE9IMIGYQ==
+X-Received: by 2002:adf:fbc5:: with SMTP id d5mr3913609wrs.83.1642773807588;
+ Fri, 21 Jan 2022 06:03:27 -0800 (PST)
+Received: from groot.home (lfbn-tou-1-205-205.w86-201.abo.wanadoo.fr.
+ [86.201.52.205])
+ by smtp.gmail.com with ESMTPSA id p29sm9225129wms.5.2022.01.21.06.03.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 21 Jan 2022 06:03:27 -0800 (PST)
+From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Fabien Parent <fparent@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
+ linux-input@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>,
- tfiga@chromium.org, drinkcat@chromium.org, pihsun@chromium.org,
- hsinyi@google.com, Maoguang Meng <maoguang.meng@mediatek.com>,
- daoyuan huang <daoyuan.huang@mediatek.com>,
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, menghui.lin@mediatek.com,
- sj.huang@mediatek.com, allen-kh.cheng@mediatek.com, randy.wu@mediatek.com,
- jason-jh.lin@mediatek.com, roy-cw.yeh@mediatek.com,
- river.cheng@mediatek.com, srv_heupstream@mediatek.com
-References: <20220105093758.6850-1-moudy.ho@mediatek.com>
- <20220105093758.6850-3-moudy.ho@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <d61ec481-8059-a897-504a-0125f88fad61@collabora.com>
-Date: Fri, 21 Jan 2022 12:58:21 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ linux-kernel@vger.kernel.org,
+ Mattijs Korpershoek <mkorpershoek@baylibre.com>
+Subject: [PATCH v4 0/4] input: MT6358 PMIC button support
+Date: Fri, 21 Jan 2022 15:03:19 +0100
+Message-Id: <20220121140323.4080640-1-mkorpershoek@baylibre.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-In-Reply-To: <20220105093758.6850-3-moudy.ho@mediatek.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220121_035826_717343_3C223D2A 
-X-CRM114-Status: GOOD (  16.30  )
+X-CRM114-CacheID: sfid-20220121_060330_115282_AB139F93 
+X-CRM114-Status: GOOD (  10.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,75 +87,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/01/22 10:37, Moudy Ho ha scritto:
-> Add device nodes for Media Data Path 3 (MDP3) modules.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 108 ++++++++++++++++++++++-
->   1 file changed, 107 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index ba4584faca5a..b872ef1ff6b3 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -1325,6 +1325,79 @@
->   			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
->   		};
->   
-> +		mdp3_rdma0: mdp3_rdma0@14001000 {
-> +			compatible = "mediatek,mt8183-mdp3",
-> +				     "mediatek,mt8183-mdp3-rdma0";
-> +			mediatek,scp = <&scp>;
-> +			mediatek,mdp3-comps = "mediatek,mt8183-mdp3-dl1",
-> +					      "mediatek,mt8183-mdp3-dl2",
-> +					      "mediatek,mt8183-mdp3-path1",
-> +					      "mediatek,mt8183-mdp3-path2",
-> +					      "mediatek,mt8183-mdp3-imgi",
-> +					      "mediatek,mt8183-mdp3-exto";
-> +			reg = <0 0x14001000 0 0x1000>,
-> +			      <0 0x14000000 0 0x1000>,
-> +			      <0 0x14005000 0 0x1000>,
-> +			      <0 0x14006000 0 0x1000>,
-> +			      <0 0x15020000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>,
-> +						  <&gce SUBSYS_1400XXXX 0 0x1000>,
-> +						  <&gce SUBSYS_1400XXXX 0x5000 0x1000>,
-> +						  <&gce SUBSYS_1400XXXX 0x6000 0x1000>,
-> +						  <&gce SUBSYS_1502XXXX 0 0x1000>;
-> +			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-> +			clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-> +				 <&mmsys CLK_MM_MDP_RSZ1>,
-> +				 <&mmsys CLK_MM_MDP_DL_TXCK>,
-> +				 <&mmsys CLK_MM_MDP_DL_RX>,
-> +				 <&mmsys CLK_MM_IPU_DL_TXCK>,
-> +				 <&mmsys CLK_MM_IPU_DL_RX>;
-> +			iommus = <&iommu M4U_PORT_MDP_RDMA0>;
-> +			mediatek,mmsys = <&mmsys>;
-> +			mediatek,mm-mutex = <&mutex>;
-> +			mediatek,mailbox-gce = <&gce>;
-> +			mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST 0>,
-> +				 <&gce 21 CMDQ_THR_PRIO_LOWEST>,
-> +				 <&gce 22 CMDQ_THR_PRIO_LOWEST>,
-> +				 <&gce 23 CMDQ_THR_PRIO_LOWEST>;
+The MediaTek MT6358 PMIC has support for two buttons: PWR and HOME.
 
-Hello Moudy,
-the mboxes for gce 21, 22, 23 are missing the third cell. Please fix.
+The interrupt logic is a little different than other PMICs from the
+same family:
+for MT6323 and MT6397, we have one interrupt source per button
+* for MT6358, we have two interrupts lines per button: the press and
+* release interrupts are distinct sources.
 
-Regards,
-Angelo
+Changes since v3 [1]:
+* checkpatch.pl --strict fixes
 
-> +			gce-subsys = <&gce 0x14000000 SUBSYS_1400XXXX>,
-> +				     <&gce 0x14010000 SUBSYS_1401XXXX>,
-> +				     <&gce 0x14020000 SUBSYS_1402XXXX>,
-> +				     <&gce 0x15020000 SUBSYS_1502XXXX>;
-> +		};
-> +
+Changes since v2 [2]:
+* added 4th patch with device tree enable
+* cover letter title prefixed with 'input'
+
+This has been tested with evtest on mt8183-pumpkin on input/next
+
+[1] https://lore.kernel.org/r/20210702134310.3451560-1-mkorpershoek@baylibre.com
+[2] https://lore.kernel.org/r/id:20210512152648.39961-1-mkorpershoek@baylibre.com
+
+Mattijs Korpershoek (4):
+  Input: mtk-pmic-keys - use get_irq_byname() instead of index
+  dt-bindings: input: mtk-pmic-keys: add MT6358 binding definition
+  Input: mtk-pmic-keys - add support for MT6358
+  arm64: dts: mt6358: add mt6358-keys node
+
+ .../bindings/input/mtk-pmic-keys.txt          |  5 +-
+ arch/arm64/boot/dts/mediatek/mt6358.dtsi      | 12 ++++
+ drivers/input/keyboard/mtk-pmic-keys.c        | 55 +++++++++++++++++--
+ 3 files changed, 67 insertions(+), 5 deletions(-)
+
+
+base-commit: 87a0b2fafc09766d8c55461a18345a1cfb10a7fe
+-- 
+2.32.0
 
 
 _______________________________________________
