@@ -4,65 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E6D3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Jan 2022 16:01:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A27E0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Jan 2022 17:49:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8gLnFr7KXPNFKyoXR3sGzXH9W0/8/WwlRPgXeaeONp4=; b=EOMNpO/AVPGXJH
-	HFjXKzX1XCwH6VJDMlWXliGNdQjSXAfA538TXsSpQKH5DySuMjAwNUsmSnHPN0H/4GDJgUHMgGztl
-	SW5druEUnEqGwogbuyqJhmPWzKIdOMjOBK7RJHEEvX11rz5PcAgLfhf4vXBqce7tzgoIjkY9QE3yP
-	zmFJuCwRNmxDX4OYT6EvcIpD0zc4EGN7972ZJmwhdwEQukgC7o6oIAMGJsOYGmF25pAEJ+uw362KU
-	OPvBHvmknMCLwzJpcLm2tglNZ3P9CHGcL7/BSuZ07ANJK7X0hmu5vRKHXzbZ5DcCfs1+T77R6+hMy
-	10M1CPqj+3QGbgDzXhTQ==;
+	List-Owner; bh=ZamphJCQwiNvzGhyTxcDn4mDhNK5IFVl/ZbLViJZQI4=; b=A3O8ZBno7SenYR
+	dkC1YRqUsqDTb1akN6AHfMZABjMT9bzdluVrwOPgcrz/ggc1iYDEP5gXk/gE86cArtZNedmGoja5A
+	j2noIeKElsTHZ7E6R+SobcN3oZMKeK4/n/AxLdzs2slQEOVcd/c8ZgzQXcLgQMq3BlRXryK6lqWA6
+	w+FHTLN9omkCu/fXvYvPzk6w7ZktUYQfTriEoJg4RhyLlEn8Uc3neI4hfjNh0m2Eot2z11eTnp+qp
+	+gwSONHXFToqP0D9AmQFTxnEL95OrEp7NB4olirJplahR9E8VUiXVeuUNSTVL16cZAVKw9rKCPdg5
+	fUB+iVIyvHQPumPxwtqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nBfIo-001FGE-HW; Sun, 23 Jan 2022 16:01:14 +0000
-Received: from vps0.lunn.ch ([185.16.172.187])
+	id 1nBgyy-001VwO-6Q; Sun, 23 Jan 2022 17:48:52 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nBfCU-001DJO-1p; Sun, 23 Jan 2022 15:54:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
- s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
- Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=7QuzV0xUqMcqlybybHjjxruT8uYyoncKxFO84jO3pZw=; b=6RDIz5HpE/Hb76XWRZjGAksyKY
- ufq2ZfMZbZYskeE/CyfAwTIw7uqHxUZEbhvswZ5Lel1yuQFp33k+ktJTuvvmzj0+psykPL+FQwnMc
- n9oI4RcEi1LB5i5ImrzjA1iffn8B+LF1DOrstaDmET1hM0Isb4BRjw7xRix1PR+7LMkI=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
- (envelope-from <andrew@lunn.ch>)
- id 1nBfCC-002OMg-QW; Sun, 23 Jan 2022 16:54:24 +0100
-Date: Sun, 23 Jan 2022 16:54:24 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Jisheng Zhang <jszhang@kernel.org>
-Cc: Florian Fainelli <f.fainelli@gmail.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>,
- "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Doug Berger <opendmb@gmail.com>,
- Joakim Zhang <qiangqing.zhang@nxp.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Bryan Whitehead <bryan.whitehead@microchip.com>,
- UNGLinuxDriver@microchip.com, Byungho An <bh74.an@samsung.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- bcm-kernel-feedback-list@broadcom.com
-Subject: Re: [PATCH] net: dsa|ethernet: use bool values to pass bool param of
- phy_init_eee
-Message-ID: <Ye16MDZ/Bp2KZcJq@lunn.ch>
-References: <20220123152241.1480-1-jszhang@kernel.org>
+ id 1nBgyv-001Vvh-2a
+ for linux-mediatek@lists.infradead.org; Sun, 23 Jan 2022 17:48:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1642960109; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=j7uqZ3uwvuF1I9hP9HaHYPcidRWKSpOholKukqUGDxC7YaE9m9KLBgEPmm62mY9bJSNrEVMYyn3SvB9TU4w/Jv0u1MHg6q8lYR0vkkfAps9ttCIXp3onboe9F1LPJjIcHoqFvTfZeE8UhIgzg9TxWkWQDunbdHo2uj3NWKuA26I=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1642960109;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To;
+ bh=+eH2PmYS7tvCH6Q20kS59btHpbfUOjKupc/umJyNmOY=; 
+ b=Hzn5Fhcd8KR5rfQx2ckUioTp7S/zlexQVZVclmDdrMbQVb9BUiSjwrDDF4YiiF6TqZDIR9e037yW972CuUi1ZwQlr8R1gO1j9Jr+XPCCo+l6EH+u9Ze+rlvIlh8Oo/jWigQWyKNyHrB9YthSLUYsKByi72UZ6xFnJqPEd/TfgCA=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=arinc9.com;
+ spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+ dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1642960109; 
+ s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+ h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
+ bh=+eH2PmYS7tvCH6Q20kS59btHpbfUOjKupc/umJyNmOY=;
+ b=hjkOGn2PGskaRzUpQ7Arz55/nwl3+xOkgttcy31Y7bkaoc0MFll1eeXXB6L7TrbP
+ rct/XRxi9uFAW5MAtXB0RGlUEQNyY4RqFqqXYZ8j5/A9gZEIeQi1drWk2DHQ6pGH7EU
+ jHSK9EMOkqVOBH0AEHON15vkvSpSfZPkizY6ssEM=
+Received: from [10.10.10.216] (85.117.236.245 [85.117.236.245]) by
+ mx.zohomail.com with SMTPS id 1642960108103128.06493738732195;
+ Sun, 23 Jan 2022 09:48:28 -0800 (PST)
+Message-ID: <1c100b5b-1ea2-cb66-96e0-d0127b50f1a2@arinc9.com>
+Date: Sun, 23 Jan 2022 20:48:21 +0300
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220123152241.1480-1-jszhang@kernel.org>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: MT7621 SoC Traffic Won't Flow on RGMII2 Bus/2nd GMAC
+Content-Language: en-US
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: DENG Qingfang <dqfext@gmail.com>,
+ Luiz Angelo Daros de Luca <luizluca@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <john@phrozen.org>,
+ Siddhant Gupta <siddhantgupta416@gmail.com>,
+ Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Russell King <linux@armlinux.org.uk>,
+ Jakub Kicinski <kuba@kernel.org>, David Miller <davem@davemloft.net>,
+ =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, netdev <netdev@vger.kernel.org>,
+ linux-mips@vger.kernel.org,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, openwrt-devel@lists.openwrt.org,
+ erkin.bozoglu@xeront.com
+References: <83a35aa3-6cb8-2bc4-2ff4-64278bbcd8c8@arinc9.com>
+ <CALW65jZ4N_YRJd8F-uaETWm1Hs3rNcy95csf++rz7vTk8G8oOg@mail.gmail.com>
+ <02ecce91-7aad-4392-c9d7-f45ca1b31e0b@arinc9.com> <Ye1zwIFUa5LPQbQm@lunn.ch>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <Ye1zwIFUa5LPQbQm@lunn.ch>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220123_075442_136726_C54EAEC6 
-X-CRM114-Status: UNSURE (   6.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220123_094849_189484_AAB3D34C 
+X-CRM114-Status: GOOD (  13.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,22 +91,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jan 23, 2022 at 11:22:41PM +0800, Jisheng Zhang wrote:
-> The 2nd param of phy_init_eee(): clk_stop_enable is a bool param, use
-> true or false instead of 1/0.
-> 
-> Signed-off-by: Jisheng Zhang <jszhang@kernel.org>
-
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-
-    Andrew
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gMjMvMDEvMjAyMiAxODoyNiwgQW5kcmV3IEx1bm4gd3JvdGU6Cj4gT24gU3VuLCBKYW4gMjMs
+IDIwMjIgYXQgMTE6MzM6MDRBTSArMDMwMCwgQXLEsW7DpyDDnE5BTCB3cm90ZToKPj4gSGV5IERl
+bmcsCj4+Cj4+IE9uIDIzLzAxLzIwMjIgMDk6NTEsIERFTkcgUWluZ2Zhbmcgd3JvdGU6Cj4+PiBI
+aSwKPj4+Cj4+PiBEbyB5b3Ugc2V0IHRoZSBldGhlcm5ldCBwaW5tdXggY29ycmVjdGx5Pwo+Pj4K
+Pj4+ICZldGhlcm5ldCB7Cj4+PiAgICAgICBwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+Pj4g
+ICAgICAgcGluY3RybC0wID0gPCZyZ21paTFfcGlucyAmcmdtaWkyX3BpbnMgJm1kaW9fcGlucz47
+Cj4+PiB9Owo+Pgo+PiBUaGlzIGZpeGVkIGl0ISBXZSBkaWQgaGF2ZSAmcmdtaWkyX3BpbnMgb24g
+dGhlIGdtYWMxIG5vZGUgKGl0IHdhcyBvcmlnaW5hbGx5Cj4+IG9uIGV4dGVybmFsX3BoeSkgc28g
+d2UgbmV2ZXIgdGhvdWdodCB0byBpbnZlc3RpZ2F0ZSB0aGUgcGluY3RybAo+PiBjb25maWd1cmF0
+aW9uIGZ1cnRoZXIhIFR1cm5zIG91dCAmcmdtaWkyX3BpbnMgbmVlZHMgdG8gYmUgZGVmaW5lZCBv
+biB0aGUKPj4gZXRoZXJuZXQgbm9kZSBpbnN0ZWFkLgo+IAo+IFBIWXMgYXJlIGdlbmVyYWxseSBl
+eHRlcm5hbCwgc28gcGlubXV4IG9uIHRoZW0gbWFrZXMgbm8gc2Vuc2UuIFBIWXMgaW4KPiBEVCBh
+cmUgbm90IGRldmljZXMgaW4gdGhlIHVzdWFsIHNlbnNlLCBzbyBpIGRvbid0IHRoaW5rIHRoZSBk
+cml2ZXIKPiBjb3JlIHdpbGwgaGFuZGxlIHBpbm11eCBmb3IgdGhlbSwgZXZlbiBpZiB5b3UgZGlk
+IGxpc3QgdGhlbS4KPiAKPiBUaGlzIGNvdWxkIGJlIGludGVyZXN0aW5nIGZvciB0aGUgRFQgY29t
+cGxpYW5jZSBjaGVja2VyLiBJZGVhbGx5IHdlCj4gd2FudCBpdCB0byB3YXJuIGlmIGl0IGZpbmRz
+IGEgcGlubXV4IGNvbmZpZ3VyYXRpb24gaW4gYSBQSFkgbm9kZS4KCkkgZG9uJ3Qgc2VlIGFueSB3
+YXJuaW5ncyBhYm91dCBpdDoKCiQgY3BwIC1ub3N0ZGluYyAtSSBpbmNsdWRlIC1JIGFyY2ggLXVu
+ZGVmIC14IGFzc2VtYmxlci13aXRoLWNwcCAKZHJpdmVycy9zdGFnaW5nL210NzYyMS1kdHMvbXQ3
+NjIxLmR0c2kgbXQ3NjIxLmR0c2kucHJlcHJvY2Vzc2VkCiQgZHRjIC1JIGR0cyAtTyBkdGIgLXAg
+MHgxMDAwIG10NzYyMS5kdHNpLnByZXByb2Nlc3NlZCAtbyBtdDc2MjEuZHRiCmRyaXZlcnMvc3Rh
+Z2luZy9tdDc2MjEtZHRzL210NzYyMS5kdHNpOjI4LjIxLTMzLjQ6IFdhcm5pbmcgCih1bml0X2Fk
+ZHJlc3NfdnNfcmVnKTogL2NwdWludGNAMDogbm9kZSBoYXMgYSB1bml0IG5hbWUsIGJ1dCBubyBy
+ZWcgcHJvcGVydHkKZHJpdmVycy9zdGFnaW5nL210NzYyMS1kdHMvbXQ3NjIxLmR0c2k6NDAuMzQt
+NDcuNjogV2FybmluZyAKKHVuaXRfYWRkcmVzc192c19yZWcpOiAvZml4ZWRyZWd1bGF0b3JAMDog
+bm9kZSBoYXMgYSB1bml0IG5hbWUsIGJ1dCBubyAKcmVnIHByb3BlcnR5CmRyaXZlcnMvc3RhZ2lu
+Zy9tdDc2MjEtZHRzL210NzYyMS5kdHNpOjQ5LjM5LTU2LjQ6IFdhcm5pbmcgCih1bml0X2FkZHJl
+c3NfdnNfcmVnKTogL2ZpeGVkcmVndWxhdG9yQDE6IG5vZGUgaGFzIGEgdW5pdCBuYW1lLCBidXQg
+bm8gCnJlZyBwcm9wZXJ0eQpkcml2ZXJzL3N0YWdpbmcvbXQ3NjIxLWR0cy9tdDc2MjEuZHRzaTo0
+MTAuMTEtNDQ5Ljc6IFdhcm5pbmcgCih1bml0X2FkZHJlc3NfdnNfcmVnKTogL2V0aGVybmV0QDFl
+MTAwMDAwL21kaW8tYnVzL3N3aXRjaDBAMC9wb3J0czogbm9kZSAKaGFzIGEgcmVnIG9yIHJhbmdl
+cyBwcm9wZXJ0eSwgYnV0IG5vIHVuaXQgbmFtZQpkcml2ZXJzL3N0YWdpbmcvbXQ3NjIxLWR0cy9t
+dDc2MjEuZHRzaToyOC4yMS0zMy40OiBXYXJuaW5nIAoodW5pcXVlX3VuaXRfYWRkcmVzcyk6IC9j
+cHVpbnRjQDA6IGR1cGxpY2F0ZSB1bml0LWFkZHJlc3MgKGFsc28gdXNlZCBpbiAKbm9kZSAvZml4
+ZWRyZWd1bGF0b3JAMCkKCj4gCj4gSXQgYWxzbyBzb3VuZHMgbGlrZSB5b3UgaGFkIHRoZW0gc29t
+ZXdoZXJlIGVsc2Ugd3Jvbmc/CgpZZXMsIGl0IHdhcyB1bmRlciB0aGUgcGh5X2V4dGVybmFsIG5v
+ZGU6Cmh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZh
+bGRzL2xpbnV4LmdpdC90cmVlL2RyaXZlcnMvc3RhZ2luZy9tdDc2MjEtZHRzL210NzYyMS5kdHNp
+I24zNTAKCkkgaGFkIHB1dCBpdCB1bmRlciBnbWFjMSBub2RlIGluc3RlYWQgc2luY2Ugd2UgZGlk
+bid0IGVuYWJsZSB0aGUgCnBoeV9leHRlcm5hbCBub2RlLgoKQXLEsW7DpwoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
+ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
