@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 859C6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jan 2022 07:28:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F3A3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jan 2022 07:39:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i3HpPckcgniVH9RHhGbuin6U5KfP/yeOpZWq5bqZxSs=; b=MXeIXfXeuxFDkp
-	z9dTTKU0wV3V0hsE+AZ8Glz/coKiO4raHaJYx5jUPDDSE92+Wt5uK/iswyt73KJu2qCCdRChDun9h
-	/TednNXMW1a/v8iVwGS6uVsBEvaP7rHglb1BGA8SwA0kqXrNGv8SR5gnyKiIp243PkzwDNow+ojiH
-	4hN+1SwJOkkjyjiip+3mpx9UXH/hV+DXTxTEp4cLDopLzh0h2lWlZCG2ZhHTrDhwyDCNmCxXFQksC
-	XNz1orrjMBQ0SwelER6gl632TUrg5s5b+ALv0EzEtLfhAxXoxJ+IXFk4SNJXOZBAywX1y9Qiyjj/D
-	3GwTBUg0WsRAGPqF0tDA==;
+	List-Owner; bh=2BQdPunU/YUXCDmJf7CGuru2UQJjldd5fNspmJq88gU=; b=4OlOokkHnsOXL+
+	MY1cv+CcoiZNrHp74g/IUFKmir8oZHM8DVH6UTC5hhHovVTGBft6iCnTuMbwB60FGHFvab0pbfDqQ
+	FJss2JFZUsbybjvTdutDKO1W+g4R3TmN2WAm0lzBaC6utL3qwKvwPMjsKjzZ5dCBMUBr1pH4Ax7Oj
+	z4dH6UkYAldFslaystf+4P4oJb/b7loxsqmC8q57grGk0QtSBcicg4t3xoFRggx+Re0aLnGSNWSDF
+	5zpHUOjyrQxPqm0CRvVqsGOMgqZykHK31QsLvivEx85odyKRlmaTxfTXiZ+WBM72Y4PV7ZkV2gQ5o
+	ZKVR7h5eHEf5FbdYTZtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nBtln-002U7w-6e; Mon, 24 Jan 2022 07:28:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nBtwJ-002VQL-V3; Mon, 24 Jan 2022 07:38:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nBtlj-002U6R-Sg; Mon, 24 Jan 2022 07:28:05 +0000
-X-UUID: c3cf6f7cc97a41599c8adc1c331c9a8f-20220124
-X-UUID: c3cf6f7cc97a41599c8adc1c331c9a8f-20220124
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ id 1nBtw7-002VPB-AV; Mon, 24 Jan 2022 07:38:49 +0000
+X-UUID: 11be4c78a903444a929d818832797bf7-20220124
+X-UUID: 11be4c78a903444a929d818832797bf7-20220124
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <roger.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1850136264; Mon, 24 Jan 2022 00:27:57 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 23 Jan 2022 23:18:21 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 24 Jan 2022 15:18:20 +0800
+ with ESMTP id 570703105; Mon, 24 Jan 2022 00:38:43 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 23 Jan 2022 23:28:41 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 24 Jan 2022 15:28:27 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 24 Jan 2022 15:18:20 +0800
-Message-ID: <94cf3379aa648d7366143e2f84bf4e21ad3576c1.camel@mediatek.com>
-Subject: Re: [PATCH v11 21/22] drm/mediatek: add mediatek-drm of vdosys1
- support for MT8195
-From: CK Hu <ck.hu@mediatek.com>
-To: Nancy.Lin <nancy.lin@mediatek.com>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
- <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <singo.chang@mediatek.com>,
- <srv_heupstream@mediatek.com>
-Date: Mon, 24 Jan 2022 15:18:20 +0800
-In-Reply-To: <20220110084645.31191-22-nancy.lin@mediatek.com>
-References: <20220110084645.31191-1-nancy.lin@mediatek.com>
- <20220110084645.31191-22-nancy.lin@mediatek.com>
+ Transport; Mon, 24 Jan 2022 15:28:27 +0800
+Message-ID: <f4fbfc91d2f0abf041f058f191e2b239ac173a1e.camel@mediatek.com>
+Subject: Re: [PATCH v21 4/8] soc: mediatek: SVS: add monitor mode
+From: Roger Lu <roger.lu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
+ <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd
+ <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
+CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
+ YT Lee <yt.lee@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
+ Charles Yang <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, 
+ Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-pm@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guenter Roeck
+ <linux@roeck-us.net>
+Date: Mon, 24 Jan 2022 15:28:27 +0800
+In-Reply-To: <e118df40-da6b-88f6-fbff-15befb3405d5@collabora.com>
+References: <20220107095200.4389-1-roger.lu@mediatek.com>
+ <20220107095200.4389-5-roger.lu@mediatek.com>
+ <e118df40-da6b-88f6-fbff-15befb3405d5@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220123_232803_943306_68F68817 
-X-CRM114-Status: GOOD (  16.33  )
+X-CRM114-CacheID: sfid-20220123_233847_405072_02C3A976 
+X-CRM114-Status: GOOD (  35.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,71 +83,175 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Nancy:
+Hi AngeloGioacchino,
 
-On Mon, 2022-01-10 at 16:46 +0800, Nancy.Lin wrote:
-> Add driver data of mt8195 vdosys1 to mediatek-drm.
+Sorry for the late reply and thanks for the advice.
+
+On Fri, 2022-01-07 at 15:34 +0100, AngeloGioacchino Del Regno wrote:
+> Il 07/01/22 10:51, Roger Lu ha scritto:
+> > SVS monitor mode is based on different thermal temperature
+> > to provide suitable SVS bank voltages.
+> > 
+> > Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> > ---
+> >   drivers/soc/mediatek/mtk-svs.c | 253 ++++++++++++++++++++++++++++++++-
+> >   1 file changed, 247 insertions(+), 6 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+> > index fc7e2ee44a92..042c6e8e9069 100644
+> > --- a/drivers/soc/mediatek/mtk-svs.c
+> > +++ b/drivers/soc/mediatek/mtk-svs.c
+> > @@ -25,6 +25,7 @@
+> >   #include <linux/regulator/consumer.h>
+> >   #include <linux/slab.h>
+> >   #include <linux/spinlock.h>
+> > +#include <linux/thermal.h>
+> >   
+> >   /* svs bank 1-line sw id */
+> >   #define SVSB_CPU_LITTLE			BIT(0)
+> > @@ -36,6 +37,7 @@
+> >   #define SVSB_MODE_ALL_DISABLE		0
+> >   #define SVSB_MODE_INIT01		BIT(1)
+> >   #define SVSB_MODE_INIT02		BIT(2)
+> > +#define SVSB_MODE_MON			BIT(3)
+
+[snip]
+
+> >   /**
+> > @@ -241,6 +254,7 @@ struct svs_platform {
+> >    * @get_volts: function pointer to get bank voltages
+> >    * @name: bank name
+> >    * @buck_name: regulator name
+> > + * @tzone_name: thermal zone name
+> >    * @suspended: suspend flag of this bank
+> >    * @phase: bank current phase
+> >    * @volt_od: bank voltage overdrive
+> > @@ -270,6 +284,13 @@ struct svs_platform {
+> >    * @sw_id: bank software identification
+> >    * @cpu_id: cpu core id for SVS CPU bank use only
+> >    * @ctl0: TS-x selection
+> > + * @temp: bank temperature
+> > + * @tzone_htemp: thermal zone high temperature threshold
+> > + * @tzone_htemp_voffset: thermal zone high temperature voltage offset
+> > + * @tzone_ltemp: thermal zone low temperature threshold
+> > + * @tzone_ltemp_voffset: thermal zone low temperature voltage offset
+> > + * @bts: svs efuse data
+> > + * @mts: svs efuse data
+> >    * @bdes: svs efuse data
+> >    * @mdes: svs efuse data
+> >    * @mtdes: svs efuse data
+> > @@ -292,6 +313,7 @@ struct svs_bank {
+> >   	void (*get_volts)(struct svs_platform *svsp);
+> >   	char *name;
+> >   	char *buck_name;
+> > +	char *tzone_name;
+> >   	bool suspended;
+> >   	enum svsb_phase phase;
+> >   	s32 volt_od;
+> > @@ -321,6 +343,13 @@ struct svs_bank {
+> >   	u32 sw_id;
+> >   	u32 cpu_id;
+> >   	u32 ctl0;
+> > +	u32 temp;
+> > +	u32 tzone_htemp;
+> > +	u32 tzone_htemp_voffset;
+> > +	u32 tzone_ltemp;
+> > +	u32 tzone_ltemp_voffset;
+> > +	u32 bts;
+> > +	u32 mts;
+> >   	u32 bdes;
+> >   	u32 mdes;
+> >   	u32 mtdes;
+> > @@ -361,10 +390,21 @@ static u32 svs_bank_volt_to_opp_volt(u32 svsb_volt,
+> > u32 svsb_volt_step,
+> >   	return (svsb_volt * svsb_volt_step) + svsb_volt_base;
+> >   }
+> >   
 > 
-> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
+> I'm sorry for the double review, but this went unnoticed in the previous one.
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index 36430f956b4f..e851c56f00b1 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -190,6 +190,14 @@ static const enum mtk_ddp_comp_id
-> mt8195_mtk_ddp_main[] = {
->  	DDP_COMPONENT_DP_INTF0,
->  };
->  
-> +static const enum mtk_ddp_comp_id mt8195_mtk_ddp_ext[] = {
-> +	DDP_COMPONENT_OVL_ADAPTOR,
-> +	DDP_COMPONENT_MERGE5,
-> +	DDP_COMPONENT_DP_INTF1,
-> +};
-> +
-> +static const int mt8195_vdosys1_mtk_cmdq_mbox[] = {-1, 0, -1};
+> > +static int svs_get_zone_temperature(const char *tzone_name, int
+> > *tzone_temp)
+> > +{
+> > +	struct thermal_zone_device *tzd;
+> > +
+> > +	tzd = thermal_zone_get_zone_by_name(tzone_name);
+> 
+> This call is expensive, as it's iterating through the (possibly) entire
+> thermal_tz_list (drivers/thermal/thermal_core.c) so, for performance purposes,
+> noting that you're using this in svs_adjust_pm_opp_volts(), it's not a good
+> idea
+> to call it at every ISR.
+> 
+> I would instead propose to get a pointer to the thermal_zone at driver probe
+> time and cache that in struct svs_bank: this function would also be removed
+> as the only thing that you'd need to do then would be just one call...
+> 
+> [read forward...]
 
-What does this array mean? These number looks so magic.
+No problem. I'll cache thermal_zone at driver probe time and remove this API in
+the next patch. Thanks.
 
-Regards,
-CK
+> 
+> > +	if (IS_ERR(tzd))
+> > +		return PTR_ERR(tzd);
+> > +
+> > +	return thermal_zone_get_temp(tzd, tzone_temp);
+> > +}
+> > +
+> >   static int svs_adjust_pm_opp_volts(struct svs_bank *svsb, bool
+> > force_update)
+> >   {
+> > -	int ret = -EPERM;
+> > -	u32 i, svsb_volt, opp_volt;
+> > +	int ret = -EPERM, tzone_temp = 0;
+> > +	u32 i, svsb_volt, opp_volt, temp_voffset = 0;
+> >   
+> >   	mutex_lock(&svsb->lock);
+> >   
+> > @@ -378,6 +418,22 @@ static int svs_adjust_pm_opp_volts(struct svs_bank
+> > *svsb, bool force_update)
+> >   		goto unlock_mutex;
+> >   	}
+> >   
+> > +	/* Get thermal effect */
+> > +	if (svsb->phase == SVSB_PHASE_MON) {
+> > +		ret = svs_get_zone_temperature(svsb->tzone_name, &tzone_temp);
+> 
+> ... so you can simply call ...
+> 
+> 
+> 	ret = thermal_zone_get_temp(svsb->tzd, tzone_temp);
+> 
+> 
+> ...without any need for any helper.
 
-> +
->  static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data =
-> {
->  	.main_path = mt2701_mtk_ddp_main,
->  	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
-> @@ -254,6 +262,14 @@ static const struct mtk_mmsys_driver_data
-> mt8195_vdosys0_driver_data = {
->  	.mmsys_dev_num = 2,
->  };
->  
-> +static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data
-> = {
-> +	.ext_path = mt8195_mtk_ddp_ext,
-> +	.ext_len = ARRAY_SIZE(mt8195_mtk_ddp_ext),
-> +	.mmsys_id = 1,
-> +	.mmsys_dev_num = 2,
-> +	.mbox_index = mt8195_vdosys1_mtk_cmdq_mbox,
-> +};
-> +
->  static const struct of_device_id mtk_drm_of_ids[] = {
->  	{ .compatible = "mediatek,mt2701-mmsys",
->  	  .data = &mt2701_mmsys_driver_data},
-> @@ -271,6 +287,8 @@ static const struct of_device_id mtk_drm_of_ids[]
-> = {
->  	  .data = &mt8192_mmsys_driver_data},
->  	{ .compatible = "mediatek,mt8195-vdosys0",
->  	  .data = &mt8195_vdosys0_driver_data},
-> +	{ .compatible = "mediatek,mt8195-vdosys1",
-> +	  .data = &mt8195_vdosys1_driver_data},
->  	{ }
->  };
->  MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
+Sure, I'll call thermal_zone_get_temp() directly after applying this recommended
+change in the next patch. Thanks.
+
+> 
+> > +		if (ret || (svsb->temp > SVSB_TEMP_UPPER_BOUND &&
+> > +			    svsb->temp < SVSB_TEMP_LOWER_BOUND)) {
+> > +			dev_err(svsb->dev, "%s: %d (0x%x), run default volts\n",
+> > +				svsb->tzone_name, ret, svsb->temp);
+> > +			svsb->phase = SVSB_PHASE_ERROR;
+> > +		}
+> > +
+> > +		if (tzone_temp >= svsb->tzone_htemp)
+> > +			temp_voffset += svsb->tzone_htemp_voffset;
+> > +		else if (tzone_temp <= svsb->tzone_ltemp)
+> > +			temp_voffset += svsb->tzone_ltemp_voffset;
+> > +	}
+> > +
+> >   	/* vmin <= svsb_volt (opp_volt) <= default opp voltage */
+> >   	for (i = 0; i < svsb->opp_count; i++) {
+> >   		switch (svsb->phase) {
+> 
+> Apart from that, the commit looks good. Looking forward to review the new
+> version!
+> 
+> Regards,
+> - Angelo
 
 
 _______________________________________________
