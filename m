@@ -4,89 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82CA5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jan 2022 09:43:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC805C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jan 2022 10:40:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YYE0eZKVIzSjkQZCNG7MjLKP+d4M0KRWr9xFGaRy3hc=; b=ClfHWDM3U/gp0o
-	0CE/IgaxqOl9EX6qPqZGd+1+Ua3LZw3bFZXjMgwpTPe8BWLOmWSAmDTe3m19GfkqAkxOb2521CIii
-	kb3VtQfUJpoRA+dhCiJK3K3OyfZtm6SMPqLEodNXo48OtVl7/SV5lEj/3be8pZXbhT8skAiyAvccQ
-	vi3UkSms4+lixip/MofLgvajeY+MKAAsF7z1ehcPxFQLTvJcKtNAw6caoyfoS9Go2MvijrfYYc0q1
-	eIpbUPDktBO2tHX8pIw+YcQhUTGQ+jQUHEqiKTQGp05iiUL3S3L7sUkwBQ0x72HGR+WcmxTZk0qp5
-	iDjE8AmUW1m3m//+7/kA==;
+	List-Owner; bh=/Q7o0BZ1dLMGbG9DC61jXPbfaTmriB02FvX/7pmT2qc=; b=Am7ll+VUO5ACoK
+	vB9JJL0Fx8qDDiO5XpOLed5966oHG0q6dhS3tWWpLjQ0UmEHTT1ulm679sur5vhQUDSB+822EzRm7
+	pfLjRU0gygOZK8IRDz/Saz7RJDbJhp3A6sAXNWLSCgz3N58GQJom2nsXw9JzJY1pj4Ra+DrsJFqV+
+	M2VOmm3BG/On2wx6pWFVKXddZYBRrferM0UioF9OPNBmj+JhZ2kbYQec/bLKf6Nbr4aH3VLaakYl/
+	ZCbgvrtGSO15Rt8N75HOSheTkBVS4rcnF7uRbg0G3EygFseCjLu6JvYA3f8acO4fGWP3uM9/Z5/Lx
+	GBIU91lEQpPQZaX7pC4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nBvsM-002qAl-0H; Mon, 24 Jan 2022 09:43:02 +0000
-Received: from new1-smtp.messagingengine.com ([66.111.4.221])
+	id 1nBwlu-002zvE-4C; Mon, 24 Jan 2022 10:40:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nBvs9-002q7a-6I; Mon, 24 Jan 2022 09:42:50 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailnew.nyi.internal (Postfix) with ESMTP id 87BD758011C;
- Mon, 24 Jan 2022 04:42:48 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute2.internal (MEProxy); Mon, 24 Jan 2022 04:42:48 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=cc
- :cc:content-type:date:date:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to; s=fm2; bh=P8UmLlHN9BGZ+esvPmRpvSz5It+8CW0B+z+h7m
- qv6Lk=; b=ecJJLXJ/Kp+Nil5/vc883vHJk0/KIyb7hhP6iSXTTwzya3ojRgChVc
- DBSgFpaUJvhlR19igIj7rP/8a6b9U7Zfao78fE3uAiC7OPTs9WBOg3OXKEgTq6As
- yHWL6V27q4Pc5wakooL62EM9Ay571LdJnWIN+vB5Sz2OWOGhF0qQlZ016kF6Ypjk
- e44rbAzwp20w7Swk6267ZY64ny1/KyVT1Zfiqzo1mi2GaFRRJzOnFANlrqVPz2oc
- 9NWd9GmZ6lOCEgVWj9+7EC2r3UOVkR48J9ZfUiVNMaVXOAAlOveCtbaMbLQsLxjE
- KOTQihe1Gdg5irRZGN5ygmaXnn80t1EQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=P8UmLlHN9BGZ+esvP
- mRpvSz5It+8CW0B+z+h7mqv6Lk=; b=CQdazKNEiq2FcHTlFL0uPMb5vLW/qC86C
- o7moITxwIk/AdB90Xz1k1g9FpRlBS60WhckuoXzIh6ee7yQZOfcp1fvi7Lhv180Z
- RRDN2wsC5LP0twXOE842WI4MMRtGDwajK5p1LWPjO34veG/oH+NJ25WfhQ3fK+rd
- P4vWqFj6dPQlkm74sxZqhpdjoYNL/eD4woYay8uEELNkVbwPSYpqT3npzcElZIos
- tbcSHbcyqMIGuJYagh05xZ6tz+QgNe9ZwhSrBGAq4E2u5MmafmcEauaTBtaZxtXT
- 9jKZbqWnRTA8zuiUmr2nCwSE4ZnTJdrX04g6Ug+/JdEiNsj+r5qUQ==
-X-ME-Sender: <xms:l3TuYZs4WYtzYXKGvUmlQZ6qTEAL0VXvL83nP6AfxPNEYavh0ZIqUA>
- <xme:l3TuYSd4sl5uGKM2T9fKLT8vT4LXROUpCdQNG8XXrlczU6aewlHw3STG3ZPtbab43
- XikM_8TVBRYeQ>
-X-ME-Received: <xmr:l3TuYcyKRDeVDHiosVw6unhQ6Vw3IaTpC6SmyCbW2zDAXJo3CLbqDNcF6cWeUfKkhs93civ1pSfqVBhj9xtUPX875W7G2DN2>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrvdeigddtjecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpeffhffvuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepifhrvghgucfm
- jfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuggftrfgrthhtvghrnhepveeuheejgf
- ffgfeivddukedvkedtleelleeghfeljeeiueeggeevueduudekvdetnecuvehluhhsthgv
- rhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorghhrd
- gtohhm
-X-ME-Proxy: <xmx:l3TuYQPN1T0BEGzqQVp5X59NbIZEWA_RehUCZ7K4JsdrYy9FlZur4g>
- <xmx:l3TuYZ_AQD8MtjTxP_2h-y5A68SyWBzDsHAN5SeMho1BCLjw78wTCg>
- <xmx:l3TuYQV6GxHEv58_OUO5trHPu3PteZtoWQDNmeDSWRPb86Z5vwBQyA>
- <xmx:mHTuYfPCJPPU7ZpKL8-FeKWHVMnp3DfwfihodT2qB4adsocIWEcQlg>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 24 Jan 2022 04:42:47 -0500 (EST)
-Date: Mon, 24 Jan 2022 10:42:45 +0100
-From: Greg KH <greg@kroah.com>
-To: Will McVicker <willmcvicker@google.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, kernel-team@android.com,
- KaiChieh Chuang <kaichieh.chuang@mediatek.com>,
- alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH v1 1/1] ASoC: dpcm: prevent snd_soc_dpcm use after free
-Message-ID: <Ye50ldr/4/TW7S/3@kroah.com>
-References: <20220121231644.1732744-1-willmcvicker@google.com>
+ id 1nBwlq-002zuA-Ag; Mon, 24 Jan 2022 10:40:25 +0000
+X-UUID: a015877f57fa4db99b6b19aa1293e5d8-20220124
+X-UUID: a015877f57fa4db99b6b19aa1293e5d8-20220124
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <roger.lu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 518866613; Mon, 24 Jan 2022 03:40:19 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 24 Jan 2022 02:40:17 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 24 Jan 2022 18:40:16 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 24 Jan 2022 18:40:15 +0800
+Message-ID: <2404cea17479df35b5a5d55a923a96b10ebae909.camel@mediatek.com>
+Subject: Re: [PATCH v21 5/8] soc: mediatek: SVS: add debug commands
+From: Roger Lu <roger.lu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
+ <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd
+ <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
+CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
+ YT Lee <yt.lee@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
+ Charles Yang <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, 
+ Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-pm@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guenter Roeck
+ <linux@roeck-us.net>
+Date: Mon, 24 Jan 2022 18:40:15 +0800
+In-Reply-To: <47bcbffc-42f6-335e-dfab-990e0ab5f103@collabora.com>
+References: <20220107095200.4389-1-roger.lu@mediatek.com>
+ <20220107095200.4389-6-roger.lu@mediatek.com>
+ <47bcbffc-42f6-335e-dfab-990e0ab5f103@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220121231644.1732744-1-willmcvicker@google.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220124_014249_339215_4B293D02 
-X-CRM114-Status: GOOD (  16.68  )
+X-CRM114-CacheID: sfid-20220124_024022_409768_45C58D0F 
+X-CRM114-Status: GOOD (  30.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,95 +84,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 21, 2022 at 11:16:44PM +0000, Will McVicker wrote:
-> From: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
-> 
-> [ Upstream commit a9764869779081e8bf24da07ac040e8f3efcf13a ]
-> 
-> The dpcm get from fe_clients/be_clients
-> may be free before use
-> 
-> Add a spin lock at snd_soc_card level,
-> to protect the dpcm instance.
-> The lock may be used in atomic context, so use spin lock.
-> 
-> Use irq spin lock version,
-> since the lock may be used in interrupts.
-> 
-> possible race condition between
-> void dpcm_be_disconnect(
-> 	...
-> 	list_del(&dpcm->list_be);
-> 	list_del(&dpcm->list_fe);
-> 	kfree(dpcm);
-> 	...
-> 
-> and
-> 	for_each_dpcm_fe()
-> 	for_each_dpcm_be*()
-> 
-> race condition example
-> Thread 1:
->     snd_soc_dapm_mixer_update_power()
->         -> soc_dpcm_runtime_update()
->             -> dpcm_be_disconnect()
->                 -> kfree(dpcm);
-> Thread 2:
->     dpcm_fe_dai_trigger()
->         -> dpcm_be_dai_trigger()
->             -> snd_soc_dpcm_can_be_free_stop()
->                 -> if (dpcm->fe == fe)
-> 
-> Excpetion Scenario:
-> 	two FE link to same BE
-> 	FE1 -> BE
-> 	FE2 ->
-> 
-> 	Thread 1: switch of mixer between FE2 -> BE
-> 	Thread 2: pcm_stop FE1
-> 
-> Exception:
-> 
-> Unable to handle kernel paging request at virtual address dead0000000000e0
-> 
-> pc=<> [<ffffff8960e2cd10>] dpcm_be_dai_trigger+0x29c/0x47c
-> 	sound/soc/soc-pcm.c:3226
-> 		if (dpcm->fe == fe)
-> lr=<> [<ffffff8960e2f694>] dpcm_fe_dai_do_trigger+0x94/0x26c
-> 
-> Backtrace:
-> [<ffffff89602dba80>] notify_die+0x68/0xb8
-> [<ffffff896028c7dc>] die+0x118/0x2a8
-> [<ffffff89602a2f84>] __do_kernel_fault+0x13c/0x14c
-> [<ffffff89602a27f4>] do_translation_fault+0x64/0xa0
-> [<ffffff8960280cf8>] do_mem_abort+0x4c/0xd0
-> [<ffffff8960282ad0>] el1_da+0x24/0x40
-> [<ffffff8960e2cd10>] dpcm_be_dai_trigger+0x29c/0x47c
-> [<ffffff8960e2f694>] dpcm_fe_dai_do_trigger+0x94/0x26c
-> [<ffffff8960e2edec>] dpcm_fe_dai_trigger+0x3c/0x44
-> [<ffffff8960de5588>] snd_pcm_do_stop+0x50/0x5c
-> [<ffffff8960dded24>] snd_pcm_action+0xb4/0x13c
-> [<ffffff8960ddfdb4>] snd_pcm_drop+0xa0/0x128
-> [<ffffff8960de69bc>] snd_pcm_common_ioctl+0x9d8/0x30f0
-> [<ffffff8960de1cac>] snd_pcm_ioctl_compat+0x29c/0x2f14
-> [<ffffff89604c9d60>] compat_SyS_ioctl+0x128/0x244
-> [<ffffff8960283740>] el0_svc_naked+0x34/0x38
-> [<ffffffffffffffff>] 0xffffffffffffffff
-> 
-> Signed-off-by: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
-> Signed-off-by: Mark Brown <broonie@kernel.org>
-> [willmcvicker: move spinlock to bottom of struct snd_soc_card]
-> Signed-off-by: Will McVicker <willmcvicker@google.com>
-> Cc: stable@vger.kernel.org # 4.19+
-> ---
->  include/sound/soc.h  |  2 ++
->  sound/soc/soc-core.c |  1 +
->  sound/soc/soc-pcm.c  | 40 +++++++++++++++++++++++++++++++++-------
->  3 files changed, 36 insertions(+), 7 deletions(-)
+Hi AngeloGioacchino,
 
-Now queued up, thanks.
+Sorry for the late reply and thanks for the advice.
 
-greg k-h
+On Fri, 2022-01-07 at 15:34 +0100, AngeloGioacchino Del Regno wrote:
+> Il 07/01/22 10:51, Roger Lu ha scritto:
+> > The purpose of SVS is to help find the suitable voltages
+> > for DVFS. Therefore, if SVS bank voltages are concerned
+> > to be wrong, we can adjust SVS bank voltages by this patch.
+> > 
+> > Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> > ---
+> >   drivers/soc/mediatek/mtk-svs.c | 321 ++++++++++++++++++++++++++++++++-
+> >   1 file changed, 318 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+> > index 042c6e8e9069..93cdaecadd6d 100644
+> > --- a/drivers/soc/mediatek/mtk-svs.c
+> > +++ b/drivers/soc/mediatek/mtk-svs.c
+> 
+> ..snip..
+> 
+> > @@ -605,6 +896,16 @@ static void svs_set_bank_phase(struct svs_platform
+> > *svsp,
+> >   	}
+> >   }
+> >   
+> > +static inline void svs_save_bank_register_data(struct svs_platform *svsp,
+> > +					       enum svsb_phase phase)
+> > +{
+> > +	struct svs_bank *svsb = svsp->pbank;
+> > +	enum svs_reg_index rg_i;
+> > +
+> 
+> I think that it'd be a good idea to add an `enable` parameter, so that we
+> don't always do a register dump; after all, this is a debugging feature and
+> it's going to be completely irrelevant to the user, so keeping this disabled
+> by default would ensure to get no performance degradation (even if small)
+> unless really wanted.
+> 
+> So, in this case, here we'd have
+> 
+> 	if (!svsp->debug_enabled)
+> 		return;
+
+Thanks for pointing out the concern. Excuse us, we really need this to be
+enabled by default. If we add a enable flag here, we'll face below problems and
+make debug more difficult.
+
+1. If we enable it afterward by cmd, init0[1~2] registers' data cannot be
+recorded expectedly because the init flow has been finished already and won't be
+run anymore. So, it doesn't work by using cmd to enable the flag.
+2. If we add a enable flag here, it means we have to re-build the kernel load in
+order to enable this flag. However, we cannot re-build the kernel load and needs
+to debug directly sometimes. It's a sad situation... :(
+
+> 
+> > +	for (rg_i = DESCHAR; rg_i < SVS_REG_MAX; rg_i++)
+> > +		svsb->reg_data[phase][rg_i] = svs_readl_relaxed(svsp, rg_i);
+> > +}
+> > +
+> 
+> Of course, this implies adding a new debugfs entry to enable/disable the
+> debugging.
+> Everything else looks good :)
+
+Oh, excuse us, we have to keep the old design for better instant support and
+thanks for the understanding.
+
+> >   static inline void svs_error_isr_handler(struct svs_platform *svsp)
+> >   {
+> >   	struct svs_bank *svsb = svsp->pbank;
+> > @@ -619,6 +920,8 @@ static inline void svs_error_isr_handler(struct
+> > svs_platform *svsp)
+> >   		svs_readl_relaxed(svsp, SMSTATE1));
+> >   	dev_err(svsb->dev, "TEMP = 0x%08x\n", svs_readl_relaxed(svsp, TEMP));
+> >   
+> > +	svs_save_bank_register_data(svsp, SVSB_PHASE_ERROR);
+> > +
+> >   	svsb->mode_support = SVSB_MODE_ALL_DISABLE;
+> >   	svsb->phase = SVSB_PHASE_ERROR;
+
+[snip]
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
