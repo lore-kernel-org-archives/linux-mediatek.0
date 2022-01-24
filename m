@@ -4,69 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F763C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jan 2022 11:50:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C797C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jan 2022 11:51:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JCM17/jEX2dFcCXMzPV/gK979AUJ1EM9gjdf7iIn9Xk=; b=stQzs5f49/jeA+4sTiUZyNPTeh
-	zGc/VZ5duYc73jeu78DIdNwlEEcTVwbbZnlf3nwPQ9F0BTN4Z9MAEcwSSNaNwH23loMtF9427OWU1
-	qL1uOd02JWCperzoLmNZeC6w5aQlY9De4ZAKgkkqifsxHAmOKAYLIK+lJUv70PCUcncbCwv3CFL4a
-	M/D/Qbl4Dkigw/A7TSsrjg39L4c4bi0U2YAvkJBfKrfengFfGHz5kDJyRqwYMqAt4HWBUg7xjMvkb
-	U99zXQQcMNeLnwCpwKaHIBmS/I30eexwMEYmavOjIU1YyFogbwb1+/U2DNqo6yif3O+yoiR6cKEIf
-	hoOBe/CA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uNArrWBIindpemEOCijklKGUs+XpY2WRzMavd8BKJ6g=; b=pmVVDXqwvH6r3L
+	Laj5dSgBGxZufTzzlOqmWvOGwg2Gb1wzBU4WEgdkPkMUJHE3IW5IJigsD9v45jpH5y7ILNR+t2vaX
+	pu3j8gdmoI8MnsyFJ0Zyrbz8nRtK2LVw3swYD/LTvK48JulBY7b8RH4w2Xy1n/HVou0PwYujo/AYK
+	WssU4FRr6H91KLrOYqbXaHuYyDhemAhF0CuL7gv9RbEknt6+gsxZcFrftS4VqbIUki+gt7+pA+tPf
+	u23LgSgcoLam63luLjwyfZ16iU68zOCl+K0AYmpvKfhDsPhb4JchWj4UKdNpBFxGA0eWK5qSvur73
+	oIMAWND9BkbXHZWLaNMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nBxrA-0036kn-JS; Mon, 24 Jan 2022 11:49:56 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nBxsI-0037AW-Mv; Mon, 24 Jan 2022 11:51:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nBxqy-0036hx-BE; Mon, 24 Jan 2022 11:49:45 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 777391F435C0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1643024982;
- bh=FSC7K3juKE1eNNYIPrdbq7OnFxlkDzU7nCffIASlRCY=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=CKJ8A1n3NySKOB/dkSSLGnk+EZTf6gzzmu3PRyPsb8skJ7ZaZCUyNI3rXDejvTBC/
- Kdk5BjFgN0tV5ckYE1J9k8tybsX6uh2SG89yZYKCjK+dTrt9zZEbWHnOJD8MogqWJM
- 4aBlQWaWQKIO85Pe+eENUzkiTzvtP5RtHhMNUY1HRUjyG4ZPiP8L+42K7YZT2nPJ5P
- h+qLSoLa/SMjabbDANxg8FsXbZ75XCqPBpaanhbY7kOhbTW7Zjcref85vdcXBVB8K1
- pALpT+IXth7FC4Z1ZJvNcfcnajuuq0YbgT2uqRIpwM/VbBmSnMGjLdnROppk7ZEOMk
- IoNEssr8ByMiw==
-Subject: Re: [PATCH v21 7/8] arm64: dts: mt8192: add svs device information
-To: Roger Lu <roger.lu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
- <khilman@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Nicolas Boichat <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
- Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
- Charles Yang <Charles.Yang@mediatek.com>, Angus Lin
- <Angus.Lin@mediatek.com>, Mark Rutland <mark.rutland@arm.com>,
- Nishanth Menon <nm@ti.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Guenter Roeck <linux@roeck-us.net>
-References: <20220107095200.4389-1-roger.lu@mediatek.com>
- <20220107095200.4389-8-roger.lu@mediatek.com>
- <010f9b6a-d6bf-b27a-cb2d-c5fd181c3ac7@collabora.com>
- <3d3518ff5c332129af5d10766477b9776bbbf55e.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <ffafbbf6-3049-ec14-da24-18b6f1b4d147@collabora.com>
-Date: Mon, 24 Jan 2022 12:49:39 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1nBxs5-00375p-Kj; Mon, 24 Jan 2022 11:50:55 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id A03D060C1E;
+ Mon, 24 Jan 2022 11:50:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F6A6C340E1;
+ Mon, 24 Jan 2022 11:50:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1643025052;
+ bh=dtna8m+btPB2/Jq72ySCwE7Yi66Sc7kVeNMwNy+Egrg=;
+ h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
+ b=jKY8/GAHECsqYAYI39O+f8gTiy8VEBiD4okolXR44nXfNTz2N7FVYy1wnjWkb1nkd
+ Ova3clyr3tc7WzDfNv2azpXfgrOnNHM5gYKZ26fg7xugV/7iS5nKs4PknIdK+kRAC7
+ m9PCjZM1cannpHtkvZraNMa7xg9jVMAqQPZGp5iXthQAb4KYRuYjrE5F2pK8A/TiON
+ mhWXTj/RO2q6/+MFb74vexNR3HiC1+u5Y3ANkZTJskUVAydQ2XUIMGib2LO3IO7QcJ
+ coKcSXkPuNR/RHrvgwcvwp6ZWKe4pggfXQcHwso7zLQfkGVcFv8JQ70YxUDec8+DEa
+ vwSf1qalUPeZA==
+Received: by mail-io1-f46.google.com with SMTP id z199so4626103iof.10;
+ Mon, 24 Jan 2022 03:50:52 -0800 (PST)
+X-Gm-Message-State: AOAM530xg/nMrc5y/kNpy3QVJUmdrXE2gYKityoodnPG9vkCWZpp8NXq
+ IwPMBTgoyYk/oDCyZP8vVXtNUPEXOpqV/t00c74=
+X-Google-Smtp-Source: ABdhPJzlxUFdNDdF8/iZYYps4UG0ix/9h+43CKjvbNVLb1BLBA17f3nms3JKQVpkih8EFFgZXL/G+Df2V+zNfsjrZcQ=
+X-Received: by 2002:a02:9991:: with SMTP id a17mr3274565jal.144.1643025051236; 
+ Mon, 24 Jan 2022 03:50:51 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <3d3518ff5c332129af5d10766477b9776bbbf55e.camel@mediatek.com>
-Content-Language: en-US
+References: <20220122125029.22195-1-irui.wang@mediatek.com>
+In-Reply-To: <20220122125029.22195-1-irui.wang@mediatek.com>
+From: Josh Boyer <jwboyer@kernel.org>
+Date: Mon, 24 Jan 2022 06:50:40 -0500
+X-Gmail-Original-Message-ID: <CA+5PVA5Vg9h2kK6_xO2Nz2nw=u29i0=C1WOkbQjXDA0-DZhjOw@mail.gmail.com>
+Message-ID: <CA+5PVA5Vg9h2kK6_xO2Nz2nw=u29i0=C1WOkbQjXDA0-DZhjOw@mail.gmail.com>
+Subject: Re: pull request: linux-firmware: mediatek: Update MT8173 VPU
+To: Irui Wang <irui.wang@mediatek.com>
+Cc: Linux Firmware <linux-firmware@kernel.org>, 
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ linux-arm-kernel@lists.infradead.org, 
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>, 
+ Maoguang Meng <Maoguang.Meng@mediatek.com>,
+ Longfei Wang <Longfei.Wang@mediatek.com>, 
+ Yunfei Dong <Yunfei.Dong@mediatek.com>, Andrew-CT.Chen@mediatek.com, 
+ Erin Lo <erin.lo@mediatek.com>, PoChun.Lin@mediatek.com,
+ srv_heupstream@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220124_034944_557159_3D3FA9D0 
-X-CRM114-Status: GOOD (  16.10  )
+X-CRM114-CacheID: sfid-20220124_035053_772353_87175322 
+X-CRM114-Status: GOOD (  17.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,43 +81,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/01/22 11:48, Roger Lu ha scritto:
-> Hi AngeloGioacchino,
-> 
-> On Fri, 2022-01-07 at 15:33 +0100, AngeloGioacchino Del Regno wrote:
->> Il 07/01/22 10:51, Roger Lu ha scritto:
->>> Add compitable/reg/irq/clock/efuse/reset setting in svs node.
->>
->> Typo: compitable => compatible
->> .. also, you're not only adding the svs node, but also efuse: please add that
->> information in the commit description.
->>
->>>
->>> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
->>
->> This patch seems to not apply on top of the current linux-next, can you please
->> rebase it? That would resolve issues with this series and would be picked
->> sooner.
->>
->> Apart from that...
-> 
-> Sorry to make you confuse. After having discussion internally, we'll submit
-> another complete mt8192.dtsi patch including this svs node. Therefore, I'll drop
-> this path from svs patchset in order not to make the reviewer confuse. Thanks
-> for the comments a lot.
-> 
+On Sat, Jan 22, 2022 at 7:50 AM Irui Wang <irui.wang@mediatek.com> wrote:
+>
+> Hi linux-firmware maintainers,
+>
+> The following changes since commit 0c6a7b3bf728b95c8b7b95328f94335e2bb2c967:
+>
+>   linux-firmware: Update firmware file for Intel Bluetooth 9260 (2022-01-19 11:16:28 -0500)
+>
+> are available in the Git repository at:
+>
+>   https://github.com/irui-wang/linux_fw_vpu_v1.1.7.git v1.1.7
+>
+> for you to fetch changes up to 70390331db03113fd7fe1dff195b135a7f2ad840:
+>
+>   linux-firmware: mediatek: Update MT8173 VPU firmware to v1.1.7 (2022-01-22 20:30:38 +0800)
+>
+> ----------------------------------------------------------------
+> Irui Wang (1):
+>       linux-firmware: mediatek: Update MT8173 VPU firmware to v1.1.7
+>
+>  mediatek/mt8173/vpu_d.bin | Bin 2977184 -> 2977184 bytes
+>  mediatek/mt8173/vpu_p.bin | Bin 131180 -> 131180 bytes
+>  2 files changed, 0 insertions(+), 0 deletions(-)
 
-Yes that decision looks good to me, as this allows different maintainers
-to apply patches on a per-subsystem basis.
-Thanks!
+Pulled and pushed out.
 
-Regards,
-Angelo
+josh
 
 _______________________________________________
 Linux-mediatek mailing list
