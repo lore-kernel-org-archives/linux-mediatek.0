@@ -4,55 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 478BAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jan 2022 12:10:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8959DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jan 2022 12:18:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WhUiqLep/QNurFxR9/HZhyAKYEluS013sDYYoooOFS8=; b=BwfZcyJfNFEonO
-	zjSFM0CNyn/EM3MzTKCUJpAlyKVOVP8A1mXXsrHTlp6cjzhLEU55TTRE6A/VaqDXyRY293iP7cBBb
-	YXCkTVUT7w02g6PceHBQkS4SlYoa4H7Vbm8NkQUPD9oL7mGrHYSysylDX9GQiTKf5KScHHfa2XfL6
-	zUy1VwleZgbWVp7ayzbfnbTJtwDr9gYagkKHm8oUY3/7zln8K7tvotY8tdJhctaibP+N9zvBlWA++
-	PQEvJ4OGj9n+8XjuP3THfWBjrSQNO24GMwdi9pnhAvmWaCGxPCQjRD9C0Jxmo+N4tAa3XA+8liJHm
-	rPdXJe2slF4SWC1GmsRw==;
+	List-Owner; bh=AzB7HxShOImmGRFkmFOmz0sDmp353lpuhFSuDtGVEiE=; b=2GMn4eigq8o8QV
+	6fK863+vVvJz+42ONDbGREazt4QHS6EXQNqcgm+qUbofpG/9dyWSLUzWc9//4KZ3Bpy37TuFxvU2w
+	ndyDeJlmQvWcHoSRlD4l53Xz+madnIrOKqT7d6en4BDLwRDgrut81PFIfXyJympuNorMS2+EOPOYL
+	sop8CTmzDwtlY3bLBjfaoHcu3wG3f4BNcZcMckevwU71XiB59sl/I/ep0lXTvdmOaPzPczrBNptYq
+	B1y9ocSdnU80RLfPWG7yFfWXlNFheaihfaN3kTUFMdcNNefrqppdRNOJIVToqxeDDaU9Uq4UYJFnk
+	D2aDMUNNS41M+Mq3nL/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nByAb-0039fm-Il; Mon, 24 Jan 2022 12:10:01 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nByJ8-003Dsy-Kf; Mon, 24 Jan 2022 12:18:50 +0000
+Received: from mga05.intel.com ([192.55.52.43])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nByA2-0039TT-Ln; Mon, 24 Jan 2022 12:09:28 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id EED441F42E77
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1643026165;
- bh=K2ObFY3Vsm+qnoFl2QeGq49BSilMuqWVDQ+bAXw3Mog=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=MXIzTOobugUM0mowy79jjk1wphZsdQeaD09BgOWJkvg9YkRg2INPxE+3z59OGCbaP
- oGOgJZyLmJ/EDqaqCFR1peOp+C5HLSeEVSR8VN0fCVIerLlfa/PSP1gY89+4F7ymtk
- RmjpdpgsBEgOl0FqpJblVZj1Dsgw+lIhVOFigOX7JF8PmoIIh6/UCs+6NvySXOCRTo
- y5203U/mGV2mQ1spOsg1DoKw98o9G0kotfqk6RVIhRaDN8DxbfmdXuoyMl1P0n3i1d
- mZVoDugn6pJSvub6XGR1RYeiACs7trCsDaFVHFCgXjKt9Wq6pVhef28Ejy1BIlwamf
- GmUSTmUu1bXhg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: bjorn.andersson@linaro.org
-Cc: mathieu.poirier@linaro.org, matthias.bgg@gmail.com,
- linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 3/3] remoteproc: mtk_scp: Use dev_err_probe() where possible
-Date: Mon, 24 Jan 2022 13:09:15 +0100
-Message-Id: <20220124120915.41292-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.33.1
-In-Reply-To: <20220124120915.41292-1-angelogioacchino.delregno@collabora.com>
-References: <20220124120915.41292-1-angelogioacchino.delregno@collabora.com>
+ id 1nByFK-003CCx-80; Mon, 24 Jan 2022 12:14:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1643026494; x=1674562494;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=oSJpUR7qQooZpsgnfNqCcxKzq86iTJ3y0QT5ivH1Jg8=;
+ b=IRimWTRkggKWvgAjw7XUptjT+4IxK+uYAUiOmewGk0xC2loxvKHU4yj4
+ alBrJFv1s2Qpn8L5NAPCaRufolD4HlDEgEdzk4iubXMRUtBh7huxaWQu/
+ FHJEIe0OAcjPUnbB16Q5TkeRhn47i1kWPM3w8qQeXfYS8o1YSTWoM8Jzw
+ tVluG09G3ro/QM8izzmEwoYyv5mO55biLMrALw+dgsHxZehXNN9Ye7sxq
+ FRfK/9g6OxR1ygWVWJhU5Qd2jfYZPseLUYusbS8si6bt6g+COY7QhfEgs
+ Maxhfnjaq6nJNaSfPgfrf7sDl7QH1D2h71HogU8cKDuerulMZQBErOSXW g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10236"; a="332385124"
+X-IronPort-AV: E=Sophos;i="5.88,311,1635231600"; d="scan'208";a="332385124"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jan 2022 04:14:42 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,311,1635231600"; d="scan'208";a="479052944"
+Received: from lkp-server01.sh.intel.com (HELO 276f1b88eecb) ([10.239.97.150])
+ by orsmga006.jf.intel.com with ESMTP; 24 Jan 2022 04:14:39 -0800
+Received: from kbuild by 276f1b88eecb with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1nByF5-000II4-3F; Mon, 24 Jan 2022 12:14:39 +0000
+Date: Mon, 24 Jan 2022 20:14:16 +0800
+From: kernel test robot <lkp@intel.com>
+To: Chen-Yu Tsai <wenst@chromium.org>, Stephen Boyd <sboyd@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: kbuild-all@lists.01.org, Chen-Yu Tsai <wenst@chromium.org>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 25/31] clk: mediatek: pll: Implement error handling in
+ register API
+Message-ID: <202201242043.D1yrOE9S-lkp@intel.com>
+References: <20220122091731.283592-26-wenst@chromium.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220122091731.283592-26-wenst@chromium.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220124_040926_886202_2D97AE7C 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20220124_041454_417366_FD736464 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,79 +84,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Simplify the probe function, where possible, by using dev_err_probe().
-While at it, as to increase human readability, also remove some
-unnecessary forced void pointer casts that were previously used in
-error checking.
+Hi Chen-Yu,
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+I love your patch! Perhaps something to improve:
+
+[auto build test WARNING on clk/clk-next]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
+
+url:    https://github.com/0day-ci/linux/commits/Chen-Yu-Tsai/clk-mediatek-Cleanups-and-Improvements-Part-1/20220122-172158
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
+config: h8300-randconfig-c003-20220124 (https://download.01.org/0day-ci/archive/20220124/202201242043.D1yrOE9S-lkp@intel.com/config)
+compiler: h8300-linux-gcc (GCC) 11.2.0
+
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
+
+
+cocci warnings: (new ones prefixed by >>)
+>> drivers/clk/mediatek/clk-pll.c:407:2-3: Unneeded semicolon
+
+Please review and possibly fold the followup patch.
+
 ---
- drivers/remoteproc/mtk_scp.c | 28 ++++++++++++----------------
- 1 file changed, 12 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index e40706b0e015..dcddb33e9997 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -757,10 +757,8 @@ static int scp_probe(struct platform_device *pdev)
- 	int ret, i;
- 
- 	rproc = devm_rproc_alloc(dev, np->name, &scp_ops, fw_name, sizeof(*scp));
--	if (!rproc) {
--		dev_err(dev, "unable to allocate remoteproc\n");
--		return -ENOMEM;
--	}
-+	if (!rproc)
-+		return dev_err_probe(dev, -ENOMEM, "unable to allocate remoteproc\n");
- 
- 	scp = (struct mtk_scp *)rproc->priv;
- 	scp->rproc = rproc;
-@@ -770,21 +768,20 @@ static int scp_probe(struct platform_device *pdev)
- 
- 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sram");
- 	scp->sram_base = devm_ioremap_resource(dev, res);
--	if (IS_ERR((__force void *)scp->sram_base)) {
--		dev_err(dev, "Failed to parse and map sram memory\n");
--		return PTR_ERR((__force void *)scp->sram_base);
--	}
-+	if (IS_ERR(scp->sram_base))
-+		return dev_err_probe(dev, PTR_ERR(scp->sram_base),
-+				     "Failed to parse and map sram memory\n");
-+
- 	scp->sram_size = resource_size(res);
- 	scp->sram_phys = res->start;
- 
- 	/* l1tcm is an optional memory region */
- 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
- 	scp->l1tcm_base = devm_ioremap_resource(dev, res);
--	if (IS_ERR((__force void *)scp->l1tcm_base)) {
--		ret = PTR_ERR((__force void *)scp->l1tcm_base);
-+	if (IS_ERR(scp->l1tcm_base)) {
-+		ret = PTR_ERR(scp->l1tcm_base);
- 		if (ret != -EINVAL) {
--			dev_err(dev, "Failed to map l1tcm memory\n");
--			return ret;
-+			return dev_err_probe(dev, ret, "Failed to map l1tcm memory\n");
- 		}
- 	} else {
- 		scp->l1tcm_size = resource_size(res);
-@@ -792,10 +789,9 @@ static int scp_probe(struct platform_device *pdev)
- 	}
- 
- 	scp->reg_base = devm_platform_ioremap_resource_byname(pdev, "cfg");
--	if (IS_ERR((__force void *)scp->reg_base)) {
--		dev_err(dev, "Failed to parse and map cfg memory\n");
--		return PTR_ERR((__force void *)scp->reg_base);
--	}
-+	if (IS_ERR(scp->reg_base))
-+		return dev_err_probe(dev, PTR_ERR(scp->reg_base),
-+				     "Failed to parse and map cfg memory\n");
- 
- 	ret = scp->data->scp_clk_get(scp);
- 	if (ret)
--- 
-2.33.1
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
 _______________________________________________
 Linux-mediatek mailing list
