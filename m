@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5076C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jan 2022 06:42:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78483C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jan 2022 06:56:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AatKp7ZiOfzqNjeBqscPIhnSNYb4+qnyRul7k9/J6cA=; b=CYrZnTjAGl0kpV
-	zRzjLp1acraHBWLwRTybZu4pQV42Jt7y0A733MtsjqVfD+rdCeHos8x31N/y0S8m0VBPBsQ4ETlWr
-	FXYmYeHAJDbHb87OKhZ34R/souJ9BM/fs9dJ4kWSh8ATENMCXYK7g2ddxMfYN9cHOLAcPVba+y7pM
-	kmtu8thpeqhPYDzDw4GIdAfQB4AyDdHswUI6o8JQejjDGaBm4Ua6DTneqSMX8XfRKfaaGFt2nBRuC
-	XBfrgnfkEen4epRujf+ZMTuL7cwbF6aGOiiNJcSRv1b8HPcjQBFVrCbplnxEBZHDRhQCqBeRptPJv
-	P2znnk60XhI42CD6ovhw==;
+	List-Owner; bh=7Q36iC3+FaamcOwNBifrR4S0QYvQkNsp9O5BGAEs+NM=; b=iY9i74R/k39GCQ
+	+fgHyX1smYccSoRTPIZ5OOJlHAAPv3YB7JYmczkOeV1DM3/tYtch+aTEf9EH9SZJp1HugbZRSAT0p
+	186+cxOoUJSnjMeQZyvmaSysU4IPIRJoUBEJGU2tFEHea6GcJfBA6E4d28VJlMvddWQElac7ftDkO
+	tFwJ3YEgE0M1fieK+KIg5yWMeGQYj5pN8SMAg90DmMKXi51Ba3oAE+Nr3NgBunAMTGc/qOn15V/T8
+	tbMM4JIlWF/EnLi3TtqTvlouXJanVs2K9jgA/0H//2iTm516KXc0JWjcfebb1XqzIXMG0kSb9gfGU
+	OCZBgHTu45dYtgTckiaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nBt35-002REt-8h; Mon, 24 Jan 2022 06:41:55 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nBtGw-002RyO-FF; Mon, 24 Jan 2022 06:56:14 +0000
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nBt32-002REH-VS; Mon, 24 Jan 2022 06:41:54 +0000
-X-UUID: 061be5baab2b4d70b8c0017c9402455f-20220123
-X-UUID: 061be5baab2b4d70b8c0017c9402455f-20220123
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <roger.lu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1065209973; Sun, 23 Jan 2022 23:41:48 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 23 Jan 2022 22:39:36 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 24 Jan 2022 14:39:35 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 24 Jan 2022 14:39:34 +0800
-Message-ID: <dc84332f190a8be7d5b004fc4d2a2c1341f9a357.camel@mediatek.com>
-Subject: Re: [PATCH v21 3/8] soc: mediatek: SVS: introduce MTK SVS engine
-From: Roger Lu <roger.lu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
- <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd
- <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
-CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
- YT Lee <yt.lee@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
- Charles Yang <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, 
- Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-pm@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guenter Roeck
- <linux@roeck-us.net>
-Date: Mon, 24 Jan 2022 14:39:34 +0800
-In-Reply-To: <63d8884d-d02d-53f9-8524-4a074ca5bfea@collabora.com>
-References: <20220107095200.4389-1-roger.lu@mediatek.com>
- <20220107095200.4389-4-roger.lu@mediatek.com>
- <63d8884d-d02d-53f9-8524-4a074ca5bfea@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nBtGt-002RxW-Es
+ for linux-mediatek@lists.infradead.org; Mon, 24 Jan 2022 06:56:13 +0000
+Received: by mail-lj1-x236.google.com with SMTP id b14so4426291ljb.0
+ for <linux-mediatek@lists.infradead.org>; Sun, 23 Jan 2022 22:56:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=6eCEcMeA9Fkb0FluXxSrK7i6IfK5ynhLkp1exKbEon8=;
+ b=OGBcMOrV1Z0m2tOW1AiBcywVQKzyrsnU/JUIawoJ4prFqLdEjMc7dVWmXZBcH7FxaY
+ 4qo4K6XAAa2LyDI0c+fvoiJ53fa0kXDxguZyrHyL4XJreVdSXHd27L1i52qw0X/ZNzoE
+ sQr7Uzxq4SgmFQOEfr759mutd41cl50vHxVFQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=6eCEcMeA9Fkb0FluXxSrK7i6IfK5ynhLkp1exKbEon8=;
+ b=0PVD1v/u/dg+HAHIIInmTL2ZPyredZbjFaNV8vw77WphhTiamjtsrqxh0tU3zmCr71
+ yZP7IkUnOc61yxkW89R2UnMQQVtO6qCgC8DXbJgyiM9utP05y8bLchZc7iTJ7eb998pU
+ zNvlL2Dg27V1tPuBwDS2aflRhL63oUxo3v7f9qyKVkyXL9MFxzhtDxBbiHQIGvD7OLE/
+ djDF65whgqo8s6mDA6ZpjCZvaN7qWOVspqlL92nBbOTWHwbZ7dHW6ieiAWJzWXYTOpK/
+ 6ixB75s2DbfawqTSOGDWqR/i2tTDpxsFxb9crsKC9LwQir9hf7mH/KjLiKgGjLSjdLK/
+ 7vSA==
+X-Gm-Message-State: AOAM530qMWwIbIUyfen06PPOYt5AAWjEBFP5tZq6d+7AWbcRLZ74iR1U
+ nFsm+Y2Hr0f3vJq/Tt8fJPZn41AlBZWOL8cKvCN2fkpol2E=
+X-Google-Smtp-Source: ABdhPJyQX8kByoNsnhzYvi39UHrRBNLJT8x4eB8dLRIbLqUY9db041EKQT+HEsVFbuzf9bwzlZzkdhG3mdce8oTvEiU=
+X-Received: by 2002:a2e:b70a:: with SMTP id j10mr10465200ljo.376.1643007369423; 
+ Sun, 23 Jan 2022 22:56:09 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220123033306.29799-1-qizhong.cheng@mediatek.com>
+ <CAGXv+5EcAXFTnjkbeU4f3J2s4Ue5zxrN4QgS=t54BnLX8Gkw2w@mail.gmail.com>
+ <bddf917f241a6628d43ddd95b577024c9ddf9931.camel@mediatek.com>
+In-Reply-To: <bddf917f241a6628d43ddd95b577024c9ddf9931.camel@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 24 Jan 2022 14:55:58 +0800
+Message-ID: <CAGXv+5GUW6qcxwnfj3dsn7Lb1yY5bNv+v+PQ2VN1NX9yPmGd2A@mail.gmail.com>
+Subject: Re: [PATCH] PCI: mediatek: Change MSI interrupt processing sequence
+To: "qizhong.cheng" <qizhong.cheng@mediatek.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>, 
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+ Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, chuanjia.liu@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220123_224153_047431_95430D58 
-X-CRM114-Status: GOOD (  18.20  )
+X-CRM114-CacheID: sfid-20220123_225611_559387_B614CA24 
+X-CRM114-Status: GOOD (  30.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,50 +85,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+On Mon, Jan 24, 2022 at 2:27 PM qizhong.cheng
+<qizhong.cheng@mediatek.com> wrote:
+>
+> Hi chenYu,
+>
+> On Mon, 2022-01-24 at 11:12 +0800, Chen-Yu Tsai wrote:
+> > Hi,
+> >
+> > On Sun, Jan 23, 2022 at 11:34 AM qizhong cheng
+> > <qizhong.cheng@mediatek.com> wrote:
+> > >
+> > > As an edge-triggered interrupts, its interrupt status should be
+> > > cleared
+> > > before dispatch to the handler of device.
+> >
+> > I'm curious, is this just a code correction or are there real world
+> > cases where something fails?
+>
+> Yes, we found a failure when used iperf tool for wifi and network cards
+> performance testing. The function of "while" has just been executed,
+> and the EP sent an MSI before executing "Clear MSI interrupt status".
+> After executing "Clear MSI interrupt status", this edge-triggered
+> interrupt status is cleared, but EP is still waiting for interrupt
+> handler.
 
-Sorry for the late reply and thanks for the advice.
+Can you also include this in the commit log?  It would be nice to record
+the exact scenario that this fix targets.
 
-On Fri, 2022-01-07 at 15:33 +0100, AngeloGioacchino Del Regno wrote:
-> Il 07/01/22 10:51, Roger Lu ha scritto:
-> > The Smart Voltage Scaling(SVS) engine is a piece of hardware
-> > which calculates suitable SVS bank voltages to OPP voltage table.
-> > Then, DVFS driver could apply those SVS bank voltages to PMIC/Buck
-> > when receiving OPP_EVENT_ADJUST_VOLTAGE.
-> > 
-> > Signed-off-by: Roger Lu <roger.lu@mediatek.com>
-> > ---
-> >   drivers/soc/mediatek/Kconfig   |   10 +
-> >   drivers/soc/mediatek/Makefile  |    1 +
-> >   drivers/soc/mediatek/mtk-svs.c | 1446 ++++++++++++++++++++++++++++++++
-> >   3 files changed, 1457 insertions(+)
-> >   create mode 100644 drivers/soc/mediatek/mtk-svs.c
+ChenYu
 
-[snip]
-
-> > +
-> > +struct svs_platform_data {
-> > +	char *name;
-> > +	struct svs_bank *banks;
-> > +	bool (*efuse_parsing)(struct svs_platform *svsp);
-> > +	unsigned long irqflags;
-> > +	const u32 *regs;
-> > +	u32 bank_max;
-> > +	int (*probe)(struct svs_platform *svsp);
-> > +};
-> > +
-> 
-> Please move the definition of struct svs_platform_data at the beginning of
-> the file for increased readability.
-
-Okay. I'll move them at the beginning of the file in the next patch.
-
-> 
-> With that done,
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-
+> >
+> > Also, please add a Fixes tag and maybe Cc stable so this gets
+> > backported
+> > automatically.
+>
+> Thanks for your review, I will fix it in the next version.
+>
+> >
+> > ChenYu
+> >
+> > > Signed-off-by: qizhong cheng <qizhong.cheng@mediatek.com>
+> > > ---
+> > >  drivers/pci/controller/pcie-mediatek.c | 4 ++--
+> > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > >
+> > > diff --git a/drivers/pci/controller/pcie-mediatek.c
+> > > b/drivers/pci/controller/pcie-mediatek.c
+> > > index 2f3f974977a3..705ea33758b1 100644
+> > > --- a/drivers/pci/controller/pcie-mediatek.c
+> > > +++ b/drivers/pci/controller/pcie-mediatek.c
+> > > @@ -624,12 +624,12 @@ static void mtk_pcie_intr_handler(struct
+> > > irq_desc *desc)
+> > >                 if (status & MSI_STATUS){
+> > >                         unsigned long imsi_status;
+> > >
+> > > +                       /* Clear MSI interrupt status */
+> > > +                       writel(MSI_STATUS, port->base +
+> > > PCIE_INT_STATUS);
+> > >                         while ((imsi_status = readl(port->base +
+> > > PCIE_IMSI_STATUS))) {
+> > >                                 for_each_set_bit(bit, &imsi_status,
+> > > MTK_MSI_IRQS_NUM)
+> > >                                         generic_handle_domain_irq(p
+> > > ort->inner_domain, bit);
+> > >                         }
+> > > -                       /* Clear MSI interrupt status */
+> > > -                       writel(MSI_STATUS, port->base +
+> > > PCIE_INT_STATUS);
+> > >                 }
+> > >         }
+> > >
+> > > --
+> > > 2.25.1
+> > >
+> > >
+> > > _______________________________________________
+> > > Linux-mediatek mailing list
+> > > Linux-mediatek@lists.infradead.org
+> > > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+>
 
 _______________________________________________
 Linux-mediatek mailing list
