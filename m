@@ -4,90 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BBFFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jan 2022 17:10:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56302C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jan 2022 17:13:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gXuvBSp4yfsZGweFm1As0ZGzxM5QWDbYzYES0MgakoU=; b=WuksetHGzzXixL
-	OzfP+1LRVmmkGvrB0XOKSehdlFOM+n4vQ6YlNK9xHvduVOdAof7OgQIit/k2XAAIow1lPcSnuXv8+
-	+sermF1ZFp/Niq+SOv6LCLKq2vdhaxgc3JV56IHxPTcOPq+Tgcvh/mM5sw0PzkbM4dnQH8MBkBFHS
-	8ErqpzSO+RBpy+Yw42SxQzWBSRQaRX9+LlFe16xwH8Vy4WY5M6aXgDuAlamtVvA00Xm5lbx6n+tLc
-	H/FdshZ0y2/gKTw2JkAhdb+3yHwxEsiU7SIYjLNQeJedG0FkFaTudZa0xc0D9juCfb5jplx/jirl4
-	EJV6d8U+4xdUwn1f2cVg==;
+	List-Owner; bh=asu00mXsB5M7TJYghlFOQzYfhiLGwj/h6AayMKfvifg=; b=o7CNVPettQYhey
+	mQBPTFz2ye5Mu2ZOGUDmMgK5lRH5ocyhDq+c2jepnPUk6RbkjE9sEnYATO8OCrKhdv1lC5Gp9ry+z
+	cWvfoMol845qeGpYwyhwFvFsl70mUF48TAUYq2b0gFSvkslc97WJNgryjlNWbAGITx/ENQUT+K300
+	0s8j9ilk8qPGzmLbHeJArnPvRBLOPtUcwRR0UxQbO3sjRbgcuMTEHla4Bf4XKhYqlattATjdP+Xz6
+	itUh9Yjj+SR2olp6H31tC9+U6I/wVLpUip2xqdKdutHouv0PmhXVbHX5jOUKM9mKeJdiQuvjTk6/j
+	nfxIYjbvgzWsOby/8g7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nC2qr-0048cd-Sf; Mon, 24 Jan 2022 17:09:57 +0000
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	id 1nC2ua-0049kw-3L; Mon, 24 Jan 2022 17:13:48 +0000
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nC2qf-0048Xp-Bd; Mon, 24 Jan 2022 17:09:46 +0000
-Received: by mail-pj1-x102b.google.com with SMTP id
- nn16-20020a17090b38d000b001b56b2bce31so433964pjb.3; 
- Mon, 24 Jan 2022 09:09:44 -0800 (PST)
+ id 1nC2uX-0049iB-Im
+ for linux-mediatek@lists.infradead.org; Mon, 24 Jan 2022 17:13:46 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id o64so17093037pjo.2
+ for <linux-mediatek@lists.infradead.org>; Mon, 24 Jan 2022 09:13:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=QE8pJtTMoYdDHJAtBqji1V9DieZJck0kxv9CAHW5UMY=;
- b=crjmhB1Z+RS1q8ktQBw3YUhkzD7s7woazxvUAgl3Rrg1e0fOzcxmWRil91UdTZB7cs
- O5I7mhZVpzQAd6ZWPStIQVNkNP7AkoIJvyM+SWRtU2LdAWVI5FNctkqLgYMTz+QOrnXV
- 1fH9p1vB7wXtDXz3vz4jRogELrTguBqjnG6ObubR+1/DJ+3S4Ejm8tlXcUvYuGAZT5Qg
- WQIdmnNsRzc2rdhl1T+kF+Jw0zb5sUrr1YUEtSAMU9LtxZ34eJ/s2Rt7pmp3fR5PqZzy
- oOuagTQP4oYb1rIEo6bIP8pYFs54esR4/FfC0a0bePIFrTx2RWCxtbSU+7idhPcXDop6
- 35iw==
+ bh=Yz3Kx4MHq06ExPu9kTL/jl3NneB6Xj2/dNX33XiW2j0=;
+ b=gDMwYCxEfk6Fg2wCwnriYNJAh7na79iw0SgOg2pyoNDgmJ0+JZcb8+1nY4Do7tGpe9
+ iD7guUzqpQjCPvIwokQ6TOrFznPIeMz5bgsobMpnXcvImycwdHYe/A4AP+Xt2bCGA+Rg
+ 7e66N7FbFHFicGbWd+/0CRz1wMM6KFbrRUOErGujgym4uTa/x52vDuwHXouuhZt89W/W
+ hpQ/PsX3BtXWPEs1MKy6ooB92YI8IWnnyjhSHVRMzwnlWNPr1evKukjfiOEi4IJiidyG
+ 6XL0OJ8EDODesRjw6utIaE00T5KJcxSY/hSh/DPZHN5gtcXmeLTvCmnRc3GsMaKkaiwq
+ I1dQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=QE8pJtTMoYdDHJAtBqji1V9DieZJck0kxv9CAHW5UMY=;
- b=L1J+eof8CkpiAbZ2t4Q5Uaidx2tRkEiIPWaDJ5OxHVDgfy1a2qjRz/ZyEsd/BVl5ti
- p6k0d5yHHmKXJAG2fp4KnBZ6c2T1+y8ZFHICfJE2Zr28SMOJn+lIkaJ7NBZollM+mSru
- JtvrxIJ3TyMu+nnhWX0tsUfF6em3idvxhCPp0fOsmOJjCVqGaaj1Kf4FhTXV8fiH1vYq
- GR/CycyH2xQTrvIA1xD5F0oTAsl7IU6pnAVVC+IO6IBtCP38aTKSjIl4F8FS6a5NL0Qi
- ujwfmlRbSKBdi4JFDJP2Cggo1XlaolcS1bGnEL484VLSOP6en1TIn6VkDgpIxuVdRYUV
- Mj8A==
-X-Gm-Message-State: AOAM531u4/6sBd3pmQfZ9GP35TdI9K2CIXeDDNXD2jXkuJqlIfoCdCcI
- 5tF65FU+zTav8YWGogW/060=
-X-Google-Smtp-Source: ABdhPJyCHG1ScNMOYjKnM4xN/inKbAncgw3P2Yy6QvhmPW7XJcuRbtEhsblpix6z34++DrJTm6TFAg==
-X-Received: by 2002:a17:90b:4f49:: with SMTP id
- pj9mr2837537pjb.211.1643044183996; 
- Mon, 24 Jan 2022 09:09:43 -0800 (PST)
+ bh=Yz3Kx4MHq06ExPu9kTL/jl3NneB6Xj2/dNX33XiW2j0=;
+ b=l4cU9wA2U9mOUwuGGgnYOXznYnwxzfecwybWjOO4od7IVGlXEFlZXiQtgvITyVT29a
+ Pxrw0qhW+0ebC6fssDr8uLm9L0To9Ol18Iy1jIA/D1SOZRftlGqziTcGiJqP3M3gqD1M
+ c87Dio9WY4QEkv6EYAQR0bMGyqc11IoskF+lzW5pZovelIWN/m0XgF30fREa47bDOpUH
+ Tux0AI3EQQfXfNQem9qSCyoRo2FAwjwKqADziV/X6TJFMfH8PPCZiv7rTQJo8LUSTeej
+ K48M2m53h9TEoxkbgLwGK9Z6yWd4g97Y1HmVkMgR9R7hnnFh2neYCw1k/A5XRAC1utQ3
+ 6HIQ==
+X-Gm-Message-State: AOAM530kLocuxMFjcCJnwQx7zkvC1a73YwnWGmAKoAEsKUI0q5CR64OL
+ vWhRmPilkxfSKPv9ZR+3EBs=
+X-Google-Smtp-Source: ABdhPJyt8Q8UYMb8ZPX5O55xt98T26QcckoaPZ4g6z41q+Z+eKVHji1BFoUdALgiWj9A/kZe4ZZ2og==
+X-Received: by 2002:a17:90b:4d11:: with SMTP id
+ mw17mr2845071pjb.100.1643044421921; 
+ Mon, 24 Jan 2022 09:13:41 -0800 (PST)
 Received: from [192.168.1.3] (ip72-194-116-95.oc.oc.cox.net. [72.194.116.95])
  by smtp.gmail.com with ESMTPSA id
- g5sm13502751pjj.36.2022.01.24.09.09.41
+ t3sm17894634pfg.28.2022.01.24.09.13.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 Jan 2022 09:09:43 -0800 (PST)
-Message-ID: <562d9627-fe34-fbef-e908-d06a1cdd7cb4@gmail.com>
-Date: Mon, 24 Jan 2022 09:09:41 -0800
+ Mon, 24 Jan 2022 09:13:41 -0800 (PST)
+Message-ID: <acf98ec3-1120-bcc0-2a2f-85d97c48febd@gmail.com>
+Date: Mon, 24 Jan 2022 09:13:38 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [PATCH] net: dsa|ethernet: use bool values to pass bool param of
- phy_init_eee
+Subject: Re: MT7621 SoC Traffic Won't Flow on RGMII2 Bus/2nd GMAC
 Content-Language: en-US
-To: Jisheng Zhang <jszhang@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S . Miller"
- <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Doug Berger <opendmb@gmail.com>, Joakim Zhang <qiangqing.zhang@nxp.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Bryan Whitehead <bryan.whitehead@microchip.com>,
- UNGLinuxDriver@microchip.com, Byungho An <bh74.an@samsung.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- bcm-kernel-feedback-list@broadcom.com
-References: <20220123152241.1480-1-jszhang@kernel.org>
+To: Andrew Lunn <andrew@lunn.ch>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?=
+ <arinc.unal@arinc9.com>
+Cc: DENG Qingfang <dqfext@gmail.com>,
+ Luiz Angelo Daros de Luca <luizluca@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <john@phrozen.org>,
+ Siddhant Gupta <siddhantgupta416@gmail.com>,
+ Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Russell King <linux@armlinux.org.uk>,
+ Jakub Kicinski <kuba@kernel.org>, David Miller <davem@davemloft.net>,
+ =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, netdev <netdev@vger.kernel.org>,
+ linux-mips@vger.kernel.org,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, openwrt-devel@lists.openwrt.org,
+ erkin.bozoglu@xeront.com
+References: <83a35aa3-6cb8-2bc4-2ff4-64278bbcd8c8@arinc9.com>
+ <CALW65jZ4N_YRJd8F-uaETWm1Hs3rNcy95csf++rz7vTk8G8oOg@mail.gmail.com>
+ <02ecce91-7aad-4392-c9d7-f45ca1b31e0b@arinc9.com> <Ye1zwIFUa5LPQbQm@lunn.ch>
 From: Florian Fainelli <f.fainelli@gmail.com>
-In-Reply-To: <20220123152241.1480-1-jszhang@kernel.org>
+In-Reply-To: <Ye1zwIFUa5LPQbQm@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220124_090945_439136_C7F611DA 
-X-CRM114-Status: UNSURE (   5.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220124_091345_650389_FB82B277 
+X-CRM114-Status: GOOD (  13.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,28 +104,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 1/23/2022 7:22 AM, Jisheng Zhang wrote:
-> The 2nd param of phy_init_eee(): clk_stop_enable is a bool param, use
-> true or false instead of 1/0.
-> 
-> Signed-off-by: Jisheng Zhang <jszhang@kernel.org>
-
-Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
-
-Nit: for future changes, if your patch spans multiple 
-subsystems/directories, just go with the top-most subject prefix, for 
-instance here "net: " would have been sufficient. Thanks!
--- 
-Florian
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+CgpPbiAxLzIzLzIwMjIgNzoyNiBBTSwgQW5kcmV3IEx1bm4gd3JvdGU6Cj4gT24gU3VuLCBKYW4g
+MjMsIDIwMjIgYXQgMTE6MzM6MDRBTSArMDMwMCwgQXLEsW7DpyDDnE5BTCB3cm90ZToKPj4gSGV5
+IERlbmcsCj4+Cj4+IE9uIDIzLzAxLzIwMjIgMDk6NTEsIERFTkcgUWluZ2Zhbmcgd3JvdGU6Cj4+
+PiBIaSwKPj4+Cj4+PiBEbyB5b3Ugc2V0IHRoZSBldGhlcm5ldCBwaW5tdXggY29ycmVjdGx5Pwo+
+Pj4KPj4+ICZldGhlcm5ldCB7Cj4+PiAgICAgICBwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+
+Pj4gICAgICAgcGluY3RybC0wID0gPCZyZ21paTFfcGlucyAmcmdtaWkyX3BpbnMgJm1kaW9fcGlu
+cz47Cj4+PiB9Owo+Pgo+PiBUaGlzIGZpeGVkIGl0ISBXZSBkaWQgaGF2ZSAmcmdtaWkyX3BpbnMg
+b24gdGhlIGdtYWMxIG5vZGUgKGl0IHdhcyBvcmlnaW5hbGx5Cj4+IG9uIGV4dGVybmFsX3BoeSkg
+c28gd2UgbmV2ZXIgdGhvdWdodCB0byBpbnZlc3RpZ2F0ZSB0aGUgcGluY3RybAo+PiBjb25maWd1
+cmF0aW9uIGZ1cnRoZXIhIFR1cm5zIG91dCAmcmdtaWkyX3BpbnMgbmVlZHMgdG8gYmUgZGVmaW5l
+ZCBvbiB0aGUKPj4gZXRoZXJuZXQgbm9kZSBpbnN0ZWFkLgo+IAo+IFBIWXMgYXJlIGdlbmVyYWxs
+eSBleHRlcm5hbCwgc28gcGlubXV4IG9uIHRoZW0gbWFrZXMgbm8gc2Vuc2UuIFBIWXMgaW4KPiBE
+VCBhcmUgbm90IGRldmljZXMgaW4gdGhlIHVzdWFsIHNlbnNlLCBzbyBpIGRvbid0IHRoaW5rIHRo
+ZSBkcml2ZXIKPiBjb3JlIHdpbGwgaGFuZGxlIHBpbm11eCBmb3IgdGhlbSwgZXZlbiBpZiB5b3Ug
+ZGlkIGxpc3QgdGhlbS4KCk5vdCBzdXJlIEkgdW5kZXJzdGFuZCB5b3VyIGNvbW1lbnQgaGVyZSwg
+dGhpcyBpcyBjb25maWd1cmluZyB0aGUgcGlubXV4IApvbiB0aGUgU29DIHNpZGUgaW4gb3JkZXIg
+Zm9yIHRoZSBzZWNvbmQgUkdNSUkgaW50ZXJmYWNlJ3MgZGF0YSBwYXRoIHRvIHdvcmsuCgpJdCBp
+cyBub3QgdW5jb21tb24gZm9yIHRoZSBzYW1lIHNldCBvZiBJL08gcGFkcyB0byBiZSB1c2VkIGJ5
+IGRpZmZlcmVudCAKZnVuY3Rpb25zIHdpdGhpbiB0aGUgY2hpcC4gRm9yIGluc3RhbmNlIHRoZSBj
+aGlwcyBJIHdvcmsgd2l0aCBoYXBwaWx5IApvZmZlciBSR01JSSwgTVRTSUYsIFBETSAoSTJTKSwg
+VFNJTyBvbiB0aGUgc2FtZSBwYWRzIHZpYSBkaWZmZXJlbnQgCnBpbm11eGluZyBvcHRpb25zLgoK
+QWxzbywgdGhpcyBpcyBkZWNsYXJpbmcgYSBwaW5tdXhpbmcgZnVuY3Rpb24gZm9yIHRoZSBFdGhl
+cm5ldCBNQUMsIHdoaWNoIAppcyBhIHBlcmZlY3RseSB2YWxpZCB1c2UgY2FzZSBhbmQgdHlwaWNh
+bGx5IGhvdyBwaW5tdXhpbmcgaXMgZGVjbGFyZWQgCmZvciBhIGdpdmVuIFNvQy4KLS0gCkZsb3Jp
+YW4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0
+ZWsK
