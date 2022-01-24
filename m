@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8959DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jan 2022 12:18:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9506EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jan 2022 13:22:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AzB7HxShOImmGRFkmFOmz0sDmp353lpuhFSuDtGVEiE=; b=2GMn4eigq8o8QV
-	6fK863+vVvJz+42ONDbGREazt4QHS6EXQNqcgm+qUbofpG/9dyWSLUzWc9//4KZ3Bpy37TuFxvU2w
-	ndyDeJlmQvWcHoSRlD4l53Xz+madnIrOKqT7d6en4BDLwRDgrut81PFIfXyJympuNorMS2+EOPOYL
-	sop8CTmzDwtlY3bLBjfaoHcu3wG3f4BNcZcMckevwU71XiB59sl/I/ep0lXTvdmOaPzPczrBNptYq
-	B1y9ocSdnU80RLfPWG7yFfWXlNFheaihfaN3kTUFMdcNNefrqppdRNOJIVToqxeDDaU9Uq4UYJFnk
-	D2aDMUNNS41M+Mq3nL/Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ad3r7jrDjNedenz7TgD00SZVmMx1FRYrpQKbcSAWYks=; b=Pr+74nZbWSXEh0sspoczIGP/3/
+	Qoy11kH3YKadP7oeRJzBfi7ee/V605CVG0A0bAR4/HMC6CnuBnebl4hvXpzgxgrz+FwgjgvVT1B3+
+	Z0TTq01xaK2Zsg+grn6EYdRVNhQiUL0ulJX4whib4tFJurFUgWM+Ta5/JyEvPRdsVs+JW1ikC3QMd
+	IWKXiXJ1E5q9Fl5mgO4x5XOXdpi5eB0etWT5qrYKf3ztV9CwDJXjXnj4J97Cdk1rgsJwR8/1rfJ+R
+	/yjJvgIk4fwfi7Q6RVpcESyRbwWRXhIFl4hTmsQkS9AQEk94d2IhO4ERGSwWggq8N1Ks+Ym3FL30E
+	XdxJgkVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nByJ8-003Dsy-Kf; Mon, 24 Jan 2022 12:18:50 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1nBzIg-003TXc-C3; Mon, 24 Jan 2022 13:22:26 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nByFK-003CCx-80; Mon, 24 Jan 2022 12:14:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1643026494; x=1674562494;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=oSJpUR7qQooZpsgnfNqCcxKzq86iTJ3y0QT5ivH1Jg8=;
- b=IRimWTRkggKWvgAjw7XUptjT+4IxK+uYAUiOmewGk0xC2loxvKHU4yj4
- alBrJFv1s2Qpn8L5NAPCaRufolD4HlDEgEdzk4iubXMRUtBh7huxaWQu/
- FHJEIe0OAcjPUnbB16Q5TkeRhn47i1kWPM3w8qQeXfYS8o1YSTWoM8Jzw
- tVluG09G3ro/QM8izzmEwoYyv5mO55biLMrALw+dgsHxZehXNN9Ye7sxq
- FRfK/9g6OxR1ygWVWJhU5Qd2jfYZPseLUYusbS8si6bt6g+COY7QhfEgs
- Maxhfnjaq6nJNaSfPgfrf7sDl7QH1D2h71HogU8cKDuerulMZQBErOSXW g==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10236"; a="332385124"
-X-IronPort-AV: E=Sophos;i="5.88,311,1635231600"; d="scan'208";a="332385124"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jan 2022 04:14:42 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,311,1635231600"; d="scan'208";a="479052944"
-Received: from lkp-server01.sh.intel.com (HELO 276f1b88eecb) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 24 Jan 2022 04:14:39 -0800
-Received: from kbuild by 276f1b88eecb with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1nByF5-000II4-3F; Mon, 24 Jan 2022 12:14:39 +0000
-Date: Mon, 24 Jan 2022 20:14:16 +0800
-From: kernel test robot <lkp@intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>, Stephen Boyd <sboyd@kernel.org>,
- Michael Turquette <mturquette@baylibre.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kbuild-all@lists.01.org, Chen-Yu Tsai <wenst@chromium.org>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 25/31] clk: mediatek: pll: Implement error handling in
- register API
-Message-ID: <202201242043.D1yrOE9S-lkp@intel.com>
-References: <20220122091731.283592-26-wenst@chromium.org>
+ id 1nBzFO-003SCN-F1; Mon, 24 Jan 2022 13:19:06 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id E51766125F;
+ Mon, 24 Jan 2022 13:19:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B266C340E1;
+ Mon, 24 Jan 2022 13:18:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1643030341;
+ bh=+MVWVjmHsnFdqdROLxwGRRRLpP1Y39im19Biy0aR7pY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=P+5b48gFcOvXNA1kPuEgkWwiohSql6bvOlD4rcDMp1k0RgUBRwGF2R5h8hrbgw2Yj
+ nWkq1CsdUA7gf3tEeHUtiDtKd1ZH/ERYW4cPVpy9YPXGEol6MdKwVNPcB/sK0DVot9
+ C/M9xvOvyoUNTFipB6if0+s79oKaV5YuAYxOSqB2QTO0RRjnYUq7K9AYzNc1ER9aZc
+ KOjxx9IBUruoUfm/XbKe1L/TTtEG+7e1gbyyhjm5dK3TSoSCcQXK5tV0/ErwDquH0U
+ beQu+Em2O21CVew9Ps2Sj3p6klvoKU0FnJfNvcJMQUkj6jXgUyyit9/PrrkV3vwtfv
+ akzESg1XC7vdg==
+Date: Mon, 24 Jan 2022 13:18:56 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Leilk Liu <leilk.liu@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH V3 1/2] dt-bindings: spi: Convert spi-mt65xx to json-schema
+Message-ID: <Ye6nQIVoti5TKh+k@sirena.org.uk>
+References: <20220124061238.7854-1-leilk.liu@mediatek.com>
+ <20220124061238.7854-2-leilk.liu@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220122091731.283592-26-wenst@chromium.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20220124061238.7854-2-leilk.liu@mediatek.com>
+X-Cookie: The second best policy is dishonesty.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220124_041454_417366_FD736464 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20220124_051902_588877_559DE5FD 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,39 +70,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4939593787701546137=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chen-Yu,
 
-I love your patch! Perhaps something to improve:
-
-[auto build test WARNING on clk/clk-next]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
-
-url:    https://github.com/0day-ci/linux/commits/Chen-Yu-Tsai/clk-mediatek-Cleanups-and-Improvements-Part-1/20220122-172158
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
-config: h8300-randconfig-c003-20220124 (https://download.01.org/0day-ci/archive/20220124/202201242043.D1yrOE9S-lkp@intel.com/config)
-compiler: h8300-linux-gcc (GCC) 11.2.0
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
+--===============4939593787701546137==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="v2cofXUm2ThNHvf8"
+Content-Disposition: inline
 
 
-cocci warnings: (new ones prefixed by >>)
->> drivers/clk/mediatek/clk-pll.c:407:2-3: Unneeded semicolon
+--v2cofXUm2ThNHvf8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Please review and possibly fold the followup patch.
+On Mon, Jan 24, 2022 at 02:12:37PM +0800, Leilk Liu wrote:
+> Convert Mediatek ARM SOC's SPI Master controller binding
+> to json-schema format.
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Please make any YAML conversion patches the last patches in a series -
+there's frequently a backlog in reviewing them so having the DT binding
+patches first blocks any progress on everything else in the series.
+
+--v2cofXUm2ThNHvf8
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmHupz8ACgkQJNaLcl1U
+h9B8ZAf5AZ25SlrujmxJNnJRmptUEyQU9a2j8mJ0o6DR8eQGjMHE3n1/ppct/BEv
+LwNcF2C7W0lNKIILFQ+oa0hdHcj74wVsvvKECMD/CqgJxG93v1KlD+KRVQHbAiTJ
+g8kXyvqwsN+YiUkqhbZ1tiHOUVNeB2sLu70wQHXPCLZ2UTz8QAY9Qi5eZ+3XxVDf
+RysYKB8Gfvi3nXwN4UA6ygBWc6W8Ax0r5I1K+GPUqsFjWwatfgVZwIxW2N1+5JHL
+eaQrA5Rg6kg+NINBAtWjhQU+C/QmR2fHj35qJbkjWfY0Yr5P7f02NSl4epEI3FHd
+JuKzOkcS7o8XB29ERzpWfkskxIfbXA==
+=k9qL
+-----END PGP SIGNATURE-----
+
+--v2cofXUm2ThNHvf8--
+
+
+--===============4939593787701546137==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============4939593787701546137==--
+
