@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BBDFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 09:10:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18E58C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 09:10:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DyZCaP05X6lfIrLBmulEZEZiIx5VivBXumzXNOyHnEo=; b=1UCW6xHZ47ib1D
-	VSYVNOn48hof51gXasKFygL3PauXq7XKAZ0pUgu8Q7L5CUPtU1enYiwtrFL7fhzk3fM8QFnuuD0qY
-	RbMPCoWKfDBIaJZ3+UQiyuma89vk/uWyFsv11CSPp1yHGB7fT3Io9pefQ1sNHlQ0sCVq+dPMA92b3
-	8bOnfCRkzGgdee+Pfl6wxCRFLTe0s8ICagqcukTlhoWmFZ+FL0/nKfMUX7Xq2TGvCbi6IESKwS390
-	L2dBEAypexIBktL5ix6YToMf7gG4ESTUZRH4mIrEqberdY+cnUte4jZeJmKREEHJz4afFrujLsiTO
-	ol8Z7PyWTkd6REkqvP9A==;
+	List-Owner; bh=sGBb5uPP5umn7pR7qidy6W5UmQMsUCeSvcv22ch2YjY=; b=goKsuXxbjGoqi+
+	mQQcXsvBSIo7Y1zfm4p1xJ4l75x3FRwR4qRiyBbHiDBz6fMv8oVOeqdqJmiep8wLY1c04O8SEJgRM
+	rcgRaeUuYkAPavDGAiSVlpT0CDhtLm1iAscxvWfjsA5WBzdUapYQC8qe1vyk+kYZ/AVW4+aAOb8QX
+	4YaKqB1OZjoVgavAcHgNAmWvy/fXDMNXKjzNDfyb3T4Ng5IxEPp0mExuRhItSbHV8sGvmVq0/rEDG
+	1J+LFVhC6BdhunwrYFL1VEvOgIigV5EDsOy9H7uk2UYiVDCVAqxPQdUkIt0yeRqsdPKDmbnbhTp9r
+	zhM/PvBh6aRyhWv0Tpgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCHpu-0070y1-Dv; Tue, 25 Jan 2022 09:09:58 +0000
+	id 1nCHq3-00712e-M2; Tue, 25 Jan 2022 09:10:07 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCHiF-006xGc-2m; Tue, 25 Jan 2022 09:02:05 +0000
-X-UUID: 29e1952152d0439caeeece2b615e31fb-20220125
-X-UUID: 29e1952152d0439caeeece2b615e31fb-20220125
+ id 1nCHiG-006xFw-7t; Tue, 25 Jan 2022 09:02:06 +0000
+X-UUID: cc21f05f9d5e48988bd1828e0960c334-20220125
+X-UUID: cc21f05f9d5e48988bd1828e0960c334-20220125
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 411437816; Tue, 25 Jan 2022 02:01:56 -0700
+ with ESMTP id 2064410969; Tue, 25 Jan 2022 02:01:56 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 Jan 2022 01:00:46 -0800
+ 15.0.1497.2; Tue, 25 Jan 2022 00:59:42 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 25 Jan 2022 17:00:45 +0800
+ 15.2.792.15; Tue, 25 Jan 2022 16:59:40 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 25 Jan 2022 17:00:43 +0800
+ Transport; Tue, 25 Jan 2022 16:59:39 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -54,17 +54,17 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v4 30/35] iommu/mediatek: Initialise bank HW for each a bank
-Date: Tue, 25 Jan 2022 16:56:29 +0800
-Message-ID: <20220125085634.17972-31-yong.wu@mediatek.com>
+Subject: [PATCH v4 20/35] iommu/mediatek: Add a PM_CLK_AO flag for infra iommu
+Date: Tue, 25 Jan 2022 16:56:19 +0800
+Message-ID: <20220125085634.17972-21-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220125085634.17972-1-yong.wu@mediatek.com>
 References: <20220125085634.17972-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220125_010203_181026_48A6150D 
-X-CRM114-Status: GOOD (  19.35  )
+X-CRM114-CacheID: sfid-20220125_010204_404349_29098434 
+X-CRM114-Status: GOOD (  19.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,126 +81,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mt8195 IOMMU HW max support 5 banks, and regarding the banks'
-registers, it looks like:
+The power/clock of infra iommu is always on, and it doesn't have the
+device link with the master devices, then the infra iommu device's pm
+statua is not active, thus we add A PM_CLK_AO flag for infra iommu.
 
- ----------------------------------------
- |bank0  | bank1 | bank2 | bank3 | bank4|
- ----------------------------------------
- |global |
- |control|         null
- |regs   |
- -----------------------------------------
- |bank   |bank   |bank   |bank   |bank   |
- |regs   |regs   |regs   |regs   |regs   |
- |       |       |       |       |       |
- -----------------------------------------
-
-Each bank has some special bank registers and it share bank0's global
-control registers. this patch initialise the bank hw with the bankid.
-
-In the hw_init, we always initialise bank0's control register since
-we don't know if the bank0 is initialised.
-
-Additionally, About each bank's register base, always delta 0x1000.
-like bank[x + 1] = bank[x] + 0x1000.
+The tlb operation is a bit not clear in this file, Comment them in the
+code here.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c | 32 ++++++++++++++++++++------------
- 1 file changed, 20 insertions(+), 12 deletions(-)
+ drivers/iommu/mtk_iommu.c | 29 ++++++++++++++++++++++++++---
+ 1 file changed, 26 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index dc47dc0e3163..c0843c67b5a7 100644
+index cf042ab74fa7..531f4750c721 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -270,7 +270,7 @@ static inline void mtk_iommu_unbind(struct device *dev)
+@@ -130,6 +130,8 @@
+ #define MTK_IOMMU_TYPE_MM		(0x0 << 13)
+ #define MTK_IOMMU_TYPE_INFRA		(0x1 << 13)
+ #define MTK_IOMMU_TYPE_MASK		(0x3 << 13)
++/* PM and clock always on. e.g. infra iommu */
++#define PM_CLK_AO			BIT(15)
  
- static const struct iommu_ops mtk_iommu_ops;
+ #define MTK_IOMMU_HAS_FLAG(pdata, _x)	(!!(((pdata)->flags) & (_x)))
  
--static int mtk_iommu_hw_init(const struct mtk_iommu_data *data);
-+static int mtk_iommu_hw_init(const struct mtk_iommu_data *data, unsigned int bankid);
+@@ -235,13 +237,33 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+ 					   struct mtk_iommu_data *data)
+ {
+ 	struct list_head *head = data->hw_list;
++	bool check_pm_status;
+ 	unsigned long flags;
+ 	int ret;
+ 	u32 tmp;
  
- #define MTK_IOMMU_TLB_ADDR(iova) ({					\
- 	dma_addr_t _addr = iova;					\
-@@ -653,12 +653,14 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- 
- 	mutex_lock(&data->mutex);
- 	bank = &data->bank[bankid];
--	if (!bank->m4u_dom) { /* Initialize the M4U HW */
-+	if (!bank->m4u_dom) { /* Initialize the M4U HW for each a BANK */
- 		ret = pm_runtime_resume_and_get(m4udev);
--		if (ret < 0)
-+		if (ret < 0) {
-+			dev_err(m4udev, "pm get fail(%d) in attach.\n", ret);
- 			goto data_unlock;
+ 	for_each_m4u(data, head) {
+-		if (pm_runtime_get_if_in_use(data->dev) <= 0)
+-			continue;
++		/*
++		 * To avoid resume the iommu device frequently when the iommu device
++		 * is not active, it doesn't always call pm_runtime_get here, then tlb
++		 * flush depends on the tlb flush all in the runtime resume.
++		 *
++		 * There are 2 special cases:
++		 *
++		 * Case1: The iommu dev doesn't have power domain but has bclk. This case
++		 * should also avoid the tlb flush while the dev is not active to mute
++		 * the tlb timeout log. like mt8173.
++		 *
++		 * Case2: The power/clock of infra iommu is always on, and it doesn't
++		 * have the device link with the master devices. This case should avoid
++		 * the PM status check.
++		 */
++		check_pm_status = !MTK_IOMMU_HAS_FLAG(data->plat_data, PM_CLK_AO);
++
++		if (check_pm_status) {
++			if (pm_runtime_get_if_in_use(data->dev) <= 0)
++				continue;
 +		}
  
--		ret = mtk_iommu_hw_init(data);
-+		ret = mtk_iommu_hw_init(data, bankid);
- 		if (ret) {
- 			pm_runtime_put(m4udev);
- 			goto data_unlock;
-@@ -871,11 +873,16 @@ static const struct iommu_ops mtk_iommu_ops = {
- 	.owner		= THIS_MODULE,
- };
+ 		spin_lock_irqsave(&data->tlb_lock, flags);
+ 		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+@@ -268,7 +290,8 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+ 			mtk_iommu_tlb_flush_all(data);
+ 		}
  
--static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
-+static int mtk_iommu_hw_init(const struct mtk_iommu_data *data, unsigned int bankid)
- {
-+	const struct mtk_iommu_bank_data *bankx = &data->bank[bankid];
- 	const struct mtk_iommu_bank_data *bank0 = &data->bank[0];
- 	u32 regval;
- 
-+	/*
-+	 * Global control settings are in bank0. May re-init these global registers
-+	 * since no sure if there is bank0 consumers.
-+	 */
- 	if (data->plat_data->m4u_plat == M4U_MT8173) {
- 		regval = F_MMU_PREFETCH_RT_REPLACE_MOD |
- 			 F_MMU_TF_PROT_TO_PROGRAM_ADDR_MT8173;
-@@ -918,13 +925,14 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+-		pm_runtime_put(data->dev);
++		if (check_pm_status)
++			pm_runtime_put(data->dev);
  	}
- 	writel_relaxed(regval, bank0->base + REG_MMU_MISC_CTRL);
- 
-+	/* Independent settings for each bank */
- 	regval = F_L2_MULIT_HIT_EN |
- 		F_TABLE_WALK_FAULT_INT_EN |
- 		F_PREETCH_FIFO_OVERFLOW_INT_EN |
- 		F_MISS_FIFO_OVERFLOW_INT_EN |
- 		F_PREFETCH_FIFO_ERR_INT_EN |
- 		F_MISS_FIFO_ERR_INT_EN;
--	writel_relaxed(regval, bank0->base + REG_MMU_INT_CONTROL0);
-+	writel_relaxed(regval, bankx->base + REG_MMU_INT_CONTROL0);
- 
- 	regval = F_INT_TRANSLATION_FAULT |
- 		F_INT_MAIN_MULTI_HIT_FAULT |
-@@ -933,19 +941,19 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
- 		F_INT_TLB_MISS_FAULT |
- 		F_INT_MISS_TRANSACTION_FIFO_FAULT |
- 		F_INT_PRETETCH_TRANSATION_FIFO_FAULT;
--	writel_relaxed(regval, bank0->base + REG_MMU_INT_MAIN_CONTROL);
-+	writel_relaxed(regval, bankx->base + REG_MMU_INT_MAIN_CONTROL);
- 
- 	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_LEGACY_IVRP_PADDR))
- 		regval = (data->protect_base >> 1) | (data->enable_4GB << 31);
- 	else
- 		regval = lower_32_bits(data->protect_base) |
- 			 upper_32_bits(data->protect_base);
--	writel_relaxed(regval, bank0->base + REG_MMU_IVRP_PADDR);
-+	writel_relaxed(regval, bankx->base + REG_MMU_IVRP_PADDR);
- 
--	if (devm_request_irq(bank0->parent_dev, bank0->irq, mtk_iommu_isr, 0,
--			     dev_name(bank0->parent_dev), (void *)bank0)) {
--		writel_relaxed(0, bank0->base + REG_MMU_PT_BASE_ADDR);
--		dev_err(bank0->parent_dev, "Failed @ IRQ-%d Request\n", bank0->irq);
-+	if (devm_request_irq(bankx->parent_dev, bankx->irq, mtk_iommu_isr, 0,
-+			     dev_name(bankx->parent_dev), (void *)bankx)) {
-+		writel_relaxed(0, bankx->base + REG_MMU_PT_BASE_ADDR);
-+		dev_err(bankx->parent_dev, "Failed @ IRQ-%d Request\n", bankx->irq);
- 		return -ENODEV;
- 	}
+ }
  
 -- 
 2.18.0
