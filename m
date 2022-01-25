@@ -4,63 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BCECC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 03:42:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DC8AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 03:54:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w0PEyfI3l4ntm/8JftXIHxUdEguz9nq/eb6wjtkVk28=; b=tej6n1aiLgPKL2
-	Ma4u+dow3QEGl6yK1S7s7j2jpI5ZN/tLWx3/31dA6y+kYkzTdDbhftVMMsUTR3iVAafxOsaY1ASUu
-	K3jKZcy6YiNBQMpJp+8KqOnTmq/ccyk6m5lGHRZI+Qd6HWxs8+OaVT7/FgtVsYC33wolOi2sN8cfG
-	E+CZtGyC+jSolVgIZDPDHFUntrCQ0rIDX13LrzwyjnyF7SWULokKHiEwIMyiyQXcuEL1aegmccTlp
-	wAGTeLoCm6d2Dn2/E/hVBqfNPLqbZ2VxRcUB2mIWsg8M9fH1riDIOTk726Jfc6IjYVA8zHST7SzDh
-	ggKr0JYKS11iDX9GK3gg==;
+	List-Owner; bh=g2O31lLVXdxrmNa1adqUcj0PB9t+hOx2JWyhzPZRBww=; b=oWrUPOEcy4b6by
+	JrRlu7U+xjnq+LHTeiUOketO++Hk80dYuo/uawy8+Qx1rZTG8FkCV+M5zJpbCF6a6UzggpqdrhVaQ
+	EepnDPPYKTuzl4leTGvJRz7FD+GrZJA6wVyITBovmxD73VOF4Pc+/WWHsPf0o22DMSthD8GXEykiq
+	EzTlUOqFDL1v8MfW1vZsHcV3BMxFMVg30tvz3rXpWfcHvXqA7xzaahT+2y0lC+Z/newuhlhUUbK5e
+	zdRJ5v3NlemZfavtnU6Rq4pS48sslsMzFWdqHJI5EX9ABf146FMSxumF7/KxcOcO7x4AusG262haa
+	SiIRnIA0GiZfOozCFGQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCCiY-006Mzv-6I; Tue, 25 Jan 2022 03:42:02 +0000
+	id 1nCCuX-006OUG-MQ; Tue, 25 Jan 2022 03:54:25 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCCiT-006MyY-OC; Tue, 25 Jan 2022 03:42:00 +0000
-X-UUID: cf3367717a954cd1894c34fcb004598d-20220124
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=U0kZFj5CncSUXqA6PCT1UVAuAbHSO4+zzopSsr1NulE=; 
- b=ogrDq4O7UYvaNEQtdMTGCkcGRQAgmUUBizd7WQA2Q+FySUG7sNHKo2f54lKRjxBlUl52b540C8exh6DfnyDvrlY3XtEj6bckx/KwQ3T4kEwUSNP5R7PEepW5Lxu2BL7/8f99ittJTdSEcbuuUrCI6XdWEZW5QMYuaMXhyaAg0B8=;
-X-UUID: cf3367717a954cd1894c34fcb004598d-20220124
+ id 1nCCuM-006OSX-EU; Tue, 25 Jan 2022 03:54:16 +0000
+X-UUID: 5a12de3fdf4c4da985ea86e15a9d7577-20220124
+X-UUID: 5a12de3fdf4c4da985ea86e15a9d7577-20220124
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chaotian.jing@mediatek.com>)
+ (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 350028150; Mon, 24 Jan 2022 20:41:53 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 Jan 2022 19:33:37 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 Jan 2022 11:33:35 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ with ESMTP id 970484143; Mon, 24 Jan 2022 20:54:09 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 24 Jan 2022 19:44:08 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 25 Jan 2022 11:44:00 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 25 Jan 2022 11:33:35 +0800
-Message-ID: <f66964a5afd960fee6a2fecaf74fa902bb76a8d9.camel@mediatek.com>
-Subject: Re: [PATCH] mmc: mediatek: Add cmd polling mode
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-To: Derong Liu <derong.liu@mediatek.com>, Ulf Hansson
- <ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: <linux-mmc@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <wsp_upstream@mediatek.com>, Peng Zhou <peng.zhou@mediatek.com>
-Date: Tue, 25 Jan 2022 11:33:35 +0800
-In-Reply-To: <20220124121814.17452-1-derong.liu@mediatek.com>
-References: <20220124121814.17452-1-derong.liu@mediatek.com>
+ Transport; Tue, 25 Jan 2022 11:44:00 +0800
+Message-ID: <72aa6c751db15e4aac813247c309fae622180056.camel@mediatek.com>
+Subject: Re: [PATCH v14 08/12] soc: mediatek: add mtk-mmsys support for
+ mt8195 vdosys0
+From: CK Hu <ck.hu@mediatek.com>
+To: jason-jh.lin <jason-jh.lin@mediatek.com>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Chun-Kuang
+ Hu" <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Date: Tue, 25 Jan 2022 11:44:00 +0800
+In-Reply-To: <20220107101425.6917-9-jason-jh.lin@mediatek.com>
+References: <20220107101425.6917-1-jason-jh.lin@mediatek.com>
+ <20220107101425.6917-9-jason-jh.lin@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220124_194159_205054_2188B6AE 
-X-CRM114-Status: GOOD (  32.55  )
+X-CRM114-CacheID: sfid-20220124_195414_531367_72A87CB1 
+X-CRM114-Status: GOOD (  20.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,202 +68,148 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Jitao shi <jitao.shi@mediatek.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, singo.chang@mediatek.com,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, roy-cw.yeh@mediatek.com,
+ Fabien Parent <fparent@baylibre.com>, moudy.ho@mediatek.com,
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ hsinyi@chromium.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ nancy.lin@mediatek.com, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-01-24 at 20:18 +0800, Derong Liu wrote:
-> We found sdcard can gain more read/write performance
-> when using cmd polling mode instead of interrupt mode, in the
-> meantime,
-> there are much more devices have equipped with high frequency cpu,
-> so it is necessary to support cmd polling mode.
-> 
-Hi, I think you have not found the root cause of performace drop. if
-the sdcard read/write performance is 100MB/s, which means that it can
-complete 512KB of data xfer within 5ms, and if performance drop is 5%,
-then means that your interrupt mode will take more than 250us.
-Is it possible to clarify if the interrupt mode really takes 250us?
+Hi, Jason:
 
-And, if you find that the polling mode is readlly fast then interrupt
-mode and has no side effect(ie. cpu loading issue), then, We will drop
-the interrupt mode of waiting response.
-> Signed-off-by: Derong Liu <derong.liu@mediatek.com>
-> ---
->  drivers/mmc/host/mtk-sd.c | 92 +++++++++++++++++++++++++++++++++++
-> ----
->  1 file changed, 83 insertions(+), 9 deletions(-)
+On Fri, 2022-01-07 at 18:14 +0800, jason-jh.lin wrote:
+> Add mt8195 vdosys0 clock driver name and routing table to
+> the driver data of mtk-mmsys.
 > 
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 65037e1d7723..612f5115ca4b 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -465,6 +465,7 @@ struct msdc_host {
->  	bool hs400_tuning;	/* hs400 mode online tuning */
->  	bool internal_cd;	/* Use internal card-detect logic */
->  	bool cqhci;		/* support eMMC hw cmdq */
-> +	bool cmd_polling_mode;	/* support cmd polling mode */
->  	struct msdc_save_para save_para; /* used when gate HCLK */
->  	struct msdc_tune_para def_tune_para; /* default tune setting */
->  	struct msdc_tune_para saved_tune_para; /* tune result of
-> CMD21/CMD19 */
-> @@ -1250,6 +1251,63 @@ static inline bool msdc_cmd_is_ready(struct
-> msdc_host *host,
->  	return true;
->  }
->  
-> +static inline int use_cmd_polling_mode(struct msdc_host *host,
-> +	struct mmc_command *cmd)
-> +{
-> +	/* R1B use interrupt mode */
-> +	return (host->cmd_polling_mode &&
-> +			((mmc_from_priv(host))->caps2 &
-> MMC_CAP2_NO_SDIO) &&
-> +			(mmc_resp_type(cmd) != MMC_RSP_R1B));
-> +}
+> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+> Acked-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> ---
+> The vdosys1 impelmentation patch [1] will be dependened on this
+> patch.
+> [1] soc: mediatek: add mtk-mmsys support for mt8195 vdosys1
+> - 
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20211208024426.15595-6-nancy.lin@mediatek.com/
+> ---
+>  drivers/soc/mediatek/mt8195-mmsys.h    | 220
+> +++++++++++++++++++++++++
+>  drivers/soc/mediatek/mtk-mmsys.c       |  11 ++
+>  include/linux/soc/mediatek/mtk-mmsys.h |   9 +
+>  3 files changed, 240 insertions(+)
+>  create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+> 
+> diff --git a/drivers/soc/mediatek/mt8195-mmsys.h
+> b/drivers/soc/mediatek/mt8195-mmsys.h
+> new file mode 100644
+> index 000000000000..e04cabdfa2dc
+> --- /dev/null
+> +++ b/drivers/soc/mediatek/mt8195-mmsys.h
+> @@ -0,0 +1,220 @@
+> +/* SPDX-License-Identifier: GPL-2.0-only */
 > +
-> +static bool msdc_command_resp_polling(struct msdc_host *host,
-> +	struct mmc_request *mrq, struct mmc_command *cmd,
-> +	unsigned long timeout)
-> +{
-> +	bool ret = false;
-> +	unsigned long tmo;
-> +	int events;
-> +	unsigned long flags;
+> +#ifndef __SOC_MEDIATEK_MT8195_MMSYS_H
+> +#define __SOC_MEDIATEK_MT8195_MMSYS_H
 > +
-> +	if (!use_cmd_polling_mode(host, cmd))
-> +		goto exit;
+> +#define MT8195_VDO0_OVL_MOUT_EN					
+> 0xf14
+> +/*
+> + * MT8195_VDO0_OVL_MOUT[2:0]: DISP_OVL0
+> + *   BIT(0) : DISP_RDMA0
+> + *   BIT(1) : DISP_WDMA0
+> + *   BIT(2): DISP_OVL1
+
+I think these information is not necessary because we could get these
+information from mmsys_mt8195_routing_table[].
+
+Regards,
+CK
+
+> + */
+> +#define MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0			BIT(0)
+> +#define MT8195_MOUT_DISP_OVL0_TO_DISP_WDMA0			BIT(1)
+> +#define MT8195_MOUT_DISP_OVL0_TO_DISP_OVL1			BIT(2)
+> +/*
+> + * MT8195_VDO0_OVL_MOUT[6:4]: DISP_OVL1
+> + *   BIT(0) : DISP_RDMA1
+> + *   BIT(1) : DISP_WDMA1
+> + *   BIT(2): DISP_OVL0
+> + */
+> 
+
+[snip]
+
 > +
-> +retry:
-> +	tmo = jiffies + timeout;
-> +	while (1) {
-> +		spin_lock_irqsave(&host->lock, flags);
-why need spin lock ? if there are no SDIO device irq, then there is no
-race conditon of access MSDC register.
-> +		events = readl(host->base + MSDC_INT);
-> +		if (events & cmd_ints_mask) {
-> +			/* clear all int flag */
-> +			events &= cmd_ints_mask;
-> +			writel(events, host->base + MSDC_INT);
-> +			spin_unlock_irqrestore(&host->lock, flags);
-> +			break;
-> +		}
-> +		spin_unlock_irqrestore(&host->lock, flags);
-> +
-> +		if (time_after(jiffies, tmo) &&
-> +			((events & cmd_ints_mask) == 0)) {
-> +			dev_info(host->dev, "[%s]: CMD<%d>
-> polling_for_completion timeout ARG<0x%.8x>\n",
-> +				__func__, cmd->opcode, cmd->arg);
-> +			ret = msdc_cmd_done(host, MSDC_INT_CMDTMO, mrq,
-> cmd);
-> +			goto exit;
-> +		}
+> +static const struct mtk_mmsys_routes mmsys_mt8195_routing_table[] =
+> {
+> +	{
+> +		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
+> +		MT8195_VDO0_OVL_MOUT_EN,
+> MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0,
+> +		MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0
+> +	}, {
+> +		DDP_COMPONENT_OVL1, DDP_COMPONENT_RDMA1,
+> +		MT8195_VDO0_OVL_MOUT_EN,
+> MT8195_MOUT_DISP_OVL1_TO_DISP_RDMA1,
+> +		MT8195_MOUT_DISP_OVL1_TO_DISP_RDMA1
+> +	}, {
+> +		DDP_COMPONENT_DSC0, DDP_COMPONENT_MERGE0,
+> +		MT8195_VDO0_SEL_IN,
+> MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT,
+> +		MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT
+> +	}, {
+> +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DP_INTF0,
+> +		MT8195_VDO0_SEL_IN,
+> MT8195_SEL_IN_DP_INTF0_FROM_VPP_MERGE,
+> +		MT8195_SEL_IN_DP_INTF0_FROM_VPP_MERGE
+> +	}, {
+> +		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSC0,
+> +		MT8195_VDO0_SEL_IN,
+> MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0,
+> +		MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0
+> +	}, {
+> +		DDP_COMPONENT_DSC0, DDP_COMPONENT_DSI0,
+> +		MT8195_VDO0_SEL_IN,
+> MT8195_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT,
+> +		MT8195_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT
+> +	}, {
+> +		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
+> +		MT8195_VDO0_SEL_IN,
+> MT8195_SEL_IN_DSI0_FROM_DISP_DITHER0,
+> +		MT8195_SEL_IN_DSI0_FROM_DISP_DITHER0
+> +	}, {
+> +		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSC0,
+> +		MT8195_VDO0_SEL_OUT,
+> MT8195_SOUT_DISP_DITHER0_TO_DSC_WRAP0_IN,
+> +		MT8195_SOUT_DISP_DITHER0_TO_DSC_WRAP0_IN
+> +	}, {
+> +		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
+> +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER0_TO_DSI0,
+> +		MT8195_SOUT_DISP_DITHER0_TO_DSI0
+> +	}, {
+> +		DDP_COMPONENT_DSC0, DDP_COMPONENT_DSI0,
+> +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP0_OUT_TO_DSI0,
+> +		MT8195_SOUT_DSC_WRAP0_OUT_TO_DSI0
+> +	}, {
+> +		DDP_COMPONENT_DSC0, DDP_COMPONENT_MERGE0,
+> +		MT8195_VDO0_SEL_OUT,
+> MT8195_SOUT_DSC_WRAP0_OUT_TO_VPP_MERGE,
+> +		MT8195_SOUT_DSC_WRAP0_OUT_TO_VPP_MERGE
+> +	}, {
+> +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DP_INTF0,
+> +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_DP_INTF0,
+> +		MT8195_SOUT_VPP_MERGE_TO_DP_INTF0
 > +	}
+> +};
 > +
-> +	if (cmd) {
-> +		ret = msdc_cmd_done(host, events, mrq, cmd);
-> +		/* if only autocmd23 done,
-> +		 * it needs to polling the continue read/write cmd
-> directly.
-> +		 */
-> +		if (!ret)
-> +			goto retry;
-> +	}
-> +
-> +exit:
-> +	return ret;
-> +}
-> +
->  static void msdc_start_command(struct msdc_host *host,
->  		struct mmc_request *mrq, struct mmc_command *cmd)
->  {
-> @@ -1273,7 +1331,10 @@ static void msdc_start_command(struct
-> msdc_host *host,
->  	rawcmd = msdc_cmd_prepare_raw_cmd(host, mrq, cmd);
->  
->  	spin_lock_irqsave(&host->lock, flags);
-> -	sdr_set_bits(host->base + MSDC_INTEN, cmd_ints_mask);
-> +	if (use_cmd_polling_mode(host, cmd))
-> +		sdr_clr_bits(host->base + MSDC_INTEN, cmd_ints_mask);
-> +	else
-> +		sdr_set_bits(host->base + MSDC_INTEN, cmd_ints_mask);
->  	spin_unlock_irqrestore(&host->lock, flags);
->  
->  	writel(cmd->arg, host->base + SDC_ARG);
-> @@ -1290,9 +1351,11 @@ static void msdc_cmd_next(struct msdc_host
-> *host,
->  	       host->hs400_tuning))) ||
->  	    (mrq->sbc && mrq->sbc->error))
->  		msdc_request_done(host, mrq);
-> -	else if (cmd == mrq->sbc)
-> +	else if (cmd == mrq->sbc) {
->  		msdc_start_command(host, mrq, mrq->cmd);
-> -	else if (!cmd->data)
-> +		msdc_command_resp_polling(host, mrq,
-> +				mrq->cmd, CMD_TIMEOUT);
-> +	} else if (!cmd->data)
->  		msdc_request_done(host, mrq);
->  	else
->  		msdc_start_data(host, cmd, cmd->data);
-> @@ -1314,10 +1377,15 @@ static void msdc_ops_request(struct mmc_host
-> *mmc, struct mmc_request *mrq)
->  	 * use HW option,  otherwise use SW option
->  	 */
->  	if (mrq->sbc && (!mmc_card_mmc(mmc->card) ||
-> -	    (mrq->sbc->arg & 0xFFFF0000)))
-> +	    (mrq->sbc->arg & 0xFFFF0000))) {
->  		msdc_start_command(host, mrq, mrq->sbc);
-> -	else
-> +		msdc_command_resp_polling(host, mrq,
-> +				mrq->sbc, CMD_TIMEOUT);
-> +	} else {
->  		msdc_start_command(host, mrq, mrq->cmd);
-> +		msdc_command_resp_polling(host, mrq,
-> +				mrq->cmd, CMD_TIMEOUT);
-> +	}
->  }
->  
->  static void msdc_pre_req(struct mmc_host *mmc, struct mmc_request
-> *mrq)
-> @@ -1350,9 +1418,11 @@ static void msdc_post_req(struct mmc_host
-> *mmc, struct mmc_request *mrq,
->  static void msdc_data_xfer_next(struct msdc_host *host, struct
-> mmc_request *mrq)
->  {
->  	if (mmc_op_multi(mrq->cmd->opcode) && mrq->stop && !mrq->stop-
-> >error &&
-> -	    !mrq->sbc)
-> +	    !mrq->sbc) {
->  		msdc_start_command(host, mrq, mrq->stop);
-> -	else
-> +		msdc_command_resp_polling(host, mrq,
-> +				mrq->stop, CMD_TIMEOUT);
-> +	} else
->  		msdc_request_done(host, mrq);
->  }
->  
-> @@ -2492,11 +2562,15 @@ static void msdc_of_property_parse(struct
-> platform_device *pdev,
->  	else
->  		host->hs400_cmd_resp_sel_rising = false;
->  
-> -	if (of_property_read_bool(pdev->dev.of_node,
-> -				  "supports-cqe"))
-> +	if (of_property_read_bool(pdev->dev.of_node, "supports-cqe"))
->  		host->cqhci = true;
->  	else
->  		host->cqhci = false;
-> +
-> +	if (of_property_read_bool(pdev->dev.of_node, "mediatek,cmd-
-> polling-mode"))
-> +		host->cmd_polling_mode = true;
-> +	else
-> +		host->cmd_polling_mode = false;
->  }
->  
->  static int msdc_of_clock_parse(struct platform_device *pdev,
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
