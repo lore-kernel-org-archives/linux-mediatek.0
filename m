@@ -4,59 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DC8AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 03:54:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A457C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 04:14:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g2O31lLVXdxrmNa1adqUcj0PB9t+hOx2JWyhzPZRBww=; b=oWrUPOEcy4b6by
-	JrRlu7U+xjnq+LHTeiUOketO++Hk80dYuo/uawy8+Qx1rZTG8FkCV+M5zJpbCF6a6UzggpqdrhVaQ
-	EepnDPPYKTuzl4leTGvJRz7FD+GrZJA6wVyITBovmxD73VOF4Pc+/WWHsPf0o22DMSthD8GXEykiq
-	EzTlUOqFDL1v8MfW1vZsHcV3BMxFMVg30tvz3rXpWfcHvXqA7xzaahT+2y0lC+Z/newuhlhUUbK5e
-	zdRJ5v3NlemZfavtnU6Rq4pS48sslsMzFWdqHJI5EX9ABf146FMSxumF7/KxcOcO7x4AusG262haa
-	SiIRnIA0GiZfOozCFGQg==;
+	List-Owner; bh=K0niFDzrpyLF2Rvf/15kMJo12I+APNZCKdpmQPf6dq0=; b=vv4XswvmNhDyOj
+	PBzTESH1p7M+zvKTZhhAsH8TcEB+escFo+pBdOneeaw/t/zN/YeGg1nUZ5psAoBmh1FIhem9+3Xqa
+	8ovGQC4ENpzy0jTpOmw8IbneOMOoGA6TUlVYFoA/85KdYK+6zDod+aCeJSbizi429wUzvx4B17mSx
+	O3w43+KzrqtEfIvpcC8dOSuQ0J3M7SS62lgWODBNmgtgN4g4ZOQVciwcS6Tf0pn6iQMNnkDshDEW7
+	Zc+KkWAeJTJ3MwfgbTtHOK84ElMMuC+DbTJGnVn+afu/b+NdAdM75jXcQZP8zdie2D5ztxZBBokpu
+	mdx8vPcE5nr/AVXpyCHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCCuX-006OUG-MQ; Tue, 25 Jan 2022 03:54:25 +0000
+	id 1nCDDo-006Ql8-Pi; Tue, 25 Jan 2022 04:14:20 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCCuM-006OSX-EU; Tue, 25 Jan 2022 03:54:16 +0000
-X-UUID: 5a12de3fdf4c4da985ea86e15a9d7577-20220124
-X-UUID: 5a12de3fdf4c4da985ea86e15a9d7577-20220124
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ id 1nCDDb-006Qih-KW; Tue, 25 Jan 2022 04:14:10 +0000
+X-UUID: b212e7d4d13f4eb8a92e9e80c376c578-20220124
+X-UUID: b212e7d4d13f4eb8a92e9e80c376c578-20220124
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 970484143; Mon, 24 Jan 2022 20:54:09 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 Jan 2022 19:44:08 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 25 Jan 2022 11:44:00 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ with ESMTP id 1171115758; Mon, 24 Jan 2022 21:14:00 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 24 Jan 2022 20:13:59 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 25 Jan 2022 12:13:57 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 25 Jan 2022 11:44:00 +0800
-Message-ID: <72aa6c751db15e4aac813247c309fae622180056.camel@mediatek.com>
-Subject: Re: [PATCH v14 08/12] soc: mediatek: add mtk-mmsys support for
- mt8195 vdosys0
-From: CK Hu <ck.hu@mediatek.com>
-To: jason-jh.lin <jason-jh.lin@mediatek.com>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Chun-Kuang
- Hu" <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Date: Tue, 25 Jan 2022 11:44:00 +0800
-In-Reply-To: <20220107101425.6917-9-jason-jh.lin@mediatek.com>
-References: <20220107101425.6917-1-jason-jh.lin@mediatek.com>
- <20220107101425.6917-9-jason-jh.lin@mediatek.com>
+ Transport; Tue, 25 Jan 2022 12:13:57 +0800
+Message-ID: <fa61312ca706a52caf2baca398f3674d80f4cd0d.camel@mediatek.com>
+Subject: Re: [v10,1/3] drm/dsi: transfer DSI HS packets ending at the same time
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, <chunkuang.hu@kernel.org>,
+ <matthias.bgg@gmail.com>, <narmstrong@baylibre.com>,
+ <robert.foss@linaro.org>, <daniel@ffwll.ch>, <airlied@linux.ie>,
+ <p.zabel@pengutronix.de>
+CC: <xji@analogixsemi.com>, <jitao.shi@mediatek.com>,
+ <xinlei.lee@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 25 Jan 2022 12:13:57 +0800
+In-Reply-To: <dd84f8d4-097e-45b9-aa75-812b1fc524ff@intel.com>
+References: <20220119022543.26093-1-rex-bc.chen@mediatek.com>
+ <20220119022543.26093-2-rex-bc.chen@mediatek.com>
+ <dd84f8d4-097e-45b9-aa75-812b1fc524ff@intel.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220124_195414_531367_72A87CB1 
-X-CRM114-Status: GOOD (  20.70  )
+X-CRM114-CacheID: sfid-20220124_201407_710604_1AAA1331 
+X-CRM114-Status: GOOD (  23.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,146 +73,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Jitao shi <jitao.shi@mediatek.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, singo.chang@mediatek.com,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, roy-cw.yeh@mediatek.com,
- Fabien Parent <fparent@baylibre.com>, moudy.ho@mediatek.com,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- hsinyi@chromium.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- nancy.lin@mediatek.com, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Jason:
+Hello David and Daniel,
 
-On Fri, 2022-01-07 at 18:14 +0800, jason-jh.lin wrote:
-> Add mt8195 vdosys0 clock driver name and routing table to
-> the driver data of mtk-mmsys.
+This patch is including modification of include/drm/drm_mipi_dsi.h.
+Could you give us some suggestions for this patch?
+
+Thanks for your big support!
+
+BRs,
+Rex-BC Chen
+
+On Wed, 2022-01-19 at 09:34 +0100, Andrzej Hajda wrote:
+> On 19.01.2022 03:25, Rex-BC Chen wrote:
+> > Since a HS transmission is composed of an arbitrary number
+> > of bytes that may not be an integer multiple of lanes, some
+> > lanes may run out of data before others.
+> > (Defined in 6.1.3 of mipi_DSI_specification_v.01-02-00)
+> > 
+> > However, for some DSI RX devices (for example, anx7625),
+> > there is a limitation that packet number should be the same
+> > on all DSI lanes. In other words, they need to end a HS at
+> > the same time.
+> > 
+> > Because this limitation is for some specific DSI RX devices,
+> > it is more reasonable to put the enable control in these
+> > DSI RX drivers. If DSI TX driver knows the information,
+> > they can adjust the setting for this situation.
+> > 
+> > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> > Acked-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
 > 
-> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> Acked-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> ---
-> The vdosys1 impelmentation patch [1] will be dependened on this
-> patch.
-> [1] soc: mediatek: add mtk-mmsys support for mt8195 vdosys1
-> - 
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20211208024426.15595-6-nancy.lin@mediatek.com/
-> ---
->  drivers/soc/mediatek/mt8195-mmsys.h    | 220
-> +++++++++++++++++++++++++
->  drivers/soc/mediatek/mtk-mmsys.c       |  11 ++
->  include/linux/soc/mediatek/mtk-mmsys.h |   9 +
->  3 files changed, 240 insertions(+)
->  create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+> Reviewed-by: Andrzej Hajda <andrzej.hajda@intel.com>
 > 
-> diff --git a/drivers/soc/mediatek/mt8195-mmsys.h
-> b/drivers/soc/mediatek/mt8195-mmsys.h
-> new file mode 100644
-> index 000000000000..e04cabdfa2dc
-> --- /dev/null
-> +++ b/drivers/soc/mediatek/mt8195-mmsys.h
-> @@ -0,0 +1,220 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +
-> +#ifndef __SOC_MEDIATEK_MT8195_MMSYS_H
-> +#define __SOC_MEDIATEK_MT8195_MMSYS_H
-> +
-> +#define MT8195_VDO0_OVL_MOUT_EN					
-> 0xf14
-> +/*
-> + * MT8195_VDO0_OVL_MOUT[2:0]: DISP_OVL0
-> + *   BIT(0) : DISP_RDMA0
-> + *   BIT(1) : DISP_WDMA0
-> + *   BIT(2): DISP_OVL1
-
-I think these information is not necessary because we could get these
-information from mmsys_mt8195_routing_table[].
-
-Regards,
-CK
-
-> + */
-> +#define MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0			BIT(0)
-> +#define MT8195_MOUT_DISP_OVL0_TO_DISP_WDMA0			BIT(1)
-> +#define MT8195_MOUT_DISP_OVL0_TO_DISP_OVL1			BIT(2)
-> +/*
-> + * MT8195_VDO0_OVL_MOUT[6:4]: DISP_OVL1
-> + *   BIT(0) : DISP_RDMA1
-> + *   BIT(1) : DISP_WDMA1
-> + *   BIT(2): DISP_OVL0
-> + */
+> Regards
 > 
-
-[snip]
-
-> +
-> +static const struct mtk_mmsys_routes mmsys_mt8195_routing_table[] =
-> {
-> +	{
-> +		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
-> +		MT8195_VDO0_OVL_MOUT_EN,
-> MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0,
-> +		MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0
-> +	}, {
-> +		DDP_COMPONENT_OVL1, DDP_COMPONENT_RDMA1,
-> +		MT8195_VDO0_OVL_MOUT_EN,
-> MT8195_MOUT_DISP_OVL1_TO_DISP_RDMA1,
-> +		MT8195_MOUT_DISP_OVL1_TO_DISP_RDMA1
-> +	}, {
-> +		DDP_COMPONENT_DSC0, DDP_COMPONENT_MERGE0,
-> +		MT8195_VDO0_SEL_IN,
-> MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT,
-> +		MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT
-> +	}, {
-> +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DP_INTF0,
-> +		MT8195_VDO0_SEL_IN,
-> MT8195_SEL_IN_DP_INTF0_FROM_VPP_MERGE,
-> +		MT8195_SEL_IN_DP_INTF0_FROM_VPP_MERGE
-> +	}, {
-> +		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSC0,
-> +		MT8195_VDO0_SEL_IN,
-> MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0,
-> +		MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0
-> +	}, {
-> +		DDP_COMPONENT_DSC0, DDP_COMPONENT_DSI0,
-> +		MT8195_VDO0_SEL_IN,
-> MT8195_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT,
-> +		MT8195_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT
-> +	}, {
-> +		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-> +		MT8195_VDO0_SEL_IN,
-> MT8195_SEL_IN_DSI0_FROM_DISP_DITHER0,
-> +		MT8195_SEL_IN_DSI0_FROM_DISP_DITHER0
-> +	}, {
-> +		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSC0,
-> +		MT8195_VDO0_SEL_OUT,
-> MT8195_SOUT_DISP_DITHER0_TO_DSC_WRAP0_IN,
-> +		MT8195_SOUT_DISP_DITHER0_TO_DSC_WRAP0_IN
-> +	}, {
-> +		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-> +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER0_TO_DSI0,
-> +		MT8195_SOUT_DISP_DITHER0_TO_DSI0
-> +	}, {
-> +		DDP_COMPONENT_DSC0, DDP_COMPONENT_DSI0,
-> +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP0_OUT_TO_DSI0,
-> +		MT8195_SOUT_DSC_WRAP0_OUT_TO_DSI0
-> +	}, {
-> +		DDP_COMPONENT_DSC0, DDP_COMPONENT_MERGE0,
-> +		MT8195_VDO0_SEL_OUT,
-> MT8195_SOUT_DSC_WRAP0_OUT_TO_VPP_MERGE,
-> +		MT8195_SOUT_DSC_WRAP0_OUT_TO_VPP_MERGE
-> +	}, {
-> +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DP_INTF0,
-> +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_DP_INTF0,
-> +		MT8195_SOUT_VPP_MERGE_TO_DP_INTF0
-> +	}
-> +};
-> +
+> Andrzej
+> 
+> > ---
+> >   include/drm/drm_mipi_dsi.h | 2 ++
+> >   1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/include/drm/drm_mipi_dsi.h
+> > b/include/drm/drm_mipi_dsi.h
+> > index 147e51b6d241..51e09a1a106a 100644
+> > --- a/include/drm/drm_mipi_dsi.h
+> > +++ b/include/drm/drm_mipi_dsi.h
+> > @@ -137,6 +137,8 @@ struct mipi_dsi_host
+> > *of_find_mipi_dsi_host_by_node(struct device_node *node);
+> >   #define MIPI_DSI_CLOCK_NON_CONTINUOUS	BIT(10)
+> >   /* transmit data in low power */
+> >   #define MIPI_DSI_MODE_LPM		BIT(11)
+> > +/* transmit data ending at the same time for all lanes within one
+> > hsync */
+> > +#define MIPI_DSI_HS_PKT_END_ALIGNED	BIT(12)
+> >   
+> >   enum mipi_dsi_pixel_format {
+> >   	MIPI_DSI_FMT_RGB888,
 
 
 _______________________________________________
