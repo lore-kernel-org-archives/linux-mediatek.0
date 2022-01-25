@@ -4,73 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09546C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 08:20:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2F2FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 08:34:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v3xvAQSQ1Uo/f4UvvnZut/no+oWQqOxTpjd1rHlVCCE=; b=tBN0Y+9TZA0hlt
-	lQDTqbukC+BXtwG+d5J2gKx+AkLCiYDEuc1jVwoazMkbquSlbxxTYaPdP2hiFvo7JNUxotNRxh1UX
-	n8I57QDnLA0xSRisSOeFXvdVQJH1MVZjyjha+fSnlp5DeKKh5ylrJ8snWefU2UahLr5q3M+n30alB
-	HXPIL2TLiHaCkrlChSdc1uZYD0LAl3K9wwGz7mckTCx30cswiUdc3zZkuTAubpgCNzSCckn0ve+pJ
-	/o8GioNJ/1UoirY7jhnW/MjdXuRR7c0Y/E3JHVW3h2XP2zJBM2TRfsSRB4X2xSOSPIbVuXRiJA2uG
-	1XYfSpO1vFe0U8VzzqDA==;
+	List-Owner; bh=Kc/vIjRv6IKqwvYlYMLb4/6L75QJk08rgwVJTnPe4BE=; b=5C4eUp4YFMS4ny
+	xRAJtvn0bWauGX3ZF/5snL1D78cE0ROa4YuysYGsH+gpi+2Mod3e8QTmCLRp8InUbPAHL1e6V5DqS
+	eKokjQAs9c01TtTaXHIAl+gkjURF3SQ0mWJP5VlRzkKroSLtQnK6ofa24eRCU4WJTY3BhYlnSslNE
+	1wb8r9BKgZ6tWt7Xb2CphKMmV1TKoUTaLDTd5ogHLihM38aSN3RCSR3Bbg9dqljgS2dOi58szndJs
+	UbjtTwumIqiRs0I8PWojiUj2tkNWhg2S1ncb8aOUQrj/7GrAk5EXwHhATHpzN12V9FbQzz0ODNKND
+	lSqJUJrjMSVknDnw/JSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCH3q-006qLu-D8; Tue, 25 Jan 2022 08:20:18 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nCHHF-006rsh-Om; Tue, 25 Jan 2022 08:34:09 +0000
+Received: from mail-pj1-f47.google.com ([209.85.216.47])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCH3m-006qLG-4V; Tue, 25 Jan 2022 08:20:17 +0000
-X-UUID: a1ddce5abf064aa988004858ff8b55ae-20220125
-X-UUID: a1ddce5abf064aa988004858ff8b55ae-20220125
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <moudy.ho@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1477085788; Tue, 25 Jan 2022 01:20:09 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 Jan 2022 00:20:07 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 25 Jan 2022 16:20:05 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 25 Jan 2022 16:20:05 +0800
-Message-ID: <356f512b549f90b329775e249fd48eb2954ade02.camel@mediatek.com>
-Subject: Re: [PATCH v11 2/3] dts: arm64: mt8183: add Mediatek MDP3 nodes
-From: moudy ho <moudy.ho@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, Jernej Skrabec <jernej.skrabec@siol.net>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- Alexandre Courbot <acourbot@chromium.org>, <tfiga@chromium.org>,
- <drinkcat@chromium.org>, <pihsun@chromium.org>, <hsinyi@google.com>, Maoguang
- Meng <maoguang.meng@mediatek.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, <randy.wu@mediatek.com>,
- <jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
- <river.cheng@mediatek.com>, <srv_heupstream@mediatek.com>
-Date: Tue, 25 Jan 2022 16:20:05 +0800
-In-Reply-To: <d61ec481-8059-a897-504a-0125f88fad61@collabora.com>
-References: <20220105093758.6850-1-moudy.ho@mediatek.com>
- <20220105093758.6850-3-moudy.ho@mediatek.com>
- <d61ec481-8059-a897-504a-0125f88fad61@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nCHH0-006rrG-4M; Tue, 25 Jan 2022 08:33:55 +0000
+Received: by mail-pj1-f47.google.com with SMTP id
+ l24-20020a17090aec1800b001b55738f633so1131169pjy.1; 
+ Tue, 25 Jan 2022 00:33:53 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=0nj3tQtaS2Jftix8pFrL2+Rvw9SRm0Q+IWJ3wAkzl0s=;
+ b=Rnmp/DKfCKsCfWgYzH0BtqNBzZrc9SUfeYOVnYjjnGwf3Rpder+POzsQeAnvzNVmFt
+ z+IePeYyCJKNwYqz8ppv0ETKMYZGIlv7tlZYEpqfy8hDL2y6ZPIyoWr+PWnmhU1NpJfT
+ 75WaX8ykTg9glTSn++O6DzV1Oj6Hb7SXcs9JCDqkDQUPjlzUu6x+TaFrdZ2XbfqLaZfu
+ fXXFS+vIocqEnDaKjzRMe6Z1MaTGk5m0/3NxJt8Pct6XM+jHsnzHsMHDArxxJyUpT45G
+ /3JEk43VpEgGNXweRvvOq6MZhUSDHtjpDUwnEEIbPldhchn00QI+L3f9LbSLe5Yf12kv
+ iRtA==
+X-Gm-Message-State: AOAM533QvmqkBnoN6eEQM/P/dtZZGu3RIBQy7+rHuGnTX1YUFNuLrmCi
+ PUGH3yId433tQcxAQ4SsevTUH95RR0PrMePE
+X-Google-Smtp-Source: ABdhPJzCqRHchZBrLVScSlipu8HsYBF+YqbTyfWHKWQ12o8PyHlWI69PlIZkxsW8Aeenge5iUERyog==
+X-Received: by 2002:a17:902:e80a:b0:14b:4a6d:4694 with SMTP id
+ u10-20020a170902e80a00b0014b4a6d4694mr9065348plg.160.1643099633172; 
+ Tue, 25 Jan 2022 00:33:53 -0800 (PST)
+Received: from mail-pj1-f41.google.com (mail-pj1-f41.google.com.
+ [209.85.216.41])
+ by smtp.gmail.com with ESMTPSA id nn4sm1819857pjb.39.2022.01.25.00.33.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 25 Jan 2022 00:33:53 -0800 (PST)
+Received: by mail-pj1-f41.google.com with SMTP id h12so19237200pjq.3;
+ Tue, 25 Jan 2022 00:33:52 -0800 (PST)
+X-Received: by 2002:a05:6102:a04:: with SMTP id
+ t4mr1874173vsa.77.1643099137125; 
+ Tue, 25 Jan 2022 00:25:37 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
+ <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
+ <Yd9L9SZ+g13iyKab@sirena.org.uk>
+ <20220113110831.wvwbm75hbfysbn2d@pengutronix.de>
+ <YeA7CjOyJFkpuhz/@sirena.org.uk>
+ <20220113194358.xnnbhsoyetihterb@pengutronix.de>
+ <YeF05vBOzkN+xYCq@smile.fi.intel.com>
+ <20220115154539.j3tsz5ioqexq2yuu@pengutronix.de>
+ <YehdsUPiOTwgZywq@smile.fi.intel.com>
+ <20220120075718.5qtrpc543kkykaow@pengutronix.de>
+ <Ye6/NgfxsZnpXE09@smile.fi.intel.com>
+ <15796e57-f7d4-9c66-3b53-0b026eaf31d8@omp.ru>
+In-Reply-To: <15796e57-f7d4-9c66-3b53-0b026eaf31d8@omp.ru>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Tue, 25 Jan 2022 09:25:25 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdXouECKa43OwUgQ6dA+gNeOqEZHZgOmQzqknzYiA924YA@mail.gmail.com>
+Message-ID: <CAMuHMdXouECKa43OwUgQ6dA+gNeOqEZHZgOmQzqknzYiA924YA@mail.gmail.com>
+Subject: Re: [PATCH] driver core: platform: Rename platform_get_irq_optional()
+ to platform_get_irq_silent()
+To: Sergey Shtylyov <s.shtylyov@omp.ru>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+ Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>, 
+ Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>, 
+ "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org, 
+ Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>, 
+ ALSA Development Mailing List <alsa-devel@alsa-project.org>,
+ Jaroslav Kysela <perex@perex.cz>, 
+ Guenter Roeck <groeck@chromium.org>, Thierry Reding <thierry.reding@gmail.com>,
+ MTD Maling List <linux-mtd@lists.infradead.org>,
+ Linux I2C <linux-i2c@vger.kernel.org>, 
+ Miquel Raynal <miquel.raynal@bootlin.com>, linux-phy@lists.infradead.org, 
+ Jiri Slaby <jirislaby@kernel.org>, openipmi-developer@lists.sourceforge.net, 
+ Khuong Dinh <khuong@os.amperecomputing.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, 
+ Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
+ Joakim Zhang <qiangqing.zhang@nxp.com>, Kamal Dasu <kdasu.kdev@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Lee Jones <lee.jones@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, 
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>, 
+ "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>, 
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ Zhang Rui <rui.zhang@intel.com>, 
+ Linux PWM List <linux-pwm@vger.kernel.org>, Robert Richter <rric@kernel.org>, 
+ Saravanan Sekar <sravanhome@gmail.com>, Corey Minyard <minyard@acm.org>, 
+ Linux PM list <linux-pm@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ John Garry <john.garry@huawei.com>, Peter Korsgaard <peter@korsgaard.com>, 
+ William Breathitt Gray <vilhelm.gray@gmail.com>,
+ Mark Gross <markgross@kernel.org>, 
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Alex Williamson <alex.williamson@redhat.com>, 
+ Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>,
+ Sebastian Reichel <sre@kernel.org>, 
+ Eric Auger <eric.auger@redhat.com>, Jakub Kicinski <kuba@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Takashi Iwai <tiwai@suse.com>, 
+ platform-driver-x86@vger.kernel.org, Benson Leung <bleung@chromium.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-edac@vger.kernel.org, 
+ Tony Luck <tony.luck@intel.com>, Mun Yew Tham <mun.yew.tham@intel.com>, 
+ Hans de Goede <hdegoede@redhat.com>, netdev@vger.kernel.org, 
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Cornelia Huck <cohuck@redhat.com>, 
+ Linux MMC List <linux-mmc@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ linux-spi <linux-spi@vger.kernel.org>, 
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, 
+ James Morse <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Richard Weinberger <richard@nod.at>, 
+ =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
+ linux-mediatek@lists.infradead.org, 
+ Brian Norris <computersforpeace@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220125_002014_218354_49D65941 
-X-CRM114-Status: GOOD (  17.54  )
+X-CRM114-CacheID: sfid-20220125_003354_189463_21B81F37 
+X-CRM114-Status: GOOD (  47.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,103 +149,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-01-21 at 12:58 +0100, AngeloGioacchino Del Regno wrote:
-> Il 05/01/22 10:37, Moudy Ho ha scritto:
-> > Add device nodes for Media Data Path 3 (MDP3) modules.
-> > 
-> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 108
-> > ++++++++++++++++++++++-
-> >   1 file changed, 107 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > index ba4584faca5a..b872ef1ff6b3 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > @@ -1325,6 +1325,79 @@
-> >   			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
-> > 0 0x1000>;
-> >   		};
-> >   
-> > +		mdp3_rdma0: mdp3_rdma0@14001000 {
-> > +			compatible = "mediatek,mt8183-mdp3",
-> > +				     "mediatek,mt8183-mdp3-rdma0";
-> > +			mediatek,scp = <&scp>;
-> > +			mediatek,mdp3-comps = "mediatek,mt8183-mdp3-
-> > dl1",
-> > +					      "mediatek,mt8183-mdp3-
-> > dl2",
-> > +					      "mediatek,mt8183-mdp3-
-> > path1",
-> > +					      "mediatek,mt8183-mdp3-
-> > path2",
-> > +					      "mediatek,mt8183-mdp3-
-> > imgi",
-> > +					      "mediatek,mt8183-mdp3-
-> > exto";
-> > +			reg = <0 0x14001000 0 0x1000>,
-> > +			      <0 0x14000000 0 0x1000>,
-> > +			      <0 0x14005000 0 0x1000>,
-> > +			      <0 0x14006000 0 0x1000>,
-> > +			      <0 0x15020000 0 0x1000>;
-> > +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
-> > 0x1000 0x1000>,
-> > +						  <&gce SUBSYS_1400XXXX
-> > 0 0x1000>,
-> > +						  <&gce SUBSYS_1400XXXX
-> > 0x5000 0x1000>,
-> > +						  <&gce SUBSYS_1400XXXX
-> > 0x6000 0x1000>,
-> > +						  <&gce SUBSYS_1502XXXX
-> > 0 0x1000>;
-> > +			power-domains = <&spm
-> > MT8183_POWER_DOMAIN_DISP>;
-> > +			clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-> > +				 <&mmsys CLK_MM_MDP_RSZ1>,
-> > +				 <&mmsys CLK_MM_MDP_DL_TXCK>,
-> > +				 <&mmsys CLK_MM_MDP_DL_RX>,
-> > +				 <&mmsys CLK_MM_IPU_DL_TXCK>,
-> > +				 <&mmsys CLK_MM_IPU_DL_RX>;
-> > +			iommus = <&iommu M4U_PORT_MDP_RDMA0>;
-> > +			mediatek,mmsys = <&mmsys>;
-> > +			mediatek,mm-mutex = <&mutex>;
-> > +			mediatek,mailbox-gce = <&gce>;
-> > +			mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST 0>,
-> > +				 <&gce 21 CMDQ_THR_PRIO_LOWEST>,
-> > +				 <&gce 22 CMDQ_THR_PRIO_LOWEST>,
-> > +				 <&gce 23 CMDQ_THR_PRIO_LOWEST>;
-> 
-> Hello Moudy,
-> the mboxes for gce 21, 22, 23 are missing the third cell. Please fix.
-> 
-> Regards,
-> Angelo
+Hi Sergey,
 
-Hi Angelo,
-Thanks for the reminder, but I'm a bit confused, the previous
-version(v10) mentioned that the current upstream mbox has only 2
-cells.
-So I should follow this rule to remove the extra 0 in the first item as
-follows:
- +			mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST>,
- +				 <&gce 21 CMDQ_THR_PRIO_LOWEST>,
- +				 <&gce 22 CMDQ_THR_PRIO_LOWEST>,
- +				 <&gce 23 CMDQ_THR_PRIO_LOWEST>;
+On Mon, Jan 24, 2022 at 10:02 PM Sergey Shtylyov <s.shtylyov@omp.ru> wrote:
+> On 1/24/22 6:01 PM, Andy Shevchenko wrote:
+> >>>>>>> It'd certainly be good to name anything that doesn't correspond to one
+> >>>>>>> of the existing semantics for the API (!) something different rather
+> >>>>>>> than adding yet another potentially overloaded meaning.
+> >>>>>>
+> >>>>>> It seems we're (at least) three who agree about this. Here is a patch
+> >>>>>> fixing the name.
+> >>>>>
+> >>>>> And similar number of people are on the other side.
+> >>>>
+> >>>> If someone already opposed to the renaming (and not only the name) I
+> >>>> must have missed that.
+> >>>>
+> >>>> So you think it's a good idea to keep the name
+> >>>> platform_get_irq_optional() despite the "not found" value returned by it
+> >>>> isn't usable as if it were a normal irq number?
+> >>>
+> >>> I meant that on the other side people who are in favour of Sergey's patch.
+> >>> Since that I commented already that I opposed the renaming being a standalone
+> >>> change.
+> >>>
+> >>> Do you agree that we have several issues with platform_get_irq*() APIs?
+> [...]
+> >>> 2. The vIRQ0 handling: a) WARN() followed by b) returned value 0
+> >>
+> >> I'm happy with the vIRQ0 handling. Today platform_get_irq() and it's
+> >> silent variant returns either a valid and usuable irq number or a
+> >> negative error value. That's totally fine.
+> >
+> > It might return 0.
+> > Actually it seems that the WARN() can only be issued in two cases:
+> > - SPARC with vIRQ0 in one of the array member
+> > - fallback to ACPI for GPIO IRQ resource with index 0
+>
+>    You have probably missed the recent discovery that arch/sh/boards/board-aps4*.c
+> causes IRQ0 to be passed as a direct IRQ resource?
 
-Thanks,
-Moudy Ho
-> 
-> > +			gce-subsys = <&gce 0x14000000 SUBSYS_1400XXXX>,
-> > +				     <&gce 0x14010000 SUBSYS_1401XXXX>,
-> > +				     <&gce 0x14020000 SUBSYS_1402XXXX>,
-> > +				     <&gce 0x15020000 SUBSYS_1502XXXX>;
-> > +		};
-> > +
-> 
-> 
+So far no one reported seeing the big fat warning ;-)
 
+> > The bottom line here is the SPARC case. Anybody familiar with the platform
+> > can shed a light on this. If there is no such case, we may remove warning
+> > along with ret = 0 case from platfrom_get_irq().
+>
+>    I'm afraid you're too fast here... :-)
+>    We'll have a really hard time if we continue to allow IRQ0 to be returned by
+> platform_get_irq() -- we'll have oto fileter it out in the callers then...
+
+So far no one reported seeing the big fat warning?
+
+> >>> 3. The specific cookie for "IRQ not found, while no error happened" case
+> >>
+> >> Not sure what you mean here. I have no problem that a situation I can
+> >> cope with is called an error for the query function. I just do error
+> >> handling and continue happily. So the part "while no error happened" is
+> >> irrelevant to me.
+> >
+> > I meant that instead of using special error code, 0 is very much good for
+> > the cases when IRQ is not found. It allows to distinguish -ENXIO from the
+> > low layer from -ENXIO with this magic meaning.
+>
+>    I don't see how -ENXIO can trickle from the lower layers, frankly...
+
+It might one day, leading to very hard to track bugs.
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
 _______________________________________________
 Linux-mediatek mailing list
