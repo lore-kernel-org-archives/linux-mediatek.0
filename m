@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DDF5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 09:10:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 091E6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 09:10:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TY2tZAgbv+oEgNb/dVZiUgbwdTLd8FZs+65m4qIVsCQ=; b=WOOXqcLE/cWKrW
-	UA634FUhadntglmyc7B8Tybcl3FG12GJr8+CJGXXBPSKX8l9MQGg7h2lQsD8Qqhdq2T1kbZRDRbmJ
-	5RHlVHZOXzXKgnpDiwS5tAGDV/EpOjmv82Hpokeuh+ZtLcGQijFykKyX51Wy64T/wEnqzwEHYxNDz
-	80hkJ11iQUqmhyo0btAR524JNqc2kFTwQJ5uo89oKIJiYfK1DvJJfFh+PszFm3lrHBcrwCiCh6Ivs
-	auZ3i2sNIC2lDI6r6p3GtvbsQZtO4rdzi8+QLbNPKy+NsuL0heswJZe3emPYAukPs5DyOvUcLc8vu
-	M17+YiONYy+FgPxO5xlw==;
+	List-Owner; bh=hJ5tvz4cZ8Jb/6Wjj4gPmMx2kT1HCz+CMBBQSLrV9jw=; b=Z1lPgPDa5mKRO+
+	TXxpUBSAOj8S7hiaZXyBK/knG3AA6jIMT4F+uXju8ILsxMVC/LTOY4L3HT4gz3TDOUfMGb2F/UFju
+	rOwBli1mjjH7VCFHpw6E8qyac5OauUuyjOcWNABmRTJ1nuJgqjJfjAHqhHnvLB1iydV/CeVF5/UfR
+	NemQp/gL9qnjyIgLX7+j36xU5oqHh2gzr7xha66wIXzPrQYyBNZ4E9DDyUrQHfKCYH3A/z1BHbfk+
+	3iMQLEEysTpWj69zWeF0k6pcgz/2xKz0REqxFEilhEyKvUSZGU4FDmKGGcug3K0uLL6HLSVsEdW8S
+	f8hGo09bVS6Q6Z9CZUMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCHpo-0070vT-JM; Tue, 25 Jan 2022 09:09:52 +0000
+	id 1nCHpq-0070vy-2X; Tue, 25 Jan 2022 09:09:54 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCHiE-006xFw-IH; Tue, 25 Jan 2022 09:02:04 +0000
-X-UUID: 1af1c488fdcb46e8ad461802faa86203-20220125
-X-UUID: 1af1c488fdcb46e8ad461802faa86203-20220125
+ id 1nCHiD-006xGc-Fz; Tue, 25 Jan 2022 09:02:03 +0000
+X-UUID: af795395b5e149cb9fa412b73f641875-20220125
+X-UUID: af795395b5e149cb9fa412b73f641875-20220125
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1693185496; Tue, 25 Jan 2022 02:01:56 -0700
+ with ESMTP id 1330577146; Tue, 25 Jan 2022 02:01:56 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 Jan 2022 00:57:08 -0800
+ 15.0.1497.2; Tue, 25 Jan 2022 01:00:09 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 25 Jan 2022 16:57:07 +0800
+ 15.2.792.15; Tue, 25 Jan 2022 17:00:08 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 25 Jan 2022 16:57:05 +0800
+ Transport; Tue, 25 Jan 2022 17:00:06 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -54,18 +54,17 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v4 02/35] dt-bindings: mediatek: mt8195: Add binding for infra
- IOMMU
-Date: Tue, 25 Jan 2022 16:56:01 +0800
-Message-ID: <20220125085634.17972-3-yong.wu@mediatek.com>
+Subject: [PATCH v4 25/35] iommu/mediatek: Just move code position in hw_init
+Date: Tue, 25 Jan 2022 16:56:24 +0800
+Message-ID: <20220125085634.17972-26-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220125085634.17972-1-yong.wu@mediatek.com>
 References: <20220125085634.17972-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220125_010202_659565_93E58AFF 
-X-CRM114-Status: GOOD (  13.99  )
+X-CRM114-CacheID: sfid-20220125_010201_619184_364B8249 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,102 +81,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mt8195, we have a new IOMMU that is for INFRA IOMMU. its masters
-mainly are PCIe and USB. Different with MM IOMMU, all these masters
-connect with IOMMU directly, there is no mediatek,larbs property for
-infra IOMMU.
-
-Another thing is about PCIe ports. currently the function
-"of_iommu_configure_dev_id" only support the id number is 1, But our
-PCIe have two ports, one is for reading and the other is for writing.
-see more about the PCIe patch in this patchset. Thus, I only list
-the reading id here and add the other id in our driver.
+No functional change too, prepare for mt8195 IOMMU support bank functions.
+Some global control settings are in bank0 while the other banks have
+their bank independent setting. Here only move the global control
+settings and the independent registers together.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../bindings/iommu/mediatek,iommu.yaml         | 13 ++++++++++++-
- .../dt-bindings/memory/mt8195-memory-port.h    | 18 ++++++++++++++++++
- include/dt-bindings/memory/mtk-memory-port.h   |  2 ++
- 3 files changed, 32 insertions(+), 1 deletion(-)
+ drivers/iommu/mtk_iommu.c | 48 +++++++++++++++++++--------------------
+ 1 file changed, 24 insertions(+), 24 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-index 9b04630158c8..c528a299afa9 100644
---- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-@@ -79,6 +79,7 @@ properties:
-           - mediatek,mt8192-m4u  # generation two
-           - mediatek,mt8195-iommu-vdo        # generation two
-           - mediatek,mt8195-iommu-vpp        # generation two
-+          - mediatek,mt8195-iommu-infra      # generation two
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index fdc14db5b4c0..496ed9ecd23a 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -766,30 +766,6 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+ 	}
+ 	writel_relaxed(regval, data->base + REG_MMU_CTRL_REG);
  
-       - description: mt7623 generation one
-         items:
-@@ -129,7 +130,6 @@ required:
-   - compatible
-   - reg
-   - interrupts
--  - mediatek,larbs
-   - '#iommu-cells'
+-	regval = F_L2_MULIT_HIT_EN |
+-		F_TABLE_WALK_FAULT_INT_EN |
+-		F_PREETCH_FIFO_OVERFLOW_INT_EN |
+-		F_MISS_FIFO_OVERFLOW_INT_EN |
+-		F_PREFETCH_FIFO_ERR_INT_EN |
+-		F_MISS_FIFO_ERR_INT_EN;
+-	writel_relaxed(regval, data->base + REG_MMU_INT_CONTROL0);
+-
+-	regval = F_INT_TRANSLATION_FAULT |
+-		F_INT_MAIN_MULTI_HIT_FAULT |
+-		F_INT_INVALID_PA_FAULT |
+-		F_INT_ENTRY_REPLACEMENT_FAULT |
+-		F_INT_TLB_MISS_FAULT |
+-		F_INT_MISS_TRANSACTION_FIFO_FAULT |
+-		F_INT_PRETETCH_TRANSATION_FIFO_FAULT;
+-	writel_relaxed(regval, data->base + REG_MMU_INT_MAIN_CONTROL);
+-
+-	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_LEGACY_IVRP_PADDR))
+-		regval = (data->protect_base >> 1) | (data->enable_4GB << 31);
+-	else
+-		regval = lower_32_bits(data->protect_base) |
+-			 upper_32_bits(data->protect_base);
+-	writel_relaxed(regval, data->base + REG_MMU_IVRP_PADDR);
+-
+ 	if (data->enable_4GB &&
+ 	    MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_VLD_PA_RNG)) {
+ 		/*
+@@ -823,6 +799,30 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+ 	}
+ 	writel_relaxed(regval, data->base + REG_MMU_MISC_CTRL);
  
- allOf:
-@@ -161,6 +161,17 @@ allOf:
-       required:
-         - power-domains
- 
-+  - if: # The IOMMUs don't have larbs.
-+      not:
-+        properties:
-+          compatible:
-+            contains:
-+              const: mediatek,mt8195-iommu-infra
++	regval = F_L2_MULIT_HIT_EN |
++		F_TABLE_WALK_FAULT_INT_EN |
++		F_PREETCH_FIFO_OVERFLOW_INT_EN |
++		F_MISS_FIFO_OVERFLOW_INT_EN |
++		F_PREFETCH_FIFO_ERR_INT_EN |
++		F_MISS_FIFO_ERR_INT_EN;
++	writel_relaxed(regval, data->base + REG_MMU_INT_CONTROL0);
 +
-+    then:
-+      required:
-+        - mediatek,larbs
++	regval = F_INT_TRANSLATION_FAULT |
++		F_INT_MAIN_MULTI_HIT_FAULT |
++		F_INT_INVALID_PA_FAULT |
++		F_INT_ENTRY_REPLACEMENT_FAULT |
++		F_INT_TLB_MISS_FAULT |
++		F_INT_MISS_TRANSACTION_FIFO_FAULT |
++		F_INT_PRETETCH_TRANSATION_FIFO_FAULT;
++	writel_relaxed(regval, data->base + REG_MMU_INT_MAIN_CONTROL);
 +
- additionalProperties: false
- 
- examples:
-diff --git a/include/dt-bindings/memory/mt8195-memory-port.h b/include/dt-bindings/memory/mt8195-memory-port.h
-index eeafad451a1d..fe948fec0688 100644
---- a/include/dt-bindings/memory/mt8195-memory-port.h
-+++ b/include/dt-bindings/memory/mt8195-memory-port.h
-@@ -387,4 +387,22 @@
- #define M4U_PORT_L28_CAM_DRZS4NO_R1		MTK_M4U_ID(28, 5)
- #define M4U_PORT_L28_CAM_TNCSO_R1		MTK_M4U_ID(28, 6)
- 
-+/* Infra iommu ports */
-+/* PCIe1: read: BIT16; write BIT17. */
-+#define IOMMU_PORT_INFRA_PCIE1			MTK_IFAIOMMU_PERI_ID(16)
-+/* PCIe0: read: BIT18; write BIT19. */
-+#define IOMMU_PORT_INFRA_PCIE0			MTK_IFAIOMMU_PERI_ID(18)
-+#define IOMMU_PORT_INFRA_SSUSB_P3_R		MTK_IFAIOMMU_PERI_ID(20)
-+#define IOMMU_PORT_INFRA_SSUSB_P3_W		MTK_IFAIOMMU_PERI_ID(21)
-+#define IOMMU_PORT_INFRA_SSUSB_P2_R		MTK_IFAIOMMU_PERI_ID(22)
-+#define IOMMU_PORT_INFRA_SSUSB_P2_W		MTK_IFAIOMMU_PERI_ID(23)
-+#define IOMMU_PORT_INFRA_SSUSB_P1_1_R		MTK_IFAIOMMU_PERI_ID(24)
-+#define IOMMU_PORT_INFRA_SSUSB_P1_1_W		MTK_IFAIOMMU_PERI_ID(25)
-+#define IOMMU_PORT_INFRA_SSUSB_P1_0_R		MTK_IFAIOMMU_PERI_ID(26)
-+#define IOMMU_PORT_INFRA_SSUSB_P1_0_W		MTK_IFAIOMMU_PERI_ID(27)
-+#define IOMMU_PORT_INFRA_SSUSB2_R		MTK_IFAIOMMU_PERI_ID(28)
-+#define IOMMU_PORT_INFRA_SSUSB2_W		MTK_IFAIOMMU_PERI_ID(29)
-+#define IOMMU_PORT_INFRA_SSUSB_R		MTK_IFAIOMMU_PERI_ID(30)
-+#define IOMMU_PORT_INFRA_SSUSB_W		MTK_IFAIOMMU_PERI_ID(31)
++	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_LEGACY_IVRP_PADDR))
++		regval = (data->protect_base >> 1) | (data->enable_4GB << 31);
++	else
++		regval = lower_32_bits(data->protect_base) |
++			 upper_32_bits(data->protect_base);
++	writel_relaxed(regval, data->base + REG_MMU_IVRP_PADDR);
 +
- #endif
-diff --git a/include/dt-bindings/memory/mtk-memory-port.h b/include/dt-bindings/memory/mtk-memory-port.h
-index 7d64103209af..2f68a0511a25 100644
---- a/include/dt-bindings/memory/mtk-memory-port.h
-+++ b/include/dt-bindings/memory/mtk-memory-port.h
-@@ -12,4 +12,6 @@
- #define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0x1f)
- #define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
- 
-+#define MTK_IFAIOMMU_PERI_ID(port)	MTK_M4U_ID(0, port)
-+
- #endif
+ 	if (devm_request_irq(data->dev, data->irq, mtk_iommu_isr, 0,
+ 			     dev_name(data->dev), (void *)data)) {
+ 		writel_relaxed(0, data->base + REG_MMU_PT_BASE_ADDR);
 -- 
 2.18.0
 
