@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 091E6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 09:10:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BBDFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 09:10:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hJ5tvz4cZ8Jb/6Wjj4gPmMx2kT1HCz+CMBBQSLrV9jw=; b=Z1lPgPDa5mKRO+
-	TXxpUBSAOj8S7hiaZXyBK/knG3AA6jIMT4F+uXju8ILsxMVC/LTOY4L3HT4gz3TDOUfMGb2F/UFju
-	rOwBli1mjjH7VCFHpw6E8qyac5OauUuyjOcWNABmRTJ1nuJgqjJfjAHqhHnvLB1iydV/CeVF5/UfR
-	NemQp/gL9qnjyIgLX7+j36xU5oqHh2gzr7xha66wIXzPrQYyBNZ4E9DDyUrQHfKCYH3A/z1BHbfk+
-	3iMQLEEysTpWj69zWeF0k6pcgz/2xKz0REqxFEilhEyKvUSZGU4FDmKGGcug3K0uLL6HLSVsEdW8S
-	f8hGo09bVS6Q6Z9CZUMg==;
+	List-Owner; bh=DyZCaP05X6lfIrLBmulEZEZiIx5VivBXumzXNOyHnEo=; b=1UCW6xHZ47ib1D
+	VSYVNOn48hof51gXasKFygL3PauXq7XKAZ0pUgu8Q7L5CUPtU1enYiwtrFL7fhzk3fM8QFnuuD0qY
+	RbMPCoWKfDBIaJZ3+UQiyuma89vk/uWyFsv11CSPp1yHGB7fT3Io9pefQ1sNHlQ0sCVq+dPMA92b3
+	8bOnfCRkzGgdee+Pfl6wxCRFLTe0s8ICagqcukTlhoWmFZ+FL0/nKfMUX7Xq2TGvCbi6IESKwS390
+	L2dBEAypexIBktL5ix6YToMf7gG4ESTUZRH4mIrEqberdY+cnUte4jZeJmKREEHJz4afFrujLsiTO
+	ol8Z7PyWTkd6REkqvP9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCHpq-0070vy-2X; Tue, 25 Jan 2022 09:09:54 +0000
+	id 1nCHpu-0070y1-Dv; Tue, 25 Jan 2022 09:09:58 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCHiD-006xGc-Fz; Tue, 25 Jan 2022 09:02:03 +0000
-X-UUID: af795395b5e149cb9fa412b73f641875-20220125
-X-UUID: af795395b5e149cb9fa412b73f641875-20220125
+ id 1nCHiF-006xGc-2m; Tue, 25 Jan 2022 09:02:05 +0000
+X-UUID: 29e1952152d0439caeeece2b615e31fb-20220125
+X-UUID: 29e1952152d0439caeeece2b615e31fb-20220125
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1330577146; Tue, 25 Jan 2022 02:01:56 -0700
+ with ESMTP id 411437816; Tue, 25 Jan 2022 02:01:56 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 Jan 2022 01:00:09 -0800
+ 15.0.1497.2; Tue, 25 Jan 2022 01:00:46 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 25 Jan 2022 17:00:08 +0800
+ 15.2.792.15; Tue, 25 Jan 2022 17:00:45 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 25 Jan 2022 17:00:06 +0800
+ Transport; Tue, 25 Jan 2022 17:00:43 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -54,17 +54,17 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v4 25/35] iommu/mediatek: Just move code position in hw_init
-Date: Tue, 25 Jan 2022 16:56:24 +0800
-Message-ID: <20220125085634.17972-26-yong.wu@mediatek.com>
+Subject: [PATCH v4 30/35] iommu/mediatek: Initialise bank HW for each a bank
+Date: Tue, 25 Jan 2022 16:56:29 +0800
+Message-ID: <20220125085634.17972-31-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220125085634.17972-1-yong.wu@mediatek.com>
 References: <20220125085634.17972-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220125_010201_619184_364B8249 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20220125_010203_181026_48A6150D 
+X-CRM114-Status: GOOD (  19.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,83 +81,127 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-No functional change too, prepare for mt8195 IOMMU support bank functions.
-Some global control settings are in bank0 while the other banks have
-their bank independent setting. Here only move the global control
-settings and the independent registers together.
+The mt8195 IOMMU HW max support 5 banks, and regarding the banks'
+registers, it looks like:
+
+ ----------------------------------------
+ |bank0  | bank1 | bank2 | bank3 | bank4|
+ ----------------------------------------
+ |global |
+ |control|         null
+ |regs   |
+ -----------------------------------------
+ |bank   |bank   |bank   |bank   |bank   |
+ |regs   |regs   |regs   |regs   |regs   |
+ |       |       |       |       |       |
+ -----------------------------------------
+
+Each bank has some special bank registers and it share bank0's global
+control registers. this patch initialise the bank hw with the bankid.
+
+In the hw_init, we always initialise bank0's control register since
+we don't know if the bank0 is initialised.
+
+Additionally, About each bank's register base, always delta 0x1000.
+like bank[x + 1] = bank[x] + 0x1000.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c | 48 +++++++++++++++++++--------------------
- 1 file changed, 24 insertions(+), 24 deletions(-)
+ drivers/iommu/mtk_iommu.c | 32 ++++++++++++++++++++------------
+ 1 file changed, 20 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index fdc14db5b4c0..496ed9ecd23a 100644
+index dc47dc0e3163..c0843c67b5a7 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -766,30 +766,6 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
- 	}
- 	writel_relaxed(regval, data->base + REG_MMU_CTRL_REG);
+@@ -270,7 +270,7 @@ static inline void mtk_iommu_unbind(struct device *dev)
  
--	regval = F_L2_MULIT_HIT_EN |
--		F_TABLE_WALK_FAULT_INT_EN |
--		F_PREETCH_FIFO_OVERFLOW_INT_EN |
--		F_MISS_FIFO_OVERFLOW_INT_EN |
--		F_PREFETCH_FIFO_ERR_INT_EN |
--		F_MISS_FIFO_ERR_INT_EN;
--	writel_relaxed(regval, data->base + REG_MMU_INT_CONTROL0);
--
--	regval = F_INT_TRANSLATION_FAULT |
--		F_INT_MAIN_MULTI_HIT_FAULT |
--		F_INT_INVALID_PA_FAULT |
--		F_INT_ENTRY_REPLACEMENT_FAULT |
--		F_INT_TLB_MISS_FAULT |
--		F_INT_MISS_TRANSACTION_FIFO_FAULT |
--		F_INT_PRETETCH_TRANSATION_FIFO_FAULT;
--	writel_relaxed(regval, data->base + REG_MMU_INT_MAIN_CONTROL);
--
--	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_LEGACY_IVRP_PADDR))
--		regval = (data->protect_base >> 1) | (data->enable_4GB << 31);
--	else
--		regval = lower_32_bits(data->protect_base) |
--			 upper_32_bits(data->protect_base);
--	writel_relaxed(regval, data->base + REG_MMU_IVRP_PADDR);
--
- 	if (data->enable_4GB &&
- 	    MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_VLD_PA_RNG)) {
- 		/*
-@@ -823,6 +799,30 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
- 	}
- 	writel_relaxed(regval, data->base + REG_MMU_MISC_CTRL);
+ static const struct iommu_ops mtk_iommu_ops;
  
-+	regval = F_L2_MULIT_HIT_EN |
-+		F_TABLE_WALK_FAULT_INT_EN |
-+		F_PREETCH_FIFO_OVERFLOW_INT_EN |
-+		F_MISS_FIFO_OVERFLOW_INT_EN |
-+		F_PREFETCH_FIFO_ERR_INT_EN |
-+		F_MISS_FIFO_ERR_INT_EN;
-+	writel_relaxed(regval, data->base + REG_MMU_INT_CONTROL0);
-+
-+	regval = F_INT_TRANSLATION_FAULT |
-+		F_INT_MAIN_MULTI_HIT_FAULT |
-+		F_INT_INVALID_PA_FAULT |
-+		F_INT_ENTRY_REPLACEMENT_FAULT |
-+		F_INT_TLB_MISS_FAULT |
-+		F_INT_MISS_TRANSACTION_FIFO_FAULT |
-+		F_INT_PRETETCH_TRANSATION_FIFO_FAULT;
-+	writel_relaxed(regval, data->base + REG_MMU_INT_MAIN_CONTROL);
-+
-+	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_LEGACY_IVRP_PADDR))
-+		regval = (data->protect_base >> 1) | (data->enable_4GB << 31);
-+	else
-+		regval = lower_32_bits(data->protect_base) |
-+			 upper_32_bits(data->protect_base);
-+	writel_relaxed(regval, data->base + REG_MMU_IVRP_PADDR);
-+
- 	if (devm_request_irq(data->dev, data->irq, mtk_iommu_isr, 0,
- 			     dev_name(data->dev), (void *)data)) {
- 		writel_relaxed(0, data->base + REG_MMU_PT_BASE_ADDR);
+-static int mtk_iommu_hw_init(const struct mtk_iommu_data *data);
++static int mtk_iommu_hw_init(const struct mtk_iommu_data *data, unsigned int bankid);
+ 
+ #define MTK_IOMMU_TLB_ADDR(iova) ({					\
+ 	dma_addr_t _addr = iova;					\
+@@ -653,12 +653,14 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ 
+ 	mutex_lock(&data->mutex);
+ 	bank = &data->bank[bankid];
+-	if (!bank->m4u_dom) { /* Initialize the M4U HW */
++	if (!bank->m4u_dom) { /* Initialize the M4U HW for each a BANK */
+ 		ret = pm_runtime_resume_and_get(m4udev);
+-		if (ret < 0)
++		if (ret < 0) {
++			dev_err(m4udev, "pm get fail(%d) in attach.\n", ret);
+ 			goto data_unlock;
++		}
+ 
+-		ret = mtk_iommu_hw_init(data);
++		ret = mtk_iommu_hw_init(data, bankid);
+ 		if (ret) {
+ 			pm_runtime_put(m4udev);
+ 			goto data_unlock;
+@@ -871,11 +873,16 @@ static const struct iommu_ops mtk_iommu_ops = {
+ 	.owner		= THIS_MODULE,
+ };
+ 
+-static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
++static int mtk_iommu_hw_init(const struct mtk_iommu_data *data, unsigned int bankid)
+ {
++	const struct mtk_iommu_bank_data *bankx = &data->bank[bankid];
+ 	const struct mtk_iommu_bank_data *bank0 = &data->bank[0];
+ 	u32 regval;
+ 
++	/*
++	 * Global control settings are in bank0. May re-init these global registers
++	 * since no sure if there is bank0 consumers.
++	 */
+ 	if (data->plat_data->m4u_plat == M4U_MT8173) {
+ 		regval = F_MMU_PREFETCH_RT_REPLACE_MOD |
+ 			 F_MMU_TF_PROT_TO_PROGRAM_ADDR_MT8173;
+@@ -918,13 +925,14 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+ 	}
+ 	writel_relaxed(regval, bank0->base + REG_MMU_MISC_CTRL);
+ 
++	/* Independent settings for each bank */
+ 	regval = F_L2_MULIT_HIT_EN |
+ 		F_TABLE_WALK_FAULT_INT_EN |
+ 		F_PREETCH_FIFO_OVERFLOW_INT_EN |
+ 		F_MISS_FIFO_OVERFLOW_INT_EN |
+ 		F_PREFETCH_FIFO_ERR_INT_EN |
+ 		F_MISS_FIFO_ERR_INT_EN;
+-	writel_relaxed(regval, bank0->base + REG_MMU_INT_CONTROL0);
++	writel_relaxed(regval, bankx->base + REG_MMU_INT_CONTROL0);
+ 
+ 	regval = F_INT_TRANSLATION_FAULT |
+ 		F_INT_MAIN_MULTI_HIT_FAULT |
+@@ -933,19 +941,19 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+ 		F_INT_TLB_MISS_FAULT |
+ 		F_INT_MISS_TRANSACTION_FIFO_FAULT |
+ 		F_INT_PRETETCH_TRANSATION_FIFO_FAULT;
+-	writel_relaxed(regval, bank0->base + REG_MMU_INT_MAIN_CONTROL);
++	writel_relaxed(regval, bankx->base + REG_MMU_INT_MAIN_CONTROL);
+ 
+ 	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_LEGACY_IVRP_PADDR))
+ 		regval = (data->protect_base >> 1) | (data->enable_4GB << 31);
+ 	else
+ 		regval = lower_32_bits(data->protect_base) |
+ 			 upper_32_bits(data->protect_base);
+-	writel_relaxed(regval, bank0->base + REG_MMU_IVRP_PADDR);
++	writel_relaxed(regval, bankx->base + REG_MMU_IVRP_PADDR);
+ 
+-	if (devm_request_irq(bank0->parent_dev, bank0->irq, mtk_iommu_isr, 0,
+-			     dev_name(bank0->parent_dev), (void *)bank0)) {
+-		writel_relaxed(0, bank0->base + REG_MMU_PT_BASE_ADDR);
+-		dev_err(bank0->parent_dev, "Failed @ IRQ-%d Request\n", bank0->irq);
++	if (devm_request_irq(bankx->parent_dev, bankx->irq, mtk_iommu_isr, 0,
++			     dev_name(bankx->parent_dev), (void *)bankx)) {
++		writel_relaxed(0, bankx->base + REG_MMU_PT_BASE_ADDR);
++		dev_err(bankx->parent_dev, "Failed @ IRQ-%d Request\n", bankx->irq);
+ 		return -ENODEV;
+ 	}
+ 
 -- 
 2.18.0
 
