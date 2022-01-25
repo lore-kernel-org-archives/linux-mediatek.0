@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F2A4C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 06:21:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09546C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 08:20:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9RTtKP9hHtwetkkoSTnQjeDZ8mqVrlNTt2TkOPsRbmg=; b=ciuzsXdwd2LyvS
-	SyWSrGapshuHOqCl/tioYoOsCOA/OH96BQ6EQgWniL5KJzcbWfU5Tn2aQM/0AHOWYR+K64jZ5Yjc5
-	74XwtzqHwQyWf24biTjyBpuRpM7y2N1H3s5I6l1ioN4EXJXm5Lf9ohij3omzXsNvqE9yBtOdckoZ0
-	FOf4nddsYghGVAVWh+9yixclqr3msbVxz+2gPfT1SN6hali95sw6FfqqgAcP/wvWpEL7VqyLa7U59
-	n3ydMegFDyG6QJuMJ/kBnSaMnkyNCDGirnAjHZ5+JFQPp0LjXPmqvgkYlcX7vqYBO8Bv/SjEDax6w
-	P6Ornf2ZKAkAUqHTufpg==;
+	List-Owner; bh=v3xvAQSQ1Uo/f4UvvnZut/no+oWQqOxTpjd1rHlVCCE=; b=tBN0Y+9TZA0hlt
+	lQDTqbukC+BXtwG+d5J2gKx+AkLCiYDEuc1jVwoazMkbquSlbxxTYaPdP2hiFvo7JNUxotNRxh1UX
+	n8I57QDnLA0xSRisSOeFXvdVQJH1MVZjyjha+fSnlp5DeKKh5ylrJ8snWefU2UahLr5q3M+n30alB
+	HXPIL2TLiHaCkrlChSdc1uZYD0LAl3K9wwGz7mckTCx30cswiUdc3zZkuTAubpgCNzSCckn0ve+pJ
+	/o8GioNJ/1UoirY7jhnW/MjdXuRR7c0Y/E3JHVW3h2XP2zJBM2TRfsSRB4X2xSOSPIbVuXRiJA2uG
+	1XYfSpO1vFe0U8VzzqDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCFD6-006YU4-Az; Tue, 25 Jan 2022 06:21:44 +0000
+	id 1nCH3q-006qLu-D8; Tue, 25 Jan 2022 08:20:18 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCFD4-006YT9-77; Tue, 25 Jan 2022 06:21:43 +0000
-X-UUID: 3c6ec7c78d284da58abcca18ad6bee6b-20220124
-X-UUID: 3c6ec7c78d284da58abcca18ad6bee6b-20220124
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <tinghan.shen@mediatek.com>)
+ id 1nCH3m-006qLG-4V; Tue, 25 Jan 2022 08:20:17 +0000
+X-UUID: a1ddce5abf064aa988004858ff8b55ae-20220125
+X-UUID: a1ddce5abf064aa988004858ff8b55ae-20220125
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <moudy.ho@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 266675314; Mon, 24 Jan 2022 23:21:36 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 Jan 2022 22:21:34 -0800
+ with ESMTP id 1477085788; Tue, 25 Jan 2022 01:20:09 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 25 Jan 2022 00:20:07 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 25 Jan 2022 14:21:33 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 25 Jan 2022 16:20:05 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 25 Jan 2022 14:21:33 +0800
-Message-ID: <102ea6303dd16fdf9ec931d0a1845a93afe92545.camel@mediatek.com>
-Subject: Re: [PATCH v9 2/3] dt-bindings: pinctrl: mt8195: Add
- mediatek,drive-strength-adv property
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "David
- Matlack" <dmatlack@google.com>, Jing Zhang <jingzhangos@google.com>, "Marc
- Zyngier" <maz@kernel.org>, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sean Wang <sean.wang@mediatek.com>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-gpio@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, <ryder.lee@kernel.org>,
- <wenst@chromium.org>, <chunfeng.yun@mediatek.com>
-Date: Tue, 25 Jan 2022 14:21:33 +0800
-In-Reply-To: <18f7a647-6153-6d38-dff1-727b9592b01e@gmail.com>
-References: <20220112114724.1953-1-tinghan.shen@mediatek.com>
- <20220112114724.1953-3-tinghan.shen@mediatek.com>
- <18f7a647-6153-6d38-dff1-727b9592b01e@gmail.com>
+ Transport; Tue, 25 Jan 2022 16:20:05 +0800
+Message-ID: <356f512b549f90b329775e249fd48eb2954ade02.camel@mediatek.com>
+Subject: Re: [PATCH v11 2/3] dts: arm64: mt8183: add Mediatek MDP3 nodes
+From: moudy ho <moudy.ho@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>, Jernej Skrabec <jernej.skrabec@siol.net>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
+ <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
+ <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ Alexandre Courbot <acourbot@chromium.org>, <tfiga@chromium.org>,
+ <drinkcat@chromium.org>, <pihsun@chromium.org>, <hsinyi@google.com>, Maoguang
+ Meng <maoguang.meng@mediatek.com>, daoyuan huang
+ <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+ <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
+ <allen-kh.cheng@mediatek.com>, <randy.wu@mediatek.com>,
+ <jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
+ <river.cheng@mediatek.com>, <srv_heupstream@mediatek.com>
+Date: Tue, 25 Jan 2022 16:20:05 +0800
+In-Reply-To: <d61ec481-8059-a897-504a-0125f88fad61@collabora.com>
+References: <20220105093758.6850-1-moudy.ho@mediatek.com>
+ <20220105093758.6850-3-moudy.ho@mediatek.com>
+ <d61ec481-8059-a897-504a-0125f88fad61@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220124_222142_304222_8392AD07 
-X-CRM114-Status: GOOD (  27.68  )
+X-CRM114-CacheID: sfid-20220125_002014_218354_49D65941 
+X-CRM114-Status: GOOD (  17.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,91 +87,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-01-13 at 17:31 +0100, Matthias Brugger wrote:
-> [dopping Maciej, Paolo and Sean Christopherson]
-> 
-> On 12/01/2022 12:47, Tinghan Shen wrote:
-> > Extend driving support for I2C pins on SoC mt8195.
-> > This property is already documented in mediatek,mt8183-pinctrl.yaml.
+On Fri, 2022-01-21 at 12:58 +0100, AngeloGioacchino Del Regno wrote:
+> Il 05/01/22 10:37, Moudy Ho ha scritto:
+> > Add device nodes for Media Data Path 3 (MDP3) modules.
 > > 
-> > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> > Reviewed-by: Rob Herring <robh@kernel.org>
+> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 108
+> > ++++++++++++++++++++++-
+> >   1 file changed, 107 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > index ba4584faca5a..b872ef1ff6b3 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > @@ -1325,6 +1325,79 @@
+> >   			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
+> > 0 0x1000>;
+> >   		};
+> >   
+> > +		mdp3_rdma0: mdp3_rdma0@14001000 {
+> > +			compatible = "mediatek,mt8183-mdp3",
+> > +				     "mediatek,mt8183-mdp3-rdma0";
+> > +			mediatek,scp = <&scp>;
+> > +			mediatek,mdp3-comps = "mediatek,mt8183-mdp3-
+> > dl1",
+> > +					      "mediatek,mt8183-mdp3-
+> > dl2",
+> > +					      "mediatek,mt8183-mdp3-
+> > path1",
+> > +					      "mediatek,mt8183-mdp3-
+> > path2",
+> > +					      "mediatek,mt8183-mdp3-
+> > imgi",
+> > +					      "mediatek,mt8183-mdp3-
+> > exto";
+> > +			reg = <0 0x14001000 0 0x1000>,
+> > +			      <0 0x14000000 0 0x1000>,
+> > +			      <0 0x14005000 0 0x1000>,
+> > +			      <0 0x14006000 0 0x1000>,
+> > +			      <0 0x15020000 0 0x1000>;
+> > +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
+> > 0x1000 0x1000>,
+> > +						  <&gce SUBSYS_1400XXXX
+> > 0 0x1000>,
+> > +						  <&gce SUBSYS_1400XXXX
+> > 0x5000 0x1000>,
+> > +						  <&gce SUBSYS_1400XXXX
+> > 0x6000 0x1000>,
+> > +						  <&gce SUBSYS_1502XXXX
+> > 0 0x1000>;
+> > +			power-domains = <&spm
+> > MT8183_POWER_DOMAIN_DISP>;
+> > +			clocks = <&mmsys CLK_MM_MDP_RDMA0>,
+> > +				 <&mmsys CLK_MM_MDP_RSZ1>,
+> > +				 <&mmsys CLK_MM_MDP_DL_TXCK>,
+> > +				 <&mmsys CLK_MM_MDP_DL_RX>,
+> > +				 <&mmsys CLK_MM_IPU_DL_TXCK>,
+> > +				 <&mmsys CLK_MM_IPU_DL_RX>;
+> > +			iommus = <&iommu M4U_PORT_MDP_RDMA0>;
+> > +			mediatek,mmsys = <&mmsys>;
+> > +			mediatek,mm-mutex = <&mutex>;
+> > +			mediatek,mailbox-gce = <&gce>;
+> > +			mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST 0>,
+> > +				 <&gce 21 CMDQ_THR_PRIO_LOWEST>,
+> > +				 <&gce 22 CMDQ_THR_PRIO_LOWEST>,
+> > +				 <&gce 23 CMDQ_THR_PRIO_LOWEST>;
 > 
-> Looks good to me. Linus please let me know when you are queuing this patch and 
-> I'll take the rest of the series. Another option is, that you provide an 
-> Acked-by and I can take the whole set through my branch.
+> Hello Moudy,
+> the mboxes for gce 21, 22, 23 are missing the third cell. Please fix.
 > 
 > Regards,
-> Matthias
+> Angelo
 
-Hi Matthias,
+Hi Angelo,
+Thanks for the reminder, but I'm a bit confused, the previous
+version(v10) mentioned that the current upstream mbox has only 2
+cells.
+So I should follow this rule to remove the extra 0 in the first item as
+follows:
+ +			mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST>,
+ +				 <&gce 21 CMDQ_THR_PRIO_LOWEST>,
+ +				 <&gce 22 CMDQ_THR_PRIO_LOWEST>,
+ +				 <&gce 23 CMDQ_THR_PRIO_LOWEST>;
 
-I want to send next version to update the CC list of this series, but I'm not sure 
-whether this will break the conversation between you and Linus.
-
-Is it ok to send next version? or waiting the response?
-
-Best regards,
-TingHan
-
+Thanks,
+Moudy Ho
 > 
-> > ---
-> >   .../bindings/pinctrl/pinctrl-mt8195.yaml      | 35 +++++++++++++++++++
-> >   1 file changed, 35 insertions(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
-> > b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
-> > index 328ea59c5466..4db4899af6b1 100644
-> > --- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
-> > +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
-> > @@ -98,6 +98,32 @@ patternProperties:
-> >             drive-strength:
-> >               enum: [2, 4, 6, 8, 10, 12, 14, 16]
-> >   
-> > +          mediatek,drive-strength-adv:
-> > +            description: |
-> > +              Describe the specific driving setup property.
-> > +              For I2C pins, the existing generic driving setup can only support
-> > +              2/4/6/8/10/12/14/16mA driving. But in specific driving setup, they
-> > +              can support 0.125/0.25/0.5/1mA adjustment. If we enable specific
-> > +              driving setup, the existing generic setup will be disabled.
-> > +              The specific driving setup is controlled by E1E0EN.
-> > +              When E1=0/E0=0, the strength is 0.125mA.
-> > +              When E1=0/E0=1, the strength is 0.25mA.
-> > +              When E1=1/E0=0, the strength is 0.5mA.
-> > +              When E1=1/E0=1, the strength is 1mA.
-> > +              EN is used to enable or disable the specific driving setup.
-> > +              Valid arguments are described as below:
-> > +              0: (E1, E0, EN) = (0, 0, 0)
-> > +              1: (E1, E0, EN) = (0, 0, 1)
-> > +              2: (E1, E0, EN) = (0, 1, 0)
-> > +              3: (E1, E0, EN) = (0, 1, 1)
-> > +              4: (E1, E0, EN) = (1, 0, 0)
-> > +              5: (E1, E0, EN) = (1, 0, 1)
-> > +              6: (E1, E0, EN) = (1, 1, 0)
-> > +              7: (E1, E0, EN) = (1, 1, 1)
-> > +              So the valid arguments are from 0 to 7.
-> > +            $ref: /schemas/types.yaml#/definitions/uint32
-> > +            enum: [0, 1, 2, 3, 4, 5, 6, 7]
+> > +			gce-subsys = <&gce 0x14000000 SUBSYS_1400XXXX>,
+> > +				     <&gce 0x14010000 SUBSYS_1401XXXX>,
+> > +				     <&gce 0x14020000 SUBSYS_1402XXXX>,
+> > +				     <&gce 0x15020000 SUBSYS_1502XXXX>;
+> > +		};
 > > +
-> >             bias-pull-down:
-> >               description: |
-> >                 For pull down type is normal, it don't need add RSEL & R1R0 define
-> > @@ -268,4 +294,13 @@ examples:
-> >             bias-pull-down;
-> >           };
-> >         };
-> > +
-> > +      i2c0-pins {
-> > +        pins {
-> > +          pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
-> > +                   <PINMUX_GPIO9__FUNC_SCL0>;
-> > +          bias-disable;
-> > +          mediatek,drive-strength-adv = <7>;
-> > +        };
-> > +      };
-> >       };
-> > 
+> 
+> 
 
 
 _______________________________________________
