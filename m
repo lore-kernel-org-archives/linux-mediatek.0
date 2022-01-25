@@ -4,68 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE927C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 10:58:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0CE5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 11:04:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JvR/rp9mfE3WgBY01QOGzPfVcPDAzNViqAsKTh0qsxQ=; b=4g+b6SyshoYEYA
-	uN1F50lBr8n3wVL0wlEwLeJ1AHN+z32ajQkviCVi4uUs+PyKL7OdLiAhRVNIE6BtXdfwde4ZbTekJ
-	5TYZhv9dE2rQIE5C71jyx3RlYT0cdgd/Q9AFxaKRYay4KA9u2gdMXwnJLghlokLsyFFJ22fGjoMlm
-	fo/pjm+nJZ8elLVgQpuxUYYwWn6JI+CwYaKndCt9V9Mjx/cp7KvsWprE8vDXkC0HWrDmpC+oU8AOJ
-	4b6yOa5+Ow7JpJO04LgW8jD4NxgDSDwtP7iX1wovucd4lhDlieCzrTiHPMkyKC2N8zuZLcn16NVIj
-	KSzTod2FCF1zh5gq8JNw==;
+	List-Owner; bh=0a3L8IPUZ6OpndNmL6PkNoGfAyaINVr3L0BgtlDwj4s=; b=FgHWZ/2TttJXEu
+	NNPzvJJkeHvs9+6sugQnQrJxAQritJDpjCJhao0zywD2ANsahfan19rm/VwA1fh3gUU7ji3gV9eK2
+	hYVFjDn4pwEYhC11O61Bv4geY+0cdY/3UnEpE7WmAQNl5uYXNJZIaafADjm6QwuF6g95CDVBOtw8F
+	oTwBzVlv6Z2Q3pXztn3LGts2mRNNcNjW+ARFVgfJjdOZyLJRQBXdsWOLOHvTDnZql3JA+kGK+pcZp
+	WFw/s/VP/ZJtdaTmvToqw0iGhE25UuBaX4uAEoJHui2VuZI4RfhdTDqaM6C/6vMaPWo2qs+2d3uFV
+	XTm37OrLbO3rfD/wSolA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCJWz-007YJX-IM; Tue, 25 Jan 2022 10:58:33 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nCJcx-007ZhF-5Y; Tue, 25 Jan 2022 11:04:43 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCJWv-007YHX-48
- for linux-mediatek@lists.infradead.org; Tue, 25 Jan 2022 10:58:32 +0000
-X-UUID: a621f49bc85e417895a4bae281fdc03b-20220125
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=KixU75rOsVu+o/VSeFXlq3ZGeD/E9Mlif6mOsBsDRKY=; 
- b=bdrAW9T/JPRG0JiaaQa7qrNeBJxK7CRrvoIddUG95ZW8CcztVnto2zRWSs7n0ieM0IZyJ4yiqTcb6XSUr8DqsEOqWkiZCW/gxOf7FJKQuXYjJasQtUsrz+rPOouR0pmEqr5WBwXh6qIFB/iQL7Vjse94HW0RwZ25492H3hMILgE=;
-X-UUID: a621f49bc85e417895a4bae281fdc03b-20220125
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <guochun.mao@mediatek.com>)
+ id 1nCJck-007ZeW-Rt; Tue, 25 Jan 2022 11:04:32 +0000
+X-UUID: 7933aafea25642c9baa72d7763a4aa06-20220125
+X-UUID: 7933aafea25642c9baa72d7763a4aa06-20220125
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <kewei.xu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1651268570; Tue, 25 Jan 2022 03:58:24 -0700
+ with ESMTP id 1519289103; Tue, 25 Jan 2022 04:04:25 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 Jan 2022 02:58:22 -0800
+ 15.0.1497.2; Tue, 25 Jan 2022 03:04:24 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 25 Jan 2022 18:58:21 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ Tue, 25 Jan 2022 19:04:22 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 25 Jan 2022 18:58:20 +0800
-Message-ID: <f654b80aeaa496163c52c241a78e6fc8231d780f.camel@mediatek.com>
-Subject: Re: [PATCH v2 0/4] add new SoC mt8186 support for spi-mtk-nor
-From: Guochun Mao <guochun.mao@mediatek.com>
-To: Mark Brown <broonie@kernel.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Rob Herring <robh+dt@kernel.org>
-CC: <srv_heupstream@mediatek.com>, Zhen Zhang <zhen.zhang@mediatek.com>, "Bin
- Zhang" <bin.zhang@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>,
- <project_global_chrome_upstream_group@mediatek.com>, Bayi Cheng
- <bayi.cheng@mediatek.com>, <linux-mediatek@lists.infradead.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>
-Date: Tue, 25 Jan 2022 18:58:20 +0800
-In-Reply-To: <164310607135.75071.3179089148153080235.b4-ty@kernel.org>
-References: <20220118142820.2729-1-guochun.mao@mediatek.com>
- <164310607135.75071.3179089148153080235.b4-ty@kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Tue, 25 Jan 2022 19:04:21 +0800
+From: Kewei Xu <kewei.xu@mediatek.com>
+To: <wsa@the-dreams.de>
+CC: <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
+ <linux-i2c@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <leilk.liu@mediatek.com>, <qii.wang@mediatek.com>,
+ <liguo.zhang@mediatek.com>, <caiyu.chen@mediatek.com>,
+ <housong.zhang@mediatek.com>, <yuhan.wei@mediatek.com>,
+ <kewei.xu@mediatek.com>, <ryan-jh.yu@mediatek.com>
+Subject: [v2 2/2] i2c: mediatek: Add i2c compatible for Mediatek MT8186
+Date: Tue, 25 Jan 2022 19:04:13 +0800
+Message-ID: <20220125110413.18988-3-kewei.xu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220125110413.18988-1-kewei.xu@mediatek.com>
+References: <20220125110413.18988-1-kewei.xu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220125_025830_590063_9C606642 
-X-CRM114-Status: GOOD (  23.74  )
+X-CRM114-CacheID: sfid-20220125_030430_935770_8BF607D8 
+X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,68 +78,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add i2c compatible for MT8186. Compare to MT8192 i2c controller,
+MT8186 doesn't need handshake signal witch apdma.
 
-Hi Mark, Angelo, Rob,
+Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
+---
+ drivers/i2c/busses/i2c-mt65xx.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-Thank you very much.
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index 9ea427f53083..aa4d21838e14 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -397,6 +397,19 @@ static const struct mtk_i2c_compatible mt8183_compat = {
+ 	.max_dma_support = 33,
+ };
+ 
++static const struct mtk_i2c_compatible mt8186_compat = {
++	.regs = mt_i2c_regs_v2,
++	.pmic_i2c = 0,
++	.dcm = 0,
++	.auto_restart = 1,
++	.aux_len_reg = 1,
++	.timing_adjust = 1,
++	.dma_sync = 0,
++	.ltiming_adjust = 1,
++	.apdma_sync = 0,
++	.max_dma_support = 36,
++};
++
+ static const struct mtk_i2c_compatible mt8192_compat = {
+ 	.quirks = &mt8183_i2c_quirks,
+ 	.regs = mt_i2c_regs_v2,
+@@ -418,6 +431,7 @@ static const struct of_device_id mtk_i2c_of_match[] = {
+ 	{ .compatible = "mediatek,mt7622-i2c", .data = &mt7622_compat },
+ 	{ .compatible = "mediatek,mt8173-i2c", .data = &mt8173_compat },
+ 	{ .compatible = "mediatek,mt8183-i2c", .data = &mt8183_compat },
++	{ .compatible = "mediatek,mt8186-i2c", .data = &mt8186_compat },
+ 	{ .compatible = "mediatek,mt8192-i2c", .data = &mt8192_compat },
+ 	{}
+ };
+-- 
+2.25.1
 
-Guochun
 
-
-On Tue, 2022-01-25 at 10:21 +0000, Mark Brown wrote:
-> On Tue, 18 Jan 2022 22:28:16 +0800, guochun.mao@mediatek.com wrote:
-> > These patches is mainly for adding mt8186 support.
-> > The spi nor controller of mt8186 has some differences,
-> > it needs one more clk, axi_s, for dma feature.
-> > And also needs one extra dummy bit when read flash registers.
-> > 
-> > The version 2 patches fix some typos for bindings file,
-> > correct return value of probe function in spi-mtk-nor.c file,
-> > and add some comments to explain why add extra dummy bit.
-> > 
-> > [...]
-> 
-> Applied to
-> 
->    https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git
-> for-next
-> 
-> Thanks!
-> 
-> [1/4] dt-bindings: spi: add mt8186-nor compatible string
->       commit: ceab11a3c0d620d9ec2c032fd8014615cf7934ec
-> [2/4] spi: spi-mtk-nor: improve device table for adding more
-> capabilities
->       commit: 5b177234e9fde7d4208e8163debc109b86e3f68d
-> [3/4] spi: spi-mtk-nor: add new soc mt8186 support
->       commit: 4e8bfe5cdf77621cb4e7b196448ceeff20d9d6a6
-> [4/4] spi: spi-mtk-nor: add axi_s clock for mt8186
->       commit: 58b0a653b8dac40bbeb01a2c8a230aa8f84a7530
-> 
-> All being well this means that it will be integrated into the linux-
-> next
-> tree (usually sometime in the next 24 hours) and sent to Linus during
-> the next merge window (or sooner if it is a bug fix), however if
-> problems are discovered then the patch may be dropped or reverted.
-> 
-> You may get further e-mails resulting from automated or manual
-> testing
-> and review of the tree, please engage with people reporting problems
-> and
-> send followup patches addressing any issues that are reported if
-> needed.
-> 
-> If any updates are required or you are submitting further changes
-> they
-> should be sent as incremental updates against current git, existing
-> patches will not be replaced.
-> 
-> Please add any relevant lists and maintainers to the CCs when
-> replying
-> to this mail.
-> 
-> Thanks,
-> Mark
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
