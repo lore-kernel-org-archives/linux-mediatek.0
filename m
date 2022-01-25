@@ -4,57 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16828C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 17:55:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70A04C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 18:09:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ImfkU4tHkRx3nI6NAqOAcUPJQR355yfVASPqiIvrYx8=; b=gdW93uBI9YYd7b
-	mazgBQu8remALWTVNSMapxsCblwzF8noQpASw9vqnAdlm0WsoC1vbpejyp7cAxCDRnUmVvhcUHuZV
-	lubm5DDMQ7rKC/i1YXMrkE8mYuJAZ4IUBBUKrQOhuouWQOH+IKIyDX5KIoUQ0Dmky+bLB94nYL32m
-	64+94hpf6ZNtQzEKoKbHvctBf7q2Mf3mQebnQ4WrwiPICX4Pxf20Dwc83ZkqIw2Do3I5nkZ7LjPeb
-	wTAIdLDNtUajFukpZWdyyX/KP8PlJnnd20i6DFB2etezL23/MmY1yL2/l8SzKjluRzUMZYTpeGeFr
-	2Z0M4ol8ysW1hOyo+GZw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=97iVnfMSVX/inGOLw9vPW0sO0mNV+AhKmUNLFH//JJE=; b=DdlqEixB94vCh5IdiT4oFJYvkT
+	LjFu9BIIuhXbCeDlFgkw2rWFrlxKtD6U0iWk7Te5yPWsFBwQNuerNPd/MoNiqmGy+yno6Azdw51S9
+	sGaqSe4dgeYo/b5jj4EuVJGissrbpbKjAxDsPm0v81jEqCoua6Hf4I753baLncUuy6280vCbZ3LKG
+	UMDRLkWz0Ko87j4rzvfpGdd3b95I293ckY0XC2tBqD/Tae14zvZp5cEHvbv+HUWE/0wfCe2FtPQ4t
+	zYmTMY4G2LjaaZ93lNxWsFlx4GAF86YRNlg1TaK4l9014vD7cEziTaj5dy0YF+Ibhom6Q1aoVK6VO
+	LvRYTR5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCQ2J-0097GS-OX; Tue, 25 Jan 2022 17:55:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nCQFi-009AlM-5W; Tue, 25 Jan 2022 18:09:10 +0000
+Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.48])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCQ2H-0097FW-5V; Tue, 25 Jan 2022 17:55:18 +0000
-X-UUID: f61e1182be10441ba72fc59213d6c21d-20220125
-X-UUID: f61e1182be10441ba72fc59213d6c21d-20220125
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2013332309; Tue, 25 Jan 2022 10:55:13 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 Jan 2022 09:55:12 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 26 Jan 2022 01:54:58 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 26 Jan 2022 01:54:58 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>, Linus Walleij
- <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Kiran
- Kumar S" <kiran.kumar1.s@intel.com>
-CC: Miles Chen <miles.chen@mediatek.com>, <linux-gpio@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] pinctrl: fix a discarded-qualifiers build error
-Date: Wed, 26 Jan 2022 01:54:55 +0800
-Message-ID: <20220125175457.23728-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1nCQFf-009AkH-Dk
+ for linux-mediatek@lists.infradead.org; Tue, 25 Jan 2022 18:09:09 +0000
+X-Virus-Scanned: Proofpoint Essentials engine
+Received: from mx1-us1.ppe-hosted.com (unknown [10.7.67.121])
+ by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id 0CE441C0063;
+ Tue, 25 Jan 2022 18:09:04 +0000 (UTC)
+Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
+ by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id
+ A83864C0096; Tue, 25 Jan 2022 18:09:01 +0000 (UTC)
+Received: from [192.168.100.195] (50-251-239-81-static.hfc.comcastbusiness.net
+ [50.251.239.81])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail3.candelatech.com (Postfix) with ESMTPSA id B057713C2B0;
+ Tue, 25 Jan 2022 10:09:00 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com B057713C2B0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
+ s=default; t=1643134141;
+ bh=otoWo9j8xyBa09sRi2gr02yQo5F4EfMnx4l/bFAHyXM=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=fZIoQfo2714iVzfBd+ymI0HlF9mYQ8k/IgndPA1vfUMHQ1w1bil5aFzsn4XuOF92g
+ Zj4kZ0LEKJVlTtoYhgDfAEQIyzEKWKQqCVLFWWd9P02EMQ8ydu/c7Dr2MNfpKiKCZI
+ aTjqhpOZu+fqmY/40S+08V4hu1BrJ76YLK6CBPxM=
+Subject: Re: [PATCH] mt76: mt7921e: fix possible probe failure after reboot
+To: Mike Lothian <mike@fireburn.co.uk>, khalid@gonehiking.org
+Cc: Deren.Wu@mediatek.com, Eddie.Chen@mediatek.com,
+ Eric-SY.Chang@mediatek.com, Eric.Liang@mediatek.com, Leon.Yen@mediatek.com,
+ Mark-YW.Chen@mediatek.com, Soul.Huang@mediatek.com,
+ Stella.Chang@mediatek.com, Tom.Chou@mediatek.com, YN.Chen@mediatek.com,
+ abhishekpandit@google.com, ch.yeh@mediatek.com, frankgor@google.com,
+ jemele@google.com, jenhao.yang@mediatek.com, jsiuda@google.com,
+ km.lin@mediatek.com, linux-mediatek@lists.infradead.org,
+ linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com, nbd@nbd.name,
+ posh.sun@mediatek.com, robin.chiu@mediatek.com, sean.wang@mediatek.com,
+ shawnku@google.com, steve.lee@mediatek.com, ted.huang@mediatek.com
+References: <d291f592-d84a-2ffe-7f75-df77890efce8@gonehiking.org>
+ <20220120095622.1938-1-mike@fireburn.co.uk>
+ <CAHbf0-HLCcgZfbKdWQ-kX+QbRGJsEHCEDnG=NZ5QF71aTeDMGg@mail.gmail.com>
+From: Ben Greear <greearb@candelatech.com>
+Organization: Candela Technologies
+Message-ID: <9d692dc9-4b24-44b0-cbe0-dfc33f3d5f03@candelatech.com>
+Date: Tue, 25 Jan 2022 10:09:00 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <CAHbf0-HLCcgZfbKdWQ-kX+QbRGJsEHCEDnG=NZ5QF71aTeDMGg@mail.gmail.com>
+Content-Language: en-US
+X-MDID: 1643134144-oz9bPHkJQZpX
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220125_095517_259257_83E5468A 
-X-CRM114-Status: GOOD (  11.75  )
+X-CRM114-CacheID: sfid-20220125_100907_555497_2944A5B5 
+X-CRM114-Status: GOOD (  18.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,38 +85,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix COMPILER=gcc ARCH=arm64 DEFCONFIG=allyesconfig build:
+On 1/25/22 6:16 AM, Mike Lothian wrote:
+> On Thu, 20 Jan 2022 at 09:56, Mike Lothian <mike@fireburn.co.uk> wrote:
+>>
+>> Hi
+>>
+>> I get a BUG and the kernel resuses to boot with this patch when mt76 is compiled into the kernel
+>>
+>> https://bugzilla.kernel.org/show_bug.cgi?id=214557
+>>
+>> I don't see this issue when mt76 is compiled as a module
+>>
+>> My .config is at https://github.com/FireBurn/KernelStuff/blob/master/dot_config_tip
+>>
+>> Let me know if you'd like any more info
+>>
+>> Cheers
+>>
+>> Mike
+> 
+> The bug I was hitting was due to a different change introduced in rc1,
+> with that reverted your patches work great
 
-log:
-drivers/pinctrl/pinctrl-thunderbay.c:815:29: error: assignment discards
-'const' qualifier from pointer target type [-Werror=discarded-qualifiers]
+What patch did you revert?
 
-Fixes: 12422af8194d ("pinctrl: Add Intel Thunder Bay pinctrl driver")
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
----
- drivers/pinctrl/pinctrl-thunderbay.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks,
+Ben
 
-diff --git a/drivers/pinctrl/pinctrl-thunderbay.c b/drivers/pinctrl/pinctrl-thunderbay.c
-index b5b47f4dd774..4e6d718c03fc 100644
---- a/drivers/pinctrl/pinctrl-thunderbay.c
-+++ b/drivers/pinctrl/pinctrl-thunderbay.c
-@@ -812,7 +812,7 @@ static int thunderbay_add_functions(struct thunderbay_pinctrl *tpc, struct funct
- 				}
- 			}
- 
--			grp = func->group_names;
-+			grp = (const char **)func->group_names;
- 			while (*grp)
- 				grp++;
- 
+> 
+> Though I am seeing lots of these messages from the bluetooth device:
+> 
+> Bluetooth: hci0: unexpected event 0xff length: 5 > 0
+> 
+> I'll bisect that next
+> 
+> Thanks
+> 
+> Mike
+> 
+
+
 -- 
-2.18.0
+Ben Greear <greearb@candelatech.com>
+Candela Technologies Inc  http://www.candelatech.com
 
 
 _______________________________________________
