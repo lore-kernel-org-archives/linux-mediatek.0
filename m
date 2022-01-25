@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77A26C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 00:56:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A315EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 01:10:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3f0SW39BcDbEuWdJoRWFN6DKTQvhq2BzdCv7B3PYNE0=; b=q0ePQoCTpnGXQO
-	LEE69ETEKFIu2EVuq2bkZDrjNpuR+442TFtSHOyRB25+UGvNErZ668xJ6GeMl/47XfEHQAkKD+CHR
-	QsIdMt5aKk9WNSnjtoclqI9oCMw3k+vzKYBCM5dBD4BItRmdbP++gOOuZCKkBtU5PzzAlAS5LzF+R
-	rZLUdNXAfID5H0hvdUYjHWHxhG8I+2cby9iU9UweZQP991gRCLFVxf58sc29kgE4I18iX6sbmYgqK
-	ZELjmIiA/HjBs9LO1hf0aYuXDkFguTkaPxggyoDqvUizxqmTPexhd360F6oorl+mt/wwvWI79UNPY
-	b8B5Zhb37i2xjYkSI+xA==;
+	List-Owner; bh=KASIAk7lweb31z7JMcQMtrMqziJu11LwdBMNbKMfGC4=; b=2ELCkIzb0uC9Ew
+	yl0ywI+agJfx2pAwTpgYVWnw863jPxNeqFx1muKrQqy6C6bBYMUa+Y0QtzcMMk6sapHnNZLQ5MGY/
+	+S2nnbHWxNKcz8b9aRKjF1ShkKQ5PHRQoa0K82Jo1qUKlBDtGn2Szzi8ReMss2drMNjc/7jXmrNUF
+	6ZIlHINL2UrRKtANwAeVP17qWc7HMdmqse9dx+P1TpTejJlZQbkjnluhx0dWgPfRfSZC+3lvk4OaB
+	t6STYKm3vj0YTlhkX7obJYXFGxlBh6QDNk5CojqCy0Z5/n5zbToPMNH1UVlq/eD0nHOez3S1EnnfH
+	fNN3sK9VVNwcF9XCmDJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCA8R-005tt3-Kl; Tue, 25 Jan 2022 00:56:35 +0000
+	id 1nCAMG-005wpH-DF; Tue, 25 Jan 2022 01:10:52 +0000
 Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCA82-005tlK-Ll; Tue, 25 Jan 2022 00:56:13 +0000
+ id 1nCAM2-005wn2-Ol; Tue, 25 Jan 2022 01:10:40 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id A36DBB81229;
- Tue, 25 Jan 2022 00:56:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5BFBAC340E4;
- Tue, 25 Jan 2022 00:56:07 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 73D92B810A8;
+ Tue, 25 Jan 2022 01:10:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F27BC340E4;
+ Tue, 25 Jan 2022 01:10:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1643072167;
- bh=HGL+ZuBOHbR5QhIj3i8dJ+BOoFj7BWUdJb5AT3Nbmgk=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=G98934XM7FvuZKrSQlupbv5mzhDZPcGmLNSpyGKYSZxmQtJnSKTtbY6YPfaj8tFAS
- 1r0R9d2QOtNocB1Z0Z7O5dRWt+X5inWR1jTVZXBqHatYd9RM4SlydSVXtTaATBCzmB
- G0+K5JxsLUw+eF0NFvBKn+tJ7OLvYgD8BPfGBWfNkJ9y+jcV9VYm8gnYEeG/5ofgId
- Uvkr6447UGI8cuDFB5WvupF+adnZweJxTX/atXz17zOY8Yi2O+9alFIiJmc6oN8YCq
- kxV6oB5nXOzw+y8B2sejSJKKq9kQCVQ137pI4h1QzcO42Fa7ZT+rdHc+F7zzALfMIY
- JJdCofjxz4JxQ==
+ s=k20201202; t=1643073036;
+ bh=w0sNNSOpkifO6hGy+QE+n1Pgw1k19GJC6mxvBdgAXY0=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=MzJYxMuT78+EAeSOgcV1O9EAYeDkr2NnhL6hJ3Dt3qYeAyx+7N10KxGPbAsRYBs76
+ Z+aL1rSCS/I9q/LixyDPSehwZiUcljKxYBngiExdaDvAVholx6ylfZVbdUNbH5MQL0
+ DEkiehIwrKUneytLd0SlMBcjyyjnuxBHSG8tmtW9Yw2Whbr5fP+OY9vDKgCpxr4USX
+ SMTrNXEEFI0a7wj65nJNEy3hkp6DPHNAvG1jxNGxyVV+v/SaPmr8RBTKfgrdurIDT8
+ b1vmE+WUXBrLrm+5JC7k2HJMZQEd8VLM/mJqw5uN3dFkkogM00ewjSVdAypDbtLzFk
+ TUl3W2rtfAg5A==
+Date: Mon, 24 Jan 2022 17:10:34 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Jisheng Zhang <jszhang@kernel.org>
+Cc: Florian Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vivien Didelot <vivien.didelot@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Doug Berger <opendmb@gmail.com>, Joakim Zhang <qiangqing.zhang@nxp.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Bryan Whitehead
+ <bryan.whitehead@microchip.com>, UNGLinuxDriver@microchip.com, Byungho An
+ <bh74.an@samsung.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com
+Subject: Re: [PATCH] net: dsa|ethernet: use bool values to pass bool param
+ of phy_init_eee
+Message-ID: <20220124171034.764bbf5e@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
+In-Reply-To: <20220123152241.1480-1-jszhang@kernel.org>
+References: <20220123152241.1480-1-jszhang@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20220124052038.6242-1-miles.chen@mediatek.com>
-References: <20220117090030.13064-1-miles.chen@mediatek.com>
- <20220124052038.6242-1-miles.chen@mediatek.com>
-Subject: Re: [PATCH] clk: mediatek: add unregister logic to
- mtk_clk_simple_probe error path
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: chun-jie.chen@mediatek.com, ikjn@chromium.org,
- linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, mturquette@baylibre.com, weiyi.lu@mediatek.com
-To: Miles Chen <miles.chen@mediatek.com>
-Date: Mon, 24 Jan 2022 16:56:05 -0800
-User-Agent: alot/0.10
-Message-Id: <20220125005607.5BFBAC340E4@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220124_165610_914147_3813E9CE 
-X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-CacheID: sfid-20220124_171038_979201_61460E48 
+X-CRM114-Status: UNSURE (   8.61  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,17 +81,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Miles Chen (2022-01-23 21:20:38)
-> Hi Stephen,
+On Sun, 23 Jan 2022 23:22:41 +0800 Jisheng Zhang wrote:
+> The 2nd param of phy_init_eee(): clk_stop_enable is a bool param, use
+> true or false instead of 1/0.
 > 
-> > Stephen pointed out that there is no unregister logic in
-> > mtk_clk_simple_probe() error path [1].
-> > Fix it by adding unregister logic to mtk_clk_simple_probe().
-> 
-> Chen-Yu's work [1] already addresses this problem. So please ignore
-> this patch.
+> Signed-off-by: Jisheng Zhang <jszhang@kernel.org>
 
-Alright. Thanks.
+Applied, thanks!
 
 _______________________________________________
 Linux-mediatek mailing list
