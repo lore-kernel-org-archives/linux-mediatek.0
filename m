@@ -4,80 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E94F3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 10:21:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B7B3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jan 2022 10:22:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iDzqKRzLCXUd8pgmaNlGn5Ov/EUe0PNMfn9RRapn2ZM=; b=BYUVCgNAEp7o8x
-	Ro2pHIiNNFR2yO2urtetdeGt55EbAeZMV7KGbSW2IBvJVn+GCxFNgeIkPkoXPEtwMJALKxgYL4k0Q
-	tHI+31VqWsddkeCI4RxH2oOIsm79+dds+9w/D28vFzlyt2TP6jcQsDKxl6d7hqzRbP/4e7v4uXW2g
-	v6M1Y3gUlRVdwoFXqodRvQiHVO2stiUl78Ux5XNn4S9D2qELE56y9KmDHX7qDqC4DqT9VfJVBYbjA
-	XgeG4HPdvDfqusZLuE7lrIn+pWivnM1SJ5hmd4pRP1IZIQJ24Dygf7QEX+VBu7qFYKgj17n7Ol/+B
-	zNGDHUc68i/EifMLUlOw==;
+	List-Owner; bh=5dtkngUERyc2WGV45Vaff2uTC1pL4a/R57XZdITILWg=; b=vEi4jMYRITDlvO
+	KimaUh9psOPpH8cXCzp08wiEudgYtBdnXNaLnRXo3Vugie9e7/jiqjj0Zh5JcMO74HdId7LYz0zd2
+	OV3kXBFH1tv+Jjr4idJCLjpVCBVxAczWO0gWjmF85+nVbeSWY0Abg+18uqHBWKQgs8/3bkihZ+F1I
+	AqOMATSqOUp4DVIf1cejl98OR0KdpQTCF8LD/4DH6zvcdrMTjTANAsmSimpVDVEGxHef0l/UcwEp4
+	q+yIAf4hE8OwzcKcmSERUyvTQsjEClmX7eehRLFLYrEDhkNFMOKOda+/V0/K2cysZ8cc7uNLP83+r
+	W9xltKWKBwxQPu3VMWLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCIxA-007Pej-2I; Tue, 25 Jan 2022 10:21:32 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1nCIxe-007PtI-RD; Tue, 25 Jan 2022 10:22:02 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCIwr-007PZX-TJ
- for linux-mediatek@lists.infradead.org; Tue, 25 Jan 2022 10:21:15 +0000
-Received: by mail-ej1-x633.google.com with SMTP id ah7so29407477ejc.4
- for <linux-mediatek@lists.infradead.org>; Tue, 25 Jan 2022 02:21:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=v30D70OPLVtNvFxgkZp8dWGqr6GnI2jw20wYyawnuRI=;
- b=AUsbUFpvHTKDZX3ZukbLUoAGTJSi9S6T4AQCEsSPtBYGHVZflIPIZw/zkNiiN1exep
- MnpRX2vHE7sy5EBCo71VGSAagsa2XC38QHM3OTYb7cWIuNiWchdFa80d1CjtvJKI1FQa
- e7pw4XA5DaDfsIUnh6r+TV8keYnrvDYFVT33+Y9Mm4AK09mrWO0pLzu71g9sHsBYmM8N
- j+AG6Wdy/7M3tOhaR5rPZ7WOTopxQ2I8iC/VpYFYyhx1hGHiacj0YnrDgdAU3wLviJHF
- eXuveFyWkQcA/ZuKsfVscVx0/TVJe0+geQjASwzW+4ZYvqI5oAFNQPMU95KKFJClVLOg
- WfoA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=v30D70OPLVtNvFxgkZp8dWGqr6GnI2jw20wYyawnuRI=;
- b=XS1Mvc7igq4OT5pZdnIsA8LAgjQ1CfaYOzQkEBjYLUGfqLTI/J5ARVkRKSRtcEtCbb
- PUcHYTR28oMufzEdXVwnRmwrebqaVCd5kPmYiagicVROKdsh1WJn85TK3eqlFkq3gtE3
- Cv4VMXSrVaXlgEvlomj60ZKOt72PwPTbm8IKLEji6qbhOaUA2bMnYhp9FnS9KMUJpsP6
- aGeQqTxtM7pMdVeG4KdYxjs2XYKjSLm/iDG2r5DH5opyaD8jkdlc7oAfffBr7RQil5n7
- 8oL6G1oC1BLzjqkBihDec55FkLr/xJtxDT+suM55KWeCLnQO7CgWGNxdG/x/9Vxb7Tiy
- QzYg==
-X-Gm-Message-State: AOAM532TxvDh3dp7d8zdt5yG25YwzV184oF6k9SBFD3KupOtLg2EBy1P
- TH/ECx7Dh39NK7Klk22AGecR+CqMES+chJgEQOgHkg==
-X-Google-Smtp-Source: ABdhPJyZM143/v5BtbEzwl4CJ0VdaPnxdnt1JP9K52HtAqo20ZBqnWWeJc055EuQVBHION5NGjljDfxy9u2pvij2MMM=
-X-Received: by 2002:a17:906:cc84:: with SMTP id
- oq4mr16696651ejb.736.1643106071794; 
- Tue, 25 Jan 2022 02:21:11 -0800 (PST)
+ id 1nCIwv-007Pb5-Ga
+ for linux-mediatek@lists.infradead.org; Tue, 25 Jan 2022 10:21:19 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 98488B81711;
+ Tue, 25 Jan 2022 10:21:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8984C340E8;
+ Tue, 25 Jan 2022 10:21:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1643106074;
+ bh=ros5s0vRsnHc7zyzxb4MpRvGfwf7Ajrp+evc8rcz8ds=;
+ h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+ b=jPs9DCrOJCKJhGEyLtBauCBxj84a3iQ1IT3sqtvcnWXzx7jc2GuxF1G9QUiuQGtsB
+ bkeDrj+2ZU/XCF5mW4JqON4C8jRDs4LXQrXvX4miVy6xBdYIx0Ch8O+ikVkjfr2bcz
+ s7eevpu/oOW2Sim8bx1sd8PhmoDVEpPPeRuRByPAn6rHkkTBtEuOORw5MPkYZx0azJ
+ Xe2O//uPwgRm8I836B7WGyRj0M0RidKvJtifAIxHUJHDUoakokjbI4cgbJv8xS/FCU
+ 1Zo3kIZzRPQloSsCqJuIAOBfGVsMVmyhcY+OQVNrrRHP2wo7ccwSdu6TfmYJ6ZxPIJ
+ LZ6KCx1/h9+Dg==
+From: Mark Brown <broonie@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ guochun.mao@mediatek.com, Rob Herring <robh+dt@kernel.org>
+Cc: srv_heupstream@mediatek.com, Zhen Zhang <zhen.zhang@mediatek.com>,
+ Bin Zhang <bin.zhang@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>,
+ project_global_chrome_upstream_group@mediatek.com,
+ Bayi Cheng <bayi.cheng@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220118142820.2729-1-guochun.mao@mediatek.com>
+References: <20220118142820.2729-1-guochun.mao@mediatek.com>
+Subject: Re: [PATCH v2 0/4] add new SoC mt8186 support for spi-mtk-nor
+Message-Id: <164310607135.75071.3179089148153080235.b4-ty@kernel.org>
+Date: Tue, 25 Jan 2022 10:21:11 +0000
 MIME-Version: 1.0
-References: <20220120070226.1492-1-biao.huang@mediatek.com>
- <20220120070226.1492-4-biao.huang@mediatek.com>
-In-Reply-To: <20220120070226.1492-4-biao.huang@mediatek.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Tue, 25 Jan 2022 11:21:01 +0100
-Message-ID: <CAMRc=MefKOmdKbm5KT=zQLORwm7oYe1oUy_XW3heqAqFqbE5NQ@mail.gmail.com>
-Subject: Re: [PATCH net-next v1 3/9] net: ethernet: mtk-star-emac: add support
- for MT8365 SoC
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: David Miller <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, 
- Fabien Parent <fparent@baylibre.com>, Jakub Kicinski <kuba@kernel.org>,
- Felix Fietkau <nbd@nbd.name>, 
- John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, 
- Mark Lee <Mark-MC.Lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- netdev <netdev@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
- Yinghua Pan <ot_yinghua.pan@mediatek.com>, srv_heupstream@mediatek.com, 
- Macpaul Lin <macpaul.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220125_022114_050417_8383B27A 
-X-CRM114-Status: GOOD (  28.78  )
+X-CRM114-CacheID: sfid-20220125_022117_755348_B166B5A5 
+X-CRM114-Status: GOOD (  16.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,166 +75,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 20, 2022 at 8:02 AM Biao Huang <biao.huang@mediatek.com> wrote:
->
-> Add Ethernet driver support for MT8365 SoC.
->
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> Signed-off-by: Yinghua Pan <ot_yinghua.pan@mediatek.com>
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> ---
->  drivers/net/ethernet/mediatek/mtk_star_emac.c | 75 ++++++++++++++++---
->  1 file changed, 64 insertions(+), 11 deletions(-)
->
-> diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-> index 7c2af775d601..403439782db9 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-> @@ -151,6 +151,7 @@ static const char *const mtk_star_clk_names[] = { "core", "reg", "trans" };
->  #define MTK_STAR_REG_MAC_CLK_CONF              0x00ac
->  #define MTK_STAR_MSK_MAC_CLK_CONF              GENMASK(7, 0)
->  #define MTK_STAR_BIT_CLK_DIV_10                        0x0a
-> +#define MTK_STAR_BIT_CLK_DIV_50                        0x32
->
->  /* Counter registers. */
->  #define MTK_STAR_REG_C_RXOKPKT                 0x0100
-> @@ -183,9 +184,11 @@ static const char *const mtk_star_clk_names[] = { "core", "reg", "trans" };
->  #define MTK_STAR_REG_C_RX_TWIST                        0x0218
->
->  /* Ethernet CFG Control */
-> -#define MTK_PERICFG_REG_NIC_CFG_CON            0x03c4
-> -#define MTK_PERICFG_MSK_NIC_CFG_CON_CFG_MII    GENMASK(3, 0)
-> -#define MTK_PERICFG_BIT_NIC_CFG_CON_RMII       BIT(0)
-> +#define MTK_PERICFG_REG_NIC_CFG0_CON           0x03c4
-> +#define MTK_PERICFG_REG_NIC_CFG1_CON           0x03c8
-> +#define MTK_PERICFG_REG_NIC_CFG_CON_V2         0x0c10
-> +#define MTK_PERICFG_REG_NIC_CFG_CON_CFG_INTF   GENMASK(3, 0)
-> +#define MTK_PERICFG_BIT_NIC_CFG_CON_RMII       1
->
->  /* Represents the actual structure of descriptors used by the MAC. We can
->   * reuse the same structure for both TX and RX - the layout is the same, only
-> @@ -234,6 +237,7 @@ struct mtk_star_ring {
->  };
->
->  struct mtk_star_compat {
-> +       int (*set_interface_mode)(struct net_device *ndev);
->         unsigned char bit_clk_div;
->  };
->
-> @@ -909,13 +913,6 @@ static void mtk_star_init_config(struct mtk_star_priv *priv)
->                            priv->compat_data->bit_clk_div);
->  }
->
-> -static void mtk_star_set_mode_rmii(struct mtk_star_priv *priv)
-> -{
-> -       regmap_update_bits(priv->pericfg, MTK_PERICFG_REG_NIC_CFG_CON,
-> -                          MTK_PERICFG_MSK_NIC_CFG_CON_CFG_MII,
-> -                          MTK_PERICFG_BIT_NIC_CFG_CON_RMII);
-> -}
-> -
->  static int mtk_star_enable(struct net_device *ndev)
->  {
->         struct mtk_star_priv *priv = netdev_priv(ndev);
-> @@ -1531,7 +1528,13 @@ static int mtk_star_probe(struct platform_device *pdev)
->                 return -ENODEV;
->         }
->
-> -       mtk_star_set_mode_rmii(priv);
-> +       if (priv->compat_data->set_interface_mode) {
-> +               ret = priv->compat_data->set_interface_mode(ndev);
-> +               if (ret) {
-> +                       dev_err(dev, "Failed to set phy interface, err = %d\n", ret);
-> +                       return -EINVAL;
-> +               }
-> +       }
+On Tue, 18 Jan 2022 22:28:16 +0800, guochun.mao@mediatek.com wrote:
+> These patches is mainly for adding mt8186 support.
+> The spi nor controller of mt8186 has some differences,
+> it needs one more clk, axi_s, for dma feature.
+> And also needs one extra dummy bit when read flash registers.
+> 
+> The version 2 patches fix some typos for bindings file,
+> correct return value of probe function in spi-mtk-nor.c file,
+> and add some comments to explain why add extra dummy bit.
+> 
+> [...]
 
-Shouldn't you still call mtk_star_set_mode_rmii(priv) if there's no callback?
+Applied to
 
->
->         ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(32));
->         if (ret) {
-> @@ -1564,10 +1567,58 @@ static int mtk_star_probe(struct platform_device *pdev)
->         return devm_register_netdev(dev, ndev);
->  }
->
-> +static int mt8516_set_interface_mode(struct net_device *ndev)
-> +{
-> +       struct mtk_star_priv *priv = netdev_priv(ndev);
-> +       struct device *dev = mtk_star_get_dev(priv);
-> +       unsigned int intf_val = 0;
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-No need to initialize.
+Thanks!
 
-> +
-> +       switch (priv->phy_intf) {
-> +       case PHY_INTERFACE_MODE_RMII:
-> +               intf_val = MTK_PERICFG_BIT_NIC_CFG_CON_RMII;
-> +               break;
-> +       default:
-> +               dev_err(dev, "This interface not supported\n");
-> +               return -EINVAL;
-> +       }
-> +
-> +       regmap_update_bits(priv->pericfg, MTK_PERICFG_REG_NIC_CFG0_CON,
-> +                          MTK_PERICFG_REG_NIC_CFG_CON_CFG_INTF,
-> +                          intf_val);
-> +       return 0;
+[1/4] dt-bindings: spi: add mt8186-nor compatible string
+      commit: ceab11a3c0d620d9ec2c032fd8014615cf7934ec
+[2/4] spi: spi-mtk-nor: improve device table for adding more capabilities
+      commit: 5b177234e9fde7d4208e8163debc109b86e3f68d
+[3/4] spi: spi-mtk-nor: add new soc mt8186 support
+      commit: 4e8bfe5cdf77621cb4e7b196448ceeff20d9d6a6
+[4/4] spi: spi-mtk-nor: add axi_s clock for mt8186
+      commit: 58b0a653b8dac40bbeb01a2c8a230aa8f84a7530
 
-You can directly return regmap_update_bits().
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-> +}
-> +
-> +static int mt8365_set_interface_mode(struct net_device *ndev)
-> +{
-> +       struct mtk_star_priv *priv = netdev_priv(ndev);
-> +       struct device *dev = mtk_star_get_dev(priv);
-> +       unsigned int intf_val = 0;
-> +
-> +       switch (priv->phy_intf) {
-> +       case PHY_INTERFACE_MODE_RMII:
-> +               intf_val = MTK_PERICFG_BIT_NIC_CFG_CON_RMII;
-> +               break;
-> +       default:
-> +               dev_err(dev, "This interface not supported\n");
-> +               return -EINVAL;
-> +       }
-> +
-> +       regmap_update_bits(priv->pericfg, MTK_PERICFG_REG_NIC_CFG_CON_V2,
-> +                          MTK_PERICFG_REG_NIC_CFG_CON_CFG_INTF,
-> +                          intf_val);
-> +       return 0;
-> +}
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-Same as above.
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-> +
->  static struct mtk_star_compat mtk_star_mt8516_compat = {
-> +       .set_interface_mode = mt8516_set_interface_mode,
->         .bit_clk_div = MTK_STAR_BIT_CLK_DIV_10,
->  };
->
-> +static struct mtk_star_compat mtk_star_mt8365_compat = {
-> +       .set_interface_mode = mt8365_set_interface_mode,
-> +       .bit_clk_div = MTK_STAR_BIT_CLK_DIV_50,
-> +};
-> +
->  static const struct of_device_id mtk_star_of_match[] = {
->         { .compatible = "mediatek,mt8516-eth",
->           .data = &mtk_star_mt8516_compat },
-> @@ -1575,6 +1626,8 @@ static const struct of_device_id mtk_star_of_match[] = {
->           .data = &mtk_star_mt8516_compat },
->         { .compatible = "mediatek,mt8175-eth",
->           .data = &mtk_star_mt8516_compat },
-> +       { .compatible = "mediatek,mt8365-eth",
-> +         .data = &mtk_star_mt8365_compat },
->         { }
->  };
->  MODULE_DEVICE_TABLE(of, mtk_star_of_match);
-> --
-> 2.25.1
->
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-Bart
+Thanks,
+Mark
 
 _______________________________________________
 Linux-mediatek mailing list
