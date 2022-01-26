@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C5B4C2BA4C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jan 2022 07:25:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF32FC2BA4C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jan 2022 07:33:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QRB7WFlL5ekTTIivTwzDUfKJ0v7TLWrq22YLMXVuuZM=; b=4volHArbjuDgC4
-	oC0owQbnSUjX6nuEZfWH9I9R/9Tckgok4PMKNn/YX4VsKFqsSQBpBt2dTfpPY8B7mHlIL+FJfHfDU
-	tGYBSYJaMtUfZbb8dh5vkpFBU9FOrQgYZqq4JpNvXvtpfQKG6Fq0xfap/wRKTh5Y4a0M8ZTJse+as
-	iAaZjnbgrdWGf54mNqI9fZ38ELSAFq2nhC4dSREGWymlJTE/WD/u7mlD5+85Vw9b9qPg+maekGEhD
-	L3JuqiopciF/GeJvR7Qx+pWwQldWf+SjVVdEXJgu2LLSnRsJBr6DGV2/WrRHdIa6qtzsTcLzhM8nH
-	FlRLZmKlGGrGE7cIy3Mw==;
+	List-Owner; bh=aKy4j8kB8SZPICcRAnA3vub2hWnAwwlrGeN5ocW9VzA=; b=SCnGWm1/hJ5YJN
+	nOO6VqU3JC1x4YB2JRb+B5ALgNoAZo6W94W3JFgap3IvZJnrvU2ZNtZIbConDlAvgV60P0Ncg2ZCX
+	wv78i8EoW+dEkOUQsoeRx49cCYEHSfS2VyoXcS19PlqbUvcQBl/1dHa5GVMPgN5Qp9xA3f81uMewp
+	9dnrHBMld5O6tnkay33mO/Yac06DUW/59zTCS3aMEKJdraY8tEL0qbF1EEcoZp/hnvop2Y6l5BZQk
+	0YPbaE8mVT4rM8UWIrV0yjt4Uhk4UNmyBMKeeYmcx6TXa3NfMXzaPs5dcDiMnWNI/hIERpWY8hV+C
+	a+PyOxIxnJ3hyJ8pJBCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCcgI-00AWAC-Di; Wed, 26 Jan 2022 07:25:26 +0000
+	id 1nCcng-00AYmH-AI; Wed, 26 Jan 2022 07:33:04 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCcax-00ATI2-Ik; Wed, 26 Jan 2022 07:19:58 +0000
-X-UUID: b4c6af4e8aff4d10b956d4653d105c55-20220126
-X-UUID: b4c6af4e8aff4d10b956d4653d105c55-20220126
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <jason-jh.lin@mediatek.com>)
+ id 1nCcnd-00AYlL-5l; Wed, 26 Jan 2022 07:33:02 +0000
+X-UUID: 1cbec7249f4c4a8887aab55bd8fd7c44-20220126
+X-UUID: 1cbec7249f4c4a8887aab55bd8fd7c44-20220126
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1092903971; Wed, 26 Jan 2022 00:19:44 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ with ESMTP id 2084511258; Wed, 26 Jan 2022 00:32:58 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 Jan 2022 23:19:43 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 26 Jan 2022 15:19:35 +0800
+ 15.0.1497.2; Tue, 25 Jan 2022 23:29:31 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 26 Jan 2022 15:29:23 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 26 Jan 2022 15:19:35 +0800
-From: jason-jh.lin <jason-jh.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v15 07/12] dt-bindings: arm: mediatek: move out common module
- from display folder
-Date: Wed, 26 Jan 2022 15:19:27 +0800
-Message-ID: <20220126071932.32615-8-jason-jh.lin@mediatek.com>
+ Frontend Transport; Wed, 26 Jan 2022 15:29:23 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <wenst@chromium.org>
+CC: <chun-jie.chen@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <matthias.bgg@gmail.com>,
+ <mturquette@baylibre.com>, <sboyd@kernel.org>
+Subject: Re: [PATCH 21/31] clk: mediatek: cpumux: Implement error handling in
+ register API
+Date: Wed, 26 Jan 2022 15:29:23 +0800
+Message-ID: <20220126072923.10391-1-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220126071932.32615-1-jason-jh.lin@mediatek.com>
-References: <20220126071932.32615-1-jason-jh.lin@mediatek.com>
+In-Reply-To: <20220122091731.283592-22-wenst@chromium.org>
+References: <20220122091731.283592-22-wenst@chromium.org>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220125_231955_707435_ECE91FAA 
-X-CRM114-Status: GOOD (  18.27  )
+X-CRM114-CacheID: sfid-20220125_233301_254387_9DC97DA3 
+X-CRM114-Status: GOOD (  19.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,480 +68,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Jitao shi <jitao.shi@mediatek.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, David Airlie <airlied@linux.ie>,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>, singo.chang@mediatek.com,
- Fabien Parent <fparent@baylibre.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, roy-cw.yeh@mediatek.com,
- linux-kernel@vger.kernel.org, CK
- Hu <ck.hu@mediatek.com>, moudy.ho@mediatek.com,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- hsinyi@chromium.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- nancy.lin@mediatek.com, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-AAL, COLOR, CCORR, MUTEX, WDMA could be used by other modules,
-such as MDP, so move their binding document into the common folder.
+> The cpumux clk type registration function does not stop or return errors
+> if any clk failed to be registered, nor does it implement an error
+> handling path. This may result in a partially working device if any
+> step failed.
+> 
+> Make the register function return proper error codes, and bail out if
+> errors occur. Proper cleanup, i.e. unregister any clks that were
+> successfully registered, is done in the new error path.
+> 
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
----
- .../display/mediatek/mediatek,ccorr.yaml      | 76 ----------------
- .../display/mediatek/mediatek,wdma.yaml       | 86 -------------------
- .../mediatek/mediatek,aal.yaml                | 13 +--
- .../bindings/soc/mediatek/mediatek,ccorr.yaml | 46 ++++++++--
- .../mediatek/mediatek,color.yaml              | 15 ++--
- .../mediatek/mediatek,mutex.yaml              | 12 +--
- .../bindings/soc/mediatek/mediatek,wdma.yaml  | 47 +++++++++-
- 7 files changed, 96 insertions(+), 199 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
- delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
- rename Documentation/devicetree/bindings/{display => soc}/mediatek/mediatek,aal.yaml (78%)
- rename Documentation/devicetree/bindings/{display => soc}/mediatek/mediatek,color.yaml (78%)
- rename Documentation/devicetree/bindings/{display => soc}/mediatek/mediatek,mutex.yaml (80%)
+Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-deleted file mode 100644
-index 6894b6999412..000000000000
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-+++ /dev/null
-@@ -1,76 +0,0 @@
--# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
--%YAML 1.2
-----
--$id: http://devicetree.org/schemas/display/mediatek/mediatek,ccorr.yaml#
--$schema: http://devicetree.org/meta-schemas/core.yaml#
--
--title: Mediatek display color correction
--
--maintainers:
--  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
--  - Philipp Zabel <p.zabel@pengutronix.de>
--
--description: |
--  Mediatek display color correction, namely CCORR, reproduces correct color
--  on panels with different color gamut.
--  CCORR device node must be siblings to the central MMSYS_CONFIG node.
--  For a description of the MMSYS_CONFIG binding, see
--  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
--  for details.
--
--properties:
--  compatible:
--    oneOf:
--      - items:
--          - const: mediatek,mt8183-disp-ccorr
--      - items:
--          - const: mediatek,mt8192-disp-ccorr
--      - items:
--          - enum:
--              - mediatek,mt8195-disp-ccorr
--          - enum:
--              - mediatek,mt8192-disp-ccorr
--
--  reg:
--    maxItems: 1
--
--  interrupts:
--    maxItems: 1
--
--  power-domains:
--    description: A phandle and PM domain specifier as defined by bindings of
--      the power controller specified by phandle. See
--      Documentation/devicetree/bindings/power/power-domain.yaml for details.
--
--  clocks:
--    items:
--      - description: CCORR Clock
--
--  mediatek,gce-client-reg:
--    description: The register of client driver can be configured by gce with
--      4 arguments defined in this property, such as phandle of gce, subsys id,
--      register offset and size. Each GCE subsys id is mapping to a client
--      defined in the header include/dt-bindings/gce/<chip>-gce.h.
--    $ref: /schemas/types.yaml#/definitions/phandle-array
--    maxItems: 1
--
--required:
--  - compatible
--  - reg
--  - interrupts
--  - power-domains
--  - clocks
--
--additionalProperties: false
--
--examples:
--  - |
--
--    ccorr0: ccorr@1400f000 {
--        compatible = "mediatek,mt8183-disp-ccorr";
--        reg = <0 0x1400f000 0 0x1000>;
--        interrupts = <GIC_SPI 232 IRQ_TYPE_LEVEL_LOW>;
--        power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
--        clocks = <&mmsys CLK_MM_DISP_CCORR0>;
--        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xf000 0x1000>;
--    };
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
-deleted file mode 100644
-index aaf5649b6413..000000000000
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
-+++ /dev/null
-@@ -1,86 +0,0 @@
--# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
--%YAML 1.2
-----
--$id: http://devicetree.org/schemas/display/mediatek/mediatek,wdma.yaml#
--$schema: http://devicetree.org/meta-schemas/core.yaml#
--
--title: Mediatek Write Direct Memory Access
--
--maintainers:
--  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
--  - Philipp Zabel <p.zabel@pengutronix.de>
--
--description: |
--  Mediatek Write Direct Memory Access(WDMA) component used to write
--  the data into DMA.
--  WDMA device node must be siblings to the central MMSYS_CONFIG node.
--  For a description of the MMSYS_CONFIG binding, see
--  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
--  for details.
--
--properties:
--  compatible:
--    oneOf:
--      - items:
--          - const: mediatek,mt8173-disp-wdma
--
--  reg:
--    maxItems: 1
--
--  interrupts:
--    maxItems: 1
--
--  power-domains:
--    description: A phandle and PM domain specifier as defined by bindings of
--      the power controller specified by phandle. See
--      Documentation/devicetree/bindings/power/power-domain.yaml for details.
--
--  clocks:
--    items:
--      - description: WDMA Clock
--
--  iommus:
--    description:
--      This property should point to the respective IOMMU block with master port as argument,
--      see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
--
--  mediatek,larb:
--    description:
--      This property should contain a phandle pointing to the local arbiter devices defined in
--      Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml.
--      It must sort according to the local arbiter index, like larb0, larb1, larb2...
--    $ref: /schemas/types.yaml#/definitions/phandle-array
--    minItems: 1
--    maxItems: 32
--
--  mediatek,gce-client-reg:
--    description: The register of client driver can be configured by gce with
--      4 arguments defined in this property, such as phandle of gce, subsys id,
--      register offset and size. Each GCE subsys id is mapping to a client
--      defined in the header include/dt-bindings/gce/<chip>-gce.h.
--    $ref: /schemas/types.yaml#/definitions/phandle-array
--    maxItems: 1
--
--required:
--  - compatible
--  - reg
--  - interrupts
--  - power-domains
--  - clocks
--  - iommus
--
--additionalProperties: false
--
--examples:
--  - |
--
--    wdma0: wdma@14011000 {
--        compatible = "mediatek,mt8173-disp-wdma";
--        reg = <0 0x14011000 0 0x1000>;
--        interrupts = <GIC_SPI 185 IRQ_TYPE_LEVEL_LOW>;
--        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
--        clocks = <&mmsys CLK_MM_DISP_WDMA0>;
--        iommus = <&iommu M4U_PORT_DISP_WDMA0>;
--        mediatek,larb = <&larb0>;
--        mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x1000 0x1000>;
--    };
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,aal.yaml
-similarity index 78%
-rename from Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-rename to Documentation/devicetree/bindings/soc/mediatek/mediatek,aal.yaml
-index 225f9dd726d2..f9f57e073b37 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,aal.yaml
-@@ -1,22 +1,17 @@
- # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
- %YAML 1.2
- ---
--$id: http://devicetree.org/schemas/display/mediatek/mediatek,aal.yaml#
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,aal.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: Mediatek display adaptive ambient light processor
-+title: Mediatek adaptive ambient light processor
- 
- maintainers:
--  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
--  - Philipp Zabel <p.zabel@pengutronix.de>
-+  - Matthias Brugger <matthias.bgg@gmail.com>
- 
- description: |
--  Mediatek display adaptive ambient light processor, namely AAL,
-+  Mediatek adaptive ambient light processor, namely AAL,
-   is responsible for backlight power saving and sunlight visibility improving.
--  AAL device node must be siblings to the central MMSYS_CONFIG node.
--  For a description of the MMSYS_CONFIG binding, see
--  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
--  for details.
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
-index cf23f4f5bd69..c4db0b42cf86 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
-@@ -10,17 +10,40 @@ maintainers:
-   - Matthias Brugger <matthias.bgg@gmail.com>
- 
- description: |
--  Mediatek color correction with 3X3 matrix.
-+  Mediatek color correction, namely CCORR, reproduces correct color
-+  on panels with 3X3 matrix of different color gamut.
- 
- properties:
-   compatible:
--    items:
--      - enum:
--          - mediatek,mt8183-mdp3-ccorr
-+    oneOf:
-+      - items:
-+          - const: mediatek,mt8183-mdp3-ccorr
-+      - items:
-+          - const: mediatek,mt8183-disp-ccorr
-+      - items:
-+          - const: mediatek,mt8192-disp-ccorr
-+      - items:
-+          - enum:
-+              - mediatek,mt8195-disp-ccorr
-+          - enum:
-+              - mediatek,mt8192-disp-ccorr
- 
-   reg:
-     maxItems: 1
- 
-+  interrupts:
-+    maxItems: 1
-+
-+  power-domains:
-+    description: A phandle and PM domain specifier as defined by bindings of
-+      the power controller specified by phandle. See
-+      Documentation/devicetree/bindings/power/power-domain.yaml for details.
-+
-+  clocks:
-+    items:
-+      - description: CCORR Clock
-+    minItems: 1
-+
-   mediatek,gce-client-reg:
-     description: The register of client driver can be configured by gce with
-       4 arguments defined in this property, such as phandle of gce, subsys id,
-@@ -29,8 +52,10 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-     maxItems: 1
- 
--  clocks:
--    minItems: 1
-+required:
-+  - compatible
-+  - reg
-+  - clocks
- 
- additionalProperties: false
- 
-@@ -45,3 +70,12 @@ examples:
-       mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xc000 0x1000>;
-       clocks = <&mmsys CLK_MM_MDP_CCORR>;
-     };
-+
-+    ccorr0: ccorr@1400f000 {
-+        compatible = "mediatek,mt8183-disp-ccorr";
-+        reg = <0 0x1400f000 0 0x1000>;
-+        interrupts = <GIC_SPI 232 IRQ_TYPE_LEVEL_LOW>;
-+        power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+        clocks = <&mmsys CLK_MM_DISP_CCORR0>;
-+        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xf000 0x1000>;
-+    };
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,color.yaml
-similarity index 78%
-rename from Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-rename to Documentation/devicetree/bindings/soc/mediatek/mediatek,color.yaml
-index bc83155b3b4c..8f8b048a8407 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,color.yaml
-@@ -1,23 +1,18 @@
- # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
- %YAML 1.2
- ---
--$id: http://devicetree.org/schemas/display/mediatek/mediatek,color.yaml#
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,color.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: Mediatek display color processor
-+title: Mediatek color processor
- 
- maintainers:
--  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
--  - Philipp Zabel <p.zabel@pengutronix.de>
-+  - Matthias Brugger <matthias.bgg@gmail.com>
- 
- description: |
--  Mediatek display color processor, namely COLOR, provides hue, luma and
--  saturation adjustments to get better picture quality and to have one panel
-+  Mediatek color processor, namely COLOR, provides hue, luma and saturation
-+  adjustments to get better picture quality and to have one panel
-   resemble the other in their output characteristics.
--  COLOR device node must be siblings to the central MMSYS_CONFIG node.
--  For a description of the MMSYS_CONFIG binding, see
--  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
--  for details.
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-similarity index 80%
-rename from Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
-rename to Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-index 6eca525eced0..6e1d1ea377c4 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-@@ -1,25 +1,19 @@
- # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
- %YAML 1.2
- ---
--$id: http://devicetree.org/schemas/display/mediatek/mediatek,mutex.yaml#
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mutex.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
- title: Mediatek mutex
- 
- maintainers:
--  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
--  - Philipp Zabel <p.zabel@pengutronix.de>
-+  - Matthias Brugger <matthias.bgg@gmail.com>
- 
- description: |
-   Mediatek mutex, namely MUTEX, is used to send the triggers signals called
--  Start Of Frame (SOF) / End Of Frame (EOF) to each sub-modules on the display
--  data path or MDP data path.
-+  Start Of Frame(SOF) / End Of Frame(EOF) to each sub-modules on the data path.
-   In some SoC, such as mt2701, MUTEX could be a hardware mutex which protects
-   the shadow register.
--  MUTEX device node must be siblings to the central MMSYS_CONFIG node.
--  For a description of the MMSYS_CONFIG binding, see
--  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
--  for details.
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
-index 4057b5232e45..7e5d1a6a79a9 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
-@@ -15,13 +15,18 @@ description: |
- 
- properties:
-   compatible:
--    items:
--      - enum:
--          - mediatek,mt8183-mdp3-wdma
-+    oneOf:
-+      - items:
-+          - const: mediatek,mt8183-mdp3-wdma
-+      - items:
-+          - const: mediatek,mt8173-disp-wdma
- 
-   reg:
-     maxItems: 1
- 
-+  interrupts:
-+    maxItems: 1
-+
-   mediatek,gce-client-reg:
-     description: The register of client driver can be configured by gce with
-       4 arguments defined in this property, such as phandle of gce, subsys id,
-@@ -31,14 +36,39 @@ properties:
-     maxItems: 1
- 
-   power-domains:
-+    description: A phandle and PM domain specifier as defined by bindings of
-+      the power controller specified by phandle. See
-+      Documentation/devicetree/bindings/power/power-domain.yaml for details.
-     maxItems: 1
- 
-   clocks:
-+    items:
-+      - description: WDMA Clock
-     minItems: 1
- 
-   iommus:
-+    description:
-+      This property should point to the respective IOMMU block with master port as argument,
-+      see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
-     maxItems: 1
- 
-+  mediatek,larb:
-+    description:
-+      This property should contain a phandle pointing to the local arbiter devices defined in
-+      Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml.
-+      It must sort according to the local arbiter index, like larb0, larb1, larb2...
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    minItems: 1
-+    maxItems: 32
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - power-domains
-+  - clocks
-+  - iommus
-+
- additionalProperties: false
- 
- examples:
-@@ -56,3 +86,14 @@ examples:
-       clocks = <&mmsys CLK_MM_MDP_WDMA0>;
-       iommus = <&iommu>;
-     };
-+
-+    wdma0: wdma@14011000 {
-+        compatible = "mediatek,mt8173-disp-wdma";
-+        reg = <0 0x14011000 0 0x1000>;
-+        interrupts = <GIC_SPI 185 IRQ_TYPE_LEVEL_LOW>;
-+        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
-+        clocks = <&mmsys CLK_MM_DISP_WDMA0>;
-+        iommus = <&iommu M4U_PORT_DISP_WDMA0>;
-+        mediatek,larb = <&larb0>;
-+        mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x1000 0x1000>;
-+    };
--- 
-2.18.0
+> ---
+>  drivers/clk/mediatek/clk-cpumux.c | 15 ++++++++++++++-
+>  1 file changed, 14 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/clk/mediatek/clk-cpumux.c b/drivers/clk/mediatek/clk-cpumux.c
+> index 658aee789f44..499c60432280 100644
+> --- a/drivers/clk/mediatek/clk-cpumux.c
+> +++ b/drivers/clk/mediatek/clk-cpumux.c
+> @@ -123,13 +123,26 @@ int mtk_clk_register_cpumuxes(struct device_node *node,
+>  		clk = mtk_clk_register_cpumux(mux, regmap);
+>  		if (IS_ERR(clk)) {
+>  			pr_err("Failed to register clk %s: %pe\n", mux->name, clk);
+> -			continue;
+> +			goto err;
+>  		}
+>  
+>  		clk_data->clks[mux->id] = clk;
+>  	}
+>  
+>  	return 0;
+> +
+> +err:
+> +	while (--i >= 0) {
+> +		const struct mtk_composite *mux = &clks[i];
+> +
+> +		if (IS_ERR_OR_NULL(clk_data->clks[mux->id]))
+> +			continue;
+> +
+> +		mtk_clk_unregister_cpumux(clk_data->clks[mux->id]);
+> +		clk_data->clks[mux->id] = ERR_PTR(-ENOENT);
+> +	}
+> +
+> +	return PTR_ERR(clk);
+>  }
+>  
+>  void mtk_clk_unregister_cpumuxes(const struct mtk_composite *clks, int num,
+> -- 
+> 2.35.0.rc0.227.g00780c9af4-goog
+
 
 
 _______________________________________________
