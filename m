@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D190FC28CF5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jan 2022 07:24:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E46EC2BA4C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jan 2022 07:24:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LaoC+iyVHuYlG0ttqlvNuCKfhNgAAxEEHJNY1SyYnrk=; b=Ak8m17vF44E8MD
-	Zt5VB+0GP5TMTznH4c9bH4al89AQ0ZUi2NIH+pbJ03y+CZP5aGCqnsvhgfG218ur7sOp/KGnaPHvt
-	619/VqZ7DfZcWc+QmG5EoV12RSFokTZ5NRdrx8yHp0IcdCXEe57Qb5gbzsNSo2nkAXxYyatXYF9s6
-	FLNlkvnEU2c5wEzqsubRSwuQl/9Rit+Xsr5LaE+k7Gb9sd+z0uh88J20LpMcxpbdAu/cY7KxuQefq
-	7ZTnF5ZAZVixaJbmw3kAPjpiwCo9guBaO5uW6lfa/IXyC4FSscsSvAF7q01mx3k24zXP7NGpGHvRZ
-	P5ncx/gVXDGVunu4hDoA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BuFK5ECwbYWhstwzd6Dn5bGnFXQYEwjC6qPN7X+7Fyk=; b=NIAG24GNnf56xDGkePTwJNxphP
+	2r5vd6FreVTK6ODXYYsQCdkLFShETMOeGzUnQb82cFA3YYLtAYO3KUfxGRSKgQKVyD3Nl26vUJ4e0
+	0rlGmv1ffPv6UgFqf6cF8tss2LDECwffC4+B6++7B3nKaiMHUobEHK9t4Cv4bIWG+zCeXVXRpKfAA
+	6k2rTsUcvisKjn6GxkE45hjRgA8mBFWaWBtOp8wuQDxTLxRGoRDWhHosnviLpr0HkFbSlGpf75TuT
+	xu7D16VlYlc5XeqlhGWNvvISBa3XCsIW6E2z4fyL3nn+iZP/4BAmwy2o7T0zyem4G72cKaWuoKNJp
+	moRdzd1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCcfa-00AVmj-EF; Wed, 26 Jan 2022 07:24:42 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nCcfd-00AVny-2E; Wed, 26 Jan 2022 07:24:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCcav-00ATHc-F3; Wed, 26 Jan 2022 07:19:56 +0000
-X-UUID: e007374bedb941088f9b1c16615f0e85-20220126
-X-UUID: e007374bedb941088f9b1c16615f0e85-20220126
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1nCcas-00ATHC-PY; Wed, 26 Jan 2022 07:19:56 +0000
+X-UUID: a3b6ee8feb964c32bd0e4ce6719b381b-20220126
+X-UUID: a3b6ee8feb964c32bd0e4ce6719b381b-20220126
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 410516474; Wed, 26 Jan 2022 00:19:49 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 Jan 2022 23:19:48 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 26 Jan 2022 15:19:35 +0800
+ with ESMTP id 542178611; Wed, 26 Jan 2022 00:19:43 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 25 Jan 2022 23:19:42 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 26 Jan 2022 15:19:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 26 Jan 2022 15:19:35 +0800
+ Frontend Transport; Wed, 26 Jan 2022 15:19:34 +0800
 From: jason-jh.lin <jason-jh.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
  Zabel" <p.zabel@pengutronix.de>, AngeloGioacchino Del Regno
  <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v15 11/12] drm/mediatek: add MERGE support for mediatek-drm
-Date: Wed, 26 Jan 2022 15:19:31 +0800
-Message-ID: <20220126071932.32615-12-jason-jh.lin@mediatek.com>
+Subject: [PATCH v15 03/12] dt-bindings: display: mediatek: disp: split each
+ block to individual yaml
+Date: Wed, 26 Jan 2022 15:19:23 +0800
+Message-ID: <20220126071932.32615-4-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220126071932.32615-1-jason-jh.lin@mediatek.com>
 References: <20220126071932.32615-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220125_231953_588196_94007F26 
-X-CRM114-Status: GOOD (  29.08  )
+X-CRM114-CacheID: sfid-20220125_231950_931560_42957517 
+X-CRM114-Status: GOOD (  17.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,423 +78,1542 @@ Cc: devicetree@vger.kernel.org, Jitao shi <jitao.shi@mediatek.com>,
  hsinyi@chromium.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>,
  nancy.lin@mediatek.com, linux-stm32@st-md-mailman.stormreply.com,
  linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7212843775608765963=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MERGE engine file:
-MERGE module is used to merge two slice-per-line inputs
-into one side-by-side output.
+--===============7212843775608765963==
+Content-Type: text/plain; charset="y"
+Content-Transfer-Encoding: 8bit
+
+1. Remove mediatek,dislpay.txt
+2. Split each display function block to individual yaml file.
 
 Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Acked-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 ---
-rebase on series [1]
+ .../display/mediatek/mediatek,aal.yaml        |  76 ++++++
+ .../display/mediatek/mediatek,ccorr.yaml      |  71 ++++++
+ .../display/mediatek/mediatek,color.yaml      |  85 +++++++
+ .../display/mediatek/mediatek,disp.txt        | 219 ------------------
+ .../display/mediatek/mediatek,dither.yaml     |  75 ++++++
+ .../display/mediatek/mediatek,gamma.yaml      |  76 ++++++
+ .../display/mediatek/mediatek,merge.yaml      |  66 ++++++
+ .../display/mediatek/mediatek,mutex.yaml      |  82 +++++++
+ .../display/mediatek/mediatek,od.yaml         |  53 +++++
+ .../display/mediatek/mediatek,ovl-2l.yaml     |  88 +++++++
+ .../display/mediatek/mediatek,ovl.yaml        |  98 ++++++++
+ .../display/mediatek/mediatek,postmask.yaml   |  69 ++++++
+ .../display/mediatek/mediatek,rdma.yaml       | 115 +++++++++
+ .../display/mediatek/mediatek,split.yaml      |  58 +++++
+ .../display/mediatek/mediatek,ufoe.yaml       |  61 +++++
+ .../display/mediatek/mediatek,wdma.yaml       |  86 +++++++
+ 16 files changed, 1159 insertions(+), 219 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+ delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
 
-[1] drm/mediatek: add support for mediatek SOC MT8192
-- https://patchwork.kernel.org/project/linux-mediatek/list/?series=529489
----
- drivers/gpu/drm/mediatek/Makefile           |   1 +
- drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   8 +
- drivers/gpu/drm/mediatek/mtk_disp_merge.c   | 246 ++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  16 ++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   4 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   1 +
- 7 files changed, 276 insertions(+), 1 deletion(-)
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
-
-diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
-index 29098d7c8307..a38e88e82d12 100644
---- a/drivers/gpu/drm/mediatek/Makefile
-+++ b/drivers/gpu/drm/mediatek/Makefile
-@@ -4,6 +4,7 @@ mediatek-drm-y := mtk_disp_aal.o \
- 		  mtk_disp_ccorr.o \
- 		  mtk_disp_color.o \
- 		  mtk_disp_gamma.o \
-+		  mtk_disp_merge.o \
- 		  mtk_disp_ovl.o \
- 		  mtk_disp_rdma.o \
- 		  mtk_drm_crtc.o \
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index 86c3068894b1..a33b13fe2b6e 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -55,6 +55,14 @@ void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state);
- void mtk_gamma_start(struct device *dev);
- void mtk_gamma_stop(struct device *dev);
- 
-+int mtk_merge_clk_enable(struct device *dev);
-+void mtk_merge_clk_disable(struct device *dev);
-+void mtk_merge_config(struct device *dev, unsigned int width,
-+		      unsigned int height, unsigned int vrefresh,
-+		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
-+void mtk_merge_start(struct device *dev);
-+void mtk_merge_stop(struct device *dev);
-+
- void mtk_ovl_bgclr_in_on(struct device *dev);
- void mtk_ovl_bgclr_in_off(struct device *dev);
- void mtk_ovl_bypass_shadow(struct device *dev);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
 new file mode 100644
-index 000000000000..45face638153
+index 000000000000..044331f5aacb
 --- /dev/null
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-@@ -0,0 +1,246 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2021 MediaTek Inc.
-+ */
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+@@ -0,0 +1,76 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,aal.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+#include <linux/clk.h>
-+#include <linux/component.h>
-+#include <linux/of_device.h>
-+#include <linux/of_irq.h>
-+#include <linux/platform_device.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
++title: Mediatek display adaptive ambient light processor
 +
-+#include "mtk_drm_ddp_comp.h"
-+#include "mtk_drm_drv.h"
-+#include "mtk_disp_drv.h"
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
 +
-+#define DISP_REG_MERGE_CTRL		0x000
-+#define MERGE_EN				1
-+#define DISP_REG_MERGE_CFG_0		0x010
-+#define DISP_REG_MERGE_CFG_4		0x020
-+#define DISP_REG_MERGE_CFG_10		0x038
-+/* no swap */
-+#define SWAP_MODE				0
-+#define FLD_SWAP_MODE				GENMASK(4, 0)
-+#define DISP_REG_MERGE_CFG_12		0x040
-+#define CFG_10_10_1PI_2PO_BUF_MODE		6
-+#define CFG_10_10_2PI_2PO_BUF_MODE		8
-+#define FLD_CFG_MERGE_MODE			GENMASK(4, 0)
-+#define DISP_REG_MERGE_CFG_24		0x070
-+#define DISP_REG_MERGE_CFG_25		0x074
-+#define DISP_REG_MERGE_CFG_36		0x0a0
-+#define ULTRA_EN				BIT(0)
-+#define PREULTRA_EN				BIT(4)
-+#define DISP_REG_MERGE_CFG_37		0x0a4
-+/* 0: Off, 1: SRAM0, 2: SRAM1, 3: SRAM0 + SRAM1 */
-+#define BUFFER_MODE				3
-+#define FLD_BUFFER_MODE				GENMASK(1, 0)
-+/*
-+ * For the ultra and preultra settings, 6us ~ 9us is experience value
-+ * and the maximum frequency of mmsys clock is 594MHz.
-+ */
-+#define DISP_REG_MERGE_CFG_40		0x0b0
-+/* 6 us, 594M pixel/sec */
-+#define ULTRA_TH_LOW				(6 * 594)
-+/* 8 us, 594M pixel/sec */
-+#define ULTRA_TH_HIGH				(8 * 594)
-+#define FLD_ULTRA_TH_LOW			GENMASK(15, 0)
-+#define FLD_ULTRA_TH_HIGH			GENMASK(31, 16)
-+#define DISP_REG_MERGE_CFG_41		0x0b4
-+/* 8 us, 594M pixel/sec */
-+#define PREULTRA_TH_LOW				(8 * 594)
-+/* 9 us, 594M pixel/sec */
-+#define PREULTRA_TH_HIGH			(9 * 594)
-+#define FLD_PREULTRA_TH_LOW			GENMASK(15, 0)
-+#define FLD_PREULTRA_TH_HIGH			GENMASK(31, 16)
++description: |
++  Mediatek display adaptive ambient light processor, namely AAL,
++  is responsible for backlight power saving and sunlight visibility improving.
++  AAL device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
 +
-+struct mtk_disp_merge {
-+	void __iomem			*regs;
-+	struct clk			*clk;
-+	struct clk			*async_clk;
-+	struct cmdq_client_reg		cmdq_reg;
-+	bool				fifo_en;
-+};
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt8173-disp-aal
++      - items:
++          - enum:
++              - mediatek,mt2712-disp-aal
++              - mediatek,mt8183-disp-aal
++              - mediatek,mt8192-disp-aal
++          - enum:
++              - mediatek,mt8173-disp-aal
 +
-+void mtk_merge_start(struct device *dev)
-+{
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++  reg:
++    maxItems: 1
 +
-+	writel(MERGE_EN, priv->regs + DISP_REG_MERGE_CTRL);
-+}
++  interrupts:
++    maxItems: 1
 +
-+void mtk_merge_stop(struct device *dev)
-+{
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
 +
-+	writel(0x0, priv->regs + DISP_REG_MERGE_CTRL);
-+}
++  clocks:
++    items:
++      - description: AAL Clock
 +
-+static void mtk_merge_fifo_setting(struct mtk_disp_merge *priv,
-+				   struct cmdq_pkt *cmdq_pkt)
-+{
-+	mtk_ddp_write(cmdq_pkt, ULTRA_EN | PREULTRA_EN,
-+		      &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_36);
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
 +
-+	mtk_ddp_write_mask(cmdq_pkt, BUFFER_MODE,
-+			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_37,
-+			   FLD_BUFFER_MODE);
++required:
++  - compatible
++  - reg
++  - interrupts
++  - power-domains
++  - clocks
 +
-+	mtk_ddp_write_mask(cmdq_pkt, ULTRA_TH_LOW | ULTRA_TH_HIGH << 16,
-+			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_40,
-+			   FLD_ULTRA_TH_LOW | FLD_ULTRA_TH_HIGH);
++additionalProperties: false
 +
-+	mtk_ddp_write_mask(cmdq_pkt, PREULTRA_TH_LOW | PREULTRA_TH_HIGH << 16,
-+			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_41,
-+			   FLD_PREULTRA_TH_LOW | FLD_PREULTRA_TH_HIGH);
-+}
++examples:
++  - |
 +
-+void mtk_merge_config(struct device *dev, unsigned int w,
-+		      unsigned int h, unsigned int vrefresh,
-+		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
-+	unsigned int mode = CFG_10_10_1PI_2PO_BUF_MODE;
++    aal@14015000 {
++        compatible = "mediatek,mt8173-disp-aal";
++        reg = <0 0x14015000 0 0x1000>;
++        interrupts = <GIC_SPI 189 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_AAL>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x5000 0x1000>;
++    };
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+new file mode 100644
+index 000000000000..ea45b40edee7
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+@@ -0,0 +1,71 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,ccorr.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	if (!h || !w) {
-+		dev_err(dev, "%s: input width(%d) or height(%d) is invalid\n", __func__, w, h);
-+		return;
-+	}
++title: Mediatek display color correction
 +
-+	if (priv->fifo_en) {
-+		mtk_merge_fifo_setting(priv, cmdq_pkt);
-+		mode = CFG_10_10_2PI_2PO_BUF_MODE;
-+	}
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
 +
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_0);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_4);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_24);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_25);
-+	mtk_ddp_write_mask(cmdq_pkt, SWAP_MODE, &priv->cmdq_reg, priv->regs,
-+			   DISP_REG_MERGE_CFG_10, FLD_SWAP_MODE);
-+	mtk_ddp_write_mask(cmdq_pkt, mode, &priv->cmdq_reg, priv->regs,
-+			   DISP_REG_MERGE_CFG_12, FLD_CFG_MERGE_MODE);
-+}
++description: |
++  Mediatek display color correction, namely CCORR, reproduces correct color
++  on panels with different color gamut.
++  CCORR device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
 +
-+int mtk_merge_clk_enable(struct device *dev)
-+{
-+	int ret = 0;
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt8183-disp-ccorr
++      - items:
++          - const: mediatek,mt8192-disp-ccorr
 +
-+	ret = clk_prepare_enable(priv->clk);
-+	if (ret) {
-+		dev_err(dev, "merge clk prepare enable failed\n");
-+		return ret;
-+	}
++  reg:
++    maxItems: 1
 +
-+	ret = clk_prepare_enable(priv->async_clk);
-+	if (ret) {
-+		/* should clean up the state of priv->clk */
-+		clk_disable_unprepare(priv->clk);
++  interrupts:
++    maxItems: 1
 +
-+		dev_err(dev, "async clk prepare enable failed\n");
-+		return ret;
-+	}
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
 +
-+	return ret;
-+}
++  clocks:
++    items:
++      - description: CCORR Clock
 +
-+void mtk_merge_clk_disable(struct device *dev)
-+{
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
 +
-+	clk_disable_unprepare(priv->async_clk);
-+	clk_disable_unprepare(priv->clk);
-+}
++required:
++  - compatible
++  - reg
++  - interrupts
++  - power-domains
++  - clocks
 +
-+static int mtk_disp_merge_bind(struct device *dev, struct device *master,
-+			       void *data)
-+{
-+	return 0;
-+}
++additionalProperties: false
 +
-+static void mtk_disp_merge_unbind(struct device *dev, struct device *master,
-+				  void *data)
-+{
-+}
++examples:
++  - |
 +
-+static const struct component_ops mtk_disp_merge_component_ops = {
-+	.bind	= mtk_disp_merge_bind,
-+	.unbind = mtk_disp_merge_unbind,
-+};
++    ccorr0: ccorr@1400f000 {
++        compatible = "mediatek,mt8183-disp-ccorr";
++        reg = <0 0x1400f000 0 0x1000>;
++        interrupts = <GIC_SPI 232 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++        clocks = <&mmsys CLK_MM_DISP_CCORR0>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xf000 0x1000>;
++    };
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+new file mode 100644
+index 000000000000..13628f346718
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+@@ -0,0 +1,85 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,color.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+static int mtk_disp_merge_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct resource *res;
-+	struct mtk_disp_merge *priv;
-+	int ret;
++title: Mediatek display color processor
 +
-+	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
 +
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	priv->regs = devm_ioremap_resource(dev, res);
-+	if (IS_ERR(priv->regs)) {
-+		dev_err(dev, "failed to ioremap merge\n");
-+		return PTR_ERR(priv->regs);
-+	}
++description: |
++  Mediatek display color processor, namely COLOR, provides hue, luma and
++  saturation adjustments to get better picture quality and to have one panel
++  resemble the other in their output characteristics.
++  COLOR device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
 +
-+	priv->clk = devm_clk_get(dev, NULL);
-+	if (IS_ERR(priv->clk)) {
-+		dev_err(dev, "failed to get merge clk\n");
-+		return PTR_ERR(priv->clk);
-+	}
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt2701-disp-color
++      - items:
++          - const: mediatek,mt8167-disp-color
++      - items:
++          - const: mediatek,mt8173-disp-color
++      - items:
++          - enum:
++              - mediatek,mt7623-disp-color
++              - mediatek,mt2712-disp-color
++          - enum:
++              - mediatek,mt2701-disp-color
++      - items:
++          - enum:
++              - mediatek,mt8183-disp-color
++              - mediatek,mt8192-disp-color
++          - enum:
++              - mediatek,mt8173-disp-color
++  reg:
++    maxItems: 1
 +
-+	priv->async_clk = devm_clk_get_optional(dev, "merge_async");
-+	if (IS_ERR(priv->async_clk)) {
-+		dev_err(dev, "failed to get merge async clock\n");
-+		return PTR_ERR(priv->async_clk);
-+	}
++  interrupts:
++    maxItems: 1
 +
-+#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-+	ret = cmdq_dev_get_client_reg(dev, &priv->cmdq_reg, 0);
-+	if (ret)
-+		dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
-+#endif
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
 +
-+	priv->fifo_en = of_property_read_bool(dev->of_node,
-+					      "mediatek,merge-fifo-en");
++  clocks:
++    items:
++      - description: COLOR Clock
 +
-+	platform_set_drvdata(pdev, priv);
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
 +
-+	ret = component_add(dev, &mtk_disp_merge_component_ops);
-+	if (ret != 0)
-+		dev_err(dev, "Failed to add component: %d\n", ret);
++required:
++  - compatible
++  - reg
++  - interrupts
++  - power-domains
++  - clocks
 +
-+	return ret;
-+}
++additionalProperties: false
 +
-+static int mtk_disp_merge_remove(struct platform_device *pdev)
-+{
-+	component_del(&pdev->dev, &mtk_disp_merge_component_ops);
++examples:
++  - |
 +
-+	return 0;
-+}
++    color0: color@14013000 {
++        compatible = "mediatek,mt8173-disp-color";
++        reg = <0 0x14013000 0 0x1000>;
++        interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_COLOR0>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x3000 0x1000>;
++    };
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+deleted file mode 100644
+index 78044c340e20..000000000000
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
++++ /dev/null
+@@ -1,219 +0,0 @@
+-Mediatek display subsystem
+-==========================
+-
+-The Mediatek display subsystem consists of various DISP function blocks in the
+-MMSYS register space. The connections between them can be configured by output
+-and input selectors in the MMSYS_CONFIG register space. Pixel clock and start
+-of frame signal are distributed to the other function blocks by a DISP_MUTEX
+-function block.
+-
+-All DISP device tree nodes must be siblings to the central MMSYS_CONFIG node.
+-For a description of the MMSYS_CONFIG binding, see
+-Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml.
+-
+-DISP function blocks
+-====================
+-
+-A display stream starts at a source function block that reads pixel data from
+-memory and ends with a sink function block that drives pixels on a display
+-interface, or writes pixels back to memory. All DISP function blocks have
+-their own register space, interrupt, and clock gate. The blocks that can
+-access memory additionally have to list the IOMMU and local arbiter they are
+-connected to.
+-
+-For a description of the display interface sink function blocks, see
+-Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt and
+-Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml.
+-
+-Required properties (all function blocks):
+-- compatible: "mediatek,<chip>-disp-<function>", one of
+-	"mediatek,<chip>-disp-ovl"   		- overlay (4 layers, blending, csc)
+-	"mediatek,<chip>-disp-ovl-2l"           - overlay (2 layers, blending, csc)
+-	"mediatek,<chip>-disp-rdma"  		- read DMA / line buffer
+-	"mediatek,<chip>-disp-wdma"  		- write DMA
+-	"mediatek,<chip>-disp-ccorr"            - color correction
+-	"mediatek,<chip>-disp-color" 		- color processor
+-	"mediatek,<chip>-disp-dither"           - dither
+-	"mediatek,<chip>-disp-aal"   		- adaptive ambient light controller
+-	"mediatek,<chip>-disp-gamma" 		- gamma correction
+-	"mediatek,<chip>-disp-merge" 		- merge streams from two RDMA sources
+-	"mediatek,<chip>-disp-postmask" 	- control round corner for display frame
+-	"mediatek,<chip>-disp-split" 		- split stream to two encoders
+-	"mediatek,<chip>-disp-ufoe"  		- data compression engine
+-	"mediatek,<chip>-dsi"        		- DSI controller, see mediatek,dsi.txt
+-	"mediatek,<chip>-dpi"        		- DPI controller, see mediatek,dpi.txt
+-	"mediatek,<chip>-disp-mutex" 		- display mutex
+-	"mediatek,<chip>-disp-od"    		- overdrive
+-  the supported chips are mt2701, mt7623, mt2712, mt8167, mt8173, mt8183 and mt8192.
+-- reg: Physical base address and length of the function block register space
+-- interrupts: The interrupt signal from the function block (required, except for
+-  merge and split function blocks).
+-- clocks: device clocks
+-  See Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
+-  For most function blocks this is just a single clock input. Only the DSI and
+-  DPI controller nodes have multiple clock inputs. These are documented in
+-  mediatek,dsi.txt and mediatek,dpi.txt, respectively.
+-  An exception is that the mt8183 mutex is always free running with no clocks property.
+-
+-Required properties (DMA function blocks):
+-- compatible: Should be one of
+-	"mediatek,<chip>-disp-ovl"
+-	"mediatek,<chip>-disp-rdma"
+-	"mediatek,<chip>-disp-wdma"
+-  the supported chips are mt2701, mt8167 and mt8173.
+-- larb: Should contain a phandle pointing to the local arbiter device as defined
+-  in Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+-- iommus: Should point to the respective IOMMU block with master port as
+-  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+-  for details.
+-
+-Optional properties (RDMA function blocks):
+-- mediatek,rdma-fifo-size: rdma fifo size may be different even in same SOC, add this
+-  property to the corresponding rdma
+-  the value is the Max value which defined in hardware data sheet.
+-  mediatek,rdma-fifo-size of mt8173-rdma0 is 8K
+-  mediatek,rdma-fifo-size of mt8183-rdma0 is 5K
+-  mediatek,rdma-fifo-size of mt8183-rdma1 is 2K
+-
+-Examples:
+-
+-mmsys: clock-controller@14000000 {
+-	compatible = "mediatek,mt8173-mmsys", "syscon";
+-	reg = <0 0x14000000 0 0x1000>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	#clock-cells = <1>;
+-};
+-
+-ovl0: ovl@1400c000 {
+-	compatible = "mediatek,mt8173-disp-ovl";
+-	reg = <0 0x1400c000 0 0x1000>;
+-	interrupts = <GIC_SPI 180 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_OVL0>;
+-	iommus = <&iommu M4U_PORT_DISP_OVL0>;
+-	mediatek,larb = <&larb0>;
+-};
+-
+-ovl1: ovl@1400d000 {
+-	compatible = "mediatek,mt8173-disp-ovl";
+-	reg = <0 0x1400d000 0 0x1000>;
+-	interrupts = <GIC_SPI 181 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_OVL1>;
+-	iommus = <&iommu M4U_PORT_DISP_OVL1>;
+-	mediatek,larb = <&larb4>;
+-};
+-
+-rdma0: rdma@1400e000 {
+-	compatible = "mediatek,mt8173-disp-rdma";
+-	reg = <0 0x1400e000 0 0x1000>;
+-	interrupts = <GIC_SPI 182 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_RDMA0>;
+-	iommus = <&iommu M4U_PORT_DISP_RDMA0>;
+-	mediatek,larb = <&larb0>;
+-	mediatek,rdma-fifosize = <8192>;
+-};
+-
+-rdma1: rdma@1400f000 {
+-	compatible = "mediatek,mt8173-disp-rdma";
+-	reg = <0 0x1400f000 0 0x1000>;
+-	interrupts = <GIC_SPI 183 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_RDMA1>;
+-	iommus = <&iommu M4U_PORT_DISP_RDMA1>;
+-	mediatek,larb = <&larb4>;
+-};
+-
+-rdma2: rdma@14010000 {
+-	compatible = "mediatek,mt8173-disp-rdma";
+-	reg = <0 0x14010000 0 0x1000>;
+-	interrupts = <GIC_SPI 184 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_RDMA2>;
+-	iommus = <&iommu M4U_PORT_DISP_RDMA2>;
+-	mediatek,larb = <&larb4>;
+-};
+-
+-wdma0: wdma@14011000 {
+-	compatible = "mediatek,mt8173-disp-wdma";
+-	reg = <0 0x14011000 0 0x1000>;
+-	interrupts = <GIC_SPI 185 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_WDMA0>;
+-	iommus = <&iommu M4U_PORT_DISP_WDMA0>;
+-	mediatek,larb = <&larb0>;
+-};
+-
+-wdma1: wdma@14012000 {
+-	compatible = "mediatek,mt8173-disp-wdma";
+-	reg = <0 0x14012000 0 0x1000>;
+-	interrupts = <GIC_SPI 186 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_WDMA1>;
+-	iommus = <&iommu M4U_PORT_DISP_WDMA1>;
+-	mediatek,larb = <&larb4>;
+-};
+-
+-color0: color@14013000 {
+-	compatible = "mediatek,mt8173-disp-color";
+-	reg = <0 0x14013000 0 0x1000>;
+-	interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_COLOR0>;
+-};
+-
+-color1: color@14014000 {
+-	compatible = "mediatek,mt8173-disp-color";
+-	reg = <0 0x14014000 0 0x1000>;
+-	interrupts = <GIC_SPI 188 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_COLOR1>;
+-};
+-
+-aal@14015000 {
+-	compatible = "mediatek,mt8173-disp-aal";
+-	reg = <0 0x14015000 0 0x1000>;
+-	interrupts = <GIC_SPI 189 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_AAL>;
+-};
+-
+-gamma@14016000 {
+-	compatible = "mediatek,mt8173-disp-gamma";
+-	reg = <0 0x14016000 0 0x1000>;
+-	interrupts = <GIC_SPI 190 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_GAMMA>;
+-};
+-
+-ufoe@1401a000 {
+-	compatible = "mediatek,mt8173-disp-ufoe";
+-	reg = <0 0x1401a000 0 0x1000>;
+-	interrupts = <GIC_SPI 191 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_UFOE>;
+-};
+-
+-dsi0: dsi@1401b000 {
+-	/* See mediatek,dsi.txt for details */
+-};
+-
+-dpi0: dpi@1401d000 {
+-	/* See mediatek,dpi.txt for details */
+-};
+-
+-mutex: mutex@14020000 {
+-	compatible = "mediatek,mt8173-disp-mutex";
+-	reg = <0 0x14020000 0 0x1000>;
+-	interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_MUTEX_32K>;
+-};
+-
+-od@14023000 {
+-	compatible = "mediatek,mt8173-disp-od";
+-	reg = <0 0x14023000 0 0x1000>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_OD>;
+-};
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+new file mode 100644
+index 000000000000..2c05e3019c75
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+@@ -0,0 +1,75 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,dither.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+static const struct of_device_id mtk_disp_merge_driver_dt_match[] = {
-+	{ .compatible = "mediatek,mt8195-disp-merge", },
-+	{},
-+};
++title: Mediatek display dither processor
 +
-+MODULE_DEVICE_TABLE(of, mtk_disp_merge_driver_dt_match);
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
 +
-+struct platform_driver mtk_disp_merge_driver = {
-+	.probe = mtk_disp_merge_probe,
-+	.remove = mtk_disp_merge_remove,
-+	.driver = {
-+		.name = "mediatek-disp-merge",
-+		.owner = THIS_MODULE,
-+		.of_match_table = mtk_disp_merge_driver_dt_match,
-+	},
-+};
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 90b289b5f9a4..26d197da41c0 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -328,6 +328,14 @@ static const struct mtk_ddp_comp_funcs ddp_gamma = {
- 	.stop = mtk_gamma_stop,
- };
- 
-+static const struct mtk_ddp_comp_funcs ddp_merge = {
-+	.clk_enable = mtk_merge_clk_enable,
-+	.clk_disable = mtk_merge_clk_disable,
-+	.start = mtk_merge_start,
-+	.stop = mtk_merge_stop,
-+	.config = mtk_merge_config,
-+};
++description: |
++  Mediatek display dither processor, namely DITHER, works by approximating
++  unavailable colors with available colors and by mixing and matching available
++  colors to mimic unavailable ones.
++  DITHER device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
 +
- static const struct mtk_ddp_comp_funcs ddp_od = {
- 	.clk_enable = mtk_ddp_clk_enable,
- 	.clk_disable = mtk_ddp_clk_disable,
-@@ -385,6 +393,7 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
- 	[MTK_DISP_DITHER] = "dither",
- 	[MTK_DISP_DSC] = "dsc",
- 	[MTK_DISP_GAMMA] = "gamma",
-+	[MTK_DISP_MERGE] = "merge",
- 	[MTK_DISP_MUTEX] = "mutex",
- 	[MTK_DISP_OD] = "od",
- 	[MTK_DISP_OVL] = "ovl",
-@@ -421,6 +430,12 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_DSI2]		= { MTK_DSI,		2, &ddp_dsi },
- 	[DDP_COMPONENT_DSI3]		= { MTK_DSI,		3, &ddp_dsi },
- 	[DDP_COMPONENT_GAMMA]		= { MTK_DISP_GAMMA,	0, &ddp_gamma },
-+	[DDP_COMPONENT_MERGE0]		= { MTK_DISP_MERGE,	0, &ddp_merge },
-+	[DDP_COMPONENT_MERGE1]		= { MTK_DISP_MERGE,	1, &ddp_merge },
-+	[DDP_COMPONENT_MERGE2]		= { MTK_DISP_MERGE,	2, &ddp_merge },
-+	[DDP_COMPONENT_MERGE3]		= { MTK_DISP_MERGE,	3, &ddp_merge },
-+	[DDP_COMPONENT_MERGE4]		= { MTK_DISP_MERGE,	4, &ddp_merge },
-+	[DDP_COMPONENT_MERGE5]		= { MTK_DISP_MERGE,	5, &ddp_merge },
- 	[DDP_COMPONENT_OD0]		= { MTK_DISP_OD,	0, &ddp_od },
- 	[DDP_COMPONENT_OD1]		= { MTK_DISP_OD,	1, &ddp_od },
- 	[DDP_COMPONENT_OVL0]		= { MTK_DISP_OVL,	0, &ddp_ovl },
-@@ -555,6 +570,7 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
- 	    type == MTK_DISP_CCORR ||
- 	    type == MTK_DISP_COLOR ||
- 	    type == MTK_DISP_GAMMA ||
-+	    type == MTK_DISP_MERGE ||
- 	    type == MTK_DISP_OVL ||
- 	    type == MTK_DISP_OVL_2L ||
- 	    type == MTK_DISP_PWM ||
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index 5e6ff12f16ad..221e2e3a3c8d 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -25,6 +25,7 @@ enum mtk_ddp_comp_type {
- 	MTK_DISP_DITHER,
- 	MTK_DISP_DSC,
- 	MTK_DISP_GAMMA,
-+	MTK_DISP_MERGE,
- 	MTK_DISP_MUTEX,
- 	MTK_DISP_OD,
- 	MTK_DISP_OVL,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 56ff8c57ef8f..2f33fe8ad46b 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -599,7 +599,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 		private->comp_node[comp_id] = of_node_get(node);
- 
- 		/*
--		 * Currently only the AAL, CCORR, COLOR, GAMMA, OVL, RDMA, DSI, and DPI
-+		 * Currently only the AAL, CCORR, COLOR, GAMMA, MERGE, OVL, RDMA, DSI, and DPI
- 		 * blocks have separate component platform drivers and initialize their own
- 		 * DDP component structure. The others are initialized here.
- 		 */
-@@ -607,6 +607,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 		    comp_type == MTK_DISP_CCORR ||
- 		    comp_type == MTK_DISP_COLOR ||
- 		    comp_type == MTK_DISP_GAMMA ||
-+		    comp_type == MTK_DISP_MERGE ||
- 		    comp_type == MTK_DISP_OVL ||
- 		    comp_type == MTK_DISP_OVL_2L ||
- 		    comp_type == MTK_DISP_RDMA ||
-@@ -708,6 +709,7 @@ static struct platform_driver * const mtk_drm_drivers[] = {
- 	&mtk_disp_ccorr_driver,
- 	&mtk_disp_color_driver,
- 	&mtk_disp_gamma_driver,
-+	&mtk_disp_merge_driver,
- 	&mtk_disp_ovl_driver,
- 	&mtk_disp_rdma_driver,
- 	&mtk_dpi_driver,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index 3e7d1e6fbe01..a58cebd01d35 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -50,6 +50,7 @@ extern struct platform_driver mtk_disp_aal_driver;
- extern struct platform_driver mtk_disp_ccorr_driver;
- extern struct platform_driver mtk_disp_color_driver;
- extern struct platform_driver mtk_disp_gamma_driver;
-+extern struct platform_driver mtk_disp_merge_driver;
- extern struct platform_driver mtk_disp_ovl_driver;
- extern struct platform_driver mtk_disp_rdma_driver;
- extern struct platform_driver mtk_dpi_driver;
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt8183-disp-dither
++      - items:
++          - enum:
++              - mediatek,mt8192-disp-dither
++          - enum:
++              - mediatek,mt8183-disp-dither
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++
++  clocks:
++    items:
++      - description: DITHER Clock
++
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - power-domains
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++
++    dither0: dither@14012000 {
++        compatible = "mediatek,mt8183-disp-dither";
++        reg = <0 0x14012000 0 0x1000>;
++        interrupts = <GIC_SPI 235 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++        clocks = <&mmsys CLK_MM_DISP_DITHER0>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x2000 0x1000>;
++    };
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+new file mode 100644
+index 000000000000..89ccb8dbadd7
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+@@ -0,0 +1,76 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,gamma.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek display gamma correction
++
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description: |
++  Mediatek display gamma correction, namely GAMMA, provides a nonlinear
++  operation used to adjust luminance in display system.
++  GAMMA device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt8173-disp-gamma
++      - items:
++          - const: mediatek,mt8183-disp-gamma
++      - items:
++          - enum:
++              - mediatek,mt8192-disp-gamma
++          - enum:
++              - mediatek,mt8183-disp-gamma
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++
++  clocks:
++    items:
++      - description: GAMMA Clock
++
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - power-domains
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++
++    gamma@14016000 {
++        compatible = "mediatek,mt8173-disp-gamma";
++        reg = <0 0x14016000 0 0x1000>;
++        interrupts = <GIC_SPI 190 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_GAMMA>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x6000 0x1000>;
++    };
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
+new file mode 100644
+index 000000000000..7aa6974d509d
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
+@@ -0,0 +1,66 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,merge.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek display merge
++
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description: |
++  Mediatek display merge, namely MERGE, is used to merge two slice-per-line
++  inputs into one side-by-side output.
++  MERGE device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt8173-disp-merge
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++
++  clocks:
++    items:
++      - description: MERGE Clock
++
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - power-domains
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++
++    merge@14017000 {
++        compatible = "mediatek,mt8173-disp-merge";
++        reg = <0 0x14017000 0 0x1000>;
++        power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_MERGE>;
++    };
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
+new file mode 100644
+index 000000000000..90f11e12a55e
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
+@@ -0,0 +1,82 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,mutex.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek display mutex
++
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description: |
++  Mediatek mutex, namely MUTEX, is used to send the triggers signals called
++  Start Of Frame (SOF) / End Of Frame (EOF) to each sub-modules on the display
++  data path or MDP data path.
++  In some SoC, such as mt2701, MUTEX could be a hardware mutex which protects
++  the shadow register.
++  MUTEX device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt2701-disp-mutex
++      - items:
++          - const: mediatek,mt2712-disp-mutex
++      - items:
++          - const: mediatek,mt8167-disp-mutex
++      - items:
++          - const: mediatek,mt8173-disp-mutex
++      - items:
++          - const: mediatek,mt8183-disp-mutex
++      - items:
++          - const: mediatek,mt8192-disp-mutex
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++
++  clocks:
++    items:
++      - description: MUTEX Clock
++
++  mediatek,gce-events:
++    description:
++      The event id which is mapping to the specific hardware event signal
++      to gce. The event id is defined in the gce header
++      include/dt-bindings/gce/<chip>-gce.h of each chips.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - power-domains
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++
++    mutex: mutex@14020000 {
++        compatible = "mediatek,mt8173-disp-mutex";
++        reg = <0 0x14020000 0 0x1000>;
++        interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_MUTEX_32K>;
++        mediatek,gce-events = <CMDQ_EVENT_MUTEX0_STREAM_EOF>,
++                              <CMDQ_EVENT_MUTEX1_STREAM_EOF>;
++    };
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
+new file mode 100644
+index 000000000000..7519db315217
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
+@@ -0,0 +1,53 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,od.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek display overdirve
++
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description: |
++  Mediatek display overdrive, namely OD, increases the transition values
++  of pixels between consecutive frames to make LCD rotate faster.
++  OD device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt2712-disp-od
++      - items:
++          - const: mediatek,mt8173-disp-od
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: OD Clock
++
++required:
++  - compatible
++  - reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++
++    od@14023000 {
++        compatible = "mediatek,mt8173-disp-od";
++        reg = <0 0x14023000 0 0x1000>;
++        clocks = <&mmsys CLK_MM_DISP_OD>;
++    };
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
+new file mode 100644
+index 000000000000..611a2dbdefa4
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
+@@ -0,0 +1,88 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,ovl-2l.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek display overlay 2 layer
++
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description: |
++  Mediatek display overlay 2 layer, namely OVL-2L, provides 2 more layer
++  for OVL.
++  OVL-2L device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt8183-disp-ovl-2l
++      - items:
++          - const: mediatek,mt8192-disp-ovl-2l
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++
++  clocks:
++    items:
++      - description: OVL-2L Clock
++
++  iommus:
++    description:
++      This property should point to the respective IOMMU block with master port as argument,
++      see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
++
++  mediatek,larb:
++    description:
++      This property should contain a phandle pointing to the local arbiter devices defined in
++      Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml.
++      It must sort according to the local arbiter index, like larb0, larb1, larb2...
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    minItems: 1
++    maxItems: 32
++
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - power-domains
++  - clocks
++  - iommus
++
++additionalProperties: false
++
++examples:
++  - |
++
++    ovl_2l0: ovl@14009000 {
++        compatible = "mediatek,mt8183-disp-ovl-2l";
++        reg = <0 0x14009000 0 0x1000>;
++        interrupts = <GIC_SPI 226 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++        clocks = <&mmsys CLK_MM_DISP_OVL0_2L>;
++        iommus = <&iommu M4U_PORT_DISP_2L_OVL0_LARB0>;
++        mediatek,larb = <&larb0>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x9000 0x1000>;
++    };
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+new file mode 100644
+index 000000000000..8e4a62cb9c81
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+@@ -0,0 +1,98 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,ovl.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek display overlay
++
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description: |
++  Mediatek display overlay, namely OVL, can do alpha blending from
++  the memory.
++  OVL device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt2701-disp-ovl
++      - items:
++          - const: mediatek,mt8173-disp-ovl
++      - items:
++          - const: mediatek,mt8183-disp-ovl
++      - items:
++          - const: mediatek,mt8192-disp-ovl
++      - items:
++          - enum:
++              - mediatek,mt7623-disp-ovl
++              - mediatek,mt2712-disp-ovl
++          - enum:
++              - mediatek,mt2701-disp-ovl
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++
++  clocks:
++    items:
++      - description: OVL Clock
++
++  iommus:
++    description:
++      This property should point to the respective IOMMU block with master port as argument,
++      see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
++
++  mediatek,larb:
++    description:
++      This property should contain a phandle pointing to the local arbiter devices defined in
++      Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml.
++      It must sort according to the local arbiter index, like larb0, larb1, larb2...
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    minItems: 1
++    maxItems: 32
++
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - power-domains
++  - clocks
++  - iommu
++
++additionalProperties: false
++
++examples:
++  - |
++
++    ovl0: ovl@1400c000 {
++        compatible = "mediatek,mt8173-disp-ovl";
++        reg = <0 0x1400c000 0 0x1000>;
++        interrupts = <GIC_SPI 180 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_OVL0>;
++        iommus = <&iommu M4U_PORT_DISP_OVL0>;
++        mediatek,larb = <&larb0>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xc000 0x1000>;
++    };
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
+new file mode 100644
+index 000000000000..6ac1da2e8871
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
+@@ -0,0 +1,69 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,postmask.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek display postmask
++
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description: |
++  Mediatek display postmask, namely POSTMASK, provides round corner pattern
++  generation.
++  POSTMASK device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt8192-disp-postmask
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++
++  clocks:
++    items:
++      - description: POSTMASK Clock
++
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - power-domains
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++
++    postmask0: postmask@1400d000 {
++        compatible = "mediatek,mt8192-disp-postmask";
++        reg = <0 0x1400d000 0 0x1000>;
++        interrupts = <GIC_SPI 262 IRQ_TYPE_LEVEL_HIGH 0>;
++        power-domains = <&scpsys MT8192_POWER_DOMAIN_DISP>;
++        clocks = <&mmsys CLK_MM_DISP_POSTMASK0>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xd000 0x1000>;
++    };
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+new file mode 100644
+index 000000000000..a3c5f4c9fbcd
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+@@ -0,0 +1,115 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,rdma.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Read Direct Memory Access
++
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description: |
++  Mediatek Read Direct Memory Access(RDMA) component used to read the
++  data into DMA. It provides real time data to the back-end panel
++  driver, such as DSI, DPI and DP_INTF.
++  It contains one line buffer to store the sufficient pixel data.
++  RDMA device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt2701-disp-rdma
++      - items:
++          - const: mediatek,mt8173-disp-rdma
++      - items:
++          - const: mediatek,mt8183-disp-rdma
++      - items:
++          - enum:
++              - mediatek,mt7623-disp-rdma
++              - mediatek,mt2712-disp-rdma
++          - enum:
++              - mediatek,mt2701-disp-rdma
++      - items:
++          - enum:
++              - mediatek,mt8192-disp-rdma
++          - enum:
++              - mediatek,mt8183-disp-rdma
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++
++  clocks:
++    items:
++      - description: RDMA Clock
++
++  iommus:
++    description:
++      This property should point to the respective IOMMU block with master port as argument,
++      see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
++
++  mediatek,larb:
++    description:
++      This property should contain a phandle pointing to the local arbiter devices defined in
++      Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml.
++      It must sort according to the local arbiter index, like larb0, larb1, larb2...
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    minItems: 1
++    maxItems: 32
++
++  mediatek,rdma-fifo-size:
++    description:
++      rdma fifo size may be different even in same SOC, add this property to the
++      corresponding rdma.
++      The value below is the Max value which defined in hardware data sheet
++      mediatek,rdma-fifo-size of mt8173-rdma0 is 8K
++      mediatek,rdma-fifo-size of mt8183-rdma0 is 5K
++      mediatek,rdma-fifo-size of mt8183-rdma1 is 2K
++    $ref: /schemas/types.yaml#/definitions/uint32
++    enum: [8192, 5120, 2048]
++
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - power-domains
++  - clocks
++  - iommus
++
++additionalProperties: false
++
++examples:
++  - |
++
++    rdma0: rdma@1400e000 {
++        compatible = "mediatek,mt8173-disp-rdma";
++        reg = <0 0x1400e000 0 0x1000>;
++        interrupts = <GIC_SPI 182 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_RDMA0>;
++        iommus = <&iommu M4U_PORT_DISP_RDMA0>;
++        mediatek,larb = <&larb0>;
++        mediatek,rdma-fifosize = <8192>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xe000 0x1000>;
++    };
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
+new file mode 100644
+index 000000000000..4f08e89c1067
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
+@@ -0,0 +1,58 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,split.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek display split
++
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description: |
++  Mediatek display split, namely SPLIT, is used to split stream to two
++  encoders.
++  SPLIT device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt8173-disp-split
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++
++  clocks:
++    items:
++      - description: SPLIT Clock
++
++required:
++  - compatible
++  - reg
++  - power-domains
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++
++    split0: split@14018000 {
++        compatible = "mediatek,mt8173-disp-split";
++        reg = <0 0x14018000 0 0x1000>;
++        power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_SPLIT0>;
++    };
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
+new file mode 100644
+index 000000000000..6e8748529e73
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
+@@ -0,0 +1,61 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,ufoe.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek display UFOe
++
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description: |
++  Mediatek display UFOe stands for Unified Frame Optimization engine.
++  UFOe can cut the data rate for DSI port which may lead to reduce power
++  consumption.
++  UFOe device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt8173-disp-ufoe
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++
++  clocks:
++    items:
++      - description: UFOe Clock
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - power-domains
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++
++    ufoe@1401a000 {
++        compatible = "mediatek,mt8173-disp-ufoe";
++        reg = <0 0x1401a000 0 0x1000>;
++        interrupts = <GIC_SPI 191 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_UFOE>;
++    };
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
+new file mode 100644
+index 000000000000..aaf5649b6413
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
+@@ -0,0 +1,86 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,wdma.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Write Direct Memory Access
++
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description: |
++  Mediatek Write Direct Memory Access(WDMA) component used to write
++  the data into DMA.
++  WDMA device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt8173-disp-wdma
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++
++  clocks:
++    items:
++      - description: WDMA Clock
++
++  iommus:
++    description:
++      This property should point to the respective IOMMU block with master port as argument,
++      see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
++
++  mediatek,larb:
++    description:
++      This property should contain a phandle pointing to the local arbiter devices defined in
++      Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml.
++      It must sort according to the local arbiter index, like larb0, larb1, larb2...
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    minItems: 1
++    maxItems: 32
++
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - power-domains
++  - clocks
++  - iommus
++
++additionalProperties: false
++
++examples:
++  - |
++
++    wdma0: wdma@14011000 {
++        compatible = "mediatek,mt8173-disp-wdma";
++        reg = <0 0x14011000 0 0x1000>;
++        interrupts = <GIC_SPI 185 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_WDMA0>;
++        iommus = <&iommu M4U_PORT_DISP_WDMA0>;
++        mediatek,larb = <&larb0>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x1000 0x1000>;
++    };
 -- 
 2.18.0
 
+
+
+--===============7212843775608765963==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============7212843775608765963==--
