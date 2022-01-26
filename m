@@ -4,59 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E913AC2BA4C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jan 2022 07:11:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83609C2BA4C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jan 2022 07:14:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z/6SOW08NarIoWnpQEsaLg7aSqYvYG7cwkEEz5Tggi8=; b=NzF1135gMr3A4v
-	TiJIc4j1Hf2qTkJZs/KHe1PXg24tEJJ9FM6rr7fokeJ7lQNZq1Sy24FSlNYJq0tDdC6CmyuxaoIaN
-	HJp0ARZRiigNSo/Zzf9W4MEk1xSOXIrFEjPljfa7VgTRNqTeeDWx7IC/v4YxQwnHGVET2A/Eh4KGi
-	6W5XNBBZ2JBZ1Mpvz1d0kCa6Cwf+hDKYGP14vXxx1B+ziiyXeSIM76B4HG7q8rTFOW3OGZct8oIq1
-	E06z8qpYUJbOjq+xJ4Td2cEB5If9qSyT90NWQpDbSeYY3youC0dsL/ielkkS4V20+Y8+9ciJyT640
-	xP+S1m3L5zI5J5oOxTCw==;
+	List-Owner; bh=2i3NVrap5oAFP41xvLJaVQHrGzcuYz/fsA1XId1lv9I=; b=K7sVj1QwDwLj5e
+	qShm6Ep9mNYvybBbPx3hEIcoX9HTY8do8gBzGtkKxNnO5i35CkEZyLGwUXveKYPFQ+D/4NFd6fB2N
+	zekrurXWLiN63qUoYto1fzoU6gUiqn26nfAMtowKloxqnttouXomRUSRuQD3ZorDugKEAXnpVtfa7
+	6pbZoC84JQjlim6VpZMnbewt39++m3GZIvgqiFf7rdU5UmySqQWlXZFhi85hGwLBwE8pp+PkfRGLO
+	EXq9b/+8cShCoa5o/vgbnBpGgCQlu1gZYuOCH6C7teUgnUqu1uES6TAw5ZvFK7vRuYJIGQ/6XWGnA
+	abfoZ8pC57SbChUPdziQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCcSr-00ARBD-Py; Wed, 26 Jan 2022 07:11:33 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nCcVC-00ARup-L0; Wed, 26 Jan 2022 07:13:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCcSo-00AR9g-U9; Wed, 26 Jan 2022 07:11:32 +0000
-X-UUID: c3dd2745fda44bf7abbddb43a39020df-20220126
-X-UUID: c3dd2745fda44bf7abbddb43a39020df-20220126
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ id 1nCcV9-00ARtX-U1; Wed, 26 Jan 2022 07:13:57 +0000
+X-UUID: 9e939d29a36e4d4fad877e19f338b55f-20220126
+X-UUID: 9e939d29a36e4d4fad877e19f338b55f-20220126
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 185514830; Wed, 26 Jan 2022 00:11:28 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 Jan 2022 23:06:10 -0800
+ with ESMTP id 1563888255; Wed, 26 Jan 2022 00:13:52 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 25 Jan 2022 23:13:51 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 26 Jan 2022 15:06:09 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 26 Jan 2022 15:13:49 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 26 Jan 2022 15:06:09 +0800
+ Frontend Transport; Wed, 26 Jan 2022 15:13:49 +0800
 From: Miles Chen <miles.chen@mediatek.com>
 To: <wenst@chromium.org>
 CC: <chun-jie.chen@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
  <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>, <matthias.bgg@gmail.com>,
  <mturquette@baylibre.com>, <sboyd@kernel.org>
-Subject: Re: [PATCH 18/31] clk: mediatek: Implement
- mtk_clk_unregister_composites() API
-Date: Wed, 26 Jan 2022 15:06:09 +0800
-Message-ID: <20220126070609.28749-1-miles.chen@mediatek.com>
+Subject: Re: [PATCH 19/31] clk: mediatek: Add mtk_clk_simple_remove()
+Date: Wed, 26 Jan 2022 15:13:49 +0800
+Message-ID: <20220126071349.1118-1-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220122091731.283592-19-wenst@chromium.org>
-References: <20220122091731.283592-19-wenst@chromium.org>
+In-Reply-To: <20220122091731.283592-20-wenst@chromium.org>
+References: <20220122091731.283592-20-wenst@chromium.org>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220125_231131_011168_BA00FB1D 
-X-CRM114-Status: GOOD (  21.25  )
+X-CRM114-CacheID: sfid-20220125_231356_008617_93783A41 
+X-CRM114-Status: GOOD (  19.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,103 +72,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> mtk_clk_register_composites(), as the name suggests, is used to register
-> a given list of composite clks. However it is lacking a counterpart
-> unregister API.
+> In commit c58cd0e40ffa ("clk: mediatek: Add mtk_clk_simple_probe() to
+> simplify clock providers"), a generic probe function was added to
+> simplify clk drivers that only needed to support clk gates. However due
+> to the lack of unregister APIs, a corresponding remove function was not
+> added.
 > 
-> Implement said unregister API so that the various clock platform drivers
-> can utilize it to do proper unregistration, cleanup and removal.
-> 
-> In the header file, the register function's declaration is also
-> reformatted to fit code style guidelines.
+> Now that the unregister APIs have been implemented, add aforementioned
+> remove function to make it complete.
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+
+Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 > ---
->  drivers/clk/mediatek/clk-mtk.c | 41 ++++++++++++++++++++++++++++++++++
->  drivers/clk/mediatek/clk-mtk.h |  2 ++
->  2 files changed, 43 insertions(+)
+>  drivers/clk/mediatek/clk-mtk.c | 15 +++++++++++++++
+>  drivers/clk/mediatek/clk-mtk.h |  1 +
+>  2 files changed, 16 insertions(+)
 > 
 > diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-> index 3a6dfe445e63..2150ed8678e0 100644
+> index 2150ed8678e0..cd76e1d80242 100644
 > --- a/drivers/clk/mediatek/clk-mtk.c
 > +++ b/drivers/clk/mediatek/clk-mtk.c
-> @@ -233,6 +233,27 @@ struct clk *mtk_clk_register_composite(const struct mtk_composite *mc,
->  	return ERR_PTR(ret);
+> @@ -369,6 +369,8 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
+>  	if (r)
+>  		goto free_data;
+>  
+> +	platform_set_drvdata(pdev, clk_data);
+> +
+>  	return r;
+>  
+>  free_data:
+> @@ -376,4 +378,17 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
+>  	return r;
 >  }
 >  
-> +static void mtk_clk_unregister_composite(struct clk *clk)
+> +int mtk_clk_simple_remove(struct platform_device *pdev)
 > +{
-> +	struct clk_hw *hw = __clk_get_hw(clk);
-> +	struct clk_composite *composite = to_clk_composite(hw);
-> +	struct clk_mux *mux = NULL;
-> +	struct clk_gate *gate = NULL;
-> +	struct clk_divider *div = NULL;
-
-Like mtk_clk_unregister_pll(clk), let's check !hw for consistency
-of clk unregister functions.
-
-thanks,
-Miles
+> +	const struct mtk_clk_desc *mcd = of_device_get_match_data(&pdev->dev);
+> +	struct clk_onecell_data *clk_data = platform_get_drvdata(pdev);
+> +	struct device_node *node = pdev->dev.of_node;
 > +
-> +	if (composite->mux_hw)
-> +		mux = to_clk_mux(composite->mux_hw);
-> +	if (composite->gate_hw)
-> +		gate = to_clk_gate(composite->gate_hw);
-> +	if (composite->rate_hw)
-> +		div = to_clk_divider(composite->rate_hw);
+> +	of_clk_del_provider(node);
+> +	mtk_clk_unregister_gates(mcd->clks, mcd->num_clks, clk_data);
+> +	mtk_free_clk_data(clk_data);
 > +
-> +	clk_unregister_composite(clk);
-> +	kfree(div);
-> +	kfree(gate);
-> +	kfree(mux);
+> +	return 0;
 > +}
 > +
->  void mtk_clk_register_composites(const struct mtk_composite *mcs,
->  		int num, void __iomem *base, spinlock_t *lock,
->  		struct clk_onecell_data *clk_data)
-> @@ -259,6 +280,26 @@ void mtk_clk_register_composites(const struct mtk_composite *mcs,
->  }
->  EXPORT_SYMBOL_GPL(mtk_clk_register_composites);
->  
-> +void mtk_clk_unregister_composites(const struct mtk_composite *mcs, int num,
-> +				   struct clk_onecell_data *clk_data)
-> +{
-> +	int i;
-> +
-> +	if (!clk_data)
-> +		return;
-> +
-> +	for (i = num; i > 0; i--) {
-> +		const struct mtk_composite *mc = &mcs[i - 1];
-> +
-> +		if (IS_ERR_OR_NULL(clk_data->clks[mc->id]))
-> +			continue;
-> +
-> +		mtk_clk_unregister_composite(clk_data->clks[mc->id]);
-> +		clk_data->clks[mc->id] = ERR_PTR(-ENOENT);
-> +	}
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_clk_unregister_composites);
-> +
->  void mtk_clk_register_dividers(const struct mtk_clk_divider *mcds,
->  			int num, void __iomem *base, spinlock_t *lock,
->  				struct clk_onecell_data *clk_data)
+>  MODULE_LICENSE("GPL");
 > diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-> index e3ae22fb0334..3c3a934f53cd 100644
+> index 3c3a934f53cd..4fa658f5d934 100644
 > --- a/drivers/clk/mediatek/clk-mtk.h
 > +++ b/drivers/clk/mediatek/clk-mtk.h
-> @@ -153,6 +153,8 @@ struct clk *mtk_clk_register_composite(const struct mtk_composite *mc,
->  void mtk_clk_register_composites(const struct mtk_composite *mcs,
->  		int num, void __iomem *base, spinlock_t *lock,
->  		struct clk_onecell_data *clk_data);
-> +void mtk_clk_unregister_composites(const struct mtk_composite *mcs, int num,
-> +				   struct clk_onecell_data *clk_data);
+> @@ -202,5 +202,6 @@ struct mtk_clk_desc {
+>  };
 >  
->  struct mtk_clk_divider {
->  	int id;
+>  int mtk_clk_simple_probe(struct platform_device *pdev);
+> +int mtk_clk_simple_remove(struct platform_device *pdev);
+>  
+>  #endif /* __DRV_CLK_MTK_H */
 > -- 
 > 2.35.0.rc0.227.g00780c9af4-goog
-
+> 
 
 
 _______________________________________________
