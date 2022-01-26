@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7327FC2BA4C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jan 2022 07:21:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA057C28CF5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jan 2022 07:21:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8vHDyTQGGYsNsDl5kF0E/+1QYjSKv3rEvF/GrEt3MLM=; b=F1rYOSYB61E7Vw
-	jOR+LIGEAmIYAXUoK1TzslTy3p5MsJLT71ib90AIo+zRCq0HB/zyuCt0I/wLCN3oSo3VL3MwLpU0t
-	i7To8PaZQwgvBgudnp1z2bo94gvtjF0A/+Fsy5MA+D1otTvuu71w/RopR5e6kPKryK+TA6r0ha6BR
-	5LI3hk9hdyy9SE72G2MXNuRnUXIxzrhBbXt3TKelx2PjjWWa8bcbT7i/z+s8BEWWPqY0CpkISGEZ7
-	d6PjJTbpGkvo+QB3XNmTxrPNjVYzsX8JvYgx3skAkXbh5iNL8o78AtKgyWdeevGbRqq5QHJO1tw5Q
-	EAHzWksdkXFu+/Gfqlyw==;
+	List-Owner; bh=/BSo02leHw7aKbMGU9N0pwatt8BgljgkHUPt1s7vXMM=; b=AOyqSrdC1MKXgb
+	BZZ3FVVJKRb/Im9no9LxMR3axPIerGKyY3qcRytHYiZwCfEzvHVYErz0LdvDF4DyJY0Km1Rawk54d
+	lY8uyK6NxztfOOIIAPmL3+8DrdoYXCHTDvaLFp4hsjvsWhf8anIfvRT1yuTKv3bNHbpF44S3A+2fa
+	zWIsOUj5DOna0V9QIEu9BXCYO63sviLcSEQpGSmWOrZU+9mnAfkyEca6H0lSfU1DeAwSOGM7ilD0e
+	oj4pM/Vu31YHzISsFK7J2/F4z3JbBTszPlY504Gu+LWjNoV7NuqFWJzcSip+vVQPZ0uCBeNpMubjQ
+	t8XtNbHqS2qe2wTAn8NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCccN-00ATvy-TH; Wed, 26 Jan 2022 07:21:23 +0000
+	id 1nCcch-00AU9L-Nb; Wed, 26 Jan 2022 07:21:43 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCcaj-00ATEO-UL; Wed, 26 Jan 2022 07:19:44 +0000
-X-UUID: 1164d13c55fe45daa7b23d899c32de9d-20220126
-X-UUID: 1164d13c55fe45daa7b23d899c32de9d-20220126
+ id 1nCcam-00ATE7-C8; Wed, 26 Jan 2022 07:19:46 +0000
+X-UUID: 738e5d91ec7649bcbcbdbc9908ce5474-20220126
+X-UUID: 738e5d91ec7649bcbcbdbc9908ce5474-20220126
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1271985398; Wed, 26 Jan 2022 00:19:37 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 380191780; Wed, 26 Jan 2022 00:19:37 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 25 Jan 2022 23:19:36 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 26 Jan 2022 15:19:35 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 26 Jan 2022 15:19:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 26 Jan 2022 15:19:35 +0800
+ Frontend Transport; Wed, 26 Jan 2022 15:19:34 +0800
 From: jason-jh.lin <jason-jh.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
  Zabel" <p.zabel@pengutronix.de>, AngeloGioacchino Del Regno
  <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v15 10/12] drm/mediatek: add DSC support for mediatek-drm
-Date: Wed, 26 Jan 2022 15:19:30 +0800
-Message-ID: <20220126071932.32615-11-jason-jh.lin@mediatek.com>
+Subject: [PATCH v15 05/12] dt-bindings: display: mediatek: merge: add
+ additional prop for mt8195
+Date: Wed, 26 Jan 2022 15:19:25 +0800
+Message-ID: <20220126071932.32615-6-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220126071932.32615-1-jason-jh.lin@mediatek.com>
 References: <20220126071932.32615-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220125_231942_056283_C7629DC1 
-X-CRM114-Status: GOOD (  15.26  )
+X-CRM114-CacheID: sfid-20220125_231944_473182_F64F0557 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,123 +83,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-DSC is designed for real-time systems with real-time compression,
-transmission, decompression and display.
-The DSC standard is a specification of the algorithms used for
-compressing and decompressing image display streams, including
-the specification of the syntax and semantics of the compressed
-video bit stream.
+add MERGE additional properties description for mt8195:
+1. async clock
+2. fifo setting enable
+3. reset controller
 
 Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
 Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 ---
-rebase on series [1]
+ .../display/mediatek/mediatek,merge.yaml      | 38 +++++++++++++++++++
+ 1 file changed, 38 insertions(+)
 
-[1] drm/mediatek: add support for mediatek SOC MT8192
-- https://patchwork.kernel.org/project/linux-mediatek/list/?series=529489
----
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 47 +++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  1 +
- 2 files changed, 48 insertions(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index b4b682bc1991..90b289b5f9a4 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -40,6 +40,12 @@
- #define DITHER_LSB_ERR_SHIFT_G(x)		(((x) & 0x7) << 12)
- #define DITHER_ADD_LSHIFT_G(x)			(((x) & 0x7) << 4)
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
+index 7aa6974d509d..fae106cf1753 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
+@@ -36,8 +36,28 @@ properties:
+       Documentation/devicetree/bindings/power/power-domain.yaml for details.
  
-+#define DISP_REG_DSC_CON			0x0000
-+#define DSC_EN					BIT(0)
-+#define DSC_DUAL_INOUT				BIT(2)
-+#define DSC_BYPASS				BIT(4)
-+#define DSC_UFOE_SEL				BIT(16)
+   clocks:
++    maxItems: 2
+     items:
+       - description: MERGE Clock
++      - description: MERGE Async Clock
++          Controlling the synchronous process between MERGE and other display
++          function blocks cross clock domain.
 +
- #define DISP_REG_OD_EN				0x0000
- #define DISP_REG_OD_CFG				0x0020
- #define OD_RELAYMODE				BIT(0)
-@@ -181,6 +187,36 @@ static void mtk_dither_set(struct device *dev, unsigned int bpc,
- 			      DISP_DITHERING, cmdq_pkt);
- }
++  clock-names:
++    maxItems: 2
++    items:
++      - const: merge
++      - const: merge_async
++
++  mediatek,merge-fifo-en:
++    description:
++      The setting of merge fifo is mainly provided for the display latency
++      buffer to ensure that the back-end panel display data will not be
++      underrun, a little more data is needed in the fifo.
++      According to the merge fifo settings, when the water level is detected
++      to be insufficient, it will trigger RDMA sending ultra and preulra
++      command to SMI to speed up the data rate.
++    type: boolean
  
-+static void mtk_dsc_config(struct device *dev, unsigned int w,
-+			   unsigned int h, unsigned int vrefresh,
-+			   unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	/* dsc bypass mode */
-+	mtk_ddp_write_mask(cmdq_pkt, DSC_BYPASS, &priv->cmdq_reg, priv->regs,
-+			   DISP_REG_DSC_CON, DSC_BYPASS);
-+	mtk_ddp_write_mask(cmdq_pkt, DSC_UFOE_SEL, &priv->cmdq_reg, priv->regs,
-+			   DISP_REG_DSC_CON, DSC_UFOE_SEL);
-+	mtk_ddp_write_mask(cmdq_pkt, DSC_DUAL_INOUT, &priv->cmdq_reg, priv->regs,
-+			   DISP_REG_DSC_CON, DSC_DUAL_INOUT);
-+}
-+
-+static void mtk_dsc_start(struct device *dev)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	/* write with mask to reserve the value set in mtk_dsc_config */
-+	mtk_ddp_write_mask(NULL, DSC_EN, &priv->cmdq_reg, priv->regs, DISP_REG_DSC_CON, DSC_EN);
-+}
-+
-+static void mtk_dsc_stop(struct device *dev)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	writel_relaxed(0x0, priv->regs + DISP_REG_DSC_CON);
-+}
-+
- static void mtk_od_config(struct device *dev, unsigned int w,
- 			  unsigned int h, unsigned int vrefresh,
- 			  unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-@@ -270,6 +306,14 @@ static const struct mtk_ddp_comp_funcs ddp_dpi = {
- 	.stop = mtk_dpi_stop,
- };
+   mediatek,gce-client-reg:
+     description: The register of client driver can be configured by gce with
+@@ -47,6 +67,11 @@ properties:
+     $ref: /schemas/types.yaml#/definitions/phandle-array
+     maxItems: 1
  
-+static const struct mtk_ddp_comp_funcs ddp_dsc = {
-+	.clk_enable = mtk_ddp_clk_enable,
-+	.clk_disable = mtk_ddp_clk_disable,
-+	.config = mtk_dsc_config,
-+	.start = mtk_dsc_start,
-+	.stop = mtk_dsc_stop,
-+};
++  resets:
++    description: reset controller
++      See Documentation/devicetree/bindings/reset/reset.txt for details.
++    maxItems: 1
 +
- static const struct mtk_ddp_comp_funcs ddp_dsi = {
- 	.start = mtk_dsi_ddp_start,
- 	.stop = mtk_dsi_ddp_stop,
-@@ -339,6 +383,7 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
- 	[MTK_DISP_CCORR] = "ccorr",
- 	[MTK_DISP_COLOR] = "color",
- 	[MTK_DISP_DITHER] = "dither",
-+	[MTK_DISP_DSC] = "dsc",
- 	[MTK_DISP_GAMMA] = "gamma",
- 	[MTK_DISP_MUTEX] = "mutex",
- 	[MTK_DISP_OD] = "od",
-@@ -369,6 +414,8 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_DITHER]		= { MTK_DISP_DITHER,	0, &ddp_dither },
- 	[DDP_COMPONENT_DPI0]		= { MTK_DPI,		0, &ddp_dpi },
- 	[DDP_COMPONENT_DPI1]		= { MTK_DPI,		1, &ddp_dpi },
-+	[DDP_COMPONENT_DSC0]		= { MTK_DISP_DSC,	0, &ddp_dsc },
-+	[DDP_COMPONENT_DSC1]		= { MTK_DISP_DSC,	1, &ddp_dsc },
- 	[DDP_COMPONENT_DSI0]		= { MTK_DSI,		0, &ddp_dsi },
- 	[DDP_COMPONENT_DSI1]		= { MTK_DSI,		1, &ddp_dsi },
- 	[DDP_COMPONENT_DSI2]		= { MTK_DSI,		2, &ddp_dsi },
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index 4c6a98662305..5e6ff12f16ad 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -23,6 +23,7 @@ enum mtk_ddp_comp_type {
- 	MTK_DISP_CCORR,
- 	MTK_DISP_COLOR,
- 	MTK_DISP_DITHER,
-+	MTK_DISP_DSC,
- 	MTK_DISP_GAMMA,
- 	MTK_DISP_MUTEX,
- 	MTK_DISP_OD,
+ required:
+   - compatible
+   - reg
+@@ -64,3 +89,16 @@ examples:
+         power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+         clocks = <&mmsys CLK_MM_DISP_MERGE>;
+     };
++
++    merge5: disp_vpp_merge5@1c110000 {
++        compatible = "mediatek,mt8195-disp-merge";
++        reg = <0 0x1c110000 0 0x1000>;
++        interrupts = <GIC_SPI 507 IRQ_TYPE_LEVEL_HIGH 0>;
++        clocks = <&vdosys1 CLK_VDO1_VPP_MERGE4>,
++                 <&vdosys1 CLK_VDO1_MERGE4_DL_ASYNC>;
++        clock-names = "merge","merge_async";
++        power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
++        mediatek,gce-client-reg = <&gce1 SUBSYS_1c11XXXX 0x0000 0x1000>;
++        mediatek,merge-fifo-en = <1>;
++        resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE4_DL_ASYNC>;
++    };
 -- 
 2.18.0
 
