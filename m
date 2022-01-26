@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B64B4C2BA4C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jan 2022 07:20:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4896C2BA4C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jan 2022 07:21:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2MwHaSa7RilG5zgOoc39EylFvw5Aq1ijWeL/efXgVTY=; b=lMU6uVWkVA0BQs
-	7zdFCiios9ES6Hi2kGd+E0xi4hxwhqiLw1kyQYxqg+NYMvQfkPEfweJDudNvo1RGauDu6s9bHbZBV
-	YrlcYdnhblsYwyckJkAOTWNaW4s4HrJNVmIuYLdLWPEVoEPhVdH2fwGQoPh7c45uTg9hPGq6XF2E/
-	9HQNKTjnGLG6aHbAxFZRSlGNzNZxqdV6unT2t1GTpoPhLtP+LIR93+UbeYbwVmOXy/tQLeMbrnZka
-	1OR9iw6tfLVxDkeiUwK9ADele11mdDKbNRAKjmPSbe7yEpnC2SnwOkee6T5S0eB1nr4bsTf/OvrgB
-	ZSB3FnP+gSk3dVD+5lJg==;
+	List-Owner; bh=ULcw6PM9WO8mKLBNMIkSoavXA9cahWKCGJxPsD4UnQA=; b=r+ji4CMonki0Ub
+	xL0zvpc0o2NSYuJ0UMumsIPxet9qd9ZzaAWZCzHePRmMh459wdkXSSc2b6j44yWfqMiQ2BD5DlboR
+	aoYkrudTwN8ZzMb/MqXRPk/nnzXCDWBvxoVkfzj0O8h7+Q3Yv9LYXhzpIStPFSzs3vTUzMshdnX/q
+	yHt9EffKniAS2TRrWwh+a/cmsJNOU7guKU/TsDyiX4GJ5RzyHEU7uD4yqamTV2MZlm3q9xuJ9dLsD
+	RZH3JSD4PuyqMTeHMBFlChPMSzmdWsn8xL4eXRfLSnTxTkfmm49G1LoNSMWEVnbZBGiJEK4oNF8uM
+	OudplvMEAqRwOkYpyuGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCcbW-00ATWC-HV; Wed, 26 Jan 2022 07:20:30 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nCccJ-00ATu5-Cm; Wed, 26 Jan 2022 07:21:19 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCcaj-00ATEF-Nl; Wed, 26 Jan 2022 07:19:43 +0000
-X-UUID: 7003fb912c684c5486c6d82ad21ada38-20220126
-X-UUID: 7003fb912c684c5486c6d82ad21ada38-20220126
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1nCcaj-00ATE7-U4; Wed, 26 Jan 2022 07:19:44 +0000
+X-UUID: 227a44da4e4f45b08b7fb8fcc5f46345-20220126
+X-UUID: 227a44da4e4f45b08b7fb8fcc5f46345-20220126
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1757694771; Wed, 26 Jan 2022 00:19:38 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 437940656; Wed, 26 Jan 2022 00:19:37 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 Jan 2022 23:19:37 -0800
+ 15.0.1497.2; Tue, 25 Jan 2022 23:19:35 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 26 Jan 2022 15:19:35 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 26 Jan 2022 15:19:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 26 Jan 2022 15:19:35 +0800
+ Frontend Transport; Wed, 26 Jan 2022 15:19:34 +0800
 From: jason-jh.lin <jason-jh.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
  Zabel" <p.zabel@pengutronix.de>, AngeloGioacchino Del Regno
  <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v15 12/12] drm/mediatek: add mediatek-drm of vdosys0 support
- for mt8195
-Date: Wed, 26 Jan 2022 15:19:32 +0800
-Message-ID: <20220126071932.32615-13-jason-jh.lin@mediatek.com>
+Subject: [PATCH v15 01/12] dt-bindings: arm: mediatek: mmsys: add power and
+ gce properties
+Date: Wed, 26 Jan 2022 15:19:21 +0800
+Message-ID: <20220126071932.32615-2-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220126071932.32615-1-jason-jh.lin@mediatek.com>
 References: <20220126071932.32615-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220125_231941_835629_BB5EEDDE 
-X-CRM114-Status: GOOD (  12.34  )
+X-CRM114-CacheID: sfid-20220125_231942_031132_9589EBBB 
+X-CRM114-Status: GOOD (  14.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,125 +84,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add driver data of mt8195 vdosys0 to mediatek-drm and the sub driver.
+Power:
+1. Add description for power-domains property.
+
+GCE:
+1. Add description for mboxes property.
+2. Add description for mediatek,gce-client-reg property.
 
 Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 ---
-rebase on series [1]
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml | 30 ++++++++++++++++++-
+ 1 file changed, 29 insertions(+), 1 deletion(-)
 
-[1] drm/mediatek: add support for mediatek SOC MT8192
-- https://patchwork.kernel.org/project/linux-mediatek/list/?series=529489
----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c |  6 +++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c   | 28 ++++++++++++++++++++++++
- 2 files changed, 34 insertions(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index d41a3970b944..77c952bdc88c 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -357,6 +357,10 @@ static const struct mtk_disp_rdma_data mt8192_rdma_driver_data = {
- 	.fifo_size = 5 * SZ_1K,
- };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 763c62323a74..474bcf9c250d 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -40,6 +40,30 @@ properties:
+   reg:
+     maxItems: 1
  
-+static const struct mtk_disp_rdma_data mt8195_rdma_driver_data = {
-+	.fifo_size = 1920,
-+};
++  power-domains:
++    description:
++      A phandle and PM domain specifier as defined by bindings
++      of the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
 +
- static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt2701-disp-rdma",
- 	  .data = &mt2701_rdma_driver_data},
-@@ -366,6 +370,8 @@ static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
- 	  .data = &mt8183_rdma_driver_data},
- 	{ .compatible = "mediatek,mt8192-disp-rdma",
- 	  .data = &mt8192_rdma_driver_data},
-+	{ .compatible = "mediatek,mt8195-disp-rdma",
-+	  .data = &mt8195_rdma_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_rdma_driver_dt_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 2f33fe8ad46b..274a5bb10851 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -177,6 +177,19 @@ static const enum mtk_ddp_comp_id mt8192_mtk_ddp_ext[] = {
- 	DDP_COMPONENT_DPI0,
- };
++  mboxes:
++    description:
++      Using mailbox to communicate with GCE, it should have this
++      property and list of phandle, mailbox specifiers. See
++      Documentation/devicetree/bindings/mailbox/mtk-gce.txt for details.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++
++  mediatek,gce-client-reg:
++    description:
++      The register of client driver can be configured by gce with 4 arguments
++      defined in this property, such as phandle of gce, subsys id,
++      register offset and size.
++      Each subsys id is mapping to a base address of display function blocks
++      register which is defined in the gce header
++      include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
+   "#clock-cells":
+     const: 1
  
-+static const enum mtk_ddp_comp_id mt8195_mtk_ddp_main[] = {
-+	DDP_COMPONENT_OVL0,
-+	DDP_COMPONENT_RDMA0,
-+	DDP_COMPONENT_COLOR0,
-+	DDP_COMPONENT_CCORR,
-+	DDP_COMPONENT_AAL0,
-+	DDP_COMPONENT_GAMMA,
-+	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_DSC0,
-+	DDP_COMPONENT_MERGE0,
-+	DDP_COMPONENT_DP_INTF0,
-+};
-+
- static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
- 	.main_path = mt2701_mtk_ddp_main,
- 	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
-@@ -228,6 +241,11 @@ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
- 	.ext_len = ARRAY_SIZE(mt8192_mtk_ddp_ext),
- };
- 
-+static const struct mtk_mmsys_driver_data mt8195_vdosys0_driver_data = {
-+	.main_path = mt8195_mtk_ddp_main,
-+	.main_len = ARRAY_SIZE(mt8195_mtk_ddp_main),
-+};
-+
- static int mtk_drm_kms_init(struct drm_device *drm)
- {
- 	struct mtk_drm_private *private = drm->dev_private;
-@@ -447,12 +465,16 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_DITHER },
- 	{ .compatible = "mediatek,mt8183-disp-dither",
- 	  .data = (void *)MTK_DISP_DITHER },
-+	{ .compatible = "mediatek,mt8195-disp-dsc",
-+	  .data = (void *)MTK_DISP_DSC },
- 	{ .compatible = "mediatek,mt8167-disp-gamma",
- 	  .data = (void *)MTK_DISP_GAMMA, },
- 	{ .compatible = "mediatek,mt8173-disp-gamma",
- 	  .data = (void *)MTK_DISP_GAMMA, },
- 	{ .compatible = "mediatek,mt8183-disp-gamma",
- 	  .data = (void *)MTK_DISP_GAMMA, },
-+	{ .compatible = "mediatek,mt8195-disp-merge",
-+	  .data = (void *)MTK_DISP_MERGE },
- 	{ .compatible = "mediatek,mt2701-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt2712-disp-mutex",
-@@ -465,6 +487,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8192-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
-+	{ .compatible = "mediatek,mt8195-disp-mutex",
-+	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8173-disp-od",
- 	  .data = (void *)MTK_DISP_OD },
- 	{ .compatible = "mediatek,mt2701-disp-ovl",
-@@ -499,6 +523,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8192-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
-+	{ .compatible = "mediatek,mt8195-disp-rdma",
-+	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8173-disp-ufoe",
- 	  .data = (void *)MTK_DISP_UFOE },
- 	{ .compatible = "mediatek,mt8173-disp-wdma",
-@@ -535,6 +561,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
- 	  .data = &mt8183_mmsys_driver_data},
- 	{ .compatible = "mediatek,mt8192-mmsys",
- 	  .data = &mt8192_mmsys_driver_data},
-+	{.compatible = "mediatek,mt8195-vdosys0",
-+	  .data = &mt8195_vdosys0_driver_data},
- 	{ }
- };
- MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
+@@ -57,7 +81,11 @@ examples:
+   - |
+     mmsys: syscon@14000000 {
+         compatible = "mediatek,mt8173-mmsys", "syscon";
+-        reg = <0x14000000 0x1000>;
++        reg = <0 0x14000000 0 0x1000>;
++        power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+         #clock-cells = <1>;
+         #reset-cells = <1>;
++        mboxes = <&gce 0 CMDQ_THR_PRIO_HIGHEST>,
++                 <&gce 1 CMDQ_THR_PRIO_HIGHEST>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
+     };
 -- 
 2.18.0
 
