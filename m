@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B11EEC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 02:58:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45591C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 03:06:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XPAigQqGdIBpXv94jopRUIR0CXoHUAe1H8Yxgh8Qi/w=; b=KaHLH06WiCi87+
-	rJnjiIjDXuk91qU5yQQdvTM7WRxDoS1LTCHm6UukiDngPbr7O0lbZzYaFR9qDyRnXD8S1oUU0UEOK
-	znJV9jRVAbAOrKNmgO1h0RJd5QffRyJx/QXcCTKMkN1CdysU57ZtNHOullJe1uiIC9viPhKL4UfBY
-	zj1IcXY8c2N27FwR3hhKuA6PfhzG8Znw6m4Nr/YNcD2gvpT+ZZAwtYH9v9qmSZ/QA/hkWnVH+AXJN
-	A3KqASofg5LrIc81sw3Xt3wtVC5IZzDYBF8p4s/qAX3+NLJwpnCzOtyZk4HmZaKlthAkLJOO+L8kT
-	IWtNn5A2bhh3wEEuEcHg==;
+	List-Owner; bh=UdGA0+Y//Orai3xNE3yqaJbtlz5TjmJjpp0Iw3ttf20=; b=QsSfPyMoqdj2+C
+	0PHcrFnzZaQzIbZuX9j8qhSUYrkuhC6zC3e/hzQNKp5aT3f40+Vz2bKHnnzV0kYiXU12Xz80Yj/2B
+	JE0O4GHdCFa3HQp4Swm8JwYK/hhFo5y1A992Tz0IvkMOETyRzkucygtfQYV+9i7rU7pg72LbCCbyE
+	/BtFIFzfML6G7OcLNXNLrcrLrMKFsG/LdGGQmfO51wsB3WN9z3hWOXBLSh02oBgn/TkOXZXIu5ipj
+	tffs3eXtFMWpslzcgQz4vSqtZc16veGb/vggj0SkcbAmG9+LgF4vw9gWjGTTq19IZZ5Bg9YQ+bPHH
+	ZqAAIdt8v0cCJl9WRmoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCuzf-00EAk2-0i; Thu, 27 Jan 2022 02:58:39 +0000
+	id 1nCv76-00ECpS-0K; Thu, 27 Jan 2022 03:06:20 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCuxi-00E9ZB-9j; Thu, 27 Jan 2022 02:56:39 +0000
-X-UUID: 0fede4314fef43bb810471085b3955c4-20220126
-X-UUID: 0fede4314fef43bb810471085b3955c4-20220126
+ id 1nCv6t-00ECnR-4J; Thu, 27 Jan 2022 03:06:08 +0000
+X-UUID: aafffbfff3d04c8fb0f16c2ad895732b-20220126
+X-UUID: aafffbfff3d04c8fb0f16c2ad895732b-20220126
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1349331658; Wed, 26 Jan 2022 19:56:33 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 26 Jan 2022 18:55:52 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 27 Jan 2022 10:55:50 +0800
+ with ESMTP id 606482121; Wed, 26 Jan 2022 20:06:04 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 26 Jan 2022 18:56:02 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 27 Jan 2022 10:56:00 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 27 Jan 2022 10:55:49 +0800
+ Transport; Thu, 27 Jan 2022 10:55:58 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
@@ -57,19 +57,17 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v1,
- 1/8] dt-bindings: media: mtk-vcodec: Adds decoder dt-bindings for lat
- soc
-Date: Thu, 27 Jan 2022 10:55:37 +0800
-Message-ID: <20220127025544.10854-2-yunfei.dong@mediatek.com>
+Subject: [PATCH v1, 7/8] media: uapi: Init VP9 stateless decode params
+Date: Thu, 27 Jan 2022 10:55:43 +0800
+Message-ID: <20220127025544.10854-8-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220127025544.10854-1-yunfei.dong@mediatek.com>
 References: <20220127025544.10854-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220126_185638_367539_ADBFAA6B 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20220126_190607_187949_F8262C08 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,73 +84,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adds decoder dt-bindings for compatible "mediatek,mtk-vcodec-lat-soc".
+Init some of VP9 frame decode params to default value.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../media/mediatek,vcodec-subdev-decoder.yaml | 49 +++++++++++++++++++
- 1 file changed, 49 insertions(+)
+ drivers/media/v4l2-core/v4l2-ctrls-core.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-index 6415c9f29130..a3c892338ac0 100644
---- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-@@ -189,6 +189,55 @@ patternProperties:
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+index 54abe5245dcc..b25c77b8a445 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+@@ -112,6 +112,7 @@ static void std_init_compound(const struct v4l2_ctrl *ctrl, u32 idx,
+ 	struct v4l2_ctrl_mpeg2_picture *p_mpeg2_picture;
+ 	struct v4l2_ctrl_mpeg2_quantisation *p_mpeg2_quant;
+ 	struct v4l2_ctrl_vp8_frame *p_vp8_frame;
++	struct v4l2_ctrl_vp9_frame *p_vp9_frame;
+ 	struct v4l2_ctrl_fwht_params *p_fwht_params;
+ 	void *p = ptr.p + idx * ctrl->elem_size;
  
-     additionalProperties: false
- 
-+  '^vcodec-lat-soc@[0-9a-f]+$':
-+    type: object
-+
-+    properties:
-+      compatible:
-+        const: mediatek,mtk-vcodec-lat-soc
-+
-+      reg:
-+        maxItems: 1
-+
-+      iommus:
-+        minItems: 1
-+        maxItems: 32
-+        description: |
-+          List of the hardware port in respective IOMMU block for current Socs.
-+          Refer to bindings/iommu/mediatek,iommu.yaml.
-+
-+      clocks:
-+        maxItems: 5
-+
-+      clock-names:
-+        items:
-+          - const: sel
-+          - const: soc-vdec
-+          - const: soc-lat
-+          - const: vdec
-+          - const: top
-+
-+      assigned-clocks:
-+        maxItems: 1
-+
-+      assigned-clock-parents:
-+        maxItems: 1
-+
-+      power-domains:
-+        maxItems: 1
-+
-+    required:
-+      - compatible
-+      - reg
-+      - iommus
-+      - clocks
-+      - clock-names
-+      - assigned-clocks
-+      - assigned-clock-parents
-+      - power-domains
-+
-+    additionalProperties: false
-+
- required:
-   - compatible
-   - reg
+@@ -152,6 +153,13 @@ static void std_init_compound(const struct v4l2_ctrl *ctrl, u32 idx,
+ 		p_vp8_frame = p;
+ 		p_vp8_frame->num_dct_parts = 1;
+ 		break;
++	case V4L2_CTRL_TYPE_VP9_FRAME:
++		p_vp9_frame = p;
++		p_vp9_frame->profile = 0;
++		p_vp9_frame->bit_depth = 8;
++		p_vp9_frame->flags |= V4L2_VP9_FRAME_FLAG_X_SUBSAMPLING |
++			V4L2_VP9_FRAME_FLAG_Y_SUBSAMPLING;
++		break;
+ 	case V4L2_CTRL_TYPE_FWHT_PARAMS:
+ 		p_fwht_params = p;
+ 		p_fwht_params->version = V4L2_FWHT_VERSION;
 -- 
 2.25.1
 
