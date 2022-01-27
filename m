@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B278C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 02:57:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BB22C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 02:58:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3qCEjRhlfG5NF5j5wNy0H0Ng3L7nXt0jSCgTnGk4OCI=; b=5EW/T8fAA053Ph
-	AWOJhnm0yNvFI7wtUgBOhfYcw3tVFUToRpB0KBeLAW9OdyYn1UaRi4ClaVSphB9cpmAoo2F6jLEFk
-	rmI3y4yybcxCm1Mpl8nSvorqQII3WOJuLZHG841nvg0JeA9ugK14yP09JljBMF1Sxk8Ui8wOW6nAg
-	2umZJPGr4nEIr+2oe9Qi2o948gZmbKYdbynSG51F5BYtcVw/mQgc/6BPEn8+lTTgZ288Cj1IHQByQ
-	LpZvze+49rYxZ2Xz4hfxGjfFPTcAUN88uT1UUSQ2MG48jo/nnp+d02UYP58okmZYbs3Kcz29oFmnn
-	G5uu8F103M0rwyySV4OA==;
+	List-Owner; bh=bU7zdg+yJjfpcwW6vntwd8H7MUIrhQ2uzB7A+I681GY=; b=jMsLfOj+JVYMZD
+	9oNP6F+BD1pTfCXKp+N8lPjtVVjAS/sWXwyQqNwOuqKRsQrECIigkTGZG2H0jQUbFvlEhkvOxmy92
+	/a+aQ2cuVpPTf5l1vbUyiEyrGwpcUMkUdNevgiEvtT3EPlXB1TZnHS2XQChPGWpJgGRm5fUwG+6X2
+	5GHe84KgI3WfiD7eQq0IWB8AOo6STHzdFSKlz7NtRpSlzDKT6yVRp/Go+g68yP6G4RNmKdo6hOWo0
+	Mi/4Fis2GDpM+qFNYCQgdKwoqMT6UtidXKtKAOH6TDgQWEmMfhWTOn+vkZyMyI/4teKUZjtXUvwcc
+	IViVWdYx2c6xReVQcFkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCuyu-00EAFi-5V; Thu, 27 Jan 2022 02:57:52 +0000
+	id 1nCuzH-00EAV5-Fs; Thu, 27 Jan 2022 02:58:15 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCuxg-00E9ZB-Jz; Thu, 27 Jan 2022 02:56:38 +0000
-X-UUID: f54da4b8b5d24fae87447009e450c8ac-20220126
-X-UUID: f54da4b8b5d24fae87447009e450c8ac-20220126
+ id 1nCuxh-00E9YU-0C; Thu, 27 Jan 2022 02:56:38 +0000
+X-UUID: 5139247af26c4cf79495c0e7adef315d-20220126
+X-UUID: 5139247af26c4cf79495c0e7adef315d-20220126
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1322380147; Wed, 26 Jan 2022 19:56:33 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 1197585641; Wed, 26 Jan 2022 19:56:33 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 26 Jan 2022 18:56:00 -0800
+ 15.0.1497.2; Wed, 26 Jan 2022 18:56:03 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 27 Jan 2022 10:55:58 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 27 Jan 2022 10:56:02 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 27 Jan 2022 10:55:57 +0800
+ Transport; Thu, 27 Jan 2022 10:56:00 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
@@ -59,17 +58,17 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
 Subject: [PATCH v1,
- 6/8] media: mtk-vcodec: prevent kernel crash when scp ipi timeout
-Date: Thu, 27 Jan 2022 10:55:42 +0800
-Message-ID: <20220127025544.10854-7-yunfei.dong@mediatek.com>
+ 8/8] media: mtk-vcodec: Add to support H264 inner racing mode
+Date: Thu, 27 Jan 2022 10:55:44 +0800
+Message-ID: <20220127025544.10854-9-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220127025544.10854-1-yunfei.dong@mediatek.com>
 References: <20220127025544.10854-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220126_185636_684890_EB2602D7 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20220126_185637_094644_6C14945C 
+X-CRM114-Status: GOOD (  20.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,73 +85,177 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Tinghan Shen <tinghan.shen@mediatek.com>
+In order to reduce decoder latency, enable H264 inner racing mode.
 
-When SCP timeout during playing video, kernel crashes with following
-message. It's caused by accessing NULL pointer in vpu_dec_ipi_handler.
-This patch doesn't solve the root cause of NULL pointer, but merely
-prevent kernel crashed when encounter the NULL pointer.
+Send lat trans buffer information to core when trigger lat to work,
+need not to wait until lat decode done.
 
-After applied this patch, kernel keeps alive, only the video player turns
-to green screen.
-
-[67242.065474] pc : vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec]
-[67242.065485] [MTK_V4L2] level=0 fops_vcodec_open(),334:
-18000000.vcodec_dec decoder [135]
-[67242.065523] lr : scp_ipi_handler+0x11c/0x244 [mtk_scp]
-[67242.065540] sp : ffffffbb4207fb10
-[67242.065557] x29: ffffffbb4207fb30 x28: ffffffd00a1d5000
-[67242.065592] x27: 1ffffffa0143aa24 x26: 0000000000000000
-[67242.065625] x25: dfffffd000000000 x24: ffffffd0168bfdb0
-[67242.065659] x23: 1ffffff76840ff74 x22: ffffffbb41fa8a88
-[67242.065692] x21: ffffffbb4207fb9c x20: ffffffbb4207fba0
-[67242.065725] x19: ffffffbb4207fb98 x18: 0000000000000000
-[67242.065758] x17: 0000000000000000 x16: ffffffd042022094
-[67242.065791] x15: 1ffffff77ed4b71a x14: 1ffffff77ed4b719
-[67242.065824] x13: 0000000000000000 x12: 0000000000000000
-[67242.065857] x11: 0000000000000000 x10: dfffffd000000001
-[67242.065890] x9 : 0000000000000000 x8 : 0000000000000002
-[67242.065923] x7 : 0000000000000000 x6 : 000000000000003f
-[67242.065956] x5 : 0000000000000040 x4 : ffffffffffffffe0
-[67242.065989] x3 : ffffffd043b841b8 x2 : 0000000000000000
-[67242.066021] x1 : 0000000000000010 x0 : 0000000000000010
-[67242.066055] Call trace:
-[67242.066092]  vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec
-12220d230d83a7426fc38c56b3e7bc6066955bae]
-[67242.066119]  scp_ipi_handler+0x11c/0x244 [mtk_scp
-8fb69c2ef141dd3192518b952b65aba35627b8bf]
-[67242.066145]  mt8192_scp_irq_handler+0x70/0x128 [mtk_scp
-8fb69c2ef141dd3192518b952b65aba35627b8bf]
-[67242.066172]  scp_irq_handler+0xa0/0x114 [mtk_scp
-8fb69c2ef141dd3192518b952b65aba35627b8bf]
-[67242.066200]  irq_thread_fn+0x84/0xf8
-[67242.066220]  irq_thread+0x170/0x1ec
-[67242.066242]  kthread+0x2f8/0x3b8
-[67242.066264]  ret_from_fork+0x10/0x30
-[67242.066292] Code: 38f96908 35003628 91004340 d343fc08 (38f96908)
-
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- drivers/media/platform/mtk-vcodec/vdec_vpu_if.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  4 +++
+ .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 34 +++++++++++++++++++
+ .../platform/mtk-vcodec/mtk_vcodec_drv.h      | 10 ++++++
+ .../mtk-vcodec/vdec/vdec_h264_req_multi_if.c  | 23 ++++++++++---
+ 4 files changed, 66 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-index 35f4d5583084..1041dd663e76 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-@@ -91,6 +91,11 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
- 	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
- 					(unsigned long)msg->ap_inst_addr;
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index 938bf14e4e8c..099dc28b7445 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -390,6 +390,10 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		}
+ 	}
  
-+	if (!vpu) {
-+		mtk_v4l2_err("ap_inst_addr is NULL");
-+		return;
++	atomic_set(&dev->dec_active_cnt, 0);
++	memset(dev->vdec_racing_info, 0 , sizeof(dev->vdec_racing_info));
++	mutex_init(&dev->dec_racing_info_mutex);
++
+ 	if (dev->vdec_pdata->uses_stateless_api) {
+ 		dev->mdev_dec.dev = &pdev->dev;
+ 		strscpy(dev->mdev_dec.model, MTK_VCODEC_DEC_NAME,
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+index 76e1442fc6f9..065d14a3d11f 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+@@ -173,6 +173,34 @@ static void mtk_vcodec_dec_disable_irq(struct mtk_vcodec_dev *vdec_dev, int hw_i
+ 	}
+ }
+ 
++static void mtk_vcodec_load_racing_info(struct mtk_vcodec_ctx *ctx)
++{
++	void __iomem *vdec_racing_addr;
++	int j;
++
++	mutex_lock(&ctx->dev->dec_racing_info_mutex);
++	if (atomic_inc_return(&ctx->dev->dec_active_cnt) == 1) {
++		vdec_racing_addr = ctx->dev->reg_base[VDEC_MISC] + 0x100;
++		for (j = 0; j < 132; j++)
++			writel(ctx->dev->vdec_racing_info[j], vdec_racing_addr + j * 4);
++	}
++	mutex_unlock(&ctx->dev->dec_racing_info_mutex);
++}
++
++static void mtk_vcodec_record_racing_info(struct mtk_vcodec_ctx *ctx)
++{
++	void __iomem *vdec_racing_addr;
++	int j;
++
++	mutex_lock(&ctx->dev->dec_racing_info_mutex);
++	if (atomic_dec_and_test(&ctx->dev->dec_active_cnt)) {
++		vdec_racing_addr = ctx->dev->reg_base[VDEC_MISC] + 0x100;
++		for (j = 0; j < 132; j++)
++			ctx->dev->vdec_racing_info[j] = readl(vdec_racing_addr + j * 4);
++	}
++	mutex_unlock(&ctx->dev->dec_racing_info_mutex);
++}
++
+ static struct mtk_vcodec_pm *mtk_vcodec_dec_get_pm(struct mtk_vcodec_dev *vdec_dev,
+ 						   int hw_idx)
+ {
+@@ -243,11 +271,17 @@ void mtk_vcodec_dec_enable_hardware(struct mtk_vcodec_ctx *ctx, int hw_idx)
+ 	mtk_vcodec_dec_child_dev_on(ctx->dev, hw_idx);
+ 
+ 	mtk_vcodec_dec_enable_irq(ctx->dev, hw_idx);
++
++	if (IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
++		mtk_vcodec_load_racing_info(ctx);
+ }
+ EXPORT_SYMBOL_GPL(mtk_vcodec_dec_enable_hardware);
+ 
+ void mtk_vcodec_dec_disable_hardware(struct mtk_vcodec_ctx *ctx, int hw_idx)
+ {
++	if (IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
++		mtk_vcodec_record_racing_info(ctx);
++
+ 	mtk_vcodec_dec_disable_irq(ctx->dev, hw_idx);
+ 
+ 	mtk_vcodec_dec_child_dev_off(ctx->dev, hw_idx);
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+index 363b999dd709..4d6ace869b5a 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+@@ -28,6 +28,7 @@
+ #define MTK_V4L2_BENCHMARK	0
+ #define WAIT_INTR_TIMEOUT_MS	1000
+ #define IS_VDEC_LAT_ARCH(hw_arch) ((hw_arch) >= MTK_VDEC_LAT_SINGLE_CORE)
++#define IS_VDEC_INNER_RACING(capability) (capability & MTK_VCODEC_INNER_RACING)
+ 
+ /*
+  * enum mtk_hw_reg_idx - MTK hw register base index
+@@ -360,6 +361,7 @@ enum mtk_vdec_format_types {
+ 	MTK_VDEC_FORMAT_H264_SLICE = 0x100,
+ 	MTK_VDEC_FORMAT_VP8_FRAME = 0x200,
+ 	MTK_VDEC_FORMAT_VP9_FRAME = 0x400,
++	MTK_VCODEC_INNER_RACING = 0x20000,
+ };
+ 
+ /**
+@@ -480,6 +482,10 @@ struct mtk_vcodec_enc_pdata {
+  * @subdev_dev: subdev hardware device
+  * @subdev_prob_done: check whether all used hw device is prob done
+  * @subdev_bitmap: used to record hardware is ready or not
++ *
++ * @dec_active_cnt: used to mark whether need to record register value
++ * @vdec_racing_info: record register value
++ * @dec_racing_info_mutex: mutex lock used for inner racing mode
+  */
+ struct mtk_vcodec_dev {
+ 	struct v4l2_device v4l2_dev;
+@@ -525,6 +531,10 @@ struct mtk_vcodec_dev {
+ 	void *subdev_dev[MTK_VDEC_HW_MAX];
+ 	int (*subdev_prob_done)(struct mtk_vcodec_dev *vdec_dev);
+ 	DECLARE_BITMAP(subdev_bitmap, MTK_VDEC_HW_MAX);
++
++	atomic_t dec_active_cnt;
++	u32 vdec_racing_info[132];
++	struct mutex dec_racing_info_mutex;
+ };
+ 
+ static inline struct mtk_vcodec_ctx *fh_to_ctx(struct v4l2_fh *fh)
+diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_multi_if.c
+index 5541edbafed2..988d1d12d5c8 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_multi_if.c
++++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_multi_if.c
+@@ -617,6 +617,17 @@ static int vdec_h264_slice_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 		goto err_free_fb_out;
+ 	}
+ 
++	share_info->trans_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
++		inst->vsi->wdma_end_addr_offset;
++	share_info->trans_start = inst->ctx->msg_queue.wdma_wptr_addr;
++	share_info->nal_info = inst->vsi->dec.nal_info;
++
++	if (IS_VDEC_INNER_RACING(inst->ctx->dev->dec_capability)) {
++		memcpy(&share_info->h264_slice_params, &inst->vsi->h264_slice_params,
++		       sizeof(share_info->h264_slice_params));
++		vdec_msg_queue_qbuf(&inst->ctx->dev->msg_queue_core_ctx, lat_buf);
 +	}
 +
- 	mtk_vcodec_debug(vpu, "+ id=%X", msg->msg_id);
+ 	/* wait decoder done interrupt */
+ 	timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
+ 					       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_LAT0);
+@@ -630,14 +641,16 @@ static int vdec_h264_slice_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
  
- 	vpu->failure = msg->status;
+ 	share_info->trans_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
+ 		inst->vsi->wdma_end_addr_offset;
+-	share_info->trans_start = inst->ctx->msg_queue.wdma_wptr_addr;
+-	share_info->nal_info = inst->vsi->dec.nal_info;
+ 	vdec_msg_queue_update_ube_wptr(&lat_buf->ctx->msg_queue,
+ 				       share_info->trans_end);
+ 
+-	memcpy(&share_info->h264_slice_params, &inst->vsi->h264_slice_params,
+-	       sizeof(share_info->h264_slice_params));
+-	vdec_msg_queue_qbuf(&inst->ctx->dev->msg_queue_core_ctx, lat_buf);
++	if (!IS_VDEC_INNER_RACING(inst->ctx->dev->dec_capability)) {
++		memcpy(&share_info->h264_slice_params, &inst->vsi->h264_slice_params,
++		       sizeof(share_info->h264_slice_params));
++		vdec_msg_queue_qbuf(&inst->ctx->dev->msg_queue_core_ctx, lat_buf);
++	}
++	mtk_vcodec_debug(inst, "lat crc: 0x%x 0x%x 0x%x", inst->vsi->dec.crc[0],
++			 inst->vsi->dec.crc[1], inst->vsi->dec.crc[2]);
+ 	inst->slice_dec_num++;
+ 
+ err_free_fb_out:
 -- 
 2.25.1
 
