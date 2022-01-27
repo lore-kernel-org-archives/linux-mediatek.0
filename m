@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F935C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 11:16:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4931C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 11:18:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rzFyQv35jVdruiVti9vp84NPvmLzGgf203o9WEDG+30=; b=jkdzQF8Qia7JlQ
-	YRZMflPEq1vNBgm7TTWKTaapkAoc5rD5+KT9YzcMmUPuFwrKLLCdl3YDF81vbLRRU3hP9Om+OvdYF
-	aVlZBF11bOyo1nDnFkmZVlEGOcPAtjZLANVh2mLoeMNDofnoshkqYf81KlDBHznSgg8ey8A0w/L8a
-	2ZbohceEZAlvR+3kM3vOrAiwe02J1GpEx/FxMQpPG64O38YO+Lgqf8tF7cpXzdZH22JLYhE/sOxz4
-	Lvb/xb2XC5gTMG4P0+fIkzLHyMXwTuPjQEIRoz57sEYYHsG9yZ8h1BCaITHQ1zC84TfPARJTjBja8
-	HzIvyku+scnjUbcSQS9A==;
+	List-Owner; bh=ljCyC7U0qPjAmj58JMjXm7YRxm8mySo00m5eEY/sQGI=; b=m3wGDTW/XyMhQv
+	SrWjmhKJP0NVXGRXP6vqisL/WPEbbI7b/3eb1+WFzCtwW9vq4gdd+jiL61FGy89q8RR7Q0TW2qjqX
+	Vym66zqRWS2hjvUuj7MG2h1x4adfIrYxUY8lsFcoNnqZXhzkN99wwCgqkLqUG2WQ+pnLliguNv8RK
+	0dT9stUvXC6DECe5q9vl0+66n8LrFewobY713QelW+bG3k/5zOd2kp6YISVXdc+dC8XZupHh0O/ij
+	guJUp+acnvKWLCjMYzaVY+BKpb2OGaTfUQYQiSHSNLD/E2XXpoXfONaZ7BQc2K0lYaVE0BzLW+K68
+	DeO3V6BJLUaMl7gUtP+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nD2lT-00FMcj-Gu; Thu, 27 Jan 2022 11:16:31 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1nD2n1-00FNJM-2z; Thu, 27 Jan 2022 11:18:07 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nD2kk-00FMKJ-Sp
- for linux-mediatek@lists.infradead.org; Thu, 27 Jan 2022 11:15:49 +0000
-Received: by mail-wr1-x435.google.com with SMTP id f17so4153798wrx.1
- for <linux-mediatek@lists.infradead.org>; Thu, 27 Jan 2022 03:15:46 -0800 (PST)
+ id 1nD2ko-00FMMp-Bk
+ for linux-mediatek@lists.infradead.org; Thu, 27 Jan 2022 11:15:51 +0000
+Received: by mail-wr1-x434.google.com with SMTP id m14so3861347wrg.12
+ for <linux-mediatek@lists.infradead.org>; Thu, 27 Jan 2022 03:15:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Issr/GTHNwZVejNrxQmDGDcXB9G0EQeUTGuqcjSvixA=;
- b=gJMkegCV++HieP031+dMKGWYR0bLuffs1xCsQDp2I/1x4bL13iEe9HP4FVZnQ9slMV
- ZERFDCfG8JIygTjY7SP7Kaw7BiRi3l9uON10ujd9Z0TW+z4wYQFiSmdCSukSJmK+PFpn
- 9rns12c1OADrSKaLP4xM6aj4zOdaucyGPBhKdr6Bjijz3gHxISR4qNgK2Ko0radr96dA
- 17tbnjrJz+/0OfdUzOnQ3Z6rbM4QR3QwOgl/JKqEstGLB0/VjhVqcgV3xSoKsSGZ3C5C
- ruC2fJTC6Ttqr+8Dv7EeL7/WGu21nqQAMF/hYl9GIHJPys6rQ/xBRu24XEM2u2qJ810c
- I7+w==
+ bh=KlQywLM4SRqpFvXyB5cSelAzc/97HjHZ8/iIFU/mpmM=;
+ b=YAjPQHn2jyReqNUQMXrw1ZayyBkZHfk+LHsA57oh0s+AisAvo0tKWI8P/KBeFkz+j8
+ qwMKQlXRNDE6OBbqypYngIp1GgtcbBnRotElRJ9iYemRnoQm4dlNlm7uG/0UqjDwO6k3
+ Fc2qEg2YXJz/BZXRKURbGqu4o/fo1jeR7fF/s3TnxSSB/z/xEt4/ypS22ansyQQKHR8P
+ Hjre9Mo1g/347I3Z1ReqEE+9v/9opB93MNklB1e/EJR7e7jLtkbxoV12OnSufjBA/f/4
+ qElFOVXmgJP01MYw6yZkTnMdLZvba3th0qupQXXF14tvGUehY/jX703yA2xwTNyWPYJp
+ De0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Issr/GTHNwZVejNrxQmDGDcXB9G0EQeUTGuqcjSvixA=;
- b=0+c8GKD8yo6mXz2xIWeFJu8pqLyHxziG0Mp/e3oXqiJrenvv4uzOj2Wiv4ROXaQPRe
- uLDuD8u9SXYT7Q797LAPClNbv460p814+2CUbDxDGNu0DXka+jbDqcUl2/QSlQTL7rLa
- ATAgJLM6WlRb31xVMAA/czTrmQBpTwy0hP41hdMbKkhlJ96PheWnTJKhhEqBPTROKNOw
- U7SxrFtKctUFkjwp2M0N8WIn+gKteqBhWPZiOmcUkWMkU3wTe4KaKHJYq0wflj7vguO1
- KMcVUkn1G+19bD+2u7pFpGB2qFAe2y9xd8rvHapQxgRT0Bmga/dQ3vyT0rUzIg0HKJ0T
- pLwg==
-X-Gm-Message-State: AOAM53169GubwFWoaJspJaa9mBKbmHNOvzW9w/BfAutT53IuWZ+PrcUU
- mxptznoWTrcaFQl7ACLlot7p3w==
-X-Google-Smtp-Source: ABdhPJyYSqmwS3bfJTyGbBTcK2ikaGoPG+ScfYyYq8ahZaWYdOBnBjIifEe/TLLyH8qO3WxEZYsKYQ==
-X-Received: by 2002:a5d:47ad:: with SMTP id 13mr2523734wrb.678.1643282144969; 
- Thu, 27 Jan 2022 03:15:44 -0800 (PST)
+ bh=KlQywLM4SRqpFvXyB5cSelAzc/97HjHZ8/iIFU/mpmM=;
+ b=Cec4CzEXuvrDB+cq7y/AJoIHgOVaF38U7TlZPD8OoaPZMDI5blerbjYIjtVD/8ycGA
+ GMagqv03RR92kVQGdGtMq5j+ymZ9wT5ZIlOqTqbC3AAdjQL98J0xwaTLuPVU5phCdSaE
+ D/8XbhyhjhqTrSF2+GDDsdA5uq2UicxlSxVDAd7bjGoH5OkcF5XvcwozfcD8oD2lpBzp
+ I+BXZQlsnifLXIwKGNcj3vF4MOKT+caZm78t8MLhQXc6xHhTjNrSc6nHn32sFVoBWmMJ
+ ll1mJh6kytBVsgiUkZNkOjj/7yz8IIA56TLpYnc/q0wGO+GPse4Va68Eq1+TDAZW5w1L
+ OoyA==
+X-Gm-Message-State: AOAM531LA85bYpwaGeA+0phxG4zCznGYcpeQSc7Zrw91tUWPVdWgnNzS
+ X2etL1gviyiduMlMycj1StjVc8B34olFBg==
+X-Google-Smtp-Source: ABdhPJw+JjcilDSvB+7drez4412ivVAsEaAb4cKkUtfLWoOfBwIh3hzJFVfLRydnxEUIl87CwlU9lQ==
+X-Received: by 2002:adf:e7cc:: with SMTP id e12mr2582361wrn.637.1643282149126; 
+ Thu, 27 Jan 2022 03:15:49 -0800 (PST)
 Received: from localhost.localdomain
  ([2a01:cb19:8b2c:5e00:7d3d:d638:46ec:78dd])
- by smtp.gmail.com with ESMTPSA id r7sm5956311wma.39.2022.01.27.03.15.43
+ by smtp.gmail.com with ESMTPSA id r7sm5956311wma.39.2022.01.27.03.15.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Jan 2022 03:15:44 -0800 (PST)
+ Thu, 27 Jan 2022 03:15:48 -0800 (PST)
 From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
 To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
  Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
@@ -71,17 +71,17 @@ Cc: Mattijs Korpershoek <mkorpershoek@baylibre.com>,
  linux-input@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v20 1/3] dt-bindings: input: Add bindings for Mediatek matrix
- keypad
-Date: Thu, 27 Jan 2022 12:15:24 +0100
-Message-Id: <20220127111526.3716689-2-mkorpershoek@baylibre.com>
+Subject: [PATCH v20 3/3] arm64: defconfig: Add CONFIG_KEYBOARD_MT6779=m
+Date: Thu, 27 Jan 2022 12:15:26 +0100
+Message-Id: <20220127111526.3716689-4-mkorpershoek@baylibre.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220127111526.3716689-1-mkorpershoek@baylibre.com>
 References: <20220127111526.3716689-1-mkorpershoek@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220127_031546_955190_CE110449 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20220127_031550_482650_57EC0E0D 
+X-CRM114-Status: UNSURE (   9.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,99 +100,27 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "fengping.yu" <fengping.yu@mediatek.com>
 
-This patch add devicetree bindings for Mediatek matrix keypad driver.
+Add Mediatek matrix keypad support in defconfig.
 
 Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
-Reviewed-by: Marco Felsch <m.felsch@pengutronix.de>
 Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+Reviewed-by: Marco Felsch <m.felsch@pengutronix.de>
 ---
- .../input/mediatek,mt6779-keypad.yaml         | 77 +++++++++++++++++++
- 1 file changed, 77 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml b/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
-new file mode 100644
-index 000000000000..b1770640f94b
---- /dev/null
-+++ b/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
-@@ -0,0 +1,77 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/input/mediatek,mt6779-keypad.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek's Keypad Controller device tree bindings
-+
-+maintainers:
-+  - Fengping Yu <fengping.yu@mediatek.com>
-+
-+allOf:
-+  - $ref: "/schemas/input/matrix-keymap.yaml#"
-+
-+description: |
-+  Mediatek's Keypad controller is used to interface a SoC with a matrix-type
-+  keypad device. The keypad controller supports multiple row and column lines.
-+  A key can be placed at each intersection of a unique row and a unique column.
-+  The keypad controller can sense a key-press and key-release and report the
-+  event using a interrupt to the cpu.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - const: mediatek,mt6779-keypad
-+      - items:
-+          - enum:
-+              - mediatek,mt6873-keypad
-+          - const: mediatek,mt6779-keypad
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    maxItems: 1
-+
-+  clock-names:
-+    items:
-+      - const: kpd
-+
-+  wakeup-source:
-+    description: use any event on keypad as wakeup event
-+    type: boolean
-+
-+  debounce-delay-ms:
-+    maximum: 256
-+    default: 16
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/input/input.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        keyboard@10010000 {
-+          compatible = "mediatek,mt6779-keypad";
-+          reg = <0 0x10010000 0 0x1000>;
-+          interrupts = <GIC_SPI 75 IRQ_TYPE_EDGE_FALLING>;
-+          clocks = <&clk26m>;
-+          clock-names = "kpd";
-+        };
-+    };
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index f2e2b9bdd702..099a9e68711c 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -390,6 +390,7 @@ CONFIG_KEYBOARD_GPIO=y
+ CONFIG_KEYBOARD_SNVS_PWRKEY=m
+ CONFIG_KEYBOARD_IMX_SC_KEY=m
+ CONFIG_KEYBOARD_CROS_EC=y
++CONFIG_KEYBOARD_MT6779=m
+ CONFIG_INPUT_TOUCHSCREEN=y
+ CONFIG_TOUCHSCREEN_ATMEL_MXT=m
+ CONFIG_TOUCHSCREEN_GOODIX=m
 -- 
 2.32.0
 
