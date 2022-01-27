@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E422C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 03:50:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A026FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 03:50:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=VLQMTABKlixp/sbUw7j2H/KG14SmYOgzEfta6uH5fnI=; b=RtxNk5nGX0Oecr
-	7Y4DNzkrs3yWfXHVms51lpfV30lQeyoYk7ikbakc7RSDRrPZhpJYyhLEeRDF4zOaQM1MuXwZsoI4p
-	7wCRH344ySWA2JPXrSx9Rt8W6NYsHMx5YDVUl9fzGmyLzMgwqcfJJsfvtBA1DlYAll77EYy5axyHQ
-	bLXqdCg3x4hE2m0JeesclCztwzJHyjlqZzZ9/F6XZmlfs10zmFf1mZztNLz34SmOqyfydKEhp9015
-	k6b6Thr/DsRhnRrxw35WuwNyst/kOQD8iXgn1O/dGYzC3WCPuYi61xG65TiIwkxICBrl7dP9zPebD
-	1a5fZ8T/zHkrhPRxCJzA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=kwF+KnuT5oW0yrAzz6zLMAdsNwoaHEZdQX+hv4/yy30=; b=r+V2cJ71XsDzkx
+	p0NVvGhwd+1Ub+slhkyLNyXvl1VhlgQ2LTMMt6LZbH8pUFgd2kHxDAKTlawK9xsWdWX5+sREuFxRy
+	RfuRAg5kXGZDgp5IpGvlfVqit3YlRbTCRI9zItBCBqor8ny45y+O82Ff3CLV29EMKIdgxtiiaq64Q
+	pP2M17BI+E+ncTR3wfPsZ76nVcfDDaKKGD+unhvnGOQTNYq8RPTe99vVdkcrwNroid2dHsPzBfL9M
+	F/kfE6loGkO37T8ZzphBESjHMF4vOk67ldECXqb7pxuIDS/soqWWv0YfMYMaJqwTDACEMaDf3vG2K
+	58KodiEBtOgF5NliBcQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCvnl-00EHKQ-Mt; Thu, 27 Jan 2022 03:50:25 +0000
+	id 1nCvnx-00EHO9-E2; Thu, 27 Jan 2022 03:50:37 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCvnP-00EHGZ-SZ; Thu, 27 Jan 2022 03:50:05 +0000
-X-UUID: efedf4d6422644a3a6c4bb8fcd94e2b6-20220126
-X-UUID: efedf4d6422644a3a6c4bb8fcd94e2b6-20220126
+ id 1nCvnQ-00EHGM-Nh; Thu, 27 Jan 2022 03:50:06 +0000
+X-UUID: e5406ce38dbe48e69c84afe8bd696f26-20220126
+X-UUID: e5406ce38dbe48e69c84afe8bd696f26-20220126
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <roger.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2116470541; Wed, 26 Jan 2022 20:50:01 -0700
+ with ESMTP id 1155654237; Wed, 26 Jan 2022 20:50:01 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 26 Jan 2022 19:39:59 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 27 Jan 2022 11:39:57 +0800
+ Thu, 27 Jan 2022 11:39:58 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 27 Jan 2022 11:39:57 +0800
+ Frontend Transport; Thu, 27 Jan 2022 11:39:58 +0800
 From: Roger Lu <roger.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
  <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
@@ -54,15 +54,17 @@ CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>,
  <linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guenter Roeck
  <linux@roeck-us.net>
-Subject: [PATCH v22 0/7] soc: mediatek: SVS: introduce MTK SVS engine
-Date: Thu, 27 Jan 2022 11:39:49 +0800
-Message-ID: <20220127033956.24585-1-roger.lu@mediatek.com>
+Subject: [PATCH v22 5/7] soc: mediatek: SVS: add debug commands
+Date: Thu, 27 Jan 2022 11:39:54 +0800
+Message-ID: <20220127033956.24585-6-roger.lu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220127033956.24585-1-roger.lu@mediatek.com>
+References: <20220127033956.24585-1-roger.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220126_195003_954675_42E02CDB 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20220126_195004_811731_084FD785 
+X-CRM114-Status: GOOD (  21.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,49 +81,438 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Smart Voltage Scaling(SVS) engine is a piece of hardware
-which calculates suitable SVS bank voltages to OPP voltage table.
-Then, DVFS driver could apply those SVS bank voltages to PMIC/Buck
-when receiving OPP_EVENT_ADJUST_VOLTAGE.
+The purpose of SVS is to help find the suitable voltages
+for DVFS. Therefore, if SVS bank voltages are concerned
+to be wrong, we can adjust SVS bank voltages by this patch.
 
-1. SVS driver uses OPP adjust event in [1] to update OPP table voltage part.
-2. SVS driver gets thermal/GPU device by node [2][3] and CPU device by get_cpu_device().
-After retrieving subsys device, SVS driver calls device_link_add() to make sure probe/suspend callback priority.
+Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-svs.c | 321 ++++++++++++++++++++++++++++++++-
+ 1 file changed, 318 insertions(+), 3 deletions(-)
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=25cb20a212a1f989385dfe23230817e69c62bee5
-[2] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=b325ce39785b1408040d90365a6ab1aa36e94f87
-[3] https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.16-next/dts64&id=a8168cebf1bca1b5269e8a7eb2626fb76814d6e2
-
-change since v21:
-- Rebase to kernel 5.17-rc1.
-- Remove unnecessary "maxItems" from nvmem-cells in mtk-svs.yaml.
-- Move svs_platform_data definition to the beginning of the file for increased readability.
-- For better performance purpose, we add "thermal_zone_device" memeber in svs bank structure and cache it at driver probe time.
-- Remove svs_get_zone_temperature() and call thermal_zone_get_temp() directly when we needs to read temperature.
-- Drop mt8192 svs node patch and we'll submit another complete mt8192.dtsi patch including mt8192 svs node.
-- Replace mask7_0 with GENMASK macro and bits8/reg_bytes with corresponding definition.
-- Separate definition with "register common configuration" and "related setting" for better categorization.
-- Remove redundant codes including "svsb->suspended concept" and refine comments.
-- Move devm_regulator_get_optional() to svs_bank_resource_setup() for better understanding.
-
-Roger Lu (7):
-  [v22,1/7] dt-bindings: soc: mediatek: add mtk svs dt-bindings
-  [v22,2/7] arm64: dts: mt8183: add svs device information
-  [v22,3/7] soc: mediatek: SVS: introduce MTK SVS engine
-  [v22,4/7] soc: mediatek: SVS: add monitor mode
-  [v22,5/7] soc: mediatek: SVS: add debug commands
-  [v22,6/7] dt-bindings: soc: mediatek: add mt8192 svs dt-bindings
-  [v22,7/7] soc: mediatek: SVS: add mt8192 SVS GPU driver
-
- .../bindings/soc/mediatek/mtk-svs.yaml        |   91 +
- arch/arm64/boot/dts/mediatek/mt8183.dtsi      |   16 +
- drivers/soc/mediatek/Kconfig                  |   10 +
- drivers/soc/mediatek/Makefile                 |    1 +
- drivers/soc/mediatek/mtk-svs.c                | 2439 +++++++++++++++++
- 5 files changed, 2557 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
- create mode 100644 drivers/soc/mediatek/mtk-svs.c
-
+diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+index be53470d439c..d3977de56335 100644
+--- a/drivers/soc/mediatek/mtk-svs.c
++++ b/drivers/soc/mediatek/mtk-svs.c
+@@ -6,6 +6,7 @@
+ #include <linux/bits.h>
+ #include <linux/clk.h>
+ #include <linux/completion.h>
++#include <linux/debugfs.h>
+ #include <linux/device.h>
+ #include <linux/init.h>
+ #include <linux/interrupt.h>
+@@ -23,6 +24,7 @@
+ #include <linux/pm_qos.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/regulator/consumer.h>
++#include <linux/seq_file.h>
+ #include <linux/slab.h>
+ #include <linux/spinlock.h>
+ #include <linux/thermal.h>
+@@ -69,6 +71,39 @@
+ 
+ static DEFINE_SPINLOCK(svs_lock);
+ 
++#define debug_fops_ro(name)						\
++	static int svs_##name##_debug_open(struct inode *inode,		\
++					   struct file *filp)		\
++	{								\
++		return single_open(filp, svs_##name##_debug_show,	\
++				   inode->i_private);			\
++	}								\
++	static const struct file_operations svs_##name##_debug_fops = {	\
++		.owner = THIS_MODULE,					\
++		.open = svs_##name##_debug_open,			\
++		.read = seq_read,					\
++		.llseek = seq_lseek,					\
++		.release = single_release,				\
++	}
++
++#define debug_fops_rw(name)						\
++	static int svs_##name##_debug_open(struct inode *inode,		\
++					   struct file *filp)		\
++	{								\
++		return single_open(filp, svs_##name##_debug_show,	\
++				   inode->i_private);			\
++	}								\
++	static const struct file_operations svs_##name##_debug_fops = {	\
++		.owner = THIS_MODULE,					\
++		.open = svs_##name##_debug_open,			\
++		.read = seq_read,					\
++		.write = svs_##name##_debug_write,			\
++		.llseek = seq_lseek,					\
++		.release = single_release,				\
++	}
++
++#define svs_dentry_data(name)	{__stringify(name), &svs_##name##_debug_fops}
++
+ /**
+  * enum svsb_phase - svs bank phase enumeration
+  * @SVSB_PHASE_ERROR: svs bank encounters unexpected condition
+@@ -269,6 +304,8 @@ struct svs_platform_data {
+  * @tzone_name: thermal zone name
+  * @phase: bank current phase
+  * @volt_od: bank voltage overdrive
++ * @voffset: bank voltage offset for debug purpose
++ * @reg_data: bank register data in different phase for debug purpose
+  * @pm_runtime_enabled_count: bank pm runtime enabled count
+  * @mode_support: bank mode support.
+  * @freq_base: reference frequency for bank init
+@@ -328,6 +365,8 @@ struct svs_bank {
+ 	char *tzone_name;
+ 	enum svsb_phase phase;
+ 	s32 volt_od;
++	s32 voffset;
++	u32 reg_data[SVSB_PHASE_MAX][SVS_REG_MAX];
+ 	u32 pm_runtime_enabled_count;
+ 	u32 mode_support;
+ 	u32 freq_base;
+@@ -434,14 +473,15 @@ static int svs_adjust_pm_opp_volts(struct svs_bank *svsb)
+ 			/* do nothing */
+ 			goto unlock_mutex;
+ 		case SVSB_PHASE_INIT02:
+-			svsb_volt = max(svsb->volt[i], svsb->vmin);
++			svsb_volt = max(svsb->volt[i] + svsb->voffset,
++					svsb->vmin);
+ 			opp_volt = svs_bank_volt_to_opp_volt(svsb_volt,
+ 							     svsb->volt_step,
+ 							     svsb->volt_base);
+ 			break;
+ 		case SVSB_PHASE_MON:
+-			svsb_volt = max(svsb->volt[i] + temp_voffset,
+-					svsb->vmin);
++			svsb_volt = max(svsb->volt[i] + temp_voffset +
++					svsb->voffset, svsb->vmin);
+ 			opp_volt = svs_bank_volt_to_opp_volt(svsb_volt,
+ 							     svsb->volt_step,
+ 							     svsb->volt_base);
+@@ -470,6 +510,257 @@ static int svs_adjust_pm_opp_volts(struct svs_bank *svsb)
+ 	return ret;
+ }
+ 
++static int svs_dump_debug_show(struct seq_file *m, void *p)
++{
++	struct svs_platform *svsp = (struct svs_platform *)m->private;
++	struct svs_bank *svsb;
++	unsigned long svs_reg_addr;
++	u32 idx, i, j, bank_id;
++
++	for (i = 0; i < svsp->efuse_max; i++)
++		if (svsp->efuse && svsp->efuse[i])
++			seq_printf(m, "M_HW_RES%d = 0x%08x\n",
++				   i, svsp->efuse[i]);
++
++	for (i = 0; i < svsp->tefuse_max; i++)
++		if (svsp->tefuse)
++			seq_printf(m, "THERMAL_EFUSE%d = 0x%08x\n",
++				   i, svsp->tefuse[i]);
++
++	for (bank_id = 0, idx = 0; idx < svsp->bank_max; idx++, bank_id++) {
++		svsb = &svsp->banks[idx];
++
++		for (i = SVSB_PHASE_INIT01; i <= SVSB_PHASE_MON; i++) {
++			seq_printf(m, "Bank_number = %u\n", bank_id);
++
++			if (i == SVSB_PHASE_INIT01 || i == SVSB_PHASE_INIT02)
++				seq_printf(m, "mode = init%d\n", i);
++			else if (i == SVSB_PHASE_MON)
++				seq_puts(m, "mode = mon\n");
++			else
++				seq_puts(m, "mode = error\n");
++
++			for (j = DESCHAR; j < SVS_REG_MAX; j++) {
++				svs_reg_addr = (unsigned long)(svsp->base +
++							       svsp->regs[j]);
++				seq_printf(m, "0x%08lx = 0x%08x\n",
++					   svs_reg_addr, svsb->reg_data[i][j]);
++			}
++		}
++	}
++
++	return 0;
++}
++
++debug_fops_ro(dump);
++
++static int svs_enable_debug_show(struct seq_file *m, void *v)
++{
++	struct svs_bank *svsb = (struct svs_bank *)m->private;
++
++	switch (svsb->phase) {
++	case SVSB_PHASE_ERROR:
++		seq_puts(m, "disabled\n");
++		break;
++	case SVSB_PHASE_INIT01:
++		seq_puts(m, "init1\n");
++		break;
++	case SVSB_PHASE_INIT02:
++		seq_puts(m, "init2\n");
++		break;
++	case SVSB_PHASE_MON:
++		seq_puts(m, "mon mode\n");
++		break;
++	default:
++		seq_puts(m, "unknown\n");
++		break;
++	}
++
++	return 0;
++}
++
++static ssize_t svs_enable_debug_write(struct file *filp,
++				      const char __user *buffer,
++				      size_t count, loff_t *pos)
++{
++	struct svs_bank *svsb = file_inode(filp)->i_private;
++	struct svs_platform *svsp = dev_get_drvdata(svsb->dev);
++	unsigned long flags;
++	int enabled, ret;
++	char *buf = NULL;
++
++	if (count >= PAGE_SIZE)
++		return -EINVAL;
++
++	buf = (char *)memdup_user_nul(buffer, count);
++	if (IS_ERR(buf))
++		return PTR_ERR(buf);
++
++	ret = kstrtoint(buf, 10, &enabled);
++	if (ret)
++		return ret;
++
++	if (!enabled) {
++		spin_lock_irqsave(&svs_lock, flags);
++		svsp->pbank = svsb;
++		svsb->mode_support = SVSB_MODE_ALL_DISABLE;
++		svs_switch_bank(svsp);
++		svs_writel_relaxed(svsp, SVSB_EN_OFF, SVSEN);
++		svs_writel_relaxed(svsp, SVSB_INTSTS_CLEAN, INTSTS);
++		spin_unlock_irqrestore(&svs_lock, flags);
++
++		svsb->phase = SVSB_PHASE_ERROR;
++		svs_adjust_pm_opp_volts(svsb);
++	}
++
++	kfree(buf);
++
++	return count;
++}
++
++debug_fops_rw(enable);
++
++static int svs_status_debug_show(struct seq_file *m, void *v)
++{
++	struct svs_bank *svsb = (struct svs_bank *)m->private;
++	struct dev_pm_opp *opp;
++	int tzone_temp = 0, ret;
++	u32 i;
++
++	ret = thermal_zone_get_temp(svsb->tzd, &tzone_temp);
++	if (ret)
++		seq_printf(m, "%s: temperature ignore\n", svsb->name);
++	else
++		seq_printf(m, "%s: temperature = %d\n", svsb->name, tzone_temp);
++
++	for (i = 0; i < svsb->opp_count; i++) {
++		opp = dev_pm_opp_find_freq_exact(svsb->opp_dev,
++						 svsb->opp_dfreq[i], true);
++		if (IS_ERR(opp)) {
++			seq_printf(m, "%s: cannot find freq = %u (%ld)\n",
++				   svsb->name, svsb->opp_dfreq[i],
++				   PTR_ERR(opp));
++			return PTR_ERR(opp);
++		}
++
++		seq_printf(m, "opp_freq[%02u]: %u, opp_volt[%02u]: %lu, ",
++			   i, svsb->opp_dfreq[i], i,
++			   dev_pm_opp_get_voltage(opp));
++		seq_printf(m, "svsb_volt[%02u]: 0x%x, freq_pct[%02u]: %u\n",
++			   i, svsb->volt[i], i, svsb->freq_pct[i]);
++		dev_pm_opp_put(opp);
++	}
++
++	return 0;
++}
++
++debug_fops_ro(status);
++
++static int svs_voffset_debug_show(struct seq_file *m, void *v)
++{
++	struct svs_bank *svsb = (struct svs_bank *)m->private;
++
++	seq_printf(m, "%d\n", svsb->voffset);
++
++	return 0;
++}
++
++static ssize_t svs_voffset_debug_write(struct file *filp,
++				       const char __user *buffer,
++				       size_t count, loff_t *pos)
++{
++	struct svs_bank *svsb = file_inode(filp)->i_private;
++	char *buf = NULL;
++	s32 voffset;
++
++	if (count >= PAGE_SIZE)
++		return -EINVAL;
++
++	buf = (char *)memdup_user_nul(buffer, count);
++	if (IS_ERR(buf))
++		return PTR_ERR(buf);
++
++	if (!kstrtoint(buf, 10, &voffset)) {
++		svsb->voffset = voffset;
++		svs_adjust_pm_opp_volts(svsb);
++	}
++
++	kfree(buf);
++
++	return count;
++}
++
++debug_fops_rw(voffset);
++
++static int svs_create_debug_cmds(struct svs_platform *svsp)
++{
++	struct svs_bank *svsb;
++	struct dentry *svs_dir, *svsb_dir, *file_entry;
++	const char *d = "/sys/kernel/debug/svs";
++	u32 i, idx;
++
++	struct svs_dentry {
++		const char *name;
++		const struct file_operations *fops;
++	};
++
++	struct svs_dentry svs_entries[] = {
++		svs_dentry_data(dump),
++	};
++
++	struct svs_dentry svsb_entries[] = {
++		svs_dentry_data(enable),
++		svs_dentry_data(status),
++		svs_dentry_data(voffset),
++	};
++
++	svs_dir = debugfs_create_dir("svs", NULL);
++	if (IS_ERR(svs_dir)) {
++		dev_err(svsp->dev, "cannot create %s: %ld\n",
++			d, PTR_ERR(svs_dir));
++		return PTR_ERR(svs_dir);
++	}
++
++	for (i = 0; i < ARRAY_SIZE(svs_entries); i++) {
++		file_entry = debugfs_create_file(svs_entries[i].name, 0664,
++						 svs_dir, svsp,
++						 svs_entries[i].fops);
++		if (IS_ERR(file_entry)) {
++			dev_err(svsp->dev, "cannot create %s/%s: %ld\n",
++				d, svs_entries[i].name, PTR_ERR(file_entry));
++			return PTR_ERR(file_entry);
++		}
++	}
++
++	for (idx = 0; idx < svsp->bank_max; idx++) {
++		svsb = &svsp->banks[idx];
++
++		if (svsb->mode_support == SVSB_MODE_ALL_DISABLE)
++			continue;
++
++		svsb_dir = debugfs_create_dir(svsb->name, svs_dir);
++		if (IS_ERR(svsb_dir)) {
++			dev_err(svsp->dev, "cannot create %s/%s: %ld\n",
++				d, svsb->name, PTR_ERR(svsb_dir));
++			return PTR_ERR(svsb_dir);
++		}
++
++		for (i = 0; i < ARRAY_SIZE(svsb_entries); i++) {
++			file_entry = debugfs_create_file(svsb_entries[i].name,
++							 0664, svsb_dir, svsb,
++							 svsb_entries[i].fops);
++			if (IS_ERR(file_entry)) {
++				dev_err(svsp->dev, "no %s/%s/%s?: %ld\n",
++					d, svsb->name, svsb_entries[i].name,
++					PTR_ERR(file_entry));
++				return PTR_ERR(file_entry);
++			}
++		}
++	}
++
++	return 0;
++}
++
+ static u32 interpolate(u32 f0, u32 f1, u32 v0, u32 v1, u32 fx)
+ {
+ 	u32 vx;
+@@ -594,6 +885,16 @@ static void svs_set_bank_phase(struct svs_platform *svsp,
+ 	}
+ }
+ 
++static inline void svs_save_bank_register_data(struct svs_platform *svsp,
++					       enum svsb_phase phase)
++{
++	struct svs_bank *svsb = svsp->pbank;
++	enum svs_reg_index rg_i;
++
++	for (rg_i = DESCHAR; rg_i < SVS_REG_MAX; rg_i++)
++		svsb->reg_data[phase][rg_i] = svs_readl_relaxed(svsp, rg_i);
++}
++
+ static inline void svs_error_isr_handler(struct svs_platform *svsp)
+ {
+ 	struct svs_bank *svsb = svsp->pbank;
+@@ -608,6 +909,8 @@ static inline void svs_error_isr_handler(struct svs_platform *svsp)
+ 		svs_readl_relaxed(svsp, SMSTATE1));
+ 	dev_err(svsb->dev, "TEMP = 0x%08x\n", svs_readl_relaxed(svsp, TEMP));
+ 
++	svs_save_bank_register_data(svsp, SVSB_PHASE_ERROR);
++
+ 	svsb->phase = SVSB_PHASE_ERROR;
+ 	svs_writel_relaxed(svsp, SVSB_EN_OFF, SVSEN);
+ 	svs_writel_relaxed(svsp, SVSB_INTSTS_CLEAN, INTSTS);
+@@ -622,6 +925,8 @@ static inline void svs_init01_isr_handler(struct svs_platform *svsp)
+ 		 svs_readl_relaxed(svsp, VDESIGN30),
+ 		 svs_readl_relaxed(svsp, DCVALUES));
+ 
++	svs_save_bank_register_data(svsp, SVSB_PHASE_INIT01);
++
+ 	svsb->phase = SVSB_PHASE_INIT01;
+ 	svsb->dc_voffset_in = ~(svs_readl_relaxed(svsp, DCVALUES) &
+ 				GENMASK(15, 0)) + 1;
+@@ -647,6 +952,8 @@ static inline void svs_init02_isr_handler(struct svs_platform *svsp)
+ 		 svs_readl_relaxed(svsp, VOP30),
+ 		 svs_readl_relaxed(svsp, DCVALUES));
+ 
++	svs_save_bank_register_data(svsp, SVSB_PHASE_INIT02);
++
+ 	svsb->phase = SVSB_PHASE_INIT02;
+ 	svsb->get_volts(svsp);
+ 
+@@ -658,6 +965,8 @@ static inline void svs_mon_mode_isr_handler(struct svs_platform *svsp)
+ {
+ 	struct svs_bank *svsb = svsp->pbank;
+ 
++	svs_save_bank_register_data(svsp, SVSB_PHASE_MON);
++
+ 	svsb->phase = SVSB_PHASE_MON;
+ 	svsb->get_volts(svsp);
+ 
+@@ -1634,6 +1943,12 @@ static int svs_probe(struct platform_device *pdev)
+ 		goto svs_probe_iounmap;
+ 	}
+ 
++	ret = svs_create_debug_cmds(svsp);
++	if (ret) {
++		dev_err(svsp->dev, "svs create debug cmds fail: %d\n", ret);
++		goto svs_probe_iounmap;
++	}
++
+ 	return 0;
+ 
+ svs_probe_iounmap:
+-- 
+2.18.0
 
 
 _______________________________________________
