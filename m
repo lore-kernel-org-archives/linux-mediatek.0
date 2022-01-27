@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA230C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 02:57:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38F23C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 02:57:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DQ6aUWAzcL4iuNLKrK8vmVXpDqlAabaGoID1Aa6PsPQ=; b=z8i+BWeA5GEFI5
-	yoWYlcWNYUbEbLfeeU+0ShoPgmzPSkEy+Xjq+hkJg+qc4IZi7wHPk2syHGyP38IKS3tS3h9sXRQre
-	Lf4vgtEzDodccv6TOord2x5xkutxCiDYSxujPXg26BR07rQh+4O/XxbPh4Saod7QWKOaI6tVekxYD
-	A92XCpF1Hm1Vwj6Q48cRiIfpxQgSzvtuxnZ5j0hwLnSkO/SKxz15upcfdkMSzKiScyxFkDMd1pBIE
-	x+sCpm8RY9trP9gaU45IrDsSrI9ovzVV8nSuKkRvJAyQ4KxKBk97RNedtQ3ttr62y5EY2/nWZn1/F
-	4CEEy/poIZ0S3uAcwkZg==;
+	List-Owner; bh=DuHXhhf6SjVK7MzLKdsMjACK81/ijWD882Q4zNplzeo=; b=b3lUIw9WMXECuG
+	5DIOHGxiTUSZNEgTJl2yWB2X3AgdSdOS7OE/aZepwtiMpulQZy9StjeyBMlbSR4iC+bDTtVpb/8L/
+	wqxETAvGUQkc/om5pBJldDTX9bW2bHxDJG9oyeyAMRvWhcons1RhZph7MO5zqYgDlYCxkKLjbN/fw
+	OQZU9pSSzk0cm0uJwJooZ+zBj6XrNLlyjPDA6YMOvuUvJljU706A2c8eIURbBbZRPDL8Ibot2sNxx
+	Z0RuCTcPvGUC5xRePflpgTEoAL7e4NOCaUuSiavcPp8ljY2Go8686eekrRVAEV+rW1cNjsn4xIMUE
+	zK+pbm7Z9Ay8hp5A+YkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCuy1-00E9iQ-8y; Thu, 27 Jan 2022 02:56:57 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nCuyT-00E9yD-3P; Thu, 27 Jan 2022 02:57:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCux8-00E9FI-MR; Thu, 27 Jan 2022 02:56:04 +0000
-X-UUID: 5a6954b80b6a49c7a39be3f61fcd62ba-20220126
-X-UUID: 5a6954b80b6a49c7a39be3f61fcd62ba-20220126
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ id 1nCuxf-00E9YU-K9; Thu, 27 Jan 2022 02:56:36 +0000
+X-UUID: de5901dab6864bc19bceee58dd805e0d-20220126
+X-UUID: de5901dab6864bc19bceee58dd805e0d-20220126
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 363340827; Wed, 26 Jan 2022 19:55:59 -0700
+ with ESMTP id 1068351164; Wed, 26 Jan 2022 19:56:33 -0700
 Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 26 Jan 2022 18:55:57 -0800
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 26 Jan 2022 18:55:59 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
  (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 27 Jan 2022 10:55:55 +0800
+ Thu, 27 Jan 2022 10:55:57 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 27 Jan 2022 10:55:53 +0800
+ Transport; Thu, 27 Jan 2022 10:55:55 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
@@ -57,17 +57,18 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v1, 4/8] media: mtk-vcodec: Adds compatible for mt8195
-Date: Thu, 27 Jan 2022 10:55:40 +0800
-Message-ID: <20220127025544.10854-5-yunfei.dong@mediatek.com>
+Subject: [PATCH v1,
+ 5/8] media: mtk-vcodec: Different codec using different capture format
+Date: Thu, 27 Jan 2022 10:55:41 +0800
+Message-ID: <20220127025544.10854-6-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220127025544.10854-1-yunfei.dong@mediatek.com>
 References: <20220127025544.10854-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220126_185602_773117_AAD1C280 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20220126_185635_693609_5A64CBE6 
+X-CRM114-Status: GOOD (  14.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,28 +85,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adds compatible for mt8195 platform.
+Vp8 need to use MM21, but vp9 and h264 need to use HyFbc mode
+for mt8195. Vp8/vp9/h264 use the same MM21 format for mt8192.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ .../platform/mtk-vcodec/mtk_vcodec_dec.c      | 41 +++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-index 2d21d0010c9c..938bf14e4e8c 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-@@ -468,6 +468,10 @@ static const struct of_device_id mtk_vcodec_match[] = {
- 		.compatible = "mediatek,mt8186-vcodec-dec",
- 		.data = &mtk_vdec_single_core_pdata,
- 	},
-+	{
-+		.compatible = "mediatek,mt8195-vcodec-dec",
-+		.data = &mtk_lat_sig_core_pdata,
-+	},
- 	{},
- };
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+index 6ad17e69e32d..f2ced0147534 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+@@ -35,6 +35,44 @@ mtk_vdec_find_format(struct v4l2_format *f,
+ 	return NULL;
+ }
  
++static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_ctx *ctx, int format_index)
++{
++	const struct mtk_vcodec_dec_pdata *dec_pdata = ctx->dev->vdec_pdata;
++	const struct mtk_video_fmt *fmt;
++	struct mtk_q_data *q_data;
++	int num_frame_count = 0, i;
++	bool ret = true;
++
++	for (i = 0; i < *dec_pdata->num_formats; i++) {
++		if (dec_pdata->vdec_formats[i].type != MTK_FMT_FRAME)
++			continue;
++
++		num_frame_count++;
++	}
++
++	if (num_frame_count == 1)
++		return true;
++
++	fmt = &dec_pdata->vdec_formats[format_index];
++	q_data = &ctx->q_data[MTK_Q_DATA_SRC];
++	switch (q_data->fmt->fourcc) {
++	case V4L2_PIX_FMT_VP8_FRAME:
++		if (fmt->fourcc == V4L2_PIX_FMT_MM21)
++			ret = true;
++		break;
++	case V4L2_PIX_FMT_H264_SLICE:
++	case V4L2_PIX_FMT_VP9_FRAME:
++		if (fmt->fourcc == V4L2_PIX_FMT_MM21)
++			ret = false;
++		break;
++	default:
++		ret = true;
++		break;
++	};
++
++	return ret;
++}
++
+ static struct mtk_q_data *mtk_vdec_get_q_data(struct mtk_vcodec_ctx *ctx,
+ 					      enum v4l2_buf_type type)
+ {
+@@ -578,6 +616,9 @@ static int vidioc_enum_fmt(struct v4l2_fmtdesc *f, void *priv,
+ 		    dec_pdata->vdec_formats[i].type != MTK_FMT_FRAME)
+ 			continue;
+ 
++		if (!output_queue && !mtk_vdec_get_cap_fmt(ctx, i))
++			continue;
++
+ 		if (j == f->index)
+ 			break;
+ 		++j;
 -- 
 2.25.1
 
