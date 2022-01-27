@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4931C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 11:18:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5308FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 11:18:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ljCyC7U0qPjAmj58JMjXm7YRxm8mySo00m5eEY/sQGI=; b=m3wGDTW/XyMhQv
-	SrWjmhKJP0NVXGRXP6vqisL/WPEbbI7b/3eb1+WFzCtwW9vq4gdd+jiL61FGy89q8RR7Q0TW2qjqX
-	Vym66zqRWS2hjvUuj7MG2h1x4adfIrYxUY8lsFcoNnqZXhzkN99wwCgqkLqUG2WQ+pnLliguNv8RK
-	0dT9stUvXC6DECe5q9vl0+66n8LrFewobY713QelW+bG3k/5zOd2kp6YISVXdc+dC8XZupHh0O/ij
-	guJUp+acnvKWLCjMYzaVY+BKpb2OGaTfUQYQiSHSNLD/E2XXpoXfONaZ7BQc2K0lYaVE0BzLW+K68
-	DeO3V6BJLUaMl7gUtP+w==;
+	List-Owner; bh=wNdRfpHSfPrXpX36Mu/pxobAh1U5A7+OVlI6MPIzquw=; b=jVOc1zhdpFwO0Q
+	ptYyz692onoV/iCB3Hvg00+CUnSBCGVLd1e/h4OpiAB32jV5UoeLi+eSLs6qTXX9R3PBqjrOZHSQR
+	djLRaU2vlNQjHhQOrsEvDMbGBr5vZDa0+2hwPvevcIbVrcXYLRD4ONgJoTPZTBdZOax9DudCnD+zW
+	4lPiNXlqG2bem3irP6o6Fz+9m81iPYk47f9uu2LnsRPuTjLOVkEz8IKAwvF7WnTPBcWbom12vfYpA
+	d5OlMzXCz6n3bK67F9hCscVqlzRSqik3+i5cFiojDH6WmIWHPbEQxDRXZvTpvHgVnW1NrUN03W7Dp
+	ZJRYRy6+vF3ATqehfbkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nD2n1-00FNJM-2z; Thu, 27 Jan 2022 11:18:07 +0000
+	id 1nD2n3-00FNK7-AI; Thu, 27 Jan 2022 11:18:09 +0000
 Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nD2ko-00FMMp-Bk
- for linux-mediatek@lists.infradead.org; Thu, 27 Jan 2022 11:15:51 +0000
-Received: by mail-wr1-x434.google.com with SMTP id m14so3861347wrg.12
- for <linux-mediatek@lists.infradead.org>; Thu, 27 Jan 2022 03:15:50 -0800 (PST)
+ id 1nD2kl-00FMKi-UP
+ for linux-mediatek@lists.infradead.org; Thu, 27 Jan 2022 11:15:50 +0000
+Received: by mail-wr1-x434.google.com with SMTP id w11so4118782wra.4
+ for <linux-mediatek@lists.infradead.org>; Thu, 27 Jan 2022 03:15:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=KlQywLM4SRqpFvXyB5cSelAzc/97HjHZ8/iIFU/mpmM=;
- b=YAjPQHn2jyReqNUQMXrw1ZayyBkZHfk+LHsA57oh0s+AisAvo0tKWI8P/KBeFkz+j8
- qwMKQlXRNDE6OBbqypYngIp1GgtcbBnRotElRJ9iYemRnoQm4dlNlm7uG/0UqjDwO6k3
- Fc2qEg2YXJz/BZXRKURbGqu4o/fo1jeR7fF/s3TnxSSB/z/xEt4/ypS22ansyQQKHR8P
- Hjre9Mo1g/347I3Z1ReqEE+9v/9opB93MNklB1e/EJR7e7jLtkbxoV12OnSufjBA/f/4
- qElFOVXmgJP01MYw6yZkTnMdLZvba3th0qupQXXF14tvGUehY/jX703yA2xwTNyWPYJp
- De0Q==
+ bh=VzOY5Y5ZARqurJbCJsGMa8NafX+eYNxiUqkqBIajbmE=;
+ b=l3ZHQo1J5kr4npk8zAwtX7izKmqxleBFRCpR19Y/bz4iG9xephAo6pg9JVFT81OP+b
+ rIcvTURY7QYKWctSXvaT5YO25L+NCMZBxlHIiiYxHY1yrdtd3kMv2cp5Je//viZq6CRb
+ SsTJy3Wso+DFVP7TxcLV3JPf9lHwuEEykZPUF+p64/Zysqe/+f+b1cdd1JGdPwDRbS31
+ O6T6KKZDQJt5CTMWYtnOaA1ac7jYF2Rrx438XK4BunBr/g6b3szqfn2em2PED9IYg8Vh
+ f/Wyvt8O0ovIC7kTyCL4pb2igY96oVcBEDvhB0haIVzGF2fTPOQxnYsdxnBJjQnAnG6N
+ NQog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=KlQywLM4SRqpFvXyB5cSelAzc/97HjHZ8/iIFU/mpmM=;
- b=Cec4CzEXuvrDB+cq7y/AJoIHgOVaF38U7TlZPD8OoaPZMDI5blerbjYIjtVD/8ycGA
- GMagqv03RR92kVQGdGtMq5j+ymZ9wT5ZIlOqTqbC3AAdjQL98J0xwaTLuPVU5phCdSaE
- D/8XbhyhjhqTrSF2+GDDsdA5uq2UicxlSxVDAd7bjGoH5OkcF5XvcwozfcD8oD2lpBzp
- I+BXZQlsnifLXIwKGNcj3vF4MOKT+caZm78t8MLhQXc6xHhTjNrSc6nHn32sFVoBWmMJ
- ll1mJh6kytBVsgiUkZNkOjj/7yz8IIA56TLpYnc/q0wGO+GPse4Va68Eq1+TDAZW5w1L
- OoyA==
-X-Gm-Message-State: AOAM531LA85bYpwaGeA+0phxG4zCznGYcpeQSc7Zrw91tUWPVdWgnNzS
- X2etL1gviyiduMlMycj1StjVc8B34olFBg==
-X-Google-Smtp-Source: ABdhPJw+JjcilDSvB+7drez4412ivVAsEaAb4cKkUtfLWoOfBwIh3hzJFVfLRydnxEUIl87CwlU9lQ==
-X-Received: by 2002:adf:e7cc:: with SMTP id e12mr2582361wrn.637.1643282149126; 
- Thu, 27 Jan 2022 03:15:49 -0800 (PST)
+ bh=VzOY5Y5ZARqurJbCJsGMa8NafX+eYNxiUqkqBIajbmE=;
+ b=npw7XNod0S6+HZrfvmENF0D/3mJsOjo9X1y+fayqqQXyGaLjxqKZFsVbmSLoLR9zXF
+ 6bNbQDsklQ4OEBYgu/MzIN8aciuCvFcF6HMUQNl+yJ8T0D94jZ0BLs2OI+C9CzdFkXi6
+ 2l+2NEamax3vtkaxIZSXuPGFaOgCeVKYEWVRi6xskYRGSe5QLmcSk5jeDhKFUoOLQqHd
+ QvXUdLjmFExc2TJVR5lHiAqSX/0BtFcn78d4lir2izKtALk5CaFe3mpX5vbAfmRgbU7O
+ qrxAvgx620ZyCacOIL8Jb2MICh7pEZ+mlanbgw4WLRRey1Os8owPS21ZPUCtdo5BDsKA
+ e65Q==
+X-Gm-Message-State: AOAM5313Vt6M9c6jadW4fWt5GCEVZY+PMpLQM4tulf4CmBKBz2nr5iCG
+ ENzSqvd9GcK5PRjBgwihIRzjSA==
+X-Google-Smtp-Source: ABdhPJxcHdFgjTbWUKjv+WxRkx0ueHywRrKPEVavDmQGLTncBhVWFjypPFXoeapPc/uNMiStJk+OgA==
+X-Received: by 2002:adf:ef48:: with SMTP id c8mr2641337wrp.368.1643282146347; 
+ Thu, 27 Jan 2022 03:15:46 -0800 (PST)
 Received: from localhost.localdomain
  ([2a01:cb19:8b2c:5e00:7d3d:d638:46ec:78dd])
- by smtp.gmail.com with ESMTPSA id r7sm5956311wma.39.2022.01.27.03.15.47
+ by smtp.gmail.com with ESMTPSA id r7sm5956311wma.39.2022.01.27.03.15.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Jan 2022 03:15:48 -0800 (PST)
+ Thu, 27 Jan 2022 03:15:46 -0800 (PST)
 From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
 To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
  Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
@@ -71,17 +71,16 @@ Cc: Mattijs Korpershoek <mkorpershoek@baylibre.com>,
  linux-input@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v20 3/3] arm64: defconfig: Add CONFIG_KEYBOARD_MT6779=m
-Date: Thu, 27 Jan 2022 12:15:26 +0100
-Message-Id: <20220127111526.3716689-4-mkorpershoek@baylibre.com>
+Subject: [PATCH v20 2/3] Input: mt6779-keypad - Add MediaTek keypad driver
+Date: Thu, 27 Jan 2022 12:15:25 +0100
+Message-Id: <20220127111526.3716689-3-mkorpershoek@baylibre.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220127111526.3716689-1-mkorpershoek@baylibre.com>
 References: <20220127111526.3716689-1-mkorpershoek@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220127_031550_482650_57EC0E0D 
-X-CRM114-Status: UNSURE (   9.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220127_031548_010713_DDF5D5F2 
+X-CRM114-Status: GOOD (  24.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,27 +99,279 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "fengping.yu" <fengping.yu@mediatek.com>
 
-Add Mediatek matrix keypad support in defconfig.
+This patch adds matrix keypad support for Mediatek SoCs.
 
 Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
-Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
 Reviewed-by: Marco Felsch <m.felsch@pengutronix.de>
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
 ---
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/input/keyboard/Kconfig         |  12 ++
+ drivers/input/keyboard/Makefile        |   1 +
+ drivers/input/keyboard/mt6779-keypad.c | 218 +++++++++++++++++++++++++
+ 3 files changed, 231 insertions(+)
+ create mode 100644 drivers/input/keyboard/mt6779-keypad.c
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index f2e2b9bdd702..099a9e68711c 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -390,6 +390,7 @@ CONFIG_KEYBOARD_GPIO=y
- CONFIG_KEYBOARD_SNVS_PWRKEY=m
- CONFIG_KEYBOARD_IMX_SC_KEY=m
- CONFIG_KEYBOARD_CROS_EC=y
-+CONFIG_KEYBOARD_MT6779=m
- CONFIG_INPUT_TOUCHSCREEN=y
- CONFIG_TOUCHSCREEN_ATMEL_MXT=m
- CONFIG_TOUCHSCREEN_GOODIX=m
+diff --git a/drivers/input/keyboard/Kconfig b/drivers/input/keyboard/Kconfig
+index 0c607da9ee10..03a9530f620e 100644
+--- a/drivers/input/keyboard/Kconfig
++++ b/drivers/input/keyboard/Kconfig
+@@ -779,6 +779,18 @@ config KEYBOARD_BCM
+ 	  To compile this driver as a module, choose M here: the
+ 	  module will be called bcm-keypad.
+ 
++config KEYBOARD_MT6779
++	tristate "MediaTek Keypad Support"
++	depends on ARCH_MEDIATEK || COMPILE_TEST
++	select REGMAP_MMIO
++	select INPUT_MATRIXKMAP
++	help
++	  Say Y here if you want to use the keypad on MediaTek SoCs.
++	  If unsure, say N.
++
++	  To compile this driver as a module, choose M here: the
++	  module will be called mt6779-keypad.
++
+ config KEYBOARD_MTK_PMIC
+ 	tristate "MediaTek PMIC keys support"
+ 	depends on MFD_MT6397
+diff --git a/drivers/input/keyboard/Makefile b/drivers/input/keyboard/Makefile
+index e3c8648f834e..721936e90290 100644
+--- a/drivers/input/keyboard/Makefile
++++ b/drivers/input/keyboard/Makefile
+@@ -44,6 +44,7 @@ obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
+ obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
+ obj-$(CONFIG_KEYBOARD_MCS)		+= mcs_touchkey.o
+ obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
++obj-$(CONFIG_KEYBOARD_MT6779)		+= mt6779-keypad.o
+ obj-$(CONFIG_KEYBOARD_MTK_PMIC) 	+= mtk-pmic-keys.o
+ obj-$(CONFIG_KEYBOARD_NEWTON)		+= newtonkbd.o
+ obj-$(CONFIG_KEYBOARD_NOMADIK)		+= nomadik-ske-keypad.o
+diff --git a/drivers/input/keyboard/mt6779-keypad.c b/drivers/input/keyboard/mt6779-keypad.c
+new file mode 100644
+index 000000000000..369366f18fd2
+--- /dev/null
++++ b/drivers/input/keyboard/mt6779-keypad.c
+@@ -0,0 +1,218 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (C) 2022 MediaTek Inc.
++ * Author Fengping Yu <fengping.yu@mediatek.com>
++ */
++#include <linux/bitops.h>
++#include <linux/clk.h>
++#include <linux/input/matrix_keypad.h>
++#include <linux/interrupt.h>
++#include <linux/module.h>
++#include <linux/property.h>
++#include <linux/platform_device.h>
++#include <linux/regmap.h>
++
++#define MTK_KPD_NAME		"mt6779-keypad"
++#define MTK_KPD_MEM		0x0004
++#define MTK_KPD_DEBOUNCE	0x0018
++#define MTK_KPD_DEBOUNCE_MASK	GENMASK(13, 0)
++#define MTK_KPD_DEBOUNCE_MAX_MS	256
++#define MTK_KPD_NUM_MEMS	5
++#define MTK_KPD_NUM_BITS	136	/* 4*32+8 MEM5 only use 8 BITS */
++
++struct mt6779_keypad {
++	struct regmap *regmap;
++	struct input_dev *input_dev;
++	struct clk *clk;
++	void __iomem *base;
++	u32 n_rows;
++	u32 n_cols;
++	DECLARE_BITMAP(keymap_state, MTK_KPD_NUM_BITS);
++};
++
++static const struct regmap_config mt6779_keypad_regmap_cfg = {
++	.reg_bits = 32,
++	.val_bits = 32,
++	.reg_stride = sizeof(u32),
++	.max_register = 36,
++};
++
++static irqreturn_t mt6779_keypad_irq_handler(int irq, void *dev_id)
++{
++	struct mt6779_keypad *keypad = dev_id;
++	unsigned short *keycode = keypad->input_dev->keycode;
++	DECLARE_BITMAP(new_state, MTK_KPD_NUM_BITS);
++	DECLARE_BITMAP(change, MTK_KPD_NUM_BITS);
++	int bit_nr;
++	int pressed;
++	unsigned short code;
++	int row, col;
++	int row_shift = get_count_order(keypad->n_cols);
++
++	regmap_bulk_read(keypad->regmap, MTK_KPD_MEM,
++			 new_state, MTK_KPD_NUM_MEMS);
++
++	bitmap_xor(change, new_state, keypad->keymap_state, MTK_KPD_NUM_BITS);
++
++	for_each_set_bit(bit_nr, change, MTK_KPD_NUM_BITS) {
++	/* For 32bits register, only bits [15:0] use to indicate key status */
++		if (bit_nr % 32 >= 16)
++			continue;
++
++		/* 1: not pressed, 0: pressed */
++		pressed = !test_bit(bit_nr, new_state);
++		dev_dbg(&keypad->input_dev->dev, "%s",
++			pressed ? "pressed" : "released");
++
++		row = bit_nr / 32;
++		col = bit_nr % 32;
++
++		code = keycode[MATRIX_SCAN_CODE(row, col, row_shift)];
++
++		input_report_key(keypad->input_dev, code, pressed);
++		input_sync(keypad->input_dev);
++
++		dev_dbg(&keypad->input_dev->dev,
++			"report Linux keycode = %d\n", code);
++	}
++
++	bitmap_copy(keypad->keymap_state, new_state, MTK_KPD_NUM_BITS);
++
++	return IRQ_HANDLED;
++}
++
++static void mt6779_keypad_clk_disable(void *data)
++{
++	clk_disable_unprepare(data);
++}
++
++static int mt6779_keypad_pdrv_probe(struct platform_device *pdev)
++{
++	struct mt6779_keypad *keypad;
++	unsigned int irq;
++	u32 debounce;
++	bool wakeup;
++	int error;
++
++	keypad = devm_kzalloc(&pdev->dev, sizeof(*keypad), GFP_KERNEL);
++	if (!keypad)
++		return -ENOMEM;
++
++	keypad->base = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(keypad->base))
++		return PTR_ERR(keypad->base);
++
++	keypad->regmap = devm_regmap_init_mmio(&pdev->dev,
++					       keypad->base,
++					       &mt6779_keypad_regmap_cfg);
++	if (IS_ERR(keypad->regmap)) {
++		dev_err(&pdev->dev,
++			"regmap init failed:%pe\n", keypad->regmap);
++		return PTR_ERR(keypad->regmap);
++	}
++
++	bitmap_fill(keypad->keymap_state, MTK_KPD_NUM_BITS);
++
++	keypad->input_dev = devm_input_allocate_device(&pdev->dev);
++	if (!keypad->input_dev) {
++		dev_err(&pdev->dev, "Failed to allocate input dev\n");
++		return -ENOMEM;
++	}
++
++	keypad->input_dev->name = MTK_KPD_NAME;
++	keypad->input_dev->id.bustype = BUS_HOST;
++
++	error = matrix_keypad_parse_properties(&pdev->dev, &keypad->n_rows,
++					       &keypad->n_cols);
++	if (error) {
++		dev_err(&pdev->dev, "Failed to parse keypad params\n");
++		return error;
++	}
++
++	if (device_property_read_u32(&pdev->dev, "debounce-delay-ms",
++				     &debounce))
++		debounce = 16;
++
++	if (debounce > MTK_KPD_DEBOUNCE_MAX_MS) {
++		dev_err(&pdev->dev, "Debounce time exceeds the maximum allowed time %dms\n",
++			MTK_KPD_DEBOUNCE_MAX_MS);
++		return -EINVAL;
++	}
++
++	wakeup = device_property_read_bool(&pdev->dev, "wakeup-source");
++
++	dev_dbg(&pdev->dev, "n_row=%d n_col=%d debounce=%d\n",
++		keypad->n_rows, keypad->n_cols, debounce);
++
++	error = matrix_keypad_build_keymap(NULL, NULL,
++					   keypad->n_rows,
++					   keypad->n_cols,
++					   NULL,
++					   keypad->input_dev);
++	if (error) {
++		dev_err(&pdev->dev, "Failed to build keymap\n");
++		return error;
++	}
++
++	regmap_write(keypad->regmap, MTK_KPD_DEBOUNCE,
++		     (debounce * 32) & MTK_KPD_DEBOUNCE_MASK);
++
++	keypad->clk = devm_clk_get(&pdev->dev, "kpd");
++	if (IS_ERR(keypad->clk))
++		return PTR_ERR(keypad->clk);
++
++	error = clk_prepare_enable(keypad->clk);
++	if (error) {
++		dev_err(&pdev->dev, "cannot prepare/enable keypad clock\n");
++		return error;
++	}
++
++	error = devm_add_action_or_reset(&pdev->dev, mt6779_keypad_clk_disable, keypad->clk);
++	if (error)
++		return error;
++
++	irq = platform_get_irq(pdev, 0);
++	if (irq < 0)
++		return irq;
++
++	error = devm_request_threaded_irq(&pdev->dev, irq,
++					  NULL, mt6779_keypad_irq_handler,
++					  IRQF_ONESHOT,
++					  MTK_KPD_NAME, keypad);
++	if (error) {
++		dev_err(&pdev->dev, "Failed to request IRQ#%d:%d\n",
++			irq, error);
++		return error;
++	}
++
++	error = input_register_device(keypad->input_dev);
++	if (error) {
++		dev_err(&pdev->dev, "Failed to register device\n");
++		return error;
++	}
++
++	error =  device_init_wakeup(&pdev->dev, wakeup);
++	if (error)
++		dev_warn(&pdev->dev, "device_init_wakeup fail\n");
++
++	return 0;
++}
++
++static const struct of_device_id mt6779_keypad_of_match[] = {
++	{ .compatible = "mediatek,mt6779-keypad" },
++	{ .compatible = "mediatek,mt6873-keypad" },
++	{ /* sentinel */ }
++};
++
++static struct platform_driver mt6779_keypad_pdrv = {
++	.probe = mt6779_keypad_pdrv_probe,
++	.driver = {
++		   .name = MTK_KPD_NAME,
++		   .of_match_table = mt6779_keypad_of_match,
++	},
++};
++module_platform_driver(mt6779_keypad_pdrv);
++
++MODULE_AUTHOR("Mediatek Corporation");
++MODULE_DESCRIPTION("MTK Keypad (KPD) Driver");
++MODULE_LICENSE("GPL");
 -- 
 2.32.0
 
