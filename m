@@ -4,67 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39615C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 10:25:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A404C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 10:27:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YAomjotpLGbSSUNYj0TWdnxMXweHZZFT1CVPfc0J/JU=; b=Z+SI+uWynO4E7+KTfcCEDf09LW
-	K5p7fJ9mZLJkXdvOrqe6FyDDsMCS6N+hJlByNFy8MVKZK4wxQW/vpiTt+Oi6I/BGY+VCelFz0P0VB
-	Z8rH4pC53GNY4miJGLX78Tr9UIrAWHttu8d+nNz+6z9gCHB1DHwp82FmMvhaB0Lf83LYF3liaxmE8
-	AEQfRp0WAsDATkVwWp3FcYKgKjGSe4ukk7T45PezZZowThX1GevYKRbxYSLdQK4+FHcSdd5X39Klf
-	OMqM3S5kjb5jxmDYlnDehBUyuPf1L27I2Y7GK0qwH5U2Z5aNE6PA8vmEj4b3IWp2+mjosDuk7zMPF
-	zVjItjYw==;
+	bh=c/RD/m2SACIP5Df4jd/ItXEw4aAzdqE3dxmd/+n5xuo=; b=oJdw40ucVW5lLka55KuwXK4zoz
+	KiqgLEtdTBV1iZusqZtzYCY14wAZpk1Bx7snqRIcQWcmubmrTQMSr6BN0EYm9a/P+RD9XrqfMzzmd
+	shoF0/XK3/r43YH7zGL+6cvo5tG84B/LOusEU4rMhT/zfBzlY1nvldbWLhPDlobnEmxKCh9L/bp6b
+	8DC0KgAVZG+5pKps++k8wtAhTq3+jNX353m/WoBoDd29y/RCBZqTp+u+dLn2b1xw2U/9rQz4OK5Kk
+	1og7ykJ8+9OeISfqvnkUrCGrV19Y2i8GfPhp8SrVd/lnizqcVA9PtZBAAt/q4konGkn2/ZFgUiVNc
+	uqGpWLRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nD1xc-00F8v7-G1; Thu, 27 Jan 2022 10:25:00 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nD20E-00F9PI-R6; Thu, 27 Jan 2022 10:27:42 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nD1xQ-00F8sO-BC; Thu, 27 Jan 2022 10:24:50 +0000
+ id 1nD1zz-00F9MO-Jb; Thu, 27 Jan 2022 10:27:30 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 1788A1F44FF0
+ (Authenticated sender: kholk11) with ESMTPSA id AB1741F44FF6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1643279084;
- bh=gjQ9eUgUEeaQAmTYpCOWfZW2UjC1PUR8v4+9IjLVhOI=;
+ s=mail; t=1643279245;
+ bh=1pHBK+qOfKgSkn2nYNSNhU9hK3UyhbI/pSuMBl+2Jgc=;
  h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=FkRivsz71o7K1peXx1QazJy6vo2p/1GUA8JJi6DoHiZ7Ppp9OfV5i+GCR0bJ82l5X
- 5rRB2ecrJbLsbGZtvWF7jL5sK4W4rhtfZmuqJxbbWW0JfgoeFceq3YvHXwPCR6SDCL
- ezUwB/ESZkqlCk/+4ela5+KvRtewn4n9pZnJgD6d1HomD8qRoNTw2F5ja2vAdwLu0H
- dG3exMi67BDESxpmeZ55SlC/dbnig6A/tmijR6hOCU9Od/N0chNkO/+Vd6AvxjW8q+
- uHhchAwz4ia1Q7+bjc/vDS3CMxX4oxvgEgcp0ugKNugcUp2yTSqyqKabHZ6CnPMd94
- GeZPnvDx0Dm3g==
-Subject: Re: [PATCH] arm64: dts: mt8195: add gce node
+ b=GXCEFQEttXLRZlKiLfPCGvgiQJeFii+EA73219Rq3p71mQ6V/BRSl+97zM/J4i/QI
+ XkcJHZjt8qS7+lqQqXW9J5RBzeC+WMNY3VhMnw8fMaR9P0oLW1g465nC/Q+VdoRzz3
+ EZzhACVcHHFhjM0k9f6PoGuVwL6PCPN28zVr2YIP+honKpGkiChr/MniAb5UdInETg
+ WUBdk0riz991ynPs8vqX8PH3sxHWP6S2D8IQh6UfWJFdlheGHJFzeFYTiu+t5boE60
+ JhJSJxyB0AcKBOwCiJMKnKjBf9CW3VvGHis36oAXWD//RYWTXHIG+VsW4bVfbW3NlM
+ /a5awB9ZcNv0A==
+Subject: Re: [PATCH v15 10/12] drm/mediatek: add DSC support for mediatek-drm
 To: "jason-jh.lin" <jason-jh.lin@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Sean Christopherson
- <seanjc@google.com>, maciej.szmigiero@oracle.com,
- David Matlack <dmatlack@google.com>, Jing Zhang <jingzhangos@google.com>,
- Marc Zyngier <maz@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sean Wang <sean.wang@mediatek.com>, Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, ryder.lee@kernel.org,
- wenst@chromium.org, chunfeng.yun@mediatek.com,
- Seiya Wang <seiya.wang@mediatek.com>, moudy.ho@mediatek.com,
- roy-cw.yeh@mediatek.com, nancy.lin@mediatek.com, singo.chang@mediatek.com,
- Macpaul.Lin@mediatek.com
-References: <20220126090109.32143-1-jason-jh.lin@mediatek.com>
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+References: <20220126071932.32615-1-jason-jh.lin@mediatek.com>
+ <20220126071932.32615-11-jason-jh.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <15d12a78-b8e2-f2f6-9bb0-9e501f245b94@collabora.com>
-Date: Thu, 27 Jan 2022 11:24:39 +0100
+Message-ID: <b5e3d5a9-9997-fce5-9201-bccba1af6c7a@collabora.com>
+Date: Thu, 27 Jan 2022 11:27:21 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20220126090109.32143-1-jason-jh.lin@mediatek.com>
+In-Reply-To: <20220126071932.32615-11-jason-jh.lin@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220127_022448_641134_956F40AC 
-X-CRM114-Status: GOOD (  17.53  )
+X-CRM114-CacheID: sfid-20220127_022727_814559_65C9D7DF 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,82 +65,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Jitao shi <jitao.shi@mediatek.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, singo.chang@mediatek.com,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, roy-cw.yeh@mediatek.com,
+ Fabien Parent <fparent@baylibre.com>, moudy.ho@mediatek.com,
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ hsinyi@chromium.org, CK Hu <ck.hu@mediatek.com>, nancy.lin@mediatek.com,
+ linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/01/22 10:01, jason-jh.lin ha scritto:
-> Add gce node and gce alias on mt8195 dts file.
+Il 26/01/22 08:19, jason-jh.lin ha scritto:
+> DSC is designed for real-time systems with real-time compression,
+> transmission, decompression and display.
+> The DSC standard is a specification of the algorithms used for
+> compressing and decompressing image display streams, including
+> the specification of the syntax and semantics of the compressed
+> video bit stream.
 > 
 > Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> ---
-> This patch is based on [1]
-> 
-> [1] arm64: dts: Add mediatek SoC mt8195 and evaluation board
-> - https://patchwork.kernel.org/project/linux-mediatek/patch/20220112114724.1953-4-tinghan.shen@mediatek.com/
-> ---
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 22 ++++++++++++++++++++++
->   1 file changed, 22 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index a363e82f6988..d778ca598d18 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -6,6 +6,7 @@
->   
->   /dts-v1/;
->   #include <dt-bindings/clock/mt8195-clk.h>
-> +#include <dt-bindings/gce/mt8195-gce.h>
->   #include <dt-bindings/interrupt-controller/arm-gic.h>
->   #include <dt-bindings/interrupt-controller/irq.h>
->   #include <dt-bindings/phy/phy.h>
-> @@ -18,6 +19,11 @@
->   	#address-cells = <2>;
->   	#size-cells = <2>;
->   
-> +	aliases {
-> +		gce0 = &gce0;
-> +		gce1 = &gce1;
-> +	};
-> +
->   	cpus {
->   		#address-cells = <1>;
->   		#size-cells = <0>;
-> @@ -367,6 +373,22 @@
->   			assigned-clock-parents = <&topckgen CLK_TOP_ULPOSC1_D10>;
->   		};
->   
-> +		gce0: mdp_mailbox@10320000 {
+> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 
-Just "mailbox" is fine.
-		gce0: mailbox@10320000 {
-
-> +			compatible = "mediatek,mt8195-gce";
-> +			reg = <0 0x10320000 0 0x4000>;
-> +			interrupts = <GIC_SPI 226 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			#mbox-cells = <2>;
-> +			clocks = <&infracfg_ao CLK_INFRA_AO_GCE>;
-> +		};
-> +
-> +		gce1: disp_mailbox@10330000 {
-
-Same here, please.
-
-After that,
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> +			compatible = "mediatek,mt8195-gce";
-> +			reg = <0 0x10330000 0 0x4000>;
-> +			interrupts = <GIC_SPI 228 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			#mbox-cells = <2>;
-> +			clocks = <&infracfg_ao CLK_INFRA_AO_GCE2>;
-> +		};
-> +
->   		scp_adsp: clock-controller@10720000 {
->   			compatible = "mediatek,mt8195-scp_adsp";
->   			reg = <0 0x10720000 0 0x1000>;
-> 
+Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 _______________________________________________
 Linux-mediatek mailing list
