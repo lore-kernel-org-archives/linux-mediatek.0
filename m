@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69BCCC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 01:59:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71C42C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 01:59:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=blKyEVR89R6idQNbe9c+vFjz5ZIkhfvO95qVcZwD2+g=; b=fZASsivso2AORu
-	0EggwjMqXcdkUEfGZJU3GS93wDy02YdHS5f0GbMExu+VYO2FVBXzZ47/Bg3u5R+vccwYk4xREXKK6
-	9HYXOhzXkWU5SsSzpyDqtFQOtlyeapJt4idEW7HmWtf/TOrsUQ2vS+MINf/F0r5OtEssoE+aPN0WD
-	/2Qtexfh0cflJys1w3DC38bTySDPuCvF+hjzLSAusYefquXZbK5hyb6Bzc1vFZ8NugxoBUkvVkDmp
-	fOSPHw0pdU4PYAgmj37x+PqVF+4DmgdghGStalG6f2y3Xp6X23EugbIUOC4pc6L54CbizTe7bVRKV
-	M8s3lwYlh/YMNOC2iwqg==;
+	List-Owner; bh=rSWzH0Ff5ACs+jeE7caQoIZl70Ewne0GzxL1z5wVkLA=; b=XZ/pEjqgnXB0Es
+	st+L3fT/9keVPJiqxJ+cT9xCg52Of8xMNMRPpN5sHFYOJ58hw9QyQUyx6Nl40S7P4xsskVv0mN9Ms
+	KgNLgKjZMAYlVvakaaUCcDDCorEdZVHA0eFXXgNkfMsSMXhvW4yqoxVJrQVnrqB306JSCSltJY6ej
+	bTQiBQ6A0lTs6YWrWs+dml9Q0+UB0jRTxyMOwl+cW4NuINo9bPbn6kC/w/HaMgWi2jEXaNDhTJ9LA
+	10bE9jqilP++Ciyq7Fq5DgXJl4pDCy4h2BNnZ0dERCWucBH5mtKtr17G1pvue8OfHMB5ZTOLLd1ss
+	pSasTWBmlAZfG5a8BtPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCu4S-00E0na-4K; Thu, 27 Jan 2022 01:59:32 +0000
+	id 1nCu4g-00E0uv-4U; Thu, 27 Jan 2022 01:59:46 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCu45-00E0cQ-1y; Thu, 27 Jan 2022 01:59:10 +0000
-X-UUID: 27d9fd9ad240460e8ea37803b264aa05-20220126
-X-UUID: 27d9fd9ad240460e8ea37803b264aa05-20220126
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1nCu46-00E0cQ-Gw; Thu, 27 Jan 2022 01:59:11 +0000
+X-UUID: c220f1ac20714b28b22ecd04cc249692-20220126
+X-UUID: c220f1ac20714b28b22ecd04cc249692-20220126
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <biao.huang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1329771496; Wed, 26 Jan 2022 18:59:02 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 26 Jan 2022 17:59:02 -0800
+ with ESMTP id 509850861; Wed, 26 Jan 2022 18:59:08 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 26 Jan 2022 17:59:07 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 27 Jan 2022 09:59:00 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 27 Jan 2022 09:59:06 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 27 Jan 2022 09:58:59 +0800
+ Transport; Thu, 27 Jan 2022 09:59:05 +0800
 From: Biao Huang <biao.huang@mediatek.com>
 To: David Miller <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>,
  Bartosz Golaszewski <brgl@bgdev.pl>, Fabien Parent <fparent@baylibre.com>
@@ -51,18 +51,18 @@ CC: Jakub Kicinski <kuba@kernel.org>, Felix Fietkau <nbd@nbd.name>, "John
  <linux-mediatek@lists.infradead.org>, Biao Huang <biao.huang@mediatek.com>,
  Yinghua Pan <ot_yinghua.pan@mediatek.com>, <srv_heupstream@mediatek.com>,
  Macpaul Lin <macpaul.lin@mediatek.com>
-Subject: [PATCH net-next v2 1/9] net: ethernet: mtk-star-emac: store
- bit_clk_div in compat structure
-Date: Thu, 27 Jan 2022 09:58:49 +0800
-Message-ID: <20220127015857.9868-2-biao.huang@mediatek.com>
+Subject: [PATCH net-next v2 6/9] net: ethernet: mtk-star-emac: add timing
+ adjustment support
+Date: Thu, 27 Jan 2022 09:58:54 +0800
+Message-ID: <20220127015857.9868-7-biao.huang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220127015857.9868-1-biao.huang@mediatek.com>
 References: <20220127015857.9868-1-biao.huang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220126_175909_150000_C630AB8F 
-X-CRM114-Status: GOOD (  15.57  )
+X-CRM114-CacheID: sfid-20220126_175910_602645_E9319E81 
+X-CRM114-Status: GOOD (  15.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,87 +79,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabien Parent <fparent@baylibre.com>
-
-Not all the SoC are using the same clock divider. Move the divider into
-a compat structure specific to the SoCs.
+Add simple clock inversion for timing adjustment in driver.
+Add property "mediatek,txc-inverse" or "mediatek,rxc-inverse" to
+device node when necessary.
 
 Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Signed-off-by: Yinghua Pan <ot_yinghua.pan@mediatek.com>
 ---
- drivers/net/ethernet/mediatek/mtk_star_emac.c | 23 +++++++++++++++----
- 1 file changed, 19 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_star_emac.c | 34 +++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-index 1d5dd2015453..7fd8ec0fc636 100644
+index d69f75661e75..d5e974e0db6d 100644
 --- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
 +++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-@@ -17,6 +17,7 @@
- #include <linux/module.h>
- #include <linux/netdevice.h>
- #include <linux/of.h>
-+#include <linux/of_device.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
- #include <linux/platform_device.h>
-@@ -232,6 +233,10 @@ struct mtk_star_ring {
- 	unsigned int tail;
- };
+@@ -131,6 +131,11 @@ static const char *const mtk_star_clk_names[] = { "core", "reg", "trans" };
+ #define MTK_STAR_REG_INT_MASK			0x0054
+ #define MTK_STAR_BIT_INT_MASK_FNRC		BIT(6)
  
-+struct mtk_star_compat {
-+	unsigned char bit_clk_div;
-+};
++/* Delay-Macro Register */
++#define MTK_STAR_REG_TEST0			0x0058
++#define MTK_STAR_BIT_INV_RX_CLK			BIT(30)
++#define MTK_STAR_BIT_INV_TX_CLK			BIT(31)
 +
- struct mtk_star_priv {
- 	struct net_device *ndev;
- 
-@@ -257,6 +262,8 @@ struct mtk_star_priv {
+ /* Misc. Config Register */
+ #define MTK_STAR_REG_TEST1			0x005c
+ #define MTK_STAR_BIT_TEST1_RST_HASH_MBIST	BIT(31)
+@@ -268,6 +273,8 @@ struct mtk_star_priv {
  	int duplex;
  	int pause;
+ 	bool rmii_rxc;
++	bool rx_inv;
++	bool tx_inv;
  
-+	const struct mtk_star_compat *compat_data;
-+
- 	/* Protects against concurrent descriptor access. */
- 	spinlock_t lock;
+ 	const struct mtk_star_compat *compat_data;
  
-@@ -899,7 +906,7 @@ static void mtk_star_init_config(struct mtk_star_priv *priv)
- 	regmap_write(priv->regs, MTK_STAR_REG_SYS_CONF, val);
- 	regmap_update_bits(priv->regs, MTK_STAR_REG_MAC_CLK_CONF,
- 			   MTK_STAR_MSK_MAC_CLK_CONF,
--			   MTK_STAR_BIT_CLK_DIV_10);
-+			   priv->compat_data->bit_clk_div);
+@@ -1450,6 +1457,25 @@ static void mtk_star_clk_disable_unprepare(void *data)
+ 	clk_bulk_disable_unprepare(MTK_STAR_NCLKS, priv->clks);
  }
  
- static void mtk_star_set_mode_rmii(struct mtk_star_priv *priv)
-@@ -1461,6 +1468,7 @@ static int mtk_star_probe(struct platform_device *pdev)
- 
- 	priv = netdev_priv(ndev);
- 	priv->ndev = ndev;
-+	priv->compat_data = of_device_get_match_data(&pdev->dev);
- 	SET_NETDEV_DEV(ndev, dev);
- 	platform_set_drvdata(pdev, ndev);
- 
-@@ -1556,10 +1564,17 @@ static int mtk_star_probe(struct platform_device *pdev)
- 	return devm_register_netdev(dev, ndev);
- }
- 
-+static const struct mtk_star_compat mtk_star_mt8516_compat = {
-+	.bit_clk_div = MTK_STAR_BIT_CLK_DIV_10,
-+};
++static int mtk_star_set_timing(struct mtk_star_priv *priv)
++{
++	struct device *dev = mtk_star_get_dev(priv);
++	unsigned int delay_val = 0;
 +
- static const struct of_device_id mtk_star_of_match[] = {
--	{ .compatible = "mediatek,mt8516-eth", },
--	{ .compatible = "mediatek,mt8518-eth", },
--	{ .compatible = "mediatek,mt8175-eth", },
-+	{ .compatible = "mediatek,mt8516-eth",
-+	  .data = &mtk_star_mt8516_compat },
-+	{ .compatible = "mediatek,mt8518-eth",
-+	  .data = &mtk_star_mt8516_compat },
-+	{ .compatible = "mediatek,mt8175-eth",
-+	  .data = &mtk_star_mt8516_compat },
- 	{ }
- };
- MODULE_DEVICE_TABLE(of, mtk_star_of_match);
++	switch (priv->phy_intf) {
++	case PHY_INTERFACE_MODE_RMII:
++		delay_val |= FIELD_PREP(MTK_STAR_BIT_INV_RX_CLK, priv->rx_inv);
++		delay_val |= FIELD_PREP(MTK_STAR_BIT_INV_TX_CLK, priv->tx_inv);
++		break;
++	default:
++		dev_err(dev, "This interface not supported\n");
++		return -EINVAL;
++	}
++
++	regmap_write(priv->regs, MTK_STAR_REG_TEST0, delay_val);
++
++	return 0;
++}
+ static int mtk_star_probe(struct platform_device *pdev)
+ {
+ 	struct device_node *of_node;
+@@ -1532,6 +1558,8 @@ static int mtk_star_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	priv->rmii_rxc = of_property_read_bool(of_node, "mediatek,rmii-rxc");
++	priv->rx_inv = of_property_read_bool(of_node, "mediatek,rxc-inverse");
++	priv->tx_inv = of_property_read_bool(of_node, "mediatek,txc-inverse");
+ 
+ 	if (priv->compat_data->set_interface_mode) {
+ 		ret = priv->compat_data->set_interface_mode(ndev);
+@@ -1541,6 +1569,12 @@ static int mtk_star_probe(struct platform_device *pdev)
+ 		}
+ 	}
+ 
++	ret = mtk_star_set_timing(priv);
++	if (ret) {
++		dev_err(dev, "Failed to set timing, err = %d\n", ret);
++		return -EINVAL;
++	}
++
+ 	ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(32));
+ 	if (ret) {
+ 		dev_err(dev, "unsupported DMA mask\n");
 -- 
 2.25.1
 
