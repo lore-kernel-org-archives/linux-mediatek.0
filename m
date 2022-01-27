@@ -4,39 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF995C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 11:19:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1C66C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 11:23:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AfA5OUAPFGwJR6PTnnxgbz8O4DP5alyu7cTIcddNBIQ=; b=HaG5BuqVlWAxLpghAkFIlxWHe9
-	5wHQHKVFt0k07a9D3y07YeGEo3CyqgbQfLSGn5PMgAkUUNQDvqKZCrCupkWTry+oyN5I7Cx5gGEIO
-	+2NnCD3GLJ430kwz2jI9Yp5DH/M0eNB/GnS2VygVtTMQhZufsFqbQ3IdHXyBVM7sE5GqW5ZcKeU8j
-	IWlD3736xVFxc2DOzFfKH6mAjY2ddHMhjqdFZ1H37We7w0sQufDQzQMWHXKkCxVvkKIrSZb32k9tv
-	wCWYoRM/i8ODnSIK6rb0ugh8nCvutBqMpBhESgNM8vMogEGZYMxiMY49mO9ZXbrIPcT5KpAkuyw8H
-	6V0RI62Q==;
+	bh=DhWxRdgwN1XWFdVpzGohp3z6Bz54Wd2yd35VmpYN7cc=; b=I2C3vqd8TAJ77/fQ4XlYWWvUDU
+	ZPEBD6Dew7bW+8eknggfirJFLdReoegdajdRYceEQCpSiiXOc9waZRsw5CEh+gDvSFku2gl1xMSmb
+	QBzjyaZ/I9fI5tYNQsZrRDYtESeuYJPafHb9wElmhG5669sroWQdU+Jl1ON9XhftdjRe8l8+tC/Ju
+	Vk4IfA3T0IRBQyoYqbQakVVgzPszcnK9XANtqHEjbyw3owX2SlRiJmp6i6nkUZhF3TE8irT7E5dJF
+	mlghZJBvWIRbJQ6etpgJV05OPoA//gw2LX+CwWuGqz88f4UhRAdVIFXrD4al6Gn13pwFhwzvUNH1/
+	MV9LPSfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nD2ob-00FO3H-K3; Thu, 27 Jan 2022 11:19:45 +0000
+	id 1nD2s3-00FPaN-1a; Thu, 27 Jan 2022 11:23:19 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nD2mD-00FMxL-36; Thu, 27 Jan 2022 11:17:18 +0000
+ id 1nD2qE-00FOmR-MM; Thu, 27 Jan 2022 11:21:28 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id B033F1F45091
+ (Authenticated sender: kholk11) with ESMTPSA id 5C85F1F450BC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1643282235;
- bh=wZVt4wJ3ZIXwm5J3WkeI7DmuycE/6AgP9kxAmGl4MHk=;
+ s=mail; t=1643282485;
+ bh=3BQWjA3nBp0sP7zgUSrad36ylixDnLmcqKRaTEEAMiM=;
  h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=RNpe9lY8NzKzJx8wUI+P77Ig0n7bSCYdR9WTVZzouOFw6c+LfKA1Kt6KIFOmCSjO3
- avcutdFnsOoW1N8IruruloGhYR9o1NgPvQA9mABR7Hq6ejP6NEhREHIAebGIbyhdth
- JWEWY7k+uAPjmo6BIPgOdD+0ZBOteQayMekEJAe/9ShguNUg/kwbt+LaRquKUT+Xwo
- GqBDAk/5+240cemf8Zn5kFDGKBolI2674mKtm4AnCwRaX3x0EM8gzJrDz8iH5chhlT
- Wxkpzu2KUmN92wCeUPl7swGx4YViUtqUfuuLRXa7vr8vZjpUjx4IjJLsuKQta7zGgw
- 6/0p+2qKt+SYA==
-Subject: Re: [PATCH v4 29/35] iommu/mediatek: Add mtk_iommu_bank_data structure
+ b=TqymkiTkmc8ouV09E5rSvKQgI1FdJ0efS27pK79aps2Jzy7Z8w/Cy0sDkt8Yn9gFO
+ KGMCLUBeNBWSc5d+ZeCKWEwex3xbBOCP4CNz28lYh1Fi7qKWXjkkQusXvM2/mUT8LE
+ Wa2H+R+DwBAgfDM6IOoGwx9cOkPsIgj7mGW3g/pFQskGpDN3uaaEJyglRNEh9Rb2mK
+ XBmZeF9jONOMblSQQygM6bv8s/ecqlK1rrkjNVkqNffmePAeiOMJUkylg17LZCVPuK
+ e6tEGjEP6a9LpBl4OFu6G3DSTcKyWWfs4QJsLckJsJhdTG07bQOJoz8zABH0/KTkil
+ g9B6Tw63fHj6A==
+Subject: Re: [PATCH v4 32/35] iommu/mediatek: Get the proper bankid for multi
+ banks
 To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
  Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  Will Deacon <will@kernel.org>
@@ -50,18 +51,18 @@ Cc: Robin Murphy <robin.murphy@arm.com>,
  yen-chang.chen@mediatek.com, mingyuan.ma@mediatek.com, yf.wang@mediatek.com,
  libo.kang@mediatek.com, chengci.xu@mediatek.com
 References: <20220125085634.17972-1-yong.wu@mediatek.com>
- <20220125085634.17972-30-yong.wu@mediatek.com>
+ <20220125085634.17972-33-yong.wu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <fd39758a-b5a7-c6d9-3d29-0c6221d0c533@collabora.com>
-Date: Thu, 27 Jan 2022 12:17:12 +0100
+Message-ID: <0dce6a25-6e45-efcc-3235-b8b7be81ea4f@collabora.com>
+Date: Thu, 27 Jan 2022 12:21:21 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20220125085634.17972-30-yong.wu@mediatek.com>
+In-Reply-To: <20220125085634.17972-33-yong.wu@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220127_031717_322970_4527ACAB 
-X-CRM114-Status: GOOD (  13.04  )
+X-CRM114-CacheID: sfid-20220127_032126_932600_514F72F2 
+X-CRM114-Status: GOOD (  18.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,22 +80,39 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 25/01/22 09:56, Yong Wu ha scritto:
-> Prepare for supporting multi-banks for the IOMMU HW, No functional change.
+> We preassign some ports in a special bank via the new defined
+> banks_portmsk. Put it in the plat_data means it is not expected to be
+> adjusted dynamically.
 > 
-> Add a new structure(mtk_iommu_bank_data) for each a bank. Each a bank have
-> the independent HW base/IRQ/tlb-range ops, and each a bank has its special
-> iommu-domain(independent pgtable), thus, also move the domain information
-> into it.
+> If the iommu id in the iommu consumer's dtsi node is inside this
+> banks_portmsk, then we switch it to this special iommu bank, and
+> initialise the IOMMU bank HW.
 > 
-> In previous SoC, we have only one bank which could be treated as bank0(
-> bankid always is 0 for the previous SoC).
-> 
-> After adding this structure, the tlb operations and irq could use
-> bank_data as parameter.
+> Each a bank has the independent pgtable(4GB iova range). Each a bank
+> is a independent iommu domain/group. Currently we don't separate different
+> iova ranges inside a bank.
 > 
 > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>   drivers/iommu/mtk_iommu.c | 39 ++++++++++++++++++++++++++++++++++++---
+>   1 file changed, 36 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 22586d1aed72..c6de9304bbc6 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -191,6 +191,7 @@ struct mtk_iommu_plat_data {
+>   
+>   	u8                  banks_num;
+>   	bool                banks_enable[MTK_IOMMU_BANK_MAX];
+> +	unsigned int        banks_portmsk[MTK_IOMMU_BANK_MAX];
 
+I would prefer to see u32 here instead... but maybe that's just a
+personal preference, it doesn't really matter.
+
+In any case:
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
 _______________________________________________
