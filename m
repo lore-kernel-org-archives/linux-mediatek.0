@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5747C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 11:06:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF4E3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 11:08:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dKmt7UlZpDXjhKt2oqUB1bxWwIkTNiaMYaJQRtWPPmA=; b=KnbiNmYEJMomyB
-	7JPXFgl4kEgNnRB/0zF13YfWOvQPKXJVa6JmwxWLa3+An0lKnNz3xWNboqKmgDxOWdgTTSCknYvRa
-	KI78E9S2AKRcsqBbnM9xHZqGD0W7fQt7X+Zn5y5ptrW10z1eSB5rIqJGwgIXFsIEnaFGxriwY0AZA
-	Dqi+RzmUh7QbpIheHygQ23pJ5LDOMs8KiG00RUaJ2EUCCospTsDFQgJDs9ZPUaXn/LOVkjq57mnKo
-	z6Jool/llYavv76kkQHQAafG4K0eJqiqZx1AKXF9ZcEMo/iQag8pIor10ROjiPU14q4CHO56EhMsr
-	vWdUmj00CDfRS85V6/hg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5vhwINA9WH6FMVDxn6k3jltwYVWWRQ+xGkoCsCoXYrM=; b=USrhKWF1OGgh3d
+	U9HC0DiemlwbDtctH8x46gJHy5WqPVHSfOWjlnmxw7dVxzDl1Bmc8a6nZgs7otzqn72gqVfQ43Tfb
+	0+mcfi/HSBVAYnRSrCLSnb8xVETDurkB5sw+wCyyMk5tW5dDVvxDdUHSE+NCSYRkntdv/EtqPmTLI
+	TtBUi6dsaHb6qBJKmRO4nN/WHU4/RW8T3QE9d9TUDmJ0Jhm/9BNlr4Sw78+zn7s8Cw6l/l5pir7GC
+	WyxyANBxV1E7lMMELyO87vscOGA0jnu+53FMiGXuVBRyZq1wdsU2iVVCAsc9PoiMxNE8iRsjqltQp
+	mcfSy+4kpq1x74X4X3Vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDP4l-001bcy-7S; Fri, 28 Jan 2022 11:05:55 +0000
+	id 1nDP7c-001cDA-8h; Fri, 28 Jan 2022 11:08:52 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDP4i-001bbk-DN; Fri, 28 Jan 2022 11:05:53 +0000
-X-UUID: b1e7c9e9a2e14b139e7ae1348aa7ccfe-20220128
-X-UUID: b1e7c9e9a2e14b139e7ae1348aa7ccfe-20220128
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1nDP7P-001c9f-Sx; Fri, 28 Jan 2022 11:08:41 +0000
+X-UUID: fc24dd0cd6cc4de78a580d6c5c6a298b-20220128
+X-UUID: fc24dd0cd6cc4de78a580d6c5c6a298b-20220128
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 782557608; Fri, 28 Jan 2022 04:05:49 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 28 Jan 2022 03:05:48 -0800
+ with ESMTP id 1402433531; Fri, 28 Jan 2022 04:08:38 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 28 Jan 2022 03:08:36 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 28 Jan 2022 19:05:46 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 28 Jan 2022 19:05:46 +0800
-Message-ID: <88655c2bd0e2db25861803550f0a6b393177ec67.camel@mediatek.com>
-Subject: Re: [PATCH v3 0/7] Add basic node support for Mediatek MT8186 SoC
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 28 Jan 2022 19:08:35 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 28 Jan 2022 19:08:34 +0800
 From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-CC: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Kishon Vijay Abraham I
- <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Thomas Gleixner <tglx@linutronix.de>, Wim Van Sebroeck
- <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>,
- <hsinyi@chromium.org>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+CC: Linux-ALSA <alsa-devel@alsa-project.org>, <tzungbi@google.com>,
+ <cujomalainey@google.com>, Pierre-Louis Bossart
+ <pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, Kai Vehmanen
+ <kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>, "Mark
+ Brown" <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
+ <tiwai@suse.com>, Chen-Yu Tsai <wenst@chromium.org>, Kevin Hilman
+ <khilman@baylibre.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
- <linux-iio@vger.kernel.org>, <linux-mmc@vger.kernel.org>,
- <linux-serial@vger.kernel.org>, <linux-spi@vger.kernel.org>,
- <linux-watchdog@vger.kernel.org>
-Date: Fri, 28 Jan 2022 19:05:46 +0800
-In-Reply-To: <20220128103209.00002704@Huawei.com>
-References: <20220128062050.23978-1-allen-kh.cheng@mediatek.com>
- <20220128103209.00002704@Huawei.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <sound-open-firmware@alsa-project.org>, Allen-KH Cheng
+ <Allen-KH.Cheng@mediatek.com>
+Subject: [PATCH v17 0/2] mtk: add ADSP mailbox controller for MT8195
+Date: Fri, 28 Jan 2022 19:08:27 +0800
+Message-ID: <20220128110829.17202-1-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220128_030552_501123_D8163157 
-X-CRM114-Status: GOOD (  22.08  )
+X-CRM114-CacheID: sfid-20220128_030839_971233_B7AD3861 
+X-CRM114-Status: GOOD (  13.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,72 +79,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-01-28 at 10:32 +0000, Jonathan Cameron wrote:
-> On Fri, 28 Jan 2022 14:20:43 +0800
-> allen-kh.cheng <allen-kh.cheng@mediatek.com> wrote:
-> 
-> > From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-> > 
-> > MT8186 is a SoC based on 64bit ARMv8 architecture.
-> > It contains 6 CA55 and 2 CA78 cores.
-> > MT8186 share many HW IP with MT65xx series.
-> > 
-> > This patchset was tested on MT8186 evaluation board to shell.
-> 
-> Please prune your cc list for any future versions.
-> We all get enough emails as it is :)
-> 
-> I'm not seeing anything relevant to linux-iio in here for example.
-> 
-> Thanks,
-> 
-> Jonathan
-> 
+From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 
-Hi Jonathan,
+Mediatek ADSP IPC is used to send notification or short message 
+between processors with dsp. It will place the message to the
+share buffer and will access the ADSP mailbox registers to kick
+dsp. Two mailboxes used to send notification or short message 
+between processors with dsp.
 
-Sorry for any inconvenience caused to you.
+This patchset was tested and confirmed on MT8195 cherry board.
 
-I will remove linux-iio in next version.
+Based on linux-next
 
-Thanks.
+changes since v16:
+- fix WARNING: modpost: missing MODULE_LICENSE() in drivers/mailbox
+  /mtk-adsp-mailbox.o. Add MODULE_LICENSE in the last line.
+- Due to WARNING: Missing or malformed SPDX-License-Identifier tag
+  in line 1 in checkpatch, we don't remove SPDX-License in line 1.
 
-> > 
-> > Based on linux-next
-> > 
-> > changes since v2:$
-> >  - add soc {} in mt8186.dtsi
-> > 
-> > changes since v1:
-> >  - add dt-bindings: arm: Add compatible for Mediatek MT8186
-> > 
-> > 
-> > Allen-KH Cheng (7):
-> >   dt-bindings: timer: Add compatible for Mediatek MT8186
-> >   dt-bindings: serial: Add compatible for Mediatek MT8186
-> >   dt-bindings: watchdog: Add compatible for Mediatek MT8186
-> >   dt-bindings: mmc: Add compatible for Mediatek MT8186
-> >   dt-bindings: phy: Add compatible for Mediatek MT8186
-> >   dt-bindings: arm: Add compatible for Mediatek MT8186
-> >   arm64: dts: Add Mediatek SoC MT8186 dts and evaluation board and
-> >     Makefile
-> > 
-> >  .../devicetree/bindings/arm/mediatek.yaml     |   4 +
-> >  .../devicetree/bindings/mmc/mtk-sd.yaml       |   3 +
-> >  .../bindings/phy/mediatek,tphy.yaml           |   1 +
-> >  .../devicetree/bindings/serial/mtk-uart.txt   |   1 +
-> >  .../bindings/timer/mediatek,mtk-timer.txt     |   1 +
-> >  .../devicetree/bindings/watchdog/mtk-wdt.txt  |   1 +
-> >  arch/arm64/boot/dts/mediatek/Makefile         |   1 +
-> >  arch/arm64/boot/dts/mediatek/mt8186-evb.dts   |  24 ++
-> >  arch/arm64/boot/dts/mediatek/mt8186.dtsi      | 360
-> > ++++++++++++++++++
-> >  9 files changed, 396 insertions(+)
-> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-evb.dts
-> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> > 
-> 
-> 
+changes since v15:
+- add paragraphs to describe the config symbols fully
+
+changes since v14:
+- add inline for get_mtk_adsp_mbox_priv
+
+changes since v13:
+- rebase on v5.16-rc8
+- add back ptr check from of_device_get_match_data
+
+changes since v12:
+- remove of_device_get_match_data ptr check:
+  of_device_get_match_data(dev) will never going to return NULL.
+  driver probe with compatible mediatek,mt8195-adsp-mbox.
+
+changes since v11:
+- remove useless MODULE_LICENSE
+
+changes since v10:
+- split up v9 into two separate submissions
+
+changes since v9:
+- rename adsp_mbox_chan_ops to mtk_adsp_mbox_chan_ops
+
+changes since v8:
+- remove struct adsp_mbox_ch_info
+- add get_mtk_adsp_mbox_priv
+- use mtk_adsp_mbox_priv va_mboxreg address in adsp mbox driver
+- add struct mtk_adsp_mbox_cfg for DSP mbox register offset
+- remove adsp mbox register offset hard code define
+- remove mtk-adsp-ipc.h reference in adsp mbox driver
+
+changes since v7:
+- add mtk prefix for adsp ipc functions
+- rename adsp_mbox_ch_info to mtk_adsp_mbox_ch_info
+- remove incorrect reviewers in commit message
+
+changes since v6:
+- dt-bindings: change example dtsi node.
+- rename config MTK_ADSP_IPC_MBOX to MTK_ADSP_MBOX
+- remove unused variable
+- add reviewers
+
+changes since v5:
+- remove some redundant code
+
+changes since v4:
+- use switch ... case in adsp_ipc_recv
+- add error handling path for chan_name pointer
+- refine some code to be concise
+
+changes since v3:
+- reorder MTK_ADSP_IPC_MBOX config
+- remove some redundant code
+- remove lock in mtk-adsp-mailbox
+
+changes since v2:
+- separate adsp_mailbox into two instances
+
+changes since v1:
+- fix dt_binding_check error
+
+Allen-KH Cheng (2):
+  dt-bindings: mailbox: add mtk adsp-mbox document
+  mailbox: mediatek: add support for adsp mailbox controller
+
+ .../bindings/mailbox/mtk,adsp-mbox.yaml       |  52 ++++++
+ drivers/mailbox/Kconfig                       |   9 +
+ drivers/mailbox/Makefile                      |   2 +
+ drivers/mailbox/mtk-adsp-mailbox.c            | 176 ++++++++++++++++++
+ 4 files changed, 239 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
+ create mode 100644 drivers/mailbox/mtk-adsp-mailbox.c
+
+-- 
+2.18.0
 
 
 _______________________________________________
