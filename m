@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0100C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 04:07:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F4EFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 04:07:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XPAigQqGdIBpXv94jopRUIR0CXoHUAe1H8Yxgh8Qi/w=; b=P92Y+oDoikxME4
-	aXLbmzsye20PViPv6j1HZ2wei58IQZOcKMPkHC6bIESaOxT7sbFKF6BezowEcYSexVpeXyJ8PbYOk
-	6SA0tzR+4ZwIhlH6zRDZnG9B+91MtVaQlywU4B8639DdgD7vjplfSADhv0GwbeoTwXYRRmCqL7FRd
-	ChsVdxP0jyPPhU0PEnXdf06qjp4jKJcRDCGHK1pQGi0lPqbfcK/n98OKxewXBsXtg/e41w1d4PZPk
-	BmRAq8d45tPuKynRa6SFGf8CQEWP5nTY9Q1Tt/mIqHPhbiRiPfPV7aunGZ+XADB5qr6xWRD3SwOpx
-	cs6/2BdL536RWD6op+Ow==;
+	List-Owner; bh=DuHXhhf6SjVK7MzLKdsMjACK81/ijWD882Q4zNplzeo=; b=wsD40p8bUX0ynb
+	PbYNJUbNSXI9BCgquik35l9BjenzKz5jDxEMe0reMzorzI9fLOuzOHlYk6Q4UbOMEXPR3njEhA9jD
+	So9HnVKKUZT5Ow9C+TuxzgR+kwUafYKCzaS9gSLSBWnGpbuPvai4IcbLz5Js4Dt0Vt4rpur6RvdFv
+	QaHR8SjSlB3pFQnPVaEm1DLCGNdVsmvrocQEANh8cErw148j4iP3zzJNRAowUnP3Kirj7ETjrqOHy
+	aRXhjwquUhKhoHNBgPCE7wMuyRhwi0Ve6YbvfedSIJmPS3dDGN0HI6HZGkK6aykk0mXXY9GpwKDv9
+	fuI2RSjI8pcF+WswrlRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDIXh-000HPp-KY; Fri, 28 Jan 2022 04:07:21 +0000
+	id 1nDIY0-000Hc7-Qz; Fri, 28 Jan 2022 04:07:40 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDIWg-000H0V-Cw; Fri, 28 Jan 2022 04:06:20 +0000
-X-UUID: 3a84401d9ffb4ac78a82f6de6de5b694-20220127
-X-UUID: 3a84401d9ffb4ac78a82f6de6de5b694-20220127
+ id 1nDIWi-000H0o-1c; Fri, 28 Jan 2022 04:06:21 +0000
+X-UUID: 471986a894e049488bfa591a09324a10-20220127
+X-UUID: 471986a894e049488bfa591a09324a10-20220127
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 164451210; Thu, 27 Jan 2022 21:04:47 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 27 Jan 2022 19:54:46 -0800
+ with ESMTP id 1253332783; Thu, 27 Jan 2022 21:04:50 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 27 Jan 2022 19:54:52 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 28 Jan 2022 11:54:44 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 28 Jan 2022 11:54:50 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 28 Jan 2022 11:54:43 +0800
+ Transport; Fri, 28 Jan 2022 11:54:49 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
@@ -59,18 +58,17 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
 Subject: [PATCH v2,
- 1/7] dt-bindings: media: mtk-vcodec: Adds decoder dt-bindings for lat
- soc
-Date: Fri, 28 Jan 2022 11:54:34 +0800
-Message-ID: <20220128035440.24533-2-yunfei.dong@mediatek.com>
+ 5/7] media: mtk-vcodec: Different codec using different capture format
+Date: Fri, 28 Jan 2022 11:54:38 +0800
+Message-ID: <20220128035440.24533-6-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220128035440.24533-1-yunfei.dong@mediatek.com>
 References: <20220128035440.24533-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220127_200618_552504_EE06B079 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20220127_200620_124349_58B59FB8 
+X-CRM114-Status: GOOD (  15.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,73 +85,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adds decoder dt-bindings for compatible "mediatek,mtk-vcodec-lat-soc".
+Vp8 need to use MM21, but vp9 and h264 need to use HyFbc mode
+for mt8195. Vp8/vp9/h264 use the same MM21 format for mt8192.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../media/mediatek,vcodec-subdev-decoder.yaml | 49 +++++++++++++++++++
- 1 file changed, 49 insertions(+)
+ .../platform/mtk-vcodec/mtk_vcodec_dec.c      | 41 +++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-index 6415c9f29130..a3c892338ac0 100644
---- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-@@ -189,6 +189,55 @@ patternProperties:
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+index 6ad17e69e32d..f2ced0147534 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+@@ -35,6 +35,44 @@ mtk_vdec_find_format(struct v4l2_format *f,
+ 	return NULL;
+ }
  
-     additionalProperties: false
++static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_ctx *ctx, int format_index)
++{
++	const struct mtk_vcodec_dec_pdata *dec_pdata = ctx->dev->vdec_pdata;
++	const struct mtk_video_fmt *fmt;
++	struct mtk_q_data *q_data;
++	int num_frame_count = 0, i;
++	bool ret = true;
++
++	for (i = 0; i < *dec_pdata->num_formats; i++) {
++		if (dec_pdata->vdec_formats[i].type != MTK_FMT_FRAME)
++			continue;
++
++		num_frame_count++;
++	}
++
++	if (num_frame_count == 1)
++		return true;
++
++	fmt = &dec_pdata->vdec_formats[format_index];
++	q_data = &ctx->q_data[MTK_Q_DATA_SRC];
++	switch (q_data->fmt->fourcc) {
++	case V4L2_PIX_FMT_VP8_FRAME:
++		if (fmt->fourcc == V4L2_PIX_FMT_MM21)
++			ret = true;
++		break;
++	case V4L2_PIX_FMT_H264_SLICE:
++	case V4L2_PIX_FMT_VP9_FRAME:
++		if (fmt->fourcc == V4L2_PIX_FMT_MM21)
++			ret = false;
++		break;
++	default:
++		ret = true;
++		break;
++	};
++
++	return ret;
++}
++
+ static struct mtk_q_data *mtk_vdec_get_q_data(struct mtk_vcodec_ctx *ctx,
+ 					      enum v4l2_buf_type type)
+ {
+@@ -578,6 +616,9 @@ static int vidioc_enum_fmt(struct v4l2_fmtdesc *f, void *priv,
+ 		    dec_pdata->vdec_formats[i].type != MTK_FMT_FRAME)
+ 			continue;
  
-+  '^vcodec-lat-soc@[0-9a-f]+$':
-+    type: object
++		if (!output_queue && !mtk_vdec_get_cap_fmt(ctx, i))
++			continue;
 +
-+    properties:
-+      compatible:
-+        const: mediatek,mtk-vcodec-lat-soc
-+
-+      reg:
-+        maxItems: 1
-+
-+      iommus:
-+        minItems: 1
-+        maxItems: 32
-+        description: |
-+          List of the hardware port in respective IOMMU block for current Socs.
-+          Refer to bindings/iommu/mediatek,iommu.yaml.
-+
-+      clocks:
-+        maxItems: 5
-+
-+      clock-names:
-+        items:
-+          - const: sel
-+          - const: soc-vdec
-+          - const: soc-lat
-+          - const: vdec
-+          - const: top
-+
-+      assigned-clocks:
-+        maxItems: 1
-+
-+      assigned-clock-parents:
-+        maxItems: 1
-+
-+      power-domains:
-+        maxItems: 1
-+
-+    required:
-+      - compatible
-+      - reg
-+      - iommus
-+      - clocks
-+      - clock-names
-+      - assigned-clocks
-+      - assigned-clock-parents
-+      - power-domains
-+
-+    additionalProperties: false
-+
- required:
-   - compatible
-   - reg
+ 		if (j == f->index)
+ 			break;
+ 		++j;
 -- 
 2.25.1
 
