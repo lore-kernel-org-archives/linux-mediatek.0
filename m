@@ -4,65 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D3D5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jan 2022 21:21:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC030C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 01:08:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=T2daFXGuw9W2a56IiVeJL2LYv+IH9aBj+0ROmRZoemw=; b=B+QIjok8OPStd3
-	WAYRyfTiBQuy+h0ZXTJD8AmaQIl69NhxymyqIYcHur95JgFzfT/potJLHh3HbuiiqntcojLlVptp4
-	2si2RZqbeQgy35VPPny34xMJnOY0UWYKdizQp1TMAcl6QB4GQfP/pPFxkTOu8e8u9hwnDE9HXophR
-	hUDe04zVNw+V5BOccyk/0346aWdlAZ4zLrLt4jL5l7+qaDk9vdkrw0uZmS8H/qaq1hGvFG1vKiv+W
-	0M1GrCySTZohmNZWlBJASP3Fj3Dg0wwf/HQYgjQXPoDeKXu+uZtw01NAl4ejBDu0wHOzOml2nNF+g
-	jkMM7x52EX71lhYL4lTA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=jymubqzyQ20Oo5gkiZh4M3e7IOV0wSz7F8nCc0wTeto=; b=J+3I1KTqW+qmVt
+	x75kPEyCOxAuKU6BpRrWd334IzJRVxc04LVHT/X3S48tUv5ZdvrmBP8MnwriSC0DisvcLOOiMih4S
+	/NOPJjYhyC2RQclRyVezu/y724NrCtl0K40igACYQwppetpV3lpbpP6VQk1mZ+/P27akd2gEQpvMB
+	V9yKJyLwzloC9dUYB9Uzl9mr/EjgkExI7tqddzkzrSWMPiQ825ECLQ1olSG0rIxURzKAGbhZ2nRi2
+	Rc50ZPzmtEeVyoTDniCzKnMjaoOO3VXALP8dxMIm2csvMgoE2FPimU0ipFCMb+MVZTFhXC21+7lMB
+	NPqJrMwSWg6GxnykwUEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDCCh-00H9Qf-QV; Thu, 27 Jan 2022 21:21:15 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nDFkJ-0000ou-Fu; Fri, 28 Jan 2022 01:08:11 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDCCW-00H9PG-0m; Thu, 27 Jan 2022 21:21:05 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 5942761ABD;
- Thu, 27 Jan 2022 21:21:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76F2AC340E4;
- Thu, 27 Jan 2022 21:21:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1643318461;
- bh=vEhS+uNe9MbUR6FumfDLesP9xJaTiiHWcuhhBI9N7ng=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=IQmm35PUiDv2We4J7ZGC4FxPaSSCGo58PxoDdwdSL0UveVkGmu+yWA/vovPZkqzfZ
- 7JsY/0uKSSAhZxpoi8HO5CAVE2lQkfp49fgLqfDLELm1iOm+AzWBjDolNRFBwNPH1i
- UQzMNPyE+q5yEzzHh4eFC94y4Dt6Gf1xCdCQlq9BhzLxcIMMRChsOXBoCmRl5ov3zp
- S0yhkIMouP8saTG2EerbZ+O0XPx4PA5iIjncsOvIJKDW1ZoeYZSgrucqGCZvyJbRy4
- SDqUAhQaJ9w/SFmZIXbpRl9q6N6Ir++gvJmKBw9O5ygLhJIx0y87ow95C34w8F7Jao
- i0RRrNzKjWHDA==
-Date: Thu, 27 Jan 2022 15:21:00 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: "qizhong.cheng" <qizhong.cheng@mediatek.com>
-Cc: Marc Zyngier <maz@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, chuanjia.liu@mediatek.com,
- Srikanth Thokala <srikanth.thokala@intel.com>,
- Pratyush Anand <pratyush.anand@gmail.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>
-Subject: Re: [PATCH] PCI: mediatek: Change MSI interrupt processing sequence
-Message-ID: <20220127212100.GA102267@bhelgaas>
+ id 1nDFfC-00HaYW-LH
+ for linux-mediatek@lists.infradead.org; Fri, 28 Jan 2022 01:02:57 +0000
+X-UUID: 3d585b8bcac544debb779ede42a3e12d-20220127
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=SfZt0gp/8viGWeJzyCXtzZEqpPBrY/99nwuzUimbE1U=; 
+ b=HoiZjbtPTTMmmT1kkY08BTizL/PsTXLQNBGJk4rSy1TRz/22BfChLqmjTfHgzhc7lYIgCT7SQpqTT9lnHmMak8wCCduXFIRUdImgr0FBA4FPYp6wmRbEj1BhyFuEB6IMFmYDUI0Pc9BCfuC6emKGLfOKbu+DREUDvhi/jdm8e5w=;
+X-UUID: 3d585b8bcac544debb779ede42a3e12d-20220127
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <guochun.mao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 840244364; Thu, 27 Jan 2022 18:02:48 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 27 Jan 2022 17:02:47 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 28 Jan 2022 09:02:45 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 28 Jan 2022 09:02:44 +0800
+Message-ID: <c847fc0055557ac362305b2689caf14cd96a4fe0.camel@mediatek.com>
+Subject: Re: [PATCH] spi: spi-mtk-nor: make some internal variables static
+From: Guochun Mao <guochun.mao@mediatek.com>
+To: Mark Brown <broonie@kernel.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>
+CC: <srv_heupstream@mediatek.com>, <linux-kernel@vger.kernel.org>,
+ <linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Bin Zhang
+ <bin.zhang@mediatek.com>,
+ <project_global_chrome_upstream_group@mediatek.com>, kernel test robot
+ <lkp@intel.com>, Bayi Cheng <bayi.cheng@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Chuanhong Guo <gch981213@gmail.com>
+Date: Fri, 28 Jan 2022 09:02:44 +0800
+In-Reply-To: <164321141754.490431.3020669404541003433.b4-ty@kernel.org>
+References: <20220126091159.27513-1-guochun.mao@mediatek.com>
+ <164321141754.490431.3020669404541003433.b4-ty@kernel.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <d78b45e461b204d375830217d0d27ffdd97cedd3.camel@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220127_132104_172889_1F67A689 
-X-CRM114-Status: GOOD (  30.90  )
+X-CRM114-CacheID: sfid-20220127_170256_137583_C8151B20 
+X-CRM114-Status: GOOD (  17.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,96 +83,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[+cc Srikanth, Pratyush, Thomas, Pali, Ryder, Jianjun]
+Hi,
 
-On Wed, Jan 26, 2022 at 11:37:58AM +0800, qizhong.cheng wrote:
-> On Tue, 2022-01-25 at 17:21 +0000, Marc Zyngier wrote:
-> > On 2022-01-25 16:57, Bjorn Helgaas wrote:
-> > > On Sun, Jan 23, 2022 at 11:33:06AM +0800, qizhong cheng wrote:
-> > > > As an edge-triggered interrupts, its interrupt status should
-> > > > be cleared before dispatch to the handler of device.
-> > > 
-> > > I'm not an IRQ expert, but the reasoning that "we should clear
-> > > the MSI interrupt status before dispatching the handler because
-> > > MSI is an edge-triggered interrupt" doesn't seem completely
-> > > convincing because your code will now look like this:
-> > > 
-> > >   /* Clear the INTx */
-> > >   writel(1 << bit, port->base + PCIE_INT_STATUS);
-> > >   generic_handle_domain_irq(port->irq_domain, bit - INTX_SHIFT);
-> > >   ...
-> > > 
-> > >   /* Clear MSI interrupt status */
-> > >   writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
-> > >   generic_handle_domain_irq(port->inner_domain, bit);
-> > > 
-> > > You clear interrupt status before dispatching the handler for
-> > > *both* level-triggered INTx interrupts and edge-triggered MSI
-> > > interrupts.
-> > > 
-> > > So it doesn't seem that simply being edge-triggered is the
-> > > critical factor here.
+Thank you very much.
+
+BR,
+Guochun
+
+
+On Wed, 2022-01-26 at 15:36 +0000, Mark Brown wrote:
+> On Wed, 26 Jan 2022 17:11:59 +0800, guochun.mao@mediatek.com wrote:
+> > From: Guochun Mao <guochun.mao@mediatek.com>
 > > 
-> > This is the usual problem with these half-baked implementations.
-> > The signalling to the primary interrupt controller is level, as
-> > they take a multitude of input and (crucially) latch the MSI
-> > edges. Effectively, this is an edge-to-level converter, with all
-> > the problems that this creates.
+> > Variables mtk_nor_caps_mt8173, mtk_nor_caps_mt8186 and
+> > mtk_nor_caps_mt8192 are not declared.
+> > Make them static.
 > > 
-> > By clearing the status *after* the handling, you lose edges that
-> > have been received and coalesced after the read of the status
-> > register. By clearing it *before*, you are acknowledging the
-> > interrupts early, and allowing them to be coalesced independently
-> > of the ones that have been received earlier.
 > > 
-> > This is however mostly an educated guess. Someone with access to
-> > the TRM should verify this.
+> > [...]
 > 
-> Yes, as Maz said, we save the edge-interrupt status so that it
-> becomes a level-interrupt. This is similar to an edge-to-level
-> converter, so we need to clear it *before*. We found this problem
-> through a lot of experiments and tested this patch.
-
-I thought there might be other host controllers with similar design,
-so I looked at all the other drivers and tried to figure out whether
-any others had similar problems.
-
-The ones below look suspicious to me because they all clear some sort
-of status register *after* handling an MSI.  Can you guys take a look
-and make sure they are working correctly?
-
-  keembay_pcie_msi_irq_handler
-    status = readl(pcie->apb_base + PCIE_REGS_INTERRUPT_STATUS)
-    if (status & MSI_CTRL_INT)
-      dw_handle_msi_irq
-	generic_handle_domain_irq
-      writel(status, pcie->apb_base + PCIE_REGS_INTERRUPT_STATUS)
-
-  spear13xx_pcie_irq_handler
-    status = readl(&app_reg->int_sts)
-    if (status & MSI_CTRL_INT)
-      dw_handle_msi_irq
-	generic_handle_domain_irq
-    writel(status, &app_reg->int_clr)
-
-  advk_pcie_handle_int
-    isr0_status = advk_readl(pcie, PCIE_ISR0_REG)
-    if (isr0_status & PCIE_ISR0_MSI_INT_PENDING)
-      advk_pcie_handle_msi
-        advk_readl(pcie, PCIE_MSI_STATUS_REG)
-	advk_writel(pcie, BIT(msi_idx), PCIE_MSI_STATUS_REG)
-	generic_handle_irq
-	advk_writel(pcie, PCIE_ISR0_MSI_INT_PENDING, PCIE_ISR0_REG)
-
-  mtk_pcie_irq_handler
-    status = readl_relaxed(pcie->base + PCIE_INT_STATUS_REG)
-    for_each_set_bit_from(irq_bit, &status, ...)
-      mtk_pcie_msi_handler
-        generic_handle_domain_irq
-      writel_relaxed(BIT(irq_bit), pcie->base + PCIE_INT_STATUS_REG)
-
-Bjorn
-
+> Applied to
+> 
+>    https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git
+> for-next
+> 
+> Thanks!
+> 
+> [1/1] spi: spi-mtk-nor: make some internal variables static
+>       commit: 474fc2e6395d62758e80b9ea65f61339296355fc
+> 
+> All being well this means that it will be integrated into the linux-
+> next
+> tree (usually sometime in the next 24 hours) and sent to Linus during
+> the next merge window (or sooner if it is a bug fix), however if
+> problems are discovered then the patch may be dropped or reverted.
+> 
+> You may get further e-mails resulting from automated or manual
+> testing
+> and review of the tree, please engage with people reporting problems
+> and
+> send followup patches addressing any issues that are reported if
+> needed.
+> 
+> If any updates are required or you are submitting further changes
+> they
+> should be sent as incremental updates against current git, existing
+> patches will not be replaced.
+> 
+> Please add any relevant lists and maintainers to the CCs when
+> replying
+> to this mail.
+> 
+> Thanks,
+> Mark
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
