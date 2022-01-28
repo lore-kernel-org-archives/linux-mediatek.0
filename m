@@ -4,82 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EFBEC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 15:10:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FCC0C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 15:45:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8PVuDlwUxMwEGVajs2/tpmKbNWz4dMFBvsydBEhmoSY=; b=DpilehTTT/k1U5
-	IbPc/Du0mSBhq9gD5Sj0ZcgLKA+VzAsx+f0BZ/UTeN6b2SivJwCrht4VrGn6DImhJG1vEnfM+PEWK
-	8eAP75BDncGUusLyeZiMZWNsuWBxzi5TABjBX2A2Lt2jYWKeBns14Zifq8bnuK+QZUDFTgtsD+F5T
-	JhBHabpYfuo0TQA/RHZrMpJk5FEiBWAnOh9TTTA77IA157qy+zi45fk940LZFHs4400lSKjU8CXbL
-	n0c4M6J4TFhwrJmbn6KI+G7A7HmPm43a7Gs41PTixDB0FqheXyXBHnYJ0bBQEZBbzxNSvAVr8Ltc9
-	CViXdVBBZwsnzQieq1iQ==;
+	List-Owner; bh=Nlt/G17aXBcIkxFBoshwvsk7eT7YHwzJ2xRtKm9wMgY=; b=EumaR8qSL6i4Xg
+	n+lKNa7WPsHpHieiEm7GepfarJTlz+X2sFwMmZd/Ov23hEJSKiOLpgbKgXCYljowMmDnhROTOwNSX
+	isGeo+TS4akh6sQDE+ZlJ5uZbaMRcMR80O6lXCFFCKAqoeK5TVCxs8lgZH47XHo9noHwonMXHAMKY
+	1lSUkdTvIj16Oj2MaZiYpDp0oxvYubqFEO1x0PLinmCI9zQmfiVxuVrSY6PHnynAJ70leNPwlpANe
+	6ey8bX7yAIqe9KwZjmQW12hIBn7/BX4emxesE7yzMdNJxXruiyBqc88yjjk9UWt2zxSd5LUiypzOy
+	vqL+C/gCbjeuHAMCLHrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDSt5-002efC-Pf; Fri, 28 Jan 2022 15:10:07 +0000
+	id 1nDTR1-002lYn-Kx; Fri, 28 Jan 2022 15:45:11 +0000
 Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDSst-002ec3-Ga; Fri, 28 Jan 2022 15:09:57 +0000
+ id 1nDTQp-002lWO-2c; Fri, 28 Jan 2022 15:45:00 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 12805B82614;
- Fri, 28 Jan 2022 15:09:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8BF0C340E0;
- Fri, 28 Jan 2022 15:09:52 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id B0E88B80D60;
+ Fri, 28 Jan 2022 15:44:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D27F4C340E0;
+ Fri, 28 Jan 2022 15:44:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1643382592;
- bh=BhSk2oPgIVJBVLRSfsk3+K/dzHQvwqKlSD+wl/eXM9c=;
+ s=k20201202; t=1643384696;
+ bh=tBLay+o+eLrzKqcv6juJyl5BpntLLfH1nmE4tQVkqOI=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=FbzaI0HDHGIaA30B64poJ6Ghz1KSJGBZo7K12e1IZX2zLrYYyk+QoEWqtzAFy1JSG
- unae1i6DhrrQfGY2ZtnKYF62z43nwzfTCYKD1aLVzdorKloBqBqU3m28wDpQ9NOt2w
- DfjkLubi5kwWB428sGiu8DDGdiQAGG6tOXWwXiwwIGXT4Fv8ny+xskV61MlSj24hgk
- 2s7fUXQyNGRr8a7f0R9P8NVb+hRhMEDoDUjJP0bTk0V7RiziB+6vbDuve5shTjy63C
- ojnrZ/1WqSBZMvrJ2T4O5DiMD95/IuLXy+EYeBhCO+upPtxARcgHmSbvRQueWHd2/7
- Q2lePsRAFimKw==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <maz@kernel.org>)
- id 1nDSso-003qPI-F4; Fri, 28 Jan 2022 15:09:50 +0000
-Date: Fri, 28 Jan 2022 15:09:49 +0000
-Message-ID: <87o83v6gn6.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: "qizhong.cheng" <qizhong.cheng@mediatek.com>,	Ryder Lee
- <ryder.lee@mediatek.com>,	Jianjun Wang <jianjun.wang@mediatek.com>,	Lorenzo
- Pieralisi <lorenzo.pieralisi@arm.com>,	Krzysztof =?UTF-8?B?V2lsY3p5xYRz?=
- =?UTF-8?B?a2k=?= <kw@linux.com>,	Bjorn Helgaas <bhelgaas@google.com>,
- linux-pci@vger.kernel.org,	linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org,	linux-arm-kernel@lists.infradead.org,
- chuanjia.liu@mediatek.com,	Srikanth Thokala <srikanth.thokala@intel.com>,
- Pratyush Anand <pratyush.anand@gmail.com>,	Thomas Petazzoni
- <thomas.petazzoni@bootlin.com>,	Pali =?UTF-8?B?Um9ow6Fy?= <pali@kernel.org>
-Subject: Re: [PATCH] PCI: mediatek: Change MSI interrupt processing sequence
-In-Reply-To: <20220128131250.GA200007@bhelgaas>
-References: <87r18s5jbn.wl-maz@kernel.org> <20220128131250.GA200007@bhelgaas>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: helgaas@kernel.org, qizhong.cheng@mediatek.com,
- ryder.lee@mediatek.com, jianjun.wang@mediatek.com, lorenzo.pieralisi@arm.com,
- kw@linux.com, bhelgaas@google.com, linux-pci@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, chuanjia.liu@mediatek.com,
- srikanth.thokala@intel.com, pratyush.anand@gmail.com,
- thomas.petazzoni@bootlin.com, pali@kernel.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+ b=Y/G5V8Pvgkh6qVfEMzR5GQbkaMA4nl/3Tx5R5Wbxt/AJbXHo3nyc8ivxe1gkQCgno
+ a5PwXkKvRyTfJUAIYbswanYXF15XWDyUz0EXiwiFjPs+Nip2ykPYcbmvsR4hJPpF4a
+ 6+rJm15brN+3A8EY/3P8TgJq1c2N7UH6WQMCJjGSRdMoHCsWkhfixNTotVuwzROgLD
+ pUF7dSFbOLtvtU3SLIhOzhwoDdjfYDowZy5ZfXwleqbPLbCA5PAC7YyaMRm6MvltCi
+ IgqmQ3XuTcnuG/QyHE+QvqVQomBX3KaZiuiWkTYsUaDyNpu+911BswVX0L8hvXUEEr
+ uoB4xjcPIFAvg==
+Date: Fri, 28 Jan 2022 07:44:54 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Biao Huang <biao.huang@mediatek.com>
+Cc: David Miller <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>,
+ Bartosz Golaszewski <brgl@bgdev.pl>, Fabien Parent <fparent@baylibre.com>,
+ Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
+ <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, <netdev@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Yinghua Pan
+ <ot_yinghua.pan@mediatek.com>, <srv_heupstream@mediatek.com>, Macpaul Lin
+ <macpaul.lin@mediatek.com>
+Subject: Re: [PATCH net-next v2 9/9] net: ethernet: mtk-star-emac: separate
+ tx/rx handling with two NAPIs
+Message-ID: <20220128074454.46d0ca29@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <2bdb6c9b5ec90b6c606b7db8c13f8acb34910b36.camel@mediatek.com>
+References: <20220127015857.9868-1-biao.huang@mediatek.com>
+ <20220127015857.9868-10-biao.huang@mediatek.com>
+ <20220127194338.01722b3c@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <2bdb6c9b5ec90b6c606b7db8c13f8acb34910b36.camel@mediatek.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220128_070955_854347_49F2F4BC 
-X-CRM114-Status: GOOD (  17.23  )
+X-CRM114-CacheID: sfid-20220128_074459_442052_3FC5BBEE 
+X-CRM114-Status: GOOD (  24.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,31 +82,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 28 Jan 2022 13:12:50 +0000,
-Bjorn Helgaas <helgaas@kernel.org> wrote:
+On Fri, 28 Jan 2022 15:05:27 +0800 Biao Huang wrote:
+> > > + * Description : this is the driver interrupt service routine.
+> > > + * it mainly handles:
+> > > + *  1. tx complete interrupt for frame transmission.
+> > > + *  2. rx complete interrupt for frame reception.
+> > > + *  3. MAC Management Counter interrupt to avoid counter overflow.
+> > >   */
+> > >  static irqreturn_t mtk_star_handle_irq(int irq, void *data)
+> > >  {
+> > > -	struct mtk_star_priv *priv;
+> > > -	struct net_device *ndev;
+> > > +	struct net_device *ndev = data;
+> > > +	struct mtk_star_priv *priv = netdev_priv(ndev);
+> > > +	unsigned int intr_status = mtk_star_intr_ack_all(priv);
+> > > +	unsigned long flags = 0;
+> > > +
+> > > +	if (intr_status & MTK_STAR_BIT_INT_STS_FNRC) {
+> > > +		if (napi_schedule_prep(&priv->rx_napi)) {
+> > > +			spin_lock_irqsave(&priv->lock, flags);
+> > > +			/* mask Rx Complete interrupt */
+> > > +			mtk_star_disable_dma_irq(priv, true, false);
+> > > +			spin_unlock_irqrestore(&priv->lock, flags);
+> > > +			__napi_schedule_irqoff(&priv->rx_napi);
+> > > +		}
+> > > +	}
+> > >  
+> > > -	ndev = data;
+> > > -	priv = netdev_priv(ndev);
+> > > +	if (intr_status & MTK_STAR_BIT_INT_STS_TNTC) {
+> > > +		if (napi_schedule_prep(&priv->tx_napi)) {
+> > > +			spin_lock_irqsave(&priv->lock, flags);
+> > > +			/* mask Tx Complete interrupt */
+> > > +			mtk_star_disable_dma_irq(priv, false, true);
+> > > +			spin_unlock_irqrestore(&priv->lock, flags);
+> > > +			__napi_schedule_irqoff(&priv->tx_napi);
+> > > +		}
+> > > +	}  
+> > 
+> > Seems a little wasteful to retake the same lock twice if two IRQ
+> > sources fire at the same time.  
+> The TX/RX irq control bits are in the same register,
+> but they are triggered independently.
+> So it seems necessary to protect the register
+> access with a spin lock.
+
+This is what I meant:
+
+rx = (status & RX) && napi_schedule_prep(rx_napi);
+tx = (status & TX) && napi_schedule_prep(tx_napi);
+
+if (rx || tx) {
+	spin_lock()
+	disable_irq(priv, rx, tx);	
+	spin_unlock();
+	if (rx)
+		__napi_schedule_irqoff(rx_napi)
+	if (tx)
+		__napi_schedule_irqoff(tx_napi)
+}
+
+> > >  	desc_data.dma_addr = mtk_star_dma_map_tx(priv, skb);
+> > >  	if (dma_mapping_error(dev, desc_data.dma_addr))
+> > > @@ -1050,18 +1103,10 @@ static int
+> > > mtk_star_netdev_start_xmit(struct sk_buff *skb,
+> > >  
+> > >  	desc_data.skb = skb;
+> > >  	desc_data.len = skb->len;
+> > > -
+> > > -	spin_lock_bh(&priv->lock);
+> > > 
+> > >  	mtk_star_ring_push_head_tx(ring, &desc_data);
+> > >  
+> > >  	netdev_sent_queue(ndev, skb->len);
+> > >  
+> > > -	if (mtk_star_ring_full(ring))
+> > > -		netif_stop_queue(ndev);  
+> > 
+> > Are you stopping the queue in advance somewhere else now? Did you
+> > only
+> > test this with BQL enabled? Only place that stops the ring also
+> > prints
+> > a loud warning now AFAICS..  
+> No.
 > 
-> On Fri, Jan 28, 2022 at 08:57:16AM +0000, Marc Zyngier wrote:
-> > On Thu, 27 Jan 2022 21:21:00 +0000,
-> > Bjorn Helgaas <helgaas@kernel.org> wrote:
->
-> Thanks a lot for taking a look at these, Marc!  Is there anything we
-> can do to make all these drivers/pci/controller/* drivers more
-> consistent and easier to review?  I found it very difficult to look
-> across all of them and find similar design patterns.
+> We modify the ring full condition, and will not invoke netif_stop_queue
+> if queue is already stopped.
 
-It looks to me that a number of them are just wrapping the same
-underlying IP block, most likely the DW controller (this looks to be
-the case for at least the first two).
+I don't understand what you're saying.
 
-They probably all use different register and bit offsets, but it
-should be possible to write a library abstracting all these details
-and have a common handling for most of them. This would certainly go a
-long way in making things more solid.
+> Test pass no matter whether BQL is enabled or disabled.
+> 
+> It's much safer to judge queue is full or not at the beginning of
+> start_xmit() to avoid invalid setting.
 
-	M.
-
--- 
-Without deviation from the norm, progress is not possible.
+Drivers are expected to stop their queues at the end of xmit routine if
+the ring can't accommodate another frame. It's more efficient to stop
+the queues early than have to put skbs already dequeued from the qdisc
+layer back into the qdiscs.
 
 _______________________________________________
 Linux-mediatek mailing list
