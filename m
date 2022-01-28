@@ -4,66 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7F21C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 03:44:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6200C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 03:55:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fljBoYqtDARn3nTshBqFy6+i8eRHFaoEcxmw+of9Vmg=; b=hoxUOss81a0N1u
-	7axKGZCSYPozmPyWLvBMMf71I521vR9sjdv2PmtsKlMcTqv6IyqreAqqeb073F39ylmszBGl10PbS
-	hs2Re6JipG7U7P9fQJypFGPmB2kBRqBuPJXeCcn9DmuiyFC7Z4EnSF9zEHcsHgS5h/PpLdwrs0wlm
-	U9BVjvbYXlQvC1qZyuHuNiyNxQEyXKhwr7RFrl0+NOl0BKJAXuZSVtxNIPeP0kROVIOjgrv0bLWBe
-	PkjhSjXXOl+zuo5o/7sCbClyeko6rALWLFI3worPttLMt0F/lGIKm/n2PaU2pl9KtYdR1ftZASZxA
-	HXwy5yhq9j70XDKIMrrw==;
+	List-Owner; bh=PUf1zr0KLVbV3gcgb05mR199Yj4T08IKs7B9q4Rh3eY=; b=BQiy6A5cnnWwyz
+	9+UG6o7oYazKCX0cwS8L2Qfkn3XEOYIjW/Y2QwYQJXtIRhLZ4IrcvEaoAMDDHkmzd+wsGnvhZCMY5
+	vZTxD1E4dLK1o0x26Nq8CC5ollbxhINUug0Y943ue+qvDQh5uocrZHHH4lOE2skeGkyUq3PuCTVe7
+	TdzR2ngbC9yZxQ4fsADFVSsQGOs3Zwy64shuiJahYtsMQ+SQkPSPPMhFH6NiAFi9b40Zey/ZxZX63
+	aLfX08jmqTrP1d0Agn3c66iKFvc442sn6IN/krQKVqawqVsDsAGNW0C39ZbidLCrdFdTWy3Xp9eSY
+	8hEevd+6uCTBEapIHfTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDIB1-000DtN-Bd; Fri, 28 Jan 2022 03:43:55 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nDIM4-000Etc-7K; Fri, 28 Jan 2022 03:55:20 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDIAo-000Dr9-Ia; Fri, 28 Jan 2022 03:43:44 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 68C7C61D8E;
- Fri, 28 Jan 2022 03:43:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2EDEDC340E7;
- Fri, 28 Jan 2022 03:43:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1643341420;
- bh=JIe+3zxHc652hiK2hz4NLH0pR4w+X2pBakJpnubLEWQ=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=AZHOu8a/DkUmqJmk/ttCw43L6sXuI80w+UUH/sFapQKD0X4MdjxaH24i01YIY0Nc4
- 3OnAooetJsL4umgW9gNycmfe5Oh6HrCALtFz6Ap5NG+iNskyNAPnR8sZ5T+x4XioQb
- eg5zXp5aq2F+CIcxtm+n6zqBYf6qd60ybqwvL/2SVWigbaXEkpvatE2/TQzhFDK/Nr
- EkDKwoim6BySBsvwozpJvk37XY//tAFtGC+rU80RfDnn3hS9rjGt9vrLIfv6guiEJu
- pLVPSuZ7Vrqyvd3nTr5MnkGPkiIo//ICtILXot2YteLR8X1tC3D9D4/sip+YmzJsLd
- OJkWyHZpmmIKw==
-Date: Thu, 27 Jan 2022 19:43:38 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: David Miller <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>,
- Bartosz Golaszewski <brgl@bgdev.pl>, Fabien Parent <fparent@baylibre.com>,
- Felix Fietkau <nbd@nbd.name>, "John Crispin" <john@phrozen.org>, Sean Wang
- <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, <netdev@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Yinghua Pan
- <ot_yinghua.pan@mediatek.com>, <srv_heupstream@mediatek.com>, Macpaul Lin
- <macpaul.lin@mediatek.com>
-Subject: Re: [PATCH net-next v2 9/9] net: ethernet: mtk-star-emac: separate
- tx/rx handling with two NAPIs
-Message-ID: <20220127194338.01722b3c@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <20220127015857.9868-10-biao.huang@mediatek.com>
-References: <20220127015857.9868-1-biao.huang@mediatek.com>
- <20220127015857.9868-10-biao.huang@mediatek.com>
+ id 1nDILi-000Ek7-HP; Fri, 28 Jan 2022 03:55:01 +0000
+X-UUID: 3ce4a88508b0478792033322497dcf58-20220127
+X-UUID: 3ce4a88508b0478792033322497dcf58-20220127
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yunfei.dong@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 770746112; Thu, 27 Jan 2022 20:54:55 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 27 Jan 2022 19:54:54 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 28 Jan 2022 11:54:52 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 28 Jan 2022 11:54:50 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
+ Shih" <tzungbi@chromium.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Tiffany Lin
+ <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
+ <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+ <frkoenig@chromium.org>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, Daniel Vetter
+ <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, Irui Wang
+ <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v2,
+ 6/7] media: mtk-vcodec: prevent kernel crash when scp ipi timeout
+Date: Fri, 28 Jan 2022 11:54:39 +0800
+Message-ID: <20220128035440.24533-7-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220128035440.24533-1-yunfei.dong@mediatek.com>
+References: <20220128035440.24533-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220127_194342_756306_81508C20 
-X-CRM114-Status: GOOD (  28.08  )
+X-CRM114-CacheID: sfid-20220127_195458_588783_9A29FFB0 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,191 +85,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 27 Jan 2022 09:58:57 +0800 Biao Huang wrote:
-> Current driver may lost tx interrupts under bidirectional test with iperf3,
-> which leads to some unexpected issues.
-> 
-> This patch let rx/tx interrupt enable/disable separately, and rx/tx are
-> handled in different NAPIs.
+From: Tinghan Shen <tinghan.shen@mediatek.com>
 
-> +/* mtk_star_handle_irq - Interrupt Handler.
-> + * @irq: interrupt number.
-> + * @data: pointer to a network interface device structure.
+When SCP timeout during playing video, kernel crashes with following
+message. It's caused by accessing NULL pointer in vpu_dec_ipi_handler.
+This patch doesn't solve the root cause of NULL pointer, but merely
+prevent kernel crashed when encounter the NULL pointer.
 
-if you mean this to me a kdoc comment it needs to start with /**
+After applied this patch, kernel keeps alive, only the video player turns
+to green screen.
 
-> + * Description : this is the driver interrupt service routine.
-> + * it mainly handles:
-> + *  1. tx complete interrupt for frame transmission.
-> + *  2. rx complete interrupt for frame reception.
-> + *  3. MAC Management Counter interrupt to avoid counter overflow.
->   */
->  static irqreturn_t mtk_star_handle_irq(int irq, void *data)
->  {
-> -	struct mtk_star_priv *priv;
-> -	struct net_device *ndev;
-> +	struct net_device *ndev = data;
-> +	struct mtk_star_priv *priv = netdev_priv(ndev);
-> +	unsigned int intr_status = mtk_star_intr_ack_all(priv);
-> +	unsigned long flags = 0;
-> +
-> +	if (intr_status & MTK_STAR_BIT_INT_STS_FNRC) {
-> +		if (napi_schedule_prep(&priv->rx_napi)) {
-> +			spin_lock_irqsave(&priv->lock, flags);
-> +			/* mask Rx Complete interrupt */
-> +			mtk_star_disable_dma_irq(priv, true, false);
-> +			spin_unlock_irqrestore(&priv->lock, flags);
-> +			__napi_schedule_irqoff(&priv->rx_napi);
-> +		}
-> +	}
->  
-> -	ndev = data;
-> -	priv = netdev_priv(ndev);
-> +	if (intr_status & MTK_STAR_BIT_INT_STS_TNTC) {
-> +		if (napi_schedule_prep(&priv->tx_napi)) {
-> +			spin_lock_irqsave(&priv->lock, flags);
-> +			/* mask Tx Complete interrupt */
-> +			mtk_star_disable_dma_irq(priv, false, true);
-> +			spin_unlock_irqrestore(&priv->lock, flags);
-> +			__napi_schedule_irqoff(&priv->tx_napi);
-> +		}
-> +	}
+[67242.065474] pc : vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec]
+[67242.065485] [MTK_V4L2] level=0 fops_vcodec_open(),334:
+18000000.vcodec_dec decoder [135]
+[67242.065523] lr : scp_ipi_handler+0x11c/0x244 [mtk_scp]
+[67242.065540] sp : ffffffbb4207fb10
+[67242.065557] x29: ffffffbb4207fb30 x28: ffffffd00a1d5000
+[67242.065592] x27: 1ffffffa0143aa24 x26: 0000000000000000
+[67242.065625] x25: dfffffd000000000 x24: ffffffd0168bfdb0
+[67242.065659] x23: 1ffffff76840ff74 x22: ffffffbb41fa8a88
+[67242.065692] x21: ffffffbb4207fb9c x20: ffffffbb4207fba0
+[67242.065725] x19: ffffffbb4207fb98 x18: 0000000000000000
+[67242.065758] x17: 0000000000000000 x16: ffffffd042022094
+[67242.065791] x15: 1ffffff77ed4b71a x14: 1ffffff77ed4b719
+[67242.065824] x13: 0000000000000000 x12: 0000000000000000
+[67242.065857] x11: 0000000000000000 x10: dfffffd000000001
+[67242.065890] x9 : 0000000000000000 x8 : 0000000000000002
+[67242.065923] x7 : 0000000000000000 x6 : 000000000000003f
+[67242.065956] x5 : 0000000000000040 x4 : ffffffffffffffe0
+[67242.065989] x3 : ffffffd043b841b8 x2 : 0000000000000000
+[67242.066021] x1 : 0000000000000010 x0 : 0000000000000010
+[67242.066055] Call trace:
+[67242.066092]  vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec
+12220d230d83a7426fc38c56b3e7bc6066955bae]
+[67242.066119]  scp_ipi_handler+0x11c/0x244 [mtk_scp
+8fb69c2ef141dd3192518b952b65aba35627b8bf]
+[67242.066145]  mt8192_scp_irq_handler+0x70/0x128 [mtk_scp
+8fb69c2ef141dd3192518b952b65aba35627b8bf]
+[67242.066172]  scp_irq_handler+0xa0/0x114 [mtk_scp
+8fb69c2ef141dd3192518b952b65aba35627b8bf]
+[67242.066200]  irq_thread_fn+0x84/0xf8
+[67242.066220]  irq_thread+0x170/0x1ec
+[67242.066242]  kthread+0x2f8/0x3b8
+[67242.066264]  ret_from_fork+0x10/0x30
+[67242.066292] Code: 38f96908 35003628 91004340 d343fc08 (38f96908)
 
-Seems a little wasteful to retake the same lock twice if two IRQ
-sources fire at the same time.
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: Macpaul Lin <macpaul.lin@mediatek.com>
+---
+ drivers/media/platform/mtk-vcodec/vdec_vpu_if.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-> @@ -1043,6 +1085,17 @@ static int mtk_star_netdev_start_xmit(struct sk_buff *skb,
->  	struct mtk_star_ring *ring = &priv->tx_ring;
->  	struct device *dev = mtk_star_get_dev(priv);
->  	struct mtk_star_ring_desc_data desc_data;
-> +	int nfrags = skb_shinfo(skb)->nr_frags;
-> +
-> +	if (unlikely(mtk_star_tx_ring_avail(ring) < nfrags + 1)) {
-> +		if (!netif_queue_stopped(ndev)) {
-> +			netif_stop_queue(ndev);
-> +			/* This is a hard error, log it. */
-> +			netdev_err(priv->ndev, "%s: Tx Ring full when queue awake\n",
-> +				   __func__);
-
-This needs to be rate limited. Also no point printing the function
-name, unless the same message appears in multiple places.
-
-> +		}
-> +		return NETDEV_TX_BUSY;
-> +	}
->  
->  	desc_data.dma_addr = mtk_star_dma_map_tx(priv, skb);
->  	if (dma_mapping_error(dev, desc_data.dma_addr))
-> @@ -1050,18 +1103,10 @@ static int mtk_star_netdev_start_xmit(struct sk_buff *skb,
->  
->  	desc_data.skb = skb;
->  	desc_data.len = skb->len;
-> -
-> -	spin_lock_bh(&priv->lock);
-> 
->  	mtk_star_ring_push_head_tx(ring, &desc_data);
->  
->  	netdev_sent_queue(ndev, skb->len);
->  
-> -	if (mtk_star_ring_full(ring))
-> -		netif_stop_queue(ndev);
-
-Are you stopping the queue in advance somewhere else now? Did you only
-test this with BQL enabled? Only place that stops the ring also prints
-a loud warning now AFAICS..
-
-> -static void mtk_star_tx_complete_all(struct mtk_star_priv *priv)
-> +static int mtk_star_tx_poll(struct napi_struct *napi, int budget)
->  {
-> -	struct mtk_star_ring *ring = &priv->tx_ring;
-> -	struct net_device *ndev = priv->ndev;
-> -	int ret, pkts_compl, bytes_compl;
-> +	int ret, pkts_compl = 0, bytes_compl = 0, count = 0;
-> +	struct mtk_star_priv *priv;
-> +	struct mtk_star_ring *ring;
-> +	struct net_device *ndev;
-> +	unsigned long flags = 0;
-> +	unsigned int entry;
->  	bool wake = false;
->  
-> -	spin_lock(&priv->lock);
-> +	priv = container_of(napi, struct mtk_star_priv, tx_napi);
-> +	ndev = priv->ndev;
->  
-> -	for (pkts_compl = 0, bytes_compl = 0;;
-> +	__netif_tx_lock_bh(netdev_get_tx_queue(priv->ndev, 0));
-
-Do you really need to lock out the Tx while cleaning?
-
-Drivers usually manage to implement concurrent Tx and cleanup with just
-a couple of memory barriers.
-
-> +	ring = &priv->tx_ring;
-> +	entry = ring->tail;
-> +	for (pkts_compl = 0, bytes_compl = 0;
-> +	     (entry != ring->head) && (count < budget);
-
-budget is not really relevant for Tx, you can clean the whole ring.
-netpoll will pass a budget of 0 to clean up rings.
-
->  	     pkts_compl++, bytes_compl += ret, wake = true) {
-> -		if (!mtk_star_ring_descs_available(ring))
-> -			break;
->  
->  		ret = mtk_star_tx_complete_one(priv);
->  		if (ret < 0)
->  			break;
-> +		count++;
-> +		entry = ring->tail;
->  	}
->  
-
-> @@ -1196,7 +1258,7 @@ static const struct ethtool_ops mtk_star_ethtool_ops = {
->  	.set_link_ksettings	= phy_ethtool_set_link_ksettings,
->  };
->  
-> -static int mtk_star_receive_packet(struct mtk_star_priv *priv)
-> +static int mtk_star_rx(struct mtk_star_priv *priv, int budget)
->  {
->  	struct mtk_star_ring *ring = &priv->rx_ring;
->  	struct device *dev = mtk_star_get_dev(priv);
-> @@ -1204,107 +1266,86 @@ static int mtk_star_receive_packet(struct mtk_star_priv *priv)
->  	struct net_device *ndev = priv->ndev;
->  	struct sk_buff *curr_skb, *new_skb;
->  	dma_addr_t new_dma_addr;
-> -	int ret;
-> +	int ret, count = 0;
->  
-> -	spin_lock(&priv->lock);
-> -	ret = mtk_star_ring_pop_tail(ring, &desc_data);
-> -	spin_unlock(&priv->lock);
-> -	if (ret)
-> -		return -1;
-> +	while (count < budget) {
-> +		ret = mtk_star_ring_pop_tail(ring, &desc_data);
-> +		if (ret)
-> +			return -1;
-
-> -static int mtk_star_process_rx(struct mtk_star_priv *priv, int budget)
-> -{
-> -	int received, ret;
-> +		count++;
->  
-> -	for (received = 0, ret = 0; received < budget && ret == 0; received++)
-> -		ret = mtk_star_receive_packet(priv);
-> +		desc_data.len = skb_tailroom(new_skb);
-> +		desc_data.skb = new_skb;
-> +		mtk_star_ring_push_head_rx(ring, &desc_data);
-> +	}
->  
->  	mtk_star_dma_resume_rx(priv);
-
-Again you can get a call with a budget of 0, not sure if it's okay to
-resume DMA in that case..
-
-> -	return received;
-> +	return count;
->  }
+diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+index 35f4d5583084..1041dd663e76 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
++++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+@@ -91,6 +91,11 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
+ 	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
+ 					(unsigned long)msg->ap_inst_addr;
+ 
++	if (!vpu) {
++		mtk_v4l2_err("ap_inst_addr is NULL");
++		return;
++	}
++
+ 	mtk_vcodec_debug(vpu, "+ id=%X", msg->msg_id);
+ 
+ 	vpu->failure = msg->status;
+-- 
+2.25.1
 
 
 _______________________________________________
