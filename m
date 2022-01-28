@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 137F1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 13:33:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C897BC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 13:37:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nDXkzlXbxZewuk5lrWam10aZ34bgwb6uLEf9KUwypPo=; b=RxvLl+cUdLgk7b
-	7SEflb2lVx/gwrdra+3DRRujYmZeg7KlN7ayn/5vBb1UEyj58/gLlU3Jg5wkyNN8Fp5SCl3JdkEUW
-	/1ZCplDSTUfCmMrSJro1sT+kAn89VPWQpy3FRt9f182C8XTiDFPX5TXIIAVT0rgzRCOYapE7aGs0k
-	a44432GzvLGEUuKO14WWRV9TnfrePYaV1Gtm0oQ9yvlEPgqPqd9nbyC3G1ViG75B/2c7GPW8YviWr
-	QjDqVOMK9xKCJuTvpaPxJ8nCwu8b4W/VCbaQ5nykgmLyrcpSIa+eaDNanbMVRrWJyOoDjcTYu4tuv
-	XfnjRlmq6SpBmeBkdayg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=At4AJLX7hfQD1puf5+LnocYOFdm7LsG4v2mSX0y/I+8=; b=UGULXizTP1yvIM
+	Bxl3sf2h3woZiKaszEOCdzGNfw3hhKui3b5bJ2EHjeHLtlFxTSKA4sHogAbSa7B9ys4bfaIciNg9n
+	LahyX9qW2kqsbERAGQ1QxDOZ7sQJXyOEapHA/AVIaA/T4yG1RDymynFn2QcTp3PcW2rA1MMMTwWQI
+	j/VwqP/NnQCxRNRUOlwdfuAgjpHAuaSZnaWjm8R2qVOU3VgLVk5fatvvp6WgxVLnLnkJxbcLUA64S
+	AAuA/8VZOWyUMTfIYYrxTkNc1qbtm8g5pOgXHmpPEzQfhjsMO+ORTOjX+MapzFgDxSej0TZrcfd9d
+	k5gnk1FFRHHpFYM3LQEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDRNm-002LVp-FZ; Fri, 28 Jan 2022 13:33:42 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDQvO-002AL5-G2; Fri, 28 Jan 2022 13:04:24 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DE9DA11D4;
- Fri, 28 Jan 2022 05:04:18 -0800 (PST)
-Received: from [10.57.68.47] (unknown [10.57.68.47])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7E4173F766;
- Fri, 28 Jan 2022 05:04:13 -0800 (PST)
-Message-ID: <29deffd6-aac4-f085-bcd5-f5a2d02784a8@arm.com>
-Date: Fri, 28 Jan 2022 13:04:07 +0000
+	id 1nDRR3-002Mpq-N9; Fri, 28 Jan 2022 13:37:05 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nDR3d-002DZz-77; Fri, 28 Jan 2022 13:12:57 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id A92FA61CC2;
+ Fri, 28 Jan 2022 13:12:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4E09C340E0;
+ Fri, 28 Jan 2022 13:12:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1643375572;
+ bh=hnZj3GRXwJPT+qraKTLHubkxinTpbxOy1C5HyBFo+bo=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=oG5u1pRW8K5zAnc1YjAEN5OwaQDE1tTLCcwVXf58QzkVeo/UrI+knhSTK8WQQmlK5
+ 0dDX/FsoIFPOpZuTdNoGtb0y2557VPbpTdhKIzqrRhwq4+78Iikna14SfliOab4E/y
+ bINXa5iRSVvDNKFho2QebokIebk1lROgFqblXyI/NVl6B6K7RKV1IHRIV0j/R78HZn
+ 3O8Cv5aRejatYFZB4i/0iiS1D5DaAS7u0PfWAUmE2Pb1bQ8eXNpZUu+KyR+JmY6zre
+ kKgk1AcHg2T1JpgyveFCzKEPeqITARaeXxFP1jVzoXOVdJ58DTii07cI8meiW3Pl7A
+ Rqgq8Pugx06XQ==
+Date: Fri, 28 Jan 2022 07:12:50 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Marc Zyngier <maz@kernel.org>
+Cc: "qizhong.cheng" <qizhong.cheng@mediatek.com>,
+ Ryder Lee <ryder.lee@mediatek.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, chuanjia.liu@mediatek.com,
+ Srikanth Thokala <srikanth.thokala@intel.com>,
+ Pratyush Anand <pratyush.anand@gmail.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>
+Subject: Re: [PATCH] PCI: mediatek: Change MSI interrupt processing sequence
+Message-ID: <20220128131250.GA200007@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [RFC PATCH] component: Add common helpers for compare/release
- functions
-Content-Language: en-GB
-To: Yong Wu <yong.wu@mediatek.com>, dri-devel@lists.freedesktop.org
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- James Wang <james.qian.wang@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- iommu@lists.linux-foundation.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- linux-kernel@vger.kernel.org, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-mediatek@lists.infradead.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Tomasz Figa <tfiga@chromium.org>,
- srv_heupstream@mediatek.com, Rob Clark <robdclark@gmail.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Sebastian Reichel <sre@kernel.org>
-References: <20220128081101.27837-1-yong.wu@mediatek.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20220128081101.27837-1-yong.wu@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <87r18s5jbn.wl-maz@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220128_050422_690521_900F58E4 
-X-CRM114-Status: GOOD (  17.79  )
+X-CRM114-CacheID: sfid-20220128_051253_386340_297EB7F1 
+X-CRM114-Status: GOOD (  42.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,105 +75,124 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-01-28 08:11, Yong Wu wrote:
-[...]
-> diff --git a/include/linux/component.h b/include/linux/component.h
-> index 16de18f473d7..5a7468ea827c 100644
-> --- a/include/linux/component.h
-> +++ b/include/linux/component.h
-> @@ -2,6 +2,8 @@
->   #ifndef COMPONENT_H
->   #define COMPONENT_H
->   
-> +#include <linux/device.h>
-> +#include <linux/of.h>
->   #include <linux/stddef.h>
->   
->   
-> @@ -82,6 +84,22 @@ struct component_master_ops {
->   	void (*unbind)(struct device *master);
->   };
->   
-> +/* A set common helpers for compare/release functions */
-> +static inline int compare_of(struct device *dev, void *data)
-> +{
-> +	return dev->of_node == data;
-> +}
+On Fri, Jan 28, 2022 at 08:57:16AM +0000, Marc Zyngier wrote:
+> On Thu, 27 Jan 2022 21:21:00 +0000,
+> Bjorn Helgaas <helgaas@kernel.org> wrote:
+> > On Wed, Jan 26, 2022 at 11:37:58AM +0800, qizhong.cheng wrote:
+> > > On Tue, 2022-01-25 at 17:21 +0000, Marc Zyngier wrote:
+> > > > On 2022-01-25 16:57, Bjorn Helgaas wrote:
+> > > > > On Sun, Jan 23, 2022 at 11:33:06AM +0800, qizhong cheng wrote:
+> > > > > > As an edge-triggered interrupts, its interrupt status should
+> > > > > > be cleared before dispatch to the handler of device.
+> > > > > 
+> > > > > I'm not an IRQ expert, but the reasoning that "we should clear
+> > > > > the MSI interrupt status before dispatching the handler because
+> > > > > MSI is an edge-triggered interrupt" doesn't seem completely
+> > > > > convincing because your code will now look like this:
+> > > > > 
+> > > > >   /* Clear the INTx */
+> > > > >   writel(1 << bit, port->base + PCIE_INT_STATUS);
+> > > > >   generic_handle_domain_irq(port->irq_domain, bit - INTX_SHIFT);
+> > > > >   ...
+> > > > > 
+> > > > >   /* Clear MSI interrupt status */
+> > > > >   writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
+> > > > >   generic_handle_domain_irq(port->inner_domain, bit);
+> > > > > 
+> > > > > You clear interrupt status before dispatching the handler for
+> > > > > *both* level-triggered INTx interrupts and edge-triggered MSI
+> > > > > interrupts.
+> > > > > 
+> > > > > So it doesn't seem that simply being edge-triggered is the
+> > > > > critical factor here.
+> > > > 
+> > > > This is the usual problem with these half-baked implementations.
+> > > > The signalling to the primary interrupt controller is level, as
+> > > > they take a multitude of input and (crucially) latch the MSI
+> > > > edges. Effectively, this is an edge-to-level converter, with all
+> > > > the problems that this creates.
+> > > > 
+> > > > By clearing the status *after* the handling, you lose edges that
+> > > > have been received and coalesced after the read of the status
+> > > > register. By clearing it *before*, you are acknowledging the
+> > > > interrupts early, and allowing them to be coalesced independently
+> > > > of the ones that have been received earlier.
+> > > > 
+> > > > This is however mostly an educated guess. Someone with access to
+> > > > the TRM should verify this.
+> > > 
+> > > Yes, as Maz said, we save the edge-interrupt status so that it
+> > > becomes a level-interrupt. This is similar to an edge-to-level
+> > > converter, so we need to clear it *before*. We found this problem
+> > > through a lot of experiments and tested this patch.
+> > 
+> > I thought there might be other host controllers with similar design,
+> > so I looked at all the other drivers and tried to figure out whether
+> > any others had similar problems.
+> > 
+> > The ones below look suspicious to me because they all clear some sort
+> > of status register *after* handling an MSI.  Can you guys take a look
+> > and make sure they are working correctly?
+> > 
+> >   keembay_pcie_msi_irq_handler
+> >     status = readl(pcie->apb_base + PCIE_REGS_INTERRUPT_STATUS)
+> >     if (status & MSI_CTRL_INT)
+> >       dw_handle_msi_irq
+> > 	generic_handle_domain_irq
+> >       writel(status, pcie->apb_base + PCIE_REGS_INTERRUPT_STATUS)
+> > 
+> >   spear13xx_pcie_irq_handler
+> >     status = readl(&app_reg->int_sts)
+> >     if (status & MSI_CTRL_INT)
+> >       dw_handle_msi_irq
+> > 	generic_handle_domain_irq
+> >     writel(status, &app_reg->int_clr)
+> 
+> I think these two are fine.
+> 
+> The top level interrupt is only a level signal that the is something
+> to process. The only thing that is unclear is what the effect of
+> writing to that status register if MSIs are pending at that point. A
+> sane implementation would just ignore the write.
+> 
+> The actual processing is done in dw_handle_msi_irq(), reading the
+> PCIE_MSI_INTR0_STATUS register. This same register is then used to Ack
+> the interrupt, one bit at a time, as interrupts are handled (see
+> dw_pci_bottom_ack). Ack taking place before the handling, it makes it
+> safe for edge delivery.
+> 
+> >   advk_pcie_handle_int
+> >     isr0_status = advk_readl(pcie, PCIE_ISR0_REG)
+> >     if (isr0_status & PCIE_ISR0_MSI_INT_PENDING)
+> >       advk_pcie_handle_msi
+> >         advk_readl(pcie, PCIE_MSI_STATUS_REG)
+> > 	advk_writel(pcie, BIT(msi_idx), PCIE_MSI_STATUS_REG)
+> > 	generic_handle_irq
+> > 	advk_writel(pcie, PCIE_ISR0_MSI_INT_PENDING, PCIE_ISR0_REG)
+> 
+> Same thing, I guess. It is just that the Ack has been open-coded.
+> 
+> >   mtk_pcie_irq_handler
+> >     status = readl_relaxed(pcie->base + PCIE_INT_STATUS_REG)
+> >     for_each_set_bit_from(irq_bit, &status, ...)
+> >       mtk_pcie_msi_handler
+> >         generic_handle_domain_irq
+> >       writel_relaxed(BIT(irq_bit), pcie->base + PCIE_INT_STATUS_REG)
+> 
+> Similar thing. The PCIE_MSI_SET_STATUS register is read first, and
+> then written back in the ack callback.
 
-Note that this is effectively just device_match_of_node(), although I 
-guess there is an argument that having a nice consistent set of 
-component_match API helpers might be worth more than a tiny code saving 
-by borrowing one from a different API.
+Thanks a lot for taking a look at these, Marc!  Is there anything we
+can do to make all these drivers/pci/controller/* drivers more
+consistent and easier to review?  I found it very difficult to look
+across all of them and find similar design patterns.
 
-Either way, however, I don't think there's any good argument for 
-instantiating separate copies of these functions in every driver that 
-uses them. If they're used as callbacks then they can't actually be 
-inlined anyway, so they may as well be exported from component.c as 
-normal so that the code really is shared (plus then there's nice 
-symmetry with the aforementioned device_match API helpers too).
-
-Thanks,
-Robin.
-
-> +static inline void release_of(struct device *dev, void *data)
-> +{
-> +	of_node_put(data);
-> +}
-> +
-> +static inline int compare_dev(struct device *dev, void *data)
-> +{
-> +	return dev == data;
-> +}
-> +
->   void component_master_del(struct device *,
->   	const struct component_master_ops *);
->   
-> diff --git a/sound/soc/codecs/wcd938x.c b/sound/soc/codecs/wcd938x.c
-> index eff200a07d9f..992132cbfb9f 100644
-> --- a/sound/soc/codecs/wcd938x.c
-> +++ b/sound/soc/codecs/wcd938x.c
-> @@ -4417,16 +4417,6 @@ static const struct component_master_ops wcd938x_comp_ops = {
->   	.unbind = wcd938x_unbind,
->   };
->   
-> -static int wcd938x_compare_of(struct device *dev, void *data)
-> -{
-> -	return dev->of_node == data;
-> -}
-> -
-> -static void wcd938x_release_of(struct device *dev, void *data)
-> -{
-> -	of_node_put(data);
-> -}
-> -
->   static int wcd938x_add_slave_components(struct wcd938x_priv *wcd938x,
->   					struct device *dev,
->   					struct component_match **matchptr)
-> @@ -4442,8 +4432,7 @@ static int wcd938x_add_slave_components(struct wcd938x_priv *wcd938x,
->   	}
->   
->   	of_node_get(wcd938x->rxnode);
-> -	component_match_add_release(dev, matchptr, wcd938x_release_of,
-> -				    wcd938x_compare_of,	wcd938x->rxnode);
-> +	component_match_add_release(dev, matchptr, release_of, compare_of, wcd938x->rxnode);
->   
->   	wcd938x->txnode = of_parse_phandle(np, "qcom,tx-device", 0);
->   	if (!wcd938x->txnode) {
-> @@ -4451,8 +4440,7 @@ static int wcd938x_add_slave_components(struct wcd938x_priv *wcd938x,
->   		return -ENODEV;
->   	}
->   	of_node_get(wcd938x->txnode);
-> -	component_match_add_release(dev, matchptr, wcd938x_release_of,
-> -				    wcd938x_compare_of,	wcd938x->txnode);
-> +	component_match_add_release(dev, matchptr, release_of, compare_of, wcd938x->txnode);
->   	return 0;
->   }
->   
+Bjorn
 
 _______________________________________________
 Linux-mediatek mailing list
