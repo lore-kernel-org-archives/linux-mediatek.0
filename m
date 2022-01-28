@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51AD0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 06:32:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F6CAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 06:32:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wJxwXIMotMhKVl0ZwN7AjiJsSHxJvLPddxu8c+e4N8o=; b=CtusVW04E7HP/H
-	L3HUG1rzsEEn6e6B/crifHiV4YEIGhbwpxZ+MloDgPyGKA7KBAi/uLRySXLTzxmWHKJBVloqrkLqy
-	t4K7zTQUkwi5BT2NkRpqBXS8biq2ycpH3RUqDc5+KrAkywbTDYNka/WNToPrSwI1WVG1//k8uWfbb
-	i7CAd+aT/+WHhRGALe7cfYwn0t2uHI6d2se61v5sEhvs7kjL1/QqiXf/X6+cKG1fzabW8qpJWD2hv
-	qLqIlAjPERynERAadGfX9Fk7V8vZa/iCWgnD8Z871u6N7s7eiVyUSHETSSKb/wQqzS+zKf70c/HKT
-	f3GP9AKeGxFS/H+olibw==;
+	List-Owner; bh=ULu0kly/rZXzef+azMtHQ2GP6lwWWvMqmBc7izSKuvM=; b=4e9lHWt3vKE+2N
+	7rSI19Sgz7m6tE7dImGdjXL0wNzWwwZiGiKs0nfrYZgBONMQrTc+0MxZeYXo4fUDW6xb1N76JTi8j
+	KFIOej+CbmSRWZZa+lblyjFvH1lgN/vvBq4dXXM98ejIDPyeM1KXua5t2WhnwFzhKWMHgPB5D6jBV
+	CU/pnBjaMbSWROZlFBjqPjjmyBJzRjlD5SHuFa7WqtBZl6bLrGCFicQI6fCzJVCFlsnyWzU6krdmF
+	SA+uhy23sGMRUcyYWYaL/RUDXrvIqdCEVvYb/9zTdBMqyRkThk1c3+lbQuIYES6MrgK2r2jxax8mM
+	kTGxeguMQlevxUnCA4Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDKoE-000cG1-GD; Fri, 28 Jan 2022 06:32:34 +0000
+	id 1nDKoG-000cGv-7I; Fri, 28 Jan 2022 06:32:36 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDKms-000bbV-39; Fri, 28 Jan 2022 06:31:11 +0000
-X-UUID: 36ac4f7d61704a60834553f8575b99f7-20220127
-X-UUID: 36ac4f7d61704a60834553f8575b99f7-20220127
+ id 1nDKms-000bbA-2k; Fri, 28 Jan 2022 06:31:11 +0000
+X-UUID: c0e9c99941184f01918c4b560f97951b-20220127
+X-UUID: c0e9c99941184f01918c4b560f97951b-20220127
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 112785157; Thu, 27 Jan 2022 23:31:06 -0700
+ with ESMTP id 1137859822; Thu, 27 Jan 2022 23:31:06 -0700
 Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 27 Jan 2022 22:21:04 -0800
+ 15.0.1497.2; Thu, 27 Jan 2022 22:21:05 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
  (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 28 Jan 2022 14:20:56 +0800
+ Fri, 28 Jan 2022 14:21:02 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 28 Jan 2022 14:20:56 +0800
+ Frontend Transport; Fri, 28 Jan 2022 14:21:02 +0800
 From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
 To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Kishon Vijay Abraham I
@@ -53,18 +53,18 @@ CC: <hsinyi@chromium.org>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <linux-serial@vger.kernel.org>, <linux-spi@vger.kernel.org>,
  <linux-watchdog@vger.kernel.org>, Allen-KH Cheng
  <Allen-KH.Cheng@mediatek.com>
-Subject: [PATCH v3 1/7] dt-bindings: timer: Add compatible for Mediatek MT8186
-Date: Fri, 28 Jan 2022 14:20:44 +0800
-Message-ID: <20220128062050.23978-2-allen-kh.cheng@mediatek.com>
+Subject: [PATCH v3 3/7] dt-bindings: watchdog: Add compatible for Mediatek
+ MT8186
+Date: Fri, 28 Jan 2022 14:20:46 +0800
+Message-ID: <20220128062050.23978-4-allen-kh.cheng@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220128062050.23978-1-allen-kh.cheng@mediatek.com>
 References: <20220128062050.23978-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220127_223110_196698_9043DD1B 
-X-CRM114-Status: UNSURE (   9.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220127_223110_177248_33A9B907 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,26 +83,26 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 
-This commit adds dt-binding documentation of timer for Mediatek MT8186 SoC
-Platform.
+This commit adds dt-binding documentation of watchdog for Mediatek
+MT8186 SoC Platform.
 
 Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 ---
- Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt | 1 +
+ Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-index e5c57d6e0186..e0d20d6adf81 100644
---- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-+++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-@@ -22,6 +22,7 @@ Required properties:
- 
- 	For those SoCs that use SYST
- 	* "mediatek,mt8183-timer" for MT8183 compatible timers (SYST)
-+	* "mediatek,mt8186-timer" for MT8186 compatible timers (SYST)
- 	* "mediatek,mt8192-timer" for MT8192 compatible timers (SYST)
- 	* "mediatek,mt8195-timer" for MT8195 compatible timers (SYST)
- 	* "mediatek,mt7629-timer" for MT7629 compatible timers (SYST)
+diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+index 0114871f887a..74db01e3658b 100644
+--- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
++++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+@@ -15,6 +15,7 @@ Required properties:
+ 	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
+ 	"mediatek,mt7986-wdt", "mediatek,mt6589-wdt": for MT7986
+ 	"mediatek,mt8183-wdt": for MT8183
++	"mediatek,mt8186-wdt", "mediatek,mt6589-wdt": for MT8186
+ 	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
+ 	"mediatek,mt8192-wdt": for MT8192
+ 	"mediatek,mt8195-wdt", "mediatek,mt6589-wdt": for MT8195
 -- 
 2.18.0
 
