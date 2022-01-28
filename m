@@ -4,53 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E0A7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 14:21:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EFBEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 15:10:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=yl7svNi1c9Z21lerNnMa2HfqJM/IrK+ei5AE/ESCQ7I=; b=ESjwA5V8d6WI2Z
-	BjtosHAqDUzTGrN5EYmPBo9IzbRh41uEuPIB50w+6YFRFNWGRzf1XajrhnFBKvL8ZWxVpij+QipDj
-	8EL1M1d1chh9gSydmG3T/VtC1n17DjRHHB7YZh1GsO0piHypfqtX6GLuYfVHHA/Tse3FEq4opHy7h
-	UD4REhUshc1v0T9/hsMVaCsNMNdbEs/UN27gJuADsKOw5NRCuOAH5TBupCKwTF53cna1PKS/lLUn6
-	lCy1ySuf2O/DnT5ryuiecFzRpkL+Bkva21wwybnhQqUHQGvvuKQwgKXG4r9q3d7jDvxpS6Vh7sOuQ
-	fs6jz/soET9S8oEOJeQQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8PVuDlwUxMwEGVajs2/tpmKbNWz4dMFBvsydBEhmoSY=; b=DpilehTTT/k1U5
+	IbPc/Du0mSBhq9gD5Sj0ZcgLKA+VzAsx+f0BZ/UTeN6b2SivJwCrht4VrGn6DImhJG1vEnfM+PEWK
+	8eAP75BDncGUusLyeZiMZWNsuWBxzi5TABjBX2A2Lt2jYWKeBns14Zifq8bnuK+QZUDFTgtsD+F5T
+	JhBHabpYfuo0TQA/RHZrMpJk5FEiBWAnOh9TTTA77IA157qy+zi45fk940LZFHs4400lSKjU8CXbL
+	n0c4M6J4TFhwrJmbn6KI+G7A7HmPm43a7Gs41PTixDB0FqheXyXBHnYJ0bBQEZBbzxNSvAVr8Ltc9
+	CViXdVBBZwsnzQieq1iQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDS7p-002W0l-Eu; Fri, 28 Jan 2022 14:21:17 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nDSt5-002efC-Pf; Fri, 28 Jan 2022 15:10:07 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDS7c-002VwK-84; Fri, 28 Jan 2022 14:21:05 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id BD9831F46061
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1643379661;
- bh=KYW2yecCoVBOnjMv+GLtAgdWuyfAb453i/OaAeY6CaM=;
- h=From:To:Cc:Subject:Date:From;
- b=TuWi2W6SvZVi9AE07A0UXEqa+MmeT/bLGKQnijiUxFxcG9+oRE6PQydX14DiWpJgq
- VR3SqEm9t7cbM4EvYtBMRPxAg95Ms4cVy6oIWLhbwwXzUao+YLk21sGht8iBTS0zaM
- tIhram3C1GZBcSwPaNCpAwSYWDJk8Bna4WUDioJjWkROX4m9jrW6J22RltQaYc80Ej
- d87yM2k8subrXo1erK0myMENkOCqh8Fnares4C9xXWP8BtUYl/lYTrwIDgLSiVhDpy
- AXwfHd6yupQvMSfB+IqX0GhqommNIqClOrybTKzrrYwIIcb9NlIJZpcchehuQPFyYZ
- dIVVtBwxXYeDw==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: yongqiang.niu@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ id 1nDSst-002ec3-Ga; Fri, 28 Jan 2022 15:09:57 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 12805B82614;
+ Fri, 28 Jan 2022 15:09:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8BF0C340E0;
+ Fri, 28 Jan 2022 15:09:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1643382592;
+ bh=BhSk2oPgIVJBVLRSfsk3+K/dzHQvwqKlSD+wl/eXM9c=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=FbzaI0HDHGIaA30B64poJ6Ghz1KSJGBZo7K12e1IZX2zLrYYyk+QoEWqtzAFy1JSG
+ unae1i6DhrrQfGY2ZtnKYF62z43nwzfTCYKD1aLVzdorKloBqBqU3m28wDpQ9NOt2w
+ DfjkLubi5kwWB428sGiu8DDGdiQAGG6tOXWwXiwwIGXT4Fv8ny+xskV61MlSj24hgk
+ 2s7fUXQyNGRr8a7f0R9P8NVb+hRhMEDoDUjJP0bTk0V7RiziB+6vbDuve5shTjy63C
+ ojnrZ/1WqSBZMvrJ2T4O5DiMD95/IuLXy+EYeBhCO+upPtxARcgHmSbvRQueWHd2/7
+ Q2lePsRAFimKw==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <maz@kernel.org>)
+ id 1nDSso-003qPI-F4; Fri, 28 Jan 2022 15:09:50 +0000
+Date: Fri, 28 Jan 2022 15:09:49 +0000
+Message-ID: <87o83v6gn6.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: "qizhong.cheng" <qizhong.cheng@mediatek.com>,	Ryder Lee
+ <ryder.lee@mediatek.com>,	Jianjun Wang <jianjun.wang@mediatek.com>,	Lorenzo
+ Pieralisi <lorenzo.pieralisi@arm.com>,	Krzysztof =?UTF-8?B?V2lsY3p5xYRz?=
+ =?UTF-8?B?a2k=?= <kw@linux.com>,	Bjorn Helgaas <bhelgaas@google.com>,
+ linux-pci@vger.kernel.org,	linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org,	linux-arm-kernel@lists.infradead.org,
+ chuanjia.liu@mediatek.com,	Srikanth Thokala <srikanth.thokala@intel.com>,
+ Pratyush Anand <pratyush.anand@gmail.com>,	Thomas Petazzoni
+ <thomas.petazzoni@bootlin.com>,	Pali =?UTF-8?B?Um9ow6Fy?= <pali@kernel.org>
+Subject: Re: [PATCH] PCI: mediatek: Change MSI interrupt processing sequence
+In-Reply-To: <20220128131250.GA200007@bhelgaas>
+References: <87r18s5jbn.wl-maz@kernel.org> <20220128131250.GA200007@bhelgaas>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: helgaas@kernel.org, qizhong.cheng@mediatek.com,
+ ryder.lee@mediatek.com, jianjun.wang@mediatek.com, lorenzo.pieralisi@arm.com,
+ kw@linux.com, bhelgaas@google.com, linux-pci@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] soc: mediatek: mt8192-mmsys: Fix dither to dsi0 path's input
- sel
-Date: Fri, 28 Jan 2022 15:20:56 +0100
-Message-Id: <20220128142056.359900-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.33.1
-MIME-Version: 1.0
+ linux-arm-kernel@lists.infradead.org, chuanjia.liu@mediatek.com,
+ srikanth.thokala@intel.com, pratyush.anand@gmail.com,
+ thomas.petazzoni@bootlin.com, pali@kernel.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220128_062104_462699_BC833B24 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20220128_070955_854347_49F2F4BC 
+X-CRM114-Status: GOOD (  17.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,44 +96,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In commit d687e056a18f ("soc: mediatek: mmsys: Add mt8192 mmsys routing table"),
-the mmsys routing table for mt8192 was introduced but the input selector
-for DITHER->DSI0 has no value assigned to it.
+On Fri, 28 Jan 2022 13:12:50 +0000,
+Bjorn Helgaas <helgaas@kernel.org> wrote:
+> 
+> On Fri, Jan 28, 2022 at 08:57:16AM +0000, Marc Zyngier wrote:
+> > On Thu, 27 Jan 2022 21:21:00 +0000,
+> > Bjorn Helgaas <helgaas@kernel.org> wrote:
+>
+> Thanks a lot for taking a look at these, Marc!  Is there anything we
+> can do to make all these drivers/pci/controller/* drivers more
+> consistent and easier to review?  I found it very difficult to look
+> across all of them and find similar design patterns.
 
-This means that we are clearing bit 0 instead of setting it, blocking
-communication between these two blocks; due to that, any display that
-is connected to DSI0 will not work, as no data will go through.
-The effect of that issue is that, during bootup, the DRM will block for
-some time, while atomically waiting for a vblank that never happens;
-later, the situation doesn't get better, leaving the display in a
-non-functional state.
+It looks to me that a number of them are just wrapping the same
+underlying IP block, most likely the DW controller (this looks to be
+the case for at least the first two).
 
-To fix this issue, fix the route entry in the table by assigning the
-dither input selector to MT8192_DISP_DSI0_SEL_IN.
+They probably all use different register and bit offsets, but it
+should be possible to write a library abstracting all these details
+and have a common handling for most of them. This would certainly go a
+long way in making things more solid.
 
-Fixes: d687e056a18f ("soc: mediatek: mmsys: Add mt8192 mmsys routing table")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mt8192-mmsys.h | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+	M.
 
-diff --git a/drivers/soc/mediatek/mt8192-mmsys.h b/drivers/soc/mediatek/mt8192-mmsys.h
-index 6f0a57044a7b..6aae0b12b6ff 100644
---- a/drivers/soc/mediatek/mt8192-mmsys.h
-+++ b/drivers/soc/mediatek/mt8192-mmsys.h
-@@ -53,7 +53,8 @@ static const struct mtk_mmsys_routes mmsys_mt8192_routing_table[] = {
- 		MT8192_AAL0_SEL_IN_CCORR0
- 	}, {
- 		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
--		MT8192_DISP_DSI0_SEL_IN, MT8192_DSI0_SEL_IN_DITHER0
-+		MT8192_DISP_DSI0_SEL_IN, MT8192_DSI0_SEL_IN_DITHER0,
-+		MT8192_DSI0_SEL_IN_DITHER0
- 	}, {
- 		DDP_COMPONENT_RDMA0, DDP_COMPONENT_COLOR0,
- 		MT8192_DISP_RDMA0_SOUT_SEL, MT8192_RDMA0_SOUT_COLOR0,
 -- 
-2.33.1
-
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-mediatek mailing list
