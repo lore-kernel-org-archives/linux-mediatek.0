@@ -4,58 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72986C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 12:52:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 137F1C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jan 2022 13:33:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DxYJj95uibJhiFCU6YVj2VdxbqeTA+AlaAWLzbfM8L4=; b=RIwE0olxOAnIV/
-	aUh5I6wvrUAbUbvEzN+9mcuCc5rOWKeBcYAtN3cTw/ZrnNEAupSPWTY270mz+Fyq4USXCbJfqydHg
-	1jEGK5aypPDDV0W2/L/KwNJJtAqtCnPM23HMC5OCkQXhVfwcsjzqUQVRUFFELWDa4J1k3tFKWW23T
-	CZ0uV4QYskvTSp3gqlkezTMLYEXy4DjteazFKZKkjBRZVqQoKy9HbE9XrBe8jb1yVskxKRXF2w247
-	MzFoA+0bDxXMclOaBxuoyH4GN//jKOOfzFdE6rkHPIGtNqeRZjz6mzRHoRlv2dEpW89cHv8FIZgu0
-	fpx7hbxkPiFJUctKGKnw==;
+	List-Owner; bh=nDXkzlXbxZewuk5lrWam10aZ34bgwb6uLEf9KUwypPo=; b=RxvLl+cUdLgk7b
+	7SEflb2lVx/gwrdra+3DRRujYmZeg7KlN7ayn/5vBb1UEyj58/gLlU3Jg5wkyNN8Fp5SCl3JdkEUW
+	/1ZCplDSTUfCmMrSJro1sT+kAn89VPWQpy3FRt9f182C8XTiDFPX5TXIIAVT0rgzRCOYapE7aGs0k
+	a44432GzvLGEUuKO14WWRV9TnfrePYaV1Gtm0oQ9yvlEPgqPqd9nbyC3G1ViG75B/2c7GPW8YviWr
+	QjDqVOMK9xKCJuTvpaPxJ8nCwu8b4W/VCbaQ5nykgmLyrcpSIa+eaDNanbMVRrWJyOoDjcTYu4tuv
+	XfnjRlmq6SpBmeBkdayg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDQjd-0025ka-1o; Fri, 28 Jan 2022 12:52:13 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDQdV-0023Ds-2W; Fri, 28 Jan 2022 12:45:55 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 95B1DB8258F;
- Fri, 28 Jan 2022 12:45:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1C11C340E0;
- Fri, 28 Jan 2022 12:45:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1643373950;
- bh=vMCWcrlcdbFbw6ZhRTSMH5G249xb37QrpyMQTC2Ih8s=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=OApe1TM9xyUHQMFD6k9FG6o9kh88o2dbdqSEGbm5wq5/qqM5JnhJFTZNaAG/OoevL
- B51+tarWCZpS/wrJc4n3EK/qeZAo3/0q9InRVDCRcQ46ZibrXrySDoUS0iX5VAZGJZ
- 2SsMMvYDp37uKklaalMXs5QbfHBQfyTMoGG8HKvXokzoAcJsvCgN5Z1HLStrtn247A
- 5HaAnpPSZTEmO5ns0li5yaHEsQGLBmQQXlrjvPPA0OMa3/YGNqdv0h5BkoeZN+lXfA
- 0pkwmUhRjmbZWykw/ud+qo2GpbNlQlgEK21LfFKtmDGmCoXpjbJ/Iv1rcHug0GcZcL
- wEOxCHwsY/dPg==
-Date: Fri, 28 Jan 2022 13:45:40 +0100
-From: Mauro Carvalho Chehab <mchehab@kernel.org>
-To: Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v10 02/13] iommu/mediatek-v1: Free the existed fwspec if
- the master dev already has
-Message-ID: <20220128134540.00c6c380@coco.lan>
-In-Reply-To: <20220128134055.720bb43c@coco.lan>
-References: <20220117070510.17642-1-yong.wu@mediatek.com>
- <20220117070510.17642-3-yong.wu@mediatek.com>
- <20220128134055.720bb43c@coco.lan>
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.31; x86_64-redhat-linux-gnu)
+	id 1nDRNm-002LVp-FZ; Fri, 28 Jan 2022 13:33:42 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nDQvO-002AL5-G2; Fri, 28 Jan 2022 13:04:24 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DE9DA11D4;
+ Fri, 28 Jan 2022 05:04:18 -0800 (PST)
+Received: from [10.57.68.47] (unknown [10.57.68.47])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7E4173F766;
+ Fri, 28 Jan 2022 05:04:13 -0800 (PST)
+Message-ID: <29deffd6-aac4-f085-bcd5-f5a2d02784a8@arm.com>
+Date: Fri, 28 Jan 2022 13:04:07 +0000
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [RFC PATCH] component: Add common helpers for compare/release
+ functions
+Content-Language: en-GB
+To: Yong Wu <yong.wu@mediatek.com>, dri-devel@lists.freedesktop.org
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ James Wang <james.qian.wang@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ iommu@lists.linux-foundation.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ linux-kernel@vger.kernel.org, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-mediatek@lists.infradead.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Tomasz Figa <tfiga@chromium.org>,
+ srv_heupstream@mediatek.com, Rob Clark <robdclark@gmail.com>,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Sebastian Reichel <sre@kernel.org>
+References: <20220128081101.27837-1-yong.wu@mediatek.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20220128081101.27837-1-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220128_044553_462538_5B620062 
-X-CRM114-Status: GOOD (  27.52  )
+X-CRM114-CacheID: sfid-20220128_050422_690521_900F58E4 
+X-CRM114-Status: GOOD (  17.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,130 +70,105 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, David Airlie <airlied@linux.ie>,
- Will Deacon <will.deacon@arm.com>, dri-devel@lists.freedesktop.org,
- yf.wang@mediatek.com, Hans Verkuil <hverkuil@xs4all.nl>,
- anthony.huang@mediatek.com, youlin.pei@mediatek.com,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Evan Green <evgreen@chromium.org>, Eizan Miyamoto <eizan@chromium.org>,
- Matthias Kaehlcke <mka@chromium.org>, mingyuan.ma@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- Joerg Roedel <jroedel@suse.de>, Philipp Zabel <p.zabel@pengutronix.de>,
- libo.kang@mediatek.com, yi.kuo@mediatek.com, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Hsin-Yi Wang <hsinyi@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- anan.sun@mediatek.com, srv_heupstream@mediatek.com, acourbot@chromium.org,
- linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
- iommu@lists.linux-foundation.org, Daniel Vetter <daniel@ffwll.ch>,
- Robin Murphy <robin.murphy@arm.com>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Em Fri, 28 Jan 2022 13:40:55 +0100
-Mauro Carvalho Chehab <mchehab@kernel.org> escreveu:
+On 2022-01-28 08:11, Yong Wu wrote:
+[...]
+> diff --git a/include/linux/component.h b/include/linux/component.h
+> index 16de18f473d7..5a7468ea827c 100644
+> --- a/include/linux/component.h
+> +++ b/include/linux/component.h
+> @@ -2,6 +2,8 @@
+>   #ifndef COMPONENT_H
+>   #define COMPONENT_H
+>   
+> +#include <linux/device.h>
+> +#include <linux/of.h>
+>   #include <linux/stddef.h>
+>   
+>   
+> @@ -82,6 +84,22 @@ struct component_master_ops {
+>   	void (*unbind)(struct device *master);
+>   };
+>   
+> +/* A set common helpers for compare/release functions */
+> +static inline int compare_of(struct device *dev, void *data)
+> +{
+> +	return dev->of_node == data;
+> +}
 
-> Hi Matthias/Yong,
-> 
-> Are you ok if this patch gets merged via the media tree together with the
-> remaining series, or do you prefer to apply it via SoC tree instead?
+Note that this is effectively just device_match_of_node(), although I 
+guess there is an argument that having a nice consistent set of 
+component_match API helpers might be worth more than a tiny code saving 
+by borrowing one from a different API.
 
-Same questions for other patches touching files outside drivers/media
-on this pull request:
-
-	https://patchwork.kernel.org/project/linux-mediatek/patch/7af52d61-47c7-581d-62ed-76a7f8315b16@xs4all.nl/
-
-Like those:
-	0004-0013-iommu-mediatek-v1-Free-the-existed-fwspec-if-the-mas.patch
-	0005-0013-iommu-mediatek-Return-ENODEV-if-the-device-is-NULL.patch
-	0006-0013-iommu-mediatek-Add-probe_defer-for-smi-larb.patch
-	0007-0013-iommu-mediatek-Add-device_link-between-the-consumer-.patch
-
-Regards,
-Mauro
-
-> 
-> Regards,
-> Mauro
-> 
-> 
-> Em Mon, 17 Jan 2022 15:04:59 +0800
-> Yong Wu <yong.wu@mediatek.com> escreveu:
-> 
-> > When the iommu master device enters of_iommu_xlate, the ops may be
-> > NULL(iommu dev is defered), then it will initialize the fwspec here:
-> > 
-> > [<c0c9c5bc>] (dev_iommu_fwspec_set) from [<c06bda80>]
-> > (iommu_fwspec_init+0xbc/0xd4)
-> > [<c06bd9c4>] (iommu_fwspec_init) from [<c06c0db4>]
-> > (of_iommu_xlate+0x7c/0x12c)
-> > [<c06c0d38>] (of_iommu_xlate) from [<c06c10e8>]
-> > (of_iommu_configure+0x144/0x1e8)
-> > 
-> > BUT the mtk_iommu_v1.c only supports arm32, the probing flow still is a bit
-> > weird. We always expect create the fwspec internally. otherwise it will
-> > enter here and return fail.
-> > 
-> > static int mtk_iommu_create_mapping(struct device *dev,
-> > 				    struct of_phandle_args *args)
-> > {
-> >         ...
-> > 	if (!fwspec) {
-> > 	        ....
-> > 	} else if (dev_iommu_fwspec_get(dev)->ops != &mtk_iommu_ops) {  
-> >                 >>>>>>>>>>Enter here. return fail.<<<<<<<<<<<<    
-> > 		return -EINVAL;
-> > 	}
-> > 	...
-> > }
-> > 
-> > Thus, Free the existed fwspec if the master device already has fwspec.
-> > 
-> > This issue is reported at:
-> > https://lore.kernel.org/linux-mediatek/trinity-7d9ebdc9-4849-4d93-bfb5-429dcb4ee449-1626253158870@3c-app-gmx-bs01/
-> > 
-> > Reported-by: Frank Wunderlich <frank-w@public-files.de>
-> > Tested-by: Frank Wunderlich <frank-w@public-files.de> # BPI-R2/MT7623
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > Acked-by: Joerg Roedel <jroedel@suse.de>
-> > Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > ---
-> >  drivers/iommu/mtk_iommu_v1.c | 9 +++++++++
-> >  1 file changed, 9 insertions(+)
-> > 
-> > diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> > index be22fcf988ce..1467ba1e4417 100644
-> > --- a/drivers/iommu/mtk_iommu_v1.c
-> > +++ b/drivers/iommu/mtk_iommu_v1.c
-> > @@ -425,6 +425,15 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
-> >  	struct mtk_iommu_data *data;
-> >  	int err, idx = 0;
-> >  
-> > +	/*
-> > +	 * In the deferred case, free the existed fwspec.
-> > +	 * Always initialize the fwspec internally.
-> > +	 */
-> > +	if (fwspec) {
-> > +		iommu_fwspec_free(dev);
-> > +		fwspec = dev_iommu_fwspec_get(dev);
-> > +	}
-> > +
-> >  	while (!of_parse_phandle_with_args(dev->of_node, "iommus",
-> >  					   "#iommu-cells",
-> >  					   idx, &iommu_spec)) {  
-> 
-> 
-> 
-> Thanks,
-> Mauro
-
-
+Either way, however, I don't think there's any good argument for 
+instantiating separate copies of these functions in every driver that 
+uses them. If they're used as callbacks then they can't actually be 
+inlined anyway, so they may as well be exported from component.c as 
+normal so that the code really is shared (plus then there's nice 
+symmetry with the aforementioned device_match API helpers too).
 
 Thanks,
-Mauro
+Robin.
+
+> +static inline void release_of(struct device *dev, void *data)
+> +{
+> +	of_node_put(data);
+> +}
+> +
+> +static inline int compare_dev(struct device *dev, void *data)
+> +{
+> +	return dev == data;
+> +}
+> +
+>   void component_master_del(struct device *,
+>   	const struct component_master_ops *);
+>   
+> diff --git a/sound/soc/codecs/wcd938x.c b/sound/soc/codecs/wcd938x.c
+> index eff200a07d9f..992132cbfb9f 100644
+> --- a/sound/soc/codecs/wcd938x.c
+> +++ b/sound/soc/codecs/wcd938x.c
+> @@ -4417,16 +4417,6 @@ static const struct component_master_ops wcd938x_comp_ops = {
+>   	.unbind = wcd938x_unbind,
+>   };
+>   
+> -static int wcd938x_compare_of(struct device *dev, void *data)
+> -{
+> -	return dev->of_node == data;
+> -}
+> -
+> -static void wcd938x_release_of(struct device *dev, void *data)
+> -{
+> -	of_node_put(data);
+> -}
+> -
+>   static int wcd938x_add_slave_components(struct wcd938x_priv *wcd938x,
+>   					struct device *dev,
+>   					struct component_match **matchptr)
+> @@ -4442,8 +4432,7 @@ static int wcd938x_add_slave_components(struct wcd938x_priv *wcd938x,
+>   	}
+>   
+>   	of_node_get(wcd938x->rxnode);
+> -	component_match_add_release(dev, matchptr, wcd938x_release_of,
+> -				    wcd938x_compare_of,	wcd938x->rxnode);
+> +	component_match_add_release(dev, matchptr, release_of, compare_of, wcd938x->rxnode);
+>   
+>   	wcd938x->txnode = of_parse_phandle(np, "qcom,tx-device", 0);
+>   	if (!wcd938x->txnode) {
+> @@ -4451,8 +4440,7 @@ static int wcd938x_add_slave_components(struct wcd938x_priv *wcd938x,
+>   		return -ENODEV;
+>   	}
+>   	of_node_get(wcd938x->txnode);
+> -	component_match_add_release(dev, matchptr, wcd938x_release_of,
+> -				    wcd938x_compare_of,	wcd938x->txnode);
+> +	component_match_add_release(dev, matchptr, release_of, compare_of, wcd938x->txnode);
+>   	return 0;
+>   }
+>   
 
 _______________________________________________
 Linux-mediatek mailing list
