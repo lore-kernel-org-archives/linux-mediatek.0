@@ -4,67 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A00B1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jan 2022 06:12:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFA93C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Jan 2022 00:38:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vj6GsSh93k+AweyZVvcr8nqUQiIo4aOUOpXuK4bv1Hw=; b=VZ2aNEaXAqnJMS
-	ScDQYhEpaY9swG+qxAbvc8k2LXGZgTFJjVfCVdghV9YcrzsnvWDjr8DOynFoSYSwVv1PQbMbpDVFt
-	qqbEdPwRhL+V+iUghHYomvy1kUNkG7DMff9VGh4QypwnaJBhLiamv0Ebi8ALc1yo0BQCT0RFDRxBj
-	HD7FZeWmpPDIiiNB+tsPmhgHo4ZQS+FHf1/zW7LcfahVLsZU0rhFR0HgAhdQ2SoulQCRts7Xqd3oC
-	7BK6popJ2ITozyGOXuOq839DDEXFF/tcknC2jgEWeC9rUDdhV7ET8ZbMpSp8BSofnEW6QBshEGqu0
-	pJyqecb1nU7CiXYg6zVg==;
+	List-Owner; bh=rETJ3dIuJB5oSZygRA5HDqemzFDE/6czHQjvfmQ4uuM=; b=rm5xvN7Mm279P/
+	vhrB+9wFoe9fT0i139JCDOYu+Q50EorEJc9fQOTzLYJFNL3wnchheq98zJMm8xAsusGC/6uLHayJl
+	hwWPw9jF5h6cYf2JKOkOQVVmXor7vTZ/CH175gImcWejl+Rd67ocT0mrE4Ka2J129dW4iC167LVHO
+	xCsOTB3TwSH+RI37nV+1TFPiLVraQ38VStGBLJl52gKFikvF3PCw9361e20/TBBtLytIO09q80tlT
+	c6aMcja5j0+nKUOB7XhfSe1gT31pAh4Ms3BqKmSOhgOyYGX0mMi2kwq8Mf49LK5e4p+f6THKzOTXw
+	5Qvhizcx7zxIpZrEprUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDgyN-0047Nc-Ml; Sat, 29 Jan 2022 06:12:31 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nDyEe-005fH9-Pk; Sun, 30 Jan 2022 00:38:28 +0000
+Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDgyK-0047Lv-Cw
- for linux-mediatek@lists.infradead.org; Sat, 29 Jan 2022 06:12:29 +0000
-X-UUID: 8803825b080b4020ad1560a28fd3f1b5-20220128
-X-UUID: 8803825b080b4020ad1560a28fd3f1b5-20220128
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1229551839; Fri, 28 Jan 2022 23:12:21 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 28 Jan 2022 22:02:19 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 29 Jan 2022 14:02:12 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 29 Jan 2022 14:02:12 +0800
-From: <sean.wang@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
-CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
- <Soul.Huang@mediatek.com>, <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
- <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
- <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
- <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
- <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
- <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
- <jemele@google.com>, <abhishekpandit@google.com>, <michaelfsun@google.com>,
- <mcchou@chromium.org>, <shawnku@google.com>,
- <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH 2/2] Bluetooth: mediatek: fix the conflict between mtk and
- msft vendor event
-Date: Sat, 29 Jan 2022 14:02:08 +0800
-Message-ID: <2eed797ac2605bd068a025486fc0c09c2687e50c.1643435854.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <52ae30c33f2994efcdff180764801141d59e6e0c.1643435854.git.objelf@gmail.com>
-References: <52ae30c33f2994efcdff180764801141d59e6e0c.1643435854.git.objelf@gmail.com>
+ id 1nDyEY-005fGa-QR
+ for linux-mediatek@lists.infradead.org; Sun, 30 Jan 2022 00:38:24 +0000
+Received: by mail-yb1-xb2d.google.com with SMTP id i10so29533855ybt.10
+ for <linux-mediatek@lists.infradead.org>; Sat, 29 Jan 2022 16:38:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=kD5EeMfWUZCSsdRFixk1so34OOReUXkCj6tRRq5J/Uc=;
+ b=O4Tw7KGaXWjdqt9T970Y8/kH7N+ViE2uO4IeA3UWwfb5LWDhLAgdQ13kGqqCFktiMk
+ 4Vv7jQT52fSqMz5OkdAC4KjLplOciEm3LyV6cOLM6+pAEnWGc4o6mZJDCbioWpGVOUG1
+ 2lHSyAOBMCN5Frc3Cdsg6bg7HxZ6b231c3GvytE0674ovgf2FlDq0ID6gg9gLJDi45+I
+ pa7EYF80KoI9HtvPwgzfHMaG8Zw3WLlC+MOQe/xA8bSx8j0mMvs5X1TcC/ArieNb5T2Y
+ ho9dk3Xhanq8jicrHV0bc2yPvangtdehWkknv7962AdwCimsA+Te/k139zwe+cHAzd0y
+ wkNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=kD5EeMfWUZCSsdRFixk1so34OOReUXkCj6tRRq5J/Uc=;
+ b=4JNo9P31bapSwm8Xe/fh4/xN8tdhxtiAJF8VE9aBkbL2NMSXYX112WjiBvm8+WHr3E
+ K/uuz3RshqGMP7d1K0i16ih4zaA7ty+EnYP8rNS6kYnPBDFS/6hkI7QUsRd9WWVmmu3Y
+ oGK1t3EIVjX1b+69uOeRW7oly+9iF+oeFoDZ9ajhnfxKrVhc+OwCxEwEeLrz5NxSB+aj
+ YGHiIiiXdZ42FhuGwC2gvtBdEWqWYgTigRVNBwzfTBgS6AXowejTA2RFpMV1LHiUha0P
+ 6qT0PpXeN26aenuf0iZXVAvawpnqEscVAeizZQzQ5BM4NKAf88yGqKHWsYxExNH4+ej5
+ TPRg==
+X-Gm-Message-State: AOAM532mkijvQokex+kBY4IosnEQZ6Uwm+2Bxs8clvYk5GlnKhPLosug
+ gEHXMgBqCd66I/9Nkjv934fpTvsab2r9RRlu9Kpexg==
+X-Google-Smtp-Source: ABdhPJxrsg7lw1QYllN4dx+IUpwLh8pIspc1kHtZgNyj3fI5O7+wptcqpiBXNZmBeah8UrGe2QSTVaJBq7sQALlEU/w=
+X-Received: by 2002:a25:cfc6:: with SMTP id
+ f189mr21225792ybg.322.1643503102047; 
+ Sat, 29 Jan 2022 16:38:22 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220112114724.1953-1-tinghan.shen@mediatek.com>
+ <20220112114724.1953-3-tinghan.shen@mediatek.com>
+ <18f7a647-6153-6d38-dff1-727b9592b01e@gmail.com>
+ <102ea6303dd16fdf9ec931d0a1845a93afe92545.camel@mediatek.com>
+In-Reply-To: <102ea6303dd16fdf9ec931d0a1845a93afe92545.camel@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Sun, 30 Jan 2022 01:38:10 +0100
+Message-ID: <CACRpkdZ194_7+mHauDPwMHG3TeGnp2ENdcSDjZnWny1X4YTT7w@mail.gmail.com>
+Subject: Re: [PATCH v9 2/3] dt-bindings: pinctrl: mt8195: Add
+ mediatek,drive-strength-adv property
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ David Matlack <dmatlack@google.com>, Jing Zhang <jingzhangos@google.com>, 
+ Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, ryder.lee@kernel.org, 
+ wenst@chromium.org, chunfeng.yun@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220128_221228_472057_78C9ADDF 
-X-CRM114-Status: GOOD (  18.11  )
+X-CRM114-CacheID: sfid-20220129_163822_901465_E0D6CBA5 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,85 +94,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Tue, Jan 25, 2022 at 7:21 AM Tinghan Shen <tinghan.shen@mediatek.com> wrote:
 
-There is a conflict between MediaTek wmt event and msft vendor extension
-logic in the core layer since 145373cb1b1f ("Bluetooth: Add framework for
-Microsoft vendor extension") was introduced because we changed the type of
-mediatek wmt event to the type of msft vendor event in the driver.
+> I want to send next version to update the CC list of this series, but I'm not sure
+> whether this will break the conversation between you and Linus.
+>
+> Is it ok to send next version? or waiting the response?
 
-But the purpose we reported mediatek event to the core layer is for the
-diagnostic purpose with that we are able to see the full packet trace via
-monitoring socket with btmon. Thus, it is harmless we keep the original
-type of mediatek vendor event here to avoid breaking the msft extension
-function especially they can be supported by Mediatek chipset like MT7921
-, MT7922 devices and future devices.
+Send a new version, I'll apply the v10 version!
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/bluetooth/btmtk.h     | 1 +
- drivers/bluetooth/btmtksdio.c | 9 +--------
- drivers/bluetooth/btusb.c     | 5 -----
- 3 files changed, 2 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-index 8960a5f89d48..013850fd2055 100644
---- a/drivers/bluetooth/btmtk.h
-+++ b/drivers/bluetooth/btmtk.h
-@@ -5,6 +5,7 @@
- #define FIRMWARE_MT7668		"mediatek/mt7668pr2h.bin"
- #define FIRMWARE_MT7961		"mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin"
- 
-+#define HCI_EV_WMT 0xe4
- #define HCI_WMT_MAX_EVENT_SIZE		64
- 
- #define BTMTK_WMT_REG_WRITE 0x1
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index 8e200e80d2f6..cbb09e1b823d 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -381,13 +381,6 @@ static int btmtksdio_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
- 	struct hci_event_hdr *hdr = (void *)skb->data;
- 	int err;
- 
--	/* Fix up the vendor event id with 0xff for vendor specific instead
--	 * of 0xe4 so that event send via monitoring socket can be parsed
--	 * properly.
--	 */
--	if (hdr->evt == 0xe4)
--		hdr->evt = HCI_EV_VENDOR;
--
- 	/* When someone waits for the WMT event, the skb is being cloned
- 	 * and being processed the events from there then.
- 	 */
-@@ -403,7 +396,7 @@ static int btmtksdio_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
- 	if (err < 0)
- 		goto err_free_skb;
- 
--	if (hdr->evt == HCI_EV_VENDOR) {
-+	if (hdr->evt == HCI_EV_WMT) {
- 		if (test_and_clear_bit(BTMTKSDIO_TX_WAIT_VND_EVT,
- 				       &bdev->tx_state)) {
- 			/* Barrier to sync with other CPUs */
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index aefa0ee293f3..55ebab019d29 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -2271,11 +2271,6 @@ static void btusb_mtk_wmt_recv(struct urb *urb)
- 		skb_put_data(skb, urb->transfer_buffer, urb->actual_length);
- 
- 		hdr = (void *)skb->data;
--		/* Fix up the vendor event id with 0xff for vendor specific
--		 * instead of 0xe4 so that event send via monitoring socket can
--		 * be parsed properly.
--		 */
--		hdr->evt = 0xff;
- 
- 		/* When someone waits for the WMT event, the skb is being cloned
- 		 * and being processed the events from there then.
--- 
-2.25.1
-
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-mediatek mailing list
