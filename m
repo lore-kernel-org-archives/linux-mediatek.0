@@ -4,80 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFA93C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Jan 2022 00:38:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00C55C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Jan 2022 01:21:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rETJ3dIuJB5oSZygRA5HDqemzFDE/6czHQjvfmQ4uuM=; b=rm5xvN7Mm279P/
-	vhrB+9wFoe9fT0i139JCDOYu+Q50EorEJc9fQOTzLYJFNL3wnchheq98zJMm8xAsusGC/6uLHayJl
-	hwWPw9jF5h6cYf2JKOkOQVVmXor7vTZ/CH175gImcWejl+Rd67ocT0mrE4Ka2J129dW4iC167LVHO
-	xCsOTB3TwSH+RI37nV+1TFPiLVraQ38VStGBLJl52gKFikvF3PCw9361e20/TBBtLytIO09q80tlT
-	c6aMcja5j0+nKUOB7XhfSe1gT31pAh4Ms3BqKmSOhgOyYGX0mMi2kwq8Mf49LK5e4p+f6THKzOTXw
-	5Qvhizcx7zxIpZrEprUA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=iv7J5ycPZn47MICyXze7W17EjEILoZjsuJbrbFEzRo0=; b=NHXbajmoXn+UdC
+	QifKBUpHiTWuXoAFEjkNiVVT0Pp66wvQEprODMrqp5qRYZ4908zFhAU6UOo9eIk1UNxTPbNEdiIg4
+	alW5LD/47Wp4jm+Jx2CC/W5X2DssEiUYNPdAzMkMCOrVI1kt2eCiTLNe4uQXP9w0/I/gWZlJI5xN0
+	qcEG7QOgOdpjePOaQeME+q1MxpKajaVCQBlA5RDHVpreyQ7HrQHhblTkbyLaKPVrD1PBpljI+w4GJ
+	wxhhhIrQ2fcUelM3inOCuJhESN7+JJeF4A8W6SBewu2orS60PnwnL8E/2xoRHLs8lH5x6X9etRDZy
+	sDPn4gSHauDsp9nP23PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDyEe-005fH9-Pk; Sun, 30 Jan 2022 00:38:28 +0000
-Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
+	id 1nDyuM-005gqA-9j; Sun, 30 Jan 2022 01:21:34 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDyEY-005fGa-QR
- for linux-mediatek@lists.infradead.org; Sun, 30 Jan 2022 00:38:24 +0000
-Received: by mail-yb1-xb2d.google.com with SMTP id i10so29533855ybt.10
- for <linux-mediatek@lists.infradead.org>; Sat, 29 Jan 2022 16:38:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kD5EeMfWUZCSsdRFixk1so34OOReUXkCj6tRRq5J/Uc=;
- b=O4Tw7KGaXWjdqt9T970Y8/kH7N+ViE2uO4IeA3UWwfb5LWDhLAgdQ13kGqqCFktiMk
- 4Vv7jQT52fSqMz5OkdAC4KjLplOciEm3LyV6cOLM6+pAEnWGc4o6mZJDCbioWpGVOUG1
- 2lHSyAOBMCN5Frc3Cdsg6bg7HxZ6b231c3GvytE0674ovgf2FlDq0ID6gg9gLJDi45+I
- pa7EYF80KoI9HtvPwgzfHMaG8Zw3WLlC+MOQe/xA8bSx8j0mMvs5X1TcC/ArieNb5T2Y
- ho9dk3Xhanq8jicrHV0bc2yPvangtdehWkknv7962AdwCimsA+Te/k139zwe+cHAzd0y
- wkNQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kD5EeMfWUZCSsdRFixk1so34OOReUXkCj6tRRq5J/Uc=;
- b=4JNo9P31bapSwm8Xe/fh4/xN8tdhxtiAJF8VE9aBkbL2NMSXYX112WjiBvm8+WHr3E
- K/uuz3RshqGMP7d1K0i16ih4zaA7ty+EnYP8rNS6kYnPBDFS/6hkI7QUsRd9WWVmmu3Y
- oGK1t3EIVjX1b+69uOeRW7oly+9iF+oeFoDZ9ajhnfxKrVhc+OwCxEwEeLrz5NxSB+aj
- YGHiIiiXdZ42FhuGwC2gvtBdEWqWYgTigRVNBwzfTBgS6AXowejTA2RFpMV1LHiUha0P
- 6qT0PpXeN26aenuf0iZXVAvawpnqEscVAeizZQzQ5BM4NKAf88yGqKHWsYxExNH4+ej5
- TPRg==
-X-Gm-Message-State: AOAM532mkijvQokex+kBY4IosnEQZ6Uwm+2Bxs8clvYk5GlnKhPLosug
- gEHXMgBqCd66I/9Nkjv934fpTvsab2r9RRlu9Kpexg==
-X-Google-Smtp-Source: ABdhPJxrsg7lw1QYllN4dx+IUpwLh8pIspc1kHtZgNyj3fI5O7+wptcqpiBXNZmBeah8UrGe2QSTVaJBq7sQALlEU/w=
-X-Received: by 2002:a25:cfc6:: with SMTP id
- f189mr21225792ybg.322.1643503102047; 
- Sat, 29 Jan 2022 16:38:22 -0800 (PST)
+ id 1nDyu9-005gmt-Di; Sun, 30 Jan 2022 01:21:22 +0000
+X-UUID: 2ba405106e3f48d6826e1e36ce152602-20220129
+X-UUID: 2ba405106e3f48d6826e1e36ce152602-20220129
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chun-jie.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 57194459; Sat, 29 Jan 2022 18:21:13 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 29 Jan 2022 17:21:12 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Sun, 30 Jan 2022 09:21:10 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sun, 30 Jan 2022 09:21:10 +0800
+From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+To: Enric Balletbo Serra <eballetbo@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, "Rob
+ Herring" <robh+dt@kernel.org>
+CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [v7 0/5] Mediatek MT8195 power domain support
+Date: Sun, 30 Jan 2022 09:20:59 +0800
+Message-ID: <20220130012104.5292-1-chun-jie.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20220112114724.1953-1-tinghan.shen@mediatek.com>
- <20220112114724.1953-3-tinghan.shen@mediatek.com>
- <18f7a647-6153-6d38-dff1-727b9592b01e@gmail.com>
- <102ea6303dd16fdf9ec931d0a1845a93afe92545.camel@mediatek.com>
-In-Reply-To: <102ea6303dd16fdf9ec931d0a1845a93afe92545.camel@mediatek.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Sun, 30 Jan 2022 01:38:10 +0100
-Message-ID: <CACRpkdZ194_7+mHauDPwMHG3TeGnp2ENdcSDjZnWny1X4YTT7w@mail.gmail.com>
-Subject: Re: [PATCH v9 2/3] dt-bindings: pinctrl: mt8195: Add
- mediatek,drive-strength-adv property
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- David Matlack <dmatlack@google.com>, Jing Zhang <jingzhangos@google.com>, 
- Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, ryder.lee@kernel.org, 
- wenst@chromium.org, chunfeng.yun@mediatek.com
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220129_163822_901465_E0D6CBA5 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220129_172121_488692_CB8151C1 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,17 +73,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 25, 2022 at 7:21 AM Tinghan Shen <tinghan.shen@mediatek.com> wrote:
+This patch series adds power domain support for MT8195
+and is based on 5.17-rc1.
 
-> I want to send next version to update the CC list of this series, but I'm not sure
-> whether this will break the conversation between you and Linus.
->
-> Is it ok to send next version? or waiting the response?
+change since v6:
+- rebase to 5.17-rc1
 
-Send a new version, I'll apply the v10 version!
+change since v5:
+- rebase to 5.16-rc1
+- add domain capacity in mfg power domain
 
-Yours,
-Linus Walleij
+change since v4:
+- rebase to 5.15-rc1 (fix conflict at patch 4 in this series)
+- change license
+
+change since v3:
+- remove redundant bus protection steps
+- remove unused power domain
+
+change since v2:
+- move modification of wakeup capacity to single patch
+
+reason for resend v2:
+- miss patch version in series
+
+changes since v1:
+- fix signed-off name
+- describe more detail in patch 3
+- move modification of removing redundant macro to single patch
+
+Chun-Jie Chen (5):
+  dt-bindings: power: Add MT8195 power domains
+  soc: mediatek: pm-domains: Add wakeup capacity support in power domain
+  soc: mediatek: pm-domains: Remove unused macro
+  soc: mediatek: pm-domains: Move power status offset to power domain
+    data
+  soc: mediatek: pm-domains: Add support for mt8195
+
+ .../power/mediatek,power-controller.yaml      |   2 +
+ drivers/soc/mediatek/mt8167-pm-domains.h      |  16 +-
+ drivers/soc/mediatek/mt8173-pm-domains.h      |  22 +-
+ drivers/soc/mediatek/mt8183-pm-domains.h      |  32 +-
+ drivers/soc/mediatek/mt8192-pm-domains.h      |  44 +-
+ drivers/soc/mediatek/mt8195-pm-domains.h      | 613 ++++++++++++++++++
+ drivers/soc/mediatek/mtk-pm-domains.c         |  12 +-
+ drivers/soc/mediatek/mtk-pm-domains.h         |   8 +-
+ include/dt-bindings/power/mt8195-power.h      |  46 ++
+ include/linux/soc/mediatek/infracfg.h         |  82 +++
+ 10 files changed, 862 insertions(+), 15 deletions(-)
+ create mode 100644 drivers/soc/mediatek/mt8195-pm-domains.h
+ create mode 100644 include/dt-bindings/power/mt8195-power.h
+
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
