@@ -4,55 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0879CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jan 2022 08:56:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39C61C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jan 2022 09:25:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gftfNC/AB6RdKhVchK3yHzwi7uE3wlh2HxIycXqZBLw=; b=y4S3UkYp+wQ7H+
-	2zJFmMqEdMxPanbVE26imaTZa3taPazwzDlFLl5+eNKyZkeeeVRmLFSS2hTDYsMzQ2w2l6rv+Hnmz
-	TlHf48RyytSH2e3w/Fw9LHLvJ311Hs4bBJRPliXv6U7YC6ypeXnhE2ZDx7FBm2trRCU4LfDiskJxl
-	F9yv4GaZirkgbZmnodGkdsQRkR7KWeiYOVmKHeTYHQ0B3ygkx2dlnrnInxB5ocSzxxcXPxdH/fYZb
-	jeoE+hRWJoNjSyqIDiG+E11YKql4Nq6qi6FBGIIxu7KZoRI0UThoiEoNh/y1ExOgfLmKEtMiwSX1k
-	wgSUYK3MMNuNL1QqSprg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WiQftEsj09jcqXvmPTirnQlCDSbfENf6a05gbnG9nqw=; b=3dNPBXXVS11Khb
+	FkFA/tzkZiSVyhJ8b3VEW8S2yxNHLv81csBfD3fgyK4PE2/24IRpPhcL6ALnb0piN/DhC1hrmypaS
+	nU7FDdhyOaNqDbml0rhDv9JKqGGqvsiXnDS89SybPBdH+j+PWQQ55+87OhmBVd5TsfLmAeAehcS9s
+	8p3COK3yrEbDX1KhFFCOvt8Gb5p1wz6ScmcT8eTMzH5ZqY0U4ip3gGhv2/i+VACgyxHVpo3t4D+mS
+	u/jbImgOGuq8CO6NFM/CDeHdTTYXnF9cRK0+DeEf/XfW1YCe043VWlLyUqc+W3BOcozRoZk4nq+fA
+	ddEZPek3bZoIZgVrf0iQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nESTW-008Yoz-2E; Mon, 31 Jan 2022 08:55:50 +0000
+	id 1nESwF-008dNd-Ol; Mon, 31 Jan 2022 09:25:31 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nESTF-008YjU-L2; Mon, 31 Jan 2022 08:55:35 +0000
+ id 1nESw1-008dKE-VY; Mon, 31 Jan 2022 09:25:19 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 612F11F4302A
+ (Authenticated sender: kholk11) with ESMTPSA id 9E96B1F42DBC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1643619330;
- bh=AXf56R+mRkAxLE1emIJ+KeI2b8KNGh0WluiTdMOniaQ=;
- h=From:To:Cc:Subject:Date:From;
- b=HOJE3bKxURe1A1NWeLZK4tFFhTScA0zVcr49UcMcsLlU7s0H4avY17NSkVocZuxHW
- /6iw2veP3wAAEiokRS2bko3k/ScNZNwbx4hTPiQPw3i2S0VPBmkbCaWAnrzVALVAdR
- MioiBkY2OuQHySb0Derc7Y0RpIXjbjmUNzZ4yRlq9DmsFbECYWsJYbu+v4N59WVLTB
- 6mviuHc6oUVDHq3Juf8dkmFH8w0DkmNMy8SWxZiN0piHp4xtdjJW25nYlHK5o5ROCw
- LsWpjZIig7dayeQ5EcXgcsCW6Uu/ceL/GqP3tTsoUugTS8r+QdkHZuyxcnay59cTT5
- 3iWNZ/WTVpSbw==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: dri-devel@lists.freedesktop.org
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
- matthias.bgg@gmail.com, kernel@collabora.com, andrzej.hajda@intel.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- stable@vger.kernel.org, Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v4] drm/mediatek: mtk_dsi: Avoid EPROBE_DEFER loop with
- external bridge
-Date: Mon, 31 Jan 2022 09:55:20 +0100
-Message-Id: <20220131085520.287105-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.33.1
+ s=mail; t=1643621116;
+ bh=fbIVeyjQyhAhoLY74piWBq3+1URHLKGzFfERXylZibQ=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=G+n3SkiadJcTl8Uqq2gHU6UPyYTCJCZe7c+k6nTg+Y+oZCIgkdqmSAHWpY8W0EiF6
+ pwJ3msh30uXexOLmgW47/hr852Sm3Vw4+/yofQhItYYCZrnECur6u/fmN6PaGZwCHQ
+ 8eEauqSR4Pnd4VMg1PS3+j86GNhxWxjb9HSawRcZGw+YjGmMEEOO8Fkt9nORMLDVK6
+ 46CeNecPN4m3tA8FfYAuf0mf70jC0f4ouz92sU4Tgp4Da4UAPXpbijXvjDyq2ju9Q5
+ mzWXxm5QVDoAioUeUE/hA3KfUBIQxowARZVsfux8Yqbz7P6kpN7cvAgYFEQF713KJ3
+ e9qABAggpKHAQ==
+Message-ID: <0e430d1e-ee25-1b3d-4a2c-8641db255adb@collabora.com>
+Date: Mon, 31 Jan 2022 10:25:13 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH 2/2] iommu/mediatek: Add mt8186 iommu support
+Content-Language: en-US
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Robin Murphy <robin.murphy@arm.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ iommu@lists.linux-foundation.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ youlin.pei@mediatek.com, anan.sun@mediatek.com, xueqi.zhang@mediatek.com,
+ yen-chang.chen@mediatek.com, mingyuan.ma@mediatek.com, yf.wang@mediatek.com,
+ libo.kang@mediatek.com, chengci.xu@mediatek.com,
+ Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
+References: <20220125093244.18230-1-yong.wu@mediatek.com>
+ <20220125093244.18230-3-yong.wu@mediatek.com>
+ <b52a1df8-58f4-baa2-cfb6-9c56244caa0f@collabora.com>
+ <01cc69cdf7773962140c01fe37b12ab2c9491c25.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <01cc69cdf7773962140c01fe37b12ab2c9491c25.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220131_005534_043439_71207205 
-X-CRM114-Status: GOOD (  20.89  )
+X-CRM114-CacheID: sfid-20220131_012518_192647_6B010FEB 
+X-CRM114-Status: GOOD (  16.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,264 +75,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-DRM bridge drivers are now attaching their DSI device at probe time,
-which requires us to register our DSI host in order to let the bridge
-to probe: this recently started producing an endless -EPROBE_DEFER
-loop on some machines that are using external bridges, like the
-parade-ps8640, found on the ACER Chromebook R13.
+Il 28/01/22 10:39, Yong Wu ha scritto:
+> On Thu, 2022-01-27 at 12:28 +0100, AngeloGioacchino Del Regno wrote:
+>> Il 25/01/22 10:32, Yong Wu ha scritto:
+>>> Add mt8186 iommu supports.
+>>>
+>>> Signed-off-by: Anan Sun <anan.sun@mediatek.com>
+>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+>>> ---
+>>>    drivers/iommu/mtk_iommu.c | 17 +++++++++++++++++
+>>>    1 file changed, 17 insertions(+)
+> 
+> [snip]
+> 
+>>>    static const struct mtk_iommu_plat_data mt8192_data = {
+>>>    	.m4u_plat       = M4U_MT8192,
+>>>    	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS |
+>>> OUT_ORDER_WR_EN |
+>>> @@ -1470,6 +1486,7 @@ static const struct of_device_id
+>>> mtk_iommu_of_ids[] = {
+>>>    	{ .compatible = "mediatek,mt8167-m4u", .data = &mt8167_data},
+>>>    	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
+>>>    	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
+>>> +	{ .compatible = "mediatek,mt8186-iommu-mm", .data =
+>>> &mt8186_data_mm},
+>>
+>> Hello!
+>>
+>> Is there any particular reason why this compatible is not
+>> "mediatek,mt8186-m4u"?
+> 
+> There is no special reason. In the previous SoC, We only support MM
+> IOMMU, it was called by "m4u". In the lastest SoC, We have the other
+> types IOMMU, like for INFRA masters and APU, thus they are called "mm
+> iommu", "infra iommu" and "apu iommu". Of course, "m4u" means "mm
+> iommu".
+> 
 
-Now that the DSI hosts/devices probe sequence is documented, we can
-do adjustments to the mtk_dsi driver as to both fix now and make sure
-to avoid this situation in the future: for this, following what is
-documented in drm_bridge.c, move the mtk_dsi component_add() to the
-mtk_dsi_ops.attach callback and delete it in the detach callback;
-keeping in mind that we are registering a drm_bridge for our DSI,
-which is only used/attached if the DSI Host is bound, it wouldn't
-make sense to keep adding our bridge at probe time (as it would
-be useless to have it if mtk_dsi_ops.attach() fails!), so also move
-that one to the dsi host attach function (and remove it in detach).
+I suggest, at this point, to change it to "mediatek,mt8186-m4u" for naming
+consistency with the other bindings and to avoid any kind of confusion.
 
-Cc: <stable@vger.kernel.org> # 5.15.x
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Andrzej Hajda <andrzej.hajda@intel.com>
-Reviewed-by: Jagan Teki <jagan@amarulasolutions.com>
+Thank you!
 
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 167 +++++++++++++++--------------
- 1 file changed, 84 insertions(+), 83 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 5d90d2eb0019..bced4c7d668e 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -786,18 +786,101 @@ void mtk_dsi_ddp_stop(struct device *dev)
- 	mtk_dsi_poweroff(dsi);
- }
- 
-+static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
-+{
-+	int ret;
-+
-+	ret = drm_simple_encoder_init(drm, &dsi->encoder,
-+				      DRM_MODE_ENCODER_DSI);
-+	if (ret) {
-+		DRM_ERROR("Failed to encoder init to drm\n");
-+		return ret;
-+	}
-+
-+	dsi->encoder.possible_crtcs = mtk_drm_find_possible_crtc_by_comp(drm, dsi->host.dev);
-+
-+	ret = drm_bridge_attach(&dsi->encoder, &dsi->bridge, NULL,
-+				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
-+	if (ret)
-+		goto err_cleanup_encoder;
-+
-+	dsi->connector = drm_bridge_connector_init(drm, &dsi->encoder);
-+	if (IS_ERR(dsi->connector)) {
-+		DRM_ERROR("Unable to create bridge connector\n");
-+		ret = PTR_ERR(dsi->connector);
-+		goto err_cleanup_encoder;
-+	}
-+	drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
-+
-+	return 0;
-+
-+err_cleanup_encoder:
-+	drm_encoder_cleanup(&dsi->encoder);
-+	return ret;
-+}
-+
-+static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
-+{
-+	int ret;
-+	struct drm_device *drm = data;
-+	struct mtk_dsi *dsi = dev_get_drvdata(dev);
-+
-+	ret = mtk_dsi_encoder_init(drm, dsi);
-+	if (ret)
-+		return ret;
-+
-+	return device_reset_optional(dev);
-+}
-+
-+static void mtk_dsi_unbind(struct device *dev, struct device *master,
-+			   void *data)
-+{
-+	struct mtk_dsi *dsi = dev_get_drvdata(dev);
-+
-+	drm_encoder_cleanup(&dsi->encoder);
-+}
-+
-+static const struct component_ops mtk_dsi_component_ops = {
-+	.bind = mtk_dsi_bind,
-+	.unbind = mtk_dsi_unbind,
-+};
-+
- static int mtk_dsi_host_attach(struct mipi_dsi_host *host,
- 			       struct mipi_dsi_device *device)
- {
- 	struct mtk_dsi *dsi = host_to_dsi(host);
-+	struct device *dev = host->dev;
-+	int ret;
- 
- 	dsi->lanes = device->lanes;
- 	dsi->format = device->format;
- 	dsi->mode_flags = device->mode_flags;
-+	dsi->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 0, 0);
-+	if (IS_ERR(dsi->next_bridge))
-+		return PTR_ERR(dsi->next_bridge);
-+
-+	drm_bridge_add(&dsi->bridge);
-+
-+	ret = component_add(host->dev, &mtk_dsi_component_ops);
-+	if (ret) {
-+		DRM_ERROR("failed to add dsi_host component: %d\n", ret);
-+		drm_bridge_remove(&dsi->bridge);
-+		return ret;
-+	}
- 
- 	return 0;
- }
- 
-+static int mtk_dsi_host_detach(struct mipi_dsi_host *host,
-+			       struct mipi_dsi_device *device)
-+{
-+	struct mtk_dsi *dsi = host_to_dsi(host);
-+
-+	component_del(host->dev, &mtk_dsi_component_ops);
-+	drm_bridge_remove(&dsi->bridge);
-+	return 0;
-+}
-+
- static void mtk_dsi_wait_for_idle(struct mtk_dsi *dsi)
- {
- 	int ret;
-@@ -938,73 +1021,14 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_dsi_host *host,
- 
- static const struct mipi_dsi_host_ops mtk_dsi_ops = {
- 	.attach = mtk_dsi_host_attach,
-+	.detach = mtk_dsi_host_detach,
- 	.transfer = mtk_dsi_host_transfer,
- };
- 
--static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
--{
--	int ret;
--
--	ret = drm_simple_encoder_init(drm, &dsi->encoder,
--				      DRM_MODE_ENCODER_DSI);
--	if (ret) {
--		DRM_ERROR("Failed to encoder init to drm\n");
--		return ret;
--	}
--
--	dsi->encoder.possible_crtcs = mtk_drm_find_possible_crtc_by_comp(drm, dsi->host.dev);
--
--	ret = drm_bridge_attach(&dsi->encoder, &dsi->bridge, NULL,
--				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
--	if (ret)
--		goto err_cleanup_encoder;
--
--	dsi->connector = drm_bridge_connector_init(drm, &dsi->encoder);
--	if (IS_ERR(dsi->connector)) {
--		DRM_ERROR("Unable to create bridge connector\n");
--		ret = PTR_ERR(dsi->connector);
--		goto err_cleanup_encoder;
--	}
--	drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
--
--	return 0;
--
--err_cleanup_encoder:
--	drm_encoder_cleanup(&dsi->encoder);
--	return ret;
--}
--
--static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
--{
--	int ret;
--	struct drm_device *drm = data;
--	struct mtk_dsi *dsi = dev_get_drvdata(dev);
--
--	ret = mtk_dsi_encoder_init(drm, dsi);
--	if (ret)
--		return ret;
--
--	return device_reset_optional(dev);
--}
--
--static void mtk_dsi_unbind(struct device *dev, struct device *master,
--			   void *data)
--{
--	struct mtk_dsi *dsi = dev_get_drvdata(dev);
--
--	drm_encoder_cleanup(&dsi->encoder);
--}
--
--static const struct component_ops mtk_dsi_component_ops = {
--	.bind = mtk_dsi_bind,
--	.unbind = mtk_dsi_unbind,
--};
--
- static int mtk_dsi_probe(struct platform_device *pdev)
- {
- 	struct mtk_dsi *dsi;
- 	struct device *dev = &pdev->dev;
--	struct drm_panel *panel;
- 	struct resource *regs;
- 	int irq_num;
- 	int ret;
-@@ -1021,19 +1045,6 @@ static int mtk_dsi_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
--	ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0,
--					  &panel, &dsi->next_bridge);
--	if (ret)
--		goto err_unregister_host;
--
--	if (panel) {
--		dsi->next_bridge = devm_drm_panel_bridge_add(dev, panel);
--		if (IS_ERR(dsi->next_bridge)) {
--			ret = PTR_ERR(dsi->next_bridge);
--			goto err_unregister_host;
--		}
--	}
--
- 	dsi->driver_data = of_device_get_match_data(dev);
- 
- 	dsi->engine_clk = devm_clk_get(dev, "engine");
-@@ -1098,14 +1109,6 @@ static int mtk_dsi_probe(struct platform_device *pdev)
- 	dsi->bridge.of_node = dev->of_node;
- 	dsi->bridge.type = DRM_MODE_CONNECTOR_DSI;
- 
--	drm_bridge_add(&dsi->bridge);
--
--	ret = component_add(&pdev->dev, &mtk_dsi_component_ops);
--	if (ret) {
--		dev_err(&pdev->dev, "failed to add component: %d\n", ret);
--		goto err_unregister_host;
--	}
--
- 	return 0;
- 
- err_unregister_host:
-@@ -1118,8 +1121,6 @@ static int mtk_dsi_remove(struct platform_device *pdev)
- 	struct mtk_dsi *dsi = platform_get_drvdata(pdev);
- 
- 	mtk_output_dsi_disable(dsi);
--	drm_bridge_remove(&dsi->bridge);
--	component_del(&pdev->dev, &mtk_dsi_component_ops);
- 	mipi_dsi_host_unregister(&dsi->host);
- 
- 	return 0;
--- 
-2.33.1
+>>
+>> Thanks,
+>> Angelo
+>>
+>>>    	{ .compatible = "mediatek,mt8192-m4u", .data = &mt8192_data},
+>>>    	{ .compatible = "mediatek,mt8195-iommu-infra", .data =
+>>> &mt8195_data_infra},
+>>>    	{ .compatible = "mediatek,mt8195-iommu-vdo",   .data =
+>>> &mt8195_data_vdo},
+>>
+>> _______________________________________________
+>> Linux-mediatek mailing list
+>> Linux-mediatek@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> 
 
 
 _______________________________________________
