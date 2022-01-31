@@ -4,67 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22EE0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jan 2022 11:12:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9099C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jan 2022 11:14:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PK3fchLQMrFG536+vEwlHqXIXUS7zDm9VSK+j+0hld0=; b=Iiv0ppIx+Zm+9L
-	arp+VjC7YTz9IRn6ZlCyAUgN6DV3PDKBWw8r9fG16nLOk/56VhjqMITxpmlyJTNkQq4otTg2quQnx
-	bpHIsweSjwANwKU3eipkxhoNpnwwdQhGHBbJbLd0lSA1rFkqHVTkRy/tSWt05D1ivd60QHlRuDate
-	BxKCrFGq/UuAq6Snn1rqcLtHOjWjwSO01SpyAMRCmS5nt71mZ/h+RzuaNopM/fC35eVG5qU6KfJvK
-	d0nKCQYpjjmxZ+kqOVlmgYTzzpUkM4XeKq55mCUB9KIWwgyP3hAoGdHt0PiIiciAef5GPUjULo2fY
-	NsJ12Vs+qPoBwgmQQa5Q==;
+	List-Owner; bh=fvl3FNltG6A0XDGlTAZj5GTOgCaoTaAxqpcRFcSNbj8=; b=JEN3lQwlic8/gT
+	Lb7Q6ax0ID8+tawAm8prUcLCUN7/+AhMJ9QDBn2dz+3Z/GJL6abfx/RuqPliEWY71zGKVNfQFi78o
+	yjbiURPGCnHzrXaovMJJxJuo7dmjRv2jAxF1X4ssSLWF+0QkFKYxxxPaUlZrKaAHOhLL7xLs7KF1h
+	R8+HaHoEekaPeHOIgRxrdSu5Zhc+eAOGmHmdHLzubzsorW0tu+JuIzuea0wwHcB8LwubWCV2Unn9s
+	z5mxEVIMIbS5KVGmZL2d+hlPCdrvt8SnjkhIKHDcCUZiqfd+qe3lMiKoUN6xMrS1UME3MD5RAfkg8
+	vREtCILyFnmjnuKuk7yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nEUba-0094Wf-7x; Mon, 31 Jan 2022 11:12:18 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nEUdC-00956J-Nb; Mon, 31 Jan 2022 11:13:58 +0000
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nEUbE-0094PE-J2; Mon, 31 Jan 2022 11:11:58 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 3C1B71F4323B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1643627515;
- bh=bih+YpN7Bu9FDncTaHYjpoZqdzNV5LPiHw6/cv1cfhQ=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=hKRtf4cDoo1ygR4TE6AVz3KwgVq9I2wipi4rIcHIGgpe4sBTYjAxOsd2Kf7TyyOys
- tcCjMJOIJjFy9IwzerMUjdbmP1MW8aRsU1mwqccSQAZGK6MiYYTIVzUU62IJS2evjN
- v2ybCwImU3qGLqu44MtMpNG+od93c0ze1Jo0k/1WMx5nW1fjzNx4bBNE4dch9yN2in
- oGRNDJQQjPrfD61oTV/yKPQa7DwOXZzaLfqi9zaMpRFiXS7vY6pcD8Ge8UnXnJhO+p
- lLERwen3qfXz8zdm4FsGqmtK2XkAK6LBUbHVT0wKUOcY3i1JRCEjeN/hM8NjeMiXXt
- QKJ6fsA1asRpw==
-Message-ID: <0846872b-03da-ee5d-6a9d-e6c9fa754191@collabora.com>
-Date: Mon, 31 Jan 2022 12:11:51 +0100
+ id 1nEUcm-0094y4-Jz
+ for linux-mediatek@lists.infradead.org; Mon, 31 Jan 2022 11:13:34 +0000
+Received: by mail-yb1-xb36.google.com with SMTP id c19so10479929ybf.2
+ for <linux-mediatek@lists.infradead.org>; Mon, 31 Jan 2022 03:13:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=U0Pw1BfqGZvVWUtyLjOHuhJwlMA1Use2yqcwgUkQnwE=;
+ b=F/ECo8ebBP3ogDbxQiY4hhui7DC5U/UMWgo9Zxz2mCrE3YKYlRwsn8i6WMbi1ujwL+
+ F6RWtT6HBlFzfySG6LZv1PSv0vwGis3HZwYSpSS9Hc29Ez3WcAtHPDp0M0EniYkeFuQP
+ vMA+VOZ1Ign8qZkpcj+5tqUlZrYNyhl+lbsyQ3EgkkMF+kIkkfA4B52aHxnb2frXX0a7
+ Hf5Jj2Ip5PmM4TVjHH23jDBAmknumfzIEPYA2ny7XV1pVboUBrBGG0Zl6M1/y8c1kbyM
+ NyLWqgGFxGTvLnD6/N2khaA9Rqn+cJcUH8dVK5IIzrye3eEHB5fbTpdShnNmFP/AZ8Ef
+ Xb5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=U0Pw1BfqGZvVWUtyLjOHuhJwlMA1Use2yqcwgUkQnwE=;
+ b=M67UQpH42iUFKDcKYn2bjxCbtyIQqtGyvKOc3GslWgOSO5R+jcfA+ftfYavjT5LdB0
+ /OSu85n7uxKAw1o4x+Tljy0oxFUbGVNxU3gIFovOnfuQXu4BFX5+V6pvka1sJeYyJPiJ
+ ww89+u+4Vrw0dt5yO8lGc3tu8kQmnPT/Ym/pjsLgAMdYtwLM3Prikb7BcqsNoJCUN3n6
+ FTGjcCFwIPNTk5x/tOeYm4+e4+Nr7gORxa5jzd5OpTa2rvrNZXZwMdlZT1DAxOCgwzwm
+ ae90dJrqKcy+ykyHQUevIFKkqQjWcvRLsRavzJZuVMI0vnUkCW4n8vny/IBNy/pNcm05
+ /xgA==
+X-Gm-Message-State: AOAM532vNVuOc7Umv7gzFmmv0Xtw42PHxRWbxhpY2rYySPiC0wv+nP68
+ SvmnjaWwFe99L8Ifc7nl4ROmMCi7jsEnFOyV6BKDhg==
+X-Google-Smtp-Source: ABdhPJwnjcbKcmXqxkDyE6M/D5slJFtoF8e/5OEa0RJfRa4THHqn7fj5ZGK9wLiBaPNsXouP0qEB6ly0WbzNmpDFVXY=
+X-Received: by 2002:a25:5143:: with SMTP id f64mr30614251ybb.520.1643627609604; 
+ Mon, 31 Jan 2022 03:13:29 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v22 5/7] soc: mediatek: SVS: add debug commands
-Content-Language: en-US
-To: Roger Lu <roger.lu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
- <khilman@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Nicolas Boichat <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
- Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
- Charles Yang <Charles.Yang@mediatek.com>, Angus Lin
- <Angus.Lin@mediatek.com>, Mark Rutland <mark.rutland@arm.com>,
- Nishanth Menon <nm@ti.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Guenter Roeck <linux@roeck-us.net>
-References: <20220127033956.24585-1-roger.lu@mediatek.com>
- <20220127033956.24585-6-roger.lu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220127033956.24585-6-roger.lu@mediatek.com>
+References: <20220130145116.88406-1-nbd@nbd.name>
+ <20220130145116.88406-13-nbd@nbd.name>
+In-Reply-To: <20220130145116.88406-13-nbd@nbd.name>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 31 Jan 2022 12:13:18 +0100
+Message-ID: <CACRpkdY38VWT_95jz25NTNtsqzkkVsSONNLswQ35JApT0HUXXQ@mail.gmail.com>
+Subject: Re: [PATCH v9 12/13] gpio: Add support for Airoha EN7523 GPIO
+ controller
+To: Felix Fietkau <nbd@nbd.name>, Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: soc@kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, john@phrozen.org, 
+ Andy Shevchenko <andy.shevchenko@gmail.com>, linux-kernel@vger.kernel.org, 
+ linux-gpio@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220131_031156_879699_CFE84535 
-X-CRM114-Status: GOOD (  15.87  )
+X-CRM114-CacheID: sfid-20220131_031332_728381_54CFF4A9 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,48 +80,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/01/22 04:39, Roger Lu ha scritto:
-> The purpose of SVS is to help find the suitable voltages
-> for DVFS. Therefore, if SVS bank voltages are concerned
-> to be wrong, we can adjust SVS bank voltages by this patch.
-> 
-> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+On Sun, Jan 30, 2022 at 3:54 PM Felix Fietkau <nbd@nbd.name> wrote:
 
+> From: John Crispin <john@phrozen.org>
+>
+> Airoha's GPIO controller on their ARM EN7523 SoCs consists of two banks of 32
+> GPIOs. Each instance in DT is for a single bank.
+>
+> Acked-by: Bartosz Golaszewski <brgl@bgdev.pl>
+> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+> Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
+> Signed-off-by: John Crispin <john@phrozen.org>
+> Signed-off-by: Felix Fietkau <nbd@nbd.name>
 
-Hello Roger,
-I was thinking about what this patch is adding... and I have a few considerations.
+This one and patch 11 with the bindings does not seem to have any
+build dependencies on the rest of the patches at all.
 
-It's nice to have a debugging mechanism to read the status and dump registers, as
-that's very helpful when doing heavy debugging of the IP... but adding the
-possibility to write a voltage offset may be very dangerous: think about the case
-in which, either for misconfiguration, or for any other reason, the debugfs entry
-that allows writing voffset becomes user-writable, or a user writes an impossibly
-high voffset.
-In case a very low (negative) voffset is entered, the platform would crash (denial
-of service); if a very high voffset is entered, hardware damage may occur.
+What about Bartosz just apply these two to the GPIO tree so we
+have less stuff to iterate?
 
-For this reason, there are two proposals:
-1. If you want to keep the debugfs voffset write, please constrain the permissible
-    voffset to an acceptable range that at least makes it unlikely to damage the HW;
-    Moreover, since voffset write is a feature that would be used in very limited
-    debugging cases, I think that this should be implemented over a build-time
-    configuration barrier... something like CONFIG_MTK_SVS_DEBUG_ALLOW_WRITE, or
-    similar;
-2. Since it's very unlikely for someone to really play that much with a voltage
-    offset during runtime, and since this looks like something very machine specific
-    (perhaps addressing board-specific quirks?), I would suggest to add this as a
-    device-tree parameter instead, such as "mediatek,svs-voffset", as it is indeed
-    possible to specify both positive or negative values in DT.
-
-I would prefer proposal 2, as it looks generally cleaner and way less risky.
-
-Regards,
-Angelo
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-mediatek mailing list
