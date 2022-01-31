@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51270C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jan 2022 10:57:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30087C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jan 2022 10:57:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FJ12wcYwvKrJuQH6O+j/r6QXsyb1XDQuItCQMIyMmEM=; b=GPJpTTl3g5RYbH
-	KDHEgHlJti0W5EzBUykDIHXNLcjeIuSvpe6xHhWoW4Rk3v1/v9Ahr6DaIu1YbIxw1oGQqH5XGxTaA
-	FloLEovag6LPwJogByurnOa0fAA/n8dJzj4G2xzD+Ts1aJC+1hf+YQm5GgPXG1fgJfUgFd1D7lIqw
-	JrieZ9ASRa4x0m7hCXNDixoO406Hedjh9AZcfTLQAfSVkOJmMz0WtPwcIbGM7lMuc6xlNGx0FxIzL
-	wc7wDUHnGWZ6o9o1X9U5ipg7teWYzPaOzdwKPaCYdh1TAIbyTplnVctbAuDUW7EB/WgAN8PxJ3iOy
-	eIsbDKZvs9feLJg3oa9A==;
+	List-Owner; bh=io5PJbQ1CSuaECxo3XzAWd0Hsme1+DosLaSj3N6E2CI=; b=HjQIK/Lvh7qopl
+	TtYB3ytllL2GUsxVDaT1h7S+8oDzLbigodb8x+so38E0vSi25Y/F6dsTeNMQQHEmRsTpdD48vmF+i
+	gUi4WbLvxr2dRPdhp08gWZXOJ35YwiXmoGuLxqRfQpRGHznyZbnw+zU3IQG8agCOvlE4P7NWQ5lZW
+	9t04cnmhd8vk2Y4/gFr5Omkovu1oLY6mGVcw7dfDecnrWjEyE9r1qfPgf1Nx8J69O4JaPyDzbAbkD
+	saEnv6TSyEPFfPjwVkqvC/a6M4e6PGaAdXkpjBTw/cWo+Qu5PU9AyfNCHuT36apE84KOZnQ8Kj60b
+	n8QXQHTjCPiH+3jJNkfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nEUN1-008xpp-Qh; Mon, 31 Jan 2022 10:57:15 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nEUNH-008xvI-M4; Mon, 31 Jan 2022 10:57:31 +0000
+Received: from mga12.intel.com ([192.55.52.136])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nEUMp-008xmZ-M3; Mon, 31 Jan 2022 10:57:05 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 6EEF21F4312B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1643626622;
- bh=AhIlSPFIs8ak0I/I8Ku1qwLQESsLxE26HyIIypM3mfI=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=VtX2wMwZbmlVio86rbbyFReXPbkiIl33IMybSs+olR6XD2iuZtBgwcgoZGtzFZxut
- SEPrxE9Y/T3VWOod7FCLJjutTvjmDiIzA3Nb1kYOXfIYdPWG65bUF8jwCdxZWGuC3+
- r5S9a4nWHlmo4C1GF5+cj55SF0DSFdv++YxwL/eOIebuovdwygIlKG6muH9/h3UdKF
- CVOZ7tpZiAkVRiQdmU6hPKolqXWg7uqua8QmEbLLGNxT1N9DqFnzWwAEqEMz4wBbyh
- UzSG1O7T6kr1mZunW5yXiqHkXjij1CDgNJ3y9OtqSTIhMANM7pgftW1YTrOPv3fQrl
- X52Pp5ab6/brw==
-Message-ID: <59582e31-66d7-ad07-dd64-4ebb223cf809@collabora.com>
-Date: Mon, 31 Jan 2022 11:56:58 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v22 7/7] soc: mediatek: SVS: add mt8192 SVS GPU driver
-Content-Language: en-US
-To: Roger Lu <roger.lu@mediatek.com>,
+ id 1nEUNF-008xtf-2h; Mon, 31 Jan 2022 10:57:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1643626649; x=1675162649;
+ h=from:to:cc:subject:in-reply-to:references:date:
+ message-id:mime-version;
+ bh=ZdENkAwNTJtD0Npkluazkuj5//kfgKoLfVNh1OSJ8Us=;
+ b=juQuVowaK2BDCSttta/HQfP7FdGVfA4z0Lh6ZyV/13wlffPhUvson1b6
+ p0h4h8WMO1OYXnU6hvAhSbB1lezfJKrDoknAO9fd/obs/PYpIonBzS3dV
+ HAFpwjsyVex9aqKLCGKpKekmKFL5pxw+joBafwFRrMIt7rJOjYzdU4PJC
+ Zxy3QND1GEUxdDTb8ZYdxBXRx/mmrZceIKVTDYRCm+LFqtJ06/gH2U7dP
+ BPu3VDlrTCBwBcegk6kqITlRcTWeqls0e13mYppF5Lnz/4g//oxEWHD8M
+ jXPvcckwSg9RsIE2vh/atkxwCwYj9/5Fvq6JFXhQF/qZl9lbBa71wDKT0 Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10243"; a="227408507"
+X-IronPort-AV: E=Sophos;i="5.88,330,1635231600"; d="scan'208";a="227408507"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Jan 2022 02:57:27 -0800
+X-IronPort-AV: E=Sophos;i="5.88,330,1635231600"; d="scan'208";a="481712993"
+Received: from ylian16-mobl1.ccr.corp.intel.com (HELO localhost)
+ ([10.252.16.100])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Jan 2022 02:57:19 -0800
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Daniel Vetter <daniel@ffwll.ch>, Yong Wu <yong.wu@mediatek.com>
+Cc: David Airlie <airlied@linux.ie>, Liviu Dudau <liviu.dudau@arm.com>,
+ dri-devel@lists.freedesktop.org, Sebastian Reichel <sre@kernel.org>,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Laurent Pinchart
+ <laurent.pinchart@ideasonboard.com>, Will Deacon <will@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Joerg Roedel
+ <joro@8bytes.org>, James Wang <james.qian.wang@arm.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+ linux-mediatek@lists.infradead.org, Hsin-Yi Wang <hsinyi@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
- <khilman@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Nicolas Boichat <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
- Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
- Charles Yang <Charles.Yang@mediatek.com>, Angus Lin
- <Angus.Lin@mediatek.com>, Mark Rutland <mark.rutland@arm.com>,
- Nishanth Menon <nm@ti.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Guenter Roeck <linux@roeck-us.net>
-References: <20220127033956.24585-1-roger.lu@mediatek.com>
- <20220127033956.24585-8-roger.lu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220127033956.24585-8-roger.lu@mediatek.com>
+ linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, srv_heupstream@mediatek.com,
+ Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org, Tomasz Figa
+ <tfiga@chromium.org>, iommu@lists.linux-foundation.org, Robin Murphy
+ <robin.murphy@arm.com>
+Subject: Re: [RFC PATCH] component: Add common helpers for compare/release
+ functions
+In-Reply-To: <YfRtGF3v+BwH5RkG@phenom.ffwll.local>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20220128081101.27837-1-yong.wu@mediatek.com>
+ <YfRtGF3v+BwH5RkG@phenom.ffwll.local>
+Date: Mon, 31 Jan 2022 12:57:16 +0200
+Message-ID: <878ruww4tv.fsf@intel.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220131_025703_882455_CA5C39BC 
-X-CRM114-Status: UNSURE (   6.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220131_025729_167489_9F5A9A3B 
+X-CRM114-Status: GOOD (  19.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,20 +85,102 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/01/22 04:39, Roger Lu ha scritto:
-> mt8192 SVS GPU uses 2-line (high/low bank) HW architecture to provide
-> bank voltages. High bank helps update higher frequency's voltage
-> and low bank helps update lower frequency's voltage.
-> 
-> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+On Fri, 28 Jan 2022, Daniel Vetter <daniel@ffwll.ch> wrote:
+> On Fri, Jan 28, 2022 at 04:11:01PM +0800, Yong Wu wrote:
+>> The component requires the compare/release functions, there are so many
+>> copy in current kernel. Just define three common helpers for them.
+>> No functional change.
+>> 
+>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+>> ---
+>> Base on v5.17-rc1
+>> ---
+>>  .../gpu/drm/arm/display/komeda/komeda_drv.c    |  5 -----
+>>  drivers/gpu/drm/arm/hdlcd_drv.c                |  7 +------
+>>  drivers/gpu/drm/armada/armada_drv.c            |  5 -----
+>>  drivers/gpu/drm/drm_of.c                       |  8 +-------
+>>  drivers/gpu/drm/etnaviv/etnaviv_drv.c          |  7 -------
+>>  drivers/gpu/drm/exynos/exynos_drm_drv.c        |  5 -----
+>>  .../gpu/drm/hisilicon/kirin/kirin_drm_drv.c    |  5 -----
+>>  drivers/gpu/drm/imx/imx-drm-core.c             |  4 ++--
+>>  drivers/gpu/drm/ingenic/ingenic-drm-drv.c      |  5 -----
+>>  drivers/gpu/drm/mcde/mcde_drv.c                |  7 +------
+>>  drivers/gpu/drm/mediatek/mtk_drm_drv.c         |  5 -----
+>>  drivers/gpu/drm/meson/meson_drv.c              |  8 --------
+>>  drivers/gpu/drm/msm/msm_drv.c                  |  9 ---------
+>>  drivers/gpu/drm/omapdrm/dss/dss.c              |  8 +-------
+>>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c    |  5 -----
+>>  drivers/gpu/drm/sti/sti_drv.c                  |  5 -----
+>>  drivers/gpu/drm/sun4i/sun4i_drv.c              |  9 ---------
+>>  drivers/gpu/drm/vc4/vc4_drv.c                  |  5 -----
+>>  drivers/iommu/mtk_iommu.h                      | 10 ----------
+>>  drivers/power/supply/ab8500_charger.c          |  8 +-------
+>>  drivers/video/fbdev/omap2/omapfb/dss/dss.c     |  8 +-------
+>>  include/linux/component.h                      | 18 ++++++++++++++++++
+>>  sound/soc/codecs/wcd938x.c                     | 16 ++--------------
+>
+> Seems like a neat idea. Please add kerneldoc for the new functions you're
+> adding (bonus point for an example in there) and make sure it all renders
+> correctly in
+>
+> $ make htmldoc
+>
+> Also please split up the patch series per-driver and add the maintainers
+> to each patches' Cc: list. With that I think this should be ready for
+> merging.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Aren't the function names perhaps a bit short and generic for the global
+namespace though? If you encounter compare_of, release_of, or
+compare_dev in code, component.h is not where you'd expect to find them.
 
+BR,
+Jani.
+
+
+>> diff --git a/include/linux/component.h b/include/linux/component.h
+>> index 16de18f473d7..5a7468ea827c 100644
+>> --- a/include/linux/component.h
+>> +++ b/include/linux/component.h
+>> @@ -2,6 +2,8 @@
+>>  #ifndef COMPONENT_H
+>>  #define COMPONENT_H
+>>  
+>> +#include <linux/device.h>
+>> +#include <linux/of.h>
+>>  #include <linux/stddef.h>
+>>  
+>>  
+>> @@ -82,6 +84,22 @@ struct component_master_ops {
+>>  	void (*unbind)(struct device *master);
+>>  };
+>>  
+>> +/* A set common helpers for compare/release functions */
+>> +static inline int compare_of(struct device *dev, void *data)
+>> +{
+>> +	return dev->of_node == data;
+>> +}
+>> +
+>> +static inline void release_of(struct device *dev, void *data)
+>> +{
+>> +	of_node_put(data);
+>> +}
+>> +
+>> +static inline int compare_dev(struct device *dev, void *data)
+>> +{
+>> +	return dev == data;
+>> +}
+>> +
+>>  void component_master_del(struct device *,
+>>  	const struct component_master_ops *);
+>>  
+
+-- 
+Jani Nikula, Intel Open Source Graphics Center
 
 _______________________________________________
 Linux-mediatek mailing list
