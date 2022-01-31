@@ -4,55 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F2FCC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jan 2022 13:13:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDCE2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jan 2022 14:17:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0rdg/gfIS+P7q+BZnk0uYC/a395aNmD3SmtfuMB3MYE=; b=Br16XsVEG/DBwt
-	N7+JNV6dyVVWp2AH+1Yb/Isg+g/2NdP4xZUDQ0Omzqlmu+9BbzBOzbPX6Mx5fBIQBPAXiq/acIdAG
-	DpWw4V8gYKg4UAot1Fc5xxekZNOHW0o55UujwSA5ILb3mP6XO/44QBvjwpCPf6nJLwNSLejnZpU+4
-	PbkZrZ/nwqGTo4FgGcgAtV8PrK9nXP/vDrTocAFeY5cY/AZfOAdxEm5Uff0VmGC/MiLtKmaVDZrfd
-	O7sCkeWS3C+EyO60tu4kKvv2ZGhwKdgXLcCKoFihzPGeCIlm/SzysgOKgYJkyDH6+AMIIKLpA1fiZ
-	tAxlFJaqvmgoX2kchIMQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=rEQNEzjdRflv4WxAwJfuukwWtvikOWj/f9ORdiiA+94=; b=x8zBvNG0gsQbJH
+	ymSBhoJKd7IJyZCBnMULVB8xQNSfnfhagoatgWWdQ9XHXw7GWJv+Pl+wtm7WzMS5KzSyG33P6qRg3
+	bneRDgeWAWvzSV56SwNbhN9dp+yd5gJXu3xrcnv49Jfr/p6JjDtAg2z8EIIbiDwOhlX0csjGMdy9d
+	Gbe5E6rRiJrnnRw0j7ni85PR0MsMiYXubpNZc53Gt11xgvwRxQIb9tnbVmUQ50A26hkDsZy+cRxQ5
+	Dme1YqW5bInpXM+5JktDFYD/2jPRbZ+j+s4qFmBZYH9yA3H4d+c6S/WfEOHrV5Ar4oBmfnoDzLTzZ
+	wPi8gQoyME3PfXE+idZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nEWUK-009S29-34; Mon, 31 Jan 2022 13:12:56 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1nEXUp-009a4k-2m; Mon, 31 Jan 2022 14:17:31 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nEWUC-009S0X-9t; Mon, 31 Jan 2022 13:12:52 +0000
-Received: from [2a04:4540:1400:f600:38a4:8fb:af3f:40b1]
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <john@phrozen.org>)
- id 1nEWU3-0006KS-Hy; Mon, 31 Jan 2022 14:12:39 +0100
-Message-ID: <e3ac8800-e0b8-7c7b-a5b9-e32dfa795731@phrozen.org>
-Date: Mon, 31 Jan 2022 14:12:39 +0100
+ id 1nEXUc-009a3E-O8; Mon, 31 Jan 2022 14:17:20 +0000
+Received: from benjamin-XPS-13-9310.. (unknown
+ [IPv6:2a01:e0a:120:3210:2ed0:139:90e3:dfa5])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 110431F433EC;
+ Mon, 31 Jan 2022 14:17:15 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1643638635;
+ bh=oQeYQnRXQUqnbqQFQgb/37k7wXUdazy3hfN1laLB+Lk=;
+ h=From:To:Cc:Subject:Date:From;
+ b=L7deuu4aR2RlGFj1lAojoy+j3ez7MsMDwljPKt63ue2hcm1nxoSJXsyJABkSJPoK6
+ usHml7nZaiwvoxg1jWn4ZvWAN8wh5pu0x4Phxsm0iAR6GZ4lNeaiFTy6E0xVbHnr0p
+ 4wpaUYA0fQ1sn53l1n5HeNay1uNaKczEH3t9f/sdzzjNFPpzJcmobwy3gyGfN2tMvr
+ LnC5TqT2e0iiUvj+X40hDx1YcP4Cm1R4HlmGx4d0SKpI7ott5anBwu2ciox9I/kn5o
+ 7yz8buHkX7tO07/N/4mak/paJMOKRLhSH/n8AhsELs3YuaXkvYz17K8CloQODV5POS
+ 7H6NLkM+rTXvQ==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: broonie@kernel.org,
+	matthias.bgg@gmail.com
+Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com, Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH] spi: mediatek: Avoid NULL pointer crash in interrupt
+Date: Mon, 31 Jan 2022 15:17:08 +0100
+Message-Id: <20220131141708.888710-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.5.1
-Subject: Re: [PATCH v9 03/13] ARM: Add basic support for Airoha EN7523 SoC
-Content-Language: en-GB
-To: Robert Marko <robert.marko@sartura.hr>, Felix Fietkau <nbd@nbd.name>
-Cc: Luka Perkov <luka.perkov@sartura.hr>, Russell King
- <linux@armlinux.org.uk>, Arnd Bergmann <arnd@arndb.de>,
- Olof Johansson <olof@lixom.net>, soc@kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- devicetree <devicetree@vger.kernel.org>
-References: <20220130145116.88406-1-nbd@nbd.name>
- <20220130145116.88406-4-nbd@nbd.name>
- <CAKQ-crhDHXZptWr5rO5Rb9JttQREoPqE4YO-6nzC2OWc-z06_g@mail.gmail.com>
- <04c91b4e-e7c8-ac6a-f60a-0453a49122fa@nbd.name>
- <CA+HBbNE5nRmFAR44gYMW+Uqi_5e4s+4wBGoQTUbnhC0Pdkc6iw@mail.gmail.com>
-From: John Crispin <john@phrozen.org>
-In-Reply-To: <CA+HBbNE5nRmFAR44gYMW+Uqi_5e4s+4wBGoQTUbnhC0Pdkc6iw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220131_051248_559853_9D2677A0 
-X-CRM114-Status: GOOD (  18.24  )
+X-CRM114-CacheID: sfid-20220131_061718_959766_D007B06C 
+X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,70 +66,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+In some case, like after a transfer timeout, master->cur_msg pointer
+is NULL which led to a kernel crash when trying to use master->cur_msg->spi.
+mtk_spi_can_dma(), pointed by master->can_dma, doesn't use this parameter
+avoid the problem by setting NULL as second parameter.
 
+Fixes: a568231f46322 ("spi: mediatek: Add spi bus for Mediatek MT8173")
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ drivers/spi/spi-mt65xx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On 31.01.22 14:00, Robert Marko wrote:
-> On Mon, Jan 31, 2022 at 1:57 PM Felix Fietkau <nbd@nbd.name> wrote:
->>
->>
->> On 31.01.22 11:51, Luka Perkov wrote:
->>> Hello Felix,
->>>
->>> On Sun, Jan 30, 2022 at 3:56 PM Felix Fietkau <nbd@nbd.name> wrote:
->>>>
->>>> From: John Crispin <john@phrozen.org>
->>>>
->>>> EN7523 is an armv8 based silicon used inside broadband access type devices
->>>> such as xPON and xDSL. It shares various silicon blocks with MediaTek
->>>> silicon such as the MT7622.
->>>>
->>>> Add basic support for Airoha EN7523, enough for booting to console.
->>>>
->>>> The UART is basically 8250-compatible, except for the clock selection.
->>>> A clock-frequency value is synthesized to get this to run at 115200 bps.
->>>>
->>>> Signed-off-by: John Crispin <john@phrozen.org>
->>>> Signed-off-by: Bert Vermeulen <bert@biot.com>
->>>> Signed-off-by: Felix Fietkau <nbd@nbd.name>
->>>> ---
->>>> index 000000000000..ea23b5abb478
->>>> --- /dev/null
->>>> +++ b/arch/arm/mach-airoha/airoha.c
->>>> @@ -0,0 +1,16 @@
->>>> +// SPDX-License-Identifier: GPL-2.0-or-later
->>>> +/*
->>>> + * Device Tree support for Airoha SoCs
->>>> + *
->>>> + * Copyright (c) 2022 Felix Fietkau <nbd@nbd.name>
->>>> + */
->>>> +#include <asm/mach/arch.h>
->>>> +
->>>> +static const char * const airoha_board_dt_compat[] = {
->>>> +       "airoha,en7523",
->>>> +       NULL,
->>>> +};
->>>> +
->>>> +DT_MACHINE_START(MEDIATEK_DT, "Airoha Cortex-A53 (Device Tree)")
->>>
->>> Since this is Cortex-A53 core is there a reason why this is not placed
->>> within arm64 directory?
->>   From what I can tell, it's a stripped-down core that only runs in
->> 32-bit mode.
-> 
-> Hmm, this is new for me that you could do that to an ARMv8 (A53) core.
-> I know that you can run ARMv7 code but not that you can reduce it to
-> 32 bit only.
-> 
-> Regards,
-> Robert
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index a15de10ee286..753bd313e6fd 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -624,7 +624,7 @@ static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
+ 	else
+ 		mdata->state = MTK_SPI_IDLE;
+ 
+-	if (!master->can_dma(master, master->cur_msg->spi, trans)) {
++	if (!master->can_dma(master, NULL, trans)) {
+ 		if (trans->rx_buf) {
+ 			cnt = mdata->xfer_len / 4;
+ 			ioread32_rep(mdata->base + SPI_RX_DATA_REG,
+-- 
+2.30.2
 
-the bootrom and vendor bootloader do not support 64bit more.
-	John
 
 _______________________________________________
 Linux-mediatek mailing list
