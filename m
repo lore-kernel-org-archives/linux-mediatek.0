@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94F0CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Feb 2022 12:05:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB581C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Feb 2022 12:06:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UIH0+NkNP96LIpTKAHw9kmGPTb6v7YtOiK2kPaR924k=; b=O/H4UWp6dN5xuJ
-	K7QF6rajBiM+U96fG3Xl2AifOTTqvdYNf98ATR9dQUcPfO5IBkp0mpUse3TdUVrQ+SqgD1lcHjpXO
-	11o7ng6huri13TYBXw6CgQU+G0pto7qiBHDF0XvQ4k3RozscLDzRJK6PxoAI4hGt8T8v68Dx8ixhT
-	LIcECTvH2f8cRPhHhlrB5IdIOFSwSPUxlEZAeVkH5RZtzg1awa1CIn8yE3YMXhyR3Px/G+piEE2cy
-	OrFW16tjS+ZxeYNFdHLMdtziBw4jTsIJ9LGRnSr/EPOHU8WlaJ6K+Qs0iySZ2yNOVBmlSUNWLAbOA
-	bunDAHbIp+1rMR+5iRIw==;
+	List-Owner; bh=fh8gi47h5FCAdZQ3z8b/+6+jU97qRLF8esFNS/DaS2E=; b=FYjSatcCbP4Dia
+	/obfS2JAVVJqZUay2jh3dv4Y7q3HTSNIdbcQstJ5pn8QAJVop9cVKsEAVuBpTNu0WIM1PVtgW3UCs
+	Pyg9MzOGnBqLJnrsrSC4V/rb5rqN8+UpKDHksix7hwije8gvHEFZql4EB7eqxO/EIgNYf/b3/0Fly
+	WIDdp1NRAG2BKzZXPqqd90POmXtmksfPR3jdWrYTV7EcxlMPSc7v5jzOOTtta28bvcITgODptKqd+
+	XIHsJPiyB014BqBC4czWnsi2zH8gfzpcgEwhDlknpKzZ+zUrPKXaS3Go1EdpjYbHRwDAp503dG18v
+	ABk9ulhLNBas0GTlORaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nErua-00By0v-QI; Tue, 01 Feb 2022 12:05:28 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nErvE-00ByPi-Ks; Tue, 01 Feb 2022 12:06:08 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nErtD-00BxAn-MC; Tue, 01 Feb 2022 12:04:05 +0000
+ id 1nErtU-00BxJO-2M; Tue, 01 Feb 2022 12:04:21 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id C8892614F0;
- Tue,  1 Feb 2022 12:03:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93DBFC340EE;
- Tue,  1 Feb 2022 12:03:30 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 86BED6151D;
+ Tue,  1 Feb 2022 12:03:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F1F9C340F1;
+ Tue,  1 Feb 2022 12:03:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1643717010;
- bh=G+5KjErBUoA0VuKd1uOcKIKve23dzp6jS3teZfj++fA=;
+ s=k20201202; t=1643717011;
+ bh=5li6uOCO4gX7ZJ2txGyIkmUBfTDqopiS+pQdRb6NCnA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=DMy53Qwmrcncf5BHGzL250502XwXPLmtxMRd1aahJ0T8SqL5+NxKeHlffqkIkDWMQ
- 1FiqZopp55JVNFSJ2uE5eTmPn0gmnsZC6cHLet/wWitIVNuvJf93Eg+r3Epu7X9LqO
- M9jDPqCMrLXKCyIDkFC9DTJAsAvF3yRAjMXkddgX2nyaHeQV3mwAXWvIGu/Pl9JuRs
- QbeD18EcYsFfuFotJEbw+YLhmlhpVGAJB7C4bBlAuOL/4psKBufAW6hEbKrd739Hoz
- BFrCczw+rT+OP4QJfT0s0pQX94JOuJ2LZ1qkMihp0LPCIW7wGK/MbVYjhvqxUGxaHg
- sdqxp/NQeK1rw==
+ b=KB2h7AyKsZadfSSMWZQ8FIbuY6JIZXH8OhH7jRWWjdDVzdK8l08E2K2cwgLtc7vDY
+ u8Z1Nec+BBZoClrdGxqxe/t+AozvThp3bi6WePVDd6Lkm5jgJwx4c04T0Y+0Sgg3QQ
+ IW2YCauOHwKDIlnnyagypdU0vhPKbdih+XKptTVCyszhhafZc83ZK14PmJiTDRa2Bs
+ +Dw2bRSmwe2ayMeY8yzvtbSL8NcVO9t7b0grxDtjkr3NDfd12r9ii75HZy6ewU+iav
+ S2lgVFGjcxX8coLo+GFRDpClLEIHQVaN0FHqKnjq3uqF1FNlFULavi1ksc2grs4HiI
+ n6KqAkxz6Go4Q==
 Received: from sofa.misterjones.org ([185.219.108.64] helo=why.lan)
  by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
  (envelope-from <maz@kernel.org>)
- id 1nErse-004d46-UF; Tue, 01 Feb 2022 12:03:28 +0000
+ id 1nErsf-004d46-CV; Tue, 01 Feb 2022 12:03:29 +0000
 From: Marc Zyngier <maz@kernel.org>
 To: linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
@@ -59,9 +59,9 @@ Cc: Linus Walleij <linus.walleij@linaro.org>,
  Sascha Hauer <s.hauer@pengutronix.de>,
  Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
  Tali Perry <tali.perry1@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>
-Subject: [PATCH 01/12] genirq: Allow the PM device to originate from irq domain
-Date: Tue,  1 Feb 2022 12:02:59 +0000
-Message-Id: <20220201120310.878267-2-maz@kernel.org>
+Subject: [PATCH 02/12] irqchip/gic: Move PM device over to irq domain
+Date: Tue,  1 Feb 2022 12:03:00 +0000
+Message-Id: <20220201120310.878267-3-maz@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220201120310.878267-1-maz@kernel.org>
 References: <20220201120310.878267-1-maz@kernel.org>
@@ -79,8 +79,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220201_040403_824460_3DC95E0E 
-X-CRM114-Status: GOOD (  22.29  )
+X-CRM114-CacheID: sfid-20220201_040420_264906_FE40D035 
+X-CRM114-Status: GOOD (  16.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,109 +97,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As a preparation to moving the reference to the device used for
-runtime power management, add a new 'dev' field to the irqdomain
-structure for that exact purpose.
-
-The irq_chip_pm_{get,put}() helpers are made aware of the dual
-location via a new private helper.
-
-No functional change intended.
+Move the reference to the GIC device over to the irq domain.
+This allows for some localised cleanup.
 
 Signed-off-by: Marc Zyngier <maz@kernel.org>
 ---
- include/linux/irqdomain.h | 10 ++++++++++
- kernel/irq/chip.c         | 23 ++++++++++++++++++-----
- 2 files changed, 28 insertions(+), 5 deletions(-)
+ drivers/irqchip/irq-gic.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/include/linux/irqdomain.h b/include/linux/irqdomain.h
-index d476405802e9..be25a33293e5 100644
---- a/include/linux/irqdomain.h
-+++ b/include/linux/irqdomain.h
-@@ -151,6 +151,8 @@ struct irq_domain_chip_generic;
-  * @gc: Pointer to a list of generic chips. There is a helper function for
-  *      setting up one or more generic chips for interrupt controllers
-  *      drivers using the generic chip library which uses this pointer.
-+ * @dev: Pointer to a device that the domain represent, and that will be
-+ *       used for power management purposes.
-  * @parent: Pointer to parent irq_domain to support hierarchy irq_domains
-  *
-  * Revmap data, used internally by irq_domain
-@@ -171,6 +173,7 @@ struct irq_domain {
- 	struct fwnode_handle *fwnode;
- 	enum irq_domain_bus_token bus_token;
- 	struct irq_domain_chip_generic *gc;
-+	struct device *dev;
- #ifdef	CONFIG_IRQ_DOMAIN_HIERARCHY
- 	struct irq_domain *parent;
- #endif
-@@ -226,6 +229,13 @@ static inline struct device_node *irq_domain_get_of_node(struct irq_domain *d)
- 	return to_of_node(d->fwnode);
- }
+diff --git a/drivers/irqchip/irq-gic.c b/drivers/irqchip/irq-gic.c
+index b8bb46c65a97..fb741b42ca2d 100644
+--- a/drivers/irqchip/irq-gic.c
++++ b/drivers/irqchip/irq-gic.c
+@@ -1127,13 +1127,12 @@ static const struct irq_domain_ops gic_irq_domain_ops = {
+ 	.unmap = gic_irq_domain_unmap,
+ };
  
-+static inline void irq_domain_set_pm_device(struct irq_domain *d,
-+					    struct device *dev)
-+{
-+	if (d)
-+		d->dev = dev;
-+}
-+
- #ifdef CONFIG_IRQ_DOMAIN
- struct fwnode_handle *__irq_domain_alloc_fwnode(unsigned int type, int id,
- 						const char *name, phys_addr_t *pa);
-diff --git a/kernel/irq/chip.c b/kernel/irq/chip.c
-index c09324663088..a2a12cdbe872 100644
---- a/kernel/irq/chip.c
-+++ b/kernel/irq/chip.c
-@@ -1558,6 +1558,17 @@ int irq_chip_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
- 	return 0;
- }
- 
-+static struct device *irq_get_parent_device(struct irq_data *data)
-+{
-+	if (data->chip->parent_device)
-+		return data->chip->parent_device;
-+
-+	if (data->domain)
-+		return data->domain->dev;
-+
-+	return NULL;
-+}
-+
- /**
-  * irq_chip_pm_get - Enable power for an IRQ chip
-  * @data:	Pointer to interrupt specific data
-@@ -1567,12 +1578,13 @@ int irq_chip_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
-  */
- int irq_chip_pm_get(struct irq_data *data)
+-static void gic_init_chip(struct gic_chip_data *gic, struct device *dev,
+-			  const char *name, bool use_eoimode1)
++static void gic_init_chip(struct gic_chip_data *gic, const char *name,
++			  bool use_eoimode1)
  {
-+	struct device *dev = irq_get_parent_device(data);
- 	int retval;
+ 	/* Initialize irq_chip */
+ 	gic->chip = gic_chip;
+ 	gic->chip.name = name;
+-	gic->chip.parent_device = dev;
  
--	if (IS_ENABLED(CONFIG_PM) && data->chip->parent_device) {
--		retval = pm_runtime_get_sync(data->chip->parent_device);
-+	if (IS_ENABLED(CONFIG_PM) && dev) {
-+		retval = pm_runtime_get_sync(dev);
- 		if (retval < 0) {
--			pm_runtime_put_noidle(data->chip->parent_device);
-+			pm_runtime_put_noidle(dev);
- 			return retval;
- 		}
+ 	if (use_eoimode1) {
+ 		gic->chip.irq_mask = gic_eoimode1_mask_irq;
+@@ -1268,10 +1267,10 @@ static int __init __gic_init_bases(struct gic_chip_data *gic,
+ 
+ 	if (static_branch_likely(&supports_deactivate_key) && gic == &gic_data[0]) {
+ 		name = kasprintf(GFP_KERNEL, "GICv2");
+-		gic_init_chip(gic, NULL, name, true);
++		gic_init_chip(gic, name, true);
+ 	} else {
+ 		name = kasprintf(GFP_KERNEL, "GIC-%d", (int)(gic-&gic_data[0]));
+-		gic_init_chip(gic, NULL, name, false);
++		gic_init_chip(gic, name, false);
  	}
-@@ -1590,10 +1602,11 @@ int irq_chip_pm_get(struct irq_data *data)
-  */
- int irq_chip_pm_put(struct irq_data *data)
- {
-+	struct device *dev = irq_get_parent_device(data);
- 	int retval = 0;
  
--	if (IS_ENABLED(CONFIG_PM) && data->chip->parent_device)
--		retval = pm_runtime_put(data->chip->parent_device);
-+	if (IS_ENABLED(CONFIG_PM) && dev)
-+		retval = pm_runtime_put(dev);
+ 	ret = gic_init_bases(gic, handle);
+@@ -1460,7 +1459,7 @@ int gic_of_init_child(struct device *dev, struct gic_chip_data **gic, int irq)
+ 	if (!*gic)
+ 		return -ENOMEM;
  
- 	return (retval < 0) ? retval : 0;
- }
+-	gic_init_chip(*gic, dev, dev->of_node->name, false);
++	gic_init_chip(*gic, dev->of_node->name, false);
+ 
+ 	ret = gic_of_setup(*gic, dev->of_node);
+ 	if (ret)
+@@ -1472,6 +1471,7 @@ int gic_of_init_child(struct device *dev, struct gic_chip_data **gic, int irq)
+ 		return ret;
+ 	}
+ 
++	irq_domain_set_pm_device((*gic)->domain, dev);
+ 	irq_set_chained_handler_and_data(irq, gic_handle_cascade_irq, *gic);
+ 
+ 	return 0;
 -- 
 2.30.2
 
