@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36920C433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD942C433F5
 	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Feb 2022 12:20:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,40 +12,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IORb8DhlXjGAj2FxPwjTScJhtQRzIVxwk88/6cr2KN8=; b=aM9EkChE+afJ/s
-	BahTCZny1tFj0miL0jgGmeKeqr/SmE6DMw7pRfBzUGgQGINpwlkcTVn1xG0HIKJoy2fEhUtFhDV5c
-	CvH1zrz9SUPdvPcwt5+OuheZd4bNjXabzmeoz6g1e67ez72qDTGfZgfTND+41T1LUZc+PvMrvwcf0
-	D5AVVHOf09lQ6cFGDQ9pJUbiG3krw9NOgZSptBTn69XJYXPfxfzaGgBnA05h8q0KCTJeqJYwFnwPm
-	NTCw6ZdLDLTpV8yz4VJ5ZUm73nQk+Yk9UEOuNgMVw8HME9LIlHzgh77sUskV7/gKwQPvKfhlKDnal
-	LaiI5/vbqcaEmpO5LeNQ==;
+	List-Owner; bh=TRqVp7zS16Ej/f59fobFAlDk/NdLeOgi5L3G9ygsEbg=; b=Ucg3ebG/GcnkM6
+	2OcLUk+9SHQ2zuzAV7z3ncT2JTJhusv72XUdU8oJKQICHLrXwj454J5Invl9+dgejEEf69n2wGIl6
+	a6mPTRO+c+HNRi6CyMHksqUCPTPZ3bQuJu4H5c4Zj9n62wR0QWG6gBMFDPFhV6cZrnX3B/9HuF8jp
+	daRNeBQSRgV0Qpf0qOpgVYKZNmtt48v1THZZuvZ9qQDoVURpnlAPpjSfNLl1so493/C9eP9Vf3+fP
+	L049vgcZNsQ5pcH/TjTpPAxWaV+YJUMS51S3cZhK3BtYMFdGlI9Ck48FPwcJWU+wcgUVNWDdKfIuH
+	RDHgyNks4Zpkw6G9ZoMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nEs8w-00C2k2-NR; Tue, 01 Feb 2022 12:20:18 +0000
+	id 1nEs8x-00C2kP-KN; Tue, 01 Feb 2022 12:20:19 +0000
 Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nEs8X-00C2c7-57; Tue, 01 Feb 2022 12:19:54 +0000
+ id 1nEs8X-00C2cO-52; Tue, 01 Feb 2022 12:19:54 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id 4355BCE1856;
- Tue,  1 Feb 2022 12:19:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA996C340F3;
- Tue,  1 Feb 2022 12:19:47 +0000 (UTC)
+ by sin.source.kernel.org (Postfix) with ESMTPS id 6CB15CE1862;
+ Tue,  1 Feb 2022 12:19:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05A4CC340F3;
+ Tue,  1 Feb 2022 12:19:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1643717987;
- bh=CPBUZ3CFf4sfa2zR3if6mfs1ReZrPgfwhV5ghh58fY4=;
+ s=k20201202; t=1643717990;
+ bh=YPnsZuKHzTt0USZewAkQ8dcDN1KgYjxmgRotElZ29kA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=r4+flIaHvJaTGho4NBH+FPjMytcOnJViax8MHEyeI1NzlrmnL8NprDAoJVeSKMu+d
- 4bWuk1I0CULtDF++2pBTeYlLWsCZSgJ1I4W/cTVcy+P9xMb3WKL9yREISKH12GwRqz
- 3vA1qDsIgGcRd02hOh5WVPa2NavAtzDOfrQD1jVcpjv1/9Z5hFe2VPJxcHzIeGEcAR
- DXoO8r8cSd/Xkml0NhcfhrdBMCWzNR+iFxlKYn/4GLslyOylrhr3omY8/+46Ag2LES
- 6j5BHPYaOu/IsUENfCl9Dz4uSMky72yjEc8k2FggksqOtxK2d7+VTQ6QovlOITfDOw
- oTE/yO3jfFFZw==
+ b=lzzyS+Je27Vic0KQ6SKZsB0x5RgTquGiRDYZvxgfXQeUubcPo3/lUdndokVU4WUBD
+ 6D44M30SVOrfUIVhqtOvyZLkqzjGzIn83fqhDIc2QiJtdB9PxmA9WP5rzY03djGxze
+ pFuiyLhORMfcnsTguuG//idDDgk86SV3+HCRzQ47UmWN5NdRKx7S4NJdyJ9JVm/bJ4
+ yV655smSrIyI869ex8sGxnUOy9XtmOkFTAG/pwIQfdTbRZ+91xxLLDLfOjZRsg4jik
+ ppogTt/KiEfwFfkSrx1VFWY7uiaWYb9o8WA6vmEDclI10v38BM4NLxBOXOY0g+DJKg
+ LpJqqIbFh++ww==
 Received: from sofa.misterjones.org ([185.219.108.64] helo=why.lan)
  by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
  (envelope-from <maz@kernel.org>)
- id 1nErsj-004d46-Em; Tue, 01 Feb 2022 12:03:33 +0000
+ id 1nErsj-004d46-RR; Tue, 01 Feb 2022 12:03:33 +0000
 From: Marc Zyngier <maz@kernel.org>
 To: linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
@@ -59,9 +59,9 @@ Cc: Linus Walleij <linus.walleij@linaro.org>,
  Sascha Hauer <s.hauer@pengutronix.de>,
  Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
  Tali Perry <tali.perry1@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>
-Subject: [PATCH 11/12] pinctrl: starfive: Move PM device over to irq domain
-Date: Tue,  1 Feb 2022 12:03:09 +0000
-Message-Id: <20220201120310.878267-12-maz@kernel.org>
+Subject: [PATCH 12/12] genirq: Kill irq_chip::parent_device
+Date: Tue,  1 Feb 2022 12:03:10 +0000
+Message-Id: <20220201120310.878267-13-maz@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220201120310.878267-1-maz@kernel.org>
 References: <20220201120310.878267-1-maz@kernel.org>
@@ -79,8 +79,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220201_041953_420888_BE5E3CC5 
-X-CRM114-Status: GOOD (  14.35  )
+X-CRM114-CacheID: sfid-20220201_041953_603030_E7834E2C 
+X-CRM114-Status: GOOD (  15.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,34 +97,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Move the reference to the device over to the irq domain.
+Now that noone is using irq_chip::parent_device in the tree, get
+rid of it.
 
 Signed-off-by: Marc Zyngier <maz@kernel.org>
 ---
- drivers/pinctrl/pinctrl-starfive.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ include/linux/irq.h | 2 --
+ kernel/irq/chip.c   | 3 ---
+ 2 files changed, 5 deletions(-)
 
-diff --git a/drivers/pinctrl/pinctrl-starfive.c b/drivers/pinctrl/pinctrl-starfive.c
-index 0b912152a405..5be9866c2b3c 100644
---- a/drivers/pinctrl/pinctrl-starfive.c
-+++ b/drivers/pinctrl/pinctrl-starfive.c
-@@ -1307,7 +1307,6 @@ static int starfive_probe(struct platform_device *pdev)
- 	sfp->gc.base = -1;
- 	sfp->gc.ngpio = NR_GPIOS;
+diff --git a/include/linux/irq.h b/include/linux/irq.h
+index 848e1e12c5c6..2cb2e2ac2703 100644
+--- a/include/linux/irq.h
++++ b/include/linux/irq.h
+@@ -456,7 +456,6 @@ static inline irq_hw_number_t irqd_to_hwirq(struct irq_data *d)
+ /**
+  * struct irq_chip - hardware interrupt chip descriptor
+  *
+- * @parent_device:	pointer to parent device for irqchip
+  * @name:		name for /proc/interrupts
+  * @irq_startup:	start up the interrupt (defaults to ->enable if NULL)
+  * @irq_shutdown:	shut down the interrupt (defaults to ->disable if NULL)
+@@ -503,7 +502,6 @@ static inline irq_hw_number_t irqd_to_hwirq(struct irq_data *d)
+  * @flags:		chip specific flags
+  */
+ struct irq_chip {
+-	struct device	*parent_device;
+ 	const char	*name;
+ 	unsigned int	(*irq_startup)(struct irq_data *data);
+ 	void		(*irq_shutdown)(struct irq_data *data);
+diff --git a/kernel/irq/chip.c b/kernel/irq/chip.c
+index a2a12cdbe872..24b6f2b40e5e 100644
+--- a/kernel/irq/chip.c
++++ b/kernel/irq/chip.c
+@@ -1560,9 +1560,6 @@ int irq_chip_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
  
--	starfive_irq_chip.parent_device = dev;
- 	starfive_irq_chip.name = sfp->gc.label;
+ static struct device *irq_get_parent_device(struct irq_data *data)
+ {
+-	if (data->chip->parent_device)
+-		return data->chip->parent_device;
+-
+ 	if (data->domain)
+ 		return data->domain->dev;
  
- 	sfp->gc.irq.chip = &starfive_irq_chip;
-@@ -1330,6 +1329,8 @@ static int starfive_probe(struct platform_device *pdev)
- 	if (ret)
- 		return dev_err_probe(dev, ret, "could not register gpiochip\n");
- 
-+	irq_domain_set_pm_device(sfp->gc.irq.domain, dev);
-+
- out_pinctrl_enable:
- 	return pinctrl_enable(sfp->pctl);
- }
 -- 
 2.30.2
 
