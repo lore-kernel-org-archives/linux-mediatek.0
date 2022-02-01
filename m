@@ -4,58 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93463C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Feb 2022 23:06:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5614BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Feb 2022 23:41:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5/mJA+thpRNFGlXWQ01MvYulLXwsCFHvHdP7Fs0aoKM=; b=ah4m6vglxXYx1q
-	1C69Oi5ZmRd19CPHrrBNd5lY1gropQImfQyCN9tFDVy7GRWe0dePCqzEfXn4aX4/utAZyNswzcrKv
-	lJdMmIgrv3RH3jj15D15+d3tSmHR2QmmHzdSPBH+BdVX0bsC6h7ctOZDODRyFanxndf97/TnO0Ubq
-	b4F5k2mPMxWRX8yanaYImlfMfIOOCpN6oyEApsSb+lxCVRD6NUyJBL7Lv8J31X3OnTRzhiAkjgtiC
-	GSjaGhcVOqUQjr4gbXgZ+R+JOt/So4EjGUcuINAD9F/T2Q06Hk1ZHq+rNWSlTYxgMmhbthJlRLymL
-	YdCf2yxOo2nCdlVEZyrA==;
+	List-Owner; bh=K5QWmdstjySLbKfcmqyX02J86rXcZbfWApyl8wFXr08=; b=drojJ/VsvUU7Gh
+	6vsyvaxr5odtWq3zuw5y+TUvF0BVd24BKEHJVrnXVxsHxRHlH0TnM2V1kkt6Rxk8yUd8Nxnt04Up9
+	K/XUYkLuQlx6bOQ/Nm+1HCdvoBoeT779FzyOPf5sXBub5eUqPKjctnhCkR/xt/zmS8rk5Dlqrgraa
+	/ZK6aPDxihgjrZ53DcBp3yxoUNQB9UJXp6c97jByaTp4vco4uv0kysG7I6+Rtb7PwKjCSUnACuDEU
+	u0lhYn35zTgRrhkv1wfU2/VLnk9dVqyHwINOKfNzEQ59mJGU0CUWUeJdN+A5c49l32zuDA+046yae
+	fAFHhdKREkZtEe+HMi7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nF2EF-00DnTt-Kg; Tue, 01 Feb 2022 23:06:27 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1nF2lo-00DpdA-Hf; Tue, 01 Feb 2022 23:41:08 +0000
+Received: from mail-oi1-f178.google.com ([209.85.167.178])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nF2E5-00DnS4-G3; Tue, 01 Feb 2022 23:06:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
- :In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=kzu0F19ot5U0CXhXpGsmgOBzGIvXF/v3Q09a87bCxyg=; b=gn26cEa6UIdLY+OV4ubyeB3cTC
- dJFg+fK25DZPXMP4goFy6z7Nr43CK/m7omd6BGcKlwIVnpMxy5XBOf6kWKS1ORRDdWCFttoyOurqp
- DotbZsXvUmIVn372SV+1EyMXd8B6kgejxV27J0FwYZVu683UT3IUsOfs/XIxw/NgLi6eMkZKXka+2
- iWGjxry/nEnAq4KOHhF9zASJUztmI+7+smaxr3EKNgeomwmUC2Fvxhb0k68Zjw6PiHXKrlWpdpX9B
- KKMHvIsC0y1v3Cd/ZCwvtcVebfrxkwS0c/oTRBG6JAHxcUXB8ONX3Nd4zNUPm/PSzyYsiOYrJzAhG
- H4V+TBKg==;
-Received: from [2601:1c0:6280:3f0::aa0b]
- by desiato.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nF2Dy-0060mV-Uw; Tue, 01 Feb 2022 23:06:11 +0000
-Message-ID: <9bab4777-3034-b789-fdf6-ca8d7e6a8c35@infradead.org>
-Date: Tue, 1 Feb 2022 15:06:04 -0800
+ id 1nF2ld-00DpaQ-2j; Tue, 01 Feb 2022 23:40:58 +0000
+Received: by mail-oi1-f178.google.com with SMTP id q186so36547757oih.8;
+ Tue, 01 Feb 2022 15:40:56 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=ee57DHmj5dnuP+LBJd/K38nnzdPSCpMAb2DQvjNUIqo=;
+ b=FU7MDItKXCwfSNT6UfYODjouXdI/VIfcfaPPQtI6eN2yCtVyHkjH+ad1fMOsauhIbV
+ 9CKxzhYZJ04fp9kbPBsxVuguP+225if37CI5v7BKlKYWWpXOhps/tSIrcOtYP3XX/ngJ
+ d6vXcMOHZch+Oxc726oC/8v8sZ/JMkM2Xk9A5isox4Wa4DsyuOLzbpwoIfBep2u6+k8H
+ Sj/ueWA3i1KhNp3r3bfGSHWZPZr7dBbUYBsft5GuO2DpCHIlXkZEB8+XKRMjsg06WA90
+ 6b2GrNvwNFNlqNEPmbXomYjB9j+sYScUApsTmW+Lw/vUAh024NjAhd+IMEvA9oU3nCFd
+ D6CQ==
+X-Gm-Message-State: AOAM530+o/0o8Rvb4qdyLLQRObBQZ2WT2PEHyBQQJ9/iELnZ80B6xY8N
+ +jdXG/GJhklUPpb+nS8JS5jkOlQEsQ==
+X-Google-Smtp-Source: ABdhPJzKGe8aH8cwKkyPsDTKRydI1q7bfkfX/247BTUn16n0WJN8xDEVsRoo0CVaEQQiea9VxzrldQ==
+X-Received: by 2002:a54:4018:: with SMTP id x24mr2813412oie.222.1643758856152; 
+ Tue, 01 Feb 2022 15:40:56 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id r8sm17915906oia.19.2022.02.01.15.40.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 01 Feb 2022 15:40:55 -0800 (PST)
+Received: (nullmailer pid 981764 invoked by uid 1000);
+ Tue, 01 Feb 2022 23:40:54 -0000
+Date: Tue, 1 Feb 2022 17:40:54 -0600
+From: Rob Herring <robh@kernel.org>
+To: Roger Lu <roger.lu@mediatek.com>
+Cc: Kevin Hilman <khilman@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, linux-pm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
+ HenryC Chen <HenryC.Chen@mediatek.com>, Nishanth Menon <nm@ti.com>,
+ Charles Yang <Charles.Yang@mediatek.com>, Guenter Roeck <linux@roeck-us.net>,
+ Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Nicolas Boichat <drinkcat@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Enric Balletbo Serra <eballetbo@gmail.com>,
+ Mark Rutland <mark.rutland@arm.com>, Angus Lin <Angus.Lin@mediatek.com>
+Subject: Re: [PATCH v22 1/7] dt-bindings: soc: mediatek: add mtk svs
+ dt-bindings
+Message-ID: <YfnFBirxSnCqRDem@robh.at.kernel.org>
+References: <20220127033956.24585-1-roger.lu@mediatek.com>
+ <20220127033956.24585-2-roger.lu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: Kconfig CONFIG_FB dependency regression
-Content-Language: en-US
-To: Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
- Kees Cook <keescook@chromium.org>, Daniel Vetter <daniel.vetter@ffwll.ch>,
- Arnd Bergmann <arnd@kernel.org>
-Cc: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Bing Yuan <Bing.Yuan@synopsys.com>, John Youn <John.Youn@synopsys.com>
-References: <6fc4a81f-1a13-bff9-7b2e-d5bec382cb42@synopsys.com>
-From: Randy Dunlap <rdunlap@infradead.org>
-In-Reply-To: <6fc4a81f-1a13-bff9-7b2e-d5bec382cb42@synopsys.com>
+Content-Disposition: inline
+In-Reply-To: <20220127033956.24585-2-roger.lu@mediatek.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20220201_154057_167332_72613F39 
+X-CRM114-Status: GOOD (  12.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,27 +93,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 2/1/22 15:01, Thinh Nguyen wrote:
-> Hi,
+On Thu, 27 Jan 2022 11:39:50 +0800, Roger Lu wrote:
+> Document the binding for enabling mtk svs on MediaTek SoC.
 > 
-> One of our test setups is unable to boot (stuck at initramfs). Git
-> bisection points to the commit below:
+> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> ---
+>  .../bindings/soc/mediatek/mtk-svs.yaml        | 83 +++++++++++++++++++
+>  1 file changed, 83 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
 > 
-> f611b1e7624c ("drm: Avoid circular dependencies for CONFIG_FB")
-> 
-> Reverting this patch resolves the issue. This issue persists in mainline
-> also. Unfortunately there isn't any meaningful log. Hopefully someone
-> can give some insight as to what could be the issue and revert/fix this
-> issue.
 
-Hi,
-Did you enable DRM_FBDEV_EMULATION?
-Please provide the failing .config file.
 
--- 
-~Randy
+Please add Acked-by/Reviewed-by tags when posting new versions. However,
+there's no need to repost patches *only* to add the tags. The upstream
+maintainer will do that for acks received on the version they apply.
+
+If a tag was not added on purpose, please state why and what changed.
+
 
 _______________________________________________
 Linux-mediatek mailing list
