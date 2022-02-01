@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD942C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Feb 2022 12:20:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69CB2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Feb 2022 12:21:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TRqVp7zS16Ej/f59fobFAlDk/NdLeOgi5L3G9ygsEbg=; b=Ucg3ebG/GcnkM6
-	2OcLUk+9SHQ2zuzAV7z3ncT2JTJhusv72XUdU8oJKQICHLrXwj454J5Invl9+dgejEEf69n2wGIl6
-	a6mPTRO+c+HNRi6CyMHksqUCPTPZ3bQuJu4H5c4Zj9n62wR0QWG6gBMFDPFhV6cZrnX3B/9HuF8jp
-	daRNeBQSRgV0Qpf0qOpgVYKZNmtt48v1THZZuvZ9qQDoVURpnlAPpjSfNLl1so493/C9eP9Vf3+fP
-	L049vgcZNsQ5pcH/TjTpPAxWaV+YJUMS51S3cZhK3BtYMFdGlI9Ck48FPwcJWU+wcgUVNWDdKfIuH
-	RDHgyNks4Zpkw6G9ZoMA==;
+	List-Owner; bh=aMG5tIMiD5P7I1AZ/q58mg86ZmqUx2Z9MQ8PWD1DwS8=; b=PWIamVCvCZv4Cv
+	XfzgvT038ruR+UYq4hV0J+ygLun3jXepwp64vAGmcuVFrCaWOalrVfLg1cEuWD394QqCLVxQNqzrZ
+	n0IO0QcLIHjnoFbfsRlotMVtgPZE9MZaBg9eUiKt62tXQTyU7rRCu1CKUX7MHdjSJtEMKU+k8IiO/
+	1jc2SzI7IC7s5cypWZS+tcEAcCUpcmVkcts8PPjPUN3/0rqBR/RvBOhsRXRN2XB3nB0HFrRhPPb/b
+	LE39+1K//wuqQDVXkIAY/yuwUtuZ4MadtyZ8WWWkFp5gQQlSmssKogDZWzd1yOJkYyw1S+I2xZ3OI
+	XWytvD1nuOEjEgr3LIDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nEs8x-00C2kP-KN; Tue, 01 Feb 2022 12:20:19 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1nEsA7-00C3GL-Mc; Tue, 01 Feb 2022 12:21:31 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nEs8X-00C2cO-52; Tue, 01 Feb 2022 12:19:54 +0000
+ id 1nEs9p-00C36c-OP; Tue, 01 Feb 2022 12:21:16 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id 6CB15CE1862;
- Tue,  1 Feb 2022 12:19:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05A4CC340F3;
- Tue,  1 Feb 2022 12:19:50 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id BE9B461560;
+ Tue,  1 Feb 2022 12:19:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8302C340ED;
+ Tue,  1 Feb 2022 12:19:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1643717990;
- bh=YPnsZuKHzTt0USZewAkQ8dcDN1KgYjxmgRotElZ29kA=;
+ s=k20201202; t=1643717985;
+ bh=+7A+L+w5D1pGgc4Wh+XA6cQlBW2FRlxn/MDMdKfdJp4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=lzzyS+Je27Vic0KQ6SKZsB0x5RgTquGiRDYZvxgfXQeUubcPo3/lUdndokVU4WUBD
- 6D44M30SVOrfUIVhqtOvyZLkqzjGzIn83fqhDIc2QiJtdB9PxmA9WP5rzY03djGxze
- pFuiyLhORMfcnsTguuG//idDDgk86SV3+HCRzQ47UmWN5NdRKx7S4NJdyJ9JVm/bJ4
- yV655smSrIyI869ex8sGxnUOy9XtmOkFTAG/pwIQfdTbRZ+91xxLLDLfOjZRsg4jik
- ppogTt/KiEfwFfkSrx1VFWY7uiaWYb9o8WA6vmEDclI10v38BM4NLxBOXOY0g+DJKg
- LpJqqIbFh++ww==
+ b=K9lhHORpYGC7nlkKk05SPJydm6YLBNMTDXkfDmbKCcr8gfekTiWrQwUUoiub+gIYP
+ 8AAPLw4osatBrveJdhWJskJamUGZ7RFgwELhI/3yLYf720+IP8Ya0FQnd11WYsw/wq
+ CpCs2+xhZDcNXA5JBbRHE5qCb1mzyA5Hy/MYDRlNbxXs0UWSnty7UYb0tXO+llVHxC
+ Kj5U72kTXhmVwmOE39qFuaMxHYiHss9CgMYDiDvrwpik8uT6zaGkS3KDk96Er2SogM
+ zobtEAGcCt6yjSvI1IpS/UKxdv2vx7OQjPL6obQrmwLJIrsvxSSz6uathXLKPxWwC3
+ 3HhCTOoXhUAWQ==
 Received: from sofa.misterjones.org ([185.219.108.64] helo=why.lan)
  by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
  (envelope-from <maz@kernel.org>)
- id 1nErsj-004d46-RR; Tue, 01 Feb 2022 12:03:33 +0000
+ id 1nErsj-004d46-0x; Tue, 01 Feb 2022 12:03:33 +0000
 From: Marc Zyngier <maz@kernel.org>
 To: linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
@@ -59,9 +59,10 @@ Cc: Linus Walleij <linus.walleij@linaro.org>,
  Sascha Hauer <s.hauer@pengutronix.de>,
  Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
  Tali Perry <tali.perry1@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>
-Subject: [PATCH 12/12] genirq: Kill irq_chip::parent_device
-Date: Tue,  1 Feb 2022 12:03:10 +0000
-Message-Id: <20220201120310.878267-13-maz@kernel.org>
+Subject: [PATCH 10/12] pinctrl: npcm: Fix broken references to
+ chip->parent_device
+Date: Tue,  1 Feb 2022 12:03:08 +0000
+Message-Id: <20220201120310.878267-11-maz@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220201120310.878267-1-maz@kernel.org>
 References: <20220201120310.878267-1-maz@kernel.org>
@@ -79,8 +80,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220201_041953_603030_E7834E2C 
-X-CRM114-Status: GOOD (  15.29  )
+X-CRM114-CacheID: sfid-20220201_042114_565073_858619B8 
+X-CRM114-Status: GOOD (  15.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,49 +98,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now that noone is using irq_chip::parent_device in the tree, get
-rid of it.
+The npcm driver has a bunch of references to the irq_chip parent_device
+field, but never sets it.
+
+Fix it by fishing that reference from somewhere else, but it is
+obvious that these debug statements were never used. Also remove
+an unused field in a local data structure.
 
 Signed-off-by: Marc Zyngier <maz@kernel.org>
 ---
- include/linux/irq.h | 2 --
- kernel/irq/chip.c   | 3 ---
- 2 files changed, 5 deletions(-)
+ drivers/pinctrl/nuvoton/pinctrl-npcm7xx.c | 25 +++++++++++------------
+ 1 file changed, 12 insertions(+), 13 deletions(-)
 
-diff --git a/include/linux/irq.h b/include/linux/irq.h
-index 848e1e12c5c6..2cb2e2ac2703 100644
---- a/include/linux/irq.h
-+++ b/include/linux/irq.h
-@@ -456,7 +456,6 @@ static inline irq_hw_number_t irqd_to_hwirq(struct irq_data *d)
- /**
-  * struct irq_chip - hardware interrupt chip descriptor
-  *
-- * @parent_device:	pointer to parent device for irqchip
-  * @name:		name for /proc/interrupts
-  * @irq_startup:	start up the interrupt (defaults to ->enable if NULL)
-  * @irq_shutdown:	shut down the interrupt (defaults to ->disable if NULL)
-@@ -503,7 +502,6 @@ static inline irq_hw_number_t irqd_to_hwirq(struct irq_data *d)
-  * @flags:		chip specific flags
-  */
- struct irq_chip {
--	struct device	*parent_device;
- 	const char	*name;
- 	unsigned int	(*irq_startup)(struct irq_data *data);
- 	void		(*irq_shutdown)(struct irq_data *data);
-diff --git a/kernel/irq/chip.c b/kernel/irq/chip.c
-index a2a12cdbe872..24b6f2b40e5e 100644
---- a/kernel/irq/chip.c
-+++ b/kernel/irq/chip.c
-@@ -1560,9 +1560,6 @@ int irq_chip_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+diff --git a/drivers/pinctrl/nuvoton/pinctrl-npcm7xx.c b/drivers/pinctrl/nuvoton/pinctrl-npcm7xx.c
+index 4d81908d6725..3995e5f7f115 100644
+--- a/drivers/pinctrl/nuvoton/pinctrl-npcm7xx.c
++++ b/drivers/pinctrl/nuvoton/pinctrl-npcm7xx.c
+@@ -78,7 +78,6 @@ struct npcm7xx_gpio {
+ 	struct gpio_chip	gc;
+ 	int			irqbase;
+ 	int			irq;
+-	void			*priv;
+ 	struct irq_chip		irq_chip;
+ 	u32			pinctrl_id;
+ 	int (*direction_input)(struct gpio_chip *chip, unsigned offset);
+@@ -226,7 +225,7 @@ static void npcmgpio_irq_handler(struct irq_desc *desc)
+ 	chained_irq_enter(chip, desc);
+ 	sts = ioread32(bank->base + NPCM7XX_GP_N_EVST);
+ 	en  = ioread32(bank->base + NPCM7XX_GP_N_EVEN);
+-	dev_dbg(chip->parent_device, "==> got irq sts %.8x %.8x\n", sts,
++	dev_dbg(bank->gc.parent, "==> got irq sts %.8x %.8x\n", sts,
+ 		en);
  
- static struct device *irq_get_parent_device(struct irq_data *data)
- {
--	if (data->chip->parent_device)
--		return data->chip->parent_device;
--
- 	if (data->domain)
- 		return data->domain->dev;
+ 	sts &= en;
+@@ -241,33 +240,33 @@ static int npcmgpio_set_irq_type(struct irq_data *d, unsigned int type)
+ 		gpiochip_get_data(irq_data_get_irq_chip_data(d));
+ 	unsigned int gpio = BIT(d->hwirq);
  
+-	dev_dbg(d->chip->parent_device, "setirqtype: %u.%u = %u\n", gpio,
++	dev_dbg(bank->gc.parent, "setirqtype: %u.%u = %u\n", gpio,
+ 		d->irq, type);
+ 	switch (type) {
+ 	case IRQ_TYPE_EDGE_RISING:
+-		dev_dbg(d->chip->parent_device, "edge.rising\n");
++		dev_dbg(bank->gc.parent, "edge.rising\n");
+ 		npcm_gpio_clr(&bank->gc, bank->base + NPCM7XX_GP_N_EVBE, gpio);
+ 		npcm_gpio_clr(&bank->gc, bank->base + NPCM7XX_GP_N_POL, gpio);
+ 		break;
+ 	case IRQ_TYPE_EDGE_FALLING:
+-		dev_dbg(d->chip->parent_device, "edge.falling\n");
++		dev_dbg(bank->gc.parent, "edge.falling\n");
+ 		npcm_gpio_clr(&bank->gc, bank->base + NPCM7XX_GP_N_EVBE, gpio);
+ 		npcm_gpio_set(&bank->gc, bank->base + NPCM7XX_GP_N_POL, gpio);
+ 		break;
+ 	case IRQ_TYPE_EDGE_BOTH:
+-		dev_dbg(d->chip->parent_device, "edge.both\n");
++		dev_dbg(bank->gc.parent, "edge.both\n");
+ 		npcm_gpio_set(&bank->gc, bank->base + NPCM7XX_GP_N_EVBE, gpio);
+ 		break;
+ 	case IRQ_TYPE_LEVEL_LOW:
+-		dev_dbg(d->chip->parent_device, "level.low\n");
++		dev_dbg(bank->gc.parent, "level.low\n");
+ 		npcm_gpio_set(&bank->gc, bank->base + NPCM7XX_GP_N_POL, gpio);
+ 		break;
+ 	case IRQ_TYPE_LEVEL_HIGH:
+-		dev_dbg(d->chip->parent_device, "level.high\n");
++		dev_dbg(bank->gc.parent, "level.high\n");
+ 		npcm_gpio_clr(&bank->gc, bank->base + NPCM7XX_GP_N_POL, gpio);
+ 		break;
+ 	default:
+-		dev_dbg(d->chip->parent_device, "invalid irq type\n");
++		dev_dbg(bank->gc.parent, "invalid irq type\n");
+ 		return -EINVAL;
+ 	}
+ 
+@@ -289,7 +288,7 @@ static void npcmgpio_irq_ack(struct irq_data *d)
+ 		gpiochip_get_data(irq_data_get_irq_chip_data(d));
+ 	unsigned int gpio = d->hwirq;
+ 
+-	dev_dbg(d->chip->parent_device, "irq_ack: %u.%u\n", gpio, d->irq);
++	dev_dbg(bank->gc.parent, "irq_ack: %u.%u\n", gpio, d->irq);
+ 	iowrite32(BIT(gpio), bank->base + NPCM7XX_GP_N_EVST);
+ }
+ 
+@@ -301,7 +300,7 @@ static void npcmgpio_irq_mask(struct irq_data *d)
+ 	unsigned int gpio = d->hwirq;
+ 
+ 	/* Clear events */
+-	dev_dbg(d->chip->parent_device, "irq_mask: %u.%u\n", gpio, d->irq);
++	dev_dbg(bank->gc.parent, "irq_mask: %u.%u\n", gpio, d->irq);
+ 	iowrite32(BIT(gpio), bank->base + NPCM7XX_GP_N_EVENC);
+ }
+ 
+@@ -313,7 +312,7 @@ static void npcmgpio_irq_unmask(struct irq_data *d)
+ 	unsigned int gpio = d->hwirq;
+ 
+ 	/* Enable events */
+-	dev_dbg(d->chip->parent_device, "irq_unmask: %u.%u\n", gpio, d->irq);
++	dev_dbg(bank->gc.parent, "irq_unmask: %u.%u\n", gpio, d->irq);
+ 	iowrite32(BIT(gpio), bank->base + NPCM7XX_GP_N_EVENS);
+ }
+ 
+@@ -323,7 +322,7 @@ static unsigned int npcmgpio_irq_startup(struct irq_data *d)
+ 	unsigned int gpio = d->hwirq;
+ 
+ 	/* active-high, input, clear interrupt, enable interrupt */
+-	dev_dbg(d->chip->parent_device, "startup: %u.%u\n", gpio, d->irq);
++	dev_dbg(gc_parent, "startup: %u.%u\n", gpio, d->irq);
+ 	npcmgpio_direction_input(gc, gpio);
+ 	npcmgpio_irq_ack(d);
+ 	npcmgpio_irq_unmask(d);
 -- 
 2.30.2
 
