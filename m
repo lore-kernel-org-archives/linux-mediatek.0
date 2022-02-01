@@ -4,88 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7ED0EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Feb 2022 16:07:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D853AC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Feb 2022 17:47:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3aUYXpoBnc1zNO+3CM23RpdiotJ3v6JwHiIwmtGPlBI=; b=t07Iu8kxwWiXXt
-	FKCmQ5J4fzd1/PW5XPiMBT+TVtIMLiQbydpycmVOfVYCdufJpaO4NxBnGgn+e1Zl/EGE4xP5otOqc
-	KjuPcSE3eBPB0vQBC/gLrm/DsnUoignwt272ioP5fD0GbpmKZomo0WCO/tTSezuaO9Lzg3Rvph35j
-	GxtMQ0Q+2QNt23cEnUBa2EZOTDkxI9hYtKUPw05b3bVZDrM9cGZ7LUhM5JmtB4QmNBc4ezXa+STQF
-	1vigrjWZvTwy9VVx2Du5tlDVOovLKZ3hE16umPm4yAK+BNO1ZAjp9HezyAXEksE2dcM7EFpEX+sbW
-	7167NKzthLF+7Fa4ok/Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tV1FOf7Whlah9YGNFtUEWigWeXSFKYxO7wCiVBUjJBA=; b=1LicX3mr6JY4te
+	TWSCztjzn0nq4hjFnAELuMnnT50hfQ2miHQCsZ8EGDb0tpv6r6vXFqblHsaY0veg1CHJif5woc/5V
+	947JwwG2KGHgZDPlwvtD+cagJiPi/io/XnhiTj6BHXAqS1sjKr4UnLi6dLMcd5cR1ejQTASfh2+x2
+	Vn4MmRpVrnyz9m/EOHA9+9M0dW3tI9TfNpAVJCl0TpaOkqyxQvtUwGpaORIB1087MJXv0vTqiKPFh
+	W6mLVPzrvP1fIAFiWBegfdSYN3I+7HQCbBwoLaDoGObqT7Z/KrPXsz91c8oRVWVA/KAOD2QEA3Lc2
+	g485b0IWD3XbZViyBtSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nEvgW-00CnzE-SG; Tue, 01 Feb 2022 16:07:12 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nExFZ-00DFUE-W1; Tue, 01 Feb 2022 17:47:30 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nEvgJ-00CnuX-49; Tue, 01 Feb 2022 16:07:00 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 1FDCFB82EB6;
- Tue,  1 Feb 2022 16:06:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C1936C340EB;
- Tue,  1 Feb 2022 16:06:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1643731615;
- bh=wCusUGW69do8zdL1IFraRPrsU9+EHiNfdech3A1Xt2E=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=GCqkp12U2d1lF6WZIlwueos5RFb44pInCD9Ah+1yNj2GV3INPhYcyQywpz3GlB04Y
- Da8ubuViEBrES19LuGvR0owKJPw+xTWzJJ0CT7lJBsLkFX7Q1czcIf6ZlVVTJwa72b
- r41fBP1DPGVupupZsCLMnJM6VCEdXBtdCt09lUmfhW3zP1CtNTqU2XiGTbOmDibx+/
- ptzJPQpcaQKmAT8lASTyf7oRO8DxDEXHV2ODKnGdwwKpzpX6737Hfn3u0Kzk4tLnDP
- iSC7Ine/0Uq1dYRL3rjObK3NIGOq9sooCiwC9Ryj0x70edt3tQ9sFT3P4SY9vlTVaQ
- 9oHhaaA7de+lg==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <maz@kernel.org>)
- id 1nEvgD-004gZY-KM; Tue, 01 Feb 2022 16:06:53 +0000
-Date: Tue, 01 Feb 2022 16:06:53 +0000
-Message-ID: <87fsp2606a.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Emil Renner Berthing <kernel@esmil.dk>
-Cc: "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-mediatek@lists.infradead.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-omap@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>,
- Bartosz Golaszewski <brgl@bgdev.pl>,
+ id 1nExFN-00DFSc-Jb; Tue, 01 Feb 2022 17:47:19 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 2A7BB1F42600
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1643737633;
+ bh=OkkKZ3FYGEgZTul8yQpicqMp2cbfoH6C3I3tztPrqUE=;
+ h=From:To:Cc:Subject:Date:From;
+ b=hhxrF6mDNLVvBLQEG5CZ0rtWouQinB10zZriDIzvQiUtWwiwTDrhUYVvhq/XMMH4q
+ BFSiI7qDHgjKNmMhMI+zZ1vQP5vpsDh4Qpwf5SEqlPKirc1S2SaEvuHmR1vOyW2t6A
+ RoHYC3xbgJ03Ej7OVTweS9iVSs3eLk7SMjvEPJSAeNF5cNlqoaBKlWMm2ZLm3YRGH5
+ K3oe2skX2hmB5B/hOtEu9LI/M2DtfI6rozcqna3Qq0olGDw1nkYfXC6Q7qT6Rf37X0
+ 6rrn3BAxCUle9me82u5XkhqKy9fi2ZUSsMEhUsCVG0ttDNCUNNllCnvdGHn+qngWek
+ dkBkuo1rGOGzw==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
+ <nfraprado@collabora.com>
+To: Robert Foss <robert.foss@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Grygorii Strashko <grygorii.strashko@ti.com>,
- Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>,
- Thomas Gleixner <tglx@linutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
- Tali Perry <tali.perry1@gmail.com>
-Subject: Re: [PATCH 11/12] pinctrl: starfive: Move PM device over to irq domain
-In-Reply-To: <CANBLGcxCmeaXXFWi6GFSHN=RhjUp5BVRYTMXHQihsLJCocD1xg@mail.gmail.com>
-References: <20220201120310.878267-1-maz@kernel.org>
- <20220201120310.878267-12-maz@kernel.org>
- <CANBLGcxCmeaXXFWi6GFSHN=RhjUp5BVRYTMXHQihsLJCocD1xg@mail.gmail.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: kernel@esmil.dk, linux-gpio@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org,
- linus.walleij@linaro.org, brgl@bgdev.pl, matthias.bgg@gmail.com,
- grygorii.strashko@ti.com, ssantosh@kernel.org, khilman@kernel.org,
- tglx@linutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
- avifishman70@gmail.com, tmaimon77@gmail.com, tali.perry1@gmail.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+ Rob Herring <robh+dt@kernel.org>, Xin Ji <xji@analogixsemi.com>
+Cc: kernel@collabora.com, =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
+ <nfraprado@collabora.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH v2] arm64: dts: mt8183: jacuzzi: Fix bus properties in anx's
+ DSI endpoint
+Date: Tue,  1 Feb 2022 12:46:43 -0500
+Message-Id: <20220201174643.843102-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.35.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220201_080659_480070_0BF9C254 
-X-CRM114-Status: GOOD (  25.94  )
+X-CRM114-CacheID: sfid-20220201_094717_821721_0219CBD9 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,57 +65,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 01 Feb 2022 15:16:39 +0000,
-Emil Renner Berthing <kernel@esmil.dk> wrote:
-> 
-> On Tue, 1 Feb 2022 at 13:19, Marc Zyngier <maz@kernel.org> wrote:
-> >
-> > Move the reference to the device over to the irq domain.
-> >
-> > Signed-off-by: Marc Zyngier <maz@kernel.org>
-> > ---
-> >  drivers/pinctrl/pinctrl-starfive.c | 3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/pinctrl/pinctrl-starfive.c b/drivers/pinctrl/pinctrl-starfive.c
-> > index 0b912152a405..5be9866c2b3c 100644
-> > --- a/drivers/pinctrl/pinctrl-starfive.c
-> > +++ b/drivers/pinctrl/pinctrl-starfive.c
-> > @@ -1307,7 +1307,6 @@ static int starfive_probe(struct platform_device *pdev)
-> >         sfp->gc.base = -1;
-> >         sfp->gc.ngpio = NR_GPIOS;
-> >
-> > -       starfive_irq_chip.parent_device = dev;
-> >         starfive_irq_chip.name = sfp->gc.label;
-> >
-> >         sfp->gc.irq.chip = &starfive_irq_chip;
-> > @@ -1330,6 +1329,8 @@ static int starfive_probe(struct platform_device *pdev)
-> >         if (ret)
-> >                 return dev_err_probe(dev, ret, "could not register gpiochip\n");
-> >
-> > +       irq_domain_set_pm_device(sfp->gc.irq.domain, dev);
-> > +
-> 
-> The gpio framework uses the irq_domain at sfp->gc.irq.domain, so
-> shouldn't this be set before registering the gpio_chip with
-> devm_gpiochip_add_data above?
-
-It is devm_gpiochip_add_data() that create the domain, so there is
-nothing to set before.
-
-Thanks,
-
-	M.
-
--- 
-Without deviation from the norm, progress is not possible.
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+bXQ4MTgzLWt1a3VpLWphY3V6emkgaGFzIGFuIGFueDc2MjUgYnJpZGdlIGNvbm5lY3RlZCB0byB0
+aGUgb3V0cHV0IG9mCml0cyBEU0kgaG9zdC4gSG93ZXZlciwgYWZ0ZXIgY29tbWl0IGZkMDMxMGI2
+ZmU3ZCAoImRybS9icmlkZ2U6IGFueDc2MjU6CmFkZCBNSVBJIERQSSBpbnB1dCBmZWF0dXJlIiks
+IGEgYnVzLXR5cGUgcHJvcGVydHkgc3RhcnRlZCBiZWluZyByZXF1aXJlZAppbiB0aGUgZW5kcG9p
+bnQgbm9kZSBieSB0aGUgZHJpdmVyIHRvIGluZGljYXRlIHdoZXRoZXIgaXQgaXMgRFNJIG9yIERQ
+SS4KCkFkZCB0aGUgbWlzc2luZyBidXMtdHlwZSBwcm9wZXJ0eSBhbmQgc2V0IGl0IHRvIDUKKFY0
+TDJfRldOT0RFX0JVU19UWVBFX1BBUkFMTEVMKSBzbyB0aGF0IHRoZSBkcml2ZXIgaGFzIGl0cyBp
+bnB1dApjb25maWd1cmVkIHRvIERTSSBhbmQgdGhlIGRpc3BsYXkgcGlwZWxpbmUgY2FuIHByb2Jl
+IGNvcnJlY3RseS4KCldoaWxlIGF0IGl0LCBhbHNvIHNldCB0aGUgZGF0YS1sYW5lcyBwcm9wZXJ0
+eSB0aGF0IHdhcyBhbHNvIGludHJvZHVjZWQKaW4gdGhhdCBzYW1lIGNvbW1pdCwgc28gdGhhdCB3
+ZSBkb24ndCByZWx5IG9uIHRoZSBkZWZhdWx0IHZhbHVlLgoKRml4ZXM6IGZkMDMxMGI2ZmU3ZCAo
+ImRybS9icmlkZ2U6IGFueDc2MjU6IGFkZCBNSVBJIERQSSBpbnB1dCBmZWF0dXJlIikKU2lnbmVk
+LW9mZi1ieTogTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29t
+PgoKLS0tCnYxOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvMjAyMjAxMjAyMjQyMDQuNzcz
+MTE3LTEtbmZyYXByYWRvQGNvbGxhYm9yYS5jb20KCkNoYW5nZXMgaW4gdjI6Ci0gKHRoYW5rcyBS
+b2IpIFVzZSBwcm9wZXIgZm9ybWF0IHdoZW4gcmVmZXJpbmcgdG8gY29tbWl0IGluIGNvbW1pdAog
+IG1lc3NhZ2UgYXMgcG9pbnRlZCBvdXQgYnkgY2hlY2twYXRjaAoKIGFyY2gvYXJtNjQvYm9vdC9k
+dHMvbWVkaWF0ZWsvbXQ4MTgzLWt1a3VpLWphY3V6emkuZHRzaSB8IDIgKysKIDEgZmlsZSBjaGFu
+Z2VkLCAyIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21l
+ZGlhdGVrL210ODE4My1rdWt1aS1qYWN1enppLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21l
+ZGlhdGVrL210ODE4My1rdWt1aS1qYWN1enppLmR0c2kKaW5kZXggOGY3YmYzM2Y2MDdkLi5lOGYx
+MzNkYzk2YjkgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgz
+LWt1a3VpLWphY3V6emkuZHRzaQorKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210
+ODE4My1rdWt1aS1qYWN1enppLmR0c2kKQEAgLTE3MSw2ICsxNzEsOCBAQCBwb3J0QDAgewogCiAJ
+CQlhbng3NjI1X2luOiBlbmRwb2ludCB7CiAJCQkJcmVtb3RlLWVuZHBvaW50ID0gPCZkc2lfb3V0
+PjsKKwkJCQlidXMtdHlwZSA9IDw1PjsKKwkJCQlkYXRhLWxhbmVzID0gPDAgMSAyIDM+OwogCQkJ
+fTsKIAkJfTsKIAotLSAKMi4zNS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVr
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1tZWRpYXRlawo=
