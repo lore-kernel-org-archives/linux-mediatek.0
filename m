@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE15EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Feb 2022 12:05:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94F0CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Feb 2022 12:05:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ONjMFMmGBtAc7DpUeT2wcAFG61Zh/qp6KjAc4GtJ6vA=; b=cPa1G3LsnrLZAQ
-	0rNnurN/hMAPxcgwlkIYmk6jtD0ttiqI4SRjy7UylP1wll8OdqKpfqJqhT/1qlCqN9V4zhuKhZpm0
-	Mkvc6xMc4VQfx1/WLpbEX2gCYr2uW2zcIjE4YX17j8duoa5XHkFFX1BZFxo2yq6u994j/tfAAl3em
-	mY5b+jVem1Rr91CKdtfI8Zil/JO/eanlbpltJ/AYygzO2dOyILYSxQNlwfBUkSgeIW0pFkNjEDbFM
-	ffufYn9ZQdA07hKrk8NPw+/90cNpzwI4Z2zImIyP1o90QMYd2wu384WpzbgHLgeZ9RgKmRlwySbWZ
-	WOFyd2VvxNXu9VzhYrXQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UIH0+NkNP96LIpTKAHw9kmGPTb6v7YtOiK2kPaR924k=; b=O/H4UWp6dN5xuJ
+	K7QF6rajBiM+U96fG3Xl2AifOTTqvdYNf98ATR9dQUcPfO5IBkp0mpUse3TdUVrQ+SqgD1lcHjpXO
+	11o7ng6huri13TYBXw6CgQU+G0pto7qiBHDF0XvQ4k3RozscLDzRJK6PxoAI4hGt8T8v68Dx8ixhT
+	LIcECTvH2f8cRPhHhlrB5IdIOFSwSPUxlEZAeVkH5RZtzg1awa1CIn8yE3YMXhyR3Px/G+piEE2cy
+	OrFW16tjS+ZxeYNFdHLMdtziBw4jTsIJ9LGRnSr/EPOHU8WlaJ6K+Qs0iySZ2yNOVBmlSUNWLAbOA
+	bunDAHbIp+1rMR+5iRIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nEru5-00BxhC-6x; Tue, 01 Feb 2022 12:04:57 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nErua-00By0v-QI; Tue, 01 Feb 2022 12:05:28 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nErt4-00Bx7a-5u; Tue, 01 Feb 2022 12:03:55 +0000
+ id 1nErtD-00BxAn-MC; Tue, 01 Feb 2022 12:04:05 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 4911B6131C;
- Tue,  1 Feb 2022 12:03:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8BC1DC340EB;
+ by dfw.source.kernel.org (Postfix) with ESMTPS id C8892614F0;
+ Tue,  1 Feb 2022 12:03:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93DBFC340EE;
  Tue,  1 Feb 2022 12:03:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1643717010;
- bh=9Vi/dbHpmTpkL5NZYzRvz2xVSV/Pl1bMaDSOJ1lpwzM=;
- h=From:To:Cc:Subject:Date:From;
- b=NAt8A4exqO2aK1xkPhHTTUnlqYyTFwAK+Tzvkc9oond8tRZ899vciTg9EDrzQiskk
- V08V+CeCYgRR99iFh8xLU8UflT88l8mOMSrtY8BY0BDtDRCCm9yq0wXGltZIB7Yrwe
- bTNvW4jpX2mdcj3kF/H18xkmgpXppRKQZpnFfgk50u30NiInsAiaMDewgw11LrkJ/I
- G9pIYXfZ7bWpYaAo2n1q0y3ByDjnRs0OTD8mx5VOoFlGwcfZqCPZTZ1AsfgbeqqLaA
- rvm6vr/NHu8wjosLdOCXsydHQUXOpwzteOFRh2JL74vfUo0Sh5sMdc772iwyu5Qo4K
- LZhf0rV38x5vg==
+ bh=G+5KjErBUoA0VuKd1uOcKIKve23dzp6jS3teZfj++fA=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=DMy53Qwmrcncf5BHGzL250502XwXPLmtxMRd1aahJ0T8SqL5+NxKeHlffqkIkDWMQ
+ 1FiqZopp55JVNFSJ2uE5eTmPn0gmnsZC6cHLet/wWitIVNuvJf93Eg+r3Epu7X9LqO
+ M9jDPqCMrLXKCyIDkFC9DTJAsAvF3yRAjMXkddgX2nyaHeQV3mwAXWvIGu/Pl9JuRs
+ QbeD18EcYsFfuFotJEbw+YLhmlhpVGAJB7C4bBlAuOL/4psKBufAW6hEbKrd739Hoz
+ BFrCczw+rT+OP4QJfT0s0pQX94JOuJ2LZ1qkMihp0LPCIW7wGK/MbVYjhvqxUGxaHg
+ sdqxp/NQeK1rw==
 Received: from sofa.misterjones.org ([185.219.108.64] helo=why.lan)
  by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
  (envelope-from <maz@kernel.org>)
- id 1nErse-004d46-Es; Tue, 01 Feb 2022 12:03:28 +0000
+ id 1nErse-004d46-UF; Tue, 01 Feb 2022 12:03:28 +0000
 From: Marc Zyngier <maz@kernel.org>
 To: linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
@@ -59,10 +59,12 @@ Cc: Linus Walleij <linus.walleij@linaro.org>,
  Sascha Hauer <s.hauer@pengutronix.de>,
  Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
  Tali Perry <tali.perry1@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>
-Subject: [PATCH 00/12] genirq: Move irqchip runtime PM over to irq domain
-Date: Tue,  1 Feb 2022 12:02:58 +0000
-Message-Id: <20220201120310.878267-1-maz@kernel.org>
+Subject: [PATCH 01/12] genirq: Allow the PM device to originate from irq domain
+Date: Tue,  1 Feb 2022 12:02:59 +0000
+Message-Id: <20220201120310.878267-2-maz@kernel.org>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220201120310.878267-1-maz@kernel.org>
+References: <20220201120310.878267-1-maz@kernel.org>
 MIME-Version: 1.0
 X-SA-Exim-Connect-IP: 185.219.108.64
 X-SA-Exim-Rcpt-To: linux-gpio@vger.kernel.org,
@@ -77,8 +79,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220201_040354_328962_9009F496 
-X-CRM114-Status: GOOD (  16.50  )
+X-CRM114-CacheID: sfid-20220201_040403_824460_3DC95E0E 
+X-CRM114-Status: GOOD (  22.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,66 +97,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Our irq_chip data structure currently suffers from two problems:
+As a preparation to moving the reference to the device used for
+runtime power management, add a new 'dev' field to the irqdomain
+structure for that exact purpose.
 
-(1) the 'name' field is often dynamically populated with a reference
-    to the underlying HW (DT node dame, for example)
+The irq_chip_pm_{get,put}() helpers are made aware of the dual
+location via a new private helper.
 
-(2) the 'parent_device' which is used to implement runtime PM is also
-    dynamically populated
+No functional change intended.
 
-(3) there is at least one instance of a subsystem messing with the
-    internals of irq_chip structures (gpiochip_set_irq_hooks is
-    what I know about)
+Signed-off-by: Marc Zyngier <maz@kernel.org>
+---
+ include/linux/irqdomain.h | 10 ++++++++++
+ kernel/irq/chip.c         | 23 ++++++++++++++++++-----
+ 2 files changed, 28 insertions(+), 5 deletions(-)
 
-These things mean that although the primary use of irq_chip is to only
-contain function pointers and other *static* information, the above
-two fields result in these structures being copied in a number of
-drivers. Eventually, it would be much better if the various drivers
-would use irq_chip as an 'ops' data structure (potentially made
-read-only), and keep the dynamic information somewhere more suitable.
-
-For (2) we already have the irqdomain structure that is designed to
-deal with the context in which interrupts are used, and it makes sense
-to move the 'parent_device' field over to this structure. This is what
-this small series is doing, with some minor cleanup on the way.
-
-(1) and (3) will be dealt in separate series (and I don't have a good
-solution for (3) yet).
-
-Thanks,
-
-	M.
-
-Marc Zyngier (12):
-  genirq: Allow the PM device to originate from irq domain
-  irqchip/gic: Move PM device over to irq domain
-  irqchip/renesas-intc-gpio: Move PM device over to irq domain
-  irqchip/renesas-irqc: Move PM device over to irq domain
-  irqchip/imx-intmux: Move PM device over to irq domain
-  gpio: mt7621: Kill parent_device usage
-  gpio: omap: Move PM device over to irq domain
-  gpio: rcar: Move PM device over to irq domain
-  gpio: tpmx86: Move PM device over to irq domain
-  pinctrl: npcm: Fix broken references to chip->parent_device
-  pinctrl: starfive: Move PM device over to irq domain
-  genirq: Kill irq_chip::parent_device
-
- drivers/gpio/gpio-mt7621.c                |  1 -
- drivers/gpio/gpio-omap.c                  |  7 ++++---
- drivers/gpio/gpio-rcar.c                  |  2 +-
- drivers/gpio/gpio-tqmx86.c                |  3 ++-
- drivers/irqchip/irq-gic.c                 | 12 +++++------
- drivers/irqchip/irq-imx-intmux.c          |  8 +++-----
- drivers/irqchip/irq-renesas-intc-irqpin.c |  3 ++-
- drivers/irqchip/irq-renesas-irqc.c        |  3 ++-
- drivers/pinctrl/nuvoton/pinctrl-npcm7xx.c | 25 +++++++++++------------
- drivers/pinctrl/pinctrl-starfive.c        |  3 ++-
- include/linux/irq.h                       |  2 --
- include/linux/irqdomain.h                 | 10 +++++++++
- kernel/irq/chip.c                         | 20 +++++++++++++-----
- 13 files changed, 59 insertions(+), 40 deletions(-)
-
+diff --git a/include/linux/irqdomain.h b/include/linux/irqdomain.h
+index d476405802e9..be25a33293e5 100644
+--- a/include/linux/irqdomain.h
++++ b/include/linux/irqdomain.h
+@@ -151,6 +151,8 @@ struct irq_domain_chip_generic;
+  * @gc: Pointer to a list of generic chips. There is a helper function for
+  *      setting up one or more generic chips for interrupt controllers
+  *      drivers using the generic chip library which uses this pointer.
++ * @dev: Pointer to a device that the domain represent, and that will be
++ *       used for power management purposes.
+  * @parent: Pointer to parent irq_domain to support hierarchy irq_domains
+  *
+  * Revmap data, used internally by irq_domain
+@@ -171,6 +173,7 @@ struct irq_domain {
+ 	struct fwnode_handle *fwnode;
+ 	enum irq_domain_bus_token bus_token;
+ 	struct irq_domain_chip_generic *gc;
++	struct device *dev;
+ #ifdef	CONFIG_IRQ_DOMAIN_HIERARCHY
+ 	struct irq_domain *parent;
+ #endif
+@@ -226,6 +229,13 @@ static inline struct device_node *irq_domain_get_of_node(struct irq_domain *d)
+ 	return to_of_node(d->fwnode);
+ }
+ 
++static inline void irq_domain_set_pm_device(struct irq_domain *d,
++					    struct device *dev)
++{
++	if (d)
++		d->dev = dev;
++}
++
+ #ifdef CONFIG_IRQ_DOMAIN
+ struct fwnode_handle *__irq_domain_alloc_fwnode(unsigned int type, int id,
+ 						const char *name, phys_addr_t *pa);
+diff --git a/kernel/irq/chip.c b/kernel/irq/chip.c
+index c09324663088..a2a12cdbe872 100644
+--- a/kernel/irq/chip.c
++++ b/kernel/irq/chip.c
+@@ -1558,6 +1558,17 @@ int irq_chip_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+ 	return 0;
+ }
+ 
++static struct device *irq_get_parent_device(struct irq_data *data)
++{
++	if (data->chip->parent_device)
++		return data->chip->parent_device;
++
++	if (data->domain)
++		return data->domain->dev;
++
++	return NULL;
++}
++
+ /**
+  * irq_chip_pm_get - Enable power for an IRQ chip
+  * @data:	Pointer to interrupt specific data
+@@ -1567,12 +1578,13 @@ int irq_chip_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+  */
+ int irq_chip_pm_get(struct irq_data *data)
+ {
++	struct device *dev = irq_get_parent_device(data);
+ 	int retval;
+ 
+-	if (IS_ENABLED(CONFIG_PM) && data->chip->parent_device) {
+-		retval = pm_runtime_get_sync(data->chip->parent_device);
++	if (IS_ENABLED(CONFIG_PM) && dev) {
++		retval = pm_runtime_get_sync(dev);
+ 		if (retval < 0) {
+-			pm_runtime_put_noidle(data->chip->parent_device);
++			pm_runtime_put_noidle(dev);
+ 			return retval;
+ 		}
+ 	}
+@@ -1590,10 +1602,11 @@ int irq_chip_pm_get(struct irq_data *data)
+  */
+ int irq_chip_pm_put(struct irq_data *data)
+ {
++	struct device *dev = irq_get_parent_device(data);
+ 	int retval = 0;
+ 
+-	if (IS_ENABLED(CONFIG_PM) && data->chip->parent_device)
+-		retval = pm_runtime_put(data->chip->parent_device);
++	if (IS_ENABLED(CONFIG_PM) && dev)
++		retval = pm_runtime_put(dev);
+ 
+ 	return (retval < 0) ? retval : 0;
+ }
 -- 
 2.30.2
 
