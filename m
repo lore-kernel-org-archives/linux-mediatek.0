@@ -4,69 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB8A1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Feb 2022 15:31:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7ED0EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Feb 2022 16:07:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rWhe5ZSH7BeRUt0dXWrL7cU/VM7fAfqfc0fqjvROP9M=; b=JonZOXp6ktZqir
-	M8lTLt4oDKw4RjE3Xe92eRqGdUIOL/jIwzhkUfWozAL+WLCwvPPUKXCth2gGPnidqDgoByHsXpywr
-	AMoGwPVrIF7J1G+OP+LLK5PqabIDdFUCaNWya15uOpJrDio7DwVM+tIEYYXSDwMODpQooUc1dkE1S
-	zXKnzRDztOHb7JTC4vVwpRNDuKPkCNv6d04FGpxFiHGpFf2/RAIvqgrHlCQT8hbsWqaYlfZcxi8L8
-	ffs4Dlgd2Q2ODV3abOlIX/kQTBrU+7ENDu3hz4JNXz6ttIyDgedHwosZ0iZSmmaEIacKHR9DPrcP2
-	prhvyqXRPe5skZe+zLJQ==;
+	List-Owner; bh=3aUYXpoBnc1zNO+3CM23RpdiotJ3v6JwHiIwmtGPlBI=; b=t07Iu8kxwWiXXt
+	FKCmQ5J4fzd1/PW5XPiMBT+TVtIMLiQbydpycmVOfVYCdufJpaO4NxBnGgn+e1Zl/EGE4xP5otOqc
+	KjuPcSE3eBPB0vQBC/gLrm/DsnUoignwt272ioP5fD0GbpmKZomo0WCO/tTSezuaO9Lzg3Rvph35j
+	GxtMQ0Q+2QNt23cEnUBa2EZOTDkxI9hYtKUPw05b3bVZDrM9cGZ7LUhM5JmtB4QmNBc4ezXa+STQF
+	1vigrjWZvTwy9VVx2Du5tlDVOovLKZ3hE16umPm4yAK+BNO1ZAjp9HezyAXEksE2dcM7EFpEX+sbW
+	7167NKzthLF+7Fa4ok/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nEv7M-00Ch8H-E3; Tue, 01 Feb 2022 15:30:52 +0000
-Received: from mail-pf1-f171.google.com ([209.85.210.171])
+	id 1nEvgW-00CnzE-SG; Tue, 01 Feb 2022 16:07:12 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nEv6l-00Cgx9-6F; Tue, 01 Feb 2022 15:30:16 +0000
-Received: by mail-pf1-f171.google.com with SMTP id 192so16188968pfz.3;
- Tue, 01 Feb 2022 07:30:14 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/NI5/5cwcQQunIPAZVQCMWs9N9hH37FdlDTNKGxYQ7E=;
- b=efH1n48KPMxmsL06uKumt7w/bR/huQjjX96D6PxVQw1e2cLjztZ0DM4boiz6dXusU/
- RrT94Z3ubiRtbBZhIPaPu/AkLNW5Uk6LfNzExmKWr+HjCGgrzbNE1g/AZJEmqRUNcH5Z
- m9IxjfO1vMU1SX0uaWkg8KOEmuWVa207ITJ4oQ98w96uulH349+yiC52mfX4XyXz13Yn
- zIBBD+q9lMSsOjQCCxDoJ6/dLu77njBmtOLMawurJp+MmjolJM+1nLz2mSALHwIN6Au6
- 0qv/upjiNgmodmD6rvpdNL/WzJOeBE1BOrJyNmWyr1DXIg0J2aRblDkJgBO4jWSqFS7V
- JcOQ==
-X-Gm-Message-State: AOAM531xWKJTrC5tMgnPMReKWu5CV/Xn2pq3VhTlc/n9QvkxJI4GTNWX
- Je31osvP/bgauDBsBoK1x6YmaRPxY8glAlafWng=
-X-Google-Smtp-Source: ABdhPJwZNq0IinMera7zRuVK7Muwvrp92NYs2qCGjwudmM11k2zeBJdEaahQlwH16dsk6UqlFGc0aAuF4CaTORjd4vE=
-X-Received: by 2002:a63:904c:: with SMTP id a73mr21118692pge.449.1643729414082; 
- Tue, 01 Feb 2022 07:30:14 -0800 (PST)
-MIME-Version: 1.0
+ id 1nEvgJ-00CnuX-49; Tue, 01 Feb 2022 16:07:00 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 1FDCFB82EB6;
+ Tue,  1 Feb 2022 16:06:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C1936C340EB;
+ Tue,  1 Feb 2022 16:06:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1643731615;
+ bh=wCusUGW69do8zdL1IFraRPrsU9+EHiNfdech3A1Xt2E=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=GCqkp12U2d1lF6WZIlwueos5RFb44pInCD9Ah+1yNj2GV3INPhYcyQywpz3GlB04Y
+ Da8ubuViEBrES19LuGvR0owKJPw+xTWzJJ0CT7lJBsLkFX7Q1czcIf6ZlVVTJwa72b
+ r41fBP1DPGVupupZsCLMnJM6VCEdXBtdCt09lUmfhW3zP1CtNTqU2XiGTbOmDibx+/
+ ptzJPQpcaQKmAT8lASTyf7oRO8DxDEXHV2ODKnGdwwKpzpX6737Hfn3u0Kzk4tLnDP
+ iSC7Ine/0Uq1dYRL3rjObK3NIGOq9sooCiwC9Ryj0x70edt3tQ9sFT3P4SY9vlTVaQ
+ 9oHhaaA7de+lg==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <maz@kernel.org>)
+ id 1nEvgD-004gZY-KM; Tue, 01 Feb 2022 16:06:53 +0000
+Date: Tue, 01 Feb 2022 16:06:53 +0000
+Message-ID: <87fsp2606a.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Emil Renner Berthing <kernel@esmil.dk>
+Cc: "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ linux-mediatek@lists.infradead.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-omap@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <brgl@bgdev.pl>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Grygorii Strashko <grygorii.strashko@ti.com>,
+ Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
+ Tali Perry <tali.perry1@gmail.com>
+Subject: Re: [PATCH 11/12] pinctrl: starfive: Move PM device over to irq domain
+In-Reply-To: <CANBLGcxCmeaXXFWi6GFSHN=RhjUp5BVRYTMXHQihsLJCocD1xg@mail.gmail.com>
 References: <20220201120310.878267-1-maz@kernel.org>
  <20220201120310.878267-12-maz@kernel.org>
  <CANBLGcxCmeaXXFWi6GFSHN=RhjUp5BVRYTMXHQihsLJCocD1xg@mail.gmail.com>
-In-Reply-To: <CANBLGcxCmeaXXFWi6GFSHN=RhjUp5BVRYTMXHQihsLJCocD1xg@mail.gmail.com>
-From: Emil Renner Berthing <kernel@esmil.dk>
-Date: Tue, 1 Feb 2022 16:30:02 +0100
-Message-ID: <CANBLGcy_zEY7qkMe96v+tpsxbp9CDJh14utug5wseCfBhOSvdA@mail.gmail.com>
-Subject: Re: [PATCH 11/12] pinctrl: starfive: Move PM device over to irq domain
-To: Marc Zyngier <maz@kernel.org>
-Cc: "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-mediatek@lists.infradead.org, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-omap@vger.kernel.org, 
- Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Grygorii Strashko <grygorii.strashko@ti.com>, 
- Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>, 
- Thomas Gleixner <tglx@linutronix.de>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, Avi Fishman <avifishman70@gmail.com>, 
- Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: kernel@esmil.dk, linux-gpio@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org,
+ linus.walleij@linaro.org, brgl@bgdev.pl, matthias.bgg@gmail.com,
+ grygorii.strashko@ti.com, ssantosh@kernel.org, khilman@kernel.org,
+ tglx@linutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ avifishman70@gmail.com, tmaimon77@gmail.com, tali.perry1@gmail.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220201_073015_280193_09965524 
-X-CRM114-Status: GOOD (  19.80  )
+X-CRM114-CacheID: sfid-20220201_080659_480070_0BF9C254 
+X-CRM114-Status: GOOD (  25.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,7 +102,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 1 Feb 2022 at 16:16, Emil Renner Berthing <kernel@esmil.dk> wrote:
+On Tue, 01 Feb 2022 15:16:39 +0000,
+Emil Renner Berthing <kernel@esmil.dk> wrote:
+> 
 > On Tue, 1 Feb 2022 at 13:19, Marc Zyngier <maz@kernel.org> wrote:
 > >
 > > Move the reference to the device over to the irq domain.
@@ -111,15 +132,20 @@ On Tue, 1 Feb 2022 at 16:16, Emil Renner Berthing <kernel@esmil.dk> wrote:
 > >
 > > +       irq_domain_set_pm_device(sfp->gc.irq.domain, dev);
 > > +
->
+> 
 > The gpio framework uses the irq_domain at sfp->gc.irq.domain, so
 > shouldn't this be set before registering the gpio_chip with
 > devm_gpiochip_add_data above?
 
-Ah, no. sfp->gc.irq.domain is a pointer to an irq_domain that is
-initialised when adding the gpio_chip.
+It is devm_gpiochip_add_data() that create the domain, so there is
+nothing to set before.
 
-Reviewed-by: Emil Renner Berthing <kernel@esmil.dk>
+Thanks,
+
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-mediatek mailing list
