@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DA3CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Feb 2022 14:12:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49C0CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Feb 2022 14:12:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3AZVEKgXxnOMGT1dWeJPZiWUoFdMUTiY3ERa3wBvGWI=; b=rYzEV6WPpv94JV
-	FvgpV1FtitX1HpEgIixWPz4nxKBSGy4VF91eGwy7gkqTTjXGjw5Pnldp7nkrxudM+VYtBw2eQbpcG
-	uEE9EzBb7O0JhEmkTrutkHniesdBi6hKCc/4iyQFFXOOIlz+qRwmnqMAlN+kgApm9j8RLbZ1jdQzz
-	MS+zbCO61F2BpA3NayiZ1VL5TF9HRZUU+VhjvfngEXalkxLDnIhRGOnTle1qKIsIduh9rg3LRTsCT
-	GDIp4dREYy6RrwXJfC7JmIp7gJ0T6FcxdJQVTJL24Mj/bO0QuKHfnXI8YepkQzghDdG8qs6nJ+2yc
-	t+WwZFJNaCAQ09/Hh65w==;
+	List-Owner; bh=wGCk3llCq5uZUXFXA6Ho8FtuLKeY+RXXZZ062Dtoddk=; b=0K8D5a+ZADimUY
+	syBwLoXP+2rj8U8t9GUpjO7tbGRp6CsgyzQGhMJDl6R3sa44Muenk0QQ4pPTBCrUIS8wq64MtPcl8
+	oUS8KyTk9DValFF9SQdp0vFtDOC18FcrNjhBGtk+ciBi6yofE/rj7OCupcHIO1KRxajz86kSmo3xk
+	TVpw4Gw7+vQUkFLYShEHN7Smplx9NsaV9KzsTgSozHyecilurJFDCfLI7V3ytz6Ewbyk0lhYOP4hA
+	pM5yTa0qnE7GQhFWkFLYATO2x5WiHXqQi8sIvt+gr1jZfMfVhCDVqLiIItWdGx2Te3+rz55Ek81lm
+	y6Gt/afTt/RPsXRm6WUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nFGN1-00FaB1-AM; Wed, 02 Feb 2022 14:12:27 +0000
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+	id 1nFGN6-00FaDU-6s; Wed, 02 Feb 2022 14:12:32 +0000
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nFG1p-00FPUy-HQ
- for linux-mediatek@lists.infradead.org; Wed, 02 Feb 2022 13:50:35 +0000
-Received: by mail-pg1-x52b.google.com with SMTP id s16so18250493pgs.13
- for <linux-mediatek@lists.infradead.org>; Wed, 02 Feb 2022 05:50:33 -0800 (PST)
+ id 1nFG1r-00FPWE-5Z
+ for linux-mediatek@lists.infradead.org; Wed, 02 Feb 2022 13:50:37 +0000
+Received: by mail-pg1-x52a.google.com with SMTP id e16so18364427pgn.4
+ for <linux-mediatek@lists.infradead.org>; Wed, 02 Feb 2022 05:50:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=+daluWI6BZRIIo6jD7cHJViSYXk0pP6IWtsEBRin450=;
- b=Tpd1Y5ycji6S6pWD2XDf2SPMtoJdCSlWpqa5WQ0rz036vkv6p90/OEXloIQ1CsAkGL
- buh3iG4TyghoF0YDogBgAeLC2VzMf1iYDwfXL6Vf9G6tOqVf1CLVbGsBl/FZOAP822jB
- VuhIm7GlgM3Uqijk5XMVny+frQUbsvt0GJ/P0=
+ bh=werugQ/PNY3DJV7X3KvlbPf+KInlI+F1nzzIi8IaHE4=;
+ b=KYkY3NyXGsUq6OIVPtRqpq3aJDlnMpaQUNiUFpUp01u+6+4Yc1yifF/EtbaGdUU/EZ
+ 4jEv5ZgMAYQcaLnxJB0bvWCQkKF+4W1FbaJH6EeNJEW0bHkHAjMlxBJ+d5TYFL136A2u
+ nzkbgFLBZCLeCWxrGK2OUkA/Ej5DUe7Bbtauk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=+daluWI6BZRIIo6jD7cHJViSYXk0pP6IWtsEBRin450=;
- b=GmcMeFMxaQQCQxwihwTxM/qjEek70wjZYESrODb1Asn34BRDN+BEkUNQAjkOaU1eQb
- ofDb0dLfmgIESaVx6K/sbqqztcPEG1wH2w0l6WEsEeXKqk54LHt1oSZBPYTdBcYwqBdE
- bZ9QR7RNloqE9oSVhCOywG0it48TYHBLS0GuLsg3Yd3F240i1jlocUMiTsQOr8x7WdL2
- wdqeyTcCCzINxGu44SuPbw9MidjFNOVKh/ojEAPMpoS9GiW9DTTzNWY2bBqhLeCDYTfW
- SXseCRfs1t9oGMZoJF71z80+6xlXyz6baoFUGKmpeQYqgJNiUQl2cpEIH0CxT/IQBG5w
- hyLQ==
-X-Gm-Message-State: AOAM531c7tDALj6EvPmYTufzufoYE/fNgsOmU/Kq43lsgj8Awe0JxKay
- QAi84dhi/wkLhjBubxRB5NXvpQ==
-X-Google-Smtp-Source: ABdhPJwgB9Kfv9ToZpcQLJRwpxFqkgMwlv0Lnc1Fod0ARERNSW52V7MEPKDRm9oXXveifEe8s/FX+A==
-X-Received: by 2002:aa7:9498:: with SMTP id z24mr29584316pfk.80.1643809832727; 
- Wed, 02 Feb 2022 05:50:32 -0800 (PST)
+ bh=werugQ/PNY3DJV7X3KvlbPf+KInlI+F1nzzIi8IaHE4=;
+ b=EQ7c1AO1QvU3RyBb+AMYuO08sTzWgNgL1xzSeQfzV3yw7lELR200dnm+LexmYEjaVg
+ gUzX2/BtR38IBsBCPDgDxyIqTPiEnywMIl/K0TPrTkoSHurblGR1MBHq5q8nd0whrsTx
+ ByP9nhkMzNC7XX43Qm95j3xvFNR9ERPshm1HL+Z2/e+wqWZC5+4hxyFhuVs6Wi8Zo+3e
+ j/ETCZXh4ZXA8OBUguW4Z8xH2Ye8GMeAOGm9PYjQM1JWhqyLMDFuw8AJEOadyI8vuvRz
+ 27BoSYnpphYsLkmN2ruWxjvqx9UGHDPsngzSlge9ejVM/vD3XGo4H8IPk9ECQ47c/ph/
+ j6zw==
+X-Gm-Message-State: AOAM530j13+hnv6Dj2WRGrgL2OOlvGmudLzvAG69Rv9UUfQ2HqMcgVjR
+ DIKNCBEUZXhH4kmr3wBYgKfKqg==
+X-Google-Smtp-Source: ABdhPJw49ttlFrKC1MjrGeTsHqkfQ7FGmibvO4l4NXQ5dLVTeAEc4UPt1ZaOdrUzMnvvsBWWMGkZow==
+X-Received: by 2002:a05:6a00:2490:: with SMTP id
+ c16mr30157692pfv.36.1643809834717; 
+ Wed, 02 Feb 2022 05:50:34 -0800 (PST)
 Received: from wenstp920.tpe.corp.google.com
  ([2401:fa00:1:10:78b5:214c:c81:b9aa])
- by smtp.gmail.com with ESMTPSA id w19sm27335684pfu.47.2022.02.02.05.50.30
+ by smtp.gmail.com with ESMTPSA id w19sm27335684pfu.47.2022.02.02.05.50.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Feb 2022 05:50:32 -0800 (PST)
+ Wed, 02 Feb 2022 05:50:34 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Stephen Boyd <sboyd@kernel.org>,
  Michael Turquette <mturquette@baylibre.com>,
@@ -64,17 +65,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
  Miles Chen <miles.chen@mediatek.com>, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v2 27/31] clk: mediatek: Unregister clks in
- mtk_clk_simple_probe() error path
-Date: Wed,  2 Feb 2022 21:48:30 +0800
-Message-Id: <20220202134834.690675-28-wenst@chromium.org>
+Subject: [PATCH v2 28/31] clk: mediatek: mt8195: Hook up
+ mtk_clk_simple_remove()
+Date: Wed,  2 Feb 2022 21:48:31 +0800
+Message-Id: <20220202134834.690675-29-wenst@chromium.org>
 X-Mailer: git-send-email 2.35.0.rc2.247.g8bbb082509-goog
 In-Reply-To: <20220202134834.690675-1-wenst@chromium.org>
 References: <20220202134834.690675-1-wenst@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220202_055033_594326_C94BC72D 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20220202_055035_273375_790E3D1F 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,39 +92,202 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Until now the mediatek clk driver library did not have any way to
-unregister clks, and so all drivers did not do proper cleanup in
-their error paths.
+Various small clock controllers only have clock gates, and utilize
+mtk_clk_simple_probe() as their driver probe function.
 
-Now that the library does have APIs to unregister clks, use them
-in the error path of mtk_clk_simple_probe() to do proper cleanup.
+Now that we have a matching remove function, hook it up for the relevant
+drivers. This was done with the following command:
+
+sed -i -e '/mtk_clk_simple_probe/a \
+        .remove = mtk_clk_simple_remove,' drivers/clk/mediatek/clk-mt8195-*.c
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mtk.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/clk/mediatek/clk-mt8195-cam.c          | 1 +
+ drivers/clk/mediatek/clk-mt8195-ccu.c          | 1 +
+ drivers/clk/mediatek/clk-mt8195-img.c          | 1 +
+ drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c | 1 +
+ drivers/clk/mediatek/clk-mt8195-infra_ao.c     | 1 +
+ drivers/clk/mediatek/clk-mt8195-ipe.c          | 1 +
+ drivers/clk/mediatek/clk-mt8195-mfg.c          | 1 +
+ drivers/clk/mediatek/clk-mt8195-peri_ao.c      | 1 +
+ drivers/clk/mediatek/clk-mt8195-scp_adsp.c     | 1 +
+ drivers/clk/mediatek/clk-mt8195-vdec.c         | 1 +
+ drivers/clk/mediatek/clk-mt8195-venc.c         | 1 +
+ drivers/clk/mediatek/clk-mt8195-vpp0.c         | 1 +
+ drivers/clk/mediatek/clk-mt8195-vpp1.c         | 1 +
+ drivers/clk/mediatek/clk-mt8195-wpe.c          | 1 +
+ 14 files changed, 14 insertions(+)
 
-diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index 8f15e9de742e..0e027be0d5fc 100644
---- a/drivers/clk/mediatek/clk-mtk.c
-+++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -439,12 +439,14 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
+diff --git a/drivers/clk/mediatek/clk-mt8195-cam.c b/drivers/clk/mediatek/clk-mt8195-cam.c
+index 3d261fc3848e..e4d00fe6e757 100644
+--- a/drivers/clk/mediatek/clk-mt8195-cam.c
++++ b/drivers/clk/mediatek/clk-mt8195-cam.c
+@@ -134,6 +134,7 @@ static const struct of_device_id of_match_clk_mt8195_cam[] = {
  
- 	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
- 	if (r)
--		goto free_data;
-+		goto unregister_clks;
+ static struct platform_driver clk_mt8195_cam_drv = {
+ 	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-cam",
+ 		.of_match_table = of_match_clk_mt8195_cam,
+diff --git a/drivers/clk/mediatek/clk-mt8195-ccu.c b/drivers/clk/mediatek/clk-mt8195-ccu.c
+index f846f1d73605..4e326b6301ba 100644
+--- a/drivers/clk/mediatek/clk-mt8195-ccu.c
++++ b/drivers/clk/mediatek/clk-mt8195-ccu.c
+@@ -42,6 +42,7 @@ static const struct of_device_id of_match_clk_mt8195_ccu[] = {
  
- 	platform_set_drvdata(pdev, clk_data);
+ static struct platform_driver clk_mt8195_ccu_drv = {
+ 	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-ccu",
+ 		.of_match_table = of_match_clk_mt8195_ccu,
+diff --git a/drivers/clk/mediatek/clk-mt8195-img.c b/drivers/clk/mediatek/clk-mt8195-img.c
+index 22b52a8f15fe..12f5c436d075 100644
+--- a/drivers/clk/mediatek/clk-mt8195-img.c
++++ b/drivers/clk/mediatek/clk-mt8195-img.c
+@@ -88,6 +88,7 @@ static const struct of_device_id of_match_clk_mt8195_img[] = {
  
- 	return r;
+ static struct platform_driver clk_mt8195_img_drv = {
+ 	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-img",
+ 		.of_match_table = of_match_clk_mt8195_img,
+diff --git a/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c b/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c
+index 4ab312eb26a5..fbc809d05072 100644
+--- a/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c
++++ b/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c
+@@ -58,6 +58,7 @@ static const struct of_device_id of_match_clk_mt8195_imp_iic_wrap[] = {
  
-+unregister_clks:
-+	mtk_clk_unregister_gates(mcd->clks, mcd->num_clks, clk_data);
- free_data:
- 	mtk_free_clk_data(clk_data);
- 	return r;
+ static struct platform_driver clk_mt8195_imp_iic_wrap_drv = {
+ 	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-imp_iic_wrap",
+ 		.of_match_table = of_match_clk_mt8195_imp_iic_wrap,
+diff --git a/drivers/clk/mediatek/clk-mt8195-infra_ao.c b/drivers/clk/mediatek/clk-mt8195-infra_ao.c
+index 5f9b69967459..8ebe3b9415c4 100644
+--- a/drivers/clk/mediatek/clk-mt8195-infra_ao.c
++++ b/drivers/clk/mediatek/clk-mt8195-infra_ao.c
+@@ -198,6 +198,7 @@ static const struct of_device_id of_match_clk_mt8195_infra_ao[] = {
+ 
+ static struct platform_driver clk_mt8195_infra_ao_drv = {
+ 	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-infra_ao",
+ 		.of_match_table = of_match_clk_mt8195_infra_ao,
+diff --git a/drivers/clk/mediatek/clk-mt8195-ipe.c b/drivers/clk/mediatek/clk-mt8195-ipe.c
+index fc1d42b6ac84..b0d745cf7752 100644
+--- a/drivers/clk/mediatek/clk-mt8195-ipe.c
++++ b/drivers/clk/mediatek/clk-mt8195-ipe.c
+@@ -43,6 +43,7 @@ static const struct of_device_id of_match_clk_mt8195_ipe[] = {
+ 
+ static struct platform_driver clk_mt8195_ipe_drv = {
+ 	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-ipe",
+ 		.of_match_table = of_match_clk_mt8195_ipe,
+diff --git a/drivers/clk/mediatek/clk-mt8195-mfg.c b/drivers/clk/mediatek/clk-mt8195-mfg.c
+index aca6d9c0837c..9411c556a5a9 100644
+--- a/drivers/clk/mediatek/clk-mt8195-mfg.c
++++ b/drivers/clk/mediatek/clk-mt8195-mfg.c
+@@ -39,6 +39,7 @@ static const struct of_device_id of_match_clk_mt8195_mfg[] = {
+ 
+ static struct platform_driver clk_mt8195_mfg_drv = {
+ 	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-mfg",
+ 		.of_match_table = of_match_clk_mt8195_mfg,
+diff --git a/drivers/clk/mediatek/clk-mt8195-peri_ao.c b/drivers/clk/mediatek/clk-mt8195-peri_ao.c
+index 907a92b22de8..2f6b3bb657db 100644
+--- a/drivers/clk/mediatek/clk-mt8195-peri_ao.c
++++ b/drivers/clk/mediatek/clk-mt8195-peri_ao.c
+@@ -54,6 +54,7 @@ static const struct of_device_id of_match_clk_mt8195_peri_ao[] = {
+ 
+ static struct platform_driver clk_mt8195_peri_ao_drv = {
+ 	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-peri_ao",
+ 		.of_match_table = of_match_clk_mt8195_peri_ao,
+diff --git a/drivers/clk/mediatek/clk-mt8195-scp_adsp.c b/drivers/clk/mediatek/clk-mt8195-scp_adsp.c
+index 26b4846c5894..e16c383f631b 100644
+--- a/drivers/clk/mediatek/clk-mt8195-scp_adsp.c
++++ b/drivers/clk/mediatek/clk-mt8195-scp_adsp.c
+@@ -39,6 +39,7 @@ static const struct of_device_id of_match_clk_mt8195_scp_adsp[] = {
+ 
+ static struct platform_driver clk_mt8195_scp_adsp_drv = {
+ 	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-scp_adsp",
+ 		.of_match_table = of_match_clk_mt8195_scp_adsp,
+diff --git a/drivers/clk/mediatek/clk-mt8195-vdec.c b/drivers/clk/mediatek/clk-mt8195-vdec.c
+index a1df04f42a90..a1446b666385 100644
+--- a/drivers/clk/mediatek/clk-mt8195-vdec.c
++++ b/drivers/clk/mediatek/clk-mt8195-vdec.c
+@@ -96,6 +96,7 @@ static const struct of_device_id of_match_clk_mt8195_vdec[] = {
+ 
+ static struct platform_driver clk_mt8195_vdec_drv = {
+ 	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-vdec",
+ 		.of_match_table = of_match_clk_mt8195_vdec,
+diff --git a/drivers/clk/mediatek/clk-mt8195-venc.c b/drivers/clk/mediatek/clk-mt8195-venc.c
+index 7339851a0856..622f57804f96 100644
+--- a/drivers/clk/mediatek/clk-mt8195-venc.c
++++ b/drivers/clk/mediatek/clk-mt8195-venc.c
+@@ -61,6 +61,7 @@ static const struct of_device_id of_match_clk_mt8195_venc[] = {
+ 
+ static struct platform_driver clk_mt8195_venc_drv = {
+ 	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-venc",
+ 		.of_match_table = of_match_clk_mt8195_venc,
+diff --git a/drivers/clk/mediatek/clk-mt8195-vpp0.c b/drivers/clk/mediatek/clk-mt8195-vpp0.c
+index c3241466a8d0..bf2939c3a023 100644
+--- a/drivers/clk/mediatek/clk-mt8195-vpp0.c
++++ b/drivers/clk/mediatek/clk-mt8195-vpp0.c
+@@ -102,6 +102,7 @@ static const struct of_device_id of_match_clk_mt8195_vpp0[] = {
+ 
+ static struct platform_driver clk_mt8195_vpp0_drv = {
+ 	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-vpp0",
+ 		.of_match_table = of_match_clk_mt8195_vpp0,
+diff --git a/drivers/clk/mediatek/clk-mt8195-vpp1.c b/drivers/clk/mediatek/clk-mt8195-vpp1.c
+index ce0b9a40a179..ffd52c762890 100644
+--- a/drivers/clk/mediatek/clk-mt8195-vpp1.c
++++ b/drivers/clk/mediatek/clk-mt8195-vpp1.c
+@@ -100,6 +100,7 @@ static const struct of_device_id of_match_clk_mt8195_vpp1[] = {
+ 
+ static struct platform_driver clk_mt8195_vpp1_drv = {
+ 	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-vpp1",
+ 		.of_match_table = of_match_clk_mt8195_vpp1,
+diff --git a/drivers/clk/mediatek/clk-mt8195-wpe.c b/drivers/clk/mediatek/clk-mt8195-wpe.c
+index 274d60838d8e..b483fab10e18 100644
+--- a/drivers/clk/mediatek/clk-mt8195-wpe.c
++++ b/drivers/clk/mediatek/clk-mt8195-wpe.c
+@@ -135,6 +135,7 @@ static const struct of_device_id of_match_clk_mt8195_wpe[] = {
+ 
+ static struct platform_driver clk_mt8195_wpe_drv = {
+ 	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-wpe",
+ 		.of_match_table = of_match_clk_mt8195_wpe,
 -- 
 2.35.0.rc2.247.g8bbb082509-goog
 
