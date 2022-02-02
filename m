@@ -4,159 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47C91C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Feb 2022 05:03:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8723AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Feb 2022 07:46:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q8DLVn/TVm7zSTAVlhhNovEetqBNhrD6hP0woEF9Hmc=; b=oJmuQs2vVAG7MC
-	4f6AwB+kHZaQ1iv/HcY/lC4XCWVFrSRSHQ6AFOpvMzNGVUjb526PbTjjtEsAqwJ00Omhn0h3jn9cz
-	BPCgPQVcCsiv+UN6qJBB7IW9FJHyclSwikCaPsjgDOG2BOr8z4bdm8UxmmITywZOdsL8Uhtzfo4UV
-	DXGvLZGVWtp1Nz8RSyC11rpT5mAE5V4A4TCyMx9nnaNan2k7RIcgxgz3jTfA00Xyy6N76zyNP4h6Y
-	PrFmOPxiYizWoYSNR+eqNuCoYnWIBqfKEXQI1Ob9TwrxVbK3LjTpIVXgmEG0k+JNhaTaSC0xyHeP8
-	59MZOxBHwjEBv7E8mDGA==;
+	List-Owner; bh=gnueRvi6GcjMuz06r2d8dkzVOy+yrWT+LwnDM5BR2ek=; b=wtW2GO47ubEQtX
+	5o5T4YHkvVcBCUW8qoxJuReu1va+Wr3t5p1cizTTCsWnqpu/67s+XduQCCcTZaX3Ca2P93bN0EJHz
+	eINEQPStRAC7eACsArczKa4RZ4RRjtvG1Z8ULLVHmK9X4Lg4z9bvv7DSRiLDok2MbAQNl/HDOwbEo
+	VE96Scwmkq3vJe1nHPRkBNqVn4Jqu1scUEbq8h42O/PILMY4GVaqcq0IatnXeH3L0aT6DBr89GJZW
+	ZOZnG7UIAgLJuhDc12sABG1nTJU6UnT4omG4vE19KfOmOUk0DrA7TeGusKs9g1mlSN+ep5KWcR1WB
+	WjGwFKdY++y7eshFcMcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nF7no-00ECBs-E2; Wed, 02 Feb 2022 05:03:32 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1nFALg-00ESBf-2x; Wed, 02 Feb 2022 07:46:40 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nF7nb-00EBwn-3O; Wed, 02 Feb 2022 05:03:21 +0000
-Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 212068QZ022144; 
- Wed, 2 Feb 2022 05:01:13 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : content-type : in-reply-to :
- mime-version; s=corp-2021-07-09;
- bh=UNo7SUAFlMndj4WDbpN9Nwr6n4dpUMD6FKibNKYvl1c=;
- b=S4NRgz7sEcypYpdr2eED1GEEN16gasPIkv+V1yXaSgX0yHBLT5nkHPtO+Xxgq/s1sQp2
- +NpygRJ762ew269DnzgleeIWR40GgpNLTPN8SJi+Vsb6nfytC0TnlEDhG3MzdqRcAqVM
- EJyzw3L39M5yBdyOw04poYl9gjY2JURYdGyJa8+RBkhoXGt21ycchDYn+w0KK4aJN6nz
- 1eB8fMq6FB7troPSlFCkDuRci3kWWWm7EXk7tBZ09M0FY4sMwxRKvXhj+6YzcYvvyaXE
- FTN80woY4VBV2HZBWmyzq0dVQknwJZNL4X971Pg24nLio4+rhT6MiZzipu8u7ZOcExdd 5Q== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by mx0b-00069f02.pphosted.com with ESMTP id 3dxnk2mcx1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 02 Feb 2022 05:01:13 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 2124tPWu104241;
- Wed, 2 Feb 2022 05:01:11 GMT
-Received: from nam02-dm3-obe.outbound.protection.outlook.com
- (mail-dm3nam07lp2044.outbound.protection.outlook.com [104.47.56.44])
- by userp3030.oracle.com with ESMTP id 3dvtq1s7qy-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 02 Feb 2022 05:01:11 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jMxaNPWCGjEQnFH8KCzS5KDitO3Ux/9hlEsDfLXFvQdP+LcmrXki3CfU40ElH8oQQ37LPbJHWo7bJls7RK+c267BaGy11/ThZPt6Q7KWC7gQK3PZVtEZbdYTYUXtpy6/E6+j3+cPTAuDXsMHzEQ8dFWx/zVv+Up1JZkgKJQCnPFbWbdsy2G+i+cKb8ifwwdi1YCLS3ad601FkNviKyHItrbFKQABQ4KlbjmleUyg17Yh2h1XzRTwqydK1XgNEwxMXjyBAJsp+Ylroh9FjOag3NavSOdhVsllOxE17jsfWXDtk+CpskVulxjq9y66sCsZRDhixOGZCYvrgDFLBexyGA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=UNo7SUAFlMndj4WDbpN9Nwr6n4dpUMD6FKibNKYvl1c=;
- b=IvBaY726A3Wo0YGWZXjln9VokLwlAu112zLrXn3nP/Skutqaj5imG+7GZrTb5HnKOl/Q0gRImfW4XAW3ninM62sGJBmP3TrFSZqu+LIG6iV0ccjdfLBqxTc0vcS2aWKmX9DXMvPOyLGcRiwEaqgf3J8NlQukDsgdlpIZDQp4C+aQE08bgIvyw9NWUvb2kGmEUVH+W2fd6u33YJeh7wizH+4LF6D2He1QSoat8OCbNLavRsmY+HeQE/as6va0gkhS4YxitT0+VCIWDXyPcdoA74iSzD8AiSFSq5gy70fNRkWXDorxbMWqPpcy3z2uUYzBXmyN7KdUdfpZzIBuLJ+tdQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UNo7SUAFlMndj4WDbpN9Nwr6n4dpUMD6FKibNKYvl1c=;
- b=lO/CLWh7S6dFNRL7TWN3YDNqhzSwwj8TThC83HrlCAQff4vCWrUAVL8yPatNwt8EZ+ZFHy2Mr00Fb4ox2cvcHxJNouh72Cdx+fQIXhWS6PSp/kA+DLGBqmxDh9tO48yDWnnkb85sS9VCIkL3SqoW9H9a0UlW+bbn515v7IgPZfY=
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by SJ0PR10MB5566.namprd10.prod.outlook.com
- (2603:10b6:a03:3d8::9) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4951.11; Wed, 2 Feb
- 2022 05:01:09 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::e5a5:8f49:7ec4:b7b8]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::e5a5:8f49:7ec4:b7b8%5]) with mapi id 15.20.4930.021; Wed, 2 Feb 2022
- 05:01:09 +0000
-Date: Wed, 2 Feb 2022 08:00:46 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Colin Ian King <colin.i.king@gmail.com>
-Cc: Rick Chang <rick.chang@mediatek.com>, Bin Liu <bin.liu@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media: mtk-jpeg: remove redundant initialization of
- variable plane_fmt
-Message-ID: <20220202050046.GR1951@kadam>
-References: <20220130231111.8563-1-colin.i.king@gmail.com>
-Content-Disposition: inline
-In-Reply-To: <20220130231111.8563-1-colin.i.king@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: JNAP275CA0017.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:4c::22)
- To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
+ id 1nFALK-00ES76-IF; Wed, 02 Feb 2022 07:46:20 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 0672F61731;
+ Wed,  2 Feb 2022 07:46:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72BF2C340EF;
+ Wed,  2 Feb 2022 07:46:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1643787977;
+ bh=EU8FY4hoqMKIUTQTA8fc+OQEccHtNTc7RoeXbnU6SfU=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=BuItHP8NJ3VXtkbWynb6fL58D8vI14aAtJOQqeabKt7MMEAa72AK+CFGNnQpytpqo
+ zFiUgmkWRZwrf+q28zKBsQLk7jmQrzQM181d1WJP8fgVRSKWoI6WrXEWZWglrKZWOV
+ RAMx+H0Gk2GcXw+CM1rNZ3vaWETts5L1TloD9L9nLWC78H2yPxqw+SNhznVBi4WqWd
+ R+pDLwhuRMSKW4SIG4WerhpMJaNTxq3V2dTOdfavMqJr3SmPknXwzrTMeme+5L4Ubv
+ d8oy6KhT/l9Usz/yfFoH4HdrAlEewUPvRtOpZ//S3/h2Lx5rp3Ti0GS5RfOEV494yi
+ C4WY1WoRqkgwQ==
+Received: by mail-oi1-f180.google.com with SMTP id e81so38222112oia.6;
+ Tue, 01 Feb 2022 23:46:17 -0800 (PST)
+X-Gm-Message-State: AOAM532yqOMPiGuhCEIF3ifyr2L2X/omTwp/Zwa8uLkAIyworjM6cPki
+ hQOywDKMKRYnUpGXbiifIHGfgUz1sxU7MQ+x1Kg=
+X-Google-Smtp-Source: ABdhPJzP2OU6GD384wgiKPZ/tJqOrgrct7yj4Y0w9RqPGWR+zWghE43jcZK7xTpWygr/3VJ2kMrKTBbSZAzGiVkKOW8=
+X-Received: by 2002:aca:f03:: with SMTP id 3mr3702970oip.102.1643787976652;
+ Tue, 01 Feb 2022 23:46:16 -0800 (PST)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 3f1a4fd7-cb7d-491b-2d06-08d9e609066f
-X-MS-TrafficTypeDiagnostic: SJ0PR10MB5566:EE_
-X-Microsoft-Antispam-PRVS: <SJ0PR10MB5566F482A910F778E55ACB158E279@SJ0PR10MB5566.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:7219;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Kru+q9jgB/OqRpjn2V56wEs/CyjPQleK6MdZL/folbutith1iX19zil6b3P1CciG5M7yE+9iDRANXa9PZc1/RsbxPZTPi8zzp59lgD4xCRlfPUjIlOnPlwgvCR++q4Cib/UrV3sNVT6QcZVc0eRh8spdcOk6XxXex3pYMD7LUWaC+BqrJXg6aDmckC+OK0KlNER0+Sdax/tgXev5JaRH1ouf2VVimF5VqSSYtrI2wXIw77f1UqRJNmZFA6KvX3+TRJMG626/BDxSVDXKMy0b0bVk7tbXCcDOnmkb+JrXNd7oBdcaV6QhR6425QgIhMRdD07docFmTle3gukDgjefbyYgU4gpTN5tSTZYUkMw+IYAYqrnyzF0i7YpjYLOqEdbUQ8PvyqePEpmcmIE7DhlB/mBcjP803U/ZpBZ3BjrWP1/YR81MzbgwikSNQ6Ua1Dvc+d6zCOsMiDzBpdZOTxuiFxfAKxKCPXIwIC5LEIFsHBprUsR5yKV7//6W0TRUXO+DK0xzFBAh7uNo0ACN0CxkRo1l2oyL36QeYHBzU3EWGUZb6VDXuqS33OijARFIhdnSnP6C/LrVo4Bz6GT75iSceaHnsxBk7pbYSVMkJ+eVo3BFmMBX5LTLRBLPpxckUOaPRWoEv03SAW9bDyuzRS+5zKk/m6M6qlS/do7TPDlBL9i0qLkOYOrjdienthz7v3boGxDJdD4tjN6nCfnCwFIwQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(7916004)(366004)(8936002)(316002)(54906003)(6486002)(5660300002)(8676002)(26005)(6666004)(4326008)(6916009)(66946007)(508600001)(33656002)(1076003)(66476007)(83380400001)(38100700002)(2906002)(66556008)(52116002)(6506007)(6512007)(44832011)(86362001)(38350700002)(186003)(9686003)(33716001)(7416002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?JGPgmdsd/mxk81YX754qRczb6J6oCDTuVQCKFrc1Q2FfIOGJ5pg0a01cme2b?=
- =?us-ascii?Q?KVi2wHrkgp6IIbzo7slDHucwc/ookoemYKtUfgzqHncZ8i79XivuFFYjaQVt?=
- =?us-ascii?Q?Y6NEbuaE4mRU18RBuVGlGgp/HwHU/OlT6h/IJxYOnQGztblnUpK4jPtVW04s?=
- =?us-ascii?Q?CKaW43/5FQkT0/qoBsulGc+oj0r3iOrT2KY6RWZ458buePwmyHJ32iUTWaGp?=
- =?us-ascii?Q?CWA3VQy6VT0cI8e6DwEhEVsnFPDzGa99uKwusR5Zzw6mJNCGm8i0aS8fbCco?=
- =?us-ascii?Q?gEXBsF16I+qC6EvOi6uKGxRQ7FaRclnR0Y9W4oL7ZSN+/1tw0tTtm/r4qQ79?=
- =?us-ascii?Q?F+lgD5x6jX9CX6qkMMnj3ebdcMRFGjgeiwy/QThwamXVyHK+iXHT1jvGVCEB?=
- =?us-ascii?Q?5dYXFpgwkmAi8Tb6lCD51h0lMi7s1yoojlI7TvVHCFqTj2RDCezEu1jMwQ2R?=
- =?us-ascii?Q?7pUQAZM6MfxWlEWsdZ5Vh4MacvH2UexqnWNPC0J8jILrjUdAxhybo44BQKag?=
- =?us-ascii?Q?1EFPSVYU1YKkhh7Zodf64+j8SnyB1ti9tREEQES9GrZ48JDx8GVd6CWc5DED?=
- =?us-ascii?Q?VTrcgzKx0EAW8+rI95wmGZK3DRNFKUyQXRHJhUD6YFOOPrx5VIk/l8L2rkMH?=
- =?us-ascii?Q?qPRr8iiwWtfd4b14q0/BfHx9a/BEpS7T/J33SuKDMbvUAtKEhEFbf05jErMi?=
- =?us-ascii?Q?22ahz+G+sdvJv1ovCrc87mltE+8AvTnTi7qkVmariVavh9u6LOdMYNjxuGqT?=
- =?us-ascii?Q?gehKAc1t6hKCq24FNFcbwn4ehWAo2QjOt6lR7YZ8Zun+8KgK0xYCEoputksZ?=
- =?us-ascii?Q?mLnkGZYwCHmirrCpw8htCLNZpFGsO7+usaQOdm6OMAarpWTX/xNxSFLwzfWz?=
- =?us-ascii?Q?VluAb6mPrx2s+ZUVno+vsIJungHKIdGg+Czuz7i3d7ceno4xWN0eQABKPmw6?=
- =?us-ascii?Q?jlirdf/PjQZUs+i18sjX5WI354JNwjUunQkvzoukQi6w44DOM5j2gbCq9Gej?=
- =?us-ascii?Q?edhs5Wd31MSHIE//EXHqXUOwEpaMF3P7S+XZP//EBeHmji3/HW+yWna/Z+8J?=
- =?us-ascii?Q?YQlEv/kSINrxmlDZdrI35iJkvl3n+WOvEMmiP/oxwvj9C/PfcItZ1Y4iieKx?=
- =?us-ascii?Q?bOeadUs8xV1ajC3Dh5ppbohTkFP/h2V+8xgNsTjIh+VDsG2yeJCQmE+ZwGkK?=
- =?us-ascii?Q?jh8+gZJewAdF72qC2oBhpkx6guoGHqcT9AX/6AqodkGe4ctUZVaN7xFdgvN3?=
- =?us-ascii?Q?LARm6W0Evazg8D9hUTkoONTSTGiuNDCkL57wXDkRNb5LYR+ulBWyhfDbdCzb?=
- =?us-ascii?Q?5H5HXhVABGqyCrYH/DxT1vH5c05BKiBIT4x43i/OQgCksutuw/DZIfHbDm8k?=
- =?us-ascii?Q?0Vy2hf9GIgfP4u9DaEMh2xleQ6tB9mX6n06MpIos7hb6d8xd+MW1NVAgNwRE?=
- =?us-ascii?Q?HDi5F1AW39aNsx6qVC45RPeg+shRNPDlfTkUX1hwSUxGebB3gdftYPGw29TP?=
- =?us-ascii?Q?vnA2wfbD7F7fzO0Iwt9DOkPm8B7lwoxcr6F/wAmyHv68b7SvXpAcC4V11ufa?=
- =?us-ascii?Q?+GOqU65Ci8z/oQjm/bhCj7t9Gl2OtSvVrrKrjmYpI15ZT3AbQfVyVABsaX1x?=
- =?us-ascii?Q?xwwzm2ugLN1GJDQeG6+FvTtBMN0IAZ37G2kpcVn4QDI7QfzDfC0013JB8f+u?=
- =?us-ascii?Q?CQyr9e+QvJzbJPGBuFAznnB1Vhg=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3f1a4fd7-cb7d-491b-2d06-08d9e609066f
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Feb 2022 05:01:09.4334 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Kc9p1NLwX9aM9LEeAgRL8VKMAm6JBSWe1lvuVxbOMO6tAltsn3nZGwABiZNFIM/o2zSJ2jAjGz0HCOmneXVeuDCSufu7vkYdJsVMoJzBTLc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR10MB5566
-X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10245
- signatures=673430
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- mlxlogscore=999
- adultscore=0 malwarescore=0 bulkscore=0 suspectscore=0 mlxscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2201110000 definitions=main-2202020023
-X-Proofpoint-GUID: hIukWpFr4lFud71Iu0CDu4m3p3_Q2GD0
-X-Proofpoint-ORIG-GUID: hIukWpFr4lFud71Iu0CDu4m3p3_Q2GD0
+References: <6fc4a81f-1a13-bff9-7b2e-d5bec382cb42@synopsys.com>
+ <9bab4777-3034-b789-fdf6-ca8d7e6a8c35@infradead.org>
+ <CAOMZO5Aa4WxuadfoFGwwyYyD4UGPm-E258xTWU3-ozp_hwG-7g@mail.gmail.com>
+ <d8981e2a-4f61-72bb-e5cc-bf4ded29c08a@synopsys.com>
+In-Reply-To: <d8981e2a-4f61-72bb-e5cc-bf4ded29c08a@synopsys.com>
+From: Arnd Bergmann <arnd@kernel.org>
+Date: Wed, 2 Feb 2022 08:46:00 +0100
+X-Gmail-Original-Message-ID: <CAK8P3a3ELrSC=KX6cr8UnP6kkJN0AXeAE4EG4oUY=Zz7gG_dgg@mail.gmail.com>
+Message-ID: <CAK8P3a3ELrSC=KX6cr8UnP6kkJN0AXeAE4EG4oUY=Zz7gG_dgg@mail.gmail.com>
+Subject: Re: Kconfig CONFIG_FB dependency regression
+To: Thinh Nguyen <Thinh.Nguyen@synopsys.com>
+Cc: Fabio Estevam <festevam@gmail.com>, Randy Dunlap <rdunlap@infradead.org>, 
+ Kees Cook <keescook@chromium.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ John Youn <John.Youn@synopsys.com>, Bing Yuan <Bing.Yuan@synopsys.com>, 
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220201_210319_195737_6F8BEC44 
-X-CRM114-Status: GOOD (  24.27  )
+X-CRM114-CacheID: sfid-20220201_234618_699954_87EF7BD9 
+X-CRM114-Status: GOOD (  24.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -173,36 +86,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jan 30, 2022 at 11:11:11PM +0000, Colin Ian King wrote:
-> The variable plane_fmt is being initialized with a value that is never
-> read, it is being re-assigned a new value on each iteration of a for
-> loop. The initialization is redundant and can be removed.
-> 
-> Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
-> ---
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-> index f332beb06d51..b334bbb2e682 100644
-> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-> @@ -681,7 +681,7 @@ static int mtk_jpeg_buf_prepare(struct vb2_buffer *vb)
->  {
->  	struct mtk_jpeg_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
->  	struct mtk_jpeg_q_data *q_data = NULL;
-> -	struct v4l2_plane_pix_format plane_fmt = {};
-> +	struct v4l2_plane_pix_format plane_fmt;
+On Wed, Feb 2, 2022 at 1:14 AM Thinh Nguyen <Thinh.Nguyen@synopsys.com> wrote:
+> Fabio Estevam wrote:
+> > On Tue, Feb 1, 2022 at 8:06 PM Randy Dunlap <rdunlap@infradead.org> wrote:
+> >>
+> >> On 2/1/22 15:01, Thinh Nguyen wrote:
+> >>> Hi,
+> >>>
+> >>> One of our test setups is unable to boot (stuck at initramfs). Git
+> >>> bisection points to the commit below:
+> >>>
+> >>> f611b1e7624c ("drm: Avoid circular dependencies for CONFIG_FB")
+> >>>
+> >>> Reverting this patch resolves the issue. This issue persists in mainline
+> >>> also. Unfortunately there isn't any meaningful log. Hopefully someone
+> >>> can give some insight as to what could be the issue and revert/fix this
+> >>> issue.
+> >>
+> >> Hi,
+> >> Did you enable DRM_FBDEV_EMULATION?
+>
+> I did not enable it.
+>
+> >> Please provide the failing .config file.
+> >
+> > Does selecting CONFIG_FB=y help?
+> >
+>
+> On the config that has the issue, this isn't set. After reverting the
+> commit above, this was set. Maybe this is what's needed? I need to test it.
 
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+CONFIG_FB should not normally be needed for booting, so unless
+you have a graphical application in your initramfs that requires the /dev/fb0
+device to work, it is not supposed to make a difference.
 
-This one is fine, but keep in mind that the other reason people do = {}
-assignments is to zero out struct holes.  The assignment inside the loop
-will not do that.
+Are there any other differences in your .config before and after the patch?
+It's possible that you use some other driver that in turn depends on
+CONFIG_FB. Does your machine have any graphical output device?
+If yes, which driver do you use?
 
-regards,
-dan carpenter
+You may also want to make sure that you have 9d6366e743f3 ("drm:
+fb_helper: improve CONFIG_FB dependency") in your kernel, which
+fixes a minor problem with my original patch.
 
+         Arnd
 
 _______________________________________________
 Linux-mediatek mailing list
