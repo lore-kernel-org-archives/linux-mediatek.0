@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57B5EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Feb 2022 14:14:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6432BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Feb 2022 14:15:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UwiWLQfEXrd5Bu6Gu6fCeZdjdWrQUrBi3e8Jei10yLI=; b=BD+naIDn6Tmkjj
-	UzIThXdeRp1kO3v2fJ0a7YqgHaQN18BGl/Eil6PwFknVgYGAQXIkdyB3RAIJbjPxZkbb6X8VMGyjS
-	L6hsDaXUCJqwXIwFHS1cd/K/uRbE0kqhar8iBRYr5qI0OnIW9OsNMr7H379YRssHjsXeiKAtuc8Xn
-	uhHZguD2IdRd1uKi+zS5M0040ENh/nAuTZCwZ3XYIBLv9InUK9E5fzt0WJsiLWqUQZrRDN6vflT5l
-	dLJHZAyBRdQqdLa/Tn9gU/EZ0v0HZzzxpuHKp0gBKJbVx2oQ8UfYkIkQIoTHBVF6yiufDDs1EG1gQ
-	H7tGbgR7fGsuRmFGyOZg==;
+	List-Owner; bh=Hczr/NYz11//VHIlOcRSNpn7+ZOkeyFVNUgYTYvrSKw=; b=R4+PkSmaSn21lv
+	Z5O2reCD9tj6DczcoXzfmCJP1cIz9ykwnAJnyRAKAAqyOCRDRNdRxegZKlSNpXOZ6UHSTL++eYmaX
+	qgyN1/tBUH3I6d11yJrNnYkcEQTbAmwQIyBNJpNA4WvJPljsc4VUoRFMW3WwXtS3HwQr5sJfQHnvn
+	695y2IkRX4EKMHEoHCTZgXc9rcrV2kl3UoRs7rvEGKSXqMQMh7Pay4yXR94BRhgtRXgttwBOIBghE
+	2SNKNQxzGqeV7V5EGEWK++DNJT29JE4XxgP0aZatTI8ZQ0IWfXdj1ao8CdvhpemoxKh8s6tIaFTRj
+	Khd7juKjto5jOdY0w8PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nFGOw-00Fb4E-7G; Wed, 02 Feb 2022 14:14:26 +0000
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+	id 1nFGQ6-00FbYT-Ni; Wed, 02 Feb 2022 14:15:38 +0000
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nFG1t-00FPXj-6t
- for linux-mediatek@lists.infradead.org; Wed, 02 Feb 2022 13:50:39 +0000
-Received: by mail-pf1-x435.google.com with SMTP id a19so12874924pfx.4
- for <linux-mediatek@lists.infradead.org>; Wed, 02 Feb 2022 05:50:37 -0800 (PST)
+ id 1nFG1v-00FPZM-92
+ for linux-mediatek@lists.infradead.org; Wed, 02 Feb 2022 13:50:41 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id f8so18346800pgf.8
+ for <linux-mediatek@lists.infradead.org>; Wed, 02 Feb 2022 05:50:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=TkaavcwwSXTQYMjq565kI3sdhI7vHLgYjSyu32Ij/SU=;
- b=K6e5WAOoxDzAZqzS5QW9srT4xlvXXSy1liamjvDMGpDzU5SsClz/NgwM/EbE5xEeWe
- cHo25PYHAH3uYLhHf+0Eqy0/RF2yYUdBl3xNrzGf4ENi0QYlf2NVHUq+lAuQy0lEe93p
- bJY3ZPK2e+7dvKjyq91nH52155kRLQI0DKANI=
+ bh=ijN/BZfheyHW/Ftdh2OzE64JyIBXkLbGIov7Fg65t6I=;
+ b=cpXbUfJhQei5E5o6agVsB48RWnK8Gjl5mHtXN6W0xdVogGo4zUtm1cjc6lDp4Y8N2F
+ D9c0Fa5p7wFl6/Sq6QamXEN43Clw5tRLmpyzFsUjXFPuj0CH9Qvj8XpJkcLt8+5o4SuZ
+ VFCc+C+arBcsn9ruW8gtCKU6rYHJXtlkElpLE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=TkaavcwwSXTQYMjq565kI3sdhI7vHLgYjSyu32Ij/SU=;
- b=xz98yWH6o5b1KQQMoF8eOWMeEb3nJnJfUujygf9BxwBS9dpz6blunIZc/Pcn4ecQpw
- PZ7ky1cn4diRc/Lf65AZXyxPkUzQQ3kTlgPYIhhwNOY5TRANhyelAEploAUgKF+2ROxj
- m74TzXJLlWaty9Lg09a+RfB7cCP2Z+UCyhGeyzWSayOkhkBIDVVJkK+oDpw5vA6mkqPJ
- Lr8ACNIdmXbYeE7+cCfOmflN/jQ+Gdc7+H0DOia4iyLga0BEImS/FN/pEq6pLcLeTqwz
- Mq+1AqSg1CFqdVPqZoTW8ZahCdb+wBnPVdhlehguSbFg3rHIw56vbntixaTXueAyiBMq
- jX/g==
-X-Gm-Message-State: AOAM531CI78hT6b/AZUd5e2kpXmxTzOjTRJuG2alOP8QyLW2KRojc6VP
- mRZ50EJkU1idfqV0SMyBxUFquw==
-X-Google-Smtp-Source: ABdhPJwGbOa1EL0uMe/CmGhPSvMaCjBAcmSaT/Chf4TJ5lvBozpl+Bpyy18AGf2k7ZUaZr60LVmGEg==
-X-Received: by 2002:a05:6a00:158e:: with SMTP id
- u14mr21751032pfk.38.1643809836688; 
- Wed, 02 Feb 2022 05:50:36 -0800 (PST)
+ bh=ijN/BZfheyHW/Ftdh2OzE64JyIBXkLbGIov7Fg65t6I=;
+ b=IE2BoGJ0FTnaLIRuEh/SuJs4eIqUWTeVHki3GqupAXoNCS8HFbd20l7z2yx088x+OJ
+ 47Q0P10wkuMiKK4yCVt/DNB9Mg37QyVLprggGaFkYSEb+2lgdlGQLlDKGYC5M4qCgGmp
+ PpUmdCrO/uQXBNazApvNeIWjiloZ8fyBWJwSXv9fjiu2r7q30sxsejQB03IpQtnZ8nF+
+ hCo+Orhwte3IB6APQ72V6mY617zycmSjPocA6BocAXQvWuwfAVwfm7to9kSzr/FKOzw3
+ eZGbB2ccMGE955fnV5+Ggc7iVwrijNiEaqcUVx2mJuAj/28RTgdhWcW6QNDVHvrOA9f3
+ rpZA==
+X-Gm-Message-State: AOAM532e3LrQ0nNJOivzTUejzr3RgXYWvZSSPfU+sd2/EvknbNBn4wBP
+ TmleHxN4z4bYw+VGDQsnSKmLVw==
+X-Google-Smtp-Source: ABdhPJxZqK+D6Acx9WwhmplzUWeUHcMgIvnvta9wUiIEi+QRtZPy09eepK41+WE9UKByjkZmyMZj8A==
+X-Received: by 2002:a05:6a00:841:: with SMTP id
+ q1mr8269709pfk.21.1643809838673; 
+ Wed, 02 Feb 2022 05:50:38 -0800 (PST)
 Received: from wenstp920.tpe.corp.google.com
  ([2401:fa00:1:10:78b5:214c:c81:b9aa])
- by smtp.gmail.com with ESMTPSA id w19sm27335684pfu.47.2022.02.02.05.50.34
+ by smtp.gmail.com with ESMTPSA id w19sm27335684pfu.47.2022.02.02.05.50.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Feb 2022 05:50:36 -0800 (PST)
+ Wed, 02 Feb 2022 05:50:38 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Stephen Boyd <sboyd@kernel.org>,
  Michael Turquette <mturquette@baylibre.com>,
@@ -65,17 +65,16 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
  Miles Chen <miles.chen@mediatek.com>, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v2 29/31] clk: mediatek: mt8195: Implement error handling in
- probe functions
-Date: Wed,  2 Feb 2022 21:48:32 +0800
-Message-Id: <20220202134834.690675-30-wenst@chromium.org>
+Subject: [PATCH v2 30/31] clk: mediatek: mt8195: Implement remove functions
+Date: Wed,  2 Feb 2022 21:48:33 +0800
+Message-Id: <20220202134834.690675-31-wenst@chromium.org>
 X-Mailer: git-send-email 2.35.0.rc2.247.g8bbb082509-goog
 In-Reply-To: <20220202134834.690675-1-wenst@chromium.org>
 References: <20220202134834.690675-1-wenst@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220202_055037_311764_D1B1CB3C 
-X-CRM114-Status: GOOD (  14.05  )
+X-CRM114-CacheID: sfid-20220202_055039_342932_57267C85 
+X-CRM114-Status: GOOD (  15.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,186 +92,201 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Until now the mediatek clk driver library did not have any way to
-unregister clks, and so all drivers did not do proper cleanup in
-their error paths.
+unregister clks, and so none of the drivers implemented remove
+functions.
 
 Now that the library does have APIs to unregister clks, use them
-in the error path of the probe functions for the mt8195 clk drivers
-to do proper cleanup.
+to implement remove functions for the mt8195 clk drivers.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mt8195-apmixedsys.c | 13 ++++--
- drivers/clk/mediatek/clk-mt8195-apusys_pll.c | 11 ++++-
- drivers/clk/mediatek/clk-mt8195-topckgen.c   | 49 +++++++++++++++-----
- drivers/clk/mediatek/clk-mt8195-vdo0.c       |  4 +-
- drivers/clk/mediatek/clk-mt8195-vdo1.c       |  4 +-
- 5 files changed, 63 insertions(+), 18 deletions(-)
+ drivers/clk/mediatek/clk-mt8195-apmixedsys.c | 16 ++++++++++++++++
+ drivers/clk/mediatek/clk-mt8195-apusys_pll.c | 13 +++++++++++++
+ drivers/clk/mediatek/clk-mt8195-topckgen.c   | 20 ++++++++++++++++++++
+ drivers/clk/mediatek/clk-mt8195-vdo0.c       | 16 ++++++++++++++++
+ drivers/clk/mediatek/clk-mt8195-vdo1.c       | 16 ++++++++++++++++
+ 5 files changed, 81 insertions(+)
 
 diff --git a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
-index 5b1b7dc447eb..af8d80f25f30 100644
+index af8d80f25f30..29cac3cf5f53 100644
 --- a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
 +++ b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
-@@ -120,17 +120,24 @@ static int clk_mt8195_apmixed_probe(struct platform_device *pdev)
- 	if (!clk_data)
- 		return -ENOMEM;
- 
--	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
--	r = mtk_clk_register_gates(node, apmixed_clks, ARRAY_SIZE(apmixed_clks), clk_data);
-+	r = mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
+@@ -132,6 +132,8 @@ static int clk_mt8195_apmixed_probe(struct platform_device *pdev)
  	if (r)
- 		goto free_apmixed_data;
+ 		goto unregister_gates;
  
-+	r = mtk_clk_register_gates(node, apmixed_clks, ARRAY_SIZE(apmixed_clks), clk_data);
-+	if (r)
-+		goto unregister_plls;
-+
- 	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
- 	if (r)
--		goto free_apmixed_data;
-+		goto unregister_gates;
- 
- 	return r;
- 
-+unregister_gates:
-+	mtk_clk_register_gates(node, apmixed_clks, ARRAY_SIZE(apmixed_clks), clk_data);
-+unregister_plls:
-+	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
- free_apmixed_data:
- 	mtk_free_clk_data(clk_data);
- 	return r;
-diff --git a/drivers/clk/mediatek/clk-mt8195-apusys_pll.c b/drivers/clk/mediatek/clk-mt8195-apusys_pll.c
-index db449ff877d7..1fff6f3d2dc7 100644
---- a/drivers/clk/mediatek/clk-mt8195-apusys_pll.c
-+++ b/drivers/clk/mediatek/clk-mt8195-apusys_pll.c
-@@ -66,13 +66,20 @@ static int clk_mt8195_apusys_pll_probe(struct platform_device *pdev)
- 	if (!clk_data)
- 		return -ENOMEM;
- 
--	mtk_clk_register_plls(node, apusys_plls, ARRAY_SIZE(apusys_plls), clk_data);
--	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-+	r = mtk_clk_register_plls(node, apusys_plls, ARRAY_SIZE(apusys_plls), clk_data);
- 	if (r)
- 		goto free_apusys_pll_data;
- 
-+	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-+	if (r)
-+		goto unregister_plls;
-+
 +	platform_set_drvdata(pdev, clk_data);
 +
  	return r;
  
-+unregister_plls:
-+	mtk_clk_unregister_plls(apusys_plls, ARRAY_SIZE(apusys_plls), clk_data);
- free_apusys_pll_data:
- 	mtk_free_clk_data(clk_data);
+ unregister_gates:
+@@ -143,8 +145,22 @@ static int clk_mt8195_apmixed_probe(struct platform_device *pdev)
  	return r;
+ }
+ 
++static int clk_mt8195_apmixed_remove(struct platform_device *pdev)
++{
++	struct device_node *node = pdev->dev.of_node;
++	struct clk_onecell_data *clk_data = platform_get_drvdata(pdev);
++
++	of_clk_del_provider(node);
++	mtk_clk_unregister_gates(apmixed_clks, ARRAY_SIZE(apmixed_clks), clk_data);
++	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
++	mtk_free_clk_data(clk_data);
++
++	return 0;
++}
++
+ static struct platform_driver clk_mt8195_apmixed_drv = {
+ 	.probe = clk_mt8195_apmixed_probe,
++	.remove = clk_mt8195_apmixed_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-apmixed",
+ 		.of_match_table = of_match_clk_mt8195_apmixed,
+diff --git a/drivers/clk/mediatek/clk-mt8195-apusys_pll.c b/drivers/clk/mediatek/clk-mt8195-apusys_pll.c
+index 1fff6f3d2dc7..8cd88dfc3283 100644
+--- a/drivers/clk/mediatek/clk-mt8195-apusys_pll.c
++++ b/drivers/clk/mediatek/clk-mt8195-apusys_pll.c
+@@ -85,6 +85,18 @@ static int clk_mt8195_apusys_pll_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
++static int clk_mt8195_apusys_pll_remove(struct platform_device *pdev)
++{
++	struct clk_onecell_data *clk_data = platform_get_drvdata(pdev);
++	struct device_node *node = pdev->dev.of_node;
++
++	of_clk_del_provider(node);
++	mtk_clk_unregister_plls(apusys_plls, ARRAY_SIZE(apusys_plls), clk_data);
++	mtk_free_clk_data(clk_data);
++
++	return 0;
++}
++
+ static const struct of_device_id of_match_clk_mt8195_apusys_pll[] = {
+ 	{ .compatible = "mediatek,mt8195-apusys_pll", },
+ 	{}
+@@ -92,6 +104,7 @@ static const struct of_device_id of_match_clk_mt8195_apusys_pll[] = {
+ 
+ static struct platform_driver clk_mt8195_apusys_pll_drv = {
+ 	.probe = clk_mt8195_apusys_pll_probe,
++	.remove = clk_mt8195_apusys_pll_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-apusys_pll",
+ 		.of_match_table = of_match_clk_mt8195_apusys_pll,
 diff --git a/drivers/clk/mediatek/clk-mt8195-topckgen.c b/drivers/clk/mediatek/clk-mt8195-topckgen.c
-index 3e2aba9c40bb..3631f49a5e5a 100644
+index 3631f49a5e5a..b602fcd7f1d1 100644
 --- a/drivers/clk/mediatek/clk-mt8195-topckgen.c
 +++ b/drivers/clk/mediatek/clk-mt8195-topckgen.c
-@@ -1239,25 +1239,52 @@ static int clk_mt8195_topck_probe(struct platform_device *pdev)
- 		goto free_top_data;
- 	}
- 
--	mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks),
--				    top_clk_data);
--	mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), top_clk_data);
--	mtk_clk_register_muxes(top_mtk_muxes, ARRAY_SIZE(top_mtk_muxes), node,
--			       &mt8195_clk_lock, top_clk_data);
--	mtk_clk_register_composites(top_muxes, ARRAY_SIZE(top_muxes), base,
--				    &mt8195_clk_lock, top_clk_data);
--	mtk_clk_register_composites(top_adj_divs, ARRAY_SIZE(top_adj_divs), base,
--				    &mt8195_clk_lock, top_clk_data);
--	r = mtk_clk_register_gates(node, top_clks, ARRAY_SIZE(top_clks), top_clk_data);
-+	r = mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks),
-+					top_clk_data);
+@@ -1271,6 +1271,8 @@ static int clk_mt8195_topck_probe(struct platform_device *pdev)
  	if (r)
- 		goto free_top_data;
+ 		goto unregister_gates;
  
-+	r = mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), top_clk_data);
-+	if (r)
-+		goto unregister_fixed_clks;
++	platform_set_drvdata(pdev, top_clk_data);
 +
-+	r = mtk_clk_register_muxes(top_mtk_muxes, ARRAY_SIZE(top_mtk_muxes), node,
-+				   &mt8195_clk_lock, top_clk_data);
-+	if (r)
-+		goto unregister_factors;
-+
-+	r = mtk_clk_register_composites(top_muxes, ARRAY_SIZE(top_muxes), base,
-+					&mt8195_clk_lock, top_clk_data);
-+	if (r)
-+		goto unregister_muxes;
-+
-+	r = mtk_clk_register_composites(top_adj_divs, ARRAY_SIZE(top_adj_divs), base,
-+					&mt8195_clk_lock, top_clk_data);
-+	if (r)
-+		goto unregister_composite_muxes;
-+
-+	r = mtk_clk_register_gates(node, top_clks, ARRAY_SIZE(top_clks), top_clk_data);
-+	if (r)
-+		goto unregister_composite_divs;
-+
- 	r = of_clk_add_provider(node, of_clk_src_onecell_get, top_clk_data);
- 	if (r)
--		goto free_top_data;
-+		goto unregister_gates;
- 
  	return r;
  
-+unregister_gates:
+ unregister_gates:
+@@ -1290,8 +1292,26 @@ static int clk_mt8195_topck_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
++static int clk_mt8195_topck_remove(struct platform_device *pdev)
++{
++	struct clk_onecell_data *top_clk_data = platform_get_drvdata(pdev);
++	struct device_node *node = pdev->dev.of_node;
++
++	of_clk_del_provider(node);
 +	mtk_clk_unregister_gates(top_clks, ARRAY_SIZE(top_clks), top_clk_data);
-+unregister_composite_divs:
 +	mtk_clk_unregister_composites(top_adj_divs, ARRAY_SIZE(top_adj_divs), top_clk_data);
-+unregister_composite_muxes:
 +	mtk_clk_unregister_composites(top_muxes, ARRAY_SIZE(top_muxes), top_clk_data);
-+unregister_muxes:
 +	mtk_clk_unregister_muxes(top_mtk_muxes, ARRAY_SIZE(top_mtk_muxes), top_clk_data);
-+unregister_factors:
 +	mtk_clk_unregister_factors(top_divs, ARRAY_SIZE(top_divs), top_clk_data);
-+unregister_fixed_clks:
 +	mtk_clk_unregister_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks), top_clk_data);
- free_top_data:
- 	mtk_free_clk_data(top_clk_data);
- 	return r;
++	mtk_free_clk_data(top_clk_data);
++
++	return 0;
++}
++
+ static struct platform_driver clk_mt8195_topck_drv = {
+ 	.probe = clk_mt8195_topck_probe,
++	.remove = clk_mt8195_topck_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-topck",
+ 		.of_match_table = of_match_clk_mt8195_topck,
 diff --git a/drivers/clk/mediatek/clk-mt8195-vdo0.c b/drivers/clk/mediatek/clk-mt8195-vdo0.c
-index f7ff7618c714..af34eb564b1d 100644
+index af34eb564b1d..3bc7ed19d550 100644
 --- a/drivers/clk/mediatek/clk-mt8195-vdo0.c
 +++ b/drivers/clk/mediatek/clk-mt8195-vdo0.c
-@@ -105,10 +105,12 @@ static int clk_mt8195_vdo0_probe(struct platform_device *pdev)
- 
- 	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+@@ -107,6 +107,8 @@ static int clk_mt8195_vdo0_probe(struct platform_device *pdev)
  	if (r)
--		goto free_vdo0_data;
-+		goto unregister_gates;
+ 		goto unregister_gates;
  
++	platform_set_drvdata(pdev, clk_data);
++
  	return r;
  
-+unregister_gates:
+ unregister_gates:
+@@ -116,8 +118,22 @@ static int clk_mt8195_vdo0_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
++static int clk_mt8195_vdo0_remove(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct device_node *node = dev->parent->of_node;
++	struct clk_onecell_data *clk_data = platform_get_drvdata(pdev);
++
++	of_clk_del_provider(node);
 +	mtk_clk_unregister_gates(vdo0_clks, ARRAY_SIZE(vdo0_clks), clk_data);
- free_vdo0_data:
- 	mtk_free_clk_data(clk_data);
- 	return r;
++	mtk_free_clk_data(clk_data);
++
++	return 0;
++}
++
+ static struct platform_driver clk_mt8195_vdo0_drv = {
+ 	.probe = clk_mt8195_vdo0_probe,
++	.remove = clk_mt8195_vdo0_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-vdo0",
+ 	},
 diff --git a/drivers/clk/mediatek/clk-mt8195-vdo1.c b/drivers/clk/mediatek/clk-mt8195-vdo1.c
-index 03df8eae8838..6b502bbc730c 100644
+index 6b502bbc730c..90c738a85ff1 100644
 --- a/drivers/clk/mediatek/clk-mt8195-vdo1.c
 +++ b/drivers/clk/mediatek/clk-mt8195-vdo1.c
-@@ -122,10 +122,12 @@ static int clk_mt8195_vdo1_probe(struct platform_device *pdev)
- 
- 	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+@@ -124,6 +124,8 @@ static int clk_mt8195_vdo1_probe(struct platform_device *pdev)
  	if (r)
--		goto free_vdo1_data;
-+		goto unregister_gates;
+ 		goto unregister_gates;
  
++	platform_set_drvdata(pdev, clk_data);
++
  	return r;
  
-+unregister_gates:
+ unregister_gates:
+@@ -133,8 +135,22 @@ static int clk_mt8195_vdo1_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
++static int clk_mt8195_vdo1_remove(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct device_node *node = dev->parent->of_node;
++	struct clk_onecell_data *clk_data = platform_get_drvdata(pdev);
++
++	of_clk_del_provider(node);
 +	mtk_clk_unregister_gates(vdo1_clks, ARRAY_SIZE(vdo1_clks), clk_data);
- free_vdo1_data:
- 	mtk_free_clk_data(clk_data);
- 	return r;
++	mtk_free_clk_data(clk_data);
++
++	return 0;
++}
++
+ static struct platform_driver clk_mt8195_vdo1_drv = {
+ 	.probe = clk_mt8195_vdo1_probe,
++	.remove = clk_mt8195_vdo1_remove,
+ 	.driver = {
+ 		.name = "clk-mt8195-vdo1",
+ 	},
 -- 
 2.35.0.rc2.247.g8bbb082509-goog
 
