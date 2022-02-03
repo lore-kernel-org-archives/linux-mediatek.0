@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DB03C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Feb 2022 10:03:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C623CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Feb 2022 10:04:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aVJW4ARHzhOSVYsbC2Xbvxk+Qjfnb3f8OhDA6vkAbJg=; b=kmMW8BIFlcKDPx
-	X3IlVFKRxbLzGWeICnDCrYWhnNNihsG+g0Sql8tCeM8eQF8w2fk0jrc0Aj8C4Q1Odn/iFzGnPnA74
-	Wy0Ki+82fWA79bsfzH3leHNTHi16yC6igSY/j1pz71Gf2HUvkxTWOnXKiVFDyf7wfHbQ7LjfOcgb+
-	vzHywFEyKqmFFfnkPKYOGWUUrU4Yy4dEpSoVAD68tASikWwosR7n9ntieMNd82SZrVPqU8zdM7gm+
-	jsKrP9NAAPTY8McpSG+LdXF9utBrHV41zRecTVEXLStCjISIyy9ePoUTWuUTb6Ey6aBIYT30H8E+7
-	8uEaW7cxsZ+eKQu7Z5tw==;
+	List-Owner; bh=LRZbYPJeKUp/VvYQQQYXuqCv9mcyXKRTH9C58F8/mc0=; b=spKWvItvCfcvao
+	5h05165nvTTzYdAYDu7LmL5NlN3XDADGE571vxmASKrpwBuB1qlng8nwY4NQ3IM0TneR8ntcKkJUB
+	zCa8K8NhclXr96hEc5HteFs9xFNDV0bJaqiUMtEhZxNRCQmFK/6Czj6ZEeftguva6slw1xzUcVNJT
+	3KiujIBwEW+XeBxNgjlCkrYyAhPENp1HWqVQ7r7rUz6TQE+WzVtRL9KuqX/RJEN3K0a9dK/KT2f7Y
+	wp/DEJl2cS4rWOBmyb3SOjw9ZFt2IuObIofqROuU7SLq3AJV1g5o8HRfuD2U0qbyy+pOpXO4ukmBF
+	lglqET0sKx+KfvopvQ5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nFYxU-000g5c-U2; Thu, 03 Feb 2022 10:03:20 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nFYyZ-000gbn-9I; Thu, 03 Feb 2022 10:04:27 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nFYlT-000aGJ-Jh; Thu, 03 Feb 2022 09:51:02 +0000
+ id 1nFYld-000aLC-F2; Thu, 03 Feb 2022 09:51:07 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 0464C1F45314
+ (Authenticated sender: kholk11) with ESMTPSA id B396A1F45310
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1643881853;
- bh=ipkRReMbtwAu7xVakE/HQLluSawAEt4oVRymv8x74FU=;
+ s=mail; t=1643881864;
+ bh=JTkyG0VtgzUZdehkshEy/dIoTYtvqxNPnBCvRzk9B/k=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=CmS4rRqAT167M1QT73NOFMcpgmpS9Kp/FtLNs/g+G/Wb7BvdYpB1s/j5qZPOoL4a5
- 51OCVb74DUHNH4GTCeQY5XqGcrVZKCnsLZdG9NEmV8kN0N0JkhT7H8CNBTws9q5JWH
- IYbib783BsUjE2mZ4LwiEJVLCx4pFLmNmNRD+jFHqNWz7DAqvGtzW/KnOIqmW8VaNh
- ASNW/Ue6Jqn5nQ24u6Gyd7hNTWZ6OFDhflaXRmyPUuHtw2qpo81MShoTLfIEpd0+Qo
- 4NNICSOFmsbBDVNQ+Jq2bBhKgsBMMGZKNQxmQfLLkBHmhQ1MMA1MdSQYu8/wXBrG2z
- hoH8ELUFZs5ww==
-Message-ID: <0465047f-c4b9-d608-5c8e-c520d0ebcc6f@collabora.com>
-Date: Thu, 3 Feb 2022 10:50:50 +0100
+ b=HDCL75P7N/5OuXBAnaeW7nXLNA+2OxceD5nmX/0qsOZDX3sbiZ2hVufjWeUUOT+2d
+ bNdDLda7DZb5FzFVSrUYawX4sc72U6uUpdaOLJjX7iWpxnUyQrCZuczGEcf6oM2cto
+ A7WDo3Q6A+Hf6a8CfudDGPXIewUWBvVvEeAdtBco84L1uVbIHuz0bGLgiiG6/o98X6
+ dRGDIP54lc07XgHlBa6jh1a8x/R9NksW2RXDos5bcjfFInIUtW+VOf/d4svx5CvxFD
+ MlNW7XJdRxvQ90nWPE5kjxb28/eYXS36DOcd5wqtUXSHtca+eWzV8u3enCVYXvVjo1
+ Y/XbsstPPkOFw==
+Message-ID: <66fdf2c7-e723-beb4-e9a5-9b87998d6eeb@collabora.com>
+Date: Thu, 3 Feb 2022 10:51:01 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
-Subject: Re: [PATCH v2 05/31] clk: mediatek: gate: Clean up included headers
+Subject: Re: [PATCH v2 04/31] clk: mediatek: gate: Implement unregister API
 Content-Language: en-US
 To: Chen-Yu Tsai <wenst@chromium.org>, Stephen Boyd <sboyd@kernel.org>,
  Michael Turquette <mturquette@baylibre.com>,
@@ -51,12 +51,12 @@ Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <20220202134834.690675-1-wenst@chromium.org>
- <20220202134834.690675-6-wenst@chromium.org>
+ <20220202134834.690675-5-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220202134834.690675-6-wenst@chromium.org>
+In-Reply-To: <20220202134834.690675-5-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220203_015055_850086_2367F849 
-X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-CacheID: sfid-20220203_015105_686703_CCDB2249 
+X-CRM114-Status: UNSURE (   9.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,23 +75,26 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 02/02/22 14:48, Chen-Yu Tsai ha scritto:
-> Some included headers aren't actually used anywhere, while other headers
-> with the declaration of functions and structures aren't directly
-> included.
+> The gate clk type within the MediaTek clk driver library only has a
+> register function, and no corresponding unregister function. This
+> means there is no way for its users to properly implement cleanup
+> and removal.
 > 
-> Get rid of the unused ones, and add the ones that should be included
-> directly.
-> 
-> On the header side, replace headers that are included purely for data
-> structure definitions with forward declarations. This decreases the
-> amount of preprocessing and compilation effort required for each
-> inclusion.
+> Add a matching unregister function for the gate type clk.
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 > Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
+
+-- 
+AngeloGioacchino Del Regno
+Software Engineer
+
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
+Registered in England & Wales, no. 5513718
 
 _______________________________________________
 Linux-mediatek mailing list
