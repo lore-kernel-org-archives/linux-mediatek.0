@@ -4,44 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5A70C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Feb 2022 10:01:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B34DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Feb 2022 10:02:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WFjRdbQtf012ueFyp4MAZwE10f0H/WuCpVm4vI1lJmA=; b=zIhwlfzZb6GpLj
-	Q+B6o7O+Ui3qNZG3biGFU8kCCCa1PAiD1EhHpwxALMgc+okQuGJa98x5pkAdxWlCtbUHw/+MRpXpq
-	hYxYy4SjhzE+w6qsXBSTcgDT9Gj+bfBlyUCqezyF+kOabSZTZeozkzGvRjSZuljNLMVBsWDunHZRJ
-	AYLfZrzFcGCQ5YiELFLojv9OGSxDLsbCVenoE9J21s1Ba4RXBWG/7oUrsugTIMc8rHsEfAVaym8rf
-	M1uqqFtIwbpXXEJEdVfPX/ltEiG6Ad3lInUbLHDufCpE578n9urBI4U8tomTZQkIsMVsd9nXHewlG
-	od3A6bK8HcA/hlOmBo7w==;
+	List-Owner; bh=si8qfOa0/9IC6B1TfdHwt9ETd+dv9DbwW7TOSDqL7Eg=; b=jfXU/5+uS4Kcf1
+	09eS3DTBwZE6Vlk2bpjJ3uLcM6ePeIW9Ch7W8pwWtnOdo9W04UWGNNtGSMEJWbJXGUIZPDY4XspVW
+	9c+sN7+9FQ8eoAjf/DKJh65uMRK3amHmN7f0u1OTkJ3+CNlmf6MOr6OLXwu6jeOlo2PoB0yC30N3f
+	j+fOMhDhRAzpQg51nf4pnRxmE5lFaUoUFfIPwJnZ1hy9wF56va6EW8dhopeoHNlKFc1ZgzSfpYozp
+	93A7neQEAENlsLggxZkKNXODvaU4QgTVFrZ6J4KqqPg4eRkKmYqPIA1UELoNPZ+KfqVA8P2L2yK6w
+	IbDWAYc8UXBzPz6pXebA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nFYw0-000fM0-P7; Thu, 03 Feb 2022 10:01:48 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nFYwt-000fmV-A1; Thu, 03 Feb 2022 10:02:43 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nFYlQ-000aEb-B3; Thu, 03 Feb 2022 09:50:56 +0000
+ id 1nFYlR-000aFE-3z; Thu, 03 Feb 2022 09:50:58 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 3B78B1F45312
+ (Authenticated sender: kholk11) with ESMTPSA id 5A9441F45313
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
  s=mail; t=1643881851;
- bh=UslgxD+QUohWXG2QM5oeqgf7yzlI6Zmso8kNly/Sz/w=;
+ bh=HgNfql0xDMRNN68LGiYkvxm0vW+TozB6ZDFhQ+Q/MmI=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=mraiHQjxioYAQh7GhNkuMx01FlcRjUM5f3UhMbDIKfm2YSjRAgarnPNhJBlw8obXi
- Jl/fu2mFPYGzi8KAQIC9eEcUKPLEEq2I3y+tWLN7i8O9GGUTLmA5oauDbfFZaOHxPH
- o3NE69eAqrbrm1YYT9Qcj1LWiGwj2zttX205tRN8P0ymPHjXHVNpwkG/HW//L2vIeU
- oZwcAH+4OE/EQbUAfBbSq9Xw2pva0M3u5JLMYCsMmkG8DJrJ4Lgewlx5YX+9EYftms
- lM7mDBhdNKcdgtcfYvB3+tYAiM/gT1mc3VjfRI81d4X/dUM4do4z9JOdfw2ZT61XAo
- haFC+qtr8LmVQ==
-Message-ID: <4587cdf3-a906-38cf-cedc-82b6795fc14f@collabora.com>
-Date: Thu, 3 Feb 2022 10:50:48 +0100
+ b=WBPnKS5GhtsUKhfJnBNLSJ2g0Rn1lA0Jq+OO9FA/tHV6Y7cVq4bBE8JEP+3yHXneX
+ pRqznUvF5mhocQXKmxpT5luPZaW/7pDTOj8Hk2lm5rQIeJQxiZ/HH3eShgpxNsUldp
+ RHeNKyU2WAMRt6+IDUVIIsHTjDoj7ZD8BJBeoIyMJVnI0wHFZy3TCbKGWkLmAaCHs6
+ KrffmPmZYJyojT/NCmO/fICX8t/vQCkfGLg2JKMHH1brFuFUPqF7qL4J23V7X/Lt8f
+ FCzbdfkehpxfpS+aUArL22gm+9rZ+gRpNDMWCLt9zUTFaWf+hKnOOO8lHwC/aPfZoK
+ DucntcCYtDQGg==
+Message-ID: <7fc5e936-29e2-2cbf-623e-e515de5c5e9d@collabora.com>
+Date: Thu, 3 Feb 2022 10:50:49 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
-Subject: Re: [PATCH v2 08/31] clk: mediatek: cpumux: Clean up included headers
+Subject: Re: [PATCH v2 07/31] clk: mediatek: cpumux: Internalize struct
+ mtk_clk_cpumux
 Content-Language: en-US
 To: Chen-Yu Tsai <wenst@chromium.org>, Stephen Boyd <sboyd@kernel.org>,
  Michael Turquette <mturquette@baylibre.com>,
@@ -51,12 +52,12 @@ Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <20220202134834.690675-1-wenst@chromium.org>
- <20220202134834.690675-9-wenst@chromium.org>
+ <20220202134834.690675-8-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220202134834.690675-9-wenst@chromium.org>
+In-Reply-To: <20220202134834.690675-8-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220203_015052_597154_BD598B43 
-X-CRM114-Status: UNSURE (   9.41  )
+X-CRM114-CacheID: sfid-20220203_015053_361127_79AD1A97 
+X-CRM114-Status: UNSURE (   8.71  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,19 +76,16 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 02/02/22 14:48, Chen-Yu Tsai ha scritto:
-> Some headers with the declaration of functions and structures aren't
-> directly included. Explicitly include them so that future changes to
-> other headers would not result in an unexpected build break.
+> struct mtk_clk_cpumux is an implementation detail of the cpumux clk
+> type, and is not used outside of the implementation.
 > 
-> On the header side, add forward declarations for any data structures
-> whose pointers are used in function signatures. No headers are
-> required.
+> Internalize the definition to minimize leakage of details and shrink
+> the header file.
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 > Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
 
 
 _______________________________________________
