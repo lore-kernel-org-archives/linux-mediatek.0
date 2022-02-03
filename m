@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B361C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Feb 2022 17:32:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3CC0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Feb 2022 17:34:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vY4ZxkNa1p6TLmCJyXcAs7VyNU1b+S6jIkHUikijsuY=; b=jfcF57uG5xJPq6
-	qpb29R+zhOgKlhq6DtK5PA9mCLR8KsKEcA5ALaPpeMoPIdzZJRLE7KFwI+rhLVBBmqIWD/p23gcAX
-	o24NBA6PNFGZxnnFqHYAwAknf0aH3Y0dNYrSFLavhhv8m73Rt8BE5Xshvam2A3LM2xAnLAkoGcYLw
-	DvVQ1G6ioGm+38KkPPfmLHblmaz9aPlmt5UxINtPETBIDrsWoGI0EpqPwLe3h0yq74HEdsmp5LIMu
-	iJswtkWUgeG/L4U1yPE3pIeJuvRL9z+C5Wwvr3WIzhLKyjLP1qI9Z3lfpDcQL9VKdfDS0w+JF4ItY
-	0mmBUFm3ME15rs/2H2dA==;
+	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
+	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=m9Zq3/sSudJBwdT2j3Qe0C4KPTgs+2qgqkhpJ/ULcts=; b=vgyLDbz/Y+ZxTP
+	0qupqzzPfNF9KNTIv80zzF7+zvSTE5JaD5IWk6APP50EirxK8d4b567rV3fOFQK+quYRbJWLpmy/R
+	+VHajBdPzLb+R/W+eWJ6J/67SPVS739KNyCibrR9YL9nAPhvWYipkSYiZGQ8HQtSEKk78EpUYINEZ
+	BSDFF2EHklA5e1H56cnoa5oflSDEl7geSjnn4Xs+MuGVj9vMFYOQ7NwTASNI0kKakicyeLKH1K4ag
+	5WGk4qfZpmQoApWSYjeZ9umy8wQIWoq0qCA7KEt6cKFNjt1ubhgdZH2HlXZGW3PAtQqTRbR3kepCi
+	Okvz/y++eXXv7NBl+BCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nFfxz-002EI2-0a; Thu, 03 Feb 2022 17:32:19 +0000
+	id 1nFfzs-002F64-GB; Thu, 03 Feb 2022 17:34:16 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nFfwU-002Dai-0k; Thu, 03 Feb 2022 17:30:47 +0000
+ id 1nFfxA-002Dv3-2Y; Thu, 03 Feb 2022 17:31:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
- Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=LtXb/005KFgYr+A6KsWEWAEbArfOPZ1QJXbaqXZvAVk=; b=Ix/zwTEKFlJTaUXsCoM96bsRbw
- 5L+6Wu/nrX7sjTqitAr+bLYnDnb8ieFdi3iycZuhEjhCwWTSNzTJPPSBYLMJ6zSRAL/Xq9s2Z36Rz
- ovzolJZwWN9vnfxDDdfP5IYbzGTeK65LmXg+0SepD4B6L5XDml4RLdwRV4Uy+Vtgw9EKlXVabcHe5
- igA+aWqr2EDGkO2JahUHl5DceGtD1TKtGERTajuCRGItR9ERVrolc4nAsgTnVrQqGJH72w6yQF3R1
- HAulxinNG8A3Q1FjNKJnipYRFXh5qsBoH6z0HRNjSAime6Iq/rYQj2+RT8cTY/a3OpVja2TMhRHWj
- 1eE4mi3g==;
-Received: from shell.armlinux.org.uk
- ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:57018)
+ d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
+ Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
+ In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=C+8A6ZpJPI8MbtjHDSCKNKBSDC6C5XIriSAssOx9qfg=; b=Ix+vQdA5G7/5V/PQlNw1uK87+6
+ REGC9ihwv6p1YF4Z0pk0MJSnouC0ksLBMUG9nkf66uBGmSSPhLbwPz57o3tA68XjR8F599pb/Of6s
+ Gnp9rfhkSED87+J4AHnhAavXQOiGvrPzXfIOdwpr+0MCUmTWAdJ6c8eexKJ3qiOeGv+xnpeSH6+q9
+ Kw9UBGngcyso80324h6S1COrHVVIqs1WGhZCSly5arUn5Ng6hpN3sBzTHBD0aeec/HsUSQaQ6GAso
+ zaxr5EcOEnwl2IGjOaVijVCJpcqAfZgWbXYdb1NxK2pbg3uB+h3nYmxxlrUWKqzLlaxtNLS2+KITw
+ hs2wwC/A==;
+Received: from e0022681537dd.dyn.armlinux.org.uk
+ ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:54880 helo=rmk-PC.armlinux.org.uk)
  by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <linux@armlinux.org.uk>)
- id 1nFfwI-0002y5-Ej; Thu, 03 Feb 2022 17:30:34 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
- (envelope-from <linux@shell.armlinux.org.uk>)
- id 1nFfwF-0004B7-Kj; Thu, 03 Feb 2022 17:30:31 +0000
-Date: Thu, 3 Feb 2022 17:30:31 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+ (envelope-from <rmk@armlinux.org.uk>)
+ id 1nFfx5-0002zO-NF; Thu, 03 Feb 2022 17:31:23 +0000
+Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
+ (envelope-from <rmk@rmk-PC.armlinux.org.uk>)
+ id 1nFfx5-006X6k-3w; Thu, 03 Feb 2022 17:31:23 +0000
+In-Reply-To: <YfwRN2ObqFbrw/fF@shell.armlinux.org.uk>
+References: <YfwRN2ObqFbrw/fF@shell.armlinux.org.uk>
+From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
 To: DENG Qingfang <dqfext@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>,
  Sean Wang <sean.wang@mediatek.com>
 Cc: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
@@ -55,13 +56,14 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
  "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH RFC net-next 0/7] net: dsa: mt7530: updates for phylink changes
-Message-ID: <YfwRN2ObqFbrw/fF@shell.armlinux.org.uk>
+Subject: [PATCH RFC net-next 2/7] net: dsa: mt7530: remove interface checks
 MIME-Version: 1.0
 Content-Disposition: inline
+Message-Id: <E1nFfx5-006X6k-3w@rmk-PC.armlinux.org.uk>
+Date: Thu, 03 Feb 2022 17:31:23 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220203_093046_113683_96AAAEA2 
-X-CRM114-Status: GOOD (  11.59  )
+X-CRM114-CacheID: sfid-20220203_093128_384399_376C8E64 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,51 +80,175 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+As phylink checks the interface mode against the supported_interfaces
+bitmap, we no longer need to validate the interface mode, nor handle
+PHY_INTERFACE_MODE_NA in the validation function. Remove these to
+simplify the implementation.
 
-This series is a partial conversion of the mt7530 DSA driver to the
-modern phylink infrastructure. This driver has some exceptional cases
-which prevent - at the moment - its full conversion (particularly with
-the Autoneg bit) to using phylink_generic_validate().
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+---
+ drivers/net/dsa/mt7530.c | 82 ----------------------------------------
+ drivers/net/dsa/mt7530.h |  2 -
+ 2 files changed, 84 deletions(-)
 
-What stands in the way is this if() condition in
-mt753x_phylink_validate():
-
-	if (state->interface != PHY_INTERFACE_MODE_TRGMII ||
-	    !phy_interface_mode_is_8023z(state->interface)) {
-
-reduces to being always true. I highlight this here for the attention
-of the driver maintainers.
-
-Patch 1 populates the supported_interfaces for each port
-
-Patch 2 removes the interface checks that become unnecessary as a result
-of patch 1.
-
-Patch 3 removes use of phylink_helper_basex_speed() which is no longer
-required by phylink.
-
-Patch 4 becomes possible after patch 3, only indicating the ethtool
-modes that can be supported with a particular interface mode - this
-involves removing some modes and adding others as per phylink
-documentation.
-
-Patch 5 continues patch 4, as RGMII can support 1000base-X ethtool link
-mode with an appropriate external PHY.
-
-Patch 6 switches the driver to use phylink_get_linkmodes(), which moves
-the driver as close as we can to phylink_generic_validate() due to the
-Autoneg bit issue mentioned above.
-
-Patch 7 marks the driver as non-legacy.
-
- drivers/net/dsa/mt7530.c | 166 ++++++++++++++++-------------------------------
- drivers/net/dsa/mt7530.h |   5 +-
- 2 files changed, 58 insertions(+), 113 deletions(-)
-
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 1d01738cacea..ae54c6a49676 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2410,37 +2410,6 @@ static void mt7530_mac_port_get_caps(struct dsa_switch *ds, int port,
+ 	}
+ }
+ 
+-static bool
+-mt7530_phy_mode_supported(struct dsa_switch *ds, int port,
+-			  const struct phylink_link_state *state)
+-{
+-	struct mt7530_priv *priv = ds->priv;
+-
+-	switch (port) {
+-	case 0 ... 4: /* Internal phy */
+-		if (state->interface != PHY_INTERFACE_MODE_GMII)
+-			return false;
+-		break;
+-	case 5: /* 2nd cpu port with phy of port 0 or 4 / external phy */
+-		if (!phy_interface_mode_is_rgmii(state->interface) &&
+-		    state->interface != PHY_INTERFACE_MODE_MII &&
+-		    state->interface != PHY_INTERFACE_MODE_GMII)
+-			return false;
+-		break;
+-	case 6: /* 1st cpu port */
+-		if (state->interface != PHY_INTERFACE_MODE_RGMII &&
+-		    state->interface != PHY_INTERFACE_MODE_TRGMII)
+-			return false;
+-		break;
+-	default:
+-		dev_err(priv->dev, "%s: unsupported port: %i\n", __func__,
+-			port);
+-		return false;
+-	}
+-
+-	return true;
+-}
+-
+ static bool mt7531_is_rgmii_port(struct mt7530_priv *priv, u32 port)
+ {
+ 	return (port == 5) && (priv->p5_intf_sel != P5_INTF_SEL_GMAC5_SGMII);
+@@ -2475,44 +2444,6 @@ static void mt7531_mac_port_get_caps(struct dsa_switch *ds, int port,
+ 	}
+ }
+ 
+-static bool
+-mt7531_phy_mode_supported(struct dsa_switch *ds, int port,
+-			  const struct phylink_link_state *state)
+-{
+-	struct mt7530_priv *priv = ds->priv;
+-
+-	switch (port) {
+-	case 0 ... 4: /* Internal phy */
+-		if (state->interface != PHY_INTERFACE_MODE_GMII)
+-			return false;
+-		break;
+-	case 5: /* 2nd cpu port supports either rgmii or sgmii/8023z */
+-		if (mt7531_is_rgmii_port(priv, port))
+-			return phy_interface_mode_is_rgmii(state->interface);
+-		fallthrough;
+-	case 6: /* 1st cpu port supports sgmii/8023z only */
+-		if (state->interface != PHY_INTERFACE_MODE_SGMII &&
+-		    !phy_interface_mode_is_8023z(state->interface))
+-			return false;
+-		break;
+-	default:
+-		dev_err(priv->dev, "%s: unsupported port: %i\n", __func__,
+-			port);
+-		return false;
+-	}
+-
+-	return true;
+-}
+-
+-static bool
+-mt753x_phy_mode_supported(struct dsa_switch *ds, int port,
+-			  const struct phylink_link_state *state)
+-{
+-	struct mt7530_priv *priv = ds->priv;
+-
+-	return priv->info->phy_mode_supported(ds, port, state);
+-}
+-
+ static int
+ mt753x_pad_setup(struct dsa_switch *ds, const struct phylink_link_state *state)
+ {
+@@ -2773,9 +2704,6 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+ 	struct mt7530_priv *priv = ds->priv;
+ 	u32 mcr_cur, mcr_new;
+ 
+-	if (!mt753x_phy_mode_supported(ds, port, state))
+-		goto unsupported;
+-
+ 	switch (port) {
+ 	case 0 ... 4: /* Internal phy */
+ 		if (state->interface != PHY_INTERFACE_MODE_GMII)
+@@ -2991,12 +2919,6 @@ mt753x_phylink_validate(struct dsa_switch *ds, int port,
+ 	__ETHTOOL_DECLARE_LINK_MODE_MASK(mask) = { 0, };
+ 	struct mt7530_priv *priv = ds->priv;
+ 
+-	if (state->interface != PHY_INTERFACE_MODE_NA &&
+-	    !mt753x_phy_mode_supported(ds, port, state)) {
+-		linkmode_zero(supported);
+-		return;
+-	}
+-
+ 	phylink_set_port_modes(mask);
+ 
+ 	if (state->interface != PHY_INTERFACE_MODE_TRGMII ||
+@@ -3221,7 +3143,6 @@ static const struct mt753x_info mt753x_table[] = {
+ 		.phy_write = mt7530_phy_write,
+ 		.pad_setup = mt7530_pad_clk_setup,
+ 		.mac_port_get_caps = mt7530_mac_port_get_caps,
+-		.phy_mode_supported = mt7530_phy_mode_supported,
+ 		.mac_port_validate = mt7530_mac_port_validate,
+ 		.mac_port_get_state = mt7530_phylink_mac_link_state,
+ 		.mac_port_config = mt7530_mac_config,
+@@ -3233,7 +3154,6 @@ static const struct mt753x_info mt753x_table[] = {
+ 		.phy_write = mt7530_phy_write,
+ 		.pad_setup = mt7530_pad_clk_setup,
+ 		.mac_port_get_caps = mt7530_mac_port_get_caps,
+-		.phy_mode_supported = mt7530_phy_mode_supported,
+ 		.mac_port_validate = mt7530_mac_port_validate,
+ 		.mac_port_get_state = mt7530_phylink_mac_link_state,
+ 		.mac_port_config = mt7530_mac_config,
+@@ -3246,7 +3166,6 @@ static const struct mt753x_info mt753x_table[] = {
+ 		.pad_setup = mt7531_pad_setup,
+ 		.cpu_port_config = mt7531_cpu_port_config,
+ 		.mac_port_get_caps = mt7531_mac_port_get_caps,
+-		.phy_mode_supported = mt7531_phy_mode_supported,
+ 		.mac_port_validate = mt7531_mac_port_validate,
+ 		.mac_port_get_state = mt7531_phylink_mac_link_state,
+ 		.mac_port_config = mt7531_mac_config,
+@@ -3309,7 +3228,6 @@ mt7530_probe(struct mdio_device *mdiodev)
+ 	if (!priv->info->sw_setup || !priv->info->pad_setup ||
+ 	    !priv->info->phy_read || !priv->info->phy_write ||
+ 	    !priv->info->mac_port_get_caps ||
+-	    !priv->info->phy_mode_supported ||
+ 	    !priv->info->mac_port_validate ||
+ 	    !priv->info->mac_port_get_state || !priv->info->mac_port_config)
+ 		return -EINVAL;
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index e285b68ba354..cbebbcc76509 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -771,8 +771,6 @@ struct mt753x_info {
+ 	int (*cpu_port_config)(struct dsa_switch *ds, int port);
+ 	void (*mac_port_get_caps)(struct dsa_switch *ds, int port,
+ 				  struct phylink_config *config);
+-	bool (*phy_mode_supported)(struct dsa_switch *ds, int port,
+-				   const struct phylink_link_state *state);
+ 	void (*mac_port_validate)(struct dsa_switch *ds, int port,
+ 				  unsigned long *supported);
+ 	int (*mac_port_get_state)(struct dsa_switch *ds, int port,
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+2.30.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
