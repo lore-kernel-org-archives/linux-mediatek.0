@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE6A8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Feb 2022 17:34:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7BA7C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Feb 2022 17:35:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
 	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oeF5NHnx8hWFDZ5P4nO/bpUx0IFvXoHagHpmrQc6eys=; b=JNcCoDr4AKegsn
-	C/EuEXzdJdvlgbO2mM4u4XhjfYkmZQVjeNPHIhOQaOkR/sYprQkKJ+H59ybw8ToLfizBAL9jdIhf2
-	BVXqZ6SvTJqAQSavINkiO05wNVYrGlh4CDyKDtl2Lxp/MQkml+Elz4DwuVFCmrBRiKkVOxTHjFjtY
-	hEe1ggLPJXNReD8m01q9s22l5J5zqY/BFkaQ0p08flFL6EB3vTOOND72DKurVzFxIHjZjGS8QUCR4
-	nerJ7Qb9GlHA4GB8ialgHoY8cvZYM+NAPCYWRrM3H5fICdny1o9O0/WLsADpfcFO2bvsHBK8j+2pn
-	uCfqYzUBLfQb5mySkryg==;
+	List-Owner; bh=9R07KJ00h8wvMxhJag2bXkgGFZm4sci5GVsAMherIDE=; b=DHgtKryfFIb3l2
+	pTazrLsmdacWCrI4OebATVFvGq26+NNwDcpGiBgMI70XvC9MMmwUpQrVyU0KZWTAlqxCXw7XKNNZl
+	+t0Xix1eIK5OZz2m4E2tq/WmC4hKL302RKLkn/fECnj/sJGB5pMiMZzUYC+wdQU95oVJigDlQMUDR
+	/jn9q8ElQMqBVlhI+SlH24jdgbsj9yUMAxftTTkvzon+tBae+/3+R+LAsKETRE1a4wl39DGgmpEDy
+	s391UJoUhQh76JsQJ16Y7gxxmCc85HKDyH/3ZAHjtO275JGDYsqMTFG6TIC5pc97UwnITwlaeY5JT
+	9WHVpda6SjnaxEjegwDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nFfzz-002F8F-8M; Thu, 03 Feb 2022 17:34:23 +0000
+	id 1nFg0x-002FYe-BX; Thu, 03 Feb 2022 17:35:23 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nFfx7-002DtH-3q; Thu, 03 Feb 2022 17:31:27 +0000
+ id 1nFfxF-002Dxs-1T; Thu, 03 Feb 2022 17:31:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
  Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
  In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
  Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
  List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=PAIBtkJWxx41Bed28ZKjzGiXv8E/+MRt7rygE5BGnds=; b=ceiZE/0dBQ3RXKjfq7JsAlVYfz
- GstggX5AHZtw3z9WONYQZMhHq28Q6aP91X7BurfurFm3EaPcJ9dN8hv+AKrGNDur/+5961MZ2CrNz
- hfshbBmJJiuldfSTNDPT7fEqGFL524niOWWXs0cdCGbwXX7Hl8lofMrc/DgJ1d1HToGqhAPynBcWt
- qiVV8vp4uA7AtPkonjrucT2FAeBpDUmLo/6x6Q4jvSxCwbwo2F7Xnuk7hJsAk6xPKqJC52ipsxY5n
- GFPV525aVrBaReogFaAPZmRb5XIgYuHVr/zrw1flCR6XSJ2YRF9cHROgdz162w9dMLbt4i80yHJRo
- Bc06LLkQ==;
+ bh=lyJN/d+uarsVkEwUKDFJstg7Dp6HsqeVOd486R7ZmrY=; b=aB532k0PGKTXksUQ4VWHB340g+
+ pE0CpJjpWIZLojcTTG/CR7nZEJCfOVPfQ2DiAA43DoWB0E13/oyXX7jABSyXo4+7GcxDC9ZmAYXRm
+ gApCBXb57t8CfpBz6pEuBOs38X5s9sC7eo80ugGMGrUoXVRcCV9EvldRIt41WbhqDgHzFGxs7eEIc
+ +Yu5UsG5VpNpyCB6FPsIIG9w3oaoYtjPZzpQuziwG+MtRN1hjCZTGgkuY5NKG87w94zcOTfEOI/cH
+ qyNME/TMkOSs4/4ynubl5MP78s/H1eAyZSvpdGJ1OdYFS5J8rVEoVCEPzSoOsrboUw5ED074qMTdS
+ jp3ZPkCQ==;
 Received: from e0022681537dd.dyn.armlinux.org.uk
- ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:54878 helo=rmk-PC.armlinux.org.uk)
+ ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:54884 helo=rmk-PC.armlinux.org.uk)
  by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
  (envelope-from <rmk@armlinux.org.uk>)
- id 1nFfx0-0002zA-JM; Thu, 03 Feb 2022 17:31:18 +0000
+ id 1nFfxA-0002zb-R2; Thu, 03 Feb 2022 17:31:28 +0000
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
  (envelope-from <rmk@rmk-PC.armlinux.org.uk>)
- id 1nFfx0-006X6e-0I; Thu, 03 Feb 2022 17:31:18 +0000
+ id 1nFfxA-006X6q-7d; Thu, 03 Feb 2022 17:31:28 +0000
 In-Reply-To: <YfwRN2ObqFbrw/fF@shell.armlinux.org.uk>
 References: <YfwRN2ObqFbrw/fF@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -56,15 +56,16 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
  "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH RFC net-next 1/7] net: dsa: mt7530: populate
- supported_interfaces
+Subject: [PATCH RFC net-next 3/7] net: dsa: mt7530: drop use of
+ phylink_helper_basex_speed()
 MIME-Version: 1.0
 Content-Disposition: inline
-Message-Id: <E1nFfx0-006X6e-0I@rmk-PC.armlinux.org.uk>
-Date: Thu, 03 Feb 2022 17:31:18 +0000
+Message-Id: <E1nFfxA-006X6q-7d@rmk-PC.armlinux.org.uk>
+Date: Thu, 03 Feb 2022 17:31:28 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220203_093125_359096_1E575E91 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20220203_093133_130148_44E9F002 
+X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,158 +82,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Populate the supported interfaces for mt7530, mt7531 and mt7621 DSA
-switches. Filling this in will enable phylink to pre-check the PHY
-interface mode against the the supported interfaces bitmap prior to
-calling the validate function.
+Now that we have a better method to select SFP interface modes, we
+no longer need to use phylink_helper_basex_speed() in a driver's
+validation function.
 
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
- drivers/net/dsa/mt7530.c | 68 ++++++++++++++++++++++++++++++++++++++++
- drivers/net/dsa/mt7530.h |  2 ++
- 2 files changed, 70 insertions(+)
+ drivers/net/dsa/mt7530.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index bc77a26c825a..1d01738cacea 100644
+index ae54c6a49676..edfc2c6bae37 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -2384,6 +2384,32 @@ mt7531_setup(struct dsa_switch *ds)
- 	return 0;
+@@ -2941,11 +2941,6 @@ mt753x_phylink_validate(struct dsa_switch *ds, int port,
+ 
+ 	linkmode_and(supported, supported, mask);
+ 	linkmode_and(state->advertising, state->advertising, mask);
+-
+-	/* We can only operate at 2500BaseX or 1000BaseX.  If requested
+-	 * to advertise both, only report advertising at 2500BaseX.
+-	 */
+-	phylink_helper_basex_speed(state);
  }
  
-+static void mt7530_mac_port_get_caps(struct dsa_switch *ds, int port,
-+				     struct phylink_config *config)
-+{
-+	switch (port) {
-+	case 0 ... 4: /* Internal phy */
-+		__set_bit(PHY_INTERFACE_MODE_GMII,
-+			  config->supported_interfaces);
-+		break;
-+
-+	case 5: /* 2nd cpu port with phy of port 0 or 4 / external phy */
-+		phy_interface_set_rgmii(config->supported_interfaces);
-+		__set_bit(PHY_INTERFACE_MODE_MII,
-+			  config->supported_interfaces);
-+		__set_bit(PHY_INTERFACE_MODE_GMII,
-+			  config->supported_interfaces);
-+		break;
-+
-+	case 6: /* 1st cpu port */
-+		__set_bit(PHY_INTERFACE_MODE_RGMII,
-+			  config->supported_interfaces);
-+		__set_bit(PHY_INTERFACE_MODE_TRGMII,
-+			  config->supported_interfaces);
-+		break;
-+	}
-+}
-+
- static bool
- mt7530_phy_mode_supported(struct dsa_switch *ds, int port,
- 			  const struct phylink_link_state *state)
-@@ -2420,6 +2446,35 @@ static bool mt7531_is_rgmii_port(struct mt7530_priv *priv, u32 port)
- 	return (port == 5) && (priv->p5_intf_sel != P5_INTF_SEL_GMAC5_SGMII);
- }
- 
-+static void mt7531_mac_port_get_caps(struct dsa_switch *ds, int port,
-+				     struct phylink_config *config)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+
-+	switch (port) {
-+	case 0 ... 4: /* Internal phy */
-+		__set_bit(PHY_INTERFACE_MODE_GMII,
-+			  config->supported_interfaces);
-+		break;
-+
-+	case 5: /* 2nd cpu port supports either rgmii or sgmii/8023z */
-+		if (mt7531_is_rgmii_port(priv, port)) {
-+			phy_interface_set_rgmii(config->supported_interfaces);
-+			break;
-+		}
-+		fallthrough;
-+
-+	case 6: /* 1st cpu port supports sgmii/8023z only */
-+		__set_bit(PHY_INTERFACE_MODE_SGMII,
-+			  config->supported_interfaces);
-+		__set_bit(PHY_INTERFACE_MODE_1000BASEX,
-+			  config->supported_interfaces);
-+		__set_bit(PHY_INTERFACE_MODE_2500BASEX,
-+			  config->supported_interfaces);
-+		break;
-+	}
-+}
-+
- static bool
- mt7531_phy_mode_supported(struct dsa_switch *ds, int port,
- 			  const struct phylink_link_state *state)
-@@ -2904,6 +2959,14 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
- 	return 0;
- }
- 
-+static void mt753x_phylink_get_caps(struct dsa_switch *ds, int port,
-+				    struct phylink_config *config)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+
-+	priv->info->mac_port_get_caps(ds, port, config);
-+}
-+
- static void
- mt7530_mac_port_validate(struct dsa_switch *ds, int port,
- 			 unsigned long *supported)
-@@ -3139,6 +3202,7 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
- 	.port_vlan_del		= mt7530_port_vlan_del,
- 	.port_mirror_add	= mt753x_port_mirror_add,
- 	.port_mirror_del	= mt753x_port_mirror_del,
-+	.phylink_get_caps	= mt753x_phylink_get_caps,
- 	.phylink_validate	= mt753x_phylink_validate,
- 	.phylink_mac_link_state	= mt753x_phylink_mac_link_state,
- 	.phylink_mac_config	= mt753x_phylink_mac_config,
-@@ -3156,6 +3220,7 @@ static const struct mt753x_info mt753x_table[] = {
- 		.phy_read = mt7530_phy_read,
- 		.phy_write = mt7530_phy_write,
- 		.pad_setup = mt7530_pad_clk_setup,
-+		.mac_port_get_caps = mt7530_mac_port_get_caps,
- 		.phy_mode_supported = mt7530_phy_mode_supported,
- 		.mac_port_validate = mt7530_mac_port_validate,
- 		.mac_port_get_state = mt7530_phylink_mac_link_state,
-@@ -3167,6 +3232,7 @@ static const struct mt753x_info mt753x_table[] = {
- 		.phy_read = mt7530_phy_read,
- 		.phy_write = mt7530_phy_write,
- 		.pad_setup = mt7530_pad_clk_setup,
-+		.mac_port_get_caps = mt7530_mac_port_get_caps,
- 		.phy_mode_supported = mt7530_phy_mode_supported,
- 		.mac_port_validate = mt7530_mac_port_validate,
- 		.mac_port_get_state = mt7530_phylink_mac_link_state,
-@@ -3179,6 +3245,7 @@ static const struct mt753x_info mt753x_table[] = {
- 		.phy_write = mt7531_ind_phy_write,
- 		.pad_setup = mt7531_pad_setup,
- 		.cpu_port_config = mt7531_cpu_port_config,
-+		.mac_port_get_caps = mt7531_mac_port_get_caps,
- 		.phy_mode_supported = mt7531_phy_mode_supported,
- 		.mac_port_validate = mt7531_mac_port_validate,
- 		.mac_port_get_state = mt7531_phylink_mac_link_state,
-@@ -3241,6 +3308,7 @@ mt7530_probe(struct mdio_device *mdiodev)
- 	 */
- 	if (!priv->info->sw_setup || !priv->info->pad_setup ||
- 	    !priv->info->phy_read || !priv->info->phy_write ||
-+	    !priv->info->mac_port_get_caps ||
- 	    !priv->info->phy_mode_supported ||
- 	    !priv->info->mac_port_validate ||
- 	    !priv->info->mac_port_get_state || !priv->info->mac_port_config)
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 91508e2feef9..e285b68ba354 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -769,6 +769,8 @@ struct mt753x_info {
- 	int (*phy_write)(struct mt7530_priv *priv, int port, int regnum, u16 val);
- 	int (*pad_setup)(struct dsa_switch *ds, phy_interface_t interface);
- 	int (*cpu_port_config)(struct dsa_switch *ds, int port);
-+	void (*mac_port_get_caps)(struct dsa_switch *ds, int port,
-+				  struct phylink_config *config);
- 	bool (*phy_mode_supported)(struct dsa_switch *ds, int port,
- 				   const struct phylink_link_state *state);
- 	void (*mac_port_validate)(struct dsa_switch *ds, int port,
+ static int
 -- 
 2.30.2
 
