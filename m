@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2180DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Feb 2022 07:05:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50A8CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Feb 2022 07:06:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ygh+k8/C8cGltXt1mswCxKXTqb1WODD2Hfl+ahrKAFM=; b=eZDd1KIRMWmjsY
-	o4LM9sDpobaqAj0kBw/8Ll8bUCj5NLGuGmkj56rf5p8O8JJ8dZMh/lbsEv9W5Zvyz3db6eRYYWBRc
-	0B81nu4PmWLS8FtqKNTFuZM90tKGSRyKUHW/6dX0CMz0BvFP9q1Zwj0qtXyAHwY5PR6iguZJ2bQsr
-	v81ZStOoF7lB3eJWq9lsBAi/1TbAGOLPG0D7YIqFlxd503H3lFIezNn0JHstsQWeGbNOPl7oaEXPf
-	Xfpw1zEQXJABhRObyoJ1/Pe7aYCKbRBsQOCn93aQF1CsJvjpwwAvXLAyDEvK+y9amOC7494OENRmu
-	RL30YTMzx+Oyow1Zn0zw==;
+	List-Owner; bh=spMtkKzKXL8V5zomVD3teO6o0E7j+2rJbtL8Uk5E820=; b=GlcP8vJTgq5Wl0
+	1X8fPyq5A5r5Axv9FDw4aviflGVssXUUkgOIGbc9MD1SNqdU541bu3R1tCjKtd24zc1iuuVVQ0hv8
+	M+SHPXHqBv61Badjx4QBwbyYrGr912IC4y1nTnpS0PiLTL+8reVf2T7XTXFYYqUnotNCaZIrf8OCE
+	NblO9nblqwH9AG04+Aa0bcGT30PgXSILVxIDPAo64P7ZI9Yc10W9mv41mzWMYsjPXKl4/DbAYd/cX
+	DMpMBpiIWiYQsZrTNmz6f3livQQxtigTI3rvol1bJwT38FtpmJ29MBN/BgUgkTn6UmYErkC+ZgW+G
+	EL1l8t1WdeNMN47kOCag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nFWB2-0007o8-LG; Thu, 03 Feb 2022 07:05:08 +0000
+	id 1nFWBt-00082q-Av; Thu, 03 Feb 2022 07:06:01 +0000
 Received: from muru.com ([72.249.23.125])
  by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nFWAr-0007lt-Aa; Thu, 03 Feb 2022 07:04:58 +0000
+ id 1nFWBh-0007y3-5G; Thu, 03 Feb 2022 07:05:50 +0000
 Received: from localhost (localhost [127.0.0.1])
- by muru.com (Postfix) with ESMTPS id 436F580EE;
- Thu,  3 Feb 2022 07:04:42 +0000 (UTC)
-Date: Thu, 3 Feb 2022 09:04:55 +0200
+ by muru.com (Postfix) with ESMTPS id 5D4498150;
+ Thu,  3 Feb 2022 07:05:34 +0000 (UTC)
+Date: Thu, 3 Feb 2022 09:05:47 +0200
 From: Tony Lindgren <tony@atomide.com>
 To: Marc Zyngier <maz@kernel.org>
 Cc: linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
@@ -41,17 +41,16 @@ Cc: linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Sascha Hauer <s.hauer@pengutronix.de>,
  Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
  Tali Perry <tali.perry1@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>
-Subject: Re: [PATCH 01/12] genirq: Allow the PM device to originate from irq
- domain
-Message-ID: <Yft+l6/JQlZM88rs@atomide.com>
+Subject: Re: [PATCH 07/12] gpio: omap: Move PM device over to irq domain
+Message-ID: <Yft+y2iWTpuq8nXF@atomide.com>
 References: <20220201120310.878267-1-maz@kernel.org>
- <20220201120310.878267-2-maz@kernel.org>
+ <20220201120310.878267-8-maz@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220201120310.878267-2-maz@kernel.org>
+In-Reply-To: <20220201120310.878267-8-maz@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220202_230457_432920_AB273BEA 
-X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-CacheID: sfid-20220202_230549_259466_539D45BF 
+X-CRM114-Status: UNSURE (   7.13  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -70,16 +69,9 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 * Marc Zyngier <maz@kernel.org> [220201 12:03]:
-> As a preparation to moving the reference to the device used for
-> runtime power management, add a new 'dev' field to the irqdomain
-> structure for that exact purpose.
-> 
-> The irq_chip_pm_{get,put}() helpers are made aware of the dual
-> location via a new private helper.
-> 
-> No functional change intended.
+> Move the reference to the device over to the irq domain.
 
-Works for me:
+PM still work for me:
 
 Tested-by: Tony Lindgren <tony@atomide.com>
 
