@@ -4,53 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C363C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Feb 2022 12:56:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81456C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Feb 2022 22:21:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gdAovYqNkNiTnQHvZuT48RvnW56IerxWyxGsWCgH8zY=; b=0rKyDrIqyn48xY
-	uKErxBRlSWAf/3neuIAyfdQXfhXd5lqv7zsxDL6TuvvmzWRLwZFYSAn56DHfciz3xqeULzhzpQ4Mx
-	JHvCBqcDMs1Y87OUPvpJifYVd0xLsAgjNvIL6Sa0M2Q7MecYJ1mJnTMlRTXQZgIqxa5bMUg4svkcf
-	es5G1i9ibHTPuL0Kjjy1KkprZMeRpEhPXNG97Xv26KolSNCSNSPxMz/JUD922DGNex1v8d4jYzYwM
-	55bjCxaSUMbLDFi/2XZrsBXq+/T2yzMMtBJ5jsu7y9XqHPxx70j+d6G+B8yYJL+d1odzroJNhdffi
-	eviNlPvkr9+Ppe/+v+bQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YMTqCaa+ru6aHKWwgD/8N4XFIp4P2kAO9te2ZVKrjS4=; b=4S4p1QWw2Ad8eq
+	+bZ6Ruhl3S1oEiUstixVKLAUYLZ3EwZZib651rBRBkVNVKKV62XmagKFOCQMUVuVpU5c98tziksg4
+	A2zhDaMQlE61caCEq21t1H53ZZH1ImT2fTzClIfJPQcEQ+nt9IOZ8fPxCmM5wxQw4aokAK7IrMVEu
+	TrARtK9tMJYPzKbUSzVGaxjno1F96r2xsd220syQb61SagxU9qZS2+fgOgMUnMbnvNU2jUmMISXOD
+	UaBxXwHXxF+3+t9HbwJrBr8yA7CYic2VMVVzp4WdnOTkQjsUKdHsAwb6ibs8QvnGRGO32K5kuITYF
+	FA0TdS8pGFYcfl3zjacw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nFy8C-004KJh-73; Fri, 04 Feb 2022 12:56:04 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nG6xg-005Yvr-UP; Fri, 04 Feb 2022 22:21:48 +0000
+Received: from mail-oo1-f48.google.com ([209.85.161.48])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nFy80-004KHr-Vf; Fri, 04 Feb 2022 12:55:54 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id D7AA61F469E9
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1643979348;
- bh=C4urODFZw7AtHIaxrvfdBAqahnpDdMVBAE6xBMu5TPc=;
- h=From:To:Cc:Subject:Date:From;
- b=T92LlZOAHSaRjlk14SGlbTbiQ2qznUnnPREWv2O84NkGuo0UIPHDbmW/Pms8SeIpe
- TUBm0sRvrdFxhpg4bb/KYYj80bZqesX99exRjxpf6sXlqDQDQmUF0qujOwJkThvRPr
- hbhuq3dx+bUHfr1BG2Ke71TgX1bHjxq+psEQau5SAMPLkNhCQtLhtnT3sdnTwHhYLu
- NiiZ+kZ29wDFf3+EMUtRkSEqiyCeNKabZ5SDOnpf9B4HhLrqELzhTbMGNkZbUcG0Nc
- +cTq5fJB7eO0TDEB+agYvxF9Kp25HEhIaSL4nMOWfBuzELk7L2iU27tmvqf7vz2t8U
- BQ3T3UfcMOd+A==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: yong.wu@mediatek.com
-Cc: krzysztof.kozlowski@canonical.com, matthias.bgg@gmail.com,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] memory: mtk-smi: Enable sleep ctrl safety function for MT8195
-Date: Fri,  4 Feb 2022 13:55:43 +0100
-Message-Id: <20220204125543.1189151-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.33.1
+ id 1nG6xc-005YuE-N5; Fri, 04 Feb 2022 22:21:45 +0000
+Received: by mail-oo1-f48.google.com with SMTP id
+ v17-20020a4ac911000000b002eac41bb3f4so6200616ooq.10; 
+ Fri, 04 Feb 2022 14:21:44 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=VSSqlk1OwbpfMCFflvyzMx5ImvnYHmqQIDxXeCyLZws=;
+ b=4AwqRcyeXx5kacpzVVbVBkEgc5KVhkx0zxTK45wxsUzrzbdfbx6IT/Bda/hW0SrLCW
+ v3RW9vmmbl/lXpLM5VbpWjUmPRosEO82WanCo76N/eIavOHpT1pF1XvZpddP7252HPW4
+ hvelvT45PmOLOtSe1Ib3zzjJ3nksgdfjcPyERqtyfx0LqC9VZyQPCYs9SLGXeAtC5vab
+ 6XRqRa/oylnAFLEPsxRTYU7nZdtMMOi0vPB4KzvvHYdvIdRxOmc2goIGFcOycP2qlulH
+ Kqn9YwItaI+LlsB6tYOwBW9EbNtXEFH4XxaV++LQn8cyM7vW8EOpWKnj7kLjrU+/n8Jc
+ fF9Q==
+X-Gm-Message-State: AOAM5305YVqszd78nfK3hQ55qSU4fItRaM7VMsoHIEuw5p5L3THYtJfk
+ dP8EjXjOW2WuhVIGoOuCjQ==
+X-Google-Smtp-Source: ABdhPJzBiBKs5CGPfpkFRLuyyWzKtB05ObCQJbQKHDPTM77tzihcGsXN38Eqvb7S3cWiaJbAXwJdoQ==
+X-Received: by 2002:a05:6870:a242:: with SMTP id
+ g2mr1230497oai.305.1644013303426; 
+ Fri, 04 Feb 2022 14:21:43 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id a13sm1023373oan.11.2022.02.04.14.21.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 04 Feb 2022 14:21:42 -0800 (PST)
+Received: (nullmailer pid 3287001 invoked by uid 1000);
+ Fri, 04 Feb 2022 22:21:41 -0000
+Date: Fri, 4 Feb 2022 16:21:41 -0600
+From: Rob Herring <robh@kernel.org>
+To: Axe Yang <axe.yang@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org, Stephen Boyd <swboyd@chromium.org>,
+ Kiwoong Kim <kwmad.kim@samsung.com>, linux-kernel@vger.kernel.org,
+ Chaotian Jing <chaotian.jing@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Andrew Jeffery <andrew@aj.id.au>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ Eric Biggers <ebiggers@google.com>, linux-arm-kernel@lists.infradead.org,
+ Ulf Hansson <ulf.hansson@linaro.org>, Tian Tao <tiantao6@hisilicon.com>,
+ Lucas Stach <dev@lynxeye.de>, Yue Hu <huyue2@yulong.com>,
+ angelogioacchino.delregno@collabora.com, Satya Tangirala <satyat@google.com>,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>, linux-mmc@vger.kernel.org
+Subject: Re: [PATCH v5 1/3] dt-bindings: mmc: add cap-sdio-async-irq flag
+Message-ID: <Yf2m9Y0DAo3rVlyR@robh.at.kernel.org>
+References: <20220121071942.11601-1-axe.yang@mediatek.com>
+ <20220121071942.11601-2-axe.yang@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220121071942.11601-2-axe.yang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220204_045553_240885_A9F3FC6C 
-X-CRM114-Status: UNSURE (   9.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220204_142144_779019_C64B8539 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,31 +93,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable the sleep ctrl function to wait until all the queued commands
-are executed before suspending the LARBs, like done for MT8186.
+On Fri, 21 Jan 2022 15:19:40 +0800, Axe Yang wrote:
+> Asynchronous interrupt is a mechanism that allow SDIO devices alarm
+> interrupt when host stop providing clock to card. Add a DT flag to
+> enable this feature if it is supported by SDIO card.
+> 
+> Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/mmc/mmc-controller.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/memory/mtk-smi.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index c22acd3ddd10..86a3d34f418e 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -351,7 +351,8 @@ static const struct mtk_smi_larb_gen mtk_smi_larb_mt8192 = {
- 
- static const struct mtk_smi_larb_gen mtk_smi_larb_mt8195 = {
- 	.config_port                = mtk_smi_larb_config_port_gen2_general,
--	.flags_general	            = MTK_SMI_FLAG_THRT_UPDATE | MTK_SMI_FLAG_SW_FLAG,
-+	.flags_general	            = MTK_SMI_FLAG_THRT_UPDATE | MTK_SMI_FLAG_SW_FLAG |
-+				      MTK_SMI_FLAG_SLEEP_CTL,
- 	.ostd		            = mtk_smi_larb_mt8195_ostd,
- };
- 
--- 
-2.33.1
-
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
