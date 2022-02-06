@@ -4,74 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEE07C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Feb 2022 02:09:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE128C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Feb 2022 17:38:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0xKN/tIw/y5CKKs1rHFIA4NIAMypvfRNGx7HG8VhQg0=; b=1DYBJbDRxCZYeg
-	4X0s+ddkTDJC71LdDGquSmIFJQtuqkpVV+lw+Ji+SqndYH4nbzT0sO4a8whAOjK6hrYc4KCRcPtk3
-	Zrmqn0b0Ypvly+WQ/qQ8qlCii5uGZBXTfjpW3hS/5iYSrCcyHwxBgGJtMNUFwfApY2F/cB7VYpuQo
-	Oumn6HBzrTkDVVpnU2Jp7TLcm2bQvpdAfdoeAsTwHNCntYdbz3P0Q6Fkr1883VodWtJIoy9wJ7WRC
-	+onExYMfkUb0gx9XVZcb7hfU7QTGgTM/AQMWXAiHLm3C/ClMjfid7V2PgC9lOuUO/XL6FH12qD8Ee
-	JkVvqIXYDxxM1TfBkPXQ==;
+	List-Owner; bh=WbbiWoZzBQPfBQgPfozMB0mB3kCBFX/Iak9YbM+2rVE=; b=it2U/ms1pQzwbc
+	4XT7xe0MZ6v9K1WYW+zfCpdDIiCOrWIpIhum+3XDRrkhr9Iuym8fnvNvD/FRNyGhAB8ETo5GGosCJ
+	gUmsaS/crkOlHCqyvK8nYNOxkAH8HFHuI3AxFwiHghSAp9p5Ce1DT4suWZtvvp1BWH2ObWjDxxomZ
+	jR1bpoP+kPapNDQXsNb65UcnXf1xxscq55FFqeZnCy5ydP8UZXKOpvWUbDJQaI7BMo/XgScH28Any
+	3V/EPVgnxez8XxeAwRQubANS7RWrJY4zLKdacu8jWIOop2RXWI2ia3Wg/g8aOBfvrZ75rZrJyoFmn
+	nAruKu9d2IkyW6DJokTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nGAVs-005xGx-6Y; Sat, 05 Feb 2022 02:09:20 +0000
-Received: from mail-oi1-f181.google.com ([209.85.167.181])
+	id 1nGlUI-008TW0-TK; Sun, 06 Feb 2022 17:38:10 +0000
+Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nGAVp-005xGO-Ls
- for linux-mediatek@lists.infradead.org; Sat, 05 Feb 2022 02:09:19 +0000
-Received: by mail-oi1-f181.google.com with SMTP id t199so10581582oie.10
- for <linux-mediatek@lists.infradead.org>; Fri, 04 Feb 2022 18:09:17 -0800 (PST)
+ id 1nGlU5-008TUb-Du; Sun, 06 Feb 2022 17:37:58 +0000
+Received: by mail-oi1-x22a.google.com with SMTP id s185so14732698oie.3;
+ Sun, 06 Feb 2022 09:37:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=vVKrnJDOHGbjSSHfQuuoJvy2XKJCbAbDk+4hsVzeVT4=;
+ b=Ln+BqGQJLxlgnNo5qJrWQ484qT5n+OrgHozO1ECWRT6VesEsOCQGUxAqUAuXqRl9+f
+ 62peCmdXsolXfdoG3ahcsdefJHJr0E30TJhOT4ppj0ikpsPx4hg2w439xU/jHm5DyODY
+ MeYiWTDPqniBoPPIc/45nQQezO+EgSKTsK2vtCABjmgdupcdAx7JI9g2Pzgp4O3MTCxw
+ SQpz4imBoWlUZZXJ6u3Ckt5gBgRgZf7ESvDsdt8m72ApII2XsYqZs5Dm/TSM/AaNuQuR
+ Toq2y54FPNW/Fe06+o+P4TvDlh8i8xhTNmSrMmnFsxDMx1ypzby7swYQaLLqilpO3K7q
+ Xrpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=nlm/DoIWX/vryslRDMyLqsOKh1vDr7UP4z3/6RoNcP0=;
- b=bR65+uX8CQGRd90rJIvnLsrVkaQTiI8U5KhkMOWDxBONxoVI5tvZPm77seffb9pSya
- 6wqGaWJZW7mzcCVSIaEMREWdFKBON52Lb8fTR5XGNMygsLwS8hRbqk8cksm7q2qzKUqf
- 3T1Um/LkX143ExviMm52x20EBHAvYXg2nOFk2OqSeGWk+ng14WyaB/4becos54IWtpoD
- Crvg8ePAtLd5v9Sf6Im2KT++dz4t1TVeLFIPHLgW2NusFQn5cRvD4jVlGfl3Obp29yOI
- fPZWkVx41keW7ZME9ItbrF57FeegutM/2vsdRqFpqgTyHUXWr/mdL9X8PTJf8cGNlFMD
- 1vcw==
-X-Gm-Message-State: AOAM531rxGYloEsV/0wyKHvRKx8eo78UKZSP8Ku4hDf3VMxeleDsMwgn
- sJi8muKLTvByLA7aywhWHQ==
-X-Google-Smtp-Source: ABdhPJyVS0PG5yTiDBcZK/QCZ0tOeDl6uPjDN421zx47NmuJYe9hhhMoFBleBbSxq0pBVid0d/dinw==
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :references:mime-version:content-disposition:in-reply-to;
+ bh=vVKrnJDOHGbjSSHfQuuoJvy2XKJCbAbDk+4hsVzeVT4=;
+ b=7epNg+z9pYe6UuVRmzTNCUxhV1UufZiWhyBm2AxfFOplaBkhTj0tV+rEtWV5MMSS/e
+ W5IUInosP9M6ILJAjCYApiGK6oR8HbaAguC8Rph4oal2ldomJi5MgWcHNWViy3tL5+gS
+ my8VFB6/czvnKNqBgyOotm2ckl3qECL+AQd+QJ7404y91PEYz2zMcWaD7lfjFci57GTr
+ wR6vKbNsNpiVWcoSIsoPrnL0Z9K9T1rHKKqMI6G/oh9JNaZYE2xda3Jf2nHUhijSUpBG
+ uLna1bgmtofZm2jug1pVgvVWE4hs9ooV8mMuae7pSwjhdAc0vJ8nvhptCHa+HdHSQUQY
+ U/FA==
+X-Gm-Message-State: AOAM5327w7ysXJhDNehIMXsPvBdjsIp1dgZESxkscSRofz+IgsVC+CDG
+ /cJ+so2u97YGaHmKli0l3M0=
+X-Google-Smtp-Source: ABdhPJyyFr6qcAXR6PgZJnvpWbJqzU/tbg3jVON7HGuwyjCsJAF4UUEw/HHlVPaiIG5yBA6d+MPidw==
 X-Received: by 2002:a05:6808:14c1:: with SMTP id
- f1mr865934oiw.12.1644026956758; 
- Fri, 04 Feb 2022 18:09:16 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id g4sm1365784otl.1.2022.02.04.18.09.15
+ f1mr3636989oiw.12.1644169075892; 
+ Sun, 06 Feb 2022 09:37:55 -0800 (PST)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ o19sm3148725oae.36.2022.02.06.09.37.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Feb 2022 18:09:16 -0800 (PST)
-Received: (nullmailer pid 3610125 invoked by uid 1000);
- Sat, 05 Feb 2022 02:09:15 -0000
-Date: Fri, 4 Feb 2022 20:09:15 -0600
-From: Rob Herring <robh@kernel.org>
-To: Bo Jiao <bo.jiao@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Xing Song <xing.song@mediatek.com>,
- Sujuan Chen <sujuan.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- Peter Chiu <chui-hao.chiu@mediatek.com>, devicetree@vger.kernel.org
-Subject: Re: [PATCH v3 1/4] dt-bindings: net: wireless: mt76: document
- bindings for MT7986
-Message-ID: <Yf3cSyKJz9ymj+Fq@robh.at.kernel.org>
-References: <cover.1642128031.git.Bo.Jiao@mediatek.com>
- <c6a6ddd797269ea92698f612d6b7c66c9ec03765.1642128031.git.Bo.Jiao@mediatek.com>
+ Sun, 06 Feb 2022 09:37:55 -0800 (PST)
+Date: Sun, 6 Feb 2022 09:37:54 -0800
+From: Guenter Roeck <linux@roeck-us.net>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Jiasheng Jiang <jiasheng@iscas.ac.cn>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ matthias.bgg@gmail.com, lgirdwood@gmail.com, broonie@kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: BUG: [PATCH v2] isoc: mediatek: Check for error clk pointer
+Message-ID: <20220206173754.GA2014863@roeck-us.net>
+References: <20211222015157.1025853-1-jiasheng@iscas.ac.cn>
+ <trinity-2a727d96-0335-4d03-8f30-e22a0e10112d-1643363480085@3c-app-gmx-bap33>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <c6a6ddd797269ea92698f612d6b7c66c9ec03765.1642128031.git.Bo.Jiao@mediatek.com>
+In-Reply-To: <trinity-2a727d96-0335-4d03-8f30-e22a0e10112d-1643363480085@3c-app-gmx-bap33>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220204_180917_748699_DAFAE15F 
-X-CRM114-Status: GOOD (  19.28  )
+X-CRM114-CacheID: sfid-20220206_093757_515792_3BD5DA5D 
+X-CRM114-Status: GOOD (  14.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,97 +92,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 14, 2022 at 10:53:20AM +0800, Bo Jiao wrote:
-> From: Peter Chiu <chui-hao.chiu@mediatek.com>
+On Fri, Jan 28, 2022 at 10:51:20AM +0100, Frank Wunderlich wrote:
+> Hi,
 > 
-> Add an entry for MT7986 SoC.
+> this commit is merged in 5.17-rc1 and breaks scpsys on mt7622/bananapi R64
 > 
-> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-> Cc: devicetree@vger.kernel.org
-> ---
-> v3:
->  - fix yamllint warnings and errors
->  - add 'minItems: 1' to keep 1 reg entry being valid
-> ---
->  .../bindings/net/wireless/mediatek,mt76.yaml  | 31 +++++++++++++++++--
->  1 file changed, 28 insertions(+), 3 deletions(-)
+> mtk-scpsys: probe of 10006000.power-controller failed with error -2
 > 
-> diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-> index 1489d3c..d630a7e 100644
-> --- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-> +++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-> @@ -18,7 +18,7 @@ description: |
->    wireless device. The node is expected to be specified as a child
->    node of the PCI controller to which the wireless chip is connected.
->    Alternatively, it can specify the wireless part of the MT7628/MT7688
-> -  or MT7622 SoC.
-> +  or MT7622/MT7986 SoC.
->  
->  allOf:
->    - $ref: ieee80211.yaml#
-> @@ -29,9 +29,11 @@ properties:
->        - mediatek,mt76
->        - mediatek,mt7628-wmac
->        - mediatek,mt7622-wmac
-> +      - mediatek,mt7986-wmac
->  
->    reg:
-> -    maxItems: 1
-> +    minItems: 1
-> +    maxItems: 3
+> at least ethernet is affected (i guess usb,sata,btif,... too, but not checked), as gmacs do not get probed as depency of it
+> 
+> after reverting this commit it is working again.
+> 
+> have not yet digged deeper into it why it is failing, but maybe author has an idea
+> 
 
-With more than 1, you need to define what each one is.
+I created a revert of the problematic patch with some explanation.
 
->  
->    interrupts:
->      maxItems: 1
-> @@ -39,6 +41,17 @@ properties:
->    power-domains:
->      maxItems: 1
->  
-> +  memory-region:
-> +    maxItems: 1
-> +
-> +  resets:
-> +    maxItems: 1
-> +    description:
-> +      Specify the consys reset for mt7986.
-> +
-> +  reset-name:
-> +    const: consys
-> +
->    mediatek,infracfg:
->      $ref: /schemas/types.yaml#/definitions/phandle
->      description:
-> @@ -165,7 +178,7 @@ required:
->    - compatible
->    - reg
->  
-> -additionalProperties: false
-> +unevaluatedProperties: false
->  
->  examples:
->    - |
-> @@ -231,3 +244,15 @@ examples:
->  
->        power-domains = <&scpsys 3>;
->      };
-> +
-> +  - |
-> +    wifi@18000000 {
-> +        compatible = "mediatek,mt7986-wmac";
-> +        resets = <&watchdog 23>;
-> +        reset-names = "consys";
-> +        reg = <0x18000000 0x1000000>,
-> +              <0x10003000 0x1000>,
-> +              <0x11d10000 0x1000>;
-> +        interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>;
-> +        memory-region = <&wmcpu_emi>;
-> +    };
-> -- 
-> 2.18.0
-> 
-> 
+https://lore.kernel.org/lkml/20220205014755.699603-1-linux@roeck-us.net/
+
+Sorry that I didn't reference this discussion; I only noticed it after
+I wrote the revert. The revert and my analysis is based on the impact
+of this patch on affected Chromebooks.
+
+The revert is queued for v4.19.y and later stable releases because
+the patch discussed here made it into all those releases and breaks
+pretty much all Mediatek based systems using the affected driver.
+
+Guenter
 
 _______________________________________________
 Linux-mediatek mailing list
