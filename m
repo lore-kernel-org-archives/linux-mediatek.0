@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66413C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Feb 2022 16:27:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2ABCC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Feb 2022 22:56:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pRR3uz2R3Krz8iGM7Wox/vHEPu/gaAbrAoyw4iYryZM=; b=NXYbIz92+WsDf7
-	6L88aGSC/Cmk1+O/WsccZ9bZSOyBog/+s/ou1th3DeM/TG1dlqybwkZATmsCTBkYIyyPfSzbp+JD2
-	taFQUQD0xEOheSQwHrLcHvnujvJGvZtIOCCwcv3CY3rt5W5Xf31LhqRmI39UCSc8YMRLFx4xeby2h
-	Si2cevRIF2WxnHy6rn7A77O/OfitAD8G9eOxjOG3fsFVo2CFUV/HSls35nAGTdQ/ZDlAMd2EhsliC
-	ratJyQcLyEKPkcPkW4hEZzqbIJd9Y3RcAVc2jOwA4TeSwPnggEDRc+Eo5LzeCi6CKHlosr0lGjAoR
-	6enbkmkxJmyAZ+QeaY3Q==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2xsHq2u1IR5Kfo981kTAIvppY9VAB/KRnBXZe5CZoBo=; b=1GHPwmILiTioAd
+	fJpzdtPHc5BCUTlM2fBy2oTpysAf0fbnlJHM5uw7BpbYerm12zpL4KQ7HQd29/s0ENn26ZTX+qzxC
+	iVLhcY3KTM0+pmLaQ/iwSkIENV4KQQT8hRafAxazeGankW+lSPVrwdGp58lsO7ms6LOkBrZERGOgx
+	gk+IwCgsePUrICGk9N+A4kjO8w9251GDVclSLjM9FjCG00nfCTBmTc8fIOP6di/v2MRY6CyfFFegs
+	lsJVgocpM379oaK4uOlZ4SnTYXKIuc+Wmr/lk7XMOX0p5vrD/G7L5QepwYvU4fIo8JYez9c9TFAM+
+	lw62yKPEygyMOSW7nb0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nH6qr-00B4e6-6y; Mon, 07 Feb 2022 16:26:53 +0000
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
+	id 1nHCvL-00BuPs-VO; Mon, 07 Feb 2022 22:55:55 +0000
+Received: from mail-oi1-f174.google.com ([209.85.167.174])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nH6a0-00AzMW-B4; Mon, 07 Feb 2022 16:09:30 +0000
-Received: by mail-oi1-x22a.google.com with SMTP id q8so17496570oiw.7;
- Mon, 07 Feb 2022 08:09:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=mAu8pWBtSchKstM5A3tZ7ZHtLl/tvNz8Fm6ONHkwe4s=;
- b=RepKa8SkJ2TUQ+K6b0KJbqwAyCDaePxYPDwzGUi5nkwciUGr7ZHZwqZSinG1w3s0kL
- sLiR9veBA3jd0qenLNT+DSxpEaG+a3C9xFLEiyEiVZFN6iw9sX9cQcB+Ci8/2ZvfLe/K
- ZpsYBGA9k1vB/B0xqULtFLKF05ylVJt9j6+PdearCLo4dpboS53DnpP4NAfjOHyaeAdg
- CsAuUYoWSbqSLQSewLJlxguOw26cO50JBNKZa4+jzPKxPtC8/W5/hDhTWwufqFEq4LjR
- IS76TyW8Dkw+glmy8zymXFRYwbAlkmo6nlpgDGYH9tCbJm3Mpi7EYoQ9kCXDWBTaiXgf
- I6BA==
+ id 1nHCv7-00BuNY-I5; Mon, 07 Feb 2022 22:55:43 +0000
+Received: by mail-oi1-f174.google.com with SMTP id ay7so4760306oib.8;
+ Mon, 07 Feb 2022 14:55:39 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=mAu8pWBtSchKstM5A3tZ7ZHtLl/tvNz8Fm6ONHkwe4s=;
- b=U5EdqQE5DiQU/NdBNmwHpOKqGgjapFGlocD+W+cS1WCefWnHstwZ9qUYtBaG4+dgan
- bQp6Lw8StfJNOAW/z3UUfDvwJUY3tq7UsDklcDriD4Nug5jRbYbozUL0eQXz8hkOFhB+
- Q43I8Wk9MY9h61bqjh72Dd6A4Sgu6EqIVEyCnW9OuBaPsonNv+KPg+qn76NJ3+RyEzCp
- x/uBJYRlg33dsvWwbxNKTKULLyik3d6rX8eiV/i9QXnpRE3gxdGv+vxPR+IDV2thurUG
- IFXHaPhMdHPsrcdYVnyBoBfW6m9XrqUIH3UQ8PacpvsbFWGnn/PTo+T+8bmTsKi0sOlq
- Fl4w==
-X-Gm-Message-State: AOAM533UsGPtQ1zrQMn6gAv7npnBHLOh26rcadoYUcvxkmXjgTCch8zZ
- hqbOvP+kZSLSlF/9ALZJRNw=
-X-Google-Smtp-Source: ABdhPJw70VbtPo9y5hLiH62QDpTkOmxvHJ7SHRLlMlw8o8xatBkWtLmjbLHOaoeqGjSilgv5GKiwlw==
-X-Received: by 2002:a05:6808:1647:: with SMTP id
- az7mr7522062oib.335.1644250167222; 
- Mon, 07 Feb 2022 08:09:27 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- 31sm4089019otr.13.2022.02.07.08.09.25
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=h8XulnB1OZQoBz1QBOpPQ9Fy/2LVbeDLrqrsglq3xS0=;
+ b=q889mHO/QNzFkHGJwiuXf+wJenszm3n9mu426z62zekEJOkJPAUxKXwiEa+7C839fr
+ Dhn/1otgrjVX+Y6P31g6Bb8F7g68/qSjkqkZKrfL77goVxInkEWRsI4m70oestLqT9kv
+ lDYgsT0mB+4Ud+PfZ9OLDY4sGrUjxXxQzBvdHTbrgrIin/QYEbaTv16MB6ze6503WSIP
+ eX0SVfbS5BRnZjGpw/oVCLTEFxvHT7tBj/X98avvRwn19ggap4eJXIePtuarWGEAQWev
+ 3bhNd54wpy5y+9pMzigkeVyq8+gaDKyWDIzA3IzK6dIm9G1VHW9x2OAEqkT9tl2/1QaR
+ fniA==
+X-Gm-Message-State: AOAM533ibLDGif2ls8JZAo3Gw3SFf0KD1FlKXVIanOj+UJakDHWfDtWY
+ +YwbeqI9TIA084mTKXr9YQ==
+X-Google-Smtp-Source: ABdhPJyUMW+tLM4XaFH3Dnx3i/GUYS4NETkbKHzBgNbeWkhn3BoplPCFmwT/ZnsYvOC+GVLeqZVVjw==
+X-Received: by 2002:a54:4490:: with SMTP id v16mr539935oiv.157.1644274539190; 
+ Mon, 07 Feb 2022 14:55:39 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id v10sm4460165oto.53.2022.02.07.14.55.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Feb 2022 08:09:26 -0800 (PST)
-From: Guenter Roeck <linux@roeck-us.net>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v2] ASoC: Revert "ASoC: mediatek: Check for error clk pointer"
-Date: Mon,  7 Feb 2022 08:09:23 -0800
-Message-Id: <20220207160923.3911501-1-linux@roeck-us.net>
-X-Mailer: git-send-email 2.35.1
+ Mon, 07 Feb 2022 14:55:38 -0800 (PST)
+Received: (nullmailer pid 1081159 invoked by uid 1000);
+ Mon, 07 Feb 2022 22:55:37 -0000
+Date: Mon, 7 Feb 2022 16:55:37 -0600
+From: Rob Herring <robh@kernel.org>
+To: Guodong Liu <guodong.liu@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>,
+ Sean Wang <sean.wang@mediatek.com>, linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v2 1/2] dt-bindings: pinctrl: mt8186: add pinctrl file
+ and binding document
+Message-ID: <YgGjaa0lXBCTu7Hm@robh.at.kernel.org>
+References: <20220121060120.10683-1-guodong.liu@mediatek.com>
+ <20220121060120.10683-2-guodong.liu@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220121060120.10683-2-guodong.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220207_080928_442472_829572E5 
-X-CRM114-Status: GOOD (  15.33  )
+X-CRM114-CacheID: sfid-20220207_145541_641037_0415B7D5 
+X-CRM114-Status: GOOD (  32.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,111 +80,359 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Kevin Hilman <khilman@baylibre.com>,
- Jiasheng Jiang <jiasheng@iscas.ac.cn>, linux-kernel@vger.kernel.org,
- Daniel Golle <daniel@makrotopia.org>, Mark Brown <broonie@kernel.org>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Guenter Roeck <linux@roeck-us.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This reverts commit 9de2b9286a6d ("ASoC: mediatek: Check for error clk
-pointer").
+On Fri, Jan 21, 2022 at 02:01:19PM +0800, Guodong Liu wrote:
+> 1. This patch adds pinctrl file for mt8186.
+> 2. This patch adds mt8186 compatible node in binding document.
+> 
+> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
+> ---
+>  .../bindings/pinctrl/pinctrl-mt8186.yaml      |  303 +++++
+>  include/dt-bindings/pinctrl/mt8186-pinfunc.h  | 1174 +++++++++++++++++
+>  2 files changed, 1477 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
+>  create mode 100644 include/dt-bindings/pinctrl/mt8186-pinfunc.h
+> 
+> diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
+> new file mode 100644
+> index 000000000000..0a1154faca29
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
+> @@ -0,0 +1,303 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pinctrl/pinctrl-mt8186.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek MT8186 Pin Controller
+> +
+> +maintainers:
+> +  - Sean Wang <sean.wang@mediatek.com>
+> +
+> +description: |
+> +  The Mediatek's Pin controller is used to control SoC pins.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt8186-pinctrl
+> +
+> +  gpio-controller: true
+> +
+> +  '#gpio-cells':
+> +    description: |
+> +      Number of cells in GPIO specifier. Since the generic GPIO binding is used,
+> +      the amount of cells must be specified as 2. See the below
+> +      mentioned gpio binding representation for description of particular cells.
+> +    const: 2
+> +
+> +  gpio-ranges:
+> +    description: gpio valid number range.
+> +    maxItems: 1
+> +
+> +  reg:
+> +    description: |
+> +      Physical address base for gpio base registers. There are 8 GPIO
+> +      physical address base in mt8186.
+> +    maxItems: 8
 
-With this patch in the tree, Chromebooks running the affected hardware
-no longer boot. Bisect points to this patch, and reverting it fixes
-the problem.
+These are banks which are all the same?
 
-An analysis of the code with this patch applied shows:
+> +
+> +  reg-names:
+> +    description: |
+> +      Gpio base register names.
+> +    maxItems: 8
 
-        ret = init_clks(pdev, clk);
-        if (ret)
-                return ERR_PTR(ret);
-...
-                for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
-                        struct clk *c = clk[data->clk_id[j]];
+Need to define the names.
 
-                        if (IS_ERR(c)) {
-                                dev_err(&pdev->dev, "%s: clk unavailable\n",
-                                        data->name);
-                                return ERR_CAST(c);
-                        }
+> +
+> +  interrupt-controller: true
+> +
+> +  '#interrupt-cells':
+> +    const: 2
+> +
+> +  interrupts:
+> +    description: The interrupt outputs to sysirq.
+> +    maxItems: 1
+> +
+> +  mediatek,rsel_resistance_in_si_unit:
 
-                        scpd->clk[j] = c;
-                }
+s/_/-/
 
-Not all clocks in the clk_names array have to be present. Only the clocks
-in the data->clk_id array are actually needed. The code already checks if
-the required clocks are available and bails out if not. The assumption that
-all clocks have to be present is wrong, and commit 9de2b9286a6d ("ASoC:
-mediatek: Check for error clk pointer") needs to be reverted.
+> +    type: boolean
+> +    description: |
+> +      Identifying i2c pins pull up/down type which is RSEL. It can support
+> +      RSEL define or si unit value(ohm) to set different resistance.
 
-Cc: Jiasheng Jiang <jiasheng@iscas.ac.cn>
-Cc: Mark Brown <broonie@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>
-Cc: Kevin Hilman <khilman@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Reported-by: Frank Wunderlich <frank-w@public-files.de>
-Reported-by: Daniel Golle <daniel@makrotopia.org>
-Fixes: 9de2b9286a6d ("ASoC: mediatek: Check for error clk pointer")
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
----
-v2: Updated subject and description, trying to match expected subsystem
-    style.
-    Replaced two Cc: tags with Reported-by: to give proper credit.
+Can't you tell this with values being >1000 or not?
 
- drivers/soc/mediatek/mtk-scpsys.c | 15 ++++-----------
- 1 file changed, 4 insertions(+), 11 deletions(-)
+> +
+> +# PIN CONFIGURATION NODES
+> +patternProperties:
+> +  '-pins$':
+> +    type: object
+> +    additionalProperties: false
+> +    patternProperties:
+> +      '^pins':
+> +        type: object
+> +        additionalProperties: false
+> +        description: |
+> +          A pinctrl node should contain at least one subnodes representing the
+> +          pinctrl groups available on the machine. Each subnode will list the
+> +          pins it needs, and how they should be configured, with regard to muxer
+> +          configuration, pullups, drive strength, input enable/disable and
+> +          input schmitt.
+> +          An example of using macro:
+> +          pincontroller {
+> +            /* GPIO0 set as multifunction GPIO0 */
+> +            gpio-pins {
+> +              pins {
+> +                pinmux = <PINMUX_GPIO0__FUNC_GPIO0>;
+> +              }
+> +            };
+> +            /* GPIO128 set as multifunction SDA0 */
+> +            i2c0-pins {
+> +              pins {
+> +                pinmux = <PINMUX_GPIO128__FUNC_SDA0>;
+> +              }
+> +            };
+> +          };
+> +        $ref: "pinmux-node.yaml"
+> +
+> +        properties:
+> +          pinmux:
+> +            description: |
+> +              Integer array, represents gpio pin number and mux setting.
+> +              Supported pin number and mux varies for different SoCs, and are
+> +              defined as macros in dt-bindings/pinctrl/<soc>-pinfunc.h
+> +              directly.
+> +
+> +          drive-strength:
+> +            enum: [2, 4, 6, 8, 10, 12, 14, 16]
+> +
+> +          mediatek,drive-strength-adv:
+> +            description: |
+> +              Describe the specific driving setup property.
+> +              For I2C pins, the existing generic driving setup can only support
+> +              2/4/6/8/10/12/14/16mA driving. But in specific driving setup, they
+> +              can support 0.125/0.25/0.5/1mA adjustment. If we enable specific
+> +              driving setup, the existing generic setup will be disabled.
+> +              The specific driving setup is controlled by E1E0EN.
+> +              When E1=0/E0=0, the strength is 0.125mA.
+> +              When E1=0/E0=1, the strength is 0.25mA.
+> +              When E1=1/E0=0, the strength is 0.5mA.
+> +              When E1=1/E0=1, the strength is 1mA.
+> +              EN is used to enable or disable the specific driving setup.
+> +              Valid arguments are described as below:
+> +              0: (E1, E0, EN) = (0, 0, 0)
+> +              1: (E1, E0, EN) = (0, 0, 1)
+> +              2: (E1, E0, EN) = (0, 1, 0)
+> +              3: (E1, E0, EN) = (0, 1, 1)
+> +              4: (E1, E0, EN) = (1, 0, 0)
+> +              5: (E1, E0, EN) = (1, 0, 1)
+> +              6: (E1, E0, EN) = (1, 1, 0)
+> +              7: (E1, E0, EN) = (1, 1, 1)
+> +              So the valid arguments are from 0 to 7.
+> +            $ref: /schemas/types.yaml#/definitions/uint32
+> +            enum: [0, 1, 2, 3, 4, 5, 6, 7]
+> +
+> +          bias-pull-down:
+> +            description: |
+> +              For pull down type is normal, it don't need add RSEL & R1R0 define
+> +              and resistance value.
+> +              For pull down type is PUPD/R0/R1 type, it can add R1R0 define to
+> +              set different resistance. It can support "MTK_PUPD_SET_R1R0_00" &
+> +              "MTK_PUPD_SET_R1R0_01" & "MTK_PUPD_SET_R1R0_10" &
+> +              "MTK_PUPD_SET_R1R0_11" define in mt8186.
+> +              For pull down type is RSEL, it can add RSEL define & resistance
+> +              value(ohm) to set different resistance by identifying property
+> +              "mediatek,rsel_resistance_in_si_unit".
+> +              It can support "MTK_PULL_SET_RSEL_000" & "MTK_PULL_SET_RSEL_001"
+> +              & "MTK_PULL_SET_RSEL_010" & "MTK_PULL_SET_RSEL_011"
+> +              & "MTK_PULL_SET_RSEL_100" & "MTK_PULL_SET_RSEL_101"
+> +              & "MTK_PULL_SET_RSEL_110" & "MTK_PULL_SET_RSEL_111"
+> +              define in mt8186. It can also support resistance value(ohm)
+> +              "75000" & "5000" in mt8186.
+> +              oneOf:
+> +                - enum: [100, 101, 102, 103]
+> +                - description: mt8186 pull down PUPD/R0/R1 type define value.
+> +                - enum: [200, 201, 202, 203, 204, 205, 206, 207]
+> +                - description: mt8186 pull down RSEL type define value.
+> +                - enum: [75000, 5000]
+> +                - description: mt8186 pull down RSEL type si unit value(ohm).
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index 670cc82d17dc..ca75b14931ec 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -411,17 +411,12 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	return ret;
- }
- 
--static int init_clks(struct platform_device *pdev, struct clk **clk)
-+static void init_clks(struct platform_device *pdev, struct clk **clk)
- {
- 	int i;
- 
--	for (i = CLK_NONE + 1; i < CLK_MAX; i++) {
-+	for (i = CLK_NONE + 1; i < CLK_MAX; i++)
- 		clk[i] = devm_clk_get(&pdev->dev, clk_names[i]);
--		if (IS_ERR(clk[i]))
--			return PTR_ERR(clk[i]);
--	}
--
--	return 0;
- }
- 
- static struct scp *init_scp(struct platform_device *pdev,
-@@ -431,7 +426,7 @@ static struct scp *init_scp(struct platform_device *pdev,
- {
- 	struct genpd_onecell_data *pd_data;
- 	struct resource *res;
--	int i, j, ret;
-+	int i, j;
- 	struct scp *scp;
- 	struct clk *clk[CLK_MAX];
- 
-@@ -486,9 +481,7 @@ static struct scp *init_scp(struct platform_device *pdev,
- 
- 	pd_data->num_domains = num;
- 
--	ret = init_clks(pdev, clk);
--	if (ret)
--		return ERR_PTR(ret);
-+	init_clks(pdev, clk);
- 
- 	for (i = 0; i < num; i++) {
- 		struct scp_domain *scpd = &scp->domains[i];
--- 
-2.35.1
+Is this supposed to be valid json-schema? It is, but not with it under 
+'description'. And it will always fail because the 'description' lines 
+are always true and multiple true cases makes oneOf false.
 
+
+> +
+> +              An example of using RSEL define:
+> +              pincontroller {
+> +                i2c0_pin {
+> +                  pins {
+> +                    pinmux = <PINMUX_GPIO128__FUNC_SDA0>;
+> +                    bias-pull-down = <MTK_PULL_SET_RSEL_001>;
+> +                  }
+> +                };
+> +              };
+> +              An example of using si unit resistance value(ohm):
+> +              &pio {
+> +                mediatek,rsel_resistance_in_si_unit;
+> +              }
+> +              pincontroller {
+> +                i2c0_pin {
+> +                  pins {
+> +                    pinmux = <PINMUX_GPIO128__FUNC_SDA0>;
+> +                    bias-pull-down = <75000>;
+> +                  }
+> +                };
+> +              };
+> +
+> +          bias-pull-up:
+> +            description: |
+> +              For pull up type is normal, it don't need add RSEL & R1R0 define
+> +              and resistance value.
+> +              For pull up type is PUPD/R0/R1 type, it can add R1R0 define to
+> +              set different resistance. It can support "MTK_PUPD_SET_R1R0_00" &
+> +              "MTK_PUPD_SET_R1R0_01" & "MTK_PUPD_SET_R1R0_10" &
+> +              "MTK_PUPD_SET_R1R0_11" define in mt8186.
+> +              For pull up type is RSEL, it can add RSEL define & resistance
+> +              value(ohm) to set different resistance by identifying property
+> +              "mediatek,rsel_resistance_in_si_unit".
+> +              It can support "MTK_PULL_SET_RSEL_000" & "MTK_PULL_SET_RSEL_001"
+> +              & "MTK_PULL_SET_RSEL_010" & "MTK_PULL_SET_RSEL_011"
+> +              & "MTK_PULL_SET_RSEL_100" & "MTK_PULL_SET_RSEL_101"
+> +              & "MTK_PULL_SET_RSEL_110" & "MTK_PULL_SET_RSEL_111"
+> +              define in mt8186. It can also support resistance value(ohm)
+> +              "1000" & "1500" & "2000" & "3000" & "4000" & "5000" & "10000" &
+> +              "75000" in mt8186.
+> +              oneOf:
+> +                - enum: [100, 101, 102, 103]
+> +                - description: mt8186 pull up PUPD/R0/R1 type define value.
+> +                - enum: [200, 201, 202, 203, 204, 205, 206, 207]
+> +                - description: mt8186 pull up RSEL type define value.
+> +                - enum: [1000, 1500, 2000, 3000, 4000, 5000, 10000, 75000]
+> +                - description: mt8186 pull up RSEL type si unit value(ohm).
+> +              An example of using RSEL define:
+> +              pincontroller {
+> +                i2c0-pins {
+> +                  pins {
+> +                    pinmux = <PINMUX_GPIO128__FUNC_SDA0>;
+> +                    bias-pull-up = <MTK_PULL_SET_RSEL_001>;
+> +                  }
+> +                };
+> +              };
+> +              An example of using si unit resistance value(ohm):
+> +              &pio {
+> +                mediatek,rsel_resistance_in_si_unit;
+> +              }
+> +              pincontroller {
+> +                i2c0-pins {
+> +                  pins {
+> +                    pinmux = <PINMUX_GPIO128__FUNC_SDA0>;
+> +                    bias-pull-up = <1000>;
+> +                  }
+> +                };
+> +              };
+> +
+> +          bias-disable: true
+> +
+> +          output-high: true
+> +
+> +          output-low: true
+> +
+> +          input-enable: true
+> +
+> +          input-disable: true
+> +
+> +          input-schmitt-enable: true
+> +
+> +          input-schmitt-disable: true
+> +
+> +        required:
+> +          - pinmux
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - interrupt-controller
+> +  - '#interrupt-cells'
+> +  - gpio-controller
+> +  - '#gpio-cells'
+> +  - gpio-ranges
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/pinctrl/mt8186-pinfunc.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +
+> +    pio: pinctrl@10005000 {
+> +      compatible = "mediatek,mt8186-pinctrl";
+> +      reg = <0x10005000 0x1000>,
+> +            <0x10002000 0x0200>,
+> +            <0x10002200 0x0200>,
+> +            <0x10002400 0x0200>,
+> +            <0x10002600 0x0200>,
+> +            <0x10002A00 0x0200>,
+> +            <0x10002c00 0x0200>,
+> +            <0x1000b000 0x1000>;
+> +      reg-names = "iocfg0", "iocfg_bm", "iocfg_bl",
+> +                  "iocfg_br", "iocfg_lm", "iocfg_rb",
+> +                  "iocfg_tl", "eint";
+> +      gpio-controller;
+> +      #gpio-cells = <2>;
+> +      gpio-ranges = <&pio 0 0 185>;
+> +      interrupt-controller;
+> +      interrupts = <GIC_SPI 186 IRQ_TYPE_LEVEL_HIGH 0>;
+> +      #interrupt-cells = <2>;
+> +
+> +      pio-pins {
+> +        pins {
+> +          pinmux = <PINMUX_GPIO0__FUNC_GPIO0>;
+> +          output-low;
+> +        };
+> +      };
+> +
+> +      spi0-pins {
+> +        pins-spi {
+> +          pinmux = <PINMUX_GPIO0__FUNC_SPI0_CLK_B>,
+> +                   <PINMUX_GPIO1__FUNC_SPI0_CSB_B>,
+> +                   <PINMUX_GPIO2__FUNC_SPI0_MO_B>;
+> +          bias-disable;
+> +        };
+> +        pins-spi-mi {
+> +          pinmux = <PINMUX_GPIO3__FUNC_SPI0_MI_B>;
+> +          bias-pull-down;
+> +        };
+> +      };
+> +
+> +      i2c0-pins {
+> +        pins {
+> +          pinmux = <PINMUX_GPIO127__FUNC_SCL0>,
+> +                   <PINMUX_GPIO128__FUNC_SDA0>;
+> +          bias-disable;
+> +          mediatek,drive-strength-adv = <7>;
+> +        };
+> +      };
+> +    };
+> diff --git a/include/dt-bindings/pinctrl/mt8186-pinfunc.h b/include/dt-bindings/pinctrl/mt8186-pinfunc.h
+> new file mode 100644
+> index 000000000000..f58983d11bca
+> --- /dev/null
+> +++ b/include/dt-bindings/pinctrl/mt8186-pinfunc.h
+> @@ -0,0 +1,1174 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+
+Dual license please.
 
 _______________________________________________
 Linux-mediatek mailing list
