@@ -4,63 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40730C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Feb 2022 12:52:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4768BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Feb 2022 13:17:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wdMSSFwxnA0cY40mww2C0cjTrqEVrMYp03eskFb8GyA=; b=FZFEktaGDG3OMj+vsrfLX/whkV
-	EKIxm/T5/t2/jwOIdTihhuzzieKKcvHQVxpQ9XtAedQ1pXCrJxafzyQCv6H3JwPxQMIpUQHo9FOGq
-	fuQS2uU70M+C44pTMAmx/ZEOVgFbc96jX8AK59ljigJkAlKaou0ObbQTr5Ies2wTro09EM1kvydT7
-	H8wB+Vv0edrJDj5x+gV6WVU0T1sboCtEOrOsxJReJGkYjP8js1t+vj7tq8xT12xPkIhcbzymmAydG
-	HpqVpO0fDRH35W0PR13DoiVL+NLlGEuOenrSv2KV+DOLSwqBHceCshTBqxPqLfbC9S6Ru70REDk05
-	gY3W6/kA==;
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ei3mJ1JyCSC3d8gqnAJiN/nIR0IhFVdsz8zlLL7qLgY=; b=FidMSbZbVOgZi26lO0A90cVFKm
+	F091vnmW04ArebVQB1EpCAS883Xdfi8yyU40Dxj27fLUfUAlicwKKe1e1bh5fvKXwJM5I8fOzWwSH
+	9L7syyNkg1JC89cxKZVRVxlqv+qWBtbQsR8bATH6Pq91I2S6FCvEUhT/1a9kERaXcjSY+FFoh3aPP
+	LOaEozoZRxR/v4cknK7/6nUPfY49POcBZQ7m6aulteDQcWbuFJgnOGS3o+l7aIFo6aZpOWx9MS0vI
+	vH9xPf+V+WGBJkIGITIOrekuwI22P86W46BdcZI8I38fA8nyFxf/fFfiQqzLMk524aV87QACcOJdE
+	vODAr8sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nH3VF-00AC2t-HQ; Mon, 07 Feb 2022 12:52:21 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nH3to-00AEq2-1h; Mon, 07 Feb 2022 13:17:44 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nH3V6-00AC1Q-B6
- for linux-mediatek@lists.infradead.org; Mon, 07 Feb 2022 12:52:13 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1nH3V0-0001kT-Ap; Mon, 07 Feb 2022 13:52:06 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
- by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1nH3Ux-00F6BR-1a; Mon, 07 Feb 2022 13:52:02 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1nH3Uv-00Acnk-Fe; Mon, 07 Feb 2022 13:52:01 +0100
-Date: Mon, 7 Feb 2022 13:51:58 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>,
- Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH] dt-bindings: pwm: mtk-disp: add compatible string for
- MT8183 SoC
-Message-ID: <20220207125158.t5362u2dddccdmsq@pengutronix.de>
-References: <20220207112657.18246-1-allen-kh.cheng@mediatek.com>
+ id 1nH3tc-00AEm8-1l; Mon, 07 Feb 2022 13:17:33 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 184D0B81263;
+ Mon,  7 Feb 2022 13:17:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3B55C004E1;
+ Mon,  7 Feb 2022 13:17:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1644239848;
+ bh=16LtBqoEMMiLQCTXhAEgcV9F72cfpCz0MRGQUmR5x/Y=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=SgzKT68Bq710WvquBg7y3NXAM/Iod+ZcAnvjYD4VuMtrTAlVXobLNEETmL7Ka43+q
+ O/qgHMj1k3EiUFzAaOkrPMrDz00JbP0nN81GwmlLoCCzDQMr/jta4Yidb8LYZeg4Ad
+ tgP+eraON92tLnXxTcgHuY+6+oge+kIq9UlsiO0mZnVRIdVMfS1tQebItQU3r4huO3
+ TUlINgq3vqORn+YQVHyQn33n8RnBFZWZN/lPeDpPC7wPrAlpZvJsMnbepGjlE7tbww
+ m9C5A9zx3AXoqecq6FwbsyI9XKQtFyQYYxrMngH+GixVeoH/xE23LGmEV6eMrl2XBK
+ +82yZslluD8gw==
+Date: Mon, 7 Feb 2022 13:17:23 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [PATCH] Revert "ASoC: mediatek: Check for error clk pointer"
+Message-ID: <YgEb42YZI1iKwqiS@sirena.org.uk>
+References: <20220205014755.699603-1-linux@roeck-us.net>
 MIME-Version: 1.0
-In-Reply-To: <20220207112657.18246-1-allen-kh.cheng@mediatek.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+In-Reply-To: <20220205014755.699603-1-linux@roeck-us.net>
+X-Cookie: Never give an inch!
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220207_045212_390757_497C4747 
-X-CRM114-Status: GOOD (  19.92  )
+X-CRM114-CacheID: sfid-20220207_051732_275516_4CEBE1E9 
+X-CRM114-Status: GOOD (  13.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,78 +64,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1929267959184693165=="
+Cc: James Liao <jamesjj.liao@mediatek.com>, Kevin Hilman <khilman@baylibre.com>,
+ Jiasheng Jiang <jiasheng@iscas.ac.cn>, linux-kernel@vger.kernel.org,
+ Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============5063276428007419474=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============1929267959184693165==
+--===============5063276428007419474==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="d3yuhoeyfgyvlc6b"
+	protocol="application/pgp-signature"; boundary="Aqk5F9s36CVnq371"
 Content-Disposition: inline
 
 
---d3yuhoeyfgyvlc6b
-Content-Type: text/plain; charset=iso-8859-1
+--Aqk5F9s36CVnq371
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-Hello,
+On Fri, Feb 04, 2022 at 05:47:55PM -0800, Guenter Roeck wrote:
+> This reverts commit 9de2b9286a6dd16966959b3cb34fc2ddfd39213e.
 
-On Mon, Feb 07, 2022 at 07:26:57PM +0800, Allen-KH Cheng wrote:
-> From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
->=20
-> Add compatible string for MT8183 SoC in device tree binding.
->=20
-> Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt b/Doc=
-umentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> index 902b271891ae..691e58b6c223 100644
-> --- a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> +++ b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> @@ -6,6 +6,7 @@ Required properties:
->     - "mediatek,mt6595-disp-pwm": found on mt6595 SoC.
->     - "mediatek,mt8167-disp-pwm", "mediatek,mt8173-disp-pwm": found on mt=
-8167 SoC.
->     - "mediatek,mt8173-disp-pwm": found on mt8173 SoC.
-> +   - "mediatek,mt8183-disp-pwm": found on mt8183 SoC.$
+Please submit patches using subject lines reflecting the style for the
+subsystem, this makes it easier for people to identify relevant patches.
+Look at what existing commits in the area you're changing are doing and
+make sure your subject lines visually resemble what they're doing.
+There's no need to resubmit to fix this alone.
 
-The patch looks good in principle. I'd like to see the .txt file
-converted to .yaml though. Would you care for that please?
+Please include human readable descriptions of things like commits and
+issues being discussed in e-mail in your mails, this makes them much
+easier for humans to read especially when they have no internet access.
+I do frequently catch up on my mail on flights or while otherwise
+travelling so this is even more pressing for me than just being about
+making things a bit easier to read.
 
-Also it would be good if you'd care that sender email address and author
-address match.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---d3yuhoeyfgyvlc6b
+--Aqk5F9s36CVnq371
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmIBFesACgkQwfwUeK3K
-7AkkAgf/fg+txDjzVkyHwJVZPCvspksFhmKCPBL43pn/2PuKFzuMBGET5zqIESSD
-g/bRy5VJ3sPbOB2IiRqL8e+5uBRpyjErA9hDuBXAeE0j51fonbIeKx5tLMn0CmCm
-QqngjwSvxBZin6oHjUsmeJ4DmTltc159yQlZJ4OA+0Ur5cSR2ygGBVf/PhNwD1sr
-o6MlZ+PpgNZyD0emGImlgYyEzLlssbqHvcEexQ4Edy+Ia+x+WkKL2PijTSOsPpki
-yh42NYdOPlPgvyLf5iAk2tyeb3b3+Z5z8olSGSLpnKmy/o6KFVLdPRmcF/GRvxKd
-iGe2/E5kAx/Jh8ObG42MHTmx3NUprg==
-=ZzWa
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmIBG+IACgkQJNaLcl1U
+h9BJnQf+KcWHmQpnCUz7tmRRQV7SHRdfESvOFdafzfZcgMvJqn170QtNLNqQak4h
+P0b+AzksW4Ku0XUDtG22ToW3GL6xaahhdK3z1BIBHv42kHlClcOwqtoaLSEV0q4h
+OxIEZaiwRFDLX/a0NByy2M3WThSg9SO6W8wnCXGeghAN9nl3tZgIefVg9Vbns/FF
+xHtph1zJ8BEHT8c3k6diVcVIWObQNx2Tsyli6hk78+NgCl2vbLLp7tmxIqPM5/iN
+mBYNXhOhFl/Fzq5qAOMqTs8/3EWGpXq8ddodg7xO1JgNLLiMI+C3XZUkn8A0l2Y3
+Un2z1wcm9xs2FfCnpoxOpM6hJxoTTA==
+=v5Ec
 -----END PGP SIGNATURE-----
 
---d3yuhoeyfgyvlc6b--
+--Aqk5F9s36CVnq371--
 
 
---===============1929267959184693165==
+--===============5063276428007419474==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -154,5 +129,5 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============1929267959184693165==--
+--===============5063276428007419474==--
 
