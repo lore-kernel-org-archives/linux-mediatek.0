@@ -4,55 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4768BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Feb 2022 13:17:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39946C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Feb 2022 14:51:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ei3mJ1JyCSC3d8gqnAJiN/nIR0IhFVdsz8zlLL7qLgY=; b=FidMSbZbVOgZi26lO0A90cVFKm
-	F091vnmW04ArebVQB1EpCAS883Xdfi8yyU40Dxj27fLUfUAlicwKKe1e1bh5fvKXwJM5I8fOzWwSH
-	9L7syyNkg1JC89cxKZVRVxlqv+qWBtbQsR8bATH6Pq91I2S6FCvEUhT/1a9kERaXcjSY+FFoh3aPP
-	LOaEozoZRxR/v4cknK7/6nUPfY49POcBZQ7m6aulteDQcWbuFJgnOGS3o+l7aIFo6aZpOWx9MS0vI
-	vH9xPf+V+WGBJkIGITIOrekuwI22P86W46BdcZI8I38fA8nyFxf/fFfiQqzLMk524aV87QACcOJdE
-	vODAr8sA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lq9REdKRVmJqO4P8Bcgqn4Sd+3P+ELSxC7qa+t323dc=; b=DsgGO3qR75IRy5
+	hjLWM+ll07zm2RNz3Nom8d6ybBu451+JedeQllXW44lzz6fAHg4Zmqk1/MUx58xuUtXDQacA3v89Q
+	V6M3XInrMcrOCtU4cAAHpMV3gIq3+pnmXXKfhDHFZvk+oyoL6dowyQUZQuzJ6TKpqadANHWe4EYxV
+	ICbxwxrg4KpO/tXq9RnCwFfgZqtWSUsBPCa1kTMkULrn2pKHULKHuv7/TpQC68Wdi0JLar/k3WoW9
+	knsIckJ/68vR24E2YGtpg27ToKmppvYke2h0jyQkfCPaWVa13vDT7SJzuL4Sm+bUfQOK23Op8wg3b
+	/dygFY3nyh1CUyN0WS0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nH3to-00AEq2-1h; Mon, 07 Feb 2022 13:17:44 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nH5Mj-00AY3y-CQ; Mon, 07 Feb 2022 14:51:41 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nH3tc-00AEm8-1l; Mon, 07 Feb 2022 13:17:33 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 184D0B81263;
- Mon,  7 Feb 2022 13:17:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3B55C004E1;
- Mon,  7 Feb 2022 13:17:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1644239848;
- bh=16LtBqoEMMiLQCTXhAEgcV9F72cfpCz0MRGQUmR5x/Y=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=SgzKT68Bq710WvquBg7y3NXAM/Iod+ZcAnvjYD4VuMtrTAlVXobLNEETmL7Ka43+q
- O/qgHMj1k3EiUFzAaOkrPMrDz00JbP0nN81GwmlLoCCzDQMr/jta4Yidb8LYZeg4Ad
- tgP+eraON92tLnXxTcgHuY+6+oge+kIq9UlsiO0mZnVRIdVMfS1tQebItQU3r4huO3
- TUlINgq3vqORn+YQVHyQn33n8RnBFZWZN/lPeDpPC7wPrAlpZvJsMnbepGjlE7tbww
- m9C5A9zx3AXoqecq6FwbsyI9XKQtFyQYYxrMngH+GixVeoH/xE23LGmEV6eMrl2XBK
- +82yZslluD8gw==
-Date: Mon, 7 Feb 2022 13:17:23 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH] Revert "ASoC: mediatek: Check for error clk pointer"
-Message-ID: <YgEb42YZI1iKwqiS@sirena.org.uk>
-References: <20220205014755.699603-1-linux@roeck-us.net>
+ id 1nH5Li-00AXqx-GT; Mon, 07 Feb 2022 14:50:40 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 89AB31F444AE
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1644245435;
+ bh=mITQyN74T8TrzhhNjUVWhdqcFowm7op0GVEcLUl0r3k=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=jscu1N6GY8MVTJJI2CzFQZ6jf4L7fmsfwr667QFfHNFSiTAD+RzEF7yTwlpPYY+3t
+ A+rcbtV1RPtkgqOKVm/jiteSszWCmJa2jiZ553iEAKkwDioX4tzpOZasgUOvH6aTlK
+ g858F61ZO4FxTqAhJK5IEjJEztTCohI0WJ5DMNXkd+xxTmRySp+38J1m7YOg+kgQMa
+ YlytzZhi55wIsLw6MVIqwiHQQauf+/nRPUiTY2TEfUe4oNW4i/pfDSEuSRIlj+xnsa
+ PNtXsenh4KMr3ZTqpAVCpi3Bqrdds3M/OrpKuiyRjdaKZbTL00xkPm0QqggoLy0LRv
+ bc9VNH4XcwA6g==
+Message-ID: <4e1b549b-748e-94f3-befb-59ceab950297@collabora.com>
+Date: Mon, 7 Feb 2022 15:50:32 +0100
 MIME-Version: 1.0
-In-Reply-To: <20220205014755.699603-1-linux@roeck-us.net>
-X-Cookie: Never give an inch!
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH V6, 2/5] media: mtk-jpegenc: manage jpegenc multi-hardware
+Content-Language: en-US
+To: "kyrie.wu" <kyrie.wu@mediatek.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Tomasz Figa <tfiga@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Tzung-Bi Shih <tzungbi@chromium.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, xia.jiang@mediatek.com,
+ maoguang.meng@mediatek.com, srv_heupstream@mediatek.com,
+ irui.wang@mediatek.com
+References: <1638501230-13417-1-git-send-email-kyrie.wu@mediatek.com>
+ <1638501230-13417-3-git-send-email-kyrie.wu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <1638501230-13417-3-git-send-email-kyrie.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220207_051732_275516_4CEBE1E9 
-X-CRM114-Status: GOOD (  13.39  )
+X-CRM114-CacheID: sfid-20220207_065038_960452_B2B4B4F6 
+X-CRM114-Status: GOOD (  26.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,70 +73,218 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Kevin Hilman <khilman@baylibre.com>,
- Jiasheng Jiang <jiasheng@iscas.ac.cn>, linux-kernel@vger.kernel.org,
- Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============5063276428007419474=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 03/12/21 04:13, kyrie.wu ha scritto:
+> manage each hardware information, including irq/clk/power.
+> the hardware includes HW0 and HW1.
+> 
+> Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
 
---===============5063276428007419474==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Aqk5F9s36CVnq371"
-Content-Disposition: inline
+Hello Kyrie,
+thanks for the patch!
+
+However, there are a few things to improve...
+
+> ---
+> V6: use of_platform_populate to replace component framework
+> to manage multi-hardware
+> ---
+>   drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c   | 103 +++++++---
+>   drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h   |  55 +++++
+>   drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 232 +++++++++++++++++++++-
+>   3 files changed, 362 insertions(+), 28 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> index a89c7b2..da7eb84 100644
+> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> @@ -1353,33 +1353,40 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+>   	spin_lock_init(&jpeg->hw_lock);
+>   	jpeg->dev = &pdev->dev;
+>   	jpeg->variant = of_device_get_match_data(jpeg->dev);
+> -	INIT_DELAYED_WORK(&jpeg->job_timeout_work, mtk_jpeg_job_timeout_work);
+>   
+> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> -	jpeg->reg_base = devm_ioremap_resource(&pdev->dev, res);
+
+This has to be rebased... new versions are using devm_platform_ioremap_resource(),
+which is shorter and cleaner...
+
+> -	if (IS_ERR(jpeg->reg_base)) {
+> -		ret = PTR_ERR(jpeg->reg_base);
+> -		return ret;
+> -	}
+> +	if (!jpeg->variant->is_encoder) {
+
+What about mediatek,mtk-jpgenc? That's also an encoder... this "is_encoder"
+variable is a bit confusing... Is that a newer version of the IP?
+Please, let's find a better name for this variable to avoid confusion.
 
 
---Aqk5F9s36CVnq371
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> +		INIT_DELAYED_WORK(&jpeg->job_timeout_work,
+> +				mtk_jpeg_job_timeout_work);
+>   
+> -	jpeg_irq = platform_get_irq(pdev, 0);
+> -	if (jpeg_irq < 0) {
+> -		dev_err(&pdev->dev, "Failed to get jpeg_irq %d.\n", jpeg_irq);
+> -		return jpeg_irq;
+> -	}
+> +		res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +		jpeg->reg_base = devm_ioremap_resource(&pdev->dev, res);
+> +		if (IS_ERR(jpeg->reg_base)) {
+> +			ret = PTR_ERR(jpeg->reg_base);
+> +			return ret;
+> +		}
+>   
+> -	ret = devm_request_irq(&pdev->dev, jpeg_irq,
+> -			       jpeg->variant->irq_handler, 0, pdev->name, jpeg);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "Failed to request jpeg_irq %d (%d)\n",
+> -			jpeg_irq, ret);
+> -		goto err_req_irq;
+> -	}
+> +		jpeg_irq = platform_get_irq(pdev, 0);
+> +		if (jpeg_irq < 0) {
+> +			dev_err(&pdev->dev, "Failed to get jpeg_irq.\n");
+> +			return jpeg_irq;
+> +		}
+>   
+> -	ret = mtk_jpeg_clk_init(jpeg);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "Failed to init clk, err %d\n", ret);
+> -		goto err_clk_init;
+> +		ret = devm_request_irq(&pdev->dev, jpeg_irq,
+> +				       jpeg->variant->irq_handler,
+> +					   0, pdev->name, jpeg);
+> +		if (ret) {
+> +			dev_err(&pdev->dev, "Failed to request jpeg_irq %d (%d)\n",
+> +				jpeg_irq, ret);
+> +			goto err_req_irq;
+> +		}
+> +
+> +		ret = mtk_jpeg_clk_init(jpeg);
+> +		if (ret) {
+> +			dev_err(&pdev->dev, "Failed to init clk(%d)\n", ret);
+> +			goto err_clk_init;
+> +		}
+> +
+> +		pm_runtime_enable(&pdev->dev);
+>   	}
+>   
+>   	ret = v4l2_device_register(&pdev->dev, &jpeg->v4l2_dev);
 
-On Fri, Feb 04, 2022 at 05:47:55PM -0800, Guenter Roeck wrote:
-> This reverts commit 9de2b9286a6dd16966959b3cb34fc2ddfd39213e.
+...snip...
 
-Please submit patches using subject lines reflecting the style for the
-subsystem, this makes it easier for people to identify relevant patches.
-Look at what existing commits in the area you're changing are doing and
-make sure your subject lines visually resemble what they're doing.
-There's no need to resubmit to fix this alone.
+/
+> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+> index 1cf037b..4ccda1d 100644
+> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+> @@ -4,12 +4,27 @@
+>    * Author: Xia Jiang <xia.jiang@mediatek.com>
+>    *
+>    */
+> -
+> +#include <linux/clk.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/irq.h>
+>   #include <linux/io.h>
+>   #include <linux/kernel.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/of_device.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/slab.h>
+> +#include <media/media-device.h>
+>   #include <media/videobuf2-core.h>
+>   #include <media/videobuf2-dma-contig.h>
+> +#include <media/videobuf2-v4l2.h>
+> +#include <media/v4l2-mem2mem.h>
+> +#include <media/v4l2-dev.h>
+> +#include <media/v4l2-device.h>
+> +#include <media/v4l2-fh.h>
+> +#include <media/v4l2-event.h>
+>   
+> +#include "mtk_jpeg_core.h"
+>   #include "mtk_jpeg_enc_hw.h"
+>   
+>   static const struct mtk_jpeg_enc_qlt mtk_jpeg_enc_quality[] = {
+> @@ -30,6 +45,21 @@ static const struct mtk_jpeg_enc_qlt mtk_jpeg_enc_quality[] = {
+>   	{.quality_param = 97, .hardware_value = JPEG_ENC_QUALITY_Q97},
+>   };
+>   
+> +#if defined(CONFIG_OF)
+> +static const struct of_device_id mtk_jpegenc_drv_ids[] = {
 
-Please include human readable descriptions of things like commits and
-issues being discussed in e-mail in your mails, this makes them much
-easier for humans to read especially when they have no internet access.
-I do frequently catch up on my mail on flights or while otherwise
-travelling so this is even more pressing for me than just being about
-making things a bit easier to read.
+There's nothing special in jpgenc1 or, at least, nothing that really needs
+us to differentiate between jpgenc0 and jpgenc1, apart knowing which core is
+the "main" one, hence, you don't need a special compatible string for each core.
 
---Aqk5F9s36CVnq371
-Content-Type: application/pgp-signature; name="signature.asc"
+Here's my proposal:
+- Use one compatible "mediatek,mt8195-jpgenc-hw"
+- Add either of:
+   - A bool "mediatek,hw-leader" on core 0; or
+   - A u8 "mediatek,instance" (0, 1, 2 ... for core number)
 
------BEGIN PGP SIGNATURE-----
+A comment is required on "mediatek,instance" though... this way should only be
+chosen if it is expected, in the future, to have the following situation on
+newer SoCs:
+- More than two cores, and
+- non-interchangeable cores (meaning that, for example, frame 1 *shall* go to
+   core 1, frame 2 shall go to core 2, frame 3 to core 3, BUT core 2/3 are not
+   interchangeable, as in there are reasons to never process frame 2 on core 3),
+   so this means that it's not important if Linux labels core 3 as core 2.
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmIBG+IACgkQJNaLcl1U
-h9BJnQf+KcWHmQpnCUz7tmRRQV7SHRdfESvOFdafzfZcgMvJqn170QtNLNqQak4h
-P0b+AzksW4Ku0XUDtG22ToW3GL6xaahhdK3z1BIBHv42kHlClcOwqtoaLSEV0q4h
-OxIEZaiwRFDLX/a0NByy2M3WThSg9SO6W8wnCXGeghAN9nl3tZgIefVg9Vbns/FF
-xHtph1zJ8BEHT8c3k6diVcVIWObQNx2Tsyli6hk78+NgCl2vbLLp7tmxIqPM5/iN
-mBYNXhOhFl/Fzq5qAOMqTs8/3EWGpXq8ddodg7xO1JgNLLiMI+C3XZUkn8A0l2Y3
-Un2z1wcm9xs2FfCnpoxOpM6hJxoTTA==
-=v5Ec
------END PGP SIGNATURE-----
+Otherwise, if it's not expected to have non-interchangeable "hw-follower" cores,
+or if more than two cores are not ever expected, "mediatek,hw-leader" is the best
+choice for this.
 
---Aqk5F9s36CVnq371--
+Example:
 
+jpegenc@address {
+	compatible = "mediatek,mt8195-jpgenc";
+	reg = < .... >;
+	ranges = < ....... >;
+	.... other properties here ....
 
---===============5063276428007419474==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+	jpegenc-hw0@relative-address {
+		compatible = "mediatek,mt8195-jpgenc-hw", "mediatek,jpgenc-hw";
+		iommus, interrupts, other properties here ...
+		mediatek,hw-leader;
+	};
+
+	jpegenc-hw1@relative-address {
+		compatible = "mediatek,mt8195-jpgenc-hw", "mediatek,jpgenc-hw";
+		iommus, interrupts, etc.....
+	};
+};
+
+> +	{
+> +		.compatible = "mediatek,mt8195-jpgenc0",
+> +		.data = (void *)MTK_JPEGENC_HW0,
+> +	},
+> +	{
+> +		.compatible = "mediatek,mt8195-jpgenc1",
+> +		.data = (void *)MTK_JPEGENC_HW1,
+> +	},
+> +	{},
+> +};
+> +MODULE_DEVICE_TABLE(of, mtk_jpegenc_drv_ids);
+> +#endif
+> +
+>   void mtk_jpeg_enc_reset(void __iomem *base)
+>   {
+>   	writel(0, base + JPEG_ENC_RSTB);
+
+Thanks,
+Angelo
+
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============5063276428007419474==--
-
