@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94BD6C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 08:43:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 190C9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 08:44:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ouQnfMJo1CzXYkmmlUtYU0LD2amGMRW8DMKSiE4Y14g=; b=ZrPT1eXsaG8dLX
-	j17HNdsPScMvyxTMV0jLzawbjNFZmS55DjiBCBjSNwtib8S5ZbVKQA2oNRVkCR8Ge/0zgNKd7zeP9
-	LgenF7DuGt/mL7yxKru3K1tcM+FnvLM9S7B3wK/QkrgHRDyvHF/DDMakq/L311UE/lsDbjDf2iiwt
-	LLNYR5Ir9OykwdGZwKks5PbOgIL5L+0Dk61xhBAcRqAmoORrQkcI4H1HhIPBKMK17qwhgscNAdau4
-	CBpg9DWaDEONWeNRm75hh3NH8TrjDXs/HOO6Rry50aObdHBDIllTdXAC/Md1CCBv/t6Q7qKNeBLpt
-	ulbV9GAZ+2TfAIwSAjPw==;
+	List-Owner; bh=KIFdOQIlirkAr25LcG203jsy89yCPFod7Ze0Yc1QhIM=; b=XBpUGh88jKwG6B
+	+BiLThBBcMH28Y1R6NeLzgf1W7mEzxUbnasDow5dPNu9+HA3IZ/LCnSrVDy8tF6S7aZBq0XA8zEcl
+	WJ+vt9xN8ZSj+CONAQnN0AxFK2EGnQEjowTyMr5KkSaD2kp0p6TKvQ0bUCfzSdwLEvq2fh07LViQN
+	3R+ng62aRr+N7L02Ts33mv6x+W+lG66gtBNsyD/XYZU3xjqX4RpFOywFeZEmYpax8OjnWki7BJgRT
+	VEdInr83Upmkmdkx8fLqqhJq1bkDQA1N4sDZZXlDQQ/oVku+C0tmN7BX1MSRAzqpGkdJxpwzD1h1t
+	z/7DJEooed/sJ6FYG6Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHM5c-00D2M9-N7; Tue, 08 Feb 2022 08:43:08 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1nHM6Q-00D2p0-QQ; Tue, 08 Feb 2022 08:43:58 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHM5D-00D28n-U4
- for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 08:42:45 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id x65so3178701pfx.12
- for <linux-mediatek@lists.infradead.org>; Tue, 08 Feb 2022 00:42:43 -0800 (PST)
+ id 1nHM5H-00D2AO-9C
+ for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 08:42:48 +0000
+Received: by mail-pf1-x429.google.com with SMTP id e28so17694233pfj.5
+ for <linux-mediatek@lists.infradead.org>; Tue, 08 Feb 2022 00:42:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=B51vztbAqanx3odcGYslN+f+8QXuSl3IGdZkOcgCEP4=;
- b=hSZaqn46Eg0k230j9msW8ZWdSycTD9QMSFONsAMN8N1GCF9epels6qCenWB+VLnHwi
- teHq4HupE7iMOHfyDa7zXdzjdrXplNx1GCcS6au9TnF+ZWtgVkOseJI3ghUEeNeJhkPZ
- shrywUSRRfEgTRLCyYagH0Kb0aulUHKv+f3OQ=
+ bh=RKltf19DtHiRc15a3iaZ/NnDb+6ppKujiVxWZQto3YU=;
+ b=O2UDOpBeBJRbX3+DaQG7mIxxaEO05L1HTD48WquGaDuYWsSttm9JTTNF7a+lc8KdMj
+ tJRuDchff9o48V7UXFNQVgoxZ/rNJPLVl8KQxtPWFS7zVK0sOis64KFrKb3J8stVpjkN
+ Pk7y7Sj69FXDSqgG4hJ/qiPJrJRpnz6L6YEME=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=B51vztbAqanx3odcGYslN+f+8QXuSl3IGdZkOcgCEP4=;
- b=fqr0UUcqon4B8zxl3KR0KYiSamp24fuV6iBQDOJCr95/occ9gGmIHGbbiKk33mg5aD
- fp4EydrWKV61llHjass7c44OCelg7aF1lyqsDPKmSMSOmrD6xr86OZQBK6rERhYjYpaA
- eTHqhLeYTbDjJcEL95/6Twox5IaUAtJR5NyumQp29CTnsFgLccsbIvzLR+jAOPyimd0i
- n/XMaGnk0sRJamJhK/Lar/wdD9lh+6hcoH6xUPvLY14UQz6dqqjtj8qqNlaxLYzQ+fwT
- nvLgPpoUySmpy+ZL4Og9nHljvuEtrl78F/BNtGgjX0WeQbHu3NnLCFExwtTN5gFsdWw6
- HZVQ==
-X-Gm-Message-State: AOAM532FbNfHrJ513WhCIbIdrUkkK954a3VmUBkNbcX7hB4bV0lc2KTI
- 0QjKBVQDi9TA3s4jG3L0D6tH1Q==
-X-Google-Smtp-Source: ABdhPJwHECSzf8M58olhYXNLvBSmJuhfsp/CcQrf6d4N0193YY0h7uxL1BuFys94fBnhwtRkxle5pw==
-X-Received: by 2002:a63:f709:: with SMTP id x9mr2665838pgh.428.1644309763116; 
- Tue, 08 Feb 2022 00:42:43 -0800 (PST)
+ bh=RKltf19DtHiRc15a3iaZ/NnDb+6ppKujiVxWZQto3YU=;
+ b=HmoYUGcv/EhdsO/WJijCHy8se4mR4JIR0jPUJ1uqxtG1oQqvLGbp2UK7RdesQJdTaP
+ 7xWkfMi9hqhd6or7A6MVd8QNDk/AC1J3QMcmbVb/TlAlLX1GW2ZSWqJ9+u5vxXT3nijf
+ N28ZwFX5r3Y+VXyJIpPqwKC9iOibN8I5Zh0PpkhC/e+GL7KGu2a7/dDrzAT9kFeqYtRJ
+ rh6K7LQQLnoAx1F7ywQxJX9xd888FiNpE1Gy7EINPc5a/CEUtzxSy2yO0o1INUB1rjbY
+ ZFXpK8pdg/mtz+gIbhNaOuNnJtqmnc3zFyqKdeabIUFNUdRcXpwtsW5fuL9ipINUstGn
+ CT9Q==
+X-Gm-Message-State: AOAM533ZJUJR6iYzjRPQKRT7fNlbNEU2OIZ0S47+H3JbXfqy4d1ey47r
+ 47mFxnGdvlTLXqlSUq3UaEGZ9g==
+X-Google-Smtp-Source: ABdhPJxJuhyNGgn/8M1tkfbfnImy5ANlW87FCMT9C5ygmikEd8cwYFifi2WHJ+zYaY+iMKeTEIBo9Q==
+X-Received: by 2002:a63:2ad6:: with SMTP id q205mr2651010pgq.46.1644309766435; 
+ Tue, 08 Feb 2022 00:42:46 -0800 (PST)
 Received: from hsinyi-z840.tpe.corp.google.com
  ([2401:fa00:1:10:7d9a:166e:9d34:ff4f])
- by smtp.gmail.com with ESMTPSA id m14sm15362390pfc.170.2022.02.08.00.42.40
+ by smtp.gmail.com with ESMTPSA id m14sm15362390pfc.170.2022.02.08.00.42.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Feb 2022 00:42:42 -0800 (PST)
+ Tue, 08 Feb 2022 00:42:46 -0800 (PST)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>,
  Daniel Vetter <daniel@ffwll.ch>, amd-gfx@lists.freedesktop.org,
@@ -69,16 +69,17 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Sean Paul <sean@poorly.run>,
  Simon Ser <contact@emersion.fr>, Harry Wentland <harry.wentland@amd.com>,
  Alex Deucher <alexander.deucher@amd.com>,
  Jani Nikula <jani.nikula@linux.intel.com>
-Subject: [PATCH v8 2/3] drm/mediatek: init panel orientation property
-Date: Tue,  8 Feb 2022 16:42:33 +0800
-Message-Id: <20220208084234.1684930-2-hsinyi@chromium.org>
+Subject: [PATCH v8 3/3] arm64: dts: mt8183: Add panel rotation
+Date: Tue,  8 Feb 2022 16:42:34 +0800
+Message-Id: <20220208084234.1684930-3-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.35.0.263.gb82422642f-goog
 In-Reply-To: <20220208084234.1684930-1-hsinyi@chromium.org>
 References: <20220208084234.1684930-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220208_004243_979747_FFAA3ABF 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20220208_004247_352201_93E09365 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,33 +96,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Init panel orientation property after connector is initialized. Let the
-panel driver decides the orientation value later.
+krane, kakadu, and kodama boards have a default panel rotation.
 
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-Acked-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 5d90d2eb001935..491bf5b0a2b984 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -965,6 +965,13 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
- 		ret = PTR_ERR(dsi->connector);
- 		goto err_cleanup_encoder;
- 	}
-+
-+	ret = drm_connector_init_panel_orientation_property(dsi->connector);
-+	if (ret) {
-+		DRM_ERROR("Unable to init panel orientation\n");
-+		goto err_cleanup_encoder;
-+	}
-+
- 	drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
- 
- 	return 0;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index b42d81d26d7211..d29d4378170971 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -276,6 +276,7 @@ panel: panel@0 {
+ 		avee-supply = <&ppvarp_lcd>;
+ 		pp1800-supply = <&pp1800_lcd>;
+ 		backlight = <&backlight_lcd0>;
++		rotation = <270>;
+ 		port {
+ 			panel_in: endpoint {
+ 				remote-endpoint = <&dsi_out>;
 -- 
 2.35.0.263.gb82422642f-goog
 
