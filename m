@@ -4,63 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AFCEC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 08:32:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D657FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 08:43:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=poAHR2/TDXv+YK6dSRimFNfZVhJ6QQhSNlndUwYS7w8=; b=dmGtuy/oGwciv8
-	dnUs8gCW5PbW6WaAXDYJOEX3tbwM/rjNTaMOOFdUyYW37GTUcqhxzAs+WAZGNNH/lCkhKCyYzqixS
-	BMr0vFsedOydvr/SKrt6EMGozdq+JXZ6u68mpLAY4X9iJ8FFA4ZHpoDc3twgG41VX1wvApE3Unq3l
-	Lpnfv7j0zp5PyOHvTb2bz07MPuFEU4Ipi4nGJN8rW9f45W/luOhl9uxJz+72sVFb2Yb/wioTiM3gY
-	eIcg/ZFo9GCB54wOAoow3iIYzg5SQF8fiI+8hmMNF0rPLWVoBFaz+O5JJJ5rA1F+LQ9tQa0/8w9n7
-	ZLakGPzARyYqEzi2HQNA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=m7r+a2h5bZWpICuXw8O9saiji2kMxcsuSHXrvWufyYg=; b=VURJl6sKWsigSR
+	kAePrQ40x4yQ0e3D79VqM+q+WZ78NQPxkwE7yQdq7Ly+YDSxC8CqBwMjUksglgWeo3XZfSstcMSrF
+	Av141cvoCwx8hHOqDbTRKEV63uqVxaob0szBUFV573sUX2BQMyroi66k9/NEPB4tKv+ckl7FGylVW
+	o1Xdk2FpxxMrnpxR0vI7QxRkKiDQCNlEEXK65ukccIyr0ICpk52h1Chw7QWOjo325mb9idw3qEDTT
+	f2mGVWG9Uy/8c87jNtatRMith2Z7jcMNwkyM6rXNv39s370gdJa+2xq84NfuujefnA3oQF7Zx2GxF
+	bzrjx/kGEILUtC551VBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHLv3-00CzAH-Jb; Tue, 08 Feb 2022 08:32:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nHM5a-00D2LG-QX; Tue, 08 Feb 2022 08:43:06 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHLux-00Cz7e-6s; Tue, 08 Feb 2022 08:32:09 +0000
-X-UUID: ef49e0fc70c44988944c4cba6f079127-20220208
-X-UUID: ef49e0fc70c44988944c4cba6f079127-20220208
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1396273845; Tue, 08 Feb 2022 01:32:03 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Feb 2022 00:32:02 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 8 Feb 2022 16:32:00 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 8 Feb 2022 16:32:00 +0800
-Message-ID: <b886b9a8a3368127be7357e8921e18358987033d.camel@mediatek.com>
-Subject: Re: [PATCH v4] drm/mediatek: mtk_dsi: Avoid EPROBE_DEFER loop with
- external bridge
-From: CK Hu <ck.hu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- <dri-devel@lists.freedesktop.org>
-CC: <chunkuang.hu@kernel.org>, <airlied@linux.ie>,
- <linux-kernel@vger.kernel.org>, <stable@vger.kernel.org>,
- <andrzej.hajda@intel.com>, <linux-mediatek@lists.infradead.org>, Jagan Teki
- <jagan@amarulasolutions.com>, <matthias.bgg@gmail.com>,
- <kernel@collabora.com>, <linux-arm-kernel@lists.infradead.org>
-Date: Tue, 8 Feb 2022 16:32:00 +0800
-In-Reply-To: <20755168cc2be0d1bb5e40907cfe27cea25a9363.camel@mediatek.com>
-References: <20220131085520.287105-1-angelogioacchino.delregno@collabora.com>
- <20755168cc2be0d1bb5e40907cfe27cea25a9363.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nHM5A-00D27Q-NT
+ for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 08:42:43 +0000
+Received: by mail-pl1-x635.google.com with SMTP id z17so3280249plb.9
+ for <linux-mediatek@lists.infradead.org>; Tue, 08 Feb 2022 00:42:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZhwLsKgmug/LRenPO4tfGgZqEWLMYU+fvdrOVAURH3s=;
+ b=Vkl+vynjUM51RqMEm6hc747W8khYbhvL5/qYvEKRlmgrdaUW3Os9zs0yzSi/jaG+F0
+ ZjQMv2fVx+TMavj/WOX1KvUW+Cm94gUvefnTe1HzIaWZbhMNTyHbhFtCgj66jqFb4CzX
+ QOTw4Gp0OM2viucwhKZdwqXz6HkS3kdf2VGcA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZhwLsKgmug/LRenPO4tfGgZqEWLMYU+fvdrOVAURH3s=;
+ b=60GjfootBE0pnKS4+LXwJJ2/51so2wj2OZWKtXvgDFaPmk1Y/3xjH+g9klwkcEGLyB
+ c0S9nNEsLJ2wTwR8ecqv73j4ww41E5q9+f+5XBBYDm1M1/AzIjZyjSNNOT0jdOnm/lod
+ aLLwUhaaEotPBr1hFLD6Y8/srbvqCCu0aI9icy/aDOnNMN6Aem7G68S0/NwDaza9zj3n
+ c4oEQRg96pbXukgjskWmkV3DgqKK5BJCEhBVZjw204JSysSNGuOMcTfvQlAs1oQQTljR
+ jsqdX4Ydbh34T/G8VIgn9w20gMQOmAiYzcdSaXqNO6IS/jQX/hfcLUH4sTYjNGGGVck8
+ BSMA==
+X-Gm-Message-State: AOAM532v5L0UliEHWHgvovW6sJ3gAyUYlWWUIYBqlaINFeNJItEfezOo
+ EX9avuKLM05I6tYsqmHANETpJw==
+X-Google-Smtp-Source: ABdhPJwzo+N00PLczwH8aUY/AY0oPF2jSOF6dGlpW/jQcDkmK7hKjrKYCbbfX5ATisM8Z14A9ENepg==
+X-Received: by 2002:a17:90b:1c06:: with SMTP id
+ oc6mr143971pjb.213.1644309759797; 
+ Tue, 08 Feb 2022 00:42:39 -0800 (PST)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:7d9a:166e:9d34:ff4f])
+ by smtp.gmail.com with ESMTPSA id m14sm15362390pfc.170.2022.02.08.00.42.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 08 Feb 2022 00:42:39 -0800 (PST)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, amd-gfx@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Sean Paul <sean@poorly.run>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Simon Ser <contact@emersion.fr>, Harry Wentland <harry.wentland@amd.com>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>
+Subject: [PATCH v8 1/3] gpu: drm: separate panel orientation property creating
+ and value setting
+Date: Tue,  8 Feb 2022 16:42:32 +0800
+Message-Id: <20220208084234.1684930-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.35.0.263.gb82422642f-goog
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220208_003207_315829_FD52C9AE 
-X-CRM114-Status: GOOD (  34.50  )
+X-CRM114-CacheID: sfid-20220208_004240_815543_29D6683B 
+X-CRM114-Status: GOOD (  23.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,183 +95,196 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Angelo:
+drm_dev_register() sets connector->registration_state to
+DRM_CONNECTOR_REGISTERED and dev->registered to true. If
+drm_connector_set_panel_orientation() is first called after
+drm_dev_register(), it will fail several checks and results in following
+warning.
 
-On Tue, 2022-02-08 at 16:20 +0800, CK Hu wrote:
-> Hi, Angelo:
-> 
-> On Mon, 2022-01-31 at 09:55 +0100, AngeloGioacchino Del Regno wrote:
-> > DRM bridge drivers are now attaching their DSI device at probe
-> > time,
-> > which requires us to register our DSI host in order to let the
-> > bridge
-> > to probe: this recently started producing an endless -EPROBE_DEFER
-> > loop on some machines that are using external bridges, like the
-> > parade-ps8640, found on the ACER Chromebook R13.
-> > 
-> > Now that the DSI hosts/devices probe sequence is documented, we can
-> > do adjustments to the mtk_dsi driver as to both fix now and make
-> > sure
-> > to avoid this situation in the future: for this, following what is
-> > documented in drm_bridge.c, move the mtk_dsi component_add() to the
-> > mtk_dsi_ops.attach callback and delete it in the detach callback;
-> > keeping in mind that we are registering a drm_bridge for our DSI,
-> > which is only used/attached if the DSI Host is bound, it wouldn't
-> > make sense to keep adding our bridge at probe time (as it would
-> > be useless to have it if mtk_dsi_ops.attach() fails!), so also move
-> > that one to the dsi host attach function (and remove it in detach).
-> > 
-> > Cc: <stable@vger.kernel.org> # 5.15.x
-> > Signed-off-by: AngeloGioacchino Del Regno <
-> > angelogioacchino.delregno@collabora.com>
-> > Reviewed-by: Andrzej Hajda <andrzej.hajda@intel.com>
-> > Reviewed-by: Jagan Teki <jagan@amarulasolutions.com>
-> > 
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 167 +++++++++++++++----------
-> > ----
-> >  1 file changed, 84 insertions(+), 83 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > index 5d90d2eb0019..bced4c7d668e 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > @@ -786,18 +786,101 @@ void mtk_dsi_ddp_stop(struct device *dev)
-> >  	mtk_dsi_poweroff(dsi);
-> >  }
-> >  
-> > 
-> 
-> [snip]
-> 
-> > +
-> >  static int mtk_dsi_host_attach(struct mipi_dsi_host *host,
-> >  			       struct mipi_dsi_device *device)
-> >  {
-> >  	struct mtk_dsi *dsi = host_to_dsi(host);
-> > +	struct device *dev = host->dev;
-> > +	int ret;
-> >  
-> >  	dsi->lanes = device->lanes;
-> >  	dsi->format = device->format;
-> >  	dsi->mode_flags = device->mode_flags;
-> > +	dsi->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 0,
-> > 0);
-> 
-> The original would process panel. Why do you remove the panel part?
-> It's better that someone has a platform of DSI->Panel to test this
-> patch.
+Add a function to create panel orientation property and set default value
+to UNKNOWN, so drivers can call this function to init the property earlier
+, and let the panel set the real value later.
 
-Sorry, devm_drm_of_get_bridge() has processed the panel part, so for
-this patch,
+[    4.480976] ------------[ cut here ]------------
+[    4.485603] WARNING: CPU: 5 PID: 369 at drivers/gpu/drm/drm_mode_object.c:45 __drm_mode_object_add+0xb4/0xbc
+<snip>
+[    4.609772] Call trace:
+[    4.612208]  __drm_mode_object_add+0xb4/0xbc
+[    4.616466]  drm_mode_object_add+0x20/0x2c
+[    4.620552]  drm_property_create+0xdc/0x174
+[    4.624723]  drm_property_create_enum+0x34/0x98
+[    4.629241]  drm_connector_set_panel_orientation+0x64/0xa0
+[    4.634716]  boe_panel_get_modes+0x88/0xd8
+[    4.638802]  drm_panel_get_modes+0x2c/0x48
+[    4.642887]  panel_bridge_get_modes+0x1c/0x28
+[    4.647233]  drm_bridge_connector_get_modes+0xa0/0xd4
+[    4.652273]  drm_helper_probe_single_connector_modes+0x218/0x700
+[    4.658266]  drm_mode_getconnector+0x1b4/0x45c
+[    4.662699]  drm_ioctl_kernel+0xac/0x128
+[    4.666611]  drm_ioctl+0x268/0x410
+[    4.670002]  drm_compat_ioctl+0xdc/0xf0
+[    4.673829]  __arm64_compat_sys_ioctl+0xc8/0x100
+[    4.678436]  el0_svc_common+0xf4/0x1c0
+[    4.682174]  do_el0_svc_compat+0x28/0x3c
+[    4.686088]  el0_svc_compat+0x10/0x1c
+[    4.689738]  el0_sync_compat_handler+0xa8/0xcc
+[    4.694171]  el0_sync_compat+0x178/0x180
+[    4.698082] ---[ end trace b4f2db9d9c88610b ]---
+[    4.702721] ------------[ cut here ]------------
+[    4.707329] WARNING: CPU: 5 PID: 369 at drivers/gpu/drm/drm_mode_object.c:243 drm_object_attach_property+0x48/0xb8
+<snip>
+[    4.833830] Call trace:
+[    4.836266]  drm_object_attach_property+0x48/0xb8
+[    4.840958]  drm_connector_set_panel_orientation+0x84/0xa0
+[    4.846432]  boe_panel_get_modes+0x88/0xd8
+[    4.850516]  drm_panel_get_modes+0x2c/0x48
+[    4.854600]  panel_bridge_get_modes+0x1c/0x28
+[    4.858946]  drm_bridge_connector_get_modes+0xa0/0xd4
+[    4.863984]  drm_helper_probe_single_connector_modes+0x218/0x700
+[    4.869978]  drm_mode_getconnector+0x1b4/0x45c
+[    4.874410]  drm_ioctl_kernel+0xac/0x128
+[    4.878320]  drm_ioctl+0x268/0x410
+[    4.881711]  drm_compat_ioctl+0xdc/0xf0
+[    4.885536]  __arm64_compat_sys_ioctl+0xc8/0x100
+[    4.890142]  el0_svc_common+0xf4/0x1c0
+[    4.893879]  do_el0_svc_compat+0x28/0x3c
+[    4.897791]  el0_svc_compat+0x10/0x1c
+[    4.901441]  el0_sync_compat_handler+0xa8/0xcc
+[    4.905873]  el0_sync_compat+0x178/0x180
+[    4.909783] ---[ end trace b4f2db9d9c88610c ]---
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Reviewed-by: Sean Paul <seanpaul@chromium.org>
+---
+v7->v8:
+- check if the prop is created to avoid leak issue when called multiple
+  times.
+- attempt to create prop in drm_connector_set_panel_orientation if prop
+  is not created before, so driver don't need to call
+  drm_connector_init_panel_orientation_property if they don't need to
+  set the property earlier.
+---
+ drivers/gpu/drm/drm_connector.c | 62 ++++++++++++++++++++++++---------
+ include/drm/drm_connector.h     |  2 ++
+ 2 files changed, 48 insertions(+), 16 deletions(-)
 
-> 
-> Regards,
-> CK
-> 
-> > +	if (IS_ERR(dsi->next_bridge))
-> > +		return PTR_ERR(dsi->next_bridge);
-> > +
-> > +	drm_bridge_add(&dsi->bridge);
-> > +
-> > +	ret = component_add(host->dev, &mtk_dsi_component_ops);
-> > +	if (ret) {
-> > +		DRM_ERROR("failed to add dsi_host component: %d\n",
-> > ret);
-> > +		drm_bridge_remove(&dsi->bridge);
-> > +		return ret;
-> > +	}
-> >  
-> >  	return 0;
-> >  }
-> >  
-> > +static int mtk_dsi_host_detach(struct mipi_dsi_host *host,
-> > +			       struct mipi_dsi_device *device)
-> > +{
-> > +	struct mtk_dsi *dsi = host_to_dsi(host);
-> > +
-> > +	component_del(host->dev, &mtk_dsi_component_ops);
-> > +	drm_bridge_remove(&dsi->bridge);
-> > +	return 0;
-> > +}
-> > +
-> >  static void mtk_dsi_wait_for_idle(struct mtk_dsi *dsi)
-> >  {
-> >  	int ret;
-> > @@ -938,73 +1021,14 @@ static ssize_t mtk_dsi_host_transfer(struct
-> > mipi_dsi_host *host,
-> >  
-> >  static const struct mipi_dsi_host_ops mtk_dsi_ops = {
-> >  	.attach = mtk_dsi_host_attach,
-> > +	.detach = mtk_dsi_host_detach,
-> >  	.transfer = mtk_dsi_host_transfer,
-> >  };
-> >  
-> > 
-> 
-> [snip]
-> 
-> > -
-> >  static int mtk_dsi_probe(struct platform_device *pdev)
-> >  {
-> >  	struct mtk_dsi *dsi;
-> >  	struct device *dev = &pdev->dev;
-> > -	struct drm_panel *panel;
-> >  	struct resource *regs;
-> >  	int irq_num;
-> >  	int ret;
-> > @@ -1021,19 +1045,6 @@ static int mtk_dsi_probe(struct
-> > platform_device *pdev)
-> >  		return ret;
-> >  	}
-> >  
-> > -	ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0,
-> > -					  &panel, &dsi->next_bridge);
-> > -	if (ret)
-> > -		goto err_unregister_host;
-> > -
-> > -	if (panel) {
-> > -		dsi->next_bridge = devm_drm_panel_bridge_add(dev,
-> > panel);
-> > -		if (IS_ERR(dsi->next_bridge)) {
-> > -			ret = PTR_ERR(dsi->next_bridge);
-> > -			goto err_unregister_host;
-> > -		}
-> > -	}
-> > -
-> >  	dsi->driver_data = of_device_get_match_data(dev);
-> >  
-> >  	dsi->engine_clk = devm_clk_get(dev, "engine");
-> > @@ -1098,14 +1109,6 @@ static int mtk_dsi_probe(struct
-> > platform_device *pdev)
-> >  	dsi->bridge.of_node = dev->of_node;
-> >  	dsi->bridge.type = DRM_MODE_CONNECTOR_DSI;
-> >  
-> > -	drm_bridge_add(&dsi->bridge);
-> > -
-> > -	ret = component_add(&pdev->dev, &mtk_dsi_component_ops);
-> > -	if (ret) {
-> > -		dev_err(&pdev->dev, "failed to add component: %d\n",
-> > ret);
-> > -		goto err_unregister_host;
-> > -	}
-> > -
-> >  	return 0;
-> >  
-> >  err_unregister_host:
-> > @@ -1118,8 +1121,6 @@ static int mtk_dsi_remove(struct
-> > platform_device *pdev)
-> >  	struct mtk_dsi *dsi = platform_get_drvdata(pdev);
-> >  
-> >  	mtk_output_dsi_disable(dsi);
-> > -	drm_bridge_remove(&dsi->bridge);
-> > -	component_del(&pdev->dev, &mtk_dsi_component_ops);
-> >  	mipi_dsi_host_unregister(&dsi->host);
-> >  
-> >  	return 0;
+diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+index a50c82bc2b2fec..572ead7ac10690 100644
+--- a/drivers/gpu/drm/drm_connector.c
++++ b/drivers/gpu/drm/drm_connector.c
+@@ -1252,7 +1252,7 @@ static const struct drm_prop_enum_list dp_colorspaces[] = {
+  *	INPUT_PROP_DIRECT) will still map 1:1 to the actual LCD panel
+  *	coordinates, so if userspace rotates the picture to adjust for
+  *	the orientation it must also apply the same transformation to the
+- *	touchscreen input coordinates. This property is initialized by calling
++ *	touchscreen input coordinates. This property value is set by calling
+  *	drm_connector_set_panel_orientation() or
+  *	drm_connector_set_panel_orientation_with_quirk()
+  *
+@@ -2341,8 +2341,8 @@ EXPORT_SYMBOL(drm_connector_set_vrr_capable_property);
+  * @connector: connector for which to set the panel-orientation property.
+  * @panel_orientation: drm_panel_orientation value to set
+  *
+- * This function sets the connector's panel_orientation and attaches
+- * a "panel orientation" property to the connector.
++ * This function sets the connector's panel_orientation value. If the property
++ * doesn't exist, it will try to create one.
+  *
+  * Calling this function on a connector where the panel_orientation has
+  * already been set is a no-op (e.g. the orientation has been overridden with
+@@ -2373,19 +2373,12 @@ int drm_connector_set_panel_orientation(
+ 	info->panel_orientation = panel_orientation;
+ 
+ 	prop = dev->mode_config.panel_orientation_property;
+-	if (!prop) {
+-		prop = drm_property_create_enum(dev, DRM_MODE_PROP_IMMUTABLE,
+-				"panel orientation",
+-				drm_panel_orientation_enum_list,
+-				ARRAY_SIZE(drm_panel_orientation_enum_list));
+-		if (!prop)
+-			return -ENOMEM;
+-
+-		dev->mode_config.panel_orientation_property = prop;
+-	}
++	if (!prop &&
++	    drm_connector_init_panel_orientation_property(connector) < 0)
++		return -ENOMEM;
+ 
+-	drm_object_attach_property(&connector->base, prop,
+-				   info->panel_orientation);
++	drm_object_property_set_value(&connector->base, prop,
++				      info->panel_orientation);
+ 	return 0;
+ }
+ EXPORT_SYMBOL(drm_connector_set_panel_orientation);
+@@ -2393,7 +2386,7 @@ EXPORT_SYMBOL(drm_connector_set_panel_orientation);
+ /**
+  * drm_connector_set_panel_orientation_with_quirk - set the
+  *	connector's panel_orientation after checking for quirks
+- * @connector: connector for which to init the panel-orientation property.
++ * @connector: connector for which to set the panel-orientation property.
+  * @panel_orientation: drm_panel_orientation value to set
+  * @width: width in pixels of the panel, used for panel quirk detection
+  * @height: height in pixels of the panel, used for panel quirk detection
+@@ -2420,6 +2413,43 @@ int drm_connector_set_panel_orientation_with_quirk(
+ }
+ EXPORT_SYMBOL(drm_connector_set_panel_orientation_with_quirk);
+ 
++/**
++ * drm_connector_init_panel_orientation_property -
++ * 	create the connector's panel orientation property
++ *
++ * This function attaches a "panel orientation" property to the connector
++ * and initializes its value to DRM_MODE_PANEL_ORIENTATION_UNKNOWN.
++ *
++ * The value of the property can be set by drm_connector_set_panel_orientation()
++ * or drm_connector_set_panel_orientation_with_quirk() later.
++ *
++ * Returns:
++ * Zero on success, negative errno on failure.
++ */
++int drm_connector_init_panel_orientation_property(
++	struct drm_connector *connector)
++{
++	struct drm_device *dev = connector->dev;
++	struct drm_property *prop;
++
++	if(dev->mode_config.panel_orientation_property)
++		return 0;
++
++	prop = drm_property_create_enum(dev, DRM_MODE_PROP_IMMUTABLE,
++			"panel orientation",
++			drm_panel_orientation_enum_list,
++			ARRAY_SIZE(drm_panel_orientation_enum_list));
++	if (!prop)
++		return -ENOMEM;
++
++	dev->mode_config.panel_orientation_property = prop;
++	drm_object_attach_property(&connector->base, prop,
++				   DRM_MODE_PANEL_ORIENTATION_UNKNOWN);
++
++	return 0;
++}
++EXPORT_SYMBOL(drm_connector_init_panel_orientation_property);
++
+ static const struct drm_prop_enum_list privacy_screen_enum[] = {
+ 	{ PRIVACY_SCREEN_DISABLED,		"Disabled" },
+ 	{ PRIVACY_SCREEN_ENABLED,		"Enabled" },
+diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+index 64cf5f88c05b6a..d3448a71bb4d85 100644
+--- a/include/drm/drm_connector.h
++++ b/include/drm/drm_connector.h
+@@ -1798,6 +1798,8 @@ int drm_connector_set_panel_orientation_with_quirk(
+ 	struct drm_connector *connector,
+ 	enum drm_panel_orientation panel_orientation,
+ 	int width, int height);
++int drm_connector_init_panel_orientation_property(
++	struct drm_connector *connector);
+ int drm_connector_attach_max_bpc_property(struct drm_connector *connector,
+ 					  int min, int max);
+ void drm_connector_create_privacy_screen_properties(struct drm_connector *conn);
+-- 
+2.35.0.263.gb82422642f-goog
 
 
 _______________________________________________
