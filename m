@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 647E0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 12:46:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59794C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 12:47:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hepZro3IIxjZNR8jS1+pWOt7F/MHERWGuzGK47UN/QM=; b=F/WjJX+toXJNNy
-	F8ZRrWVeErvDh8F8OAe0vMtvQfh+2wnpQJUc2DYF3By1A7XMhPlbjHBNmVusqczwVn3QfPAjfu+AU
-	Aeme8/xO3LeH/FCdgeQ4zZsvy+YCH3CAQf53ujw17D54tSU0LtUbjQKd1qA+gaS4ms0H3pOwifrq0
-	+Un+22STRaPERq+KOjPXv3AZON96A0NwQAVlZP3Td8m0M2l+U4xJUaQcbXlCGiLr07tuGIlf/RN6S
-	ZFvxhAK8t6h+K2ZjUt3ZKQU6fOEHlMwIAt9Ca8DkAA17C1ZKGy1eNucxOwT5KdslvCf6U+i1sqYon
-	gU7mcOqNbp45dMCJj9eg==;
+	List-Owner; bh=Isc5QLgc/pNY31WXDGgFnk8dYjXriWe6Nz+x8Z1riC4=; b=W7KojaZNWyytG3
+	HZ5qPYxebyiXdVeh0Aid29pdgEPO4JKClCeyigTK1ntwWXtzjWr9EuzApY7qeo4aj9ueX4ewUxGPm
+	pAujx9FybAzMwQs2Cs20xBr8jhLSp6snkOZR0zPZJ7DeeNgyVFCl3UqI4LYQ31LIpBxhHOIi4eZbI
+	YOHY4WAGIzsxEGNmD0fZt3YuvA/OUkVkxD4E9tHIEHpzh09rPBsJ0JqSe51xlXdugzR61CVXoIS1k
+	d/5U39oh3VTe1fKocAVcDokcsOZSmyynby9BfC+Vv2jGygd0kuTDoI/dIA+Aje1Sn8L2JP/IldS6J
+	oUKaTf0/gy9QZ6QLBsVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHPtJ-00DqGn-Sk; Tue, 08 Feb 2022 12:46:41 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1nHPtz-00Dqaw-LH; Tue, 08 Feb 2022 12:47:23 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHPo4-00DnS2-9V
- for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 12:41:18 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id n32so18629802pfv.11
- for <linux-mediatek@lists.infradead.org>; Tue, 08 Feb 2022 04:41:15 -0800 (PST)
+ id 1nHPo6-00DnSh-Ep
+ for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 12:41:20 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id 10so5818844plj.1
+ for <linux-mediatek@lists.infradead.org>; Tue, 08 Feb 2022 04:41:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=LMw2k5UL8LR4Yb0p4V2esvN2YQJYQMBshCfNffwFElc=;
- b=RW+Im4XH206lOo5th9VGiQEIeV+PbWZ5ic2PSd8cSmBZc4quR45Gh8FHJqhmvonPUZ
- YIehMR9jehOA7NvUr2WiVSYv5ilJ7JJ6eNaNQhw6/qYMUhm2e/O6ikPGUdo/Ng7Yy0qv
- g4x8LqfFWBODQTOtGaO4xUdufku13OmZgfkpg=
+ bh=ucbCQXspAieTR5IRJ88apHKs0Oo+TcGwEm7YM7yoBFE=;
+ b=oHY673UW7vPbSg3PGRcTlPVTR8Y6tSg1ME93cddkHRfN3evzBumjNKPjS9MMXetvGz
+ cyaPopBpjfAlMvtxCgg+GHb5cpygQczzim0Yug0Mh8xdzazLH7miTaVhCIIXd9h9QdUn
+ 7TbUW0Nsppw/Izk8VE5AGFZaPWyj9T5IpYftw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=LMw2k5UL8LR4Yb0p4V2esvN2YQJYQMBshCfNffwFElc=;
- b=dRN/MvuYIO50t3uV6hdrPd9rRY/Iu+UHdf4Fjd1rTDnLr5kIDMZsYjlWnwETGo5Ykn
- RXOQH3/5kqMhu1sKVEa66AD6Y6Mg2Kx5MLsTQ5dM/mIeJ6nc19FT+pH+Mj8s0yd6gHpy
- qiQGWVNYOU1rVofNTqU3DqklXyI5bk1hatqNebhdyKFSNHvtrsPjM4YhvqvlaIS1+HTj
- d/q436bOrGqgjwyjfr2x1wQ0bb+OJxL3zpcDbrA0WpPD5rXO2tzy4mH89AMzOYXtT5O6
- 2c2TCCc4i8mVfvix0dDacE/5aKBGtpB8iDmwEB4Bhguyok8XMys1pkCfHtLwX4YzC5Ij
- tv3w==
-X-Gm-Message-State: AOAM531bRmTvrLxMdffIW6dSdsh23RN9D7HvLvpGpHyfxjx5xzsezQSz
- WtBuPgepDQ51Yv5u59ke0E7qNIz7lWFW3g==
-X-Google-Smtp-Source: ABdhPJxcS5+wNjDql0VH3YNNeL+bx6Mi47AbAGMX3vY3EFJgHPv7nFPDM8isNHojI01M5XiUpzXapg==
-X-Received: by 2002:a62:e409:: with SMTP id r9mr4330573pfh.44.1644324074868;
- Tue, 08 Feb 2022 04:41:14 -0800 (PST)
+ bh=ucbCQXspAieTR5IRJ88apHKs0Oo+TcGwEm7YM7yoBFE=;
+ b=b0JrHr0LgyIpJKodDO1QcIzx5TBFNR6AvFjd27biGg5gj15C8v1+sgsF8D/+glgNDM
+ k+/xSMnS69/WD0WW7oz/JJjIibaMGABBBz8cBTBktZ2D02r5X/0IQmHMgGS2+X7w/d3E
+ 87KtNbnAdeLCMw+DsYleUG2kYkh66TTGBO1PDo9yKkDttnEGz+HhREqbjdp1EMDMS78d
+ qagPgaQiizmsrkgDB/Ez+f6uxHixEDkkguPK5YsRSI/sMVBuv4zvA/EbSV0QvkFcF0EK
+ FhWe+oiqdei958AGC6VsydtglaG7hufbjC6pANW9fJJuosBd+a6Hfl3E83rnisQiHsTi
+ 2bTg==
+X-Gm-Message-State: AOAM533PPZABnwuqkQk4F+CIoXk8kHNMGt0pTj5DHJUCGDLLsqv0YHLH
+ 1nj9og2Bb3szOcMzyHaxAzALXQ==
+X-Google-Smtp-Source: ABdhPJxdkJmcSGDXCQW6yjqpsQN+RjwrIexHzblWHmuV0z4WVMDQoML2GrmGp6e07CaXZlQ30GG28g==
+X-Received: by 2002:a17:902:7048:: with SMTP id
+ h8mr4338247plt.40.1644324077323; 
+ Tue, 08 Feb 2022 04:41:17 -0800 (PST)
 Received: from wenstp920.tpe.corp.google.com
  ([2401:fa00:1:10:41b6:813e:c823:609c])
- by smtp.gmail.com with ESMTPSA id h11sm15056939pfe.214.2022.02.08.04.41.12
+ by smtp.gmail.com with ESMTPSA id h11sm15056939pfe.214.2022.02.08.04.41.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Feb 2022 04:41:14 -0800 (PST)
+ Tue, 08 Feb 2022 04:41:17 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Stephen Boyd <sboyd@kernel.org>,
  Michael Turquette <mturquette@baylibre.com>,
@@ -65,17 +66,16 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
  Miles Chen <miles.chen@mediatek.com>, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v3 12/31] clk: mediatek: pll: Split definitions into separate
- header file
-Date: Tue,  8 Feb 2022 20:40:15 +0800
-Message-Id: <20220208124034.414635-13-wenst@chromium.org>
+Subject: [PATCH v3 13/31] clk: mediatek: pll: Implement unregister API
+Date: Tue,  8 Feb 2022 20:40:16 +0800
+Message-Id: <20220208124034.414635-14-wenst@chromium.org>
 X-Mailer: git-send-email 2.35.0.263.gb82422642f-goog
 In-Reply-To: <20220208124034.414635-1-wenst@chromium.org>
 References: <20220208124034.414635-1-wenst@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220208_044116_366619_9CA4B4E0 
-X-CRM114-Status: GOOD (  19.20  )
+X-CRM114-CacheID: sfid-20220208_044118_596290_1202B295 
+X-CRM114-Status: GOOD (  16.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,415 +92,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When the PLL type clk was implemented in the MediaTek clk driver
-library, the data structure definitions and function declaration
-were put in the common header file.
+The PLL clk type within the MediaTek clk driver library only has a
+register function, and no corresponding unregister function. This
+means there is no way for its users to properly implement cleanup
+and removal.
 
-Since it is its own type of clk, and not all platform clk drivers
-utilize it, having the definitions in the common header results
-in wasted cycles during compilation.
-
-Split out the related definitions and declarations into its own
-header file, and include that only in the platform clk drivers that
-need it.
+Add a matching unregister function for the PLL type clk.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/clk/mediatek/clk-mt2701.c            |  5 +-
- drivers/clk/mediatek/clk-mt2712.c            |  3 +-
- drivers/clk/mediatek/clk-mt6765.c            |  3 +-
- drivers/clk/mediatek/clk-mt6779.c            |  3 +-
- drivers/clk/mediatek/clk-mt6797.c            |  3 +-
- drivers/clk/mediatek/clk-mt7622.c            |  5 +-
- drivers/clk/mediatek/clk-mt7629.c            |  5 +-
- drivers/clk/mediatek/clk-mt7986-apmixed.c    |  4 +-
- drivers/clk/mediatek/clk-mt8135.c            |  3 +-
- drivers/clk/mediatek/clk-mt8167.c            |  3 +-
- drivers/clk/mediatek/clk-mt8173.c            |  5 +-
- drivers/clk/mediatek/clk-mt8183.c            |  3 +-
- drivers/clk/mediatek/clk-mt8192.c            |  3 +-
- drivers/clk/mediatek/clk-mt8195-apmixedsys.c |  1 +
- drivers/clk/mediatek/clk-mt8195-apusys_pll.c |  1 +
- drivers/clk/mediatek/clk-mt8516.c            |  3 +-
- drivers/clk/mediatek/clk-mtk.h               | 39 --------------
- drivers/clk/mediatek/clk-pll.c               |  1 +
- drivers/clk/mediatek/clk-pll.h               | 55 ++++++++++++++++++++
- 19 files changed, 91 insertions(+), 57 deletions(-)
- create mode 100644 drivers/clk/mediatek/clk-pll.h
+ drivers/clk/mediatek/clk-pll.c | 55 ++++++++++++++++++++++++++++++++++
+ drivers/clk/mediatek/clk-pll.h |  2 ++
+ 2 files changed, 57 insertions(+)
 
-diff --git a/drivers/clk/mediatek/clk-mt2701.c b/drivers/clk/mediatek/clk-mt2701.c
-index 695be0f77427..1eb3e4563c3f 100644
---- a/drivers/clk/mediatek/clk-mt2701.c
-+++ b/drivers/clk/mediatek/clk-mt2701.c
-@@ -10,9 +10,10 @@
- #include <linux/of_device.h>
- #include <linux/platform_device.h>
- 
--#include "clk-mtk.h"
--#include "clk-gate.h"
- #include "clk-cpumux.h"
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+#include "clk-pll.h"
- 
- #include <dt-bindings/clock/mt2701-clk.h>
- 
-diff --git a/drivers/clk/mediatek/clk-mt2712.c b/drivers/clk/mediatek/clk-mt2712.c
-index a3bd9a107209..ff72b9ab945b 100644
---- a/drivers/clk/mediatek/clk-mt2712.c
-+++ b/drivers/clk/mediatek/clk-mt2712.c
-@@ -13,8 +13,9 @@
- #include <linux/platform_device.h>
- #include <linux/slab.h>
- 
--#include "clk-mtk.h"
- #include "clk-gate.h"
-+#include "clk-pll.h"
-+#include "clk-mtk.h"
- 
- #include <dt-bindings/clock/mt2712-clk.h>
- 
-diff --git a/drivers/clk/mediatek/clk-mt6765.c b/drivers/clk/mediatek/clk-mt6765.c
-index d77ea5aff292..24829ca3bd1f 100644
---- a/drivers/clk/mediatek/clk-mt6765.c
-+++ b/drivers/clk/mediatek/clk-mt6765.c
-@@ -12,9 +12,10 @@
- #include <linux/of_device.h>
- #include <linux/platform_device.h>
- 
--#include "clk-mtk.h"
- #include "clk-gate.h"
-+#include "clk-mtk.h"
- #include "clk-mux.h"
-+#include "clk-pll.h"
- 
- #include <dt-bindings/clock/mt6765-clk.h>
- 
-diff --git a/drivers/clk/mediatek/clk-mt6779.c b/drivers/clk/mediatek/clk-mt6779.c
-index 9825385c9f94..7b61664da18f 100644
---- a/drivers/clk/mediatek/clk-mt6779.c
-+++ b/drivers/clk/mediatek/clk-mt6779.c
-@@ -10,9 +10,10 @@
- #include <linux/of_device.h>
- #include <linux/platform_device.h>
- 
-+#include "clk-gate.h"
- #include "clk-mtk.h"
- #include "clk-mux.h"
--#include "clk-gate.h"
-+#include "clk-pll.h"
- 
- #include <dt-bindings/clock/mt6779-clk.h>
- 
-diff --git a/drivers/clk/mediatek/clk-mt6797.c b/drivers/clk/mediatek/clk-mt6797.c
-index 428eb24ffec5..02259e81625a 100644
---- a/drivers/clk/mediatek/clk-mt6797.c
-+++ b/drivers/clk/mediatek/clk-mt6797.c
-@@ -9,8 +9,9 @@
- #include <linux/of_device.h>
- #include <linux/platform_device.h>
- 
--#include "clk-mtk.h"
- #include "clk-gate.h"
-+#include "clk-mtk.h"
-+#include "clk-pll.h"
- 
- #include <dt-bindings/clock/mt6797-clk.h>
- 
-diff --git a/drivers/clk/mediatek/clk-mt7622.c b/drivers/clk/mediatek/clk-mt7622.c
-index ef5947e15c75..0e1fb30a1e98 100644
---- a/drivers/clk/mediatek/clk-mt7622.c
-+++ b/drivers/clk/mediatek/clk-mt7622.c
-@@ -11,9 +11,10 @@
- #include <linux/of_device.h>
- #include <linux/platform_device.h>
- 
--#include "clk-mtk.h"
--#include "clk-gate.h"
- #include "clk-cpumux.h"
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+#include "clk-pll.h"
- 
- #include <dt-bindings/clock/mt7622-clk.h>
- #include <linux/clk.h> /* for consumer */
-diff --git a/drivers/clk/mediatek/clk-mt7629.c b/drivers/clk/mediatek/clk-mt7629.c
-index a0ee079670c7..c0e023bf31eb 100644
---- a/drivers/clk/mediatek/clk-mt7629.c
-+++ b/drivers/clk/mediatek/clk-mt7629.c
-@@ -12,9 +12,10 @@
- #include <linux/of_device.h>
- #include <linux/platform_device.h>
- 
--#include "clk-mtk.h"
--#include "clk-gate.h"
- #include "clk-cpumux.h"
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+#include "clk-pll.h"
- 
- #include <dt-bindings/clock/mt7629-clk.h>
- 
-diff --git a/drivers/clk/mediatek/clk-mt7986-apmixed.c b/drivers/clk/mediatek/clk-mt7986-apmixed.c
-index 98ec3887585f..21d4c82e782a 100644
---- a/drivers/clk/mediatek/clk-mt7986-apmixed.c
-+++ b/drivers/clk/mediatek/clk-mt7986-apmixed.c
-@@ -10,9 +10,11 @@
- #include <linux/of_address.h>
- #include <linux/of_device.h>
- #include <linux/platform_device.h>
--#include "clk-mtk.h"
-+
- #include "clk-gate.h"
-+#include "clk-mtk.h"
- #include "clk-mux.h"
-+#include "clk-pll.h"
- 
- #include <dt-bindings/clock/mt7986-clk.h>
- #include <linux/clk.h>
-diff --git a/drivers/clk/mediatek/clk-mt8135.c b/drivers/clk/mediatek/clk-mt8135.c
-index 9b4b645aea99..09ad272d51f1 100644
---- a/drivers/clk/mediatek/clk-mt8135.c
-+++ b/drivers/clk/mediatek/clk-mt8135.c
-@@ -11,8 +11,9 @@
- #include <linux/mfd/syscon.h>
- #include <dt-bindings/clock/mt8135-clk.h>
- 
--#include "clk-mtk.h"
- #include "clk-gate.h"
-+#include "clk-mtk.h"
-+#include "clk-pll.h"
- 
- static DEFINE_SPINLOCK(mt8135_clk_lock);
- 
-diff --git a/drivers/clk/mediatek/clk-mt8167.c b/drivers/clk/mediatek/clk-mt8167.c
-index e5ea10e31799..812b33a57530 100644
---- a/drivers/clk/mediatek/clk-mt8167.c
-+++ b/drivers/clk/mediatek/clk-mt8167.c
-@@ -12,8 +12,9 @@
- #include <linux/slab.h>
- #include <linux/mfd/syscon.h>
- 
--#include "clk-mtk.h"
- #include "clk-gate.h"
-+#include "clk-mtk.h"
-+#include "clk-pll.h"
- 
- #include <dt-bindings/clock/mt8167-clk.h>
- 
-diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
-index 8f898ac476c0..46b7655feeaa 100644
---- a/drivers/clk/mediatek/clk-mt8173.c
-+++ b/drivers/clk/mediatek/clk-mt8173.c
-@@ -8,9 +8,10 @@
- #include <linux/of.h>
- #include <linux/of_address.h>
- 
--#include "clk-mtk.h"
--#include "clk-gate.h"
- #include "clk-cpumux.h"
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+#include "clk-pll.h"
- 
- #include <dt-bindings/clock/mt8173-clk.h>
- 
-diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
-index 5046852eb0fd..68496554dd3d 100644
---- a/drivers/clk/mediatek/clk-mt8183.c
-+++ b/drivers/clk/mediatek/clk-mt8183.c
-@@ -11,9 +11,10 @@
- #include <linux/platform_device.h>
- #include <linux/slab.h>
- 
-+#include "clk-gate.h"
- #include "clk-mtk.h"
- #include "clk-mux.h"
--#include "clk-gate.h"
-+#include "clk-pll.h"
- 
- #include <dt-bindings/clock/mt8183-clk.h>
- 
-diff --git a/drivers/clk/mediatek/clk-mt8192.c b/drivers/clk/mediatek/clk-mt8192.c
-index 79ddb3cc0b98..ab27cd66b866 100644
---- a/drivers/clk/mediatek/clk-mt8192.c
-+++ b/drivers/clk/mediatek/clk-mt8192.c
-@@ -12,9 +12,10 @@
- #include <linux/platform_device.h>
- #include <linux/slab.h>
- 
-+#include "clk-gate.h"
- #include "clk-mtk.h"
- #include "clk-mux.h"
--#include "clk-gate.h"
-+#include "clk-pll.h"
- 
- #include <dt-bindings/clock/mt8192-clk.h>
- 
-diff --git a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
-index 6156ceeed71e..5b1b7dc447eb 100644
---- a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
-+++ b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
-@@ -5,6 +5,7 @@
- 
- #include "clk-gate.h"
- #include "clk-mtk.h"
-+#include "clk-pll.h"
- 
- #include <dt-bindings/clock/mt8195-clk.h>
- #include <linux/of_device.h>
-diff --git a/drivers/clk/mediatek/clk-mt8195-apusys_pll.c b/drivers/clk/mediatek/clk-mt8195-apusys_pll.c
-index f1c84186346e..db449ff877d7 100644
---- a/drivers/clk/mediatek/clk-mt8195-apusys_pll.c
-+++ b/drivers/clk/mediatek/clk-mt8195-apusys_pll.c
-@@ -4,6 +4,7 @@
- // Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
- 
- #include "clk-mtk.h"
-+#include "clk-pll.h"
- 
- #include <dt-bindings/clock/mt8195-clk.h>
- #include <linux/clk-provider.h>
-diff --git a/drivers/clk/mediatek/clk-mt8516.c b/drivers/clk/mediatek/clk-mt8516.c
-index 9d4261ecc760..a37143f920ce 100644
---- a/drivers/clk/mediatek/clk-mt8516.c
-+++ b/drivers/clk/mediatek/clk-mt8516.c
-@@ -11,8 +11,9 @@
- #include <linux/slab.h>
- #include <linux/mfd/syscon.h>
- 
--#include "clk-mtk.h"
- #include "clk-gate.h"
-+#include "clk-mtk.h"
-+#include "clk-pll.h"
- 
- #include <dt-bindings/clock/mt8516-clk.h>
- 
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index bdec7dc5e07a..168220f85489 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -179,45 +179,6 @@ void mtk_clk_register_dividers(const struct mtk_clk_divider *mcds,
- struct clk_onecell_data *mtk_alloc_clk_data(unsigned int clk_num);
- void mtk_free_clk_data(struct clk_onecell_data *clk_data);
- 
--#define HAVE_RST_BAR	BIT(0)
--#define PLL_AO		BIT(1)
--
--struct mtk_pll_div_table {
--	u32 div;
--	unsigned long freq;
--};
--
--struct mtk_pll_data {
--	int id;
--	const char *name;
--	u32 reg;
--	u32 pwr_reg;
--	u32 en_mask;
--	u32 pd_reg;
--	u32 tuner_reg;
--	u32 tuner_en_reg;
--	u8 tuner_en_bit;
--	int pd_shift;
--	unsigned int flags;
--	const struct clk_ops *ops;
--	u32 rst_bar_mask;
--	unsigned long fmin;
--	unsigned long fmax;
--	int pcwbits;
--	int pcwibits;
--	u32 pcw_reg;
--	int pcw_shift;
--	u32 pcw_chg_reg;
--	const struct mtk_pll_div_table *div_table;
--	const char *parent_name;
--	u32 en_reg;
--	u8 pll_en_bit; /* Assume 0, indicates BIT(0) by default */
--};
--
--void mtk_clk_register_plls(struct device_node *node,
--		const struct mtk_pll_data *plls, int num_plls,
--		struct clk_onecell_data *clk_data);
--
- struct clk *mtk_clk_register_ref2usb_tx(const char *name,
- 			const char *parent_name, void __iomem *reg);
- 
 diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index f04f724e12e5..64f59554bc9b 100644
+index 64f59554bc9b..b54e33b75d4e 100644
 --- a/drivers/clk/mediatek/clk-pll.c
 +++ b/drivers/clk/mediatek/clk-pll.c
-@@ -13,6 +13,7 @@
- #include <linux/delay.h>
+@@ -360,6 +360,21 @@ static struct clk *mtk_clk_register_pll(const struct mtk_pll_data *data,
+ 	return clk;
+ }
  
- #include "clk-mtk.h"
-+#include "clk-pll.h"
++static void mtk_clk_unregister_pll(struct clk *clk)
++{
++	struct clk_hw *hw;
++	struct mtk_clk_pll *pll;
++
++	hw = __clk_get_hw(clk);
++	if (!hw)
++		return;
++
++	pll = to_mtk_clk_pll(hw);
++
++	clk_unregister(clk);
++	kfree(pll);
++}
++
+ void mtk_clk_register_plls(struct device_node *node,
+ 		const struct mtk_pll_data *plls, int num_plls, struct clk_onecell_data *clk_data)
+ {
+@@ -388,4 +403,44 @@ void mtk_clk_register_plls(struct device_node *node,
+ }
+ EXPORT_SYMBOL_GPL(mtk_clk_register_plls);
  
- #define REG_CON0		0
- #define REG_CON1		4
++static __iomem void *mtk_clk_pll_get_base(struct clk *clk,
++					  const struct mtk_pll_data *data)
++{
++	struct clk_hw *hw = __clk_get_hw(clk);
++	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
++
++	return pll->base_addr - data->reg;
++}
++
++void mtk_clk_unregister_plls(const struct mtk_pll_data *plls, int num_plls,
++			     struct clk_onecell_data *clk_data)
++{
++	__iomem void *base = NULL;
++	int i;
++
++	if (!clk_data)
++		return;
++
++	for (i = num_plls; i > 0; i--) {
++		const struct mtk_pll_data *pll = &plls[i - 1];
++
++		if (IS_ERR_OR_NULL(clk_data->clks[pll->id]))
++			continue;
++
++		/*
++		 * This is quite ugly but unfortunately the clks don't have
++		 * any device tied to them, so there's no place to store the
++		 * pointer to the I/O region base address. We have to fetch
++		 * it from one of the registered clks.
++		 */
++		base = mtk_clk_pll_get_base(clk_data->clks[pll->id], pll);
++
++		mtk_clk_unregister_pll(clk_data->clks[pll->id]);
++		clk_data->clks[pll->id] = ERR_PTR(-ENOENT);
++	}
++
++	iounmap(base);
++}
++EXPORT_SYMBOL_GPL(mtk_clk_unregister_plls);
++
+ MODULE_LICENSE("GPL");
 diff --git a/drivers/clk/mediatek/clk-pll.h b/drivers/clk/mediatek/clk-pll.h
-new file mode 100644
-index 000000000000..d01b0c38311d
---- /dev/null
+index d01b0c38311d..a889b1e472e7 100644
+--- a/drivers/clk/mediatek/clk-pll.h
 +++ b/drivers/clk/mediatek/clk-pll.h
-@@ -0,0 +1,55 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2014 MediaTek Inc.
-+ * Author: James Liao <jamesjj.liao@mediatek.com>
-+ */
-+
-+#ifndef __DRV_CLK_MTK_PLL_H
-+#define __DRV_CLK_MTK_PLL_H
-+
-+#include <linux/types.h>
-+
-+struct clk_ops;
-+struct clk_onecell_data;
-+struct device_node;
-+
-+struct mtk_pll_div_table {
-+	u32 div;
-+	unsigned long freq;
-+};
-+
-+#define HAVE_RST_BAR	BIT(0)
-+#define PLL_AO		BIT(1)
-+
-+struct mtk_pll_data {
-+	int id;
-+	const char *name;
-+	u32 reg;
-+	u32 pwr_reg;
-+	u32 en_mask;
-+	u32 pd_reg;
-+	u32 tuner_reg;
-+	u32 tuner_en_reg;
-+	u8 tuner_en_bit;
-+	int pd_shift;
-+	unsigned int flags;
-+	const struct clk_ops *ops;
-+	u32 rst_bar_mask;
-+	unsigned long fmin;
-+	unsigned long fmax;
-+	int pcwbits;
-+	int pcwibits;
-+	u32 pcw_reg;
-+	int pcw_shift;
-+	u32 pcw_chg_reg;
-+	const struct mtk_pll_div_table *div_table;
-+	const char *parent_name;
-+	u32 en_reg;
-+	u8 pll_en_bit; /* Assume 0, indicates BIT(0) by default */
-+};
-+
-+void mtk_clk_register_plls(struct device_node *node,
-+			   const struct mtk_pll_data *plls, int num_plls,
-+			   struct clk_onecell_data *clk_data);
-+
-+#endif /* __DRV_CLK_MTK_PLL_H */
+@@ -51,5 +51,7 @@ struct mtk_pll_data {
+ void mtk_clk_register_plls(struct device_node *node,
+ 			   const struct mtk_pll_data *plls, int num_plls,
+ 			   struct clk_onecell_data *clk_data);
++void mtk_clk_unregister_plls(const struct mtk_pll_data *plls, int num_plls,
++			     struct clk_onecell_data *clk_data);
+ 
+ #endif /* __DRV_CLK_MTK_PLL_H */
 -- 
 2.35.0.263.gb82422642f-goog
 
