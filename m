@@ -4,82 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67E20C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 07:38:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCCCDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 07:52:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KIFdOQIlirkAr25LcG203jsy89yCPFod7Ze0Yc1QhIM=; b=cYz9qLuX8H2kXK
-	8A4pGS5tV9ha4O2Mn0ssVwOQ62XcWPhpQ4+8UUbVybsDyEwpNHbkY3KGlxbEPyaLAQo/ok6XaPWta
-	UG4PxaR7yu5L9L8rIt+IHSdsmZGpksVhczhD6UCL8iI1Z279J59snFZBRYTxvfVyGxBDKMc3ckOeR
-	HkxwrTfaXTrut6d3HZo3TDPEvTlLPrnQ03lmK8n9uU6QGq3aP3Tpu19ATukUemccPOHUw62uDEDKq
-	EOa59dRm7AmjrUAHuPKYxCHp0NKToWoZj2dJWgiQzh74awBGJ3qjiW+7ko4PosOWxwLcYN3MqTSrX
-	eDJQkYYbuJU+X7FD3VXQ==;
+	List-Owner; bh=jRKUpiLh7Fx6HIKZAFAGgQa7xfk/p4eyepJ+zySseCk=; b=lW1iTRJbbms6rF
+	sF+6HSH7WFAsh+ygs/V6HDvhjQhrRabn/XZoCJEUQ8i7EaleJ7S4OHs5rcHERAxbCAptXheEpk0fC
+	By5RkkNBHQsoWgjvemyRmtQ0p3geqPnLMXJzLqXTMGyB2yMvlAca3kmht2n6Roq882QYGV8GfqX9N
+	a7jOn8KtrRGw0h0bI7OZiKzmx16nZw/3UyPCPr3xha/njJV/YQDZhewz0pTRMrFX+8/QmfeTwVLHQ
+	ktJrJhIDZPL10WF7Xk2N1b/duUvsVTu96qfLyXNvkuFWJt+4XHd7gwnys4A6eNnyxXgyQOHb1VPrc
+	aZcpdqmF93IbpD3Fumgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHL4b-00CnEA-3p; Tue, 08 Feb 2022 07:38:01 +0000
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+	id 1nHLIN-00Cptz-QV; Tue, 08 Feb 2022 07:52:15 +0000
+Received: from mga14.intel.com ([192.55.52.115])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHL43-00Cmxj-MO
- for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 07:37:30 +0000
-Received: by mail-pf1-x42e.google.com with SMTP id y5so16520482pfe.4
- for <linux-mediatek@lists.infradead.org>; Mon, 07 Feb 2022 23:37:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=RKltf19DtHiRc15a3iaZ/NnDb+6ppKujiVxWZQto3YU=;
- b=UQRrh4b2cYpExbUb5sYjfYPmvD9zbPX49JL8Al9S0glKbqkZ0dmzb/DWvs20vFsU4I
- O/YgtlkeyONvN4ODXkKbAwbVKcjSXwNHy1KNIzNLS8S85I1c3k2dDioajk+vyYjTK0vr
- kVR0Zgv0Jb0jFEIXVFA9s6SyAAU+51lA2FXMg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=RKltf19DtHiRc15a3iaZ/NnDb+6ppKujiVxWZQto3YU=;
- b=0fjFzUpIuVZ78htum++McIZFSYdpIAlhnZEY7Yh+dBfxt7fJPyJrta0NX0rf953Eeo
- U2u6XCqLZRirPoMtb1Zech9BjHgudhYRADpI51Y6TVKscpWYcrETxFHGavVd426eJVhz
- 7OMSQA3Fjp5krcDB2Up2z3+3SqEzKwen1OOnhluivEeeMVn5Gzv+TDsu8p58LHoETklu
- 7EWa/qo63XJ4/A9PO+5jT0r+Mmb5R0itMNYFGgHHc4jT+GNOLiPzip8dDQvKg5EGXSO+
- AW4zN3pxwt4XV1hvgzrhuCQRFimAMSXaB0hhZn0SIa4eSQLQApHjzejcoRMssUobFABt
- hVqw==
-X-Gm-Message-State: AOAM531BNL0OR0jnEJIB4Ry52RqicCZVOGFL9hwEnFY0TmsrRA56bapI
- oVff0d4orfwIgt5m4HNEXt3Qxw==
-X-Google-Smtp-Source: ABdhPJx2727H/bIFB7AiNJuAQfngpGnHTMQX3kn1wApGZnVIxbe2t19Z6gDkwdss+b2K2QYmV7K1CQ==
-X-Received: by 2002:a63:8a44:: with SMTP id y65mr2554451pgd.590.1644305846835; 
- Mon, 07 Feb 2022 23:37:26 -0800 (PST)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:7d9a:166e:9d34:ff4f])
- by smtp.gmail.com with ESMTPSA id ip5sm1677243pjb.13.2022.02.07.23.37.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Feb 2022 23:37:26 -0800 (PST)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>,
+ id 1nHLIL-00CptL-EQ; Tue, 08 Feb 2022 07:52:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1644306733; x=1675842733;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=zSjGWEp/lad+yOmZqYzDcbgsisGuWA+cNAYLyxP20Lw=;
+ b=iCCf0cFrOTqfG3ozo4WcCvGBKZCbSBCPL8wchRiUctZhgAxpPyE3lHaP
+ MMWmOIcU1cuHisv/YJZpFXhjJ7q7WsoaJ3VBRz2SPn/+W7QJjAzNnKG9t
+ VDRVQ3A2Eghoe98h/gm5IGuWqvV/4n0HA5adTwyEjuz/pQwZbT2q/JAkK
+ CptBKq13aHU5Ppxk6dAvqzLE4yhE+gYrzrManDXUs1Yrc/OwWlPZLYzrG
+ /1KEwL2V5WRZjGe1xCIlCaIkUD3gmrahfN9uSL4FnWN4gGmEFqWRyoFKC
+ 67GzL1S/Hk0loXRRcOV9uPaeF7OyW1OIzeTjELmN8YR1mE0kBi+H7iU78 w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10251"; a="249103293"
+X-IronPort-AV: E=Sophos;i="5.88,352,1635231600"; d="scan'208";a="249103293"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Feb 2022 23:52:12 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,352,1635231600"; d="scan'208";a="484724374"
+Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.151])
+ by orsmga006.jf.intel.com with SMTP; 07 Feb 2022 23:52:06 -0800
+Received: by stinkbox (sSMTP sendmail emulation);
+ Tue, 08 Feb 2022 09:52:05 +0200
+Date: Tue, 8 Feb 2022 09:52:05 +0200
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>,
  Daniel Vetter <daniel@ffwll.ch>, amd-gfx@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Sean Paul <sean@poorly.run>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ intel-gfx@lists.freedesktop.org,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, devicetree@vger.kernel.org,
+ Simon Ser <contact@emersion.fr>, linux-kernel@vger.kernel.org,
  Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Simon Ser <contact@emersion.fr>, Harry Wentland <harry.wentland@amd.com>,
- Alex Deucher <alexander.deucher@amd.com>,
- Jani Nikula <jani.nikula@linux.intel.com>
-Subject: [PATCH v7 3/3] arm64: dts: mt8183: Add panel rotation
-Date: Tue,  8 Feb 2022 15:37:14 +0800
-Message-Id: <20220208073714.1540390-3-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.35.0.263.gb82422642f-goog
-In-Reply-To: <20220208073714.1540390-1-hsinyi@chromium.org>
+ Alex Deucher <alexander.deucher@amd.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Harry Wentland <harry.wentland@amd.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [Intel-gfx] [PATCH v7 1/3] gpu: drm: separate panel orientation
+ property creating and value setting
+Message-ID: <YgIhJb3+MckKD4dC@intel.com>
 References: <20220208073714.1540390-1-hsinyi@chromium.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220208073714.1540390-1-hsinyi@chromium.org>
+X-Patchwork-Hint: comment
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220207_233727_794526_226DA082 
-X-CRM114-Status: UNSURE (   9.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220207_235213_523360_19BAA13C 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,35 +84,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-krane, kakadu, and kodama boards have a default panel rotation.
+On Tue, Feb 08, 2022 at 03:37:12PM +0800, Hsin-Yi Wang wrote:
+> +int drm_connector_init_panel_orientation_property(
+> +	struct drm_connector *connector)
+> +{
+> +	struct drm_device *dev =3D connector->dev;
+> +	struct drm_property *prop;
+> +
+> +	prop =3D drm_property_create_enum(dev, DRM_MODE_PROP_IMMUTABLE,
+> +			"panel orientation",
+> +			drm_panel_orientation_enum_list,
+> +			ARRAY_SIZE(drm_panel_orientation_enum_list));
+> +	if (!prop)
+> +		return -ENOMEM;
+> +
+> +	dev->mode_config.panel_orientation_property =3D prop;
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+Leak when called multiple times. I guess you could just put
+this into drm_connector_create_standard_properties() instead
+and avoid that issue entirely.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index b42d81d26d7211..d29d4378170971 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -276,6 +276,7 @@ panel: panel@0 {
- 		avee-supply = <&ppvarp_lcd>;
- 		pp1800-supply = <&pp1800_lcd>;
- 		backlight = <&backlight_lcd0>;
-+		rotation = <270>;
- 		port {
- 			panel_in: endpoint {
- 				remote-endpoint = <&dsi_out>;
--- 
-2.35.0.263.gb82422642f-goog
+-- =
 
+Ville Syrj=E4l=E4
+Intel
 
 _______________________________________________
 Linux-mediatek mailing list
