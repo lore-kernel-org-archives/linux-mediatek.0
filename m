@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B82CFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 12:56:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39784C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 12:59:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G7PKXnkwO393HtG22zbOq1qTpmFrPanVk1uho/RuH/c=; b=HnnzZiie4nmTrm
-	epQhKmcEFrBJGNcFCeZjxyKI2m45i5dO83v2/+RMj18wJmbQs4WkOf6yzCtViUJNhz3ImlZaTLmP7
-	TUWTRmYcGIeBKzNAjwbDfJTCmSsdhJkUC6J5vChLuVWAy2mHm/3pJejC3EtdL2VNE+MZ+mZEOml40
-	SU1G3jswTqGFwHXt3A3Szw+Ec0AAqY9spP/PfpnoHAPZokyRrCLvquId9phOpwxdmM47kvUZzVFBB
-	xQWUYgkYU3IzoxpV2EiR+7/wfW7w9RW4HoXHkuihXLxu+FcliGx+widgwsXksGa3TlRntZGtMDHtD
-	MtrTIkK28VLXr+6kcnRQ==;
+	List-Owner; bh=guC1JJ1PVKQks2S7smSEZN1p1fpmMFJWLkacdznLxOc=; b=K3i6R9vWSKJRMU
+	oePLV0aCEPvznA7iq+aKntL0U7pRi0SjsEovEWhXqGVA4T0Z38Cr9tmKBIXjpRLVaxk12ycyJrYaX
+	CoiQJoVEaQC78Y/aIGKhuA6Z8xgU6UQeK6j5yyWPgtaO4VGSUj7w2j7zllHynEc6bprjiUXEjpy0A
+	lpaFXW6C6bNvlvNgDgeohJg1KNcpcCgvrgN4WKhQlEiKp1GESlc7XzIPLYb0tKc8rJdI+ultc1NIz
+	3MdYnvtYFml8SpRwVHE0cD2gFM9ON8L7v72Fb22huOueJvcyAD1AElATTmYERvIt0gsOxkvNLvAcd
+	uP5my/kj903rh8LPox2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHQ2j-00DuTH-8G; Tue, 08 Feb 2022 12:56:25 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1nHQ5p-00DvdU-2D; Tue, 08 Feb 2022 12:59:37 +0000
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHPoP-00Dnd0-Qc
- for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 12:41:39 +0000
-Received: by mail-pl1-x635.google.com with SMTP id x4so6144297plb.4
- for <linux-mediatek@lists.infradead.org>; Tue, 08 Feb 2022 04:41:37 -0800 (PST)
+ id 1nHPoT-00DneF-Eu
+ for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 12:41:43 +0000
+Received: by mail-pf1-x42e.google.com with SMTP id i17so18618514pfq.13
+ for <linux-mediatek@lists.infradead.org>; Tue, 08 Feb 2022 04:41:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=4j0R3HNeSGc+g80776sCkQCAjbvK19KbOBB/hGRldNk=;
- b=acB1/7BjmdHubG8NFsy4k7UA6MfRRMn4I+NVgkiU8wubRqG3ZE/NU9WNV3bqc/gc74
- f7yUl7C2eXS9BMC73EIc0+SXkB9SG9YhdoTVoZBgR1zXx+yMoe3c93OhwzqC8A+U2INA
- xrjNY7XBULuhL4YJPxoFrfx4sT02hLUb1ds6U=
+ bh=ga+gjzrzR/LMbGVHXMahoAG4teobfaMr0L0SPMOkFuM=;
+ b=RZ9aNJj6d+PjwBnU0ZJr9mX0nqK+z2KPKSE1hVDOXS6VR7K79uaqtUSEcm7xi/csiT
+ PWkXmSg1lDYbXRJVyBHvI8LGnEa9ps7DiMTFIno+JyB6kH8xzJ+339+ev6Rsm53OTn79
+ B3I6j48uRr2+5wLm760I9Q9pCw2Z3sZkrOEYQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=4j0R3HNeSGc+g80776sCkQCAjbvK19KbOBB/hGRldNk=;
- b=qWie8ytxb1ktmENbiR1m/nX9v7HCUAAu1mXidnt1KvWXk83KIb8Ec5IbkTZoembCQj
- sj6XuFkPdSgafWW6Yl/f3bdPGRwBCx3PJ5t+t/ulNLxb98kmhredDjn2qC0uAK/D5lKy
- NR7H/tfSfJwwfiwcH7uq+FM45pQh8YHmZqr1tqfQq6P+xaSOpB1/d6dHugGJhkJnrNXk
- h3fzskXmHJpoT97inDjMbIYItja+z7BvR0XIzE8OSkuyohPOtYAmKyKzWWOlSiP33FAR
- 37V9ivtxb3ULX92u7Ii8yeR+0xYEFftzsJCw/8F7eOg6x9jE6AAJWdY8IX5Fgq67S/eo
- IM2w==
-X-Gm-Message-State: AOAM5335qEyt1z6YCy/G8nJN7/vmYu+Pqado4/wzh+FFYNgKUS4VhYzy
- KxN8U0qffV9hYin3SYvlq+0INQ==
-X-Google-Smtp-Source: ABdhPJzeLyoZfZy0zfpCnekQyWJxm9Sx4ZNhG5yQw9XmEnf8kxkhVQqUSq9kr4wYr+yQxWqGmBAj1Q==
-X-Received: by 2002:a17:902:f651:: with SMTP id
- m17mr4253231plg.106.1644324096651; 
- Tue, 08 Feb 2022 04:41:36 -0800 (PST)
+ bh=ga+gjzrzR/LMbGVHXMahoAG4teobfaMr0L0SPMOkFuM=;
+ b=r76ORe9vXBAIXu1iMiIHmRkwotMf87q90cJo/bwE4xvzeRgY7PESSbY8p/VA+Mhy3/
+ 5t+zAcvojvNSBLuLeSjX2w79JxQuRWUdVTiWVK5fLAeIsRDL1KBmKMuCGDdaeQiAKRSJ
+ 7BAIyqbKfwyPsigivu0imsIL/wZO8idTugyaS3Uh3oBta63Tuj5Aq3oPBkP3raw4/dbt
+ vQbixhqk+LyzprF45cq+3739UWx4O1SwT79h7/xVAdeDg1cGqt1SmqiATM16hETa5th5
+ gkcV1F+Ta3OosoOKT9cY97ukRSGbvjMDXHW/56HBoqiB00Lehl1AscpyWpgYuYddZJa9
+ 1OLQ==
+X-Gm-Message-State: AOAM533zVni3SKsf3pGS8cn7qaHLVXX1OaE1YwxJq7dkuQalAEUk0CS8
+ 8VZN2XEFaDcq7gdN70+hNjuQCA==
+X-Google-Smtp-Source: ABdhPJw8d0noYcaqrmuUm0oYUt6VCRIRuANK5szIhgF5+nvEpUNbWJNicRVw/Rm/sTOyay6sR7vcPA==
+X-Received: by 2002:a63:2a86:: with SMTP id q128mr3374314pgq.53.1644324098777; 
+ Tue, 08 Feb 2022 04:41:38 -0800 (PST)
 Received: from wenstp920.tpe.corp.google.com
  ([2401:fa00:1:10:41b6:813e:c823:609c])
- by smtp.gmail.com with ESMTPSA id h11sm15056939pfe.214.2022.02.08.04.41.34
+ by smtp.gmail.com with ESMTPSA id h11sm15056939pfe.214.2022.02.08.04.41.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Feb 2022 04:41:36 -0800 (PST)
+ Tue, 08 Feb 2022 04:41:38 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Stephen Boyd <sboyd@kernel.org>,
  Michael Turquette <mturquette@baylibre.com>,
@@ -66,17 +65,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
  Miles Chen <miles.chen@mediatek.com>, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v3 22/31] clk: mediatek: gate: Implement error handling in
- register API
-Date: Tue,  8 Feb 2022 20:40:25 +0800
-Message-Id: <20220208124034.414635-23-wenst@chromium.org>
+Subject: [PATCH v3 23/31] clk: mediatek: mux: Reverse check for existing clk
+ to reduce nesting level
+Date: Tue,  8 Feb 2022 20:40:26 +0800
+Message-Id: <20220208124034.414635-24-wenst@chromium.org>
 X-Mailer: git-send-email 2.35.0.263.gb82422642f-goog
 In-Reply-To: <20220208124034.414635-1-wenst@chromium.org>
 References: <20220208124034.414635-1-wenst@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220208_044137_945911_331D80D1 
-X-CRM114-Status: GOOD (  13.35  )
+X-CRM114-CacheID: sfid-20220208_044141_542433_B5C3898A 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,54 +92,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The gate clk type registration function does not stop or return errors
-if any clk failed to be registered, nor does it implement an error
-handling path. This may result in a partially working device if any
-step failed.
+The clk registration code here currently does:
 
-Make the register function return proper error codes, and bail out if
-errors occur. Proper cleanup, i.e. unregister any clks that were
-successfully registered, is done in the new error path.
+    if (IS_ERR_OR_NULL(clk_data->clks[mux->id])) {
+            ... do clk registration ...
+    }
+
+This extra level of nesting wastes screen real estate.
+
+Reduce the nesting level by reversing the conditional shown above.
+Other than that, functionality is not changed.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/clk/mediatek/clk-gate.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
+ drivers/clk/mediatek/clk-mux.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
-index e8881ae1489a..631ff170b7b9 100644
---- a/drivers/clk/mediatek/clk-gate.c
-+++ b/drivers/clk/mediatek/clk-gate.c
-@@ -237,13 +237,26 @@ int mtk_clk_register_gates_with_dev(struct device_node *node,
+diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
+index 01af6a52711a..70aa42144632 100644
+--- a/drivers/clk/mediatek/clk-mux.c
++++ b/drivers/clk/mediatek/clk-mux.c
+@@ -208,16 +208,17 @@ int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+ 	for (i = 0; i < num; i++) {
+ 		const struct mtk_mux *mux = &muxes[i];
  
- 		if (IS_ERR(clk)) {
- 			pr_err("Failed to register clk %s: %pe\n", gate->name, clk);
--			continue;
-+			goto err;
+-		if (IS_ERR_OR_NULL(clk_data->clks[mux->id])) {
+-			clk = mtk_clk_register_mux(mux, regmap, lock);
++		if (!IS_ERR_OR_NULL(clk_data->clks[mux->id]))
++			continue;
+ 
+-			if (IS_ERR(clk)) {
+-				pr_err("Failed to register clk %s: %pe\n", mux->name, clk);
+-				continue;
+-			}
++		clk = mtk_clk_register_mux(mux, regmap, lock);
+ 
+-			clk_data->clks[mux->id] = clk;
++		if (IS_ERR(clk)) {
++			pr_err("Failed to register clk %s: %pe\n", mux->name, clk);
++			continue;
  		}
- 
- 		clk_data->clks[gate->id] = clk;
++
++		clk_data->clks[mux->id] = clk;
  	}
  
  	return 0;
-+
-+err:
-+	while (--i >= 0) {
-+		const struct mtk_gate *gate = &clks[i];
-+
-+		if (IS_ERR_OR_NULL(clk_data->clks[gate->id]))
-+			continue;
-+
-+		mtk_clk_unregister_gate(clk_data->clks[gate->id]);
-+		clk_data->clks[gate->id] = ERR_PTR(-ENOENT);
-+	}
-+
-+	return PTR_ERR(clk);
- }
- 
- int mtk_clk_register_gates(struct device_node *node,
 -- 
 2.35.0.263.gb82422642f-goog
 
