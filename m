@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 422D0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 12:52:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC0E6C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 12:53:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2HuFjPtosHNnYwGAIu1d+fgFffb5m0z+fODcbMrKtqw=; b=liqC/9A37tId82
-	wqZgr/psCshyjY/vw7Anel3/mYX+y5wkd0X/QCAgDER+i21NyjiNwJ0kpvEz7d8RHq22YLl9Zxezo
-	64Qm4MIQ8kE2QE04w9/6MjsliShLDbwSx/7tjoH/22UzP65id74SgYET8ujr4TEOTvHJLf7HzKyRy
-	dn53QJTkrP4F3dvOiw0RVqL/xLyW1lk+Au1wlajhnZIGDqtze+bwujyBOuDwG6mqatNo0dKDy4LCk
-	ibu4aGEhiQApDMUVZPt3t+VovPlZ4VzsH/8WeagVGTGZLSFlV/bVGVIT6BZg4xS/ptRIjtzAcuIYP
-	WCw/Xry8aLgtK3hixNUA==;
+	List-Owner; bh=nHF3YukmqR155f72Bje07flOD1RuIRkrd/P8C5y35xI=; b=G9S83IXXD2dPti
+	Oq0WQ61RZCTM3AiNwHdfHmBuqUCdcJSJunGCM/G7ywYX0A27ouQR9BMhcyC8cEFWLkurpknGlHQKD
+	+a3T+Xu73+KbSLjvcwdrtSI3e0JdZQVZEYau8qAmiw/IRTFGAjwKCuYcFauoPod3xdYeUZ2uyguDK
+	pZVZkfRznEDC2HSrWNyBvI5qq1SHzZXj5ZClQWWAPNjNVD7BgFv1l01Wop/zvWJkWx23SFG/OXwjx
+	YjY0UreCgnv1tbeacZLD0ROdqvT5c2Y6iPkjGprduNuqYf77jmZFzK7z586kH/yhND9Kp779AhTG5
+	XLjb7txgYljVLOnNV2rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHPyM-00DscS-3m; Tue, 08 Feb 2022 12:51:54 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1nHPzx-00DtI7-3V; Tue, 08 Feb 2022 12:53:33 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHPoJ-00DnZT-FQ
- for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 12:41:33 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id e28so18650524pfj.5
- for <linux-mediatek@lists.infradead.org>; Tue, 08 Feb 2022 04:41:30 -0800 (PST)
+ id 1nHPoK-00Dnag-Rw
+ for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 12:41:34 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id y18so4114653plb.11
+ for <linux-mediatek@lists.infradead.org>; Tue, 08 Feb 2022 04:41:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=eHwaFCxTmQBqke38QY+U5TZZstQq9O/KJJL77r3W7Ws=;
- b=nvJ9cLw2nqPy00A1rg0QyEIyTWd8T9dpFDluSxKOq9Tn01B1Y1MbhjQSTCkrI27lra
- TPGEARXZUBxH7ykfmmOa39dR6Oy6acq0JeHZz8WIgow8M1VrhGsVwV07krTMrsDqoSNI
- XG0NVawmgtjcczlzwoL1Zq8zDR39B0P7nUe1s=
+ bh=VlKtM6FjYA2dZO07upzgd9Pj04Wu97J4dVvK+jUNEck=;
+ b=OrSsQvFFXKSurEYBIMXb9+NOJkRn42Oayov78oivR7/II3RzfciYs9zq3TiYOFrMzf
+ 3SFpboZilv9rJrVtd6Mqd+OI2aCWZyLByJAU36g2KxT8SNQmX4c40+48wnG5jbzXE7Yp
+ XwQ3RYW83qUfjx5/1bULaTZ4NuYSzeASJdaqY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=eHwaFCxTmQBqke38QY+U5TZZstQq9O/KJJL77r3W7Ws=;
- b=XZ4m/HFox7osCTwovzJ5dL5xGXct86Wu36+FKj2gaoyavoR7/Rzl/IGpBehV0XJdoi
- PI/iPLLOEoElcMfaR4UW/jpR/vRF6AFxsPS/09kiUN7aPUuUUB/kEDFrk8TueMIWEkDs
- /gBGlMDYMRbs5zIFWEOOCgJricwM5duH/Z7vv0mOT59/4cDIRCWefIW7e/aa53dEt6ge
- sUZGRpuWgK4JMY1wV3QnNinKGeOWUgh7bUaREfbEIIv96LrwDVSbYJEp8W2bZc1zavb6
- cV/BSTlnJpxOPITcVpQL1DyfbQypeSBTHZRIEVMDISZZYbfKws9DA/Iga3O3Iw2enI1W
- r2Yw==
-X-Gm-Message-State: AOAM532YGH2tUxIvpKgquR7vcnKaCQyuU6aucaznE+NRU2JNMnNQSo1I
- whWyQvZMlmDsm0bF9Yg5zpTmYg==
-X-Google-Smtp-Source: ABdhPJyYdWVRlyhjrE40StYyFinJI1sYaLoiAb4EohqiUabCdb/YfzS2WfyZVC3UGTCq7xluaPc2Xw==
-X-Received: by 2002:a63:8142:: with SMTP id t63mr3362355pgd.256.1644324090238; 
- Tue, 08 Feb 2022 04:41:30 -0800 (PST)
+ bh=VlKtM6FjYA2dZO07upzgd9Pj04Wu97J4dVvK+jUNEck=;
+ b=ovssSbbyZNqRG/eEWgnfQmVBF2AhwvjOU4rQppbpLQvthgp5fuSn7wJZE+A49WMgq0
+ 9LpgiDXuH0dMJUDTYwSsjwAWxo+s1nUlrSJheiH8Neo6TuCC6lbgjzO/4gNRF/iiEFYC
+ Lgytu2l8KrU1Dp8LjH2zTA/Tcp0sFT6pESCpv4LkdqmOGvA61PcnImLUm8Y9Mik30gSt
+ oxsUlj7Z5EnrzLk9iJoAyAM4P0hj1s5rvS/tQG1cmu0REhOV8g1qvsUtCZSdqZfIuCHG
+ QtQ2GqpQ8tcDmzQ6lmHWV60yPglK3kZpIZ7XjJIhtqYSlPk5M/i++mnqrxFbdg80Pf8q
+ 2Ang==
+X-Gm-Message-State: AOAM5331YSkregSmFnYbpuecfTClPndpIGEjZBWJiWUuUCe3fAnliUFL
+ FfSIfEzodbTCVRzlrhpNoVY5wQ==
+X-Google-Smtp-Source: ABdhPJyZtnIS5wvMBJfJ1PfBAFwhwCamW3QkOJc8pTKF0a7UI+1Dj2KYovaMuZBY9GlrF4L1rpycuQ==
+X-Received: by 2002:a17:902:a603:: with SMTP id
+ u3mr4462853plq.113.1644324092333; 
+ Tue, 08 Feb 2022 04:41:32 -0800 (PST)
 Received: from wenstp920.tpe.corp.google.com
  ([2401:fa00:1:10:41b6:813e:c823:609c])
- by smtp.gmail.com with ESMTPSA id h11sm15056939pfe.214.2022.02.08.04.41.28
+ by smtp.gmail.com with ESMTPSA id h11sm15056939pfe.214.2022.02.08.04.41.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Feb 2022 04:41:30 -0800 (PST)
+ Tue, 08 Feb 2022 04:41:32 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Stephen Boyd <sboyd@kernel.org>,
  Michael Turquette <mturquette@baylibre.com>,
@@ -65,16 +66,16 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
  Miles Chen <miles.chen@mediatek.com>, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v3 19/31] clk: mediatek: Add mtk_clk_simple_remove()
-Date: Tue,  8 Feb 2022 20:40:22 +0800
-Message-Id: <20220208124034.414635-20-wenst@chromium.org>
+Subject: [PATCH v3 20/31] clk: mediatek: mtk: Clean up included headers
+Date: Tue,  8 Feb 2022 20:40:23 +0800
+Message-Id: <20220208124034.414635-21-wenst@chromium.org>
 X-Mailer: git-send-email 2.35.0.263.gb82422642f-goog
 In-Reply-To: <20220208124034.414635-1-wenst@chromium.org>
 References: <20220208124034.414635-1-wenst@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220208_044131_594634_0A6592A8 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20220208_044132_996283_4D4E2E26 
+X-CRM114-Status: GOOD (  10.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,65 +92,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In commit c58cd0e40ffa ("clk: mediatek: Add mtk_clk_simple_probe() to
-simplify clock providers"), a generic probe function was added to
-simplify clk drivers that only needed to support clk gates. However due
-to the lack of unregister APIs, a corresponding remove function was not
-added.
+Some included headers aren't actually used anywhere, while other headers
+with the declaration of functions and structures aren't directly
+included.
 
-Now that the unregister APIs have been implemented, add aforementioned
-remove function to make it complete.
+Get rid of the unused ones, and add the ones that should be included
+directly.
+
+On the header side, replace headers that are included purely for data
+structure definitions with forward declarations. This decreases the
+amount of preprocessing and compilation effort required for each
+inclusion.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/clk/mediatek/clk-mtk.c | 15 +++++++++++++++
- drivers/clk/mediatek/clk-mtk.h |  1 +
- 2 files changed, 16 insertions(+)
+ drivers/clk/mediatek/clk-mtk.c | 13 ++++++-------
+ drivers/clk/mediatek/clk-mtk.h | 12 ++++++------
+ 2 files changed, 12 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index 869e6ae55c82..f108786caeda 100644
+index f108786caeda..5618c84e4e08 100644
 --- a/drivers/clk/mediatek/clk-mtk.c
 +++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -374,6 +374,8 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
- 	if (r)
- 		goto free_data;
+@@ -4,17 +4,16 @@
+  * Author: James Liao <jamesjj.liao@mediatek.com>
+  */
  
-+	platform_set_drvdata(pdev, clk_data);
-+
- 	return r;
+-#include <linux/of.h>
+-#include <linux/of_address.h>
++#include <linux/bitops.h>
++#include <linux/clk-provider.h>
+ #include <linux/err.h>
+ #include <linux/io.h>
+-#include <linux/slab.h>
+-#include <linux/delay.h>
+-#include <linux/clkdev.h>
+-#include <linux/module.h>
+ #include <linux/mfd/syscon.h>
+-#include <linux/device.h>
++#include <linux/module.h>
++#include <linux/of.h>
+ #include <linux/of_device.h>
++#include <linux/platform_device.h>
++#include <linux/slab.h>
  
- free_data:
-@@ -381,4 +383,17 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
- 	return r;
- }
- 
-+int mtk_clk_simple_remove(struct platform_device *pdev)
-+{
-+	const struct mtk_clk_desc *mcd = of_device_get_match_data(&pdev->dev);
-+	struct clk_onecell_data *clk_data = platform_get_drvdata(pdev);
-+	struct device_node *node = pdev->dev.of_node;
-+
-+	of_clk_del_provider(node);
-+	mtk_clk_unregister_gates(mcd->clks, mcd->num_clks, clk_data);
-+	mtk_free_clk_data(clk_data);
-+
-+	return 0;
-+}
-+
- MODULE_LICENSE("GPL");
+ #include "clk-mtk.h"
+ #include "clk-gate.h"
 diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index 3c3a934f53cd..4fa658f5d934 100644
+index 4fa658f5d934..7f902581a115 100644
 --- a/drivers/clk/mediatek/clk-mtk.h
 +++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -202,5 +202,6 @@ struct mtk_clk_desc {
- };
+@@ -7,19 +7,19 @@
+ #ifndef __DRV_CLK_MTK_H
+ #define __DRV_CLK_MTK_H
  
- int mtk_clk_simple_probe(struct platform_device *pdev);
-+int mtk_clk_simple_remove(struct platform_device *pdev);
+-#include <linux/regmap.h>
+-#include <linux/bitops.h>
+ #include <linux/clk-provider.h>
+-#include <linux/platform_device.h>
+-
+-struct clk;
+-struct clk_onecell_data;
++#include <linux/io.h>
++#include <linux/kernel.h>
++#include <linux/spinlock.h>
++#include <linux/types.h>
  
- #endif /* __DRV_CLK_MTK_H */
+ #define MAX_MUX_GATE_BIT	31
+ #define INVALID_MUX_GATE_BIT	(MAX_MUX_GATE_BIT + 1)
+ 
+ #define MHZ (1000 * 1000)
+ 
++struct platform_device;
++
+ struct mtk_fixed_clk {
+ 	int id;
+ 	const char *name;
 -- 
 2.35.0.263.gb82422642f-goog
 
