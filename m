@@ -4,76 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84C9DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 08:07:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F11DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 08:23:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UfSaKzvPZJoYU4sQ2iYbYuphP3XNVITrgISF2A4mLVk=; b=RBlYpbaDVT9+zP
-	rDM7IO5VT7zBT/qXgfsrnrjR1aoN2lkSNemcm6pxcBULTLEC55WO66tpxS0/IgZwd2uR09D9J57pL
-	NMy+BOQX1udrKzqerhWFnpkQSpiMuds3osgcGWMdCDHudnhcFfL+w5EXrRP7lTKS2Shz+Fcpo0tnR
-	FtNEfsUlLsLy44zGUae9CNi/X++T+ETdx647EAnO284SkbJ/aTakcV0eYIgQhqjolKyTHpYjS7vPG
-	OJLR0STvHMuoMW5F129fvRcIBXNnsL1610aPTUnsWnVFKUa3YBrGWYRGmblkle3VyMDr7SL6iPaiz
-	WS8E7TMKFdL//Vbc2Cdg==;
+	List-Owner; bh=aLuYqzJVqg3YfO9RfiF0tK3y2SZkwpX5KlURhbUGiiY=; b=E79JP53DQVxlzq
+	qIm/3BrKjXK+COxsTg/1LAC5JUc8CYsucuOAWDx1jaffWP2aHM8ChIP8xaTgRmK3WNDidGwRxTmrT
+	byOCLVPlobAs0uI9DlvwKqgmvzogwqvKy0flzP+jKxJiTCBRRRLaDZAf8US5+/sOPHxTaEQqW3rEA
+	Oceof2FjsEd8kgtWPYpMZQJ6ZhTaixr4QnhH850N/CLQ4nJxWZGRq5fmad/QX/sBJ7DWe/vGP/iLm
+	ltCTDbqYKvJk4W+I9/RHq7eBS/JJ0eurCT1BqDgEyOQHvNSUuH+Yya0R2mnxEHrzQJQq8ui57aKdV
+	FAN1JQ/sbzq9d2eU2jRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHLX5-00CrRO-Ko; Tue, 08 Feb 2022 08:07:27 +0000
-Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
+	id 1nHLmT-00CvkZ-ME; Tue, 08 Feb 2022 08:23:21 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHLX3-00CrQA-Ua
- for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 08:07:27 +0000
-Received: by mail-il1-x12d.google.com with SMTP id d3so13245177ilr.10
- for <linux-mediatek@lists.infradead.org>; Tue, 08 Feb 2022 00:07:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=2nn1yw6s4IptKKkqexjsVuYGnZXdnpYECt5wmy4nCLI=;
- b=RbemnSrhXrKKcmiNAQChCDTCfg6l6ls5LgDIaRQkZLTLaWYDjG6MM8osL8JkLF3bCp
- /Kq4sd9uU0NEZm+Wz8RgynFJAbap5ItA1CILACu+hFiwrULXgQ7eCzkQ14TNBanKSWIw
- TjONrz2gQtSvRje+DKUublwrHeFhbhnyVgZ3k=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=2nn1yw6s4IptKKkqexjsVuYGnZXdnpYECt5wmy4nCLI=;
- b=zd0rFO9WUMtNM+Cn/CSTU1sK7HLiDgu4jOfqQVF0HNzy+i8fzswK+pl9fsWFJf3vZA
- fae11gjGcvJU/cO4LTIJvTDE+3BoJZd5s0uolghwqg/VTF6yZlK1UcuqsJd1OSgaSO0U
- WU8+BlgTHF+NMC0qotX0JsCDQANiV6uiREK+e6taw/HiIQMIIu1utp+X4xShAS7Wcx73
- UD5sjpDQ3SaA12elp+KgLd+T/ZrSUB86muh/nI6MOxucmdrUDI+DPTIN8onQY2ZAm7zO
- PuS4j9jcGy8SKwcquAKcH8GRWLIRcB2FyAPz0ehYN0ufiSffCZTulW9bTB3oWMW6Fp7T
- bFHg==
-X-Gm-Message-State: AOAM531Fq1nqfjhdMXLFE2b4d76TfwRhR7VOicjuX68iBzYDcOxho3Mq
- iov1u6rP98gstbYv1+o78wbXFn6MsWJwyvFUbj830g==
-X-Google-Smtp-Source: ABdhPJzX6bk4eNvEnp69aytew5yHADtPJVvGPNtbE4EZRnOFljwbLJwfYxI5lISAClkMzxAfRIq8Gdm85/RAs5cGYNM=
-X-Received: by 2002:a05:6e02:18c6:: with SMTP id
- s6mr1637885ilu.230.1644307645048; 
- Tue, 08 Feb 2022 00:07:25 -0800 (PST)
+ id 1nHLkU-00CugX-JS; Tue, 08 Feb 2022 08:21:20 +0000
+X-UUID: 3025f1875b1e4e8fa35403da1e7331e9-20220208
+X-UUID: 3025f1875b1e4e8fa35403da1e7331e9-20220208
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2127330601; Tue, 08 Feb 2022 01:21:16 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Feb 2022 00:21:14 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 8 Feb 2022 16:21:00 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 8 Feb 2022 16:21:00 +0800
+Message-ID: <20755168cc2be0d1bb5e40907cfe27cea25a9363.camel@mediatek.com>
+Subject: Re: [PATCH v4] drm/mediatek: mtk_dsi: Avoid EPROBE_DEFER loop with
+ external bridge
+From: CK Hu <ck.hu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ <dri-devel@lists.freedesktop.org>
+CC: <chunkuang.hu@kernel.org>, <airlied@linux.ie>,
+ <linux-kernel@vger.kernel.org>, <stable@vger.kernel.org>,
+ <andrzej.hajda@intel.com>, <linux-mediatek@lists.infradead.org>, Jagan Teki
+ <jagan@amarulasolutions.com>, <matthias.bgg@gmail.com>,
+ <kernel@collabora.com>, <linux-arm-kernel@lists.infradead.org>
+Date: Tue, 8 Feb 2022 16:20:58 +0800
+In-Reply-To: <20220131085520.287105-1-angelogioacchino.delregno@collabora.com>
+References: <20220131085520.287105-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20220208073714.1540390-1-hsinyi@chromium.org>
- <YgIhJb3+MckKD4dC@intel.com>
-In-Reply-To: <YgIhJb3+MckKD4dC@intel.com>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Tue, 8 Feb 2022 16:06:59 +0800
-Message-ID: <CAJMQK-hzjtZrXC+sdcs39kF6nvUzkNcgNXFXPzTUQHzr8f6ZkA@mail.gmail.com>
-Subject: Re: [Intel-gfx] [PATCH v7 1/3] gpu: drm: separate panel orientation
- property creating and value setting
-To: =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>
-Cc: dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, 
- Daniel Vetter <daniel@ffwll.ch>, amd-gfx@lists.freedesktop.org, 
- intel-gfx@lists.freedesktop.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- devicetree@vger.kernel.org, Simon Ser <contact@emersion.fr>, 
- linux-kernel@vger.kernel.org, Maxime Ripard <mripard@kernel.org>, 
- Alex Deucher <alexander.deucher@amd.com>, Rob Herring <robh+dt@kernel.org>, 
- linux-mediatek@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>, 
- Harry Wentland <harry.wentland@amd.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-arm-kernel@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220208_000725_997983_0F06782C 
-X-CRM114-Status: GOOD (  12.32  )
+X-CRM114-CacheID: sfid-20220208_002118_687219_73485208 
+X-CRM114-Status: GOOD (  31.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,34 +70,179 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBGZWIgOCwgMjAyMiBhdCAzOjUyIFBNIFZpbGxlIFN5cmrDpGzDpAo8dmlsbGUuc3ly
-amFsYUBsaW51eC5pbnRlbC5jb20+IHdyb3RlOgo+Cj4gT24gVHVlLCBGZWIgMDgsIDIwMjIgYXQg
-MDM6Mzc6MTJQTSArMDgwMCwgSHNpbi1ZaSBXYW5nIHdyb3RlOgo+ID4gK2ludCBkcm1fY29ubmVj
-dG9yX2luaXRfcGFuZWxfb3JpZW50YXRpb25fcHJvcGVydHkoCj4gPiArICAgICBzdHJ1Y3QgZHJt
-X2Nvbm5lY3RvciAqY29ubmVjdG9yKQo+ID4gK3sKPiA+ICsgICAgIHN0cnVjdCBkcm1fZGV2aWNl
-ICpkZXYgPSBjb25uZWN0b3ItPmRldjsKPiA+ICsgICAgIHN0cnVjdCBkcm1fcHJvcGVydHkgKnBy
-b3A7Cj4gPiArCj4gPiArICAgICBwcm9wID0gZHJtX3Byb3BlcnR5X2NyZWF0ZV9lbnVtKGRldiwg
-RFJNX01PREVfUFJPUF9JTU1VVEFCTEUsCj4gPiArICAgICAgICAgICAgICAgICAgICAgInBhbmVs
-IG9yaWVudGF0aW9uIiwKPiA+ICsgICAgICAgICAgICAgICAgICAgICBkcm1fcGFuZWxfb3JpZW50
-YXRpb25fZW51bV9saXN0LAo+ID4gKyAgICAgICAgICAgICAgICAgICAgIEFSUkFZX1NJWkUoZHJt
-X3BhbmVsX29yaWVudGF0aW9uX2VudW1fbGlzdCkpOwo+ID4gKyAgICAgaWYgKCFwcm9wKQo+ID4g
-KyAgICAgICAgICAgICByZXR1cm4gLUVOT01FTTsKPiA+ICsKPiA+ICsgICAgIGRldi0+bW9kZV9j
-b25maWcucGFuZWxfb3JpZW50YXRpb25fcHJvcGVydHkgPSBwcm9wOwo+Cj4gTGVhayB3aGVuIGNh
-bGxlZCBtdWx0aXBsZSB0aW1lcy4gSSBndWVzcyB5b3UgY291bGQganVzdCBwdXQKPiB0aGlzIGlu
-dG8gZHJtX2Nvbm5lY3Rvcl9jcmVhdGVfc3RhbmRhcmRfcHJvcGVydGllcygpIGluc3RlYWQKPiBh
-bmQgYXZvaWQgdGhhdCBpc3N1ZSBlbnRpcmVseS4KPgpJJ2xsIGFkZCBhIGNoZWNrIGZvciBkZXYt
-Pm1vZGVfY29uZmlnLnBhbmVsX29yaWVudGF0aW9uX3Byb3BlcnR5IHRvCmF2b2lkIHRoZSBsZWFr
-IGlzc3VlIGlmIGNhbGxlZCBtdWx0aXBsZSB0aW1lcy4KSWYgd2UgYWRkIGluIGRybV9jb25uZWN0
-b3JfY3JlYXRlX3N0YW5kYXJkX3Byb3BlcnRpZXMoKSwgd2Ugc3RpbGwgbmVlZAphbm90aGVyIGZ1
-bmN0aW9uIHRvIGF0dGFjaCB0aGUgcHJvcGVydHkgZWFybGllciBmb3IgYnJpZGdlL2Nvbm5lY3Rv
-cnMKdGhhdCByZXF1aXJlIHRoaXMgcHJvcGVydHksIHNpbmNlIG5vdCBhbGwgYnJpZGdlL2Nvbm5l
-Y3RvcnMgbmVlZCB0aGlzCnByb3BlcnR5LgoKPiAtLQo+IFZpbGxlIFN5cmrDpGzDpAo+IEludGVs
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1t
-ZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVr
-Cg==
+Hi, Angelo:
+
+On Mon, 2022-01-31 at 09:55 +0100, AngeloGioacchino Del Regno wrote:
+> DRM bridge drivers are now attaching their DSI device at probe time,
+> which requires us to register our DSI host in order to let the bridge
+> to probe: this recently started producing an endless -EPROBE_DEFER
+> loop on some machines that are using external bridges, like the
+> parade-ps8640, found on the ACER Chromebook R13.
+> 
+> Now that the DSI hosts/devices probe sequence is documented, we can
+> do adjustments to the mtk_dsi driver as to both fix now and make sure
+> to avoid this situation in the future: for this, following what is
+> documented in drm_bridge.c, move the mtk_dsi component_add() to the
+> mtk_dsi_ops.attach callback and delete it in the detach callback;
+> keeping in mind that we are registering a drm_bridge for our DSI,
+> which is only used/attached if the DSI Host is bound, it wouldn't
+> make sense to keep adding our bridge at probe time (as it would
+> be useless to have it if mtk_dsi_ops.attach() fails!), so also move
+> that one to the dsi host attach function (and remove it in detach).
+> 
+> Cc: <stable@vger.kernel.org> # 5.15.x
+> Signed-off-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Andrzej Hajda <andrzej.hajda@intel.com>
+> Reviewed-by: Jagan Teki <jagan@amarulasolutions.com>
+> 
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 167 +++++++++++++++----------
+> ----
+>  1 file changed, 84 insertions(+), 83 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index 5d90d2eb0019..bced4c7d668e 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -786,18 +786,101 @@ void mtk_dsi_ddp_stop(struct device *dev)
+>  	mtk_dsi_poweroff(dsi);
+>  }
+>  
+> 
+
+[snip]
+
+> +
+>  static int mtk_dsi_host_attach(struct mipi_dsi_host *host,
+>  			       struct mipi_dsi_device *device)
+>  {
+>  	struct mtk_dsi *dsi = host_to_dsi(host);
+> +	struct device *dev = host->dev;
+> +	int ret;
+>  
+>  	dsi->lanes = device->lanes;
+>  	dsi->format = device->format;
+>  	dsi->mode_flags = device->mode_flags;
+> +	dsi->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 0,
+> 0);
+
+The original would process panel. Why do you remove the panel part?
+It's better that someone has a platform of DSI->Panel to test this
+patch.
+
+Regards,
+CK
+
+> +	if (IS_ERR(dsi->next_bridge))
+> +		return PTR_ERR(dsi->next_bridge);
+> +
+> +	drm_bridge_add(&dsi->bridge);
+> +
+> +	ret = component_add(host->dev, &mtk_dsi_component_ops);
+> +	if (ret) {
+> +		DRM_ERROR("failed to add dsi_host component: %d\n",
+> ret);
+> +		drm_bridge_remove(&dsi->bridge);
+> +		return ret;
+> +	}
+>  
+>  	return 0;
+>  }
+>  
+> +static int mtk_dsi_host_detach(struct mipi_dsi_host *host,
+> +			       struct mipi_dsi_device *device)
+> +{
+> +	struct mtk_dsi *dsi = host_to_dsi(host);
+> +
+> +	component_del(host->dev, &mtk_dsi_component_ops);
+> +	drm_bridge_remove(&dsi->bridge);
+> +	return 0;
+> +}
+> +
+>  static void mtk_dsi_wait_for_idle(struct mtk_dsi *dsi)
+>  {
+>  	int ret;
+> @@ -938,73 +1021,14 @@ static ssize_t mtk_dsi_host_transfer(struct
+> mipi_dsi_host *host,
+>  
+>  static const struct mipi_dsi_host_ops mtk_dsi_ops = {
+>  	.attach = mtk_dsi_host_attach,
+> +	.detach = mtk_dsi_host_detach,
+>  	.transfer = mtk_dsi_host_transfer,
+>  };
+>  
+> 
+
+[snip]
+
+> -
+>  static int mtk_dsi_probe(struct platform_device *pdev)
+>  {
+>  	struct mtk_dsi *dsi;
+>  	struct device *dev = &pdev->dev;
+> -	struct drm_panel *panel;
+>  	struct resource *regs;
+>  	int irq_num;
+>  	int ret;
+> @@ -1021,19 +1045,6 @@ static int mtk_dsi_probe(struct
+> platform_device *pdev)
+>  		return ret;
+>  	}
+>  
+> -	ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0,
+> -					  &panel, &dsi->next_bridge);
+> -	if (ret)
+> -		goto err_unregister_host;
+> -
+> -	if (panel) {
+> -		dsi->next_bridge = devm_drm_panel_bridge_add(dev,
+> panel);
+> -		if (IS_ERR(dsi->next_bridge)) {
+> -			ret = PTR_ERR(dsi->next_bridge);
+> -			goto err_unregister_host;
+> -		}
+> -	}
+> -
+>  	dsi->driver_data = of_device_get_match_data(dev);
+>  
+>  	dsi->engine_clk = devm_clk_get(dev, "engine");
+> @@ -1098,14 +1109,6 @@ static int mtk_dsi_probe(struct
+> platform_device *pdev)
+>  	dsi->bridge.of_node = dev->of_node;
+>  	dsi->bridge.type = DRM_MODE_CONNECTOR_DSI;
+>  
+> -	drm_bridge_add(&dsi->bridge);
+> -
+> -	ret = component_add(&pdev->dev, &mtk_dsi_component_ops);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "failed to add component: %d\n",
+> ret);
+> -		goto err_unregister_host;
+> -	}
+> -
+>  	return 0;
+>  
+>  err_unregister_host:
+> @@ -1118,8 +1121,6 @@ static int mtk_dsi_remove(struct
+> platform_device *pdev)
+>  	struct mtk_dsi *dsi = platform_get_drvdata(pdev);
+>  
+>  	mtk_output_dsi_disable(dsi);
+> -	drm_bridge_remove(&dsi->bridge);
+> -	component_del(&pdev->dev, &mtk_dsi_component_ops);
+>  	mipi_dsi_host_unregister(&dsi->host);
+>  
+>  	return 0;
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
