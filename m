@@ -4,72 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1A3CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 03:51:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A451DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 04:38:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hbirHHGrM9O/jBsnRyKoZ8jog7Y1W37JXbawPNYyJU8=; b=EaTzIBF8JAxubx
-	tQ1/cJlx5xgrdpXfodAmY/Ozvm99HECAKtolc8K8otrgQ/xp2bYMNSe1hqsfQrueWETW7cNNUx2vr
-	c75BYphCgVrvAS0dnDjxPjoyLJQJIu2hkP7e1nTk27xm7pRnermZBTxzB8eOpM/DQ28DGcIp/+Bxj
-	LQVM6KrnAIgJGJuTOJ8CC1ulsID3FFWwOPTbedlBP+QlSzP5BNrz8GX/RJ7KIiKvOFUp42tmTzcHV
-	i8ltJ7FomQ9RqWngk5Qt+CvRV75OAB6eSmUyvGl9C/9RTNcSMbaEqvNSJp+yUkq86unf0YsuUJ+pX
-	WkOoZSkdbcoK3VjpoeHA==;
+	List-Owner; bh=LUowUj+MooMZwnMTW6n1zJ7l6EzjqYSVQH0+XaSA2g0=; b=Z5p6XoQmTwxItx
+	Qi0AjdRmZQfrDW1SokxCsezo6Hd31QRANt+AueVZBaEJ//4QzexJuRmW3CfFPksCyg0o1nmBEmxHQ
+	JTaZZ/MO9JNaZLY32oBmzUmeNdAq8wDR2wkZsszurKoFT4omznhWPQZuB23f+oZ9sVvcP5yNa881s
+	yBckey6kLEzQSJIHT085KAetCYe+Rkl3rOeKs8TKUOPNSk6vCzLdFWJvBLY9/ulOxfk2RpIm5olG9
+	yk0hXPkq9J3WAFnFHn9Fvxjbm1JzHnYBlpZqF7jtVX4RlzyeBX7gcslrJH2eVvmjTWHHdZaDuKaSw
+	5Qs5Moq91J/oocbcZLlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHHWr-00CNPU-0J; Tue, 08 Feb 2022 03:50:57 +0000
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+	id 1nHIH5-00CU5B-G1; Tue, 08 Feb 2022 04:38:43 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHHWo-00CNOh-PP
- for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 03:50:56 +0000
-Received: by mail-yb1-xb35.google.com with SMTP id y203so5639794yby.11
- for <linux-mediatek@lists.infradead.org>; Mon, 07 Feb 2022 19:50:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gGJv0AFVdfHzUa0yHqnma3btGQlzXWk1wSqSnWWw9Dk=;
- b=mJm2SUkp44PAeoyfQimwj06GljPK6ZlqDXI5AuQfTSigjQ8pV5o1ebijkpLq4WG/Gp
- IMzFiyeYTiPnV9e/8k+G2x9dJnUo4cXsJQZN66aXlRdWYuZXJrMfHg7zybpBtcAi6Xqn
- kL1U1hw+GGReC6MiCpqdsZ/N7V4pxLg3Zj3Tw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gGJv0AFVdfHzUa0yHqnma3btGQlzXWk1wSqSnWWw9Dk=;
- b=p0/I387EieYYOY2uieymK7vkPR5OFI+BuZ8AQlUQdAK/DpB3lDF32pUGwxg2TqRdVu
- 937Nr4zWpIvMdNsq+wuKKMB00xkXiei3jfxGl1uzX9pRbVLi2tMynXQMvqiQGd6IR/8v
- 2X3cwVO9JzAIQa8wNXlIeCpqCfBUg4N/HteAkLWv8H3ZPbj6zeyVL0p8MeK8r/X6HSSy
- 6ik3xTP5Za2Ylmd6sBG84NfrTjPJ+vVkCAURDlddnSzm2xWDNk1ovgxlL/5v57fKDx+T
- d6dMuPGbubs9FPPRYVdfshrq3B68V5jUKx//DAxKCpJ1KrbeDcZnt5dL3Tx1xlDDkcB1
- IaEA==
-X-Gm-Message-State: AOAM531PY5EoGGDoZykZGZe/9bVQUGES+adJiZcOfP55YmU3gnpEyi5w
- GB7VmV/b5moOC+xQY3ldRKitOFU2x3SVx85g/1t8Mg==
-X-Google-Smtp-Source: ABdhPJzBnKRYSQxz0sUuAXLlIdIIDiufeVnpjx8TXskOYyz1WTj3X8uhPzwU+v2jw3moTuLJEUn06yrPSPGxjYtAf04=
-X-Received: by 2002:a81:1b4e:: with SMTP id b75mr2986110ywb.295.1644292253418; 
- Mon, 07 Feb 2022 19:50:53 -0800 (PST)
+ id 1nHIGs-00CU40-0L; Tue, 08 Feb 2022 04:38:33 +0000
+X-UUID: 0f4023fdc9c34a27bed190f491a2302d-20220207
+X-UUID: 0f4023fdc9c34a27bed190f491a2302d-20220207
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 817916644; Mon, 07 Feb 2022 21:38:27 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 7 Feb 2022 20:28:25 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 8 Feb 2022 12:28:23 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 8 Feb 2022 12:28:23 +0800
+Message-ID: <f6633fc82c4fa899c7f4ca27d9751d9e61fb90ac.camel@mediatek.com>
+Subject: Re: [PATCH] dt-bindings: pwm: mtk-disp: add compatible string for
+ MT8183 SoC
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+CC: Thierry Reding <thierry.reding@gmail.com>, Lee Jones
+ <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <linux-pwm@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 8 Feb 2022 12:28:23 +0800
+In-Reply-To: <20220207125158.t5362u2dddccdmsq@pengutronix.de>
+References: <20220207112657.18246-1-allen-kh.cheng@mediatek.com>
+ <20220207125158.t5362u2dddccdmsq@pengutronix.de>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20220202134834.690675-1-wenst@chromium.org>
- <20220202134834.690675-16-wenst@chromium.org>
- <752d5d00-4e05-1bd6-564f-3bce21a35713@collabora.com>
-In-Reply-To: <752d5d00-4e05-1bd6-564f-3bce21a35713@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 8 Feb 2022 11:50:42 +0800
-Message-ID: <CAGXv+5HSLh0OgJc=EU=wvB4DaOMDLjsgJ6qnHY423d1L5+DixQ@mail.gmail.com>
-Subject: Re: [PATCH v2 15/31] clk: mediatek: Implement
- mtk_clk_unregister_fixed_clks() API
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Stephen Boyd <sboyd@kernel.org>,
- Michael Turquette <mturquette@baylibre.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, 
- Miles Chen <miles.chen@mediatek.com>, linux-clk@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220207_195054_858137_20C238B1 
-X-CRM114-Status: GOOD (  17.02  )
+X-CRM114-CacheID: sfid-20220207_203830_098662_2E1217F5 
+X-CRM114-Status: GOOD (  22.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,54 +72,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Thu, Feb 3, 2022 at 5:47 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 02/02/22 14:48, Chen-Yu Tsai ha scritto:
-> > mtk_clk_register_fixed_clks(), as the name suggests, is used to register
-> > a given list of fixed rate clks. However it is lacking a counterpart
-> > unregister API.
-> >
-> > Implement said unregister API so that the various clock platform drivers
-> > can utilize it to do proper unregistration, cleanup and removal.
-> >
-> > In the header file, the register function's declaration is also
-> > reformatted to fit code style guidelines.
-> >
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > Reviewed-by: Miles Chen <miles.chen@mediatek.com>
->
-> Hello Chen-Yu,
->
-> I like this entire series, but I had to manually apply this patch (and some of
-> the other ones)...
-
-This was based on linux-next, which already has a couple clk patches queued
-up.
-
-> Especially for the ones that will be touching MT8195 clock drivers, can you
-> please rebase over series [1] by Chun-Jie?
-
-I think this series supersedes the first patch in that series? As for the
-other two, I think the discussion about the bindings is ongoing, which
-might affect the third patch as well?
-
-ChenYu
-
-> [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=603955
->
-> Thanks,
-> Angelo
->
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgVXdlIEtsZWluZS1Lw7ZuaWcsCgpUaGFuayB5b3UgZm9yIHlvdXIgc3VnZ2VzdGlvbnMuCldl
+IHdpbGwgc2VuZCBhbm90aGVyIHBhdGNoIGZvciAueWFtbCBmb3JtYXQuCgpBYm91dCB0aGUgbGFz
+dCByZW1pbmRlciwgc29ycnksIEkgZG9u4oCZdCBnZXQgdGhhdC4gCkRvIHlvdSBtZWFuIHVwcGVy
+L2xvd2VyIGNhc2UgbGV0dGVycyBpbiBhbiBlbWFpbCBhZGRyZXNzPwoKQmVzdCByZWdhcmRzCkFs
+bGVuCgpPbiBNb24sIDIwMjItMDItMDcgYXQgMTM6NTEgKzAxMDAsIFV3ZSBLbGVpbmUtS8O2bmln
+IHdyb3RlOgo+IEhlbGxvLAo+IAo+IE9uIE1vbiwgRmViIDA3LCAyMDIyIGF0IDA3OjI2OjU3UE0g
+KzA4MDAsIEFsbGVuLUtIIENoZW5nIHdyb3RlOgo+ID4gRnJvbTogQWxsZW4tS0ggQ2hlbmcgPEFs
+bGVuLUtILkNoZW5nQG1lZGlhdGVrLmNvbT4KPiA+IAo+ID4gQWRkIGNvbXBhdGlibGUgc3RyaW5n
+IGZvciBNVDgxODMgU29DIGluIGRldmljZSB0cmVlIGJpbmRpbmcuCj4gPiAKPiA+IFNpZ25lZC1v
+ZmYtYnk6IEFsbGVuLUtIIENoZW5nIDxBbGxlbi1LSC5DaGVuZ0BtZWRpYXRlay5jb20+Cj4gPiAt
+LS0KPiA+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcHdtL3B3bS1tdGstZGlz
+cC50eHQgfCAxICsKPiA+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykKPiA+IAo+ID4g
+ZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wd20vcHdtLW10
+ay1kaXNwLnR4dCAKPiA+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3B3bS9w
+d20tbXRrLWRpc3AudHh0Cj4gPiBpbmRleCA5MDJiMjcxODkxYWUuLjY5MWU1OGI2YzIyMyAxMDA2
+NDQKPiA+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wd20vcHdtLW10
+ay1kaXNwLnR4dAo+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3B3
+bS9wd20tbXRrLWRpc3AudHh0Cj4gPiBAQCAtNiw2ICs2LDcgQEAgUmVxdWlyZWQgcHJvcGVydGll
+czoKPiA+ICAgICAtICJtZWRpYXRlayxtdDY1OTUtZGlzcC1wd20iOiBmb3VuZCBvbiBtdDY1OTUg
+U29DLgo+ID4gICAgIC0gIm1lZGlhdGVrLG10ODE2Ny1kaXNwLXB3bSIsICJtZWRpYXRlayxtdDgx
+NzMtZGlzcC1wd20iOiBmb3VuZAo+ID4gb24gbXQ4MTY3IFNvQy4KPiA+ICAgICAtICJtZWRpYXRl
+ayxtdDgxNzMtZGlzcC1wd20iOiBmb3VuZCBvbiBtdDgxNzMgU29DLgo+ID4gKyAgIC0gIm1lZGlh
+dGVrLG10ODE4My1kaXNwLXB3bSI6IGZvdW5kIG9uIG10ODE4MyBTb0MuJAo+IAo+IFRoZSBwYXRj
+aCBsb29rcyBnb29kIGluIHByaW5jaXBsZS4gSSdkIGxpa2UgdG8gc2VlIHRoZSAudHh0IGZpbGUK
+PiBjb252ZXJ0ZWQgdG8gLnlhbWwgdGhvdWdoLiBXb3VsZCB5b3UgY2FyZSBmb3IgdGhhdCBwbGVh
+c2U/Cj4gCj4gQWxzbyBpdCB3b3VsZCBiZSBnb29kIGlmIHlvdSdkIGNhcmUgdGhhdCBzZW5kZXIg
+ZW1haWwgYWRkcmVzcyBhbmQKPiBhdXRob3IKPiBhZGRyZXNzIG1hdGNoLgo+IAo+IEJlc3QgcmVn
+YXJkcwo+IFV3ZQo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtbWVkaWF0ZWsK
