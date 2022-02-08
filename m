@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49E31C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 13:00:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94619C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 13:01:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HnXziMC0es7glFWavxmLNBxnYXcRnVClYyCUmdjbPW8=; b=QHAhyijbEHs35J
-	WqIqSupjOJZAfNHaOA7f2mmt+d4dhnPfbXUh/njQniJnDOoX6h7DITGeWyI9ihFx3XqY+nijt2sZP
-	d1c9C2Y3XUhAIcBKYvetI0Q1tA7amKnTTOE0GpYsMaWKYJnMZrGNvyiIAMvOFsp+HLVeOJ6eRtckE
-	oDBW4COApS3kVXCJT70cJ7wXE6JOlq4B/Kino0qkBn+EMGP49oGyEJdeKPG+UjR9H0Qg3Vn9+CNKa
-	a0Gfky53hYfKmF4IO+54dKWNdzxE8XjRtwx9opLwYW1ylaWULi3pXgXb7+wauFB432ewPwcPe62Q7
-	G6e0gl7Pl88SI67aGQSw==;
+	List-Owner; bh=YZj8kQh9xVjPdSfFXFonJyWLDC3DN/8kQ6ZuX0jNUwI=; b=vy04hEhxNX0FQg
+	HoZNCWry+9PsjSSifTj7LxE5ynr1v1jYBrXc0AcMWLJnKW+XIr+gYrpxaituZwjXtiLOUak9dwNi6
+	FRCQgH/Nr80C9R7MktQ/dPtTKGCPvAimoBmrh85hp2tbCTQyed/TN2N+IlqSvwDlRWb3Lyw9u9YIF
+	1lOoSyfhEVC3wKGpHYR778jy+vBpNoG9DPm/LupC5y8FF43F2zCNxh/1itZ/KhSGCDUMWXh0ZBTr8
+	6c3TwX8kCTh/FbroHCHWt66My4x0Nxa+6NkZSTWOWiD8bGyGW3YqEszA32YcANMiKLzYaXMVedkLS
+	ja07HYQGV/MMR3SNyPvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHQ6f-00DvxK-Dz; Tue, 08 Feb 2022 13:00:29 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1nHQ7V-00DwIt-Tr; Tue, 08 Feb 2022 13:01:21 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHPoT-00DnfB-UP
- for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 12:41:45 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d187so18625400pfa.10
- for <linux-mediatek@lists.infradead.org>; Tue, 08 Feb 2022 04:41:41 -0800 (PST)
+ id 1nHPoV-00DngQ-R9
+ for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 12:41:46 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id i186so18703728pfe.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 08 Feb 2022 04:41:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=UxXHG53mykHwbXXXl6QinzYax9pQXchal111embQm8Q=;
- b=oX4x1gvQjxvxSt4a/L+sGTUd80SmwHzdFN5Di9Fue38kDqvXUicpxO4zseU/lOEIYT
- cCZpokdDjO6vKZyA+BfDjWw73ltev/kGx/z465m1SrygfkxAGYV584mSARhMIv/6FS3C
- zKkYrGl7gWKvOYNIBF4QdYZIzlKskCD0Ca5v4=
+ bh=rT0ZvlEjSEX8tKc4measdB3BcCgivnDIA3yZFD+PibQ=;
+ b=kox8FsUbNjIpYMZjXcKa8GmJjInsgqKSj6osghdWW2iJEPN5D0RfPCqjSjc0mBLHm3
+ cWKgdgVcYOe/kIJnYOhYLE1pzYP7ghXt3SJm85YA6d4HNNzZPzVzFNs0MgtJbmp8p13+
+ SbAKAiMbVvblV3oKQC17IG7WEoFyeSha3YpuM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=UxXHG53mykHwbXXXl6QinzYax9pQXchal111embQm8Q=;
- b=HGiNsUb64LSfz71pDsyWR5EsFZbpVFsBArKL4nl9XS+83nhOO+aCQe/aXXImr9mP1L
- ixif3YC4o0FNYZiMt52sk2ORZU+81wEtGqFKR/zItE9LIp5+c+5kSfdDJSCXxIv8YqlA
- 5bJLSXO//XMOJwYMwYL6kqbTBJ/aC9oYg5ssgvF5G8hJn7nZUUBsUXqrtqhMvCjMkR9+
- K8gmmoqrqlAqURwaHC7g4+4ADu9Ipvd1EbDTvocE9h3P07VdrlHyVTK8lsc45hqPPa1D
- 73ZumZjThqSX1llVjvZyq4Y79U1JmCAlkHnZP1ubHBW4F6TnE/Yovo2SdYyWcw5dgzSJ
- wxow==
-X-Gm-Message-State: AOAM5337u8uw5OLZwas16WlayVPGN5p5gfy4AOltXydDMPMLMrO9D9bj
- v2b0UA88XWr4GOWMXxEKmre40mYZ4USxpg==
-X-Google-Smtp-Source: ABdhPJxTJoAFPatZ+sQYfPsLCiW0XuU5pPQ74xytkcecYomRMstYp5V5YnaiscvqnVCpRyddm8Fe7Q==
-X-Received: by 2002:a05:6a00:1253:: with SMTP id
- u19mr4397090pfi.8.1644324100988; 
- Tue, 08 Feb 2022 04:41:40 -0800 (PST)
+ bh=rT0ZvlEjSEX8tKc4measdB3BcCgivnDIA3yZFD+PibQ=;
+ b=mChBMjlUEVCY3bl6GsfyxUJRD2x1P7qfY7a7WlZaKtRDj0ScMxCtE9whM4fGWl5hn/
+ /i1UcTCQ/0LjksuC3fOU2ejEyLg39Yx7+ZZCTGvqwbRPnxQ8tQ/5+0iK1MOYf0ucko4A
+ fJdArn+ellzjz2FL4s88wfpZToXNoWFU2PMfriAd9rdgK/0CECp/rIJDmlkYFGxa8r3/
+ 7djotj9z/eqy0PUrsw8T0nWLNDKhJlamZyDH3ErIzY7XJyBxudInrG9VoRJLi4T3B1//
+ 9jvbj4bsodgycYbYb5U0SURMc9nB0b4W2UNJxXjMtNQ11dck73Xm6Xyo54/43BI9JjM6
+ WAjw==
+X-Gm-Message-State: AOAM531alGEc8BeoYlUyjLa1SBjqeARK66k0LCjLVoBKos+ZEzOQ80aK
+ R5/dSYXF0IY0pG0qqUvpgWVYxA==
+X-Google-Smtp-Source: ABdhPJx1ycT0FAJzg22IJjUEMsQqtSxdDyCkyduFu9zf4zZCUNd6bsoPyFYslN+f4ib6yI/1sZfQNA==
+X-Received: by 2002:a62:86c9:: with SMTP id x192mr4244674pfd.54.1644324103129; 
+ Tue, 08 Feb 2022 04:41:43 -0800 (PST)
 Received: from wenstp920.tpe.corp.google.com
  ([2401:fa00:1:10:41b6:813e:c823:609c])
- by smtp.gmail.com with ESMTPSA id h11sm15056939pfe.214.2022.02.08.04.41.39
+ by smtp.gmail.com with ESMTPSA id h11sm15056939pfe.214.2022.02.08.04.41.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Feb 2022 04:41:40 -0800 (PST)
+ Tue, 08 Feb 2022 04:41:42 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Stephen Boyd <sboyd@kernel.org>,
  Michael Turquette <mturquette@baylibre.com>,
@@ -66,17 +65,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
  Miles Chen <miles.chen@mediatek.com>, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v3 24/31] clk: mediatek: mux: Implement error handling in
+Subject: [PATCH v3 25/31] clk: mediatek: pll: Implement error handling in
  register API
-Date: Tue,  8 Feb 2022 20:40:27 +0800
-Message-Id: <20220208124034.414635-25-wenst@chromium.org>
+Date: Tue,  8 Feb 2022 20:40:28 +0800
+Message-Id: <20220208124034.414635-26-wenst@chromium.org>
 X-Mailer: git-send-email 2.35.0.263.gb82422642f-goog
 In-Reply-To: <20220208124034.414635-1-wenst@chromium.org>
 References: <20220208124034.414635-1-wenst@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220208_044142_067171_61539D11 
-X-CRM114-Status: GOOD (  13.45  )
+X-CRM114-CacheID: sfid-20220208_044144_019237_67F17997 
+X-CRM114-Status: GOOD (  15.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,53 +92,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mux clk type registration function does not stop or return errors
+The pll clk type registration function does not stop or return errors
 if any clk failed to be registered, nor does it implement an error
 handling path. This may result in a partially working device if any
 step failed.
 
 Make the register function return proper error codes, and bail out if
 errors occur. Proper cleanup, i.e. unregister any clks that were
-successfully registered, is done in the new error path.
+successfully registered, and unmap the I/O space, is done in the new
+error path.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/clk/mediatek/clk-mux.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
+ drivers/clk/mediatek/clk-pll.c | 23 +++++++++++++++++++----
+ drivers/clk/mediatek/clk-pll.h |  6 +++---
+ 2 files changed, 22 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
-index 70aa42144632..f51e67650f03 100644
---- a/drivers/clk/mediatek/clk-mux.c
-+++ b/drivers/clk/mediatek/clk-mux.c
-@@ -215,13 +215,26 @@ int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+index 8439d37e354d..817a80293bfc 100644
+--- a/drivers/clk/mediatek/clk-pll.c
++++ b/drivers/clk/mediatek/clk-pll.c
+@@ -377,8 +377,9 @@ static void mtk_clk_unregister_pll(struct clk *clk)
+ 	kfree(pll);
+ }
+ 
+-void mtk_clk_register_plls(struct device_node *node,
+-		const struct mtk_pll_data *plls, int num_plls, struct clk_onecell_data *clk_data)
++int mtk_clk_register_plls(struct device_node *node,
++			  const struct mtk_pll_data *plls, int num_plls,
++			  struct clk_onecell_data *clk_data)
+ {
+ 	void __iomem *base;
+ 	int i;
+@@ -387,7 +388,7 @@ void mtk_clk_register_plls(struct device_node *node,
+ 	base = of_iomap(node, 0);
+ 	if (!base) {
+ 		pr_err("%s(): ioremap failed\n", __func__);
+-		return;
++		return -EINVAL;
+ 	}
+ 
+ 	for (i = 0; i < num_plls; i++) {
+@@ -397,11 +398,25 @@ void mtk_clk_register_plls(struct device_node *node,
  
  		if (IS_ERR(clk)) {
- 			pr_err("Failed to register clk %s: %pe\n", mux->name, clk);
+ 			pr_err("Failed to register clk %s: %pe\n", pll->name, clk);
 -			continue;
 +			goto err;
  		}
  
- 		clk_data->clks[mux->id] = clk;
+ 		clk_data->clks[pll->id] = clk;
  	}
- 
- 	return 0;
++
++	return 0;
 +
 +err:
 +	while (--i >= 0) {
-+		const struct mtk_mux *mux = &muxes[i];
++		const struct mtk_pll_data *pll = &plls[i];
 +
-+		if (IS_ERR_OR_NULL(clk_data->clks[mux->id]))
-+			continue;
-+
-+		mtk_clk_unregister_mux(clk_data->clks[mux->id]);
-+		clk_data->clks[mux->id] = ERR_PTR(-ENOENT);
++		mtk_clk_unregister_pll(clk_data->clks[pll->id]);
++		clk_data->clks[pll->id] = ERR_PTR(-ENOENT);
 +	}
++
++	iounmap(base);
 +
 +	return PTR_ERR(clk);
  }
- EXPORT_SYMBOL_GPL(mtk_clk_register_muxes);
+ EXPORT_SYMBOL_GPL(mtk_clk_register_plls);
+ 
+diff --git a/drivers/clk/mediatek/clk-pll.h b/drivers/clk/mediatek/clk-pll.h
+index a889b1e472e7..bf06e44caef9 100644
+--- a/drivers/clk/mediatek/clk-pll.h
++++ b/drivers/clk/mediatek/clk-pll.h
+@@ -48,9 +48,9 @@ struct mtk_pll_data {
+ 	u8 pll_en_bit; /* Assume 0, indicates BIT(0) by default */
+ };
+ 
+-void mtk_clk_register_plls(struct device_node *node,
+-			   const struct mtk_pll_data *plls, int num_plls,
+-			   struct clk_onecell_data *clk_data);
++int mtk_clk_register_plls(struct device_node *node,
++			  const struct mtk_pll_data *plls, int num_plls,
++			  struct clk_onecell_data *clk_data);
+ void mtk_clk_unregister_plls(const struct mtk_pll_data *plls, int num_plls,
+ 			     struct clk_onecell_data *clk_data);
  
 -- 
 2.35.0.263.gb82422642f-goog
