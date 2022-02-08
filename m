@@ -4,58 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93FC7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 19:02:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2BD2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 19:19:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n+ZFPhHG12S8cKEHbWPtdua6DATfXebYlmGeSdHeVjE=; b=2BZ67LJesjDer3
-	VBiQpE6VGn5dNqnktMAfHkPF6eUBNX257qk3rvkWtvRdD/+3lghKEoTOjZiq/h1cckFlHaTiQWQd8
-	D16HLGDrvM8za4Hc6iaibDkP0cMZAj9fBUvj15b2kwJiyAGykHmVUGlgFMqMrzWy9rCfK3IQ9gt0n
-	dMXKNTAOLdhODxGx0/IjyEaQbLEeSXlnfeOWJE0M2UB7AcWqalnadmgPUPFVPa98ByXQ6kMo7MdGR
-	GTpeSBYczOHIMXz1lDlU3cWW2Vvz4OFcxv4mxsZ6CrsGelKXNbfj6ySp1y7TmfjGM60lS5rfeB64m
-	77wnGTo+is3vLy9lAdaw==;
+	List-Owner; bh=SUcU8TrpONXoaFj+q8Ozloz08Eko6urtUSFaNYD4ALw=; b=m8CL2Mw27ZBJoB
+	r9RoTo8WXj3vYugpaCNrW5/1JAKSbxz7/i9Nar9z5XDn2MVAooK8zYdqc+tmOWC4Apx0QEnWdoZyN
+	UHwXMa1Ulf3OdvW8kqpMoB3Uoev614aZ5RLBO7i7+z4aQYO5+CeXXw4EVdt/NZBQRXASvA8fCG18c
+	TJoPk1F7Dh41STUL1GMqsMWLmxfzUhL+2jrs0cxXRhy9SqCyAB/4MBC6rsr7VNJHAHyLztF/RbJg0
+	dDkPCT7giyyu+FYNULeHWN09KUDCmGaC7His17RHkwwgB9fASvFaBwz83+BFV28FNatjkEFgMcx6o
+	+a1BUEFUwUwxP1Mk+a1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHVlD-00FKjY-BU; Tue, 08 Feb 2022 19:02:43 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nHW13-00FOX3-Gv; Tue, 08 Feb 2022 19:19:05 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHVj2-00FJbY-LK; Tue, 08 Feb 2022 19:00:30 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 34D5F614E5;
- Tue,  8 Feb 2022 19:00:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6BB42C004E1;
- Tue,  8 Feb 2022 19:00:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1644346828;
- bh=IEWyJRIAgqOmLk5O/Hy+y+7lLdSHvgPjohDMouOy7Lo=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=Po6NiauVK+KqdBgDxAOWFHuthyvLZltYbBs8zrkXk8Lm1oNPzmBBr8kJN20CCzleA
- TW+Z4PbFeOPorUdE/zXlrY4V89W2wYHUf4/6jRlrJ2icq3qzgsj8O9aKF37236DWKm
- di/l4sZy+n9DUf0OE2HpJ4l7FB4foOlhpTPbaL4+4zjD94H2FCB6RWcDxLGW9oWEB7
- QTNkdIKpBnDtID+qF/5+QhOMCzTBG1s5oqD5e1itrMla1UD3OlEUKlt6GcluUYF37j
- 2v2/VX/erSOa+cDRIXWqrLRZ8XRfh+NYhS8MJdIEDLwKO/g7dFVs9yGy1BsV6/ceff
- Fet+DiSUbfVYQ==
-From: Mark Brown <broonie@kernel.org>
-To: Rob Herring <robh+dt@kernel.org>, Leilk Liu <leilk.liu@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20220125012330.13449-1-leilk.liu@mediatek.com>
-References: <20220125012330.13449-1-leilk.liu@mediatek.com>
-Subject: Re: [PATCH V4 0/3] Add compatible for Mediatek MT8186
-Message-Id: <164434682616.1135514.9519927762573253322.b4-ty@kernel.org>
-Date: Tue, 08 Feb 2022 19:00:26 +0000
+ id 1nHW0z-00FOWk-HZ
+ for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 19:19:04 +0000
+X-UUID: 43b959952e7c4e7a9c65c1dfe3fda918-20220208
+X-UUID: 43b959952e7c4e7a9c65c1dfe3fda918-20220208
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2006760816; Tue, 08 Feb 2022 12:19:00 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Feb 2022 11:18:58 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 9 Feb 2022 03:18:57 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 9 Feb 2022 03:18:56 +0800
+From: <sean.wang@mediatek.com>
+To: <deren.wu@mediatek.com>
+CC: <lorenzo.bianconi@redhat.com>, <nbd@nbd.name>, <sean.wang@mediatek.com>,
+ <Soul.Huang@mediatek.com>, <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
+ <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+ <Eric.Liang@mediatek.com>, <Stella.Chang@mediatek.com>,
+ <evelyn.tsai@mediatek.com>, <Ryder.Lee@mediatek.com>,
+ <Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] mt76: mt7921s: fix missing fc type/sub-type for 802.11
+ pkts
+Date: Wed, 9 Feb 2022 03:18:55 +0800
+Message-ID: <1644347935-20006-1-git-send-email-sean.wang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <33dd8e4b7f7f72d191e8eca88b33b32dbf2595d2.1644313224.git.deren.wu@mediatek.comk--annotate>
+References: <33dd8e4b7f7f72d191e8eca88b33b32dbf2595d2.1644313224.git.deren.wu@mediatek.comk--annotate>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220208_110028_778705_6F046DC8 
-X-CRM114-Status: GOOD (  14.35  )
+X-CRM114-CacheID: sfid-20220208_111901_635022_E303B354 
+X-CRM114-Status: UNSURE (   9.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,49 +80,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 25 Jan 2022 09:23:27 +0800, Leilk Liu wrote:
-> Subject: [PATCH V4 0/3] Add compatible for Mediatek MT8186
-> 
-> V4:
-> 1. add "dt-bindings: spi: Convert spi-slave-mt27xx to json-schema" to
-> this series again.
-> 
-> v3:
-> 1. Fix Rob review comment in v2.
-> 
-> [...]
+From: Sean Wang <sean.wang@mediatek.com>
 
-Applied to
+>from: Deren Wu <deren.wu@mediatek.com>
+>
+>For non-mmio devices, should set fc values to proper txwi config
+>
+>Fixes: 48fab5bbef40 ("mt76: mt7921: introduce mt7921s support")
+>Co-developed-by: Leon Yen <Leon.Yen@mediatek.com>
+>Signed-off-by: Leon Yen <Leon.Yen@mediatek.com>
+>Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+Tested-by: Sean Wang <sean.wang@mediatek.com>
 
-Thanks!
-
-[1/3] dt-bindings: spi: Convert spi-slave-mt27xx to json-schema
-      commit: 60edd652005fe2931565f658f23f86d094f4c1f0
-[2/3] dt-bindings: spi: Convert spi-mt65xx to json-schema
-      commit: 08727dd751234bc878be64e60ea6f0d8ea0d54c0
-[3/3] dt-bindings: spi: Add compatible for Mediatek MT8186
-      commit: ccbc5d0a92c5f1d42d1a1635b53f1987821e9cdd
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+>---
+> drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 13 ++++++++++---  drivers/net/wireless/mediatek/mt76/mt7921/mac.h |  3 +++
+> 2 files changed, 13 insertions(+), 3 deletions(-)
+>
+>diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+>index d17558349a17..e403f0225b77 100644
+>--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+>+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+>@@ -852,6 +852,7 @@ mt7921_mac_write_txwi_80211(struct mt7921_dev *dev, __le32 *txwi,
+>	__le16 fc = hdr->frame_control;
+>	u8 fc_type, fc_stype;
+>	u32 val;
+>+	bool is_mmio = mt76_is_mmio(&dev->mt76);
+>
+>	if (ieee80211_is_action(fc) &&
+>	    mgmt->u.action.category == WLAN_CATEGORY_BACK && @@ -912,9 +913,15 @@ mt7921_mac_write_txwi_80211(struct mt7921_dev *dev, __le32 *txwi,
+>		txwi[3] |= cpu_to_le32(val);
+>	}
+>
+>-	val = FIELD_PREP(MT_TXD7_TYPE, fc_type) |
+>-	      FIELD_PREP(MT_TXD7_SUB_TYPE, fc_stype);
+>-	txwi[7] |= cpu_to_le32(val);
+>+	if (is_mmio) {
+>+		val = FIELD_PREP(MT_TXD7_TYPE, fc_type) |
+>+		      FIELD_PREP(MT_TXD7_SUB_TYPE, fc_stype);
+>+		txwi[7] |= cpu_to_le32(val);
+>+	} else {
+>+		val = FIELD_PREP(MT_TXD8_L_TYPE, fc_type) |
+>+		      FIELD_PREP(MT_TXD8_L_SUB_TYPE, fc_stype);
+>+		txwi[8] |= cpu_to_le32(val);
+>+	}
+> }
+>
+> void mt7921_mac_write_txwi(struct mt7921_dev *dev, __le32 *txwi, diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.h b/drivers/net/wireless/mediatek/mt76/mt7921/mac.h
+>index 544a1c33126a..12e1cf8abe6e 100644
+>--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.h
+>+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.h
+>@@ -284,6 +284,9 @@ enum tx_mcu_port_q_idx {
+> #define MT_TXD7_HW_AMSDU		BIT(10)
+> #define MT_TXD7_TX_TIME			GENMASK(9, 0)
+>
+>+#define MT_TXD8_L_TYPE			GENMASK(5, 4)
+>+#define MT_TXD8_L_SUB_TYPE		GENMASK(3, 0)
+>+
+> #define MT_TX_RATE_STBC			BIT(13)
+> #define MT_TX_RATE_NSS			GENMASK(12, 10)
+> #define MT_TX_RATE_MODE			GENMASK(9, 6)
+>--
+>2.18.0
+>
+>
 
 _______________________________________________
 Linux-mediatek mailing list
