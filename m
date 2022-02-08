@@ -4,80 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F36C6C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 11:13:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6CD5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 11:19:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T381KHjo2oJ8bfqD+s35yqkKdWo2kAfg9Elv0dBcsZM=; b=TLDiE8Gs4cAEdG
-	F+wulzjzg6hrOElxzvhNfrsAGlFEOXQsX2p1ChESp7I/E1p7lcquUNfYd02vPhtslf/HWXaAMOqSY
-	SWJFrOy3V9+0YncFAVJQVTHNZQo9TH34YlqDPB2XggAtrn64FPi50KS2MdQZmz1CL8SQDkCTB8M4U
-	sndQbgc3vJEv+6BYL18qQ09AZ3THIkcub1mxMm9v9WeeJCjryWRv1KWRVgCT+vVKL2eg5ye77XG+X
-	LMkuSflkiyIEMaQwRs2PprmtDOoF2a7FxSmZCPKS3BnzNZR5fpda+aQnNUUNYXfdEpcPI/KGQnNdN
-	1fCiS3uVbb+4/Mo7ep8w==;
+	List-Owner; bh=ZsYpnKIoP5UKHu1MATlZOfLnXmGYbOmn1hp2smTsfb0=; b=jrw45TjAKa93lS
+	6WU+fjkv94htHNn0FdF5oPV53mRIIVz83E4U+atAMOP7ZGfugy7wTgIOGHoM7P+7syBjo8hnNXe+F
+	Ihmug0S9vMjGCMec1GC8oUhirhdZaos+PRkqPYHGIGY2oCorRJSJ09lV7QlvxvaHGcu0mkG4cewqD
+	EeV77y241e8WOtkirTLXmvIujWBPJQGkwCWRku7EGH9c38+nIa4X/RQz2MxwkUuJAP0zI5jJInvFp
+	39lnWPS72e8TZiJ0fJ82rixMpyWKbCLgz9LrbZM3kKuQZ2WzmG8uDPnkogWl6NPMkDUZ45OsPluK8
+	DnzL+bfwE3M2Rp1rZERQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHORD-00DXVI-Qv; Tue, 08 Feb 2022 11:13:35 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1nHOWs-00DZab-Oq; Tue, 08 Feb 2022 11:19:26 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHORA-00DXSK-Ap
- for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 11:13:33 +0000
-Received: by mail-ed1-x533.google.com with SMTP id bx2so20407555edb.11
- for <linux-mediatek@lists.infradead.org>; Tue, 08 Feb 2022 03:13:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=3G2225l3e7AAW7cvW9DSbSKu70gKYyiFP+/P2AbU0GE=;
- b=Xyf7gEeeFQZpkKXO8gzF2AgluqdrifnT/FgKVNNk/lOKTNzDZiaZpxWZkJBQ3wk8ue
- hYn6eA9FXNG9IBGN9B+GjYUHQ8714SRdBNzbQJ82JTECIlg3js0Ids8PtzlFJlwQ8/No
- KjSJpWys4J2GcMk8T8YisSEgyfTJXbUXne3m/y0TCeoQoimlXHHwP1M4P31cZ7kOgtbc
- +zWBrbmshVSmfUyRDLeErcgLx7SVrFU5Zk0tjgRWRfH+3NXn/PL8N0Wfp1ujODljr+4m
- cAdFJR6/y3QWMGHdJ/QVE6BBFoYdz9z3MzSn6nX0V+TefwaKjnvOZqYCVvi9JflBbb1S
- qJ5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=3G2225l3e7AAW7cvW9DSbSKu70gKYyiFP+/P2AbU0GE=;
- b=04dE3ZndzMT+Qnp6Hy3rd4d4d8fKPsZz3NPBHEg/B0bFim9Kswhp48mZEW+yhQdW0Y
- AYcQoD3/QtE0hnXryn40qmjpMgAF02sq1FCa1h2CCDY41JOeYECA3HLvf6Y5yikXWAFE
- C/G/6+inALvosshZyB9xP1eclp5E6WJqbbUOyGitmZziGx6mpBF24tLeGjeUD7t03i8Y
- lb1BPmEChymyKhqELnRNz/wXeXxEcNw7GuhLn1LQS49eIpNthUaemN7bUPUVUSyL4fRI
- 6peacX8vLTnaF8wJokb4DcG4OZID6ZTrUDTeJI8Fj9v/c6zGv/nvfukQEFmG92Ez0V74
- cWuQ==
-X-Gm-Message-State: AOAM532PAb2QpJW19R8ripOv8UqXWp8GYjq3bZ72Az/Qt2FlhzRWYyNc
- KEkn1XyQpvfNzLOeAzg+D4++qB6sgmtur1XeUiZLiw==
-X-Google-Smtp-Source: ABdhPJywJZL0jTPvvCbkGnYtFW82KoshEzkqB1HixUSDNK3JM1+qqwgc2BPOGxgMTLyu8AS04o5CLxS9fyGFvEJzrWk=
-X-Received: by 2002:aa7:db49:: with SMTP id n9mr3902542edt.100.1644318809786; 
- Tue, 08 Feb 2022 03:13:29 -0800 (PST)
+ id 1nHOWd-00DZWG-To; Tue, 08 Feb 2022 11:19:13 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id E6A291F40DB2
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1644319148;
+ bh=YZ4vl5dn4dGgAIbf9dSevrTrJvjW1muxZxlPq1Ez3H0=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=b+B+WOsCW8uf+hliLI9pK0Q1jfdIXl1UAKsX71b6kncuJjnC5hvbygSy89Hfgo3Kb
+ DgJr53dAhlbPw1H/rO/I6EE1HDAV00+aUr8DqygFT4eSkvxv3VEBv0+jAPkAVarl+z
+ xAmoAykC6HzAsh3t3MET8KvQNTFjUVXYYSVKm5aFdlnVqngWNmYWj6I7Y0qa0jw3Gk
+ YgAohlu4E3ubs0lMjbJ9eW3Tt5f0WcWMhlo+kbDtdA03rBc8lMreQnxEhQLPJ1H6o4
+ SB3cZnH5wBJ/AlsVysgzXiJSbqk6Pbnc36Ia7CTAd375DumCoVIJm0gE4/s7/QZLYM
+ JdkLaHYo21Jxw==
+Message-ID: <95383ff1-2696-6dac-26ab-1239b5323c8c@collabora.com>
+Date: Tue, 8 Feb 2022 12:19:04 +0100
 MIME-Version: 1.0
-References: <20220201120310.878267-1-maz@kernel.org>
-In-Reply-To: <20220201120310.878267-1-maz@kernel.org>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Tue, 8 Feb 2022 12:13:19 +0100
-Message-ID: <CAMRc=Me=VTqTfa4=p3HOa4_NmE3W6h+YyPLZGKXZo6dqUoxWmg@mail.gmail.com>
-Subject: Re: [PATCH 00/12] genirq: Move irqchip runtime PM over to irq domain
-To: Marc Zyngier <maz@kernel.org>
-Cc: "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Linux-OMAP <linux-omap@vger.kernel.org>, 
- Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Grygorii Strashko <grygorii.strashko@ti.com>,
- Santosh Shilimkar <ssantosh@kernel.org>, 
- Kevin Hilman <khilman@kernel.org>, Thomas Gleixner <tglx@linutronix.de>,
- Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, Avi Fishman <avifishman70@gmail.com>, 
- Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, 
- Emil Renner Berthing <kernel@esmil.dk>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH v2 15/31] clk: mediatek: Implement
+ mtk_clk_unregister_fixed_clks() API
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Stephen Boyd <sboyd@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Miles Chen <miles.chen@mediatek.com>, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220202134834.690675-1-wenst@chromium.org>
+ <20220202134834.690675-16-wenst@chromium.org>
+ <752d5d00-4e05-1bd6-564f-3bce21a35713@collabora.com>
+ <CAGXv+5HSLh0OgJc=EU=wvB4DaOMDLjsgJ6qnHY423d1L5+DixQ@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5HSLh0OgJc=EU=wvB4DaOMDLjsgJ6qnHY423d1L5+DixQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220208_031332_399303_EFAD2072 
-X-CRM114-Status: GOOD (  25.75  )
+X-CRM114-CacheID: sfid-20220208_031912_197118_2B61F553 
+X-CRM114-Status: GOOD (  20.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,85 +72,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 1, 2022 at 1:03 PM Marc Zyngier <maz@kernel.org> wrote:
->
-> Our irq_chip data structure currently suffers from two problems:
->
-> (1) the 'name' field is often dynamically populated with a reference
->     to the underlying HW (DT node dame, for example)
->
-> (2) the 'parent_device' which is used to implement runtime PM is also
->     dynamically populated
->
-> (3) there is at least one instance of a subsystem messing with the
->     internals of irq_chip structures (gpiochip_set_irq_hooks is
->     what I know about)
->
-> These things mean that although the primary use of irq_chip is to only
-> contain function pointers and other *static* information, the above
-> two fields result in these structures being copied in a number of
-> drivers. Eventually, it would be much better if the various drivers
-> would use irq_chip as an 'ops' data structure (potentially made
-> read-only), and keep the dynamic information somewhere more suitable.
->
-> For (2) we already have the irqdomain structure that is designed to
-> deal with the context in which interrupts are used, and it makes sense
-> to move the 'parent_device' field over to this structure. This is what
-> this small series is doing, with some minor cleanup on the way.
->
-> (1) and (3) will be dealt in separate series (and I don't have a good
-> solution for (3) yet).
->
-> Thanks,
->
->         M.
->
-> Marc Zyngier (12):
->   genirq: Allow the PM device to originate from irq domain
->   irqchip/gic: Move PM device over to irq domain
->   irqchip/renesas-intc-gpio: Move PM device over to irq domain
->   irqchip/renesas-irqc: Move PM device over to irq domain
->   irqchip/imx-intmux: Move PM device over to irq domain
->   gpio: mt7621: Kill parent_device usage
->   gpio: omap: Move PM device over to irq domain
->   gpio: rcar: Move PM device over to irq domain
->   gpio: tpmx86: Move PM device over to irq domain
->   pinctrl: npcm: Fix broken references to chip->parent_device
->   pinctrl: starfive: Move PM device over to irq domain
->   genirq: Kill irq_chip::parent_device
->
->  drivers/gpio/gpio-mt7621.c                |  1 -
->  drivers/gpio/gpio-omap.c                  |  7 ++++---
->  drivers/gpio/gpio-rcar.c                  |  2 +-
->  drivers/gpio/gpio-tqmx86.c                |  3 ++-
->  drivers/irqchip/irq-gic.c                 | 12 +++++------
->  drivers/irqchip/irq-imx-intmux.c          |  8 +++-----
->  drivers/irqchip/irq-renesas-intc-irqpin.c |  3 ++-
->  drivers/irqchip/irq-renesas-irqc.c        |  3 ++-
->  drivers/pinctrl/nuvoton/pinctrl-npcm7xx.c | 25 +++++++++++------------
->  drivers/pinctrl/pinctrl-starfive.c        |  3 ++-
->  include/linux/irq.h                       |  2 --
->  include/linux/irqdomain.h                 | 10 +++++++++
->  kernel/irq/chip.c                         | 20 +++++++++++++-----
->  13 files changed, 59 insertions(+), 40 deletions(-)
->
-> --
-> 2.30.2
->
+Il 08/02/22 04:50, Chen-Yu Tsai ha scritto:
+> Hi,
+> 
+> On Thu, Feb 3, 2022 at 5:47 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Il 02/02/22 14:48, Chen-Yu Tsai ha scritto:
+>>> mtk_clk_register_fixed_clks(), as the name suggests, is used to register
+>>> a given list of fixed rate clks. However it is lacking a counterpart
+>>> unregister API.
+>>>
+>>> Implement said unregister API so that the various clock platform drivers
+>>> can utilize it to do proper unregistration, cleanup and removal.
+>>>
+>>> In the header file, the register function's declaration is also
+>>> reformatted to fit code style guidelines.
+>>>
+>>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+>>> Reviewed-by: Miles Chen <miles.chen@mediatek.com>
+>>
+>> Hello Chen-Yu,
+>>
+>> I like this entire series, but I had to manually apply this patch (and some of
+>> the other ones)...
+> 
+> This was based on linux-next, which already has a couple clk patches queued
+> up.
+> 
+>> Especially for the ones that will be touching MT8195 clock drivers, can you
+>> please rebase over series [1] by Chun-Jie?
+> 
+> I think this series supersedes the first patch in that series? As for the
+> other two, I think the discussion about the bindings is ongoing, which
+> might affect the third patch as well?
 
-The changes for GPIO are small so:
+You're right about that - besides, the mentioned series will take a bit of time to
+get merged in and this cleanup should not be waiting for all that time, as it's
+very, very nice...
+In any case, I don't think that the third patch from that series will be affected,
+as it's a double-definition instance: the vppsys{0,1} are really defined in mmsys
+and they're simply moving it around... The committer forgot to add the two
+properties (the ones that he removed from mt8195-clock) to mediatek,mmsys.yaml,
+I'll send a reply over that thread.
 
-Acked-by: Bartosz Golaszewski <brgl@bgdev.pl>
+Anyway, yes, this series definitely supersedes patch 1 in that series, so,
+I'm sorry for the noise, and:
 
-You can take it through your tree and if there are any conflicts, I'll
-just ask for an immutable branch.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Bart
+> 
+> ChenYu
+> 
+>> [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=603955
+>>
+>> Thanks,
+>> Angelo
+>>
+
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
