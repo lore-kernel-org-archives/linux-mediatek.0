@@ -4,71 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15ECDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 07:14:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E15AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 07:26:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W6BDwICBaiu1mmyVwuoHYLAracnoGR/KEfJFq3b88Us=; b=RgJhE3A53+pUzP
-	444WHDYdOPNDD56I4FZV/GyzKavYDh+4/EGU54JyNIcvbw1GNacG4CmLy7WLEm2FPi/6SwLHMo/S4
-	LuTYhJeYwiACTPGTFnnAy/6QCfTPBWwXuMMD8URaVGOayidQrKvub1x84vXxw+icVVo+tz04Npgeb
-	rGPiJu0cKqeovcbZTaGgjz7MlBky/o1u0qxYcD8epdrHyn2cVRLS+0jUzUCtJRh4j0GFWzuTQgtnh
-	VYbw4lSEon2JSyKavO9CImx+m4vHlkYayj/tHQJXx/tQuSycuEdqJ0D5JTZuMfTtuGfvnXqrbshPK
-	pxXkouBa+ZvnUii7JSiw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=oXQpRXzm6Cbgy7rDAIFu4M13VVQBxmBEImmPIpE32u0=; b=2spo0Z49w6BiEs
+	q8Eq1xXZtrCzLBU5C3B8lRiTMGlZwUFDeW65ofNpPd4hTB7E2115Jp6Xi7wHQiev8D/pQryjsitah
+	Z+3vo7cXpOgegPuLYo8jEkJqaKb/I7a+MmK6XaVGAukwL9y9Bd1LPv8EzWHTof1DrNYzjhMBUzd1n
+	Y42qZ7vJVFWgKOd1EqH7wa1r9Swk2QKNLROSkVVGGv41v79bPS6NxXgdwMYKQx0O/Cij/7ETtADS8
+	TOgsaT0/5Bn9Kd3LClnUJl/HqR98Om6wq03TCxv2pgC1gJvciGkOmi8ajKC5WBhwTjtD3yHf0QmG/
+	oBXyIcuamwCXWbGw71yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHKi9-00Ck65-UX; Tue, 08 Feb 2022 07:14:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nHKtc-00ClmO-Gz; Tue, 08 Feb 2022 07:26:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHKhx-00Ck2I-96; Tue, 08 Feb 2022 07:14:39 +0000
-X-UUID: 4677251039f54d3da5ebfe67a8cecc4e-20220208
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=c9MIAl2/vPy7BL2Lu5Lsf4i38POmukOcKOfbj1glrCA=; 
- b=MpUFydl4Z2ZdWDVqWzhRnkMzUhZr2nSpJ7TtB0k1fGXrxbaRcnLmDvV43UKKjlDW8hTwAPLzerLRsr7XQJA/BCyhShxxNW2xNWlnvtUcSPnGbr2uJey5KrGfOBuwz6QRNRodsyL6rXQSDFe9iGueeIBJ82e4dHrv/sdweoBdO9o=;
-X-UUID: 4677251039f54d3da5ebfe67a8cecc4e-20220208
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <qizhong.cheng@mediatek.com>)
+ id 1nHKtZ-00Cll6-Vv
+ for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 07:26:39 +0000
+X-UUID: e7e3c28f3af0484cafb2b2fb5c75afc5-20220208
+X-UUID: e7e3c28f3af0484cafb2b2fb5c75afc5-20220208
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <bo.jiao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1022747745; Tue, 08 Feb 2022 00:14:28 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 7 Feb 2022 23:08:50 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Feb 2022 15:08:48 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 8 Feb 2022 15:08:47 +0800
-Message-ID: <27529bea92fed181d5b47b29143f5cf1ee95735d.camel@mediatek.com>
-Subject: Re: [PATCH] PCI: mediatek: Change MSI interrupt processing sequence
-From: qizhong.cheng <qizhong.cheng@mediatek.com>
-To: Jianjun Wang <jianjun.wang@mediatek.com>, Bjorn Helgaas
- <helgaas@kernel.org>
-CC: Marc Zyngier <maz@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- "Lorenzo Pieralisi" <lorenzo.pieralisi@arm.com>, Krzysztof
- =?UTF-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Bjorn Helgaas
- <bhelgaas@google.com>, <linux-pci@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <chuanjia.liu@mediatek.com>, Srikanth
- Thokala <srikanth.thokala@intel.com>, Pratyush Anand
- <pratyush.anand@gmail.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Pali =?ISO-8859-1?Q?Roh=E1r?= <pali@kernel.org>, qizhong cheng
- <qizhong.cheng@mediatek.com>
-Date: Tue, 8 Feb 2022 15:08:47 +0800
-In-Reply-To: <06cfb0231f084936ede1b252101861c1787de25f.camel@mediatek.com>
-References: <20220127212100.GA102267@bhelgaas>
- <06cfb0231f084936ede1b252101861c1787de25f.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ with ESMTP id 73234632; Tue, 08 Feb 2022 00:26:28 -0700
+Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 7 Feb 2022 23:16:26 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS34N1.mediatek.inc
+ (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 8 Feb 2022 15:16:23 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Tue, 8 Feb 2022 15:16:22 +0800
+From: Bo Jiao <bo.jiao@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
+ <ryder.lee@mediatek.com>, Xing Song <xing.song@mediatek.com>, Sujuan Chen
+ <sujuan.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, "Evelyn
+ Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>
+Subject: [PATCH] mt76: mt7915: Fix channel state update error issue
+Date: Tue, 8 Feb 2022 15:16:15 +0800
+Message-ID: <41371866a1ad861988303f043ff21016a4ef0a01.1644304381.git.Bo.Jiao@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220207_231437_352810_265B0F7A 
-X-CRM114-Status: GOOD (  43.36  )
+X-CRM114-CacheID: sfid-20220207_232638_060089_83FE1B98 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,162 +72,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-01-28 at 15:58 +0800, Jianjun Wang wrote:
-> Hi Bjorn,
-> 
-> On Thu, 2022-01-27 at 15:21 -0600, Bjorn Helgaas wrote:
-> > [+cc Srikanth, Pratyush, Thomas, Pali, Ryder, Jianjun]
-> > 
-> > On Wed, Jan 26, 2022 at 11:37:58AM +0800, qizhong.cheng wrote:
-> > > On Tue, 2022-01-25 at 17:21 +0000, Marc Zyngier wrote:
-> > > > On 2022-01-25 16:57, Bjorn Helgaas wrote:
-> > > > > On Sun, Jan 23, 2022 at 11:33:06AM +0800, qizhong cheng
-> > > > > wrote:
-> > > > > > As an edge-triggered interrupts, its interrupt status
-> > > > > > should
-> > > > > > be cleared before dispatch to the handler of device.
-> > > > > 
-> > > > > I'm not an IRQ expert, but the reasoning that "we should
-> > > > > clear
-> > > > > the MSI interrupt status before dispatching the handler
-> > > > > because
-> > > > > MSI is an edge-triggered interrupt" doesn't seem completely
-> > > > > convincing because your code will now look like this:
-> > > > > 
-> > > > >   /* Clear the INTx */
-> > > > >   writel(1 << bit, port->base + PCIE_INT_STATUS);
-> > > > >   generic_handle_domain_irq(port->irq_domain, bit -
-> > > > > INTX_SHIFT);
-> > > > >   ...
-> > > > > 
-> > > > >   /* Clear MSI interrupt status */
-> > > > >   writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
-> > > > >   generic_handle_domain_irq(port->inner_domain, bit);
-> > > > > 
-> > > > > You clear interrupt status before dispatching the handler for
-> > > > > *both* level-triggered INTx interrupts and edge-triggered MSI
-> > > > > interrupts.
-> > > > > 
-> > > > > So it doesn't seem that simply being edge-triggered is the
-> > > > > critical factor here.
-> > > > 
-> > > > This is the usual problem with these half-baked
-> > > > implementations.
-> > > > The signalling to the primary interrupt controller is level, as
-> > > > they take a multitude of input and (crucially) latch the MSI
-> > > > edges. Effectively, this is an edge-to-level converter, with
-> > > > all
-> > > > the problems that this creates.
-> > > > 
-> > > > By clearing the status *after* the handling, you lose edges
-> > > > that
-> > > > have been received and coalesced after the read of the status
-> > > > register. By clearing it *before*, you are acknowledging the
-> > > > interrupts early, and allowing them to be coalesced
-> > > > independently
-> > > > of the ones that have been received earlier.
-> > > > 
-> > > > This is however mostly an educated guess. Someone with access
-> > > > to
-> > > > the TRM should verify this.
-> > > 
-> > > Yes, as Maz said, we save the edge-interrupt status so that it
-> > > becomes a level-interrupt. This is similar to an edge-to-level
-> > > converter, so we need to clear it *before*. We found this problem
-> > > through a lot of experiments and tested this patch.
-> > 
-> > I thought there might be other host controllers with similar
-> > design,
-> > so I looked at all the other drivers and tried to figure out
-> > whether
-> > any others had similar problems.
-> > 
-> > The ones below look suspicious to me because they all clear some
-> > sort
-> > of status register *after* handling an MSI.  Can you guys take a
-> > look
-> > and make sure they are working correctly?
-> > 
-> >   keembay_pcie_msi_irq_handler
-> >     status = readl(pcie->apb_base + PCIE_REGS_INTERRUPT_STATUS)
-> >     if (status & MSI_CTRL_INT)
-> >       dw_handle_msi_irq
-> > 	generic_handle_domain_irq
-> >       writel(status, pcie->apb_base + PCIE_REGS_INTERRUPT_STATUS)
-> > 
-> >   spear13xx_pcie_irq_handler
-> >     status = readl(&app_reg->int_sts)
-> >     if (status & MSI_CTRL_INT)
-> >       dw_handle_msi_irq
-> > 	generic_handle_domain_irq
-> >     writel(status, &app_reg->int_clr)
-> > 
-> >   advk_pcie_handle_int
-> >     isr0_status = advk_readl(pcie, PCIE_ISR0_REG)
-> >     if (isr0_status & PCIE_ISR0_MSI_INT_PENDING)
-> >       advk_pcie_handle_msi
-> >         advk_readl(pcie, PCIE_MSI_STATUS_REG)
-> > 	advk_writel(pcie, BIT(msi_idx), PCIE_MSI_STATUS_REG)
-> > 	generic_handle_irq
-> > 	advk_writel(pcie, PCIE_ISR0_MSI_INT_PENDING, PCIE_ISR0_REG)
-> > 
-> >   mtk_pcie_irq_handler
-> >     status = readl_relaxed(pcie->base + PCIE_INT_STATUS_REG)
-> >     for_each_set_bit_from(irq_bit, &status, ...)
-> >       mtk_pcie_msi_handler
-> >         generic_handle_domain_irq
-> >       writel_relaxed(BIT(irq_bit), pcie->base +
-> > PCIE_INT_STATUS_REG)
-> 
-> Thanks for mention that. In the hardware corresponding to pcie-
-> mediatek-gen3.c, the interrupt status in PCIE_INT_STATUS_REG cannot
-> be
-> cleared if the MSI status remaining in the register of msi_set, so we
-> have to clear it after handling the MSI.
-> 
-> I guess the root cause of this patch is the interrupt status can be
-> cleared even the MSI status still remaining, hence that if there are
-> some MSIs received while clearing the interrupt status, these MSIs
-> cannot be serviced.
-> 
-> We will discuss and test internally and update the results later,
-> thanks for your review.
-> 
-> Thanks.
-> 
-> > 
-> > Bjorn
-> 
-> 
+From: Bo Jiao <Bo.Jiao@mediatek.com>
 
-Sorry for the late reply. Thanks for your comment. I will update
-subject and add commit log in the next version.
+Fix channel state update error issue due to wrong
+register access for mt7916.
 
-The interrupt status can be cleared even the MSI status still
-remaining, as an edge-triggered interrupts, its interrupt status should
-be cleared before dispatching handler to capture the next interrupt.
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/mac.c  | 15 +++++++++++----
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c  |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt7915/regs.h | 11 ++++++++---
+ 3 files changed, 20 insertions(+), 8 deletions(-)
 
-The design of MSI hardware block diagram is as follows:
-      +-----+
-      | GIC |
-      +-----+
-         ^
-         |
-  +-----------------+
-  | INT_STATUS |
-  +-----------------+
-         ^
-         | (edge-triggered)
-  +-----------------+
-  | MSI_STATUS | 
-  +-----------------+
-         ^
-         |
-  +-----------------+
-  | EP send MSI |
-  +-----------------+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 3c38031..b693868 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -1845,12 +1845,17 @@ void mt7915_mac_set_timing(struct mt7915_phy *phy)
+ 
+ void mt7915_mac_enable_nf(struct mt7915_dev *dev, bool ext_phy)
+ {
+-	mt76_set(dev, MT_WF_PHY_RXTD12(ext_phy),
++	u32 reg;
++
++	reg = is_mt7915(&dev->mt76) ? MT_WF_PHY_RXTD12(ext_phy) :
++		MT_WF_PHY_RXTD12_MT7916(ext_phy);
++	mt76_set(dev, reg,
+ 		 MT_WF_PHY_RXTD12_IRPI_SW_CLR_ONLY |
+ 		 MT_WF_PHY_RXTD12_IRPI_SW_CLR);
+ 
+-	mt76_set(dev, MT_WF_PHY_RX_CTRL1(ext_phy),
+-		 FIELD_PREP(MT_WF_PHY_RX_CTRL1_IPI_EN, 0x5));
++	reg = is_mt7915(&dev->mt76) ? MT_WF_PHY_RX_CTRL1(ext_phy) :
++		MT_WF_PHY_RX_CTRL1_MT7916(ext_phy);
++	mt76_set(dev, reg, FIELD_PREP(MT_WF_PHY_RX_CTRL1_IPI_EN, 0x5));
+ }
+ 
+ static u8
+@@ -1862,7 +1867,9 @@ mt7915_phy_get_nf(struct mt7915_phy *phy, int idx)
+ 	int nss, i;
+ 
+ 	for (nss = 0; nss < hweight8(phy->mt76->chainmask); nss++) {
+-		u32 reg = MT_WF_IRPI(nss + (idx << dev->dbdc_support));
++		u32 reg = is_mt7915(&dev->mt76) ?
++			MT_WF_IRPI_NSS(0, nss + (idx << dev->dbdc_support)) :
++			MT_WF_IRPI_NSS_MT7916(idx, nss);
+ 
+ 		for (i = 0; i < ARRAY_SIZE(nf_power); i++, reg += 4) {
+ 			val = mt76_rr(dev, reg);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 94837ed..94f9ac9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -3079,7 +3079,7 @@ int mt7915_mcu_get_chan_mib_info(struct mt7915_phy *phy, bool chan_switch)
+ 	if (ret)
+ 		return ret;
+ 
+-	res = (struct mt7915_mcu_mib *)(skb->data + 20);
++	res = (struct mt7915_mcu_mib *)(skb->data);
+ 
+ 	if (chan_switch)
+ 		goto out;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+index 6a0f681..e380fd9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+@@ -761,18 +761,23 @@ enum offs_rev {
+ #define MT_WF_PP_TOP_RXQ_WFDMA_CF_5	MT_WF_PP_TOP(0x0e8)
+ #define MT_WF_PP_TOP_RXQ_QID6_WFDMA_HIF_SEL_MASK	BIT(6)
+ 
+-#define MT_WF_IRPI_BASE			0x83006000
+-#define MT_WF_IRPI(ofs)			(MT_WF_IRPI_BASE + ((ofs) << 16))
++#define MT_WF_IRPI_BASE			0x83000000
++#define MT_WF_IRPI(ofs)			(MT_WF_IRPI_BASE + (ofs))
+ 
+-/* PHY: band 0(0x83080000), band 1(0x83090000) */
++#define MT_WF_IRPI_NSS(phy, nss)	MT_WF_IRPI(0x6000 + ((phy) << 20) + ((nss) << 16))
++#define MT_WF_IRPI_NSS_MT7916(phy, nss)	MT_WF_IRPI(0x1000 + ((phy) << 20) + ((nss) << 16))
++
++/* PHY */
+ #define MT_WF_PHY_BASE			0x83080000
+ #define MT_WF_PHY(ofs)			(MT_WF_PHY_BASE + (ofs))
+ 
+ #define MT_WF_PHY_RX_CTRL1(_phy)	MT_WF_PHY(0x2004 + ((_phy) << 16))
++#define MT_WF_PHY_RX_CTRL1_MT7916(_phy)	MT_WF_PHY(0x2004 + ((_phy) << 20))
+ #define MT_WF_PHY_RX_CTRL1_IPI_EN	GENMASK(2, 0)
+ #define MT_WF_PHY_RX_CTRL1_STSCNT_EN	GENMASK(11, 9)
+ 
+ #define MT_WF_PHY_RXTD12(_phy)		MT_WF_PHY(0x8230 + ((_phy) << 16))
++#define MT_WF_PHY_RXTD12_MT7916(_phy)	MT_WF_PHY(0x8230 + ((_phy) << 20))
+ #define MT_WF_PHY_RXTD12_IRPI_SW_CLR_ONLY	BIT(18)
+ #define MT_WF_PHY_RXTD12_IRPI_SW_CLR		BIT(29)
+ 
+-- 
+2.18.0
 
-Thanks
 
 _______________________________________________
 Linux-mediatek mailing list
