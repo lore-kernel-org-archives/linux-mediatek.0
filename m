@@ -4,56 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FD1FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 15:08:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23EE9C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Feb 2022 15:34:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LXavZMQfEfD4isOpwH/3Jn0RDSIUQ96aPSAfD9i1HYA=; b=wFDz/KD09/jifC
-	ZJ59eiTUL1cEMtFL2UaEC6KdyzRftQH1mIDHefxVBnJswczqGr/RRqSBqYR/V1n+GU71TJDEyLNaN
-	M2y5qbJMO7BdGCHfLX41Uq03JspiswL22Lw/ydVDkMjZ1jBmRXrQ16v//9TGvNulSGreDY6lUR7lM
-	Y2QiUP2d4OH8yKMHGdg/po8K+8o9UZnRmdBHfgJbnx8VX8VT4dZHobhVKwM+hBQXPNGmeZwI1J9Jm
-	g3Eoxpwflqil4wlqwhe2jAAkDntaxZpvzwgnLYTFYevmlUS0dTs4v4oY5hlOByTIxtc7SM3vk+D8f
-	gMpAg4jiz2vO21gxMs4g==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8mAWG2Dj1QRD8jgsk0gHWsKaGJL0Wk/3X5e/bBOPb84=; b=Fh0ZT91VbSs69s
+	Qct2rBhn2Q2ACCinvp10LhTxhwYv2SdcR1gGkbUo01lU4L5tK51I8cPhfqEzqN4t3QPGjQKGeY8d1
+	OUanNtLp/fTsoholKbLzfDNLr5FFXUV6xSBwIUZMgI6ZW+rK76kkh56xUxoNGRRAYEa2J21R4dC5k
+	dj3WnDrBhAZhEPBJo2zb9rWtaOLjTpYi+ShP+cXnfyN25bSmDGlByDRLMWkK5MN+1OmEaWqn3+p82
+	9Wp5gaf0VKPvJ768vmXHjCjb6l5/ZP+QfIwmK9hNjl3wEiE+SPchQ5RuLXqGgSX/ZsI9krtkeL00X
+	t6uELbd7c2WDOD8Umd9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHS6V-00EOmk-C8; Tue, 08 Feb 2022 15:08:27 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nHSVy-00EW7V-Qd; Tue, 08 Feb 2022 15:34:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHS5y-00EObv-QH; Tue, 08 Feb 2022 15:07:56 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 32784614D5;
- Tue,  8 Feb 2022 15:07:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AFE89C004E1;
- Tue,  8 Feb 2022 15:07:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1644332873;
- bh=Uibn/nvs0txEM63mxxzdwPuACyNUqPDkvUBxEIrRbIc=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=NC7Qh1J10M9MCJz3CTRwMU4YPt9o5AZCdi7awXjbgZisY17tNXlQbZZy7/9F/jXWY
- rY+mtmCnaK4VxyEH4nOHEgtYNgZpMePFcxmnyZI92sC2wp1lxsVtddHWdM29wBoq2H
- Sere8vMTpqMPkYJmKWRcdGRz6Gzyk2rzbul7RVmUVfhNje4ek5mzlK/XBgnlaAYETT
- 07n5jLkCHjXOHWLG6E3P7GAQq02qISeIvz1NnKZPeXgKuENJT/oFpuJH29Srb0lVf2
- ndy+/s1qYakvW7ar58cl6bCPJX8aKdxFVXc1M3AaghUqQKvaG9unu3y406dZarbfnx
- uNoRO5UR6DwhQ==
-From: Mark Brown <broonie@kernel.org>
-To: Guenter Roeck <linux@roeck-us.net>,
- Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220207160923.3911501-1-linux@roeck-us.net>
-References: <20220207160923.3911501-1-linux@roeck-us.net>
-Subject: Re: [PATCH v2] ASoC: Revert "ASoC: mediatek: Check for error clk
- pointer"
-Message-Id: <164433287142.2964899.6109148874743045900.b4-ty@kernel.org>
-Date: Tue, 08 Feb 2022 15:07:51 +0000
+ id 1nHSVu-00EW5f-30
+ for linux-mediatek@lists.infradead.org; Tue, 08 Feb 2022 15:34:44 +0000
+X-UUID: 5e7f0afc32e84b8bbe2030257edc18c7-20220208
+X-UUID: 5e7f0afc32e84b8bbe2030257edc18c7-20220208
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <deren.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 197001594; Tue, 08 Feb 2022 08:34:37 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Feb 2022 07:34:36 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Feb 2022 23:34:34 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 8 Feb 2022 23:34:34 +0800
+From: Deren Wu <Deren.Wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
+ Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+ KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+ <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
+ <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
+ Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
+ Chen" <shayne.chen@mediatek.com>, linux-wireless
+ <linux-wireless@vger.kernel.org>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH] mt76: mt7921s: fix missing fc type/sub-type for 802.11 pkts
+Date: Tue, 8 Feb 2022 23:34:23 +0800
+Message-ID: <33dd8e4b7f7f72d191e8eca88b33b32dbf2595d2.1644313224.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220208_070754_948076_0C1035E0 
-X-CRM114-Status: GOOD (  14.66  )
+X-CRM114-CacheID: sfid-20220208_073442_157285_7C3AFEBB 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,52 +73,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Kevin Hilman <khilman@baylibre.com>,
- Jiasheng Jiang <jiasheng@iscas.ac.cn>, linux-kernel@vger.kernel.org,
- Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 7 Feb 2022 08:09:23 -0800, Guenter Roeck wrote:
-> This reverts commit 9de2b9286a6d ("ASoC: mediatek: Check for error clk
-> pointer").
-> 
-> With this patch in the tree, Chromebooks running the affected hardware
-> no longer boot. Bisect points to this patch, and reverting it fixes
-> the problem.
-> 
-> [...]
+From: Deren Wu <deren.wu@mediatek.com>
 
-Applied to
+For non-mmio devices, should set fc values to proper txwi config
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-linus
+Fixes: 48fab5bbef40 ("mt76: mt7921: introduce mt7921s support")
+Co-developed-by: Leon Yen <Leon.Yen@mediatek.com>
+Signed-off-by: Leon Yen <Leon.Yen@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 13 ++++++++++---
+ drivers/net/wireless/mediatek/mt76/mt7921/mac.h |  3 +++
+ 2 files changed, 13 insertions(+), 3 deletions(-)
 
-Thanks!
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index d17558349a17..e403f0225b77 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -852,6 +852,7 @@ mt7921_mac_write_txwi_80211(struct mt7921_dev *dev, __le32 *txwi,
+ 	__le16 fc = hdr->frame_control;
+ 	u8 fc_type, fc_stype;
+ 	u32 val;
++	bool is_mmio = mt76_is_mmio(&dev->mt76);
+ 
+ 	if (ieee80211_is_action(fc) &&
+ 	    mgmt->u.action.category == WLAN_CATEGORY_BACK &&
+@@ -912,9 +913,15 @@ mt7921_mac_write_txwi_80211(struct mt7921_dev *dev, __le32 *txwi,
+ 		txwi[3] |= cpu_to_le32(val);
+ 	}
+ 
+-	val = FIELD_PREP(MT_TXD7_TYPE, fc_type) |
+-	      FIELD_PREP(MT_TXD7_SUB_TYPE, fc_stype);
+-	txwi[7] |= cpu_to_le32(val);
++	if (is_mmio) {
++		val = FIELD_PREP(MT_TXD7_TYPE, fc_type) |
++		      FIELD_PREP(MT_TXD7_SUB_TYPE, fc_stype);
++		txwi[7] |= cpu_to_le32(val);
++	} else {
++		val = FIELD_PREP(MT_TXD8_L_TYPE, fc_type) |
++		      FIELD_PREP(MT_TXD8_L_SUB_TYPE, fc_stype);
++		txwi[8] |= cpu_to_le32(val);
++	}
+ }
+ 
+ void mt7921_mac_write_txwi(struct mt7921_dev *dev, __le32 *txwi,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.h b/drivers/net/wireless/mediatek/mt76/mt7921/mac.h
+index 544a1c33126a..12e1cf8abe6e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.h
+@@ -284,6 +284,9 @@ enum tx_mcu_port_q_idx {
+ #define MT_TXD7_HW_AMSDU		BIT(10)
+ #define MT_TXD7_TX_TIME			GENMASK(9, 0)
+ 
++#define MT_TXD8_L_TYPE			GENMASK(5, 4)
++#define MT_TXD8_L_SUB_TYPE		GENMASK(3, 0)
++
+ #define MT_TX_RATE_STBC			BIT(13)
+ #define MT_TX_RATE_NSS			GENMASK(12, 10)
+ #define MT_TX_RATE_MODE			GENMASK(9, 6)
+-- 
+2.18.0
 
-[1/1] ASoC: Revert "ASoC: mediatek: Check for error clk pointer"
-      commit: 946eb87114af37c9c13c618a7c1cdaca936905fa
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 _______________________________________________
 Linux-mediatek mailing list
