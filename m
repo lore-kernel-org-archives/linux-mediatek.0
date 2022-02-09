@@ -4,64 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A52FBC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Feb 2022 10:09:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED0F2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Feb 2022 11:20:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ckA7R/U3kMvWRDlgAcQ4BA0p7+qwwrw2Fv0MAZzAx6M=; b=xgP9oVdNdemp2m
-	URM9wcUjczoxRfZHivbHW2rWjX9lS0bCTCYjdAjd7wgrB6cmYrvW2JuD0uzbDi2LRa2ksnWDae7OR
-	Z1pV9twHIODGOVm7B1w5YN2ANSRWWchBtfiTp+VZm/1/SlkBZGOeuzGsrbbMXF6Mtv8/zTtC1uJef
-	9C/51s5apuxNFeaOVF4HF1moCUArDWMfGFrr8nYGivrc7+5q7YIhwi4bGMT+M+htFmTsku4s9RJPD
-	EEehG2f2XdK2m0O4cSPCQq0kEepmJSUf3TL9fRhPH8Ken+LwfCrFLGy+WhxdAQAECKO1K+DmcsU0X
-	l1vNtyuFUhA5cyEMaaGw==;
+	List-Owner; bh=qOUFKJW0Pu7oLYxF8NcV22qY9chE59QpesVF4rYM4Go=; b=ekOZI8TZPRliur
+	AhjaMtn5nIh3WjxH7V6zK/etKESU8WGp0JYUrGLJ00d2TiPSIa0QPwWZ4wcDjBerNxqYgqbJ4hCln
+	cMYvH82qbcdsbAcqtmVGlSY3Z8Z8sVrsgG7KlfrUwxuAqgVAXnyYJASinC46R+6kVUUYfmtw3NO0E
+	QevgevuJXYO9YkK/pPtJZmGxuRO3dAfdHiWiM+0x2qG13hLAQzqq9B1pQDsKGLqBzsBUHpXaVFZU6
+	qrJ9KyI3cIIucRPOvKBGr1SMOcC9nWos5y+1HuqDbviFqDdB/h86n1CgafA8jR1Uoo2asnJTH8Y5w
+	VtcEQhgDYgsqA/OLkg7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHjuu-00H894-VS; Wed, 09 Feb 2022 10:09:40 +0000
+	id 1nHl16-00HRNR-85; Wed, 09 Feb 2022 11:20:08 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHjg3-00H04S-ML; Wed, 09 Feb 2022 09:54:22 +0000
-X-UUID: c578410a4aad49ecb1b9a1196116b8e9-20220209
-X-UUID: c578410a4aad49ecb1b9a1196116b8e9-20220209
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <kewei.xu@mediatek.com>)
+ id 1nHl0r-00HRL8-9c; Wed, 09 Feb 2022 11:19:56 +0000
+X-UUID: 32e652cdcf5647b59c7d5ee72e607907-20220209
+X-UUID: 32e652cdcf5647b59c7d5ee72e607907-20220209
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <leilk.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 271870702; Wed, 09 Feb 2022 02:54:15 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Feb 2022 01:54:14 -0800
+ with ESMTP id 1549810360; Wed, 09 Feb 2022 04:19:50 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 9 Feb 2022 03:19:48 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 9 Feb 2022 17:54:13 +0800
-Received: from localhost.localdomain (10.17.3.14) by mtkcas11.mediatek.inc
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 9 Feb 2022 19:19:41 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 9 Feb 2022 17:54:12 +0800
-From: Kewei Xu <kewei.xu@mediatek.com>
-To: <wsa@the-dreams.de>
-CC: <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
- <linux-i2c@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <leilk.liu@mediatek.com>, <qii.wang@mediatek.com>,
- <liguo.zhang@mediatek.com>, <caiyu.chen@mediatek.com>,
- <housong.zhang@mediatek.com>, <yuhan.wei@mediatek.com>,
- <kewei.xu@mediatek.com>, <ryan-jh.yu@mediatek.com>,
- <david-yh.chiu@mediatek.com>
-Subject: [PATCH v9 1/1] i2c: mediatek: modify bus speed calculation formula
-Date: Wed, 9 Feb 2022 17:54:07 +0800
-Message-ID: <1644400447-6215-2-git-send-email-kewei.xu@mediatek.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1644400447-6215-1-git-send-email-kewei.xu@mediatek.com>
-References: <1644400447-6215-1-git-send-email-kewei.xu@mediatek.com>
+ Transport; Wed, 9 Feb 2022 19:19:40 +0800
+From: Leilk Liu <leilk.liu@mediatek.com>
+To: Mark Brown <broonie@kernel.org>
+CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Leilk Liu
+ <leilk.liu@mediatek.com>
+Subject: [PATCH 2/6] spi: mediatek: add IPM single mode design support
+Date: Wed, 9 Feb 2022 19:19:34 +0800
+Message-ID: <20220209111938.16137-3-leilk.liu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220209111938.16137-1-leilk.liu@mediatek.com>
+References: <20220209111938.16137-1-leilk.liu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220209_015419_775853_E2C52C7A 
-X-CRM114-Status: GOOD (  16.40  )
+X-CRM114-CacheID: sfid-20220209_031953_374000_3A9B5449 
+X-CRM114-Status: GOOD (  20.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,135 +74,252 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When clock-div is 0 or greater than 1, the bus speed
-calculated by the old speed calculation formula will be
-larger than the target speed. So we update the formula.
+this patch add the support of IPM single mode design.
 
-Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
-Change-Id: Ic0d9b8ab036bcf215d3a5066f2b91c7b8b128ba6
+Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
 ---
- drivers/i2c/busses/i2c-mt65xx.c | 51 +++++++++++++++++++++++++++++++++--------
- 1 file changed, 41 insertions(+), 10 deletions(-)
+ drivers/spi/spi-mt65xx.c | 103 +++++++++++++++++++++++++++++++++------
+ 1 file changed, 87 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index aa4d218..682293e 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -67,11 +67,12 @@
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index a15de10ee286..1e196fa8ac83 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -31,6 +31,7 @@
+ #define SPI_CFG2_REG                      0x0028
+ #define SPI_TX_SRC_REG_64                 0x002c
+ #define SPI_RX_DST_REG_64                 0x0030
++#define SPI_CFG3_IPM_REG                  0x0040
  
- #define MAX_SAMPLE_CNT_DIV		8
- #define MAX_STEP_CNT_DIV		64
--#define MAX_CLOCK_DIV			256
-+#define MAX_CLOCK_DIV_8BITS		256
-+#define MAX_CLOCK_DIV_5BITS		32
- #define MAX_HS_STEP_CNT_DIV		8
--#define I2C_STANDARD_MODE_BUFFER	(1000 / 2)
--#define I2C_FAST_MODE_BUFFER		(300 / 2)
--#define I2C_FAST_MODE_PLUS_BUFFER	(20 / 2)
-+#define I2C_STANDARD_MODE_BUFFER	(1000 / 3)
-+#define I2C_FAST_MODE_BUFFER		(300 / 3)
-+#define I2C_FAST_MODE_PLUS_BUFFER	(20 / 3)
+ #define SPI_CFG0_SCK_HIGH_OFFSET          0
+ #define SPI_CFG0_SCK_LOW_OFFSET           8
+@@ -48,6 +49,7 @@
+ #define SPI_CFG1_CS_IDLE_MASK             0xff
+ #define SPI_CFG1_PACKET_LOOP_MASK         0xff00
+ #define SPI_CFG1_PACKET_LENGTH_MASK       0x3ff0000
++#define SPI_CFG1_IPM_PACKET_LENGTH_MASK   GENMASK(31, 16)
+ #define SPI_CFG2_SCK_HIGH_OFFSET          0
+ #define SPI_CFG2_SCK_LOW_OFFSET           16
  
- #define I2C_CONTROL_RS                  (0x1 << 1)
- #define I2C_CONTROL_DMA_EN              (0x1 << 2)
-@@ -604,6 +605,31 @@ static int mtk_i2c_max_step_cnt(unsigned int target_speed)
- 		return MAX_STEP_CNT_DIV;
- }
+@@ -68,7 +70,13 @@
+ #define SPI_CMD_TX_ENDIAN            BIT(15)
+ #define SPI_CMD_FINISH_IE            BIT(16)
+ #define SPI_CMD_PAUSE_IE             BIT(17)
++#define SPI_CMD_IPM_NONIDLE_MODE     BIT(19)
++#define SPI_CMD_IPM_SPIM_LOOP        BIT(21)
++#define SPI_CMD_IPM_GET_TICKDLY_OFFSET    22
  
-+static int mtk_i2c_get_clk_div_restri(struct mtk_i2c *i2c,
-+				      unsigned int sample_cnt)
-+{
-+	int clk_div_restri = 0;
++#define SPI_CMD_IPM_GET_TICKDLY_MASK	GENMASK(24, 22)
++#define SPI_CFG3_IPM_HALF_DUPLEX_DIR		BIT(2)
++#define SPI_CFG3_IPM_HALF_DUPLEX_EN		BIT(3)
+ #define MT8173_SPI_MAX_PAD_SEL 3
+ 
+ #define MTK_SPI_PAUSE_INT_STATUS 0x2
+@@ -78,6 +86,7 @@
+ 
+ #define MTK_SPI_MAX_FIFO_SIZE 32U
+ #define MTK_SPI_PACKET_SIZE 1024
++#define MTK_SPI_IPM_PACKET_SIZE SZ_64K
+ #define MTK_SPI_32BITS_MASK  (0xffffffff)
+ 
+ #define DMA_ADDR_EXT_BITS (36)
+@@ -93,6 +102,9 @@ struct mtk_spi_compatible {
+ 	bool dma_ext;
+ 	/* some IC no need unprepare SPI clk */
+ 	bool no_need_unprepare;
++	/* IPM design improve some single mode features */
++	bool ipm_design;
 +
-+	if (i2c->dev_comp->ltiming_adjust == 0)
-+		return 0;
+ };
+ 
+ struct mtk_spi {
+@@ -116,6 +128,12 @@ static const struct mtk_spi_compatible mt2712_compat = {
+ 	.must_tx = true,
+ };
+ 
++static const struct mtk_spi_compatible ipm_compat_single = {
++	.enhance_timing = true,
++	.dma_ext = true,
++	.ipm_design = true,
++};
 +
-+	if (sample_cnt == 1) {
-+		if (i2c->ac_timing.inter_clk_div == 0)
-+			clk_div_restri = 0;
-+		else
-+			clk_div_restri = 1;
-+	} else {
-+		if (i2c->ac_timing.inter_clk_div == 0)
-+			clk_div_restri = -1;
-+		else if (i2c->ac_timing.inter_clk_div == 1)
-+			clk_div_restri = 0;
-+		else
-+			clk_div_restri = 1;
-+	}
-+
-+	return clk_div_restri;
-+}
-+
- /*
-  * Check and Calculate i2c ac-timing
-  *
-@@ -732,6 +758,7 @@ static int mtk_i2c_calculate_speed(struct mtk_i2c *i2c, unsigned int clk_src,
- 	unsigned int best_mul;
- 	unsigned int cnt_mul;
- 	int ret = -EINVAL;
-+	int clk_div_restri = 0;
+ static const struct mtk_spi_compatible mt6765_compat = {
+ 	.need_pad_sel = true,
+ 	.must_tx = true,
+@@ -157,6 +175,9 @@ static const struct mtk_chip_config mtk_default_chip_info = {
+ };
  
- 	if (target_speed > I2C_MAX_HIGH_SPEED_MODE_FREQ)
- 		target_speed = I2C_MAX_HIGH_SPEED_MODE_FREQ;
-@@ -749,7 +776,8 @@ static int mtk_i2c_calculate_speed(struct mtk_i2c *i2c, unsigned int clk_src,
- 	 * optimizing for sample_cnt * step_cnt being minimal
- 	 */
- 	for (sample_cnt = 1; sample_cnt <= MAX_SAMPLE_CNT_DIV; sample_cnt++) {
--		step_cnt = DIV_ROUND_UP(opt_div, sample_cnt);
-+		clk_div_restri = mtk_i2c_get_clk_div_restri(i2c, sample_cnt);
-+		step_cnt = DIV_ROUND_UP(opt_div + clk_div_restri, sample_cnt);
- 		cnt_mul = step_cnt * sample_cnt;
- 		if (step_cnt > max_step_cnt)
- 			continue;
-@@ -763,7 +791,7 @@ static int mtk_i2c_calculate_speed(struct mtk_i2c *i2c, unsigned int clk_src,
- 			best_mul = cnt_mul;
- 			base_sample_cnt = sample_cnt;
- 			base_step_cnt = step_cnt;
--			if (best_mul == opt_div)
-+			if (best_mul == (opt_div + clk_div_restri))
- 				break;
- 		}
- 	}
-@@ -774,7 +802,8 @@ static int mtk_i2c_calculate_speed(struct mtk_i2c *i2c, unsigned int clk_src,
- 	sample_cnt = base_sample_cnt;
- 	step_cnt = base_step_cnt;
- 
--	if ((clk_src / (2 * sample_cnt * step_cnt)) > target_speed) {
-+	if ((clk_src / (2 * (sample_cnt * step_cnt - clk_div_restri))) >
-+		target_speed) {
- 		/* In this case, hardware can't support such
- 		 * low i2c_bus_freq
- 		 */
-@@ -803,13 +832,16 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
- 	target_speed = i2c->speed_hz;
- 	parent_clk /= i2c->clk_src_div;
- 
--	if (i2c->dev_comp->timing_adjust)
--		max_clk_div = MAX_CLOCK_DIV;
-+	if (i2c->dev_comp->timing_adjust && i2c->dev_comp->ltiming_adjust)
-+		max_clk_div = MAX_CLOCK_DIV_5BITS;
-+	else if (i2c->dev_comp->timing_adjust)
-+		max_clk_div = MAX_CLOCK_DIV_8BITS;
- 	else
- 		max_clk_div = 1;
- 
- 	for (clk_div = 1; clk_div <= max_clk_div; clk_div++) {
- 		clk_src = parent_clk / clk_div;
-+		i2c->ac_timing.inter_clk_div = clk_div - 1;
- 
- 		if (target_speed > I2C_MAX_FAST_MODE_PLUS_FREQ) {
- 			/* Set master code speed register */
-@@ -856,7 +888,6 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
- 		break;
- 	}
- 
--	i2c->ac_timing.inter_clk_div = clk_div - 1;
- 
+ static const struct of_device_id mtk_spi_of_match[] = {
++	{ .compatible = "mediatek,ipm-spi-single",
++		.data = (void *)&ipm_compat_single,
++	},
+ 	{ .compatible = "mediatek,mt2701-spi",
+ 		.data = (void *)&mtk_common_compat,
+ 	},
+@@ -275,12 +296,11 @@ static int mtk_spi_set_hw_cs_timing(struct spi_device *spi)
  	return 0;
  }
+ 
+-static int mtk_spi_prepare_message(struct spi_master *master,
+-				   struct spi_message *msg)
++static int mtk_spi_hw_init(struct spi_master *master,
++			   struct spi_device *spi)
+ {
+ 	u16 cpha, cpol;
+ 	u32 reg_val;
+-	struct spi_device *spi = msg->spi;
+ 	struct mtk_chip_config *chip_config = spi->controller_data;
+ 	struct mtk_spi *mdata = spi_master_get_devdata(master);
+ 
+@@ -288,6 +308,15 @@ static int mtk_spi_prepare_message(struct spi_master *master,
+ 	cpol = spi->mode & SPI_CPOL ? 1 : 0;
+ 
+ 	reg_val = readl(mdata->base + SPI_CMD_REG);
++	if (mdata->dev_comp->ipm_design) {
++		/* SPI transfer without idle time until packet length done */
++		reg_val |= SPI_CMD_IPM_NONIDLE_MODE;
++		if (spi->mode & SPI_LOOP)
++			reg_val |= SPI_CMD_IPM_SPIM_LOOP;
++		else
++			reg_val &= ~SPI_CMD_IPM_SPIM_LOOP;
++	}
++
+ 	if (cpha)
+ 		reg_val |= SPI_CMD_CPHA;
+ 	else
+@@ -344,18 +373,33 @@ static int mtk_spi_prepare_message(struct spi_master *master,
+ 		writel(mdata->pad_sel[spi->chip_select],
+ 		       mdata->base + SPI_PAD_SEL_REG);
+ 
+-	/* tick delay */
+-	reg_val = readl(mdata->base + SPI_CFG1_REG);
+-	reg_val &= ~SPI_CFG1_GET_TICK_DLY_MASK;
+-	reg_val |= ((chip_config->tick_delay & 0x7)
+-		<< SPI_CFG1_GET_TICK_DLY_OFFSET);
+-	writel(reg_val, mdata->base + SPI_CFG1_REG);
++	if (mdata->dev_comp->enhance_timing) {
++		if (mdata->dev_comp->ipm_design) {
++			reg_val = readl(mdata->base + SPI_CMD_REG);
++			reg_val &= ~SPI_CMD_IPM_GET_TICKDLY_MASK;
++			reg_val |= ((chip_config->tick_delay & 0x7)
++				   << SPI_CMD_IPM_GET_TICKDLY_OFFSET);
++			writel(reg_val, mdata->base + SPI_CMD_REG);
++		} else {
++			reg_val = readl(mdata->base + SPI_CFG1_REG);
++			reg_val &= ~SPI_CFG1_GET_TICK_DLY_MASK;
++			reg_val |= ((chip_config->tick_delay & 0x7)
++				<< SPI_CFG1_GET_TICK_DLY_OFFSET);
++			writel(reg_val, mdata->base + SPI_CFG1_REG);
++		}
++	}
+ 
+ 	/* set hw cs timing */
+ 	mtk_spi_set_hw_cs_timing(spi);
+ 	return 0;
+ }
+ 
++static int mtk_spi_prepare_message(struct spi_master *master,
++				   struct spi_message *msg)
++{
++	return mtk_spi_hw_init(master, msg->spi);
++}
++
+ static void mtk_spi_set_cs(struct spi_device *spi, bool enable)
+ {
+ 	u32 reg_val;
+@@ -377,13 +421,13 @@ static void mtk_spi_set_cs(struct spi_device *spi, bool enable)
+ }
+ 
+ static void mtk_spi_prepare_transfer(struct spi_master *master,
+-				     struct spi_transfer *xfer)
++				     u32 speed_hz)
+ {
+ 	u32 div, sck_time, reg_val;
+ 	struct mtk_spi *mdata = spi_master_get_devdata(master);
+ 
+-	if (xfer->speed_hz < mdata->spi_clk_hz / 2)
+-		div = DIV_ROUND_UP(mdata->spi_clk_hz, xfer->speed_hz);
++	if (speed_hz < mdata->spi_clk_hz / 2)
++		div = DIV_ROUND_UP(mdata->spi_clk_hz, speed_hz);
+ 	else
+ 		div = 1;
+ 
+@@ -414,12 +458,24 @@ static void mtk_spi_setup_packet(struct spi_master *master)
+ 	u32 packet_size, packet_loop, reg_val;
+ 	struct mtk_spi *mdata = spi_master_get_devdata(master);
+ 
+-	packet_size = min_t(u32, mdata->xfer_len, MTK_SPI_PACKET_SIZE);
++	if (mdata->dev_comp->ipm_design)
++		packet_size = min_t(u32,
++				    mdata->xfer_len,
++				    MTK_SPI_IPM_PACKET_SIZE);
++	else
++		packet_size = min_t(u32,
++				    mdata->xfer_len,
++				    MTK_SPI_PACKET_SIZE);
++
+ 	packet_loop = mdata->xfer_len / packet_size;
+ 
+ 	reg_val = readl(mdata->base + SPI_CFG1_REG);
+-	reg_val &= ~(SPI_CFG1_PACKET_LENGTH_MASK | SPI_CFG1_PACKET_LOOP_MASK);
++	if (mdata->dev_comp->ipm_design)
++		reg_val &= ~SPI_CFG1_IPM_PACKET_LENGTH_MASK;
++	else
++		reg_val &= ~SPI_CFG1_PACKET_LENGTH_MASK;
+ 	reg_val |= (packet_size - 1) << SPI_CFG1_PACKET_LENGTH_OFFSET;
++	reg_val &= ~SPI_CFG1_PACKET_LOOP_MASK;
+ 	reg_val |= (packet_loop - 1) << SPI_CFG1_PACKET_LOOP_OFFSET;
+ 	writel(reg_val, mdata->base + SPI_CFG1_REG);
+ }
+@@ -514,7 +570,7 @@ static int mtk_spi_fifo_transfer(struct spi_master *master,
+ 	mdata->cur_transfer = xfer;
+ 	mdata->xfer_len = min(MTK_SPI_MAX_FIFO_SIZE, xfer->len);
+ 	mdata->num_xfered = 0;
+-	mtk_spi_prepare_transfer(master, xfer);
++	mtk_spi_prepare_transfer(master, xfer->speed_hz);
+ 	mtk_spi_setup_packet(master);
+ 
+ 	if (xfer->tx_buf) {
+@@ -547,7 +603,7 @@ static int mtk_spi_dma_transfer(struct spi_master *master,
+ 	mdata->cur_transfer = xfer;
+ 	mdata->num_xfered = 0;
+ 
+-	mtk_spi_prepare_transfer(master, xfer);
++	mtk_spi_prepare_transfer(master, xfer->speed_hz);
+ 
+ 	cmd = readl(mdata->base + SPI_CMD_REG);
+ 	if (xfer->tx_buf)
+@@ -582,6 +638,19 @@ static int mtk_spi_transfer_one(struct spi_master *master,
+ 				struct spi_device *spi,
+ 				struct spi_transfer *xfer)
+ {
++	struct mtk_spi *mdata = spi_master_get_devdata(spi->master);
++	u32 reg_val = 0;
++
++	/* prepare xfer direction and duplex mode */
++	if (mdata->dev_comp->ipm_design) {
++		if (!xfer->tx_buf || !xfer->rx_buf) {
++			reg_val |= SPI_CFG3_IPM_HALF_DUPLEX_EN;
++			if (xfer->rx_buf)
++				reg_val |= SPI_CFG3_IPM_HALF_DUPLEX_DIR;
++		}
++		writel(reg_val, mdata->base + SPI_CFG3_IPM_REG);
++	}
++
+ 	if (master->can_dma(master, spi, xfer))
+ 		return mtk_spi_dma_transfer(master, spi, xfer);
+ 	else
+@@ -746,6 +815,8 @@ static int mtk_spi_probe(struct platform_device *pdev)
+ 
+ 	if (mdata->dev_comp->must_tx)
+ 		master->flags = SPI_MASTER_MUST_TX;
++	if (mdata->dev_comp->ipm_design)
++		master->mode_bits |= SPI_LOOP;
+ 
+ 	if (mdata->dev_comp->need_pad_sel) {
+ 		mdata->pad_num = of_property_count_u32_elems(
 -- 
-1.9.1
+2.25.1
 
 
 _______________________________________________
