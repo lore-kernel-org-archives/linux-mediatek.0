@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FF44C433FE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30DC0C433EF
 	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Feb 2022 06:15:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mNV5F91ww7e9+vpE0/hs+qVbOld1zyJZlT608Bv6lYY=; b=dj+pJDCkbXbE8M
-	IFnk/uf1RPV8xNXfVDaRCbn6eEtpgkphl+VIqLM3+Ci1P8WnGg7UN15FlPIz8tAylZZgU6FUnQjOB
-	Hk/YeTvJT2HAoYgkp05VV0oF5PcqWmLjbDhIqQXGwoiDZ2xuQ9yWmUWJQQzf34goVU8/ibMxcYAlR
-	/bQA0DXz2u1gCY+yIi6VXFZpDwekf/TLjTjZiCuhp6+xPjFRFDBvQ6uC3hkjI84dWUzHEQaB6Ubja
-	O6+P4q0O5LW4EJDGPTUdFexjEB9aiNgtiHOn680qQhUq8KK1kQOXn30RW7Gg1iJfquZxNkdH5fFpv
-	1R3XkzwVxVXyGs7sYfgw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0yOFuP7OXkjtiSLe/9B68jnwCwokomuJKToyZAKozoQ=; b=xbp0Bwq2++AFZ/
+	Fe/1NLSycNHrdAfV9FWKA//YqZ1x1sZ2dwPNs+G2gNLr5t68KAGzPLD6wKmii3eEE9+prsJpHh+d7
+	o2NEpTEYxyV4HqejnXkbor34Ay7mhSE5QqWoPk+MVM8rXe3gcl6am4jx8ig8OfcECSUlfaDmZpqgV
+	sL7CAKHR9xVAPzPS6x0r1OlofKx7V+cojTezqYnzWUozc6HVRijphW5/mw4i+lDCgtt9ptjYUdAEA
+	uF2epgtCsmddvBj77qTJ5HaYsUo2vhZIJeWkiJrzVdNXC6iCQsfhsgnfEf/2rjeJPLrCbDzexe2wm
+	ljgeJlSK+2TIkPCp1G7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHgFw-00GKGT-Eg; Wed, 09 Feb 2022 06:15:08 +0000
+	id 1nHgFx-00GKGa-Jy; Wed, 09 Feb 2022 06:15:09 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHgFs-00GKF6-EB
- for linux-mediatek@lists.infradead.org; Wed, 09 Feb 2022 06:15:07 +0000
-X-UUID: f47b7b52f6464b5686955d8629a5176b-20220208
-X-UUID: f47b7b52f6464b5686955d8629a5176b-20220208
+ id 1nHgFs-00GKFG-EB
+ for linux-mediatek@lists.infradead.org; Wed, 09 Feb 2022 06:15:08 +0000
+X-UUID: 2292cc07629641dfb47b4ea055323fa0-20220208
+X-UUID: 2292cc07629641dfb47b4ea055323fa0-20220208
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <bo.jiao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 917716637; Tue, 08 Feb 2022 23:14:56 -0700
+ with ESMTP id 2037781435; Tue, 08 Feb 2022 23:14:56 -0700
 Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Feb 2022 22:12:03 -0800
+ 15.0.1497.2; Tue, 8 Feb 2022 22:12:04 -0800
 Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS34N1.mediatek.inc
  (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 9 Feb 2022 14:11:59 +0800
+ Wed, 9 Feb 2022 14:12:00 +0800
 Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
  MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
  15.0.1497.2 via Frontend Transport; Wed, 9 Feb 2022 14:11:59 +0800
@@ -46,17 +46,20 @@ CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
  <ryder.lee@mediatek.com>, Xing Song <xing.song@mediatek.com>, Sujuan Chen
  <sujuan.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, "Evelyn
  Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>
-Subject: [PATCH v4 0/3] add mt7986 support
-Date: Wed, 9 Feb 2022 14:11:54 +0800
-Message-ID: <cover.1644386694.git.Bo.Jiao@mediatek.com>
+ <linux-mediatek@lists.infradead.org>, Peter Chiu
+ <chui-hao.chiu@mediatek.com>, <devicetree@vger.kernel.org>
+Subject: [PATCH v4 1/3] dt-bindings: net: wireless: mt76: document bindings
+ for MT7986
+Date: Wed, 9 Feb 2022 14:11:55 +0800
+Message-ID: <08ef978845036560bb08b72e948e42f858e087d3.1644386694.git.Bo.Jiao@mediatek.com>
 X-Mailer: git-send-email 2.17.0
+In-Reply-To: <cover.1644386694.git.Bo.Jiao@mediatek.com>
+References: <cover.1644386694.git.Bo.Jiao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220208_221504_509144_EFB08536 
-X-CRM114-Status: UNSURE (   9.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220208_221504_509163_84448939 
+X-CRM114-Status: GOOD (  10.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,41 +76,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bo Jiao <Bo.Jiao@mediatek.com>
+From: Peter Chiu <chui-hao.chiu@mediatek.com>
 
-This adds support for MT7986 SoC which integrated multi-band
-4x4 WiFi 6/6E.
-Detailed link: https://www.mediatek.com/products/mediatek-filogic-830
+Add an entry for MT7986 SoC.
 
-Bo Jiao (2):
-  mt76: mt7915: add support for MT7986
-  mt76: mt7915: introduce band_idx in mt7915_phy
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Cc: devicetree@vger.kernel.org
+---
+v3:
+ - fix yamllint warnings and errors
+ - add 'minItems: 1' to keep 1 reg entry being valid
+v4:
+ - add description for property reg items
+---
+ .../bindings/net/wireless/mediatek,mt76.yaml  | 33 +++++++++++++++++--
+ 1 file changed, 30 insertions(+), 3 deletions(-)
 
-Peter Chiu (1):
-  dt-bindings: net: wireless: mt76: document bindings for MT7986
-
- .../bindings/net/wireless/mediatek,mt76.yaml  |   33 +-
- .../net/wireless/mediatek/mt76/mt76_connac.h  |    5 +
- .../wireless/mediatek/mt76/mt76_connac_mcu.c  |    6 +-
- .../net/wireless/mediatek/mt76/mt7915/Kconfig |   10 +
- .../wireless/mediatek/mt76/mt7915/Makefile    |    1 +
- .../wireless/mediatek/mt76/mt7915/debugfs.c   |    8 +-
- .../net/wireless/mediatek/mt76/mt7915/dma.c   |   28 +-
- .../wireless/mediatek/mt76/mt7915/eeprom.c    |   85 +-
- .../wireless/mediatek/mt76/mt7915/eeprom.h    |   13 +
- .../net/wireless/mediatek/mt76/mt7915/init.c  |   54 +-
- .../net/wireless/mediatek/mt76/mt7915/mac.c   |  209 +--
- .../net/wireless/mediatek/mt76/mt7915/main.c  |   21 +-
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   |   81 +-
- .../net/wireless/mediatek/mt76/mt7915/mmio.c  |  125 +-
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |   44 +
- .../net/wireless/mediatek/mt76/mt7915/regs.h  |  277 +++-
- .../net/wireless/mediatek/mt76/mt7915/soc.c   | 1201 +++++++++++++++++
- .../wireless/mediatek/mt76/mt7915/testmode.c  |   35 +-
- drivers/net/wireless/mediatek/mt76/testmode.c |    5 +-
- 19 files changed, 2003 insertions(+), 238 deletions(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7915/soc.c
-
+diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+index 1489d3c..a76e5f7 100644
+--- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
++++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+@@ -18,7 +18,7 @@ description: |
+   wireless device. The node is expected to be specified as a child
+   node of the PCI controller to which the wireless chip is connected.
+   Alternatively, it can specify the wireless part of the MT7628/MT7688
+-  or MT7622 SoC.
++  or MT7622/MT7986 SoC.
+ 
+ allOf:
+   - $ref: ieee80211.yaml#
+@@ -29,9 +29,13 @@ properties:
+       - mediatek,mt76
+       - mediatek,mt7628-wmac
+       - mediatek,mt7622-wmac
++      - mediatek,mt7986-wmac
+ 
+   reg:
+-    maxItems: 1
++    minItems: 1
++    maxItems: 3
++    description:
++      MT7986 should contain 3 regions consys, dcm, and sku, in this order.
+ 
+   interrupts:
+     maxItems: 1
+@@ -39,6 +43,17 @@ properties:
+   power-domains:
+     maxItems: 1
+ 
++  memory-region:
++    maxItems: 1
++
++  resets:
++    maxItems: 1
++    description:
++      Specify the consys reset for mt7986.
++
++  reset-name:
++    const: consys
++
+   mediatek,infracfg:
+     $ref: /schemas/types.yaml#/definitions/phandle
+     description:
+@@ -165,7 +180,7 @@ required:
+   - compatible
+   - reg
+ 
+-additionalProperties: false
++unevaluatedProperties: false
+ 
+ examples:
+   - |
+@@ -231,3 +246,15 @@ examples:
+ 
+       power-domains = <&scpsys 3>;
+     };
++
++  - |
++    wifi@18000000 {
++        compatible = "mediatek,mt7986-wmac";
++        resets = <&watchdog 23>;
++        reset-names = "consys";
++        reg = <0x18000000 0x1000000>,
++              <0x10003000 0x1000>,
++              <0x11d10000 0x1000>;
++        interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>;
++        memory-region = <&wmcpu_emi>;
++    };
 -- 
 2.18.0
 
