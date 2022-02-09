@@ -4,92 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC0F8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Feb 2022 21:55:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E9B0C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Feb 2022 22:12:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zrzjOl1+q6HkgjhJSS0j3QX5PAyVvn/eX+ikSYSmqhc=; b=01uWWYo/9c0nDy
-	vWmQpl1qMRJ9KaKxV0afm2hvLBdSz5LFSyUf672LC3roXs7f1gJ/B/ILUUC/SCucCdEjGeor69EDl
-	RGz/4WuppKbvs4K1AhCcIPSy0LVpBAVjLQK58YJYF+TE989kr7NZ/9R8IwmpXcFvB0QJQXY6hjVNT
-	ELk9DgKAMtcdUlWQfmOqAFoh3a1OtU/UElCOwvsJhaU/d2vQKCySwqKJcr6C1KQcImALXsfawcLfF
-	mgeqbEQpf0E7C1V+3ri3rWrpRaWVFhTbBqAz9FnEZZl9IxZ26T3+QZclGbF57xkUjeLZrWg6f5qFI
-	tzARpET3l0EA3TjCWlIA==;
+	List-Owner; bh=AdswQjw2wcv1Td/COTVCjVGQt1EnvAdy0j7hcj5g398=; b=nmKg9rW8K244Zb
+	RheFj/4GQDL1+x0slvgpSueNYrLORjQR92dlDN4OTF08A3EBxOd+NxMNWodzgBnNx/DPgKfQ/xveZ
+	cOTlB7DZhy5A13HukmxYkgG5iA3UTE7kcnkSXM4h9fm4JL7c5Ix4ow7VBHHC4KM414Tp1Ntg0aNn1
+	4qhrLC4ZTG6/GWOAeUqWmYZWqXvfk55hpv8a0ACaSQmlebtiwYuxOKy6cm2eSxxqJ0R9jStiGiCuX
+	C1aLx6YuAamRlXaxDTHxGuHHlS50C+SCbaOnq+auTHu12Cb3E1xfjbiwKboeWQtzGEhMqjYinbWh4
+	bxCEwoD2ZknDaMnEA11g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHuvQ-001jLg-3W; Wed, 09 Feb 2022 21:54:56 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1nHvBx-001oNk-6z; Wed, 09 Feb 2022 22:12:01 +0000
+Received: from mout-p-202.mailbox.org ([2001:67c:2050::465:202])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHuvM-001jKL-NS
- for linux-mediatek@lists.infradead.org; Wed, 09 Feb 2022 21:54:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1644443691;
+ id 1nHvBl-001oLR-9k; Wed, 09 Feb 2022 22:11:50 +0000
+Received: from smtp1.mailbox.org (smtp1.mailbox.org [80.241.60.240])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-384) server-signature RSA-PSS (4096 bits) server-digest
+ SHA256) (No client certificate requested)
+ by mout-p-202.mailbox.org (Postfix) with ESMTPS id 4JvDcc45vzz9sQq;
+ Wed,  9 Feb 2022 23:11:44 +0100 (CET)
+X-Virus-Scanned: amavisd-new at heinlein-support.de
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hauke-m.de; s=MBO0001; 
+ t=1644444702;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=G4Vjp3ISdYeY8fzvSFlPeRWv5ed2FS1oG8JSf5nd0SI=;
- b=TomdO//0zB/kRCpAeslKjtZrrWrzVFUdPNRMnXf1dEPK73w0tj3r7sBkI+AVxXTDnMSbkC
- O5nOZXsEmyfCU2AlLKkTpWfPMAdyYfl1vxgesIS0tq1Eg5KdwAk+mOuOGLlqEs4gsfsxB9
- toyyxEQBw50rbgrEnhN84Ue+O7LyQIY=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-224-I5fQhj4AOiOnhNGvEdWtmw-1; Wed, 09 Feb 2022 16:54:48 -0500
-X-MC-Unique: I5fQhj4AOiOnhNGvEdWtmw-1
-Received: by mail-qk1-f198.google.com with SMTP id
- d11-20020a37680b000000b0047d87e46f4aso2361118qkc.11
- for <linux-mediatek@lists.infradead.org>; Wed, 09 Feb 2022 13:54:48 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=G4Vjp3ISdYeY8fzvSFlPeRWv5ed2FS1oG8JSf5nd0SI=;
- b=GJsHFlxUwCBKv0gMIw68ws2G2oE7uATf5DjypjX1TBbEK0IAQbB8/1FBpIuggsWle2
- XZ9qSEFJnMn0VxcXTNSebkHtQH9W3GWcdh7xIpn69mdkU4ZbjCK58DnqjZ5u0Kx9rJtX
- A4x7eazvviDJSW+pMihLs8Qs9oWWIPqFC+aTMWpLop9Z4hjfOetXqcNX6Dlz8ZAKDOof
- G6ealMaGcT6b5pCMj39c9qtHWSf5BLgnD4V1BT0faK/NHtKWojQ9X5ZjTZ7qjNL5jRPw
- JXU46etS4J6zhdEVdlgWlwWCsXRJSBRPPUT49lnOOtc68rnYMl+EWuJr69v9aDlB/vUh
- D/Pg==
-X-Gm-Message-State: AOAM531wEBn5wYYJj7aySJJATAh+NSneLkw9AIe2+653uDPHOUgAcG6Q
- VdQwuHhGEMrPVwFYPM6PYYRtU4vezfCtblNxTG2OXdQGJzmWspxpSEwRDX9UU5Mb5NQ35NBdsRl
- ezn59fXdGKcPzXxmm/XaPONta8S9rBIOn
-X-Received: by 2002:a05:622a:296:: with SMTP id
- z22mr2881544qtw.13.1644443688306; 
- Wed, 09 Feb 2022 13:54:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwFrCPJ+6XKauKxJ7NxYVD3KF/sK7bZF7uFmE4jil0rZlccWMwS7SraCxnnG1yIwW1HMuPj9A==
-X-Received: by 2002:a05:622a:296:: with SMTP id
- z22mr2881528qtw.13.1644443688085; 
- Wed, 09 Feb 2022 13:54:48 -0800 (PST)
-Received: from halaneylaptop (068-184-200-203.res.spectrum.com.
- [68.184.200.203])
- by smtp.gmail.com with ESMTPSA id d11sm9667430qtd.63.2022.02.09.13.54.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Feb 2022 13:54:47 -0800 (PST)
-Date: Wed, 9 Feb 2022 15:54:44 -0600
-From: Andrew Halaney <ahalaney@redhat.com>
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Cc: rostedt@goodmis.org, matthias.bgg@gmail.com, akpm@linux-foundation.org,
- mhiramat@kernel.org, vbabka@suse.cz, wangkefeng.wang@huawei.com,
- linux@rasmusvillemoes.dk, keescook@chromium.org,
- valentin.schneider@arm.com, peterz@infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, yj.chiang@mediatek.com
-Subject: Re: [PATCH] init: Use ktime_us_delta() to make initcall_debug log
- more precise
-Message-ID: <20220209215444.sxuxutqwcyisbbld@halaneylaptop>
-References: <20220209053350.15771-1-mark-pk.tsai@mediatek.com>
+ bh=jWD3hlhZOdYnBOvsmD40qoO3MXZ/D9lG7XrV59Xi8M0=;
+ b=h/WVcaCi9/b9Muo4p+HpswPv2dMJqcmTjdbMNngx/TlViOyH+PSKSFlT9sLJ2CQ162RUkE
+ fSi2EiEU+3VQItviu2KC1fq0r9yMJXT6F7riJGHS6S2hUN/CDSPTjM7X3QDdEnPCH439G4
+ cgCPYrJ1Hzjl62XBONFHx4jU1y7rwtJ0l18mGno4MNWuTZ4e4Qmml6j+SNtSzQd1vz7Bnx
+ XIhOIVD55Ie2hD5sA4udCCg3UlkXAGRKTNrjzwglPIPr6YFgMFdwfPfDw7Y1Z1RToPHH9j
+ FRmstvJWZQL+DKFhfmXjeKyxZP2nJx6ScgL47vXPWXFPDuKW8FkXMVyyy6frzQ==
+Message-ID: <788ac214-7fd9-33b8-38da-54690a24bdef@hauke-m.de>
+Date: Wed, 9 Feb 2022 23:11:38 +0100
 MIME-Version: 1.0
-In-Reply-To: <20220209053350.15771-1-mark-pk.tsai@mediatek.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ahalaney@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
+Subject: Re: [PATCH net] net: phy: mediatek: remove PHY mode check on MT7531
+Content-Language: en-US
+To: DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Russell King
+ <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+References: <20220209143948.445823-1-dqfext@gmail.com>
+From: Hauke Mehrtens <hauke@hauke-m.de>
+In-Reply-To: <20220209143948.445823-1-dqfext@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220209_135452_847232_B91F38E1 
+X-CRM114-CacheID: sfid-20220209_141149_573153_DFA7BF03 
 X-CRM114-Status: GOOD (  16.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,51 +72,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 09, 2022 at 01:33:50PM +0800, Mark-PK Tsai wrote:
-> Use ktime_us_delta() to make the initcall_debug log more precise than
-> right shifting the result of ktime_to_ns() by 10 bits.
+On 2/9/22 15:39, DENG Qingfang wrote:
+> The function mt7531_phy_mode_supported in the DSA driver set supported
+> mode to PHY_INTERFACE_MODE_GMII instead of PHY_INTERFACE_MODE_INTERNAL
+> for the internal PHY, so this check breaks the PHY initialization:
 > 
-> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> mt7530 mdio-bus:00 wan (uninitialized): failed to connect to PHY: -EINVAL
+> 
+> Remove the check to make it work again.
+> 
+> Reported-by: Hauke Mehrtens <hauke@hauke-m.de>
+> Fixes: e40d2cca0189 ("net: phy: add MediaTek Gigabit Ethernet PHY driver")
+> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
+
+Tested-by: Hauke Mehrtens <hauke@hauke-m.de>
+
 > ---
->  init/main.c | 8 ++------
->  1 file changed, 2 insertions(+), 6 deletions(-)
+>   drivers/net/phy/mediatek-ge.c | 3 ---
+>   1 file changed, 3 deletions(-)
 > 
-> diff --git a/init/main.c b/init/main.c
-> index 65fa2e41a9c0..c8edcc3029b1 100644
-> --- a/init/main.c
-> +++ b/init/main.c
-> @@ -1246,15 +1246,11 @@ trace_initcall_start_cb(void *data, initcall_t fn)
->  static __init_or_module void
->  trace_initcall_finish_cb(void *data, initcall_t fn, int ret)
->  {
-> -	ktime_t *calltime = (ktime_t *)data;
-> -	ktime_t delta, rettime;
-> -	unsigned long long duration;
-> +	ktime_t rettime, *calltime = (ktime_t *)data;
->  
->  	rettime = ktime_get();
-> -	delta = ktime_sub(rettime, *calltime);
-> -	duration = (unsigned long long) ktime_to_ns(delta) >> 10;
->  	printk(KERN_DEBUG "initcall %pS returned %d after %lld usecs\n",
-> -		 fn, ret, duration);
-> +		 fn, ret, (unsigned long long)ktime_us_delta(rettime, *calltime));
->  }
->  
->  static ktime_t initcall_calltime;
-> -- 
-> 2.18.0
-> 
-
-I took this for a spin while playing around with other things today,
-cleans things up nicely imo.
-
-Reviewed-by: Andrew Halaney <ahalaney@redhat.com>
-Tested-by: Andrew Halaney <ahalaney@redhat.com>
+> diff --git a/drivers/net/phy/mediatek-ge.c b/drivers/net/phy/mediatek-ge.c
+> index b7a5ae20edd5..68ee434f9dea 100644
+> --- a/drivers/net/phy/mediatek-ge.c
+> +++ b/drivers/net/phy/mediatek-ge.c
+> @@ -55,9 +55,6 @@ static int mt7530_phy_config_init(struct phy_device *phydev)
+>   
+>   static int mt7531_phy_config_init(struct phy_device *phydev)
+>   {
+> -	if (phydev->interface != PHY_INTERFACE_MODE_INTERNAL)
+> -		return -EINVAL;
+> -
+>   	mtk_gephy_config_init(phydev);
+>   
+>   	/* PHY link down power saving enable */
 
 
 _______________________________________________
