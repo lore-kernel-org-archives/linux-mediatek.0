@@ -4,67 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEC2AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Feb 2022 13:09:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0829BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Feb 2022 13:16:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f9qeMuF8ifMShpYEreEMSrk5pj9ejqHQWno1U0/q98o=; b=HGpdOzj2K0HS+E
-	IHlzktbXk/c4gKIk7eO92/4HdJUUVXs3mVX47zehQXNCBLTKEggYNnL2Rd+yj8wkSyr3CHcLyZixh
-	HKtjlO7Fc2bJpobblKCZ7Ermz25PA4vYPR4Cq+UhYhly562LfYGKXA6XOwkfRiG/y3zE1vgPgi/+N
-	eKR+ar1S5oKWZv0yGwiBCe9Cql1K+lNF2m0qUs6zfjGudj/JKcJIQAlrpgk/yLQcEiIqfX1sN44Kt
-	koqBJXlrTKftEzc0VrQEu/yDzuVUXeAIs719P8DEghEtZtwnLbtyS4uqLRMjK89ROrJ3u1tWrvOR3
-	uX6o5ArQXwwdniJcO9sw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=g8jhkwo//afNSCWNXt2Cew/D6DoO2xuWUmxF4KsfvXE=; b=KLqw2dXrXwkfsUe7zyhtMKN3RM
+	SZGa9cg9RPltsr/JQCNfX2ezef5kuKGvJhIp3tIOxEs7F5I9Wz6ZdWSQNLe8hQCJbQPtMcFF6EVHG
+	goEpdFP3A13wypCXMQD05X+P9t8cioLzfRnELESmpMs8bOljP3iSvPmnWoOzLKcaql2P7Vqn87Pht
+	FoGzsg3GWD9KRx3Xt5YOgJYld1oEkq+8qu0ckCRH+kkf8QLqi5mP0L15nPsxo8q8HaZZTcHZCkl3U
+	qAkPYgKExbDZqcVIlBEUoOwSC9PRJhXeY2aHlnkhPBfHA3i6zyRQiXfJnTUMz2yKiav2KRJg/Lq0N
+	azBpYoOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHmiS-0007gZ-Pj; Wed, 09 Feb 2022 13:09:00 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1nHmps-00093z-K9; Wed, 09 Feb 2022 13:16:40 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHmiH-0007ZQ-OE; Wed, 09 Feb 2022 13:08:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
- MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=upC8s56EuBQezUfHCbf6Sex/+GOA674B29PJ8A+uuZs=; b=jEde0e7/5XB5RNBY5P0Vm0oUK/
- QNk0l0BR42QvBLJDWE23pmjEGFOKS25qjupBZFdyIZJJwMZtNP3X0WrjOua7p+6GABojoNDdZogGF
- qZM7TXQ+M6I80Mr3OfH2PGqACrQmHLPZo1U3VakRfdmDxMF1d8KHvphtcYkqa/9gUJYzc0hentYbu
- r5XLzDHUAP3TfdLJkNoKwXlqyT+0K6ukhwendyAGkad1ABuLhgeUDZlsfVBPQsPVZbJNbLMO0ezrf
- CJHIn6753z7Q+vcarDxi1uevRXBbnKEBwPjzPyuC83n0RHFIVlvu1S4yMspH0V8c8pmrew68mDaBL
- r9KChxpQ==;
-Received: from shell.armlinux.org.uk
- ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:57168)
- by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <linux@armlinux.org.uk>)
- id 1nHmg8-0004XV-9o; Wed, 09 Feb 2022 13:06:36 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
- (envelope-from <linux@shell.armlinux.org.uk>)
- id 1nHmg4-0001Xq-PC; Wed, 09 Feb 2022 13:06:32 +0000
-Date: Wed, 9 Feb 2022 13:06:32 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: DENG Qingfang <dqfext@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH RFC net-next 0/7] net: dsa: mt7530: updates for phylink
- changes
-Message-ID: <YgO8WMjc77BsOLtD@shell.armlinux.org.uk>
-References: <YfwRN2ObqFbrw/fF@shell.armlinux.org.uk>
+ id 1nHmpf-00090m-1M; Wed, 09 Feb 2022 13:16:28 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 9A53A61973;
+ Wed,  9 Feb 2022 13:16:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4156AC340E7;
+ Wed,  9 Feb 2022 13:16:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1644412586;
+ bh=r+TyYwi977hPcUIqZmzER+AH6wmdkK7fSexRgOiCxEc=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=FJTxtz0FvwzUhuA9S8r+8ImuyAy7E/nJ9O59kMAza/2Ony5qRXbiAjqiJ9Xp3FDEa
+ eGSGAwjEw5Ctpi+dyTQ6960QM2kInNlK47o8visp79UZSu02qxmcx/HRVLjsuZslcc
+ dFC7zOlDAiRbIRn97Wrgtjgn9Upc+CprBxS67IKGaQOpCdkZ0rrwI/ckuHUDQdOyQX
+ teHb6+Ykv5Tk/Y7KRkwSS+Q2B/TQDK45sETbBDCKp0l9JHec/Zk4KzvJ+0NsUDjAu3
+ FwcVa2uKo7UYiwvq8pIilrrohz+1wmQvYxsEs4vD/jW102hD/hm9wacq48yNTjzrRg
+ cjPBQWKFU4JpQ==
+Date: Wed, 9 Feb 2022 13:16:21 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Leilk Liu <leilk.liu@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH V5 0/3] Add compatible for Mediatek MT8186
+Message-ID: <YgO+pXPtptHCQ9Zu@sirena.org.uk>
+References: <20220209014443.12443-1-leilk.liu@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YfwRN2ObqFbrw/fF@shell.armlinux.org.uk>
+In-Reply-To: <20220209014443.12443-1-leilk.liu@mediatek.com>
+X-Cookie: Disc space -- the final frontier!
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220209_050849_811363_B26F3A99 
-X-CRM114-Status: GOOD (  15.72  )
+X-CRM114-CacheID: sfid-20220209_051627_137643_C5A8519C 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,39 +69,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6823824985193899136=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 03, 2022 at 05:30:31PM +0000, Russell King (Oracle) wrote:
-> Hi,
-> 
-> This series is a partial conversion of the mt7530 DSA driver to the
-> modern phylink infrastructure. This driver has some exceptional cases
-> which prevent - at the moment - its full conversion (particularly with
-> the Autoneg bit) to using phylink_generic_validate().
-> 
-> What stands in the way is this if() condition in
-> mt753x_phylink_validate():
-> 
-> 	if (state->interface != PHY_INTERFACE_MODE_TRGMII ||
-> 	    !phy_interface_mode_is_8023z(state->interface)) {
-> 
-> reduces to being always true. I highlight this here for the attention
-> of the driver maintainers.
 
-I'm intending to submit this series later today, preserving the above
-behaviour, as I like to keep drivers bug-for-bug compatible, with the
-assumption that they've been tested as working, even if the code looks
-wrong. However, it would be good if this point could be addressed.
-Thanks.
+--===============6823824985193899136==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="5R+mG6GScGdLDrKy"
+Content-Disposition: inline
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+
+--5R+mG6GScGdLDrKy
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Wed, Feb 09, 2022 at 09:44:40AM +0800, Leilk Liu wrote:
+> V5:
+> 1. re-send these patchs based on v5.17-rc1.
+> 2. add the flags: "Reviewed-by Rob Herring".
+
+Please do not submit new versions of already applied patches, please
+submit incremental updates to the existing code.  Modifying existing
+commits creates problems for other users building on top of those
+commits so it's best practice to only change pubished git commits if
+absolutely essential.
+
+--5R+mG6GScGdLDrKy
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmIDvqQACgkQJNaLcl1U
+h9CTrAf+IL1W+QaItaOmV9RPnJ4UrhJnchjr0HroF9X473KfHJU09+xhzNuFyo5v
+teyCMIi4gThNQV/AT1AejZO0sXe3mmj3jWcYTgsdoJ1hV2H/bZHWLDEpXVhWetBm
+67z2vgk1radpZjWz8vD7E1ChdTaRAsi5pdMcmg6sh2+qaDSl3fNamIVT4TiAT/uH
+C+EozMAZQXGq0QELx+JYSsxJi0CPVx9abSbiULA0B/qjrZT9wbsiHc9CiaE81AVE
+dNxEeCXffZuBfPvLfYxsNY5OhyBwZoTrYSUxJ1ZNhwhQ36ZbkllpMkoweiOHw76n
+nzqs5p2NmkZjXcmBTZ+DtCr39avFVA==
+=p3Fj
+-----END PGP SIGNATURE-----
+
+--5R+mG6GScGdLDrKy--
+
+
+--===============6823824985193899136==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============6823824985193899136==--
+
