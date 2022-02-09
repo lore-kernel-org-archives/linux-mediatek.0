@@ -4,63 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15182C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Feb 2022 18:34:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 621C3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Feb 2022 19:02:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Gf3CAl+PWiZZvR7oUv1mdT3hNWS4REqHjCVYTLA4CMM=; b=lgAaEFxlbKTwd7
-	FyvkHAh7k1xiBwGK4/7tH+bm0P5Sg+lUvd8waSMqXR8Rr23Hioq2NEY+j0XHgjhZTROl+IomNHJP1
-	BMIdVmKP+WpEz0Vu416Qxi8ruU9mh33RziIfM/Stv+bnikBueqD2NmOymY9BZR5bLjwRXUdJqrpCL
-	u82CFO50x5eYYlJf1faKkk0S3b2fyqeik92oFgkdDLhRiPGZ0sEwWE3hncCxY4noNIGKX9EUiMFl6
-	pn7BpVWT3Y6dJ3yvhhnMABixRo431QfhqQUDsIm4KmQs7yNNqrmjc74PvA6MlUm+G/0Qw6QtWAnAo
-	U1eMDPNCtp4S9wNKcfAA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=En3JumnoIg/02kyqAqF2r7CkxydqxXta6wc65F9fFCk=; b=W47g2wwtRxmBkf
+	zUeGaM2V9xI4Udt+W9OSArij25sRTKaElw3UOND6xyivkz5eU+JIUML6rXlqGcx0+saQZoVjjbqLe
+	SbvgZalo+YgVEKaaL0/9LAWCx8NJyWS8U9xkgNVOBzL4YBpCmZj+OQLplQc9DwBjbqb1ZWE7pSz3z
+	F20OIEndrzUfEQzlkEmj2kU9osbOH4E6WxO5FR6hc122cEqPdAt/4EOYXHDb2sDIwPaiaEhiImuQm
+	MFk0MciU59V6jq+ToxdLdYJSOIM9fd2L+ZkNq9QxUfPU0IXlX4zqJWCrJqm+ACZbGTf+OU7NHnJsC
+	uniWHhjUISvnqhGwzA3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHrmt-0017HE-Dx; Wed, 09 Feb 2022 18:33:55 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nHsEU-001IeW-8u; Wed, 09 Feb 2022 19:02:26 +0000
+Received: from mail-oi1-f171.google.com ([209.85.167.171])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHrmi-0017Ex-0h; Wed, 09 Feb 2022 18:33:45 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 10011B8237E;
- Wed,  9 Feb 2022 18:33:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0DEC4C340E7;
- Wed,  9 Feb 2022 18:33:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1644431620;
- bh=bFy7XXY2ACITulTCUKRC7dk/O8gBIpyeMZ3F7CKr/7s=;
- h=From:To:Cc:Subject:Date:From;
- b=LM5akZrXHkGfyoqM4hv2SRCV7HhZHvzf62xiVBHchXCZqPnwd5f8o8ngdOUFo7y88
- rg4zM9YfQoDMw/+7X2C23aKSqHqst6wtIg+XPRrvsdOmLdqMLzZiLQHK3s2RD/v7tq
- /GhGKf+poi2xoCSBkSdbJ+Q0apl3UgnEQL5s0H14SM85FvDuL0Ucyxfl2ybMNGmmP1
- 2tDKdAsQAVlYEgDKlBmmYOQpLI/mqYtZ4FArNoIFEuwMsK8PQFjx1lyAi264/YrsWq
- vR7XI8J5QEAyLlkrF2xPOOkJWHPEihsW+8vbjckFSuSUwNSks9/9adyJjflhZZkuq9
- Kzy5DS6QS3S1A==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Julian Braha <julianbraha@gmail.com>, Tzung-Bi Shih <tzungbi@google.com>,
- Mark Brown <broonie@kernel.org>, Sasha Levin <sashal@kernel.org>,
- lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com,
- matthias.bgg@gmail.com, trevor.wu@mediatek.com, rdunlap@infradead.org,
- geert+renesas@glider.be, alsa-devel@alsa-project.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.16 01/42] ASoC: mediatek: fix unmet dependency on
- GPIOLIB for SND_SOC_DMIC
-Date: Wed,  9 Feb 2022 13:32:33 -0500
-Message-Id: <20220209183335.46545-1-sashal@kernel.org>
-X-Mailer: git-send-email 2.34.1
+ id 1nHs9v-001GWc-GW
+ for linux-mediatek@lists.infradead.org; Wed, 09 Feb 2022 18:57:44 +0000
+Received: by mail-oi1-f171.google.com with SMTP id x193so3541129oix.0
+ for <linux-mediatek@lists.infradead.org>; Wed, 09 Feb 2022 10:57:42 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=H7xdyU3dNzn1aGQxkPyHJk9OkHfZ1q05CNcab6XbAM8=;
+ b=v2Hoz00oO2zJPL/yeSKv4yS7ulMoBqB4EEfba19oXnXg80CRVcLZZVDxgiXRJ+xefV
+ 3cN/BSzlWGa5YtKGQj4mhS5ZZrV8OV60Azni1dYQ3EZVSFQp1a1UpyTpxNxCw15/L9g/
+ JXdb8oMDHrO5OR3UTOt3aE3aUU2OCmwF0az4ABPtOUf5mkBT+ffo9cDzAbGMCx2Go2TF
+ 24ktPEWJKxt5QgUUREbRwYty91iTt+HQDyIIfo+c/I2j+eniQvPK6kSb3eEsFX36kd6s
+ SzDyjIjFGwzc5ag6an8RWVsBMv4iGh0wwUGvOtW9zLKt4lKaqDOznj7C8IE/8RNZSuB5
+ bOMw==
+X-Gm-Message-State: AOAM531I1LIa7d4B6M29AZcHHzcH/dGaROpHcMcfBNxbKiE5QsAJWWGe
+ SorJnvQunkLaQI+AdH6eU3PaFXCKnA==
+X-Google-Smtp-Source: ABdhPJxP//1aGuFFY9vxv6CdY8xqk4XXBhD/YeyBeYu20dO0Ofj+I1tSvsI8ELVBjnh9kya5nvPUDA==
+X-Received: by 2002:a05:6808:1989:: with SMTP id
+ bj9mr2018511oib.28.1644433062105; 
+ Wed, 09 Feb 2022 10:57:42 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id 21sm6898916otj.71.2022.02.09.10.57.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 09 Feb 2022 10:57:41 -0800 (PST)
+Received: (nullmailer pid 691757 invoked by uid 1000);
+ Wed, 09 Feb 2022 18:57:40 -0000
+Date: Wed, 9 Feb 2022 12:57:40 -0600
+From: Rob Herring <robh@kernel.org>
+To: Bo Jiao <bo.jiao@mediatek.com>
+Cc: linux-wireless <linux-wireless@vger.kernel.org>,
+ Sujuan Chen <sujuan.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ devicetree@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
+ Peter Chiu <chui-hao.chiu@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Xing Song <xing.song@mediatek.com>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>
+Subject: Re: [PATCH v4 1/3] dt-bindings: net: wireless: mt76: document
+ bindings for MT7986
+Message-ID: <YgQOpOnYJyHaQtV8@robh.at.kernel.org>
+References: <cover.1644386694.git.Bo.Jiao@mediatek.com>
+ <08ef978845036560bb08b72e948e42f858e087d3.1644386694.git.Bo.Jiao@mediatek.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+Content-Disposition: inline
+In-Reply-To: <08ef978845036560bb08b72e948e42f858e087d3.1644386694.git.Bo.Jiao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220209_103344_259270_C0C75C49 
-X-CRM114-Status: GOOD (  12.97  )
+X-CRM114-CacheID: sfid-20220209_105743_584253_1D7ACBA7 
+X-CRM114-Status: GOOD (  10.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,52 +88,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Julian Braha <julianbraha@gmail.com>
+On Wed, 09 Feb 2022 14:11:55 +0800, Bo Jiao wrote:
+> From: Peter Chiu <chui-hao.chiu@mediatek.com>
+> 
+> Add an entry for MT7986 SoC.
+> 
+> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+> Cc: devicetree@vger.kernel.org
+> ---
+> v3:
+>  - fix yamllint warnings and errors
+>  - add 'minItems: 1' to keep 1 reg entry being valid
+> v4:
+>  - add description for property reg items
+> ---
+>  .../bindings/net/wireless/mediatek,mt76.yaml  | 33 +++++++++++++++++--
+>  1 file changed, 30 insertions(+), 3 deletions(-)
+> 
 
-[ Upstream commit 579b2c8f72d974f27d85bbd53846f34675ee3b01 ]
-
-When SND_SOC_MT8195_MT6359_RT1011_RT5682 is selected,
-and GPIOLIB is not selected,
-Kbuild gives the following warning:
-
-WARNING: unmet direct dependencies detected for SND_SOC_DMIC
-  Depends on [n]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && GPIOLIB [=n]
-  Selected by [y]:
-  - SND_SOC_MT8195_MT6359_RT1011_RT5682 [=y] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && I2C [=y] && SND_SOC_MT8195 [=y] && MTK_PMIC_WRAP [=y]
-
-This is because SND_SOC_MT8195_MT6359_RT1011_RT5682
-selects SND_SOC_DMIC without selecting or depending on
-GPIOLIB, depsite SND_SOC_DMIC depending on GPIOLIB.
-
-This unmet dependency bug was detected by Kismet,
-a static analysis tool for Kconfig. Please advise
-if this is not the appropriate solution.
-
-Signed-off-by: Julian Braha <julianbraha@gmail.com>
-Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
-Link: https://lore.kernel.org/r/20220117050324.68371-1-julianbraha@gmail.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- sound/soc/mediatek/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index 3b1ddea26a9ef..76f191ec7bf84 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -215,7 +215,7 @@ config SND_SOC_MT8195_MT6359_RT1019_RT5682
- 
- config SND_SOC_MT8195_MT6359_RT1011_RT5682
- 	tristate "ASoC Audio driver for MT8195 with MT6359 RT1011 RT5682 codec"
--	depends on I2C
-+	depends on I2C && GPIOLIB
- 	depends on SND_SOC_MT8195 && MTK_PMIC_WRAP
- 	select SND_SOC_MT6359
- 	select SND_SOC_RT1011
--- 
-2.34.1
-
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
