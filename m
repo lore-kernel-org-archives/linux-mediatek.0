@@ -4,61 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B063C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 06:51:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB45FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 07:50:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NDteH/yV3XK3uG9kMyysrHszi0mquX+adxeQHYSiPA0=; b=wjMDwQwjN5Ubbn
-	vESRE0tohPxf856xPI7nZkC4zU3CU76H8SG0WyMX6y8iCGjqgsXjRLANCEIAR6ENIQRiL0G+GTSun
-	cSKcBvxxFDkBcciRtvoIGTOFCGbs4sitxNfKmypUoYKYXzJRSeZ1au4IgK8RV1YfEP+cNX4Qd8ytl
-	20TH83exJ7sq8gvtuzLUXXXYXEyjWDtnQyb1ST7k3U6OWGmlm32f4R5nmcYMQCD7U3gAZvw0+AhmY
-	UHnjYjNB0mzCjCev9Hk+GCBqRo2oFCOV8lOWUzsj0BhABfLcFpSkdf6w0Ec/lpYzTGONyLU5jLdaB
-	4UWy/N26iLl+OJdC7vtg==;
+	List-Owner; bh=qBxvWb4Pd/GaHG71W/Ij8p8Hh89Q/yK9eDH/QFNMF6k=; b=Uf8S0gTtsGQ891
+	5lKsuwf5W0YM/RF/qhz8E2Y9Bb9DcbMttrwCg6d46KA4mcc66bKvCp9nVWDE3inciwc57N2EuJzLd
+	273i5e0yUrITS9NHx3qdCBZvA8uFgHNbZFHqy9FE2JDRckEw35eBzv5QmzklQ68MOLOlucc/mNrYT
+	JvchOfNBiCG6x9tpRPpVpIRJBF4FfnrZzpluOxRghm3wj8jk/1s/aiWvbTIwlMD0qo2RvpflPmk1g
+	0W2+vXU9vyd9HKZgzD45Mvmx0jKaBeTmVksSRipK+13ftS2+gF1H4C3KLXwvFUq8zSLv7GhSQpAw4
+	eKBNVg0H6uqT1WCjfuoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nI3IT-002otw-LA; Thu, 10 Feb 2022 06:51:17 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nI4Di-002vuC-7M; Thu, 10 Feb 2022 07:50:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nI3IG-002orr-Te; Thu, 10 Feb 2022 06:51:06 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 55F1AB823DB;
- Thu, 10 Feb 2022 06:51:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05A05C004E1;
- Thu, 10 Feb 2022 06:51:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1644475861;
- bh=NF5vEArqU6PoLBzuHWME77pDLNnZmgMubj3ipXB1Ugw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Mn6ZZ4D0+DS9UVw8tI+547ZjxwpwdWNllSCaYBjRHhmwLpzv8MB9XOoOPD1GwJQhz
- REoQsKRszN1l1abuPdYb9cD+sMOSC2gEfHdN6jZa6vMkp3za2R8iNWQj01CuGFDrC1
- LcBK4hWCPRaUsfQdOisc95l9652125xwbG2vL5Ns=
-Date: Thu, 10 Feb 2022 07:50:57 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: qizhong cheng <qizhong.cheng@mediatek.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, stable@vger.kernel.org,
- chuanjia.liu@mediatek.com
-Subject: Re: [PATCH v2] PCI: mediatek: Clear interrupt status before
- dispatching handler
-Message-ID: <YgS10ZUCzgjRs6LQ@kroah.com>
-References: <20220210012125.6420-1-qizhong.cheng@mediatek.com>
+ id 1nI4DR-002vlN-SZ; Thu, 10 Feb 2022 07:50:11 +0000
+X-UUID: a98e9dd5d47d4922ae8a8f547fe0f664-20220210
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=faCuWFRjaTfv9Zgib3R+c+bUwB/LfIm9iz/RWb4LUGs=; 
+ b=oIdA8g9WPCIfCSvqYD1Hb0qpDqcUdlE3Z5w/G+LRO5DiQJPBqGL99duRRbI1t80qgMEHT01jNp/jKpvrTSuTjpZo0o5u83rS3cOUzHspL8P2PF/+yubWAm26+sNPki7OmfGLR6aHBWDxLhAqQ62JCtEBtyKcPgUZN37GtHnznTU=;
+X-UUID: a98e9dd5d47d4922ae8a8f547fe0f664-20220210
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 171337631; Thu, 10 Feb 2022 00:49:57 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 9 Feb 2022 23:49:56 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 10 Feb 2022 15:49:54 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 10 Feb 2022 15:49:53 +0800
+Message-ID: <face7ccf80520ecad1b75f01f74314ddb483b88b.camel@mediatek.com>
+Subject: Re: [RFC PATCH] component: Add common helpers for compare/release
+ functions
+From: Yong Wu <yong.wu@mediatek.com>
+To: Robin Murphy <robin.murphy@arm.com>, <dri-devel@lists.freedesktop.org>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "James
+ Wang" <james.qian.wang@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ <iommu@lists.linux-foundation.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@canonical.com>, <linux-kernel@vger.kernel.org>, "Joerg
+ Roedel" <joro@8bytes.org>, Will Deacon <will@kernel.org>, Arnd Bergmann
+ <arnd@arndb.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ <linux-mediatek@lists.infradead.org>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, <linux-arm-kernel@lists.infradead.org>, "Stephen
+ Boyd" <sboyd@kernel.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Hsin-Yi Wang
+ <hsinyi@chromium.org>, Tomasz Figa <tfiga@chromium.org>,
+ <srv_heupstream@mediatek.com>, Rob Clark <robdclark@gmail.com>, "Srinivas
+ Kandagatla" <srinivas.kandagatla@linaro.org>, Sebastian Reichel
+ <sre@kernel.org>
+Date: Thu, 10 Feb 2022 15:49:53 +0800
+In-Reply-To: <29deffd6-aac4-f085-bcd5-f5a2d02784a8@arm.com>
+References: <20220128081101.27837-1-yong.wu@mediatek.com>
+ <29deffd6-aac4-f085-bcd5-f5a2d02784a8@arm.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220210012125.6420-1-qizhong.cheng@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220209_225105_126987_19B00629 
-X-CRM114-Status: GOOD (  16.13  )
+X-CRM114-CacheID: sfid-20220209_235009_951447_A8B7B5F9 
+X-CRM114-Status: GOOD (  21.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,34 +90,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 10, 2022 at 09:21:25AM +0800, qizhong cheng wrote:
-> We found a failure when used iperf tool for wifi performance testing,
-> there are some MSIs received while clearing the interrupt status,
-> these MSIs cannot be serviced.
+On Fri, 2022-01-28 at 13:04 +0000, Robin Murphy wrote:
+> On 2022-01-28 08:11, Yong Wu wrote:
+> [...]
+> > diff --git a/include/linux/component.h b/include/linux/component.h
+> > index 16de18f473d7..5a7468ea827c 100644
+> > --- a/include/linux/component.h
+> > +++ b/include/linux/component.h
+> > @@ -2,6 +2,8 @@
+> >   #ifndef COMPONENT_H
+> >   #define COMPONENT_H
+> >   
+> > +#include <linux/device.h>
+> > +#include <linux/of.h>
+> >   #include <linux/stddef.h>
+> >   
+> >   
+> > @@ -82,6 +84,22 @@ struct component_master_ops {
+> >   	void (*unbind)(struct device *master);
+> >   };
+> >   
+> > +/* A set common helpers for compare/release functions */
+> > +static inline int compare_of(struct device *dev, void *data)
+> > +{
+> > +	return dev->of_node == data;
+> > +}
 > 
-> The interrupt status can be cleared even the MSI status still remaining,
-> as an edge-triggered interrupts, its interrupt status should be cleared
-> before dispatching to the handler of device.
+> Note that this is effectively just device_match_of_node(), although
+> I 
+> guess there is an argument that having a nice consistent set of 
+> component_match API helpers might be worth more than a tiny code
+> saving 
+> by borrowing one from a different API.
+
+Thanks for this tip. I could try use this, Let the maintainer decide.
+
 > 
-> Signed-off-by: qizhong cheng <qizhong.cheng@mediatek.com>
-> ---
-> v2:
->  - Update the subject line.
->  - Improve the commit log and code comments.
+> Either way, however, I don't think there's any good argument for 
+> instantiating separate copies of these functions in every driver
+> that 
+> uses them. If they're used as callbacks then they can't actually be 
+> inlined anyway, so they may as well be exported from component.c as 
+
+oh. The MTK iommu keeps this inline for long time... OK, I will try
+to move into the component.c and export them.
+
+(Sorry for the late reply due to New Year holidays.)
+
+> normal so that the code really is shared (plus then there's nice 
+> symmetry with the aforementioned device_match API helpers too).
 > 
->  drivers/pci/controller/pcie-mediatek.c | 9 +++++++--
->  1 file changed, 7 insertions(+), 2 deletions(-)
-> 
-
-<formletter>
-
-This is not the correct way to submit patches for inclusion in the
-stable kernel tree.  Please read:
-    https://www.kernel.org/doc/html/latest/process/stable-kernel-rules.html
-for how to do this properly.
-
-</formletter>
-
+> Thanks,
+> Robin.
+  
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
