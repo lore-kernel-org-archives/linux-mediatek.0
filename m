@@ -4,60 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15304C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 10:51:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C22F9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 12:45:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KyohXZ8ljUyt8/Z31TAd35lQorK+NyLlcSiynv+o4vk=; b=kfscATmPKxcLbF
-	fmtWCeZQxtc+45KH6lP6v967LlMvTDjNk0o4PeCIGzknLKBvLeqaDzXDGYf1RAzCYRbrXBVpSd1in
-	jxFZmgDSEebgZDFa6phWyl86NabDrVH3MU4GP5rbuPoOu+XX6srnlpQ9riKLOtA7nu9xN1gyhZg8c
-	l2dqj1kblAe9CTPwT91wLPpRjUOBp7O4o/bwgHsrQWzHLBnlJARTswpYxEP15+FD9CPL7TwGvHYTD
-	HypcFqj0e8NIwevO4vs6Zf2KzZcRRoHg7t0RHacNi24tx+fu0muaSKnELa9uW3tZTNP64lmHpi9vy
-	rMbKvQMO9VpavUSlahnQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Yve8ajp13QEU+f/dYlueDUu6O16oMri0WlefsVKSHwk=; b=umMrqpaMmsiI5WB757ae/fbZC5
+	b7QhwIcuywT5ZJXivR/8PzWV+S/0gHRUW5BKCb59rWU2e5cj989RiP3ZFCBcz5fhJW3hNie3lJpex
+	GUokf/IYH5oKBU7KAg6XD0q3xIfGd/wm/TjCTCC1x5mMX/d4NMHB3sslYMBTcOy7ixp0v1rnp1ynZ
+	PMyfz6tYSNhFTVZp1VbMB96MPie9YtlOJBD+7l8DRaQ6SIeiyjwdcAJOo/Y1EvQRPMsT5qJSCH+3M
+	uNFFLb/8jvvRM37uAKZfCYtvgZBHnh0x9t+uSByU6K/8qz0HrX50+8yvgeOwJuuFb922eZR96a1Rc
+	YDeIewCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nI72M-003VOf-5O; Thu, 10 Feb 2022 10:50:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nI8pU-003mk1-2j; Thu, 10 Feb 2022 12:45:44 +0000
+Received: from mail-io1-xd30.google.com ([2607:f8b0:4864:20::d30])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nI729-003VMA-KA; Thu, 10 Feb 2022 10:50:44 +0000
-X-UUID: e0ffb0d18b654331b4c4adb86ac46708-20220210
-X-UUID: e0ffb0d18b654331b4c4adb86ac46708-20220210
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <cheng-jui.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 157158252; Thu, 10 Feb 2022 03:50:37 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 10 Feb 2022 02:50:35 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 10 Feb 2022 18:50:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 10 Feb 2022 18:50:33 +0800
-From: Cheng Jui Wang <cheng-jui.wang@mediatek.com>
-To: Peter Zijlstra <peterz@infradead.org>, Ingo Molnar <mingo@redhat.com>
-CC: Will Deacon <will@kernel.org>, Waiman Long <longman@redhat.com>, "Boqun
- Feng" <boqun.feng@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <stable@vger.kernel.org>,
- <wsd_upstream@mediatek.com>, Eason-YH Lin <eason-yh.lin@mediatek.com>,
- Kobe-CP Wu <kobe-cp.wu@mediatek.com>, Jeff-CC Hsu <jeff-cc.hsu@mediatek.com>, 
- Cheng Jui Wang <cheng-jui.wang@mediatek.com>
-Subject: [PATCH] lockdep: Correct lock_classes index mapping
-Date: Thu, 10 Feb 2022 18:50:11 +0800
-Message-ID: <20220210105011.21712-1-cheng-jui.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1nI8pG-003mhz-Tv; Thu, 10 Feb 2022 12:45:33 +0000
+Received: by mail-io1-xd30.google.com with SMTP id y84so7159406iof.0;
+ Thu, 10 Feb 2022 04:45:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=vVuq9C849TyyKMYK2wDnn3xfRuL6JOz5aRbsB3LpuNc=;
+ b=cp8IMLeQr9X/AxTm6gsFv75CWmjUXEH54DKaqLlVxxDL4oA16IO+tsKVUqDL7VeNUG
+ rVPgS7E6iatLEGtFMc+JZd56azb/iXQ4V0C+/uLMHz/1N2MG3D4hA2MWxerFTEM3OhxN
+ GLyySyRL+weNAFklvBcpnxxZbuSkikuqvCV4Gmk7JjyoP6CpeavWNnoAmWrlUQv66BMx
+ lRNXfZqX4SDXSM2AQwT2TDMSpvmv47nkr6+IuFsxmAFScssuYigE6i5lyU1LHKCyxvbi
+ irJb+kEWxyZ0VhreQqs1jaBh9plGMEgqomDT/0PG4Ru8dFT1NPJxrZRMxm4/knG6X+w1
+ 8IWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=vVuq9C849TyyKMYK2wDnn3xfRuL6JOz5aRbsB3LpuNc=;
+ b=DKBtDDlOmd21FapGLFtGicpx7cZpGQuMnzj8951hM9zPy1dldVLLhASjGBJGtTP3ws
+ McRyUq100lZmJHsh6vmAaD+hnnZpvkXu2HRyy49JVigUnNa49AEOQy23dw2NABrgHHh3
+ AH46PtrVPvtcfEMFM7EA3mGx3u4GtYRkIc9ZQEACTf4qSHjiAm80XRINAZd2If+/Uk4G
+ SxfkI95wFQWDuqu0lSvSh7PLu+RMuBzVgvhTAvrtNiZ1LqfNIluVm3Ejj0rC764ODRFp
+ FwTiBcpqMhpLIV8mHZIOqm82moaPIeggfvr1sYsKDFl4v4+jki31QXqnNX8wKOXROitM
+ poQQ==
+X-Gm-Message-State: AOAM530esGDaEwKneG/IK7kt2b9FWDSnYakYNUDx97OefQy1OfQnnPC4
+ A8n4ZzBaIUPIamhwmBOT3jQ=
+X-Google-Smtp-Source: ABdhPJx2DDXig5S0TiboxeSABKBKhomhskJYokb8Bl3S83jLtI18u3oNdhoul/kpbbvJzSKjyYC60A==
+X-Received: by 2002:a5d:9d8f:: with SMTP id ay15mr3749339iob.142.1644497129144; 
+ Thu, 10 Feb 2022 04:45:29 -0800 (PST)
+Received: from auth1-smtp.messagingengine.com (auth1-smtp.messagingengine.com.
+ [66.111.4.227])
+ by smtp.gmail.com with ESMTPSA id u26sm11205447ior.52.2022.02.10.04.45.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 10 Feb 2022 04:45:27 -0800 (PST)
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailauth.nyi.internal (Postfix) with ESMTP id 31A6F27C005A;
+ Thu, 10 Feb 2022 07:45:26 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute2.internal (MEProxy); Thu, 10 Feb 2022 07:45:26 -0500
+X-ME-Sender: <xms:5QgFYtS9O5yQkV5F2PfeRRjVntUU5um-kPiO6q2H36PiMqIs1R9Hvw>
+ <xme:5QgFYmxnYlHARrvEjRhxc531VTJ6SQEZ9QGse7b6dzaYCoK8HOkXpWXeUK349NDBl
+ 98FmMNiv3M_PjFtaw>
+X-ME-Received: <xmr:5QgFYi1pwQaUknl2WKjVYsiKAMVsQhITrail-aJEaGi9Rv9TfdeEmx6oZFY>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddriedugdegvdcutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpeffhffvuffkfhggtggujgesghdtreertddtvdenucfhrhhomhepuehoqhhunhcu
+ hfgvnhhguceosghoqhhunhdrfhgvnhhgsehgmhgrihhlrdgtohhmqeenucggtffrrghtth
+ gvrhhnpeehfedujeeuffejleektdegleellefgfffhhfdvhedtkeevheejiedvjeeguddu
+ geenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegsoh
+ hquhhnodhmvghsmhhtphgruhhthhhpvghrshhonhgrlhhithihqdeiledvgeehtdeigedq
+ udejjeekheehhedvqdgsohhquhhnrdhfvghngheppehgmhgrihhlrdgtohhmsehfihigmh
+ gvrdhnrghmvg
+X-ME-Proxy: <xmx:5QgFYlCiN-WaVf_C8JvbdgqmiahEasIixI17J2wl8Pu9mKDcD89oDw>
+ <xmx:5QgFYmjAh9LOQd-Z53-hFKSjZdKHiYU2ZcbnyUHGSVrs4Umu0J6XNA>
+ <xmx:5QgFYpr4cKvRLgZqXiAxiQw_xBn60au8lkfqp1uQ1eN02iMf-gjp8w>
+ <xmx:5ggFYtQqIzV_226tX4fI54iKd8bJu78WvqhyIoSeZ_7tuKW6-uNM9UBRvE0>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 10 Feb 2022 07:45:24 -0500 (EST)
+Date: Thu, 10 Feb 2022 20:45:09 +0800
+From: Boqun Feng <boqun.feng@gmail.com>
+To: Cheng Jui Wang <cheng-jui.wang@mediatek.com>
+Cc: Peter Zijlstra <peterz@infradead.org>, Ingo Molnar <mingo@redhat.com>,
+ Will Deacon <will@kernel.org>, Waiman Long <longman@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, stable@vger.kernel.org,
+ wsd_upstream@mediatek.com, Eason-YH Lin <eason-yh.lin@mediatek.com>,
+ Kobe-CP Wu <kobe-cp.wu@mediatek.com>,
+ Jeff-CC Hsu <jeff-cc.hsu@mediatek.com>
+Subject: Re: [PATCH] lockdep: Correct lock_classes index mapping
+Message-ID: <YgUI1UdAm/oqNZzA@tardis>
+References: <20220210105011.21712-1-cheng-jui.wang@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20220210105011.21712-1-cheng-jui.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220210_025041_686502_634F3F20 
-X-CRM114-Status: GOOD (  14.46  )
+X-CRM114-CacheID: sfid-20220210_044530_997901_9EAD19DB 
+X-CRM114-Status: GOOD (  21.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,76 +112,129 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2784686253971385677=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A kernel exception was hit when trying to dump /proc/lockdep_chains after
-lockdep report "BUG: MAX_LOCKDEP_CHAIN_HLOCKS too low!":
 
-Unable to handle kernel paging request at virtual address 00054005450e05c3
-...
-00054005450e05c3] address between user and kernel address ranges
-...
-pc : [0xffffffece769b3a8] string+0x50/0x10c
-lr : [0xffffffece769ac88] vsnprintf+0x468/0x69c
-...
- Call trace:
-  string+0x50/0x10c
-  vsnprintf+0x468/0x69c
-  seq_printf+0x8c/0xd8
-  print_name+0x64/0xf4
-  lc_show+0xb8/0x128
-  seq_read_iter+0x3cc/0x5fc
-  proc_reg_read_iter+0xdc/0x1d4
+--===============2784686253971385677==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="mSrxgry1qLQwN7FB"
+Content-Disposition: inline
 
-The cause of the problem is the function lock_chain_get_class() will
-shift lock_classes index by 1, but the index don't need to be shifted
-anymore since commit 01bb6f0af992 ("locking/lockdep: Change the range of
-class_idx in held_lock struct") already change the index to start from
-0.
 
-The lock_classes[-1] located at chain_hlocks array. When printing
-lock_classes[-1] after the chain_hlocks entries are modified, the
-exception happened.
+--mSrxgry1qLQwN7FB
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-The output of lockdep_chains are incorrect due to this problem too.
+On Thu, Feb 10, 2022 at 06:50:11PM +0800, Cheng Jui Wang wrote:
+> A kernel exception was hit when trying to dump /proc/lockdep_chains after
+> lockdep report "BUG: MAX_LOCKDEP_CHAIN_HLOCKS too low!":
+>=20
+> Unable to handle kernel paging request at virtual address 00054005450e05c3
+> ...
+> 00054005450e05c3] address between user and kernel address ranges
+> ...
+> pc : [0xffffffece769b3a8] string+0x50/0x10c
+> lr : [0xffffffece769ac88] vsnprintf+0x468/0x69c
+> ...
+>  Call trace:
+>   string+0x50/0x10c
+>   vsnprintf+0x468/0x69c
+>   seq_printf+0x8c/0xd8
+>   print_name+0x64/0xf4
+>   lc_show+0xb8/0x128
+>   seq_read_iter+0x3cc/0x5fc
+>   proc_reg_read_iter+0xdc/0x1d4
+>=20
+> The cause of the problem is the function lock_chain_get_class() will
+> shift lock_classes index by 1, but the index don't need to be shifted
+> anymore since commit 01bb6f0af992 ("locking/lockdep: Change the range of
+> class_idx in held_lock struct") already change the index to start from
+> 0.
+>=20
+> The lock_classes[-1] located at chain_hlocks array. When printing
+> lock_classes[-1] after the chain_hlocks entries are modified, the
+> exception happened.
+>=20
+> The output of lockdep_chains are incorrect due to this problem too.
+>=20
+> Fixes: f611e8cf98ec ("lockdep: Take read/write status in consideration wh=
+en generate chainkey")
+>=20
+> Signed-off-by: Cheng Jui Wang <cheng-jui.wang@mediatek.com>
 
-Fixes: f611e8cf98ec ("lockdep: Take read/write status in consideration when generate chainkey")
+Hmm.. this means that the /proc/lockdep_chains has been incorrect since
+commit f611e8cf89ec..
 
-Signed-off-by: Cheng Jui Wang <cheng-jui.wang@mediatek.com>
----
- kernel/locking/lockdep.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Nice catch!
 
-diff --git a/kernel/locking/lockdep.c b/kernel/locking/lockdep.c
-index 4a882f83aeb9..f8a0212189ca 100644
---- a/kernel/locking/lockdep.c
-+++ b/kernel/locking/lockdep.c
-@@ -3462,7 +3462,7 @@ struct lock_class *lock_chain_get_class(struct lock_chain *chain, int i)
- 	u16 chain_hlock = chain_hlocks[chain->base + i];
- 	unsigned int class_idx = chain_hlock_class_idx(chain_hlock);
- 
--	return lock_classes + class_idx - 1;
-+	return lock_classes + class_idx;
- }
- 
- /*
-@@ -3530,7 +3530,7 @@ static void print_chain_keys_chain(struct lock_chain *chain)
- 		hlock_id = chain_hlocks[chain->base + i];
- 		chain_key = print_chain_key_iteration(hlock_id, chain_key);
- 
--		print_lock_name(lock_classes + chain_hlock_class_idx(hlock_id) - 1);
-+		print_lock_name(lock_classes + chain_hlock_class_idx(hlock_id));
- 		printk("\n");
- 	}
- }
--- 
-2.18.0
+Reviewed-by: Boqun Feng <boqun.feng@gmail.com>
 
+Regards,
+Boqun
+
+> ---
+>  kernel/locking/lockdep.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/kernel/locking/lockdep.c b/kernel/locking/lockdep.c
+> index 4a882f83aeb9..f8a0212189ca 100644
+> --- a/kernel/locking/lockdep.c
+> +++ b/kernel/locking/lockdep.c
+> @@ -3462,7 +3462,7 @@ struct lock_class *lock_chain_get_class(struct lock=
+_chain *chain, int i)
+>  	u16 chain_hlock =3D chain_hlocks[chain->base + i];
+>  	unsigned int class_idx =3D chain_hlock_class_idx(chain_hlock);
+> =20
+> -	return lock_classes + class_idx - 1;
+> +	return lock_classes + class_idx;
+>  }
+> =20
+>  /*
+> @@ -3530,7 +3530,7 @@ static void print_chain_keys_chain(struct lock_chai=
+n *chain)
+>  		hlock_id =3D chain_hlocks[chain->base + i];
+>  		chain_key =3D print_chain_key_iteration(hlock_id, chain_key);
+> =20
+> -		print_lock_name(lock_classes + chain_hlock_class_idx(hlock_id) - 1);
+> +		print_lock_name(lock_classes + chain_hlock_class_idx(hlock_id));
+>  		printk("\n");
+>  	}
+>  }
+> --=20
+> 2.18.0
+>=20
+
+--mSrxgry1qLQwN7FB
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEj5IosQTPz8XU1wRHSXnow7UH+rgFAmIFCM4ACgkQSXnow7UH
++rh8fwgAnNNIl8Mte6VygIwZ/glFXpfdsKseZW8tEGuCdJzU5DZ4/KipiEZswoui
+ybBfHbUywJwyTi32kKRTyBc97xP+HuRUQv6x/kZqq2wrXg3m0fbmxyinYdnUPZD9
+xQO1FqMtSqdh6gSbpjmjHsF9CerBQedxSFU+/ydHPbJrRHuHzK/i3d128vnbrO7M
+REE+TgjCAs06y3T7rqGwRaQKelDrzHxhZx7aL8Z0sEa8NKdyhrgQyd+oLO68gHIh
+lKCK0zHO16EVvS67AmH44wvY2GZfQ7S3qLAwIZ6s6HepEnk1R+UL+7uESlMuf5pm
+MLiHYCjt6Kg088kfZyqFDcFX9CZYQg==
+=vkZa
+-----END PGP SIGNATURE-----
+
+--mSrxgry1qLQwN7FB--
+
+
+--===============2784686253971385677==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============2784686253971385677==--
+
