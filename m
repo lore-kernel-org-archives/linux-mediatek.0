@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB45FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 07:50:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36B56C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 08:01:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qBxvWb4Pd/GaHG71W/Ij8p8Hh89Q/yK9eDH/QFNMF6k=; b=Uf8S0gTtsGQ891
-	5lKsuwf5W0YM/RF/qhz8E2Y9Bb9DcbMttrwCg6d46KA4mcc66bKvCp9nVWDE3inciwc57N2EuJzLd
-	273i5e0yUrITS9NHx3qdCBZvA8uFgHNbZFHqy9FE2JDRckEw35eBzv5QmzklQ68MOLOlucc/mNrYT
-	JvchOfNBiCG6x9tpRPpVpIRJBF4FfnrZzpluOxRghm3wj8jk/1s/aiWvbTIwlMD0qo2RvpflPmk1g
-	0W2+vXU9vyd9HKZgzD45Mvmx0jKaBeTmVksSRipK+13ftS2+gF1H4C3KLXwvFUq8zSLv7GhSQpAw4
-	eKBNVg0H6uqT1WCjfuoA==;
+	List-Owner; bh=Gy8lGSFU5RBmoxXvp9TegFPqS8GKlJnpsBnNq4Fk3C0=; b=HBSkRTYyEOh2s9
+	Atri3Cqw9uQKZuTsiK897+kVgrju+8rhd6yeFWQSCe9YZ37hYm5o0MbhXzLXNXyJ7AeOQ5XP9Gbhq
+	vH13RTw2uGADYmSW0W07gluBTwAwGbNhfmfnglWIO/aMksz8btSFVVc7HIdz9GK17vYVFmJloSpWM
+	oTMRewAphNoWaWZqOkGHQ0QzXY8/upo6l0TkBT4TY8IL0DJRI7Kdx3uiPNuCcdz42lCgd+oaLMZ5W
+	05rl066leWNVjL+L3/vJg2jbQk4r+akmwcHcngCXstt2tJOoVU4dSckekRDhGz/UyyZ9HGi5wL0uf
+	/vTLHVPCsoaIyIIKBZsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nI4Di-002vuC-7M; Thu, 10 Feb 2022 07:50:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nI4O2-002yX6-46; Thu, 10 Feb 2022 08:01:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nI4DR-002vlN-SZ; Thu, 10 Feb 2022 07:50:11 +0000
-X-UUID: a98e9dd5d47d4922ae8a8f547fe0f664-20220210
+ id 1nI4No-002ySU-Qd; Thu, 10 Feb 2022 08:00:54 +0000
+X-UUID: 0adb9630f5bd4c89b25590948b776621-20220210
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=faCuWFRjaTfv9Zgib3R+c+bUwB/LfIm9iz/RWb4LUGs=; 
- b=oIdA8g9WPCIfCSvqYD1Hb0qpDqcUdlE3Z5w/G+LRO5DiQJPBqGL99duRRbI1t80qgMEHT01jNp/jKpvrTSuTjpZo0o5u83rS3cOUzHspL8P2PF/+yubWAm26+sNPki7OmfGLR6aHBWDxLhAqQ62JCtEBtyKcPgUZN37GtHnznTU=;
-X-UUID: a98e9dd5d47d4922ae8a8f547fe0f664-20220210
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ bh=B23BWFMXi9iPezRpda4z8wbV5sJxHqqK3SgNUqZsgMI=; 
+ b=FkGQcnjSvCyawVbtQH+XAcVkl81uAg0xtQx60WvHS8hTdptseugkQAiDyunhszFz8uYFBqrVTag5iMQOvV5s01SdRl9kxlP3G0Fndiz86tki2SLuxzaMo0GNBEla/vkBE1Xbr1fD0XOJWbU7P1kXFnZjh7YYfFA3hmXb8XCMBGY=;
+X-UUID: 0adb9630f5bd4c89b25590948b776621-20220210
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 171337631; Thu, 10 Feb 2022 00:49:57 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 802628450; Thu, 10 Feb 2022 01:00:48 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Feb 2022 23:49:56 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 10 Feb 2022 15:49:54 +0800
+ 15.0.1497.2; Wed, 9 Feb 2022 23:50:46 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 10 Feb 2022 15:50:44 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 10 Feb 2022 15:49:53 +0800
-Message-ID: <face7ccf80520ecad1b75f01f74314ddb483b88b.camel@mediatek.com>
+ Transport; Thu, 10 Feb 2022 15:50:42 +0800
+Message-ID: <ebb92c1c8c584464245da68e42bcafac2170558c.camel@mediatek.com>
 Subject: Re: [RFC PATCH] component: Add common helpers for compare/release
  functions
 From: Yong Wu <yong.wu@mediatek.com>
-To: Robin Murphy <robin.murphy@arm.com>, <dri-devel@lists.freedesktop.org>
-CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "James
+To: Daniel Vetter <daniel@ffwll.ch>
+CC: <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, "James
  Wang" <james.qian.wang@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
  <iommu@lists.linux-foundation.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Krzysztof Kozlowski
@@ -60,20 +60,20 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "James
  <chunkuang.hu@kernel.org>, <linux-arm-kernel@lists.infradead.org>, "Stephen
  Boyd" <sboyd@kernel.org>, AngeloGioacchino Del Regno
  <angelogioacchino.delregno@collabora.com>, Hsin-Yi Wang
- <hsinyi@chromium.org>, Tomasz Figa <tfiga@chromium.org>,
- <srv_heupstream@mediatek.com>, Rob Clark <robdclark@gmail.com>, "Srinivas
- Kandagatla" <srinivas.kandagatla@linaro.org>, Sebastian Reichel
- <sre@kernel.org>
-Date: Thu, 10 Feb 2022 15:49:53 +0800
-In-Reply-To: <29deffd6-aac4-f085-bcd5-f5a2d02784a8@arm.com>
+ <hsinyi@chromium.org>, Robin Murphy <robin.murphy@arm.com>, Tomasz Figa
+ <tfiga@chromium.org>, <srv_heupstream@mediatek.com>, Rob Clark
+ <robdclark@gmail.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Sebastian Reichel <sre@kernel.org>
+Date: Thu, 10 Feb 2022 15:50:43 +0800
+In-Reply-To: <YfRtGF3v+BwH5RkG@phenom.ffwll.local>
 References: <20220128081101.27837-1-yong.wu@mediatek.com>
- <29deffd6-aac4-f085-bcd5-f5a2d02784a8@arm.com>
+ <YfRtGF3v+BwH5RkG@phenom.ffwll.local>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220209_235009_951447_A8B7B5F9 
-X-CRM114-Status: GOOD (  21.67  )
+X-CRM114-CacheID: sfid-20220210_000052_897634_6C34A2FC 
+X-CRM114-Status: GOOD (  33.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,59 +90,138 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-01-28 at 13:04 +0000, Robin Murphy wrote:
-> On 2022-01-28 08:11, Yong Wu wrote:
-> [...]
+On Fri, 2022-01-28 at 23:24 +0100, Daniel Vetter wrote:
+> On Fri, Jan 28, 2022 at 04:11:01PM +0800, Yong Wu wrote:
+> > The component requires the compare/release functions, there are so
+> > many
+> > copy in current kernel. Just define three common helpers for them.
+> > No functional change.
+> > 
+> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > ---
+> > Base on v5.17-rc1
+> > ---
+> >  .../gpu/drm/arm/display/komeda/komeda_drv.c    |  5 -----
+> >  drivers/gpu/drm/arm/hdlcd_drv.c                |  7 +------
+> >  drivers/gpu/drm/armada/armada_drv.c            |  5 -----
+> >  drivers/gpu/drm/drm_of.c                       |  8 +-------
+> >  drivers/gpu/drm/etnaviv/etnaviv_drv.c          |  7 -------
+> >  drivers/gpu/drm/exynos/exynos_drm_drv.c        |  5 -----
+> >  .../gpu/drm/hisilicon/kirin/kirin_drm_drv.c    |  5 -----
+> >  drivers/gpu/drm/imx/imx-drm-core.c             |  4 ++--
+> >  drivers/gpu/drm/ingenic/ingenic-drm-drv.c      |  5 -----
+> >  drivers/gpu/drm/mcde/mcde_drv.c                |  7 +------
+> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c         |  5 -----
+> >  drivers/gpu/drm/meson/meson_drv.c              |  8 --------
+> >  drivers/gpu/drm/msm/msm_drv.c                  |  9 ---------
+> >  drivers/gpu/drm/omapdrm/dss/dss.c              |  8 +-------
+> >  drivers/gpu/drm/rockchip/rockchip_drm_drv.c    |  5 -----
+> >  drivers/gpu/drm/sti/sti_drv.c                  |  5 -----
+> >  drivers/gpu/drm/sun4i/sun4i_drv.c              |  9 ---------
+> >  drivers/gpu/drm/vc4/vc4_drv.c                  |  5 -----
+> >  drivers/iommu/mtk_iommu.h                      | 10 ----------
+> >  drivers/power/supply/ab8500_charger.c          |  8 +-------
+> >  drivers/video/fbdev/omap2/omapfb/dss/dss.c     |  8 +-------
+> >  include/linux/component.h                      | 18
+> > ++++++++++++++++++
+> >  sound/soc/codecs/wcd938x.c                     | 16 ++----------
+> > ----
+> 
+> Seems like a neat idea. Please add kerneldoc for the new functions
+> you're
+> adding (bonus point for an example in there) and make sure it all
+> renders
+> correctly in
+
+OK, I will add it.
+
+> 
+> $ make htmldoc
+
+sorry, I still need some time to run this in my environment.
+
+> 
+> Also please split up the patch series per-driver and add the
+> maintainers
+> to each patches' Cc: list. With that I think this should be ready for
+> merging.
+
+In the orignal idea, I thought the name compare_of/release_of was
+enough, thus I squashed them into one patch, otherwise, it may cause
+build fail due to redefinition when bisecting.
+
+From Jani, It's better to add a namespace for the function name,
+something like comp_ or component_?
+
+If the function name is changed, then I could split them. A question:
+The biggest change are in DRM, and all of these patches will go
+together. Maybe all the DRM parts could be in one patch, to avoid so
+many small patches, is this ok? or We'd better create a patch per a drm
+driver.
+
+In the end, then the code should be something like:
+
+--- a/drivers/base/component.c
++++ b/drivers/base/component.c
+@@ -287,6 +287,24 @@ static void take_down_master(struct master
+*master)
+        }
+ }
+
++int component_compare_of(struct device *dev, void *data)
++{
++       return device_match_of_node(dev, data);
++}
++EXPORT_SYMBOL_GPL(component_compare_of);
++
++void component_release_of(struct device *dev, void *data)
++{
++       of_node_put(data);
++}
++EXPORT_SYMBOL_GPL(component_release_of);
+
+> 
+> Cheers, Daniel
+> 
+> >  23 files changed, 28 insertions(+), 144 deletions(-)
+
 > > diff --git a/include/linux/component.h b/include/linux/component.h
 > > index 16de18f473d7..5a7468ea827c 100644
 > > --- a/include/linux/component.h
 > > +++ b/include/linux/component.h
 > > @@ -2,6 +2,8 @@
-> >   #ifndef COMPONENT_H
-> >   #define COMPONENT_H
-> >   
+> >  #ifndef COMPONENT_H
+> >  #define COMPONENT_H
+> >  
 > > +#include <linux/device.h>
 > > +#include <linux/of.h>
-> >   #include <linux/stddef.h>
-> >   
-> >   
+> >  #include <linux/stddef.h>
+> >  
+> >  
 > > @@ -82,6 +84,22 @@ struct component_master_ops {
-> >   	void (*unbind)(struct device *master);
-> >   };
-> >   
+> >  	void (*unbind)(struct device *master);
+> >  };
+> >  
 > > +/* A set common helpers for compare/release functions */
 > > +static inline int compare_of(struct device *dev, void *data)
 > > +{
 > > +	return dev->of_node == data;
 > > +}
+> > +
+> > +static inline void release_of(struct device *dev, void *data)
+> > +{
+> > +	of_node_put(data);
+> > +}
+> > +
+> > +static inline int compare_dev(struct device *dev, void *data)
+> > +{
+> > +	return dev == data;
+> > +}
+> > +
+> >  void component_master_del(struct device *,
+> >  	const struct component_master_ops *);
 > 
-> Note that this is effectively just device_match_of_node(), although
-> I 
-> guess there is an argument that having a nice consistent set of 
-> component_match API helpers might be worth more than a tiny code
-> saving 
-> by borrowing one from a different API.
-
-Thanks for this tip. I could try use this, Let the maintainer decide.
-
 > 
-> Either way, however, I don't think there's any good argument for 
-> instantiating separate copies of these functions in every driver
-> that 
-> uses them. If they're used as callbacks then they can't actually be 
-> inlined anyway, so they may as well be exported from component.c as 
-
-oh. The MTK iommu keeps this inline for long time... OK, I will try
-to move into the component.c and export them.
-
-(Sorry for the late reply due to New Year holidays.)
-
-> normal so that the code really is shared (plus then there's nice 
-> symmetry with the aforementioned device_match API helpers too).
-> 
-> Thanks,
-> Robin.
-  
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
