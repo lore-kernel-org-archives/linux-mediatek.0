@@ -4,65 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71DFAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 01:26:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C615C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 01:26:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oiw+VHLS0OqPcLFQSVvGr55W1zS5EX6S41kNZ5ytx9E=; b=L/55Na3Rpk/0aa
-	pIUakPiWA5oqqKZ4+hID2ca6TAY8/sp8D5r7qLpY5lNA4vUtdDtDtwJeZsJAzTiTFYEiqmARWXYrG
-	GaXKlo5olKOPVYU2ktF5zHPnk9w3UjNV/MI1MQw47xCve/bM3drXq6CimX5+Ib9TB75IGopbi1ZWa
-	sBpW+JY9p84KhnMl+8kl+HZ/DOBictGlBTaWSMroqyWguW+pdt6Wcqnv7vAQTP5IusDpUo4wBVf4w
-	EmZpFaUOzhvAtqBJjHQTVo31tiLpX/4sjeawvY0Z4j+IwV7vxjtua9lhr0Ne01JdV2Tah3op1pgFK
-	nBDTooSGqfjZxhnitnIw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Az2c5vT6ac71B93Lsy31VW6DdSMBYVVbpX4FCDaxeKQ=; b=dXAStLJo53eag8
+	YaJNmGrud0ZLdzDaP4/d6D7Nv64fQOf138ye52qmo68T+Cw8PtgOzsyCgqdV9bZs0Wz3r06j6Do4y
+	vj/cAeOIkchu9UGiAXa+7tZZXaUOollb6yWA/7xehmEUE/CjWXso5lap79MsKPMLd5f9uLLvJ5/pE
+	CAjmes4R2QCDb2/7p1jildVqiDH9TW7elRhwLEfoZN44yoNhSEOfRfOFv3e6RHCFcaPV+yyh1F6qd
+	brb48YQCnzhFpmvsID+l+V+8vvCJ0JfEgrK1Xeu4g7hQ8/7fyGO7DT/ysS+yhFCnCte7+WOpXYuOc
+	14xBJ8zuobEo3bxpXTOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHyDe-002BEk-FU; Thu, 10 Feb 2022 01:25:58 +0000
+	id 1nHyDp-002BHk-3r; Thu, 10 Feb 2022 01:26:09 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHyDS-002BBQ-Ie; Thu, 10 Feb 2022 01:25:48 +0000
-X-UUID: 63cb7a5ffcb5437dbab26f9dcb15f1df-20220209
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=mdt9PZcBoM4WlKcvMhc8oJZ3ZxPpigbucXSBDz4i0y0=; 
- b=oMrcgD52mBNQG58l25s5HC/zAIETvgAbGYbcFi/OcEEJrX2/ACdM5TGWx5xVjRpLF5SqVm2xAnHz+JH1MLHIuVYevdneBXoq/gqedVL4q7IGhtMiWYT2Q2+dI9+oWQmUTzAIVJF1BUNYlfXnbc03g+T5kw8tWCglV0J/BwGrfuk=;
-X-UUID: 63cb7a5ffcb5437dbab26f9dcb15f1df-20220209
+ id 1nHyDW-002BBR-SY; Thu, 10 Feb 2022 01:25:52 +0000
+X-UUID: efd4e867ba4a4ab080735ab03a3850bd-20220209
+X-UUID: efd4e867ba4a4ab080735ab03a3850bd-20220209
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <leilk.liu@mediatek.com>)
+ (envelope-from <qizhong.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1182894618; Wed, 09 Feb 2022 18:25:41 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 598085810; Wed, 09 Feb 2022 18:25:41 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Feb 2022 17:15:39 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 10 Feb 2022 09:15:38 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Wed, 9 Feb 2022 17:21:38 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 10 Feb 2022 09:21:31 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 10 Feb 2022 09:15:37 +0800
-Message-ID: <2707120457e962a78e3c4ffd231ca25a7138ae72.camel@mediatek.com>
-Subject: Re: [PATCH V5 0/3] Add compatible for Mediatek MT8186
-From: Leilk Liu <leilk.liu@mediatek.com>
-To: Mark Brown <broonie@kernel.org>
-CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
+ Transport; Thu, 10 Feb 2022 09:21:30 +0800
+From: qizhong cheng <qizhong.cheng@mediatek.com>
+To: Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, Bjorn Helgaas
+ <bhelgaas@google.com>
+CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Date: Thu, 10 Feb 2022 09:15:37 +0800
-In-Reply-To: <YgO+pXPtptHCQ9Zu@sirena.org.uk>
-References: <20220209014443.12443-1-leilk.liu@mediatek.com>
- <YgO+pXPtptHCQ9Zu@sirena.org.uk>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ <stable@vger.kernel.org>, <qizhong.cheng@mediatek.com>,
+ <chuanjia.liu@mediatek.com>
+Subject: [PATCH v2] PCI: mediatek: Clear interrupt status before dispatching
+ handler
+Date: Thu, 10 Feb 2022 09:21:25 +0800
+Message-ID: <20220210012125.6420-1-qizhong.cheng@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220209_172546_639981_16CDD397 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20220209_172550_940496_93913D21 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,20 +74,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-02-09 at 13:16 +0000, Mark Brown wrote:
-> On Wed, Feb 09, 2022 at 09:44:40AM +0800, Leilk Liu wrote:
-> > V5:
-> > 1. re-send these patchs based on v5.17-rc1.
-> > 2. add the flags: "Reviewed-by Rob Herring".
-> 
-> Please do not submit new versions of already applied patches, please
-> submit incremental updates to the existing code.  Modifying existing
-> commits creates problems for other users building on top of those
-> commits so it's best practice to only change pubished git commits if
-> absolutely essential.
+We found a failure when used iperf tool for wifi performance testing,
+there are some MSIs received while clearing the interrupt status,
+these MSIs cannot be serviced.
 
-Sorry to ignore the applied mail before I sent this new versions,
-thanks for your reminder.
+The interrupt status can be cleared even the MSI status still remaining,
+as an edge-triggered interrupts, its interrupt status should be cleared
+before dispatching to the handler of device.
+
+Signed-off-by: qizhong cheng <qizhong.cheng@mediatek.com>
+---
+v2:
+ - Update the subject line.
+ - Improve the commit log and code comments.
+
+ drivers/pci/controller/pcie-mediatek.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 2f3f974977a3..2856d74b2513 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -624,12 +624,17 @@ static void mtk_pcie_intr_handler(struct irq_desc *desc)
+ 		if (status & MSI_STATUS){
+ 			unsigned long imsi_status;
+ 
++			/*
++			 * The interrupt status can be cleared even the MSI
++			 * status still remaining, hence as an edge-triggered
++			 * interrupts, its interrupt status should be cleared
++			 * before dispatching handler.
++			 */
++			writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
+ 			while ((imsi_status = readl(port->base + PCIE_IMSI_STATUS))) {
+ 				for_each_set_bit(bit, &imsi_status, MTK_MSI_IRQS_NUM)
+ 					generic_handle_domain_irq(port->inner_domain, bit);
+ 			}
+-			/* Clear MSI interrupt status */
+-			writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
+ 		}
+ 	}
+ 
+-- 
+2.25.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
