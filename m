@@ -4,56 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B1CEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 14:21:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBED9C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 14:32:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KSEhFPuLKEBFCqOooPdO5yQ9s2qj3YAm0wcZ3mz40Io=; b=WDjGHbuiqE5ZxJ
-	9FRLeY6T0stzteBBpoSZpnnRfpUegOwQbSMUEDb6egqdj2eXK7UWguCHPmn/Ctra4ELY5rsJBtgRP
-	n1+lFXOmXSQ4bUqu01ySa1SX6nQfI1Si9AJoQCGqeuGn90ktrX3+v54QM/+RRvioIvdpsBadELgDx
-	DRTL/funzWI60s9hdrFTkNOa/ED7Um1qJcdPe3pojVrnQeBB+lqiOYDOQxA6G+KwTvFUT4zGxyajz
-	MIYHlSl6p+o8O6PcWyB+xMuWIjeIlWF30Cx3A9iumWKtA12YSNDP5O/KS4nMRicyh1rCrgHEzYAoV
-	d3gx/RKd4E5u7xkmOawg==;
+	List-Owner; bh=7m3+uEgRabmSa4ngc0pFZ4dJg70Mc76yTjorE2PT+Ok=; b=PhK3u81K+UmbJh
+	nBTTZaZWCqnTNHUU9CiT9HPm57s85X5ErCI0H0nx6krl1l1/pqmj2mddd/SXyqA+rfpK1lHe5Sudh
+	lfRR0lhtznBR/+yTNcr9ynmO0rqBG1W00lpwQc21KC34EuDn//d9u2rAM/99PRCBRjNamOOkxFaaQ
+	Dv1ZpFS1sxsX5TXVrK9GAyV9nODn8Zfj7rjfqQkhgzHy4UxNOvL0FZMvUkGpTta9uxP2AoL8NhXwY
+	0/HFFy+mYNh/SARwHvpdUuo/NY0wyL3ooBVBg+9m8fk9N9zWPG2WSJWAHnH2N9EaU5D3gr0EOuA+c
+	ZrOwy7vjqotHC6wwrslg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nIAJd-0042R3-0q; Thu, 10 Feb 2022 14:20:57 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nIAUS-0045hv-7F; Thu, 10 Feb 2022 14:32:08 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nIAIO-0041lN-Mu; Thu, 10 Feb 2022 14:19:44 +0000
+ id 1nIAUF-0045fY-VF; Thu, 10 Feb 2022 14:31:57 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id E0A3B1F46578
+ (Authenticated sender: kholk11) with ESMTPSA id 905F61F465B9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1644502779;
- bh=57NHOvClgJm7JxVBdTIcEvBV3nuCjfG86wP9Y0a7m1w=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=SfL/COH0a5oZR/uHg1FmqsJFL40Wf7035LZVcE38Dj56hAdCnYxr5QcIUbD1WTWt4
- Zgtkd/b7EdzXlCsvfpmqgVMDA0TmpxCU2xks1V8qGbJ9u8xiejMZHP5Rx0kFjZgT7O
- Kobm6NlCD0mYSWXcxKNlDrICfCoR+Rw+d2CvboJFFGRTjzT0wMQ/PLQ3xiRcILSQEf
- FAcV9A83DH0oapMNe05gKc+yAfVguXG9dHkNM85kAb/NEdpph2vT4O8iiBm0oPLj/z
- ERFK+NrBPAfNMyJxdlKUe1cGF5PG685jboeHMcJBF81TTxGUzfq3TBMQ6beDJUKQdG
- HBTvJYIkVNlwg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: sean.wang@kernel.org
-Cc: linus.walleij@linaro.org, matthias.bgg@gmail.com,
- linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 5/5] pinctrl: mediatek: common-v1: Commonize spec_ies_smt_set
- callback
-Date: Thu, 10 Feb 2022 15:19:31 +0100
-Message-Id: <20220210141931.291712-6-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.33.1
-In-Reply-To: <20220210141931.291712-1-angelogioacchino.delregno@collabora.com>
-References: <20220210141931.291712-1-angelogioacchino.delregno@collabora.com>
+ s=mail; t=1644503514;
+ bh=vnMYZtzLYUlEjqvEffkcsiOlW+x9zxo48b5WEnCoJBc=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=VJnEf5dXMaVgu7QFE/IW21kmLJ+XXHAjjPtyT0rtTTImZtBbVRXTV0mVIUz9Xgib6
+ isHyrOcpGK9FfvZC+KidtsgsIu4DGevJQoms3+BKSUi90ikZQSkKp/ExbB1gEFkOeG
+ /44ffKLTzSQPg6N27CouFvUb2McyUj+yogaNXgHFTKhW/ode6pMy4JdkwwiIp+Iv8c
+ 44cpJbZuu/8e4+B2P7pCEvofXYC1hmg/4rCMcg4pCai8ylMNiC7g1M6aPea2MxspvM
+ pP43/V7+J7RI5JQ8T0gpMMs+VmIwtZvdFvxwzAWH5qwFu8lvPm22/NB4rt/L5pVxTV
+ y8gLMNi/amv2w==
+Message-ID: <06446828-b589-5d7a-0e9f-25f6321e0da6@collabora.com>
+Date: Thu, 10 Feb 2022 15:31:50 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH v2] PCI: mediatek: Clear interrupt status before
+ dispatching handler
+Content-Language: en-US
+To: qizhong cheng <qizhong.cheng@mediatek.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ stable@vger.kernel.org, chuanjia.liu@mediatek.com
+References: <20220210012125.6420-1-qizhong.cheng@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220210012125.6420-1-qizhong.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220210_061941_051485_0322BDCF 
-X-CRM114-Status: GOOD (  12.18  )
+X-CRM114-CacheID: sfid-20220210_063156_236549_9304F2D1 
+X-CRM114-Status: GOOD (  20.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,421 +69,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-All of the MediaTek pinctrl drivers registering with pinctrl-mtk-common
-that are offering a .spec_ies_smt_set() callback are declaring their
-own function which is doing exactly the same on all drivers: calling
-mtk_pconf_spec_set_ies_smt_range() with their struct and a simple check.
+Il 10/02/22 02:21, qizhong cheng ha scritto:
+> We found a failure when used iperf tool for wifi performance testing,
+> there are some MSIs received while clearing the interrupt status,
+> these MSIs cannot be serviced.
+> 
+> The interrupt status can be cleared even the MSI status still remaining,
+> as an edge-triggered interrupts, its interrupt status should be cleared
+> before dispatching to the handler of device.
+> 
+> Signed-off-by: qizhong cheng <qizhong.cheng@mediatek.com>
 
-Commonize this callback by adding the ies and smt structure pointers
-to struct mtk_pinctrl_devdata and changing the callback signature to
-take it.
+Hello Qizhong,
 
-Removing the callback and checking for the existence of the spec_smt
-and/or spec_ies data would allow us to staticize the function
-mtk_pconf_spec_set_ies_smt_range(), but this solution was avoided as
-to keep flexibility, as some SoCs may need to perform a very different
-operation compared to what this commonized function is doing.
+This commit is fixing an issue, which means that you *have to* add a proper
+Fixes tag.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/pinctrl/mediatek/pinctrl-mt2701.c     | 18 ++++--------
- drivers/pinctrl/mediatek/pinctrl-mt2712.c     | 19 ++++--------
- drivers/pinctrl/mediatek/pinctrl-mt8127.c     | 19 ++++--------
- drivers/pinctrl/mediatek/pinctrl-mt8167.c     | 18 ++++--------
- drivers/pinctrl/mediatek/pinctrl-mt8173.c     | 18 ++++--------
- drivers/pinctrl/mediatek/pinctrl-mt8365.c     | 18 ++++--------
- drivers/pinctrl/mediatek/pinctrl-mt8516.c     | 18 ++++--------
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 29 +++++++++++++++----
- drivers/pinctrl/mediatek/pinctrl-mtk-common.h | 17 ++++++++---
- 9 files changed, 71 insertions(+), 103 deletions(-)
+I believe that this is fixing commit
+43e6409db64d ("PCI: mediatek: Add MSI support for MT2712 and MT7622").
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2701.c b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
-index 816de39858f8..d1583b4fdd9d 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt2701.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
-@@ -429,18 +429,6 @@ static const struct mtk_pin_ies_smt_set mt2701_smt_set[] = {
- 	MTK_PIN_IES_SMT_SPEC(278, 278, 0xb70, 13),
- };
- 
--static int mt2701_ies_smt_set(struct regmap *regmap, unsigned int pin,
--		unsigned char align, int value, enum pin_config_param arg)
--{
--	if (arg == PIN_CONFIG_INPUT_ENABLE)
--		return mtk_pconf_spec_set_ies_smt_range(regmap, mt2701_ies_set,
--			ARRAY_SIZE(mt2701_ies_set), pin, align, value);
--	else if (arg == PIN_CONFIG_INPUT_SCHMITT_ENABLE)
--		return mtk_pconf_spec_set_ies_smt_range(regmap, mt2701_smt_set,
--			ARRAY_SIZE(mt2701_smt_set), pin, align, value);
--	return -EINVAL;
--}
--
- static const struct mtk_spec_pinmux_set mt2701_spec_pinmux[] = {
- 	MTK_PINMUX_SPEC(22, 0xb10, 3),
- 	MTK_PINMUX_SPEC(23, 0xb10, 4),
-@@ -501,10 +489,14 @@ static const struct mtk_pinctrl_devdata mt2701_pinctrl_data = {
- 	.n_grp_cls = ARRAY_SIZE(mt2701_drv_grp),
- 	.pin_drv_grp = mt2701_pin_drv,
- 	.n_pin_drv_grps = ARRAY_SIZE(mt2701_pin_drv),
-+	.spec_ies = mt2701_ies_set,
-+	.n_spec_ies = ARRAY_SIZE(mt2701_ies_set),
- 	.spec_pupd = mt2701_spec_pupd,
- 	.n_spec_pupd = ARRAY_SIZE(mt2701_spec_pupd),
-+	.spec_smt = mt2701_smt_set,
-+	.n_spec_smt = ARRAY_SIZE(mt2701_smt_set),
- 	.spec_pull_set = mtk_pctrl_spec_pull_set_samereg,
--	.spec_ies_smt_set = mt2701_ies_smt_set,
-+	.spec_ies_smt_set = mtk_pconf_spec_set_ies_smt_range,
- 	.spec_pinmux_set = mt2701_spec_pinmux_set,
- 	.spec_dir_set = mt2701_spec_dir_set,
- 	.dir_offset = 0x0000,
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2712.c b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
-index b6182b06584b..b921068f9e69 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt2712.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
-@@ -275,19 +275,6 @@ static const struct mtk_pin_ies_smt_set mt2712_ies_set[] = {
- 	MTK_PIN_IES_SMT_SPEC(207, 209, 0x8b0, 15)
- };
- 
--static int mt2712_ies_smt_set(struct regmap *regmap, unsigned int pin,
--			      unsigned char align,
--			      int value, enum pin_config_param arg)
--{
--	if (arg == PIN_CONFIG_INPUT_ENABLE)
--		return mtk_pconf_spec_set_ies_smt_range(regmap, mt2712_ies_set,
--			ARRAY_SIZE(mt2712_ies_set), pin, align, value);
--	if (arg == PIN_CONFIG_INPUT_SCHMITT_ENABLE)
--		return mtk_pconf_spec_set_ies_smt_range(regmap, mt2712_smt_set,
--			ARRAY_SIZE(mt2712_smt_set), pin, align, value);
--	return -EINVAL;
--}
--
- static const struct mtk_drv_group_desc mt2712_drv_grp[] =  {
- 	/* 0E4E8SR 4/8/12/16 */
- 	MTK_DRV_GRP(4, 16, 1, 2, 4),
-@@ -553,10 +540,14 @@ static const struct mtk_pinctrl_devdata mt2712_pinctrl_data = {
- 	.n_grp_cls = ARRAY_SIZE(mt2712_drv_grp),
- 	.pin_drv_grp = mt2712_pin_drv,
- 	.n_pin_drv_grps = ARRAY_SIZE(mt2712_pin_drv),
-+	.spec_ies = mt2712_ies_set,
-+	.n_spec_ies = ARRAY_SIZE(mt2712_ies_set),
- 	.spec_pupd = mt2712_spec_pupd,
- 	.n_spec_pupd = ARRAY_SIZE(mt2712_spec_pupd),
-+	.spec_smt = mt2712_smt_set,
-+	.n_spec_smt = ARRAY_SIZE(mt2712_smt_set),
- 	.spec_pull_set = mtk_pctrl_spec_pull_set_samereg,
--	.spec_ies_smt_set = mt2712_ies_smt_set,
-+	.spec_ies_smt_set = mtk_pconf_spec_set_ies_smt_range,
- 	.dir_offset = 0x0000,
- 	.pullen_offset = 0x0100,
- 	.pullsel_offset = 0x0200,
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8127.c b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
-index 9745d15f93ec..91c530e7b00e 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8127.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
-@@ -252,19 +252,6 @@ static const struct mtk_pin_ies_smt_set mt8127_smt_set[] = {
- 	MTK_PIN_IES_SMT_SPEC(142, 142, 0x920, 13),
- };
- 
--static int mt8127_ies_smt_set(struct regmap *regmap, unsigned int pin,
--		unsigned char align, int value, enum pin_config_param arg)
--{
--	if (arg == PIN_CONFIG_INPUT_ENABLE)
--		return mtk_pconf_spec_set_ies_smt_range(regmap, mt8127_ies_set,
--			ARRAY_SIZE(mt8127_ies_set), pin, align, value);
--	else if (arg == PIN_CONFIG_INPUT_SCHMITT_ENABLE)
--		return mtk_pconf_spec_set_ies_smt_range(regmap, mt8127_smt_set,
--			ARRAY_SIZE(mt8127_smt_set), pin, align, value);
--	return -EINVAL;
--}
--
--
- static const struct mtk_pinctrl_devdata mt8127_pinctrl_data = {
- 	.pins = mtk_pins_mt8127,
- 	.npins = ARRAY_SIZE(mtk_pins_mt8127),
-@@ -272,10 +259,14 @@ static const struct mtk_pinctrl_devdata mt8127_pinctrl_data = {
- 	.n_grp_cls = ARRAY_SIZE(mt8127_drv_grp),
- 	.pin_drv_grp = mt8127_pin_drv,
- 	.n_pin_drv_grps = ARRAY_SIZE(mt8127_pin_drv),
-+	.spec_ies = mt8127_ies_set,
-+	.n_spec_ies = ARRAY_SIZE(mt8127_ies_set),
- 	.spec_pupd = mt8127_spec_pupd,
- 	.n_spec_pupd = ARRAY_SIZE(mt8127_spec_pupd),
-+	.spec_smt = mt8127_smt_set,
-+	.n_spec_smt = ARRAY_SIZE(mt8127_smt_set),
- 	.spec_pull_set = mtk_pctrl_spec_pull_set_samereg,
--	.spec_ies_smt_set = mt8127_ies_smt_set,
-+	.spec_ies_smt_set = mtk_pconf_spec_set_ies_smt_range,
- 	.dir_offset = 0x0000,
- 	.pullen_offset = 0x0100,
- 	.pullsel_offset = 0x0200,
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8167.c b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
-index 118ddcba18fc..825167f5d020 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8167.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
-@@ -285,18 +285,6 @@ static const struct mtk_pin_ies_smt_set mt8167_smt_set[] = {
- 	MTK_PIN_IES_SMT_SPEC(121, 124, 0xA10, 9),
- };
- 
--static int mt8167_ies_smt_set(struct regmap *regmap, unsigned int pin,
--		unsigned char align, int value, enum pin_config_param arg)
--{
--	if (arg == PIN_CONFIG_INPUT_ENABLE)
--		return mtk_pconf_spec_set_ies_smt_range(regmap, mt8167_ies_set,
--			ARRAY_SIZE(mt8167_ies_set), pin, align, value);
--	else if (arg == PIN_CONFIG_INPUT_SCHMITT_ENABLE)
--		return mtk_pconf_spec_set_ies_smt_range(regmap, mt8167_smt_set,
--			ARRAY_SIZE(mt8167_smt_set), pin, align, value);
--	return -EINVAL;
--}
--
- static const struct mtk_pinctrl_devdata mt8167_pinctrl_data = {
- 	.pins = mtk_pins_mt8167,
- 	.npins = ARRAY_SIZE(mtk_pins_mt8167),
-@@ -304,10 +292,14 @@ static const struct mtk_pinctrl_devdata mt8167_pinctrl_data = {
- 	.n_grp_cls = ARRAY_SIZE(mt8167_drv_grp),
- 	.pin_drv_grp = mt8167_pin_drv,
- 	.n_pin_drv_grps = ARRAY_SIZE(mt8167_pin_drv),
-+	.spec_ies = mt8167_ies_set,
-+	.n_spec_ies = ARRAY_SIZE(mt8167_ies_set),
- 	.spec_pupd = mt8167_spec_pupd,
- 	.n_spec_pupd = ARRAY_SIZE(mt8167_spec_pupd),
-+	.spec_smt = mt8167_smt_set,
-+	.n_spec_smt = ARRAY_SIZE(mt8167_smt_set),
- 	.spec_pull_set = mtk_pctrl_spec_pull_set_samereg,
--	.spec_ies_smt_set = mt8167_ies_smt_set,
-+	.spec_ies_smt_set = mtk_pconf_spec_set_ies_smt_range,
- 	.dir_offset = 0x0000,
- 	.pullen_offset = 0x0500,
- 	.pullsel_offset = 0x0600,
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-index b34c9778e131..1d7d11a32e7d 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-@@ -167,18 +167,6 @@ static const struct mtk_pin_ies_smt_set mt8173_ies_set[] = {
- 	MTK_PIN_IES_SMT_SPEC(133, 134, 0x910, 8)
- };
- 
--static int mt8173_ies_smt_set(struct regmap *regmap, unsigned int pin,
--		unsigned char align, int value, enum pin_config_param arg)
--{
--	if (arg == PIN_CONFIG_INPUT_ENABLE)
--		return mtk_pconf_spec_set_ies_smt_range(regmap, mt8173_ies_set,
--			ARRAY_SIZE(mt8173_ies_set), pin, align, value);
--	else if (arg == PIN_CONFIG_INPUT_SCHMITT_ENABLE)
--		return mtk_pconf_spec_set_ies_smt_range(regmap, mt8173_smt_set,
--			ARRAY_SIZE(mt8173_smt_set), pin, align, value);
--	return -EINVAL;
--}
--
- static const struct mtk_drv_group_desc mt8173_drv_grp[] =  {
- 	/* 0E4E8SR 4/8/12/16 */
- 	MTK_DRV_GRP(4, 16, 1, 2, 4),
-@@ -312,10 +300,14 @@ static const struct mtk_pinctrl_devdata mt8173_pinctrl_data = {
- 	.n_grp_cls = ARRAY_SIZE(mt8173_drv_grp),
- 	.pin_drv_grp = mt8173_pin_drv,
- 	.n_pin_drv_grps = ARRAY_SIZE(mt8173_pin_drv),
-+	.spec_ies = mt8173_ies_set,
-+	.n_spec_ies = ARRAY_SIZE(mt8173_ies_set),
- 	.spec_pupd = mt8173_spec_pupd,
- 	.n_spec_pupd = ARRAY_SIZE(mt8173_spec_pupd),
-+	.spec_smt = mt8173_smt_set,
-+	.n_spec_smt = ARRAY_SIZE(mt8173_smt_set),
- 	.spec_pull_set = mtk_pctrl_spec_pull_set_samereg,
--	.spec_ies_smt_set = mt8173_ies_smt_set,
-+	.spec_ies_smt_set = mtk_pconf_spec_set_ies_smt_range,
- 	.dir_offset = 0x0000,
- 	.pullen_offset = 0x0100,
- 	.pullsel_offset = 0x0200,
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8365.c b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
-index dbff7a831235..727c65221aef 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8365.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
-@@ -416,18 +416,6 @@ static const struct mtk_pin_ies_smt_set mt8365_smt_set[] = {
- 	MTK_PIN_IES_SMT_SPEC(144, 144, 0x480, 22),
- };
- 
--static int mt8365_ies_smt_set(struct regmap *regmap, unsigned int pin,
--		unsigned char align, int value, enum pin_config_param arg)
--{
--	if (arg == PIN_CONFIG_INPUT_ENABLE)
--		return mtk_pconf_spec_set_ies_smt_range(regmap, mt8365_ies_set,
--			ARRAY_SIZE(mt8365_ies_set), pin, align, value);
--	else if (arg == PIN_CONFIG_INPUT_SCHMITT_ENABLE)
--		return mtk_pconf_spec_set_ies_smt_range(regmap, mt8365_smt_set,
--			ARRAY_SIZE(mt8365_smt_set), pin, align, value);
--	return -EINVAL;
--}
--
- static const struct mtk_pinctrl_devdata mt8365_pinctrl_data = {
- 	.pins = mtk_pins_mt8365,
- 	.npins = ARRAY_SIZE(mtk_pins_mt8365),
-@@ -435,10 +423,14 @@ static const struct mtk_pinctrl_devdata mt8365_pinctrl_data = {
- 	.n_grp_cls = ARRAY_SIZE(mt8365_drv_grp),
- 	.pin_drv_grp = mt8365_pin_drv,
- 	.n_pin_drv_grps = ARRAY_SIZE(mt8365_pin_drv),
-+	.spec_ies = mt8365_ies_set,
-+	.n_spec_ies = ARRAY_SIZE(mt8365_ies_set),
-+	.spec_smt = mt8365_smt_set,
-+	.n_spec_smt = ARRAY_SIZE(mt8365_smt_set),
- 	.spec_pupd = mt8365_spec_pupd,
- 	.n_spec_pupd = ARRAY_SIZE(mt8365_spec_pupd),
- 	.spec_pull_set = mtk_pctrl_spec_pull_set_samereg,
--	.spec_ies_smt_set = mt8365_ies_smt_set,
-+	.spec_ies_smt_set = mtk_pconf_spec_set_ies_smt_range,
- 	.dir_offset = 0x0140,
- 	.dout_offset = 0x00A0,
- 	.din_offset = 0x0000,
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8516.c b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
-index 8ad2006857c0..939a1932b8dc 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8516.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
-@@ -285,18 +285,6 @@ static const struct mtk_pin_ies_smt_set mt8516_smt_set[] = {
- 	MTK_PIN_IES_SMT_SPEC(121, 124, 0xA10, 9),
- };
- 
--static int mt8516_ies_smt_set(struct regmap *regmap, unsigned int pin,
--		unsigned char align, int value, enum pin_config_param arg)
--{
--	if (arg == PIN_CONFIG_INPUT_ENABLE)
--		return mtk_pconf_spec_set_ies_smt_range(regmap, mt8516_ies_set,
--			ARRAY_SIZE(mt8516_ies_set), pin, align, value);
--	else if (arg == PIN_CONFIG_INPUT_SCHMITT_ENABLE)
--		return mtk_pconf_spec_set_ies_smt_range(regmap, mt8516_smt_set,
--			ARRAY_SIZE(mt8516_smt_set), pin, align, value);
--	return -EINVAL;
--}
--
- static const struct mtk_pinctrl_devdata mt8516_pinctrl_data = {
- 	.pins = mtk_pins_mt8516,
- 	.npins = ARRAY_SIZE(mtk_pins_mt8516),
-@@ -304,10 +292,14 @@ static const struct mtk_pinctrl_devdata mt8516_pinctrl_data = {
- 	.n_grp_cls = ARRAY_SIZE(mt8516_drv_grp),
- 	.pin_drv_grp = mt8516_pin_drv,
- 	.n_pin_drv_grps = ARRAY_SIZE(mt8516_pin_drv),
-+	.spec_ies = mt8516_ies_set,
-+	.n_spec_ies = ARRAY_SIZE(mt8516_ies_set),
- 	.spec_pupd = mt8516_spec_pupd,
- 	.n_spec_pupd = ARRAY_SIZE(mt8516_spec_pupd),
-+	.spec_smt = mt8516_smt_set,
-+	.n_spec_smt = ARRAY_SIZE(mt8516_smt_set),
- 	.spec_pull_set = mtk_pctrl_spec_pull_set_samereg,
--	.spec_ies_smt_set = mt8516_ies_smt_set,
-+	.spec_ies_smt_set = mtk_pconf_spec_set_ies_smt_range,
- 	.dir_offset = 0x0000,
- 	.pullen_offset = 0x0500,
- 	.pullsel_offset = 0x0600,
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index 5e1d17512a0d..a515fdc43b85 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -131,7 +131,7 @@ static int mtk_pconf_set_ies_smt(struct mtk_pinctrl *pctl, unsigned pin,
- 	 */
- 	if (pctl->devdata->spec_ies_smt_set) {
- 		return pctl->devdata->spec_ies_smt_set(mtk_get_regmap(pctl, pin),
--			pin, pctl->devdata->port_align, value, arg);
-+			pctl->devdata, pin, value, arg);
- 	}
- 
- 	if (arg == PIN_CONFIG_INPUT_ENABLE)
-@@ -151,10 +151,27 @@ static int mtk_pconf_set_ies_smt(struct mtk_pinctrl *pctl, unsigned pin,
- }
- 
- int mtk_pconf_spec_set_ies_smt_range(struct regmap *regmap,
--		const struct mtk_pin_ies_smt_set *ies_smt_infos, unsigned int info_num,
--		unsigned int pin, unsigned char align, int value)
-+		const struct mtk_pinctrl_devdata *devdata,
-+		unsigned int pin, int value, enum pin_config_param arg)
- {
--	unsigned int i, reg_addr, bit;
-+	const struct mtk_pin_ies_smt_set *ies_smt_infos = NULL;
-+	unsigned int i, info_num, reg_addr, bit;
-+
-+	switch (arg) {
-+	case PIN_CONFIG_INPUT_ENABLE:
-+		ies_smt_infos = devdata->spec_ies;
-+		info_num = devdata->n_spec_ies;
-+		break;
-+	case PIN_CONFIG_INPUT_SCHMITT_ENABLE:
-+		ies_smt_infos = devdata->spec_smt;
-+		info_num = devdata->n_spec_smt;
-+		break;
-+	default:
-+		break;
-+	};
-+
-+	if (!ies_smt_infos)
-+		return -EINVAL;
- 
- 	for (i = 0; i < info_num; i++) {
- 		if (pin >= ies_smt_infos[i].start &&
-@@ -167,9 +184,9 @@ int mtk_pconf_spec_set_ies_smt_range(struct regmap *regmap,
- 		return -EINVAL;
- 
- 	if (value)
--		reg_addr = ies_smt_infos[i].offset + align;
-+		reg_addr = ies_smt_infos[i].offset + devdata->port_align;
- 	else
--		reg_addr = ies_smt_infos[i].offset + (align << 1);
-+		reg_addr = ies_smt_infos[i].offset + (devdata->port_align << 1);
- 
- 	bit = BIT(ies_smt_infos[i].bit);
- 	regmap_write(regmap, reg_addr, bit);
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
-index f7968a6ac563..6fe8564334c9 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
-@@ -193,8 +193,12 @@ struct mtk_eint_offsets {
-  *
-  * @grp_desc: The driving group info.
-  * @pin_drv_grp: The driving group for all pins.
-+ * @spec_ies: Special pin setting for input enable
-+ * @n_spec_ies: Number of entries in spec_ies
-  * @spec_pupd: Special pull up/down setting
-  * @n_spec_pupd: Number of entries in spec_pupd
-+ * @spec_smt: Special pin setting for schmitt
-+ * @n_spec_smt: Number of entries in spec_smt
-  * @spec_pull_set: Each SoC may have special pins for pull up/down setting,
-  *  these pins' pull setting are very different, they have separate pull
-  *  up/down bit, R0 and R1 resistor bit, so they need special pull setting.
-@@ -233,13 +237,18 @@ struct mtk_pinctrl_devdata {
- 	unsigned int	n_grp_cls;
- 	const struct mtk_pin_drv_grp	*pin_drv_grp;
- 	unsigned int	n_pin_drv_grps;
-+	const struct mtk_pin_ies_smt_set *spec_ies;
-+	unsigned int n_spec_ies;
- 	const struct mtk_pin_spec_pupd_set_samereg *spec_pupd;
- 	unsigned int n_spec_pupd;
-+	const struct mtk_pin_ies_smt_set *spec_smt;
-+	unsigned int n_spec_smt;
- 	int (*spec_pull_set)(struct regmap *regmap,
- 			const struct mtk_pinctrl_devdata *devdata,
- 			unsigned int pin, bool isup, unsigned int r1r0);
--	int (*spec_ies_smt_set)(struct regmap *reg, unsigned int pin,
--			unsigned char align, int value, enum pin_config_param arg);
-+	int (*spec_ies_smt_set)(struct regmap *reg,
-+			const struct mtk_pinctrl_devdata *devdata,
-+			unsigned int pin, int value, enum pin_config_param arg);
- 	void (*spec_pinmux_set)(struct regmap *reg, unsigned int pin,
- 			unsigned int mode);
- 	void (*spec_dir_set)(unsigned int *reg_addr, unsigned int pin);
-@@ -289,8 +298,8 @@ int mtk_pctrl_spec_pull_set_samereg(struct regmap *regmap,
- 		unsigned int pin, bool isup, unsigned int r1r0);
- 
- int mtk_pconf_spec_set_ies_smt_range(struct regmap *regmap,
--		const struct mtk_pin_ies_smt_set *ies_smt_infos, unsigned int info_num,
--		unsigned int pin, unsigned char align, int value);
-+		const struct mtk_pinctrl_devdata *devdata,
-+		unsigned int pin, int value, enum pin_config_param arg);
- 
- extern const struct dev_pm_ops mtk_eint_pm_ops;
- 
--- 
-2.33.1
+Please add the tag and send a v3, after which:
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+
+> ---
+> v2:
+>   - Update the subject line.
+>   - Improve the commit log and code comments.
+> 
+>   drivers/pci/controller/pcie-mediatek.c | 9 +++++++--
+>   1 file changed, 7 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index 2f3f974977a3..2856d74b2513 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -624,12 +624,17 @@ static void mtk_pcie_intr_handler(struct irq_desc *desc)
+>   		if (status & MSI_STATUS){
+>   			unsigned long imsi_status;
+>   
+> +			/*
+> +			 * The interrupt status can be cleared even the MSI
+> +			 * status still remaining, hence as an edge-triggered
+> +			 * interrupts, its interrupt status should be cleared
+> +			 * before dispatching handler.
+> +			 */
+> +			writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
+>   			while ((imsi_status = readl(port->base + PCIE_IMSI_STATUS))) {
+>   				for_each_set_bit(bit, &imsi_status, MTK_MSI_IRQS_NUM)
+>   					generic_handle_domain_irq(port->inner_domain, bit);
+>   			}
+> -			/* Clear MSI interrupt status */
+> -			writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
+>   		}
+>   	}
+>   
+> 
+
 
 
 _______________________________________________
