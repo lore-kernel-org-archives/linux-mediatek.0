@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 639D2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 14:20:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10E31C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 14:20:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MXynrrwh1BWU2bb4RPhS4h0hG9i6IwgutTWqHwZKe+M=; b=0Nn8m9YXL4QBe8
-	xvIOIAse3cXH52cDdP/i8mNtjzolphMZgS5I652ueGj3olCEhoUdnWAtN366iOnTw1pZpJUmLZTOB
-	4u1CZu489BkVkJ0pDroozLCfAs4vdxF12a5K9h3V2K1gVeyMEBwxTb/EmTmzSkFu6/ZKSixWt5SFt
-	jiJ/1bXinoSEacalFwRfP/2n9+RswebGPYmQ+EI2WC5XkvGvIeA9QS7maSJWrXnPN0ugJCJGRQzmN
-	F8byHuTky8ZYxkkPCvVZvPSVr48qQCyjm0dV40Va7+q8OUZYdF91Xrtw6QCwmgQ80Wi3b2y9QvtFN
-	g8r7rNrn8YjkdcReRnkg==;
+	List-Owner; bh=nbOmmxvXpeCPu9m2tHiDV+VOBYyFTA6i7/r55P68EKw=; b=3mSbi0V098iJOb
+	703KgR4ZLeXo692WpYUrB0DQL4OBMxCsFBhsp2VbRQXZAMU9tXCDLOlEF2VSXAe6MNkd3rX7r7sIl
+	N7A3Z0oe3Sloyb1rDJ/pWPOKUn5qDYo5X/i0y0MiMNcrtlrk0coJNlJ++1qLW6lJOef6DhW19l6MA
+	wXwig1XD5SmsqTAHLyz2awf2Zfbn1OSv2wR+tVnoAxZtPR8ZIGbYuNmFOvQW3XW3QiPaVHCQg1sqV
+	bGvT7ldv/Tjaq6iY1BddU17DHhhrExinn0Ziu5U/vIhyBjsTz5GAgeXBk+j1CGq+WzKqbkoAgaWGt
+	oGAytcAj+dGxK0lMcXhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nIAIu-0041yP-AO; Thu, 10 Feb 2022 14:20:12 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nIAJ6-00424b-5l; Thu, 10 Feb 2022 14:20:24 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nIAIM-0041kU-Nm; Thu, 10 Feb 2022 14:19:40 +0000
+ id 1nIAIN-0041ki-7O; Thu, 10 Feb 2022 14:19:41 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id CCACB1F4656A
+ (Authenticated sender: kholk11) with ESMTPSA id 7D17A1F4656E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1644502777;
- bh=sQ+FKkicNUDc/dNX696E1r1KBxy8rCFNJOXpjtexupY=;
+ s=mail; t=1644502778;
+ bh=n8CGqf0yuDMBl0AcIjnWSW/xsE0lZFScDerKAcE+A7I=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ZM0WFhkt1W5EvBOeUJpFadV9V97cO6GR6en/cvtgJtW2zYjFEGTgI6cCNtDul8Zgm
- SqHciHMaFJrknyO9tr8lImjDW6ArvKNQjc2YOfmjFJ8Qzf7l1o3uAHRO1gL44HF/Az
- 5ejkGtb+uRTdytPAs2oWQz72Rp7sxrPgtJFVOJjHDJGjp3ovUyZdaxmp9jx3PU4GZV
- LdY6/iovw4q2SGd3CjG3qRlC/WpltpHLBbevtQ1BtCeJTY6+YyNUbz7r7BJVjv7bJY
- oIK82HNjxoGZhKB8dvpoMgtePTXQlqRtPZ916fdPLGY2knsUgf7CqZCdR/Z8T2lPJy
- msHrq6V9Am/rg==
+ b=Gad6W7Ew1fVLAM3hq6/Ky7hnUp7hlPAFKvhC25rQNx3rOZUAY3j9pTP4bAq8vkihc
+ fd3QS/eFV7iN2TSBXUPZVpXE7A3tcre6pC+zJdpLufIfz+yYpGJWOY41gKo1kBZUj2
+ 3vIejAXc8ezkRiHuBUGgB6tGPHyGhCndqy/o65ytldcjeOh0zfu6qV0XRDJnjvv2wz
+ TvQdzpT77/r9eKGhscKxM056jpFEyxdhcpdSOiD/WRYMRCmHUm+m7ixCRlrO5N34Aa
+ u7SprP+fRMPfXafBTYAFfz/07XPSP44kkWMOw4fLEPlglzHg1T36M1rX6Hap0UboOw
+ eAzCIWuN8MXRw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: sean.wang@kernel.org
 Cc: linus.walleij@linaro.org, matthias.bgg@gmail.com,
@@ -43,16 +43,16 @@ Cc: linus.walleij@linaro.org, matthias.bgg@gmail.com,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  kernel@collabora.com,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 2/5] pinctrl: mediatek: common-v1: Add common probe function
-Date: Thu, 10 Feb 2022 15:19:28 +0100
-Message-Id: <20220210141931.291712-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 3/5] pinctrl: mediatek: common-v1: Use common probe function
+Date: Thu, 10 Feb 2022 15:19:29 +0100
+Message-Id: <20220210141931.291712-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20220210141931.291712-1-angelogioacchino.delregno@collabora.com>
 References: <20220210141931.291712-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220210_061938_923551_3461FE1D 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20220210_061939_549793_EB0129ED 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,48 +69,222 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As a preparation to cleanup the probe mechanism of mediatek pinctrl
-drivers that are using the v1 controller, add a common probe function
-to this driver.
+Most of the mediatek pinctrl drivers are calling mtk_pctrl_init() and
+passing only a pointer to struct mtk_pinctrl_devdata, as the regmap
+handle it passed from device-tree, with the exception of mt6397.
+
+For all of the drivers that don't require passing a struct regmap
+pointer from a parent device, simplify the probe mechanism by assigning
+the required structure as match data and use mtk_pctrl_common_probe()
+as their probe function.
+
+While at it, also collapse the of_device_id entries to a single line,
+as they all fit in max 83 columns, which is acceptable.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 11 +++++++++++
- drivers/pinctrl/mediatek/pinctrl-mtk-common.h |  2 ++
- 2 files changed, 13 insertions(+)
+ drivers/pinctrl/mediatek/pinctrl-mt2701.c | 11 +++--------
+ drivers/pinctrl/mediatek/pinctrl-mt2712.c | 11 ++---------
+ drivers/pinctrl/mediatek/pinctrl-mt8127.c |  9 ++-------
+ drivers/pinctrl/mediatek/pinctrl-mt8135.c | 11 ++---------
+ drivers/pinctrl/mediatek/pinctrl-mt8167.c | 11 ++---------
+ drivers/pinctrl/mediatek/pinctrl-mt8365.c | 11 ++---------
+ drivers/pinctrl/mediatek/pinctrl-mt8516.c | 11 ++---------
+ 7 files changed, 15 insertions(+), 60 deletions(-)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index 6f8dfa6ae5a0..007da39b68c9 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -1115,3 +1115,14 @@ int mtk_pctrl_init(struct platform_device *pdev,
- 	gpiochip_remove(pctl->chip);
- 	return ret;
- }
-+
-+int mtk_pctrl_common_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	const struct mtk_pinctrl_devdata *data = device_get_match_data(dev);
-+
-+	if (!data)
-+		return -ENOENT;
-+
-+	return mtk_pctrl_init(pdev, data, NULL);
-+}
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
-index 98f27cdc609a..cd264cc3547b 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
-@@ -277,6 +277,8 @@ int mtk_pctrl_init(struct platform_device *pdev,
- 		const struct mtk_pinctrl_devdata *data,
- 		struct regmap *regmap);
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2701.c b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
+index 37228dd5103e..2f8821207395 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt2701.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
+@@ -534,20 +534,15 @@ static const struct mtk_pinctrl_devdata mt2701_pinctrl_data = {
+ 	},
+ };
  
-+int mtk_pctrl_common_probe(struct platform_device *pdev);
-+
- int mtk_pctrl_spec_pull_set_samereg(struct regmap *regmap,
- 		const struct mtk_pin_spec_pupd_set_samereg *pupd_infos,
- 		unsigned int info_num, unsigned int pin,
+-static int mt2701_pinctrl_probe(struct platform_device *pdev)
+-{
+-	return mtk_pctrl_init(pdev, &mt2701_pinctrl_data, NULL);
+-}
+-
+ static const struct of_device_id mt2701_pctrl_match[] = {
+-	{ .compatible = "mediatek,mt2701-pinctrl", },
+-	{ .compatible = "mediatek,mt7623-pinctrl", },
++	{ .compatible = "mediatek,mt2701-pinctrl", .data = &mt2701_pinctrl_data },
++	{ .compatible = "mediatek,mt7623-pinctrl", .data = &mt2701_pinctrl_data },
+ 	{}
+ };
+ MODULE_DEVICE_TABLE(of, mt2701_pctrl_match);
+ 
+ static struct platform_driver mtk_pinctrl_driver = {
+-	.probe = mt2701_pinctrl_probe,
++	.probe = mtk_pctrl_common_probe,
+ 	.driver = {
+ 		.name = "mediatek-mt2701-pinctrl",
+ 		.of_match_table = mt2701_pctrl_match,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2712.c b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
+index ba35fc6cc138..03aa14445034 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt2712.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
+@@ -587,21 +587,14 @@ static const struct mtk_pinctrl_devdata mt2712_pinctrl_data = {
+ 	},
+ };
+ 
+-static int mt2712_pinctrl_probe(struct platform_device *pdev)
+-{
+-	return mtk_pctrl_init(pdev, &mt2712_pinctrl_data, NULL);
+-}
+-
+ static const struct of_device_id mt2712_pctrl_match[] = {
+-	{
+-		.compatible = "mediatek,mt2712-pinctrl",
+-	},
++	{ .compatible = "mediatek,mt2712-pinctrl", .data = &mt2712_pinctrl_data },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(of, mt2712_pctrl_match);
+ 
+ static struct platform_driver mtk_pinctrl_driver = {
+-	.probe = mt2712_pinctrl_probe,
++	.probe = mtk_pctrl_common_probe,
+ 	.driver = {
+ 		.name = "mediatek-mt2712-pinctrl",
+ 		.of_match_table = mt2712_pctrl_match,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8127.c b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
+index eaf5c76b14c7..76cb525374f2 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8127.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
+@@ -303,18 +303,13 @@ static const struct mtk_pinctrl_devdata mt8127_pinctrl_data = {
+ 	},
+ };
+ 
+-static int mt8127_pinctrl_probe(struct platform_device *pdev)
+-{
+-	return mtk_pctrl_init(pdev, &mt8127_pinctrl_data, NULL);
+-}
+-
+ static const struct of_device_id mt8127_pctrl_match[] = {
+-	{ .compatible = "mediatek,mt8127-pinctrl", },
++	{ .compatible = "mediatek,mt8127-pinctrl", .data = &mt8127_pinctrl_data },
+ 	{ }
+ };
+ 
+ static struct platform_driver mtk_pinctrl_driver = {
+-	.probe = mt8127_pinctrl_probe,
++	.probe = mtk_pctrl_common_probe,
+ 	.driver = {
+ 		.name = "mediatek-mt8127-pinctrl",
+ 		.of_match_table = mt8127_pctrl_match,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8135.c b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
+index b8f4080aab45..4c20b79dec67 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8135.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
+@@ -316,20 +316,13 @@ static const struct mtk_pinctrl_devdata mt8135_pinctrl_data = {
+ 	},
+ };
+ 
+-static int mt8135_pinctrl_probe(struct platform_device *pdev)
+-{
+-	return mtk_pctrl_init(pdev, &mt8135_pinctrl_data, NULL);
+-}
+-
+ static const struct of_device_id mt8135_pctrl_match[] = {
+-	{
+-		.compatible = "mediatek,mt8135-pinctrl",
+-	},
++	{ .compatible = "mediatek,mt8135-pinctrl", .data = &mt8135_pinctrl_data },
+ 	{ }
+ };
+ 
+ static struct platform_driver mtk_pinctrl_driver = {
+-	.probe = mt8135_pinctrl_probe,
++	.probe = mtk_pctrl_common_probe,
+ 	.driver = {
+ 		.name = "mediatek-mt8135-pinctrl",
+ 		.of_match_table = mt8135_pctrl_match,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8167.c b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
+index ba12ef795e52..08aabf408c9c 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8167.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
+@@ -335,22 +335,15 @@ static const struct mtk_pinctrl_devdata mt8167_pinctrl_data = {
+ 	},
+ };
+ 
+-static int mt8167_pinctrl_probe(struct platform_device *pdev)
+-{
+-	return mtk_pctrl_init(pdev, &mt8167_pinctrl_data, NULL);
+-}
+-
+ static const struct of_device_id mt8167_pctrl_match[] = {
+-	{
+-		.compatible = "mediatek,mt8167-pinctrl",
+-	},
++	{ .compatible = "mediatek,mt8167-pinctrl", .data = &mt8167_pinctrl_data },
+ 	{}
+ };
+ 
+ MODULE_DEVICE_TABLE(of, mt8167_pctrl_match);
+ 
+ static struct platform_driver mtk_pinctrl_driver = {
+-	.probe = mt8167_pinctrl_probe,
++	.probe = mtk_pctrl_common_probe,
+ 	.driver = {
+ 		.name = "mediatek-mt8167-pinctrl",
+ 		.of_match_table = mt8167_pctrl_match,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8365.c b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
+index 79b1fee5a1eb..6863a8150a2b 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8365.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
+@@ -469,20 +469,13 @@ static const struct mtk_pinctrl_devdata mt8365_pinctrl_data = {
+ 	},
+ };
+ 
+-static int mtk_pinctrl_probe(struct platform_device *pdev)
+-{
+-	return mtk_pctrl_init(pdev, &mt8365_pinctrl_data, NULL);
+-}
+-
+ static const struct of_device_id mt8365_pctrl_match[] = {
+-	{
+-		.compatible = "mediatek,mt8365-pinctrl",
+-	},
++	{ .compatible = "mediatek,mt8365-pinctrl", .data = &mt8365_pinctrl_data },
+ 	{}
+ };
+ 
+ static struct platform_driver mtk_pinctrl_driver = {
+-	.probe = mtk_pinctrl_probe,
++	.probe = mtk_pctrl_common_probe,
+ 	.driver = {
+ 		.name = "mediatek-mt8365-pinctrl",
+ 		.of_match_table = mt8365_pctrl_match,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8516.c b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
+index 219fb4bc341f..99c1a04c7fd8 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8516.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
+@@ -335,22 +335,15 @@ static const struct mtk_pinctrl_devdata mt8516_pinctrl_data = {
+ 	},
+ };
+ 
+-static int mt8516_pinctrl_probe(struct platform_device *pdev)
+-{
+-	return mtk_pctrl_init(pdev, &mt8516_pinctrl_data, NULL);
+-}
+-
+ static const struct of_device_id mt8516_pctrl_match[] = {
+-	{
+-		.compatible = "mediatek,mt8516-pinctrl",
+-	},
++	{ .compatible = "mediatek,mt8516-pinctrl", .data = &mt8516_pinctrl_data },
+ 	{}
+ };
+ 
+ MODULE_DEVICE_TABLE(of, mt8516_pctrl_match);
+ 
+ static struct platform_driver mtk_pinctrl_driver = {
+-	.probe = mt8516_pinctrl_probe,
++	.probe = mtk_pctrl_common_probe,
+ 	.driver = {
+ 		.name = "mediatek-mt8516-pinctrl",
+ 		.of_match_table = mt8516_pctrl_match,
 -- 
 2.33.1
 
