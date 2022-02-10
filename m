@@ -4,60 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBED9C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 14:32:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87488C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 14:47:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7m3+uEgRabmSa4ngc0pFZ4dJg70Mc76yTjorE2PT+Ok=; b=PhK3u81K+UmbJh
-	nBTTZaZWCqnTNHUU9CiT9HPm57s85X5ErCI0H0nx6krl1l1/pqmj2mddd/SXyqA+rfpK1lHe5Sudh
-	lfRR0lhtznBR/+yTNcr9ynmO0rqBG1W00lpwQc21KC34EuDn//d9u2rAM/99PRCBRjNamOOkxFaaQ
-	Dv1ZpFS1sxsX5TXVrK9GAyV9nODn8Zfj7rjfqQkhgzHy4UxNOvL0FZMvUkGpTta9uxP2AoL8NhXwY
-	0/HFFy+mYNh/SARwHvpdUuo/NY0wyL3ooBVBg+9m8fk9N9zWPG2WSJWAHnH2N9EaU5D3gr0EOuA+c
-	ZrOwy7vjqotHC6wwrslg==;
+	List-Owner; bh=D7W8A6GVhCfBXAk9ecrtZiCN08/vt6PDe2iPjKuEAXc=; b=X7x96MOq+b74Rm
+	1DQC5lFWGg8LONRaKQ6l9RV5A03zBKbW/koC6ybgWjghBdaxZkOkU4Z2X0cyCmaP8tN/QIl4AJO9Y
+	6ZjREWVxP8qSYk7lZLxnAqkQGr90Zj9dD6Y5XjJk9zDYCMSJDzvpKl5kFugpLu5Bf+leQ2cxh4n4y
+	SPTB2HhwIMr4tZWtad53xaoYMVNAyjG7sDoXClWAIW2Rjj63iYeQiMx6Jkbb9eQVyQ40HVW/AegyQ
+	Y/dBAV2fkBauKdG5IvifH5bzhvqWilmyb+9CkyWI8dUh7c1o7J/I1As4H+i1D9ZP+K02us36y2rt1
+	m9G5k7bzVyWSyjuC7T4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nIAUS-0045hv-7F; Thu, 10 Feb 2022 14:32:08 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nIAj7-0046t8-C2; Thu, 10 Feb 2022 14:47:17 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nIAUF-0045fY-VF; Thu, 10 Feb 2022 14:31:57 +0000
+ id 1nIAiv-0046rO-Sk; Thu, 10 Feb 2022 14:47:07 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 905F61F465B9
+ (Authenticated sender: nfraprado) with ESMTPSA id CBF141F46613
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1644503514;
- bh=vnMYZtzLYUlEjqvEffkcsiOlW+x9zxo48b5WEnCoJBc=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=VJnEf5dXMaVgu7QFE/IW21kmLJ+XXHAjjPtyT0rtTTImZtBbVRXTV0mVIUz9Xgib6
- isHyrOcpGK9FfvZC+KidtsgsIu4DGevJQoms3+BKSUi90ikZQSkKp/ExbB1gEFkOeG
- /44ffKLTzSQPg6N27CouFvUb2McyUj+yogaNXgHFTKhW/ode6pMy4JdkwwiIp+Iv8c
- 44cpJbZuu/8e4+B2P7pCEvofXYC1hmg/4rCMcg4pCai8ylMNiC7g1M6aPea2MxspvM
- pP43/V7+J7RI5JQ8T0gpMMs+VmIwtZvdFvxwzAWH5qwFu8lvPm22/NB4rt/L5pVxTV
- y8gLMNi/amv2w==
-Message-ID: <06446828-b589-5d7a-0e9f-25f6321e0da6@collabora.com>
-Date: Thu, 10 Feb 2022 15:31:50 +0100
+ s=mail; t=1644504424;
+ bh=x8ccJOGqkVLBNjHNDlPI53IHQzxajU+pV1qV+lQi9ow=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=cwhCVrM/3Rjf1m4MrkoMf1cu7ibZKzx1dyzI7pVDIRijEvr9WtlojzgV0OTVmteGt
+ fkC9T9r+HgL3KOa5Ez/4/B5EdJg/nGv5oxgb6mPGsH8ISHQ8mhpcqOGQzgb7NiVpq1
+ bbJ0Lj8Iv09WkIWLqdG4dHsgC6dLq1jpOYiXrcnbsMR8r0A0k8jkOZunDbpKVjj7NP
+ 7PnJDquAgEKF1a7+OqGMdbO2JuK2WBLcKDoXhJfQZyAjKBuBc599SCHoiKd0TUFeQ0
+ gNHE209dAZbXNxl/Jtg5A+3JEKdkZbHWwuj0oVdQm5bKuw9IRp5vl2tth2VSAHFjZM
+ /D598G8jZW46A==
+Date: Thu, 10 Feb 2022 09:46:59 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ srv_heupstream@mediatek.com
+Subject: Re: [PATCH v2] arm64: dts: mediatek: Add Mediatek mt8192 cpufreq
+ device nodes
+Message-ID: <20220210144659.2vkuuh74xagic3ud@notapiano>
+References: <1609223471-24325-1-git-send-email-andrew-sh.cheng@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v2] PCI: mediatek: Clear interrupt status before
- dispatching handler
-Content-Language: en-US
-To: qizhong cheng <qizhong.cheng@mediatek.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
- <jianjun.wang@mediatek.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- stable@vger.kernel.org, chuanjia.liu@mediatek.com
-References: <20220210012125.6420-1-qizhong.cheng@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220210012125.6420-1-qizhong.cheng@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1609223471-24325-1-git-send-email-andrew-sh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220210_063156_236549_9304F2D1 
-X-CRM114-Status: GOOD (  20.19  )
+X-CRM114-CacheID: sfid-20220210_064706_106848_B97A1C84 
+X-CRM114-Status: GOOD (  18.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,68 +65,136 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/02/22 02:21, qizhong cheng ha scritto:
-> We found a failure when used iperf tool for wifi performance testing,
-> there are some MSIs received while clearing the interrupt status,
-> these MSIs cannot be serviced.
-> 
-> The interrupt status can be cleared even the MSI status still remaining,
-> as an edge-triggered interrupts, its interrupt status should be cleared
-> before dispatching to the handler of device.
-> 
-> Signed-off-by: qizhong cheng <qizhong.cheng@mediatek.com>
+Hi Andrew,
 
-Hello Qizhong,
+On Tue, Dec 29, 2020 at 02:31:11PM +0800, Andrew-sh.Cheng wrote:
+> From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+> =
 
-This commit is fixing an issue, which means that you *have to* add a proper
-Fixes tag.
+> Correct dts node name in patch v1: performance-domain
+> This patch depends on [1] and [2].
+> =
 
-I believe that this is fixing commit
-43e6409db64d ("PCI: mediatek: Add MSI support for MT2712 and MT7622").
+> [1]http://lists.infradead.org/pipermail/linux-mediatek/2020-November/0193=
+78.html
+> [2]https://patchwork.kernel.org/project/linux-mediatek/patch/1607586516-6=
+547-3-git-send-email-hector.yuan@mediatek.com/
 
-Please add the tag and send a v3, after which:
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Those two series are now merged, so no dependencies missing for this patch =
+any
+longer.
 
+Please rebase this patch, as there are some conflicts. I've already verifie=
+d it,
+and after you rebase I can send a reviewed-by.
 
+Thanks,
+N=EDcolas
+
+> =
+
+> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 > ---
-> v2:
->   - Update the subject line.
->   - Improve the commit log and code comments.
-> 
->   drivers/pci/controller/pcie-mediatek.c | 9 +++++++--
->   1 file changed, 7 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 2f3f974977a3..2856d74b2513 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -624,12 +624,17 @@ static void mtk_pcie_intr_handler(struct irq_desc *desc)
->   		if (status & MSI_STATUS){
->   			unsigned long imsi_status;
->   
-> +			/*
-> +			 * The interrupt status can be cleared even the MSI
-> +			 * status still remaining, hence as an edge-triggered
-> +			 * interrupts, its interrupt status should be cleared
-> +			 * before dispatching handler.
-> +			 */
-> +			writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
->   			while ((imsi_status = readl(port->base + PCIE_IMSI_STATUS))) {
->   				for_each_set_bit(bit, &imsi_status, MTK_MSI_IRQS_NUM)
->   					generic_handle_domain_irq(port->inner_domain, bit);
->   			}
-> -			/* Clear MSI interrupt status */
-> -			writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
->   		}
->   	}
->   
-> 
+>  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+> =
 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt8192.dtsi
+> index 69d45c7b31f1..a907ee7e650a 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> @@ -39,6 +39,7 @@
+>  			compatible =3D "arm,cortex-a55";
+>  			reg =3D <0x000>;
+>  			enable-method =3D "psci";
+> +			performance-domains =3D <&performance 0>;
+>  			clock-frequency =3D <1701000000>;
+>  			next-level-cache =3D <&l2_0>;
+>  			capacity-dmips-mhz =3D <530>;
+> @@ -49,6 +50,7 @@
+>  			compatible =3D "arm,cortex-a55";
+>  			reg =3D <0x100>;
+>  			enable-method =3D "psci";
+> +			performance-domains =3D <&performance 0>;
+>  			clock-frequency =3D <1701000000>;
+>  			next-level-cache =3D <&l2_0>;
+>  			capacity-dmips-mhz =3D <530>;
+> @@ -59,6 +61,7 @@
+>  			compatible =3D "arm,cortex-a55";
+>  			reg =3D <0x200>;
+>  			enable-method =3D "psci";
+> +			performance-domains =3D <&performance 0>;
+>  			clock-frequency =3D <1701000000>;
+>  			next-level-cache =3D <&l2_0>;
+>  			capacity-dmips-mhz =3D <530>;
+> @@ -69,6 +72,7 @@
+>  			compatible =3D "arm,cortex-a55";
+>  			reg =3D <0x300>;
+>  			enable-method =3D "psci";
+> +			performance-domains =3D <&performance 0>;
+>  			clock-frequency =3D <1701000000>;
+>  			next-level-cache =3D <&l2_0>;
+>  			capacity-dmips-mhz =3D <530>;
+> @@ -79,6 +83,7 @@
+>  			compatible =3D "arm,cortex-a76";
+>  			reg =3D <0x400>;
+>  			enable-method =3D "psci";
+> +			performance-domains =3D <&performance 1>;
+>  			clock-frequency =3D <2171000000>;
+>  			next-level-cache =3D <&l2_1>;
+>  			capacity-dmips-mhz =3D <1024>;
+> @@ -89,6 +94,7 @@
+>  			compatible =3D "arm,cortex-a76";
+>  			reg =3D <0x500>;
+>  			enable-method =3D "psci";
+> +			performance-domains =3D <&performance 1>;
+>  			clock-frequency =3D <2171000000>;
+>  			next-level-cache =3D <&l2_1>;
+>  			capacity-dmips-mhz =3D <1024>;
+> @@ -99,6 +105,7 @@
+>  			compatible =3D "arm,cortex-a76";
+>  			reg =3D <0x600>;
+>  			enable-method =3D "psci";
+> +			performance-domains =3D <&performance 1>;
+>  			clock-frequency =3D <2171000000>;
+>  			next-level-cache =3D <&l2_1>;
+>  			capacity-dmips-mhz =3D <1024>;
+> @@ -109,6 +116,7 @@
+>  			compatible =3D "arm,cortex-a76";
+>  			reg =3D <0x700>;
+>  			enable-method =3D "psci";
+> +			performance-domains =3D <&performance 1>;
+>  			clock-frequency =3D <2171000000>;
+>  			next-level-cache =3D <&l2_1>;
+>  			capacity-dmips-mhz =3D <1024>;
+> @@ -194,6 +202,12 @@
+>  		compatible =3D "simple-bus";
+>  		ranges;
+>  =
+
+> +		performance: performance-controller@0011bc00 {
+> +			compatible =3D "mediatek,cpufreq-hw";
+> +			reg =3D <0 0x0011bc10 0 0x120>, <0 0x0011bd30 0 0x120>;
+> +			#performance-domain-cells =3D <1>;
+> +		};
+> +
+>  		gic: interrupt-controller@c000000 {
+>  			compatible =3D "arm,gic-v3";
+>  			#interrupt-cells =3D <4>;
+> -- =
+
+> 2.12.5
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> =
 
 
 _______________________________________________
