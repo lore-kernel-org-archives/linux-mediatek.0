@@ -4,51 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C34CC433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5DD7C433FE
 	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 08:51:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6kNwzPvGzidbG4OA5QxiM6sc/+Nc/++DW5Aj0Y+D8AA=; b=xLoIUpXNDsEBYA
-	fuk2jYLIWQiDRu7BAGtndc7R8R3Cm74Oi4SbTmkvzcH2z4vNRtNOrgbnc1Suz/lG8D4AFA9a7BjyI
-	5VfX2LxA7Y9SQ6om5r7xuqZomhEacj+LkfFdHQiCRPfDZ1yWc8LJR972EY2bm8jvOtSpYY/ZGS1MN
-	RnNz+nHIHNa5R41jcl/zpILqI3PQCrqWy0pxxARWRFovH2cL/mYEkfmm4MbuRsDqu8YJDolqRyBHw
-	DcRHzTfMiQA9uWpoISuWpyJdxEp0h6VZ0S6zxOqRtK5fIA57ncYU/vrzXrCsEYOSkhbjc1vePUQAs
-	6R2dzx0x83nUcqR80n8Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YXudwNZomMseCIQURZe4SfeqYOZQgBSVllUjwynSUg4=; b=XD1ca2Aop0jSc4
+	d7zQMoHYLBZ7Icsy4Rn2whNcGz/erPGzqhrkq7N1bIbWgZ/r4/Xjxkoh74SY5G+m0ZC1dkY9KgL0/
+	pT3bSi4m4TBT1v6MFVGrlPm+E4vdfYCBS7VM54opIcz1QAnr34vrTM3FN8Jgl8vfxRJFzdytkVYqV
+	SsI257KhrRcQ3JDxAI2Jc0DzikClw4C/hAd7teUpqQg2Xp8LdnWLpwqM1moKar6TWbx93vpJQ4R4w
+	vM1upWKtJAJBrIMd39hP4o3M72Dish5gMvgSGLwbcKwoWSa58gTAi/TtcegE/Q/noTeEA55JuWqMB
+	js1tcWq7SnHyoM5Mx19w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nI5AO-003AVc-U2; Thu, 10 Feb 2022 08:51:04 +0000
-Received: from mail.trixen.pl ([192.71.213.50])
+	id 1nI5AN-003AVQ-Qa; Thu, 10 Feb 2022 08:51:03 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nI5AE-003ASm-4C
- for linux-mediatek@lists.infradead.org; Thu, 10 Feb 2022 08:50:59 +0000
-Received: by mail.trixen.pl (Postfix, from userid 1001)
- id B19D940C20; Thu, 10 Feb 2022 09:50:36 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=trixen.pl; s=mail;
- t=1644483052; bh=J50dbWEn9x62xyxY1PWPtYxMwNMcDFoILqXfzM3his0=;
- h=Date:From:To:Subject:From;
- b=kqvvX6yn6iiu4XKeXJ2r3iU77nFu9m28HLtyvBJFSp24i7KQBN7ghgurg/8u3Q8pQ
- st4EUSMb/TfoOgb/6L6nynExMxq/BaAii/Kw/o3QTjBB+ilPs+8ZqCcDmdM7M2E5yk
- fHytJ7O2lFGRDtK8zj5/d0kbTCEHMi5MLhOCgMPcuAtrdmAwts5CFgbedC0Rgzbc8R
- q7B8qdPYlHktH1w2pwyE7IfBhTThcwUNrkg5lGxAGzc0Ue0k+WGPt4UmQI5piocOHl
- /7KtNyxKSoIdkZub1g4XbzQfydt+7xvEJmkruw0ik3K/jvUdmkY3zV1iM9t4KqH4vG
- 6BwfPavWh1pQw==
-Received: by mail.trixen.pl for <linux-mediatek@lists.infradead.org>;
- Thu, 10 Feb 2022 08:50:34 GMT
-Message-ID: <20220210084500-0.1.t.1u30.0.6amaw6peu9@trixen.pl>
-Date: Thu, 10 Feb 2022 08:50:34 GMT
-From: =?UTF-8?Q?"Rados=C5=82aw_Grabowski"?= <radoslaw.grabowski@trixen.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: Monitorowanie samochodu
-X-Mailer: mail.trixen.pl
+ id 1nI5AA-003ARN-5j; Thu, 10 Feb 2022 08:50:51 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 5A7BB1F45F95
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1644483049;
+ bh=QB8v1TZ46BYQxibDWegAgbUNsBvd0WdJQaG+Wn+uyBY=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=fNQBfk80LkkNCaIMaWvxNI/HF+K/sMgLrX9ou1kchJKZOJljSkL0AsJuYT5tGPAmL
+ Iv2lToQSBybMGoJe7oovnIuHB9tXIX0vtPJKOPuPd7G++oUy8eGWBC/vaqeW2oyHy6
+ pmJmj3Tps/xUUR1NLYDBQzUgfdLrS7B56eEFv+Tqm4HL3U2NEgh1l5eVdZLhSDENkW
+ Aj9DMPe5PPI3MLFjiihFXz+g+zipEmbHIuuu7vI/KkhZT83JXKFJ8MRHrS/Sp4WaIT
+ qiMMZluWNYNwbki6cYzdJ5PgEYR0XHhn4tX222wGmcs5/hfCYQQhegJAEplZCDZitf
+ a02NxyvkdrWOg==
+Message-ID: <8c5cf4b7-dd73-49f6-60dd-b62b3fc3ecdb@collabora.com>
+Date: Thu, 10 Feb 2022 09:50:45 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH v3 3/3] pinctrl: canonical rsel resistance selection
+ property
+Content-Language: en-US
+To: Guodong Liu <guodong.liu@mediatek.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>
+Cc: Sean Wang <sean.wang@mediatek.com>, linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220210062122.23974-1-guodong.liu@mediatek.com>
+ <20220210062122.23974-4-guodong.liu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220210062122.23974-4-guodong.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220210_005054_337768_550DA171 
-X-CRM114-Status: UNSURE (   1.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220210_005050_386856_96A83D5E 
+X-CRM114-Status: GOOD (  14.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,20 +69,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKQ2hjaWHFgmJ5bSBwcnplZHN0YXdpxIcgcm96d2nEhXphbmllLCBrdMOz
-cmUgcG9wcnpleiB3eWtvcnp5c3RhbmllIEdQUyBtb25pdG9ydWplIHNhbW9jaG9keSB3IGN6YXNp
-ZSByemVjenl3aXN0eW0uIAoKRHppxJlraSB0ZW11IG1vZ8SFIFBhxYRzdHdvIG9kY3p5dHl3YcSH
-IHdzemVsa2llIHdhcnRvxZtjaSBkb3R5Y3rEhWNlIG5wLiB6dcW8eWNpYSBwYWxpd2EgY3p5IG9i
-cm90w7N3IHNpbG5pa2EuCgpTeXN0ZW0gYXV0b21hdHljem5pZSBnZW5lcnVqZSByb3pidWRvd2Fu
-ZSByYXBvcnR5IGkgcG96d2FsYSBkb2tvbnl3YcSHIGlzdG90bnljaCBhbmFsaXouCgpKZcW8ZWxp
-IGludGVyZXN1amUgUGHFhHN0d2EgendpxJlrc3plbmllIHd5ZGFqbm/Fm2NpIHByYWN5IGkga29u
-dHJvbGEgd3N6ZWxraWNoIHBhcmFtZXRyw7N3IGZsb3R5IC0gcHJvc3rEmSBvIGtvbnRha3QuCgoK
-UG96ZHJhd2lhbSwKUmFkb3PFgmF3IEdyYWJvd3NraQoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4
-LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Il 10/02/22 07:21, Guodong Liu ha scritto:
+> Change "mediatek,rsel_resistance_in_si_unit" to "mediatek,rsel-resistance-in-si-unit"
+> 
+> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
+
+Hello Guodong,
+thanks for the patch!
+
+However, you forgot to add the required Fixes tag to this one; this patch
+should be fixing fb34a9ae383a ("pinctrl: mediatek: support rsel feature").
+
+Please add the required tag.
+
+Thanks,
+Angelo
+
+> ---
+>   drivers/pinctrl/mediatek/pinctrl-paris.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> index d4e02c5d74a8..38c0f0c4cf95 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> @@ -989,7 +989,7 @@ int mtk_paris_pinctrl_probe(struct platform_device *pdev,
+>   	hw->nbase = hw->soc->nbase_names;
+>   
+>   	if (of_find_property(hw->dev->of_node,
+> -			     "mediatek,rsel_resistance_in_si_unit", NULL))
+> +			     "mediatek,rsel-resistance-in-si-unit", NULL))
+>   		hw->rsel_si_unit = true;
+>   	else
+>   		hw->rsel_si_unit = false;
+> 
+
+
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
