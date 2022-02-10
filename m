@@ -4,59 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49AA9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 08:57:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5E8DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Feb 2022 10:03:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9IFERyq9CfUOY453K7KIhV8HB53n7wBWmA4LWCQTJgM=; b=pd3dzPjLd3ZuAF
-	Plo8ZKxAtGsB7Cym6qL/yP9ANwaow5p/jsiNr8o9qhqZyb7SlVAdqjN5M3EdgdVsp+AZeFAWKzLGZ
-	ApuD8sxk7lJpGqbmBJ8U6Oj6vscutGkQmL1voGHpIGZcuTBpayI8mWck2DQAMM8tFkYrf24i/ELjx
-	OsFZmmKp4JDRHUWLMsM8R5NGohQTsY+rAHR+m82/5uD5FG+wQ/2tkIqidcOSJ5SWa8sxcMNvBop93
-	9QnCAy27vvwJCQpz4hFYwGMNBhZky1VohFK24mr/lgMSlLQxxHw8hAzqjUxeXr3ZvWblfq2idCPRr
-	qbdA+QmDasgivTT3Ggmw==;
+	List-Owner; bh=IdQi0PEmn1vP2DY0+cii98eNvk67bLg+t3Z0eikrngs=; b=Ezool2VwarKhUr
+	mBAlpxzmWZ7l2JD7UBUsfSNvf5ktj0d2L4J9oaPPSBzXYql4GeE59V4qZjYVD6BqsfnNfl73F6c0E
+	MgdT3VXndPOFEyVlz0eCDHXwJ+i87zWTjTXs4ndaUkLHiDCrxm6a35n4BtSx21FGERlWoTrNAt6qo
+	l/HJN83592Fnla+uCjDQnIH23ZTG7iLNm2HSubux4UQRlqmsmhWZzqvfYxkARU2SzJTBLOT9upDw5
+	sV+OCt4+pWize2Gh2P9T7Lfnma/2plVIxCZkzMoEEl36feNAOR3cr6QRVnlM/JTzTeeFcyre70bxq
+	vSUpUy5hZ1TECUC4rI7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nI5GV-003C4d-UH; Thu, 10 Feb 2022 08:57:23 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nI6In-003OIo-RQ; Thu, 10 Feb 2022 10:03:49 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nI5GG-003C02-Og; Thu, 10 Feb 2022 08:57:10 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 90F0E1F46047
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1644483426;
- bh=beBoCF9E69P2Dr/kHu3IApUCGiTodhpacSRBbcpe5+0=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=EV+ukFNj/sNvscWcfMeIJt1T7Raaz6uH+ysq9a1OUQIiRCuB1jYVWM1gs3SiW6fXq
- +W1qHEqA/kQIRoslgeuLHIjelBJh449OZFjzF9ndNBnEsndLL/Uhq6Dci5EDTPMFJ3
- 2b3BTKTNcx7cfRYfFKEc2a1cQdlUehVkFOH9A40Zav4cF91ThhuTeWch3NMyfoawzk
- lfMBATjnkgXx2TiW/OGjnseyh2aInMPuEMX/LTuwk6iU9yxCyFRtYlxEhAbn+kwb0G
- MzsY4tKK6hHqu9o44fgNdRAw76Onntol5rlR80qiT+WxDo0kmJmr+j0JeUWkBdWuqC
- HkP9EKXc4Pj6w==
-Message-ID: <332434dc-2c94-5488-e7d0-7db00139d814@collabora.com>
-Date: Thu, 10 Feb 2022 09:57:03 +0100
+ id 1nI6Ic-003OGl-2M; Thu, 10 Feb 2022 10:03:39 +0000
+X-UUID: bb2caf8e05f642ceb88e22614010fb66-20220210
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=qKNN3hhynNKwB0A5jGLGwe/FZE6HuhllQkxcX24gPa4=; 
+ b=N6r/JFvb/bU7v9zhRTBm9nTqJ7v3coZpOHG2Hla4S3W5ysxoBZ0BvrMjEbnfQ56eyfPVegtlOo433CMQqRoqOivffy50G7Do3STRw2V0j8nZxh4I7UXzFoSIDM6q0MWSwhi/A5PomTdrNCzchgLSWvbE8lIOKO2+oqL8pyHXD7Y=;
+X-UUID: bb2caf8e05f642ceb88e22614010fb66-20220210
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yunfei.dong@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 88447083; Thu, 10 Feb 2022 03:03:32 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 10 Feb 2022 01:59:54 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 10 Feb 2022 17:59:46 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 10 Feb 2022 17:59:45 +0800
+Message-ID: <12deb1b056a68e742979c7dcaf1e2c627b982825.camel@mediatek.com>
+Subject: Re: [PATCH v2, 1/7] dt-bindings: media: mtk-vcodec: Adds decoder
+ dt-bindings for lat soc
+From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rob
+ Herring" <robh@kernel.org>
+CC: Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih <tzungbi@chromium.org>, "Tiffany
+ Lin" <tiffany.lin@mediatek.com>, Andrew-CT Chen
+ <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>,
+ George Sun <george.sun@mediatek.com>, Xiaoyong Lu <xiaoyong.lu@mediatek.com>, 
+ Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, Daniel Vetter
+ <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, Irui Wang
+ <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 10 Feb 2022 17:59:45 +0800
+In-Reply-To: <f807c862-d327-5b12-7443-c4fed6e1ef6a@collabora.com>
+References: <20220128035440.24533-1-yunfei.dong@mediatek.com>
+ <20220128035440.24533-2-yunfei.dong@mediatek.com>
+ <YgQl8CtttQ99+8lB@robh.at.kernel.org>
+ <aa72bec2064e25990e1a3641b920cb5528cfccd4.camel@mediatek.com>
+ <f807c862-d327-5b12-7443-c4fed6e1ef6a@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v3 2/3] pinctrl: add pinctrl driver on mt8186
-Content-Language: en-US
-To: Guodong Liu <guodong.liu@mediatek.com>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>
-Cc: Sean Wang <sean.wang@mediatek.com>, linux-gpio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220210062122.23974-1-guodong.liu@mediatek.com>
- <20220210062122.23974-3-guodong.liu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220210062122.23974-3-guodong.liu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220210_005708_976936_86A07012 
-X-CRM114-Status: GOOD (  17.62  )
+X-CRM114-CacheID: sfid-20220210_020338_143429_EABB3AD8 
+X-CRM114-Status: GOOD (  27.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,94 +88,143 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/02/22 07:21, Guodong Liu ha scritto:
-> This commit includes pinctrl driver for mt8186.
+Hi AngeloGioacchino,
+
+Thanks for your suggestion.
+On Thu, 2022-02-10 at 09:40 +0100, AngeloGioacchino Del Regno wrote:
+> Il 10/02/22 04:06, yunfei.dong@mediatek.com ha scritto:
+> > Hi Rob,
+> > 
+> > Thanks for your suggestion.
+> > On Wed, 2022-02-09 at 14:37 -0600, Rob Herring wrote:
+> > > On Fri, Jan 28, 2022 at 11:54:34AM +0800, Yunfei Dong wrote:
+> > > > Adds decoder dt-bindings for compatible "mediatek,mtk-vcodec-
+> > > > lat-
+> > > > soc".
+> > > 
+> > > What's lat soc? How does this relate to what's already there in
+> > > this
+> > > binding.
+> > > 
+> > 
+> > lat soc is another hardware, is related with some vdec larb ports.
+> > Won't be used to decode, but must to write it in dtsi, or hardware
+> > can't work well.
 > 
-> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
-> ---
->   drivers/pinctrl/mediatek/Kconfig              |    7 +
->   drivers/pinctrl/mediatek/Makefile             |    1 +
->   drivers/pinctrl/mediatek/pinctrl-mt8186.c     | 1313 ++++++++++
->   drivers/pinctrl/mediatek/pinctrl-mtk-mt8186.h | 2186 +++++++++++++++++
->   4 files changed, 3507 insertions(+)
->   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt8186.c
->   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt8186.h
+> Hello Yunfei,
 > 
-> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-> index 66db4ac5d169..8dca1ef04965 100644
-> --- a/drivers/pinctrl/mediatek/Kconfig
-> +++ b/drivers/pinctrl/mediatek/Kconfig
-> @@ -147,6 +147,13 @@ config PINCTRL_MT8183
->   	default ARM64 && ARCH_MEDIATEK
->   	select PINCTRL_MTK_PARIS
->   
-> +config PINCTRL_MT8186
-> +	bool "Mediatek MT8186 pin control"
-> +	depends on OF
-> +	depends on ARM64 || COMPILE_TEST
-> +	default ARM64 && ARCH_MEDIATEK
-> +	select PINCTRL_MTK_PARIS
-> +
->   config PINCTRL_MT8192
->   	bool "Mediatek MT8192 pin control"
->   	depends on OF
-> diff --git a/drivers/pinctrl/mediatek/Makefile b/drivers/pinctrl/mediatek/Makefile
-> index 90f43bb9d9a7..31c3784c6089 100644
-> --- a/drivers/pinctrl/mediatek/Makefile
-> +++ b/drivers/pinctrl/mediatek/Makefile
-> @@ -21,6 +21,7 @@ obj-$(CONFIG_PINCTRL_MT7986)	+= pinctrl-mt7986.o
->   obj-$(CONFIG_PINCTRL_MT8167)	+= pinctrl-mt8167.o
->   obj-$(CONFIG_PINCTRL_MT8173)	+= pinctrl-mt8173.o
->   obj-$(CONFIG_PINCTRL_MT8183)	+= pinctrl-mt8183.o
-> +obj-$(CONFIG_PINCTRL_MT8186)	+= pinctrl-mt8186.o
->   obj-$(CONFIG_PINCTRL_MT8192)	+= pinctrl-mt8192.o
->   obj-$(CONFIG_PINCTRL_MT8195)    += pinctrl-mt8195.o
->   obj-$(CONFIG_PINCTRL_MT8365)	+= pinctrl-mt8365.o
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8186.c b/drivers/pinctrl/mediatek/pinctrl-mt8186.c
-> new file mode 100644
-> index 000000000000..1e550b15b9d4
-> --- /dev/null
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mt8186.c
-> @@ -0,0 +1,1313 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (C) 2021 MediaTek Inc.
-> + *
-> + * Author: Guodong Liu <guodong.liu@mediatek.com>
-> + *
-> + */
-> +
-> +#include "pinctrl-mtk-mt8186.h"
-> +#include "pinctrl-paris.h"
-> +
-> +/* MT8186 have multiple bases to program pin configuration listed as the below:
-> + * iocfg[0]:0x10005000, iocfg[1]:0x10002000, iocfg[2]:0x10002200,
-> + * iocfg[3]:0x10002400, iocfg[4]:0x10002600, iocfg[5]:0x10002800,
-> + * iocfg[6]:0x10002C00.
-> + * _i_based could be used to indicate what base the pin should be mapped into.
-> + */
-> +
-> +#define PIN_FIELD_BASE(s_pin, e_pin, i_base, s_addr, x_addrs, s_bit, x_bits) \
-> +	PIN_FIELD_CALC(s_pin, e_pin, i_base, s_addr, x_addrs, s_bit, x_bits, \
-> +		       32, 0)
+> as a suggestion, writing the meaning of the "LAT" acronym may also
+I'm very sorry, I can't write the meaning of the "LAT" acronym. You can
+regards it as an hardware.
 
-Please don't break this line: 84 columns is fine.
+> help to clear some doubts around (please, also do that in the yaml
+> file,
+> other than the commit description).
+> 
+I will add detail message for this hardware in next patch. And this
+hardware only be used for mt8195 at now.
 
-> +
-> +#define PINS_FIELD_BASE(s_pin, e_pin, i_base, s_addr, x_addrs, s_bit, x_bits) \
-> +	PIN_FIELD_CALC(s_pin, e_pin, i_base, s_addr, x_addrs, s_bit, x_bits,  \
-> +		       32, 1)
-
-Same here.
-
-And with that fixed,
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
+> Thank you!
+> Angelo
+> 
+Best Regards,
+Yunfei Dong
+> > 
+> > Need to enable clock/power/iommus, no interrupt.
+> > > The subject space is limited, avoid saying the same thing twice
+> > > (dt-bindings).
+> > > 
+> > 
+> > Best Regards,
+> > Yunfei Dong
+> > > > 
+> > > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > > > ---
+> > > >   .../media/mediatek,vcodec-subdev-decoder.yaml | 49
+> > > > +++++++++++++++++++
+> > > >   1 file changed, 49 insertions(+)
+> > > > 
+> > > > diff --git
+> > > > a/Documentation/devicetree/bindings/media/mediatek,vcodec-
+> > > > subdev-
+> > > > decoder.yaml
+> > > > b/Documentation/devicetree/bindings/media/mediatek,vcodec-
+> > > > subdev-
+> > > > decoder.yaml
+> > > > index 6415c9f29130..a3c892338ac0 100644
+> > > > --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-
+> > > > subdev-decoder.yaml
+> > > > +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-
+> > > > subdev-decoder.yaml
+> > > > @@ -189,6 +189,55 @@ patternProperties:
+> > > >   
+> > > >       additionalProperties: false
+> > > >   
+> > > > +  '^vcodec-lat-soc@[0-9a-f]+$':
+> > > > +    type: object
+> > > > +
+> > > > +    properties:
+> > > > +      compatible:
+> > > > +        const: mediatek,mtk-vcodec-lat-soc
+> > > > +
+> > > > +      reg:
+> > > > +        maxItems: 1
+> > > > +
+> > > > +      iommus:
+> > > > +        minItems: 1
+> > > > +        maxItems: 32
+> > > > +        description: |
+> > > > +          List of the hardware port in respective IOMMU block
+> > > > for
+> > > > current Socs.
+> > > > +          Refer to bindings/iommu/mediatek,iommu.yaml.
+> > > > +
+> > > > +      clocks:
+> > > > +        maxItems: 5
+> > > > +
+> > > > +      clock-names:
+> > > > +        items:
+> > > > +          - const: sel
+> > > > +          - const: soc-vdec
+> > > > +          - const: soc-lat
+> > > > +          - const: vdec
+> > > > +          - const: top
+> > > > +
+> > > > +      assigned-clocks:
+> > > > +        maxItems: 1
+> > > > +
+> > > > +      assigned-clock-parents:
+> > > > +        maxItems: 1
+> > > > +
+> > > > +      power-domains:
+> > > > +        maxItems: 1
+> > > > +
+> > > > +    required:
+> > > > +      - compatible
+> > > > +      - reg
+> > > > +      - iommus
+> > > > +      - clocks
+> > > > +      - clock-names
+> > > > +      - assigned-clocks
+> > > > +      - assigned-clock-parents
+> > > > +      - power-domains
+> > > > +
+> > > > +    additionalProperties: false
+> > > > +
+> > > >   required:
+> > > >     - compatible
+> > > >     - reg
+> > > > -- 
+> > > > 2.25.1
+> > > > 
+> > > > 
+> 
+> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
