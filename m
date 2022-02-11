@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8C61C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Feb 2022 11:50:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 747EAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Feb 2022 12:13:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oD2YRNAxwKaqgVaOYUj1pfxyij01LdPOb4J+4vUVHY4=; b=HlTYFpfK0j1uLu
-	r2KWUTVvgwaAxkwLA3HXZRNUS39H+T6nESi6xARPyEUveKegWZuXtevj7Pl5CKj10qpPX20OOI7/p
-	EcRDW1OuboYZaL6NCP1dywbp3MTuOTWVvOCK8jA/8Cbl81zWp8MCb0hctjtMPbezYwrSGLfrlma6x
-	fzV4W5UTyQTl2MSIxgTpob0kZlq9aaYlSJ87mwycXbrdURLmfjbI2tPnIoOeWj3vvLaAlP+jPsRqw
-	JV8n7EjFmPLO5EbHsCN/Dk13OSafKmd+EmG1vPK+DMyREIMNDqj278JTMZ2gkbhSZMoImQypcv+b6
-	hJYrriWsqk2OAbXyNe9Q==;
+	List-Owner; bh=pX+riui7RZ1jF3bQ0LXdRq4AJylyAtLJaez3SfK0qEc=; b=3APFWKlK0EB8+X
+	6SfgnTrL3QYXxSL48tezjdY6yLhlbqd7zbz5NHSBADXEptl77zxasyVzLpHRfnph+YGxEuzbhENcr
+	/anA6oPLYQ/PaopR8I2WuSUeLUELjEefcZ+b/eJcGqyz2Bk3CzVW2sWwAVVaARVtfRazJULpH2yo4
+	iNvDKD0rczg1n6rlooanW341di2INAFrsP5xtnwCbrpUNrDdcPnk+rqPEFfvmkXAtixQrUjoz7QY1
+	e+aN9w39J6cKZbonCek2DF4cF3GNmGvIB40ozBp0eDEpFjufdaZ5qNDc4zt/LNLC8pEQjG7q2sUVq
+	lKIrObl8HChg5q3VFK4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nIURo-006xkY-AV; Fri, 11 Feb 2022 11:50:44 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nIUnT-0073Qt-86; Fri, 11 Feb 2022 12:13:07 +0000
+Received: from mail-oi1-f176.google.com ([209.85.167.176])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nIURT-006xZ5-6P; Fri, 11 Feb 2022 11:50:26 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id B04DC1F46D3E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1644580219;
- bh=YoiosXYfuzCdv75Q/QHeODvcQlcGqCPnisvrlLqIWlM=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=GTLGC4aXdUu/HNLbQWFHvoE4iM7hofN1vXc9X7vuswhNjFoA+7s1JE0VPabZpHjKP
- ur3PKD8vtNTjtm7+H3MVyS858xTgldAxBwrE+uHqul1zODaxn3Lkrw2CGShpwj4ryb
- EH6J9xrmZtiwuTwsfrnnplzsFTcFjpZhwhi0dVd02QBipVGO34lu7IPM9ZlOy6HaX5
- 6eWapx+KB+Av1nl1wFLUB2NPltshUp2Bt+OgAMBY7OJKhxZueS+0DH7kF06nQTv4vf
- tMFBi/tYTl302CE/ne7Nerj49cWLDBCnexztlPIHPbRx9q1ZTcSHlYNQwopgA9RyBa
- m1zKHA0aUmgzg==
-Message-ID: <e7cbca18-a343-4058-6a1e-1e6bfb167bd9@collabora.com>
-Date: Fri, 11 Feb 2022 12:50:09 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [V11,PATCH 04/19] soc: mediatek: add driver for dvfsrc support
-Content-Language: en-US
-To: Dawei Chien <dawei.chien@mediatek.com>,
- Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
- <swboyd@chromium.org>, Ryan Case <ryandcase@chromium.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat
- <drinkcat@google.com>, devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Fan Chen <fan.chen@mediatek.com>,
- Arvin Wang <arvin.wang@mediatek.com>, James Liao
- <jamesjj.liao@mediatek.com>, Henry Chen <henryc.chen@mediatek.com>
-References: <20210812085846.2628-1-dawei.chien@mediatek.com>
- <20210812085846.2628-5-dawei.chien@mediatek.com>
- <3d1ba05d-0013-a9ac-1fe1-1d60e510c574@collabora.com>
- <3d30fe7f61b558d3c2c8214e0e936903657f8231.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <3d30fe7f61b558d3c2c8214e0e936903657f8231.camel@mediatek.com>
+ id 1nIUnQ-0073Pg-PL; Fri, 11 Feb 2022 12:13:06 +0000
+Received: by mail-oi1-f176.google.com with SMTP id i5so9345907oih.1;
+ Fri, 11 Feb 2022 04:13:03 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=cuBlIjJY4vaAWQT/4C6Ak9m1WRcqNbkYIsxGyvkT4rk=;
+ b=iu6MVEJHctWuNfiqEO7fLkq7QHJwztv6QQmB1JhlFLNvf9oqE9rEdlJ40PvqVKK+ER
+ R/P+I0fjIZzpfby+B8SO6RkHxzb/YsJfx1dWz20020m9k/oToS25gnmPpmxlj5LQvhGJ
+ fzzrtwNjBuk0rrBdF5NUYO3nqk/cSpUgmI6ESvqso2kWbWgoqYF8lfWnJBTwBhhO7pRk
+ loFZvc8dmrs7JqlfPeQigUKSQeN836i7zjfwYKtSTqO2pJ3emjQ02P/yPBepNOXJf8SA
+ CDpk1rw14FbLsgs7V4/bI2Z+Cx2MIm1oT9L+GYf5Rl6nAIXNI7eOz/P8yz0CPoFuG3ei
+ oVBA==
+X-Gm-Message-State: AOAM5328K7nmC8J+JI8vzo/7mqg08VPkm/IWSt3Hi6jp8Uqn360x1io6
+ HlqF02fYMlV6DnzjobJ/Hg==
+X-Google-Smtp-Source: ABdhPJwC68NbqlKCoT6iGNdOcPryVMllb8uhD4nbb/rVM94vLoxVJPFWGXcXeY9hjrenDtePrHtmxQ==
+X-Received: by 2002:a05:6808:2026:: with SMTP id
+ q38mr16779oiw.243.1644581582414; 
+ Fri, 11 Feb 2022 04:13:02 -0800 (PST)
+Received: from robh.at.kernel.org ([2607:fb90:20d4:10b7:69a2:33cd:1782:fb47])
+ by smtp.gmail.com with ESMTPSA id
+ bx41sm6384628oib.7.2022.02.11.04.12.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 11 Feb 2022 04:13:01 -0800 (PST)
+Received: (nullmailer pid 141879 invoked by uid 1000);
+ Fri, 11 Feb 2022 12:12:43 -0000
+From: Rob Herring <robh@kernel.org>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, alsa-devel@alsa-project.org,
+ matthias.bgg@gmail.com, p.zabel@pengutronix.de, trevor.wu@mediatek.com,
+ tzungbi@google.com, linux-kernel@vger.kernel.org, lgirdwood@gmail.com,
+ linux-mediatek@lists.infradead.org, geert+renesas@glider.be,
+ linux-arm-kernel@lists.infradead.org, broonie@kernel.org,
+ zhangqilong3@huawei.com, perex@perex.cz, tiwai@suse.com
+In-Reply-To: <20220211103818.8266-12-jiaxin.yu@mediatek.com>
+References: <20220211103818.8266-1-jiaxin.yu@mediatek.com>
+ <20220211103818.8266-12-jiaxin.yu@mediatek.com>
+Subject: Re: [PATCH 11/15] dt-bindings: mediatek: mt8186: add audio afe
+ document
+Date: Fri, 11 Feb 2022 06:12:43 -0600
+Message-Id: <1644581563.497957.141878.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220211_035023_596636_07265988 
-X-CRM114-Status: GOOD (  22.90  )
+X-CRM114-CacheID: sfid-20220211_041304_839953_E23B3FDE 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,133 +79,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/02/22 04:51, Dawei Chien ha scritto:
-> On Thu, 2022-02-03 at 16:04 +0100, AngeloGioacchino Del Regno wrote:
->> Il 12/08/21 10:58, Dawei Chien ha scritto:
->>> From: Henry Chen <henryc.chen@mediatek.com>
->>>
->>> Add dvfsrc driver for MT6873/MT8183/MT8192
->>>
->>> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
->>> Signed-off-by: Dawei Chien <dawei.chien@mediatek.com>
->>> ---
->>>    drivers/soc/mediatek/Kconfig            |  11 +
->>>    drivers/soc/mediatek/Makefile           |   1 +
->>>    drivers/soc/mediatek/mtk-dvfsrc.c       | 421
->>> ++++++++++++++++++++++++++++++++
->>>    include/linux/soc/mediatek/mtk_dvfsrc.h |  35 +++
->>>    4 files changed, 468 insertions(+)
->>>    create mode 100644 drivers/soc/mediatek/mtk-dvfsrc.c
->>>    create mode 100644 include/linux/soc/mediatek/mtk_dvfsrc.h
->>>
-
-..snip..
-
->>> diff --git a/drivers/soc/mediatek/mtk-dvfsrc.c
->>> b/drivers/soc/mediatek/mtk-dvfsrc.c
->>> new file mode 100644
->>> index 000000000000..6ef167cf55bd
->>> --- /dev/null
->>> +++ b/drivers/soc/mediatek/mtk-dvfsrc.c
-
-..snip..
-
->>> +static int mtk_dvfsrc_probe(struct platform_device *pdev)
->>> +{
->>> +	struct arm_smccc_res ares;
->>> +	struct resource *res;
->>> +	struct mtk_dvfsrc *dvfsrc;
->>> +	int ret;
->>> +
->>> +	dvfsrc = devm_kzalloc(&pdev->dev, sizeof(*dvfsrc), GFP_KERNEL);
->>> +	if (!dvfsrc)
->>> +		return -ENOMEM;
->>> +
->>> +	dvfsrc->dvd = of_device_get_match_data(&pdev->dev);
->>> +	dvfsrc->dev = &pdev->dev;
->>> +
->>> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->>> +	dvfsrc->regs = devm_ioremap_resource(&pdev->dev, res);
->>> +	if (IS_ERR(dvfsrc->regs))
->>> +		return PTR_ERR(dvfsrc->regs);
->>> +
->>> +	spin_lock_init(&dvfsrc->req_lock);
->>> +	mutex_init(&dvfsrc->pstate_lock);
->>> +
->>> +	arm_smccc_smc(MTK_SIP_VCOREFS_CONTROL, MTK_SIP_DVFSRC_INIT, 0,
->>> 0, 0,
->>> +		0, 0, 0, &ares);
->>> +
->>> +	if (!ares.a0) {
->>> +		dvfsrc->dram_type = ares.a1;
->>> +		dev_info(dvfsrc->dev, "dram_type: %d\n", dvfsrc-
->>>> dram_type);
->>> +	} else {
->>> +		dev_err(dvfsrc->dev, "init fails: %lu\n", ares.a0);
->>> +		return ares.a0;
->>> +	}
->>> +
->>> +	dvfsrc->curr_opps = &dvfsrc->dvd->opps_desc[dvfsrc->dram_type];
->>> +	platform_set_drvdata(pdev, dvfsrc);
->>> +
->>> +	dvfsrc->regulator = platform_device_register_data(dvfsrc->dev,
->>> +			"mtk-dvfsrc-regulator", -1, NULL, 0);
->>
->> Why are you registering platform devices like this?
->>
->> Please use device-tree instead.
->>
+On Fri, 11 Feb 2022 18:38:14 +0800, Jiaxin Yu wrote:
+> This patch adds mt8186 audio afe document.
 > 
-> Thank you for advisement. Let me just describe history.
-> 
-> Actually, we did use device-tree to probe interconnect/regulator driver
-> in v4, and reviewer had some advisement
-> 
-> 
-> https://patchwork.kernel.org/project/linux-mediatek/patch/1584092066-24425-12-git-send-email-henryc.chen@mediatek.com/#23243049
-> 
-> https://patchwork.kernel.org/project/linux-mediatek/patch/1584092066-24425-9-git-send-email-henryc.chen@mediatek.com/#23236945
-> 
-> so we refer to this driver to use platform_device_register_data after
-> v5.
-> 
-> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/drivers/soc/qcom/smd-rpm.c?h=next-20220209#n213
-> 
-> Would you kindly give your advisement, thank you.
+> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> ---
+>  .../bindings/sound/mt8186-afe-pcm.yaml        | 175 ++++++++++++++++++
+>  1 file changed, 175 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/mt8186-afe-pcm.yaml
 > 
 
-Hello Dawei,
-I was under the impression that the regulator and EMI were different hardware,
-while effectively they are inside of the DVFS Resource Collector IP, and the
-registers look like being a bit mixed up, so it's impossible to actually
-specify a relative iospace for the regulator, or for the EMI.
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-In this case, from what I understand right now, the emi and regulator are not
-different hardware, but "features of" the DVFS Resource Collector.
+yamllint warnings/errors:
+./Documentation/devicetree/bindings/sound/mt8186-afe-pcm.yaml:10:4: [warning] wrong indentation: expected 2 but found 3 (indentation)
+./Documentation/devicetree/bindings/sound/mt8186-afe-pcm.yaml:14:7: [warning] wrong indentation: expected 4 but found 6 (indentation)
 
-I've done some research around the kernel and, effectively, the only way that
-makes sense, is to register the feature-drivers (emi/vreg) with
-platform_device_register_data(), as per your current approach, even though I
-have a hunch that it will look a bit confusing in device-tree, as you'd be using
-the same node for both regulator and interconnects...
+dtschema/dtc warnings/errors:
 
-I would exclude doing it as a MFD driver, as I don't see any very clean way to
-actually implement that.
+doc reference errors (make refcheckdocs):
 
-At this point, let's just keep it as it is, or this would probably get a lot
-overcomplicated for no good reasons.
-So, please ignore the device-tree suggestion and go on with the other suggested
-fixes for this driver.
+See https://patchwork.ozlabs.org/patch/1591561
 
-Looking forward to see your v4!
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
 
-Kind regards,
-Angelo
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 
 _______________________________________________
 Linux-mediatek mailing list
