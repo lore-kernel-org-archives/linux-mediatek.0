@@ -4,69 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08A0DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Feb 2022 16:59:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4930C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Feb 2022 20:06:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jkLsBpFqJch9aos31KdwiiSQkseeH56bxZxABPHfe+I=; b=YVHuBVUS5Gxfum
-	FOqhGkqIxqrg8+GAUSlcwFjqWegGzkmmB6wiS+muFZwjuoMuHWhwy4oO+Mk5gIMo795poqBIiTt2w
-	o1+I3kZntKDL+6O8mpPQ4z8ltQ9Qsm8/38UAseyeXu6W2N+peOQSYEt9KfRm4yjx64d2oIpEzXPe6
-	QjGtzKwyNwq32oPPEVB2ftKA6//agMXFRsjIA1lEJjCDX048R9wfrmS3VznajaLJxGotsmAbBFh7L
-	PwSPwclaKp7jfyDMCv86uglnSpDnPGEe+5OUMwUIUZFI0OV8+4Zn5DSuBoA7rqGVC4pFAMSwrN3Lh
-	4n0XtM7TYkVMOusPhZ1A==;
+	List-Owner; bh=qmeb5OIZFFTpAnQkIp6Czor4ZQMa9GLTThCflAS8aXA=; b=FQWc5bkgtSDOb/
+	Hl7JzqHPCK96XmPbN0X2Fo9uItRA+AaTCcB61Yc2JO5DO+ehkDIs4JkVsjraAENEYbPkj2chQeJgp
+	Ak5EXhLH1h1zC8r2V0zwyWrCyN0my7I7DLiS0hAZLQrhpz1RM5biixuS9IrR0ygq4N4eilLeViLph
+	LDE2DLiIvySY6PuLj0dkMdUsv/+aq0jtISX5Np9xeltcTSpF22/xmijSMHAP5o3zivhYgEmbf1yN1
+	pdJqIMGACXDrwzXr0T6V+IJ4Oq+JvzP9cj3GOVB3ac7c4h4CUi4Q+qh7+AU5NgdRLEwxXBqnu0EWg
+	Xfr2icfzJfwVvDhwY1TA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nIZGq-0089NQ-UV; Fri, 11 Feb 2022 16:59:44 +0000
-Received: from mail-qk1-f178.google.com ([209.85.222.178])
+	id 1nIcB5-008ecg-FS; Fri, 11 Feb 2022 20:05:59 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nIZGa-0089F1-9d; Fri, 11 Feb 2022 16:59:29 +0000
-Received: by mail-qk1-f178.google.com with SMTP id w8so8781933qkw.8;
- Fri, 11 Feb 2022 08:59:27 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=8yxTDG3L66sv6/x75/eI7qWhPShuWXXpishkPZKHjZQ=;
- b=GQ/c+CpgbqBekgIYK/+A8ffXD8SmuIKvpoTOB4Vf94Hg0MgRI7JY2hdFsHWxf4G/T+
- xUdnpqRofkfkWYGvB/y6OJj92dKcoVm90rALsMxsMP0fbPxdgnMJ01rOC/sd+AEm0tlQ
- ssVBNQ3ne+QqMylaHiKDBvOO8xFMVyHsiGmhFpwbScvRMhrMZfdzA8EMJo0o+4e1uZbH
- xCizyY5j7nPaYcQ1AeM03HRVK2faYH5IqdeXit7stxYvY9j5Osd6TdJUcGAcqD3sXDWH
- B1c/uS8mKKGz1CtW/xDTbXbSmrbKWuvMJGhazHtM/AEZuQgFYGM8JffStbdjIJHxNBmA
- 0uBg==
-X-Gm-Message-State: AOAM533UiPlpILuyIReTwauRj+8/oMTcNT0PAYXxfrb/j3+NDdQc0zJ+
- RufG6cje+7viVYB4GPkW0g==
-X-Google-Smtp-Source: ABdhPJxkD6HcPp0yjhgHl6Xpz1CUtP20uJOD7KXrALJK1CT6iJ4t6RJgnsP1PtESdzRNUItNx1QrAw==
-X-Received: by 2002:a05:620a:1712:: with SMTP id
- az18mr1225926qkb.626.1644598766892; 
- Fri, 11 Feb 2022 08:59:26 -0800 (PST)
-Received: from robh.at.kernel.org ([2607:fb90:5fee:dfce:b6df:c3e1:b1e5:d6d8])
- by smtp.gmail.com with ESMTPSA id
- g20sm12384144qko.27.2022.02.11.08.59.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 11 Feb 2022 08:59:26 -0800 (PST)
-Received: (nullmailer pid 518102 invoked by uid 1000);
- Fri, 11 Feb 2022 16:59:23 -0000
-Date: Fri, 11 Feb 2022 10:59:23 -0600
-From: Rob Herring <robh@kernel.org>
-To: Leilk Liu <leilk.liu@mediatek.com>
-Cc: Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 5/6] dt-bindings: spi: support mediatek,need_ahb_clk flag
-Message-ID: <YgaV6w1ooAzTpYNz@robh.at.kernel.org>
-References: <20220209111938.16137-1-leilk.liu@mediatek.com>
- <20220209111938.16137-6-leilk.liu@mediatek.com>
+ id 1nIcAs-008eXH-Ff; Fri, 11 Feb 2022 20:05:47 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 72E661F47303
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1644609942;
+ bh=o4MNnjz0g9MzLgF7YAjio5nz9ZeVzPRdWcJ/3ixks5U=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=n1bDNZ3+pFlYzR86aNw+bDkYHR6gTj+C/KjVGpnoZxktcBwYndQ87DLKvA/mgnshA
+ zfQFwtGYjvKqiSQ3vut/WG29G2SvZPwL1OoSEdrQMFCwKY0LRcAvn9204z+S0d+bku
+ QLrH8HnD7E4ritTGBPAXh0mwxhP0vQWgtNnMiajq2PrDjWOQt7J1T9OOu9WkA8s7K+
+ qGWzg8NF1NecangLtK5PM5eEmLqCSw3CFZiIzjDHqxMTIrJ+Rc+4S4s5JNQjZhwmr1
+ VVhZHfCf/g9Cc4ZF8Gl25Bv/grgDqE2NaZVoXSMLXG6W+yC+Mydesl9oOHjQBfii7P
+ zKScceZDto1fQ==
+Date: Fri, 11 Feb 2022 15:05:35 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, Chen-Yu Tsai <wenst@chromium.org>,
+ Ryder Lee <ryder.lee@kernel.org>
+Subject: Re: [PATCH] arm64: dts: mt8192: Add watchdog node
+Message-ID: <20220211200535.yt7nco3c4awweih4@notapiano>
+References: <20220207094024.22674-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220209111938.16137-6-leilk.liu@mediatek.com>
+In-Reply-To: <20220207094024.22674-1-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220211_085928_372745_65A08C52 
-X-CRM114-Status: GOOD (  15.59  )
+X-CRM114-CacheID: sfid-20220211_120546_699667_F35A8C31 
+X-CRM114-Status: GOOD (  15.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,35 +66,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 09, 2022 at 07:19:37PM +0800, Leilk Liu wrote:
-> this patch support mediatek,need_ahb_clk flag.
-> 
-> Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+Hi Allen,
+
+thanks for the patch.
+
+On Mon, Feb 07, 2022 at 05:40:24PM +0800, Allen-KH Cheng wrote:
+> From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+> =
+
+> Add watchdog device node to MT8192 SoC.
+> =
+
+> Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+
+Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+
+Thanks,
+N=EDcolas
+
 > ---
->  .../devicetree/bindings/spi/mediatek,spi-mt65xx.yaml         | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-> index 241c0f5880d3..af12c1711182 100644
-> --- a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-> +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-> @@ -71,6 +71,11 @@ properties:
->        specify which pins group(ck/mi/mo/cs) spi controller used.
->        This is an array.
->  
-> +  mediatek,need_ahb_clk:
+>  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> =
 
-s/_/-/
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt8192.dtsi
+> index cc3953df0153..c1d4030e7e4b 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> @@ -301,6 +301,12 @@
+>  			#interrupt-cells =3D <2>;
+>  		};
+>  =
 
-But really, this should be implied by the compatible string or presence 
-of the clock in 'clocks'.
+> +		watchdog: watchdog@10007000 {
+> +			compatible =3D "mediatek,mt8192-wdt";
+> +			reg =3D <0 0x10007000 0 0x100>;
+> +			#reset-cells =3D <1>;
+> +		};
+> +
+>  		apmixedsys: syscon@1000c000 {
+>  			compatible =3D "mediatek,mt8192-apmixedsys", "syscon";
+>  			reg =3D <0 0x1000c000 0 0x1000>;
+> -- =
 
-Rob
+> 2.18.0
+> =
+
 
 _______________________________________________
 Linux-mediatek mailing list
