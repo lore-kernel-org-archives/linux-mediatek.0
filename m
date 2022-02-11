@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFA92C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Feb 2022 00:11:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D32AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Feb 2022 00:14:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=APSR55RlErBrEMTDho5zQz1Ydno1F2tc4VHtgJSbfx0=; b=m2N3HNg/XuYceT
-	KTGxGVCXehwM1ZD6Sb44oY1+jxj7o5m89MkweC8AilxWX0rX1oau1uKAVrrtZqR+8NJDjY+2LQ1tZ
-	Yghpd1NdduEJ0wThWQ7RvMNce+RI/xV41rw3nclZi6lIiPHq9ZJ8JTwZqsBtKgIJnxsKd/PWgPeez
-	KVgqekHI4dnQlWfnYr1Pb+dHY8tUQhAtDd9gdkkfrLPDkpA6ZtOvx4KJlbrqJ8MZfUYYbQCZHkOWS
-	oHjlLAI1CwVcy4UcMBbAoU5TAP8t0bs3LdzUszoWLaNtiKeDIZ8hmS9l0F0wpWuZd46wT2sUFe6z3
-	JpcwO3kcrVAogZC2PN0g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hiQNLyp6kDMbDyQnOsgToLbnBeQJVPItqTyxCXWzluM=; b=vPsXd4KM1f0Wkf
+	rgoFSIMOb5kpo5ByJ/W9Fk4G6EFOrowNGOlOMYzuxGUHkdcrEHGjHiOLKsamMuWwf2GlRFgTn5uVj
+	tI2tdifOcjrCLAywo55GtnIknEEQPyk/HJF1gWydcmJ5btO+MjnrcvlujcZiVUL3/TYCUay0vkem/
+	nDEPS19sSlgCXtL6B2CgdQNLF/01r+H7PofKDwRb/gIVKVTbk+it/q5/RdfXH0l5SDfPfwOjlwsjY
+	KRiYPjlEPgtK93Dyjas6QKLGyMsLbj261iE6FnNmiegyflPuu6YmpdGXfshlhoxfurhSYaqqP9Kc8
+	kMttHDeOMZeAW7dWI5VA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nIJWx-005HYG-OK; Fri, 11 Feb 2022 00:11:19 +0000
-Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
+	id 1nIJaA-005I3F-OG; Fri, 11 Feb 2022 00:14:38 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nIJWl-005HTt-0y
- for linux-mediatek@lists.infradead.org; Fri, 11 Feb 2022 00:11:09 +0000
-Received: by mail-yb1-xb36.google.com with SMTP id p19so20251271ybc.6
- for <linux-mediatek@lists.infradead.org>; Thu, 10 Feb 2022 16:11:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=SCMpPtMCiOJ/G+Eq+FzjqaIZUVvMGCRl0NKCrIWOD3c=;
- b=XBA4n8JWpO28GAY8KpOE5Fii8tHnNL0Lrh0fWhsI07c/cJA8Nz2/XqJrI8jSV2cGSw
- 1P91jvRZCfGSCKLJFuS4PTIM4Jrs9opnFDu/wrZbAPpeYBJIuKAmK0RMYD5fuMInBFOf
- iqwoArv+BP9V2GE9k3aY5bFzaaKeNSPnZsA6cfEROnmQ+rJQkw2sW30UUjE4EuCq4ikh
- icWobOZJ4w6Rp/ozGYoTyCQTvUjdUEJIel+Nb5PzXVswvIAZiQ/1IjWYXRYZO/SM993j
- ArKAc51/+S5BDuPNadLYzJ1vU5rEqAvCBsfeSmPlSAJNUnwlrUNC4CLcwMutRgaVaLqY
- TrEQ==
+ id 1nIJZy-005I0q-Oa; Fri, 11 Feb 2022 00:14:28 +0000
+Received: by mail-pl1-x633.google.com with SMTP id x3so3288030pll.3;
+ Thu, 10 Feb 2022 16:14:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9fDAF8X8Fc16BM/UGlkxTgN+MKXCULAYOKP8eqzMERk=;
+ b=dBIv+vQgH8sLnxQcKrIIiMMmHs2a93SjcNMIG0txbKJAxMwZShzuAIGy+6osS/9eYh
+ 3quuI2z1PaGEcJ4vJ/Q06qdYJ6nur0HMtKfgZJKgW7Hvgl782TVmTF0uzewIvKL8vlNM
+ imw1QH16+a4mH9J63KyEayApZhtzrt6GbDvCtHKMBrA2J2Q/ux5AnLSF6TfJgNw1A4Bn
+ 0fyIe/EAQfpr0VhavoJFwZoVHexxT6w3vcXBCKWkUE93DunAAHU+mErcEhQaGshSAixx
+ Qak7LtHPk2HQdcvG86KTiz1e7e4LhSyo9RH28WOEDI+4wQDtmZ1OmNl83fTo4GknVThk
+ RhAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=SCMpPtMCiOJ/G+Eq+FzjqaIZUVvMGCRl0NKCrIWOD3c=;
- b=Z7ASM4ouh122qe+YGXQ/EtyB3OZpIGrqxmkjJcDstz5dmw8taF72SA8h/EyEdjwdNG
- u1KzFF5V7Aac3CXXLfFqR9xWoRocAPr18ebqSTqKUygKstb/E1GWyQE62bTkUjcu8ZYs
- LD2ne9Xw5A3H4gwUgv/37qbP8bvK7T6PhJf02vaVjLVoJ5+JHvHCB4G3zqAGxHKW2mAv
- kxq7vuPcly3ZjKNKJuI9S0ihuQbBavkgAQjhn0YJB3tc9u4yDgED/rzKeFmbqF+InrZQ
- f/qSMvQSVEhsi4AneT5G8SloiL+HRcn9vqTk6D8fG0QCQun3l0kzm2RnnrP6Tgtx8A5R
- BFqQ==
-X-Gm-Message-State: AOAM531emEZHkdJeeq/ZWnx5WLy2TQmR/FAdoszf/ViUTA1iCRAs3IdA
- ZdNAhaxb7plcaYEJOJIWREQYu1a4oAHtw4RR96i0Pw==
-X-Google-Smtp-Source: ABdhPJz2D8S8vUC1h5FU6mERCeQjOZLOQvAmkY2lC5MMdhv3su82ZuGu4xueTzqReYLkVp6s5xRXwZIwEmBX5LooWjY=
-X-Received: by 2002:a25:103:: with SMTP id 3mr9342711ybb.110.1644538265780;
- Thu, 10 Feb 2022 16:11:05 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9fDAF8X8Fc16BM/UGlkxTgN+MKXCULAYOKP8eqzMERk=;
+ b=GdrYluptIsRKbggOK9LmH4Dd/czVWgXppHe8fUJZ7Vln7d9WZ9fp7XS+wSpyIb+0jr
+ NzOl9PTAjH2NPTujBWfzTMgjQ3mMiLQ4UzkMB2SYL+lHy6a8PbY1g8unYJCMd6+uCS4T
+ isSHHqi5SmeTRdqFdCPFscMTWL9xbGF1k1PsNvmDar1F0lBxt+/lrTMRkJDLDUxAOUVf
+ dzkUPyDDHHTvMJnU1/kds33dLv9VUxqs/DfFu8zS60mCyrkYYgEOXGJ3ZIZ0astrskO0
+ vKez1Q8CYqVl7N/Vci/VZlaVTKF+jccqZOWQBjO5Wge+rpJNX63nL7kdJk6L2hP64I6N
+ eQcw==
+X-Gm-Message-State: AOAM533K0ri7SrsINfTGc8hW0S5w1IvR9UhGjeAeGieb67Efji62h5Ts
+ +P5sUyq9AqZxrhVH9+WEx2I=
+X-Google-Smtp-Source: ABdhPJyTW1FzA/TJ0begPk8qu38cqR9Y8WG85GOzhLikIoWO5rSMey4rPwSgG3ZC8JXPYfcazfkUtQ==
+X-Received: by 2002:a17:90b:1d84:: with SMTP id
+ pf4mr5403535pjb.106.1644538465112; 
+ Thu, 10 Feb 2022 16:14:25 -0800 (PST)
+Received: from guoguo-omen.lan ([240e:379:96b:fc59:8af:1020:18bc:afc2])
+ by smtp.gmail.com with ESMTPSA id h6sm25553351pfc.96.2022.02.10.16.14.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 10 Feb 2022 16:14:24 -0800 (PST)
+From: Chuanhong Guo <gch981213@gmail.com>
+To: linux-mips@vger.kernel.org
+Cc: Chuanhong Guo <gch981213@gmail.com>,
+ Rui Salvaterra <rsalvaterra@gmail.com>,
+ Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] MIPS: ralink: mt7621: do memory detection on KSEG1
+Date: Fri, 11 Feb 2022 08:13:44 +0800
+Message-Id: <20220211001345.3429572-1-gch981213@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20220210062122.23974-1-guodong.liu@mediatek.com>
- <20220210062122.23974-2-guodong.liu@mediatek.com>
-In-Reply-To: <20220210062122.23974-2-guodong.liu@mediatek.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 11 Feb 2022 01:10:54 +0100
-Message-ID: <CACRpkdbNef4MH2UFOC6wvCFB4jUV6Qmar6H2Dqq9GYfmGtfkPA@mail.gmail.com>
-Subject: Re: [PATCH v3 1/3] dt-bindings: pinctrl: mt8186: add pinctrl file and
- binding document
-To: Guodong Liu <guodong.liu@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
- linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220210_161107_074774_110ABE29 
-X-CRM114-Status: UNSURE (   8.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220210_161426_835533_1708082D 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,18 +89,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 10, 2022 at 7:21 AM Guodong Liu <guodong.liu@mediatek.com> wrote:
->
-> 1. This patch adds pinctrl file for mt8186.
-> 2. This patch adds mt8186 compatible node in binding document.
->
-> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
+It's reported that current memory detection code occasionally detects
+larger memory under some bootloaders.
+Current memory detection code tests whether address space wraps around
+on KSEG0, which is unreliable because it's cached.
 
-I see complaints from Rob's robot so please address these
-or explain why they appear.
+Rewrite memory size detection to perform the same test on KSEG1 instead.
+While at it, this patch also does the following two things:
+1. use a fixed pattern instead of a random function pointer as the magic
+   value.
+2. add an additional memory write and a second comparison as part of the
+   test to prevent possible smaller memory detection result due to
+   leftover values in memory.
 
-Yours,
-Linus Walleij
+Fixes: 139c949f7f0a MIPS: ("ralink: mt7621: add memory detection support")
+Reported-by: Rui Salvaterra <rsalvaterra@gmail.com>
+Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
+---
+ arch/mips/ralink/mt7621.c | 36 +++++++++++++++++++++++-------------
+ 1 file changed, 23 insertions(+), 13 deletions(-)
+
+diff --git a/arch/mips/ralink/mt7621.c b/arch/mips/ralink/mt7621.c
+index d6efffd4dd20..12c8808e0dea 100644
+--- a/arch/mips/ralink/mt7621.c
++++ b/arch/mips/ralink/mt7621.c
+@@ -22,7 +22,9 @@
+ 
+ #include "common.h"
+ 
+-static void *detect_magic __initdata = detect_memory_region;
++#define MT7621_MEM_TEST_PATTERN         0xaa5555aa
++
++static u32 detect_magic __initdata;
+ 
+ int pcibios_root_bridge_prepare(struct pci_host_bridge *bridge)
+ {
+@@ -58,24 +60,32 @@ phys_addr_t mips_cpc_default_phys_base(void)
+ 	panic("Cannot detect cpc address");
+ }
+ 
++static bool __init mt7621_addr_wraparound_test(phys_addr_t size)
++{
++	void *dm = (void *)KSEG1ADDR(&detect_magic);
++
++	if (CPHYSADDR(dm + size) >= MT7621_LOWMEM_MAX_SIZE)
++		return true;
++	__raw_writel(MT7621_MEM_TEST_PATTERN, dm);
++	if (__raw_readl(dm) != __raw_readl(dm + size))
++		return false;
++	__raw_writel(!MT7621_MEM_TEST_PATTERN, dm);
++	return __raw_readl(dm) == __raw_readl(dm + size);
++}
++
+ static void __init mt7621_memory_detect(void)
+ {
+-	void *dm = &detect_magic;
+ 	phys_addr_t size;
+ 
+-	for (size = 32 * SZ_1M; size < 256 * SZ_1M; size <<= 1) {
+-		if (!__builtin_memcmp(dm, dm + size, sizeof(detect_magic)))
+-			break;
++	for (size = 32 * SZ_1M; size <= 256 * SZ_1M; size <<= 1) {
++		if (mt7621_addr_wraparound_test(size)) {
++			memblock_add(MT7621_LOWMEM_BASE, size);
++			return;
++		}
+ 	}
+ 
+-	if ((size == 256 * SZ_1M) &&
+-	    (CPHYSADDR(dm + size) < MT7621_LOWMEM_MAX_SIZE) &&
+-	    __builtin_memcmp(dm, dm + size, sizeof(detect_magic))) {
+-		memblock_add(MT7621_LOWMEM_BASE, MT7621_LOWMEM_MAX_SIZE);
+-		memblock_add(MT7621_HIGHMEM_BASE, MT7621_HIGHMEM_SIZE);
+-	} else {
+-		memblock_add(MT7621_LOWMEM_BASE, size);
+-	}
++	memblock_add(MT7621_LOWMEM_BASE, MT7621_LOWMEM_MAX_SIZE);
++	memblock_add(MT7621_HIGHMEM_BASE, MT7621_HIGHMEM_SIZE);
+ }
+ 
+ void __init ralink_of_remap(void)
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
