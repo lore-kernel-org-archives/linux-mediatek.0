@@ -4,74 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D83E9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Feb 2022 00:46:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40F8DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Feb 2022 01:42:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jRcKLdrpb4jI5PqyL4wKhKsVFen2ukQSsmZVsI9hucE=; b=rXRIStA5PvJrbI
-	HuG3zwiDEEl//oN8sIjDR2XBWXRosZtFnFUJ/U4Ei5PNn+q38VXR+Lg1fa4t/5QjHN4bJXCo0s10C
-	Swkg1YCdX5oWlGg6DYkjj+RUeP/kP/Ps+7Wno3Rg1XncBnsJakY/qot06KgYHqyVL1j/42emqAAEC
-	cIZzTo65JGZjhJ/szb1YtmEs++kTsQBcVgKx8+GVKkZ9cYfjNlsD6SraBuxkgnWW+sX/mBPxxFIhp
-	2+kDZOmxo376MNffx3/VLB6N93O7o4KGNOR+1DfDi6LBP9AKwA9oYQ//adWIq3gGMbFq4L2z2+O9y
-	oxmcvuHOh90ie3zxk8LA==;
+	List-Owner; bh=tIwnmE2b5laqvqBXV2sFhPt7xfZdVJ9jIrmbdDRHZOg=; b=k4Ed/SHVudFWvs
+	Q9oLsPWp4Omm5GSngrikQVDJ9uyUFaZBE/uczhvIZAF2KJrhIskgdSlDLJW2S5YJBjc/foU9ByzJz
+	qj3rMtFOWFT/b91dK9KOj4iEtU4f3tqaz+9yTgbxVxEPyBRNpl9wzJK3mjxo34iUQBiulMuSO0SQw
+	ln5285aRvMVBmIpCrVJW0w5NTI1ShMK5TEUNxvFdkqoeKEM+UQcV/Hu9M+dCK6lIbGxQZ98JRVMtv
+	dIvy0ShWeVtFLoAur4fBmEakRoA0E9wNOMqvLTQuY4htbZmmUwpnJ1RneV0TkP50Dc9+uNRtXJS3e
+	WFboPT+bglHleiDR6xJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nIK4p-005MRR-Cp; Fri, 11 Feb 2022 00:46:19 +0000
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
+	id 1nIKwc-005R5G-0C; Fri, 11 Feb 2022 01:41:54 +0000
+Received: from mail-io1-xd32.google.com ([2607:f8b0:4864:20::d32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nIK4l-005MPb-9H
- for linux-mediatek@lists.infradead.org; Fri, 11 Feb 2022 00:46:17 +0000
-Received: by mail-yb1-xb29.google.com with SMTP id y129so20418186ybe.7
- for <linux-mediatek@lists.infradead.org>; Thu, 10 Feb 2022 16:46:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ id 1nIKwP-005R3j-UZ; Fri, 11 Feb 2022 01:41:43 +0000
+Received: by mail-io1-xd32.google.com with SMTP id w7so9720333ioj.5;
+ Thu, 10 Feb 2022 17:41:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Aqg2zYlKFhDU5R59omnns1h0zMhseRBVTVyLe6xPNAw=;
- b=X0L8pqDQdxoPIp+SQ9ATds+ARsJ5XaRoakuQEEb9AFJOQkztFhYCnS4eoc+7WtnGKs
- IsI/x2HthuAgMOz5p1lV5S0zHy571/uytyaHe9Es0b2tW60l4snqT95ZuJ+UA8SkdRfh
- aWdY5u7olCieQnKYht1p5QG5ZQf0gfpf2YXRz6Hn26bbnAQ8XSniclLvAF8ru4GJg8ie
- jY8OPuKSa+f2NFkdpfL7Qp+Bt2Vh53xHnARth/o1ESmN8uulrsmvf30hIXvcbA/e1lL2
- R5hGHRrGYCrVsTi32PzHqttKWX6Jc1xa1FGkhTcFZxvZKx9tKO/rSiTm9a6waUuh7myC
- RGIQ==
+ :cc; bh=g672afMOWPofXOHvvpzMvP9no/e9tuPgH5JHAmWPU8Y=;
+ b=ndoVMRkaFlE5uP+00x6Ts/PUE4LWG3Od0SOLJomDYAqb3ExhfLwgb32rA1o8beLjTU
+ 669MmZKMX15+2uZ4xHxl/nuAiB4MC5f4GuqTd44R9Ccwp6W+NSAjFpoYPz1LiOj0/EGV
+ pAJXYf7fLa3OWVsitFb3SATLm2AjkK+BmXKsIZTD2y8vV8wxMmUxBs4zQgaPRFn5USk9
+ RRhd9aYY7jcQhPCEA48GHdkEJIqlW+PoQClKxy1hYn1m6XwVNnm25q/4XsLCuHKNK2gV
+ /mQ/1sSrJg+/U583qtvsGhxdT4GYo2eU77OIYReybBY3h90tpeLH7GImTMCXBPRn1QoI
+ L/3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Aqg2zYlKFhDU5R59omnns1h0zMhseRBVTVyLe6xPNAw=;
- b=tyOEMWv7/EZxhfQxu/U+utZ+8EermwBhRXoJgX9AWMwfd9aO+TKfybtYYJEkdaAJpt
- ccH5710sMwF5NrDLva3detU6a+eQ3MJG0Uu143dWuXSnrOSbkmsCYAaqaCWfBoccvl+G
- 68IkbexxmH12+Fj2iEfmpKAF5F6ZboGtkyKq6WdhMMSBplECa7fFBE+rMFNrMBGOyPI4
- zzIagcX/9SbYXZPOZHjMmpJi4b8WLgOtbrYfKUMmkca9hQ8mUXdHGzN/lredStctbGxV
- ZfqKzfV3xBFRRC/RWye1h5rgccb87Owj99+2RIJVDC0T3RPSYOOn1fJU6Y44WrDa3SvW
- f92g==
-X-Gm-Message-State: AOAM5339z6njB6nKi0twhhqDDuPfKU3TxQqx9vIhPAP6fMnDo6CtzdGN
- kTryri1C0v7XR65FBSw1apHSbh2Q8qBFfhcDz9X5xQ==
-X-Google-Smtp-Source: ABdhPJxPdUAdZzu441vtdOPhtVOnx5TxV2FVC7NtVsI9RRP7ptyI1elK0lctrq3IqH8VqzMTb+ldzwpyBRi01HARJ18=
-X-Received: by 2002:a81:4cc3:: with SMTP id
- z186mr10573147ywa.140.1644540373922; 
- Thu, 10 Feb 2022 16:46:13 -0800 (PST)
+ bh=g672afMOWPofXOHvvpzMvP9no/e9tuPgH5JHAmWPU8Y=;
+ b=ufuWqgIpYPt4nM+o1IeLcA70HRApe3beH0qyM9yJQee1Tgaai2dHi2x11+Ey/iUVJc
+ 2peRdvdlaP+tRNC9u8YrQkoXv8LeHP8ynMFLQG2wE8eRdutvYW4H6DT1io+MZeMYtQGn
+ 3q7Ph4gqyaWATWPvAyoiu486ELxwBFRMkErfonFt25wRp1hkdpz5KFRchgc1bu9soX1N
+ Qt2+vID/oTeAnUw3WskrsJq+vO4ECAZ2peGme3kN6zGvsGAd8g0rTZZA3xJRJX87qJ2i
+ AublRU++33nSPWZ2B6P9ctw0tm0d0Y070SyxXlM0Zl3V9m1vGIz6ZCRo3ynEi4x0dedb
+ EGmQ==
+X-Gm-Message-State: AOAM533kh4f8cLggAmUGALsJJbsHqydCJxb6A4UTrjOaAHd+y8O2RdUX
+ Ix6IiBHoBhNUAbt6t72OD736eU+NaGw7D67TKWPG/YNA2lsj+Q==
+X-Google-Smtp-Source: ABdhPJxC9eGByQeSdgYqYLzhyYHZME+2EFUVP1AXlEQbwcxc0ZAHjxxfggmaKLG8zVSb6vHb/m6iuUXgbaTmS/IX0qo=
+X-Received: by 2002:a02:c8c8:: with SMTP id q8mr5164312jao.243.1644543698735; 
+ Thu, 10 Feb 2022 17:41:38 -0800 (PST)
 MIME-Version: 1.0
-References: <20220202153528.707185-1-wenst@chromium.org>
-In-Reply-To: <20220202153528.707185-1-wenst@chromium.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 11 Feb 2022 01:46:03 +0100
-Message-ID: <CACRpkdaqKAU7_HWoCqjnbmCEc77FKJD9gUFR+ARbmQmR9zRZSg@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: pinctrl: mt8195: fix bias-pull-{up,
- down} checks
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Guodong Liu <guodong.liu@mediatek.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>, 
- linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+References: <20220211001345.3429572-1-gch981213@gmail.com>
+In-Reply-To: <20220211001345.3429572-1-gch981213@gmail.com>
+From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Date: Thu, 10 Feb 2022 17:41:28 -0800
+Message-ID: <CALCv0x3uYMovfqzobM6xfr8_apZQtz=DhyM-DsJe2L_rqAj65g@mail.gmail.com>
+Subject: Re: [PATCH] MIPS: ralink: mt7621: do memory detection on KSEG1
+To: Chuanhong Guo <gch981213@gmail.com>
+Cc: "open list:MIPS" <linux-mips@vger.kernel.org>,
+ Rui Salvaterra <rsalvaterra@gmail.com>, 
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220210_164615_349729_B98E82A6 
-X-CRM114-Status: UNSURE (   9.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220210_174142_033831_AC20BE23 
+X-CRM114-Status: GOOD (  24.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,27 +83,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 2, 2022 at 4:35 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
+Hi Guo,
 
-> When the constraints and description for bias-pull-{up,down} were added,
-> the constraints were not indented correctly, resulting in them being
-> parsed as part of the description. This effectively nullified their
-> purpose.
+On Thu, Feb 10, 2022 at 4:14 PM Chuanhong Guo <gch981213@gmail.com> wrote:
 >
-> Move the constraints out of the description block, make each description
-> part of the same associative array as the enum its describing, and
-> reindent them correctly so they take effect.
+> It's reported that current memory detection code occasionally detects
+> larger memory under some bootloaders.
+> Current memory detection code tests whether address space wraps around
+> on KSEG0, which is unreliable because it's cached.
 >
-> Also add "type: boolean" to the list of valid values. This corresponds
-> to having bias-pull-{up,down} without any arguments.
+> Rewrite memory size detection to perform the same test on KSEG1 instead.
+> While at it, this patch also does the following two things:
+> 1. use a fixed pattern instead of a random function pointer as the magic
+>    value.
+> 2. add an additional memory write and a second comparison as part of the
+>    test to prevent possible smaller memory detection result due to
+>    leftover values in memory.
 >
-> Fixes: 91e7edceda96 ("dt-bindings: pinctrl: mt8195: change pull up/down description")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Fixes: 139c949f7f0a MIPS: ("ralink: mt7621: add memory detection support")
+> Reported-by: Rui Salvaterra <rsalvaterra@gmail.com>
+> Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
+> ---
+>  arch/mips/ralink/mt7621.c | 36 +++++++++++++++++++++++-------------
+>  1 file changed, 23 insertions(+), 13 deletions(-)
+>
+> diff --git a/arch/mips/ralink/mt7621.c b/arch/mips/ralink/mt7621.c
+> index d6efffd4dd20..12c8808e0dea 100644
+> --- a/arch/mips/ralink/mt7621.c
+> +++ b/arch/mips/ralink/mt7621.c
+> @@ -22,7 +22,9 @@
+>
+>  #include "common.h"
+>
+> -static void *detect_magic __initdata = detect_memory_region;
+> +#define MT7621_MEM_TEST_PATTERN         0xaa5555aa
+> +
+> +static u32 detect_magic __initdata;
+>
+>  int pcibios_root_bridge_prepare(struct pci_host_bridge *bridge)
+>  {
+> @@ -58,24 +60,32 @@ phys_addr_t mips_cpc_default_phys_base(void)
+>         panic("Cannot detect cpc address");
+>  }
+>
+> +static bool __init mt7621_addr_wraparound_test(phys_addr_t size)
+> +{
+> +       void *dm = (void *)KSEG1ADDR(&detect_magic);
+> +
+> +       if (CPHYSADDR(dm + size) >= MT7621_LOWMEM_MAX_SIZE)
+> +               return true;
+> +       __raw_writel(MT7621_MEM_TEST_PATTERN, dm);
+> +       if (__raw_readl(dm) != __raw_readl(dm + size))
+> +               return false;
+> +       __raw_writel(!MT7621_MEM_TEST_PATTERN, dm);
+> +       return __raw_readl(dm) == __raw_readl(dm + size);
+> +}
+> +
+>  static void __init mt7621_memory_detect(void)
+>  {
+> -       void *dm = &detect_magic;
+>         phys_addr_t size;
+>
+> -       for (size = 32 * SZ_1M; size < 256 * SZ_1M; size <<= 1) {
+> -               if (!__builtin_memcmp(dm, dm + size, sizeof(detect_magic)))
+> -                       break;
+> +       for (size = 32 * SZ_1M; size <= 256 * SZ_1M; size <<= 1) {
+> +               if (mt7621_addr_wraparound_test(size)) {
+> +                       memblock_add(MT7621_LOWMEM_BASE, size);
+> +                       return;
+> +               }
+>         }
+>
+> -       if ((size == 256 * SZ_1M) &&
+> -           (CPHYSADDR(dm + size) < MT7621_LOWMEM_MAX_SIZE) &&
+> -           __builtin_memcmp(dm, dm + size, sizeof(detect_magic))) {
+> -               memblock_add(MT7621_LOWMEM_BASE, MT7621_LOWMEM_MAX_SIZE);
+> -               memblock_add(MT7621_HIGHMEM_BASE, MT7621_HIGHMEM_SIZE);
+> -       } else {
+> -               memblock_add(MT7621_LOWMEM_BASE, size);
+> -       }
+> +       memblock_add(MT7621_LOWMEM_BASE, MT7621_LOWMEM_MAX_SIZE);
+> +       memblock_add(MT7621_HIGHMEM_BASE, MT7621_HIGHMEM_SIZE);
+>  }
+>
+>  void __init ralink_of_remap(void)
+> --
+> 2.34.1
+>
+Thanks for your change. I think this will also fix
+https://lore.kernel.org/lkml/202201191557.OISJHNMi-lkp@intel.com/
+since you are removing __builtin_memcmp usage.
 
-Patch applied!
-
-Yours,
-Linus Walleij
+Ilya
 
 _______________________________________________
 Linux-mediatek mailing list
