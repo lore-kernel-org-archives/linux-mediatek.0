@@ -4,68 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F547C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Feb 2022 06:50:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38B25C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Feb 2022 06:51:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f0j4qTAjxNh7qu8DDRtrd5y9jpHU+KjqghTmfUvcwiI=; b=TJgbVkeX2/KJrL
-	NPDEzthYyqbQKUhEkHNiIAV3s7rKpeWtJnj3sddacWKO9Ka51XFVx1MH7xVipBv4h7fHxt+DIHbXB
-	7TngPQmWV45Cg8lug8JeiRLzqwwB+mTGlzSgFnGdw0JaUORLZhFM4j7jDS/24fxWxdgZC32sN6Evd
-	FUeoVKFw7MdeT1dLEEuxTONZh3FQMPyQ0LQSqg0dgES3XA6TFBs6sUkgwfFmxYGe5yVSgdiACXWkL
-	YztAeGabAmYlWx5Rn5zBDd26oV8oUeZHRvtzQCaoY/YebUFKsHzi3vw5Vs2WrYt1IrF9v23wSdJZq
-	WEQcWOW3tUkscqJnBcXA==;
+	List-Owner; bh=xlkBRcQz5WnjVeqQtcwFussm2VbvSH2wr7bt/1HOzXM=; b=kp3xPxYwpQheCa
+	udWCN26mPJkwtGAqahTZkdh6BmaG0eUJLRLF0OsAhLSOhJ/CrzM2B+vnQ1SpvsozRQahvQSqlh5p5
+	ZWuMLpIgYDTJLmFAfAOLB3WORRRbDTDtj0tHqNn5SuzGOWt5w1ePtrX08zNxMlNDjGn7H/fpH0AXD
+	axOsM6bN/GgqQYa1XaJJH7ZkNpS4i7dy3PjIJ9VN4IOgpw/SH+nhMYF0hvyHRV4Tx0n4g0pnbEoI1
+	gtj9frNAo5SyjkXVofRTii4Ljegy35BStR6YzQalXlt4SPTyZHCdBKeENY1o5+CQVvXdrEMyRLkwr
+	nYJI+m8RBfxUk/OP/knA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nIPlM-0060jP-1A; Fri, 11 Feb 2022 06:50:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nIPlj-0060r3-N3; Fri, 11 Feb 2022 06:50:59 +0000
+Received: from mail-vs1-xe36.google.com ([2607:f8b0:4864:20::e36])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nIPlH-0060ih-29; Fri, 11 Feb 2022 06:50:34 +0000
-X-UUID: 1ea55caaf015410484190775b6112c96-20220210
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=qnqekZxaHhYJpN2y/q2vj6neS3IBIAacbiXlHvR0vWo=; 
- b=oeaPFkV69o073mVc4rYSqGLbeuk+qU3m3yQSAi927ii3qIBqeVhRB0kDb/sMRBM/Iudw7Qd8BShl1hFrdw5oVZyEjRFWTHTjkaOru7SG3zn5YXYmk60LBO1OfcpkkBS+SWG6As98wm4fCYyxSS16Siur3GOY4398uxw/3A1xc5o=;
-X-UUID: 1ea55caaf015410484190775b6112c96-20220210
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <qizhong.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 15920199; Thu, 10 Feb 2022 23:50:22 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 10 Feb 2022 22:50:21 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Feb 2022 14:50:19 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 11 Feb 2022 14:50:18 +0800
-Message-ID: <bf5cbb745d4f5bdf675aff661f0cc7aef7280e2f.camel@mediatek.com>
-Subject: Re: [PATCH v2] PCI: mediatek: Clear interrupt status before
- dispatching handler
-From: qizhong.cheng <qizhong.cheng@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, 
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Krzysztof
- =?UTF-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Bjorn Helgaas
- <bhelgaas@google.com>
-CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <chuanjia.liu@mediatek.com>
-Date: Fri, 11 Feb 2022 14:50:18 +0800
-In-Reply-To: <06446828-b589-5d7a-0e9f-25f6321e0da6@collabora.com>
-References: <20220210012125.6420-1-qizhong.cheng@mediatek.com>
- <06446828-b589-5d7a-0e9f-25f6321e0da6@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nIPlS-0060jr-PT; Fri, 11 Feb 2022 06:50:48 +0000
+Received: by mail-vs1-xe36.google.com with SMTP id m24so9157303vsp.7;
+ Thu, 10 Feb 2022 22:50:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=OSROPkIHqOIfi3Mx6GPXtGKkcEJ0TQ6U5/02TvsWVjs=;
+ b=aI6iirQLDE79NFBohp4tGvHl9CuJHutPPj78yxbu89pb2Pwy6FzthqI52TCGsqnVsi
+ nPByOczGUEQLxLF7f1hvq3IXINsb2d9nh0ou1Wta6vGgRAtOfLEzuANmnWkMTOreMtzB
+ 2c4wtjp2fBfGXIrnZXEJvVtxF8EVqhIj2sM5OgI0b8diZIHQQIyv3wtxvu8+DYJ+UuIK
+ r3nQlVWV1kLAAX9S28hNVCmp0jo6g0YdYBkL/Yu79JCSUKNVlGiCKQY1aLtSD9n+jgMo
+ mQYD1lmQXYKOeApQjSEv1ygK0HRmSDt6YnYU1IvD4AO0i4+wlymSHKeYyK9EtZ/XFvwZ
+ jH9A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=OSROPkIHqOIfi3Mx6GPXtGKkcEJ0TQ6U5/02TvsWVjs=;
+ b=QaYljCuCSgGSRBvRPbZqJ9A+xv1DO7+yHON+Fg9vT4FuGuTjshgD3lGnRL2kP4+aqg
+ wPh0EU/3iMNBiFMaIhDSMYtCGSQqdBoMwS0b2oBdf7WyyTViuLC+ogB8RblSt4FdyEW7
+ dGq3y90zIF4fdEudeZs+JuPy8vFOWCmgcdwuih6L6zVVg3GqK/1d8d4aTcx+YHayzjYn
+ sFIMZErhZJunH+F8kPrrImUVmcwPqpF4VOZ8DUp8t63pbqnjlHM0nB8XrTcHPrlTaXF7
+ aVvKTw9O3fMdpldZosZZg30/l4VeU47eDE4fj3FG0nYCgvL3jsbllaZ0G+2ouMYPwxj3
+ psCw==
+X-Gm-Message-State: AOAM533FFovVJCOvcZFHGsqJO1C8lIUSgDnxasiCfZwQTOkXgDtGxUPc
+ WENwovHJF7SwuLhJm1emp4hlvWvK2MafImm/XQo=
+X-Google-Smtp-Source: ABdhPJzCPF1tTpcQ1FWpqWN/gHplGyCbU2hVnrJ2gUBllwLUgLp6iZnR43b4mmVnWetix67HkzQhNADYz8Oi3+nNfFE=
+X-Received: by 2002:a67:10c4:: with SMTP id 187mr85908vsq.1.1644562240863;
+ Thu, 10 Feb 2022 22:50:40 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220211001345.3429572-1-gch981213@gmail.com>
+In-Reply-To: <20220211001345.3429572-1-gch981213@gmail.com>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Fri, 11 Feb 2022 07:50:29 +0100
+Message-ID: <CAMhs-H9O=EagT-6296-CMQFBYFfekj2agrH9a8JpHzeC36EiUg@mail.gmail.com>
+Subject: Re: [PATCH] MIPS: ralink: mt7621: do memory detection on KSEG1
+To: Chuanhong Guo <gch981213@gmail.com>
+Cc: "open list:MIPS" <linux-mips@vger.kernel.org>,
+ Rui Salvaterra <rsalvaterra@gmail.com>, 
+ Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>, 
+ linux-arm-kernel@lists.infradead.org, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220210_225031_142240_4C5F02E8 
-X-CRM114-Status: GOOD (  27.14  )
+X-CRM114-CacheID: sfid-20220210_225042_855203_032978B5 
+X-CRM114-Status: GOOD (  14.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,87 +85,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino & Greg KH,
+Hi Guo,
 
-On Thu, 2022-02-10 at 15:31 +0100, AngeloGioacchino Del Regno wrote:
-> Il 10/02/22 02:21, qizhong cheng ha scritto:
-> > We found a failure when used iperf tool for wifi performance
-> > testing,
-> > there are some MSIs received while clearing the interrupt status,
-> > these MSIs cannot be serviced.
-> > 
-> > The interrupt status can be cleared even the MSI status still
-> > remaining,
-> > as an edge-triggered interrupts, its interrupt status should be
-> > cleared
-> > before dispatching to the handler of device.
-> > 
-> > Signed-off-by: qizhong cheng <qizhong.cheng@mediatek.com>
-> 
-> Hello Qizhong,
-> 
-> This commit is fixing an issue, which means that you *have to* add a
-> proper
-> Fixes tag.
-> 
-> I believe that this is fixing commit
-> 43e6409db64d ("PCI: mediatek: Add MSI support for MT2712 and
-> MT7622").
-> 
-> Please add the tag and send a v3, after which:
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> 
+On Fri, Feb 11, 2022 at 4:56 AM Chuanhong Guo <gch981213@gmail.com> wrote:
+>
+> It's reported that current memory detection code occasionally detects
+> larger memory under some bootloaders.
+> Current memory detection code tests whether address space wraps around
+> on KSEG0, which is unreliable because it's cached.
+>
+> Rewrite memory size detection to perform the same test on KSEG1 instead.
+> While at it, this patch also does the following two things:
+> 1. use a fixed pattern instead of a random function pointer as the magic
+>    value.
+> 2. add an additional memory write and a second comparison as part of the
+>    test to prevent possible smaller memory detection result due to
+>    leftover values in memory.
+>
+> Fixes: 139c949f7f0a MIPS: ("ralink: mt7621: add memory detection support")
+> Reported-by: Rui Salvaterra <rsalvaterra@gmail.com>
+> Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
+> ---
+>  arch/mips/ralink/mt7621.c | 36 +++++++++++++++++++++++-------------
+>  1 file changed, 23 insertions(+), 13 deletions(-)
 
-Thanks for your reviews and suggestions.
-I will fix it in the next v3 version.
+Thanks! Nothing seems to be broken after these changes, at least for
+my boards :)
 
-> 
-> > ---
-> > v2:
-> >   - Update the subject line.
-> >   - Improve the commit log and code comments.
-> > 
-> >   drivers/pci/controller/pcie-mediatek.c | 9 +++++++--
-> >   1 file changed, 7 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/pci/controller/pcie-mediatek.c
-> > b/drivers/pci/controller/pcie-mediatek.c
-> > index 2f3f974977a3..2856d74b2513 100644
-> > --- a/drivers/pci/controller/pcie-mediatek.c
-> > +++ b/drivers/pci/controller/pcie-mediatek.c
-> > @@ -624,12 +624,17 @@ static void mtk_pcie_intr_handler(struct
-> > irq_desc *desc)
-> >   		if (status & MSI_STATUS){
-> >   			unsigned long imsi_status;
-> >   
-> > +			/*
-> > +			 * The interrupt status can be cleared even the
-> > MSI
-> > +			 * status still remaining, hence as an edge-
-> > triggered
-> > +			 * interrupts, its interrupt status should be
-> > cleared
-> > +			 * before dispatching handler.
-> > +			 */
-> > +			writel(MSI_STATUS, port->base +
-> > PCIE_INT_STATUS);
-> >   			while ((imsi_status = readl(port->base +
-> > PCIE_IMSI_STATUS))) {
-> >   				for_each_set_bit(bit, &imsi_status,
-> > MTK_MSI_IRQS_NUM)
-> >   					generic_handle_domain_irq(port-
-> > >inner_domain, bit);
-> >   			}
-> > -			/* Clear MSI interrupt status */
-> > -			writel(MSI_STATUS, port->base +
-> > PCIE_INT_STATUS);
-> >   		}
-> >   	}
-> >   
-> > 
-> 
-> 
+Tested-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+
+Best regards,
+    Sergio Paracuellos
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
