@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40F8DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Feb 2022 01:42:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03ACAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Feb 2022 02:55:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tIwnmE2b5laqvqBXV2sFhPt7xfZdVJ9jIrmbdDRHZOg=; b=k4Ed/SHVudFWvs
-	Q9oLsPWp4Omm5GSngrikQVDJ9uyUFaZBE/uczhvIZAF2KJrhIskgdSlDLJW2S5YJBjc/foU9ByzJz
-	qj3rMtFOWFT/b91dK9KOj4iEtU4f3tqaz+9yTgbxVxEPyBRNpl9wzJK3mjxo34iUQBiulMuSO0SQw
-	ln5285aRvMVBmIpCrVJW0w5NTI1ShMK5TEUNxvFdkqoeKEM+UQcV/Hu9M+dCK6lIbGxQZ98JRVMtv
-	dIvy0ShWeVtFLoAur4fBmEakRoA0E9wNOMqvLTQuY4htbZmmUwpnJ1RneV0TkP50Dc9+uNRtXJS3e
-	WFboPT+bglHleiDR6xJw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=uxZFYRLy16GPp/YQqgl2KwmStNLbHGS9X2t26xq9iRo=; b=IGDWvrYDV3x4LJ
+	2qd8KYV//U3uawxvGkJfTHqZ2itQvIoQbHNvNzUckEmgI31VpW+z0kfSFUBnJvAOyfEvoK7igLc/7
+	4M4fLyJIrS2G82PINIQ6ZJ0CKbAzybbM5slNqGBzCa7sbgY+IZcAx6gaxRKYjSSdH0NYk4UZjDpiJ
+	kArZU2GFpJTu2afHuLb2eomqP81kD2uiJnbjFT5sJq8jJ428rAoC8IXQyfW+KZO8YlC+SsmUZd+LO
+	Qy7fYF9y5y8wFtl9+4ZTQhYOCVcIQW+e/zojs/FGOUD5a3BGePiIfbbmTdG8pYYjAyOeBz2Daxz4o
+	R1hOCRDyZl+8PA/JCBUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nIKwc-005R5G-0C; Fri, 11 Feb 2022 01:41:54 +0000
-Received: from mail-io1-xd32.google.com ([2607:f8b0:4864:20::d32])
+	id 1nIM5l-005Y4f-8S; Fri, 11 Feb 2022 02:55:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nIKwP-005R3j-UZ; Fri, 11 Feb 2022 01:41:43 +0000
-Received: by mail-io1-xd32.google.com with SMTP id w7so9720333ioj.5;
- Thu, 10 Feb 2022 17:41:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=g672afMOWPofXOHvvpzMvP9no/e9tuPgH5JHAmWPU8Y=;
- b=ndoVMRkaFlE5uP+00x6Ts/PUE4LWG3Od0SOLJomDYAqb3ExhfLwgb32rA1o8beLjTU
- 669MmZKMX15+2uZ4xHxl/nuAiB4MC5f4GuqTd44R9Ccwp6W+NSAjFpoYPz1LiOj0/EGV
- pAJXYf7fLa3OWVsitFb3SATLm2AjkK+BmXKsIZTD2y8vV8wxMmUxBs4zQgaPRFn5USk9
- RRhd9aYY7jcQhPCEA48GHdkEJIqlW+PoQClKxy1hYn1m6XwVNnm25q/4XsLCuHKNK2gV
- /mQ/1sSrJg+/U583qtvsGhxdT4GYo2eU77OIYReybBY3h90tpeLH7GImTMCXBPRn1QoI
- L/3g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=g672afMOWPofXOHvvpzMvP9no/e9tuPgH5JHAmWPU8Y=;
- b=ufuWqgIpYPt4nM+o1IeLcA70HRApe3beH0qyM9yJQee1Tgaai2dHi2x11+Ey/iUVJc
- 2peRdvdlaP+tRNC9u8YrQkoXv8LeHP8ynMFLQG2wE8eRdutvYW4H6DT1io+MZeMYtQGn
- 3q7Ph4gqyaWATWPvAyoiu486ELxwBFRMkErfonFt25wRp1hkdpz5KFRchgc1bu9soX1N
- Qt2+vID/oTeAnUw3WskrsJq+vO4ECAZ2peGme3kN6zGvsGAd8g0rTZZA3xJRJX87qJ2i
- AublRU++33nSPWZ2B6P9ctw0tm0d0Y070SyxXlM0Zl3V9m1vGIz6ZCRo3ynEi4x0dedb
- EGmQ==
-X-Gm-Message-State: AOAM533kh4f8cLggAmUGALsJJbsHqydCJxb6A4UTrjOaAHd+y8O2RdUX
- Ix6IiBHoBhNUAbt6t72OD736eU+NaGw7D67TKWPG/YNA2lsj+Q==
-X-Google-Smtp-Source: ABdhPJxC9eGByQeSdgYqYLzhyYHZME+2EFUVP1AXlEQbwcxc0ZAHjxxfggmaKLG8zVSb6vHb/m6iuUXgbaTmS/IX0qo=
-X-Received: by 2002:a02:c8c8:: with SMTP id q8mr5164312jao.243.1644543698735; 
- Thu, 10 Feb 2022 17:41:38 -0800 (PST)
+ id 1nIM5h-005Y4F-5F
+ for linux-mediatek@lists.infradead.org; Fri, 11 Feb 2022 02:55:23 +0000
+X-UUID: ea1ff2100ce54b3d8fa7e3a72148f13e-20220210
+X-UUID: ea1ff2100ce54b3d8fa7e3a72148f13e-20220210
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <deren.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 15992697; Thu, 10 Feb 2022 19:55:17 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 10 Feb 2022 18:55:15 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 11 Feb 2022 10:55:01 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 11 Feb 2022 10:55:01 +0800
+From: Deren Wu <Deren.Wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
+ Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+ KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+ <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
+ <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
+ Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
+ Chen" <shayne.chen@mediatek.com>, linux-wireless
+ <linux-wireless@vger.kernel.org>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH] mt76: mt7615: fix compiler warning on frame size
+Date: Fri, 11 Feb 2022 10:54:55 +0800
+Message-ID: <c7c87a448a159a9836b6ac848eb92f6a367daf1a.1644547407.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20220211001345.3429572-1-gch981213@gmail.com>
-In-Reply-To: <20220211001345.3429572-1-gch981213@gmail.com>
-From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Date: Thu, 10 Feb 2022 17:41:28 -0800
-Message-ID: <CALCv0x3uYMovfqzobM6xfr8_apZQtz=DhyM-DsJe2L_rqAj65g@mail.gmail.com>
-Subject: Re: [PATCH] MIPS: ralink: mt7621: do memory detection on KSEG1
-To: Chuanhong Guo <gch981213@gmail.com>
-Cc: "open list:MIPS" <linux-mips@vger.kernel.org>,
- Rui Salvaterra <rsalvaterra@gmail.com>, 
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220210_174142_033831_AC20BE23 
-X-CRM114-Status: GOOD (  24.48  )
+X-CRM114-CacheID: sfid-20220210_185521_212221_F37A6808 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,105 +73,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Guo,
-
-On Thu, Feb 10, 2022 at 4:14 PM Chuanhong Guo <gch981213@gmail.com> wrote:
->
-> It's reported that current memory detection code occasionally detects
-> larger memory under some bootloaders.
-> Current memory detection code tests whether address space wraps around
-> on KSEG0, which is unreliable because it's cached.
->
-> Rewrite memory size detection to perform the same test on KSEG1 instead.
-> While at it, this patch also does the following two things:
-> 1. use a fixed pattern instead of a random function pointer as the magic
->    value.
-> 2. add an additional memory write and a second comparison as part of the
->    test to prevent possible smaller memory detection result due to
->    leftover values in memory.
->
-> Fixes: 139c949f7f0a MIPS: ("ralink: mt7621: add memory detection support")
-> Reported-by: Rui Salvaterra <rsalvaterra@gmail.com>
-> Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
-> ---
->  arch/mips/ralink/mt7621.c | 36 +++++++++++++++++++++++-------------
->  1 file changed, 23 insertions(+), 13 deletions(-)
->
-> diff --git a/arch/mips/ralink/mt7621.c b/arch/mips/ralink/mt7621.c
-> index d6efffd4dd20..12c8808e0dea 100644
-> --- a/arch/mips/ralink/mt7621.c
-> +++ b/arch/mips/ralink/mt7621.c
-> @@ -22,7 +22,9 @@
->
->  #include "common.h"
->
-> -static void *detect_magic __initdata = detect_memory_region;
-> +#define MT7621_MEM_TEST_PATTERN         0xaa5555aa
-> +
-> +static u32 detect_magic __initdata;
->
->  int pcibios_root_bridge_prepare(struct pci_host_bridge *bridge)
->  {
-> @@ -58,24 +60,32 @@ phys_addr_t mips_cpc_default_phys_base(void)
->         panic("Cannot detect cpc address");
->  }
->
-> +static bool __init mt7621_addr_wraparound_test(phys_addr_t size)
-> +{
-> +       void *dm = (void *)KSEG1ADDR(&detect_magic);
-> +
-> +       if (CPHYSADDR(dm + size) >= MT7621_LOWMEM_MAX_SIZE)
-> +               return true;
-> +       __raw_writel(MT7621_MEM_TEST_PATTERN, dm);
-> +       if (__raw_readl(dm) != __raw_readl(dm + size))
-> +               return false;
-> +       __raw_writel(!MT7621_MEM_TEST_PATTERN, dm);
-> +       return __raw_readl(dm) == __raw_readl(dm + size);
-> +}
-> +
->  static void __init mt7621_memory_detect(void)
->  {
-> -       void *dm = &detect_magic;
->         phys_addr_t size;
->
-> -       for (size = 32 * SZ_1M; size < 256 * SZ_1M; size <<= 1) {
-> -               if (!__builtin_memcmp(dm, dm + size, sizeof(detect_magic)))
-> -                       break;
-> +       for (size = 32 * SZ_1M; size <= 256 * SZ_1M; size <<= 1) {
-> +               if (mt7621_addr_wraparound_test(size)) {
-> +                       memblock_add(MT7621_LOWMEM_BASE, size);
-> +                       return;
-> +               }
->         }
->
-> -       if ((size == 256 * SZ_1M) &&
-> -           (CPHYSADDR(dm + size) < MT7621_LOWMEM_MAX_SIZE) &&
-> -           __builtin_memcmp(dm, dm + size, sizeof(detect_magic))) {
-> -               memblock_add(MT7621_LOWMEM_BASE, MT7621_LOWMEM_MAX_SIZE);
-> -               memblock_add(MT7621_HIGHMEM_BASE, MT7621_HIGHMEM_SIZE);
-> -       } else {
-> -               memblock_add(MT7621_LOWMEM_BASE, size);
-> -       }
-> +       memblock_add(MT7621_LOWMEM_BASE, MT7621_LOWMEM_MAX_SIZE);
-> +       memblock_add(MT7621_HIGHMEM_BASE, MT7621_HIGHMEM_SIZE);
->  }
->
->  void __init ralink_of_remap(void)
-> --
-> 2.34.1
->
-Thanks for your change. I think this will also fix
-https://lore.kernel.org/lkml/202201191557.OISJHNMi-lkp@intel.com/
-since you are removing __builtin_memcmp usage.
-
-Ilya
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+RnJvbTogRGVyZW4gV3UgPGRlcmVuLnd1QG1lZGlhdGVrLmNvbT4KClRoZSBmb2xsb3dpbmcgZXJy
+b3IgaXMgc2VlIGZyb20gdGhlIGNvbXBpbGVyOgoKICBtdDc2MTUvZGVidWdmcy5jOiBJbiBmdW5j
+dGlvbiDigJhtdDc2MTVfZXh0X21hY19hZGRyX3JlYWTigJk6CiAgbXQ3NjE1L2RlYnVnZnMuYzo0
+NjU6MTogd2FybmluZzogdGhlIGZyYW1lIHNpemUgb2YgMTA3MiBieXRlcyBpcwogICAgbGFyZ2Vy
+IHRoYW4gMTAyNCBieXRlcyBbLVdmcmFtZS1sYXJnZXItdGhhbj1dCgpUaGUgaXNzdWUgaXMgZHVl
+IHRvIGFsbG9jYXRpbmcgYSBidWZmZXIgYXMgc3RyaW5nIHN0b3JhZ2UuCgpGaXggYnkgY29udmVy
+dGluZyB0byBhIGR5bmFtaWNhbCBhbGxvY2F0aW9uIG9mIHRoZSBidWZmZXIuCgpSZXZpZXdlZC1i
+eTogUnlkZXIgTGVlIDxyeWRlci5sZWVAbWVkaWF0ZWsuY29tPgpTaWduZWQtb2ZmLWJ5OiBEZXJl
+biBXdSA8ZGVyZW4ud3VAbWVkaWF0ZWsuY29tPgotLS0KIC4uLi9uZXQvd2lyZWxlc3MvbWVkaWF0
+ZWsvbXQ3Ni9tdDc2MTUvZGVidWdmcy5jICAgIHwgMTQgKysrKysrKysrKystLS0KIDEgZmlsZSBj
+aGFuZ2VkLCAxMSBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3NjE1L2RlYnVnZnMuYyBiL2RyaXZl
+cnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3NjE1L2RlYnVnZnMuYwppbmRleCBjYTdl
+ZmNhMTU0M2YuLjI1MGZhYTg3MGRiMiAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvd2lyZWxlc3Mv
+bWVkaWF0ZWsvbXQ3Ni9tdDc2MTUvZGVidWdmcy5jCisrKyBiL2RyaXZlcnMvbmV0L3dpcmVsZXNz
+L21lZGlhdGVrL210NzYvbXQ3NjE1L2RlYnVnZnMuYwpAQCAtNDQzLDExICs0NDMsMTYgQEAgbXQ3
+NjE1X2V4dF9tYWNfYWRkcl9yZWFkKHN0cnVjdCBmaWxlICpmaWxlLCBjaGFyIF9fdXNlciAqdXNl
+cmJ1ZiwKIAkJCSBzaXplX3QgY291bnQsIGxvZmZfdCAqcHBvcykKIHsKIAlzdHJ1Y3QgbXQ3NjE1
+X2RldiAqZGV2ID0gZmlsZS0+cHJpdmF0ZV9kYXRhOwotCWNoYXIgYnVmWzMyICogKChFVEhfQUxF
+TiAqIDMpICsgNCkgKyAxXTsKKwljaGFyICpidWY7CisJc3RhdGljIHUzMiBsZW4gPSAzMiAqICgo
+RVRIX0FMRU4gKiAzKSArIDQpICsgMTsKIAl1OCBhZGRyW0VUSF9BTEVOXTsKIAlpbnQgb2ZzID0g
+MDsKIAlpbnQgaTsKIAorCWJ1ZiA9IGt6YWxsb2MobGVuLCBHRlBfS0VSTkVMKTsKKwlpZiAoIWJ1
+ZikKKwkJcmV0dXJuIC1FTk9NRU07CisKIAlmb3IgKGkgPSAwOyBpIDwgMzI7IGkrKykgewogCQlp
+ZiAoIShkZXYtPm11YXJfbWFzayAmIEJJVChpKSkpCiAJCQljb250aW51ZTsKQEAgLTQ1OCwxMCAr
+NDYzLDEzIEBAIG10NzYxNV9leHRfbWFjX2FkZHJfcmVhZChzdHJ1Y3QgZmlsZSAqZmlsZSwgY2hh
+ciBfX3VzZXIgKnVzZXJidWYsCiAJCXB1dF91bmFsaWduZWRfbGUzMihtdDc2X3JyKGRldiwgTVRf
+V0ZfUk1BQ19NQVIwKSwgYWRkcik7CiAJCXB1dF91bmFsaWduZWRfbGUxNigobXQ3Nl9ycihkZXYs
+IE1UX1dGX1JNQUNfTUFSMSkgJgogCQkJCSAgICBNVF9XRl9STUFDX01BUjFfQUREUiksIGFkZHIg
+KyA0KTsKLQkJb2ZzICs9IHNucHJpbnRmKGJ1ZiArIG9mcywgc2l6ZW9mKGJ1ZikgLSBvZnMsICIl
+ZD0lcE1cbiIsIGksIGFkZHIpOworCQlvZnMgKz0gc25wcmludGYoYnVmICsgb2ZzLCBsZW4gLSBv
+ZnMsICIlZD0lcE1cbiIsIGksIGFkZHIpOwogCX0KIAotCXJldHVybiBzaW1wbGVfcmVhZF9mcm9t
+X2J1ZmZlcih1c2VyYnVmLCBjb3VudCwgcHBvcywgYnVmLCBvZnMpOworCW9mcyA9IHNpbXBsZV9y
+ZWFkX2Zyb21fYnVmZmVyKHVzZXJidWYsIGNvdW50LCBwcG9zLCBidWYsIG9mcyk7CisKKwlrZnJl
+ZShidWYpOworCXJldHVybiBvZnM7CiB9CiAKIHN0YXRpYyBzc2l6ZV90Ci0tIAoyLjE4LjAKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRp
+YXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
