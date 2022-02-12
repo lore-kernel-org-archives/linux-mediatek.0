@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C526EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Feb 2022 07:19:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCD92C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Feb 2022 10:44:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gv2E4k4jnfT//nvcC8p+sxyjqBgAr7+aO1Uvm2tjvsU=; b=D8SmGdNtqq7rG1
-	9LWmxCSGEhIQtUezW1FU+rAq8tbevs/A6M0awENMWXJ4hqLNMGIvGWiVii0drfDUNBYqGBMhIysvB
-	ZnkZXOzIhIlEsrp/JqazEaoSiA4dOhpg/B+Z5+8l+MijEMBKSc8p7dFZCnUvByYUpTyELdaoaKxyS
-	b0w9as9mpBN5ez/yKMUTqEMdUNdTAkN5OGRZ2z2huttbGj6yo7Zq9NTG+0ggbRcQ2td0MvXVhEDex
-	Qjwg2qztAfwS0o7zzKR/SKauVdUSO1DoZURueIyjKQLHtibhDHfojMWDNemfcmVar3zu/z0IpkBLf
-	N7BHy2kFR+xIaQsESHWw==;
+	List-Owner; bh=ROJ3uvwv+yV1sZCCULN3kk/HV2t/38e8iFHLqDjV2C0=; b=rzNPP4xr72fKyF
+	pL/g7TDbzpQR7wWGqT6DtAsGhjU4Tg88yuis6T43bPDYp02bEH+/t/fIPqkRE8hwywvq14/1mCmXC
+	73oObVb1NmqtoO0A4kcTOlJlaH7C4CkZqpOgV7wohTGBHsrY1A4FLPR9PyLrNuQAZIk9ubbQh0cmm
+	9k+YctHQJoJDVCH3tCQMFCiwEUi67gpJw7nhe9seZRMQ1Rc45qClXlT/TmLfjw8bIDvLdfuXz9GcF
+	+59kEQ6CgaY3e7bqqDumon46CiUWr5voh6LKnBoa4+FGl4vmReHH2MxN/2yHp0l2KJegKb4NA1h7I
+	ldcieMEVcKNSYpAOrVCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nImgH-009XWk-8v; Sat, 12 Feb 2022 07:18:53 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nIpt2-009iWs-1r; Sat, 12 Feb 2022 10:44:16 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nImg9-009XW7-2a; Sat, 12 Feb 2022 07:18:50 +0000
-X-UUID: 4d25daad191b440aa273fafb86fa03e5-20220212
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=tsGCWjf1wzWY4q3HvFAliCfBaWVtjHRUuXB7wBPd/yk=; 
- b=M3eAbx7Hshef11clTiy8Jn+WcbwFMz6AwTHhgJu40+0FCYuKSXwRu5nKuEiRb2EAQZwYgpJuCZWYFzfXDSb3NltT0g0glykaDfZ+VpQi8HK1pQ85ek6YnMdtqhH+Ha9Qfo1FyvbT4o+XgbbRzMsLsPFiW40+EbOG1j27RuNhBR0=;
-X-UUID: 4d25daad191b440aa273fafb86fa03e5-20220212
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
+ id 1nIpso-009iPD-8u; Sat, 12 Feb 2022 10:44:03 +0000
+X-UUID: da14a5e9abec4996b416a32ed1b509f0-20220212
+X-UUID: da14a5e9abec4996b416a32ed1b509f0-20220212
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <lecopzer.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1466552158; Sat, 12 Feb 2022 00:18:36 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Feb 2022 23:18:35 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 12 Feb 2022 15:18:21 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 12 Feb 2022 15:18:20 +0800
-Message-ID: <a78063ad99eb8f4a380d9133f310963d2a0dac7a.camel@mediatek.com>
-Subject: Re: [PATCH 00/15] ASoC: mediatek: Add support for MT8186 SoC
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: Mark Brown <broonie@kernel.org>
-CC: <lgirdwood@gmail.com>, <tiwai@suse.com>, <robh+dt@kernel.org>,
- <matthias.bgg@gmail.com>, <perex@perex.cz>, <p.zabel@pengutronix.de>,
- <geert+renesas@glider.be>, <trevor.wu@mediatek.com>, <tzungbi@google.com>,
- <zhangqilong3@huawei.com>, <alsa-devel@alsa-project.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Date: Sat, 12 Feb 2022 15:18:20 +0800
-In-Reply-To: <YgaLUNQXnGsZHuXQ@sirena.org.uk>
-References: <20220211103818.8266-1-jiaxin.yu@mediatek.com>
- <YgaLUNQXnGsZHuXQ@sirena.org.uk>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ with ESMTP id 1904062302; Sat, 12 Feb 2022 03:43:54 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 12 Feb 2022 02:43:53 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 12 Feb 2022 18:43:51 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sat, 12 Feb 2022 18:43:51 +0800
+From: Lecopzer Chen <lecopzer.chen@mediatek.com>
+To: <linux-kernel@vger.kernel.org>
+CC: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
+ Mark Rutland <mark.rutland@arm.com>, Peter Zijlstra <peterz@infradead.org>,
+ Ingo Molnar <mingo@redhat.com>, Arnaldo Carvalho de Melo <acme@kernel.org>,
+ Alexander Shishkin <alexander.shishkin@linux.intel.com>, Jiri Olsa
+ <jolsa@redhat.com>, Namhyung Kim <namhyung@kernel.org>,
+ <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, "Marc
+ Zyngier" <maz@kernel.org>, Julien Thierry <jthierry@redhat.com>, Kees Cook
+ <keescook@chromium.org>, Masahiro Yamada <masahiroy@kernel.org>, Petr Mladek
+ <pmladek@suse.com>, Andrew Morton <akpm@linux-foundation.org>, Wang Qing
+ <wangqing@vivo.com>, Luis Chamberlain <mcgrof@kernel.org>, Xiaoming Ni
+ <nixiaoming@huawei.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-perf-users@vger.kernel.org>, <sparclinux@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <sumit.garg@linaro.org>,
+ <kernelfans@gmail.com>, <lecopzer.chen@mediatek.com>,
+ <yj.chiang@mediatek.com>
+Subject: [PATCH 1/5] kernel/watchdog: remove WATCHDOG_DEFAULT
+Date: Sat, 12 Feb 2022 18:43:45 +0800
+Message-ID: <20220212104349.14266-2-lecopzer.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220212104349.14266-1-lecopzer.chen@mediatek.com>
+References: <20220212104349.14266-1-lecopzer.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220211_231846_528087_56D55009 
-X-CRM114-Status: GOOD (  13.45  )
+X-CRM114-CacheID: sfid-20220212_024402_348241_057998E2 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,20 +83,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-02-11 at 16:14 +0000, Mark Brown wrote:
-> On Fri, Feb 11, 2022 at 06:38:03PM +0800, Jiaxin Yu wrote:
-> > This series of patches adds support for Mediatek AFE of MT8186 Soc.
-> > Patches are based on broonie tree "for-next" branch.
-> 
-> This all looks basically good, there are some issues which I've
-> highlighted on the patches but like I kept on saying they're all
-> fairly
-> small and hopefully easy to address - there's no big structural
-> problems
-> or anything that I noticed.
+No reference to WATCHDOG_DEFAULT, remove it.
 
-Thank you for helping to review my submitted patches.
-I will go through your comments carefully and fix them.
+this commit reworks from [1].
+
+[1] https://lore.kernel.org/lkml/20211014024155.15253-2-kernelfans@gmail.com/
+Signed-off-by: Pingfan Liu <kernelfans@gmail.com>
+Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+---
+ kernel/watchdog.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/kernel/watchdog.c b/kernel/watchdog.c
+index 99afb88d2e85..db451e943a04 100644
+--- a/kernel/watchdog.c
++++ b/kernel/watchdog.c
+@@ -30,10 +30,8 @@
+ static DEFINE_MUTEX(watchdog_mutex);
+ 
+ #if defined(CONFIG_HARDLOCKUP_DETECTOR) || defined(CONFIG_HAVE_NMI_WATCHDOG)
+-# define WATCHDOG_DEFAULT	(SOFT_WATCHDOG_ENABLED | NMI_WATCHDOG_ENABLED)
+ # define NMI_WATCHDOG_DEFAULT	1
+ #else
+-# define WATCHDOG_DEFAULT	(SOFT_WATCHDOG_ENABLED)
+ # define NMI_WATCHDOG_DEFAULT	0
+ #endif
+ 
+-- 
+2.25.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
