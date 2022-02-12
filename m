@@ -4,64 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3476C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Feb 2022 16:31:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23062C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Feb 2022 18:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=C2x3ScYad1OYtHQozEFR+n8iXAJD3xPq3RVH+CHsReo=; b=SMI5WEqZX/xNkS
-	NKSACHnTX+3ANzoxQbgtwrR/jb9h+f5k7isMr1fENp+qkmreZEJlPMr3ro8j5Tn9EYRU7jGPJYk23
-	yUI51TDB8tO4Yz7ETNIYAjoRHGH8ksVcdDkXDB2+Dl1LTLBJcgDTCMMIDsbd2wHVN5Zp8NvH2ZKE0
-	g5MaYg8PXfd4XODDGFmGHvAsu5iGD2QdNuH3SLs39QJYJSb7fUx4DgnJcN0qKKGy0ER5QI5qgWYwx
-	8qufReTU4eX0AjVhvX+wqAfW1c7e7kMCs59Mwm7vrl9KD4HY/0A5ro0EmvhGuTzmrkNEaKvjksEfH
-	ai7FACM8v5jxKIiO3vFw==;
+	List-Owner; bh=BLOSNW9nooq8XrTsXdFA5UdtjRosTCjLiFAUBEGbpEk=; b=eU+ZCdtAxC3ToL
+	wU69/8FYrcDSgwfyf6cBSTmGjA71xK7viR7TuOeafzlc7cRteJobQz1kNmfXpFIpBK04Mp4CoXCtv
+	uyS7TTjgn4fd8s7V0jnUl55opCUSQdTLiLzHXHrJIbyI6UJ8HtubZdotZJyMt/aRWRMjkWA5T5QLY
+	0nUomR7jqaTp+bjFlunvbIPWhvBvCYGfrsTyaImnTHGzS/E40DTA8nRPT/tD6CQwq4VNyObCaLb0K
+	NOg44a51zqJOPpR1CeLtO1XwyDT8WJ1Woqq80mvQ7C+920S5TzD2n0+B+Sm7lOxMWjZC+5w1mQIjJ
+	uoSssgKfgms8SONRTtMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nIvJ8-00AAbI-Ol; Sat, 12 Feb 2022 16:31:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nIx0s-00AJcG-7S; Sat, 12 Feb 2022 18:20:50 +0000
+Received: from mail-bn8nam12on20703.outbound.protection.outlook.com
+ ([2a01:111:f400:fe5b::703]
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nIvJ4-00AAaQ-Fc
- for linux-mediatek@lists.infradead.org; Sat, 12 Feb 2022 16:31:33 +0000
-X-UUID: f52ac80d8e26469f9cd7dd696cbe322c-20220212
-X-UUID: f52ac80d8e26469f9cd7dd696cbe322c-20220212
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <deren.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 237154907; Sat, 12 Feb 2022 09:31:27 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 12 Feb 2022 08:21:25 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sun, 13 Feb 2022 00:21:11 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sun, 13 Feb 2022 00:21:11 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Johannes Berg <johannes@sipsolutions.net>
-CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>, Sean Wang <sean.wang@mediatek.com>, Soul Huang
- <Soul.Huang@mediatek.com>, YN Chen <YN.Chen@mediatek.com>, Leon Yen
- <Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, Deren Wu
- <Deren.Wu@mediatek.com>, KM Lin <km.lin@mediatek.com>, Robin Chiu
- <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>, Posh Sun
- <posh.sun@mediatek.com>, Eric Liang <Eric.Liang@mediatek.com>, Stella Chang
- <Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, "Ryder
- Lee" <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH] mac80211: fix EAPoL rekey fail in 802.3 rx path
-Date: Sun, 13 Feb 2022 00:20:15 +0800
-Message-ID: <6889c9fced5859ebb088564035f84fd0fa792a49.1644680751.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1nIx0p-00AJby-By
+ for linux-mediatek@lists.infradead.org; Sat, 12 Feb 2022 18:20:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=E57EZh8onl6wirKzIkLKGEHpQUJ+mbcMu2rUOR9oeHXWYMtwx/w/09fEJxSY2KMve5hImS6XVp5iE1kKw66Zxd0L9Fevtpuzs8LbbVCwc1AiDP4sw64AVv7sFpcqFicwXry2VCvPaQJXOMfnDqJsXHk74eb0f1zvTpehhUpQqvKeOzc91LGsK13qDRfwV09ifodvQW+nzx8qdK0CgocnSyNt7uw7YJU59zF9hUVL2Be/G1NBw4S9Mpq4CS2eumEaNQY09OH3UAQckkjNrYJNfeTp/Q1+ppzqnAT2H4b294epoTjsRh0eaOMcpcuzo8dfeyejycnJI39+Elf/AgH0HQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=c4vvXwEd8D8X6Unvuet9MM/gePNekHbHRQv963hRnP8=;
+ b=ofBQDVFxxGB2UhQuhP+4rbJ33Z8lLvag8ITTScvvpkQngbnKkgkxouhYVrySJ1gagLo/HL2+uKGgTV+YACInjHtZCkiz6ivvcu/4Fpb0jjCOG5vom2Fn8+njle+poI2RBmhwj4XcWssRSsOWBsQZ/5hh6Jc7+JmmLMfGFPshOaoNKLiac1vYCIm4bSLa/McSKXGKcZsFhi5nCCu41UMxsfECopEA2EJAWrsMz3ITjBWfQf45HuU80hqFpkfWgLYRSY2BFW9HwzoUNY/Rx4wUP3Vf8+rnUuasAEZgA2E+jOihyPm3yXsU4DgrtRzmSJxKiVAnOZ7J94rQ0wsXcDkgzQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ADTRAN.onmicrosoft.com; s=selector2-ADTRAN-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=c4vvXwEd8D8X6Unvuet9MM/gePNekHbHRQv963hRnP8=;
+ b=XzTUMKgV7wrEH29q5Ca1WslLE5d8yjB8tGx1pwX+1SZ2g2Z1kU5T7sdaywUu1I0eye4CJw4urnKTQP9Ej7PU1iuEsHIDeS/l5kWTX9aybvh1Xzz8C5mT0wj0p/k8A3QUBnjN4rfyG7Nl4EzMNNfgu3WCYDpnkCFbRcW1UzLzgBb0lcXridZvXoCrpcfp7VHX1AXcFWRCoeOLlJ/XjRkE/9BdizTusYSrlsb0BGntZ0RNdNX0syXTOY9WYVI+vZYEqiYrpEV8/aE/Vh8oUEfLsXHrN02YBFm3stsX00OIVYvOd1LbXEE+KCwwIMyCOHnfWpvuCK0xEYRWl2mrFt6LCA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=smartrg.com;
+Received: from BY3PR19MB4915.namprd19.prod.outlook.com (2603:10b6:a03:362::19)
+ by BYAPR19MB2918.namprd19.prod.outlook.com (2603:10b6:a03:b0::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4975.15; Sat, 12 Feb
+ 2022 18:04:51 +0000
+Received: from BY3PR19MB4915.namprd19.prod.outlook.com
+ ([fe80::c4b6:39e6:4e2a:4206]) by BY3PR19MB4915.namprd19.prod.outlook.com
+ ([fe80::c4b6:39e6:4e2a:4206%4]) with mapi id 15.20.4975.011; Sat, 12 Feb 2022
+ 18:04:50 +0000
+From: Chad Monroe <chad.monroe@smartrg.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Johannes Berg <johannes.berg@intel.com>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chad Monroe <chad.monroe@smartrg.com>
+Subject: [PATCH] mt76: connac: adjust wlan_idx size from u8 to u16
+Date: Sat, 12 Feb 2022 10:04:26 -0800
+Message-Id: <a0644f7da6ba09195ee247a5affa562179328207.1644688718.git.chad.monroe@smartrg.com>
+X-Mailer: git-send-email 2.30.2
+X-ClientProxiedBy: SJ0PR03CA0116.namprd03.prod.outlook.com
+ (2603:10b6:a03:333::31) To BY3PR19MB4915.namprd19.prod.outlook.com
+ (2603:10b6:a03:362::19)
 MIME-Version: 1.0
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 5f6b8644-ac5c-4de5-9f3d-08d9ee5229ac
+X-MS-TrafficTypeDiagnostic: BYAPR19MB2918:EE_
+X-Microsoft-Antispam-PRVS: <BYAPR19MB2918D50DF85E6953115B04ED8D319@BYAPR19MB2918.namprd19.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:2276;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: YGWuPdh7lNvxLzMXOqVgu6647lvzb4DpREXD5IQ2rOBrcR4SaDClnv5OwETHEvfuQktiCnFPDa97LSV+19rkApQP73Fqi7ihHG8dhVhcyXlHvKuDmtOaqR22YV8a860zOajzp/ENhodIEJNg5m0mDWL2yOs2E0qL1XiC2xg5xM93yL2NOFY6mjHmv7iw4RCuYVLVfvV59WuswwIrWPnnnDSmqpZHYf7m6uBvNT6NbQrHLqN94n4AIJ92JyNNG+48iFJE43DnrxIq+UvZJPjQJnpGtr33iEuKwOWLMeGfmorTY3p5fwadt2YUsmwKwBdk4LkxqPslC+RVNbPCqGQL3JK2C0fT8NrE+0zyJRQh+vHunmdoSz1U+ydQqqVGJIIqgj71WNVEQrqygp66OJALDvCsoqjOdE0B3Ez5hQ41/QpCpS+44S0bdjz2nuw+EDIVJ5hgA753zUZayunlyVhE9w+xet+aA8BieXWkRZ6m4v5KsDOKEqPa4gOl9COa8+moajE73i7A82QHY9rsYR7qv4H+b1wefvRRHAytH3jIUmsMrSs4bxKGuNZmCEGmjlqPg0dbV+FtIG7tbBLOWV7jWb4WGx3J+utVc118wkhwCaNSZLJjGugKz1OqRrOQcvXTYnVPUVwgRQq4pfc15KmrbHbw2c8GRb0qckVoWWjO3cLwnVfi1/XIXBDB51wCYGD9A82mqssn5aCffJz3/bI2fw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY3PR19MB4915.namprd19.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(366004)(4326008)(107886003)(66946007)(6512007)(42882007)(186003)(66556008)(8936002)(6666004)(2616005)(508600001)(83380400001)(8676002)(66476007)(2906002)(26005)(6506007)(38100700002)(5660300002)(38350700002)(6486002)(36756003)(316002)(52116002)(44832011)(83170400001)(54906003)(110136005);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?3tHpt8d/NLUZQ0cokYRH1gwAomCZ+FPmhLPWK7qFlqNDUbSMBfexERj7OGTp?=
+ =?us-ascii?Q?GwOtP7NYpNHqFa9jUY8IIWxNx/BetFPq20S5Oxr1Mzy2yt08BNrYLzFfQves?=
+ =?us-ascii?Q?7DEMy/spOpjw5PjcqzJf+g9jb72EXHBPWTU+93tWZFxkGwP56De1cnTlwUdz?=
+ =?us-ascii?Q?gQiWSV7CenbbLyFitoVS1bQrQprp3KszKOHatKjP70O4YYgTbPBYHMlQ+6sR?=
+ =?us-ascii?Q?gZXUMgo1AlkS2FvT5RZkimMhWVDIuMs12fyuGrz75tL/Yg8cBCa/esfnHp3Y?=
+ =?us-ascii?Q?AVaUdEnOzefGlONPxmTLJUFe4tzExlPcATsMlT4k3r6u2E2vSi3kJys+OuvM?=
+ =?us-ascii?Q?+HqCmnfDOUafH6YJ8RF0PIJXEpJZ5YkhcCpF5I+JAFGnkQas/SeJvHDdQ89g?=
+ =?us-ascii?Q?Ra67U++jNZANH4im0NC2rai5Q7vTgKestCfH7t2Jm4Zr+ltOpDeVEG2eI4Fg?=
+ =?us-ascii?Q?Z5KgMFGdK+gSxDAZ8WLle5bTlMKp1gx6FDcXXnMZ3Vvhm9m5Ik1uyms8WEpH?=
+ =?us-ascii?Q?/y35xs6G9YvWhDBTpBSOMmfsQLHCXArFAdKX5qulFPOoqfG0wfIn1H0W7v3c?=
+ =?us-ascii?Q?+J9nENAKj0agCutf+CSfLpHppnhBT/MEzJY8FNPaUrP18x0/CL6qun5hWsHv?=
+ =?us-ascii?Q?Hlps6hQZGrxbbYQofcJXuaGL48XPRRQTRICej4oFmaPfPctkmbPN/E20FKPU?=
+ =?us-ascii?Q?/cK2s8DE5IYlkxOo8SU385zfww8HJcRiH3yOR8EA0WyYaaxWX4j6AUWmH75n?=
+ =?us-ascii?Q?OvcGOlct1arf6NvMzi9HJcteMtXJo1jIXv4yU0uGaTxDObUQVROqftwncY17?=
+ =?us-ascii?Q?u6WlLIAnC7Dl+uOtGXrtSYqKHGVjxQ/dC9SIvDrgLU1uIi8AxTkTi2qR5v4I?=
+ =?us-ascii?Q?ZiTmONNp67AO2CxfXDRfOJec7KOfvoqzf09t92h2yZIA6N5L0Tg1iDb+D4DE?=
+ =?us-ascii?Q?MKbZBp3drr/Y+YC7TAusQbjYcnRQv/X6KX87s9yH46P1CKVfIPuq1GFuLKqy?=
+ =?us-ascii?Q?UB2YO24u2bTsYtfiAyFScYUVIQFqyuERVrbA09ia6Clq6kc5DUTriF+4PaTn?=
+ =?us-ascii?Q?vyIxc1PfjkJUuhzCsf7/gGFjDzEJ20fPkw6oU4hxG102qMR3r/9fbLNJHYC/?=
+ =?us-ascii?Q?uU/KYrZx0InlFwLclpyiXUwYjws4Kj/T1IPzGMnE+JEmTmdKCxeE5b2z1AqT?=
+ =?us-ascii?Q?f4u6B0H+MpKpEtdOrF/e7hOcV8gl54Nk53WHi1agDGXL/jCv4ucCj6kG7b5Q?=
+ =?us-ascii?Q?PfHsfruI9TGrAOqRieu0um4T6D9LIqZTePmtKUFlsbuB6h2ktoR0O7Voss80?=
+ =?us-ascii?Q?+T/8xch6DGpnOXePPP9HYN2iFQc2RPOFoYllc/ul0djGL5+1tHd5pTAWu8ZP?=
+ =?us-ascii?Q?a5OhdDslXxJSrHoPgDt9K3UtUhMOX0hj7KTvf0UXTay15+JpMpcfCFUEZ4rg?=
+ =?us-ascii?Q?L0TDy+KHeHn3LdVgJ4zArVNZd1vIj7EmyFh7xFlTeIYIkbwHmGRhyPusn9iJ?=
+ =?us-ascii?Q?m9KBLYN0ZGkoHKnm0N7NcmKSV4n+qiM2v5UADry+7r2YGgeLb/XzVKhEqoXv?=
+ =?us-ascii?Q?dFJJbz4yuG+zKP5dsxrOLr8ZUTXfqRyddZkjTu50zrz5OJijMvjFrUY8CRB3?=
+ =?us-ascii?Q?jDjX4d6sOdECvsLHzZjHM88=3D?=
+X-OriginatorOrg: smartrg.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5f6b8644-ac5c-4de5-9f3d-08d9ee5229ac
+X-MS-Exchange-CrossTenant-AuthSource: BY3PR19MB4915.namprd19.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Feb 2022 18:04:50.6980 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 423946e4-28c0-4deb-904c-a4a4b174fb3f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: tRUNA6CG4DwYpaa/vmXiSaXYYSIN8pmoYX5iqMIpJIr8iyUV7W9I3Q5uw4OslB9T36S56gxcngvVtYuWEnJ5jQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR19MB2918
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220212_083130_549645_C8C015F8 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20220212_102047_599190_5D17BF04 
+X-CRM114-Status: UNSURE (   7.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,49 +140,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+Newer chips such as MT7915 require up to 16-bits for this field.
 
-mac80211 set capability NL80211_EXT_FEATURE_CONTROL_PORT_OVER_NL80211
-to upper layer by default. That means we should pass EAPoL packets through
-nl80211 path only, and should not send the EAPoL skb to netdevice diretly.
-At the meanwhile, wpa_supplicant would not regist sock to listen EAPoL skb
-on the netdevice.
-
-However, there is no contorl_port_protocol handler in mac80211 for 802.3 RX
-packets, mac80211 driver would pass up the EAPoL rekey frame to netdevice
-and wpa_supplicant would be never interactive with this kind of packets,
-if SUPPORTS_RX_DECAP_OFFLOAD is enabled. This causes STA always rekey fail
-if EAPoL frame go through 802.3 path.
-
-To avoid this problem, align the same process as 802.11 type to handle
-this frame before put it into network stack.
-
-Fixes: 80a915ec4427 ("mac80211: add rx decapsulation offload support")
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+Signed-off-by: Chad Monroe <chad.monroe@smartrg.com>
 ---
- net/mac80211/rx.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/net/mac80211/rx.c b/net/mac80211/rx.c
-index 0544563ede52..57f5d5500282 100644
---- a/net/mac80211/rx.c
-+++ b/net/mac80211/rx.c
-@@ -4509,12 +4509,7 @@ static void ieee80211_rx_8023(struct ieee80211_rx_data *rx,
- 
- 	/* deliver to local stack */
- 	skb->protocol = eth_type_trans(skb, fast_rx->dev);
--	memset(skb->cb, 0, sizeof(skb->cb));
--	if (rx->list)
--		list_add_tail(&skb->list, rx->list);
--	else
--		netif_receive_skb(skb);
--
-+	ieee80211_deliver_skb_to_local_stack(skb, rx);
- }
- 
- static bool ieee80211_invoke_fast_rx(struct ieee80211_rx_data *rx,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index cdd82a62eeb1..f3fdd755a3bb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -2656,7 +2656,7 @@ EXPORT_SYMBOL_GPL(mt76_connac_mcu_bss_ext_tlv);
+ int mt76_connac_mcu_bss_basic_tlv(struct sk_buff *skb,
+ 				  struct ieee80211_vif *vif,
+ 				  struct ieee80211_sta *sta,
+-				  struct mt76_phy *phy, u8 wlan_idx,
++				  struct mt76_phy *phy, u16 wlan_idx,
+ 				  bool enable)
+ {
+ 	struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 7b9d82dd3f9d..384c3eab1c8a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -1642,7 +1642,7 @@ void mt76_connac_mcu_bss_omac_tlv(struct sk_buff *skb,
+ int mt76_connac_mcu_bss_basic_tlv(struct sk_buff *skb,
+ 				  struct ieee80211_vif *vif,
+ 				  struct ieee80211_sta *sta,
+-				  struct mt76_phy *phy, u8 wlan_idx,
++				  struct mt76_phy *phy, u16 wlan_idx,
+ 				  bool enable);
+ void mt76_connac_mcu_sta_uapsd(struct sk_buff *skb, struct ieee80211_vif *vif,
+ 			       struct ieee80211_sta *sta);
 -- 
-2.18.0
+2.32.0 (Apple Git-132)
 
 
 _______________________________________________
