@@ -4,58 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74888C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 11:32:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48CECC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 11:37:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wIVqxPtyF1W1jN1iL09tkBhnsWxxhtgV/RAIaCvIGcI=; b=XOfy2xYMO/rJzR
-	p9OE8WSFKP1AsZd2L4aYBNdEWJeBcGaukiUY3VRfpIHc1Nk3xxhOn6JM8kyeydKUQP92v5k4M7yP7
-	fwOzkH+WomoWfhbzJIbJ6ll8FAcWSbpQf0rnCuiYnFLMkmmTuMIQxM8sw4m7+VPM38GX3IdKT2QOH
-	eFzjx+yuGDZLBhZ6ruzPVRPzCyHBcOqqPC3Mh7pUN3s0sthBMQKA2yOdI70VFdAuiptai2Zjt5kir
-	xaQBsaX9U9gAvl+uh9NMeeZDGi7ZFIXTOlS8DW31IJJYFNhmBsVtuH3J/QgfiMpUmG19U5/FoacHG
-	367PjoZ+VD5+ISSuhB2w==;
+	List-Owner; bh=JFYIwZdP0cttvFeshX+hrWREd8nlKpsEuP38Ki+64Uw=; b=g5q4pOzGNeSlfC
+	cwR6UlfYTHdWVr2Mn62pLu52j3YuwlTtHjmvYwJt4K9nCpYYRwxkLw+45Ny43yetJeX08J/S8Ey8p
+	iZFHPGLGksyWwBV4a1ZObtHP0HXUmb4LHOpY4NRJKjwo2UNmn1zl8FDPhyi51vPecvOERCs9M/PSD
+	VPC3LM7gw45ALjmYjCWQMJflclLo/YMLVYCB9gx4Y/7o6yE1ZindE6GRSQzugKbOAovKRH6DsV2Pj
+	fTIE8KJHJFidQhHahcNm08JhCFVT2FW3FyBJ1vwV5ShWw9M81CHB3ixBjDmo+M/AHcKILKWInIJWN
+	7zNPn81uK05Q1Yl1BM8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJZad-00Eq3h-0y; Mon, 14 Feb 2022 11:32:19 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nJZfb-00Es9F-BL; Mon, 14 Feb 2022 11:37:27 +0000
+Received: from mga01.intel.com ([192.55.52.88])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJYMh-00ERVv-LD; Mon, 14 Feb 2022 10:13:54 +0000
-X-UUID: 6ba0f2616df14eff9d8eebf39643f05a-20220214
-X-UUID: 6ba0f2616df14eff9d8eebf39643f05a-20220214
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <jason-jh.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2120500661; Mon, 14 Feb 2022 03:13:42 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Feb 2022 02:13:40 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Feb 2022 18:13:39 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 14 Feb 2022 18:13:39 +0800
-Message-ID: <c73eefcbf85cbb1eb9d1278e675608f8d9775693.camel@mediatek.com>
-Subject: Re: [PATCH v15 00/12] Add Mediatek Soc DRM (vdosys0) support for
- mt8195
-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>
-Date: Mon, 14 Feb 2022 18:13:39 +0800
-In-Reply-To: <20220126071932.32615-1-jason-jh.lin@mediatek.com>
-References: <20220126071932.32615-1-jason-jh.lin@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nJYPJ-00ESMH-Pl; Mon, 14 Feb 2022 10:16:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1644833793; x=1676369793;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=iMfir8Hys8PoRkg7XbbXRj39pNMes8hLErnltaIltH8=;
+ b=H0pRtYXVokRBX+RGOdsauOP2aIBK1vtMoRGVk+VDUjA0gjIToKp08alR
+ Tm18cVC3x44oAcrbuiqx/MzOE8OK4CduA2tcM/A1XkQRsBI7PovauGPJd
+ 0kz34pErXmws8kirxEiFlrcm3UmngipUs6aMo6zPHQmDtF9jNxNgty5Eu
+ x+fAcade60DLDG7Rwc6dU+y5s++sSBiaXXsF0yEQzBwK49KC3bxrLe4wT
+ TpB1A+VMBkcYrK8YoNp/BJt8twTNALUNIl+xHo6DUgdP8dwR9lZ7s8WuF
+ dPG9EmE0KsElsnrAyZkL2fICumUH0C3VBRwIxaCvdCGRHPC478tlmkk2s g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10257"; a="274630826"
+X-IronPort-AV: E=Sophos;i="5.88,367,1635231600"; d="scan'208";a="274630826"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Feb 2022 02:16:32 -0800
+X-IronPort-AV: E=Sophos;i="5.88,367,1635231600"; d="scan'208";a="603187011"
+Received: from smile.fi.intel.com ([10.237.72.61])
+ by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Feb 2022 02:16:17 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.95)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1nJYLy-004PC8-6n; Mon, 14 Feb 2022 12:13:06 +0200
+Date: Mon, 14 Feb 2022 12:13:01 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Sergey Shtylyov <s.shtylyov@omp.ru>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ linux-kernel@vger.kernel.org, Andrew Lunn <andrew@lunn.ch>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Vignesh Raghavendra <vigneshr@ti.com>,
+ Jiri Slaby <jirislaby@kernel.org>, linux-iio@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Amit Kucheria <amitk@kernel.org>, alsa-devel@alsa-project.org,
+ Liam Girdwood <lgirdwood@gmail.com>, linux-phy@lists.infradead.org,
+ Thierry Reding <thierry.reding@gmail.com>,
+ linux-mtd@lists.infradead.org, linux-i2c@vger.kernel.org,
+ linux-gpio@vger.kernel.org, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Guenter Roeck <groeck@chromium.org>, linux-spi@vger.kernel.org,
+ Lee Jones <lee.jones@linaro.org>, openipmi-developer@lists.sourceforge.net,
+ Peter Korsgaard <peter@korsgaard.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
+ kvm@vger.kernel.org, Kamal Dasu <kdasu.kdev@gmail.com>,
+ Richard Weinberger <richard@nod.at>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ bcm-kernel-feedback-list@broadcom.com, linux-serial@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Jaroslav Kysela <perex@perex.cz>,
+ platform-driver-x86@vger.kernel.org, linux-pwm@vger.kernel.org,
+ Zha Qipeng <qipeng.zha@intel.com>, Corey Minyard <minyard@acm.org>,
+ linux-pm@vger.kernel.org, John Garry <john.garry@huawei.com>,
+ William Breathitt Gray <vilhelm.gray@gmail.com>,
+ Mark Gross <markgross@kernel.org>, Hans de Goede <hdegoede@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Takashi Iwai <tiwai@suse.com>, Benson Leung <bleung@chromium.org>,
+ linux-arm-kernel@lists.infradead.org,
+ Mun Yew Tham <mun.yew.tham@intel.com>,
+ Eric Auger <eric.auger@redhat.com>, netdev@vger.kernel.org,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Cornelia Huck <cohuck@redhat.com>, linux-mmc@vger.kernel.org,
+ Joakim Zhang <qiangqing.zhang@nxp.com>,
+ Oleksij Rempel <linux@rempel-privat.de>,
+ linux-renesas-soc@vger.kernel.org, Vinod Koul <vkoul@kernel.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund@ragnatech.se>,
+ Brian Norris <computersforpeace@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>
+Subject: Re: [PATCH v2 1/2] platform: make platform_get_irq_optional() optional
+Message-ID: <YgorLXUr8aT+1ttv@smile.fi.intel.com>
+References: <20220212201631.12648-1-s.shtylyov@omp.ru>
+ <20220212201631.12648-2-s.shtylyov@omp.ru>
+ <20220214071351.pcvstrzkwqyrg536@pengutronix.de>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20220214071351.pcvstrzkwqyrg536@pengutronix.de>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_021351_761062_4EDF10DA 
-X-CRM114-Status: GOOD (  18.95  )
+X-CRM114-CacheID: sfid-20220214_021633_909796_0B61305A 
+X-CRM114-Status: GOOD (  25.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,168 +120,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Jitao shi <jitao.shi@mediatek.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, singo.chang@mediatek.com,
- Fabien Parent <fparent@baylibre.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, roy-cw.yeh@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com, CK Hu <ck.hu@mediatek.com>,
- moudy.ho@mediatek.com, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, hsinyi@chromium.org,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>, nancy.lin@mediatek.com,
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Matthias,
+On Mon, Feb 14, 2022 at 08:13:51AM +0100, Uwe Kleine-K=F6nig wrote:
+> On Sat, Feb 12, 2022 at 11:16:30PM +0300, Sergey Shtylyov wrote:
+> > This patch is based on the former Andy Shevchenko's patch:
+> > =
 
-The DRM parts are all reviewed by Chun-Kuang.
-Can you spare some time to give us some suggestion for mmsys parts?
+> > https://lore.kernel.org/lkml/20210331144526.19439-1-andriy.shevchenko@l=
+inux.intel.com/
+> > =
 
-Or do you think we should separate the driver of mmsys related patches
-to another series and resend again?
-Would it be better to combine mmsys related patches from vdosys0 [1]
-and vdosys1 [2] series?
+> > Currently platform_get_irq_optional() returns an error code even if IRQ
+> > resource simply has not been found.  It prevents the callers from being
+> > error code agnostic in their error handling:
+> > =
 
-e.g.
-[v1,0/7] soc: mediatek: mmsys: add mt8195 mmsys support 
-[v1,1/7] dt-bindings: arm: mediatek: mmsys: add power and gce
-properties
-[v1,2/7] dt-bindings: arm: mediatek: mmsys: add mt8195 SoC binding
-[v1,3/7] dt-bindings: reset: mt8195: add vdosys1 reset control bit
-[v1,4/7] soc: mediatek: mmsys: add mtk-mmsys support for mt8195 vdosys0
-[v1,5/7] soc: mediatek: mmsys: add mtk-mmsys support for mt8195 vdosys1
-[v1,6/7] soc: mediatek: mmsys: add mtk-mmsys config API for mt8195
-vdosys1
-[v1,7/7] soc: mediatek: mmsys: modify reset controller for MT8195
-vdosys1
+> > 	ret =3D platform_get_irq_optional(...);
+> > 	if (ret < 0 && ret !=3D -ENXIO)
+> > 		return ret; // respect deferred probe
+> > 	if (ret > 0)
+> > 		...we get an IRQ...
+> > =
 
----
-[1] Add Mediatek Soc DRM (vdosys0) support for mt8195
-- 
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=608548
-[2] Add MediaTek SoC DRM (vdosys1) support for mt8195
-- 
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=604065
----
+> > All other *_optional() APIs seem to return 0 or NULL in case an optional
+> > resource is not available.  Let's follow this good example, so that the
+> > callers would look like:
+> > =
 
-Regards,
-Jason-JH.Lin
+> > 	ret =3D platform_get_irq_optional(...);
+> > 	if (ret < 0)
+> > 		return ret;
+> > 	if (ret > 0)
+> > 		...we get an IRQ...
+> > =
+
+> > Reported-by: Matthias Schiffer <matthias.schiffer@ew.tq-group.com>
+> > Signed-off-by: Sergey Shtylyov <s.shtylyov@omp.ru>
+> =
+
+> While this patch is better than v1, I still don't like it for the
+> reasons discussed for v1. (i.e. 0 isn't usable as a dummy value which I
+> consider the real advantage for the other _get_optional() functions.)
+
+I think you haven't reacted anyhow to my point that you mixing apples and
+bananas together when comparing this 0 to the others _optional APIs.
+
+> Apart from that, I think the subject is badly chosen. With "Make
+> somefunc() optional" I would expect that you introduce a Kconfig symbol
+> that results in the function not being available when disabled.
 
 
-On Wed, 2022-01-26 at 15:19 +0800, jason-jh.lin wrote:
-> Change in v15:
-> - remove mt8195-mmsys.h comment for mux settings
-> - define the mask macro to replace using value as mask
->   to fix zero mask problem
-> - add EOF setting comment for MUTEX sof register
-> 
-> Change in v14:
-> - rebase on mediatek-drm-next-5.17
-> - rebase on "Add mmsys and mutex support for MDP" series
->   
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=602528
-> - rebase on "media: mediatek: support mdp3 on mt8183 platform" series
->   
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=602834
-> 
-[snip]
-...
-> 
-> jason-jh.lin (12):
->   dt-bindings: arm: mediatek: mmsys: add power and gce properties
->   dt-bindings: arm: mediatek: mmsys: add mt8195 SoC binding
->   dt-bindings: display: mediatek: disp: split each block to
-> individual
->     yaml
->   dt-bindings: display: mediatek: dsc: add yaml for mt8195 SoC
-> binding
->   dt-bindings: display: mediatek: merge: add additional prop for
-> mt8195
->   dt-bindings: display: mediatek: add mt8195 SoC binding for vdosys0
->   dt-bindings: arm: mediatek: move out common module from display
-> folder
->   soc: mediatek: add mtk-mmsys support for mt8195 vdosys0
->   soc: mediatek: add mtk-mutex support for mt8195 vdosys0
->   drm/mediatek: add DSC support for mediatek-drm
->   drm/mediatek: add MERGE support for mediatek-drm
->   drm/mediatek: add mediatek-drm of vdosys0 support for mt8195
-> 
->  .../bindings/arm/mediatek/mediatek,mmsys.yaml |  32 ++-
->  .../display/mediatek/mediatek,disp.txt        | 219 ----------------
->  .../display/mediatek/mediatek,dither.yaml     |  76 ++++++
->  .../display/mediatek/mediatek,dsc.yaml        |  71 +++++
->  .../display/mediatek/mediatek,gamma.yaml      |  77 ++++++
->  .../display/mediatek/mediatek,merge.yaml      | 106 ++++++++
->  .../display/mediatek/mediatek,od.yaml         |  53 ++++
->  .../display/mediatek/mediatek,ovl-2l.yaml     |  88 +++++++
->  .../display/mediatek/mediatek,ovl.yaml        | 103 ++++++++
->  .../display/mediatek/mediatek,postmask.yaml   |  69 +++++
->  .../display/mediatek/mediatek,rdma.yaml       | 117 +++++++++
->  .../display/mediatek/mediatek,split.yaml      |  58 +++++
->  .../display/mediatek/mediatek,ufoe.yaml       |  61 +++++
->  .../bindings/soc/mediatek/mediatek,aal.yaml   |  72 +++++
->  .../bindings/soc/mediatek/mediatek,ccorr.yaml |  46 +++-
->  .../bindings/soc/mediatek/mediatek,color.yaml |  81 ++++++
->  .../bindings/soc/mediatek/mediatek,mutex.yaml |  77 ++++++
->  .../bindings/soc/mediatek/mediatek,wdma.yaml  |  47 +++-
->  drivers/gpu/drm/mediatek/Makefile             |   1 +
->  drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   8 +
->  drivers/gpu/drm/mediatek/mtk_disp_merge.c     | 246
-> ++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_disp_rdma.c      |   6 +
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |  63 +++++
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |   2 +
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  32 ++-
->  drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   1 +
->  drivers/soc/mediatek/mt8195-mmsys.h           | 130 +++++++++
->  drivers/soc/mediatek/mtk-mmsys.c              |  11 +
->  drivers/soc/mediatek/mtk-mutex.c              | 103 +++++++-
->  include/linux/soc/mediatek/mtk-mmsys.h        |   9 +
->  30 files changed, 1832 insertions(+), 233 deletions(-)
->  delete mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
->  create mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,dither.ya
-> ml
->  create mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
->  create mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yam
-> l
->  create mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yam
-> l
->  create mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
->  create mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-
-> 2l.yaml
->  create mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
->  create mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.
-> yaml
->  create mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
->  create mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,split.yam
-> l
->  create mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
->  create mode 100644
-> Documentation/devicetree/bindings/soc/mediatek/mediatek,aal.yaml
->  create mode 100644
-> Documentation/devicetree/bindings/soc/mediatek/mediatek,color.yaml
->  create mode 100644
-> Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
->  create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
->  create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
-> 
--- 
-Jason-JH Lin <jason-jh.lin@mediatek.com>
+-- =
+
+With Best Regards,
+Andy Shevchenko
+
 
 
 _______________________________________________
