@@ -4,101 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58170C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 07:30:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09A5FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 07:45:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wE7JhM9dNZoyRYKrKqxhhKnX0WxiiSpqjDEM/WtMQ5s=; b=1Mvb9l07zKfPWWIXvyzBev9jJg
-	vU6ADiErNxdye8B6XiZPEi/cdz4zHTg4Ea/JxI53Gvpx4+2TcO1z0rQgkkRZpXj/tXIATmoClj58d
-	kC0oEUvotxjegppcPPAIvScRlQzo6biEL8QNacVyJRjcTAVZ4tCUbCmHA6qTJI+gbTJxb4wYwaux3
-	YbxzKhOCHziBUe1qt9xsJvOipVqkoPAxjB6Rz2qe6fMm2tm084wfvq36gTyQ/nv9iX0Dvo/jwME66
-	ay/RhxLWuYDnUXVpAsk9BnUYfxQWpc2FL9Ui38x8G55F1gCDp3MFSSRizrh0k9wmHm0Sgwf3UOIew
-	9rO7pwzw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pJi/XVdAv8FrNxmzFppDv3u02nAsKLN/uW8La4S2oXM=; b=j3n3EqSeqbkvVD
+	LkLlVCS1rYFlFZXMZOzjzeDPUHLfr18IZeNWLsYXhOURxeoXMy9/eU5sDoDG27/otRFwJrsuHE1GX
+	FNSuv0Ua8xjgc7nMeWOIABHaUJ0Oyy1d4eL8W+YK2CQdQ4IjvagZbKPMP/Fkt03TNXNS5lTWc/K/9
+	56eUIYaXn3LFjrKcGrG0c/W6tgd1Ktz6vTtlL/RFAwa465GF7Oc6YEwuuBVTDCSPxbSCS4NYTe0qo
+	gUD3QIE1XQVKRq2w/OG60kZHdYpaf0i0dZu5WeWtGoBI7aj83kItBSqNiq+e+CknX8bhS2Dj9gKEp
+	AV0tZ/UGYPg4B9Ulvx1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJVoE-00DiHu-Gf; Mon, 14 Feb 2022 07:30:06 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nJW2e-00Dl0a-Jr; Mon, 14 Feb 2022 07:45:00 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJVZt-00Dd75-FA
- for linux-mediatek@lists.infradead.org; Mon, 14 Feb 2022 07:15:19 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1nJVZ0-0006l6-Nq; Mon, 14 Feb 2022 08:14:22 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
- by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1nJVYf-00GV12-4n; Mon, 14 Feb 2022 08:14:00 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1nJVYd-002oWn-E1; Mon, 14 Feb 2022 08:13:59 +0100
-Date: Mon, 14 Feb 2022 08:13:51 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Sergey Shtylyov <s.shtylyov@omp.ru>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- linux-kernel@vger.kernel.org, Andrew Lunn <andrew@lunn.ch>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Vignesh Raghavendra <vigneshr@ti.com>,
- Jiri Slaby <jirislaby@kernel.org>, linux-iio@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>,
- Amit Kucheria <amitk@kernel.org>, alsa-devel@alsa-project.org,
- Liam Girdwood <lgirdwood@gmail.com>, linux-phy@lists.infradead.org,
- Thierry Reding <thierry.reding@gmail.com>,
- linux-mtd@lists.infradead.org, linux-i2c@vger.kernel.org,
- linux-gpio@vger.kernel.org, Miquel Raynal <miquel.raynal@bootlin.com>,
- Guenter Roeck <groeck@chromium.org>, linux-spi@vger.kernel.org,
- Lee Jones <lee.jones@linaro.org>, openipmi-developer@lists.sourceforge.net,
- Peter Korsgaard <peter@korsgaard.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
- kvm@vger.kernel.org, Kamal Dasu <kdasu.kdev@gmail.com>,
- Richard Weinberger <richard@nod.at>, Bartosz Golaszewski <brgl@bgdev.pl>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Kishon Vijay Abraham I <kishon@ti.com>,
- bcm-kernel-feedback-list@broadcom.com, linux-serial@vger.kernel.org,
- Jakub Kicinski <kuba@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Jaroslav Kysela <perex@perex.cz>,
- platform-driver-x86@vger.kernel.org, linux-pwm@vger.kernel.org,
- Zha Qipeng <qipeng.zha@intel.com>, Corey Minyard <minyard@acm.org>,
- linux-pm@vger.kernel.org, John Garry <john.garry@huawei.com>,
- William Breathitt Gray <vilhelm.gray@gmail.com>,
- Mark Gross <markgross@kernel.org>, Hans de Goede <hdegoede@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Takashi Iwai <tiwai@suse.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Benson Leung <bleung@chromium.org>, linux-arm-kernel@lists.infradead.org,
- Mun Yew Tham <mun.yew.tham@intel.com>,
- Eric Auger <eric.auger@redhat.com>, netdev@vger.kernel.org,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Cornelia Huck <cohuck@redhat.com>, linux-mmc@vger.kernel.org,
- Joakim Zhang <qiangqing.zhang@nxp.com>,
- Oleksij Rempel <linux@rempel-privat.de>,
- linux-renesas-soc@vger.kernel.org, Vinod Koul <vkoul@kernel.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
- Brian Norris <computersforpeace@gmail.com>,
- "David S. Miller" <davem@davemloft.net>
-Subject: Re: [PATCH v2 1/2] platform: make platform_get_irq_optional() optional
-Message-ID: <20220214071351.pcvstrzkwqyrg536@pengutronix.de>
-References: <20220212201631.12648-1-s.shtylyov@omp.ru>
- <20220212201631.12648-2-s.shtylyov@omp.ru>
+ id 1nJW2R-00Dkye-0D; Mon, 14 Feb 2022 07:44:50 +0000
+X-UUID: 81edcc3256144bb08239b07de7638870-20220214
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=AhZjvzPgtXOnWaCWs9/DQjum1+/gv1xvrAXMEozn+XM=; 
+ b=GWDfps76QSiuLIMYwwpcb3HLQ1ze5z8WVkmpKQk9ATUaCISNg1jqivyjMpPDkLO1Zy38R1tI/t4pRQaJGEOjFau9eLREkcUHXUdGA1O8/64+k4ZIvvKa3IUQ6AA9WLHAJceuBgDQa01dPIVwKXX99S7Hkj7EWDoY1AjNylIgQSU=;
+X-UUID: 81edcc3256144bb08239b07de7638870-20220214
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2018726285; Mon, 14 Feb 2022 00:44:37 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 13 Feb 2022 23:44:35 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 14 Feb 2022 15:44:34 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 14 Feb 2022 15:44:33 +0800
+Message-ID: <1e016441cdbae4fc6300dd6b70e9e29def81a960.camel@mediatek.com>
+Subject: Re: [PATCH] usb: host: xhci-mtk: Simplify supplies handling with
+ regulator_bulk
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <mathias.nyman@intel.com>, <gregkh@linuxfoundation.org>,
+ <matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>
+Date: Mon, 14 Feb 2022 15:44:30 +0800
+In-Reply-To: <02d0dba2-ffc8-1bf1-d8a7-f7fa19f2c7ed@collabora.com>
+References: <20220118133348.111860-1-angelogioacchino.delregno@collabora.com>
+ <91bb8078e2d0824c325eb3819e59cdcb65b68a4e.camel@mediatek.com>
+ <02d0dba2-ffc8-1bf1-d8a7-f7fa19f2c7ed@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-In-Reply-To: <20220212201631.12648-2-s.shtylyov@omp.ru>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220213_231517_539736_2E7B2786 
-X-CRM114-Status: GOOD (  22.19  )
+X-CRM114-CacheID: sfid-20220213_234448_468322_4762E369 
+X-CRM114-Status: GOOD (  28.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,94 +76,224 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============9007598568106816053=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, 2022-02-07 at 11:00 +0100, AngeloGioacchino Del Regno wrote:
+> Il 20/01/22 07:50, Chunfeng Yun ha scritto:
+> > On Tue, 2022-01-18 at 14:33 +0100, AngeloGioacchino Del Regno
+> > wrote:
+> > > Remove the custom functions xhci_mtk_ldos_{enable,disable}() by
+> > > switching to using regulator_bulk to perform the very same thing,
+> > > as the regulators are always either both enabled or both
+> > > disabled.
+> > > 
+> > > Signed-off-by: AngeloGioacchino Del Regno <
+> > > angelogioacchino.delregno@collabora.com>
+> > > ---
+> > >   drivers/usb/host/xhci-mtk.c | 56 ++++++++++++----------------
+> > > -------
+> > > --
+> > >   drivers/usb/host/xhci-mtk.h |  4 +--
+> > >   2 files changed, 20 insertions(+), 40 deletions(-)
+> > > 
+> > > diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-
+> > > mtk.c
+> > > index 62c835d446be..3b81931e5b77 100644
+> > > --- a/drivers/usb/host/xhci-mtk.c
+> > > +++ b/drivers/usb/host/xhci-mtk.c
+> > > @@ -395,31 +395,6 @@ static int xhci_mtk_clks_get(struct
+> > > xhci_hcd_mtk
+> > > *mtk)
+> > >   	return devm_clk_bulk_get_optional(mtk->dev,
+> > > BULK_CLKS_NUM,
+> > > clks);
+> > >   }
+> > >   
+> > > -static int xhci_mtk_ldos_enable(struct xhci_hcd_mtk *mtk)
+> > > -{
+> > > -	int ret;
+> > > -
+> > > -	ret = regulator_enable(mtk->vbus);
+> > > -	if (ret) {
+> > > -		dev_err(mtk->dev, "failed to enable vbus\n");
+> > > -		return ret;
+> > > -	}
+> > > -
+> > > -	ret = regulator_enable(mtk->vusb33);
+> > > -	if (ret) {
+> > > -		dev_err(mtk->dev, "failed to enable vusb33\n");
+> > > -		regulator_disable(mtk->vbus);
+> > > -		return ret;
+> > > -	}
+> > > -	return 0;
+> > > -}
+> > > -
+> > > -static void xhci_mtk_ldos_disable(struct xhci_hcd_mtk *mtk)
+> > > -{
+> > > -	regulator_disable(mtk->vbus);
+> > > -	regulator_disable(mtk->vusb33);
+> > > -}
+> > > -
+> > >   static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd
+> > > *xhci)
+> > >   {
+> > >   	struct usb_hcd *hcd = xhci_to_hcd(xhci);
+> > > @@ -475,6 +450,10 @@ static int xhci_mtk_setup(struct usb_hcd
+> > > *hcd)
+> > >   	return ret;
+> > >   }
+> > >   
+> > > +static const char * const xhci_mtk_supply_names[] = {
+> > > +	"vusb33", "vbus",
+> > > +};
+> > > +
+> > >   static const struct xhci_driver_overrides xhci_mtk_overrides
+> > > __initconst = {
+> > >   	.reset = xhci_mtk_setup,
+> > >   	.add_endpoint = xhci_mtk_add_ep,
+> > > @@ -507,17 +486,18 @@ static int xhci_mtk_probe(struct
+> > > platform_device *pdev)
+> > >   		return -ENOMEM;
+> > >   
+> > >   	mtk->dev = dev;
+> > > -	mtk->vbus = devm_regulator_get(dev, "vbus");
+> > > -	if (IS_ERR(mtk->vbus)) {
+> > > -		dev_err(dev, "fail to get vbus\n");
+> > > -		return PTR_ERR(mtk->vbus);
+> > > -	}
+> > > +	mtk->num_supplies = ARRAY_SIZE(xhci_mtk_supply_names);
+> > > +	mtk->supplies = devm_kcalloc(dev, mtk->num_supplies,
+> > > +				     sizeof(*mtk->supplies),
+> > > GFP_KERNEL);
+> > > +	if (!mtk->supplies)
+> > > +		return -ENOMEM;
+> > >   
+> > > -	mtk->vusb33 = devm_regulator_get(dev, "vusb33");
+> > > -	if (IS_ERR(mtk->vusb33)) {
+> > > -		dev_err(dev, "fail to get vusb33\n");
+> > > -		return PTR_ERR(mtk->vusb33);
+> > > -	}
+> > > +	regulator_bulk_set_supply_names(mtk->supplies,
+> > > xhci_mtk_supply_names,
+> > > +					mtk->num_supplies);
+> > > +
+> > > +	ret = devm_regulator_bulk_get(dev, mtk->num_supplies, mtk-
+> > > > supplies);
+> > > 
+> > > +	if (ret)
+> > > +		return dev_err_probe(dev, ret, "Failed to get
+> > > regulators\n");
+> > >   
+> > >   	ret = xhci_mtk_clks_get(mtk);
+> > >   	if (ret)
+> > > @@ -558,7 +538,7 @@ static int xhci_mtk_probe(struct
+> > > platform_device
+> > > *pdev)
+> > >   	pm_runtime_enable(dev);
+> > >   	pm_runtime_get_sync(dev);
+> > >   
+> > > -	ret = xhci_mtk_ldos_enable(mtk);
+> > > +	ret = regulator_bulk_enable(mtk->num_supplies, mtk->supplies);
+> > >   	if (ret)
+> > >   		goto disable_pm;
+> > >   
+> > > @@ -667,7 +647,7 @@ static int xhci_mtk_probe(struct
+> > > platform_device
+> > > *pdev)
+> > >   	clk_bulk_disable_unprepare(BULK_CLKS_NUM, mtk->clks);
+> > >   
+> > >   disable_ldos:
+> > > -	xhci_mtk_ldos_disable(mtk);
+> > > +	regulator_bulk_disable(mtk->num_supplies, mtk->supplies);
+> > >   
+> > >   disable_pm:
+> > >   	pm_runtime_put_noidle(dev);
+> > > @@ -695,7 +675,7 @@ static int xhci_mtk_remove(struct
+> > > platform_device
+> > > *pdev)
+> > >   	usb_put_hcd(hcd);
+> > >   	xhci_mtk_sch_exit(mtk);
+> > >   	clk_bulk_disable_unprepare(BULK_CLKS_NUM, mtk->clks);
+> > > -	xhci_mtk_ldos_disable(mtk);
+> > > +	regulator_bulk_disable(mtk->num_supplies, mtk->supplies);
+> > >   
+> > >   	pm_runtime_disable(dev);
+> > >   	pm_runtime_put_noidle(dev);
+> > > diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-
+> > > mtk.h
+> > > index 4b1ea89f959a..9b78cd2ba0ac 100644
+> > > --- a/drivers/usb/host/xhci-mtk.h
+> > > +++ b/drivers/usb/host/xhci-mtk.h
+> > > @@ -150,9 +150,9 @@ struct xhci_hcd_mtk {
+> > >   	int num_u3_ports;
+> > >   	int u2p_dis_msk;
+> > >   	int u3p_dis_msk;
+> > > -	struct regulator *vusb33;
+> > > -	struct regulator *vbus;
+> > >   	struct clk_bulk_data clks[BULK_CLKS_NUM];
+> > > +	struct regulator_bulk_data *supplies;
+> > > +	u8 num_supplies;
+> > 
+> > Could you please help to change it like as clock bulk?
+> > 
+> > 1. #define BULK_REGULATORS_NUM 2; then define @supplies array,
+> > 
+> >          struct regulator_bulk_data supplies[BULK_REGULATORS_NUM];
+> > 
+> > 2. also add a helper to get regulator bulk; e.g.
+> > 
+> > static int xhci_mtk_regulators_get(struct xhci_hcd_mtk *mtk)
+> > {
+> >      struct regulator_bulk_data *supplies = mtk->supplies;
+> > 
+> >      supplies[0].supply = "vusb33";
+> >      supplies[1].supply = "vbus";
+> > 
+> >      return devm_regulator_bulk_get(mtk->dev, BUL
+> > K_REGULATORS_NUM, supplies);
+> > }
+> 
+> Hello Chunfeng,
+> I chose to go for this way to enhance the implementation flexibility:
+> like that,
+> any future SoC that needs different regulators (more vregs, less,
+> different names)
+> will simply need a new array of vreg names, like:
+> 
+> static const char * const xhci_mtk_mtxxxx_supply_names[] = {
+> 	"vusb33", "vbus", "another-supply", "and-another-one",
+> };
+> 
+> Other than enhancing flexibility, this will also make sure that we
+> don't allocate
+> more regulator_bulk_data entries than needed, enhancing memory usage.
+> 
+> Your proposal, though, is valid if you are sure that future SoCs will
+> have only
+> and always these two power supplies and nothing else...
+As I know, vbus is usually always on (fixed regulator) and is used to
+provide 5v for the connected device, vusb33 is rarely used now (it's
+used to provide v3.3 for the controller). I think no need pay more
+attention to flexibility here.
 
---===============9007598568106816053==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="r3c6abkz2rpak4yl"
-Content-Disposition: inline
+Thanks a lot
 
 
---r3c6abkz2rpak4yl
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Sat, Feb 12, 2022 at 11:16:30PM +0300, Sergey Shtylyov wrote:
-> This patch is based on the former Andy Shevchenko's patch:
->=20
-> https://lore.kernel.org/lkml/20210331144526.19439-1-andriy.shevchenko@lin=
-ux.intel.com/
->=20
-> Currently platform_get_irq_optional() returns an error code even if IRQ
-> resource simply has not been found.  It prevents the callers from being
-> error code agnostic in their error handling:
->=20
-> 	ret =3D platform_get_irq_optional(...);
-> 	if (ret < 0 && ret !=3D -ENXIO)
-> 		return ret; // respect deferred probe
-> 	if (ret > 0)
-> 		...we get an IRQ...
->=20
-> All other *_optional() APIs seem to return 0 or NULL in case an optional
-> resource is not available.  Let's follow this good example, so that the
-> callers would look like:
->=20
-> 	ret =3D platform_get_irq_optional(...);
-> 	if (ret < 0)
-> 		return ret;
-> 	if (ret > 0)
-> 		...we get an IRQ...
->=20
-> Reported-by: Matthias Schiffer <matthias.schiffer@ew.tq-group.com>
-> Signed-off-by: Sergey Shtylyov <s.shtylyov@omp.ru>
-
-While this patch is better than v1, I still don't like it for the
-reasons discussed for v1. (i.e. 0 isn't usable as a dummy value which I
-consider the real advantage for the other _get_optional() functions.)
-
-Apart from that, I think the subject is badly chosen. With "Make
-somefunc() optional" I would expect that you introduce a Kconfig symbol
-that results in the function not being available when disabled.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---r3c6abkz2rpak4yl
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmIKASwACgkQwfwUeK3K
-7Ak1DAf/fgLBIz9p8Vx2hzG+I8aYoNMAmPLmUfMeIR1DWaBc26HTbyTBn6pFRiPZ
-rztM2uc+royoY44/mp4H89WkPzZ0/v3AlRkdqI8UBny0ZKRbNtMfzL6f7wyVik5C
-rxqc7EgXLRk2/0IxTohA6bwj7Vczei9NwYndm+QrxDHjmY5Dq95rdvxv9+8iaa9y
-gLQ2x91x4bybaKnKVe36f5JfLeMhS9kLuCx82Wi1yqPK4UQQ6R/+QEE0zGS8QNHP
-vMasmLHge9XqVx/c0SuPcLVZ/uRatkzzuqf1rY75peyQp4YpDDdkhkTws4kcVC22
-lVFz9FjvbtVS4nxvPxNwZAnvq9sPaQ==
-=UfDO
------END PGP SIGNATURE-----
-
---r3c6abkz2rpak4yl--
-
-
---===============9007598568106816053==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+> 
+> Regards,
+> Angelo
+> 
+> > 
+> > Thanks a lot
+> > 
+> > 
+> > >   	unsigned int has_ippc:1;
+> > >   	unsigned int lpm_support:1;
+> > >   	unsigned int u2_lpm_disable:1;
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============9007598568106816053==--
-
