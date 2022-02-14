@@ -4,55 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3648BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 14:04:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 375CAC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 14:10:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KXXIBxF8mLd5wnxwHKsy5nAR1zrA3KYGoYChh3A4DEU=; b=zN5TY1dSXjhSo8
-	1gp4AIsd0Pna+HHifNAO5L56ZxF0lHL15/fEfzX2WzMuxtiUmDted0x08FyTTqwJPdGph4TI7lEsN
-	tlnKoKyPbXCHJOTi6jljs912z2KKFWKZIo+bwKJmPFobmMHhO6OA8+3S0vS33VhEi6fnHEu8Bs9WI
-	BIj10wbs282laB8oEkZBdo/rnBH27Kp47+MZrNOboXA9/XwNbIZaRtNeP0uEYKSQAmbRgBVc2Eoar
-	uyXdkult3w/ykhhfRIG2fk2vn+/i07CHZH+NtnOYZJCd8Q3kg4Nv9PuTUM+58YhOm7BkRPBqCi6x1
-	q/gGxTofLC6RmwJN90PA==;
+	List-Owner; bh=JsDR20nfhNVXoZN5m2ZjbwjkOvTTzzacIYJzcmj6ODk=; b=lmi1kpPgcypGD1
+	dIJcm9icuArNnNdpNrkkz0yIpAZUdnyhY0HMd/QL7tzEyfnlNz9UCn4eS3LxpOWHMxve3n6DpS0r+
+	wD7zex3AthLdD8nVerLOQGf4tCLTK5F6xrwSgDPKlk0QN/I7dve/L9SaFgdVOWXtaZAivGKEV6G7L
+	7OvT1iQGi6DzUZbnhU2c0X9qHW+8cHMwzKNbmubShrZu6bNeLjuSYQtSNai1yRfoePwXRqAh6lwbw
+	2cCm1JR6JeRuwoCLHCgdyKuWuu2mFRyI8Dep06ugZX3oKUmvbDpU4C1QOCPIqf6XsZmtlDkrSqH8I
+	soSIUADl2jKL9awBZl6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJby0-00FZAm-Dh; Mon, 14 Feb 2022 14:04:36 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nJc3Z-00FbZe-Ew; Mon, 14 Feb 2022 14:10:21 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJbxE-00FYn1-70; Mon, 14 Feb 2022 14:03:50 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 6C8D31F437D8
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1644847427;
- bh=wFNgkqGiONoneW7J7GAtmcWU3v7pj9r5c0V0Os6wFU0=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=OUG+pRD5LFzg0JNUMPwO8D3H1M9GSWqUTPtDByjaPj95ISZWa4Pvs4Fd0wkQWzBcF
- dgJ9fdDzLdJWCXfJpfvfH2uipWAipJtTSKdsA1t6BXNN57RCoE1+ixwBUXhBtR89Bx
- d6hz0MguCsVR07zG1aERD8kW7FKTrABhs41a7UPhKe+3IdEkWw74KtSXTsuK3Dqsfr
- HLz0KaN1BN25jpW0Wz2QihHbm2uHudnjZ45SCZX7g3TzIcsGBI+M93VuT7/Q+HMv70
- YV2qBURT/u4kLKpL9GGXBcF5PW6mL1hGoRoxkh3OItUGA2hF9Kzvwz2L+ENRnV/dKo
- i2hKFQGJ7l7Jg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: thierry.reding@gmail.com
-Cc: u.kleine-koenig@pengutronix.de, lee.jones@linaro.org,
- matthias.bgg@gmail.com, linux-pwm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 3/3] pwm: pwm-mediatek: Beautify error messages text
-Date: Mon, 14 Feb 2022 15:03:39 +0100
-Message-Id: <20220214140339.112500-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.33.1
-In-Reply-To: <20220214140339.112500-1-angelogioacchino.delregno@collabora.com>
-References: <20220214140339.112500-1-angelogioacchino.delregno@collabora.com>
+ id 1nJc3W-00FbX7-70; Mon, 14 Feb 2022 14:10:20 +0000
+X-UUID: b9b06c046ccd49d18626a1a516383ab3-20220214
+X-UUID: b9b06c046ccd49d18626a1a516383ab3-20220214
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <xinlei.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1384709419; Mon, 14 Feb 2022 07:10:12 -0700
+Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 14 Feb 2022 06:01:25 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS34N1.mediatek.inc
+ (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 14 Feb 2022 22:01:23 +0800
+Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
+ MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Mon, 14 Feb 2022 22:01:22 +0800
+From: <xinlei.lee@mediatek.com>
+To: <thierry.reding@gmail.com>, <u.kleine-koenig@pengutronix.de>,
+ <lee.jones@linaro.org>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
+CC: <linux-pwm@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, xinlei lee
+ <xinlei.lee@mediatek.com>
+Subject: [1/1] dt-bindings: pwm:Convert pwm-mtk-disp.txt format file to
+ pwm-mtk-disp.yaml format file
+Date: Mon, 14 Feb 2022 22:01:16 +0800
+Message-ID: <1644847276-27622-2-git-send-email-xinlei.lee@mediatek.com>
+X-Mailer: git-send-email 2.6.4
+In-Reply-To: <1644847276-27622-1-git-send-email-xinlei.lee@mediatek.com>
+References: <1644847276-27622-1-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_060348_412622_10669927 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20220214_061018_267884_18D7861A 
+X-CRM114-Status: GOOD (  10.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,65 +70,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As a cherry-on-top cleanup, make error messages clearer to read
-by changing instances of "clock: XXXX failed" to a more readable
-"Failed to get XXXX clock". Also add "of" to unsupported period
-error.
-
-This is purely a cosmetic change; no "real" functional changes.
-
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/pwm/pwm-mediatek.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-index 6b39f3d69e41..568b13a48717 100644
---- a/drivers/pwm/pwm-mediatek.c
-+++ b/drivers/pwm/pwm-mediatek.c
-@@ -146,7 +146,7 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 
- 	if (clkdiv > PWM_CLK_DIV_MAX) {
- 		pwm_mediatek_clk_disable(chip, pwm);
--		dev_err(chip->dev, "period %d not supported\n", period_ns);
-+		dev_err(chip->dev, "period of %d ns not supported\n", period_ns);
- 		return -EINVAL;
- 	}
- 
-@@ -229,12 +229,12 @@ static int pwm_mediatek_probe(struct platform_device *pdev)
- 	pc->clk_top = devm_clk_get(&pdev->dev, "top");
- 	if (IS_ERR(pc->clk_top))
- 		return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk_top),
--				     "clock: top failed\n");
-+				     "Failed to get top clock\n");
- 
- 	pc->clk_main = devm_clk_get(&pdev->dev, "main");
- 	if (IS_ERR(pc->clk_main))
- 		return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk_main),
--				     "clock: main failed\n");
-+				     "Failed to get main clock\n");
- 
- 	for (i = 0; i < pc->soc->num_pwms; i++) {
- 		char name[8];
-@@ -244,7 +244,7 @@ static int pwm_mediatek_probe(struct platform_device *pdev)
- 		pc->clk_pwms[i] = devm_clk_get(&pdev->dev, name);
- 		if (IS_ERR(pc->clk_pwms[i]))
- 			return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk_pwms[i]),
--					     "clock: %s failed\n", name);
-+					     "Failed to get %s clock\n", name);
- 	}
- 
- 	pc->chip.dev = &pdev->dev;
--- 
-2.33.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+RnJvbTogeGlubGVpIGxlZSA8eGlubGVpLmxlZUBtZWRpYXRlay5jb20+CgpTaWduZWQtb2ZmLWJ5
+OiB4aW5sZWkgbGVlIDx4aW5sZWkubGVlQG1lZGlhdGVrLmNvbT4KLS0tCiAuLi4vZGV2aWNldHJl
+ZS9iaW5kaW5ncy9wd20vcHdtLW10ay1kaXNwLnlhbWwgICAgICB8IDYwICsrKysrKysrKysrKysr
+KysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCA2MCBpbnNlcnRpb25zKCspCiBjcmVhdGUgbW9kZSAx
+MDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3B3bS9wd20tbXRrLWRpc3Au
+eWFtbAoKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wd20v
+cHdtLW10ay1kaXNwLnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcHdt
+L3B3bS1tdGstZGlzcC55YW1sCm5ldyBmaWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAwMDAuLjJm
+MTE4M2UKLS0tIC9kZXYvbnVsbAorKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvcHdtL3B3bS1tdGstZGlzcC55YW1sCkBAIC0wLDAgKzEsNjAgQEAKKyMgU1BEWC1MaWNlbnNl
+LUlkZW50aWZpZXI6IChHUEwtMi4wLW9ubHkgT1IgQlNELTItQ2xhdXNlKQorJVlBTUwgMS4yCist
+LS0KKyRpZDogaHR0cDovL2RldmljZXRyZWUub3JnL3NjaGVtYXMvcHdtL3B3bS1tdGstZGlzcC55
+YW1sIworJHNjaGVtYTogaHR0cDovL2RldmljZXRyZWUub3JnL21ldGEtc2NoZW1hcy9jb3JlLnlh
+bWwjCisKK3RpdGxlOiBtZWRpYXRlayBQV00gQ29udHJvbGxlciBEZXZpY2UgVHJlZSBCaW5kaW5n
+cworCittYWludGFpbmVyczoKKyAgLSBUaGllcnJ5IFJlZGluZyA8dGhpZXJyeS5yZWRpbmdAZ21h
+aWwuY29tPgorICAtIFV3ZSBLbGVpbmUtS8O2bmlnIDx1LmtsZWluZS1rb2VuaWdAcGVuZ3V0cm9u
+aXguZGU+CisgIC0gTGVlIEpvbmVzIDxsZWUuam9uZXNAbGluYXJvLm9yZz4KKyAgLSBSb2IgSGVy
+cmluZyA8cm9iaCtkdEBrZXJuZWwub3JnPgorCitwcm9wZXJ0aWVzOgorICBjb21wYXRpYmxlOgor
+ICAgIGVudW06CisgICAgICAtIG1lZGlhdGVrLG10MjcwMS1kaXNwLXB3bQorICAgICAgLSBtZWRp
+YXRlayxtdDY1OTUtZGlzcC1wd20KKyAgICAgIC0gbWVkaWF0ZWssbXQ4MTczLWRpc3AtcHdtCisg
+ICAgICAtIG1lZGlhdGVrLG10ODE4My1kaXNwLXB3bQorICAgICAgLSBtZWRpYXRlayxtdDgxODYt
+ZGlzcC1wd20KKworICByZWc6CisgICAgbWF4SXRlbXM6IDEKKworICBpbnRlcnJ1cHRzOgorICAg
+IG1heEl0ZW1zOiAxCisKKyAgY2xvY2tzOgorICAgIGl0ZW1zOgorICAgICAgLSBkZXNjcmlwdGlv
+bjogTWFpbiBDbG9jaworICAgICAgLSBkZXNjcmlwdGlvbjogTW0gQ2xvY2sKKworICBjbG9jay1u
+YW1lczoKKyAgICBpdGVtczoKKyAgICAgIC0gY29uc3Q6IG1haW4KKyAgICAgIC0gY29uc3Q6IG1t
+CityZXF1aXJlZDoKKyAgLSByZWcKKyAgLSBpbnRlcnJ1cHRzCisgIC0gY2xvY2tzCisgIC0gY2xv
+Y2stbmFtZXMKKworYWRkaXRpb25hbFByb3BlcnRpZXM6IGZhbHNlCisKK2V4YW1wbGVzOgorICAt
+IHwKKyAgICAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvaW50ZXJydXB0LWNvbnRyb2xsZXIvYXJtLWdp
+Yy5oPgorICAgICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9jbG9jay9tdDgxODYtY2xrLmg+CisgICAg
+I2luY2x1ZGUgPGR0LWJpbmRpbmdzL2ludGVycnVwdC1jb250cm9sbGVyL2lycS5oPgorICAgIGRp
+c3BfcHdtOiBkaXNwX3B3bTBAMTEwMGUwMDAgeworICAgICAgICBjb21wYXRpYmxlID0gIm1lZGlh
+dGVrLG10ODE4My1kaXNwLXB3bSI7CisgICAgICAgIHJlZyA9IDwweDExMDBlMDAwIDB4MTAwMD47
+CisgICAgICAgIGludGVycnVwdHMgPSA8R0lDX1NQSSAxNDMgSVJRX1RZUEVfTEVWRUxfSElHSD47
+CisgICAgICAgIGNsb2NrcyA9IDwmdG9wY2tnZW4gQ0xLX1RPUF9ESVNQX1BXTT4sCisgICAgICAg
+ICAgICAgICAgIDwmaW5mcmFjZmdfYW8gQ0xLX0lORlJBX0FPX0RJU1BfUFdNPjsKKyAgICAgICAg
+Y2xvY2stbmFtZXMgPSAibWFpbiIsICJtbSI7CisgICAgICAgIHN0YXR1cyA9ICJva2F5IjsKKyAg
+ICB9OwpcIE5vIG5ld2xpbmUgYXQgZW5kIG9mIGZpbGUKLS0gCjIuNi40CgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
+ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
