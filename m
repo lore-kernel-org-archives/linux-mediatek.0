@@ -4,60 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA70CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 11:19:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24C43C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 11:22:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=znLnna/Fskc3jTimH6ICymDV6BYDM7aGlHfiNJjHdSQ=; b=ErMli+JtBdV3qL
-	TuSkpCLE0yL9GhqVIiozpPyL7DQzbaTljV+J3R8XwSxnXUtRZb9GOGqTZoZ6t9ioCmOmnO8BjZHcN
-	qHJXQ7IIUOOOY0AnRMsN5Ns+mPRuPrTFoaT7jSDe5+SigoMWPGhNBHr0hy/Zu6lknlaOMPkOBuwB/
-	Dp+vsAI1uBr5XqQ/FDTAXvzuMRbFUsKWUuN2Xv4Xjqj55EltJRU/GvOEZhfecGdhE1uqL0XxMYoh/
-	8nDnPxIY4bEsTIg2yiTJTTCQLXMOBAGuetdW+T3q3iLUUYq3x64XQgDARWvRirkXp7b2aUmb3uWcK
-	WXpd2g3OduHqVMW40XjQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Cc:To
+	:Subject:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jsoDjUB++7xYoC6OU4sgVibVupDvbDXqHoyadtIV4ns=; b=NYmRrDw8GJABlROYzbBr3OYFyx
+	eP2BM172HJRNW0DLaMXzzLTRDvMH28ly+KX24ScDYM/k23JsYJHUJ4vrTyH+52iGD0c7MVVCnCq0H
+	s0Pm8+1isZvdHj4lIdgC2RJW/lZHulFMdrVD58Muic04//zJbkWpxLQHM9fUuFW5R82EcIiKp+6VM
+	6l9We9OBNbnbtZaQxVTnHTyMNnS7TM4lsMaXZ6WVAeZhE4Rr3xk4QJJe3t74Xgfblj3vPTCumVk0T
+	Ui/85LUk1KmtsUbrZ2BKZRQ0bUxxuOyPyDA9B5HtIRfxTcoGUzXeHTIDvtETo19VTjSNTnzaPWU9L
+	PXAh2xGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJZOG-00Eloc-0e; Mon, 14 Feb 2022 11:19:32 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nJZQi-00Emjr-NO; Mon, 14 Feb 2022 11:22:04 +0000
+Received: from aposti.net ([89.234.176.197])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJYBq-00EONj-IP; Mon, 14 Feb 2022 10:02:40 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 1E7051F43053
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1644832956;
- bh=EZtxgxaV8/I+n1d7kbiGccMyE4bZCHZgIhArtvVlxB4=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=htFbV/VNcgY4e6NmjbTgWCT0U8vZZXgz2EkFHdw5T7VYpUSU/xek0vZEQ8ZV9UFQO
- Qx3ahY8d7vxDW3H0k4fBsj1X070vtiA5LoDwnQN2JMeAr4j1v8S/wUkCopc4LTqkX8
- c/ZKYxcnJLgjFbnF3R027FjtRqM5nhPH+SnY3ic7mN7X/BqlYsrJVLUQmrM31GIB0I
- PYfrNvgMjWw4gmBmzwVBibGvDRRhWjA1EqE3dRYHEhoK2U9DDpKwKWtt+T3ifVqWIq
- 6g50M5CWKaxFaAwnMUe3CRfkFxGQ2v/BHquLmIwyODtbFc8X0I4nX0Bvizjx9biB6w
- SGzfEywYKl8KQ==
-Message-ID: <c9ab3f7c-9b12-0c51-3de2-4abf42cdfb74@collabora.com>
-Date: Mon, 14 Feb 2022 11:02:33 +0100
+ id 1nJYCd-00EOcc-5t; Mon, 14 Feb 2022 10:03:29 +0000
+Date: Mon, 14 Feb 2022 10:03:01 +0000
+From: Paul Cercueil <paul@crapouillou.net>
+Subject: Re: [PATCH 06/23] drm/ingenic: Make use of the helper
+ component_compare_of
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, David Airlie
+ <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, James Wang <james.qian.wang@arm.com>,
+ Liviu Dudau <liviu.dudau@arm.com>, iommu@lists.linux-foundation.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@canonical.com>, linux-kernel@vger.kernel.org,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Arnd Bergmann
+ <arnd@arndb.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-mediatek@lists.infradead.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
+ Tomasz Figa <tfiga@chromium.org>, srv_heupstream@mediatek.com, Rob Clark
+ <robdclark@gmail.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Sebastian Reichel <sre@kernel.org>, linux-mips@vger.kernel.org
+Message-Id: <19HA7R.NEIIBC5SNORY1@crapouillou.net>
+In-Reply-To: <20220214060819.7334-7-yong.wu@mediatek.com>
+References: <20220214060819.7334-1-yong.wu@mediatek.com>
+ <20220214060819.7334-7-yong.wu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v4 3/3] pinctrl: canonical rsel resistance selection
- property
-Content-Language: en-US
-To: Guodong Liu <guodong.liu@mediatek.com>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>
-Cc: Sean Wang <sean.wang@mediatek.com>, linux-gpio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220214030631.4969-1-guodong.liu@mediatek.com>
- <20220214030631.4969-4-guodong.liu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220214030631.4969-4-guodong.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_020238_775402_16E888DC 
-X-CRM114-Status: GOOD (  14.62  )
+X-CRM114-CacheID: sfid-20220214_020327_448940_2B2E1AC3 
+X-CRM114-Status: GOOD (  13.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,42 +63,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/02/22 04:06, Guodong Liu ha scritto:
-> Change "mediatek,rsel_resistance_in_si_unit" to
-> "mediatek,rsel-resistance-in-si-unit"
-> 
-> Fixes: fb34a9ae383a ("pinctrl: mediatek: support rsel feature")
-> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
+Hi,
 
-A note for maintainers: luckily, this property hasn't been used in any device-tree
-yet, so we luckily (since naming convention was not compliant) don't have to worry
-about retro-compatibility for old DTs; so...
+Le lun., f=E9vr. 14 2022 at 14:08:02 +0800, Yong Wu =
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+<yong.wu@mediatek.com> a =E9crit :
+> Use the common compare helper from component.
+> =
+
+> Cc: Paul Cercueil <paul@crapouillou.net>
+> Cc: linux-mips@vger.kernel.org
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+
+Acked-by: Paul Cercueil <paul@crapouillou.net>
+
+Cheers,
+-Paul
 
 > ---
->   drivers/pinctrl/mediatek/pinctrl-paris.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> index d4e02c5d74a8..38c0f0c4cf95 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> @@ -989,7 +989,7 @@ int mtk_paris_pinctrl_probe(struct platform_device *pdev,
->   	hw->nbase = hw->soc->nbase_names;
->   
->   	if (of_find_property(hw->dev->of_node,
-> -			     "mediatek,rsel_resistance_in_si_unit", NULL))
-> +			     "mediatek,rsel-resistance-in-si-unit", NULL))
->   		hw->rsel_si_unit = true;
->   	else
->   		hw->rsel_si_unit = false;
-> 
+>  drivers/gpu/drm/ingenic/ingenic-drm-drv.c | 7 +------
+>  1 file changed, 1 insertion(+), 6 deletions(-)
+> =
+
+> diff --git a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c =
+
+> b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
+> index b4943a56be09..23b8f012b418 100644
+> --- a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
+> +++ b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
+> @@ -1322,11 +1322,6 @@ static int =
+
+> ingenic_drm_bind_with_components(struct device *dev)
+>  	return ingenic_drm_bind(dev, true);
+>  }
+> =
+
+> -static int compare_of(struct device *dev, void *data)
+> -{
+> -	return dev->of_node =3D=3D data;
+> -}
+> -
+>  static void ingenic_drm_unbind(struct device *dev)
+>  {
+>  	struct ingenic_drm *priv =3D dev_get_drvdata(dev);
+> @@ -1360,7 +1355,7 @@ static int ingenic_drm_probe(struct =
+
+> platform_device *pdev)
+>  	if (!np)
+>  		return ingenic_drm_bind(dev, false);
+> =
+
+> -	drm_of_component_match_add(dev, &match, compare_of, np);
+> +	drm_of_component_match_add(dev, &match, component_compare_of, np);
+>  	of_node_put(np);
+> =
+
+>  	return component_master_add_with_match(dev, &ingenic_master_ops, =
+
+> match);
+> --
+> 2.18.0
+> =
+
+
 
 
 _______________________________________________
