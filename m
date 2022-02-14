@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C306C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 06:09:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B90DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 06:10:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EWNkZdhMgMVFI3DZp2BwoHiJJhMbZMrt+mpXoGiDMxM=; b=SCfzJ1MLA9SWEl
-	LkFMzmmiufw/m3qELKDWstpQBtMe1KknGmfZBLZkQme875xvU57qAUYGKtO09wFK7i715UKATGuWv
-	kWgt/ztMWVxBSnJcP+WX7A/5wJNuNNWu2qIkigTBtQxwrUU9aVl3ztFu6/6y1QoRs/Lc6Iq/MHHyQ
-	nCMQQxQTzSqLsmOzS45ZHCmihB2zEi13pCrgasI14Dsco3IYBDe0ggjf5+u/1XhY5oPfrjoAhsiXh
-	eD77Vmi13dUtx4Cw4Llkm3UPm3J7xKE0vX2lTq9tFiiRoYPH4MrmXaA90eePR8gafOPC7NRMU7e8C
-	p3OgGbf8bMyPKZRgEOoQ==;
+	List-Owner; bh=/UVEgL1KoIOryRui/0Ofc3w+cVEsrvJ3sBUU/HIsu4k=; b=QvGEjBYkKgkL68
+	V3qXSSffpeS2ZCkFkyoJJfaN+cRAZxuo/Bgc5UW7fctG5QuyCiS46ZduaiUvvMFKDVOPqdFexL9VO
+	FWyhZjeZiKeVBqXdxtX9i0COdyS1MoCt51yNVoh9BTGirm5hxR21/3+0mzSyA1SxM1hn+W0i4yrWb
+	KO3mNu7LlPJTEYSRh0TxMurAywPit4zlmzdOiU2b8BPovUtOv7E4WkhjABpsdsxOvebjtrZsjXIa+
+	eE3OhVhu5TiHKrzHDX6KOZkHX4WzDxTo5PHrUheFmtwGqDmbea1/MWQODvl5hL9xbXYZ40Q1r3DGV
+	zBvNlxF0XBa0Qvibnqig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJUYI-00DJSr-Vd; Mon, 14 Feb 2022 06:09:34 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nJUYh-00DJip-Gd; Mon, 14 Feb 2022 06:09:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJUY4-00DJN6-TV; Mon, 14 Feb 2022 06:09:22 +0000
-X-UUID: 5aee13a932e94ec29341249832347543-20220213
-X-UUID: 5aee13a932e94ec29341249832347543-20220213
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1nJUYG-00DJRR-J0; Mon, 14 Feb 2022 06:09:33 +0000
+X-UUID: 3cdb7a8d8ebc442095ecfacbba44a53a-20220213
+X-UUID: 3cdb7a8d8ebc442095ecfacbba44a53a-20220213
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 140712359; Sun, 13 Feb 2022 23:09:18 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1918206077; Sun, 13 Feb 2022 23:09:31 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 13 Feb 2022 22:09:17 -0800
+ 15.0.1497.2; Sun, 13 Feb 2022 22:09:29 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Feb 2022 14:09:15 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 14 Feb 2022 14:09:28 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 14 Feb 2022 14:09:13 +0800
+ Transport; Mon, 14 Feb 2022 14:09:26 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, David Airlie
  <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
@@ -56,19 +57,20 @@ CC: James Wang <james.qian.wang@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
  <hsinyi@chromium.org>, Robin Murphy <robin.murphy@arm.com>, Tomasz Figa
  <tfiga@chromium.org>, <srv_heupstream@mediatek.com>, Rob Clark
  <robdclark@gmail.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Sebastian Reichel <sre@kernel.org>, Yong Wu <yong.wu@mediatek.com>, "Mihail
- Atanassov" <mihail.atanassov@arm.com>, Brian Starkey <brian.starkey@arm.com>
-Subject: [PATCH 02/23] drm/komeda: Make use of the helper component_compare_of
-Date: Mon, 14 Feb 2022 14:07:58 +0800
-Message-ID: <20220214060819.7334-3-yong.wu@mediatek.com>
+ Sebastian Reichel <sre@kernel.org>, Yong Wu <yong.wu@mediatek.com>, "Russell
+ King" <linux@armlinux.org.uk>
+Subject: [PATCH 03/23] drm/armada: Make use of the helper
+ component_compare_of/dev_name
+Date: Mon, 14 Feb 2022 14:07:59 +0800
+Message-ID: <20220214060819.7334-4-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220214060819.7334-1-yong.wu@mediatek.com>
 References: <20220214060819.7334-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220213_220920_982551_216E5C18 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20220213_220932_661982_926DACA8 
+X-CRM114-Status: GOOD (  14.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,42 +87,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the common compare helper from component.
+Use the common compare helpers from component.
 
-Cc: "James (Qian) Wang" <james.qian.wang@arm.com>
-Cc: Liviu Dudau <liviu.dudau@arm.com>
-Cc: Mihail Atanassov <mihail.atanassov@arm.com>
-Cc: Brian Starkey <brian.starkey@arm.com>
+Cc: Russell King <linux@armlinux.org.uk>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/gpu/drm/arm/display/komeda/komeda_drv.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
+ drivers/gpu/drm/armada/armada_drv.c | 17 +++--------------
+ 1 file changed, 3 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/gpu/drm/arm/display/komeda/komeda_drv.c b/drivers/gpu/drm/arm/display/komeda/komeda_drv.c
-index e7933930a657..c325872699ec 100644
---- a/drivers/gpu/drm/arm/display/komeda/komeda_drv.c
-+++ b/drivers/gpu/drm/arm/display/komeda/komeda_drv.c
-@@ -92,11 +92,6 @@ static const struct component_master_ops komeda_master_ops = {
- 	.unbind	= komeda_unbind,
- };
+diff --git a/drivers/gpu/drm/armada/armada_drv.c b/drivers/gpu/drm/armada/armada_drv.c
+index 8e3e98f13db4..224607a6ae16 100644
+--- a/drivers/gpu/drm/armada/armada_drv.c
++++ b/drivers/gpu/drm/armada/armada_drv.c
+@@ -177,17 +177,6 @@ static void armada_drm_unbind(struct device *dev)
+ 	drm_mm_takedown(&priv->linear);
+ }
  
 -static int compare_of(struct device *dev, void *data)
 -{
 -	return dev->of_node == data;
 -}
 -
- static void komeda_add_slave(struct device *master,
- 			     struct component_match **match,
- 			     struct device_node *np,
-@@ -106,7 +101,7 @@ static void komeda_add_slave(struct device *master,
- 
- 	remote = of_graph_get_remote_node(np, port, endpoint);
- 	if (remote) {
--		drm_of_component_match_add(master, match, compare_of, remote);
-+		drm_of_component_match_add(master, match, component_compare_of, remote);
+-static int compare_dev_name(struct device *dev, void *data)
+-{
+-	const char *name = data;
+-	return !strcmp(dev_name(dev), name);
+-}
+-
+ static void armada_add_endpoints(struct device *dev,
+ 	struct component_match **match, struct device_node *dev_node)
+ {
+@@ -196,7 +185,7 @@ static void armada_add_endpoints(struct device *dev,
+ 	for_each_endpoint_of_node(dev_node, ep) {
+ 		remote = of_graph_get_remote_port_parent(ep);
+ 		if (remote && of_device_is_available(remote))
+-			drm_of_component_match_add(dev, match, compare_of,
++			drm_of_component_match_add(dev, match, component_compare_of,
+ 						   remote);
  		of_node_put(remote);
  	}
- }
+@@ -213,7 +202,7 @@ static int armada_drm_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	int ret;
+ 
+-	ret = drm_of_component_probe(dev, compare_dev_name, &armada_master_ops);
++	ret = drm_of_component_probe(dev, component_compare_dev_name, &armada_master_ops);
+ 	if (ret != -EINVAL)
+ 		return ret;
+ 
+@@ -223,7 +212,7 @@ static int armada_drm_probe(struct platform_device *pdev)
+ 		int i;
+ 
+ 		for (i = 0; devices[i]; i++)
+-			component_match_add(dev, &match, compare_dev_name,
++			component_match_add(dev, &match, component_compare_dev_name,
+ 					    devices[i]);
+ 
+ 		if (i == 0) {
 -- 
 2.18.0
 
