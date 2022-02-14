@@ -4,66 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 811EBC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 01:54:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDBC7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 01:58:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=22G/iDb8lm92M6CLgYZA2ZVxMk8UnGHADnOz2v9uoo0=; b=3IyCimUIb7nc1h
-	0Y89Q/YBwaOdZtpRVNRMja3+PPB8ktCXMnEJte67wprjrtrv7JZGVFrUTMhDIQILcD2vXNqr7jH0s
-	RfuJba7YPKz2JQ7Kki9+DU7Dw/cqGQED9E29SZVMhH41wbtlsggvTYUTeMSpCVj5ETkqsN4ldVSqs
-	boJxX1Sp64OKM4kjJyXPbU3dc6Wpw4mzQgbGgAZNJdAqdbsZvT/S+Tc/ygBxkIyvxM4L4wxJNY7bK
-	hIJ2JrCwJsCKB4O95/M345/GcL/nnu5gurrcUmjbxWrP1782ZM8y5oW/TkszVQ0rA3cVMYQtAf0iX
-	6WRVU1JXUj08NSnwl+pA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+fqBQkJKklVyNhdr/H4mlPmMyhIyUL5Lc8zTCV+VGd0=; b=sxbjT6/ClTRwVO
+	tsO0I79X5cpSkoeEqikRGX9xI/ZWGURv4UfNW9DhoFwhv4Tr0q1uJIW0GXpcvq4J3DP24iimxDfHv
+	TRlKU4s4E3ys3WON60uSXpt/1wW8eXRdjUS4JXPjxgxEYqhnSe9uWt7rfBX6b3sRx79qMA6XgQYke
+	tXJz8KwwemXkUQh59YHkQNaZ8cb6lw6Y6eRVqZ/KQtgCykvej++uGD0rdDXnh49Ejjkx8wVzUf4e6
+	DceXGswmBXE7DizQq0HXj1ScVoCXjHFejtKrgCo7FBRtsBTK8YUJhwnAF/MysHIZhQlB6kPPKiTJO
+	JsGrvA9wC6BKawCrn2XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJQYr-00CwWR-AH; Mon, 14 Feb 2022 01:53:53 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nJQdY-00CxPW-Sm; Mon, 14 Feb 2022 01:58:44 +0000
+Received: from out30-130.freemail.mail.aliyun.com ([115.124.30.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJQYg-00CwUD-62; Mon, 14 Feb 2022 01:53:43 +0000
-X-UUID: ad60976e14a64e099eb42d57cf1ed497-20220213
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=8WBhPU5HQSKdcU3HPnUfhO2Un0UbV6um2gVYvOMIyzI=; 
- b=dlUjdqvvKUJPKJjH1SrwGmfNTsxcvvQ3hV/7mOdUliGR/MxkaQzyAN/P7NOYjdAWzs5Sg9xWI7QxaGDoV/mArEhB0T8Rn7AeyGWOzh3b0H9K/ikeZMLAQM8f7bf/d7cBTmrH9yK1gIpZuQpSrmn0sd12oh51VTELUu39GiBhXm0=;
-X-UUID: ad60976e14a64e099eb42d57cf1ed497-20220213
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <leilk.liu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1651959931; Sun, 13 Feb 2022 18:53:38 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 13 Feb 2022 17:53:37 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 14 Feb 2022 09:53:35 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 14 Feb 2022 09:53:34 +0800
-Message-ID: <cf97cd654fc2549065cbfc78e9c45ecb06232059.camel@mediatek.com>
-Subject: Re: [PATCH 5/6] dt-bindings: spi: support mediatek,need_ahb_clk flag
-From: Leilk Liu <leilk.liu@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Mark Brown <broonie@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Date: Mon, 14 Feb 2022 09:53:35 +0800
-In-Reply-To: <YgaV6w1ooAzTpYNz@robh.at.kernel.org>
-References: <20220209111938.16137-1-leilk.liu@mediatek.com>
- <20220209111938.16137-6-leilk.liu@mediatek.com>
- <YgaV6w1ooAzTpYNz@robh.at.kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nJQdM-00CxJ7-1M; Mon, 14 Feb 2022 01:58:34 +0000
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R211e4; CH=green; DM=||false|;
+ DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04400; MF=yang.lee@linux.alibaba.com;
+ NM=1; PH=DS; RN=16; SR=0; TI=SMTPD_---0V4JWI8D_1644803902; 
+Received: from localhost(mailfrom:yang.lee@linux.alibaba.com
+ fp:SMTPD_---0V4JWI8D_1644803902) by smtp.aliyun-inc.com(127.0.0.1);
+ Mon, 14 Feb 2022 09:58:23 +0800
+From: Yang Li <yang.lee@linux.alibaba.com>
+To: nbd@nbd.name
+Cc: lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com,
+ shayne.chen@mediatek.com, sean.wang@mediatek.com, kvalo@kernel.org,
+ davem@davemloft.net, kuba@kernel.org, matthias.bgg@gmail.com,
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Yang Li <yang.lee@linux.alibaba.com>,
+ Abaci Robot <abaci@linux.alibaba.com>
+Subject: [PATCH -next] mt76: mt7615: Fix assigning negative values to unsigned
+ variable
+Date: Mon, 14 Feb 2022 09:58:21 +0800
+Message-Id: <20220214015821.60674-1-yang.lee@linux.alibaba.com>
+X-Mailer: git-send-email 2.20.1.7.g153144c
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220213_175342_252869_67F54300 
-X-CRM114-Status: GOOD (  17.49  )
+X-CRM114-CacheID: sfid-20220213_175832_299554_1DE6A9AD 
+X-CRM114-Status: UNSURE (   7.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,40 +65,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-02-11 at 10:59 -0600, Rob Herring wrote:
-> On Wed, Feb 09, 2022 at 07:19:37PM +0800, Leilk Liu wrote:
-> > this patch support mediatek,need_ahb_clk flag.
-> > 
-> > Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/spi/mediatek,spi-mt65xx.yaml         | 5
-> > +++++
-> >  1 file changed, 5 insertions(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-
-> > mt65xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-
-> > mt65xx.yaml
-> > index 241c0f5880d3..af12c1711182 100644
-> > --- a/Documentation/devicetree/bindings/spi/mediatek,spi-
-> > mt65xx.yaml
-> > +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-
-> > mt65xx.yaml
-> > @@ -71,6 +71,11 @@ properties:
-> >        specify which pins group(ck/mi/mo/cs) spi controller used.
-> >        This is an array.
-> >  
-> > +  mediatek,need_ahb_clk:
-> 
-> s/_/-/
-> 
-> But really, this should be implied by the compatible string or
-> presence 
-> of the clock in 'clocks'.
-so I can only add "spi-hclk" in clocks' and don't need
-"mediatek,need_ahb_clk" again? thanks
+Smatch reports the following:
+drivers/net/wireless/mediatek/mt76/mt7615/mac.c:1865
+mt7615_mac_adjust_sensitivity() warn: assigning (-110) to unsigned
+variable 'def_th'
+drivers/net/wireless/mediatek/mt76/mt7615/mac.c:1865
+mt7615_mac_adjust_sensitivity() warn: assigning (-98) to unsigned
+variable 'def_th'
 
-> 
-> Rob
+Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index f035cd880696..283a86052b4f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -1862,7 +1862,7 @@ mt7615_mac_adjust_sensitivity(struct mt7615_phy *phy,
+ 	struct mt7615_dev *dev = phy->dev;
+ 	int false_cca = ofdm ? phy->false_cca_ofdm : phy->false_cca_cck;
+ 	bool ext_phy = phy != &dev->phy;
+-	u16 def_th = ofdm ? -98 : -110;
++	s16 def_th = ofdm ? -98 : -110;
+ 	bool update = false;
+ 	s8 *sensitivity;
+ 	int signal;
+-- 
+2.20.1.7.g153144c
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
