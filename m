@@ -4,54 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC57EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 12:17:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63178C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 12:20:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=P50PHT/GLOUB9OWbILZHM8fQb3g0EJWWOkcKXGdVbSY=; b=ryFx4WCvLN1uaH
-	9Zx81otHkHzrmoj0NJ5pjnZpRwC6jhXIp9j9+ZaYfFPZ+nJM9gb01i9qMSNr095lUhs57iwHnY6yZ
-	54P3YD9pZlTrL9w+Weuom/L4RloEBSUQTQcGeRNitCqK9FpezIkjdjQ9fQLYVS/qtTpFrny+1saGr
-	6ER1G229I2WNkC4FBFLqn+Tt08Aci5Y7nWcIUE2kh/g7V5mNcSWavJ2vWi7rNZRu11dbmU7k4D4z9
-	QkdM1csNmCnWtG0hk78QjQQD8ElRhQhLEViKodAEfmT4rrr+q9erjB3B67DKkJGfZZDC91q6r77//
-	ps059+G8p04xY8wEyfcw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YUA/1iiOtVrUPZEfdELsPS4y/XsdmDeyll8mBM1YCh0=; b=HEw8ipQsxBeRce
+	AkGzfpYco77PLYemSdJ+S4RD/TVCQP3ZGQSD4Fk7Rtslxtvwho0/bgTaPT9UFdjQz6x/QiWllh8Q1
+	H8M0chNJSbeASuPKayyrM7mZCMa1lRa9bIvqjIcWvMgHRQqr13OXz4qHwYIirwUvQVVHqDOco7S/J
+	wrchznYUnDNpxPOBBVgAfcKdr7fnXeI+ShJ28RXh+YQijIckPzLY6WmM4s7tLVez2Kww8KrxdIZxD
+	SlO/NZ91eqcAq3kjeaRK+pxJv8Pm1e6TwZruJmHwq/zCZoi3ntPpJmokOEBemlDh1xkqQovSJ7nna
+	DbK7O+VO0QDqwLkueBsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJaIH-00F4wu-Rl; Mon, 14 Feb 2022 12:17:25 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nJaL9-00F5rG-IB; Mon, 14 Feb 2022 12:20:23 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJZNw-00ElgN-Ov; Mon, 14 Feb 2022 11:19:18 +0000
+ id 1nJZV5-00EoBN-Qh; Mon, 14 Feb 2022 11:26:37 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id B45B01F43669
+ (Authenticated sender: kholk11) with ESMTPSA id 0278C1F437D2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1644837550;
- bh=/yHhoGENnp5DfoA0yF/nUh7Mr9NPuMCSmEyusu4kgtU=;
- h=From:To:Cc:Subject:Date:From;
- b=K2W0/12Y8kOeoV2TERja1cvvfaN0KlIkfleL8X5BjzFguAx6YDhkDwqELmUFhjtLI
- MZJDiACq4O7v2rhXDmMIiVGdvThbpe1k2nuYz5DqbFeqUBOuLGCdDW5R9+nq60FA+K
- cUvKWgJAzlV9YUvGTOjGB//MB4v4LFrlKz0t/cV0BkRVhiYEhetMW3W3lo/zo664uI
- WM0IvxY+JQKPO1V932VQ6LwHqocInM6EiIO2QhQeoAuB0lJa3momVeIaE9yQgPIfcs
- BBAU7O74zn9E46R7UXhUOS71px58s2Hdxn7rPpmLrpVeg7G1KDTAh9WXXM1RK2hnga
- IIKcFl8/1SSSA==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunfeng.yun@mediatek.com
-Cc: mathias.nyman@intel.com, gregkh@linuxfoundation.org,
- matthias.bgg@gmail.com, linux-usb@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2] usb: host: xhci-mtk: Simplify supplies handling with
- regulator_bulk
-Date: Mon, 14 Feb 2022 12:19:05 +0100
-Message-Id: <20220214111905.77903-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.33.1
+ s=mail; t=1644837993;
+ bh=t/N665+WR5R/ceAfV5H1Q99rJzuoHYq//Yss6JdQBYw=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=U+Hv/s7dC/VlWPmUuJ6aTeD8OzAff/2f2nhgBbLNqCclgaaxF0wYJTNwYb9BUOrST
+ 39XzbaDCutqyM6AimY+ADpVo8KI1scrwB1DWPqoOJLEd02JwXuLMeOtQTd0hPqJ1FR
+ 5wIp1TzMBFdJsIbiPwFDOeSc2oPLJ7sYatJkX7/OOmD1y+O9VX+mP22rs4hEcK37p8
+ pDiy5LO8tagy68r8x9gIci65rdFqf6byt59VEPZwR03CygyKe85lwJ7eI6k3tnngnr
+ ip1WilSJaxsSqZe0E6TVtx7EMj5/CUHn600JfoYYYr4CEgmWldO0ONC5aEjdJS5odG
+ gIb2a20EpHA8g==
+Message-ID: <8725a111-0ee2-8935-86b5-01c61774a628@collabora.com>
+Date: Mon, 14 Feb 2022 12:26:30 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH] i2c: busses: i2c-mt65xx: Simplify with clk-bulk
+Content-Language: en-US
+To: qii.wang@mediatek.com
+Cc: matthias.bgg@gmail.com, linux-i2c@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20220118133358.111886-1-angelogioacchino.delregno@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220118133358.111886-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_031912_984904_281019D4 
-X-CRM114-Status: GOOD (  12.84  )
+X-CRM114-CacheID: sfid-20220214_032636_051746_11411210 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,143 +64,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove the custom functions xhci_mtk_ldos_{enable,disable}() by
-switching to using regulator_bulk to perform the very same thing,
-as the regulators are always either both enabled or both disabled.
+Il 18/01/22 14:33, AngeloGioacchino Del Regno ha scritto:
+> Since depending on the SoC or specific bus functionality some clocks
+> may be optional, we cannot get the benefit of using devm_clk_bulk_get()
+> but, by migrating to clk-bulk, we are able to remove the custom functions
+> mtk_i2c_clock_enable() and mtk_i2c_clock_disable(), increasing common
+> APIs usage, hence (lightly) decreasing kernel footprint.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   drivers/i2c/busses/i2c-mt65xx.c | 127 +++++++++++++-------------------
+>   1 file changed, 51 insertions(+), 76 deletions(-)
+> 
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
+Hello,
+this is a friendly ping to request review on this patch as to avoid forgetting it.
 
-v2: Change dynamic vregs array to static definition with new xhci_mtk_vregs_get()
-    helper as requested by Chunfeng
+Adding context, I have tested this patch on multiple (older/newer) MediaTek
+platforms.
 
- drivers/usb/host/xhci-mtk.c | 44 ++++++++++---------------------------
- drivers/usb/host/xhci-mtk.h |  5 +++--
- 2 files changed, 14 insertions(+), 35 deletions(-)
-
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index e25bad0894cf..b89b4f159a4d 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -401,29 +401,14 @@ static int xhci_mtk_clks_get(struct xhci_hcd_mtk *mtk)
- 	return devm_clk_bulk_get_optional(mtk->dev, BULK_CLKS_NUM, clks);
- }
- 
--static int xhci_mtk_ldos_enable(struct xhci_hcd_mtk *mtk)
-+static int xhci_mtk_vregs_get(struct xhci_hcd_mtk *mtk)
- {
--	int ret;
-+	struct regulator_bulk_data *supplies = mtk->supplies;
- 
--	ret = regulator_enable(mtk->vbus);
--	if (ret) {
--		dev_err(mtk->dev, "failed to enable vbus\n");
--		return ret;
--	}
--
--	ret = regulator_enable(mtk->vusb33);
--	if (ret) {
--		dev_err(mtk->dev, "failed to enable vusb33\n");
--		regulator_disable(mtk->vbus);
--		return ret;
--	}
--	return 0;
--}
-+	supplies[0].supply = "vbus";
-+	supplies[1].supply = "vusb33";
- 
--static void xhci_mtk_ldos_disable(struct xhci_hcd_mtk *mtk)
--{
--	regulator_disable(mtk->vbus);
--	regulator_disable(mtk->vusb33);
-+	return devm_regulator_bulk_get(mtk->dev, BULK_VREGS_NUM, supplies);
- }
- 
- static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
-@@ -513,17 +498,10 @@ static int xhci_mtk_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	mtk->dev = dev;
--	mtk->vbus = devm_regulator_get(dev, "vbus");
--	if (IS_ERR(mtk->vbus)) {
--		dev_err(dev, "fail to get vbus\n");
--		return PTR_ERR(mtk->vbus);
--	}
- 
--	mtk->vusb33 = devm_regulator_get(dev, "vusb33");
--	if (IS_ERR(mtk->vusb33)) {
--		dev_err(dev, "fail to get vusb33\n");
--		return PTR_ERR(mtk->vusb33);
--	}
-+	ret = xhci_mtk_vregs_get(mtk);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Failed to get regulators\n");
- 
- 	ret = xhci_mtk_clks_get(mtk);
- 	if (ret)
-@@ -564,7 +542,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
- 	pm_runtime_enable(dev);
- 	pm_runtime_get_sync(dev);
- 
--	ret = xhci_mtk_ldos_enable(mtk);
-+	ret = regulator_bulk_enable(BULK_VREGS_NUM, mtk->supplies);
- 	if (ret)
- 		goto disable_pm;
- 
-@@ -673,7 +651,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
- 	clk_bulk_disable_unprepare(BULK_CLKS_NUM, mtk->clks);
- 
- disable_ldos:
--	xhci_mtk_ldos_disable(mtk);
-+	regulator_bulk_disable(BULK_VREGS_NUM, mtk->supplies);
- 
- disable_pm:
- 	pm_runtime_put_noidle(dev);
-@@ -701,7 +679,7 @@ static int xhci_mtk_remove(struct platform_device *pdev)
- 	usb_put_hcd(hcd);
- 	xhci_mtk_sch_exit(mtk);
- 	clk_bulk_disable_unprepare(BULK_CLKS_NUM, mtk->clks);
--	xhci_mtk_ldos_disable(mtk);
-+	regulator_bulk_disable(BULK_VREGS_NUM, mtk->supplies);
- 
- 	pm_runtime_disable(dev);
- 	pm_runtime_put_noidle(dev);
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-index 4b1ea89f959a..ffd4b493b4ba 100644
---- a/drivers/usb/host/xhci-mtk.h
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -11,10 +11,12 @@
- 
- #include <linux/clk.h>
- #include <linux/hashtable.h>
-+#include <linux/regulator/consumer.h>
- 
- #include "xhci.h"
- 
- #define BULK_CLKS_NUM	5
-+#define BULK_VREGS_NUM	2
- 
- /* support at most 64 ep, use 32 size hash table */
- #define SCH_EP_HASH_BITS	5
-@@ -150,9 +152,8 @@ struct xhci_hcd_mtk {
- 	int num_u3_ports;
- 	int u2p_dis_msk;
- 	int u3p_dis_msk;
--	struct regulator *vusb33;
--	struct regulator *vbus;
- 	struct clk_bulk_data clks[BULK_CLKS_NUM];
-+	struct regulator_bulk_data supplies[BULK_VREGS_NUM];
- 	unsigned int has_ippc:1;
- 	unsigned int lpm_support:1;
- 	unsigned int u2_lpm_disable:1;
--- 
-2.33.1
-
+Thanks,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
