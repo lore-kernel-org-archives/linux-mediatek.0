@@ -4,88 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5153BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 16:29:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2038EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 20:05:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ss2Zstlfob1KrrIgTpHMn0SH1A8gfZSJcjU0SB1lOz4=; b=JdTgghJGK1x/ou
-	/SGcYNPjVza+WitBUWb1T1R3KHTZoPTwOkTXfvu8GOU2gY1AlTLCHV3nTgD865n/iVbTyzUF4hzL0
-	iYEvw8R4VAih2Qz2EstxymPFnR1vO/6/pNbWDQTZCkpSBW0JUZhYuc+ndXg02yueKVF3oaJPGXkct
-	DvnbHiNleCRgrOnZeSrFsNtkhErsLNBh2G/5PWYa53A6p1beN5+91K98ZJfufXjI/K7A2ib+ensep
-	NkTp4iC/oe7CMDLWbi1se/4rEuQZvC4vdK8M0s1Zdzgwq3uLcOUXGrHmmP+FGa9YbsVsqkTOhYag8
-	V1YtB5WkaK1/SY2W8ssQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ubuFCYfObsdFLdL7gbzHnp8kS63SWuo4bNWnORM55+Q=; b=dTNjYHeJk/QTLh
+	RmLgi4jCCHC7j2OaSxmrnvnKzJGFJSBbpWZZja+bqZMyKWmAfMB3j9m4nZjpQF1GVeO4LIguc3DE+
+	kirhHoRNXKw8dSL8eFCW1mm4WC191w5Z4/88/5YyhsA715wnLuGcbjIHx1JbP4u16OOKdepvWKIfg
+	tUHCZsz10jcK7jqHoLTa/6QV9E9AvaDp6jDFLbb3SWSu31n8YffExuFLdChS7kU87ZZixJU5AtGb1
+	/1elWSfsELFTXsI7S7zPS7LxtekJqgszmOAyJdBTzqmxxqzIx0BbJOi7/UEHaCsDkwolQCIkIL8qB
+	NLwmIXBGIYYMY5ekUXJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJeDz-00G0ig-N2; Mon, 14 Feb 2022 16:29:15 +0000
-Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
+	id 1nJhbV-00GmcS-JG; Mon, 14 Feb 2022 20:05:45 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJeDl-00G0eK-Qw
- for linux-mediatek@lists.infradead.org; Mon, 14 Feb 2022 16:29:03 +0000
-Received: by mail-qv1-xf33.google.com with SMTP id v10so15221385qvk.7
- for <linux-mediatek@lists.infradead.org>; Mon, 14 Feb 2022 08:29:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=JskXaZJX9EqtyU9nDYwhDYopK1GYBeF5QAk0Zlst3K8=;
- b=WFoQIvGxJEbg8UOaiV70tS6PGdyf3qjcG0fNJQKbyHSfj48VnWpT1uPRsHkSjKp4oI
- VyXEAHc0fq+QePjMo/XUxaUdqQMw6JpndQdJRAM+wSSoz81Cj3PoON8L3Dmir1bNHNxO
- JLMBAFjfwqf69spTV2mC/gqt6Gw5T35QWKhp0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=JskXaZJX9EqtyU9nDYwhDYopK1GYBeF5QAk0Zlst3K8=;
- b=mdkQJm2wuSyAOl/n2Qtpov32C9FD6fjd/Ace9BKCr17BJKe5hcfzcWuPP23kPnwtmn
- BBZRjL+dhweONXz+r5n2MVJaaWnMlDLEez4Cp7bcffi0AgopeeRISwrs9bhNZWHYQEje
- QjJbUd8Ck8k/qTfWQQ6Z4nAaKXvn6kjyi/nIqKmD5qXM4WC4FPdfblyViQRexmqg8FqF
- +94eL6rjvepIli+btGmHdXLNDIL7qf95+YgIPKpeaUZO1lQWkGj/sbeFg3qI0B5ytBEP
- 5Nu82MxZ074A7JCX6MAq5aBsrlWBMXvNgtnH0mEaLXCnp5/M8SA76v5poxHWHBA+zDvL
- aq+Q==
-X-Gm-Message-State: AOAM533AuzdkWFV3VMXZYck3f8CWiVpelWO+SYrAjB3ADoRovSVUkgUa
- BQDTcLZFxCoAxcm1rwv1tselEKWqpqp7SQ==
-X-Google-Smtp-Source: ABdhPJxfmJ1/YFuvtzEZZx2NOcVT0Vfljb8KGv3wq3SH3IMM3iE8b8o8Ds15sekD7JXVbGCoSAviaQ==
-X-Received: by 2002:a0c:ea42:: with SMTP id u2mr256932qvp.123.1644856140440;
- Mon, 14 Feb 2022 08:29:00 -0800 (PST)
-Received: from mail-qt1-f176.google.com (mail-qt1-f176.google.com.
- [209.85.160.176])
- by smtp.gmail.com with ESMTPSA id q139sm4583121qke.104.2022.02.14.08.29.00
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Feb 2022 08:29:00 -0800 (PST)
-Received: by mail-qt1-f176.google.com with SMTP id r14so15892246qtt.5
- for <linux-mediatek@lists.infradead.org>; Mon, 14 Feb 2022 08:29:00 -0800 (PST)
-X-Received: by 2002:a02:3b67:: with SMTP id i39mr299652jaf.50.1644855749283;
- Mon, 14 Feb 2022 08:22:29 -0800 (PST)
+ id 1nJhbI-00GmY6-P9; Mon, 14 Feb 2022 20:05:34 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 719871F43907
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1644869128;
+ bh=1uxuJpUNgwUp11TPN1NKA7OMJKeBwVw0ZqlthMDA3F0=;
+ h=From:To:Cc:Subject:Date:From;
+ b=dgCpr307YqBKISxEPPv8wm5ciiXYOnfRHSotaSu8avXJ+gv4zXKhvUIayUkFttVLP
+ ep4Nb0BaR5hda+XrvZQUeKxpuEyIx7L0lpMzuRxSLrk+qTk6o7gx6B3+2xKreJmaVK
+ Wio52gU7WsIdGBoqwAiZ0Yl3s1PeRYSUz1tHEuUUXOIGuYPlTK1rAZ5cL6KWbFATSh
+ MW9TDixQhqFuKt6rch0Z0ul1nfbzq7CKZ5aOYs3EBnrW10ssQv5fb7+Ica6EWBVAlo
+ wRAFjrJ9vB2c45YKkADeGEFcUfEmJPaJd3DeZYAX6Z4yMIB3Kc7k3HcxCc36pwj8ho
+ YYno4Uc8EVAiQ==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
+ <nfraprado@collabora.com>
+To: Robert Foss <robert.foss@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, Xin Ji <xji@analogixsemi.com>
+Cc: kernel@collabora.com, =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
+ <nfraprado@collabora.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH v3] arm64: dts: mt8183: jacuzzi: Fix bus properties in anx's
+ DSI endpoint
+Date: Mon, 14 Feb 2022 15:05:07 -0500
+Message-Id: <20220214200507.2500693-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-References: <20220214081916.162014-1-krzysztof.kozlowski@canonical.com>
- <20220214081916.162014-5-krzysztof.kozlowski@canonical.com>
-In-Reply-To: <20220214081916.162014-5-krzysztof.kozlowski@canonical.com>
-From: Doug Anderson <dianders@chromium.org>
-Date: Mon, 14 Feb 2022 08:22:18 -0800
-X-Gmail-Original-Message-ID: <CAD=FV=Wzr=ra=_mt63Uj2p6PSNoEF1F=zN0-0yg5rcWkBFYkZw@mail.gmail.com>
-Message-ID: <CAD=FV=Wzr=ra=_mt63Uj2p6PSNoEF1F=zN0-0yg5rcWkBFYkZw@mail.gmail.com>
-Subject: Re: [PATCH 4/4] arm64: dts: rk3399: align Google CROS EC PWM node
- name with dtschema
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
- Benson Leung <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>, 
- Thierry Reding <thierry.reding@gmail.com>, 
- =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <agross@kernel.org>, 
- Bjorn Andersson <bjorn.andersson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, chrome-platform@lists.linux.dev, 
- LKML <linux-kernel@vger.kernel.org>, linux-pwm <linux-pwm@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_082901_883654_DEF24FAB 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20220214_120533_047108_9520A891 
+X-CRM114-Status: GOOD (  11.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,27 +65,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Mon, Feb 14, 2022 at 12:20 AM Krzysztof Kozlowski
-<krzysztof.kozlowski@canonical.com> wrote:
->
-> dtschema expects PWM node name to be a generic "pwm".  This also matches
-> Devicetree specification requirements about generic node names.
->
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+bXQ4MTgzLWt1a3VpLWphY3V6emkgaGFzIGFuIGFueDc2MjUgYnJpZGdlIGNvbm5lY3RlZCB0byB0
+aGUgb3V0cHV0IG9mCml0cyBEU0kgaG9zdC4gSG93ZXZlciwgYWZ0ZXIgY29tbWl0IGZkMDMxMGI2
+ZmU3ZCAoImRybS9icmlkZ2U6IGFueDc2MjU6CmFkZCBNSVBJIERQSSBpbnB1dCBmZWF0dXJlIiks
+IGEgYnVzLXR5cGUgcHJvcGVydHkgc3RhcnRlZCBiZWluZyByZXF1aXJlZAppbiB0aGUgZW5kcG9p
+bnQgbm9kZSBieSB0aGUgZHJpdmVyIHRvIGluZGljYXRlIHdoZXRoZXIgaXQgaXMgRFNJIG9yIERQ
+SS4KCkFkZCB0aGUgbWlzc2luZyBidXMtdHlwZSBwcm9wZXJ0eSBhbmQgc2V0IGl0IHRvIDUKKFY0
+TDJfRldOT0RFX0JVU19UWVBFX1BBUkFMTEVMKSBzbyB0aGF0IHRoZSBkcml2ZXIgaGFzIGl0cyBp
+bnB1dApjb25maWd1cmVkIHRvIERTSSBhbmQgdGhlIGRpc3BsYXkgcGlwZWxpbmUgY2FuIHByb2Jl
+IGNvcnJlY3RseS4KCldoaWxlIGF0IGl0LCBhbHNvIHNldCB0aGUgZGF0YS1sYW5lcyBwcm9wZXJ0
+eSB0aGF0IHdhcyBhbHNvIGludHJvZHVjZWQKaW4gdGhhdCBzYW1lIGNvbW1pdCwgc28gdGhhdCB3
+ZSBkb24ndCByZWx5IG9uIHRoZSBkZWZhdWx0IHZhbHVlLgoKRml4ZXM6IGZkMDMxMGI2ZmU3ZCAo
+ImRybS9icmlkZ2U6IGFueDc2MjU6IGFkZCBNSVBJIERQSSBpbnB1dCBmZWF0dXJlIikKUmV2aWV3
+ZWQtYnk6IEFuZ2Vsb0dpb2FjY2hpbm8gRGVsIFJlZ25vIDxhbmdlbG9naW9hY2NoaW5vLmRlbHJl
+Z25vQGNvbGxhYm9yYS5jb20+ClNpZ25lZC1vZmYtYnk6IE7DrWNvbGFzIEYuIFIuIEEuIFByYWRv
+IDxuZnJhcHJhZG9AY29sbGFib3JhLmNvbT4KCi0tLQp2MjogaHR0cHM6Ly9sb3JlLmtlcm5lbC5v
+cmcvYWxsLzIwMjIwMjAxMTc0NjQzLjg0MzEwMi0xLW5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tCnYx
+OiBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvMjAyMjAxMjAyMjQyMDQuNzczMTE3LTEtbmZy
+YXByYWRvQGNvbGxhYm9yYS5jb20KCkNoYW5nZXMgaW4gdjM6Ci0gQWRkZWQgbWlzc2luZyBSZXZp
+ZXdlZC1ieQoKQ2hhbmdlcyBpbiB2MjoKLSAodGhhbmtzIFJvYikgVXNlIHByb3BlciBmb3JtYXQg
+d2hlbiByZWZlcmluZyB0byBjb21taXQgaW4gY29tbWl0CiAgbWVzc2FnZSBhcyBwb2ludGVkIG91
+dCBieSBjaGVja3BhdGNoCgogYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxODMta3Vr
+dWktamFjdXp6aS5kdHNpIHwgMiArKwogMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKQoK
+ZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLWt1a3VpLWph
+Y3V6emkuZHRzaSBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLWt1a3VpLWph
+Y3V6emkuZHRzaQppbmRleCA4ZjdiZjMzZjYwN2QuLmU4ZjEzM2RjOTZiOSAxMDA2NDQKLS0tIGEv
+YXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxODMta3VrdWktamFjdXp6aS5kdHNpCisr
+KyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLWt1a3VpLWphY3V6emkuZHRz
+aQpAQCAtMTcxLDYgKzE3MSw4IEBAIHBvcnRAMCB7CiAKIAkJCWFueDc2MjVfaW46IGVuZHBvaW50
+IHsKIAkJCQlyZW1vdGUtZW5kcG9pbnQgPSA8JmRzaV9vdXQ+OworCQkJCWJ1cy10eXBlID0gPDU+
+OworCQkJCWRhdGEtbGFuZXMgPSA8MCAxIDIgMz47CiAJCQl9OwogCQl9OwogCi0tIAoyLjM1LjEK
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1t
+ZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
+dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVr
+Cg==
