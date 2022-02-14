@@ -4,164 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C2A9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 08:53:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12877C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 08:55:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:From:CC:To:In-Reply-To:References:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GQ2bBCidxG1zQn6ZrEcCVOI+9I1VMP5gAvZonRITESQ=; b=0rnoY/hNnhOllfH6Y8ICLhSZe/
-	q1DujHocpMxnduwiZDv0CrJLAvLjVFUuvvFNjuZvzDqxC/JgIQFIrwaEo+qBFIxtnlq4XsVHEtGXV
-	SQxM3eLIwHqVKqs1uNF7TuQ1/hN37klk3q1MLltxzFWTu5aL11Gq5B4/q3LcQaSH9wj6cfNesSslI
-	3VHMzvGeZ1HAiFDvIFK09luZIBerHNsFOKa9wUq5tqYOOFjksHHsSXGGwu/GnEBqchM2/55YJe3Z2
-	0cyopB2QTqEtdDH9qhLxqhBb+2Wx9T8NgZU1EAo9M/Nhh+0Bz3yG00hh5yco6jYcrY2cnLM9bmX7X
-	S5/U8eDw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=PHOFizhULg+6wGtENS19tCBvTugI76t4UAcET+0mTpY=; b=rCKxG57uDw/dgR
+	DQr7xRBzqzD2gp/s6WPDbsyChk6BotQsLFDzHaJz7o2SF/YFbYNabDOVX8zkf2cLJZekgMyukXogO
+	aRYbWvO/TlfC9OnxFBOHcbhBElfXsDNpUexH61mht0tG2wt7qwA/CDStVdaTuONqdbaBUPuS5OFKv
+	sbOGKvPg+5K2Ev0Py15vrvZjLVFkadJCT7xWFDC6yfvKaRviHgmnpmhkkZKy3Kyqp3J4fGb4X0SwY
+	SCTKMNYbDVZmA5DKV/ixT70XJaoQboFFSxqe2yjeXHYyadVCq5yXnP2swB3FaH5TY3hOKHt8nN2lG
+	wEjup4ANoBtTT5+UTk8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJX7B-00E5qO-JJ; Mon, 14 Feb 2022 08:53:45 +0000
-Received: from mga01.intel.com ([192.55.52.88])
+	id 1nJX8s-00E6Vh-9Y; Mon, 14 Feb 2022 08:55:30 +0000
+Received: from mail-ua1-f48.google.com ([209.85.222.48])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJX6R-00E5RG-Vn
- for linux-mediatek@lists.infradead.org; Mon, 14 Feb 2022 08:53:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1644828779; x=1676364779;
- h=message-id:date:subject:references:in-reply-to:to:cc:
- from:content-transfer-encoding:mime-version;
- bh=7Ax12YyzrBm6pTBb6y5zyVhTGxQP41YEZTCoJlFqF2Q=;
- b=cPGhM1JtFb7UvguDb04oNqGegVyEVlusk70f6M9zJ4uBbrTRZEr90mT8
- gYYPS+vBNRgq4s+HwGuvMzCDeB3OVXI+S2Io5q2sLCDZpLKaSJA3p8qdx
- BdiD5eoxJxm7kuPHjIDmMAgdXpMQo/EnwUd1GDlNsxZwl/bDLFISoKXyn
- 8ze89/zMHYRmPZs5KSY8+tcxHo5RLITWRzxBcqU/DSkU0OJKe5rCEl9/T
- NlqTRaO2ZVlZpKyLdM8dcFMrOdbcfY2k7ef92/kPfpqAp9LPp7lii05lC
- cZ2QHB2mtkUrpOnSdlcPkEYBjrqcD3lG7j/3sadYRz/pM4onw15GPGdjk Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10257"; a="274616074"
-X-IronPort-AV: E=Sophos;i="5.88,367,1635231600"; d="scan'208";a="274616074"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Feb 2022 00:52:55 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,367,1635231600"; d="scan'208";a="635021310"
-Received: from fmsmsx604.amr.corp.intel.com ([10.18.126.84])
- by orsmga004.jf.intel.com with ESMTP; 14 Feb 2022 00:52:55 -0800
-Received: from fmsmsx609.amr.corp.intel.com (10.18.126.89) by
- fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Mon, 14 Feb 2022 00:52:54 -0800
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx609.amr.corp.intel.com (10.18.126.89) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20 via Frontend Transport; Mon, 14 Feb 2022 00:52:54 -0800
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.43) by
- edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.20; Mon, 14 Feb 2022 00:52:54 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Vvj6xlrPsc74NLhQkM/m1J7gUMY1YW55Fw6e2eHoAxilefwBV3qmzjWzNeRgiRWc4IR7On5d+bZe0WPiQbHjw3Cy6drFTj5gj8afsigMl80mSOK2gna4jAG63anRFApDFLyuv9TMftkOuz5CTJmJD1kZQXD33OPprCDl/DHZkODWquElqmw+q6bNgHUcdSEKx51gBX8l2dRwSLQet0l+STjT2QHNVgEq0TARyZrpq6hM7ivIuITILKyxbwrDv8WO8cBoqSvLKuWu/BmPiSl3JvL5kKi1Vv5wQ3QSk5N3IuWukNWlePmF+PstbDAb2hvPJRABZhUnW5JuD6nor8K3bw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Fh+45WGjB3VFm2hiA72myYlYVytSpG2q2ZwWjDM+wNw=;
- b=RaeyTY9MMnwsPUE1BhnmPxYFypkk8wV/y+tO0aAGzHy/TZEjYUaJ5ALL1R1kjA9X+lVBXfreKFa6ySGMZUJe4/fD+DXs+yYZAiLguiRmJoK+BO3J/d8wPcqW943mI5bpj67tNU5468NcpLnj2hLXLT8DjUtJXWndmBxggaxQDJ4Q/qCsbfRYgMRNiRHEmpnI33dTfznHc0ehu/cPHIti3xJsCmTy4mJjzTlX4ha+/99+vgFxVXHikcz3X3V+zofdgz2s3O4NJMl9IpkLRC5rRobHqQuc9qVGo/V28NyiW3+oJ5RDJlL1rJv6YGWKN9BE/wFg84JspPZe25/aL0CEZQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from SJ0PR11MB5598.namprd11.prod.outlook.com (2603:10b6:a03:304::12)
- by BN7PR11MB2562.namprd11.prod.outlook.com (2603:10b6:406:b4::30)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4975.11; Mon, 14 Feb
- 2022 08:52:52 +0000
-Received: from SJ0PR11MB5598.namprd11.prod.outlook.com
- ([fe80::c4a2:d11d:cb7b:dc8d]) by SJ0PR11MB5598.namprd11.prod.outlook.com
- ([fe80::c4a2:d11d:cb7b:dc8d%9]) with mapi id 15.20.4975.017; Mon, 14 Feb 2022
- 08:52:52 +0000
-Message-ID: <58f9bccf-212d-721f-3290-1eadb03545da@intel.com>
-Date: Mon, 14 Feb 2022 16:52:45 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Firefox/91.0 Thunderbird/91.6.0
-Subject: Re: [PATCH 2/2] Bluetooth: mediatek: fix the conflict between mtk and
- msft vendor event
-References: <202202130806.UHxKw5N3-lkp@intel.com>
-Content-Language: en-US
-In-Reply-To: <202202130806.UHxKw5N3-lkp@intel.com>
-To: <sean.wang@mediatek.com>
-CC: <llvm@lists.linux.dev>, <kbuild-all@lists.01.org>,
- <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- <marcel@holtmann.org>, <johan.hedberg@gmail.com>
-From: kernel test robot <yujie.liu@intel.com>
-X-Forwarded-Message-Id: <202202130806.UHxKw5N3-lkp@intel.com>
-X-ClientProxiedBy: HK2PR04CA0060.apcprd04.prod.outlook.com
- (2603:1096:202:14::28) To SJ0PR11MB5598.namprd11.prod.outlook.com
- (2603:10b6:a03:304::12)
+ id 1nJX81-00E6CE-Vb; Mon, 14 Feb 2022 08:54:40 +0000
+Received: by mail-ua1-f48.google.com with SMTP id u77so7755390uau.6;
+ Mon, 14 Feb 2022 00:54:37 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PlmHX1HHokXQyxG79YUgUTlDvUDqxBtLYhszaegEBgU=;
+ b=vaRsIdk6s1r80bslaYtvFMtTsP0u4po6IG2Nc50S67aimgo8oHyoWCLZb+qgj+msI/
+ +ntGOK01ysNAVwt6UEb/pUPBywz0m1k2DmY8nDJJJEeaVefx1suKjiJ74EQVHfTQpyoW
+ SM/6WggE2cJQ9d1h1IqR+UAZtemRWVCjFMCxXERfud94KBZLIiJlf1nBH8AZMJto6FJL
+ UfHKjfPrZSdOK5crEJSvZqTf8ru7agPOiAEJvLqw6q3UIo0yTANmbwqFVvOTsrGNr+hb
+ EFsp2NEMFdsApPDP4q6IyTTabPfTJoAEXafoTdyEPPcQjz72O3QhozxodvWUTlJtjLli
+ EKoA==
+X-Gm-Message-State: AOAM533sRq+jXH0bkvyCToR2Y5iydsxvQ8OsVqO6GB0AzkkY1PaWRVcw
+ 5XKYP2ZP0ODP3N16tOHo5JP3LMtSQohPvvqI
+X-Google-Smtp-Source: ABdhPJzuNIuJHJhW2XDrO3f9EzWfznTAZjeigP5FzzpNQCncmdHzyNcXA0vt5gqqW2hBs9QhTr948g==
+X-Received: by 2002:ab0:6056:: with SMTP id o22mr1070368ual.114.1644828876900; 
+ Mon, 14 Feb 2022 00:54:36 -0800 (PST)
+Received: from mail-vk1-f171.google.com (mail-vk1-f171.google.com.
+ [209.85.221.171])
+ by smtp.gmail.com with ESMTPSA id l5sm678419vsj.17.2022.02.14.00.54.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Feb 2022 00:54:36 -0800 (PST)
+Received: by mail-vk1-f171.google.com with SMTP id n14so8572043vkk.6;
+ Mon, 14 Feb 2022 00:54:36 -0800 (PST)
+X-Received: by 2002:a05:6122:c8f:: with SMTP id
+ ba15mr3731293vkb.39.1644828865522; 
+ Mon, 14 Feb 2022 00:54:25 -0800 (PST)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: f1761e92-94bb-499b-1a6e-08d9ef976277
-X-MS-TrafficTypeDiagnostic: BN7PR11MB2562:EE_
-X-Microsoft-Antispam-PRVS: <BN7PR11MB2562A550A4DB65589BDBB115FB339@BN7PR11MB2562.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6108;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: R0Q0DTAZCxItSrupbUANDlmqY+toAX0eowWFbIMTh0cL/4LoPF44xhd1y/4oKbkvECSAyuEh0CWWFGCqiWVqfpoOE4MJs2UUj6p4ynqR6kKq9MTn2KqrmV3y9tmS0L0GIumblnasswYTt3/y05NVpkQvaacgnEQUfcqxr8EIiMD6KtCKpDrceI4EsTu2wUB4jKJXjojZeYvs5TNb2VyCG1FcX7NBpiH1GKBvfJ7doX+9Pxy926X9TJDsIqeV6HbcXQOaOOS7JksfkUC8MVzy69MQoBwNAYOrmc4s0JZGy3BgIOHj7cGO4MJlfZ95dEVgVuUaa16TjFEx92oZjFisYYPohbFMTWAMqu5DbazBdSqCW0Wbk1Z9UQ+S2Eme3aeQ7nbeaFjtcjtswVEN5Y+Jup9u0fbYnr47sC60fdSjlaoMVjvPv26na/HPlPpoD03NhTbH5RjOyzPENVkEeOhEgMhOWZSAB9RZtnpSnaJJlIqVAOY9p/Er7qcZIqhB+YIZuT4jwUqFqJ+VhOJp1npZvQDVf5cAp6ZS+yYx9zmCtvCpIQCkZ2Y9a5f6u/9Vu+SWjImLX6oCIz1YXiMtcz8e5rke4ainUfUCmGfOyNP/420sjUhku/KBUZd2SJJgcCBMWPN9Yxe+729rNMlBQaOwoVBEkBHrNMKYPBQYIHdwHMxYYQlw8bmk2R6B5Q/371Lb4KV8YNQRAp1hRP0Gv85vpx/w/87IDYQwuV5O8lwE5+pSmmL0A0Wk2ErET1o+dlEsNsohFBdHBKXa9ud6OJAlhK2E2rVI0sc7uHOj+WmIIWXE7h2gajtryjcAHZQ81boUyXMetWxqymP3Ycs+97rgcK94eWoWpDvxSGnCMf57MlE=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR11MB5598.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(36756003)(31686004)(8936002)(2906002)(508600001)(31696002)(5660300002)(4001150100001)(66946007)(8676002)(86362001)(82960400001)(4326008)(66476007)(66556008)(38100700002)(6512007)(316002)(6916009)(6486002)(966005)(83380400001)(26005)(6506007)(6666004)(186003)(2616005)(43740500002)(45980500001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZTkxTkIvb0ZRK0ZrYWlwc25rTHQrajdIRWFKNUUvQzYxdW1MVnlyRmpMTTRw?=
- =?utf-8?B?Y05DeG5hZkxCSFhyY1QrbGtnVUJwb0hYdWFqMG0rMHlSTm1xc3hrVUk3alFM?=
- =?utf-8?B?NERTRFZwSWp3U0lVajg1SUhnZEIydjRWNWk3aEdUbjR1cHViZGZLblRGbEhs?=
- =?utf-8?B?T0FzWUdtaVZvU3YzWmtlSXFHd3Q4aytDd05Icjc5Rlc4bmtrN1d1ckdWSGlz?=
- =?utf-8?B?Q0hyZW9ieURwUUhxM0VPZnpkSXArM21xYkpISlVtL1dZU3lsVi9CUHFUT0Fa?=
- =?utf-8?B?V1cwZG1TZU5pVHNiVVZkVFIrcnpjZTg4NGVHQWJqZ3dmaEJIZHBka056Ni9F?=
- =?utf-8?B?dmwzOWZNWXRadCs0Tkdoa0s3MmpkUlE0NmxodXoxNGlackh1OW9uN1JpTWZP?=
- =?utf-8?B?TEJUMHZCdEdRZkhLQjNVaVAxVU1KV3ZBODZSVXl1KzI2T3F5OHBWM005RjFl?=
- =?utf-8?B?c3duZStMWU5WZzNjQVdNRVgvMUF5TEl5M2NJWEJWelljZk9IVkZ6aUM4bUZW?=
- =?utf-8?B?WnUvQXNUbk9lRXByOHZQdHN2M0krT2gwRVplWFhZOElGV0Nobk04MkNtSlkx?=
- =?utf-8?B?dloyYXRqeXdMUVpxd0lEc3Z3QzFHWmo0TlQxM0lCOTM0WUdZaDdRVWVqam0y?=
- =?utf-8?B?QldlbG9EcFd6SGxGeWFpN1puelN0eU1PR0Z2aWwwNjVQTUpaWGxTQUtMYlRp?=
- =?utf-8?B?ZXI0YXpDRmpVbjF5amx6d2xGakZrdE85Yk96UmNuV0RQUVJ4eXlMMEc5cFVV?=
- =?utf-8?B?a3hKWVFVVTllMzZrTnBxWlFXZkw1UzFEUU83am1yZ3JwbWk2VllORXhkSFQy?=
- =?utf-8?B?aHZwOERxVmszcG83UzBBZ3lYTHlYTTVITnY3YkNVdlJKRTVWNDRNK1hrcURV?=
- =?utf-8?B?SlRLaDFxL2dUNVdnQlZCc3RheE5VL3VERCtMSXgyVVZTd281VytPZUk3QWNI?=
- =?utf-8?B?OE1xeEhZOTV1NVB3Y3kxQkhnRDY4SzNrY3NFSW1FckVtdzlqRGVWdEIrRXZm?=
- =?utf-8?B?WmFwWHBGT2VrRVBLdVZmSU50N0xpMnZHY0lad2RQOGRWN0I5eTFndEg0azlR?=
- =?utf-8?B?MGhKQW4rTllpOVdOYWF6Nm5yRlNNNUE5UEJXTUNBYlM2STBjRUkrbUllZjZI?=
- =?utf-8?B?MzFIbjJlZzZaRGhLSWxma0gzK2Y2SWN1R1NRZFMwc2JxTFVyNUl3aUU0NDcw?=
- =?utf-8?B?V00xTUJudStleWdkTUxscDFKV3RVSFFoZ2QvOS9ha1hPK3VRRFExWHUrdmg4?=
- =?utf-8?B?MkJVeVNlenlFekdxa0N4MTBHY0dJalFHSGoyK0lTVUxHaXBOLzJIRDYwaFUr?=
- =?utf-8?B?cWVaL0FyVjV2and1K1QyQjdSd0gyb0h6VjRuejFkSlJWYlJXWlp0L2QxV0Np?=
- =?utf-8?B?T1VwRXZWM1hnVDhycWsyRVBJSlVzcEphVjA2Zk1hS09GUXl3Rnd0eDdESVFl?=
- =?utf-8?B?Tzd2QXFsOTgySGdnNXhJNW01UGZRd0FUeVhXakFUVHJyc2trUVNmcHd5Smc3?=
- =?utf-8?B?aUdEbktkZEs5dWlxb0NPRWh1d3lMTG9OSlZDTnJldHVIVlZ5UVJNTkRCUlMr?=
- =?utf-8?B?T0tBdzNYVWtxS2dnU2NVYk9ueUphMzZJRW1LQ1k5dG1BQkY5cUJQNGxyMkZL?=
- =?utf-8?B?Q2Z3N1lFSlpkOG1oT3luMlhnNTZndnhMWS9OUTVlbWpBdDFGMmVyUWN2enRq?=
- =?utf-8?B?cVJOSkdkdlo0ZEF6dThoQ01tbXRsOWxUWExoUENXdXphVkZjLzVZRFMyY3pG?=
- =?utf-8?B?MWRzZWJvYzhXL2RyRHU2RHBUQ3NuWjNpQlJSMUYzeFVkTHRDMEo5UjBCV3d2?=
- =?utf-8?B?Wk9IVTQxTHpFd1FlZGpTS1Z2aUpydTFKZzRSdSs1dDJqY3JFdE4rZnh1QVJG?=
- =?utf-8?B?clFpc01sQTgrcVR5cUlmQ3kwQ3F0YlZTaDBMSE96TTR6V1BmZmNaNFQ4NFhK?=
- =?utf-8?B?amFVVDZzTmZoUGNrQlgyWlVxbnlTZDc1cUV2S1FUdVhVR1ZjQ0hwem5sdG93?=
- =?utf-8?B?RS9teC9hd3kraHdGQk8wMmRaczhjVzZVOHFlYWJQSzBPbHNRT0JkZVNucUR0?=
- =?utf-8?B?a1l0OFFYUmpaZ0t4bUhtRytZQnR2cS92QklITWZBWmVQRWFOMGhkQ0h0bnA3?=
- =?utf-8?B?dTJabEVZb2IzTEx0QU16WFczczlPQjExOXJHQXBaMlR3cW4rSGZvdlpEMnVM?=
- =?utf-8?Q?+G96ZCK7P3OaTBv1J8YskYk=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: f1761e92-94bb-499b-1a6e-08d9ef976277
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB5598.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Feb 2022 08:52:52.3051 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: bMCOhQQwkzrq2OPxXYWfzP5FChMXDOQB2g72hNI28HlQkHzLBQM5Yt8sEqMFpaijykgkDNVD46rygw0V2b9fRw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR11MB2562
-X-OriginatorOrg: intel.com
+References: <20220212201631.12648-1-s.shtylyov@omp.ru>
+ <20220212201631.12648-2-s.shtylyov@omp.ru>
+In-Reply-To: <20220212201631.12648-2-s.shtylyov@omp.ru>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 14 Feb 2022 09:54:14 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdUPxX7Tja6BCjEb4KDobNFPMcM66Fk7Z+VsO7pgb8JnjA@mail.gmail.com>
+Message-ID: <CAMuHMdUPxX7Tja6BCjEb4KDobNFPMcM66Fk7Z+VsO7pgb8JnjA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] platform: make platform_get_irq_optional() optional
+To: Sergey Shtylyov <s.shtylyov@omp.ru>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, linux-kernel@vger.kernel.org, 
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Corey Minyard <minyard@acm.org>, Oleksij Rempel <linux@rempel-privat.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ William Breathitt Gray <vilhelm.gray@gmail.com>,
+ Mun Yew Tham <mun.yew.tham@intel.com>, 
+ Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+ Lee Jones <lee.jones@linaro.org>, Kamal Dasu <kdasu.kdev@gmail.com>, 
+ Florian Fainelli <f.fainelli@gmail.com>, bcm-kernel-feedback-list@broadcom.com,
+ Peter Korsgaard <peter@korsgaard.com>, Andrew Lunn <andrew@lunn.ch>, 
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Brian Norris <computersforpeace@gmail.com>, 
+ Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>,
+ Vignesh Raghavendra <vigneshr@ti.com>, "David S. Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>, Joakim Zhang <qiangqing.zhang@nxp.com>, 
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, 
+ Vinod Koul <vkoul@kernel.org>, Benson Leung <bleung@chromium.org>, 
+ Guenter Roeck <groeck@chromium.org>, Zha Qipeng <qipeng.zha@intel.com>, 
+ Hans de Goede <hdegoede@redhat.com>, Mark Gross <markgross@kernel.org>, 
+ John Garry <john.garry@huawei.com>, Mark Brown <broonie@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria <amitk@kernel.org>, 
+ Zhang Rui <rui.zhang@intel.com>, Jiri Slaby <jirislaby@kernel.org>, 
+ Eric Auger <eric.auger@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>, 
+ Cornelia Huck <cohuck@redhat.com>, Liam Girdwood <lgirdwood@gmail.com>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ openipmi-developer@lists.sourceforge.net, linux-iio@vger.kernel.org, 
+ linux-gpio@vger.kernel.org, linux-pwm@vger.kernel.org, 
+ linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mmc@vger.kernel.org, linux-mtd@lists.infradead.org, 
+ netdev@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+ linux-phy@lists.infradead.org, platform-driver-x86@vger.kernel.org, 
+ linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-pm@vger.kernel.org, linux-serial@vger.kernel.org, kvm@vger.kernel.org, 
+ alsa-devel@alsa-project.org, 
+ Matthias Schiffer <matthias.schiffer@ew.tq-group.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_005300_206184_CD863AD4 
-X-CRM114-Status: GOOD (  13.44  )
+X-CRM114-CacheID: sfid-20220214_005438_058122_CD42B4AA 
+X-CRM114-Status: GOOD (  38.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -173,140 +118,181 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sean,
+Hi Sergey,
 
-Thanks for your patch! Perhaps something to improve:
+On Sat, Feb 12, 2022 at 9:17 PM Sergey Shtylyov <s.shtylyov@omp.ru> wrote:
+> This patch is based on the former Andy Shevchenko's patch:
+>
+> https://lore.kernel.org/lkml/20210331144526.19439-1-andriy.shevchenko@linux.intel.com/
+>
+> Currently platform_get_irq_optional() returns an error code even if IRQ
+> resource simply has not been found.  It prevents the callers from being
+> error code agnostic in their error handling:
+>
+>         ret = platform_get_irq_optional(...);
+>         if (ret < 0 && ret != -ENXIO)
+>                 return ret; // respect deferred probe
+>         if (ret > 0)
+>                 ...we get an IRQ...
+>
+> All other *_optional() APIs seem to return 0 or NULL in case an optional
+> resource is not available.  Let's follow this good example, so that the
+> callers would look like:
+>
+>         ret = platform_get_irq_optional(...);
+>         if (ret < 0)
+>                 return ret;
+>         if (ret > 0)
+>                 ...we get an IRQ...
+>
+> Reported-by: Matthias Schiffer <matthias.schiffer@ew.tq-group.com>
+> Signed-off-by: Sergey Shtylyov <s.shtylyov@omp.ru>
+> ---
+> Changes in version 2:
 
-[auto build test WARNING on bluetooth-next/master]
-[also build test WARNING on next-20220211]
-[cannot apply to v5.17-rc3]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
+Thanks for the update!
 
-url:    https://github.com/0day-ci/linux/commits/sean-wang-mediatek-com/Bluetooth-mt7921s-support-bluetooth-reset-mechanism/20220129-140313
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth-next.git master
-config: riscv-randconfig-c006-20220205 (https://download.01.org/0day-ci/archive/20220213/202202130806.UHxKw5N3-lkp@intel.com/config)
-compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project dee058c670593b999fec19c458dbbd882ad9de56)
-reproduce (this is a W=1 build):
-         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-         chmod +x ~/bin/make.cross
-         # install riscv cross compiling tool for clang build
-         # apt-get install binutils-riscv64-linux-gnu
-         # https://github.com/0day-ci/linux/commit/33092fd43b74594bae07555a6fdf15133cc8ec54
-         git remote add linux-review https://github.com/0day-ci/linux
-         git fetch --no-tags linux-review sean-wang-mediatek-com/Bluetooth-mt7921s-support-bluetooth-reset-mechanism/20220129-140313
-         git checkout 33092fd43b74594bae07555a6fdf15133cc8ec54
-         # save the config file to linux build tree
-         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross ARCH=riscv clang-analyzer
+>  drivers/base/platform.c                  | 60 +++++++++++++++---------
 
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <yujie.liu@intel.com>
+The core change LGTM.
 
+I'm only looking at Renesas drivers below...
 
-clang-analyzer warnings: (new ones prefixed by >>)
+> --- a/drivers/mmc/host/sh_mmcif.c
+> +++ b/drivers/mmc/host/sh_mmcif.c
+> @@ -1465,14 +1465,14 @@ static int sh_mmcif_probe(struct platform_device *pdev)
+>         sh_mmcif_sync_reset(host);
+>         sh_mmcif_writel(host->addr, MMCIF_CE_INT_MASK, MASK_ALL);
+>
+> -       name = irq[1] < 0 ? dev_name(dev) : "sh_mmc:error";
+> +       name = irq[1] <= 0 ? dev_name(dev) : "sh_mmc:error";
 
- >> drivers/bluetooth/btusb.c:2273:3: warning: Value stored to 'hdr' is never read [clang-analyzer-deadcode.DeadStores]
-                    hdr = (void *)skb->data;
-                    ^     ~~~~~~~~~~~~~~~~~
+"== 0" should be sufficient here, if the code above would bail out
+on errors returned by platform_get_irq_optional(), which it currently
+doesn't do.
+As this adds missing error handling, this is to be fixed by a separate
+patch later?
 
-vim +/hdr +2273 drivers/bluetooth/btusb.c
+>         ret = devm_request_threaded_irq(dev, irq[0], sh_mmcif_intr,
+>                                         sh_mmcif_irqt, 0, name, host);
+>         if (ret) {
+>                 dev_err(dev, "request_irq error (%s)\n", name);
+>                 goto err_clk;
+>         }
+> -       if (irq[1] >= 0) {
+> +       if (irq[1] > 0) {
 
-5a87679ffd4436 mark-yw.chen 2021-09-01  2248
-a1c49c434e1505 Sean Wang    2019-06-02  2249  static void btusb_mtk_wmt_recv(struct urb *urb)
-a1c49c434e1505 Sean Wang    2019-06-02  2250  {
-a1c49c434e1505 Sean Wang    2019-06-02  2251  	struct hci_dev *hdev = urb->context;
-a1c49c434e1505 Sean Wang    2019-06-02  2252  	struct btusb_data *data = hci_get_drvdata(hdev);
-a1c49c434e1505 Sean Wang    2019-06-02 @2253  	struct hci_event_hdr *hdr;
-a1c49c434e1505 Sean Wang    2019-06-02  2254  	struct sk_buff *skb;
-a1c49c434e1505 Sean Wang    2019-06-02  2255  	int err;
-a1c49c434e1505 Sean Wang    2019-06-02  2256
-a1c49c434e1505 Sean Wang    2019-06-02  2257  	if (urb->status == 0 && urb->actual_length > 0) {
-a1c49c434e1505 Sean Wang    2019-06-02  2258  		hdev->stat.byte_rx += urb->actual_length;
-a1c49c434e1505 Sean Wang    2019-06-02  2259
-a1c49c434e1505 Sean Wang    2019-06-02  2260  		/* WMT event shouldn't be fragmented and the size should be
-a1c49c434e1505 Sean Wang    2019-06-02  2261  		 * less than HCI_WMT_MAX_EVENT_SIZE.
-a1c49c434e1505 Sean Wang    2019-06-02  2262  		 */
-a1c49c434e1505 Sean Wang    2019-06-02  2263  		skb = bt_skb_alloc(HCI_WMT_MAX_EVENT_SIZE, GFP_ATOMIC);
-a1c49c434e1505 Sean Wang    2019-06-02  2264  		if (!skb) {
-a1c49c434e1505 Sean Wang    2019-06-02  2265  			hdev->stat.err_rx++;
-60c6a63a3d3080 Mark-YW.Chen 2021-10-14  2266  			kfree(urb->setup_packet);
-de71a6cb4bf24d Jupeng Zhong 2021-02-02  2267  			return;
-a1c49c434e1505 Sean Wang    2019-06-02  2268  		}
-a1c49c434e1505 Sean Wang    2019-06-02  2269
-a1c49c434e1505 Sean Wang    2019-06-02  2270  		hci_skb_pkt_type(skb) = HCI_EVENT_PKT;
-a1c49c434e1505 Sean Wang    2019-06-02  2271  		skb_put_data(skb, urb->transfer_buffer, urb->actual_length);
-a1c49c434e1505 Sean Wang    2019-06-02  2272
-a1c49c434e1505 Sean Wang    2019-06-02 @2273  		hdr = (void *)skb->data;
-a1c49c434e1505 Sean Wang    2019-06-02  2274
-a1c49c434e1505 Sean Wang    2019-06-02  2275  		/* When someone waits for the WMT event, the skb is being cloned
-a1c49c434e1505 Sean Wang    2019-06-02  2276  		 * and being processed the events from there then.
-a1c49c434e1505 Sean Wang    2019-06-02  2277  		 */
-a1c49c434e1505 Sean Wang    2019-06-02  2278  		if (test_bit(BTUSB_TX_WAIT_VND_EVT, &data->flags)) {
-22cc6b7a1dbb58 Johan Hovold 2019-11-28  2279  			data->evt_skb = skb_clone(skb, GFP_ATOMIC);
-de71a6cb4bf24d Jupeng Zhong 2021-02-02  2280  			if (!data->evt_skb) {
-de71a6cb4bf24d Jupeng Zhong 2021-02-02  2281  				kfree_skb(skb);
-60c6a63a3d3080 Mark-YW.Chen 2021-10-14  2282  				kfree(urb->setup_packet);
-de71a6cb4bf24d Jupeng Zhong 2021-02-02  2283  				return;
-de71a6cb4bf24d Jupeng Zhong 2021-02-02  2284  			}
-a1c49c434e1505 Sean Wang    2019-06-02  2285  		}
-a1c49c434e1505 Sean Wang    2019-06-02  2286
-a1c49c434e1505 Sean Wang    2019-06-02  2287  		err = hci_recv_frame(hdev, skb);
-de71a6cb4bf24d Jupeng Zhong 2021-02-02  2288  		if (err < 0) {
-de71a6cb4bf24d Jupeng Zhong 2021-02-02  2289  			kfree_skb(data->evt_skb);
-de71a6cb4bf24d Jupeng Zhong 2021-02-02  2290  			data->evt_skb = NULL;
-60c6a63a3d3080 Mark-YW.Chen 2021-10-14  2291  			kfree(urb->setup_packet);
-de71a6cb4bf24d Jupeng Zhong 2021-02-02  2292  			return;
-de71a6cb4bf24d Jupeng Zhong 2021-02-02  2293  		}
-a1c49c434e1505 Sean Wang    2019-06-02  2294
-a1c49c434e1505 Sean Wang    2019-06-02  2295  		if (test_and_clear_bit(BTUSB_TX_WAIT_VND_EVT,
-a1c49c434e1505 Sean Wang    2019-06-02  2296  				       &data->flags)) {
-a1c49c434e1505 Sean Wang    2019-06-02  2297  			/* Barrier to sync with other CPUs */
-a1c49c434e1505 Sean Wang    2019-06-02  2298  			smp_mb__after_atomic();
-a1c49c434e1505 Sean Wang    2019-06-02  2299  			wake_up_bit(&data->flags,
-a1c49c434e1505 Sean Wang    2019-06-02  2300  				    BTUSB_TX_WAIT_VND_EVT);
-a1c49c434e1505 Sean Wang    2019-06-02  2301  		}
-60c6a63a3d3080 Mark-YW.Chen 2021-10-14  2302  		kfree(urb->setup_packet);
-a1c49c434e1505 Sean Wang    2019-06-02  2303  		return;
-a1c49c434e1505 Sean Wang    2019-06-02  2304  	} else if (urb->status == -ENOENT) {
-a1c49c434e1505 Sean Wang    2019-06-02  2305  		/* Avoid suspend failed when usb_kill_urb */
-a1c49c434e1505 Sean Wang    2019-06-02  2306  		return;
-a1c49c434e1505 Sean Wang    2019-06-02  2307  	}
-a1c49c434e1505 Sean Wang    2019-06-02  2308
-a1c49c434e1505 Sean Wang    2019-06-02  2309  	usb_mark_last_busy(data->udev);
-a1c49c434e1505 Sean Wang    2019-06-02  2310
-a1c49c434e1505 Sean Wang    2019-06-02  2311  	/* The URB complete handler is still called with urb->actual_length = 0
-a1c49c434e1505 Sean Wang    2019-06-02  2312  	 * when the event is not available, so we should keep re-submitting
-a1c49c434e1505 Sean Wang    2019-06-02  2313  	 * URB until WMT event returns, Also, It's necessary to wait some time
-a1c49c434e1505 Sean Wang    2019-06-02  2314  	 * between the two consecutive control URBs to relax the target device
-a1c49c434e1505 Sean Wang    2019-06-02  2315  	 * to generate the event. Otherwise, the WMT event cannot return from
-a1c49c434e1505 Sean Wang    2019-06-02  2316  	 * the device successfully.
-a1c49c434e1505 Sean Wang    2019-06-02  2317  	 */
-48c13301e6baba Mark Chen    2021-02-02  2318  	udelay(500);
-a1c49c434e1505 Sean Wang    2019-06-02  2319
-a1c49c434e1505 Sean Wang    2019-06-02  2320  	usb_anchor_urb(urb, &data->ctrl_anchor);
-a1c49c434e1505 Sean Wang    2019-06-02  2321  	err = usb_submit_urb(urb, GFP_ATOMIC);
-a1c49c434e1505 Sean Wang    2019-06-02  2322  	if (err < 0) {
-60c6a63a3d3080 Mark-YW.Chen 2021-10-14  2323  		kfree(urb->setup_packet);
-a1c49c434e1505 Sean Wang    2019-06-02  2324  		/* -EPERM: urb is being killed;
-a1c49c434e1505 Sean Wang    2019-06-02  2325  		 * -ENODEV: device got disconnected
-a1c49c434e1505 Sean Wang    2019-06-02  2326  		 */
-a1c49c434e1505 Sean Wang    2019-06-02  2327  		if (err != -EPERM && err != -ENODEV)
-a1c49c434e1505 Sean Wang    2019-06-02  2328  			bt_dev_err(hdev, "urb %p failed to resubmit (%d)",
-a1c49c434e1505 Sean Wang    2019-06-02  2329  				   urb, -err);
-a1c49c434e1505 Sean Wang    2019-06-02  2330  		usb_unanchor_urb(urb);
-a1c49c434e1505 Sean Wang    2019-06-02  2331  	}
-a1c49c434e1505 Sean Wang    2019-06-02  2332  }
-a1c49c434e1505 Sean Wang    2019-06-02  2333
+OK.
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+>                 ret = devm_request_threaded_irq(dev, irq[1],
+>                                                 sh_mmcif_intr, sh_mmcif_irqt,
+>                                                 0, "sh_mmc:int", host);
+
+> --- a/drivers/phy/renesas/phy-rcar-gen3-usb2.c
+> +++ b/drivers/phy/renesas/phy-rcar-gen3-usb2.c
+> @@ -439,7 +439,7 @@ static int rcar_gen3_phy_usb2_init(struct phy *p)
+>         u32 val;
+>         int ret;
+>
+> -       if (!rcar_gen3_is_any_rphy_initialized(channel) && channel->irq >= 0) {
+> +       if (!rcar_gen3_is_any_rphy_initialized(channel) && channel->irq > 0) {
+>                 INIT_WORK(&channel->work, rcar_gen3_phy_usb2_work);
+>                 ret = request_irq(channel->irq, rcar_gen3_phy_usb2_irq,
+>                                   IRQF_SHARED, dev_name(channel->dev), channel);
+> @@ -486,7 +486,7 @@ static int rcar_gen3_phy_usb2_exit(struct phy *p)
+>                 val &= ~USB2_INT_ENABLE_UCOM_INTEN;
+>         writel(val, usb2_base + USB2_INT_ENABLE);
+>
+> -       if (channel->irq >= 0 && !rcar_gen3_is_any_rphy_initialized(channel))
+> +       if (channel->irq > 0 && !rcar_gen3_is_any_rphy_initialized(channel))
+>                 free_irq(channel->irq, channel);
+>
+>         return 0;
+
+LGTM, but note that all errors returned by platform_get_irq_optional()
+are currently ignored, even real errors, which should be propagated
+up.
+As this adds missing error handling, this is to be fixed by a separate
+patch later?
+
+> --- a/drivers/thermal/rcar_gen3_thermal.c
+> +++ b/drivers/thermal/rcar_gen3_thermal.c
+> @@ -432,6 +432,8 @@ static int rcar_gen3_thermal_request_irqs(struct rcar_gen3_thermal_priv *priv,
+>                 irq = platform_get_irq_optional(pdev, i);
+>                 if (irq < 0)
+>                         return irq;
+> +               if (!irq)
+> +                       return -ENXIO;
+
+While correct, and preserving existing behavior, this looks strange
+to me.  Probably this should return zero instead (i.e. the check
+above should be changed to "<= 0"), and the caller should start caring
+about and propagating up real errors.
+As this adds missing error handling, this is to be fixed by a separate
+patch later?
+
+>
+>                 irqname = devm_kasprintf(dev, GFP_KERNEL, "%s:ch%d",
+>                                          dev_name(dev), i);
+> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+> index fb65dc601b23..328ab074fd89 100644
+
+> --- a/drivers/tty/serial/sh-sci.c
+> +++ b/drivers/tty/serial/sh-sci.c
+
+I think you missed
+
+    #define SCIx_IRQ_IS_MUXED(port)                 \
+            ((port)->irqs[SCIx_ERI_IRQ] ==  \
+             (port)->irqs[SCIx_RXI_IRQ]) || \
+            ((port)->irqs[SCIx_ERI_IRQ] &&  \
+             ((port)->irqs[SCIx_RXI_IRQ] < 0))
+
+above? The last condition should become "<= 0".
+
+> @@ -1915,7 +1915,7 @@ static int sci_request_irq(struct sci_port *port)
+>                          * Certain port types won't support all of the
+>                          * available interrupt sources.
+>                          */
+> -                       if (unlikely(irq < 0))
+> +                       if (unlikely(irq <= 0))
+>                                 continue;
+>                 }
+>
+> @@ -1963,7 +1963,7 @@ static void sci_free_irq(struct sci_port *port)
+>                  * Certain port types won't support all of the available
+>                  * interrupt sources.
+>                  */
+> -               if (unlikely(irq < 0))
+> +               if (unlikely(irq <= 0))
+>                         continue;
+>
+>                 /* Check if already freed (irq was muxed) */
+> @@ -2875,7 +2875,7 @@ static int sci_init_single(struct platform_device *dev,
+>         if (sci_port->irqs[0] < 0)
+>                 return -ENXIO;
+>
+> -       if (sci_port->irqs[1] < 0)
+> +       if (sci_port->irqs[1] <= 0)
+>                 for (i = 1; i < ARRAY_SIZE(sci_port->irqs); i++)
+>                         sci_port->irqs[i] = sci_port->irqs[0];
+>
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
 _______________________________________________
 Linux-mediatek mailing list
