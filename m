@@ -4,51 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDBC7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 01:58:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA040C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 02:32:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+fqBQkJKklVyNhdr/H4mlPmMyhIyUL5Lc8zTCV+VGd0=; b=sxbjT6/ClTRwVO
-	tsO0I79X5cpSkoeEqikRGX9xI/ZWGURv4UfNW9DhoFwhv4Tr0q1uJIW0GXpcvq4J3DP24iimxDfHv
-	TRlKU4s4E3ys3WON60uSXpt/1wW8eXRdjUS4JXPjxgxEYqhnSe9uWt7rfBX6b3sRx79qMA6XgQYke
-	tXJz8KwwemXkUQh59YHkQNaZ8cb6lw6Y6eRVqZ/KQtgCykvej++uGD0rdDXnh49Ejjkx8wVzUf4e6
-	DceXGswmBXE7DizQq0HXj1ScVoCXjHFejtKrgCo7FBRtsBTK8YUJhwnAF/MysHIZhQlB6kPPKiTJO
-	JsGrvA9wC6BKawCrn2XQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=spCC97lDGcxoune7UacJM1M3vgORKWQJWts7aM3F8cU=; b=jz5U1sitZuVfSR
+	Ho5TQqYX5YHFXsHg2hbKCSSRz6tVoyAhpJMCcaZZiY3fLlb81VIlRT6xbejIjJykHbVA2Cb3EHIKn
+	CzSnUiZqPqSvwUX/t0hulXCIlqbgzZYjlqVb5T1xfe5Iv0caMTPLp1rCVPrtV3M7+Cu5Xp4en0koP
+	DAmXWdUwhUVbMFJyxO3CiYDNJq1z4+PxlO3px8tSjpZer/55oDTi1MpnOIqsSaHk3pkANloqN9d7l
+	J1f8h0Hxtem/Ksgc63cbdp6wyCeZnFO2rh2tEOtLHXs9jwwKcTezb1IXPKnzqdxwUvKbmTONYOmgz
+	I7/tcE1BAkxioklGvo9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJQdY-00CxPW-Sm; Mon, 14 Feb 2022 01:58:44 +0000
-Received: from out30-130.freemail.mail.aliyun.com ([115.124.30.130])
+	id 1nJRAU-00D1Aw-NQ; Mon, 14 Feb 2022 02:32:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJQdM-00CxJ7-1M; Mon, 14 Feb 2022 01:58:34 +0000
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R211e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04400; MF=yang.lee@linux.alibaba.com;
- NM=1; PH=DS; RN=16; SR=0; TI=SMTPD_---0V4JWI8D_1644803902; 
-Received: from localhost(mailfrom:yang.lee@linux.alibaba.com
- fp:SMTPD_---0V4JWI8D_1644803902) by smtp.aliyun-inc.com(127.0.0.1);
- Mon, 14 Feb 2022 09:58:23 +0800
-From: Yang Li <yang.lee@linux.alibaba.com>
-To: nbd@nbd.name
-Cc: lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com,
- shayne.chen@mediatek.com, sean.wang@mediatek.com, kvalo@kernel.org,
- davem@davemloft.net, kuba@kernel.org, matthias.bgg@gmail.com,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Yang Li <yang.lee@linux.alibaba.com>,
- Abaci Robot <abaci@linux.alibaba.com>
-Subject: [PATCH -next] mt76: mt7615: Fix assigning negative values to unsigned
- variable
-Date: Mon, 14 Feb 2022 09:58:21 +0800
-Message-Id: <20220214015821.60674-1-yang.lee@linux.alibaba.com>
-X-Mailer: git-send-email 2.20.1.7.g153144c
+ id 1nJRAR-00D17z-4W; Mon, 14 Feb 2022 02:32:45 +0000
+X-UUID: 4fc82d8ce6cd42519a6cbdd7b46d833c-20220213
+X-UUID: 4fc82d8ce6cd42519a6cbdd7b46d833c-20220213
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1572689559; Sun, 13 Feb 2022 19:32:37 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 13 Feb 2022 18:32:10 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 14 Feb 2022 10:32:09 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 14 Feb 2022 10:32:09 +0800
+Message-ID: <9295cbd918d1303f5cc2bbb7defb94d5e338606d.camel@mediatek.com>
+Subject: Re: [0/3] Cooperate with DSI RX devices to modify dsi funcs and
+ delay mipi high to cooperate with panel sequence
+From: CK Hu <ck.hu@mediatek.com>
+To: <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
+ <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <matthias.bgg@gmail.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <rex-bc.chen@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Mon, 14 Feb 2022 10:32:09 +0800
+In-Reply-To: <1644589818-13066-1-git-send-email-xinlei.lee@mediatek.com>
+References: <1644589818-13066-1-git-send-email-xinlei.lee@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220213_175832_299554_1DE6A9AD 
-X-CRM114-Status: UNSURE (   7.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220213_183243_185884_79E1011C 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,35 +76,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Smatch reports the following:
-drivers/net/wireless/mediatek/mt76/mt7615/mac.c:1865
-mt7615_mac_adjust_sensitivity() warn: assigning (-110) to unsigned
-variable 'def_th'
-drivers/net/wireless/mediatek/mt76/mt7615/mac.c:1865
-mt7615_mac_adjust_sensitivity() warn: assigning (-98) to unsigned
-variable 'def_th'
+Hi, Xinlei:
 
-Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
----
- drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Fri, 2022-02-11 at 22:30 +0800, xinlei.lee@mediatek.com wrote:
+> From: xinlei lee <xinlei.lee@mediatek.com>
+> 
+> In order to match the changes of DSI RX devices (for example,
+> anx7625), 
+> the poweron/poweroff of dsi is extracted from enable/disable and 
+> defined as new funcs (pre_enable/post_disable).
+> 
+> The delayed MIPI signal is pulled high from LP00 to LP11, 
+> in order to match the power-on sequence of the panel.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index f035cd880696..283a86052b4f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -1862,7 +1862,7 @@ mt7615_mac_adjust_sensitivity(struct mt7615_phy *phy,
- 	struct mt7615_dev *dev = phy->dev;
- 	int false_cca = ofdm ? phy->false_cca_ofdm : phy->false_cca_cck;
- 	bool ext_phy = phy != &dev->phy;
--	u16 def_th = ofdm ? -98 : -110;
-+	s16 def_th = ofdm ? -98 : -110;
- 	bool update = false;
- 	s8 *sensitivity;
- 	int signal;
--- 
-2.20.1.7.g153144c
+This is series a bug-fix or new feature (If anx7625 has never work in
+upstream and this series would make support anx7625, this is new
+feature) If this is a bug-fix, add Fixes tag [1] in patches.
+
+[1] 
+https://www.kernel.org/doc/html/v5.16/process/submitting-patches.html
+
+Regards,
+CK
+
+> 
+> Jitao Shi (3):
+>   drm/mediatek: dsi fine tune the dsi poweron flow
+>   drm/mediatek: dsi bridge implement pre_enable and post_disable
+>   drm/mediatek: keep dsi as LP00 before dcs cmds transfer
+> 
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 73 +++++++++++++++++++++++++---
+> ----------
+>  1 file changed, 49 insertions(+), 24 deletions(-)
+> 
 
 
 _______________________________________________
