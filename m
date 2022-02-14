@@ -4,61 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18C4AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 12:45:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 282FEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 12:56:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W349mrSZgZLQ4bruKHHsH/s5UxDxm4FdREp9mcdqT0k=; b=tSs5IH1lGEp3z1
-	XyDlZBLMKYONFfM4txqHiJy1uUXsgEk4Re/KWNK+iFwUWnNawfja5exvSXfwuyopGg22EtbAx3dxW
-	QePtKN7AqAqmYJkqm7wBWqUqLwCOXRNtWx9YKe/uwfFc5DimjXdCYAooxwjZ1MLYDNhBQ8o6TIsYE
-	HaCCZrz1TmId0DjG4JugUMQUEa3sdoWwY6uOQ7ddJSuPPaYk93rajmrPq5dgl+sbTeulnCamoHk3P
-	96DLcp0/HIOICoiU8JsPQgHj7Ze/IfopeeaVtSnmQk5u5Qzm2vathAXrOMP9MCf9DpfaSjWYRcZ5W
-	QvlV1sBMOJPUOKYTFpIQ==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nE+bFCN9VLsWIZMvVlIemqMFk1RDXBpI8Dlsh00uKk8=; b=NwT4V9/e3cfqltNAXEsSpUa/1W
+	hQyqjGL7Tc+3BrVG0yPCXTWn25/Zfaq4n5hcneIHJED1m7OlqmBPpjPCobLzVRR/2Uhh5i2civby6
+	G0T3neP8iqwzj54eD7KacnpXrl6OmSUvCWMBai/l7uUb35Vniz/PMxyqBGLr74M9ecZpl4KrrezJl
+	VN9/SoYfcXE7eeuUy+DZoD2aC5ezm7ZS75c3jKffowMe4VW454gvmORPozVozVpb5KMgZ8CMtkYUS
+	U8lAFlt1TmYgx9esqJ6J5aqVbL0yqcg1aAdJSfibT/1qxW7FoSpcAAomIL9GOua0EUMdnVb3ZLxVW
+	ksr+y4oQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJair-00FDo1-RQ; Mon, 14 Feb 2022 12:44:53 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nJauF-00FIIb-6m; Mon, 14 Feb 2022 12:56:39 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJa0G-00EzCR-NH; Mon, 14 Feb 2022 11:58:50 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 5E6861F438DD
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1644839927;
- bh=8cN9fggBLeZHIC7ObN4/himXYzclTb/eCG6XMz5tAxs=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=oRgCnVqyp6odre1PtPBARC3do0X2Fjwi21iInARGcHlyCHIgLYYd44J375n6IkgxK
- 4PixSUoSSuqqiaYI0Ph8Z53c07l3BUhsCvmYBo9PQYxLWShwzavYse184v8G/i2sjh
- /mOEnf9K0QKqVzgtLHlF7jF9IokVlmXQSOMUJfUeZel976Hhpvu7UGZHiupKshK7d5
- 29Ui7JFNi21MU4ziijeGLqNKQJ/3w06tbFf1Z5Kd0HaWnbIW2u5IF43zRm/3ToCaoz
- o/4IWQO9bgOZ6BdESjR/OJCD2qa91mXZ6IwBO8f1ANMzO0HoWlcuvNGJRJZAoegzKb
- CgLntompS2AHQ==
-Message-ID: <b22540e3-e8da-6878-64e3-04767c5327c2@collabora.com>
-Date: Mon, 14 Feb 2022 12:58:44 +0100
+ id 1nJaeU-00FCDN-B8; Mon, 14 Feb 2022 12:40:24 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id B5B0AB80E91;
+ Mon, 14 Feb 2022 12:40:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4250FC340E9;
+ Mon, 14 Feb 2022 12:40:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1644842418;
+ bh=IQKHs148sOwzSOJ9x7YM1yay1qSuKlbeZzKnX8pviEM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=rWhH+LSokZ3Zs/QiXpu8o5Ki+KnAslQZ/LWSTzG9fMRcf+8pxIVHNAgtUU1oj6cvU
+ ueXKCU7WZKJ/wRK68K+zEAjeJMdaM7s47AyvQ25N8LoFbUMh7pKIayN3VgCmqiQ99S
+ EQR52sV8lX24QDh5Y6RmFhExf1wnMLker7AQ7F8D4NFlTeWtaasxrCVfhF99LVv4oK
+ GCeaHeVIzO4MU8vxm/xgXbvG8u+tFoMpgRZSLd4+HwKHyKf5X75+YbpnFVMkkgUSk6
+ fDvjyddaRrvSTNImWVKyRUoZuzRyOMhMV3cPUcakLZra9OnBOGXZW/szRhs+oQ3MYF
+ 1e2CJ3Ew+jpfQ==
+Date: Mon, 14 Feb 2022 12:40:08 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, James Wang <james.qian.wang@arm.com>,
+ Liviu Dudau <liviu.dudau@arm.com>, iommu@lists.linux-foundation.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ linux-kernel@vger.kernel.org, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-mediatek@lists.infradead.org,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
+ Tomasz Figa <tfiga@chromium.org>, srv_heupstream@mediatek.com,
+ Rob Clark <robdclark@gmail.com>,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Sebastian Reichel <sre@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+ alsa-devel@alsa-project.org
+Subject: Re: [PATCH 20/23] ASoC: codecs: wcd938x: Make use of the helper
+ component_compare/release_of
+Message-ID: <YgpNqLQzpx4J6d8K@sirena.org.uk>
+References: <20220214060819.7334-1-yong.wu@mediatek.com>
+ <20220214060819.7334-21-yong.wu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v9 1/1] i2c: mediatek: modify bus speed calculation formula
-Content-Language: en-US
-To: Kewei Xu <kewei.xu@mediatek.com>, wsa@the-dreams.de
-Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, linux-i2c@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, leilk.liu@mediatek.com, qii.wang@mediatek.com,
- liguo.zhang@mediatek.com, caiyu.chen@mediatek.com,
- housong.zhang@mediatek.com, yuhan.wei@mediatek.com, ryan-jh.yu@mediatek.com,
- david-yh.chiu@mediatek.com
-References: <1644400447-6215-1-git-send-email-kewei.xu@mediatek.com>
- <1644400447-6215-2-git-send-email-kewei.xu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <1644400447-6215-2-git-send-email-kewei.xu@mediatek.com>
+In-Reply-To: <20220214060819.7334-21-yong.wu@mediatek.com>
+X-Cookie: Am I in GRADUATE SCHOOL yet?
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_035848_971390_99B42FED 
-X-CRM114-Status: UNSURE (   9.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220214_044022_602855_5DD0678E 
+X-CRM114-Status: GOOD (  13.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,31 +87,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============7884120375541441968=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/02/22 10:54, Kewei Xu ha scritto:
-> When clock-div is 0 or greater than 1, the bus speed
-> calculated by the old speed calculation formula will be
-> larger than the target speed. So we update the formula.
-> 
-> Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
-> Change-Id: Ic0d9b8ab036bcf215d3a5066f2b91c7b8b128ba6
 
-Please remove Change-Id tag, this is inappropriate and it's also irrelevant here.
+--===============7884120375541441968==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="kmbocLNYrfZ7Ic0Q"
+Content-Disposition: inline
 
-After removing that tag:
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+--kmbocLNYrfZ7Ic0Q
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-> ---
->   drivers/i2c/busses/i2c-mt65xx.c | 51 +++++++++++++++++++++++++++++++++--------
->   1 file changed, 41 insertions(+), 10 deletions(-)
-> 
+On Mon, Feb 14, 2022 at 02:08:16PM +0800, Yong Wu wrote:
+> Use the common compare/release helpers from component.
+
+What's the story with dependencies here?  I've just got this one patch
+with no cover letter...
+
+--kmbocLNYrfZ7Ic0Q
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmIKTagACgkQJNaLcl1U
+h9ChNwf9H0Bf8Q4NJFX6MpkURJU1WTUkJZ8s9zjT9F5003kszR2qdhtG8TCUYisF
+m+Ywr7okO1EGsbMSae1gxr0q5In/J/buVsEnIjl42Be7doIn1xXcDB+3tjDyi4aH
+ZN/sHluDMyiwzeBgN2jiu99gsgHDVXThtPOdyMLab2QMCVo6PEox6vsKyIb6vO2F
+Rl7BLwS916U45mWEFF/XAJLWV7QPG5f43JvKlSkjKLgJhFP8H/cxKzlNZclRAdEi
+fSWK497fgwmyoHrXr2inZNyDmAh20f9np1WMgLBl2sJwN8LnmWSDpp76C/XfRV0T
+Qp7CAMe19I/TqvJsaFw7oluNeBT7Yg==
+=2URH
+-----END PGP SIGNATURE-----
+
+--kmbocLNYrfZ7Ic0Q--
+
+
+--===============7884120375541441968==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============7884120375541441968==--
+
