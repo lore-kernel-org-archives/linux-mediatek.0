@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBB67C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 06:21:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC7CBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 06:21:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8F91V+B1zrppQuru3l2OIdRhVp673Z1J630kVUK7GIk=; b=pnw+IjYrahoSSB
-	jmXBorGL01Ta1fFNDveLRt3q4GuVdkgb8MzD2UzlB5WYcgCZ1GL3lK3nM8pL0xLp2jAHmotzRJ+Ji
-	4Ue07kqoKcDPS1Qky86IMTFrbEp6TQxUGu0j1cp3p3QjOYQTcqaob8bz3Vxdn9aFc6ucqZqvCiHhu
-	BDUa4FYuBC0cYhuXDhd+Ja7/TyUfKpTu3+Pwep29x8MW54w7sdMfsPUT8BZ0BtWaVhW6amuVW44Vt
-	ZuVL4PDZdK4mbbLp7ytHOrQBuALle/uFalugLkQgSzpCe+sQxQSbqKiKMKjUSQG0mygw5qmid/Ups
-	X5cQiXxrkFBBGvlmjVcg==;
+	List-Owner; bh=b7CNsn1h8ZhV4ZMX5oEZF6pZk6j6CF6MmiOV/hmFF7E=; b=Kt84LRO98B2deV
+	eD8/mw+spcTiblibnVvY3cQA0c86V7jJncGsC6Qb0M8Wpx+8ImuxqyFJ7/5TVfwy4wfL2NHiKAeUF
+	j68Alprkkc+OJ5wUU08anzMZ5Q260GQl9PlYvQzMeypiLp/ItsRXD3ve+3YqoegsVgKSs1JaqKtrA
+	a4RUs7/I41TJHczfiOLdKM13DvlUCi3KtNHt0ibwH4HaeeO0/sZ82xAWWEdoxvcIJqv0siqLgNiXq
+	S6zG540+sS7rTsedsNlWcRxOn496Q6AarP9agLvx4WjQ3Toz2PHX/AwblyMzDF9FTg3jSALg287/R
+	y9cfPLcugDt2EKWXoL2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJUjf-00DP4J-16; Mon, 14 Feb 2022 06:21:19 +0000
+	id 1nJUjh-00DP5P-IT; Mon, 14 Feb 2022 06:21:21 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJUif-00DOhM-DT; Mon, 14 Feb 2022 06:20:18 +0000
-X-UUID: 168115e6d45d4e5498d856e3c51dfff7-20220213
-X-UUID: 168115e6d45d4e5498d856e3c51dfff7-20220213
+ id 1nJUif-00DOhC-9h; Mon, 14 Feb 2022 06:20:18 +0000
+X-UUID: 755aed7197d1476ab6fdee18d91cf714-20220213
+X-UUID: 755aed7197d1476ab6fdee18d91cf714-20220213
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 801895153; Sun, 13 Feb 2022 23:20:13 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ with ESMTP id 1894470728; Sun, 13 Feb 2022 23:20:13 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 13 Feb 2022 22:12:24 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 14 Feb 2022 14:12:22 +0800
+ 15.0.1497.2; Sun, 13 Feb 2022 22:10:57 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 14 Feb 2022 14:10:56 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 14 Feb 2022 14:12:20 +0800
+ Transport; Mon, 14 Feb 2022 14:10:54 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, David Airlie
  <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
@@ -56,24 +56,20 @@ CC: James Wang <james.qian.wang@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
  <hsinyi@chromium.org>, Robin Murphy <robin.murphy@arm.com>, Tomasz Figa
  <tfiga@chromium.org>, <srv_heupstream@mediatek.com>, Rob Clark
  <robdclark@gmail.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Sebastian Reichel <sre@kernel.org>, Yong Wu <yong.wu@mediatek.com>, "Jaroslav
- Kysela" <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Jeremy Szu
- <jeremy.szu@canonical.com>, Werner Sembach <wse@tuxedocomputers.com>, "Hui
- Wang" <hui.wang@canonical.com>, Cameron Berkenpas <cam@neo-zeon.de>, "Kailang
- Yang" <kailang@realtek.com>, Lucas Tanure <tanureal@opensource.cirrus.com>,
- Sami Loone <sami@loone.fi>, <alsa-devel@alsa-project.org>
-Subject: [PATCH 23/23] ALSA: hda/realtek: Make use of the helper
- component_compare_dev_name
-Date: Mon, 14 Feb 2022 14:08:19 +0800
-Message-ID: <20220214060819.7334-24-yong.wu@mediatek.com>
+ Sebastian Reichel <sre@kernel.org>, Yong Wu <yong.wu@mediatek.com>, "Maxime
+ Ripard" <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec
+ <jernej.skrabec@gmail.com>, <linux-sunxi@lists.linux.dev>
+Subject: [PATCH 12/23] drm/sun4i: Make use of the helper component_compare_of
+Date: Mon, 14 Feb 2022 14:08:08 +0800
+Message-ID: <20220214060819.7334-13-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220214060819.7334-1-yong.wu@mediatek.com>
 References: <20220214060819.7334-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220213_222017_485294_49BD490A 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20220213_222017_402023_BE28C2AE 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,58 +88,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Use the common compare helper from component.
 
-Cc: Jaroslav Kysela <perex@perex.cz>
-Cc: Takashi Iwai <tiwai@suse.com>
-Cc: Jeremy Szu <jeremy.szu@canonical.com>
-Cc: Werner Sembach <wse@tuxedocomputers.com>
-Cc: Hui Wang <hui.wang@canonical.com>
-Cc: Cameron Berkenpas <cam@neo-zeon.de>
-Cc: Kailang Yang <kailang@realtek.com>
-Cc: Lucas Tanure <tanureal@opensource.cirrus.com>
-Cc: Sami Loone <sami@loone.fi>
-Cc: alsa-devel@alsa-project.org
+Cc: Maxime Ripard <mripard@kernel.org>
+Cc: Chen-Yu Tsai <wens@csie.org>
+Cc: Jernej Skrabec <jernej.skrabec@gmail.com>
+Cc: linux-sunxi@lists.linux.dev
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- sound/pci/hda/patch_realtek.c | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
+ drivers/gpu/drm/sun4i/sun4i_drv.c | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
 
-diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
-index 668274e52674..9da004d99cdb 100644
---- a/sound/pci/hda/patch_realtek.c
-+++ b/sound/pci/hda/patch_realtek.c
-@@ -6530,11 +6530,6 @@ static void alc287_fixup_legion_15imhg05_speakers(struct hda_codec *codec,
- 	}
+diff --git a/drivers/gpu/drm/sun4i/sun4i_drv.c b/drivers/gpu/drm/sun4i/sun4i_drv.c
+index b630614b3d72..a3e3e51c600d 100644
+--- a/drivers/gpu/drm/sun4i/sun4i_drv.c
++++ b/drivers/gpu/drm/sun4i/sun4i_drv.c
+@@ -201,15 +201,6 @@ static bool sun4i_drv_node_is_tcon_top(struct device_node *node)
+ 		!!of_match_node(sun8i_tcon_top_of_table, node);
  }
  
--static int comp_match_dev_name(struct device *dev, void *data)
+-static int compare_of(struct device *dev, void *data)
 -{
--	return strcmp(dev_name(dev), data) == 0;
+-	DRM_DEBUG_DRIVER("Comparing of node %pOF with %pOF\n",
+-			 dev->of_node,
+-			 data);
+-
+-	return dev->of_node == data;
 -}
 -
- static int find_comp_by_dev_name(struct alc_spec *spec, const char *name)
- {
- 	int i;
-@@ -6595,7 +6590,7 @@ static void cs35l41_generic_fixup(struct hda_codec *cdc, int action, const char
- 					      "%s-%s:00-cs35l41-hda.%d", bus, hid, i);
- 			if (!name)
- 				return;
--			component_match_add(dev, &spec->match, comp_match_dev_name, name);
-+			component_match_add(dev, &spec->match, component_compare_dev_name, name);
- 		}
- 		ret = component_master_add_with_match(dev, &comp_master_ops, spec->match);
- 		if (ret)
-@@ -6644,9 +6639,9 @@ static void alc287_fixup_legion_16achg6_speakers(struct hda_codec *cdc, const st
+ /*
+  * The encoder drivers use drm_of_find_possible_crtcs to get upstream
+  * crtcs from the device tree using of_graph. For the results to be
+@@ -329,7 +320,7 @@ static int sun4i_drv_add_endpoints(struct device *dev,
+ 	     of_device_is_available(node))) {
+ 		/* Add current component */
+ 		DRM_DEBUG_DRIVER("Adding component %pOF\n", node);
+-		drm_of_component_match_add(dev, match, compare_of, node);
++		drm_of_component_match_add(dev, match, component_compare_of, node);
+ 		count++;
+ 	}
  
- 	switch (action) {
- 	case HDA_FIXUP_ACT_PRE_PROBE:
--		component_match_add(dev, &spec->match, comp_match_dev_name,
-+		component_match_add(dev, &spec->match, component_compare_dev_name,
- 				    "i2c-CLSA0100:00-cs35l41-hda.0");
--		component_match_add(dev, &spec->match, comp_match_dev_name,
-+		component_match_add(dev, &spec->match, component_compare_dev_name,
- 				    "i2c-CLSA0100:00-cs35l41-hda.1");
- 		ret = component_master_add_with_match(dev, &comp_master_ops, spec->match);
- 		if (ret)
 -- 
 2.18.0
 
