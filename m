@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 014DCC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 14:04:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3648BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 14:04:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=b2gO5E3ZKZtJ2FcFvPaxzimXKdHyFLi09de97YHF4LU=; b=wwUOMZZVJuK335
-	SpAZRje9e+k+M2/frDOeDm/2DJMhmXAOy5WQH0KW59gb698mw/lraMf4laX/HOKREbWvImxBuzNEv
-	wyAPBCq0yMhcM8OZocIocRKUJ4hLFnIw394gAn1H935/d1Xijxy+R/ebYBi8BJ8uhraAFi5nzWZiq
-	GJduXVFTfXy3MqEoDbcl/p1EvYlxYwZ9j6Wb9sWxxodjriIRj63KPTOr30939/8DiQYPyFe5KC4Jq
-	Gye4cAZq5RZyVE7lKr7b024I2w/sJNnbv6sbuZIzhA8avTA4ZyboIOqatyj36DFjagg+TQ4RHuGpg
-	hhBkogNVGwdD5sKcFt/g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KXXIBxF8mLd5wnxwHKsy5nAR1zrA3KYGoYChh3A4DEU=; b=zN5TY1dSXjhSo8
+	1gp4AIsd0Pna+HHifNAO5L56ZxF0lHL15/fEfzX2WzMuxtiUmDted0x08FyTTqwJPdGph4TI7lEsN
+	tlnKoKyPbXCHJOTi6jljs912z2KKFWKZIo+bwKJmPFobmMHhO6OA8+3S0vS33VhEi6fnHEu8Bs9WI
+	BIj10wbs282laB8oEkZBdo/rnBH27Kp47+MZrNOboXA9/XwNbIZaRtNeP0uEYKSQAmbRgBVc2Eoar
+	uyXdkult3w/ykhhfRIG2fk2vn+/i07CHZH+NtnOYZJCd8Q3kg4Nv9PuTUM+58YhOm7BkRPBqCi6x1
+	q/gGxTofLC6RmwJN90PA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJbxi-00FZ1I-6W; Mon, 14 Feb 2022 14:04:18 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nJby0-00FZAm-Dh; Mon, 14 Feb 2022 14:04:36 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJbxD-00FYmr-Tl; Mon, 14 Feb 2022 14:03:49 +0000
+ id 1nJbxE-00FYn1-70; Mon, 14 Feb 2022 14:03:50 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id E600A1F417FE
+ (Authenticated sender: kholk11) with ESMTPSA id 6C8D31F437D8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1644847425;
- bh=QaLaTj9ziNtqxf12oz66KYW1D7p03OX8Bk66flIHsxs=;
- h=From:To:Cc:Subject:Date:From;
- b=IiLx73dq4wyKSkdrAxRCsYed1Zpv5mkzLr5ixnDofJ6LIi5Gp/scc2V/6seFoGTbD
- 0JeOtZrdJQnmrVFPgJaEcbng/zlJ3X5WkP4zV+bWCJX8DjiRAwkSuquklkDtMCTIXT
- YiBAgFXOzEJ9nW7jRJF0GW28e4FnFDZLrvwYIBiXXp1C6Syw44mn7xtIi9ncE+jAyU
- q2tpv2InOkV3ykX4R398AWYmVyCUmlULeD2I5nqjKcbD1KFnHO6nUAgFXmq5c8/Lp8
- gIyZxUdgDX+LUqn5cYos3bA0FnuNIFMRNfVpILa+Q4dR7r/RvAV5F6MXGF3mu3oMPb
- eRrgGYgpyqz+A==
+ s=mail; t=1644847427;
+ bh=wFNgkqGiONoneW7J7GAtmcWU3v7pj9r5c0V0Os6wFU0=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=OUG+pRD5LFzg0JNUMPwO8D3H1M9GSWqUTPtDByjaPj95ISZWa4Pvs4Fd0wkQWzBcF
+ dgJ9fdDzLdJWCXfJpfvfH2uipWAipJtTSKdsA1t6BXNN57RCoE1+ixwBUXhBtR89Bx
+ d6hz0MguCsVR07zG1aERD8kW7FKTrABhs41a7UPhKe+3IdEkWw74KtSXTsuK3Dqsfr
+ HLz0KaN1BN25jpW0Wz2QihHbm2uHudnjZ45SCZX7g3TzIcsGBI+M93VuT7/Q+HMv70
+ YV2qBURT/u4kLKpL9GGXBcF5PW6mL1hGoRoxkh3OItUGA2hF9Kzvwz2L+ENRnV/dKo
+ i2hKFQGJ7l7Jg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: thierry.reding@gmail.com
 Cc: u.kleine-koenig@pengutronix.de, lee.jones@linaro.org,
@@ -43,15 +43,16 @@ Cc: u.kleine-koenig@pengutronix.de, lee.jones@linaro.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, kernel@collabora.com,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 1/3] pwm: pwm-mediatek: Simplify error handling with
- dev_err_probe()
-Date: Mon, 14 Feb 2022 15:03:37 +0100
-Message-Id: <20220214140339.112500-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 3/3] pwm: pwm-mediatek: Beautify error messages text
+Date: Mon, 14 Feb 2022 15:03:39 +0100
+Message-Id: <20220214140339.112500-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.33.1
+In-Reply-To: <20220214140339.112500-1-angelogioacchino.delregno@collabora.com>
+References: <20220214140339.112500-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_060348_108943_F6023E51 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20220214_060348_412622_10669927 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,70 +69,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use dev_err_probe() to simplify handling errors in pwm_mediatek_probe().
+As a cherry-on-top cleanup, make error messages clearer to read
+by changing instances of "clock: XXXX failed" to a more readable
+"Failed to get XXXX clock". Also add "of" to unsupported period
+error.
+
+This is purely a cosmetic change; no "real" functional changes.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/pwm/pwm-mediatek.c | 30 +++++++++++-------------------
- 1 file changed, 11 insertions(+), 19 deletions(-)
+ drivers/pwm/pwm-mediatek.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-index 0d4dd80e9f07..c7d5ca09a684 100644
+index 6b39f3d69e41..568b13a48717 100644
 --- a/drivers/pwm/pwm-mediatek.c
 +++ b/drivers/pwm/pwm-mediatek.c
-@@ -227,18 +227,14 @@ static int pwm_mediatek_probe(struct platform_device *pdev)
- 		return -ENOMEM;
+@@ -146,7 +146,7 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
  
+ 	if (clkdiv > PWM_CLK_DIV_MAX) {
+ 		pwm_mediatek_clk_disable(chip, pwm);
+-		dev_err(chip->dev, "period %d not supported\n", period_ns);
++		dev_err(chip->dev, "period of %d ns not supported\n", period_ns);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -229,12 +229,12 @@ static int pwm_mediatek_probe(struct platform_device *pdev)
  	pc->clk_top = devm_clk_get(&pdev->dev, "top");
--	if (IS_ERR(pc->clk_top)) {
--		dev_err(&pdev->dev, "clock: top fail: %ld\n",
--			PTR_ERR(pc->clk_top));
--		return PTR_ERR(pc->clk_top);
--	}
-+	if (IS_ERR(pc->clk_top))
-+		return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk_top),
-+				     "clock: top failed\n");
+ 	if (IS_ERR(pc->clk_top))
+ 		return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk_top),
+-				     "clock: top failed\n");
++				     "Failed to get top clock\n");
  
  	pc->clk_main = devm_clk_get(&pdev->dev, "main");
--	if (IS_ERR(pc->clk_main)) {
--		dev_err(&pdev->dev, "clock: main fail: %ld\n",
--			PTR_ERR(pc->clk_main));
--		return PTR_ERR(pc->clk_main);
--	}
-+	if (IS_ERR(pc->clk_main))
-+		return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk_main),
-+				     "clock: main failed\n");
+ 	if (IS_ERR(pc->clk_main))
+ 		return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk_main),
+-				     "clock: main failed\n");
++				     "Failed to get main clock\n");
  
  	for (i = 0; i < pc->soc->num_pwms; i++) {
  		char name[8];
-@@ -246,11 +242,9 @@ static int pwm_mediatek_probe(struct platform_device *pdev)
- 		snprintf(name, sizeof(name), "pwm%d", i + 1);
- 
+@@ -244,7 +244,7 @@ static int pwm_mediatek_probe(struct platform_device *pdev)
  		pc->clk_pwms[i] = devm_clk_get(&pdev->dev, name);
--		if (IS_ERR(pc->clk_pwms[i])) {
--			dev_err(&pdev->dev, "clock: %s fail: %ld\n",
--				name, PTR_ERR(pc->clk_pwms[i]));
--			return PTR_ERR(pc->clk_pwms[i]);
--		}
-+		if (IS_ERR(pc->clk_pwms[i]))
-+			return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk_pwms[i]),
-+					     "clock: %s failed\n", name);
+ 		if (IS_ERR(pc->clk_pwms[i]))
+ 			return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk_pwms[i]),
+-					     "clock: %s failed\n", name);
++					     "Failed to get %s clock\n", name);
  	}
  
  	pc->chip.dev = &pdev->dev;
-@@ -258,10 +252,8 @@ static int pwm_mediatek_probe(struct platform_device *pdev)
- 	pc->chip.npwm = pc->soc->num_pwms;
- 
- 	ret = devm_pwmchip_add(&pdev->dev, &pc->chip);
--	if (ret < 0) {
--		dev_err(&pdev->dev, "pwmchip_add() failed: %d\n", ret);
--		return ret;
--	}
-+	if (ret < 0)
-+		return dev_err_probe(&pdev->dev, ret, "pwmchip_add() failed\n");
- 
- 	return 0;
- }
 -- 
 2.33.1
 
