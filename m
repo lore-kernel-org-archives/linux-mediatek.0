@@ -4,44 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55EC2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 11:15:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA70CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 11:19:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6i7VAbb7Pf6mQR9pfJxL+MLcBJ3X/t/6X9Du4EivBIk=; b=dRuVMTGP7oailY
-	xE7DL3w8IL7DYo2JVwGnH64uFDNAWh5B29XQoUChVxx6FyLnvYItbXiXk3IjFZJzAzmSxhvSt2Szr
-	OR6A+IyM5UUB/W1oOu94O8OvBKZ/6uK9ODGk8YETWdug/P30GPasCeNJVXfX1Ctz7erqss20OGF/+
-	gE1abxy5/2/Tr0vcHy90UD++tLqYStiahbit06gWH89R/SqpIHpdIhV7aUc+nCPA5JnUUfnajhDMY
-	p1Fspi/VMSPJMsbg0wVqCSzIhOTGmJcXRX6WCJqpBLr11kSr42vl4TAMfD4p6emcWpSxgJVQfvNdS
-	JN0n4Uy4B19m27cj/LvA==;
+	List-Owner; bh=znLnna/Fskc3jTimH6ICymDV6BYDM7aGlHfiNJjHdSQ=; b=ErMli+JtBdV3qL
+	TuSkpCLE0yL9GhqVIiozpPyL7DQzbaTljV+J3R8XwSxnXUtRZb9GOGqTZoZ6t9ioCmOmnO8BjZHcN
+	qHJXQ7IIUOOOY0AnRMsN5Ns+mPRuPrTFoaT7jSDe5+SigoMWPGhNBHr0hy/Zu6lknlaOMPkOBuwB/
+	Dp+vsAI1uBr5XqQ/FDTAXvzuMRbFUsKWUuN2Xv4Xjqj55EltJRU/GvOEZhfecGdhE1uqL0XxMYoh/
+	8nDnPxIY4bEsTIg2yiTJTTCQLXMOBAGuetdW+T3q3iLUUYq3x64XQgDARWvRirkXp7b2aUmb3uWcK
+	WXpd2g3OduHqVMW40XjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJZKO-00EkQR-H4; Mon, 14 Feb 2022 11:15:32 +0000
+	id 1nJZOG-00Eloc-0e; Mon, 14 Feb 2022 11:19:32 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJY9H-00ENct-Cb; Mon, 14 Feb 2022 10:00:01 +0000
+ id 1nJYBq-00EONj-IP; Mon, 14 Feb 2022 10:02:40 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 79FD21F43053
+ (Authenticated sender: kholk11) with ESMTPSA id 1E7051F43053
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1644832798;
- bh=PmeiC/wYqvKXsD5lUE5EB7IB8YOl2pZWINM/lweU0uQ=;
+ s=mail; t=1644832956;
+ bh=EZtxgxaV8/I+n1d7kbiGccMyE4bZCHZgIhArtvVlxB4=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=huItp0jpBT5mIuS3V2qntF47BW1WYY6qF2Sphz5S5Es9/zaydd2GXERLPFT48Tg7I
- fkYl24WNF0i/WY3JaQYCJ4SSLVD397Irnv1yVkV8sJRdWorZgZlGvWQ4JvmRgIy9AW
- 4qSFNoTZ+SW09YJaey4sO0UFk6hq1dZVLsm6Dd6QV3E/z+KHfZ0TLRiUb+9xA4V8oP
- WSZZI6dCgNTb/OX7OQ275Y3ZmvM+Zt3BQYxwqkjQGpQBbxWMQmjJqRjtsdBGygbnRO
- SdcBfHb106jhNlW++A9eGBwHtD0h0Ai93vVVfLmlQxpqs6wNuz0vPKnxnkoyO6nMHT
- IGQakN7qdIYYA==
-Message-ID: <2dae87c6-c796-4687-0f21-86a0b36ae1ac@collabora.com>
-Date: Mon, 14 Feb 2022 10:59:54 +0100
+ b=htFbV/VNcgY4e6NmjbTgWCT0U8vZZXgz2EkFHdw5T7VYpUSU/xek0vZEQ8ZV9UFQO
+ Qx3ahY8d7vxDW3H0k4fBsj1X070vtiA5LoDwnQN2JMeAr4j1v8S/wUkCopc4LTqkX8
+ c/ZKYxcnJLgjFbnF3R027FjtRqM5nhPH+SnY3ic7mN7X/BqlYsrJVLUQmrM31GIB0I
+ PYfrNvgMjWw4gmBmzwVBibGvDRRhWjA1EqE3dRYHEhoK2U9DDpKwKWtt+T3ifVqWIq
+ 6g50M5CWKaxFaAwnMUe3CRfkFxGQ2v/BHquLmIwyODtbFc8X0I4nX0Bvizjx9biB6w
+ SGzfEywYKl8KQ==
+Message-ID: <c9ab3f7c-9b12-0c51-3de2-4abf42cdfb74@collabora.com>
+Date: Mon, 14 Feb 2022 11:02:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
-Subject: Re: [PATCH v4 2/3] pinctrl: add pinctrl driver on mt8186
+Subject: Re: [PATCH v4 3/3] pinctrl: canonical rsel resistance selection
+ property
 Content-Language: en-US
 To: Guodong Liu <guodong.liu@mediatek.com>,
  Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
@@ -51,13 +52,12 @@ Cc: Sean Wang <sean.wang@mediatek.com>, linux-gpio@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20220214030631.4969-1-guodong.liu@mediatek.com>
- <20220214030631.4969-3-guodong.liu@mediatek.com>
+ <20220214030631.4969-4-guodong.liu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220214030631.4969-3-guodong.liu@mediatek.com>
+In-Reply-To: <20220214030631.4969-4-guodong.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_015959_612970_AB0848DA 
-X-CRM114-Status: UNSURE (   9.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220214_020238_775402_16E888DC 
+X-CRM114-Status: GOOD (  14.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,21 +75,37 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 14/02/22 04:06, Guodong Liu ha scritto:
-> This commit includes pinctrl driver for mt8186.
+> Change "mediatek,rsel_resistance_in_si_unit" to
+> "mediatek,rsel-resistance-in-si-unit"
 > 
+> Fixes: fb34a9ae383a ("pinctrl: mediatek: support rsel feature")
 > Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
+
+A note for maintainers: luckily, this property hasn't been used in any device-tree
+yet, so we luckily (since naming convention was not compliant) don't have to worry
+about retro-compatibility for old DTs; so...
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 > ---
->   drivers/pinctrl/mediatek/Kconfig              |    7 +
->   drivers/pinctrl/mediatek/Makefile             |    1 +
->   drivers/pinctrl/mediatek/pinctrl-mt8186.c     | 1311 ++++++++++
->   drivers/pinctrl/mediatek/pinctrl-mtk-mt8186.h | 2186 +++++++++++++++++
->   4 files changed, 3505 insertions(+)
->   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt8186.c
->   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt8186.h
+>   drivers/pinctrl/mediatek/pinctrl-paris.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> index d4e02c5d74a8..38c0f0c4cf95 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> @@ -989,7 +989,7 @@ int mtk_paris_pinctrl_probe(struct platform_device *pdev,
+>   	hw->nbase = hw->soc->nbase_names;
+>   
+>   	if (of_find_property(hw->dev->of_node,
+> -			     "mediatek,rsel_resistance_in_si_unit", NULL))
+> +			     "mediatek,rsel-resistance-in-si-unit", NULL))
+>   		hw->rsel_si_unit = true;
+>   	else
+>   		hw->rsel_si_unit = false;
+> 
+
 
 _______________________________________________
 Linux-mediatek mailing list
