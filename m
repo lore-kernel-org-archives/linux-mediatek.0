@@ -4,60 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7ED5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 13:49:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75965C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 13:51:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bJ7z0vGf7KbEIudEAK3d6ZHCpBVA5MwJF5MhoVnyOps=; b=zHf00chRcvCDtoGPj3ElmA3aL4
-	0TgHbTGh5AjBJQYl0PLDShQirPKPzonb7VwlVxAPVTipU9nF45GLfM3VgYN6Av32ttj2GSfJtmnuG
-	eIFFPYOO/CDqR/IldAnMIvB2/3cvNq2MB1MnGfbVryH4aY3jewM1WVGDwGBSdJNlVN6Q7EVQWe403
-	nAhTcDNez/zPQUcChTgN7sscpucgGqKBNreLVWyEf6xWA5xJdIxG+8KroJc47NElt1nEjUlsNO5oH
-	vG9RUw0sgfopjja8r+bCfZYkyW1O5icm6SWnAdlWlwd+YkGUR7xHD7a2DK7xwlqujivgt66SK326t
-	/rbFNzYA==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4ptDrQeISvq2xbv/kEfVoM229f2ntH2mpgKchP6xNlQ=; b=eGZbmns7z6+glT
+	V6eMNjyGOaJB053LNKpq3S+R3BxYEpED/r3oNV4ce26TgohwprWnxOj1jXSlgNhH/HuUEZkK+xcnN
+	nDqyRymRSJcmHnaAQDE8lmmtJm6/HOCRQdXTF20bJekh5cjHhevI5ZbA1C649nQxIpK9dmD1uCVTj
+	K4xqBYoJI/kcN2nDJgoOMQuTsOQrkFopAexBoGr/+/6TIa4bbxh4G9dKTB2913Le4PizVH8ciE0uF
+	lSqSSaBZ6uhfs6cvhPpzFmc/OM4kc9CvNs0qi5zq4jNTpeAyJneQeUkr6j8By79fkllWIRgBwAsxm
+	C1+y3KlKT4NSjwSCgLuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJbj4-00FU1g-9y; Mon, 14 Feb 2022 13:49:10 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nJbkn-00FUOD-F9; Mon, 14 Feb 2022 13:50:57 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJbit-00FTzC-HQ
- for linux-mediatek@lists.infradead.org; Mon, 14 Feb 2022 13:49:01 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1nJbim-0005aS-7f; Mon, 14 Feb 2022 14:48:52 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
- by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1nJbil-00GYdt-SZ; Mon, 14 Feb 2022 14:48:51 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1nJbik-0038Ma-HE; Mon, 14 Feb 2022 14:48:50 +0100
-Date: Mon, 14 Feb 2022 14:48:50 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: thierry.reding@gmail.com, lee.jones@linaro.org, matthias.bgg@gmail.com,
- linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com
+ id 1nJbkb-00FULl-Ce; Mon, 14 Feb 2022 13:50:47 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 4EC2D1F43191
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1644846643;
+ bh=D1yJWGWIImkvAowJ8h80nIsI2GRf98oHfJsbzrHCL5g=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=eLg4rcGuTVLJAuon8acnkWwPvbOhy4FVYhIKInQOCvtyvTikzf5hUlnBvRFdAN8Hq
+ FgIYU1Gv9y3Drl/bDFKTDtZ2VwJ0vsMAb0mUeLKIq8xUgLqoD2dXCKieLkARXz+VOJ
+ Ks8qubUZszIdLBApWCiWCotADcPCPMlXKjGszPNeydLeBxCMqKOWuRugnEvuVuR09h
+ UdbSVhAc6MXkkCRaF18xUmSktuzBNg5XZ2GVFtVpRMo+6ifYLTZxQcAXnH9km5eKvZ
+ jBHFz5yJPLVS8Zue/MGlkkg6R4OEYkmEyLy1/u48A7oYluYVSo9VPHhrwPLIA6E1bV
+ XynkDc/ZUQP8Q==
+Message-ID: <bb79e52c-bf82-5966-1814-ba23f4b6dcf5@collabora.com>
+Date: Mon, 14 Feb 2022 14:50:37 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
 Subject: Re: [PATCH 1/2] pwm: pwm-mediatek: Simplify error handling with
  dev_err_probe()
-Message-ID: <20220214134850.aqmd7wjxjsjyuwz7@pengutronix.de>
+Content-Language: en-US
+To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: thierry.reding@gmail.com, lee.jones@linaro.org, matthias.bgg@gmail.com,
+ linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
 References: <20220214113038.79130-1-angelogioacchino.delregno@collabora.com>
-MIME-Version: 1.0
-In-Reply-To: <20220214113038.79130-1-angelogioacchino.delregno@collabora.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+ <20220214134850.aqmd7wjxjsjyuwz7@pengutronix.de>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220214134850.aqmd7wjxjsjyuwz7@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_054859_589187_9F66955B 
-X-CRM114-Status: GOOD (  18.19  )
+X-CRM114-CacheID: sfid-20220214_055045_584949_DA145075 
+X-CRM114-Status: GOOD (  16.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,91 +67,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7624107110448465662=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---===============7624107110448465662==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="6nlrjmjngwerlej6"
-Content-Disposition: inline
-
-
---6nlrjmjngwerlej6
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Feb 14, 2022 at 12:30:37PM +0100, AngeloGioacchino Del Regno wrote:
-> Use dev_err_probe() to simplify handling errors in pwm_mediatek_probe().
->=20
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> ---
->  drivers/pwm/pwm-mediatek.c | 30 +++++++++++-------------------
->  1 file changed, 11 insertions(+), 19 deletions(-)
->=20
-> diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-> index 0d4dd80e9f07..c7d5ca09a684 100644
-> --- a/drivers/pwm/pwm-mediatek.c
-> +++ b/drivers/pwm/pwm-mediatek.c
-> @@ -227,18 +227,14 @@ static int pwm_mediatek_probe(struct platform_devic=
-e *pdev)
->  		return -ENOMEM;
-> =20
->  	pc->clk_top =3D devm_clk_get(&pdev->dev, "top");
-> -	if (IS_ERR(pc->clk_top)) {
-> -		dev_err(&pdev->dev, "clock: top fail: %ld\n",
-> -			PTR_ERR(pc->clk_top));
-> -		return PTR_ERR(pc->clk_top);
-> -	}
-> +	if (IS_ERR(pc->clk_top))
-> +		return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk_top),
-> +				     "clock: top failed\n");
-
-The change looks straight forward. I wonder if we should improve the
-error message on this occasion. E.g.
-
-	"Failed to get top clock\n"
-
-? Ditto below.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---6nlrjmjngwerlej6
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmIKXb8ACgkQwfwUeK3K
-7Aliqwf/XuM5oenKJm6jXphWn2Qtm3C59pE9WKUd6icfLW3luXqPk/EmMDSVH8SP
-t2zQLHAjrm5IyFhyBzG/1z3/fkU8zCW8XyzxDWnuq95Djn0tE4WS8K1sfcnkz1r4
-icA07XD2y3MQ04KtcO0v+GovSJkwDGoAA1zCFi/7o5GeMIdmdeOCBvK8wlLH1dgW
-tOqYCH2CRGueyxg7VjUoiJT1F1o/gI1tA7dNI4r47xfYkqWYazR2oTl0vLoBUw9M
-m4QLYq8FGN5xq6JfWcXeJgUQw9Y9G/9+yraFi761ZSR9YThR3qFR4hRX/JneVBp4
-J8oPUKwWfDi7zmRSLS7NUVorW1ZWWw==
-=qf+h
------END PGP SIGNATURE-----
-
---6nlrjmjngwerlej6--
-
-
---===============7624107110448465662==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============7624107110448465662==--
-
+SWwgMTQvMDIvMjIgMTQ6NDgsIFV3ZSBLbGVpbmUtS8O2bmlnIGhhIHNjcml0dG86Cj4gT24gTW9u
+LCBGZWIgMTQsIDIwMjIgYXQgMTI6MzA6MzdQTSArMDEwMCwgQW5nZWxvR2lvYWNjaGlubyBEZWwg
+UmVnbm8gd3JvdGU6Cj4+IFVzZSBkZXZfZXJyX3Byb2JlKCkgdG8gc2ltcGxpZnkgaGFuZGxpbmcg
+ZXJyb3JzIGluIHB3bV9tZWRpYXRla19wcm9iZSgpLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBBbmdl
+bG9HaW9hY2NoaW5vIERlbCBSZWdubyA8YW5nZWxvZ2lvYWNjaGluby5kZWxyZWdub0Bjb2xsYWJv
+cmEuY29tPgo+PiAtLS0KPj4gICBkcml2ZXJzL3B3bS9wd20tbWVkaWF0ZWsuYyB8IDMwICsrKysr
+KysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLQo+PiAgIDEgZmlsZSBjaGFuZ2VkLCAxMSBpbnNlcnRp
+b25zKCspLCAxOSBkZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcHdtL3B3
+bS1tZWRpYXRlay5jIGIvZHJpdmVycy9wd20vcHdtLW1lZGlhdGVrLmMKPj4gaW5kZXggMGQ0ZGQ4
+MGU5ZjA3Li5jN2Q1Y2EwOWE2ODQgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvcHdtL3B3bS1tZWRp
+YXRlay5jCj4+ICsrKyBiL2RyaXZlcnMvcHdtL3B3bS1tZWRpYXRlay5jCj4+IEBAIC0yMjcsMTgg
+KzIyNywxNCBAQCBzdGF0aWMgaW50IHB3bV9tZWRpYXRla19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1f
+ZGV2aWNlICpwZGV2KQo+PiAgIAkJcmV0dXJuIC1FTk9NRU07Cj4+ICAgCj4+ICAgCXBjLT5jbGtf
+dG9wID0gZGV2bV9jbGtfZ2V0KCZwZGV2LT5kZXYsICJ0b3AiKTsKPj4gLQlpZiAoSVNfRVJSKHBj
+LT5jbGtfdG9wKSkgewo+PiAtCQlkZXZfZXJyKCZwZGV2LT5kZXYsICJjbG9jazogdG9wIGZhaWw6
+ICVsZFxuIiwKPj4gLQkJCVBUUl9FUlIocGMtPmNsa190b3ApKTsKPj4gLQkJcmV0dXJuIFBUUl9F
+UlIocGMtPmNsa190b3ApOwo+PiAtCX0KPj4gKwlpZiAoSVNfRVJSKHBjLT5jbGtfdG9wKSkKPj4g
+KwkJcmV0dXJuIGRldl9lcnJfcHJvYmUoJnBkZXYtPmRldiwgUFRSX0VSUihwYy0+Y2xrX3RvcCks
+Cj4+ICsJCQkJICAgICAiY2xvY2s6IHRvcCBmYWlsZWRcbiIpOwo+IAo+IFRoZSBjaGFuZ2UgbG9v
+a3Mgc3RyYWlnaHQgZm9yd2FyZC4gSSB3b25kZXIgaWYgd2Ugc2hvdWxkIGltcHJvdmUgdGhlCj4g
+ZXJyb3IgbWVzc2FnZSBvbiB0aGlzIG9jY2FzaW9uLiBFLmcuCj4gCj4gCSJGYWlsZWQgdG8gZ2V0
+IHRvcCBjbG9ja1xuIgo+IAoKSSBjYW4gcHVzaCBhbm90aGVyIGNvbW1pdCBvbiB0b3AgdGhhdCBp
+bXByb3ZlcyB0aGUgbWVzc2FnZXMsIGlmIGRlc2lyZWQhCgpSZWdhcmRzLApBbmdlbG8KCj4gPyBE
+aXR0byBiZWxvdy4KPiAKPiBCZXN0IHJlZ2FyZHMKPiBVd2UKPiAKCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBs
+aXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
