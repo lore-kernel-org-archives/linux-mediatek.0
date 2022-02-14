@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDAF1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 01:44:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 971F9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 01:49:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xExktbtCGIR2EfAY1OPuKD/LQZLHJQ36rsbeC8KWK+c=; b=NpPbfDRoOTSQvZ
-	3yZnG5CvclOzeK2agJJOFo21rc99sv0dIaNA4miq9Nc7bVIC1kNbmvR2SNcJnW8H3iHCWpn45nucX
-	PeHFUwqeC4Hj8/pdVizKysR7wlagjPIovNg7Q514rkhNzLjlsPRe7uwcyaKPL0m3/GZVd8RoKDwLZ
-	KIxdsbM5gCtmTwjwfrY2M5Uu1viUzky7s/mXnvLaBVXDG8bQKHnN3N0voFajb85leWvbgre1D+KGN
-	0zNi/nxcvozGAUJU290R3g1BaHM3yr1N0eLQmkl5iKTCXNimRlKIIICBWFUFQ+cnZriNahqc1y8yz
-	dZQLXhdp0lktnwMbjAgA==;
+	List-Owner; bh=5b2RkpdKy9HToTPvi5dYS1CTkDcTJdx2O5kANRlBS1g=; b=v+n16UysStH5+3
+	2hZDwHYtTipd4tEooRp/I2wLIq5aDf4FUI/W5wY42F17zBjdXxSFx/czjiVkQiaAYPXWauWAK/SN8
+	YW3eYWVw7S5j9PjJb/bZMYYAacjDltbSbAdDlRv4v2e2PKTmQCURZWuocNt0WfdLHp26bGzlpDvlp
+	sKnVydkmPopkQVB9lzC6HCmUk9GJogooQtsKJtaKYWA0xOyQqVF1nU8MoW3SYhMkULnoamDqRrP1h
+	O4hVG9sSnc2K4bZoRAsab8opx/NZzkI4W7z0jHiUechEMRxN8f+grMUP6PImcCIWreipZ6wxb9/XT
+	T1l3/HlvVMlP0rFkw/YA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJQPT-00CvVM-QT; Mon, 14 Feb 2022 01:44:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nJQUd-00Cw0W-4t; Mon, 14 Feb 2022 01:49:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJQPI-00CvSc-5W; Mon, 14 Feb 2022 01:44:01 +0000
-X-UUID: 0a1ba0a180fe42eb89a641bca34488d1-20220213
+ id 1nJQUR-00Cvys-Fg; Mon, 14 Feb 2022 01:49:20 +0000
+X-UUID: 049b9184306d49a8bd7e686b155b35cb-20220213
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=PH5ErV6/m7eJrChUaLPcPEX/q/trKclIY0ToUVfFBm4=; 
- b=eL2ziMQoJc2Rj8B9RjUHZlt5DDnY9NCbfRJgQZBjkAJ7gkussSwYUj23IMuKQ9x/3BsMZeiqDSLKjrtQlNxzEo912gncoRGTJHDQk9W84iGeLoZT/UCzOqESX8RKKyrz5YTKLNxUQsqXrjo0IVrKZBIhOo/nU2AyI/SzKY78D4s=;
-X-UUID: 0a1ba0a180fe42eb89a641bca34488d1-20220213
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ bh=hTWQh6qiaRjbXbOslFGSuJeie2WRrbknuk23YiZsHic=; 
+ b=tC/7DUNhRzXvjRWbr4WX2gVCoA10t8FIHuvAQggmp70bZLUV6wCPeunA63quDM0k73/LBeszhtMrqXYHDyv2/jx1elg7Z1ThKV3d8Rg67XVFis4ssFkow23SP06yfBnNBpfOw2l312DoyJqjDQfWhNeCiTFggCca1JPvPZVTZjU=;
+X-UUID: 049b9184306d49a8bd7e686b155b35cb-20220213
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <leilk.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 668719092; Sun, 13 Feb 2022 18:43:55 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 13 Feb 2022 17:43:54 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 14 Feb 2022 09:43:52 +0800
+ with ESMTP id 176858791; Sun, 13 Feb 2022 18:49:18 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 13 Feb 2022 17:49:16 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 14 Feb 2022 09:49:09 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 14 Feb 2022 09:43:50 +0800
-Message-ID: <8039ba062ec9408c773292f21d5604f6ddb86d1b.camel@mediatek.com>
-Subject: Re: [PATCH 3/6] dt-bindings: spi: Add compatible for Mediatek IPM
- IP with quad mode
+ Transport; Mon, 14 Feb 2022 09:49:06 +0800
+Message-ID: <16f9272489ee3cc15a4816825f3537eb5cece31a.camel@mediatek.com>
+Subject: Re: [PATCH 1/6] dt-bindings: spi: Add compatible for Mediatek IPM
+ IP with single mode
 From: Leilk Liu <leilk.liu@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Mark Brown
- <broonie@kernel.org>
-CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+To: Rob Herring <robh@kernel.org>
+CC: Mark Brown <broonie@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Date: Mon, 14 Feb 2022 09:43:50 +0800
-In-Reply-To: <bed10d2e-a3eb-ddcb-8b84-9b5ba7f138f1@canonical.com>
+Date: Mon, 14 Feb 2022 09:49:06 +0800
+In-Reply-To: <YgaVCmizWJfFMK5I@robh.at.kernel.org>
 References: <20220209111938.16137-1-leilk.liu@mediatek.com>
- <20220209111938.16137-4-leilk.liu@mediatek.com>
- <bed10d2e-a3eb-ddcb-8b84-9b5ba7f138f1@canonical.com>
+ <20220209111938.16137-2-leilk.liu@mediatek.com>
+ <YgaVCmizWJfFMK5I@robh.at.kernel.org>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220213_174400_229109_103AF9E5 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20220213_174919_549789_5EF386CA 
+X-CRM114-Status: GOOD (  16.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,23 +80,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-02-11 at 12:44 +0100, Krzysztof Kozlowski wrote:
-> On 09/02/2022 12:19, Leilk Liu wrote:
+On Fri, 2022-02-11 at 10:55 -0600, Rob Herring wrote:
+> On Wed, Feb 09, 2022 at 07:19:33PM +0800, Leilk Liu wrote:
 > > This commit adds dt-binding documentation for
-> > Mediatek SPI IPM IP with quad mode.
+> > Mediatek SPI IPM IP with single mode.
 > > 
 > > Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
 > > ---
 > >  Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml | 1
 > > +
 > >  1 file changed, 1 insertion(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-
+> > mt65xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-
+> > mt65xx.yaml
+> > index bfa44acb1bdd..0a2fc0404cb3 100644
+> > --- a/Documentation/devicetree/bindings/spi/mediatek,spi-
+> > mt65xx.yaml
+> > +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-
+> > mt65xx.yaml
+> > @@ -41,6 +41,7 @@ properties:
+> >                - mediatek,mt8135-spi
+> >                - mediatek,mt8173-spi
+> >                - mediatek,mt8183-spi
+> > +              - mediatek,ipm-spi-single
 > 
-> Same comments as for patch 1 apply.
+> Is IPM an SoC? Compatible strings should be SoC specific or whatever 
+> granularity could have a unique errata.
 > 
-OK, I'll fix it.thanks
-> 
-> Best regards,
-> Krzysztof
+IPM is an version of SPI ip, we use this IP with ICs now. So I define a
+compatible strings "mediatek,ipm-spi-single", then I can reuse this
+compatible strings with many ICs.
+
+> Rob
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
