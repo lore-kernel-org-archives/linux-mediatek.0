@@ -4,67 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09A5FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 07:45:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E771FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Feb 2022 08:03:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pJi/XVdAv8FrNxmzFppDv3u02nAsKLN/uW8La4S2oXM=; b=j3n3EqSeqbkvVD
-	LkLlVCS1rYFlFZXMZOzjzeDPUHLfr18IZeNWLsYXhOURxeoXMy9/eU5sDoDG27/otRFwJrsuHE1GX
-	FNSuv0Ua8xjgc7nMeWOIABHaUJ0Oyy1d4eL8W+YK2CQdQ4IjvagZbKPMP/Fkt03TNXNS5lTWc/K/9
-	56eUIYaXn3LFjrKcGrG0c/W6tgd1Ktz6vTtlL/RFAwa465GF7Oc6YEwuuBVTDCSPxbSCS4NYTe0qo
-	gUD3QIE1XQVKRq2w/OG60kZHdYpaf0i0dZu5WeWtGoBI7aj83kItBSqNiq+e+CknX8bhS2Dj9gKEp
-	AV0tZ/UGYPg4B9Ulvx1w==;
+	List-Owner; bh=NNyWqeKIm4Ar062BbCbt8j84j3Z4f4KuWLPcjKkcIAk=; b=h3IhVU4nu6ak/B
+	qFiGlgNTtu0c2X7AYkV9LB4mLU5HV85pRvCr7PFpNTbl19MzmFmDxCM2fntBABhxemZ1bQ3Zg6Hs9
+	/sAFOJ3vBCJSIedHJbgqavnDkUnyKx7Y62nBHIvpfBhxDzhCxpTtimPg6Sv9F7/RAkEqoZ10DqwSc
+	38nk7lg2JSubcS099pPzBzaNxyVYsxYO+oetYUgHEMgPzSKKAIkqH6pcauRxrpBUDj2wWibDgiq/u
+	uccYFolk4KMryB+euwdmbNgaeyf1pRQI+6m9t4fPDuxuudngVitp5J3CNkFfoVngBHiq/j+GBJBoi
+	5Nl0DiffZ/wg5WfvGLcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJW2e-00Dl0a-Jr; Mon, 14 Feb 2022 07:45:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nJWKb-00Dn7q-W5; Mon, 14 Feb 2022 08:03:34 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJW2R-00Dkye-0D; Mon, 14 Feb 2022 07:44:50 +0000
-X-UUID: 81edcc3256144bb08239b07de7638870-20220214
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=AhZjvzPgtXOnWaCWs9/DQjum1+/gv1xvrAXMEozn+XM=; 
- b=GWDfps76QSiuLIMYwwpcb3HLQ1ze5z8WVkmpKQk9ATUaCISNg1jqivyjMpPDkLO1Zy38R1tI/t4pRQaJGEOjFau9eLREkcUHXUdGA1O8/64+k4ZIvvKa3IUQ6AA9WLHAJceuBgDQa01dPIVwKXX99S7Hkj7EWDoY1AjNylIgQSU=;
-X-UUID: 81edcc3256144bb08239b07de7638870-20220214
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2018726285; Mon, 14 Feb 2022 00:44:37 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 13 Feb 2022 23:44:35 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 14 Feb 2022 15:44:34 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 14 Feb 2022 15:44:33 +0800
-Message-ID: <1e016441cdbae4fc6300dd6b70e9e29def81a960.camel@mediatek.com>
-Subject: Re: [PATCH] usb: host: xhci-mtk: Simplify supplies handling with
- regulator_bulk
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <mathias.nyman@intel.com>, <gregkh@linuxfoundation.org>,
- <matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>
-Date: Mon, 14 Feb 2022 15:44:30 +0800
-In-Reply-To: <02d0dba2-ffc8-1bf1-d8a7-f7fa19f2c7ed@collabora.com>
-References: <20220118133348.111860-1-angelogioacchino.delregno@collabora.com>
- <91bb8078e2d0824c325eb3819e59cdcb65b68a4e.camel@mediatek.com>
- <02d0dba2-ffc8-1bf1-d8a7-f7fa19f2c7ed@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nJWKZ-00Dn74-JV; Mon, 14 Feb 2022 08:03:32 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1nJWKA-0006vg-Ok; Mon, 14 Feb 2022 09:03:06 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, Yong Wu <yong.wu@mediatek.com>
+Cc: James Wang <james.qian.wang@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ iommu@lists.linux-foundation.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ linux-kernel@vger.kernel.org, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-mediatek@lists.infradead.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
+ Tomasz Figa <tfiga@chromium.org>, srv_heupstream@mediatek.com,
+ Rob Clark <robdclark@gmail.com>,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Sebastian Reichel <sre@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+ Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 13/23] drm/rockchip: Make use of the helper
+ component_compare_dev
+Date: Mon, 14 Feb 2022 09:03:04 +0100
+Message-ID: <3640952.nfqboWGjmy@diego>
+In-Reply-To: <20220214060819.7334-14-yong.wu@mediatek.com>
+References: <20220214060819.7334-1-yong.wu@mediatek.com>
+ <20220214060819.7334-14-yong.wu@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220213_234448_468322_4762E369 
-X-CRM114-Status: GOOD (  28.63  )
+X-CRM114-CacheID: sfid-20220214_000331_651053_13F81A0B 
+X-CRM114-Status: GOOD (  17.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,223 +70,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-02-07 at 11:00 +0100, AngeloGioacchino Del Regno wrote:
-> Il 20/01/22 07:50, Chunfeng Yun ha scritto:
-> > On Tue, 2022-01-18 at 14:33 +0100, AngeloGioacchino Del Regno
-> > wrote:
-> > > Remove the custom functions xhci_mtk_ldos_{enable,disable}() by
-> > > switching to using regulator_bulk to perform the very same thing,
-> > > as the regulators are always either both enabled or both
-> > > disabled.
-> > > 
-> > > Signed-off-by: AngeloGioacchino Del Regno <
-> > > angelogioacchino.delregno@collabora.com>
-> > > ---
-> > >   drivers/usb/host/xhci-mtk.c | 56 ++++++++++++----------------
-> > > -------
-> > > --
-> > >   drivers/usb/host/xhci-mtk.h |  4 +--
-> > >   2 files changed, 20 insertions(+), 40 deletions(-)
-> > > 
-> > > diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-
-> > > mtk.c
-> > > index 62c835d446be..3b81931e5b77 100644
-> > > --- a/drivers/usb/host/xhci-mtk.c
-> > > +++ b/drivers/usb/host/xhci-mtk.c
-> > > @@ -395,31 +395,6 @@ static int xhci_mtk_clks_get(struct
-> > > xhci_hcd_mtk
-> > > *mtk)
-> > >   	return devm_clk_bulk_get_optional(mtk->dev,
-> > > BULK_CLKS_NUM,
-> > > clks);
-> > >   }
-> > >   
-> > > -static int xhci_mtk_ldos_enable(struct xhci_hcd_mtk *mtk)
-> > > -{
-> > > -	int ret;
-> > > -
-> > > -	ret = regulator_enable(mtk->vbus);
-> > > -	if (ret) {
-> > > -		dev_err(mtk->dev, "failed to enable vbus\n");
-> > > -		return ret;
-> > > -	}
-> > > -
-> > > -	ret = regulator_enable(mtk->vusb33);
-> > > -	if (ret) {
-> > > -		dev_err(mtk->dev, "failed to enable vusb33\n");
-> > > -		regulator_disable(mtk->vbus);
-> > > -		return ret;
-> > > -	}
-> > > -	return 0;
-> > > -}
-> > > -
-> > > -static void xhci_mtk_ldos_disable(struct xhci_hcd_mtk *mtk)
-> > > -{
-> > > -	regulator_disable(mtk->vbus);
-> > > -	regulator_disable(mtk->vusb33);
-> > > -}
-> > > -
-> > >   static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd
-> > > *xhci)
-> > >   {
-> > >   	struct usb_hcd *hcd = xhci_to_hcd(xhci);
-> > > @@ -475,6 +450,10 @@ static int xhci_mtk_setup(struct usb_hcd
-> > > *hcd)
-> > >   	return ret;
-> > >   }
-> > >   
-> > > +static const char * const xhci_mtk_supply_names[] = {
-> > > +	"vusb33", "vbus",
-> > > +};
-> > > +
-> > >   static const struct xhci_driver_overrides xhci_mtk_overrides
-> > > __initconst = {
-> > >   	.reset = xhci_mtk_setup,
-> > >   	.add_endpoint = xhci_mtk_add_ep,
-> > > @@ -507,17 +486,18 @@ static int xhci_mtk_probe(struct
-> > > platform_device *pdev)
-> > >   		return -ENOMEM;
-> > >   
-> > >   	mtk->dev = dev;
-> > > -	mtk->vbus = devm_regulator_get(dev, "vbus");
-> > > -	if (IS_ERR(mtk->vbus)) {
-> > > -		dev_err(dev, "fail to get vbus\n");
-> > > -		return PTR_ERR(mtk->vbus);
-> > > -	}
-> > > +	mtk->num_supplies = ARRAY_SIZE(xhci_mtk_supply_names);
-> > > +	mtk->supplies = devm_kcalloc(dev, mtk->num_supplies,
-> > > +				     sizeof(*mtk->supplies),
-> > > GFP_KERNEL);
-> > > +	if (!mtk->supplies)
-> > > +		return -ENOMEM;
-> > >   
-> > > -	mtk->vusb33 = devm_regulator_get(dev, "vusb33");
-> > > -	if (IS_ERR(mtk->vusb33)) {
-> > > -		dev_err(dev, "fail to get vusb33\n");
-> > > -		return PTR_ERR(mtk->vusb33);
-> > > -	}
-> > > +	regulator_bulk_set_supply_names(mtk->supplies,
-> > > xhci_mtk_supply_names,
-> > > +					mtk->num_supplies);
-> > > +
-> > > +	ret = devm_regulator_bulk_get(dev, mtk->num_supplies, mtk-
-> > > > supplies);
-> > > 
-> > > +	if (ret)
-> > > +		return dev_err_probe(dev, ret, "Failed to get
-> > > regulators\n");
-> > >   
-> > >   	ret = xhci_mtk_clks_get(mtk);
-> > >   	if (ret)
-> > > @@ -558,7 +538,7 @@ static int xhci_mtk_probe(struct
-> > > platform_device
-> > > *pdev)
-> > >   	pm_runtime_enable(dev);
-> > >   	pm_runtime_get_sync(dev);
-> > >   
-> > > -	ret = xhci_mtk_ldos_enable(mtk);
-> > > +	ret = regulator_bulk_enable(mtk->num_supplies, mtk->supplies);
-> > >   	if (ret)
-> > >   		goto disable_pm;
-> > >   
-> > > @@ -667,7 +647,7 @@ static int xhci_mtk_probe(struct
-> > > platform_device
-> > > *pdev)
-> > >   	clk_bulk_disable_unprepare(BULK_CLKS_NUM, mtk->clks);
-> > >   
-> > >   disable_ldos:
-> > > -	xhci_mtk_ldos_disable(mtk);
-> > > +	regulator_bulk_disable(mtk->num_supplies, mtk->supplies);
-> > >   
-> > >   disable_pm:
-> > >   	pm_runtime_put_noidle(dev);
-> > > @@ -695,7 +675,7 @@ static int xhci_mtk_remove(struct
-> > > platform_device
-> > > *pdev)
-> > >   	usb_put_hcd(hcd);
-> > >   	xhci_mtk_sch_exit(mtk);
-> > >   	clk_bulk_disable_unprepare(BULK_CLKS_NUM, mtk->clks);
-> > > -	xhci_mtk_ldos_disable(mtk);
-> > > +	regulator_bulk_disable(mtk->num_supplies, mtk->supplies);
-> > >   
-> > >   	pm_runtime_disable(dev);
-> > >   	pm_runtime_put_noidle(dev);
-> > > diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-
-> > > mtk.h
-> > > index 4b1ea89f959a..9b78cd2ba0ac 100644
-> > > --- a/drivers/usb/host/xhci-mtk.h
-> > > +++ b/drivers/usb/host/xhci-mtk.h
-> > > @@ -150,9 +150,9 @@ struct xhci_hcd_mtk {
-> > >   	int num_u3_ports;
-> > >   	int u2p_dis_msk;
-> > >   	int u3p_dis_msk;
-> > > -	struct regulator *vusb33;
-> > > -	struct regulator *vbus;
-> > >   	struct clk_bulk_data clks[BULK_CLKS_NUM];
-> > > +	struct regulator_bulk_data *supplies;
-> > > +	u8 num_supplies;
-> > 
-> > Could you please help to change it like as clock bulk?
-> > 
-> > 1. #define BULK_REGULATORS_NUM 2; then define @supplies array,
-> > 
-> >          struct regulator_bulk_data supplies[BULK_REGULATORS_NUM];
-> > 
-> > 2. also add a helper to get regulator bulk; e.g.
-> > 
-> > static int xhci_mtk_regulators_get(struct xhci_hcd_mtk *mtk)
-> > {
-> >      struct regulator_bulk_data *supplies = mtk->supplies;
-> > 
-> >      supplies[0].supply = "vusb33";
-> >      supplies[1].supply = "vbus";
-> > 
-> >      return devm_regulator_bulk_get(mtk->dev, BUL
-> > K_REGULATORS_NUM, supplies);
-> > }
-> 
-> Hello Chunfeng,
-> I chose to go for this way to enhance the implementation flexibility:
-> like that,
-> any future SoC that needs different regulators (more vregs, less,
-> different names)
-> will simply need a new array of vreg names, like:
-> 
-> static const char * const xhci_mtk_mtxxxx_supply_names[] = {
-> 	"vusb33", "vbus", "another-supply", "and-another-one",
-> };
-> 
-> Other than enhancing flexibility, this will also make sure that we
-> don't allocate
-> more regulator_bulk_data entries than needed, enhancing memory usage.
-> 
-> Your proposal, though, is valid if you are sure that future SoCs will
-> have only
-> and always these two power supplies and nothing else...
-As I know, vbus is usually always on (fixed regulator) and is used to
-provide 5v for the connected device, vusb33 is rarely used now (it's
-used to provide v3.3 for the controller). I think no need pay more
-attention to flexibility here.
+Am Montag, 14. Februar 2022, 07:08:09 CET schrieb Yong Wu:
+> Use the common compare helper from component.
+> =
 
-Thanks a lot
+> Cc: Sandy Huang <hjc@rock-chips.com>
+> Cc: "Heiko St=A8=B9bner" <heiko@sntech.de>
+> Cc: linux-rockchip@lists.infradead.org
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+
+Acked-by: Heiko Stuebner <heiko@sntech.de>
+
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 7 +------
+>  1 file changed, 1 insertion(+), 6 deletions(-)
+> =
+
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/dr=
+m/rockchip/rockchip_drm_drv.c
+> index bec207de4544..3c2f2d6ecc36 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> @@ -290,11 +290,6 @@ int rockchip_drm_endpoint_is_subdriver(struct device=
+_node *ep)
+>  	return false;
+>  }
+>  =
+
+> -static int compare_dev(struct device *dev, void *data)
+> -{
+> -	return dev =3D=3D (struct device *)data;
+> -}
+> -
+>  static void rockchip_drm_match_remove(struct device *dev)
+>  {
+>  	struct device_link *link;
+> @@ -321,7 +316,7 @@ static struct component_match *rockchip_drm_match_add=
+(struct device *dev)
+>  				break;
+>  =
+
+>  			device_link_add(dev, d, DL_FLAG_STATELESS);
+> -			component_match_add(dev, &match, compare_dev, d);
+> +			component_match_add(dev, &match, component_compare_dev, d);
+>  		} while (true);
+>  	}
+>  =
+
+> =
 
 
-> 
-> Regards,
-> Angelo
-> 
-> > 
-> > Thanks a lot
-> > 
-> > 
-> > >   	unsigned int has_ippc:1;
-> > >   	unsigned int lpm_support:1;
-> > >   	unsigned int u2_lpm_disable:1;
+
+
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
