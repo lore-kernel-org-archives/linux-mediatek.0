@@ -4,56 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B17E8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 18:47:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0878AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 20:47:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HnuHHJdfrlC6AZ3J/5P65/9Yju3SdH0jwor2cnpWrs0=; b=rDP8zOMX9HA+oi
-	zLlddNghv4CMhVY7gQdLI/qdCL33VgtVLHND0+OQeQsCkzmKdKAS2P4spilAneVHZ9o13Al8TSYDT
-	A7YT0JYxbEOY3bRNVxH+8/AnaPjjgUmjqi6puxcrTY3X9gDJ/em43QfhHPZaYfelAK1wzkTTBxdEW
-	LhQUDTv5aTw+ifo2ZU/KVdylNZoGYpEp5pm2HF8LMNqXbX9dRiPqiKxLIdv3ivk7y+OissQysK/wB
-	RPEs/p73t0tPI88+tGIrvSVhDzpVR+BiHjDJFmmRMGNjXXEBw2046FFTOqexB9lEviCQ9DYH2kJUT
-	GrqTf6sh9jQEPgr9lPzQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xKQ2vML0E/cGK8VJDMZAiiLvaFxi4ne9XNHTuPf0m20=; b=3elIVGxS0Dd+1f
+	wt2KvYViTkISTV9m+Qc2vezQ85kXvFyWkQXib7Q5t2DJn61lRgIr8DfqEcIFXxIY6ng9GwO8Qd+nN
+	5tQSM1ufimc2xEnVG73ADMkVYRxnKRk7U+HEL8uL9uRLiHkZoz3cseAKaw3LkyD6Q+JylR7OxmtJh
+	2ZsLejdOljxAdODryvwoBCTICRgTLmVy8jx1ywyoY11XGZ7Z1aeJA/oKw7+iLtwOSkUc5/wvm2ex6
+	I4DusOr4nIMAt/e3btXatTT6wDJibmVvZiL5pPW+Sap/Ua/thr+tquPxjQCDr9VcIysZy+YyMQTox
+	k11+RDNzwbMB0YIQ6nJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nK2r6-0049Dl-Fg; Tue, 15 Feb 2022 18:47:16 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nK4iz-004a27-Ng; Tue, 15 Feb 2022 20:47:01 +0000
+Received: from mout.gmx.net ([212.227.17.21])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nK2qu-00494k-AA; Tue, 15 Feb 2022 18:47:06 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: alyssa) with ESMTPSA id C83521F44C43
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1644950820;
- bh=Jo+q2iQ2HhAa53Jyc9hotJ72iRGY8gVAx2ZkJDQVWGs=;
- h=From:To:Cc:Subject:Date:From;
- b=O/3tC6A7Y2k4vIRMj3hfKSEHSGeZoMgX6+aVJ82NXCd+tB2+It8IgQtZJQcAjUvZp
- tMZ5HVFsejX4SMoMyUII0+qa0pUH1S+U7I6dfqFR+uCSJ7Mfei4JZx8Lp5dnb7N1l2
- c0FFJRW8s2M/9iAq+GjOAestYeZxGr4egQePe3M4kM3fYkWCMsBlSZuUX1cJqo0EZw
- ynWyFjvHnj4jMbrHz1o/8bp2BFeZtETATMa/S+lzMe+zm4iHdfDryquVxjCD3SClkS
- Q4+VV86gXKLI5Q7rz4fuBF6T/0OAw3yEwnrFebY186J7HSHvq/MYh2dmFC26KLAaJt
- LzjHw7cZuHrsg==
-From: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
-To: linux-mediatek@lists.infradead.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Robin Murphy <robin.murphy@arm.com>,
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
- Chen-Yu Tsai <wenst@chromium.org>, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Nick Fan <Nick.Fan@mediatek.com>,
- Nicolas Boichat <drinkcat@chromium.org>, Stephen Boyd <sboyd@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2] soc: mediatek: mtk-infracfg: Disable ACP on MT8192
-Date: Tue, 15 Feb 2022 13:46:51 -0500
-Message-Id: <20220215184651.12168-1-alyssa.rosenzweig@collabora.com>
-X-Mailer: git-send-email 2.34.1
+ id 1nK4io-004a0S-0r; Tue, 15 Feb 2022 20:46:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1644957995;
+ bh=0OSbOP7dVuxah5dzxOSWPDpWQt+waq4IO/yrm245na0=;
+ h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:In-Reply-To;
+ b=RM8lbqfXj4CquNffPjLDAk/zqsA2R7oPEntJIfErC/JFzifQUKiCCwI3sQ/AwS3UH
+ u+PDvEN61F59Ofw1QXdQ7s99jAvoAWJRtsvl3CYAHnhMh1rMymay5Nv8yKR1A9xG1K
+ XK+pIDDlkBrtJwgBGiQ/YPmKR4xRWeE8wNcYaJAw=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [192.168.20.60] ([92.116.185.100]) by mail.gmx.net (mrgmx105
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1MJE27-1naNTk1Cfr-00KivD; Tue, 15
+ Feb 2022 21:46:35 +0100
+Message-ID: <7e60cd01-8afc-ddb5-a1bb-6e9f53ccfba5@gmx.de>
+Date: Tue, 15 Feb 2022 21:46:24 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Subject: Re: [PATCH 22/23] video: omapfb: dss: Make use of the helper
+ component_compare_dev
+Content-Language: en-US
+To: Yong Wu <yong.wu@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel@lists.freedesktop.org
+Cc: James Wang <james.qian.wang@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ iommu@lists.linux-foundation.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ linux-kernel@vger.kernel.org, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-mediatek@lists.infradead.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
+ Tomasz Figa <tfiga@chromium.org>, srv_heupstream@mediatek.com,
+ Rob Clark <robdclark@gmail.com>,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Sebastian Reichel <sre@kernel.org>, linux-omap@vger.kernel.org,
+ linux-fbdev@vger.kernel.org
+References: <20220214060819.7334-1-yong.wu@mediatek.com>
+ <20220214060819.7334-23-yong.wu@mediatek.com>
+From: Helge Deller <deller@gmx.de>
+In-Reply-To: <20220214060819.7334-23-yong.wu@mediatek.com>
+X-Provags-ID: V03:K1:MjTT6/0mKscyzurmEJq+TRDLFWm722/o5oh1VceIWTDo9Su6z33
+ Uqcw4r79WPXMZ1MHVQ5YZwMpT3/LUtQYuMEKT1s4Qsw268nztXs8M1PHTdwFSaaX3fRCVHa
+ I5hj8j+9RzGYlu8e8qiZ43jIdVRKdmD+CGxvzWPF1Cw57f4/4D8ejp1FysOEiqU6iTGSqwc
+ ErfKQfh2UKAhLIHNSceWg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:EO1+Ylb+ev0=:HpXUahwDBxS2Q6GJ/UdQMa
+ n+62M3husXUXoHxxs8AxzjuuYDkqIBegYnyeAV7YgP0Mle0rT21+2LEV21Cm/oK+NdFah8S9W
+ CpzPyAZIRuU01jq211YudtbXnvFOMgwbjvey4rIl2NTTJUDs+3nbJ6EgXSJwHO77nbgaCNttA
+ G+VtN7qVCXCtu780Msj9tZjo7C1oDNvtl1Z0DVM0OdyjyuO5D93T57PbebQJO+46L8tQ0bfg4
+ PClJhDBMO98xxmJRVp6iBSjNS7q7geteQaZ0ZJQVZhNyuKpKUNS7ESMvNsPEhSTzcXNJDdgSx
+ Vq9g3AnCPk01P40v1QI4BqRKbdc93kQn/QMzvwnd6VKhhT5hOO0TqppV8u07Mwhznrax7VcRW
+ +v1Ixw3WjKmrwEdG4wxBOsqT1dFC/6QoqorX3z1sqp7Ag6Ncwj2vZEjoNZ1YUThIr4BpD/vWq
+ hjpVXVTw/vir74eHyvdnz2eZXfQD7YPWYiK3z1oTwSGkoUciP9hPqvp4WS1qWPD3Wx4UiMz4y
+ 2dpK2641P1xHzfATt1y9hhMgc6vt9XFxpm9Ycl0uN+Nf/W9WIYa2fD+vPujh/CyO3jLklKrNP
+ rhbT5NjDJGfC/AFaC2iH75aCY+P5r1pQZOBnvTunjmLUTuER4bhCqMQqM9G+WAIVA1mScRE7x
+ z5RtmJWkKSwplc9SI/e09hsIAALu0cz7R3+T3vF1BUPB0RwiiTFPg2EbSOsu0l9GrJ8CkvoHP
+ 6ajgPfPMXcn62tOWZWD9MMtunWjyjGeCeU0sZsO37FBgxO6O75XX5KNPo3ZtVKQ/rb45z2Rj6
+ BmFoOKHsV5p6ypFwr9d2I3zNEcl0DYDNBnMwKA/3QTkYeOJgYkBDK8DU7dxFOUM6q9OWcMRcY
+ NoMQI8g/0H0GxrMHZA3BmETGV399e4Ve0zB9yhBv/cd9YdH0LKj0wm2/KEIbC/oPNQrOB040l
+ zX8J1rybbjKBBzimlhU2e1yTmGHdV4geJl204qxFdDOHSN0uiAnzvI89ljAQcys4MdV9EpQSa
+ NnChsjeiQrZB5ZntJzdsbaO7RJJahTHLc0+epBUeuUd6C0orPGZgiQsH8Kwcy4p8Uu6vZoYIV
+ JC4pPsVjDwiUHc=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_104704_567383_37E5B0E7 
-X-CRM114-Status: GOOD (  15.34  )
+X-CRM114-CacheID: sfid-20220215_124650_401884_428FD413 
+X-CRM114-Status: GOOD (  15.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,88 +106,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8192 contains an experimental Accelerator Coherency Port
-implementation, which does not work correctly but was unintentionally
-enabled by default. For correct operation of the GPU, we must set a
-chicken bit disabling ACP on MT8192.
+On 2/14/22 07:08, Yong Wu wrote:
+> Use the common compare helper from component.
+>
+> Cc: Helge Deller <deller@gmx.de>
+> Cc: linux-omap@vger.kernel.org
+> Cc: linux-fbdev@vger.kernel.org
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 
-Adapted from the following downstream change to the out-of-tree, legacy
-Mali GPU driver:
+Applied to the fbdev for-next branch.
 
-https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2781271/5
+Thanks!
+Helge
 
-Note this change is required for both Panfrost and the legacy kernel
-driver.
-
-v2: Move the change from clk-mt8192.c to mtk-infracfg.c (Robin).
-Although it does not make sense to add this platform-specific hack to
-the GPU driver, it has nothing to do with clocks. We already have
-mtk-infracfg.c to manage other infracfg bits; the ACP disable should
-live there too.
-
-Co-developed-by: Robin Murphy <robin.murphy@arm.com>
-Signed-off-by: Robin Murphy <robin.murphy@arm.com>
-Signed-off-by: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
-Cc: Nick Fan <Nick.Fan@mediatek.com>
-Cc: Nicolas Boichat <drinkcat@chromium.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Stephen Boyd <sboyd@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mtk-infracfg.c   | 19 +++++++++++++++++++
- include/linux/soc/mediatek/infracfg.h |  3 +++
- 2 files changed, 22 insertions(+)
-
-diff --git a/drivers/soc/mediatek/mtk-infracfg.c b/drivers/soc/mediatek/mtk-infracfg.c
-index 0590b68e0d78..2acf19676af2 100644
---- a/drivers/soc/mediatek/mtk-infracfg.c
-+++ b/drivers/soc/mediatek/mtk-infracfg.c
-@@ -6,6 +6,7 @@
- #include <linux/export.h>
- #include <linux/jiffies.h>
- #include <linux/regmap.h>
-+#include <linux/mfd/syscon.h>
- #include <linux/soc/mediatek/infracfg.h>
- #include <asm/processor.h>
- 
-@@ -72,3 +73,21 @@ int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
- 
- 	return ret;
- }
-+
-+static int __init mtk_infracfg_init(void)
-+{
-+	struct regmap *infracfg;
-+
-+	/*
-+	 * MT8192 has an experimental path to route GPU traffic to the DSU's
-+	 * Accelerator Coherency Port, which is inadvertently enabled by
-+	 * default. It turns out not to work, so disable it to prevent spurious
-+	 * GPU faults.
-+	 */
-+	infracfg = syscon_regmap_lookup_by_compatible("mediatek,mt8192-infracfg");
-+	if (!IS_ERR(infracfg))
-+		regmap_set_bits(infracfg, MT8192_INFRA_CTRL,
-+				MT8192_INFRA_CTRL_DISABLE_MFG2ACP);
-+	return 0;
-+}
-+postcore_initcall(mtk_infracfg_init);
-diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-index d858e0bab7a2..fcbbd0dd5e55 100644
---- a/include/linux/soc/mediatek/infracfg.h
-+++ b/include/linux/soc/mediatek/infracfg.h
-@@ -229,6 +229,9 @@
- #define INFRA_TOPAXI_PROTECTEN_SET		0x0260
- #define INFRA_TOPAXI_PROTECTEN_CLR		0x0264
- 
-+#define MT8192_INFRA_CTRL			0x290
-+#define MT8192_INFRA_CTRL_DISABLE_MFG2ACP	BIT(9)
-+
- #define REG_INFRA_MISC				0xf00
- #define F_DDR_4GB_SUPPORT_EN			BIT(13)
- 
--- 
-2.34.1
+>  drivers/video/fbdev/omap2/omapfb/dss/dss.c | 8 +-------
+>  1 file changed, 1 insertion(+), 7 deletions(-)
+>
+> diff --git a/drivers/video/fbdev/omap2/omapfb/dss/dss.c b/drivers/video/fbdev/omap2/omapfb/dss/dss.c
+> index a6b1c1598040..45b9d3cf3860 100644
+> --- a/drivers/video/fbdev/omap2/omapfb/dss/dss.c
+> +++ b/drivers/video/fbdev/omap2/omapfb/dss/dss.c
+> @@ -1193,12 +1193,6 @@ static const struct component_master_ops dss_component_ops = {
+>  	.unbind = dss_unbind,
+>  };
+>
+> -static int dss_component_compare(struct device *dev, void *data)
+> -{
+> -	struct device *child = data;
+> -	return dev == child;
+> -}
+> -
+>  static int dss_add_child_component(struct device *dev, void *data)
+>  {
+>  	struct component_match **match = data;
+> @@ -1212,7 +1206,7 @@ static int dss_add_child_component(struct device *dev, void *data)
+>  	if (strstr(dev_name(dev), "rfbi"))
+>  		return 0;
+>
+> -	component_match_add(dev->parent, match, dss_component_compare, dev);
+> +	component_match_add(dev->parent, match, component_compare_dev, dev);
+>
+>  	return 0;
+>  }
+>
 
 
 _______________________________________________
