@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9BC2C43219
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 15:29:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3762CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 15:38:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W1714PwAxaicX8LRXDTeJuPeqB4jgZ++I2hfmcdP9cI=; b=R9f03ZHwoUfyD9
-	MK/bYrxn9tBTBC96KpZa/xyFno49DC5BVgv8phPDkat6scFcfIgMj6rH1050kr0mF6/BIdXZMPfdq
-	Jzd4aJ+Yi69Yp38BkEvPi24A/F5MVWnIaKbkuUnH9XX3NBZM/EraHllx7c59DIMlsgMQT5XFR5qRb
-	vHbUGmfsg7DCFDOyoyyGXBrJLoE5tce8rJ8zAgRKl6+5TNl2CGpLBQHyVBm01OSj80qMNDqM1yZ6Z
-	yb4u5sFv48wL4MmBy/fFhLlRFk8sqOJSg7gjUzDRyucF9DdsObnlRC5B8EI1/AJ6/AvXQ8QkC0Fbc
-	Zb5sxyu/POTSbdL5Aqeg==;
+	List-Owner; bh=W1714PwAxaicX8LRXDTeJuPeqB4jgZ++I2hfmcdP9cI=; b=1HS172sEzsDgKn
+	lUrfpVeJRb0mH6AHfqV/NyU3IjzViJHbCwpkD78/+jaKMuyagdx8MF/cfJcjMfmZtNwqBi+djtNxy
+	KtKlLAJX0J9Zf6Pgg/uLokshQ87IDZBaqVqC9LE71qFYaqVPre62a7gzFE5vYkKaJXoH2JtQXnmkS
+	wwmVmj0E1JB47ah/IAaLzgph7T9sVPqooVwYrgweTIpYjbkh+MluUPzkLbPelA1WyTTsWiygkRkIH
+	8pbEg+48LPLEgT7yEbXXKZJN0AeekTfMrjK/ef4zByQBcwbHVZAIMzKNx3UC4uWGuMIZKx0ZMb//s
+	VAbzrd40mUfOSJdRKwag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJzm4-003HJg-Az; Tue, 15 Feb 2022 15:29:52 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nJzuZ-003Lmr-HC; Tue, 15 Feb 2022 15:38:39 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJzjT-003FyZ-Pq; Tue, 15 Feb 2022 15:27:14 +0000
+ id 1nJzkz-003GmL-PV; Tue, 15 Feb 2022 15:28:52 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 35D6C615D9;
- Tue, 15 Feb 2022 15:27:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 920E7C340F2;
- Tue, 15 Feb 2022 15:27:09 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id E231AB81AEA;
+ Tue, 15 Feb 2022 15:28:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9EE9CC340F6;
+ Tue, 15 Feb 2022 15:28:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1644938830;
+ s=k20201202; t=1644938922;
  bh=v4dDXwJubReDk2vJzh2yaDD2XZ0dk6Hd1kxbXVwlOPg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=fxXsPb3tL1l0T84EC7ngSuh9K2dpEhsVdcHXtp2rxtdRFzPrM26H0k4CUYR1p1322
- ta/+B477wogTpxVnuDInvG3Ov+Kw1jzhzPKQDSn/3D6N+IpqUPdZ3ETy72QZbO8ZXO
- kDEGImo/a3qi+eIVs8VlP0FQmk80REbu8F3ybj4OJ6CmJI1NIf+TheYHoocag1sQaT
- aSUCRrQ/t+SNFqUKf+iQCnKo1yxz88w3Gu+FuJ11TcpXvp2TwetdxFCiK3n8Mivb0H
- 3ysBQgsYBZG3WZpokm5D/khFM2PJzCZmqt2i1dJiDjuO0uQ9F4/FWCZed5zltK2cub
- BTxx+hLV6oQLQ==
+ b=ZG1H3ZyXTgpP9s/9WIWVdfP60+uSYLNX0Q/WtzhF9rDTTfyFr2vvHkPUqNa8q+yXN
+ QOld+HnCqd/5tuTbtXEuIGl+NbBSVGDHrVWiogWRjVHyBKRHshBGGZaauVSBfxD3vB
+ 6oLAH+MffDjOt4Y5GnKkZkLai/bieT2dCHvkY2/tJU8vDgbiDPQky1/wmUimuYuQpq
+ F1hO2wwvQYScRJUgk5ManvQBfgQdB1E59BxImGgZA06sTSjrrs6/RLHbWdSTyIaw6t
+ KG6h3JX4kUb2SC5G43R/YivAbCQYbZRdj7KeOkN2D8eauqyKJUXMoGWZ9xkq6ebsO7
+ ISz9dsdEhiVjA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -49,19 +49,19 @@ Cc: Wan Jiabing <wanjiabing@vivo.com>,
  Sasha Levin <sashal@kernel.org>, kishon@ti.com, matthias.bgg@gmail.com,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-phy@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.16 05/34] phy: phy-mtk-tphy: Fix duplicated argument
+Subject: [PATCH AUTOSEL 5.15 05/33] phy: phy-mtk-tphy: Fix duplicated argument
  in phy-mtk-tphy
-Date: Tue, 15 Feb 2022 10:26:28 -0500
-Message-Id: <20220215152657.580200-5-sashal@kernel.org>
+Date: Tue, 15 Feb 2022 10:28:03 -0500
+Message-Id: <20220215152831.580780-5-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220215152657.580200-1-sashal@kernel.org>
-References: <20220215152657.580200-1-sashal@kernel.org>
+In-Reply-To: <20220215152831.580780-1-sashal@kernel.org>
+References: <20220215152831.580780-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_072711_954386_6B3E6D92 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20220215_072846_036685_E029F0F8 
+X-CRM114-Status: GOOD (  11.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
