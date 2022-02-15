@@ -4,70 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33B1AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 16:49:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B17E8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 18:47:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qlMAa+Ue6VtuDg7Oc6bvkdGJS5kR5WSLGPG1S5XNdXQ=; b=LjvS8Zt4Y6c9Je
-	XPbFnQrDP9TVAmm79rz3O+KMBBglvspo3dvTpH9Ho2XdVRqnY4ZDgVWEIqDXgbVVGkaAkylFG4RZv
-	wwBfaXIXb8MCxGS7EaJNMFwF52GtjqMATNlOXHEI5XdLjGK9X89n96B4VOUW3q7U/pk22pCgRAlto
-	kmxLkLd0FeiLmvhtZIQ30RGuZWaKb7+xpOT/MhPK6MoTYtGlqSfPkxRF8FXTGjAX6WodyMkyrMfMI
-	W2IKw+J6WCkNQW6blL6eS0oO+QbKDJRnAJxpZW1aERYfZNlAkaXxUG/YDS2pjMcv4mmJpqbgv18Vj
-	m+/T+LL2Y653Q7u/OEsg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=HnuHHJdfrlC6AZ3J/5P65/9Yju3SdH0jwor2cnpWrs0=; b=rDP8zOMX9HA+oi
+	zLlddNghv4CMhVY7gQdLI/qdCL33VgtVLHND0+OQeQsCkzmKdKAS2P4spilAneVHZ9o13Al8TSYDT
+	A7YT0JYxbEOY3bRNVxH+8/AnaPjjgUmjqi6puxcrTY3X9gDJ/em43QfhHPZaYfelAK1wzkTTBxdEW
+	LhQUDTv5aTw+ifo2ZU/KVdylNZoGYpEp5pm2HF8LMNqXbX9dRiPqiKxLIdv3ivk7y+OissQysK/wB
+	RPEs/p73t0tPI88+tGIrvSVhDzpVR+BiHjDJFmmRMGNjXXEBw2046FFTOqexB9lEviCQ9DYH2kJUT
+	GrqTf6sh9jQEPgr9lPzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nK10t-003jEo-Uv; Tue, 15 Feb 2022 16:49:15 +0000
-Received: from mail-il1-x130.google.com ([2607:f8b0:4864:20::130])
+	id 1nK2r6-0049Dl-Fg; Tue, 15 Feb 2022 18:47:16 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nK10V-003j79-0y; Tue, 15 Feb 2022 16:48:53 +0000
-Received: by mail-il1-x130.google.com with SMTP id e11so14336690ils.3;
- Tue, 15 Feb 2022 08:48:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=xVNa8VSn91ahuDas6Q5c0c7M86VbUIOrBrr7Lsj6DYI=;
- b=PJDVFdbVGvtaA9kJk1qSkNbj2TZJQK5Mesv4NIHxeYbJjjsrvieJhKSRKVXt6TY5qE
- liHaAXttXZkNvNs1PuyLiH5sYg3h7nVrZTs/mbhPPbQIEu98CvEiHYU4MoLF7eZlXo02
- OOV2CBDh3w0126BeK/5eIbxlEmvYr4Xs8bfZaVeS9IX/k9xlrXHL/i7XSE6lOB8CsFou
- f+HwKwGMZLBvxkr1l+9WBL6JIebLLsTnOIXNVGoFQbxPgu3BI93LHZyoT61o3C4xQj+g
- S4onaRA3VmSZqMXHYDDXcsGNiV/OW7jzV3v/escGendjwkt2o8Ko874lbpHrzRnToXht
- Mytw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=xVNa8VSn91ahuDas6Q5c0c7M86VbUIOrBrr7Lsj6DYI=;
- b=eeZu0szPndSsyK+cC0tsa8H+h/TyHvCvkdN5VG15rRTPk3K/JEfEjHhkF1B/M4gE1i
- Mhv37kqCW3yD8aByHkX5rkAlRdryF7lXU3Ek7CFwbpPt5sABADQ6krlmw0KiMeEgbGdR
- YbOkg+uwZV3r7rS29DklDE/IvYiPyA6knNsMm4Xq5HVTghmY54pDnUjDIQ4dOPxsGAYV
- C2qxRQCVt0K1XCUETPFjuwOcHnT5nCVAxpQsywu1HdsnR1t/SQK+ahhZ9EtQVUx8hCTF
- AMiM2sBhxiLLHAq7dmo0VFSU/ABy2kJwYRl6xblFwAAzl7kRJTjk/98/Q7Okk4mbwXQn
- Qa/w==
-X-Gm-Message-State: AOAM532Bhg27NrjblMGRnGGJQ6vgzUuwhGUtEF258I2On/U1wyFNU/Q+
- 5brch7zscAen0Srfl+jGxnF6DkrQsz2FmWIKvgQ=
-X-Google-Smtp-Source: ABdhPJzymnqvOR8CKBiej0duKzd4TqeQtGYPKBaMhp/OB51xLEndFfIOeke7AoujuH13SWODXChgu1WA4elZudT6SiM=
-X-Received: by 2002:a05:6e02:1887:: with SMTP id
- o7mr3086428ilu.169.1644943729176; 
- Tue, 15 Feb 2022 08:48:49 -0800 (PST)
+ id 1nK2qu-00494k-AA; Tue, 15 Feb 2022 18:47:06 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: alyssa) with ESMTPSA id C83521F44C43
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1644950820;
+ bh=Jo+q2iQ2HhAa53Jyc9hotJ72iRGY8gVAx2ZkJDQVWGs=;
+ h=From:To:Cc:Subject:Date:From;
+ b=O/3tC6A7Y2k4vIRMj3hfKSEHSGeZoMgX6+aVJ82NXCd+tB2+It8IgQtZJQcAjUvZp
+ tMZ5HVFsejX4SMoMyUII0+qa0pUH1S+U7I6dfqFR+uCSJ7Mfei4JZx8Lp5dnb7N1l2
+ c0FFJRW8s2M/9iAq+GjOAestYeZxGr4egQePe3M4kM3fYkWCMsBlSZuUX1cJqo0EZw
+ ynWyFjvHnj4jMbrHz1o/8bp2BFeZtETATMa/S+lzMe+zm4iHdfDryquVxjCD3SClkS
+ Q4+VV86gXKLI5Q7rz4fuBF6T/0OAw3yEwnrFebY186J7HSHvq/MYh2dmFC26KLAaJt
+ LzjHw7cZuHrsg==
+From: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
+To: linux-mediatek@lists.infradead.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Nick Fan <Nick.Fan@mediatek.com>,
+ Nicolas Boichat <drinkcat@chromium.org>, Stephen Boyd <sboyd@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2] soc: mediatek: mtk-infracfg: Disable ACP on MT8192
+Date: Tue, 15 Feb 2022 13:46:51 -0500
+Message-Id: <20220215184651.12168-1-alyssa.rosenzweig@collabora.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20220211001345.3429572-1-gch981213@gmail.com>
-In-Reply-To: <20220211001345.3429572-1-gch981213@gmail.com>
-From: Chuanhong Guo <gch981213@gmail.com>
-Date: Wed, 16 Feb 2022 00:48:38 +0800
-Message-ID: <CAJsYDVLyasPAmgxguqLznORC2SihKHRLrFFw5nHbepJvu0va3Q@mail.gmail.com>
-Subject: Re: [PATCH] MIPS: ralink: mt7621: do memory detection on KSEG1
-To: linux-mips@vger.kernel.org
-Cc: Rui Salvaterra <rsalvaterra@gmail.com>,
- Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, 
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_084851_098308_D89F2ABA 
-X-CRM114-Status: GOOD (  20.71  )
+X-CRM114-CacheID: sfid-20220215_104704_567383_37E5B0E7 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,71 +70,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
- Hi!
+MT8192 contains an experimental Accelerator Coherency Port
+implementation, which does not work correctly but was unintentionally
+enabled by default. For correct operation of the GPU, we must set a
+chicken bit disabling ACP on MT8192.
 
-On Fri, Feb 11, 2022 at 8:14 AM Chuanhong Guo <gch981213@gmail.com> wrote:
->
-> It's reported that current memory detection code occasionally detects
-> larger memory under some bootloaders.
-> Current memory detection code tests whether address space wraps around
-> on KSEG0, which is unreliable because it's cached.
->
-> Rewrite memory size detection to perform the same test on KSEG1 instead.
-> While at it, this patch also does the following two things:
-> 1. use a fixed pattern instead of a random function pointer as the magic
->    value.
-> 2. add an additional memory write and a second comparison as part of the
->    test to prevent possible smaller memory detection result due to
->    leftover values in memory.
->
-> Fixes: 139c949f7f0a MIPS: ("ralink: mt7621: add memory detection support")
+Adapted from the following downstream change to the out-of-tree, legacy
+Mali GPU driver:
 
-I misplaced a bracket in this Fixes tag.
+https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2781271/5
 
-> Reported-by: Rui Salvaterra <rsalvaterra@gmail.com>
-> Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
-> ---
->  arch/mips/ralink/mt7621.c | 36 +++++++++++++++++++++++-------------
->  1 file changed, 23 insertions(+), 13 deletions(-)
->
-> diff --git a/arch/mips/ralink/mt7621.c b/arch/mips/ralink/mt7621.c
-> index d6efffd4dd20..12c8808e0dea 100644
-> --- a/arch/mips/ralink/mt7621.c
-> +++ b/arch/mips/ralink/mt7621.c
-> @@ -22,7 +22,9 @@
->
->  #include "common.h"
->
-> -static void *detect_magic __initdata = detect_memory_region;
-> +#define MT7621_MEM_TEST_PATTERN         0xaa5555aa
-> +
-> +static u32 detect_magic __initdata;
->
->  int pcibios_root_bridge_prepare(struct pci_host_bridge *bridge)
->  {
-> @@ -58,24 +60,32 @@ phys_addr_t mips_cpc_default_phys_base(void)
->         panic("Cannot detect cpc address");
->  }
->
-> +static bool __init mt7621_addr_wraparound_test(phys_addr_t size)
-> +{
-> +       void *dm = (void *)KSEG1ADDR(&detect_magic);
-> +
-> +       if (CPHYSADDR(dm + size) >= MT7621_LOWMEM_MAX_SIZE)
-> +               return true;
-> +       __raw_writel(MT7621_MEM_TEST_PATTERN, dm);
-> +       if (__raw_readl(dm) != __raw_readl(dm + size))
-> +               return false;
-> +       __raw_writel(!MT7621_MEM_TEST_PATTERN, dm);
+Note this change is required for both Panfrost and the legacy kernel
+driver.
 
-Someone on Github notified me that this second test pattern is incorrect.
-I actually mean to use ~MT7621_MEM_TEST_PATTERN here.
+v2: Move the change from clk-mt8192.c to mtk-infracfg.c (Robin).
+Although it does not make sense to add this platform-specific hack to
+the GPU driver, it has nothing to do with clocks. We already have
+mtk-infracfg.c to manage other infracfg bits; the ACP disable should
+live there too.
 
-I'll send a v2 fixing both issues.
+Co-developed-by: Robin Murphy <robin.murphy@arm.com>
+Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+Signed-off-by: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
+Cc: Nick Fan <Nick.Fan@mediatek.com>
+Cc: Nicolas Boichat <drinkcat@chromium.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Stephen Boyd <sboyd@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/soc/mediatek/mtk-infracfg.c   | 19 +++++++++++++++++++
+ include/linux/soc/mediatek/infracfg.h |  3 +++
+ 2 files changed, 22 insertions(+)
 
---
-Regards,
-Chuanhong Guo
+diff --git a/drivers/soc/mediatek/mtk-infracfg.c b/drivers/soc/mediatek/mtk-infracfg.c
+index 0590b68e0d78..2acf19676af2 100644
+--- a/drivers/soc/mediatek/mtk-infracfg.c
++++ b/drivers/soc/mediatek/mtk-infracfg.c
+@@ -6,6 +6,7 @@
+ #include <linux/export.h>
+ #include <linux/jiffies.h>
+ #include <linux/regmap.h>
++#include <linux/mfd/syscon.h>
+ #include <linux/soc/mediatek/infracfg.h>
+ #include <asm/processor.h>
+ 
+@@ -72,3 +73,21 @@ int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
+ 
+ 	return ret;
+ }
++
++static int __init mtk_infracfg_init(void)
++{
++	struct regmap *infracfg;
++
++	/*
++	 * MT8192 has an experimental path to route GPU traffic to the DSU's
++	 * Accelerator Coherency Port, which is inadvertently enabled by
++	 * default. It turns out not to work, so disable it to prevent spurious
++	 * GPU faults.
++	 */
++	infracfg = syscon_regmap_lookup_by_compatible("mediatek,mt8192-infracfg");
++	if (!IS_ERR(infracfg))
++		regmap_set_bits(infracfg, MT8192_INFRA_CTRL,
++				MT8192_INFRA_CTRL_DISABLE_MFG2ACP);
++	return 0;
++}
++postcore_initcall(mtk_infracfg_init);
+diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
+index d858e0bab7a2..fcbbd0dd5e55 100644
+--- a/include/linux/soc/mediatek/infracfg.h
++++ b/include/linux/soc/mediatek/infracfg.h
+@@ -229,6 +229,9 @@
+ #define INFRA_TOPAXI_PROTECTEN_SET		0x0260
+ #define INFRA_TOPAXI_PROTECTEN_CLR		0x0264
+ 
++#define MT8192_INFRA_CTRL			0x290
++#define MT8192_INFRA_CTRL_DISABLE_MFG2ACP	BIT(9)
++
+ #define REG_INFRA_MISC				0xf00
+ #define F_DDR_4GB_SUPPORT_EN			BIT(13)
+ 
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
