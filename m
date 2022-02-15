@@ -4,58 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E371C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 08:04:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A85CFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 08:04:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vdNRJN7GN0JKxlSXeNHYOSC8mXyksWR8lV4BuMbFz+M=; b=Ga3AZ3yp2T9niF
-	TNTg2hTPxvAwP+1JVFcXUxJiPgYbsSv00EFFXwhpvS82NPcMKT+UfbxRKrmMCnslzzk3EAZZChePX
-	tk+qsE0LrzI3053iWJwccYs7/1bWhGd9IHw+tvr/TpUE6LX6kXwPN66zyawyF+vnIRrk4u1lUB5MV
-	/o4KQXBQI1c1LFAl//718BPcGUY/M06jF203IBFMFaDQWcw5GFJr3IoRTf3oOVjFXOiIFkqkZ/XFj
-	sDXXB5xB1hqwWOz47lIXCmwViefqNbZiq+UtfAldeMnc/ijvPanparHBOMBIbyEe5NvDW5MVbhlHW
-	rmEnW7mUeqjk573gkuGQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fU70e+OGyVn8cdQc6A8HMvcAejQhtdot0jqVJkTgxcY=; b=LWf0PxyHX8hvj1
+	vb/a0Jvf0K5+0NB9Z+f7tI/S/bOg+V8PSEEqC5BjyDqawjEZCL6qL3NVm62/4i96LNTNKNrIl5F6a
+	5MtucTt9AdyVMGqU6zEYsFHOiD04KLsZSrMu/rOsY8s00vuaHJoJ9l2YtoKNbh3jBUTbqIpBQT9QG
+	/ovGPvmGVvN3G7pSgTybEhXRhIkJ0BLauWpN5rvyq51i77/yD0R6LqmhOBXxdszZ4hPyGMix8WSs1
+	XXv6g401V/pyBjZaxkHycaZnFT9llwBny86UQm4F9Gzm1CJVNhlO5OvFmjm8CN9VklFgDEz7R+IhK
+	DkwKXzBJQx0mpcMv+F+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJsob-001U9c-EL; Tue, 15 Feb 2022 08:04:01 +0000
+	id 1nJspE-001UYy-Qm; Tue, 15 Feb 2022 08:04:40 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJsoY-001U6T-UX
- for linux-mediatek@lists.infradead.org; Tue, 15 Feb 2022 08:04:00 +0000
-X-UUID: 9fd49b2c6dc04819b96a958cb4e0e3ae-20220215
-X-UUID: 9fd49b2c6dc04819b96a958cb4e0e3ae-20220215
+ id 1nJsoa-001U6T-KP; Tue, 15 Feb 2022 08:04:02 +0000
+X-UUID: 0279820493a84660a5bd04a6883635ed-20220215
+X-UUID: 0279820493a84660a5bd04a6883635ed-20220215
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <bo.jiao@mediatek.com>)
+ (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 173042178; Tue, 15 Feb 2022 01:03:53 -0700
-Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
+ with ESMTP id 92285769; Tue, 15 Feb 2022 01:03:53 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Feb 2022 23:59:16 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS34N1.mediatek.inc
- (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 15 Feb 2022 15:59:11 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Tue, 15 Feb 2022 15:59:10 +0800
-From: Bo Jiao <bo.jiao@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
- <ryder.lee@mediatek.com>, Xing Song <xing.song@mediatek.com>, Sujuan Chen
- <sujuan.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>
-Subject: [PATCH] mt76: mt7915: fix warning: variable 'temp' set but not used
-Date: Tue, 15 Feb 2022 15:59:08 +0800
-Message-ID: <ffe6426240bbac484c31fb1489a994ca7bfda4fb.1644911758.git.Bo.Jiao@mediatek.com>
-X-Mailer: git-send-email 2.17.0
+ 15.0.1497.2; Tue, 15 Feb 2022 00:02:00 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 15 Feb 2022 16:01:52 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 15 Feb 2022 16:01:52 +0800
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>, <robh+dt@kernel.org>
+CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <jassisinghbrar@gmail.com>, <fparent@baylibre.com>,
+ <yongqiang.niu@mediatek.com>, <hsinyi@chromium.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: [v2,3/6] soc: mediatek: mmsys: add mt8186 mmsys routing table
+Date: Tue, 15 Feb 2022 15:59:50 +0800
+Message-ID: <20220215075953.3310-4-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220215075953.3310-1-rex-bc.chen@mediatek.com>
+References: <20220215075953.3310-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_000359_058114_3C181DD0 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20220215_000400_693209_8CE80C77 
+X-CRM114-Status: GOOD (  14.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,64 +76,177 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bo Jiao <Bo.Jiao@mediatek.com>
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 
-fix warning: variable 'temp' set but not used,
-please fold this into previous commit
+Add new routing table for MT8186.
+In MT8186, there are two routing pipelines for internal and external display.
 
-Fixes: 91eeaef2523f ("mt76: mt7915: add support for MT7986")
-Reported-by: kernel test robot <lkp@intel.com>
-Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+Internal display: OVL0->RDMA0->COLOR0->CCORR0->AAL0->GAMMA->POSTMASK0->DITHER->DSI0
+External display: OVL_2L0->RDMA1->DPI0
+
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7915/init.c   | 4 ++--
- drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h | 3 ---
- drivers/net/wireless/mediatek/mt76/mt7915/soc.c    | 2 +-
- 3 files changed, 3 insertions(+), 6 deletions(-)
+ drivers/soc/mediatek/mt8186-mmsys.h | 113 ++++++++++++++++++++++++++++
+ drivers/soc/mediatek/mtk-mmsys.c    |  11 +++
+ 2 files changed, 124 insertions(+)
+ create mode 100644 drivers/soc/mediatek/mt8186-mmsys.h
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index 6a4fb4c..6b3749b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -589,10 +589,10 @@ static void mt7915_wfsys_reset(struct mt7915_dev *dev)
+diff --git a/drivers/soc/mediatek/mt8186-mmsys.h b/drivers/soc/mediatek/mt8186-mmsys.h
+new file mode 100644
+index 000000000000..7de329f2d729
+--- /dev/null
++++ b/drivers/soc/mediatek/mt8186-mmsys.h
+@@ -0,0 +1,113 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++
++#ifndef __SOC_MEDIATEK_MT8186_MMSYS_H
++#define __SOC_MEDIATEK_MT8186_MMSYS_H
++
++#define MT8186_MMSYS_OVL_CON			0xF04
++#define MT8186_MMSYS_OVL0_CON_MASK			0x3
++#define MT8186_MMSYS_OVL0_2L_CON_MASK			0xC
++#define MT8186_OVL0_GO_BLEND				BIT(0)
++#define MT8186_OVL0_GO_BG				BIT(1)
++#define MT8186_OVL0_2L_GO_BLEND				BIT(2)
++#define MT8186_OVL0_2L_GO_BG				BIT(3)
++#define MT8186_DISP_RDMA0_SOUT_SEL		0xF0C
++#define MT8186_RDMA0_SOUT_SEL_MASK			0xF
++#define MT8186_RDMA0_SOUT_TO_DSI0			(0)
++#define MT8186_RDMA0_SOUT_TO_COLOR0			(1)
++#define MT8186_RDMA0_SOUT_TO_DPI0			(2)
++#define MT8186_DISP_OVL0_2L_MOUT_EN		0xF14
++#define MT8186_OVL0_2L_MOUT_EN_MASK			0xF
++#define MT8186_OVL0_2L_MOUT_TO_RDMA0			BIT(0)
++#define MT8186_OVL0_2L_MOUT_TO_RDMA1			BIT(3)
++#define MT8186_DISP_OVL0_MOUT_EN		0xF18
++#define MT8186_OVL0_MOUT_EN_MASK			0xF
++#define MT8186_OVL0_MOUT_TO_RDMA0			BIT(0)
++#define MT8186_OVL0_MOUT_TO_RDMA1			BIT(3)
++#define MT8186_DISP_DITHER0_MOUT_EN		0xF20
++#define MT8186_DITHER0_MOUT_EN_MASK			0xF
++#define MT8186_DITHER0_MOUT_TO_DSI0			BIT(0)
++#define MT8186_DITHER0_MOUT_TO_RDMA1			BIT(2)
++#define MT8186_DITHER0_MOUT_TO_DPI0			BIT(3)
++#define MT8186_DISP_RDMA0_SEL_IN		0xF28
++#define MT8186_RDMA0_SEL_IN_MASK			0xF
++#define MT8186_RDMA0_FROM_OVL0				0
++#define MT8186_RDMA0_FROM_OVL0_2L			2
++#define MT8186_DISP_DSI0_SEL_IN			0xF30
++#define MT8186_DSI0_SEL_IN_MASK				0xF
++#define MT8186_DSI0_FROM_RDMA0				0
++#define MT8186_DSI0_FROM_DITHER0			1
++#define MT8186_DSI0_FROM_RDMA1				2
++#define MT8186_DISP_RDMA1_MOUT_EN		0xF3C
++#define MT8186_RDMA1_MOUT_EN_MASK			0xF
++#define MT8186_RDMA1_MOUT_TO_DPI0_SEL			BIT(0)
++#define MT8186_RDMA1_MOUT_TO_DSI0_SEL			BIT(2)
++#define MT8186_DISP_RDMA1_SEL_IN		0xF40
++#define MT8186_RDMA1_SEL_IN_MASK			0xF
++#define MT8186_RDMA1_FROM_OVL0				0
++#define MT8186_RDMA1_FROM_OVL0_2L			2
++#define MT8186_RDMA1_FROM_DITHER0			3
++#define MT8186_DISP_DPI0_SEL_IN			0xF44
++#define MT8186_DPI0_SEL_IN_MASK				0xF
++#define MT8186_DPI0_FROM_RDMA1				0
++#define MT8186_DPI0_FROM_DITHER0			1
++#define MT8186_DPI0_FROM_RDMA0				2
++
++static const struct mtk_mmsys_routes mmsys_mt8186_routing_table[] = {
++	{
++		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
++		MT8186_DISP_OVL0_MOUT_EN, MT8186_OVL0_MOUT_EN_MASK,
++		MT8186_OVL0_MOUT_TO_RDMA0
++	},
++	{
++		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
++		MT8186_DISP_RDMA0_SEL_IN, MT8186_RDMA0_SEL_IN_MASK,
++		MT8186_RDMA0_FROM_OVL0
++	},
++	{
++		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
++		MT8186_MMSYS_OVL_CON, MT8186_MMSYS_OVL0_CON_MASK,
++		MT8186_OVL0_GO_BLEND
++	},
++	{
++		DDP_COMPONENT_RDMA0, DDP_COMPONENT_COLOR0,
++		MT8186_DISP_RDMA0_SOUT_SEL, MT8186_RDMA0_SOUT_SEL_MASK,
++		MT8186_RDMA0_SOUT_TO_COLOR0
++	},
++	{
++		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
++		MT8186_DISP_DITHER0_MOUT_EN, MT8186_DITHER0_MOUT_EN_MASK,
++		MT8186_DITHER0_MOUT_TO_DSI0,
++	},
++	{
++		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
++		MT8186_DISP_DSI0_SEL_IN, MT8186_DSI0_SEL_IN_MASK,
++		MT8186_DSI0_FROM_DITHER0
++	},
++	{
++		DDP_COMPONENT_OVL_2L0, DDP_COMPONENT_RDMA1,
++		MT8186_DISP_OVL0_2L_MOUT_EN, MT8186_OVL0_2L_MOUT_EN_MASK,
++		MT8186_OVL0_2L_MOUT_TO_RDMA1
++	},
++	{
++		DDP_COMPONENT_OVL_2L0, DDP_COMPONENT_RDMA1,
++		MT8186_DISP_RDMA1_SEL_IN, MT8186_RDMA1_SEL_IN_MASK,
++		MT8186_RDMA1_FROM_OVL0_2L
++	},
++	{
++		DDP_COMPONENT_OVL_2L0, DDP_COMPONENT_RDMA1,
++		MT8186_MMSYS_OVL_CON, MT8186_MMSYS_OVL0_2L_CON_MASK,
++		MT8186_OVL0_2L_GO_BLEND
++	},
++	{
++		DDP_COMPONENT_RDMA1, DDP_COMPONENT_DPI0,
++		MT8186_DISP_RDMA1_MOUT_EN, MT8186_RDMA1_MOUT_EN_MASK,
++		MT8186_RDMA1_MOUT_TO_DPI0_SEL
++	},
++	{
++		DDP_COMPONENT_RDMA1, DDP_COMPONENT_DPI0,
++		MT8186_DISP_DPI0_SEL_IN, MT8186_DPI0_SEL_IN_MASK,
++		MT8186_DPI0_FROM_RDMA1
++	},
++};
++
++#endif /* __SOC_MEDIATEK_MT8186_MMSYS_H */
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index 1e448f1ffefb..0da25069ffb3 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -15,6 +15,7 @@
+ #include "mtk-mmsys.h"
+ #include "mt8167-mmsys.h"
+ #include "mt8183-mmsys.h"
++#include "mt8186-mmsys.h"
+ #include "mt8192-mmsys.h"
+ #include "mt8365-mmsys.h"
  
- 		msleep(100);
- 	} else if (is_mt7986(&dev->mt76)) {
--		mt7986_wmac_enable(dev);
-+		mt7986_wmac_disable(dev);
- 		msleep(20);
- 
--		mt7986_wmac_disable(dev);
-+		mt7986_wmac_enable(dev);
- 		msleep(20);
- 	} else {
- 		mt76_set(dev, MT_WF_SUBSYS_RST, 0x1);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 3ffee35..6db0db1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -322,9 +322,6 @@ struct mt7915_dev {
- 	struct reset_control *rstc;
- 	void __iomem *dcm;
- 	void __iomem *sku;
--
--	/* adie is inaccessible after wfsys poweron */
--	u32 adie;
+@@ -56,6 +57,12 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
+ 	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
  };
  
- enum {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/soc.c b/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
-index fb72ab4..4394a51 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
-@@ -125,7 +125,7 @@ mt7986_wmac_adie_efuse_read(struct mt7915_dev *dev, u8 adie,
- 		return ret;
- 
- 	ret = read_poll_timeout(mt76_wmac_spi_read, temp,
--				!FIELD_GET(MT_ADIE_EFUSE_KICK_MASK, val),
-+				!temp && !FIELD_GET(MT_ADIE_EFUSE_KICK_MASK, val),
- 				USEC_PER_MSEC, 50 * USEC_PER_MSEC, false,
- 				dev, adie, MT_ADIE_EFUSE2_CTRL, &val);
- 	if (ret)
++static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
++	.clk_driver = "clk-mt8186-mm",
++	.routes = mmsys_mt8186_routing_table,
++	.num_routes = ARRAY_SIZE(mmsys_mt8186_routing_table),
++};
++
+ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
+ 	.clk_driver = "clk-mt8192-mm",
+ 	.routes = mmsys_mt8192_routing_table,
+@@ -242,6 +249,10 @@ static const struct of_device_id of_match_mtk_mmsys[] = {
+ 		.compatible = "mediatek,mt8183-mmsys",
+ 		.data = &mt8183_mmsys_driver_data,
+ 	},
++	{
++		.compatible = "mediatek,mt8186-mmsys",
++		.data = &mt8186_mmsys_driver_data,
++	},
+ 	{
+ 		.compatible = "mediatek,mt8192-mmsys",
+ 		.data = &mt8192_mmsys_driver_data,
 -- 
 2.18.0
 
