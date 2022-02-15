@@ -4,58 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F28EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 13:55:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51397C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 13:56:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jRgXE1rEYBSaCxNlH8kElkYrSs53cXeP9+uWJ32mR9A=; b=0b2fPuL8OxFCaR
-	umYTbpVjwGuIyRiK7elhH+vLx/2fPL6Va508Qf4p8ZXIFOxab4PPS6QWqtVfXaJHoOmBCU5zOmqXb
-	IbaA7l6blMzD/cAFH5XmdQ3k20B72BTajQKjJyefYVb/1LgsNOkqbzvdYs1D52gRpazQjW9Typ6Bl
-	Va8YNbHD3wgT1S5osusWk1l0FROBPkllPTcTSliHRspfm/CEcVODUTvyLEM7ESTJaw/x1Jcg5VAJl
-	Xs+4DrfCi/Bp5MV4ImIbLJT7VN9v8XH32jhPOkzX2+dYsPSm6N6Q1WyHTEePL2xPNQvQowKv2IsYI
-	uk24CfGl/OoKb2xxoPJA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:
+	In-Reply-To:Message-ID:Subject:Cc:From:To:Date:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Amr1OtMVcp7LkPXhao+52lvC8O/7oc4jTElCYvgLX9w=; b=E+pycr7w2BHkxe
+	2cSbDJl/zC2zgbfl858OaHRzJbHBsaHZU6eqrAH1CxwjR4puggBRJ6puauBiAB2znc8vKxfzHG7qS
+	hW4i89SPBG2QaovcUmYevV8NFYsZLmvbSY8p+ZjYCqf2FN8MBNueJw+gAwH0Nbd89tQHtL9sZTFT3
+	HEFjZw69w40aN0WcOz38/GBgP4w2VG3WBoGU/ZuWq6VCWhdXYAcn9w3x4rg1qtkDl2Zb0BPycHsDB
+	MO4zl8+yRjXK0Eww44aP5lGXy9bXmjNV8xGS1YQfSTfkrKcdM9+wzfzovLl+1YxqeYRf1yivAjCkg
+	XctzxdfPW/3jBIcQRECw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJyIS-002v87-JC; Tue, 15 Feb 2022 13:55:12 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nJyJK-002vWQ-2I; Tue, 15 Feb 2022 13:56:06 +0000
+Received: from mail-4018.proton.ch ([185.70.40.18])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJyID-002v4P-VK; Tue, 15 Feb 2022 13:55:00 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 57EDF1F44A2E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1644933296;
- bh=rhLKPavogy4229Ih++6dC1Fw+vvxjg8moyVEEB6fzwI=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=D2v2T3izIRsTe3TSERHpecE98t1Axt7AuUXaZGywAcYlR6yvxkP2KcmKP3ns5RqE7
- 2UPxsE2hyNyulyUVHRjRUQr7N5naVk2doVlYjA8thMvpTaJIm3+dD5yVSsHo0HM7Bq
- oSqdxkCboiZx2TM97W2Ajh+VmI/hoUCmTwtxQdGRBR/vdVETtpQG5duo+ecANQp8uB
- Kw9VvHkb/REgQSgc9lmqV+E0x8By7ob9dEMnWvfvKFQshNUfv62beOPyN/A+VQeSEj
- m1R8aT1bmVyeSuQH+G3mwY9m8qMJIyZhI7ftLIjYGMcBjAfDQlU50tuz1SOXYQTqha
- rg8dGT46OqofA==
-Message-ID: <da4b7285-1f2d-01a0-9a1d-1381b4772512@collabora.com>
-Date: Tue, 15 Feb 2022 14:54:54 +0100
+ id 1nJyIx-002vHL-4g
+ for linux-mediatek@lists.infradead.org; Tue, 15 Feb 2022 13:55:45 +0000
+Date: Tue, 15 Feb 2022 13:55:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=emersion.fr;
+ s=protonmail2; t=1644933337;
+ bh=6lNlCoTfcpMqvqhkT68B9BYySvB6qEPhyvPf8Q7RTQA=;
+ h=Date:To:From:Cc:Reply-To:Subject:Message-ID:In-Reply-To:
+ References:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+ Message-ID;
+ b=FV5jLIpDbsQD4XNbDQkQA59s8nRJV6faVAqWXc971NcsmVKHkV3WFz9CryCy95bLx
+ 5fsjgglR+qDN2pAG4VVMHRwiAW7wXc36jCrXRS53wKMt7fzTzs55bc4vbCunEn3BAO
+ Tmv6nP77HGsnX02nIOQ8IrjXl+VSweaREZ7QvAy0WPIyaIHZJiF+wUQhGw9MSGBfLo
+ qgnWv3NMfCuRNuSAJUdB1Fg6FknYIt7YMJoCxO4gh+GCkoF+MPbXltblCW/FsJeHuv
+ NvAiabP6tolfvRebFUuddQF+PsgMjroMmSaHLkMYJmetJAyvBb3HrcDh0oks/v4+3M
+ J1BM1xgrLuF9A==
+To: Emil Velikov <emil.l.velikov@gmail.com>
+From: Simon Ser <contact@emersion.fr>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>,
+ ML dri-devel <dri-devel@lists.freedesktop.org>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
+ Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ devicetree <devicetree@vger.kernel.org>,
+ "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>,
+ Maxime Ripard <mripard@kernel.org>, Alex Deucher <alexander.deucher@amd.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Harry Wentland <harry.wentland@amd.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ LAKML <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [Intel-gfx] [PATCH v8 1/3] gpu: drm: separate panel orientation
+ property creating and value setting
+Message-ID: <KW6DNh6IRRgVJx9DfOFBnEqc4a0x-AnDXEbMxwpfEbk8dOn_KGVzAfo-slJWq-4nWW728Uc-OVpFh2w4fDE4-bxfkDuz1hFILRVvbcuXqaw=@emersion.fr>
+In-Reply-To: <CACvgo53u01BK_D0ZssV+gCepjxSz23Nr5Dy1qXeaAoJuu6VCFQ@mail.gmail.com>
+References: <20220208084234.1684930-1-hsinyi@chromium.org>
+ <CACvgo53u01BK_D0ZssV+gCepjxSz23Nr5Dy1qXeaAoJuu6VCFQ@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [1/2] soc: mediatek: mmsys: add sw0_rst_offset in mmsys driver
- data
-Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, matthias.bgg@gmail.com
-Cc: chunkuang.hu@kernel.org, jitao.shi@mediatek.com, xinlei.lee@mediatek.com, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220215131952.27861-1-rex-bc.chen@mediatek.com>
- <20220215131952.27861-2-rex-bc.chen@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220215131952.27861-2-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_055458_204865_5D7C5704 
-X-CRM114-Status: GOOD (  18.03  )
+X-CRM114-CacheID: sfid-20220215_055543_806226_400EEE39 
+X-CRM114-Status: GOOD (  19.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,99 +75,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: Simon Ser <contact@emersion.fr>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/02/22 14:19, Rex-BC Chen ha scritto:
-> There are different software reset registers for difference MTK SoCs.
-> Therefore, we add a new variable "sw0_rst_offset" to control it.
-> 
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> ---
->   drivers/soc/mediatek/mt8183-mmsys.h | 2 ++
->   drivers/soc/mediatek/mtk-mmsys.c    | 6 ++++--
->   drivers/soc/mediatek/mtk-mmsys.h    | 3 +--
->   3 files changed, 7 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mt8183-mmsys.h b/drivers/soc/mediatek/mt8183-mmsys.h
-> index 9dee485807c9..0c021f4b76d2 100644
-> --- a/drivers/soc/mediatek/mt8183-mmsys.h
-> +++ b/drivers/soc/mediatek/mt8183-mmsys.h
-> @@ -25,6 +25,8 @@
->   #define MT8183_RDMA0_SOUT_COLOR0		0x1
->   #define MT8183_RDMA1_SOUT_DSI0			0x1
->   
-> +#define MT8183_MMSYS_SW0_RST_B			0x140
-> +
->   static const struct mtk_mmsys_routes mmsys_mt8183_routing_table[] = {
->   	{
->   		DDP_COMPONENT_OVL0, DDP_COMPONENT_OVL_2L0,
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-> index 0da25069ffb3..cab62c3eac05 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.c
-> +++ b/drivers/soc/mediatek/mtk-mmsys.c
-> @@ -49,12 +49,14 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
->   	.clk_driver = "clk-mt8173-mm",
->   	.routes = mmsys_default_routing_table,
->   	.num_routes = ARRAY_SIZE(mmsys_default_routing_table),
-> +	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
->   };
->   
->   static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
->   	.clk_driver = "clk-mt8183-mm",
->   	.routes = mmsys_mt8183_routing_table,
->   	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
-> +	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
->   };
->   
->   static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
-> @@ -128,14 +130,14 @@ static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned l
->   
->   	spin_lock_irqsave(&mmsys->lock, flags);
->   
-> -	reg = readl_relaxed(mmsys->regs + MMSYS_SW0_RST_B);
-> +	reg = readl_relaxed(mmsys->regs + mmsys->data->sw0_rst_offset);
->   
->   	if (assert)
->   		reg &= ~BIT(id);
->   	else
->   		reg |= BIT(id);
->   
-> -	writel_relaxed(reg, mmsys->regs + MMSYS_SW0_RST_B);
-> +	writel_relaxed(reg, mmsys->regs + mmsys->data->sw0_rst_offset);
->   
->   	spin_unlock_irqrestore(&mmsys->lock, flags);
->   
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
-> index 8b0ed05117ea..83320019b4cf 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.h
-> +++ b/drivers/soc/mediatek/mtk-mmsys.h
-> @@ -78,8 +78,6 @@
->   #define DSI_SEL_IN_RDMA				0x1
->   #define DSI_SEL_IN_MASK				0x1
->   
-> -#define MMSYS_SW0_RST_B				0x140
-> -
->   struct mtk_mmsys_routes {
->   	u32 from_comp;
->   	u32 to_comp;
-> @@ -92,6 +90,7 @@ struct mtk_mmsys_driver_data {
->   	const char *clk_driver;
->   	const struct mtk_mmsys_routes *routes;
->   	const unsigned int num_routes;
-> +	const unsigned int sw0_rst_offset;
+On Tuesday, February 15th, 2022 at 13:04, Emil Velikov <emil.l.velikov@gmail.com> wrote:
 
-I don't think that this offset will ever be larger than 0xffff.
-Can we use u16 here instead?
+> Greetings everyone,
+>
+> Padron for joining in so late o/
+>
+> On Tue, 8 Feb 2022 at 08:42, Hsin-Yi Wang <hsinyi@chromium.org> wrote:
+> >
+> > drm_dev_register() sets connector->registration_state to
+> > DRM_CONNECTOR_REGISTERED and dev->registered to true. If
+> > drm_connector_set_panel_orientation() is first called after
+> > drm_dev_register(), it will fail several checks and results in following
+> > warning.
+> >
+> > Add a function to create panel orientation property and set default value
+> > to UNKNOWN, so drivers can call this function to init the property earlier
+> > , and let the panel set the real value later.
+> >
+>
+> The warning illustrates a genuine race condition, where userspace will
+> read the old/invalid property value/state. So this patch masks away
+> the WARNING without addressing the actual issue.
+> Instead can we fix the respective drivers, so that no properties are
+> created after drm_dev_register()?
+>
+> Longer version:
+> As we look into drm_dev_register() it's in charge of creating the
+> dev/sysfs nodes (et al). Note that connectors cannot disappear at
+> runtime.
+> For panel orientation, we are creating an immutable connector
+> properly, meaning that as soon as drm_dev_register() is called we must
+> ensure that the property is available (if applicable) and set to the
+> correct value.
 
->   };
->   
->   /*
+Unfortunately we can't quite do this. To apply the panel orientation quirks we
+need to grab the EDID of the eDP connector, and this happened too late in my
+testing.
 
-
-
+What we can do is create the prop early during module load, and update it when
+we read the EDID (at the place where we create it right now). User-space will
+receive a hotplug event after the EDID is read, so will be able to pick up the
+new value if any.
 
 _______________________________________________
 Linux-mediatek mailing list
