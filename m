@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3AE4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 16:37:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33B1AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 16:49:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:
-	In-Reply-To:Message-ID:Subject:Cc:From:To:Date:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gr6kaO8lgs2JpSsOljXHnmx0tv0/QeAfAFEg+jEyh9M=; b=baA6FxHUkSYFWD
-	N34DlEqjxU+Oq2oKhnjhCB8F+a20yAt9DRtmhRkgkc5L/HX39vWaiGXBU5H+rjzHKPhN7fWMuD+WT
-	zGqPnl+jrg7XIvTFgDzIde3aVdn4CNSg80/yMjWwn4EnOn6Jv/xd1bwM3BQeiMvlKMSHHD5dOXB6x
-	QWXRmXNykJ4i1zAM8OfovF5d1uwb+W6sVe36mXWRIyyfVi5AJ4RyL7vNG47gsns+HQQ+Nf3HXUcOO
-	7S0f/t43/oWIoe9e0op7wYPH21aCaIoTdL86ELb9wS+Prnsuk8LCcinKslNlqTY6UFGXqBsWKLhmZ
-	u26B0DBAdWL/yhNjqOtg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qlMAa+Ue6VtuDg7Oc6bvkdGJS5kR5WSLGPG1S5XNdXQ=; b=LjvS8Zt4Y6c9Je
+	XPbFnQrDP9TVAmm79rz3O+KMBBglvspo3dvTpH9Ho2XdVRqnY4ZDgVWEIqDXgbVVGkaAkylFG4RZv
+	wwBfaXIXb8MCxGS7EaJNMFwF52GtjqMATNlOXHEI5XdLjGK9X89n96B4VOUW3q7U/pk22pCgRAlto
+	kmxLkLd0FeiLmvhtZIQ30RGuZWaKb7+xpOT/MhPK6MoTYtGlqSfPkxRF8FXTGjAX6WodyMkyrMfMI
+	W2IKw+J6WCkNQW6blL6eS0oO+QbKDJRnAJxpZW1aERYfZNlAkaXxUG/YDS2pjMcv4mmJpqbgv18Vj
+	m+/T+LL2Y653Q7u/OEsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nK0pW-003gmc-AU; Tue, 15 Feb 2022 16:37:30 +0000
-Received: from mail-4018.proton.ch ([185.70.40.18])
+	id 1nK10t-003jEo-Uv; Tue, 15 Feb 2022 16:49:15 +0000
+Received: from mail-il1-x130.google.com ([2607:f8b0:4864:20::130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nK0pQ-003gky-Bh
- for linux-mediatek@lists.infradead.org; Tue, 15 Feb 2022 16:37:27 +0000
-Date: Tue, 15 Feb 2022 16:37:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=emersion.fr;
- s=protonmail2; t=1644943039;
- bh=f1kG4y1Pad9UaeKLlKedqj/sm+OCsoIlrgJXYL6aSeI=;
- h=Date:To:From:Cc:Reply-To:Subject:Message-ID:In-Reply-To:
- References:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
- Message-ID;
- b=E9V91jN86xK6pzcMltPM69/bOQFFQNJV14lQwmcL2FYT3foga5gLBN44BK4oxAPri
- Vd8zuw1PuCIPGRg2//vtiVX9F2F6j/JTJL3odWwNmjV4QndYJ/cNzlL994kRk5oss4
- t+oB5svlaOh0xBX9GF7yyVj1AjeFwDYEvnfX4LlK0wXUUANzluIiX7MMssmf+EtKXg
- j3TEQWNZHHEFFnC96soVMV8mnPbtAkLt2VhY0qKE/ctXlMHsckdPLAA5vi0D16WsVW
- ELSgf6c8NzeavnNPc22BI1Gvf+qHdGR5FmKWYe1aX8Wak2lhTUG3wpbv4id1Yx/OtQ
- 5XOlTjjx0fyLA==
-To: Emil Velikov <emil.l.velikov@gmail.com>
-From: Simon Ser <contact@emersion.fr>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>,
- ML dri-devel <dri-devel@lists.freedesktop.org>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- devicetree <devicetree@vger.kernel.org>,
- "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>,
- Maxime Ripard <mripard@kernel.org>, Alex Deucher <alexander.deucher@amd.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Harry Wentland <harry.wentland@amd.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- LAKML <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [Intel-gfx] [PATCH v8 1/3] gpu: drm: separate panel orientation
- property creating and value setting
-Message-ID: <GYG6EVT1MqtmfKiPpMhDG9mpuATnmwVDq2PuE_dpDat5oQW_t1tUfm39lSWHj32D5r7mrog27sL4dkgdMYQ5BN830TfVOrgQ4Ts8LcO8Hcs=@emersion.fr>
-In-Reply-To: <CACvgo532-pC+7DLFCo=DWTX-OnJEJvSoTmQnt3_qLhiT4cqEMg@mail.gmail.com>
-References: <20220208084234.1684930-1-hsinyi@chromium.org>
- <CACvgo53u01BK_D0ZssV+gCepjxSz23Nr5Dy1qXeaAoJuu6VCFQ@mail.gmail.com>
- <KW6DNh6IRRgVJx9DfOFBnEqc4a0x-AnDXEbMxwpfEbk8dOn_KGVzAfo-slJWq-4nWW728Uc-OVpFh2w4fDE4-bxfkDuz1hFILRVvbcuXqaw=@emersion.fr>
- <CACvgo532-pC+7DLFCo=DWTX-OnJEJvSoTmQnt3_qLhiT4cqEMg@mail.gmail.com>
+ id 1nK10V-003j79-0y; Tue, 15 Feb 2022 16:48:53 +0000
+Received: by mail-il1-x130.google.com with SMTP id e11so14336690ils.3;
+ Tue, 15 Feb 2022 08:48:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=xVNa8VSn91ahuDas6Q5c0c7M86VbUIOrBrr7Lsj6DYI=;
+ b=PJDVFdbVGvtaA9kJk1qSkNbj2TZJQK5Mesv4NIHxeYbJjjsrvieJhKSRKVXt6TY5qE
+ liHaAXttXZkNvNs1PuyLiH5sYg3h7nVrZTs/mbhPPbQIEu98CvEiHYU4MoLF7eZlXo02
+ OOV2CBDh3w0126BeK/5eIbxlEmvYr4Xs8bfZaVeS9IX/k9xlrXHL/i7XSE6lOB8CsFou
+ f+HwKwGMZLBvxkr1l+9WBL6JIebLLsTnOIXNVGoFQbxPgu3BI93LHZyoT61o3C4xQj+g
+ S4onaRA3VmSZqMXHYDDXcsGNiV/OW7jzV3v/escGendjwkt2o8Ko874lbpHrzRnToXht
+ Mytw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=xVNa8VSn91ahuDas6Q5c0c7M86VbUIOrBrr7Lsj6DYI=;
+ b=eeZu0szPndSsyK+cC0tsa8H+h/TyHvCvkdN5VG15rRTPk3K/JEfEjHhkF1B/M4gE1i
+ Mhv37kqCW3yD8aByHkX5rkAlRdryF7lXU3Ek7CFwbpPt5sABADQ6krlmw0KiMeEgbGdR
+ YbOkg+uwZV3r7rS29DklDE/IvYiPyA6knNsMm4Xq5HVTghmY54pDnUjDIQ4dOPxsGAYV
+ C2qxRQCVt0K1XCUETPFjuwOcHnT5nCVAxpQsywu1HdsnR1t/SQK+ahhZ9EtQVUx8hCTF
+ AMiM2sBhxiLLHAq7dmo0VFSU/ABy2kJwYRl6xblFwAAzl7kRJTjk/98/Q7Okk4mbwXQn
+ Qa/w==
+X-Gm-Message-State: AOAM532Bhg27NrjblMGRnGGJQ6vgzUuwhGUtEF258I2On/U1wyFNU/Q+
+ 5brch7zscAen0Srfl+jGxnF6DkrQsz2FmWIKvgQ=
+X-Google-Smtp-Source: ABdhPJzymnqvOR8CKBiej0duKzd4TqeQtGYPKBaMhp/OB51xLEndFfIOeke7AoujuH13SWODXChgu1WA4elZudT6SiM=
+X-Received: by 2002:a05:6e02:1887:: with SMTP id
+ o7mr3086428ilu.169.1644943729176; 
+ Tue, 15 Feb 2022 08:48:49 -0800 (PST)
 MIME-Version: 1.0
+References: <20220211001345.3429572-1-gch981213@gmail.com>
+In-Reply-To: <20220211001345.3429572-1-gch981213@gmail.com>
+From: Chuanhong Guo <gch981213@gmail.com>
+Date: Wed, 16 Feb 2022 00:48:38 +0800
+Message-ID: <CAJsYDVLyasPAmgxguqLznORC2SihKHRLrFFw5nHbepJvu0va3Q@mail.gmail.com>
+Subject: Re: [PATCH] MIPS: ralink: mt7621: do memory detection on KSEG1
+To: linux-mips@vger.kernel.org
+Cc: Rui Salvaterra <rsalvaterra@gmail.com>,
+ Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, 
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_083725_264587_C3FFD4FD 
-X-CRM114-Status: GOOD (  32.58  )
+X-CRM114-CacheID: sfid-20220215_084851_098308_D89F2ABA 
+X-CRM114-Status: GOOD (  20.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,88 +79,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: Simon Ser <contact@emersion.fr>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, February 15th, 2022 at 15:38, Emil Velikov <emil.l.velikov@gmail.com> wrote:
+ Hi!
 
-> On Tue, 15 Feb 2022 at 13:55, Simon Ser <contact@emersion.fr> wrote:
-> >
-> > On Tuesday, February 15th, 2022 at 13:04, Emil Velikov <emil.l.velikov@gmail.com> wrote:
-> >
-> > > Greetings everyone,
-> > >
-> > > Padron for joining in so late o/
-> > >
-> > > On Tue, 8 Feb 2022 at 08:42, Hsin-Yi Wang <hsinyi@chromium.org> wrote:
-> > > >
-> > > > drm_dev_register() sets connector->registration_state to
-> > > > DRM_CONNECTOR_REGISTERED and dev->registered to true. If
-> > > > drm_connector_set_panel_orientation() is first called after
-> > > > drm_dev_register(), it will fail several checks and results in following
-> > > > warning.
-> > > >
-> > > > Add a function to create panel orientation property and set default value
-> > > > to UNKNOWN, so drivers can call this function to init the property earlier
-> > > > , and let the panel set the real value later.
-> > > >
-> > >
-> > > The warning illustrates a genuine race condition, where userspace will
-> > > read the old/invalid property value/state. So this patch masks away
-> > > the WARNING without addressing the actual issue.
-> > > Instead can we fix the respective drivers, so that no properties are
-> > > created after drm_dev_register()?
-> > >
-> > > Longer version:
-> > > As we look into drm_dev_register() it's in charge of creating the
-> > > dev/sysfs nodes (et al). Note that connectors cannot disappear at
-> > > runtime.
-> > > For panel orientation, we are creating an immutable connector
-> > > properly, meaning that as soon as drm_dev_register() is called we must
-> > > ensure that the property is available (if applicable) and set to the
-> > > correct value.
-> >
-> > Unfortunately we can't quite do this. To apply the panel orientation quirks we
-> > need to grab the EDID of the eDP connector, and this happened too late in my
-> > testing.
-> >
-> > What we can do is create the prop early during module load, and update it when
-> > we read the EDID (at the place where we create it right now). User-space will
-> > receive a hotplug event after the EDID is read, so will be able to pick up the
-> > new value if any.
+On Fri, Feb 11, 2022 at 8:14 AM Chuanhong Guo <gch981213@gmail.com> wrote:
 >
-> Didn't quite get that, are you saying that a GETPROPERTY for the EDID,
-> the ioctl blocks or that we get an empty EDID?
-
-I'm not referring to GETPROPERTY, I'm referring to the driver getting the EDID
-from the sink (here, the eDP panel). In my experimentations with amdgpu I
-noticed that the driver module load finished before the EDID was available to
-the driver. Maybe other drivers behave differently and probe connectors when
-loaded, not sure.
-
-> The EDID hotplug even thing is neat - sounds like it also signals on
-> panel orientation, correct?
-> On such an event, which properties userspace should be re-fetching -
-> everything or guess randomly?
+> It's reported that current memory detection code occasionally detects
+> larger memory under some bootloaders.
+> Current memory detection code tests whether address space wraps around
+> on KSEG0, which is unreliable because it's cached.
 >
-> Looking through the documentation, I cannot see a clear answer :-\
+> Rewrite memory size detection to perform the same test on KSEG1 instead.
+> While at it, this patch also does the following two things:
+> 1. use a fixed pattern instead of a random function pointer as the magic
+>    value.
+> 2. add an additional memory write and a second comparison as part of the
+>    test to prevent possible smaller memory detection result due to
+>    leftover values in memory.
+>
+> Fixes: 139c949f7f0a MIPS: ("ralink: mt7621: add memory detection support")
 
-User-space should re-fetch *all* properties. In practice some user-space may
-only be fetching some properties, but that should get fixed in user-space.
+I misplaced a bracket in this Fixes tag.
 
-Also the kernel can indicate that only a single connector changed via the
-"CONNECTOR" uevent prop, or even a single connector property via "PROPERTY".
-See [1] for a user-space implementation. But all of this is purely an optional
-optimization. Re-fetching all properties is a bit slower (especially if some
-drmModeGetConnector calls force-probe connectors) but works perfectly fine.
+> Reported-by: Rui Salvaterra <rsalvaterra@gmail.com>
+> Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
+> ---
+>  arch/mips/ralink/mt7621.c | 36 +++++++++++++++++++++++-------------
+>  1 file changed, 23 insertions(+), 13 deletions(-)
+>
+> diff --git a/arch/mips/ralink/mt7621.c b/arch/mips/ralink/mt7621.c
+> index d6efffd4dd20..12c8808e0dea 100644
+> --- a/arch/mips/ralink/mt7621.c
+> +++ b/arch/mips/ralink/mt7621.c
+> @@ -22,7 +22,9 @@
+>
+>  #include "common.h"
+>
+> -static void *detect_magic __initdata = detect_memory_region;
+> +#define MT7621_MEM_TEST_PATTERN         0xaa5555aa
+> +
+> +static u32 detect_magic __initdata;
+>
+>  int pcibios_root_bridge_prepare(struct pci_host_bridge *bridge)
+>  {
+> @@ -58,24 +60,32 @@ phys_addr_t mips_cpc_default_phys_base(void)
+>         panic("Cannot detect cpc address");
+>  }
+>
+> +static bool __init mt7621_addr_wraparound_test(phys_addr_t size)
+> +{
+> +       void *dm = (void *)KSEG1ADDR(&detect_magic);
+> +
+> +       if (CPHYSADDR(dm + size) >= MT7621_LOWMEM_MAX_SIZE)
+> +               return true;
+> +       __raw_writel(MT7621_MEM_TEST_PATTERN, dm);
+> +       if (__raw_readl(dm) != __raw_readl(dm + size))
+> +               return false;
+> +       __raw_writel(!MT7621_MEM_TEST_PATTERN, dm);
 
-It would be nice to document, if you have the time feel free to send a patch
-and CC danvet, pq and me.
+Someone on Github notified me that this second test pattern is incorrect.
+I actually mean to use ~MT7621_MEM_TEST_PATTERN here.
 
-[1]: https://gitlab.freedesktop.org/wlroots/wlroots/-/blob/252b2348bd62170d97c4e81fb2050f757b56d67e/backend/session/session.c#L144
+I'll send a v2 fixing both issues.
+
+--
+Regards,
+Chuanhong Guo
 
 _______________________________________________
 Linux-mediatek mailing list
