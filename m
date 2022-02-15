@@ -4,61 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59AAAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 09:11:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F8BAC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 09:21:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fm5noK5SOssP4xHm4JlUCD8wQzfigtMVMvkIblonP9Q=; b=LwEhTSCx1kvqzH
-	G4NoQX7UELKxuaqWJ00rVOynuSJdS0mKhNBNjMfvqXVu1fcmb/QJ0ovvhUm4r2q+Zyz3SRonCFinH
-	b5Z/FJtq11fT3WbSsH8XeaXv+7W3aYs0TtN8a4VmVquNjYLBJPsSrj2BoBHW/5Xe4wmue3zokJvFE
-	HLThvVARRzJs7KmvqwZJfQ3P90B88kTkfvXkIeOjUvTSX8IsfrMMzUXLADvvKKLPNiXbCxuq30bKI
-	LNxS0PY7MwSAFQ0znl2hXO+AAoPtg6/A1x5qTD6mSpwS0Pzyb3vztvwQPtvzoTQmpQ2TOihDKG4RS
-	9hil0CzA9d8Icc7jBfGg==;
+	List-Owner; bh=3Ajgk86A0IElNXP+H+JBwTjlAZWAq+D2859ExbmOhMA=; b=YtesjNPz6HQhpT
+	8tNlODZrbjppRm+y0qarCjnY+qW2q/Q9+g7C9NhtrEsxHleZJBj0PzR1FxJj4SvHoss81pj9rhccH
+	Wne5PXIF41cu8GtMbJFmTwJXo2kf7SfpFc2ZweWdFEeKscy+Lx/rN2LODSjxL87FCNFLLmDhBNasK
+	FeXF5WxVKKKfE9mIkM17+Narbs3jCvxOsMblXGcdUNdF1Cz2IaGnqhOiQK5+XkxohfPSv5rFNu22O
+	cndiruoeV17FVv56xVGyjEw7ejVpvDXJOu94O5Q2Mv9Y8PlyPBJqgznsfAbW4Bg0gL6BJK3V0G1pG
+	jvH+P5+d6UfhHOjKkPaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJtrz-001w6s-66; Tue, 15 Feb 2022 09:11:35 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nJu13-0020Ub-Aa; Tue, 15 Feb 2022 09:20:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJtrd-001vys-T9
- for linux-mediatek@lists.infradead.org; Tue, 15 Feb 2022 09:11:15 +0000
-X-UUID: c61c895f96cf42c29380ba1c434d0e2d-20220215
-X-UUID: c61c895f96cf42c29380ba1c434d0e2d-20220215
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <bo.jiao@mediatek.com>)
+ id 1nJtzD-001zfW-0G; Tue, 15 Feb 2022 09:19:04 +0000
+X-UUID: 1c231fbbc4b4456bbdb132ff3f68bbc9-20220215
+X-UUID: 1c231fbbc4b4456bbdb132ff3f68bbc9-20220215
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <roger.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 25448758; Tue, 15 Feb 2022 02:11:11 -0700
-Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Feb 2022 01:08:47 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS34N1.mediatek.inc
- (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 15 Feb 2022 17:08:29 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Tue, 15 Feb 2022 17:08:29 +0800
-From: Bo Jiao <bo.jiao@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
- <ryder.lee@mediatek.com>, Xing Song <xing.song@mediatek.com>, Sujuan Chen
- <sujuan.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>
-Subject: [PATCH] mt76: mt7915: fix logic error and remove the unused member of
- mt7915_dev
-Date: Tue, 15 Feb 2022 17:08:27 +0800
-Message-ID: <73401df842523a426c9c223217a4273cace2ab4b.1644915711.git.Bo.Jiao@mediatek.com>
-X-Mailer: git-send-email 2.17.0
-In-Reply-To: <4b7ba947d90fc12bba5da59cd448372e89438b82.1644915710.git.Bo.Jiao@mediatek.com>
-References: <4b7ba947d90fc12bba5da59cd448372e89438b82.1644915710.git.Bo.Jiao@mediatek.com>
+ with ESMTP id 694702074; Tue, 15 Feb 2022 02:18:55 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Feb 2022 01:08:53 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 15 Feb 2022 17:08:45 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 15 Feb 2022 17:08:45 +0800
+Message-ID: <eb4a903b90020e8220768e9bb674b9de477006e3.camel@mediatek.com>
+Subject: Re: [PATCH v22 5/7] soc: mediatek: SVS: add debug commands
+From: Roger Lu <roger.lu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
+ <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd
+ <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
+CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
+ Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>, Charles Yang
+ <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, Mark Rutland
+ <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-pm@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guenter Roeck
+ <linux@roeck-us.net>
+Date: Tue, 15 Feb 2022 17:08:45 +0800
+In-Reply-To: <0846872b-03da-ee5d-6a9d-e6c9fa754191@collabora.com>
+References: <20220127033956.24585-1-roger.lu@mediatek.com>
+ <20220127033956.24585-6-roger.lu@mediatek.com>
+ <0846872b-03da-ee5d-6a9d-e6c9fa754191@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_011114_000133_7FE488CC 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20220215_011903_079927_0E9381D4 
+X-CRM114-Status: GOOD (  25.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,52 +83,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bo Jiao <Bo.Jiao@mediatek.com>
+Hi AngeloGioacchino,
 
-fix logic error and remove the unused member 'adie' of mt7915_dev.
+Excuse me for the late reply.
 
-Fixes: 91eeaef2523f ("mt76: mt7915: add support for MT7986")
-Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
----
- - please fold this into previous commit.
----
- drivers/net/wireless/mediatek/mt76/mt7915/init.c   | 4 ++--
- drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h | 3 ---
- 2 files changed, 2 insertions(+), 5 deletions(-)
+On Mon, 2022-01-31 at 12:11 +0100, AngeloGioacchino Del Regno wrote:
+> Il 27/01/22 04:39, Roger Lu ha scritto:
+> > The purpose of SVS is to help find the suitable voltages
+> > for DVFS. Therefore, if SVS bank voltages are concerned
+> > to be wrong, we can adjust SVS bank voltages by this patch.
+> > 
+> > Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> 
+> 
+> Hello Roger,
+> I was thinking about what this patch is adding... and I have a few
+> considerations.
+> 
+> It's nice to have a debugging mechanism to read the status and dump registers,
+> as
+> that's very helpful when doing heavy debugging of the IP... but adding the
+> possibility to write a voltage offset may be very dangerous: think about the
+> case
+> in which, either for misconfiguration, or for any other reason, the debugfs
+> entry
+> that allows writing voffset becomes user-writable, or a user writes an
+> impossibly
+> high voffset.
+> In case a very low (negative) voffset is entered, the platform would crash
+> (denial
+> of service); if a very high voffset is entered, hardware damage may occur.
+> 
+> For this reason, there are two proposals:
+> 1. If you want to keep the debugfs voffset write, please constrain the
+> permissible
+>     voffset to an acceptable range that at least makes it unlikely to damage
+> the HW;
+>     Moreover, since voffset write is a feature that would be used in very
+> limited
+>     debugging cases, I think that this should be implemented over a build-time
+>     configuration barrier... something like CONFIG_MTK_SVS_DEBUG_ALLOW_WRITE,
+> or
+>     similar;
+> 2. Since it's very unlikely for someone to really play that much with a
+> voltage
+>     offset during runtime, and since this looks like something very machine
+> specific
+>     (perhaps addressing board-specific quirks?), I would suggest to add this
+> as a
+>     device-tree parameter instead, such as "mediatek,svs-voffset", as it is
+> indeed
+>     possible to specify both positive or negative values in DT.
+> 
+> I would prefer proposal 2, as it looks generally cleaner and way less risky.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index 6a4fb4c..6b3749b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -589,10 +589,10 @@ static void mt7915_wfsys_reset(struct mt7915_dev *dev)
- 
- 		msleep(100);
- 	} else if (is_mt7986(&dev->mt76)) {
--		mt7986_wmac_enable(dev);
-+		mt7986_wmac_disable(dev);
- 		msleep(20);
- 
--		mt7986_wmac_disable(dev);
-+		mt7986_wmac_enable(dev);
- 		msleep(20);
- 	} else {
- 		mt76_set(dev, MT_WF_SUBSYS_RST, 0x1);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 3ffee35..6db0db1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -322,9 +322,6 @@ struct mt7915_dev {
- 	struct reset_control *rstc;
- 	void __iomem *dcm;
- 	void __iomem *sku;
--
--	/* adie is inaccessible after wfsys poweron */
--	u32 adie;
- };
- 
- enum {
--- 
-2.18.0
+Thanks for raising the considerations and give these great suggestions for us to
+think about. Since these voffset read/write commands are used seldomly, we
+decide to remove them for better system security.
+
+> 
+> Regards,
+> Angelo
 
 
 _______________________________________________
