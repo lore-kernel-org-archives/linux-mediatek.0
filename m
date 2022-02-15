@@ -4,65 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2720C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 10:24:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46891C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 10:45:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H0d9L3xTe4zNEUKauBkF4eSAgF1c9oiOB8vLwT4yozM=; b=EwQhajwOKlWhMi
-	nwWJ1pQvfy6tWPDT5w1sI2Eb8SKxxfPVIiVwBpyqCwm42FtEv/+nTrZHChtT+xB7uDu079vm9u5kN
-	VkKQY6yIQgcTRd9pAN4IZxHpuRCE9QBiqcftZNpvIFo5RDC5iwL78WS96TANPWKqiEU3hgKr6hwAV
-	Q6UZMrhw40clur7eJVyrhWNOo7xUikR6NCBtFd/EiBxke8LB5B/D+G1RsMFkjC7tr37lTQUGurgwm
-	V2joyp3SlGjlkEeyECKcXQPTYoQtr3WSOWTOaEVj5xiavIvJD+9wzX4tCEwRmhWp8W22JFyoVMgtY
-	i3ECpVec2a19oMnkQ7cA==;
+	List-Owner; bh=HjFGyxmdk9xUuNYoA7dSqp8MtD6Aru219uBv2ioNlFY=; b=0iGfW1rm54ypUy
+	tU/cTiCNnVwWQcaRKq63WSTJuoArBRWj9WlutttZwGEb0Cx21bEx+eIy51IMVVCbpHb+6S+X5VdWc
+	NaQ1m/ox40ro2mxwve2dQzGww6WjqDinRbfUDurSA36ZUW4b0Lf4pPcHSxGCwi+6ffkU94sT5yQoD
+	qn3Bd3LiZj06Az5qLPf+RhBEeobBA2GpXeAy7ObiI/iSZ2/XI1Pj9oWAmbvpy2fglI1BG8XYssayJ
+	0v3zg3TKQp67PnhfZTwvfHAtf0XbUWdL/jsVzX44n1Xz1Y/oQ2e5EbNElhrDhH42pEq1/sZhwMjj/
+	e6bvmwHHqiCN8pt/t6wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJv0O-002ILz-Cu; Tue, 15 Feb 2022 10:24:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nJvKG-002LYU-Fc; Tue, 15 Feb 2022 10:44:52 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJv0B-002IHF-3X; Tue, 15 Feb 2022 10:24:09 +0000
-X-UUID: 1d047d68dc694322ac75d810b0cc4d56-20220215
-X-UUID: 1d047d68dc694322ac75d810b0cc4d56-20220215
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chun-jie.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1273765640; Tue, 15 Feb 2022 03:24:01 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Feb 2022 02:23:59 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 15 Feb 2022 18:23:57 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 15 Feb 2022 18:23:57 +0800
-Message-ID: <52212d3177dd6609129388f95c0c5b415b9918a8.camel@mediatek.com>
-Subject: Re: [v1 01/16] dt-bindings: ARM: Mediatek: Add new document
- bindings of MT8186 clock
-From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
- <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 15 Feb 2022 18:23:57 +0800
-In-Reply-To: <0900d6de780557023c676431173bfc4493fe03b0.camel@mediatek.com>
-References: <20220110134416.5191-1-chun-jie.chen@mediatek.com>
- <20220110134416.5191-2-chun-jie.chen@mediatek.com>
- <YetPCgSSRiWpDtcc@robh.at.kernel.org>
- <0900d6de780557023c676431173bfc4493fe03b0.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nJvK4-002LXX-9p; Tue, 15 Feb 2022 10:44:42 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id E7A061F4444B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1644921875;
+ bh=NlOGGbbcK8ckeQdVShKWcQBqzBY0rwwlYoyGhlgbxOU=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=hufTTsyzxEcj+Ua3klO7EV71SdcZVFZuhS0xNNOXVIPjgUwxvPByY3+02+hbIAZCG
+ aQL9crO66Y9wj2hvNJ2cGwXlPP0+1Szo0XqvznYogh0BDZVMePEVwGfUPgUcnwNot6
+ R2gDb25G7fDAihTB+h2mLK7mJGD6YzuF1d02ac+hDd1fa6BXIV/c7eH26DcJPb69Y5
+ rD5Tb99ORMDuu8tLT2xM8R4frjMokxj+apn1EzrDRaZtTOtl0iV+eHZEOaNoZUiQoP
+ GEV8DctYvNMsaXtudrZ6ESyN9BE3QgcwaXrz96DouvRZxJMY2Yj0qm+q5q81vHx3UG
+ CAS9c7QaPUgdA==
+Message-ID: <c69fcd5d-a79b-ed0e-e803-63bebe987390@collabora.com>
+Date: Tue, 15 Feb 2022 11:44:32 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH] clk: mediatek: Disable ACP to fix 3D on MT8192
+Content-Language: en-US
+To: Alyssa Rosenzweig <alyssa@collabora.com>,
+ Robin Murphy <robin.murphy@arm.com>
+Cc: Stephen Boyd <sboyd@kernel.org>,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
+ linux-mediatek@lists.infradead.org,
+ Michael Turquette <mturquette@baylibre.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Ikjoon Jang <ikjn@chromium.org>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>, Weiyi Lu
+ <weiyi.lu@mediatek.com>, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Nick Fan <Nick.Fan@mediatek.com>,
+ Nicolas Boichat <drinkcat@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>
+References: <20220110181330.3224-1-alyssa.rosenzweig@collabora.com>
+ <eb6d11af-ff48-a366-d428-77bcaa250a8a@arm.com> <YeF/AYZ0DuKGwLLk@maud>
+ <CAGXv+5H9BsNUdiY6zMH6THKKMvRdPypNtUEVviMHQEjgNGDk_A@mail.gmail.com>
+ <69525223-7d90-5714-bbe9-4d7f0b9a293d@arm.com>
+ <20220119021844.3C225C340E5@smtp.kernel.org>
+ <5d839338-6072-9c52-1893-2f804d937ea1@arm.com> <YelxN/zpdkukBBqy@maud>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <YelxN/zpdkukBBqy@maud>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_022407_192184_2A4796CC 
-X-CRM114-Status: GOOD (  24.34  )
+X-CRM114-CacheID: sfid-20220215_024440_577503_F7BCB9B8 
+X-CRM114-Status: GOOD (  21.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,314 +76,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-02-09 at 09:40 +0800, Chun-Jie Chen wrote:
-> On Fri, 2022-01-21 at 18:25 -0600, Rob Herring wrote:
-> > On Mon, Jan 10, 2022 at 09:44:01PM +0800, Chun-Jie Chen wrote:
-> > > This patch adds the new binding documentation for system clock
-> > > and functional clock on Mediatek MT8186.
-> > > 
-> > > Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-> > > ---
-> > >  .../arm/mediatek/mediatek,mt8186-clock.yaml   | 133
-> > > ++++++++++++++++++
-> > >  .../mediatek/mediatek,mt8186-sys-clock.yaml   |  74 ++++++++++
-> > >  2 files changed, 207 insertions(+)
-> > >  create mode 100644
-> > > Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
-> > > clock.yaml
-> > >  create mode 100644
-> > > Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
-> > > sys-
-> > > clock.yaml
-> > > 
-> > > diff --git
-> > > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
-> > > clock.yaml
-> > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
-> > > clock.yaml
-> > > new file mode 100644
-> > > index 000000000000..fc39101bc9b0
-> > > --- /dev/null
-> > > +++
-> > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
-> > > clock.yaml
-> > > @@ -0,0 +1,133 @@
-> > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > > +%YAML 1.2
-> > > +---
-> > > +$id: "
-> > > 
-https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,mt8186-clock.yaml*__;Iw!!CTRNKA9wMg0ARbw!3pIyNVU0grMb7zKVQZoRO2z-eKrg6FnGcieEON8cCw84G6_W7Tt4GEFwytcYEXyrcj6e$
-> > >  "
-> > > +$schema: "
-> > > 
-https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!3pIyNVU0grMb7zKVQZoRO2z-eKrg6FnGcieEON8cCw84G6_W7Tt4GEFwytcYEUOCCW1i$
-> > >  "
-> > > +
-> > > +title: Mediatek Functional Clock Controller for MT8186
-> > > +
-> > > +maintainers:
-> > > +  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
-> > > +
-> > > +description:
-> > > +  The clock architecture in Mediatek like below
-> > > +  PLLs -->
-> > > +          dividers -->
-> > > +                      muxes
-> > > +                           -->
-> > > +                              clock gate
-> > > +
-> > > +  The devices provide clock gate control in different IP blocks.
-> > > +
-> > > +properties:
-> > > +  compatible:
-> > > +    items:
-> > > +      - enum:
-> > > +          - mediatek,mt8186-imp_iic_wrap
-> > > +          - mediatek,mt8186-mfgsys
-> > > +          - mediatek,mt8186-wpesys
-> > > +          - mediatek,mt8186-imgsys1
-> > > +          - mediatek,mt8186-imgsys2
-> > > +          - mediatek,mt8186-vdecsys
-> > > +          - mediatek,mt8186-vencsys
-> > > +          - mediatek,mt8186-camsys
-> > > +          - mediatek,mt8186-camsys_rawa
-> > > +          - mediatek,mt8186-camsys_rawb
-> > > +          - mediatek,mt8186-mdpsys
-> > > +          - mediatek,mt8186-ipesys
-> > > +  reg:
-> > > +    maxItems: 1
-> > > +
-> > > +  '#clock-cells':
-> > > +    const: 1
-> > > +
-> > > +required:
-> > > +  - compatible
-> > > +  - reg
-> > > +
-> > > +additionalProperties: false
-> > > +
-> > > +examples:
-> > > +  - |
-> > > +    imp_iic_wrap: clock-controller@11017000 {
-> > > +        compatible = "mediatek,mt8186-imp_iic_wrap";
-> > > +        reg = <0x11017000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > > +
-> > > +  - |
-> > > +    mfgsys: clock-controller@13000000 {
-> > > +        compatible = "mediatek,mt8186-mfgsys";
-> > > +        reg = <0x13000000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > > +
-> > > +  - |
-> > > +    wpesys: clock-controller@14020000 {
-> > > +        compatible = "mediatek,mt8186-wpesys";
-> > > +        reg = <0x14020000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > > +
-> > > +  - |
-> > > +    imgsys1: clock-controller@15020000 {
-> > > +        compatible = "mediatek,mt8186-imgsys1";
-> > > +        reg = <0x15020000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > > +
-> > > +  - |
-> > > +    imgsys2: clock-controller@15820000 {
-> > > +        compatible = "mediatek,mt8186-imgsys2";
-> > > +        reg = <0x15820000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > > +
-> > > +  - |
-> > > +    vdecsys: clock-controller@1602f000 {
-> > > +        compatible = "mediatek,mt8186-vdecsys";
-> > > +        reg = <0x1602f000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > > +
-> > > +  - |
-> > > +    vencsys: clock-controller@17000000 {
-> > > +        compatible = "mediatek,mt8186-vencsys";
-> > > +        reg = <0x17000000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > > +
-> > > +  - |
-> > > +    camsys: clock-controller@1a000000 {
-> > > +        compatible = "mediatek,mt8186-camsys";
-> > > +        reg = <0x1a000000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > > +
-> > > +  - |
-> > > +    camsys_rawa: clock-controller@1a04f000 {
-> > > +        compatible = "mediatek,mt8186-camsys_rawa";
-> > > +        reg = <0x1a04f000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > > +
-> > > +  - |
-> > > +    camsys_rawb: clock-controller@1a06f000 {
-> > > +        compatible = "mediatek,mt8186-camsys_rawb";
-> > > +        reg = <0x1a06f000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > > +
-> > > +  - |
-> > > +    mdpsys: clock-controller@1b000000 {
-> > > +        compatible = "mediatek,mt8186-mdpsys";
-> > > +        reg = <0x1b000000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > > +
-> > > +  - |
-> > > +    ipesys: clock-controller@1c000000 {
-> > > +        compatible = "mediatek,mt8186-ipesys";
-> > > +        reg = <0x1c000000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > 
-> > There's little point in enumerating every possible compatible. 1
-> > example 
-> > is more than enough.
-> > 
-> > 
+Il 20/01/22 15:27, Alyssa Rosenzweig ha scritto:
+>> We also already have SoC-specific GPU compatibles because even without
+>> experimental interconnect easter eggs, people integrate these IPs in fairly
+>> involved ways and there's a fair degree of variety. However unless we want
+>> to be super-strict it's also not too hard to simply assume that if we can
+>> find a "mediatek,mt8192-infracfg" syscon then we set the MT8192 magic bit
+>> within it, and if we can't then we don't.
 > 
-> Ok, I will fix it in next patch.
-> 
-> > > diff --git
-> > > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
-> > > sys-clock.yaml
-> > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
-> > > sys-clock.yaml
-> > > new file mode 100644
-> > > index 000000000000..11473971a165
-> > > --- /dev/null
-> > > +++
-> > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
-> > > sys-clock.yaml
-> > > @@ -0,0 +1,74 @@
-> > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > > +%YAML 1.2
-> > > +---
-> > > +$id: "
-> > > 
-https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,mt8186-sys-clock.yaml*__;Iw!!CTRNKA9wMg0ARbw!3pIyNVU0grMb7zKVQZoRO2z-eKrg6FnGcieEON8cCw84G6_W7Tt4GEFwytcYERailYtq$
-> > >  "
-> > > +$schema: "
-> > > 
-https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!3pIyNVU0grMb7zKVQZoRO2z-eKrg6FnGcieEON8cCw84G6_W7Tt4GEFwytcYEUOCCW1i$
-> > >  "
-> > > +
-> > > +title: Mediatek System Clock Controller for MT8186
-> > > +
-> > > +maintainers:
-> > > +  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
-> > > +
-> > > +description:
-> > > +  The clock architecture in Mediatek like below
-> > > +  PLLs -->
-> > > +          dividers -->
-> > > +                      muxes
-> > > +                           -->
-> > > +                              clock gate
-> > > +
-> > > +  The apmixedsys provides most of PLLs which generated from SoC
-> > > 26m.
-> > > +  The topckgen provides dividers and muxes which provide the
-> > > clock
-> > > source to other IP blocks.
-> > > +  The infracfg_ao provides clock gate in peripheral and
-> > > infrastructure IP blocks.
-> > > +  The mcusys provides mux control to select the clock source in
-> > > AP
-> > > MCU.
-> > > +
-> > > +properties:
-> > > +  compatible:
-> > > +    items:
-> > > +      - enum:
-> > > +          - mediatek,mt8186-mcusys
-> > > +          - mediatek,mt8186-topckgen
-> > > +          - mediatek,mt8186-infracfg_ao
-> > > +          - mediatek,mt8186-apmixedsys
-> > > +      - const: syscon
-> > > +
-> > > +  reg:
-> > > +    maxItems: 1
-> > > +
-> > > +  '#clock-cells':
-> > > +    const: 1
-> > > +
-> > > +required:
-> > > +  - compatible
-> > > +  - reg
-> > > +
-> > > +additionalProperties: false
-> > > +
-> > > +examples:
-> > > +  - |
-> > > +    mcusys: syscon@c53a000 {
-> > 
-> > clock-controller@...
-> > 
-> > Drop unused labels.
-> > 
-> 
-> Ok, I will change to pure clock-controller
-> 
-> Thanks!
-> Best Regards,
-> Chun-Jie
+> We need a MT8192-specific compatible for the GPU anyway due to "unique"
+> power management requirements, this is why the MT8183 before it has a
+> specific GPU compatible. So I'm not worried about the compatible.
 > 
 
-Please skip the reply above.
+Thing is, as it was explained, this is about a unwanted SoC misconfiguration,
+hence this is very specific to one SoC, which *happens to* integrate a Mali GPU.
 
-The devices in this binding document also support system configuration
-not only pure clock provider, so make them as "syscon".
+I agree with Stephen's reasoning - also in my opinion, the panfrost driver should
+be dedicated to managing the Mali GPUs and *not* the SoCs on which it is present,
+so disabling the Accelerator Coherency Port for MFG should be performed inside of
+files that are dealing with the specific SoC that requires this configuration (or,
+if you want, quirk).
 
-Thanks!
-Best Regards,
-Chun-Jie
+Simply put, though, as you already perfectly know, there is no driver that is
+dedicated to exclusively manage the "extra" INFRA bits, so here's what I've been
+thinking for a while; my logical reasoning:
+- Doing it in the IOMMU driver may seem at a first glance to make some sense,
+   but then, does this really have anything to do with the IOMMU? I don't think so;
+- Performing the disablement in mtk-pm-domains is very shady... there's nothing
+   that screams "power" in that;
+- This doesn't scream "clocks" either, I understand that;
+- As far as I understand this specific thing won't happen anymore (or at least,
+   not in MediaTek land, but I also don't expect to see this on other SoCs).
 
-> > > +        compatible = "mediatek,mt8186-mcusys", "syscon";
-> > > +        reg = <0xc53a000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > > +
-> > > +  - |
-> > > +    topckgen: syscon@10000000 {
-> > > +        compatible = "mediatek,mt8186-topckgen", "syscon";
-> > > +        reg = <0x10000000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > > +
-> > > +  - |
-> > > +    infracfg_ao: syscon@10001000 {
-> > > +        compatible = "mediatek,mt8186-infracfg_ao", "syscon";
-> > > +        reg = <0x10001000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > > +
-> > > +  - |
-> > > +    apmixedsys: syscon@1000c000 {
-> > > +        compatible = "mediatek,mt8186-apmixedsys", "syscon";
-> > > +        reg = <0x1000c000 0x1000>;
-> > > +        #clock-cells = <1>;
-> > > +    };
-> > 
-> > Again, 1 example is enough.
+Getting back to MediaTek-land, only MT8192 is (and will ever be) affected, from
+what I understand... and there is one driver that is very specific to, targets
+only, and would probe only on MT8192 - which also happens to manage the very same
+iospace that we also want to poke at to disable this bit......
 
+... clk-mt8192!
+
+For this reason, I think that (unfortunately, to some extent) the most transparent
+and cleanest approach is the one that Alyssa took, which is to perform this
+set-and-forget operation there - also keeping in mind that panfrost obviously has
+no way to finish probing (hence, no way to actually use the GPU device) *before*
+the driver that provides clocks to it also probes and registers .. the clocks.
+
+My personal view on this would imply that Alyssa sends a v2 of this commit that
+includes MediaTek's explanation on why the ACP has to be disabled (as much as
+nicely expanding the ACP acronym as a documentation effort).
+
+I'm sorry for this wall of text (and for boring you with it! :P), but I felt like
+giving an extensive personal opinion on this would've been nice.
+
+Thank you all!
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
