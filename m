@@ -4,81 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A337C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 02:27:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07A4AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 02:34:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gmT5Ov5aPUMytWNsVItvY3BfZhbfdPiIgd5omiE92a4=; b=MiK+M0e58UzDmW
-	sXFCnctUibysBbTnJz9MAPPi+Kg/FLIBXgkWnWOt119w/+sEPP2Kd5HLmbK1OVLs4/1SjkwHhCAJi
-	6PWHKcKcjHzYnwHP2mz+APymRe6BpzdRws+EIYkIXXmzyV7gF6NLy/UIkHr9G1NGmsRJqoWtLyuVR
-	R6iQLvOrS1xU3QFKZ0OvfASHO2vtcl2pGE3Z05aa50z09ZgVjZxo6/B+LgVR+WfZRV0S0mORWAEWo
-	o0JbphiYsU8V7YRa+Lwja2JLR9pkILgN4RdfFy4pTCcOmOm1poUim6u2JoE257l0+Ah+hQqjjbxyN
-	mTsFP4Hjm9Sawoupkvsg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=XLI+XqLaVZJc80HPRtb3Co48RWwLHPyeujreMS6Mxi0=; b=HZ9UXr64qOAPZB
+	uCI+/MZxNsL5VtW1BEPX/tQSM1WPiP77shr6LVxB67NQsXPzJgos5mxzprVWsqa8GDwjWZIbxgF5N
+	40HXicnPSz1iLQC7Q4q1y2Vof0lDyVnCqVeZ+X2jh515MxyGmfsJ0p1hW3kX6GtM7qZ6efBFiYmuc
+	x1clgzkLFzajgQFVbmwh6gmOnk9v+nAYZ4t8IbCRvm6S4b+q6XgEQXKUXpVZJ9T9LBzFCeoMCvpw8
+	LmfwgqXJ4xOecNOv9v+gqG4kpQW2cCz+Rqk2Qt8YAGuyoCpuuN2bRfo7mnqUy53QXMQLCUTrad07d
+	pM5EmC9k+8WzAaCd0bZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJnZA-00HZE4-DS; Tue, 15 Feb 2022 02:27:44 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nJnfY-00HaJm-GB; Tue, 15 Feb 2022 02:34:20 +0000
+Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJnZ7-00HZBy-T9; Tue, 15 Feb 2022 02:27:43 +0000
-X-UUID: 04a60a4f0c12465582b7fa51782eb95d-20220214
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=1NJIfico/k4v3NoPWfT7ELlUPl/sPA5uL3hY9AKqjpg=; 
- b=ICKVYH8+KHWHn7zjc5Xhqf8ZHoeCOX4ivjIX9fri2m46bXnd3Ip8yuNxTXRudTr2AJ8qx8NOZ2sJVz4E6lpLUMyKiRVotyQ5WL+Zr0ASyXP0Oa/xMbcq9ZILqadtyyjNUgiPpLe+1pXoJ35uqDYJyy942oj2Uk0Kp9RpQWdkB+k=;
-X-UUID: 04a60a4f0c12465582b7fa51782eb95d-20220214
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1352231381; Mon, 14 Feb 2022 19:27:37 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Feb 2022 18:27:36 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Feb 2022 10:27:34 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 15 Feb 2022 10:27:33 +0800
-Message-ID: <2a39dc9465761a16587bfe82189f581c1d52da6a.camel@mediatek.com>
-Subject: Re: [PATCH 20/23] ASoC: codecs: wcd938x: Make use of the helper
- component_compare/release_of
-From: Yong Wu <yong.wu@mediatek.com>
-To: Mark Brown <broonie@kernel.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>
-CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, David Airlie
- <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- <dri-devel@lists.freedesktop.org>, James Wang <james.qian.wang@arm.com>,
- Liviu Dudau <liviu.dudau@arm.com>, <iommu@lists.linux-foundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski
- <krzysztof.kozlowski@canonical.com>, <linux-kernel@vger.kernel.org>, "Joerg
- Roedel" <joro@8bytes.org>, Will Deacon <will@kernel.org>, Arnd Bergmann
- <arnd@arndb.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- <linux-mediatek@lists.infradead.org>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, <linux-arm-kernel@lists.infradead.org>, "Stephen
- Boyd" <sboyd@kernel.org>, Hsin-Yi Wang <hsinyi@chromium.org>, Robin Murphy
- <robin.murphy@arm.com>, Tomasz Figa <tfiga@chromium.org>,
- <srv_heupstream@mediatek.com>, Rob Clark <robdclark@gmail.com>, "Srinivas
- Kandagatla" <srinivas.kandagatla@linaro.org>, Sebastian Reichel
- <sre@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela
- <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Pierre-Louis Bossart
- <pierre-louis.bossart@linux.intel.com>, <alsa-devel@alsa-project.org>
-Date: Tue, 15 Feb 2022 10:27:33 +0800
-In-Reply-To: <67b2e6e8-e4fe-06ca-3d12-9bba83743989@collabora.com>
-References: <20220214060819.7334-1-yong.wu@mediatek.com>
- <20220214060819.7334-21-yong.wu@mediatek.com>
- <YgpNqLQzpx4J6d8K@sirena.org.uk>
- <67b2e6e8-e4fe-06ca-3d12-9bba83743989@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nJnfM-00HaGf-Ja; Tue, 15 Feb 2022 02:34:09 +0000
+Received: by mail-qv1-xf29.google.com with SMTP id n6so16405964qvk.13;
+ Mon, 14 Feb 2022 18:34:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=06Kfv1DXtnVDrheRxya2snTjYCwD2TQR57hbpR3zm0s=;
+ b=OJUTaC8m4FlgAFC/uh7uJBfFqqP/RkqnhJTE59PCuIH76NWYuimLf/S2LQejeyi662
+ bFda6a/SPjSJoKXe3yWCje0n+Q7l+ikqo8j32lVc2XsHc+bQOjG/sm1PqP9+sY1HOAjd
+ 0P3Z00beuW1C64qL8bVTHg7+XTkp2++lLg9XgBKZcs8PU/jOoFFZgEY9PfSk5k2QjTsd
+ fZVQx0j0E/RbeOCEDPeRkOxyBIbyxVKnYOBJIVleOCox0eXHYItVAUeq/JL4Ahc2mUcb
+ cmYPtxBdWHYwsGxkhaPXC0+vjH0cSXY0cMfLHzEWiLX09nsWGZH4VI0hPTDwT3BKJNvv
+ B0kw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=06Kfv1DXtnVDrheRxya2snTjYCwD2TQR57hbpR3zm0s=;
+ b=mzFxEkuabOJfMd6W1JWcISOSQPB/RSMLLN3Os9lVMJnbj8zAGBeiAx+7zi8zqI/Lrd
+ 4G75/qfkT7WH0aiIgNW3FKa7xHy8YECAIaxEw1NZ9vg0ZlbeC+DNn0mqG8yoHjkRY80x
+ SPB1NVkRLviakyGWQ/r8L5Y0PIgUmwY8zjiP5gimgvk5Zq8fbUWkYKSZemiKddVPFZCB
+ FiAcpopzg8y94fibYFgEaQwhwE6L5j/5jTuYY3mRGLgVxTcnGaz9znbUtjRBm/YXFud7
+ 33StLZ+GrqEryAZJcAtXM812x0jobkIZNM6tMnDEGJeAh0g5YKUPT1nHyujHGZymRhrR
+ H9WA==
+X-Gm-Message-State: AOAM530tjvUCjGZ89PChQUkho888OmJazDgz0sN0HB/CeaxPSuYkuAGS
+ S/MRORtc8VGbWHdP0hcKg2w=
+X-Google-Smtp-Source: ABdhPJysV3vOFxo9MY9xSnNFS0irUrGngNCaqUIS5vyTJGLJ3J7HfDrRw4++7et3pzr7mwdIB3xOgg==
+X-Received: by 2002:a05:6214:1c07:: with SMTP id
+ u7mr1073836qvc.129.1644892446726; 
+ Mon, 14 Feb 2022 18:34:06 -0800 (PST)
+Received: from localhost.localdomain ([193.203.214.57])
+ by smtp.gmail.com with ESMTPSA id s1sm18976509qta.0.2022.02.14.18.34.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Feb 2022 18:34:06 -0800 (PST)
+From: cgel.zte@gmail.com
+X-Google-Original-From: deng.changcheng@zte.com.cn
+To: nbd@nbd.name
+Cc: lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com,
+ shayne.chen@mediatek.com, sean.wang@mediatek.com, kvalo@kernel.org,
+ davem@davemloft.net, kuba@kernel.org, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, matthias.bgg@gmail.com, arnd@arndb.de,
+ Bo.Jiao@mediatek.com, deng.changcheng@zte.com.cn,
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Zeal Robot <zealci@zte.com.cn>
+Subject: [PATCH] mt76: mt7915: use min_t() to make code cleaner
+Date: Tue, 15 Feb 2022 02:33:55 +0000
+Message-Id: <20220215023355.1750720-1-deng.changcheng@zte.com.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_182741_973392_235F80A2 
-X-CRM114-Status: GOOD (  16.22  )
+X-CRM114-CacheID: sfid-20220214_183408_666987_DD7D4E22 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,35 +93,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-02-14 at 13:43 +0100, AngeloGioacchino Del Regno wrote:
-> Il 14/02/22 13:40, Mark Brown ha scritto:
-> > On Mon, Feb 14, 2022 at 02:08:16PM +0800, Yong Wu wrote:
-> > > Use the common compare/release helpers from component.
-> > 
-> > What's the story with dependencies here?  I've just got this one
-> > patch
-> > with no cover letter...
+From: Changcheng Deng <deng.changcheng@zte.com.cn>
 
-Sorry for this. I will add in cover letter next time.
-Maybe in next week. Just to see if there is any other comment.
+Use min_t() in order to make code cleaner.
 
-Thanks.
+Reported-by: Zeal Robot <zealci@zte.com.cn>
+Signed-off-by: Changcheng Deng <deng.changcheng@zte.com.cn>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/testmode.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-> 
-> Hello Mark,
-> I agree, the cover letter should be sent to everyone; Yong, please
-> add the
-> proper Ccs to it next time.
-> 
-> Anyway, context:
-> 
-https://patchwork.kernel.org/project/linux-mediatek/cover/20220214060819.7334-1-yong.wu@mediatek.com/
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
+index 83da21d15ddd..61f255166a7f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
+@@ -228,12 +228,8 @@ mt7915_tm_set_ipg_params(struct mt7915_phy *phy, u32 ipg, u8 mode)
+ 
+ 		ipg -= aifsn * slot_time;
+ 
+-		if (ipg > TM_DEFAULT_SIFS) {
+-			if (ipg < TM_MAX_SIFS)
+-				sifs = ipg;
+-			else
+-				sifs = TM_MAX_SIFS;
+-		}
++		if (ipg > TM_DEFAULT_SIFS)
++			sifs = min_t(u32, ipg, TM_MAX_SIFS);
+ 	}
+ done:
+ 	txv_time = mt76_get_field(dev, MT_TMAC_ATCR(ext_phy),
+-- 
+2.25.1
 
-Thanks very much:)
 
-> 
-> Cheers,
-> Angelo
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
