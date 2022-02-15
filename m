@@ -4,65 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 596FBC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 11:47:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 538D3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 12:05:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=swXRPZG9N0d2wMqwS4SmOKtzQT6LUL8pahpgVbolzPw=; b=S4wtt3cqpS8DZP
-	K+KGCCTPyHNmPJefu9m+ro5zi0zI4U2VucUuAXCuEB3WP/sfL747BSw1c7IgtTCEWql9QY6lH448U
-	6bci9acqJGSiqR/nrLXoWDaah3t3AEabvGRTgv43N4wWIzXioR9wFgZgGhArDFUGQ4/ihNi+fC6Eo
-	g2istgq/bhReJoPZHDfJbwzgzZm6lhIBehsIbGz4wPXenip9PQeLxfA/+uPyLMATGmpjeZMGjamZS
-	ClVdzJ9nGUQ0HVHqpFR6i0Sc9IbJETsgT5dV8ez/6x7lrnOmivYvJK3oO1N+ySU7i+x72jIq7RZIo
-	Na6XTYsRrSGh4gtsJeSA==;
+	List-Owner; bh=lChLkALpk4+ehRd+v1bLvv3PQbZHdevfgoLHxCol8vw=; b=TWdI5SAC+iX9qO
+	ipukceAdjbivO5GGKsomAoaEsnz8DaicAvgISYutdK2HgFhuQu7gFMVVlRw/M17Y5Ei1xKw4U/L7t
+	lo9A5TT2c//LpfG+kFqClcx7MNG8ruSUgOueXyTSX6PVMroiH2zNxWr/x+Ew1VIrk8KTc3q2LsHNW
+	kMKNf/CROC6GIOKWus9ycJD+gYiSWHeYjf+Ua2GhB/oodUVLavkbYD+2pGA1el5zV5CJLqAk1RvUX
+	Q13zOAiBDRfuq5x8tiilsvr+5TDa3TDv5D+F5o0p+u4Hmv6+gHEZmBmU3nxV9Mxt8trUTgovpBx84
+	jZCaL2XqasHjkKlP+N+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJwIa-002agx-Qz; Tue, 15 Feb 2022 11:47:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nJwZj-002dnc-Hu; Tue, 15 Feb 2022 12:04:55 +0000
+Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJwIX-002af3-28; Tue, 15 Feb 2022 11:47:11 +0000
-X-UUID: 6df8d908852b493aac37fc7c21b565e9-20220215
-X-UUID: 6df8d908852b493aac37fc7c21b565e9-20220215
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 242035864; Tue, 15 Feb 2022 04:47:05 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Feb 2022 03:47:03 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 15 Feb 2022 19:47:02 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 15 Feb 2022 19:47:02 +0800
-Message-ID: <2b98997aa6a6f2fa895b621689db5b49d2491d54.camel@mediatek.com>
-Subject: Re: [v2, 5/6] drm/mediatek: separate postmask component from
- mtk_disp_drv.c
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, <chunkuang.hu@kernel.org>,
- <matthias.bgg@gmail.com>, <robh+dt@kernel.org>
-CC: <devicetree@vger.kernel.org>, <airlied@linux.ie>,
- <jassisinghbrar@gmail.com>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, <yongqiang.niu@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, <fparent@baylibre.com>,
- <linux-mediatek@lists.infradead.org>, <hsinyi@chromium.org>,
- <linux-arm-kernel@lists.infradead.org>
-Date: Tue, 15 Feb 2022 19:47:02 +0800
-In-Reply-To: <dd03805e7aaeacb543a1bcf45651eec11e6048c2.camel@mediatek.com>
-References: <20220215075953.3310-1-rex-bc.chen@mediatek.com>
- <20220215075953.3310-6-rex-bc.chen@mediatek.com>
- <dd03805e7aaeacb543a1bcf45651eec11e6048c2.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nJwZh-002dmS-28; Tue, 15 Feb 2022 12:04:54 +0000
+Received: by mail-qk1-x72d.google.com with SMTP id c189so17019660qkg.11;
+ Tue, 15 Feb 2022 04:04:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=qbnM1QziU/XSffVJX+bwaVuJwYnLnX8GCs9DF4EaXsk=;
+ b=GBMqnSHarXC8GjklagRkyGCCCF9Vo/+51OFuwdd5ApKg9dkW3pSkUxe1+Er9Afky6v
+ Mh2HJsmInn/Y/1pqwHTcBVDt66gJ/n6NdvbagUwpaPDxAvKcWYOAGF9eJPUNFVcrRXtq
+ xCSE7P90lHDA1hG1rhBhFZGiFUdEZBw1BFNdSm6I9ARqcXxZutmsu9NurMbQf2X083rl
+ 9+kUZoxTiRxt6xCjAn7+Jb0RJO2hrZ27eujcuFSoIqQOhf4xU+BWknVKr1J/HQwRZh/a
+ e5YQ7kDjPYvpT1sVr1H0+hd9UeSzNdxElh2nZKmTnlIU4cYZGHUOmV3CekLD9/CDG7mk
+ a3Ag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=qbnM1QziU/XSffVJX+bwaVuJwYnLnX8GCs9DF4EaXsk=;
+ b=TEL7p7Q+VpmVg5RpyN9W4A0msr81BJBTf7CVMkfZ7lhDi0UjaoJGe8au3+nPaXJgUp
+ fZgPljafKhEVNBk3BFc+SRkOcLw/x48Kj5QntcROg9Pygt+eTGKifwuKDLrosRRQ5XIt
+ zdq/m3AUXY1+S+F0tRFOJTOAa+PClHVgDUpnKtUawu7EQa3wCXNlrX44iajOM8xjPnf4
+ UxJDGoYKN+IwsGyB1LGvxBeof4+luw9u0uUP/KdZrg01AD7Ow7D3SaYq5Nb6Jm1sLCbt
+ F5nyrD6D2AgSBdJt+5uFQFEbvhgh8J6z73z7YQTxmXVPWHzaAVD6L8dqs+1bGNkbmh2t
+ 33Kg==
+X-Gm-Message-State: AOAM533ovfERruzfKhNhmuUyPUS/pNSfABvXnPbPu3t8aV39kWXuiwxY
+ dBiHDDAI3+yrVLqSdCusplxA72Ezr5/oeOZHD+4=
+X-Google-Smtp-Source: ABdhPJxFzThI9yJ6WQ5YwMfuHeghHCKy7MGmGIpj5Bk2cqTfQYGSL/bhIOpU56LzBlNjDXYJ7jFaFlTkyTg9FfzELMc=
+X-Received: by 2002:a05:620a:4048:: with SMTP id
+ i8mr1689174qko.482.1644926690999; 
+ Tue, 15 Feb 2022 04:04:50 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220208084234.1684930-1-hsinyi@chromium.org>
+In-Reply-To: <20220208084234.1684930-1-hsinyi@chromium.org>
+From: Emil Velikov <emil.l.velikov@gmail.com>
+Date: Tue, 15 Feb 2022 12:04:39 +0000
+Message-ID: <CACvgo53u01BK_D0ZssV+gCepjxSz23Nr5Dy1qXeaAoJuu6VCFQ@mail.gmail.com>
+Subject: Re: [Intel-gfx] [PATCH v8 1/3] gpu: drm: separate panel orientation
+ property creating and value setting
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: ML dri-devel <dri-devel@lists.freedesktop.org>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ amd-gfx mailing list <amd-gfx@lists.freedesktop.org>, 
+ Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ devicetree <devicetree@vger.kernel.org>, Simon Ser <contact@emersion.fr>, 
+ "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>,
+ Maxime Ripard <mripard@kernel.org>, 
+ Alex Deucher <alexander.deucher@amd.com>, Rob Herring <robh+dt@kernel.org>, 
+ linux-mediatek@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Harry Wentland <harry.wentland@amd.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ LAKML <linux-arm-kernel@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_034709_164859_42D5354A 
-X-CRM114-Status: GOOD (  30.20  )
+X-CRM114-CacheID: sfid-20220215_040453_125019_D6F735CC 
+X-CRM114-Status: GOOD (  17.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,364 +93,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-02-15 at 17:35 +0800, CK Hu wrote:
-> Hi, Rex:
-> 
-> On Tue, 2022-02-15 at 15:59 +0800, Rex-BC Chen wrote:
-> > From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> > 
-> > Separate postmask from mtk_disp_drv to be a isolated driver.
-> 
-> Without this patch, MT8186 still works. So this patch is redundant.
-> 
-> Regards,
-> CK
-> 
-Hello CK,
+Greetings everyone,
 
-Thanks for your review.
-I will remove this patch in next version.
-I will push this patch for another series if needed.
+Padron for joining in so late o/
 
-BRs,
-Rex
-> > 
-> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/Makefile            |   1 +
-> >  drivers/gpu/drm/mediatek/mtk_disp_drv.h      |   8 +
-> >  drivers/gpu/drm/mediatek/mtk_disp_postmask.c | 155
-> > +++++++++++++++++++
-> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c  |  36 +----
-> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c       |   2 +
-> >  drivers/gpu/drm/mediatek/mtk_drm_drv.h       |   1 +
-> >  6 files changed, 170 insertions(+), 33 deletions(-)
-> >  create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_postmask.c
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/Makefile
-> > b/drivers/gpu/drm/mediatek/Makefile
-> > index 29098d7c8307..f26fe646ee2a 100644
-> > --- a/drivers/gpu/drm/mediatek/Makefile
-> > +++ b/drivers/gpu/drm/mediatek/Makefile
-> > @@ -5,6 +5,7 @@ mediatek-drm-y := mtk_disp_aal.o \
-> >  		  mtk_disp_color.o \
-> >  		  mtk_disp_gamma.o \
-> >  		  mtk_disp_ovl.o \
-> > +		  mtk_disp_postmask.o \
-> >  		  mtk_disp_rdma.o \
-> >  		  mtk_drm_crtc.o \
-> >  		  mtk_drm_ddp_comp.o \
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> > b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> > index 86c3068894b1..f4c21195c3ea 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> > @@ -81,6 +81,14 @@ void mtk_ovl_enable_vblank(struct device *dev,
-> >  			   void *vblank_cb_data);
-> >  void mtk_ovl_disable_vblank(struct device *dev);
-> >  
-> > +int mtk_postmask_clk_enable(struct device *dev);
-> > +void mtk_postmask_clk_disable(struct device *dev);
-> > +void mtk_postmask_config(struct device *dev, unsigned int w,
-> > +				unsigned int h, unsigned int vrefresh,
-> > +				unsigned int bpc, struct cmdq_pkt
-> > *cmdq_pkt);
-> > +void mtk_postmask_start(struct device *dev);
-> > +void mtk_postmask_stop(struct device *dev);
-> > +
-> >  void mtk_rdma_bypass_shadow(struct device *dev);
-> >  int mtk_rdma_clk_enable(struct device *dev);
-> >  void mtk_rdma_clk_disable(struct device *dev);
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_postmask.c
-> > b/drivers/gpu/drm/mediatek/mtk_disp_postmask.c
-> > new file mode 100644
-> > index 000000000000..3af4cc38adb1
-> > --- /dev/null
-> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_postmask.c
-> > @@ -0,0 +1,155 @@
-> > +// SPDX-License-Identifier: GPL-2.0-only
-> > +/*
-> > + * Copyright (c) 2022 MediaTek Inc.
-> > + */
-> > +
-> > +#include <linux/clk.h>
-> > +#include <linux/component.h>
-> > +#include <linux/module.h>
-> > +#include <linux/of_device.h>
-> > +#include <linux/of_irq.h>
-> > +#include <linux/platform_device.h>
-> > +#include <linux/soc/mediatek/mtk-cmdq.h>
-> > +
-> > +#include "mtk_disp_drv.h"
-> > +#include "mtk_drm_crtc.h"
-> > +#include "mtk_drm_ddp_comp.h"
-> > +
-> > +#define DISP_POSTMASK_EN			0x0000
-> > +#define POSTMASK_EN					BIT(0)
-> > +#define DISP_POSTMASK_CFG			0x0020
-> > +#define POSTMASK_RELAY_MODE				BIT(0)
-> > +#define DISP_POSTMASK_SIZE			0x0030
-> > +
-> > +struct mtk_disp_postmask_data {
-> > +	u32 reserved;
-> > +};
-> > +
-> > +/*
-> > + * struct mtk_disp_postmask - DISP_POSTMASK driver structure
-> > + */
-> > +struct mtk_disp_postmask {
-> > +	struct clk *clk;
-> > +	void __iomem *regs;
-> > +	struct cmdq_client_reg cmdq_reg;
-> > +	const struct mtk_disp_postmask_data *data;
-> > +};
-> > +
-> > +int mtk_postmask_clk_enable(struct device *dev)
-> > +{
-> > +	struct mtk_disp_postmask *postmask = dev_get_drvdata(dev);
-> > +
-> > +	return clk_prepare_enable(postmask->clk);
-> > +}
-> > +
-> > +void mtk_postmask_clk_disable(struct device *dev)
-> > +{
-> > +	struct mtk_disp_postmask *postmask = dev_get_drvdata(dev);
-> > +
-> > +	clk_disable_unprepare(postmask->clk);
-> > +}
-> > +
-> > +void mtk_postmask_config(struct device *dev, unsigned int w,
-> > +				unsigned int h, unsigned int vrefresh,
-> > +				unsigned int bpc, struct cmdq_pkt
-> > *cmdq_pkt)
-> > +{
-> > +	struct mtk_disp_postmask *postmask = dev_get_drvdata(dev);
-> > +
-> > +	mtk_ddp_write(cmdq_pkt, w << 16 | h, &postmask->cmdq_reg,
-> > postmask->regs,
-> > +		      DISP_POSTMASK_SIZE);
-> > +	mtk_ddp_write(cmdq_pkt, POSTMASK_RELAY_MODE, &postmask-
-> > > cmdq_reg,
-> > 
-> > +		      postmask->regs, DISP_POSTMASK_CFG);
-> > +}
-> > +
-> > +void mtk_postmask_start(struct device *dev)
-> > +{
-> > +	struct mtk_disp_postmask *postmask = dev_get_drvdata(dev);
-> > +
-> > +	writel(POSTMASK_EN, postmask->regs + DISP_POSTMASK_EN);
-> > +}
-> > +
-> > +void mtk_postmask_stop(struct device *dev)
-> > +{
-> > +	struct mtk_disp_postmask *postmask = dev_get_drvdata(dev);
-> > +
-> > +	writel_relaxed(0x0, postmask->regs + DISP_POSTMASK_EN);
-> > +}
-> > +
-> > +static int mtk_disp_postmask_bind(struct device *dev, struct
-> > device
-> > *master,
-> > +				  void *data)
-> > +{
-> > +	return 0;
-> > +}
-> > +
-> > +static void mtk_disp_postmask_unbind(struct device *dev, struct
-> > device *master,
-> > +				     void *data)
-> > +{
-> > +}
-> > +
-> > +static const struct component_ops mtk_disp_postmask_component_ops
-> > =
-> > {
-> > +	.bind	= mtk_disp_postmask_bind,
-> > +	.unbind = mtk_disp_postmask_unbind,
-> > +};
-> > +
-> > +static int mtk_disp_postmask_probe(struct platform_device *pdev)
-> > +{
-> > +	struct device *dev = &pdev->dev;
-> > +	struct mtk_disp_postmask *priv;
-> > +	struct resource *res;
-> > +	int ret;
-> > +
-> > +	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-> > +	if (!priv)
-> > +		return -ENOMEM;
-> > +
-> > +	priv->clk = devm_clk_get(dev, NULL);
-> > +	if (IS_ERR(priv->clk)) {
-> > +		dev_err(dev, "failed to get postmask clk\n");
-> > +		return PTR_ERR(priv->clk);
-> > +	}
-> > +
-> > +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> > +	priv->regs = devm_ioremap_resource(dev, res);
-> > +	if (IS_ERR(priv->regs)) {
-> > +		dev_err(dev, "failed to ioremap postmask\n");
-> > +		return PTR_ERR(priv->regs);
-> > +	}
-> > +
-> > +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-> > +	ret = cmdq_dev_get_client_reg(dev, &priv->cmdq_reg, 0);
-> > +	if (ret)
-> > +		dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
-> > +#endif
-> > +
-> > +	priv->data = of_device_get_match_data(dev);
-> > +	platform_set_drvdata(pdev, priv);
-> > +
-> > +	ret = component_add(dev, &mtk_disp_postmask_component_ops);
-> > +	if (ret)
-> > +		dev_err(dev, "Failed to add component: %d\n", ret);
-> > +
-> > +	return ret;
-> > +}
-> > +
-> > +static int mtk_disp_postmask_remove(struct platform_device *pdev)
-> > +{
-> > +	component_del(&pdev->dev, &mtk_disp_postmask_component_ops);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static const struct of_device_id
-> > mtk_disp_postmask_driver_dt_match[]
-> > = {
-> > +	{ .compatible = "mediatek,mt8192-disp-postmask"},
-> > +	{},
-> > +};
-> > +MODULE_DEVICE_TABLE(of, mtk_disp_postmask_driver_dt_match);
-> > +
-> > +struct platform_driver mtk_disp_postmask_driver = {
-> > +	.probe		= mtk_disp_postmask_probe,
-> > +	.remove		= mtk_disp_postmask_remove,
-> > +	.driver		= {
-> > +		.name	= "mediatek-disp-postmask",
-> > +		.owner	= THIS_MODULE,
-> > +		.of_match_table = mtk_disp_postmask_driver_dt_match,
-> > +	},
-> > +};
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > index b4b682bc1991..184b70b2483e 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > @@ -45,12 +45,6 @@
-> >  #define OD_RELAYMODE				BIT(0)
-> >  #define DISP_REG_OD_SIZE			0x0030
-> >  
-> > -#define DISP_REG_POSTMASK_EN			0x0000
-> > -#define POSTMASK_EN					BIT(0)
-> > -#define DISP_REG_POSTMASK_CFG			0x0020
-> > -#define POSTMASK_RELAY_MODE				BIT(0)
-> > -#define DISP_REG_POSTMASK_SIZE			0x0030
-> > -
-> >  #define DISP_REG_UFO_START			0x0000
-> >  #define UFO_BYPASS				BIT(2)
-> >  
-> > @@ -199,31 +193,6 @@ static void mtk_od_start(struct device *dev)
-> >  	writel(1, priv->regs + DISP_REG_OD_EN);
-> >  }
-> >  
-> > -static void mtk_postmask_config(struct device *dev, unsigned int
-> > w,
-> > -				unsigned int h, unsigned int vrefresh,
-> > -				unsigned int bpc, struct cmdq_pkt
-> > *cmdq_pkt)
-> > -{
-> > -	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-> > -
-> > -	mtk_ddp_write(cmdq_pkt, w << 16 | h, &priv->cmdq_reg, priv-
-> > > regs,
-> > 
-> > -		      DISP_REG_POSTMASK_SIZE);
-> > -	mtk_ddp_write(cmdq_pkt, POSTMASK_RELAY_MODE, &priv->cmdq_reg,
-> > -		      priv->regs, DISP_REG_POSTMASK_CFG);
-> > -}
-> > -
-> > -static void mtk_postmask_start(struct device *dev)
-> > -{
-> > -	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-> > -
-> > -	writel(POSTMASK_EN, priv->regs + DISP_REG_POSTMASK_EN);
-> > -}
-> > -
-> > -static void mtk_postmask_stop(struct device *dev)
-> > -{
-> > -	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-> > -
-> > -	writel_relaxed(0x0, priv->regs + DISP_REG_POSTMASK_EN);
-> > -}
-> >  
-> >  static void mtk_ufoe_start(struct device *dev)
-> >  {
-> > @@ -308,8 +277,8 @@ static const struct mtk_ddp_comp_funcs ddp_ovl
-> > =
-> > {
-> >  };
-> >  
-> >  static const struct mtk_ddp_comp_funcs ddp_postmask = {
-> > -	.clk_enable = mtk_ddp_clk_enable,
-> > -	.clk_disable = mtk_ddp_clk_disable,
-> > +	.clk_enable = mtk_postmask_clk_enable,
-> > +	.clk_disable = mtk_postmask_clk_disable,
-> >  	.config = mtk_postmask_config,
-> >  	.start = mtk_postmask_start,
-> >  	.stop = mtk_postmask_stop,
-> > @@ -510,6 +479,7 @@ int mtk_ddp_comp_init(struct device_node *node,
-> > struct mtk_ddp_comp *comp,
-> >  	    type == MTK_DISP_GAMMA ||
-> >  	    type == MTK_DISP_OVL ||
-> >  	    type == MTK_DISP_OVL_2L ||
-> > +	    type == MTK_DISP_POSTMASK ||
-> >  	    type == MTK_DISP_PWM ||
-> >  	    type == MTK_DISP_RDMA ||
-> >  	    type == MTK_DPI ||
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > index 56ff8c57ef8f..6efb423ccc92 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > @@ -609,6 +609,7 @@ static int mtk_drm_probe(struct platform_device
-> > *pdev)
-> >  		    comp_type == MTK_DISP_GAMMA ||
-> >  		    comp_type == MTK_DISP_OVL ||
-> >  		    comp_type == MTK_DISP_OVL_2L ||
-> > +		    comp_type == MTK_DISP_POSTMASK ||
-> >  		    comp_type == MTK_DISP_RDMA ||
-> >  		    comp_type == MTK_DPI ||
-> >  		    comp_type == MTK_DSI) {
-> > @@ -709,6 +710,7 @@ static struct platform_driver * const
-> > mtk_drm_drivers[] = {
-> >  	&mtk_disp_color_driver,
-> >  	&mtk_disp_gamma_driver,
-> >  	&mtk_disp_ovl_driver,
-> > +	&mtk_disp_postmask_driver,
-> >  	&mtk_disp_rdma_driver,
-> >  	&mtk_dpi_driver,
-> >  	&mtk_drm_platform_driver,
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> > b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> > index 3e7d1e6fbe01..c1e676aebe57 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> > @@ -51,6 +51,7 @@ extern struct platform_driver
-> > mtk_disp_ccorr_driver;
-> >  extern struct platform_driver mtk_disp_color_driver;
-> >  extern struct platform_driver mtk_disp_gamma_driver;
-> >  extern struct platform_driver mtk_disp_ovl_driver;
-> > +extern struct platform_driver mtk_disp_postmask_driver;
-> >  extern struct platform_driver mtk_disp_rdma_driver;
-> >  extern struct platform_driver mtk_dpi_driver;
-> >  extern struct platform_driver mtk_dsi_driver;
-> 
-> 
+On Tue, 8 Feb 2022 at 08:42, Hsin-Yi Wang <hsinyi@chromium.org> wrote:
+>
+> drm_dev_register() sets connector->registration_state to
+> DRM_CONNECTOR_REGISTERED and dev->registered to true. If
+> drm_connector_set_panel_orientation() is first called after
+> drm_dev_register(), it will fail several checks and results in following
+> warning.
+>
+> Add a function to create panel orientation property and set default value
+> to UNKNOWN, so drivers can call this function to init the property earlier
+> , and let the panel set the real value later.
+>
 
+The warning illustrates a genuine race condition, where userspace will
+read the old/invalid property value/state. So this patch masks away
+the WARNING without addressing the actual issue.
+Instead can we fix the respective drivers, so that no properties are
+created after drm_dev_register()?
+
+Longer version:
+As we look into drm_dev_register() it's in charge of creating the
+dev/sysfs nodes (et al). Note that connectors cannot disappear at
+runtime.
+For panel orientation, we are creating an immutable connector
+properly, meaning that as soon as drm_dev_register() is called we must
+ensure that the property is available (if applicable) and set to the
+correct value.
+
+For illustration, consider the following scenario:
+ - DRM modules are loaded late - are not built-in and not part of
+initrd (or there's no initrd)
+ - kernel boots
+ - plymouth/similar user-space component kicks in before the
+driver/module is loaded
+ - module gets loaded, drm_dev_register() kicks in populating /dev/dri/card0
+ - plymouth opens the dev node and reads DRM_MODE_PANEL_ORIENTATION_UNKNOWN
+ - module updates the orientation property
+
+Thanks
+Emil
 
 _______________________________________________
 Linux-mediatek mailing list
