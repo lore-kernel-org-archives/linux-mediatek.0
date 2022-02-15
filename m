@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A93B2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 16:13:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3AE4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 16:37:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W93d8oMQ1HJ+YnaTyY9NmPaNWAxJNsKCGxGbP2Oym6Y=; b=pOCvpW0uK2jiDB
-	SZ0wlFM9R/h0BFus+TOg1cHxIuSxZhp05Tcrrqv2aq+N6t4Yg0qpGKqPThsQeQtjdidreKRdk8uhO
-	loRJTi8OCKJQgac+xSjz0GoQAIecr196hmgfRF45teSXq0xeNcUDiYncvIm7+eNyhXP4Bwbv/ZEKU
-	cPOY14lkOd2Dj2+rfsasOG8N1qvkc2NJiu0VQrht0UUarZO6rtpaFyH4LaO8fpAbU/Q4v7Hywa6wZ
-	Y5cWz0ERn2pN4bJXBwUE6/LkCg6y2suAA6pYrVz358cAP9WRcZb+fMPwGy85yQWyzxSS9OSwuq5Wy
-	0+YjZNZ+JEE+WBGPVphg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:
+	In-Reply-To:Message-ID:Subject:Cc:From:To:Date:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=gr6kaO8lgs2JpSsOljXHnmx0tv0/QeAfAFEg+jEyh9M=; b=baA6FxHUkSYFWD
+	N34DlEqjxU+Oq2oKhnjhCB8F+a20yAt9DRtmhRkgkc5L/HX39vWaiGXBU5H+rjzHKPhN7fWMuD+WT
+	zGqPnl+jrg7XIvTFgDzIde3aVdn4CNSg80/yMjWwn4EnOn6Jv/xd1bwM3BQeiMvlKMSHHD5dOXB6x
+	QWXRmXNykJ4i1zAM8OfovF5d1uwb+W6sVe36mXWRIyyfVi5AJ4RyL7vNG47gsns+HQQ+Nf3HXUcOO
+	7S0f/t43/oWIoe9e0op7wYPH21aCaIoTdL86ELb9wS+Prnsuk8LCcinKslNlqTY6UFGXqBsWKLhmZ
+	u26B0DBAdWL/yhNjqOtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nK0SQ-003bzk-UF; Tue, 15 Feb 2022 16:13:38 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nK0pW-003gmc-AU; Tue, 15 Feb 2022 16:37:30 +0000
+Received: from mail-4018.proton.ch ([185.70.40.18])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nK0Re-003bg9-Jn; Tue, 15 Feb 2022 16:12:53 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 2A68E1F44327
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1644941568;
- bh=+R067hTr4DcfXduf0obDMT7YVwH1DSHSbxv1zGgPcAI=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=ShWCL+I6upqWYD2RXrdnVEJmBpn2nBU73c4LgFFeAI7oJRdPPwvPWdlQw1uQ8qWf9
- ngrpzFHP2Tat3G8YDTG65dDgf4OOxaFCyjL6hWiLavV0u4hnvCdoSfm1Gro2HCKXpJ
- jCUCTVovJXtNRNgN9b/j63dKHBfdGvDPq6KqUUJ4IGOAlpYaJHN4uCqOyCzHazaK3p
- lewQmTDtREMg69Q3eAGXbQ/q2+NhCDoKH7LAfW96rCo8QnWcr+f7rb27YfDNidAwD2
- RphpFJhD4T8dPxs62mXRckpEkNW4890zHVAtbeJKJ70NVxrgRUEw9VlFCIPmWGg6Eq
- Y7UwpLFr24e9Q==
-Message-ID: <5da08d82-a7a1-d9c2-1966-52dfacf45ca5@collabora.com>
-Date: Tue, 15 Feb 2022 17:12:45 +0100
+ id 1nK0pQ-003gky-Bh
+ for linux-mediatek@lists.infradead.org; Tue, 15 Feb 2022 16:37:27 +0000
+Date: Tue, 15 Feb 2022 16:37:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=emersion.fr;
+ s=protonmail2; t=1644943039;
+ bh=f1kG4y1Pad9UaeKLlKedqj/sm+OCsoIlrgJXYL6aSeI=;
+ h=Date:To:From:Cc:Reply-To:Subject:Message-ID:In-Reply-To:
+ References:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+ Message-ID;
+ b=E9V91jN86xK6pzcMltPM69/bOQFFQNJV14lQwmcL2FYT3foga5gLBN44BK4oxAPri
+ Vd8zuw1PuCIPGRg2//vtiVX9F2F6j/JTJL3odWwNmjV4QndYJ/cNzlL994kRk5oss4
+ t+oB5svlaOh0xBX9GF7yyVj1AjeFwDYEvnfX4LlK0wXUUANzluIiX7MMssmf+EtKXg
+ j3TEQWNZHHEFFnC96soVMV8mnPbtAkLt2VhY0qKE/ctXlMHsckdPLAA5vi0D16WsVW
+ ELSgf6c8NzeavnNPc22BI1Gvf+qHdGR5FmKWYe1aX8Wak2lhTUG3wpbv4id1Yx/OtQ
+ 5XOlTjjx0fyLA==
+To: Emil Velikov <emil.l.velikov@gmail.com>
+From: Simon Ser <contact@emersion.fr>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>,
+ ML dri-devel <dri-devel@lists.freedesktop.org>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
+ Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ devicetree <devicetree@vger.kernel.org>,
+ "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>,
+ Maxime Ripard <mripard@kernel.org>, Alex Deucher <alexander.deucher@amd.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Harry Wentland <harry.wentland@amd.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ LAKML <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [Intel-gfx] [PATCH v8 1/3] gpu: drm: separate panel orientation
+ property creating and value setting
+Message-ID: <GYG6EVT1MqtmfKiPpMhDG9mpuATnmwVDq2PuE_dpDat5oQW_t1tUfm39lSWHj32D5r7mrog27sL4dkgdMYQ5BN830TfVOrgQ4Ts8LcO8Hcs=@emersion.fr>
+In-Reply-To: <CACvgo532-pC+7DLFCo=DWTX-OnJEJvSoTmQnt3_qLhiT4cqEMg@mail.gmail.com>
+References: <20220208084234.1684930-1-hsinyi@chromium.org>
+ <CACvgo53u01BK_D0ZssV+gCepjxSz23Nr5Dy1qXeaAoJuu6VCFQ@mail.gmail.com>
+ <KW6DNh6IRRgVJx9DfOFBnEqc4a0x-AnDXEbMxwpfEbk8dOn_KGVzAfo-slJWq-4nWW728Uc-OVpFh2w4fDE4-bxfkDuz1hFILRVvbcuXqaw=@emersion.fr>
+ <CACvgo532-pC+7DLFCo=DWTX-OnJEJvSoTmQnt3_qLhiT4cqEMg@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH] clk: mediatek: Disable ACP to fix 3D on MT8192
-Content-Language: en-US
-To: Robin Murphy <robin.murphy@arm.com>,
- Alyssa Rosenzweig <alyssa@collabora.com>
-Cc: Stephen Boyd <sboyd@kernel.org>,
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
- linux-mediatek@lists.infradead.org,
- Michael Turquette <mturquette@baylibre.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Ikjoon Jang <ikjn@chromium.org>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, Weiyi Lu
- <weiyi.lu@mediatek.com>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, Nick Fan <Nick.Fan@mediatek.com>,
- Nicolas Boichat <drinkcat@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>
-References: <20220110181330.3224-1-alyssa.rosenzweig@collabora.com>
- <eb6d11af-ff48-a366-d428-77bcaa250a8a@arm.com> <YeF/AYZ0DuKGwLLk@maud>
- <CAGXv+5H9BsNUdiY6zMH6THKKMvRdPypNtUEVviMHQEjgNGDk_A@mail.gmail.com>
- <69525223-7d90-5714-bbe9-4d7f0b9a293d@arm.com>
- <20220119021844.3C225C340E5@smtp.kernel.org>
- <5d839338-6072-9c52-1893-2f804d937ea1@arm.com> <YelxN/zpdkukBBqy@maud>
- <c69fcd5d-a79b-ed0e-e803-63bebe987390@collabora.com>
- <9f05238c-4649-0673-21eb-7b7562d0d5c1@arm.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <9f05238c-4649-0673-21eb-7b7562d0d5c1@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_081251_003517_C4BA9D77 
-X-CRM114-Status: GOOD (  36.37  )
+X-CRM114-CacheID: sfid-20220215_083725_264587_C3FFD4FD 
+X-CRM114-Status: GOOD (  32.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,101 +77,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Reply-To: Simon Ser <contact@emersion.fr>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SWwgMTUvMDIvMjIgMTY6MjEsIFJvYmluIE11cnBoeSBoYSBzY3JpdHRvOgo+IE9uIDIwMjItMDIt
-MTUgMTA6NDQsIEFuZ2Vsb0dpb2FjY2hpbm8gRGVsIFJlZ25vIHdyb3RlOgo+PiBJbCAyMC8wMS8y
-MiAxNToyNywgQWx5c3NhIFJvc2VuendlaWcgaGEgc2NyaXR0bzoKPj4+PiBXZSBhbHNvIGFscmVh
-ZHkgaGF2ZSBTb0Mtc3BlY2lmaWMgR1BVIGNvbXBhdGlibGVzIGJlY2F1c2UgZXZlbiB3aXRob3V0
-Cj4+Pj4gZXhwZXJpbWVudGFsIGludGVyY29ubmVjdCBlYXN0ZXIgZWdncywgcGVvcGxlIGludGVn
-cmF0ZSB0aGVzZSBJUHMgaW4gZmFpcmx5Cj4+Pj4gaW52b2x2ZWQgd2F5cyBhbmQgdGhlcmUncyBh
-IGZhaXIgZGVncmVlIG9mIHZhcmlldHkuIEhvd2V2ZXIgdW5sZXNzIHdlIHdhbnQKPj4+PiB0byBi
-ZSBzdXBlci1zdHJpY3QgaXQncyBhbHNvIG5vdCB0b28gaGFyZCB0byBzaW1wbHkgYXNzdW1lIHRo
-YXQgaWYgd2UgY2FuCj4+Pj4gZmluZCBhICJtZWRpYXRlayxtdDgxOTItaW5mcmFjZmciIHN5c2Nv
-biB0aGVuIHdlIHNldCB0aGUgTVQ4MTkyIG1hZ2ljIGJpdAo+Pj4+IHdpdGhpbiBpdCwgYW5kIGlm
-IHdlIGNhbid0IHRoZW4gd2UgZG9uJ3QuCj4+Pgo+Pj4gV2UgbmVlZCBhIE1UODE5Mi1zcGVjaWZp
-YyBjb21wYXRpYmxlIGZvciB0aGUgR1BVIGFueXdheSBkdWUgdG8gInVuaXF1ZSIKPj4+IHBvd2Vy
-IG1hbmFnZW1lbnQgcmVxdWlyZW1lbnRzLCB0aGlzIGlzIHdoeSB0aGUgTVQ4MTgzIGJlZm9yZSBp
-dCBoYXMgYQo+Pj4gc3BlY2lmaWMgR1BVIGNvbXBhdGlibGUuIFNvIEknbSBub3Qgd29ycmllZCBh
-Ym91dCB0aGUgY29tcGF0aWJsZS4KPj4+Cj4+Cj4+IFRoaW5nIGlzLCBhcyBpdCB3YXMgZXhwbGFp
-bmVkLCB0aGlzIGlzIGFib3V0IGEgdW53YW50ZWQgU29DIG1pc2NvbmZpZ3VyYXRpb24sCj4+IGhl
-bmNlIHRoaXMgaXMgdmVyeSBzcGVjaWZpYyB0byBvbmUgU29DLCB3aGljaCAqaGFwcGVucyB0byog
-aW50ZWdyYXRlIGEgTWFsaSBHUFUuCj4+Cj4+IEkgYWdyZWUgd2l0aCBTdGVwaGVuJ3MgcmVhc29u
-aW5nIC0gYWxzbyBpbiBteSBvcGluaW9uLCB0aGUgcGFuZnJvc3QgZHJpdmVyIHNob3VsZAo+PiBi
-ZSBkZWRpY2F0ZWQgdG8gbWFuYWdpbmcgdGhlIE1hbGkgR1BVcyBhbmQgKm5vdCogdGhlIFNvQ3Mg
-b24gd2hpY2ggaXQgaXMgcHJlc2VudCwKPj4gc28gZGlzYWJsaW5nIHRoZSBBY2NlbGVyYXRvciBD
-b2hlcmVuY3kgUG9ydCBmb3IgTUZHIHNob3VsZCBiZSBwZXJmb3JtZWQgaW5zaWRlIG9mCj4+IGZp
-bGVzIHRoYXQgYXJlIGRlYWxpbmcgd2l0aCB0aGUgc3BlY2lmaWMgU29DIHRoYXQgcmVxdWlyZXMg
-dGhpcyBjb25maWd1cmF0aW9uIChvciwKPj4gaWYgeW91IHdhbnQsIHF1aXJrKS4KPj4KPj4gU2lt
-cGx5IHB1dCwgdGhvdWdoLCBhcyB5b3UgYWxyZWFkeSBwZXJmZWN0bHkga25vdywgdGhlcmUgaXMg
-bm8gZHJpdmVyIHRoYXQgaXMKPj4gZGVkaWNhdGVkIHRvIGV4Y2x1c2l2ZWx5IG1hbmFnZSB0aGUg
-ImV4dHJhIiBJTkZSQSBiaXRzLCBzbyBoZXJlJ3Mgd2hhdCBJJ3ZlIGJlZW4KPj4gdGhpbmtpbmcg
-Zm9yIGEgd2hpbGU7IG15IGxvZ2ljYWwgcmVhc29uaW5nOgo+PiAtIERvaW5nIGl0IGluIHRoZSBJ
-T01NVSBkcml2ZXIgbWF5IHNlZW0gYXQgYSBmaXJzdCBnbGFuY2UgdG8gbWFrZSBzb21lIHNlbnNl
-LAo+PiDCoMKgIGJ1dCB0aGVuLCBkb2VzIHRoaXMgcmVhbGx5IGhhdmUgYW55dGhpbmcgdG8gZG8g
-d2l0aCB0aGUgSU9NTVU/IEkgZG9uJ3QgdGhpbmsgc287Cj4+IC0gUGVyZm9ybWluZyB0aGUgZGlz
-YWJsZW1lbnQgaW4gbXRrLXBtLWRvbWFpbnMgaXMgdmVyeSBzaGFkeS4uLiB0aGVyZSdzIG5vdGhp
-bmcKPj4gwqDCoCB0aGF0IHNjcmVhbXMgInBvd2VyIiBpbiB0aGF0Owo+PiAtIFRoaXMgZG9lc24n
-dCBzY3JlYW0gImNsb2NrcyIgZWl0aGVyLCBJIHVuZGVyc3RhbmQgdGhhdDsKPj4gLSBBcyBmYXIg
-YXMgSSB1bmRlcnN0YW5kIHRoaXMgc3BlY2lmaWMgdGhpbmcgd29uJ3QgaGFwcGVuIGFueW1vcmUg
-KG9yIGF0IGxlYXN0LAo+PiDCoMKgIG5vdCBpbiBNZWRpYVRlayBsYW5kLCBidXQgSSBhbHNvIGRv
-bid0IGV4cGVjdCB0byBzZWUgdGhpcyBvbiBvdGhlciBTb0NzKS4KPj4KPj4gR2V0dGluZyBiYWNr
-IHRvIE1lZGlhVGVrLWxhbmQsIG9ubHkgTVQ4MTkyIGlzIChhbmQgd2lsbCBldmVyIGJlKSBhZmZl
-Y3RlZCwgZnJvbQo+PiB3aGF0IEkgdW5kZXJzdGFuZC4uLiBhbmQgdGhlcmUgaXMgb25lIGRyaXZl
-ciB0aGF0IGlzIHZlcnkgc3BlY2lmaWMgdG8sIHRhcmdldHMKPj4gb25seSwgYW5kIHdvdWxkIHBy
-b2JlIG9ubHkgb24gTVQ4MTkyIC0gd2hpY2ggYWxzbyBoYXBwZW5zIHRvIG1hbmFnZSB0aGUgdmVy
-eSBzYW1lCj4+IGlvc3BhY2UgdGhhdCB3ZSBhbHNvIHdhbnQgdG8gcG9rZSBhdCB0byBkaXNhYmxl
-IHRoaXMgYml0Li4uLi4uCj4+Cj4+IC4uLiBjbGstbXQ4MTkyIQo+IAo+IFRoZSBvbmx5IHRyb3Vi
-bGUgd2l0aCB0aGF0IGFyZ3VtZW50IGlzIHRoYXQgaXQgZmFsbHMgYXBhcnQgdW5kZXIgdGhlCj4g
-c2xpZ2h0ZXN0IHNjcnV0aW55IDspCj4gCj4gVGhlIHJlbGV2YW50IHBhcnRzIG9mIHRoZSBwb3dl
-ciBkb21haW4sIElPTU1VIGFuZCBHUFUgZHJpdmVycyBhcmUgZXZlcnkKPiBiaXQgYXMgU29DLXNw
-ZWNpZmljIGFzIHRoZSBjbG9jayBkcml2ZXIsIGFuZCBpdCBpcyB0aGUgZ2VuZXJpYyBzeXNjb24K
-PiBkcml2ZXIgd2hpY2ggb3ducyBhbmQgbWFuYWdlcyB0aGUgYWN0dWFsIE1NSU8gc3BhY2UuCj4g
-Cj4gQWxsIGluIGFsbCB0aGlzIGhhcyBub3cgY29udmluY2VkIG1lIHRoYXQgaXQgKmlzKiB3b3J0
-aCB0aGUgc2xpZ2h0IGV4dHJhCj4gZWZmb3J0IHRvIHB1dCByYW5kb20gaW5mcmFjZmcgc3R1ZmYg
-aW4gdGhlIHJhbmRvbSBpbmZyYWNmZyBzdHVmZiBwbGFjZS4KPiBBbmQgYnkgInNsaWdodCIgSSBt
-ZWFuIGl0IHR1cm5zIG91dCBJJ3ZlIHNwZW50IGxvbmdlciB3cml0aW5nIHRoaXMgcHJvc2UKPiB0
-aGFuIGJhc2hpbmcgb3V0IHRoZSBpbGx1c3RyYXRpdmUgZGlmZiBiZWxvdywgd2hpY2ggaXMgdGhl
-IGxhc3Qgb3Bpbmlvbgo+IEkgc2hhbGwgaGF2ZSBvbiB0aGlzIG1hdHRlci4gRmVlbCBmcmVlIHRv
-IHRha2UgaXQgYW5kIGZpeCBpdCwgb3IgZG8gYW55dGhpbmcgZWxzZSAKPiBpZiB5b3UgcHJlZmVy
-IDopCj4gCgpIZWxsbyBSb2JpbiwKCkkgYW0gYSBiaXQgYXNoYW1lZCB0byBhZG1pdCB0aGF0IEkg
-aGF2ZW4ndCBmdWxseSBjb25zaWRlcmVkIHRoZSBvcHRpb24gb2YgcHV0dGluZwp0aGUgcmFuZG9t
-IGluZnJhY2ZnIHN0dWZmIGluIHRoZSByYW5kb20gaW5mcmFjZmcgc3R1ZmYgcGxhY2UuCgpUaGlz
-IHNvbHV0aW9uIGxvb2tzIGxpa2UgYmVpbmcgdGhlIG1vc3Qgc2Vuc2libGUgdGhpbmcgdGhhdCB3
-ZSBjYW4gYWN0dWFsbHkgZG8gdG8KcGF0Y2ggdXAgdGhpcyBiaXQuCgpUaGFua3MgYSBsb3QgZm9y
-IHRoZSBhZHZpY2UhIQoKQ2hlZXJzLApBbmdlbG8KCj4gQ2hlZXJzLAo+IFJvYmluLgo+IAo+IC0t
-LS0tPjgtLS0tLQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3NvYy9tZWRpYXRlay9tdGstaW5mcmFj
-ZmcuYyBiL2RyaXZlcnMvc29jL21lZGlhdGVrL210ay1pbmZyYWNmZy5jCj4gaW5kZXggMDU5MGI2
-OGUwZDc4Li5hZjIyZDBmM2Q1NDcgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9zb2MvbWVkaWF0ZWsv
-bXRrLWluZnJhY2ZnLmMKPiArKysgYi9kcml2ZXJzL3NvYy9tZWRpYXRlay9tdGstaW5mcmFjZmcu
-Ywo+IEBAIC03MiwzICs3MiwyMCBAQCBpbnQgbXRrX2luZnJhY2ZnX2NsZWFyX2J1c19wcm90ZWN0
-aW9uKHN0cnVjdCByZWdtYXAgKmluZnJhY2ZnLCAKPiB1MzIgbWFzaywKPiAKPiAgwqDCoMKgwqAg
-cmV0dXJuIHJldDsKPiAgwqB9Cj4gKwo+ICtzdGF0aWMgaW50IF9faW5pdCBtdGtfaW5mcmFjZmdf
-aW5pdCh2b2lkKQo+ICt7Cj4gK8KgwqDCoCBzdHJ1Y3QgcmVnbWFwICppbmZyYWNmZzsKPiArCj4g
-K8KgwqDCoCAvKgo+ICvCoMKgwqDCoCAqIE1UODE5MiBoYXMgYW4gZXhwZXJpbWVudGFsIHBhdGgg
-dG8gcm91dGUgR1BVIHRyYWZmaWMgdG8gdGhlIERTVSdzCj4gK8KgwqDCoMKgICogQWNjZWxlcmF0
-b3IgQ29oZXJlbmN5IFBvcnQsIHdoaWNoIGlzIGluYWR2ZXJ0ZW50bHkgZW5hYmxlZCBieQo+ICvC
-oMKgwqDCoCAqIGRlZmF1bHQuIEl0IHR1cm5zIG91dCBub3QgdG8gd29yayB2ZXJ5IHdlbGwsIHNv
-IGRpc2FibGUgaXQuCj4gK8KgwqDCoMKgICovCj4gK8KgwqDCoCBpbmZyYWNmZyA9IHN5c2Nvbl9y
-ZWdtYXBfbG9va3VwX2J5X2NvbXBhdGlibGUoIm1lZGlhdGVrLG10ODE5Mi1pbmZyYWNmZyIpOwo+
-ICvCoMKgwqAgaWYgKGluZnJhY2ZnKQo+ICvCoMKgwqDCoMKgwqDCoCByZWdtYXBfc2V0X2JpdHMo
-aW5mcmFjZmcsIE1UODE5Ml9JTkZSQV9DVFJMLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqAgTVQ4MTkyX0lORlJBX0NUUkxfRElTQUJMRV9NRkcyQUNQKTsKPiArwqDCoMKgIHJldHVy
-biAwOwo+ICt9Cj4gK3Bvc3Rjb3JlX2luaXRjYWxsKG10a19pbmZyYWNmZ19pbml0KTsKPiBkaWZm
-IC0tZ2l0IGEvaW5jbHVkZS9saW51eC9zb2MvbWVkaWF0ZWsvaW5mcmFjZmcuaCAKPiBiL2luY2x1
-ZGUvbGludXgvc29jL21lZGlhdGVrL2luZnJhY2ZnLmgKPiBpbmRleCA0NjE1YTIyOGRhNTEuLjk0
-ZjBmMzM4Y2U0OSAxMDA2NDQKPiAtLS0gYS9pbmNsdWRlL2xpbnV4L3NvYy9tZWRpYXRlay9pbmZy
-YWNmZy5oCj4gKysrIGIvaW5jbHVkZS9saW51eC9zb2MvbWVkaWF0ZWsvaW5mcmFjZmcuaAo+IEBA
-IC0xNDcsNiArMTQ3LDkgQEAKPiAgwqAjZGVmaW5lIElORlJBX1RPUEFYSV9QUk9URUNURU5fU0VU
-wqDCoMKgwqDCoMKgwqAgMHgwMjYwCj4gIMKgI2RlZmluZSBJTkZSQV9UT1BBWElfUFJPVEVDVEVO
-X0NMUsKgwqDCoMKgwqDCoMKgIDB4MDI2NAo+IAo+ICsjZGVmaW5lIE1UODE5Ml9JTkZSQV9DVFJM
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAweDI5MAo+ICsjZGVmaW5lIE1UODE5Ml9JTkZSQV9DVFJM
-X0RJU0FCTEVfTUZHMkFDUMKgwqDCoCBCSVQoOSkKPiArCj4gIMKgI2RlZmluZSBSRUdfSU5GUkFf
-TUlTQ8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAweGYwMAo+ICDCoCNkZWZpbmUgRl9E
-RFJfNEdCX1NVUFBPUlRfRU7CoMKgwqDCoMKgwqDCoMKgwqDCoMKgIEJJVCgxMykKPiAKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRl
-ayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Tuesday, February 15th, 2022 at 15:38, Emil Velikov <emil.l.velikov@gmail.com> wrote:
+
+> On Tue, 15 Feb 2022 at 13:55, Simon Ser <contact@emersion.fr> wrote:
+> >
+> > On Tuesday, February 15th, 2022 at 13:04, Emil Velikov <emil.l.velikov@gmail.com> wrote:
+> >
+> > > Greetings everyone,
+> > >
+> > > Padron for joining in so late o/
+> > >
+> > > On Tue, 8 Feb 2022 at 08:42, Hsin-Yi Wang <hsinyi@chromium.org> wrote:
+> > > >
+> > > > drm_dev_register() sets connector->registration_state to
+> > > > DRM_CONNECTOR_REGISTERED and dev->registered to true. If
+> > > > drm_connector_set_panel_orientation() is first called after
+> > > > drm_dev_register(), it will fail several checks and results in following
+> > > > warning.
+> > > >
+> > > > Add a function to create panel orientation property and set default value
+> > > > to UNKNOWN, so drivers can call this function to init the property earlier
+> > > > , and let the panel set the real value later.
+> > > >
+> > >
+> > > The warning illustrates a genuine race condition, where userspace will
+> > > read the old/invalid property value/state. So this patch masks away
+> > > the WARNING without addressing the actual issue.
+> > > Instead can we fix the respective drivers, so that no properties are
+> > > created after drm_dev_register()?
+> > >
+> > > Longer version:
+> > > As we look into drm_dev_register() it's in charge of creating the
+> > > dev/sysfs nodes (et al). Note that connectors cannot disappear at
+> > > runtime.
+> > > For panel orientation, we are creating an immutable connector
+> > > properly, meaning that as soon as drm_dev_register() is called we must
+> > > ensure that the property is available (if applicable) and set to the
+> > > correct value.
+> >
+> > Unfortunately we can't quite do this. To apply the panel orientation quirks we
+> > need to grab the EDID of the eDP connector, and this happened too late in my
+> > testing.
+> >
+> > What we can do is create the prop early during module load, and update it when
+> > we read the EDID (at the place where we create it right now). User-space will
+> > receive a hotplug event after the EDID is read, so will be able to pick up the
+> > new value if any.
+>
+> Didn't quite get that, are you saying that a GETPROPERTY for the EDID,
+> the ioctl blocks or that we get an empty EDID?
+
+I'm not referring to GETPROPERTY, I'm referring to the driver getting the EDID
+from the sink (here, the eDP panel). In my experimentations with amdgpu I
+noticed that the driver module load finished before the EDID was available to
+the driver. Maybe other drivers behave differently and probe connectors when
+loaded, not sure.
+
+> The EDID hotplug even thing is neat - sounds like it also signals on
+> panel orientation, correct?
+> On such an event, which properties userspace should be re-fetching -
+> everything or guess randomly?
+>
+> Looking through the documentation, I cannot see a clear answer :-\
+
+User-space should re-fetch *all* properties. In practice some user-space may
+only be fetching some properties, but that should get fixed in user-space.
+
+Also the kernel can indicate that only a single connector changed via the
+"CONNECTOR" uevent prop, or even a single connector property via "PROPERTY".
+See [1] for a user-space implementation. But all of this is purely an optional
+optimization. Re-fetching all properties is a bit slower (especially if some
+drmModeGetConnector calls force-probe connectors) but works perfectly fine.
+
+It would be nice to document, if you have the time feel free to send a patch
+and CC danvet, pq and me.
+
+[1]: https://gitlab.freedesktop.org/wlroots/wlroots/-/blob/252b2348bd62170d97c4e81fb2050f757b56d67e/backend/session/session.c#L144
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
