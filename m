@@ -4,84 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 317DAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Feb 2022 12:01:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61CB4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Feb 2022 13:26:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m5iQ77oe1JgmhvYa3Us+B5CazhxOGmyhVSfoeL9ANaw=; b=3Z2KkLeEv6RbQa
-	rlDTxpdPqv13h8TjgvLdZXttavdZe8zdflzvvukj56HnDqVRfrgKckbAR3R33Eegj6qKh26PXK7vE
-	MS7B4bwzof4ki/q8KTY2HIlwRVKHpDZxHfzo4YsVVgghfhQU3LqyfIlD4ce/CP2PiiD7Gz/YRN4wg
-	HwXi0OHps0oRsfBCFGRedK40I5W+LkgXPXIsBKCKP04ttnwMA0X1buo09cH9HNhma79NM3UAxB+7Q
-	76N0lYLK/3M6qLXS7nQb+JE8Ok8fyhBm8Nwdyih0HlVQDE566rY5mrT/w6YccWuVFyR++qNscrGYy
-	qHfK8lUK23tqPveHBEBQ==;
+	List-Owner; bh=+2QfjU+I72ii2QSiCl8KrkQrmmTrOgLheK85faI7QIk=; b=KntK9ifNj8hb5f
+	nafF5n7YnooDjjxNF4pQe8KQhengHMt11spA+z+mIDcgXpk/pPNrAGRa6oTBG29NEcZ+UfvrrKXTS
+	3dEZHX5qjE5Ay9Raidov18gvcI4zxlhqGDs7R1vWgnZNCPpqyL/pjKHY08W3gjKiLqVnyJGRzXiN8
+	SJSVHEZ2ZFSlcPXVooKYPitX72EsfwUlzsmdiAMPKPsXLYQUjOp8tqnagxaS+vr2j8HFL+rTC0QGe
+	n7Xc7c6kHPkQv/8iewcLD6QUJKVfW/ecnj9cBVmzRezAfl5YR8wBy8cX9lODBy8/fXmoy90Fm9+4+
+	H0n8yJArItyO0KGktY1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKIzY-006rTE-R0; Wed, 16 Feb 2022 12:01:04 +0000
-Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
+	id 1nKKKE-007ATT-CQ; Wed, 16 Feb 2022 13:26:30 +0000
+Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKIzI-006rMO-Mo; Wed, 16 Feb 2022 12:00:51 +0000
-Received: by mail-qv1-xf35.google.com with SMTP id fh9so1849277qvb.1;
- Wed, 16 Feb 2022 04:00:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cQvOjIROjp4zDNuMZYbqh86L4m+vxJGvKJ604jfTJTw=;
- b=N9wnl8+At1bfN/IgY71qE/9enXNC/I0uomEOiyCqHs1huRf80v1vPyf1KPwTBtuuMY
- ySRrLpd/13BnMtPnT7dsgCj7vksrB9Vnz5k521h31u402pz97WT/nQvNlr7HCmrEk5Jd
- S8QvmdldTCng6bBWqBb9wbHuEGB687ESAVndbnYFA3Ic7aaUpeTGW3Pil6EbgJ3yw84R
- GILrnTSmsLHTiUVrt79J9hMQqfjtojnyiim9lpVXK9cSf9sUTip3OqGYZkBMxYDh03yi
- MJ3IwWCRgjUyTDySrE7H66awu/k+u62bEdMul20Kqp+EOUn6qGgKHBaI99awmFHe8Cc0
- 3n2w==
+ id 1nKKK8-007AQq-EF
+ for linux-mediatek@lists.infradead.org; Wed, 16 Feb 2022 13:26:28 +0000
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id D0C4C4060A
+ for <linux-mediatek@lists.infradead.org>; Wed, 16 Feb 2022 13:26:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1645017976;
+ bh=HnLv2sgPTFeJCaPDj49F4ixfOdgITRk3XaxRkpYlXz0=;
+ h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+ In-Reply-To:Content-Type;
+ b=d+ytUNIq/+YlMjkBHdiOV8f4oLa5IC3GzB6jvG+C7TfcqFdyX0KOr+USFSxC9EfzW
+ gq4sf5GP+2Y9PEsc59qza/ErxG8NRKgmR8tyS5azhFwTtH329ZDBm2ITajzRbvduwY
+ djHyqSCQsWveL2va2wT/eOz4fRUQ919qHtZ2EAJMnfzUI3Wx3c6Q1V+f7+lSJTGT4Y
+ cV623To1sFST3A04oSdbBkd9Bl541P8v4XHGEujKDhUeevB7FXVse+VpePM30PDXFt
+ yGlxbJTMN8smPmt2kqJYtjVhq3t5quGgig62hqd/H4EX/8G0JdurlhhgrHXxiDxruR
+ SppoGEjyty4Fw==
+Received: by mail-ed1-f69.google.com with SMTP id
+ s7-20020a508dc7000000b0040f29ccd65aso1569800edh.1
+ for <linux-mediatek@lists.infradead.org>; Wed, 16 Feb 2022 05:26:16 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=cQvOjIROjp4zDNuMZYbqh86L4m+vxJGvKJ604jfTJTw=;
- b=ZGD2TjYhjlmt803evFG/g5LpDKDYmEPRLrZuDaHQt0wO1F5tFqx3O1o0LHbjqr9TfO
- 7PVMsT4J30Kx1W2HmAcBj4F9Nqqjl0LYH1BVp5WDrJjZnL6fqlFMqnX3jRSp5hwSPEww
- LqvL9BRgaseHvR+7ey0ec7W4PSzgQEkhOpZnh23T5QfuQJhAwbd+IHs6QxZ3Uxvnyxso
- b67yPFROcurie7fC5T5Las0b9NfkAIwMpFfqNSYpvhZoxOONWTeTXQYLfmaLqTzRmo2z
- yuC1o5AA97xRn/Q3hRf/Jv54fghh/z8eZ8xGrxebkTz2vwf9Sxp7CBCbhEgY/Cst5L7k
- uUkw==
-X-Gm-Message-State: AOAM5304tWT2rU5pkXqvezZKtdB/D5cgLAY8JbuuWmME7JV51ba42qdU
- vitcr2R6p5twxjZvjQETVjIiErl9U4sXC7sLUgA=
-X-Google-Smtp-Source: ABdhPJwg7yjA4t72Kpkib54Bk/3LZCXg5ZKFnD3VS3sB64mSjOVkkzuHZ7deSjR6ZyjiByrca9BkgKOtd/mBXxfw0Cc=
-X-Received: by 2002:ad4:58af:0:b0:42c:33e5:ddda with SMTP id
- ea15-20020ad458af000000b0042c33e5dddamr1483996qvb.27.1645012843985; Wed, 16
- Feb 2022 04:00:43 -0800 (PST)
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=HnLv2sgPTFeJCaPDj49F4ixfOdgITRk3XaxRkpYlXz0=;
+ b=T7A/wEmhmdo88Ug+2M1R1kw0bMD38Lpq1oTRdP7xDXPsM/IVJ2CCWzx8tCbSyEAzV3
+ Mu1T3QSZAD87zZnPAP1T1dDArH0ujwmqLAbJp2hv9D0F5nDEY5BLVDmBgP3cT2HwCHb4
+ b/VDf22EbrQnVgGuqVS60bEwfuKeUQ69XKXRlWLPOtbzp95gyrqTB0w1C4n9dqMNcknF
+ 7yTxs0p7j76ieKnJJF/XwG1ifyv+HvR90LKdjWe7bNx3hGTMOHLo5althlMfxbjsswZD
+ dgc/JNJbsQb37zzOJ01pXdR07W1PXMPOP+O2hSSHWZUdE8HzHElJNwjfKzVqF1lD5VZg
+ eMbg==
+X-Gm-Message-State: AOAM530RPEZlXvdPGGJpxDePCsBKrVJALVJjhmOXAjGiwviKIbYzA/3I
+ 8jF6L7Yy6xD+eaymjBydjnggvM4sRJIRHZ/7uPnCRSe5W2U+EQWLoD9CURwIpTZ/BB6SgjLyGmH
+ 9vqSjU3hnhxltQUFJp23g42egDUFSrrmWepmqofu15PzsH618tA==
+X-Received: by 2002:a17:906:1be1:b0:6ce:b0a8:17d with SMTP id
+ t1-20020a1709061be100b006ceb0a8017dmr2212963ejg.413.1645017975978; 
+ Wed, 16 Feb 2022 05:26:15 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwW6N5tK5VHWBe36Bj5vHHIMzDJlCB0AOnINLyfOUpi+aCPHYXEWQjcBrraceqmA2DJkZ7r6A==
+X-Received: by 2002:a17:906:1be1:b0:6ce:b0a8:17d with SMTP id
+ t1-20020a1709061be100b006ceb0a8017dmr2212939ejg.413.1645017975741; 
+ Wed, 16 Feb 2022 05:26:15 -0800 (PST)
+Received: from [192.168.0.110] (xdsl-188-155-168-84.adslplus.ch.
+ [188.155.168.84])
+ by smtp.gmail.com with ESMTPSA id qf12sm1085572ejc.54.2022.02.16.05.26.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 16 Feb 2022 05:26:15 -0800 (PST)
+Message-ID: <79a47f67-bb66-bad4-b6bc-c6a8c0ef25dc@canonical.com>
+Date: Wed, 16 Feb 2022 14:26:14 +0100
 MIME-Version: 1.0
-References: <20220208084234.1684930-1-hsinyi@chromium.org>
- <CACvgo53u01BK_D0ZssV+gCepjxSz23Nr5Dy1qXeaAoJuu6VCFQ@mail.gmail.com>
- <KW6DNh6IRRgVJx9DfOFBnEqc4a0x-AnDXEbMxwpfEbk8dOn_KGVzAfo-slJWq-4nWW728Uc-OVpFh2w4fDE4-bxfkDuz1hFILRVvbcuXqaw=@emersion.fr>
- <CACvgo532-pC+7DLFCo=DWTX-OnJEJvSoTmQnt3_qLhiT4cqEMg@mail.gmail.com>
- <GYG6EVT1MqtmfKiPpMhDG9mpuATnmwVDq2PuE_dpDat5oQW_t1tUfm39lSWHj32D5r7mrog27sL4dkgdMYQ5BN830TfVOrgQ4Ts8LcO8Hcs=@emersion.fr>
-In-Reply-To: <GYG6EVT1MqtmfKiPpMhDG9mpuATnmwVDq2PuE_dpDat5oQW_t1tUfm39lSWHj32D5r7mrog27sL4dkgdMYQ5BN830TfVOrgQ4Ts8LcO8Hcs=@emersion.fr>
-From: Emil Velikov <emil.l.velikov@gmail.com>
-Date: Wed, 16 Feb 2022 12:00:32 +0000
-Message-ID: <CACvgo52+o9_ETC+1RKzqKkyw3ZJ28RjH0BqC9DfmNAKqByud8Q@mail.gmail.com>
-Subject: Re: [Intel-gfx] [PATCH v8 1/3] gpu: drm: separate panel orientation
- property creating and value setting
-To: Simon Ser <contact@emersion.fr>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>,
- ML dri-devel <dri-devel@lists.freedesktop.org>, 
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
- amd-gfx mailing list <amd-gfx@lists.freedesktop.org>, 
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- devicetree <devicetree@vger.kernel.org>, 
- "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>,
- Maxime Ripard <mripard@kernel.org>, 
- Alex Deucher <alexander.deucher@amd.com>, Rob Herring <robh+dt@kernel.org>, 
- linux-mediatek@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>, 
- Harry Wentland <harry.wentland@amd.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- LAKML <linux-arm-kernel@lists.infradead.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH] dt-bindings: dma: Convert mtk-uart-apdma to DT schema
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ vkoul@kernel.org
+Cc: robh+dt@kernel.org, sean.wang@mediatek.com, matthias.bgg@gmail.com,
+ long.cheng@mediatek.com, dmaengine@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20220216114054.269656-1-angelogioacchino.delregno@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+In-Reply-To: <20220216114054.269656-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220216_040048_756924_A3244831 
-X-CRM114-Status: GOOD (  44.59  )
+X-CRM114-CacheID: sfid-20220216_052624_648369_4C239867 
+X-CRM114-Status: GOOD (  18.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,99 +108,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 15 Feb 2022 at 16:37, Simon Ser <contact@emersion.fr> wrote:
->
-> On Tuesday, February 15th, 2022 at 15:38, Emil Velikov <emil.l.velikov@gmail.com> wrote:
->
-> > On Tue, 15 Feb 2022 at 13:55, Simon Ser <contact@emersion.fr> wrote:
-> > >
-> > > On Tuesday, February 15th, 2022 at 13:04, Emil Velikov <emil.l.velikov@gmail.com> wrote:
-> > >
-> > > > Greetings everyone,
-> > > >
-> > > > Padron for joining in so late o/
-> > > >
-> > > > On Tue, 8 Feb 2022 at 08:42, Hsin-Yi Wang <hsinyi@chromium.org> wrote:
-> > > > >
-> > > > > drm_dev_register() sets connector->registration_state to
-> > > > > DRM_CONNECTOR_REGISTERED and dev->registered to true. If
-> > > > > drm_connector_set_panel_orientation() is first called after
-> > > > > drm_dev_register(), it will fail several checks and results in following
-> > > > > warning.
-> > > > >
-> > > > > Add a function to create panel orientation property and set default value
-> > > > > to UNKNOWN, so drivers can call this function to init the property earlier
-> > > > > , and let the panel set the real value later.
-> > > > >
-> > > >
-> > > > The warning illustrates a genuine race condition, where userspace will
-> > > > read the old/invalid property value/state. So this patch masks away
-> > > > the WARNING without addressing the actual issue.
-> > > > Instead can we fix the respective drivers, so that no properties are
-> > > > created after drm_dev_register()?
-> > > >
-> > > > Longer version:
-> > > > As we look into drm_dev_register() it's in charge of creating the
-> > > > dev/sysfs nodes (et al). Note that connectors cannot disappear at
-> > > > runtime.
-> > > > For panel orientation, we are creating an immutable connector
-> > > > properly, meaning that as soon as drm_dev_register() is called we must
-> > > > ensure that the property is available (if applicable) and set to the
-> > > > correct value.
-> > >
-> > > Unfortunately we can't quite do this. To apply the panel orientation quirks we
-> > > need to grab the EDID of the eDP connector, and this happened too late in my
-> > > testing.
-> > >
-> > > What we can do is create the prop early during module load, and update it when
-> > > we read the EDID (at the place where we create it right now). User-space will
-> > > receive a hotplug event after the EDID is read, so will be able to pick up the
-> > > new value if any.
-> >
-> > Didn't quite get that, are you saying that a GETPROPERTY for the EDID,
-> > the ioctl blocks or that we get an empty EDID?
->
-> I'm not referring to GETPROPERTY, I'm referring to the driver getting the EDID
-> from the sink (here, the eDP panel). In my experimentations with amdgpu I
-> noticed that the driver module load finished before the EDID was available to
-> the driver. Maybe other drivers behave differently and probe connectors when
-> loaded, not sure.
->
-I see thanks.
+On 16/02/2022 12:40, AngeloGioacchino Del Regno wrote:
+> Convert the MediaTek UART APDMA Controller binding to DT schema.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../bindings/dma/mediatek,uart-dma.yaml       | 112 ++++++++++++++++++
+>  .../bindings/dma/mtk-uart-apdma.txt           |  56 ---------
+>  2 files changed, 112 insertions(+), 56 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/dma/mtk-uart-apdma.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml b/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
+> new file mode 100644
+> index 000000000000..4583c8f535b2
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
+> @@ -0,0 +1,112 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/dma/mediatek,uart-dma.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek UART APDMA controller
+> +
+> +maintainers:
+> +  - Long Cheng <long.cheng@mediatek.com>
+> +
+> +description: |
+> +  The MediaTek UART APDMA controller provides DMA capabilities
+> +  for the UART peripheral bus.
+> +
+> +allOf:
+> +  - $ref: "dma-controller.yaml#"
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt2712-uart-dma
+> +              - mediatek,mt8516-uart-dma
+> +          - const: mediatek,mt6577-uart-dma
+> +      - enum:
+> +          - mediatek,mt6577-uart-dma
+> +
+> +  reg:
+> +    minItems: 1
+> +    maxItems: 16
+> +
+> +  interrupts:
+> +    description: |
+> +      TX, RX interrupt lines for each UART APDMA channel
+> +    minItems: 1
 
-> > The EDID hotplug even thing is neat - sounds like it also signals on
-> > panel orientation, correct?
-> > On such an event, which properties userspace should be re-fetching -
-> > everything or guess randomly?
-> >
-> > Looking through the documentation, I cannot see a clear answer :-\
->
-> User-space should re-fetch *all* properties. In practice some user-space may
-> only be fetching some properties, but that should get fixed in user-space.
->
-> Also the kernel can indicate that only a single connector changed via the
-> "CONNECTOR" uevent prop, or even a single connector property via "PROPERTY".
-> See [1] for a user-space implementation. But all of this is purely an optional
-> optimization. Re-fetching all properties is a bit slower (especially if some
-> drmModeGetConnector calls force-probe connectors) but works perfectly fine.
->
-Looking at KDE/kwin (the one I'm running) - doesn't seem like it
-handles any of the three "HOTPLUG", "PROPERTY" or "CONNECTOR" uevents
-:-\
-Skimming through GNOME/mutter - it handles "HOTPLUG", but not the optional ones.
+It would be useful to have an "if:" block constraining the interrupts
+(and reg array?), if the dma-requests is missing. If you need an
+example, see length of "max8997,pmic-buck1-dvs-voltage" array in
+relation to presence of max8997,pmic-buck1-uses-gpio-dvs.
+https://elixir.bootlin.com/linux/v5.17-rc2/source/Documentation/devicetree/bindings/regulator/maxim,max8997.yaml#L259
 
-Guess we're in the clear wrt potential races, even though the
-documentation on the topic is lacklustre.
+The best would be to restrict number of interrupts to number of
+requests, but I think dtschema cannot express this.
 
-> It would be nice to document, if you have the time feel free to send a patch
-> and CC danvet, pq and me.
->
+> +    maxItems: 32
+> +
+> +  clocks:
+> +    description: Must contain one entry for the APDMA main clock
+> +    maxItems: 1
+> +
+> +  clock-names:
+> +    const: apdma
+> +
+> +  "#dma-cells":
+> +    const: 1
+> +    description: |
+> +      The first cell specifies the UART APDMA channel number
+> +
+> +  dma-requests:
+> +    description: |
+> +      Number of virtual channels of the UART APDMA controller
+> +    maximum: 16
+> +
+> +  mediatek,dma-33bits:
+> +    type: boolean
+> +    description: Enable 33-bits UART APDMA support
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - "#dma-cells"
 
-Doubt I will have the time in the upcoming weeks, but I'll add it to
-my ever-growing TODO list :-P
+No need for requiring dma-cells. It is coming from dma-common.yaml.
 
-Thanks
-Emil
+> +
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
