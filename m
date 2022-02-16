@@ -4,92 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0878AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Feb 2022 20:47:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43995C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Feb 2022 01:39:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xKQ2vML0E/cGK8VJDMZAiiLvaFxi4ne9XNHTuPf0m20=; b=3elIVGxS0Dd+1f
-	wt2KvYViTkISTV9m+Qc2vezQ85kXvFyWkQXib7Q5t2DJn61lRgIr8DfqEcIFXxIY6ng9GwO8Qd+nN
-	5tQSM1ufimc2xEnVG73ADMkVYRxnKRk7U+HEL8uL9uRLiHkZoz3cseAKaw3LkyD6Q+JylR7OxmtJh
-	2ZsLejdOljxAdODryvwoBCTICRgTLmVy8jx1ywyoY11XGZ7Z1aeJA/oKw7+iLtwOSkUc5/wvm2ex6
-	I4DusOr4nIMAt/e3btXatTT6wDJibmVvZiL5pPW+Sap/Ua/thr+tquPxjQCDr9VcIysZy+YyMQTox
-	k11+RDNzwbMB0YIQ6nJQ==;
+	List-Owner; bh=fyi1WwCiVWlM1BP35coeFen6kjGXZvFH5b43kb4a5ts=; b=t+t4JJWubu+mdo
+	ZKGLPrZMT7UTKF0RSa+sVNIgyMfA0ySw/dkhvilucQ5X3BnhRWonQ+wYC5qjd5pIMk+u3LzJe3URz
+	VOMfx27UzaCgcKJVFCq6G2cINNEUtaf2m7CtCDcQYxOzP7tjWCDXTn3oB/vG7Mc06xgdFU+wbF/xH
+	VHFXKABZakEDUvGGuHNQcsO+aC/LsvlJ9HrWdXZ0/K9huFYaHnGlDPcnXQpZUyIcUHf9AGg9OKYBw
+	kmYmxut/jUINtW9EuHfAy+YtmTM0z5ur0QDWff61D8a5h/OCycX8S2wsWetrSqkYw5FI6hJF75Gm1
+	ym+fQaV+vGLMSliBDsTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nK4iz-004a27-Ng; Tue, 15 Feb 2022 20:47:01 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1nK9I5-005AqN-G9; Wed, 16 Feb 2022 01:39:33 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nK4io-004a0S-0r; Tue, 15 Feb 2022 20:46:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1644957995;
- bh=0OSbOP7dVuxah5dzxOSWPDpWQt+waq4IO/yrm245na0=;
- h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:In-Reply-To;
- b=RM8lbqfXj4CquNffPjLDAk/zqsA2R7oPEntJIfErC/JFzifQUKiCCwI3sQ/AwS3UH
- u+PDvEN61F59Ofw1QXdQ7s99jAvoAWJRtsvl3CYAHnhMh1rMymay5Nv8yKR1A9xG1K
- XK+pIDDlkBrtJwgBGiQ/YPmKR4xRWeE8wNcYaJAw=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [192.168.20.60] ([92.116.185.100]) by mail.gmx.net (mrgmx105
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1MJE27-1naNTk1Cfr-00KivD; Tue, 15
- Feb 2022 21:46:35 +0100
-Message-ID: <7e60cd01-8afc-ddb5-a1bb-6e9f53ccfba5@gmx.de>
-Date: Tue, 15 Feb 2022 21:46:24 +0100
+ id 1nK9Hu-005Amu-4M; Wed, 16 Feb 2022 01:39:23 +0000
+X-UUID: eddaaacf817a4465b5345f1039859a93-20220215
+X-UUID: eddaaacf817a4465b5345f1039859a93-20220215
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 413585181; Tue, 15 Feb 2022 18:39:09 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Feb 2022 17:39:07 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 16 Feb 2022 09:39:06 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 16 Feb 2022 09:39:05 +0800
+Message-ID: <d480bb5f699182694eaac0379908e10ca88ef41f.camel@mediatek.com>
+Subject: Re: [1/2] soc: mediatek: mmsys: add sw0_rst_offset in mmsys driver
+ data
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ <matthias.bgg@gmail.com>
+CC: <chunkuang.hu@kernel.org>, <jitao.shi@mediatek.com>,
+ <xinlei.lee@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 16 Feb 2022 09:39:05 +0800
+In-Reply-To: <da4b7285-1f2d-01a0-9a1d-1381b4772512@collabora.com>
+References: <20220215131952.27861-1-rex-bc.chen@mediatek.com>
+ <20220215131952.27861-2-rex-bc.chen@mediatek.com>
+ <da4b7285-1f2d-01a0-9a1d-1381b4772512@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.0
-Subject: Re: [PATCH 22/23] video: omapfb: dss: Make use of the helper
- component_compare_dev
-Content-Language: en-US
-To: Yong Wu <yong.wu@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org
-Cc: James Wang <james.qian.wang@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- iommu@lists.linux-foundation.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- linux-kernel@vger.kernel.org, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-mediatek@lists.infradead.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
- Tomasz Figa <tfiga@chromium.org>, srv_heupstream@mediatek.com,
- Rob Clark <robdclark@gmail.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Sebastian Reichel <sre@kernel.org>, linux-omap@vger.kernel.org,
- linux-fbdev@vger.kernel.org
-References: <20220214060819.7334-1-yong.wu@mediatek.com>
- <20220214060819.7334-23-yong.wu@mediatek.com>
-From: Helge Deller <deller@gmx.de>
-In-Reply-To: <20220214060819.7334-23-yong.wu@mediatek.com>
-X-Provags-ID: V03:K1:MjTT6/0mKscyzurmEJq+TRDLFWm722/o5oh1VceIWTDo9Su6z33
- Uqcw4r79WPXMZ1MHVQ5YZwMpT3/LUtQYuMEKT1s4Qsw268nztXs8M1PHTdwFSaaX3fRCVHa
- I5hj8j+9RzGYlu8e8qiZ43jIdVRKdmD+CGxvzWPF1Cw57f4/4D8ejp1FysOEiqU6iTGSqwc
- ErfKQfh2UKAhLIHNSceWg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:EO1+Ylb+ev0=:HpXUahwDBxS2Q6GJ/UdQMa
- n+62M3husXUXoHxxs8AxzjuuYDkqIBegYnyeAV7YgP0Mle0rT21+2LEV21Cm/oK+NdFah8S9W
- CpzPyAZIRuU01jq211YudtbXnvFOMgwbjvey4rIl2NTTJUDs+3nbJ6EgXSJwHO77nbgaCNttA
- G+VtN7qVCXCtu780Msj9tZjo7C1oDNvtl1Z0DVM0OdyjyuO5D93T57PbebQJO+46L8tQ0bfg4
- PClJhDBMO98xxmJRVp6iBSjNS7q7geteQaZ0ZJQVZhNyuKpKUNS7ESMvNsPEhSTzcXNJDdgSx
- Vq9g3AnCPk01P40v1QI4BqRKbdc93kQn/QMzvwnd6VKhhT5hOO0TqppV8u07Mwhznrax7VcRW
- +v1Ixw3WjKmrwEdG4wxBOsqT1dFC/6QoqorX3z1sqp7Ag6Ncwj2vZEjoNZ1YUThIr4BpD/vWq
- hjpVXVTw/vir74eHyvdnz2eZXfQD7YPWYiK3z1oTwSGkoUciP9hPqvp4WS1qWPD3Wx4UiMz4y
- 2dpK2641P1xHzfATt1y9hhMgc6vt9XFxpm9Ycl0uN+Nf/W9WIYa2fD+vPujh/CyO3jLklKrNP
- rhbT5NjDJGfC/AFaC2iH75aCY+P5r1pQZOBnvTunjmLUTuER4bhCqMQqM9G+WAIVA1mScRE7x
- z5RtmJWkKSwplc9SI/e09hsIAALu0cz7R3+T3vF1BUPB0RwiiTFPg2EbSOsu0l9GrJ8CkvoHP
- 6ajgPfPMXcn62tOWZWD9MMtunWjyjGeCeU0sZsO37FBgxO6O75XX5KNPo3ZtVKQ/rb45z2Rj6
- BmFoOKHsV5p6ypFwr9d2I3zNEcl0DYDNBnMwKA/3QTkYeOJgYkBDK8DU7dxFOUM6q9OWcMRcY
- NoMQI8g/0H0GxrMHZA3BmETGV399e4Ve0zB9yhBv/cd9YdH0LKj0wm2/KEIbC/oPNQrOB040l
- zX8J1rybbjKBBzimlhU2e1yTmGHdV4geJl204qxFdDOHSN0uiAnzvI89ljAQcys4MdV9EpQSa
- NnChsjeiQrZB5ZntJzdsbaO7RJJahTHLc0+epBUeuUd6C0orPGZgiQsH8Kwcy4p8Uu6vZoYIV
- JC4pPsVjDwiUHc=
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_124650_401884_428FD413 
-X-CRM114-Status: GOOD (  15.95  )
+X-CRM114-CacheID: sfid-20220215_173922_199324_E6911C89 
+X-CRM114-Status: GOOD (  22.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,49 +77,114 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/14/22 07:08, Yong Wu wrote:
-> Use the common compare helper from component.
->
-> Cc: Helge Deller <deller@gmx.de>
-> Cc: linux-omap@vger.kernel.org
-> Cc: linux-fbdev@vger.kernel.org
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Hello Angelo,
 
-Applied to the fbdev for-next branch.
+Thanks for yor review.
+I add reply comment below:
 
-Thanks!
-Helge
+On Tue, 2022-02-15 at 14:54 +0100, AngeloGioacchino Del Regno wrote:
+> Il 15/02/22 14:19, Rex-BC Chen ha scritto:
+> > There are different software reset registers for difference MTK
+> > SoCs.
+> > Therefore, we add a new variable "sw0_rst_offset" to control it.
+> > 
+> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> > ---
+> >   drivers/soc/mediatek/mt8183-mmsys.h | 2 ++
+> >   drivers/soc/mediatek/mtk-mmsys.c    | 6 ++++--
+> >   drivers/soc/mediatek/mtk-mmsys.h    | 3 +--
+> >   3 files changed, 7 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mt8183-mmsys.h
+> > b/drivers/soc/mediatek/mt8183-mmsys.h
+> > index 9dee485807c9..0c021f4b76d2 100644
+> > --- a/drivers/soc/mediatek/mt8183-mmsys.h
+> > +++ b/drivers/soc/mediatek/mt8183-mmsys.h
+> > @@ -25,6 +25,8 @@
+> >   #define MT8183_RDMA0_SOUT_COLOR0		0x1
+> >   #define MT8183_RDMA1_SOUT_DSI0			0x1
+> >   
+> > +#define MT8183_MMSYS_SW0_RST_B			0x140
+> > +
+> >   static const struct mtk_mmsys_routes mmsys_mt8183_routing_table[]
+> > = {
+> >   	{
+> >   		DDP_COMPONENT_OVL0, DDP_COMPONENT_OVL_2L0,
+> > diff --git a/drivers/soc/mediatek/mtk-mmsys.c
+> > b/drivers/soc/mediatek/mtk-mmsys.c
+> > index 0da25069ffb3..cab62c3eac05 100644
+> > --- a/drivers/soc/mediatek/mtk-mmsys.c
+> > +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> > @@ -49,12 +49,14 @@ static const struct mtk_mmsys_driver_data
+> > mt8173_mmsys_driver_data = {
+> >   	.clk_driver = "clk-mt8173-mm",
+> >   	.routes = mmsys_default_routing_table,
+> >   	.num_routes = ARRAY_SIZE(mmsys_default_routing_table),
+> > +	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
+> >   };
+> >   
+> >   static const struct mtk_mmsys_driver_data
+> > mt8183_mmsys_driver_data = {
+> >   	.clk_driver = "clk-mt8183-mm",
+> >   	.routes = mmsys_mt8183_routing_table,
+> >   	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
+> > +	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
+> >   };
+> >   
+> >   static const struct mtk_mmsys_driver_data
+> > mt8186_mmsys_driver_data = {
+> > @@ -128,14 +130,14 @@ static int mtk_mmsys_reset_update(struct
+> > reset_controller_dev *rcdev, unsigned l
+> >   
+> >   	spin_lock_irqsave(&mmsys->lock, flags);
+> >   
+> > -	reg = readl_relaxed(mmsys->regs + MMSYS_SW0_RST_B);
+> > +	reg = readl_relaxed(mmsys->regs + mmsys->data->sw0_rst_offset);
+> >   
+> >   	if (assert)
+> >   		reg &= ~BIT(id);
+> >   	else
+> >   		reg |= BIT(id);
+> >   
+> > -	writel_relaxed(reg, mmsys->regs + MMSYS_SW0_RST_B);
+> > +	writel_relaxed(reg, mmsys->regs + mmsys->data->sw0_rst_offset);
+> >   
+> >   	spin_unlock_irqrestore(&mmsys->lock, flags);
+> >   
+> > diff --git a/drivers/soc/mediatek/mtk-mmsys.h
+> > b/drivers/soc/mediatek/mtk-mmsys.h
+> > index 8b0ed05117ea..83320019b4cf 100644
+> > --- a/drivers/soc/mediatek/mtk-mmsys.h
+> > +++ b/drivers/soc/mediatek/mtk-mmsys.h
+> > @@ -78,8 +78,6 @@
+> >   #define DSI_SEL_IN_RDMA				0x1
+> >   #define DSI_SEL_IN_MASK				0x1
+> >   
+> > -#define MMSYS_SW0_RST_B				0x140
+> > -
+> >   struct mtk_mmsys_routes {
+> >   	u32 from_comp;
+> >   	u32 to_comp;
+> > @@ -92,6 +90,7 @@ struct mtk_mmsys_driver_data {
+> >   	const char *clk_driver;
+> >   	const struct mtk_mmsys_routes *routes;
+> >   	const unsigned int num_routes;
+> > +	const unsigned int sw0_rst_offset;
+> 
+> I don't think that this offset will ever be larger than 0xffff.
+> Can we use u16 here instead?
+> 
+Yes, the value of offset is enough using u16.
+I will modify this in next version.
 
->  drivers/video/fbdev/omap2/omapfb/dss/dss.c | 8 +-------
->  1 file changed, 1 insertion(+), 7 deletions(-)
->
-> diff --git a/drivers/video/fbdev/omap2/omapfb/dss/dss.c b/drivers/video/fbdev/omap2/omapfb/dss/dss.c
-> index a6b1c1598040..45b9d3cf3860 100644
-> --- a/drivers/video/fbdev/omap2/omapfb/dss/dss.c
-> +++ b/drivers/video/fbdev/omap2/omapfb/dss/dss.c
-> @@ -1193,12 +1193,6 @@ static const struct component_master_ops dss_component_ops = {
->  	.unbind = dss_unbind,
->  };
->
-> -static int dss_component_compare(struct device *dev, void *data)
-> -{
-> -	struct device *child = data;
-> -	return dev == child;
-> -}
-> -
->  static int dss_add_child_component(struct device *dev, void *data)
->  {
->  	struct component_match **match = data;
-> @@ -1212,7 +1206,7 @@ static int dss_add_child_component(struct device *dev, void *data)
->  	if (strstr(dev_name(dev), "rfbi"))
->  		return 0;
->
-> -	component_match_add(dev->parent, match, dss_component_compare, dev);
-> +	component_match_add(dev->parent, match, component_compare_dev, dev);
->
->  	return 0;
->  }
->
+BRs,
+Rex
+> >   };
+> >   
+> >   /*
+> 
+> 
+> 
 
 
 _______________________________________________
