@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A325EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Feb 2022 11:43:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32793C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Feb 2022 11:44:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RlXu6+PCE0xmK+LyqZyh+hUw5WfNQ7m2T4UlDHHynOk=; b=H595vkavzbQHgx
-	YevUHkb8HNRO2M7p8zG93fgmG3a4bQkr+/qDkRdzTWHM+xZ1NdwEFNe0tN1jCUiDd08gE+1ZQVYUV
-	1koXXUEqNhnk8xrfnWVtOaS2J5KqIMu5L5D5LbNsG2nEqiQNX1JUCRekdPhpw9L/UD6+yNjZ4qZEU
-	s5QznA5hPtfl6/IxIwnE+a+/xesjlECMIfUn1CV671mcYRMUxxcHSbtsXyhK6XTyCKM9z66d4H9ae
-	b2HXxjoBonADTVYU0RzTV91arourRIHGD6jYpnvhOvuiHt46pPYdurdmMRubsQ0m+2UEgzGD/Yjrg
-	jwEPmkEmptni26fILhDg==;
+	List-Owner; bh=7AD/mX0ggKJx9FISIW+XuI6Z5UVM/SnBss+H9cAkWCk=; b=R6AmaAUY6iMsnO
+	2uW7RNSx5BGRQy7bPNYNHy7pzLyvke5DoFTdCvsix8aHe2Z6c+q4V7aeNr+Eb9qmUm3aegL8Y0dtz
+	eU+/FtRGnqyyg6JipHeUtxe4Fc08+Ee7mgNECETTs7VQ4lUHWK5tlBbpl9HOs5ilz47HIvv9DYezZ
+	HPqAnSsvCm7alVCbyjlnCdQXRJS3y+pA9VyYRkf/8owgW+0yArZ5zb17/nPmP06w7TO+UGA85w/1o
+	ijJriDd8BA150qpO3ps3uI0/kkvwIy6zqumkUJWquvjI8ULZPfV9y9QLX9GwMOnFQgo2fyT1vwSvb
+	Pgd5VgpCZAl4AwfVF9gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKIiW-006mV3-9Y; Wed, 16 Feb 2022 11:43:28 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nKIjQ-006mvc-JN; Wed, 16 Feb 2022 11:44:24 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKIiT-006mU8-Pn; Wed, 16 Feb 2022 11:43:27 +0000
-X-UUID: b43ee8472b68402f847d9d348166c3d9-20220216
-X-UUID: b43ee8472b68402f847d9d348166c3d9-20220216
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 253471003; Wed, 16 Feb 2022 04:43:22 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Feb 2022 03:36:02 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 16 Feb 2022 19:36:00 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 16 Feb 2022 19:36:00 +0800
-Message-ID: <55c380797ef845992c0d1a7f1d15b986eaf478c0.camel@mediatek.com>
-Subject: Re: [v11,1/3] drm/dsi: transfer DSI HS packets ending at the same time
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>,
- <narmstrong@baylibre.com>, <robert.foss@linaro.org>,
- <andrzej.hajda@intel.com>, <daniel@ffwll.ch>, <airlied@linux.ie>,
- <maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
- <tzimmermann@suse.de>, <p.zabel@pengutronix.de>
-CC: <xji@analogixsemi.com>, <jitao.shi@mediatek.com>,
- <xinlei.lee@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 16 Feb 2022 19:36:00 +0800
-In-Reply-To: <20220207045625.17713-2-rex-bc.chen@mediatek.com>
-References: <20220207045625.17713-1-rex-bc.chen@mediatek.com>
- <20220207045625.17713-2-rex-bc.chen@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nKIj9-006mmb-PR; Wed, 16 Feb 2022 11:44:09 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id B5D811F45113
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1645011846;
+ bh=vMYqlcxJ4lSQwNLunvGOfbKl7psBgbiPHyVvb4L4nwM=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=RiEn09QgynpodGO9teoyBuAYdsAdJobXsL4dfPAvnBfl1aO2Dk57h5elih2C5oAEp
+ z7nXm4lm3Sm3fycsfqtGwWO+NdI4avvUEUurYHrIvLINcqK05+tsUKvy/99hRADF82
+ s94Y8lfCDZkCpVJU/Gnc6aFBy9CzCfZLByin8zLo3H9REnru3n6DHJHK86n040tR6x
+ eUhtvFuD7FqUIC3/pnYJHypbZw/R8PCs2D3vTjt7xR0T1PydVV49HClwhL9pp/PV/W
+ 3zXdi0Lyb2KhXTE5JrXTL8qB7h5UruYseqwUVxY/oZlEZw+ZWWchiij2w+s3LxMvG7
+ 5quSnteSnZmag==
+Message-ID: <cc5e7f4b-8a70-01a3-3219-b6b3c825504d@collabora.com>
+Date: Wed, 16 Feb 2022 12:44:02 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH v11 2/3] dt-bindings: pinctrl: mt8195: Add
+ mediatek,drive-strength-adv property
+Content-Language: en-US
+To: Tinghan Shen <tinghan.shen@mediatek.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@canonical.com>, Linus Walleij
+ <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Sean Wang <sean.wang@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, ryder.lee@kernel.org,
+ wenst@chromium.org, chunfeng.yun@mediatek.com
+References: <20220216113131.13145-1-tinghan.shen@mediatek.com>
+ <20220216113131.13145-3-tinghan.shen@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220216113131.13145-3-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220216_034325_856597_7333BB99 
-X-CRM114-Status: GOOD (  21.86  )
+X-CRM114-CacheID: sfid-20220216_034408_001987_2AB1B1EF 
+X-CRM114-Status: GOOD (  18.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,68 +73,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello common DRM maintainers,
-
-We have proposed a DSI mode_flag definition in
-include/drm/drm_mipi_dsi.h.
-The maintainer of bridge chip, Andrzej, also reviewed this patch.
-
-Is there any chance that you can give us some suggestions?
-We also need your approvement if this series is acceptable.
-
-Also, if the patch is not proper for you, please let us know.
-
-Thanks for your help.
-
-BRs,
-Rex
-
-On Mon, 2022-02-07 at 12:56 +0800, Rex-BC Chen wrote:
-> Since a HS transmission is composed of an arbitrary number
-> of bytes that may not be an integer multiple of lanes, some
-> lanes may run out of data before others.
-> (Defined in 6.1.3 of mipi_DSI_specification_v.01-02-00)
+Il 16/02/22 12:31, Tinghan Shen ha scritto:
+> Extend driving support for I2C pins on SoC mt8195.
+> This property is already documented in mediatek,mt8183-pinctrl.yaml.
 > 
-> However, for some DSI RX devices (for example, anx7625),
-> there is a limitation that packet number should be the same
-> on all DSI lanes. In other words, they need to end a HS at
-> the same time.
-> 
-> Because this limitation is for some specific DSI RX devices,
-> it is more reasonable to put the enable control in these
-> DSI RX drivers. If DSI TX driver knows the information,
-> they can adjust the setting for this situation.
-> 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> Acked-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> Reviewed-by: Andrzej Hajda <andrzej.hajda@intel.com>
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 > ---
->  include/drm/drm_mipi_dsi.h | 2 ++
->  1 file changed, 2 insertions(+)
+>   .../bindings/pinctrl/pinctrl-mt8195.yaml      | 35 +++++++++++++++++++
+>   1 file changed, 35 insertions(+)
 > 
-> diff --git a/include/drm/drm_mipi_dsi.h b/include/drm/drm_mipi_dsi.h
-> index 147e51b6d241..51e09a1a106a 100644
-> --- a/include/drm/drm_mipi_dsi.h
-> +++ b/include/drm/drm_mipi_dsi.h
-> @@ -137,6 +137,8 @@ struct mipi_dsi_host
-> *of_find_mipi_dsi_host_by_node(struct device_node *node);
->  #define MIPI_DSI_CLOCK_NON_CONTINUOUS	BIT(10)
->  /* transmit data in low power */
->  #define MIPI_DSI_MODE_LPM		BIT(11)
-> +/* transmit data ending at the same time for all lanes within one
-> hsync */
-> +#define MIPI_DSI_HS_PKT_END_ALIGNED	BIT(12)
->  
->  enum mipi_dsi_pixel_format {
->  	MIPI_DSI_FMT_RGB888,
-
+> diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
+> index 8299662c2c09..c5b755514c46 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
+> @@ -98,6 +98,32 @@ patternProperties:
+>             drive-strength:
+>               enum: [2, 4, 6, 8, 10, 12, 14, 16]
+>   
+> +          mediatek,drive-strength-adv:
+> +            description: |
+> +              Describe the specific driving setup property.
+> +              For I2C pins, the existing generic driving setup can only support
+> +              2/4/6/8/10/12/14/16mA driving. But in specific driving setup, they
+> +              can support 0.125/0.25/0.5/1mA adjustment. If we enable specific
+> +              driving setup, the existing generic setup will be disabled.
+> +              The specific driving setup is controlled by E1E0EN.
+> +              When E1=0/E0=0, the strength is 0.125mA.
+> +              When E1=0/E0=1, the strength is 0.25mA.
+> +              When E1=1/E0=0, the strength is 0.5mA.
+> +              When E1=1/E0=1, the strength is 1mA.
+> +              EN is used to enable or disable the specific driving setup.
+> +              Valid arguments are described as below:
+> +              0: (E1, E0, EN) = (0, 0, 0)
+> +              1: (E1, E0, EN) = (0, 0, 1)
+> +              2: (E1, E0, EN) = (0, 1, 0)
+> +              3: (E1, E0, EN) = (0, 1, 1)
+> +              4: (E1, E0, EN) = (1, 0, 0)
+> +              5: (E1, E0, EN) = (1, 0, 1)
+> +              6: (E1, E0, EN) = (1, 1, 0)
+> +              7: (E1, E0, EN) = (1, 1, 1)
+> +              So the valid arguments are from 0 to 7.
+> +            $ref: /schemas/types.yaml#/definitions/uint32
+> +            enum: [0, 1, 2, 3, 4, 5, 6, 7]
+> +
+>             bias-pull-down:
+>               oneOf:
+>                 - type: boolean
+> @@ -270,4 +296,13 @@ examples:
+>             bias-pull-down;
+>           };
+>         };
+> +
+> +      i2c0-pins {
+> +        pins {
+> +          pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
+> +                   <PINMUX_GPIO9__FUNC_SCL0>;
+> +          bias-disable;
+> +          mediatek,drive-strength-adv = <7>;
+> +        };
+> +      };
+>       };
 
 _______________________________________________
 Linux-mediatek mailing list
