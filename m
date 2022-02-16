@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83E69C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Feb 2022 01:56:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F81AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Feb 2022 03:21:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K3AR5r4S3vJgJYLjQBGYIYNZSw8ip98EHJ4fu6TeKrk=; b=D258KnEGXNFyXW
-	MF80T0YOHQeEL0URYPfCsZ5Qrd73BgeQeTNv+caYNdmBF6CQ6RmaF2GqNoC/qcE3cDblrJVjQOEwD
-	5jeamYMkoHZFabuVlEX2wBJOkVKoJ+p/ZkQRU6U6DbVHrKQFhd65JL1p/WGga/HlpNK61KHHfpblv
-	Sh0SK9nw2Rdh8FXeGXAvZGPRt+M2KP2W22806GCd66TBOLqe4cPFP5KThpHgiVynMl091JMebWkSM
-	/upRg7Sze+2xav4JSu6TP0Z+RmLUqGYS1a/qRkbADVK1GDgGKEl3dD74NM9P6Z9BhE9/6x8qFb6fL
-	fTO6dR+91Q1vDnKZbNGw==;
+	List-Owner; bh=3UhSiU9QbNFQ1MRAMn7Q5O4xx11N/iWZ5SVvHtYK0uY=; b=Zm9btC1HPV3tDJ
+	Ed6PNaLUCqy0wWvI+iGLwkdtUyXqqKYlHYzU+hSTGash6h4hb2OJNWn8OKWTAXBltBrouTbYUqwhA
+	N0Zugm7lYSF7M9dyIoDYeGG2bv6IN6ahBGmrYW89uoYBn5+F6GTTx4+0khStxgUTUAU5hT/ix1fKS
+	ZdTPWhB4dOlsaKob0iBTBQHQIItnYYuIBIDVXF17CrOWCoOWG54lTofMfDfZzXFe68vFmpYrbQGLP
+	mXYPV1OB0ZVdJlYwJ0EJyQmMWTWMHRRcsaYgd9/AY0umBAQfuVhNkj2qi0cmTDUiMT+Pa3W092ytj
+	kF0a03/HDJ6cp2VaUtfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nK9YU-005GM1-Pp; Wed, 16 Feb 2022 01:56:30 +0000
+	id 1nKAt0-005Ond-CS; Wed, 16 Feb 2022 03:21:46 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nK9YH-005GGl-1m; Wed, 16 Feb 2022 01:56:18 +0000
-X-UUID: f4478d54dc3948d98357b6ae586515b3-20220215
-X-UUID: f4478d54dc3948d98357b6ae586515b3-20220215
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ id 1nKAsx-005OmL-EJ; Wed, 16 Feb 2022 03:21:44 +0000
+X-UUID: 23f95941257742c2a594b33965b73b4a-20220215
+X-UUID: 23f95941257742c2a594b33965b73b4a-20220215
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <guodong.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 758125284; Tue, 15 Feb 2022 18:56:15 -0700
+ with ESMTP id 463107065; Tue, 15 Feb 2022 20:21:40 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Feb 2022 17:56:13 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Feb 2022 19:21:38 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Feb 2022 09:56:12 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Wed, 16 Feb 2022 11:21:37 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 16 Feb 2022 09:56:12 +0800
-Message-ID: <3691cb945fdec02271d06cdb5fb8fac1350b49c8.camel@mediatek.com>
-Subject: Re: [v2,6/6] drm/mediatek: add display support for MT8186
-From: CK Hu <ck.hu@mediatek.com>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
- <matthias.bgg@gmail.com>, <robh+dt@kernel.org>
-CC: <devicetree@vger.kernel.org>, <airlied@linux.ie>,
- <jassisinghbrar@gmail.com>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, <yongqiang.niu@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, <fparent@baylibre.com>,
- <linux-mediatek@lists.infradead.org>, <hsinyi@chromium.org>,
- <linux-arm-kernel@lists.infradead.org>
-Date: Wed, 16 Feb 2022 09:56:12 +0800
-In-Reply-To: <20220215075953.3310-7-rex-bc.chen@mediatek.com>
-References: <20220215075953.3310-1-rex-bc.chen@mediatek.com>
- <20220215075953.3310-7-rex-bc.chen@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Wed, 16 Feb 2022 11:21:36 +0800
+From: Guodong Liu <guodong.liu@mediatek.com>
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
+ <sean.wang@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, <linux-gpio@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guodong Liu
+ <guodong.liu@mediatek.com>
+Subject: [PATCH v5 3/3] pinctrl: canonical rsel resistance selection property
+Date: Wed, 16 Feb 2022 11:21:24 +0800
+Message-ID: <20220216032124.28067-4-guodong.liu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220216032124.28067-1-guodong.liu@mediatek.com>
+References: <20220216032124.28067-1-guodong.liu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_175617_133693_4C696E1B 
-X-CRM114-Status: GOOD (  17.07  )
+X-CRM114-CacheID: sfid-20220215_192143_529056_79514EDB 
+X-CRM114-Status: GOOD (  11.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,184 +75,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Rex:
+Change "mediatek,rsel_resistance_in_si_unit" to "mediatek,rsel-resistance-in-si-unit"
 
-On Tue, 2022-02-15 at 15:59 +0800, Rex-BC Chen wrote:
-> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> 
-> - Add driver data for MT8186 in mtk_drm_drv.c.
-> - Add mtk-disp-ovl and mt-disp-ovl-2l support for MT8186.
-> 
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 20 +++++++++++++
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c  | 39
-> +++++++++++++++++++++++++
->  2 files changed, 59 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> index 2146299e5f52..5fa56c7b9f5f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -456,6 +456,22 @@ static const struct mtk_disp_ovl_data
-> mt8183_ovl_2l_driver_data = {
->  	.fmt_rgb565_is_0 = true,
->  };
->  
-> +static const struct mtk_disp_ovl_data mt8186_ovl_driver_data = {
-> +	.addr = DISP_REG_OVL_ADDR_MT8173,
-> +	.gmc_bits = 10,
-> +	.layer_nr = 4,
-> +	.fmt_rgb565_is_0 = true,
-> +	.smi_id_en = true,
-> +};
+Fixes: fb34a9ae383a ("pinctrl: mediatek: support rsel feature")
+Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-paris.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-
-mt8186_ovl_driver_data is identical to  mt8192_ovl_driver_data, so drop
-this one and use mt8192_ovl_driver_data instead.
-
-> +
-> +static const struct mtk_disp_ovl_data mt8186_ovl_2l_driver_data = {
-> +	.addr = DISP_REG_OVL_ADDR_MT8173,
-> +	.gmc_bits = 10,
-> +	.layer_nr = 2,
-> +	.fmt_rgb565_is_0 = true,
-> +	.smi_id_en = true,
-> +};
-
-Ditto.
-
-Regards,
-CK
-
-> +
->  static const struct mtk_disp_ovl_data mt8192_ovl_driver_data = {
->  	.addr = DISP_REG_OVL_ADDR_MT8173,
->  	.gmc_bits = 10,
-> @@ -479,8 +495,12 @@ static const struct of_device_id
-> mtk_disp_ovl_driver_dt_match[] = {
->  	  .data = &mt8173_ovl_driver_data},
->  	{ .compatible = "mediatek,mt8183-disp-ovl",
->  	  .data = &mt8183_ovl_driver_data},
-> +	{ .compatible = "mediatek,mt8186-disp-ovl",
-> +	  .data = &mt8186_ovl_driver_data},
->  	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
->  	  .data = &mt8183_ovl_2l_driver_data},
-> +	{ .compatible = "mediatek,mt8186-disp-ovl-2l",
-> +	  .data = &mt8186_ovl_2l_driver_data},
->  	{ .compatible = "mediatek,mt8192-disp-ovl",
->  	  .data = &mt8192_ovl_driver_data},
->  	{ .compatible = "mediatek,mt8192-disp-ovl-2l",
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index 6efb423ccc92..754b1be25d0d 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -158,6 +158,24 @@ static const enum mtk_ddp_comp_id
-> mt8183_mtk_ddp_ext[] = {
->  	DDP_COMPONENT_DPI0,
->  };
->  
-> +static const enum mtk_ddp_comp_id mt8186_mtk_ddp_main[] = {
-> +	DDP_COMPONENT_OVL0,
-> +	DDP_COMPONENT_RDMA0,
-> +	DDP_COMPONENT_COLOR0,
-> +	DDP_COMPONENT_CCORR,
-> +	DDP_COMPONENT_AAL0,
-> +	DDP_COMPONENT_GAMMA,
-> +	DDP_COMPONENT_POSTMASK0,
-> +	DDP_COMPONENT_DITHER,
-> +	DDP_COMPONENT_DSI0,
-> +};
-> +
-> +static const enum mtk_ddp_comp_id mt8186_mtk_ddp_ext[] = {
-> +	DDP_COMPONENT_OVL_2L0,
-> +	DDP_COMPONENT_RDMA1,
-> +	DDP_COMPONENT_DPI0,
-> +};
-> +
->  static const enum mtk_ddp_comp_id mt8192_mtk_ddp_main[] = {
->  	DDP_COMPONENT_OVL0,
->  	DDP_COMPONENT_OVL_2L0,
-> @@ -221,6 +239,13 @@ static const struct mtk_mmsys_driver_data
-> mt8183_mmsys_driver_data = {
->  	.ext_len = ARRAY_SIZE(mt8183_mtk_ddp_ext),
->  };
->  
-> +static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data =
-> {
-> +	.main_path = mt8186_mtk_ddp_main,
-> +	.main_len = ARRAY_SIZE(mt8186_mtk_ddp_main),
-> +	.ext_path = mt8186_mtk_ddp_ext,
-> +	.ext_len = ARRAY_SIZE(mt8186_mtk_ddp_ext),
-> +};
-> +
->  static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data =
-> {
->  	.main_path = mt8192_mtk_ddp_main,
->  	.main_len = ARRAY_SIZE(mt8192_mtk_ddp_main),
-> @@ -463,6 +488,8 @@ static const struct of_device_id
-> mtk_ddp_comp_dt_ids[] = {
->  	  .data = (void *)MTK_DISP_MUTEX },
->  	{ .compatible = "mediatek,mt8183-disp-mutex",
->  	  .data = (void *)MTK_DISP_MUTEX },
-> +	{ .compatible = "mediatek,mt8186-disp-mutex",
-> +	  .data = (void *)MTK_DISP_MUTEX },
->  	{ .compatible = "mediatek,mt8192-disp-mutex",
->  	  .data = (void *)MTK_DISP_MUTEX },
->  	{ .compatible = "mediatek,mt8173-disp-od",
-> @@ -475,14 +502,20 @@ static const struct of_device_id
-> mtk_ddp_comp_dt_ids[] = {
->  	  .data = (void *)MTK_DISP_OVL },
->  	{ .compatible = "mediatek,mt8183-disp-ovl",
->  	  .data = (void *)MTK_DISP_OVL },
-> +	{ .compatible = "mediatek,mt8186-disp-ovl",
-> +	  .data = (void *)MTK_DISP_OVL },
->  	{ .compatible = "mediatek,mt8192-disp-ovl",
->  	  .data = (void *)MTK_DISP_OVL },
->  	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
->  	  .data = (void *)MTK_DISP_OVL_2L },
-> +	{ .compatible = "mediatek,mt8186-disp-ovl-2l",
-> +	  .data = (void *)MTK_DISP_OVL_2L },
->  	{ .compatible = "mediatek,mt8192-disp-ovl-2l",
->  	  .data = (void *)MTK_DISP_OVL_2L },
->  	{ .compatible = "mediatek,mt8192-disp-postmask",
->  	  .data = (void *)MTK_DISP_POSTMASK },
-> +	{ .compatible = "mediatek,mt8186-disp-postmask",
-> +	  .data = (void *)MTK_DISP_POSTMASK},
->  	{ .compatible = "mediatek,mt2701-disp-pwm",
->  	  .data = (void *)MTK_DISP_BLS },
->  	{ .compatible = "mediatek,mt8167-disp-pwm",
-> @@ -511,12 +544,16 @@ static const struct of_device_id
-> mtk_ddp_comp_dt_ids[] = {
->  	  .data = (void *)MTK_DPI },
->  	{ .compatible = "mediatek,mt8183-dpi",
->  	  .data = (void *)MTK_DPI },
-> +	{ .compatible = "mediatek,mt8186-dpi",
-> +	  .data = (void *)MTK_DPI },
->  	{ .compatible = "mediatek,mt2701-dsi",
->  	  .data = (void *)MTK_DSI },
->  	{ .compatible = "mediatek,mt8173-dsi",
->  	  .data = (void *)MTK_DSI },
->  	{ .compatible = "mediatek,mt8183-dsi",
->  	  .data = (void *)MTK_DSI },
-> +	{ .compatible = "mediatek,mt8186-dsi",
-> +	  .data = (void *)MTK_DSI },
->  	{ }
->  };
->  
-> @@ -533,6 +570,8 @@ static const struct of_device_id mtk_drm_of_ids[]
-> = {
->  	  .data = &mt8173_mmsys_driver_data},
->  	{ .compatible = "mediatek,mt8183-mmsys",
->  	  .data = &mt8183_mmsys_driver_data},
-> +	{ .compatible = "mediatek,mt8186-mmsys",
-> +	  .data = &mt8186_mmsys_driver_data},
->  	{ .compatible = "mediatek,mt8192-mmsys",
->  	  .data = &mt8192_mmsys_driver_data},
->  	{ }
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index d4e02c5d74a8..38c0f0c4cf95 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -989,7 +989,7 @@ int mtk_paris_pinctrl_probe(struct platform_device *pdev,
+ 	hw->nbase = hw->soc->nbase_names;
+ 
+ 	if (of_find_property(hw->dev->of_node,
+-			     "mediatek,rsel_resistance_in_si_unit", NULL))
++			     "mediatek,rsel-resistance-in-si-unit", NULL))
+ 		hw->rsel_si_unit = true;
+ 	else
+ 		hw->rsel_si_unit = false;
+-- 
+2.25.1
 
 
 _______________________________________________
