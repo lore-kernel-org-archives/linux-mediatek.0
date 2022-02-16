@@ -4,53 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFB21C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Feb 2022 11:41:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A325EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Feb 2022 11:43:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=E0jv1BsezAAVeHb5GbAdyxhHeFLtrTtnhAhmgKVIrDg=; b=Gim3yjzYcXgNcL
-	iTEIJXvOoo/vH/V51No0+tGMz5YjVvsRsdEvidZ/dz9IXHOqgSzzSoqICMZopVx/yBtS8zOYrDv7M
-	Rle+mNGBHm+4Mupbw0hKc9+xuZbnbyPkWIyf5vDqOpRCZF3Zy49FhnrSdvbcQz7pfZ75h3H5ZVSV7
-	M7HNqvjlNNNmIf8XHqmkoHgmlbtiOHfNVGDLC8WLLpiLGKtjnUHAqgt3v3MbdiMKyRvR/Wt7R2g6E
-	ijGzXF7U7DfZzPWy5nLTtM2MUas6cwqzyFRLxgx/Vsa1B2r9KnH1/Q89qAE/F8lOnpyXCOfpO89zB
-	EPSOLIioF2cABuEUTgYg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=RlXu6+PCE0xmK+LyqZyh+hUw5WfNQ7m2T4UlDHHynOk=; b=H595vkavzbQHgx
+	YevUHkb8HNRO2M7p8zG93fgmG3a4bQkr+/qDkRdzTWHM+xZ1NdwEFNe0tN1jCUiDd08gE+1ZQVYUV
+	1koXXUEqNhnk8xrfnWVtOaS2J5KqIMu5L5D5LbNsG2nEqiQNX1JUCRekdPhpw9L/UD6+yNjZ4qZEU
+	s5QznA5hPtfl6/IxIwnE+a+/xesjlECMIfUn1CV671mcYRMUxxcHSbtsXyhK6XTyCKM9z66d4H9ae
+	b2HXxjoBonADTVYU0RzTV91arourRIHGD6jYpnvhOvuiHt46pPYdurdmMRubsQ0m+2UEgzGD/Yjrg
+	jwEPmkEmptni26fILhDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKIgP-006m4I-9j; Wed, 16 Feb 2022 11:41:17 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nKIiW-006mV3-9Y; Wed, 16 Feb 2022 11:43:28 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKIgB-006m1b-68; Wed, 16 Feb 2022 11:41:06 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 656A61F44D54
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645011660;
- bh=b8gU2yyRE9zuDbE6QcLKI6uc2ZtLgxWDdeRbcJsIeFE=;
- h=From:To:Cc:Subject:Date:From;
- b=QYKEFkTSLfs7h8SzJiOIgPUAScdTU8uky5S4dm1fEkCBAkhr+63WoaapyKK3PCjqZ
- LcSxpyACu2nG/ndKeB32J4/siV3rcTE2xJim85NTztYDpCjnkES2TFhJ34/ZZeLLYw
- oqPQYFS18ai1S/IpVsi9aXsDB3c09an+1kMNRUkMfpYXEbTXVkRUs7oWvmmfg75TIO
- 2FqZ+DT1qJ/q33jr0r65bcg3goeQDr5M4s+ijTyl0Y2OM7mSqg0ArXVz/u0jDlIPQa
- lwW5X/d1cFji62DatDLNc2cXoOmGx4VCED7Eckxc0E5pCkmidlU2Q9krIA+miMQLdx
- 0tN0+kRZj2aDg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: vkoul@kernel.org
-Cc: robh+dt@kernel.org, sean.wang@mediatek.com, matthias.bgg@gmail.com,
- long.cheng@mediatek.com, dmaengine@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] dt-bindings: dma: Convert mtk-uart-apdma to DT schema
-Date: Wed, 16 Feb 2022 12:40:54 +0100
-Message-Id: <20220216114054.269656-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.33.1
+ id 1nKIiT-006mU8-Pn; Wed, 16 Feb 2022 11:43:27 +0000
+X-UUID: b43ee8472b68402f847d9d348166c3d9-20220216
+X-UUID: b43ee8472b68402f847d9d348166c3d9-20220216
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 253471003; Wed, 16 Feb 2022 04:43:22 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Feb 2022 03:36:02 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 16 Feb 2022 19:36:00 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 16 Feb 2022 19:36:00 +0800
+Message-ID: <55c380797ef845992c0d1a7f1d15b986eaf478c0.camel@mediatek.com>
+Subject: Re: [v11,1/3] drm/dsi: transfer DSI HS packets ending at the same time
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>,
+ <narmstrong@baylibre.com>, <robert.foss@linaro.org>,
+ <andrzej.hajda@intel.com>, <daniel@ffwll.ch>, <airlied@linux.ie>,
+ <maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
+ <tzimmermann@suse.de>, <p.zabel@pengutronix.de>
+CC: <xji@analogixsemi.com>, <jitao.shi@mediatek.com>,
+ <xinlei.lee@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 16 Feb 2022 19:36:00 +0800
+In-Reply-To: <20220207045625.17713-2-rex-bc.chen@mediatek.com>
+References: <20220207045625.17713-1-rex-bc.chen@mediatek.com>
+ <20220207045625.17713-2-rex-bc.chen@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220216_034103_658181_E13FE361 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20220216_034325_856597_7333BB99 
+X-CRM114-Status: GOOD (  21.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,198 +79,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert the MediaTek UART APDMA Controller binding to DT schema.
+Hello common DRM maintainers,
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../bindings/dma/mediatek,uart-dma.yaml       | 112 ++++++++++++++++++
- .../bindings/dma/mtk-uart-apdma.txt           |  56 ---------
- 2 files changed, 112 insertions(+), 56 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
- delete mode 100644 Documentation/devicetree/bindings/dma/mtk-uart-apdma.txt
+We have proposed a DSI mode_flag definition in
+include/drm/drm_mipi_dsi.h.
+The maintainer of bridge chip, Andrzej, also reviewed this patch.
 
-diff --git a/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml b/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
-new file mode 100644
-index 000000000000..4583c8f535b2
---- /dev/null
-+++ b/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
-@@ -0,0 +1,112 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/dma/mediatek,uart-dma.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek UART APDMA controller
-+
-+maintainers:
-+  - Long Cheng <long.cheng@mediatek.com>
-+
-+description: |
-+  The MediaTek UART APDMA controller provides DMA capabilities
-+  for the UART peripheral bus.
-+
-+allOf:
-+  - $ref: "dma-controller.yaml#"
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+          - enum:
-+              - mediatek,mt2712-uart-dma
-+              - mediatek,mt8516-uart-dma
-+          - const: mediatek,mt6577-uart-dma
-+      - enum:
-+          - mediatek,mt6577-uart-dma
-+
-+  reg:
-+    minItems: 1
-+    maxItems: 16
-+
-+  interrupts:
-+    description: |
-+      TX, RX interrupt lines for each UART APDMA channel
-+    minItems: 1
-+    maxItems: 32
-+
-+  clocks:
-+    description: Must contain one entry for the APDMA main clock
-+    maxItems: 1
-+
-+  clock-names:
-+    const: apdma
-+
-+  "#dma-cells":
-+    const: 1
-+    description: |
-+      The first cell specifies the UART APDMA channel number
-+
-+  dma-requests:
-+    description: |
-+      Number of virtual channels of the UART APDMA controller
-+    maximum: 16
-+
-+  mediatek,dma-33bits:
-+    type: boolean
-+    description: Enable 33-bits UART APDMA support
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - "#dma-cells"
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/mt2712-clk.h>
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        apdma: dma-controller@11000400 {
-+            compatible = "mediatek,mt2712-uart-dma",
-+                         "mediatek,mt6577-uart-dma";
-+            reg = <0 0x11000400 0 0x80>,
-+                  <0 0x11000480 0 0x80>,
-+                  <0 0x11000500 0 0x80>,
-+                  <0 0x11000580 0 0x80>,
-+                  <0 0x11000600 0 0x80>,
-+                  <0 0x11000680 0 0x80>,
-+                  <0 0x11000700 0 0x80>,
-+                  <0 0x11000780 0 0x80>,
-+                  <0 0x11000800 0 0x80>,
-+                  <0 0x11000880 0 0x80>,
-+                  <0 0x11000900 0 0x80>,
-+                  <0 0x11000980 0 0x80>;
-+            interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_LOW>,
-+                         <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
-+                         <GIC_SPI 105 IRQ_TYPE_LEVEL_LOW>,
-+                         <GIC_SPI 106 IRQ_TYPE_LEVEL_LOW>,
-+                         <GIC_SPI 107 IRQ_TYPE_LEVEL_LOW>,
-+                         <GIC_SPI 108 IRQ_TYPE_LEVEL_LOW>,
-+                         <GIC_SPI 109 IRQ_TYPE_LEVEL_LOW>,
-+                         <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>,
-+                         <GIC_SPI 111 IRQ_TYPE_LEVEL_LOW>,
-+                         <GIC_SPI 112 IRQ_TYPE_LEVEL_LOW>,
-+                         <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>,
-+                         <GIC_SPI 114 IRQ_TYPE_LEVEL_LOW>;
-+            dma-requests = <12>;
-+            clocks = <&pericfg CLK_PERI_AP_DMA>;
-+            clock-names = "apdma";
-+            mediatek,dma-33bits;
-+            #dma-cells = <1>;
-+        };
-+    };
-+
-+...
-diff --git a/Documentation/devicetree/bindings/dma/mtk-uart-apdma.txt b/Documentation/devicetree/bindings/dma/mtk-uart-apdma.txt
-deleted file mode 100644
-index fef9c1eeb264..000000000000
---- a/Documentation/devicetree/bindings/dma/mtk-uart-apdma.txt
-+++ /dev/null
-@@ -1,56 +0,0 @@
--* Mediatek UART APDMA Controller
--
--Required properties:
--- compatible should contain:
--  * "mediatek,mt2712-uart-dma" for MT2712 compatible APDMA
--  * "mediatek,mt6577-uart-dma" for MT6577 and all of the above
--  * "mediatek,mt8516-uart-dma", "mediatek,mt6577" for MT8516 SoC
--
--- reg: The base address of the APDMA register bank.
--
--- interrupts: A single interrupt specifier.
-- One interrupt per dma-requests, or 8 if no dma-requests property is present
--
--- dma-requests: The number of DMA channels
--
--- clocks : Must contain an entry for each entry in clock-names.
--  See ../clocks/clock-bindings.txt for details.
--- clock-names: The APDMA clock for register accesses
--
--- mediatek,dma-33bits: Present if the DMA requires support
--
--Examples:
--
--	apdma: dma-controller@11000400 {
--		compatible = "mediatek,mt2712-uart-dma",
--			     "mediatek,mt6577-uart-dma";
--		reg = <0 0x11000400 0 0x80>,
--		      <0 0x11000480 0 0x80>,
--		      <0 0x11000500 0 0x80>,
--		      <0 0x11000580 0 0x80>,
--		      <0 0x11000600 0 0x80>,
--		      <0 0x11000680 0 0x80>,
--		      <0 0x11000700 0 0x80>,
--		      <0 0x11000780 0 0x80>,
--		      <0 0x11000800 0 0x80>,
--		      <0 0x11000880 0 0x80>,
--		      <0 0x11000900 0 0x80>,
--		      <0 0x11000980 0 0x80>;
--		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 105 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 106 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 107 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 108 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 109 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 111 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 112 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 114 IRQ_TYPE_LEVEL_LOW>;
--		dma-requests = <12>;
--		clocks = <&pericfg CLK_PERI_AP_DMA>;
--		clock-names = "apdma";
--		mediatek,dma-33bits;
--		#dma-cells = <1>;
--	};
--- 
-2.33.1
+Is there any chance that you can give us some suggestions?
+We also need your approvement if this series is acceptable.
+
+Also, if the patch is not proper for you, please let us know.
+
+Thanks for your help.
+
+BRs,
+Rex
+
+On Mon, 2022-02-07 at 12:56 +0800, Rex-BC Chen wrote:
+> Since a HS transmission is composed of an arbitrary number
+> of bytes that may not be an integer multiple of lanes, some
+> lanes may run out of data before others.
+> (Defined in 6.1.3 of mipi_DSI_specification_v.01-02-00)
+> 
+> However, for some DSI RX devices (for example, anx7625),
+> there is a limitation that packet number should be the same
+> on all DSI lanes. In other words, they need to end a HS at
+> the same time.
+> 
+> Because this limitation is for some specific DSI RX devices,
+> it is more reasonable to put the enable control in these
+> DSI RX drivers. If DSI TX driver knows the information,
+> they can adjust the setting for this situation.
+> 
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Acked-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Andrzej Hajda <andrzej.hajda@intel.com>
+> ---
+>  include/drm/drm_mipi_dsi.h | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/include/drm/drm_mipi_dsi.h b/include/drm/drm_mipi_dsi.h
+> index 147e51b6d241..51e09a1a106a 100644
+> --- a/include/drm/drm_mipi_dsi.h
+> +++ b/include/drm/drm_mipi_dsi.h
+> @@ -137,6 +137,8 @@ struct mipi_dsi_host
+> *of_find_mipi_dsi_host_by_node(struct device_node *node);
+>  #define MIPI_DSI_CLOCK_NON_CONTINUOUS	BIT(10)
+>  /* transmit data in low power */
+>  #define MIPI_DSI_MODE_LPM		BIT(11)
+> +/* transmit data ending at the same time for all lanes within one
+> hsync */
+> +#define MIPI_DSI_HS_PKT_END_ALIGNED	BIT(12)
+>  
+>  enum mipi_dsi_pixel_format {
+>  	MIPI_DSI_FMT_RGB888,
 
 
 _______________________________________________
