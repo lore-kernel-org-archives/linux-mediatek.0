@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B05BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Feb 2022 16:06:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B73AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Feb 2022 16:09:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jkiRI0mjemytDg92d6joXx+6j2IwEIbqIAYWizm/Yaw=; b=Myl/+zml/pN3L+
-	lGX/flUxMA9DkDClH/GXJiWtuL2xKo6N3XCuzpIRoc4PDXwWx4X8XhoDd/cMLDqg/pymauaWHKj1M
-	XJksAGIVzjR3ITtsUaGo06YAu+6nPoqI5xJlfqFbkxRL5aHRfJbxokiDLdLvffIqGz/af0bJRbtU8
-	+Y7QWt0HH4znP+DajU8JG3WhCMkWudF7KOoBgu+mAqpBisfHuX8g8eJzyHcK/omrQA9fx/gYYXK/4
-	Ign5F9yV5mxmNjVz12ppIA0Xz2UDGZd9LUbXtyGABVFazBniSWhCwOA7z8OgyXFiGSCxSdIYgvKAL
-	rlmAQ7OfzWQ0zROVE3ug==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9BEIm86BvaxN4OwDKLOxlm5MBFmO98iQVG3xlbNCRDU=; b=QX++5cqE0b4YE5
+	XogT86kP8hFdYnh3DBCXzizSr5m5R0BzR0eIVVwjwGqwZmU5knMAhVhWAAQuhwUFednWEbAaVAoow
+	RYe6WRVvFskffBUZGa1/XsuRYvxF70PIMfJDTcDLhQjDOHl00QJeoDSf0C3MoLSwshRSTj7xzlVoK
+	cTupMPZyXr+FvHpQvi6jH/XZ+Wq56Qqvt46lr4zQdG4hQsbNrd+8fL9izQhBJ3N9tIml6G4rDt7V4
+	4K9kNYpAdDb4iOP0X0rC2XP0cqFtCKUs2EtDWm6VN5p7ShDPE97hpJSrn0J5zniNTK8uW0+uXyEju
+	nP+rKDUtTpZAY6D2Cc2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKMpE-007bQo-Au; Wed, 16 Feb 2022 16:06:40 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nKMrU-007bxR-Vn; Wed, 16 Feb 2022 16:09:00 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKMp1-007bPO-K7; Wed, 16 Feb 2022 16:06:30 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id A46EF1F450A4
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645027586;
- bh=aefrMXzupsLGu5Ex9arbBV1OgQCjmS+CBwjP8HtAD84=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=cqo4f+MCDMkcgOCnLgpDF2cDT0hDDpHza/7IDHJhLT5XOWGpgB/i9ooaOOmglHiE0
- WaErsHsIw1PiM+OynCDAdzSo2fYKAvgRhAS+sb6RUiaoGMrtKktkH6mWP1Tr56h4qG
- GdzKJPC8yN7m49uYqOCrJAlNkXWcZVIPe6zPk/SYqv5qyK0OxaDfPmeTwINA8c+cZV
- 221lkdkjEwWk2dMlc/XpBKJulMep5vaFWrVu0HlvpCY2Ag3bu/s9XQtcxi3mQGtU9K
- 4dwcRMqLI2pLQNXphjzNhsOUfG77I/4QiHZukTz3u5qJv59xvdEiS5GBYYxkrPuIIE
- YwjpvwvjGFLuQ==
-Message-ID: <b531eeca-40e8-d759-5579-59567eb5af84@collabora.com>
-Date: Wed, 16 Feb 2022 17:06:22 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH] rpmsg: mtk_rpmsg: Fix circular locking dependency
-Content-Language: en-US
-To: bjorn.andersson@linaro.org
-Cc: mathieu.poirier@linaro.org, matthias.bgg@gmail.com, pihsun@chromium.org,
- linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com
-References: <20220114144737.375621-1-angelogioacchino.delregno@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220114144737.375621-1-angelogioacchino.delregno@collabora.com>
+ id 1nKMrR-007bwD-Mr
+ for linux-mediatek@lists.infradead.org; Wed, 16 Feb 2022 16:08:59 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 9C69EB81F61;
+ Wed, 16 Feb 2022 16:08:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 566E2C004E1;
+ Wed, 16 Feb 2022 16:08:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1645027734;
+ bh=LF462aaH3bcrioP0UqoTu64rCWeeObTyACLb5jcaKz8=;
+ h=From:To:Cc:Subject:Date:From;
+ b=NG4g43ajqFFiMobTlFw7l8KIMdJbHw2/Yi/5gKzvLXQEVyo29GdbEnMpgQNbKDiVL
+ ZLPMD12H7U5eZBoUur/8veyKWzSXgwb9P3DTcSpdjRKcTzoifYMLd/695+SUfvzDAD
+ 3XFEpVag+z/R+K41ltbctBJuFTrp/J0qHiUkhJgemvDcYDKYN18Mb/wxEPqFaGQR9r
+ 5iaEWo6inEa5WEH7P1T1KyMPwWWg/MyhHGHXjh5IeDikV2i5TceKpVl7NGStrXGzIW
+ gh5P3AIJN2eyY5C7UTrHCt6JvpCXF6ig6B2X8yC7eYv25//60r6K1zDQVc8w0ipr/8
+ 7pw8ahc3iAJHA==
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [GIT PULL] mediatek drm fixes for 5.17
+Date: Thu, 17 Feb 2022 00:08:47 +0800
+Message-Id: <1645027727-19554-1-git-send-email-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220216_080627_834296_D482A47C 
-X-CRM114-Status: GOOD (  19.31  )
+X-CRM114-CacheID: sfid-20220216_080857_957895_40ABFC50 
+X-CRM114-Status: UNSURE (   6.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,60 +65,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/01/22 15:47, AngeloGioacchino Del Regno ha scritto:
-> During execution of the worker that's used to register rpmsg devices
-> we are safely locking the channels mutex but, when creating a new
-> endpoint for such devices, we are registering a IPI on the SCP, which
-> then makes the SCP to trigger an interrupt, lock its own mutex and in
-> turn register more subdevices.
-> This creates a circular locking dependency situation, as the mtk_rpmsg
-> channels_lock will then depend on the SCP IPI lock.
-> 
-> [   18.014514]  Possible unsafe locking scenario:
-> [   18.014515]        CPU0                    CPU1
-> [   18.014517]        ----                    ----
-> [   18.045467]   lock(&mtk_subdev->channels_lock);
-> [   18.045474]                                lock(&scp->ipi_desc[i].lock);
-> [   18.228399]                                lock(&mtk_subdev->channels_lock);
-> [   18.228405]   lock(&scp->ipi_desc[i].lock);
-> [   18.264405]
-> 
-> To solve this, simply unlock the channels_lock mutex before calling
-> mtk_rpmsg_register_device() and relock it right after, as safety is
-> still ensured by the locking mechanism that happens right after
-> through SCP.
-> Notably, mtk_rpmsg_register_device() does not even require locking.
-> 
-> Fixes: 7017996951fd ("rpmsg: add rpmsg support for mt8183 SCP.")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hi, Dave & Daniel:
 
-Friendly ping for an important fix... :)
+This includes:
 
-> ---
->   drivers/rpmsg/mtk_rpmsg.c | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/rpmsg/mtk_rpmsg.c b/drivers/rpmsg/mtk_rpmsg.c
-> index 5b4404b8be4c..d1213c33da20 100644
-> --- a/drivers/rpmsg/mtk_rpmsg.c
-> +++ b/drivers/rpmsg/mtk_rpmsg.c
-> @@ -234,7 +234,9 @@ static void mtk_register_device_work_function(struct work_struct *register_work)
->   		if (info->registered)
->   			continue;
->   
-> +		mutex_unlock(&subdev->channels_lock);
->   		ret = mtk_rpmsg_register_device(subdev, &info->info);
-> +		mutex_lock(&subdev->channels_lock);
->   		if (ret) {
->   			dev_err(&pdev->dev, "Can't create rpmsg_device\n");
->   			continue;
+1. Avoid EPROBE_DEFER loop with external bridge
 
+Regards,
+Chun-Kuang.
 
+The following changes since commit e783362eb54cd99b2cac8b3a9aeac942e6f6ac07:
+
+  Linux 5.17-rc1 (2022-01-23 10:12:53 +0200)
+
+are available in the git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-fixes-5.17
+
+for you to fetch changes up to 647474b8d980256b26b1cd112d7333a4dbd4260a:
+
+  drm/mediatek: mtk_dsi: Avoid EPROBE_DEFER loop with external bridge (2022-02-09 22:58:34 +0800)
+
+----------------------------------------------------------------
+Mediatek DRM Fixes for Linux 5.17
+
+1. Avoid EPROBE_DEFER loop with external bridge
+
+----------------------------------------------------------------
+AngeloGioacchino Del Regno (1):
+      drm/mediatek: mtk_dsi: Avoid EPROBE_DEFER loop with external bridge
+
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 167 +++++++++++++++++++------------------
+ 1 file changed, 84 insertions(+), 83 deletions(-)
 
 _______________________________________________
 Linux-mediatek mailing list
