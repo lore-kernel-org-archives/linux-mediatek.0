@@ -4,69 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13221C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Feb 2022 04:06:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BDCCC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Feb 2022 05:59:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1wiJADzwhR5cPHqbqfzwDWHtL4Vae+aR638ZcoYp4bY=; b=u0QKTFzpPPbQVe
-	yrkrbT2he5NXb7+0q9HwLKM3xb9ZHcOwzaWKnpZCvsaQPkuoxPJb3QQZZCcYVU3tiffpp3XmiZTou
-	2B/AJysP9tw/0ZKTaP0h75KSBHkbtu5mRPtBB9Z2UVD8Sa+m5QkUqpv0Rj3mQeC+Dd2EHkHj9DasV
-	jX4dX2brKhU3Q2MkLIrN3ovS8awgRN1Q0oh0MDonLoxkMgRnSNLZgiYt2oK4Oypjs7FFAAb0U18DA
-	Qc3cOQHYHXhsblFdsZFCxBuWvtO3Kro3w1bcRs4icaJ/SWx/vQxeDhLr2XhTL80McQHAE3p+i3xL+
-	ccph1z+kMXmSgWZB/lpQ==;
+	List-Owner; bh=tLnYb3fcaIPHt5f0v/8szAJ4Zet/BS+17WVOB6PDFgY=; b=2LKNkrIfeIYlzz
+	aCymXhcDg3ouZAH4nmgdbhKBH1arYtEpdyELI+wfZ34zw4jA9lIVZPVHxNQ4UoznkoS05GDol3h0J
+	3z8IFj8OR+PBK5B6u31u7L1W45DGIiKZUwTuZz1kwpghqtdpBbSMPuQ+SrR7XnNqmJAUrFLYhtIzc
+	TRunKsBAlXEGrJ+ezAKeRtuv4rKePDgr+75VOI1hLxHcb1VV9Mgpxj0fAtrHAhVaVFPPJR/vMfVdX
+	94vEn43Hoiol2P0WO1v/UjFbFHx6jPMrsJduENikJkUp+GbY3nteHXp4uL9u3btWRSzXdL0M20ycR
+	bPhjTfpb00YAK396N+PA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKBaN-005TR3-JS; Wed, 16 Feb 2022 04:06:35 +0000
-Received: from mail-io1-f42.google.com ([209.85.166.42])
+	id 1nKDLX-005ci9-9r; Wed, 16 Feb 2022 05:59:23 +0000
+Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKBaC-005TPD-EH; Wed, 16 Feb 2022 04:06:26 +0000
-Received: by mail-io1-f42.google.com with SMTP id q8so914863iod.2;
- Tue, 15 Feb 2022 20:06:24 -0800 (PST)
+ id 1nKDLT-005cgg-PK
+ for linux-mediatek@lists.infradead.org; Wed, 16 Feb 2022 05:59:21 +0000
+Received: by mail-qv1-xf35.google.com with SMTP id h9so1288896qvm.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 15 Feb 2022 21:59:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=CDBQKjrOHx1jFqanGpjTZz0mkLi+B8rGvMm6ZK2mah0=;
+ b=ANYaNLWFCQkj69oiskZkSh6DjZmPGeiq9PrEgU2cP3v3dn1nkwLwYm7cx+4vS6oOKw
+ RwNzEIyq3NLxuuxq6/pXX241+VkGVJtb86AlOXZXiNaOF+o9MwFTZ3Ial6STIS1UiAA5
+ dhBgfFPAMgGgTKfxv7tknbGcdLXT5auCslnVM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=+FhN6H4sJdFIwAxrGa45xsxIVEXRnp64Rx9ILQ4TAu4=;
- b=KaJ4rIyQrwcHTHv6ktcYRckQHixTzpgvp9ZzKwRBaGnMzPRkTSl8D2rvqCaRdFpg5c
- 3aX4HpMyPBdKa8w4cJS6d5gMy+/rZ01HPToPhZ+qBiE8rmaHpNp0vNwT9qnT+/hO/cGb
- R7p64B0KyLOmgHrCLzww/UeLCW4lffSs7N25ym+bvDWiy7alXzwGtSm8Muw6BWfKuS8L
- nTt39gq2RXBZrplnrnIN7U2rbK9/eK0Q5zqOJakqYIKGZJaulHMTk/6Y4aQzfM2ScGy4
- bZCpvToq/Ql5WNQwP5ReqYAivImbzXPiujjdvg9Cafq5lsFC9pSYGpTAyjBAR3fDn53J
- +wSQ==
-X-Gm-Message-State: AOAM530gpTXoO8FglCjQwe//r8SbcqJVkyXTsXy4XENLII9djYIRA736
- ekjTmswWlIQ1pXYjq0ES6FjHkVN+TA==
-X-Google-Smtp-Source: ABdhPJyJENO8J9J/BgMWhhP/uor8Gq356mJ2fVFAnZn6K8d9RLQjrlR5CKBvS9G6tzeoxnb0cijV7w==
-X-Received: by 2002:a05:6638:1409:b0:30f:843:f953 with SMTP id
- k9-20020a056638140900b0030f0843f953mr586132jad.22.1644984383486; 
- Tue, 15 Feb 2022 20:06:23 -0800 (PST)
-Received: from robh.at.kernel.org ([64.188.179.250])
- by smtp.gmail.com with ESMTPSA id g19sm3023031iox.39.2022.02.15.20.06.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Feb 2022 20:06:22 -0800 (PST)
-Received: (nullmailer pid 298289 invoked by uid 1000);
- Wed, 16 Feb 2022 04:06:20 -0000
-From: Rob Herring <robh@kernel.org>
-To: xinlei.lee@mediatek.com
-Cc: u.kleine-koenig@pengutronix.de, robh+dt@kernel.org,
- thierry.reding@gmail.com, lee.jones@linaro.org, linux-pwm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- matthias.bgg@gmail.com
-In-Reply-To: <1644847276-27622-2-git-send-email-xinlei.lee@mediatek.com>
-References: <1644847276-27622-1-git-send-email-xinlei.lee@mediatek.com>
- <1644847276-27622-2-git-send-email-xinlei.lee@mediatek.com>
-Subject: Re: [1/1] dt-bindings: pwm:Convert pwm-mtk-disp.txt format file to
- pwm-mtk-disp.yaml format file
-Date: Tue, 15 Feb 2022 22:06:20 -0600
-Message-Id: <1644984380.781456.298288.nullmailer@robh.at.kernel.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=CDBQKjrOHx1jFqanGpjTZz0mkLi+B8rGvMm6ZK2mah0=;
+ b=A/QmMLqgpr1fmPKpTzpr4n2uMEFVANW3dzphDkgvO7u+LW8ClvJcfXVRiQOPseuqi9
+ Ta3RQ8nkKNhdkX4iSNITS2FM3g+Pk/+rCCNXITY51YN1Cy67TAzQHKyPTsmLdmcbiCNi
+ G9dxbue23jKPXY7wuk+QwB1T/SRYhdN5uNq5A4JPgAiFJxdzBJJJiMXg4zRlfVLA6R1b
+ g6FV5qgfYCRr+ogGkTG7Ogq9/fB0Ut2zI2xI9tkJ2oxQYLQexunRqurXDMt//YojZX1y
+ ycLrqT52R6bep11ExDJ5N2cqZTrrbQjxCPQ4HHNO7wdo8qWyxalcOGWpMUNFMWOkInmg
+ Uh5g==
+X-Gm-Message-State: AOAM531mDXdmGkKqmafGgamFXBqHuxi/tnlahS8WJN9Hi9HTpOW73P7O
+ vLLK1H3FXkT8W60Qjtp9p0U/LypoVHfRlg==
+X-Google-Smtp-Source: ABdhPJzAMqlVCvAjKln+UYeZtNKYUx+eSyvGbBkBqM+MiQTOOup1lAksdmh4hHkSp+wQ4+6GQAMV3g==
+X-Received: by 2002:a05:6214:1c43:b0:42d:20ac:823a with SMTP id
+ if3-20020a0562141c4300b0042d20ac823amr830960qvb.67.1644991157924; 
+ Tue, 15 Feb 2022 21:59:17 -0800 (PST)
+Received: from mail-yb1-f172.google.com (mail-yb1-f172.google.com.
+ [209.85.219.172])
+ by smtp.gmail.com with ESMTPSA id u18sm21356236qta.76.2022.02.15.21.59.16
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 15 Feb 2022 21:59:17 -0800 (PST)
+Received: by mail-yb1-f172.google.com with SMTP id bt13so2920965ybb.2
+ for <linux-mediatek@lists.infradead.org>; Tue, 15 Feb 2022 21:59:16 -0800 (PST)
+X-Received: by 2002:a0d:c383:0:b0:2d0:f04e:7ada with SMTP id
+ f125-20020a0dc383000000b002d0f04e7adamr1070020ywd.229.1644991156422; Tue, 15
+ Feb 2022 21:59:16 -0800 (PST)
+MIME-Version: 1.0
+References: <20220125085634.17972-1-yong.wu@mediatek.com>
+ <20220125085634.17972-9-yong.wu@mediatek.com>
+ <ca47becf-adc9-f11e-5e59-03f203920344@collabora.com>
+ <d9637b40196873f392ac9cebfe369106a6f0eee7.camel@mediatek.com>
+In-Reply-To: <d9637b40196873f392ac9cebfe369106a6f0eee7.camel@mediatek.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Date: Wed, 16 Feb 2022 14:59:05 +0900
+X-Gmail-Original-Message-ID: <CAAFQd5Cqg2xPwtzcom_EZ1tw1tOBsND_i1YAQCO4kF=+eWePBQ@mail.gmail.com>
+Message-ID: <CAAFQd5Cqg2xPwtzcom_EZ1tw1tOBsND_i1YAQCO4kF=+eWePBQ@mail.gmail.com>
+Subject: Re: [PATCH v4 08/35] iommu/mediatek: Use kmalloc for protect buffer
+To: Yong Wu <Yong.Wu@mediatek.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Robin Murphy <robin.murphy@arm.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ linux-mediatek@lists.infradead.org, 
+ srv_heupstream@mediatek.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ iommu@lists.linux-foundation.org, Hsin-Yi Wang <hsinyi@chromium.org>, 
+ youlin.pei@mediatek.com, anan.sun@mediatek.com, xueqi.zhang@mediatek.com, 
+ yen-chang.chen@mediatek.com, mingyuan.ma@mediatek.com, yf.wang@mediatek.com, 
+ libo.kang@mediatek.com, chengci.xu@mediatek.com, 
+ Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_200624_500902_120AD6DC 
-X-CRM114-Status: GOOD (  12.93  )
+X-CRM114-CacheID: sfid-20220215_215919_854680_E7DC0BDC 
+X-CRM114-Status: GOOD (  24.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,52 +99,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 14 Feb 2022 22:01:16 +0800, xinlei.lee@mediatek.com wrote:
-> From: xinlei lee <xinlei.lee@mediatek.com>
-> 
-> Signed-off-by: xinlei lee <xinlei.lee@mediatek.com>
-> ---
->  .../devicetree/bindings/pwm/pwm-mtk-disp.yaml      | 60 ++++++++++++++++++++++
->  1 file changed, 60 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml
-> 
+On Wed, Feb 16, 2022 at 2:55 PM Yong Wu <yong.wu@mediatek.com> wrote:
+>
+> On Thu, 2022-01-27 at 12:08 +0100, AngeloGioacchino Del Regno wrote:
+> > Il 25/01/22 09:56, Yong Wu ha scritto:
+> > > No need zero for the protect buffer that is only accessed by the
+> > > IOMMU HW
+> > > translation fault happened.
+> > >
+> > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> >
+> > I would rather keep this a devm_kzalloc instead... the cost is very
+> > minimal and
+> > this will be handy when new hardware will be introduced, as it may
+> > require a bigger
+> > buffer: in that case, "older" platforms will use only part of it and
+> > we may get
+> > garbage data at the end.
+>
+> Currently this is to avoid zero 512 bytes for all the platforms.
+>
+> Sorry, I don't understand why it is unnecessary when the new hardware
+> requires a bigger buffer. If the buffer becomes bigger, then clearing
+> it to 0 need more cost. then this patch is more helpful?
+>
+> The content in this buffer is garbage, we won't care about or analyse
+> it.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+I think we should zero it for security reasons regardless of any other
+aspects. With this patch it's leaking kernel data to the hardware.
 
-yamllint warnings/errors:
-./Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml:60:7: [error] no new line character at the end of file (new-line-at-end-of-file)
+At the same time, we're talking here about something executed just 1
+time when the driver probes. I don't think the cost would really
+matter.
 
-dtschema/dtc warnings/errors:
-Documentation/devicetree/bindings/pwm/pwm-mtk-disp.example.dts:20:18: fatal error: dt-bindings/clock/mt8186-clk.h: No such file or directory
-   20 |         #include <dt-bindings/clock/mt8186-clk.h>
-      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-compilation terminated.
-make[1]: *** [scripts/Makefile.lib:378: Documentation/devicetree/bindings/pwm/pwm-mtk-disp.example.dt.yaml] Error 1
-make[1]: *** Waiting for unfinished jobs....
-make: *** [Makefile:1398: dt_binding_check] Error 2
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/patch/1592602
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+Best regards,
+Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
