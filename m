@@ -4,59 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64AF8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Feb 2022 03:30:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 461F9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Feb 2022 03:30:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ZWLGxt6bcErIho5We9/rkpSiMZgjuvfJZ/GJstitJkU=; b=TO8JsDe1tfA7LO
-	EuCXv6SrW/kl4G9Djkhmamz6TXUsebTzyajtP3S44srck38LmHmb7agFG6uPb1nDl5RJg+UBHL4q+
-	M7p4iEq0BjcoXBbnGCRq909DmcUIOk8AjnELJOcmqXxxpTTKubBD1dbqIAfAd7+Zm48gd7pDmttRQ
-	7VwHzeo75bGbmi+KJusxzsEbWbC2pmLqdiBEAmvK0X7pjr2vRrz//tBuRriJ1QWW5dNMOewOZnE5V
-	r5DNuJXuk7WhLR0xY6X6asbIJU+mMrgA2oFWMfVuMNfHRynvslRJVER3ZetEFLqmOteahuQHOXpvZ
-	NWAiPoGWU/+lbODIHD5g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=M3jMVQzQHU6cAg8GAr38zgW4KPra47vNX/jY/AVZ2kE=; b=49g9kK7o7MfQVN
+	tv0A04j7lLdNeOqeQ2obUDYPSgGLrdRmoRSOm7Ht94Ol9Kvbyf5B+Su1aXDpJDmt7hJ9i+D2H2PKJ
+	HiMvQOGm8m5HGumZupOFIxWGmR6jZx5KJ7iYfBe665NDXir7DKNnavtlumSjXgJayzNzZpEQcEHqp
+	KWLWHLqB5fh5DNhdGCwA4vyEI8+42HyS+egP9JnEqpQSS+Up8W+x8D2jJhoOcoyvpg4wu4hrg7DxR
+	zyuP/llDrW/xUdlGtSIqC/zUXDuSX7bt7G0yZ9CaCox4cW1IOBy2VNyCvnq3AEqm80W8QQuFVxUGJ
+	R+isNrFNg/rHkoR/bSeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKB0u-005Q9Q-Oi; Wed, 16 Feb 2022 03:29:56 +0000
+	id 1nKB1E-005QCy-7K; Wed, 16 Feb 2022 03:30:16 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKB0s-005Q8R-IZ; Wed, 16 Feb 2022 03:29:55 +0000
-X-UUID: 6eb8b73eb7264b8191c42ef2eb205509-20220215
-X-UUID: 6eb8b73eb7264b8191c42ef2eb205509-20220215
+ id 1nKB0s-005Q8Q-IZ; Wed, 16 Feb 2022 03:29:56 +0000
+X-UUID: 2aa678231d0b46d6b97873ea2374fa8d-20220215
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=yjIgZeShUvh8GeAGgYIkRVM8QcusEW45M5w+b2kLXIw=; 
+ b=OsCx4XaxvjhgyVHSPzj2Azqj21fhwGFix+alQUwrY4g6vJN1vWY/o7AbPY9n15+Wf5a2QPqIP/a/iESWsHr/gWdJjtNRn6lQ3u5Hexq3U568+xNfyegxVKPwi8ozwhUvqTm7w9mMcNLkCmnX3vvdBcJ59BLPeZLktNn1iD2iGUg=;
+X-UUID: 2aa678231d0b46d6b97873ea2374fa8d-20220215
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <guodong.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 814326238; Tue, 15 Feb 2022 20:29:52 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 211637076; Tue, 15 Feb 2022 20:29:52 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Feb 2022 19:21:43 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 16 Feb 2022 11:21:30 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ 15.0.1497.2; Tue, 15 Feb 2022 19:28:35 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 16 Feb 2022 11:28:33 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 16 Feb 2022 11:21:29 +0800
+ Transport; Wed, 16 Feb 2022 11:28:33 +0800
+Message-ID: <02f147135e6c1458caa10ed9027bf185beee2023.camel@mediatek.com>
+Subject: Re: [PATCH v4 1/3] dt-bindings: pinctrl: mt8186: add pinctrl file
+ and binding document
 From: Guodong Liu <guodong.liu@mediatek.com>
-To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
- <sean.wang@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>
 CC: Sean Wang <sean.wang@mediatek.com>, <linux-gpio@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guodong Liu
- <guodong.liu@mediatek.com>
-Subject: [PATCH v5 0/3] pinctrl: mediatek: Support pinctrl driver on mt8186
-Date: Wed, 16 Feb 2022 11:21:21 +0800
-Message-ID: <20220216032124.28067-1-guodong.liu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 16 Feb 2022 11:28:33 +0800
+In-Reply-To: <87db864e-fc74-189a-a665-bf51db8b5321@collabora.com>
+References: <20220214030631.4969-1-guodong.liu@mediatek.com>
+ <20220214030631.4969-2-guodong.liu@mediatek.com>
+ <87db864e-fc74-189a-a665-bf51db8b5321@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_192954_647938_7C9BCBB8 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20220215_192954_665359_C76D9017 
+X-CRM114-Status: GOOD (  18.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,61 +83,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-changes since v4:
-- update mt8186 pull up RSEL type define value
-- update mt8186 pull up RSEL type si unit value(ohm)
-- update macro definition name
-- update mt8186 bias resistance selectio register description
+-----Original Message-----
+From: AngeloGioacchino Del Regno <
+angelogioacchino.delregno@collabora.com>
+To: Guodong Liu <guodong.liu@mediatek.com>, Linus Walleij <
+linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias
+Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>
+Cc: Sean Wang <sean.wang@mediatek.com>, linux-gpio@vger.kernel.org, 
+devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v4 1/3] dt-bindings: pinctrl: mt8186: add pinctrl
+file and binding document
+Date: Mon, 14 Feb 2022 10:58:58 +0100
 
-changes since v3:
-- remove generic descriptions for common properties
-- remove quotes
-- drop "."
-- drop "-" on description
-- move partial "bias-pull-up" description info to the example
-- don't break the code into two lines, maximux 84 columns is fine
-- add the required fixes tag
+Il 14/02/22 04:06, Guodong Liu ha scritto:
+> 1. This patch adds pinctrl file for mt8186.
+> 2. This patch adds mt8186 compatible node in binding document.
+> 
+> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
+> ---
+>   .../bindings/pinctrl/pinctrl-mt8186.yaml      |  302 +++++
+>   include/dt-bindings/pinctrl/mt8186-pinfunc.h  | 1174
+> +++++++++++++++++
+>   2 files changed, 1476 insertions(+)
+>   create mode 100644
+> Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
+>   create mode 100644 include/dt-bindings/pinctrl/mt8186-pinfunc.h
+> 
+> diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-
+> mt8186.yaml b/Documentation/devicetree/bindings/pinctrl/pinctrl-
+> mt8186.yaml
+> new file mode 100644
+> index 000000000000..582d131af4e3
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
 
-changes since v2:
-- update reg property
-- update reg-names property
-- sync rsel resistance selection property same as patch 3
-- repair constraints is not indented correctly for bias-pull-{up,down}
-- add "type: boolean" to the list of valid values. This corresponds to having bias-pull-{up,down} without any arguments.
-- add dual file license for file "mt8186-pinfunc.h"
-- add patch 3 to change "mediatek,rsel_resistance_in_si_unit" to "mediatek,rsel-resistance-in-si-unit"
+...snip...
 
-changes since v1:
-- add default pinctrl config to consistent with other MTK pinctrl drivers
+> diff --git a/include/dt-bindings/pinctrl/mt8186-pinfunc.h
+> b/include/dt-bindings/pinctrl/mt8186-pinfunc.h
+> new file mode 100644
+> index 000000000000..dcff86201a61
+> --- /dev/null
+> +++ b/include/dt-bindings/pinctrl/mt8186-pinfunc.h
+> @@ -0,0 +1,1174 @@
+> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Author: Guodong Liu <Guodong.Liu@mediatek.com>
+> + *
+> + */
+> +
 
-Patch 1 add pinctrl file and binding document.
+Hello,
+I've just noticed that we have a typo here....
 
-Patch 2 add pinctrl chip driver on mt8186.
+You wrote "MT8168", but this should be "MT8186" instead; please fix it.
 
-Patch 3 canonical rsel resistance selection property.
+P.S.: I'm sorry for not seeing that before!
 
-Guodong Liu (3):
-  dt-bindings: pinctrl: mt8186: add pinctrl file and binding document
-  pinctrl: add pinctrl driver on mt8186
-  pinctrl: canonical rsel resistance selection property
+> +#ifndef __MT8168_PINFUNC_H
+> +#define __MT8168_PINFUNC_H
+> +
 
- .../bindings/pinctrl/pinctrl-mt8186.yaml      |  297 +++
- drivers/pinctrl/mediatek/Kconfig              |    7 +
- drivers/pinctrl/mediatek/Makefile             |    1 +
- drivers/pinctrl/mediatek/pinctrl-mt8186.c     | 1271 ++++++++++
- drivers/pinctrl/mediatek/pinctrl-mtk-mt8186.h | 2186 +++++++++++++++++
- drivers/pinctrl/mediatek/pinctrl-paris.c      |    2 +-
- include/dt-bindings/pinctrl/mt8186-pinfunc.h  | 1174 +++++++++
- 7 files changed, 4937 insertions(+), 1 deletion(-)
- create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
- create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt8186.c
- create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt8186.h
- create mode 100644 include/dt-bindings/pinctrl/mt8186-pinfunc.h
+..snip..
 
--- 
-2.25.1
+> +
+> +#endif /* __MT8168-PINFUNC_H */
 
+Thank you,
+Angelo
 
+Hello Angelo,
+
+we will update it for next version.
+
+Thanks
+Guodong
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
