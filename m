@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB3B3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 20:30:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07F0CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 20:31:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
 	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oPQJA9OFnBCdkQ4tO/l1OSJV72FMUwSSkw4OomiMw8A=; b=VNCP8QMniVYAQG
-	C0IoYkfYMwWna6eJi8lqwd+jlQN9D840Mc3GHHUYV6TzqIaauOxxVVGuLQp29bvtFNOVjEBxwqX8R
-	nvmGVolMrcsSmv9PlmzCRULX4HjOqXANjlPuWzMC4fZ5j5+fenzFw+8mnugCeUkFdZASdrkLa2OJF
-	plHQvs7mExoXGCYoxUlKxAbj6+T8+tq9BOX4u0kcm4R+UUjQ0IaloCFjbM7QCHLPNvTISi2yMdgOw
-	4lmDcUhnnNYgv8ZDW7p9U5HIe6nKxB9RibB3hCoQf/y6cCZGH+BtGDFtRtiweTqpxEAunYV7XxPIT
-	XIidtbhh59zMNZcCwE1w==;
+	List-Owner; bh=HsDSBdK+EQf6ujgFyvuz5SZilDGHKE3Xvy6SKIKbxto=; b=EFbvZukivJ5g9u
+	WjRm036c3XdxB5MljHtqxreX8yriiRphIybtNoWx9yyNfplZwiuiWCnsbz1PAaH0GvIdB+imQuovZ
+	XJOAIV6vxOklK+bbHBCr+lYX2thqeJC2UvuVxi/7SQtPj6A3ze8mUT3+SQl4yietP9B76TQPVwSMZ
+	VAkjBMzDsTPHPzV3FNm2p7KORD5mHmrO0OQ73sJ9RJjkxuHn8KATTvlbhg5xO/gX+v6GFGsrmyWp2
+	JFwd14SMnAqm4UN6ACCIrtDcUdVaCwEiPm4sgL6/A/M8isTeW/IgF8hdnbpN+DQMCJgnJWVoYWmys
+	PyoB16i4cgLzeRFmI6Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKnQP-00C6Tr-SC; Thu, 17 Feb 2022 20:30:49 +0000
+	id 1nKnRL-00C6vU-Dt; Thu, 17 Feb 2022 20:31:47 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKnLd-00C4AC-Vq; Thu, 17 Feb 2022 20:25:55 +0000
+ id 1nKnLo-00C4F7-Jq; Thu, 17 Feb 2022 20:26:05 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 80B1A61D7D;
- Thu, 17 Feb 2022 20:25:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D44F3C340E8;
- Thu, 17 Feb 2022 20:25:52 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 274B661DA5;
+ Thu, 17 Feb 2022 20:26:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75A87C340E8;
+ Thu, 17 Feb 2022 20:26:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1645129552;
- bh=F56jf0lsMIV7JzWwGs9VyV/0PlxgQNzNy9P6DuyhSBc=;
+ s=k20201202; t=1645129563;
+ bh=yEBE2uVfmVwo6/fpt01rZYdn4V91x4Iew3YhkKRJNC8=;
  h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=h0pF0tnGV1u/PtVKkqfQivXmkANDsTzytkZMxqHRGb40wGnl7DH29txeynNMlLHCd
- 65lQqZ1OIyYfC6/kdWiIWTHYrUytP+HQXAPYTXMEBigvLyhSKMDe7cRPSuTtTX1mS/
- yGk7BR6A51jnP0JohKs64enaO2FkUP+tOCRLUOlDthK1+1p4swsxmSuBbWeaNqGKAh
- 6GOUiG8oklEUXJcOaxP4FNZ/Knk7lCq/pF1T9QhBmwkGf2p/wY27SZpl4nX2gsSyA6
- MSTSpeEi38FvfWNiAaKkAkyFEWJ8P6rAy0qsomJnvH2bLsFEcdS94choCdfDKfNomP
- drpPQQk3CDVNw==
+ b=sOf57vCGvyMj53fEZdYMdjEtBriS+FlihUaJ13KX/UBOwGkrNkClm18DnMRQIvLwB
+ 8DiaFQSZRPEvzvtR9rEbIe4I0qMQpblVGA52Z36cI1n9itDlKtj2sw7VDkRPMYvmKj
+ h04d7/fPCb/0ZDrhnrW1H9Yc6iwk3oBMs6ge3+kW4vvHhFGa4A+mawJE5lFi7UZIsX
+ 2PEi6fsOANVcFnlsn/QWP8r6F9OGf9BE4fM0/AmoCawihIVcGIL725W9/n2O4MqRh0
+ hV8JhnYFZE+La7Bzv89J5zJf56c8V+5uc5ae41n8DdZAtGFa3No1tj0SKggPYjET+I
+ 7CEUHYGZ5rRFw==
 MIME-Version: 1.0
-In-Reply-To: <20220208124034.414635-16-wenst@chromium.org>
+In-Reply-To: <20220208124034.414635-17-wenst@chromium.org>
 References: <20220208124034.414635-1-wenst@chromium.org>
- <20220208124034.414635-16-wenst@chromium.org>
-Subject: Re: [PATCH v3 15/31] clk: mediatek: Implement
- mtk_clk_unregister_fixed_clks() API
+ <20220208124034.414635-17-wenst@chromium.org>
+Subject: Re: [PATCH v3 16/31] clk: mediatek: Implement
+ mtk_clk_unregister_factors() API
 From: Stephen Boyd <sboyd@kernel.org>
 Cc: Chen-Yu Tsai <wenst@chromium.org>,
  Chun-Jie Chen <chun-jie.chen@mediatek.com>,
@@ -57,12 +57,12 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 To: Chen-Yu Tsai <wenst@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Michael Turquette <mturquette@baylibre.com>
-Date: Thu, 17 Feb 2022 12:25:51 -0800
+Date: Thu, 17 Feb 2022 12:26:01 -0800
 User-Agent: alot/0.10
-Message-Id: <20220217202552.D44F3C340E8@smtp.kernel.org>
+Message-Id: <20220217202603.75A87C340E8@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_122554_105248_756FADA5 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20220217_122604_728413_B73724BF 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,9 +79,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Chen-Yu Tsai (2022-02-08 04:40:18)
-> mtk_clk_register_fixed_clks(), as the name suggests, is used to register
-> a given list of fixed rate clks. However it is lacking a counterpart
+Quoting Chen-Yu Tsai (2022-02-08 04:40:19)
+> mtk_clk_register_factors(), as the name suggests, is used to register
+> a given list of fixed factor clks. However it is lacking a counterpart
 > unregister API.
 > 
 > Implement said unregister API so that the various clock platform drivers
