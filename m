@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0DD3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 11:45:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1060C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 11:46:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PtX7c/C+CIOPJlSS4vHo9pieVFrHtKlacLgslFtZA3Y=; b=g+k8kUnkScdSon
-	5qlwPOBR/Le11gMJJA4QGzMddjK77vnaXn3QxFEQtN21k2y1yk1lyF0Q/TiEs6jiYN1jFR8i6A/+l
-	WwaJbi930EUyhHSOmZ2pTsn510VU9UyPWVF+jdxJ1bULLNYg00z4QbfK+VJCVApaYPvUJAp5wxlLW
-	snHRLcs54kic5eS5ZqAQ7Mmi5jHgF2xDO2Rywbr1uxVjmPQCEmHX/n50S5bbjM8fCDmcwcKeY8ELb
-	5NB9GvWKpIsjoNXtunBRe4rw46XhnFmn3/RSt5ctkm8InFN7jOGlHC1UvFd+lv0b0h6xU3cA74RpY
-	Guc6cNeEXVGkpnfphFMg==;
+	List-Owner; bh=CkCaxuF19nVCwIsw8lQCnTg8YkYpnem6yLT17y+kwds=; b=DAqLklahgwfNcR
+	RgM4np6xQhvyASSRwkBaT377c/6B7qeD7sG7OIfo7QLtmUV0WFPw61uLKZRJyW6fHQ27CsprL4hf0
+	8n6OOgza4t+QRmxmilIEN+QjcVsUIc8WI6cnI1fvXa6/1wxliJmkB6GyFJIj9us871foAvcl//3To
+	85n+clnzgP/CytCB/eseBWjwt2Rh4+qUCOEyaEhTP8W/4ElYNNFiH3Sj/pCOTKYX6AYTgubs83rd1
+	CKdmYwNQRuSV4u7fRBgJOpo0Sj8XKUn1y4SgphuA7cjFHxhdHrh7coKJkQ+Iz6dp28aTsucJr1Fwr
+	eCqqQApUtFPTYSay+DTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKfEE-00AA2B-7M; Thu, 17 Feb 2022 11:45:42 +0000
+	id 1nKfER-00AA8w-6d; Thu, 17 Feb 2022 11:45:55 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKfEA-00AA0e-VR; Thu, 17 Feb 2022 11:45:40 +0000
-X-UUID: 816e2d0bcaa24be8aa9aca73b39698dd-20220217
-X-UUID: 816e2d0bcaa24be8aa9aca73b39698dd-20220217
+ id 1nKfEB-00AA0x-OX; Thu, 17 Feb 2022 11:45:41 +0000
+X-UUID: 35508baf9f1a4baebe97bb5beac8a6d1-20220217
+X-UUID: 35508baf9f1a4baebe97bb5beac8a6d1-20220217
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 403095619; Thu, 17 Feb 2022 04:45:37 -0700
+ with ESMTP id 20326889; Thu, 17 Feb 2022 04:45:36 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Feb 2022 03:40:11 -0800
+ 15.0.1497.2; Thu, 17 Feb 2022 03:35:34 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 17 Feb 2022 19:40:09 +0800
+ 15.2.792.15; Thu, 17 Feb 2022 19:35:33 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 17 Feb 2022 19:40:08 +0800
+ Transport; Thu, 17 Feb 2022 19:35:31 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -54,17 +54,17 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v5 31/34] iommu/mediatek: Get the proper bankid for multi banks
-Date: Thu, 17 Feb 2022 19:34:50 +0800
-Message-ID: <20220217113453.13658-32-yong.wu@mediatek.com>
+Subject: [PATCH v5 03/34] iommu/mediatek: Fix 2 HW sharing pgtable issue
+Date: Thu, 17 Feb 2022 19:34:22 +0800
+Message-ID: <20220217113453.13658-4-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220217113453.13658-1-yong.wu@mediatek.com>
 References: <20220217113453.13658-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_034539_031700_4C9AF82B 
-X-CRM114-Status: GOOD (  22.46  )
+X-CRM114-CacheID: sfid-20220217_034539_810232_F2B141A3 
+X-CRM114-Status: GOOD (  14.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,111 +81,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We preassign some ports in a special bank via the new defined
-banks_portmsk. Put it in the plat_data means it is not expected to be
-adjusted dynamically.
+In the commit 4f956c97d26b ("iommu/mediatek: Move domain_finalise into
+attach_device"), I overlooked the sharing pgtable case.
+After that commit, the "data" in the mtk_iommu_domain_finalise always is
+the data of the current IOMMU HW. Fix this for the sharing pgtable case.
 
-If the iommu id in the iommu consumer's dtsi node is inside this
-banks_portmsk, then we switch it to this special iommu bank, and
-initialise the IOMMU bank HW.
+Only affect mt2712 which is the only SoC that share pgtable currently.
 
-Each a bank has the independent pgtable(4GB iova range). Each a bank
-is a independent iommu domain/group. Currently we don't separate different
-iova ranges inside a bank.
-
+Fixes: 4f956c97d26b ("iommu/mediatek: Move domain_finalise into attach_device")
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c | 39 ++++++++++++++++++++++++++++++++++++---
- 1 file changed, 36 insertions(+), 3 deletions(-)
+ drivers/iommu/mtk_iommu.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 86d235d22db1..46d3a8d3fa36 100644
+index fbe10f92afcc..1a742bd1cdc9 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -191,6 +191,7 @@ struct mtk_iommu_plat_data {
- 
- 	u8                  banks_num;
- 	bool                banks_enable[MTK_IOMMU_BANK_MAX];
-+	unsigned int        banks_portmsk[MTK_IOMMU_BANK_MAX];
- 	unsigned char       larbid_remap[MTK_LARB_COM_MAX][MTK_LARB_SUBCOM_MAX];
- };
- 
-@@ -478,6 +479,30 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
- 	return IRQ_HANDLED;
- }
- 
-+static unsigned int mtk_iommu_get_bank_id(struct device *dev,
-+					  const struct mtk_iommu_plat_data *plat_data)
-+{
-+	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-+	unsigned int i, portmsk = 0, bankid = 0;
-+
-+	if (plat_data->banks_num == 1)
-+		return bankid;
-+
-+	for (i = 0; i < fwspec->num_ids; i++)
-+		portmsk |= BIT(MTK_M4U_TO_PORT(fwspec->ids[i]));
-+
-+	for (i = 0; i < plat_data->banks_num && i < MTK_IOMMU_BANK_MAX; i++) {
-+		if (!plat_data->banks_enable[i])
-+			continue;
-+
-+		if (portmsk & plat_data->banks_portmsk[i]) {
-+			bankid = i;
-+			break;
-+		}
-+	}
-+	return bankid; /* default is 0 */
-+}
-+
- static int mtk_iommu_get_iova_region_id(struct device *dev,
- 					const struct mtk_iommu_plat_data *plat_data)
+@@ -446,7 +446,7 @@ static void mtk_iommu_domain_free(struct iommu_domain *domain)
+ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ 				   struct device *dev)
  {
-@@ -630,13 +655,14 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- 	struct list_head *hw_list = data->hw_list;
+-	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
++	struct mtk_iommu_data *data = dev_iommu_priv_get(dev), *frstdata;
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
  	struct device *m4udev = data->dev;
- 	struct mtk_iommu_bank_data *bank;
--	unsigned int bankid = 0;
-+	unsigned int bankid;
- 	int ret, region_id;
+ 	int ret, domid;
+@@ -456,7 +456,10 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ 		return domid;
  
- 	region_id = mtk_iommu_get_iova_region_id(dev, data->plat_data);
- 	if (region_id < 0)
- 		return region_id;
- 
-+	bankid = mtk_iommu_get_bank_id(dev, data->plat_data);
- 	mutex_lock(&dom->mutex);
- 	if (!dom->bank) {
- 		/* Data is in the frstdata in sharing pgtable case. */
-@@ -813,6 +839,7 @@ static struct iommu_group *mtk_iommu_device_group(struct device *dev)
- 	struct mtk_iommu_data *c_data = dev_iommu_priv_get(dev), *data;
- 	struct list_head *hw_list = c_data->hw_list;
- 	struct iommu_group *group;
-+	unsigned int bankid, groupid;
- 	int regionid;
- 
- 	data = mtk_iommu_get_frst_data(hw_list);
-@@ -823,12 +850,18 @@ static struct iommu_group *mtk_iommu_device_group(struct device *dev)
- 	if (regionid < 0)
- 		return ERR_PTR(regionid);
- 
-+	bankid = mtk_iommu_get_bank_id(dev, data->plat_data);
- 	mutex_lock(&data->mutex);
--	group = data->m4u_group[regionid];
-+	/*
-+	 * If the bank function is enabled, each a bank is a iommu group/domain.
-+	 * otherwise, each a iova region is a iommu group/domain.
-+	 */
-+	groupid = bankid ? bankid : regionid;
-+	group = data->m4u_group[groupid];
- 	if (!group) {
- 		group = iommu_group_alloc();
- 		if (!IS_ERR(group))
--			data->m4u_group[regionid] = group;
-+			data->m4u_group[groupid] = group;
- 	} else {
- 		iommu_group_ref_get(group);
+ 	if (!dom->data) {
+-		if (mtk_iommu_domain_finalise(dom, data, domid))
++		/* Data is in the frstdata in sharing pgtable case. */
++		frstdata = mtk_iommu_get_m4u_data();
++
++		if (mtk_iommu_domain_finalise(dom, frstdata, domid))
+ 			return -ENODEV;
+ 		dom->data = data;
  	}
 -- 
 2.18.0
