@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A03AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 20:35:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10798C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 20:36:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
 	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Pnlqg6fYzAVAjeD6eq09Lyp4Rbu8+TI5jxRFwKa20C0=; b=YL5EbZrcfpjdq8
-	EnldhGA1VIb7hnjnnkAL9ZhNodjQFnhEWv6lfC7fKLBnUfWqtrKH5lb8+3ck/6ZgknQHVpIejhTgI
-	qGw3+fIZdsd3/yZRdGToyf3q8l+exQ5AnHcQKN3Jt2sqiRutka+lHvC9GtMkN91Xv7HFKwrdzvwrw
-	U6F1ue2lGJON9G1vktiK+qpCP27DPLC6E1ar2fr9SiGb6DHBPzJmA6oSHMjGjBkgN8KC/eHLOtWKr
-	HkS1lu6myOVxwMOpq5IndSCx/OiRNQAhsM9I3DupCPASYtkgi63rmuXT4J36DpVt3tqMQFNuqAvvX
-	gueK6xBOp6M6jv7ftPLg==;
+	List-Owner; bh=JAL0/YQfZLtYnn58VZFcgrTFqOWDUcxhV7JWB7p83u8=; b=zez/6H9sFs+Yj4
+	Yk2coZu3LPwRETVNBVk8AIRbbW0FPlWczvAfPluY95Isv0WI92ydOhh3MNFJ5UGrSamnYWsIb5Koj
+	maxy5xVszPC8DeRqhVXhOWuWNibVaJ1q9qLSsIQcf0KSTuwY12RBapgxop5jakKd6qtl2/DK+cqkA
+	bbuAIF7JxefcjNs/YDTYVBSd0J0GgJX75wKMztWveLdp/lBbnzI1IUKDEiAfUPabGKrW/+rGhsOif
+	KIQ8pUIBTbLGb9tgIsV1CMHvpASYSVScPLvUomS78RgIHiMy7AKTDDnD8tAIMzAS70CDkekpqjl2J
+	hSRZq95MporCY6LJAsvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKnVH-00C8xC-2e; Thu, 17 Feb 2022 20:35:51 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nKnVw-00C9JV-Qe; Thu, 17 Feb 2022 20:36:32 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKnMx-00C4pR-Tr; Thu, 17 Feb 2022 20:27:17 +0000
+ id 1nKnNO-00C523-P0; Thu, 17 Feb 2022 20:27:44 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 448DC61E07;
- Thu, 17 Feb 2022 20:27:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04E2FC340E8;
- Thu, 17 Feb 2022 20:27:14 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 6471CB82486;
+ Thu, 17 Feb 2022 20:27:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 048DDC340E8;
+ Thu, 17 Feb 2022 20:27:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1645129635;
- bh=sNfEL4qPz/YKpoz2FZqa2kn8NIWSr9QYg5aiwDlvBKc=;
+ s=k20201202; t=1645129660;
+ bh=ilOYBZRzF5qZKxjckhhQqQteFDzfc4LnB9TUkegTnI0=;
  h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=TwBl7NEis6eav2W8qiuHVYtTBZGKSzVd9LjWIqh4nNPH8SKvLk3ol/kHX6/ITqm43
- /itljxvAwhPpntr545JR4uFu5aMSxHvdF/OfbDWkn1M+Qz8ByFeH8kMelHLnPLF0gb
- FldZ3rw1PmDBwvDDQMlR9hq6WOAY1rQsOKuVVjn7CoEV6GhuCizIiRs5fQFB2YOnVD
- 5Onr9jS0f2fbZeGrIsFNKxhE5VUZyiMrOtYynN3h/n353eYXWLZN7P5O/W2V5qI22b
- uiiV53A5ApCJeDYt00bD9vZY7kdTeVAWn0YwA+PSa12LBgrVkrTK1V+9wM0gqpruFy
- u2YiC1od3CIUQ==
+ b=NynGR/00wKw0k2eFA7b+jXiOys3z4RXbxJzy5i624cXq0jt3ho6bk+Jb6uSZlCGyn
+ FH18ltJSNPHAPLH/2cGRgw3Yzi3wdkK2ZJt0bOMtrTwETVa34DXTXCHhcvDBLXiOL5
+ +6oQ9Ug6y655pIfts9cLDEOMDX+GpJE0E252aJtiag+NU2lU/4YJf9GA6VwmTAN0Qr
+ CZMWCOApGSkWQpRfjNaD0SS/ICQGfwTmpZDagJ7CFsjaTGtVW6LzRZYrRjCl78hg7+
+ pUP9ci8dlRnD+JvuuycbP/FRLWGQmsPQMWbUDR3w4jtAGdtIZ8ylV1aTVV4v7r9kz9
+ ps7D9zGLVP5Ew==
 MIME-Version: 1.0
-In-Reply-To: <20220208124034.414635-23-wenst@chromium.org>
+In-Reply-To: <20220208124034.414635-24-wenst@chromium.org>
 References: <20220208124034.414635-1-wenst@chromium.org>
- <20220208124034.414635-23-wenst@chromium.org>
-Subject: Re: [PATCH v3 22/31] clk: mediatek: gate: Implement error handling in
- register API
+ <20220208124034.414635-24-wenst@chromium.org>
+Subject: Re: [PATCH v3 23/31] clk: mediatek: mux: Reverse check for existing
+ clk to reduce nesting level
 From: Stephen Boyd <sboyd@kernel.org>
 Cc: Chen-Yu Tsai <wenst@chromium.org>,
  Chun-Jie Chen <chun-jie.chen@mediatek.com>,
@@ -57,12 +57,12 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 To: Chen-Yu Tsai <wenst@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Michael Turquette <mturquette@baylibre.com>
-Date: Thu, 17 Feb 2022 12:27:13 -0800
+Date: Thu, 17 Feb 2022 12:27:38 -0800
 User-Agent: alot/0.10
-Message-Id: <20220217202715.04E2FC340E8@smtp.kernel.org>
+Message-Id: <20220217202740.048DDC340E8@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_122716_073017_9C4EE17E 
-X-CRM114-Status: GOOD (  10.32  )
+X-CRM114-CacheID: sfid-20220217_122743_014943_9F6939B4 
+X-CRM114-Status: GOOD (  10.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,15 +79,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Chen-Yu Tsai (2022-02-08 04:40:25)
-> The gate clk type registration function does not stop or return errors
-> if any clk failed to be registered, nor does it implement an error
-> handling path. This may result in a partially working device if any
-> step failed.
+Quoting Chen-Yu Tsai (2022-02-08 04:40:26)
+> The clk registration code here currently does:
 > 
-> Make the register function return proper error codes, and bail out if
-> errors occur. Proper cleanup, i.e. unregister any clks that were
-> successfully registered, is done in the new error path.
+>     if (IS_ERR_OR_NULL(clk_data->clks[mux->id])) {
+>             ... do clk registration ...
+>     }
+> 
+> This extra level of nesting wastes screen real estate.
+> 
+> Reduce the nesting level by reversing the conditional shown above.
+> Other than that, functionality is not changed.
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 > Reviewed-by: Miles Chen <miles.chen@mediatek.com>
