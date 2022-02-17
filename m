@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A49E6C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 13:55:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AADFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 13:56:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a6QwndLi7ThXuoasxW49qEgWFRQxro89j3xNYNWgisE=; b=EqAZtx+CwFjXpr
-	7957HpkawD3THGcSn5I+4niQSnISw502SmCXeGOB6AIhfNoq/7pQFcngVwp4f1+bIBgCwMfvrpJEp
-	wguAiZKzoq6tAALc8OoYZSQS8YPSO86JpB3LzZdbkScxvMus4xRkhW2qQMQjhLmGrTSOnQ0+k87cz
-	am5Ef/1jJdlhWMjfFKq/MR3Dyy4Elf0sR2zjrrgHiknKP8FDrvMyerL7FEAXV8Kk/V57rY3CVuU/l
-	NmztNSPJm8r/uOkhoAfd6gr6jMmWD5VJQ6Iq2BvGEV68HHfBSMvZ0cXjU46wYWefdpnK1RjilD7tD
-	WelbYyvUT/veZHbfUJKA==;
+	List-Owner; bh=jgqSX9mc8b42YmJyC2mAPluAXbVfXkeG46/b1/ra+4k=; b=Ro8giURKw8Z4Re
+	vVQlgSgycbCVmag2vG7sxlJ1BLrFT5wYSRbomtjdCmgqZQSP8WgfkV4O/fPnOYqhX4N5hX4iBFNjD
+	Z9tyR/hg8KNJU27oUt8mOeI+QdhwHD58bQe2+L2RZP7f1EPn3j9ECJ/PDJ8yBi/gHuIrMqsgBgx9J
+	aRjgiyZ7oihKLIHahiCpKrrQ56UANiun90wrHaZsHcogY67rVw68E5hRmpZnJzeO6lF7F/Nvpiks+
+	8LuLuMUesc8BumJw60Hniey1UrN3PpcXMtJb4Kt2EW82lgOgQXkMnRzMlSqUFFib5lMgdaePZ29kx
+	rAIYtw6zZtbWfeJmXixA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKhFp-00AmaV-VW; Thu, 17 Feb 2022 13:55:30 +0000
+	id 1nKhH8-00AnKt-Fp; Thu, 17 Feb 2022 13:56:50 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKhBf-00AkbZ-EX; Thu, 17 Feb 2022 13:51:14 +0000
-X-UUID: 8f678af37a7c400babc74690cfe373b7-20220217
-X-UUID: 8f678af37a7c400babc74690cfe373b7-20220217
+ id 1nKhBh-00AkbA-MD; Thu, 17 Feb 2022 13:51:15 +0000
+X-UUID: ead4aaee6f0a4aad9831fab99302f7ce-20220217
+X-UUID: ead4aaee6f0a4aad9831fab99302f7ce-20220217
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jiaxin.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1217887947; Thu, 17 Feb 2022 06:51:07 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ with ESMTP id 674211240; Thu, 17 Feb 2022 06:51:07 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Feb 2022 05:42:18 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 17 Feb 2022 21:42:16 +0800
+ 15.0.1497.2; Thu, 17 Feb 2022 05:42:24 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 17 Feb 2022 21:42:23 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 17 Feb 2022 21:42:15 +0800
+ Transport; Thu, 17 Feb 2022 21:42:22 +0800
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
 To: <broonie@kernel.org>
 CC: <lgirdwood@gmail.com>, <tiwai@suse.com>, <robh+dt@kernel.org>,
@@ -48,17 +49,18 @@ CC: <lgirdwood@gmail.com>, <tiwai@suse.com>, <robh+dt@kernel.org>,
  <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, Jiaxin Yu <jiaxin.yu@mediatek.com>
-Subject: [v2 05/17] ASoC: mediatek: mt8186: support hw gain in platform driver
-Date: Thu, 17 Feb 2022 21:41:53 +0800
-Message-ID: <20220217134205.15400-6-jiaxin.yu@mediatek.com>
+Subject: [v2 11/17] ASoC: mediatek: mt8186: support gpio control in platform
+ driver
+Date: Thu, 17 Feb 2022 21:41:59 +0800
+Message-ID: <20220217134205.15400-12-jiaxin.yu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220217134205.15400-1-jiaxin.yu@mediatek.com>
 References: <20220217134205.15400-1-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_055111_537109_7CC7CD5D 
-X-CRM114-Status: GOOD (  15.28  )
+X-CRM114-CacheID: sfid-20220217_055113_767247_DF358D50 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,265 +77,257 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This path adds mt8186 hw gain dai driver.
+This patch add gpio control for all audio interface separately.
 
 Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
 ---
- .../soc/mediatek/mt8186/mt8186-dai-hw-gain.c  | 245 ++++++++++++++++++
- 1 file changed, 245 insertions(+)
- create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c
+ sound/soc/mediatek/mt8186/mt8186-afe-gpio.c | 210 ++++++++++++++++++++
+ sound/soc/mediatek/mt8186/mt8186-afe-gpio.h |  19 ++
+ 2 files changed, 229 insertions(+)
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-gpio.h
 
-diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c b/sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c
+diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
 new file mode 100644
-index 000000000000..796878989727
+index 000000000000..6faec5c95bf3
 --- /dev/null
-+++ b/sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c
-@@ -0,0 +1,245 @@
++++ b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
+@@ -0,0 +1,210 @@
 +// SPDX-License-Identifier: GPL-2.0
 +//
-+// MediaTek ALSA SoC Audio DAI HW Gain Control
++// mt8186-afe-gpio.c  --  Mediatek 8186 afe gpio ctrl
 +//
 +// Copyright (c) 2022 MediaTek Inc.
 +// Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
 +
-+#include <linux/regmap.h>
++#include <linux/gpio.h>
++#include <linux/pinctrl/consumer.h>
++
 +#include "mt8186-afe-common.h"
-+#include "mt8186-interconnection.h"
++#include "mt8186-afe-gpio.h"
 +
-+#define HW_GAIN_1_EN_W_NAME "HW GAIN 1 Enable"
-+#define HW_GAIN_2_EN_W_NAME "HW GAIN 2 Enable"
++struct pinctrl *aud_pinctrl;
 +
-+/* dai component */
-+static const struct snd_kcontrol_new mtk_hw_gain1_in_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("CONNSYS_I2S_CH1 Switch", AFE_CONN13_1,
-+				    I_CONNSYS_I2S_CH1, 1, 0),
++enum mt8186_afe_gpio {
++	MT8186_AFE_GPIO_CLK_MOSI_OFF,
++	MT8186_AFE_GPIO_CLK_MOSI_ON,
++	MT8186_AFE_GPIO_CLK_MISO_OFF,
++	MT8186_AFE_GPIO_CLK_MISO_ON,
++	MT8186_AFE_GPIO_DAT_MISO_OFF,
++	MT8186_AFE_GPIO_DAT_MISO_ON,
++	MT8186_AFE_GPIO_DAT_MOSI_OFF,
++	MT8186_AFE_GPIO_DAT_MOSI_ON,
++	MT8186_AFE_GPIO_I2S0_OFF,
++	MT8186_AFE_GPIO_I2S0_ON,
++	MT8186_AFE_GPIO_I2S1_OFF,
++	MT8186_AFE_GPIO_I2S1_ON,
++	MT8186_AFE_GPIO_I2S2_OFF,
++	MT8186_AFE_GPIO_I2S2_ON,
++	MT8186_AFE_GPIO_I2S3_OFF,
++	MT8186_AFE_GPIO_I2S3_ON,
++	MT8186_AFE_GPIO_TDM_OFF,
++	MT8186_AFE_GPIO_TDM_ON,
++	MT8186_AFE_GPIO_PCM_OFF,
++	MT8186_AFE_GPIO_PCM_ON,
++	MT8186_AFE_GPIO_GPIO_NUM
 +};
 +
-+static const struct snd_kcontrol_new mtk_hw_gain1_in_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("CONNSYS_I2S_CH2 Switch", AFE_CONN14_1,
-+				    I_CONNSYS_I2S_CH2, 1, 0),
++struct audio_gpio_attr {
++	const char *name;
++	bool gpio_prepare;
++	struct pinctrl_state *gpioctrl;
 +};
 +
-+static const struct snd_kcontrol_new mtk_hw_gain2_in_ch1_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1 Switch", AFE_CONN15,
-+				    I_ADDA_UL_CH1, 1, 0),
++static struct audio_gpio_attr aud_gpios[MT8186_AFE_GPIO_GPIO_NUM] = {
++	[MT8186_AFE_GPIO_CLK_MOSI_OFF] = {"aud_clk_mosi_off", false, NULL},
++	[MT8186_AFE_GPIO_CLK_MOSI_ON] = {"aud_clk_mosi_on", false, NULL},
++	[MT8186_AFE_GPIO_CLK_MISO_OFF] = {"aud_clk_miso_off", false, NULL},
++	[MT8186_AFE_GPIO_CLK_MISO_ON] = {"aud_clk_miso_on", false, NULL},
++	[MT8186_AFE_GPIO_DAT_MISO_OFF] = {"aud_dat_miso_off", false, NULL},
++	[MT8186_AFE_GPIO_DAT_MISO_ON] = {"aud_dat_miso_on", false, NULL},
++	[MT8186_AFE_GPIO_DAT_MOSI_OFF] = {"aud_dat_mosi_off", false, NULL},
++	[MT8186_AFE_GPIO_DAT_MOSI_ON] = {"aud_dat_mosi_on", false, NULL},
++	[MT8186_AFE_GPIO_I2S0_OFF] = {"aud_gpio_i2s0_off", false, NULL},
++	[MT8186_AFE_GPIO_I2S0_ON] = {"aud_gpio_i2s0_on", false, NULL},
++	[MT8186_AFE_GPIO_I2S1_OFF] = {"aud_gpio_i2s1_off", false, NULL},
++	[MT8186_AFE_GPIO_I2S1_ON] = {"aud_gpio_i2s1_on", false, NULL},
++	[MT8186_AFE_GPIO_I2S2_OFF] = {"aud_gpio_i2s2_off", false, NULL},
++	[MT8186_AFE_GPIO_I2S2_ON] = {"aud_gpio_i2s2_on", false, NULL},
++	[MT8186_AFE_GPIO_I2S3_OFF] = {"aud_gpio_i2s3_off", false, NULL},
++	[MT8186_AFE_GPIO_I2S3_ON] = {"aud_gpio_i2s3_on", false, NULL},
++	[MT8186_AFE_GPIO_TDM_OFF] = {"aud_gpio_tdm_off", false, NULL},
++	[MT8186_AFE_GPIO_TDM_ON] = {"aud_gpio_tdm_on", false, NULL},
++	[MT8186_AFE_GPIO_PCM_OFF] = {"aud_gpio_pcm_off", false, NULL},
++	[MT8186_AFE_GPIO_PCM_ON] = {"aud_gpio_pcm_on", false, NULL},
 +};
 +
-+static const struct snd_kcontrol_new mtk_hw_gain2_in_ch2_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2 Switch", AFE_CONN16,
-+				    I_ADDA_UL_CH2, 1, 0),
-+};
++static DEFINE_MUTEX(gpio_request_mutex);
 +
-+static int mtk_hw_gain_event(struct snd_soc_dapm_widget *w,
-+			     struct snd_kcontrol *kcontrol,
-+			     int event)
++int mt8186_afe_gpio_init(struct device *dev)
 +{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-+	unsigned int gain_cur;
-+	unsigned int gain_con1;
++	int ret;
++	int i = 0;
 +
-+	dev_dbg(cmpnt->dev, "%s(), name %s, event 0x%x\n",
-+		__func__, w->name, event);
++	aud_pinctrl = devm_pinctrl_get(dev);
++	if (IS_ERR(aud_pinctrl)) {
++		ret = PTR_ERR(aud_pinctrl);
++		dev_info(dev, "%s(), ret %d, cannot get aud_pinctrl!\n",
++			 __func__, ret);
++		return -ENODEV;
++	}
 +
-+	switch (event) {
-+	case SND_SOC_DAPM_PRE_PMU:
-+		if (strcmp(w->name, HW_GAIN_1_EN_W_NAME) == 0) {
-+			gain_cur = AFE_GAIN1_CUR;
-+			gain_con1 = AFE_GAIN1_CON1;
++	for (i = 0; i < ARRAY_SIZE(aud_gpios); i++) {
++		aud_gpios[i].gpioctrl = pinctrl_lookup_state(aud_pinctrl,
++							     aud_gpios[i].name);
++		if (IS_ERR(aud_gpios[i].gpioctrl)) {
++			ret = PTR_ERR(aud_gpios[i].gpioctrl);
++			dev_info(dev, "%s(), pinctrl_lookup_state %s fail, ret %d\n",
++				 __func__, aud_gpios[i].name, ret);
 +		} else {
-+			gain_cur = AFE_GAIN2_CUR;
-+			gain_con1 = AFE_GAIN2_CON1;
++			aud_gpios[i].gpio_prepare = true;
 +		}
++	}
 +
-+		/* let hw gain ramp up, set cur gain to 0 */
-+		regmap_update_bits(afe->regmap,
-+				   gain_cur,
-+				   AFE_GAIN1_CUR_MASK_SFT,
-+				   0);
++	/* gpio status init */
++	mt8186_afe_gpio_request(dev, false, MT8186_DAI_ADDA, 0);
++	mt8186_afe_gpio_request(dev, false, MT8186_DAI_ADDA, 1);
 +
-+		/* set target gain to 0 */
-+		regmap_update_bits(afe->regmap,
-+				   gain_con1,
-+				   GAIN1_TARGET_MASK_SFT,
-+				   0);
-+		break;
-+	default:
-+		break;
++	return 0;
++}
++EXPORT_SYMBOL_GPL(mt8186_afe_gpio_init);
++
++static int mt8186_afe_gpio_select(struct device *dev,
++				  enum mt8186_afe_gpio type)
++{
++	int ret = 0;
++
++	if (type < 0 || type >= MT8186_AFE_GPIO_GPIO_NUM) {
++		dev_info(dev, "%s(), error, invalid gpio type %d\n",
++			 __func__, type);
++		return -EINVAL;
++	}
++
++	if (!aud_gpios[type].gpio_prepare) {
++		dev_info(dev, "%s(), error, gpio type %d not prepared\n",
++			 __func__, type);
++		return -EIO;
++	}
++
++	ret = pinctrl_select_state(aud_pinctrl,
++				   aud_gpios[type].gpioctrl);
++	if (ret)
++		dev_info(dev, "%s(), error, can not set gpio type %d\n",
++			 __func__, type);
++
++	return ret;
++}
++
++static int mt8186_afe_gpio_adda_dl(struct device *dev, bool enable)
++{
++	if (enable) {
++		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_CLK_MOSI_ON);
++		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_DAT_MOSI_ON);
++	} else {
++		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_DAT_MOSI_OFF);
++		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_CLK_MOSI_OFF);
 +	}
 +
 +	return 0;
 +}
 +
-+static const struct snd_soc_dapm_widget mtk_dai_hw_gain_widgets[] = {
-+	/* inter-connections */
-+	SND_SOC_DAPM_MIXER("HW_GAIN1_IN_CH1", SND_SOC_NOPM, 0, 0,
-+			   mtk_hw_gain1_in_ch1_mix,
-+			   ARRAY_SIZE(mtk_hw_gain1_in_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("HW_GAIN1_IN_CH2", SND_SOC_NOPM, 0, 0,
-+			   mtk_hw_gain1_in_ch2_mix,
-+			   ARRAY_SIZE(mtk_hw_gain1_in_ch2_mix)),
-+	SND_SOC_DAPM_MIXER("HW_GAIN2_IN_CH1", SND_SOC_NOPM, 0, 0,
-+			   mtk_hw_gain2_in_ch1_mix,
-+			   ARRAY_SIZE(mtk_hw_gain2_in_ch1_mix)),
-+	SND_SOC_DAPM_MIXER("HW_GAIN2_IN_CH2", SND_SOC_NOPM, 0, 0,
-+			   mtk_hw_gain2_in_ch2_mix,
-+			   ARRAY_SIZE(mtk_hw_gain2_in_ch2_mix)),
-+
-+	SND_SOC_DAPM_SUPPLY(HW_GAIN_1_EN_W_NAME,
-+			    AFE_GAIN1_CON0, GAIN1_ON_SFT, 0,
-+			    mtk_hw_gain_event,
-+			    SND_SOC_DAPM_PRE_PMU),
-+
-+	SND_SOC_DAPM_SUPPLY(HW_GAIN_2_EN_W_NAME,
-+			    AFE_GAIN2_CON0, GAIN2_ON_SFT, 0,
-+			    mtk_hw_gain_event,
-+			    SND_SOC_DAPM_PRE_PMU),
-+
-+	SND_SOC_DAPM_INPUT("HW Gain 1 Out Endpoint"),
-+	SND_SOC_DAPM_INPUT("HW Gain 2 Out Endpoint"),
-+	SND_SOC_DAPM_OUTPUT("HW Gain 1 In Endpoint"),
-+};
-+
-+static const struct snd_soc_dapm_route mtk_dai_hw_gain_routes[] = {
-+	{"HW Gain 1 In", NULL, "HW_GAIN1_IN_CH1"},
-+	{"HW Gain 1 In", NULL, "HW_GAIN1_IN_CH2"},
-+	{"HW Gain 2 In", NULL, "HW_GAIN2_IN_CH1"},
-+	{"HW Gain 2 In", NULL, "HW_GAIN2_IN_CH2"},
-+
-+	{"HW Gain 1 In", NULL, HW_GAIN_1_EN_W_NAME},
-+	{"HW Gain 1 Out", NULL, HW_GAIN_1_EN_W_NAME},
-+	{"HW Gain 2 In", NULL, HW_GAIN_2_EN_W_NAME},
-+	{"HW Gain 2 Out", NULL, HW_GAIN_2_EN_W_NAME},
-+
-+	{"HW Gain 1 In Endpoint", NULL, "HW Gain 1 In"},
-+	{"HW Gain 1 Out", NULL, "HW Gain 1 Out Endpoint"},
-+	{"HW Gain 2 Out", NULL, "HW Gain 2 Out Endpoint"},
-+};
-+
-+static const struct snd_kcontrol_new mtk_hw_gain_controls[] = {
-+	SOC_SINGLE("HW Gain 1 Volume", AFE_GAIN1_CON1,
-+		   GAIN1_TARGET_SFT, GAIN1_TARGET_MASK, 0),
-+	SOC_SINGLE("HW Gain 2 Volume", AFE_GAIN2_CON1,
-+		   GAIN2_TARGET_SFT, GAIN2_TARGET_MASK, 0),
-+};
-+
-+/* dai ops */
-+static int mtk_dai_gain_hw_params(struct snd_pcm_substream *substream,
-+				  struct snd_pcm_hw_params *params,
-+				  struct snd_soc_dai *dai)
++static int mt8186_afe_gpio_adda_ul(struct device *dev, bool enable)
 +{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	unsigned int rate = params_rate(params);
-+	unsigned int rate_reg = mt8186_rate_transform(afe->dev, rate, dai->id);
-+
-+	dev_info(afe->dev, "%s(), id %d, stream %d, rate %d\n",
-+		 __func__,
-+		 dai->id,
-+		 substream->stream,
-+		 rate);
-+
-+	/* rate */
-+	regmap_update_bits(afe->regmap,
-+			   dai->id == MT8186_DAI_HW_GAIN_1 ?
-+			   AFE_GAIN1_CON0 : AFE_GAIN2_CON0,
-+			   GAIN1_MODE_MASK_SFT,
-+			   rate_reg << GAIN1_MODE_SFT);
-+
-+	/* sample per step */
-+	regmap_update_bits(afe->regmap,
-+			   dai->id == MT8186_DAI_HW_GAIN_1 ?
-+			   AFE_GAIN1_CON0 : AFE_GAIN2_CON0,
-+			   GAIN1_SAMPLE_PER_STEP_MASK_SFT,
-+			   (dai->id == MT8186_DAI_HW_GAIN_1 ? 0x40 : 0x0) <<
-+			   GAIN1_SAMPLE_PER_STEP_SFT);
++	if (enable) {
++		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_CLK_MISO_ON);
++		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_DAT_MISO_ON);
++	} else {
++		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_DAT_MISO_OFF);
++		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_CLK_MISO_OFF);
++	}
 +
 +	return 0;
 +}
 +
-+static const struct snd_soc_dai_ops mtk_dai_gain_ops = {
-+	.hw_params = mtk_dai_gain_hw_params,
-+};
-+
-+/* dai driver */
-+#define MTK_HW_GAIN_RATES (SNDRV_PCM_RATE_8000_48000 |\
-+			   SNDRV_PCM_RATE_88200 |\
-+			   SNDRV_PCM_RATE_96000 |\
-+			   SNDRV_PCM_RATE_176400 |\
-+			   SNDRV_PCM_RATE_192000)
-+
-+#define MTK_HW_GAIN_FORMATS (SNDRV_PCM_FMTBIT_S16_LE |\
-+			     SNDRV_PCM_FMTBIT_S24_LE |\
-+			     SNDRV_PCM_FMTBIT_S32_LE)
-+
-+static struct snd_soc_dai_driver mtk_dai_gain_driver[] = {
-+	{
-+		.name = "HW Gain 1",
-+		.id = MT8186_DAI_HW_GAIN_1,
-+		.playback = {
-+			.stream_name = "HW Gain 1 In",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HW_GAIN_RATES,
-+			.formats = MTK_HW_GAIN_FORMATS,
-+		},
-+		.capture = {
-+			.stream_name = "HW Gain 1 Out",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HW_GAIN_RATES,
-+			.formats = MTK_HW_GAIN_FORMATS,
-+		},
-+		.ops = &mtk_dai_gain_ops,
-+		.symmetric_rate = 1,
-+		.symmetric_channels = 1,
-+		.symmetric_sample_bits = 1,
-+	},
-+	{
-+		.name = "HW Gain 2",
-+		.id = MT8186_DAI_HW_GAIN_2,
-+		.playback = {
-+			.stream_name = "HW Gain 2 In",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HW_GAIN_RATES,
-+			.formats = MTK_HW_GAIN_FORMATS,
-+		},
-+		.capture = {
-+			.stream_name = "HW Gain 2 Out",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HW_GAIN_RATES,
-+			.formats = MTK_HW_GAIN_FORMATS,
-+		},
-+		.ops = &mtk_dai_gain_ops,
-+		.symmetric_rate = 1,
-+		.symmetric_channels = 1,
-+		.symmetric_sample_bits = 1,
-+	},
-+};
-+
-+int mt8186_dai_hw_gain_register(struct mtk_base_afe *afe)
++int mt8186_afe_gpio_request(struct device *dev, bool enable,
++			    int dai, int uplink)
 +{
-+	struct mtk_base_afe_dai *dai;
-+
-+	dai = devm_kzalloc(afe->dev, sizeof(*dai), GFP_KERNEL);
-+	if (!dai)
-+		return -ENOMEM;
-+
-+	list_add(&dai->list, &afe->sub_dais);
-+
-+	dai->dai_drivers = mtk_dai_gain_driver;
-+	dai->num_dai_drivers = ARRAY_SIZE(mtk_dai_gain_driver);
-+
-+	dai->controls = mtk_hw_gain_controls;
-+	dai->num_controls = ARRAY_SIZE(mtk_hw_gain_controls);
-+	dai->dapm_widgets = mtk_dai_hw_gain_widgets;
-+	dai->num_dapm_widgets = ARRAY_SIZE(mtk_dai_hw_gain_widgets);
-+	dai->dapm_routes = mtk_dai_hw_gain_routes;
-+	dai->num_dapm_routes = ARRAY_SIZE(mtk_dai_hw_gain_routes);
++	mutex_lock(&gpio_request_mutex);
++	switch (dai) {
++	case MT8186_DAI_ADDA:
++		if (uplink)
++			mt8186_afe_gpio_adda_ul(dev, enable);
++		else
++			mt8186_afe_gpio_adda_dl(dev, enable);
++		break;
++	case MT8186_DAI_I2S_0:
++		if (enable)
++			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S0_ON);
++		else
++			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S0_OFF);
++		break;
++	case MT8186_DAI_I2S_1:
++		if (enable)
++			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S1_ON);
++		else
++			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S1_OFF);
++		break;
++	case MT8186_DAI_I2S_2:
++		if (enable)
++			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S2_ON);
++		else
++			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S2_OFF);
++		break;
++	case MT8186_DAI_I2S_3:
++		if (enable)
++			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S3_ON);
++		else
++			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S3_OFF);
++		break;
++	case MT8186_DAI_TDM_IN:
++		if (enable)
++			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_TDM_ON);
++		else
++			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_TDM_OFF);
++		break;
++	case MT8186_DAI_PCM:
++		if (enable)
++			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_PCM_ON);
++		else
++			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_PCM_OFF);
++		break;
++	default:
++		mutex_unlock(&gpio_request_mutex);
++		dev_info(dev, "%s(), invalid dai %d\n", __func__, dai);
++		return -EINVAL;
++	}
++	mutex_unlock(&gpio_request_mutex);
 +	return 0;
 +}
+diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-gpio.h b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.h
+new file mode 100644
+index 000000000000..1ddc27838eb1
+--- /dev/null
++++ b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.h
+@@ -0,0 +1,19 @@
++/* SPDX-License-Identifier: GPL-2.0
++ *
++ * mt6833-afe-gpio.h  --  Mediatek 6833 afe gpio ctrl definition
++ *
++ * Copyright (c) 2022 MediaTek Inc.
++ * Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
++ */
++
++#ifndef _MT8186_AFE_GPIO_H_
++#define _MT8186_AFE_GPIO_H_
++
++struct mtk_base_afe;
++
++int mt8186_afe_gpio_init(struct device *dev);
++
++int mt8186_afe_gpio_request(struct device *dev, bool enable,
++			    int dai, int uplink);
++
++#endif
 -- 
 2.18.0
 
