@@ -4,71 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D35DDC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 01:41:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1CAFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 03:05:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D0Kt+LQe+X+RAqsw1UNRrCRN92trok/Rw7zNm/3Qdpw=; b=jwvnRuSEhn3A1V
-	EfnxjUWNlbEeGO7knw0stYjtVGGrfMP7+69xIzBcFV+thvmYeTm1uvEOSB2t2LlMW6TVtdQeXKpl4
-	ccnArTVkMruB5GFdV5xwCq0SsWlHrN4iwJvsARkIzl9CPwpqyPuStjO0f8HPAYE3qnauwMkn/SrVV
-	UvPWbuJE+DVVJdmwuXUfXewL1Kj4mMJ3fYF5Xd91rxzXfYyKNqGP+hkmJ5XGmcBM1kpcnCHlb3QMY
-	ML3umyVu61hrSaJvFH7vwIKxG/33kEKliYAylFMA0oCwJ4JYMSHjl7xktkxCb2Va1267XZC5ZhWs6
-	MvzwLy1hb5GNaFsyc95Q==;
+	List-Owner; bh=He0/g/pEMXnQf1mx+HYpqIAZKBI6Jp3DWAesw3jRlEw=; b=yiu2d2vIp0bcXB
+	Qnx+I5OCPnwboiATAHtXWzgU/zf/xtWO8gxjBSiIV8XhnrLDC858JCF287PgUbLW1dgaoA3uOSMrA
+	+fCNe0SwR+ZVUJeDDHg9Pt8+rSJlBZkD6LU4x2V5bUOzoJqRoQ9xSlZekKR/vfUehklTgz1W0r/ER
+	W+vdbZKdVgUUdZUDYS5N3bWsym4ppljkFHsBJ1uB8HTGg7iRyEyICZjyY0ZelACLYeC6x6MWaxTyE
+	fNfCIKjg8rHBysxfx7zUAOPcId+6HwR2CtGf8g/uALiCNAc4wpDJCHfLKM6h4N+X9g53DsVFzU2H3
+	XDNBL7px++Q4nGxnRKFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKVnB-008gNQ-Vo; Thu, 17 Feb 2022 01:41:10 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nKX76-008oCS-AF; Thu, 17 Feb 2022 03:05:48 +0000
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKVmy-008gMk-23; Thu, 17 Feb 2022 01:40:59 +0000
-X-UUID: 832975c108aa4275839e72d2e605b0de-20220216
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=1p1mnHtvHQGA/AEu1pibc2h6KoRnT6AmXpOZNF+n9Wk=; 
- b=FTMsjPG74tItE3uvGXXefBPF3SgXFxbIbDg5vuXrNldtMkurofn3NLiB+qBegDha/F1md8ZUBz1wLfs8bWgoip2VlHMPuqPk9qqDdlzMpZQKrZzNa9R3Fwr/P1ORx9bkBDBtT+Ru1i51M521zugG/7vqCMDVv1OA5BVP19D4WlQ=;
-X-UUID: 832975c108aa4275839e72d2e605b0de-20220216
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <xinlei.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 581584389; Wed, 16 Feb 2022 18:40:46 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Feb 2022 17:40:44 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 17 Feb 2022 09:40:42 +0800
-Received: from mszsdhlt06 (10.16.6.206) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 17 Feb 2022 09:40:42 +0800
-Message-ID: <274b502e611038b3c718e4ae51a74694ce7b09bd.camel@mediatek.com>
-Subject: Re: [v2,1/4] dt-bindings: pwm: Convert pwm-mtk-disp.txt to
- mediatek,pwm-disp.yaml format
-From: xinlei.lee <xinlei.lee@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- <thierry.reding@gmail.com>, <u.kleine-koenig@pengutronix.de>,
- <lee.jones@linaro.org>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>,
- <jitao.shi@mediatek.com>
-CC: <allen-kh.cheng@mediatek.com>, <linux-pwm@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Xinlei Lee
- <xinlei.lee@mediatek.corp-partner.google.com>
-Date: Thu, 17 Feb 2022 09:40:52 +0800
-In-Reply-To: <370739d4-2da6-b620-ec79-adf8d00c8c33@canonical.com>
-References: <1645003971-16908-1-git-send-email-xinlei.lee@mediatek.com>
- <1645003971-16908-2-git-send-email-xinlei.lee@mediatek.com>
- <370739d4-2da6-b620-ec79-adf8d00c8c33@canonical.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nKX6u-008o9u-AN; Thu, 17 Feb 2022 03:05:37 +0000
+Received: by mail-pf1-x42c.google.com with SMTP id z16so3836423pfh.3;
+ Wed, 16 Feb 2022 19:05:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=eMoY/UclmOzHHpj7q9oQ/Af/xKLviGmGe8f60N9+gmY=;
+ b=SNP965VUfhZXrVmh8kTvPSsUo8uMC1jyZXYcE//TNFlPTGHB9dXy4htdU3q6jLFr/h
+ n/aaksqxMzXOFAPyNiluL1tEVo5gJbuBJAn7EbMdBfSMh252KspUFNvtuDIvgSSfIvf0
+ 6AZDUBq3v4fSDSO1sic7C7luXkosniXoMwvKe4FV7AUNHqdYjXOIdo96Y1EVvpdi+RLA
+ HDdX9eDaVGNjmE/oUN7AxsVDQsfk18Gn9DOknMXwy0Q0Xv716a0sqITsqhxGQDgjxIzw
+ j9rNWSGHzwWEix4lRiwo2f/OMZoGldMBq719xPT6ATBYzi733Ub75qC+1wTZQ6ORVqNV
+ OR9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=eMoY/UclmOzHHpj7q9oQ/Af/xKLviGmGe8f60N9+gmY=;
+ b=i/T14M4RZXPKP8KWavGDbFW7Mh+pplcv6WBfXtp4uGOMrPYjLOXZxdluhj7eaPvsTA
+ o+rkLX/0yKNrqiCqXp9JENOj5gMxb3RSs8FiXPh8yuCmxsiqNh9yG/66sRAZRODWJzcQ
+ g0UyS2cI2gUTqqj9SLCY4Drok/2DZN0XKTTwkqDYtEX4Xl55wpG2jt7V4PL029YTHUWW
+ RhDP4eHGuU01D0RDjZqghCdbRp+Szxns6NWTFkuar4n7jzO2HjRQXUUhXOdJBpUuQbIs
+ +IB1HtPPitAffYBX+jvxc+aKCTjYZM1rGTmJ4e5+Vgf2Iw9GBu9gC/5A5wxiMO6TVB25
+ PQzw==
+X-Gm-Message-State: AOAM530Nn4DQUE/FI7yHC781jNp55bHtg3CONQS9SVWjPgUajhPb1PYy
+ hFRPBkvA8lP1YQ0Zp62pvQ6AXtiGjon8QyCcmMI=
+X-Google-Smtp-Source: ABdhPJyLApRn+E2RrFYRd8bcKZvA9EPDU6eRpSCfrj/S6z/9sjnhhHgWU+v18QjChCGhBycQ0aSbyDB3PvbmUV7j64U=
+X-Received: by 2002:a05:6a00:1146:b0:4c9:ede0:725a with SMTP id
+ b6-20020a056a00114600b004c9ede0725amr897542pfm.35.1645067118729; Wed, 16 Feb
+ 2022 19:05:18 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220216073055.22642-1-lina.wang@mediatek.com>
+In-Reply-To: <20220216073055.22642-1-lina.wang@mediatek.com>
+From: Alexei Starovoitov <alexei.starovoitov@gmail.com>
+Date: Wed, 16 Feb 2022 19:05:07 -0800
+Message-ID: <CAADnVQK78PN8N6c6u_O2BAxdyXwH_HVYMV_x3oGgyfT50a6ymg@mail.gmail.com>
+Subject: Re: [PATCH v3] net: fix wrong network header length
+To: Lina Wang <lina.wang@mediatek.com>
+Cc: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, Andrii Nakryiko <andrii@kernel.org>, 
+ Network Development <netdev@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ linux-mediatek@lists.infradead.org, bpf <bpf@vger.kernel.org>,
+ =?UTF-8?Q?Maciej_=C5=BBenczykowski?= <maze@google.com>, 
+ Willem de Bruijn <willemb@google.com>, Eric Dumazet <edumazet@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220216_174057_580073_0BB13476 
-X-CRM114-Status: GOOD (  18.46  )
+X-CRM114-CacheID: sfid-20220216_190536_369673_62646E7F 
+X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,87 +89,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-02-16 at 11:22 +0100, Krzysztof Kozlowski wrote:
-> On 16/02/2022 10:32, xinlei.lee@mediatek.com wrote:
-> > From: Xinlei Lee <xinlei.lee@mediatek.corp-partner.google.com>
-> > 
-> > Convert pwm-mtk-disp.txt to mediatek,pwm-disp.yaml format as
-> > suggested by maintainer
-> > 
-> > Signed-off-by: Xinlei Lee <
-> > xinlei.lee@mediatek.corp-partner.google.com>
-> > ---
-> >  .../bindings/pwm/mediatek,pwm-disp.yaml       | 71
-> > +++++++++++++++++++
-> >  .../devicetree/bindings/pwm/pwm-mtk-disp.txt  | 44 ------------
-> >  2 files changed, 71 insertions(+), 44 deletions(-)
-> >  create mode 100755
-> > Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-> >  delete mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-
-> > disp.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/pwm/mediatek,pwm-
-> > disp.yaml b/Documentation/devicetree/bindings/pwm/mediatek,pwm-
-> > disp.yaml
-> > new file mode 100755
-> > index 000000000000..edf2a2e9ea72
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-> > @@ -0,0 +1,71 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/pwm/mediatek,pwm-disp.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Mediatek PWM Controller Device Tree Bindings
-> 
-> This is a Display PWM, not a generic PWM.
-> 
-> > +
-> > +maintainers:
-> > +  - Jitao Shi <jitao.shi@mediatek.com>
-> > +  - Xinlei Lee <xinlei.lee@mediatek.com>
-> > +
-> 
-> My comment about pwm schema was ignored.
-> 
-> Please include pwm.yaml.
-> 
-> > +properties:
-> > +  compatible:
-> > +    enum:
-> > +      - mediatek,mt2701-disp-pwm
-> > +      - mediatek,mt6595-disp-pwm
-> > +      - mediatek,mt8173-disp-pwm
-> > +      - mediatek,mt8183-disp-pwm
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  interrupts:
-> > +    maxItems: 1
-> > +
-> > +  power-domains:
-> > +    maxItems: 1
-> > +
-> > +  "#pwm-cells":
-> > +    description:
-> > +      Number of cells in a PWM specifier.
-> 
-> Need a const. Description can be skipped, it's obvious.
-> 
-> 
-> Best regards,
-> Krzysztof
+On Tue, Feb 15, 2022 at 11:37 PM Lina Wang <lina.wang@mediatek.com> wrote:
+>
+> When clatd starts with ebpf offloaing, and NETIF_F_GRO_FRAGLIST is enable,
+> several skbs are gathered in skb_shinfo(skb)->frag_list. The first skb's
+> ipv6 header will be changed to ipv4 after bpf_skb_proto_6_to_4,
+> network_header\transport_header\mac_header have been updated as ipv4 acts,
+> but other skbs in frag_list didnot update anything, just ipv6 packets.
 
-Hi Krzysztof:
+Please add a test that demonstrates the issue and verifies the fix.
 
-Thanks for your review, I'm sorry for my previous misunderstanding.
-I'll fix all the issues in the next version.
-
-Best Regards!
-xinlei
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
