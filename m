@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 473CDC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 10:36:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70490C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 10:40:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+EhnlcHs6StCunPDrh9Eb4ccpjCZuI/GBBxQPpJbHCo=; b=hTCMs7+mNGLrL6
-	CMeIWIIFQ2VD+Mns1FwdlM47DeIoFxVCuyUdx/LacVBorDuCt4N/fvZgB9j8aR7bjuDIBTxypzR43
-	nI7vkNDbjyuOo5dQ6X07Wl41repRkUL84asC987uz+je7nfN1iN/Jr97yUIjc8BEQhad7LECnXVkv
-	e9xFtQWeE8UHa0IhdT/OrNP+ZnsuPL9GV6NsrSm9Y41i7g7wKkWAS+6xwA/sRYLuad8NqBPM3vpsk
-	WyEMe44HIpmdO1xJbZRyc5UaI4n+bh9ZCefQxbqUhADp0j44jReaRCofVUotrW6KjnvemZhhcvQrM
-	NDU5+grPljLKraSrQ++g==;
+	List-Owner; bh=M6pVk/EzOjofGashLTnr3ERF+AHjyNcZVrq9MtFfYvM=; b=GDRWGIdD/WRmfD
+	ipuKv/euCYsJBwlw1hcdlyb3vI+BuTbOWWBzeVLbkbUTaogaMGMaPyozJTFPRuQuygHJaeKvdQGoJ
+	eLpT4+1CrC4s74FZ06+TqHTnYHpRMvYu44aC8sndUwz34ryHlIicXGTtGYvHYk0v0Ik6ih0+zZFDa
+	4ypm8xgu28FOcuSwpzf5zShe2a0i1fABDl4245BNvj628HPNNPQC6aLY8CToNC5z7ayvrmGJEV65q
+	XhbKTiWqiQRGRNay+oBL2had53ry4zChOWKnTU8VOH2KnBbnDSFbmjdlCCdIMXrJ4sm598elKBPR9
+	0OcU1fqTi5zu+fZ5lvjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKe9F-009w7k-HR; Thu, 17 Feb 2022 10:36:29 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nKeDS-009wnA-PK; Thu, 17 Feb 2022 10:40:50 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKe91-009w3l-EM; Thu, 17 Feb 2022 10:36:16 +0000
+ id 1nKeDG-009wjl-8f; Thu, 17 Feb 2022 10:40:40 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 6526A1F4597A
+ (Authenticated sender: kholk11) with ESMTPSA id 581411F4560C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645094174;
- bh=fGfpAy/ESFXY/EnVqngS5rsBomyxVvTAFX8QacphIcY=;
+ s=mail; t=1645094437;
+ bh=a4kVXcts5RYYnYTz5xCDykmha1OtLX+CuQebEarzxD4=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=Crm/1JaNK3v1Ta/KCpFpWZcr6bqqElrwyAOBaL3ATUv7pU0eIjaqAJ+6ejIfwhpIQ
- RLGY4tz3Ve9DsnAVzwW9zmMUOdRcfrDDc6rm0Znnn4+61XRHa5ZgAE5yajMo1SeqOz
- ukuU++Ud8GBwHsf6DsZLqXHGIcmHJmCaY+APEFVW7wJpZaQI++/hTJjx/E/F0Sx9+N
- /edvHLay7KlyTVg4G+hkuy+b62GFP0AX8Z69xb6Me9mJKEawxD/+000hwqTryKH383
- TW3++7++BSWELbEo7Ar9weR9Lm7N4W1O1QipMKCzNm/l/7Wr/hez/QF/SzbpZIijxE
- 3EibbCKvuAopQ==
-Message-ID: <286d040f-bb9a-d3b9-2b91-d758f0d0748f@collabora.com>
-Date: Thu, 17 Feb 2022 11:36:10 +0100
+ b=PILuS0FjWxb32OJHPC9LFsuDVR2N2f8T1T47E8XjDZYH4g/Qdf9Ys1kjJL1nPJFZf
+ 0HCZnyJ2jttRNd/7uL54TZOwi8FNIoQxm/rHjQdH7o+aSkXC2rNq11KKxzp7fDiLRd
+ j0MNWb2YrLuAIzsbfjoXnM4UmnCw4SCXlXhGRAL0DiaIPR/rDn0115FZAhoDauUl7c
+ XJCJCEJJfeS+r1AuvnwXPyAc+WGolhB/mO8sgBUfFSASYRVKk4Khj2wvlZWOpa8DSU
+ hCDnCYyLXHXuUbZU9hyrcoYc7KjABQL1sEyOpI6AXMRSlrzaGRN2JDOLh7uSjDIWwF
+ pnJ2kUPw5uxgQ==
+Message-ID: <e93b12d6-5c7b-2ad6-47e5-c1311d95cba2@collabora.com>
+Date: Thu, 17 Feb 2022 11:40:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
-Subject: Re: [PATCH] arm64: dts: mt8192: Add watchdog node
+Subject: Re: [PATCH v2] soc: mediatek: mtk-infracfg: Disable ACP on MT8192
 Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- nfraprado@collabora.com
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, Chen-Yu Tsai <wenst@chromium.org>,
- Ryder Lee <ryder.lee@kernel.org>
-References: <20220207094024.22674-1-allen-kh.cheng@mediatek.com>
+To: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
+ linux-mediatek@lists.infradead.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Robin Murphy <robin.murphy@arm.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Nick Fan <Nick.Fan@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>,
+ Stephen Boyd <sboyd@kernel.org>
+References: <20220215184651.12168-1-alyssa.rosenzweig@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220207094024.22674-1-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220215184651.12168-1-alyssa.rosenzweig@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_023615_647189_99AF66CB 
-X-CRM114-Status: GOOD (  14.16  )
+X-CRM114-CacheID: sfid-20220217_024038_473834_CD8CE9AE 
+X-CRM114-Status: GOOD (  25.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,38 +73,110 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/02/22 10:40, Allen-KH Cheng ha scritto:
-> From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+Il 15/02/22 19:46, Alyssa Rosenzweig ha scritto:
+> MT8192 contains an experimental Accelerator Coherency Port
+> implementation, which does not work correctly but was unintentionally
+> enabled by default. For correct operation of the GPU, we must set a
+> chicken bit disabling ACP on MT8192.
 > 
-> Add watchdog device node to MT8192 SoC.
+> Adapted from the following downstream change to the out-of-tree, legacy
+> Mali GPU driver:
 > 
-> Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+> https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2781271/5
+> 
+> Note this change is required for both Panfrost and the legacy kernel
+> driver.
 
+Hello Alyssa,
+the v2 note should not get inside the commit message, even though they should be
+on the patch to provide context.
+Look at the example...
+
+> 
+> v2: Move the change from clk-mt8192.c to mtk-infracfg.c (Robin).
+> Although it does not make sense to add this platform-specific hack to
+> the GPU driver, it has nothing to do with clocks. We already have
+> mtk-infracfg.c to manage other infracfg bits; the ACP disable should
+> live there too.
+> 
+> Co-developed-by: Robin Murphy <robin.murphy@arm.com>
+> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+> Signed-off-by: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
+> Cc: Nick Fan <Nick.Fan@mediatek.com>
+> Cc: Nicolas Boichat <drinkcat@chromium.org>
+> Cc: Chen-Yu Tsai <wenst@chromium.org>
+> Cc: Stephen Boyd <sboyd@kernel.org>
+> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+
+v2: Move the change from clk-mt8192.c to mtk-infracfg.c (Robin).
+
+^^^ put it here, after the "---" :)
+
+Anyway,
 Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> ---
->   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 6 ++++++
->   1 file changed, 6 insertions(+)
+>   drivers/soc/mediatek/mtk-infracfg.c   | 19 +++++++++++++++++++
+>   include/linux/soc/mediatek/infracfg.h |  3 +++
+>   2 files changed, 22 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index cc3953df0153..c1d4030e7e4b 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -301,6 +301,12 @@
->   			#interrupt-cells = <2>;
->   		};
+> diff --git a/drivers/soc/mediatek/mtk-infracfg.c b/drivers/soc/mediatek/mtk-infracfg.c
+> index 0590b68e0d78..2acf19676af2 100644
+> --- a/drivers/soc/mediatek/mtk-infracfg.c
+> +++ b/drivers/soc/mediatek/mtk-infracfg.c
+> @@ -6,6 +6,7 @@
+>   #include <linux/export.h>
+>   #include <linux/jiffies.h>
+>   #include <linux/regmap.h>
+> +#include <linux/mfd/syscon.h>
+>   #include <linux/soc/mediatek/infracfg.h>
+>   #include <asm/processor.h>
 >   
-> +		watchdog: watchdog@10007000 {
-> +			compatible = "mediatek,mt8192-wdt";
-> +			reg = <0 0x10007000 0 0x100>;
-> +			#reset-cells = <1>;
-> +		};
+> @@ -72,3 +73,21 @@ int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
+>   
+>   	return ret;
+>   }
 > +
->   		apmixedsys: syscon@1000c000 {
->   			compatible = "mediatek,mt8192-apmixedsys", "syscon";
->   			reg = <0 0x1000c000 0 0x1000>;
+> +static int __init mtk_infracfg_init(void)
+> +{
+> +	struct regmap *infracfg;
+> +
+> +	/*
+> +	 * MT8192 has an experimental path to route GPU traffic to the DSU's
+> +	 * Accelerator Coherency Port, which is inadvertently enabled by
+> +	 * default. It turns out not to work, so disable it to prevent spurious
+> +	 * GPU faults.
+> +	 */
+> +	infracfg = syscon_regmap_lookup_by_compatible("mediatek,mt8192-infracfg");
+> +	if (!IS_ERR(infracfg))
+> +		regmap_set_bits(infracfg, MT8192_INFRA_CTRL,
+> +				MT8192_INFRA_CTRL_DISABLE_MFG2ACP);
+> +	return 0;
+> +}
+> +postcore_initcall(mtk_infracfg_init);
+> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
+> index d858e0bab7a2..fcbbd0dd5e55 100644
+> --- a/include/linux/soc/mediatek/infracfg.h
+> +++ b/include/linux/soc/mediatek/infracfg.h
+> @@ -229,6 +229,9 @@
+>   #define INFRA_TOPAXI_PROTECTEN_SET		0x0260
+>   #define INFRA_TOPAXI_PROTECTEN_CLR		0x0264
+>   
+> +#define MT8192_INFRA_CTRL			0x290
+> +#define MT8192_INFRA_CTRL_DISABLE_MFG2ACP	BIT(9)
+> +
+>   #define REG_INFRA_MISC				0xf00
+>   #define F_DDR_4GB_SUPPORT_EN			BIT(13)
+>   
 
 
+-- 
+AngeloGioacchino Del Regno
+Software Engineer
+
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
+Registered in England & Wales, no. 5513718
 
 _______________________________________________
 Linux-mediatek mailing list
