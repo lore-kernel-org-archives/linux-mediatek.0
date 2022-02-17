@@ -4,95 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29B28C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 09:55:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E04FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 10:22:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ReivR/9c5UyV3dylzJZuPZGKSvEFWQ4lyHMqRS8bC1w=; b=z4I4IrMTCQ9N27
-	3R4F6wv32UbET9YV1I1C0LhSoz5NCrxGuHS/wDcEjXMFDiW6NLVFuUHmTANGIJCrMNsq+lWICUjjZ
-	lBkqLD82lWo9u/5iFI+9iobVqisBsqsfxwPMIM9pryWnaf2LiLja748+1FGH39Q+0xx7cvN18AIPy
-	PN7zfbo4tLJJKEqDCOX1sZBSl6YsCZKTxrhFPBiW5fdEdYdaxLjYXLpOBr7jGu0QV/sfuKpEI8F1e
-	udG5KG/Pg2ii4zYvGPL4zsdHK4kyFb7vkAjlQzshimkXWR4aMi387qkQkj/0FsdQRkjOEYhDNaB1r
-	GxCFc05nXeTDY6pmjy1A==;
+	List-Owner; bh=feIVZJSw+7RqA6Dc6MppFl0WgLOtNT+bTpUzqXN0H3c=; b=E4JiQuUETaTWUc
+	nvgJk9KFPlAyAalfbfbqu8dUyxd5dmaiNg6lWfOMyhxGE+x4pXwQkWuXv7lEWWI89tXLiIcQHY/Ur
+	x7lIbIvKed/eJRmctsq0y3fj2RP2K5rPqMJVBXJTXibFIa7dUaNFHmVe9Rp58ZrSeOXQhl6pijXxy
+	RBhNBJFHKuM/JmhMeZgShqFxDDstGVlC00v4GQI4DNLtE0sUEGNuUAFJ/X+okaJrjvPMqPchf+by+
+	kzYq3mjir6pJ8PGX/WMFwQFRKrGR8AilKLnksdV4OVk/SOq2vCGPcmUl4yZ1BBompNNMThhPzbJNx
+	Ev4Xi9Ml7xYH7ajlxwFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKdVK-009nOC-N0; Thu, 17 Feb 2022 09:55:14 +0000
-Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
+	id 1nKdvy-009sx5-MI; Thu, 17 Feb 2022 10:22:46 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKdVI-009nN7-6q
- for linux-mediatek@lists.infradead.org; Thu, 17 Feb 2022 09:55:13 +0000
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 64FF540934
- for <linux-mediatek@lists.infradead.org>; Thu, 17 Feb 2022 09:55:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1645091710;
- bh=xqg/Xc9CYuc87DkKuqIherW4tETRFmrI7ZElb+EIvLo=;
- h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
- In-Reply-To:Content-Type;
- b=GAORvpRRPrf+vkRusRc1QHGiTjSY2YIwdOg8Bx25a6357VBpJ15+MWJvxnX5f6smz
- f0i31p/nEyEfIjWxcH27J4JRq0G0VV2hPYzJKXe1Z6COWXZw2OxuX9ZD0d+VN624xH
- /03upjP8G+6lJmg7nosEzLz6V+5bpYXqh4KEujTg57bEwIvShqcikNS1Bk/xrZ42W9
- 619hfaDTKYO9RoTFKUJPeC3PgEyF8AFRUiG+msaImy6JGXNRZxCU3kHNnjDtly4/Lk
- m4BGkHUPTf26rlDQuQ7TV+8w67/vT5WqtVG0/SgOF1nA0rG0hxiMSslGqviPcD5J+s
- A9A7s37j/kNsQ==
-Received: by mail-ej1-f70.google.com with SMTP id
- r18-20020a17090609d200b006a6e943d09eso1250203eje.20
- for <linux-mediatek@lists.infradead.org>; Thu, 17 Feb 2022 01:55:10 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=xqg/Xc9CYuc87DkKuqIherW4tETRFmrI7ZElb+EIvLo=;
- b=W28gUvE017ukW44BbrUNxlnECiE4Tdb2BFi1MQYvTNGwLCQzAs+AKBGKYBpVVlnxnB
- 17GaOAGKxRiM6x7uoRJM8q0COWA0owxP/cQ3WvuySakPwmfeYLjNfv8TUyeaZynMfamS
- lcDpUlVB6ICB9Hp0qYQ19sQSuOSijfKVnUP9kRHq8mt4tYlLmhUf/TLFtMdOxsPlbJt9
- mn6qar/sX3h2L9Tas3YRsMA8F2X15nkSZ+iIIlHEqiaS8l9VmM9cHAa07lGj9LQrGGK5
- uU82Vo0vufg1BiRlsdYOi2HjUUf717YuhzQ7ll27A652x9kDomvn/TslK/S7QdGh3bwb
- Ia3A==
-X-Gm-Message-State: AOAM530dRvseVsGosOzywOxLVp6e1Yd0Zcm2IY4pAdKD/0ch5iCTmqPI
- GLb1D0XNdnv0P32j1gp13iWmdJG8Q5Uftt85Aly/gFsi9Ejpb5ccyfBo2WW8yJYhfa7pi9t5yEb
- OXduqnC6a2h02BxvwyYmlgARUCyul/5mex0sUIlLC8kkggyxonw==
-X-Received: by 2002:a05:6402:1d51:b0:412:86c3:7580 with SMTP id
- dz17-20020a0564021d5100b0041286c37580mr1702424edb.353.1645091709972; 
- Thu, 17 Feb 2022 01:55:09 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyVqiLRT5dbOU5Ly6LY4l8kChFX+8DIMSGvlA48+vjFgCFmMOBcgpltkyZQ5jhMw4Nm2YxMLw==
-X-Received: by 2002:a05:6402:1d51:b0:412:86c3:7580 with SMTP id
- dz17-20020a0564021d5100b0041286c37580mr1702390edb.353.1645091709625; 
- Thu, 17 Feb 2022 01:55:09 -0800 (PST)
-Received: from [192.168.0.110] (xdsl-188-155-168-84.adslplus.ch.
- [188.155.168.84])
- by smtp.gmail.com with ESMTPSA id 1sm964379ejm.186.2022.02.17.01.55.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 17 Feb 2022 01:55:08 -0800 (PST)
-Message-ID: <535d7d37-c2c5-d0e9-85af-ae91cbccd0d2@canonical.com>
-Date: Thu, 17 Feb 2022 10:55:08 +0100
+ id 1nKdvl-009stl-40; Thu, 17 Feb 2022 10:22:35 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 5EC421F45794
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1645093351;
+ bh=6fqFuZojVUYVXXUD1KRc2VutIordrlsMnM7KNiCoQFU=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=VqwpEX6Eh2cwyV+sQ23j3Ni4uG/ZsAUwXHUa8Cy7qmZjnaza9BEaPAfr6vCOuZaaZ
+ NOVkD89cyw64wvGQI+plwdDJrqsaLcnpGipqxZ3z3WFaFuksYLhwC+CSOEo6Hi8NXv
+ 2dGpXmqIkYugU46zCZxmP9orMm9kOEfx+mdA64FtgrfP5kWG2gZcLWbjglfDnu/TH+
+ /YN6OnC8O58mW3eOiP86/V+Xv6iGyPZyusaOlH9vcu7dOX2KudBNuxrkC1jRxnSVkz
+ q7agJKQa9ZvipGb6P3PHXzgzSkKUWKWhHI9nhiR0byl8vdMnLyJTa/eAF/Bg7tPbl0
+ 9RMv1URoX1Mug==
+Message-ID: <6e78e57f-c0fa-9618-37d1-cd6ec354cc61@collabora.com>
+Date: Thu, 17 Feb 2022 11:22:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v3] dt-bindings: dma: Convert mtk-uart-apdma to DT schema
+ Thunderbird/91.5.1
+Subject: Re: [PATCH v2, 1/2] soc: mediatek: mmsys: add sw0_rst_offset in mmsys
+ driver data
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- vkoul@kernel.org
-Cc: robh+dt@kernel.org, sean.wang@mediatek.com, matthias.bgg@gmail.com,
- long.cheng@mediatek.com, dmaengine@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20220217095242.13761-1-angelogioacchino.delregno@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-In-Reply-To: <20220217095242.13761-1-angelogioacchino.delregno@collabora.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, matthias.bgg@gmail.com
+Cc: chunkuang.hu@kernel.org, jitao.shi@mediatek.com, xinlei.lee@mediatek.com, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220217082626.15728-1-rex-bc.chen@mediatek.com>
+ <20220217082626.15728-2-rex-bc.chen@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220217082626.15728-2-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_015512_391896_EA05BDBE 
-X-CRM114-Status: UNSURE (   9.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220217_022233_328086_CE3FA1CF 
+X-CRM114-Status: GOOD (  17.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,28 +67,95 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/02/2022 10:52, AngeloGioacchino Del Regno wrote:
-> Convert the MediaTek UART APDMA Controller binding to DT schema.
+Il 17/02/22 09:26, Rex-BC Chen ha scritto:
+> There are different software reset registers for difference MTK SoCs.
+> Therefore, we add a new variable "sw0_rst_offset" to control it.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 > ---
-> v3: Removed anyOf condition
-> v2: Fixed interrupt maxItems to 16, added interrupts/reg maxItems constraint
->     to 8 when the dma-requests property is not present
+>   drivers/soc/mediatek/mt8183-mmsys.h | 2 ++
+>   drivers/soc/mediatek/mtk-mmsys.c    | 6 ++++--
+>   drivers/soc/mediatek/mtk-mmsys.h    | 3 +--
+>   3 files changed, 7 insertions(+), 4 deletions(-)
 > 
-
-Awesome, thanks!
-
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-
-
-Best regards,
-Krzysztof
+> diff --git a/drivers/soc/mediatek/mt8183-mmsys.h b/drivers/soc/mediatek/mt8183-mmsys.h
+> index 9dee485807c9..0c021f4b76d2 100644
+> --- a/drivers/soc/mediatek/mt8183-mmsys.h
+> +++ b/drivers/soc/mediatek/mt8183-mmsys.h
+> @@ -25,6 +25,8 @@
+>   #define MT8183_RDMA0_SOUT_COLOR0		0x1
+>   #define MT8183_RDMA1_SOUT_DSI0			0x1
+>   
+> +#define MT8183_MMSYS_SW0_RST_B			0x140
+> +
+>   static const struct mtk_mmsys_routes mmsys_mt8183_routing_table[] = {
+>   	{
+>   		DDP_COMPONENT_OVL0, DDP_COMPONENT_OVL_2L0,
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> index 0da25069ffb3..cab62c3eac05 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -49,12 +49,14 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+>   	.clk_driver = "clk-mt8173-mm",
+>   	.routes = mmsys_default_routing_table,
+>   	.num_routes = ARRAY_SIZE(mmsys_default_routing_table),
+> +	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
+>   };
+>   
+>   static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
+>   	.clk_driver = "clk-mt8183-mm",
+>   	.routes = mmsys_mt8183_routing_table,
+>   	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
+> +	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
+>   };
+>   
+>   static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
+> @@ -128,14 +130,14 @@ static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned l
+>   
+>   	spin_lock_irqsave(&mmsys->lock, flags);
+>   
+> -	reg = readl_relaxed(mmsys->regs + MMSYS_SW0_RST_B);
+> +	reg = readl_relaxed(mmsys->regs + mmsys->data->sw0_rst_offset);
+>   
+>   	if (assert)
+>   		reg &= ~BIT(id);
+>   	else
+>   		reg |= BIT(id);
+>   
+> -	writel_relaxed(reg, mmsys->regs + MMSYS_SW0_RST_B);
+> +	writel_relaxed(reg, mmsys->regs + mmsys->data->sw0_rst_offset);
+>   
+>   	spin_unlock_irqrestore(&mmsys->lock, flags);
+>   
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
+> index 8b0ed05117ea..77f37f8c715b 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.h
+> +++ b/drivers/soc/mediatek/mtk-mmsys.h
+> @@ -78,8 +78,6 @@
+>   #define DSI_SEL_IN_RDMA				0x1
+>   #define DSI_SEL_IN_MASK				0x1
+>   
+> -#define MMSYS_SW0_RST_B				0x140
+> -
+>   struct mtk_mmsys_routes {
+>   	u32 from_comp;
+>   	u32 to_comp;
+> @@ -92,6 +90,7 @@ struct mtk_mmsys_driver_data {
+>   	const char *clk_driver;
+>   	const struct mtk_mmsys_routes *routes;
+>   	const unsigned int num_routes;
+> +	const u16 sw0_rst_offset;
+>   };
+>   
+>   /*
 
 _______________________________________________
 Linux-mediatek mailing list
