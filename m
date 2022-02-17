@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D852AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 11:56:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 567C8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 11:59:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=frYLQvQCfkLdwet4Ul5nKViq5LwX4iCbxItPHoMudVQ=; b=wyKizUWL3IM9Hg
-	IaOyknO+bzDZhIc7bcSuo8UKh+/6572E1NWRt585MvaOVtB87Z2QNrXEYXVDXplh00F37I8Rzyt2a
-	AJnf2dw75WEpVbyQzQHHTwPgngaJY+YjoHByit2Pnftsu+7O8WyVsIqv/agQyMyfiE72MSVju00fy
-	CG6V/IPOQ5xlPRdi42eDKjLL1J0QmAEMmtKbCXClwaDc37rC45EIuxesnOJBqwaSzL8ACRTfGRG3y
-	+wjhjQ58PBjzGtTbBVJ2yjMMsD3R8vj5XpPFEm5++AnsuP2qxNtRzMA4vaVBvtarbV6t7787jdXYx
-	ulgNzD4C3C4JNWn9j19Q==;
+	List-Owner; bh=pZOJPqxbTVC2aDEZ5rCFwTQGsnfRro3S+sAaQEjeA3w=; b=F+8FhvI3r299S6
+	rhjps23NGgzRhEPr2CkKvYJ1fZMJy24hPd+o1zfe32awGJ44gxpvvRHa9PY7CB3Ps6ur7nn8lEj0E
+	1UdnQq1zYNquLL3zu4k0RkPd4w9YkHVcWqGRP/cRUs630e7Q3q7tY66Lr55sdJwg1QU7kd1vPVxfI
+	/gyhZqt1WPX235KoU7+ZttxLI5xQV4+OX2okbRJ9GuwoxMHm4M/GtrGn+CFkNBY8gQm5jWQC/7pxR
+	afJOsP6NCiYktqK7FfzUFvgCIGhqgtgjvAPgNma9lPNCa/nGNlKe4DzAYNMu9/Q1x0zNIKu5S7osQ
+	h36B450cX1/lzMYH/Feg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKfOp-00AFFA-4s; Thu, 17 Feb 2022 11:56:39 +0000
+	id 1nKfR8-00AGM3-Cs; Thu, 17 Feb 2022 11:59:02 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKfEV-00AA6e-1r; Thu, 17 Feb 2022 11:46:01 +0000
-X-UUID: 74afa7773c0241de9f859925bbdcc2cc-20220217
-X-UUID: 74afa7773c0241de9f859925bbdcc2cc-20220217
+ id 1nKfEX-00AA70-GK; Thu, 17 Feb 2022 11:46:03 +0000
+X-UUID: 07d75c84321540d18d17050725bdeaf2-20220217
+X-UUID: 07d75c84321540d18d17050725bdeaf2-20220217
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1354432725; Thu, 17 Feb 2022 04:45:48 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 150368450; Thu, 17 Feb 2022 04:45:48 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Feb 2022 03:38:41 -0800
+ 15.0.1497.2; Thu, 17 Feb 2022 03:37:14 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 17 Feb 2022 19:38:39 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 17 Feb 2022 19:37:12 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 17 Feb 2022 19:38:38 +0800
+ Transport; Thu, 17 Feb 2022 19:37:11 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -54,17 +54,17 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v5 23/34] iommu/mediatek: Only adjust code about register base
-Date: Thu, 17 Feb 2022 19:34:42 +0800
-Message-ID: <20220217113453.13658-24-yong.wu@mediatek.com>
+Subject: [PATCH v5 14/34] iommu/mediatek: Add SUB_COMMON_3BITS flag
+Date: Thu, 17 Feb 2022 19:34:33 +0800
+Message-ID: <20220217113453.13658-15-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220217113453.13658-1-yong.wu@mediatek.com>
 References: <20220217113453.13658-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_034559_165533_7B16A95A 
-X-CRM114-Status: GOOD (  17.42  )
+X-CRM114-CacheID: sfid-20220217_034601_602955_9B9BB229 
+X-CRM114-Status: GOOD (  16.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,136 +81,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-No functional change. Use "base" instead of the data->base. This is
-avoid to touch too many lines in the next patches.
+In prevous SoC, the sub common id occupy 2 bits. the mt8195's sub common
+id has 3bits. Add a new flag for this. and rename the previous flag to
+_2BITS. For readable, I put these two flags together, then move the
+other flags. no functional change.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c | 51 +++++++++++++++++++++------------------
- 1 file changed, 27 insertions(+), 24 deletions(-)
+ drivers/iommu/mtk_iommu.c | 26 ++++++++++++++++----------
+ drivers/iommu/mtk_iommu.h |  2 +-
+ 2 files changed, 17 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 0370fd6f0eca..c068e0c0ebf4 100644
+index 9703eb16013c..9f57354d2562 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -227,12 +227,12 @@ static struct mtk_iommu_domain *to_mtk_domain(struct iommu_domain *dom)
+@@ -105,6 +105,8 @@
+ #define REG_MMU1_INT_ID				0x154
+ #define F_MMU_INT_ID_COMM_ID(a)			(((a) >> 9) & 0x7)
+ #define F_MMU_INT_ID_SUB_COMM_ID(a)		(((a) >> 7) & 0x3)
++#define F_MMU_INT_ID_COMM_ID_EXT(a)		(((a) >> 10) & 0x7)
++#define F_MMU_INT_ID_SUB_COMM_ID_EXT(a)		(((a) >> 7) & 0x7)
+ #define F_MMU_INT_ID_LARB_ID(a)			(((a) >> 7) & 0x7)
+ #define F_MMU_INT_ID_PORT_ID(a)			(((a) >> 2) & 0x1f)
  
- static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
- {
-+	void __iomem *base = data->base;
- 	unsigned long flags;
+@@ -116,13 +118,14 @@
+ #define HAS_VLD_PA_RNG			BIT(2)
+ #define RESET_AXI			BIT(3)
+ #define OUT_ORDER_WR_EN			BIT(4)
+-#define HAS_SUB_COMM			BIT(5)
+-#define WR_THROT_EN			BIT(6)
+-#define HAS_LEGACY_IVRP_PADDR		BIT(7)
+-#define IOVA_34_EN			BIT(8)
+-#define SHARE_PGTABLE			BIT(9) /* 2 HW share pgtable */
+-#define DCM_DISABLE			BIT(10)
+-#define NOT_STD_AXI_MODE		BIT(11)
++#define HAS_SUB_COMM_2BITS		BIT(5)
++#define HAS_SUB_COMM_3BITS		BIT(6)
++#define WR_THROT_EN			BIT(7)
++#define HAS_LEGACY_IVRP_PADDR		BIT(8)
++#define IOVA_34_EN			BIT(9)
++#define SHARE_PGTABLE			BIT(10) /* 2 HW share pgtable */
++#define DCM_DISABLE			BIT(11)
++#define NOT_STD_AXI_MODE		BIT(12)
  
- 	spin_lock_irqsave(&data->tlb_lock, flags);
--	writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
--		       data->base + data->plat_data->inv_sel_reg);
--	writel_relaxed(F_ALL_INVLD, data->base + REG_MMU_INVALIDATE);
-+	writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0, base + data->plat_data->inv_sel_reg);
-+	writel_relaxed(F_ALL_INVLD, base + REG_MMU_INVALIDATE);
- 	wmb(); /* Make sure the tlb flush all done */
- 	spin_unlock_irqrestore(&data->tlb_lock, flags);
- }
-@@ -243,6 +243,7 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
- 	struct list_head *head = data->hw_list;
- 	bool check_pm_status;
- 	unsigned long flags;
-+	void __iomem *base;
- 	int ret;
- 	u32 tmp;
- 
-@@ -269,23 +270,23 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
- 				continue;
- 		}
- 
-+		base = data->base;
-+
- 		spin_lock_irqsave(&data->tlb_lock, flags);
- 		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
--			       data->base + data->plat_data->inv_sel_reg);
-+			       base + data->plat_data->inv_sel_reg);
- 
--		writel_relaxed(MTK_IOMMU_TLB_ADDR(iova),
--			       data->base + REG_MMU_INVLD_START_A);
-+		writel_relaxed(MTK_IOMMU_TLB_ADDR(iova), base + REG_MMU_INVLD_START_A);
- 		writel_relaxed(MTK_IOMMU_TLB_ADDR(iova + size - 1),
--			       data->base + REG_MMU_INVLD_END_A);
--		writel_relaxed(F_MMU_INV_RANGE,
--			       data->base + REG_MMU_INVALIDATE);
-+			       base + REG_MMU_INVLD_END_A);
-+		writel_relaxed(F_MMU_INV_RANGE, base + REG_MMU_INVALIDATE);
- 
- 		/* tlb sync */
--		ret = readl_poll_timeout_atomic(data->base + REG_MMU_CPE_DONE,
-+		ret = readl_poll_timeout_atomic(base + REG_MMU_CPE_DONE,
- 						tmp, tmp != 0, 10, 1000);
- 
- 		/* Clear the CPE status */
--		writel_relaxed(0, data->base + REG_MMU_CPE_DONE);
-+		writel_relaxed(0, base + REG_MMU_CPE_DONE);
- 		spin_unlock_irqrestore(&data->tlb_lock, flags);
- 
- 		if (ret) {
-@@ -305,23 +306,25 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
- 	struct mtk_iommu_domain *dom = data->m4u_dom;
- 	unsigned int fault_larb = MTK_INVALID_LARBID, fault_port = 0, sub_comm = 0;
- 	u32 int_state, regval, va34_32, pa34_32;
-+	const struct mtk_iommu_plat_data *plat_data = data->plat_data;
-+	void __iomem *base = data->base;
- 	u64 fault_iova, fault_pa;
- 	bool layer, write;
- 
- 	/* Read error info from registers */
--	int_state = readl_relaxed(data->base + REG_MMU_FAULT_ST1);
-+	int_state = readl_relaxed(base + REG_MMU_FAULT_ST1);
- 	if (int_state & F_REG_MMU0_FAULT_MASK) {
--		regval = readl_relaxed(data->base + REG_MMU0_INT_ID);
--		fault_iova = readl_relaxed(data->base + REG_MMU0_FAULT_VA);
--		fault_pa = readl_relaxed(data->base + REG_MMU0_INVLD_PA);
-+		regval = readl_relaxed(base + REG_MMU0_INT_ID);
-+		fault_iova = readl_relaxed(base + REG_MMU0_FAULT_VA);
-+		fault_pa = readl_relaxed(base + REG_MMU0_INVLD_PA);
- 	} else {
--		regval = readl_relaxed(data->base + REG_MMU1_INT_ID);
--		fault_iova = readl_relaxed(data->base + REG_MMU1_FAULT_VA);
--		fault_pa = readl_relaxed(data->base + REG_MMU1_INVLD_PA);
-+		regval = readl_relaxed(base + REG_MMU1_INT_ID);
-+		fault_iova = readl_relaxed(base + REG_MMU1_FAULT_VA);
-+		fault_pa = readl_relaxed(base + REG_MMU1_INVLD_PA);
- 	}
- 	layer = fault_iova & F_MMU_FAULT_VA_LAYER_BIT;
- 	write = fault_iova & F_MMU_FAULT_VA_WRITE_BIT;
--	if (MTK_IOMMU_HAS_FLAG(data->plat_data, IOVA_34_EN)) {
-+	if (MTK_IOMMU_HAS_FLAG(plat_data, IOVA_34_EN)) {
- 		va34_32 = FIELD_GET(F_MMU_INVAL_VA_34_32_MASK, fault_iova);
- 		fault_iova = fault_iova & F_MMU_INVAL_VA_31_12_MASK;
- 		fault_iova |= (u64)va34_32 << 32;
-@@ -329,12 +332,12 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
- 	pa34_32 = FIELD_GET(F_MMU_INVAL_PA_34_32_MASK, fault_iova);
+ #define MTK_IOMMU_HAS_FLAG(pdata, _x) \
+ 		((((pdata)->flags) & (_x)) == (_x))
+@@ -290,9 +293,12 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
  	fault_pa |= (u64)pa34_32 << 32;
  
--	if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_MM)) {
-+	if (MTK_IOMMU_IS_TYPE(plat_data, MTK_IOMMU_TYPE_MM)) {
- 		fault_port = F_MMU_INT_ID_PORT_ID(regval);
--		if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_SUB_COMM_2BITS)) {
-+		if (MTK_IOMMU_HAS_FLAG(plat_data, HAS_SUB_COMM_2BITS)) {
- 			fault_larb = F_MMU_INT_ID_COMM_ID(regval);
- 			sub_comm = F_MMU_INT_ID_SUB_COMM_ID(regval);
--		} else if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_SUB_COMM_3BITS)) {
-+		} else if (MTK_IOMMU_HAS_FLAG(plat_data, HAS_SUB_COMM_3BITS)) {
- 			fault_larb = F_MMU_INT_ID_COMM_ID_EXT(regval);
- 			sub_comm = F_MMU_INT_ID_SUB_COMM_ID_EXT(regval);
- 		} else {
-@@ -353,9 +356,9 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
+ 	fault_port = F_MMU_INT_ID_PORT_ID(regval);
+-	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_SUB_COMM)) {
++	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_SUB_COMM_2BITS)) {
+ 		fault_larb = F_MMU_INT_ID_COMM_ID(regval);
+ 		sub_comm = F_MMU_INT_ID_SUB_COMM_ID(regval);
++	} else if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_SUB_COMM_3BITS)) {
++		fault_larb = F_MMU_INT_ID_COMM_ID_EXT(regval);
++		sub_comm = F_MMU_INT_ID_SUB_COMM_ID_EXT(regval);
+ 	} else {
+ 		fault_larb = F_MMU_INT_ID_LARB_ID(regval);
  	}
+@@ -1067,7 +1073,7 @@ static const struct mtk_iommu_plat_data mt2712_data = {
  
- 	/* Interrupt clear */
--	regval = readl_relaxed(data->base + REG_MMU_INT_CONTROL0);
-+	regval = readl_relaxed(base + REG_MMU_INT_CONTROL0);
- 	regval |= F_INT_CLR_BIT;
--	writel_relaxed(regval, data->base + REG_MMU_INT_CONTROL0);
-+	writel_relaxed(regval, base + REG_MMU_INT_CONTROL0);
+ static const struct mtk_iommu_plat_data mt6779_data = {
+ 	.m4u_plat      = M4U_MT6779,
+-	.flags         = HAS_SUB_COMM | OUT_ORDER_WR_EN | WR_THROT_EN |
++	.flags         = HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN | WR_THROT_EN |
+ 			 NOT_STD_AXI_MODE,
+ 	.inv_sel_reg   = REG_MMU_INV_SEL_GEN2,
+ 	.iova_region   = single_domain,
+@@ -1105,7 +1111,7 @@ static const struct mtk_iommu_plat_data mt8183_data = {
  
- 	mtk_iommu_tlb_flush_all(data);
+ static const struct mtk_iommu_plat_data mt8192_data = {
+ 	.m4u_plat       = M4U_MT8192,
+-	.flags          = HAS_BCLK | HAS_SUB_COMM | OUT_ORDER_WR_EN |
++	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN |
+ 			  WR_THROT_EN | IOVA_34_EN | NOT_STD_AXI_MODE,
+ 	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
+ 	.iova_region    = mt8192_multi_dom,
+diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+index c10f5630e55d..82c51a034e6b 100644
+--- a/drivers/iommu/mtk_iommu.h
++++ b/drivers/iommu/mtk_iommu.h
+@@ -20,7 +20,7 @@
+ #include <dt-bindings/memory/mtk-memory-port.h>
+ 
+ #define MTK_LARB_COM_MAX	8
+-#define MTK_LARB_SUBCOM_MAX	4
++#define MTK_LARB_SUBCOM_MAX	8
+ 
+ #define MTK_IOMMU_GROUP_MAX	8
  
 -- 
 2.18.0
