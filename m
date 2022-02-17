@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4811CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 20:39:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ADF6C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 20:41:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
 	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Vzk9z2SCvB/qGJzEXJGarzTa/92lSId9ok/vl/bfFnY=; b=Auyz8C5Shag9iE
-	Mvnzvk+10b/HwjdYVMSzLKDkNmCNpapwB6ViZDyUrQvqHevvHjvNrmmkP8s2BdAxSc6P0DjV5aC3J
-	B5QWkE5zpJphaIOy2mPouczgP5dW+tzyEpx/NUGSBdox+yB1p6a2uY0fj/EIbA5izOS10zeXHbiEH
-	JlYcAE8zSWA/iag6+7R4H+8BuPnNaH4kmnWVzJWt5zKQL8hnDupdeq718cONYjXv+Xc7bX0PqAT7g
-	p3RNjsATSbkQe1oDXpgudEErEGjtkkH9G9kemtXMxAvTkGM7QMPCOHTcPTc3BYaJYMwEzBBFy8bAM
-	eBIbEWfvwq6AMh3Q64VA==;
+	List-Owner; bh=vXX6yegiMaTp+ytimqO1VJERfnDw815BKYostMLB1To=; b=05hAtbKXwnFeL4
+	xTPkfhtVbulmT9AQYxZEx7S4PjMDLsEWeIO9N+yFW5SrHCvtrEMtcqSU8RZsWNOkbaaTO6hjSxfBm
+	fpaQBmTQ2lbhI/AA2V1RsrBn0A22+i4UeSDm2fPl0G0CtUg9wUHtIKz8+S8WQaORy0ME4P3vTIE0g
+	+O+jRipmjh/UP5f3kPobjLPkUV2QCz7cdHs6Ijyugm3IFUeXj8/oN6U4hbXm9txE6O0NuMVOgWRlO
+	eSb05Spc98zv3ym/FsNVdtHLzegKe8uFtJ0+hgOqohKXRDZBbZzpg+JzOqaED/yU1AveUAMg3lTBN
+	8HphHXy5WuLn9xz4aEcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKnYk-00CAiF-8n; Thu, 17 Feb 2022 20:39:26 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nKnaP-00CBVD-B2; Thu, 17 Feb 2022 20:41:09 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKnNx-00C5IH-Lg; Thu, 17 Feb 2022 20:28:19 +0000
+ id 1nKnOy-00C5mg-2i; Thu, 17 Feb 2022 20:29:21 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id EE52D61E04;
- Thu, 17 Feb 2022 20:28:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50A77C340E8;
- Thu, 17 Feb 2022 20:28:16 +0000 (UTC)
+ by sin.source.kernel.org (Postfix) with ESMTPS id 0E73BCE303C;
+ Thu, 17 Feb 2022 20:29:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42BA2C340E8;
+ Thu, 17 Feb 2022 20:29:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1645129696;
- bh=YP6Tpg4F9lAg6AlLYRmupY/d97PX8JL8bzj+VrF5RCo=;
+ s=k20201202; t=1645129755;
+ bh=MBVB/V4HtFGVcnuF8jusIP3cu1MRbIMiN9GJFCtixlg=;
  h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=kYFlFRp2C1yDjZ4L6kFMYHY1kqIhrcSwxyoge3tS4O2vbSzzMS3PyJMmf2YUxXFRU
- uh35TcjTvhlsO0s1ih2H1E9GzFYv2i9oiYI2XoMUDNBmYkNpleWeXhFjL/E46wXU7s
- z2+xCrBSeSAWOaN37S5eUTBymgHXpM3tIuYNP63K2S6Yq5kT1PJzr6JPh9mJmm50Sa
- CLeunKxJpf71ZEt2AHJMWFVz7+siIKXD57a6XvG/zUrve/UqhgxkkQGKXP5ihFkdyC
- obMieA6Z/mfhwYC/JHU6RINTq1tkYde3yHBkBIuW86QTc5p248xefqJIbXv6xPtd6d
- IsTsdID0ntnrQ==
+ b=TmhzH2I+N4ljfo2SVnhoeFHVVt8QPUMXw8I5hTMQ6OC3gayYY1eqiMPpWxrTcDzTR
+ +gOWQZXu9lNoFJfY4y6T9DNCFr+rQml7/+S5VMw4GA/jgVSdP1lnpuM8MdJ3fNqTkW
+ GzJXbIzSX0R4ISIUeeUIqt4Zk3mX3ln1SNmuinaDKuVNnOdgo+uDegXxccCM74286Z
+ SfEVxM0t+nSJ5QtEmEnzePJUh+JY+v70DDlJkG9HyFVHhJhDxjTligB+immW5z1gsK
+ gx9oqiXXXo3WGmQdVSBxoosIkaP74VIwqWBF4Ipy41nA/1nSc1gcPExgPWb783rntK
+ X402nlvGfuatA==
 MIME-Version: 1.0
-In-Reply-To: <20220208124034.414635-27-wenst@chromium.org>
+In-Reply-To: <20220208124034.414635-28-wenst@chromium.org>
 References: <20220208124034.414635-1-wenst@chromium.org>
- <20220208124034.414635-27-wenst@chromium.org>
-Subject: Re: [PATCH v3 26/31] clk: mediatek: mtk: Implement error handling in
- register APIs
+ <20220208124034.414635-28-wenst@chromium.org>
+Subject: Re: [PATCH v3 27/31] clk: mediatek: Unregister clks in
+ mtk_clk_simple_probe() error path
 From: Stephen Boyd <sboyd@kernel.org>
 Cc: Chen-Yu Tsai <wenst@chromium.org>,
  Chun-Jie Chen <chun-jie.chen@mediatek.com>,
@@ -57,12 +57,13 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 To: Chen-Yu Tsai <wenst@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Michael Turquette <mturquette@baylibre.com>
-Date: Thu, 17 Feb 2022 12:28:14 -0800
+Date: Thu, 17 Feb 2022 12:29:13 -0800
 User-Agent: alot/0.10
-Message-Id: <20220217202816.50A77C340E8@smtp.kernel.org>
+Message-Id: <20220217202915.42BA2C340E8@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_122817_862189_6E268558 
-X-CRM114-Status: GOOD (  11.85  )
+X-CRM114-CacheID: sfid-20220217_122920_352489_762308C3 
+X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,18 +80,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Chen-Yu Tsai (2022-02-08 04:40:29)
-> The remaining clk registration functions do not stop or return errors
-> if any clk failed to be registered, nor do they implement error
-> handling paths. This may result in a partially working device if any
-> step fails.
+Quoting Chen-Yu Tsai (2022-02-08 04:40:30)
+> Until now the mediatek clk driver library did not have any way to
+> unregister clks, and so all drivers did not do proper cleanup in
+> their error paths.
 > 
-> Make the register functions return proper error codes, and bail out if
-> errors occur. Proper cleanup, i.e. unregister any clks that were
-> successfully registered, is done in the new error path.
-> 
-> This also makes the |struct clk_data *| argument mandatory, as it is
-> used to track the list of clks registered.
+> Now that the library does have APIs to unregister clks, use them
+> in the error path of mtk_clk_simple_probe() to do proper cleanup.
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 > Reviewed-by: Miles Chen <miles.chen@mediatek.com>
