@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1060C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 11:46:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88FCAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 11:46:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CkCaxuF19nVCwIsw8lQCnTg8YkYpnem6yLT17y+kwds=; b=DAqLklahgwfNcR
-	RgM4np6xQhvyASSRwkBaT377c/6B7qeD7sG7OIfo7QLtmUV0WFPw61uLKZRJyW6fHQ27CsprL4hf0
-	8n6OOgza4t+QRmxmilIEN+QjcVsUIc8WI6cnI1fvXa6/1wxliJmkB6GyFJIj9us871foAvcl//3To
-	85n+clnzgP/CytCB/eseBWjwt2Rh4+qUCOEyaEhTP8W/4ElYNNFiH3Sj/pCOTKYX6AYTgubs83rd1
-	CKdmYwNQRuSV4u7fRBgJOpo0Sj8XKUn1y4SgphuA7cjFHxhdHrh7coKJkQ+Iz6dp28aTsucJr1Fwr
-	eCqqQApUtFPTYSay+DTQ==;
+	List-Owner; bh=Vpb5eaQwaoe5Zm33Ogx6Ewtkcbtz9OMSyj0/gNQ5Hjc=; b=AxRtU+5hhldm49
+	ubhEfUyIh70+Z1czjovV6tsKrOT3fnXy0mu0snsH0fmPVgRHDNFiYdasayZh0tMtK8GQNnoWsm4vn
+	2sCo+I9EAFYlMWG5kZuObywHpplAu/NfdPHE4jGVgIB+sm4ZBBwvXbpEj8mgQ7qIaj2iAoslVCLJJ
+	eyLcVDgb3Ht2rAP0ev6FGXvejd/kO/c+X2PcIi6sRqYwRdJvYxCYZwkSm9j98ww0jv8UwwZ2hkqmu
+	g9FuF3KKHVOjYALfPC3s+RlwD9sGi0wEf2zAe2JMBQIa7HAKSrM4YvnKYK+nwW80jKgZ9Ge16Sv+f
+	q0SDLm+mhjFUn+wJ0esA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKfER-00AA8w-6d; Thu, 17 Feb 2022 11:45:55 +0000
+	id 1nKfEf-00AAFR-Mg; Thu, 17 Feb 2022 11:46:09 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKfEB-00AA0x-OX; Thu, 17 Feb 2022 11:45:41 +0000
-X-UUID: 35508baf9f1a4baebe97bb5beac8a6d1-20220217
-X-UUID: 35508baf9f1a4baebe97bb5beac8a6d1-20220217
+ id 1nKfEC-00AA0e-PQ; Thu, 17 Feb 2022 11:45:42 +0000
+X-UUID: e4312fd85c64442b9795a9a017199435-20220217
+X-UUID: e4312fd85c64442b9795a9a017199435-20220217
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 20326889; Thu, 17 Feb 2022 04:45:36 -0700
+ with ESMTP id 1122787755; Thu, 17 Feb 2022 04:45:37 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Feb 2022 03:35:34 -0800
+ 15.0.1497.2; Thu, 17 Feb 2022 03:39:14 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 17 Feb 2022 19:35:33 +0800
+ 15.2.792.15; Thu, 17 Feb 2022 19:39:12 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 17 Feb 2022 19:35:31 +0800
+ Transport; Thu, 17 Feb 2022 19:39:11 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -54,17 +54,17 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v5 03/34] iommu/mediatek: Fix 2 HW sharing pgtable issue
-Date: Thu, 17 Feb 2022 19:34:22 +0800
-Message-ID: <20220217113453.13658-4-yong.wu@mediatek.com>
+Subject: [PATCH v5 26/34] iommu/mediatek: Remove mtk_iommu.h
+Date: Thu, 17 Feb 2022 19:34:45 +0800
+Message-ID: <20220217113453.13658-27-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220217113453.13658-1-yong.wu@mediatek.com>
 References: <20220217113453.13658-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_034539_810232_F2B141A3 
-X-CRM114-Status: GOOD (  14.38  )
+X-CRM114-CacheID: sfid-20220217_034540_841346_416DA5C4 
+X-CRM114-Status: GOOD (  18.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,45 +81,181 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the commit 4f956c97d26b ("iommu/mediatek: Move domain_finalise into
-attach_device"), I overlooked the sharing pgtable case.
-After that commit, the "data" in the mtk_iommu_domain_finalise always is
-the data of the current IOMMU HW. Fix this for the sharing pgtable case.
+Currently there is only compare_of/release_of/a suspend structure in the
+header file. I think it is no need to keep a header file only for these.
+Move these into the c file and rm this header file.
 
-Only affect mt2712 which is the only SoC that share pgtable currently.
+I think there should be a common helper for compare_of and release_of.
+There is many copy in drm, it should be another topic.
 
-Fixes: 4f956c97d26b ("iommu/mediatek: Move domain_finalise into attach_device")
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ drivers/iommu/mtk_iommu.c    | 25 ++++++++++++++++++++-
+ drivers/iommu/mtk_iommu.h    | 42 ------------------------------------
+ drivers/iommu/mtk_iommu_v1.c | 21 +++++++++++++++---
+ 3 files changed, 42 insertions(+), 46 deletions(-)
+ delete mode 100644 drivers/iommu/mtk_iommu.h
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index fbe10f92afcc..1a742bd1cdc9 100644
+index 1827dc732917..93c5802621d5 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -446,7 +446,7 @@ static void mtk_iommu_domain_free(struct iommu_domain *domain)
- static int mtk_iommu_attach_device(struct iommu_domain *domain,
- 				   struct device *dev)
- {
--	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
-+	struct mtk_iommu_data *data = dev_iommu_priv_get(dev), *frstdata;
- 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
- 	struct device *m4udev = data->dev;
- 	int ret, domid;
-@@ -456,7 +456,10 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- 		return domid;
+@@ -14,6 +14,7 @@
+ #include <linux/io.h>
+ #include <linux/iommu.h>
+ #include <linux/iopoll.h>
++#include <linux/io-pgtable.h>
+ #include <linux/list.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+@@ -30,7 +31,7 @@
+ #include <asm/barrier.h>
+ #include <soc/mediatek/smi.h>
  
- 	if (!dom->data) {
--		if (mtk_iommu_domain_finalise(dom, data, domid))
-+		/* Data is in the frstdata in sharing pgtable case. */
-+		frstdata = mtk_iommu_get_m4u_data();
+-#include "mtk_iommu.h"
++#include <dt-bindings/memory/mtk-memory-port.h>
+ 
+ #define REG_MMU_PT_BASE_ADDR			0x000
+ #define MMU_PT_ADDR_MASK			GENMASK(31, 7)
+@@ -166,6 +167,17 @@ struct mtk_iommu_iova_region {
+ 	unsigned long long	size;
+ };
+ 
++struct mtk_iommu_suspend_reg {
++	u32			misc_ctrl;
++	u32			dcm_dis;
++	u32			ctrl_reg;
++	u32			int_control0;
++	u32			int_main_control;
++	u32			ivrp_paddr;
++	u32			vld_pa_rng;
++	u32			wr_len_ctrl;
++};
 +
-+		if (mtk_iommu_domain_finalise(dom, frstdata, domid))
- 			return -ENODEV;
- 		dom->data = data;
- 	}
+ struct mtk_iommu_plat_data {
+ 	enum mtk_iommu_plat	m4u_plat;
+ 	u32			flags;
+@@ -219,6 +231,17 @@ struct mtk_iommu_domain {
+ 	struct mutex			mutex; /* Protect "data" in this structure */
+ };
+ 
++/* TODO: A common helper is expected. */
++static int compare_of(struct device *dev, void *data)
++{
++	return dev->of_node == data;
++}
++
++static void release_of(struct device *dev, void *data)
++{
++	of_node_put(data);
++}
++
+ static int mtk_iommu_bind(struct device *dev)
+ {
+ 	struct mtk_iommu_data *data = dev_get_drvdata(dev);
+diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+deleted file mode 100644
+index d332f9769f83..000000000000
+--- a/drivers/iommu/mtk_iommu.h
++++ /dev/null
+@@ -1,42 +0,0 @@
+-/* SPDX-License-Identifier: GPL-2.0-only */
+-/*
+- * Copyright (c) 2015-2016 MediaTek Inc.
+- * Author: Honghui Zhang <honghui.zhang@mediatek.com>
+- */
+-
+-#ifndef _MTK_IOMMU_H_
+-#define _MTK_IOMMU_H_
+-
+-#include <linux/device.h>
+-#include <linux/io.h>
+-#include <linux/io-pgtable.h>
+-#include <linux/iommu.h>
+-#include <linux/spinlock.h>
+-#include <soc/mediatek/smi.h>
+-#include <dt-bindings/memory/mtk-memory-port.h>
+-
+-struct mtk_iommu_suspend_reg {
+-	union {
+-		u32			standard_axi_mode;/* v1 */
+-		u32			misc_ctrl;/* v2 */
+-	};
+-	u32				dcm_dis;
+-	u32				ctrl_reg;
+-	u32				int_control0;
+-	u32				int_main_control;
+-	u32				ivrp_paddr;
+-	u32				vld_pa_rng;
+-	u32				wr_len_ctrl;
+-};
+-
+-static inline int compare_of(struct device *dev, void *data)
+-{
+-	return dev->of_node == data;
+-}
+-
+-static inline void release_of(struct device *dev, void *data)
+-{
+-	of_node_put(data);
+-}
+-
+-#endif
+diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+index 69903ba6c274..96facaff6d96 100644
+--- a/drivers/iommu/mtk_iommu_v1.c
++++ b/drivers/iommu/mtk_iommu_v1.c
+@@ -7,7 +7,6 @@
+  *
+  * Based on driver/iommu/mtk_iommu.c
+  */
+-#include <linux/memblock.h>
+ #include <linux/bug.h>
+ #include <linux/clk.h>
+ #include <linux/component.h>
+@@ -28,10 +27,9 @@
+ #include <linux/spinlock.h>
+ #include <asm/barrier.h>
+ #include <asm/dma-iommu.h>
+-#include <linux/init.h>
++#include <dt-bindings/memory/mtk-memory-port.h>
+ #include <dt-bindings/memory/mt2701-larb-port.h>
+ #include <soc/mediatek/smi.h>
+-#include "mtk_iommu.h"
+ 
+ #define REG_MMU_PT_BASE_ADDR			0x000
+ 
+@@ -87,6 +85,13 @@
+  */
+ #define M2701_IOMMU_PGT_SIZE			SZ_4M
+ 
++struct mtk_iommu_suspend_reg {
++	u32			standard_axi_mode;
++	u32			dcm_dis;
++	u32			ctrl_reg;
++	u32			int_control0;
++};
++
+ struct mtk_iommu_data {
+ 	void __iomem			*base;
+ 	int				irq;
+@@ -110,6 +115,16 @@ struct mtk_iommu_domain {
+ 	struct mtk_iommu_data		*data;
+ };
+ 
++static int compare_of(struct device *dev, void *data)
++{
++	return dev->of_node == data;
++}
++
++static void release_of(struct device *dev, void *data)
++{
++	of_node_put(data);
++}
++
+ static int mtk_iommu_bind(struct device *dev)
+ {
+ 	struct mtk_iommu_data *data = dev_get_drvdata(dev);
 -- 
 2.18.0
 
