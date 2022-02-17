@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92A55C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 11:59:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C3CEC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 12:01:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7opDoFV6qQmvw773N7B+UyqlNJ8ncF5pjD8cJoHl06Y=; b=2cXO8LmNcE5egU
-	Dqins4dws3xT4qCM2vr3vvPoHrA+3ubW7Gk5V6msZY2FrT9TUrccqo5xZ8XXJTeQO3dFKVmpHkakL
-	mKbo+WNNNE78o74dfKlWk+PdjBI1EuhqRtKPo3i6JBoG8noLjMpqzlHjR3D3HD0poua7LnmTMkqTJ
-	+r8bn0MaMyPIOLKiJCymFkoWhtERqyMWXzEXycNThhJnrZAG2NsEcCiAgwsrzMf1yx0+PrchMJGbp
-	BWwp0MMnYLqU5OGCimtvN/zX8m/JMUoHYPnuhQqMPkQWm76TwLv3Q/gtaZfzezECMFGDC5UsWZUZy
-	uXf0QxPTD+OMPQkiDk/g==;
+	List-Owner; bh=OCwd9oF8vaI4fXiGN7De2fw7Dao0p9Na2uTOK2gi2oU=; b=aOLYrEk2kiRBkY
+	9RFjjybERVZD9nJ135VoeGjbt8fTh9qO/6AuP1/RYPD0Gm+uDhKwWPE5/pdYrHjn487nuTecYmgLA
+	wrVCzRZgz8P/95FaAif03QK/kEb4V2Rove5k3MWN5pIYCZyByNTtZrliNy06w0SGEGI5XGY/yWOVx
+	Q84ilKXUaBodygju+ovOVUfSHPfXq95fhZp/rtzQ/hJibwa5b1Ri/GlHNPDATQ0ki+03HwsLUPUf0
+	6BGhfqgNOFVeW76wpPYD57AEmeK8jGldpnHrBseyx8MfrMN8WmXvBZnSEmzVJqHaVYsTGSt+d/HT8
+	nG+kxHriQCaEbqBg8HkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKfRB-00AGNT-Aa; Thu, 17 Feb 2022 11:59:05 +0000
+	id 1nKfTC-00AHQH-1E; Thu, 17 Feb 2022 12:01:10 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKfEX-00AA6e-TX; Thu, 17 Feb 2022 11:46:03 +0000
-X-UUID: 3366a2d6484049adbefd80b361f93f25-20220217
-X-UUID: 3366a2d6484049adbefd80b361f93f25-20220217
+ id 1nKfFV-00AAdE-V8; Thu, 17 Feb 2022 11:47:03 +0000
+X-UUID: 297f0b75a0214db88738e0164018ff27-20220217
+X-UUID: 297f0b75a0214db88738e0164018ff27-20220217
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 880258469; Thu, 17 Feb 2022 04:45:48 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Feb 2022 03:36:27 -0800
+ with ESMTP id 279492123; Thu, 17 Feb 2022 04:46:58 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Feb 2022 03:36:57 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 17 Feb 2022 19:36:25 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 17 Feb 2022 19:36:54 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 17 Feb 2022 19:36:24 +0800
+ Transport; Thu, 17 Feb 2022 19:36:53 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -54,17 +54,17 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v5 09/34] iommu/mediatek: Add 12G~16G support for multi domains
-Date: Thu, 17 Feb 2022 19:34:28 +0800
-Message-ID: <20220217113453.13658-10-yong.wu@mediatek.com>
+Subject: [PATCH v5 12/34] iommu/mediatek: Remove the granule in the tlb flush
+Date: Thu, 17 Feb 2022 19:34:31 +0800
+Message-ID: <20220217113453.13658-13-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220217113453.13658-1-yong.wu@mediatek.com>
 References: <20220217113453.13658-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_034601_990183_E257DF4F 
-X-CRM114-Status: GOOD (  13.44  )
+X-CRM114-CacheID: sfid-20220217_034702_092074_C1358627 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,41 +81,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mt8192, we preassign 0-4G; 4G-8G; 8G-12G for different multimedia
-engines. This depends on the "dma-ranges=" in the iommu consumer's dtsi
-node.
-
-Adds 12G-16G region here. and reword the previous comment. we don't limit
-which master locate in which region.
-
-CCU still is 8G-12G. Don't change it here.
+The MediaTek IOMMU don't care about granule when tlb flushing.
+Remove this variable.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ drivers/iommu/mtk_iommu.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index c8fb9c8d8c65..a4042b702e6a 100644
+index ce593f77649f..19bdb51f47bc 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -180,10 +180,12 @@ static const struct mtk_iommu_iova_region single_domain[] = {
- };
+@@ -219,7 +219,6 @@ static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
+ }
  
- static const struct mtk_iommu_iova_region mt8192_multi_dom[] = {
--	{ .iova_base = 0x0,		.size = SZ_4G},		/* disp: 0 ~ 4G */
-+	{ .iova_base = 0x0,		.size = SZ_4G},		/* 0 ~ 4G */
- 	#if IS_ENABLED(CONFIG_ARCH_DMA_ADDR_T_64BIT)
--	{ .iova_base = SZ_4G,		.size = SZ_4G},		/* vdec: 4G ~ 8G */
--	{ .iova_base = SZ_4G * 2,	.size = SZ_4G},		/* CAM/MDP: 8G ~ 12G */
-+	{ .iova_base = SZ_4G,		.size = SZ_4G},		/* 4G ~ 8G */
-+	{ .iova_base = SZ_4G * 2,	.size = SZ_4G},		/* 8G ~ 12G */
-+	{ .iova_base = SZ_4G * 3,	.size = SZ_4G},		/* 12G ~ 16G */
-+
- 	{ .iova_base = 0x240000000ULL,	.size = 0x4000000},	/* CCU0 */
- 	{ .iova_base = 0x244000000ULL,	.size = 0x4000000},	/* CCU1 */
- 	#endif
+ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+-					   size_t granule,
+ 					   struct mtk_iommu_data *data)
+ {
+ 	struct list_head *head = data->hw_list;
+@@ -541,8 +540,7 @@ static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+ 	size_t length = gather->end - gather->start + 1;
+ 
+-	mtk_iommu_tlb_flush_range_sync(gather->start, length, gather->pgsize,
+-				       dom->data);
++	mtk_iommu_tlb_flush_range_sync(gather->start, length, dom->data);
+ }
+ 
+ static void mtk_iommu_sync_map(struct iommu_domain *domain, unsigned long iova,
+@@ -550,7 +548,7 @@ static void mtk_iommu_sync_map(struct iommu_domain *domain, unsigned long iova,
+ {
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+ 
+-	mtk_iommu_tlb_flush_range_sync(iova, size, size, dom->data);
++	mtk_iommu_tlb_flush_range_sync(iova, size, dom->data);
+ }
+ 
+ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
 -- 
 2.18.0
 
