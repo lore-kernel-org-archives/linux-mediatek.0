@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70490C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 10:40:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D844C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 11:35:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M6pVk/EzOjofGashLTnr3ERF+AHjyNcZVrq9MtFfYvM=; b=GDRWGIdD/WRmfD
-	ipuKv/euCYsJBwlw1hcdlyb3vI+BuTbOWWBzeVLbkbUTaogaMGMaPyozJTFPRuQuygHJaeKvdQGoJ
-	eLpT4+1CrC4s74FZ06+TqHTnYHpRMvYu44aC8sndUwz34ryHlIicXGTtGYvHYk0v0Ik6ih0+zZFDa
-	4ypm8xgu28FOcuSwpzf5zShe2a0i1fABDl4245BNvj628HPNNPQC6aLY8CToNC5z7ayvrmGJEV65q
-	XhbKTiWqiQRGRNay+oBL2had53ry4zChOWKnTU8VOH2KnBbnDSFbmjdlCCdIMXrJ4sm598elKBPR9
-	0OcU1fqTi5zu+fZ5lvjA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=AfVSIbOHx1tkZ0LUKN7ibMJ0xswDwg+Q01U+4heleR0=; b=FD+nN06vdF6kWQ
+	RNlhAfTtgFzZ+KsUWRtzNbqY82sqj6VhJnuwSJndFKEgyYgsgjjyBCARZg4j/IiKS//9lRB+8bcdp
+	FKZC/pD86iHLFnkmcP0rqDXnK/y1Bml0WjwqsN8PuxR/By379xWKQfIoP0UKaPsneAuTHtBFwQoxp
+	S6cQhByZ5ADqHwrpknLsG4oF8KvK9BjRRADnGnATXDvbUIDD1Fz8gMibRvY4zmfWlqXurRmnpr+Z+
+	qW3FcsoApmOIVVu9EVLBO8MsNDpQm+hSxj5LhPueUofMTbq7kTDnHByMHmatVCKrDI/tSQKGAF1C2
+	awdfMTrYMB8tBddaBJ6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKeDS-009wnA-PK; Thu, 17 Feb 2022 10:40:50 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nKf44-00A5yT-Lj; Thu, 17 Feb 2022 11:35:12 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKeDG-009wjl-8f; Thu, 17 Feb 2022 10:40:40 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 581411F4560C
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645094437;
- bh=a4kVXcts5RYYnYTz5xCDykmha1OtLX+CuQebEarzxD4=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=PILuS0FjWxb32OJHPC9LFsuDVR2N2f8T1T47E8XjDZYH4g/Qdf9Ys1kjJL1nPJFZf
- 0HCZnyJ2jttRNd/7uL54TZOwi8FNIoQxm/rHjQdH7o+aSkXC2rNq11KKxzp7fDiLRd
- j0MNWb2YrLuAIzsbfjoXnM4UmnCw4SCXlXhGRAL0DiaIPR/rDn0115FZAhoDauUl7c
- XJCJCEJJfeS+r1AuvnwXPyAc+WGolhB/mO8sgBUfFSASYRVKk4Khj2wvlZWOpa8DSU
- hCDnCYyLXHXuUbZU9hyrcoYc7KjABQL1sEyOpI6AXMRSlrzaGRN2JDOLh7uSjDIWwF
- pnJ2kUPw5uxgQ==
-Message-ID: <e93b12d6-5c7b-2ad6-47e5-c1311d95cba2@collabora.com>
-Date: Thu, 17 Feb 2022 11:40:34 +0100
+ id 1nKf3z-00A5xE-Us; Thu, 17 Feb 2022 11:35:11 +0000
+X-UUID: 1b0075772edf44fd991777a469c50bf9-20220217
+X-UUID: 1b0075772edf44fd991777a469c50bf9-20220217
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1197414097; Thu, 17 Feb 2022 04:35:03 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Feb 2022 03:35:01 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 17 Feb 2022 19:34:59 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 17 Feb 2022 19:34:58 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
+CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@canonical.com>, Tomasz Figa <tfiga@chromium.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, <yong.wu@mediatek.com>,
+ <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
+ <xueqi.zhang@mediatek.com>, <yen-chang.chen@mediatek.com>, "AngeloGioacchino
+ Del Regno" <angelogioacchino.delregno@collabora.com>,
+ <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
+ <chengci.xu@mediatek.com>
+Subject: [PATCH v5 00/34] MT8195 IOMMU SUPPORT
+Date: Thu, 17 Feb 2022 19:34:19 +0800
+Message-ID: <20220217113453.13658-1-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v2] soc: mediatek: mtk-infracfg: Disable ACP on MT8192
-Content-Language: en-US
-To: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
- linux-mediatek@lists.infradead.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Robin Murphy <robin.murphy@arm.com>, Chen-Yu Tsai <wenst@chromium.org>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Nick Fan <Nick.Fan@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>,
- Stephen Boyd <sboyd@kernel.org>
-References: <20220215184651.12168-1-alyssa.rosenzweig@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220215184651.12168-1-alyssa.rosenzweig@collabora.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_024038_473834_CD8CE9AE 
-X-CRM114-Status: GOOD (  25.97  )
+X-CRM114-CacheID: sfid-20220217_033508_037125_5947650B 
+X-CRM114-Status: GOOD (  17.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,115 +74,147 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/02/22 19:46, Alyssa Rosenzweig ha scritto:
-> MT8192 contains an experimental Accelerator Coherency Port
-> implementation, which does not work correctly but was unintentionally
-> enabled by default. For correct operation of the GPU, we must set a
-> chicken bit disabling ACP on MT8192.
-> 
-> Adapted from the following downstream change to the out-of-tree, legacy
-> Mali GPU driver:
-> 
-> https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2781271/5
-> 
-> Note this change is required for both Panfrost and the legacy kernel
-> driver.
+This patchset adds MT8195 iommu support.
 
-Hello Alyssa,
-the v2 note should not get inside the commit message, even though they should be
-on the patch to provide context.
-Look at the example...
+MT8195 have 3 IOMMU HWs. 2 IOMMU HW is for multimedia, and 1 IOMMU HW is
+for infra-master, like PCIe/USB.
 
-> 
-> v2: Move the change from clk-mt8192.c to mtk-infracfg.c (Robin).
-> Although it does not make sense to add this platform-specific hack to
-> the GPU driver, it has nothing to do with clocks. We already have
-> mtk-infracfg.c to manage other infracfg bits; the ACP disable should
-> live there too.
-> 
-> Co-developed-by: Robin Murphy <robin.murphy@arm.com>
-> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
-> Signed-off-by: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
-> Cc: Nick Fan <Nick.Fan@mediatek.com>
-> Cc: Nicolas Boichat <drinkcat@chromium.org>
-> Cc: Chen-Yu Tsai <wenst@chromium.org>
-> Cc: Stephen Boyd <sboyd@kernel.org>
-> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
+About the 2 MM IOMMU HW, something like this:
 
-v2: Move the change from clk-mt8192.c to mtk-infracfg.c (Robin).
+        IOMMU(VDO)          IOMMU(VPP)
+           |                   |
+      SMI_COMMON(VDO)      SMI_COMMON(VPP)
+      ---------------     ----------------
+      |      |   ...      |      |     ...
+    larb0 larb2  ...    larb1 larb3    ...
 
-^^^ put it here, after the "---" :)
+these two MM IOMMU HW share a pgtable.
 
-Anyway,
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+About the INFRA IOMMU, it don't have larbs, the master connects the iommu
+directly. It use a independent pgtable.
 
->   drivers/soc/mediatek/mtk-infracfg.c   | 19 +++++++++++++++++++
->   include/linux/soc/mediatek/infracfg.h |  3 +++
->   2 files changed, 22 insertions(+)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-infracfg.c b/drivers/soc/mediatek/mtk-infracfg.c
-> index 0590b68e0d78..2acf19676af2 100644
-> --- a/drivers/soc/mediatek/mtk-infracfg.c
-> +++ b/drivers/soc/mediatek/mtk-infracfg.c
-> @@ -6,6 +6,7 @@
->   #include <linux/export.h>
->   #include <linux/jiffies.h>
->   #include <linux/regmap.h>
-> +#include <linux/mfd/syscon.h>
->   #include <linux/soc/mediatek/infracfg.h>
->   #include <asm/processor.h>
->   
-> @@ -72,3 +73,21 @@ int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
->   
->   	return ret;
->   }
-> +
-> +static int __init mtk_infracfg_init(void)
-> +{
-> +	struct regmap *infracfg;
-> +
-> +	/*
-> +	 * MT8192 has an experimental path to route GPU traffic to the DSU's
-> +	 * Accelerator Coherency Port, which is inadvertently enabled by
-> +	 * default. It turns out not to work, so disable it to prevent spurious
-> +	 * GPU faults.
-> +	 */
-> +	infracfg = syscon_regmap_lookup_by_compatible("mediatek,mt8192-infracfg");
-> +	if (!IS_ERR(infracfg))
-> +		regmap_set_bits(infracfg, MT8192_INFRA_CTRL,
-> +				MT8192_INFRA_CTRL_DISABLE_MFG2ACP);
-> +	return 0;
-> +}
-> +postcore_initcall(mtk_infracfg_init);
-> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-> index d858e0bab7a2..fcbbd0dd5e55 100644
-> --- a/include/linux/soc/mediatek/infracfg.h
-> +++ b/include/linux/soc/mediatek/infracfg.h
-> @@ -229,6 +229,9 @@
->   #define INFRA_TOPAXI_PROTECTEN_SET		0x0260
->   #define INFRA_TOPAXI_PROTECTEN_CLR		0x0264
->   
-> +#define MT8192_INFRA_CTRL			0x290
-> +#define MT8192_INFRA_CTRL_DISABLE_MFG2ACP	BIT(9)
-> +
->   #define REG_INFRA_MISC				0xf00
->   #define F_DDR_4GB_SUPPORT_EN			BIT(13)
->   
+Also, mt8195 IOMMU bank supports. Normally the IOMMU register size only
+is 0x1000. In this IOMMU HW, the register size is 5 * 0x1000. each 0x1000
+is a bank. the banks' register look like this:
+     ----------------------------------------
+     |bank0  | bank1 | bank2 | bank3 | bank4|
+     ----------------------------------------
+     |global |
+     |control|         null
+     |regs   |
+     -----------------------------------------
+     |bank   |bank   |bank   |bank   |bank   |
+     |regs   |regs   |regs   |regs   |regs   |
+     |       |       |       |       |       |
+     -----------------------------------------
+All the banks share some global control registers, and each bank have its
+special bank registers, like pgtable base register, tlb operation registers,
+the fault status registers.
+ 
+In mt8195, we enable this bank feature for infra iommu, We put PCIe in bank0
+and USB in bank4. they have independent pgtable.
 
+This patchset bases on next-20220216 which has already contained the smi
+clean-up v10[1] patchset and the tlb logic patchset[2] for MediaTek iommu.
+
+[1] https://lore.kernel.org/linux-iommu/20220117070510.17642-1-yong.wu@mediatek.com/
+[2] https://lore.kernel.org/linux-mediatek/20211208120744.2415-1-dafna.hirschfeld@collabora.com/
+
+Change note:
+v5:1) Base on next-20220216
+   2) Remove a patch for kmalloc for protect buffer. keep the kzalloc for it.
+   3) minor fix from AngeloGioacchino, like rename the error label name
+   (data_unlock to err_unlock).
+   Note, keep the TODO for component compare_of[26/34].
+
+v4: https://lore.kernel.org/linux-iommu/20220125085634.17972-1-yong.wu@mediatek.com/
+   1) Base on v5.16-rc1
+   2) Base on tlb logic 2 patchset, some patches in v3 has already gone
+   through that patchset.
+   3) Due to the unreadable union for v1/v2(comment in 26/33 of v3), I
+   separate mtk_iommu_data for v1 and v2 totally, then remove mtk_iommu.h.
+   please see patch[26/35][27/35].
+   4) add two mutex for the internal data. patch[6/35][7/35].
+   5) add a new flag PM_CLK_AO.
+
+v3: https://lore.kernel.org/linux-mediatek/20210923115840.17813-1-yong.wu@mediatek.com/
+    1) base on v5.15-rc1
+    2) Adjust devlink with smi-common, not use the property(sub-sommon).
+    3) Adjust tlb_flush_all flow,
+       a) Fix tlb_flush_all only is supported in bank0.
+       b) add tlb-flush-all in the resume callback.
+       c) remove the pm status checking in tlb-flush-all.
+       The reason are showed in the commit message.
+    4) Allow IOMMU_DOMAIN_UNMANAGED since PCIe VFIO use that.
+    5) Fix a clk warning and a null abort when unbind the iommu driver.
+
+v2: https://lore.kernel.org/linux-mediatek/20210813065324.29220-1-yong.wu@mediatek.com/
+    1) Base on v5.14-rc1.
+    2) Fix build fail for arm32.
+    3) Fix dt-binding issue from Rob.
+    4) Fix the bank issue when tlb flush. v1 always use bank->base.
+    5) adjust devlink with smi-common since the node may be smi-sub-common.
+    6) other changes: like reword some commit message(removing many
+       "This patch..."); seperate serveral patches.
+
+v1: https://lore.kernel.org/linux-mediatek/20210630023504.18177-1-yong.wu@mediatek.com/
+    Base on v5.13-rc1
+
+Yong Wu (34):
+  dt-bindings: mediatek: mt8195: Add binding for MM IOMMU
+  dt-bindings: mediatek: mt8195: Add binding for infra IOMMU
+  iommu/mediatek: Fix 2 HW sharing pgtable issue
+  iommu/mediatek: Add list_del in mtk_iommu_remove
+  iommu/mediatek: Remove clk_disable in mtk_iommu_remove
+  iommu/mediatek: Add mutex for m4u_group and m4u_dom in data
+  iommu/mediatek: Add mutex for data in the mtk_iommu_domain
+  iommu/mediatek: Adapt sharing and non-sharing pgtable case
+  iommu/mediatek: Add 12G~16G support for multi domains
+  iommu/mediatek: Add a flag DCM_DISABLE
+  iommu/mediatek: Add a flag NON_STD_AXI
+  iommu/mediatek: Remove the granule in the tlb flush
+  iommu/mediatek: Always enable output PA over 32bits in isr
+  iommu/mediatek: Add SUB_COMMON_3BITS flag
+  iommu/mediatek: Add IOMMU_TYPE flag
+  iommu/mediatek: Contain MM IOMMU flow with the MM TYPE
+  iommu/mediatek: Adjust device link when it is sub-common
+  iommu/mediatek: Allow IOMMU_DOMAIN_UNMANAGED for PCIe VFIO
+  iommu/mediatek: Add a PM_CLK_AO flag for infra iommu
+  iommu/mediatek: Add infra iommu support
+  iommu/mediatek: Add PCIe support
+  iommu/mediatek: Add mt8195 support
+  iommu/mediatek: Only adjust code about register base
+  iommu/mediatek: Just move code position in hw_init
+  iommu/mediatek: Separate mtk_iommu_data for v1 and v2
+  iommu/mediatek: Remove mtk_iommu.h
+  iommu/mediatek-v1: Just rename mtk_iommu to mtk_iommu_v1
+  iommu/mediatek: Add mtk_iommu_bank_data structure
+  iommu/mediatek: Initialise bank HW for each a bank
+  iommu/mediatek: Change the domid to iova_region_id
+  iommu/mediatek: Get the proper bankid for multi banks
+  iommu/mediatek: Initialise/Remove for multi bank dev
+  iommu/mediatek: Backup/restore regsiters for multi banks
+  iommu/mediatek: mt8195: Enable multi banks for infra iommu
+
+ .../bindings/iommu/mediatek,iommu.yaml        |  20 +-
+ drivers/iommu/mtk_iommu.c                     | 966 +++++++++++++-----
+ drivers/iommu/mtk_iommu.h                     | 111 --
+ drivers/iommu/mtk_iommu_v1.c                  | 243 +++--
+ .../dt-bindings/memory/mt8195-memory-port.h   | 408 ++++++++
+ include/dt-bindings/memory/mtk-memory-port.h  |   2 +
+ 6 files changed, 1264 insertions(+), 486 deletions(-)
+ delete mode 100644 drivers/iommu/mtk_iommu.h
+ create mode 100644 include/dt-bindings/memory/mt8195-memory-port.h
 
 -- 
-AngeloGioacchino Del Regno
-Software Engineer
+2.18.0
 
-Collabora Ltd.
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
-Registered in England & Wales, no. 5513718
+
 
 _______________________________________________
 Linux-mediatek mailing list
