@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AADFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 13:56:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 117C9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 13:57:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jgqSX9mc8b42YmJyC2mAPluAXbVfXkeG46/b1/ra+4k=; b=Ro8giURKw8Z4Re
-	vVQlgSgycbCVmag2vG7sxlJ1BLrFT5wYSRbomtjdCmgqZQSP8WgfkV4O/fPnOYqhX4N5hX4iBFNjD
-	Z9tyR/hg8KNJU27oUt8mOeI+QdhwHD58bQe2+L2RZP7f1EPn3j9ECJ/PDJ8yBi/gHuIrMqsgBgx9J
-	aRjgiyZ7oihKLIHahiCpKrrQ56UANiun90wrHaZsHcogY67rVw68E5hRmpZnJzeO6lF7F/Nvpiks+
-	8LuLuMUesc8BumJw60Hniey1UrN3PpcXMtJb4Kt2EW82lgOgQXkMnRzMlSqUFFib5lMgdaePZ29kx
-	rAIYtw6zZtbWfeJmXixA==;
+	List-Owner; bh=Ow1PL3K8AACyrE9LLJ0qglYUe0zsnt0YPAJWcKKuV9A=; b=BcyDc+KRhR9H+6
+	1pGNBLv/Fh+etXIVkDBY1KIOH2ub8anAj0Y/mrBLt3GNTPX7QWsBRDPrrAH7JynoWpHAAIKc1pHAN
+	7wH9e4JkrA/h6GlVC/dmUBB2l+Z1nA2AMkFQiwQuwqwyk39eiIk+KSn/UaiS9yOTl/BbLAcujgLjp
+	fu4tl25kUyRStrGYWBGmdN4eEMyy76CoKXUXvPaWzTkDjE8ZrA0tgNmOlhQTuBIxedVaBwehtRYTv
+	VKesXhYbkdeHkUqBv+j9XAS6YUtN3RlIaxc/DoSnppihP/1w6azE4mbGILd+YgFT/l5hJDukWEd1x
+	N+n8SlsbGloKgxKC3vnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKhH8-00AnKt-Fp; Thu, 17 Feb 2022 13:56:50 +0000
+	id 1nKhHB-00AnMR-6Z; Thu, 17 Feb 2022 13:56:53 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKhBh-00AkbA-MD; Thu, 17 Feb 2022 13:51:15 +0000
-X-UUID: ead4aaee6f0a4aad9831fab99302f7ce-20220217
-X-UUID: ead4aaee6f0a4aad9831fab99302f7ce-20220217
+ id 1nKhBi-00AkbZ-Cg; Thu, 17 Feb 2022 13:51:16 +0000
+X-UUID: ab1977b67c0743dcab1fb96dc2294421-20220217
+X-UUID: ab1977b67c0743dcab1fb96dc2294421-20220217
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jiaxin.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 674211240; Thu, 17 Feb 2022 06:51:07 -0700
+ with ESMTP id 36952652; Thu, 17 Feb 2022 06:51:07 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Feb 2022 05:42:24 -0800
+ 15.0.1497.2; Thu, 17 Feb 2022 05:42:14 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 17 Feb 2022 21:42:23 +0800
+ Thu, 17 Feb 2022 21:42:12 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 17 Feb 2022 21:42:22 +0800
+ Transport; Thu, 17 Feb 2022 21:42:11 +0800
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
 To: <broonie@kernel.org>
 CC: <lgirdwood@gmail.com>, <tiwai@suse.com>, <robh+dt@kernel.org>,
@@ -49,18 +49,17 @@ CC: <lgirdwood@gmail.com>, <tiwai@suse.com>, <robh+dt@kernel.org>,
  <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, Jiaxin Yu <jiaxin.yu@mediatek.com>
-Subject: [v2 11/17] ASoC: mediatek: mt8186: support gpio control in platform
- driver
-Date: Thu, 17 Feb 2022 21:41:59 +0800
-Message-ID: <20220217134205.15400-12-jiaxin.yu@mediatek.com>
+Subject: [v2 02/17] ASoC: mediatek: mt8186: support audsys clock control
+Date: Thu, 17 Feb 2022 21:41:50 +0800
+Message-ID: <20220217134205.15400-3-jiaxin.yu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220217134205.15400-1-jiaxin.yu@mediatek.com>
 References: <20220217134205.15400-1-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_055113_767247_DF358D50 
-X-CRM114-Status: GOOD (  17.50  )
+X-CRM114-CacheID: sfid-20220217_055114_494069_D749533F 
+X-CRM114-Status: GOOD (  15.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,255 +76,246 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch add gpio control for all audio interface separately.
+This patch adds mt8186 audio cg control.
+Audio clock gates are registered to CCF for reference count and
+clock parent management.
 
 Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
 ---
- sound/soc/mediatek/mt8186/mt8186-afe-gpio.c | 210 ++++++++++++++++++++
- sound/soc/mediatek/mt8186/mt8186-afe-gpio.h |  19 ++
- 2 files changed, 229 insertions(+)
- create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
- create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-gpio.h
+ sound/soc/mediatek/mt8186/mt8186-audsys-clk.c | 150 ++++++++++++++++++
+ sound/soc/mediatek/mt8186/mt8186-audsys-clk.h |  15 ++
+ .../soc/mediatek/mt8186/mt8186-audsys-clkid.h |  45 ++++++
+ 3 files changed, 210 insertions(+)
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-audsys-clk.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-audsys-clk.h
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-audsys-clkid.h
 
-diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
+diff --git a/sound/soc/mediatek/mt8186/mt8186-audsys-clk.c b/sound/soc/mediatek/mt8186/mt8186-audsys-clk.c
 new file mode 100644
-index 000000000000..6faec5c95bf3
+index 000000000000..578969ca91c8
 --- /dev/null
-+++ b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
-@@ -0,0 +1,210 @@
++++ b/sound/soc/mediatek/mt8186/mt8186-audsys-clk.c
+@@ -0,0 +1,150 @@
 +// SPDX-License-Identifier: GPL-2.0
 +//
-+// mt8186-afe-gpio.c  --  Mediatek 8186 afe gpio ctrl
++// mt8186-audsys-clk.h  --  Mediatek 8186 audsys clock control
 +//
 +// Copyright (c) 2022 MediaTek Inc.
 +// Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
 +
-+#include <linux/gpio.h>
-+#include <linux/pinctrl/consumer.h>
-+
++#include <linux/clk.h>
++#include <linux/clk-provider.h>
++#include <linux/clkdev.h>
 +#include "mt8186-afe-common.h"
-+#include "mt8186-afe-gpio.h"
++#include "mt8186-audsys-clk.h"
++#include "mt8186-audsys-clkid.h"
++#include "mt8186-reg.h"
 +
-+struct pinctrl *aud_pinctrl;
-+
-+enum mt8186_afe_gpio {
-+	MT8186_AFE_GPIO_CLK_MOSI_OFF,
-+	MT8186_AFE_GPIO_CLK_MOSI_ON,
-+	MT8186_AFE_GPIO_CLK_MISO_OFF,
-+	MT8186_AFE_GPIO_CLK_MISO_ON,
-+	MT8186_AFE_GPIO_DAT_MISO_OFF,
-+	MT8186_AFE_GPIO_DAT_MISO_ON,
-+	MT8186_AFE_GPIO_DAT_MOSI_OFF,
-+	MT8186_AFE_GPIO_DAT_MOSI_ON,
-+	MT8186_AFE_GPIO_I2S0_OFF,
-+	MT8186_AFE_GPIO_I2S0_ON,
-+	MT8186_AFE_GPIO_I2S1_OFF,
-+	MT8186_AFE_GPIO_I2S1_ON,
-+	MT8186_AFE_GPIO_I2S2_OFF,
-+	MT8186_AFE_GPIO_I2S2_ON,
-+	MT8186_AFE_GPIO_I2S3_OFF,
-+	MT8186_AFE_GPIO_I2S3_ON,
-+	MT8186_AFE_GPIO_TDM_OFF,
-+	MT8186_AFE_GPIO_TDM_ON,
-+	MT8186_AFE_GPIO_PCM_OFF,
-+	MT8186_AFE_GPIO_PCM_ON,
-+	MT8186_AFE_GPIO_GPIO_NUM
-+};
-+
-+struct audio_gpio_attr {
++struct afe_gate {
++	int id;
 +	const char *name;
-+	bool gpio_prepare;
-+	struct pinctrl_state *gpioctrl;
++	const char *parent_name;
++	int reg;
++	u8 bit;
++	const struct clk_ops *ops;
++	unsigned long flags;
++	u8 cg_flags;
 +};
 +
-+static struct audio_gpio_attr aud_gpios[MT8186_AFE_GPIO_GPIO_NUM] = {
-+	[MT8186_AFE_GPIO_CLK_MOSI_OFF] = {"aud_clk_mosi_off", false, NULL},
-+	[MT8186_AFE_GPIO_CLK_MOSI_ON] = {"aud_clk_mosi_on", false, NULL},
-+	[MT8186_AFE_GPIO_CLK_MISO_OFF] = {"aud_clk_miso_off", false, NULL},
-+	[MT8186_AFE_GPIO_CLK_MISO_ON] = {"aud_clk_miso_on", false, NULL},
-+	[MT8186_AFE_GPIO_DAT_MISO_OFF] = {"aud_dat_miso_off", false, NULL},
-+	[MT8186_AFE_GPIO_DAT_MISO_ON] = {"aud_dat_miso_on", false, NULL},
-+	[MT8186_AFE_GPIO_DAT_MOSI_OFF] = {"aud_dat_mosi_off", false, NULL},
-+	[MT8186_AFE_GPIO_DAT_MOSI_ON] = {"aud_dat_mosi_on", false, NULL},
-+	[MT8186_AFE_GPIO_I2S0_OFF] = {"aud_gpio_i2s0_off", false, NULL},
-+	[MT8186_AFE_GPIO_I2S0_ON] = {"aud_gpio_i2s0_on", false, NULL},
-+	[MT8186_AFE_GPIO_I2S1_OFF] = {"aud_gpio_i2s1_off", false, NULL},
-+	[MT8186_AFE_GPIO_I2S1_ON] = {"aud_gpio_i2s1_on", false, NULL},
-+	[MT8186_AFE_GPIO_I2S2_OFF] = {"aud_gpio_i2s2_off", false, NULL},
-+	[MT8186_AFE_GPIO_I2S2_ON] = {"aud_gpio_i2s2_on", false, NULL},
-+	[MT8186_AFE_GPIO_I2S3_OFF] = {"aud_gpio_i2s3_off", false, NULL},
-+	[MT8186_AFE_GPIO_I2S3_ON] = {"aud_gpio_i2s3_on", false, NULL},
-+	[MT8186_AFE_GPIO_TDM_OFF] = {"aud_gpio_tdm_off", false, NULL},
-+	[MT8186_AFE_GPIO_TDM_ON] = {"aud_gpio_tdm_on", false, NULL},
-+	[MT8186_AFE_GPIO_PCM_OFF] = {"aud_gpio_pcm_off", false, NULL},
-+	[MT8186_AFE_GPIO_PCM_ON] = {"aud_gpio_pcm_on", false, NULL},
-+};
-+
-+static DEFINE_MUTEX(gpio_request_mutex);
-+
-+int mt8186_afe_gpio_init(struct device *dev)
-+{
-+	int ret;
-+	int i = 0;
-+
-+	aud_pinctrl = devm_pinctrl_get(dev);
-+	if (IS_ERR(aud_pinctrl)) {
-+		ret = PTR_ERR(aud_pinctrl);
-+		dev_info(dev, "%s(), ret %d, cannot get aud_pinctrl!\n",
-+			 __func__, ret);
-+		return -ENODEV;
++#define GATE_AFE_FLAGS(_id, _name, _parent, _reg, _bit, _flags, _cgflags) {\
++		.id = _id,					\
++		.name = _name,					\
++		.parent_name = _parent,				\
++		.reg = _reg,					\
++		.bit = _bit,					\
++		.flags = _flags,				\
++		.cg_flags = _cgflags,				\
 +	}
 +
-+	for (i = 0; i < ARRAY_SIZE(aud_gpios); i++) {
-+		aud_gpios[i].gpioctrl = pinctrl_lookup_state(aud_pinctrl,
-+							     aud_gpios[i].name);
-+		if (IS_ERR(aud_gpios[i].gpioctrl)) {
-+			ret = PTR_ERR(aud_gpios[i].gpioctrl);
-+			dev_info(dev, "%s(), pinctrl_lookup_state %s fail, ret %d\n",
-+				 __func__, aud_gpios[i].name, ret);
-+		} else {
-+			aud_gpios[i].gpio_prepare = true;
++#define GATE_AFE(_id, _name, _parent, _reg, _bit)		\
++	GATE_AFE_FLAGS(_id, _name, _parent, _reg, _bit,		\
++		       CLK_SET_RATE_PARENT, CLK_GATE_SET_TO_DISABLE)
++
++#define GATE_AUD0(_id, _name, _parent, _bit)			\
++	GATE_AFE(_id, _name, _parent, AUDIO_TOP_CON0, _bit)
++
++#define GATE_AUD1(_id, _name, _parent, _bit)			\
++	GATE_AFE(_id, _name, _parent, AUDIO_TOP_CON1, _bit)
++
++#define GATE_AUD2(_id, _name, _parent, _bit)			\
++	GATE_AFE(_id, _name, _parent, AUDIO_TOP_CON2, _bit)
++
++static const struct afe_gate aud_clks[CLK_AUD_NR_CLK] = {
++	/* AUD0 */
++	GATE_AUD0(CLK_AUD_AFE, "aud_afe_clk", "top_audio", 2),
++	GATE_AUD0(CLK_AUD_22M, "aud_apll22m_clk", "top_aud_engen1", 8),
++	GATE_AUD0(CLK_AUD_24M, "aud_apll24m_clk", "top_aud_engen2", 9),
++	GATE_AUD0(CLK_AUD_APLL2_TUNER, "aud_apll2_tuner_clk", "top_aud_engen2", 18),
++	GATE_AUD0(CLK_AUD_APLL_TUNER, "aud_apll_tuner_clk", "top_aud_engen1", 19),
++	GATE_AUD0(CLK_AUD_TDM, "aud_tdm_clk", "top_aud_1", 20),
++	GATE_AUD0(CLK_AUD_ADC, "aud_adc_clk", "top_audio", 24),
++	GATE_AUD0(CLK_AUD_DAC, "aud_dac_clk", "top_audio", 25),
++	GATE_AUD0(CLK_AUD_DAC_PREDIS, "aud_dac_predis_clk", "top_audio", 26),
++	GATE_AUD0(CLK_AUD_TML, "aud_tml_clk", "top_audio", 27),
++	GATE_AUD0(CLK_AUD_NLE, "aud_nle_clk", "top_audio", 28),
++
++	/* AUD1 */
++	GATE_AUD1(CLK_AUD_I2S1_BCLK, "aud_i2s1_bclk", "top_audio", 4),
++	GATE_AUD1(CLK_AUD_I2S2_BCLK, "aud_i2s2_bclk", "top_audio", 5),
++	GATE_AUD1(CLK_AUD_I2S3_BCLK, "aud_i2s3_bclk", "top_audio", 6),
++	GATE_AUD1(CLK_AUD_I2S4_BCLK, "aud_i2s4_bclk", "top_audio", 7),
++	GATE_AUD1(CLK_AUD_CONNSYS_I2S_ASRC, "aud_connsys_i2s_asrc", "top_audio", 12),
++	GATE_AUD1(CLK_AUD_GENERAL1_ASRC, "aud_general1_asrc", "top_audio", 13),
++	GATE_AUD1(CLK_AUD_GENERAL2_ASRC, "aud_general2_asrc", "top_audio", 14),
++	GATE_AUD1(CLK_AUD_DAC_HIRES, "aud_dac_hires_clk", "top_audio_h", 15),
++	GATE_AUD1(CLK_AUD_ADC_HIRES, "aud_adc_hires_clk", "top_audio_h", 16),
++	GATE_AUD1(CLK_AUD_ADC_HIRES_TML, "aud_adc_hires_tml", "top_audio_h", 17),
++	GATE_AUD1(CLK_AUD_ADDA6_ADC, "aud_adda6_adc", "top_audio", 20),
++	GATE_AUD1(CLK_AUD_ADDA6_ADC_HIRES, "aud_adda6_adc_hires", "top_audio_h", 21),
++	GATE_AUD1(CLK_AUD_3RD_DAC, "aud_3rd_dac", "top_audio", 28),
++	GATE_AUD1(CLK_AUD_3RD_DAC_PREDIS, "aud_3rd_dac_predis", "top_audio", 29),
++	GATE_AUD1(CLK_AUD_3RD_DAC_TML, "aud_3rd_dac_tml", "top_audio", 30),
++	GATE_AUD1(CLK_AUD_3RD_DAC_HIRES, "aud_3rd_dac_hires", "top_audio_h", 31),
++
++	/* AUD2 */
++	GATE_AUD2(CLK_AUD_ETDM_IN1_BCLK, "aud_etdm_in1_bclk", "top_audio", 23),
++	GATE_AUD2(CLK_AUD_ETDM_OUT1_BCLK, "aud_etdm_out1_bclk", "top_audio", 24),
++};
++
++int mt8186_audsys_clk_register(struct mtk_base_afe *afe)
++{
++	struct mt8186_afe_private *afe_priv = afe->platform_priv;
++	struct clk *clk;
++	struct clk_lookup *cl;
++	int i;
++
++	afe_priv->lookup = devm_kcalloc(afe->dev, CLK_AUD_NR_CLK,
++					sizeof(*afe_priv->lookup),
++					GFP_KERNEL);
++
++	if (!afe_priv->lookup)
++		return -ENOMEM;
++
++	for (i = 0; i < ARRAY_SIZE(aud_clks); i++) {
++		const struct afe_gate *gate = &aud_clks[i];
++
++		clk = clk_register_gate(afe->dev, gate->name, gate->parent_name,
++					gate->flags, afe->base_addr + gate->reg,
++					gate->bit, gate->cg_flags, NULL);
++
++		if (IS_ERR(clk)) {
++			dev_err(afe->dev, "Failed to register clk %s: %ld\n",
++				gate->name, PTR_ERR(clk));
++			continue;
 +		}
-+	}
 +
-+	/* gpio status init */
-+	mt8186_afe_gpio_request(dev, false, MT8186_DAI_ADDA, 0);
-+	mt8186_afe_gpio_request(dev, false, MT8186_DAI_ADDA, 1);
++		/* add clk_lookup for devm_clk_get(SND_SOC_DAPM_CLOCK_SUPPLY) */
++		cl = kzalloc(sizeof(*cl), GFP_KERNEL);
++		if (!cl)
++			return -ENOMEM;
 +
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mt8186_afe_gpio_init);
++		cl->clk = clk;
++		cl->con_id = gate->name;
++		cl->dev_id = dev_name(afe->dev);
++		clkdev_add(cl);
 +
-+static int mt8186_afe_gpio_select(struct device *dev,
-+				  enum mt8186_afe_gpio type)
-+{
-+	int ret = 0;
-+
-+	if (type < 0 || type >= MT8186_AFE_GPIO_GPIO_NUM) {
-+		dev_info(dev, "%s(), error, invalid gpio type %d\n",
-+			 __func__, type);
-+		return -EINVAL;
-+	}
-+
-+	if (!aud_gpios[type].gpio_prepare) {
-+		dev_info(dev, "%s(), error, gpio type %d not prepared\n",
-+			 __func__, type);
-+		return -EIO;
-+	}
-+
-+	ret = pinctrl_select_state(aud_pinctrl,
-+				   aud_gpios[type].gpioctrl);
-+	if (ret)
-+		dev_info(dev, "%s(), error, can not set gpio type %d\n",
-+			 __func__, type);
-+
-+	return ret;
-+}
-+
-+static int mt8186_afe_gpio_adda_dl(struct device *dev, bool enable)
-+{
-+	if (enable) {
-+		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_CLK_MOSI_ON);
-+		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_DAT_MOSI_ON);
-+	} else {
-+		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_DAT_MOSI_OFF);
-+		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_CLK_MOSI_OFF);
++		afe_priv->lookup[i] = cl;
 +	}
 +
 +	return 0;
 +}
 +
-+static int mt8186_afe_gpio_adda_ul(struct device *dev, bool enable)
++void mt8186_audsys_clk_unregister(struct mtk_base_afe *afe)
 +{
-+	if (enable) {
-+		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_CLK_MISO_ON);
-+		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_DAT_MISO_ON);
-+	} else {
-+		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_DAT_MISO_OFF);
-+		mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_CLK_MISO_OFF);
-+	}
++	struct mt8186_afe_private *afe_priv = afe->platform_priv;
++	struct clk *clk;
++	struct clk_lookup *cl;
++	int i;
 +
-+	return 0;
-+}
++	if (!afe_priv)
++		return;
 +
-+int mt8186_afe_gpio_request(struct device *dev, bool enable,
-+			    int dai, int uplink)
-+{
-+	mutex_lock(&gpio_request_mutex);
-+	switch (dai) {
-+	case MT8186_DAI_ADDA:
-+		if (uplink)
-+			mt8186_afe_gpio_adda_ul(dev, enable);
-+		else
-+			mt8186_afe_gpio_adda_dl(dev, enable);
-+		break;
-+	case MT8186_DAI_I2S_0:
-+		if (enable)
-+			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S0_ON);
-+		else
-+			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S0_OFF);
-+		break;
-+	case MT8186_DAI_I2S_1:
-+		if (enable)
-+			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S1_ON);
-+		else
-+			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S1_OFF);
-+		break;
-+	case MT8186_DAI_I2S_2:
-+		if (enable)
-+			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S2_ON);
-+		else
-+			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S2_OFF);
-+		break;
-+	case MT8186_DAI_I2S_3:
-+		if (enable)
-+			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S3_ON);
-+		else
-+			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_I2S3_OFF);
-+		break;
-+	case MT8186_DAI_TDM_IN:
-+		if (enable)
-+			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_TDM_ON);
-+		else
-+			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_TDM_OFF);
-+		break;
-+	case MT8186_DAI_PCM:
-+		if (enable)
-+			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_PCM_ON);
-+		else
-+			mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_PCM_OFF);
-+		break;
-+	default:
-+		mutex_unlock(&gpio_request_mutex);
-+		dev_info(dev, "%s(), invalid dai %d\n", __func__, dai);
-+		return -EINVAL;
++	for (i = 0; i < CLK_AUD_NR_CLK; i++) {
++		cl = afe_priv->lookup[i];
++		if (!cl)
++			continue;
++
++		clk = cl->clk;
++		clk_unregister_gate(clk);
++
++		clkdev_drop(cl);
 +	}
-+	mutex_unlock(&gpio_request_mutex);
-+	return 0;
 +}
-diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-gpio.h b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.h
+diff --git a/sound/soc/mediatek/mt8186/mt8186-audsys-clk.h b/sound/soc/mediatek/mt8186/mt8186-audsys-clk.h
 new file mode 100644
-index 000000000000..1ddc27838eb1
+index 000000000000..b8d6a06e11e8
 --- /dev/null
-+++ b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.h
-@@ -0,0 +1,19 @@
++++ b/sound/soc/mediatek/mt8186/mt8186-audsys-clk.h
+@@ -0,0 +1,15 @@
 +/* SPDX-License-Identifier: GPL-2.0
 + *
-+ * mt6833-afe-gpio.h  --  Mediatek 6833 afe gpio ctrl definition
++ * mt8186-audsys-clk.h  --  Mediatek 8186 audsys clock definition
++ *
++ * Copyright (c) 2022 MediaTek Inc.
++ * Author: Trevor Wu <trevor.wu@mediatek.com>
++ */
++
++#ifndef _MT8186_AUDSYS_CLK_H_
++#define _MT8186_AUDSYS_CLK_H_
++
++int mt8186_audsys_clk_register(struct mtk_base_afe *afe);
++void mt8186_audsys_clk_unregister(struct mtk_base_afe *afe);
++
++#endif
+diff --git a/sound/soc/mediatek/mt8186/mt8186-audsys-clkid.h b/sound/soc/mediatek/mt8186/mt8186-audsys-clkid.h
+new file mode 100644
+index 000000000000..3ce5937c1823
+--- /dev/null
++++ b/sound/soc/mediatek/mt8186/mt8186-audsys-clkid.h
+@@ -0,0 +1,45 @@
++/* SPDX-License-Identifier: GPL-2.0
++ *
++ * mt8186-audsys-clkid.h  --  Mediatek 8186 audsys clock id definition
 + *
 + * Copyright (c) 2022 MediaTek Inc.
 + * Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
 + */
 +
-+#ifndef _MT8186_AFE_GPIO_H_
-+#define _MT8186_AFE_GPIO_H_
++#ifndef _MT8186_AUDSYS_CLKID_H_
++#define _MT8186_AUDSYS_CLKID_H_
 +
-+struct mtk_base_afe;
-+
-+int mt8186_afe_gpio_init(struct device *dev);
-+
-+int mt8186_afe_gpio_request(struct device *dev, bool enable,
-+			    int dai, int uplink);
++enum{
++	CLK_AUD_AFE,
++	CLK_AUD_22M,
++	CLK_AUD_24M,
++	CLK_AUD_APLL2_TUNER,
++	CLK_AUD_APLL_TUNER,
++	CLK_AUD_TDM,
++	CLK_AUD_ADC,
++	CLK_AUD_DAC,
++	CLK_AUD_DAC_PREDIS,
++	CLK_AUD_TML,
++	CLK_AUD_NLE,
++	CLK_AUD_I2S1_BCLK,
++	CLK_AUD_I2S2_BCLK,
++	CLK_AUD_I2S3_BCLK,
++	CLK_AUD_I2S4_BCLK,
++	CLK_AUD_CONNSYS_I2S_ASRC,
++	CLK_AUD_GENERAL1_ASRC,
++	CLK_AUD_GENERAL2_ASRC,
++	CLK_AUD_DAC_HIRES,
++	CLK_AUD_ADC_HIRES,
++	CLK_AUD_ADC_HIRES_TML,
++	CLK_AUD_ADDA6_ADC,
++	CLK_AUD_ADDA6_ADC_HIRES,
++	CLK_AUD_3RD_DAC,
++	CLK_AUD_3RD_DAC_PREDIS,
++	CLK_AUD_3RD_DAC_TML,
++	CLK_AUD_3RD_DAC_HIRES,
++	CLK_AUD_ETDM_IN1_BCLK,
++	CLK_AUD_ETDM_OUT1_BCLK,
++	CLK_AUD_NR_CLK,
++};
 +
 +#endif
 -- 
