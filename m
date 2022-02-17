@@ -4,68 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 517A5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 12:06:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 681A0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 12:23:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7x2ImkpQxvC8yx8/s00XHnprk/Qei3xdHzaHVUQr4Dg=; b=PWFRkdCbjP2q/7
-	uEu1OS4j++6gwpakOfioXivxZ74sQfh7P3kN3SyCywjTTdHriBOHcMH/5yO0S1jbRUBuV3LAVmXP8
-	is+MF0XPMLf92IYkVXdpsyB/d2RQW8+hc/ME+jJoyQ+g8fe22WlkPFvXxigPcrC4UjGE6jCdndZZy
-	yaaoFHbX8BM4dP7ZdwzaUJ8b7rhSWE1FylfjTvYWtOAm0fWfSjhEKvhMi1inH7BtZ5jB3L7uT04zM
-	Z+g0U7yYuLtAEMzAf88CUQVzTWMi07kUe/ijESKuj0ky7FOddc+nuMSnDyuvtlZ9r/wL9ioMZokEj
-	IzHlpoYn0yPGbT1s2zKQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cJhlAsPZYYKqT0zaFjjb4ER/ydMW7upo5zSB/oH6/3k=; b=i+C7vPEWEOd66G
+	K9OJsj5Eyb1RKuVjoUcdanXdUHmAEQApii6dHOZ8sdOCjdx3X2ZTitzOKIP+32CzO3Iwv7sWbkTdP
+	CZyq/cejTGOsttlSLXiMi1K4ajFCGj2uEdMzUx15M/C3X63eaKC0pEvPQqhFgJ9Ac/wtJycNb2jvk
+	vNODQ28VPVNnqBrU8Q1f6aht4Rivdm56sxZFDPwce9qBONjIgQREX0AAXgKwpbMy03o+nM4T3bTCu
+	lIZ94Vzg8KyTVNrhjhSbF/JB+cVLcCzYMhXK0BNq2VA5WvLBPXe4cC20eqVl1FtxJSr6xm5TvQpd7
+	v0X1NUEC2Iz+stKhKn5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKfYg-00AKKG-4v; Thu, 17 Feb 2022 12:06:50 +0000
+	id 1nKfoW-00AQhV-Lq; Thu, 17 Feb 2022 12:23:12 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKfFd-00AAdE-V0; Thu, 17 Feb 2022 11:47:12 +0000
-X-UUID: 20a2d5d75f684ed5824778a9714691fb-20220217
-X-UUID: 20a2d5d75f684ed5824778a9714691fb-20220217
+ id 1nKfoG-00AQbr-I2; Thu, 17 Feb 2022 12:22:58 +0000
+X-UUID: cd1f41a76ef140d8bdbeb5fbc56dd1cf-20220217
+X-UUID: cd1f41a76ef140d8bdbeb5fbc56dd1cf-20220217
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
+ (envelope-from <kewei.xu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1741930320; Thu, 17 Feb 2022 04:46:58 -0700
+ with ESMTP id 801386139; Thu, 17 Feb 2022 05:22:53 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Feb 2022 03:39:26 -0800
+ 15.0.1497.2; Thu, 17 Feb 2022 04:22:51 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 17 Feb 2022 19:39:24 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ Thu, 17 Feb 2022 20:22:49 +0800
+Received: from localhost.localdomain (10.17.3.14) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 17 Feb 2022 19:39:23 +0800
-From: Yong Wu <yong.wu@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
-CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
- <krzysztof.kozlowski@canonical.com>, Tomasz Figa <tfiga@chromium.org>,
+ Transport; Thu, 17 Feb 2022 20:22:48 +0800
+From: Kewei Xu <kewei.xu@mediatek.com>
+To: <wsa@the-dreams.de>
+CC: <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
+ <linux-i2c@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>, <yong.wu@mediatek.com>,
- <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
- <xueqi.zhang@mediatek.com>, <yen-chang.chen@mediatek.com>, "AngeloGioacchino
- Del Regno" <angelogioacchino.delregno@collabora.com>,
- <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
- <chengci.xu@mediatek.com>
-Subject: [PATCH v5 27/34] iommu/mediatek-v1: Just rename mtk_iommu to
- mtk_iommu_v1
-Date: Thu, 17 Feb 2022 19:34:46 +0800
-Message-ID: <20220217113453.13658-28-yong.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220217113453.13658-1-yong.wu@mediatek.com>
-References: <20220217113453.13658-1-yong.wu@mediatek.com>
+ <leilk.liu@mediatek.com>, <qii.wang@mediatek.com>,
+ <liguo.zhang@mediatek.com>, <caiyu.chen@mediatek.com>,
+ <housong.zhang@mediatek.com>, <yuhan.wei@mediatek.com>,
+ <kewei.xu@mediatek.com>, <ryan-jh.yu@mediatek.com>,
+ <david-yh.chiu@mediatek.com>
+Subject: [PATCH v10,0/1] Introducing an attribute to select the time setting
+Date: Thu, 17 Feb 2022 20:22:42 +0800
+Message-ID: <1645100563-59441-1-git-send-email-kewei.xu@mediatek.com>
+X-Mailer: git-send-email 1.9.1
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_034710_075165_F3557892 
-X-CRM114-Status: GOOD (  22.70  )
+X-CRM114-CacheID: sfid-20220217_042256_626668_EE48E695 
+X-CRM114-Status: UNSURE (   8.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,560 +77,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-No functional change. Just rename this for readable. Differentiate this
-from mtk_iommu.c
+v10:
+Remove the Change-Id tag in v9.
 
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
----
- drivers/iommu/mtk_iommu_v1.c | 211 +++++++++++++++++------------------
- 1 file changed, 103 insertions(+), 108 deletions(-)
+v9:
+1. Remove received patch
+2. Update ac-timing calculation algorithm to make i2c ac-timing meet
+specification and function normal.
 
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 96facaff6d96..29d1bc14ebf1 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -85,34 +85,34 @@
-  */
- #define M2701_IOMMU_PGT_SIZE			SZ_4M
- 
--struct mtk_iommu_suspend_reg {
-+struct mtk_iommu_v1_suspend_reg {
- 	u32			standard_axi_mode;
- 	u32			dcm_dis;
- 	u32			ctrl_reg;
- 	u32			int_control0;
- };
- 
--struct mtk_iommu_data {
-+struct mtk_iommu_v1_data {
- 	void __iomem			*base;
- 	int				irq;
- 	struct device			*dev;
- 	struct clk			*bclk;
- 	phys_addr_t			protect_base; /* protect memory base */
--	struct mtk_iommu_domain		*m4u_dom;
-+	struct mtk_iommu_v1_domain	*m4u_dom;
- 
- 	struct iommu_device		iommu;
- 	struct dma_iommu_mapping	*mapping;
- 	struct mtk_smi_larb_iommu	larb_imu[MTK_LARB_NR_MAX];
- 
--	struct mtk_iommu_suspend_reg	reg;
-+	struct mtk_iommu_v1_suspend_reg	reg;
- };
- 
--struct mtk_iommu_domain {
-+struct mtk_iommu_v1_domain {
- 	spinlock_t			pgtlock; /* lock for page table */
- 	struct iommu_domain		domain;
- 	u32				*pgt_va;
- 	dma_addr_t			pgt_pa;
--	struct mtk_iommu_data		*data;
-+	struct mtk_iommu_v1_data	*data;
- };
- 
- static int compare_of(struct device *dev, void *data)
-@@ -125,23 +125,23 @@ static void release_of(struct device *dev, void *data)
- 	of_node_put(data);
- }
- 
--static int mtk_iommu_bind(struct device *dev)
-+static int mtk_iommu_v1_bind(struct device *dev)
- {
--	struct mtk_iommu_data *data = dev_get_drvdata(dev);
-+	struct mtk_iommu_v1_data *data = dev_get_drvdata(dev);
- 
- 	return component_bind_all(dev, &data->larb_imu);
- }
- 
--static void mtk_iommu_unbind(struct device *dev)
-+static void mtk_iommu_v1_unbind(struct device *dev)
- {
--	struct mtk_iommu_data *data = dev_get_drvdata(dev);
-+	struct mtk_iommu_v1_data *data = dev_get_drvdata(dev);
- 
- 	component_unbind_all(dev, &data->larb_imu);
- }
- 
--static struct mtk_iommu_domain *to_mtk_domain(struct iommu_domain *dom)
-+static struct mtk_iommu_v1_domain *to_mtk_domain(struct iommu_domain *dom)
- {
--	return container_of(dom, struct mtk_iommu_domain, domain);
-+	return container_of(dom, struct mtk_iommu_v1_domain, domain);
- }
- 
- static const int mt2701_m4u_in_larb[] = {
-@@ -167,7 +167,7 @@ static inline int mt2701_m4u_to_port(int id)
- 	return id - mt2701_m4u_in_larb[larb];
- }
- 
--static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
-+static void mtk_iommu_v1_tlb_flush_all(struct mtk_iommu_v1_data *data)
- {
- 	writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
- 			data->base + REG_MMU_INV_SEL);
-@@ -175,8 +175,8 @@ static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
- 	wmb(); /* Make sure the tlb flush all done */
- }
- 
--static void mtk_iommu_tlb_flush_range(struct mtk_iommu_data *data,
--				unsigned long iova, size_t size)
-+static void mtk_iommu_v1_tlb_flush_range(struct mtk_iommu_v1_data *data,
-+					 unsigned long iova, size_t size)
- {
- 	int ret;
- 	u32 tmp;
-@@ -194,16 +194,16 @@ static void mtk_iommu_tlb_flush_range(struct mtk_iommu_data *data,
- 	if (ret) {
- 		dev_warn(data->dev,
- 			 "Partial TLB flush timed out, falling back to full flush\n");
--		mtk_iommu_tlb_flush_all(data);
-+		mtk_iommu_v1_tlb_flush_all(data);
- 	}
- 	/* Clear the CPE status */
- 	writel_relaxed(0, data->base + REG_MMU_CPE_DONE);
- }
- 
--static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
-+static irqreturn_t mtk_iommu_v1_isr(int irq, void *dev_id)
- {
--	struct mtk_iommu_data *data = dev_id;
--	struct mtk_iommu_domain *dom = data->m4u_dom;
-+	struct mtk_iommu_v1_data *data = dev_id;
-+	struct mtk_iommu_v1_domain *dom = data->m4u_dom;
- 	u32 int_state, regval, fault_iova, fault_pa;
- 	unsigned int fault_larb, fault_port;
- 
-@@ -233,13 +233,13 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
- 	regval |= F_INT_CLR_BIT;
- 	writel_relaxed(regval, data->base + REG_MMU_INT_CONTROL);
- 
--	mtk_iommu_tlb_flush_all(data);
-+	mtk_iommu_v1_tlb_flush_all(data);
- 
- 	return IRQ_HANDLED;
- }
- 
--static void mtk_iommu_config(struct mtk_iommu_data *data,
--			     struct device *dev, bool enable)
-+static void mtk_iommu_v1_config(struct mtk_iommu_v1_data *data,
-+				struct device *dev, bool enable)
- {
- 	struct mtk_smi_larb_iommu    *larb_mmu;
- 	unsigned int                 larbid, portid;
-@@ -261,9 +261,9 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
- 	}
- }
- 
--static int mtk_iommu_domain_finalise(struct mtk_iommu_data *data)
-+static int mtk_iommu_v1_domain_finalise(struct mtk_iommu_v1_data *data)
- {
--	struct mtk_iommu_domain *dom = data->m4u_dom;
-+	struct mtk_iommu_v1_domain *dom = data->m4u_dom;
- 
- 	spin_lock_init(&dom->pgtlock);
- 
-@@ -279,9 +279,9 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_data *data)
- 	return 0;
- }
- 
--static struct iommu_domain *mtk_iommu_domain_alloc(unsigned type)
-+static struct iommu_domain *mtk_iommu_v1_domain_alloc(unsigned type)
- {
--	struct mtk_iommu_domain *dom;
-+	struct mtk_iommu_v1_domain *dom;
- 
- 	if (type != IOMMU_DOMAIN_UNMANAGED)
- 		return NULL;
-@@ -293,21 +293,20 @@ static struct iommu_domain *mtk_iommu_domain_alloc(unsigned type)
- 	return &dom->domain;
- }
- 
--static void mtk_iommu_domain_free(struct iommu_domain *domain)
-+static void mtk_iommu_v1_domain_free(struct iommu_domain *domain)
- {
--	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
--	struct mtk_iommu_data *data = dom->data;
-+	struct mtk_iommu_v1_domain *dom = to_mtk_domain(domain);
-+	struct mtk_iommu_v1_data *data = dom->data;
- 
- 	dma_free_coherent(data->dev, M2701_IOMMU_PGT_SIZE,
- 			dom->pgt_va, dom->pgt_pa);
- 	kfree(to_mtk_domain(domain));
- }
- 
--static int mtk_iommu_attach_device(struct iommu_domain *domain,
--				   struct device *dev)
-+static int mtk_iommu_v1_attach_device(struct iommu_domain *domain, struct device *dev)
- {
--	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
--	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-+	struct mtk_iommu_v1_data *data = dev_iommu_priv_get(dev);
-+	struct mtk_iommu_v1_domain *dom = to_mtk_domain(domain);
- 	struct dma_iommu_mapping *mtk_mapping;
- 	int ret;
- 
-@@ -318,29 +317,28 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- 
- 	if (!data->m4u_dom) {
- 		data->m4u_dom = dom;
--		ret = mtk_iommu_domain_finalise(data);
-+		ret = mtk_iommu_v1_domain_finalise(data);
- 		if (ret) {
- 			data->m4u_dom = NULL;
- 			return ret;
- 		}
- 	}
- 
--	mtk_iommu_config(data, dev, true);
-+	mtk_iommu_v1_config(data, dev, true);
- 	return 0;
- }
- 
--static void mtk_iommu_detach_device(struct iommu_domain *domain,
--				    struct device *dev)
-+static void mtk_iommu_v1_detach_device(struct iommu_domain *domain, struct device *dev)
- {
--	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
-+	struct mtk_iommu_v1_data *data = dev_iommu_priv_get(dev);
- 
--	mtk_iommu_config(data, dev, false);
-+	mtk_iommu_v1_config(data, dev, false);
- }
- 
--static int mtk_iommu_map(struct iommu_domain *domain, unsigned long iova,
--			 phys_addr_t paddr, size_t size, int prot, gfp_t gfp)
-+static int mtk_iommu_v1_map(struct iommu_domain *domain, unsigned long iova,
-+			    phys_addr_t paddr, size_t size, int prot, gfp_t gfp)
- {
--	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-+	struct mtk_iommu_v1_domain *dom = to_mtk_domain(domain);
- 	unsigned int page_num = size >> MT2701_IOMMU_PAGE_SHIFT;
- 	unsigned long flags;
- 	unsigned int i;
-@@ -361,16 +359,15 @@ static int mtk_iommu_map(struct iommu_domain *domain, unsigned long iova,
- 
- 	spin_unlock_irqrestore(&dom->pgtlock, flags);
- 
--	mtk_iommu_tlb_flush_range(dom->data, iova, size);
-+	mtk_iommu_v1_tlb_flush_range(dom->data, iova, size);
- 
- 	return map_size == size ? 0 : -EEXIST;
- }
- 
--static size_t mtk_iommu_unmap(struct iommu_domain *domain,
--			      unsigned long iova, size_t size,
--			      struct iommu_iotlb_gather *gather)
-+static size_t mtk_iommu_v1_unmap(struct iommu_domain *domain, unsigned long iova,
-+				 size_t size, struct iommu_iotlb_gather *gather)
- {
--	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-+	struct mtk_iommu_v1_domain *dom = to_mtk_domain(domain);
- 	unsigned long flags;
- 	u32 *pgt_base_iova = dom->pgt_va + (iova  >> MT2701_IOMMU_PAGE_SHIFT);
- 	unsigned int page_num = size >> MT2701_IOMMU_PAGE_SHIFT;
-@@ -379,15 +376,14 @@ static size_t mtk_iommu_unmap(struct iommu_domain *domain,
- 	memset(pgt_base_iova, 0, page_num * sizeof(u32));
- 	spin_unlock_irqrestore(&dom->pgtlock, flags);
- 
--	mtk_iommu_tlb_flush_range(dom->data, iova, size);
-+	mtk_iommu_v1_tlb_flush_range(dom->data, iova, size);
- 
- 	return size;
- }
- 
--static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
--					  dma_addr_t iova)
-+static phys_addr_t mtk_iommu_v1_iova_to_phys(struct iommu_domain *domain, dma_addr_t iova)
- {
--	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-+	struct mtk_iommu_v1_domain *dom = to_mtk_domain(domain);
- 	unsigned long flags;
- 	phys_addr_t pa;
- 
-@@ -399,17 +395,16 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
- 	return pa;
- }
- 
--static const struct iommu_ops mtk_iommu_ops;
-+static const struct iommu_ops mtk_iommu_v1_ops;
- 
- /*
-  * MTK generation one iommu HW only support one iommu domain, and all the client
-  * sharing the same iova address space.
-  */
--static int mtk_iommu_create_mapping(struct device *dev,
--				    struct of_phandle_args *args)
-+static int mtk_iommu_v1_create_mapping(struct device *dev, struct of_phandle_args *args)
- {
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
--	struct mtk_iommu_data *data;
-+	struct mtk_iommu_v1_data *data;
- 	struct platform_device *m4updev;
- 	struct dma_iommu_mapping *mtk_mapping;
- 	int ret;
-@@ -421,11 +416,11 @@ static int mtk_iommu_create_mapping(struct device *dev,
- 	}
- 
- 	if (!fwspec) {
--		ret = iommu_fwspec_init(dev, &args->np->fwnode, &mtk_iommu_ops);
-+		ret = iommu_fwspec_init(dev, &args->np->fwnode, &mtk_iommu_v1_ops);
- 		if (ret)
- 			return ret;
- 		fwspec = dev_iommu_fwspec_get(dev);
--	} else if (dev_iommu_fwspec_get(dev)->ops != &mtk_iommu_ops) {
-+	} else if (dev_iommu_fwspec_get(dev)->ops != &mtk_iommu_v1_ops) {
- 		return -EINVAL;
- 	}
- 
-@@ -457,16 +452,16 @@ static int mtk_iommu_create_mapping(struct device *dev,
- 	return 0;
- }
- 
--static int mtk_iommu_def_domain_type(struct device *dev)
-+static int mtk_iommu_v1_def_domain_type(struct device *dev)
- {
- 	return IOMMU_DOMAIN_UNMANAGED;
- }
- 
--static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
-+static struct iommu_device *mtk_iommu_v1_probe_device(struct device *dev)
- {
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
- 	struct of_phandle_args iommu_spec;
--	struct mtk_iommu_data *data;
-+	struct mtk_iommu_v1_data *data;
- 	int err, idx = 0, larbid, larbidx;
- 	struct device_link *link;
- 	struct device *larbdev;
-@@ -484,7 +479,7 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
- 					   "#iommu-cells",
- 					   idx, &iommu_spec)) {
- 
--		err = mtk_iommu_create_mapping(dev, &iommu_spec);
-+		err = mtk_iommu_v1_create_mapping(dev, &iommu_spec);
- 		of_node_put(iommu_spec.np);
- 		if (err)
- 			return ERR_PTR(err);
-@@ -494,7 +489,7 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
- 		idx++;
- 	}
- 
--	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
-+	if (!fwspec || fwspec->ops != &mtk_iommu_v1_ops)
- 		return ERR_PTR(-ENODEV); /* Not a iommu client device */
- 
- 	data = dev_iommu_priv_get(dev);
-@@ -519,10 +514,10 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
- 	return &data->iommu;
- }
- 
--static void mtk_iommu_probe_finalize(struct device *dev)
-+static void mtk_iommu_v1_probe_finalize(struct device *dev)
- {
- 	struct dma_iommu_mapping *mtk_mapping;
--	struct mtk_iommu_data *data;
-+	struct mtk_iommu_v1_data *data;
- 	int err;
- 
- 	data        = dev_iommu_priv_get(dev);
-@@ -533,14 +528,14 @@ static void mtk_iommu_probe_finalize(struct device *dev)
- 		dev_err(dev, "Can't create IOMMU mapping - DMA-OPS will not work\n");
- }
- 
--static void mtk_iommu_release_device(struct device *dev)
-+static void mtk_iommu_v1_release_device(struct device *dev)
- {
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
--	struct mtk_iommu_data *data;
-+	struct mtk_iommu_v1_data *data;
- 	struct device *larbdev;
- 	unsigned int larbid;
- 
--	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
-+	if (!fwspec || fwspec->ops != &mtk_iommu_v1_ops)
- 		return;
- 
- 	data = dev_iommu_priv_get(dev);
-@@ -551,7 +546,7 @@ static void mtk_iommu_release_device(struct device *dev)
- 	iommu_fwspec_free(dev);
- }
- 
--static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
-+static int mtk_iommu_v1_hw_init(const struct mtk_iommu_v1_data *data)
- {
- 	u32 regval;
- 	int ret;
-@@ -581,7 +576,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
- 
- 	writel_relaxed(F_MMU_DCM_ON, data->base + REG_MMU_DCM);
- 
--	if (devm_request_irq(data->dev, data->irq, mtk_iommu_isr, 0,
-+	if (devm_request_irq(data->dev, data->irq, mtk_iommu_v1_isr, 0,
- 			     dev_name(data->dev), (void *)data)) {
- 		writel_relaxed(0, data->base + REG_MMU_PT_BASE_ADDR);
- 		clk_disable_unprepare(data->bclk);
-@@ -592,36 +587,36 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
- 	return 0;
- }
- 
--static const struct iommu_ops mtk_iommu_ops = {
--	.domain_alloc	= mtk_iommu_domain_alloc,
--	.domain_free	= mtk_iommu_domain_free,
--	.attach_dev	= mtk_iommu_attach_device,
--	.detach_dev	= mtk_iommu_detach_device,
--	.map		= mtk_iommu_map,
--	.unmap		= mtk_iommu_unmap,
--	.iova_to_phys	= mtk_iommu_iova_to_phys,
--	.probe_device	= mtk_iommu_probe_device,
--	.probe_finalize = mtk_iommu_probe_finalize,
--	.release_device	= mtk_iommu_release_device,
--	.def_domain_type = mtk_iommu_def_domain_type,
-+static const struct iommu_ops mtk_iommu_v1_ops = {
-+	.domain_alloc	= mtk_iommu_v1_domain_alloc,
-+	.domain_free	= mtk_iommu_v1_domain_free,
-+	.attach_dev	= mtk_iommu_v1_attach_device,
-+	.detach_dev	= mtk_iommu_v1_detach_device,
-+	.map		= mtk_iommu_v1_map,
-+	.unmap		= mtk_iommu_v1_unmap,
-+	.iova_to_phys	= mtk_iommu_v1_iova_to_phys,
-+	.probe_device	= mtk_iommu_v1_probe_device,
-+	.probe_finalize = mtk_iommu_v1_probe_finalize,
-+	.release_device	= mtk_iommu_v1_release_device,
-+	.def_domain_type = mtk_iommu_v1_def_domain_type,
- 	.device_group	= generic_device_group,
- 	.pgsize_bitmap	= ~0UL << MT2701_IOMMU_PAGE_SHIFT,
- 	.owner          = THIS_MODULE,
- };
- 
--static const struct of_device_id mtk_iommu_of_ids[] = {
-+static const struct of_device_id mtk_iommu_v1_of_ids[] = {
- 	{ .compatible = "mediatek,mt2701-m4u", },
- 	{}
- };
- 
--static const struct component_master_ops mtk_iommu_com_ops = {
--	.bind		= mtk_iommu_bind,
--	.unbind		= mtk_iommu_unbind,
-+static const struct component_master_ops mtk_iommu_v1_com_ops = {
-+	.bind		= mtk_iommu_v1_bind,
-+	.unbind		= mtk_iommu_v1_unbind,
- };
- 
--static int mtk_iommu_probe(struct platform_device *pdev)
-+static int mtk_iommu_v1_probe(struct platform_device *pdev)
- {
--	struct mtk_iommu_data		*data;
-+	struct mtk_iommu_v1_data	*data;
- 	struct device			*dev = &pdev->dev;
- 	struct resource			*res;
- 	struct component_match		*match = NULL;
-@@ -689,7 +684,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, data);
- 
--	ret = mtk_iommu_hw_init(data);
-+	ret = mtk_iommu_v1_hw_init(data);
- 	if (ret)
- 		return ret;
- 
-@@ -698,17 +693,17 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 	if (ret)
- 		return ret;
- 
--	ret = iommu_device_register(&data->iommu, &mtk_iommu_ops, dev);
-+	ret = iommu_device_register(&data->iommu, &mtk_iommu_v1_ops, dev);
- 	if (ret)
- 		goto out_sysfs_remove;
- 
- 	if (!iommu_present(&platform_bus_type)) {
--		ret = bus_set_iommu(&platform_bus_type,  &mtk_iommu_ops);
-+		ret = bus_set_iommu(&platform_bus_type,  &mtk_iommu_v1_ops);
- 		if (ret)
- 			goto out_dev_unreg;
- 	}
- 
--	ret = component_master_add_with_match(dev, &mtk_iommu_com_ops, match);
-+	ret = component_master_add_with_match(dev, &mtk_iommu_v1_com_ops, match);
- 	if (ret)
- 		goto out_bus_set_null;
- 	return ret;
-@@ -722,9 +717,9 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_iommu_remove(struct platform_device *pdev)
-+static int mtk_iommu_v1_remove(struct platform_device *pdev)
- {
--	struct mtk_iommu_data *data = platform_get_drvdata(pdev);
-+	struct mtk_iommu_v1_data *data = platform_get_drvdata(pdev);
- 
- 	iommu_device_sysfs_remove(&data->iommu);
- 	iommu_device_unregister(&data->iommu);
-@@ -734,14 +729,14 @@ static int mtk_iommu_remove(struct platform_device *pdev)
- 
- 	clk_disable_unprepare(data->bclk);
- 	devm_free_irq(&pdev->dev, data->irq, data);
--	component_master_del(&pdev->dev, &mtk_iommu_com_ops);
-+	component_master_del(&pdev->dev, &mtk_iommu_v1_com_ops);
- 	return 0;
- }
- 
--static int __maybe_unused mtk_iommu_suspend(struct device *dev)
-+static int __maybe_unused mtk_iommu_v1_suspend(struct device *dev)
- {
--	struct mtk_iommu_data *data = dev_get_drvdata(dev);
--	struct mtk_iommu_suspend_reg *reg = &data->reg;
-+	struct mtk_iommu_v1_data *data = dev_get_drvdata(dev);
-+	struct mtk_iommu_v1_suspend_reg *reg = &data->reg;
- 	void __iomem *base = data->base;
- 
- 	reg->standard_axi_mode = readl_relaxed(base +
-@@ -752,10 +747,10 @@ static int __maybe_unused mtk_iommu_suspend(struct device *dev)
- 	return 0;
- }
- 
--static int __maybe_unused mtk_iommu_resume(struct device *dev)
-+static int __maybe_unused mtk_iommu_v1_resume(struct device *dev)
- {
--	struct mtk_iommu_data *data = dev_get_drvdata(dev);
--	struct mtk_iommu_suspend_reg *reg = &data->reg;
-+	struct mtk_iommu_v1_data *data = dev_get_drvdata(dev);
-+	struct mtk_iommu_v1_suspend_reg *reg = &data->reg;
- 	void __iomem *base = data->base;
- 
- 	writel_relaxed(data->m4u_dom->pgt_pa, base + REG_MMU_PT_BASE_ADDR);
-@@ -768,20 +763,20 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
- 	return 0;
- }
- 
--static const struct dev_pm_ops mtk_iommu_pm_ops = {
--	SET_SYSTEM_SLEEP_PM_OPS(mtk_iommu_suspend, mtk_iommu_resume)
-+static const struct dev_pm_ops mtk_iommu_v1_pm_ops = {
-+	SET_SYSTEM_SLEEP_PM_OPS(mtk_iommu_v1_suspend, mtk_iommu_v1_resume)
- };
- 
--static struct platform_driver mtk_iommu_driver = {
--	.probe	= mtk_iommu_probe,
--	.remove	= mtk_iommu_remove,
-+static struct platform_driver mtk_iommu_v1_driver = {
-+	.probe	= mtk_iommu_v1_probe,
-+	.remove	= mtk_iommu_v1_remove,
- 	.driver	= {
- 		.name = "mtk-iommu-v1",
--		.of_match_table = mtk_iommu_of_ids,
--		.pm = &mtk_iommu_pm_ops,
-+		.of_match_table = mtk_iommu_v1_of_ids,
-+		.pm = &mtk_iommu_v1_pm_ops,
- 	}
- };
--module_platform_driver(mtk_iommu_driver);
-+module_platform_driver(mtk_iommu_v1_driver);
- 
- MODULE_DESCRIPTION("IOMMU API for MediaTek M4U v1 implementations");
- MODULE_LICENSE("GPL v2");
--- 
-2.18.0
+v8:
+Remove received patch
+
+v7:
+Resubmit the patch based on version 5.15-rc1
+
+v6:
+1. Add the judgment condition, clear the handshake signal between dma and
+i2c when multiple msgs are transmitted.
+
+v5:
+1. Replace the previous variable name "default_timing_adjust" with
+   "use-default-timing"
+2. Added waiting for dma reset mechanism
+3. Remove received patch(dt-bindings: i2c: update bindings for MT8195 SOC)
+
+v4:
+1. Remove the repeated assignment of the inter_clk_div parameter
+2. Modify the wrong assignment of OFFSET_MULTI_DMA
+3. Unify the log print format of the i2c_dump_register() and drop the extra
+   outer parentheses
+4. Place the fixes at the very least
+5. Add fixed tags commit 25708278f810 ("i2c: mediatek: Add i2c support for
+   MediaTek MT8183")
+6. Add "i2c: mediatek: modify bus speed calculation formula"
+7. Fix single line characters exceeding 80 characters
+8. Combine two different series of patches.
+
+v3:
+1. Fix code errors caused by v2 modification
+
+v2:
+1. Add "dt-bindings: i2c: add attribute default-timing-adjust"
+2. Split the fix into sepatate patch.
+
+Kewei Xu (1):
+  i2c: mediatek: modify bus speed calculation formula
+
+ drivers/i2c/busses/i2c-mt65xx.c | 51 +++++++++++++++++++++++++++++++++--------
+ 1 file changed, 41 insertions(+), 10 deletions(-)
+
+--
+1.9.1
 
 
 _______________________________________________
