@@ -4,75 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53DC9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 15:16:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EA8DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 15:40:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g5k66xZUMXIwrDiH+3AsBYIGFpzWctixfOC7lk+Fmjo=; b=vYbOWMH4JLaJHE
-	8Zm0Kr97MudtJhp/wnrUIoxPM4Eyp6f2ECjrZrDbxTEmhDvZuMN4TP9JPEDh7XSn+vHPpuInbrZ6t
-	68RUcPniJnj3tYBBayGvwAkMimYLOmfl4zuE0ptZR0KVSZbCeVUfLidIBg+5f2Ntxy4SqJuQ0EBcW
-	kNCfxmu3GIgCAniKRWX5xeBLQaNb1GGJoRYcwcm8oyfQadp6mLDSQNGWoHCgOm9QH/bMP3wK4LVDB
-	FOhe8w9ASgwd/dqaGpzrBnn2gJVK/X4cuxg0/pYarFPLGFsFLfUqF8FOpeEhsyziyDk7AXxGg+Z6y
-	Vze7UM7AI/WJlOOqPXVg==;
+	List-Owner; bh=sHNIfdjsRBbJSJukL7iEemcqxZrmlZUGeiLA6Z/aBOE=; b=lYncOLgDCt0XaD
+	XGnClNblFWPjTA/Ao7FLUSIAImbB3ZmC9L/+U4vhv7o4QbVpe3Z3HNwAxFwQKOqTjyt0n7LMOv05u
+	lffdhv6/aFyr7jhBgFp5Mr/fbvZmCuhxVGusEP16kHt615aibUBQamrw7xHdOfddz1x/ib31Ch8HL
+	wgdA95/UJJJkkj9AP/TS8pY2fQTKqc19usCpn5nZciEJIF1xJJ5M1nE/ZcfNRWtljK4QCh38kHRcW
+	NCJ3VBareB21xglbgcaF5xfm+TiUV8GXtXYT+FcapFLBfjgxIwzE3pQ7HwHxtXn1Dgbduh43e8g1O
+	o7RlCDYRfHGyXtqbFS5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKiW0-00BE4C-S5; Thu, 17 Feb 2022 15:16:16 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nKitT-00BIbe-Qo; Thu, 17 Feb 2022 15:40:31 +0000
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKiVn-00BE12-TQ; Thu, 17 Feb 2022 15:16:05 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 2F80061E8A;
- Thu, 17 Feb 2022 15:16:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10EF4C340F5;
- Thu, 17 Feb 2022 15:16:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1645110962;
- bh=ltIrHZ5kE+koRIY5ZxoTB2ezjOerynjz7q6O20tGhjk=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=mN5wEfgIdmp7WvMgItg/375+CzWUq3y/DG1UoUgNxSar3uCXmNRFT1j0ytnIPknj3
- Lvz7VjBLwb41kdBaQFcz30Je3OwD6x6f4Lfm3XVIvrpGH40riEzhRWs0mHPbRIpQ2n
- GPEcLYzKiXl/0uCxgOTVhogzjVZUxJy4JkqF6DcpPwaeNY6s8ykkTpA0tttHxipDP8
- Ix9ZmdMa1PjJBtJCGTQMQ8Ffre1IegmkFirwrDl1LLuTcGOF/nNss45Sm054rEhMSi
- UciSy5cfk+LdIXEzJPi3+yC2nXKJdw0f7+4AfYC+LL/30b5XL+/V+AwRuXmMYX2pac
- VAwRZ/S5cLwrw==
-Received: by mail-ej1-f42.google.com with SMTP id hw13so8011535ejc.9;
- Thu, 17 Feb 2022 07:16:01 -0800 (PST)
-X-Gm-Message-State: AOAM530/ec/pp1oGzEH2p83k3fE4fSrviUs35Lf2aREu/jyAlB8B8ZF6
- Oj0Hf/02fJygUlBRQSwKWxrryZG0/SSK27goEw==
-X-Google-Smtp-Source: ABdhPJwWhmmbYUMUpT41cY1OCQWwTtA0ZK/OW2pNlNGzpnqu/sg0IPf8wGGwkq3V2cNbK5F8ACQlP6EYpC31RW+Gb1k=
-X-Received: by 2002:a17:906:8143:b0:6cf:73c1:8a0 with SMTP id
- z3-20020a170906814300b006cf73c108a0mr2822909ejw.406.1645110960294; Thu, 17
- Feb 2022 07:16:00 -0800 (PST)
+ id 1nKitO-00BIXl-AW
+ for linux-mediatek@lists.infradead.org; Thu, 17 Feb 2022 15:40:28 +0000
+Received: by mail-lj1-x22d.google.com with SMTP id o6so15754ljp.3
+ for <linux-mediatek@lists.infradead.org>; Thu, 17 Feb 2022 07:40:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=dtHuVZsN9dq8Ef87/aHczhTpVzC+pvWaYD+ZfU02gIo=;
+ b=DI03Q5WXZVS9ul6CojxIkkW4nz0ZO8uejIIb6VmNzipMI4NSLJuTUuNVVF8WnOFPAk
+ ETS6C8BnZIusFEeLd24/3GcTkvUN/KMupJrzeOYeA7tKvdIomQivWL/B3zy0zY/tPlWx
+ qZd8OE4OY3XIcUeT56fXQg7Hw3ayHOmVCKvDHuwxw4crgO4MVGVUQrERnwTHeExrETVI
+ 5SmD7k91ENizvCB6TkQp/RzxY1OH9FxQ24PYKDpYCZa7+veM6B71vzU3wVeuJytFMcjb
+ NcYwsjepH5AqvNSOFhYwssoKWSW7LOjr9PgcAHHYaWL9iU46/fTADC/Xvtya3WEZDAsS
+ +HSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=dtHuVZsN9dq8Ef87/aHczhTpVzC+pvWaYD+ZfU02gIo=;
+ b=D/biXE8yiCMv2UmLX9D7D5lHbqVjYf2DobmnldEWkBRF9v+fY8LSYI5nHW7ChmtsvO
+ SQRS3FRhQSWP+gwP77HTHYB3qiuQplH9dMQmQV0JqIPJTfLcpEKYGGpuuEQkFeYbss2a
+ N9cuZCI6rEtW28KagAs6wuayvXVNCZvQEeveFYYJzAnxJLFgNldHhtKnFw/F9RxIPfvN
+ H1+adE94HJBorALaYJx0pXNH8IfJa6j2sr05aMFNbeSD2UB7uJVYF8y3/5Yo8OF3Jivo
+ QyCCTb90mDI0dHZ1uZiXMT20wq7ar0K0mNdqL2/xyKxE5dzvFagX6hH7+MQyAfDPv9wD
+ mXqg==
+X-Gm-Message-State: AOAM531T7vjjspEFhUWNWATGL5gB0ZGn9q5zyWNKk2E7F0326I46NxZ2
+ fN1xVMzqd9qe1DFFUZt6jVPRJdT/eS2Z2rd2XjAy1g==
+X-Google-Smtp-Source: ABdhPJzS1HsQQFljNPEfdzoowpGZXeJXTbt7Iuq1OuK3MM2rhphn87bPRKA7/KY2OrtWgxD7W1s9ZurapEW2QYPSaeM=
+X-Received: by 2002:a05:651c:c7:b0:244:f9d7:7c48 with SMTP id
+ 7-20020a05651c00c700b00244f9d77c48mr2735695ljr.300.1645112424989; Thu, 17 Feb
+ 2022 07:40:24 -0800 (PST)
 MIME-Version: 1.0
-References: <20220214092742.3461587-1-jstephan@baylibre.com>
- <0a331caa-7578-60f5-cbd8-f6c8c29a629f@collabora.com>
-In-Reply-To: <0a331caa-7578-60f5-cbd8-f6c8c29a629f@collabora.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Thu, 17 Feb 2022 23:15:47 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_82E2BK1cxwbsDsj5DURrY245Xnd-04N=4vevCRMjkZpw@mail.gmail.com>
-Message-ID: <CAAOTY_82E2BK1cxwbsDsj5DURrY245Xnd-04N=4vevCRMjkZpw@mail.gmail.com>
-Subject: Re: [PATCH v4] drm/mediatek: allow commands to be sent during video
- mode
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Julien STEPHAN <jstephan@baylibre.com>,
- Mattijs Korpershoek <mkorpershoek@baylibre.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
+References: <1644395927-4138-1-git-send-email-wangqing@vivo.com>
+In-Reply-To: <1644395927-4138-1-git-send-email-wangqing@vivo.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Thu, 17 Feb 2022 16:39:48 +0100
+Message-ID: <CAPDyKFqg5N1tCqQ2u2jt5qU0qLuDJRSJRtq_aMVDc7XNDbRvkw@mail.gmail.com>
+Subject: Re: [PATCH] mmc: mtk-sd: use div64_u64() instead of do_div()
+To: Qing Wang <wangqing@vivo.com>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, 
- "open list:DRM DRIVERS FOR MEDIATEK" <dri-devel@lists.freedesktop.org>, 
- "moderated list:DRM DRIVERS FOR MEDIATEK" <linux-mediatek@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- open list <linux-kernel@vger.kernel.org>
+ linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_071604_067637_15A143D0 
-X-CRM114-Status: GOOD (  27.34  )
+X-CRM114-CacheID: sfid-20220217_074026_403995_6DEFA293 
+X-CRM114-Status: GOOD (  15.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,79 +79,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-IFsxSGksIEp1bGllbjoKCkFuZ2Vsb0dpb2FjY2hpbm8gRGVsIFJlZ25vIDxhbmdlbG9naW9hY2No
-aW5vLmRlbHJlZ25vQGNvbGxhYm9yYS5jb20+IOaWvAoyMDIy5bm0MuaciDE05pelIOmAseS4gCDk
-uIvljYg1OjQz5a+r6YGT77yaCj4KPiBJbCAxNC8wMi8yMiAxMDoyNywgSnVsaWVuIFNURVBIQU4g
-aGEgc2NyaXR0bzoKPiA+IE1pcGkgZHNpIHBhbmVsIGRyaXZlcnMgY2FuIHVzZSBtaXBpX2RzaV9k
-Y3Nfe3NldCxnZXR9X2Rpc3BsYXlfYnJpZ2h0bmVzcygpCj4gPiB0byByZXF1ZXN0IGJhY2tsaWdo
-dCBjaGFuZ2VzLgo+ID4KPiA+IFRoaXMgY2FuIGJlIGRvbmUgZHVyaW5nIHBhbmVsIGluaXRpYWxp
-emF0aW9uIChkc2kgaXMgaW4gY29tbWFuZCBtb2RlKQo+ID4gb3IgYWZ0ZXJ3YXJkcyAoZHNpIGlz
-IGluIFZpZGVvIE1vZGUpLgo+ID4KPiA+IFdoZW4gdGhlIERTSSBpcyBpbiBWaWRlbyBNb2RlLCBh
-bGwgY29tbWFuZHMgYXJlIHJlamVjdGVkLgo+ID4KPiA+IERldGVjdCBjdXJyZW50IERTSSBtb2Rl
-IGluIG10a19kc2lfaG9zdF90cmFuc2ZlcigpIGFuZCBzd2l0Y2ggbW9kZXMKPiA+IHRlbXBvcmFy
-aWx5IHRvIGFsbG93IGNvbW1hbmRzIHRvIGJlIHNlbnQuCgpBcHBsaWVkIHRvIG1lZGlhdGVrLWRy
-bS1uZXh0IFsxXSwgdGhhbmtzLgoKWzFdIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9s
-aW51eC9rZXJuZWwvZ2l0L2NodW5rdWFuZy5odS9saW51eC5naXQvbG9nLz9oPW1lZGlhdGVrLWRy
-bS1uZXh0CgpSZWdhcmRzLApDaHVuLUt1YW5nLgoKPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBKdWxp
-ZW4gU1RFUEhBTiA8anN0ZXBoYW5AYmF5bGlicmUuY29tPgo+ID4gU2lnbmVkLW9mZi1ieTogTWF0
-dGlqcyBLb3JwZXJzaG9layA8bWtvcnBlcnNob2VrQGJheWxpYnJlLmNvbT4KPgo+IFBsZWFzZSwg
-bmV4dCB0aW1lLCBkb24ndCBkcm9wIHRoZSB0YWdzIHRoYXQgcmV2aWV3ZXJzIGFyZSBnaXZpbmcg
-dG8geW91LCB1bmxlc3MKPiB0aGUgcGF0Y2ggY2hhbmdlcyByYWRpY2FsbHkuCj4KPiBSZXZpZXdl
-ZC1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVn
-bm9AY29sbGFib3JhLmNvbT4KPgo+ID4gLS0tCj4gPiBDaGFuZ2VzIGluIHY0Ogo+ID4gICAgICAt
-IGZpeCBtaXNzaW5nIHNwYWNlOiAgInJldCA6IHJlY3ZfY250OyIKPiA+IENoYW5nZXMgaW4gdjM6
-Cj4gPiAgICAgIC0gaW5jcmVhc2UgcmVhZGFiaWxpdHkgb2YgY29kZSBhbmQgdXNlIGNvcnJlY3Qg
-cmV0dXJuIHZhcmlhYmxlIChzZWUKPiA+ICAgICAgICBjb21tZW50Cj4gPiBodHRwczovL2xvcmUu
-a2VybmVsLm9yZy9saW51eC1tZWRpYXRlay80OTA3YmRjMS1iNGE2LWU5YWQtNWNmYS0yNjZmYzIw
-YzBiZWNAY29sbGFib3JhLmNvbS8pCj4gPgo+ID4gQ2hhbmdlcyBpbiB2MjoKPiA+ICAgICAgLSB1
-cGRhdGUgY29tbWl0IG1lc3NhZ2UgdG8gYmUgbW9yZSBkZXNjcmlwdGl2ZQo+ID4KPiA+ICAgZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyB8IDMzICsrKysrKysrKysrKysrKysrKysr
-KystLS0tLS0tLQo+ID4gICAxIGZpbGUgY2hhbmdlZCwgMjQgaW5zZXJ0aW9ucygrKSwgOSBkZWxl
-dGlvbnMoLSkKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiA+IGluZGV4IDVk
-OTBkMmViMDAxOS4uYWJkZDljZGViZDg2IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kc2kuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kc2kuYwo+ID4gQEAgLTg5MSwyNCArODkxLDMzIEBAIHN0YXRpYyBzc2l6ZV90IG10a19kc2lf
-aG9zdF90cmFuc2ZlcihzdHJ1Y3QgbWlwaV9kc2lfaG9zdCAqaG9zdCwKPiA+ICAgICAgIHU4IHJl
-YWRfZGF0YVsxNl07Cj4gPiAgICAgICB2b2lkICpzcmNfYWRkcjsKPiA+ICAgICAgIHU4IGlycV9m
-bGFnID0gQ01EX0RPTkVfSU5UX0ZMQUc7Cj4gPiArICAgICB1MzIgZHNpX21vZGU7Cj4gPiArICAg
-ICBpbnQgcmV0Owo+ID4KPiA+IC0gICAgIGlmIChyZWFkbChkc2ktPnJlZ3MgKyBEU0lfTU9ERV9D
-VFJMKSAmIE1PREUpIHsKPiA+IC0gICAgICAgICAgICAgRFJNX0VSUk9SKCJkc2kgZW5naW5lIGlz
-IG5vdCBjb21tYW5kIG1vZGVcbiIpOwo+ID4gLSAgICAgICAgICAgICByZXR1cm4gLUVJTlZBTDsK
-PiA+ICsgICAgIGRzaV9tb2RlID0gcmVhZGwoZHNpLT5yZWdzICsgRFNJX01PREVfQ1RSTCk7Cj4g
-PiArICAgICBpZiAoZHNpX21vZGUgJiBNT0RFKSB7Cj4gPiArICAgICAgICAgICAgIG10a19kc2lf
-c3RvcChkc2kpOwo+ID4gKyAgICAgICAgICAgICByZXQgPSBtdGtfZHNpX3N3aXRjaF90b19jbWRf
-bW9kZShkc2ksIFZNX0RPTkVfSU5UX0ZMQUcsIDUwMCk7Cj4gPiArICAgICAgICAgICAgIGlmIChy
-ZXQpCj4gPiArICAgICAgICAgICAgICAgICAgICAgZ290byByZXN0b3JlX2RzaV9tb2RlOwo+ID4g
-ICAgICAgfQo+ID4KPiA+ICAgICAgIGlmIChNVEtfRFNJX0hPU1RfSVNfUkVBRChtc2ctPnR5cGUp
-KQo+ID4gICAgICAgICAgICAgICBpcnFfZmxhZyB8PSBMUFJYX1JEX1JEWV9JTlRfRkxBRzsKPiA+
-Cj4gPiAtICAgICBpZiAobXRrX2RzaV9ob3N0X3NlbmRfY21kKGRzaSwgbXNnLCBpcnFfZmxhZykg
-PCAwKQo+ID4gLSAgICAgICAgICAgICByZXR1cm4gLUVUSU1FOwo+ID4gKyAgICAgcmV0ID0gbXRr
-X2RzaV9ob3N0X3NlbmRfY21kKGRzaSwgbXNnLCBpcnFfZmxhZyk7Cj4gPiArICAgICBpZiAocmV0
-KQo+ID4gKyAgICAgICAgICAgICBnb3RvIHJlc3RvcmVfZHNpX21vZGU7Cj4gPgo+ID4gLSAgICAg
-aWYgKCFNVEtfRFNJX0hPU1RfSVNfUkVBRChtc2ctPnR5cGUpKQo+ID4gLSAgICAgICAgICAgICBy
-ZXR1cm4gMDsKPiA+ICsgICAgIGlmICghTVRLX0RTSV9IT1NUX0lTX1JFQUQobXNnLT50eXBlKSkg
-ewo+ID4gKyAgICAgICAgICAgICByZWN2X2NudCA9IDA7Cj4gPiArICAgICAgICAgICAgIGdvdG8g
-cmVzdG9yZV9kc2lfbW9kZTsKPiA+ICsgICAgIH0KPiA+Cj4gPiAgICAgICBpZiAoIW1zZy0+cnhf
-YnVmKSB7Cj4gPiAgICAgICAgICAgICAgIERSTV9FUlJPUigiZHNpIHJlY2VpdmUgYnVmZmVyIHNp
-emUgbWF5IGJlIE5VTExcbiIpOwo+ID4gLSAgICAgICAgICAgICByZXR1cm4gLUVJTlZBTDsKPiA+
-ICsgICAgICAgICAgICAgcmV0ID0gLUVJTlZBTDsKPiA+ICsgICAgICAgICAgICAgZ290byByZXN0
-b3JlX2RzaV9tb2RlOwo+ID4gICAgICAgfQo+ID4KPiA+ICAgICAgIGZvciAoaSA9IDA7IGkgPCAx
-NjsgaSsrKQo+ID4gQEAgLTkzMyw3ICs5NDIsMTMgQEAgc3RhdGljIHNzaXplX3QgbXRrX2RzaV9o
-b3N0X3RyYW5zZmVyKHN0cnVjdCBtaXBpX2RzaV9ob3N0ICpob3N0LAo+ID4gICAgICAgRFJNX0lO
-Rk8oImRzaSBnZXQgJWQgYnl0ZSBkYXRhIGZyb20gdGhlIHBhbmVsIGFkZHJlc3MoMHgleClcbiIs
-Cj4gPiAgICAgICAgICAgICAgICByZWN2X2NudCwgKigodTggKikobXNnLT50eF9idWYpKSk7Cj4g
-Pgo+ID4gLSAgICAgcmV0dXJuIHJlY3ZfY250Owo+ID4gK3Jlc3RvcmVfZHNpX21vZGU6Cj4gPiAr
-ICAgICBpZiAoZHNpX21vZGUgJiBNT0RFKSB7Cj4gPiArICAgICAgICAgICAgIG10a19kc2lfc2V0
-X21vZGUoZHNpKTsKPiA+ICsgICAgICAgICAgICAgbXRrX2RzaV9zdGFydChkc2kpOwo+ID4gKyAg
-ICAgfQo+ID4gKwo+ID4gKyAgICAgcmV0dXJuIHJldCA8IDAgPyByZXQgOiByZWN2X2NudDsKPiA+
-ICAgfQo+ID4KPiA+ICAgc3RhdGljIGNvbnN0IHN0cnVjdCBtaXBpX2RzaV9ob3N0X29wcyBtdGtf
-ZHNpX29wcyA9IHsKPiA+IC0tCj4gPiAyLjM1LjEKPiA+Cj4KPgo+CgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxp
-c3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Wed, 9 Feb 2022 at 09:39, Qing Wang <wangqing@vivo.com> wrote:
+>
+> From: Wang Qing <wangqing@vivo.com>
+>
+> do_div() does a 64-by-32 division.
+> When the divisor is u64, do_div() truncates it to 32 bits, this means it
+> can test non-zero and be truncated to zero for division.
+>
+> fix do_div.cocci warning:
+> do_div() does a 64-by-32 division, please consider using div64_u64 instead.
+>
+> Signed-off-by: Wang Qing <wangqing@vivo.com>
+
+Applied for next, thanks!
+
+Kind regards
+Uffe
+
+
+> ---
+>  drivers/mmc/host/mtk-sd.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 65037e1..777c9a8
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -766,7 +766,7 @@ static u64 msdc_timeout_cal(struct msdc_host *host, u64 ns, u64 clks)
+>                 clk_ns  = 1000000000ULL;
+>                 do_div(clk_ns, mmc->actual_clock);
+>                 timeout = ns + clk_ns - 1;
+> -               do_div(timeout, clk_ns);
+> +               div64_u64(timeout, clk_ns);
+>                 timeout += clks;
+>                 /* in 1048576 sclk cycle unit */
+>                 timeout = DIV_ROUND_UP(timeout, BIT(20));
+> --
+> 2.7.4
+>
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
