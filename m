@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 567C8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 11:59:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92A55C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 11:59:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pZOJPqxbTVC2aDEZ5rCFwTQGsnfRro3S+sAaQEjeA3w=; b=F+8FhvI3r299S6
-	rhjps23NGgzRhEPr2CkKvYJ1fZMJy24hPd+o1zfe32awGJ44gxpvvRHa9PY7CB3Ps6ur7nn8lEj0E
-	1UdnQq1zYNquLL3zu4k0RkPd4w9YkHVcWqGRP/cRUs630e7Q3q7tY66Lr55sdJwg1QU7kd1vPVxfI
-	/gyhZqt1WPX235KoU7+ZttxLI5xQV4+OX2okbRJ9GuwoxMHm4M/GtrGn+CFkNBY8gQm5jWQC/7pxR
-	afJOsP6NCiYktqK7FfzUFvgCIGhqgtgjvAPgNma9lPNCa/nGNlKe4DzAYNMu9/Q1x0zNIKu5S7osQ
-	h36B450cX1/lzMYH/Feg==;
+	List-Owner; bh=7opDoFV6qQmvw773N7B+UyqlNJ8ncF5pjD8cJoHl06Y=; b=2cXO8LmNcE5egU
+	Dqins4dws3xT4qCM2vr3vvPoHrA+3ubW7Gk5V6msZY2FrT9TUrccqo5xZ8XXJTeQO3dFKVmpHkakL
+	mKbo+WNNNE78o74dfKlWk+PdjBI1EuhqRtKPo3i6JBoG8noLjMpqzlHjR3D3HD0poua7LnmTMkqTJ
+	+r8bn0MaMyPIOLKiJCymFkoWhtERqyMWXzEXycNThhJnrZAG2NsEcCiAgwsrzMf1yx0+PrchMJGbp
+	BWwp0MMnYLqU5OGCimtvN/zX8m/JMUoHYPnuhQqMPkQWm76TwLv3Q/gtaZfzezECMFGDC5UsWZUZy
+	uXf0QxPTD+OMPQkiDk/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKfR8-00AGM3-Cs; Thu, 17 Feb 2022 11:59:02 +0000
+	id 1nKfRB-00AGNT-Aa; Thu, 17 Feb 2022 11:59:05 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKfEX-00AA70-GK; Thu, 17 Feb 2022 11:46:03 +0000
-X-UUID: 07d75c84321540d18d17050725bdeaf2-20220217
-X-UUID: 07d75c84321540d18d17050725bdeaf2-20220217
+ id 1nKfEX-00AA6e-TX; Thu, 17 Feb 2022 11:46:03 +0000
+X-UUID: 3366a2d6484049adbefd80b361f93f25-20220217
+X-UUID: 3366a2d6484049adbefd80b361f93f25-20220217
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 150368450; Thu, 17 Feb 2022 04:45:48 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 880258469; Thu, 17 Feb 2022 04:45:48 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Feb 2022 03:37:14 -0800
+ 15.0.1497.2; Thu, 17 Feb 2022 03:36:27 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 17 Feb 2022 19:37:12 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 17 Feb 2022 19:36:25 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 17 Feb 2022 19:37:11 +0800
+ Transport; Thu, 17 Feb 2022 19:36:24 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -54,17 +54,17 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v5 14/34] iommu/mediatek: Add SUB_COMMON_3BITS flag
-Date: Thu, 17 Feb 2022 19:34:33 +0800
-Message-ID: <20220217113453.13658-15-yong.wu@mediatek.com>
+Subject: [PATCH v5 09/34] iommu/mediatek: Add 12G~16G support for multi domains
+Date: Thu, 17 Feb 2022 19:34:28 +0800
+Message-ID: <20220217113453.13658-10-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220217113453.13658-1-yong.wu@mediatek.com>
 References: <20220217113453.13658-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_034601_602955_9B9BB229 
-X-CRM114-Status: GOOD (  16.58  )
+X-CRM114-CacheID: sfid-20220217_034601_990183_E257DF4F 
+X-CRM114-Status: GOOD (  13.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,98 +81,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In prevous SoC, the sub common id occupy 2 bits. the mt8195's sub common
-id has 3bits. Add a new flag for this. and rename the previous flag to
-_2BITS. For readable, I put these two flags together, then move the
-other flags. no functional change.
+In mt8192, we preassign 0-4G; 4G-8G; 8G-12G for different multimedia
+engines. This depends on the "dma-ranges=" in the iommu consumer's dtsi
+node.
+
+Adds 12G-16G region here. and reword the previous comment. we don't limit
+which master locate in which region.
+
+CCU still is 8G-12G. Don't change it here.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c | 26 ++++++++++++++++----------
- drivers/iommu/mtk_iommu.h |  2 +-
- 2 files changed, 17 insertions(+), 11 deletions(-)
+ drivers/iommu/mtk_iommu.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 9703eb16013c..9f57354d2562 100644
+index c8fb9c8d8c65..a4042b702e6a 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -105,6 +105,8 @@
- #define REG_MMU1_INT_ID				0x154
- #define F_MMU_INT_ID_COMM_ID(a)			(((a) >> 9) & 0x7)
- #define F_MMU_INT_ID_SUB_COMM_ID(a)		(((a) >> 7) & 0x3)
-+#define F_MMU_INT_ID_COMM_ID_EXT(a)		(((a) >> 10) & 0x7)
-+#define F_MMU_INT_ID_SUB_COMM_ID_EXT(a)		(((a) >> 7) & 0x7)
- #define F_MMU_INT_ID_LARB_ID(a)			(((a) >> 7) & 0x7)
- #define F_MMU_INT_ID_PORT_ID(a)			(((a) >> 2) & 0x1f)
+@@ -180,10 +180,12 @@ static const struct mtk_iommu_iova_region single_domain[] = {
+ };
  
-@@ -116,13 +118,14 @@
- #define HAS_VLD_PA_RNG			BIT(2)
- #define RESET_AXI			BIT(3)
- #define OUT_ORDER_WR_EN			BIT(4)
--#define HAS_SUB_COMM			BIT(5)
--#define WR_THROT_EN			BIT(6)
--#define HAS_LEGACY_IVRP_PADDR		BIT(7)
--#define IOVA_34_EN			BIT(8)
--#define SHARE_PGTABLE			BIT(9) /* 2 HW share pgtable */
--#define DCM_DISABLE			BIT(10)
--#define NOT_STD_AXI_MODE		BIT(11)
-+#define HAS_SUB_COMM_2BITS		BIT(5)
-+#define HAS_SUB_COMM_3BITS		BIT(6)
-+#define WR_THROT_EN			BIT(7)
-+#define HAS_LEGACY_IVRP_PADDR		BIT(8)
-+#define IOVA_34_EN			BIT(9)
-+#define SHARE_PGTABLE			BIT(10) /* 2 HW share pgtable */
-+#define DCM_DISABLE			BIT(11)
-+#define NOT_STD_AXI_MODE		BIT(12)
- 
- #define MTK_IOMMU_HAS_FLAG(pdata, _x) \
- 		((((pdata)->flags) & (_x)) == (_x))
-@@ -290,9 +293,12 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
- 	fault_pa |= (u64)pa34_32 << 32;
- 
- 	fault_port = F_MMU_INT_ID_PORT_ID(regval);
--	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_SUB_COMM)) {
-+	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_SUB_COMM_2BITS)) {
- 		fault_larb = F_MMU_INT_ID_COMM_ID(regval);
- 		sub_comm = F_MMU_INT_ID_SUB_COMM_ID(regval);
-+	} else if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_SUB_COMM_3BITS)) {
-+		fault_larb = F_MMU_INT_ID_COMM_ID_EXT(regval);
-+		sub_comm = F_MMU_INT_ID_SUB_COMM_ID_EXT(regval);
- 	} else {
- 		fault_larb = F_MMU_INT_ID_LARB_ID(regval);
- 	}
-@@ -1067,7 +1073,7 @@ static const struct mtk_iommu_plat_data mt2712_data = {
- 
- static const struct mtk_iommu_plat_data mt6779_data = {
- 	.m4u_plat      = M4U_MT6779,
--	.flags         = HAS_SUB_COMM | OUT_ORDER_WR_EN | WR_THROT_EN |
-+	.flags         = HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN | WR_THROT_EN |
- 			 NOT_STD_AXI_MODE,
- 	.inv_sel_reg   = REG_MMU_INV_SEL_GEN2,
- 	.iova_region   = single_domain,
-@@ -1105,7 +1111,7 @@ static const struct mtk_iommu_plat_data mt8183_data = {
- 
- static const struct mtk_iommu_plat_data mt8192_data = {
- 	.m4u_plat       = M4U_MT8192,
--	.flags          = HAS_BCLK | HAS_SUB_COMM | OUT_ORDER_WR_EN |
-+	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN |
- 			  WR_THROT_EN | IOVA_34_EN | NOT_STD_AXI_MODE,
- 	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
- 	.iova_region    = mt8192_multi_dom,
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-index c10f5630e55d..82c51a034e6b 100644
---- a/drivers/iommu/mtk_iommu.h
-+++ b/drivers/iommu/mtk_iommu.h
-@@ -20,7 +20,7 @@
- #include <dt-bindings/memory/mtk-memory-port.h>
- 
- #define MTK_LARB_COM_MAX	8
--#define MTK_LARB_SUBCOM_MAX	4
-+#define MTK_LARB_SUBCOM_MAX	8
- 
- #define MTK_IOMMU_GROUP_MAX	8
- 
+ static const struct mtk_iommu_iova_region mt8192_multi_dom[] = {
+-	{ .iova_base = 0x0,		.size = SZ_4G},		/* disp: 0 ~ 4G */
++	{ .iova_base = 0x0,		.size = SZ_4G},		/* 0 ~ 4G */
+ 	#if IS_ENABLED(CONFIG_ARCH_DMA_ADDR_T_64BIT)
+-	{ .iova_base = SZ_4G,		.size = SZ_4G},		/* vdec: 4G ~ 8G */
+-	{ .iova_base = SZ_4G * 2,	.size = SZ_4G},		/* CAM/MDP: 8G ~ 12G */
++	{ .iova_base = SZ_4G,		.size = SZ_4G},		/* 4G ~ 8G */
++	{ .iova_base = SZ_4G * 2,	.size = SZ_4G},		/* 8G ~ 12G */
++	{ .iova_base = SZ_4G * 3,	.size = SZ_4G},		/* 12G ~ 16G */
++
+ 	{ .iova_base = 0x240000000ULL,	.size = 0x4000000},	/* CCU0 */
+ 	{ .iova_base = 0x244000000ULL,	.size = 0x4000000},	/* CCU1 */
+ 	#endif
 -- 
 2.18.0
 
