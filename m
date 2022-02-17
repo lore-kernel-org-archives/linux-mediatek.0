@@ -4,70 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EA8DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 15:40:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9279CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Feb 2022 16:09:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sHNIfdjsRBbJSJukL7iEemcqxZrmlZUGeiLA6Z/aBOE=; b=lYncOLgDCt0XaD
-	XGnClNblFWPjTA/Ao7FLUSIAImbB3ZmC9L/+U4vhv7o4QbVpe3Z3HNwAxFwQKOqTjyt0n7LMOv05u
-	lffdhv6/aFyr7jhBgFp5Mr/fbvZmCuhxVGusEP16kHt615aibUBQamrw7xHdOfddz1x/ib31Ch8HL
-	wgdA95/UJJJkkj9AP/TS8pY2fQTKqc19usCpn5nZciEJIF1xJJ5M1nE/ZcfNRWtljK4QCh38kHRcW
-	NCJ3VBareB21xglbgcaF5xfm+TiUV8GXtXYT+FcapFLBfjgxIwzE3pQ7HwHxtXn1Dgbduh43e8g1O
-	o7RlCDYRfHGyXtqbFS5Q==;
+	List-Owner; bh=/OD9Km+zboq5ODflFkzAYjRCo03rTU683FTbo5t9b30=; b=4ggC53qB8QaUrB
+	7+ha5To3PABq5HyHet4n5ZUHlS6WBz39zbV3dUUqvwjitGqU26M9FtVPBx7i7laV7NLiWIzfM6doA
+	4I5FK1ulkcEU5EY5L2dyXu42z5AuQAHDUEKh4SVVj25AyntOI42ap4z7d/T+Uvc+bS+4HrmEuO/QN
+	v3WSwxUe/txXF3KyYpbLrl+2GP2xBN24Yfe1FgyxFvhoNuM0qF9H4jtkSG5su6/XNOLrMSE5SJrUw
+	IetxL9I7VMEP+hyfNg7QuRtPw2fihQS3nmk1AcXlWvywzJeQGxtDcrM/dDdlwf+4y2YoKOYUkQLN+
+	++uKM4kGVJlsD0PoJT7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKitT-00BIbe-Qo; Thu, 17 Feb 2022 15:40:31 +0000
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+	id 1nKjLB-00BO5Y-RA; Thu, 17 Feb 2022 16:09:09 +0000
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKitO-00BIXl-AW
- for linux-mediatek@lists.infradead.org; Thu, 17 Feb 2022 15:40:28 +0000
-Received: by mail-lj1-x22d.google.com with SMTP id o6so15754ljp.3
- for <linux-mediatek@lists.infradead.org>; Thu, 17 Feb 2022 07:40:26 -0800 (PST)
+ id 1nKjKy-00BO1o-VT
+ for linux-mediatek@lists.infradead.org; Thu, 17 Feb 2022 16:08:58 +0000
+Received: by mail-pj1-x102c.google.com with SMTP id b8so6005461pjb.4
+ for <linux-mediatek@lists.infradead.org>; Thu, 17 Feb 2022 08:08:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=dtHuVZsN9dq8Ef87/aHczhTpVzC+pvWaYD+ZfU02gIo=;
- b=DI03Q5WXZVS9ul6CojxIkkW4nz0ZO8uejIIb6VmNzipMI4NSLJuTUuNVVF8WnOFPAk
- ETS6C8BnZIusFEeLd24/3GcTkvUN/KMupJrzeOYeA7tKvdIomQivWL/B3zy0zY/tPlWx
- qZd8OE4OY3XIcUeT56fXQg7Hw3ayHOmVCKvDHuwxw4crgO4MVGVUQrERnwTHeExrETVI
- 5SmD7k91ENizvCB6TkQp/RzxY1OH9FxQ24PYKDpYCZa7+veM6B71vzU3wVeuJytFMcjb
- NcYwsjepH5AqvNSOFhYwssoKWSW7LOjr9PgcAHHYaWL9iU46/fTADC/Xvtya3WEZDAsS
- +HSg==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=VD8H9XEccLJ1gEJ8HFd5QAYd/aMwLkrTq6BJhjDSisU=;
+ b=F2rnoQOUj5vrdaK05HWLiQ7Dayy2FS/VLwwppCjteGUtmVGphPSPL1yNlR/PsVhO4Q
+ SGeRoVRv5Uus+p4dn8QbXAGf80LP4h24IJAa0YKQc/bBrJA2mgvX6k6S+QaZhSinsQPe
+ o216cTDDHjXReLeUyM4oLkcXFtL1l/32drgLI8Q3Ol851JV0AFiUSkZYV96ZmH6yoaRz
+ AKOTAqvSoj03fN1c6IOu25o9+GmlKYmh8Tz/z/Z1zg3CfaJqHt1e0AWkINesw/Pf2V0l
+ g76JZRFDHXvhz1CCgn1/99do97O3lEyvZTQa1XyJAFrLSbwg3bv9oVKn+Ugr30Tfha1B
+ 919w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=dtHuVZsN9dq8Ef87/aHczhTpVzC+pvWaYD+ZfU02gIo=;
- b=D/biXE8yiCMv2UmLX9D7D5lHbqVjYf2DobmnldEWkBRF9v+fY8LSYI5nHW7ChmtsvO
- SQRS3FRhQSWP+gwP77HTHYB3qiuQplH9dMQmQV0JqIPJTfLcpEKYGGpuuEQkFeYbss2a
- N9cuZCI6rEtW28KagAs6wuayvXVNCZvQEeveFYYJzAnxJLFgNldHhtKnFw/F9RxIPfvN
- H1+adE94HJBorALaYJx0pXNH8IfJa6j2sr05aMFNbeSD2UB7uJVYF8y3/5Yo8OF3Jivo
- QyCCTb90mDI0dHZ1uZiXMT20wq7ar0K0mNdqL2/xyKxE5dzvFagX6hH7+MQyAfDPv9wD
- mXqg==
-X-Gm-Message-State: AOAM531T7vjjspEFhUWNWATGL5gB0ZGn9q5zyWNKk2E7F0326I46NxZ2
- fN1xVMzqd9qe1DFFUZt6jVPRJdT/eS2Z2rd2XjAy1g==
-X-Google-Smtp-Source: ABdhPJzS1HsQQFljNPEfdzoowpGZXeJXTbt7Iuq1OuK3MM2rhphn87bPRKA7/KY2OrtWgxD7W1s9ZurapEW2QYPSaeM=
-X-Received: by 2002:a05:651c:c7:b0:244:f9d7:7c48 with SMTP id
- 7-20020a05651c00c700b00244f9d77c48mr2735695ljr.300.1645112424989; Thu, 17 Feb
- 2022 07:40:24 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=VD8H9XEccLJ1gEJ8HFd5QAYd/aMwLkrTq6BJhjDSisU=;
+ b=5BFq0jTze7c0S3+JVLcUZFFzPLAnCCpo5olTWznWMiMVGu4eNYRNC3KGyya1GeuAxb
+ SWB6ZAy76bFytbuzv54lFME2aob72XbnIM5dqloiIYuuM7QzK18sYoZ9o4Q5dJecEq0S
+ COyMet6NvRblFq98ugA9ISDdXMmW9mEzehFyE940PIzQL1CgWonyk+ppuZRVQ1UPILUL
+ hfHg9wzrHAYBtyQQVpsrB6ECxW3nD5BRA0vPruqKBOg9Thv/Y3TpboEz2kGaCQHPiuzi
+ GM+Bp6lUIw7r/sJudTt2TCsXXTVgSLw22+JOdLb6TpxgbZ5EuMYoBMdWEJXnkutxZDtI
+ 6RZg==
+X-Gm-Message-State: AOAM533ewH43kukmmETzIicG7vFHVjhm0lhGhfgCpU4Zor6VFz1/ljXQ
+ 4QfLP822i9BH9HVTmKySNuKdWg==
+X-Google-Smtp-Source: ABdhPJyFsjmnJxcyI3zQL+VFCRE3os2dZrHdxY5v38ChREUHcE+PvGbETp2COJG44FjB8IEmuf5tZQ==
+X-Received: by 2002:a17:90a:4dc7:b0:1b9:ca2:311e with SMTP id
+ r7-20020a17090a4dc700b001b90ca2311emr3717927pjl.175.1645114135171; 
+ Thu, 17 Feb 2022 08:08:55 -0800 (PST)
+Received: from p14s (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
+ by smtp.gmail.com with ESMTPSA id h9sm51611pfv.135.2022.02.17.08.08.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 17 Feb 2022 08:08:53 -0800 (PST)
+Date: Thu, 17 Feb 2022 09:08:51 -0700
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: bjorn.andersson@linaro.org, matthias.bgg@gmail.com, pihsun@chromium.org,
+ linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com
+Subject: Re: [PATCH] rpmsg: mtk_rpmsg: Fix circular locking dependency
+Message-ID: <20220217160851.GA474184@p14s>
+References: <20220114144737.375621-1-angelogioacchino.delregno@collabora.com>
+ <b531eeca-40e8-d759-5579-59567eb5af84@collabora.com>
 MIME-Version: 1.0
-References: <1644395927-4138-1-git-send-email-wangqing@vivo.com>
-In-Reply-To: <1644395927-4138-1-git-send-email-wangqing@vivo.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Thu, 17 Feb 2022 16:39:48 +0100
-Message-ID: <CAPDyKFqg5N1tCqQ2u2jt5qU0qLuDJRSJRtq_aMVDc7XNDbRvkw@mail.gmail.com>
-Subject: Re: [PATCH] mmc: mtk-sd: use div64_u64() instead of do_div()
-To: Qing Wang <wangqing@vivo.com>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Disposition: inline
+In-Reply-To: <b531eeca-40e8-d759-5579-59567eb5af84@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_074026_403995_6DEFA293 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20220217_080857_029934_9895F312 
+X-CRM114-Status: GOOD (  22.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,45 +91,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 9 Feb 2022 at 09:39, Qing Wang <wangqing@vivo.com> wrote:
+On Wed, Feb 16, 2022 at 05:06:22PM +0100, AngeloGioacchino Del Regno wrote:
+> Il 14/01/22 15:47, AngeloGioacchino Del Regno ha scritto:
+> > During execution of the worker that's used to register rpmsg devices
+> > we are safely locking the channels mutex but, when creating a new
+> > endpoint for such devices, we are registering a IPI on the SCP, which
+> > then makes the SCP to trigger an interrupt, lock its own mutex and in
+> > turn register more subdevices.
+> > This creates a circular locking dependency situation, as the mtk_rpmsg
+> > channels_lock will then depend on the SCP IPI lock.
+> > 
+> > [   18.014514]  Possible unsafe locking scenario:
+> > [   18.014515]        CPU0                    CPU1
+> > [   18.014517]        ----                    ----
+> > [   18.045467]   lock(&mtk_subdev->channels_lock);
+> > [   18.045474]                                lock(&scp->ipi_desc[i].lock);
+> > [   18.228399]                                lock(&mtk_subdev->channels_lock);
+> > [   18.228405]   lock(&scp->ipi_desc[i].lock);
+> > [   18.264405]
+> > 
+> > To solve this, simply unlock the channels_lock mutex before calling
+> > mtk_rpmsg_register_device() and relock it right after, as safety is
+> > still ensured by the locking mechanism that happens right after
+> > through SCP.
+> > Notably, mtk_rpmsg_register_device() does not even require locking.
+> > 
+> > Fixes: 7017996951fd ("rpmsg: add rpmsg support for mt8183 SCP.")
+> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> Friendly ping for an important fix... :)
 >
-> From: Wang Qing <wangqing@vivo.com>
->
-> do_div() does a 64-by-32 division.
-> When the divisor is u64, do_div() truncates it to 32 bits, this means it
-> can test non-zero and be truncated to zero for division.
->
-> fix do_div.cocci warning:
-> do_div() does a 64-by-32 division, please consider using div64_u64 instead.
->
-> Signed-off-by: Wang Qing <wangqing@vivo.com>
 
-Applied for next, thanks!
+This seems to have slipped through the cracks...  I will take a look later
+today.
 
-Kind regards
-Uffe
+Thanks,
+Mathieu
 
-
-> ---
->  drivers/mmc/host/mtk-sd.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 65037e1..777c9a8
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -766,7 +766,7 @@ static u64 msdc_timeout_cal(struct msdc_host *host, u64 ns, u64 clks)
->                 clk_ns  = 1000000000ULL;
->                 do_div(clk_ns, mmc->actual_clock);
->                 timeout = ns + clk_ns - 1;
-> -               do_div(timeout, clk_ns);
-> +               div64_u64(timeout, clk_ns);
->                 timeout += clks;
->                 /* in 1048576 sclk cycle unit */
->                 timeout = DIV_ROUND_UP(timeout, BIT(20));
-> --
-> 2.7.4
->
+> > ---
+> >   drivers/rpmsg/mtk_rpmsg.c | 2 ++
+> >   1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/drivers/rpmsg/mtk_rpmsg.c b/drivers/rpmsg/mtk_rpmsg.c
+> > index 5b4404b8be4c..d1213c33da20 100644
+> > --- a/drivers/rpmsg/mtk_rpmsg.c
+> > +++ b/drivers/rpmsg/mtk_rpmsg.c
+> > @@ -234,7 +234,9 @@ static void mtk_register_device_work_function(struct work_struct *register_work)
+> >   		if (info->registered)
+> >   			continue;
+> > +		mutex_unlock(&subdev->channels_lock);
+> >   		ret = mtk_rpmsg_register_device(subdev, &info->info);
+> > +		mutex_lock(&subdev->channels_lock);
+> >   		if (ret) {
+> >   			dev_err(&pdev->dev, "Can't create rpmsg_device\n");
+> >   			continue;
+> 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
