@@ -4,45 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81763C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 13:13:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70009C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 13:15:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EB9/RufBkTz+spcA2qQsAOlSx6LZM1CjLmtJogKsm4w=; b=L9KJux+Xh8PPRN
-	7wk/9RmKOtnNty6C1ToeWq0LOCkKxQ6wXdbCisr0nQfwM14tQKVUbUvuKeBwC89W7qscHb3nj3ua5
-	g7D6NZLsdvxH9xUx7OLQRViNwlq1HfL4nSCNY9wfK7XbqWvKakp0VaFyQ3kViI6oUKxZrZeV56lUn
-	0LnSMbMp7rA29elEKQjrbEG0EP3JLrycha/6gAKJtHYp8Og9a1R6Etn0Zg1WkUUxK3Pkndcl+0oKx
-	qt+I3LaJC4J9dtnvt5tIfRZs0/07lNElpBu9WS26uQ1YoHFd0j+TTVFnm43udVkl+9IOVTYPaUCxC
-	s5TzcwtEzRlo2hTHjcuw==;
+	List-Owner; bh=mSYjRYc+IuV1IdrqRl7E7TgD/qg6aujt69EUwTjr1VM=; b=NGuBCQhitMUSsa
+	WLI7k/MBeuYxbXus4Li/AzRGWDqitNN0rumeL+61TzdVh1AlTPCs2A/6rKCJQWxuAl/waooThTp6c
+	m9oD0NUzPalyl403icLwoxVFW/Vy+b08/3CjDCTZCo/ZWcf6CCMtnNYkdl6yoHzPD8az9kTsck53S
+	KQ7gM/7Bwld2SrU9V639LOTMq8T65azd7BPq9zIy7nuUPLzx8iX4ArSPMhMsysKaLh64McboMVHH2
+	CyqeUa4k38qrGOub+ekOL6HDja492kyvlyqXltcOe7ige6DUWbTtIwx/UojoIKbjdi71/2sz4pl4R
+	TOyhQKcUT6VS0yEy3qxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nL353-00ETT2-0D; Fri, 18 Feb 2022 13:13:49 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nL36V-00EU3b-R8; Fri, 18 Feb 2022 13:15:19 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nL2kL-00EK6e-QO; Fri, 18 Feb 2022 12:52:31 +0000
+ id 1nL2kR-00EKAr-6s; Fri, 18 Feb 2022 12:52:33 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 281841F46910
+ (Authenticated sender: kholk11) with ESMTPSA id 539721F469B0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645188744;
- bh=XVKS75XpYQxb5/TVvYHVixSh4Vl0aBXRGf/YFk8Ta7w=;
+ s=mail; t=1645188749;
+ bh=tGSf/pth4T/62+a3wtoLcmdEh6+MDWX12/pzQsxIz+0=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=SIGILJp6htL6o7lcCxedptEr2v14pHNt09Vrw6JNFphmrJAukrVO189Vh24oMXrPI
- 9vWL65qlnN0jlhLfVMM4uHAb3DBCt0Z2vZbg7Li8fDKINWurPLaq7nqi1Fen2h2puJ
- 5hfWkLAuXRZvi37rGQ9UjY6jpHS8g1EpBPPcjBruJ8Kl+j2/3abxB7oDSZp8TpGaZO
- StC+31dsaX8r+TWfIAL8CkSMdDsvqWJEJTY07p3+ca3fzCqaCf3j/q/CLuP7UOs8Mz
- +jn4/xLVPwn+lkbm9goa29rrHMv6hsGTeYP6ucU8D9gET5qmbIcow1CCx2a+vGV2mV
- oTp8lxApvRhtQ==
-Message-ID: <71d7c940-63d5-bf65-527d-b27a8e0e5edc@collabora.com>
-Date: Fri, 18 Feb 2022 13:52:20 +0100
+ b=lBjwh7yJuYAoaAT+I6wUQ2YXt8niYeOxV/bGvQpiOq4KemuD4k6omY4dhN8nZd8SM
+ yDk9tq3tXaUEaPUbNNhw1CHDWAVmWfpuMeEpL6JBprCAqF1bJvyudHHVjpHk89b+i4
+ PJYhPTEVccobQNSR5iS5aZlN7zLFDYBwbSgolvbi0SAnKi33bUYyX7/CwL/e0+v/H2
+ MFQOx36w1EG4gkYLgCueqgDhhDyjnEfwHqxa6dBQ7zVjcXvsIlC8BLz3QMGjjU/aOM
+ OcwIAWkkIYi1CXSM4/+vqcKT4fX6lxT39bzrHaTLoUGza+jUwNC/ZYbNo45HItl2pN
+ in1BAZHn/9hDQ==
+Message-ID: <81cd0888-b202-feae-1c54-99ad2ef3f8cb@collabora.com>
+Date: Fri, 18 Feb 2022 13:52:25 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
-Subject: Re: [PATCH v5 19/34] iommu/mediatek: Add a PM_CLK_AO flag for infra
- iommu
+Subject: Re: [PATCH v5 21/34] iommu/mediatek: Add PCIe support
 Content-Language: en-US
 To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
  Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -57,12 +56,12 @@ Cc: Robin Murphy <robin.murphy@arm.com>,
  yen-chang.chen@mediatek.com, mingyuan.ma@mediatek.com, yf.wang@mediatek.com,
  libo.kang@mediatek.com, chengci.xu@mediatek.com
 References: <20220217113453.13658-1-yong.wu@mediatek.com>
- <20220217113453.13658-20-yong.wu@mediatek.com>
+ <20220217113453.13658-22-yong.wu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220217113453.13658-20-yong.wu@mediatek.com>
+In-Reply-To: <20220217113453.13658-22-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220218_045226_041306_16605FE9 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20220218_045231_441227_47AC348F 
+X-CRM114-Status: GOOD (  14.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,12 +79,28 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 17/02/22 12:34, Yong Wu ha scritto:
-> The power/clock of infra iommu is always on, and it doesn't have the
-> device link with the master devices, then the infra iommu device's pm
-> statua is not active, thus we add A PM_CLK_AO flag for infra iommu.
+> Currently the code for of_iommu_configure_dev_id is like this:
 > 
-> The tlb operation is a bit not clear in this file, Comment them in the
-> code here.
+> static int of_iommu_configure_dev_id(struct device_node *master_np,
+>                                       struct device *dev,
+>                                       const u32 *id)
+> {
+>         struct of_phandle_args iommu_spec = { .args_count = 1 };
+> 
+>         err = of_map_id(master_np, *id, "iommu-map",
+>                         "iommu-map-mask", &iommu_spec.np,
+>                         iommu_spec.args);
+> ...
+> }
+> 
+> It supports only one id output. BUT our PCIe HW has two ID(one is for
+> writing, the other is for reading). I'm not sure if we should change
+> of_map_id to support output MAX_PHANDLE_ARGS.
+> 
+> Here add the solution in ourselve drivers. If it's pcie case, enable one
+> more bit.
+> 
+> Not all infra iommu support PCIe, thus add a PCIe support flag here.
 > 
 > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 
