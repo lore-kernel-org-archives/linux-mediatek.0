@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15364C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 13:29:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE2E6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 13:30:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sjmp4w0KaHUXBd8p0wD6N1ZsEOG1Pfs9MAGh/0Krcl8=; b=PN1wQdt7akry6G
-	3g60RYav/mEcoivQS8GUed/o0Dc4+7h5Mc7w3oh0qlGfvj3DCvKjXL/EiJ9lMzKGws3EgyiveKNru
-	GPFYLsLbRMobA4fzpTQeGQuzx4TEZM1y9nTjdtjVmkVu6A68iShyjIUSC0RiJ9djTlgxeZ4R8oCc/
-	oJ5yMHEcJtI5BevfS5Tlt/CCH+qwmzIr8i+Q3aIwmPliX+xDNJAal4AbW320Rtnz/gqNXiys1CEVc
-	AwoYtp8ao9PC8e7FO21YWrNO0+vHRzHAF0CArBOEXAjN/1gTVzpHPQHddpmMAI8Ur6ljobXpopzeH
-	sAhoMDJpL7gBZIJesCKw==;
+	List-Owner; bh=stRioLm8tt8mSxhvmLFYT9oXcgq7UFEfuYPl49A2RC8=; b=FQ5JAm+/TwjnDj
+	RoB0+XxPKWJKhfJTEpBuaQ/Gc8u8Ejcq15xpOKEo6zmn6N2TSwzyR5wMS204d4+yA7FVsqxa1M0/+
+	ywHbBPPwwGAio1nIxqb8DPUEbOnwX/x2D+ajDVGluGiDP0+0WvFr7XkhT3PKrashYWLIeZszYbtq2
+	BSKPNhcAB88bjzfTuDpA0Ux0ovTOhcwY3nJ4tVUuZCzzw0IWxarhQ9rVZhwjuksYjfwuLY0SuPOy7
+	DN9s6P8fPYmmYXN3+owtjqw9wWirhoRNSmZYaOFhuG4D8Aq1ANozka4dJyvv0b18DNk6Y0BKEgz2F
+	m6aRWBkPP22038NInMEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nL3Jv-00EZru-Fh; Fri, 18 Feb 2022 13:29:11 +0000
+	id 1nL3LN-00EaW9-A9; Fri, 18 Feb 2022 13:30:41 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nL2nk-00ELWK-0R; Fri, 18 Feb 2022 12:55:57 +0000
+ id 1nL2nq-00ELZr-M7; Fri, 18 Feb 2022 12:56:04 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 0D75B1F46724
+ (Authenticated sender: kholk11) with ESMTPSA id A74491F46724
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645188954;
- bh=YkLMpSsBe1IVOGgotAXLOXcJ0eSyRqXWWqGIQixSJMY=;
+ s=mail; t=1645188961;
+ bh=d4Jdcn6sqeGA9YusiP+E1Q4QUac5jNdY0Bx26wxURBg=;
  h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
- b=YYKTTPieNptOxsVy76k7+v+tLGltKW1zVx8nyjUug3jxcQiAFxkhGASfRFnmnlM30
- kgjiRsbtOKx1ntIORUi+xgWAvSYGFZmRVnwk1rYKcrhWUAWRI7Th8cBc/eu448PdGx
- D1ue8x5x4NzrL9qfrDzC/eU9DeZyj9nlC2osZjrkozP6flYzuAymzUIYCEuKc2+Py6
- JnHRlx4fnx0LTeHwpqENewz0ioeefXAkNeOboNzzi+LWkkLEogr7UmF7a5wTDt+eTI
- Mv65+quAi5q0GfmNpmmxNwS0HuYbPGLnCMZ0k7Mr67HLbtOFngbISnrMI7VxkHzyz5
- +YFqCDdEpBxvg==
-Message-ID: <719c23ae-a8b4-5f0d-6be2-483bb82dbce9@collabora.com>
-Date: Fri, 18 Feb 2022 13:55:51 +0100
+ b=JC02n1Z2sDF4+nk3EoRHvRKIowkUO9LUIZZife7ds7FSmCOb1Y4u2+wt5WH4mbuL5
+ y9XB3UKcLnct+rv1Rjj4ISv+U/rLUioVnZUsQghLgOQNtJVLy1TEUFRfjOEKxctF4n
+ dJEVEe1J/kTmYZ/hWXnS44bsXFgMfBMBPdeYJ8+f4s2WulKUL0037Ak1i7AxfdRyMz
+ WyUmfIwn463DE66uI+C7so6qdl1xUc6hmOzEYToDE/vl3MY+xIjfIrUxM1hFX3/L+t
+ IicLyM+u4y2vghVitCDyYmM9MT8WGSFG9XUVg4F5dxJR7Fwqi9ndcZxTi4fnC9BD9N
+ hUaSfc2kkkUJg==
+Message-ID: <7ca84242-6abc-7598-89c2-c44e63026b03@collabora.com>
+Date: Fri, 18 Feb 2022 13:55:57 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2 12/23] arm64: dts: mt8192: Add efuse node
+Subject: Re: [PATCH v2 14/23] arm64: dts: mt8192: Add mipi_tx node
 To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
  --to=Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
@@ -52,12 +52,12 @@ Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
  Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
  =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
 References: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
- <20220218091633.9368-13-allen-kh.cheng@mediatek.com>
+ <20220218091633.9368-15-allen-kh.cheng@mediatek.com>
 Content-Language: en-US
-In-Reply-To: <20220218091633.9368-13-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220218091633.9368-15-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220218_045556_262084_BCA71277 
-X-CRM114-Status: GOOD (  13.13  )
+X-CRM114-CacheID: sfid-20220218_045602_909247_F669BE5D 
+X-CRM114-Status: GOOD (  14.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,45 +75,40 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 18/02/22 10:16, Allen-KH Cheng ha scritto:
-> Add efuse node for mt8192 SoC
+> Add mipi_tx node for mt8192 SoC.
 > 
 > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 > ---
->   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 14 ++++++++++++++
->   1 file changed, 14 insertions(+)
+>   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 10 ++++++++++
+>   1 file changed, 10 insertions(+)
 > 
 > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index f51fd0f6c356..094805db395b 100644
+> index cfc2db501108..f5e5af949f19 100644
 > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
 > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -939,6 +939,20 @@
->   			status = "disabled";
+> @@ -1114,6 +1114,16 @@
+>   			};
 >   		};
 >   
-> +		efuse: efuse@11c10000 {
-> +			compatible = "mediatek,efuse";
-> +			reg = <0 0x11c10000 0 0x1000>;
-> +			#address-cells = <1>;
-> +			#size-cells = <1>;
-> +
-> +			lvts_e_data1: data1 {
+> +		mipi_tx0: mipi-dphy@11e50000 {
+> +			compatible = "mediatek,mt8183-mipi-tx";
+> +			reg = <0 0x11e50000 0 0x1000>;
+> +			clocks = <&apmixedsys CLK_APMIXED_MIPID26M>;
+> +			clock-names = "ref_clk";
+> +			#clock-cells = <0>;
+> +			#phy-cells = <0>;
+> +			clock-output-names = "mipi_tx0_pll";
 
-			lvts_e_data1: lvts_data1@1c0 {
-				reg = <0x1c0 0x58>;
+Please, disable this node by default, as this is something that may be
+enabled for some machine, but disabled for the other.
 
-Please write hex with lower case characters.
+			status = "disabled";
 
-> +				reg = <0x1C0 0x58>;
-> +			};
-> +			svs_calibration: calib@580 {
-> +				reg = <0x580 0x68>;
-> +			};
 > +		};
 > +
->   		i2c3: i2c@11cb0000 {
+>   		i2c0: i2c@11f00000 {
 >   			compatible = "mediatek,mt8192-i2c";
->   			reg = <0 0x11cb0000 0 0x1000>,
-
+>   			reg = <0 0x11f00000 0 0x1000>,
 
 
 _______________________________________________
