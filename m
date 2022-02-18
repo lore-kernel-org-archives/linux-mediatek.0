@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 972B0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 09:28:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBEC9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 09:31:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HoLuhM/Z3ItFLEq0YrsGt77K4hAaWonfJKWmFY5rYv0=; b=iY9PYmJmHv2Saq
-	Y70SXYRT1cZ2mhVd+BFrpg6mZfgowq2cvVgQ74/ueIv61f6XrXHtEdE6HJiglIxbpiCNp2yV78eqP
-	KqUEqe8NyEOC2w2juW3RQHBLwwGBGY9N63oaDH0tnJf92+tWbAg4wOCMOtg8r7hKQtyfsx/HKYiUn
-	tIqequMVoWquPY3HPYttJNKXnHmhW7W1ZD26QSYyt0OAlqcJ+WR26+Nb3QiGMDxWrCIc93EUSmn11
-	LVl7J1lNC+ESff3jZiAEgKRRwqj3qbZVdzujMYUJ8RbFS5+epKdJ6l9pRQhne2qlDARkSBPvuirJm
-	Bsg0NqTed8yfZrK4ZPPg==;
+	List-Owner; bh=L7pITaIaLQLxnFTkFlp0CvwRzVKYCwo6jtsOBuOsfOU=; b=htYu1PrTTGaf8G
+	hF4AXRFV+5PN1vxHUTJUwkYCcrc4BMu9Mv/GD6qGuywd1msJtkmuQK2uJBhQ4Hedva54+ZIBQwpCO
+	rP4KSIW0qgmYjbqyxL9wqaOwHATUafv+J4ptikWZCiSsDkux3whUmyi7u5g2MI3HyXbPSbfWT68W3
+	0ainsyA/BrG98yx+CX4/QdLW1cHZsMdFfieqGvy6KR9vAIRB5lEdzvfMHmdK15TgG7Dae3fQzMSs7
+	ti5N+Z6G3nRU8LXbDehJF5U3r5ZwPhSt0r4HtFKbL6VU37OV9E9ptGAj7HMyDW06hWp23k8Ky4qj8
+	9UZNLFa4ec55LN6FwzMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKzYp-00DXF0-8c; Fri, 18 Feb 2022 09:28:19 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nKzc1-00DYzq-Em; Fri, 18 Feb 2022 09:31:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKzR8-00DT2L-Kh; Fri, 18 Feb 2022 09:20:29 +0000
-X-UUID: a5214296711b424c9c00dc4a60d6f2e0-20220218
-X-UUID: a5214296711b424c9c00dc4a60d6f2e0-20220218
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1nKzXN-00DWbV-KD; Fri, 18 Feb 2022 09:26:53 +0000
+X-UUID: 4e5db02785b24f81bfb382779c6995e5-20220218
+X-UUID: 4e5db02785b24f81bfb382779c6995e5-20220218
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1114304889; Fri, 18 Feb 2022 02:20:13 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Feb 2022 01:16:39 -0800
+ with ESMTP id 2139216639; Fri, 18 Feb 2022 02:26:47 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 18 Feb 2022 01:16:50 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 18 Feb 2022 17:16:37 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 18 Feb 2022 17:16:48 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 18 Feb 2022 17:16:37 +0800
+ Frontend Transport; Fri, 18 Feb 2022 17:16:48 +0800
 From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
  <robh+dt@kernel.org>, --to=Krzysztof Kozlowski
  <krzysztof.kozlowski@canonical.com>
 CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
- Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, Allen-KH Cheng
- <allen-kh.cheng@mediatek.com>
-Subject: [PATCH v2 01/23] arm64: dts: mt8192: Add power domains controller
-Date: Fri, 18 Feb 2022 17:16:11 +0800
-Message-ID: <20220218091633.9368-2-allen-kh.cheng@mediatek.com>
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ "Chen-Yu Tsai" <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Subject: [PATCH v2 13/23] arm64: dts: mt8192: Add mmc device nodes
+Date: Fri, 18 Feb 2022 17:16:23 +0800
+Message-ID: <20220218091633.9368-14-allen-kh.cheng@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
 References: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220218_012022_850693_FEE5A8C8 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20220218_012649_757454_0281658C 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,232 +75,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add power domains controller node for SoC mt8192.
+Add mmc nodes for mt8192 SoC.
 
 Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 201 +++++++++++++++++++++++
- 1 file changed, 201 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 36 +++++++++++++++++++++---
+ 1 file changed, 32 insertions(+), 4 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index c1d4030e7e4b..f10a9c75b20c 100644
+index 094805db395b..cfc2db501108 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -9,6 +9,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
-+#include <dt-bindings/power/mt8192-power.h>
- 
- / {
- 	compatible = "mediatek,mt8192";
-@@ -301,6 +302,206 @@
- 			#interrupt-cells = <2>;
+@@ -1154,10 +1154,38 @@
+ 			#clock-cells = <1>;
  		};
  
-+		scpsys: syscon@10006000 {
-+			compatible = "syscon", "simple-mfd";
-+			reg = <0 0x10006000 0 0x1000>;
-+			#power-domain-cells = <1>;
-+
-+			/* System Power Manager */
-+			spm: power-controller {
-+				compatible = "mediatek,mt8192-power-controller";
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+				#power-domain-cells = <1>;
-+
-+				/* power domain of the SoC */
-+				power-domain@MT8192_POWER_DOMAIN_AUDIO {
-+					reg = <MT8192_POWER_DOMAIN_AUDIO>;
-+					clocks = <&topckgen CLK_TOP_AUD_INTBUS_SEL>,
-+						 <&infracfg CLK_INFRA_AUDIO_26M_B>,
-+						 <&infracfg CLK_INFRA_AUDIO>;
-+					clock-names = "audio", "audio1", "audio2";
-+					mediatek,infracfg = <&infracfg>;
-+					#power-domain-cells = <0>;
-+				};
-+
-+				power-domain@MT8192_POWER_DOMAIN_CONN {
-+					reg = <MT8192_POWER_DOMAIN_CONN>;
-+					clocks = <&infracfg CLK_INFRA_PMIC_CONN>;
-+					clock-names = "conn";
-+					mediatek,infracfg = <&infracfg>;
-+					#power-domain-cells = <0>;
-+				};
-+
-+				mfg0: power-domain@MT8192_POWER_DOMAIN_MFG0 {
-+					reg = <MT8192_POWER_DOMAIN_MFG0>;
-+					clocks = <&topckgen CLK_TOP_MFG_PLL_SEL>;
-+					clock-names = "mfg";
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					#power-domain-cells = <1>;
-+
-+					power-domain@MT8192_POWER_DOMAIN_MFG1 {
-+						reg = <MT8192_POWER_DOMAIN_MFG1>;
-+						mediatek,infracfg = <&infracfg>;
-+						#address-cells = <1>;
-+						#size-cells = <0>;
-+						#power-domain-cells = <1>;
-+
-+						power-domain@MT8192_POWER_DOMAIN_MFG2 {
-+							reg = <MT8192_POWER_DOMAIN_MFG2>;
-+							#power-domain-cells = <0>;
-+						};
-+
-+						power-domain@MT8192_POWER_DOMAIN_MFG3 {
-+							reg = <MT8192_POWER_DOMAIN_MFG3>;
-+							#power-domain-cells = <0>;
-+						};
-+
-+						power-domain@MT8192_POWER_DOMAIN_MFG4 {
-+							reg = <MT8192_POWER_DOMAIN_MFG4>;
-+							#power-domain-cells = <0>;
-+						};
-+
-+						power-domain@MT8192_POWER_DOMAIN_MFG5 {
-+							reg = <MT8192_POWER_DOMAIN_MFG5>;
-+							#power-domain-cells = <0>;
-+						};
-+
-+						power-domain@MT8192_POWER_DOMAIN_MFG6 {
-+							reg = <MT8192_POWER_DOMAIN_MFG6>;
-+							#power-domain-cells = <0>;
-+						};
-+					};
-+				};
-+
-+				power-domain@MT8192_POWER_DOMAIN_DISP {
-+					reg = <MT8192_POWER_DOMAIN_DISP>;
-+					clocks = <&topckgen CLK_TOP_DISP_SEL>,
-+						 <&mmsys CLK_MM_SMI_INFRA>,
-+						 <&mmsys CLK_MM_SMI_COMMON>,
-+						 <&mmsys CLK_MM_SMI_GALS>,
-+						 <&mmsys CLK_MM_SMI_IOMMU>;
-+					clock-names = "disp", "disp-0", "disp-1", "disp-2",
-+						      "disp-3";
-+					mediatek,infracfg = <&infracfg>;
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					#power-domain-cells = <1>;
-+
-+					power-domain@MT8192_POWER_DOMAIN_IPE {
-+						reg = <MT8192_POWER_DOMAIN_IPE>;
-+						clocks = <&topckgen CLK_TOP_IPE_SEL>,
-+							 <&ipesys CLK_IPE_LARB19>,
-+							 <&ipesys CLK_IPE_LARB20>,
-+							 <&ipesys CLK_IPE_SMI_SUBCOM>,
-+							 <&ipesys CLK_IPE_GALS>;
-+						clock-names = "ipe", "ipe-0", "ipe-1", "ipe-2",
-+							      "ipe-3";
-+						mediatek,infracfg = <&infracfg>;
-+						#power-domain-cells = <0>;
-+					};
-+
-+					power-domain@MT8192_POWER_DOMAIN_ISP {
-+						reg = <MT8192_POWER_DOMAIN_ISP>;
-+						clocks = <&topckgen CLK_TOP_IMG1_SEL>,
-+							 <&imgsys CLK_IMG_LARB9>,
-+							 <&imgsys CLK_IMG_GALS>;
-+						clock-names = "isp", "isp-0", "isp-1";
-+						mediatek,infracfg = <&infracfg>;
-+						#power-domain-cells = <0>;
-+					};
-+
-+					power-domain@MT8192_POWER_DOMAIN_ISP2 {
-+						reg = <MT8192_POWER_DOMAIN_ISP2>;
-+						clocks = <&topckgen CLK_TOP_IMG2_SEL>,
-+							 <&imgsys2 CLK_IMG2_LARB11>,
-+							 <&imgsys2 CLK_IMG2_GALS>;
-+						clock-names = "isp2", "isp2-0", "isp2-1";
-+						mediatek,infracfg = <&infracfg>;
-+						#power-domain-cells = <0>;
-+					};
-+
-+					power-domain@MT8192_POWER_DOMAIN_MDP {
-+						reg = <MT8192_POWER_DOMAIN_MDP>;
-+						clocks = <&topckgen CLK_TOP_MDP_SEL>,
-+							 <&mdpsys CLK_MDP_SMI0>;
-+						clock-names = "mdp", "mdp-0";
-+						mediatek,infracfg = <&infracfg>;
-+						#power-domain-cells = <0>;
-+					};
-+
-+					power-domain@MT8192_POWER_DOMAIN_VENC {
-+						reg = <MT8192_POWER_DOMAIN_VENC>;
-+						clocks = <&topckgen CLK_TOP_VENC_SEL>,
-+							 <&vencsys CLK_VENC_SET1_VENC>;
-+						clock-names = "venc", "venc-0";
-+						mediatek,infracfg = <&infracfg>;
-+						#power-domain-cells = <0>;
-+					};
-+
-+					power-domain@MT8192_POWER_DOMAIN_VDEC {
-+						reg = <MT8192_POWER_DOMAIN_VDEC>;
-+						clocks = <&topckgen CLK_TOP_VDEC_SEL>,
-+							 <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
-+							 <&vdecsys_soc CLK_VDEC_SOC_LAT>,
-+							 <&vdecsys_soc CLK_VDEC_SOC_LARB1>;
-+						clock-names = "vdec", "vdec-0", "vdec-1", "vdec-2";
-+						mediatek,infracfg = <&infracfg>;
-+						#address-cells = <1>;
-+						#size-cells = <0>;
-+						#power-domain-cells = <1>;
-+
-+						power-domain@MT8192_POWER_DOMAIN_VDEC2 {
-+							reg = <MT8192_POWER_DOMAIN_VDEC2>;
-+							clocks = <&vdecsys CLK_VDEC_VDEC>,
-+								 <&vdecsys CLK_VDEC_LAT>,
-+								 <&vdecsys CLK_VDEC_LARB1>;
-+							clock-names = "vdec2-0", "vdec2-1",
-+								      "vdec2-2";
-+							#power-domain-cells = <0>;
-+						};
-+					};
-+
-+					power-domain@MT8192_POWER_DOMAIN_CAM {
-+						reg = <MT8192_POWER_DOMAIN_CAM>;
-+						clocks = <&topckgen CLK_TOP_CAM_SEL>,
-+							 <&camsys CLK_CAM_LARB13>,
-+							 <&camsys CLK_CAM_LARB14>,
-+							 <&camsys CLK_CAM_CCU_GALS>,
-+							 <&camsys CLK_CAM_CAM2MM_GALS>;
-+						clock-names = "cam", "cam-0", "cam-1", "cam-2",
-+							      "cam-3";
-+						mediatek,infracfg = <&infracfg>;
-+						#address-cells = <1>;
-+						#size-cells = <0>;
-+						#power-domain-cells = <1>;
-+
-+						power-domain@MT8192_POWER_DOMAIN_CAM_RAWA {
-+							reg = <MT8192_POWER_DOMAIN_CAM_RAWA>;
-+							clocks = <&camsys_rawa CLK_CAM_RAWA_LARBX>;
-+							clock-names = "cam_rawa-0";
-+							#power-domain-cells = <0>;
-+						};
-+
-+						power-domain@MT8192_POWER_DOMAIN_CAM_RAWB {
-+							reg = <MT8192_POWER_DOMAIN_CAM_RAWB>;
-+							clocks = <&camsys_rawb CLK_CAM_RAWB_LARBX>;
-+							clock-names = "cam_rawb-0";
-+							#power-domain-cells = <0>;
-+						};
-+
-+						power-domain@MT8192_POWER_DOMAIN_CAM_RAWC {
-+							reg = <MT8192_POWER_DOMAIN_CAM_RAWC>;
-+							clocks = <&camsys_rawc CLK_CAM_RAWC_LARBX>;
-+							clock-names = "cam_rawc-0";
-+							#power-domain-cells = <0>;
-+						};
-+					};
-+				};
-+			};
+-		msdc: clock-controller@11f60000 {
+-			compatible = "mediatek,mt8192-msdc";
+-			reg = <0 0x11f60000 0 0x1000>;
+-			#clock-cells = <1>;
++		mmc0: mmc@11f60000 {
++			compatible = "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
++			reg = <0 0x11f60000 0 0x1000>,
++			      <0 0x11f50000 0 0x1000>;
++			interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>,
++				 <&msdc_top CLK_MSDC_TOP_H_MST_0P>,
++				 <&msdc_top CLK_MSDC_TOP_SRC_0P>,
++				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
++				 <&msdc_top CLK_MSDC_TOP_AXI>,
++				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>,
++				 <&msdc_top CLK_MSDC_TOP_P_MSDC0>;
++			clock-names = "source", "hclk", "source_cg", "sys_cg",
++				      "axi_cg", "ahb_cg", "pclk_cg";
++			status = "disabled";
 +		};
 +
- 		watchdog: watchdog@10007000 {
- 			compatible = "mediatek,mt8192-wdt";
- 			reg = <0 0x10007000 0 0x100>;
++		mmc1: mmc@11f70000 {
++			compatible = "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
++			reg = <0 0x11f70000 0 0x1000>,
++			      <0 0x11c70000 0 0x1000>;
++			interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>,
++				 <&msdc_top CLK_MSDC_TOP_H_MST_1P>,
++				 <&msdc_top CLK_MSDC_TOP_SRC_1P>,
++				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
++				 <&msdc_top CLK_MSDC_TOP_AXI>,
++				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>,
++				 <&msdc_top CLK_MSDC_TOP_P_MSDC1>;
++			clock-names = "source", "hclk", "source_cg", "sys_cg",
++				      "axi_cg", "ahb_cg", "pclk_cg";
++			status = "disabled";
+ 		};
+ 
+ 		mfgcfg: clock-controller@13fbf000 {
 -- 
 2.18.0
 
