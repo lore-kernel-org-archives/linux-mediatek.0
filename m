@@ -4,57 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB353C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 09:18:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96758C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 09:18:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XUTatoDjl5WPhdSJDwR/qVCcvppluMBdCwZVTGeh95E=; b=T6/m6Ry9QS1z1G
-	/yMuTYHsP7ITBeVPFAgAdmQ0uNQ5WtMRAMsElOR41u+IloTXz8p7FmVGfr7mbyrZESA08U0RvA4v1
-	97mLhzetE82aUBZyhEywyhKFSgj74nWUmnugRsHpjKOhCHRAneGNKMGMLOdlNGPJmjSvS9lIETRnv
-	vC68HIxt/juMesjFVotL4IksX62nsFvVo80dndFxDtSfYVLcosD7PS2+20r9phG7rVu4GeWanjUVj
-	UF31G8I1WE6jpuOEYqxp3C4ywTChisSBT+Azqw9P31ikvbpLrU4hG983AjW533qWkAvRimH7GMevh
-	8oC15NvLrTqVMfSYE+NA==;
+	List-Owner; bh=hlPmEvNzwfmlS9SmapSf8SnxASJbEd7YTgSr+G/34Qw=; b=F8P8XKRm0CX8Re
+	BxAghFNq2cAuwnpmX4QI7sBla8f/oU4ipOqB47d+vm/W4wWlgrir1UW3jsVdZQYA9t/zvnHH4u9+5
+	Meno3ClYTNfPgboQ2SyjL/L0cvMBhecGtvwxjOb6bRu3YGylB1VM9ugcTTswKmQQ125RJsS+ZIN3P
+	GflaJpf2dQ2aCA2052aTvZKQoufhfisgeR3HAHcs+xspIRjx6oK2nP+u4VRIgVDEV2kCEEKO/gxFZ
+	01PU7XTztpLcKzPdZB0Yr6SK61hUTXwdhui9R3TB9hoAipGfqmwsOMR8fHadiFmMxaKVrHmtH5qXE
+	piGM3Vbp8B/H+dXiE3Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKzOu-00DRQl-Vj; Fri, 18 Feb 2022 09:18:04 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nKzPF-00DRiM-Cg; Fri, 18 Feb 2022 09:18:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKzNo-00DQh5-6v; Fri, 18 Feb 2022 09:16:58 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 35B0D1F41376
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645175813;
- bh=U7lrWAwexr4OGIHGR/8E7hJ30LUne6rDxFg0tlfKKeE=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=dYSoqAoFunE26Zuzip6yj5ZI2T1UyC2GkhrcpgU8ahqnmNZRKgLt6EShgsOUl/E3e
- wdtmkmqGgFkuNJZjb7HYkmxONjqaGPQ6aPELatm4rp43UcQaZxpbmbOqKijBLuWTpM
- Hns7vuM1njcewRDBbHn8qJMXE1cxi4XwPt3ERxmtukAqJGHHUipL8TRlqrryqrjqOr
- cmGZBGwZaRkFOfIEOSwUGyy+HqTQz/zP6/MMxUP7RodX1pyCBQNHNcekgbO7nA14FJ
- 9bYbp6i6mEABn5PQZ2elbyCCv+RmjRb7gTRYcVK/93xrxPJk7WVEucGbqQJhXHkvYz
- 7s1LPBMFEVwFg==
-Message-ID: <ad306275-cd38-e6ad-55cc-0f7c4bdfcecf@collabora.com>
-Date: Fri, 18 Feb 2022 10:16:51 +0100
+ id 1nKzNt-00DQkh-Ef; Fri, 18 Feb 2022 09:17:03 +0000
+X-UUID: 41ab9f12460e43d5965a8f26a09e3f5f-20220218
+X-UUID: 41ab9f12460e43d5965a8f26a09e3f5f-20220218
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1993427730; Fri, 18 Feb 2022 02:17:00 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 18 Feb 2022 01:16:59 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 18 Feb 2022 17:16:57 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 18 Feb 2022 17:16:56 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, --to=Krzysztof Kozlowski
+ <krzysztof.kozlowski@canonical.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, Allen-KH Cheng
+ <allen-kh.cheng@mediatek.com>
+Subject: [PATCH v2 22/23] arm64: dts: mt8192: Add gce info for display nodes
+Date: Fri, 18 Feb 2022 17:16:32 +0800
+Message-ID: <20220218091633.9368-23-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
+References: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH] rpmsg: mtk_rpmsg: Fix circular locking dependency
-Content-Language: en-US
-To: Mathieu Poirier <mathieu.poirier@linaro.org>
-Cc: bjorn.andersson@linaro.org, matthias.bgg@gmail.com, pihsun@chromium.org,
- linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com
-References: <20220114144737.375621-1-angelogioacchino.delregno@collabora.com>
- <20220217190349.GA477215@p14s>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220217190349.GA477215@p14s>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220218_011656_440639_14C28B78 
-X-CRM114-Status: GOOD (  23.76  )
+X-CRM114-CacheID: sfid-20220218_011701_524626_7DC3DFFA 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,120 +72,131 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/02/22 20:03, Mathieu Poirier ha scritto:
-> Hi Angelo,
-> 
-> On Fri, Jan 14, 2022 at 03:47:37PM +0100, AngeloGioacchino Del Regno wrote:
->> During execution of the worker that's used to register rpmsg devices
->> we are safely locking the channels mutex but, when creating a new
->> endpoint for such devices, we are registering a IPI on the SCP, which
->> then makes the SCP to trigger an interrupt, lock its own mutex and in
->> turn register more subdevices.
->> This creates a circular locking dependency situation, as the mtk_rpmsg
->> channels_lock will then depend on the SCP IPI lock.
->>
->> [   18.014514]  Possible unsafe locking scenario:
->> [   18.014515]        CPU0                    CPU1
->> [   18.014517]        ----                    ----
->> [   18.045467]   lock(&mtk_subdev->channels_lock);
->> [   18.045474]                                lock(&scp->ipi_desc[i].lock);
-> 
-> I spent well over an hour tracing through the meanders of the code to end up in
-> scp_ipi_register() which, I think, leads to the above.  But from there I don't
-> see how an IPI can come in and that tells me my assumption is wrong.
-> 
-> Can you give more details on the events that lead to the above?  I'm not saying
-> there is no problem, I just need to understand it.
-> 
+Add gce info for display nodes.
 
-Hi Mathieu,
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-I understand that following this flow without the assistance of the actual
-hardware may be a little confusing, so, no worries.
-
-drivers/remoteproc/mtk_scp.c - this driver manages the SCP (obviously, a
-remote processor)
-drivers/remoteproc/mtk_scp_ipi.c - public functions for kernel SCP IPC
-
-Flow:
-- MediaTek SCP gets probed
-- RPMSG starts, we start probing "something", like google,cros-ec-rpmsg
-- mtk_rpmsg: creates endpoint; IPI handler is registered here.
-
-          ( more flow )
-
-- mtk_rpmsg: mtk_rpmsg_ns_cb() -> mtk_rpmsg_create_device(), channel is
-              added to the channels list, worker gets scheduled
-
-
-Now for the part that produces the real issue:
-
-label_a:
-
-*** RPMSG MUTEX LOCK ***
-- mtk_rpmsg: ## Go through multiple channels ##, call mtk_rpmsg_register_device()
-
-- Registered device tries to communicate through RPMSG
-- .send() or .trysend() (depending on the device) is called: send_ipi()
-     *** SCP MUTEX LOCK ***
-    - mtk_scp_ipi: Data written, ACK? ok -> return 0
-     *** SCP MUTEX UNLOCK ***
-
-- mtk_scp_ipi: **** INTERRUPT!!! **** New RPMSG NS available? -> create channel
-           goto label_a;
-
-*** RPMSG MUTEX UNLOCK ***
-
-
-Pardon me for keeping some things in this flow implicit, but that was done to
-simplify it as much as possible as to try to make you understand the situation.
-
-Cheers,
-Angelo
-
-> Thanks,
-> Mathieu
-> 
->> [   18.228399]                                lock(&mtk_subdev->channels_lock);
->> [   18.228405]   lock(&scp->ipi_desc[i].lock);
->> [   18.264405]
->>
->> To solve this, simply unlock the channels_lock mutex before calling
->> mtk_rpmsg_register_device() and relock it right after, as safety is
->> still ensured by the locking mechanism that happens right after
->> through SCP.
->> Notably, mtk_rpmsg_register_device() does not even require locking.
->>
->> Fixes: 7017996951fd ("rpmsg: add rpmsg support for mt8183 SCP.")
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/rpmsg/mtk_rpmsg.c | 2 ++
->>   1 file changed, 2 insertions(+)
->>
->> diff --git a/drivers/rpmsg/mtk_rpmsg.c b/drivers/rpmsg/mtk_rpmsg.c
->> index 5b4404b8be4c..d1213c33da20 100644
->> --- a/drivers/rpmsg/mtk_rpmsg.c
->> +++ b/drivers/rpmsg/mtk_rpmsg.c
->> @@ -234,7 +234,9 @@ static void mtk_register_device_work_function(struct work_struct *register_work)
->>   		if (info->registered)
->>   			continue;
->>   
->> +		mutex_unlock(&subdev->channels_lock);
->>   		ret = mtk_rpmsg_register_device(subdev, &info->info);
->> +		mutex_lock(&subdev->channels_lock);
->>   		if (ret) {
->>   			dev_err(&pdev->dev, "Can't create rpmsg_device\n");
->>   			continue;
->> -- 
->> 2.33.1
->>
-
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 1f1555fd18f5..df884c48669e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -1226,6 +1226,9 @@
+ 		mmsys: syscon@14000000 {
+ 			compatible = "mediatek,mt8192-mmsys", "syscon";
+ 			reg = <0 0x14000000 0 0x1000>;
++			mboxes = <&gce 0 CMDQ_THR_PRIO_HIGHEST 1>,
++				 <&gce 1 CMDQ_THR_PRIO_HIGHEST 1>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
+ 			#clock-cells = <1>;
+ 		};
+ 
+@@ -1234,6 +1237,8 @@
+ 			reg = <0 0x14001000 0 0x1000>;
+ 			interrupts = <GIC_SPI 252 IRQ_TYPE_LEVEL_HIGH 0>;
+ 			clocks = <&mmsys CLK_MM_DISP_MUTEX0>;
++			mediatek,gce-events = <CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_0>,
++					      <CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_1>;
+ 		};
+ 
+ 		smi_common: smi@14002000 {
+@@ -1275,6 +1280,7 @@
+ 			iommus = <&iommu0 M4U_PORT_L0_OVL_RDMA0>,
+ 				 <&iommu0 M4U_PORT_L0_OVL_RDMA0_HDR>;
+ 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
+ 		};
+ 
+ 		ovl_2l0: ovl@14006000 {
+@@ -1285,6 +1291,7 @@
+ 			clocks = <&mmsys CLK_MM_DISP_OVL0_2L>;
+ 			iommus = <&iommu0 M4U_PORT_L1_OVL_2L_RDMA0>,
+ 				 <&iommu0 M4U_PORT_L1_OVL_2L_RDMA0_HDR>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
+ 		};
+ 
+ 		rdma0: rdma@14007000 {
+@@ -1296,6 +1303,7 @@
+ 			mediatek,larb = <&larb0>;
+ 			mediatek,rdma-fifo-size = <5120>;
+ 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x7000 0x1000>;
+ 		};
+ 
+ 		color0: color@14009000 {
+@@ -1305,6 +1313,7 @@
+ 			interrupts = <GIC_SPI 258 IRQ_TYPE_LEVEL_HIGH 0>;
+ 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
+ 			clocks = <&mmsys CLK_MM_DISP_COLOR0>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x9000 0x1000>;
+ 		};
+ 
+ 		ccorr0: ccorr@1400a000 {
+@@ -1313,6 +1322,7 @@
+ 			interrupts = <GIC_SPI 259 IRQ_TYPE_LEVEL_HIGH 0>;
+ 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
+ 			clocks = <&mmsys CLK_MM_DISP_CCORR0>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xa000 0x1000>;
+ 		};
+ 
+ 		aal0: aal@1400b000 {
+@@ -1321,6 +1331,7 @@
+ 			interrupts = <GIC_SPI 260 IRQ_TYPE_LEVEL_HIGH 0>;
+ 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
+ 			clocks = <&mmsys CLK_MM_DISP_AAL0>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xb000 0x1000>;
+ 		};
+ 
+ 		gamma0: gamma@1400c000 {
+@@ -1330,6 +1341,7 @@
+ 			interrupts = <GIC_SPI 261 IRQ_TYPE_LEVEL_HIGH 0>;
+ 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
+ 			clocks = <&mmsys CLK_MM_DISP_GAMMA0>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xc000 0x1000>;
+ 		};
+ 
+ 		postmask0: postmask@1400d000 {
+@@ -1339,6 +1351,7 @@
+ 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
+ 			clocks = <&mmsys CLK_MM_DISP_POSTMASK0>;
+ 			iommus = <&iommu0 M4U_PORT_L0_DISP_POSTMASK0>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xd000 0x1000>;
+ 		};
+ 
+ 		dither0: dither@1400e000 {
+@@ -1348,6 +1361,7 @@
+ 			interrupts = <GIC_SPI 263 IRQ_TYPE_LEVEL_HIGH 0>;
+ 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
+ 			clocks = <&mmsys CLK_MM_DISP_DITHER0>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xe000 0x1000>;
+ 		};
+ 
+ 		dsi0: dsi@14010000 {
+@@ -1371,6 +1385,7 @@
+ 			clocks = <&mmsys CLK_MM_DISP_OVL2_2L>;
+ 			iommus = <&iommu0 M4U_PORT_L1_OVL_2L_RDMA2>,
+ 				 <&iommu0 M4U_PORT_L1_OVL_2L_RDMA2_HDR>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x4000 0x1000>;
+ 		};
+ 
+ 		rdma4: rdma@14015000 {
+@@ -1381,6 +1396,7 @@
+ 			clocks = <&mmsys CLK_MM_DISP_RDMA4>;
+ 			iommus = <&iommu0 M4U_PORT_L1_DISP_RDMA4>;
+ 			mediatek,rdma-fifo-size = <2048>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x5000 0x1000>;
+ 		};
+ 
+ 		dpi0: dpi@14016000 {
+-- 
+2.18.0
 
 
 _______________________________________________
