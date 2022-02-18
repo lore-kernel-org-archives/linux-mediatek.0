@@ -4,45 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1974CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 14:55:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4868BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 14:55:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MQkXdyT/xke64LvMzRltPmXMwT3Gs0oJiLwn9sKUVZM=; b=QhZ6JRm6fQGIPb
-	5YQcgc51FT2cuPNBRCDaUTc4pf/XNBEs9kyoLpYkSeonmKZfYdrKaAldOv7F4UCHoitjJAdfbqYYr
-	5XlCU9ikgrRUD7Rpa3WJ8kF9adK03oBhRKBFHwVfudo2UXF5YQQhihfw3dNR+RrE5LKe6fib1wEFw
-	9+ibqjI3rpgy+ZwDCZMxdeg9vYRj2fQLCbeYnJ21pIRLcHkGlMJ2cbnHbLE1BKuqospashrfnzIMs
-	3dsVYHkQazC+i5V7tt/E4zzlJChwCEQEKZ60HFQMtmxHbgeg80EycsZziYTbHvxMGwETQ5J3Sj6VZ
-	sQUwvt4x7JQmUop9Xt7A==;
+	List-Owner; bh=D+IR1aZusQcmYAoLIxEquEArlcK9wNvS1y31JxKGjYE=; b=FuWGrYGAChxzRM
+	N6bdw2LqYcEw04m3fjVk63tpN4QWywLk2M3hUsuycdyNSWjDULllFoGhuhQJ3fdhgf1uxuY/E7WS+
+	mZxvnL6Ch9sJih1a/d6DxM9dxdjbdam17j+dC+it3Q4gpeUIUjmdTMeUZLyDbYw6kvQi84hMOlHWw
+	jOdC9sh7ktmX98aqnhxeSoEa4rFUlQrmLXLi1wo+B85rPaxKyxXYu+5XoMdYY3Dcx4v7vh7rsbLeE
+	vJZ26TOPfKtcU3KmCDHOGq1yietIrmbIbOh/VmeETDZWuH5ft4cg92zS756uik4pVqX1Gv60L+Keh
+	BMgKZniuVzAF+kFvDULw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nL4fG-00ErVs-9n; Fri, 18 Feb 2022 14:55:18 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nL4fi-00Ermd-7d; Fri, 18 Feb 2022 14:55:46 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nL4eL-00Er3p-H4; Fri, 18 Feb 2022 14:54:24 +0000
+ id 1nL4eO-00Er4b-59; Fri, 18 Feb 2022 14:54:26 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 6DEF21F46BCB
+ (Authenticated sender: kholk11) with ESMTPSA id A26911F46BA2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645196060;
- bh=puo/n4BmysyRpl5GEWNmjLuBHZH5TF5qEbN8xSBb3N8=;
+ s=mail; t=1645196062;
+ bh=aJ3xIH2fN9ae3SbsE2VP6ml3rhW+Z3DMmyq7epfAAqc=;
  h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
- b=Gw3SDXzLp3GfCSC67Jus523MpAaAsfAqic7tuLRpR9mDoZDfhWOPwAKg75bK+HvTB
- GFkAoAczP45zyzU0n67ZbdnWegZzHl3vY2Kxkd87OJwMSgz2sQWGOPhJ9NMJX1COK/
- pG2U4iH3pL0INZr0xxunWP3flH2Jl8j8ykcA7NsbTGNeIWI9cpKouG7KD5ffNaXbhs
- /PfT3KyXOJMAujmU7+3KU4n6u9G5ZLCqRQpKIszjuwdotOwdPn8qWrNCTDvS4Y+wNz
- umOcR0QLJNlJqhSN1yCoV2CLaKvbU4Zz2Y5mRFEL5NR8lgHfUYJt2Hh3Ho6TQTX0rs
- J8JHNfZtxN2PQ==
-Message-ID: <0e633e93-566d-0a91-f5e3-f3e3131fcb43@collabora.com>
-Date: Fri, 18 Feb 2022 15:54:16 +0100
+ b=WErC1atFCUoRx9/I6wMe2kPsGiJj6UAjtjLC3qrBKFMFKqo5v8jb5sh1yS6p1mIbR
+ E4ThhBytCjU9fAMb9ZGmn6fuALC7GMtdvqXkFV/cKpvhntjFJON8WVVbVapC53dFof
+ fHQ2QFvRHH+4YG+71qSaFiRI81GS3ls7RXCCSIAkTyy12dL3CSQbfmuaTMrW8g0cgk
+ FN2bnL0sctrZ2Tw3hsg07b4ukcAWXgB6xrOOIbe3H8/e6Np9IzHT2DWHCXDqUXHTGo
+ 63dQ9Jp6ZqGxKoqNkCUdd5dT7Y+BeUq72dLV58RhItGoZ6WtZtjYbYGV9RTcXvGUHs
+ BuOcPl9mAQzrg==
+Message-ID: <a624679f-3b87-ff07-8983-982bbd983e94@collabora.com>
+Date: Fri, 18 Feb 2022 15:54:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [v2 03/17] ASoC: mediatek: mt8186: support adda in platform driver
+Subject: Re: [v2 05/17] ASoC: mediatek: mt8186: support hw gain in platform
+ driver
 To: Jiaxin Yu <jiaxin.yu@mediatek.com>, broonie@kernel.org
 Cc: lgirdwood@gmail.com, tiwai@suse.com, robh+dt@kernel.org,
  matthias.bgg@gmail.com, perex@perex.cz, p.zabel@pengutronix.de,
@@ -51,12 +52,12 @@ Cc: lgirdwood@gmail.com, tiwai@suse.com, robh+dt@kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20220217134205.15400-1-jiaxin.yu@mediatek.com>
- <20220217134205.15400-4-jiaxin.yu@mediatek.com>
+ <20220217134205.15400-6-jiaxin.yu@mediatek.com>
 Content-Language: en-US
-In-Reply-To: <20220217134205.15400-4-jiaxin.yu@mediatek.com>
+In-Reply-To: <20220217134205.15400-6-jiaxin.yu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220218_065421_884377_BDCB0512 
-X-CRM114-Status: GOOD (  25.13  )
+X-CRM114-CacheID: sfid-20220218_065424_524772_4B460225 
+X-CRM114-Status: GOOD (  18.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,153 +75,94 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 17/02/22 14:41, Jiaxin Yu ha scritto:
-> This patch adds mt8186 adda dai driver
+> This path adds mt8186 hw gain dai driver.
 > 
 > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
 > ---
->   sound/soc/mediatek/mt8186/mt8186-dai-adda.c | 891 ++++++++++++++++++++
->   1 file changed, 891 insertions(+)
->   create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-adda.c
+>   .../soc/mediatek/mt8186/mt8186-dai-hw-gain.c  | 245 ++++++++++++++++++
+>   1 file changed, 245 insertions(+)
+>   create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c
 > 
-> diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-adda.c b/sound/soc/mediatek/mt8186/mt8186-dai-adda.c
+> diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c b/sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c
 > new file mode 100644
-> index 000000000000..6d7dd1533da0
+> index 000000000000..796878989727
 > --- /dev/null
-> +++ b/sound/soc/mediatek/mt8186/mt8186-dai-adda.c
-> @@ -0,0 +1,891 @@
+> +++ b/sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c
+> @@ -0,0 +1,245 @@
 > +// SPDX-License-Identifier: GPL-2.0
 > +//
-> +// MediaTek ALSA SoC Audio DAI ADDA Control
+> +// MediaTek ALSA SoC Audio DAI HW Gain Control
 > +//
 > +// Copyright (c) 2022 MediaTek Inc.
 > +// Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
 > +
 > +#include <linux/regmap.h>
-> +#include <linux/delay.h>
-> +#include "mt8186-afe-clk.h"
 > +#include "mt8186-afe-common.h"
-> +#include "mt8186-afe-gpio.h"
 > +#include "mt8186-interconnection.h"
 > +
-
-..snip..
-
-
+> +#define HW_GAIN_1_EN_W_NAME "HW GAIN 1 Enable"
+> +#define HW_GAIN_2_EN_W_NAME "HW GAIN 2 Enable"
 > +
-> +static int mtk_adda_mtkaif_cfg_event(struct snd_soc_dapm_widget *w,
-> +				     struct snd_kcontrol *kcontrol,
-> +				     int event)
-> +{
-> +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-> +	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-> +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
-> +	int delay_data;
-> +	int delay_cycle;
+> +/* dai component */
+> +static const struct snd_kcontrol_new mtk_hw_gain1_in_ch1_mix[] = {
+> +	SOC_DAPM_SINGLE_AUTODISABLE("CONNSYS_I2S_CH1 Switch", AFE_CONN13_1,
+> +				    I_CONNSYS_I2S_CH1, 1, 0),
+> +};
 > +
-> +	switch (event) {
-> +	case SND_SOC_DAPM_PRE_PMU:
-> +		if (afe_priv->mtkaif_protocol == MTKAIF_PROTOCOL_2_CLK_P2) {
-> +			/* set protocol 2 */
-> +			regmap_write(afe->regmap, AFE_ADDA_MTKAIF_CFG0,
-> +				     0x00010000);
-
-No leading zeros, please (also, it fits in one line):
-			regmap_write(afe->regmap, AFE_ADDA_MTKAIF_CFG0, 0x10000);
-
-> +			/* mtkaif_rxif_clkinv_adc inverse */
-> +			regmap_update_bits(afe->regmap, AFE_ADDA_MTKAIF_CFG0,
-> +					   MTKAIF_RXIF_CLKINV_ADC_MASK_SFT,
-> +					   0x1 << MTKAIF_RXIF_CLKINV_ADC_SFT);
-
-Please use the BIT() macro:
-					   BIT(MTKAIF_RXIF_CLKINV_ADC_SFT)
-
+> +static const struct snd_kcontrol_new mtk_hw_gain1_in_ch2_mix[] = {
+> +	SOC_DAPM_SINGLE_AUTODISABLE("CONNSYS_I2S_CH2 Switch", AFE_CONN14_1,
+> +				    I_CONNSYS_I2S_CH2, 1, 0),
+> +};
 > +
-> +			if (strcmp(w->name, "ADDA_MTKAIF_CFG") == 0) {
-> +				if (afe_priv->mtkaif_chosen_phase[0] < 0 &&
-> +				    afe_priv->mtkaif_chosen_phase[1] < 0) {
-> +					dev_err(afe->dev,
-> +						"%s(), calib fail mtkaif_chosen_phase[0/1]:%d/%d\n",
-> +						__func__,
-> +						afe_priv->mtkaif_chosen_phase[0],
-> +						afe_priv->mtkaif_chosen_phase[1]);
-> +					break;
-> +				}
+> +static const struct snd_kcontrol_new mtk_hw_gain2_in_ch1_mix[] = {
+> +	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1 Switch", AFE_CONN15,
+> +				    I_ADDA_UL_CH1, 1, 0),
+> +};
 > +
-> +				if (afe_priv->mtkaif_chosen_phase[0] < 0 ||
-> +				    afe_priv->mtkaif_chosen_phase[1] < 0) {
-> +					dev_err(afe->dev,
-> +						"%s(), skip dealy setting mtkaif_chosen_phase[0/1]:%d/%d\n",
-> +						__func__,
-> +						afe_priv->mtkaif_chosen_phase[0],
-> +						afe_priv->mtkaif_chosen_phase[1]);
-> +					break;
-> +				}
-> +			}
+> +static const struct snd_kcontrol_new mtk_hw_gain2_in_ch2_mix[] = {
+> +	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2 Switch", AFE_CONN16,
+> +				    I_ADDA_UL_CH2, 1, 0),
+> +};
 > +
-> +			/* set delay for ch12 */
-> +			if (afe_priv->mtkaif_phase_cycle[0] >=
-> +			    afe_priv->mtkaif_phase_cycle[1]) {
-> +				delay_data = DELAY_DATA_MISO1;
-> +				delay_cycle = afe_priv->mtkaif_phase_cycle[0] -
-> +					      afe_priv->mtkaif_phase_cycle[1];
-> +			} else {
-> +				delay_data = DELAY_DATA_MISO2;
-> +				delay_cycle = afe_priv->mtkaif_phase_cycle[1] -
-> +					      afe_priv->mtkaif_phase_cycle[0];
-> +			}
-> +
-> +			regmap_update_bits(afe->regmap,
-> +					   AFE_ADDA_MTKAIF_RX_CFG2,
-> +					   MTKAIF_RXIF_DELAY_DATA_MASK_SFT,
-> +					   delay_data <<
-> +					   MTKAIF_RXIF_DELAY_DATA_SFT);
-> +
-> +			regmap_update_bits(afe->regmap,
-> +					   AFE_ADDA_MTKAIF_RX_CFG2,
-> +					   MTKAIF_RXIF_DELAY_CYCLE_MASK_SFT,
-> +					   delay_cycle <<
-> +					   MTKAIF_RXIF_DELAY_CYCLE_SFT);
-> +
-> +		} else if (afe_priv->mtkaif_protocol == MTKAIF_PROTOCOL_2) {
-> +			regmap_write(afe->regmap, AFE_ADDA_MTKAIF_CFG0,
-> +				     0x00010000);
-
-No leading zeroes, please.
-
-> +		} else {
-> +			regmap_write(afe->regmap, AFE_ADDA_MTKAIF_CFG0, 0x0);
-
-0x0 -> 0
-
-> +		}
-> +
-> +		break;
-> +	default:
-> +		break;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_adda_dl_event(struct snd_soc_dapm_widget *w,
+> +static int mtk_hw_gain_event(struct snd_soc_dapm_widget *w,
 > +			     struct snd_kcontrol *kcontrol,
 > +			     int event)
 > +{
 > +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
 > +	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
+> +	unsigned int gain_cur;
+> +	unsigned int gain_con1;
 > +
-> +	dev_dbg(afe->dev, "%s(), name %s, event 0x%x\n",
+> +	dev_dbg(cmpnt->dev, "%s(), name %s, event 0x%x\n",
 > +		__func__, w->name, event);
 > +
 > +	switch (event) {
 > +	case SND_SOC_DAPM_PRE_PMU:
-> +		mt8186_afe_gpio_request(afe->dev, true, MT8186_DAI_ADDA, 0);
-> +		break;
-> +	case SND_SOC_DAPM_POST_PMD:
-> +		/* should delayed 1/fs(smallest is 8k) = 125us before afe off */
-> +		usleep_range(125, 135);
-> +		mt8186_afe_gpio_request(afe->dev, false, MT8186_DAI_ADDA, 0);
+> +		if (strcmp(w->name, HW_GAIN_1_EN_W_NAME) == 0) {
+> +			gain_cur = AFE_GAIN1_CUR;
+> +			gain_con1 = AFE_GAIN1_CON1;
+> +		} else {
+> +			gain_cur = AFE_GAIN2_CUR;
+> +			gain_con1 = AFE_GAIN2_CON1;
+> +		}
+> +
+> +		/* let hw gain ramp up, set cur gain to 0 */
+> +		regmap_update_bits(afe->regmap,
+> +				   gain_cur,
+> +				   AFE_GAIN1_CUR_MASK_SFT,
+> +				   0);
+
+This fits in one line (86 columns is ok)
+
+> +
+> +		/* set target gain to 0 */
+> +		regmap_update_bits(afe->regmap,
+> +				   gain_con1,
+> +				   GAIN1_TARGET_MASK_SFT,
+> +				   0);
+
+Same here.
+
 > +		break;
 > +	default:
 > +		break;
@@ -229,296 +171,78 @@ No leading zeroes, please.
 > +	return 0;
 > +}
 > +
-> +static int mt8186_adda_dmic_get(struct snd_kcontrol *kcontrol,
-> +				struct snd_ctl_elem_value *ucontrol)
-> +{
-> +	struct snd_soc_component *cmpnt = snd_soc_kcontrol_component(kcontrol);
-> +	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-> +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
+> +static const struct snd_soc_dapm_widget mtk_dai_hw_gain_widgets[] = {
+> +	/* inter-connections */
+> +	SND_SOC_DAPM_MIXER("HW_GAIN1_IN_CH1", SND_SOC_NOPM, 0, 0,
+> +			   mtk_hw_gain1_in_ch1_mix,
+> +			   ARRAY_SIZE(mtk_hw_gain1_in_ch1_mix)),
+> +	SND_SOC_DAPM_MIXER("HW_GAIN1_IN_CH2", SND_SOC_NOPM, 0, 0,
+> +			   mtk_hw_gain1_in_ch2_mix,
+> +			   ARRAY_SIZE(mtk_hw_gain1_in_ch2_mix)),
+> +	SND_SOC_DAPM_MIXER("HW_GAIN2_IN_CH1", SND_SOC_NOPM, 0, 0,
+> +			   mtk_hw_gain2_in_ch1_mix,
+> +			   ARRAY_SIZE(mtk_hw_gain2_in_ch1_mix)),
+> +	SND_SOC_DAPM_MIXER("HW_GAIN2_IN_CH2", SND_SOC_NOPM, 0, 0,
+> +			   mtk_hw_gain2_in_ch2_mix,
+> +			   ARRAY_SIZE(mtk_hw_gain2_in_ch2_mix)),
 > +
-> +	ucontrol->value.integer.value[0] = afe_priv->mtkaif_dmic;
+> +	SND_SOC_DAPM_SUPPLY(HW_GAIN_1_EN_W_NAME,
+> +			    AFE_GAIN1_CON0, GAIN1_ON_SFT, 0,
+> +			    mtk_hw_gain_event,
+> +			    SND_SOC_DAPM_PRE_PMU),
 > +
-> +	return 0;
-> +}
+> +	SND_SOC_DAPM_SUPPLY(HW_GAIN_2_EN_W_NAME,
+> +			    AFE_GAIN2_CON0, GAIN2_ON_SFT, 0,
+> +			    mtk_hw_gain_event,
+> +			    SND_SOC_DAPM_PRE_PMU),
 > +
-> +static int mt8186_adda_dmic_set(struct snd_kcontrol *kcontrol,
-> +				struct snd_ctl_elem_value *ucontrol)
-> +{
-> +	struct snd_soc_component *cmpnt = snd_soc_kcontrol_component(kcontrol);
-> +	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-> +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
-> +	struct soc_enum *e = (struct soc_enum *)kcontrol->private_value;
-> +	int dmic_on;
+> +	SND_SOC_DAPM_INPUT("HW Gain 1 Out Endpoint"),
+> +	SND_SOC_DAPM_INPUT("HW Gain 2 Out Endpoint"),
+> +	SND_SOC_DAPM_OUTPUT("HW Gain 1 In Endpoint"),
+> +};
 > +
-> +	if (ucontrol->value.enumerated.item[0] >= e->items)
-> +		return -EINVAL;
+> +static const struct snd_soc_dapm_route mtk_dai_hw_gain_routes[] = {
+> +	{"HW Gain 1 In", NULL, "HW_GAIN1_IN_CH1"},
+> +	{"HW Gain 1 In", NULL, "HW_GAIN1_IN_CH2"},
+> +	{"HW Gain 2 In", NULL, "HW_GAIN2_IN_CH1"},
+> +	{"HW Gain 2 In", NULL, "HW_GAIN2_IN_CH2"},
 > +
-> +	dmic_on = ucontrol->value.integer.value[0];
+> +	{"HW Gain 1 In", NULL, HW_GAIN_1_EN_W_NAME},
+> +	{"HW Gain 1 Out", NULL, HW_GAIN_1_EN_W_NAME},
+> +	{"HW Gain 2 In", NULL, HW_GAIN_2_EN_W_NAME},
+> +	{"HW Gain 2 Out", NULL, HW_GAIN_2_EN_W_NAME},
 > +
-> +	dev_info(afe->dev, "%s(), kcontrol name %s, dmic_on %d\n",
-> +		 __func__, kcontrol->id.name, dmic_on);
-
-Shouldn't this be a dev_dbg() instead?
-
+> +	{"HW Gain 1 In Endpoint", NULL, "HW Gain 1 In"},
+> +	{"HW Gain 1 Out", NULL, "HW Gain 1 Out Endpoint"},
+> +	{"HW Gain 2 Out", NULL, "HW Gain 2 Out Endpoint"},
+> +};
 > +
-> +	if (afe_priv->mtkaif_dmic == dmic_on)
-> +		return 0;
-> +
-> +	afe_priv->mtkaif_dmic = dmic_on;
-> +
-> +	return 1;
-> +}
-> +
-
-...snip...
-
-> +
-> +#define HIRES_THRESHOLD 48000
-> +static int mtk_afe_dac_hires_connect(struct snd_soc_dapm_widget *source,
-> +				     struct snd_soc_dapm_widget *sink)
-> +{
-> +	struct snd_soc_dapm_widget *w = source;
-> +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-> +	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-> +	struct mtk_afe_adda_priv *adda_priv;
-> +
-> +	adda_priv = get_adda_priv_by_name(afe, w->name);
-> +
-> +	if (!adda_priv) {
-> +		dev_info(afe->dev, "%s(), adda_priv == NULL", __func__);
-
-dev_err()
-
-> +		return 0;
-> +	}
-> +
-> +	return (adda_priv->dl_rate > HIRES_THRESHOLD) ? 1 : 0;
-> +}
-> +
-> +static int mtk_afe_adc_hires_connect(struct snd_soc_dapm_widget *source,
-> +				     struct snd_soc_dapm_widget *sink)
-> +{
-> +	struct snd_soc_dapm_widget *w = source;
-> +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-> +	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-> +	struct mtk_afe_adda_priv *adda_priv;
-> +
-> +	adda_priv = get_adda_priv_by_name(afe, w->name);
-> +
-> +	if (!adda_priv) {
-> +		dev_info(afe->dev, "%s(), adda_priv == NULL", __func__);
-
-dev_err()
-
-> +		return 0;
-> +	}
-> +
-> +	return (adda_priv->ul_rate > HIRES_THRESHOLD) ? 1 : 0;
-> +}
-> +
-
-..snip..
-
+> +static const struct snd_kcontrol_new mtk_hw_gain_controls[] = {
+> +	SOC_SINGLE("HW Gain 1 Volume", AFE_GAIN1_CON1,
+> +		   GAIN1_TARGET_SFT, GAIN1_TARGET_MASK, 0),
+> +	SOC_SINGLE("HW Gain 2 Volume", AFE_GAIN2_CON1,
+> +		   GAIN2_TARGET_SFT, GAIN2_TARGET_MASK, 0),
 > +};
 > +
 > +/* dai ops */
-> +static int mtk_dai_adda_hw_params(struct snd_pcm_substream *substream,
+> +static int mtk_dai_gain_hw_params(struct snd_pcm_substream *substream,
 > +				  struct snd_pcm_hw_params *params,
 > +				  struct snd_soc_dai *dai)
 > +{
 > +	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-> +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
 > +	unsigned int rate = params_rate(params);
-> +	int id = dai->id;
-> +	struct mtk_afe_adda_priv *adda_priv = afe_priv->dai_priv[id];
+> +	unsigned int rate_reg = mt8186_rate_transform(afe->dev, rate, dai->id);
 > +
 > +	dev_info(afe->dev, "%s(), id %d, stream %d, rate %d\n",
 > +		 __func__,
-> +		 id,
+> +		 dai->id,
 > +		 substream->stream,
 > +		 rate);
-> +
-> +	if (!adda_priv) {
-> +		dev_info(afe->dev, "%s(), adda_priv == NULL", __func__);
-> +		return -EINVAL;
-> +	}
-> +
-> +	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
-> +		unsigned int dl_src2_con0 = 0;
-> +		unsigned int dl_src2_con1 = 0;
 
-This initialization is redundant: you're never using these variables
-before initializing them later, so initializing them to zero is not
-needed here.
+This should be:
+	dev_info(afe->dev, "%s(), id %d, stream %d, rate %d\n",
 
-> +
-> +		adda_priv->dl_rate = rate;
-> +
-> +		/* set sampling rate */
-> +		dl_src2_con0 = adda_dl_rate_transform(afe, rate) <<
-> +			       DL_2_INPUT_MODE_CTL_SFT;
-> +
-> +		/* set output mode, UP_SAMPLING_RATE_X8 */
-> +		dl_src2_con0 |= (0x3 << DL_2_OUTPUT_SEL_CTL_SFT);
-> +
-> +		/* turn off mute function */
-> +		dl_src2_con0 |= (0x01 << DL_2_MUTE_CH2_OFF_CTL_PRE_SFT);
-
-BIT() macro, please
-
-> +		dl_src2_con0 |= (0x01 << DL_2_MUTE_CH1_OFF_CTL_PRE_SFT);
-> +
-> +		/* set voice input data if input sample rate is 8k or 16k */
-> +		if (rate == 8000 || rate == 16000)
-> +			dl_src2_con0 |= 0x01 << DL_2_VOICE_MODE_CTL_PRE_SFT;
-> +
-> +		/* SA suggest apply -0.3db to audio/speech path */
-> +		dl_src2_con1 = MTK_AFE_ADDA_DL_GAIN_NORMAL <<
-> +			       DL_2_GAIN_CTL_PRE_SFT;
-> +
-> +		/* turn on down-link gain */
-> +		dl_src2_con0 |= (0x01 << DL_2_GAIN_ON_CTL_PRE_SFT);
-> +
-> +		if (id == MT8186_DAI_ADDA) {
-> +			/* clean predistortion */
-> +			regmap_write(afe->regmap, AFE_ADDA_PREDIS_CON0, 0);
-> +			regmap_write(afe->regmap, AFE_ADDA_PREDIS_CON1, 0);
-> +
-> +			regmap_write(afe->regmap,
-> +				     AFE_ADDA_DL_SRC2_CON0, dl_src2_con0);
-> +			regmap_write(afe->regmap,
-> +				     AFE_ADDA_DL_SRC2_CON1, dl_src2_con1);
-> +
-> +			/* set sdm gain */
-> +			regmap_update_bits(afe->regmap,
-> +					   AFE_ADDA_DL_SDM_DCCOMP_CON,
-> +					   ATTGAIN_CTL_MASK_SFT,
-> +					   AUDIO_SDM_LEVEL_NORMAL <<
-> +					   ATTGAIN_CTL_SFT);
-> +
-> +			/* Use new 2nd sdm */
-> +			regmap_update_bits(afe->regmap,
-> +					   AFE_ADDA_DL_SDM_DITHER_CON,
-> +					   AFE_DL_SDM_DITHER_64TAP_EN_MASK_SFT,
-> +					   0x1 << AFE_DL_SDM_DITHER_64TAP_EN_SFT);
-
-BIT(AFE_DL_SDM_DITHER_64TAP_EN_SFT)
-
-> +			regmap_update_bits(afe->regmap,
-> +					   AFE_ADDA_DL_SDM_AUTO_RESET_CON,
-> +					   AFE_DL_USE_NEW_2ND_SDM_MASK_SFT,
-> +					   0x1 << AFE_DL_USE_NEW_2ND_SDM_SFT);
-
-BIT(AFE_DL_USE_NEW_2ND_SDM_SFT)
-
-> +			regmap_update_bits(afe->regmap,
-> +					   AFE_ADDA_DL_SDM_DCCOMP_CON,
-> +					   USE_3RD_SDM_MASK_SFT,
-> +					   AUDIO_SDM_2ND << USE_3RD_SDM_SFT);
-> +
-> +			/* sdm auto reset */
-> +			regmap_write(afe->regmap,
-> +				     AFE_ADDA_DL_SDM_AUTO_RESET_CON,
-> +				     SDM_AUTO_RESET_THRESHOLD);
-> +			regmap_update_bits(afe->regmap,
-> +					   AFE_ADDA_DL_SDM_AUTO_RESET_CON,
-> +					   SDM_AUTO_RESET_TEST_ON_MASK_SFT,
-> +					   0x1 << SDM_AUTO_RESET_TEST_ON_SFT);
-
-BIT(SDM_AUTO_RESET_TEST_ON_SFT)
-
-> +		}
-> +	} else {
-> +		unsigned int voice_mode = 0;
-
-what about...
-		unsigned int ul_src_con0 = 0; /* default value */
-		unsigned int voice_mode =  adda_ul_rate_transform(afe, rate);
-
-> +		unsigned int ul_src_con0 = 0;	/* default value */
-> +
-> +		adda_priv->ul_rate = rate;
-> +
-> +		voice_mode = adda_ul_rate_transform(afe, rate);
-> +
-> +		ul_src_con0 |= (voice_mode << 17) & (0x7 << 17);
-> +
-> +		/* enable iir */
-> +		ul_src_con0 |= (1 << UL_IIR_ON_TMP_CTL_SFT) &
-> +			       UL_IIR_ON_TMP_CTL_MASK_SFT;
-> +		ul_src_con0 |= (UL_IIR_SW << UL_IIRMODE_CTL_SFT) &
-> +			       UL_IIRMODE_CTL_MASK_SFT;
-> +		switch (id) {
-> +		case MT8186_DAI_ADDA:
-> +		case MT8186_DAI_AP_DMIC:
-> +			/* 35Hz @ 48k */
-> +			regmap_write(afe->regmap,
-> +				     AFE_ADDA_IIR_COEF_02_01, 0x00000000);
-
-Please drop leading zeroes:
-
-regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_02_01, 0);
-
-> +			regmap_write(afe->regmap,
-> +				     AFE_ADDA_IIR_COEF_04_03, 0x00003FB8);
-
-... and also please write hex in lower-case:
-
-regmap_write(afe->regmap,
-	     AFE_ADDA_IIR_COEF_04_03, 0x03fb8);
-
-> +			regmap_write(afe->regmap,
-> +				     AFE_ADDA_IIR_COEF_06_05, 0x3FB80000);
-> +			regmap_write(afe->regmap,
-> +				     AFE_ADDA_IIR_COEF_08_07, 0x3FB80000);
-> +			regmap_write(afe->regmap,
-> +				     AFE_ADDA_IIR_COEF_10_09, 0x0000C048);
-> +
-> +			regmap_write(afe->regmap,
-> +				     AFE_ADDA_UL_SRC_CON0, ul_src_con0);
-> +
-> +			/* Using Internal ADC */
-> +			regmap_update_bits(afe->regmap,
-> +					   AFE_ADDA_TOP_CON0,
-> +					   0x1 << 0,
-> +					   0x0 << 0);
-
-Please use the BIT() macro:
-
-regmap_update_bits(afe->regmap, AFE_ADDA_TOP_CON0, BIT(0), 0);
-
-P.S.: 87 columns is ok
-
-> +
-> +			/* mtkaif_rxif_data_mode = 0, amic */
-> +			regmap_update_bits(afe->regmap,
-> +					   AFE_ADDA_MTKAIF_RX_CFG0,
-> +					   0x1 << 0,
-> +					   0x0 << 0);
-
-same here.
-
-> +			break;
-> +		default:
-> +			break;
-> +		}
-> +
-> +		/* ap dmic */
-> +		switch (id) {
-> +		case MT8186_DAI_AP_DMIC:
-> +			mtk_adda_ul_src_dmic(afe, id);
-> +			break;
-> +		default:
-> +			break;
-> +		}
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-
-Regards,
-Angelo
+		 __func__, dai->id, substream->stream, rate);
 
 
 _______________________________________________
