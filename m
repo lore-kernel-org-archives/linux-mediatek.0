@@ -4,84 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EAC7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 15:20:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED62AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 15:54:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uASfDNAY/xNymSYkSaNazCgZzuY0/uPBFy8Jze4yEUI=; b=OSc6eYPR80pdJD
-	gJ7FJ6zSmVLb+0cMf4MEe1rJwqeoWFxnmunJPkUqJLTjDrg2CQVv+SOiicZ35VhMOmHCFI0P6HftX
-	nW0HUnDpIa9cMO2V0dhxZxZHFcu38Cfbq8hmrJDDroSrldD5lJ7re2qwfPighqKbfivh19MXRFpWM
-	r0dw74JRoB4bJenoj1HlR2HmwzUhdLSw2fGWqGO0hH69so5vt0f//J+fJAhG4HSXJSY3s2c/V5Jyx
-	GUwV3wS9RZpY9kZpcIiNpzGDZmJ18o3iXYxMuUGo4wJLGlHUbG/KkaO7JgV6MttN5HIO8BEWBs289
-	vU962kU7U3GISSsZJR2g==;
+	List-Owner; bh=yUkG4gzmclbtnCBGG3paguOFQ2wjXjoCZWxGkMExMsU=; b=GafuFJbeqmWU/0
+	hmA1U2xcbNdxbQ/44yHjyuHJSsxG+Rlvw23mT4l46pGacbBnpDGeLg1xsRlzhFtwPNkC/fD+ZR7Y8
+	VjJ/daNtU8WcKfJxIs/1XuqCEILdV3L+RYG/jEIRAafIriwYxIUXduE5vmr/azdeuwtBVFKOBE8l4
+	6AQe+nzOML/MhtcyxtsdR8Jth2xlIENclNXyHiC1XsJ0cr/KB3nsiARss8pW3kNChjImagSMPPdR6
+	/ymg1K1yDjvijPudQ2GwQXXJmXWwKypiHw5CMoOyAmauFCh0YEyyAjRbA+Ki/W49VKpcJS7q6+alY
+	yo6w3vjqOV1uqCpHLIuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nL53O-00F3eW-VR; Fri, 18 Feb 2022 15:20:14 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1nL5ad-00FBvw-QV; Fri, 18 Feb 2022 15:54:35 +0000
+Received: from mail-oo1-xc30.google.com ([2607:f8b0:4864:20::c30])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nL4ga-00EsUH-O0
- for linux-mediatek@lists.infradead.org; Fri, 18 Feb 2022 14:56:59 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id v12so15070682wrv.2
- for <linux-mediatek@lists.infradead.org>; Fri, 18 Feb 2022 06:56:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=5/RdwfwXY6UExlPUZ/iSZUzkntptWzw+gzqe04u2tXc=;
- b=teOdr4Geeboofp+YzIdEPzSvE3NWO+qYtS34DLXFevh2OrG3PgK1R05PYqZ34NfWEj
- K9J9AH2FHTjF6eJEogPkAU2egiiY8ydbZI9hQt2T38eyrTVHcCbpkEI0pJzxDXPudCjC
- aiMCpMDBdUlH1JD8XwOpnQvIf3TLu0HIh2J5DUgdNmEzRnaahI+SufvCljUKervuBg0e
- 2JSG8U4QbIzBIw4+C5SBnj8X6ofFOn+oC+mYDIYKogNtT1BMxsUy6pCltbf0nk2C500Z
- y+jXnVyZICMmI1N5ipyKu1kH8+HAH3hOQq9vn04yaWbdTQh+FKc8kjC/RbaBXM61EbCs
- uJdg==
+ id 1nL5aa-00FBv4-PT; Fri, 18 Feb 2022 15:54:34 +0000
+Received: by mail-oo1-xc30.google.com with SMTP id
+ i10-20020a4aab0a000000b002fccf890d5fso3975257oon.5; 
+ Fri, 18 Feb 2022 07:54:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=QQJnGEvj1IWlzn/kQU3xNdCOUk3mjEmKlzY4/R3+WQI=;
+ b=TNwwv5eZMYbFtrgVKrARlarq8w8wALPJqQI5N6JlSz/H2LztXDQbUGRUntS5NXl9vW
+ ir3mzNqNOWkGdrrFqsuH9HlzFZ9U2bDym6d1oBn+Amhs89BzlCziudAdOK95f3sHMOze
+ 8nGeIDsNK0LF7P1NwGyO5I3DNGPk7DRj+kmNHqFOoJssyPr0luIY0KDZZQAGfu/jkHGD
+ sMXGXQZPTmxAFQlkkmvluTXy1JUZC6mzV0aXS5IqLTARe3VDOyvwd+Of5jNsdXfDU+Ir
+ KgZd53astXMwxGQHcdZgviLNRZLJDBK7gZFTsvf2ygKNykpEaPYYaoWBqwd3cizATuAe
+ 1y3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=5/RdwfwXY6UExlPUZ/iSZUzkntptWzw+gzqe04u2tXc=;
- b=YfHepleSMrxOgmRABLzNlbGKLvM2mWE1IxU75Q0wxm2Cm+cQnBFVkxntBFO6pwjHHQ
- L04LxE2Od7kXE2yQnFFOypfXs4+5DZoKMAFv3jByKSrVynKYnzDlyUyJThM/MGhjRQdV
- CyadBxfK+EMU7FjrcEC+SIlhDWcRqp07onPWnuknIGQNeYEqfjR6k7UTOU6p5Qs8GamO
- QzfNKDGcXyAQa184UXr4bK5OSC8TPHWpqiADhozIu5f09bj4SRaducmoyKccCRqik8Xj
- XYkOM39ENhibBBwAcrFRAYvUTYuoGz1fEJb1SL+AU9sultS/6YdD1blLVmxJxFFqvxzt
- LBcA==
-X-Gm-Message-State: AOAM533EiDEVYW4o+Nt1pV9EuLS1sxFLZTYn1ptkCLK4KSOMH1EzTADF
- 6TNb+rxDl/EeThZ4I44cUXmC2A==
-X-Google-Smtp-Source: ABdhPJwTAA/r115O/m7m50GKdOXuZIQvmOu58+iH3A7UbXVpx1rNID+oGt63TZWcYvyjI7gYUh4eRg==
-X-Received: by 2002:a5d:6a8a:0:b0:1e3:310c:8b1e with SMTP id
- s10-20020a5d6a8a000000b001e3310c8b1emr6286505wru.717.1645196199091; 
- Fri, 18 Feb 2022 06:56:39 -0800 (PST)
-Received: from localhost.localdomain
- (2a02-8440-6241-3b28-3074-96af-9642-0002.rev.sfr.net.
- [2a02:8440:6241:3b28:3074:96af:9642:2])
- by smtp.gmail.com with ESMTPSA id b10sm47431454wrd.8.2022.02.18.06.56.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 18 Feb 2022 06:56:38 -0800 (PST)
-From: Guillaume Ranquet <granquet@baylibre.com>
-To: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
- daniel@ffwll.ch, robh+dt@kernel.org, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, matthias.bgg@gmail.com,
- chunfeng.yun@mediatek.com, kishon@ti.com, vkoul@kernel.org, deller@gmx.de,
- ck.hu@mediatek.com, jitao.shi@mediatek.com,
- angelogioacchino.delregno@collabora.com
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-fbdev@vger.kernel.org
-Subject: [PATCH v8 19/19] drm/mediatek: DP audio support for mt8195
-Date: Fri, 18 Feb 2022 15:54:37 +0100
-Message-Id: <20220218145437.18563-20-granquet@baylibre.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220218145437.18563-1-granquet@baylibre.com>
-References: <20220218145437.18563-1-granquet@baylibre.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=QQJnGEvj1IWlzn/kQU3xNdCOUk3mjEmKlzY4/R3+WQI=;
+ b=AgMLp4253fCgECe1zdEJkE3k7TDeyX/MdIV3Jcp0fHzEGpkwkv7qsosDd2ZViXRMwk
+ eOChKlvn+S0fgMhpIenKddotDwJpyUb8EWN6Ds9JyUy2idH7+wyJY/vfwhfXpngVWvS6
+ 6Bs78YX/mfGbHwWYIQVXwNK7C/uHtp4DeZtg9O054CzM3BYwpzO7tkTvRcme2Uyk5GEV
+ J8eGVkTjPjkDAVN0SDJ/IiRx5Lwr3BkU6T9mJjocoVLHNvKvjqOpCchLCVRngNsyt54z
+ xq/pS8VxHPAXHsRkJG5vLTbJiuVKGeZ3u71MGtdfvd+5Y7FlToIIbsbPSuRCHIjUo97D
+ ZRjQ==
+X-Gm-Message-State: AOAM532ysR/Lyo2sm4kinDXJfSbl/B5YNpz1k595xe8Hvu4ZQKhN44f9
+ ndbrsOl0SD9Gc1Q6N6jbsSRmn2Uxco/097wf//0=
+X-Google-Smtp-Source: ABdhPJxGsbPPh2j3tUTqSAM9h/ZqCs4rSFX4Vk4DD34Y7lIhBx+wmR81nznW19bZa8bsAbjakZMVT9mAGlHVYnsLW8c=
+X-Received: by 2002:a05:6870:912c:b0:d3:44be:7256 with SMTP id
+ o44-20020a056870912c00b000d344be7256mr3246887oae.73.1645199670906; Fri, 18
+ Feb 2022 07:54:30 -0800 (PST)
 MIME-Version: 1.0
+References: <20220208084234.1684930-1-hsinyi@chromium.org>
+ <CACvgo53u01BK_D0ZssV+gCepjxSz23Nr5Dy1qXeaAoJuu6VCFQ@mail.gmail.com>
+ <KW6DNh6IRRgVJx9DfOFBnEqc4a0x-AnDXEbMxwpfEbk8dOn_KGVzAfo-slJWq-4nWW728Uc-OVpFh2w4fDE4-bxfkDuz1hFILRVvbcuXqaw=@emersion.fr>
+ <CACvgo532-pC+7DLFCo=DWTX-OnJEJvSoTmQnt3_qLhiT4cqEMg@mail.gmail.com>
+ <GYG6EVT1MqtmfKiPpMhDG9mpuATnmwVDq2PuE_dpDat5oQW_t1tUfm39lSWHj32D5r7mrog27sL4dkgdMYQ5BN830TfVOrgQ4Ts8LcO8Hcs=@emersion.fr>
+ <CACvgo52+o9_ETC+1RKzqKkyw3ZJ28RjH0BqC9DfmNAKqByud8Q@mail.gmail.com>
+ <d3f0cc20-d226-ee42-cc98-b469949cec9e@redhat.com>
+ <YV87l-2XXzmZ2i6GuGd__uf85s2JQkbXt_qTQDYlbBh1kW2COJoNLUDinmLCokKyy-_0ZnIMUcZeW0GdJ8zF690iYi4ThKrjc09omNMe-0g=@emersion.fr>
+ <d4f5e101-3dd5-2f3a-6c14-6b32ee37c223@redhat.com>
+ <DM7TzJ-fZEHjoGXvMG8XLfJ2VxohRxotL40_0Vb4cAUvrELgV9BvPGbK6HAwOYOBCx8qXtY2LQ0xnZ-nlH_IVCyne7tMKfvkqxtoWI6MkTw=@emersion.fr>
+In-Reply-To: <DM7TzJ-fZEHjoGXvMG8XLfJ2VxohRxotL40_0Vb4cAUvrELgV9BvPGbK6HAwOYOBCx8qXtY2LQ0xnZ-nlH_IVCyne7tMKfvkqxtoWI6MkTw=@emersion.fr>
+From: Alex Deucher <alexdeucher@gmail.com>
+Date: Fri, 18 Feb 2022 10:54:19 -0500
+Message-ID: <CADnq5_N6zqn59VH0nTx34gcfXbCvQAvRjmQZCgc9DDGxhYOS4Q@mail.gmail.com>
+Subject: Re: [Intel-gfx] [PATCH v8 1/3] gpu: drm: separate panel orientation
+ property creating and value setting
+To: Simon Ser <contact@emersion.fr>
+Cc: Hans de Goede <hdegoede@redhat.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ ML dri-devel <dri-devel@lists.freedesktop.org>,
+ devicetree <devicetree@vger.kernel.org>, 
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, 
+ Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
+ Emil Velikov <emil.l.velikov@gmail.com>, 
+ "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>,
+ Maxime Ripard <mripard@kernel.org>, 
+ Alex Deucher <alexander.deucher@amd.com>, Rob Herring <robh+dt@kernel.org>, 
+ linux-mediatek@lists.infradead.org, 
+ amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, 
+ Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Harry Wentland <harry.wentland@amd.com>,
+ LAKML <linux-arm-kernel@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220218_065640_923431_09B5BDCD 
-X-CRM114-Status: GOOD (  19.49  )
+X-CRM114-CacheID: sfid-20220218_075432_861079_138DDCDE 
+X-CRM114-Status: GOOD (  56.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,839 +106,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds audio support to the DP driver for mt8195 with up to 8
-channels.
+On Fri, Feb 18, 2022 at 7:13 AM Simon Ser <contact@emersion.fr> wrote:
+>
+> On Friday, February 18th, 2022 at 12:54, Hans de Goede <hdegoede@redhat.com> wrote:
+>
+> > On 2/18/22 12:39, Simon Ser wrote:
+> > > On Friday, February 18th, 2022 at 11:38, Hans de Goede <hdegoede@redhat.com> wrote:
+> > >
+> > >> What I'm reading in the above is that it is being considered to allow
+> > >> changing the panel-orientation value after the connector has been made
+> > >> available to userspace; and let userspace know about this through a uevent.
+> > >>
+> > >> I believe that this is a bad idea, it is important to keep in mind here
+> > >> what userspace (e.g. plymouth) uses this prorty for. This property is
+> > >> used to rotate the image being rendered / shown on the framebuffer to
+> > >> adjust for the panel orientation.
+> > >>
+> > >> So now lets assume we apply the correct upside-down orientation later
+> > >> on a device with an upside-down mounted LCD panel. Then on boot the
+> > >> following could happen:
+> > >>
+> > >> 1. amdgpu exports a connector for the LCD panel to userspace without
+> > >> setting panel-orient=upside-down
+> > >> 2. plymouth sees this and renders its splash normally, but since the
+> > >> panel is upside-down it will now actually show upside-down
+> > >
+> > > At this point amdgpu hasn't probed the connector yet. So the connector
+> > > will be marked as disconnected, and plymouth shouldn't render anything.
+> >
+> > If before the initial probe of the connector there is a /dev/dri/card0
+> > which plymouth can access, then plymouth may at this point decide
+> > to disable any seemingly unused crtcs, which will make the screen go black...
+> >
+> > I'm not sure if plymouth will actually do this, but AFAICT this would
+> > not be invalid behavior for a userspace kms consumer to do and I
+> > believe it is likely that mutter will disable unused crtcs.
+> >
+> > IMHO it is just a bad idea to register /dev/dri/card0 with userspace
+> > before the initial connector probe is done. Nothing good can come
+> > of that.
+> >
+> > If all the exposed connectors initially are going to show up as
+> > disconnected anyways what is the value in registering /dev/dri/card0
+> > with userspace early ?
+>
+> OK. I'm still unsure how I feel about this, but I think I agree with
+> you. That said, the amdgpu architecture is quite involved with multiple
+> abstraction levels, so I don't think I'm equipped to write a patch to
+> fix this...
+>
+> cc Daniel Vetter: can you confirm probing all connectors is a good thing
+> to do on driver module load?
 
-Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
----
- drivers/gpu/drm/mediatek/mtk_dp.c | 641 +++++++++++++++++++++++++++++-
- 1 file changed, 640 insertions(+), 1 deletion(-)
+I don't think it's a big deal to change, but at least my
+understanding, albeit this was back in the early KMS days, was that
+probing was driven by things outside of the driver.  I.e., there is no
+need to probe displays if nothing is going to use them.  If you want
+to use the displays, you'd call probe first before trying to use them
+so you know what is available.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 4e880d8a8a186..837a000cc6560 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -121,9 +121,16 @@ enum mtk_dp_color_depth {
- 	MTK_DP_COLOR_DEPTH_UNKNOWN = 5,
- };
- 
-+struct mtk_dp_audio_cfg {
-+	int sample_rate;
-+	int word_length_bits;
-+	int channels;
-+};
-+
- struct mtk_dp_info {
- 	enum mtk_dp_color_depth depth;
- 	enum mtk_dp_color_format format;
-+	struct mtk_dp_audio_cfg audio_caps;
- 	struct mtk_dp_timings timings;
- };
- 
-@@ -169,19 +176,50 @@ struct mtk_dp {
- 	struct clk *dp_tx_clk;
- 
- 	bool enabled;
-+	bool audio_enable;
- 
- 	bool has_fec;
- 	/* Protects the mtk_dp struct */
- 	struct mutex dp_lock;
- 
-+	/* Protects the plugged_cb as it's used in both bridge ops and audio */
-+	struct mutex update_plugged_status_lock;
-+
- 	hdmi_codec_plugged_cb plugged_cb;
- 	struct device *codec_dev;
-+	/* Protects the eld data as it's used in both bridge ops and audio */
-+	struct mutex eld_lock;
- 	u8 connector_eld[MAX_ELD_BYTES];
- 	struct drm_connector *conn;
- 	bool need_debounce;
- 	struct timer_list debounce_timer;
- };
- 
-+enum mtk_dp_sdp_type {
-+	MTK_DP_SDP_NONE = 0x00,
-+	MTK_DP_SDP_ACM = 0x01,
-+	MTK_DP_SDP_ISRC = 0x02,
-+	MTK_DP_SDP_AVI = 0x03,
-+	MTK_DP_SDP_AUI = 0x04,
-+	MTK_DP_SDP_SPD = 0x05,
-+	MTK_DP_SDP_MPEG = 0x06,
-+	MTK_DP_SDP_NTSC = 0x07,
-+	MTK_DP_SDP_VSP = 0x08,
-+	MTK_DP_SDP_VSC = 0x09,
-+	MTK_DP_SDP_EXT = 0x0A,
-+	MTK_DP_SDP_PPS0 = 0x0B,
-+	MTK_DP_SDP_PPS1 = 0x0C,
-+	MTK_DP_SDP_PPS2 = 0x0D,
-+	MTK_DP_SDP_PPS3 = 0x0E,
-+	MTK_DP_SDP_DRM = 0x10,
-+	MTK_DP_SDP_MAX_NUM
-+};
-+
-+struct mtk_dp_sdp_packet {
-+	enum mtk_dp_sdp_type type;
-+	struct dp_sdp sdp;
-+};
-+
- static struct regmap_config mtk_dp_regmap_config = {
- 	.reg_bits = 32,
- 	.val_bits = 32,
-@@ -457,12 +495,269 @@ static void mtk_dp_pg_disable(struct mtk_dp *mtk_dp)
- 			   4 << PGEN_PATTERN_SEL_SHIFT, PGEN_PATTERN_SEL_MASK);
- }
- 
-+static void mtk_dp_audio_setup_channels(struct mtk_dp *mtk_dp,
-+					struct mtk_dp_audio_cfg *cfg)
-+{
-+	u32 channel_enable_bits;
-+
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3324,
-+			   AUDIO_SOURCE_MUX_DP_ENC1_P0_DPRX,
-+			   AUDIO_SOURCE_MUX_DP_ENC1_P0_MASK);
-+
-+	//audio channel count change reset
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_33F4, BIT(9), BIT(9));
-+
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3304,
-+			   AU_PRTY_REGEN_DP_ENC1_P0_MASK,
-+			   AU_PRTY_REGEN_DP_ENC1_P0_MASK);
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3304,
-+			   AU_CH_STS_REGEN_DP_ENC1_P0_MASK,
-+			   AU_CH_STS_REGEN_DP_ENC1_P0_MASK);
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3304,
-+			   AUDIO_SAMPLE_PRSENT_REGEN_DP_ENC1_P0_MASK,
-+			   AUDIO_SAMPLE_PRSENT_REGEN_DP_ENC1_P0_MASK);
-+
-+	switch (cfg->channels) {
-+	case 2:
-+		channel_enable_bits = AUDIO_2CH_SEL_DP_ENC0_P0_MASK |
-+				      AUDIO_2CH_EN_DP_ENC0_P0_MASK;
-+		break;
-+	case 8:
-+	default:
-+		channel_enable_bits = AUDIO_8CH_SEL_DP_ENC0_P0_MASK |
-+				      AUDIO_8CH_EN_DP_ENC0_P0_MASK;
-+		break;
-+	}
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3088,
-+			   channel_enable_bits | AU_EN_DP_ENC0_P0_MASK,
-+			   AUDIO_2CH_SEL_DP_ENC0_P0_MASK | AUDIO_2CH_EN_DP_ENC0_P0_MASK |
-+			   AUDIO_8CH_SEL_DP_ENC0_P0_MASK |
-+			   AUDIO_8CH_EN_DP_ENC0_P0_MASK | AU_EN_DP_ENC0_P0_MASK);
-+
-+	//audio channel count change reset
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_33F4, 0, BIT(9));
-+
-+	//enable audio reset
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_33F4, BIT(0), BIT(0));
-+}
-+
-+static void mtk_dp_audio_channel_status_set(struct mtk_dp *mtk_dp,
-+					    struct mtk_dp_audio_cfg *cfg)
-+{
-+	struct snd_aes_iec958 iec = { 0 };
-+
-+	switch (cfg->sample_rate) {
-+	case 32000:
-+		iec.status[3] = IEC958_AES3_CON_FS_32000;
-+		break;
-+	case 44100:
-+		iec.status[3] = IEC958_AES3_CON_FS_44100;
-+		break;
-+	case 48000:
-+		iec.status[3] = IEC958_AES3_CON_FS_48000;
-+		break;
-+	case 88200:
-+		iec.status[3] = IEC958_AES3_CON_FS_88200;
-+		break;
-+	case 96000:
-+		iec.status[3] = IEC958_AES3_CON_FS_96000;
-+		break;
-+	case 192000:
-+		iec.status[3] = IEC958_AES3_CON_FS_192000;
-+		break;
-+	default:
-+		iec.status[3] = IEC958_AES3_CON_FS_NOTID;
-+		break;
-+	}
-+
-+	switch (cfg->word_length_bits) {
-+	case 16:
-+		iec.status[4] = IEC958_AES4_CON_WORDLEN_20_16;
-+		break;
-+	case 20:
-+		iec.status[4] = IEC958_AES4_CON_WORDLEN_20_16 |
-+			IEC958_AES4_CON_MAX_WORDLEN_24;
-+		break;
-+	case 24:
-+		iec.status[4] = IEC958_AES4_CON_WORDLEN_24_20 |
-+			IEC958_AES4_CON_MAX_WORDLEN_24;
-+		break;
-+	default:
-+		iec.status[4] = IEC958_AES4_CON_WORDLEN_NOTID;
-+	}
-+
-+	// IEC 60958 consumer channel status bits
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_308C,
-+			   0,
-+			   CH_STATUS_0_DP_ENC0_P0_MASK);
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3090,
-+			   iec.status[3] << 8,
-+			   CH_STATUS_1_DP_ENC0_P0_MASK);
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3094, iec.status[4],
-+			   CH_STATUS_2_DP_ENC0_P0_MASK);
-+}
-+
-+static void mtk_dp_audio_sdp_asp_set_channels(struct mtk_dp *mtk_dp,
-+					      int channels)
-+{
-+	if (channels != 2 && channels != 8)
-+		channels = 8;
-+
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_312C,
-+			   (channels - 1) << ASP_HB3_DP_ENC0_P0_SHIFT,
-+			   ASP_HB2_DP_ENC0_P0_MASK | ASP_HB3_DP_ENC0_P0_MASK);
-+}
-+
-+static void mtk_dp_audio_set_divider(struct mtk_dp *mtk_dp)
-+{
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30BC,
-+			   AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2,
-+			   AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_MASK);
-+}
-+
- static bool mtk_dp_plug_state(struct mtk_dp *mtk_dp)
- {
- 	return !!(mtk_dp_read(mtk_dp, MTK_DP_TRANS_P0_3414) &
- 		  HPD_DB_DP_TRANS_P0_MASK);
- }
- 
-+static void mtk_dp_sdp_trigger_packet(struct mtk_dp *mtk_dp,
-+				      enum mtk_dp_sdp_type type)
-+{
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3280, type,
-+			   SDP_PACKET_TYPE_DP_ENC1_P0_MASK);
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3280, SDP_PACKET_W_DP_ENC1_P0,
-+			   SDP_PACKET_W_DP_ENC1_P0);
-+}
-+
-+static void mtk_dp_sdp_set_data(struct mtk_dp *mtk_dp, u8 *data_bytes)
-+{
-+	mtk_dp_bulk_16bit_write(mtk_dp, MTK_DP_ENC1_P0_3200, data_bytes, 0x10);
-+}
-+
-+static void mtk_dp_sdp_set_header(struct mtk_dp *mtk_dp,
-+				  enum mtk_dp_sdp_type type,
-+				  struct dp_sdp_header *header)
-+{
-+	u32 db_addr;
-+
-+	switch (type) {
-+	case MTK_DP_SDP_DRM:
-+		db_addr = MTK_DP_ENC0_P0_3138;
-+		break;
-+	case MTK_DP_SDP_PPS0:
-+	case MTK_DP_SDP_PPS1:
-+	case MTK_DP_SDP_PPS2:
-+	case MTK_DP_SDP_PPS3:
-+		db_addr = MTK_DP_ENC0_P0_3130;
-+		break;
-+	default:
-+		db_addr = MTK_DP_ENC0_P0_30D8 + (type - MTK_DP_SDP_ACM) * 8;
-+	}
-+
-+	mtk_dp_bulk_16bit_write(mtk_dp, db_addr, (u8 *)header, 4);
-+}
-+
-+static const u32 mtk_dp_sdp_type_to_reg[MTK_DP_SDP_MAX_NUM] = {
-+	/* MTK_DP_SDP_NONE => */ 0x0,
-+	/* MTK_DP_SDP_ACM  => */ MTK_DP_ENC0_P0_30B4,
-+	/* MTK_DP_SDP_ISRC => */ MTK_DP_ENC0_P0_30B4 + 1,
-+	/* MTK_DP_SDP_AVI  => */ MTK_DP_ENC0_P0_30A4 + 1,
-+	/* MTK_DP_SDP_AUI  => */ MTK_DP_ENC0_P0_30A8,
-+	/* MTK_DP_SDP_SPD  => */ MTK_DP_ENC0_P0_30A8 + 1,
-+	/* MTK_DP_SDP_MPEG => */ MTK_DP_ENC0_P0_30AC,
-+	/* MTK_DP_SDP_NTSC => */ MTK_DP_ENC0_P0_30AC + 1,
-+	/* MTK_DP_SDP_VSP  => */ MTK_DP_ENC0_P0_30B0,
-+	/* MTK_DP_SDP_VSC  => */ MTK_DP_ENC0_P0_30B8,
-+	/* MTK_DP_SDP_EXT  => */ MTK_DP_ENC0_P0_30B0 + 1,
-+	/* MTK_DP_SDP_PPS0 => */ MTK_DP_ENC0_P0_31E8,
-+	/* MTK_DP_SDP_PPS1 => */ MTK_DP_ENC0_P0_31E8,
-+	/* MTK_DP_SDP_PPS2 => */ MTK_DP_ENC0_P0_31E8,
-+	/* MTK_DP_SDP_PPS3 => */ MTK_DP_ENC0_P0_31E8,
-+	/* MTK_DP_SDP_DRM  => */ MTK_DP_ENC0_P0_31DC,
-+};
-+
-+static void mtk_dp_disable_sdp(struct mtk_dp *mtk_dp, enum mtk_dp_sdp_type type)
-+{
-+	if (type == MTK_DP_SDP_NONE)
-+		return;
-+
-+	// Disable periodic send
-+	mtk_dp_update_bits(mtk_dp, mtk_dp_sdp_type_to_reg[type] & 0xfffc, 0,
-+			   0xFF << ((mtk_dp_sdp_type_to_reg[type] & 3) * 8));
-+}
-+
-+static void mtk_dp_setup_sdp(struct mtk_dp *mtk_dp,
-+			     struct mtk_dp_sdp_packet *packet)
-+{
-+	mtk_dp_sdp_set_data(mtk_dp, packet->sdp.db);
-+	mtk_dp_sdp_set_header(mtk_dp, packet->type, &packet->sdp.sdp_header);
-+
-+	mtk_dp_disable_sdp(mtk_dp, packet->type);
-+
-+	switch (packet->type) {
-+	case MTK_DP_SDP_NONE:
-+		break;
-+	case MTK_DP_SDP_ISRC:
-+		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_31EC,
-+				   0x1C << ISRC1_HB3_DP_ENC0_P0_SHIFT,
-+				   ISRC1_HB3_DP_ENC0_P0_MASK);
-+		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3280, MTK_DP_SDP_ISRC,
-+				   SDP_PACKET_TYPE_DP_ENC1_P0_MASK);
-+
-+		if (packet->sdp.sdp_header.HB3 & BIT(2))
-+			mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30BC,
-+					   BIT(ISRC_CONT_DP_ENC0_P0_SHIFT),
-+					   ISRC_CONT_DP_ENC0_P0_MASK);
-+		else
-+			mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30BC, 0,
-+					   ISRC_CONT_DP_ENC0_P0_MASK);
-+
-+		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3280,
-+				   SDP_PACKET_W_DP_ENC1_P0,
-+				   SDP_PACKET_W_DP_ENC1_P0);
-+		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30B4,
-+				   5 << ISRC_CFG_DP_ENC0_P0_SHIFT,
-+				   ISRC_CFG_DP_ENC0_P0_MASK);
-+		break;
-+	case MTK_DP_SDP_DRM:
-+		mtk_dp_sdp_trigger_packet(mtk_dp, packet->type);
-+		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_31DC,
-+				   5 << HDR0_CFG_DP_ENC0_P0_SHIFT,
-+				   HDR0_CFG_DP_ENC0_P0_MASK);
-+		break;
-+	case MTK_DP_SDP_ACM:
-+	case MTK_DP_SDP_AVI:
-+	case MTK_DP_SDP_AUI:
-+	case MTK_DP_SDP_SPD:
-+	case MTK_DP_SDP_MPEG:
-+	case MTK_DP_SDP_NTSC:
-+	case MTK_DP_SDP_VSP:
-+	case MTK_DP_SDP_VSC:
-+	case MTK_DP_SDP_EXT:
-+	case MTK_DP_SDP_PPS0:
-+	case MTK_DP_SDP_PPS1:
-+	case MTK_DP_SDP_PPS2:
-+	case MTK_DP_SDP_PPS3:
-+		mtk_dp_sdp_trigger_packet(mtk_dp, packet->type);
-+		/* Enable periodic sending */
-+		mtk_dp_update_bits(mtk_dp,
-+				   mtk_dp_sdp_type_to_reg[packet->type] & 0xfffc,
-+				   0x05 << ((mtk_dp_sdp_type_to_reg[packet->type] & 3) * 8),
-+				   0xff << ((mtk_dp_sdp_type_to_reg[packet->type] & 3) * 8));
-+		break;
-+	default:
-+		break;
-+	}
-+}
-+
-+static void mtk_dp_sdp_vsc_ext_disable(struct mtk_dp *mtk_dp)
-+{
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30A0, 0,
-+			   BIT(7) | BIT(8) | BIT(12));
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_328C, 0, BIT(7));
-+}
-+
- static void mtk_dp_aux_irq_clear(struct mtk_dp *mtk_dp)
- {
- 	mtk_dp_write(mtk_dp, MTK_DP_AUX_P0_3640,
-@@ -1062,6 +1357,36 @@ static void mtk_dp_video_mute(struct mtk_dp *mtk_dp, bool enable)
- 		mtk_dp_sip_atf_call(MTK_DP_SIP_ATF_VIDEO_UNMUTE, enable);
- }
- 
-+static void mtk_dp_audio_mute(struct mtk_dp *mtk_dp, bool mute)
-+{
-+	if (mute) {
-+		mtk_dp_update_bits(mtk_dp,
-+				   MTK_DP_ENC0_P0_3030,
-+				   BIT(VBID_AUDIO_MUTE_SW_DP_ENC0_P0_SHIFT) |
-+				   BIT(VBID_AUDIO_MUTE_SEL_DP_ENC0_P0_SHIFT),
-+				   VBID_AUDIO_MUTE_FLAG_SW_DP_ENC0_P0_MASK |
-+				   VBID_AUDIO_MUTE_FLAG_SEL_DP_ENC0_P0_MASK);
-+
-+		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3088, 0,
-+				   AU_EN_DP_ENC0_P0_MASK);
-+		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30A4, 0,
-+				   AU_TS_CFG_DP_ENC0_P0_MASK);
-+
-+	} else {
-+		mtk_dp_update_bits(mtk_dp,
-+				   MTK_DP_ENC0_P0_3030, 0,
-+				   VBID_AUDIO_MUTE_FLAG_SW_DP_ENC0_P0_MASK |
-+				   VBID_AUDIO_MUTE_FLAG_SEL_DP_ENC0_P0_MASK);
-+
-+		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3088,
-+				   BIT(AU_EN_DP_ENC0_P0_SHIFT),
-+				   AU_EN_DP_ENC0_P0_MASK);
-+		// Send one every two frames
-+		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30A4, 0x0F,
-+				   AU_TS_CFG_DP_ENC0_P0_MASK);
-+	}
-+}
-+
- static void mtk_dp_power_enable(struct mtk_dp *mtk_dp)
- {
- 	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_RESET_AND_PROBE, 0,
-@@ -1105,6 +1430,75 @@ static void mtk_dp_initialize_priv_data(struct mtk_dp *mtk_dp)
- 	mtk_dp->info.timings.frame_rate = 60;
- 
- 	mtk_dp->has_fec = false;
-+	mtk_dp->audio_enable = false;
-+}
-+
-+static void mtk_dp_sdp_set_down_cnt_init(struct mtk_dp *mtk_dp,
-+					 u32 sram_read_start)
-+{
-+	u32 sdp_down_cnt_init = 0;
-+	u32 dc_offset;
-+
-+	if (mtk_dp->info.timings.pix_rate_khz > 0)
-+		sdp_down_cnt_init = sram_read_start *
-+				    mtk_dp->train_info.link_rate * 2700 * 8 /
-+				    (mtk_dp->info.timings.pix_rate_khz * 4);
-+
-+	switch (mtk_dp->train_info.lane_count) {
-+	case 1:
-+		sdp_down_cnt_init = sdp_down_cnt_init > 0x1A ?
-+						  sdp_down_cnt_init :
-+						  0x1A; //26
-+		break;
-+	case 2:
-+		// case for LowResolution && High Audio Sample Rate
-+		dc_offset = mtk_dp->info.timings.vtotal <= 525 ? 0x04 : 0x00;
-+		sdp_down_cnt_init = sdp_down_cnt_init > 0x10 ?
-+						  sdp_down_cnt_init :
-+						  0x10 + dc_offset; //20 or 16
-+		break;
-+	case 4:
-+	default:
-+		sdp_down_cnt_init =
-+			sdp_down_cnt_init > 0x06 ? sdp_down_cnt_init : 0x06; //6
-+		break;
-+	}
-+
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3040,
-+			   sdp_down_cnt_init
-+				   << SDP_DOWN_CNT_INIT_DP_ENC0_P0_SHIFT,
-+			   SDP_DOWN_CNT_INIT_DP_ENC0_P0_MASK);
-+}
-+
-+static void mtk_dp_sdp_set_down_cnt_init_in_hblank(struct mtk_dp *mtk_dp)
-+{
-+	int pix_clk_mhz;
-+	u32 dc_offset;
-+	u32 spd_down_cnt_init = 0;
-+
-+	pix_clk_mhz = mtk_dp->info.format == MTK_DP_COLOR_FORMAT_YUV_420 ?
-+				    mtk_dp->info.timings.pix_rate_khz / 2000 :
-+				    mtk_dp->info.timings.pix_rate_khz / 1000;
-+
-+	switch (mtk_dp->train_info.lane_count) {
-+	case 1:
-+		spd_down_cnt_init = 0x20;
-+		break;
-+	case 2:
-+		dc_offset = (mtk_dp->info.timings.vtotal <= 525) ? 0x14 : 0x00;
-+		spd_down_cnt_init = 0x18 + dc_offset;
-+		break;
-+	case 4:
-+	default:
-+		dc_offset = (mtk_dp->info.timings.vtotal <= 525) ? 0x08 : 0x00;
-+		if (pix_clk_mhz > mtk_dp->train_info.link_rate * 27)
-+			spd_down_cnt_init = 0x8;
-+		else
-+			spd_down_cnt_init = 0x10 + dc_offset;
-+		break;
-+	}
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3364, spd_down_cnt_init,
-+			   SDP_DOWN_CNT_INIT_IN_HBLANK_DP_ENC1_P0_MASK);
- }
- 
- static void mtk_dp_setup_tu(struct mtk_dp *mtk_dp)
-@@ -1120,6 +1514,8 @@ static void mtk_dp_setup_tu(struct mtk_dp *mtk_dp)
- 	}
- 
- 	mtk_dp_setup_encoder(mtk_dp);
-+	mtk_dp_sdp_set_down_cnt_init_in_hblank(mtk_dp);
-+	mtk_dp_sdp_set_down_cnt_init(mtk_dp, sram_read_start);
- }
- 
- static void mtk_dp_calculate_pixrate(struct mtk_dp *mtk_dp)
-@@ -1211,6 +1607,17 @@ static void mtk_dp_hpd_sink_event(struct mtk_dp *mtk_dp)
- 	}
- }
- 
-+static void mtk_dp_sdp_stop_sending(struct mtk_dp *mtk_dp)
-+{
-+	u8 packet_type;
-+
-+	for (packet_type = MTK_DP_SDP_ACM; packet_type < MTK_DP_SDP_MAX_NUM;
-+	     packet_type++)
-+		mtk_dp_disable_sdp(mtk_dp, packet_type);
-+
-+	mtk_dp_sdp_vsc_ext_disable(mtk_dp);
-+}
-+
- static void mtk_dp_train_update_swing_pre(struct mtk_dp *mtk_dp, int lanes,
- 					  u8 dpcd_adjust_req[2])
- {
-@@ -1466,6 +1873,52 @@ static bool mtk_dp_parse_capabilities(struct mtk_dp *mtk_dp)
- 	return true;
- }
- 
-+static int mtk_dp_edid_parse_audio_capabilities(struct mtk_dp *mtk_dp,
-+						struct mtk_dp_audio_cfg *cfg)
-+{
-+	struct cea_sad *sads;
-+	int sad_count;
-+	int i;
-+	int ret = 0;
-+
-+	mutex_lock(&mtk_dp->edid_lock);
-+	if (!mtk_dp->edid) {
-+		mutex_unlock(&mtk_dp->edid_lock);
-+		dev_err(mtk_dp->dev, "EDID not found!\n");
-+		return -EINVAL;
-+	}
-+
-+	sad_count = drm_edid_to_sad(mtk_dp->edid, &sads);
-+	mutex_unlock(&mtk_dp->edid_lock);
-+	if (sad_count <= 0) {
-+		drm_info(mtk_dp->drm_dev, "The SADs is NULL\n");
-+		return 0;
-+	}
-+
-+	for (i = 0; i < sad_count; i++) {
-+		int sample_rate;
-+		int word_length;
-+		// Only PCM supported at the moment
-+		if (sads[i].format != HDMI_AUDIO_CODING_TYPE_PCM)
-+			continue;
-+
-+		sample_rate = drm_cea_sad_get_sample_rate(&sads[i]);
-+		word_length =
-+			drm_cea_sad_get_uncompressed_word_length(&sads[i]);
-+		if (sample_rate <= 0 || word_length <= 0)
-+			continue;
-+
-+		cfg->channels = sads[i].channels;
-+		cfg->word_length_bits = word_length;
-+		cfg->sample_rate = sample_rate;
-+		ret = 1;
-+		break;
-+	}
-+	kfree(sads);
-+
-+	return ret;
-+}
-+
- static void mtk_dp_train_change_mode(struct mtk_dp *mtk_dp)
- {
- 	phy_reset(mtk_dp->phy);
-@@ -1586,7 +2039,15 @@ static void mtk_dp_train_handler(struct mtk_dp *mtk_dp)
- 			}
- 			break;
- 
--		case MTK_DP_TRAIN_STATE_CHECKEDID:
-+		case MTK_DP_TRAIN_STATE_CHECKEDID: {
-+			int caps_found = mtk_dp_edid_parse_audio_capabilities(mtk_dp,
-+				&mtk_dp->info.audio_caps);
-+			mtk_dp->audio_enable = caps_found > 0;
-+			if (!mtk_dp->audio_enable)
-+				memset(&mtk_dp->info.audio_caps, 0,
-+				       sizeof(mtk_dp->info.audio_caps));
-+		}
-+
- 			mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING_PRE;
- 			break;
- 
-@@ -1598,6 +2059,7 @@ static void mtk_dp_train_handler(struct mtk_dp *mtk_dp)
- 			ret = mtk_dp_train_start(mtk_dp);
- 			if (!ret) {
- 				mtk_dp_video_mute(mtk_dp, true);
-+				mtk_dp_audio_mute(mtk_dp, true);
- 				mtk_dp->train_state = MTK_DP_TRAIN_STATE_NORMAL;
- 				mtk_dp_fec_enable(mtk_dp, mtk_dp->has_fec);
- 			} else if (ret != -EAGAIN) {
-@@ -1630,6 +2092,48 @@ static void mtk_dp_video_enable(struct mtk_dp *mtk_dp, bool enable)
- 	}
- }
- 
-+static void mtk_dp_audio_sdp_setup(struct mtk_dp *mtk_dp,
-+				   struct mtk_dp_audio_cfg *cfg)
-+{
-+	struct mtk_dp_sdp_packet packet;
-+	struct hdmi_audio_infoframe frame;
-+
-+	hdmi_audio_infoframe_init(&frame);
-+	frame.coding_type = HDMI_AUDIO_CODING_TYPE_PCM;
-+	frame.channels = cfg->channels;
-+	frame.sample_frequency = cfg->sample_rate;
-+
-+	switch (cfg->word_length_bits) {
-+	case 16:
-+		frame.sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
-+		break;
-+	case 20:
-+		frame.sample_size = HDMI_AUDIO_SAMPLE_SIZE_20;
-+		break;
-+	case 24:
-+	default:
-+		frame.sample_size = HDMI_AUDIO_SAMPLE_SIZE_24;
-+		break;
-+	}
-+
-+	packet.type = MTK_DP_SDP_AUI;
-+	hdmi_audio_infoframe_pack_for_dp(&frame, &packet.sdp,
-+					 MTK_DP_DP_VERSION_11);
-+
-+	mtk_dp_audio_sdp_asp_set_channels(mtk_dp, cfg->channels);
-+	mtk_dp_setup_sdp(mtk_dp, &packet);
-+}
-+
-+static void mtk_dp_audio_setup(struct mtk_dp *mtk_dp,
-+			       struct mtk_dp_audio_cfg *cfg)
-+{
-+	mtk_dp_audio_sdp_setup(mtk_dp, cfg);
-+	mtk_dp_audio_channel_status_set(mtk_dp, cfg);
-+
-+	mtk_dp_audio_setup_channels(mtk_dp, cfg);
-+	mtk_dp_audio_set_divider(mtk_dp);
-+}
-+
- static void mtk_dp_video_config(struct mtk_dp *mtk_dp)
- {
- 	mtk_dp_mn_overwrite_disable(mtk_dp);
-@@ -1645,6 +2149,7 @@ static void mtk_dp_state_handler(struct mtk_dp *mtk_dp)
- 	switch (mtk_dp->state) {
- 	case MTK_DP_STATE_INITIAL:
- 		mtk_dp_video_mute(mtk_dp, true);
-+		mtk_dp_audio_mute(mtk_dp, true);
- 		mtk_dp->state = MTK_DP_STATE_IDLE;
- 		break;
- 
-@@ -1657,12 +2162,19 @@ static void mtk_dp_state_handler(struct mtk_dp *mtk_dp)
- 		mtk_dp_video_config(mtk_dp);
- 		mtk_dp_video_enable(mtk_dp, true);
- 
-+		if (mtk_dp->audio_enable) {
-+			mtk_dp_audio_setup(mtk_dp, &mtk_dp->info.audio_caps);
-+			mtk_dp_audio_mute(mtk_dp, false);
-+		}
-+
- 		mtk_dp->state = MTK_DP_STATE_NORMAL;
- 		break;
- 
- 	case MTK_DP_STATE_NORMAL:
- 		if (mtk_dp->train_state != MTK_DP_TRAIN_STATE_NORMAL) {
- 			mtk_dp_video_mute(mtk_dp, true);
-+			mtk_dp_audio_mute(mtk_dp, true);
-+			mtk_dp_sdp_stop_sending(mtk_dp);
- 			mtk_dp->state = MTK_DP_STATE_IDLE;
- 		}
- 		break;
-@@ -1716,11 +2228,13 @@ static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
- 		if (!mtk_dp->train_info.cable_plugged_in ||
- 		    !mtk_dp_plug_state(mtk_dp)) {
- 			mtk_dp_video_mute(mtk_dp, true);
-+			mtk_dp_audio_mute(mtk_dp, true);
- 
- 			mtk_dp_initialize_priv_data(mtk_dp);
- 			mtk_dp_set_idle_pattern(mtk_dp, true);
- 			if (mtk_dp->has_fec)
- 				mtk_dp_fec_enable(mtk_dp, false);
-+			mtk_dp_sdp_stop_sending(mtk_dp);
- 
- 			mtk_dp_edid_free(mtk_dp);
- 			mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-@@ -1832,6 +2346,18 @@ static int mtk_dp_dt_parse(struct mtk_dp *mtk_dp,
- 	return 0;
- }
- 
-+static void mtk_dp_update_plugged_status(struct mtk_dp *mtk_dp)
-+{
-+	bool connected, has_audio;
-+
-+	mutex_lock(&mtk_dp->update_plugged_status_lock);
-+	connected = mtk_dp_plug_state(mtk_dp);
-+	has_audio = drm_detect_monitor_audio(mtk_dp->edid);
-+	if (mtk_dp->plugged_cb && mtk_dp->codec_dev)
-+		mtk_dp->plugged_cb(mtk_dp->codec_dev, connected & has_audio);
-+	mutex_unlock(&mtk_dp->update_plugged_status_lock);
-+}
-+
- static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
- {
- 	return connector_status_connected;
-@@ -2057,6 +2583,7 @@ static void mtk_dp_bridge_atomic_disable(struct drm_bridge *bridge,
- 	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
- 
- 	mtk_dp_video_mute(mtk_dp, true);
-+	mtk_dp_audio_mute(mtk_dp, true);
- 	mtk_dp->state = MTK_DP_STATE_IDLE;
- 	mtk_dp->train_state = MTK_DP_TRAIN_STATE_STARTUP;
- 
-@@ -2092,7 +2619,9 @@ static void mtk_dp_bridge_atomic_enable(struct drm_bridge *bridge,
- 		return;
- 	}
- 
-+	mutex_lock(&mtk_dp->eld_lock);
- 	memcpy(mtk_dp->connector_eld, mtk_dp->conn->eld, MAX_ELD_BYTES);
-+	mutex_unlock(&mtk_dp->eld_lock);
- 
- 	conn_state =
- 		drm_atomic_get_new_connector_state(old_state->base.state, mtk_dp->conn);
-@@ -2264,6 +2793,104 @@ static void mtk_dp_debounce_timer(struct timer_list *t)
- 	mtk_dp->need_debounce = true;
- }
- 
-+/*
-+ * HDMI audio codec callbacks
-+ */
-+static int mtk_dp_audio_hw_params(struct device *dev, void *data,
-+				  struct hdmi_codec_daifmt *daifmt,
-+				  struct hdmi_codec_params *params)
-+{
-+	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
-+	struct mtk_dp_audio_cfg cfg;
-+
-+	if (!mtk_dp->enabled) {
-+		pr_err("%s, DP is not ready!\n", __func__);
-+		return -ENODEV;
-+	}
-+
-+	cfg.channels = params->cea.channels;
-+	cfg.sample_rate = params->sample_rate;
-+	cfg.word_length_bits = 24;
-+
-+	mtk_dp_audio_setup(mtk_dp, &cfg);
-+
-+	return 0;
-+}
-+
-+static int mtk_dp_audio_startup(struct device *dev, void *data)
-+{
-+	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
-+
-+	mtk_dp_audio_mute(mtk_dp, false);
-+
-+	return 0;
-+}
-+
-+static void mtk_dp_audio_shutdown(struct device *dev, void *data)
-+{
-+	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
-+
-+	mtk_dp_audio_mute(mtk_dp, true);
-+}
-+
-+static int mtk_dp_audio_get_eld(struct device *dev, void *data, uint8_t *buf,
-+				size_t len)
-+{
-+	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
-+
-+	if (mtk_dp->enabled)
-+		memcpy(buf, mtk_dp->connector_eld, len);
-+	else
-+		memset(buf, 0, len);
-+
-+	return 0;
-+}
-+
-+static int mtk_dp_audio_hook_plugged_cb(struct device *dev, void *data,
-+					hdmi_codec_plugged_cb fn,
-+					struct device *codec_dev)
-+{
-+	struct mtk_dp *mtk_dp = data;
-+
-+	mutex_lock(&mtk_dp->update_plugged_status_lock);
-+	mtk_dp->plugged_cb = fn;
-+	mtk_dp->codec_dev = codec_dev;
-+	mutex_unlock(&mtk_dp->update_plugged_status_lock);
-+
-+	mtk_dp_update_plugged_status(mtk_dp);
-+
-+	return 0;
-+}
-+
-+static const struct hdmi_codec_ops mtk_dp_audio_codec_ops = {
-+	.hw_params = mtk_dp_audio_hw_params,
-+	.audio_startup = mtk_dp_audio_startup,
-+	.audio_shutdown = mtk_dp_audio_shutdown,
-+	.get_eld = mtk_dp_audio_get_eld,
-+	.hook_plugged_cb = mtk_dp_audio_hook_plugged_cb,
-+	.no_capture_mute = 1,
-+};
-+
-+static int mtk_dp_register_audio_driver(struct device *dev)
-+{
-+	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
-+	struct hdmi_codec_pdata codec_data = {
-+		.ops = &mtk_dp_audio_codec_ops,
-+		.max_i2s_channels = 8,
-+		.i2s = 1,
-+		.data = mtk_dp,
-+	};
-+	struct platform_device *pdev;
-+
-+	pdev = platform_device_register_data(dev, HDMI_CODEC_DRV_NAME,
-+					     PLATFORM_DEVID_AUTO, &codec_data,
-+					     sizeof(codec_data));
-+	if (IS_ERR(pdev))
-+		return PTR_ERR(pdev);
-+
-+	return 0;
-+}
-+
- static int mtk_dp_probe(struct platform_device *pdev)
- {
- 	struct mtk_dp *mtk_dp;
-@@ -2311,9 +2938,20 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 
- 	mutex_init(&mtk_dp->dp_lock);
- 	mutex_init(&mtk_dp->edid_lock);
-+	mutex_init(&mtk_dp->eld_lock);
- 
- 	platform_set_drvdata(pdev, mtk_dp);
- 
-+	if (!mtk_dp_is_edp(mtk_dp)) {
-+		mutex_init(&mtk_dp->update_plugged_status_lock);
-+		ret = mtk_dp_register_audio_driver(dev);
-+		if (ret) {
-+			dev_err(dev, "Failed to register audio driver: %d\n",
-+				ret);
-+			return ret;
-+		}
-+	}
-+
- 	mtk_dp->phy_dev = platform_device_register_data(dev, "mediatek-dp-phy",
- 							PLATFORM_DEVID_AUTO,
- 							&mtk_dp->regs,
-@@ -2360,6 +2998,7 @@ static int mtk_dp_remove(struct platform_device *pdev)
- 	platform_device_unregister(mtk_dp->phy_dev);
- 
- 	mtk_dp_video_mute(mtk_dp, true);
-+	mtk_dp_audio_mute(mtk_dp, true);
- 	del_timer_sync(&mtk_dp->debounce_timer);
- 
- 	pm_runtime_disable(&pdev->dev);
--- 
-2.34.1
+Alex
 
+>
+> > >> I guess the initial modeline is inherited from the video-bios, but
+> > >> what about the physical size? Note that you cannot just change the
+> > >> physical size later either, that gets used to determine the hidpi
+> > >> scaling factor in the bootsplash, and changing that after the initial
+> > >> bootsplash dislay will also look ugly
+> > >>
+> > >> b) Why you need the edid for the panel-orientation property at all,
+> > >> typically the edid prom is part of the panel and the panel does not
+> > >> know that it is mounted e.g. upside down at all, that is a property
+> > >> of the system as a whole not of the panel as a standalone unit so
+> > >> in my experience getting panel-orient info is something which comes
+> > >> from the firmware /video-bios not from edid ?
+> > >
+> > > This is an internal DRM thing. The orientation quirks logic uses the
+> > > mode size advertised by the EDID.
+> >
+> > The DMI based quirking does, yes. But e.g. the quirk code directly
+> > reading this from the Intel VBT does not rely on the mode.
+> >
+> > But if you are planning on using a DMI based quirk for the steamdeck
+> > then yes that needs the mode.
+> >
+> > Thee mode check is there for 2 reasons:
+> >
+> > 1. To avoid also applying the quirk to external displays, but
+> > I think that that is also solved in most drivers by only checking for
+> > a quirk at all on the eDP connector
+> >
+> > 2. Some laptop models ship with different panels in different badges
+> > some of these are portrait (so need a panel-orient) setting and others
+> > are landscape.
+>
+> That makes sense. So yeah the EDID mode based matching logic needs to
+> stay to accomodate for these cases.
+>
+> > > I agree that at least in the Steam
+> > > Deck case it may not make a lot of sense to use any info from the
+> > > EDID, but that's needed for the current status quo.
+> >
+> > We could extend the DMI quirk mechanism to allow quirks which don't
+> > do the mode check, for use on devices where we can guarantee neither
+> > 1 nor 2 happens, then amdgpu could call the quirk code early simply
+> > passing 0x0 as resolution.
+>
+> Yeah. But per the above amdgpu should maybe probe connectors on module
+> load. If/when amdgpu is fixed to do this, then we don't need to disable
+> the mode matching logic in panel-orientation quirks anymore.
 
 _______________________________________________
 Linux-mediatek mailing list
