@@ -4,45 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF9ACC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 14:54:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBCF7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 14:54:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m9ngVPkdz2/+Cjr18SStiIcREXvtgPSYLHUyjhn8yXk=; b=VARFX6k7701jVi
-	4VVyo/hjVD86ojUyMmC51qHueCOgi9RopsVp2BrlS3eBxsUqK5pxE7nz0EmJTvuQk7uFJq3B9/4xi
-	jGFHna8gkqpBRQRi/TI2a9ZuFMG2yAbHj723H+Zhd+kTezdqr5vi4q2m/Q1GU3QLA1dQYUmcb35pr
-	jMQAYL+F7lXHPyK3yDhW3QV0WpuGd1yKH/lPpQrmsyDFO9cA9lli8GQbJ1dQuJavYeNeK0cwaUdMh
-	eC2bP2mN9RmXl/4eSE/ROX+YuspDQz6/RLjx5lLgAtZ4DNu210pTmue7zyQsusTV7sDsEA80VLqKg
-	Vie8CMIp375kDowCtNLQ==;
+	List-Owner; bh=0v04yO0pHzNIrFg1S0ISFuX3/K+znCQ7imdNi0kiKBo=; b=aWZsfgEnVpQbme
+	eJFKcXyjjML2JJNk7NA16qyLCe3zXfOnYIGstzAe5+YLrRy56hPLKeomdm6a0OUtkz0mzg5hK4U0Z
+	CmQDwERQW+ycwuN1UE+DDTKs48LKka3AurmLFhBjh83guo1XzLBjHvrb96Lx2UBkmhZU0ReoyrHLe
+	K+QRukWgkUyd3i+nEw/T54j0fPWcHw5F2Fc0Sf0j+6fHxaJFwMfg+yYtgfcEosGTfldz6g5ywcHNa
+	PV/RqIGx6PgJ86QTkQXITrrMiM21g4Sq0uKvvIpFA+l8R+T0eUG8BosbMI9ibiRmt8RpvdLt+gf5h
+	w9jGYXEAowtA/RrVOrlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nL4eU-00Er7J-M4; Fri, 18 Feb 2022 14:54:30 +0000
+	id 1nL4ej-00ErDs-TB; Fri, 18 Feb 2022 14:54:45 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nL4eG-00Er1E-9D; Fri, 18 Feb 2022 14:54:18 +0000
+ id 1nL4eH-00Er1V-5l; Fri, 18 Feb 2022 14:54:19 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id BDAD81F46B85
+ (Authenticated sender: kholk11) with ESMTPSA id 6DC611F46B9E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645196052;
- bh=waAoYQrd/zon1ObYSebR32rz8jo/+xh5mii/0mQIta0=;
- h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
- b=J+5IrzL1aUstLqU1jHWBQ5y184NmlTZ1BA8PdukNZ1FcXWUD9gFtXQDbbh9hfmF7u
- XxavwG7XoNIZ/APJ3iwjJt2CEguvvFNPMJ3sLk3pv+0qQAPXSmMvULlrQXg3SO4gbo
- 3Z/4jfHGHpKS8E1Fprko/SPC3zn8RurvHt5ukJ4JRaSQstIYUbnPtnk1caRtn/Z6j3
- mGRmknFUMigs7RnN/+87mHydSLVl3zdzY9lMnJ3ZbVNv9ze63b9spIfQWUoqKZIKYn
- dDJA5v4hjnLwnnBTW87vYzingVYERkjLoNe8JLafl1IJCK7JkVQZiXiUUQblhX00/T
- +J+n0x5OarDQg==
-Message-ID: <b22976ee-6426-cabf-f153-fbe093611e97@collabora.com>
-Date: Fri, 18 Feb 2022 15:54:09 +0100
+ s=mail; t=1645196056;
+ bh=vszf1mxLCqbidpRVRQR/8NqjOMQR9G4uyJxNzOwk5/U=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=MMTU2098qGRMayEFfduZx/jPWm/f+3QmzqTmb5DrZoMDiIWoXwS/pMsPnS9gHjrFK
+ OJUyno+tT3OFo4fuinglRWna4mx2B5/0Q2EeukA7rDpB0w9lSthKttTOCDHvQHrQlB
+ JcnSZtOpe7l/eWFc4bSFh4yMtJNIqsPSFXqqwh0CBEf7FQ4KL3xbSZ5MjMPtER7a+n
+ Cgt2foHA6HnpOlxMcUX0BVTzhf0CjhUGx+vJnb1vvnJjaHo7+65ynVzzZb9Hb5mzjc
+ k3+YwpDT9mRrmQRoGeMaH6m0SkjTXyhEOdK7H6QouBZET2w2yPdxGVqgWnwBYU6Pd2
+ 8iTl+AqO+rAxg==
+Message-ID: <b8ada898-9374-72be-6c1d-a99706388a2a@collabora.com>
+Date: Fri, 18 Feb 2022 15:54:12 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [v2 01/17] ASoC: mediatek: mt6366: add codec driver
+Subject: Re: [v2 04/17] ASoC: mediatek: mt8186: support hostless in platform
+ driver
+Content-Language: en-US
 To: Jiaxin Yu <jiaxin.yu@mediatek.com>, broonie@kernel.org
 Cc: lgirdwood@gmail.com, tiwai@suse.com, robh+dt@kernel.org,
  matthias.bgg@gmail.com, perex@perex.cz, p.zabel@pengutronix.de,
@@ -51,12 +52,12 @@ Cc: lgirdwood@gmail.com, tiwai@suse.com, robh+dt@kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20220217134205.15400-1-jiaxin.yu@mediatek.com>
- <20220217134205.15400-2-jiaxin.yu@mediatek.com>
-Content-Language: en-US
-In-Reply-To: <20220217134205.15400-2-jiaxin.yu@mediatek.com>
+ <20220217134205.15400-5-jiaxin.yu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220217134205.15400-5-jiaxin.yu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220218_065416_547874_411DA93E 
-X-CRM114-Status: GOOD (  15.73  )
+X-CRM114-CacheID: sfid-20220218_065417_515479_494996CD 
+X-CRM114-Status: GOOD (  17.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,62 +75,119 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 17/02/22 14:41, Jiaxin Yu ha scritto:
-> Mt6366 is a new version of mt6358, and they are same about audio part.
-> So we can reuse the driver of mt6358.
+> This patch adds mt8186 hostless dai driver.
 > 
 > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-
-Hello Jiaxin,
-I'm sorry but this commit makes very little sense.
-
-If you want to advertise MT6366 support, please write a note and/or
-a new compatible string inside of the mt6358 driver (and dt-bindings),
-then, please drop this commit.
-
-
 > ---
->   sound/soc/codecs/Kconfig  | 8 ++++++++
->   sound/soc/codecs/Makefile | 1 +
->   2 files changed, 9 insertions(+)
+>   .../soc/mediatek/mt8186/mt8186-dai-hostless.c | 295 ++++++++++++++++++
+>   1 file changed, 295 insertions(+)
+>   create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-hostless.c
 > 
-> diff --git a/sound/soc/codecs/Kconfig b/sound/soc/codecs/Kconfig
-> index 8fa24783ce01..6631094678f5 100644
-> --- a/sound/soc/codecs/Kconfig
-> +++ b/sound/soc/codecs/Kconfig
-> @@ -132,6 +132,7 @@ config SND_SOC_ALL_CODECS
->   	imply SND_SOC_MT6351
->   	imply SND_SOC_MT6358
->   	imply SND_SOC_MT6359
-> +	imply SND_SOC_MT6366
->   	imply SND_SOC_MT6660
->   	imply SND_SOC_NAU8315
->   	imply SND_SOC_NAU8540
-> @@ -1888,6 +1889,13 @@ config SND_SOC_MT6359_ACCDET
->   	  for ASoC codec soc-jack detection mechanism.
->   	  Select N if you don't have jack on board.
->   
-> +config SND_SOC_MT6366
-> +	tristate "MediaTek MT6366 Codec"
-> +	depends on MTK_PMIC_WRAP
-> +	help
-> +	  Enable support for the platform which uses MT6366 as
-> +	  external codec device.
+> diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-hostless.c b/sound/soc/mediatek/mt8186/mt8186-dai-hostless.c
+> new file mode 100644
+> index 000000000000..37460a3acc93
+> --- /dev/null
+> +++ b/sound/soc/mediatek/mt8186/mt8186-dai-hostless.c
+> @@ -0,0 +1,295 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +//
+> +// MediaTek ALSA SoC Audio DAI Hostless Control
+> +//
+> +// Copyright (c) 2022 MediaTek Inc.
+> +// Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
 > +
->   config SND_SOC_MT6660
->   	tristate "Mediatek MT6660 Speaker Amplifier"
->   	depends on I2C
-> diff --git a/sound/soc/codecs/Makefile b/sound/soc/codecs/Makefile
-> index 42d00aa4ee46..1279684feaf0 100644
-> --- a/sound/soc/codecs/Makefile
-> +++ b/sound/soc/codecs/Makefile
-> @@ -465,6 +465,7 @@ obj-$(CONFIG_SND_SOC_MT6351)	+= snd-soc-mt6351.o
->   obj-$(CONFIG_SND_SOC_MT6358)	+= snd-soc-mt6358.o
->   obj-$(CONFIG_SND_SOC_MT6359)	+= snd-soc-mt6359.o
->   obj-$(CONFIG_SND_SOC_MT6359_ACCDET) += mt6359-accdet.o
-> +obj-$(CONFIG_SND_SOC_MT6366)	+= snd-soc-mt6358.o
->   obj-$(CONFIG_SND_SOC_MT6660)	+= snd-soc-mt6660.o
->   obj-$(CONFIG_SND_SOC_NAU8315)   += snd-soc-nau8315.o
->   obj-$(CONFIG_SND_SOC_NAU8540)   += snd-soc-nau8540.o
+> +#include "mt8186-afe-common.h"
+> +
+> +static const struct snd_pcm_hardware mt8186_hostless_hardware = {
+> +	.info = (SNDRV_PCM_INFO_MMAP | SNDRV_PCM_INFO_INTERLEAVED |
+> +		 SNDRV_PCM_INFO_MMAP_VALID),
+> +	.period_bytes_min = 256,
+> +	.period_bytes_max = 4 * 48 * 1024,
+> +	.periods_min = 2,
+> +	.periods_max = 256,
+> +	.buffer_bytes_max = 4 * 48 * 1024,
+> +	.fifo_size = 0,
+> +};
+> +
+> +/* dai component */
+> +static const struct snd_soc_dapm_route mtk_dai_hostless_routes[] = {
+> +	/* Hostless ADDA Loopback */
+> +	{"ADDA_DL_CH1", "ADDA_UL_CH1 Switch", "Hostless LPBK DL"},
+> +	{"ADDA_DL_CH1", "ADDA_UL_CH2 Switch", "Hostless LPBK DL"},
+> +	{"ADDA_DL_CH2", "ADDA_UL_CH1 Switch", "Hostless LPBK DL"},
+> +	{"ADDA_DL_CH2", "ADDA_UL_CH2 Switch", "Hostless LPBK DL"},
+> +	{"I2S1_CH1", "ADDA_UL_CH1 Switch", "Hostless LPBK DL"},
+> +	{"I2S1_CH2", "ADDA_UL_CH2 Switch", "Hostless LPBK DL"},
+> +	{"I2S3_CH1", "ADDA_UL_CH1 Switch", "Hostless LPBK DL"},
+> +	{"I2S3_CH1", "ADDA_UL_CH2 Switch", "Hostless LPBK DL"},
+> +	{"I2S3_CH2", "ADDA_UL_CH1 Switch", "Hostless LPBK DL"},
+> +	{"I2S3_CH2", "ADDA_UL_CH2 Switch", "Hostless LPBK DL"},
+> +	{"Hostless LPBK UL", NULL, "ADDA_UL_Mux"},
+> +
+> +	/* Hostelss FM */
+> +	/* connsys_i2s to hw gain 1*/
+> +	{"Hostless FM UL", NULL, "Connsys I2S"},
+> +
+> +	{"HW_GAIN1_IN_CH1", "CONNSYS_I2S_CH1 Switch", "Hostless FM DL"},
+> +	{"HW_GAIN1_IN_CH2", "CONNSYS_I2S_CH2 Switch", "Hostless FM DL"},
+> +	/* hw gain to adda dl */
+> +	{"Hostless FM UL", NULL, "HW Gain 1 Out"},
+> +
+> +	{"ADDA_DL_CH1", "GAIN1_OUT_CH1 Switch", "Hostless FM DL"},
+> +	{"ADDA_DL_CH2", "GAIN1_OUT_CH2 Switch", "Hostless FM DL"},
+> +	/* hw gain to i2s3 */
+> +	{"I2S3_CH1", "GAIN1_OUT_CH1 Switch", "Hostless FM DL"},
+> +	{"I2S3_CH2", "GAIN1_OUT_CH2 Switch", "Hostless FM DL"},
+> +	/* hw gain to i2s1 */
+> +	{"I2S1_CH1", "GAIN1_OUT_CH1 Switch", "Hostless FM DL"},
+> +	{"I2S1_CH2", "GAIN1_OUT_CH2 Switch", "Hostless FM DL"},
+> +
+> +	/* Hostless_SRC */
+> +	{"ADDA_DL_CH1", "SRC_1_OUT_CH1 Switch", "Hostless_SRC_1_DL"},
+> +	{"ADDA_DL_CH2", "SRC_1_OUT_CH2 Switch", "Hostless_SRC_1_DL"},
+> +	{"I2S1_CH1", "SRC_1_OUT_CH1 Switch", "Hostless_SRC_1_DL"},
+> +	{"I2S1_CH2", "SRC_1_OUT_CH2 Switch", "Hostless_SRC_1_DL"},
+> +	{"I2S3_CH1", "SRC_1_OUT_CH1 Switch", "Hostless_SRC_1_DL"},
+> +	{"I2S3_CH2", "SRC_1_OUT_CH2 Switch", "Hostless_SRC_1_DL"},
+> +	{"Hostless_SRC_1_UL", NULL, "HW_SRC_1_Out"},
+> +
+> +	/* Hostless_SRC_bargein */
+> +	{"HW_SRC_1_IN_CH1", "I2S0_CH1 Switch", "Hostless_SRC_Bargein_DL"},
+> +	{"HW_SRC_1_IN_CH2", "I2S0_CH2 Switch", "Hostless_SRC_Bargein_DL"},
+> +	{"Hostless_SRC_Bargein_UL", NULL, "I2S0"},
+> +
+> +	/* Hostless AAudio */
+> +	{"Hostless HW Gain AAudio In", NULL, "HW Gain 2 In"},
+> +	{"Hostless SRC AAudio UL", NULL, "HW Gain 2 Out"},
+> +	{"HW_SRC_2_IN_CH1", "HW_GAIN2_OUT_CH1 Switch", "Hostless SRC AAudio DL"},
+> +	{"HW_SRC_2_IN_CH2", "HW_GAIN2_OUT_CH2 Switch", "Hostless SRC AAudio DL"},
+> +};
+> +
+> +/* dai ops */
+> +static int mtk_dai_hostless_startup(struct snd_pcm_substream *substream,
+> +				    struct snd_soc_dai *dai)
+> +{
+> +	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+> +	struct snd_pcm_runtime *runtime = substream->runtime;
+> +	int ret;
+> +
+> +	snd_soc_set_runtime_hwparams(substream, &mt8186_hostless_hardware);
+> +
+> +	ret = snd_pcm_hw_constraint_integer(runtime,
+> +					    SNDRV_PCM_HW_PARAM_PERIODS);
+> +	if (ret < 0)
+> +		dev_info(afe->dev, "snd_pcm_hw_constraint_integer failed\n");
+
+	if (ret < 0) {
+		dev_err(afe->dev, "setting constraints failed: %d\n", ret);
+		return ret;
+	}
+
+	return 0;
+
+
+Thanks,
+Angelo
 
 
 
