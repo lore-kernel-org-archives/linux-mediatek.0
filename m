@@ -4,46 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF450C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 13:27:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4700AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 13:29:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sqS0m6mzo0A8oBFAlO78kTBhsu6JhS8DWFb6eDCwusA=; b=tUAenFUgHLSrsl
-	apKL27TBndY7C0vHADukMxJprBqpNJbR/9fBRPKMIWt69JikHAIpR8W5kr6qhhcwtKg/jycF7bYvC
-	lrMJJaMR+dElYKfcVgsCh3xqiVgTfik0nGryxyilPzcqFjIpLA5gWBTzIZR1+uZ+3E6ewzTMB08k3
-	GbF7HubAG+aUcT4cjRN5WGwgAlsjUo4HU3l4KBFnzaapKqHpiJRfJIb6rs18zLa0ZTZEYHKyMpecD
-	t8B/hL3ScRTRzVch6jKbqEMxifG22wDXzoxU2RRl75+ISIAbGFTNTI3GH7XxnjuOPOoXFZO5CmiQr
-	LnMbOkXbKGBj0Tlcyv/Q==;
+	List-Owner; bh=f9G7BbvBREdhyUCHHhDDZTAKInF4lQdaiU2OWnnUg0w=; b=1xzjw9DiKIXNPZ
+	rHpfCKoeehqHdlpJMeoMqt1Ly0cd8hIe5Ry0xRKSmJgtJ991X7Ghix1lDh6FxWpCiwkOlXixvr2z1
+	bFDLhfVVJnBzkkC7LfCVQVllJzBiWoDR7HUAGQtf7IVl8tHtPoovL3S34eughT9ByAncaHXm32niY
+	P0BGa80oref1NAeFnLUJwv3sVeIE/RY67GOm6iugcbdclmiNWD7YW/mOROAgipC+zb6hQ3M3MowtN
+	muhfQWAxZ2W7O5yBbA2eM+Xktf+/ACJEQqu8pVLp3rSENrh+T6STngao7UIIETxxO7B0kDhH3HVt4
+	sqVLAX3ntELbEL45f+RQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nL3Hv-00EZ61-8T; Fri, 18 Feb 2022 13:27:07 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nL3Jl-00EZoo-BV; Fri, 18 Feb 2022 13:29:01 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nL2nf-00ELUA-PX; Fri, 18 Feb 2022 12:55:53 +0000
+ id 1nL2nm-00ELY0-UP; Fri, 18 Feb 2022 12:56:00 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id D34331F4241F
+ (Authenticated sender: kholk11) with ESMTPSA id 0DC341F4241F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645188950;
- bh=AlyTnLmhORNwZ1RUlUCeby9qHWIa7NQ/vAwxJ0QHz5E=;
+ s=mail; t=1645188957;
+ bh=zZZAdneJgA4W7d7XjgDPYrk55GM/cCNi1QttHSnzdKw=;
  h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
- b=BqAzjeSe61Vw4kn+wAhUjkIctXCWmc8zNa78w/6pWVOlSRg57PZuC9PiQE1/uruD6
- mPVgkUN2rRpWhRjdmaSC+Z6XAw8pVw1opgV2HQXeInyRaqu78MWDxOjxZufaeWbByC
- 8nJGw0blViFg0UBl7yYBPmVkkXEIZ35Evil+zFfNhzYnzTUYVx7QigxHleTMj5wHzw
- JQ29Gg0rUqUUa6VzokLYdri93J+kPsdij1Jkt2OJ4nDCRuaTV85fBDVCyYd6ip3eRi
- x4ibXuz84X5rAVZMsnn8e9BT14tGmwcV6qOoqvYoaw7niW+tTdxQMBqRyy3hwn+XBF
- R45cBzMKFEhcA==
-Message-ID: <6bcad8b0-7836-77f0-5040-e76b20c04a4e@collabora.com>
-Date: Fri, 18 Feb 2022 13:55:47 +0100
+ b=ZSGoIM7dw6wGoMBH5Bre9rq5VoKXoY/lgOZ04rVjsvCgPg87XsnUtB7fOSBnxg3+2
+ PjfZrAt+ZazJwLwcTGqW1FrcU5wRZAo+RYQhkppwl63CsIdDZrJgQQ4XaJmBOKDWeB
+ XCMSGOp6bVTYiboOb3cFr9dVgN+iPssLaqlttKFVpK4xHB/a4PWx6ZRacccDrL9ZNw
+ CIxLd3X43uUGSe9nhWKMNlpfNSS4siyYDq0w92V+u2JunuQolhm5lWupn3dlyO/R9i
+ y/HFLFkENxUmwbLQR9oqlYFmxKkoaG/E7sIQs0BlfD3JarKHzW2RzEsuWJj2saAodj
+ J2a/P17Y3dQVg==
+Message-ID: <518a64d5-2101-dc31-c409-e9c99458c900@collabora.com>
+Date: Fri, 18 Feb 2022 13:55:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2 11/23] arm64: dts: mt8192: Correct nor_flash status of
- mt8192
+Subject: Re: [PATCH v2 13/23] arm64: dts: mt8192: Add mmc device nodes
 To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
  --to=Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
@@ -53,12 +52,12 @@ Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
  Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
  =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
 References: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
- <20220218091633.9368-12-allen-kh.cheng@mediatek.com>
+ <20220218091633.9368-14-allen-kh.cheng@mediatek.com>
 Content-Language: en-US
-In-Reply-To: <20220218091633.9368-12-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220218091633.9368-14-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220218_045552_052742_1939AFEE 
-X-CRM114-Status: GOOD (  13.82  )
+X-CRM114-CacheID: sfid-20220218_045559_166793_634D7937 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,32 +75,68 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 18/02/22 10:16, Allen-KH Cheng ha scritto:
-> Correct nor_flash status of mt8192 SoC.
+> Add mmc nodes for mt8192 SoC.
 > 
 > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-
-The commit message should be:
-arm64: dts: mt8192: Fix nor_flash status disable typo
-
-...and it should also have a Fixes: tag.
-
 > ---
->   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 36 +++++++++++++++++++++---
+>   1 file changed, 32 insertions(+), 4 deletions(-)
 > 
 > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index 4533c794effc..f51fd0f6c356 100644
+> index 094805db395b..cfc2db501108 100644
 > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
 > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -936,7 +936,7 @@
->   			assigned-clock-parents = <&clk26m>;
->   			#address-cells = <1>;
->   			#size-cells = <0>;
-> -			status = "disable";
+> @@ -1154,10 +1154,38 @@
+>   			#clock-cells = <1>;
+>   		};
+>   
+> -		msdc: clock-controller@11f60000 {
+> -			compatible = "mediatek,mt8192-msdc";
+> -			reg = <0 0x11f60000 0 0x1000>;
+> -			#clock-cells = <1>;
+> +		mmc0: mmc@11f60000 {
+> +			compatible = "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
+> +			reg = <0 0x11f60000 0 0x1000>,
+> +			      <0 0x11f50000 0 0x1000>;
+
+This fits on a single line:
+			reg = <0 0x11f60000 0 0x1000>, <0 0x11f50000 0 0x1000>;
+
+> +			interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>,
+> +				 <&msdc_top CLK_MSDC_TOP_H_MST_0P>,
+> +				 <&msdc_top CLK_MSDC_TOP_SRC_0P>,
+> +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
+> +				 <&msdc_top CLK_MSDC_TOP_AXI>,
+> +				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>,
+> +				 <&msdc_top CLK_MSDC_TOP_P_MSDC0>;
+> +			clock-names = "source", "hclk", "source_cg", "sys_cg",
+> +				      "axi_cg", "ahb_cg", "pclk_cg";
+> +			status = "disabled";
+> +		};
+> +
+> +		mmc1: mmc@11f70000 {
+> +			compatible = "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
+> +			reg = <0 0x11f70000 0 0x1000>,
+> +			      <0 0x11c70000 0 0x1000>;
+
+Same here.
+
+> +			interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>,
+> +				 <&msdc_top CLK_MSDC_TOP_H_MST_1P>,
+> +				 <&msdc_top CLK_MSDC_TOP_SRC_1P>,
+> +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
+> +				 <&msdc_top CLK_MSDC_TOP_AXI>,
+> +				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>,
+> +				 <&msdc_top CLK_MSDC_TOP_P_MSDC1>;
+> +			clock-names = "source", "hclk", "source_cg", "sys_cg",
+> +				      "axi_cg", "ahb_cg", "pclk_cg";
 > +			status = "disabled";
 >   		};
 >   
->   		i2c3: i2c@11cb0000 {
+>   		mfgcfg: clock-controller@13fbf000 {
+
 
 _______________________________________________
 Linux-mediatek mailing list
