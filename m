@@ -4,73 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D233C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 13:01:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81763C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 13:13:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:
-	In-Reply-To:Message-ID:Subject:Cc:From:To:Date:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8QOKuNUriX1kaiuV+9ZevUFXUnL/CcsNQg1vBKKNIXA=; b=lylLi8pA2Re2Jt
-	v1BrKbNANA+wLLN8BwZXuurvCxzMLmZa7u951eix2UXnUWNKnOdG3APQNZ90EpOT35HMmQNOAEeRV
-	6G3VE+NSuKlzBQxw6CclVaqrogEngCs3frVH2BZUXfz4wIgJhHdLTxlD0ptVjWrKppjUUwDRunOs6
-	I7vba1I3z8uzokUSyejZn9E6DvG97OFsRWOdEKz3KlFvZC4mLVXA01WS5gmYfYUbv/IGXY1rXqKiM
-	S1ZoxIg3E/ySdcejzUQgzxpHENFF/+eCd+Ig504DSEGiAQqLX7VU3S/x4kVn42iFztzONJGzYirkI
-	deO/DqgSGtK7Ks6gLQbw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=EB9/RufBkTz+spcA2qQsAOlSx6LZM1CjLmtJogKsm4w=; b=L9KJux+Xh8PPRN
+	7wk/9RmKOtnNty6C1ToeWq0LOCkKxQ6wXdbCisr0nQfwM14tQKVUbUvuKeBwC89W7qscHb3nj3ua5
+	g7D6NZLsdvxH9xUx7OLQRViNwlq1HfL4nSCNY9wfK7XbqWvKakp0VaFyQ3kViI6oUKxZrZeV56lUn
+	0LnSMbMp7rA29elEKQjrbEG0EP3JLrycha/6gAKJtHYp8Og9a1R6Etn0Zg1WkUUxK3Pkndcl+0oKx
+	qt+I3LaJC4J9dtnvt5tIfRZs0/07lNElpBu9WS26uQ1YoHFd0j+TTVFnm43udVkl+9IOVTYPaUCxC
+	s5TzcwtEzRlo2hTHjcuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nL2t5-00EO8t-7p; Fri, 18 Feb 2022 13:01:27 +0000
-Received: from mail-4317.proton.ch ([185.70.43.17])
+	id 1nL353-00ETT2-0D; Fri, 18 Feb 2022 13:13:49 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nL288-00E9w9-SL
- for linux-mediatek@lists.infradead.org; Fri, 18 Feb 2022 12:12:59 +0000
-Date: Fri, 18 Feb 2022 12:12:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=emersion.fr;
- s=protonmail2; t=1645186373;
- bh=obcqmVH+DAiCiMe4lhhI6hr1y7IfE4219TpOs/ZsuSQ=;
- h=Date:To:From:Cc:Reply-To:Subject:Message-ID:In-Reply-To:
- References:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
- Message-ID;
- b=ZEFODOlFQCGBrINCjM2CuIs1XTHQJc1w7H096U/gm4jy5vxGR+gw29LNgGcp9+8zN
- o6VjXAKG4pIyu0IkmQdozIlocBuXjNO96dfF1zr2bIve1p/twEDsFj83JrjHyDZ1c3
- Rni3amD5vVJLgqF7uMQb4Q3Wdr4RhSYDsIHExBiVcEL+rW2IulpxB1pEV1xXgK8J90
- nHU0zBOR3kJyWdWt68oXac71i6ZEKwjQtVBZEVu5fod53M/9v8grxYWCW2zxfL2Sm8
- cZETRSe/cvKANyWWSGuKIoUYJ7xyTf07frTMfuPP+VLNsBc3c2Zf5Ies01iCqVJL5z
- aHik0JtrIO7Pw==
-To: Hans de Goede <hdegoede@redhat.com>
-From: Simon Ser <contact@emersion.fr>
-Cc: Emil Velikov <emil.l.velikov@gmail.com>, Maxime Ripard <mripard@kernel.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- devicetree <devicetree@vger.kernel.org>, David Airlie <airlied@linux.ie>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>,
- amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org,
- ML dri-devel <dri-devel@lists.freedesktop.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Alex Deucher <alexander.deucher@amd.com>,
- Harry Wentland <harry.wentland@amd.com>,
- LAKML <linux-arm-kernel@lists.infradead.org>,
- Daniel Vetter <daniel.vetter@ffwll.ch>
-Subject: Re: [Intel-gfx] [PATCH v8 1/3] gpu: drm: separate panel orientation
- property creating and value setting
-Message-ID: <DM7TzJ-fZEHjoGXvMG8XLfJ2VxohRxotL40_0Vb4cAUvrELgV9BvPGbK6HAwOYOBCx8qXtY2LQ0xnZ-nlH_IVCyne7tMKfvkqxtoWI6MkTw=@emersion.fr>
-In-Reply-To: <d4f5e101-3dd5-2f3a-6c14-6b32ee37c223@redhat.com>
-References: <20220208084234.1684930-1-hsinyi@chromium.org>
- <CACvgo53u01BK_D0ZssV+gCepjxSz23Nr5Dy1qXeaAoJuu6VCFQ@mail.gmail.com>
- <KW6DNh6IRRgVJx9DfOFBnEqc4a0x-AnDXEbMxwpfEbk8dOn_KGVzAfo-slJWq-4nWW728Uc-OVpFh2w4fDE4-bxfkDuz1hFILRVvbcuXqaw=@emersion.fr>
- <CACvgo532-pC+7DLFCo=DWTX-OnJEJvSoTmQnt3_qLhiT4cqEMg@mail.gmail.com>
- <GYG6EVT1MqtmfKiPpMhDG9mpuATnmwVDq2PuE_dpDat5oQW_t1tUfm39lSWHj32D5r7mrog27sL4dkgdMYQ5BN830TfVOrgQ4Ts8LcO8Hcs=@emersion.fr>
- <CACvgo52+o9_ETC+1RKzqKkyw3ZJ28RjH0BqC9DfmNAKqByud8Q@mail.gmail.com>
- <d3f0cc20-d226-ee42-cc98-b469949cec9e@redhat.com>
- <YV87l-2XXzmZ2i6GuGd__uf85s2JQkbXt_qTQDYlbBh1kW2COJoNLUDinmLCokKyy-_0ZnIMUcZeW0GdJ8zF690iYi4ThKrjc09omNMe-0g=@emersion.fr>
- <d4f5e101-3dd5-2f3a-6c14-6b32ee37c223@redhat.com>
+ id 1nL2kL-00EK6e-QO; Fri, 18 Feb 2022 12:52:31 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 281841F46910
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1645188744;
+ bh=XVKS75XpYQxb5/TVvYHVixSh4Vl0aBXRGf/YFk8Ta7w=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=SIGILJp6htL6o7lcCxedptEr2v14pHNt09Vrw6JNFphmrJAukrVO189Vh24oMXrPI
+ 9vWL65qlnN0jlhLfVMM4uHAb3DBCt0Z2vZbg7Li8fDKINWurPLaq7nqi1Fen2h2puJ
+ 5hfWkLAuXRZvi37rGQ9UjY6jpHS8g1EpBPPcjBruJ8Kl+j2/3abxB7oDSZp8TpGaZO
+ StC+31dsaX8r+TWfIAL8CkSMdDsvqWJEJTY07p3+ca3fzCqaCf3j/q/CLuP7UOs8Mz
+ +jn4/xLVPwn+lkbm9goa29rrHMv6hsGTeYP6ucU8D9gET5qmbIcow1CCx2a+vGV2mV
+ oTp8lxApvRhtQ==
+Message-ID: <71d7c940-63d5-bf65-527d-b27a8e0e5edc@collabora.com>
+Date: Fri, 18 Feb 2022 13:52:20 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH v5 19/34] iommu/mediatek: Add a PM_CLK_AO flag for infra
+ iommu
+Content-Language: en-US
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Will Deacon <will@kernel.org>
+Cc: Robin Murphy <robin.murphy@arm.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ iommu@lists.linux-foundation.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ youlin.pei@mediatek.com, anan.sun@mediatek.com, xueqi.zhang@mediatek.com,
+ yen-chang.chen@mediatek.com, mingyuan.ma@mediatek.com, yf.wang@mediatek.com,
+ libo.kang@mediatek.com, chengci.xu@mediatek.com
+References: <20220217113453.13658-1-yong.wu@mediatek.com>
+ <20220217113453.13658-20-yong.wu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220217113453.13658-20-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220218_041257_352855_15FC4881 
-X-CRM114-Status: GOOD (  42.75  )
+X-CRM114-CacheID: sfid-20220218_045226_041306_16605FE9 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,109 +74,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: Simon Ser <contact@emersion.fr>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Friday, February 18th, 2022 at 12:54, Hans de Goede <hdegoede@redhat.com> wrote:
+Il 17/02/22 12:34, Yong Wu ha scritto:
+> The power/clock of infra iommu is always on, and it doesn't have the
+> device link with the master devices, then the infra iommu device's pm
+> statua is not active, thus we add A PM_CLK_AO flag for infra iommu.
+> 
+> The tlb operation is a bit not clear in this file, Comment them in the
+> code here.
+> 
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 
-> On 2/18/22 12:39, Simon Ser wrote:
-> > On Friday, February 18th, 2022 at 11:38, Hans de Goede <hdegoede@redhat.com> wrote:
-> >
-> >> What I'm reading in the above is that it is being considered to allow
-> >> changing the panel-orientation value after the connector has been made
-> >> available to userspace; and let userspace know about this through a uevent.
-> >>
-> >> I believe that this is a bad idea, it is important to keep in mind here
-> >> what userspace (e.g. plymouth) uses this prorty for. This property is
-> >> used to rotate the image being rendered / shown on the framebuffer to
-> >> adjust for the panel orientation.
-> >>
-> >> So now lets assume we apply the correct upside-down orientation later
-> >> on a device with an upside-down mounted LCD panel. Then on boot the
-> >> following could happen:
-> >>
-> >> 1. amdgpu exports a connector for the LCD panel to userspace without
-> >> setting panel-orient=upside-down
-> >> 2. plymouth sees this and renders its splash normally, but since the
-> >> panel is upside-down it will now actually show upside-down
-> >
-> > At this point amdgpu hasn't probed the connector yet. So the connector
-> > will be marked as disconnected, and plymouth shouldn't render anything.
->
-> If before the initial probe of the connector there is a /dev/dri/card0
-> which plymouth can access, then plymouth may at this point decide
-> to disable any seemingly unused crtcs, which will make the screen go black...
->
-> I'm not sure if plymouth will actually do this, but AFAICT this would
-> not be invalid behavior for a userspace kms consumer to do and I
-> believe it is likely that mutter will disable unused crtcs.
->
-> IMHO it is just a bad idea to register /dev/dri/card0 with userspace
-> before the initial connector probe is done. Nothing good can come
-> of that.
->
-> If all the exposed connectors initially are going to show up as
-> disconnected anyways what is the value in registering /dev/dri/card0
-> with userspace early ?
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-OK. I'm still unsure how I feel about this, but I think I agree with
-you. That said, the amdgpu architecture is quite involved with multiple
-abstraction levels, so I don't think I'm equipped to write a patch to
-fix this...
-
-cc Daniel Vetter: can you confirm probing all connectors is a good thing
-to do on driver module load?
-
-> >> I guess the initial modeline is inherited from the video-bios, but
-> >> what about the physical size? Note that you cannot just change the
-> >> physical size later either, that gets used to determine the hidpi
-> >> scaling factor in the bootsplash, and changing that after the initial
-> >> bootsplash dislay will also look ugly
-> >>
-> >> b) Why you need the edid for the panel-orientation property at all,
-> >> typically the edid prom is part of the panel and the panel does not
-> >> know that it is mounted e.g. upside down at all, that is a property
-> >> of the system as a whole not of the panel as a standalone unit so
-> >> in my experience getting panel-orient info is something which comes
-> >> from the firmware /video-bios not from edid ?
-> >
-> > This is an internal DRM thing. The orientation quirks logic uses the
-> > mode size advertised by the EDID.
->
-> The DMI based quirking does, yes. But e.g. the quirk code directly
-> reading this from the Intel VBT does not rely on the mode.
->
-> But if you are planning on using a DMI based quirk for the steamdeck
-> then yes that needs the mode.
->
-> Thee mode check is there for 2 reasons:
->
-> 1. To avoid also applying the quirk to external displays, but
-> I think that that is also solved in most drivers by only checking for
-> a quirk at all on the eDP connector
->
-> 2. Some laptop models ship with different panels in different badges
-> some of these are portrait (so need a panel-orient) setting and others
-> are landscape.
-
-That makes sense. So yeah the EDID mode based matching logic needs to
-stay to accomodate for these cases.
-
-> > I agree that at least in the Steam
-> > Deck case it may not make a lot of sense to use any info from the
-> > EDID, but that's needed for the current status quo.
->
-> We could extend the DMI quirk mechanism to allow quirks which don't
-> do the mode check, for use on devices where we can guarantee neither
-> 1 nor 2 happens, then amdgpu could call the quirk code early simply
-> passing 0x0 as resolution.
-
-Yeah. But per the above amdgpu should maybe probe connectors on module
-load. If/when amdgpu is fixed to do this, then we don't need to disable
-the mode matching logic in panel-orientation quirks anymore.
 
 _______________________________________________
 Linux-mediatek mailing list
