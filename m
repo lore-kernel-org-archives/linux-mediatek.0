@@ -4,46 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5055FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 13:37:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFDAEC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 13:38:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IMhZhK+WnkQ6FCoHR2qA67u9Xt5kPcYTrkuf3POKYe8=; b=BrUR05ORhXLzEg
-	0Pa+mObGQ+i0NqDHOpHY+zxsxKYq86vL4U7GqqmTd0SBXbI+Ig1UMUlX21k1mbkK8lXizBNq8NV4g
-	nO1wRDcYbuatL9acxcdqkSGxECSZUvEMTzggihj6mfrKVBgpJm0R4zXl8YHhIWpbwE+llXLyUmZGL
-	SHfFNPoLX0X4M4hqL3qadBRCvEedL34UeQu6+u9BYr0kfGKQn1MzxbSTVCOeYAbsZ8ZTSIvgA+iUV
-	8XD1ISqyexRod307/QbnYEdEFVP+btHCRMRfXAqnW7BIMXIvaeODp+rn6Bs/DLG2r+lf5IdfejUYr
-	SrAQAsE+5QUcCP390kyg==;
+	List-Owner; bh=uOzPisSImyyZJnm5iUS3UHBRRl90iOAYRed91IbfEZM=; b=QtDofBACbRx/Or
+	c6qKPbAcJVMU415CAKbaaddPojjGK7VKpbaEGlNeNDD2OON9wtl0csK5+SqtQhFtsVfF6gj4l0HL1
+	fbwbEe+AJvqHxggFErVUeqc4uDzD6xA996LVpo/2nqEEEdjEHdjsuptYljcTAdeXFRhKkgFo96oH5
+	7a/oTSPHJJoN5KaVfpgi8Sy3ZKBMfJTrnm35RFr3gUa1+PPa6CyiFWuwFLWjMxJoxp+atC2J+R5y1
+	OoPmnLmgxk3spEGSvqHGaS1Cux0wP4pQ8fe0R5g7guPU3VOzRgcqVu1kJsA9PBT099lfPfJuCTQtC
+	snI/+Zm/pRMTSugAaxbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nL3SH-00EdRn-JZ; Fri, 18 Feb 2022 13:37:49 +0000
+	id 1nL3SL-00EdTz-HI; Fri, 18 Feb 2022 13:37:53 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nL2oH-00ELrz-NA; Fri, 18 Feb 2022 12:56:31 +0000
+ id 1nL2oE-00ELog-CQ; Fri, 18 Feb 2022 12:56:27 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id C42B01F46724
+ (Authenticated sender: kholk11) with ESMTPSA id 60A091F4241F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645188988;
- bh=yHQsIU1phFPYNJlSoSOIZ82oubmyvJ4yo5+X5drcQoM=;
+ s=mail; t=1645188985;
+ bh=+LLgEjAtE3bzxpNowg/nqrZgCIcdt+TTuXmtzhwUlSs=;
  h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
- b=HuLQl9FzsvAm60s9llILXZUoFH56uLqXJou7BKeuBGbctshOhPFQ/0ekAwowbRbdA
- aYC8f1ezSK1KCEbtcPSyHuEga3Jll9/Bf+MBak2ek+uAejY9e5Y3TBByRqUI43xFq0
- o0vAXkoiainmwcUyt3eUJBCkcyFbH1O/rcbYQMJqz/BWiMw7ixR0TD67068tXvrgkl
- FGLnv0KmOd1qKweGuhaNn/w89QQ+WMI+dI14/SoO5pHo+zDw3KiuRIsqinsxzEM7mx
- 2gQ3bPOTlboYV0ccKsiMEmbKKIq9fL8liM8RAZUONzz64KjoPOkrN0Zmn9rMaq3Y5I
- hkpSMgLAofJRg==
-Message-ID: <5ad1baeb-6744-1c60-08a8-063db0a2ad03@collabora.com>
-Date: Fri, 18 Feb 2022 13:56:25 +0100
+ b=n9o0r9YXVPf9kpOwl2cybvpxePIQIac+077kozUQFNOC0OqANzSJ3NXeXvcoc3WZR
+ 7WwPMxtITwY3m10RwKk/Z4W/BQhN9MY+TVYl+E8EvGeSCnpuZcNueNzNfTzzmy7j4W
+ jkf7mGzrFH/qozmXWGpbNjIJyDJqDaDY+1SjoZ+x3LNaMN7nEC/l8TjwKe3UY1EHbY
+ LfMF1Mzf1ecqc5PAOt9qT20SjLr1JNNOLHOhDw0yVTWElZevKA4bKqZtUnYpsQo9qR
+ qxdPqSMinLy1ekDiPz6FOfeinuqd4L7Jeo9mi6apAEpLyp6FXIQ7YNTAe0T7g4E01m
+ SJdYHJOIhJ4Kg==
+Message-ID: <e04d592f-297e-8c22-356c-7246c3c8ab1d@collabora.com>
+Date: Fri, 18 Feb 2022 13:56:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2 22/23] arm64: dts: mt8192: Add gce info for display
- nodes
+Subject: Re: [PATCH v2 21/23] arm64: dts: mt8192: Add dsi node
 To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
  --to=Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
@@ -53,12 +52,12 @@ Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
  Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
  =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
 References: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
- <20220218091633.9368-23-allen-kh.cheng@mediatek.com>
+ <20220218091633.9368-22-allen-kh.cheng@mediatek.com>
 Content-Language: en-US
-In-Reply-To: <20220218091633.9368-23-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220218091633.9368-22-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220218_045630_084241_55467B8A 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20220218_045626_637195_8C27A801 
+X-CRM114-Status: GOOD (  13.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,130 +75,41 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 18/02/22 10:16, Allen-KH Cheng ha scritto:
-> Add gce info for display nodes.
+> Add dsi ndoe for mt8192 SoC.
 > 
 > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-
-Please mention that this is required to get drivers' CMDQ support in this
-commit message, as this is critical information.
-
 > ---
->   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 16 ++++++++++++++++
->   1 file changed, 16 insertions(+)
+>   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 13 +++++++++++++
+>   1 file changed, 13 insertions(+)
 > 
 > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index 1f1555fd18f5..df884c48669e 100644
+> index 026f2d8141b0..1f1555fd18f5 100644
 > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
 > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -1226,6 +1226,9 @@
->   		mmsys: syscon@14000000 {
->   			compatible = "mediatek,mt8192-mmsys", "syscon";
->   			reg = <0 0x14000000 0 0x1000>;
-> +			mboxes = <&gce 0 CMDQ_THR_PRIO_HIGHEST 1>,
-> +				 <&gce 1 CMDQ_THR_PRIO_HIGHEST 1>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
->   			#clock-cells = <1>;
->   		};
->   
-> @@ -1234,6 +1237,8 @@
->   			reg = <0 0x14001000 0 0x1000>;
->   			interrupts = <GIC_SPI 252 IRQ_TYPE_LEVEL_HIGH 0>;
->   			clocks = <&mmsys CLK_MM_DISP_MUTEX0>;
-> +			mediatek,gce-events = <CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_0>,
-> +					      <CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_1>;
->   		};
->   
->   		smi_common: smi@14002000 {
-> @@ -1275,6 +1280,7 @@
->   			iommus = <&iommu0 M4U_PORT_L0_OVL_RDMA0>,
->   				 <&iommu0 M4U_PORT_L0_OVL_RDMA0_HDR>;
->   			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
->   		};
->   
->   		ovl_2l0: ovl@14006000 {
-> @@ -1285,6 +1291,7 @@
->   			clocks = <&mmsys CLK_MM_DISP_OVL0_2L>;
->   			iommus = <&iommu0 M4U_PORT_L1_OVL_2L_RDMA0>,
->   				 <&iommu0 M4U_PORT_L1_OVL_2L_RDMA0_HDR>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
->   		};
->   
->   		rdma0: rdma@14007000 {
-> @@ -1296,6 +1303,7 @@
->   			mediatek,larb = <&larb0>;
->   			mediatek,rdma-fifo-size = <5120>;
->   			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x7000 0x1000>;
->   		};
->   
->   		color0: color@14009000 {
-> @@ -1305,6 +1313,7 @@
->   			interrupts = <GIC_SPI 258 IRQ_TYPE_LEVEL_HIGH 0>;
->   			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
->   			clocks = <&mmsys CLK_MM_DISP_COLOR0>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x9000 0x1000>;
->   		};
->   
->   		ccorr0: ccorr@1400a000 {
-> @@ -1313,6 +1322,7 @@
->   			interrupts = <GIC_SPI 259 IRQ_TYPE_LEVEL_HIGH 0>;
->   			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
->   			clocks = <&mmsys CLK_MM_DISP_CCORR0>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xa000 0x1000>;
->   		};
->   
->   		aal0: aal@1400b000 {
-> @@ -1321,6 +1331,7 @@
->   			interrupts = <GIC_SPI 260 IRQ_TYPE_LEVEL_HIGH 0>;
->   			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
->   			clocks = <&mmsys CLK_MM_DISP_AAL0>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xb000 0x1000>;
->   		};
->   
->   		gamma0: gamma@1400c000 {
-> @@ -1330,6 +1341,7 @@
->   			interrupts = <GIC_SPI 261 IRQ_TYPE_LEVEL_HIGH 0>;
->   			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
->   			clocks = <&mmsys CLK_MM_DISP_GAMMA0>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xc000 0x1000>;
->   		};
->   
->   		postmask0: postmask@1400d000 {
-> @@ -1339,6 +1351,7 @@
->   			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
->   			clocks = <&mmsys CLK_MM_DISP_POSTMASK0>;
->   			iommus = <&iommu0 M4U_PORT_L0_DISP_POSTMASK0>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xd000 0x1000>;
->   		};
->   
->   		dither0: dither@1400e000 {
-> @@ -1348,6 +1361,7 @@
->   			interrupts = <GIC_SPI 263 IRQ_TYPE_LEVEL_HIGH 0>;
->   			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
+> @@ -1350,6 +1350,19 @@
 >   			clocks = <&mmsys CLK_MM_DISP_DITHER0>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xe000 0x1000>;
 >   		};
 >   
->   		dsi0: dsi@14010000 {
-> @@ -1371,6 +1385,7 @@
->   			clocks = <&mmsys CLK_MM_DISP_OVL2_2L>;
->   			iommus = <&iommu0 M4U_PORT_L1_OVL_2L_RDMA2>,
->   				 <&iommu0 M4U_PORT_L1_OVL_2L_RDMA2_HDR>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x4000 0x1000>;
->   		};
->   
->   		rdma4: rdma@14015000 {
-> @@ -1381,6 +1396,7 @@
->   			clocks = <&mmsys CLK_MM_DISP_RDMA4>;
->   			iommus = <&iommu0 M4U_PORT_L1_DISP_RDMA4>;
->   			mediatek,rdma-fifo-size = <2048>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x5000 0x1000>;
->   		};
->   
->   		dpi0: dpi@14016000 {
+> +		dsi0: dsi@14010000 {
+> +			compatible = "mediatek,mt8183-dsi";
+> +			reg = <0 0x14010000 0 0x1000>;
+> +			interrupts = <GIC_SPI 265 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			mediatek,syscon-dsi = <&mmsys 0x140>;
+> +			clocks = <&mmsys CLK_MM_DSI0>,
+> +				<&mmsys CLK_MM_DSI_DSI0>,
+> +				<&mipi_tx0>;
+> +			clock-names = "engine", "digital", "hs";
+> +			phys = <&mipi_tx0>;
+> +			phy-names = "dphy";
 
+...please:
+			status = "disabled";
 
+> +		};
+> +
+>   		ovl_2l2: ovl@14014000 {
+>   			compatible = "mediatek,mt8192-disp-ovl-2l";
+>   			reg = <0 0x14014000 0 0x1000>;
 
 _______________________________________________
 Linux-mediatek mailing list
