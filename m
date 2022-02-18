@@ -4,63 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66FC4C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 09:17:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB353C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 09:18:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ON9kClztABU7/PC29BrfBW5oNlTzDfzwu1+YX/hWrVE=; b=fNonxCUd3lrjXF
-	uMmeYpq4thO3eFEQwcSwSP4s74ZP57DHBJQAmlYhozVaJiBig0TwQezp4+hdzReKXC5yKOF41U63l
-	CMT1GP3nguV2ie3YdHXQn8pVEFWeqwGi6H31CnaSBNBIujh2GlJvadWF33vNjAzESY6x2xrQgaYTV
-	d2OZZKRDnnYe+M5kbJ8oZndxVUaYoldS4yAf/ifrgFfnOiLyk6bVqU2NacERkjIT/n9fD4Qx+UAHP
-	RlvpO1VBtQzoqqzawamcY1oMUoJgCRtDmLQlHDz9axtktqzR5lD7pNcIv6XYa7NY3ZvdWiiB5jn4b
-	wuO2rLvPb9StMAtxZFzw==;
+	List-Owner; bh=XUTatoDjl5WPhdSJDwR/qVCcvppluMBdCwZVTGeh95E=; b=T6/m6Ry9QS1z1G
+	/yMuTYHsP7ITBeVPFAgAdmQ0uNQ5WtMRAMsElOR41u+IloTXz8p7FmVGfr7mbyrZESA08U0RvA4v1
+	97mLhzetE82aUBZyhEywyhKFSgj74nWUmnugRsHpjKOhCHRAneGNKMGMLOdlNGPJmjSvS9lIETRnv
+	vC68HIxt/juMesjFVotL4IksX62nsFvVo80dndFxDtSfYVLcosD7PS2+20r9phG7rVu4GeWanjUVj
+	UF31G8I1WE6jpuOEYqxp3C4ywTChisSBT+Azqw9P31ikvbpLrU4hG983AjW533qWkAvRimH7GMevh
+	8oC15NvLrTqVMfSYE+NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKzOR-00DR5i-NG; Fri, 18 Feb 2022 09:17:35 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nKzOu-00DRQl-Vj; Fri, 18 Feb 2022 09:18:04 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKzNi-00DQeD-RU; Fri, 18 Feb 2022 09:16:52 +0000
-X-UUID: 29b02d9ebaff47309028cbcb4e1d42db-20220218
-X-UUID: 29b02d9ebaff47309028cbcb4e1d42db-20220218
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 572623538; Fri, 18 Feb 2022 02:16:44 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Feb 2022 01:16:44 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 18 Feb 2022 17:16:42 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 18 Feb 2022 17:16:42 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, --to=Krzysztof Kozlowski
- <krzysztof.kozlowski@canonical.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
- Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, Allen-KH Cheng
- <allen-kh.cheng@mediatek.com>
-Subject: [PATCH v2 06/23] arm64: dts: mt8192: Add usb-phy node
-Date: Fri, 18 Feb 2022 17:16:16 +0800
-Message-ID: <20220218091633.9368-7-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
-References: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
+ id 1nKzNo-00DQh5-6v; Fri, 18 Feb 2022 09:16:58 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 35B0D1F41376
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1645175813;
+ bh=U7lrWAwexr4OGIHGR/8E7hJ30LUne6rDxFg0tlfKKeE=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=dYSoqAoFunE26Zuzip6yj5ZI2T1UyC2GkhrcpgU8ahqnmNZRKgLt6EShgsOUl/E3e
+ wdtmkmqGgFkuNJZjb7HYkmxONjqaGPQ6aPELatm4rp43UcQaZxpbmbOqKijBLuWTpM
+ Hns7vuM1njcewRDBbHn8qJMXE1cxi4XwPt3ERxmtukAqJGHHUipL8TRlqrryqrjqOr
+ cmGZBGwZaRkFOfIEOSwUGyy+HqTQz/zP6/MMxUP7RodX1pyCBQNHNcekgbO7nA14FJ
+ 9bYbp6i6mEABn5PQZ2elbyCCv+RmjRb7gTRYcVK/93xrxPJk7WVEucGbqQJhXHkvYz
+ 7s1LPBMFEVwFg==
+Message-ID: <ad306275-cd38-e6ad-55cc-0f7c4bdfcecf@collabora.com>
+Date: Fri, 18 Feb 2022 10:16:51 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH] rpmsg: mtk_rpmsg: Fix circular locking dependency
+Content-Language: en-US
+To: Mathieu Poirier <mathieu.poirier@linaro.org>
+Cc: bjorn.andersson@linaro.org, matthias.bgg@gmail.com, pihsun@chromium.org,
+ linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com
+References: <20220114144737.375621-1-angelogioacchino.delregno@collabora.com>
+ <20220217190349.GA477215@p14s>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220217190349.GA477215@p14s>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220218_011650_918545_FD8A6632 
-X-CRM114-Status: UNSURE (   9.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220218_011656_440639_14C28B78 
+X-CRM114-Status: GOOD (  23.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,56 +66,120 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add xhci node for mt8192 SoC.
+Il 17/02/22 20:03, Mathieu Poirier ha scritto:
+> Hi Angelo,
+> 
+> On Fri, Jan 14, 2022 at 03:47:37PM +0100, AngeloGioacchino Del Regno wrote:
+>> During execution of the worker that's used to register rpmsg devices
+>> we are safely locking the channels mutex but, when creating a new
+>> endpoint for such devices, we are registering a IPI on the SCP, which
+>> then makes the SCP to trigger an interrupt, lock its own mutex and in
+>> turn register more subdevices.
+>> This creates a circular locking dependency situation, as the mtk_rpmsg
+>> channels_lock will then depend on the SCP IPI lock.
+>>
+>> [   18.014514]  Possible unsafe locking scenario:
+>> [   18.014515]        CPU0                    CPU1
+>> [   18.014517]        ----                    ----
+>> [   18.045467]   lock(&mtk_subdev->channels_lock);
+>> [   18.045474]                                lock(&scp->ipi_desc[i].lock);
+> 
+> I spent well over an hour tracing through the meanders of the code to end up in
+> scp_ipi_register() which, I think, leads to the above.  But from there I don't
+> see how an IPI can come in and that tells me my assumption is wrong.
+> 
+> Can you give more details on the events that lead to the above?  I'm not saying
+> there is no problem, I just need to understand it.
+> 
 
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 25 ++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+Hi Mathieu,
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 61aadd7bd397..ce18d692175f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -875,6 +875,31 @@
- 			#clock-cells = <1>;
- 		};
- 
-+		u3phy0: usb-phy@11e40000 {
-+			compatible = "mediatek,mt8192-tphy",
-+				     "mediatek,generic-tphy-v2";
-+			#address-cells = <2>;
-+			#size-cells = <2>;
-+			ranges;
-+			status = "okay";
-+
-+			u2port0: usb-phy@11e40000 {
-+				reg = <0 0x11e40000 0 0x700>;
-+				clocks = <&clk26m>;
-+				clock-names = "ref";
-+				#phy-cells = <1>;
-+				status = "okay";
-+			};
-+
-+			u3port0: usb-phy@11e40700 {
-+				reg = <0 0x11e40700 0 0x900>;
-+				clocks = <&clk26m>;
-+				clock-names = "ref";
-+				#phy-cells = <1>;
-+				status = "okay";
-+			};
-+		};
-+
- 		i2c0: i2c@11f00000 {
- 			compatible = "mediatek,mt8192-i2c";
- 			reg = <0 0x11f00000 0 0x1000>,
--- 
-2.18.0
+I understand that following this flow without the assistance of the actual
+hardware may be a little confusing, so, no worries.
+
+drivers/remoteproc/mtk_scp.c - this driver manages the SCP (obviously, a
+remote processor)
+drivers/remoteproc/mtk_scp_ipi.c - public functions for kernel SCP IPC
+
+Flow:
+- MediaTek SCP gets probed
+- RPMSG starts, we start probing "something", like google,cros-ec-rpmsg
+- mtk_rpmsg: creates endpoint; IPI handler is registered here.
+
+          ( more flow )
+
+- mtk_rpmsg: mtk_rpmsg_ns_cb() -> mtk_rpmsg_create_device(), channel is
+              added to the channels list, worker gets scheduled
+
+
+Now for the part that produces the real issue:
+
+label_a:
+
+*** RPMSG MUTEX LOCK ***
+- mtk_rpmsg: ## Go through multiple channels ##, call mtk_rpmsg_register_device()
+
+- Registered device tries to communicate through RPMSG
+- .send() or .trysend() (depending on the device) is called: send_ipi()
+     *** SCP MUTEX LOCK ***
+    - mtk_scp_ipi: Data written, ACK? ok -> return 0
+     *** SCP MUTEX UNLOCK ***
+
+- mtk_scp_ipi: **** INTERRUPT!!! **** New RPMSG NS available? -> create channel
+           goto label_a;
+
+*** RPMSG MUTEX UNLOCK ***
+
+
+Pardon me for keeping some things in this flow implicit, but that was done to
+simplify it as much as possible as to try to make you understand the situation.
+
+Cheers,
+Angelo
+
+> Thanks,
+> Mathieu
+> 
+>> [   18.228399]                                lock(&mtk_subdev->channels_lock);
+>> [   18.228405]   lock(&scp->ipi_desc[i].lock);
+>> [   18.264405]
+>>
+>> To solve this, simply unlock the channels_lock mutex before calling
+>> mtk_rpmsg_register_device() and relock it right after, as safety is
+>> still ensured by the locking mechanism that happens right after
+>> through SCP.
+>> Notably, mtk_rpmsg_register_device() does not even require locking.
+>>
+>> Fixes: 7017996951fd ("rpmsg: add rpmsg support for mt8183 SCP.")
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/rpmsg/mtk_rpmsg.c | 2 ++
+>>   1 file changed, 2 insertions(+)
+>>
+>> diff --git a/drivers/rpmsg/mtk_rpmsg.c b/drivers/rpmsg/mtk_rpmsg.c
+>> index 5b4404b8be4c..d1213c33da20 100644
+>> --- a/drivers/rpmsg/mtk_rpmsg.c
+>> +++ b/drivers/rpmsg/mtk_rpmsg.c
+>> @@ -234,7 +234,9 @@ static void mtk_register_device_work_function(struct work_struct *register_work)
+>>   		if (info->registered)
+>>   			continue;
+>>   
+>> +		mutex_unlock(&subdev->channels_lock);
+>>   		ret = mtk_rpmsg_register_device(subdev, &info->info);
+>> +		mutex_lock(&subdev->channels_lock);
+>>   		if (ret) {
+>>   			dev_err(&pdev->dev, "Can't create rpmsg_device\n");
+>>   			continue;
+>> -- 
+>> 2.33.1
+>>
+
+
 
 
 _______________________________________________
