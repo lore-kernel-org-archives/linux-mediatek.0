@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F1BDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 09:24:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B80BBC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 09:24:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0H5Ix6ohx5b4c3gEEdRYquNwq6bem4YEIHYOcmEm60A=; b=WLBvLXq0tuqy8j
-	XR3qzdIKCzoGWtIouOYlTtSUOQHCa4AVQHJpZ3wADQVpww2+XY7vdX0oru1l0ncDFL26UQ5+8pcAf
-	xtROb1oaCLHUm0GvajtXHVI0bKA7wDSJaGtoEml3BkFGsuklfPPryv0Je+tD3JrcIKOH9Qbpc0YQd
-	glxuZtvK82m6AT4rUeHp5oKUMRWlCyY+Zjsn7rdzLArbnPNRp4kaB+AypnpyfX+NMf4OC4VPhaXO4
-	IDvAhu+h8F/eVWss+iU/dUFc3PdaMaaZ+I5o1OSEdNPHwR4adleru62gAIAldOslonFY10Phwgxad
-	c5jN087w2MP1d7FfcVqA==;
+	List-Owner; bh=GYEuIbXVg/0vU78hCfHQV/tj6FfEmLnqq2Jg8rbyDTQ=; b=n1ZmpTPHUCuTr/
+	UmE6hqoOwuzV/c2XKt/arwd3uqBAn6OPDhu+s6SO4df51t+ED2NhMDams1OucWOmTL33Y3/PgoPGE
+	RLR582rEH/bDH7WpjN7kTkzFX26RJzzscZWuDj6weyYjbMvfW5lwbZAI6scGmrV5ePruD3T8hxS7l
+	Eh0Q0C5NtF7SBujjbjNQpMs5zezDgWkvLhWYbQc6BQi/gGFf0H1CKIfDwaHbxSjbSIb/wEqEtZtir
+	SHwYeQi/4jgHb/K6o1NOT7u3sYmF4bhcSuIG6Lw77pgrKN+Zudfj1LtG5ugYXh4HEGkij1XAdyi7R
+	HMFy7lHQmXPadE0a7M1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKzUh-00DV7j-N7; Fri, 18 Feb 2022 09:24:03 +0000
+	id 1nKzUl-00DVA0-GN; Fri, 18 Feb 2022 09:24:07 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKzR8-00DT3M-7J; Fri, 18 Feb 2022 09:20:24 +0000
-X-UUID: 5c47da75d9524127af97096441ca9a85-20220218
-X-UUID: 5c47da75d9524127af97096441ca9a85-20220218
+ id 1nKzR3-00DT3M-Kr; Fri, 18 Feb 2022 09:20:20 +0000
+X-UUID: 58113824feb24c9c850ac1b27b580ca5-20220218
+X-UUID: 58113824feb24c9c850ac1b27b580ca5-20220218
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2101103920; Fri, 18 Feb 2022 02:20:13 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 975971922; Fri, 18 Feb 2022 02:20:13 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Feb 2022 01:16:56 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 18 Feb 2022 17:16:55 +0800
+ 15.0.1497.2; Fri, 18 Feb 2022 01:17:00 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 18 Feb 2022 17:16:58 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 18 Feb 2022 17:16:54 +0800
+ Frontend Transport; Fri, 18 Feb 2022 17:16:58 +0800
 From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
  <robh+dt@kernel.org>, --to=Krzysztof Kozlowski
  <krzysztof.kozlowski@canonical.com>
 CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Chen-Yu Tsai" <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Subject: [PATCH v2 20/23] arm64: dts: mt8192: Add display nodes
-Date: Fri, 18 Feb 2022 17:16:30 +0800
-Message-ID: <20220218091633.9368-21-allen-kh.cheng@mediatek.com>
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, Allen-KH Cheng
+ <allen-kh.cheng@mediatek.com>
+Subject: [PATCH v2 23/23] arm64: dts: mt8192: Add pwm node
+Date: Fri, 18 Feb 2022 17:16:33 +0800
+Message-ID: <20220218091633.9368-24-allen-kh.cheng@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
 References: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220218_012022_322771_E81CCB6F 
-X-CRM114-Status: UNSURE (   9.58  )
+X-CRM114-CacheID: sfid-20220218_012017_737623_09AC27DC 
+X-CRM114-Status: UNSURE (   9.63  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,153 +77,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add display nodes for mt8192 SoC.
+Add pwm node for mt8192 SoC.
 
 Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 115 +++++++++++++++++++++++
- 1 file changed, 115 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index e3314cdc7c1a..026f2d8141b0 100644
+index df884c48669e..c0fc723fdf0a 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -32,6 +32,11 @@
- 		i2c7 = &i2c7;
- 		i2c8 = &i2c8;
- 		i2c9 = &i2c9;
-+		ovl0 = &ovl0;
-+		ovl-2l0 = &ovl_2l0;
-+		ovl-2l2 = &ovl_2l2;
-+		rdma0 = &rdma0;
-+		rdma4 = &rdma4;
- 	};
- 
- 	clk26m: oscillator0 {
-@@ -1224,6 +1229,13 @@
- 			#clock-cells = <1>;
+@@ -642,6 +642,16 @@
+ 			status = "disabled";
  		};
  
-+		mutex: mutex@14001000 {
-+			compatible = "mediatek,mt8192-disp-mutex";
-+			reg = <0 0x14001000 0 0x1000>;
-+			interrupts = <GIC_SPI 252 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&mmsys CLK_MM_DISP_MUTEX0>;
++		pwm0: pwm@1100e000 {
++			compatible = "mediatek,mt8183-disp-pwm";
++			reg = <0 0x1100e000 0 0x1000>;
++			interrupts = <GIC_SPI 171 IRQ_TYPE_LEVEL_HIGH 0>;
++			#pwm-cells = <2>;
++			clocks = <&topckgen CLK_TOP_DISP_PWM_SEL>,
++				 <&infracfg CLK_INFRA_DISP_PWM>;
++			clock-names = "main", "mm";
 +		};
 +
- 		smi_common: smi@14002000 {
- 			compatible = "mediatek,mt8192-smi-common";
- 			reg = <0 0x14002000 0 0x1000>;
-@@ -1255,6 +1267,109 @@
- 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
- 		};
- 
-+		ovl0: ovl@14005000 {
-+			compatible = "mediatek,mt8192-disp-ovl";
-+			reg = <0 0x14005000 0 0x1000>;
-+			interrupts = <GIC_SPI 254 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&mmsys CLK_MM_DISP_OVL0>;
-+			iommus = <&iommu0 M4U_PORT_L0_OVL_RDMA0>,
-+				 <&iommu0 M4U_PORT_L0_OVL_RDMA0_HDR>;
-+			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-+		};
-+
-+		ovl_2l0: ovl@14006000 {
-+			compatible = "mediatek,mt8192-disp-ovl-2l";
-+			reg = <0 0x14006000 0 0x1000>;
-+			interrupts = <GIC_SPI 255 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-+			clocks = <&mmsys CLK_MM_DISP_OVL0_2L>;
-+			iommus = <&iommu0 M4U_PORT_L1_OVL_2L_RDMA0>,
-+				 <&iommu0 M4U_PORT_L1_OVL_2L_RDMA0_HDR>;
-+		};
-+
-+		rdma0: rdma@14007000 {
-+			compatible = "mediatek,mt8192-disp-rdma";
-+			reg = <0 0x14007000 0 0x1000>;
-+			interrupts = <GIC_SPI 256 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&mmsys CLK_MM_DISP_RDMA0>;
-+			iommus = <&iommu0 M4U_PORT_L0_DISP_RDMA0>;
-+			mediatek,larb = <&larb0>;
-+			mediatek,rdma-fifo-size = <5120>;
-+			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-+		};
-+
-+		color0: color@14009000 {
-+			compatible = "mediatek,mt8192-disp-color",
-+				     "mediatek,mt8173-disp-color";
-+			reg = <0 0x14009000 0 0x1000>;
-+			interrupts = <GIC_SPI 258 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-+			clocks = <&mmsys CLK_MM_DISP_COLOR0>;
-+		};
-+
-+		ccorr0: ccorr@1400a000 {
-+			compatible = "mediatek,mt8192-disp-ccorr";
-+			reg = <0 0x1400a000 0 0x1000>;
-+			interrupts = <GIC_SPI 259 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-+			clocks = <&mmsys CLK_MM_DISP_CCORR0>;
-+		};
-+
-+		aal0: aal@1400b000 {
-+			compatible = "mediatek,mt8192-disp-aal";
-+			reg = <0 0x1400b000 0 0x1000>;
-+			interrupts = <GIC_SPI 260 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-+			clocks = <&mmsys CLK_MM_DISP_AAL0>;
-+		};
-+
-+		gamma0: gamma@1400c000 {
-+			compatible = "mediatek,mt8192-disp-gamma",
-+				     "mediatek,mt8183-disp-gamma";
-+			reg = <0 0x1400c000 0 0x1000>;
-+			interrupts = <GIC_SPI 261 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-+			clocks = <&mmsys CLK_MM_DISP_GAMMA0>;
-+		};
-+
-+		postmask0: postmask@1400d000 {
-+			compatible = "mediatek,mt8192-disp-postmask";
-+			reg = <0 0x1400d000 0 0x1000>;
-+			interrupts = <GIC_SPI 262 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-+			clocks = <&mmsys CLK_MM_DISP_POSTMASK0>;
-+			iommus = <&iommu0 M4U_PORT_L0_DISP_POSTMASK0>;
-+		};
-+
-+		dither0: dither@1400e000 {
-+			compatible = "mediatek,mt8192-disp-dither",
-+				     "mediatek,mt8183-disp-dither";
-+			reg = <0 0x1400e000 0 0x1000>;
-+			interrupts = <GIC_SPI 263 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-+			clocks = <&mmsys CLK_MM_DISP_DITHER0>;
-+		};
-+
-+		ovl_2l2: ovl@14014000 {
-+			compatible = "mediatek,mt8192-disp-ovl-2l";
-+			reg = <0 0x14014000 0 0x1000>;
-+			interrupts = <GIC_SPI 268 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-+			clocks = <&mmsys CLK_MM_DISP_OVL2_2L>;
-+			iommus = <&iommu0 M4U_PORT_L1_OVL_2L_RDMA2>,
-+				 <&iommu0 M4U_PORT_L1_OVL_2L_RDMA2_HDR>;
-+		};
-+
-+		rdma4: rdma@14015000 {
-+			compatible = "mediatek,mt8192-disp-rdma";
-+			reg = <0 0x14015000 0 0x1000>;
-+			interrupts = <GIC_SPI 269 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-+			clocks = <&mmsys CLK_MM_DISP_RDMA4>;
-+			iommus = <&iommu0 M4U_PORT_L1_DISP_RDMA4>;
-+			mediatek,rdma-fifo-size = <2048>;
-+		};
-+
- 		dpi0: dpi@14016000 {
- 			compatible = "mediatek,mt8192-dpi";
- 			reg = <0 0x14016000 0 0x1000>;
+ 		spi1: spi@11010000 {
+ 			compatible = "mediatek,mt8192-spi",
+ 				     "mediatek,mt6765-spi";
 -- 
 2.18.0
 
