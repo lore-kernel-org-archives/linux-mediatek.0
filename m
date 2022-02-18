@@ -4,61 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D13FBC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 09:17:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52907C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Feb 2022 09:17:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JyvN3p+u9AS7uRnrmKA6aAuSMHuCH9T517qEB2et7cg=; b=wv10n4T3NCqHDw
-	eqcI3IRKDFeYAPCPmhTDyV65e3knht3iDU0B+UI0IcaCgsSNcp+nQM0ZdEKvG/aHdv87NBLLMQWEy
-	W49V8wnJhS5c0hrxfTIyCNBMMhfBVHlRxTj7GRn2Sa8Z9yk+CXWfuN3bZh0FYXpXOPN2zxUTwbgAB
-	AOEtKMpBnkh3n6/FOHQW9X6bI3Q+mwKjgFc3K0ICx2r0SNO1K7V93LzaImOPpai3YVZ4QOzqnCWiN
-	t7oEWT+MKq/Bf6yXzf0G40XK9mEOuVMe3JVQ66SQpH+f47urLwQ5Jx7ELLUnPtNjbyuW+SgCo6Nb3
-	ioF9nGNFDg/qMZ89n4+w==;
+	List-Owner; bh=yn40bXHShVMbonGVCLXdO02oUdWIrwZb2pdBIrtlvw0=; b=YsdQ+3Bm0fA4QX
+	W4R6+EazgkUVg+3JFR/0ufN0Lqb8HXCL9AF68OUzqPk15R8GifjGlgSnowZz3ycKe5ahG7qc+/huz
+	BTEzIGuVGr+MMJ6W8LqqQ5V0DZKoY8IObSYOywtvBMOHgnot8u1pDKqT9jyxu/d51etVXLDib+ty0
+	cWvNlX/HQMSD2K7W++LuMnien1+Z5HcrJl50nTOmnpfgHqF4ULKppA8YX+je1fmBFL/l+Y3lrh7Vy
+	7gCradCs7s+zNAjIkHVH8m34gx7m9oWmE9JQiaGca+8L34DC1Y+rQbYhyKC9DdVP+6Y6/XfUsC3xE
+	VmVp+cEBqmIBIiHppzLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKzNk-00DQf9-44; Fri, 18 Feb 2022 09:16:52 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nKzO9-00DQtp-9s; Fri, 18 Feb 2022 09:17:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKzNg-00DQdk-5c; Fri, 18 Feb 2022 09:16:51 +0000
-X-UUID: 8209234b091d4715992f1ad630cf248b-20220218
-X-UUID: 8209234b091d4715992f1ad630cf248b-20220218
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ id 1nKzNi-00DQdl-RT; Fri, 18 Feb 2022 09:16:52 +0000
+X-UUID: 667dc92237534a858cb4d7e34817f12c-20220218
+X-UUID: 667dc92237534a858cb4d7e34817f12c-20220218
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1861765183; Fri, 18 Feb 2022 02:16:43 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1924508086; Fri, 18 Feb 2022 02:16:44 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Feb 2022 01:16:42 -0800
+ 15.0.1497.2; Fri, 18 Feb 2022 01:16:43 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Feb 2022 17:16:40 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 18 Feb 2022 17:16:41 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 18 Feb 2022 17:16:40 +0800
+ Frontend Transport; Fri, 18 Feb 2022 17:16:41 +0800
 From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
  <robh+dt@kernel.org>, --to=Krzysztof Kozlowski
  <krzysztof.kozlowski@canonical.com>
 CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Chen-Yu Tsai" <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Subject: [PATCH v2 04/23] arm64: dts: mt8192: Add gce node
-Date: Fri, 18 Feb 2022 17:16:14 +0800
-Message-ID: <20220218091633.9368-5-allen-kh.cheng@mediatek.com>
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, Allen-KH Cheng
+ <allen-kh.cheng@mediatek.com>
+Subject: [PATCH v2 05/23] arm64: dts: mt8192: Add SCP node
+Date: Fri, 18 Feb 2022 17:16:15 +0800
+Message-ID: <20220218091633.9368-6-allen-kh.cheng@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
 References: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220218_011648_241274_11D10318 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20220218_011650_914363_047FC39E 
+X-CRM114-Status: UNSURE (   9.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,41 +77,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add gce node for mt8192 SoC.
+Add SCP node for mt8192 SoC.
 
 Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 8635c8a53472..f92d8d7afa5d 100644
+index f92d8d7afa5d..61aadd7bd397 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -6,6 +6,7 @@
- 
- /dts-v1/;
- #include <dt-bindings/clock/mt8192-clk.h>
-+#include <dt-bindings/gce/mt8192-gce.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
-@@ -552,6 +553,15 @@
- 			#size-cells = <0>;
+@@ -706,6 +706,18 @@
+ 			status = "disabled";
  		};
  
-+		gce: mailbox@10228000 {
-+			compatible = "mediatek,mt8192-gce";
-+			reg = <0 0x10228000 0 0x4000>;
-+			interrupts = <GIC_SPI 203 IRQ_TYPE_LEVEL_HIGH 0>;
-+			#mbox-cells = <3>;
-+			clocks = <&infracfg CLK_INFRA_GCE>;
-+			clock-names = "gce";
++		scp: scp@10500000 {
++			compatible = "mediatek,mt8192-scp";
++			reg = <0 0x10500000 0 0x100000>,
++			    <0 0x10700000 0 0x8000>,
++			    <0 0x10720000 0 0xe0000>;
++			reg-names = "sram", "l1tcm", "cfg";
++			interrupts = <GIC_SPI 435 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&infracfg CLK_INFRA_SCPSYS>;
++			clock-names = "main";
++			status = "disabled";
 +		};
 +
- 		scp_adsp: clock-controller@10720000 {
- 			compatible = "mediatek,mt8192-scp_adsp";
- 			reg = <0 0x10720000 0 0x1000>;
+ 		nor_flash: spi@11234000 {
+ 			compatible = "mediatek,mt8192-nor";
+ 			reg = <0 0x11234000 0 0xe0>;
 -- 
 2.18.0
 
