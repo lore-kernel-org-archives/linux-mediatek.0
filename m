@@ -4,45 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84371C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Feb 2022 14:30:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76AAEC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Feb 2022 14:30:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x5QKxfubidPFb/DciE4HxTcugk4tXdwbfFrBhuE7sHw=; b=Xt9ySuSodrut9Z
-	dLMBnfZ+Vi3ytouoC5nf29nv/I4zF0+IWv08BmU3slLw7LC+FQKXOs8yI4oq3WVZSmkGeLFTevmMe
-	RoeRYJLCDnQOaSZSqx/5xZeCp0O/ha40ntHIqkgIN/UpOupgRXbSQAw1tUpIqmM6jWna7GxXEZqT2
-	FaBfu3RoNGcAlRmmn6V9o9nydPtXF/8I2NLdQiwPVVGmcqkZvMUsCjTYiamgVCFfwxORjrSXLp307
-	q06e7Zww2X898PuoDWXC4K5fURohp4quYmxskR6kUBkt4/zkKKMIe5OpRnGJLCc4TT9kLYio2tEUb
-	Vdh3/3ml0ti5IpeZA2lA==;
+	List-Owner; bh=1ypZ5YjKQHsfUxRlakFldk9drtdi+l8i9+eHe+ss+Kg=; b=E432M9PtX1aTk2
+	B54WrvMMx2/yNGX+ThlD3j1gDPPOG0UXERWXFHLBzjft3pd3MwsP1zV09Dsz8w2bNuL+TSy3vuNu2
+	sQ4DeKAtI5uSYIszgCKRq9HDkZCx2xEgfTyxwqNqAv5eXJAW766LGZkh8jBPlVetqAtmTYeNhbmMn
+	MUR88Ki85VKBzJn3JdydNvj9uWu+npcdRWM2dRX3znBF6oPY5erKzXQNE3rJnt53Z32lQflha0qwi
+	I6O60yYXdFtN4sPSULL0XcORv2iFstYfEjwzNEQriN1gpWHaRkdfvNocFAj84dBzp0ljeYgJ+jx1x
+	F2A2L6oxEBet1BfzqFdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nM9hw-006CeJ-Uq; Mon, 21 Feb 2022 14:30:32 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nM9iC-006CnZ-8p; Mon, 21 Feb 2022 14:30:48 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nM9hc-006CWH-UV; Mon, 21 Feb 2022 14:30:16 +0000
+ id 1nM9ht-006CcI-7e; Mon, 21 Feb 2022 14:30:30 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 7B35C1F437AC
+ (Authenticated sender: kholk11) with ESMTPSA id 944931F437B1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645453811;
- bh=30ZWPYBlO//VJMyIsttgH0MbJuCyxlDhqahcFdfPAB8=;
+ s=mail; t=1645453827;
+ bh=91cTuA3z5y+Z5jMthJlpUAzmj/zwaz1zdpB+AZ6dNNM=;
  h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
- b=QJ6FOiPGUU7GGQDnQyd25ReRL5cH58XE8TzWDM1npSemzXh2egj1zhpwbhRMJ3Lmj
- tGyN1oFN9mF0tG6VDxUVdN8TacgsCaX2KGZrq4FOKM0PpZ+ITOMvuYoLHx0sW4X50P
- bA2TeDFRtsOV7b8gmAd2R/FvIEEsb3frNQixEvLY3kFlBrqVyB6H5edaNR/BIygDKM
- LO3Yhv3xuemjuPMN8qiK2zbsaiGuUEqSFg4Ct8YletOTNm+haNpLY91tPyNoi39gMm
- lBHbS6w5WSg0DevFAz7riBOae+Le7wrfV0DaRNq8tb1J0dUvWO01J5qQoy2Ev9ala1
- ig10zEz/2uVrQ==
-Message-ID: <a7605c9f-55f9-c7cc-f2b9-89ddbffb4927@collabora.com>
-Date: Mon, 21 Feb 2022 15:30:07 +0100
+ b=PfKzwcTBOutMCbgTPv4LP6kwxiX1XEl07xN5aFfttfSyi1hGOcC3IcVZRs4g2nkO7
+ mxCVKbjmMkaTMdvFgAM4mwWNROVRGv8khhBoyzuVQ1Yo92StwEKeD+9nYMvvK737L/
+ 7QaL0es5xbusioUShM13dGYyqVJqz8LZkBk1eGH5dAzp7i5fHbCQhuvuSjCNf/TaoK
+ qIl1aZXSSHSl6YXYxvy4cDqXMrUhaCCzcBIGdbWMv1uqc6Of32yCUv8QmJbLtL9/Sz
+ awzwtR89svK3u9DowDOdFCJFeohBzUpUpyEKvwxWPsVUSENfCGqgacP//17KRlUZ1Y
+ WJ60mSufzGLjA==
+Message-ID: <2518891f-7d5c-f57b-0837-10f0e55f72cb@collabora.com>
+Date: Mon, 21 Feb 2022 15:30:20 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v8 04/19] video/hdmi: Add audio_infoframe packing for DP
+Subject: Re: [PATCH v8 05/19] drm/mediatek: dpi: move dpi limits to board
+ config
 To: Guillaume Ranquet <granquet@baylibre.com>, chunkuang.hu@kernel.org,
  p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
  robh+dt@kernel.org, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
@@ -52,14 +53,15 @@ To: Guillaume Ranquet <granquet@baylibre.com>, chunkuang.hu@kernel.org,
 Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-fbdev@vger.kernel.org, Markus Schneider-Pargmann <msp@baylibre.com>
+ linux-fbdev@vger.kernel.org
 References: <20220218145437.18563-1-granquet@baylibre.com>
- <20220218145437.18563-5-granquet@baylibre.com>
+ <20220218145437.18563-6-granquet@baylibre.com>
 Content-Language: en-US
-In-Reply-To: <20220218145437.18563-5-granquet@baylibre.com>
+In-Reply-To: <20220218145437.18563-6-granquet@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220221_063013_288450_F4703C84 
-X-CRM114-Status: GOOD (  27.13  )
+X-CRM114-CacheID: sfid-20220221_063029_443799_54762745 
+X-CRM114-Status: UNSURE (   4.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,165 +79,16 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 18/02/22 15:54, Guillaume Ranquet ha scritto:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> Add flexibility by moving the dpi limits to the board config
+
+s/board/SoC/g
+
+After the change,
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 > 
-> Similar to HDMI, DP uses audio infoframes as well which are structured
-> very similar to the HDMI ones.
-> 
-> This patch adds a helper function to pack the HDMI audio infoframe for
-> DP, called hdmi_audio_infoframe_pack_for_dp().
-> hdmi_audio_infoframe_pack_only() is split into two parts. One of them
-> packs the payload only and can be used for HDMI and DP.
-> 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
 > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> ---
->   drivers/video/hdmi.c        | 83 ++++++++++++++++++++++++++++---------
->   include/drm/drm_dp_helper.h |  2 +
->   include/linux/hdmi.h        |  7 +++-
->   3 files changed, 72 insertions(+), 20 deletions(-)
-> 
-> diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
-> index 947be761dfa40..63e74d9fd210e 100644
-> --- a/drivers/video/hdmi.c
-> +++ b/drivers/video/hdmi.c
-> @@ -21,6 +21,7 @@
->    * DEALINGS IN THE SOFTWARE.
->    */
->   
-> +#include <drm/drm_dp_helper.h>
->   #include <linux/bitops.h>
->   #include <linux/bug.h>
->   #include <linux/errno.h>
-> @@ -381,12 +382,34 @@ static int hdmi_audio_infoframe_check_only(const struct hdmi_audio_infoframe *fr
->    *
->    * Returns 0 on success or a negative error code on failure.
->    */
-> -int hdmi_audio_infoframe_check(struct hdmi_audio_infoframe *frame)
-> +int hdmi_audio_infoframe_check(const struct hdmi_audio_infoframe *frame)
->   {
->   	return hdmi_audio_infoframe_check_only(frame);
->   }
->   EXPORT_SYMBOL(hdmi_audio_infoframe_check);
->   
-> +static void
-> +hdmi_audio_infoframe_pack_payload(const struct hdmi_audio_infoframe *frame,
-> +				  u8 *buffer)
-> +{
-> +	u8 channels;
-> +
-> +	if (frame->channels >= 2)
-> +		channels = frame->channels - 1;
-> +	else
-> +		channels = 0;
-> +
-> +	buffer[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
-> +	buffer[1] = ((frame->sample_frequency & 0x7) << 2) |
-> +		 (frame->sample_size & 0x3);
-> +	buffer[2] = frame->coding_type_ext & 0x1f;
-> +	buffer[3] = frame->channel_allocation;
-> +	buffer[4] = (frame->level_shift_value & 0xf) << 3;
-> +
-> +	if (frame->downmix_inhibit)
-> +		buffer[4] |= BIT(7);
-> +}
-> +
->   /**
->    * hdmi_audio_infoframe_pack_only() - write HDMI audio infoframe to binary buffer
->    * @frame: HDMI audio infoframe
-> @@ -404,7 +427,6 @@ EXPORT_SYMBOL(hdmi_audio_infoframe_check);
->   ssize_t hdmi_audio_infoframe_pack_only(const struct hdmi_audio_infoframe *frame,
->   				       void *buffer, size_t size)
->   {
-> -	unsigned char channels;
->   	u8 *ptr = buffer;
->   	size_t length;
->   	int ret;
-> @@ -420,28 +442,13 @@ ssize_t hdmi_audio_infoframe_pack_only(const struct hdmi_audio_infoframe *frame,
->   
->   	memset(buffer, 0, size);
->   
-> -	if (frame->channels >= 2)
-> -		channels = frame->channels - 1;
-> -	else
-> -		channels = 0;
-> -
->   	ptr[0] = frame->type;
->   	ptr[1] = frame->version;
->   	ptr[2] = frame->length;
->   	ptr[3] = 0; /* checksum */
->   
-> -	/* start infoframe payload */
-> -	ptr += HDMI_INFOFRAME_HEADER_SIZE;
-> -
-> -	ptr[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
-> -	ptr[1] = ((frame->sample_frequency & 0x7) << 2) |
-> -		 (frame->sample_size & 0x3);
-> -	ptr[2] = frame->coding_type_ext & 0x1f;
-> -	ptr[3] = frame->channel_allocation;
-> -	ptr[4] = (frame->level_shift_value & 0xf) << 3;
-> -
-> -	if (frame->downmix_inhibit)
-> -		ptr[4] |= BIT(7);
-> +	hdmi_audio_infoframe_pack_payload(frame,
-> +					  ptr + HDMI_INFOFRAME_HEADER_SIZE);
->   
->   	hdmi_infoframe_set_checksum(buffer, length);
->   
-> @@ -479,6 +486,44 @@ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
->   }
->   EXPORT_SYMBOL(hdmi_audio_infoframe_pack);
->   
-> +/**
-> + * hdmi_audio_infoframe_pack_for_dp - Pack a HDMI Audio infoframe for
-> + *                                    displayport
 
-This fits in one line (82 cols is ok)... but, anyway, please capitalize D and P
-in the DisplayPort word.
-
-> + *
-> + * @frame HDMI Audio infoframe
-
-You're almost there! You missed a colon after each description.
-Also, I personally like seeing indented descriptions as, in my opinion, this
-enhances human readability, as it's a bit more pleasing to the eye... but
-it's not a requirement, so you be the judge.
-
-* @frame:      HDMI Audio infoframe
-* @sdp:        Secondary data packet......
-* @dp_version: DisplayPort version......
-
-Please fix.
-
-> + * @sdp secondary data packet for display port. This is filled with the
-> + * appropriate data
-> + * @dp_version Display Port version to be encoded in the header
-> + *
-> + * Packs a HDMI Audio Infoframe to be sent over Display Port. This function
-> + * fills the secondary data packet to be used for Display Port.
-> + *
-> + * Return: Number of total written bytes or a negative errno on failure.
-> + */
-> +ssize_t
-> +hdmi_audio_infoframe_pack_for_dp(const struct hdmi_audio_infoframe *frame,
-> +				 struct dp_sdp *sdp, u8 dp_version)
-> +{
-> +	int ret;
-> +
-> +	ret = hdmi_audio_infoframe_check(frame);
-> +	if (ret)
-> +		return ret;
-> +
-> +	memset(sdp->db, 0, sizeof(sdp->db));
-> +
-> +	// Secondary-data packet header
-
-Please, C-style comments:
-
-	/* Secondary-data packet header */
-
-Thanks,
-Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
