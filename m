@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FD40C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Feb 2022 05:59:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D218C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Feb 2022 06:43:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EhUnDu5afKjtRsbNpzLivHcyOUf0w5sScG12iSZxwks=; b=jcFQxe8jNrIStm
-	SK5+QovLIQBK8mH/SUKllKP6pRXpSOclhGdAF90AmfFN1/lCAVfxIGkzLsuTurZY032bzvM7tze9Y
-	KW25mZ/PS7CHmXhqSERZQVL2NoEVGFRKQ+cgdUFdi2dU+xUUIAg9xYJ6H6ujONtdmDrRDDDcteK00
-	TSfns29wAPyUVar5VpdaQrKV+/NvpaKr8bBZYk/wVEXQx3jrRVWYWjXD4cWuEvqibZT2TKufdSQ59
-	eRk3drKtMhxlRY51+3nmHgBNis7bTjNB54+h8QzYVjnbThxmU5sUSVrYc0Fkm9RUU0OvmvFI9GQBk
-	tmuUEVxk4tFoicFyxLzA==;
+	List-Owner; bh=bFZD3rD2c2WDlsnrG6b3OT48Q+ix+WD+UUd1ONRsVC4=; b=xna+lrE3wX4vwb
+	VmaP0jBgXKP8pBjRRqjiBjwNqQeWA1fXVVEVgzGy7gSYPiMn32rQfgkjyP6M1quRuK0wUlf6qWXo3
+	pRxq5m6qqdrJvrW+/0axMzB2JNnPsyuugibWeSfnKbdphKkx+VVVkxZsvWKulVZFScs06sk6Guh1e
+	jTPzSPtTAWROEIdl6vNQ3GIPtcPkflhtx8G9U3nI3WjF6VF9Jq3hRcRK27qGumMfkqxQ/x8Xts4os
+	Ex+mqQVTw80Y8/syzy4hUy8gzwFgt5oklwoAGQ8SxE9erVDIfrNEvVTbx/Z1ozSZ2t9j40npbA+gK
+	gLX0tq+mH1B6BMQqLifg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nM1jg-003ZSQ-Qx; Mon, 21 Feb 2022 05:59:48 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1nM2Q7-003mcj-04; Mon, 21 Feb 2022 06:43:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nM1jZ-003ZPW-FA
- for linux-mediatek@lists.infradead.org; Mon, 21 Feb 2022 05:59:43 +0000
-Received: by mail-lf1-x136.google.com with SMTP id b9so16589324lfv.7
- for <linux-mediatek@lists.infradead.org>; Sun, 20 Feb 2022 21:59:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=z3epHuUYfz+WUAI/LAxK3vgXKIpB82CcxkhBmhauKLc=;
- b=Gdf1eQMxTIf+KJfkNJ1tawz7LJdaENEUBQlsbA/YqS9D0+LexQ4E3qAbP22oj7o1a7
- Bn9pw+0SyArLWzePBxy8J7t3vndI82jDKSB+9zgjVcRM7l9rFyTbtg02NZvNjuDEMffP
- TQ4XjNbgD80wurfeSqpb3VSbVSg7DKeWhYSeKD/6mXqz8s5zOvg7wwA1BgvgHBAOw6wt
- 1dFpug5qRLI+Qis6eEyR6bMEKckuXTQTkF4TQ4VsZlmxHzVYkfVXNzo8Oav0ehsOgfyL
- oE436/LNzxVnicfKH9NhedWD8HAJWAFQ1O/7xUfQZjgU8ayLgQH7QZ9YTkUXzzHruFjy
- o8aA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=z3epHuUYfz+WUAI/LAxK3vgXKIpB82CcxkhBmhauKLc=;
- b=yoGuGXVJSgMl9eiu7CmNKuHFT2gncakXFv/OpdlnXMP9WQF8QG/WzlYhHlXuNt4qUH
- LJUfmVFn8mWd5lYPWB2MHDLUdKKElD5+ukmmSsPZs/5CfDZ0DU+IKaWDBRFYUtjOwfbs
- Ivx3kw/T6LsKdX8r+U3GjrQYctROP8koYPmwp62goCqc8tm28B4wX+MlfON/fyDJlT1L
- DTq4Q2D1P1QfiFZ0cZuBkwtdiHL0D7ZSnrVorE6sYbqLdOvI9ZQvOvXA60/3h59ErLxW
- ZtJi9ELxIrzqaq9q5chgcsSmkSHmW4QKzD3/l2Vomji8k3hgDChKppPaQZZPBWMp+NLf
- oouw==
-X-Gm-Message-State: AOAM5303fIMGzBtVX4oNfVQpAdgz/MWQs2knjJUgFPSL64PtIfUhR9L6
- cq8OP7T1HLwfgFsDJlgBnFv5pHNiA3ptoBIWJjbqhA==
-X-Google-Smtp-Source: ABdhPJxCztzqv2Asz9YqnW6boj0syKAMz2iapKRHDJ0jArJ/slDF0+6ARy1ddqQXcPuEgOEASBxgAWy7OunXAyvqZ1w=
-X-Received: by 2002:a05:6512:965:b0:443:7340:9893 with SMTP id
- v5-20020a056512096500b0044373409893mr13045429lft.119.1645423178084; Sun, 20
- Feb 2022 21:59:38 -0800 (PST)
+ id 1nM2MN-003klQ-AV; Mon, 21 Feb 2022 06:39:50 +0000
+X-UUID: cb64da63ecce431fbbf5e1294c9a3a63-20220220
+X-UUID: cb64da63ecce431fbbf5e1294c9a3a63-20220220
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <roger.lu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1946180334; Sun, 20 Feb 2022 23:39:44 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 20 Feb 2022 22:39:42 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 21 Feb 2022 14:39:40 +0800
+Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 21 Feb 2022 14:39:40 +0800
+From: Roger Lu <roger.lu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
+ <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd
+ <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
+CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
+ Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>, Charles Yang
+ <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, Mark Rutland
+ <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>, Roger Lu
+ <roger.lu@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guenter Roeck
+ <linux@roeck-us.net>, Jia-wei Chang <jia-wei.chang@mediatek.com>
+Subject: [PATCH v23 6/7] dt-bindings: soc: mediatek: add mt8192 svs dt-bindings
+Date: Mon, 21 Feb 2022 14:39:38 +0800
+Message-ID: <20220221063939.14969-7-roger.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220221063939.14969-1-roger.lu@mediatek.com>
+References: <20220221063939.14969-1-roger.lu@mediatek.com>
 MIME-Version: 1.0
-References: <20220218141004.16912-1-phil.chang@mediatek.com>
-In-Reply-To: <20220218141004.16912-1-phil.chang@mediatek.com>
-From: Sumit Garg <sumit.garg@linaro.org>
-Date: Mon, 21 Feb 2022 11:29:26 +0530
-Message-ID: <CAFA6WYMtxbJXh=WHLPg5gg7JMKUGy+NdKTh9Jb3RbNO97kjoDg@mail.gmail.com>
-Subject: Re: [PATCH v3] tee: make tee_shm_register_kernel_buf vmalloc supported
-To: Phil Chang <phil.chang@mediatek.com>
-Cc: jens.wiklander@linaro.org, matthias.bgg@gmail.com, 
- op-tee@lists.trustedfirmware.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220220_215941_546367_D22F10C3 
-X-CRM114-Status: GOOD (  19.58  )
+X-CRM114-CacheID: sfid-20220220_223947_531317_CC31D1C5 
+X-CRM114-Status: UNSURE (   9.07  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,99 +82,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 18 Feb 2022 at 19:40, Phil Chang <phil.chang@mediatek.com> wrote:
->
-> In some low-memory devices, it's hard to aquire large-orders pages,
-> this patch allowed user using scatter pages to register shm.
->
-> Signed-off-by: Phil Chang <phil.chang@mediatek.com>
-> ---
->
-> Changelog
->         v2 -> v3: use the "n" variable to walk through "page_count"
->
->  drivers/tee/optee/call.c |  2 +-
->  drivers/tee/tee_shm.c    | 37 ++++++++++++++++++++++++++-----------
->  2 files changed, 27 insertions(+), 12 deletions(-)
->
+Add mt8192 svs compatible/resets in dt-bindings.
 
-Apart from minor nit below, feel free to add:
+Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+ .../devicetree/bindings/soc/mediatek/mtk-svs.yaml         | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-Reviewed-by: Sumit Garg <sumit.garg@linaro.org>
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml b/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+index dfd275f4973c..eecfec13ee8b 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
++++ b/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+@@ -22,6 +22,7 @@ properties:
+   compatible:
+     enum:
+       - mediatek,mt8183-svs
++      - mediatek,mt8192-svs
+ 
+   reg:
+     maxItems: 1
+@@ -50,6 +51,13 @@ properties:
+       - const: svs-calibration-data
+       - const: t-calibration-data
+ 
++  resets:
++    maxItems: 1
++
++  reset-names:
++    items:
++      - const: svs_rst
++
+ required:
+   - compatible
+   - reg
+-- 
+2.18.0
 
-> diff --git a/drivers/tee/optee/call.c b/drivers/tee/optee/call.c
-> index bd49ec934060..2082e632adff 100644
-> --- a/drivers/tee/optee/call.c
-> +++ b/drivers/tee/optee/call.c
-> @@ -362,7 +362,7 @@ int optee_check_mem_type(unsigned long start, size_t num_pages)
->          * Allow kernel address to register with OP-TEE as kernel
->          * pages are configured as normal memory only.
->          */
-> -       if (virt_addr_valid(start))
-> +       if (virt_addr_valid(start) || is_vmalloc_addr((void *)start))
->                 return 0;
->
->         mmap_read_lock(mm);
-> diff --git a/drivers/tee/tee_shm.c b/drivers/tee/tee_shm.c
-> index f31e29e8f1ca..1412adad9397 100644
-> --- a/drivers/tee/tee_shm.c
-> +++ b/drivers/tee/tee_shm.c
-> @@ -23,21 +23,36 @@ static void shm_put_kernel_pages(struct page **pages, size_t page_count)
->  static int shm_get_kernel_pages(unsigned long start, size_t page_count,
->                                 struct page **pages)
->  {
-> -       struct kvec *kiov;
-
-> -       size_t n;
->         int rc;
-> +       size_t n;
-
-nit: this redundant change can be removed.
-
--Sumit
-
->
-> -       kiov = kcalloc(page_count, sizeof(*kiov), GFP_KERNEL);
-> -       if (!kiov)
-> -               return -ENOMEM;
-> +       if (is_vmalloc_addr((void *)start)) {
-> +               struct page *page;
->
-> -       for (n = 0; n < page_count; n++) {
-> -               kiov[n].iov_base = (void *)(start + n * PAGE_SIZE);
-> -               kiov[n].iov_len = PAGE_SIZE;
-> -       }
-> +               for (n = 0; n < page_count; n++) {
-> +                       page = vmalloc_to_page((void *)(start + PAGE_SIZE * n));
-> +                       if (!page)
-> +                               return -ENOMEM;
-> +
-> +                       get_page(page);
-> +                       pages[n] = page;
-> +               }
-> +               rc = page_count;
-> +       } else {
-> +               struct kvec *kiov;
->
-> -       rc = get_kernel_pages(kiov, page_count, 0, pages);
-> -       kfree(kiov);
-> +               kiov = kcalloc(page_count, sizeof(*kiov), GFP_KERNEL);
-> +               if (!kiov)
-> +                       return -ENOMEM;
-> +
-> +               for (n = 0; n < page_count; n++) {
-> +                       kiov[n].iov_base = (void *)(start + n * PAGE_SIZE);
-> +                       kiov[n].iov_len = PAGE_SIZE;
-> +               }
-> +
-> +               rc = get_kernel_pages(kiov, page_count, 0, pages);
-> +               kfree(kiov);
-> +       }
->
->         return rc;
->  }
-> --
-> 2.25.1
 
 _______________________________________________
 Linux-mediatek mailing list
