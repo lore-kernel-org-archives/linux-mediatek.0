@@ -4,83 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9845AC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Feb 2022 02:14:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38B5CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Feb 2022 02:17:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e0Pii29XddyqUz7M7xJw9/XrazQ8j5VJPtVcPtsZBHY=; b=tM4nr+xuiAjgwK
-	/1aU1hz/H23OGbVNo3UqTBakChg5KqrP4eGVtCVXm3CziHKO7hjybD/lIQGOk3T/FjnX53yCm/eiB
-	77qvwqz70AZeplDfArH/ng3ueGMcxY4Tu/4nEjYcUIc/n4S+3Aet6mG9m42fy0DCA7MEYLMG2eTSk
-	5ZVNtL68mBRDuhQRAD1gj3PaIeDazOrV1pJEwatQ9N/PvRKig4zvdRwn6Ao8KeBhWT1l7cmvEMfJB
-	X4UwDxmElmDfavqRsr52PGs0IsIJ/+/D8DswoTENnLJcQSic2M1V+mz+HNCOuQDjGU1Vpf8nO2P9S
-	kjR4dCcoQAv442bH6E9Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Cp8xbB0IbBH4EXY463MWLKViRpT6HWjxxwHaL+RR+nA=; b=eDA8RhI7viphce
+	olQNQlu4YLUuEoRQX1qftlke2PDo3rwQxwW9JyGROAwhCPYL+M0vBQ20y8IzcFmvpozzHIfeywEzK
+	lTcKbEaaRbWlnFzb/1cWH0flKkLZf61pO9w0uAtM8b8lPTAm7rblU+/JV6GvM3M87IRqWViXP9pPl
+	dWRoz5YH+hObB75cHz24yUl8vw44fczzRGuLx7CJ8r3Om6kRRrmRVOVKwg5TvdOZ4LKVYorW9QoiN
+	6UAEB5Yr5M7GjhRsh8vvmvxNyF8idLeZv6AX8Tzbuh1usJmsdorwySbXttT2EMBc1lHSaKB3EglRY
+	/9Sjar9XMeoMYaNKjdwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nLyDq-002yp8-5i; Mon, 21 Feb 2022 02:14:42 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nLyGf-002ze6-CS; Mon, 21 Feb 2022 02:17:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nLyDT-002yhG-8z; Mon, 21 Feb 2022 02:14:21 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id C4907B80DA9;
- Mon, 21 Feb 2022 02:14:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93041C340F6;
- Mon, 21 Feb 2022 02:14:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1645409656;
- bh=pV8SFKuHUgpAlxXGX/qRMPIw+Kd4bEx8SviHAJcdS/Y=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=YiyRpZrPApxVaNDYIvavOjHmK/p4DUAeK7+Tqr9SzP0O7Yfgnjvuyw8qO1REi2RDD
- Phy4Kuly9XfumICficyiVzBcfe/DaRvSiBTX5u/ENtDXdOdFwDWa5ljj6iof4IHs9j
- PwvNupG/A7W8SaN6+pszjxxkNm8ps6klra5cJ94zW1ndONy6OZGOcI6eRR5GkCd54r
- TBwzSdQ+0+zHV/LZEIDpRdVda2/o8kkRB4Cb6OrQhSlr/rV2QP+6PSS21vq1KntrxN
- 8YPmtWnLOQQeZjWZ9WtmB9BjdwBDBZ2IFScLqyyer+sDrFL3TwFAkQb64Wcof6TbnV
- Xijrjmx0NtcSg==
-Received: by mail-ej1-f45.google.com with SMTP id qx21so29136783ejb.13;
- Sun, 20 Feb 2022 18:14:16 -0800 (PST)
-X-Gm-Message-State: AOAM5326ExKJNFnbTp8X28Bs6QSec6VmOzX+LfDEam5MKeVYZi+GOEEx
- Eqa5pqf+KHk35AWdJV0fOuyvQPwPBxQP8xheIw==
-X-Google-Smtp-Source: ABdhPJzuzbcKzGVGYsB6r6h/Y3EsbKgrTgOGjhQohSFx5+ar+PHYzw42VipVTgZDJCfjawuEm8YsH/Nvkb+0+E4tzns=
-X-Received: by 2002:a17:906:a20c:b0:6ce:a87e:5013 with SMTP id
- r12-20020a170906a20c00b006cea87e5013mr13673365ejy.379.1645409654814; Sun, 20
- Feb 2022 18:14:14 -0800 (PST)
+ id 1nLyGS-002zaq-6s; Mon, 21 Feb 2022 02:17:25 +0000
+X-UUID: 7ef652bba7c84693ad079f57654f9c02-20220220
+X-UUID: 7ef652bba7c84693ad079f57654f9c02-20220220
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chui-hao.chiu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1541700272; Sun, 20 Feb 2022 19:17:22 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 20 Feb 2022 18:07:20 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 21 Feb 2022 10:07:18 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 21 Feb 2022 10:07:18 +0800
+From: Peter Chiu <chui-hao.chiu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
+ Ryder Lee <ryder.Lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ Sam Shih <sam.shih@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Peter
+ Chiu" <chui-hao.chiu@mediatek.com>
+Subject: [PATCH] arm64: dts: mt7986: add built-in Wi-Fi device nodes
+Date: Mon, 21 Feb 2022 10:07:08 +0800
+Message-ID: <20220221020708.12724-1-chui-hao.chiu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20220218145437.18563-1-granquet@baylibre.com>
- <20220218145437.18563-7-granquet@baylibre.com>
-In-Reply-To: <20220218145437.18563-7-granquet@baylibre.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 21 Feb 2022 10:14:02 +0800
-X-Gmail-Original-Message-ID: <CAAOTY__AgD_Rc_5TS4v+sBDeN-nd0DbwuERhW=OsvsbMWSsxsA@mail.gmail.com>
-Message-ID: <CAAOTY__AgD_Rc_5TS4v+sBDeN-nd0DbwuERhW=OsvsbMWSsxsA@mail.gmail.com>
-Subject: Re: [PATCH v8 06/19] drm/mediatek: dpi: implement a CK/DE pol toggle
- in board config
-To: Guillaume Ranquet <granquet@baylibre.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, 
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Rob Herring <robh+dt@kernel.org>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, 
- Thomas Zimmermann <tzimmermann@suse.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, 
- deller@gmx.de, CK Hu <ck.hu@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- DRI Development <dri-devel@lists.freedesktop.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- DTML <devicetree@vger.kernel.org>, 
- linux-kernel <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-phy@lists.infradead.org,
- linux-fbdev@vger.kernel.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220220_181419_647869_E8D0995E 
-X-CRM114-Status: GOOD (  19.93  )
+X-CRM114-CacheID: sfid-20220220_181724_272082_5AB1A52A 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,72 +67,184 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SEksIEd1aWxsYXVtZToKCkd1aWxsYXVtZSBSYW5xdWV0IDxncmFucXVldEBiYXlsaWJyZS5jb20+
-IOaWvCAyMDIy5bm0MuaciDE45pelIOmAseS6lCDkuIvljYgxMDo1NuWvq+mBk++8mgo+Cj4gQWRk
-cyBhIGJpdCBvZiBmbGV4aWJpbGl0eSB0byBzdXBwb3J0IGJvYXJkcyB3aXRob3V0IENLL0RFIHBv
-bCBzdXBwb3J0CgpJJ20gbm90IHN1cmUgd2hhdCB0aGUgdGVybSAnYm9hcmQnIG1lYW4uIERvIHlv
-dSBtZWFuIGRpZmZlcmVudCBib2FyZAp3aXRoIGRpZmZlcmVudCBwYW5lbCBidXQgYWxsIHdpdGgg
-bXQ4MTk1LWRwaW50Zj8gSWYgc28sIHlvdSBzaG91bGQgZ2V0CkNLL0RFIHN1cHBvcnQgZnJvbSBw
-YW5lbCBkcml2ZXIgbm90IGZpeCB0aGlzIGluZm9ybWF0aW9uIGluIGRwaQpkcml2ZXIuCgpSZWdh
-cmRzLApDaHVuLUt1YW5nLgoKPgo+IFNpZ25lZC1vZmYtYnk6IEd1aWxsYXVtZSBSYW5xdWV0IDxn
-cmFucXVldEBiYXlsaWJyZS5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHBpLmMgfCAyMiArKysrKysrKysrKysrKysrKy0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAx
-NyBpbnNlcnRpb25zKCspLCA1IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RwaS5jCj4gaW5kZXggNDc0NmViMzQyNTY3NC4uNTQ1YTEzMzdjYzg5OSAxMDA2NDQKPiAtLS0g
-YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCj4gKysrIGIvZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kcGkuYwo+IEBAIC0xMjUsNiArMTI1LDcgQEAgc3RydWN0IG10a19k
-cGlfY29uZiB7Cj4gICAgICAgICBib29sIGVkZ2Vfc2VsX2VuOwo+ICAgICAgICAgY29uc3QgdTMy
-ICpvdXRwdXRfZm10czsKPiAgICAgICAgIHUzMiBudW1fb3V0cHV0X2ZtdHM7Cj4gKyAgICAgICBi
-b29sIGlzX2NrX2RlX3BvbDsKPiAgICAgICAgIGNvbnN0IHN0cnVjdCBtdGtfZHBpX3ljX2xpbWl0
-ICpsaW1pdDsKPiAgfTsKPgo+IEBAIC0yMTEsMTMgKzIxMiwyMCBAQCBzdGF0aWMgdm9pZCBtdGtf
-ZHBpX2NvbmZpZ19wb2woc3RydWN0IG10a19kcGkgKmRwaSwKPiAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgc3RydWN0IG10a19kcGlfcG9sYXJpdGllcyAqZHBpX3BvbCkKPiAgewo+ICAg
-ICAgICAgdW5zaWduZWQgaW50IHBvbDsKPiArICAgICAgIHVuc2lnbmVkIGludCBtYXNrOwo+Cj4g
-LSAgICAgICBwb2wgPSAoZHBpX3BvbC0+Y2tfcG9sID09IE1US19EUElfUE9MQVJJVFlfUklTSU5H
-ID8gMCA6IENLX1BPTCkgfAo+IC0gICAgICAgICAgICAgKGRwaV9wb2wtPmRlX3BvbCA9PSBNVEtf
-RFBJX1BPTEFSSVRZX1JJU0lORyA/IDAgOiBERV9QT0wpIHwKPiAtICAgICAgICAgICAgIChkcGlf
-cG9sLT5oc3luY19wb2wgPT0gTVRLX0RQSV9QT0xBUklUWV9SSVNJTkcgPyAwIDogSFNZTkNfUE9M
-KSB8Cj4gKyAgICAgICBtYXNrID0gSFNZTkNfUE9MIHwgVlNZTkNfUE9MOwo+ICsgICAgICAgcG9s
-ID0gKGRwaV9wb2wtPmhzeW5jX3BvbCA9PSBNVEtfRFBJX1BPTEFSSVRZX1JJU0lORyA/IDAgOiBI
-U1lOQ19QT0wpIHwKPiAgICAgICAgICAgICAgIChkcGlfcG9sLT52c3luY19wb2wgPT0gTVRLX0RQ
-SV9QT0xBUklUWV9SSVNJTkcgPyAwIDogVlNZTkNfUE9MKTsKPiAtICAgICAgIG10a19kcGlfbWFz
-ayhkcGksIERQSV9PVVRQVVRfU0VUVElORywgcG9sLAo+IC0gICAgICAgICAgICAgICAgICAgIENL
-X1BPTCB8IERFX1BPTCB8IEhTWU5DX1BPTCB8IFZTWU5DX1BPTCk7Cj4gKyAgICAgICBpZiAoZHBp
-LT5jb25mLT5pc19ja19kZV9wb2wpIHsKPiArICAgICAgICAgICAgICAgbWFzayB8PSBDS19QT0wg
-fCBERV9QT0w7Cj4gKyAgICAgICAgICAgICAgIHBvbCB8PSAoZHBpX3BvbC0+Y2tfcG9sID09IE1U
-S19EUElfUE9MQVJJVFlfUklTSU5HID8KPiArICAgICAgICAgICAgICAgICAgICAgICAwIDogQ0tf
-UE9MKSB8Cj4gKyAgICAgICAgICAgICAgICAgICAgICAoZHBpX3BvbC0+ZGVfcG9sID09IE1US19E
-UElfUE9MQVJJVFlfUklTSU5HID8KPiArICAgICAgICAgICAgICAgICAgICAgICAwIDogREVfUE9M
-KTsKPiArICAgICAgIH0KPiArCj4gKyAgICAgICBtdGtfZHBpX21hc2soZHBpLCBEUElfT1VUUFVU
-X1NFVFRJTkcsIHBvbCwgbWFzayk7Cj4gIH0KPgo+ICBzdGF0aWMgdm9pZCBtdGtfZHBpX2NvbmZp
-Z18zZChzdHJ1Y3QgbXRrX2RwaSAqZHBpLCBib29sIGVuXzNkKQo+IEBAIC03OTksNiArODA3LDcg
-QEAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfZHBpX2NvbmYgbXQ4MTczX2NvbmYgPSB7Cj4gICAg
-ICAgICAubWF4X2Nsb2NrX2toeiA9IDMwMDAwMCwKPiAgICAgICAgIC5vdXRwdXRfZm10cyA9IG10
-ODE3M19vdXRwdXRfZm10cywKPiAgICAgICAgIC5udW1fb3V0cHV0X2ZtdHMgPSBBUlJBWV9TSVpF
-KG10ODE3M19vdXRwdXRfZm10cyksCj4gKyAgICAgICAuaXNfY2tfZGVfcG9sID0gdHJ1ZSwKPiAg
-ICAgICAgIC5saW1pdCA9ICZtdGtfZHBpX2xpbWl0LAo+ICB9Owo+Cj4gQEAgLTgwOSw2ICs4MTgs
-NyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG10a19kcGlfY29uZiBtdDI3MDFfY29uZiA9IHsKPiAg
-ICAgICAgIC5tYXhfY2xvY2tfa2h6ID0gMTUwMDAwLAo+ICAgICAgICAgLm91dHB1dF9mbXRzID0g
-bXQ4MTczX291dHB1dF9mbXRzLAo+ICAgICAgICAgLm51bV9vdXRwdXRfZm10cyA9IEFSUkFZX1NJ
-WkUobXQ4MTczX291dHB1dF9mbXRzKSwKPiArICAgICAgIC5pc19ja19kZV9wb2wgPSB0cnVlLAo+
-ICAgICAgICAgLmxpbWl0ID0gJm10a19kcGlfbGltaXQsCj4gIH07Cj4KPiBAQCAtODE4LDYgKzgy
-OCw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2RwaV9jb25mIG10ODE4M19jb25mID0gewo+
-ICAgICAgICAgLm1heF9jbG9ja19raHogPSAxMDAwMDAsCj4gICAgICAgICAub3V0cHV0X2ZtdHMg
-PSBtdDgxODNfb3V0cHV0X2ZtdHMsCj4gICAgICAgICAubnVtX291dHB1dF9mbXRzID0gQVJSQVlf
-U0laRShtdDgxODNfb3V0cHV0X2ZtdHMpLAo+ICsgICAgICAgLmlzX2NrX2RlX3BvbCA9IHRydWUs
-Cj4gICAgICAgICAubGltaXQgPSAmbXRrX2RwaV9saW1pdCwKPiAgfTsKPgo+IEBAIC04MjcsNiAr
-ODM4LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfZHBpX2NvbmYgbXQ4MTkyX2NvbmYgPSB7
-Cj4gICAgICAgICAubWF4X2Nsb2NrX2toeiA9IDE1MDAwMCwKPiAgICAgICAgIC5vdXRwdXRfZm10
-cyA9IG10ODE3M19vdXRwdXRfZm10cywKPiAgICAgICAgIC5udW1fb3V0cHV0X2ZtdHMgPSBBUlJB
-WV9TSVpFKG10ODE3M19vdXRwdXRfZm10cyksCj4gKyAgICAgICAuaXNfY2tfZGVfcG9sID0gdHJ1
-ZSwKPiAgICAgICAgIC5saW1pdCA9ICZtdGtfZHBpX2xpbWl0LAo+ICB9Owo+Cj4gLS0KPiAyLjM0
-LjEKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRp
-YXRlawo=
+This enables built-in 802.11ax Wi-Fi support.
+
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+---
+This patch depends on below patchs
+1) https://patchwork.kernel.org/patch/12704208/
+2) https://patchwork.kernel.org/patch/12704207/
+3) https://patchwork.kernel.org/patch/12739683/
+---
+ arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 41 +++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 19 +++++++++
+ arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts | 43 ++++++++++++++++++++
+ 3 files changed, 103 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+index 4f3ff4e32452..06d09b33fabc 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+@@ -40,6 +40,13 @@
+ 	status = "okay";
+ };
+ 
++&wmac {
++	status = "okay";
++	pinctrl-names = "default", "dbdc";
++	pinctrl-0 = <&wf_2g_5g_pins>;
++	pinctrl-1 = <&wf_dbdc_pins>;
++};
++
+ &pio {
+ 	uart1_pins: uart1-pins {
+ 		mux {
+@@ -61,6 +68,40 @@
+ 			groups = "jtag";
+ 		};
+ 	};
++
++	wf_2g_5g_pins: wf_2g_5g-pins {
++		mux {
++			function = "wifi";
++			groups = "wf_2g", "wf_5g";
++		};
++		conf {
++			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
++			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
++			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
++			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
++			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
++			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
++			       "WF1_TOP_CLK", "WF1_TOP_DATA";
++			drive-strength = <4>;
++		};
++	};
++
++	wf_dbdc_pins: wf_dbdc-pins {
++		mux {
++			function = "wifi";
++			groups = "wf_dbdc";
++		};
++		conf {
++			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
++			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
++			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
++			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
++			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
++			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
++			       "WF1_TOP_CLK", "WF1_TOP_DATA";
++			drive-strength = <4>;
++		};
++	};
+ };
+ 
+ &ice {
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+index fa98c2305e75..3896b5dca4b4 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+@@ -7,6 +7,7 @@
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/clock/mt7986-clk.h>
++#include <dt-bindings/reset/mt7986-resets.h>
+ 
+ / {
+ 	interrupt-parent = <&gic>;
+@@ -79,6 +80,11 @@
+ 			reg = <0 0x43000000 0 0x30000>;
+ 			no-map;
+ 		};
++
++		wmcpu_emi: wmcpu-reserved@4fc00000 {
++			no-map;
++			reg = <0 0x4fc00000 0 0x00100000>;
++		};
+ 	};
+ 
+ 	timer {
+@@ -231,6 +237,19 @@
+ 			 #reset-cells = <1>;
+ 		};
+ 
++		wmac: wmac@18000000 {
++			compatible = "mediatek,mt7986-wmac";
++			resets = <&watchdog MT7986_TOPRGU_CONSYS_SW_RST>;
++			reset-names = "consys";
++			reg = <0 0x18000000 0 0x1000000>,
++			      <0 0x10003000 0 0x1000>,
++			      <0 0x11d10000 0 0x1000>;
++			interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 214 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 215 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 216 IRQ_TYPE_LEVEL_HIGH>;
++			memory-region = <&wmcpu_emi>;
++		};
+ 	};
+ 
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+index 5fb752edd754..fb422878ebb2 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+@@ -27,3 +27,46 @@
+ &uart0 {
+ 	status = "okay";
+ };
++
++&wmac {
++	status = "okay";
++	pinctrl-names = "default", "dbdc";
++	pinctrl-0 = <&wf_2g_5g_pins>;
++	pinctrl-1 = <&wf_dbdc_pins>;
++};
++
++&pio {
++	wf_2g_5g_pins: wf_2g_5g-pins {
++		mux {
++			function = "wifi";
++			groups = "wf_2g", "wf_5g";
++		};
++		conf {
++			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
++			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
++			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
++			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
++			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
++			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
++			       "WF1_TOP_CLK", "WF1_TOP_DATA";
++			drive-strength = <4>;
++		};
++	};
++
++	wf_dbdc_pins: wf_dbdc-pins {
++		mux {
++			function = "wifi";
++			groups = "wf_dbdc";
++		};
++		conf {
++			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
++			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
++			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
++			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
++			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
++			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
++			       "WF1_TOP_CLK", "WF1_TOP_DATA";
++			drive-strength = <4>;
++		};
++	};
++};
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
