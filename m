@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D218C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Feb 2022 06:43:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2FDCC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Feb 2022 06:43:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bFZD3rD2c2WDlsnrG6b3OT48Q+ix+WD+UUd1ONRsVC4=; b=xna+lrE3wX4vwb
-	VmaP0jBgXKP8pBjRRqjiBjwNqQeWA1fXVVEVgzGy7gSYPiMn32rQfgkjyP6M1quRuK0wUlf6qWXo3
-	pRxq5m6qqdrJvrW+/0axMzB2JNnPsyuugibWeSfnKbdphKkx+VVVkxZsvWKulVZFScs06sk6Guh1e
-	jTPzSPtTAWROEIdl6vNQ3GIPtcPkflhtx8G9U3nI3WjF6VF9Jq3hRcRK27qGumMfkqxQ/x8Xts4os
-	Ex+mqQVTw80Y8/syzy4hUy8gzwFgt5oklwoAGQ8SxE9erVDIfrNEvVTbx/Z1ozSZ2t9j40npbA+gK
-	gLX0tq+mH1B6BMQqLifg==;
+	List-Owner; bh=+czG7S2bpDsOYUdEXzFCd6MGOPpmzXBgWoI3crA4BmA=; b=uQ5rMzSE37DUMq
+	dDyNmRF4fT1WSwxZ9/q2tlUCYLVg+Rr41tiVBRTFBY0M+IofDu+iWzhVYo9JPcK+G06oh/NESrfP1
+	4EG2VKBTF2lbX6kGkoolBU1R/Z9WnnLF6LfVZZTdFT1R8mh12VfLUnR8RfwdPenDyNoSwHy9TJpe/
+	Rf44hNZGksc4LoWL77DsC/RmnMNgy7MIS81yvyGOSj2jPLARozOWiY5OxuCErfBcn8JEMNzxE3FwR
+	IjO2HB7EvEqm96AsPHQ/Tdyob14tvRsvzR868bnfgbY+ZVZ91sNDWVbL4uaQsMqeONCHntG3JNb70
+	d4XAM7dnK5WUw/KjSQ+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nM2Q7-003mcj-04; Mon, 21 Feb 2022 06:43:39 +0000
+	id 1nM2QD-003mfI-1J; Mon, 21 Feb 2022 06:43:45 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nM2MN-003klQ-AV; Mon, 21 Feb 2022 06:39:50 +0000
-X-UUID: cb64da63ecce431fbbf5e1294c9a3a63-20220220
-X-UUID: cb64da63ecce431fbbf5e1294c9a3a63-20220220
+ id 1nM2MO-003klr-LU; Mon, 21 Feb 2022 06:39:51 +0000
+X-UUID: 185f1cc94abd467ab8acb5dc106aa117-20220220
+X-UUID: 185f1cc94abd467ab8acb5dc106aa117-20220220
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <roger.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1946180334; Sun, 20 Feb 2022 23:39:44 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 773690993; Sun, 20 Feb 2022 23:39:43 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Sun, 20 Feb 2022 22:39:42 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 21 Feb 2022 14:39:40 +0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 21 Feb 2022 14:39:40 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 21 Feb 2022 14:39:40 +0800
+ Frontend Transport; Mon, 21 Feb 2022 14:39:39 +0800
 From: Roger Lu <roger.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
  <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
@@ -54,18 +53,17 @@ CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>,
  <linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guenter Roeck
  <linux@roeck-us.net>, Jia-wei Chang <jia-wei.chang@mediatek.com>
-Subject: [PATCH v23 6/7] dt-bindings: soc: mediatek: add mt8192 svs dt-bindings
-Date: Mon, 21 Feb 2022 14:39:38 +0800
-Message-ID: <20220221063939.14969-7-roger.lu@mediatek.com>
+Subject: [PATCH v23 1/7] dt-bindings: soc: mediatek: add mtk svs dt-bindings
+Date: Mon, 21 Feb 2022 14:39:33 +0800
+Message-ID: <20220221063939.14969-2-roger.lu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220221063939.14969-1-roger.lu@mediatek.com>
 References: <20220221063939.14969-1-roger.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220220_223947_531317_CC31D1C5 
-X-CRM114-Status: UNSURE (   9.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220220_223948_795019_88DFE054 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,40 +80,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8192 svs compatible/resets in dt-bindings.
+Document the binding for enabling mtk svs on MediaTek SoC.
 
 Signed-off-by: Roger Lu <roger.lu@mediatek.com>
 Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- .../devicetree/bindings/soc/mediatek/mtk-svs.yaml         | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ .../bindings/soc/mediatek/mtk-svs.yaml        | 83 +++++++++++++++++++
+ 1 file changed, 83 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
 
 diff --git a/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml b/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
-index dfd275f4973c..eecfec13ee8b 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+new file mode 100644
+index 000000000000..dfd275f4973c
+--- /dev/null
 +++ b/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
-@@ -22,6 +22,7 @@ properties:
-   compatible:
-     enum:
-       - mediatek,mt8183-svs
-+      - mediatek,mt8192-svs
- 
-   reg:
-     maxItems: 1
-@@ -50,6 +51,13 @@ properties:
-       - const: svs-calibration-data
-       - const: t-calibration-data
- 
-+  resets:
+@@ -0,0 +1,83 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/soc/mediatek/mtk-svs.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Smart Voltage Scaling (SVS) Device Tree Bindings
++
++maintainers:
++  - Roger Lu <roger.lu@mediatek.com>
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Kevin Hilman <khilman@kernel.org>
++
++description: |+
++  The SVS engine is a piece of hardware which has several
++  controllers(banks) for calculating suitable voltage to
++  different power domains(CPU/GPU/CCI) according to
++  chip process corner, temperatures and other factors. Then DVFS
++  driver could apply SVS bank voltage to PMIC/Buck.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8183-svs
++
++  reg:
++    maxItems: 1
++    description: Address range of the MTK SVS controller.
++
++  interrupts:
 +    maxItems: 1
 +
-+  reset-names:
-+    items:
-+      - const: svs_rst
++  clocks:
++    maxItems: 1
++    description: Main clock for MTK SVS controller to work.
 +
- required:
-   - compatible
-   - reg
++  clock-names:
++    const: main
++
++  nvmem-cells:
++    minItems: 1
++    description:
++      Phandle to the calibration data provided by a nvmem device.
++    items:
++      - description: SVS efuse for SVS controller
++      - description: Thermal efuse for SVS controller
++
++  nvmem-cell-names:
++    items:
++      - const: svs-calibration-data
++      - const: t-calibration-data
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - nvmem-cells
++  - nvmem-cell-names
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        svs@1100b000 {
++            compatible = "mediatek,mt8183-svs";
++            reg = <0 0x1100b000 0 0x1000>;
++            interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
++            clocks = <&infracfg CLK_INFRA_THERM>;
++            clock-names = "main";
++            nvmem-cells = <&svs_calibration>, <&thermal_calibration>;
++            nvmem-cell-names = "svs-calibration-data", "t-calibration-data";
++        };
++    };
 -- 
 2.18.0
 
