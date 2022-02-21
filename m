@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A5BEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Feb 2022 13:40:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76282C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Feb 2022 13:41:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ve7zU2aJirVi0M1qE1u4eAqRJjjb3aWa5dxZJkc387U=; b=ntXa//gMwTJzv7
-	Qlz+ZdaIa0J3MDY0tUTC+WmB0X19SkngnlMLeOnfAoIk4lK/rw9rSBAZZtCA3DRvLUBvRch1pt0Sz
-	eNGKG0LTdX5/V2nG2Msx8LxECx6FdA70QjE4keIzorEBfS0xkWRhQ5nN7VLezOWH93yIHp/fIMeZ1
-	AwR6HfBhMznHbcxSiNlALOMvzDbT/9HM4G09+1UByNE50HVvLH0AlKdQrxbG2JyceHxUysm1zfV/F
-	ITGxW1Dqym+txkhiDmret1VxyH37YxVQ0A9kwo3wYM2CxD+Gnt0rz2bQP+saUMjxzO47kcTDADJjs
-	nGLzgltwzQexvDUbCJBQ==;
+	List-Owner; bh=Q+/oewzjrolnNb0mAIZ/Wgk1JUnZfd3Zo3CbWmAZtCY=; b=KmVkm3az7kSlmt
+	n3KQvUgt3qNGqZkodZj6orFOeSP3q/P5LvbD4lB+OM+fXZq2AQlULAZ0lVa6RdvFD9Su+uq/Axb2/
+	cAr6uGvvDgjRTJOCVTL4gc+Py1/JNXza45ma9p8MzUT87xB/Kl5IvoBwlvcVwTwtgZQdxMEzFyVWY
+	ZMsoQIW6EO0HV9gJLFjDw/jwOjrxluXRf7emgQPQ5s1OQW8P9KyQ787lieFxUZylRyTvYPPJHlGzO
+	r7czTVk04Sq6XtnC989Vn2piKL1S4tBRXWC6d8sJZpydmqN6+NkC+GF/FcVHYcbfYOgLE8MNGsXph
+	sA7ad5SgEq6A/mxMfoZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nM8vX-005yUA-KG; Mon, 21 Feb 2022 13:40:31 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nM8wa-005ypd-3n; Mon, 21 Feb 2022 13:41:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nM8Sg-005ojd-F8; Mon, 21 Feb 2022 13:10:44 +0000
-X-UUID: a2e47522b35c4dae95038e6d0a8cc731-20220221
-X-UUID: a2e47522b35c4dae95038e6d0a8cc731-20220221
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1nM8TB-005ouK-4Z; Mon, 21 Feb 2022 13:11:15 +0000
+X-UUID: 0997de35d1af4af5b03f465078394088-20220221
+X-UUID: 0997de35d1af4af5b03f465078394088-20220221
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 846233884; Mon, 21 Feb 2022 06:10:37 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1186288998; Mon, 21 Feb 2022 06:11:11 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Feb 2022 05:00:35 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Feb 2022 21:00:34 +0800
+ 15.0.1497.2; Mon, 21 Feb 2022 05:11:09 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 21 Feb 2022 21:10:56 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 21 Feb 2022 21:00:33 +0800
-Message-ID: <8bfd46477e482e0979f30f9a68005a464ce2739e.camel@mediatek.com>
-Subject: Re: [PATCH v2 06/23] arm64: dts: mt8192: Add usb-phy node
+ Transport; Mon, 21 Feb 2022 21:10:55 +0800
+Message-ID: <3b7bdcf9be2633cdeed0258b1c12acbca7a97daf.camel@mediatek.com>
+Subject: Re: [PATCH v2 17/23] arm64: dts: mt8192: Add vcodec lat and core nodes
 From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
@@ -50,17 +50,17 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
  Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
  "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
-Date: Mon, 21 Feb 2022 21:00:33 +0800
-In-Reply-To: <7ce0bf47-b0c9-b6e6-92f3-b7a11b3adfd5@collabora.com>
+Date: Mon, 21 Feb 2022 21:10:55 +0800
+In-Reply-To: <985167a1-cd44-4735-c86a-59cd60d31d1a@collabora.com>
 References: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
- <20220218091633.9368-7-allen-kh.cheng@mediatek.com>
- <7ce0bf47-b0c9-b6e6-92f3-b7a11b3adfd5@collabora.com>
+ <20220218091633.9368-18-allen-kh.cheng@mediatek.com>
+ <985167a1-cd44-4735-c86a-59cd60d31d1a@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220221_051042_614288_A3F700A2 
-X-CRM114-Status: GOOD (  16.31  )
+X-CRM114-CacheID: sfid-20220221_051113_281107_707D163C 
+X-CRM114-Status: GOOD (  16.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,85 +77,139 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-02-18 at 13:55 +0100, AngeloGioacchino Del Regno wrote:
+On Fri, 2022-02-18 at 13:56 +0100, AngeloGioacchino Del Regno wrote:
 > Il 18/02/22 10:16, Allen-KH Cheng ha scritto:
-> > Add xhci node for mt8192 SoC.
+> > Add vcodec lat and core nodes for mt8192 SoC.
 > > 
 > > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> 
 > > ---
-> >   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 25
+> >   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 58
 > > ++++++++++++++++++++++++
-> >   1 file changed, 25 insertions(+)
+> >   1 file changed, 58 insertions(+)
 > > 
 > > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
 > > b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> > index 61aadd7bd397..ce18d692175f 100644
+> > index 936aa788664f..543a80252ce5 100644
 > > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
 > > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> > @@ -875,6 +875,31 @@
-> >   			#clock-cells = <1>;
+> > @@ -1291,6 +1291,64 @@
+> >   			power-domains = <&spm
+> > MT8192_POWER_DOMAIN_ISP2>;
 > >   		};
 > >   
-> > +		u3phy0: usb-phy@11e40000 {
-> > +			compatible = "mediatek,mt8192-tphy",
-> > +				     "mediatek,generic-tphy-v2";
-> > +			#address-cells = <2>;
-> > +			#size-cells = <2>;
-> > +			ranges;
+> > +		vcodec_dec: vcodec_dec@16000000 {
+> > +			compatible = "mediatek,mt8192-vcodec-dec";
+> > +			reg = <0 0x16000000 0 0x1000>;		/*
+> > VDEC_SYS */
+> > +			mediatek,scp = <&scp>;
+> > +			iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
+> > +		};
+> > +
+> > +		vcodec_lat: vcodec_lat@0x16010000 {
+> > +			compatible = "mediatek,mtk-vcodec-lat";
+> > +			reg = <0 0x16010000 0 0x800>;		/*
+> > VDEC_MISC */
+> > +			interrupts = <GIC_SPI 426 IRQ_TYPE_LEVEL_HIGH
+> > 0>;
+> > +			iommus = <&iommu0
+> > M4U_PORT_L5_VDEC_LAT0_VLD_EXT>,
+> > +				<&iommu0
+> > M4U_PORT_L5_VDEC_LAT0_VLD2_EXT>,
+> > +				<&iommu0
+> > M4U_PORT_L5_VDEC_LAT0_AVC_MV_EXT>,
 > 
-> This can be better:
-> 			#address-cells = <1>;
+> Please fix indentation!
 > 
-> 			#size-cells = <1>;
-> 			ranges = <0 0 0x11e40000 0x1000>
+> 			iommus = <&iommu0
+> M4U_PORT_L5_VDEC_LAT0_VLD_EXT>,
 > 
+> 				 <&iommu0
+> M4U_PORT_L5_VDEC_LAT0_VLD2_EXT>,
+> 
+> 				 <&iommu0
+> M4U_PORT_L5_VDEC_LAT0_AVC_MV_EXT>,
+> 
+> ... etc.
 > 
 
 Hi Angelo,
 
-Thanks for your surgestion, this's good for me,
+My neglect for indentation. 
 
-I will update in next version.
+I will fix this in next versionn.
 
-Best regards,
+Many thanks,
 Allen
 
-
-> > +			status = "okay";
-> > +
-> > +			u2port0: usb-phy@11e40000 {
-> 
-> 			u2port0: usb-phy@0 {
-> 
-> > +				reg = <0 0x11e40000 0 0x700>;
-> 
-> 				reg = <0x0 0x700>;
-> 
-> > +				clocks = <&clk26m>;
-> > +				clock-names = "ref";
-> > +				#phy-cells = <1>;
-> > +				status = "okay";
-> > +			};
-> > +
-> > +			u3port0: usb-phy@11e40700 {
-> > +				reg = <0 0x11e40700 0 0x900>;
-> 
-> 			u3port0: usb-phy@700 {
-> 				reg = <0x700 0x900>;
-> 
-> > +				clocks = <&clk26m>;
-> > +				clock-names = "ref";
-> > +				#phy-cells = <1>;
-> > +				status = "okay";
-> > +			};
+> > +				<&iommu0
+> > M4U_PORT_L5_VDEC_LAT0_PRED_RD_EXT>,
+> > +				<&iommu0
+> > M4U_PORT_L5_VDEC_LAT0_TILE_EXT>,
+> > +				<&iommu0
+> > M4U_PORT_L5_VDEC_LAT0_WDMA_EXT>,
+> > +				<&iommu0
+> > M4U_PORT_L5_VDEC_LAT0_RG_CTRL_DMA_EXT>,
+> > +				<&iommu0 M4U_PORT_L5_VDEC_UFO_ENC_EXT>;
+> > +			clocks = <&topckgen CLK_TOP_VDEC_SEL>,
+> > +				 <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
+> > +				 <&vdecsys_soc CLK_VDEC_SOC_LAT>,
+> > +				 <&vdecsys_soc CLK_VDEC_SOC_LARB1>,
+> > +				 <&topckgen CLK_TOP_MAINPLL_D4>;
+> > +			clock-names = "vdec-sel", "vdec-soc-vdec",
+> > "vdec-soc-lat", "vdec-vdec",
+> > +				      "vdec-top";
+> > +			assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
+> > +			assigned-clock-parents = <&topckgen
+> > CLK_TOP_MAINPLL_D4>;
+> > +			power-domains = <&spm
+> > MT8192_POWER_DOMAIN_VDEC>;
 > > +		};
 > > +
-> >   		i2c0: i2c@11f00000 {
-> >   			compatible = "mediatek,mt8192-i2c";
-> >   			reg = <0 0x11f00000 0 0x1000>,
+> > +		vcodec_core: vcodec_core@0x16025000 {
+> > +			compatible = "mediatek,mtk-vcodec-core";
+> > +			reg = <0 0x16025000 0 0x1000>;		/*
+> > VDEC_CORE_MISC */
+> > +			interrupts = <GIC_SPI 425 IRQ_TYPE_LEVEL_HIGH
+> > 0>;
+> > +			iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>,
+> > +				<&iommu0 M4U_PORT_L4_VDEC_UFO_EXT>,
+> > +				<&iommu0 M4U_PORT_L4_VDEC_PP_EXT>,
 > 
-> Thanks,
-> Angelo
+> ditto.
+> 
+> > +				<&iommu0 M4U_PORT_L4_VDEC_PRED_RD_EXT>,
+> > +				<&iommu0 M4U_PORT_L4_VDEC_PRED_WR_EXT>,
+> > +				<&iommu0 M4U_PORT_L4_VDEC_PPWRAP_EXT>,
+> > +				<&iommu0 M4U_PORT_L4_VDEC_TILE_EXT>,
+> > +				<&iommu0 M4U_PORT_L4_VDEC_VLD_EXT>,
+> > +				<&iommu0 M4U_PORT_L4_VDEC_VLD2_EXT>,
+> > +				<&iommu0 M4U_PORT_L4_VDEC_AVC_MV_EXT>,
+> > +				<&iommu0
+> > M4U_PORT_L4_VDEC_RG_CTRL_DMA_EXT>;
+> > +			clocks = <&topckgen CLK_TOP_VDEC_SEL>,
+> > +				 <&vdecsys CLK_VDEC_VDEC>,
+> > +				 <&vdecsys CLK_VDEC_LAT>,
+> > +				 <&vdecsys CLK_VDEC_LARB1>,
+> > +				 <&topckgen CLK_TOP_MAINPLL_D4>;
+> > +			clock-names = "vdec-sel", "vdec-soc-vdec",
+> > "vdec-soc-lat", "vdec-vdec",
+> > +				      "vdec-top";
+> > +			assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
+> > +			assigned-clock-parents = <&topckgen
+> > CLK_TOP_MAINPLL_D4>;
+> > +			power-domains = <&spm
+> > MT8192_POWER_DOMAIN_VDEC2>;
+> > +		};
+> > +
+> >   		larb5: larb@1600d000 {
+> >   			compatible = "mediatek,mt8192-smi-larb";
+> >   			reg = <0 0x1600d000 0 0x1000>;
+> 
+> 
 
 
 _______________________________________________
