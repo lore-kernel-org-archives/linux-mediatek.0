@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AF63C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Feb 2022 10:35:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4164C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Feb 2022 10:35:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R2B8bhlM6M3XNYdDZmyreNMRkZoRd8hmKCKtZRcV2Pk=; b=1ja58ZGcvWQv/6
-	ckIQfPaL0D68Na1Z4sc2tDibOvTkY5ZhcwOP73ruuHtUCYxBqsP1t01QVg0n6e0JycfYJJp5i3OB4
-	o588d0J7EOSQPZ56FwgNd3qTrb5GVPVyLFQKJwDLPE/2dKN4HtMFa7xNL8X4EPCS3wyN7IOEyZZFx
-	d/MoP5EXw7ETmzxEtwiRShwveYwYEhZJPQ0Gfl/EjWhM5HQGmwOnYOYpW58B8WwGxIMQgaG68s06K
-	+r21vPcJqSzyemGzT/srJsfxZDijyCH41mzbJY+iu3qWeM755RNtIJVqKbLx9ECocb2ZVPgZ+13oj
-	QfMmmhD5WMNMJ66pErlQ==;
+	List-Owner; bh=ra2fl6D6E3D8QJR2bGRX7bw6eZLYNMdCTjLZpeR4srw=; b=hp6pvYKpPMcR0G
+	hHFFiFv03eWNIoJBOe4Z8h27XB7TB41k0adKuC2tOj2Ik6wai5/lZLDJQ2/nTHH8mqnQxCfzoSHHo
+	4VPGuoCpE/jThVKtjAAZy9m//dI6mbwwQsdhANIon23H0GfciDKRYXGUrm9N2jA5ZYTPsEJxIhDmn
+	JQSPYErQ9na/opAu7zrvJYg1VExtNz6XiHAgyyx1Y7O76gPP2ycdaA9UD1B0jt/8ZOPYUQBfABkrb
+	dIWEvRSPKKwud5j/mdY8k/wcphqMPOyqdxXMVduVsp4j/SrcQeBTLE6kPoWHn35crdynj+TNY8Wy8
+	javzK3Iq2d/gp3IR6Mjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nM621-004zPF-OQ; Mon, 21 Feb 2022 10:35:01 +0000
+	id 1nM62C-004zVM-EJ; Mon, 21 Feb 2022 10:35:12 +0000
 Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nM5Rs-004iSu-C1
- for linux-mediatek@lists.infradead.org; Mon, 21 Feb 2022 09:57:46 +0000
+ id 1nM5SZ-004ijA-Ga
+ for linux-mediatek@lists.infradead.org; Mon, 21 Feb 2022 09:58:25 +0000
 Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-2d625082ae2so131619847b3.1
- for <linux-mediatek@lists.infradead.org>; Mon, 21 Feb 2022 01:57:39 -0800 (PST)
+ 00721157ae682-2d641c31776so131686547b3.12
+ for <linux-mediatek@lists.infradead.org>; Mon, 21 Feb 2022 01:58:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nl0T0iJnVKphPzFb8UDMXZHBwxSlA4pey//XXCrdqBM=;
- b=JV94Ro4lD58Q8SSlPXbqpiDYr9lPiTn34wLn1CoDReV03JWAV/y9Brn3dwuSMXGRgT
- DROiEU8RWXbWiQ8H9k8V5+uV5rlKeTp7xPJYZ9J0bKcc27t3pnrevykxr6x12Ye8rkFl
- cjGxmxCuAiYBGqYuUlStAHFQNAwwMHnALLesA=
+ :cc; bh=2eHktmmt0PkDk6CLraSoVlcsRan7jcJUGHnpRXDCQ04=;
+ b=H7/UrUOdRbce8sQw2RpFzn7uMvbVVdDt0g3qOad21EwoGC+Ad83x4dQFUzNpD1uWoE
+ jcFM2i4O3BSz6X/IcOg1pZ/1HhX+iFLloQs0Tn0GMaYilDBKWgjI+4UrU9p6GpQbZy6h
+ h8BVNFlrqQsZNlBg5wd9UhjQMMisuAe4IF23k=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=nl0T0iJnVKphPzFb8UDMXZHBwxSlA4pey//XXCrdqBM=;
- b=t8USTjeqOUrJ7yYgG3V4DbSLCeiROKXYlTS/fbg4N+N/SYYWSRbFvXTl98ftCuWw2k
- TKceulb7g++kLMUeMTZ24sDCC0knBL0e7VaddQ1VJhm8hRap/Yxn8Fsiag2+nMWyv/ch
- dxd0OG1plO/FQZ4ohVFGInEnrj9Dk2NKSZixf3ptk4o9TOlwwU4kCc/kzOr/zEIR4+Ct
- /Z9IZ6VhQ3dLWrV4JoYqZCyPWLS2Ae8BXIKQPZlv9KGiTfcSur0J446Z1HYgNjjuIAlV
- ZNIZ4GsNrgKKZw+pl64OcHaemZ+cJ/0M9CMpgDVzMKmJ00k4mVZuioHwq2WkD4fJ9JR5
- URPg==
-X-Gm-Message-State: AOAM532yihD4g/JhgdBPmauP8c/b3PHy4CVK6tkgxpc/jmIOACxD1SIK
- SVVfGHmj2nZ5oM/rmEz18AbCEavvZZfpNfYe/qyfdw==
-X-Google-Smtp-Source: ABdhPJylswhYS8F4TyxPo8vzjQfGSw+My43raz8y1hBk5uNq4ma5dn4gMAr3+HLi6N3zsrnCjLR1O+p4nSGhYfBM834=
-X-Received: by 2002:a81:b044:0:b0:2d6:bd1f:5d8b with SMTP id
- x4-20020a81b044000000b002d6bd1f5d8bmr13604624ywk.27.1645437458949; Mon, 21
- Feb 2022 01:57:38 -0800 (PST)
+ bh=2eHktmmt0PkDk6CLraSoVlcsRan7jcJUGHnpRXDCQ04=;
+ b=C3kA8N1lHXjwB+ArViZy1F/kFEKzAVp0o16dNnpnjdT3HJBiVfWuXdFQZC6QxN+f1M
+ b6zwWSFSFn6LlaPxFqQO7/+nob9QDhP5LwVXIFtfBv+A5ha5S6KOB71jXROpB0nJostX
+ 7JJ6d3PMWA1dPjHvDlQXrI6B6Vx3CHET3PrrMndrLGXTCRqTQwZOJQ6tHYU+LkMULxpm
+ zqXwyuySinNQAFbfhmS8uSU8ByTZyQ/OQCZI+9e3L9Pm26ZtqzJBt9QAtiVDp8l+Y0oe
+ S17aIIKDiB1LkUO0fGFzj1RgvbsvZTKqLtfFqFRfN43lQhxJdj/PvjWTsUj4ia1vTfcu
+ BGpA==
+X-Gm-Message-State: AOAM532pdvE8sLlRvSJtjYd/Ed/OQP4+VpGT6gU17Bb7rAM7n8rx9trt
+ U/eBIUOxoi7dri0FR8JuwLUzAk0/JMhtE6pdiRJf0w==
+X-Google-Smtp-Source: ABdhPJzWDVfTXmYwYk7yxLYvEuw00wYztgloZbX0vxTDnjc2/iQC2gsSGREss62vQj9jqvxQSfLcrGRXd4Sj0X1WK5s=
+X-Received: by 2002:a0d:d613:0:b0:2d6:227e:1a10 with SMTP id
+ y19-20020a0dd613000000b002d6227e1a10mr18998317ywd.21.1645437502779; Mon, 21
+ Feb 2022 01:58:22 -0800 (PST)
 MIME-Version: 1.0
 References: <20220210141931.291712-1-angelogioacchino.delregno@collabora.com>
- <20220210141931.291712-5-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220210141931.291712-5-angelogioacchino.delregno@collabora.com>
+ <20220210141931.291712-6-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220210141931.291712-6-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 21 Feb 2022 17:57:28 +0800
-Message-ID: <CAGXv+5HKbd+w0r+YC59Tw5mZf4P1gqYX6sysvoFj-JxUKH7hDA@mail.gmail.com>
-Subject: Re: [PATCH 4/5] pinctrl: mediatek: common-v1: Commonize spec_pupd
- callback
+Date: Mon, 21 Feb 2022 17:58:11 +0800
+Message-ID: <CAGXv+5H0OkMk=1MZH3jCFSZbauJmEcgFADfDXDPf2r1wrp8wCw@mail.gmail.com>
+Subject: Re: [PATCH 5/5] pinctrl: mediatek: common-v1: Commonize
+ spec_ies_smt_set callback
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: sean.wang@kernel.org, linus.walleij@linaro.org, matthias.bgg@gmail.com, 
  linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220221_015740_463374_F0C21B2C 
-X-CRM114-Status: UNSURE (   9.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220221_015823_607793_67402526 
+X-CRM114-Status: GOOD (  11.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,15 +84,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 10, 2022 at 10:20 PM AngeloGioacchino Del Regno
+On Thu, Feb 10, 2022 at 10:21 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Reduce code size and duplication by using a common spec_pupd callback,
-> which is possible to use on all of the pinctrl drivers that are
-> using the v1 pinctrl-mtk-common code, with the exception of mt8135,
-> which has a different handling compared to the others.
-> Since the callback function signature was changed, this had to be
-> propagated to pinctrl-mt8135's spec_pull_set().
+> All of the MediaTek pinctrl drivers registering with pinctrl-mtk-common
+> that are offering a .spec_ies_smt_set() callback are declaring their
+> own function which is doing exactly the same on all drivers: calling
+> mtk_pconf_spec_set_ies_smt_range() with their struct and a simple check.
+>
+> Commonize this callback by adding the ies and smt structure pointers
+> to struct mtk_pinctrl_devdata and changing the callback signature to
+> take it.
+>
+> Removing the callback and checking for the existence of the spec_smt
+> and/or spec_ies data would allow us to staticize the function
+> mtk_pconf_spec_set_ies_smt_range(), but this solution was avoided as
+> to keep flexibility, as some SoCs may need to perform a very different
+> operation compared to what this commonized function is doing.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
