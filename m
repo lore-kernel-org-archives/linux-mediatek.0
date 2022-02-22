@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E596C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 15:03:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33A6DC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 15:05:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=oi+h7u8PaYjSM+sp65qi80LPopT0yHPzdaO0Hzy6Jm8=; b=LcH1zX6m0lBsm2
-	21ukN1wEpYxA2adAIglPudrTtgb05vqi8diRswqeXi6bcXeZ7VKAhAQyu4B9KNG/LrQYGjf70l2SP
-	79dmKPtIe6DCw9XXkZQi88dIcKPpNjIb/hYD1zr8kbEwdcePt8Gt/nDNedGRG6akQK6dFDGfDAvOF
-	hlj9Q3JNi98tHk84c94+uvt4LGtgst344qoOOJ76VZJQ9BQ/sgFFbvDErpQ7wWvqf+NyRV/fOS8s/
-	Vs1alkgcgUu/3eMTkseU9qd4oDW5oN9TX9MM/zUPGHRxW/1OjyHyrBNV53kkS/jaGWrOBkNhPCM10
-	0vS8pCakxwBVJQ7C2iog==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xOmrw+/p3gB5deL5M/kIsMKId1RNtvRbry+pOx/DRTQ=; b=GhlPRmIIMXYTid
+	8FQpBg+vFEk2pZvQe8vXxYgEBu20xM0vXmdoQn2zfXzdVfofUU5MizbdFBr+beqfA8BFesp5HfSJq
+	IpkHQW+LVqlJZ7vThCaiyYJUv0CeucYFPpqNtGrFn22AOcB4CVZtCoNIwtFoonHr1lTIpUrNbuzhW
+	BKbXzxkVWnHjaK/EH+1KH+TQreRCSYzbKDePIDYuKS+eQ9Ell9ch9Mb/PG4uykYdlZ94OSfdjPxZr
+	t6VZ1bath78g4AT5VgRTlICf5efFf/jQVqc3a7YOj6DFMA+GRLP2fRcc2iJUigz3XY1gMthXkgKTv
+	uFlfocVS5QTsXp7kt/PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMWh3-00A2CW-7b; Tue, 22 Feb 2022 15:03:09 +0000
+	id 1nMWih-00A3C1-Mj; Tue, 22 Feb 2022 15:04:51 +0000
 Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMWdx-00A08m-Nj
- for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 15:00:00 +0000
-Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
- [209.85.208.200])
+ id 1nMWe2-00A0AM-Sl
+ for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 15:00:05 +0000
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 7B8B43FCA9
- for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 14:59:54 +0000 (UTC)
+ by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 63E0240049
+ for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 14:59:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1645541994;
- bh=+TIgQRioLLZ9zOW6KKmdTDTPf4m59BMseVHbquTVcCc=;
- h=From:To:Subject:Date:Message-Id:MIME-Version;
- b=O/3dGCz7AyphiXmKr8O4DzMqWk5A7RFY1L2v8r4dTqSjFABgolQ7Va4Qi74uA6HyK
- 8i7rtzA9g5xtlyiSnfVkLsY5bclegrOsCv7z4X2ASb+GH1d8vyvf0YhYvi5gKDN3uQ
- ELBmHw9dbg0Ps5UMC3SwCb+drKNvYMISkIqiMgIzWd1Q1/1M4tIZXF6QmFtHmiG4BL
- Nq4sqCRD0eqFJU+y0k0hiWjo96FxjADhH9lc/hrFJWAWBk6cPLhSyE6GBeB9VepBAA
- APOX0232iEcV9MqLvw9/UqvNra4eR5wNZcMaYdTpcJWFF9pqqOFj6u/tCz3TDSCtI6
- KLsW3UqtzcZHw==
-Received: by mail-lj1-f200.google.com with SMTP id
- v5-20020a2ea605000000b00246322afc8cso4006898ljp.4
- for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 06:59:54 -0800 (PST)
+ s=20210705; t=1645541997;
+ bh=arKzCg0MYWfR0buWW2cokaDng0neBp5ISe/OJX5gEOA=;
+ h=From:To:Subject:Date:Message-Id:In-Reply-To:References:
+ MIME-Version;
+ b=orqFDFh869WrXqTMnaFXFspGniLo6/x5MkO1ZqqlI63vafWKGgIGgnSqu39/tMKS8
+ M4HQm4KFFV6kJdg8d6ggkeQPKjz5d5MYaR1KQ78RkGEdFveX6nys7syhNm13Sk+H1S
+ htAn++HLhjNb9vAwtNwA0iuoBObIazCwbcQViHN0s3tmmewzgIlJvl8eXcxC9vj6t9
+ 2bKA/SRcbmW0hQMnvBvBt2ZH5lqFpjUP7zYAlSCtcZdB9fWEYIHntjORxbsXaVfEOr
+ xKWU/1ttIjCblq5sy7Tf4FmxqO/lmNijelL3wAUHk3DyxpWUIvh7DQfCL6oRY3we6a
+ a/zhtykIHsDMA==
+Received: by mail-ej1-f69.google.com with SMTP id
+ m4-20020a170906160400b006be3f85906eso5860537ejd.23
+ for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 06:59:57 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=+TIgQRioLLZ9zOW6KKmdTDTPf4m59BMseVHbquTVcCc=;
- b=O7HDYahGxUDGQ/wpF/7omFQXritxc+Em5k0A6ajBeSui1QqXxWFZG0DozQFTI1enc6
- L9xG2AjZNHYQj5nkXUhwZLVUNqXlt8iZDtTeKFvaAmjuYkZZXhtLbPKND2UUlD+9Qru9
- ZnPaUs8yLXZ90xiEg+C4xNj4WWzN+QgUMGuzckbPfnGTvwXAuQrRP2Xv2+FERHGJMSbJ
- 7x/bK3Mb1QlO7ob1EeMPQlAAJOSH9PnlKuI06EMvXkJagVcajuZzsKAQ9skMvNA16bwJ
- TkmY58WSajifcIr7DtOPyywNDEC7zqLY1CZmupfUuCpT5eNqgHJwReyMsLjp3nk2i8K3
- Doyw==
-X-Gm-Message-State: AOAM530amAjnPHTClCuw7E4wtV/030F5JfdFIMDMSWvo/c1WYJPrPNzN
- k23/ES0boNsfQ7gVSez6KhaiZVKqAwV77Va3E8q2izWAc4Z3jopCNHyse/vERGL3uFn0bpTyh23
- ERedRZaLM9NEn3GNPzdEjeIHX7m0KC7QgcfEgjHRzfBdC0RefHQ==
-X-Received: by 2002:aa7:c391:0:b0:410:83fb:abab with SMTP id
- k17-20020aa7c391000000b0041083fbababmr27025560edq.435.1645541980579; 
- Tue, 22 Feb 2022 06:59:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwFDKifwtFFrCmwLKT4NC984SQd8SdrxWDXIgJnHsNvfVTg37pGq0CPqLSpORQdHqU3VFVDJQ==
-X-Received: by 2002:aa7:c391:0:b0:410:83fb:abab with SMTP id
- k17-20020aa7c391000000b0041083fbababmr27025516edq.435.1645541980307; 
- Tue, 22 Feb 2022 06:59:40 -0800 (PST)
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=arKzCg0MYWfR0buWW2cokaDng0neBp5ISe/OJX5gEOA=;
+ b=KUyHsvHuqVU4Q6+MRfogSQRYKHssyW5s/f1TnxQegyaOZ191Axz3vW1bx7OGmLCPFM
+ Y39OQNksXahJmX8OPQvt6jwWb97WeTg03kTQ45JucesGIQXIfwKh7GXnx+IIx3e/Kc8o
+ aBC0elkDtW8zoolfmsMIGbCT3xunJEU9irJZLfw2ygVJdfBNx1qi9OZB7N+fZkaoy+th
+ EKpveVpPbHNAEZ8R+CfAML8iU3+Q2p5uFQ5tcZG9WkWke0JJKubDDvW7/iWmpW4RRG1u
+ 7jJxouhNIWN0pD9f0C3jVNY0NLAw7V2KmuLXTpPgiISDGSFCOnnTftRSRkh9hj0Q9Ky7
+ Z+9g==
+X-Gm-Message-State: AOAM533PxlK8I3mT9YTZfoqHsJ0ccgug/0q05cqLYmW1OHGXIPefHZLx
+ PHYYKNA8RKZOr8ytjkG1DT1ZCJQq1U6fyc4lMDjp770itKGKHw7aJC+MZghGUB6FroZBknZtOXX
+ hIIp6Aj86xkPR9etW0cb8ox1THEYqqGR4MrI4WlHbRc6ldDCESQ==
+X-Received: by 2002:a05:6402:1941:b0:413:2b5f:9074 with SMTP id
+ f1-20020a056402194100b004132b5f9074mr2026082edz.414.1645541992927; 
+ Tue, 22 Feb 2022 06:59:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyuGCh02ChhaQcgWP8AI9k0NhxlMiAPxSs3pga+zesBZndYOMg1ZtIGJuD44dDaZzrGAARhjg==
+X-Received: by 2002:a05:6402:1941:b0:413:2b5f:9074 with SMTP id
+ f1-20020a056402194100b004132b5f9074mr2026054edz.414.1645541992714; 
+ Tue, 22 Feb 2022 06:59:52 -0800 (PST)
 Received: from localhost.localdomain (xdsl-188-155-181-108.adslplus.ch.
  [188.155.181.108])
- by smtp.gmail.com with ESMTPSA id m2sm2467960ejb.20.2022.02.22.06.59.39
+ by smtp.gmail.com with ESMTPSA id m2sm2467960ejb.20.2022.02.22.06.59.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Feb 2022 06:59:39 -0800 (PST)
+ Tue, 22 Feb 2022 06:59:52 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
  Rob Herring <robh+dt@kernel.org>,
@@ -87,15 +88,17 @@ To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 00/15] dt-bindings: ufs: add common platform bindings +
- fixes
-Date: Tue, 22 Feb 2022 15:58:39 +0100
-Message-Id: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
+Subject: [PATCH v2 08/15] dt-bindings: ufs: snps,
+ tc-dwc-g210: convert to dtschema
+Date: Tue, 22 Feb 2022 15:58:47 +0100
+Message-Id: <20220222145854.358646-9-krzysztof.kozlowski@canonical.com>
 X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
+References: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_065957_946513_0654BB34 
-X-CRM114-Status: GOOD (  14.30  )
+X-CRM114-CacheID: sfid-20220222_070003_144659_D808AA3F 
+X-CRM114-Status: GOOD (  15.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,86 +115,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Convert the Synopsys Universal Flash Storage (UFS) Controller to DT
+schema format.
 
-Not tested on hardware, so please kindly test.
-Bindings maintainers might need checking - taken from git log.
-
-Changes since v1
-================
-1. Make freq-table as matrix of tuples (Nishanth).
-2. New patches: convert all bindings and fix up DTS files.
-3. Several minor fixes in UFS bindings.
-
-Dependencies
-============
-1. The DTS patches (10-15) depend on scsi/ufs driver change (patch 9), so
-   they should go in a following release, after merging driver.
-
-   This is also might affect out-of-tree users of these DTSes (other
-   projects, e.g. U-boot).
-
-Best regards,
-Krzysztof
-
-Krzysztof Kozlowski (15):
-  dt-bindings: ufs: add common platform bindings
-  dt-bindings: ufs: samsung,exynos-ufs: use common bindings
-  dt-bindings: ufs: cdns,ufshc: convert to dtschema
-  dt-bindings: ufs: drop unused/old ufs-qcom PHY bindings
-  dt-bindings: ufs: qcom,ufs: convert to dtschema
-  dt-bindings: ufs: hisilicon,ufs: convert to dtschema
-  dt-bindings: ufs: mediatek,ufs: convert to dtschema
-  dt-bindings: ufs: snps,tc-dwc-g210: convert to dtschema
-  scsi: ufs: deprecate 'freq-table-hz' property
-  arm64: dts: hi3670: use 'freq-table' in UFS node
-  arm64: dts: ti: use 'freq-table' in UFS node
-  arm64: dts: qcom: use 'freq-table' in UFS node
-  arm64: dts: qcom: msm8996: drop unsupported UFS
-    vddp-ref-clk-max-microamp
-  arm64: dts: qcom: msm8996: correct UFS compatible
-  arm64: dts: qcom: sm8350: drop duplicated ref_clk in UFS
-
- .../devicetree/bindings/ufs/cdns,ufshc.txt    |  32 ---
- .../devicetree/bindings/ufs/cdns,ufshc.yaml   |  68 +++++
- .../bindings/ufs/hisilicon,ufs.yaml           |  90 +++++++
- .../devicetree/bindings/ufs/mediatek,ufs.yaml |  67 +++++
- .../devicetree/bindings/ufs/qcom,ufs.yaml     | 241 ++++++++++++++++++
- .../bindings/ufs/samsung,exynos-ufs.yaml      |  13 +-
- .../bindings/ufs/snps,tc-dwc-g210.yaml        |  51 ++++
- .../bindings/ufs/tc-dwc-g210-pltfrm.txt       |  26 --
- .../devicetree/bindings/ufs/ti,j721e-ufs.yaml |   9 +-
- .../devicetree/bindings/ufs/ufs-common.yaml   |  88 +++++++
- .../devicetree/bindings/ufs/ufs-hisi.txt      |  42 ---
- .../devicetree/bindings/ufs/ufs-mediatek.txt  |  45 ----
- .../devicetree/bindings/ufs/ufs-qcom.txt      |  63 -----
- .../devicetree/bindings/ufs/ufshcd-pltfrm.txt |  90 -------
- MAINTAINERS                                   |   1 +
- arch/arm64/boot/dts/hisilicon/hi3670.dtsi     |   4 +-
- .../boot/dts/qcom/msm8996-xiaomi-common.dtsi  |   1 -
- arch/arm64/boot/dts/qcom/msm8996.dtsi         |   5 +-
- arch/arm64/boot/dts/qcom/msm8998.dtsi         |   2 +-
- arch/arm64/boot/dts/qcom/sdm845.dtsi          |   2 +-
- arch/arm64/boot/dts/qcom/sm8150.dtsi          |   2 +-
- arch/arm64/boot/dts/qcom/sm8250.dtsi          |   2 +-
- arch/arm64/boot/dts/qcom/sm8350.dtsi          |   5 +-
- arch/arm64/boot/dts/qcom/sm8450.dtsi          |   2 +-
- arch/arm64/boot/dts/ti/k3-j721e-main.dtsi     |   4 +-
- drivers/scsi/ufs/ufshcd-pltfrm.c              |  21 +-
- 26 files changed, 641 insertions(+), 335 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/ufs/cdns,ufshc.txt
- create mode 100644 Documentation/devicetree/bindings/ufs/cdns,ufshc.yaml
- create mode 100644 Documentation/devicetree/bindings/ufs/hisilicon,ufs.yaml
- create mode 100644 Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
- create mode 100644 Documentation/devicetree/bindings/ufs/qcom,ufs.yaml
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+---
+ .../bindings/ufs/snps,tc-dwc-g210.yaml        | 51 +++++++++++++++++++
+ .../bindings/ufs/tc-dwc-g210-pltfrm.txt       | 26 ----------
+ 2 files changed, 51 insertions(+), 26 deletions(-)
  create mode 100644 Documentation/devicetree/bindings/ufs/snps,tc-dwc-g210.yaml
  delete mode 100644 Documentation/devicetree/bindings/ufs/tc-dwc-g210-pltfrm.txt
- create mode 100644 Documentation/devicetree/bindings/ufs/ufs-common.yaml
- delete mode 100644 Documentation/devicetree/bindings/ufs/ufs-hisi.txt
- delete mode 100644 Documentation/devicetree/bindings/ufs/ufs-mediatek.txt
- delete mode 100644 Documentation/devicetree/bindings/ufs/ufs-qcom.txt
- delete mode 100644 Documentation/devicetree/bindings/ufs/ufshcd-pltfrm.txt
 
+diff --git a/Documentation/devicetree/bindings/ufs/snps,tc-dwc-g210.yaml b/Documentation/devicetree/bindings/ufs/snps,tc-dwc-g210.yaml
+new file mode 100644
+index 000000000000..671a70d95138
+--- /dev/null
++++ b/Documentation/devicetree/bindings/ufs/snps,tc-dwc-g210.yaml
+@@ -0,0 +1,51 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/ufs/snps,tc-dwc-g210.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Synopsys DesignWare Universal Flash Storage (UFS) Controller
++
++maintainers:
++  - Li Wei <liwei213@huawei.com>
++
++# Select only our matches, not all jedec,ufs
++select:
++  properties:
++    compatible:
++      contains:
++        enum:
++          - snps,dwc-ufshcd-1.40a
++  required:
++    - compatible
++
++allOf:
++  - $ref: ufs-common.yaml
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - snps,g210-tc-6.00-20bit
++          - snps,g210-tc-6.00-40bit
++      - const: snps,dwc-ufshcd-1.40a
++      - const: jedec,ufs-2.0
++
++  reg:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    ufs@d0000000 {
++        compatible = "snps,g210-tc-6.00-40bit",
++                     "snps,dwc-ufshcd-1.40a",
++                     "jedec,ufs-2.0";
++        reg = <0xd0000000 0x10000>;
++        interrupts = <24>;
++    };
+diff --git a/Documentation/devicetree/bindings/ufs/tc-dwc-g210-pltfrm.txt b/Documentation/devicetree/bindings/ufs/tc-dwc-g210-pltfrm.txt
+deleted file mode 100644
+index 71c0777960e9..000000000000
+--- a/Documentation/devicetree/bindings/ufs/tc-dwc-g210-pltfrm.txt
++++ /dev/null
+@@ -1,26 +0,0 @@
+-* Universal Flash Storage (UFS) DesignWare Host Controller
+-
+-DWC_UFS nodes are defined to describe on-chip UFS host controllers and MPHY.
+-Each UFS controller instance should have its own node.
+-
+-Required properties:
+-- compatible	: compatible list must contain the PHY type & version:
+-			"snps,g210-tc-6.00-20bit"
+-			"snps,g210-tc-6.00-40bit"
+-		  complemented with the Controller IP version:
+-			"snps,dwc-ufshcd-1.40a"
+-		  complemented with the JEDEC version:
+-			"jedec,ufs-1.1"
+-			"jedec,ufs-2.0"
+-
+-- reg		: <registers mapping>
+-- interrupts	: <interrupt mapping for UFS host controller IRQ>
+-
+-Example for a setup using a 1.40a DWC Controller with a 6.00 G210 40-bit TC:
+-	dwc-ufs@d0000000 {
+-		compatible = "snps,g210-tc-6.00-40bit",
+-			     "snps,dwc-ufshcd-1.40a",
+-			     "jedec,ufs-2.0";
+-		reg = < 0xd0000000 0x10000 >;
+-		interrupts = < 24 >;
+-	};
 -- 
 2.32.0
 
