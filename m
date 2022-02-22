@@ -4,86 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2944C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 18:14:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0C64C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 19:18:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WPVX7VHow6XvrHo9XYr8sn7YeMdVVRotd78bzRxqHIw=; b=veFYsaFrTk+hJp
-	Ogl2lWgvid3ckMU/45fz5QpaoQoeJCT4rk8qyAnr0PqXhQ1p6uZH1Qua92W6ZL3bGy/slEiDxeytI
-	mxuM9WrXKX1nSVT1EbajFLPpIO2g7QqASb8Ro9ZqUu6bu+CN2re6COOnzwFiCQrAs+ekl2dhg2WB4
-	uoiM34ecnDXJnwGy9Zek8tZM1yeNyqheKd2ly3CVh15ZvidGBCuP/8nSIee4QNE9temrJOFsI4plV
-	2njMoY47Y3o9DtV99WfPGgmIl8ZagkZYkQwbZLtMJ7KguHTEMG/6i4qLHgRIrsOk7VBBFtLlfy/QI
-	vNqZcqMfEk+UXmGRacNQ==;
+	List-Owner; bh=Mc5L5I4Lh2b9E+I3sdXePu836d6PUMxGUJCkJBOMTHE=; b=O9fZCWt+lb3Nef
+	KO3GwvoD74ulNDyiBgQB+k3NI/hPnPlFCcsJN/Wu+IWyHs1ucJT/YmFpM6khbRGLr2DEULe0dV0wB
+	WTx0sHw39Jw3iWWbA55kAzEcBBAcdYMysNkB4g/wbmUn04ffCpUtsh9kyE6rFEbiCdtQUvPK4lJZ6
+	fOZNSR3JE+CWBbXid75Lju4KR4Tbg3StCCWZQqOxwwRPs04GdILckpF2IlhANtpXbKwvLl0JGq47D
+	kG+aCFZck0R1lrI5f1jpxfhtfAX3Db6VU3/WiUnhPIpPhm/nvRmylzMS3CgYC38rmRkVFhQ6hsBom
+	FJQhWCNKeSoCE1kcPm9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMZgL-00BAAQ-Cv; Tue, 22 Feb 2022 18:14:37 +0000
-Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
+	id 1nMagH-00BJWf-AA; Tue, 22 Feb 2022 19:18:37 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMZg7-00BA44-6r
- for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 18:14:25 +0000
-Received: by mail-oi1-x22b.google.com with SMTP id p15so15465326oip.3
- for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 10:14:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=LVnQOEdOfsSROklcR4dN5XSqlK3ehHzd57yMiFQiZEw=;
- b=gACc9RkTQBgrInQOVXfQ1pKbHWcF+vW7yEcgUKHfbJNaSRgH0VSAeKEPmgvoPrsGtM
- 1OHOpOzefMJ6TeAtuAiFsTjcl2Z9l/sYaFMYHKdbQPiC1OAZZrnJ783k277cmUAHT3Ak
- cpk2Wqa53ywX5ZF0emDkit0q3oOUM3KphJLlH5nz/ouLpXXye4c+4fATKRJl6SNpHWGk
- BiqWCZVClbCg7zcgsHIHRxq8t0cu1KJSPZT06YHqjR46WEnl8XruiaDoUWfA1ygDLGUh
- j3BYR4yVxu5WbWo7sy10d0FagAti8sZxg5eSabztkpnrb6Tsoa782kR5Ws+gEaC70TFs
- Cj4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=LVnQOEdOfsSROklcR4dN5XSqlK3ehHzd57yMiFQiZEw=;
- b=UtuEu2Gr/hz1lHQr0kLEwy29z6QieYvxbDs+QEcQgV6s5Eh2YQp3W+se2hFZDYBA30
- IZsipQFhRzF0SIQsYOTntj/XB4BnTUh9HNr0iTVNYV3JrJhPWpDVWKCUxjzXtWnRRGrw
- ITCfht74GHymAMPCHmRqDR85C5TdoY9Qo3ztL0Q5ad722Lddgzm2jkjqtqXXmMjBhvSC
- euyfxd4i3onz/ObYrSmaehksD/+b30dMKLMBB9PImamLb+/lXW8hP9WFdfbU7s9v7cOx
- QsRdtLkpUOlyyxxSRBEYkxkl4X2N5OAbjhJ7PRv+N4X7Sx4O8OO7THK7ADi5kjcd9I+w
- /1FA==
-X-Gm-Message-State: AOAM533UmiIO/17Uxhig2QEEsntlpb9mIO40IjrNUONQXgxd/7fK2Eiv
- Ko3yE40wW8xyCbvvzXjJMPNyew==
-X-Google-Smtp-Source: ABdhPJx7kZEQxrj35Gmb41f+nvIkI4s49gKjv/NLrazcdAlObCeL+cSnEQ3LUMdDYmBlxChh3xHItg==
-X-Received: by 2002:aca:ba83:0:b0:2d4:13f1:8530 with SMTP id
- k125-20020acaba83000000b002d413f18530mr2556490oif.169.1645553661373; 
- Tue, 22 Feb 2022 10:14:21 -0800 (PST)
-Received: from ripper ([2600:1700:a0:3dc8:205:1bff:fec0:b9b3])
- by smtp.gmail.com with ESMTPSA id c14sm7909698ots.71.2022.02.22.10.14.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Feb 2022 10:14:20 -0800 (PST)
-Date: Tue, 22 Feb 2022 10:16:21 -0800
-From: Bjorn Andersson <bjorn.andersson@linaro.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>,
- Avri Altman <avri.altman@wdc.com>, Rob Herring <robh+dt@kernel.org>,
- Andy Gross <agross@kernel.org>, Wei Xu <xuwei5@hisilicon.com>,
- Nishanth Menon <nm@ti.com>, Vignesh Raghavendra <vigneshr@ti.com>,
- Tero Kristo <kristo@kernel.org>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Jan Kotas <jank@cadence.com>, Li Wei <liwei213@huawei.com>,
- Stanley Chu <stanley.chu@mediatek.com>,
- Yaniv Gardi <ygardi@codeaurora.org>, linux-scsi@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 09/15] scsi: ufs: deprecate 'freq-table-hz' property
-Message-ID: <YhUodbzxx4wbr+gy@ripper>
-References: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
- <20220222145854.358646-10-krzysztof.kozlowski@canonical.com>
+ id 1nMag6-00BJTi-0X; Tue, 22 Feb 2022 19:18:27 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 792E81F431AB
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1645557501;
+ bh=7gNHJrZ5EwByIe0R/xxYFVcCgcfa0IAq7r7XiBqEYi8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ggmXmTOEqSRBCP/en1qcyXWnO3jz/SjDs3eT0sTKwwcsZ4SmJW/PGndoJjruIE5oQ
+ P8Bn5K9zV0KU/7udgF7VbFaLH2P0hE1XdvRkx3fXERvPL/r//7J3QZfIYF03RjLrCr
+ spWFeW0gdP1NLrcNDmTYfRD3EHLfO1/JmfTd7LM+17yOWn1BiH4Pqj1GPqOxMtFpuQ
+ O1R1aV7DR26YedBgR1Vb0dXl+zXo/8ysWNc4AxiqqXhRuqeYVmvQ3wRTBBwblzvaPi
+ QoqJT7QYNjtu7UUbbrfxx4ZNnkEIxu5nqE0Fa7uBOeMyn6q90uAfR+lzH7NGRPdGGS
+ mjq87HI8HB9BA==
+Date: Tue, 22 Feb 2022 14:18:16 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ --to=Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>
+Subject: Re: [PATCH v2 01/23] arm64: dts: mt8192: Add power domains controller
+Message-ID: <20220222191816.fwxw2zxzbxe65qov@notapiano>
+References: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
+ <20220218091633.9368-2-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220222145854.358646-10-krzysztof.kozlowski@canonical.com>
+In-Reply-To: <20220218091633.9368-2-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_101423_307931_C78B0A8A 
-X-CRM114-Status: GOOD (  22.17  )
+X-CRM114-CacheID: sfid-20220222_111826_193650_34675580 
+X-CRM114-Status: UNSURE (   6.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,108 +68,18 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue 22 Feb 06:58 PST 2022, Krzysztof Kozlowski wrote:
+On Fri, Feb 18, 2022 at 05:16:11PM +0800, Allen-KH Cheng wrote:
+> Add power domains controller node for SoC mt8192.
+> =
 
-> The 'freq-table-hz' is not correct in DT schema, because '-hz' suffix
-> defines uint32 type, not an array.  Therefore deprecate 'freq-table-hz'
-> and use 'freq-table' instead.
-> 
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 
-Patch looks good in itself, but why don't we use opp-table to describe
-the performance states?
-
-In particular looking at the two columns of frequencies for various
-Qualcomm boards they require different performance-states.
-
-A concrete example is sm8350.dtsi, which specifies 75MHz and 300MHz as
-the first frequency pair. The lower level requires the VDD_CX power rail
-to be at least &rpmhpd_opp_low_svs, the higher frequency has a
-required-opps of &rpmhpd_opp_nom.
-
-
-As this isn't possible to express in the current binding we've just been
-forced to always run at a higher voltage level and kept this in the todo
-list.
-
-But rather than migrating freq-table-hz to freq-table and then having to
-introduce an opp table to express the power constraints, could we
-perhaps skip the intermediate step?
-
-Or would you have any other suggestion about how we can represent the
-required-opps level together with the freq-table (if that's what we want
-to stick with).
-
-Regards,
-Bjorn
-
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-> ---
->  drivers/scsi/ufs/ufshcd-pltfrm.c | 21 +++++++++++++--------
->  1 file changed, 13 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/scsi/ufs/ufshcd-pltfrm.c b/drivers/scsi/ufs/ufshcd-pltfrm.c
-> index 87975d1a21c8..2b192477d158 100644
-> --- a/drivers/scsi/ufs/ufshcd-pltfrm.c
-> +++ b/drivers/scsi/ufs/ufshcd-pltfrm.c
-> @@ -47,8 +47,9 @@ static int ufshcd_parse_clock_info(struct ufs_hba *hba)
->  	if (cnt <= 0)
->  		goto out;
->  
-> -	if (!of_get_property(np, "freq-table-hz", &len)) {
-> -		dev_info(dev, "freq-table-hz property not specified\n");
-> +	if (!of_get_property(np, "freq-table", &len) ||
-> +	    !of_get_property(np, "freq-table-hz", &len)) {
-> +		dev_info(dev, "freq-table property not specified\n");
->  		goto out;
->  	}
->  
-> @@ -57,7 +58,7 @@ static int ufshcd_parse_clock_info(struct ufs_hba *hba)
->  
->  	sz = len / sizeof(*clkfreq);
->  	if (sz != 2 * cnt) {
-> -		dev_err(dev, "%s len mismatch\n", "freq-table-hz");
-> +		dev_err(dev, "%s len mismatch\n", "freq-table");
->  		ret = -EINVAL;
->  		goto out;
->  	}
-> @@ -69,12 +70,16 @@ static int ufshcd_parse_clock_info(struct ufs_hba *hba)
->  		goto out;
->  	}
->  
-> -	ret = of_property_read_u32_array(np, "freq-table-hz",
-> +	ret = of_property_read_u32_array(np, "freq-table",
->  			clkfreq, sz);
->  	if (ret && (ret != -EINVAL)) {
-> -		dev_err(dev, "%s: error reading array %d\n",
-> -				"freq-table-hz", ret);
-> -		return ret;
-> +		ret = of_property_read_u32_array(np, "freq-table-hz",
-> +						 clkfreq, sz);
-> +		if (ret && (ret != -EINVAL)) {
-> +			dev_err(dev, "%s: error reading array %d\n",
-> +				"freq-table", ret);
-> +			return ret;
-> +		}
->  	}
->  
->  	for (i = 0; i < sz; i += 2) {
-> @@ -99,7 +104,7 @@ static int ufshcd_parse_clock_info(struct ufs_hba *hba)
->  
->  		if (!strcmp(name, "ref_clk"))
->  			clki->keep_link_active = true;
-> -		dev_dbg(dev, "%s: min %u max %u name %s\n", "freq-table-hz",
-> +		dev_dbg(dev, "%s: min %u max %u name %s\n", "freq-table",
->  				clki->min_freq, clki->max_freq, clki->name);
->  		list_add_tail(&clki->list, &hba->clk_list_head);
->  	}
-> -- 
-> 2.32.0
-> 
+Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
 
 _______________________________________________
 Linux-mediatek mailing list
