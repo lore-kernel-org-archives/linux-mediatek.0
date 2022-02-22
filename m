@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0820C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 21:48:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FEB3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 22:13:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NAAFwCQqM8tWW9oW7+UZMMhpBSjcn+WLPJfzepNJSOw=; b=vp5HmAxmf3ArsC
-	996zdZrvM4HC5aY7mqNRtvEFuBC9mCiP6p8VH14LC57OXe/zVwOZfk7W9MAqjjhll2bYe8pb9uqEp
-	LH+P03pGaJjpkQfDQrqAZh4qmGPYuTCax+3DjRqw7Go9iPidteDNM4xdVrExQgpKaicDV71ddUS41
-	MSM2tidKxhJFUlwRE7iWU4y5lXZSeR+N9UhEBKU8Pak3A1P5iGud0SZMrZEeQ3EoxaZgAJZp42SsY
-	CqQ9eDv/AohnBezBR14w7Op/R52HVzU1+OCr8nIElLZEb8XEOGPC/YF4X+gUr7DpyYAmt5xppQ2VZ
-	w9R2eXeBdzKsFJGTVlHA==;
+	List-Owner; bh=FiE/yNZ7w3T0raGn6AHveBll0JZNwzhtlMO1TRhiaIM=; b=HDGZlObCztrEDZ
+	0tzu/eLPk9Yz+WmixvjjnVBUrAre38vUHjkK4S3NDZmy81pV2Hwi288Ryf3j5CY92XZTJPeQFEHDb
+	hzcPF6LfB4/c/X4lMnhSnteZ0t6wMiSoo9mlbuK8Ww6z/1JLV0htYaoKGTMqzDijX4fmau07QTki4
+	XeUdhylGoUwUIPsWHGqQ/hEv4If+WrII3gwz2AC52CFQOa9PZlEtGynHczCCo3vC0AUafn/IbPNqi
+	EHAV4TfeL3uaM2hmK3OTILkwDLLVimwzZGLH5/sXi4ETHBqeNWIxI6UFIMeZfQ5T0CrnsVPBJeOoA
+	3SxmMacfOlMltukMB+Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMd1W-00Bha4-DI; Tue, 22 Feb 2022 21:48:42 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nMdPf-00BlnG-Ry; Tue, 22 Feb 2022 22:13:39 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMd1K-00BhXw-EA; Tue, 22 Feb 2022 21:48:31 +0000
+ id 1nMdPT-00Bll5-O8; Tue, 22 Feb 2022 22:13:29 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id A00891F42DED
+ (Authenticated sender: nfraprado) with ESMTPSA id F3D1B1F441DA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645566507;
- bh=AgYGHjexhKTkzbHlv7iW5IsUbYss5lL+060iqAyLlvA=;
+ s=mail; t=1645568006;
+ bh=q2TRzkQcc6bxTmQ/UE5mgvEoMLViCD8R1DxoR1bUm8Q=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=FIcY+qfugfCKqmY96XmKSLJ8t3CWTMJ04f9BSGhLdx2wGJr8JiSFHIHYA+tNV9itK
- i/lz5Ll63lB5o3lxPPk3RvoQTBXgOg/EjyC4GcwRdCJifG37P3idfDtjIShLhOq7Ac
- WYjA7pOBmBLQ5t2aKEw57Z6Ab4oYlz4Vyr5pQBWAxDc9/RSDzzZpWcuITE4ZCS3X3s
- tmEu8wJuuydJhI29smm3Kyfrk6Ct8CGGcCuSptf5iLMZddoGdJJM3ozqOr+L6kNbc/
- TnDglFIW/hiw9+lPlZ0LPlnFU5dBKCpI2CqfKFI0LqCJ3nfYEfenJ+ejqZniSQdTDC
- hwK5I6SeWFLNw==
-Date: Tue, 22 Feb 2022 16:48:22 -0500
+ b=cJeaMIhBX76bNSPu+Z0Vn1AwC1FdJrr2rZ75ydgqwiypbJ/Po6LLAxh+vufAhtn6m
+ QjYtQGbR7H2nT8vW4oPbMOBXzYDftTe7IikOAJQTNfjdv7pxOhCZgAgpoxjdmMYu05
+ CAnVu90tbDjltLVpQjp0NafZ1+33mJ77qluatWdobByPZxNgFtL7zw3qrczeCJVdaT
+ mbAWAOTpjrUcY20z283K/DdeNTbXcqtqqgnWWQUtwZWRDy0n5aHM6kJPDT9SK/r/FN
+ R/JfzUW2JNCUBtVeWKGWTeodvYt268u9tGfbBS6nINpwRBkpWfvtnQcJyqk19hM/zk
+ UPhHkUqG7fi5Q==
+Date: Tue, 22 Feb 2022 17:13:21 -0500
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
 To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>,
@@ -46,17 +46,16 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>
-Subject: Re: [PATCH v2 15/23] arm64: dts: mt8192: Add m4u and smi nodes
-Message-ID: <20220222214822.3sxsbjrtm6ild6rx@notapiano>
+Subject: Re: [PATCH v2 16/23] arm64: dts: mt8192: Add H264 venc device node
+Message-ID: <20220222221321.q5zhe7kbwf6xzafr@notapiano>
 References: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
- <20220218091633.9368-16-allen-kh.cheng@mediatek.com>
+ <20220218091633.9368-17-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220218091633.9368-16-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220218091633.9368-17-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_134830_689504_118A5B87 
-X-CRM114-Status: UNSURE (   8.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220222_141327_940468_C71BB330 
+X-CRM114-Status: GOOD (  14.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,29 +67,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 18, 2022 at 05:16:25PM +0800, Allen-KH Cheng wrote:
-> +		larb16: larb@1a00f000 {
-> +			compatible =3D "mediatek,mt8192-smi-larb";
-> +			reg =3D <0 0x1a00f000 0 0x1000>;
-> +			mediatek,larb-id =3D <16>;
-> +			mediatek,smi =3D <&smi_common>;
-> +			clocks =3D <&camsys_rawa CLK_CAM_RAWA_CAM>,
-> +				 <&camsys_rawa CLK_CAM_RAWA_LARBX>;
-> +			clock-names =3D "apb", "smi";
-> +			mediatek,smi-id =3D <16>;
+On Fri, Feb 18, 2022 at 05:16:26PM +0800, Allen-KH Cheng wrote:
+> Adds H264 venc node for mt8192 SoC.
+> 
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 23 +++++++++++++++++++++++
+>  1 file changed, 23 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> index 40887120fdb3..936aa788664f 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> @@ -1342,6 +1342,29 @@
+>  			power-domains = <&spm MT8192_POWER_DOMAIN_VENC>;
+>  		};
+>  
+> +		vcodec_enc: vcodec@0x17020000 {
 
-This mediatek,smi-id property isn't handled in the driver or mentioned in t=
-he
-dt-binding, and seems redundant to mediatek,larb-id. So just drop it.
+The node address shouldn't have the '0x' prefix. Please drop it.
 
-Other than that,
+> +			compatible = "mediatek,mt8192-vcodec-enc";
+> +			reg = <0 0x17020000 0 0x2000>;
+> +			iommus = <&iommu0 M4U_PORT_L7_VENC_RCPU>,
+> +				<&iommu0 M4U_PORT_L7_VENC_REC>,
+> +				<&iommu0 M4U_PORT_L7_VENC_BSDMA>,
+> +				<&iommu0 M4U_PORT_L7_VENC_SV_COMV>,
+> +				<&iommu0 M4U_PORT_L7_VENC_RD_COMV>,
+> +				<&iommu0 M4U_PORT_L7_VENC_CUR_LUMA>,
+> +				<&iommu0 M4U_PORT_L7_VENC_CUR_CHROMA>,
+> +				<&iommu0 M4U_PORT_L7_VENC_REF_LUMA>,
+> +				<&iommu0 M4U_PORT_L7_VENC_REF_CHROMA>,
+> +				<&iommu0 M4U_PORT_L7_VENC_SUB_R_LUMA>,
+> +				<&iommu0 M4U_PORT_L7_VENC_SUB_W_LUMA>;
 
-Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+Please fix indentation:
+			iommus = <&iommu0 M4U_PORT_L7_VENC_RCPU>,
+				 <&iommu0 M4U_PORT_L7_VENC_REC>,
+				 <&iommu0 M4U_PORT_L7_VENC_BSDMA>,
+				 <&iommu0 M4U_PORT_L7_VENC_SV_COMV>,
+				 <&iommu0 M4U_PORT_L7_VENC_RD_COMV>,
+				 <&iommu0 M4U_PORT_L7_VENC_CUR_LUMA>,
+				 <&iommu0 M4U_PORT_L7_VENC_CUR_CHROMA>,
+				 <&iommu0 M4U_PORT_L7_VENC_REF_LUMA>,
+				 <&iommu0 M4U_PORT_L7_VENC_REF_CHROMA>,
+				 <&iommu0 M4U_PORT_L7_VENC_SUB_R_LUMA>,
+				 <&iommu0 M4U_PORT_L7_VENC_SUB_W_LUMA>;
+
+> +			interrupts = <GIC_SPI 309 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			mediatek,scp = <&scp>;
+> +			power-domains = <&spm MT8192_POWER_DOMAIN_VENC>;
+> +			clocks = <&vencsys CLK_VENC_SET1_VENC>;
+> +			clock-names = "venc-set1";
+> +			assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>;
+> +			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
+> +		};
+> +
+>  		camsys: clock-controller@1a000000 {
+>  			compatible = "mediatek,mt8192-camsys";
+>  			reg = <0 0x1a000000 0 0x1000>;
+> -- 
+> 2.18.0
+> 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
