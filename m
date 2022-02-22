@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53511C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 15:07:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43AFCC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 15:07:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hVGtG/xkZ2SUVTPfv4N3jDDyPcG83QKS8uXtKdhBSu4=; b=TRXihO8sKgBlDl
-	7/L3HFbRHtr1GZHXHZIlp/jLlMB1Gdx/yHI5/fSZz6iwtgzL4qTyzk2Wkfkjyv6Q1uIyYntk2yZYh
-	bGen+OO4Qr2QAmBFA6UgUFKQLfREvTpaDry0CWKHUP48MwFfa1/kSZ9h7Iop8Y5F05HB1HmiDw656
-	FYookuLM+6bPInNDMlOfkfbRq56zTWq3PlrKImpc8ec+SsWT7rfyJX0+1KK61i6hiIZwrI/HcGivc
-	QnEiyFzYM5mBn7CoBWBIlwOppyqy1QXqIz2jSBHVWKY0H6l9BDDrfp7dNHzatVY6ZQKfkBLLqe+Jw
-	NGHqUOAwk0WYC1AEwv3w==;
+	List-Owner; bh=PkNxhKiBEk7ff0npq+444KQUuYA2JsTS97riaAzGVzA=; b=cHaTG73Iyt2X9f
+	CiAaLUeYAuLLiZTHhFs8AL3h7Rw6P82cwqJJ8UVEqfLUqQEOiffV72rVyS2oUwVoPtQFAemmgu/FP
+	9Jcyd8Scii5D/AYdUEpTUYO5PnLBUSq4bB0QQHgae3aadb+kKxAMkQWPdDseuM93XAr5i07OnOhz4
+	WhGIAR3Acjmp9ErQxJj1nCSw//tWSiY+hVQm2H+C0P0vubuzyTZMFiaqERo3OIlbMEBrUzxSxo3P7
+	ExBR5fjZNbSU/aMHgYqs8cL0mo9b5eluRpeImKQhPjN+FlygLqNUBa0VQgcdHBUnuDI4MoLYHqSPG
+	AF7sQGu/BsFWGg2AHy6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMWki-00A42h-PH; Tue, 22 Feb 2022 15:06:56 +0000
-Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
+	id 1nMWkl-00A446-Nz; Tue, 22 Feb 2022 15:06:59 +0000
+Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMWe7-00A0EP-70
- for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 15:00:10 +0000
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72])
+ id 1nMWe8-00A0Fx-ER
+ for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 15:00:11 +0000
+Received: from mail-lf1-f72.google.com (mail-lf1-f72.google.com
+ [209.85.167.72])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 5F9C9407CD
- for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 15:00:02 +0000 (UTC)
+ by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id B5BDF3FCA2
+ for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 15:00:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1645542002;
- bh=AXkZYdVX5Zodn+3WZgtIGj/ZSa6Qs/Xzl3ZJQ9geNsQ=;
+ s=20210705; t=1645542006;
+ bh=4OhXJxblf34wMx5+uRUs16cf2JFWMcvDQKlBG/4EIbg=;
  h=From:To:Subject:Date:Message-Id:In-Reply-To:References:
  MIME-Version;
- b=iyDq1tbkJf+9Q5xXoAFCuJM23bV735qnBjiNaQruOElGZ1TsmBGwVWACq/uMXb649
- fu4uOd0GB0exylnFoJP4t5DaS/s9Wq0kDQf4x/02ypQqPQWSxtSI8j9PsgXtYHlFrV
- a13X20p+d8FPOlvU6r2VRQRE0PDhQOEpV7T94QoLQ9BnHv5ff3BRRPt2UTtTGAXzMJ
- uh8340d6iP3wae+G54ovCBBWfehvhWQg3ZR+wU8Ww3Nz+vSMu3xV1TjcBMSghpXMfD
- r9hAhyUof8x5fMba6JpEsv5SXAknVOZ3x97RE5uYMm5nArFxoUoCj3EikG//0m/To6
- RLMm4dd+w9ayQ==
-Received: by mail-ed1-f72.google.com with SMTP id
- j9-20020a056402238900b004128085d906so11162782eda.19
- for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 07:00:02 -0800 (PST)
+ b=Rdy5IgroHscYIVGFB2/xRhp+CT0/SgnjZiWGmaHpKCe7Vg5++z1SVwH3C8AKYt3fX
+ sX5lZoOj0z0PjC0EXg8mKmfxhBDoIOYFwuP0Yd00rWdFkj+Gy+4qUzH39H0JisYEVZ
+ 7ZjwlVxfFBQuo00my9tAwkIiTgvisuAKzqzq999VOjcHoOwd+fUryWYBIMDIepJPLo
+ Dg2uPLX1hqO+J/Tbdv3kK4ByFlCCxNuZAAZ8GrP7UejwPYrB/1SRGyT5AtPEPHI6pz
+ wZbwt6BZh0U/SWhN8w9qy5ka4blUROpgdxXh1cfeZ+k7/Po1AizcIYfRCz9HwRfn1O
+ 1R5bYqIxDvgqA==
+Received: by mail-lf1-f72.google.com with SMTP id
+ m18-20020a0565120a9200b004439214844dso2850579lfu.9
+ for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 07:00:06 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=AXkZYdVX5Zodn+3WZgtIGj/ZSa6Qs/Xzl3ZJQ9geNsQ=;
- b=VtrjFfiCndXqzCo/5eDEJm+nEtFY6MuLu5QbRFLOJUVvq6W+kZtk+Fq+bQtFoye2/2
- n/KtUcKFB9vFFPWnq+GmtBhEEOAFU91ImhnKsr15NKYrmcCJxE0tCUBFMtiop73bNggY
- y+Mt03tJLsKJg0lbS+T8IMMRWiybyMuG4ejmL/CekpO63nd6//xyuB5Ta5QKvu0AuysF
- fsNU60n+mLHWrOvSqF3KQMvRiaz7YpEOvSEPLGIQYbs9t3xWo4/ucMl9Ob/XgCYJroFa
- ob4M4QgQhtl4paXB9b7QvXHy5tdP+YjwCP3WUxGZro1uAQBeEuqPGHEy+9WJv07QXPlc
- S6Qg==
-X-Gm-Message-State: AOAM533yNlNgw0WScqNopwh7PhCnexyHRhQZAhwoyugWzjSxQxm0pGRa
- n8vv4AUnvrtUkpBrsoc4XXDqcNPrvzgR8zvBEEue8VqwArIgQHOcR+/okfQp9XqrPVb5F0YU7ov
- SKqVsBDSDc1OWu+G5CFIugSVnmMLhz6RPzzqHlf0umftH1ZSVPg==
-X-Received: by 2002:aa7:c703:0:b0:410:b96a:6bf with SMTP id
- i3-20020aa7c703000000b00410b96a06bfmr26705736edq.439.1645541997724; 
- Tue, 22 Feb 2022 06:59:57 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwfSFtNX/a3KL4lHPEAhSPb3vHh30FiudcrzDoMBrPmGyj5vo81xOj/2DV7Q8M391vFSdj/vQ==
-X-Received: by 2002:aa7:c703:0:b0:410:b96a:6bf with SMTP id
- i3-20020aa7c703000000b00410b96a06bfmr26705712edq.439.1645541997526; 
- Tue, 22 Feb 2022 06:59:57 -0800 (PST)
+ bh=4OhXJxblf34wMx5+uRUs16cf2JFWMcvDQKlBG/4EIbg=;
+ b=KdoUSucQuYzNIXXnYWU41ZTLA4fXNcUUPXo9JNvJwIu1R+S0WuWDi+jibzSl5L0PTw
+ M5GV1MNT94Wbebwj47XQPEEXLzepjV3ZaEgngPJmcnYJlxE4uLEFQHN+6kxLdkGm33Zj
+ FdX3Eve016g7G36W7qg3NExqFiWmdYT7uJzUTaWzIRZQMkmnI/soCK7eK61RRERvEUUr
+ FnAYwqDuqjoFO77YgyL8s3rwWJ7uwRrkdpVJLXl1abQY2J2CSIVZKY5Te1s/XRnqljqY
+ biPV3EX0s96GPvdE8Oq4teIklJwQmPwhtC28xRGQeSkQn/x/CGLUzvqhyEZPa/rkuRiJ
+ pEFw==
+X-Gm-Message-State: AOAM533IQ8YoqUQ+JNhPTLY/7IDxWorPQngXrYAfUGBRzyaC3PN+tpeQ
+ aWCo2SuHAcYNVfgeofZnDI/2qe103luPgrDLG5n9StS1oUKGR8nnaEly6Pq6kOk9m88z/sHcCpj
+ qqMhg2R01uYyD5XOhf3NS0vjnLun3MjZiz/jz/iIwyY/RhzkuGQ==
+X-Received: by 2002:aa7:cd81:0:b0:410:d64e:aa31 with SMTP id
+ x1-20020aa7cd81000000b00410d64eaa31mr26939020edv.167.1645541995667; 
+ Tue, 22 Feb 2022 06:59:55 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyaJdWHb8xk+e2xSEaK1p8tjIOgBKlnOjh9riknUovYkgJh1fsrFc3SbrR3EFVhnzBs85hG8A==
+X-Received: by 2002:aa7:cd81:0:b0:410:d64e:aa31 with SMTP id
+ x1-20020aa7cd81000000b00410d64eaa31mr26938989edv.167.1645541995521; 
+ Tue, 22 Feb 2022 06:59:55 -0800 (PST)
 Received: from localhost.localdomain (xdsl-188-155-181-108.adslplus.ch.
  [188.155.181.108])
- by smtp.gmail.com with ESMTPSA id m2sm2467960ejb.20.2022.02.22.06.59.55
+ by smtp.gmail.com with ESMTPSA id m2sm2467960ejb.20.2022.02.22.06.59.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Feb 2022 06:59:56 -0800 (PST)
+ Tue, 22 Feb 2022 06:59:55 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
  Rob Herring <robh+dt@kernel.org>,
@@ -88,16 +88,16 @@ To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 11/15] arm64: dts: ti: use 'freq-table' in UFS node
-Date: Tue, 22 Feb 2022 15:58:50 +0100
-Message-Id: <20220222145854.358646-12-krzysztof.kozlowski@canonical.com>
+Subject: [PATCH v2 10/15] arm64: dts: hi3670: use 'freq-table' in UFS node
+Date: Tue, 22 Feb 2022 15:58:49 +0100
+Message-Id: <20220222145854.358646-11-krzysztof.kozlowski@canonical.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
 References: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_070007_420933_DB68FD2A 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20220222_070008_636782_19B16562 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,24 +119,24 @@ The uint32-array requires also element to be passed within one <> block.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 ---
- arch/arm64/boot/dts/ti/k3-j721e-main.dtsi | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/hisilicon/hi3670.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/ti/k3-j721e-main.dtsi b/arch/arm64/boot/dts/ti/k3-j721e-main.dtsi
-index 599861259a30..34aff40c6b8e 100644
---- a/arch/arm64/boot/dts/ti/k3-j721e-main.dtsi
-+++ b/arch/arm64/boot/dts/ti/k3-j721e-main.dtsi
-@@ -1257,7 +1257,9 @@ ufs@4e84000 {
- 			compatible = "cdns,ufshc-m31-16nm", "jedec,ufs-2.0";
- 			reg = <0x0 0x4e84000 0x0 0x10000>;
- 			interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
--			freq-table-hz = <250000000 250000000>, <19200000 19200000>, <19200000 19200000>;
-+			freq-table = <250000000 250000000>,
-+				     <19200000 19200000>,
-+				     <19200000 19200000>;
- 			clocks = <&k3_clks 277 0>, <&k3_clks 277 1>, <&k3_clks 277 1>;
- 			clock-names = "core_clk", "phy_clk", "ref_clk";
- 			dma-coherent;
+diff --git a/arch/arm64/boot/dts/hisilicon/hi3670.dtsi b/arch/arm64/boot/dts/hisilicon/hi3670.dtsi
+index 636c8817df7e..754b3a66ec0d 100644
+--- a/arch/arm64/boot/dts/hisilicon/hi3670.dtsi
++++ b/arch/arm64/boot/dts/hisilicon/hi3670.dtsi
+@@ -671,8 +671,8 @@ ufs: ufs@ff3c0000 {
+ 			clocks = <&crg_ctrl HI3670_CLK_GATE_UFSIO_REF>,
+ 				 <&crg_ctrl HI3670_CLK_GATE_UFS_SUBSYS>;
+ 			clock-names = "ref_clk", "phy_clk";
+-			freq-table-hz = <0 0
+-					 0 0>;
++			freq-table = <0 0>,
++				     <0 0>;
+ 			/* offset: 0x84; bit: 12 */
+ 			resets = <&crg_rst 0x84 12>;
+ 			reset-names = "rst";
 -- 
 2.32.0
 
