@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A62FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 11:13:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6D0CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 11:13:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tlIub7ONIDKga5VxK0U8NzjWjqV0902xTxQID/gcT3k=; b=XDx+oGPd1q/baM
-	xxhK2+IhpL8uDkAhblaF1Ac5P0evsJ0alEprvkh+QfUVf/lcn6kjqkNNnkduUAHVuldV+mrbaBKgI
-	KPFJ7XUTHky3wxBYqFqhvPMgVhnBHMLWMXyUguk1cE9OpgW+UWRMsvGshiDCC4tuoktseL6eQ8ak5
-	of2dSRqkwpvAkxzO8pE0eIPmrHKo58onuFZRCFpz1eMZ4Ex43iOpUGAre5/rq0GcsSpY9b3+Nr4gf
-	2TXeVZYVvIB5+QxH0aoXdUGJmZ95npZ6GTIEJ/KRWjTJtd3XeLee3SEDAbpVzA1QqmaUPGbvON36O
-	R6BMViK4IHxUdPEzLX2Q==;
+	List-Owner; bh=juC/ZkcVZBF3j48hmNaqaHxBhv8kgjH1Q23fVJoqLvU=; b=rmObT5DmKz6KZA
+	yevoxUAgkzt160ZG5ihfia/J3ZYvTSG7aXS/LdNLuAVoLqtfogjkakizTEscoGsjSrsbbNuWcpchx
+	2ASTJ3zgmg2F/LfPFlLUZLOOQMTuePx2BphNpfG2GqklZhTwWLHcPDNLjM8szBaW7tFhb8qoF6js4
+	dV/NIJlLD5dKT58JZPC7eSV8ZW1Nlwx1abrPwWdNgbYiyEcfMw57bdKM7HsRfRf7mK+r4x2OVw/6S
+	Z8nFfvunzpxx5J/Jx3IpMSlm1LMPbOLxW9Lk/nDRYF//hO4KV69OOSUM0rGQgEWNWPMIgrbWYci/N
+	prh1o31uSXjAniqqYZQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMT6L-009LUv-39; Tue, 22 Feb 2022 11:13:01 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nMT6m-009LpS-P2; Tue, 22 Feb 2022 11:13:28 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMT5D-009KyA-2E; Tue, 22 Feb 2022 11:11:55 +0000
+ id 1nMT5F-009Kzg-Ax; Tue, 22 Feb 2022 11:11:57 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 48BFB1F43811
+ (Authenticated sender: kholk11) with ESMTPSA id 55F171F4393C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645528309;
- bh=cpo6vlQK830VyMFFPzoTFasodql+SY0NouJYyX3BTA4=;
+ s=mail; t=1645528311;
+ bh=WdIRTipSKFpu3yVcBXGq5Ma2nb9tP2cg9GwP8GUmbSQ=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=WLJB3nEJV0eO8wE9mXnE+E4m0GRq/3YvxR+njd0TO7K6Tj2WEHul5B8WL7boh4WBB
- ytqcPLQjZP4grgF773QiT65nRPn1WKV7o9k7Jy+MjDZaZ30ejVgwza/MmFg8cT88mj
- E2h8GL20dYH3RnEQH1gWFO2OOtttZUlwY4yj4CKZVV2cjwZOZy+URAkQ1SJ+DoUQVQ
- MX1l3WvKJyncBcfBgWan0FuL/QNgInz/RNDzIPlqUHCPXtP6Z7W9oyg5RVDS8BfjTw
- weksthAj6uTWBUJ8HeZJls65N72FgL5fVNmaj865hq1KHSsScXvgq1GrL0eq4dO7NP
- /AgMGhGZnyscQ==
+ b=UlOkGH+d3Ky6kvfajDVKPf/GoqYvDbaMKr50ncUaFN153Awj5lFZpvB/0YfGbRFOP
+ qejx2sswCeGEdBADODoFWLhDwFFJMZkMOVPHa37oUIWbjSWqrfcZK9wP6Y1Y8pj51U
+ I/ORNsgrqPZbbmyrFKm+tKcEj8e2/sHxXes2lxVnLBdUzIkd/jjDkBt1qD/dctM78c
+ 9vMVJGrpIc5Ih89QAeI3lRuZFpV9+KS8GKCLtBYdu7n+0MkdxPcJiZ9hUOJDeW1cyh
+ R8Xvr4Vd5QcBjZ+M0DwvWEkzhp2SQaS35xuXwI/+J8/az0P9Fn5mUODqRSl5881qRh
+ D3mH6TdVRBSHw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: sean.wang@kernel.org
 Cc: linus.walleij@linaro.org, matthias.bgg@gmail.com,
@@ -43,17 +43,17 @@ Cc: linus.walleij@linaro.org, matthias.bgg@gmail.com,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  kernel@collabora.com, wenst@chromium.org,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 1/5] pinctrl: mediatek: paris: Unify probe function by
- using OF match data
-Date: Tue, 22 Feb 2022 12:11:40 +0100
-Message-Id: <20220222111144.20796-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 4/5] pinctrl: mediatek: common-v1: Commonize spec_pupd
+ callback
+Date: Tue, 22 Feb 2022 12:11:43 +0100
+Message-Id: <20220222111144.20796-5-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20220222111144.20796-1-angelogioacchino.delregno@collabora.com>
 References: <20220222111144.20796-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_031151_415776_19030EC4 
-X-CRM114-Status: GOOD (  16.66  )
+X-CRM114-CacheID: sfid-20220222_031153_719380_82812405 
+X-CRM114-Status: GOOD (  15.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,240 +70,347 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-All of the SoCs using Paris pinctrl are defining a custom probe
-function that is simply calling mtk_paris_pinctrl_probe() passing
-a pointer to the SoC specific mtk_pin_soc structure and nothing else.
-
-Simplify the probe mechanism across all pinctrl drivers that are
-using pinctrl-paris by passing the specific mtk_pin_soc as match
-data and using function mtk_paris_pinctrl_probe as a common probe
-function for all of them.
+Reduce code size and duplication by using a common spec_pupd callback,
+which is possible to use on all of the pinctrl drivers that are
+using the v1 pinctrl-mtk-common code, with the exception of mt8135,
+which has a different handling compared to the others.
+Since the callback function signature was changed, this had to be
+propagated to pinctrl-mt8135's spec_pull_set().
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/pinctrl/mediatek/pinctrl-mt6765.c | 9 ++-------
- drivers/pinctrl/mediatek/pinctrl-mt6779.c | 9 ++-------
- drivers/pinctrl/mediatek/pinctrl-mt6797.c | 9 ++-------
- drivers/pinctrl/mediatek/pinctrl-mt8183.c | 9 ++-------
- drivers/pinctrl/mediatek/pinctrl-mt8192.c | 9 ++-------
- drivers/pinctrl/mediatek/pinctrl-mt8195.c | 9 ++-------
- drivers/pinctrl/mediatek/pinctrl-paris.c  | 9 ++++++---
- drivers/pinctrl/mediatek/pinctrl-paris.h  | 3 +--
- 8 files changed, 19 insertions(+), 47 deletions(-)
+ drivers/pinctrl/mediatek/pinctrl-mt2701.c     | 11 +++-------
+ drivers/pinctrl/mediatek/pinctrl-mt2712.c     | 14 +++----------
+ drivers/pinctrl/mediatek/pinctrl-mt8127.c     | 11 +++-------
+ drivers/pinctrl/mediatek/pinctrl-mt8135.c     |  6 ++++--
+ drivers/pinctrl/mediatek/pinctrl-mt8167.c     | 11 +++-------
+ drivers/pinctrl/mediatek/pinctrl-mt8173.c     | 11 +++-------
+ drivers/pinctrl/mediatek/pinctrl-mt8365.c     | 11 +++-------
+ drivers/pinctrl/mediatek/pinctrl-mt8516.c     | 11 +++-------
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 21 +++++++++++--------
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.h | 14 ++++++++-----
+ 10 files changed, 46 insertions(+), 75 deletions(-)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6765.c b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
-index 2c59d3936256..c57b19fcda03 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6765.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
-@@ -1082,21 +1082,16 @@ static const struct mtk_pin_soc mt6765_data = {
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2701.c b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
+index 2f8821207395..816de39858f8 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt2701.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
+@@ -270,13 +270,6 @@ static const struct mtk_pin_spec_pupd_set_samereg mt2701_spec_pupd[] = {
+ 	MTK_PIN_PUPD_SPEC_SR(261, 0x140, 8, 9, 10),	/* ms1 ins */
  };
  
- static const struct of_device_id mt6765_pinctrl_of_match[] = {
--	{ .compatible = "mediatek,mt6765-pinctrl", },
-+	{ .compatible = "mediatek,mt6765-pinctrl", .data = &mt6765_data },
- 	{ }
- };
- 
--static int mt6765_pinctrl_probe(struct platform_device *pdev)
+-static int mt2701_spec_pull_set(struct regmap *regmap, unsigned int pin,
+-		unsigned char align, bool isup, unsigned int r1r0)
 -{
--	return mtk_paris_pinctrl_probe(pdev, &mt6765_data);
+-	return mtk_pctrl_spec_pull_set_samereg(regmap, mt2701_spec_pupd,
+-		ARRAY_SIZE(mt2701_spec_pupd), pin, align, isup, r1r0);
 -}
 -
- static struct platform_driver mt6765_pinctrl_driver = {
- 	.driver = {
- 		.name = "mt6765-pinctrl",
- 		.of_match_table = mt6765_pinctrl_of_match,
- 	},
--	.probe = mt6765_pinctrl_probe,
-+	.probe = mtk_paris_pinctrl_probe,
+ static const struct mtk_pin_ies_smt_set mt2701_ies_set[] = {
+ 	MTK_PIN_IES_SMT_SPEC(0, 6, 0xb20, 0),
+ 	MTK_PIN_IES_SMT_SPEC(7, 9, 0xb20, 1),
+@@ -508,7 +501,9 @@ static const struct mtk_pinctrl_devdata mt2701_pinctrl_data = {
+ 	.n_grp_cls = ARRAY_SIZE(mt2701_drv_grp),
+ 	.pin_drv_grp = mt2701_pin_drv,
+ 	.n_pin_drv_grps = ARRAY_SIZE(mt2701_pin_drv),
+-	.spec_pull_set = mt2701_spec_pull_set,
++	.spec_pupd = mt2701_spec_pupd,
++	.n_spec_pupd = ARRAY_SIZE(mt2701_spec_pupd),
++	.spec_pull_set = mtk_pctrl_spec_pull_set_samereg,
+ 	.spec_ies_smt_set = mt2701_ies_smt_set,
+ 	.spec_pinmux_set = mt2701_spec_pinmux_set,
+ 	.spec_dir_set = mt2701_spec_dir_set,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2712.c b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
+index 03aa14445034..b6182b06584b 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt2712.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
+@@ -81,16 +81,6 @@ static const struct mtk_pin_spec_pupd_set_samereg mt2712_spec_pupd[] = {
+ 	MTK_PIN_PUPD_SPEC_SR(142, 0xe60, 5, 4, 3)
  };
  
- static int __init mt6765_pinctrl_init(void)
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6779.c b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
-index bb0851c73304..4ddf8bda6827 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6779.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
-@@ -758,21 +758,16 @@ static const struct mtk_pin_soc mt6779_data = {
- };
- 
- static const struct of_device_id mt6779_pinctrl_of_match[] = {
--	{ .compatible = "mediatek,mt6779-pinctrl", },
-+	{ .compatible = "mediatek,mt6779-pinctrl", .data = &mt6779_data },
- 	{ }
- };
- 
--static int mt6779_pinctrl_probe(struct platform_device *pdev)
+-static int mt2712_spec_pull_set(struct regmap *regmap,
+-				unsigned int pin,
+-				unsigned char align,
+-				bool isup,
+-				unsigned int r1r0)
 -{
--	return mtk_paris_pinctrl_probe(pdev, &mt6779_data);
+-	return mtk_pctrl_spec_pull_set_samereg(regmap, mt2712_spec_pupd,
+-		ARRAY_SIZE(mt2712_spec_pupd), pin, align, isup, r1r0);
 -}
 -
- static struct platform_driver mt6779_pinctrl_driver = {
- 	.driver = {
- 		.name = "mt6779-pinctrl",
- 		.of_match_table = mt6779_pinctrl_of_match,
- 	},
--	.probe = mt6779_pinctrl_probe,
-+	.probe = mtk_paris_pinctrl_probe,
+ static const struct mtk_pin_ies_smt_set mt2712_smt_set[] = {
+ 	MTK_PIN_IES_SMT_SPEC(0, 3, 0x900, 2),
+ 	MTK_PIN_IES_SMT_SPEC(4, 7, 0x900, 0),
+@@ -563,7 +553,9 @@ static const struct mtk_pinctrl_devdata mt2712_pinctrl_data = {
+ 	.n_grp_cls = ARRAY_SIZE(mt2712_drv_grp),
+ 	.pin_drv_grp = mt2712_pin_drv,
+ 	.n_pin_drv_grps = ARRAY_SIZE(mt2712_pin_drv),
+-	.spec_pull_set = mt2712_spec_pull_set,
++	.spec_pupd = mt2712_spec_pupd,
++	.n_spec_pupd = ARRAY_SIZE(mt2712_spec_pupd),
++	.spec_pull_set = mtk_pctrl_spec_pull_set_samereg,
+ 	.spec_ies_smt_set = mt2712_ies_smt_set,
+ 	.dir_offset = 0x0000,
+ 	.pullen_offset = 0x0100,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8127.c b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
+index 76cb525374f2..9745d15f93ec 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8127.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
+@@ -172,13 +172,6 @@ static const struct mtk_pin_spec_pupd_set_samereg mt8127_spec_pupd[] = {
+ 	MTK_PIN_PUPD_SPEC_SR(142, 0xdc0, 2, 0, 1),	/* EINT21 */
  };
  
- static int __init mt6779_pinctrl_init(void)
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6797.c b/drivers/pinctrl/mediatek/pinctrl-mt6797.c
-index adebe4333ed9..53f240491259 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6797.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6797.c
-@@ -58,21 +58,16 @@ static const struct mtk_pin_soc mt6797_data = {
- };
- 
- static const struct of_device_id mt6797_pinctrl_of_match[] = {
--	{ .compatible = "mediatek,mt6797-pinctrl", },
-+	{ .compatible = "mediatek,mt6797-pinctrl", .data = &mt6797_data },
- 	{ }
- };
- 
--static int mt6797_pinctrl_probe(struct platform_device *pdev)
+-static int mt8127_spec_pull_set(struct regmap *regmap, unsigned int pin,
+-		unsigned char align, bool isup, unsigned int r1r0)
 -{
--	return mtk_paris_pinctrl_probe(pdev, &mt6797_data);
+-	return mtk_pctrl_spec_pull_set_samereg(regmap, mt8127_spec_pupd,
+-		ARRAY_SIZE(mt8127_spec_pupd), pin, align, isup, r1r0);
 -}
 -
- static struct platform_driver mt6797_pinctrl_driver = {
- 	.driver = {
- 		.name = "mt6797-pinctrl",
- 		.of_match_table = mt6797_pinctrl_of_match,
- 	},
--	.probe = mt6797_pinctrl_probe,
-+	.probe = mtk_paris_pinctrl_probe,
+ static const struct mtk_pin_ies_smt_set mt8127_ies_set[] = {
+ 	MTK_PIN_IES_SMT_SPEC(0, 9, 0x900, 0),
+ 	MTK_PIN_IES_SMT_SPEC(10, 13, 0x900, 1),
+@@ -279,7 +272,9 @@ static const struct mtk_pinctrl_devdata mt8127_pinctrl_data = {
+ 	.n_grp_cls = ARRAY_SIZE(mt8127_drv_grp),
+ 	.pin_drv_grp = mt8127_pin_drv,
+ 	.n_pin_drv_grps = ARRAY_SIZE(mt8127_pin_drv),
+-	.spec_pull_set = mt8127_spec_pull_set,
++	.spec_pupd = mt8127_spec_pupd,
++	.n_spec_pupd = ARRAY_SIZE(mt8127_spec_pupd),
++	.spec_pull_set = mtk_pctrl_spec_pull_set_samereg,
+ 	.spec_ies_smt_set = mt8127_ies_smt_set,
+ 	.dir_offset = 0x0000,
+ 	.pullen_offset = 0x0100,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8135.c b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
+index 4c20b79dec67..562846756517 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8135.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
+@@ -230,12 +230,14 @@ static const struct mtk_spec_pull_set spec_pupd[] = {
+ 	SPEC_PULL(202, PUPD_BASE2+0xc0, 10, R0_BASE1, 12, R1_BASE2+0xc0, 10)
  };
  
- static int __init mt6797_pinctrl_init(void)
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8183.c b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-index 60318339b618..fecb1e64fff4 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-@@ -567,22 +567,17 @@ static const struct mtk_pin_soc mt8183_data = {
+-static int spec_pull_set(struct regmap *regmap, unsigned int pin,
+-		unsigned char align, bool isup, unsigned int r1r0)
++static int spec_pull_set(struct regmap *regmap,
++		const struct mtk_pinctrl_devdata *devdata,
++		unsigned int pin, bool isup, unsigned int r1r0)
+ {
+ 	unsigned int i;
+ 	unsigned int reg_pupd, reg_set_r0, reg_set_r1;
+ 	unsigned int reg_rst_r0, reg_rst_r1;
++	unsigned char align = devdata->port_align;
+ 	bool find = false;
+ 
+ 	for (i = 0; i < ARRAY_SIZE(spec_pupd); i++) {
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8167.c b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
+index 08aabf408c9c..118ddcba18fc 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8167.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
+@@ -186,13 +186,6 @@ static const struct mtk_pin_spec_pupd_set_samereg mt8167_spec_pupd[] = {
+ 	MTK_PIN_PUPD_SPEC_SR(120, 0xe00, 2, 1, 0),
  };
  
- static const struct of_device_id mt8183_pinctrl_of_match[] = {
--	{ .compatible = "mediatek,mt8183-pinctrl", },
-+	{ .compatible = "mediatek,mt8183-pinctrl", .data = &mt8183_data },
- 	{ }
- };
- 
--static int mt8183_pinctrl_probe(struct platform_device *pdev)
+-static int mt8167_spec_pull_set(struct regmap *regmap, unsigned int pin,
+-			unsigned char align, bool isup, unsigned int r1r0)
 -{
--	return mtk_paris_pinctrl_probe(pdev, &mt8183_data);
+-	return mtk_pctrl_spec_pull_set_samereg(regmap, mt8167_spec_pupd,
+-		ARRAY_SIZE(mt8167_spec_pupd), pin, align, isup, r1r0);
 -}
 -
- static struct platform_driver mt8183_pinctrl_driver = {
- 	.driver = {
- 		.name = "mt8183-pinctrl",
- 		.of_match_table = mt8183_pinctrl_of_match,
- 		.pm = &mtk_paris_pinctrl_pm_ops,
- 	},
--	.probe = mt8183_pinctrl_probe,
-+	.probe = mtk_paris_pinctrl_probe,
+ static const struct mtk_pin_ies_smt_set mt8167_ies_set[] = {
+ 	MTK_PIN_IES_SMT_SPEC(0, 6, 0x900, 2),
+ 	MTK_PIN_IES_SMT_SPEC(7, 10, 0x900, 3),
+@@ -311,7 +304,9 @@ static const struct mtk_pinctrl_devdata mt8167_pinctrl_data = {
+ 	.n_grp_cls = ARRAY_SIZE(mt8167_drv_grp),
+ 	.pin_drv_grp = mt8167_pin_drv,
+ 	.n_pin_drv_grps = ARRAY_SIZE(mt8167_pin_drv),
+-	.spec_pull_set = mt8167_spec_pull_set,
++	.spec_pupd = mt8167_spec_pupd,
++	.n_spec_pupd = ARRAY_SIZE(mt8167_spec_pupd),
++	.spec_pull_set = mtk_pctrl_spec_pull_set_samereg,
+ 	.spec_ies_smt_set = mt8167_ies_smt_set,
+ 	.dir_offset = 0x0000,
+ 	.pullen_offset = 0x0500,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+index fc99df8a11c6..b34c9778e131 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+@@ -61,13 +61,6 @@ static const struct mtk_pin_spec_pupd_set_samereg mt8173_spec_pupd[] = {
+ 	MTK_PIN_PUPD_SPEC_SR(27, 0xcd0, 2, 1, 0)     /* ms3 cmd */
  };
  
- static int __init mt8183_pinctrl_init(void)
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8192.c b/drivers/pinctrl/mediatek/pinctrl-mt8192.c
-index 0c16b2c756bf..acccde9262ba 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8192.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8192.c
-@@ -1381,22 +1381,17 @@ static const struct mtk_pin_soc mt8192_data = {
- };
- 
- static const struct of_device_id mt8192_pinctrl_of_match[] = {
--	{ .compatible = "mediatek,mt8192-pinctrl", },
-+	{ .compatible = "mediatek,mt8192-pinctrl", .data = &mt8192_data },
- 	{ }
- };
- 
--static int mt8192_pinctrl_probe(struct platform_device *pdev)
+-static int mt8173_spec_pull_set(struct regmap *regmap, unsigned int pin,
+-		unsigned char align, bool isup, unsigned int r1r0)
 -{
--	return mtk_paris_pinctrl_probe(pdev, &mt8192_data);
+-	return mtk_pctrl_spec_pull_set_samereg(regmap, mt8173_spec_pupd,
+-		ARRAY_SIZE(mt8173_spec_pupd), pin, align, isup, r1r0);
 -}
 -
- static struct platform_driver mt8192_pinctrl_driver = {
- 	.driver = {
- 		.name = "mt8192-pinctrl",
- 		.of_match_table = mt8192_pinctrl_of_match,
- 		.pm = &mtk_paris_pinctrl_pm_ops,
- 	},
--	.probe = mt8192_pinctrl_probe,
-+	.probe = mtk_paris_pinctrl_probe,
+ static const struct mtk_pin_ies_smt_set mt8173_smt_set[] = {
+ 	MTK_PIN_IES_SMT_SPEC(0, 4, 0x930, 1),
+ 	MTK_PIN_IES_SMT_SPEC(5, 9, 0x930, 2),
+@@ -319,7 +312,9 @@ static const struct mtk_pinctrl_devdata mt8173_pinctrl_data = {
+ 	.n_grp_cls = ARRAY_SIZE(mt8173_drv_grp),
+ 	.pin_drv_grp = mt8173_pin_drv,
+ 	.n_pin_drv_grps = ARRAY_SIZE(mt8173_pin_drv),
+-	.spec_pull_set = mt8173_spec_pull_set,
++	.spec_pupd = mt8173_spec_pupd,
++	.n_spec_pupd = ARRAY_SIZE(mt8173_spec_pupd),
++	.spec_pull_set = mtk_pctrl_spec_pull_set_samereg,
+ 	.spec_ies_smt_set = mt8173_ies_smt_set,
+ 	.dir_offset = 0x0000,
+ 	.pullen_offset = 0x0100,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8365.c b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
+index 6863a8150a2b..dbff7a831235 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8365.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
+@@ -416,13 +416,6 @@ static const struct mtk_pin_ies_smt_set mt8365_smt_set[] = {
+ 	MTK_PIN_IES_SMT_SPEC(144, 144, 0x480, 22),
  };
  
- static int __init mt8192_pinctrl_init(void)
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8195.c b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-index 275b7ba4386d..563693d3d4c2 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-@@ -959,22 +959,17 @@ static const struct mtk_pin_soc mt8195_data = {
- };
- 
- static const struct of_device_id mt8195_pinctrl_of_match[] = {
--	{ .compatible = "mediatek,mt8195-pinctrl", },
-+	{ .compatible = "mediatek,mt8195-pinctrl", .data = &mt8195_data },
- 	{ }
- };
- 
--static int mt8195_pinctrl_probe(struct platform_device *pdev)
+-static int mt8365_spec_pull_set(struct regmap *regmap, unsigned int pin,
+-			unsigned char align, bool isup, unsigned int r1r0)
 -{
--	return mtk_paris_pinctrl_probe(pdev, &mt8195_data);
+-	return mtk_pctrl_spec_pull_set_samereg(regmap, mt8365_spec_pupd,
+-		ARRAY_SIZE(mt8365_spec_pupd), pin, align, isup, r1r0);
 -}
 -
- static struct platform_driver mt8195_pinctrl_driver = {
- 	.driver = {
- 		.name = "mt8195-pinctrl",
- 		.of_match_table = mt8195_pinctrl_of_match,
- 		.pm = &mtk_paris_pinctrl_pm_ops,
- 	},
--	.probe = mt8195_pinctrl_probe,
-+	.probe = mtk_paris_pinctrl_probe,
+ static int mt8365_ies_smt_set(struct regmap *regmap, unsigned int pin,
+ 		unsigned char align, int value, enum pin_config_param arg)
+ {
+@@ -442,7 +435,9 @@ static const struct mtk_pinctrl_devdata mt8365_pinctrl_data = {
+ 	.n_grp_cls = ARRAY_SIZE(mt8365_drv_grp),
+ 	.pin_drv_grp = mt8365_pin_drv,
+ 	.n_pin_drv_grps = ARRAY_SIZE(mt8365_pin_drv),
+-	.spec_pull_set = mt8365_spec_pull_set,
++	.spec_pupd = mt8365_spec_pupd,
++	.n_spec_pupd = ARRAY_SIZE(mt8365_spec_pupd),
++	.spec_pull_set = mtk_pctrl_spec_pull_set_samereg,
+ 	.spec_ies_smt_set = mt8365_ies_smt_set,
+ 	.dir_offset = 0x0140,
+ 	.dout_offset = 0x00A0,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8516.c b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
+index 99c1a04c7fd8..8ad2006857c0 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8516.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
+@@ -186,13 +186,6 @@ static const struct mtk_pin_spec_pupd_set_samereg mt8516_spec_pupd[] = {
+ 	MTK_PIN_PUPD_SPEC_SR(120, 0xe00, 2, 1, 0),
  };
  
- static int __init mt8195_pinctrl_init(void)
-diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-index 784eb152b637..6d9e4d625517 100644
---- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-@@ -1036,8 +1036,7 @@ static int mtk_pctrl_build_state(struct platform_device *pdev)
- 	return 0;
+-static int mt8516_spec_pull_set(struct regmap *regmap, unsigned int pin,
+-			unsigned char align, bool isup, unsigned int r1r0)
+-{
+-	return mtk_pctrl_spec_pull_set_samereg(regmap, mt8516_spec_pupd,
+-		ARRAY_SIZE(mt8516_spec_pupd), pin, align, isup, r1r0);
+-}
+-
+ static const struct mtk_pin_ies_smt_set mt8516_ies_set[] = {
+ 	MTK_PIN_IES_SMT_SPEC(0, 6, 0x900, 2),
+ 	MTK_PIN_IES_SMT_SPEC(7, 10, 0x900, 3),
+@@ -311,7 +304,9 @@ static const struct mtk_pinctrl_devdata mt8516_pinctrl_data = {
+ 	.n_grp_cls = ARRAY_SIZE(mt8516_drv_grp),
+ 	.pin_drv_grp = mt8516_pin_drv,
+ 	.n_pin_drv_grps = ARRAY_SIZE(mt8516_pin_drv),
+-	.spec_pull_set = mt8516_spec_pull_set,
++	.spec_pupd = mt8516_spec_pupd,
++	.n_spec_pupd = ARRAY_SIZE(mt8516_spec_pupd),
++	.spec_pull_set = mtk_pctrl_spec_pull_set_samereg,
+ 	.spec_ies_smt_set = mt8516_ies_smt_set,
+ 	.dir_offset = 0x0000,
+ 	.pullen_offset = 0x0500,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index 7835a6ea505b..5c70d4b7d7ed 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -222,9 +222,8 @@ static int mtk_pconf_set_driving(struct mtk_pinctrl *pctl,
  }
  
--int mtk_paris_pinctrl_probe(struct platform_device *pdev,
--			    const struct mtk_pin_soc *soc)
-+int mtk_paris_pinctrl_probe(struct platform_device *pdev)
+ int mtk_pctrl_spec_pull_set_samereg(struct regmap *regmap,
+-		const struct mtk_pin_spec_pupd_set_samereg *pupd_infos,
+-		unsigned int info_num, unsigned int pin,
+-		unsigned char align, bool isup, unsigned int r1r0)
++		const struct mtk_pinctrl_devdata *devdata,
++		unsigned int pin, bool isup, unsigned int r1r0)
  {
- 	struct device *dev = &pdev->dev;
- 	struct pinctrl_pin_desc *pins;
-@@ -1049,7 +1048,11 @@ int mtk_paris_pinctrl_probe(struct platform_device *pdev,
- 		return -ENOMEM;
+ 	unsigned int i;
+ 	unsigned int reg_pupd, reg_set, reg_rst;
+@@ -232,8 +231,11 @@ int mtk_pctrl_spec_pull_set_samereg(struct regmap *regmap,
+ 	const struct mtk_pin_spec_pupd_set_samereg *spec_pupd_pin;
+ 	bool find = false;
  
- 	platform_set_drvdata(pdev, hw);
--	hw->soc = soc;
+-	for (i = 0; i < info_num; i++) {
+-		if (pin == pupd_infos[i].pin) {
++	if (!devdata->spec_pupd)
++		return -EINVAL;
 +
-+	hw->soc = device_get_match_data(dev);
-+	if (!hw->soc)
-+		return -ENOENT;
-+
- 	hw->dev = &pdev->dev;
++	for (i = 0; i < devdata->n_spec_pupd; i++) {
++		if (pin == devdata->spec_pupd[i].pin) {
+ 			find = true;
+ 			break;
+ 		}
+@@ -242,9 +244,9 @@ int mtk_pctrl_spec_pull_set_samereg(struct regmap *regmap,
+ 	if (!find)
+ 		return -EINVAL;
  
- 	if (!hw->soc->nbase_names)
-diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.h b/drivers/pinctrl/mediatek/pinctrl-paris.h
-index afb7650fd25b..8762ac599329 100644
---- a/drivers/pinctrl/mediatek/pinctrl-paris.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-paris.h
-@@ -57,8 +57,7 @@
- 		id##_funcs,				\
+-	spec_pupd_pin = pupd_infos + i;
+-	reg_set = spec_pupd_pin->offset + align;
+-	reg_rst = spec_pupd_pin->offset + (align << 1);
++	spec_pupd_pin = devdata->spec_pupd + i;
++	reg_set = spec_pupd_pin->offset + devdata->port_align;
++	reg_rst = spec_pupd_pin->offset + (devdata->port_align << 1);
+ 
+ 	if (isup)
+ 		reg_pupd = reg_rst;
+@@ -298,7 +300,8 @@ static int mtk_pconf_set_pull_select(struct mtk_pinctrl *pctl,
+ 		 */
+ 		r1r0 = enable ? arg : MTK_PUPD_SET_R1R0_00;
+ 		ret = pctl->devdata->spec_pull_set(mtk_get_regmap(pctl, pin),
+-			pin, pctl->devdata->port_align, isup, r1r0);
++						   pctl->devdata, pin, isup,
++						   r1r0);
+ 		if (!ret)
+ 			return 0;
  	}
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+index cd264cc3547b..f7968a6ac563 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+@@ -193,6 +193,8 @@ struct mtk_eint_offsets {
+  *
+  * @grp_desc: The driving group info.
+  * @pin_drv_grp: The driving group for all pins.
++ * @spec_pupd: Special pull up/down setting
++ * @n_spec_pupd: Number of entries in spec_pupd
+  * @spec_pull_set: Each SoC may have special pins for pull up/down setting,
+  *  these pins' pull setting are very different, they have separate pull
+  *  up/down bit, R0 and R1 resistor bit, so they need special pull setting.
+@@ -231,8 +233,11 @@ struct mtk_pinctrl_devdata {
+ 	unsigned int	n_grp_cls;
+ 	const struct mtk_pin_drv_grp	*pin_drv_grp;
+ 	unsigned int	n_pin_drv_grps;
+-	int (*spec_pull_set)(struct regmap *reg, unsigned int pin,
+-			unsigned char align, bool isup, unsigned int arg);
++	const struct mtk_pin_spec_pupd_set_samereg *spec_pupd;
++	unsigned int n_spec_pupd;
++	int (*spec_pull_set)(struct regmap *regmap,
++			const struct mtk_pinctrl_devdata *devdata,
++			unsigned int pin, bool isup, unsigned int r1r0);
+ 	int (*spec_ies_smt_set)(struct regmap *reg, unsigned int pin,
+ 			unsigned char align, int value, enum pin_config_param arg);
+ 	void (*spec_pinmux_set)(struct regmap *reg, unsigned int pin,
+@@ -280,9 +285,8 @@ int mtk_pctrl_init(struct platform_device *pdev,
+ int mtk_pctrl_common_probe(struct platform_device *pdev);
  
--int mtk_paris_pinctrl_probe(struct platform_device *pdev,
--			    const struct mtk_pin_soc *soc);
-+int mtk_paris_pinctrl_probe(struct platform_device *pdev);
+ int mtk_pctrl_spec_pull_set_samereg(struct regmap *regmap,
+-		const struct mtk_pin_spec_pupd_set_samereg *pupd_infos,
+-		unsigned int info_num, unsigned int pin,
+-		unsigned char align, bool isup, unsigned int r1r0);
++		const struct mtk_pinctrl_devdata *devdata,
++		unsigned int pin, bool isup, unsigned int r1r0);
  
- ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
- 	unsigned int gpio, char *buf, unsigned int bufLen);
+ int mtk_pconf_spec_set_ies_smt_range(struct regmap *regmap,
+ 		const struct mtk_pin_ies_smt_set *ies_smt_infos, unsigned int info_num,
 -- 
 2.33.1
 
