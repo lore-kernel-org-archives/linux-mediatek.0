@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE9DDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 18:02:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2944C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 18:14:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UM32+ibRXytp8FH/7i14K4RgHtlwa8pFteIzHEyuprc=; b=Jw7MQfc+nAJQ2/
-	UzTxmGfub+D1yC+Pz3PjIP7pjZtdfWy1Fn5e3d/r859rFLY4x8WpdpBWAoqX248eN6W44jr7R8/Nz
-	teyIIAqy1DYplpZuvlYHys49qZbsjEL1ZgAu83dtasGmmUL+ZmZmg/tVb1+u39NVV8jFb0k7S9GFy
-	pBGjXjG8UIGopNqLwSgUcx/wOv36NhdX/81nK4dhDosmsvpBCxfoM9Jr8pk7HiC2xZMJm8y8ayPN8
-	GbjEUmJqBEsopWMA0m8V4rnqZDhxnQHkyU2pNplcmKX+YCST1hzmGIA9RiBwpd5fjZs40w4bsrtxx
-	Q1SfR5xq32yU4doQO6CQ==;
+	List-Owner; bh=WPVX7VHow6XvrHo9XYr8sn7YeMdVVRotd78bzRxqHIw=; b=veFYsaFrTk+hJp
+	Ogl2lWgvid3ckMU/45fz5QpaoQoeJCT4rk8qyAnr0PqXhQ1p6uZH1Qua92W6ZL3bGy/slEiDxeytI
+	mxuM9WrXKX1nSVT1EbajFLPpIO2g7QqASb8Ro9ZqUu6bu+CN2re6COOnzwFiCQrAs+ekl2dhg2WB4
+	uoiM34ecnDXJnwGy9Zek8tZM1yeNyqheKd2ly3CVh15ZvidGBCuP/8nSIee4QNE9temrJOFsI4plV
+	2njMoY47Y3o9DtV99WfPGgmIl8ZagkZYkQwbZLtMJ7KguHTEMG/6i4qLHgRIrsOk7VBBFtLlfy/QI
+	vNqZcqMfEk+UXmGRacNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMZUJ-00B73D-GH; Tue, 22 Feb 2022 18:02:11 +0000
-Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
+	id 1nMZgL-00BAAQ-Cv; Tue, 22 Feb 2022 18:14:37 +0000
+Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMZU7-00B6z9-27
- for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 18:02:00 +0000
-Received: by mail-ot1-x333.google.com with SMTP id
- w16-20020a056830281000b005ad480e8dd5so8689044otu.9
- for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 10:01:57 -0800 (PST)
+ id 1nMZg7-00BA44-6r
+ for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 18:14:25 +0000
+Received: by mail-oi1-x22b.google.com with SMTP id p15so15465326oip.3
+ for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 10:14:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=SdxXBssqIsA1l+C6PXrlMorWOAj9zYyZXBKmUKMGGC8=;
- b=SeLZhPFd5FksIREpIbjxg8L6cWMzA7jyGFZvXFmarSW6JT2CTchwa88hMEEegG0g5J
- sEW9T5K1xDqNe35ep+WkFnGIoyYK9JRUkmbehMKUmXqwoGxe5RV2CXqke77ey4RWVyeJ
- 7gx4hkcqB7snXXVsFY+KEmoJxlA3DiSa3MYgmW30PwOLzM7V4Due72mSc3aLyDy85Llq
- JRFQLPf6vlyG2/L23ui3GG7IcZTqHYNYD1f+MJTK5pbOv1TGJ2Cfqux4LxbwiwgdW81s
- rDJWqiJJk5M5Wy52Vi5uwOy4yFtV/SnnUQxNsVhy3OW85Z0Y24e+qRRRrT6dPzvHUzk/
- PZ3A==
+ bh=LVnQOEdOfsSROklcR4dN5XSqlK3ehHzd57yMiFQiZEw=;
+ b=gACc9RkTQBgrInQOVXfQ1pKbHWcF+vW7yEcgUKHfbJNaSRgH0VSAeKEPmgvoPrsGtM
+ 1OHOpOzefMJ6TeAtuAiFsTjcl2Z9l/sYaFMYHKdbQPiC1OAZZrnJ783k277cmUAHT3Ak
+ cpk2Wqa53ywX5ZF0emDkit0q3oOUM3KphJLlH5nz/ouLpXXye4c+4fATKRJl6SNpHWGk
+ BiqWCZVClbCg7zcgsHIHRxq8t0cu1KJSPZT06YHqjR46WEnl8XruiaDoUWfA1ygDLGUh
+ j3BYR4yVxu5WbWo7sy10d0FagAti8sZxg5eSabztkpnrb6Tsoa782kR5Ws+gEaC70TFs
+ Cj4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=SdxXBssqIsA1l+C6PXrlMorWOAj9zYyZXBKmUKMGGC8=;
- b=ZFjPx0L9aVkvXdml5dtZ1zRG5Q2UTXU/RuGbeiKWf2ZyVNVRMP+tsBI7EJzicxTa75
- mOXLAhn42FnVBNzmj5mP6dum+dBXllZjHwRC3llozr5s7MtrWGpxVHUQ1wKGu8JAdztL
- R9ecEmuuryr7ck+YZJI0IyuzZdPtDxihvaoaEAHN7MjYC6/Id3w1UW4LykNEhDMmJY+T
- 2sepd4nF8B5a28de01vlqy/W/ZEBSIN4Q6akzoSEJ4BOJ2zviAdXiR2kTFRm04pYlnhB
- weN3g+D06xKIJdwLgJvCgEBO5ko6jJgQxmtmxdgPR7AZhFCPgo0X/eBHUULy8myYbelk
- uLmQ==
-X-Gm-Message-State: AOAM531PLImIaPLeEkXCgXVDirKmHq8JhxleFuFX2v3UrZNWXbhNGNO1
- yoXGFRvwDVlX51zGskLvOrnqdw==
-X-Google-Smtp-Source: ABdhPJxWEHC+Mm9/uZ3OOHosJbLQd2o6I9x0B1SYOT+wH5/0geWhywMJzUO7D5r90LvBSBOGtL/1qw==
-X-Received: by 2002:a05:6830:44f:b0:5ac:fdb6:28d7 with SMTP id
- d15-20020a056830044f00b005acfdb628d7mr8649483otc.182.1645552917118; 
- Tue, 22 Feb 2022 10:01:57 -0800 (PST)
+ bh=LVnQOEdOfsSROklcR4dN5XSqlK3ehHzd57yMiFQiZEw=;
+ b=UtuEu2Gr/hz1lHQr0kLEwy29z6QieYvxbDs+QEcQgV6s5Eh2YQp3W+se2hFZDYBA30
+ IZsipQFhRzF0SIQsYOTntj/XB4BnTUh9HNr0iTVNYV3JrJhPWpDVWKCUxjzXtWnRRGrw
+ ITCfht74GHymAMPCHmRqDR85C5TdoY9Qo3ztL0Q5ad722Lddgzm2jkjqtqXXmMjBhvSC
+ euyfxd4i3onz/ObYrSmaehksD/+b30dMKLMBB9PImamLb+/lXW8hP9WFdfbU7s9v7cOx
+ QsRdtLkpUOlyyxxSRBEYkxkl4X2N5OAbjhJ7PRv+N4X7Sx4O8OO7THK7ADi5kjcd9I+w
+ /1FA==
+X-Gm-Message-State: AOAM533UmiIO/17Uxhig2QEEsntlpb9mIO40IjrNUONQXgxd/7fK2Eiv
+ Ko3yE40wW8xyCbvvzXjJMPNyew==
+X-Google-Smtp-Source: ABdhPJx7kZEQxrj35Gmb41f+nvIkI4s49gKjv/NLrazcdAlObCeL+cSnEQ3LUMdDYmBlxChh3xHItg==
+X-Received: by 2002:aca:ba83:0:b0:2d4:13f1:8530 with SMTP id
+ k125-20020acaba83000000b002d413f18530mr2556490oif.169.1645553661373; 
+ Tue, 22 Feb 2022 10:14:21 -0800 (PST)
 Received: from ripper ([2600:1700:a0:3dc8:205:1bff:fec0:b9b3])
- by smtp.gmail.com with ESMTPSA id 8sm6335790ota.60.2022.02.22.10.01.56
+ by smtp.gmail.com with ESMTPSA id c14sm7909698ots.71.2022.02.22.10.14.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Feb 2022 10:01:56 -0800 (PST)
-Date: Tue, 22 Feb 2022 10:03:57 -0800
+ Tue, 22 Feb 2022 10:14:20 -0800 (PST)
+Date: Tue, 22 Feb 2022 10:16:21 -0800
 From: Bjorn Andersson <bjorn.andersson@linaro.org>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 Cc: Alim Akhtar <alim.akhtar@samsung.com>,
@@ -75,17 +74,16 @@ Cc: Alim Akhtar <alim.akhtar@samsung.com>,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 04/15] dt-bindings: ufs: drop unused/old ufs-qcom PHY
- bindings
-Message-ID: <YhUljWBHi6vbMth4@ripper>
+Subject: Re: [PATCH v2 09/15] scsi: ufs: deprecate 'freq-table-hz' property
+Message-ID: <YhUodbzxx4wbr+gy@ripper>
 References: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
- <20220222145854.358646-5-krzysztof.kozlowski@canonical.com>
+ <20220222145854.358646-10-krzysztof.kozlowski@canonical.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220222145854.358646-5-krzysztof.kozlowski@canonical.com>
+In-Reply-To: <20220222145854.358646-10-krzysztof.kozlowski@canonical.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_100159_128651_E68FCF2B 
-X-CRM114-Status: GOOD (  21.53  )
+X-CRM114-CacheID: sfid-20220222_101423_307931_C78B0A8A 
+X-CRM114-Status: GOOD (  22.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,88 +102,98 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Tue 22 Feb 06:58 PST 2022, Krzysztof Kozlowski wrote:
 
-> The Qualcomm UFS PHY bindings are documented in
-> bindings/phy/qcom,qmp-phy.yaml and the compatibles from separate file
-> bindings/ufs/ufs-qcom.txt are not used at all.
+> The 'freq-table-hz' is not correct in DT schema, because '-hz' suffix
+> defines uint32 type, not an array.  Therefore deprecate 'freq-table-hz'
+> and use 'freq-table' instead.
 > 
+
+Patch looks good in itself, but why don't we use opp-table to describe
+the performance states?
+
+In particular looking at the two columns of frequencies for various
+Qualcomm boards they require different performance-states.
+
+A concrete example is sm8350.dtsi, which specifies 75MHz and 300MHz as
+the first frequency pair. The lower level requires the VDD_CX power rail
+to be at least &rpmhpd_opp_low_svs, the higher frequency has a
+required-opps of &rpmhpd_opp_nom.
+
+
+As this isn't possible to express in the current binding we've just been
+forced to always run at a higher voltage level and kept this in the todo
+list.
+
+But rather than migrating freq-table-hz to freq-table and then having to
+introduce an opp table to express the power constraints, could we
+perhaps skip the intermediate step?
+
+Or would you have any other suggestion about how we can represent the
+required-opps level together with the freq-table (if that's what we want
+to stick with).
+
+Regards,
+Bjorn
+
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-
-Reviewed-by: Bjorn Andersson <bjorn.andersson@linaro.org>
-
 > ---
->  .../devicetree/bindings/ufs/ufs-qcom.txt      | 63 -------------------
->  1 file changed, 63 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/ufs/ufs-qcom.txt
+>  drivers/scsi/ufs/ufshcd-pltfrm.c | 21 +++++++++++++--------
+>  1 file changed, 13 insertions(+), 8 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/ufs/ufs-qcom.txt b/Documentation/devicetree/bindings/ufs/ufs-qcom.txt
-> deleted file mode 100644
-> index fd59f93e9556..000000000000
-> --- a/Documentation/devicetree/bindings/ufs/ufs-qcom.txt
-> +++ /dev/null
-> @@ -1,63 +0,0 @@
-> -* Qualcomm Technologies Inc Universal Flash Storage (UFS) PHY
-> -
-> -UFSPHY nodes are defined to describe on-chip UFS PHY hardware macro.
-> -Each UFS PHY node should have its own node.
-> -
-> -To bind UFS PHY with UFS host controller, the controller node should
-> -contain a phandle reference to UFS PHY node.
-> -
-> -Required properties:
-> -- compatible        : compatible list, contains one of the following -
-> -			"qcom,ufs-phy-qmp-20nm" for 20nm ufs phy,
-> -			"qcom,ufs-phy-qmp-14nm" for legacy 14nm ufs phy,
-> -			"qcom,msm8996-ufs-phy-qmp-14nm" for 14nm ufs phy
-> -			 present on MSM8996 chipset.
-> -- reg               : should contain PHY register address space (mandatory),
-> -- reg-names         : indicates various resources passed to driver (via reg proptery) by name.
-> -                      Required "reg-names" is "phy_mem".
-> -- #phy-cells        : This property shall be set to 0
-> -- vdda-phy-supply   : phandle to main PHY supply for analog domain
-> -- vdda-pll-supply   : phandle to PHY PLL and Power-Gen block power supply
-> -- clocks	    : List of phandle and clock specifier pairs
-> -- clock-names       : List of clock input name strings sorted in the same
-> -		      order as the clocks property. "ref_clk_src", "ref_clk",
-> -		      "tx_iface_clk" & "rx_iface_clk" are mandatory but
-> -		      "ref_clk_parent" is optional
-> -
-> -Optional properties:
-> -- vdda-phy-max-microamp : specifies max. load that can be drawn from phy supply
-> -- vdda-pll-max-microamp : specifies max. load that can be drawn from pll supply
-> -- vddp-ref-clk-supply   : phandle to UFS device ref_clk pad power supply
-> -- vddp-ref-clk-max-microamp : specifies max. load that can be drawn from this supply
-> -- resets : specifies the PHY reset in the UFS controller
-> -
-> -Example:
-> -
-> -	ufsphy1: ufsphy@fc597000 {
-> -		compatible = "qcom,ufs-phy-qmp-20nm";
-> -		reg = <0xfc597000 0x800>;
-> -		reg-names = "phy_mem";
-> -		#phy-cells = <0>;
-> -		vdda-phy-supply = <&pma8084_l4>;
-> -		vdda-pll-supply = <&pma8084_l12>;
-> -		vdda-phy-max-microamp = <50000>;
-> -		vdda-pll-max-microamp = <1000>;
-> -		clock-names = "ref_clk_src",
-> -			"ref_clk_parent",
-> -			"ref_clk",
-> -			"tx_iface_clk",
-> -			"rx_iface_clk";
-> -		clocks = <&clock_rpm clk_ln_bb_clk>,
-> -			<&clock_gcc clk_pcie_1_phy_ldo >,
-> -			<&clock_gcc clk_ufs_phy_ldo>,
-> -			<&clock_gcc clk_gcc_ufs_tx_cfg_clk>,
-> -			<&clock_gcc clk_gcc_ufs_rx_cfg_clk>;
-> -		resets = <&ufshc 0>;
-> -	};
-> -
-> -	ufshc: ufshc@fc598000 {
-> -		#reset-cells = <1>;
-> -		...
-> -		phys = <&ufsphy1>;
-> -		phy-names = "ufsphy";
-> -	};
+> diff --git a/drivers/scsi/ufs/ufshcd-pltfrm.c b/drivers/scsi/ufs/ufshcd-pltfrm.c
+> index 87975d1a21c8..2b192477d158 100644
+> --- a/drivers/scsi/ufs/ufshcd-pltfrm.c
+> +++ b/drivers/scsi/ufs/ufshcd-pltfrm.c
+> @@ -47,8 +47,9 @@ static int ufshcd_parse_clock_info(struct ufs_hba *hba)
+>  	if (cnt <= 0)
+>  		goto out;
+>  
+> -	if (!of_get_property(np, "freq-table-hz", &len)) {
+> -		dev_info(dev, "freq-table-hz property not specified\n");
+> +	if (!of_get_property(np, "freq-table", &len) ||
+> +	    !of_get_property(np, "freq-table-hz", &len)) {
+> +		dev_info(dev, "freq-table property not specified\n");
+>  		goto out;
+>  	}
+>  
+> @@ -57,7 +58,7 @@ static int ufshcd_parse_clock_info(struct ufs_hba *hba)
+>  
+>  	sz = len / sizeof(*clkfreq);
+>  	if (sz != 2 * cnt) {
+> -		dev_err(dev, "%s len mismatch\n", "freq-table-hz");
+> +		dev_err(dev, "%s len mismatch\n", "freq-table");
+>  		ret = -EINVAL;
+>  		goto out;
+>  	}
+> @@ -69,12 +70,16 @@ static int ufshcd_parse_clock_info(struct ufs_hba *hba)
+>  		goto out;
+>  	}
+>  
+> -	ret = of_property_read_u32_array(np, "freq-table-hz",
+> +	ret = of_property_read_u32_array(np, "freq-table",
+>  			clkfreq, sz);
+>  	if (ret && (ret != -EINVAL)) {
+> -		dev_err(dev, "%s: error reading array %d\n",
+> -				"freq-table-hz", ret);
+> -		return ret;
+> +		ret = of_property_read_u32_array(np, "freq-table-hz",
+> +						 clkfreq, sz);
+> +		if (ret && (ret != -EINVAL)) {
+> +			dev_err(dev, "%s: error reading array %d\n",
+> +				"freq-table", ret);
+> +			return ret;
+> +		}
+>  	}
+>  
+>  	for (i = 0; i < sz; i += 2) {
+> @@ -99,7 +104,7 @@ static int ufshcd_parse_clock_info(struct ufs_hba *hba)
+>  
+>  		if (!strcmp(name, "ref_clk"))
+>  			clki->keep_link_active = true;
+> -		dev_dbg(dev, "%s: min %u max %u name %s\n", "freq-table-hz",
+> +		dev_dbg(dev, "%s: min %u max %u name %s\n", "freq-table",
+>  				clki->min_freq, clki->max_freq, clki->name);
+>  		list_add_tail(&clki->list, &hba->clk_list_head);
+>  	}
 > -- 
 > 2.32.0
 > 
