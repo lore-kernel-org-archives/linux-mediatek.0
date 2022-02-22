@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EF28C433F5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF1EDC433EF
 	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 05:29:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JJ9M9rGhSbkJK9Ivo7O/MvvevhpNc8gu3DrVaT/OvnQ=; b=PmNnynFkvWe8Cw
-	PRGeS10o1HjA84NiGMV0S5oVdL4SvzI5hQNnH+3dPDmwgTsb1W9p5/eRQvESlX6T/IuF8gZbMr2ih
-	r2rhqOk0jsj9dfY/utE76DxirR1LyDEmRG9CFn66tEDeLBzXPFuyDWFsYJL8plnZeZrmnWo8pwSfO
-	x258d+2qPwL5SwqGSt4kSVg1l8FENqjDJx976X370ibf77HWyn0rgAyzB8JQzQztwtqcg+OiDcF1W
-	zhrXCzYdqnm4Jne125f/LnrRf2e89rtpXW7AQ67i79650GLWodJAyuvnVCwXERT0D6L8LcpK9OxRo
-	yQuam3Fhs9LlxWq3RJ7A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xasBFXOv9cmfh6Nf77lLs69pXtL+ufDq2brz5/V+QwI=; b=UCz9uosx5l+ZKX
+	2hs1XPMNaXhSDE0JsqQjd5G7L5hkJUJ6q/fiqN8LYtXWgv1lfQtmGin3b7S3c0N3TC75j6zVbBxvi
+	pmtud3KMeyFr5LqtQEfJf3Q6HFQ0jXKKteyTb02GVhdBad194ubD+1BH1OmHn/m6c9busbZ+arvFj
+	vwOMdXbI1P3XvoFi4ys/L+NDJZWiCM5yNO5542NXfUJwR3sOcrHml6dzgU0C0asB3AW1y7cPUoxRX
+	WnGaOSklUwqa+rWTAdf7a+4E9MDHShhWkPgq0ATo2f4AqlcjkLkZS1YuvNF7wUfMXwPiGdKFFZd9X
+	dyM3ZyQfG4E/oW4zpSIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMNjK-0081Ar-2Q; Tue, 22 Feb 2022 05:28:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nMNjK-0081BK-Sf; Tue, 22 Feb 2022 05:28:54 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMNin-0080zd-Py; Tue, 22 Feb 2022 05:28:24 +0000
-X-UUID: 2f3b9605120d42f0a243817a9478792c-20220221
-X-UUID: 2f3b9605120d42f0a243817a9478792c-20220221
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1nMNip-0080ze-CK; Tue, 22 Feb 2022 05:28:24 +0000
+X-UUID: bf8de283daec497599b5881f9905c86a-20220221
+X-UUID: bf8de283daec497599b5881f9905c86a-20220221
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 512686977; Mon, 21 Feb 2022 22:28:16 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 86379650; Mon, 21 Feb 2022 22:28:17 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Mon, 21 Feb 2022 21:28:15 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Feb 2022 13:28:13 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 22 Feb 2022 13:28:13 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Tue, 22 Feb 2022 13:28:13 +0800
@@ -49,15 +50,18 @@ CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
  <dri-devel@lists.freedesktop.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
  <rex-bc.chen@mediatek.com>
-Subject: [PATCH v4,0/5] add display support for MediaTek SoC MT8186
-Date: Tue, 22 Feb 2022 13:27:58 +0800
-Message-ID: <20220222052803.3570-1-rex-bc.chen@mediatek.com>
+Subject: [PATCH v4,
+ 1/5] dt-bindings: arm: mediatek: mmsys: add support for MT8186
+Date: Tue, 22 Feb 2022 13:27:59 +0800
+Message-ID: <20220222052803.3570-2-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220222052803.3570-1-rex-bc.chen@mediatek.com>
+References: <20220222052803.3570-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220221_212821_868157_9E6D2388 
-X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-CacheID: sfid-20220221_212823_443526_A1FB47DE 
+X-CRM114-Status: UNSURE (   8.49  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,52 +79,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-v4:
-1. Remove binding of dsi and dpi.
-2. Revise aal binding.
-3. Fix indention in [4/5].
+Add "mediatek,mt8186-mmsys" to binding document.
 
-v3:
-1. Modify display binding based on mtk display binding patch. ([1])
-2. Remove patch: drm/mediatek: separate postmask component from mtk_disp_drv.c
-3. Remove compatible of 8186 ovl because we can re-use compatible of 8192 for 8186.
-4. Fix issue of space before tab on mutex patch.
+Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+---
+ .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml         | 1 +
+ 1 file changed, 1 insertion(+)
 
-[1]: https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/commit/?h=mediatek-drm-next&id=4ed545e7d10049b5492afc184e61a67e478a2cfd
-
-v2:
-1. Add binding documentation for mmsys, mutex and mtk_display.
-2. Remove duplicated definition of postmask registers on mtk_drm_drv.
-3. Add disp_ovl support for MT8186.
-4. Add detailed commit messages.
-
-Rex-BC Chen (2):
-  dt-bindings: arm: mediatek: mmsys: add support for MT8186
-  dt-bindings: display: mediatek: add MT8186 SoC binding
-
-Yongqiang Niu (3):
-  soc: mediatek: mmsys: add mt8186 mmsys routing table
-  soc: mediatek: add MTK mutex support for MT8186
-  drm/mediatek: add display support for MT8186
-
- .../bindings/arm/mediatek/mediatek,mmsys.yaml |   1 +
- .../display/mediatek/mediatek,aal.yaml        |   7 ++
- .../display/mediatek/mediatek,ccorr.yaml      |   5 +
- .../display/mediatek/mediatek,color.yaml      |   1 +
- .../display/mediatek/mediatek,dither.yaml     |   1 +
- .../display/mediatek/mediatek,gamma.yaml      |   1 +
- .../display/mediatek/mediatek,mutex.yaml      |   2 +
- .../display/mediatek/mediatek,ovl-2l.yaml     |   5 +
- .../display/mediatek/mediatek,ovl.yaml        |   5 +
- .../display/mediatek/mediatek,postmask.yaml   |   5 +
- .../display/mediatek/mediatek,rdma.yaml       |   1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  33 +++++
- drivers/soc/mediatek/mt8186-mmsys.h           | 113 ++++++++++++++++++
- drivers/soc/mediatek/mtk-mmsys.c              |  11 ++
- drivers/soc/mediatek/mtk-mutex.c              |  45 +++++++
- 15 files changed, 236 insertions(+)
- create mode 100644 drivers/soc/mediatek/mt8186-mmsys.h
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 763c62323a74..b31d90dc9eb4 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -29,6 +29,7 @@ properties:
+               - mediatek,mt8167-mmsys
+               - mediatek,mt8173-mmsys
+               - mediatek,mt8183-mmsys
++              - mediatek,mt8186-mmsys
+               - mediatek,mt8192-mmsys
+               - mediatek,mt8365-mmsys
+           - const: syscon
 -- 
 2.18.0
 
