@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF1EDC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 05:29:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91DB3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 05:33:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xasBFXOv9cmfh6Nf77lLs69pXtL+ufDq2brz5/V+QwI=; b=UCz9uosx5l+ZKX
-	2hs1XPMNaXhSDE0JsqQjd5G7L5hkJUJ6q/fiqN8LYtXWgv1lfQtmGin3b7S3c0N3TC75j6zVbBxvi
-	pmtud3KMeyFr5LqtQEfJf3Q6HFQ0jXKKteyTb02GVhdBad194ubD+1BH1OmHn/m6c9busbZ+arvFj
-	vwOMdXbI1P3XvoFi4ys/L+NDJZWiCM5yNO5542NXfUJwR3sOcrHml6dzgU0C0asB3AW1y7cPUoxRX
-	WnGaOSklUwqa+rWTAdf7a+4E9MDHShhWkPgq0ATo2f4AqlcjkLkZS1YuvNF7wUfMXwPiGdKFFZd9X
-	dyM3ZyQfG4E/oW4zpSIg==;
+	List-Owner; bh=NShFSWsEH/bLkASvUZYxHYC5POQAwQjYzetd4IP3zqw=; b=2kY1ayjLe0dwJx
+	M0bTNMWCfD8WjpmPRgw/MwR3zmDahIb0U57F8A3QpemlUQ55AIubaFv7RTJaOdPWGFsJ5lrVXuU2y
+	l9YwW54fvjL3xXAvNd44QrtizhTD4qC3dodgsHopPbNWlzUVdC8HzwuTJpjXs0vfb7ozER+gEpZ/E
+	+18lY+zAuGLk4OutQ0zzJXRfpt7AYsba0jUUXCKi5QBrfCBNXF/WV8FotPPL2vxMQUewB6RPUIZVh
+	7bkHa/sE62BsnFCVK6BSpbh4G5ftK5RG6TuqCBT85LJmFXIWceG0ebalqQbusMQdhpGGmm1rzidze
+	38ISWIulDhjuxZNlaXSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMNjK-0081BK-Sf; Tue, 22 Feb 2022 05:28:54 +0000
+	id 1nMNo0-0082Ia-IY; Tue, 22 Feb 2022 05:33:44 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMNip-0080ze-CK; Tue, 22 Feb 2022 05:28:24 +0000
-X-UUID: bf8de283daec497599b5881f9905c86a-20220221
-X-UUID: bf8de283daec497599b5881f9905c86a-20220221
+ id 1nMNnn-0082GA-NU; Tue, 22 Feb 2022 05:33:33 +0000
+X-UUID: 576fb70b6461445db8252d3609d1ab56-20220221
+X-UUID: 576fb70b6461445db8252d3609d1ab56-20220221
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 86379650; Mon, 21 Feb 2022 22:28:17 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 1357730374; Mon, 21 Feb 2022 22:33:28 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Mon, 21 Feb 2022 21:28:15 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 22 Feb 2022 13:28:13 +0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 22 Feb 2022 13:28:14 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 22 Feb 2022 13:28:13 +0800
+ Frontend Transport; Tue, 22 Feb 2022 13:28:14 +0800
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>, <robh+dt@kernel.org>
 CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
@@ -50,19 +49,17 @@ CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
  <dri-devel@lists.freedesktop.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
  <rex-bc.chen@mediatek.com>
-Subject: [PATCH v4,
- 1/5] dt-bindings: arm: mediatek: mmsys: add support for MT8186
-Date: Tue, 22 Feb 2022 13:27:59 +0800
-Message-ID: <20220222052803.3570-2-rex-bc.chen@mediatek.com>
+Subject: [PATCH v4,4/5] soc: mediatek: add MTK mutex support for MT8186
+Date: Tue, 22 Feb 2022 13:28:02 +0800
+Message-ID: <20220222052803.3570-5-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220222052803.3570-1-rex-bc.chen@mediatek.com>
 References: <20220222052803.3570-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220221_212823_443526_A1FB47DE 
-X-CRM114-Status: UNSURE (   8.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220221_213331_777158_EDFE5390 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,25 +76,111 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add "mediatek,mt8186-mmsys" to binding document.
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 
+Add MTK mutex support for MT8186 SoC.
+We need MTK mutex to control timing of display modules and there
+are two display pipelines for MT8186 including internal and external
+display.
+
+MTK mutex for internal display:
+- Timing source: DSI
+- Control modules: OVL0/RDMA0/COLOR0/CCORR/AAL0/GAMMA/POSTMASK0/DITHER
+
+MTK mutex for external display:
+- Timing source : DPI
+- Control modules: OVL_2L0/RDMA1
+
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 ---
- .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml         | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/soc/mediatek/mtk-mutex.c | 45 ++++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-index 763c62323a74..b31d90dc9eb4 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-@@ -29,6 +29,7 @@ properties:
-               - mediatek,mt8167-mmsys
-               - mediatek,mt8173-mmsys
-               - mediatek,mt8183-mmsys
-+              - mediatek,mt8186-mmsys
-               - mediatek,mt8192-mmsys
-               - mediatek,mt8365-mmsys
-           - const: syscon
+diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+index 2ca55bb5a8be..aaf8fc1abb43 100644
+--- a/drivers/soc/mediatek/mtk-mutex.c
++++ b/drivers/soc/mediatek/mtk-mutex.c
+@@ -26,6 +26,23 @@
+ 
+ #define INT_MUTEX				BIT(1)
+ 
++#define MT8186_MUTEX_MOD_DISP_OVL0		0
++#define MT8186_MUTEX_MOD_DISP_OVL0_2L		1
++#define MT8186_MUTEX_MOD_DISP_RDMA0		2
++#define MT8186_MUTEX_MOD_DISP_COLOR0		4
++#define MT8186_MUTEX_MOD_DISP_CCORR0		5
++#define MT8186_MUTEX_MOD_DISP_AAL0		7
++#define MT8186_MUTEX_MOD_DISP_GAMMA0		8
++#define MT8186_MUTEX_MOD_DISP_POSTMASK0		9
++#define MT8186_MUTEX_MOD_DISP_DITHER0		10
++#define MT8186_MUTEX_MOD_DISP_RDMA1		17
++
++#define MT8186_MUTEX_SOF_SINGLE_MODE		0
++#define MT8186_MUTEX_SOF_DSI0			1
++#define MT8186_MUTEX_SOF_DPI0			2
++#define MT8186_MUTEX_EOF_DSI0			(MT8186_MUTEX_SOF_DSI0 << 6)
++#define MT8186_MUTEX_EOF_DPI0			(MT8186_MUTEX_SOF_DPI0 << 6)
++
+ #define MT8167_MUTEX_MOD_DISP_PWM		1
+ #define MT8167_MUTEX_MOD_DISP_OVL0		6
+ #define MT8167_MUTEX_MOD_DISP_OVL1		7
+@@ -226,6 +243,19 @@ static const unsigned int mt8183_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_WDMA0] = MT8183_MUTEX_MOD_DISP_WDMA0,
+ };
+ 
++static const unsigned int mt8186_mutex_mod[DDP_COMPONENT_ID_MAX] = {
++	[DDP_COMPONENT_AAL0] = MT8186_MUTEX_MOD_DISP_AAL0,
++	[DDP_COMPONENT_CCORR] = MT8186_MUTEX_MOD_DISP_CCORR0,
++	[DDP_COMPONENT_COLOR0] = MT8186_MUTEX_MOD_DISP_COLOR0,
++	[DDP_COMPONENT_DITHER] = MT8186_MUTEX_MOD_DISP_DITHER0,
++	[DDP_COMPONENT_GAMMA] = MT8186_MUTEX_MOD_DISP_GAMMA0,
++	[DDP_COMPONENT_OVL0] = MT8186_MUTEX_MOD_DISP_OVL0,
++	[DDP_COMPONENT_OVL_2L0] = MT8186_MUTEX_MOD_DISP_OVL0_2L,
++	[DDP_COMPONENT_POSTMASK0] = MT8186_MUTEX_MOD_DISP_POSTMASK0,
++	[DDP_COMPONENT_RDMA0] = MT8186_MUTEX_MOD_DISP_RDMA0,
++	[DDP_COMPONENT_RDMA1] = MT8186_MUTEX_MOD_DISP_RDMA1,
++};
++
+ static const unsigned int mt8192_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_AAL0] = MT8192_MUTEX_MOD_DISP_AAL0,
+ 	[DDP_COMPONENT_CCORR] = MT8192_MUTEX_MOD_DISP_CCORR0,
+@@ -264,6 +294,12 @@ static const unsigned int mt8183_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
+ 	[MUTEX_SOF_DPI0] = MT8183_MUTEX_SOF_DPI0 | MT8183_MUTEX_EOF_DPI0,
+ };
+ 
++static const unsigned int mt8186_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
++	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
++	[MUTEX_SOF_DSI0] = MT8186_MUTEX_SOF_DSI0 | MT8186_MUTEX_EOF_DSI0,
++	[MUTEX_SOF_DPI0] = MT8186_MUTEX_SOF_DPI0 | MT8186_MUTEX_EOF_DPI0,
++};
++
+ static const struct mtk_mutex_data mt2701_mutex_driver_data = {
+ 	.mutex_mod = mt2701_mutex_mod,
+ 	.mutex_sof = mt2712_mutex_sof,
+@@ -301,6 +337,13 @@ static const struct mtk_mutex_data mt8183_mutex_driver_data = {
+ 	.no_clk = true,
+ };
+ 
++static const struct mtk_mutex_data mt8186_mutex_driver_data = {
++	.mutex_mod = mt8186_mutex_mod,
++	.mutex_sof = mt8186_mutex_sof,
++	.mutex_mod_reg = MT8183_MUTEX0_MOD0,
++	.mutex_sof_reg = MT8183_MUTEX0_SOF0,
++};
++
+ static const struct mtk_mutex_data mt8192_mutex_driver_data = {
+ 	.mutex_mod = mt8192_mutex_mod,
+ 	.mutex_sof = mt8183_mutex_sof,
+@@ -540,6 +583,8 @@ static const struct of_device_id mutex_driver_dt_match[] = {
+ 	  .data = &mt8173_mutex_driver_data},
+ 	{ .compatible = "mediatek,mt8183-disp-mutex",
+ 	  .data = &mt8183_mutex_driver_data},
++	{ .compatible = "mediatek,mt8186-disp-mutex",
++	  .data = &mt8186_mutex_driver_data},
+ 	{ .compatible = "mediatek,mt8192-disp-mutex",
+ 	  .data = &mt8192_mutex_driver_data},
+ 	{},
 -- 
 2.18.0
 
