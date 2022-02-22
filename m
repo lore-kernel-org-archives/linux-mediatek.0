@@ -4,62 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFC37C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 15:24:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 552F6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 16:50:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:References:MIME-Version:Message-ID:Date
+	:Subject:In-Reply-To:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=njtaHCgdIGk6+N5aVY49YxTVRbq5sXPNF0oBfaeurxU=; b=48Gd2qaVhiv7+0
-	7IdxizKFkpnnPdCweZV/jUp8rID648llrQKWbbZJGho/TDxL0eCAl8TvRFkAxZmkKZk69wHqIS+3m
-	yHpjJXbbpKlaDZF/jfjs3uUOfGBba+DFR6v9cST4/GYadvSdD0kkjjalw6BHcItTpiW5/6HqlKMH9
-	npL/+CsZY2Pul/6ubHeS5HfA5lSuZkcfu3Y36SU0qZflVJBJzk9tvPnEIzaySaFCS/7oYDJGjj18u
-	PJ/53JqsrcnbE+wLRfZEQzWp5gzCxPxmS+9cwrweJ6s6SxXs1PyiT47hZEKG6EDi+swJIDiUxVG9X
-	MANFvfNaWEXEJmSBE2YA==;
+	List-Owner; bh=o6sAtmcV5xwMkJPnCzfwgU0+PtXuUUkeZtZQhkvalFI=; b=FL9b96v6JU9S/h
+	KNW4HkC7//J4dWJ/AQ8MnSYmo2v2iIapK+ZO7NVksowo+vw4SxyVkf+uyiDKWXvYq4LKxWjoNGyEz
+	Ui1jo0SUnPDcsFHJR0UP45JI4L58B5Rh0GS0BLCU0+qYPTkebHQMHW1VqHCxXEOSYG6nMzIj7un3R
+	ZLGn49B4jVXMzlrA4lf9UYSNf//Se5WmE+NrcqkxPDbFe7gJYy4ivIPZrHUTXaLzmXrLjwlsmLZM6
+	/iY0kYEpcRJzhiWojfpuH19DkNV6kaJBTUKg0L6n5Sl3nU/661H5zwbPuevzvZaLZHgVO9UpznG4R
+	463GXnVICMCfgRHG3JLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMX1T-00AC9U-PI; Tue, 22 Feb 2022 15:24:15 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nMYN1-00AlK7-WE; Tue, 22 Feb 2022 16:50:36 +0000
+Received: from mailout2.samsung.com ([203.254.224.25])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMWuN-00A8jS-Vi; Tue, 22 Feb 2022 15:16:58 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 1402E1F42D79
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645543012;
- bh=m6iks4nKShpjnvSQCg9oNY965h9zeoboZznnHfhpxKI=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=hWvPkhkzNvqzNuA/40T3XKUxHYa8HSRU4pVMNzoIFWC7rXAT0apDYLnpkMJhnqbJM
- arssexAyQVcSVzvw5Amf+UBgH8G+8JAoeSIFcUxhxPNyzQMNZV+16CstcTP/iDH5Hg
- 8XKAw2ROpBcy+hVlpJZNGroDpoRV/m8w9fVh/Yl0wVhuV6RPtUoYvkLuG/iZUukwGC
- bAX9ZZ15SJkfiUYauqLfQv5HFCFnR47Rx3FLe1eOLehFQPIJKIeNvBPRO6NReiqME2
- u+ne7v0rhJH3lU010TKtdqa7o08BP9WgUrRIeePPFQWufHuOtvUjuDVVM8Ex9z5m24
- I22HEnZSbhtaw==
-Message-ID: <1c791b60-935c-1e8e-dd1b-4b18fc273c1b@collabora.com>
-Date: Tue, 22 Feb 2022 16:16:48 +0100
+ id 1nMYHk-00AjKm-Sh
+ for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 16:45:13 +0000
+Received: from epcas5p4.samsung.com (unknown [182.195.41.42])
+ by mailout2.samsung.com (KnoxPortal) with ESMTP id
+ 20220222164504epoutp025f05a93edb28c17470d23a1d21c8d29c~WKXbpnkfA2671726717epoutp02B
+ for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 16:45:04 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.samsung.com
+ 20220222164504epoutp025f05a93edb28c17470d23a1d21c8d29c~WKXbpnkfA2671726717epoutp02B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1645548304;
+ bh=89A9xGsLZgggriJk0T8FetbTt2DC2jUjiKY7gpqWiH8=;
+ h=From:To:In-Reply-To:Subject:Date:References:From;
+ b=JzPCcG2L2l4Get1gftRaX02K9aewZfT4g8OkoFxSt27VqVeWRNRJNMPwBjouVatXP
+ WirM16tM4z4xmfDW4O8q+MvlIqDr43+kuiUv6ZRLi0+03IrmeozZVhyFuyHi0AiWE+
+ zGqbVivFPt/Qtoou0rPEGv/EVIB24fHksJCd5XGs=
+Received: from epsnrtp3.localdomain (unknown [182.195.42.164]) by
+ epcas5p2.samsung.com (KnoxPortal) with ESMTP id
+ 20220222164503epcas5p292e11954f8f24846d2222f448e2a9bb2~WKXa2fdwu2938929389epcas5p2V;
+ Tue, 22 Feb 2022 16:45:03 +0000 (GMT)
+Received: from epsmges5p3new.samsung.com (unknown [182.195.38.181]) by
+ epsnrtp3.localdomain (Postfix) with ESMTP id 4K34lZ6RM3z4x9Pp; Tue, 22 Feb
+ 2022 16:44:58 +0000 (GMT)
+Received: from epcas5p3.samsung.com ( [182.195.41.41]) by
+ epsmges5p3new.samsung.com (Symantec Messaging Gateway) with SMTP id
+ D5.0A.05590.A0315126; Wed, 23 Feb 2022 01:44:58 +0900 (KST)
+Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
+ epcas5p1.samsung.com (KnoxPortal) with ESMTPA id
+ 20220222164457epcas5p1168ed8f6910091e9ce6f707b6e577853~WKXVciNC_2018820188epcas5p1h;
+ Tue, 22 Feb 2022 16:44:57 +0000 (GMT)
+Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
+ epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
+ 20220222164457epsmtrp2a5a861bc93f96f3e1b508184d27678cd~WKXVaSC0y1935419354epsmtrp2M;
+ Tue, 22 Feb 2022 16:44:57 +0000 (GMT)
+X-AuditID: b6c32a4b-739ff700000015d6-22-6215130a9c79
+Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
+ epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 68.34.29871.90315126; Wed, 23 Feb 2022 01:44:57 +0900 (KST)
+Received: from alimakhtar03 (unknown [107.122.12.5]) by epsmtip1.samsung.com
+ (KnoxPortal) with ESMTPA id
+ 20220222164454epsmtip10d83608980c13a56c198afb6a07b76e9~WKXSaPM1t1245612456epsmtip1K;
+ Tue, 22 Feb 2022 16:44:54 +0000 (GMT)
+From: "Alim Akhtar" <alim.akhtar@samsung.com>
+To: "'Krzysztof Kozlowski'" <krzysztof.kozlowski@canonical.com>, "'Avri
+ Altman'" <avri.altman@wdc.com>, "'Rob Herring'" <robh+dt@kernel.org>, "'Andy
+ Gross'" <agross@kernel.org>, "'Bjorn	Andersson'"
+ <bjorn.andersson@linaro.org>, "'Wei Xu'" <xuwei5@hisilicon.com>, "'Nishanth
+ Menon'" <nm@ti.com>, "'Vignesh Raghavendra'" <vigneshr@ti.com>, "'Tero
+ Kristo'" <kristo@kernel.org>, "'James E.J. Bottomley'" <jejb@linux.ibm.com>,
+ "'Martin K. Petersen'" <martin.petersen@oracle.com>, "'Jan Kotas'"
+ <jank@cadence.com>, "'Li Wei'" <liwei213@huawei.com>, "'Stanley Chu'"
+ <stanley.chu@mediatek.com>, "'Yaniv Gardi'" <ygardi@codeaurora.org>,
+ <linux-scsi@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>
+In-Reply-To: <20220222145854.358646-10-krzysztof.kozlowski@canonical.com>
+Subject: RE: [PATCH v2 09/15] scsi: ufs: deprecate 'freq-table-hz' property
+Date: Tue, 22 Feb 2022 22:14:53 +0530
+Message-ID: <0c8b01d8280b$868abc20$93a03460$@samsung.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v8 04/19] video/hdmi: Add audio_infoframe packing for DP
-Content-Language: en-US
-To: Guillaume Ranquet <granquet@baylibre.com>, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
- robh+dt@kernel.org, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
- tzimmermann@suse.de, matthias.bgg@gmail.com, chunfeng.yun@mediatek.com,
- kishon@ti.com, vkoul@kernel.org, deller@gmx.de, ck.hu@mediatek.com,
- jitao.shi@mediatek.com
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-fbdev@vger.kernel.org, Markus Schneider-Pargmann <msp@baylibre.com>
-References: <20220218145437.18563-1-granquet@baylibre.com>
- <20220218145437.18563-5-granquet@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220218145437.18563-5-granquet@baylibre.com>
+X-Mailer: Microsoft Outlook 16.0
+Thread-Index: AQLp66nIdBfWENW71H4Q0TOw7Swh8QIFI3oQAXS0vvaqYGzvQA==
+Content-Language: en-us
+X-Brightmail-Tracker: H4sIAAAAAAAAA01Te0xTZxT3u73cW5jVu6LyiVGbZmRDR2kHlAvC5tC4u7AZ1IRsmgkXuCld
+ 6cO2SGUmsMBQeVncI1LZeDg04zGhc9IVurJaxnSgYVBkhTkjMEUeoiROBshaLm789zvn/H7f
+ 75zz5XA5fCMeyJWr9IxWRWcIMT/0ytXg4BA///Up4vxCMXljeA4lx2ZdGPmrfQolK503fMii
+ TjlZM3AFIS/OnMPJ5smnCGke7vchy+zdONlrrcDI3rweQJ69+SNCFt2yYORChROQFzufIeTE
+ 026E/MTmxMna738H5GL3NE6OdHzGIRe6S/CdG6iGU+MIZcotwaje0hKEGv6yGafynZM+lLnu
+ FEYN9bdhlLGmHVDffZ1D5V+zo9SjUTdKdQ60INSMeQt1or0ISVhzUBGTztBpjFbAqFLVaXKV
+ LFYYfyBpV1KEVCwJkUSRkUKBilYyscLd7ySE7JFneIYXCo7SGZmeVAKt0wlDX4/RqjP1jCBd
+ rdPHChlNWoYmXCPS0UpdpkomUjH6aIlY/FqEh5isSHf+cBvRuDcZnH1NaC64EFAIfLmQCIe1
+ g3fRQuDH5ROtABqvNvuwwWMAbw06loMnABbPjoPnkgVTJe7FfMIG4Ll2f5Y0BqDDMcvxFjAi
+ BFrOF2DewjriHwx2PSxfKvgSb8OOBSPixf5EPLxvtyzlUSIITn88j3kxj4iCraddOItfhNfK
+ R1Av5hBbYctkBYftQgBnRy942uN6DOLgT6dFLCUAjnU4ca8vJFp9Yem4FWX5u2GbY86Hxf7w
+ QedlnMWBcGbKhnnfgYQCFlvD2PRxWPvVz8vSN2B7XwXqpXCIYHjJGsparYElcyMIq+TBkwV8
+ lh0E86Zcy8pNsKyoaNmUgkMDk8v7dANYMeHGjUBgWjGkacWQphXTmP53rgJoHdjIaHRKGaOL
+ 0ISpmKz//jtVrTSDpdPYFm8Bd+9MixwA4QIHgFyOcB1vCPdP4fPS6GPZjFadpM3MYHQOEOHZ
+ fBkncH2q2nNbKn2SJDxKHC6VSsOjwqQSYQDvuqyJ5hMyWs8oGEbDaJ/rEK5vYC5SL1e7eYu3
+ 7wXlBJ7YnySzBm+J1q79S6kx3hTZuhrRBpUB7Yw5Yt78VvbWkccNC/xDkebE0Ufj5fzsZ5Yz
+ f88ellvW/jKo3NuEfxH4pJbnevlOI76j/ZLkzfPv9dCje444s+XJn4pfOsi1lv75wYbtr07N
+ 9xjvne1RBBxtbqqOEWVFZp/JuT/3rV3Qv7pqRliMRifbji2GGHrrpvw29iobWz/67RXtqr37
+ cM4+e0JBwR+CLp51s3tifFBBhyaussbZXK5D0sa4dw1o/Q6DG6+Ch/fDjpq2vqxk7uX3P69+
+ 2EI9oO1lRxNPFu488E369sqoxQ/r8evzhpQ83uqx+uMvaKqFqC6dlmzjaHX0v/IVeaqjBAAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFnrDIsWRmVeSWpSXmKPExsWy7bCSnC6nsGiSwbwOLYtzj3+zWLz8eZXN
+ 4vT+dywW84+cY7XoPp5psejGNiaL5Z9ns1tsfPuDyWLT42usFhP3n2W3uLxrDpvF5eaLjBYz
+ zu9jsui+voPN4u+cI4wWy4//Y7J48+Msk0Xr3iPsFku33mS0+H/2A7vFk6NTmC3+nu1ldxDz
+ WNP5msljVkMvm8flvl4mj8dzN7J7tBx5y+qxaVUnm8eda3vYPCYsOsDosXlJvUfLyf0sHh+f
+ 3mLxOH5jO5PH501yHu0HupkC+KK4bFJSczLLUov07RK4Mo7svMdUcEu64siVDSwNjMvEuxg5
+ OSQETCT+zprP3sXIxSEksJtR4sTn98wQCWmJ6xsnsEPYwhIr/z2HKnrOKLFixW5WkASbgK7E
+ jsVtbCAJEYEedokXN76yQFRdY5RYNms1G0gVp4CnxNG/E5hAbGEBb4kX+3eArWARUJX40PgH
+ rIZXwFJid/9VdghbUOLkzCdAgzg4mAX0JNo2MoKEmQXkJba/nQN1nYLEz6fLWEFKRAScJA72
+ 60GUiEu8PHqEfQKj0Cwkg2YhDJqFZNAsJB0LGFlWMUqmFhTnpucWGxYY5qWW6xUn5haX5qXr
+ JefnbmIEJwgtzR2M21d90DvEyMTBeIhRgoNZSYT3DrtwkhBvSmJlVWpRfnxRaU5q8SFGaQ4W
+ JXHeC10n44UE0hNLUrNTUwtSi2CyTBycUg1MQpIiySX2kyN+2DYsYBE87fhvzQKPy18b74cp
+ q9u90S7QYOD7srOpcf7psoMiO47Ku6Wufq96Z9lHuSVOmz9etpqQLhOyampu0kaHRVOF9dwl
+ WZgYpP5tkZr8y3rhUs7rmy69vDnL7M6n1U9uMbt7N8Xs+qKWLcu3W0R3UraujLCixTTHhX9V
+ j/O7iwuZ+0R3TrPnvTjPvMme9eOux5XKERd+SP36s93qSda0/bVWZfKlH5k2cOyyirwlxZF9
+ OjJo/WKHp29eFfjfCeJ6Jzc5aeXy5Nkr3qVOX1211CzAsOaF+2ShFwVpbj5XHeLmq8+WnSzf
+ JPUm++/fbyVnDgX6TJbf9f5F12b2vOMVa9MnK7EUZyQaajEXFScCACBkeAF/AwAA
+X-CMS-MailID: 20220222164457epcas5p1168ed8f6910091e9ce6f707b6e577853
+X-Msg-Generator: CA
+CMS-TYPE: 105P
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20220222150007epcas5p22f05e6c8e80a5ad18a9528cd0ead865d
+References: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
+ <CGME20220222150007epcas5p22f05e6c8e80a5ad18a9528cd0ead865d@epcas5p2.samsung.com>
+ <20220222145854.358646-10-krzysztof.kozlowski@canonical.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_071656_275219_4E75FA77 
-X-CRM114-Status: GOOD (  13.32  )
+X-CRM114-CacheID: sfid-20220222_084509_415238_BDD95B6E 
+X-CRM114-Status: GOOD (  14.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,42 +145,106 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/02/22 15:54, Guillaume Ranquet ha scritto:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
-> 
-> Similar to HDMI, DP uses audio infoframes as well which are structured
-> very similar to the HDMI ones.
-> 
-> This patch adds a helper function to pack the HDMI audio infoframe for
-> DP, called hdmi_audio_infoframe_pack_for_dp().
-> hdmi_audio_infoframe_pack_only() is split into two parts. One of them
-> packs the payload only and can be used for HDMI and DP.
-> 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+Hi Krzysztof
 
-Hello Guillaume,
+>-----Original Message-----
+>From: Krzysztof Kozlowski [mailto:krzysztof.kozlowski@canonical.com]
+>Sent: Tuesday, February 22, 2022 8:29 PM
+>To: Alim Akhtar <alim.akhtar@samsung.com>; Avri Altman
+><avri.altman@wdc.com>; Rob Herring <robh+dt@kernel.org>; Krzysztof
+>Kozlowski <krzysztof.kozlowski@canonical.com>; Andy Gross
+><agross@kernel.org>; Bjorn Andersson <bjorn.andersson@linaro.org>; Wei
+>Xu <xuwei5@hisilicon.com>; Nishanth Menon <nm@ti.com>; Vignesh
+>Raghavendra <vigneshr@ti.com>; Tero Kristo <kristo@kernel.org>; James E.J.
+>Bottomley <jejb@linux.ibm.com>; Martin K. Petersen
+><martin.petersen@oracle.com>; Jan Kotas <jank@cadence.com>; Li Wei
+><liwei213@huawei.com>; Stanley Chu <stanley.chu@mediatek.com>; Yaniv
+>Gardi <ygardi@codeaurora.org>; linux-scsi@vger.kernel.org;
+>devicetree@vger.kernel.org; linux-kernel@vger.kernel.org; linux-arm-
+>msm@vger.kernel.org; linux-arm-kernel@lists.infradead.org; linux-samsung-
+>soc@vger.kernel.org; linux-mediatek@lists.infradead.org
+>Subject: [PATCH v2 09/15] scsi: ufs: deprecate 'freq-table-hz' property
+>
+>The 'freq-table-hz' is not correct in DT schema, because '-hz' suffix
+defines
+>uint32 type, not an array.  Therefore deprecate 'freq-table-hz'
+>and use 'freq-table' instead.
+>
+May be once all the dts change migrate to using 'freq-table', just remove
+'freq-table-hz' from driver.
 
-I've just noticed that this patch will not apply against the latest linux-next,
-as the include/drm/drm_dp_helper.h header was moved to
-include/drm/dp/drm_dp_helper.h
+>Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+>---
+> drivers/scsi/ufs/ufshcd-pltfrm.c | 21 +++++++++++++--------
+> 1 file changed, 13 insertions(+), 8 deletions(-)
+>
+>diff --git a/drivers/scsi/ufs/ufshcd-pltfrm.c
+b/drivers/scsi/ufs/ufshcd-pltfrm.c
+>index 87975d1a21c8..2b192477d158 100644
+>--- a/drivers/scsi/ufs/ufshcd-pltfrm.c
+>+++ b/drivers/scsi/ufs/ufshcd-pltfrm.c
+>@@ -47,8 +47,9 @@ static int ufshcd_parse_clock_info(struct ufs_hba *hba)
+> 	if (cnt <= 0)
+> 		goto out;
+>
+>-	if (!of_get_property(np, "freq-table-hz", &len)) {
+>-		dev_info(dev, "freq-table-hz property not specified\n");
+>+	if (!of_get_property(np, "freq-table", &len) ||
+>+	    !of_get_property(np, "freq-table-hz", &len)) {
+>+		dev_info(dev, "freq-table property not specified\n");
+> 		goto out;
+> 	}
+>
+>@@ -57,7 +58,7 @@ static int ufshcd_parse_clock_info(struct ufs_hba *hba)
+>
+> 	sz = len / sizeof(*clkfreq);
+> 	if (sz != 2 * cnt) {
+>-		dev_err(dev, "%s len mismatch\n", "freq-table-hz");
+>+		dev_err(dev, "%s len mismatch\n", "freq-table");
+> 		ret = -EINVAL;
+> 		goto out;
+> 	}
+>@@ -69,12 +70,16 @@ static int ufshcd_parse_clock_info(struct ufs_hba
+>*hba)
+> 		goto out;
+> 	}
+>
+>-	ret = of_property_read_u32_array(np, "freq-table-hz",
+>+	ret = of_property_read_u32_array(np, "freq-table",
+> 			clkfreq, sz);
+> 	if (ret && (ret != -EINVAL)) {
+>-		dev_err(dev, "%s: error reading array %d\n",
+>-				"freq-table-hz", ret);
+>-		return ret;
+>+		ret = of_property_read_u32_array(np, "freq-table-hz",
+>+						 clkfreq, sz);
+>+		if (ret && (ret != -EINVAL)) {
+>+			dev_err(dev, "%s: error reading array %d\n",
+>+				"freq-table", ret);
+>+			return ret;
+>+		}
+> 	}
+>
+> 	for (i = 0; i < sz; i += 2) {
+>@@ -99,7 +104,7 @@ static int ufshcd_parse_clock_info(struct ufs_hba *hba)
+>
+> 		if (!strcmp(name, "ref_clk"))
+> 			clki->keep_link_active = true;
+>-		dev_dbg(dev, "%s: min %u max %u name %s\n", "freq-table-
+>hz",
+>+		dev_dbg(dev, "%s: min %u max %u name %s\n", "freq-table",
+> 				clki->min_freq, clki->max_freq, clki->name);
+> 		list_add_tail(&clki->list, &hba->clk_list_head);
+> 	}
+>--
+>2.32.0
 
-Can you please rebase for v9?
 
-Thanks,
-Angelo
-
-> ---
->   drivers/video/hdmi.c        | 83 ++++++++++++++++++++++++++++---------
->   include/drm/drm_dp_helper.h |  2 +
->   include/linux/hdmi.h        |  7 +++-
->   3 files changed, 72 insertions(+), 20 deletions(-)
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
