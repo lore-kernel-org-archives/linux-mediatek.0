@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0CC7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 15:02:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E596C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 15:03:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zKOyDyiXEQb1hAuVClxWLmauHMgIhPY/NxUWoHQkQFc=; b=nIFGXr8b9/RbHC
-	MgpCLSGdUn1VaxL2hvBs2cZrps90Zg9+1+wVpzucYyg0PUD+PVeDVtetDGts4lTbNFd1u4sY6KHUc
-	k4PUPSiAEeWUhOhZdXO+CfnUJom84REGKzqBDZ8vUxvi3YVCA3CWnM5DWpBbEj5vzMIuLkzKDiNWb
-	4wFN0u3X2cI4pSl+AXtKxTd5nvOC6BR4IF/6Gtfbntq7IQ47Tp2x+oXoUAHzhORd6GRnTtBcvryGe
-	+2QeT25qTGxHU+jn6Vqd7WoaWs07aoYjdZ+JRlraZ9PNRYuq4ZZNXCC4NssgUr9SLQ+T5uld6hk8x
-	hY5tWvu+AL4A35YtMeeg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=oi+h7u8PaYjSM+sp65qi80LPopT0yHPzdaO0Hzy6Jm8=; b=LcH1zX6m0lBsm2
+	21ukN1wEpYxA2adAIglPudrTtgb05vqi8diRswqeXi6bcXeZ7VKAhAQyu4B9KNG/LrQYGjf70l2SP
+	79dmKPtIe6DCw9XXkZQi88dIcKPpNjIb/hYD1zr8kbEwdcePt8Gt/nDNedGRG6akQK6dFDGfDAvOF
+	hlj9Q3JNi98tHk84c94+uvt4LGtgst344qoOOJ76VZJQ9BQ/sgFFbvDErpQ7wWvqf+NyRV/fOS8s/
+	Vs1alkgcgUu/3eMTkseU9qd4oDW5oN9TX9MM/zUPGHRxW/1OjyHyrBNV53kkS/jaGWrOBkNhPCM10
+	0vS8pCakxwBVJQ7C2iog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMWgN-00A1jZ-SP; Tue, 22 Feb 2022 15:02:27 +0000
-Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
+	id 1nMWh3-00A2CW-7b; Tue, 22 Feb 2022 15:03:09 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMWdr-00A03h-5V
- for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 14:59:59 +0000
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70])
+ id 1nMWdx-00A08m-Nj
+ for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 15:00:00 +0000
+Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
+ [209.85.208.200])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id A108F4004D
- for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 14:59:48 +0000 (UTC)
+ by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 7B8B43FCA9
+ for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 14:59:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1645541988;
- bh=9Z/gUO3emhqiJ98zvVrvKJB3hrfUgVCYAuQOA838jTk=;
- h=From:To:Subject:Date:Message-Id:In-Reply-To:References:
- MIME-Version;
- b=Oe0U/l9MY72+vAzQWSqvHBW4WOAhDLLIw1sa0DeXjrYrBbzZMUQvrFdIxVOKggHXQ
- B+hxWVl0ROtT5msXmGMtSmYdf9BxzLBLTPLYmo/9nLj7fE9jXRCD8vFc7LTiQJih7+
- mN/0yLX2qH1iOT9cU0Fnk3KeDWrhvBVm5ck9iWB4VYzOFC69iz+axh5D/3S1pL88Xg
- Ns2EEIXswLqf5SYryfLqUsGSRsNbRL+V7YVIVDyBwP45LDHLt/zcoZlDxSJTJzGOUX
- 1WVxlfKfcFi77MAhPjOP45PAdRLEMhuxkPmbErwoG7tI+QIHfpwXYYXgtWJPNIW+/J
- j6e3RPOWt8fdg==
-Received: by mail-ej1-f70.google.com with SMTP id
- gn20-20020a1709070d1400b006cf1fcb4c8dso5886440ejc.12
- for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 06:59:48 -0800 (PST)
+ s=20210705; t=1645541994;
+ bh=+TIgQRioLLZ9zOW6KKmdTDTPf4m59BMseVHbquTVcCc=;
+ h=From:To:Subject:Date:Message-Id:MIME-Version;
+ b=O/3dGCz7AyphiXmKr8O4DzMqWk5A7RFY1L2v8r4dTqSjFABgolQ7Va4Qi74uA6HyK
+ 8i7rtzA9g5xtlyiSnfVkLsY5bclegrOsCv7z4X2ASb+GH1d8vyvf0YhYvi5gKDN3uQ
+ ELBmHw9dbg0Ps5UMC3SwCb+drKNvYMISkIqiMgIzWd1Q1/1M4tIZXF6QmFtHmiG4BL
+ Nq4sqCRD0eqFJU+y0k0hiWjo96FxjADhH9lc/hrFJWAWBk6cPLhSyE6GBeB9VepBAA
+ APOX0232iEcV9MqLvw9/UqvNra4eR5wNZcMaYdTpcJWFF9pqqOFj6u/tCz3TDSCtI6
+ KLsW3UqtzcZHw==
+Received: by mail-lj1-f200.google.com with SMTP id
+ v5-20020a2ea605000000b00246322afc8cso4006898ljp.4
+ for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 06:59:54 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=9Z/gUO3emhqiJ98zvVrvKJB3hrfUgVCYAuQOA838jTk=;
- b=jRkUXcOp4Sx0T/1R4PBu/jG+hJ1DuVtsv/uKBuB4YKAH8JTjFDpkhE6eOXSRJlDHGY
- pYsaJC2/+VNQ7vthZgaqEm4gLddG8QCxusw042/6rV+8tjYH5luVX1mDyoYxFcT/xenD
- lTjaWdcyBusZJrFddW1Mg+W427o2U6/QJBanLodQD2mtikYAUJYqiQqeF8HUDgsJNbo0
- vzvceGGmdqx0qZAgHOK3Jp9DzB8t+EiMTeimNPVq3/5HChSwdLbxypoRx7KwubH9clA2
- hgnbmRvBwW3+tlY/6R66AdMAtylENJ2YS0RG40QOJIkWc2MdvkGXrWZiivKYPdtebrjP
- l3vg==
-X-Gm-Message-State: AOAM532cTk/0LnYNg4yi13CZqxUlBVs76VdOoaKLejqSiLJIYpmwF7ht
- C2TZAXQway1IbR1RkHhnVo3U547/NKLCJSq7eTzaK7FAVZiLbvfoND57jkjUtSUsdgOawrXeWG1
- yYbk0R+INvh5MG6SBgjMNuXTfsHDdyJORYDqeD7/JIc8l9TbIvQ==
-X-Received: by 2002:a05:6402:142b:b0:413:2b86:7af2 with SMTP id
- c11-20020a056402142b00b004132b867af2mr1901164edx.102.1645541988133; 
- Tue, 22 Feb 2022 06:59:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyLoou8nQRCRNv0hciFigbFDL4utuXOvFr5Y0azz8QSvrtmGP0Fc4h2u6qFAcuNpGyebFoevw==
-X-Received: by 2002:a05:6402:142b:b0:413:2b86:7af2 with SMTP id
- c11-20020a056402142b00b004132b867af2mr1901119edx.102.1645541987825; 
- Tue, 22 Feb 2022 06:59:47 -0800 (PST)
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+TIgQRioLLZ9zOW6KKmdTDTPf4m59BMseVHbquTVcCc=;
+ b=O7HDYahGxUDGQ/wpF/7omFQXritxc+Em5k0A6ajBeSui1QqXxWFZG0DozQFTI1enc6
+ L9xG2AjZNHYQj5nkXUhwZLVUNqXlt8iZDtTeKFvaAmjuYkZZXhtLbPKND2UUlD+9Qru9
+ ZnPaUs8yLXZ90xiEg+C4xNj4WWzN+QgUMGuzckbPfnGTvwXAuQrRP2Xv2+FERHGJMSbJ
+ 7x/bK3Mb1QlO7ob1EeMPQlAAJOSH9PnlKuI06EMvXkJagVcajuZzsKAQ9skMvNA16bwJ
+ TkmY58WSajifcIr7DtOPyywNDEC7zqLY1CZmupfUuCpT5eNqgHJwReyMsLjp3nk2i8K3
+ Doyw==
+X-Gm-Message-State: AOAM530amAjnPHTClCuw7E4wtV/030F5JfdFIMDMSWvo/c1WYJPrPNzN
+ k23/ES0boNsfQ7gVSez6KhaiZVKqAwV77Va3E8q2izWAc4Z3jopCNHyse/vERGL3uFn0bpTyh23
+ ERedRZaLM9NEn3GNPzdEjeIHX7m0KC7QgcfEgjHRzfBdC0RefHQ==
+X-Received: by 2002:aa7:c391:0:b0:410:83fb:abab with SMTP id
+ k17-20020aa7c391000000b0041083fbababmr27025560edq.435.1645541980579; 
+ Tue, 22 Feb 2022 06:59:40 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwFDKifwtFFrCmwLKT4NC984SQd8SdrxWDXIgJnHsNvfVTg37pGq0CPqLSpORQdHqU3VFVDJQ==
+X-Received: by 2002:aa7:c391:0:b0:410:83fb:abab with SMTP id
+ k17-20020aa7c391000000b0041083fbababmr27025516edq.435.1645541980307; 
+ Tue, 22 Feb 2022 06:59:40 -0800 (PST)
 Received: from localhost.localdomain (xdsl-188-155-181-108.adslplus.ch.
  [188.155.181.108])
- by smtp.gmail.com with ESMTPSA id m2sm2467960ejb.20.2022.02.22.06.59.46
+ by smtp.gmail.com with ESMTPSA id m2sm2467960ejb.20.2022.02.22.06.59.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Feb 2022 06:59:47 -0800 (PST)
+ Tue, 22 Feb 2022 06:59:39 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
  Rob Herring <robh+dt@kernel.org>,
@@ -88,16 +87,15 @@ To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 05/15] dt-bindings: ufs: qcom,ufs: convert to dtschema
-Date: Tue, 22 Feb 2022 15:58:44 +0100
-Message-Id: <20220222145854.358646-6-krzysztof.kozlowski@canonical.com>
+Subject: [PATCH v2 00/15] dt-bindings: ufs: add common platform bindings +
+ fixes
+Date: Tue, 22 Feb 2022 15:58:39 +0100
+Message-Id: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
 X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
-References: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_065951_506526_6CFA7FE4 
-X-CRM114-Status: GOOD (  24.27  )
+X-CRM114-CacheID: sfid-20220222_065957_946513_0654BB34 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,363 +112,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert the Qualcomm Universal Flash Storage (UFS) Controller to DT
-schema format.
+Hi,
 
-Except the conversion, add also properties already present in DTS:
-iommus, interconnects and power-domains.
+Not tested on hardware, so please kindly test.
+Bindings maintainers might need checking - taken from git log.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
----
+Changes since v1
+================
+1. Make freq-table as matrix of tuples (Nishanth).
+2. New patches: convert all bindings and fix up DTS files.
+3. Several minor fixes in UFS bindings.
+
+Dependencies
+============
+1. The DTS patches (10-15) depend on scsi/ufs driver change (patch 9), so
+   they should go in a following release, after merging driver.
+
+   This is also might affect out-of-tree users of these DTSes (other
+   projects, e.g. U-boot).
+
+Best regards,
+Krzysztof
+
+Krzysztof Kozlowski (15):
+  dt-bindings: ufs: add common platform bindings
+  dt-bindings: ufs: samsung,exynos-ufs: use common bindings
+  dt-bindings: ufs: cdns,ufshc: convert to dtschema
+  dt-bindings: ufs: drop unused/old ufs-qcom PHY bindings
+  dt-bindings: ufs: qcom,ufs: convert to dtschema
+  dt-bindings: ufs: hisilicon,ufs: convert to dtschema
+  dt-bindings: ufs: mediatek,ufs: convert to dtschema
+  dt-bindings: ufs: snps,tc-dwc-g210: convert to dtschema
+  scsi: ufs: deprecate 'freq-table-hz' property
+  arm64: dts: hi3670: use 'freq-table' in UFS node
+  arm64: dts: ti: use 'freq-table' in UFS node
+  arm64: dts: qcom: use 'freq-table' in UFS node
+  arm64: dts: qcom: msm8996: drop unsupported UFS
+    vddp-ref-clk-max-microamp
+  arm64: dts: qcom: msm8996: correct UFS compatible
+  arm64: dts: qcom: sm8350: drop duplicated ref_clk in UFS
+
+ .../devicetree/bindings/ufs/cdns,ufshc.txt    |  32 ---
+ .../devicetree/bindings/ufs/cdns,ufshc.yaml   |  68 +++++
+ .../bindings/ufs/hisilicon,ufs.yaml           |  90 +++++++
+ .../devicetree/bindings/ufs/mediatek,ufs.yaml |  67 +++++
  .../devicetree/bindings/ufs/qcom,ufs.yaml     | 241 ++++++++++++++++++
+ .../bindings/ufs/samsung,exynos-ufs.yaml      |  13 +-
+ .../bindings/ufs/snps,tc-dwc-g210.yaml        |  51 ++++
+ .../bindings/ufs/tc-dwc-g210-pltfrm.txt       |  26 --
+ .../devicetree/bindings/ufs/ti,j721e-ufs.yaml |   9 +-
+ .../devicetree/bindings/ufs/ufs-common.yaml   |  88 +++++++
+ .../devicetree/bindings/ufs/ufs-hisi.txt      |  42 ---
+ .../devicetree/bindings/ufs/ufs-mediatek.txt  |  45 ----
+ .../devicetree/bindings/ufs/ufs-qcom.txt      |  63 -----
  .../devicetree/bindings/ufs/ufshcd-pltfrm.txt |  90 -------
- 2 files changed, 241 insertions(+), 90 deletions(-)
+ MAINTAINERS                                   |   1 +
+ arch/arm64/boot/dts/hisilicon/hi3670.dtsi     |   4 +-
+ .../boot/dts/qcom/msm8996-xiaomi-common.dtsi  |   1 -
+ arch/arm64/boot/dts/qcom/msm8996.dtsi         |   5 +-
+ arch/arm64/boot/dts/qcom/msm8998.dtsi         |   2 +-
+ arch/arm64/boot/dts/qcom/sdm845.dtsi          |   2 +-
+ arch/arm64/boot/dts/qcom/sm8150.dtsi          |   2 +-
+ arch/arm64/boot/dts/qcom/sm8250.dtsi          |   2 +-
+ arch/arm64/boot/dts/qcom/sm8350.dtsi          |   5 +-
+ arch/arm64/boot/dts/qcom/sm8450.dtsi          |   2 +-
+ arch/arm64/boot/dts/ti/k3-j721e-main.dtsi     |   4 +-
+ drivers/scsi/ufs/ufshcd-pltfrm.c              |  21 +-
+ 26 files changed, 641 insertions(+), 335 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/ufs/cdns,ufshc.txt
+ create mode 100644 Documentation/devicetree/bindings/ufs/cdns,ufshc.yaml
+ create mode 100644 Documentation/devicetree/bindings/ufs/hisilicon,ufs.yaml
+ create mode 100644 Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
  create mode 100644 Documentation/devicetree/bindings/ufs/qcom,ufs.yaml
+ create mode 100644 Documentation/devicetree/bindings/ufs/snps,tc-dwc-g210.yaml
+ delete mode 100644 Documentation/devicetree/bindings/ufs/tc-dwc-g210-pltfrm.txt
+ create mode 100644 Documentation/devicetree/bindings/ufs/ufs-common.yaml
+ delete mode 100644 Documentation/devicetree/bindings/ufs/ufs-hisi.txt
+ delete mode 100644 Documentation/devicetree/bindings/ufs/ufs-mediatek.txt
+ delete mode 100644 Documentation/devicetree/bindings/ufs/ufs-qcom.txt
  delete mode 100644 Documentation/devicetree/bindings/ufs/ufshcd-pltfrm.txt
 
-diff --git a/Documentation/devicetree/bindings/ufs/qcom,ufs.yaml b/Documentation/devicetree/bindings/ufs/qcom,ufs.yaml
-new file mode 100644
-index 000000000000..356217124222
---- /dev/null
-+++ b/Documentation/devicetree/bindings/ufs/qcom,ufs.yaml
-@@ -0,0 +1,241 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/ufs/qcom,ufs.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Qualcomm Universal Flash Storage (UFS) Controller
-+
-+maintainers:
-+  - Yaniv Gardi <ygardi@codeaurora.org>
-+
-+# Select only our matches, not all jedec,ufs-2.0
-+select:
-+  properties:
-+    compatible:
-+      contains:
-+        const: qcom,ufshc
-+  required:
-+    - compatible
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - qcom,msm8994-ufshc
-+          - qcom,msm8996-ufshc
-+          - qcom,msm8998-ufshc
-+          - qcom,sdm845-ufshc
-+          - qcom,sm8150-ufshc
-+          - qcom,sm8250-ufshc
-+          - qcom,sm8350-ufshc
-+          - qcom,sm8450-ufshc
-+      - const: qcom,ufshc
-+      - const: jedec,ufs-2.0
-+
-+  clocks:
-+    minItems: 8
-+    maxItems: 11
-+
-+  clock-names:
-+    minItems: 8
-+    maxItems: 11
-+
-+  interconnects:
-+    minItems: 2
-+    maxItems: 2
-+
-+  interconnect-names:
-+    items:
-+      - const: ufs-ddr
-+      - const: cpu-ufs
-+
-+  iommus:
-+    minItems: 1
-+    maxItems: 2
-+
-+  phys:
-+    maxItems: 1
-+
-+  phy-names:
-+    items:
-+      - const: ufsphy
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  reg:
-+    minItems: 1
-+    maxItems: 2
-+
-+  resets:
-+    maxItems: 1
-+
-+  '#reset-cells':
-+    const: 1
-+
-+  reset-names:
-+    items:
-+      - const: rst
-+
-+  reset-gpios:
-+    maxItems: 1
-+    description:
-+      GPIO connected to the RESET pin of the UFS memory device.
-+
-+required:
-+  - compatible
-+  - reg
-+
-+allOf:
-+  - $ref: ufs-common.yaml
-+
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - qcom,msm8998-ufshc
-+              - qcom,sm8250-ufshc
-+              - qcom,sm8350-ufshc
-+              - qcom,sm8450-ufshc
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 8
-+          maxItems: 8
-+        clock-names:
-+          items:
-+            - const: core_clk
-+            - const: bus_aggr_clk
-+            - const: iface_clk
-+            - const: core_clk_unipro
-+            - const: ref_clk
-+            - const: tx_lane0_sync_clk
-+            - const: rx_lane0_sync_clk
-+            - const: rx_lane1_sync_clk
-+        reg:
-+          minItems: 1
-+          maxItems: 1
-+
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - qcom,sdm845-ufshc
-+              - qcom,sm8150-ufshc
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 9
-+          maxItems: 9
-+        clock-names:
-+          items:
-+            - const: core_clk
-+            - const: bus_aggr_clk
-+            - const: iface_clk
-+            - const: core_clk_unipro
-+            - const: ref_clk
-+            - const: tx_lane0_sync_clk
-+            - const: rx_lane0_sync_clk
-+            - const: rx_lane1_sync_clk
-+            - const: ice_core_clk
-+        reg:
-+          minItems: 2
-+          maxItems: 2
-+
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - qcom,msm8996-ufshc
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 11
-+          maxItems: 11
-+        clock-names:
-+          items:
-+            - const: core_clk_src
-+            - const: core_clk
-+            - const: bus_clk
-+            - const: bus_aggr_clk
-+            - const: iface_clk
-+            - const: core_clk_unipro_src
-+            - const: core_clk_unipro
-+            - const: core_clk_ice
-+            - const: ref_clk
-+            - const: tx_lane0_sync_clk
-+            - const: rx_lane0_sync_clk
-+        reg:
-+          minItems: 1
-+          maxItems: 1
-+
-+    # TODO: define clock bindings for qcom,msm8994-ufshc
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/qcom,gcc-sm8450.h>
-+    #include <dt-bindings/clock/qcom,rpmh.h>
-+    #include <dt-bindings/gpio/gpio.h>
-+    #include <dt-bindings/interconnect/qcom,sm8450.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        ufs@1d84000 {
-+            compatible = "qcom,sm8450-ufshc", "qcom,ufshc",
-+                         "jedec,ufs-2.0";
-+            reg = <0 0x01d84000 0 0x3000>;
-+            interrupts = <GIC_SPI 265 IRQ_TYPE_LEVEL_HIGH>;
-+            phys = <&ufs_mem_phy_lanes>;
-+            phy-names = "ufsphy";
-+            lanes-per-direction = <2>;
-+            #reset-cells = <1>;
-+            resets = <&gcc GCC_UFS_PHY_BCR>;
-+            reset-names = "rst";
-+            reset-gpios = <&tlmm 210 GPIO_ACTIVE_LOW>;
-+
-+            vcc-supply = <&vreg_l7b_2p5>;
-+            vcc-max-microamp = <1100000>;
-+            vccq-supply = <&vreg_l9b_1p2>;
-+            vccq-max-microamp = <1200000>;
-+
-+            power-domains = <&gcc UFS_PHY_GDSC>;
-+            iommus = <&apps_smmu 0xe0 0x0>;
-+            interconnects = <&aggre1_noc MASTER_UFS_MEM &mc_virt SLAVE_EBI1>,
-+                            <&gem_noc MASTER_APPSS_PROC &config_noc SLAVE_UFS_MEM_CFG>;
-+            interconnect-names = "ufs-ddr", "cpu-ufs";
-+
-+            clock-names = "core_clk",
-+                          "bus_aggr_clk",
-+                          "iface_clk",
-+                          "core_clk_unipro",
-+                          "ref_clk",
-+                          "tx_lane0_sync_clk",
-+                          "rx_lane0_sync_clk",
-+                          "rx_lane1_sync_clk";
-+            clocks = <&gcc GCC_UFS_PHY_AXI_CLK>,
-+                     <&gcc GCC_AGGRE_UFS_PHY_AXI_CLK>,
-+                     <&gcc GCC_UFS_PHY_AHB_CLK>,
-+                     <&gcc GCC_UFS_PHY_UNIPRO_CORE_CLK>,
-+                     <&rpmhcc RPMH_CXO_CLK>,
-+                     <&gcc GCC_UFS_PHY_TX_SYMBOL_0_CLK>,
-+                     <&gcc GCC_UFS_PHY_RX_SYMBOL_0_CLK>,
-+                     <&gcc GCC_UFS_PHY_RX_SYMBOL_1_CLK>;
-+            freq-table = <75000000 300000000>,
-+                         <0 0>,
-+                         <0 0>,
-+                         <75000000 300000000>,
-+                         <75000000 300000000>,
-+                         <0 0>,
-+                         <0 0>,
-+                         <0 0>;
-+        };
-+    };
-diff --git a/Documentation/devicetree/bindings/ufs/ufshcd-pltfrm.txt b/Documentation/devicetree/bindings/ufs/ufshcd-pltfrm.txt
-deleted file mode 100644
-index d0fee78e6203..000000000000
---- a/Documentation/devicetree/bindings/ufs/ufshcd-pltfrm.txt
-+++ /dev/null
-@@ -1,90 +0,0 @@
--* Universal Flash Storage (UFS) Host Controller
--
--UFSHC nodes are defined to describe on-chip UFS host controllers.
--Each UFS controller instance should have its own node.
--
--Required properties:
--- compatible		: must contain "jedec,ufs-1.1" or "jedec,ufs-2.0"
--
--			  For Qualcomm SoCs must contain, as below, an
--			  SoC-specific compatible along with "qcom,ufshc" and
--			  the appropriate jedec string:
--			    "qcom,msm8994-ufshc", "qcom,ufshc", "jedec,ufs-2.0"
--			    "qcom,msm8996-ufshc", "qcom,ufshc", "jedec,ufs-2.0"
--			    "qcom,msm8998-ufshc", "qcom,ufshc", "jedec,ufs-2.0"
--			    "qcom,sdm845-ufshc", "qcom,ufshc", "jedec,ufs-2.0"
--			    "qcom,sm8150-ufshc", "qcom,ufshc", "jedec,ufs-2.0"
--			    "qcom,sm8250-ufshc", "qcom,ufshc", "jedec,ufs-2.0"
--			    "qcom,sm8350-ufshc", "qcom,ufshc", "jedec,ufs-2.0"
--			    "qcom,sm8450-ufshc", "qcom,ufshc", "jedec,ufs-2.0"
--- interrupts        : <interrupt mapping for UFS host controller IRQ>
--- reg               : <registers mapping>
--
--Optional properties:
--- phys                  : phandle to UFS PHY node
--- phy-names             : the string "ufsphy" when is found in a node, along
--                          with "phys" attribute, provides phandle to UFS PHY node
--- vdd-hba-supply        : phandle to UFS host controller supply regulator node
--- vcc-supply            : phandle to VCC supply regulator node
--- vccq-supply           : phandle to VCCQ supply regulator node
--- vccq2-supply          : phandle to VCCQ2 supply regulator node
--- vcc-supply-1p8        : For embedded UFS devices, valid VCC range is 1.7-1.95V
--                          or 2.7-3.6V. This boolean property when set, specifies
--			  to use low voltage range of 1.7-1.95V. Note for external
--			  UFS cards this property is invalid and valid VCC range is
--			  always 2.7-3.6V.
--- vcc-max-microamp      : specifies max. load that can be drawn from vcc supply
--- vccq-max-microamp     : specifies max. load that can be drawn from vccq supply
--- vccq2-max-microamp    : specifies max. load that can be drawn from vccq2 supply
--
--- clocks                : List of phandle and clock specifier pairs
--- clock-names           : List of clock input name strings sorted in the same
--                          order as the clocks property.
--			  "ref_clk" indicates reference clock frequency.
--			  UFS host supplies reference clock to UFS device and UFS device
--			  specification allows host to provide one of the 4 frequencies (19.2 MHz,
--			  26 MHz, 38.4 MHz, 52MHz) for reference clock. This "ref_clk" entry is
--			  parsed and used to update the reference clock setting in device.
--			  Defaults to 26 MHz(as per specification) if not specified by host.
--- freq-table-hz		: Array of <min max> operating frequencies stored in the same
--                          order as the clocks property. If this property is not
--			  defined or a value in the array is "0" then it is assumed
--			  that the frequency is set by the parent clock or a
--			  fixed rate clock source.
---lanes-per-direction	: number of lanes available per direction - either 1 or 2.
--			  Note that it is assume same number of lanes is used both
--			  directions at once. If not specified, default is 2 lanes per direction.
--- #reset-cells		: Must be <1> for Qualcomm UFS controllers that expose
--			  PHY reset from the UFS controller.
--- resets            : reset node register
--- reset-names       : describe reset node register, the "rst" corresponds to reset the whole UFS IP.
--- reset-gpios       : A phandle and gpio specifier denoting the GPIO connected
--		      to the RESET pin of the UFS memory device.
--
--Note: If above properties are not defined it can be assumed that the supply
--regulators or clocks are always on.
--
--Example:
--	ufshc@fc598000 {
--		compatible = "jedec,ufs-1.1";
--		reg = <0xfc598000 0x800>;
--		interrupts = <0 28 0>;
--
--		vdd-hba-supply = <&xxx_reg0>;
--		vcc-supply = <&xxx_reg1>;
--		vcc-supply-1p8;
--		vccq-supply = <&xxx_reg2>;
--		vccq2-supply = <&xxx_reg3>;
--		vcc-max-microamp = 500000;
--		vccq-max-microamp = 200000;
--		vccq2-max-microamp = 200000;
--
--		clocks = <&core 0>, <&ref 0>, <&phy 0>, <&iface 0>;
--		clock-names = "core_clk", "ref_clk", "phy_clk", "iface_clk";
--		freq-table-hz = <100000000 200000000>, <0 0>, <0 0>, <0 0>;
--		resets = <&reset 0 1>;
--		reset-names = "rst";
--		phys = <&ufsphy1>;
--		phy-names = "ufsphy";
--		#reset-cells = <1>;
--	};
 -- 
 2.32.0
 
