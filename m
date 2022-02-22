@@ -4,57 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61672C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Feb 2022 15:24:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86EFAC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 02:55:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qbFxs/v8o+I3bASW0L8lV0dbjzcVe802SHlVA362Mko=; b=roz65334pT0ilL
-	mb1beLieaF8UrWDiX7va4veK3zRO2VsC1ggBSpIUE7zVbssSZeIMcCMGrOuN/oH0nBy6SAVMLUePl
-	iCa1eLWRYyFZaYthdoMxGETVc+mcVSgqFkbZLJvopvr3/8w1DWMS8NuFO1fQkiqdiAYfBIeo5+DSR
-	LPKRMuhPG+kI9EsbCsU4YibpGz2GZYyzoVBCb2m+J2UP+Qw31QfKhQCfM/eF0Y10tg+amle0CfiTt
-	xdHNPK3eUCXSCLlasIiI/QNnlJUY5AUG/aP6nOq6RFjw+e1lL6b8KaXH+DpxMvY5sYV1zdINJ62jI
-	vV0NfjM6bqKiEtdLJmWQ==;
+	List-Owner; bh=Yoy2JGV/eE9+EX+iYZqmccWEGUIZjbQa+tPWDmxIgks=; b=EZK7jE15gOoycQ
+	ztWh1N5VBMLy3O5GaVXmYizPuqyFvIYu6kcypJSQaURLaJHlCVmXBAYy5A80AIf7RjN62ieEvfaXb
+	ylGf+KKrrGedYAvnL3D1cLaVfRAVu+BJl64xCPbfORO3j86aFtM4/pXce581DSzfxxHTD+nGiPrnY
+	d4ajT0xPrYKVPlRze4HqsJmueJLDm/+5JLf2qtzoDUdlFxC5MVdBMHu8GH6tpbhLPeQU7gX9RmRrL
+	H2IeRtlH7CTauJDJUNLu3nt5wpZv97QhkF4a/V1V7sGvOxTX1hRQLQxuYT73UpWH+3P5ezrbsPgsz
+	COhV0IRJpujUQrsvn6VA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMAYL-006NUI-WB; Mon, 21 Feb 2022 15:24:42 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nMLKV-007mmc-Dc; Tue, 22 Feb 2022 02:55:07 +0000
+Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMAY4-006NM4-RO; Mon, 21 Feb 2022 15:24:26 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 4EB0C61050;
- Mon, 21 Feb 2022 15:24:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F13CEC340E9;
- Mon, 21 Feb 2022 15:24:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1645457063;
- bh=vfiV1Qm1/MHU0lksy3rapa4k1HrN7kyCz4nC8r4epk0=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=JF/QiYigsSz+pDmwfxF75oFVURELZH86roMYRIxPV2sXjLtCr8j7QaJ+DYY262j71
- N5G4zXCg6UYzFKY/S7tD/bO5roVrmGYUN17dYEaOORamn/93HQr9WCBjGcAQy25wm4
- 74HVL4u9SWjnMCo0yaJ7EpBzoidHCyGnCpf6pYj5guyRmx9rveRWzeK/lmNYZhFyJZ
- J9mCNS3pHnDNpB8jx3bSEGOg/DssqZxVGNeayKqcObShy3ycFAfX+M3OO4ga1Q+yYS
- Xsx8vOW1g/kUMTkcAIXceXoHyTJ8iY/UunYYno0cFj+Gj4znXpnjsrTERBXCKcOHFJ
- G78z2xTWfEH8A==
-From: Mark Brown <broonie@kernel.org>
-To: tiwai@suse.com, matthias.bgg@gmail.com, Trevor Wu <trevor.wu@mediatek.com>
-Cc: yc.hung@mediatek.com, linux-mediatek@lists.infradead.org,
- bicycle.tsai@mediatek.com, alsa-devel@alsa-project.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20220221055716.18580-1-trevor.wu@mediatek.com>
-References: <20220221055716.18580-1-trevor.wu@mediatek.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8195: enable apll tuner
-Message-Id: <164545706169.730905.15839904852131851975.b4-ty@kernel.org>
-Date: Mon, 21 Feb 2022 15:24:21 +0000
+ id 1nMLKI-007mki-MI
+ for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 02:54:56 +0000
+Received: by mail-yb1-xb29.google.com with SMTP id g6so16783163ybe.12
+ for <linux-mediatek@lists.infradead.org>; Mon, 21 Feb 2022 18:54:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=pTWIyZP+k2rrcUY6YOsZs3zseacI9EWGSS4sqz8sNKo=;
+ b=FlXakkD+veWuWTWzUSD+2VkyDXMB+4bB9g8EA034TbiDOBbKPBTPGiqf00xbHyAj+R
+ 1+JmVDdBYIm6fYnXMzHNeMJbj1npKms53i7mKbDRaUGMV4dgh4g9QZbgGVgTK3biZ7er
+ XMGqeD2yf6pnwGr1mKQMj+vpnpmSsvcHkIdOw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=pTWIyZP+k2rrcUY6YOsZs3zseacI9EWGSS4sqz8sNKo=;
+ b=qZM5/5Cm5Ax5G0/4KmsU0f6Q25Pdl/ydB0FjOV4/Nl+d3wy+BboPNi1CxpX1MZrQk7
+ dpeTvvfNysfP/42PVfkU5DVtbjtq9RTvhmq5YcFw6mGvfv2Qu6ABUGni7sCKIoEt3hWQ
+ K9/FHhXrmUOgaWWRQidbLqX9+F+GqQZhT674J70av39F73wpy2JDK3llJUPxKzD3FkRO
+ R3a3oVs2FUOuhbcgCJCr0jEBlt7NN5D0FXSNBSVkOZ8rfuhhC7e8p16Rr0k2XhPJdYX9
+ OGMX3VCpW9aNFyJLiCvG73mM6CLi/ZNx38D174BD6AwvP3+blub4laRVfyQ9L2q77F+I
+ lH5g==
+X-Gm-Message-State: AOAM533TEWHNobgYPmGeXp0g0UKY0CR8l8U4e95I9BP4w/LoOvQaMRcl
+ gmu1KvGov0aiey2X96zx1zpBK0EdUMUNpuP0bNmCAw==
+X-Google-Smtp-Source: ABdhPJxXIWOV/8KmJIE6h3WY3JKwFygbyCz14qlx7kc+P1HhRD+kKQCYKOodK7IlxfG6jXwUsmQnJtv3ciFVybw35TM=
+X-Received: by 2002:a25:2393:0:b0:61d:f1c0:a779 with SMTP id
+ j141-20020a252393000000b0061df1c0a779mr20155835ybj.461.1645498493375; Mon, 21
+ Feb 2022 18:54:53 -0800 (PST)
 MIME-Version: 1.0
+References: <20220210141931.291712-1-angelogioacchino.delregno@collabora.com>
+ <20220210141931.291712-6-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5H0OkMk=1MZH3jCFSZbauJmEcgFADfDXDPf2r1wrp8wCw@mail.gmail.com>
+ <211bd3ca-f786-b161-6f3d-dc6b8471ffc7@collabora.com>
+In-Reply-To: <211bd3ca-f786-b161-6f3d-dc6b8471ffc7@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 22 Feb 2022 10:54:42 +0800
+Message-ID: <CAGXv+5F9tdu=K0R1QGT-wj5zX-der+pxP5aWA1zcpGBmH0gUjw@mail.gmail.com>
+Subject: Re: [PATCH 5/5] pinctrl: mediatek: common-v1: Commonize
+ spec_ies_smt_set callback
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: sean.wang@kernel.org, linus.walleij@linaro.org, matthias.bgg@gmail.com, 
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220221_072424_950400_4750E86D 
-X-CRM114-Status: GOOD (  13.16  )
+X-CRM114-CacheID: sfid-20220221_185454_744792_A3D10746 
+X-CRM114-Status: GOOD (  15.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,43 +85,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 21 Feb 2022 13:57:16 +0800, Trevor Wu wrote:
-> Normally, the clock source of audio module is either 26M or APLL1/APLL2,
-> but APLL1/APLL2 are not the multiple of 26M.
-> 
-> In the patch, APLL1 and APLL2 tuners are enabled to handle sample rate
-> mismatch when the data path crosses two different clock domains.
-> 
-> 
-> [...]
+On Mon, Feb 21, 2022 at 9:40 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 21/02/22 10:58, Chen-Yu Tsai ha scritto:
+> > On Thu, Feb 10, 2022 at 10:21 PM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> >>
+> >> All of the MediaTek pinctrl drivers registering with pinctrl-mtk-common
+> >> that are offering a .spec_ies_smt_set() callback are declaring their
+> >> own function which is doing exactly the same on all drivers: calling
+> >> mtk_pconf_spec_set_ies_smt_range() with their struct and a simple check.
+> >>
+> >> Commonize this callback by adding the ies and smt structure pointers
+> >> to struct mtk_pinctrl_devdata and changing the callback signature to
+> >> take it.
+> >>
+> >> Removing the callback and checking for the existence of the spec_smt
+> >> and/or spec_ies data would allow us to staticize the function
+> >> mtk_pconf_spec_set_ies_smt_range(), but this solution was avoided as
+> >> to keep flexibility, as some SoCs may need to perform a very different
+> >> operation compared to what this commonized function is doing.
+> >>
+> >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> >
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+>
+> Hi Chen-Yu,
+>
+> did you mean Reviewed-by? :-)
 
-Applied to
+(facepalm) Yes.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/1] ASoC: mediatek: mt8195: enable apll tuner
-      commit: ff5a90173d981934e1134d28af3625acaab01d80
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
 _______________________________________________
 Linux-mediatek mailing list
