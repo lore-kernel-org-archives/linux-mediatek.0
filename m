@@ -4,101 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F8EDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 15:10:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 164E3C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 15:12:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Wek3pwSoxuSxAB0+7VDITpgtiS2rz98u0Ist/PwlmJA=; b=lOB3/2FW0S9r+7
-	ANmaBFIJsHa0jsQdyxMs1EfDbeWBOMZo5/lh4RjMUsjAJva/9XTxATOsg4utYzTk6/LUvIFScnjil
-	FpkV/G2W7mNNVIR4hRwcs2tWsND2JrOcgxG8PxzYvtx5PQCZSSenteakxUBWQFO7g8JzSU+xGwe32
-	LliYKPc411clvwArVePgE50vw+iXjXE4fV0v0BBeaZ9ZC48WluYW32EfeK3RFa5wKGbea28bC5bCg
-	ZVTziTfu799q2+rnTR5ukYhcKRMUug/sG7OumSXQPqEONO09n6HDC7c6urnQa71ifKTgSne3iATyv
-	lxqTWrUQp5XJ+S3t76Cw==;
+	List-Owner; bh=222hWDiXxffv2hBDfFRkRYIZUiXV+pMhO+KsxsimwYE=; b=Fk383wG70NcWah
+	uC/pWZlPDsDEhmQi2zxX9ceSaposqYDgII9ZenEXSabHVWcfQe/K/Z/HDQdyZTKJjUZNbLV5F9Yl0
+	sqzlD7lO+czu7vXXJXLas8UUZU8wCalorbnsnxM4/1k7qhs17Q9MTDAxRatsWa2MJql0DOtszgZxo
+	r5O0YBdB7ni7lJsdMHKA7xil2G3x+8ojy1yqipuGyf0Wz+trOziEuOxXg45mYxnaD5jgpDstQczmD
+	gZ9XPzHU2CN9YO0vj2yN3li8fe1X/2trG0V+6WVkK1JtGurpyL2plhNgRwC9r66IvXr/nmEq2ZEMP
+	RvhVG82uwUhYfTfoWZdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMWno-00A5R8-2S; Tue, 22 Feb 2022 15:10:08 +0000
+	id 1nMWqJ-00A6ra-1c; Tue, 22 Feb 2022 15:12:43 +0000
 Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMWeH-00A0MI-5K
- for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 15:00:18 +0000
-Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
- [209.85.208.200])
+ id 1nMWfl-00A1L3-Os
+ for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 15:01:51 +0000
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id B5B923FCA5
- for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 15:00:15 +0000 (UTC)
+ by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id 449203F1D9
+ for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 15:01:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1645542015;
- bh=LfKEooVWXSt0X9amI75MXA0ImuzcwyjqGr8txR6hCCo=;
- h=From:To:Subject:Date:Message-Id:In-Reply-To:References:
- MIME-Version;
- b=S16eXlqgVfdBuJl/1hHHyyn+igXPSYEeSBbfp9cyC4/tXFd0LxvC04fJp2ZknoKuD
- E0Zc16OShVoyrYv7iPH83EHSUf4XcPHPwMKWuF1PlkmvAY6WMv5h9hFCOCwuIAbL2x
- UluuUmxQBfRYJsCfgeae0LIFgxDH5ous5K+nQasKfCwx1GKIuDbKCoXLaI+3/V9o0s
- N5G9czrcnQa/o6i3Z9Q4BexKkfiD8zo5rj6AYzJXeRsXHMqgQROCLc0iRkbqyDIjdQ
- RPN8sp13XB4qwSxvtYAEwODY9rk9lX4O5zGb/eVhca3dqIqZtbQOspQwWvAWbhHHpT
- XRjfc2EqYLxXw==
-Received: by mail-lj1-f200.google.com with SMTP id
- q17-20020a2e7511000000b0023c95987502so5903106ljc.16
- for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 07:00:15 -0800 (PST)
+ s=20210705; t=1645542108;
+ bh=HtdrJ3I4lOo9P+o7lWSeEHgMO5/UUG8VsgHgTsClLgE=;
+ h=Message-ID:Date:MIME-Version:Subject:To:References:From:
+ In-Reply-To:Content-Type;
+ b=G+PMQ6V4Q5in6kK6rSduCkvGNHTtH+X25bfzi4EQKTEGYL2UaIAxtYU7TZnqBh49l
+ v7Yt4WGFM5fBf038GUvq20EPjmfg4kG59j2HkCrisb9aV+f36+HXOrFrUdXkeQBD6D
+ OuVyVGbdGwGATWXtS9bkM6DCW4oAvTptqzUxZz5ZWBTO2+CFASoT60Ng7EkwBVqwf2
+ iaNnYpLLwionXg74HKRub/LqIfvP2BYMalwNZ593fuTbzA1TRbjy8mCkF+FWhrmHJa
+ x/nBB7uWI2mBzw4KBqK8UK46vTIMBisnesHdKrMVC7VZ9r0+PttR8L6krPtv8pjlTs
+ B/fy0EWWyZiqQ==
+Received: by mail-ej1-f71.google.com with SMTP id
+ v2-20020a170906292200b006a94a27f903so5897253ejd.8
+ for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 07:01:48 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=LfKEooVWXSt0X9amI75MXA0ImuzcwyjqGr8txR6hCCo=;
- b=7nbHNeuM6GgF0xR+8CPOnzItaqTRxl4J3gBE3f5lvaFEgyjvpkK8UeV8+QciT3UYgh
- 5b1PuFhxE7FsKN6ANDGrL9k6oGI9TXH7u0t28Is4DQ3Pq4EFrp2+5DzRHapNpfhqsWfg
- dcNwPPpTVIhvdetnGYFaHF4QDG3KsuMT5gdNuwi5Psra2TPcOYBEfaU0rmlq5l6t8hTj
- 8YHSNtOsd/iAGQud7W5tRgrRrB8pQJDRzGd8zE5cc2vMQhMaW7AqWFtwF/rZfnTDsmvm
- YSTDPEgVLZinC7qp9v8f3V2qpccH0ohb0QpIK/dtYCyn33mYHdoy0LU9lKCqgczcU6WN
- O/nA==
-X-Gm-Message-State: AOAM530lphBajxkrOdv1KygA/JindDUMt19h4f7FTIcIAy8m9VKqhAFW
- YVuQLO7ToIu/Pxx288KEaftdedU87yfpWovKKG9EKR1p8JQEt2zMJwXtQjbZf47869s3UXTuoHP
- cn7AEi1CuAkDyQki416AQft8vkiU3dsdF1IAOfGDkczYrFnujvQ==
-X-Received: by 2002:a17:906:70c2:b0:6cf:e1cc:4d8c with SMTP id
- g2-20020a17090670c200b006cfe1cc4d8cmr20090153ejk.696.1645542004850; 
- Tue, 22 Feb 2022 07:00:04 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyR3qbd+Iftv6XGp15bvvgUICPOPWMYZg+AzIuOxdejdmzbh/iz1wm8C/0MI15ezn8MGt0S6w==
-X-Received: by 2002:a17:906:70c2:b0:6cf:e1cc:4d8c with SMTP id
- g2-20020a17090670c200b006cfe1cc4d8cmr20090120ejk.696.1645542004625; 
- Tue, 22 Feb 2022 07:00:04 -0800 (PST)
-Received: from localhost.localdomain (xdsl-188-155-181-108.adslplus.ch.
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=HtdrJ3I4lOo9P+o7lWSeEHgMO5/UUG8VsgHgTsClLgE=;
+ b=hH7pw9mrELxy7YgSLmzjwagO0VPIcGtGlh9E1RWAOkTYJs93kRwXBhqpyexvJUx9Yc
+ /h8v6a84n0SjVzSwjS8yT2jy1e6IjqnJKBUZgJTuhc2/7pgmVRn+6yZXiQiZM0pzFOT7
+ E6ebo3zy30DyLF94XG7Ww1DPSRb+TcSg3s0OtbZDWqwYtWgpn7FtcotTAAvno43qqxp3
+ 9KjV6suQjHr9XC2DmJZX2yyMK//PuWppGw+71QiLpd87a9cmCAf0NZM5FlkRuNCr46KE
+ +bCPQKyBHrp0ssjYYN7KlQPAi+2e3+ZoYUte36IzS+M0oKJOwne3NicwxSBbV2c6EB+I
+ lf9A==
+X-Gm-Message-State: AOAM533pgcd4bieZ3AWn8olWKZLFfeFugoJwR9iDbtUMxTzNIeSeuxXc
+ G2K2TYBIJNVQR0cOC+vXF98n+F4GeUre+VOd9XBWlcY1dy3QFjeSoYeAOBkGcAv6xH3B2Lhh4M/
+ 4oMUSkmP0iiFC55FGLasSD7xu1xeXFTDX1GMHJgWTnygybJ0DFQ==
+X-Received: by 2002:a17:906:b005:b0:6b4:8861:597b with SMTP id
+ v5-20020a170906b00500b006b48861597bmr19372056ejy.238.1645542107960; 
+ Tue, 22 Feb 2022 07:01:47 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyl5ajALOLJhstZXNm4FFrBok2iV4kiyLbSmxL7nyMkd0sVGKDRLluG1qlnkwVf1Pl3ETi9Pw==
+X-Received: by 2002:a17:906:b005:b0:6b4:8861:597b with SMTP id
+ v5-20020a170906b00500b006b48861597bmr19372009ejy.238.1645542107580; 
+ Tue, 22 Feb 2022 07:01:47 -0800 (PST)
+Received: from [192.168.0.124] (xdsl-188-155-181-108.adslplus.ch.
  [188.155.181.108])
- by smtp.gmail.com with ESMTPSA id m2sm2467960ejb.20.2022.02.22.07.00.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Feb 2022 07:00:04 -0800 (PST)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Wei Xu <xuwei5@hisilicon.com>, Nishanth Menon <nm@ti.com>,
- Vignesh Raghavendra <vigneshr@ti.com>, Tero Kristo <kristo@kernel.org>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Jan Kotas <jank@cadence.com>, Li Wei <liwei213@huawei.com>,
- Stanley Chu <stanley.chu@mediatek.com>,
- Yaniv Gardi <ygardi@codeaurora.org>, linux-scsi@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 15/15] arm64: dts: qcom: sm8350: drop duplicated ref_clk in
- UFS
-Date: Tue, 22 Feb 2022 15:58:54 +0100
-Message-Id: <20220222145854.358646-16-krzysztof.kozlowski@canonical.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
-References: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
+ by smtp.gmail.com with ESMTPSA id ci16sm6345629ejb.128.2022.02.22.07.01.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 22 Feb 2022 07:01:47 -0800 (PST)
+Message-ID: <4e459bbb-ca6c-4ca2-efe9-8ab4d4f3b648@canonical.com>
+Date: Tue, 22 Feb 2022 16:01:45 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v2 05/15] dt-bindings: ufs: qcom,ufs: convert to dtschema
+Content-Language: en-US
+To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>, 
+ Rob Herring <robh+dt@kernel.org>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, Wei Xu <xuwei5@hisilicon.com>,
+ Nishanth Menon <nm@ti.com>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Tero Kristo <kristo@kernel.org>, "James E.J. Bottomley"
+ <jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Jan Kotas <jank@cadence.com>, Li Wei <liwei213@huawei.com>,
+ Stanley Chu <stanley.chu@mediatek.com>, Yaniv Gardi <ygardi@codeaurora.org>,
+ linux-scsi@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
+ <20220222145854.358646-6-krzysztof.kozlowski@canonical.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+In-Reply-To: <20220222145854.358646-6-krzysztof.kozlowski@canonical.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_070017_352782_14DA4A33 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20220222_070150_053034_37080BED 
+X-CRM114-Status: GOOD (  15.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,45 +115,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-ref_clk clock in UFS node is already there with a <0 0> frequency, which
-matches other DTSI files.
+On 22/02/2022 15:58, Krzysztof Kozlowski wrote:
+> Convert the Qualcomm Universal Flash Storage (UFS) Controller to DT
+> schema format.
+> 
+> Except the conversion, add also properties already present in DTS:
+> iommus, interconnects and power-domains.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+> ---
+>  .../devicetree/bindings/ufs/qcom,ufs.yaml     | 241 ++++++++++++++++++
+>  .../devicetree/bindings/ufs/ufshcd-pltfrm.txt |  90 -------
+>  2 files changed, 241 insertions(+), 90 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/ufs/qcom,ufs.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/ufs/ufshcd-pltfrm.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/ufs/qcom,ufs.yaml b/Documentation/devicetree/bindings/ufs/qcom,ufs.yaml
+> new file mode 100644
+> index 000000000000..356217124222
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/ufs/qcom,ufs.yaml
+> @@ -0,0 +1,241 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/ufs/qcom,ufs.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Qualcomm Universal Flash Storage (UFS) Controller
+> +
+> +maintainers:
+> +  - Yaniv Gardi <ygardi@codeaurora.org>
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
----
- arch/arm64/boot/dts/qcom/sm8350.dtsi | 3 ---
- 1 file changed, 3 deletions(-)
+This email bounces ("User doesn't exist: ygardi@codeaurora.org"), so
+maintainer is needed for Qualcomm UFS bindings.
 
-diff --git a/arch/arm64/boot/dts/qcom/sm8350.dtsi b/arch/arm64/boot/dts/qcom/sm8350.dtsi
-index a26bd3f13d4a..cb6442c9e761 100644
---- a/arch/arm64/boot/dts/qcom/sm8350.dtsi
-+++ b/arch/arm64/boot/dts/qcom/sm8350.dtsi
-@@ -1916,7 +1916,6 @@ ufs_mem_hc: ufshc@1d84000 {
- 			iommus = <&apps_smmu 0xe0 0x0>;
- 
- 			clock-names =
--				"ref_clk",
- 				"core_clk",
- 				"bus_aggr_clk",
- 				"iface_clk",
-@@ -1926,7 +1925,6 @@ ufs_mem_hc: ufshc@1d84000 {
- 				"rx_lane0_sync_clk",
- 				"rx_lane1_sync_clk";
- 			clocks =
--				<&rpmhcc RPMH_CXO_CLK>,
- 				<&gcc GCC_UFS_PHY_AXI_CLK>,
- 				<&gcc GCC_AGGRE_UFS_PHY_AXI_CLK>,
- 				<&gcc GCC_UFS_PHY_AHB_CLK>,
-@@ -1936,7 +1934,6 @@ ufs_mem_hc: ufshc@1d84000 {
- 				<&gcc GCC_UFS_PHY_RX_SYMBOL_0_CLK>,
- 				<&gcc GCC_UFS_PHY_RX_SYMBOL_1_CLK>;
- 			freq-table =
--				<75000000 300000000>,
- 				<75000000 300000000>,
- 				<0 0>,
- 				<0 0>,
--- 
-2.32.0
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
