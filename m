@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FEBDC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 22:34:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75366C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 23:17:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t+cMmcStIkdKcUo35nxK6cXfk7RzEpVVE3LDwD09IQE=; b=AdmUNqc+hczeTj
-	v4D5NhdnOjNaRKMEFM+WYi3+D8cuVvs8Fu4ZIsvcCrmwvUQie87jNxMXl0N1+akpfxZE74dFVNZxL
-	so27Ld2f2KChN+KoIM2OLIlOOfRRhRjoBPC+xwqd8MewdSo46QEo6wwpZFl1+8sxu7ZcZMmne9yQZ
-	RMjOMMASjRGn/4Ly6iS/336uR4dZiUc0MHRAN+oaSol2niVk+gPMSl4YBkmjOIL+a2dD1fnlYWpkG
-	ZUIbsaABBsiFZJsiDkqbQZz+R4GyS2pTt/BFdyvWeIlgsxac3c1a0wl4kNTgH2nmRZ0XaBVLni0r1
-	NGFRECDwWN/RjoCwsGlw==;
+	List-Owner; bh=uX4K11iTYO2xQq25OYUb8q2fW+N/t9zPEFBE0sRGecw=; b=Qq1OuK+XMoPXge
+	2zbFg5qQwaJKRSUM9HeN8xN02g1Tk1GVOl3YXYOz6kfoLaXJoI54OGjNomV6bGzeKYffzoJJVMPku
+	nyoR8R2CLOe5lyjt8vJDzGjaR7sYtYWL9IfC7MKaYu0r9HI6E9zrc6Ixs3z8ktRC3MYW0VkQFoWK3
+	wvpuCQp/UrKLBPcjVbYurEktccNhC/d5oJohbG+n4hCLGKacn0OpBSwUjB0XNTEpxonwE/L9zI6TH
+	tGdk1tOf6vAwKLff15puvpkZjefCPxdmIUJdPgO6oG56j29SSQvUlG2QT5SLpTxrZGVFk7fMRy9vh
+	fAdopJecOIBiQ0HSV7LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMdjd-00BnJn-Mv; Tue, 22 Feb 2022 22:34:17 +0000
+	id 1nMeOx-00BtFW-TW; Tue, 22 Feb 2022 23:16:59 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMdjN-00BnHc-M2; Tue, 22 Feb 2022 22:34:07 +0000
+ id 1nMeOk-00BtBL-OY; Tue, 22 Feb 2022 23:16:48 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 07B771F442FC
+ (Authenticated sender: nfraprado) with ESMTPSA id EC1691F42A25
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645569240;
- bh=bgMJpukKsAN/2biajYD0mGaPqwL63HQC8cQg4u9C94g=;
+ s=mail; t=1645571801;
+ bh=r6PeHk2jtY6t4pgQWhoW5J6l8CZI1VG43nrak3LpCXU=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=O+uQejWktUJuxx1ndtBGCiMmIzqI2aGr5fsrAL9xiQZvod9c3+N1eb1Y7E6MkPHVI
- YnJri23wDglTuWQIrUjh1XTDWfHgHO8CZ/tn+W38Jz/Jn9I7LJNHo8RRn5WfmmWu9Z
- 74uMw7c35/26DBzTdU5TLzjX1PYImKCzQ/V4RzHAgXCe9DavaKekAaX9Coflafyeux
- GIY/oHrt2gTyTkCEuoowdF2bqAzaQW3Ohm06/MfUDruQYkomovnE2M9Wb9ZZ5mkoeI
- 5RhnttcZA6Io9DSPpENTtcsPOXzS8Yv7t5fUMfTVOacDA7DOYItyoT0HAcp9FVgnTT
- igFCguYvhIPng==
-Date: Tue, 22 Feb 2022 17:33:55 -0500
+ b=mUQ5gjZpK0k1MfDhWh4gwKuGJY8QtXR+gfjkIi1dSVHB/QfrzDXWAfgzpsJ4B4I+a
+ 9qkZrZ+zW1YN51SUsZmIXglwH7ETI3pVBloGriz/FwcZADdJRjltvIx3PjSGRyu+ll
+ 1lXbrg5UNPJqIiwF3nGcsizdzZmTn6sGgu9P9j3pSLFCvrypFg9f/7YPjSflujBcy0
+ jVVc+PmCxBYM9uJcYMt5tyrT2kcYyqEvK2FPHSIUBv4MruH2i7DCwo1kWIbXdmCtaR
+ RLeiz9o/K6/O7C4CjqgPeVNjZiHyoKD4+fXCjvpl11T7rsyC0Qr9dyMXQXn80l1f9b
+ MFA/IKqRamyWw==
+Date: Tue, 22 Feb 2022 18:16:35 -0500
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
 To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>,
@@ -46,16 +46,16 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>
-Subject: Re: [PATCH v2 17/23] arm64: dts: mt8192: Add vcodec lat and core nodes
-Message-ID: <20220222223355.o4o6v7yxozsnkz33@notapiano>
+Subject: Re: [PATCH v2 21/23] arm64: dts: mt8192: Add dsi node
+Message-ID: <20220222231635.33cupieckldkzgzn@notapiano>
 References: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
- <20220218091633.9368-18-allen-kh.cheng@mediatek.com>
+ <20220218091633.9368-22-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220218091633.9368-18-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220218091633.9368-22-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_143401_900796_A9511E5B 
-X-CRM114-Status: GOOD (  16.01  )
+X-CRM114-CacheID: sfid-20220222_151646_988948_D02DA991 
+X-CRM114-Status: GOOD (  14.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,72 +72,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 18, 2022 at 05:16:27PM +0800, Allen-KH Cheng wrote:
-> Add vcodec lat and core nodes for mt8192 SoC.
+On Fri, Feb 18, 2022 at 05:16:31PM +0800, Allen-KH Cheng wrote:
+> Add dsi ndoe for mt8192 SoC.
 > 
 > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 58 ++++++++++++++++++++++++
->  1 file changed, 58 insertions(+)
+>  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
 > 
 > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index 936aa788664f..543a80252ce5 100644
+> index 026f2d8141b0..1f1555fd18f5 100644
 > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
 > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -1291,6 +1291,64 @@
->  			power-domains = <&spm MT8192_POWER_DOMAIN_ISP2>;
+> @@ -1350,6 +1350,19 @@
+>  			clocks = <&mmsys CLK_MM_DISP_DITHER0>;
 >  		};
 >  
-> +		vcodec_dec: vcodec_dec@16000000 {
+> +		dsi0: dsi@14010000 {
+> +			compatible = "mediatek,mt8183-dsi";
+> +			reg = <0 0x14010000 0 0x1000>;
+> +			interrupts = <GIC_SPI 265 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			mediatek,syscon-dsi = <&mmsys 0x140>;
+> +			clocks = <&mmsys CLK_MM_DSI0>,
+> +				<&mmsys CLK_MM_DSI_DSI0>,
+> +				<&mipi_tx0>;
 
-It's usually preferred to use '-' instead of '_' in the node name, like:
+Please fix the indentation.
 
-		vcodec_dec: vcodec-dec@16000000 {
-
-Same thing for the other vcodec nodes below.
-
-But more importantly, the Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-dt-binding shows the mtk-vcodec-lat and mtk-vcodec-core as subnodes of
-vcodec-dec. So I would follow that same structure here. Unless it does make more
-sense to have the nodes separate like this, but in that case the dt-binding
-should be updated.
-
-> +			compatible = "mediatek,mt8192-vcodec-dec";
-> +			reg = <0 0x16000000 0 0x1000>;		/* VDEC_SYS */
-> +			mediatek,scp = <&scp>;
-> +			iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
+> +			clock-names = "engine", "digital", "hs";
+> +			phys = <&mipi_tx0>;
+> +			phy-names = "dphy";
 > +		};
 > +
-> +		vcodec_lat: vcodec_lat@0x16010000 {
-
-Again, please drop the '0x' prefix.
-
-> +			compatible = "mediatek,mtk-vcodec-lat";
-> +			reg = <0 0x16010000 0 0x800>;		/* VDEC_MISC */
-> +			interrupts = <GIC_SPI 426 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			iommus = <&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD_EXT>,
-> +				<&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD2_EXT>,
-> +				<&iommu0 M4U_PORT_L5_VDEC_LAT0_AVC_MV_EXT>,
-> +				<&iommu0 M4U_PORT_L5_VDEC_LAT0_PRED_RD_EXT>,
-> +				<&iommu0 M4U_PORT_L5_VDEC_LAT0_TILE_EXT>,
-> +				<&iommu0 M4U_PORT_L5_VDEC_LAT0_WDMA_EXT>,
-> +				<&iommu0 M4U_PORT_L5_VDEC_LAT0_RG_CTRL_DMA_EXT>,
-> +				<&iommu0 M4U_PORT_L5_VDEC_UFO_ENC_EXT>;
-> +			clocks = <&topckgen CLK_TOP_VDEC_SEL>,
-> +				 <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
-> +				 <&vdecsys_soc CLK_VDEC_SOC_LAT>,
-> +				 <&vdecsys_soc CLK_VDEC_SOC_LARB1>,
-> +				 <&topckgen CLK_TOP_MAINPLL_D4>;
-> +			clock-names = "vdec-sel", "vdec-soc-vdec", "vdec-soc-lat", "vdec-vdec",
-> +				      "vdec-top";
-> +			assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
-> +			assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4>;
-> +			power-domains = <&spm MT8192_POWER_DOMAIN_VDEC>;
-> +		};
-> +
-> +		vcodec_core: vcodec_core@0x16025000 {
-
-Ditto.
+>  		ovl_2l2: ovl@14014000 {
+>  			compatible = "mediatek,mt8192-disp-ovl-2l";
+>  			reg = <0 0x14014000 0 0x1000>;
+> -- 
+> 2.18.0
+> 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
