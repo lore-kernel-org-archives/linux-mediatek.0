@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39594C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 15:10:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F8EDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 15:10:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xah0Mmf9DzdYcZz2ytEE9B+EAceQRBZUOtyfDP2/EDM=; b=wbBgVZ6f2jwoTa
-	DMTRGk9EMa7RGCkBj9DlBOn7WdJCJi85Wlvq3o5nO4jst4f/tjl83OWm26sKDvPL6ogssoycaCDI/
-	bVKuSvjgc3BbhQ9F5dkka3iCWlXFyszPi95Orw1fRqi4IkZr2h9oZbH6BCrziaVJLjJvllyIXmgCD
-	cfTZMKl2GfBWgVFevwepUlKpIG5LHuruG9Slp7NPkd4DnZgXfyGTdWlB2z4b7YWrcMWAvsQ+pUoJC
-	uiRCfgQzJlMKH7ZfdcZXb+s95ohvmvNxC9hN5JZJ4rwaQmBL5ycp8xhqaOnNzphLx4XNGA5mepphR
-	IkFEEOlVRdtjCO5w6XuA==;
+	List-Owner; bh=Wek3pwSoxuSxAB0+7VDITpgtiS2rz98u0Ist/PwlmJA=; b=lOB3/2FW0S9r+7
+	ANmaBFIJsHa0jsQdyxMs1EfDbeWBOMZo5/lh4RjMUsjAJva/9XTxATOsg4utYzTk6/LUvIFScnjil
+	FpkV/G2W7mNNVIR4hRwcs2tWsND2JrOcgxG8PxzYvtx5PQCZSSenteakxUBWQFO7g8JzSU+xGwe32
+	LliYKPc411clvwArVePgE50vw+iXjXE4fV0v0BBeaZ9ZC48WluYW32EfeK3RFa5wKGbea28bC5bCg
+	ZVTziTfu799q2+rnTR5ukYhcKRMUug/sG7OumSXQPqEONO09n6HDC7c6urnQa71ifKTgSne3iATyv
+	lxqTWrUQp5XJ+S3t76Cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMWnc-00A5MD-NA; Tue, 22 Feb 2022 15:09:56 +0000
-Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
+	id 1nMWno-00A5R8-2S; Tue, 22 Feb 2022 15:10:08 +0000
+Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMWeD-00A0KN-C9
- for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 15:00:15 +0000
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69])
+ id 1nMWeH-00A0MI-5K
+ for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 15:00:18 +0000
+Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
+ [209.85.208.200])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 1E7973FCA6
- for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 15:00:12 +0000 (UTC)
+ by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id B5B923FCA5
+ for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 15:00:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1645542012;
- bh=5q3Cvfs96FMgD3OViDSeZ+rSi5cV583JAJ+X+hKXLOQ=;
+ s=20210705; t=1645542015;
+ bh=LfKEooVWXSt0X9amI75MXA0ImuzcwyjqGr8txR6hCCo=;
  h=From:To:Subject:Date:Message-Id:In-Reply-To:References:
  MIME-Version;
- b=GQX7eovLM2ONZ5zVmcjtC0LU9oboow/vk2ZQTFSgt5QDlIC9XCt8HJp0fuPO5sDOH
- hpvExQGg1Y554QlIO/uzGvNmWNY59eTCCAyE5ABTJawaFTd+xoOF4+t8kW4lwo88Vc
- 5UM2Lcorn30ad+wNkmurzddJ0nE4LdYy6nY+dNB/AYkZw01GCnUv8qn29Ovp6i3DJ0
- UGb4CRbcXBmH3a/SQBSUDRdVdzM3dWT127bSa/VKAxcCpCysxoaqwyAviYPt8+VkAd
- axrVoMy6wAZmaFDt+42IvedFhIiRUUp4FL/MMf/ZkxRB/BKUAk/4rSLgKlisOrpr+b
- py7Yvihpa8VAw==
-Received: by mail-wm1-f69.google.com with SMTP id
- l31-20020a05600c1d1f00b00380e3425ba7so475419wms.9
- for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 07:00:12 -0800 (PST)
+ b=S16eXlqgVfdBuJl/1hHHyyn+igXPSYEeSBbfp9cyC4/tXFd0LxvC04fJp2ZknoKuD
+ E0Zc16OShVoyrYv7iPH83EHSUf4XcPHPwMKWuF1PlkmvAY6WMv5h9hFCOCwuIAbL2x
+ UluuUmxQBfRYJsCfgeae0LIFgxDH5ous5K+nQasKfCwx1GKIuDbKCoXLaI+3/V9o0s
+ N5G9czrcnQa/o6i3Z9Q4BexKkfiD8zo5rj6AYzJXeRsXHMqgQROCLc0iRkbqyDIjdQ
+ RPN8sp13XB4qwSxvtYAEwODY9rk9lX4O5zGb/eVhca3dqIqZtbQOspQwWvAWbhHHpT
+ XRjfc2EqYLxXw==
+Received: by mail-lj1-f200.google.com with SMTP id
+ q17-20020a2e7511000000b0023c95987502so5903106ljc.16
+ for <linux-mediatek@lists.infradead.org>; Tue, 22 Feb 2022 07:00:15 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=5q3Cvfs96FMgD3OViDSeZ+rSi5cV583JAJ+X+hKXLOQ=;
- b=qjNnXpTpf2v1BrPKheq5KvMK/INlEl62tRVpZPIiJbglG/YkXGSchonqlZdPyx6Ubg
- slwSAeCMH1geHznhPMZVzVKeHPg5pLctf/bl+ubA/uRh+3yyKXB+mEgn1K6n6TGA9FyB
- jOz45oFYhnRPJCZ60TpIFuZBWRGhzc8tjQiVdksvRAynQA3sQo8t9QeMp0eZ3fYCSzV3
- q8CHcGHP7QD+EhRcFzh8ydlkwutJlTdEWVY03vLKE1+21naX6n2Iy15LYcCgjQ//MBfg
- NCVD5WlETAJaQcXdI1yJh6m+R2ouOlswjz/1e0d/5bXE9xgGnIltBhm9UhWrC9A3Ikns
- Zhlw==
-X-Gm-Message-State: AOAM533x3+gqAKw3NlZYRZsqq0rAYdEdVcqP2SlCiVwuoIyEc5pWwaxv
- 1hB3AOv75SGQ3nqwv2OjzZ2QwmnTOyfgKWK/SXslnBO7M/7/OkJ/PmL6MnskuNd35u/bjqxJMT7
- MQz3TE4BEitgWSH1NCq1PK37kACd9RL9AjF9GeYRO9Z2sdUax8w==
-X-Received: by 2002:a50:e144:0:b0:410:d813:92 with SMTP id
- i4-20020a50e144000000b00410d8130092mr26862698edl.9.1645542001214; 
- Tue, 22 Feb 2022 07:00:01 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyMw582wnovmDAi/CIh3lxLYM2LG2ODyt+mkZ0ZiJXVQxrV8hjaQpoxhGRnSRAJris1bHJ60A==
-X-Received: by 2002:a50:e144:0:b0:410:d813:92 with SMTP id
- i4-20020a50e144000000b00410d8130092mr26862658edl.9.1645542000976; 
- Tue, 22 Feb 2022 07:00:00 -0800 (PST)
+ bh=LfKEooVWXSt0X9amI75MXA0ImuzcwyjqGr8txR6hCCo=;
+ b=7nbHNeuM6GgF0xR+8CPOnzItaqTRxl4J3gBE3f5lvaFEgyjvpkK8UeV8+QciT3UYgh
+ 5b1PuFhxE7FsKN6ANDGrL9k6oGI9TXH7u0t28Is4DQ3Pq4EFrp2+5DzRHapNpfhqsWfg
+ dcNwPPpTVIhvdetnGYFaHF4QDG3KsuMT5gdNuwi5Psra2TPcOYBEfaU0rmlq5l6t8hTj
+ 8YHSNtOsd/iAGQud7W5tRgrRrB8pQJDRzGd8zE5cc2vMQhMaW7AqWFtwF/rZfnTDsmvm
+ YSTDPEgVLZinC7qp9v8f3V2qpccH0ohb0QpIK/dtYCyn33mYHdoy0LU9lKCqgczcU6WN
+ O/nA==
+X-Gm-Message-State: AOAM530lphBajxkrOdv1KygA/JindDUMt19h4f7FTIcIAy8m9VKqhAFW
+ YVuQLO7ToIu/Pxx288KEaftdedU87yfpWovKKG9EKR1p8JQEt2zMJwXtQjbZf47869s3UXTuoHP
+ cn7AEi1CuAkDyQki416AQft8vkiU3dsdF1IAOfGDkczYrFnujvQ==
+X-Received: by 2002:a17:906:70c2:b0:6cf:e1cc:4d8c with SMTP id
+ g2-20020a17090670c200b006cfe1cc4d8cmr20090153ejk.696.1645542004850; 
+ Tue, 22 Feb 2022 07:00:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyR3qbd+Iftv6XGp15bvvgUICPOPWMYZg+AzIuOxdejdmzbh/iz1wm8C/0MI15ezn8MGt0S6w==
+X-Received: by 2002:a17:906:70c2:b0:6cf:e1cc:4d8c with SMTP id
+ g2-20020a17090670c200b006cfe1cc4d8cmr20090120ejk.696.1645542004625; 
+ Tue, 22 Feb 2022 07:00:04 -0800 (PST)
 Received: from localhost.localdomain (xdsl-188-155-181-108.adslplus.ch.
  [188.155.181.108])
- by smtp.gmail.com with ESMTPSA id m2sm2467960ejb.20.2022.02.22.06.59.59
+ by smtp.gmail.com with ESMTPSA id m2sm2467960ejb.20.2022.02.22.07.00.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Feb 2022 07:00:00 -0800 (PST)
+ Tue, 22 Feb 2022 07:00:04 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
  Rob Herring <robh+dt@kernel.org>,
@@ -88,17 +88,17 @@ To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 13/15] arm64: dts: qcom: msm8996: drop unsupported UFS
- vddp-ref-clk-max-microamp
-Date: Tue, 22 Feb 2022 15:58:52 +0100
-Message-Id: <20220222145854.358646-14-krzysztof.kozlowski@canonical.com>
+Subject: [PATCH v2 15/15] arm64: dts: qcom: sm8350: drop duplicated ref_clk in
+ UFS
+Date: Tue, 22 Feb 2022 15:58:54 +0100
+Message-Id: <20220222145854.358646-16-krzysztof.kozlowski@canonical.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
 References: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_070013_627366_A01875B9 
-X-CRM114-Status: GOOD (  12.97  )
+X-CRM114-CacheID: sfid-20220222_070017_352782_14DA4A33 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,37 +115,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The property vddp-ref-clk-max-microamp (for VDDP ref clk supply which is
-l25 regulator) is not documented in MSM8996 UFS PHY bindings
-(qcom,msm8996-qmp-ufs-phy).  It is mentioned in the other UFS PHY
-bindings for qcom,msm8996-ufs-phy-qmp-14nm.
-
-The MSM8996-based Xiaomi devices configure l25 regulator in a
-conflicting way:
-1. with maximum 100 uAmp for VDDP ref clk supply of UFS PHY,
-2. with maximum 450 mAmp for VCCQ supply of UFS.
-
-Since the vddp-ref-clk-max-microamp property is basically not
-documented for that UFS PHY and has a conflicting values, drop it
-entirely as it looks like not tested and not used ever.
+ref_clk clock in UFS node is already there with a <0 0> frequency, which
+matches other DTSI files.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 ---
- arch/arm64/boot/dts/qcom/msm8996-xiaomi-common.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+ arch/arm64/boot/dts/qcom/sm8350.dtsi | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/qcom/msm8996-xiaomi-common.dtsi b/arch/arm64/boot/dts/qcom/msm8996-xiaomi-common.dtsi
-index 7a9fcbe9bb31..3ade756e1cd9 100644
---- a/arch/arm64/boot/dts/qcom/msm8996-xiaomi-common.dtsi
-+++ b/arch/arm64/boot/dts/qcom/msm8996-xiaomi-common.dtsi
-@@ -341,7 +341,6 @@ &ufsphy {
- 	vdda-pll-max-microamp = <9440>;
+diff --git a/arch/arm64/boot/dts/qcom/sm8350.dtsi b/arch/arm64/boot/dts/qcom/sm8350.dtsi
+index a26bd3f13d4a..cb6442c9e761 100644
+--- a/arch/arm64/boot/dts/qcom/sm8350.dtsi
++++ b/arch/arm64/boot/dts/qcom/sm8350.dtsi
+@@ -1916,7 +1916,6 @@ ufs_mem_hc: ufshc@1d84000 {
+ 			iommus = <&apps_smmu 0xe0 0x0>;
  
- 	vddp-ref-clk-supply = <&vreg_l25a_1p2>;
--	vddp-ref-clk-max-microamp = <100>;
- 	vddp-ref-clk-always-on;
- };
- 
+ 			clock-names =
+-				"ref_clk",
+ 				"core_clk",
+ 				"bus_aggr_clk",
+ 				"iface_clk",
+@@ -1926,7 +1925,6 @@ ufs_mem_hc: ufshc@1d84000 {
+ 				"rx_lane0_sync_clk",
+ 				"rx_lane1_sync_clk";
+ 			clocks =
+-				<&rpmhcc RPMH_CXO_CLK>,
+ 				<&gcc GCC_UFS_PHY_AXI_CLK>,
+ 				<&gcc GCC_AGGRE_UFS_PHY_AXI_CLK>,
+ 				<&gcc GCC_UFS_PHY_AHB_CLK>,
+@@ -1936,7 +1934,6 @@ ufs_mem_hc: ufshc@1d84000 {
+ 				<&gcc GCC_UFS_PHY_RX_SYMBOL_0_CLK>,
+ 				<&gcc GCC_UFS_PHY_RX_SYMBOL_1_CLK>;
+ 			freq-table =
+-				<75000000 300000000>,
+ 				<75000000 300000000>,
+ 				<0 0>,
+ 				<0 0>,
 -- 
 2.32.0
 
