@@ -4,58 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42C2BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Feb 2022 03:47:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0005DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Feb 2022 03:47:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TqL9x1I0uCx0KZFNPhchVSrpd+POIldijt/XM/AWoiY=; b=X24X7RonsXexkC
-	GFIVDJ9cxSp94WL+M+YK2Ia9QUaAuj28ybLtkfoSMVQAuyhOP+Ri9eUQsJOpdt6PKw8i3YyQytrdT
-	SBvP70/4CntYXOg36Gy/o8k7RXMtOVAb2hv7jpH3+C16xXlFBp9fK9Ujm6vAk/P5DUD5r6EX90eWN
-	6PA6PK+DwhHTjR787fsqe2Zx167KAinefNlNL0VGWvmD8cDBnGVyXz1dGblcWZE6RGAMyQTKQAqKg
-	AsrslqoyeDncQEOzkkqBSPyoOGcZtGSNtyKsa/YouHhTpmV6L8FB5c/6Q07T79Poa8HlzjMUayXzU
-	wG7gHgnj0ReZP5gZdC0g==;
+	List-Owner; bh=zY4Yb6xb0Wzc5elzUm3XS7LdM7+Wt7MC3SNakBoM0Jc=; b=twVmmy/To64Y6O
+	eQ/rZGqTtOCabAhjGBUQuL+QzjRhgHplgDcmUzQHPe2kQJiaoHrPYb6smNWyr2nrF2uat5uvYaPJ1
+	2a/KptiJeSx9qmpwxDeKczWJYkfHsIDTNjSnWVa3/nmH1yGd5nypZCqpoInhRxWz768+N2AkdJrZq
+	Y2bh3g20YXEV/CvU20iXldLRjkpSgjIoJemLfep6xExAWn2UNbGmuNamXgbMwDbZA9Q0N76bwiSCp
+	gQvIA6/KwYpcHPEK+FQEd5Mc9+jciTCet6IXHVKfAc9DK0pkD+DC1QSN7Oy4388w+0S1vIYHT48Cf
+	zuSx0/NUCeTYt/kCBYwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMice-00CblZ-Me; Wed, 23 Feb 2022 03:47:24 +0000
+	id 1nMicm-00Cboh-Cz; Wed, 23 Feb 2022 03:47:32 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMiaw-00Cb5v-93; Wed, 23 Feb 2022 03:45:39 +0000
-X-UUID: 0a9b1f50f6274048b80fadcba09230fa-20220222
-X-UUID: 0a9b1f50f6274048b80fadcba09230fa-20220222
+ id 1nMiaw-00Cb6l-6E; Wed, 23 Feb 2022 03:45:39 +0000
+X-UUID: 7a8ddfd7c753480984b722d91ffbc3c1-20220222
+X-UUID: 7a8ddfd7c753480984b722d91ffbc3c1-20220222
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
+ (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1330703383; Tue, 22 Feb 2022 20:45:29 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 16803391; Tue, 22 Feb 2022 20:45:29 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Feb 2022 19:38:55 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 23 Feb 2022 11:38:47 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 23 Feb 2022 11:38:47 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <chunkuang.hu@kernel.org>
-CC: <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <matthias.bgg@gmail.com>
-Subject: Re: Share the maintain loading of Mediatek SoC driver (the display
- related part)
-Date: Wed, 23 Feb 2022 11:38:47 +0800
-Message-ID: <20220223033847.3701-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <CAAOTY__wJw2QmathuWe9fJsNb=evUbGEFHAZzv9VuzXyL5GK3w@mail.gmail.com>
-References: <CAAOTY__wJw2QmathuWe9fJsNb=evUbGEFHAZzv9VuzXyL5GK3w@mail.gmail.com>
+ 15.0.1497.2; Tue, 22 Feb 2022 19:40:21 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 23 Feb 2022 11:40:19 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 23 Feb 2022 11:40:17 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
+ Shih" <tzungbi@chromium.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
+ <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+ <frkoenig@chromium.org>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Daniel Vetter <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, 
+ Irui Wang <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v7,
+ 05/15] media: mtk-vcodec: Call v4l2_m2m_set_dst_buffered() set
+ capture buffer buffered
+Date: Wed, 23 Feb 2022 11:39:58 +0800
+Message-ID: <20220223034008.15781-6-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220223034008.15781-1-yunfei.dong@mediatek.com>
+References: <20220223034008.15781-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_194538_365547_CDCA2A62 
-X-CRM114-Status: UNSURE (   7.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220222_194538_260596_C33954A6 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,30 +87,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
+lat thread: output queue      \
+                               -> lat hardware -> lat trans buffer
+            lat trans buffer  /
 
->Hi, Matthias:
->
->It seems that you are so busy that you do not frequently review
->patches. I would like to share the maintain loading of Mediatek SoC
->driver (the display related part). I list some choices:
->
->1. I would be the sub-maintainer of Mediatek display related SoC
->driver: I pick patches and send pull request to you. This would mostly
->share your loading.
->2. I would be the reviewer of Mediatek display related SoC driver:
->After I reviewed these patches, you could take less effort to review
->these patches.
->
+core thread: capture queue     \
+                                ->core hardware -> capture queue
+             lat trans buffer  /
 
-I'd like to share the loading, too.
-I think I can start from catching common mistakes I learned from
-your reviews.
+Lat and core work in different thread, setting capture buffer buffered.
 
-How do you think?
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Cheers,
-Miles
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
+index 5aebf88f997b..23a154c4e321 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
+@@ -314,6 +314,9 @@ static void mtk_init_vdec_params(struct mtk_vcodec_ctx *ctx)
+ 	src_vq = v4l2_m2m_get_vq(ctx->m2m_ctx,
+ 				 V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
+ 
++	if (ctx->dev->vdec_pdata->hw_arch != MTK_VDEC_PURE_SINGLE_CORE)
++		v4l2_m2m_set_dst_buffered(ctx->m2m_ctx, 1);
++
+ 	/* Support request api for output plane */
+ 	src_vq->supports_requests = true;
+ 	src_vq->requires_requests = true;
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
