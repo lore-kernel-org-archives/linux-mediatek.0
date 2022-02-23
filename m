@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 269BAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Feb 2022 23:56:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FBFAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Feb 2022 02:00:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mULjvR0ginUYnbdYyYexOglUkJ0SOziZBj9GDGWz3nc=; b=XuVpfiel/8ar6U
-	WEiyrWWaIQ4kWEAXSy5dlQocJSJswc6v0p80xjmKwx91X2J+6P6rQXhAB4KOzfqdgw40ssHmkhaY5
-	wU9dw+pIG+Ngn5xgmHo1SPbUu7kDwmk+3cCxyN/Ns4OV4bFFCv/R57mkNjbpFppKapm+zKrDePz+y
-	WlbMBpVDf5HaoaDi6Nhpz2P3Q5bKp0P+3hFR3vf/S7DzSJPH48UCThz4mC9EWwAe8NwZXLpTPG59z
-	/q9Oh05K7Y/AMoyyrIPg4ZMTS5xvRhPRW3eGX3gD5UdV65APf/WbrA+v6wYlaSWdO322VNjhu9QMm
-	bQKvvApUt3cdOS23UogQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=usYdQLUp7ZmjZCqt5AdgKQtlOEdpvQlcU0poVOlgEw4=; b=idyq/kknQURASE
+	FV8qtdJHBzhdPTmoFeFqepaCjKoE8kk/fgtAyhY65eo8HuxZ8BQnf6sT3gvXzZpzyf/92sJEjjQwN
+	odIXjXYmQ78qAqThzbXjO3LYICHSIcv+/TMiXVc+5Y/ApbRjwoet+4dT0Uk5Jy3SnLGW5JtB8C4Zs
+	DZXNZXDFoX6xQKIA5keNjhwpyrpaGXfzvIKnDzLT40sORtZQxLnIXOoh4V7/uelAwSPu4YuYILUkt
+	lymwgApkp11NqRJG4H7OI9B2c/ApwlEpvtQUtJmIdpEZ7ooF5HvB0VsIsR6b3BpsMSTra58bCaXBq
+	vczqc6vrGOe6TZWbgq5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMf0y-00Bxxo-E9; Tue, 22 Feb 2022 23:56:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nMgww-00CFiq-MF; Wed, 23 Feb 2022 02:00:14 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMf0u-00Bxvr-Ha
- for linux-mediatek@lists.infradead.org; Tue, 22 Feb 2022 23:56:15 +0000
-X-UUID: 2cff934ca8f54f25ab7a4a2f273b9878-20220222
-X-UUID: 2cff934ca8f54f25ab7a4a2f273b9878-20220222
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
+ id 1nMgwh-00CFgm-Ri; Wed, 23 Feb 2022 02:00:03 +0000
+X-UUID: f7265b121e2944b3880bfac9efeb903a-20220222
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=vE3zMqHrbOoIWQPl0yQfiu8puqBmdf9TruX/R81uyYY=; 
+ b=CBQqXby1m7g9E7JkgzheiWAsckgUjLXUxvFLxbW/v7A1NlCoZjvNG/TMCC6lMpc3PDjdosr/qYZSeNCAa6YIlbalHHgR+e4YdaV6tSwyG2fUM0n85jRVnVlyxdYheQb+m50ubeNad9AUN7IWhNdFrIPYhihSXhOuV2Ki0Cp+2mY=;
+X-UUID: f7265b121e2944b3880bfac9efeb903a-20220222
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <leilk.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 952359067; Tue, 22 Feb 2022 16:56:05 -0700
+ with ESMTP id 1677069837; Tue, 22 Feb 2022 18:59:54 -0700
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Feb 2022 15:56:03 -0800
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Feb 2022 17:59:53 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Feb 2022 07:56:01 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 23 Feb 2022 07:56:01 +0800
-From: <sean.wang@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
-CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
- <Soul.Huang@mediatek.com>, <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
- <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
- <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
- <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
- <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
- <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
- <jemele@google.com>, <abhishekpandit@google.com>, <michaelfsun@google.com>,
- <mcchou@chromium.org>, <shawnku@google.com>,
- <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, Yake Yang <yake.yang@mediatek.com>
-Subject: [PATCH 1/2] Bluetooth: btusb: Add a new PID/VID 13d3/3567 for MT7921
-Date: Wed, 23 Feb 2022 07:55:59 +0800
-Message-ID: <dba1c05e4bfdf53e631ff134eaa9449e2ad5deef.1645573830.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
+ 15.0.1497.2; Wed, 23 Feb 2022 09:59:51 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 23 Feb 2022 09:59:50 +0800
+Message-ID: <2c1a0925aeb1f3ba640a29e0f6f9765eb609293b.camel@mediatek.com>
+Subject: Re: [PATCH V2 4/6] spi: mediatek: add spi memory support
+From: Leilk Liu <leilk.liu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "Mark Brown" <broonie@kernel.org>
+CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Date: Wed, 23 Feb 2022 09:59:50 +0800
+In-Reply-To: <2e994be0-8b60-a3dc-2ab7-34d93192dc09@collabora.com>
+References: <20220221040717.3729-1-leilk.liu@mediatek.com>
+ <20220221040717.3729-5-leilk.liu@mediatek.com>
+ <2e994be0-8b60-a3dc-2ab7-34d93192dc09@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_155612_613572_E8F12A43 
-X-CRM114-Status: GOOD (  11.09  )
+X-CRM114-CacheID: sfid-20220222_180001_350765_C17E13DA 
+X-CRM114-Status: GOOD (  37.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,78 +80,385 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yake Yang <yake.yang@mediatek.com>
+On Tue, 2022-02-22 at 11:49 +0100, AngeloGioacchino Del Regno wrote:
+> Il 21/02/22 05:07, Leilk Liu ha scritto:
+> > this patch add the support of spi-mem.
+> > 
+> > Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+> > ---
+> >   drivers/spi/spi-mt65xx.c | 310
+> > ++++++++++++++++++++++++++++++++++++++-
+> >   1 file changed, 309 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+> > index 5fa677a589a4..852fc008329a 100644
+> > --- a/drivers/spi/spi-mt65xx.c
+> > +++ b/drivers/spi/spi-mt65xx.c
+> > @@ -17,6 +17,7 @@
+> >   #include <linux/platform_data/spi-mt65xx.h>
+> >   #include <linux/pm_runtime.h>
+> >   #include <linux/spi/spi.h>
+> > +#include <linux/spi/spi-mem.h>
+> >   #include <linux/dma-mapping.h>
+> >   
+> >   #define SPI_CFG0_REG                      0x0000
+> > @@ -75,8 +76,21 @@
+> >   #define SPI_CMD_IPM_GET_TICKDLY_OFFSET    22
+> >   
+> >   #define SPI_CMD_IPM_GET_TICKDLY_MASK	GENMASK(24, 22)
+> > +
+> > +#define PIN_MODE_CFG(x)	((x) / 2)
+> > +
+> > +#define SPI_CFG3_IPM_PIN_MODE_OFFSET		0
+> >   #define SPI_CFG3_IPM_HALF_DUPLEX_DIR		BIT(2)
+> >   #define SPI_CFG3_IPM_HALF_DUPLEX_EN		BIT(3)
+> > +#define SPI_CFG3_IPM_XMODE_EN			BIT(4)
+> > +#define SPI_CFG3_IPM_NODATA_FLAG		BIT(5)
+> > +#define SPI_CFG3_IPM_CMD_BYTELEN_OFFSET		8
+> > +#define SPI_CFG3_IPM_ADDR_BYTELEN_OFFSET	12
+> > +
+> > +#define SPI_CFG3_IPM_CMD_PIN_MODE_MASK		GENMASK(1, 0)
+> > +#define SPI_CFG3_IPM_CMD_BYTELEN_MASK		GENMASK(11, 8)
+> > +#define SPI_CFG3_IPM_ADDR_BYTELEN_MASK		GENMASK(15, 12)
+> > +
+> >   #define MT8173_SPI_MAX_PAD_SEL 3
+> >   
+> >   #define MTK_SPI_PAUSE_INT_STATUS 0x2
+> > @@ -87,6 +101,8 @@
+> >   #define MTK_SPI_MAX_FIFO_SIZE 32U
+> >   #define MTK_SPI_PACKET_SIZE 1024
+> >   #define MTK_SPI_IPM_PACKET_SIZE SZ_64K
+> > +#define MTK_SPI_IPM_PACKET_LOOP SZ_256
+> > +
+> >   #define MTK_SPI_32BITS_MASK  (0xffffffff)
+> >   
+> >   #define DMA_ADDR_EXT_BITS (36)
+> > @@ -104,7 +120,8 @@ struct mtk_spi_compatible {
+> >   	bool no_need_unprepare;
+> >   	/* IPM design improve some single mode features */
+> >   	bool ipm_design;
+> > -
+> > +	/* IPM design that support quad mode */
+> > +	bool support_quad;
+> >   };
+> >   
+> >   struct mtk_spi {
+> > @@ -120,6 +137,11 @@ struct mtk_spi {
+> >   	u32 tx_sgl_len, rx_sgl_len;
+> >   	const struct mtk_spi_compatible *dev_comp;
+> >   	u32 spi_clk_hz;
+> > +	struct completion spimem_done;
+> > +	bool use_spimem;
+> > +	struct device *dev;
+> > +	dma_addr_t tx_dma;
+> > +	dma_addr_t rx_dma;
+> >   };
+> >   
+> >   static const struct mtk_spi_compatible mtk_common_compat;
+> > @@ -134,6 +156,13 @@ static const struct mtk_spi_compatible
+> > ipm_compat_single = {
+> >   	.ipm_design = true,
+> >   };
+> >   
+> > +static const struct mtk_spi_compatible ipm_compat_quad = {
+> > +	.enhance_timing = true,
+> > +	.dma_ext = true,
+> > +	.ipm_design = true,
+> > +	.support_quad = true,
+> > +};
+> > +
+> >   static const struct mtk_spi_compatible mt6765_compat = {
+> >   	.need_pad_sel = true,
+> >   	.must_tx = true,
+> > @@ -178,6 +207,9 @@ static const struct of_device_id
+> > mtk_spi_of_match[] = {
+> >   	{ .compatible = "mediatek,ipm-spi-single",
+> >   		.data = (void *)&ipm_compat_single,
+> >   	},
+> > +	{ .compatible = "mediatek,ipm-spi-quad",
+> > +		.data = (void *)&ipm_compat_quad,
+> > +	},
+> >   	{ .compatible = "mediatek,mt2701-spi",
+> >   		.data = (void *)&mtk_common_compat,
+> >   	},
+> > @@ -694,6 +726,13 @@ static irqreturn_t mtk_spi_interrupt(int irq,
+> > void *dev_id)
+> >   	else
+> >   		mdata->state = MTK_SPI_IDLE;
+> >   
+> > +	/* SPI-MEM ops */
+> > +	if (mdata->use_spimem) {
+> > +		complete(&mdata->spimem_done);
+> > +
+> > +		return IRQ_HANDLED;
+> > +	}
+> > +
+> 
+> I would instead make a new ISR for the SPI-MEM case... as you're
+> bypassing the
+> entire mtk_spi_interrupt() function like that.
+> 
+> Example:
+> 
+> static void mtk_spi_check_and_set_state(struct mtk_spi *mdata)
+> {
+> 	u32 reg_val;
+> 
+> 	reg_val = readl(mdata->base + SPI_STATUS0_REG);
+> 
+> 	if (reg_val & MTK_SPI_PAUSE_INT_STATUS)
+> 
+> 		mdata->state = MTK_SPI_PAUSED;
+> 
+> 	else
+> 
+> 		mdata->state = MTK_SPI_IDLE;
+> }
+> 
+> static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
+> 
+> {
+> 	u32 cmd, reg_val, cnt, remainder, len;
+> 
+> 	struct spi_master *master = dev_id;
+> 
+> 	struct mtk_spi *mdata = spi_master_get_devdata(master);
+> 
+> 	struct spi_transfer *trans = mdata->cur_transfer;
+> 
+> 	mtk_spi_check_and_set_state(mdata);
+> 
+> 	if (!master->can_dma(........
+> 	.... blurb...
+> }
+> 
+> static irqreturn_t mtk_spimem_interrupt(int irq, void *dev_id)
+> {
+> 	struct spi_master *master = dev_id;
+> 
+> 	struct mtk_spi *mdata = spi_master_get_devdata(master);
+> 
+> 	mtk_spi_check_and_set_state(mdata);
+> 	complete(&mdata->spimem_done);
+> 
+> 	return IRQ_HANDLED;
+> }
+> 
+> ... of course, in mtk_spi_probe(), you would do something like
+> 
+> if (mdata->use_spimem)
+> 	ret = devm_request_irq(&pdev->dev, irq, mtk_spimem_interrupt,
+> 		...... blah ......
+> else
+> 	ret = devm_request_irq(&pdev->dev, irq, mtk_spi_interrupt,
+> 		..... blah ......
+> 
+> This way, you're separating the two - increasing human readability
+> and showing
+> the simplifications (in that regard) in the IPM IP's SPI-MEM
+> handling.
+> 
+thanks for your advise, I'll do it in the next version.
 
-Add VID 13D3 & PID 3567 for MediaTek MT7921 USB Bluetooth chip.
+> >   	if (!master->can_dma(master, NULL, trans)) {
+> >   		if (trans->rx_buf) {
+> >   			cnt = mdata->xfer_len / 4;
+> > @@ -777,6 +816,266 @@ static irqreturn_t mtk_spi_interrupt(int irq,
+> > void *dev_id)
+> >   	return IRQ_HANDLED;
+> >   }
+> >   
+> > +static int mtk_spi_mem_adjust_op_size(struct spi_mem *mem,
+> > +				      struct spi_mem_op *op)
+> > +{
+> > +	int opcode_len;
+> > +
+> > +	if (op->data.dir != SPI_MEM_NO_DATA) {
+> > +		opcode_len = 1 + op->addr.nbytes + op->dummy.nbytes;
+> > +		if (opcode_len + op->data.nbytes >
+> > MTK_SPI_IPM_PACKET_SIZE) {
+> > +			op->data.nbytes = MTK_SPI_IPM_PACKET_SIZE -
+> > opcode_len;
+> > +			/* force data buffer dma-aligned. */
+> > +			op->data.nbytes -= op->data.nbytes % 4;
+> > +		}
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static bool mtk_spi_mem_supports_op(struct spi_mem *mem,
+> > +				    const struct spi_mem_op *op)
+> > +{
+> > +	if (op->data.buswidth > 4 || op->addr.buswidth > 4 ||
+> > +	    op->dummy.buswidth > 4 || op->cmd.buswidth > 4)
+> > +		return false;
+> > +
+> > +	if (op->addr.nbytes && op->dummy.nbytes &&
+> > +	    op->addr.buswidth != op->dummy.buswidth)
+> > +		return false;
+> > +
+> > +	if (op->addr.nbytes + op->dummy.nbytes > 16)
+> > +		return false;
+> > +
+> > +	if (op->data.nbytes > MTK_SPI_IPM_PACKET_SIZE) {
+> > +		if (op->data.nbytes / MTK_SPI_IPM_PACKET_SIZE >
+> > +		    MTK_SPI_IPM_PACKET_LOOP ||
+> > +		    op->data.nbytes % MTK_SPI_IPM_PACKET_SIZE != 0)
+> > +			return false;
+> > +	}
+> > +
+> > +	return true;
+> > +}
+> > +
+> > +static void mtk_spi_mem_setup_dma_xfer(struct spi_master *master,
+> > +				       const struct spi_mem_op *op)
+> > +{
+> > +	struct mtk_spi *mdata = spi_master_get_devdata(master);
+> > +
+> > +	writel((u32)(mdata->tx_dma & MTK_SPI_32BITS_MASK),
+> > +	       mdata->base + SPI_TX_SRC_REG);
+> > +#ifdef CONFIG_ARCH_DMA_ADDR_T_64BIT
+> > +	if (mdata->dev_comp->dma_ext)
+> > +		writel((u32)(mdata->tx_dma >> 32),
+> > +		       mdata->base + SPI_TX_SRC_REG_64);
+> > +#endif
+> > +
+> > +	if (op->data.dir == SPI_MEM_DATA_IN) {
+> > +		writel((u32)(mdata->rx_dma & MTK_SPI_32BITS_MASK),
+> > +		       mdata->base + SPI_RX_DST_REG);
+> > +#ifdef CONFIG_ARCH_DMA_ADDR_T_64BIT
+> > +		if (mdata->dev_comp->dma_ext)
+> > +			writel((u32)(mdata->rx_dma >> 32),
+> > +			       mdata->base + SPI_RX_DST_REG_64);
+> > +#endif
+> > +	}
+> > +}
+> > +
+> > +static int mtk_spi_transfer_wait(struct spi_mem *mem,
+> > +				 const struct spi_mem_op *op)
+> > +{
+> > +	struct mtk_spi *mdata = spi_master_get_devdata(mem->spi-
+> > >master);
+> > +	unsigned long long ms = 1;
+> 
+> Initializing ms to 1 here is useless, as you're anyway reinitializing
+> it
+> right after. I would do it as following:
+> 
+> u64 ms = 8000LL;
+> 
+> if (op->data.dir == SPI_MEM_NO_DATA)
+> 	ms *= 32;
+> else
+> 	ms *= op->data.nbytes;
+> 
+OK,I'll fix it.
 
-The information in /sys/kernel/debug/usb/devices about the Bluetooth
-device is listed as the below.
+> Besides, can you please add a comment to the code explaining why the
+> reason for the waits (why 8, why 1000, why 32)?
+> 
+OK,THANKS
 
-T:  Bus=05 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
-D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=13d3 ProdID=3567 Rev= 1.00
-S:  Manufacturer=MediaTek Inc.
-S:  Product=Wireless_Device
-S:  SerialNumber=000000000
-C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+> > +
+> > +	if (op->data.dir == SPI_MEM_NO_DATA)
+> > +		ms = 8LL * 1000LL * 32;
+> > +	else
+> > +		ms = 8LL * 1000LL * op->data.nbytes;
+> > +	do_div(ms, mem->spi->max_speed_hz);
+> 
+> I appreciate the usage of safe division helpers, but this is the
+> wrong one:
+> you have a unsigned long long (64-bits) dividend and a u32 divisor,
+> so the
+> right function to use here is div_u64().
+> 
+OK, I'll fix it. thanks!
 
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Yake Yang <yake.yang@mediatek.com>
----
- drivers/bluetooth/btusb.c | 3 +++
- 1 file changed, 3 insertions(+)
+> 	ms = div_u64(ms, mem->spi->max_speed_hz);
+> 
+> > +	ms += ms + 1000; /* 1s tolerance */
+> > +
+> > +	if (ms > UINT_MAX)
+> > +		ms = UINT_MAX;
+> > +
+> > +	if (!wait_for_completion_timeout(&mdata->spimem_done,
+> > +					 msecs_to_jiffies(ms))) {
+> > +		dev_err(mdata->dev, "spi-mem transfer timeout\n");
+> > +		return -ETIMEDOUT;
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_spi_mem_exec_op(struct spi_mem *mem,
+> > +			       const struct spi_mem_op *op)
+> > +{
+> > +	struct mtk_spi *mdata = spi_master_get_devdata(mem->spi-
+> > >master);
+> > +	u32 reg_val, nio = 1, tx_size;
+> > +	char *tx_tmp_buf, *rx_tmp_buf;
+> > +	int ret = 0;
+> > +
+> > +	mdata->use_spimem = true;
+> > +	reinit_completion(&mdata->spimem_done);
+> > +
+> > +	mtk_spi_reset(mdata);
+> > +	mtk_spi_hw_init(mem->spi->master, mem->spi);
+> > +	mtk_spi_prepare_transfer(mem->spi->master, mem->spi-
+> > >max_speed_hz);
+> > +
+> > +	reg_val = readl(mdata->base + SPI_CFG3_IPM_REG);
+> > +	/* opcode byte len */
+> > +	reg_val &= ~SPI_CFG3_IPM_CMD_BYTELEN_MASK;
+> > +	reg_val |= 1 << SPI_CFG3_IPM_CMD_BYTELEN_OFFSET;
+> > +
+> > +	/* addr & dummy byte len */
+> > +	reg_val &= ~SPI_CFG3_IPM_ADDR_BYTELEN_MASK;
+> > +	if (op->addr.nbytes || op->dummy.nbytes)
+> > +		reg_val |= (op->addr.nbytes + op->dummy.nbytes) <<
+> > +			    SPI_CFG3_IPM_ADDR_BYTELEN_OFFSET;
+> > +
+> > +	/* data byte len */
+> > +	if (op->data.dir == SPI_MEM_NO_DATA) {
+> > +		reg_val |= SPI_CFG3_IPM_NODATA_FLAG;
+> > +		writel(0, mdata->base + SPI_CFG1_REG);
+> > +	} else {
+> > +		reg_val &= ~SPI_CFG3_IPM_NODATA_FLAG;
+> > +		mdata->xfer_len = op->data.nbytes;
+> > +		mtk_spi_setup_packet(mem->spi->master);
+> > +	}
+> > +
+> > +	if (op->addr.nbytes || op->dummy.nbytes) {
+> > +		if (op->addr.buswidth == 1 || op->dummy.buswidth == 1)
+> > +			reg_val |= SPI_CFG3_IPM_XMODE_EN;
+> > +		else
+> > +			reg_val &= ~SPI_CFG3_IPM_XMODE_EN;
+> > +	}
+> > +
+> > +	if (op->addr.buswidth == 2 ||
+> > +	    op->dummy.buswidth == 2 ||
+> > +	    op->data.buswidth == 2)
+> > +		nio = 2;
+> > +	else if (op->addr.buswidth == 4 ||
+> > +		 op->dummy.buswidth == 4 ||
+> > +		 op->data.buswidth == 4)
+> > +		nio = 4;
+> 
+> 	else
+> 		nio = 1;
+> 
+> ...so that you can avoid double initialization of the `nio` variable.
+> 
+OK, I'll fix it,thanks
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 558151f2f150..9f8c3d41d504 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -455,6 +455,9 @@ static const struct usb_device_id blacklist_table[] = {
- 	{ USB_DEVICE(0x13d3, 0x3564), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH |
- 						     BTUSB_VALID_LE_STATES },
-+	{ USB_DEVICE(0x13d3, 0x3567), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH |
-+						     BTUSB_VALID_LE_STATES },
- 	{ USB_DEVICE(0x0489, 0xe0cd), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH |
- 						     BTUSB_VALID_LE_STATES },
--- 
-2.25.1
-
-
+> > +
+> > +	reg_val &= ~SPI_CFG3_IPM_CMD_PIN_MODE_MASK;
+> > +	reg_val |= PIN_MODE_CFG(nio) << SPI_CFG3_IPM_PIN_MODE_OFFSET;
+> > +
+> 
+> Regards,
+> Angelo
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
