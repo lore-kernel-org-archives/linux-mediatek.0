@@ -4,67 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB646C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Feb 2022 07:25:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21816C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Feb 2022 08:24:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BdQvMikG/hfRoqCWzq+4PZk4IyIgnQvDYOMPhcAt7zU=; b=pYLsFsT+sp3KT+
-	eTSQcdJbXIWjwroT0gYcpdFUsFiFcuJzxG/zc4zJYTMR4Muy/Fe/yTzixKNzDdQcbk62cK2B5oIsr
-	9UVmfFCGhivE8h0DxYqN17ezn7C09g2wpYMgx6ABS4tCljyJqbHWJ6kZb+fFuw8pRXdpQJSo1heCA
-	WJcm4LXCirgH7sJiXG2MfB/9iWlln6SVVUCsNpzd3v2ox3B3Una/UT8W+D3KWTFfISFX0JqDbcCbH
-	g8JUeLadrITe1Hr6+A5+e8L3krtMIB07/a3cIH3r7h4Y8ogXrUOivLW6R1XVOp8qMxOdBCIHAo+bc
-	8Perv5BtMc6a5s2SUw0w==;
+	List-Owner; bh=KaFHoFMRPpIG6RKcXjZHLviSlVFSBgdEkRWhHfPof7E=; b=kX3G3TtXkG5W4g
+	ygQLdkSoIaT9MPl7c5a0ONmiRMaths6KBkRPOpkc/doRB5cOYlC3EZK/4W/90fyZH9A6guNb/4TXY
+	b3G1yTLSsPK6BaeFTe+B+NJirI1ZQ9q9oUuf7SD+H9xvA63iv96EjhrzYKdVd8ajKADYUUVMJbbGg
+	I6IUp4kjg6PjaKmucdZIh0QfcyQbxVJw822hOr61Fz6Rk3Mj08MI9ppkdIxhldjfFIlSec2mfjtMs
+	d8xyA2kpSuVS4gEDOG1fn9oMvBt5uWo2G624w29V0bAda4gjFzxQaAesPpZSC3xB1brQDlz7Ljwi0
+	nimPlgX+F79wHeAie0hQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMm19-00D728-B8; Wed, 23 Feb 2022 07:24:55 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nMmwX-00DF8V-QE; Wed, 23 Feb 2022 08:24:13 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMm0t-00D6va-SX; Wed, 23 Feb 2022 07:24:42 +0000
-X-UUID: c33064bcd12e4814b9eb8555ace32a9e-20220223
-X-UUID: c33064bcd12e4814b9eb8555ace32a9e-20220223
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 513616869; Wed, 23 Feb 2022 00:24:33 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Feb 2022 23:24:31 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 23 Feb 2022 15:24:30 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 23 Feb 2022 15:24:28 +0800
-From: Yong Wu <yong.wu@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
-CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
- <krzysztof.kozlowski@canonical.com>, Tomasz Figa <tfiga@chromium.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>, <yong.wu@mediatek.com>,
- <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
- <xueqi.zhang@mediatek.com>, <yen-chang.chen@mediatek.com>, "AngeloGioacchino
- Del Regno" <angelogioacchino.delregno@collabora.com>,
- <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
- <chengci.xu@mediatek.com>
-Subject: [PATCH v2 2/2] iommu/mediatek: Add mt8186 iommu support
-Date: Wed, 23 Feb 2022 15:24:02 +0800
-Message-ID: <20220223072402.17518-3-yong.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220223072402.17518-1-yong.wu@mediatek.com>
-References: <20220223072402.17518-1-yong.wu@mediatek.com>
+ id 1nMmwV-00DF6k-Ev
+ for linux-mediatek@lists.infradead.org; Wed, 23 Feb 2022 08:24:13 +0000
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 4C3F1405D7
+ for <linux-mediatek@lists.infradead.org>; Wed, 23 Feb 2022 08:24:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1645604642;
+ bh=OUH0bTj/LUGqclp4FyWkS6uNhE/OcvDSgnjHRV7vNUM=;
+ h=Message-ID:Date:MIME-Version:Subject:To:References:From:
+ In-Reply-To:Content-Type;
+ b=FTi15mZpVUkRJF4UJ+tE1nQnXghlR5psWwL1gec7Cx1xKuv0mHwnO1auXfabylr5N
+ CpW3p3ABXoIwiHF9oFi3mmiT4qO+6rg2/O4oi0dQslBn8dA6QR9aa+vm90tJUC/k2H
+ VKoqnmm8QJHsDVgfeA2iIT3ES1ICcUAnnmfpRDl43vrLHL4e1odRpaQmqJHfLboH8p
+ 0KyJzI3t5tiQrh10Y+DpJ3qkG3AXXOBT3Gc0DD/yXTk37p6jhE0Tdc1XkrqP6xD19V
+ d1UTtJ2bD0RLM2Ak/J3bz4XjNlNWLy3l5fhhS/P9rIvsDc7PtNdAFR/MhfYF510LCG
+ BN6XqrkzAn/8A==
+Received: by mail-ed1-f71.google.com with SMTP id
+ d11-20020a50c88b000000b00410ba7a14acso13231984edh.6
+ for <linux-mediatek@lists.infradead.org>; Wed, 23 Feb 2022 00:24:02 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=OUH0bTj/LUGqclp4FyWkS6uNhE/OcvDSgnjHRV7vNUM=;
+ b=hAomMH0Mk34P56JWLLgnBcflZDn3MlG3dG06QPRkzAWDRYHGpYO4A3Xjb2pO0/O4jk
+ aeyERINe5gY66BkEq6+y8M4T52mnUANK1Gg9z2Yn+KrPPLMdFj8hyTB9t+PxCZd9frOR
+ UhnluanlyyyT6o5gcw/i/+5NFlSLRmGIrB5YTXrbubYJAEQQtB42IXZ9oBAQtvuXK4t6
+ P8ThBpqYy/KRRv6Znj19voN/1mRAu/a5YP77r8kGVVzWIvSAhWk9iNpPSD/TyWbHnQQp
+ 2K2sWODm7tJvt2a+n0bf1sZWzvVFytLqF68qsyDQ2e4KVWNWixCvyxWfsYpzZ0WYk/dp
+ /qwg==
+X-Gm-Message-State: AOAM533+55TmVXFf/jPniiERBzdmbMvaOsHi5WwVChZb4x/zMM/oYVNW
+ Vg7vXkfxauCYlFwhfdpfJkzyU4sRc7xKV33mkZpTkcpgO1B8WzqeqGpP0WYChzDIOXZS23iFQVU
+ KgWkPncInTUp3QM+Oq2vtVPo02fwqUXIpQl2YTA8YkgCOq0j+pQ==
+X-Received: by 2002:a17:906:3109:b0:6cc:7a1:8db0 with SMTP id
+ 9-20020a170906310900b006cc07a18db0mr22106121ejx.266.1645604640572; 
+ Wed, 23 Feb 2022 00:24:00 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzmlOe0uOWGCSaW649hZ3pFA8AEz4z12SvTxoyLOxSd5Mf7R4zHsjAvMUopfEcfA/lfYgjr1A==
+X-Received: by 2002:a17:906:3109:b0:6cc:7a1:8db0 with SMTP id
+ 9-20020a170906310900b006cc07a18db0mr22106094ejx.266.1645604640319; 
+ Wed, 23 Feb 2022 00:24:00 -0800 (PST)
+Received: from [192.168.0.125] (xdsl-188-155-181-108.adslplus.ch.
+ [188.155.181.108])
+ by smtp.gmail.com with ESMTPSA id p16sm1162411ejn.33.2022.02.23.00.23.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 23 Feb 2022 00:23:59 -0800 (PST)
+Message-ID: <968cf18e-af5c-0503-79b1-a622938d4e0a@canonical.com>
+Date: Wed, 23 Feb 2022 09:23:58 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v2 09/15] scsi: ufs: deprecate 'freq-table-hz' property
+Content-Language: en-US
+To: Alim Akhtar <alim.akhtar@samsung.com>, 'Avri Altman'
+ <avri.altman@wdc.com>, 'Rob Herring' <robh+dt@kernel.org>,
+ 'Andy Gross' <agross@kernel.org>,
+ 'Bjorn Andersson' <bjorn.andersson@linaro.org>,
+ 'Wei Xu' <xuwei5@hisilicon.com>, 'Nishanth Menon' <nm@ti.com>,
+ 'Vignesh Raghavendra' <vigneshr@ti.com>, 'Tero Kristo' <kristo@kernel.org>,
+ "'James E.J. Bottomley'" <jejb@linux.ibm.com>,
+ "'Martin K. Petersen'" <martin.petersen@oracle.com>,
+ 'Jan Kotas' <jank@cadence.com>, 'Li Wei' <liwei213@huawei.com>,
+ 'Stanley Chu' <stanley.chu@mediatek.com>,
+ 'Yaniv Gardi' <ygardi@codeaurora.org>, linux-scsi@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
+ <CGME20220222150007epcas5p22f05e6c8e80a5ad18a9528cd0ead865d@epcas5p2.samsung.com>
+ <20220222145854.358646-10-krzysztof.kozlowski@canonical.com>
+ <0c8b01d8280b$868abc20$93a03460$@samsung.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+In-Reply-To: <0c8b01d8280b$868abc20$93a03460$@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_232440_039713_425100D6 
-X-CRM114-Status: GOOD (  12.13  )
+X-CRM114-CacheID: sfid-20220223_002411_640044_5CF9AD2B 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,59 +119,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8186 iommu supports.
+On 22/02/2022 17:44, Alim Akhtar wrote:
+> Hi Krzysztof
+> 
+>> -----Original Message-----
+>> From: Krzysztof Kozlowski [mailto:krzysztof.kozlowski@canonical.com]
+>> Sent: Tuesday, February 22, 2022 8:29 PM
+>> To: Alim Akhtar <alim.akhtar@samsung.com>; Avri Altman
+>> <avri.altman@wdc.com>; Rob Herring <robh+dt@kernel.org>; Krzysztof
+>> Kozlowski <krzysztof.kozlowski@canonical.com>; Andy Gross
+>> <agross@kernel.org>; Bjorn Andersson <bjorn.andersson@linaro.org>; Wei
+>> Xu <xuwei5@hisilicon.com>; Nishanth Menon <nm@ti.com>; Vignesh
+>> Raghavendra <vigneshr@ti.com>; Tero Kristo <kristo@kernel.org>; James E.J.
+>> Bottomley <jejb@linux.ibm.com>; Martin K. Petersen
+>> <martin.petersen@oracle.com>; Jan Kotas <jank@cadence.com>; Li Wei
+>> <liwei213@huawei.com>; Stanley Chu <stanley.chu@mediatek.com>; Yaniv
+>> Gardi <ygardi@codeaurora.org>; linux-scsi@vger.kernel.org;
+>> devicetree@vger.kernel.org; linux-kernel@vger.kernel.org; linux-arm-
+>> msm@vger.kernel.org; linux-arm-kernel@lists.infradead.org; linux-samsung-
+>> soc@vger.kernel.org; linux-mediatek@lists.infradead.org
+>> Subject: [PATCH v2 09/15] scsi: ufs: deprecate 'freq-table-hz' property
+>>
+>> The 'freq-table-hz' is not correct in DT schema, because '-hz' suffix
+> defines
+>> uint32 type, not an array.  Therefore deprecate 'freq-table-hz'
+>> and use 'freq-table' instead.
+>>
+> May be once all the dts change migrate to using 'freq-table', just remove
+> 'freq-table-hz' from driver.
 
-Signed-off-by: Anan Sun <anan.sun@mediatek.com>
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
----
- drivers/iommu/mtk_iommu.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+At some point in the future 'freq-table-hz' parsing could be removed,
+but now you have both old and new DTS, so it should stay. Also for DTB
+compatibility.
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index d9ca9ffe404c..174a2f3bd68a 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -160,6 +160,7 @@ enum mtk_iommu_plat {
- 	M4U_MT8167,
- 	M4U_MT8173,
- 	M4U_MT8183,
-+	M4U_MT8186,
- 	M4U_MT8192,
- 	M4U_MT8195,
- };
-@@ -1438,6 +1439,21 @@ static const struct mtk_iommu_plat_data mt8183_data = {
- 	.larbid_remap = {{0}, {4}, {5}, {6}, {7}, {2}, {3}, {1}},
- };
- 
-+static const struct mtk_iommu_plat_data mt8186_data_mm = {
-+	.m4u_plat       = M4U_MT8186,
-+	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN |
-+			  WR_THROT_EN | IOVA_34_EN | NOT_STD_AXI_MODE |
-+			  MTK_IOMMU_TYPE_MM,
-+	.larbid_remap   = {{0}, {1, MTK_INVALID_LARBID, 8}, {4}, {7}, {2}, {9, 11, 19, 20},
-+			   {MTK_INVALID_LARBID, 14, 16},
-+			   {MTK_INVALID_LARBID, 13, MTK_INVALID_LARBID, 17}},
-+	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
-+	.banks_num      = 1,
-+	.banks_enable   = {true},
-+	.iova_region    = mt8192_multi_dom,
-+	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
-+};
-+
- static const struct mtk_iommu_plat_data mt8192_data = {
- 	.m4u_plat       = M4U_MT8192,
- 	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN |
-@@ -1507,6 +1523,7 @@ static const struct of_device_id mtk_iommu_of_ids[] = {
- 	{ .compatible = "mediatek,mt8167-m4u", .data = &mt8167_data},
- 	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
- 	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
-+	{ .compatible = "mediatek,mt8186-iommu-mm",    .data = &mt8186_data_mm}, /* mm: m4u */
- 	{ .compatible = "mediatek,mt8192-m4u", .data = &mt8192_data},
- 	{ .compatible = "mediatek,mt8195-iommu-infra", .data = &mt8195_data_infra},
- 	{ .compatible = "mediatek,mt8195-iommu-vdo",   .data = &mt8195_data_vdo},
--- 
-2.18.0
 
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
