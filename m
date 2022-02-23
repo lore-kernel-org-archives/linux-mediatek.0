@@ -4,59 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C11BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Feb 2022 17:36:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79446C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Feb 2022 22:34:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Qny1aNdu4vbvCq+MaifhEeXPYhi6nONT0PiZvpEOUUs=; b=AcqS03s3oJ9Wrj
-	dR1R1C3L3pOraZSqB3YS6Dku9dWmmcXjI3nhpn/fJ5JusWxB5kIc4H814TBkmW09jT3d6Jizc+qB0
-	jkCN/OETHpLwii0+qLXh/jbL/fwC25qFW3vqu3Gmt5aKBdcSEGfinoJI7H67cJhhVEYfpW0YN0pWD
-	myX3M1CAr/7n/xd4XeR4PIclPCtk54dRqJebCa5L2tirukVA+Bl1NNwICa8XVl5dm7nezm/LH89+f
-	nA2rjTt1XkrnpFCjRGNxFwInC8p/GBxf97mrJIQjBxwQ5GdYAPN1fbcYb3CLSBkzerkII1ATocvo5
-	g0Y2dn54Cyh1CAd6Kwhw==;
+	List-Owner; bh=4Ud7KDctpMMrvtmEjofhudtZJGYJB0HL8OwwO1Do1Yg=; b=rUugPb1AxP7DxG
+	w/09U8RnnoVM2QvrQMxGbYRDRuaoVIvYyP7QI+pzWo6FedZL5L9uSgJzWgU2PBPW7CDOlRp99we64
+	Cj/4F0L7fy08GyKpt6Zi0hW/AGRDFTBNvh9Nh0CJbtVKThkp9cDI5q1RHC9UnP2xo1ecfZ0UDyWSW
+	n5hJmm7MfGXjAELlh1y9m0ox9FdezIw9238UIqpwN250ifZMCkLJGv0Suf3hRjpp/IUzcLJOxelDt
+	PUSI9aq9XwzfNyc52nzWbINBfULR3x+i0NjiNmypMLmZQeJJVyDsCIGBpoFhBWSdP76wdiqTWBVfJ
+	YfCrAkrtf1QS6nnH9MNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMvYo-00FWTn-5s; Wed, 23 Feb 2022 17:36:18 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nN0DS-00GC5y-0w; Wed, 23 Feb 2022 22:34:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMvYa-00FWQa-5W; Wed, 23 Feb 2022 17:36:07 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id B13981F41250
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645637761;
- bh=CSOlJtblEwB4RlgPahvcN3gy+e32KywvGIkmYOzijI0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=YVngT9RX4Zl8QM2ArzTdGkd+v6f9P7vNkU8HsSyWpEFDVkJFkdig9Y38uTCEdsr5O
- 5t6Ht9ZtyTDN+d1KqBwwOel2VU2Y6WYNaZMuFi3kjgIhHr7/Prog05ocB5CiV5IY2U
- ymtA7PWhTGWrPnYdV0zUaKANpOI6GJ/Jgn30ZmrySwXWP5kKbr/vxIFVvwllKBgATa
- NJkBmrDA9ZRwPK2lbqCDN+jOp/x4V7Lnt3XIN0vA6EYcRWItn8CGNs50sZwyOqazHQ
- RG2MZ7y+cz0OgnTVSm4lttyzqdgJtqyC2coEngJCR7pVwOH33+NjiCD0Zv5dcap+c2
- H3nWRyFpsEdow==
-Date: Wed, 23 Feb 2022 12:35:56 -0500
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Min Guo <Min.Guo@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: phy: Add compatible for Mediatek MT8192
-Message-ID: <20220223173556.u3dx7ugpxpcpir2n@notapiano>
-References: <20220217135620.10559-1-allen-kh.cheng@mediatek.com>
+ id 1nN0DP-00GC59-40
+ for linux-mediatek@lists.infradead.org; Wed, 23 Feb 2022 22:34:32 +0000
+X-UUID: 9fd0ff383fb94270a87408ba270776ae-20220223
+X-UUID: 9fd0ff383fb94270a87408ba270776ae-20220223
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1489867077; Wed, 23 Feb 2022 15:34:24 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Feb 2022 14:34:22 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 24 Feb 2022 06:34:21 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 24 Feb 2022 06:34:21 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Mark-YW.Chen@mediatek.com>,
+ <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <jenhao.yang@mediatek.com>,
+ <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+ <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 2/2] mt76: mt7921: use mt76_hw instead of open coding it
+Date: Thu, 24 Feb 2022 06:34:18 +0800
+Message-ID: <a7452bb38bc99196f893bc4aea9c1fe6b6d35de2.1645655280.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <7dcfc62d67f1f51e6627cc24000393844aa2b649.1645655280.git.objelf@gmail.com>
+References: <7dcfc62d67f1f51e6627cc24000393844aa2b649.1645655280.git.objelf@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220217135620.10559-1-allen-kh.cheng@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220223_093604_432470_8E2B9D8B 
-X-CRM114-Status: GOOD (  18.66  )
+X-CRM114-CacheID: sfid-20220223_143431_188859_3CB389C4 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,70 +75,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Allen,
+From: Sean Wang <sean.wang@mediatek.com>
 
-thanks for the patch. Please see the comment below.
+use mt76_hw instead of open coding it
 
-On Thu, Feb 17, 2022 at 09:56:20PM +0800, Allen-KH Cheng wrote:
-> This commit adds dt-binding documentation of T-Phy for Mediatek MT8192 SoC
-> Platform.
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Commit messages should be in imperative [1]. I'd suggest the following mess=
-age:
-
-	Add MT8192 compatible to the Mediatek T-PHY dt-binding.
-
-[1] https://www.kernel.org/doc/html/latest/process/submitting-patches.html#=
-describe-your-changes
-
-Also, the commit title would be better if it had the tag for the tphy file,=
- like
-this:
-
-	dt-bindings: phy: mediatek,tphy: Add compatible for MT8192
-
-Otherwise it's not clear that you're changing the T-PHY just from the title.
-
-> =
-
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-
-Other than that,
-
-Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
-
-Thanks,
-N=EDcolas
-
-> ---
->  Documentation/devicetree/bindings/phy/mediatek,tphy.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> =
-
-> diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/D=
-ocumentation/devicetree/bindings/phy/mediatek,tphy.yaml
-> index d279ba222316..7b2e1bc119be 100644
-> --- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-> +++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-> @@ -81,6 +81,7 @@ properties:
->                - mediatek,mt7629-tphy
->                - mediatek,mt8183-tphy
->                - mediatek,mt8186-tphy
-> +              - mediatek,mt8192-tphy
->            - const: mediatek,generic-tphy-v2
->        - items:
->            - enum:
-> -- =
-
-> 2.18.0
-> =
-
-> =
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 051a573141f4..7e5b4aaf3b3a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -491,7 +491,7 @@ mt7921_sniffer_interface_iter(void *priv, u8 *mac, struct ieee80211_vif *vif)
+ 
+ void mt7921_set_runtime_pm(struct mt7921_dev *dev)
+ {
+-	struct ieee80211_hw *hw = dev->mphy.hw;
++	struct ieee80211_hw *hw = mt76_hw(dev);
+ 	struct mt76_connac_pm *pm = &dev->pm;
+ 	bool monitor = !!(hw->conf.flags & IEEE80211_CONF_MONITOR);
+ 
+-- 
+2.25.1
 
 
 _______________________________________________
