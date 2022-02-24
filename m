@@ -4,76 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2399C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Feb 2022 03:52:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 892B0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Feb 2022 05:38:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hH2HMIcn18fP6Si+6lkDLWo6oWm55MR4YZg5AQaYJZI=; b=p1sIHMK5rb7HX0
-	YpReq8YEC5kSUPgeDuj0dEi53GQhGvMvC+n+hQk4gn9yn6UYpCGhgLMDkgg9lwFpDDUq1o+hmGB75
-	HerJxV+tjLbQb0A0VDBagZ9D7Mpu4UE2/sjwKzhINB6EO98dbjrn9LHmzv20/Yfb9wxIYAxWq8BLS
-	DwWI0IrNdefYt0pzGZG+SmKkWcsZFQoJyg4DJ9FR44xxHfdzKTRaVheelJRgyI+zMA5bnQ37jppi3
-	NgD3W3SzFb71OfiCvquQaeAbi+dNCGqAV86EjTnCyaozh4ENHN4JBuKhcRLbiaiqdKyCtrBFM6pIn
-	ld5XaeqQari7BrEXY5bw==;
+	List-Owner; bh=R4K7HvZgJLlP585ZnI+oE6TemIAiqKWpqW8Nfq8yo4k=; b=vpnAehXBbZZLPp
+	syJMw/3KPiXKvHDriJtqIQNYZQRydM2Oa9mrhTwZ1RuaD5yG30tb6GJo37qxEwFijtlMgRnQ4K3/b
+	ko8ld7uD+cw2P6ZeI6JHyEo/iom8xp5UM+J+xDUveEM3ZXznQ71VvGAmIzeLer0XhUFgRnw8Qh7rT
+	ri6j0PI7LMIcP+7rDmr3LQB+jQdUIEOxmESu999Jaw2U3wA9fAhxCf2lKpcGc7KONREDbi/G3dpdY
+	ze58CbVzLk59G3VYSQP+byXLz5LMm9zPVoAOktbj+V5SacZxiBtVG1RSPD3RVY1H2iuavPAgPTBQT
+	Jj/ETjA9xY8TWEG1L/tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nN5BG-00GiEy-06; Thu, 24 Feb 2022 03:52:38 +0000
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
+	id 1nN6pU-00GuIU-2w; Thu, 24 Feb 2022 05:38:16 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nN5Af-00Gi7N-SH
- for linux-mediatek@lists.infradead.org; Thu, 24 Feb 2022 03:52:03 +0000
-Received: by mail-yb1-xb2e.google.com with SMTP id j12so1368917ybh.8
- for <linux-mediatek@lists.infradead.org>; Wed, 23 Feb 2022 19:52:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=C3V/dtxV15Mn7k63x16wvKI7YuLTRLAtDoW+UZHVNSQ=;
- b=JpTyQ9fwmnCkQTdb4pTZ4OG7pAZVm7gwL2969nPUypAx3k22so+gM3I0W2ci/jvCA5
- BDPZMmcHgO3YLsB+3wl8ORdfR8CU0QCz0p728ige4gFTPcamGc/2PpHz7ciUiyqBI3Tu
- X9cjP50jWu0UKjTUkHmEzjal1OhvJNpAH3BzU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=C3V/dtxV15Mn7k63x16wvKI7YuLTRLAtDoW+UZHVNSQ=;
- b=tE3AVZOVBEdky3AEo8ACo4mGfy5cEZWLgxXfy9ub7LBu23aPFVjkvAxEoHr7v/puMw
- 6s7y2hxl/AfyMQ4VJxGXikTJkBNtDv/IzGsdV+0z+e3reu+uOa3JQep4cRdsulv6LHb6
- 4jSL+gNW9hdEY+ZXtauzUh5jucdejdV+bWNMap7IXKiVZmtahFXGwWCWrDaLYp/At9VY
- DUhrQgNk/3hLpEGQXO7o16m47ced55euAGYCohSW7ew6xgCf+BZ8gjIUFL87oPIfUPkP
- ttITkaOc0xKIb5oXanzsHQ/tuV6Lo6RjBR9zz+YYgZ2QRsvNyWuqYoyZJWqmO0JJQSGA
- 8PFg==
-X-Gm-Message-State: AOAM533rx0QfWFJO0SQ697wvbif0MhlO+SnaGO/e7LkDQ9r+aKtVv/Qc
- 7BJjibbHmiOQhCtjGY4e6t078nNCvn1TVDF6tH8VoA==
-X-Google-Smtp-Source: ABdhPJyiaPY/OEbo9lDvhKxowTvqVlkhYSSAXktn3qviviBrH2qstZAw3K9LBrLE61G6q3rwWoSQxKBMDVgyXk0nark=
-X-Received: by 2002:a25:a486:0:b0:61d:a523:acd0 with SMTP id
- g6-20020a25a486000000b0061da523acd0mr753461ybi.203.1645674719716; Wed, 23 Feb
- 2022 19:51:59 -0800 (PST)
+ id 1nN6pE-00GuCx-8l; Thu, 24 Feb 2022 05:38:03 +0000
+X-UUID: ab9b76ae29f94a67a9ab53291de53c49-20220223
+X-UUID: ab9b76ae29f94a67a9ab53291de53c49-20220223
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 61374618; Wed, 23 Feb 2022 22:37:54 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Feb 2022 21:37:52 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Feb 2022 13:37:51 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 24 Feb 2022 13:37:50 +0800
+Message-ID: <4abb07d9673fb0e602ae26de233b45471b9e62e2.camel@mediatek.com>
+Subject: Re: [2/3] drm/mediatek: Separate poweron/poweroff from
+ enable/disable and define new funcs
+From: CK Hu <ck.hu@mediatek.com>
+To: <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
+ <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <matthias.bgg@gmail.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <rex-bc.chen@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jitao Shi
+ <jitao.shi@mediatek.com>
+Date: Thu, 24 Feb 2022 13:37:50 +0800
+In-Reply-To: <1644589818-13066-3-git-send-email-xinlei.lee@mediatek.com>
+References: <1644589818-13066-1-git-send-email-xinlei.lee@mediatek.com>
+ <1644589818-13066-3-git-send-email-xinlei.lee@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20220201174643.843102-1-nfraprado@collabora.com>
-In-Reply-To: <20220201174643.843102-1-nfraprado@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 24 Feb 2022 11:51:48 +0800
-Message-ID: <CAGXv+5HbBroWkR4gLA2EXOcki4wgZ6XahO1J-VOctgKX5K9k7w@mail.gmail.com>
-Subject: Re: [PATCH v2] arm64: dts: mt8183: jacuzzi: Fix bus properties in
- anx's DSI endpoint
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: Robert Foss <robert.foss@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Rob Herring <robh+dt@kernel.org>, Xin Ji <xji@analogixsemi.com>,
- kernel@collabora.com, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- dri-devel <dri-devel@lists.freedesktop.org>,
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <narmstrong@baylibre.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220223_195201_980895_3BD5464F 
-X-CRM114-Status: GOOD (  24.21  )
+X-CRM114-CacheID: sfid-20220223_213800_347878_ED8BEE0D 
+X-CRM114-Status: GOOD (  22.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,53 +72,136 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksCgooQ0MtZWQgRFJNIGJyaWRnZSBtYWludGFpbmVycyBhbmQgdGhlIGRyaS1kZXZlbCBNTCkK
-Ck9uIFdlZCwgRmViIDIsIDIwMjIgYXQgMTo0NyBBTSBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbwo8
-bmZyYXByYWRvQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+Cj4gbXQ4MTgzLWt1a3VpLWphY3V6emkg
-aGFzIGFuIGFueDc2MjUgYnJpZGdlIGNvbm5lY3RlZCB0byB0aGUgb3V0cHV0IG9mCj4gaXRzIERT
-SSBob3N0LiBIb3dldmVyLCBhZnRlciBjb21taXQgZmQwMzEwYjZmZTdkICgiZHJtL2JyaWRnZTog
-YW54NzYyNToKPiBhZGQgTUlQSSBEUEkgaW5wdXQgZmVhdHVyZSIpLCBhIGJ1cy10eXBlIHByb3Bl
-cnR5IHN0YXJ0ZWQgYmVpbmcgcmVxdWlyZWQKPiBpbiB0aGUgZW5kcG9pbnQgbm9kZSBieSB0aGUg
-ZHJpdmVyIHRvIGluZGljYXRlIHdoZXRoZXIgaXQgaXMgRFNJIG9yIERQSS4KPgo+IEFkZCB0aGUg
-bWlzc2luZyBidXMtdHlwZSBwcm9wZXJ0eSBhbmQgc2V0IGl0IHRvIDUKPiAoVjRMMl9GV05PREVf
-QlVTX1RZUEVfUEFSQUxMRUwpIHNvIHRoYXQgdGhlIGRyaXZlciBoYXMgaXRzIGlucHV0Cj4gY29u
-ZmlndXJlZCB0byBEU0kgYW5kIHRoZSBkaXNwbGF5IHBpcGVsaW5lIGNhbiBwcm9iZSBjb3JyZWN0
-bHkuCgpEb24ndCBwZW9wbGUgZmluZCBpdCBvZGQgdGhhdCB0aGlzIGlzIHNldHRpbmcgdGhlIGJ1
-cy10eXBlIHRvICJwYXJhbGxlbCIKKDUpIGZvciB0aGUgZGV2aWNlIHRvIHVzZSBEU0k/IEluc3Rl
-YWQgb2YgIk1JUEkgQ1NJLTIgRC1QSFkiICg0KSBvciBldmVuCiJNSVBJIENTSS0yIEMtUEhZIiAo
-MSkgd2hpY2ggaXMgc3BlY2lmaWVkIGluIHRoZSBiaW5kaW5nPyBJdCdzIGNvbXBsZXRlbHkKYmFj
-a3dhcmRzLgoKV291bGQgaXQgYmUgcG9zc2libGUgdG8gZml4IHRoZSBiaW5kaW5nIGFuZCBkcml2
-ZXIgYXQgdGhpcyBwb2ludD8KCgpUaGFua3MKQ2hlbll1Cgo+IFdoaWxlIGF0IGl0LCBhbHNvIHNl
-dCB0aGUgZGF0YS1sYW5lcyBwcm9wZXJ0eSB0aGF0IHdhcyBhbHNvIGludHJvZHVjZWQKPiBpbiB0
-aGF0IHNhbWUgY29tbWl0LCBzbyB0aGF0IHdlIGRvbid0IHJlbHkgb24gdGhlIGRlZmF1bHQgdmFs
-dWUuCj4KPiBGaXhlczogZmQwMzEwYjZmZTdkICgiZHJtL2JyaWRnZTogYW54NzYyNTogYWRkIE1J
-UEkgRFBJIGlucHV0IGZlYXR1cmUiKQo+IFNpZ25lZC1vZmYtYnk6IE7DrWNvbGFzIEYuIFIuIEEu
-IFByYWRvIDxuZnJhcHJhZG9AY29sbGFib3JhLmNvbT4KPgo+IC0tLQo+IHYxOiBodHRwczovL2xv
-cmUua2VybmVsLm9yZy9hbGwvMjAyMjAxMjAyMjQyMDQuNzczMTE3LTEtbmZyYXByYWRvQGNvbGxh
-Ym9yYS5jb20KPgo+IENoYW5nZXMgaW4gdjI6Cj4gLSAodGhhbmtzIFJvYikgVXNlIHByb3BlciBm
-b3JtYXQgd2hlbiByZWZlcmluZyB0byBjb21taXQgaW4gY29tbWl0Cj4gICBtZXNzYWdlIGFzIHBv
-aW50ZWQgb3V0IGJ5IGNoZWNrcGF0Y2gKPgo+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVr
-L210ODE4My1rdWt1aS1qYWN1enppLmR0c2kgfCAyICsrCj4gIDEgZmlsZSBjaGFuZ2VkLCAyIGlu
-c2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVr
-L210ODE4My1rdWt1aS1qYWN1enppLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVr
-L210ODE4My1rdWt1aS1qYWN1enppLmR0c2kKPiBpbmRleCA4ZjdiZjMzZjYwN2QuLmU4ZjEzM2Rj
-OTZiOSAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE4My1r
-dWt1aS1qYWN1enppLmR0c2kKPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210
-ODE4My1rdWt1aS1qYWN1enppLmR0c2kKPiBAQCAtMTcxLDYgKzE3MSw4IEBAIHBvcnRAMCB7Cj4K
-PiAgICAgICAgICAgICAgICAgICAgICAgICBhbng3NjI1X2luOiBlbmRwb2ludCB7Cj4gICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICByZW1vdGUtZW5kcG9pbnQgPSA8JmRzaV9vdXQ+Owo+
-ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYnVzLXR5cGUgPSA8NT47Cj4gKyAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICBkYXRhLWxhbmVzID0gPDAgMSAyIDM+Owo+ICAgICAg
-ICAgICAgICAgICAgICAgICAgIH07Cj4gICAgICAgICAgICAgICAgIH07Cj4KPiAtLQo+IDIuMzUu
-MQo+Cj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+
-IExpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdAo+IExpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LW1lZGlhdGVrCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LW1lZGlhdGVrCg==
+Hi, Xinlei:
+
+On Fri, 2022-02-11 at 22:30 +0800, xinlei.lee@mediatek.com wrote:
+> From: Jitao Shi <jitao.shi@mediatek.com>
+> 
+> In order to match the changes of DSI RX devices (for example,
+> anx7625), 
+> the poweron/poweroff of dsi is extracted from enable/disable and 
+> defined as new funcs (pre_enable/post_disable).
+
+Does DSI not work with anx7625 now? This patch is a bug-fix or new
+feature? If this patch is a bug-fix, please add 'Fixes' tag [1].
+
+[1] 
+https://www.kernel.org/doc/html/v5.16/process/submitting-patches.html
+
+Regards,
+CK
+
+> 
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 45 ++++++++++++++++++++++----
+> ------------
+>  1 file changed, 26 insertions(+), 19 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index 6d7b66d..e47c338 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -679,16 +679,6 @@ static void mtk_dsi_poweroff(struct mtk_dsi
+> *dsi)
+>  	if (--dsi->refcount != 0)
+>  		return;
+>  
+> -	/*
+> -	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
+> -	 * mtk_dsi_stop() should be called after
+> mtk_drm_crtc_atomic_disable(),
+> -	 * which needs irq for vblank, and mtk_dsi_stop() will disable
+> irq.
+> -	 * mtk_dsi_start() needs to be called in
+> mtk_output_dsi_enable(),
+> -	 * after dsi is fully set.
+> -	 */
+> -	mtk_dsi_stop(dsi);
+> -
+> -	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
+>  	mtk_dsi_reset_engine(dsi);
+>  	mtk_dsi_lane0_ulp_mode_enter(dsi);
+>  	mtk_dsi_clk_ulp_mode_enter(dsi);
+> @@ -703,17 +693,9 @@ static void mtk_dsi_poweroff(struct mtk_dsi
+> *dsi)
+>  
+>  static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
+>  {
+> -	int ret;
+> -
+>  	if (dsi->enabled)
+>  		return;
+>  
+> -	ret = mtk_dsi_poweron(dsi);
+> -	if (ret < 0) {
+> -		DRM_ERROR("failed to power on dsi\n");
+> -		return;
+> -	}
+> -
+>  	mtk_dsi_set_mode(dsi);
+>  	mtk_dsi_clk_hs_mode(dsi, 1);
+>  
+> @@ -727,7 +709,16 @@ static void mtk_output_dsi_disable(struct
+> mtk_dsi *dsi)
+>  	if (!dsi->enabled)
+>  		return;
+>  
+> -	mtk_dsi_poweroff(dsi);
+> +	/*
+> +	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
+> +	 * mtk_dsi_stop() should be called after
+> mtk_drm_crtc_atomic_disable(),
+> +	 * which needs irq for vblank, and mtk_dsi_stop() will disable
+> irq.
+> +	 * mtk_dsi_start() needs to be called in
+> mtk_output_dsi_enable(),
+> +	 * after dsi is fully set.
+> +	 */
+> +	mtk_dsi_stop(dsi);
+> +
+> +	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
+>  
+>  	dsi->enabled = false;
+>  }
+> @@ -765,10 +756,26 @@ static void mtk_dsi_bridge_enable(struct
+> drm_bridge *bridge)
+>  	mtk_output_dsi_enable(dsi);
+>  }
+>  
+> +static void mtk_dsi_bridge_pre_enable(struct drm_bridge *bridge)
+> +{
+> +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
+> +
+> +	mtk_dsi_poweron(dsi);
+> +}
+> +
+> +static void mtk_dsi_bridge_post_disable(struct drm_bridge *bridge)
+> +{
+> +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
+> +
+> +	mtk_dsi_poweroff(dsi);
+> +}
+> +
+>  static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
+>  	.attach = mtk_dsi_bridge_attach,
+>  	.disable = mtk_dsi_bridge_disable,
+>  	.enable = mtk_dsi_bridge_enable,
+> +	.pre_enable = mtk_dsi_bridge_pre_enable,
+> +	.post_disable = mtk_dsi_bridge_post_disable,
+>  	.mode_set = mtk_dsi_bridge_mode_set,
+>  };
+>  
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
