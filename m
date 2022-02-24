@@ -4,75 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA429C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Feb 2022 20:49:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA4DCC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Feb 2022 20:54:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CX+7LtPSCXGbXPl8SAsptqdekPbVKnp83XZNVyztqcA=; b=oOzdqSg0NWb2Mh
-	y6D4llKHAFS2D2NgelMBICz/6/qBn5asm0CJxB56LE7x1GCeZ9KCcuZO9u34mW6zBNl2T7YHwTyaN
-	ERALX+B9Dfkh/Xauv1Vl+E2TOrpCQYmUAFbWKFGzft3biQ0VJMPNLXaPrXY2hHdZNtHbXTavPn0dV
-	q9nwYk9tRJrCG+GDzbqlwHqBfsTSQVmPna5EO1XW6D6OWAMi3AeVqcbp24mt9X+be21dOxj4Ocss5
-	j0JZk5gVcE3z9IE+lDIEneQ4hXvYOweYIkLROeFfDgBwpj4tCVihE0PNKl3zrYT5zA7YvhPXebxvJ
-	nk50pjQkUnEDtguft1tQ==;
+	List-Owner; bh=hcQiOZW7UHl4cZNrNhCysK/P7MehRaI16CBghTIsXfc=; b=1IVBq+v4PxAEc3
+	QbQ9v8INQzXTdVE8VvUWm1p3LWdntE/UK9w3KrsQGEjND2GSV/viM9qKXiPNeS04lkY5c8m0Uc0OH
+	r/+7rIT1OTh9UdHv6aH7RKscXw4LPLSNNol72nAAk0iC3J534nQI1IAJg3jV75JK6zBhqWpbWvqpI
+	vbmEb97yygBrnmJWSKS3SOYrjfuuTdDrL7qHEGs5IMud/aIMPvBvYJYHR2pYUpO+nkzaQ79kdF7R9
+	si3sJwHkLm0aDqDW2JiEjSygSNaCV/NaSpMHZlAjj0E1v9fJQCQqmXmAgT8dzSwNgg8222jyMlk/f
+	bkwAuGYP41sWGc+HqF0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNL3X-002NBO-Cr; Thu, 24 Feb 2022 20:49:43 +0000
-Received: from mail-oi1-f181.google.com ([209.85.167.181])
+	id 1nNL87-002NrO-FR; Thu, 24 Feb 2022 20:54:27 +0000
+Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNL3J-002N85-Ml; Thu, 24 Feb 2022 20:49:31 +0000
-Received: by mail-oi1-f181.google.com with SMTP id k2so4927977oia.2;
- Thu, 24 Feb 2022 12:49:29 -0800 (PST)
+ id 1nNL7u-002Nmu-QG
+ for linux-mediatek@lists.infradead.org; Thu, 24 Feb 2022 20:54:16 +0000
+Received: by mail-ot1-x333.google.com with SMTP id
+ j8-20020a056830014800b005ad00ef6d5dso2239897otp.0
+ for <linux-mediatek@lists.infradead.org>; Thu, 24 Feb 2022 12:54:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ :content-transfer-encoding;
+ bh=w7kYYicECLFYqJJp06iUhZt+dZdvmlULZGafsy+TJYY=;
+ b=jZEz+rzkZ3qSK3QIGheoWaMmA3vav7COKy6XwkN2b1xZlR8w8uHw9DU+hsfVrKT2A1
+ U+nJo9oYUOhKL2bluBtJc7uA2lL279nyzDvXpMQrF6jfqgRTzBzicWt8M5L7O24AeScr
+ c3tANUX7ruj1tgsLIYaMxWfWfMHGFsBUoBh3oTqvs+HCxFWt0HI6kAvxv59aVIEjm5qB
+ DHNii3B4lT65JyRyop8S4Ye+rYq8DgmRA7P6XT51vRvnKyAkiODRXBDabFIs6jRMkJ4R
+ /Dzfvtw98dOOGyzT0mdluTBhkcSOBAFD5TjzwdK2k/Xz3Fluj/VsS40oZVY+YfhRh8J7
+ CwLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ad4J5+9RdUyS+Z6nJ1tSy2gtAoNHPdi9y1eK0/M4fGc=;
- b=2FmaIy8dx1zWWM/DL/3v8jWp880HbKGzRqsL4YYlJBro5w+I361agGoIQaD0wTrWkl
- DjElxdlZFUgpIp71k0Qr7x7iAen3tABvbToCsFKd16SYxIDB0uvxaEL1aW3Dz1r07ejR
- sHmXvYHe9aicA1g6230io21imV/7vxpKiXfoGVbPlvqdDTH8OL0MxfU7fDgHPI/OSRNF
- lnxYmYb/NB+nPEAFQu2ltaogW1Nc2gM7qhGWT7ug9n1NFcCsB6JZ0104AwBb76cBxjZs
- x28KI+FUCGrOPDPDq1KAOzA/r4sF2xnkHR2nGNBeM7xtXmD8lbJknKIKn7V1P2ot5qyx
- n/2g==
-X-Gm-Message-State: AOAM5327XmC4Im+BZ1B5ZKF2/24NtcFdUW1I69YMhynJhkchIAHOusHn
- AJuWDapvvIJIyukWjMQ5Uw==
-X-Google-Smtp-Source: ABdhPJyNOaa8f2/SMomPS8HIDN+rN46ER7uWdTBb9aUTc5PuznLNa1TL+sk5tH4Dr49CjtvFltA65w==
-X-Received: by 2002:a05:6808:2213:b0:2d4:f6a4:cc99 with SMTP id
- bd19-20020a056808221300b002d4f6a4cc99mr2401266oib.195.1645735768488; 
- Thu, 24 Feb 2022 12:49:28 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213]) by smtp.gmail.com with ESMTPSA id
- i11-20020a056830402b00b005af1411565bsm174855ots.78.2022.02.24.12.49.27
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=w7kYYicECLFYqJJp06iUhZt+dZdvmlULZGafsy+TJYY=;
+ b=4S2R51RyH/vCNigmMzlmUyQTVuOArCTiZ/AFi2AtfYkYVKquJdm0a7gI7LJcaT8VuG
+ iihpjokl+z2uFPd4B1+5kY+vL3FppJGpyQth9Bi7mZUkmnUmXJGr+Ss/elC1hQl2WW2c
+ 1T5C/GYvzbwaImKamrLgxi/FGmSVbQOu52YEJW9zfc/PYlMnOk8qr3CB6JmYUSXGOnYb
+ KxydKONbzfaQceyAXy0rLAFYS3HFotwj/Lmls4cteqyz+jVdXbYgyjtbJVTKJWMqU99U
+ GplwD6bOSnNFILDvPRJx108BHUhJka/caLux31l2LpfzVkTt6ivOoQV7UQ55gE9cs9L9
+ AXJA==
+X-Gm-Message-State: AOAM531Z67Yi6kfLh8qXpiDdHBcGCJ36eKpKxUt1xG2DLXRMLnIMMao5
+ qepuwggoNw7KBNu/6yW8WZOsnw==
+X-Google-Smtp-Source: ABdhPJwqpinof7vCzpo3JsDgvR8WPsKLX9v8AOxpnybjdBazfy5rwg4vCIHUvilq1nJfyHr4S8hplQ==
+X-Received: by 2002:a05:6830:1098:b0:5af:a452:2f17 with SMTP id
+ y24-20020a056830109800b005afa4522f17mr1620669oto.175.1645736053623; 
+ Thu, 24 Feb 2022 12:54:13 -0800 (PST)
+Received: from builder.lan ([2600:1700:a0:3dc8:3697:f6ff:fe85:aac9])
+ by smtp.gmail.com with ESMTPSA id
+ c8-20020a4ad788000000b0031ce69b1640sm191259oou.10.2022.02.24.12.54.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Feb 2022 12:49:27 -0800 (PST)
-Received: (nullmailer pid 3560757 invoked by uid 1000);
- Thu, 24 Feb 2022 20:49:26 -0000
-Date: Thu, 24 Feb 2022 14:49:26 -0600
-From: Rob Herring <robh@kernel.org>
-To: "xinlei.lee" <xinlei.lee@mediatek.com>
-Cc: linux-arm-kernel@lists.infradead.org, thierry.reding@gmail.com,
- lee.jones@linaro.org, linux-pwm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- jitao.shi@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, allen-kh.cheng@mediatek.com,
- u.kleine-koenig@pengutronix.de, devicetree@vger.kernel.org,
- Xinlei Lee <xinlei.lee@mediatek.corp-partner.google.com>
-Subject: Re: [v2,1/4] dt-bindings: pwm: Convert pwm-mtk-disp.txt to
- mediatek,pwm-disp.yaml format
-Message-ID: <YhfvVmtX9hj6E6KQ@robh.at.kernel.org>
-References: <1645003971-16908-1-git-send-email-xinlei.lee@mediatek.com>
- <1645003971-16908-2-git-send-email-xinlei.lee@mediatek.com>
- <1645051913.078742.1825836.nullmailer@robh.at.kernel.org>
- <0f8c014c077d0fc75c8552e457482d9daf68d73b.camel@mediatek.com>
+ Thu, 24 Feb 2022 12:54:13 -0800 (PST)
+From: Bjorn Andersson <bjorn.andersson@linaro.org>
+To: linux-rockchip@lists.infradead.org, Lee Jones <lee.jones@linaro.org>,
+ linux-mediatek@lists.infradead.org,
+ Douglas Anderson <dianders@chromium.org>,
+ Thierry Reding <thierry.reding@gmail.com>, Andy Gross <agross@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ linux-arm-kernel@lists.infradead.org, chrome-platform@lists.linux.dev,
+ linux-kernel@vger.kernel.org, Guenter Roeck <groeck@chromium.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Benson Leung <bleung@chromium.org>, linux-pwm@vger.kernel.org,
+ devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ linux-arm-msm@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: (subset) [PATCH 3/4] arm64: dts: qcom: align Google CROS EC PWM
+ node name with dtschema
+Date: Thu, 24 Feb 2022 14:54:00 -0600
+Message-Id: <164573604161.1471031.3877884989605040071.b4-ty@linaro.org>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20220214081916.162014-4-krzysztof.kozlowski@canonical.com>
+References: <20220214081916.162014-1-krzysztof.kozlowski@canonical.com>
+ <20220214081916.162014-4-krzysztof.kozlowski@canonical.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <0f8c014c077d0fc75c8552e457482d9daf68d73b.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220224_124929_767156_522EC22C 
-X-CRM114-Status: GOOD (  24.75  )
+X-CRM114-CacheID: sfid-20220224_125414_877146_E8ABD3AB 
+X-CRM114-Status: UNSURE (   6.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,106 +102,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 17, 2022 at 08:35:58PM +0800, xinlei.lee wrote:
-> On Wed, 2022-02-16 at 16:51 -0600, Rob Herring wrote:
-> > On Wed, 16 Feb 2022 17:32:48 +0800, xinlei.lee@mediatek.com wrote:
-> > > From: Xinlei Lee <xinlei.lee@mediatek.corp-partner.google.com>
-> > > 
-> > > Convert pwm-mtk-disp.txt to mediatek,pwm-disp.yaml format as
-> > > suggested by maintainer
-> > > 
-> > > Signed-off-by: Xinlei Lee <
-> > > xinlei.lee@mediatek.corp-partner.google.com>
-> > > ---
-> > >  .../bindings/pwm/mediatek,pwm-disp.yaml       | 71
-> > > +++++++++++++++++++
-> > >  .../devicetree/bindings/pwm/pwm-mtk-disp.txt  | 44 ------------
-> > >  2 files changed, 71 insertions(+), 44 deletions(-)
-> > >  create mode 100755
-> > > Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-> > >  delete mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-
-> > > disp.txt
-> > > 
-> > 
-> > Running 'make dtbs_check' with the schema in this patch gives the
-> > following warnings. Consider if they are expected or the schema is
-> > incorrect. These may not be new warnings.
-> > 
-> > Note that it is not yet a requirement to have 0 warnings for
-> > dtbs_check.
-> > This will change in the future.
-> > 
-> > Full log is available here: 
-> > https://patchwork.ozlabs.org/patch/1593550
-> > 
-> > 
-> > pwm@1400a000: compatible:0: 'mediatek,mt7623-disp-pwm' is not one of
-> > ['mediatek,mt2701-disp-pwm', 'mediatek,mt6595-disp-pwm',
-> > 'mediatek,mt8173-disp-pwm', 'mediatek,mt8183-disp-pwm']
-> > 	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dt.yaml
-> > 	arch/arm/boot/dts/mt7623n-rfb-emmc.dt.yaml
-> > 
-> > pwm@1400a000: compatible: ['mediatek,mt7623-disp-pwm',
-> > 'mediatek,mt2701-disp-pwm'] is too long
-> > 	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dt.yaml
-> > 	arch/arm/boot/dts/mt7623n-rfb-emmc.dt.yaml
-> > 
-> > pwm@1400a000: 'oneOf' conditional failed, one must be fixed:
-> > 	arch/arm/boot/dts/mt2701-evb.dt.yaml
-> > 	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dt.yaml
-> > 	arch/arm/boot/dts/mt7623n-rfb-emmc.dt.yaml
-> > 
-> > pwm@1400a000: 'power-domains' is a required property
-> > 	arch/arm/boot/dts/mt2701-evb.dt.yaml
-> > 	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dt.yaml
-> > 	arch/arm/boot/dts/mt7623n-rfb-emmc.dt.yaml
-> > 
-> > pwm@1401e000: compatible: ['mediatek,mt8173-disp-pwm',
-> > 'mediatek,mt6595-disp-pwm'] is too long
-> > 	arch/arm64/boot/dts/mediatek/mt8173-elm.dt.yaml
-> > 	arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dt.yaml
-> > 	arch/arm64/boot/dts/mediatek/mt8173-elm-hana-rev7.dt.yaml
-> > 	arch/arm64/boot/dts/mediatek/mt8173-evb.dt.yaml
-> > 
-> > pwm@1401e000: 'oneOf' conditional failed, one must be fixed:
-> > 	arch/arm64/boot/dts/mediatek/mt8173-elm.dt.yaml
-> > 	arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dt.yaml
-> > 	arch/arm64/boot/dts/mediatek/mt8173-elm-hana-rev7.dt.yaml
-> > 	arch/arm64/boot/dts/mediatek/mt8173-evb.dt.yaml
-> > 
-> > pwm@1401e000: 'power-domains' is a required property
-> > 	arch/arm64/boot/dts/mediatek/mt8173-elm.dt.yaml
-> > 	arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dt.yaml
-> > 	arch/arm64/boot/dts/mediatek/mt8173-elm-hana-rev7.dt.yaml
-> > 	arch/arm64/boot/dts/mediatek/mt8173-evb.dt.yaml
-> > 
-> > pwm@1401f000: compatible: ['mediatek,mt8173-disp-pwm',
-> > 'mediatek,mt6595-disp-pwm'] is too long
-> > 	arch/arm64/boot/dts/mediatek/mt8173-elm.dt.yaml
-> > 	arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dt.yaml
-> > 	arch/arm64/boot/dts/mediatek/mt8173-elm-hana-rev7.dt.yaml
-> > 	arch/arm64/boot/dts/mediatek/mt8173-evb.dt.yaml
-> > 
-> Hi Rob:
+On Mon, 14 Feb 2022 09:19:15 +0100, Krzysztof Kozlowski wrote:
+> dtschema expects PWM node name to be a generic "pwm".  This also matches
+> Devicetree specification requirements about generic node names.
 > 
-> Thanks for your review. I'm trying to modify the dtbs_check warning you
-> mentioned. I would like to ask what cmd I can use to test the modified
-> dtbs_check locally.
+> 
 
-# Enable building all dtbs
-make allmodconfig
+Applied, thanks!
 
-make dtbs_check DT_SCHEMA_FILES=path/to/schema.yaml
+[3/4] arm64: dts: qcom: align Google CROS EC PWM node name with dtschema
+      commit: 1e49defb863638cde53e48805747271f80f9abec
 
-> Also for WARNING: DT binding docs and includes should be a separate
-> patch. I've also made some attempts including splitting the delete .txt
-> and create .yaml files into two patches, but the warning doesn't
-> resolve. Do you have any suggestions for the results of checkpatch
-> ?This will help a lot with the next edition I send out.
-
-Ignore it for conversion patches.
-
-Rob
+Best regards,
+-- 
+Bjorn Andersson <bjorn.andersson@linaro.org>
 
 _______________________________________________
 Linux-mediatek mailing list
