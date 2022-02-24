@@ -4,64 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6323C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Feb 2022 13:57:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CA36C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Feb 2022 16:16:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DpFRrZWjynyQCdCxwpP/hpf+G0+S0EbGT4oGR41bhko=; b=iwomhGOtmGTX9p
-	9QdyW1SlZ4il5dms2JZDQbDp7y0DtBUu4lJ8nQ/7XJc4KUjKU+W29p/SEyjgS57TcXeKIVEBexqLf
-	xhtZa9c+Gq47Fey54pc4pmJVMmk12t4E5kFW7E92Voiua/8zgtSz4B/JGtdm3bFc0qESNUYZBqqWG
-	A5GXFFB0/RD0flGAXQ7HJBgyml/DDYetwFNYYOaM/F4HhM25Le4kaatFbHnsyz5VNCg3hsImsre0G
-	f4ZENL90oRGTotq37woVsKEcFnJBhRQOmSJyaNkbrN35dw/rHAZz12Qo9Ify/OAYLYHDEZm54F/iD
-	HqhDOiIrBR5weWb2wDcA==;
+	List-Owner; bh=geXSbCG6niMyOKEJrdBZX6zFp+izpEP+FAlHQRn77Uo=; b=zfYz9rSbqu/nYP
+	y2ABknriTkwHhS16BPq9URRgunT9R/o90qpTmlIdcbyis0iARLrflGtSD2+PAKE3R1Ve6T0G4s+D5
+	E9oVfaz+qaBOXcRJgZ+TO7gj3SB7jNl0cERkm7raiqJPnMCydT3lq+Zy+FArHTEU6HWYZwGoSUKVx
+	KG+TgvuMM73hR/4PdWx6hX7yItRFBlNoM789zW7xNkcbWp7nkdP9DHR0T8CA8654aJDHmprDtbLoF
+	LyvycXOsMC1z78HYlGkd46F6GQQ1X98/vCv23Rexx1xU4TGdydfPxquVEZhO2kl4XAPRCCoJErw7e
+	hjar7ztLzJCUO6jiHAaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNEck-0012FH-2R; Thu, 24 Feb 2022 13:57:38 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nNGmd-001WRy-Ht; Thu, 24 Feb 2022 16:15:59 +0000
+Received: from mail-oi1-f177.google.com ([209.85.167.177])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNEcS-00125g-Gm; Thu, 24 Feb 2022 13:57:22 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 7CFBE1F4520E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645711034;
- bh=FU23JamNvvn6c127qa/j3ThUY5jmoMZZrJoFmPK46lk=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=j9j905lQZJV6y6Q+ixrGg1d5bX0EWryPbz0rqodSFAm/E1N89Di2GwfyVXuAK4CD/
- risj/WhwnIVEOq7nucZuGfLQ8YMgWH3n0gBke9gATVqtNrfSjazSWRlo6h+IG9IeZJ
- udW+un6ZncU4ehSOA7rYZyOP5dwafIK7P02F2mkkm62uPDPl711zJAOeQB4g7sw96r
- YkMXzt6CePkHxPKyL1hAI+ykjsIXQEKmpkWX3zEtid4R7SvgDjX6DzQtTSdcRR8OqJ
- qC4G5tyRmYV+p7C9xa2EG500xHtMtBrSrgtMvCyeXEXOFLD0Mq3ePM8TW44k1t7rz1
- pb4HzXsgSufXQ==
-Message-ID: <03a5591a-574f-ec07-68c8-0e3f97a0c68f@collabora.com>
-Date: Thu, 24 Feb 2022 14:57:11 +0100
+ id 1nNGjf-001VDv-3O; Thu, 24 Feb 2022 16:12:57 +0000
+Received: by mail-oi1-f177.google.com with SMTP id j2so3123223oie.7;
+ Thu, 24 Feb 2022 08:12:53 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=zbkQNmRMiKw/pcrFZH62eSxRpSbb/s9oDkkz3K5wBJ4=;
+ b=WS1U9w71vkZ50ypzMlJ1W4CzMiFrhrWZi4HOuvSqZf9Co3Q7MME25AmRokTHZ1NKjw
+ qT0McGNjM9qOFMR90qkaQtaJm0r8DwTpGhquGac758+UaQC8gNK/ZlP6oPEUDfBPoQx7
+ LMgmj0vRXVm1b/AQyP0+v5ykvr4GucQuJsZQnpCyuQFRzu365ThRXx7VP7OQm87rietI
+ pYnad7eanjXIxxnJ8VXYimviQax6Dszo5kjO/D6s2d4hwLxBNZlDlTIp2NqlVlbU1haD
+ eRRcq7zzlfgRu9DNgI3YBV+zLjp3EGGGJOHy3Qp14J2isHX0/seiaUYST82dRxGsri4O
+ Gy1w==
+X-Gm-Message-State: AOAM532HZPJXw7PL75Rn/c2kkhHCCbmBQLtPjil4iAbldWAhUkG5aXDV
+ LeQfDbmlOLkX8fSA6981/A==
+X-Google-Smtp-Source: ABdhPJxUdvQQ74bDVPACbU46SgRLAo662OysqMgqfjKUa3F3TgTNZydiCsoVlSxthTdtiIVIFdbrsg==
+X-Received: by 2002:aca:5c89:0:b0:2d5:18eb:9e6 with SMTP id
+ q131-20020aca5c89000000b002d518eb09e6mr1735362oib.58.1645719172925; 
+ Thu, 24 Feb 2022 08:12:52 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id bc16sm1650906oib.26.2022.02.24.08.12.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 24 Feb 2022 08:12:52 -0800 (PST)
+Received: (nullmailer pid 3173677 invoked by uid 1000);
+ Thu, 24 Feb 2022 16:12:50 -0000
+Date: Thu, 24 Feb 2022 10:12:50 -0600
+From: Rob Herring <robh@kernel.org>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Jassi Brar <jaswinder.singh@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>,
+ Linux-ALSA <alsa-devel@alsa-project.org>, tzungbi@google.com,
+ cujomalainey@google.com,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, Kevin Hilman <khilman@baylibre.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ sound-open-firmware@alsa-project.org
+Subject: Re: [PATCH v17 1/2] dt-bindings: mailbox: mtk,adsp-mbox: add mtk
+ adsp-mbox document
+Message-ID: <YheugpFub9ArHDyT@robh.at.kernel.org>
+References: <20220224133045.23903-1-allen-kh.cheng@mediatek.com>
+ <20220224133045.23903-2-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v8 15/19] drm/mediatek: Add mt8195 Embedded DisplayPort
- driver
-Content-Language: en-US
-To: Guillaume Ranquet <granquet@baylibre.com>, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
- robh+dt@kernel.org, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
- tzimmermann@suse.de, matthias.bgg@gmail.com, chunfeng.yun@mediatek.com,
- kishon@ti.com, vkoul@kernel.org, deller@gmx.de, ck.hu@mediatek.com,
- jitao.shi@mediatek.com
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-fbdev@vger.kernel.org, Markus Schneider-Pargmann <msp@baylibre.com>,
- kernel test robot <lkp@intel.com>
-References: <20220218145437.18563-1-granquet@baylibre.com>
- <20220218145437.18563-16-granquet@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220218145437.18563-16-granquet@baylibre.com>
+Content-Disposition: inline
+In-Reply-To: <20220224133045.23903-2-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220224_055720_928645_4E812943 
-X-CRM114-Status: GOOD (  29.16  )
+X-CRM114-CacheID: sfid-20220224_081255_222169_00DFA08C 
+X-CRM114-Status: GOOD (  19.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,415 +91,93 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/02/22 15:54, Guillaume Ranquet ha scritto:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
+On Thu, Feb 24, 2022 at 09:30:44PM +0800, Allen-KH Cheng wrote:
+> From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 > 
-> This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
+> This patch adds document for mediatek adsp mbox
 > 
-> It supports the mt8195, the embedded DisplayPort units. It offers
-> hot-plug-detection and DisplayPort 1.4 with up to 4 lanes.
-> 
-> The driver creates a child device for the phy. The child device will
-> never exist without the parent being active. As they are sharing a
-> register range, the parent passes a regmap pointer to the child so that
-> both can work with the same register range. The phy driver sets device
-> data that is read by the parent to get the phy device that can be used
-> to control the phy properties.
-> 
-> This driver is based on an initial version by
-> Jason-JH.Lin <jason-jh.lin@mediatek.com>.
-> 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> Reported-by: kernel test robot <lkp@intel.com>
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->   drivers/gpu/drm/mediatek/Kconfig       |    7 +
->   drivers/gpu/drm/mediatek/Makefile      |    2 +
->   drivers/gpu/drm/mediatek/mtk_dp.c      | 2358 ++++++++++++++++++++++++
->   drivers/gpu/drm/mediatek/mtk_dp_reg.h  |  568 ++++++
->   drivers/gpu/drm/mediatek/mtk_drm_drv.c |    1 +
->   drivers/gpu/drm/mediatek/mtk_drm_drv.h |    1 +
->   6 files changed, 2937 insertions(+)
->   create mode 100644 drivers/gpu/drm/mediatek/mtk_dp.c
->   create mode 100644 drivers/gpu/drm/mediatek/mtk_dp_reg.h
+>  .../bindings/mailbox/mtk,adsp-mbox.yaml       | 52 +++++++++++++++++++
+>  1 file changed, 52 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
 > 
-
-
-Sorry for the double review, but I've just noticed something critical:
-
-the new version of mtk_dp_train_handler is severely misbehaving, producing
-
-non-functional display.
-
-I also went on with some effort to give you a solution for this,
-which implies to also tick the DP_STATE with the DP_TRAIN_STATE;
-
-This is my take on it:
-
-static int mtk_dp_train_handler(struct mtk_dp *mtk_dp)
-
-{
-
-	bool training_done = false;
-
-	short max_retry = 50;
-
-	int ret = 0;
-
-
-
-	do {
-
-		switch (mtk_dp->train_state) {
-
-		case MTK_DP_TRAIN_STATE_STARTUP:
-
-			mtk_dp_state_handler(mtk_dp);
-
-			mtk_dp->train_state = MTK_DP_TRAIN_STATE_CHECKCAP;
-
-			break;
-
-
-
-		case MTK_DP_TRAIN_STATE_CHECKCAP:
-
-			if (mtk_dp_parse_capabilities(mtk_dp)) {
-
-				mtk_dp->train_info.check_cap_count = 0;
-
-				mtk_dp->train_state = MTK_DP_TRAIN_STATE_CHECKEDID;
-
-			} else {
-
-				mtk_dp->train_info.check_cap_count++;
-
-
-
-				if (mtk_dp->train_info.check_cap_count >
-
-				    MTK_DP_CHECK_SINK_CAP_TIMEOUT_COUNT) {
-
-					mtk_dp->train_info.check_cap_count = 0;
-
-					mtk_dp->train_state = MTK_DP_TRAIN_STATE_DPIDLE;
-
-					ret = -ETIMEDOUT;
-
-				}
-
-			}
-
-			break;
-
-
-
-		case MTK_DP_TRAIN_STATE_CHECKEDID:
-
-			mtk_dp->audio_enable =
-
-					!mtk_dp_edid_parse_audio_capabilities(
-
-						mtk_dp, &mtk_dp->info.audio_caps);
-
-
-
-			if (!mtk_dp->audio_enable)
-
-				memset(&mtk_dp->info.audio_caps, 0,
-
-				       sizeof(mtk_dp->info.audio_caps));
-
-
-
-			mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING_PRE;
-
-			break;
-
-
-
-		case MTK_DP_TRAIN_STATE_TRAINING_PRE:
-
-			mtk_dp_state_handler(mtk_dp);
-
-			mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING;
-
-			break;
-
-
-
-		case MTK_DP_TRAIN_STATE_TRAINING:
-
-			ret = mtk_dp_train_start(mtk_dp);
-
-			if (ret == 0) {
-
-				mtk_dp_video_mute(mtk_dp, true);
-
-				mtk_dp_audio_mute(mtk_dp, true);
-
-				mtk_dp->train_state = MTK_DP_TRAIN_STATE_NORMAL;
-
-				mtk_dp_fec_enable(mtk_dp, mtk_dp->has_fec);
-
-			} else if (ret != -EAGAIN) {
-
-				mtk_dp->train_state = MTK_DP_TRAIN_STATE_DPIDLE;
-
-			}
-
-			break;
-
-		case MTK_DP_TRAIN_STATE_NORMAL:
-
-			mtk_dp_state_handler(mtk_dp);
-
-			training_done = true;
-
-			break;
-
-		case MTK_DP_TRAIN_STATE_DPIDLE:
-
-			break;
-
-		default:
-
-			break;
-
-		}
-
-
-
-		if (ret) {
-
-			if (ret == -EAGAIN)
-
-				continue;
-
-			/*
-
-			 * If we get any other error number, it doesn't
-
-			 * make any sense to keep iterating.
-
-			 */
-
-			break;
-
-		}
-
-	} while (!training_done || --max_retry);
-
-
-
-	return ret;
-
-}
-
-> +static void mtk_dp_train_handler(struct mtk_dp *mtk_dp)
-> +{
-> +	int ret = 0;
-> +	int i = 50;
+> diff --git a/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
+> new file mode 100644
+> index 000000000000..25756837797f
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
+> @@ -0,0 +1,52 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mailbox/mtk,adsp-mbox.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +	do {
-> +		if (mtk_dp->train_state == MTK_DP_TRAIN_STATE_NORMAL)
-> +			continue;
+> +title: Mediatek ADSP mailbox
 > +
-> +		switch (mtk_dp->train_state) {
-> +		case MTK_DP_TRAIN_STATE_STARTUP:
-> +			mtk_dp->train_state = MTK_DP_TRAIN_STATE_CHECKCAP;
-> +			break;
+> +maintainers:
+> +  - Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 > +
-> +		case MTK_DP_TRAIN_STATE_CHECKCAP:
-> +			if (mtk_dp_parse_capabilities(mtk_dp)) {
-> +				mtk_dp->train_info.check_cap_count = 0;
-> +				mtk_dp->train_state = MTK_DP_TRAIN_STATE_CHECKEDID;
-> +			} else {
-> +				mtk_dp->train_info.check_cap_count++;
+> +description: |
+> +  The MTK ADSP mailbox Inter-Processor Communication (IPC) enables the SoC
+> +  to ommunicate with ADSP by passing messages through two mailbox channels.
+> +  The MTK ADSP mailbox IPC also provides the ability for one processor to
+> +  signal the other processor using interrupts.
 > +
-> +				if (mtk_dp->train_info.check_cap_count >
-> +					MTK_DP_CHECK_SINK_CAP_TIMEOUT_COUNT) {
-> +					mtk_dp->train_info.check_cap_count = 0;
-> +					mtk_dp->train_state = MTK_DP_TRAIN_STATE_DPIDLE;
-> +					ret = -ETIMEDOUT;
-> +				}
-> +			}
-> +			break;
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: mediatek,mt8195-adsp-mbox
 > +
-> +		case MTK_DP_TRAIN_STATE_CHECKEDID:
-> +			mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING_PRE;
-> +			break;
+> +  "#mbox-cells":
+> +    const: 0
 > +
-> +		case MTK_DP_TRAIN_STATE_TRAINING_PRE:
-> +			mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING;
-> +			break;
-> +
-> +		case MTK_DP_TRAIN_STATE_TRAINING:
-> +			ret = mtk_dp_train_start(mtk_dp);
-> +			if (!ret) {
-> +				mtk_dp_video_mute(mtk_dp, true);
-> +				mtk_dp->train_state = MTK_DP_TRAIN_STATE_NORMAL;
-> +				mtk_dp_fec_enable(mtk_dp, mtk_dp->has_fec);
-> +			} else if (ret != -EAGAIN) {
-> +				mtk_dp->train_state = MTK_DP_TRAIN_STATE_DPIDLE;
-> +			}
-> +
-> +			ret = 0;
-> +			break;
-> +
-> +		case MTK_DP_TRAIN_STATE_NORMAL:
-> +			break;
-> +		case MTK_DP_TRAIN_STATE_DPIDLE:
-> +			break;
-> +		default:
-> +			break;
-> +		}
-> +	} while (ret && i--);
-> +
-> +	if (ret)
-> +		drm_err(mtk_dp->drm_dev, "Train handler failed %d\n", ret);
-> +}
-> +
-> +static void mtk_dp_video_enable(struct mtk_dp *mtk_dp, bool enable)
-> +{
-> +	if (enable) {
-> +		mtk_dp_set_tx_out(mtk_dp);
-> +		mtk_dp_video_mute(mtk_dp, false);
-> +	} else {
-> +		mtk_dp_video_mute(mtk_dp, true);
-> +	}
-> +}
-> +
-> +static void mtk_dp_video_config(struct mtk_dp *mtk_dp)
-> +{
-> +	mtk_dp_mn_overwrite_disable(mtk_dp);
-> +
-> +	mtk_dp_set_msa(mtk_dp);
-> +
-> +	mtk_dp_set_color_depth(mtk_dp, mtk_dp->info.depth);
-> +	mtk_dp_set_color_format(mtk_dp, mtk_dp->info.format);
-> +}
-> +
-> +static void mtk_dp_state_handler(struct mtk_dp *mtk_dp)
-> +{
-> +	switch (mtk_dp->state) {
-> +	case MTK_DP_STATE_INITIAL:
-> +		mtk_dp_video_mute(mtk_dp, true);
-> +		mtk_dp->state = MTK_DP_STATE_IDLE;
-> +		break;
-> +
-> +	case MTK_DP_STATE_IDLE:
-> +		if (mtk_dp->train_state == MTK_DP_TRAIN_STATE_NORMAL)
-> +			mtk_dp->state = MTK_DP_STATE_PREPARE;
-> +		break;
-> +
-> +	case MTK_DP_STATE_PREPARE:
-> +		mtk_dp_video_config(mtk_dp);
-> +		mtk_dp_video_enable(mtk_dp, true);
-> +
-> +		mtk_dp->state = MTK_DP_STATE_NORMAL;
-> +		break;
-> +
-> +	case MTK_DP_STATE_NORMAL:
-> +		if (mtk_dp->train_state != MTK_DP_TRAIN_STATE_NORMAL) {
-> +			mtk_dp_video_mute(mtk_dp, true);
-> +			mtk_dp->state = MTK_DP_STATE_IDLE;
-> +		}
-> +		break;
-> +
-> +	default:
-> +		break;
-> +	}
-> +}
-> +
+> +  reg:
+> +    description:
+> +      Physical address base for dsp mbox registers.
 
-Move mtk_dp_train_handler() here.....
+That's fairly obvious. Drop.
 
-
-> +static void mtk_dp_bridge_atomic_enable(struct drm_bridge *bridge,
-> +					struct drm_bridge_state *old_state)
-> +{
-> +	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
-> +	struct drm_connector_state *conn_state;
-> +	struct drm_crtc *crtc;
-> +	struct drm_crtc_state *crtc_state;
-
-	int ret;
+You need to define how many: 'maxItems: 1'
 
 > +
-> +	mtk_dp->conn = drm_atomic_get_new_connector_for_encoder(old_state->base.state,
-> +								bridge->encoder);
-> +	if (!mtk_dp->conn) {
-> +		drm_err(mtk_dp->drm_dev,
-> +			"Can't enable bridge as connector is missing\n");
-> +		return;
-> +	}
+> +  interrupts:
+> +    description:
+> +      adsp mbox interrupt
+
+Same here.
+
 > +
-> +	memcpy(mtk_dp->connector_eld, mtk_dp->conn->eld, MAX_ELD_BYTES);
+> +required:
+> +  - compatible
+> +  - "#mbox-cells"
+> +  - reg
+> +  - interrupts
 > +
-> +	conn_state =
-> +		drm_atomic_get_new_connector_state(old_state->base.state, mtk_dp->conn);
-> +	if (!conn_state) {
-> +		drm_err(mtk_dp->drm_dev,
-> +			"Can't enable bridge as connector state is missing\n");
-> +		return;
-> +	}
+> +additionalProperties: false
 > +
-> +	crtc = conn_state->crtc;
-> +	if (!crtc) {
-> +		drm_err(mtk_dp->drm_dev,
-> +			"Can't enable bridge as connector state doesn't have a crtc\n");
-> +		return;
-> +	}
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
 > +
-> +	crtc_state = drm_atomic_get_new_crtc_state(old_state->base.state, crtc);
-> +	if (!crtc_state) {
-> +		drm_err(mtk_dp->drm_dev,
-> +			"Can't enable bridge as crtc state is missing\n");
-> +		return;
-> +	}
-> +
-> +	mtk_dp_parse_drm_mode_timings(mtk_dp, &crtc_state->adjusted_mode);
-> +	if (!mtk_dp_parse_capabilities(mtk_dp)) {
-> +		drm_err(mtk_dp->drm_dev,
-> +			"Can't enable bridge as nothing is plugged in\n");
-> +		return;
-> +	}
-> +
-> +	/* Training */
-
-The following is very similar to your previous version of this function:
-
-	ret = mtk_dp_train_handler(mtk_dp);
-
-	if (ret) {
-
-		drm_err(mtk_dp->drm_dev, "Train handler failed %d\n", ret);
-
-		return;
-
-	}
-
-
-
-	mtk_dp->enabled = true;
-
-	mtk_dp_update_plugged_status(mtk_dp)
-}
-
-
-> +	mtk_dp_train_handler(mtk_dp);
-> +	mtk_dp_state_handler(mtk_dp);
-> +	mtk_dp->enabled = true;
-> +}
-
-Regards,
-Angelo
+> +    adsp_mailbox0:mailbox@10816000 {
+> +        compatible = "mediatek,mt8195-adsp-mbox";
+> +        #mbox-cells = <0>;
+> +        reg = <0x10816000 0x1000>;
+> +        interrupts = <GIC_SPI 702 IRQ_TYPE_LEVEL_HIGH 0>;
+> +    };
+> -- 
+> 2.18.0
+> 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
