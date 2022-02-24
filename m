@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1090FC433F5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90CA5C433EF
 	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Feb 2022 09:18:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=A3JJV1YNOUuWHiydVLdvsy1O5NCiMmdGRptqpmLIjX0=; b=wy2ZJbnXlFvcIZ
-	lztvCq7YQ80AV36jcX2Y7xP6KBajQqQfTlx3YyCTOVAv6LRUKCHy+HS7DrKAaohSci+EpvuJ2PTzU
-	WhYs36R5nGRKWR5ReTqfrpRU+MI0cgAQKi3Nsz+Dn4LvcqwHmLCs70BPHw7PH5nMVwKuFQO4RwouW
-	JooDMnrv8VqQ351IIPNTRCW0UkNYOHj8GtKEsuOXTMHuu7ZxrnSNFcZQShqdM2X3Ism3kHcfOi09F
-	kNb0kSGoR4mnF0rKR7ROr/tmYhZjrUHlg+OSbcKshvawxgs/F17pXM0nz6/g1LF0wdyQw0D9wUQCB
-	wP6sDnrYlxfJMZpDGXkA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=kp6ih7Kt2LxC86co120a1uEK/x6v12SD6IizQxMmDvg=; b=saTswZk+KnfUQ6
+	tU6Jj77P0OnXOeKpsFBpeanItbZby+i6v0lhl6pTK9qaodV3emze7QUzfCjk5UtUDNTc8XXbIq30J
+	5iGMTyjtNdpURC34ai3W99Yuig3a+CN8sZ/XdkgWk5CVNS5mHAo12zVSvpKSmFal6zTYrD6bFXgyY
+	v+c7O8NEcmLygLWDyZuPcL/l2hmjd71Zvs/KRXhJXGEjSTKKwVfVwZAqeYUhIGAHpOz5H12BTn+bg
+	FEUh72asCCRWtR1hkv31/zoqPvVWtg6KdoUQUX4qSbEIyI6YYdW9Q7eCrwr8r6Y34PzxObmkT135l
+	qndV8mQhG9eLJ/uLoQDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNAGg-00HaRe-CE; Thu, 24 Feb 2022 09:18:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nNAGi-00HaSY-4e; Thu, 24 Feb 2022 09:18:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNA19-00HSgl-FT; Thu, 24 Feb 2022 09:02:34 +0000
-X-UUID: 1c0d88b6686b490f94740a6ef5c35d29-20220224
-X-UUID: 1c0d88b6686b490f94740a6ef5c35d29-20220224
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1nNA1D-00HSkO-BE; Thu, 24 Feb 2022 09:02:37 +0000
+X-UUID: b88520c72dfe4b2e92000a1bae13e2fe-20220224
+X-UUID: b88520c72dfe4b2e92000a1bae13e2fe-20220224
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <kyrie.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1733067424; Thu, 24 Feb 2022 02:02:22 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Feb 2022 01:02:20 -0800
+ with ESMTP id 139431478; Thu, 24 Feb 2022 02:02:29 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Feb 2022 01:02:27 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 24 Feb 2022 17:02:19 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 24 Feb 2022 17:02:25 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 24 Feb 2022 17:02:18 +0800
+ Transport; Thu, 24 Feb 2022 17:02:24 +0800
 From: kyrie.wu <kyrie.wu@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
  <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
@@ -50,15 +50,18 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
  <xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, kyrie wu
  <kyrie.wu@mediatek.com>, <srv_heupstream@mediatek.com>
-Subject: [V1, 0/6] Enable two hardware jpeg encoder for MT8195
-Date: Thu, 24 Feb 2022 17:02:07 +0800
-Message-ID: <1645693333-524-1-git-send-email-kyrie.wu@mediatek.com>
+Subject: [V1, 2/6] media: mtk-jpegenc: export jpeg encoder functions
+Date: Thu, 24 Feb 2022 17:02:09 +0800
+Message-ID: <1645693333-524-3-git-send-email-kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.6.4
+In-Reply-To: <1645693333-524-1-git-send-email-kyrie.wu@mediatek.com>
+References: <1645693333-524-1-git-send-email-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220224_010231_539112_90A2C082 
-X-CRM114-Status: GOOD (  13.74  )
+X-CRM114-CacheID: sfid-20220224_010235_449580_1BAAEFBC 
+X-CRM114-Status: UNSURE (   9.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,74 +80,63 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: kyrie wu <kyrie.wu@mediatek.com>
 
-This series adds support for multi hardware jpeg encoding, by first
-adding use of_platform_populate to manage each hardware information:
-interrupt, clock, register bases and power. Secondly add encoding
-work queue to deal with the encoding requestsof multi-hardware
-at the same time. Lastly, add output picture reorder function
-interface to eliminate the out of order images.
+mtk jpeg encoder is built as a module, export some functions to make them
+visible by other modules.
 
-This series has been tested with both MT8195.
-Encoding worked for this chip.
-
-Patches 1 Adds jpeg encoder dt-bindings for mt8195
-
-Patches 2 jpeg encoder builds two module for using Multi-HW,
-export some functions to make them visible by other modules.
-
-Patches 3 use devm_of_platform_populate to manage multi-hardware.
-
-Patch 4 add jpeg encoding timeout function to judge hardware timeout.
-
-Patch 5 add encoding work queue to deal with multi-hardware encoding
-at the same time.
-
-Patch 6 add output picture reorder function to order images.
+Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
 ---
-Changes compared with v6:
-- new yaml file for mt8195 jpeg encoder.
-- some modifications for patch v5's review comments.
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Changes compared with v5:
-- use of_platform_populate to replace component framework to
-manage multi-hardware in patch 2.
-
-Changes compared with v4:
---No change compaered with v4
-
-Changes compared with v3:
---Structure patches for consistency, non-backward
-  compatible and do not break any existing functionality
-
-Changes compared with v2:
---Split the last two patches into several patches
-  to enhance readability
---Correct some syntax errors
---Explain why the component framework is used
-
-Changes compared with v1:
---Add jpeg encoder dt-bindings for MT8195
---Use component framework to manage jpegenc HW
---Add jpegenc output pic reorder function interface
-
-kyrie wu (6):
-  dt-bindings: mediatek: Add mediatek, mt8195-jpgenc compatible
-  media: mtk-jpegenc: export jpeg encoder functions
-  media: mtk-jpegenc: manage jpegenc multi-hardware
-  media: mtk-jpegenc: add jpegenc timeout func interface
-  media: mtk-jpegenc: add jpeg encode worker interface
-  media: mtk-jpegenc: add output pic reorder interface
-
- .../media/mediatek,mt8195-jpegenc.yaml        | 174 +++++++++++
- drivers/media/platform/mtk-jpeg/Makefile      |  11 +-
- .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 292 +++++++++++++++---
- .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  81 ++++-
- .../media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c |   1 +
- .../media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h |   3 +-
- .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 261 ++++++++++++++++
- 7 files changed, 769 insertions(+), 54 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+index 1cf037bf72dd..a2b6e1f85c2d 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+@@ -36,12 +36,14 @@ void mtk_jpeg_enc_reset(void __iomem *base)
+ 	writel(JPEG_ENC_RESET_BIT, base + JPEG_ENC_RSTB);
+ 	writel(0, base + JPEG_ENC_CODEC_SEL);
+ }
++EXPORT_SYMBOL_GPL(mtk_jpeg_enc_reset);
+ 
+ u32 mtk_jpeg_enc_get_file_size(void __iomem *base)
+ {
+ 	return readl(base + JPEG_ENC_DMA_ADDR0) -
+ 	       readl(base + JPEG_ENC_DST_ADDR0);
+ }
++EXPORT_SYMBOL_GPL(mtk_jpeg_enc_get_file_size);
+ 
+ void mtk_jpeg_enc_start(void __iomem *base)
+ {
+@@ -51,6 +53,7 @@ void mtk_jpeg_enc_start(void __iomem *base)
+ 	value |= JPEG_ENC_CTRL_INT_EN_BIT | JPEG_ENC_CTRL_ENABLE_BIT;
+ 	writel(value, base + JPEG_ENC_CTRL);
+ }
++EXPORT_SYMBOL_GPL(mtk_jpeg_enc_start);
+ 
+ void mtk_jpeg_set_enc_src(struct mtk_jpeg_ctx *ctx,  void __iomem *base,
+ 			  struct vb2_buffer *src_buf)
+@@ -67,6 +70,7 @@ void mtk_jpeg_set_enc_src(struct mtk_jpeg_ctx *ctx,  void __iomem *base,
+ 			writel(dma_addr, base + JPEG_ENC_SRC_CHROMA_ADDR);
+ 	}
+ }
++EXPORT_SYMBOL_GPL(mtk_jpeg_set_enc_src);
+ 
+ void mtk_jpeg_set_enc_dst(struct mtk_jpeg_ctx *ctx, void __iomem *base,
+ 			  struct vb2_buffer *dst_buf)
+@@ -86,6 +90,7 @@ void mtk_jpeg_set_enc_dst(struct mtk_jpeg_ctx *ctx, void __iomem *base,
+ 	writel(dma_addr & ~0xf, base + JPEG_ENC_DST_ADDR0);
+ 	writel((dma_addr + size) & ~0xf, base + JPEG_ENC_STALL_ADDR0);
+ }
++EXPORT_SYMBOL_GPL(mtk_jpeg_set_enc_dst);
+ 
+ void mtk_jpeg_set_enc_params(struct mtk_jpeg_ctx *ctx,  void __iomem *base)
+ {
+@@ -152,3 +157,5 @@ void mtk_jpeg_set_enc_params(struct mtk_jpeg_ctx *ctx,  void __iomem *base)
+ 
+ 	writel(ctx->restart_interval, base + JPEG_ENC_RST_MCU_NUM);
+ }
++EXPORT_SYMBOL_GPL(mtk_jpeg_set_enc_params);
++
 -- 
 2.18.0
 
