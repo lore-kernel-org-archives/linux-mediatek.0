@@ -4,83 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78D62C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Feb 2022 13:56:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6323C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Feb 2022 13:57:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oEsdzYjfhYJvudQXXiP0yBHRXimnK2Y4LeIMkE0moyA=; b=2ODDcfjMyTkO4qEjpCWkgsgrPD
-	gkPLzULF+Z9TmXwo9U/rCiQYm67cY0N5YpYApGkP6YdRL3raCvUhSC/OX5uLOFCsMUxxVRTMJA3ED
-	XWosoGBmsAaLr1pvgVL3BSMPdQbL61DdDgDEPNflkggreRIY4ncCXWwq1mipyRf2NSes5dU3RL7uF
-	ov5QNYqn0dNLF05KrsAtytBAhXlPdQYTscO3+tW/hP9Ttj4eF9DVBd2p7BmlU6gtxIPXTNaF1VAlm
-	OMO4ffd8tO+Qi5x7/ObuL2SNOyDetr+7d/VQRo+dsLaLQX+3ZZjuYiWddacjmE+zICp+bAeIIR4oZ
-	KSOTtLog==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DpFRrZWjynyQCdCxwpP/hpf+G0+S0EbGT4oGR41bhko=; b=iwomhGOtmGTX9p
+	9QdyW1SlZ4il5dms2JZDQbDp7y0DtBUu4lJ8nQ/7XJc4KUjKU+W29p/SEyjgS57TcXeKIVEBexqLf
+	xhtZa9c+Gq47Fey54pc4pmJVMmk12t4E5kFW7E92Voiua/8zgtSz4B/JGtdm3bFc0qESNUYZBqqWG
+	A5GXFFB0/RD0flGAXQ7HJBgyml/DDYetwFNYYOaM/F4HhM25Le4kaatFbHnsyz5VNCg3hsImsre0G
+	f4ZENL90oRGTotq37woVsKEcFnJBhRQOmSJyaNkbrN35dw/rHAZz12Qo9Ify/OAYLYHDEZm54F/iD
+	HqhDOiIrBR5weWb2wDcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNEc0-0011xT-Jy; Thu, 24 Feb 2022 13:56:52 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1nNEck-0012FH-2R; Thu, 24 Feb 2022 13:57:38 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNEbn-0011sY-Eh; Thu, 24 Feb 2022 13:56:40 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id lw4so4465948ejb.12;
- Thu, 24 Feb 2022 05:56:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=JvjC8tOWTk4ODYODZzdMtmR/l6m49ciAB7j3vCNUEKE=;
- b=lpE8irlSiGXh7sX+ApcfCqZMcLOWT3BV2SoJuR6yoXxjVTbN376LudqUY4cYo09a2j
- GVClT6gnbnZMTdWUU362FYpLM7X/akhmv1w0kXzn0RL7IDN7EQCsSEmHzQRFou8Dfv9t
- 9KMsc3FGy3cINoFy54zRgtm/iIMXmzcIlFmtTwTbBdevlLFq3Sr607iFQjfs+wVp5/Ly
- D443ODWNO651n/FuG+UPxNMSAsxLCFLghLca9u2tp1YjdBW0+slOzNEElUG+1ZFR30rU
- lThoClN3B0e1+XuEoARAN0+9N2i/bxmQDKfj7EjghBO8KpLIM6cV46RB+H5urVrlgE7J
- 0MNw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=JvjC8tOWTk4ODYODZzdMtmR/l6m49ciAB7j3vCNUEKE=;
- b=HdAYc04U/TLd6ShVerjajYsXaVJh2cu7J8kajGiAL3UFg1vRnW6f8rPFrTnAKEmL6A
- 6Fv0yVzGgoRppz8K2BXp+Pz0E2sPfKoGPg9ud7tvHWvzQz6nRL+xSAafkQ6HJNxspc9L
- C9SK64GBofjnIG1RPHQooq5clhzkSVJZjv4zytJMK4r1Yv0GtYIKC3bVZYYJog1JgxaO
- 1CcpuxzzxfvHOo8ngu1tVBXT3MgxbwhCvxDG3CL5nMEt0OnOYS2+8XEJ2qIZKJPCqIbN
- sWFiKF4HvnXDaB46KRddPB0AFZfzGnJtY0ZIIYeh5T8vy9qIANT0++yHfcbbLKyProSx
- Fm+A==
-X-Gm-Message-State: AOAM533p7PGJSvP8PzdSwLQZEPdjICv5MQevMhPXJGoQoq7pbnMjpc/2
- kxm/yKGhxKzZYYI0y7oBBYI=
-X-Google-Smtp-Source: ABdhPJzNOQ43PD6/sw6hM1w1ZVcS0jJ7lCKae7Uwa2cuV0H3vipEiMdyluuTU7eaIA4cQC1Ipng/IQ==
-X-Received: by 2002:a17:906:6716:b0:6cc:7d95:90af with SMTP id
- a22-20020a170906671600b006cc7d9590afmr2333918ejp.442.1645710998117; 
- Thu, 24 Feb 2022 05:56:38 -0800 (PST)
-Received: from orome (p200300e41f0a6900000000000000043a.dip0.t-ipconnect.de.
- [2003:e4:1f0a:6900::43a])
- by smtp.gmail.com with ESMTPSA id l12sm1450564edt.1.2022.02.24.05.56.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Feb 2022 05:56:36 -0800 (PST)
-Date: Thu, 24 Feb 2022 14:56:35 +0100
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "u.kleine-koenig@pengutronix.de" <u.kleine-koenig@pengutronix.de>,
- "lee.jones@linaro.org" <lee.jones@linaro.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-pwm@vger.kernel.org" <linux-pwm@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "kernel@collabora.com" <kernel@collabora.com>
-Subject: Re: [PATCH v2 3/3] pwm: pwm-mediatek: Beautify error messages text
-Message-ID: <YheOk3emaxePPBdr@orome>
-References: <20220214140339.112500-1-angelogioacchino.delregno@collabora.com>
- <20220214140339.112500-3-angelogioacchino.delregno@collabora.com>
- <e3222caa-ec69-2e90-ef81-666b03da656d@mediatek.com>
+ id 1nNEcS-00125g-Gm; Thu, 24 Feb 2022 13:57:22 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 7CFBE1F4520E
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1645711034;
+ bh=FU23JamNvvn6c127qa/j3ThUY5jmoMZZrJoFmPK46lk=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=j9j905lQZJV6y6Q+ixrGg1d5bX0EWryPbz0rqodSFAm/E1N89Di2GwfyVXuAK4CD/
+ risj/WhwnIVEOq7nucZuGfLQ8YMgWH3n0gBke9gATVqtNrfSjazSWRlo6h+IG9IeZJ
+ udW+un6ZncU4ehSOA7rYZyOP5dwafIK7P02F2mkkm62uPDPl711zJAOeQB4g7sw96r
+ YkMXzt6CePkHxPKyL1hAI+ykjsIXQEKmpkWX3zEtid4R7SvgDjX6DzQtTSdcRR8OqJ
+ qC4G5tyRmYV+p7C9xa2EG500xHtMtBrSrgtMvCyeXEXOFLD0Mq3ePM8TW44k1t7rz1
+ pb4HzXsgSufXQ==
+Message-ID: <03a5591a-574f-ec07-68c8-0e3f97a0c68f@collabora.com>
+Date: Thu, 24 Feb 2022 14:57:11 +0100
 MIME-Version: 1.0
-In-Reply-To: <e3222caa-ec69-2e90-ef81-666b03da656d@mediatek.com>
-User-Agent: Mutt/2.2.1 (c8109e14) (2022-02-19)
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH v8 15/19] drm/mediatek: Add mt8195 Embedded DisplayPort
+ driver
+Content-Language: en-US
+To: Guillaume Ranquet <granquet@baylibre.com>, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
+ robh+dt@kernel.org, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ tzimmermann@suse.de, matthias.bgg@gmail.com, chunfeng.yun@mediatek.com,
+ kishon@ti.com, vkoul@kernel.org, deller@gmx.de, ck.hu@mediatek.com,
+ jitao.shi@mediatek.com
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-fbdev@vger.kernel.org, Markus Schneider-Pargmann <msp@baylibre.com>,
+ kernel test robot <lkp@intel.com>
+References: <20220218145437.18563-1-granquet@baylibre.com>
+ <20220218145437.18563-16-granquet@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220218145437.18563-16-granquet@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220224_055639_536845_C8F277F8 
-X-CRM114-Status: GOOD (  28.17  )
+X-CRM114-CacheID: sfid-20220224_055720_928645_4E812943 
+X-CRM114-Status: GOOD (  29.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,138 +73,417 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3299704603906482499=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---===============3299704603906482499==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="hLgd3YADIvX8W0Kp"
-Content-Disposition: inline
-
-
---hLgd3YADIvX8W0Kp
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Feb 15, 2022 at 02:47:33PM +0800, Macpaul Lin wrote:
-> On 2/14/22 10:03 PM, AngeloGioacchino Del Regno wrote:
-> > As a cherry-on-top cleanup, make error messages clearer to read
-> > by changing instances of "clock: XXXX failed" to a more readable
-> > "Failed to get XXXX clock". Also add "of" to unsupported period
-> > error.
-> >=20
-> > This is purely a cosmetic change; no "real" functional changes.
-> >=20
-> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
-llabora.com>
-> > ---
-> >   drivers/pwm/pwm-mediatek.c | 8 ++++----
-> >   1 file changed, 4 insertions(+), 4 deletions(-)
-> >=20
-> > diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-> > index 6b39f3d69e41..568b13a48717 100644
-> > --- a/drivers/pwm/pwm-mediatek.c
-> > +++ b/drivers/pwm/pwm-mediatek.c
-> > @@ -146,7 +146,7 @@ static int pwm_mediatek_config(struct pwm_chip *chi=
-p, struct pwm_device *pwm,
-> >   	if (clkdiv > PWM_CLK_DIV_MAX) {
-> >   		pwm_mediatek_clk_disable(chip, pwm);
-> > -		dev_err(chip->dev, "period %d not supported\n", period_ns);
-> > +		dev_err(chip->dev, "period of %d ns not supported\n", period_ns);
-> >   		return -EINVAL;
-> >   	}
-> > @@ -229,12 +229,12 @@ static int pwm_mediatek_probe(struct platform_dev=
-ice *pdev)
-> >   	pc->clk_top =3D devm_clk_get(&pdev->dev, "top");
-> >   	if (IS_ERR(pc->clk_top))
-> >   		return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk_top),
-> > -				     "clock: top failed\n");
-> > +				     "Failed to get top clock\n");
-> >   	pc->clk_main =3D devm_clk_get(&pdev->dev, "main");
-> >   	if (IS_ERR(pc->clk_main))
-> >   		return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk_main),
-> > -				     "clock: main failed\n");
-> > +				     "Failed to get main clock\n");
-> >   	for (i =3D 0; i < pc->soc->num_pwms; i++) {
-> >   		char name[8];
-> > @@ -244,7 +244,7 @@ static int pwm_mediatek_probe(struct platform_devic=
-e *pdev)
-> >   		pc->clk_pwms[i] =3D devm_clk_get(&pdev->dev, name);
-> >   		if (IS_ERR(pc->clk_pwms[i]))
-> >   			return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk_pwms[i]),
-> > -					     "clock: %s failed\n", name);
-> > +					     "Failed to get %s clock\n", name);
-> >   	}
-> >   	pc->chip.dev =3D &pdev->dev;
-> >=20
->=20
-> The format of these debug messages "clock: top" or "clock: main" is meant=
- to
-> keep both human and machine's readability at the same time.
-> This kind of format is much more easier to parse by scripts, which the
-> driver's category and sub nodes are separated by delimiters . If a fail l=
-og
-> has been provided, the script could indicated where the issue might exists
-> probably. Device vender, field application engineer, and driver maintainer
-> could be able to write and use the error log parser before debugging.
-
-Does such a script truly exist? Given that most error messages don't
-follow this format, I would expect it to be only very marginally useful.
-Typically the prefix that the dev_printk() variants add is enough
-information to deduct where the error happens, at which point it's back
-to good old grep to find the matching string to localize exactly.
-
-> I'm not sure if this kind of format will be better. Like, "Failed to get
-> clock: %s".
->=20
-> If most people like this kind of solution ("Failed to get clock: %s\n"),
-> then you can have the reviewed-by tag.
-> Thanks!
->=20
-> Reviewed-by: Macpaul Lin <macpaul.lin@mediatek.com>
-
-I'm going to assume that the scriptability is a theoretical argument, so
-I'll take this. Let me know if you do rely on the exact format and I can
-drop this again.
-
-Thierry
-
---hLgd3YADIvX8W0Kp
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmIXjpMACgkQ3SOs138+
-s6FoBg/+NpTmPhqKdcsDVyDY31nGjMYlEUy6Nw5EhAVdvlZLargR9lpl9mfNPc3O
-Xg7RzdL6W2GGqPy938wLzqWZbjoaBV0Z0DUUn3sJg6qNE+fgov4dNLt2oQis0VpP
-/hhDVm//BRgVCm0iuQLmNDxAGkPCBcDilqEY3a+wpta9KCf4SDnAyRMeY52tDW0p
-AzpQXZd6WG8l7lezkEdebof6ZCUf4qO0MS/KlEpQaV/QgtVDjSLetrPBNhex3wG+
-JCO928Bmx5kHdX2pRSUSFgZOY9KkqOHWbjcUudNj4sFpL4HtON/p/r0rRtL43eTs
-ReFrgnvwP1Xv1ZuXqmjVrztBbUy2n79oFO/Ok+gVUChqw97V5rOSlKNDFzEKtHn2
-mDdQIeW/Uvj4QcPzszw4LqdixtjD4ZXCm0evqAVuxpyL+G0eCW7oR4yqFsDwKmxb
-RGDjQcvb/8fOeO3gmzmHr1jkdzM+2EUKDAKg5HMpXWLdTYNgemndNkFkF6NUF37e
-2SdQhQHp7lUwOTgUr3bxCYZfz+mr6X2eI7bW7udizQs4SdqHUq4aMvtsnn9edzs0
-0J8D+C32TQlN9z/bLrZoyQ7TWG23moIMaC4w/1XThI+fldS0WALdqwOs6i2FwTle
-ShFCQanNvWwpqc4ijB8a7BNYxmTL76DbiMuB0odKBHZ8+FlvWZc=
-=GvaV
------END PGP SIGNATURE-----
-
---hLgd3YADIvX8W0Kp--
+Il 18/02/22 15:54, Guillaume Ranquet ha scritto:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> 
+> This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
+> 
+> It supports the mt8195, the embedded DisplayPort units. It offers
+> hot-plug-detection and DisplayPort 1.4 with up to 4 lanes.
+> 
+> The driver creates a child device for the phy. The child device will
+> never exist without the parent being active. As they are sharing a
+> register range, the parent passes a regmap pointer to the child so that
+> both can work with the same register range. The phy driver sets device
+> data that is read by the parent to get the phy device that can be used
+> to control the phy properties.
+> 
+> This driver is based on an initial version by
+> Jason-JH.Lin <jason-jh.lin@mediatek.com>.
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> Reported-by: kernel test robot <lkp@intel.com>
+> ---
+>   drivers/gpu/drm/mediatek/Kconfig       |    7 +
+>   drivers/gpu/drm/mediatek/Makefile      |    2 +
+>   drivers/gpu/drm/mediatek/mtk_dp.c      | 2358 ++++++++++++++++++++++++
+>   drivers/gpu/drm/mediatek/mtk_dp_reg.h  |  568 ++++++
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.c |    1 +
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.h |    1 +
+>   6 files changed, 2937 insertions(+)
+>   create mode 100644 drivers/gpu/drm/mediatek/mtk_dp.c
+>   create mode 100644 drivers/gpu/drm/mediatek/mtk_dp_reg.h
+> 
 
 
---===============3299704603906482499==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Sorry for the double review, but I've just noticed something critical:
+
+the new version of mtk_dp_train_handler is severely misbehaving, producing
+
+non-functional display.
+
+I also went on with some effort to give you a solution for this,
+which implies to also tick the DP_STATE with the DP_TRAIN_STATE;
+
+This is my take on it:
+
+static int mtk_dp_train_handler(struct mtk_dp *mtk_dp)
+
+{
+
+	bool training_done = false;
+
+	short max_retry = 50;
+
+	int ret = 0;
+
+
+
+	do {
+
+		switch (mtk_dp->train_state) {
+
+		case MTK_DP_TRAIN_STATE_STARTUP:
+
+			mtk_dp_state_handler(mtk_dp);
+
+			mtk_dp->train_state = MTK_DP_TRAIN_STATE_CHECKCAP;
+
+			break;
+
+
+
+		case MTK_DP_TRAIN_STATE_CHECKCAP:
+
+			if (mtk_dp_parse_capabilities(mtk_dp)) {
+
+				mtk_dp->train_info.check_cap_count = 0;
+
+				mtk_dp->train_state = MTK_DP_TRAIN_STATE_CHECKEDID;
+
+			} else {
+
+				mtk_dp->train_info.check_cap_count++;
+
+
+
+				if (mtk_dp->train_info.check_cap_count >
+
+				    MTK_DP_CHECK_SINK_CAP_TIMEOUT_COUNT) {
+
+					mtk_dp->train_info.check_cap_count = 0;
+
+					mtk_dp->train_state = MTK_DP_TRAIN_STATE_DPIDLE;
+
+					ret = -ETIMEDOUT;
+
+				}
+
+			}
+
+			break;
+
+
+
+		case MTK_DP_TRAIN_STATE_CHECKEDID:
+
+			mtk_dp->audio_enable =
+
+					!mtk_dp_edid_parse_audio_capabilities(
+
+						mtk_dp, &mtk_dp->info.audio_caps);
+
+
+
+			if (!mtk_dp->audio_enable)
+
+				memset(&mtk_dp->info.audio_caps, 0,
+
+				       sizeof(mtk_dp->info.audio_caps));
+
+
+
+			mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING_PRE;
+
+			break;
+
+
+
+		case MTK_DP_TRAIN_STATE_TRAINING_PRE:
+
+			mtk_dp_state_handler(mtk_dp);
+
+			mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING;
+
+			break;
+
+
+
+		case MTK_DP_TRAIN_STATE_TRAINING:
+
+			ret = mtk_dp_train_start(mtk_dp);
+
+			if (ret == 0) {
+
+				mtk_dp_video_mute(mtk_dp, true);
+
+				mtk_dp_audio_mute(mtk_dp, true);
+
+				mtk_dp->train_state = MTK_DP_TRAIN_STATE_NORMAL;
+
+				mtk_dp_fec_enable(mtk_dp, mtk_dp->has_fec);
+
+			} else if (ret != -EAGAIN) {
+
+				mtk_dp->train_state = MTK_DP_TRAIN_STATE_DPIDLE;
+
+			}
+
+			break;
+
+		case MTK_DP_TRAIN_STATE_NORMAL:
+
+			mtk_dp_state_handler(mtk_dp);
+
+			training_done = true;
+
+			break;
+
+		case MTK_DP_TRAIN_STATE_DPIDLE:
+
+			break;
+
+		default:
+
+			break;
+
+		}
+
+
+
+		if (ret) {
+
+			if (ret == -EAGAIN)
+
+				continue;
+
+			/*
+
+			 * If we get any other error number, it doesn't
+
+			 * make any sense to keep iterating.
+
+			 */
+
+			break;
+
+		}
+
+	} while (!training_done || --max_retry);
+
+
+
+	return ret;
+
+}
+
+> +static void mtk_dp_train_handler(struct mtk_dp *mtk_dp)
+> +{
+> +	int ret = 0;
+> +	int i = 50;
+> +
+> +	do {
+> +		if (mtk_dp->train_state == MTK_DP_TRAIN_STATE_NORMAL)
+> +			continue;
+> +
+> +		switch (mtk_dp->train_state) {
+> +		case MTK_DP_TRAIN_STATE_STARTUP:
+> +			mtk_dp->train_state = MTK_DP_TRAIN_STATE_CHECKCAP;
+> +			break;
+> +
+> +		case MTK_DP_TRAIN_STATE_CHECKCAP:
+> +			if (mtk_dp_parse_capabilities(mtk_dp)) {
+> +				mtk_dp->train_info.check_cap_count = 0;
+> +				mtk_dp->train_state = MTK_DP_TRAIN_STATE_CHECKEDID;
+> +			} else {
+> +				mtk_dp->train_info.check_cap_count++;
+> +
+> +				if (mtk_dp->train_info.check_cap_count >
+> +					MTK_DP_CHECK_SINK_CAP_TIMEOUT_COUNT) {
+> +					mtk_dp->train_info.check_cap_count = 0;
+> +					mtk_dp->train_state = MTK_DP_TRAIN_STATE_DPIDLE;
+> +					ret = -ETIMEDOUT;
+> +				}
+> +			}
+> +			break;
+> +
+> +		case MTK_DP_TRAIN_STATE_CHECKEDID:
+> +			mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING_PRE;
+> +			break;
+> +
+> +		case MTK_DP_TRAIN_STATE_TRAINING_PRE:
+> +			mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING;
+> +			break;
+> +
+> +		case MTK_DP_TRAIN_STATE_TRAINING:
+> +			ret = mtk_dp_train_start(mtk_dp);
+> +			if (!ret) {
+> +				mtk_dp_video_mute(mtk_dp, true);
+> +				mtk_dp->train_state = MTK_DP_TRAIN_STATE_NORMAL;
+> +				mtk_dp_fec_enable(mtk_dp, mtk_dp->has_fec);
+> +			} else if (ret != -EAGAIN) {
+> +				mtk_dp->train_state = MTK_DP_TRAIN_STATE_DPIDLE;
+> +			}
+> +
+> +			ret = 0;
+> +			break;
+> +
+> +		case MTK_DP_TRAIN_STATE_NORMAL:
+> +			break;
+> +		case MTK_DP_TRAIN_STATE_DPIDLE:
+> +			break;
+> +		default:
+> +			break;
+> +		}
+> +	} while (ret && i--);
+> +
+> +	if (ret)
+> +		drm_err(mtk_dp->drm_dev, "Train handler failed %d\n", ret);
+> +}
+> +
+> +static void mtk_dp_video_enable(struct mtk_dp *mtk_dp, bool enable)
+> +{
+> +	if (enable) {
+> +		mtk_dp_set_tx_out(mtk_dp);
+> +		mtk_dp_video_mute(mtk_dp, false);
+> +	} else {
+> +		mtk_dp_video_mute(mtk_dp, true);
+> +	}
+> +}
+> +
+> +static void mtk_dp_video_config(struct mtk_dp *mtk_dp)
+> +{
+> +	mtk_dp_mn_overwrite_disable(mtk_dp);
+> +
+> +	mtk_dp_set_msa(mtk_dp);
+> +
+> +	mtk_dp_set_color_depth(mtk_dp, mtk_dp->info.depth);
+> +	mtk_dp_set_color_format(mtk_dp, mtk_dp->info.format);
+> +}
+> +
+> +static void mtk_dp_state_handler(struct mtk_dp *mtk_dp)
+> +{
+> +	switch (mtk_dp->state) {
+> +	case MTK_DP_STATE_INITIAL:
+> +		mtk_dp_video_mute(mtk_dp, true);
+> +		mtk_dp->state = MTK_DP_STATE_IDLE;
+> +		break;
+> +
+> +	case MTK_DP_STATE_IDLE:
+> +		if (mtk_dp->train_state == MTK_DP_TRAIN_STATE_NORMAL)
+> +			mtk_dp->state = MTK_DP_STATE_PREPARE;
+> +		break;
+> +
+> +	case MTK_DP_STATE_PREPARE:
+> +		mtk_dp_video_config(mtk_dp);
+> +		mtk_dp_video_enable(mtk_dp, true);
+> +
+> +		mtk_dp->state = MTK_DP_STATE_NORMAL;
+> +		break;
+> +
+> +	case MTK_DP_STATE_NORMAL:
+> +		if (mtk_dp->train_state != MTK_DP_TRAIN_STATE_NORMAL) {
+> +			mtk_dp_video_mute(mtk_dp, true);
+> +			mtk_dp->state = MTK_DP_STATE_IDLE;
+> +		}
+> +		break;
+> +
+> +	default:
+> +		break;
+> +	}
+> +}
+> +
+
+Move mtk_dp_train_handler() here.....
+
+
+> +static void mtk_dp_bridge_atomic_enable(struct drm_bridge *bridge,
+> +					struct drm_bridge_state *old_state)
+> +{
+> +	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
+> +	struct drm_connector_state *conn_state;
+> +	struct drm_crtc *crtc;
+> +	struct drm_crtc_state *crtc_state;
+
+	int ret;
+
+> +
+> +	mtk_dp->conn = drm_atomic_get_new_connector_for_encoder(old_state->base.state,
+> +								bridge->encoder);
+> +	if (!mtk_dp->conn) {
+> +		drm_err(mtk_dp->drm_dev,
+> +			"Can't enable bridge as connector is missing\n");
+> +		return;
+> +	}
+> +
+> +	memcpy(mtk_dp->connector_eld, mtk_dp->conn->eld, MAX_ELD_BYTES);
+> +
+> +	conn_state =
+> +		drm_atomic_get_new_connector_state(old_state->base.state, mtk_dp->conn);
+> +	if (!conn_state) {
+> +		drm_err(mtk_dp->drm_dev,
+> +			"Can't enable bridge as connector state is missing\n");
+> +		return;
+> +	}
+> +
+> +	crtc = conn_state->crtc;
+> +	if (!crtc) {
+> +		drm_err(mtk_dp->drm_dev,
+> +			"Can't enable bridge as connector state doesn't have a crtc\n");
+> +		return;
+> +	}
+> +
+> +	crtc_state = drm_atomic_get_new_crtc_state(old_state->base.state, crtc);
+> +	if (!crtc_state) {
+> +		drm_err(mtk_dp->drm_dev,
+> +			"Can't enable bridge as crtc state is missing\n");
+> +		return;
+> +	}
+> +
+> +	mtk_dp_parse_drm_mode_timings(mtk_dp, &crtc_state->adjusted_mode);
+> +	if (!mtk_dp_parse_capabilities(mtk_dp)) {
+> +		drm_err(mtk_dp->drm_dev,
+> +			"Can't enable bridge as nothing is plugged in\n");
+> +		return;
+> +	}
+> +
+> +	/* Training */
+
+The following is very similar to your previous version of this function:
+
+	ret = mtk_dp_train_handler(mtk_dp);
+
+	if (ret) {
+
+		drm_err(mtk_dp->drm_dev, "Train handler failed %d\n", ret);
+
+		return;
+
+	}
+
+
+
+	mtk_dp->enabled = true;
+
+	mtk_dp_update_plugged_status(mtk_dp)
+}
+
+
+> +	mtk_dp_train_handler(mtk_dp);
+> +	mtk_dp_state_handler(mtk_dp);
+> +	mtk_dp->enabled = true;
+> +}
+
+Regards,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============3299704603906482499==--
-
