@@ -4,48 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 449A3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Feb 2022 01:11:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 355D3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Feb 2022 01:12:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KwWhm/raw8ctrAoSVjD4ygL98yfXai9RAK77/baJbgE=; b=XtC9GB9gkAtWTh
-	bCIUyl9VKLPYU20l7QvFWXKJMiERURm4fRtzLDDBczA7m1ohnstbGSP2NUZr5UhJsd+R5JiVpASIN
-	CJECYzFHwME+KeWoRRSJLAvQ5OtCbazxijwiguk1QCYfNBUmoybOWPUHkRK+RR+xMEOnvdGYHaI0W
-	2WHyt/tdaGSWocgQCmM/XmWse9X5LRveBKQImP/yNstcjigccb9v3rMlMUTdsO2am+qXLtwWNuzOB
-	3JTwM58+7S1Uv4uNIr+QKE2dIEOZt9ETdEErpIKV3dJkhExw0lK+Y5JYalsVWZkNb4J9/cw4tvqzj
-	nTUsGQsCCZ5eSKScrKeg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Q36HLHnIcF79vIrZO+d1DJaY9uq+GwjTJqq+csNgW0I=; b=0UdwOoKm0FV1D4
+	XujnQE/tXJDe0oQ33Wm+8Xz8Thi4l1WE4xhjJ5WYpVNB5NP++lMedF3pnfnkKdRlIAHL8rKJHte3W
+	PbXRR1gVrJE/godDFVIPIwL3yVXQrGlZb9rBpKMbViyMKzWxch+5pbzZywPVHW5Fsc1aSZnwPHCnt
+	ZUPyprtsZUv9LOhhpGJIxXNJ+15bm+ENMA76S1j5D8aCASOBPr+XmrXfZ9wx1U5Y9EhidWLZrFa9i
+	nKtyj4koSpQd2qFwlpqO0Q3qaLt9ua4Op4Fw3yslnfbvCMQEhduFn6p5QeqVzOITtbclk0nZo4Ip6
+	BhAe+PEZDVFS1qgL8mRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nN2ey-00GQ31-4I; Thu, 24 Feb 2022 01:11:08 +0000
-Received: from out30-132.freemail.mail.aliyun.com ([115.124.30.132])
+	id 1nN2gG-00GQKH-1G; Thu, 24 Feb 2022 01:12:28 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nN2el-00GQ04-6C; Thu, 24 Feb 2022 01:10:57 +0000
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R131e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04423; MF=yang.lee@linux.alibaba.com;
- NM=1; PH=DS; RN=11; SR=0; TI=SMTPD_---0V5LP5GJ_1645665047; 
-Received: from localhost(mailfrom:yang.lee@linux.alibaba.com
- fp:SMTPD_---0V5LP5GJ_1645665047) by smtp.aliyun-inc.com(127.0.0.1);
- Thu, 24 Feb 2022 09:10:48 +0800
-From: Yang Li <yang.lee@linux.alibaba.com>
-To: matthias.bgg@gmail.com
-Cc: tiwai@suse.com, perex@perex.cz, broonie@kernel.org, lgirdwood@gmail.com,
- alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Yang Li <yang.lee@linux.alibaba.com>, Abaci Robot <abaci@linux.alibaba.com>
-Subject: [PATCH -next] ASoC: mediatek: mt8195: Remove unnecessary print
- function dev_err()
-Date: Thu, 24 Feb 2022 09:10:46 +0800
-Message-Id: <20220224011046.76904-1-yang.lee@linux.alibaba.com>
-X-Mailer: git-send-email 2.20.1.7.g153144c
+ id 1nN2g4-00GQHl-2s; Thu, 24 Feb 2022 01:12:17 +0000
+X-UUID: 3595f895176f4514917db4462c8eb1a7-20220223
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=C+jjlCpNgcu/qaJ3D3pLT3r9IZ3AlKN5W6VS2lO3S60=; 
+ b=SgNPgYLB/ID812O9QMFZ4RYCKRUhS0dut3jh1LJInP1DAai03m3k+jU1nUMClFSU1WLLj/Nm+cXE9lhuu0wIKkuZDN6oBPHQIrDtPNbZr6ApdQevUBH+1nBR8gEw2MUPrvC9LXOcWDi6JL9DJ3/OFqBOZpYaxDro+JJg/PN/db8=;
+X-UUID: 3595f895176f4514917db4462c8eb1a7-20220223
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <kyrie.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 698034227; Wed, 23 Feb 2022 18:12:12 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Feb 2022 17:12:10 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 24 Feb 2022 09:12:08 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 24 Feb 2022 09:12:08 +0800
+Message-ID: <8450528ae5733893bfec64918534f0ae2ec70851.camel@mediatek.com>
+Subject: Re: [2/2] mtk-vcodec: Support encoder for MT8186
+From: kyrie.wu <kyrie.wu@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab <mchehab@kernel.org>, "Rob
+ Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tzung-Bi Shih <tzungbi@chromium.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+ <xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>,
+ <srv_heupstream@mediatek.com>
+Date: Thu, 24 Feb 2022 09:12:07 +0800
+In-Reply-To: <4ed2a3b20a74fe1479d68ae81a8c7fe867f89114.camel@mediatek.com>
+References: <1645617086-18841-1-git-send-email-kyrie.wu@mediatek.com>
+ <1645617086-18841-3-git-send-email-kyrie.wu@mediatek.com>
+ <4ed2a3b20a74fe1479d68ae81a8c7fe867f89114.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220223_171055_469771_A951126E 
-X-CRM114-Status: UNSURE (   8.02  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220223_171216_157258_FCADB907 
+X-CRM114-Status: GOOD (  18.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,39 +85,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The print function dev_err() is redundant because platform_get_irq()
-already prints an error.
+On Wed, 2022-02-23 at 20:37 +0800, Rex-BC Chen wrote:
+> Hello Kyrie,
+> 
+> Why not just use compatible of mt8183?
+> The data of 8186 is the same with 8183.
+> 
+> In this case, I think we just need to add dt-binding of 8186 and no
+> need for this patch.
+> 
+> BRs,
+> Rex
 
-Eliminate the follow coccicheck warning:
-./sound/soc/mediatek/mt8195/mt8195-afe-pcm.c:3126:2-9: line 3126 is
-redundant because platform_get_irq() already prints an error
+Hi Rex-BC,
+MT8186 has same private data as MT8183, but has different compatible,
+which is used to match device tree. So the new line is added for 8186.
 
-Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
----
- sound/soc/mediatek/mt8195/mt8195-afe-pcm.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-index b77c2ba5a629..550636500949 100644
---- a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-@@ -3122,10 +3122,8 @@ static int mt8195_afe_pcm_dev_probe(struct platform_device *pdev)
- 
- 	/* request irq */
- 	irq_id = platform_get_irq(pdev, 0);
--	if (irq_id < 0) {
--		dev_err(dev, "%s no irq found\n", dev->of_node->name);
-+	if (irq_id < 0)
- 		return -ENXIO;
--	}
- 
- 	ret = devm_request_irq(dev, irq_id, mt8195_afe_irq_handler,
- 			       IRQF_TRIGGER_NONE, "asys-isr", (void *)afe);
--- 
-2.20.1.7.g153144c
-
-
+> 
+> On Wed, 2022-02-23 at 19:51 +0800, kyrie.wu wrote:
+> > From: kyrie wu <kyrie.wu@mediatek.com>
+> > 
+> > Adds MT8186's compatible "mediatek,mt8186-vcodec-enc".
+> > Adds MT8186's device private data.
+> > 
+> > Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+> > ---
+> >  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 1 +
+> >  1 file changed, 1 insertion(+)
+> > 
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > index 65207f5b6c1c..e1b91ae9a164 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > @@ -437,6 +437,7 @@ static const struct of_device_id
+> > mtk_vcodec_enc_match[] = {
+> >  	{.compatible = "mediatek,mt8183-vcodec-enc", .data =
+> > &mt8183_pdata},
+> >  	{.compatible = "mediatek,mt8192-vcodec-enc", .data =
+> > &mt8192_pdata},
+> >  	{.compatible = "mediatek,mt8195-vcodec-enc", .data =
+> > &mt8195_pdata},
+> > +	{.compatible = "mediatek,mt8186-vcodec-enc", .data =
+> > &mt8183_pdata},
+> >  	{},
+> >  };
+> >  MODULE_DEVICE_TABLE(of, mtk_vcodec_enc_match);
+> 
+> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
