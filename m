@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 818B1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 19:35:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3DCDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 19:36:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tzs6rhdqNM5t3+EkRhiaiTZeJwtz3vV9Em2U4hj4czw=; b=RKyKXMwMYFNrLv
-	kbquS1UpkneTJtQfF4I7Xl1S9q4ffBOYZVLvzQfTTZX/eGmdrjH82Vzg5ql0dsfrNKOnd0Bilu15p
-	K80DjOpNrUEGV3GI1LyQDlFOtfDTAjz0qPFUFbSLwgl61QA4MgPbw99PkqfqB5XWe/L1hmOWE1OGa
-	WcCS3G8591wkk6greem3jWCUMFICila4l/ZtPonp2JnDjI6WhIx3dmYBP1zMHkjY2xR20L+iPgzPw
-	YcVludW5yRngJgch0oErWXZmApy+1fuHD7/1cEJYbW7u2mR4R6crascLHvLRKghI0P5P4aPF37PbP
-	T5gAYfdsj2fX7Ks3pBDQ==;
+	List-Owner; bh=ztO5OPzNaLP7lGWABxGHY4KGRuV9/+ZC8I2ryJkA4Os=; b=hBqmGpCDy6t9mo
+	7zIxMV1hDPVybJXvqh3LpR1YCaiHjU7ubF3ofBZFmAeq0E5k1ZPzvNAmCt3wbCaqNMwyFQcOjkpS6
+	F7BjYMSt3b0nRRdLpBj59GoBfwnqj5040BmcB/gQPzydqG6tCIidkljphaOxTpNxTiX7R4N45M9Wb
+	dc2uYxunmKtc/xM5ZziSQ3zd1ikUAX+oNYqb/JTJv/nXhsV0dBJw8m6NjMSwiL1n/bXRMK5nBPk5l
+	HWjM0MxDJ/qvD0/qn+NjGWY3oqe/yu5/8ETXIUDNX6JZuJWq8cOq6OaRhEu8VzRhWMaEvp3tdir/7
+	xdkq8De89pfveij8XAUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNgNG-006piI-CL; Fri, 25 Feb 2022 19:35:30 +0000
-Received: from mail-oi1-f179.google.com ([209.85.167.179])
+	id 1nNgNt-006q12-7w; Fri, 25 Feb 2022 19:36:09 +0000
+Received: from mail-oo1-f52.google.com ([209.85.161.52])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNgMf-006pPM-1f; Fri, 25 Feb 2022 19:34:54 +0000
-Received: by mail-oi1-f179.google.com with SMTP id k2so8396081oia.2;
- Fri, 25 Feb 2022 11:34:52 -0800 (PST)
+ id 1nNgNM-006plX-KE; Fri, 25 Feb 2022 19:35:39 +0000
+Received: by mail-oo1-f52.google.com with SMTP id
+ w10-20020a4ae08a000000b0031bdf7a6d76so7585186oos.10; 
+ Fri, 25 Feb 2022 11:35:36 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=k9v5qtATzrOvXz3YN1ZWcwAzzG9N2l4CYH652u8TC4g=;
- b=XQCj5qKTmhTrXUNPA8llP4fXyToA6rb7RWYHtPz3AfuUwtN6pGbLc5Idcnu3Lp73lE
- 1f4FjRz6hrOolNgznnbvpMw/Mv7cDhV5jaoQljxaBXJMhXWdc1ETNmZ6xIzaD6/eUqvm
- xeBlWe7js8sp3kocioK95+1oIZvhj7qcbT3Y+JT0NZC9jmEqkgWT3lPYFjoXiluSfjDj
- 7qsqKrKFxuWDFMt6DccWKd3BSDTl8DR6VnUpWFVqffxrzQ30K8Prom9voZ6w687omEkv
- NTrA1pbj9M1WFWKLJ9dsHW0RHt4pMDVl3N5KxidV6wLUH1JtOiPr5/8dJTun3n0zR0zF
- QD3w==
-X-Gm-Message-State: AOAM532EG2JccI0JXEv7JlZ4kWqEhw26p6bzT6kqlK92OF3MwAW2yM4j
- YjxXdEKfXqmhCwT/Ywuixg==
-X-Google-Smtp-Source: ABdhPJybpWDzjQJF9jGKPuCSK7Y0n1/VK66YoKWH8RCWHvU/F08Ob/+b5HLss7dQ80Wqhgfq0p9WxA==
-X-Received: by 2002:a05:6808:1983:b0:2d7:7fc:9e9b with SMTP id
- bj3-20020a056808198300b002d707fc9e9bmr630387oib.133.1645817691671; 
- Fri, 25 Feb 2022 11:34:51 -0800 (PST)
+ bh=89L85cYit20bkFsWPwAmB3tmEEHx1GMuglloEs9LbG8=;
+ b=YoBOQP/uqFnpxA/sOJdDDlB+dwMBXvA6QRAXo8QQPdbJFz94JLminRR6v3ksd5daUG
+ JtDih1N56ESSqYQxywT8lGJLRWdsSw7OVqa5Aa9cjQXhY/SwIQMmBYxufvvEXAPIXETJ
+ mrYMLR94fD7L2lZYcUxJOSzSi8G7Hs5NmfZVJ69wYM6hMf57cuPlT97f1Mvl1c8Ty7Xf
+ ieW0K8+0L0Q1JJQ5As+j8sK+hYOmQt026EpCa+Wz+oSeHzS/3/1aI6juc4Uf6cWZbFKZ
+ lwel8g3iQzlzKnhuy2AONH4g4S7AI6plTALX2J8eqmqX0QGT8HLL9DRRp1FG8299LPbJ
+ 1K4Q==
+X-Gm-Message-State: AOAM532eBBMTMLYio4npgmkQN2rvXSCSEQjjUNHexys2Hqq64W6gKWae
+ +3/3bSV58bESkgRC5aDDAQ==
+X-Google-Smtp-Source: ABdhPJwTB3dMTBlwo5pHLDzpohHjFzoCrMqR0lPTutQ46f+OsP6T04QO8IFX4yubZI0OTunbKa3GwQ==
+X-Received: by 2002:a05:6870:ee0d:b0:ce:c0c9:64a with SMTP id
+ ga13-20020a056870ee0d00b000cec0c9064amr2072910oab.156.1645817735262; 
+ Fri, 25 Feb 2022 11:35:35 -0800 (PST)
 Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
  [66.90.148.213]) by smtp.gmail.com with ESMTPSA id
- k22-20020a056870959600b000d277c48d18sm1862982oao.3.2022.02.25.11.34.50
+ j25-20020a4ad199000000b003171dfeb5bfsm1458351oor.15.2022.02.25.11.35.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Feb 2022 11:34:51 -0800 (PST)
-Received: (nullmailer pid 1300868 invoked by uid 1000);
- Fri, 25 Feb 2022 19:34:49 -0000
-Date: Fri, 25 Feb 2022 13:34:49 -0600
+ Fri, 25 Feb 2022 11:35:34 -0800 (PST)
+Received: (nullmailer pid 1301936 invoked by uid 1000);
+ Fri, 25 Feb 2022 19:35:33 -0000
+Date: Fri, 25 Feb 2022 13:35:33 -0600
 From: Rob Herring <robh@kernel.org>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Andy Gross <agross@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Avri Altman <avri.altman@wdc.com>, Nishanth Menon <nm@ti.com>,
- linux-arm-kernel@lists.infradead.org, Vignesh Raghavendra <vigneshr@ti.com>,
- linux-mediatek@lists.infradead.org,
+Cc: linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ Tero Kristo <kristo@kernel.org>, Jan Kotas <jank@cadence.com>,
+ Avri Altman <avri.altman@wdc.com>, Vignesh Raghavendra <vigneshr@ti.com>,
+ devicetree@vger.kernel.org, linux-scsi@vger.kernel.org,
+ Stanley Chu <stanley.chu@mediatek.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, Nishanth Menon <nm@ti.com>,
+ Wei Xu <xuwei5@hisilicon.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ linux-mediatek@lists.infradead.org, Alim Akhtar <alim.akhtar@samsung.com>,
+ Andy Gross <agross@kernel.org>, linux-arm-msm@vger.kernel.org,
+ Li Wei <liwei213@huawei.com>, Yaniv Gardi <ygardi@codeaurora.org>,
+ linux-kernel@vger.kernel.org,
  "Martin K. Petersen" <martin.petersen@oracle.com>,
- Li Wei <liwei213@huawei.com>, Alim Akhtar <alim.akhtar@samsung.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>, Tero Kristo <kristo@kernel.org>,
- linux-kernel@vger.kernel.org, Jan Kotas <jank@cadence.com>,
- Wei Xu <xuwei5@hisilicon.com>, Yaniv Gardi <ygardi@codeaurora.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Stanley Chu <stanley.chu@mediatek.com>, linux-samsung-soc@vger.kernel.org,
- linux-scsi@vger.kernel.org
-Subject: Re: [PATCH v2 07/15] dt-bindings: ufs: mediatek,ufs: convert to
+ Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v2 08/15] dt-bindings: ufs: snps,tc-dwc-g210: convert to
  dtschema
-Message-ID: <YhkvWWMq5X3/gqzF@robh.at.kernel.org>
+Message-ID: <YhkvhdFZXkVsteeq@robh.at.kernel.org>
 References: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
- <20220222145854.358646-8-krzysztof.kozlowski@canonical.com>
+ <20220222145854.358646-9-krzysztof.kozlowski@canonical.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220222145854.358646-8-krzysztof.kozlowski@canonical.com>
+In-Reply-To: <20220222145854.358646-9-krzysztof.kozlowski@canonical.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220225_113453_125622_FA950B89 
-X-CRM114-Status: GOOD (  10.35  )
+X-CRM114-CacheID: sfid-20220225_113536_709241_09658024 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,17 +94,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 22 Feb 2022 15:58:46 +0100, Krzysztof Kozlowski wrote:
-> Convert the Mediatek Universal Flash Storage (UFS) Controller to DT
+On Tue, 22 Feb 2022 15:58:47 +0100, Krzysztof Kozlowski wrote:
+> Convert the Synopsys Universal Flash Storage (UFS) Controller to DT
 > schema format.
 > 
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 > ---
->  .../devicetree/bindings/ufs/mediatek,ufs.yaml | 67 +++++++++++++++++++
->  .../devicetree/bindings/ufs/ufs-mediatek.txt  | 45 -------------
->  2 files changed, 67 insertions(+), 45 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
->  delete mode 100644 Documentation/devicetree/bindings/ufs/ufs-mediatek.txt
+>  .../bindings/ufs/snps,tc-dwc-g210.yaml        | 51 +++++++++++++++++++
+>  .../bindings/ufs/tc-dwc-g210-pltfrm.txt       | 26 ----------
+>  2 files changed, 51 insertions(+), 26 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/ufs/snps,tc-dwc-g210.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/ufs/tc-dwc-g210-pltfrm.txt
 > 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
