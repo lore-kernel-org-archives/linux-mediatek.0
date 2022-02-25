@@ -4,67 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62283C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 10:01:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B60BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 10:19:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kwLhKyvcJbloNWhBfXWcYXSIPN/SBY9IcVXcB52dkFc=; b=XKUp2IUSEFCPbW
-	ly5gl7lqX+lXH3vflebE/FpowSh/FUju4EqEexney5ee13k7d/XWwg9ze1oJZDccYhoNFdlCSn+h5
-	UC+RBSTyDrXC2w+RVNfl2iujNJ5z+z1eBXyVC2UsoXOh6dKYeslTdXh6T86lVrIxa3PJ/b0x8Kz9W
-	mF53S2/k+2cb+gWVFAr33Bfg/11t6g9JvFhvL0HVSfAyEj8DQzKOPO3LM08M4sxX3gZHpXO4Qwb3X
-	+x1HNMg6pqlDbJ2tg09oAAlSbJuC+VYANolcQNCGi4d1AvOG4R0vGL2Pj+vPD4PqmJT9EUBjU1AmQ
-	hlxggIWnJFfFSqIxi9iw==;
+	List-Owner; bh=nnYrALI2Kg5YpcRruW4wtSkyAYFQJQv5U1BxNcgbHyE=; b=TQv2FbtG5CJs9V
+	17xj+gOAqXw1FT5MKuj3Zwe+QEE7g9mec7+5oWb7C98fisf828lTXWRmL4i2XbeFl6N6gHXI9FRf9
+	Oq1Ucb3KzTHW50Klk/Uz3hCi9oa25sbVlvf/8eJ0s6ItVxHNCzNqGqcRO2x92B5iZFRHhZJ/6iKgv
+	U5beqpmMB2kz2lIYq+woVpxuZz3ApWJEhqAb7zHQxdExcVkVL5UJNXZJlZDgcUzDbg6Es6bfc6EAX
+	O8q3ufMmUNzg+eeTW5GdDsDT5omyyLndOSTNB8ECkgRY4b8ZMV3UfAr156TKXFrHDKudPegZiSWOm
+	mQ5/N7vk/UUxAEmcAgwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNXPh-004GL0-Su; Fri, 25 Feb 2022 10:01:25 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nNXgZ-004Jl1-NC; Fri, 25 Feb 2022 10:18:51 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNXPU-004GGM-Nm; Fri, 25 Feb 2022 10:01:14 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 4A1691F45ACF
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645783270;
- bh=D5PHixB15iSbClBF6eHaM6GctJ2rJbHgaj2nP9Jozuk=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=mjVcXZnNlW9ZVL7GKoFEZzXM0b+Zr6KGezNedLUYcvvMGbPWl61e2mDXP3oNgdZSv
- voYqQWRBgW1JkWT8kXgZoT6rqFd/CVPNVQLJdivWoqHH0q9qoQkm3KA1cvAWH5IHwv
- jnFV4BvrBaYD13EFrQTs5WpgCrakuVkeyAv+gbGLEn7WURu/J11Ex4lGF/5Jvh9v3v
- RHUDLjQ33tO9C6cqh/ojf7YGSz5EcyBWv3DnaclIzdp6/RFiIbeqw/GZsPtTiFamnX
- 4KOQigzfY7zB1futUMHMfJA7Ai9C0+APpG3eDmfyvj3zfqUnLrn8KRi1iEEEjDvXco
- vtG97qB46Fe3A==
-Message-ID: <ae3e077b-2e3a-8ca3-d359-040c5288f2c8@collabora.com>
-Date: Fri, 25 Feb 2022 11:01:07 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v2] arm64: dts: mt8195: add display node for vdosys0
-Content-Language: en-US
-To: "jason-jh.lin" <jason-jh.lin@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Sean Christopherson
- <seanjc@google.com>, maciej.szmigiero@oracle.com,
- David Matlack <dmatlack@google.com>, Jing Zhang <jingzhangos@google.com>,
- Marc Zyngier <maz@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sean Wang <sean.wang@mediatek.com>, Tinghan Shen <tinghan.shen@mediatek.com>
+ id 1nNXg3-004JVh-4p; Fri, 25 Feb 2022 10:18:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
+ Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=R1TUjW3FR0g4N/arQpSNxRqerqgJRvX9AVweP0pFvqk=; b=QBZQTz00vs0LOMzxKJLWEYQ750
+ 9kk0tkqlrECDqILShqnXPoZdE/WX87gvPOU4yOZV2lCy/QU7H7ww3Mfa+MUwtcVgRGK1QuwbR4FON
+ 0hH64DSko2JnCeEGkecUym2xqzV0xwaZdNOUke2+6LIVIIihto1+0wsV/prpJheAo4lI=;
+Received: from p200300daa7204f00f847964d075b2b3d.dip0.t-ipconnect.de
+ ([2003:da:a720:4f00:f847:964d:75b:2b3d] helo=localhost.localdomain)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1nNXg1-0007J1-AM; Fri, 25 Feb 2022 11:18:17 +0100
+From: Felix Fietkau <nbd@nbd.name>
+To: netdev@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, ryder.lee@kernel.org,
- wenst@chromium.org, chunfeng.yun@mediatek.com,
- Seiya Wang <seiya.wang@mediatek.com>, moudy.ho@mediatek.com,
- roy-cw.yeh@mediatek.com, nancy.lin@mediatek.com, singo.chang@mediatek.com,
- Macpaul.Lin@mediatek.com
-References: <20220225021535.2655-1-jason-jh.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220225021535.2655-1-jason-jh.lin@mediatek.com>
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 05/11] arm64: dts: mediatek: mt7622: introduce nodes for
+ Wireless Ethernet Dispatch
+Date: Fri, 25 Feb 2022 11:18:04 +0100
+Message-Id: <20220225101811.72103-6-nbd@nbd.name>
+X-Mailer: git-send-email 2.32.0 (Apple Git-132)
+In-Reply-To: <20220225101811.72103-1-nbd@nbd.name>
+References: <20220225101811.72103-1-nbd@nbd.name>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220225_020112_993163_93109AD8 
-X-CRM114-Status: GOOD (  16.11  )
+X-CRM114-CacheID: sfid-20220225_021819_390342_C9A1E487 
+X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,49 +66,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/02/22 03:15, jason-jh.lin ha scritto:
-> Add display node for vdosys0.
-> 
-> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> ---
-> This patch depends on series [1]
-> [1] Add Mediatek Soc DRM (vdosys0) support for mt8195
-> - https://patchwork.kernel.org/project/linux-mediatek/list/?series=608548
-> 
-> This patch is based on [2][3][4]
-> 
-> [2] arm64: dts: Add mediatek SoC mt8195 and evaluation board
-> - https://patchwork.kernel.org/project/linux-mediatek/patch/20220112114724.1953-4-tinghan.shen@mediatek.com/
-> [3] arm64: dts: mt8195: add IOMMU and smi nodes
-> - https://patchwork.kernel.org/project/linux-mediatek/patch/20210615173233.26682-15-tinghan.shen@mediatek.com/
-> [4] arm64: dts: mt8195: add gce node
-> - https://patchwork.kernel.org/project/linux-mediatek/patch/20220126090109.32143-1-jason-jh.lin@mediatek.com/
-> ---
-> Hi Angelo,
-> 
-> I'm sorry I couldn't find your last reply mail, so I reply you so late.
-> 
-> Thanks for the reviews!
-> I have fixed them.
-> 
-> Regards,
-> Jason-JH.Lin
+Introduce wed0 and wed1 nodes in order to enable offloading forwarding
+between ethernet and wireless devices on the mt7622 chipset.
 
-Hi Jason-JH,
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+---
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi | 28 ++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-no worries about that. Thank you for sending a v2.
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+index a2257ec6d256..47d223e28f8d 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+@@ -901,6 +901,11 @@ sata_port: sata-phy@1a243000 {
+ 		};
+ 	};
+ 
++	hifsys: syscon@1af00000 {
++		compatible = "mediatek,mt7622-hifsys", "syscon";
++		reg = <0 0x1af00000 0 0x70>;
++	};
++
+ 	ethsys: syscon@1b000000 {
+ 		compatible = "mediatek,mt7622-ethsys",
+ 			     "syscon";
+@@ -919,6 +924,26 @@ hsdma: dma-controller@1b007000 {
+ 		#dma-cells = <1>;
+ 	};
+ 
++	pcie_mirror: pcie-mirror@10000400 {
++		compatible = "mediatek,mt7622-pcie-mirror",
++			     "syscon";
++		reg = <0 0x10000400 0 0x10>;
++	};
++
++	wed0: wed@1020a000 {
++		compatible = "mediatek,mt7622-wed",
++			     "syscon";
++		reg = <0 0x1020a000 0 0x1000>;
++		interrupts = <GIC_SPI 214 IRQ_TYPE_LEVEL_LOW>;
++	};
++
++	wed1: wed@1020b000 {
++		compatible = "mediatek,mt7622-wed",
++			     "syscon";
++		reg = <0 0x1020b000 0 0x1000>;
++		interrupts = <GIC_SPI 215 IRQ_TYPE_LEVEL_LOW>;
++	};
++
+ 	eth: ethernet@1b100000 {
+ 		compatible = "mediatek,mt7622-eth",
+ 			     "mediatek,mt2701-eth",
+@@ -946,6 +971,9 @@ eth: ethernet@1b100000 {
+ 		mediatek,ethsys = <&ethsys>;
+ 		mediatek,sgmiisys = <&sgmiisys>;
+ 		mediatek,cci-control = <&cci_control2>;
++		mediatek,wed = <&wed0>, <&wed1>;
++		mediatek,pcie-mirror = <&pcie_mirror>;
++		mediatek,hifsys = <&hifsys>;
+ 		dma-coherent;
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+-- 
+2.32.0 (Apple Git-132)
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> ---
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 123 +++++++++++++++++++++++
->   1 file changed, 123 insertions(+)
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
