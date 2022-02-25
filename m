@@ -4,55 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEAB8C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 13:55:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 437CBC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 15:20:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CYKHBFDGLnFCK/SH3NPErmo3HjeDGw913WN0vUx8PYU=; b=gWD86IZqYg0PvU
-	YUoOulAwoWQ/uazYzd6O6/DIPxkA3mDzTLMSNJdEX6dz5A699vuzsD1cYgGKTYmskxkN9U+JaAymm
-	F9k9Sk+7F7jP0P8Z4uPI0rcXEZTq9IwR0mHgeWwVNNrpLXO0rIHX67yYX6kTasw04rnxCdCU0bV+y
-	8Kd1Kw66ogcgF0ocv3WenMw6G9tEHUTUyEL/Z2geN5JEPjFxOBkwHaP3v/digdDLDLwSqtEdgRlUK
-	4fa4KCaKH9CeJZN3HuBLELezjiuVC5erR06YReKn8NGGHwNdpEIzSSt1nKULzApr3PUvwsTQaAwvk
-	xZ9QohdstumkPYWv/nzA==;
+	List-Owner; bh=H3gf3tRshkjbg+BWv294ig0zTo4Vcgz1sSVkqsaRZeA=; b=ZlrgKCAx0kYdUA
+	0/Pelg5176C9BH1TcQBTWkdZF7HBR2A5ZX5y0k8K3vAXhq5bpc5ST2fYr5ZrkafLq4eRATVqcjkpK
+	BRcMewze8+lty3wNoNa9Uk3G2ZTi7q61ZtXNiMkVIC5R38Js3uxejEwORzH5D7pZFUwWQTapj1JwD
+	suLqwGQsomIeDRzYazbwTiSPFb8cxcXBc1oMlMgwg6p+QrfjUgE3+N2o6E5qIJ6ENc5dl5MzyBgls
+	Zipe8+B3AwBKhvrV4vqDPPoKCARCwVbAjWc4sob3+MqmOchrloGy8wvabfHtWD13rdkhvbsIUXs6H
+	8hBCU/eOa/t1/2NRCryQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNb3t-005GSG-DK; Fri, 25 Feb 2022 13:55:09 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nNcOX-005a3Q-DY; Fri, 25 Feb 2022 15:20:33 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNaum-005DEb-MR
- for linux-mediatek@lists.infradead.org; Fri, 25 Feb 2022 13:45:51 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) (Authenticated sender: rcn)
- with ESMTPSA id 38B651F45F94
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645796741;
- bh=6IuTiAPuhKDYgNwCLKRyc4SunUJTB6ruZFYFsOvvpvs=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=furnXzpdMdgCyVoYEJ4jDsNkBjXVwWUIBhNi74Q0yGH4QrCYy2xcC23hpHNo4n5G1
- y8Ob0c1jgVIFTYAcUYS0VgI+V4cihoITEyo8tyqT6WCgnBVRZAwEIIomHmYKBxSzBt
- Dht/iRxyKUmfqcBqP4xEmfexO2cMyX4S0ivgJEH+iaqsHPSzatnnyPqq1iRfrV4b4u
- qfp/5GFOhhwNbEnaYRe9iWYSMgpbdoygnLQc8OU1T8IM4sTQQYPQz75DX31oGd8161
- ibLHJGZwlRfOAm0FWAFpDkxesQSeTlLajZta2f58kEj2pvFTU9sy/6WHJQ3UtXQ8ic
- 0d/WRZ7lQBuGw==
-From: =?UTF-8?q?Ricardo=20Ca=C3=B1uelo?= <ricardo.canuelo@collabora.com>
-To: dri-devel@lists.freedesktop.org
-Cc: =?UTF-8?q?Ricardo=20Ca=C3=B1uelo?= <ricardo.canuelo@collabora.com>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com, andrzej.hajda@intel.com, narmstrong@baylibre.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org
-Subject: [PATCH 2/2] drm/bridge: Add extra checks in pre_enable and post_enable
-Date: Fri, 25 Feb 2022 14:45:04 +0100
-Message-Id: <20220225134504.457245-3-ricardo.canuelo@collabora.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220225134504.457245-1-ricardo.canuelo@collabora.com>
-References: <20220225134504.457245-1-ricardo.canuelo@collabora.com>
+ id 1nNcOK-005ZzE-NU; Fri, 25 Feb 2022 15:20:22 +0000
+Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
+ by smtp-out2.suse.de (Postfix) with ESMTP id 20E541F380;
+ Fri, 25 Feb 2022 15:20:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
+ t=1645802416; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=76D+b8ZUFKHayJqezaXTrIOKH/+w6Mr9BDaG1qJPaqM=;
+ b=uiwU9753hHXtDfEByGOp/4k3/mpSpC2iPS5R74LN2olK1KIV4kIuD6y8ARyLKPI+57XebW
+ laXnAzMwXNXHJgSFsi5gA5ifwF1cCKT2ypgNk9DHv/UzKegXnyQUGwO9FQLe7NALffYOqs
+ LFAeojvzfBLhLsnUVHoCuDy01kc+AaU=
+Received: from suse.cz (unknown [10.100.216.66])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by relay2.suse.de (Postfix) with ESMTPS id 81174A3B83;
+ Fri, 25 Feb 2022 15:20:15 +0000 (UTC)
+Date: Fri, 25 Feb 2022 16:20:15 +0100
+From: Petr Mladek <pmladek@suse.com>
+To: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Will Deacon <will@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ Peter Zijlstra <peterz@infradead.org>, Ingo Molnar <mingo@redhat.com>,
+ Arnaldo Carvalho de Melo <acme@kernel.org>,
+ Alexander Shishkin <alexander.shishkin@linux.intel.com>,
+ Jiri Olsa <jolsa@redhat.com>, Namhyung Kim <namhyung@kernel.org>,
+ davem@davemloft.net, Matthias Brugger <matthias.bgg@gmail.com>,
+ Marc Zyngier <maz@kernel.org>, Julien Thierry <jthierry@redhat.com>,
+ Kees Cook <keescook@chromium.org>, Masahiro Yamada <masahiroy@kernel.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Wang Qing <wangqing@vivo.com>, Luis Chamberlain <mcgrof@kernel.org>,
+ Xiaoming Ni <nixiaoming@huawei.com>, linux-arm-kernel@lists.infradead.org,
+ linux-perf-users@vger.kernel.org, sparclinux@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, sumit.garg@linaro.org,
+ kernelfans@gmail.com, yj.chiang@mediatek.com
+Subject: Re: [PATCH 4/5] kernel/watchdog: Adapt the watchdog_hld interface
+ for async model
+Message-ID: <Yhjzr8geK7dTXXd2@alley>
+References: <20220212104349.14266-1-lecopzer.chen@mediatek.com>
+ <20220212104349.14266-5-lecopzer.chen@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220212104349.14266-5-lecopzer.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220225_054544_940351_9489F8A1 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20220225_072020_969614_7514086C 
+X-CRM114-Status: GOOD (  32.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,34 +80,122 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RGVwZW5kaW5nIG9uIHRoZSBicmlkZ2UgY29kZSwgY2VydGFpbiB1c2Vyc3BhY2UgZXZlbnRzIGR1
-cmluZyBhIGRyaXZlcgp0ZWFyZG93biAoc3VjaCBhcyBhIERSTSBpb2N0bCBjYWxsKSBtaWdodCBj
-YXVzZSBhIHJhY2UgY29uZGl0aW9uIHdoZXJlCnRoZSBkcm1fYnJpZGdlX2NoYWluX3ByZV9lbmFi
-bGUoKSBhbmQgZHJtX2JyaWRnZV9jaGFpbl9wb3N0X2VuYWJsZSgpCmZ1bmN0aW9ucyBjb3VsZCBi
-ZSBjYWxsZWQgZm9yIGEgYnJpZGdlIHRoYXQgaGFzIGp1c3QgYmVlbiBkZXRhY2hlZCBhbmQKcmVt
-b3ZlZCBmcm9tIHRoZSBicmlkZ2UgY2hhaW4gb2YgYW4gZW5jb2Rlci4KClRoaXMgY2hhbmdlIG1h
-a2VzIHRoZXNlIGZ1bmN0aW9ucyBhIGJpdCBtb3JlIHJvYnVzdCBieSBiYWlsaW5nIG91dCBpZgp0
-aGUgYnJpZGdlIGhhcyBhbHJlYWR5IGJlZW4gZGV0YWNoZWQuCgpUZXN0ZWQgb24gYW4gQWNlciBD
-aHJvbWVib29rIFIxMyAoRWxtLCBNVDgxNzMpIHdpdGggRGViaWFuIFNpZC4KClNpZ25lZC1vZmYt
-Ynk6IFJpY2FyZG8gQ2HDsXVlbG8gPHJpY2FyZG8uY2FudWVsb0Bjb2xsYWJvcmEuY29tPgotLS0K
-IGRyaXZlcnMvZ3B1L2RybS9kcm1fYnJpZGdlLmMgfCA0ICsrLS0KIDEgZmlsZSBjaGFuZ2VkLCAy
-IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
-ZHJtL2RybV9icmlkZ2UuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fYnJpZGdlLmMKaW5kZXggYzk2
-ODQ3ZmMwZWJjLi5lMDc0YWE0NTZkZDEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9kcm1f
-YnJpZGdlLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9icmlkZ2UuYwpAQCAtNTI5LDcgKzUy
-OSw3IEBAIHZvaWQgZHJtX2JyaWRnZV9jaGFpbl9wb3N0X2Rpc2FibGUoc3RydWN0IGRybV9icmlk
-Z2UgKmJyaWRnZSkKIHsKIAlzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXI7CiAKLQlpZiAoIWJy
-aWRnZSkKKwlpZiAoIWJyaWRnZSB8fCAhYnJpZGdlLT5kZXYpCiAJCXJldHVybjsKIAogCWVuY29k
-ZXIgPSBicmlkZ2UtPmVuY29kZXI7CkBAIC01ODUsNyArNTg1LDcgQEAgdm9pZCBkcm1fYnJpZGdl
-X2NoYWluX3ByZV9lbmFibGUoc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSkKIAlzdHJ1Y3QgZHJt
-X2VuY29kZXIgKmVuY29kZXI7CiAJc3RydWN0IGRybV9icmlkZ2UgKml0ZXI7CiAKLQlpZiAoIWJy
-aWRnZSkKKwlpZiAoIWJyaWRnZSB8fCAhYnJpZGdlLT5kZXYpCiAJCXJldHVybjsKIAogCWVuY29k
-ZXIgPSBicmlkZ2UtPmVuY29kZXI7Ci0tIAoyLjI1LjEKCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGlu
-dXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Sat 2022-02-12 18:43:48, Lecopzer Chen wrote:
+> From: Pingfan Liu <kernelfans@gmail.com>
+> 
+> from: Pingfan Liu <kernelfans@gmail.com>
+> 
+> When lockup_detector_init()->watchdog_nmi_probe(), PMU may be not ready
+> yet. E.g. on arm64, PMU is not ready until
+> device_initcall(armv8_pmu_driver_init).  And it is deeply integrated
+> with the driver model and cpuhp. Hence it is hard to push this
+> initialization before smp_init().
+> 
+> But it is easy to take an opposite approach by enabling watchdog_hld to
+> get the capability of PMU async.
+> 
+> The async model is achieved by expanding watchdog_nmi_probe() with
+> -EBUSY, and a re-initializing work_struct which waits on a wait_queue_head.
+> 
+> Signed-off-by: Pingfan Liu <kernelfans@gmail.com>
+> Co-developed-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+> Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+> ---
+>  kernel/watchdog.c | 56 +++++++++++++++++++++++++++++++++++++++++++++--
+>  1 file changed, 54 insertions(+), 2 deletions(-)
+> 
+> diff --git a/kernel/watchdog.c b/kernel/watchdog.c
+> index b71d434cf648..fa8490cfeef8 100644
+> --- a/kernel/watchdog.c
+> +++ b/kernel/watchdog.c
+> @@ -839,16 +843,64 @@ static void __init watchdog_sysctl_init(void)
+>  #define watchdog_sysctl_init() do { } while (0)
+>  #endif /* CONFIG_SYSCTL */
+>  
+> +static void lockup_detector_delay_init(struct work_struct *work);
+> +enum hld_detector_state detector_delay_init_state __initdata;
+
+I would call this "lockup_detector_init_state" to use the same
+naming scheme everywhere.
+
+> +
+> +struct wait_queue_head hld_detector_wait __initdata =
+> +		__WAIT_QUEUE_HEAD_INITIALIZER(hld_detector_wait);
+> +
+> +static struct work_struct detector_work __initdata =
+
+I would call this "lockup_detector_work" to use the same naming scheme
+everywhere.
+
+> +		__WORK_INITIALIZER(detector_work, lockup_detector_delay_init);
+> +
+> +static void __init lockup_detector_delay_init(struct work_struct *work)
+> +{
+> +	int ret;
+> +
+> +	wait_event(hld_detector_wait,
+> +			detector_delay_init_state == DELAY_INIT_READY);
+
+DELAY_INIT_READY is defined in the 5th patch.
+
+There are many other build errors because this patch uses something
+that is defined in the 5th patch.
+
+> +	ret = watchdog_nmi_probe();
+> +	if (!ret) {
+> +		nmi_watchdog_available = true;
+> +		lockup_detector_setup();
+> +	} else {
+> +		WARN_ON(ret == -EBUSY);
+
+Why WARN_ON(), please?
+
+Note that it might cause panic() when "panic_on_warn" command line
+parameter is used.
+
+Also the backtrace will not help much. The context is well known.
+This code is called from a workqueue worker.
+
+
+> +		pr_info("Perf NMI watchdog permanently disabled\n");
+> +	}
+> +}
+> +
+> +/* Ensure the check is called after the initialization of PMU driver */
+> +static int __init lockup_detector_check(void)
+> +{
+> +	if (detector_delay_init_state < DELAY_INIT_WAIT)
+> +		return 0;
+> +
+> +	if (WARN_ON(detector_delay_init_state == DELAY_INIT_WAIT)) {
+
+Again. Is WARN_ON() needed?
+
+Also the condition looks wrong. IMHO, this is the expected state.
+
+> +		detector_delay_init_state = DELAY_INIT_READY;
+> +		wake_up(&hld_detector_wait);
+> +	}
+> +	flush_work(&detector_work);
+> +	return 0;
+> +}
+> +late_initcall_sync(lockup_detector_check);
+
+Otherwise, it make sense.
+
+Best Regards,
+Petr
+
+PS: I am not going to review the last patch because I am no familiar
+    with arm. I reviewed just the changes in the generic watchdog
+    code.
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
