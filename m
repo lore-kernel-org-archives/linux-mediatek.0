@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 102F9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 13:16:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7693C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 13:20:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8e7TPT/536Gni9vyg2HEi4i8heCxJKZTLqmItzP+KAE=; b=DZbNTdUQTK9lZk
-	UMbmHIiXHq39+l5jaCahqRi6IjPZZRNUyDp0O/T8NcUPOCp/QjbbqAOxLWCzfy6oNZ14MhI8X6CA1
-	LzJXfNnRUeTrQAU+XmMtMsdwSmqKjRpF/r1UvoxKWtL2iQ4esFpVkrD5VWRmAIf7z6n/f4SEVzThM
-	URPh+op2EnKqihKZpJS+XRClD76DbZLUmNGu73ZPm8wi9Qyn90h6I6EZRK25uAlmi+eLx/ZAVUrni
-	ijoSHK/ZA5wAcpf2b5c2Uru1wt+5T5PBrzM1Yay9hTeQlNsVYtKnP1P5Vx2l2BoXNv3uBoY1ZngEo
-	y09k4FeRhLKjGMyVpzgg==;
+	List-Owner; bh=4Xgj6azihTC7ezmYKfbLEuh7QyIbfveIbIK4gzfYr1Y=; b=PgEtZZ83YJL1b/
+	wn1cnxjPk27suNCETGYi54MrJB4oPL2pyIYo8DWpKMYawoB+1rnRU+Kb1KJAZk/3kSm8xYv2JxACg
+	W+IGAuw4eeXp4nuDOJGy1Qd/X9dHIAQnINQH4ny7UEZoQcinxq+T0Mz1eB2db8t3hxb88+1Q7NwfK
+	kvCT6YrpKNXbbsZ2ct2bFmFetNzM3oOW5+UEHsysxxWS7hQwyifvA40OSMWUXvsgIbnQDDAtCQ4sq
+	ShIsgZzhEwU8HiMUmErUMnFnk9U9jvARZSuvK1/0ge1WMH0fwMMtcPfeRZdGLL6Yf9VVhADx24mED
+	KOrLte3K/NNpO+HShACg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNaS7-0051Rb-PI; Fri, 25 Feb 2022 13:16:07 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1nNaWb-0053cM-OK; Fri, 25 Feb 2022 13:20:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNaRr-0051K9-Ph; Fri, 25 Feb 2022 13:15:53 +0000
-Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
- by smtp-out2.suse.de (Postfix) with ESMTP id 482B21F380;
- Fri, 25 Feb 2022 13:15:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
- t=1645794949; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=PmNIIM3gpZH3rKjV9RV8YeTjUMiihTOkooMrV/E9GyM=;
- b=ZSrW6K79vK/zTZhgRs6T7UlP4hs6EUqsHsiSUV/My/ujlxqJ316FZPZVfSn/2Mnqf4GaUM
- wT5ysHhyfe82zyDrREof/bqZqIM4PWuXHAYmjrRQqwBy2PFrvNMRePKzBEG2uXwyibPu7R
- UMh+UPy5ffqL0H6S/rd2bXklgMFI368=
-Received: from suse.cz (unknown [10.100.216.66])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by relay2.suse.de (Postfix) with ESMTPS id A46FFA3B83;
- Fri, 25 Feb 2022 13:15:48 +0000 (UTC)
-Date: Fri, 25 Feb 2022 14:15:48 +0100
-From: Petr Mladek <pmladek@suse.com>
-To: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- Will Deacon <will@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Peter Zijlstra <peterz@infradead.org>, Ingo Molnar <mingo@redhat.com>,
- Arnaldo Carvalho de Melo <acme@kernel.org>,
- Alexander Shishkin <alexander.shishkin@linux.intel.com>,
- Jiri Olsa <jolsa@redhat.com>, Namhyung Kim <namhyung@kernel.org>,
- davem@davemloft.net, Matthias Brugger <matthias.bgg@gmail.com>,
- Marc Zyngier <maz@kernel.org>, Julien Thierry <jthierry@redhat.com>,
- Kees Cook <keescook@chromium.org>, Masahiro Yamada <masahiroy@kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- Wang Qing <wangqing@vivo.com>, Luis Chamberlain <mcgrof@kernel.org>,
- Xiaoming Ni <nixiaoming@huawei.com>, linux-arm-kernel@lists.infradead.org,
- linux-perf-users@vger.kernel.org, sparclinux@vger.kernel.org,
- linux-mediatek@lists.infradead.org, sumit.garg@linaro.org,
- kernelfans@gmail.com, yj.chiang@mediatek.com
-Subject: Re: [PATCH 3/5] kernel/watchdog_hld: Ensure CPU-bound context when
- creating hardlockup detector event
-Message-ID: <YhjWhCoZelIhBMyS@alley>
-References: <20220212104349.14266-1-lecopzer.chen@mediatek.com>
- <20220212104349.14266-4-lecopzer.chen@mediatek.com>
+ id 1nNaV5-0052tf-8f; Fri, 25 Feb 2022 13:19:13 +0000
+X-UUID: 784a5fecdf314b20b94715df60977b3a-20220225
+X-UUID: 784a5fecdf314b20b94715df60977b3a-20220225
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1285729415; Fri, 25 Feb 2022 06:19:03 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 25 Feb 2022 05:17:07 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 25 Feb 2022 21:16:59 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 25 Feb 2022 21:16:59 +0800
+Message-ID: <055296d32d218ccc3285351516b14b4fc8aba238.camel@mediatek.com>
+Subject: Re: [PATCH v17 1/2] dt-bindings: mailbox: mtk,adsp-mbox: add mtk
+ adsp-mbox document
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+CC: Jassi Brar <jaswinder.singh@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Jassi Brar <jassisinghbrar@gmail.com>, Linux-ALSA
+ <alsa-devel@alsa-project.org>, <tzungbi@google.com>,
+ <cujomalainey@google.com>, Pierre-Louis Bossart
+ <pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, Kai Vehmanen
+ <kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>, "Mark
+ Brown" <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
+ <tiwai@suse.com>, Chen-Yu Tsai <wenst@chromium.org>, Kevin Hilman
+ <khilman@baylibre.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <sound-open-firmware@alsa-project.org>
+Date: Fri, 25 Feb 2022 21:16:59 +0800
+In-Reply-To: <YheugpFub9ArHDyT@robh.at.kernel.org>
+References: <20220224133045.23903-1-allen-kh.cheng@mediatek.com>
+ <20220224133045.23903-2-allen-kh.cheng@mediatek.com>
+ <YheugpFub9ArHDyT@robh.at.kernel.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220212104349.14266-4-lecopzer.chen@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220225_051552_040204_94C2B910 
-X-CRM114-Status: GOOD (  14.12  )
+X-CRM114-CacheID: sfid-20220225_051911_364433_B13E04D5 
+X-CRM114-Status: GOOD (  23.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,28 +84,111 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat 2022-02-12 18:43:47, Lecopzer Chen wrote:
-> From: Pingfan Liu <kernelfans@gmail.com>
+On Thu, 2022-02-24 at 10:12 -0600, Rob Herring wrote:
+> On Thu, Feb 24, 2022 at 09:30:44PM +0800, Allen-KH Cheng wrote:
+> > From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+> > 
+> > This patch adds document for mediatek adsp mbox
+> > 
+> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >  .../bindings/mailbox/mtk,adsp-mbox.yaml       | 52
+> > +++++++++++++++++++
+> >  1 file changed, 52 insertions(+)
+> >  create mode 100644
+> > Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/mailbox/mtk,adsp-
+> > mbox.yaml b/Documentation/devicetree/bindings/mailbox/mtk,adsp-
+> > mbox.yaml
+> > new file mode 100644
+> > index 000000000000..25756837797f
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
+> > @@ -0,0 +1,52 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: 
+> > https://urldefense.com/v3/__http://devicetree.org/schemas/mailbox/mtk,adsp-mbox.yaml*__;Iw!!CTRNKA9wMg0ARbw!1-w9zcYC59nNwgZh8GRqYCSfHVTtj2nHfLuwGaqiLdOeCxlBGUkwqcW50EVBYejpHXulQA$
+> >  
+> > +$schema: 
+> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!1-w9zcYC59nNwgZh8GRqYCSfHVTtj2nHfLuwGaqiLdOeCxlBGUkwqcW50EVBYejjdYjzJw$
+> >  
+> > +
+> > +title: Mediatek ADSP mailbox
+> > +
+> > +maintainers:
+> > +  - Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+> > +
+> > +description: |
+> > +  The MTK ADSP mailbox Inter-Processor Communication (IPC) enables
+> > the SoC
+> > +  to ommunicate with ADSP by passing messages through two mailbox
+> > channels.
+> > +  The MTK ADSP mailbox IPC also provides the ability for one
+> > processor to
+> > +  signal the other processor using interrupts.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    items:
+> > +      - const: mediatek,mt8195-adsp-mbox
+> > +
+> > +  "#mbox-cells":
+> > +    const: 0
+> > +
+> > +  reg:
+> > +    description:
+> > +      Physical address base for dsp mbox registers.
 > 
-> from: Pingfan Liu <kernelfans@gmail.com>
+> That's fairly obvious. Drop.
 > 
-> hardlockup_detector_event_create() should create perf_event on the
-> current CPU. Preemption could not get disabled because
-> perf_event_create_kernel_counter() allocates memory. Instead,
-> the CPU locality is achieved by processing the code in a per-CPU
-> bound kthread.
+> You need to define how many: 'maxItems: 1'
 > 
-> Add a check to prevent mistakes when calling the code in another
-> code path.
-> 
-> Signed-off-by: Pingfan Liu <kernelfans@gmail.com>
-> Co-developed-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
-> Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Hi Rob,
 
-Reviewed-by: Petr Mladek <pmladek@suse.com>
+thanks for your suggestions and comments.
+
+I will add the number information for reg and interrupts.
 
 Best Regards,
-Petr
+Allen
+
+> > +
+> > +  interrupts:
+> > +    description:
+> > +      adsp mbox interrupt
+> 
+> Same here.
+> 
+> > +
+> > +required:
+> > +  - compatible
+> > +  - "#mbox-cells"
+> > +  - reg
+> > +  - interrupts
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > +
+> > +    adsp_mailbox0:mailbox@10816000 {
+> > +        compatible = "mediatek,mt8195-adsp-mbox";
+> > +        #mbox-cells = <0>;
+> > +        reg = <0x10816000 0x1000>;
+> > +        interrupts = <GIC_SPI 702 IRQ_TYPE_LEVEL_HIGH 0>;
+> > +    };
+> > -- 
+> > 2.18.0
+> > 
+> > 
+
 
 _______________________________________________
 Linux-mediatek mailing list
