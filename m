@@ -4,57 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C586C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 15:23:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E2A6C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 16:25:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8EX9AnMuOlN6t9DyP3JZFAiO20Eo9p1itJ2yNS7IxI4=; b=IVP3/0fGvSnyKo
-	/AjzHPj7XYvvoF46vtTGgicXtZim6WCSoTUYTmkVQ14RRXBr1GrFpmsF0PevYDsSvQ3mBm0dj9/o6
-	EobEBCbIKhrmNsXHIf1KlpXbgr7pdLGoi+oUZZrUGrJ53J7XZELqome3a3y7+ZdnR+DAfXuUFaDb1
-	C47YZ2U+/Llych/u2vKcigONtVFCQL73MG+QayWzEhQecHuJ78UiWWwFRXW1JpmyV+ocu93soa+mS
-	Iv+Fp8pINjFaOPHowEmp88IoTgcoTxF9MIJm7PwoWFtOB5PJdFnuOQlAjeFRaBum2m6M7sNrLf6QF
-	lYsPpRqvmdgmsBg68y5w==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=W1HfQdoMrHibEty/HBRd3KtLVA+kl+zzSGkxtAlnFFg=; b=Jztf/uxHkOCbeC
+	b1q2NcO8Q8fl6HHzU8Qq/IiYAsp/FA99Up//Iv5AvdJyRrcN4gS8zT7P5sz3V6SyDMS+W7VynanbA
+	qfAtxf0U70Q9GqG+Q2dyGIRO0DVNM82GtqPdYPOMFYLfP/TL/29rWHRODPdpRoTDLcmBD1o+920+8
+	kTkZqSmQOrgTDG+i2PUhhlDrkPwjk++gVEMnvMmcHob7ZhpkjApORh7/Z4N7409Xwu/15rgMlimXR
+	+vTgK4gqs++T17PAb1v+s4lQ1EecRH9Bd8QaApSNbdeuw9hfWGGrK8xmhXwX2pnPtqJf2+RdLAXlH
+	Z9aHR8LJ9p55O+WQhsNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNcRb-005ai3-8x; Fri, 25 Feb 2022 15:23:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nNdPC-005twI-7q; Fri, 25 Feb 2022 16:25:18 +0000
+Received: from mail-oo1-f42.google.com ([209.85.161.42])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNcRK-005aeO-QS; Fri, 25 Feb 2022 15:23:32 +0000
-X-UUID: 6b1261537e9a4437b1624a713db12b37-20220225
-X-UUID: 6b1261537e9a4437b1624a713db12b37-20220225
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <phil.chang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1175559340; Fri, 25 Feb 2022 08:23:19 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 25 Feb 2022 07:20:51 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 25 Feb 2022 23:20:49 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 25 Feb 2022 23:20:49 +0800
-From: Phil Chang <phil.chang@mediatek.com>
-To: <jens.wiklander@linaro.org>
-CC: <sumit.garg@linaro.org>, <matthias.bgg@gmail.com>,
- <op-tee@lists.trustedfirmware.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <phil.chang@mediatek.com>
-Subject: [PATCH v4] tee: make tee_shm_register_kernel_buf vmalloc supported
-Date: Fri, 25 Feb 2022 23:20:40 +0800
-Message-ID: <20220225152040.31896-1-phil.chang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1nNdOx-005tr6-OD; Fri, 25 Feb 2022 16:25:05 +0000
+Received: by mail-oo1-f42.google.com with SMTP id
+ r15-20020a4ae5cf000000b002edba1d3349so6849877oov.3; 
+ Fri, 25 Feb 2022 08:24:58 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=G0wL1tv9YDLjyJO0SII7J8zFNPKMiKxbobcDr5uPVqY=;
+ b=gtDZE5Mg7T64k1Yz4Fcy+uu9kxf7TNCO9mhlN6Ig5f84dU77e/4aFMU/OSNpJoGNVn
+ 0bIoO5NKhEvoDHacNlbX86BwJdy3CfGG0MXIH9VAXjOU+cASBDxwAr8BFADlKOFGUBrk
+ ugbqe03BU8bn//mrZt5zEV6ef6eB4UJeG7jyP3rBJKnGbsXHHmylf3QoujUP0qc68E1+
+ m1KxtKgWbPyvTQprJvrRB0OMfB1DOtnSfB87MD1c4chtfXlc7fWRj7g3fbvulNK8hkz7
+ /R+SSgJxbk+O4COWmNg+Tkz6nccNfDDqsreVAsEMd6NIyYxT8J26xSUlWSCBssSIza3C
+ Rx5w==
+X-Gm-Message-State: AOAM531onLbSQmRqvam2GA0aGYyUBlj2eoPU4qiKiwsWNlNJXkxp/FSP
+ /Y60ZPVJ23pafNH2IV5RTA==
+X-Google-Smtp-Source: ABdhPJx4x+GM9t3AVElZNRESE/E8edNaWjEH6rKwJcyOKoE4Rl4sXZh8pp0Ur1ZaT4jMhHpksSu1NA==
+X-Received: by 2002:a05:6870:4396:b0:d0:feba:c243 with SMTP id
+ r22-20020a056870439600b000d0febac243mr1772969oah.34.1645806298214; 
+ Fri, 25 Feb 2022 08:24:58 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213]) by smtp.gmail.com with ESMTPSA id
+ bf39-20020a056808192700b002d51f615f1csm1511394oib.34.2022.02.25.08.24.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 25 Feb 2022 08:24:57 -0800 (PST)
+Received: (nullmailer pid 1036935 invoked by uid 1000);
+ Fri, 25 Feb 2022 16:24:55 -0000
+Date: Fri, 25 Feb 2022 10:24:55 -0600
+From: Rob Herring <robh@kernel.org>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-watchdog@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, p.zabel@pengutronix.de,
+ linux-kernel@vger.kernel.org, linux@roeck-us.net,
+ linux-mediatek@lists.infradead.org, runyang.chen@mediatek.com,
+ matthias.bgg@gmail.com, robh+dt@kernel.org, wim@linux-watchdog.org
+Subject: Re: [PATCH 1/4] dt-bindings: watchdog: Add compatible for MediaTek
+ MT8186
+Message-ID: <YhkC17tHJbd5Sd6J@robh.at.kernel.org>
+References: <20220216014505.28428-1-rex-bc.chen@mediatek.com>
+ <20220216014505.28428-2-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20220216014505.28428-2-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220225_072326_875447_914F2D7D 
-X-CRM114-Status: GOOD (  14.18  )
+X-CRM114-CacheID: sfid-20220225_082503_803045_591E41B1 
+X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,83 +88,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In some low-memory devices, it's hard to aquire large-orders pages,
-this patch allowed user using scatter pages to register shm.
+On Wed, 16 Feb 2022 09:45:02 +0800, Rex-BC Chen wrote:
+> Add dt-binding documentation of watchdog for MediaTek MT8186 SoC.
+> 
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-Signed-off-by: Phil Chang <phil.chang@mediatek.com>
-Reviewed-by: Sumit Garg <sumit.garg@linaro.org>
----
- drivers/tee/optee/call.c |  2 +-
- drivers/tee/tee_shm.c    | 35 +++++++++++++++++++++++++----------
- 2 files changed, 26 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/tee/optee/call.c b/drivers/tee/optee/call.c
-index bd49ec934060..2082e632adff 100644
---- a/drivers/tee/optee/call.c
-+++ b/drivers/tee/optee/call.c
-@@ -362,7 +362,7 @@ int optee_check_mem_type(unsigned long start, size_t num_pages)
- 	 * Allow kernel address to register with OP-TEE as kernel
- 	 * pages are configured as normal memory only.
- 	 */
--	if (virt_addr_valid(start))
-+	if (virt_addr_valid(start) || is_vmalloc_addr((void *)start))
- 		return 0;
- 
- 	mmap_read_lock(mm);
-diff --git a/drivers/tee/tee_shm.c b/drivers/tee/tee_shm.c
-index f31e29e8f1ca..836872467dc6 100644
---- a/drivers/tee/tee_shm.c
-+++ b/drivers/tee/tee_shm.c
-@@ -23,21 +23,36 @@ static void shm_put_kernel_pages(struct page **pages, size_t page_count)
- static int shm_get_kernel_pages(unsigned long start, size_t page_count,
- 				struct page **pages)
- {
--	struct kvec *kiov;
- 	size_t n;
- 	int rc;
- 
--	kiov = kcalloc(page_count, sizeof(*kiov), GFP_KERNEL);
--	if (!kiov)
--		return -ENOMEM;
-+	if (is_vmalloc_addr((void *)start)) {
-+		struct page *page;
- 
--	for (n = 0; n < page_count; n++) {
--		kiov[n].iov_base = (void *)(start + n * PAGE_SIZE);
--		kiov[n].iov_len = PAGE_SIZE;
--	}
-+		for (n = 0; n < page_count; n++) {
-+			page = vmalloc_to_page((void *)(start + PAGE_SIZE * n));
-+			if (!page)
-+				return -ENOMEM;
-+
-+			get_page(page);
-+			pages[n] = page;
-+		}
-+		rc = page_count;
-+	} else {
-+		struct kvec *kiov;
-+
-+		kiov = kcalloc(page_count, sizeof(*kiov), GFP_KERNEL);
-+		if (!kiov)
-+			return -ENOMEM;
- 
--	rc = get_kernel_pages(kiov, page_count, 0, pages);
--	kfree(kiov);
-+		for (n = 0; n < page_count; n++) {
-+			kiov[n].iov_base = (void *)(start + n * PAGE_SIZE);
-+			kiov[n].iov_len = PAGE_SIZE;
-+		}
-+
-+		rc = get_kernel_pages(kiov, page_count, 0, pages);
-+		kfree(kiov);
-+	}
- 
- 	return rc;
- }
--- 
-2.25.1
-
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
