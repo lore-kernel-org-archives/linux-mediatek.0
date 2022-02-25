@@ -4,61 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA6FEC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 23:00:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09221C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 23:07:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dpj4IuM/ecoyjEBrgepUgyT7DKN9V+o8STacrR3/xo4=; b=X2hQtUZ/l1DyGN
-	28rL3iMkt0wPZQ+IvfniqLgKVJqJxmitbtPpCpUB5lB0DG6QxpzGZy20QrkRMOGHUxzgIWJhA7b2j
-	MtZifDi9JxxlAckrt3iYco7AEGgUU8M4o9ed2PJWouV8uEKT1w6omqqNl+iezUOhTu78K1fR0HjK1
-	xM31XqGyENBMQZgTN3CsOiZAbfP4rUKl1L4tFGZXym60JPYcpAC02ngcaNc2agjnr+j4frs9q/Y4m
-	LJ2wtuYzxCQ7JluIPvcOvjfx8RFaYHUWqyLVLndihxuYn89RHWZOCVvSt9DCva8mJAYIZf9womaL/
-	9MpJumOrhb/VOtnUxUgQ==;
+	List-Owner; bh=Ib83qi53Quo6LR3qQENbjgrRPS63EroE3Q3TsWmdeYs=; b=0wnJNZkLRroUMn
+	/srGnDO/8nMPXUVc0+7von7ro795tbbu4TiBpzeW9o7L54rB19VtuW/2a3JPSZy9dB1QJxpObnitJ
+	hUMUYN4VWAjH8+Y+vefUlhjo+i4511CKqlPUlI576GgNRXns5CO+yjgtqk43mTEltjaarP2wjFZzh
+	hUSw7bzbngyzs6luoirfcikPNwrmu3zSorG586iK/Zuz7aByH1vgXaxdrFWYIaoYkFnn1xaeXP53R
+	h30y1P2PpRhhhLkgKOcv3QdQAlGYZA34UP41bocOG5+O0BwgGwLQa8QIubQhdFgqtG57z3LC2pA/Z
+	KCL6vEd9x9T3s+h4AbkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNjZg-0079QO-In; Fri, 25 Feb 2022 23:00:32 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nNjfr-007B2R-Np; Fri, 25 Feb 2022 23:06:55 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNjYv-00794p-Id; Fri, 25 Feb 2022 22:59:47 +0000
+ id 1nNjfd-007AyX-7D; Fri, 25 Feb 2022 23:06:42 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 100231F46808
+ (Authenticated sender: nfraprado) with ESMTPSA id B78DB1F46802
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1645829984;
- bh=qY7g+EkArzTfdSMsa9x3xIBuajRepERJP4O9V2Lj82Y=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=TDi+OJ5/TIg5zuBS22T/Vv9UsG1dEkQNLnps4DxdHeiWpgWxZkuNOF8f72+kWb/7g
- GZNQNlYCtIsRXnJG87wUTktx8ycjFyX2fdV0hELqwKuZYV8gbPvHlPOIfX3T4F4+Xi
- PX13JZoH1aAeLLmVfL8Wh/8MViGfXcWYlN0tPX1d20eoJD3LzHe2E/MGPIWYKDOnLT
- YzE3pE+aykhxV57oKreGBBZZa0UT/8JTSaA+ChMNVHsR6FGGoNtrv6UYGIGVYOtbxN
- a6XEksawKVcl+qc7TBEhiDVGoQjW/vVZhQxzt8txAgDW0WvS2p7pJn6nHbbipFKR1F
- cCt8z3UCYpJZw==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
- <nfraprado@collabora.com>
-To: Rob Herring <robh+dt@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- kernel@collabora.com, =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
- <nfraprado@collabora.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Yunfei Dong <yunfei.dong@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v1 3/3] media: dt-bindings: mtk-vcodec-encoder: Add
- power-domains property
-Date: Fri, 25 Feb 2022 17:58:54 -0500
-Message-Id: <20220225225854.81038-4-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220225225854.81038-1-nfraprado@collabora.com>
-References: <20220225225854.81038-1-nfraprado@collabora.com>
+ s=mail; t=1645830400;
+ bh=58x7jynVJtBpgB4TfuRcpKnHM5IK4vhp6DiWw95AlxU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=K4v22sPr+SGzmsKBtZMST66vqQ51BjGlJy8G8Wr2TJG0kiOPLdZXhKc9ssdCgV3H1
+ /BKf7fXASO8Shq97WxREXdvmy2wn7ytKqykGlpQ19eXgcHstqyHyC7zZG2m3TmA8Ap
+ tjAqPMnNM6iv59cUoFG21lXC2cIyJ5YZFcoKySholAm/voWW+ErG4hGEo3wQsIq3RU
+ e8YUNOL1ttw7/h7ZF8DjQW8hmc1Vxg+YjVXogpLf9f9XxtiBz7TucdogJB0H13hFiQ
+ xRfDuLIvkuKUnL9XJPXQ9pAskskiPTMFZ1/ns5nmbIRUXPl54Xe4oOjYHqWRP9veiB
+ U2ziB7iFOPIaA==
+Date: Fri, 25 Feb 2022 18:06:34 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ --to=Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 15/23] arm64: dts: mt8192: Add m4u and smi nodes
+Message-ID: <20220225230634.bqmezldkzraa6v6o@notapiano>
+References: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
+ <20220218091633.9368-16-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220218091633.9368-16-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220225_145945_850976_4CFABB17 
-X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-CacheID: sfid-20220225_150641_432049_DED7E361 
+X-CRM114-Status: UNSURE (   8.56  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -71,25 +69,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-VGhlIGVuY29kZXIgbm9kZSBtYXkgYmUgZGVwZW5kZW50IG9uIGEgcG93ZXItZG9tYWluLiBBZGQg
-YSBwcm9wZXJ0eSBmb3IKaXQuCgpTaWduZWQtb2ZmLWJ5OiBOw61jb2xhcyBGLiBSLiBBLiBQcmFk
-byA8bmZyYXByYWRvQGNvbGxhYm9yYS5jb20+Ci0tLQoKIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdz
-L21lZGlhL21lZGlhdGVrLHZjb2RlYy1lbmNvZGVyLnlhbWwgICAgIHwgMyArKysKIDEgZmlsZSBj
-aGFuZ2VkLCAzIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3MvbWVkaWEvbWVkaWF0ZWssdmNvZGVjLWVuY29kZXIueWFtbCBiL0RvY3Vt
-ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlayx2Y29kZWMtZW5jb2Rl
-ci55YW1sCmluZGV4IGU3YjY1YTkxYzkyYy4uYzI4ODkxM2U1NjY2IDEwMDY0NAotLS0gYS9Eb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvbWVkaWF0ZWssdmNvZGVjLWVuY29k
-ZXIueWFtbAorKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvbWVk
-aWF0ZWssdmNvZGVjLWVuY29kZXIueWFtbApAQCAtNjUsNiArNjUsOSBAQCBwcm9wZXJ0aWVzOgog
-ICAgIGRlc2NyaXB0aW9uOgogICAgICAgRGVzY3JpYmVzIHBvaW50IHRvIHNjcC4KIAorICBwb3dl
-ci1kb21haW5zOgorICAgIG1heEl0ZW1zOiAxCisKIHJlcXVpcmVkOgogICAtIGNvbXBhdGlibGUK
-ICAgLSByZWcKLS0gCjIuMzUuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0Bs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtbWVkaWF0ZWsK
+Hi Allen,
+
+actually there's one other thing, please see below.
+
+On Fri, Feb 18, 2022 at 05:16:25PM +0800, Allen-KH Cheng wrote:
+> +		iommu0: m4u@1401d000 {
+> +			compatible =3D "mediatek,mt8192-m4u";
+> +			reg =3D <0 0x1401d000 0 0x1000>;
+> +			mediatek,larbs =3D <&larb0 &larb1 &larb2
+> +					  &larb4 &larb5 &larb7
+> +					  &larb9 &larb11 &larb13
+> +					  &larb14 &larb16 &larb17
+> +					  &larb18 &larb19 &larb20>;
+
+I just sent a patch [1] fixing the formatting of the mediatek,larbs propert=
+ies
+on other Mediatek Devicetrees. So please do the same here so we can avoid
+introducing a new warning in dtbs_check.
+
+Thanks,
+N=EDcolas
+
+[1] https://lore.kernel.org/all/20220225225315.80220-1-nfraprado@collabora.=
+com/
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
