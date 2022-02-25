@@ -4,71 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 437CBC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 15:20:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C586C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 15:23:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H3gf3tRshkjbg+BWv294ig0zTo4Vcgz1sSVkqsaRZeA=; b=ZlrgKCAx0kYdUA
-	0/Pelg5176C9BH1TcQBTWkdZF7HBR2A5ZX5y0k8K3vAXhq5bpc5ST2fYr5ZrkafLq4eRATVqcjkpK
-	BRcMewze8+lty3wNoNa9Uk3G2ZTi7q61ZtXNiMkVIC5R38Js3uxejEwORzH5D7pZFUwWQTapj1JwD
-	suLqwGQsomIeDRzYazbwTiSPFb8cxcXBc1oMlMgwg6p+QrfjUgE3+N2o6E5qIJ6ENc5dl5MzyBgls
-	Zipe8+B3AwBKhvrV4vqDPPoKCARCwVbAjWc4sob3+MqmOchrloGy8wvabfHtWD13rdkhvbsIUXs6H
-	8hBCU/eOa/t1/2NRCryQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8EX9AnMuOlN6t9DyP3JZFAiO20Eo9p1itJ2yNS7IxI4=; b=IVP3/0fGvSnyKo
+	/AjzHPj7XYvvoF46vtTGgicXtZim6WCSoTUYTmkVQ14RRXBr1GrFpmsF0PevYDsSvQ3mBm0dj9/o6
+	EobEBCbIKhrmNsXHIf1KlpXbgr7pdLGoi+oUZZrUGrJ53J7XZELqome3a3y7+ZdnR+DAfXuUFaDb1
+	C47YZ2U+/Llych/u2vKcigONtVFCQL73MG+QayWzEhQecHuJ78UiWWwFRXW1JpmyV+ocu93soa+mS
+	Iv+Fp8pINjFaOPHowEmp88IoTgcoTxF9MIJm7PwoWFtOB5PJdFnuOQlAjeFRaBum2m6M7sNrLf6QF
+	lYsPpRqvmdgmsBg68y5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNcOX-005a3Q-DY; Fri, 25 Feb 2022 15:20:33 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1nNcRb-005ai3-8x; Fri, 25 Feb 2022 15:23:43 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNcOK-005ZzE-NU; Fri, 25 Feb 2022 15:20:22 +0000
-Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
- by smtp-out2.suse.de (Postfix) with ESMTP id 20E541F380;
- Fri, 25 Feb 2022 15:20:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
- t=1645802416; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=76D+b8ZUFKHayJqezaXTrIOKH/+w6Mr9BDaG1qJPaqM=;
- b=uiwU9753hHXtDfEByGOp/4k3/mpSpC2iPS5R74LN2olK1KIV4kIuD6y8ARyLKPI+57XebW
- laXnAzMwXNXHJgSFsi5gA5ifwF1cCKT2ypgNk9DHv/UzKegXnyQUGwO9FQLe7NALffYOqs
- LFAeojvzfBLhLsnUVHoCuDy01kc+AaU=
-Received: from suse.cz (unknown [10.100.216.66])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by relay2.suse.de (Postfix) with ESMTPS id 81174A3B83;
- Fri, 25 Feb 2022 15:20:15 +0000 (UTC)
-Date: Fri, 25 Feb 2022 16:20:15 +0100
-From: Petr Mladek <pmladek@suse.com>
-To: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- Will Deacon <will@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Peter Zijlstra <peterz@infradead.org>, Ingo Molnar <mingo@redhat.com>,
- Arnaldo Carvalho de Melo <acme@kernel.org>,
- Alexander Shishkin <alexander.shishkin@linux.intel.com>,
- Jiri Olsa <jolsa@redhat.com>, Namhyung Kim <namhyung@kernel.org>,
- davem@davemloft.net, Matthias Brugger <matthias.bgg@gmail.com>,
- Marc Zyngier <maz@kernel.org>, Julien Thierry <jthierry@redhat.com>,
- Kees Cook <keescook@chromium.org>, Masahiro Yamada <masahiroy@kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- Wang Qing <wangqing@vivo.com>, Luis Chamberlain <mcgrof@kernel.org>,
- Xiaoming Ni <nixiaoming@huawei.com>, linux-arm-kernel@lists.infradead.org,
- linux-perf-users@vger.kernel.org, sparclinux@vger.kernel.org,
- linux-mediatek@lists.infradead.org, sumit.garg@linaro.org,
- kernelfans@gmail.com, yj.chiang@mediatek.com
-Subject: Re: [PATCH 4/5] kernel/watchdog: Adapt the watchdog_hld interface
- for async model
-Message-ID: <Yhjzr8geK7dTXXd2@alley>
-References: <20220212104349.14266-1-lecopzer.chen@mediatek.com>
- <20220212104349.14266-5-lecopzer.chen@mediatek.com>
+ id 1nNcRK-005aeO-QS; Fri, 25 Feb 2022 15:23:32 +0000
+X-UUID: 6b1261537e9a4437b1624a713db12b37-20220225
+X-UUID: 6b1261537e9a4437b1624a713db12b37-20220225
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <phil.chang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1175559340; Fri, 25 Feb 2022 08:23:19 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 25 Feb 2022 07:20:51 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 25 Feb 2022 23:20:49 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 25 Feb 2022 23:20:49 +0800
+From: Phil Chang <phil.chang@mediatek.com>
+To: <jens.wiklander@linaro.org>
+CC: <sumit.garg@linaro.org>, <matthias.bgg@gmail.com>,
+ <op-tee@lists.trustedfirmware.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <phil.chang@mediatek.com>
+Subject: [PATCH v4] tee: make tee_shm_register_kernel_buf vmalloc supported
+Date: Fri, 25 Feb 2022 23:20:40 +0800
+Message-ID: <20220225152040.31896-1-phil.chang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220212104349.14266-5-lecopzer.chen@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220225_072020_969614_7514086C 
-X-CRM114-Status: GOOD (  32.49  )
+X-CRM114-CacheID: sfid-20220225_072326_875447_914F2D7D 
+X-CRM114-Status: GOOD (  14.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,115 +71,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat 2022-02-12 18:43:48, Lecopzer Chen wrote:
-> From: Pingfan Liu <kernelfans@gmail.com>
-> 
-> from: Pingfan Liu <kernelfans@gmail.com>
-> 
-> When lockup_detector_init()->watchdog_nmi_probe(), PMU may be not ready
-> yet. E.g. on arm64, PMU is not ready until
-> device_initcall(armv8_pmu_driver_init).  And it is deeply integrated
-> with the driver model and cpuhp. Hence it is hard to push this
-> initialization before smp_init().
-> 
-> But it is easy to take an opposite approach by enabling watchdog_hld to
-> get the capability of PMU async.
-> 
-> The async model is achieved by expanding watchdog_nmi_probe() with
-> -EBUSY, and a re-initializing work_struct which waits on a wait_queue_head.
-> 
-> Signed-off-by: Pingfan Liu <kernelfans@gmail.com>
-> Co-developed-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
-> Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
-> ---
->  kernel/watchdog.c | 56 +++++++++++++++++++++++++++++++++++++++++++++--
->  1 file changed, 54 insertions(+), 2 deletions(-)
-> 
-> diff --git a/kernel/watchdog.c b/kernel/watchdog.c
-> index b71d434cf648..fa8490cfeef8 100644
-> --- a/kernel/watchdog.c
-> +++ b/kernel/watchdog.c
-> @@ -839,16 +843,64 @@ static void __init watchdog_sysctl_init(void)
->  #define watchdog_sysctl_init() do { } while (0)
->  #endif /* CONFIG_SYSCTL */
->  
-> +static void lockup_detector_delay_init(struct work_struct *work);
-> +enum hld_detector_state detector_delay_init_state __initdata;
+In some low-memory devices, it's hard to aquire large-orders pages,
+this patch allowed user using scatter pages to register shm.
 
-I would call this "lockup_detector_init_state" to use the same
-naming scheme everywhere.
+Signed-off-by: Phil Chang <phil.chang@mediatek.com>
+Reviewed-by: Sumit Garg <sumit.garg@linaro.org>
+---
+ drivers/tee/optee/call.c |  2 +-
+ drivers/tee/tee_shm.c    | 35 +++++++++++++++++++++++++----------
+ 2 files changed, 26 insertions(+), 11 deletions(-)
 
-> +
-> +struct wait_queue_head hld_detector_wait __initdata =
-> +		__WAIT_QUEUE_HEAD_INITIALIZER(hld_detector_wait);
-> +
-> +static struct work_struct detector_work __initdata =
+diff --git a/drivers/tee/optee/call.c b/drivers/tee/optee/call.c
+index bd49ec934060..2082e632adff 100644
+--- a/drivers/tee/optee/call.c
++++ b/drivers/tee/optee/call.c
+@@ -362,7 +362,7 @@ int optee_check_mem_type(unsigned long start, size_t num_pages)
+ 	 * Allow kernel address to register with OP-TEE as kernel
+ 	 * pages are configured as normal memory only.
+ 	 */
+-	if (virt_addr_valid(start))
++	if (virt_addr_valid(start) || is_vmalloc_addr((void *)start))
+ 		return 0;
+ 
+ 	mmap_read_lock(mm);
+diff --git a/drivers/tee/tee_shm.c b/drivers/tee/tee_shm.c
+index f31e29e8f1ca..836872467dc6 100644
+--- a/drivers/tee/tee_shm.c
++++ b/drivers/tee/tee_shm.c
+@@ -23,21 +23,36 @@ static void shm_put_kernel_pages(struct page **pages, size_t page_count)
+ static int shm_get_kernel_pages(unsigned long start, size_t page_count,
+ 				struct page **pages)
+ {
+-	struct kvec *kiov;
+ 	size_t n;
+ 	int rc;
+ 
+-	kiov = kcalloc(page_count, sizeof(*kiov), GFP_KERNEL);
+-	if (!kiov)
+-		return -ENOMEM;
++	if (is_vmalloc_addr((void *)start)) {
++		struct page *page;
+ 
+-	for (n = 0; n < page_count; n++) {
+-		kiov[n].iov_base = (void *)(start + n * PAGE_SIZE);
+-		kiov[n].iov_len = PAGE_SIZE;
+-	}
++		for (n = 0; n < page_count; n++) {
++			page = vmalloc_to_page((void *)(start + PAGE_SIZE * n));
++			if (!page)
++				return -ENOMEM;
++
++			get_page(page);
++			pages[n] = page;
++		}
++		rc = page_count;
++	} else {
++		struct kvec *kiov;
++
++		kiov = kcalloc(page_count, sizeof(*kiov), GFP_KERNEL);
++		if (!kiov)
++			return -ENOMEM;
+ 
+-	rc = get_kernel_pages(kiov, page_count, 0, pages);
+-	kfree(kiov);
++		for (n = 0; n < page_count; n++) {
++			kiov[n].iov_base = (void *)(start + n * PAGE_SIZE);
++			kiov[n].iov_len = PAGE_SIZE;
++		}
++
++		rc = get_kernel_pages(kiov, page_count, 0, pages);
++		kfree(kiov);
++	}
+ 
+ 	return rc;
+ }
+-- 
+2.25.1
 
-I would call this "lockup_detector_work" to use the same naming scheme
-everywhere.
-
-> +		__WORK_INITIALIZER(detector_work, lockup_detector_delay_init);
-> +
-> +static void __init lockup_detector_delay_init(struct work_struct *work)
-> +{
-> +	int ret;
-> +
-> +	wait_event(hld_detector_wait,
-> +			detector_delay_init_state == DELAY_INIT_READY);
-
-DELAY_INIT_READY is defined in the 5th patch.
-
-There are many other build errors because this patch uses something
-that is defined in the 5th patch.
-
-> +	ret = watchdog_nmi_probe();
-> +	if (!ret) {
-> +		nmi_watchdog_available = true;
-> +		lockup_detector_setup();
-> +	} else {
-> +		WARN_ON(ret == -EBUSY);
-
-Why WARN_ON(), please?
-
-Note that it might cause panic() when "panic_on_warn" command line
-parameter is used.
-
-Also the backtrace will not help much. The context is well known.
-This code is called from a workqueue worker.
-
-
-> +		pr_info("Perf NMI watchdog permanently disabled\n");
-> +	}
-> +}
-> +
-> +/* Ensure the check is called after the initialization of PMU driver */
-> +static int __init lockup_detector_check(void)
-> +{
-> +	if (detector_delay_init_state < DELAY_INIT_WAIT)
-> +		return 0;
-> +
-> +	if (WARN_ON(detector_delay_init_state == DELAY_INIT_WAIT)) {
-
-Again. Is WARN_ON() needed?
-
-Also the condition looks wrong. IMHO, this is the expected state.
-
-> +		detector_delay_init_state = DELAY_INIT_READY;
-> +		wake_up(&hld_detector_wait);
-> +	}
-> +	flush_work(&detector_work);
-> +	return 0;
-> +}
-> +late_initcall_sync(lockup_detector_check);
-
-Otherwise, it make sense.
-
-Best Regards,
-Petr
-
-PS: I am not going to review the last patch because I am no familiar
-    with arm. I reviewed just the changes in the generic watchdog
-    code.
 
 _______________________________________________
 Linux-mediatek mailing list
