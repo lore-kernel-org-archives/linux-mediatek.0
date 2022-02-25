@@ -4,63 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B4E0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 02:26:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F625C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 03:28:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BiGUoYA8uqnQDXOYTizK+FfedH2DFv6KLggeWZ5q3y0=; b=v7lTEe0/UwchJT
-	Y9kogdLHdDZtyNig0tfXjkUmuizNNka9NfjBUsy5xSc2wHtofqwtjsT2T9UJ6/KLo9tBfKPntj41g
-	jTGHCTT4L7zDkL/eLSAzHCoz/NuxDKr9gywcyNc2e0Iz1WMqBm70aY2Lh1MowbNewVHN1tq0PBeR1
-	IduOZL7EijJL8rcDGTtmDbJ/2W4cCa67HsmJI8lx3dfYccmv73gFmWUiacDNlOIwR7QhG81b21Z6F
-	T8UbsNf0R3osAdhZdfUfWZu7liZJDT0poksKpfyX5xM559TYaVJxHiGin3IWCb3WLtOU1KrCSivJg
-	fI4MKJagAOLOKp6C4SDg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=h1d/nfTcndioGU9tForC3YyycIkSnYuZvwqgmhyRm60=; b=IckryZU9UCNyrZ
+	5vfMl7e10i585oj/p331FAsZy8q38S9/96iTOAv60zfqX6XZ7i6bG/cCHsJ/5K2GiZd+bsoBDvqrZ
+	Mt8bfr0RgRHLsxksdAa+UUGt+rovqteBfzVAkeknfGng/ViW9wUyS9u+cXSLgyqshphd0dvUKto4q
+	5jo357mzoim8aRkcACvchVoKCeQ46fcohHV2uEopnoPLQn1+NEaDEV+zlQelnemicTd4SvTJ+iKaj
+	H+g9kQ9Uu2FQwzUfex68pL24gmnxW2B5z+h6Z2q5no3j5hrNGzsoWLa9Hcnx2WnYN82ISD5gkFuYA
+	8Ix6PKdRNj1wwEyk96bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNQJN-002zyc-F2; Fri, 25 Feb 2022 02:26:25 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nNRHD-0036Cx-6v; Fri, 25 Feb 2022 03:28:15 +0000
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNQJK-002zxc-TZ; Fri, 25 Feb 2022 02:26:24 +0000
-X-UUID: 51382687bb7145ffa00812867c4e80db-20220224
-X-UUID: 51382687bb7145ffa00812867c4e80db-20220224
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1062652313; Thu, 24 Feb 2022 19:22:08 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Feb 2022 18:18:35 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 25 Feb 2022 10:18:34 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 25 Feb 2022 10:18:34 +0800
-Message-ID: <e492c0d538c229d633e44ebca4f025256f0aaf66.camel@mediatek.com>
-Subject: Re: [3/3] drm/mediatek: keep dsi as LP00 before dcs cmds transfer
-From: CK Hu <ck.hu@mediatek.com>
-To: <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
- <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <matthias.bgg@gmail.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <rex-bc.chen@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jitao Shi
- <jitao.shi@mediatek.com>
-Date: Fri, 25 Feb 2022 10:18:34 +0800
-In-Reply-To: <1644589818-13066-4-git-send-email-xinlei.lee@mediatek.com>
-References: <1644589818-13066-1-git-send-email-xinlei.lee@mediatek.com>
- <1644589818-13066-4-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nNRH1-0036A8-DW
+ for linux-mediatek@lists.infradead.org; Fri, 25 Feb 2022 03:28:04 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id c1so3455055pgk.11
+ for <linux-mediatek@lists.infradead.org>; Thu, 24 Feb 2022 19:28:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=lZMKM13WOXr0Cj+JFI693E2RT8tiGsgNHY8tIWC/7wA=;
+ b=NlEBER48+BAv+pYpPTx0rfeKZ1GwncJgF+xLdGTwRe3mDhFs5KsTN6WYQcXYUt6VPG
+ wuhKmKVgs7OG3yHA6LjqWJRNXaplIMBeQWsy/oPEeF4+zBTqs9sltsPPY9QPCKZOXXON
+ 661cGzrUtj/uEV0VytoAeEu/9v/3lQcw4b/jo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=lZMKM13WOXr0Cj+JFI693E2RT8tiGsgNHY8tIWC/7wA=;
+ b=cPuoAP+ExYJJqftG6Q9HErjqw9DTueohYl8j1zTjjl61KwifEfxz2TqgKtTjqJkEsY
+ HLOo7Ls8+kLbvMMlAXl6ihTmeZcOLQt7UAS6hqHUKbQ7zVOuhK0Imp/5GGsgS+7b9+fr
+ oNl4Zt5r6g3CzvzfBljLa019B26OMKk9F19J+dUq2g9tNzEn50U3+tFpYRKLqyV6DGTP
+ h3OikviUK2GvT4SyLumUPwpMANOF21bGHYgdJMcoYWMSjCFYftZT6rKhxkzOXOKENL7k
+ nP2K3bn/ITAZlgAtCUQdf5osi4uHmwJ/UW2mKyfBgpX3IG3i+FYYp3F2Ew+5qjY2d5zZ
+ 6b/w==
+X-Gm-Message-State: AOAM5327rJAUcTU8E0j1MtE7HYxHkOCitqpdKaASRY9hOg5eqlf/jxqJ
+ V4rxDtuPq0BH/k3Yw8UsPW/mUA==
+X-Google-Smtp-Source: ABdhPJx+kHFiPrkhdZm5XLElk/g3benE49UUovXBtXArAuVbE2sKuAaWSgZHosRUd7JHRRrHV4UmWw==
+X-Received: by 2002:a65:6c0d:0:b0:364:ae2e:9708 with SMTP id
+ y13-20020a656c0d000000b00364ae2e9708mr4611904pgu.189.1645759679598; 
+ Thu, 24 Feb 2022 19:27:59 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com
+ ([2401:fa00:1:10:d786:892f:a6fa:6f0c])
+ by smtp.gmail.com with ESMTPSA id
+ q5-20020a056a00150500b004be09fd6ad6sm905097pfu.191.2022.02.24.19.27.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 24 Feb 2022 19:27:59 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] drm/mediatek: Fix DPI component detection for MT8192
+Date: Fri, 25 Feb 2022 11:27:54 +0800
+Message-Id: <20220225032754.140168-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.35.1.574.g5d30c73bfb-goog
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220224_182622_970348_46A6A870 
-X-CRM114-Status: GOOD (  19.58  )
+X-CRM114-CacheID: sfid-20220224_192803_481675_35B8A0BF 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,112 +88,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Xinlei:
+When support for MT8192 was added, the DPI device was not added to the
+list of components to look for. This causes the secondary display
+pipeline to not be able to fully bind, and the DRM driver subsequently
+defers probing.
 
-On Fri, 2022-02-11 at 22:30 +0800, xinlei.lee@mediatek.com wrote:
-> From: Jitao Shi <jitao.shi@mediatek.com>
-> 
-> To comply with the panel sequence, hold the mipi signal to LP00
-> before the dcs cmds transmission, 
-> and pull the mipi signal high from LP00 to LP11 until the start of
-> the dcs cmds transmission.
-> If dsi is not in cmd mode, then dsi will pull the mipi signal high in
-> the mtk_output_dsi_enable function.
-> 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 32 +++++++++++++++++++++++++---
-> ----
->  1 file changed, 25 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index e47c338..17a5270 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -203,6 +203,7 @@ struct mtk_dsi {
->  	struct mtk_phy_timing phy_timing;
->  	int refcount;
->  	bool enabled;
-> +	bool lanes_ready;
->  	u32 irq_data;
->  	wait_queue_head_t irq_wait_queue;
->  	const struct mtk_dsi_driver_data *driver_data;
-> @@ -654,13 +655,6 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
->  	mtk_dsi_config_vdo_timing(dsi);
->  	mtk_dsi_set_interrupt_enable(dsi);
->  
-> -	mtk_dsi_rxtx_control(dsi);
-> -	usleep_range(30, 100);
-> -	mtk_dsi_reset_dphy(dsi);
-> -	mtk_dsi_clk_ulp_mode_leave(dsi);
-> -	mtk_dsi_lane0_ulp_mode_leave(dsi);
-> -	mtk_dsi_clk_hs_mode(dsi, 0);
-> -
->  	return 0;
->  err_disable_engine_clk:
->  	clk_disable_unprepare(dsi->engine_clk);
-> @@ -682,6 +676,8 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
->  	mtk_dsi_reset_engine(dsi);
->  	mtk_dsi_lane0_ulp_mode_enter(dsi);
->  	mtk_dsi_clk_ulp_mode_enter(dsi);
-> +	/* set the lane number as 0 */
-> +	writel(0, dsi->regs + DSI_TXRX_CTRL);
+Add the DPI device compatible to list of DPI components to fix this.
 
-If this is not related to 'sequence', separate this to another patch.
+Fixes: 01365f549c88 ("drm/mediatek: Add support for Mediatek SoC MT8192")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Regards,
-CK
-
->  
->  	mtk_dsi_disable(dsi);
->  
-> @@ -689,6 +685,8 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
->  	clk_disable_unprepare(dsi->digital_clk);
->  
->  	phy_power_off(dsi->phy);
-> +
-> +	dsi->lanes_ready = false;
->  }
->  
->  static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
-> @@ -696,6 +694,16 @@ static void mtk_output_dsi_enable(struct mtk_dsi
-> *dsi)
->  	if (dsi->enabled)
->  		return;
->  
-> +	if (!dsi->lanes_ready) {
-> +		dsi->lanes_ready = true;
-> +		mtk_dsi_rxtx_control(dsi);
-> +		usleep_range(30, 100);
-> +		mtk_dsi_reset_dphy(dsi);
-> +		mtk_dsi_clk_ulp_mode_leave(dsi);
-> +		mtk_dsi_lane0_ulp_mode_leave(dsi);
-> +		mtk_dsi_clk_hs_mode(dsi, 0);
-> +	}
-> +
->  	mtk_dsi_set_mode(dsi);
->  	mtk_dsi_clk_hs_mode(dsi, 1);
->  
-> @@ -907,6 +915,16 @@ static ssize_t mtk_dsi_host_transfer(struct
-> mipi_dsi_host *host,
->  	if (MTK_DSI_HOST_IS_READ(msg->type))
->  		irq_flag |= LPRX_RD_RDY_INT_FLAG;
->  
-> +	if (!dsi->lanes_ready) {
-> +		dsi->lanes_ready = true;
-> +		mtk_dsi_rxtx_control(dsi);
-> +		usleep_range(30, 100);
-> +		mtk_dsi_reset_dphy(dsi);
-> +		mtk_dsi_clk_ulp_mode_leave(dsi);
-> +		mtk_dsi_lane0_ulp_mode_leave(dsi);
-> +		mtk_dsi_clk_hs_mode(dsi, 0);
-> +		msleep(20);
-> +	}
->  	if (mtk_dsi_host_send_cmd(dsi, msg, irq_flag) < 0)
->  		return -ETIME;
->  
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index b147797177c6..47ba18cbc5c8 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -511,6 +511,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DPI },
+ 	{ .compatible = "mediatek,mt8183-dpi",
+ 	  .data = (void *)MTK_DPI },
++	{ .compatible = "mediatek,mt8192-dpi",
++	  .data = (void *)MTK_DPI },
+ 	{ .compatible = "mediatek,mt2701-dsi",
+ 	  .data = (void *)MTK_DSI },
+ 	{ .compatible = "mediatek,mt8173-dsi",
+-- 
+2.35.1.574.g5d30c73bfb-goog
 
 
 _______________________________________________
