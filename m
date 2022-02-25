@@ -4,80 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3DCDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 19:36:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1033C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Feb 2022 20:38:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ztO5OPzNaLP7lGWABxGHY4KGRuV9/+ZC8I2ryJkA4Os=; b=hBqmGpCDy6t9mo
-	7zIxMV1hDPVybJXvqh3LpR1YCaiHjU7ubF3ofBZFmAeq0E5k1ZPzvNAmCt3wbCaqNMwyFQcOjkpS6
-	F7BjYMSt3b0nRRdLpBj59GoBfwnqj5040BmcB/gQPzydqG6tCIidkljphaOxTpNxTiX7R4N45M9Wb
-	dc2uYxunmKtc/xM5ZziSQ3zd1ikUAX+oNYqb/JTJv/nXhsV0dBJw8m6NjMSwiL1n/bXRMK5nBPk5l
-	HWjM0MxDJ/qvD0/qn+NjGWY3oqe/yu5/8ETXIUDNX6JZuJWq8cOq6OaRhEu8VzRhWMaEvp3tdir/7
-	xdkq8De89pfveij8XAUQ==;
+	List-Owner; bh=YA1g5Ax6xB6c7XBvfIaynAhbuEbXHLTis2605rZuqug=; b=cjVX+xESLbNr28
+	X5SatgBEOeAPsEQRw8T2g474Y8j+fhVINmChWnS0kkl0fmzEJIwHG9TPKCcquBnKvDPuIdh9ubrod
+	LX5rkKYuAg5sCEWCjQJmYyamiV51b2cUhkPN5TodXSPJAQp4KlSEx4fRSo6/ryetipMVd2H/Q+6BL
+	bQLkIqX+ti90rVRUhD5ANGcnrXYg1mo2nGkOjuo5Cj2Fh+NIktEEFgywEVbU+9SDD/uJIMNfUnNVR
+	dm67niFgJT7o2y43IPQQkP6rtpMvmuDr+DTJNWdcfXmo8nOVQwu2MmZv3hG/581F9LcxYiTEMb2S8
+	8sGS7DkS8CFKDVU7zc1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNgNt-006q12-7w; Fri, 25 Feb 2022 19:36:09 +0000
-Received: from mail-oo1-f52.google.com ([209.85.161.52])
+	id 1nNhMG-006vWC-Np; Fri, 25 Feb 2022 20:38:32 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNgNM-006plX-KE; Fri, 25 Feb 2022 19:35:39 +0000
-Received: by mail-oo1-f52.google.com with SMTP id
- w10-20020a4ae08a000000b0031bdf7a6d76so7585186oos.10; 
- Fri, 25 Feb 2022 11:35:36 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=89L85cYit20bkFsWPwAmB3tmEEHx1GMuglloEs9LbG8=;
- b=YoBOQP/uqFnpxA/sOJdDDlB+dwMBXvA6QRAXo8QQPdbJFz94JLminRR6v3ksd5daUG
- JtDih1N56ESSqYQxywT8lGJLRWdsSw7OVqa5Aa9cjQXhY/SwIQMmBYxufvvEXAPIXETJ
- mrYMLR94fD7L2lZYcUxJOSzSi8G7Hs5NmfZVJ69wYM6hMf57cuPlT97f1Mvl1c8Ty7Xf
- ieW0K8+0L0Q1JJQ5As+j8sK+hYOmQt026EpCa+Wz+oSeHzS/3/1aI6juc4Uf6cWZbFKZ
- lwel8g3iQzlzKnhuy2AONH4g4S7AI6plTALX2J8eqmqX0QGT8HLL9DRRp1FG8299LPbJ
- 1K4Q==
-X-Gm-Message-State: AOAM532eBBMTMLYio4npgmkQN2rvXSCSEQjjUNHexys2Hqq64W6gKWae
- +3/3bSV58bESkgRC5aDDAQ==
-X-Google-Smtp-Source: ABdhPJwTB3dMTBlwo5pHLDzpohHjFzoCrMqR0lPTutQ46f+OsP6T04QO8IFX4yubZI0OTunbKa3GwQ==
-X-Received: by 2002:a05:6870:ee0d:b0:ce:c0c9:64a with SMTP id
- ga13-20020a056870ee0d00b000cec0c9064amr2072910oab.156.1645817735262; 
- Fri, 25 Feb 2022 11:35:35 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213]) by smtp.gmail.com with ESMTPSA id
- j25-20020a4ad199000000b003171dfeb5bfsm1458351oor.15.2022.02.25.11.35.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Feb 2022 11:35:34 -0800 (PST)
-Received: (nullmailer pid 1301936 invoked by uid 1000);
- Fri, 25 Feb 2022 19:35:33 -0000
-Date: Fri, 25 Feb 2022 13:35:33 -0600
-From: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- Tero Kristo <kristo@kernel.org>, Jan Kotas <jank@cadence.com>,
- Avri Altman <avri.altman@wdc.com>, Vignesh Raghavendra <vigneshr@ti.com>,
- devicetree@vger.kernel.org, linux-scsi@vger.kernel.org,
- Stanley Chu <stanley.chu@mediatek.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Nishanth Menon <nm@ti.com>,
- Wei Xu <xuwei5@hisilicon.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>,
- linux-mediatek@lists.infradead.org, Alim Akhtar <alim.akhtar@samsung.com>,
- Andy Gross <agross@kernel.org>, linux-arm-msm@vger.kernel.org,
- Li Wei <liwei213@huawei.com>, Yaniv Gardi <ygardi@codeaurora.org>,
- linux-kernel@vger.kernel.org,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v2 08/15] dt-bindings: ufs: snps,tc-dwc-g210: convert to
- dtschema
-Message-ID: <YhkvhdFZXkVsteeq@robh.at.kernel.org>
-References: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
- <20220222145854.358646-9-krzysztof.kozlowski@canonical.com>
+ id 1nNhM5-006vUX-7o; Fri, 25 Feb 2022 20:38:22 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 59CCA1F46676
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1645821491;
+ bh=GRjW8l7YFs9I63NHiDMM0zXU7yqNHLmPi/NdZK9uZMQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Sgv6tAZCt63KpQGsQ6MjbY8+Eg0hjF3u8RZxljuhM7GeGlwnHTy/xFzLa7uXpOEh1
+ zaiqxJiOey9dOPHl56LaP/rLhtkXvZL8j8VaA1IklBT2PKiDhqUar57g2nHfZFZI0U
+ lzS+1qHP0IDOm74OMrYBvE7A3ZIteKH5Lgl2xdYASzinXu2WRL5VsmeE+WlQMUOEcT
+ dKAd1werFHy26nAbHbvlw7yjo1oFS1g92McSqdKABcAcI0PLuelxlCGHjZQyTi5sUK
+ GU3mQo6pYuVVrRz5k9wfKEu06r1y28nAqcyW6aeJdQrxLClFnIaEZS87sUp0UKqJ2i
+ vX5GeU9G/Mqtw==
+Date: Fri, 25 Feb 2022 15:38:05 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ --to=Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>
+Subject: Re: [PATCH v2 14/23] arm64: dts: mt8192: Add mipi_tx node
+Message-ID: <20220225203805.xv3sxwi6ucfp6zdq@notapiano>
+References: <20220218091633.9368-1-allen-kh.cheng@mediatek.com>
+ <20220218091633.9368-15-allen-kh.cheng@mediatek.com>
+ <20220222212658.xuau6t3xcvu7m4uz@notapiano>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220222145854.358646-9-krzysztof.kozlowski@canonical.com>
+In-Reply-To: <20220222212658.xuau6t3xcvu7m4uz@notapiano>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220225_113536_709241_09658024 
-X-CRM114-Status: GOOD (  10.15  )
+X-CRM114-CacheID: sfid-20220225_123821_440237_CC26416E 
+X-CRM114-Status: GOOD (  16.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,25 +68,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 22 Feb 2022 15:58:47 +0100, Krzysztof Kozlowski wrote:
-> Convert the Synopsys Universal Flash Storage (UFS) Controller to DT
-> schema format.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-> ---
->  .../bindings/ufs/snps,tc-dwc-g210.yaml        | 51 +++++++++++++++++++
->  .../bindings/ufs/tc-dwc-g210-pltfrm.txt       | 26 ----------
->  2 files changed, 51 insertions(+), 26 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/ufs/snps,tc-dwc-g210.yaml
->  delete mode 100644 Documentation/devicetree/bindings/ufs/tc-dwc-g210-pltfrm.txt
-> 
+On Tue, Feb 22, 2022 at 04:27:03PM -0500, N=EDcolas F. R. A. Prado wrote:
+> On Fri, Feb 18, 2022 at 05:16:24PM +0800, Allen-KH Cheng wrote:
+> > Add mipi_tx node for mt8192 SoC.
+> > =
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 10 ++++++++++
+> >  1 file changed, 10 insertions(+)
+> > =
+
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot=
+/dts/mediatek/mt8192.dtsi
+> > index cfc2db501108..f5e5af949f19 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > @@ -1114,6 +1114,16 @@
+> >  			};
+> >  		};
+> >  =
+
+> > +		mipi_tx0: mipi-dphy@11e50000 {
+> =
+
+> According to Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml,=
+ this
+> node's name should be dsi-phy, not mipi-dphy.
+> =
+
+> > +			compatible =3D "mediatek,mt8183-mipi-tx";
+> > +			reg =3D <0 0x11e50000 0 0x1000>;
+> > +			clocks =3D <&apmixedsys CLK_APMIXED_MIPID26M>;
+> > +			clock-names =3D "ref_clk";
+
+Also, this clock-names should be dropped [1].
+
+[1] https://lore.kernel.org/all/CAAOTY_84OF71QK6M5JT1M5YAFKED_xWVpx8B8t859O=
+sVxE0cfQ@mail.gmail.com/
+
+> > +			#clock-cells =3D <0>;
+> > +			#phy-cells =3D <0>;
+> > +			clock-output-names =3D "mipi_tx0_pll";
+> > +		};
+> > +
+> >  		i2c0: i2c@11f00000 {
+> >  			compatible =3D "mediatek,mt8192-i2c";
+> >  			reg =3D <0 0x11f00000 0 0x1000>,
+> > -- =
+
+> > 2.18.0
+> > =
+
+> > =
+
 
 _______________________________________________
 Linux-mediatek mailing list
