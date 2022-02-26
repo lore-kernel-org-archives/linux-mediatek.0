@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 519C0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Feb 2022 09:53:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1378BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Feb 2022 10:05:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/QozSVhU8TnyRrkUuvpGur7oDMpDn9Mr1xdIaE+bFZk=; b=COglG7YQE+TvH2
-	MCBVxYESRlL21o6tqi57Cd9SOHM9X9BWB41jcwdgaJgYJ+zbHH6AkMCjvIIP2RfQz6yZfOj0o6JFH
-	n1SYPwKsPCrnFVoWgewwfZ0DRfDDWX1eyur4MILUYhjdFfkpth0valk+QU1d7s5eQCSp8lmJQICY0
-	5cHsNbVQrnbUhnICZX5gQx4yx7CuHPwxNbY8ZYxR/JXedlexV3AbMzpg3P7myGYN7mraS0ItZHaLV
-	RFGDq+zznFmwVtDxxailSd/9nKnQiWnK2wZ+NbRneHtz3YzsMEHjUNHTr302EoIc5Cvfpw71tHexA
-	7jNPdgwAsaADSawuMqlA==;
+	List-Owner; bh=JLguAHS2YCX7r/txHCw1AsPvhAMBsIxU8/Jw+3VFwxk=; b=eWTgp9waA4WfBN
+	3V1KXoak9wEVwRb8hhmRTnvc8oF4KkDzXmYfyagPlF711+sSxARUacERtW+PJs6NGX/ituarhgbta
+	p61EYAcgAEz5j0gijCc8YubVwIuNXLnRkyt/H1CkbWr9SWuZYx14qt7PSQ8GA5iXl4MP+SRsM8sb/
+	XBJoDyzw86vlIB/9QsByaoGppwImPMKFz7rzbBO21ZDorH7POEfzSc7Pxy66/bCvEBiTcelGc48TM
+	MPKZnU3z7xS19R58Tt7oPUSLVMwLG0bQvEigSMTPw8I/on4yTWbnGPTUOwR+1b0lRAPUGfNMiIjMq
+	uE+TRLH5I326jUjlLysA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNtl7-007pie-HL; Sat, 26 Feb 2022 09:53:01 +0000
+	id 1nNtwx-007qw2-GF; Sat, 26 Feb 2022 10:05:15 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNtkr-007pfx-In; Sat, 26 Feb 2022 09:52:48 +0000
-X-UUID: 0a04290171ca4851a1912e7c300c0c84-20220226
-X-UUID: 0a04290171ca4851a1912e7c300c0c84-20220226
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1nNtwj-007qtg-Op; Sat, 26 Feb 2022 10:05:04 +0000
+X-UUID: 2b13d9e1cd8d49c7b0da699bbda8fd46-20220226
+X-UUID: 2b13d9e1cd8d49c7b0da699bbda8fd46-20220226
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <lecopzer.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1564484666; Sat, 26 Feb 2022 02:52:39 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 26 Feb 2022 01:52:37 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 26 Feb 2022 17:52:23 +0800
+ with ESMTP id 1877961646; Sat, 26 Feb 2022 03:04:55 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 26 Feb 2022 01:54:54 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 26 Feb 2022 17:54:52 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 26 Feb 2022 17:52:23 +0800
+ Frontend Transport; Sat, 26 Feb 2022 17:54:52 +0800
 From: Lecopzer Chen <lecopzer.chen@mediatek.com>
 To: <pmladek@suse.com>
 CC: <acme@kernel.org>, <akpm@linux-foundation.org>,
@@ -53,17 +53,17 @@ CC: <acme@kernel.org>, <akpm@linux-foundation.org>,
  <nixiaoming@huawei.com>, <peterz@infradead.org>,
  <sparclinux@vger.kernel.org>, <sumit.garg@linaro.org>, <wangqing@vivo.com>,
  <will@kernel.org>, <yj.chiang@mediatek.com>
-Subject: Re: [PATCH 1/5] kernel/watchdog: remove WATCHDOG_DEFAULT
-Date: Sat, 26 Feb 2022 17:52:23 +0800
-Message-ID: <20220226095223.15585-1-lecopzer.chen@mediatek.com>
+Subject: Re: [PATCH 2/5] kernel/watchdog: change watchdog_nmi_enable() to void
+Date: Sat, 26 Feb 2022 17:54:52 +0800
+Message-ID: <20220226095452.16924-1-lecopzer.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <YhjPyCl7Rjh6acQN@alley>
-References: <YhjPyCl7Rjh6acQN@alley>
+In-Reply-To: <YhjQnMZahzu1w2lj@alley>
+References: <YhjQnMZahzu1w2lj@alley>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220226_015245_652611_33E76433 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20220226_020501_843064_D6080560 
+X-CRM114-Status: GOOD (  14.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,26 +80,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> On Sat 2022-02-12 18:43:45, Lecopzer Chen wrote:
-> > No reference to WATCHDOG_DEFAULT, remove it.
-> 
-> It would be enough to mention the link to the previous
-> version in the cover letter.
-
-Thanks, I'll tweak the commit message in next version patch.
-
-> 
-> > this commit reworks from [1].
+> On Sat 2022-02-12 18:43:46, Lecopzer Chen wrote:
 > > 
-> > [1] https://lore.kernel.org/lkml/20211014024155.15253-2-kernelfans@gmail.com/
-> > Signed-off-by: Pingfan Liu <kernelfans@gmail.com>
-> > Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+> > Nobody cares about the return value of watchdog_nmi_enable(),
+> > changing its prototype to void.
+> > 
+> > --- a/arch/sparc/kernel/nmi.c
+> > +++ b/arch/sparc/kernel/nmi.c
+> > @@ -282,11 +282,11 @@ __setup("nmi_watchdog=", setup_nmi_watchdog);
+> >   * sparc specific NMI watchdog enable function.
+> >   * Enables watchdog if it is not enabled already.
+> >   */
+> > -int watchdog_nmi_enable(unsigned int cpu)
+> > +void watchdog_nmi_enable(unsigned int cpu)
+> >  {
+> >  	if (atomic_read(&nmi_active) == -1) {
+> >  		pr_warn("NMI watchdog cannot be enabled or disabled\n");
+> > -		return -1;
+> > +		return;
+> >  	}
+> >  
+> >  	/*
+> > @@ -295,11 +295,11 @@ int watchdog_nmi_enable(unsigned int cpu)
+> >  	 * process first.
+> >  	 */
+> >  	if (!nmi_init_done)
+> > -		return 0;
+> > +		return;
+> >  
+> >  	smp_call_function_single(cpu, start_nmi_watchdog, NULL, 1);
+> >  
+> > -	return 0;
+> > +	return;
+> 
+> Return at the end of the function is superfluous.
+
+Thanks, I'll fix in the next patch.
+
+> 
+> >  }
+> >  /*
+> >   * sparc specific NMI watchdog disable function.
+> 
+> Otherwise, it looks good.
 > 
 > Reviewed-by: Petr Mladek <pmladek@suse.com>
-
-
-BRs,
-Lecopzer
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
