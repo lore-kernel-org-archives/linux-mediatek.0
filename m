@@ -4,103 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98D68C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Feb 2022 10:24:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EAC5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Feb 2022 16:48:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uCD7Xd2zaqm/TPiNrfE16a0/uvuE9zBuS+YvyBVXAdQ=; b=FBgEV7FvsQzMDS
-	Y7Ays6LyX5lmMzr6QtQh640/N9OBqpPkgongaQdeAH9uV2MdTBuYSxICvGkTfFiRx35AxkiElviQw
-	gD8vj04rmLw9S/2IonZfS8ez06G3+Q2zYkGqZKEpe607PsPxfV0hHuMLwCBGm+KfdIlaggvZ5qBQM
-	+jxrMa3sbUvOaMF+R4aw7pEgLPubTuXjwUxc4/Eg8Uqc9BwlXYX2pSb4T3PCZgV4reseF/elZYggm
-	ZlB1xuSOZDeFpFQwwA1IEdyD97u695DuZrOoIg6xN0NnnpjHyte+E0egng2Cq6r73mhdzoIEX3BOV
-	wL7ZoucmTjTy+p1JfLeQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Wv04eccdHOHnBh7WcD4Q1WNKeHow3qSAizRTwxRvGYU=; b=Qgc7m2u8v9ZxAN
+	f2tGs3TNvuH0CKO1beZcZS6mhJWi9X6TOzS3slLDhX6o97FmwMot0ojSeINGjhymdpWAElLNMUPLM
+	cghBAyk56Lm7rtF4tzWjLpQr6NumTN2XYp6DK1gre5/dA59n/OEKCVXp+nH0G4tIEZchXsIb7JUk/
+	GqxBzybm3j3/L0/0OkQbepxcHqvJwmjTaEB+dnk7cLSbF2D8kVQEE2EVKuSvN3IdnIzmIRD+BSeMs
+	K46rHlASXDjgRbT726RE4tMvRN9oFshbn4K5KaP55fwIE0KYNsTBB3yqL7jbvIPSbEXVioZXTNWCa
+	AAICzmlRynX/2JiQQfJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOGjA-00930C-Jq; Sun, 27 Feb 2022 10:24:32 +0000
-Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
+	id 1nOMiK-009oYg-B4; Sun, 27 Feb 2022 16:48:04 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOGj5-0092zF-KF
- for linux-mediatek@lists.infradead.org; Sun, 27 Feb 2022 10:24:29 +0000
-Received: from mail-lj1-f199.google.com (mail-lj1-f199.google.com
- [209.85.208.199])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 749593F33A
- for <linux-mediatek@lists.infradead.org>; Sun, 27 Feb 2022 10:24:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1645957466;
- bh=gFalKRe8JlGPelOo/R9VR3IL4dqyePAFZHwDnlwRlEk=;
- h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
- In-Reply-To:Content-Type;
- b=EuFZ0vkaAKB/9qRIc3eZwgPijY2VALOQRfvnCI72KMCq8FNEI6DVHbpH23tHKbwm4
- 1aLPmH4pr3OBlEg7T4B7dHlxXiIrTyNes1+6D4NaLMkEEHak1dZ8MwHGJbJj8LfRtP
- +IyQCuMel2lpAsOkSMKOlPooJkuABgLg5oqSwMtFIHs4gZvWFXK4pUdIKBe/RhmGlD
- IRChFvrY8rQslpglNkwM7AvlFCrQirGwpSj4T6/cfbnedFeULFyhEvIMBNmgAv8gMo
- akT2bM5z9C8w6XDmgm0bn6cLaSYxN/BoiFxJSAseT7miee8e5QYWYX9LAcFfhtPjYW
- 1mEEZfSzsjotw==
-Received: by mail-lj1-f199.google.com with SMTP id
- n9-20020a2e82c9000000b002435af2e8b9so4322175ljh.20
- for <linux-mediatek@lists.infradead.org>; Sun, 27 Feb 2022 02:24:26 -0800 (PST)
+ id 1nOMeW-009muw-7E
+ for linux-mediatek@lists.infradead.org; Sun, 27 Feb 2022 16:44:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1645980245;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=V5Y+mhXtEe4aHWk4DE77nNDoAlUo3znM4yBU3KLbx5o=;
+ b=PtoP22aLZkHm+9erZ0TpBKv6ojexO/LGxEzAEPDnayrtV9fLK7417UQwBe4oLqnCIQxr/B
+ SRIZs1xTNDinaSCc5+WBTXLcgRizrccfItrPE49vqMEWLFuu6FwaDl0nT9H7dy+TFf8jzs
+ Y0mrAAAai0dJ+wdBDfov+L1qG3NxVVE=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-325-YirKLO4OM9GaXRag9VIw4Q-1; Sun, 27 Feb 2022 11:44:04 -0500
+X-MC-Unique: YirKLO4OM9GaXRag9VIw4Q-1
+Received: by mail-qk1-f197.google.com with SMTP id
+ i10-20020a05620a144a00b00648d4fa059dso9629979qkl.0
+ for <linux-mediatek@lists.infradead.org>; Sun, 27 Feb 2022 08:44:04 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=gFalKRe8JlGPelOo/R9VR3IL4dqyePAFZHwDnlwRlEk=;
- b=rqWEcRuR7hiwmmx5aKeLZrri68NP2LWUk5z1HdHX/ot30ToRwlgfQyZW29MOXhLfgy
- hEz5WzGv52E5NlWmLQnEwOt+CRNmh96ioqvruBwTpnfLL4gwg8FSfpvMS60B/OUVxOPF
- f6F2yuNkb26gA25heexA2AoBDEY/xTrmHiGUQ1jR5tMbdejaHeQc7qtCA4EpR8no2Ndz
- B+nFsSFkOVPKZty6VBWtRSlA1z4Jc/8yRBerz4+NawpjWWfqkP18Sb/E74m5ceqDOFhQ
- FNmxmApmZ8w4jBYGnmL/JOv9wpuE1fktvljHJ9q9oSbEztCEzLOn7QsrsI5RtrjNx8pp
- Hg5g==
-X-Gm-Message-State: AOAM531GukQ8U+0Waq2F6kROFRX4GzOtWvCrqI/V6B000ElTJFJ54EKg
- HyzR268LaM04A9pF/QVZvQfE3d37r5Xq+XpMjDfwtg8uqqZk8Dq3TyfTN+IOnsZPmxEpSiBNAmm
- CxPaPR/51/huEa5P2bGezn+CiPs4q6vNElnjSsPXHvhG0ZBBteQ==
-X-Received: by 2002:a17:906:d968:b0:6d0:fc05:bdc3 with SMTP id
- rp8-20020a170906d96800b006d0fc05bdc3mr11342177ejb.719.1645957455579; 
- Sun, 27 Feb 2022 02:24:15 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwl3Y8M/TgNxwE3/0YwpdpPk65xBu71Ro8HLF5s9NgyHBBUg649P8bP26tAeg/OT/XsQvSm8w==
-X-Received: by 2002:a17:906:d968:b0:6d0:fc05:bdc3 with SMTP id
- rp8-20020a170906d96800b006d0fc05bdc3mr11342141ejb.719.1645957455350; 
- Sun, 27 Feb 2022 02:24:15 -0800 (PST)
-Received: from [192.168.0.133] (xdsl-188-155-181-108.adslplus.ch.
- [188.155.181.108]) by smtp.gmail.com with ESMTPSA id
- el9-20020a170907284900b006cf8e3c83e3sm3243768ejc.168.2022.02.27.02.24.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 27 Feb 2022 02:24:14 -0800 (PST)
-Message-ID: <8ba5fb1b-2b5f-e625-0dbe-2acc3b6656e7@canonical.com>
-Date: Sun, 27 Feb 2022 11:24:13 +0100
+ bh=V5Y+mhXtEe4aHWk4DE77nNDoAlUo3znM4yBU3KLbx5o=;
+ b=huyGcbJZj+QV0Rd2hf6FhXaBc8ITMjtg94P9DakZnD2kWiPQE8dc84lKe7qZecPzP1
+ HiuERQM9kWPKZIOXwgauWTkxAb2oRs/RBDC13qTjXjPIm/1uTrQDMwNEqrFhulvEX/0N
+ c6jTj/kvhxiF0FuCrRTGSFsm3a9ESndahUmdTTfzY7XHVg8NagjSfe1Wz6i8L9jx9sCi
+ +s5czSM/WhE0W5G7b2fnkWMqlc4F1HmtPAvdwYqYZUHIKxQvyDTONYtQ8R2ZkLI0KpMo
+ DOErg9ZoeqzyYbEMiNLBQVVvTiI9It3hHnXCF4jYULbIyidNRhy4mPFbbHBDZBKfTWvX
+ BxLA==
+X-Gm-Message-State: AOAM532gbTL6oSjx+I9LmjxChY2x+1PofEJQrsCTT2FBdD/4Jk1+8dBB
+ dCmFN1YwbrjPhkKAaqihpD/SGXL1/w6JfRWhkvRExeiBhwxz/lAIM9mc+RhDJ0CA29V65BG2wua
+ Sb8ajsL2EfflczHY9C3jsU3iyYbOHuQJb
+X-Received: by 2002:a05:620a:1fc:b0:60d:d438:d628 with SMTP id
+ x28-20020a05620a01fc00b0060dd438d628mr9489743qkn.388.1645980242784; 
+ Sun, 27 Feb 2022 08:44:02 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxmEEmzM5eDcwZIwdUdPIYKMl5r3tEeMsKZSwUZGmeUMBHmHQtSkJ2w3iQrxB7UtVNBvR5apQ==
+X-Received: by 2002:a05:620a:1fc:b0:60d:d438:d628 with SMTP id
+ x28-20020a05620a01fc00b0060dd438d628mr9489721qkn.388.1645980242555; 
+ Sun, 27 Feb 2022 08:44:02 -0800 (PST)
+Received: from localhost.localdomain.com (024-205-208-113.res.spectrum.com.
+ [24.205.208.113]) by smtp.gmail.com with ESMTPSA id
+ w140-20020a376292000000b00648e88c1f05sm4010675qkb.67.2022.02.27.08.44.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 27 Feb 2022 08:44:02 -0800 (PST)
+From: trix@redhat.com
+To: jic23@kernel.org, lars@metafoo.de, matthias.bgg@gmail.com,
+ nathan@kernel.org, ndesaulniers@google.com, linus.walleij@linaro.org,
+ ardeleanalex@gmail.com
+Cc: linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ llvm@lists.linux.dev, Tom Rix <trix@redhat.com>
+Subject: [PATCH] iio: adc: mt6360: strengthen return check of
+ mt6360_adc_read_channel
+Date: Sun, 27 Feb 2022 08:43:57 -0800
+Message-Id: <20220227164357.84742-1-trix@redhat.com>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v2 01/15] dt-bindings: ufs: add common platform bindings
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>, 
- Andy Gross <agross@kernel.org>, Bjorn Andersson
- <bjorn.andersson@linaro.org>, Wei Xu <xuwei5@hisilicon.com>,
- Nishanth Menon <nm@ti.com>, Vignesh Raghavendra <vigneshr@ti.com>,
- Tero Kristo <kristo@kernel.org>, "James E.J. Bottomley"
- <jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
- Jan Kotas <jank@cadence.com>, Li Wei <liwei213@huawei.com>,
- Stanley Chu <stanley.chu@mediatek.com>, Yaniv Gardi <ygardi@codeaurora.org>,
- linux-scsi@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
- <20220222145854.358646-2-krzysztof.kozlowski@canonical.com>
- <YhktWpoJekR2Lj0D@robh.at.kernel.org>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-In-Reply-To: <YhktWpoJekR2Lj0D@robh.at.kernel.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=trix@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220227_022427_813702_92097819 
-X-CRM114-Status: GOOD (  16.48  )
+X-CRM114-CacheID: sfid-20220227_084408_525467_873D0298 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,31 +104,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/02/2022 20:26, Rob Herring wrote:
-> On Tue, Feb 22, 2022 at 03:58:40PM +0100, Krzysztof Kozlowski wrote:
->> Add bindings for common parts (platform) of Universal Flash Storage
->> (UFS) Host Controllers in dtschema format.
->>
->> The 'freq-table-hz' is not correct in dtschema, because '-hz' suffix
->> defines uint32 type, not an array.  Therefore deprecate 'freq-table-hz'
->> and use 'freq-table' instead.
-> 
-> -hz is an array type. We can extend it to matrix if needed.
-> 
-> I do think this property is a bit questionable. Do we really need a 
-> minimum in DT and if not, wouldn't assigned-clocks-rate work? Or an OPP 
-> table.
-> 
+From: Tom Rix <trix@redhat.com>
 
-I think the proper solution is OPP table, see also comments from Bjorn:
-https://lore.kernel.org/all/YhUodbzxx4wbr+gy@ripper/
+Clang static analysis reports this issue
+mt6360-adc.c:277:20: warning: Assigned value is
+  garbage or undefined
+  data.values[i++] = val;
+                   ^ ~~~
 
-I would rather refrain from converting it to OPP tables, because I won't
-be able to test any changes in the driver.
+val is set by a successful call to m6360_adc_read_channel().
+A negative return is checked but within m6360_adc_read_channel,
+a non zero check is done.
+Strengthen the check to non zero.
 
+Signed-off-by: Tom Rix <trix@redhat.com>
+---
+ drivers/iio/adc/mt6360-adc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Best regards,
-Krzysztof
+diff --git a/drivers/iio/adc/mt6360-adc.c b/drivers/iio/adc/mt6360-adc.c
+index 07c0e67683910..9fb6dc305a392 100644
+--- a/drivers/iio/adc/mt6360-adc.c
++++ b/drivers/iio/adc/mt6360-adc.c
+@@ -269,7 +269,7 @@ static irqreturn_t mt6360_adc_trigger_handler(int irq, void *p)
+ 	memset(&data, 0, sizeof(data));
+ 	for_each_set_bit(bit, indio_dev->active_scan_mask, indio_dev->masklength) {
+ 		ret = mt6360_adc_read_channel(mad, bit, &val);
+-		if (ret < 0) {
++		if (ret) {
+ 			dev_warn(&indio_dev->dev, "Failed to get channel %d conversion val\n", bit);
+ 			goto out;
+ 		}
+-- 
+2.26.3
+
 
 _______________________________________________
 Linux-mediatek mailing list
