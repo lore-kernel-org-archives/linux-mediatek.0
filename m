@@ -4,58 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFAC9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Feb 2022 04:03:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98D68C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Feb 2022 10:24:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qrkDOoIbazOWSE+13+xmfyFu0dh5i7anmU8mQv6etUQ=; b=28dyluCsbswNGG
-	pI+eJGKPwkZKH8LqU/kzdtLIkDRl5+83ts5vuI/K/kzvcIX/dUNBNcducpmPOznZvGh5oB/j7GW67
-	eTMlBaeE6c+UzmglIZDVETWQr3IlapctwD3uzNvpOhfpjKi8FVne7zzkqzgldRiH47yCq3jIw0V1E
-	kxfUgv/PEEYPvCIBO0H8xadFeMSIYK7VRVLSfC9uCEJOQXlZwCR1aULkTAni6xbKOolkvHdhzDF+P
-	W5D4nUfCoe+gQx1BMrYd4ecsJmMA5pqb2Jc0Cl1Y1Fb/3R1e39rgWeCyuybk9pypMIvijbobEGWhJ
-	VTmxXmT43sk4LfjQnguw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uCD7Xd2zaqm/TPiNrfE16a0/uvuE9zBuS+YvyBVXAdQ=; b=FBgEV7FvsQzMDS
+	Y7Ays6LyX5lmMzr6QtQh640/N9OBqpPkgongaQdeAH9uV2MdTBuYSxICvGkTfFiRx35AxkiElviQw
+	gD8vj04rmLw9S/2IonZfS8ez06G3+Q2zYkGqZKEpe607PsPxfV0hHuMLwCBGm+KfdIlaggvZ5qBQM
+	+jxrMa3sbUvOaMF+R4aw7pEgLPubTuXjwUxc4/Eg8Uqc9BwlXYX2pSb4T3PCZgV4reseF/elZYggm
+	ZlB1xuSOZDeFpFQwwA1IEdyD97u695DuZrOoIg6xN0NnnpjHyte+E0egng2Cq6r73mhdzoIEX3BOV
+	wL7ZoucmTjTy+p1JfLeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOAmA-008q1e-8i; Sun, 27 Feb 2022 04:03:14 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nOGjA-00930C-Jq; Sun, 27 Feb 2022 10:24:32 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOAm7-008q1J-HI
- for linux-mediatek@lists.infradead.org; Sun, 27 Feb 2022 04:03:13 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ id 1nOGj5-0092zF-KF
+ for linux-mediatek@lists.infradead.org; Sun, 27 Feb 2022 10:24:29 +0000
+Received: from mail-lj1-f199.google.com (mail-lj1-f199.google.com
+ [209.85.208.199])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 0D6A1611F1;
- Sun, 27 Feb 2022 04:03:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CDEF7C340E9;
- Sun, 27 Feb 2022 04:03:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1645934590;
- bh=rmTOIdLXnxrduKcao1dMovx6h1XzyescCNxEZG4qyko=;
- h=From:To:Cc:Subject:Date:From;
- b=QZhfRs4jJNiMrrZ+zZ72wx9YJIy/drL3Vkx0IG0KNp7sX9xp/QeehHXHQrBMMiQjH
- 9QY1WhEhkFAEx+2a9OyyST62NNhieGM670RIawU7xOE4FbUWxC4gT41WzDWNWICJcr
- eshRupQx2qaxq2Me9ndTmSusZmm0IA6ON0RQl19CE0p7xnhvpxl43gx1CX0+7fiz4B
- 3Pb616UGRsU5pwocn5SDV6DVNn9wQbXlhAswvKUMsWOxMn4rHYF7GFyscLh0jUDHET
- LgnV5lvkj0cFKzmYhg7D5tRMDX+Mj101gD1DqJ2ds9DGa2JSo0RMODE/KGEy6cjx0/
- gXDgM25xF45hA==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: "Nancy . Lin" <nancy.lin@mediatek.com>,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- Julien STEPHAN <jstephan@baylibre.com>
-Subject: [GIT PULL] mediatek drm next for 5.18
-Date: Sun, 27 Feb 2022 12:03:03 +0800
-Message-Id: <1645934583-2018-1-git-send-email-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.7.4
+ by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 749593F33A
+ for <linux-mediatek@lists.infradead.org>; Sun, 27 Feb 2022 10:24:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1645957466;
+ bh=gFalKRe8JlGPelOo/R9VR3IL4dqyePAFZHwDnlwRlEk=;
+ h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+ In-Reply-To:Content-Type;
+ b=EuFZ0vkaAKB/9qRIc3eZwgPijY2VALOQRfvnCI72KMCq8FNEI6DVHbpH23tHKbwm4
+ 1aLPmH4pr3OBlEg7T4B7dHlxXiIrTyNes1+6D4NaLMkEEHak1dZ8MwHGJbJj8LfRtP
+ +IyQCuMel2lpAsOkSMKOlPooJkuABgLg5oqSwMtFIHs4gZvWFXK4pUdIKBe/RhmGlD
+ IRChFvrY8rQslpglNkwM7AvlFCrQirGwpSj4T6/cfbnedFeULFyhEvIMBNmgAv8gMo
+ akT2bM5z9C8w6XDmgm0bn6cLaSYxN/BoiFxJSAseT7miee8e5QYWYX9LAcFfhtPjYW
+ 1mEEZfSzsjotw==
+Received: by mail-lj1-f199.google.com with SMTP id
+ n9-20020a2e82c9000000b002435af2e8b9so4322175ljh.20
+ for <linux-mediatek@lists.infradead.org>; Sun, 27 Feb 2022 02:24:26 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=gFalKRe8JlGPelOo/R9VR3IL4dqyePAFZHwDnlwRlEk=;
+ b=rqWEcRuR7hiwmmx5aKeLZrri68NP2LWUk5z1HdHX/ot30ToRwlgfQyZW29MOXhLfgy
+ hEz5WzGv52E5NlWmLQnEwOt+CRNmh96ioqvruBwTpnfLL4gwg8FSfpvMS60B/OUVxOPF
+ f6F2yuNkb26gA25heexA2AoBDEY/xTrmHiGUQ1jR5tMbdejaHeQc7qtCA4EpR8no2Ndz
+ B+nFsSFkOVPKZty6VBWtRSlA1z4Jc/8yRBerz4+NawpjWWfqkP18Sb/E74m5ceqDOFhQ
+ FNmxmApmZ8w4jBYGnmL/JOv9wpuE1fktvljHJ9q9oSbEztCEzLOn7QsrsI5RtrjNx8pp
+ Hg5g==
+X-Gm-Message-State: AOAM531GukQ8U+0Waq2F6kROFRX4GzOtWvCrqI/V6B000ElTJFJ54EKg
+ HyzR268LaM04A9pF/QVZvQfE3d37r5Xq+XpMjDfwtg8uqqZk8Dq3TyfTN+IOnsZPmxEpSiBNAmm
+ CxPaPR/51/huEa5P2bGezn+CiPs4q6vNElnjSsPXHvhG0ZBBteQ==
+X-Received: by 2002:a17:906:d968:b0:6d0:fc05:bdc3 with SMTP id
+ rp8-20020a170906d96800b006d0fc05bdc3mr11342177ejb.719.1645957455579; 
+ Sun, 27 Feb 2022 02:24:15 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwl3Y8M/TgNxwE3/0YwpdpPk65xBu71Ro8HLF5s9NgyHBBUg649P8bP26tAeg/OT/XsQvSm8w==
+X-Received: by 2002:a17:906:d968:b0:6d0:fc05:bdc3 with SMTP id
+ rp8-20020a170906d96800b006d0fc05bdc3mr11342141ejb.719.1645957455350; 
+ Sun, 27 Feb 2022 02:24:15 -0800 (PST)
+Received: from [192.168.0.133] (xdsl-188-155-181-108.adslplus.ch.
+ [188.155.181.108]) by smtp.gmail.com with ESMTPSA id
+ el9-20020a170907284900b006cf8e3c83e3sm3243768ejc.168.2022.02.27.02.24.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 27 Feb 2022 02:24:14 -0800 (PST)
+Message-ID: <8ba5fb1b-2b5f-e625-0dbe-2acc3b6656e7@canonical.com>
+Date: Sun, 27 Feb 2022 11:24:13 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v2 01/15] dt-bindings: ufs: add common platform bindings
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>
+Cc: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>, 
+ Andy Gross <agross@kernel.org>, Bjorn Andersson
+ <bjorn.andersson@linaro.org>, Wei Xu <xuwei5@hisilicon.com>,
+ Nishanth Menon <nm@ti.com>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Tero Kristo <kristo@kernel.org>, "James E.J. Bottomley"
+ <jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Jan Kotas <jank@cadence.com>, Li Wei <liwei213@huawei.com>,
+ Stanley Chu <stanley.chu@mediatek.com>, Yaniv Gardi <ygardi@codeaurora.org>,
+ linux-scsi@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20220222145854.358646-1-krzysztof.kozlowski@canonical.com>
+ <20220222145854.358646-2-krzysztof.kozlowski@canonical.com>
+ <YhktWpoJekR2Lj0D@robh.at.kernel.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+In-Reply-To: <YhktWpoJekR2Lj0D@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220226_200311_699142_07CA56DD 
-X-CRM114-Status: UNSURE (   9.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220227_022427_813702_92097819 
+X-CRM114-Status: GOOD (  16.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,98 +112,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Daniel:
+On 25/02/2022 20:26, Rob Herring wrote:
+> On Tue, Feb 22, 2022 at 03:58:40PM +0100, Krzysztof Kozlowski wrote:
+>> Add bindings for common parts (platform) of Universal Flash Storage
+>> (UFS) Host Controllers in dtschema format.
+>>
+>> The 'freq-table-hz' is not correct in dtschema, because '-hz' suffix
+>> defines uint32 type, not an array.  Therefore deprecate 'freq-table-hz'
+>> and use 'freq-table' instead.
+> 
+> -hz is an array type. We can extend it to matrix if needed.
+> 
+> I do think this property is a bit questionable. Do we really need a 
+> minimum in DT and if not, wouldn't assigned-clocks-rate work? Or an OPP 
+> table.
+> 
 
-This includes:
+I think the proper solution is OPP table, see also comments from Bjorn:
+https://lore.kernel.org/all/YhUodbzxx4wbr+gy@ripper/
 
-1. Transfer display binding document to yaml format.
-2. Add mt8195 display device binding.
-3. Allow commands to be sent during video mode.
-4. Add wait_for_event for crtc disable by cmdq.
+I would rather refrain from converting it to OPP tables, because I won't
+be able to test any changes in the driver.
 
-Regards,
-Chun-Kuang.
 
-The following changes since commit e783362eb54cd99b2cac8b3a9aeac942e6f6ac07:
-
-  Linux 5.17-rc1 (2022-01-23 10:12:53 +0200)
-
-are available in the git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-5.18
-
-for you to fetch changes up to aa2d5f2f168c8b380d4e94a32149cef16ed60efc:
-
-  drm/mediatek: Add wait_for_event for crtc disable by cmdq (2022-02-27 11:19:07 +0800)
-
-----------------------------------------------------------------
-Mediatek DRM Next for Linux 5.18
-
-1. Transfer display binding document to yaml format.
-2. Add mt8195 display device binding.
-3. Allow commands to be sent during video mode.
-4. Add wait_for_event for crtc disable by cmdq.
-
-----------------------------------------------------------------
-Julien STEPHAN (1):
-      drm/mediatek: Allow commands to be sent during video mode
-
-Nancy.Lin (2):
-      dt-bindings: display: mediatek: add vdosys1 MERGE property for mt8195
-      dt-bindings: display: mediatek: add ethdr definition for mt8195
-
-jason-jh.lin (5):
-      dt-bindings: display: mediatek: disp: split each block to individual yaml
-      dt-bindings: display: mediatek: dsc: add yaml for mt8195 SoC binding
-      dt-bindings: display: mediatek: merge: add additional prop for mt8195
-      dt-bindings: display: mediatek: add mt8195 SoC binding for vdosys0
-      drm/mediatek: Add wait_for_event for crtc disable by cmdq
-
- .../bindings/display/mediatek/mediatek,aal.yaml    |  77 ++++++++
- .../bindings/display/mediatek/mediatek,ccorr.yaml  |  76 +++++++
- .../bindings/display/mediatek/mediatek,color.yaml  |  86 ++++++++
- .../bindings/display/mediatek/mediatek,disp.txt    | 219 ---------------------
- .../bindings/display/mediatek/mediatek,dither.yaml |  76 +++++++
- .../bindings/display/mediatek/mediatek,dsc.yaml    |  71 +++++++
- .../bindings/display/mediatek/mediatek,ethdr.yaml  | 147 ++++++++++++++
- .../bindings/display/mediatek/mediatek,gamma.yaml  |  77 ++++++++
- .../bindings/display/mediatek/mediatek,merge.yaml  | 110 +++++++++++
- .../bindings/display/mediatek/mediatek,mutex.yaml  |  83 ++++++++
- .../bindings/display/mediatek/mediatek,od.yaml     |  53 +++++
- .../bindings/display/mediatek/mediatek,ovl-2l.yaml |  88 +++++++++
- .../bindings/display/mediatek/mediatek,ovl.yaml    | 103 ++++++++++
- .../display/mediatek/mediatek,postmask.yaml        |  69 +++++++
- .../bindings/display/mediatek/mediatek,rdma.yaml   | 117 +++++++++++
- .../bindings/display/mediatek/mediatek,split.yaml  |  58 ++++++
- .../bindings/display/mediatek/mediatek,ufoe.yaml   |  61 ++++++
- .../bindings/display/mediatek/mediatek,wdma.yaml   |  86 ++++++++
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c            |  12 ++
- drivers/gpu/drm/mediatek/mtk_dsi.c                 |  33 +++-
- 20 files changed, 1474 insertions(+), 228 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
- delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
