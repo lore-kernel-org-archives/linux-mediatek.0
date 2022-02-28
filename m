@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13F94C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 08:18:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6E93C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 08:19:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w4z2Y7mSebFClw3LKfDmpgnX/CPAwqNJxnAQ8tEDX2w=; b=RkcHWaXDFVb/s9
-	gQa7DD1CdxtGX0XsrFwfNCfO53ZPvbttVJxsUV6A42yMl1iAQAXj8URx5p6xi5Ipgbzvj6ObYY6dW
-	38UCvB3XzcP/WwxQWOab3I8nC7rjO2+gRY3rUGyOhWgMpm8czpstaMW4VHc13MXDBhZN9JpTxYNN9
-	IVJRDhzSAmQyYt76h2Yk5VFz1Yb3CG1K2ajbVLyTdju34dSWBwSJ9znSK1P4rzDDZpGPmsz3euZxy
-	bP/IEWcC5E0yN0k+mbavI4xQA+22P73PWoQ0mgTJ/OnKKGme+xMMaJ0+kVQ89ciZQsS6utI0G3ejo
-	/mswG34ptja8+C58hVtg==;
+	List-Owner; bh=0Bb13kUBjWSHn3S9McKrC3ODDxXqosm62oq4lCZBfkc=; b=Tz0Omne2P8inEG
+	/BghGvrmZCzZtjNpjXbQtFA6h8Kdof3roRSzV4/XrMrds0dl4kf8amsLwQsayvz6M88dBBVx3w03A
+	4yVgipupNVtiigAuaEsLTKDh1kqJZIyrj9Bk7BFntCCzAL3w78FKMPR52/w+55q0UvaU90LVxeIlB
+	+g68tSppuB3nfIp0wqL+2c79NoeyAkDyiWJP43fdyuB7L1c4uT682f45OaKRMPr3IPdP7IRfUIACK
+	C5nJSriRckjV68CCFYWvcq2MV5lPkOtjIWYN3aR3UBUer2tZ3SSkA0T4+qjDNyFiLIpAFvZ8Kamd4
+	v2OzLCSVXdTqFOqNmcRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nObEA-00B62Y-5a; Mon, 28 Feb 2022 08:17:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nObFb-00B6Yq-Nn; Mon, 28 Feb 2022 08:19:23 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nObDn-00B5xU-2z; Mon, 28 Feb 2022 08:17:36 +0000
-X-UUID: 49ca711012324df186271f20565d9b27-20220228
+ id 1nObFN-00B6T7-Kt; Mon, 28 Feb 2022 08:19:11 +0000
+X-UUID: a47cf863e9af4eb9ae396949b484c888-20220228
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=OjoHF+1ss9moLBoqg3PRdagQTFqetJOYdRf/E8Njpkk=; 
- b=pDwwWvkLJq6FLvpEWtiI+RJoc9LTuTkfESNowSHv1KtXmVAb3zGp/UsknC/v0/VpryLSwiFpn6Xr1Rbymln3Hc3ARacU9RBqkKNOaARJCpVPuqYUxgrWukJ+jFjjhfmj/RliCx2z8faw+RsYteh+3MOSs2umk4lX3yMzn2B8IBg=;
-X-UUID: 49ca711012324df186271f20565d9b27-20220228
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=dvPiIkxN6c/d7PMqIyiVU4aXrv15HmHT/skcW3Bilgs=; 
+ b=RbwgbPyWAp4N9XpbaEnnp0xUaA0akWSMo7Itv+MWAkAvH8TTaZ2VgbrR5Iol3wjepqmGY6XMlj5iWQZbcsCMVXycMSvRcdgFhYjCoX3CXWzAWXwzEjLipCDfKQCLLpxL6ggoDnSlHT3EQwyaz4tvR++T0VFW85qhjK1azJuksFs=;
+X-UUID: a47cf863e9af4eb9ae396949b484c888-20220228
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1771595540; Mon, 28 Feb 2022 01:17:25 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 2135868082; Mon, 28 Feb 2022 01:19:04 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 28 Feb 2022 00:17:23 -0800
+ 15.0.1497.2; Mon, 28 Feb 2022 00:19:02 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 28 Feb 2022 16:17:21 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 28 Feb 2022 16:19:01 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 28 Feb 2022 16:17:21 +0800
-Message-ID: <087a41fd768eb9fcac7e475c1e8c84590ad0b6b4.camel@mediatek.com>
-Subject: Re: [PATCH] dt-bindings: usb: mtk-xhci: add compatible for mt8186
+ Transport; Mon, 28 Feb 2022 16:19:00 +0800
+Message-ID: <d072b376ef5eb5d14cbcf35e342dd359d532bd23.camel@mediatek.com>
+Subject: Re: [PATCH v2] usb: host: xhci-mtk: Simplify supplies handling with
+ regulator_bulk
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, "Greg
- Kroah-Hartman" <gregkh@linuxfoundation.org>
-CC: Min Guo <Min.Guo@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Hsin-Yi Wang" <hsinyi@google.com>
-Date: Mon, 28 Feb 2022 16:17:21 +0800
-In-Reply-To: <20220216120025.29860-1-allen-kh.cheng@mediatek.com>
-References: <20220216120025.29860-1-allen-kh.cheng@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <mathias.nyman@intel.com>, <gregkh@linuxfoundation.org>,
+ <matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <kernel@collabora.com>
+Date: Mon, 28 Feb 2022 16:19:00 +0800
+In-Reply-To: <20220214111905.77903-1-angelogioacchino.delregno@collabora.com>
+References: <20220214111905.77903-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_001732_571442_ADAEB8E5 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20220228_001909_716627_D286DA52 
+X-CRM114-Status: GOOD (  20.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,32 +79,154 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-02-16 at 20:00 +0800, Allen-KH Cheng wrote:
-> Add compatible for mt8186
+On Mon, 2022-02-14 at 12:19 +0100, AngeloGioacchino Del Regno wrote:
+> Remove the custom functions xhci_mtk_ldos_{enable,disable}() by
+> switching to using regulator_bulk to perform the very same thing,
+> as the regulators are always either both enabled or both disabled.
 > 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Signed-off-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
 > ---
->  Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml | 1 +
->  1 file changed, 1 insertion(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-
-> xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-
-> xhci.yaml
-> index 11f7bacd4e2b..6d9c3bad1d10 100644
-> --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> @@ -30,6 +30,7 @@ properties:
->            - mediatek,mt7629-xhci
->            - mediatek,mt8173-xhci
->            - mediatek,mt8183-xhci
-> +          - mediatek,mt8186-xhci
->            - mediatek,mt8192-xhci
->            - mediatek,mt8195-xhci
->        - const: mediatek,mtk-xhci
+> v2: Change dynamic vregs array to static definition with new
+> xhci_mtk_vregs_get()
+>     helper as requested by Chunfeng
+> 
+>  drivers/usb/host/xhci-mtk.c | 44 ++++++++++-------------------------
+> --
+>  drivers/usb/host/xhci-mtk.h |  5 +++--
+>  2 files changed, 14 insertions(+), 35 deletions(-)
+> 
+> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-
+> mtk.c
+> index e25bad0894cf..b89b4f159a4d 100644
+> --- a/drivers/usb/host/xhci-mtk.c
+> +++ b/drivers/usb/host/xhci-mtk.c
+> @@ -401,29 +401,14 @@ static int xhci_mtk_clks_get(struct
+> xhci_hcd_mtk *mtk)
+>  	return devm_clk_bulk_get_optional(mtk->dev, BULK_CLKS_NUM,
+> clks);
+>  }
+>  
+> -static int xhci_mtk_ldos_enable(struct xhci_hcd_mtk *mtk)
+> +static int xhci_mtk_vregs_get(struct xhci_hcd_mtk *mtk)
+>  {
+> -	int ret;
+> +	struct regulator_bulk_data *supplies = mtk->supplies;
+>  
+> -	ret = regulator_enable(mtk->vbus);
+> -	if (ret) {
+> -		dev_err(mtk->dev, "failed to enable vbus\n");
+> -		return ret;
+> -	}
+> -
+> -	ret = regulator_enable(mtk->vusb33);
+> -	if (ret) {
+> -		dev_err(mtk->dev, "failed to enable vusb33\n");
+> -		regulator_disable(mtk->vbus);
+> -		return ret;
+> -	}
+> -	return 0;
+> -}
+> +	supplies[0].supply = "vbus";
+> +	supplies[1].supply = "vusb33";
+>  
+> -static void xhci_mtk_ldos_disable(struct xhci_hcd_mtk *mtk)
+> -{
+> -	regulator_disable(mtk->vbus);
+> -	regulator_disable(mtk->vusb33);
+> +	return devm_regulator_bulk_get(mtk->dev, BULK_VREGS_NUM,
+> supplies);
+>  }
+>  
+>  static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd
+> *xhci)
+> @@ -513,17 +498,10 @@ static int xhci_mtk_probe(struct
+> platform_device *pdev)
+>  		return -ENOMEM;
+>  
+>  	mtk->dev = dev;
+> -	mtk->vbus = devm_regulator_get(dev, "vbus");
+> -	if (IS_ERR(mtk->vbus)) {
+> -		dev_err(dev, "fail to get vbus\n");
+> -		return PTR_ERR(mtk->vbus);
+> -	}
+>  
+> -	mtk->vusb33 = devm_regulator_get(dev, "vusb33");
+> -	if (IS_ERR(mtk->vusb33)) {
+> -		dev_err(dev, "fail to get vusb33\n");
+> -		return PTR_ERR(mtk->vusb33);
+> -	}
+> +	ret = xhci_mtk_vregs_get(mtk);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to get
+> regulators\n");
+>  
+>  	ret = xhci_mtk_clks_get(mtk);
+>  	if (ret)
+> @@ -564,7 +542,7 @@ static int xhci_mtk_probe(struct platform_device
+> *pdev)
+>  	pm_runtime_enable(dev);
+>  	pm_runtime_get_sync(dev);
+>  
+> -	ret = xhci_mtk_ldos_enable(mtk);
+> +	ret = regulator_bulk_enable(BULK_VREGS_NUM, mtk->supplies);
+>  	if (ret)
+>  		goto disable_pm;
+>  
+> @@ -673,7 +651,7 @@ static int xhci_mtk_probe(struct platform_device
+> *pdev)
+>  	clk_bulk_disable_unprepare(BULK_CLKS_NUM, mtk->clks);
+>  
+>  disable_ldos:
+> -	xhci_mtk_ldos_disable(mtk);
+> +	regulator_bulk_disable(BULK_VREGS_NUM, mtk->supplies);
+>  
+>  disable_pm:
+>  	pm_runtime_put_noidle(dev);
+> @@ -701,7 +679,7 @@ static int xhci_mtk_remove(struct platform_device
+> *pdev)
+>  	usb_put_hcd(hcd);
+>  	xhci_mtk_sch_exit(mtk);
+>  	clk_bulk_disable_unprepare(BULK_CLKS_NUM, mtk->clks);
+> -	xhci_mtk_ldos_disable(mtk);
+> +	regulator_bulk_disable(BULK_VREGS_NUM, mtk->supplies);
+>  
+>  	pm_runtime_disable(dev);
+>  	pm_runtime_put_noidle(dev);
+> diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-
+> mtk.h
+> index 4b1ea89f959a..ffd4b493b4ba 100644
+> --- a/drivers/usb/host/xhci-mtk.h
+> +++ b/drivers/usb/host/xhci-mtk.h
+> @@ -11,10 +11,12 @@
+>  
+>  #include <linux/clk.h>
+>  #include <linux/hashtable.h>
+> +#include <linux/regulator/consumer.h>
+>  
+>  #include "xhci.h"
+>  
+>  #define BULK_CLKS_NUM	5
+> +#define BULK_VREGS_NUM	2
+>  
+>  /* support at most 64 ep, use 32 size hash table */
+>  #define SCH_EP_HASH_BITS	5
+> @@ -150,9 +152,8 @@ struct xhci_hcd_mtk {
+>  	int num_u3_ports;
+>  	int u2p_dis_msk;
+>  	int u3p_dis_msk;
+> -	struct regulator *vusb33;
+> -	struct regulator *vbus;
+>  	struct clk_bulk_data clks[BULK_CLKS_NUM];
+> +	struct regulator_bulk_data supplies[BULK_VREGS_NUM];
+>  	unsigned int has_ippc:1;
+>  	unsigned int lpm_support:1;
+>  	unsigned int u2_lpm_disable:1;
 
 Acked-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
-Thanks
+Thanks a lot
 
 _______________________________________________
 Linux-mediatek mailing list
