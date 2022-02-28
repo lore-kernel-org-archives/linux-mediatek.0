@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D842C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 20:10:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B81F3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 20:11:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tfUE0+8wyxiwCsQStwjldCfWgGu7dAvFpK7C9sCP1Xs=; b=4abM3cGQRSfILt
-	mKBG3YFsOqFJhz4OJOKwrGYyy+oNOUk8Yk74NMjF2UXvkEAZuqOWTe/O+ivKBZ0cLU622Q6nhZpXi
-	sWcaK3X8apWX/H5r8Py8La1f5HGn3p2iNklhIrXbMasmbO+aNylk7ZISzX98jG1j7jEAmihUSpNB9
-	UwKt+SptYrMIPO5/cCi9y/aU3U6SY+MtgZ0zyr7nhWX2luoxOG41nG1Pt05AUJ04FuGsrNpyULCnw
-	E9OixWdBhc8kCBQrDU4RjBLBR+dyV+M1Y8ui1G3mFmDZQdYsLmiymALWO/coZzYR4lkUO4KifGCRl
-	iLposNJyac0s54dmxhvA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=btpNKmYCsBl1mOpgupj31/P/6/JeQZtZ4de5D8rmeF0=; b=sSU+Te0/1LgaOnvQdO8d5X116o
+	BbGg+NAriVrBxojeTNzrEHbmHtLPgNhzeKLdOc+oAp7/WIoBW3ELwtgwfsWFyCy8wPwBroL6gRo0P
+	FTuwA9yF7/aH5gB0euRtCs5PP92elfP1gP8mI10dKItVqzOr4eFCCONTmWN1HXE/Zz2XyGW5e+ghL
+	/cTUWPlHO2IhCC+fnWCBAoeAQczgbC3SXILn0V7CS9bajQ0k7LBHIgKMuSWPaoJEQCk8FOWbRGztf
+	iXlB296TQ8dmr5VMvWaK7YNvM9prmvfv7XhpqoB+UY2pK755mm9DAt4lyBT5VuoctIFKcXapS6vbv
+	Xze0ZcTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOmM8-00Dy8B-Db; Mon, 28 Feb 2022 20:10:52 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1nOmMG-00DyBA-LZ; Mon, 28 Feb 2022 20:11:00 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOmM5-00Dy6K-C1
- for linux-mediatek@lists.infradead.org; Mon, 28 Feb 2022 20:10:50 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id bg10so27161891ejb.4
- for <linux-mediatek@lists.infradead.org>; Mon, 28 Feb 2022 12:10:48 -0800 (PST)
+ id 1nOmMD-00Dy9d-R2
+ for linux-mediatek@lists.infradead.org; Mon, 28 Feb 2022 20:10:59 +0000
+Received: by mail-ej1-x636.google.com with SMTP id r13so27153887ejd.5
+ for <linux-mediatek@lists.infradead.org>; Mon, 28 Feb 2022 12:10:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=linux-foundation.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uod9R4vPcpqIjzHofeC96qXcIXUlGW+U5alvKq7K0ZA=;
- b=Y+K+LAchMzIcesbCiqrzhisJgvbUIKYh3oFG/AlZJTKul1K9rRfHylHsN/EgM8hdwz
- P3hABFpC0Wcw+/0V4cKR5X0P787Wy9QwMeL5ORY50P9+oNZqmMp6NkFq4yV6NAIkP79C
- 0bvk8ZnwfFSPqzKfD7Qqea+fs2YLRTaNcLanw=
+ :cc; bh=LeZ8UzRXrDw4d1M4BG6ctt9COK0EF5j9qtOsLWtMfJg=;
+ b=Jhdls+DdmLi+4DWS7o2GehQ/Yg8vWPth9HxY0ymuDsFhiEF5hlRLzgd1PV4wJ4dLVJ
+ JdRWd6PhVxu3cPtesSY0XREEgjw/sVhI1zgx2ECNJUHRlykk7MmbqhfMtkifVM/LmgYS
+ 6chNfwYqW0eu75y5MSRY9nnHOEZnFkvhMXNYc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=uod9R4vPcpqIjzHofeC96qXcIXUlGW+U5alvKq7K0ZA=;
- b=6/k5+wzQIKFd3k1qWUMMjRVqq+oll20pfaTlyWAha4/EirH3TI3FQlq45ykweM/s4b
- SHg1naG3YVCH1GLwoVSdW0OW3AunBg3aAv+hyGxUVVLqhTZiba5dAxZzEsawpbxlreq+
- O+Gz7yaN1s07hSkaxZxBHDG23gxGTPs6Sr3QEaVweso3tYiM2lkk0W8WPYM+PJJ2w4iv
- Tz5Jg9wRMW2rUxzmhF5Yr8+xgKiM+8QK1LI16LIrlowZpwMIP4dK9lETBPIZoCwl7MNE
- wsM+l5wXbqmQJq0Aqgc5JFQLnm6NAwyoOJ95gGgc1p8A4kTj+ttv2LzQ2N3GARUB3kvK
- +g+g==
-X-Gm-Message-State: AOAM533eepExT3Fzwxsvgx8y3PCtkR/6Q2v3XP1v28EIcig3B3Nz8ll2
- yRb3a1jTk+eg/mH9mWzX6+OYDenzKD4U3Cm5rnQ=
-X-Google-Smtp-Source: ABdhPJy8JNV6058u8hTkJlR2k+lfAaD7U1Im1rQ6mWMjrYAt5wSiCP3xLYsIUsNT8Al539hin3Q9dA==
-X-Received: by 2002:a17:906:2ac9:b0:6ce:dc0f:9139 with SMTP id
- m9-20020a1709062ac900b006cedc0f9139mr16692534eje.206.1646079047273; 
- Mon, 28 Feb 2022 12:10:47 -0800 (PST)
-Received: from mail-ed1-f44.google.com (mail-ed1-f44.google.com.
- [209.85.208.44]) by smtp.gmail.com with ESMTPSA id
- wc7-20020a170907124700b006cd01963298sm4605114ejb.212.2022.02.28.12.10.47
+ bh=LeZ8UzRXrDw4d1M4BG6ctt9COK0EF5j9qtOsLWtMfJg=;
+ b=y+FUWCBKXJZhYvQsmLmNxlOHf5TsriUFz7x3nJMsnUPYjVXMpBoNnReeufEEmDd9g2
+ 2uOOKyuMgds8uBxTRd0Ke5IgvGwVCWLCB1pUcz33EitlJt9lQLmrVU0dTsqI4VrWGr8J
+ TPXi+Zkw7hPSH8WtrKxOqdl4+5eIZACXGSVfNTE6S0SDpI7k2eP/NxZddEv2rzjmw8Q5
+ HTGkI6IvEOPaPmlLkOafA37BZt2B3tIemzOl7fMQ96+wN/YBNomkBB2RoBtsX/IEHOzq
+ ZjzE50ttxKNRufdz4i7z+IN//9h/kfkDskDWMICQlhxhXNDfRa0B7sso2+CGCJzzYsvS
+ 5GPg==
+X-Gm-Message-State: AOAM531nkItrsCLUZTxlxu5Ff0ysa9LUCoiq/zCslP7jjkdkW6WjV9RE
+ vXoniQvfnifkMZ/ydfxFf2UNCEoeyGhfPrK1o9w=
+X-Google-Smtp-Source: ABdhPJzbJVZ2QuyijhQ2IB110pJufFodJqTJTa5X/zStOn9eyHsb5bPodfGLpWa51NyP8iZHy2jX/g==
+X-Received: by 2002:a17:906:1193:b0:6cf:cf06:3f7d with SMTP id
+ n19-20020a170906119300b006cfcf063f7dmr16424569eja.177.1646079056414; 
+ Mon, 28 Feb 2022 12:10:56 -0800 (PST)
+Received: from mail-ed1-f53.google.com (mail-ed1-f53.google.com.
+ [209.85.208.53]) by smtp.gmail.com with ESMTPSA id
+ s14-20020aa7cb0e000000b00410bf015567sm6196538edt.92.2022.02.28.12.10.52
  for <linux-mediatek@lists.infradead.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Feb 2022 12:10:47 -0800 (PST)
-Received: by mail-ed1-f44.google.com with SMTP id g20so19194947edw.6
- for <linux-mediatek@lists.infradead.org>; Mon, 28 Feb 2022 12:10:47 -0800 (PST)
-X-Received: by 2002:ac2:44a4:0:b0:445:8fc5:a12a with SMTP id
- c4-20020ac244a4000000b004458fc5a12amr7653619lfm.27.1646078630855; Mon, 28 Feb
- 2022 12:03:50 -0800 (PST)
+ Mon, 28 Feb 2022 12:10:54 -0800 (PST)
+Received: by mail-ed1-f53.google.com with SMTP id cm8so19214598edb.3
+ for <linux-mediatek@lists.infradead.org>; Mon, 28 Feb 2022 12:10:52 -0800 (PST)
+X-Received: by 2002:ac2:4d91:0:b0:443:127b:558a with SMTP id
+ g17-20020ac24d91000000b00443127b558amr14027806lfe.542.1646079041191; Mon, 28
+ Feb 2022 12:10:41 -0800 (PST)
 MIME-Version: 1.0
 References: <20220228110822.491923-1-jakobkoschel@gmail.com>
  <20220228110822.491923-3-jakobkoschel@gmail.com>
  <2e4e95d6-f6c9-a188-e1cd-b1eae465562a@amd.com>
  <CAHk-=wgQps58DPEOe4y5cTh5oE9EdNTWRLXzgMiETc+mFX7jzw@mail.gmail.com>
-In-Reply-To: <CAHk-=wgQps58DPEOe4y5cTh5oE9EdNTWRLXzgMiETc+mFX7jzw@mail.gmail.com>
+ <CAHk-=wj8fkosQ7=bps5K+DDazBXk=ypfn49A0sEq+7-nZnyfXA@mail.gmail.com>
+In-Reply-To: <CAHk-=wj8fkosQ7=bps5K+DDazBXk=ypfn49A0sEq+7-nZnyfXA@mail.gmail.com>
 From: Linus Torvalds <torvalds@linux-foundation.org>
-Date: Mon, 28 Feb 2022 12:03:34 -0800
-X-Gmail-Original-Message-ID: <CAHk-=wj8fkosQ7=bps5K+DDazBXk=ypfn49A0sEq+7-nZnyfXA@mail.gmail.com>
-Message-ID: <CAHk-=wj8fkosQ7=bps5K+DDazBXk=ypfn49A0sEq+7-nZnyfXA@mail.gmail.com>
+Date: Mon, 28 Feb 2022 12:10:24 -0800
+X-Gmail-Original-Message-ID: <CAHk-=wiTCvLQkHcJ3y0hpqH7FEk9D28LDvZZogC6OVLk7naBww@mail.gmail.com>
+Message-ID: <CAHk-=wiTCvLQkHcJ3y0hpqH7FEk9D28LDvZZogC6OVLk7naBww@mail.gmail.com>
 Subject: Re: [PATCH 2/6] treewide: remove using list iterator after loop body
  as a ptr
 To: =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
@@ -112,9 +113,10 @@ Cc: Jakob Koschel <jakobkoschel@gmail.com>, alsa-devel@alsa-project.org,
  dma <dmaengine@vger.kernel.org>, 
  linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>, 
  linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, Mike Rapoport <rppt@kernel.org>
+Content-Type: multipart/mixed; boundary="0000000000008601b205d919a4ad"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_121049_423392_6439A560 
-X-CRM114-Status: GOOD (  13.79  )
+X-CRM114-CacheID: sfid-20220228_121057_892134_47969F4A 
+X-CRM114-Status: GOOD (  18.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,44 +128,91 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 28, 2022 at 11:56 AM Linus Torvalds
+--0000000000008601b205d919a4ad
+Content-Type: text/plain; charset="UTF-8"
+
+On Mon, Feb 28, 2022 at 12:03 PM Linus Torvalds
 <torvalds@linux-foundation.org> wrote:
 >
-> I do wish we could actually poison the 'pos' value after the loop
-> somehow - but clearly the "might be uninitialized" I was hoping for
-> isn't the way to do it.
+> Side note: we do need *some* way to do it.
 
-Side note: we do need *some* way to do it.
+Ooh.
 
-Because if we make that change, and only set it to another pointer
-when not the head, then we very much change the semantics of
-"list_for_each_head()". The "list was empty" case would now exit with
-'pos' not set at all (or set to NULL if we add that). Or it would be
-set to the last entry.
+This patch is a work of art.
 
-And regardless, that means that all the
+And I mean that in the worst possible way.
 
-        if (pos == head)
+We can do
 
-kinds of checks after the loop would be fundamentally broken.
+        typeof(pos) pos
 
-Darn. I really hoped for (and naively expected) that we could actually
-have the compiler warn about the use-after-loop case. That whole
-"compiler will now complain about bad use" was integral to my clever
-plan to use the C99 feature of declaring the iterator inside the loop.
+in the 'for ()' loop, and never use __iter at all.
 
-But my "clever plan" was apparently some ACME-level Wile E. Coyote sh*t.
+That means that inside the for-loop, we use a _different_ 'pos' than outside.
 
-Darn.
+And then the compiler will not see some "might be uninitialized", but
+the outer 'pos' *will* be uninitialized.
 
-                   Linus
+Unless, of course, the outer 'pos' had that pointless explicit initializer.
+
+Here - can somebody poke holes in this "work of art" patch?
+
+                     Linus
+
+--0000000000008601b205d919a4ad
+Content-Type: text/x-patch; charset="US-ASCII"; name="patch.diff"
+Content-Disposition: attachment; filename="patch.diff"
+Content-Transfer-Encoding: base64
+Content-ID: <f_l074y7ca0>
+X-Attachment-Id: f_l074y7ca0
+
+IE1ha2VmaWxlICAgICAgICAgICAgICAgICAgICAgICB8IDIgKy0KIGFyY2gveDg2L2tlcm5lbC9j
+cHUvc2d4L2VuY2wuYyB8IDIgKy0KIGluY2x1ZGUvbGludXgvbGlzdC5oICAgICAgICAgICB8IDYg
+KysrLS0tCiAzIGZpbGVzIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlvbnMoLSkK
+CmRpZmYgLS1naXQgYS9NYWtlZmlsZSBiL01ha2VmaWxlCmluZGV4IGRhZWI1Yzg4YjUwYi4uY2M0
+YjBhMjY2YWYwIDEwMDY0NAotLS0gYS9NYWtlZmlsZQorKysgYi9NYWtlZmlsZQpAQCAtNTE1LDcg
+KzUxNSw3IEBAIEtCVUlMRF9DRkxBR1MgICA6PSAtV2FsbCAtV3VuZGVmIC1XZXJyb3I9c3RyaWN0
+LXByb3RvdHlwZXMgLVduby10cmlncmFwaHMgXAogCQkgICAtZm5vLXN0cmljdC1hbGlhc2luZyAt
+Zm5vLWNvbW1vbiAtZnNob3J0LXdjaGFyIC1mbm8tUElFIFwKIAkJICAgLVdlcnJvcj1pbXBsaWNp
+dC1mdW5jdGlvbi1kZWNsYXJhdGlvbiAtV2Vycm9yPWltcGxpY2l0LWludCBcCiAJCSAgIC1XZXJy
+b3I9cmV0dXJuLXR5cGUgLVduby1mb3JtYXQtc2VjdXJpdHkgXAotCQkgICAtc3RkPWdudTg5CisJ
+CSAgIC1zdGQ9Z251MTEKIEtCVUlMRF9DUFBGTEFHUyA6PSAtRF9fS0VSTkVMX18KIEtCVUlMRF9B
+RkxBR1NfS0VSTkVMIDo9CiBLQlVJTERfQ0ZMQUdTX0tFUk5FTCA6PQpkaWZmIC0tZ2l0IGEvYXJj
+aC94ODYva2VybmVsL2NwdS9zZ3gvZW5jbC5jIGIvYXJjaC94ODYva2VybmVsL2NwdS9zZ3gvZW5j
+bC5jCmluZGV4IDQ4YWZlOTZhZTBmMC4uODdkYjJmMzkzNmIwIDEwMDY0NAotLS0gYS9hcmNoL3g4
+Ni9rZXJuZWwvY3B1L3NneC9lbmNsLmMKKysrIGIvYXJjaC94ODYva2VybmVsL2NwdS9zZ3gvZW5j
+bC5jCkBAIC00NTAsNyArNDUwLDcgQEAgc3RhdGljIHZvaWQgc2d4X21tdV9ub3RpZmllcl9yZWxl
+YXNlKHN0cnVjdCBtbXVfbm90aWZpZXIgKm1uLAogCQkJCSAgICAgc3RydWN0IG1tX3N0cnVjdCAq
+bW0pCiB7CiAJc3RydWN0IHNneF9lbmNsX21tICplbmNsX21tID0gY29udGFpbmVyX29mKG1uLCBz
+dHJ1Y3Qgc2d4X2VuY2xfbW0sIG1tdV9ub3RpZmllcik7Ci0Jc3RydWN0IHNneF9lbmNsX21tICp0
+bXAgPSBOVUxMOworCXN0cnVjdCBzZ3hfZW5jbF9tbSAqdG1wOwogCiAJLyoKIAkgKiBUaGUgZW5j
+bGF2ZSBpdHNlbGYgY2FuIHJlbW92ZSBlbmNsX21tLiAgTm90ZSwgb2JqZWN0cyBjYW4ndCBiZSBt
+b3ZlZApkaWZmIC0tZ2l0IGEvaW5jbHVkZS9saW51eC9saXN0LmggYi9pbmNsdWRlL2xpbnV4L2xp
+c3QuaAppbmRleCBkZDZjMjA0MWQwOWMuLjcwODA3OGIyZjI0ZCAxMDA2NDQKLS0tIGEvaW5jbHVk
+ZS9saW51eC9saXN0LmgKKysrIGIvaW5jbHVkZS9saW51eC9saXN0LmgKQEAgLTYzNCw5ICs2MzQs
+OSBAQCBzdGF0aWMgaW5saW5lIHZvaWQgbGlzdF9zcGxpY2VfdGFpbF9pbml0KHN0cnVjdCBsaXN0
+X2hlYWQgKmxpc3QsCiAgKiBAaGVhZDoJdGhlIGhlYWQgZm9yIHlvdXIgbGlzdC4KICAqIEBtZW1i
+ZXI6CXRoZSBuYW1lIG9mIHRoZSBsaXN0X2hlYWQgd2l0aGluIHRoZSBzdHJ1Y3QuCiAgKi8KLSNk
+ZWZpbmUgbGlzdF9mb3JfZWFjaF9lbnRyeShwb3MsIGhlYWQsIG1lbWJlcikJCQkJXAotCWZvciAo
+cG9zID0gbGlzdF9maXJzdF9lbnRyeShoZWFkLCB0eXBlb2YoKnBvcyksIG1lbWJlcik7CVwKLQkg
+ICAgICFsaXN0X2VudHJ5X2lzX2hlYWQocG9zLCBoZWFkLCBtZW1iZXIpOwkJCVwKKyNkZWZpbmUg
+bGlzdF9mb3JfZWFjaF9lbnRyeShwb3MsIGhlYWQsIG1lbWJlcikJCQkJCVwKKwlmb3IgKHR5cGVv
+Zihwb3MpIHBvcyA9IGxpc3RfZmlyc3RfZW50cnkoaGVhZCwgdHlwZW9mKCpwb3MpLCBtZW1iZXIp
+OwlcCisJICAgICAhbGlzdF9lbnRyeV9pc19oZWFkKHBvcywgaGVhZCwgbWVtYmVyKTsJXAogCSAg
+ICAgcG9zID0gbGlzdF9uZXh0X2VudHJ5KHBvcywgbWVtYmVyKSkKIAogLyoqCg==
+--0000000000008601b205d919a4ad
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--0000000000008601b205d919a4ad--
+
