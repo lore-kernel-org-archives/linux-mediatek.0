@@ -4,68 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B990C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 10:15:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F579C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 11:27:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dI6DTDG7Wztc3GsCTVg6uvlI7yl8LLIEoTRc1v/bH4E=; b=lnLppdovTgtvqe
-	eeobWjQZRrIJMF5sGWzNhMXUlQrgkksGBHMnYXCNTxzq4hxnQtNo5pVicwIYECxYeluT1txc5OLVK
-	p/S4KGRCru/54v6uG02U42VwBst1uDVMpmkgiv3On2pBZ16cQUdp7YcYGqiwKIc9U1irqUt9rgjZ6
-	3pHhpxLxDLpW0y2P2ZcX1Rxi4BaCo1bfAmRPyN7Zy8sXruWfURbcejyhUrJtdEvXtoR65pVurz1CY
-	UcIldz+DugyVcOTNAK7hv42NO6nmvpbt49O+8C+dyu9R6DuGLI2y4HudOTc1bZb2Gm3S7nLvvJrL/
-	B8fSgOepJRPcsLRHqqjQ==;
+	List-Owner; bh=upx3R+28nJStMxs1LUI/Q5ERMFLxdD2jujPO4JvoDLM=; b=L9xQtlxId0/oS9
+	LSMgmTDlZ17a6xMoePM+twPsTceEUHA+2uIQ4bonYWiPBxPVcNzbsbQKsNLIIBY/TsNzUoYRsJETD
+	WbZdnLhHRsYzjQEu70FNueQIUUqLc4rUQTOCX8shP5J3ZSoXExrHXld/YqR6hscXHksENALw0gjIZ
+	w7NHjJfrtFs/ef2zVXpU77y258ieAg0q2pVYyA0G1YTc2M50BCVwe0e5SK21HFjYUnrbL0baLgKZV
+	wREeKx+BJIKJxjms7g0zK5BTRYVwLKH++jRkOxEO1CVCd05q8q3WXLMtv+8G/8Q4zaAA9XZfmq2zG
+	IwCmQvjwnPfOiCcHoQ9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOd3g-00BSaL-Jb; Mon, 28 Feb 2022 10:15:12 +0000
-Received: from smtp-out1.suse.de ([195.135.220.28])
+	id 1nOeBC-00BrLd-Co; Mon, 28 Feb 2022 11:27:02 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOd3G-00BSLa-Um; Mon, 28 Feb 2022 10:14:49 +0000
-Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
- by smtp-out1.suse.de (Postfix) with ESMTP id 9B906210F4;
- Mon, 28 Feb 2022 10:14:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
- t=1646043282; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=KukxMvO4tyrrizISG36Vcc7/8BtcgAz+EL/84ZHG//k=;
- b=FizPj/xAl+yD5oE2xueO9kol54H8qOAHIZyzKlPhMrxZWfpRfioicmAAD/KVObvozj7ysM
- mtcBbeDgTt+P5n+VPxeE3WgSUKfOTLsDlmvBH0Vv3cew6DU6ccY9cbQh2t++kK/eBiMs/d
- pSwCFv6mFQt9CDZx4kK5SCVsIxzT55Y=
-Received: from suse.cz (unknown [10.100.216.66])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by relay2.suse.de (Postfix) with ESMTPS id 3913EA3B84;
- Mon, 28 Feb 2022 10:14:42 +0000 (UTC)
-Date: Mon, 28 Feb 2022 11:14:41 +0100
-From: Petr Mladek <pmladek@suse.com>
-To: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Cc: acme@kernel.org, akpm@linux-foundation.org,
- alexander.shishkin@linux.intel.com, catalin.marinas@arm.com,
- davem@davemloft.net, jolsa@redhat.com, jthierry@redhat.com,
- keescook@chromium.org, kernelfans@gmail.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- linux-perf-users@vger.kernel.org, mark.rutland@arm.com,
- masahiroy@kernel.org, matthias.bgg@gmail.com, maz@kernel.org,
- mcgrof@kernel.org, mingo@redhat.com, namhyung@kernel.org,
- nixiaoming@huawei.com, peterz@infradead.org,
- sparclinux@vger.kernel.org, sumit.garg@linaro.org,
- wangqing@vivo.com, will@kernel.org, yj.chiang@mediatek.com
-Subject: Re: [PATCH 4/5] kernel/watchdog: Adapt the watchdog_hld interface
- for async model
-Message-ID: <YhygkafOHc6eeP9f@alley>
-References: <Yhjzr8geK7dTXXd2@alley>
- <20220226105229.16378-1-lecopzer.chen@mediatek.com>
+ id 1nOdoA-00Bfjn-6m; Mon, 28 Feb 2022 11:03:16 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id x15so14772699wrg.8;
+ Mon, 28 Feb 2022 03:03:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=Zbcz7VnvPXSNCztHz9sMRX7epSbG59XZn9pyu61UWHk=;
+ b=Oxj8JHlRz2mdVmoqigS0luCtmjoUGIdmOc0RrlMqAcNJkhut3cfH0O2mrE/ZN35eRA
+ VJuMEYvoFGx3i6hUlAg9fNUzhIxxOX6t9Dknps+IjiCb1Nx5UamllnjQ/a4Es/oJ0MN/
+ 0gN1bg1skzYA+O+aGmN1eNJntgiA4r3vUMPtDYDE9F48W9BanaHaPErQ1DcKjaclTMkj
+ jnrBkH0t/aYm1I8A3mgzP1WAG567o0wVuGR40v2RaLbN8akGMFYBAT8PwIpDSLCrD0U+
+ my3H+o+iwrO4pyNafLkILq2XPN2ucabzpReR9CV8mW58yAKTRzMSYKjqdp30wWeaq4jp
+ sQwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=Zbcz7VnvPXSNCztHz9sMRX7epSbG59XZn9pyu61UWHk=;
+ b=kIOi8EQb9l3A7szQcKv2/XOoorkkxv64KL3yn70AfZfwn5w+q7VKP+yJWdHEssJX1k
+ aiDoCssPxt7K17XHPYx1KmNbMsACezJzptdivBPc2SNLHUqHhro/qX01NjparCZusoQJ
+ XTRnCGPynIQkeMCWxkwErCFmgavIpu4Kn7xHwQRkVynMOw+4bS858Gdohk/jEFwR2kPz
+ xS3CndWNqp3dHGxIfJ9yVo439nP4AcyV0oJQysXCKcEXvZ4HVVywgJvjKRaqfCxJ7EIe
+ +i3+c/n5lTh71J6c437n/iMtXRQt+6DvWoObnht5WgqpQx98SScW6AEqqMMDJisIaq6F
+ Rapw==
+X-Gm-Message-State: AOAM532oqJd+m8/Fz71eqHtmTRWGMZ7e8f1HmcwObnfDuCgAtpWNTtVD
+ 3TcLkiP+acaeIm/78e7Xhgw=
+X-Google-Smtp-Source: ABdhPJyoSngUdbBN26xRaezsM/eDpcmtYGFW89dx6ojT/oBJ2L/ABdocEt8cEWhHXD5mzfXcpXS/dw==
+X-Received: by 2002:adf:ea44:0:b0:1ef:6f00:cf47 with SMTP id
+ j4-20020adfea44000000b001ef6f00cf47mr11507757wrn.460.1646046192880; 
+ Mon, 28 Feb 2022 03:03:12 -0800 (PST)
+Received: from [192.168.0.14] (static-63-182-85-188.ipcom.comunitel.net.
+ [188.85.182.63]) by smtp.gmail.com with ESMTPSA id
+ z5-20020a05600c0a0500b0037fa93193a8sm12557012wmp.44.2022.02.28.03.03.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 28 Feb 2022 03:03:12 -0800 (PST)
+Message-ID: <2f2d2d0f-3854-501d-e6dd-146f64d726d6@gmail.com>
+Date: Mon, 28 Feb 2022 12:03:11 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220226105229.16378-1-lecopzer.chen@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [v7 0/5] Mediatek MT8195 power domain support
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Enric Balletbo Serra <eballetbo@gmail.com>,
+ Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220130012104.5292-1-chun-jie.chen@mediatek.com>
+ <319d7236-292c-787f-4578-bffe75e33ba1@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <319d7236-292c-787f-4578-bffe75e33ba1@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_021447_203506_04D0FDE4 
-X-CRM114-Status: GOOD (  48.15  )
+X-CRM114-CacheID: sfid-20220228_030314_338765_34482BB8 
+X-CRM114-Status: GOOD (  15.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,254 +92,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat 2022-02-26 18:52:29, Lecopzer Chen wrote:
-> > On Sat 2022-02-12 18:43:48, Lecopzer Chen wrote:
-> > > From: Pingfan Liu <kernelfans@gmail.com>
-> > > 
-> > > from: Pingfan Liu <kernelfans@gmail.com>
-> > > 
-> > > When lockup_detector_init()->watchdog_nmi_probe(), PMU may be not ready
-> > > yet. E.g. on arm64, PMU is not ready until
-> > > device_initcall(armv8_pmu_driver_init).  And it is deeply integrated
-> > > with the driver model and cpuhp. Hence it is hard to push this
-> > > initialization before smp_init().
-> > > 
-> > > But it is easy to take an opposite approach by enabling watchdog_hld to
-> > > get the capability of PMU async.
-> > > 
-> > > The async model is achieved by expanding watchdog_nmi_probe() with
-> > > -EBUSY, and a re-initializing work_struct which waits on a wait_queue_head.
-> > > 
-> > > diff --git a/kernel/watchdog.c b/kernel/watchdog.c
-> > > index b71d434cf648..fa8490cfeef8 100644
-> > > --- a/kernel/watchdog.c
-> > > +++ b/kernel/watchdog.c
-> > > @@ -839,16 +843,64 @@ static void __init watchdog_sysctl_init(void)
-> > >  #define watchdog_sysctl_init() do { } while (0)
-> > >  #endif /* CONFIG_SYSCTL */
-> > >  
-> > > +static void lockup_detector_delay_init(struct work_struct *work);
-> > > +enum hld_detector_state detector_delay_init_state __initdata;
-> > 
-> > I would call this "lockup_detector_init_state" to use the same
-> > naming scheme everywhere.
-> > 
-> > > +
-> > > +struct wait_queue_head hld_detector_wait __initdata =
-> > > +		__WAIT_QUEUE_HEAD_INITIALIZER(hld_detector_wait);
-> > > +
-> > > +static struct work_struct detector_work __initdata =
-> > 
-> > I would call this "lockup_detector_work" to use the same naming scheme
-> > everywhere.
-> 
-> For the naming part, I'll revise both of them in next patch.
-> 
-> > 
-> > > +		__WORK_INITIALIZER(detector_work, lockup_detector_delay_init);
-> > > +
-> > > +static void __init lockup_detector_delay_init(struct work_struct *work)
-> > > +{
-> > > +	int ret;
-> > > +
-> > > +	wait_event(hld_detector_wait,
-> > > +			detector_delay_init_state == DELAY_INIT_READY);
-> > 
-> > DELAY_INIT_READY is defined in the 5th patch.
-> > 
-> > There are many other build errors because this patch uses something
-> > that is defined in the 5th patch.
-> 
-> Thanks for pointing this out, the I'll fix 4th and 5th patches to correct the order.
-> 
-> > 
-> > > +	ret = watchdog_nmi_probe();
-> > > +	if (!ret) {
-> > > +		nmi_watchdog_available = true;
-> > > +		lockup_detector_setup();
-> > > +	} else {
-> > > +		WARN_ON(ret == -EBUSY);
-> > 
-> > Why WARN_ON(), please?
-> > 
-> > Note that it might cause panic() when "panic_on_warn" command line
-> > parameter is used.
-> > 
-> > Also the backtrace will not help much. The context is well known.
-> > This code is called from a workqueue worker.
->  
-> The motivation to WARN should be:
-> 
-> lockup_detector_init
-> -> watchdog_nmi_probe return -EBUSY
-> -> lockup_detector_delay_init checks (detector_delay_init_state == DELAY_INIT_READY)
-> -> watchdog_nmi_probe checks
-> +	if (detector_delay_init_state != DELAY_INIT_READY)
-> +		return -EBUSY;
-> 
-> Since we first check detector_delay_init_state equals to DELAY_INIT_READY
-> and goes into watchdog_nmi_probe() and checks detector_delay_init_state again
-> becasue now we move from common part to arch part code.
-> In this condition, there shouldn't have any racing to detector_delay_init_state.
-> If it does happend an unknown racing, then shows a warning to it.
-
-There should not be any race.
-
-     wait_event(hld_detector_wait,
-		detector_delay_init_state == DELAY_INIT_READY);
-
-waits until it is waken by lockup_detector_check(). Well, it could
-wait forewer when lockup_detector_check() is caller earlier, see below.
-
-
-> I think it make sense to remove WARN now becasue it looks verbosely...
-> However, I would rather change the following printk to
-> "Delayed init for lockup detector failed."
-
-I would print both messages. The above message says what failed.
-
-
-> > > +		pr_info("Perf NMI watchdog permanently disabled\n");
-
-And this message explains what is the result of the above failure.
-It is not obvious.
-
-> > > +	}
-> > > +}
-> > > +
-> > > +/* Ensure the check is called after the initialization of PMU driver */
-> > > +static int __init lockup_detector_check(void)
-> > > +{
-> > > +	if (detector_delay_init_state < DELAY_INIT_WAIT)
-> > > +		return 0;
-> > > +
-> > > +	if (WARN_ON(detector_delay_init_state == DELAY_INIT_WAIT)) {
-> > 
-> > Again. Is WARN_ON() needed?
-> > 
-> > Also the condition looks wrong. IMHO, this is the expected state.
-> > 
-> 
-> This does expected DELAY_INIT_READY here, which means,
-> every one who comes here to be checked should be READY and WARN if you're
-> still in WAIT state, and which means the previous lockup_detector_delay_init()
-> failed.
-
-No, DELAY_INIT_READY is set below. DELAY_INIT_WAIT is valid value here.
-It means that lockup_detector_delay_init() work is queued.
-
-
-> IMO, either keeping or removing WARN is fine with me.
-> 
-> I think I'll remove WARN and add
-> pr_info("Delayed init checking for lockup detector failed, retry for once.");
-> inside the `if (detector_delay_init_state == DELAY_INIT_WAIT)`
-> 
-> Or would you have any other suggestion? thanks.
-> 
-> > > +		detector_delay_init_state = DELAY_INIT_READY;
-> > > +		wake_up(&hld_detector_wait);
-
-I see another problem now. We should always call the wake up here
-when the work was queued. Otherwise, the worker will stay blocked
-forewer.
-
-The worker will also get blocked when the late_initcall is called
-before the work is proceed by a worker.
-
-> > > +	}
-> > > +	flush_work(&detector_work);
-> > > +	return 0;
-> > > +}
-> > > +late_initcall_sync(lockup_detector_check);
-
-
-OK, I think that the three states are too complicated. I suggest to
-use only a single bool. Something like:
-
-static bool lockup_detector_pending_init __initdata;
-
-struct wait_queue_head lockup_detector_wait __initdata =
-		__WAIT_QUEUE_HEAD_INITIALIZER(lockup_detector_wait);
-
-static struct work_struct detector_work __initdata =
-		__WORK_INITIALIZER(lockup_detector_work,
-				   lockup_detector_delay_init);
-
-static void __init lockup_detector_delay_init(struct work_struct *work)
-{
-	int ret;
-
-	wait_event(lockup_detector_wait, lockup_detector_pending_init == false);
-
-	ret = watchdog_nmi_probe();
-	if (ret) {
-		pr_info("Delayed init of the lockup detector failed: %\n);
-		pr_info("Perf NMI watchdog permanently disabled\n");
-		return;
-	}
-
-	nmi_watchdog_available = true;
-	lockup_detector_setup();
-}
-
-/* Trigger delayedEnsure the check is called after the initialization of PMU driver */
-static int __init lockup_detector_check(void)
-{
-	if (!lockup_detector_pending_init)
-		return;
-
-	lockup_detector_pending_init = false;
-	wake_up(&lockup_detector_wait);
-	return 0;
-}
-late_initcall_sync(lockup_detector_check);
-
-void __init lockup_detector_init(void)
-{
-	int ret;
-
-	if (tick_nohz_full_enabled())
-		pr_info("Disabling watchdog on nohz_full cores by default\n");
-
-	cpumask_copy(&watchdog_cpumask,
-		     housekeeping_cpumask(HK_FLAG_TIMER));
-
-	ret = watchdog_nmi_probe();
-	if (!ret)
-		nmi_watchdog_available = true;
-	else if (ret == -EBUSY) {
-		detector_delay_pending_init = true;
-		/* Init must be done in a process context on a bound CPU. */
-		queue_work_on(smp_processor_id(), system_wq, 
-				  &lockup_detector_work);
-	}
-
-	lockup_detector_setup();
-	watchdog_sysctl_init();
-}
-
-The result is that lockup_detector_work() will never stay blocked
-forever. There are two possibilities:
-
-1.  lockup_detector_work() called before lockup_detector_check().
-    In this case, wait_event() will wait until lockup_detector_check()
-    clears detector_delay_pending_init and calls wake_up().
-
-2. lockup_detector_check() called before lockup_detector_work().
-   In this case, wait_even() will immediately continue because
-   it will see cleared detector_delay_pending_init.
-
-
-Best Regards,
-Petr
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+CgpPbiAxNS8wMi8yMDIyIDEwOjA2LCBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyB3cm90ZToK
+PiBJbCAzMC8wMS8yMiAwMjoyMCwgQ2h1bi1KaWUgQ2hlbiBoYSBzY3JpdHRvOgo+PiBUaGlzIHBh
+dGNoIHNlcmllcyBhZGRzIHBvd2VyIGRvbWFpbiBzdXBwb3J0IGZvciBNVDgxOTUKPj4gYW5kIGlz
+IGJhc2VkIG9uIDUuMTctcmMxLgo+IAo+IEhlbGxvIE1hdHRoaWFzLAo+IAo+IHRoaXMgc2VyaWVz
+IGhhcyBiZWVuIHRlc3RlZCBmb3IgYSB3aGlsZSBvbiBtdWx0aXBsZSBNZWRpYVRlayBwbGF0Zm9y
+bXMsIGhlbmNlCj4gbmV3IHZlcnNpb25zIHdpbGwgbm90IGJlIG5lY2Vzc2FyeS4KPiAKPiBDYW4g
+eW91IHBsZWFzZSBwaWNrIGl0IGZvciB2NS4xOD8KCldob2xlIHNlcmllcyBhcHBsaWVkLAoKVGhh
+bmtzIQoKTWF0dGhpYXMKCj4gCj4gVGhhbmsgeW91LAo+IEFuZ2Vsbwo+IAo+Pgo+PiBjaGFuZ2Ug
+c2luY2UgdjY6Cj4+IC0gcmViYXNlIHRvIDUuMTctcmMxCj4+Cj4+IGNoYW5nZSBzaW5jZSB2NToK
+Pj4gLSByZWJhc2UgdG8gNS4xNi1yYzEKPj4gLSBhZGQgZG9tYWluIGNhcGFjaXR5IGluIG1mZyBw
+b3dlciBkb21haW4KPj4KPj4gY2hhbmdlIHNpbmNlIHY0Ogo+PiAtIHJlYmFzZSB0byA1LjE1LXJj
+MSAoZml4IGNvbmZsaWN0IGF0IHBhdGNoIDQgaW4gdGhpcyBzZXJpZXMpCj4+IC0gY2hhbmdlIGxp
+Y2Vuc2UKPj4KPj4gY2hhbmdlIHNpbmNlIHYzOgo+PiAtIHJlbW92ZSByZWR1bmRhbnQgYnVzIHBy
+b3RlY3Rpb24gc3RlcHMKPj4gLSByZW1vdmUgdW51c2VkIHBvd2VyIGRvbWFpbgo+Pgo+PiBjaGFu
+Z2Ugc2luY2UgdjI6Cj4+IC0gbW92ZSBtb2RpZmljYXRpb24gb2Ygd2FrZXVwIGNhcGFjaXR5IHRv
+IHNpbmdsZSBwYXRjaAo+Pgo+PiByZWFzb24gZm9yIHJlc2VuZCB2MjoKPj4gLSBtaXNzIHBhdGNo
+IHZlcnNpb24gaW4gc2VyaWVzCj4+Cj4+IGNoYW5nZXMgc2luY2UgdjE6Cj4+IC0gZml4IHNpZ25l
+ZC1vZmYgbmFtZQo+PiAtIGRlc2NyaWJlIG1vcmUgZGV0YWlsIGluIHBhdGNoIDMKPj4gLSBtb3Zl
+IG1vZGlmaWNhdGlvbiBvZiByZW1vdmluZyByZWR1bmRhbnQgbWFjcm8gdG8gc2luZ2xlIHBhdGNo
+Cj4+Cj4+IENodW4tSmllIENoZW4gKDUpOgo+PiDCoMKgIGR0LWJpbmRpbmdzOiBwb3dlcjogQWRk
+IE1UODE5NSBwb3dlciBkb21haW5zCj4+IMKgwqAgc29jOiBtZWRpYXRlazogcG0tZG9tYWluczog
+QWRkIHdha2V1cCBjYXBhY2l0eSBzdXBwb3J0IGluIHBvd2VyIGRvbWFpbgo+PiDCoMKgIHNvYzog
+bWVkaWF0ZWs6IHBtLWRvbWFpbnM6IFJlbW92ZSB1bnVzZWQgbWFjcm8KPj4gwqDCoCBzb2M6IG1l
+ZGlhdGVrOiBwbS1kb21haW5zOiBNb3ZlIHBvd2VyIHN0YXR1cyBvZmZzZXQgdG8gcG93ZXIgZG9t
+YWluCj4+IMKgwqDCoMKgIGRhdGEKPj4gwqDCoCBzb2M6IG1lZGlhdGVrOiBwbS1kb21haW5zOiBB
+ZGQgc3VwcG9ydCBmb3IgbXQ4MTk1Cj4+Cj4+IMKgIC4uLi9wb3dlci9tZWRpYXRlayxwb3dlci1j
+b250cm9sbGVyLnlhbWzCoMKgwqDCoMKgIHzCoMKgIDIgKwo+PiDCoCBkcml2ZXJzL3NvYy9tZWRp
+YXRlay9tdDgxNjctcG0tZG9tYWlucy5owqDCoMKgwqDCoCB8wqAgMTYgKy0KPj4gwqAgZHJpdmVy
+cy9zb2MvbWVkaWF0ZWsvbXQ4MTczLXBtLWRvbWFpbnMuaMKgwqDCoMKgwqAgfMKgIDIyICstCj4+
+IMKgIGRyaXZlcnMvc29jL21lZGlhdGVrL210ODE4My1wbS1kb21haW5zLmjCoMKgwqDCoMKgIHzC
+oCAzMiArLQo+PiDCoCBkcml2ZXJzL3NvYy9tZWRpYXRlay9tdDgxOTItcG0tZG9tYWlucy5owqDC
+oMKgwqDCoCB8wqAgNDQgKy0KPj4gwqAgZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXQ4MTk1LXBtLWRv
+bWFpbnMuaMKgwqDCoMKgwqAgfCA2MTMgKysrKysrKysrKysrKysrKysrCj4+IMKgIGRyaXZlcnMv
+c29jL21lZGlhdGVrL210ay1wbS1kb21haW5zLmPCoMKgwqDCoMKgwqDCoMKgIHzCoCAxMiArLQo+
+PiDCoCBkcml2ZXJzL3NvYy9tZWRpYXRlay9tdGstcG0tZG9tYWlucy5owqDCoMKgwqDCoMKgwqDC
+oCB8wqDCoCA4ICstCj4+IMKgIGluY2x1ZGUvZHQtYmluZGluZ3MvcG93ZXIvbXQ4MTk1LXBvd2Vy
+LmjCoMKgwqDCoMKgIHzCoCA0NiArKwo+PiDCoCBpbmNsdWRlL2xpbnV4L3NvYy9tZWRpYXRlay9p
+bmZyYWNmZy5owqDCoMKgwqDCoMKgwqDCoCB8wqAgODIgKysrCj4+IMKgIDEwIGZpbGVzIGNoYW5n
+ZWQsIDg2MiBpbnNlcnRpb25zKCspLCAxNSBkZWxldGlvbnMoLSkKPj4gwqAgY3JlYXRlIG1vZGUg
+MTAwNjQ0IGRyaXZlcnMvc29jL21lZGlhdGVrL210ODE5NS1wbS1kb21haW5zLmgKPj4gwqAgY3Jl
+YXRlIG1vZGUgMTAwNjQ0IGluY2x1ZGUvZHQtYmluZGluZ3MvcG93ZXIvbXQ4MTk1LXBvd2VyLmgK
+Pj4KPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVk
+aWF0ZWsK
