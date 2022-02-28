@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64DCCC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 11:29:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9AA2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 11:30:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1WJzYr+bgFjl289HOFAcMYbz+vP4LhprLvYzOrKijGU=; b=btBfWSeiP/tmBw
-	x+s+NATYWQb6K2mS2gY33YOCouVa18G4JHxbFSXcJURlrXljvxQx4Ee+G/J49gbnYBCgjZ/6eA/QJ
-	MXy/glRhwDMLCAAYB1mztlsBm05pAOoZgDCyQ6XBi6CJ9pLBKq/wOUDvFb1UUbi2DHOGS42Uy0Wda
-	2rh6Ljtno3muUm7czsE6R6zpj6ikAK3DyXCvJoj4EDSKuhLnWWtMacqR7FZXGUZI0p3XVL/mcZ6cg
-	dziVVg7gh3BcPDvParA2HgfTDkDO0gOKe/MFPhVE1juaH/vvJpkNfE3HHxeKx/KYCAU0OoyR7k5HH
-	sEcR5Qn/Y7FpuQ6hJ80Q==;
+	List-Owner; bh=TAyV3F6cqQ1RK2IaCqvITxHoXNC1yik2PNfM7NK1Cxk=; b=iV9UbiteptWzK1
+	YVcKPN/q55h2iGjNr1g+4NC9zIeSerutcImdw8r0AzxlYixu5dhZwkZpuhkKA6UmO5U4cwLXsRI42
+	wYdWn73LiVR1g3zg9KBJqMC21OWhq9EmpK87VFUxUBSFfl8Hob1vDrYOLcMnSr7gCRs20iqkb3om+
+	dPAtFyzn97ltkmF2sqmIHta9xq0umom28OgN6jzCbxJ9oONCJ5+WLwrJZRtzPt3BPpbyTac0e5FpC
+	QZ//z/qIFNuN7bMqyRbq5zLzxTe45HiM6yNloXQ9cqu7zOLO6PHbXcz4SV4kCjEfx36bSrcCtgp1+
+	6Ky6QPz6xornLk1XSWVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOeDu-00Bsgh-MR; Mon, 28 Feb 2022 11:29:50 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1nOeDy-00Bsiz-9l; Mon, 28 Feb 2022 11:29:54 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOdtj-00Bidi-3o; Mon, 28 Feb 2022 11:09:01 +0000
-Received: by mail-ej1-x631.google.com with SMTP id p9so23984818ejd.6;
- Mon, 28 Feb 2022 03:08:58 -0800 (PST)
+ id 1nOdtl-00Bier-Js; Mon, 28 Feb 2022 11:09:03 +0000
+Received: by mail-ej1-x634.google.com with SMTP id hw13so23947430ejc.9;
+ Mon, 28 Feb 2022 03:09:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=HpiN/zwO1wBD5W8vJ5qwHzWs2Mz8GYwVSPoaDyTc8jQ=;
- b=hjvTHeqAC17Nm2rqJFqOWVUlo+eMrb6KCGjEjnmUhT0UbOoSD99k2xAziOpWZa+Icu
- SPp4Zg1lqK8FLNpUHi/iGpToynAZh7AAx7I6BqkiBOWQWPIrLjejJ7mt0E6lp79jr43P
- Z8Tz3UxSCHK1qzDcri6ZY14M8lx9G0bi6GCGQHl0DVbHpgXti6eqzCprjBZYIcyI1uce
- Dn/lOukn9J64/ASqyssuY+hk5ExgHfhAh8xyytTN1bW2SLq53AUCqmHXOqxQHzvGm8yg
- Hb8Tr+NdyPNcInoLFcy82stmYANyPP1+b2zh81uncpq/hmnHTquj2t004aepXQhNWxPC
- QShA==
+ bh=NwvvEiJPPM0SG7ZI4yc03tHRsjcGU4DYrm0+p7QW2+g=;
+ b=XoHp2vZs5sXnnQm8jTsL06JwdjgH4Z1Am+qeboNHSyU/csHp7G8mKHTnYwT7vMJf3q
+ 1zZobpdX4BxBQ2erAJx74EzSCDXfVaAB33jAX9ZekfWtpz9xLL4KIzz7DciQBlIBY9DK
+ vi6LJyw6u5UaEjT8CWPzRGPwv8GzX6oWgjgvygChKW8zu7PwVtsUQz/kuHu5rW/3vaBt
+ P3mcu2gbh7uG62xQrliOtXiVl+brL2WoHfh7VHyAXnwazE3NNCXTKdQujGPQMoLCoB+H
+ 4TwL3ENhlSsI5tK0hgbUY+rfbxgFEyt/dohDr5V+g2PZ9mAGfyjh/75qZVaBOXbUEFp6
+ QPtA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=HpiN/zwO1wBD5W8vJ5qwHzWs2Mz8GYwVSPoaDyTc8jQ=;
- b=fFD1auPTNlfHLYE9QJHlOJwiXjxvsqzi7hB7ZAeDfBUkFRZEAS6zr47q56iwbp0EYj
- FL465mMfS8BXf1mxEiOVh4B35yssnKYroIf2fgm5VEBDUmRtu3x/M7vEPIIlwvhwjxvo
- QaX6Sxc0E1Ld4hw+P2J2g8wcY2oSZ+ho2AXJ6jpJ7IkVxp46/IOqG3SWLJeVuwdOaJpS
- X0vbDmOxD03AM3thBnHRL/apm06IE/CUKnL0kxInxeYOhry+sgWKPkXnAHFD2fZEfav4
- qhXxXFsI49ETH5bSJV2PlcYOYM67qRb6ehyJCaPMDt/YgXga1VQvoTxLA8EevtL2ed3i
- 30QA==
-X-Gm-Message-State: AOAM5309IGkR+xZGUym9SGJPDj0FvPCABqEmACclkYjn5RXqbQl6l/IJ
- A3LPV0g05QefikORy2kajrQ=
-X-Google-Smtp-Source: ABdhPJwIz1+OuMm91LqO5/9SwgL6U3RC8rZg6hPrO7zQUYJxh0T24GQzaSGRh+uNCyYPoPAvBQZaKw==
-X-Received: by 2002:a17:906:3803:b0:6cf:56b9:60a9 with SMTP id
- v3-20020a170906380300b006cf56b960a9mr14108161ejc.716.1646046537823; 
- Mon, 28 Feb 2022 03:08:57 -0800 (PST)
+ bh=NwvvEiJPPM0SG7ZI4yc03tHRsjcGU4DYrm0+p7QW2+g=;
+ b=wANj6W0L2NiBR22jHX0GD+TsuOx7kMrKN5v+U++i0CkiasOypu/1rSrwSeYk+VxZP5
+ 0NqCKF+8clkRXcI3mKEmOmbNQ3wQw6LwXCJR6pCcxrSwQbyj+2v+WQ1Ob8hxwK/tTLqc
+ E1HdSnBZx1hEYqZIVBfhNbT4qRCtO2t/CjIQQYqk8dwryzRftKMgWn6wuYzHXRm+mUL/
+ GsNNsVGje1H2YhI6NBQ/1yRDCQtdm6VN8ErkXARPPWf9q1iGX1uKYET50nhTd37rBGBa
+ tKHi+tJuTETeZX09bj6nawVDoiG1QhDc2DUisCDWa/GMoAl+RlPZRotPwzarYiqngusk
+ GYcA==
+X-Gm-Message-State: AOAM530eOtN5nXVlWSrH7H0q4QWhaU5x5Rl04pPqtv8kSDtYKYaI+8w4
+ bSLB2qY7mS3IfsCyI888lcg=
+X-Google-Smtp-Source: ABdhPJwx6JZK1Sd067eYUFaKDGIuHgaxlGXhzFGfLUQYCLtFq3NCzAqvSFrK3I6DGGTf6F+6FgXuew==
+X-Received: by 2002:a17:906:2608:b0:6c9:b248:4dcf with SMTP id
+ h8-20020a170906260800b006c9b2484dcfmr14572317ejc.320.1646046539415; 
+ Mon, 28 Feb 2022 03:08:59 -0800 (PST)
 Received: from localhost.localdomain (dhcp-077-250-038-153.chello.nl.
  [77.250.38.153]) by smtp.googlemail.com with ESMTPSA id
- z22-20020a17090655d600b006d229436793sm4209049ejp.223.2022.02.28.03.08.56
+ z22-20020a17090655d600b006d229436793sm4209049ejp.223.2022.02.28.03.08.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Feb 2022 03:08:57 -0800 (PST)
+ Mon, 28 Feb 2022 03:08:59 -0800 (PST)
 From: Jakob Koschel <jakobkoschel@gmail.com>
 To: Linus Torvalds <torvalds@linux-foundation.org>
 Cc: Jakob Koschel <jakobkoschel@gmail.com>,
@@ -91,16 +91,16 @@ Cc: Jakob Koschel <jakobkoschel@gmail.com>,
  linux-f2fs-devel@lists.sourceforge.net, linux-fsdevel@vger.kernel.org,
  kgdb-bugreport@lists.sourceforge.net, v9fs-developer@lists.sourceforge.net,
  tipc-discussion@lists.sourceforge.net, alsa-devel@alsa-project.org
-Subject: [PATCH 3/6] treewide: fix incorrect use to determine if list is empty
-Date: Mon, 28 Feb 2022 12:08:19 +0100
-Message-Id: <20220228110822.491923-4-jakobkoschel@gmail.com>
+Subject: [PATCH 4/6] drivers: remove unnecessary use of list iterator variable
+Date: Mon, 28 Feb 2022 12:08:20 +0100
+Message-Id: <20220228110822.491923-5-jakobkoschel@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220228110822.491923-1-jakobkoschel@gmail.com>
 References: <20220228110822.491923-1-jakobkoschel@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_030859_268515_AC29CBCF 
-X-CRM114-Status: GOOD (  18.97  )
+X-CRM114-CacheID: sfid-20220228_030901_702209_08AB873D 
+X-CRM114-Status: GOOD (  14.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,103 +117,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The list iterator value will *always* be set by list_for_each_entry().
-It is incorrect to assume that the iterator value will be NULL if the
-list is empty.
+When list_for_each_entry() completes the iteration over the whole list
+without breaking the loop, the iterator value will *always* be a bogus
+pointer computed based on the head element.
 
-Instead of checking the pointer it should be checked if
-the list is empty.
-In acpi_get_pmu_hw_inf() instead of setting the pointer to NULL
-on the break, it is set to the correct value and leaving it
-NULL if no element was found.
+To avoid type confusion use the actual list head directly instead of last
+iterator value.
 
 Signed-off-by: Jakob Koschel <jakobkoschel@gmail.com>
 ---
- arch/powerpc/sysdev/fsl_gtm.c            |  4 ++--
- drivers/media/pci/saa7134/saa7134-alsa.c |  4 ++--
- drivers/perf/xgene_pmu.c                 | 13 +++++++------
- 3 files changed, 11 insertions(+), 10 deletions(-)
+ drivers/dma/dw-edma/dw-edma-core.c             | 4 ++--
+ drivers/net/ethernet/intel/i40e/i40e_ethtool.c | 3 ++-
+ drivers/net/wireless/ath/ath6kl/htc_mbox.c     | 2 +-
+ 3 files changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/arch/powerpc/sysdev/fsl_gtm.c b/arch/powerpc/sysdev/fsl_gtm.c
-index 8963eaffb1b7..39186ad6b3c3 100644
---- a/arch/powerpc/sysdev/fsl_gtm.c
-+++ b/arch/powerpc/sysdev/fsl_gtm.c
-@@ -86,7 +86,7 @@ static LIST_HEAD(gtms);
-  */
- struct gtm_timer *gtm_get_timer16(void)
- {
--	struct gtm *gtm = NULL;
-+	struct gtm *gtm;
- 	int i;
-
- 	list_for_each_entry(gtm, &gtms, list_node) {
-@@ -103,7 +103,7 @@ struct gtm_timer *gtm_get_timer16(void)
- 		spin_unlock_irq(&gtm->lock);
+diff --git a/drivers/dma/dw-edma/dw-edma-core.c b/drivers/dma/dw-edma/dw-edma-core.c
+index 468d1097a1ec..7883c4831857 100644
+--- a/drivers/dma/dw-edma/dw-edma-core.c
++++ b/drivers/dma/dw-edma/dw-edma-core.c
+@@ -136,7 +136,7 @@ static void dw_edma_free_burst(struct dw_edma_chunk *chunk)
  	}
 
--	if (gtm)
-+	if (!list_empty(&gtms))
- 		return ERR_PTR(-EBUSY);
- 	return ERR_PTR(-ENODEV);
+ 	/* Remove the list head */
+-	kfree(child);
++	kfree(chunk->burst);
+ 	chunk->burst = NULL;
  }
-diff --git a/drivers/media/pci/saa7134/saa7134-alsa.c b/drivers/media/pci/saa7134/saa7134-alsa.c
-index fb24d2ed3621..d3cde05a6eba 100644
---- a/drivers/media/pci/saa7134/saa7134-alsa.c
-+++ b/drivers/media/pci/saa7134/saa7134-alsa.c
-@@ -1214,7 +1214,7 @@ static int alsa_device_exit(struct saa7134_dev *dev)
 
- static int saa7134_alsa_init(void)
- {
--	struct saa7134_dev *dev = NULL;
-+	struct saa7134_dev *dev;
-
- 	saa7134_dmasound_init = alsa_device_init;
- 	saa7134_dmasound_exit = alsa_device_exit;
-@@ -1229,7 +1229,7 @@ static int saa7134_alsa_init(void)
- 			alsa_device_init(dev);
+@@ -156,7 +156,7 @@ static void dw_edma_free_chunk(struct dw_edma_desc *desc)
  	}
 
--	if (dev == NULL)
-+	if (list_empty(&saa7134_devlist))
- 		pr_info("saa7134 ALSA: no saa7134 cards found\n");
+ 	/* Remove the list head */
+-	kfree(child);
++	kfree(desc->chunk);
+ 	desc->chunk = NULL;
+ }
 
- 	return 0;
-diff --git a/drivers/perf/xgene_pmu.c b/drivers/perf/xgene_pmu.c
-index 2b6d476bd213..e255f9e665d1 100644
---- a/drivers/perf/xgene_pmu.c
-+++ b/drivers/perf/xgene_pmu.c
-@@ -1460,7 +1460,8 @@ xgene_pmu_dev_ctx *acpi_get_pmu_hw_inf(struct xgene_pmu *xgene_pmu,
- 	struct hw_pmu_info *inf;
- 	void __iomem *dev_csr;
- 	struct resource res;
--	struct resource_entry *rentry;
-+	struct resource_entry *rentry = NULL;
-+	struct resource_entry *tmp;
- 	int enable_bit;
- 	int rc;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+index 091f36adbbe1..c0ea9dbc4ff6 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+@@ -3963,7 +3963,8 @@ static void __i40e_reprogram_flex_pit(struct i40e_pf *pf,
+ 	 * correctly, the hardware will disable flexible field parsing.
+ 	 */
+ 	if (!list_empty(flex_pit_list))
+-		last_offset = list_prev_entry(entry, list)->src_offset + 1;
++		last_offset = list_entry(flex_pit_list->prev,
++					 struct i40e_flex_pit, list)->src_offset + 1;
 
-@@ -1475,16 +1476,16 @@ xgene_pmu_dev_ctx *acpi_get_pmu_hw_inf(struct xgene_pmu *xgene_pmu,
- 		return NULL;
- 	}
+ 	for (; i < 3; i++, last_offset++) {
+ 		i40e_write_rx_ctl(&pf->hw,
+diff --git a/drivers/net/wireless/ath/ath6kl/htc_mbox.c b/drivers/net/wireless/ath/ath6kl/htc_mbox.c
+index e3874421c4c0..cf5b05860799 100644
+--- a/drivers/net/wireless/ath/ath6kl/htc_mbox.c
++++ b/drivers/net/wireless/ath/ath6kl/htc_mbox.c
+@@ -104,7 +104,7 @@ static void ath6kl_credit_init(struct ath6kl_htc_credit_info *cred_info,
+ 	 * it use list_for_each_entry_reverse to walk around the whole ep list.
+ 	 * Therefore assign this lowestpri_ep_dist after walk around the ep_list
+ 	 */
+-	cred_info->lowestpri_ep_dist = cur_ep_dist->list;
++	cred_info->lowestpri_ep_dist = *ep_list;
 
--	list_for_each_entry(rentry, &resource_list, node) {
--		if (resource_type(rentry->res) == IORESOURCE_MEM) {
--			res = *rentry->res;
--			rentry = NULL;
-+	list_for_each_entry(tmp, &resource_list, node) {
-+		if (resource_type(tmp->res) == IORESOURCE_MEM) {
-+			res = *tmp->res;
-+			rentry = tmp;
- 			break;
- 		}
- 	}
- 	acpi_dev_free_resource_list(&resource_list);
+ 	WARN_ON(cred_info->cur_free_credits <= 0);
 
--	if (rentry) {
-+	if (!rentry) {
- 		dev_err(dev, "PMU type %d: No memory resource found\n", type);
- 		return NULL;
- 	}
 --
 2.25.1
 
