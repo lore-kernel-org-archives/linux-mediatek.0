@@ -4,66 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 536DCC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 22:16:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B068AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 22:29:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=2r5U2Ex4e2h4OexMtp8APTGdcVDDBSeEkanGpYV2G3M=; b=04mlNiuTc0fr7t
-	E1H+tFtPYNDu+R4KheXsQGn8rWJrIrhgYkWsHjkio/qDrCxUDtE7O/OF8lcka/HDhiuJSkWyOm94i
-	stbgQSqesV3q85Gntt6YnhLGHErXd8Ea69yu/t2Fa0Uaphwb/5z6JB6CE7yJvWcPI1lyxQmm8vNGD
-	Wsmvc4QpFO1IeFGrpg4zASjpPlcMqy0MLiou3FoRgcRam+SO8JLZWuTKWLHuFN28vteCgsSQNlDw2
-	cHFiWamNm/oFwCW0Z8gQZ8HcE/1wDKhQfLFuc4DITZyP1bTQWkm0xD7KybgKYZJiU+McdLKgKojrC
-	MH9OiRjCxtOiRTvxsKIA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ESlVlQfVuv4DqC6ASFVmEsWdfSMhd9agF0hLUzp+E5Y=; b=xv3b55bNgYYojK
+	vkAtsrURpZ7mwrEQfGH7HiRgt6s5PRprsZKr+9vBK9w0S/l5wAeHKDwDxJlu19eOkmwmj2Ghb2TOV
+	jHqjyywpeC2gvPHJCMiRy8un/VXXIy7iSucCpCzK+B9CmNctb1HsP4qaqn5QpxbZeyqFIJpQGBxjt
+	i+xFMf8fYT7uwq6EDJ6O6GE3DJ2DxhYJG7J7h02AazEjijqpUzlldkTJaPMKTvJJ9nCSpUpQEhDQQ
+	MHoSMBkN9e1ob572sZJ7hLVHtEHZz2AxAmWOpwywHpZaIlG9lR/IfgFbdG32vnm32aU0KvjCx7BIq
+	VHa3CUmM10/3DS1ulv6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOoJL-00EHfp-TW; Mon, 28 Feb 2022 22:16:07 +0000
-Received: from mail-oo1-f43.google.com ([209.85.161.43])
+	id 1nOoVw-00EIVp-F0; Mon, 28 Feb 2022 22:29:08 +0000
+Received: from bedivere.hansenpartnership.com ([96.44.175.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOoJ9-00EHdK-JG; Mon, 28 Feb 2022 22:15:56 +0000
-Received: by mail-oo1-f43.google.com with SMTP id
- n5-20020a4a9545000000b0031d45a442feso12807867ooi.3; 
- Mon, 28 Feb 2022 14:15:55 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=OEmvWFYcUlvLI2qOQZZbyye8qQFK9MgvtHyOAXPOp8U=;
- b=j/mcTU3u47lIEYcs3wmORg/H93+wQfu7d80T7dhS0TBPpbMyeEyau6B1HjRBFnNd1X
- D54GLTiSdDg91eoZtifDPpz9LXXSxeUjdiAoW3yNZV0JgoWGgjei12PfDwL54Pv3wXdP
- 8Vw1TJh+kNTSB7sKGLzyXOLE1r+SppsMW9IgLf4k9Hh5Y6azZngSu3ePSmL1ZxBm/okL
- +q2UjqKVtcZ45RFGQ2LGJ1AqlmX6QkRMnwMDa2W5UEAONHbrErPgKv8Gq+qRLjd4qlMr
- aoK27Dcti3aQizd3dhrYLi2EN13z3o88H5MLJ/T/a/ivxdLhGRiQIBwi+S9IflSkTphu
- HK1A==
-X-Gm-Message-State: AOAM530ty2tAAdAs1XWBFF5MCPjZzuuJ9aIHSnuoWPxhi4FfaNJXbYWs
- Bz8X/xLlObMaUHHIYV3pWw==
-X-Google-Smtp-Source: ABdhPJz03WhL44Cw8TDPnrAAhE5YNR7G6nXVzt9q331dU3Co2p6qYpvGwJfUqyb2mMaeRoSteXVOaw==
-X-Received: by 2002:a4a:db95:0:b0:31c:23c8:554d with SMTP id
- s21-20020a4adb95000000b0031c23c8554dmr10094963oou.64.1646086554672; 
- Mon, 28 Feb 2022 14:15:54 -0800 (PST)
-Received: from xps15.herring.priv (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213]) by smtp.googlemail.com with ESMTPSA id
- t1-20020a05687044c100b000cd7b642bedsm5027977oai.14.2022.02.28.14.15.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Feb 2022 14:15:54 -0800 (PST)
-From: Rob Herring <robh@kernel.org>
-To: Lee Jones <lee.jones@linaro.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH] dt-bindings: Add compatibles for undocumented trivial syscons
-Date: Mon, 28 Feb 2022 16:15:37 -0600
-Message-Id: <20220228221537.1700071-1-robh@kernel.org>
-X-Mailer: git-send-email 2.32.0
+ id 1nOoVt-00EIUm-Do; Mon, 28 Feb 2022 22:29:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1646087344;
+ bh=gnitHaDoKtFYFmdfHx7ZmUK+2K99mC4OdMWiGF3yqts=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=aDv+zUJMVLbpHnTobs88HMeKXt8e/Fsm3NyltqbtXmut8dDpKPmgZQHvU7CQAhpxT
+ x8yyOH8cKkqI9wCCVd7mWgGGPtOdFvurEvTcoJzgoG8F+eqVyUcxI30U1Z3UyKmv+s
+ JFRv6cmaJ/MAgdj571KO+Pve8Zec5bTLqNmzMPjU=
+Received: from localhost (localhost [127.0.0.1])
+ by bedivere.hansenpartnership.com (Postfix) with ESMTP id 2FE4A1281036;
+ Mon, 28 Feb 2022 17:29:04 -0500 (EST)
+Received: from bedivere.hansenpartnership.com ([127.0.0.1])
+ by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id UdsLtl38GfVe; Mon, 28 Feb 2022 17:29:04 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1646087343;
+ bh=gnitHaDoKtFYFmdfHx7ZmUK+2K99mC4OdMWiGF3yqts=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=u33hwQnb0VqdOXP8ulufSc5IRuZCZipVBGZNcGF9+k1EE0TmKFXpcGOMGd4fMwEgO
+ 9syQhDBoNk9Z7GUqfbwA47rALQtXFHUxFeSSP/G0sxjEsJWs9EMuAmppU6twhzQzk+
+ fAgT3F3AJIbVTwM2ufsCoBYKhhHBSRhleqdyR2l4=
+Received: from jarvis.int.hansenpartnership.com (unknown
+ [IPv6:2601:5c4:4300:c551::527])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits))
+ (No client certificate requested)
+ by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id C21DB1280D34;
+ Mon, 28 Feb 2022 17:28:59 -0500 (EST)
+Message-ID: <73fa82a20910c06784be2352a655acc59e9942ea.camel@HansenPartnership.com>
+Subject: Re: [PATCH 2/6] treewide: remove using list iterator after loop
+ body as a ptr
+From: James Bottomley <James.Bottomley@HansenPartnership.com>
+To: Mike Rapoport <rppt@kernel.org>, Christian =?ISO-8859-1?Q?K=F6nig?=
+ <christian.koenig@amd.com>, Linus Torvalds <torvalds@linux-foundation.org>
+Cc: Jakob Koschel <jakobkoschel@gmail.com>, alsa-devel@alsa-project.org, 
+ linux-aspeed@lists.ozlabs.org, "Gustavo A. R. Silva"
+ <gustavo@embeddedor.com>,  linux-iio@vger.kernel.org,
+ nouveau@lists.freedesktop.org, Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ dri-devel <dri-devel@lists.freedesktop.org>,  Cristiano Giuffrida
+ <c.giuffrida@vu.nl>, amd-gfx list <amd-gfx@lists.freedesktop.org>, 
+ samba-technical@lists.samba.org, linux1394-devel@lists.sourceforge.net, 
+ drbd-dev@lists.linbit.com, linux-arch <linux-arch@vger.kernel.org>, CIFS
+ <linux-cifs@vger.kernel.org>, KVM list <kvm@vger.kernel.org>, linux-scsi
+ <linux-scsi@vger.kernel.org>, linux-rdma <linux-rdma@vger.kernel.org>, 
+ linux-staging@lists.linux.dev, "Bos, H.J." <h.j.bos@vu.nl>, Jason Gunthorpe
+ <jgg@ziepe.ca>, intel-wired-lan@lists.osuosl.org, 
+ kgdb-bugreport@lists.sourceforge.net,
+ bcm-kernel-feedback-list@broadcom.com,  Dan Carpenter
+ <dan.carpenter@oracle.com>, Linux Media Mailing List
+ <linux-media@vger.kernel.org>, Kees Cook <keescook@chromium.org>, Arnd
+ Bergman <arnd@arndb.de>, Linux PM <linux-pm@vger.kernel.org>, intel-gfx
+ <intel-gfx@lists.freedesktop.org>,  Brian Johannesmeyer
+ <bjohannesmeyer@gmail.com>, Nathan Chancellor <nathan@kernel.org>,
+ linux-fsdevel <linux-fsdevel@vger.kernel.org>, Christophe JAILLET
+ <christophe.jaillet@wanadoo.fr>, v9fs-developer@lists.sourceforge.net, 
+ linux-tegra <linux-tegra@vger.kernel.org>, Thomas Gleixner
+ <tglx@linutronix.de>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ linux-sgx@vger.kernel.org, linux-block <linux-block@vger.kernel.org>,
+ Netdev <netdev@vger.kernel.org>,  linux-usb@vger.kernel.org, linux-wireless
+ <linux-wireless@vger.kernel.org>,  Linux Kernel Mailing List
+ <linux-kernel@vger.kernel.org>, Linux F2FS Dev Mailing List
+ <linux-f2fs-devel@lists.sourceforge.net>, 
+ tipc-discussion@lists.sourceforge.net, Linux Crypto Mailing List
+ <linux-crypto@vger.kernel.org>, dma <dmaengine@vger.kernel.org>, 
+ linux-mediatek@lists.infradead.org, Andrew Morton
+ <akpm@linux-foundation.org>,  linuxppc-dev <linuxppc-dev@lists.ozlabs.org>
+Date: Mon, 28 Feb 2022 17:28:58 -0500
+In-Reply-To: <7D0C2A5D-500E-4F38-AD0C-A76E132A390E@kernel.org>
+References: <20220228110822.491923-1-jakobkoschel@gmail.com>
+ <20220228110822.491923-3-jakobkoschel@gmail.com>
+ <2e4e95d6-f6c9-a188-e1cd-b1eae465562a@amd.com>
+ <CAHk-=wgQps58DPEOe4y5cTh5oE9EdNTWRLXzgMiETc+mFX7jzw@mail.gmail.com>
+ <282f0f8d-f491-26fc-6ae0-604b367a5a1a@amd.com>
+ <b2d20961dbb7533f380827a7fcc313ff849875c1.camel@HansenPartnership.com>
+ <7D0C2A5D-500E-4F38-AD0C-A76E132A390E@kernel.org>
+User-Agent: Evolution 3.34.4 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_141555_659179_B565AA35 
-X-CRM114-Status: UNSURE (   8.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220228_142905_508619_672846AE 
+X-CRM114-Status: GOOD (  30.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,41 +116,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-'intel,lgm-syscon', 'marvell,armada-3700-usb2-host-misc',
-'mediatek,mt8135-pctl-a-syscfg', and 'mediatek,mt8135-pctl-b-syscfg' are
-all used in DT binding examples and/or dts files, but are not
-documented. Add them to syscon.yaml as they are all trivial cases.
-
-Signed-off-by: Rob Herring <robh@kernel.org>
----
- Documentation/devicetree/bindings/mfd/syscon.yaml | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
-index eeac1cbc5a17..29d4a97f7108 100644
---- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-+++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-@@ -44,6 +44,10 @@ properties:
-               - hisilicon,hi6220-sramctrl
-               - hisilicon,pcie-sas-subctrl
-               - hisilicon,peri-subctrl
-+              - intel,lgm-syscon
-+              - marvell,armada-3700-usb2-host-misc
-+              - mediatek,mt8135-pctl-a-syscfg
-+              - mediatek,mt8135-pctl-b-syscfg
-               - microchip,sparx5-cpu-syscon
-               - mstar,msc313-pmsleep
-               - rockchip,px30-qos
--- 
-2.32.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gTW9uLCAyMDIyLTAyLTI4IGF0IDIzOjU5ICswMjAwLCBNaWtlIFJhcG9wb3J0IHdyb3RlOgo+
+IAo+IE9uIEZlYnJ1YXJ5IDI4LCAyMDIyIDEwOjQyOjUzIFBNIEdNVCswMjowMCwgSmFtZXMgQm90
+dG9tbGV5IDwKPiBKYW1lcy5Cb3R0b21sZXlASGFuc2VuUGFydG5lcnNoaXAuY29tPiB3cm90ZToK
+PiA+IE9uIE1vbiwgMjAyMi0wMi0yOCBhdCAyMTowNyArMDEwMCwgQ2hyaXN0aWFuIEvDtm5pZyB3
+cm90ZToKWy4uLl0KPiA+ID4gPiBJIGRvIHdpc2ggd2UgY291bGQgYWN0dWFsbHkgcG9pc29uIHRo
+ZSAncG9zJyB2YWx1ZSBhZnRlciB0aGUKPiA+ID4gPiBsb29wIHNvbWVob3cgLSBidXQgY2xlYXJs
+eSB0aGUgIm1pZ2h0IGJlIHVuaW5pdGlhbGl6ZWQiIEkgd2FzCj4gPiA+ID4gaG9waW5nIGZvciBp
+c24ndCB0aGUgd2F5IHRvIGRvIGl0Lgo+ID4gPiA+IAo+ID4gPiA+IEFueWJvZHkgaGF2ZSBhbnkg
+aWRlYXM/Cj4gPiA+IAo+ID4gPiBJIHRoaW5rIHdlIHNob3VsZCBsb29rIGF0IHRoZSB1c2UgY2Fz
+ZXMgd2h5IGNvZGUgaXMgdG91Y2hpbmcKPiA+ID4gKHBvcykgYWZ0ZXIgdGhlIGxvb3AuCj4gPiA+
+IAo+ID4gPiBKdXN0IGZyb20gc2tpbW1pbmcgb3ZlciB0aGUgcGF0Y2hlcyB0byBjaGFuZ2UgdGhp
+cyBhbmQgZXhwZXJpZW5jZQo+ID4gPiB3aXRoIHRoZSBkcml2ZXJzL3N1YnN5c3RlbXMgSSBoZWxw
+IHRvIG1haW50YWluIEkgdGhpbmsgdGhlCj4gPiA+IHByaW1hcnkgcGF0dGVybiBsb29rcyBzb21l
+dGhpbmcgbGlrZSB0aGlzOgo+ID4gPiAKPiA+ID4gbGlzdF9mb3JfZWFjaF9lbnRyeShlbnRyeSwg
+aGVhZCwgbWVtYmVyKSB7Cj4gPiA+ICAgICAgaWYgKHNvbWVfY29uZGl0aW9uX2NoZWNraW5nKGVu
+dHJ5KSkKPiA+ID4gICAgICAgICAgYnJlYWs7Cj4gPiA+IH0KPiA+ID4gZG9fc29tZXRoaW5nX3dp
+dGgoZW50cnkpOwo+ID4gCj4gPiBBY3R1YWxseSwgd2UgdXN1YWxseSBoYXZlIGEgY2hlY2sgdG8g
+c2VlIGlmIHRoZSBsb29wIGZvdW5kCj4gPiBhbnl0aGluZywgYnV0IGluIHRoYXQgY2FzZSBpdCBz
+aG91bGQgc29tZXRoaW5nIGxpa2UKPiA+IAo+ID4gaWYgKGxpc3RfZW50cnlfaXNfaGVhZChlbnRy
+eSwgaGVhZCwgbWVtYmVyKSkgewo+ID4gICAgcmV0dXJuIHdpdGggZXJyb3I7Cj4gPiB9Cj4gPiBk
+b19zb21ldGhpbl93aXRoKGVudHJ5KTsKPiA+IAo+ID4gU3VmZmljZT8gIFRoZSBsaXN0X2VudHJ5
+X2lzX2hlYWQoKSBtYWNybyBpcyBkZXNpZ25lZCB0byBjb3BlIHdpdGgKPiA+IHRoZSBib2d1cyBl
+bnRyeSBvbiBoZWFkIHByb2JsZW0uCj4gCj4gV29uJ3Qgc3VmZmljZSBiZWNhdXNlIHRoZSBlbmQg
+Z29hbCBvZiB0aGlzIHdvcmsgaXMgdG8gbGltaXQgc2NvcGUgb2YKPiBlbnRyeSBvbmx5IHRvIGxv
+b3AuIEhlbmNlIHRoZSBuZWVkIGZvciBhZGRpdGlvbmFsIHZhcmlhYmxlLgoKV2VsbCwgeWVzLCBi
+dXQgbXkgb2JqZWN0aW9uIGlzIG1vcmUgdG8gdGhlIHNpemUgb2YgY2h1cm4gdGhhbiB0aGUKZGVz
+aXJlIHRvIGRvIGxvb3AgbG9jYWwuICBJJ20gbm90IGV2ZW4gc3VyZSBsb29wIGxvY2FsIGlzIHBv
+c3NpYmxlLApiZWNhdXNlIGl0J3MgYWx3YXlzIGFubm95ZWQgbWUgdGhhdCBmb3IgKGludCBpID0g
+MDsgLi4uICBpbiBDKysgZGVmaW5lcwppIGluIHRoZSBvdXRlciBzY29wZSBub3QgdGhlIGxvb3Ag
+c2NvcGUsIHdoaWNoIGlzIHdoeSBJIG5ldmVyIHVzZSBpdC4KCkhvd2V2ZXIsIGlmIHRoZSBkZXNp
+cmUgaXMgcmVhbGx5IHRvIHBvaXNvbiB0aGUgbG9vcCB2YXJpYWJsZSB0aGVuIHdlCmNhbiBkbwoK
+I2RlZmluZSBsaXN0X2Zvcl9lYWNoX2VudHJ5KHBvcywgaGVhZCwgbWVtYmVyKQkJCQlcCglmb3Ig
+KHBvcyA9IGxpc3RfZmlyc3RfZW50cnkoaGVhZCwgdHlwZW9mKCpwb3MpLCBtZW1iZXIpOwlcCgkg
+ICAgICFsaXN0X2VudHJ5X2lzX2hlYWQocG9zLCBoZWFkLCBtZW1iZXIpICYmICgocG9zID0gTlVM
+TCkgPT0gTlVMTDsJCQlcCgkgICAgIHBvcyA9IGxpc3RfbmV4dF9lbnRyeShwb3MsIG1lbWJlcikp
+CgpXaGljaCB3b3VsZCBhdCBsZWFzdCBzZXQgcG9zIHRvIE5VTEwgd2hlbiB0aGUgbG9vcCBjb21w
+bGV0ZXMuCgo+IEJlc2lkZXMsIHRoZXJlIGFyZSBubyBndWFyYW50ZWVzIHRoYXQgcGVvcGxlIHdv
+bid0Cj4gZG9fc29tZXRoaW5nX3dpdGgoZW50cnkpIHdpdGhvdXQgdGhlIGNoZWNrIG9yIHdvbid0
+IGNvbXBhcmUgZW50cnkgdG8KPiBOVUxMIHRvIGNoZWNrIGlmIHRoZSBsb29wIGZpbmlzaGVkIHdp
+dGggYnJlYWsgb3Igbm90LgoKSSBnZXQgdGhlIHdpZGVyIGdvYWwsIGJ1dCB3ZSBoYXZlIHRvIHBh
+dGNoIHRoZSBwcm9ibGVtIGNhc2VzIG5vdyBhbmQgYQpzaW1wbGUgb25lLWxpbmVyIGlzIGJldHRl
+ciB0aGFuIGEgbGFyZ2VyIHBhdGNoIHRoYXQgbWF5IG9yIG1heSBub3Qgd29yawppZiB3ZSBldmVy
+IGFjaGlldmUgdGhlIGxvY2FsIGRlZmluaXRpb24gb3IgdmFsdWUgcG9pc29uaW5nIGlkZWEuICBJ
+J20KYWxzbyBmYWlybHkgY2VydGFpbiBjb2NjaW5lbGxlIGNhbiBjb21lIHVwIHdpdGggYSB1c2Ug
+d2l0aG91dCBjaGVja2luZwpmb3IgbG9vcCBjb21wbGV0aW9uIHNlbWFudGljIHBhdGNoIHdoaWNo
+IHdlIGNhbiBhZGQgdG8gMGRheS4KCkphbWVzCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1t
+ZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
