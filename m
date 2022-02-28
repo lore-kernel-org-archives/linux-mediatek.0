@@ -4,74 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49148C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 12:33:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8F07C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 12:33:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rZTVVldsdyfXhlGNTfKCxrYfjiyKyASXXwgD1jlX5FI=; b=qCS3+zI5fWEnq0
-	Q0c1nFnpIwJ0gs10T/WiH5m2KaI0JdYUqi4r7g2uDFWPxuUyg6QaCaOZ9I6Hr6yClFIx7C4HR/Jr6
-	XLvW9rsDfTSiOWKegAfCzQh4CTn+5SRKRA0oeb1XEN17XQO0uVv11YNDwwItxbp4f5gkhtJy5GsDd
-	ycCzchfTn/tvQxpLCJezzP2N0rmJTllbwYa0Mm7JW1mpQscEP11ofnJFe01T4Y9XUjsR3Q+ATaAQt
-	5mul1AmcrusYlxCm2Z+oyL/lNAa1SVQ23ZGJA5uVzUgQANC/cqXh16IhfApYaJcT4xbxEsDAoHGhI
-	Sl4lxTTwPMwmaSdxf13g==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KtC1ZVjVsrjQWHphqRQAO+GaTarW2UCtU0sDB7OhLOg=; b=a70CYFV2CwsT5H
+	SnBp3z4e0n3bsHYZvFLrdoGL7G9y57oJRJ3YoMK4McqodzMcmwBLN7NC+8uqGq9Pmr8cZ8UvOMR16
+	m3AZRAnj+pVFqA6yDdV1+V8/vNnnLS1uMMbUT++SfsYMnb1fJwutfBBk6fIsFixSt6FTcryidsWH5
+	tXI80INEJWvRrC6cjXxF8sTdXHnNQPA0h9hVl6sluJ33v+3LtxEAnALUO0cBCBuaNXncHWkWbM4Wi
+	jETpL4kf4PQXn55EKRI4pO4XJUuumB+qOwLeqgrof55nEVxhc1XvMEUeLooDaYhfpJJBo1Zc5zrWM
+	WtVBHdEtBGWJK6LRuVNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOfDe-00CEdW-1z; Mon, 28 Feb 2022 12:33:38 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1nOfDl-00CEi0-Ua; Mon, 28 Feb 2022 12:33:45 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOelN-00C3qS-MQ
- for linux-mediatek@lists.infradead.org; Mon, 28 Feb 2022 12:04:29 +0000
-Received: by mail-lf1-x136.google.com with SMTP id d23so20888043lfv.13
- for <linux-mediatek@lists.infradead.org>; Mon, 28 Feb 2022 04:04:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=8WnObInMC2ofWUsTKYtPij+k1Wh0DXe/u1zG3p1IPf4=;
- b=JqfBkaGJmDTS5BLvufjhP/LEar/dzjQ6i7GPUZzQbUUApCYFA5AQYeQ/dfEM6n3HG6
- CaZx9w0fjnDcQCHoNddRQS/A54mr7vTrErGBM5tIFsv7T/+VRPuNDLeW23vIDovdwSP7
- 1YlExP3x/CuK+MMWXD+8VX40ycwwMQg9kW/7AfxgyIM/5HUHjOIhV6o04w+Sz1TY6zGJ
- yK5nlmPf9dv+VtE25IFeAdYzaQl0yQmQdb0DFN6YWjq3GJl8OCOtYnx1B1DzLqs0Htc5
- BO28nMs1x1Ceqic4zFgJpRukkI19rYnBqN13EUOvPUo4O19aDegrb8WhpA5zTdnQRqGM
- OE9Q==
+ id 1nOent-00C4ZX-T4; Mon, 28 Feb 2022 12:07:03 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id lw4so24252762ejb.12;
+ Mon, 28 Feb 2022 04:07:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=mpq6EOSgaJN9TDHyutZ1vk7Ts/tQX7VWZG2tuQLEVnE=;
+ b=P6Qm9QV+tKwfj02RvG70Y6RM578oBE7xk1h9xLRDl0Phoeno/cOg2X5jGG320h7a80
+ 51RqQzzCwbkind1CCh/PsD+YJ2xLuw3nTu9DY+Zris5SVOV1FI+8DsU52Jy5KlVydcNu
+ G0XxThLJxiMxymk0pHTiYIUYA6Uj3RhvFK2FvOkFF3qdetV9R5zYggWzNl+ojj1OXKZf
+ MkNjwD1Q29EHNb+3aSEEQSq9r3HlkkV49QyRIpbAEX1BAYg/I0l3VyVoctyp9PVfLMdm
+ 3mwm8jDaSc7WWe042oo4mIB/QOs4nHzHS6+i8MWcrLd/SBvvylJKxoeMQwrp3MTt3slq
+ 2wxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=8WnObInMC2ofWUsTKYtPij+k1Wh0DXe/u1zG3p1IPf4=;
- b=HOCu6o7mpz3feJEK5+Xnc3Kli/Xvb/5xNTJV56Pc/HnJwp8xT2AahEYKnwDEQQgfZk
- ARNrBUYVvWjGYIwxBHSHrR7y06pVUrkZe3d49zTlR6Ot/XNW16Tbmd6nDPp6oOKwoOPF
- pz27VMfCb3WGUZbOuee//ENIbZlrV8g2clfiQuEnCPFSasFmzymGkZLfAw06NSYeDtqU
- Z++m5qFNU0//zB6R68ckeaBDpXbxe0/DD8jtoODIVY7J4PZAF21fgDnUUttOCAPSih+8
- psfg3D2Hgih6/2gMBwI6Q+QLy/IwSkQlsPR4iXUrYrd1tzh1+J56HcYzJZFoCtqUoJO7
- hM9g==
-X-Gm-Message-State: AOAM530s0VGgcKApuNFUnFRcxC0EXd/+4RtSzs7QUtVEseZFysZ5VgfZ
- SUCkxZL1dLxuOWAfJ3szoF0qrFymYF+7mdxqFDA8gw==
-X-Google-Smtp-Source: ABdhPJxpZi2fIFjY4KRz6vVxIdDcBSJGElXWDH3T1Fddx90I97shcxEvbgmXGqeayZecnO4XROSRNKyZGUYTNmYasOI=
-X-Received: by 2002:ac2:5de4:0:b0:443:5b80:d4c4 with SMTP id
- z4-20020ac25de4000000b004435b80d4c4mr12437782lfq.373.1646049863342; Mon, 28
- Feb 2022 04:04:23 -0800 (PST)
-MIME-Version: 1.0
-References: <1644395927-4138-1-git-send-email-wangqing@vivo.com>
- <CAPDyKFqg5N1tCqQ2u2jt5qU0qLuDJRSJRtq_aMVDc7XNDbRvkw@mail.gmail.com>
- <bcd6688f-6f42-ca8f-ab9c-978eeff4f4e3@wanadoo.fr>
-In-Reply-To: <bcd6688f-6f42-ca8f-ab9c-978eeff4f4e3@wanadoo.fr>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 28 Feb 2022 13:03:47 +0100
-Message-ID: <CAPDyKFo-4hkTo8F9q4+BmxUH_Y4nk_K0N20q53xrdJLAFRutcQ@mail.gmail.com>
-Subject: Re: [PATCH] mmc: mtk-sd: use div64_u64() instead of do_div()
-To: Qing Wang <wangqing@vivo.com>,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=mpq6EOSgaJN9TDHyutZ1vk7Ts/tQX7VWZG2tuQLEVnE=;
+ b=6evYLouDOgbcMcO2WNgxr5gYTM6HAjq6olegkKCJDhmi0J9ZDvXthT7czjdUn/z1DI
+ zlDucEwZgyCjweM7zLKddu1YooOV1lq5k9cBTjwm0cXt+tRARBlVpcafLY78ETm75ndb
+ 0gnepczOhYhhBmr9xK4nK98bFA83UeY8GuLgy56ibA4zhBCtMtj2aHMooGvHX//+22R6
+ VG1XVZrl2Kl7Rampfh6hwJMMXcY7sBySerDfu/S9CM9xN+xDXkIEAP/u2BSCYaFwPoBy
+ d1uUyrCXellXzAOU8cuo+Kz25ixAnvPSOUCGjzfRwOKZ2R5snA3z4S2uySeuPwJnYzNF
+ zzUg==
+X-Gm-Message-State: AOAM531h+QCZ9IXBD4m0sC9640nJQA35xR6Fu/xHnP1vIkxoML7Qki2m
+ rXF/Y7UZzowqKBlI0k0P9AU=
+X-Google-Smtp-Source: ABdhPJw3Wj1NaKaNlFGnSPXqnbDgppea1F4wGZoXZbWDfwDJgXssQhrPLcI1GM9ROPIg4DuPtt07Tg==
+X-Received: by 2002:a17:907:248a:b0:6ce:e03c:e1df with SMTP id
+ zg10-20020a170907248a00b006cee03ce1dfmr14689906ejb.258.1646050020495; 
+ Mon, 28 Feb 2022 04:07:00 -0800 (PST)
+Received: from smtpclient.apple ([2a02:8109:9d80:3f6c:957a:1d13:c949:d1f3])
+ by smtp.gmail.com with ESMTPSA id
+ d23-20020a1709067a1700b006d0ebe4af89sm4282959ejo.20.2022.02.28.04.06.58
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 28 Feb 2022 04:07:00 -0800 (PST)
+Mime-Version: 1.0 (Mac OS X Mail 15.0 \(3693.60.0.1.1\))
+Subject: Re: [PATCH 2/6] treewide: remove using list iterator after loop body
+ as a ptr
+From: Jakob Koschel <jakobkoschel@gmail.com>
+In-Reply-To: <Yhyv42ONIxTj04mg@kroah.com>
+Date: Mon, 28 Feb 2022 13:06:57 +0100
+Cc: Linus Torvalds <torvalds@linux-foundation.org>,
+ linux-arch <linux-arch@vger.kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Arnd Bergman <arnd@arndb.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Kees Cook <keescook@chromium.org>, Mike Rapoport <rppt@kernel.org>,
+ "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
+ Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
+ Cristiano Giuffrida <c.giuffrida@vu.nl>, "Bos, H.J." <h.j.bos@vu.nl>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ Dan Carpenter <dan.carpenter@oracle.com>, Jason Gunthorpe <jgg@ziepe.ca>,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ Nathan Chancellor <nathan@kernel.org>,
+ linux-arm-kernel@lists.infradead.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linuxppc-dev@lists.ozlabs.org, linux-sgx@vger.kernel.org,
+ drbd-dev@lists.linbit.com, linux-block@vger.kernel.org,
+ linux-iio@vger.kernel.org, linux-crypto@vger.kernel.org,
+ dmaengine@vger.kernel.org, linux1394-devel@lists.sourceforge.net,
+ amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, nouveau@lists.freedesktop.org,
+ linux-rdma@vger.kernel.org, linux-media@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-scsi@vger.kernel.org, linux-staging@lists.linux.dev,
+ linux-usb@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
+ bcm-kernel-feedback-list@broadcom.com, linux-tegra@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, kvm@vger.kernel.org,
+ linux-cifs@vger.kernel.org, samba-technical@lists.samba.org,
+ linux-f2fs-devel@lists.sourceforge.net, linux-fsdevel@vger.kernel.org,
+ kgdb-bugreport@lists.sourceforge.net, v9fs-developer@lists.sourceforge.net,
+ tipc-discussion@lists.sourceforge.net, alsa-devel@alsa-project.org
+Message-Id: <79FCD5F4-0EBA-4E3F-8B3F-D450BBA10367@gmail.com>
+References: <20220228110822.491923-1-jakobkoschel@gmail.com>
+ <20220228110822.491923-3-jakobkoschel@gmail.com> <Yhyv42ONIxTj04mg@kroah.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+X-Mailer: Apple Mail (2.3693.60.0.1.1)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_040425_800626_4E6F0F22 
-X-CRM114-Status: GOOD (  19.59  )
+X-CRM114-CacheID: sfid-20220228_040702_011534_2739AA0F 
+X-CRM114-Status: GOOD (  22.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,45 +115,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAxNyBGZWIgMjAyMiBhdCAyMTowMCwgQ2hyaXN0b3BoZSBKQUlMTEVUCjxjaHJpc3Rv
-cGhlLmphaWxsZXRAd2FuYWRvby5mcj4gd3JvdGU6Cj4KPiBMZSAxNy8wMi8yMDIyIMOgIDE2OjM5
-LCBVbGYgSGFuc3NvbiBhIMOpY3JpdCA6Cj4gPiBPbiBXZWQsIDkgRmViIDIwMjIgYXQgMDk6Mzks
-IFFpbmcgV2FuZyA8d2FuZ3FpbmdAdml2by5jb20+IHdyb3RlOgo+ID4+Cj4gPj4gRnJvbTogV2Fu
-ZyBRaW5nIDx3YW5ncWluZ0B2aXZvLmNvbT4KPiA+Pgo+ID4+IGRvX2RpdigpIGRvZXMgYSA2NC1i
-eS0zMiBkaXZpc2lvbi4KPiA+PiBXaGVuIHRoZSBkaXZpc29yIGlzIHU2NCwgZG9fZGl2KCkgdHJ1
-bmNhdGVzIGl0IHRvIDMyIGJpdHMsIHRoaXMgbWVhbnMgaXQKPiA+PiBjYW4gdGVzdCBub24temVy
-byBhbmQgYmUgdHJ1bmNhdGVkIHRvIHplcm8gZm9yIGRpdmlzaW9uLgo+ID4+Cj4gPj4gZml4IGRv
-X2Rpdi5jb2NjaSB3YXJuaW5nOgo+ID4+IGRvX2RpdigpIGRvZXMgYSA2NC1ieS0zMiBkaXZpc2lv
-biwgcGxlYXNlIGNvbnNpZGVyIHVzaW5nIGRpdjY0X3U2NCBpbnN0ZWFkLgo+ID4+Cj4gPj4gU2ln
-bmVkLW9mZi1ieTogV2FuZyBRaW5nIDx3YW5ncWluZ0B2aXZvLmNvbT4KPiA+Cj4gPiBBcHBsaWVk
-IGZvciBuZXh0LCB0aGFua3MhCj4KPgo+IFRoaXMgaXMgd3JvbmcuCj4KPiBTZWUgWzFdLgoKVGhh
-bmtzIGZvciByZXBvcnRpbmcgdGhpcywgSSBhbSBkcm9wcGluZyB0aGUgcGF0Y2ggZnJvbSBteSBu
-ZXh0IGJyYW5jaCEKClNlZSBtb3JlIGNvbW1lbnRzIGJlbG93LgoKPgo+Cj4gV2FuZyBRaW5nLCB5
-b3Ugc2hvdWxkIHJlYWxseSB3YXJuIGFsbCB0aGUgcGVvcGxlIHlvdSBoYXZlIHNlbnQgc3VjaCBw
-YXRjaGVzLgo+Cj4gQ0oKPgo+IFsxXToKPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1r
-ZXJuZWwvMTliOTY5NzItY2VlNy05MzdmLTIxY2UtYzc4OTgyZWQyMDQ4QGxpbmFyby5vcmcvCj4K
-Pgo+ID4KPiA+IEtpbmQgcmVnYXJkcwo+ID4gVWZmZQo+ID4KPiA+Cj4gPj4gLS0tCj4gPj4gICBk
-cml2ZXJzL21tYy9ob3N0L210ay1zZC5jIHwgMiArLQo+ID4+ICAgMSBmaWxlIGNoYW5nZWQsIDEg
-aW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4gPj4KPiA+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9tbWMvaG9zdC9tdGstc2QuYyBiL2RyaXZlcnMvbW1jL2hvc3QvbXRrLXNkLmMKPiA+PiBpbmRl
-eCA2NTAzN2UxLi43NzdjOWE4Cj4gPj4gLS0tIGEvZHJpdmVycy9tbWMvaG9zdC9tdGstc2QuYwo+
-ID4+ICsrKyBiL2RyaXZlcnMvbW1jL2hvc3QvbXRrLXNkLmMKPiA+PiBAQCAtNzY2LDcgKzc2Niw3
-IEBAIHN0YXRpYyB1NjQgbXNkY190aW1lb3V0X2NhbChzdHJ1Y3QgbXNkY19ob3N0ICpob3N0LCB1
-NjQgbnMsIHU2NCBjbGtzKQo+ID4+ICAgICAgICAgICAgICAgICAgY2xrX25zICA9IDEwMDAwMDAw
-MDBVTEw7Cj4gPj4gICAgICAgICAgICAgICAgICBkb19kaXYoY2xrX25zLCBtbWMtPmFjdHVhbF9j
-bG9jayk7Cj4gPj4gICAgICAgICAgICAgICAgICB0aW1lb3V0ID0gbnMgKyBjbGtfbnMgLSAxOwo+
-ID4+IC0gICAgICAgICAgICAgICBkb19kaXYodGltZW91dCwgY2xrX25zKTsKPiA+PiArICAgICAg
-ICAgICAgICAgZGl2NjRfdTY0KHRpbWVvdXQsIGNsa19ucyk7CgpJIGd1ZXNzIGEgcHJvcGVyIHBh
-dGNoIHdvdWxkIGJlIHRvIGNvbnZlcnQgY2xrX25zIGludG8gYW4gdTMyIGluc3RlYWQhPwoKPiA+
-PiAgICAgICAgICAgICAgICAgIHRpbWVvdXQgKz0gY2xrczsKPiA+PiAgICAgICAgICAgICAgICAg
-IC8qIGluIDEwNDg1NzYgc2NsayBjeWNsZSB1bml0ICovCj4gPj4gICAgICAgICAgICAgICAgICB0
-aW1lb3V0ID0gRElWX1JPVU5EX1VQKHRpbWVvdXQsIEJJVCgyMCkpOwo+ID4+IC0tCgpLaW5kIHJl
-Z2FyZHMKVWZmZQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1tZWRpYXRlawo=
+
+
+> On 28. Feb 2022, at 12:20, Greg KH <gregkh@linuxfoundation.org> wrote:
+> 
+> On Mon, Feb 28, 2022 at 12:08:18PM +0100, Jakob Koschel wrote:
+>> If the list does not contain the expected element, the value of
+>> list_for_each_entry() iterator will not point to a valid structure.
+>> To avoid type confusion in such case, the list iterator
+>> scope will be limited to list_for_each_entry() loop.
+>> 
+>> In preparation to limiting scope of a list iterator to the list traversal
+>> loop, use a dedicated pointer to point to the found element.
+>> Determining if an element was found is then simply checking if
+>> the pointer is != NULL.
+>> 
+>> Signed-off-by: Jakob Koschel <jakobkoschel@gmail.com>
+>> ---
+>> arch/x86/kernel/cpu/sgx/encl.c       |  6 +++--
+>> drivers/scsi/scsi_transport_sas.c    | 17 ++++++++-----
+>> drivers/thermal/thermal_core.c       | 38 ++++++++++++++++++----------
+>> drivers/usb/gadget/configfs.c        | 22 ++++++++++------
+>> drivers/usb/gadget/udc/max3420_udc.c | 11 +++++---
+>> drivers/usb/gadget/udc/tegra-xudc.c  | 11 +++++---
+>> drivers/usb/mtu3/mtu3_gadget.c       | 11 +++++---
+>> drivers/usb/musb/musb_gadget.c       | 11 +++++---
+>> drivers/vfio/mdev/mdev_core.c        | 11 +++++---
+>> 9 files changed, 88 insertions(+), 50 deletions(-)
+> 
+> The drivers/usb/ portion of this patch should be in patch 1/X, right?
+
+I kept them separate since it's a slightly different case.
+Using 'ptr' instead of '&ptr->other_member'. Regardless, I'll split
+this commit up as you mentioned.
+
+> 
+> Also, you will have to split these up per-subsystem so that the
+> different subsystem maintainers can take these in their trees.
+
+Thanks for the feedback.
+To clarify I understand you correctly:
+I should do one patch set per-subsystem with every instance/(file?)
+fixed as a separate commit?
+
+If I understand correctly, I'll repost accordingly.
+
+> 
+> thanks,
+> 
+> greg k-h
+
+thanks,
+Jakob Koschel
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
