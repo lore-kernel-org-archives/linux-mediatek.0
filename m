@@ -4,188 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2987C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 13:28:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08031C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 13:56:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RqN6y0jtGYr+EhsE9N93fV5pih5EQ/YciefvU2Xcp2s=; b=SfwHyoWVNFNQlE
-	JumFQ2cTlegq1ETkRDwcPc7n+f6lL/ABHOF6da9edJnyo+CiBChQGU8nzx6QoX7F8kno0AlqBvx2s
-	ec5/U/jnaxvfhaNQwyznovwFrZhjPy3P4bDpH7CbfdHipIKktaXU6FP4AjVQmfb/Dhttu2Rc+X8bc
-	mDHTGfVGfFObQiceZKhYW91LlBDyeTXdFD2mpMZ1jN5p+fSgpeLDIOjCqxSjqpwUqCAYdflhKoU0Z
-	VdbM2JHil3VxPP0GMtuWAyFASQLuP/jnCXrr0T/aHseKRSV+pFA+5AFwHZpeiDd6vMj6AK/DvKKGI
-	h+zun3Ip2PWFy7gAzwRg==;
+	List-Owner; bh=MIOF3O9meVIhTGmlX8O/mXXB6/M6pJqpeDy3bOW1Ls8=; b=iXH+OzrgFxxh8p
+	9pjMiHtkgiwaldRg0dSCLFUQ0FvmE/ZYI+/fWrHU2qj8LLX3x21KwV85cYB6ZXXwjrIrCGw/+pBut
+	5VovkJJ334B4xclQiEOrEjf7uO9z7CBVFZJVspV4ImHT8mqKvVzey6zVsS24mbWg+FXSBEycENDVn
+	GPxWsLbJ5QywVpBbNyE7ilixxfQDvDe6MdsBNyeHjxHCSJh7LciAIlkzVX5pcfOHWFEnJEhYtgslf
+	FBD/6KlG+7D6fFufBT2c82QXkvRZ2TPgrW0+PNhSJeq7BZg2206oHUpjzsTMH6k5hyODSXl2R+XZz
+	VnnvQnTvewtkTIQI9kUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOg4h-00CZa5-5G; Mon, 28 Feb 2022 13:28:27 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1nOgVP-00CiI3-BM; Mon, 28 Feb 2022 13:56:03 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOfwP-00CVm2-Os; Mon, 28 Feb 2022 13:19:59 +0000
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 21S9tlXj030174; 
- Mon, 28 Feb 2022 13:19:32 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : content-type : in-reply-to :
- mime-version; s=corp-2021-07-09;
- bh=BpCpFRWadI3hcdW4WO/cYAAjPiz3iVG024rjbP9fhjU=;
- b=EnhnqTm4q0MKHVuEI6U1DJ2boZvsKA3UCLT41/j+tiRk5dEgMD/Llvjm87V3MxNffieY
- HkvOxt9Se4EkbSGMXV+7e5wHnJxgIAIpYl0aEZsWRobms+FxjtA5D7arEreNS/9qVWfB
- ZoSMkRDDkS+e23PQYcFfjtEB9O/M30+k/m0F159hNSjU2qPkI3MRiC6/JtOAMHM83S7c
- Vui73gKfPfrs0qC750qmEkLv/Ex+hHiEq00Dw/1kCEnMFe2ZzQt6FpPr9IE3ESL/XPIW
- b8HvfgXKRZXLQBRQofKp6ARLQ9Dp3Z7NsEM0Guz9TjMYh59qrCcoCSQMPvzu3Dt3/eiV 6Q== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by mx0b-00069f02.pphosted.com with ESMTP id 3efamcc5ge-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 28 Feb 2022 13:19:32 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 21SCtsAS165736;
- Mon, 28 Feb 2022 13:19:30 GMT
-Received: from nam12-bn8-obe.outbound.protection.outlook.com
- (mail-bn8nam12lp2174.outbound.protection.outlook.com [104.47.55.174])
- by userp3030.oracle.com with ESMTP id 3ef9avg2xs-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 28 Feb 2022 13:19:29 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=hbuQs9i0n96DInX3/LGiPsRvJK7KMUFc8d42jQoJn4T54r89xaCXYE9Fry5o8kD5TqL9iqKYmkQ9PnUEV2PnL81UCG8M6Wg6/HAoUq9MmLg4RvO4O/UzQIr3dPtYzaitTaPQoCNfxGAqF5oKR8LoiwUajHNBOjXjzHZz5lZH+DCI7WlvAuuTnZhgDdnQR3O6ZR3psHyVAI6ULNYtH2OzfHY/Oe9uxEyCSGJToqCB8KYzrHPtgliPjNFp9zOjLdh0T0OxJIWSJtCSxa0HZG/L37i6mj1KNOfUoCW5kzhFfqpO5ZPWm8R5/YMODcX/dMG+gb6yfsFIz0dOUc0+jtTkEw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=BpCpFRWadI3hcdW4WO/cYAAjPiz3iVG024rjbP9fhjU=;
- b=b9c5UZVgcH3UVg+V/9l4tpIL1XGV2Af0Jyg2Vi7GsboJNGsOXPqR1ZfJ/bnTaO1xEkPiP21ssQm79t6PuQ0Lw71+CjaoeHREL7YAuvdyNBNBu4s8SibeoxW+2LCDrRzmJhBWlOg6UpdnazDdfNFeKQm/x7ZswT/eGSFn92JGrDKXxyLPWT02iciv1xHIY8TcbvvjgtyRwAMeekj1cLlte5tWV6b0LcQINCcuG3EAGF2jd6VepfXLCWCwAiJ7IYe8s7ZyarMT5nZ2ts03YfKE2nyaQxehCu25wOqnp1nBzg3Fx+ljnV3gwuYW8FJgvXCu+JTFEaCzcqaEkL3psTlkyQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=BpCpFRWadI3hcdW4WO/cYAAjPiz3iVG024rjbP9fhjU=;
- b=hs1jQOzgSS9R9uO5OVGNeJK8c//w2LBWBpZDKq/FmikY7dr5bRKkpm6/g7sa5xINqp1HY3K9rRa54D79sxZYgWztI+Zy73apvOpGPDycjZfq6St8wZ/lZsEmUaEVQsP8P8xijwrZ6iI3qD6JgZqCuHALA+bjbC2NC9apxQsevQ8=
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by DM6PR10MB2572.namprd10.prod.outlook.com
- (2603:10b6:5:b3::23) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5017.26; Mon, 28 Feb
- 2022 13:19:26 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::2c3d:92b5:42b3:c1c5]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::2c3d:92b5:42b3:c1c5%4]) with mapi id 15.20.5017.027; Mon, 28 Feb 2022
- 13:19:26 +0000
-Date: Mon, 28 Feb 2022 16:18:44 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Jakob Koschel <jakobkoschel@gmail.com>
-Cc: Linus Torvalds <torvalds@linux-foundation.org>,
- linux-arch <linux-arch@vger.kernel.org>,
- Thomas Gleixner <tglx@linutronix.de>, Arnd Bergman <arnd@arndb.de>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Kees Cook <keescook@chromium.org>, Mike Rapoport <rppt@kernel.org>,
- "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
- Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
- Cristiano Giuffrida <c.giuffrida@vu.nl>, "Bos, H.J." <h.j.bos@vu.nl>,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- Jason Gunthorpe <jgg@ziepe.ca>,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- Nathan Chancellor <nathan@kernel.org>,
- linux-arm-kernel@lists.infradead.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linuxppc-dev@lists.ozlabs.org, linux-sgx@vger.kernel.org,
- drbd-dev@lists.linbit.com, linux-block@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-crypto@vger.kernel.org,
- dmaengine@vger.kernel.org, linux1394-devel@lists.sourceforge.net,
- amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, nouveau@lists.freedesktop.org,
- linux-rdma@vger.kernel.org, linux-media@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-scsi@vger.kernel.org, linux-staging@lists.linux.dev,
- linux-usb@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
- bcm-kernel-feedback-list@broadcom.com, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org, kvm@vger.kernel.org,
- linux-cifs@vger.kernel.org, samba-technical@lists.samba.org,
- linux-f2fs-devel@lists.sourceforge.net, linux-fsdevel@vger.kernel.org,
- kgdb-bugreport@lists.sourceforge.net, v9fs-developer@lists.sourceforge.net,
- tipc-discussion@lists.sourceforge.net, alsa-devel@alsa-project.org
-Subject: Re: [PATCH 1/6] drivers: usb: remove usage of list iterator past the
- loop body
-Message-ID: <20220228131844.GD2812@kadam>
-References: <20220228110822.491923-1-jakobkoschel@gmail.com>
- <20220228110822.491923-2-jakobkoschel@gmail.com>
- <20220228112413.GA2812@kadam>
- <E31E215E-C409-40B8-8452-57E70C91484C@gmail.com>
-Content-Disposition: inline
-In-Reply-To: <E31E215E-C409-40B8-8452-57E70C91484C@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: CTXP275CA0011.ZAFP275.PROD.OUTLOOK.COM (2603:1086:100::23)
- To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
+ id 1nOgQF-00CgdO-Vc; Mon, 28 Feb 2022 13:50:45 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id C45121F438C6
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1646056242;
+ bh=01LHGkJJ+DpNYyT1azd35ZIb6hFj6cZ6HVkPFWhLSpg=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=EVphFN2nlSfP7QnVMQPprWeHY3LGcr4CNLIyJwc93JAON0XRrHPUEBxJtTps4YWN/
+ teZLX3YIek+zUtUDvBSoQrBSI/MMaewUqah04AgMl1Q2EoUcX49lKK3o3X3lDFTBeQ
+ Ciwc4QZJbinmesi65g4Cksnl/DPy8HmKBYR1dBf3CG73Y2GP3KeK5HTIkqXRSKZgHR
+ 6g7KLIla/2XXP7PKHafiVilugVgEELIR4r3POzlUd375pz3+5AaS+yT3BOAkd7enBY
+ wLsHX+VBenM5SuXKynOeeyhdGojSDhCTFd+XPt7gt+38YBVce7LBPgpfWq7bQghohU
+ ob9f2ZHuNUTSg==
+Message-ID: <7ba0ee87-c193-9834-d0b4-ff3e06ced82b@collabora.com>
+Date: Mon, 28 Feb 2022 14:50:37 +0100
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: e8cfe4de-c3f8-4e34-8a93-08d9fabcf163
-X-MS-TrafficTypeDiagnostic: DM6PR10MB2572:EE_
-X-Microsoft-Antispam-PRVS: <DM6PR10MB25729C5A6710473BFE9938598E019@DM6PR10MB2572.namprd10.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: l/7Gjr4hc9UR3UILFFCevCzRFccoBYUL3t/RwWvXOz3DK+azLgEu94qZg3pCfJZ7vXJypoTb2iBBqvHUSLWbPny1NUYdjnqJjCmNc+kX1m8iMETw2tX2Duanns/sRhTwjF5+FzSi/7iLgvydxCUTKKH3wzTi4EetCYfX5jEKn+XcWom9zySyjobGg/HwhlkMTUgGXAQKr6nHPuKrUbF4oJRbe4+RZog87FC6sg9QDWU9GpMKOqdWgopZdA0qyRp0D5RmlB1UmFbHRTka8sICTUtKVNSe+BNyhh1KofW3EpNC2W6yXIsKt+XZ2meR43B0gs7OIET3gYTp1t6iCUEwN1Cj4YD1U7/MC5pZcYKzoIPRDSj+FGnKvTOdSquJzDVXWmOaoCvVB6T6xRvW4OqAJ+OPKd0Kuvq8J+RQAWlm3J7N1rZEFIEMF8KL5gnPmg6AmYik3JfxsHEm8arbWnfH6jdXJyo1Wzmhyry8fq1sEhdO+cXvJk1Tx24SVxrksJln5ybIhopXHJ5Io6pPZhM8Ywyr6fhk9BScyyJpQh3B32CVyunfsCaCuIAjrMPj1ZDi2ibb5jxRQNof4TqAB9bzjkhrjXkkh3PD8RXcR3J/fXQBTtc9AEhpuVac9YuWLU99Zy8qo1wJjvLX2Q00L2iVtqeXcF2fu7E12Wi/TLz1WaMAN6T0e1h4pwM0GIRw4aQiQjLbbfkkC+JcFfsTPKZBuQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(7916004)(366004)(83380400001)(38100700002)(38350700002)(86362001)(9686003)(6512007)(316002)(6506007)(52116002)(26005)(186003)(1076003)(6666004)(54906003)(508600001)(6916009)(6486002)(44832011)(8936002)(7416002)(7406005)(7366002)(5660300002)(33716001)(2906002)(4326008)(8676002)(66946007)(66556008)(66476007)(33656002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?XA8iGyh6ctCkhMfSlkfeEgOv/3Uj9MpVZhYEQ+jbT3g1fRRLGDSael/lFx1r?=
- =?us-ascii?Q?tBZT/BaSLcLUq30E/u4Q+WjZpdZ1p/Kg+yG+5G/0mWVcacr+63Ukwge9ofl8?=
- =?us-ascii?Q?ecclUH8cz9+0b/oN6g6YSjGHGL5aU0i8lq3aeufaxdWce2sCAxIRBi34ppfu?=
- =?us-ascii?Q?1/aEJEtRM40TsNlF7gWblDnq4kh/3FiW6YT4SY5/RnSTkWo1WUzTvdl5VIsq?=
- =?us-ascii?Q?F2j+ft1yyXj+Pj5t1/6ImQfmK44X2KDv6h40b7u/k1udppLKMl6vbjfKdlmb?=
- =?us-ascii?Q?JmgzcpJWXwtTkWkqOGUnAWgRCryZvpeSx6nl3Aym+TMNI87gDzILT5vsDwZN?=
- =?us-ascii?Q?E+wwcUdPXTnBH23JMSUSVbzrrBR7QgbDoWm7sXGw+LViP2ggH57D+4PDoPD0?=
- =?us-ascii?Q?uu4d4Uiq7BueHnwqcI0FXuWCZSvBDZM56cnUsoobVkDPNirz+gXUQlKgKREi?=
- =?us-ascii?Q?eGzYtiU4RcyMA2enWSu9yNVxgNzAsH4h92A6gRR9Fl59x8mIj2mN3pseONA1?=
- =?us-ascii?Q?jYI07ty3g4jwSMXBeyM8MkCuHWZ8tF12hK3pUy8znhWZOl0GJ4dNHkHqbFsd?=
- =?us-ascii?Q?AWU+Exc6X3ad5eVG1WzuKMozN4TQyWXiTLBM8ElsqiND1frB83zfSLPmb0RV?=
- =?us-ascii?Q?vG6YSf4A6Sd0vn0QTDous9eT4NGvbHVEfJaUs4LHuWAKQOt7q7EYiwyXHsSb?=
- =?us-ascii?Q?ilHtrOp70+Houefscn/JJ8tBzHZmLVOBbnMYM7dg7taj3Mqy9SWbTUEso2Fv?=
- =?us-ascii?Q?HOUfDY3m7Ht8W1ZfN0r/6g2bJ/sUA7YqA2992b7KPx+PS4tXeFc6XFKs7ymN?=
- =?us-ascii?Q?B2fT8khNzLhcgnzNOAYGvBACVztSatg1jhQsbvco+UciFgHITgepubNEiAOk?=
- =?us-ascii?Q?ZLnZZvY4re99d9kEGNel7Ar5kWMSNxLqb93hFr6STooFohKrCJSRSgW5MD3b?=
- =?us-ascii?Q?dtK6P0QgSCILTbWMXfjj8aDpgkWuQdwcOG1+5RYJH8h1bIj1ueCLBdCBMfEA?=
- =?us-ascii?Q?mPmy1jlWtA0ke+63+3gFhOWcPTOKl29UFKWvfTQUPuKt2Sc7dXoEUvupTure?=
- =?us-ascii?Q?tPeMkqqMmdnLFQlz8dRlUlq0Md5Oks6XHhb9ahElB9yd3DKAuDCMcCqMTFAx?=
- =?us-ascii?Q?uKXHGHVUkdYcHFzZvo0kRzvVrTdbNMJLtPfsipJyfvNRRToOybbEJ8FxrAHN?=
- =?us-ascii?Q?Gw3i1CgnlP7TieIgs7vky3J5fRveKQR1jBWJ0gfQk014c8UPFkdLYnR+yQPM?=
- =?us-ascii?Q?vMV8vYh3kq9Z9E/pYYYtqyGBmXheA1RYIFC1ebSVXzqgT2d2JiWu0PvokMXB?=
- =?us-ascii?Q?cQiavwrvLRIvY3JP5q1L3F1bPQlQmPY8aZNnrRWIVtfmKJ0ZGyGeeFxQsAZm?=
- =?us-ascii?Q?ySPFMyhuINNdoyn0nDFVa+aVx5TycWtI/w8n9Duycaf3ZjTFMGIsVxCr00FP?=
- =?us-ascii?Q?oHhNnIA4CVkxhuXL5xpSsKw1+a34EeoF/vIj6dJMAx2jBcGw0z2mXzqsIpzP?=
- =?us-ascii?Q?ldFdm4Fk8wngq5JKeoMnaefDZiWgdpo8cmWg7as6Ad34QhcWpSuJUa8+61/A?=
- =?us-ascii?Q?XnsNquEXMqUFtaKLVfoCRCzi+jaNZ71XgNoOkC6sAi5W1Cb0zmdfVHus5CuM?=
- =?us-ascii?Q?j+k5G8i8m4sNWIFv9VqREoOlB/K3kQMWEyUms1gt1Y8cxSN1KrNdpW/9Yxm4?=
- =?us-ascii?Q?YPXRiA=3D=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e8cfe4de-c3f8-4e34-8a93-08d9fabcf163
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Feb 2022 13:19:26.6669 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 43pc79CPg8R2zP2VJ4LtI09T6KvZwz3YFpsJUYrvND6zokSjoBlun3Siw+0lPXveHyUaeHTAe4hI63NGUcTb1Pv7nDh4i36bc95x758oFiI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR10MB2572
-X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10271
- signatures=684655
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- bulkscore=0 malwarescore=0
- mlxscore=0 phishscore=0 suspectscore=0 adultscore=0 mlxlogscore=842
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2201110000
- definitions=main-2202280070
-X-Proofpoint-ORIG-GUID: 5JfUEnwyGXyDQ72snBWDP1R4gU5BgE8f
-X-Proofpoint-GUID: 5JfUEnwyGXyDQ72snBWDP1R4gU5BgE8f
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH v5 00/34] MT8195 IOMMU SUPPORT
+Content-Language: en-US
+To: Joerg Roedel <joro@8bytes.org>, Yong Wu <yong.wu@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ iommu@lists.linux-foundation.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ youlin.pei@mediatek.com, anan.sun@mediatek.com, xueqi.zhang@mediatek.com,
+ yen-chang.chen@mediatek.com, mingyuan.ma@mediatek.com, yf.wang@mediatek.com,
+ libo.kang@mediatek.com, chengci.xu@mediatek.com
+References: <20220217113453.13658-1-yong.wu@mediatek.com>
+ <YhzBSsn/zUlGg5JE@8bytes.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <YhzBSsn/zUlGg5JE@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_051953_960250_CB4995F3 
-X-CRM114-Status: GOOD (  23.11  )
+X-CRM114-CacheID: sfid-20220228_055044_249894_CCCD3682 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -197,43 +73,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 28, 2022 at 01:03:36PM +0100, Jakob Koschel wrote:
-> >> @@ -954,7 +957,6 @@ net2272_dequeue(struct usb_ep *_ep, struct usb_request *_req)
-> >> 		dev_dbg(ep->dev->dev, "unlink (%s) pio\n", _ep->name);
-> >> 		net2272_done(ep, req, -ECONNRESET);
-> >> 	}
-> >> -	req = NULL;
-> > 
-> > Another unrelated change.  These are all good changes but send them as
-> > separate patches.
+Il 28/02/22 13:34, Joerg Roedel ha scritto:
+> Hi Yong Wu,
 > 
-> You are referring to the req = NULL, right?
-
-Yes.
-
+> On Thu, Feb 17, 2022 at 07:34:19PM +0800, Yong Wu wrote:
+>> Yong Wu (34):
+>>    dt-bindings: mediatek: mt8195: Add binding for MM IOMMU
+>>    dt-bindings: mediatek: mt8195: Add binding for infra IOMMU
+>>    iommu/mediatek: Fix 2 HW sharing pgtable issue
+>>    iommu/mediatek: Add list_del in mtk_iommu_remove
+>>    iommu/mediatek: Remove clk_disable in mtk_iommu_remove
+>>    iommu/mediatek: Add mutex for m4u_group and m4u_dom in data
+>>    iommu/mediatek: Add mutex for data in the mtk_iommu_domain
+>>    iommu/mediatek: Adapt sharing and non-sharing pgtable case
+>>    iommu/mediatek: Add 12G~16G support for multi domains
+>>    iommu/mediatek: Add a flag DCM_DISABLE
+>>    iommu/mediatek: Add a flag NON_STD_AXI
+>>    iommu/mediatek: Remove the granule in the tlb flush
+>>    iommu/mediatek: Always enable output PA over 32bits in isr
+>>    iommu/mediatek: Add SUB_COMMON_3BITS flag
+>>    iommu/mediatek: Add IOMMU_TYPE flag
+>>    iommu/mediatek: Contain MM IOMMU flow with the MM TYPE
+>>    iommu/mediatek: Adjust device link when it is sub-common
+>>    iommu/mediatek: Allow IOMMU_DOMAIN_UNMANAGED for PCIe VFIO
+>>    iommu/mediatek: Add a PM_CLK_AO flag for infra iommu
+>>    iommu/mediatek: Add infra iommu support
+>>    iommu/mediatek: Add PCIe support
+>>    iommu/mediatek: Add mt8195 support
+>>    iommu/mediatek: Only adjust code about register base
+>>    iommu/mediatek: Just move code position in hw_init
+>>    iommu/mediatek: Separate mtk_iommu_data for v1 and v2
+>>    iommu/mediatek: Remove mtk_iommu.h
+>>    iommu/mediatek-v1: Just rename mtk_iommu to mtk_iommu_v1
+>>    iommu/mediatek: Add mtk_iommu_bank_data structure
+>>    iommu/mediatek: Initialise bank HW for each a bank
+>>    iommu/mediatek: Change the domid to iova_region_id
+>>    iommu/mediatek: Get the proper bankid for multi banks
+>>    iommu/mediatek: Initialise/Remove for multi bank dev
+>>    iommu/mediatek: Backup/restore regsiters for multi banks
+>>    iommu/mediatek: mt8195: Enable multi banks for infra iommu
 > 
-> I've changed the use of 'req' in the same function and assumed that I can
-> just remove the unnecessary statement. But if it's better to do separately
-> I'll do that.
+> This doesn't apply cleanly, can you please send a version rebased to
+> v5.17-rc4?
 > 
+> Thanks,
+> 
+> 	Joerg
 
-These are all changes which made me pause during my review to figure out
-why they were necessary.  The line between what is a related part of a
-patch is a bit vague and some maintainers will ask you to add or subtract
-from a patch depending on their individual tastes.  I don't really have
-an exact answer, but I felt like this patch needs to be subtracted from.
+Hello Joerg,
 
-Especially if there is a whole chunk of the patch which can be removed,
-then to me, that obviously should be in a different patch.
+this series depends on the following series:
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=592275
 
-regards,
-dan carpenter
+...which is also well tested and ready to be merged in.
 
+Applying Yong's series without the mentioned series from Dafna would not work.
+
+
+Thanks,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
