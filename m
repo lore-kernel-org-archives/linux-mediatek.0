@@ -4,67 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86B45C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 16:33:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB011C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 18:21:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LGoxDVElyIIYPMafj4gYEf7fA5WVbioeETO9hwY9RrU=; b=GYTe3NSo9nAEH4
-	5Aq4GIStnDSaNwaFVlm/eY4mbtgW6wUvhY1HrAFKnQgn9GYVB2g44dM4DQWTJqYemtQQvq2sVtnXt
-	+/Rg+Rz06bk3TM5xDDphWEGmOxaVpcJ0zBsgLWjsL/BbgTqGblNqDLCp7xrfyh9WvfPodOYK1Pdkn
-	sOjEYkBRs/m6ec4bxhP9Niz8LsTvrJ+fZMpDpGeF+uI66dObBpDavLMiTuX2eyOlODWbzJquDDGmi
-	cNlFLQDjYwqDhOeNtQgUd9pRq8aYGIzmjC0dU1/GKknT4Rzt3Boh/O7++AAaNQLkXclizB5yotxqU
-	UmV1X7YSqnImdEmZsTjA==;
+	List-Owner; bh=y9q4fp7/vZb3AmJlZVKh7KDewsGUfmbhHaKJy5A47YY=; b=o5SZp9rwwyagKF
+	hl3N0EkkuGTmB42sVxRamoKysgtKmU827C5dusOeUCaH/AEN+/C/E6wHqWvxwvi5GLpjIDN+CVgGz
+	zSHDQOCTCj0i7y11RPEgV4FZH4KOH2ZsQ+jMjYNwRsvuxa47xYDVyU95NxSoQVnvRS3JxHomTZerg
+	V1bO1cEBTkTpLzdWTsskbB7C6aAKdB+UfQSaElbcxHrOppsDxgqmpo3bhD4vCQBF95mj+pI1XJvgr
+	OmvcaB8Fni0LSM9MTLEEZEyqR7uccxQpPWMpsywmLKLHNEBIrW5OVoi13SjY7RWV/TO5FhlT0btwd
+	RO+P8Z/G8hlnqK+kWmRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOixv-00DLgh-U4; Mon, 28 Feb 2022 16:33:39 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nOkds-00Dh3K-EK; Mon, 28 Feb 2022 18:21:04 +0000
+Received: from relay.hostedemail.com ([64.99.140.26])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOixd-00DLYY-27; Mon, 28 Feb 2022 16:33:24 +0000
-X-UUID: 38b42f029bef42a0bc60e746e630149d-20220228
-X-UUID: 38b42f029bef42a0bc60e746e630149d-20220228
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <lecopzer.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1094402571; Mon, 28 Feb 2022 09:33:12 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 28 Feb 2022 08:33:11 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 1 Mar 2022 00:32:57 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 1 Mar 2022 00:32:56 +0800
-From: Lecopzer Chen <lecopzer.chen@mediatek.com>
-To: <pmladek@suse.com>
-CC: <acme@kernel.org>, <akpm@linux-foundation.org>,
- <alexander.shishkin@linux.intel.com>, <catalin.marinas@arm.com>,
- <davem@davemloft.net>, <jolsa@redhat.com>, <jthierry@redhat.com>,
- <keescook@chromium.org>, <kernelfans@gmail.com>,
- <lecopzer.chen@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-perf-users@vger.kernel.org>, <mark.rutland@arm.com>,
- <masahiroy@kernel.org>, <matthias.bgg@gmail.com>, <maz@kernel.org>,
- <mcgrof@kernel.org>, <mingo@redhat.com>, <namhyung@kernel.org>,
- <nixiaoming@huawei.com>, <peterz@infradead.org>,
- <sparclinux@vger.kernel.org>, <sumit.garg@linaro.org>, <wangqing@vivo.com>,
- <will@kernel.org>, <yj.chiang@mediatek.com>
-Subject: Re: [PATCH 4/5] kernel/watchdog: Adapt the watchdog_hld interface for
- async model
-Date: Tue, 1 Mar 2022 00:32:57 +0800
-Message-ID: <20220228163257.2411-1-lecopzer.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <YhygkafOHc6eeP9f@alley>
-References: <YhygkafOHc6eeP9f@alley>
+ id 1nOkdp-00Dh1g-CA
+ for linux-mediatek@lists.infradead.org; Mon, 28 Feb 2022 18:21:02 +0000
+Received: from omf09.hostedemail.com (a10.router.float.18 [10.200.18.1])
+ by unirelay11.hostedemail.com (Postfix) with ESMTP id 8480C81766;
+ Mon, 28 Feb 2022 18:20:49 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by
+ omf09.hostedemail.com (Postfix) with ESMTPA id 5C4272002A; 
+ Mon, 28 Feb 2022 18:20:29 +0000 (UTC)
+Message-ID: <0be9de3920442df490f01b6fb1c42521c3de6190.camel@perches.com>
+Subject: Re: [PATCH 1/6] drivers: usb: remove usage of list iterator past
+ the loop body
+From: Joe Perches <joe@perches.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>, Jakob Koschel
+ <jakobkoschel@gmail.com>
+Cc: Linus Torvalds <torvalds@linux-foundation.org>, linux-arch
+ <linux-arch@vger.kernel.org>, Thomas Gleixner <tglx@linutronix.de>, Arnd
+ Bergman <arnd@arndb.de>, Andy Shevchenko
+ <andriy.shevchenko@linux.intel.com>, Andrew Morton
+ <akpm@linux-foundation.org>, Kees Cook <keescook@chromium.org>, Mike
+ Rapoport <rppt@kernel.org>, "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
+ Brian Johannesmeyer <bjohannesmeyer@gmail.com>, Cristiano Giuffrida
+ <c.giuffrida@vu.nl>, "Bos, H.J." <h.j.bos@vu.nl>,  Christophe JAILLET
+ <christophe.jaillet@wanadoo.fr>, Jason Gunthorpe <jgg@ziepe.ca>, Rasmus
+ Villemoes <linux@rasmusvillemoes.dk>, Nathan Chancellor
+ <nathan@kernel.org>,  linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org,  linuxppc-dev@lists.ozlabs.org,
+ linux-sgx@vger.kernel.org,  drbd-dev@lists.linbit.com,
+ linux-block@vger.kernel.org,  linux-iio@vger.kernel.org,
+ linux-crypto@vger.kernel.org,  dmaengine@vger.kernel.org,
+ linux1394-devel@lists.sourceforge.net,  amd-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org,  intel-gfx@lists.freedesktop.org,
+ nouveau@lists.freedesktop.org,  linux-rdma@vger.kernel.org,
+ linux-media@vger.kernel.org,  intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org,  linux-wireless@vger.kernel.org,
+ linux-pm@vger.kernel.org,  linux-scsi@vger.kernel.org,
+ linux-staging@lists.linux.dev,  linux-usb@vger.kernel.org,
+ linux-aspeed@lists.ozlabs.org,  bcm-kernel-feedback-list@broadcom.com,
+ linux-tegra@vger.kernel.org,  linux-mediatek@lists.infradead.org,
+ kvm@vger.kernel.org,  linux-cifs@vger.kernel.org,
+ samba-technical@lists.samba.org,  linux-f2fs-devel@lists.sourceforge.net,
+ linux-fsdevel@vger.kernel.org,  kgdb-bugreport@lists.sourceforge.net,
+ v9fs-developer@lists.sourceforge.net, 
+ tipc-discussion@lists.sourceforge.net, alsa-devel@alsa-project.org
+Date: Mon, 28 Feb 2022 10:20:28 -0800
+In-Reply-To: <20220228112413.GA2812@kadam>
+References: <20220228110822.491923-1-jakobkoschel@gmail.com>
+ <20220228110822.491923-2-jakobkoschel@gmail.com>
+ <20220228112413.GA2812@kadam>
+User-Agent: Evolution 3.40.4-1ubuntu2 
 MIME-Version: 1.0
-X-MTK: N
+X-Stat-Signature: 1e1i8ombnsc3cdkptu3anccezjc89zox
+X-Rspamd-Server: rspamout07
+X-Rspamd-Queue-Id: 5C4272002A
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Session-ID: U2FsdGVkX1+i6vY6IDwHpNq++UEo/5hqvP4PvgQNb4E=
+X-HE-Tag: 1646072429-12569
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_083321_118587_85311D24 
-X-CRM114-Status: GOOD (  36.65  )
+X-CRM114-CacheID: sfid-20220228_102101_525840_621C3CE1 
+X-CRM114-Status: UNSURE (   6.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,190 +99,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Yes, there is no race now, the condition is much like a verbose checking for
-the state. I'll remove it.
+On Mon, 2022-02-28 at 14:24 +0300, Dan Carpenter wrote:
+
+> a multi-line indent gets curly braces for readability even though
+> it's not required by C.  And then both sides would get curly braces.
+
+That's more your personal preference than a coding style guideline.
 
 
-> > I think it make sense to remove WARN now becasue it looks verbosely...
-> > However, I would rather change the following printk to
-> > "Delayed init for lockup detector failed."
-> 
-> I would print both messages. The above message says what failed.
-> 
-> 
-> > > > +		pr_info("Perf NMI watchdog permanently disabled\n");
-> 
-> And this message explains what is the result of the above failure.
-> It is not obvious.
-
-Yes, make sense, let's print both.
-
-
-> 
-> > > > +	}
-> > > > +}
-> > > > +
-> > > > +/* Ensure the check is called after the initialization of PMU driver */
-> > > > +static int __init lockup_detector_check(void)
-> > > > +{
-> > > > +	if (detector_delay_init_state < DELAY_INIT_WAIT)
-> > > > +		return 0;
-> > > > +
-> > > > +	if (WARN_ON(detector_delay_init_state == DELAY_INIT_WAIT)) {
-> > > 
-> > > Again. Is WARN_ON() needed?
-> > > 
-> > > Also the condition looks wrong. IMHO, this is the expected state.
-> > > 
-> > 
-> > This does expected DELAY_INIT_READY here, which means,
-> > every one who comes here to be checked should be READY and WARN if you're
-> > still in WAIT state, and which means the previous lockup_detector_delay_init()
-> > failed.
-> 
-> No, DELAY_INIT_READY is set below. DELAY_INIT_WAIT is valid value here.
-> It means that lockup_detector_delay_init() work is queued.
-> 
-
-Sorry, I didn't describe clearly,
-
-For the call flow:
-
-kernel_init_freeable()
--> lockup_detector_init()
---> queue work(lockup_detector_delay_init) with state registering
-    to DELAY_INIT_WAIT.
----> lockup_detector_delay_init wait DELAY_INIT_READY that set
-     by armv8_pmu_driver_init().
-----> device_initcall(armv8_pmu_driver_init),
-      set state to READY and wake_up the work. (in 5th patch)
------> lockup_detector_delay_init recieves READY and calls
-       watchdog_nmi_probe() again.
-------> late_initcall_sync(lockup_detector_check);
-        check if the state is READY? In other words, did the arch driver
-        finish probing watchdog between "queue work" and "late_initcall_sync()"?
-        If not, we forcely set state to READY and wake_up again.
-
-
-> 
-> > IMO, either keeping or removing WARN is fine with me.
-> > 
-> > I think I'll remove WARN and add
-> > pr_info("Delayed init checking for lockup detector failed, retry for once.");
-> > inside the `if (detector_delay_init_state == DELAY_INIT_WAIT)`
-> > 
-> > Or would you have any other suggestion? thanks.
-> > 
-> > > > +		detector_delay_init_state = DELAY_INIT_READY;
-> > > > +		wake_up(&hld_detector_wait);
-> 
-> I see another problem now. We should always call the wake up here
-> when the work was queued. Otherwise, the worker will stay blocked
-> forewer.
-> 
-> The worker will also get blocked when the late_initcall is called
-> before the work is proceed by a worker.
-
-lockup_detector_check() is used to solve the blocking state.
-As the description above, if state is WAIT when lockup_detector_check(),
-we would forcely set state to READY can wake up the work for once.
-After lockup_detector_check(), nobody cares about the state and the worker
-also finishes its work.
-
-> 
-> > > > +	}
-> > > > +	flush_work(&detector_work);
-> > > > +	return 0;
-> > > > +}
-> > > > +late_initcall_sync(lockup_detector_check);
-> 
-> 
-> OK, I think that the three states are too complicated. I suggest to
-> use only a single bool. Something like:
-> 
-> static bool lockup_detector_pending_init __initdata;
-> 
-> struct wait_queue_head lockup_detector_wait __initdata =
-> 		__WAIT_QUEUE_HEAD_INITIALIZER(lockup_detector_wait);
-> 
-> static struct work_struct detector_work __initdata =
-> 		__WORK_INITIALIZER(lockup_detector_work,
-> 				   lockup_detector_delay_init);
-> 
-> static void __init lockup_detector_delay_init(struct work_struct *work)
-> {
-> 	int ret;
-> 
-> 	wait_event(lockup_detector_wait, lockup_detector_pending_init == false);
-> 
-> 	ret = watchdog_nmi_probe();
-> 	if (ret) {
-> 		pr_info("Delayed init of the lockup detector failed: %\n);
-> 		pr_info("Perf NMI watchdog permanently disabled\n");
-> 		return;
-> 	}
-> 
-> 	nmi_watchdog_available = true;
-> 	lockup_detector_setup();
-> }
-> 
-> /* Trigger delayedEnsure the check is called after the initialization of PMU driver */
-> static int __init lockup_detector_check(void)
-> {
-> 	if (!lockup_detector_pending_init)
-> 		return;
-> 
-> 	lockup_detector_pending_init = false;
-> 	wake_up(&lockup_detector_wait);
-> 	return 0;
-> }
-> late_initcall_sync(lockup_detector_check);
-> 
-> void __init lockup_detector_init(void)
-> {
-> 	int ret;
-> 
-> 	if (tick_nohz_full_enabled())
-> 		pr_info("Disabling watchdog on nohz_full cores by default\n");
-> 
-> 	cpumask_copy(&watchdog_cpumask,
-> 		     housekeeping_cpumask(HK_FLAG_TIMER));
-> 
-> 	ret = watchdog_nmi_probe();
-> 	if (!ret)
-> 		nmi_watchdog_available = true;
-> 	else if (ret == -EBUSY) {
-> 		detector_delay_pending_init = true;
-> 		/* Init must be done in a process context on a bound CPU. */
-> 		queue_work_on(smp_processor_id(), system_wq, 
-> 				  &lockup_detector_work);
-> 	}
-> 
-> 	lockup_detector_setup();
-> 	watchdog_sysctl_init();
-> }
-> 
-> The result is that lockup_detector_work() will never stay blocked
-> forever. There are two possibilities:
-> 
-> 1.  lockup_detector_work() called before lockup_detector_check().
->     In this case, wait_event() will wait until lockup_detector_check()
->     clears detector_delay_pending_init and calls wake_up().
-> 
-> 2. lockup_detector_check() called before lockup_detector_work().
->    In this case, wait_even() will immediately continue because
->    it will see cleared detector_delay_pending_init.
-> 
-
-Thanks, I think this logic is much simpler than three states for our use case now,
-It also fits the call flow described above, I will revise it base on this
-code.
-
-
-Thanks a lot for your code and review!
-
-BRs,
-Lecopzer
 
 _______________________________________________
 Linux-mediatek mailing list
