@@ -4,86 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EE37C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 11:56:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83F90C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Feb 2022 11:58:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s9/hmIj052HtcODB5GE+lK523NXodyAkCj7EBekie0Q=; b=jg/PJeHL/Kv7TK
-	xEjdJc2jb1ET9ewrCqxDoIl5CAgkXss2t0RALjKScXtb526ZN0mXvSY0eT+KVW523UWX5QLOW5E8P
-	lrLSxObTRwEgKOH7ACUx02tR7lLabZ/NgoKwvMF3xXJufy++O9t19/zDX3OC2ATfzXzk2q0rpGXae
-	En2UH2Z5nK8+r0SvUcnYCUQqkCmaTWqQfcP3IRF0wr4iDNy+Oo6yPThWWEy3lEW9865uKL7yh8SPv
-	+LmbdRG1tzCfUoHpYVdoW/x4AVB+IcFXD8mwvZhJUKEBmDjarecpNw49+uR5o3G6IPMcQW9/zAfG1
-	gAF5FE/mN2p/s7gabvHA==;
+	List-Owner; bh=yHqR7XMOaEBEoO6gGXBEG6HZzx/+E/7vblJ2v6iRVmI=; b=t6UgaoR3I6CFod
+	BpgjWd/a1+lMQdRH6C8zElObLizdxxwrLOeRh2spG8VK9aJsceI7lsr0SNa7UXlSL4Fof2xXWBwWH
+	VFjvdSHgBRD7/19Dy+MTbn9lLlM3T9rLrxtmU6Jgpo8WkLWCzbVLh5PMRfXdwSnHGh5E0r11SkwQ8
+	g06XfMK3paTyPDPjPum4VvvssfEjKR+8XNYWZlqLkB5DI1VBZ6o4oa6YijUuRkVpN/AEPpJZ9+XHD
+	EDb+LP5rZeQG18Zka2h2yL9luwiXPjeuCm3pHiizQvcSjYSHuDAhy+Hf8F4FfHxPxuDfDkTXxDA9Z
+	wMN7yNNQUVpv+YyUxVaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOedk-00C1HB-DZ; Mon, 28 Feb 2022 11:56:32 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nOefS-00C1sS-Tg; Mon, 28 Feb 2022 11:58:18 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOe4X-00BoC5-Cj; Mon, 28 Feb 2022 11:20:10 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id DE71F60F9E;
- Mon, 28 Feb 2022 11:20:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 577DAC340E7;
- Mon, 28 Feb 2022 11:20:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1646047208;
- bh=TZYI8CoLqZwdjhCp4FIqkyAKtFSpIqtbXR7Aczi5lHQ=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=C57riiYnEjUdxOZhn04GGyA8PIVDUJ6DJKuCKjTYwuUmTfW6bVKDrs724kyxSBaKx
- RgI2btjN0kChcFl20e7HpTgxlexOr2YrBREdqqTBvDVt/Whdw/5z0V77N814zObmo3
- /EeMG4N6szzw6EaZ5Y2WBm3/aL7Ea4aeZYOpa8Fs=
-Date: Mon, 28 Feb 2022 12:20:03 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Jakob Koschel <jakobkoschel@gmail.com>
-Cc: Linus Torvalds <torvalds@linux-foundation.org>,
- linux-arch <linux-arch@vger.kernel.org>,
- Thomas Gleixner <tglx@linutronix.de>, Arnd Bergman <arnd@arndb.de>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Kees Cook <keescook@chromium.org>, Mike Rapoport <rppt@kernel.org>,
- "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
- Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
- Cristiano Giuffrida <c.giuffrida@vu.nl>, "Bos, H.J." <h.j.bos@vu.nl>,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- Dan Carpenter <dan.carpenter@oracle.com>, Jason Gunthorpe <jgg@ziepe.ca>,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- Nathan Chancellor <nathan@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, linux-sgx@vger.kernel.org,
- drbd-dev@lists.linbit.com, linux-block@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-crypto@vger.kernel.org,
- dmaengine@vger.kernel.org, linux1394-devel@lists.sourceforge.net,
- amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, nouveau@lists.freedesktop.org,
- linux-rdma@vger.kernel.org, linux-media@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-scsi@vger.kernel.org, linux-staging@lists.linux.dev,
- linux-usb@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
- bcm-kernel-feedback-list@broadcom.com, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org, kvm@vger.kernel.org,
- linux-cifs@vger.kernel.org, samba-technical@lists.samba.org,
- linux-f2fs-devel@lists.sourceforge.net,
- linux-fsdevel@vger.kernel.org, kgdb-bugreport@lists.sourceforge.net,
- v9fs-developer@lists.sourceforge.net,
- tipc-discussion@lists.sourceforge.net, alsa-devel@alsa-project.org
-Subject: Re: [PATCH 2/6] treewide: remove using list iterator after loop body
- as a ptr
-Message-ID: <Yhyv42ONIxTj04mg@kroah.com>
-References: <20220228110822.491923-1-jakobkoschel@gmail.com>
- <20220228110822.491923-3-jakobkoschel@gmail.com>
+ id 1nOe4n-00BoL7-G6; Mon, 28 Feb 2022 11:20:27 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id
+ o62-20020a1ca541000000b00380e3cc26b7so5826952wme.0; 
+ Mon, 28 Feb 2022 03:20:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=NccQv4LgTdxbFFV06no50kiwLRDXEmMnkBFh0QCPhBk=;
+ b=eJNhF7g9oc4xDjbR6Yf3EM+nErRCpUStHnVBRBwnjtvZ6xgdHPysfTRYYU+MZD1XRT
+ nsKGXw2ByxKqC44mQl5r7boAD7j9hMUi0i44uoVPSGjDa7NdafIS0Ej1rwA3/NBVVgV2
+ chA7ZPL/rGOzc7PJTjZ/SQrN2403vVHE2Hm3/qsajUIUW/yV3JcJSzXGrZhs458aC6ZK
+ E0idJ9CC3XKoWjf/43G8zyBrHNP12gbW+lbR/1l/ltFSR7x/do84aiQpqKBF7pf3/jax
+ 5vSCBFWZveOn71YqVlKdN+Er/EsbW1A7oLhJrjo/FW7n5aXUlwrjR2nrOyhvv1G0gcIg
+ w2rA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=NccQv4LgTdxbFFV06no50kiwLRDXEmMnkBFh0QCPhBk=;
+ b=pKhovl9JMzThBnu1R4kKriPmA3vxaAkrD+k7OwCqzMiditCyqWwS2qLATnI8LUBbMy
+ PiEx7QMjhkwpruk6+yvUNGxVJpzVfUhz7Z3vpNGJUxMo3NQXiYoVyr/9srLu6/tLe4tz
+ VHFf+2takagAVGqr7ig+ogyurUkuhH9odx2DDc1HKD86J1tWVcVLr2ZCxjLOFHqKOptW
+ Ud/OpFtFg1lPo0nmAaStEj9xefLLI3kw24COYwSXSm1mBFRK8sSLjom61jU14BD9YYb/
+ hMW0zDrjDJ3JEz1tFylv0nSxTWSd3FwKQtEy6hDa4Y9P5X5kKDRnmsl77jfivqgdfbtq
+ ykzw==
+X-Gm-Message-State: AOAM533YJby+qiR3sZNLr/oGj8PsHGJb6kEfRTD2CEr8PMViZi3ynFPl
+ YIt6hvjfkZS3yNh5HbNceUs=
+X-Google-Smtp-Source: ABdhPJxmBl1EpcRObVtB/hkFZeK7EFaScaFTcOoQofuXzqGQWUTkeSfN2I7XpWEitYnsdxfY9kTeVQ==
+X-Received: by 2002:a7b:c381:0:b0:37b:e01f:c1c0 with SMTP id
+ s1-20020a7bc381000000b0037be01fc1c0mr12762339wmj.98.1646047223541; 
+ Mon, 28 Feb 2022 03:20:23 -0800 (PST)
+Received: from [192.168.0.14] (static-63-182-85-188.ipcom.comunitel.net.
+ [188.85.182.63]) by smtp.gmail.com with ESMTPSA id
+ n4-20020a05600c4f8400b00380e45cd564sm12245755wmq.8.2022.02.28.03.20.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 28 Feb 2022 03:20:23 -0800 (PST)
+Message-ID: <ad5e8d2c-4347-00a7-9e34-18601c6e1e11@gmail.com>
+Date: Mon, 28 Feb 2022 12:20:21 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220228110822.491923-3-jakobkoschel@gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v4,3/5] soc: mediatek: mmsys: add mt8186 mmsys routing
+ table
+Content-Language: en-US
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
+ robh+dt@kernel.org
+Cc: p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
+ jassisinghbrar@gmail.com, fparent@baylibre.com, yongqiang.niu@mediatek.com,
+ hsinyi@chromium.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220222052803.3570-1-rex-bc.chen@mediatek.com>
+ <20220222052803.3570-4-rex-bc.chen@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220222052803.3570-4-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_032009_583230_C2098981 
-X-CRM114-Status: GOOD (  18.43  )
+X-CRM114-CacheID: sfid-20220228_032025_648569_059BBF3F 
+X-CRM114-Status: GOOD (  17.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,43 +94,190 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 28, 2022 at 12:08:18PM +0100, Jakob Koschel wrote:
-> If the list does not contain the expected element, the value of
-> list_for_each_entry() iterator will not point to a valid structure.
-> To avoid type confusion in such case, the list iterator
-> scope will be limited to list_for_each_entry() loop.
+
+
+On 22/02/2022 06:28, Rex-BC Chen wrote:
+> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 > 
-> In preparation to limiting scope of a list iterator to the list traversal
-> loop, use a dedicated pointer to point to the found element.
-> Determining if an element was found is then simply checking if
-> the pointer is != NULL.
+> Add new routing table for MT8186.
+> In MT8186, there are two routing pipelines for internal and external
+> display.
 > 
-> Signed-off-by: Jakob Koschel <jakobkoschel@gmail.com>
+> Internal display: OVL0->RDMA0->COLOR0->CCORR0->AAL0->GAMMA->POSTMASK0->
+> 		  DITHER->DSI0
+> External display: OVL_2L0->RDMA1->DPI0
+> 
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+
+applied, thanks!
+
 > ---
->  arch/x86/kernel/cpu/sgx/encl.c       |  6 +++--
->  drivers/scsi/scsi_transport_sas.c    | 17 ++++++++-----
->  drivers/thermal/thermal_core.c       | 38 ++++++++++++++++++----------
->  drivers/usb/gadget/configfs.c        | 22 ++++++++++------
->  drivers/usb/gadget/udc/max3420_udc.c | 11 +++++---
->  drivers/usb/gadget/udc/tegra-xudc.c  | 11 +++++---
->  drivers/usb/mtu3/mtu3_gadget.c       | 11 +++++---
->  drivers/usb/musb/musb_gadget.c       | 11 +++++---
->  drivers/vfio/mdev/mdev_core.c        | 11 +++++---
->  9 files changed, 88 insertions(+), 50 deletions(-)
-
-The drivers/usb/ portion of this patch should be in patch 1/X, right?
-
-Also, you will have to split these up per-subsystem so that the
-different subsystem maintainers can take these in their trees.
-
-thanks,
-
-greg k-h
+>   drivers/soc/mediatek/mt8186-mmsys.h | 113 ++++++++++++++++++++++++++++
+>   drivers/soc/mediatek/mtk-mmsys.c    |  11 +++
+>   2 files changed, 124 insertions(+)
+>   create mode 100644 drivers/soc/mediatek/mt8186-mmsys.h
+> 
+> diff --git a/drivers/soc/mediatek/mt8186-mmsys.h b/drivers/soc/mediatek/mt8186-mmsys.h
+> new file mode 100644
+> index 000000000000..7de329f2d729
+> --- /dev/null
+> +++ b/drivers/soc/mediatek/mt8186-mmsys.h
+> @@ -0,0 +1,113 @@
+> +/* SPDX-License-Identifier: GPL-2.0-only */
+> +
+> +#ifndef __SOC_MEDIATEK_MT8186_MMSYS_H
+> +#define __SOC_MEDIATEK_MT8186_MMSYS_H
+> +
+> +#define MT8186_MMSYS_OVL_CON			0xF04
+> +#define MT8186_MMSYS_OVL0_CON_MASK			0x3
+> +#define MT8186_MMSYS_OVL0_2L_CON_MASK			0xC
+> +#define MT8186_OVL0_GO_BLEND				BIT(0)
+> +#define MT8186_OVL0_GO_BG				BIT(1)
+> +#define MT8186_OVL0_2L_GO_BLEND				BIT(2)
+> +#define MT8186_OVL0_2L_GO_BG				BIT(3)
+> +#define MT8186_DISP_RDMA0_SOUT_SEL		0xF0C
+> +#define MT8186_RDMA0_SOUT_SEL_MASK			0xF
+> +#define MT8186_RDMA0_SOUT_TO_DSI0			(0)
+> +#define MT8186_RDMA0_SOUT_TO_COLOR0			(1)
+> +#define MT8186_RDMA0_SOUT_TO_DPI0			(2)
+> +#define MT8186_DISP_OVL0_2L_MOUT_EN		0xF14
+> +#define MT8186_OVL0_2L_MOUT_EN_MASK			0xF
+> +#define MT8186_OVL0_2L_MOUT_TO_RDMA0			BIT(0)
+> +#define MT8186_OVL0_2L_MOUT_TO_RDMA1			BIT(3)
+> +#define MT8186_DISP_OVL0_MOUT_EN		0xF18
+> +#define MT8186_OVL0_MOUT_EN_MASK			0xF
+> +#define MT8186_OVL0_MOUT_TO_RDMA0			BIT(0)
+> +#define MT8186_OVL0_MOUT_TO_RDMA1			BIT(3)
+> +#define MT8186_DISP_DITHER0_MOUT_EN		0xF20
+> +#define MT8186_DITHER0_MOUT_EN_MASK			0xF
+> +#define MT8186_DITHER0_MOUT_TO_DSI0			BIT(0)
+> +#define MT8186_DITHER0_MOUT_TO_RDMA1			BIT(2)
+> +#define MT8186_DITHER0_MOUT_TO_DPI0			BIT(3)
+> +#define MT8186_DISP_RDMA0_SEL_IN		0xF28
+> +#define MT8186_RDMA0_SEL_IN_MASK			0xF
+> +#define MT8186_RDMA0_FROM_OVL0				0
+> +#define MT8186_RDMA0_FROM_OVL0_2L			2
+> +#define MT8186_DISP_DSI0_SEL_IN			0xF30
+> +#define MT8186_DSI0_SEL_IN_MASK				0xF
+> +#define MT8186_DSI0_FROM_RDMA0				0
+> +#define MT8186_DSI0_FROM_DITHER0			1
+> +#define MT8186_DSI0_FROM_RDMA1				2
+> +#define MT8186_DISP_RDMA1_MOUT_EN		0xF3C
+> +#define MT8186_RDMA1_MOUT_EN_MASK			0xF
+> +#define MT8186_RDMA1_MOUT_TO_DPI0_SEL			BIT(0)
+> +#define MT8186_RDMA1_MOUT_TO_DSI0_SEL			BIT(2)
+> +#define MT8186_DISP_RDMA1_SEL_IN		0xF40
+> +#define MT8186_RDMA1_SEL_IN_MASK			0xF
+> +#define MT8186_RDMA1_FROM_OVL0				0
+> +#define MT8186_RDMA1_FROM_OVL0_2L			2
+> +#define MT8186_RDMA1_FROM_DITHER0			3
+> +#define MT8186_DISP_DPI0_SEL_IN			0xF44
+> +#define MT8186_DPI0_SEL_IN_MASK				0xF
+> +#define MT8186_DPI0_FROM_RDMA1				0
+> +#define MT8186_DPI0_FROM_DITHER0			1
+> +#define MT8186_DPI0_FROM_RDMA0				2
+> +
+> +static const struct mtk_mmsys_routes mmsys_mt8186_routing_table[] = {
+> +	{
+> +		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
+> +		MT8186_DISP_OVL0_MOUT_EN, MT8186_OVL0_MOUT_EN_MASK,
+> +		MT8186_OVL0_MOUT_TO_RDMA0
+> +	},
+> +	{
+> +		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
+> +		MT8186_DISP_RDMA0_SEL_IN, MT8186_RDMA0_SEL_IN_MASK,
+> +		MT8186_RDMA0_FROM_OVL0
+> +	},
+> +	{
+> +		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
+> +		MT8186_MMSYS_OVL_CON, MT8186_MMSYS_OVL0_CON_MASK,
+> +		MT8186_OVL0_GO_BLEND
+> +	},
+> +	{
+> +		DDP_COMPONENT_RDMA0, DDP_COMPONENT_COLOR0,
+> +		MT8186_DISP_RDMA0_SOUT_SEL, MT8186_RDMA0_SOUT_SEL_MASK,
+> +		MT8186_RDMA0_SOUT_TO_COLOR0
+> +	},
+> +	{
+> +		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
+> +		MT8186_DISP_DITHER0_MOUT_EN, MT8186_DITHER0_MOUT_EN_MASK,
+> +		MT8186_DITHER0_MOUT_TO_DSI0,
+> +	},
+> +	{
+> +		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
+> +		MT8186_DISP_DSI0_SEL_IN, MT8186_DSI0_SEL_IN_MASK,
+> +		MT8186_DSI0_FROM_DITHER0
+> +	},
+> +	{
+> +		DDP_COMPONENT_OVL_2L0, DDP_COMPONENT_RDMA1,
+> +		MT8186_DISP_OVL0_2L_MOUT_EN, MT8186_OVL0_2L_MOUT_EN_MASK,
+> +		MT8186_OVL0_2L_MOUT_TO_RDMA1
+> +	},
+> +	{
+> +		DDP_COMPONENT_OVL_2L0, DDP_COMPONENT_RDMA1,
+> +		MT8186_DISP_RDMA1_SEL_IN, MT8186_RDMA1_SEL_IN_MASK,
+> +		MT8186_RDMA1_FROM_OVL0_2L
+> +	},
+> +	{
+> +		DDP_COMPONENT_OVL_2L0, DDP_COMPONENT_RDMA1,
+> +		MT8186_MMSYS_OVL_CON, MT8186_MMSYS_OVL0_2L_CON_MASK,
+> +		MT8186_OVL0_2L_GO_BLEND
+> +	},
+> +	{
+> +		DDP_COMPONENT_RDMA1, DDP_COMPONENT_DPI0,
+> +		MT8186_DISP_RDMA1_MOUT_EN, MT8186_RDMA1_MOUT_EN_MASK,
+> +		MT8186_RDMA1_MOUT_TO_DPI0_SEL
+> +	},
+> +	{
+> +		DDP_COMPONENT_RDMA1, DDP_COMPONENT_DPI0,
+> +		MT8186_DISP_DPI0_SEL_IN, MT8186_DPI0_SEL_IN_MASK,
+> +		MT8186_DPI0_FROM_RDMA1
+> +	},
+> +};
+> +
+> +#endif /* __SOC_MEDIATEK_MT8186_MMSYS_H */
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> index 1e448f1ffefb..0da25069ffb3 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -15,6 +15,7 @@
+>   #include "mtk-mmsys.h"
+>   #include "mt8167-mmsys.h"
+>   #include "mt8183-mmsys.h"
+> +#include "mt8186-mmsys.h"
+>   #include "mt8192-mmsys.h"
+>   #include "mt8365-mmsys.h"
+>   
+> @@ -56,6 +57,12 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
+>   	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
+>   };
+>   
+> +static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
+> +	.clk_driver = "clk-mt8186-mm",
+> +	.routes = mmsys_mt8186_routing_table,
+> +	.num_routes = ARRAY_SIZE(mmsys_mt8186_routing_table),
+> +};
+> +
+>   static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
+>   	.clk_driver = "clk-mt8192-mm",
+>   	.routes = mmsys_mt8192_routing_table,
+> @@ -242,6 +249,10 @@ static const struct of_device_id of_match_mtk_mmsys[] = {
+>   		.compatible = "mediatek,mt8183-mmsys",
+>   		.data = &mt8183_mmsys_driver_data,
+>   	},
+> +	{
+> +		.compatible = "mediatek,mt8186-mmsys",
+> +		.data = &mt8186_mmsys_driver_data,
+> +	},
+>   	{
+>   		.compatible = "mediatek,mt8192-mmsys",
+>   		.data = &mt8192_mmsys_driver_data,
 
 _______________________________________________
 Linux-mediatek mailing list
