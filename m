@@ -4,71 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94094C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 19:42:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67DB6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 19:48:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nbMuNbl1TRkJFNYOviOrlqF2nvEAF/lWeHMck7RFebM=; b=s8ym+L5N/kzyVq
-	WxNokulXwztp2DyLGCqFS3x03vW3f5CFTkAAA9DL73BFTzCghFAM2P/GsdHfxUUVZW/dfiPAgUJbQ
-	v8/hr0GOYIHcS9maEJz8b4dZGSb5MXUc0KSs6QDkzLKF0Si0JqWrB1Tlh0+QPlQ3j7aDA3KN2z88A
-	QtHdH1im7ddtjgkX950on/rE5+yeiGgFSJ8HfZ9Q5tCpErTvOCZq8TpvbDeou6RPiIOCpuq4nwnck
-	5Bnyg54cMArE8TxuzJp3aFC2UVXqTQPz0uJP/U8llQXmgchEV9ABVDHjip9pdkeH91/PEfHGV6dvn
-	L/dQymLrJPrvrjoDz4aw==;
+	List-Owner; bh=rAFkWsVA7FTArquWkCEI+07ov2BeNmcM19/pwNIGo9U=; b=n7MT/P3si5i1Hq
+	6ef973dV2jquV0RV64Y3P1MfjsC4BvdIzn7P+nIwF6Qhpx07LV55F+qybOPrzfDbWGeol+H9kU9tw
+	OZyM4ZiyQnmKdBsqtVfDEbYzEklEeFy1x3kZzPqgoik99zP1KR8yiO3Yd279B0rFrEOECxOTS72HQ
+	n5KKcptK5xoUWsINeH7sruhKAfDrQoNF8AJ9tXYf+W4pLUz6Z6WPl+Q430SpCdjprGmdvtv3Uuonf
+	Pqic4mUU2hw8weIVPx9d98wECCYOV7gNUaaRdCNkyoYNnboqZ2YbazEMVTuxbKtuQ5bm+5T+OZ6Hg
+	9FG+kNZyH3ZHTODmvAbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nP8OE-000Iso-Hq; Tue, 01 Mar 2022 19:42:30 +0000
-Received: from mga12.intel.com ([192.55.52.136])
+	id 1nP8U5-000KCD-J7; Tue, 01 Mar 2022 19:48:33 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nP8O2-000Iqd-VM; Tue, 01 Mar 2022 19:42:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1646163738; x=1677699738;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=0jEz/DJzpwaJIm6VwC7B5azcRqmPUDVe75s6sEfdqSk=;
- b=JjjH68e5O4p5Doi1FEinaaH8uOmX8v88dGfjXJs11qj+88VpuRvqV/Ns
- ZETqq08U/CtX4uF9ntEy6Yk65XzQiIMh5invIxP8dJdk1W3VrZAir/ABJ
- PuEd/O9e/9IS5y7AveEhCXgDlmSWyXb0ZzgUXYNXu3NyGXoGDrIVXydH5
- 2IeM+olBK7UqL5Bo4NJAHktfI6VEB1KKDz/yADL3KN+ha74rkPIlq/Yx2
- 0vs1a4xXrIKd6s7yM1tr9FOVmfGQeLK/u8nFwqdxeaVyHJTdI9AePN4HZ
- O0YZKCuffTyPjbCIcR/D+M2s/a4Wgp8iAp3FQNvAj2c+Ssgh7XW87nDSf Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10273"; a="233192814"
-X-IronPort-AV: E=Sophos;i="5.90,146,1643702400"; d="scan'208";a="233192814"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Mar 2022 11:42:12 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,146,1643702400"; d="scan'208";a="493233881"
-Received: from lkp-server01.sh.intel.com (HELO 2146afe809fb) ([10.239.97.150])
- by orsmga003.jf.intel.com with ESMTP; 01 Mar 2022 11:42:08 -0800
-Received: from kbuild by 2146afe809fb with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1nP8Nr-0000wF-Cm; Tue, 01 Mar 2022 19:42:07 +0000
-Date: Wed, 2 Mar 2022 03:41:21 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>, broonie@kernel.org
-Cc: llvm@lists.linux.dev, kbuild-all@lists.01.org, perex@perex.cz,
- matthias.bgg@gmail.com, trevor.wu@mediatek.com, tzungbi@google.com,
- alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Jiaxin Yu <jiaxin.yu@mediatek.com>
-Subject: Re: [PATCH] ASoC: bt-sco: fix bt-sco-pcm-wb dai widget don't connect
- to the endpoint
-Message-ID: <202203020332.YsOHk7De-lkp@intel.com>
-References: <20220301171137.27442-1-jiaxin.yu@mediatek.com>
+ id 1nP8U2-000KB3-Mb
+ for linux-mediatek@lists.infradead.org; Tue, 01 Mar 2022 19:48:32 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id u11so23310341lju.4
+ for <linux-mediatek@lists.infradead.org>; Tue, 01 Mar 2022 11:48:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linux-foundation.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PzY8tILS7/J5BzJfiKLdBDXy8/s4RAHqODI+UdY57jc=;
+ b=MSgmT6lRet0jPev3NhT8poLSNE2IuVKHhTmnMdindDPsxNrbDdzPrkBSaT4BauMeD+
+ LWq3ALR2NImH9IAbyg/9Mpz0DLX1H3V94a1gLKACC1HvSqM9EwtH2Km4ZUYlkqLoZgsQ
+ ZV7jqWBOB7cCGsim0JopuTtvt6tgng/ReKRwg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PzY8tILS7/J5BzJfiKLdBDXy8/s4RAHqODI+UdY57jc=;
+ b=NXRm4DaD4WSS8udL3jnnqnzoIs/rBD7qohddE+R6QGX89MDe1EEt7ueXOGewgp2wAG
+ oa/g6rU6m8lLX8pe0eG7dlpdWNSkNN647lWG7S190uSWekty5LQP7Fu5YWAE6rzF838p
+ f7UaP0oTebfPZftQYsQLbKMt8r0PklJvM+a/vIsjduMmYUmCavSQRP1d7+P/Zrth4tm0
+ WBXInK9FX5yjjH3Z6wmh/q52tMfUIkrHyYPucJwvc6S7iW0iQAYK63gWregsqXIBQSlf
+ aztKFhfjiHz6dkBb1ywbemK5TqAdj47xvKhKyxi2P10x0/k0fqdY0M/YkIjIHvfKyYX2
+ O1Kw==
+X-Gm-Message-State: AOAM531PUYBJ5FBwSKXLBQxaQhNw6wtuPPNDAj67bY2Mb1z/qzfG6ekq
+ Le370KwFAWgP40KPXOS0um+G0yLpJ4TJ7LXnz1w=
+X-Google-Smtp-Source: ABdhPJxA6NyqXRiO9fLUIRPujKaJ/9bvYtBFiFPcxNdgM+hrd4XXxq3rv+JctLZ6R+cc0sG3BWFy3w==
+X-Received: by 2002:a2e:b52f:0:b0:23e:2fe6:af10 with SMTP id
+ z15-20020a2eb52f000000b0023e2fe6af10mr17560208ljm.46.1646164106858; 
+ Tue, 01 Mar 2022 11:48:26 -0800 (PST)
+Received: from mail-lj1-f182.google.com (mail-lj1-f182.google.com.
+ [209.85.208.182]) by smtp.gmail.com with ESMTPSA id
+ f7-20020ac24e47000000b00443591e0d63sm1641042lfr.189.2022.03.01.11.48.26
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 01 Mar 2022 11:48:26 -0800 (PST)
+Received: by mail-lj1-f182.google.com with SMTP id y24so4302861ljh.11
+ for <linux-mediatek@lists.infradead.org>; Tue, 01 Mar 2022 11:48:26 -0800 (PST)
+X-Received: by 2002:a2e:3013:0:b0:246:2ca9:365e with SMTP id
+ w19-20020a2e3013000000b002462ca9365emr17983151ljw.291.1646163763108; Tue, 01
+ Mar 2022 11:42:43 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220301171137.27442-1-jiaxin.yu@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20220228110822.491923-1-jakobkoschel@gmail.com>
+ <20220228110822.491923-3-jakobkoschel@gmail.com>
+ <2e4e95d6-f6c9-a188-e1cd-b1eae465562a@amd.com>
+ <CAHk-=wgQps58DPEOe4y5cTh5oE9EdNTWRLXzgMiETc+mFX7jzw@mail.gmail.com>
+ <282f0f8d-f491-26fc-6ae0-604b367a5a1a@amd.com>
+ <b2d20961dbb7533f380827a7fcc313ff849875c1.camel@HansenPartnership.com>
+ <7D0C2A5D-500E-4F38-AD0C-A76E132A390E@kernel.org>
+ <73fa82a20910c06784be2352a655acc59e9942ea.camel@HansenPartnership.com>
+ <CAHk-=wiT5HX6Kp0Qv4ZYK_rkq9t5fZ5zZ7vzvi6pub9kgp=72g@mail.gmail.com>
+In-Reply-To: <CAHk-=wiT5HX6Kp0Qv4ZYK_rkq9t5fZ5zZ7vzvi6pub9kgp=72g@mail.gmail.com>
+From: Linus Torvalds <torvalds@linux-foundation.org>
+Date: Tue, 1 Mar 2022 11:42:26 -0800
+X-Gmail-Original-Message-ID: <CAHk-=wghQygmASNUWj=LZn5FR5wsce2osyR6EXcfEB_FaX_6Og@mail.gmail.com>
+Message-ID: <CAHk-=wghQygmASNUWj=LZn5FR5wsce2osyR6EXcfEB_FaX_6Og@mail.gmail.com>
+Subject: Re: [PATCH 2/6] treewide: remove using list iterator after loop body
+ as a ptr
+To: James Bottomley <James.Bottomley@hansenpartnership.com>
+Cc: Mike Rapoport <rppt@kernel.org>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ Jakob Koschel <jakobkoschel@gmail.com>, alsa-devel@alsa-project.org, 
+ linux-aspeed@lists.ozlabs.org, "Gustavo A. R. Silva" <gustavo@embeddedor.com>, 
+ linux-iio@vger.kernel.org, nouveau@lists.freedesktop.org, 
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ dri-devel <dri-devel@lists.freedesktop.org>, 
+ Cristiano Giuffrida <c.giuffrida@vu.nl>,
+ amd-gfx list <amd-gfx@lists.freedesktop.org>, 
+ samba-technical@lists.samba.org, linux1394-devel@lists.sourceforge.net, 
+ drbd-dev@lists.linbit.com, linux-arch <linux-arch@vger.kernel.org>, 
+ CIFS <linux-cifs@vger.kernel.org>, KVM list <kvm@vger.kernel.org>, 
+ linux-scsi <linux-scsi@vger.kernel.org>,
+ linux-rdma <linux-rdma@vger.kernel.org>, 
+ linux-staging@lists.linux.dev, "Bos, H.J." <h.j.bos@vu.nl>, 
+ Jason Gunthorpe <jgg@ziepe.ca>, intel-wired-lan@lists.osuosl.org, 
+ kgdb-bugreport@lists.sourceforge.net, bcm-kernel-feedback-list@broadcom.com, 
+ Dan Carpenter <dan.carpenter@oracle.com>, 
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Kees Cook <keescook@chromium.org>, 
+ Arnd Bergman <arnd@arndb.de>, Linux PM <linux-pm@vger.kernel.org>, 
+ intel-gfx <intel-gfx@lists.freedesktop.org>, 
+ Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
+ Nathan Chancellor <nathan@kernel.org>, 
+ linux-fsdevel <linux-fsdevel@vger.kernel.org>, 
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ v9fs-developer@lists.sourceforge.net, 
+ linux-tegra <linux-tegra@vger.kernel.org>, Thomas Gleixner <tglx@linutronix.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-sgx@vger.kernel.org, 
+ linux-block <linux-block@vger.kernel.org>, Netdev <netdev@vger.kernel.org>, 
+ linux-usb@vger.kernel.org, linux-wireless <linux-wireless@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ Linux F2FS Dev Mailing List <linux-f2fs-devel@lists.sourceforge.net>, 
+ tipc-discussion@lists.sourceforge.net, 
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
+ dma <dmaengine@vger.kernel.org>, 
+ linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>, 
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_114219_050529_18EC2A3F 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20220301_114830_754037_04DFBDAC 
+X-CRM114-Status: GOOD (  17.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,55 +138,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jiaxin,
+On Tue, Mar 1, 2022 at 11:06 AM Linus Torvalds
+<torvalds@linux-foundation.org> wrote:
+>
+> So instead of that simple "if (!entry)", we'd effectively have to
+> continue to use something that still works with the old world order
+> (ie that "if (list_entry_is_head())" model).
 
-Thank you for the patch! Yet something to improve:
+Just to prove my point about how this is painful, that doesn't work at all.
 
-[auto build test ERROR on broonie-sound/for-next]
-[also build test ERROR on v5.17-rc6 next-20220301]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
+If the loop iterator at the end is NULL (good, in theory), we can't
+use "list_entry_is_head()" to check whether we ended. We'd have to use
+a new thing entirely, to handle the "list_for_each_entry() has the
+old/new semantics" cases.
 
-url:    https://github.com/0day-ci/linux/commits/Jiaxin-Yu/ASoC-bt-sco-fix-bt-sco-pcm-wb-dai-widget-don-t-connect-to-the-endpoint/20220302-011344
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-config: hexagon-randconfig-r045-20220301 (https://download.01.org/0day-ci/archive/20220302/202203020332.YsOHk7De-lkp@intel.com/config)
-compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project d271fc04d5b97b12e6b797c6067d3c96a8d7470e)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/0day-ci/linux/commit/de4d22036c32b5b4be162ace0b3ce74c193c43c0
-        git remote add linux-review https://github.com/0day-ci/linux
-        git fetch --no-tags linux-review Jiaxin-Yu/ASoC-bt-sco-fix-bt-sco-pcm-wb-dai-widget-don-t-connect-to-the-endpoint/20220302-011344
-        git checkout de4d22036c32b5b4be162ace0b3ce74c193c43c0
-        # save the config file to linux build tree
-        mkdir build_dir
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=hexagon SHELL=/bin/bash sound/soc/codecs/
+That's largely why I was pushing for the "let's make it impossible to
+use the loop iterator at all outside the loop". It avoids the
+confusing case, and the patches to move to that stricter semantic can
+be merged independently (and before) doing the actual semantic change.
 
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
+I'm not saying my suggested approach is wonderful either. Honestly,
+it's painful that we have so nasty semantics for the end-of-loop case
+for list_for_each_entry().
 
-All errors (new ones prefixed by >>):
+The minimal patch would clearly be to keep those broken semantics, and
+just force everybody to use the list_entry_is_head() case. That's the
+"we know we messed up, we are too lazy to fix it, we'll just work
+around it and people need to be careful" approach.
 
->> sound/soc/codecs/bt-sco.c:26:1: error: extraneous closing brace ('}')
-   };
-   ^
-   1 error generated.
+And laziness is a virtue. But bad semantics are bad semantics. So it's
+a question of balancing those two issues.
 
-
-vim +26 sound/soc/codecs/bt-sco.c
-
-5195ca4902fe0b Mark Brown 2013-08-19  21  
-5195ca4902fe0b Mark Brown 2013-08-19  22  static const struct snd_soc_dapm_route bt_sco_routes[] = {
-de4d22036c32b5 Jiaxin Yu  2022-03-02  23  	{ "BT_SCO_TX", NULL, "RX" },
-de4d22036c32b5 Jiaxin Yu  2022-03-02  24  	{ "TX", NULL, "BT_SCO_RX" },
-de4d22036c32b5 Jiaxin Yu  2022-03-02  25  };
-5195ca4902fe0b Mark Brown 2013-08-19 @26  };
-5195ca4902fe0b Mark Brown 2013-08-19  27  
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+               Linus
 
 _______________________________________________
 Linux-mediatek mailing list
