@@ -4,59 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DB81C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 11:23:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30082C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 11:28:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=UPpMeKDWJ41aQtWSDjkTb0qnmNGNLK82g3cVw4iMD0U=; b=hjhgXgxq5bJrab
-	TjnUE4FAkVInQbEUyvXehznHish59J0Wh2wcLKHcWYwyqdtfy95J4PZdul6mHs1yn88oJ40xiIMA+
-	3jHiwP5P/3MU0HMlrAsn2i44mUWP5N73pEUOkvHaPYdohdmLn+rOS8KViTlPiaa5ydoYwoiSJLP/B
-	GcX0RGIyGz7/rDi0faKmgewaIoLH4GWxqJN24uRB1qAK/fSTGlHyDF4pG2zhRpp45+1GohhKd5XL1
-	fOFwfuzC7agzLi836i1VJuGy4QdiVB9lti1A0jdSmwfoi7U9J6N5IxzVOEv1lBSBRn3NMzF4LLxhm
-	HwovX0RTvt6Hv/e3YLNw==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8jlZiaqwXpv/JLQmqnTWOnBsazklNzSK4+hqaE+mrwk=; b=bp8FHaqOkxGBA9
+	HMt5bTlPnwryUvvc4VRm6yh15md2PhuoTXSTU+H+/wGluRpFXyMxP24rmrysqNlut4cUmBlnh0JsY
+	ucKd9dAz64/unOGWFQ3h5elVPcz+wHER8TBQEsA+GKlSBUg/f7QJ/BC7UhsryIgG1yHeHXgv2vc7+
+	Q2PoF6kE0zwvLHXxuo+cb/l3apw/UdzijwOZ8dhF7JwhBx0ZKUfKEngLv3CIg5pQO8JEGfGGxaC+x
+	r93YxkkydaPoNHpvKXj6rv1xoWuWwsjb5aZVM5IptYTMpbW2VFHD2kkDEogUJlNMh0FyDy2dBllpL
+	1ZwBb68Uj1vwXpu7DDdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nP0ba-00GPS0-8K; Tue, 01 Mar 2022 11:23:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nP0gA-00GQnO-S5; Tue, 01 Mar 2022 11:28:30 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nP0bW-00GPQp-P2; Tue, 01 Mar 2022 11:23:44 +0000
-X-UUID: 8cf4a3e264d34d6db9c5bed4f9332673-20220301
-X-UUID: 8cf4a3e264d34d6db9c5bed4f9332673-20220301
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <lena.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 665749324; Tue, 01 Mar 2022 04:23:16 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 1 Mar 2022 03:23:14 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 1 Mar 2022 19:23:13 +0800
-Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 1 Mar 2022 19:23:12 +0800
-From: lena wang <lena.wang@mediatek.com>
-To: <pabeni@redhat.com>, <edumazet@google.com>, "David S. Miller"
- <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Willem de Bruijn <willemb@google.com>, "Daniel
- Borkmann" <daniel@iogearbox.net>, Dongseok Yi <dseok.yi@samsung.com>
-CC: <wsd_upstream@mediatek.com>, lena wang <lena.wang@mediatek.com>,
- <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH net v2] net: fix up skbs delta_truesize in UDP GRO frag_list
-Date: Tue, 1 Mar 2022 19:17:09 +0800
-Message-ID: <1646133431-8948-1-git-send-email-lena.wang@mediatek.com>
-X-Mailer: git-send-email 1.9.1
-MIME-Version: 1.0
-X-MTK: N
+ id 1nP0g1-00GQjS-1w; Tue, 01 Mar 2022 11:28:27 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id d10so30808788eje.10;
+ Tue, 01 Mar 2022 03:28:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=rLPvv7mVdDwWU3WqqHUc/M/t9o2wkfNNz2uUSA/i/Q0=;
+ b=ioxwEWwSec2mkWoQpVaP+m+cuqfrILVMZy97DsxGJQFNwUj5vt0t9wo5G7myUpC8Gn
+ ea9oHHWNkcI1g0+ETzPDSekL4muwhDYsG3jrD0dPjJWnH1vW4gUq2ufbL8yBIo9ax2rC
+ LCc4peu3G2+oC3D/CoxTwxe0jKznErkS9hGO2cQ4rpTAmgLJ5M6BCvPaoqQObgiQcr6n
+ RKDduahlScES6wicQqME3eGzY8GUno55Oqx2eUsC/sQVyrcKAkNt4/DW8JZWJd6l/Vwp
+ mTTzA+edxLDCldwyXcUf3Jn0ErW39L5ba+PqRXF7jiU95w3jgcW/Rs/bUGAwA8mWZWkw
+ L2Ig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=rLPvv7mVdDwWU3WqqHUc/M/t9o2wkfNNz2uUSA/i/Q0=;
+ b=tfUY08m0Mdm86LcfIKIbtSxsMsAx5+caPDlsV2VdD1FmMXD/cln6Jzate8kcytbzKu
+ 61iahKNxrO6bMWzLt6TO9kKIqvsVM/0reYaFJmf9+6bdJvm/TCPXSzuIyMCN30T+2EV6
+ +S5ri3BxRC35h52so39f0x1gPbG+MF9KQF74+7SCym525sJf6efdsqeSPhRfht2aT0sm
+ u3LKuTpF+7lo5lzenO8SYz9zFj5kxaohVbrpUiwsOpUwiaRiejR8dx/JZFWfc913heun
+ AzXg+bsaYsF6zMJJc5ur3XDotwV5s3ly1BOIKlPJDqlZxQhammxvv9WEScVv92JV+A0l
+ ZBTQ==
+X-Gm-Message-State: AOAM531U0LFTudrCpm3sFyJJWgVZszfetUUwHDmWX75bK4MTevGrVh+c
+ hftsUS7JBLA9Sfwcm8PdKm0=
+X-Google-Smtp-Source: ABdhPJykJwlP+KqTh6zSzndCpDSZzE2bN4aLh28OSmyBBaWLei6TdHv4i/sMtFtkO4GxsNuXK9LBkw==
+X-Received: by 2002:a17:906:68c2:b0:6b4:9f26:c099 with SMTP id
+ y2-20020a17090668c200b006b49f26c099mr18827008ejr.41.1646134097608; 
+ Tue, 01 Mar 2022 03:28:17 -0800 (PST)
+Received: from smtpclient.apple ([2a02:8109:9d80:3f6c:6db3:8d4c:747e:98ad])
+ by smtp.gmail.com with ESMTPSA id
+ a25-20020a50ff19000000b0040f84cd806csm7036870edu.59.2022.03.01.03.28.15
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 01 Mar 2022 03:28:17 -0800 (PST)
+Mime-Version: 1.0 (Mac OS X Mail 15.0 \(3693.60.0.1.1\))
+Subject: Re: [PATCH 2/6] treewide: remove using list iterator after loop body
+ as a ptr
+From: Jakob Koschel <jakobkoschel@gmail.com>
+In-Reply-To: <CAHk-=whLK11HyvpUtEftOjc3Gup2V77KpAQ2fycj3uai=qceHw@mail.gmail.com>
+Date: Tue, 1 Mar 2022 12:28:15 +0100
+Cc: =?utf-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ alsa-devel@alsa-project.org, linux-aspeed@lists.ozlabs.org,
+ "Gustavo A. R. Silva" <gustavo@embeddedor.com>, linux-iio@vger.kernel.org,
+ nouveau@lists.freedesktop.org, Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Cristiano Giuffrida <c.giuffrida@vu.nl>,
+ amd-gfx list <amd-gfx@lists.freedesktop.org>,
+ samba-technical@lists.samba.org, linux1394-devel@lists.sourceforge.net,
+ drbd-dev@lists.linbit.com, linux-arch <linux-arch@vger.kernel.org>,
+ CIFS <linux-cifs@vger.kernel.org>, KVM list <kvm@vger.kernel.org>,
+ linux-scsi <linux-scsi@vger.kernel.org>,
+ linux-rdma <linux-rdma@vger.kernel.org>, linux-staging@lists.linux.dev,
+ "Bos, H.J." <h.j.bos@vu.nl>, Jason Gunthorpe <jgg@ziepe.ca>,
+ intel-wired-lan@lists.osuosl.org, kgdb-bugreport@lists.sourceforge.net,
+ bcm-kernel-feedback-list@broadcom.com,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Kees Cook <keescook@chromium.org>, Arnd Bergman <arnd@arndb.de>,
+ Linux PM <linux-pm@vger.kernel.org>,
+ intel-gfx <intel-gfx@lists.freedesktop.org>,
+ Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
+ Nathan Chancellor <nathan@kernel.org>,
+ linux-fsdevel <linux-fsdevel@vger.kernel.org>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ v9fs-developer@lists.sourceforge.net,
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ linux-sgx@vger.kernel.org, linux-block <linux-block@vger.kernel.org>,
+ Netdev <netdev@vger.kernel.org>, linux-usb@vger.kernel.org,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Linux F2FS Dev Mailing List <linux-f2fs-devel@lists.sourceforge.net>,
+ tipc-discussion@lists.sourceforge.net,
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
+ dma <dmaengine@vger.kernel.org>, linux-mediatek@lists.infradead.org,
+ Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
+ Mike Rapoport <rppt@kernel.org>
+Message-Id: <CEDAD0D9-56EE-4105-9107-72C2EAD940B0@gmail.com>
+References: <20220228110822.491923-1-jakobkoschel@gmail.com>
+ <20220228110822.491923-3-jakobkoschel@gmail.com>
+ <2e4e95d6-f6c9-a188-e1cd-b1eae465562a@amd.com>
+ <CAHk-=wgQps58DPEOe4y5cTh5oE9EdNTWRLXzgMiETc+mFX7jzw@mail.gmail.com>
+ <CAHk-=wj8fkosQ7=bps5K+DDazBXk=ypfn49A0sEq+7-nZnyfXA@mail.gmail.com>
+ <CAHk-=wiTCvLQkHcJ3y0hpqH7FEk9D28LDvZZogC6OVLk7naBww@mail.gmail.com>
+ <FC710A1A-524E-481B-A668-FC258F529A2E@gmail.com>
+ <CAHk-=whLK11HyvpUtEftOjc3Gup2V77KpAQ2fycj3uai=qceHw@mail.gmail.com>
+To: Linus Torvalds <torvalds@linux-foundation.org>
+X-Mailer: Apple Mail (2.3693.60.0.1.1)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_032342_862088_2EF84621 
-X-CRM114-Status: GOOD (  15.93  )
+X-CRM114-CacheID: sfid-20220301_032821_147175_A686C70A 
+X-CRM114-Status: GOOD (  52.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,66 +134,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The truesize for a UDP GRO packet is added by main skb and skbs in main
-skb's frag_list:
-skb_gro_receive_list
-        p->truesize += skb->truesize;
 
-The commit 53475c5dd856 ("net: fix use-after-free when UDP GRO with
-shared fraglist") introduced a truesize increase for frag_list skbs.
-When uncloning skb, it will call pskb_expand_head and trusesize for
-frag_list skbs may increase. This can occur when allocators uses
-__netdev_alloc_skb and not jump into __alloc_skb. This flow does not
-use ksize(len) to calculate truesize while pskb_expand_head uses.
-skb_segment_list
-err = skb_unclone(nskb, GFP_ATOMIC);
-pskb_expand_head
-        if (!skb->sk || skb->destructor == sock_edemux)
-                skb->truesize += size - osize;
 
-If we uses increased truesize adding as delta_truesize, it will be
-larger than before and even larger than previous total truesize value
-if skbs in frag_list are abundant. The main skb truesize will become
-smaller and even a minus value or a huge value for an unsigned int
-parameter. Then the following memory check will drop this abnormal skb.
+> On 1. Mar 2022, at 01:41, Linus Torvalds <torvalds@linux-foundation.org> wrote:
+> 
+> On Mon, Feb 28, 2022 at 1:47 PM Jakob Koschel <jakobkoschel@gmail.com> wrote:
+>> 
+>> The goal of this is to get compiler warnings right? This would indeed be great.
+> 
+> Yes, so I don't mind having a one-time patch that has been gathered
+> using some automated checker tool, but I don't think that works from a
+> long-term maintenance perspective.
+> 
+> So if we have the basic rule being "don't use the loop iterator after
+> the loop has finished, because it can cause all kinds of subtle
+> issues", then in _addition_ to fixing the existing code paths that
+> have this issue, I really would want to (a) get a compiler warning for
+> future cases and (b) make it not actually _work_ for future cases.
+> 
+> Because otherwise it will just happen again.
+> 
+>> Changing the list_for_each_entry() macro first will break all of those cases
+>> (e.g. the ones using 'list_entry_is_head()).
+> 
+> So I have no problems with breaking cases that we basically already
+> have a patch for due to  your automated tool. There were certainly
+> more than a handful, but it didn't look _too_ bad to just make the
+> rule be "don't use the iterator after the loop".
+> 
+> Of course, that's just based on that patch of yours. Maybe there are a
+> ton of other cases that your patch didn't change, because they didn't
+> match your trigger case, so I may just be overly optimistic here.
 
-To avoid this error we should use the original truesize to segment the
-main skb.
+Based on the coccinelle script there are ~480 cases that need fixing
+in total. I'll now finish all of them and then split them by
+submodules as Greg suggested and repost a patch set per submodule.
+Sounds good?
 
-Fixes: 53475c5dd856 ("net: fix use-after-free when UDP GRO with shared fraglist")
-Signed-off-by: lena wang <lena.wang@mediatek.com>
-Acked-by: Paolo Abeni <pabeni@redhat.com>
----
-change since v1:
-1) add the fix tag.
-2) add net subtree to the subject
----
----
- net/core/skbuff.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> But basically to _me_, the important part is that the end result is
+> maintainable longer-term. I'm more than happy to have a one-time patch
+> to fix a lot of dubious cases if we can then have clean rules going
+> forward.
+> 
+>> I assumed it is better to fix those cases first and then have a simple
+>> coccinelle script changing the macro + moving the iterator into the scope
+>> of the macro.
+> 
+> So that had been another plan of mine, until I actually looked at
+> changing the macro. In the one case I looked at, it was ugly beyond
+> belief.
+> 
+> It turns out that just syntactically, it's really nice to give the
+> type of the iterator from outside the way we do now. Yeah, it may be a
+> bit odd, and maybe it's partly because I'm so used to the
+> "list_for_each_list_entry()" syntax, but moving the type into the loop
+> construct really made it nasty - either one very complex line, or
+> having to split it over two lines which was even worse.
+> 
+> Maybe the place I looked at just happened to have a long typename, but
+> it's basically always going to be a struct, so it's never a _simple_
+> type. And it just looked very odd adn unnatural to have the type as
+> one of the "arguments" to that list_for_each_entry() macro.
+> 
+> So yes, initially my idea had been to just move the iterator entirely
+> inside the macro. But specifying the type got so ugly that I think
+> that
+> 
+>        typeof (pos) pos
+> 
+> trick inside the macro really ends up giving us the best of all worlds:
+> 
+> (a) let's us keep the existing syntax and code for all the nice cases
+> that did everything inside the loop anyway
+> 
+> (b) gives us a nice warning for any normal use-after-loop case
+> (unless you explicitly initialized it like that
+> sgx_mmu_notifier_release() function did for no good reason
+> 
+> (c) also guarantees that even if you don't get a warning,
+> non-converted (or newly written) bad code won't actually _work_
+> 
+> so you end up getting the new rules without any ambiguity or mistaken
+> 
+>> With this you are no longer able to set the 'outer' pos within the list
+>> iterator loop body or am I missing something?
+> 
+> Correct. Any assignment inside the loop will be entirely just to the
+> local loop case. So any "break;" out of the loop will have to set
+> another variable - like your updated patch did.
+> 
+>> I fail to see how this will make most of the changes in this
+>> patch obsolete (if that was the intention).
+> 
+> I hope my explanation above clarifies my thinking: I do not dislike
+> your patch, and in fact your patch is indeed required to make the new
+> semantics work.
 
-diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index 9d0388bed0c1..8b7356cffea7 100644
---- a/net/core/skbuff.c
-+++ b/net/core/skbuff.c
-@@ -3876,6 +3876,7 @@ struct sk_buff *skb_segment_list(struct sk_buff *skb,
- 		list_skb = list_skb->next;
- 
- 		err = 0;
-+		delta_truesize += nskb->truesize;
- 		if (skb_shared(nskb)) {
- 			tmp = skb_clone(nskb, GFP_ATOMIC);
- 			if (tmp) {
-@@ -3900,7 +3901,6 @@ struct sk_buff *skb_segment_list(struct sk_buff *skb,
- 		tail = nskb;
- 
- 		delta_len += nskb->len;
--		delta_truesize += nskb->truesize;
- 
- 		skb_push(nskb, -skb_network_offset(nskb) + offset);
- 
--- 
-2.18.0
+ok it's all clear now, thanks for clarifying.
+I've defined all the 'tmp' iterator variables uninitialized so applying
+your patch on top of that later will just give the nice compiler warning 
+if they are used past the loop body.
+
+> 
+> What I disliked was always the maintainability of your patch - making
+> the rules be something that isn't actually visible in the source code,
+> and letting the old semantics still work as well as they ever did, and
+> having to basically run some verification pass to find bad users.
+
+Since this patch is not a complete list of cases that need fixing (30%)
+I haven't included the actual change of moving the iterator variable
+into the loop and thought that would be a second step coming after this
+is merged.
+
+With these changes alone, yes you still rely on manual verification passes.
+
+> 
+> (I also disliked your original patch that mixed up the "CPU
+> speculation type safety" with the actual non-speculative problems, but
+> that was another issue).
+> 
+>                Linus
+
+- Jakob
 
 
 _______________________________________________
