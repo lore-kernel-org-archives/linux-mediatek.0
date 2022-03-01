@@ -4,48 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4CD0C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 10:14:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C672CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 10:14:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uhqhOPIaq+um/5WTK/RGWy9cXx4QN9qOU/qs/c32CAg=; b=zoDPbLd8zgjlbi
-	4zUqjwLpOKz0n5mQRgJucneEEkyl7RjY9WEWJPjr9y3Am84ben3+CEEZaQkdZQo7AA0xp764obFAg
-	cBNrlcoc0CScyCDVP7BfwDrfai/jPj+tpetnV2Vie33AcjCxaG14Y3h6cAWWOkkS2sQbcXe146tyr
-	ofnpbr8VQ6u6+wr2ImXEhyc/r1RTQMl3n2/knNi71fSxBTifL7c8HgK1Cc+GwTFH9NE00iHCf4WfV
-	CX8YX2fHPuDJqkvA1Nd8MWJJX4m0IwAHWmy1SYKmNyTDrPbferfkGqjqk+3eWiKfMOgzsphwpmii7
-	CI8hA4a/fe2g8BVyFzeA==;
+	List-Owner; bh=Y+HuLVWXeERBAy+J297iAMqgDb67J78DxUrEDAVoguM=; b=KgRGWXkoKRKdW/
+	ueqLDpaRiYfk0ZE9S438ZpmhDQxVr2MUOSXoCLLYDrlJ3hkNq02piNnfav8ISKt4C4gw5l6r3zAPa
+	uBFsdPD1+cCHKn9mUSOy55fjp9NtIXw8T19m8jT3rP2c2uQWtF9JyQFEGoQSFeHi3Ab/K2NUzkxYm
+	MeCPk8acRzNljdNshY/X6FBhLNhlKS58HlYfdueCbTy8/nyIl5HCL3LSiWDxZO8evr5yoOkDL1L4i
+	z7Q5WWExNTSUdGvE6ySj6pgnSKxHBkz/GZo5BpYJBcTLnpJNAVdooExyMFi/Rrw9mjvfl/g5u3Ip8
+	l6TXSmhWz6F8lC7mZvcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOzVy-00G3Mk-3p; Tue, 01 Mar 2022 10:13:54 +0000
+	id 1nOzW1-00G3O9-Ep; Tue, 01 Mar 2022 10:13:57 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOzVH-00G394-Ty; Tue, 01 Mar 2022 10:13:13 +0000
-X-UUID: c1a2738472844f649a0a1fe76c1262f7-20220301
-X-UUID: c1a2738472844f649a0a1fe76c1262f7-20220301
+ id 1nOzVI-00G39c-TE; Tue, 01 Mar 2022 10:13:14 +0000
+X-UUID: 9ce2ebefb150459e9ab3c2d2c28b6b4b-20220301
+X-UUID: 9ce2ebefb150459e9ab3c2d2c28b6b4b-20220301
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <moudy.ho@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 244265588; Tue, 01 Mar 2022 03:13:07 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 125543669; Tue, 01 Mar 2022 03:13:07 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 1 Mar 2022 02:06:43 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 1 Mar 2022 18:06:42 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 1 Mar 2022 18:06:42 +0800
-Message-ID: <69c52bfc0dd107d559c1daf37595f07d9469b199.camel@mediatek.com>
-Subject: Re: [PATCH v12 1/4] soc: mediatek: mmsys: add CMDQ write register
- function
-From: moudy.ho <moudy.ho@mediatek.com>
+ 15.0.1497.2; Tue, 1 Mar 2022 02:03:04 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 1 Mar 2022 18:02:49 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 1 Mar 2022 18:02:49 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Hans
- Verkuil" <hverkuil-cisco@xs4all.nl>, Jernej Skrabec <jernej.skrabec@siol.net>
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>, Jernej Skrabec <jernej.skrabec@siol.net>
 CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
  <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
  <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
@@ -58,19 +55,22 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
  <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
  <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
  <allen-kh.cheng@mediatek.com>, <randy.wu@mediatek.com>,
- <jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
- <river.cheng@mediatek.com>, <srv_heupstream@mediatek.com>,
+ <moudy.ho@mediatek.com>, <jason-jh.lin@mediatek.com>,
+ <roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
+ <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 1 Mar 2022 18:06:42 +0800
-In-Reply-To: <20220301100246.2153-2-moudy.ho@mediatek.com>
+Subject: [PATCH v12 4/4] soc: mediatek: mutex: add functions that operate
+ registers by CMDQ
+Date: Tue, 1 Mar 2022 18:02:46 +0800
+Message-ID: <20220301100246.2153-5-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220301100246.2153-1-moudy.ho@mediatek.com>
 References: <20220301100246.2153-1-moudy.ho@mediatek.com>
- <20220301100246.2153-2-moudy.ho@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_021312_014058_B707BACB 
-X-CRM114-Status: GOOD (  27.24  )
+X-CRM114-CacheID: sfid-20220301_021312_991740_9EC4F905 
+X-CRM114-Status: GOOD (  17.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,221 +87,181 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
+Considering that some functions have timing requirements
+in specific situation, this patch adds several interface that
+operate registers by CMDQ.
 
-We have proposed some support for MDP in mmsys and mutex.
-Is there any chance that you can give us some suggestions?
-We also need your approvement if this series is acceptable.
-Also, if the patch is not proper for you, please let us know.
-Thanks for your help.
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/soc/mediatek/mtk-mutex.c       | 72 +++++++++++++++++++++++++-
+ include/linux/soc/mediatek/mtk-mutex.h |  6 +++
+ 2 files changed, 76 insertions(+), 2 deletions(-)
 
-Thanks,
-Moudy Ho
-
-On Tue, 2022-03-01 at 18:02 +0800, Moudy Ho wrote:
-> Adding the interface of writing MMSYS register via CMDQ,
-> users do not need to parse related dts information.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/soc/mediatek/Kconfig           |  1 +
->  drivers/soc/mediatek/mtk-mmsys.c       | 30 ++++++++++++++++
->  drivers/soc/mediatek/mtk-mmsys.h       |  1 +
->  include/linux/soc/mediatek/mtk-mmsys.h | 50
-> ++++++++++++++++++++++++++
->  4 files changed, 82 insertions(+)
-> 
-> diff --git a/drivers/soc/mediatek/Kconfig
-> b/drivers/soc/mediatek/Kconfig
-> index fdd8bc08569e..172bc7828aca 100644
-> --- a/drivers/soc/mediatek/Kconfig
-> +++ b/drivers/soc/mediatek/Kconfig
-> @@ -69,6 +69,7 @@ config MTK_MMSYS
->  	bool "MediaTek MMSYS Support"
->  	default ARCH_MEDIATEK
->  	depends on HAS_IOMEM
-> +	select MTK_CMDQ
->  	help
->  	  Say yes here to add support for the MediaTek Multimedia
->  	  Subsystem (MMSYS).
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.c
-> b/drivers/soc/mediatek/mtk-mmsys.c
-> index 50c797d70ddd..04c0c7de395e 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.c
-> +++ b/drivers/soc/mediatek/mtk-mmsys.c
-> @@ -8,9 +8,11 @@
->  #include <linux/device.h>
->  #include <linux/io.h>
->  #include <linux/of_device.h>
-> +#include <linux/of_address.h>
->  #include <linux/platform_device.h>
->  #include <linux/reset-controller.h>
->  #include <linux/soc/mediatek/mtk-mmsys.h>
-> +#include <linux/soc/mediatek/mtk-cmdq.h>
->  
->  #include "mtk-mmsys.h"
->  #include "mt8167-mmsys.h"
-> @@ -55,6 +57,7 @@ static const struct mtk_mmsys_driver_data
-> mt8183_mmsys_driver_data = {
->  	.clk_driver = "clk-mt8183-mm",
->  	.routes = mmsys_mt8183_routing_table,
->  	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
-> +	.has_gce_client_reg = true,
->  };
->  
->  static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data =
-> {
-> @@ -81,6 +84,8 @@ struct mtk_mmsys {
->  	const struct mtk_mmsys_driver_data *data;
->  	spinlock_t lock; /* protects mmsys_sw_rst_b reg */
->  	struct reset_controller_dev rcdev;
-> +	struct cmdq_client_reg cmdq_base;
-> +	phys_addr_t addr;
->  };
->  
->  void mtk_mmsys_ddp_connect(struct device *dev,
-> @@ -120,6 +125,17 @@ void mtk_mmsys_ddp_disconnect(struct device
-> *dev,
->  }
->  EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_disconnect);
->  
-> +void mtk_mmsys_write_reg_by_cmdq(struct device *dev,
-> +				 struct mmsys_cmdq_cmd *cmd,
-> +				 u32 offset, u32 value, u32 mask)
-> +{
-> +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-> +
-> +	cmdq_pkt_write_mask(cmd->pkt, mmsys->cmdq_base.subsys,
-> +			    mmsys->addr + offset, value, mask);
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_mmsys_write_reg_by_cmdq);
-> +
->  static int mtk_mmsys_reset_update(struct reset_controller_dev
-> *rcdev, unsigned long id,
->  				  bool assert)
->  {
-> @@ -178,6 +194,7 @@ static int mtk_mmsys_probe(struct platform_device
-> *pdev)
->  	struct platform_device *clks;
->  	struct platform_device *drm;
->  	struct mtk_mmsys *mmsys;
-> +	struct resource res;
->  	int ret;
->  
->  	mmsys = devm_kzalloc(dev, sizeof(*mmsys), GFP_KERNEL);
-> @@ -203,6 +220,19 @@ static int mtk_mmsys_probe(struct
-> platform_device *pdev)
->  		return ret;
->  	}
->  
-> +	if (of_address_to_resource(dev->of_node, 0, &res) < 0)
-> +		mmsys->addr = 0L;
-> +	else
-> +		mmsys->addr = res.start;
-> +
-> +	if (mmsys->data->has_gce_client_reg) {
-> +		ret = cmdq_dev_get_client_reg(dev, &mmsys->cmdq_base,
-> 0);
-> +		if (ret) {
-> +			dev_err(dev, "No mediatek,gce-client-reg!\n");
-> +			return ret;
-> +		}
-> +	}
-> +
->  	mmsys->data = of_device_get_match_data(&pdev->dev);
->  	platform_set_drvdata(pdev, mmsys);
->  
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.h
-> b/drivers/soc/mediatek/mtk-mmsys.h
-> index 8b0ed05117ea..9fce400507d2 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.h
-> +++ b/drivers/soc/mediatek/mtk-mmsys.h
-> @@ -92,6 +92,7 @@ struct mtk_mmsys_driver_data {
->  	const char *clk_driver;
->  	const struct mtk_mmsys_routes *routes;
->  	const unsigned int num_routes;
-> +	bool has_gce_client_reg;
->  };
->  
->  /*
-> diff --git a/include/linux/soc/mediatek/mtk-mmsys.h
-> b/include/linux/soc/mediatek/mtk-mmsys.h
-> index 4bba275e235a..7f8ecc98d023 100644
-> --- a/include/linux/soc/mediatek/mtk-mmsys.h
-> +++ b/include/linux/soc/mediatek/mtk-mmsys.h
-> @@ -7,8 +7,14 @@
->  #define __MTK_MMSYS_H
->  
->  enum mtk_ddp_comp_id;
-> +enum mtk_mdp_comp_id;
->  struct device;
->  
-> +struct mmsys_cmdq_cmd {
-> +	struct cmdq_pkt *pkt;
-> +	s32 *event;
-> +};
-> +
->  enum mtk_ddp_comp_id {
->  	DDP_COMPONENT_AAL0,
->  	DDP_COMPONENT_AAL1,
-> @@ -45,6 +51,46 @@ enum mtk_ddp_comp_id {
->  	DDP_COMPONENT_ID_MAX,
->  };
->  
-> +enum mtk_mdp_comp_id {
-> +	MDP_COMP_NONE = -1,	/* Invalid engine */
-> +
-> +	/* ISP */
-> +	MDP_COMP_WPEI = 0,
-> +	MDP_COMP_WPEO,		/* 1 */
-> +	MDP_COMP_WPEI2,		/* 2 */
-> +	MDP_COMP_WPEO2,		/* 3 */
-> +	MDP_COMP_ISP_IMGI,	/* 4 */
-> +	MDP_COMP_ISP_IMGO,	/* 5 */
-> +	MDP_COMP_ISP_IMG2O,	/* 6 */
-> +
-> +	/* IPU */
-> +	MDP_COMP_IPUI,		/* 7 */
-> +	MDP_COMP_IPUO,		/* 8 */
-> +
-> +	/* MDP */
-> +	MDP_COMP_CAMIN,		/* 9 */
-> +	MDP_COMP_CAMIN2,	/* 10 */
-> +	MDP_COMP_RDMA0,		/* 11 */
-> +	MDP_COMP_AAL0,		/* 12 */
-> +	MDP_COMP_CCORR0,	/* 13 */
-> +	MDP_COMP_RSZ0,		/* 14 */
-> +	MDP_COMP_RSZ1,		/* 15 */
-> +	MDP_COMP_TDSHP0,	/* 16 */
-> +	MDP_COMP_COLOR0,	/* 17 */
-> +	MDP_COMP_PATH0_SOUT,	/* 18 */
-> +	MDP_COMP_PATH1_SOUT,	/* 19 */
-> +	MDP_COMP_WROT0,		/* 20 */
-> +	MDP_COMP_WDMA,		/* 21 */
-> +
-> +	/* Dummy Engine */
-> +	MDP_COMP_RDMA1,		/* 22 */
-> +	MDP_COMP_RSZ2,		/* 23 */
-> +	MDP_COMP_TDSHP1,	/* 24 */
-> +	MDP_COMP_WROT1,		/* 25 */
-> +
-> +	MDP_MAX_COMP_COUNT	/* ALWAYS keep at the end */
-> +};
-> +
->  void mtk_mmsys_ddp_connect(struct device *dev,
->  			   enum mtk_ddp_comp_id cur,
->  			   enum mtk_ddp_comp_id next);
-> @@ -53,4 +99,8 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
->  			      enum mtk_ddp_comp_id cur,
->  			      enum mtk_ddp_comp_id next);
->  
-> +void mtk_mmsys_write_reg_by_cmdq(struct device *dev,
-> +				 struct mmsys_cmdq_cmd *cmd,
-> +				 u32 alias_id, u32 value, u32 mask);
-> +
->  #endif /* __MTK_MMSYS_H */
+diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+index a6268ecde240..a45864183cd1 100644
+--- a/drivers/soc/mediatek/mtk-mutex.c
++++ b/drivers/soc/mediatek/mtk-mutex.c
+@@ -7,10 +7,14 @@
+ #include <linux/iopoll.h>
+ #include <linux/module.h>
+ #include <linux/of_device.h>
++#include <linux/of_address.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ #include <linux/soc/mediatek/mtk-mmsys.h>
+ #include <linux/soc/mediatek/mtk-mutex.h>
++#include <linux/soc/mediatek/mtk-cmdq.h>
++
++#define MTK_MUTEX_ENABLE			BIT(0)
+ 
+ #define MT2701_MUTEX0_MOD0			0x2c
+ #define MT2701_MUTEX0_SOF0			0x30
+@@ -173,6 +177,7 @@ struct mtk_mutex_data {
+ 	const unsigned int mutex_mdp_mod_mask;
+ 	const unsigned int mutex_mdp_sof_mask;
+ 	const bool no_clk;
++	const bool has_gce_client_reg;
+ };
+ 
+ struct mtk_mutex_ctx {
+@@ -181,6 +186,8 @@ struct mtk_mutex_ctx {
+ 	void __iomem			*regs;
+ 	struct mtk_mutex		mutex[10];
+ 	const struct mtk_mutex_data	*data;
++	phys_addr_t			addr;
++	struct cmdq_client_reg		cmdq_reg;
+ };
+ 
+ static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+@@ -374,6 +381,7 @@ static const struct mtk_mutex_data mt8183_mutex_driver_data = {
+ 	.mutex_mdp_mod_mask = MT8183_MUTEX_MDP_MOD_MASK,
+ 	.mutex_mdp_sof_mask = MT8183_MUTEX_MDP_SOF_MASK,
+ 	.no_clk = true,
++	.has_gce_client_reg = true,
+ };
+ 
+ static const struct mtk_mutex_data mt8186_mutex_driver_data = {
+@@ -553,6 +561,25 @@ u32 mtk_mutex_get_mdp_mod(struct mtk_mutex *mutex, enum mtk_mdp_comp_id id)
+ }
+ EXPORT_SYMBOL_GPL(mtk_mutex_get_mdp_mod);
+ 
++void mtk_mutex_add_mod_by_cmdq(struct mtk_mutex *mutex, u32 mod,
++			       struct mmsys_cmdq_cmd *cmd)
++{
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
++	unsigned int offset;
++
++	WARN_ON(&mtx->mutex[mutex->id] != mutex);
++
++	offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg, mutex->id);
++	cmdq_pkt_write_mask(cmd->pkt, mtx->cmdq_reg.subsys, mtx->addr + offset,
++			    mod, mtx->data->mutex_mdp_mod_mask);
++
++	offset = DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg, mutex->id);
++	cmdq_pkt_write_mask(cmd->pkt, mtx->cmdq_reg.subsys, mtx->addr + offset,
++			    0, mtx->data->mutex_mdp_sof_mask);
++}
++EXPORT_SYMBOL_GPL(mtk_mutex_add_mod_by_cmdq);
++
+ void mtk_mutex_enable(struct mtk_mutex *mutex)
+ {
+ 	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+@@ -564,6 +591,20 @@ void mtk_mutex_enable(struct mtk_mutex *mutex)
+ }
+ EXPORT_SYMBOL_GPL(mtk_mutex_enable);
+ 
++void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex,
++			      struct mmsys_cmdq_cmd *cmd)
++{
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
++
++	WARN_ON(&mtx->mutex[mutex->id] != mutex);
++
++	cmdq_pkt_write_mask(cmd->pkt, mtx->cmdq_reg.subsys,
++			    mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
++			    MTK_MUTEX_ENABLE, MTK_MUTEX_ENABLE);
++}
++EXPORT_SYMBOL_GPL(mtk_mutex_enable_by_cmdq);
++
+ void mtk_mutex_disable(struct mtk_mutex *mutex)
+ {
+ 	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+@@ -575,6 +616,20 @@ void mtk_mutex_disable(struct mtk_mutex *mutex)
+ }
+ EXPORT_SYMBOL_GPL(mtk_mutex_disable);
+ 
++void mtk_mutex_disable_by_cmdq(struct mtk_mutex *mutex,
++			       struct mmsys_cmdq_cmd *cmd)
++{
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
++
++	WARN_ON(&mtx->mutex[mutex->id] != mutex);
++
++	cmdq_pkt_write_mask(cmd->pkt, mtx->cmdq_reg.subsys,
++			    mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
++			    0x0, MTK_MUTEX_ENABLE);
++}
++EXPORT_SYMBOL_GPL(mtk_mutex_disable_by_cmdq);
++
+ void mtk_mutex_acquire(struct mtk_mutex *mutex)
+ {
+ 	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+@@ -602,8 +657,8 @@ static int mtk_mutex_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct mtk_mutex_ctx *mtx;
+-	struct resource *regs;
+-	int i;
++	struct resource *regs, addr;
++	int i, ret;
+ 
+ 	mtx = devm_kzalloc(dev, sizeof(*mtx), GFP_KERNEL);
+ 	if (!mtx)
+@@ -623,6 +678,19 @@ static int mtk_mutex_probe(struct platform_device *pdev)
+ 		}
+ 	}
+ 
++	if (of_address_to_resource(dev->of_node, 0, &addr) < 0)
++		mtx->addr = 0L;
++	else
++		mtx->addr = addr.start;
++
++	if (mtx->data->has_gce_client_reg) {
++		ret = cmdq_dev_get_client_reg(dev, &mtx->cmdq_reg, 0);
++		if (ret) {
++			dev_err(dev, "No mediatek,gce-client-reg!\n");
++			return ret;
++		}
++	}
++
+ 	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	mtx->regs = devm_ioremap_resource(dev, regs);
+ 	if (IS_ERR(mtx->regs)) {
+diff --git a/include/linux/soc/mediatek/mtk-mutex.h b/include/linux/soc/mediatek/mtk-mutex.h
+index b2608f4220ee..05de7ad4a124 100644
+--- a/include/linux/soc/mediatek/mtk-mutex.h
++++ b/include/linux/soc/mediatek/mtk-mutex.h
+@@ -17,8 +17,14 @@ int mtk_mutex_prepare(struct mtk_mutex *mutex);
+ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
+ 			enum mtk_ddp_comp_id id);
+ u32 mtk_mutex_get_mdp_mod(struct mtk_mutex *mutex, enum mtk_mdp_comp_id id);
++void mtk_mutex_add_mod_by_cmdq(struct mtk_mutex *mutex, u32 mod,
++			       struct mmsys_cmdq_cmd *cmd);
+ void mtk_mutex_enable(struct mtk_mutex *mutex);
++void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex,
++			      struct mmsys_cmdq_cmd *cmd);
+ void mtk_mutex_disable(struct mtk_mutex *mutex);
++void mtk_mutex_disable_by_cmdq(struct mtk_mutex *mutex,
++			       struct mmsys_cmdq_cmd *cmd);
+ void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
+ 			   enum mtk_ddp_comp_id id);
+ void mtk_mutex_unprepare(struct mtk_mutex *mutex);
+-- 
+2.18.0
 
 
 _______________________________________________
