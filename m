@@ -4,61 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C86DEC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 12:27:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE9B8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 13:56:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UXu+IqfIOfrxEvrIWhH5eHb+5+pLUCRvbUwXQVduVZE=; b=MwRLZfm2hRjgap
-	zTbhTroUw8DzFbWxhMs0GZmUXlrgsr02Erjur/SS8QtyutQnCrlIrmJ4PKKdBsruY4j6RaYkkxvKj
-	IELeO+xuh3gA97ERVQVwBzJhITKCbKIiQTm3hZ1yZ/gx3ZHBE9Hrp57hHTdjIfyhLZbHd3HLJ2mDH
-	KBqDLh3qjHCcbRfFCbx4zI5+CbRKo4+iLSYEyzPQhzCbxubwRmG5WSk8d1vD5NT0ED/jA6ORqVLdY
-	66NHfdjudAhDVnlmRyj7wyJqSiYJX+S23og9Sp6iLho3grFfV2VEpgo08nNBz+eD7uQXCicyXre3P
-	uPn7/n07eqTSWC3+HxAg==;
+	List-Owner; bh=OEYhCLMb4Z3VVMaEdpiwJA6j1Dr5Mj042Cg1rTplP1s=; b=ucSDvrv59XWqxe
+	38s91OoK9514dXbUmyzvsR/1H/B1/BH1oTcyZ4m4hijZdRWTED2Ohe9HyH/vuZU8D+TNg+Skl5orW
+	lv6VHpiRBElYg5VY2g1P+yCHcLRY5O6gIJ+zia7+PBPIvMh90YUwrbFq56hLWh9aTvFR3L2SyPMi8
+	nmZ6RmYfGiVu3BmE99l9MX7OlcuA86XHBet6EFGe54M3hpOxLBFSt+fP9ZS8ZDgDE8kJ/FMoqmUyK
+	o0GS/SjssETjm9olGh0LUPrr5MtnVfJqnfxv/LaRqvEaGX0MdfoNNpM4WCS3kbIDnCZSNyvDmJEky
+	2757udizSlLvvQfb19ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nP1ao-00GXyC-31; Tue, 01 Mar 2022 12:27:02 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nP1ac-00GXvQ-2x; Tue, 01 Mar 2022 12:26:51 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: alyssa) with ESMTPSA id 1E35A1F42827
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1646137605;
- bh=9NMYT5GTQXgmmpSeRgMayYIsfg6kQLz4BasTs0OF7Tg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=n6oKlhDyahEo9QO2MflYK0uTJ2gPIJj/ZcVQpWXEYZtihtoY8unlyi1pHTmRFpuxK
- RNIjLgsZCKOn2X3XH8VfylQkoe15GWo23KFS3zueAEni4gKC7F3LvspC0KPWDxZfa6
- Nagw3EGoytGy3T69jwa0XQj47kXkYo6GHLOncoIFwEvPNhjRDrr+ahmRDUlq+V7loX
- /tyvwRgmtFE3//ASeJ0AfScuLHiRnlh9aqdIwvce/zQqNwglhHAFVWeXHltqGbHuM4
- rFSzQdkRk0Up2zjHs6cd3savhWkqOSwFA6pzy1rVf/UTPI2eaQDCvMEkykmz1xYehr
- EeXgka0/ayOgw==
-Date: Tue, 1 Mar 2022 07:26:38 -0500
-From: Alyssa Rosenzweig <alyssa@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
- linux-mediatek@lists.infradead.org,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Robin Murphy <robin.murphy@arm.com>, Chen-Yu Tsai <wenst@chromium.org>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Nick Fan <Nick.Fan@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>,
- Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v2] soc: mediatek: mtk-infracfg: Disable ACP on MT8192
-Message-ID: <Yh4Q/qBX9TjPbtzx@maud>
-References: <20220215184651.12168-1-alyssa.rosenzweig@collabora.com>
- <e93b12d6-5c7b-2ad6-47e5-c1311d95cba2@collabora.com>
- <470ec036-b402-2cc2-94b9-75ebaff342fc@gmail.com>
+	id 1nP2zi-00Gxki-IK; Tue, 01 Mar 2022 13:56:50 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nP2zV-00GxhF-UO; Tue, 01 Mar 2022 13:56:39 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 66ABA1042;
+ Tue,  1 Mar 2022 05:56:36 -0800 (PST)
+Received: from [10.57.39.47] (unknown [10.57.39.47])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id BA0353F70D;
+ Tue,  1 Mar 2022 05:56:34 -0800 (PST)
+Message-ID: <b10031aa-8e49-70b3-b498-8aa6b7021fbb@arm.com>
+Date: Tue, 1 Mar 2022 13:56:29 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <470ec036-b402-2cc2-94b9-75ebaff342fc@gmail.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.1
+Subject: Re: [PATCH v2] iommu/iova: Reset max32_alloc_size after cleaning
+ rcache in the fail path
+Content-Language: en-GB
+To: yf.wang@mediatek.com
+Cc: wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
+ Libo.Kang@mediatek.com, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Ning.Li@mediatek.com, matthias.bgg@gmail.com, stable@vger.kernel.org,
+ will@kernel.org
+References: <20220301014246.5011-1-yf.wang@mediatek.com>
+ <20220301015919.5116-1-yf.wang@mediatek.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20220301015919.5116-1-yf.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_042650_392961_EBE34D50 
-X-CRM114-Status: UNSURE (   6.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220301_055638_066521_AAC64FE2 
+X-CRM114-Status: GOOD (  20.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,14 +62,81 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Patch applied. I fixed the commit message by deleting the v2 note.
+On 2022-03-01 01:59, yf.wang--- via iommu wrote:
+> From: Yunfei Wang <yf.wang@mediatek.com>
+> 
+> In alloc_iova_fast function, if __alloc_and_insert_iova_range fail,
+> alloc_iova_fast will try flushing rcache and retry alloc iova, but
+> this has an issue:
+> 
+> Since __alloc_and_insert_iova_range fail will set the current alloc
+> iova size to max32_alloc_size (iovad->max32_alloc_size = size),
+> when the retry is executed into the __alloc_and_insert_iova_range
+> function, the retry action will be blocked by the check condition
+> (size >= iovad->max32_alloc_size) and goto iova32_full directly,
+> causes the action of retry regular alloc iova in
+> __alloc_and_insert_iova_range to not actually be executed.
+> 
+> Based on the above, so need reset max32_alloc_size before retry alloc
+> iova when alloc iova fail, that is set the initial dma_32bit_pfn value
+> of iovad to max32_alloc_size, so that the action of retry alloc iova
+> in __alloc_and_insert_iova_range can be executed.
 
-Thank you!
+Have you observed this making any difference in practice?
+
+Given that both free_cpu_cached_iovas() and free_global_cached_iovas() 
+call iova_magazine_free_pfns(), which calls remove_iova(), which calls 
+__cached_rbnode_delete_update(), I'm thinking no...
+
+Robin.
+
+> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+> Cc: <stable@vger.kernel.org> # 5.10.*
+> ---
+> v2: Cc stable@vger.kernel.org
+>      1. This patch needs to be merged stable branch, add stable@vger.kernel.org
+>         in mail list.
+> 
+> ---
+>   drivers/iommu/iova.c | 7 +++++++
+>   1 file changed, 7 insertions(+)
+> 
+> diff --git a/drivers/iommu/iova.c b/drivers/iommu/iova.c
+> index b28c9435b898..0c085ae8293f 100644
+> --- a/drivers/iommu/iova.c
+> +++ b/drivers/iommu/iova.c
+> @@ -453,6 +453,7 @@ alloc_iova_fast(struct iova_domain *iovad, unsigned long size,
+>   retry:
+>   	new_iova = alloc_iova(iovad, size, limit_pfn, true);
+>   	if (!new_iova) {
+> +		unsigned long flags;
+>   		unsigned int cpu;
+>   
+>   		if (!flush_rcache)
+> @@ -463,6 +464,12 @@ alloc_iova_fast(struct iova_domain *iovad, unsigned long size,
+>   		for_each_online_cpu(cpu)
+>   			free_cpu_cached_iovas(cpu, iovad);
+>   		free_global_cached_iovas(iovad);
+> +
+> +		/* Reset max32_alloc_size after flushing rcache for retry */
+> +		spin_lock_irqsave(&iovad->iova_rbtree_lock, flags);
+> +		iovad->max32_alloc_size = iovad->dma_32bit_pfn;
+> +		spin_unlock_irqrestore(&iovad->iova_rbtree_lock, flags);
+> +
+>   		goto retry;
+>   	}
+>   
+> 
+> 
+> _______________________________________________
+> iommu mailing list
+> iommu@lists.linux-foundation.org
+> https://lists.linuxfoundation.org/mailman/listinfo/iommu
 
 _______________________________________________
 Linux-mediatek mailing list
