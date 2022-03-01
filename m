@@ -4,89 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96F36C43219
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 17:37:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7A45C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 17:40:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S6FCKkCvBBxjgp4FX8VNC8vkmFRsvKHDirS+5U7WD1Y=; b=QQjsf9CfWRe/dg
-	cPtjzwvxhZ7lQPgmyfGDqgcMQz3PfTy5I7Ogmt+qrupkKDRXJAAfmPkWWFpoHFe2p+2URvPMAIykm
-	26fEih5fHs7EYQhWh9kRQ1REVmcVFAeOPWIJ+LEXGpuwf2r+K4UQiR2UZRVGD/TVoJA7N3ZSTAl+a
-	nqgVP2jS1kI/rzhmKkxihmO0E7cRNVfuzJHiLkj9VJ4eFT6va23/LRQQdKLmEq8C/ourEIJcmjp/Y
-	PCTfeOHdhcZhKH/+p/RCCvBAfz+/Z6WD7NYjiHoVSLHNT3/kLWzFF4e2Hh6m8Omlb/c8PAg1y/nlo
-	YT81F8iMbUfX4mmTmOdw==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HRwSbk7VbNFmBEToUHJWzGi2emgvglb4k7hfFQ0UHNk=; b=0QCB6vv0qquYO6
+	Xu+qRsRW8EwRtILGsKUxSBHGTKTMArR6n7JFKX1NeY9P4/HFgSczO/GeHbJJQ7KVeHE3nsD99Sv1x
+	GrCso9dCkmV0mo+3wwt06XIVxnXpSh/32EnR51ePv7446G0iMO8pQ9zHwz4C09PrQYPgG6vXCaYnw
+	6YpP3fRvGdA0uEt1Tfqlntdzhb20sNPlVO/AAAdxPOt36ccOu9Rnz34ocUxd6dX+nmOQpRnKQ+3p4
+	6VSVgzyMF4/IWgX0uDkjfbHCyqPndOPoQs04mxbCN1JhlN6BEJAQQtLAgsz5jrMqt/1q/LzJXj5jG
+	ru9ybL3i8f3ulBI9W/tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nP6RD-0005Ld-QQ; Tue, 01 Mar 2022 17:37:27 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nP6Ts-0005rv-FS; Tue, 01 Mar 2022 17:40:12 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nP6RA-0005Jb-Fz; Tue, 01 Mar 2022 17:37:26 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 531B4B81BE7;
- Tue,  1 Mar 2022 17:37:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 071ADC340EE;
- Tue,  1 Mar 2022 17:37:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1646156241;
- bh=pTV2MFZ+7d07p5uTbhq3otIc2cmXwQTMtR9OmiTt6ws=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=kpCJZz+2kmNYzjHFDfNSN8QomXtdcPSo3VhSYDe/9DvnLjw6+Gf8JZk1Z8B7/MpEr
- 7jyq5w6VtMe9h/eDSvv1UXjGNGEtGZwH42GPuJGwpwQgnv9I5iH7DWZlof3+dZGTFm
- esB5bRgUOyJTALvSP9KXHdoyU5cCbTmKTmS3YsdQ=
-Date: Tue, 1 Mar 2022 18:37:16 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Jakob Koschel <jakobkoschel@gmail.com>
-Cc: Linus Torvalds <torvalds@linux-foundation.org>,
- linux-arch <linux-arch@vger.kernel.org>,
- Thomas Gleixner <tglx@linutronix.de>, Arnd Bergman <arnd@arndb.de>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Kees Cook <keescook@chromium.org>, Mike Rapoport <rppt@kernel.org>,
- "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
- Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
- Cristiano Giuffrida <c.giuffrida@vu.nl>, "Bos, H.J." <h.j.bos@vu.nl>,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- Dan Carpenter <dan.carpenter@oracle.com>, Jason Gunthorpe <jgg@ziepe.ca>,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- Nathan Chancellor <nathan@kernel.org>,
- linux-arm-kernel@lists.infradead.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linuxppc-dev@lists.ozlabs.org, linux-sgx@vger.kernel.org,
- drbd-dev@lists.linbit.com, linux-block@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-crypto@vger.kernel.org,
- dmaengine@vger.kernel.org, linux1394-devel@lists.sourceforge.net,
- amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, nouveau@lists.freedesktop.org,
- linux-rdma@vger.kernel.org, linux-media@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-scsi@vger.kernel.org, linux-staging@lists.linux.dev,
- linux-usb@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
- bcm-kernel-feedback-list@broadcom.com, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org, kvm@vger.kernel.org,
- linux-cifs@vger.kernel.org, samba-technical@lists.samba.org,
- linux-f2fs-devel@lists.sourceforge.net,
- linux-fsdevel@vger.kernel.org, kgdb-bugreport@lists.sourceforge.net,
- v9fs-developer@lists.sourceforge.net,
- tipc-discussion@lists.sourceforge.net, alsa-devel@alsa-project.org
+ id 1nP6Tp-0005qA-0D; Tue, 01 Mar 2022 17:40:10 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id qx21so32937967ejb.13;
+ Tue, 01 Mar 2022 09:40:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=pFdYiycpncfTymiwtZowrsS5EyWiXpYxNs42/BHAfYg=;
+ b=jNa8kCMtl/UUGI9n6DMpRCjqu31f4wAijdvFFxZnjTmTKVAPvZHGvGIS5mEbyeVH7U
+ 2x/09r6Vjc5jlvMmGEJ/il9wQB7v0QaDJcbwnO54cttgXGRrRpdgplSbMXJLSVGPucZZ
+ 9N0BbQ67CEO0Sz9E19ATZ7SkTLFNHyfaTEafdxDnprAieU2S7WSxP1eMUqDcJyOgT3om
+ KiVwLoBVmeYUr/3jVH1Ywgf3KLmBchJpZXF9NW4w0E+aOTUpi5SfsW8FSQSkfcXvzSp5
+ ZeMWPQFNXAG0u+f0IIKFL+VZxclmrwVLcWvb/ml3Qc/gpz+jEOgbpY53v+25m0fIUJKc
+ BDYA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=pFdYiycpncfTymiwtZowrsS5EyWiXpYxNs42/BHAfYg=;
+ b=tP0x2bjm/Ci6+4WF0zY4g679qM8dtwQaH8HHssDcFB34Ge7JUD1l77QLF/i0KZlXSP
+ Yhg22gGDupmbb6i3cADEGEBxAmn7hGTO+bWSKZAOnfPW8N1cVhCr9d0usnul7e1fF1L4
+ 78f5KPGbXeX6FUj/V4S3ESHvdzKK2MvbR92fAPVvyWv+1v60/TP+xqi5B8JBsvcvG2oC
+ 9v4WnYDWp1I0BLeS+R5bXlGTan4TS6cPOah31IL9Wk1wbnt6+gev3iwJc6zNDXhx9y7O
+ WMKxWjqBGribb6WOy9yi446zpDvHHxrhymgTrPltJChtWdlMEFcJ1E93LTW+3l8P6APs
+ nLxA==
+X-Gm-Message-State: AOAM532ckQ4teE9cLrd80lWqE344EzkzixKL8gQxXsV7Vq62RM3+IJFf
+ BXbvvo9RBUKVmnvtgWbf1nw=
+X-Google-Smtp-Source: ABdhPJwzanGhehpmLWEMTTJkMBhYufoyhmHURG9yND716ZZIbM/kd8Ex5thBnsVmcSvoj9ZPyJ3fsw==
+X-Received: by 2002:a17:906:948:b0:6d6:e479:1fe4 with SMTP id
+ j8-20020a170906094800b006d6e4791fe4mr3312230ejd.240.1646156406993; 
+ Tue, 01 Mar 2022 09:40:06 -0800 (PST)
+Received: from smtpclient.apple ([2a02:8109:9d80:3f6c:6db3:8d4c:747e:98ad])
+ by smtp.gmail.com with ESMTPSA id
+ a25-20020a50ff19000000b0040f84cd806csm7398100edu.59.2022.03.01.09.40.04
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 01 Mar 2022 09:40:06 -0800 (PST)
+Mime-Version: 1.0 (Mac OS X Mail 15.0 \(3693.60.0.1.1\))
 Subject: Re: [PATCH 2/6] treewide: remove using list iterator after loop body
  as a ptr
-Message-ID: <Yh5ZzNQQQE8rIexy@kroah.com>
+From: Jakob Koschel <jakobkoschel@gmail.com>
+In-Reply-To: <Yh5ZmwiH5AxtQ69K@kroah.com>
+Date: Tue, 1 Mar 2022 18:40:04 +0100
+Cc: Linus Torvalds <torvalds@linux-foundation.org>,
+ =?utf-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ alsa-devel@alsa-project.org, linux-aspeed@lists.ozlabs.org,
+ "Gustavo A. R. Silva" <gustavo@embeddedor.com>, linux-iio@vger.kernel.org,
+ nouveau@lists.freedesktop.org, Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Cristiano Giuffrida <c.giuffrida@vu.nl>,
+ amd-gfx list <amd-gfx@lists.freedesktop.org>,
+ samba-technical@lists.samba.org, linux1394-devel@lists.sourceforge.net,
+ drbd-dev@lists.linbit.com, linux-arch <linux-arch@vger.kernel.org>,
+ CIFS <linux-cifs@vger.kernel.org>, KVM list <kvm@vger.kernel.org>,
+ linux-scsi <linux-scsi@vger.kernel.org>,
+ linux-rdma <linux-rdma@vger.kernel.org>, linux-staging@lists.linux.dev,
+ "Bos, H.J." <h.j.bos@vu.nl>, Jason Gunthorpe <jgg@ziepe.ca>,
+ intel-wired-lan@lists.osuosl.org, kgdb-bugreport@lists.sourceforge.net,
+ bcm-kernel-feedback-list@broadcom.com,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Kees Cook <keescook@chromium.org>, Arnd Bergman <arnd@arndb.de>,
+ Linux PM <linux-pm@vger.kernel.org>,
+ intel-gfx <intel-gfx@lists.freedesktop.org>,
+ Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
+ Nathan Chancellor <nathan@kernel.org>,
+ linux-fsdevel <linux-fsdevel@vger.kernel.org>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ v9fs-developer@lists.sourceforge.net,
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ linux-sgx@vger.kernel.org, linux-block <linux-block@vger.kernel.org>,
+ Netdev <netdev@vger.kernel.org>, linux-usb@vger.kernel.org,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Linux F2FS Dev Mailing List <linux-f2fs-devel@lists.sourceforge.net>,
+ tipc-discussion@lists.sourceforge.net,
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
+ dma <dmaengine@vger.kernel.org>, linux-mediatek@lists.infradead.org,
+ Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
+ Mike Rapoport <rppt@kernel.org>
+Message-Id: <4B1AFAD9-C1B3-499C-945A-C259361ABA8C@gmail.com>
 References: <20220228110822.491923-1-jakobkoschel@gmail.com>
  <20220228110822.491923-3-jakobkoschel@gmail.com>
- <Yhyv42ONIxTj04mg@kroah.com>
- <79FCD5F4-0EBA-4E3F-8B3F-D450BBA10367@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <79FCD5F4-0EBA-4E3F-8B3F-D450BBA10367@gmail.com>
+ <2e4e95d6-f6c9-a188-e1cd-b1eae465562a@amd.com>
+ <CAHk-=wgQps58DPEOe4y5cTh5oE9EdNTWRLXzgMiETc+mFX7jzw@mail.gmail.com>
+ <CAHk-=wj8fkosQ7=bps5K+DDazBXk=ypfn49A0sEq+7-nZnyfXA@mail.gmail.com>
+ <CAHk-=wiTCvLQkHcJ3y0hpqH7FEk9D28LDvZZogC6OVLk7naBww@mail.gmail.com>
+ <FC710A1A-524E-481B-A668-FC258F529A2E@gmail.com>
+ <CAHk-=whLK11HyvpUtEftOjc3Gup2V77KpAQ2fycj3uai=qceHw@mail.gmail.com>
+ <CEDAD0D9-56EE-4105-9107-72C2EAD940B0@gmail.com> <Yh5ZmwiH5AxtQ69K@kroah.com>
+To: Greg KH <greg@kroah.com>
+X-Mailer: Apple Mail (2.3693.60.0.1.1)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_093724_896191_E32F374E 
-X-CRM114-Status: GOOD (  30.07  )
+X-CRM114-CacheID: sfid-20220301_094009_079078_4548ECCB 
+X-CRM114-Status: GOOD (  25.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,60 +136,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 28, 2022 at 01:06:57PM +0100, Jakob Koschel wrote:
-> 
-> 
-> > On 28. Feb 2022, at 12:20, Greg KH <gregkh@linuxfoundation.org> wrote:
-> > 
-> > On Mon, Feb 28, 2022 at 12:08:18PM +0100, Jakob Koschel wrote:
-> >> If the list does not contain the expected element, the value of
-> >> list_for_each_entry() iterator will not point to a valid structure.
-> >> To avoid type confusion in such case, the list iterator
-> >> scope will be limited to list_for_each_entry() loop.
-> >> 
-> >> In preparation to limiting scope of a list iterator to the list traversal
-> >> loop, use a dedicated pointer to point to the found element.
-> >> Determining if an element was found is then simply checking if
-> >> the pointer is != NULL.
-> >> 
-> >> Signed-off-by: Jakob Koschel <jakobkoschel@gmail.com>
-> >> ---
-> >> arch/x86/kernel/cpu/sgx/encl.c       |  6 +++--
-> >> drivers/scsi/scsi_transport_sas.c    | 17 ++++++++-----
-> >> drivers/thermal/thermal_core.c       | 38 ++++++++++++++++++----------
-> >> drivers/usb/gadget/configfs.c        | 22 ++++++++++------
-> >> drivers/usb/gadget/udc/max3420_udc.c | 11 +++++---
-> >> drivers/usb/gadget/udc/tegra-xudc.c  | 11 +++++---
-> >> drivers/usb/mtu3/mtu3_gadget.c       | 11 +++++---
-> >> drivers/usb/musb/musb_gadget.c       | 11 +++++---
-> >> drivers/vfio/mdev/mdev_core.c        | 11 +++++---
-> >> 9 files changed, 88 insertions(+), 50 deletions(-)
-> > 
-> > The drivers/usb/ portion of this patch should be in patch 1/X, right?
-> 
-> I kept them separate since it's a slightly different case.
-> Using 'ptr' instead of '&ptr->other_member'. Regardless, I'll split
-> this commit up as you mentioned.
-> 
-> > 
-> > Also, you will have to split these up per-subsystem so that the
-> > different subsystem maintainers can take these in their trees.
-> 
-> Thanks for the feedback.
-> To clarify I understand you correctly:
-> I should do one patch set per-subsystem with every instance/(file?)
-> fixed as a separate commit?
 
-Yes, each file needs a different commit as they are usually all written
-or maintained by different people.
 
-As I said in my other response, if you need any help with this, just let
-me know, I'm glad to help.
+> On 1. Mar 2022, at 18:36, Greg KH <greg@kroah.com> wrote:
+> 
+> On Tue, Mar 01, 2022 at 12:28:15PM +0100, Jakob Koschel wrote:
+>> 
+>> 
+>>> On 1. Mar 2022, at 01:41, Linus Torvalds <torvalds@linux-foundation.org> wrote:
+>>> 
+>>> On Mon, Feb 28, 2022 at 1:47 PM Jakob Koschel <jakobkoschel@gmail.com> wrote:
+>>>> 
+>>>> The goal of this is to get compiler warnings right? This would indeed be great.
+>>> 
+>>> Yes, so I don't mind having a one-time patch that has been gathered
+>>> using some automated checker tool, but I don't think that works from a
+>>> long-term maintenance perspective.
+>>> 
+>>> So if we have the basic rule being "don't use the loop iterator after
+>>> the loop has finished, because it can cause all kinds of subtle
+>>> issues", then in _addition_ to fixing the existing code paths that
+>>> have this issue, I really would want to (a) get a compiler warning for
+>>> future cases and (b) make it not actually _work_ for future cases.
+>>> 
+>>> Because otherwise it will just happen again.
+>>> 
+>>>> Changing the list_for_each_entry() macro first will break all of those cases
+>>>> (e.g. the ones using 'list_entry_is_head()).
+>>> 
+>>> So I have no problems with breaking cases that we basically already
+>>> have a patch for due to  your automated tool. There were certainly
+>>> more than a handful, but it didn't look _too_ bad to just make the
+>>> rule be "don't use the iterator after the loop".
+>>> 
+>>> Of course, that's just based on that patch of yours. Maybe there are a
+>>> ton of other cases that your patch didn't change, because they didn't
+>>> match your trigger case, so I may just be overly optimistic here.
+>> 
+>> Based on the coccinelle script there are ~480 cases that need fixing
+>> in total. I'll now finish all of them and then split them by
+>> submodules as Greg suggested and repost a patch set per submodule.
+>> Sounds good?
+> 
+> Sounds good to me!
+> 
+> If you need help carving these up and maintaining them over time as
+> different subsystem maintainers accept/ignore them, just let me know.
+> Doing large patchsets like this can be tough without a lot of
+> experience.
 
-thanks,
+Very much appreciated!
 
-greg k-h
+There will probably be some cases that do not match one of the pattern
+we already discussed and need separate attention.
 
+I was planning to start with one subsystem and adjust the coming ones
+according to the feedback gather there instead of posting all of them
+in one go.
+
+> 
+> thanks,
+> 
+> greg k-h
+
+- Jakob
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
