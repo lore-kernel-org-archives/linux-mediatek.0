@@ -4,58 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49C0DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 05:45:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88BD4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 05:45:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=MGC57ZA8H94zF3VEpw/yvhOgYUkysoOBX1CSK0hN0PI=; b=mtM7pZAXkDnCQd
-	7xY5sTy6FzVWnybgY8hA7RHXrzsF3vyhh9724p0yfDzul4Q28w0kVo/Xv+DdTIsXgFv+mD9AYR6US
-	EaT2IOfg1yPLf3ywWiWcwVIyNtv99HntW0OKrh24Y8qrHz2CBus7QZvgETgovDTy47YDzrkREnPHJ
-	H0aB3BxC8zvGjaOrwMxlByUaKGKes41DguIhsibLpTjbJKK8RH7hLyDt4sFNFG2aYrjjPKnALk+st
-	SV4kMqxjeb61Kmsdc0lv2lXwUgB9YyBzAoot5I1Uxk1Tdj48aFJNWmhKubC3YKt8vkV8EKoy2Fhvy
-	S0TN2KjvXOOMnzfBqpsw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yEKOtq7FelO0+4Sb8ceex1aluIaWxEVTyQ8XedAflVc=; b=Mcp4t8IVBIbHlE
+	X5baergz0YCCLRyg+hD4evXGaQKyQjcoy5vhWVjNaHndOPESSB28q3+AygAtOLKWPHlDo/NyzGNqM
+	xgg5BhaWmerekxaDS4lhrx+T1xYumK7MsWNH8cfrFHw4Rkq0MEIB16vEzLXanpAJM7Iv4Uj935MXW
+	RTAuto0ZkXVJiU4DjOyHHMbKzPDSw8hkKqdatlcuqTGA8MDGnRQmrOF4SXHedP4Yur88z1AYImMYy
+	Ec7ONZC0U6RwP1fgZeZtE6Yk7nCdonZg3ovHMywPQ4V16wHohXSrYhHuURGF66zxDRP1YzaidLJCW
+	kADOieHtdOd+KEi7MfVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOvKH-00F4AL-O8; Tue, 01 Mar 2022 05:45:33 +0000
+	id 1nOvKL-00F4CT-18; Tue, 01 Mar 2022 05:45:37 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOvIw-00F3dj-8m
- for linux-mediatek@lists.infradead.org; Tue, 01 Mar 2022 05:44:11 +0000
-X-UUID: 01744aad0ef94c4ead0724e877022b87-20220228
-X-UUID: 01744aad0ef94c4ead0724e877022b87-20220228
+ id 1nOvJ2-00F3gK-O6; Tue, 01 Mar 2022 05:44:18 +0000
+X-UUID: 1b10190a4d0a4496a8ef9f65b6bab34f-20220228
+X-UUID: 1b10190a4d0a4496a8ef9f65b6bab34f-20220228
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <evelyn.tsai@mediatek.com>)
+ (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1069728861; Mon, 28 Feb 2022 22:39:30 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 950570796; Mon, 28 Feb 2022 22:39:30 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 28 Feb 2022 21:29:27 -0800
+ 15.0.1497.2; Mon, 28 Feb 2022 21:37:36 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 1 Mar 2022 13:29:26 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 1 Mar 2022 13:37:35 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 1 Mar 2022 13:29:26 +0800
-From: Evelyn Tsai <evelyn.tsai@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
- <ryder.Lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, Rubio Lu <Rubio-DW.Lu@mediatek.com>
-Subject: [PATCH] mt76: mt7915: fix DFS no radar detection event
-Date: Tue, 1 Mar 2022 13:29:10 +0800
-Message-ID: <b55fec95a7708491a78027cc9a30ba7faa0dd18b.1646106090.git.evelyn.tsai@mediatek.com>
+ Frontend Transport; Tue, 1 Mar 2022 13:37:35 +0800
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <wim@linux-watchdog.org>, <linux@roeck-us.net>, <matthias.bgg@gmail.com>, 
+ <robh+dt@kernel.org>, <p.zabel@pengutronix.de>
+CC: <runyang.chen@mediatek.com>, <linux-watchdog@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: [PATCH 2/3] dt-bindings: reset: mt8186: add reset-controller header
+ file
+Date: Tue, 1 Mar 2022 13:37:32 +0800
+Message-ID: <20220301053733.24755-3-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220301053733.24755-1-rex-bc.chen@mediatek.com>
+References: <20220301053733.24755-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_214410_367199_B50017E3 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20220228_214416_816102_0133EE54 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,45 +75,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Driver needs to carry region definition when radar detection starts.
-Need to remap nl80211 DFS regions to chip region definition.
+From: Runyang Chen <runyang.chen@mediatek.com>
 
-Signed-off-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
-Signed-off-by: Rubio Lu <Rubio-DW.Lu@mediatek.com>
+1. Add toprgu reset-controller header file for MT8186.
+2. Add DSI software reset bit which is controlled in MMSYS for MT8186.
+
+Signed-off-by: Runyang Chen <runyang.chen@mediatek.com>
+Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 ---
- drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 17 +++++++++++++++--
- 1 file changed, 15 insertions(+), 2 deletions(-)
+ include/dt-bindings/reset/mt8186-resets.h | 36 +++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+ create mode 100644 include/dt-bindings/reset/mt8186-resets.h
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 1da551f0b389..a99079313ac2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -2364,10 +2364,23 @@ static void mt7915_dfs_stop_radar_detector(struct mt7915_phy *phy)
- 
- static int mt7915_dfs_start_rdd(struct mt7915_dev *dev, int chain)
- {
--	int err;
-+	int err, region;
+diff --git a/include/dt-bindings/reset/mt8186-resets.h b/include/dt-bindings/reset/mt8186-resets.h
+new file mode 100644
+index 000000000000..5f850370c42c
+--- /dev/null
++++ b/include/dt-bindings/reset/mt8186-resets.h
+@@ -0,0 +1,36 @@
++/* SPDX-License-Identifier: (GPL-2.0+ OR BSD-3-Clause) */
++/*
++ * Copyright (c) 2022 MediaTek Inc.
++ * Author: Runyang Chen <runyang.chen@mediatek.com>
++ */
 +
-+	switch (dev->mt76.region) {
-+	case NL80211_DFS_ETSI:
-+		region = 0;
-+		break;
-+	case NL80211_DFS_JP:
-+		region = 2;
-+		break;
-+	case NL80211_DFS_FCC:
-+	default:
-+		region = 1;
-+		break;
-+	}
- 
- 	err = mt76_connac_mcu_rdd_cmd(&dev->mt76, RDD_START, chain,
--				      MT_RX_SEL0, 0);
-+				      MT_RX_SEL0, region);
- 	if (err < 0)
- 		return err;
- 
++#ifndef _DT_BINDINGS_RESET_CONTROLLER_MT8186
++#define _DT_BINDINGS_RESET_CONTROLLER_MT8186
++
++#define MT8186_TOPRGU_INFRA_SW_RST				0
++#define MT8186_TOPRGU_MM_SW_RST					1
++#define MT8186_TOPRGU_MFG_SW_RST				2
++#define MT8186_TOPRGU_VENC_SW_RST				3
++#define MT8186_TOPRGU_VDEC_SW_RST				4
++#define MT8186_TOPRGU_IMG_SW_RST				5
++#define MT8186_TOPRGU_DDR_SW_RST				6
++#define MT8186_TOPRGU_INFRA_AO_SW_RST				8
++#define MT8186_TOPRGU_CONNSYS_SW_RST				9
++#define MT8186_TOPRGU_APMIXED_SW_RST				10
++#define MT8186_TOPRGU_PWRAP_SW_RST				11
++#define MT8186_TOPRGU_CONN_MCU_SW_RST				12
++#define MT8186_TOPRGU_IPNNA_SW_RST				13
++#define MT8186_TOPRGU_WPE_SW_RST				14
++#define MT8186_TOPRGU_ADSP_SW_RST				15
++#define MT8186_TOPRGU_AUDIO_SW_RST				17
++#define MT8186_TOPRGU_CAM_MAIN_SW_RST				18
++#define MT8186_TOPRGU_CAM_RAWA_SW_RST				19
++#define MT8186_TOPRGU_CAM_RAWB_SW_RST				20
++#define MT8186_TOPRGU_IPE_SW_RST				21
++#define MT8186_TOPRGU_IMG2_SW_RST				22
++#define MT8186_TOPRGU_SW_RST_NUM				23
++
++/* MMSYS resets */
++#define MT8186_MMSYS_SW0_RST_B_DISP_DSI0			19
++
++#endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8186 */
 -- 
 2.18.0
 
