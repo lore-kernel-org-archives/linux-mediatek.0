@@ -4,120 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C380C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 23:20:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70A33C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 23:30:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mbztulQPSz2wSkSMDk/tq5J+o7d7I1/D3Oydmwgt02I=; b=VAU7CSivGlarcq
-	FdUN5vMjYXbEHi/zjbrRdqj76oidZ/xcwDec491B/C9zZD004Hk1ufTNDgAvSDSUBm3FiiHsI30N1
-	Y//AyZ3G/XNGjpy+GwbuXbpmz5dW2LQT7eltXELwHz5njY7OAgigP7ak+zcPEX8pqjREde00dyuF7
-	pgidzDe3NKaCriEC6EdNC2LzoZhtAmZ2M7xB3YSlehdcqUkG1eT0JoTXScwpRmkoHpLOznNKn1j50
-	ohmDdxz4/JePX9nIsS0S95/8obKzilS3SsMP4fEYdl5HUBxqdsyGOtcKVrCf/nn+M4DbNK2wmRBIJ
-	ejnYUVkYKWZtj2bBzo/A==;
+	List-Owner; bh=/swjdZe3WI3HePN3WIElm5vSj0lBycjystGIzApFEnA=; b=AyK506O4LHu/QY
+	Tn0BMePMSWi/fUnEExQ2fP7v/fCdclPi9CxfjONzjN2PPjKXhMAQeGlRXCZUFCfL/8pyMOAa0TuWo
+	hTpIxyMHvqAYzf/rcpXyz45gPMupRa6F1ZX15JT0FNODa9QUlKQ/nkUlEI13+3Ju7W1NETDDPwAkb
+	rs7Jdh6p5VeFeYC7bwDAc0F3qJ1orrsLkADPbnSJtynCSWQl/sqkCKrisJ2hR1IIvjDzdIQXGFWoJ
+	3POG8roug+LnnAo79LcJ0vsgQ5LdyOc2cxbpGg6f9pMtpJ6lZjMX7u/dAL6cHrqhwm6462i+6Gg3q
+	dRE/3AdsiLop+cq5eVNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPBmf-000r90-I8; Tue, 01 Mar 2022 23:19:57 +0000
-Received: from eu-smtp-delivery-151.mimecast.com ([185.58.85.151])
+	id 1nPBwm-000rgE-QO; Tue, 01 Mar 2022 23:30:24 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPBmc-000r7e-Qe
- for linux-mediatek@lists.infradead.org; Tue, 01 Mar 2022 23:19:56 +0000
-Received: from AcuMS.aculab.com (156.67.243.121 [156.67.243.121]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- uk-mta-274-hYNDa1-rPGCuZAB3qy-How-1; Tue, 01 Mar 2022 23:19:49 +0000
-X-MC-Unique: hYNDa1-rPGCuZAB3qy-How-1
-Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:994c:f5c2:35d6:9b65) by
- AcuMS.aculab.com (fd9f:af1c:a25b:0:994c:f5c2:35d6:9b65) with Microsoft SMTP
- Server (TLS) id 15.0.1497.28; Tue, 1 Mar 2022 23:19:46 +0000
-Received: from AcuMS.Aculab.com ([fe80::994c:f5c2:35d6:9b65]) by
- AcuMS.aculab.com ([fe80::994c:f5c2:35d6:9b65%12]) with mapi id
- 15.00.1497.028; Tue, 1 Mar 2022 23:19:46 +0000
-From: David Laight <David.Laight@ACULAB.COM>
-To: 'Linus Torvalds' <torvalds@linux-foundation.org>
-CC: James Bottomley <James.Bottomley@hansenpartnership.com>, linux-wireless
- <linux-wireless@vger.kernel.org>, "alsa-devel@alsa-project.org"
- <alsa-devel@alsa-project.org>, KVM list <kvm@vger.kernel.org>, "Gustavo A. R.
- Silva" <gustavo@embeddedor.com>, "linux-iio@vger.kernel.org"
- <linux-iio@vger.kernel.org>, "nouveau@lists.freedesktop.org"
- <nouveau@lists.freedesktop.org>, Rasmus Villemoes <linux@rasmusvillemoes.dk>, 
- dri-devel <dri-devel@lists.freedesktop.org>, Cristiano Giuffrida
- <c.giuffrida@vu.nl>, "Bos, H.J." <h.j.bos@vu.nl>,
- "linux1394-devel@lists.sourceforge.net"
- <linux1394-devel@lists.sourceforge.net>, "drbd-dev@lists.linbit.com"
- <drbd-dev@lists.linbit.com>, linux-arch <linux-arch@vger.kernel.org>, CIFS
- <linux-cifs@vger.kernel.org>, "linux-aspeed@lists.ozlabs.org"
- <linux-aspeed@lists.ozlabs.org>, linux-scsi <linux-scsi@vger.kernel.org>,
- linux-rdma <linux-rdma@vger.kernel.org>, "linux-staging@lists.linux.dev"
- <linux-staging@lists.linux.dev>, amd-gfx list
- <amd-gfx@lists.freedesktop.org>, Jason Gunthorpe <jgg@ziepe.ca>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "kgdb-bugreport@lists.sourceforge.net"
- <kgdb-bugreport@lists.sourceforge.net>,
- "bcm-kernel-feedback-list@broadcom.com"
- <bcm-kernel-feedback-list@broadcom.com>, Dan Carpenter
- <dan.carpenter@oracle.com>, Linux Media Mailing List
- <linux-media@vger.kernel.org>, Kees Cook <keescook@chromium.org>, "Arnd
- Bergman" <arnd@arndb.de>, Linux PM <linux-pm@vger.kernel.org>, intel-gfx
- <intel-gfx@lists.freedesktop.org>, Brian Johannesmeyer
- <bjohannesmeyer@gmail.com>, Nathan Chancellor <nathan@kernel.org>, dma
- <dmaengine@vger.kernel.org>, Christophe JAILLET
- <christophe.jaillet@wanadoo.fr>, Jakob Koschel <jakobkoschel@gmail.com>,
- "v9fs-developer@lists.sourceforge.net"
- <v9fs-developer@lists.sourceforge.net>, linux-tegra
- <linux-tegra@vger.kernel.org>, Thomas Gleixner <tglx@linutronix.de>, "Andy
- Shevchenko" <andriy.shevchenko@linux.intel.com>, Linux ARM
- <linux-arm-kernel@lists.infradead.org>, "linux-sgx@vger.kernel.org"
- <linux-sgx@vger.kernel.org>, linux-block <linux-block@vger.kernel.org>,
- Netdev <netdev@vger.kernel.org>, "linux-usb@vger.kernel.org"
- <linux-usb@vger.kernel.org>, "samba-technical@lists.samba.org"
- <samba-technical@lists.samba.org>, Linux Kernel Mailing List
- <linux-kernel@vger.kernel.org>, Linux F2FS Dev Mailing List
- <linux-f2fs-devel@lists.sourceforge.net>,
- "tipc-discussion@lists.sourceforge.net"
- <tipc-discussion@lists.sourceforge.net>, Linux Crypto Mailing List
- <linux-crypto@vger.kernel.org>, linux-fsdevel
- <linux-fsdevel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>, Andrew Morton
- <akpm@linux-foundation.org>, linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
- =?utf-8?B?Q2hyaXN0aWFuIEvDtm5pZw==?= <christian.koenig@amd.com>, "Mike
- Rapoport" <rppt@kernel.org>
-Subject: RE: [PATCH 2/6] treewide: remove using list iterator after loop body
- as a ptr
-Thread-Topic: [PATCH 2/6] treewide: remove using list iterator after loop body
- as a ptr
-Thread-Index: AQHYLZ9++DU/OogLf0+tiSFmjztyUKyrHL5AgAAJGICAAAEEcA==
-Date: Tue, 1 Mar 2022 23:19:46 +0000
-Message-ID: <0ced2b155b984882b39e895f0211037c@AcuMS.aculab.com>
-References: <20220228110822.491923-1-jakobkoschel@gmail.com>
- <20220228110822.491923-3-jakobkoschel@gmail.com>
- <2e4e95d6-f6c9-a188-e1cd-b1eae465562a@amd.com>
- <CAHk-=wgQps58DPEOe4y5cTh5oE9EdNTWRLXzgMiETc+mFX7jzw@mail.gmail.com>
- <282f0f8d-f491-26fc-6ae0-604b367a5a1a@amd.com>
- <b2d20961dbb7533f380827a7fcc313ff849875c1.camel@HansenPartnership.com>
- <7D0C2A5D-500E-4F38-AD0C-A76E132A390E@kernel.org>
- <73fa82a20910c06784be2352a655acc59e9942ea.camel@HansenPartnership.com>
- <CAHk-=wiT5HX6Kp0Qv4ZYK_rkq9t5fZ5zZ7vzvi6pub9kgp=72g@mail.gmail.com>
- <7dc860874d434d2288f36730d8ea3312@AcuMS.aculab.com>
- <CAHk-=whKqg89zu4T95+ctY-hocR6kDArpo2qO14-kV40Ga7ufw@mail.gmail.com>
-In-Reply-To: <CAHk-=whKqg89zu4T95+ctY-hocR6kDArpo2qO14-kV40Ga7ufw@mail.gmail.com>
-Accept-Language: en-GB, en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.202.205.107]
+ id 1nPBwa-000rdK-OT; Tue, 01 Mar 2022 23:30:14 +0000
+X-UUID: 488d4ae129964c4b9596edbb8434abfb-20220301
+X-UUID: 488d4ae129964c4b9596edbb8434abfb-20220301
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 365094582; Tue, 01 Mar 2022 16:29:56 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 1 Mar 2022 15:29:55 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 2 Mar 2022 07:29:53 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 2 Mar 2022 07:29:53 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <robin.murphy@arm.com>
+CC: <Libo.Kang@mediatek.com>, <Ning.Li@mediatek.com>,
+ <iommu@lists.linux-foundation.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <matthias.bgg@gmail.com>, <stable@vger.kernel.org>, <will@kernel.org>,
+ <wsd_upstream@mediatek.com>, <yf.wang@mediatek.com>
+Subject: Re: [PATCH v2] iommu/iova: Reset max32_alloc_size after cleaning
+Date: Wed, 2 Mar 2022 07:29:53 +0800
+Message-ID: <20220301232953.17331-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <b10031aa-8e49-70b3-b498-8aa6b7021fbb@arm.com>
+References: <b10031aa-8e49-70b3-b498-8aa6b7021fbb@arm.com>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=C51A453 smtp.mailfrom=david.laight@aculab.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: aculab.com
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_151955_186218_1CEC377C 
-X-CRM114-Status: GOOD (  17.83  )
+X-CRM114-CacheID: sfid-20220301_153012_811896_4B4CA40D 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,48 +74,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Linus Torvalds
-> Sent: 01 March 2022 23:03
+Hi Yunfei,
+
+>> Since __alloc_and_insert_iova_range fail will set the current alloc
+>> iova size to max32_alloc_size (iovad->max32_alloc_size = size),
+>> when the retry is executed into the __alloc_and_insert_iova_range
+>> function, the retry action will be blocked by the check condition
+>> (size >= iovad->max32_alloc_size) and goto iova32_full directly,
+>> causes the action of retry regular alloc iova in
+>> __alloc_and_insert_iova_range to not actually be executed.
+>> 
+>> Based on the above, so need reset max32_alloc_size before retry alloc
+>> iova when alloc iova fail, that is set the initial dma_32bit_pfn value
+>> of iovad to max32_alloc_size, so that the action of retry alloc iova
+>> in __alloc_and_insert_iova_range can be executed.
+>
+> Have you observed this making any difference in practice?
 > 
-> On Tue, Mar 1, 2022 at 2:58 PM David Laight <David.Laight@aculab.com> wrote:
-> >
-> > Can it be resolved by making:
-> > #define list_entry_is_head(pos, head, member) ((pos) == NULL)
-> > and double-checking that it isn't used anywhere else (except in
-> > the list macros themselves).
+> Given that both free_cpu_cached_iovas() and free_global_cached_iovas() 
+> call iova_magazine_free_pfns(), which calls remove_iova(), which calls 
+> __cached_rbnode_delete_update(), I'm thinking no...
 > 
-> Well, yes, except for the fact that then the name is entirely misleading...
-> 
-> And somebody possibly uses it together with list_first_entry() etc, so
-> it really is completely broken to mix that change with the list
-> traversal change.
+> Robin.
+>
 
-Probably true :-(
+Like Robin pointed out, if some cached iovas are freed by
+free_global_cached_iovas()/free_cpu_cached_iovas(), 
+the max32_alloc_size should be reset to iovad->dma_32bit_pfn.
 
-Actually adding list_entry_not_found() as a synonym for
-list_entry_is_head() and changing the 25ish places that
-use it after a loop might work.
+If no cached iova is freed, resetting max32_alloc_size before
+the retry allocation only give us a retry. Is it possible that
+other users free their iovas during the additional retry?
 
-Once that is done the loop can be changed at the same time
-as list_entry_not_found().
-That won't affect the in-tree callers.
-(and my out of tree modules don't use those lists - so I
-don't care about that!)
+alloc_iova_fast()
+  retry:
+    alloc_iova() // failed, iovad->max32_alloc_size = size
+    free_cpu_cached_iovas()
+      iova_magazine_free_pfns()
+        remove_iova()
+	  __cached_rbnode_delete_update()
+	    iovad->max32_alloc_size = iovad->dma_32bit_pfn // reset
+    free_global_cached_iovas()
+      iova_magazine_free_pfns()
+        remove_iova()
+	  __cached_rbnode_delete_update()
+	    iovad->max32_alloc_size = iovad->dma_32bit_pfn // reset
+    goto retry;
 
-Having said that there are so few users of list_entry_is_head()
-it is reasonable to generate two new names.
-One for use after list_for_each_entry() and one for list_next_entry().
-Then the change all the call sites.
-After that list_entry_is_head() can be deleted - breaking out of
-tree compiles.
-Finally list_for_each_entry() can be rewritten to set NULL
-at the end of the list.
+thanks,
+Miles
 
-	David
-
--
-Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
-Registration No: 1397386 (Wales)
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
