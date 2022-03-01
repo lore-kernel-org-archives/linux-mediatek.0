@@ -4,59 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92E48C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 17:12:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 204B7C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 17:36:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CX1QQWprJChE6oDgDsijYRGjQVga0HXk5IQ5UqoKvKg=; b=jANbrdy4nx3RWF
-	s8+igi8rqVtDlEBLBUzWeuPgkuQ+ni3Z7Y9Gb3RCNOdLDM8Vbe0wW4d0gYxzQkKC2d3pEvpWk5fKD
-	4SehD5aIWryRPD/5llDbmzAAwoWzkvKBo4fJBPAzadbq28OY/RtdXO/VDgtCGO+IEEAJtXIU4K9Ij
-	4gISk3wOr/qefXzRRER7ZXjrsLf6mcqB1Y/jjrBJbNBDwwmYdspVBoZOSDmM3i0tZfXBVmVh+pKII
-	nRQBUJ0g1RWEeQri27vo9IhmOMjEwisITZrvnnHSmvTwnQy5hxk0yyO53h8Ex6Zj3RvmCJCbk4oaW
-	IhbEHbixRYggOikYv1Nw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MIp30NdEl3LbfM7yMAEgI6mXYuXpGXq6UvH2eLmnNVw=; b=Tbo1m81sekCIQ6
+	5Vp3jLO6dtQWs1BCJYxAJt+F1bFEPqt2Jlvz7VG9uU3TtUbjh/Kq/0dQThFd6flh2uQv7x2Vq/Ss2
+	Y0hZ3dzYk7Zmknc3PjsIz6CYL145Hcx6cIDZiDMBNw+Ycr2an2zGIJGyrZDqXp3O7eQLlXHuzzfrI
+	wf6kx16yEIfI2WOOyV+EpH7e2sY8a7ZVc9/Vj7fpFPIUIu1lrZgz4a5AJF1tkG5pJrdb9zu3DPUY1
+	uAQN9H94S9Eh6JWrBJkqletdVxBaCaRNPEK72N0hLXoycEpu8salDlKbVnYYHvJdYPQd/eLrpjR+g
+	y07nGAC9vbwyDlHwRlZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nP62h-0002RV-8y; Tue, 01 Mar 2022 17:12:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nP6QU-00056N-W6; Tue, 01 Mar 2022 17:36:43 +0000
+Received: from new3-smtp.messagingengine.com ([66.111.4.229])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nP62e-0002QC-Le; Tue, 01 Mar 2022 17:12:06 +0000
-X-UUID: 68985caba28f468793d83293a9f826d7-20220301
-X-UUID: 68985caba28f468793d83293a9f826d7-20220301
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1343850086; Tue, 01 Mar 2022 10:11:55 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 1 Mar 2022 09:11:54 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 2 Mar 2022 01:11:41 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 2 Mar 2022 01:11:40 +0800
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: <broonie@kernel.org>
-CC: <perex@perex.cz>, <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>,
- <tzungbi@google.com>, <alsa-devel@alsa-project.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
- <jiaxin.yu@mediatek.com>
-Subject: [PATCH] ASoC: bt-sco: fix bt-sco-pcm-wb dai widget don't connect to
- the endpoint
-Date: Wed, 2 Mar 2022 01:11:37 +0800
-Message-ID: <20220301171137.27442-1-jiaxin.yu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ id 1nP6QR-00054o-Jc; Tue, 01 Mar 2022 17:36:41 +0000
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 668835801CF;
+ Tue,  1 Mar 2022 12:36:34 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute2.internal (MEProxy); Tue, 01 Mar 2022 12:36:34 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=cc
+ :cc:content-type:date:date:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to; s=fm3; bh=5OE8xr6GO9X7MbNpDAcWFGeEO3b3B/8LX5WMVM
+ 23luQ=; b=PuP2NuoqB9WepsjY0Uqokte1F02OSePW/KnqWPOHGfC62jDMQy8d6J
+ jihmHY7jaxPeYmV/brYSLMo2rdd0E65RFIbVZNaw+d6hF5TlV5h/HTFiyyQeuhEh
+ tTvMohVc8vJzz2F3uGXDhJ11n60AMBcwryX0OIQ4h4vBoJz9sXnQjtTWmMBfJvV8
+ ASNImP/JJmHc6aQngUkaR/9ejN6V67gkY3Ss3hOhMxZ05fa2rytR+8neryd7GnHR
+ NnoILjHkJCXbghnuIwO3WAIr0wjFgm+H99CgrlgjXtrJoB87p0eZTz8QaQ9jXLS7
+ eUmDU4ThQ2iD/GAcK9q8FPfYZ3dj5Siw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=5OE8xr6GO9X7MbNpD
+ AcWFGeEO3b3B/8LX5WMVM23luQ=; b=EDVGv6yEMy7PTbky8OfXVA9jYKh0oiM5+
+ sk6xt1CX3smAZYI0P9oaKzOCIkwMemVmh9foKoLwOV/IyVUBTTJc+ljLrovpUDdP
+ pIA4BCkMgcGpU96mM/8o9zjz4bY87GlxWmxlUETAhWUvR7QqjYOuAQqLjAz9vvM2
+ 9w41DE+muRcTBgXgq7R5mX2xPAK9bu7QEmldC6d/UhIWw84PgZEMMUkVZDfimvGr
+ 9rb1WTZ4HmbXffSgmjvpYAD0fz3a3kb/jxO9vzcKzkIUx9MDQUxolnVJ5gWPPm0P
+ 3SACLLdt3Ji3p4//lVUF9os4MIANF8EQiUgikZ8An4R/ZWSxaE7Og==
+X-ME-Sender: <xms:oFkeYrv0LJt2Pjt0ZOYMYd1jCK6G-Z0GZXtRlOiCbijoVlbqDToesg>
+ <xme:oFkeYsdRXoRXAxTjhPFWtM5JX8rU2-dsIwxZfpFocA89gDBFD4vx9xsWmcbxEuUyQ
+ lpRakwPpYLi7A>
+X-ME-Received: <xmr:oFkeYuzzdQb5kL72Vvj74Xn0xRRyhzff8uvNHTyUqFsrLF_56anw9-ykyIbZGqAzSj0KTqXLBgC1Qf0KKdPZ7IM>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddruddtvddguddttdcutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpeffhffvuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepifhrvghg
+ ucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuggftrfgrthhtvghrnhepveeuhe
+ ejgfffgfeivddukedvkedtleelleeghfeljeeiueeggeevueduudekvdetnecuvehluhhs
+ thgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorg
+ hhrdgtohhm
+X-ME-Proxy: <xmx:oFkeYqNP0oPgoNRpau1EsmnsGvsi8MuHt5Oau7Uh5DcasQw65k9YTg>
+ <xmx:oFkeYr8eoBRonSMDQgE0d2CdwAX12XsrowbLGxOxF_rvtS3YwiTEgg>
+ <xmx:oFkeYqVNxx7WBcYUGhcHc73BR9KI7xEAuh9FjZrqFDwJGYsF_7MqUw>
+ <xmx:olkeYkWtK93reuC1fg-f2X2RrUvR780eGtvCg6vOtajRgdiJ73bSmQ>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 1 Mar 2022 12:36:31 -0500 (EST)
+Date: Tue, 1 Mar 2022 18:36:27 +0100
+From: Greg KH <greg@kroah.com>
+To: Jakob Koschel <jakobkoschel@gmail.com>
+Cc: Linus Torvalds <torvalds@linux-foundation.org>,
+ Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+ alsa-devel@alsa-project.org, linux-aspeed@lists.ozlabs.org,
+ "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
+ linux-iio@vger.kernel.org, nouveau@lists.freedesktop.org,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Cristiano Giuffrida <c.giuffrida@vu.nl>,
+ amd-gfx list <amd-gfx@lists.freedesktop.org>,
+ samba-technical@lists.samba.org,	linux1394-devel@lists.sourceforge.net,
+ drbd-dev@lists.linbit.com,	linux-arch <linux-arch@vger.kernel.org>,
+ CIFS <linux-cifs@vger.kernel.org>, KVM list <kvm@vger.kernel.org>,
+ linux-scsi <linux-scsi@vger.kernel.org>,
+ linux-rdma <linux-rdma@vger.kernel.org>,	linux-staging@lists.linux.dev,
+ "Bos, H.J." <h.j.bos@vu.nl>,	Jason Gunthorpe <jgg@ziepe.ca>,
+ intel-wired-lan@lists.osuosl.org,	kgdb-bugreport@lists.sourceforge.net,
+ bcm-kernel-feedback-list@broadcom.com,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Kees Cook <keescook@chromium.org>, Arnd Bergman <arnd@arndb.de>,
+ Linux PM <linux-pm@vger.kernel.org>,
+ intel-gfx <intel-gfx@lists.freedesktop.org>,
+ Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
+ Nathan Chancellor <nathan@kernel.org>,
+ linux-fsdevel <linux-fsdevel@vger.kernel.org>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ v9fs-developer@lists.sourceforge.net,
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ linux-sgx@vger.kernel.org,	linux-block <linux-block@vger.kernel.org>,
+ Netdev <netdev@vger.kernel.org>, linux-usb@vger.kernel.org,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Linux F2FS Dev Mailing List <linux-f2fs-devel@lists.sourceforge.net>,
+ tipc-discussion@lists.sourceforge.net,
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
+ dma <dmaengine@vger.kernel.org>, linux-mediatek@lists.infradead.org,
+ Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
+ Mike Rapoport <rppt@kernel.org>
+Subject: Re: [PATCH 2/6] treewide: remove using list iterator after loop body
+ as a ptr
+Message-ID: <Yh5ZmwiH5AxtQ69K@kroah.com>
+References: <20220228110822.491923-1-jakobkoschel@gmail.com>
+ <20220228110822.491923-3-jakobkoschel@gmail.com>
+ <2e4e95d6-f6c9-a188-e1cd-b1eae465562a@amd.com>
+ <CAHk-=wgQps58DPEOe4y5cTh5oE9EdNTWRLXzgMiETc+mFX7jzw@mail.gmail.com>
+ <CAHk-=wj8fkosQ7=bps5K+DDazBXk=ypfn49A0sEq+7-nZnyfXA@mail.gmail.com>
+ <CAHk-=wiTCvLQkHcJ3y0hpqH7FEk9D28LDvZZogC6OVLk7naBww@mail.gmail.com>
+ <FC710A1A-524E-481B-A668-FC258F529A2E@gmail.com>
+ <CAHk-=whLK11HyvpUtEftOjc3Gup2V77KpAQ2fycj3uai=qceHw@mail.gmail.com>
+ <CEDAD0D9-56EE-4105-9107-72C2EAD940B0@gmail.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <CEDAD0D9-56EE-4105-9107-72C2EAD940B0@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_091204_728541_8D36B026 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20220301_093639_819335_C644F156 
+X-CRM114-Status: GOOD (  30.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,50 +147,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch fix the second dai driver's dai widget can't connect to the
-endpoint. Because "bt-sco-pcm" and "bt-sco-pcm-wb" dai driver have the
-same stream_name, so it will cause they have the same widget name.
-Therefor it will just create only one route when do snd_soc_dapm_add_route
-that only find the widget through the widget name.
+On Tue, Mar 01, 2022 at 12:28:15PM +0100, Jakob Koschel wrote:
+> 
+> 
+> > On 1. Mar 2022, at 01:41, Linus Torvalds <torvalds@linux-foundation.org> wrote:
+> > 
+> > On Mon, Feb 28, 2022 at 1:47 PM Jakob Koschel <jakobkoschel@gmail.com> wrote:
+> >> 
+> >> The goal of this is to get compiler warnings right? This would indeed be great.
+> > 
+> > Yes, so I don't mind having a one-time patch that has been gathered
+> > using some automated checker tool, but I don't think that works from a
+> > long-term maintenance perspective.
+> > 
+> > So if we have the basic rule being "don't use the loop iterator after
+> > the loop has finished, because it can cause all kinds of subtle
+> > issues", then in _addition_ to fixing the existing code paths that
+> > have this issue, I really would want to (a) get a compiler warning for
+> > future cases and (b) make it not actually _work_ for future cases.
+> > 
+> > Because otherwise it will just happen again.
+> > 
+> >> Changing the list_for_each_entry() macro first will break all of those cases
+> >> (e.g. the ones using 'list_entry_is_head()).
+> > 
+> > So I have no problems with breaking cases that we basically already
+> > have a patch for due to  your automated tool. There were certainly
+> > more than a handful, but it didn't look _too_ bad to just make the
+> > rule be "don't use the iterator after the loop".
+> > 
+> > Of course, that's just based on that patch of yours. Maybe there are a
+> > ton of other cases that your patch didn't change, because they didn't
+> > match your trigger case, so I may just be overly optimistic here.
+> 
+> Based on the coccinelle script there are ~480 cases that need fixing
+> in total. I'll now finish all of them and then split them by
+> submodules as Greg suggested and repost a patch set per submodule.
+> Sounds good?
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
----
+Sounds good to me!
 
-Hi maintainter,
+If you need help carving these up and maintaining them over time as
+different subsystem maintainers accept/ignore them, just let me know.
+Doing large patchsets like this can be tough without a lot of
+experience.
 
-   Need your comments. The patch is the one that I think it makes the
-   mose sense. Maybe we can define the new stream_name for
-   "bt-sco-pcm-wb" and add the new route.
+thanks,
 
- sound/soc/codecs/bt-sco.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
-
-diff --git a/sound/soc/codecs/bt-sco.c b/sound/soc/codecs/bt-sco.c
-index 4d286844e3c8..578f9df2a25e 100644
---- a/sound/soc/codecs/bt-sco.c
-+++ b/sound/soc/codecs/bt-sco.c
-@@ -13,11 +13,16 @@
- static const struct snd_soc_dapm_widget bt_sco_widgets[] = {
- 	SND_SOC_DAPM_INPUT("RX"),
- 	SND_SOC_DAPM_OUTPUT("TX"),
-+	SND_SOC_DAPM_AIF_IN("BT_SCO_RX", "Playback", 0,
-+			    SND_SOC_NOPM, 0, 0),
-+	SND_SOC_DAPM_AIF_OUT("BT_SCO_TX", "Capture", 0,
-+			     SND_SOC_NOPM, 0, 0),
- };
- 
- static const struct snd_soc_dapm_route bt_sco_routes[] = {
--	{ "Capture", NULL, "RX" },
--	{ "TX", NULL, "Playback" },
-+	{ "BT_SCO_TX", NULL, "RX" },
-+	{ "TX", NULL, "BT_SCO_RX" },
-+};
- };
- 
- static struct snd_soc_dai_driver bt_sco_dai[] = {
--- 
-2.25.1
-
+greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
