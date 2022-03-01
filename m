@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3A51C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 20:43:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8D73C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 21:24:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M3pFM88yCE3BZwfDFIw2gJSfp4QK66/LSMlFCVwzsl0=; b=xI53CFF8aYk45h
-	9JWlWqrkgXsElGFFRLASx0PLAdPM0NiGfGlj/i3XUBUqYbf01QswqpGPQlgVZiqWV5WtmF6xONpLW
-	OWprZ/IDZ9dCqq/Tj8OgTILxbw3ctByFdXObu9zsDL9guNbgUzJjNVvyubWEOFknrIjb14yEMUyNX
-	RI6lRojpvLitrVrEruxx02BqTEARTwTXvCPCdZGBe25J6Qej23+fkbCE5MbJWPrEhRrkMNw200OWw
-	BWgUQwkEtLBPOFzhH07NcGDq+8QfbJGf/J1B92LzdGoed5A27dXTeOQou6g9W9oziXPzSHXQb+6c6
-	cW35eUrC9ji4i3/f7MtA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SwUvSEaGCMMMw6NRdSqCo+ldK57wYvdUtobi48Trs0k=; b=gkXq0cj7PAteHv
+	EXIGy0CDv0/6BZopzX2cG1664TwsxhKA8mjR0qMB8aKaEJ7oGI55XdMLfn1IdXFb041jXSNcTQyQh
+	WeSJ7luYuHQvoa2dRUCLBPW5oVEi7xZmVyRigVhQGTYt6fsqWMu7DKWJASFXPXGDHpW8k7bCivAVS
+	FXUSQkDEzTc6WvyS2hvrW6a6qYTZZE7M8WVdaosZyDLl++9FEAb9iHqVmubXFLeYDmmXsfZGHgJeb
+	n5ddHM8EBtLSggcJm5rHu+zi//CaVqH2IttCT9WqD9m9aGDYQOcj2kxPezu/9Xt1O2BYFO0kLl34H
+	1f6/URq4tedukUbiukyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nP9LQ-000VNx-2O; Tue, 01 Mar 2022 20:43:40 +0000
-Received: from mga18.intel.com ([134.134.136.126])
+	id 1nP9yp-000cMF-TT; Tue, 01 Mar 2022 21:24:23 +0000
+Received: from mail-oi1-f172.google.com ([209.85.167.172])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nP9LE-000VKu-Bf; Tue, 01 Mar 2022 20:43:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1646167408; x=1677703408;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=j8hCtzK8/yGigjiI1ZMUVHJkmYhuD4SpFKIZnvhuUqs=;
- b=NxCNVtkUIa3tp9nMMhnNY9rAm9BJz8GkOiniZp8u5rRWCq1RqCgVYRTn
- 4ak08Y2GCg85RGffd0sHU5j5lRlKMHIn7ubEcP6Iau4adLGNzHdim8oqO
- 7McpgX762OSGGybzUJp6kJY0usF0TBGCG7mYVTrSj1ZENlhePVgOoVrEW
- YCrJeHJHxEIop78MgdRuI/HpDKnELTMZEZz+HpGXq88n11nIk2rQRoZTl
- xk/LM/gRw5opd2Ksx6JMgi5CFpYfSU18cRSff1BTx/S9oDaoGFXWV8Mn6
- OHDkITdmOkKz4HF20Vt6fVoNrRP7B4GNSHN24idsWqI8mza37woWVr3co A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10273"; a="236746229"
-X-IronPort-AV: E=Sophos;i="5.90,146,1643702400"; d="scan'208";a="236746229"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Mar 2022 12:43:27 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,146,1643702400"; d="scan'208";a="641414066"
-Received: from lkp-server01.sh.intel.com (HELO 2146afe809fb) ([10.239.97.150])
- by orsmga004.jf.intel.com with ESMTP; 01 Mar 2022 12:43:24 -0800
-Received: from kbuild by 2146afe809fb with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1nP9L9-0000zh-Bc; Tue, 01 Mar 2022 20:43:23 +0000
-Date: Wed, 2 Mar 2022 04:42:54 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>, broonie@kernel.org
-Cc: kbuild-all@lists.01.org, perex@perex.cz, matthias.bgg@gmail.com,
- trevor.wu@mediatek.com, tzungbi@google.com,
- alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Jiaxin Yu <jiaxin.yu@mediatek.com>
-Subject: Re: [PATCH] ASoC: bt-sco: fix bt-sco-pcm-wb dai widget don't connect
- to the endpoint
-Message-ID: <202203020422.oME8VbcM-lkp@intel.com>
-References: <20220301171137.27442-1-jiaxin.yu@mediatek.com>
+ id 1nP9yd-000cJK-OQ; Tue, 01 Mar 2022 21:24:13 +0000
+Received: by mail-oi1-f172.google.com with SMTP id j2so17384979oie.7;
+ Tue, 01 Mar 2022 13:24:08 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=H5jfpYzdGFwqse4FWUnR7wwo36jxF9lnZflDBC+WReE=;
+ b=iZjRXqJJHgd/1vd/aRmYy4LePdZ4/yXhn94kTH/FY8llOllVKJE0oj0AMTJwgYoK9D
+ 0son+eBzXjkxGyBr67MoPdXlhjLcbG3F7J7DXRbIEcasfKqWDTMSGf+nSMyT67CoLopG
+ b5H2+tvwMz0P1AzE78l2tHDiSpCYmFgDDaZgRRhj1qbY05/7cw4O9d9/AtshSob9Aw8w
+ 6fNJ3DbpoJ4R7WC/ReW34jf6FtqgeBDrT5MBtgiKq6LHoKvnmajoOjDKc+xqQbh/hvxC
+ eMgcVwEPffYlwACWXUi1gs/CXp7JnECW7JUaMcu0VMmZmO5dU6EUao3FmnhdqlR5tSol
+ 4Gfg==
+X-Gm-Message-State: AOAM532xR17NxoID928dLyGOAieHoTFzyrwRCHfRbMMg9PhG7j9VoriQ
+ wd7/jSAbCf64v72kqgQxLw==
+X-Google-Smtp-Source: ABdhPJzmSm1l9KeZ7xin3mM3VRpjOgzsfhTJVT5XJXunHLlw3L7+E8CSBQCNd27nsxA6+jJBbAA/5A==
+X-Received: by 2002:a05:6808:220d:b0:2d4:99cb:3849 with SMTP id
+ bd13-20020a056808220d00b002d499cb3849mr15214493oib.63.1646169848201; 
+ Tue, 01 Mar 2022 13:24:08 -0800 (PST)
+Received: from xps15.herring.priv (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213]) by smtp.googlemail.com with ESMTPSA id
+ x9-20020a9d6d89000000b005af61bd7e93sm6959942otp.23.2022.03.01.13.24.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 01 Mar 2022 13:24:07 -0800 (PST)
+From: Rob Herring <robh@kernel.org>
+To: Mark Brown <broonie@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Leilk Liu <leilk.liu@mediatek.com>
+Cc: linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] spi: dt-bindings: mediatek: Set min size for 'mediatek,
+ pad-select'
+Date: Tue,  1 Mar 2022 15:23:57 -0600
+Message-Id: <20220301212358.1887668-1-robh@kernel.org>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220301171137.27442-1-jiaxin.yu@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_124328_488667_E9593D38 
-X-CRM114-Status: GOOD (  14.70  )
+X-CRM114-CacheID: sfid-20220301_132411_801436_9ABAD88B 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,54 +82,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jiaxin,
+The minimum array length defaults to the same size as the maximum. For
+'mediatek,pad-select', the example has a length of 2 and in-tree .dts
+files have a length of 1, but the schema says the length must be 4.
 
-Thank you for the patch! Yet something to improve:
+There's currently no warning in the example because the schema fixups
+are not handling this case correctly.
 
-[auto build test ERROR on broonie-sound/for-next]
-[also build test ERROR on v5.17-rc6 next-20220301]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
-
-url:    https://github.com/0day-ci/linux/commits/Jiaxin-Yu/ASoC-bt-sco-fix-bt-sco-pcm-wb-dai-widget-don-t-connect-to-the-endpoint/20220302-011344
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-config: arm-randconfig-r014-20220301 (https://download.01.org/0day-ci/archive/20220302/202203020422.oME8VbcM-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 11.2.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/0day-ci/linux/commit/de4d22036c32b5b4be162ace0b3ce74c193c43c0
-        git remote add linux-review https://github.com/0day-ci/linux
-        git fetch --no-tags linux-review Jiaxin-Yu/ASoC-bt-sco-fix-bt-sco-pcm-wb-dai-widget-don-t-connect-to-the-endpoint/20220302-011344
-        git checkout de4d22036c32b5b4be162ace0b3ce74c193c43c0
-        # save the config file to linux build tree
-        mkdir build_dir
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=arm SHELL=/bin/bash sound/soc/codecs/
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
-
-All errors (new ones prefixed by >>):
-
->> sound/soc/codecs/bt-sco.c:26:1: error: expected identifier or '(' before '}' token
-      26 | };
-         | ^
-
-
-vim +26 sound/soc/codecs/bt-sco.c
-
-5195ca4902fe0b Mark Brown 2013-08-19  21  
-5195ca4902fe0b Mark Brown 2013-08-19  22  static const struct snd_soc_dapm_route bt_sco_routes[] = {
-de4d22036c32b5 Jiaxin Yu  2022-03-02  23  	{ "BT_SCO_TX", NULL, "RX" },
-de4d22036c32b5 Jiaxin Yu  2022-03-02  24  	{ "TX", NULL, "BT_SCO_RX" },
-de4d22036c32b5 Jiaxin Yu  2022-03-02  25  };
-5195ca4902fe0b Mark Brown 2013-08-19 @26  };
-5195ca4902fe0b Mark Brown 2013-08-19  27  
-
+Signed-off-by: Rob Herring <robh@kernel.org>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
+index bfa44acb1bdd..ac9ff12ae27a 100644
+--- a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
++++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
+@@ -62,6 +62,7 @@ properties:
+ 
+   mediatek,pad-select:
+     $ref: /schemas/types.yaml#/definitions/uint32-array
++    minItems: 1
+     maxItems: 4
+     items:
+       enum: [0, 1, 2, 3]
+-- 
+2.32.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
