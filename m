@@ -4,64 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99CE9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 08:11:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68032C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 08:21:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PASUmfRYlfonkLjeWFZ6kVNaFYE4vLC0s6YENetFGok=; b=A3j5JsfwbQqR1b
-	iXH/tWPAOAlaH3jvBbSosfTCcjBwGcDvj5ZOMQIQLyXo6GlnS+VxhP4DjxbsH5vLRzaNRhAYqhp46
-	XH03GxLGDsFMzYCgKEmxVvsOXuyjNZwato4MQE2jQYdu1s7ESUuZZyAL4H8DFI2mcfcVX9n0OChhY
-	ReRYcbdtwPKJwq3bSjVX8GGcYvloHTRp8+sGnfVtKGNmTWU3sfJRgZpnlXX4CDJ2WrVECdEldxTlr
-	VNjbTgqGEYRZ050/U6QBTGL9O3THBaAdA2SqTMGZiEUjprC33+o8Imn6SH5tUj6W4XZiTKrantjgI
-	f8QAL6dLrlLq1266jKuQ==;
+	List-Owner; bh=0psbjQWxZq+aCnXgs1KI1EJe6HgogFuuyYTQtR4PrAE=; b=0NxMY4KL3lAIu2
+	GtNBg/f15YWaa0TZyjPK+qg34XioIi/WAvVWhrqJFeYURT+2n6TpCxLia08iow87OFxs7rJRreuW+
+	uCY7ilqCKj8aojmIh5LNUcbYHtfhEWZctDL9J+YarLpkwq7j64zhAr6VgqMkDMa00CxZSbJg1IGJt
+	5W621qAr5Plr5sCQijpeGpvWEV1B9DQmYPrx+MtsIgKhTolqQzmBM3N4E2KfRKP4g5GjPWigBnovz
+	5NkBGL4VNuN6587jzLWTHyh3on79VeCy4Kr2jZeFFliD3saMTblZ+4b9xxy3A9RaM2Fd7l1fYpjaP
+	xhBl45xNRvhcUbKFoGow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOxbe-00FWR3-R9; Tue, 01 Mar 2022 08:11:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nOxkw-00FZGs-K2; Tue, 01 Mar 2022 08:21:14 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOxbH-00FWKU-WC; Tue, 01 Mar 2022 08:11:17 +0000
-X-UUID: 434ef0b1bca242bf90fdc40b4c56b983-20220301
-X-UUID: 434ef0b1bca242bf90fdc40b4c56b983-20220301
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1939422690; Tue, 01 Mar 2022 01:11:11 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 1 Mar 2022 00:01:08 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 1 Mar 2022 16:01:07 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 1 Mar 2022 16:01:06 +0800
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>, <robh+dt@kernel.org>
-CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <jassisinghbrar@gmail.com>, <fparent@baylibre.com>,
- <yongqiang.niu@mediatek.com>, <hsinyi@chromium.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>
-Subject: [PATCH V5 3/6] dt-bindings: display: mediatek: revise enum to const
-Date: Tue, 1 Mar 2022 16:01:02 +0800
-Message-ID: <20220301080105.31323-4-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220301080105.31323-1-rex-bc.chen@mediatek.com>
-References: <20220301080105.31323-1-rex-bc.chen@mediatek.com>
+ id 1nOxki-00FZBC-1b; Tue, 01 Mar 2022 08:21:01 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id
+ a13-20020a05600c348d00b0038188b8bbf6so682532wmq.0; 
+ Tue, 01 Mar 2022 00:20:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=WRV1hdzmbVPmI+jsxWeBooUP3dqnp9gF+cD+vHx37cg=;
+ b=lEGyrOVqShVwDCrP9OwQ1wqH3cNhSwBY/RA3nyTHSWosd9CKRn65WtXZkGQIxXOoV2
+ 3tKXfWL+tYQeBRGzTUeyTWlNqgQsYWUO5hM/p15NNlT7RHT5fJEZfw1k0R7squ4rzMLq
+ oLGc7DkzAZ9e1MGlYGb5lkZMcrBTF3ggW7O4mMeZk2FoLk8CVkGWPQ8e8bgUFghAfwYc
+ x0LucXz0ANCrW27dz0uKocFaL8UAd0CMQ78/kutKJz9cRPz6Xvq+9XHA2WWiOfYNh0v1
+ 58rCuFQmNC6WpBqMFTXBPXKPnow9bFSGJ6lRb465rGuqL5lS3Jqd++IYHGNeOQ3t3Bw3
+ fELw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=WRV1hdzmbVPmI+jsxWeBooUP3dqnp9gF+cD+vHx37cg=;
+ b=7OWm+R8M95cRt9DBz2k5n0MSqDBDwvsgpbHWzZh7OdIMwwJBXmHmG6stf9CbHX1c0T
+ WHR98LsvmKnpLtML1Yamu9jm/OtlkZrFGQkFizUupHssCNcesB43PtmhskgzN00foO80
+ 2qT8NUH/IzcWKIk3S9SIcA/GAcdN18PbcJ8FB/iRoNM4Y/j1g8rAlyeN0LOJTlrZl5Fl
+ dM3qyvZUW3Oi0vCAQdhFqybpY0Se+vULn54VYZUUPFE2cgGxE7V9MR2qceA4QHuULiwY
+ Xs/vTrv01SHlg6NzpCs8d5f3322VY6jdOTLgRzOHlAILwLlcchAj1J74qZJxox0Xt6kk
+ w7qg==
+X-Gm-Message-State: AOAM5322D+JfQC0Jmc4mQszOMHQMEUkLKyQy0onNjAyzfQsXObQo0s27
+ AfHzvrHrazTyWdLT+SKReK94PYnzYp6nNg==
+X-Google-Smtp-Source: ABdhPJyCpmc78vN+pezWK67t1FYNLGkgoN6qM29kWj+87E3PvpdqVAibBMsy8mhmLh6JcdkxKJsYfA==
+X-Received: by 2002:a05:600c:1c1c:b0:381:45b4:3f69 with SMTP id
+ j28-20020a05600c1c1c00b0038145b43f69mr11293245wms.86.1646122858205; 
+ Tue, 01 Mar 2022 00:20:58 -0800 (PST)
+Received: from [192.168.2.177] ([207.188.167.132])
+ by smtp.gmail.com with ESMTPSA id
+ a8-20020a056000100800b001e30ef6f9basm18395498wrx.18.2022.03.01.00.20.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 01 Mar 2022 00:20:57 -0800 (PST)
+Message-ID: <ea9ce41d-df1e-bec9-1c1d-e132698684ec@gmail.com>
+Date: Tue, 1 Mar 2022 09:20:56 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH V5 1/6] dt-bindings: arm: mediatek: mmsys: add support for
+ MT8186
+Content-Language: en-US
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
+ robh+dt@kernel.org
+Cc: p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
+ jassisinghbrar@gmail.com, fparent@baylibre.com, yongqiang.niu@mediatek.com,
+ hsinyi@chromium.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220301080105.31323-1-rex-bc.chen@mediatek.com>
+ <20220301080105.31323-2-rex-bc.chen@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220301080105.31323-2-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_001116_051973_CE03493E 
-X-CRM114-Status: UNSURE (   9.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220301_002100_126696_71D54279 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,139 +94,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There won't be more than 1 fallback for these bindings, so we modify
-them to use const instead of enum.
 
-Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
----
- .../devicetree/bindings/display/mediatek/mediatek,aal.yaml    | 2 +-
- .../devicetree/bindings/display/mediatek/mediatek,ccorr.yaml  | 2 +-
- .../devicetree/bindings/display/mediatek/mediatek,color.yaml  | 4 ++--
- .../devicetree/bindings/display/mediatek/mediatek,dither.yaml | 2 +-
- .../devicetree/bindings/display/mediatek/mediatek,gamma.yaml  | 2 +-
- .../devicetree/bindings/display/mediatek/mediatek,ovl.yaml    | 4 ++--
- .../devicetree/bindings/display/mediatek/mediatek,rdma.yaml   | 4 ++--
- 7 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-index 191b56e16bee..bc1c70d089ba 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-@@ -31,7 +31,7 @@ properties:
-               - mediatek,mt8183-disp-aal
-               - mediatek,mt8192-disp-aal
-               - mediatek,mt8195-disp-aal
--          - enum:
-+          - const:
-               - mediatek,mt8173-disp-aal
- 
-   reg:
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-index 6894b6999412..fc40e2981eaa 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-@@ -28,7 +28,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt8195-disp-ccorr
--          - enum:
-+          - const:
-               - mediatek,mt8192-disp-ccorr
- 
-   reg:
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-index bc83155b3b4c..22ed5d368cbe 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-@@ -32,14 +32,14 @@ properties:
-           - enum:
-               - mediatek,mt7623-disp-color
-               - mediatek,mt2712-disp-color
--          - enum:
-+          - const:
-               - mediatek,mt2701-disp-color
-       - items:
-           - enum:
-               - mediatek,mt8183-disp-color
-               - mediatek,mt8192-disp-color
-               - mediatek,mt8195-disp-color
--          - enum:
-+          - const:
-               - mediatek,mt8173-disp-color
-   reg:
-     maxItems: 1
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-index 9d89297f5f1d..2a82792b2625 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-@@ -28,7 +28,7 @@ properties:
-           - enum:
-               - mediatek,mt8192-disp-dither
-               - mediatek,mt8195-disp-dither
--          - enum:
-+          - const:
-               - mediatek,mt8183-disp-dither
- 
-   reg:
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-index 247baad147b3..45f88bdf07bb 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-@@ -29,7 +29,7 @@ properties:
-           - enum:
-               - mediatek,mt8192-disp-gamma
-               - mediatek,mt8195-disp-gamma
--          - enum:
-+          - const:
-               - mediatek,mt8183-disp-gamma
- 
-   reg:
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-index e71f79bc2dee..88ba3f27b0e4 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-@@ -33,12 +33,12 @@ properties:
-           - enum:
-               - mediatek,mt7623-disp-ovl
-               - mediatek,mt2712-disp-ovl
--          - enum:
-+          - const:
-               - mediatek,mt2701-disp-ovl
-       - items:
-           - enum:
-               - mediatek,mt8195-disp-ovl
--          - enum:
-+          - const:
-               - mediatek,mt8183-disp-ovl
- 
-   reg:
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
-index 8ef821641672..56368c10d904 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
-@@ -35,12 +35,12 @@ properties:
-           - enum:
-               - mediatek,mt7623-disp-rdma
-               - mediatek,mt2712-disp-rdma
--          - enum:
-+          - const:
-               - mediatek,mt2701-disp-rdma
-       - items:
-           - enum:
-               - mediatek,mt8192-disp-rdma
--          - enum:
-+          - const:
-               - mediatek,mt8183-disp-rdma
- 
-   reg:
--- 
-2.18.0
+On 01/03/2022 09:01, Rex-BC Chen wrote:
+> Add "mediatek,mt8186-mmsys" to binding document.
+> 
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Acked-by: Rob Herring <robh@kernel.org>
 
+Applied, thanks!
+
+> ---
+>   .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml         | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+> index 763c62323a74..b31d90dc9eb4 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+> @@ -29,6 +29,7 @@ properties:
+>                 - mediatek,mt8167-mmsys
+>                 - mediatek,mt8173-mmsys
+>                 - mediatek,mt8183-mmsys
+> +              - mediatek,mt8186-mmsys
+>                 - mediatek,mt8192-mmsys
+>                 - mediatek,mt8365-mmsys
+>             - const: syscon
 
 _______________________________________________
 Linux-mediatek mailing list
