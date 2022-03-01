@@ -4,73 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C672CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 10:14:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62360C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 11:18:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y+HuLVWXeERBAy+J297iAMqgDb67J78DxUrEDAVoguM=; b=KgRGWXkoKRKdW/
-	ueqLDpaRiYfk0ZE9S438ZpmhDQxVr2MUOSXoCLLYDrlJ3hkNq02piNnfav8ISKt4C4gw5l6r3zAPa
-	uBFsdPD1+cCHKn9mUSOy55fjp9NtIXw8T19m8jT3rP2c2uQWtF9JyQFEGoQSFeHi3Ab/K2NUzkxYm
-	MeCPk8acRzNljdNshY/X6FBhLNhlKS58HlYfdueCbTy8/nyIl5HCL3LSiWDxZO8evr5yoOkDL1L4i
-	z7Q5WWExNTSUdGvE6ySj6pgnSKxHBkz/GZo5BpYJBcTLnpJNAVdooExyMFi/Rrw9mjvfl/g5u3Ip8
-	l6TXSmhWz6F8lC7mZvcA==;
+	List-Owner; bh=1TkcI7IBVK/05A7a0wQ+Tklin9WtG63h2LZ6ZvAT1i0=; b=v4tKn/ih2PQMtp
+	rHu53AJBxUhqf3q+q3zKdySkf6RJvVj/y/vmA8ZKIierLZs1Q4073tKVsFfecSU1P0aU0AHGvaNdp
+	T4ueiWsvS9nsTiLkaIynuEpgNuNlP7A4b5hI1/4Yflk+MTjglOMo9SQgC42QoxsAqFKIW/h5zXJ+a
+	pNBzdeh75KRPZexKjtqz012nrdBENKycRZkTPFwOonZZtNnw4kR+FWjJmOOKiZOcFIobYhMDUlQg8
+	Se0xspbhGwc1PGI7NAoNl/cjBX/jrFvixkXB2+ul7lwhfiCegQXCdQXcXbAvQuybMQUJ7q3FFmOG2
+	hum45VImA4hfWwMLH8kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOzW1-00G3O9-Ep; Tue, 01 Mar 2022 10:13:57 +0000
+	id 1nP0Vz-00GNnG-8K; Tue, 01 Mar 2022 11:17:59 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOzVI-00G39c-TE; Tue, 01 Mar 2022 10:13:14 +0000
-X-UUID: 9ce2ebefb150459e9ab3c2d2c28b6b4b-20220301
-X-UUID: 9ce2ebefb150459e9ab3c2d2c28b6b4b-20220301
+ id 1nP0Ua-00GNRG-6K; Tue, 01 Mar 2022 11:16:35 +0000
+X-UUID: 3d09bcdab2414c979b8e5de2460f0021-20220301
+X-UUID: 3d09bcdab2414c979b8e5de2460f0021-20220301
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <moudy.ho@mediatek.com>)
+ (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 125543669; Tue, 01 Mar 2022 03:13:07 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 1 Mar 2022 02:03:04 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 1 Mar 2022 18:02:49 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 1 Mar 2022 18:02:49 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, Jernej Skrabec <jernej.skrabec@siol.net>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- Alexandre Courbot <acourbot@chromium.org>, <tfiga@chromium.org>,
- <drinkcat@chromium.org>, <pihsun@chromium.org>, <hsinyi@google.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, <randy.wu@mediatek.com>,
- <moudy.ho@mediatek.com>, <jason-jh.lin@mediatek.com>,
- <roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
- <srv_heupstream@mediatek.com>,
+ with ESMTP id 2010461423; Tue, 01 Mar 2022 04:15:52 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 1 Mar 2022 03:13:30 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 1 Mar 2022 19:13:29 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 1 Mar 2022 19:13:29 +0800
+Message-ID: <31507af7c67640fa8161b13a4f279fea1a050f55.camel@mediatek.com>
+Subject: Re: [PATCH v2,0/2] Add mmsys reset control for MT8186
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+CC: <chunkuang.hu@kernel.org>, <jitao.shi@mediatek.com>,
+ <xinlei.lee@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v12 4/4] soc: mediatek: mutex: add functions that operate
- registers by CMDQ
-Date: Tue, 1 Mar 2022 18:02:46 +0800
-Message-ID: <20220301100246.2153-5-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220301100246.2153-1-moudy.ho@mediatek.com>
-References: <20220301100246.2153-1-moudy.ho@mediatek.com>
+Date: Tue, 1 Mar 2022 19:13:29 +0800
+In-Reply-To: <09ce5aab-0cc6-5903-8238-551085abd739@gmail.com>
+References: <20220217082626.15728-1-rex-bc.chen@mediatek.com>
+ <09ce5aab-0cc6-5903-8238-551085abd739@gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_021312_991740_9EC4F905 
-X-CRM114-Status: GOOD (  17.78  )
+X-CRM114-CacheID: sfid-20220301_031632_271407_996B1593 
+X-CRM114-Status: GOOD (  16.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,181 +74,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Considering that some functions have timing requirements
-in specific situation, this patch adds several interface that
-operate registers by CMDQ.
+Hello Matthias,
 
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mtk-mutex.c       | 72 +++++++++++++++++++++++++-
- include/linux/soc/mediatek/mtk-mutex.h |  6 +++
- 2 files changed, 76 insertions(+), 2 deletions(-)
+Thanks for accepting my patches, but I didn't see this patch [1]
+in v5.17-next/soc.
+There will be build error if [1] is not included while [2] is applied.
+The sw0_rst_offset is declared in [2].
 
-diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-index a6268ecde240..a45864183cd1 100644
---- a/drivers/soc/mediatek/mtk-mutex.c
-+++ b/drivers/soc/mediatek/mtk-mutex.c
-@@ -7,10 +7,14 @@
- #include <linux/iopoll.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-+#include <linux/of_address.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/soc/mediatek/mtk-mmsys.h>
- #include <linux/soc/mediatek/mtk-mutex.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
-+
-+#define MTK_MUTEX_ENABLE			BIT(0)
- 
- #define MT2701_MUTEX0_MOD0			0x2c
- #define MT2701_MUTEX0_SOF0			0x30
-@@ -173,6 +177,7 @@ struct mtk_mutex_data {
- 	const unsigned int mutex_mdp_mod_mask;
- 	const unsigned int mutex_mdp_sof_mask;
- 	const bool no_clk;
-+	const bool has_gce_client_reg;
- };
- 
- struct mtk_mutex_ctx {
-@@ -181,6 +186,8 @@ struct mtk_mutex_ctx {
- 	void __iomem			*regs;
- 	struct mtk_mutex		mutex[10];
- 	const struct mtk_mutex_data	*data;
-+	phys_addr_t			addr;
-+	struct cmdq_client_reg		cmdq_reg;
- };
- 
- static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-@@ -374,6 +381,7 @@ static const struct mtk_mutex_data mt8183_mutex_driver_data = {
- 	.mutex_mdp_mod_mask = MT8183_MUTEX_MDP_MOD_MASK,
- 	.mutex_mdp_sof_mask = MT8183_MUTEX_MDP_SOF_MASK,
- 	.no_clk = true,
-+	.has_gce_client_reg = true,
- };
- 
- static const struct mtk_mutex_data mt8186_mutex_driver_data = {
-@@ -553,6 +561,25 @@ u32 mtk_mutex_get_mdp_mod(struct mtk_mutex *mutex, enum mtk_mdp_comp_id id)
- }
- EXPORT_SYMBOL_GPL(mtk_mutex_get_mdp_mod);
- 
-+void mtk_mutex_add_mod_by_cmdq(struct mtk_mutex *mutex, u32 mod,
-+			       struct mmsys_cmdq_cmd *cmd)
-+{
-+	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-+						 mutex[mutex->id]);
-+	unsigned int offset;
-+
-+	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-+
-+	offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg, mutex->id);
-+	cmdq_pkt_write_mask(cmd->pkt, mtx->cmdq_reg.subsys, mtx->addr + offset,
-+			    mod, mtx->data->mutex_mdp_mod_mask);
-+
-+	offset = DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg, mutex->id);
-+	cmdq_pkt_write_mask(cmd->pkt, mtx->cmdq_reg.subsys, mtx->addr + offset,
-+			    0, mtx->data->mutex_mdp_sof_mask);
-+}
-+EXPORT_SYMBOL_GPL(mtk_mutex_add_mod_by_cmdq);
-+
- void mtk_mutex_enable(struct mtk_mutex *mutex)
- {
- 	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-@@ -564,6 +591,20 @@ void mtk_mutex_enable(struct mtk_mutex *mutex)
- }
- EXPORT_SYMBOL_GPL(mtk_mutex_enable);
- 
-+void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex,
-+			      struct mmsys_cmdq_cmd *cmd)
-+{
-+	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-+						 mutex[mutex->id]);
-+
-+	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-+
-+	cmdq_pkt_write_mask(cmd->pkt, mtx->cmdq_reg.subsys,
-+			    mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
-+			    MTK_MUTEX_ENABLE, MTK_MUTEX_ENABLE);
-+}
-+EXPORT_SYMBOL_GPL(mtk_mutex_enable_by_cmdq);
-+
- void mtk_mutex_disable(struct mtk_mutex *mutex)
- {
- 	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-@@ -575,6 +616,20 @@ void mtk_mutex_disable(struct mtk_mutex *mutex)
- }
- EXPORT_SYMBOL_GPL(mtk_mutex_disable);
- 
-+void mtk_mutex_disable_by_cmdq(struct mtk_mutex *mutex,
-+			       struct mmsys_cmdq_cmd *cmd)
-+{
-+	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-+						 mutex[mutex->id]);
-+
-+	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-+
-+	cmdq_pkt_write_mask(cmd->pkt, mtx->cmdq_reg.subsys,
-+			    mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
-+			    0x0, MTK_MUTEX_ENABLE);
-+}
-+EXPORT_SYMBOL_GPL(mtk_mutex_disable_by_cmdq);
-+
- void mtk_mutex_acquire(struct mtk_mutex *mutex)
- {
- 	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-@@ -602,8 +657,8 @@ static int mtk_mutex_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_mutex_ctx *mtx;
--	struct resource *regs;
--	int i;
-+	struct resource *regs, addr;
-+	int i, ret;
- 
- 	mtx = devm_kzalloc(dev, sizeof(*mtx), GFP_KERNEL);
- 	if (!mtx)
-@@ -623,6 +678,19 @@ static int mtk_mutex_probe(struct platform_device *pdev)
- 		}
- 	}
- 
-+	if (of_address_to_resource(dev->of_node, 0, &addr) < 0)
-+		mtx->addr = 0L;
-+	else
-+		mtx->addr = addr.start;
-+
-+	if (mtx->data->has_gce_client_reg) {
-+		ret = cmdq_dev_get_client_reg(dev, &mtx->cmdq_reg, 0);
-+		if (ret) {
-+			dev_err(dev, "No mediatek,gce-client-reg!\n");
-+			return ret;
-+		}
-+	}
-+
- 	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	mtx->regs = devm_ioremap_resource(dev, regs);
- 	if (IS_ERR(mtx->regs)) {
-diff --git a/include/linux/soc/mediatek/mtk-mutex.h b/include/linux/soc/mediatek/mtk-mutex.h
-index b2608f4220ee..05de7ad4a124 100644
---- a/include/linux/soc/mediatek/mtk-mutex.h
-+++ b/include/linux/soc/mediatek/mtk-mutex.h
-@@ -17,8 +17,14 @@ int mtk_mutex_prepare(struct mtk_mutex *mutex);
- void mtk_mutex_add_comp(struct mtk_mutex *mutex,
- 			enum mtk_ddp_comp_id id);
- u32 mtk_mutex_get_mdp_mod(struct mtk_mutex *mutex, enum mtk_mdp_comp_id id);
-+void mtk_mutex_add_mod_by_cmdq(struct mtk_mutex *mutex, u32 mod,
-+			       struct mmsys_cmdq_cmd *cmd);
- void mtk_mutex_enable(struct mtk_mutex *mutex);
-+void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex,
-+			      struct mmsys_cmdq_cmd *cmd);
- void mtk_mutex_disable(struct mtk_mutex *mutex);
-+void mtk_mutex_disable_by_cmdq(struct mtk_mutex *mutex,
-+			       struct mmsys_cmdq_cmd *cmd);
- void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
- 			   enum mtk_ddp_comp_id id);
- void mtk_mutex_unprepare(struct mtk_mutex *mutex);
--- 
-2.18.0
+If I have mistake, please let me know.
+Thanks!
+
+[1]:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220217082626.15728-2-rex-bc.chen@mediatek.com/
+
+[2]:
+https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.17-next/soc&id=831785f0e5b919c29e1bc5f9a74e9ebd38289e24
+
+BRs,
+Rex
+On Tue, 2022-03-01 at 08:35 +0100, Matthias Brugger wrote:
+> 
+> On 17/02/2022 09:26, Rex-BC Chen wrote:
+> > v2:
+> > 1. Change variable type from unsigned int to u16.
+> > 
+> > v1:
+> > 1. Add a new variable in mmsys driver data to control different
+> > register
+> >     offset for different SoCs.
+> > 2. Add MT8183 reset register offset.
+> > 3. Add mmsys reset control for MT8186.
+> > 
+> > This series is based on mmsys patch for MT8186 on [1].
+> > [1]: 
+> > https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20220216084831.14883-4-rex-bc.chen@mediatek.com/__;!!CTRNKA9wMg0ARbw!wp2uW6phbST6ySpYRlb7iwmATAVkkCL1JBau9dCwhXj8KRasrAWnLd1EUT9gLE-oF9Yq$
+> >  
+> > 
+> > Rex-BC Chen (2):
+> >    soc: mediatek: mmsys: add sw0_rst_offset in mmsys driver data
+> >    soc: mediatek: mmsys: add mmsys reset control for MT8186
+> > 
+> >   drivers/soc/mediatek/mt8183-mmsys.h | 2 ++
+> >   drivers/soc/mediatek/mt8186-mmsys.h | 2 ++
+> >   drivers/soc/mediatek/mtk-mmsys.c    | 7 +++++--
+> >   drivers/soc/mediatek/mtk-mmsys.h    | 3 +--
+> >   4 files changed, 10 insertions(+), 4 deletions(-)
+> > 
+> 
+> Series applied, thanks!
 
 
 _______________________________________________
