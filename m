@@ -4,85 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68032C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 08:21:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A2FCC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 08:34:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0psbjQWxZq+aCnXgs1KI1EJe6HgogFuuyYTQtR4PrAE=; b=0NxMY4KL3lAIu2
-	GtNBg/f15YWaa0TZyjPK+qg34XioIi/WAvVWhrqJFeYURT+2n6TpCxLia08iow87OFxs7rJRreuW+
-	uCY7ilqCKj8aojmIh5LNUcbYHtfhEWZctDL9J+YarLpkwq7j64zhAr6VgqMkDMa00CxZSbJg1IGJt
-	5W621qAr5Plr5sCQijpeGpvWEV1B9DQmYPrx+MtsIgKhTolqQzmBM3N4E2KfRKP4g5GjPWigBnovz
-	5NkBGL4VNuN6587jzLWTHyh3on79VeCy4Kr2jZeFFliD3saMTblZ+4b9xxy3A9RaM2Fd7l1fYpjaP
-	xhBl45xNRvhcUbKFoGow==;
+	List-Owner; bh=+e4ZZB6ifhl6sGGcLX5mltHmWlOl6dJN71DA/nNbGTk=; b=1x770s/mEtxP8Q
+	dCNH6D8yCKpPy1UIq4w72hnvPDGMqJwYFmya9rgz7PaXxjt5Atg+1hYCAwH14+f4NKG6Tz4ojkGda
+	gZTQPuI+TnZ3j0uWl95UOL1HcXRIAh3aaJ2AWRl3Cp9JXFwWD/AEOtq6FJWkd8elsx6eKjC5vBqCy
+	54gO8/B3B831wwsEp1A1wbmcg/dfsTd+Vi6rbbRKEgdAPNcgxKImZMlutaK01KM5OJGlQNeRJZNwt
+	R4KHrNUuiIeMT6qoRV4ES1s3hj2fzjuFHgNEbUpU3tYqVMbrlJMGr6aa4gQ6MiDe9sKi4WrHjBkHr
+	iUQ7l81B1BZliPGg8m/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOxkw-00FZGs-K2; Tue, 01 Mar 2022 08:21:14 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1nOxxD-00FbW6-2y; Tue, 01 Mar 2022 08:33:55 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOxki-00FZBC-1b; Tue, 01 Mar 2022 08:21:01 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id
- a13-20020a05600c348d00b0038188b8bbf6so682532wmq.0; 
- Tue, 01 Mar 2022 00:20:59 -0800 (PST)
+ id 1nOxww-00FbOn-Ut; Tue, 01 Mar 2022 08:33:40 +0000
+Received: by mail-wm1-x332.google.com with SMTP id
+ r187-20020a1c2bc4000000b003810e6b192aso899837wmr.1; 
+ Tue, 01 Mar 2022 00:33:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=WRV1hdzmbVPmI+jsxWeBooUP3dqnp9gF+cD+vHx37cg=;
- b=lEGyrOVqShVwDCrP9OwQ1wqH3cNhSwBY/RA3nyTHSWosd9CKRn65WtXZkGQIxXOoV2
- 3tKXfWL+tYQeBRGzTUeyTWlNqgQsYWUO5hM/p15NNlT7RHT5fJEZfw1k0R7squ4rzMLq
- oLGc7DkzAZ9e1MGlYGb5lkZMcrBTF3ggW7O4mMeZk2FoLk8CVkGWPQ8e8bgUFghAfwYc
- x0LucXz0ANCrW27dz0uKocFaL8UAd0CMQ78/kutKJz9cRPz6Xvq+9XHA2WWiOfYNh0v1
- 58rCuFQmNC6WpBqMFTXBPXKPnow9bFSGJ6lRb465rGuqL5lS3Jqd++IYHGNeOQ3t3Bw3
- fELw==
+ bh=LkrTcQQbt/9+kZrb/G+6KYClsmPdfv/aEHScRzi5ZAs=;
+ b=mtj+dI+NVw8LeXLhTCnZeZgjE3M77ddOgX9ienReKqhu6eqXMGaGvl7kUgLxrH/imx
+ zZL610ITo2FA7KruB9rkrHKT4/Lwpt/A3V3047Sb8rZzaecQu8EuVpKZycFqjIf+Ea4F
+ 1Ysqyx7vO9OwDlQTRcD+6O6gpHTx7Fw5Hw+exkYLnkC+IckNQZ9/lqdjjYftid5gPmse
+ d7D0a0z9p529s7UIwJUtQlgVGEp3iWEeBgftNB1BSDhHTWNlWvSwbDKAGdVMajt29Ily
+ 0TwJaiR/lZw0rkHIIdH1NSpo+w34uoy7kF+7eM0po8sA+nNKCN9ARHCMjWC/Mjt8tVU9
+ 1rjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=WRV1hdzmbVPmI+jsxWeBooUP3dqnp9gF+cD+vHx37cg=;
- b=7OWm+R8M95cRt9DBz2k5n0MSqDBDwvsgpbHWzZh7OdIMwwJBXmHmG6stf9CbHX1c0T
- WHR98LsvmKnpLtML1Yamu9jm/OtlkZrFGQkFizUupHssCNcesB43PtmhskgzN00foO80
- 2qT8NUH/IzcWKIk3S9SIcA/GAcdN18PbcJ8FB/iRoNM4Y/j1g8rAlyeN0LOJTlrZl5Fl
- dM3qyvZUW3Oi0vCAQdhFqybpY0Se+vULn54VYZUUPFE2cgGxE7V9MR2qceA4QHuULiwY
- Xs/vTrv01SHlg6NzpCs8d5f3322VY6jdOTLgRzOHlAILwLlcchAj1J74qZJxox0Xt6kk
- w7qg==
-X-Gm-Message-State: AOAM5322D+JfQC0Jmc4mQszOMHQMEUkLKyQy0onNjAyzfQsXObQo0s27
- AfHzvrHrazTyWdLT+SKReK94PYnzYp6nNg==
-X-Google-Smtp-Source: ABdhPJyCpmc78vN+pezWK67t1FYNLGkgoN6qM29kWj+87E3PvpdqVAibBMsy8mhmLh6JcdkxKJsYfA==
-X-Received: by 2002:a05:600c:1c1c:b0:381:45b4:3f69 with SMTP id
- j28-20020a05600c1c1c00b0038145b43f69mr11293245wms.86.1646122858205; 
- Tue, 01 Mar 2022 00:20:58 -0800 (PST)
+ bh=LkrTcQQbt/9+kZrb/G+6KYClsmPdfv/aEHScRzi5ZAs=;
+ b=wsezBUv5kNXDglHbVhaWEwoLxHAqNTm4KXkOzIfGG2DNHuQcN8n2QeY32GvoNBkRyO
+ 4aWP4Wl4gZA9bkaHq5DboKWsOAgZVh+pxolyZ8urtnyaHNrJOR0vDftqoONlO4J3fOW7
+ eIwzv0d8fjT2OHAJi+MQmpCA9O/yZ7R+fMJTRdQBpetn5z4q7+9hWW+LAW1MiP8lN8TK
+ crzHlcte/gH6a4XWIlSabd+rTNABnUHjsHfI6myaaCoTvQRUH00aGIm93rc08up8zVnb
+ 8RiQOtUxQYGXPKZj6kblVKo0A0opboiguPWDxEIV8vVkSlrtZABjL8zz5zHK33CEMs82
+ OloQ==
+X-Gm-Message-State: AOAM531VEAVkI7Xzc6BAZ/QDakNp77eLBzbQ+2YIP9r4mLg2uqr5BZbR
+ dDfdUPH21hpR0GLjcj2bcsg=
+X-Google-Smtp-Source: ABdhPJwgp8UucD4OAX8skQYsYngCTn4CiMKZRKK9OmCXn08gSTewF+CNCCfhF6TU4XyQpJj6ERIYSQ==
+X-Received: by 2002:a05:600c:508:b0:380:fd39:2c42 with SMTP id
+ i8-20020a05600c050800b00380fd392c42mr15993789wmc.178.1646123616070; 
+ Tue, 01 Mar 2022 00:33:36 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.167.132])
  by smtp.gmail.com with ESMTPSA id
- a8-20020a056000100800b001e30ef6f9basm18395498wrx.18.2022.03.01.00.20.57
+ q17-20020adfc511000000b001edc0a8a8b6sm19256706wrf.0.2022.03.01.00.33.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 01 Mar 2022 00:20:57 -0800 (PST)
-Message-ID: <ea9ce41d-df1e-bec9-1c1d-e132698684ec@gmail.com>
-Date: Tue, 1 Mar 2022 09:20:56 +0100
+ Tue, 01 Mar 2022 00:33:35 -0800 (PST)
+Message-ID: <232259a8-1cce-002b-3f46-916425de1d69@gmail.com>
+Date: Tue, 1 Mar 2022 09:33:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [PATCH V5 1/6] dt-bindings: arm: mediatek: mmsys: add support for
- MT8186
+Subject: Re: [PATCH 1/1] arm64: dts: mediatek: add clock support for mt7986a
 Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
- robh+dt@kernel.org
-Cc: p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
- jassisinghbrar@gmail.com, fparent@baylibre.com, yongqiang.niu@mediatek.com,
- hsinyi@chromium.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220301080105.31323-1-rex-bc.chen@mediatek.com>
- <20220301080105.31323-2-rex-bc.chen@mediatek.com>
+To: Sam Shih <sam.shih@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: John Crispin <john@phrozen.org>, Ryder Lee <ryder.lee@kernel.org>
+References: <20220119123624.10043-1-sam.shih@mediatek.com>
+ <20220119123624.10043-2-sam.shih@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220301080105.31323-2-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220119123624.10043-2-sam.shih@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_002100_126696_71D54279 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20220301_003339_039633_A7CA4933 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,30 +96,155 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 01/03/2022 09:01, Rex-BC Chen wrote:
-> Add "mediatek,mt8186-mmsys" to binding document.
+On 19/01/2022 13:36, Sam Shih wrote:
+> Add clock controller nodes, include 40M clock source, topckgen,
+> infracfg, apmixedsys and ethernet subsystem.
 > 
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> Acked-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 
 Applied, thanks!
 
 > ---
->   .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml         | 1 +
->   1 file changed, 1 insertion(+)
+>   arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 68 +++++++++++++++++++++--
+>   1 file changed, 63 insertions(+), 5 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> index 763c62323a74..b31d90dc9eb4 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> @@ -29,6 +29,7 @@ properties:
->                 - mediatek,mt8167-mmsys
->                 - mediatek,mt8173-mmsys
->                 - mediatek,mt8183-mmsys
-> +              - mediatek,mt8186-mmsys
->                 - mediatek,mt8192-mmsys
->                 - mediatek,mt8365-mmsys
->             - const: syscon
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> index b8da76b6ba47..694acf8f5b70 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> @@ -6,16 +6,18 @@
+>   
+>   #include <dt-bindings/interrupt-controller/irq.h>
+>   #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +#include <dt-bindings/clock/mt7986-clk.h>
+>   
+>   / {
+>   	interrupt-parent = <&gic>;
+>   	#address-cells = <2>;
+>   	#size-cells = <2>;
+>   
+> -	system_clk: dummy40m {
+> +	clk40m: oscillator@0 {
+>   		compatible = "fixed-clock";
+>   		clock-frequency = <40000000>;
+>   		#clock-cells = <0>;
+> +		clock-output-names = "clkxtal";
+>   	};
+>   
+>   	cpus {
+> @@ -98,6 +100,18 @@ gic: interrupt-controller@c000000 {
+>   			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
+>   		};
+>   
+> +		infracfg: infracfg@10001000 {
+> +			compatible = "mediatek,mt7986-infracfg", "syscon";
+> +			reg = <0 0x10001000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		topckgen: topckgen@1001b000 {
+> +			compatible = "mediatek,mt7986-topckgen", "syscon";
+> +			reg = <0 0x1001B000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+>   		watchdog: watchdog@1001c000 {
+>   			compatible = "mediatek,mt7986-wdt",
+>   				     "mediatek,mt6589-wdt";
+> @@ -107,6 +121,12 @@ watchdog: watchdog@1001c000 {
+>   			status = "disabled";
+>   		};
+>   
+> +		apmixedsys: apmixedsys@1001e000 {
+> +			compatible = "mediatek,mt7986-apmixedsys";
+> +			reg = <0 0x1001E000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+>   		pio: pinctrl@1001f000 {
+>   			compatible = "mediatek,mt7986a-pinctrl";
+>   			reg = <0 0x1001f000 0 0x1000>,
+> @@ -128,11 +148,25 @@ pio: pinctrl@1001f000 {
+>   			#interrupt-cells = <2>;
+>   		};
+>   
+> +		sgmiisys0: syscon@10060000 {
+> +			compatible = "mediatek,mt7986-sgmiisys_0",
+> +				     "syscon";
+> +			reg = <0 0x10060000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		sgmiisys1: syscon@10070000 {
+> +			compatible = "mediatek,mt7986-sgmiisys_1",
+> +				     "syscon";
+> +			reg = <0 0x10070000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+>   		trng: trng@1020f000 {
+>   			compatible = "mediatek,mt7986-rng",
+>   				     "mediatek,mt7623-rng";
+>   			reg = <0 0x1020f000 0 0x100>;
+> -			clocks = <&system_clk>;
+> +			clocks = <&infracfg CLK_INFRA_TRNG_CK>;
+>   			clock-names = "rng";
+>   			status = "disabled";
+>   		};
+> @@ -142,7 +176,13 @@ uart0: serial@11002000 {
+>   				     "mediatek,mt6577-uart";
+>   			reg = <0 0x11002000 0 0x400>;
+>   			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
+> -			clocks = <&system_clk>;
+> +			clocks = <&infracfg CLK_INFRA_UART0_SEL>,
+> +				 <&infracfg CLK_INFRA_UART0_CK>;
+> +			clock-names = "baud", "bus";
+> +			assigned-clocks = <&topckgen CLK_TOP_UART_SEL>,
+> +					  <&infracfg CLK_INFRA_UART0_SEL>;
+> +			assigned-clock-parents = <&topckgen CLK_TOP_XTAL>,
+> +						 <&topckgen CLK_TOP_UART_SEL>;
+>   			status = "disabled";
+>   		};
+>   
+> @@ -151,7 +191,11 @@ uart1: serial@11003000 {
+>   				     "mediatek,mt6577-uart";
+>   			reg = <0 0x11003000 0 0x400>;
+>   			interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
+> -			clocks = <&system_clk>;
+> +			clocks = <&infracfg CLK_INFRA_UART1_SEL>,
+> +				 <&infracfg CLK_INFRA_UART1_CK>;
+> +			clock-names = "baud", "bus";
+> +			assigned-clocks = <&infracfg CLK_INFRA_UART1_SEL>;
+> +			assigned-clock-parents = <&topckgen CLK_TOP_F26M_SEL>;
+>   			status = "disabled";
+>   		};
+>   
+> @@ -160,10 +204,24 @@ uart2: serial@11004000 {
+>   				     "mediatek,mt6577-uart";
+>   			reg = <0 0x11004000 0 0x400>;
+>   			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
+> -			clocks = <&system_clk>;
+> +			clocks = <&infracfg CLK_INFRA_UART2_SEL>,
+> +				 <&infracfg CLK_INFRA_UART2_CK>;
+> +			clock-names = "baud", "bus";
+> +			assigned-clocks = <&infracfg CLK_INFRA_UART2_SEL>;
+> +			assigned-clock-parents = <&topckgen CLK_TOP_F26M_SEL>;
+>   			status = "disabled";
+>   		};
+>   
+> +		ethsys: syscon@15000000 {
+> +			 #address-cells = <1>;
+> +			 #size-cells = <1>;
+> +			 compatible = "mediatek,mt7986-ethsys",
+> +				      "syscon";
+> +			 reg = <0 0x15000000 0 0x1000>;
+> +			 #clock-cells = <1>;
+> +			 #reset-cells = <1>;
+> +		};
+> +
+>   	};
+>   
+>   };
 
 _______________________________________________
 Linux-mediatek mailing list
