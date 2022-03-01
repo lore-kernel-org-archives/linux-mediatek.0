@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1800C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 08:01:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDA23C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 08:01:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K9W5qB5HshPqkLeMs5fA+B5S2FmFzwVh9uJSRm7P0EU=; b=iTFgTuTPD/c7j2
-	pvKP99nJoy24taCGMFRljBrSSYnDiZu40Cs23bE1VuQNN1u7l/72lv0Mw0/ozxyizNCR7XqJsWOhA
-	dSfFFhz4gvHUmvW/wy37iOkHZ8iPZTSPidOLDfE1eYOr+eiLrzrvamQ4IUZcNu8xXQfgr7GVThVou
-	4IFRsDVPjDWcWwEfIlGmhu65TurCBwu8yB4emC3QY7JDFFrvSafY+qXrDHj1OWSH6Ru9EI4HjpTkk
-	Xkei4GvWDQ4niH+Xal5SIbgE86rmGrF52tg/iMuo2+ac2B1a8wnR7rolfiak6zDFuRn0vvsPZqlIA
-	AMCbovrBpfzJ3ewXiCLg==;
+	List-Owner; bh=7bqk2fgMrjC6oppnkCSQuT5peowoohWQH5GhD3BxnFI=; b=zBR9KqS5LgP2ll
+	DPZgsLh3dSDqSLnxdrVee7UUkm/vcY8/P2k1Ydf9gbJNj1mJ0sDENFxKQAD0WuzZ3Fyjfkyag6Ea9
+	M4tvOgxUZAjIS2w7tJfh86G4c3XrI9D66OSlb6UzXRFqqiHgHntit3eiEQ3b2L4dueratq03bjslt
+	oWWxhhEtpl4jxppeFgHu8hOwR8Gz2kcclcZZUkvxYNJIqvBxyhymowmZmdUAnLIwEU+CJOXQOMOSr
+	e6+Li+x4LLhpC63SqD6hRjEfhOgYn/zMLfNotsqSPUp09H8BMgv3uJam4Eqq363vMfPf7QTS1KMyw
+	HO5HbMByfYdYusqpn3Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOxRp-00FSug-I2; Tue, 01 Mar 2022 08:01:29 +0000
+	id 1nOxS6-00FT5M-7Y; Tue, 01 Mar 2022 08:01:46 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOxRZ-00FSkZ-4v; Tue, 01 Mar 2022 08:01:14 +0000
-X-UUID: fc14a4853c7f4410be8a64c883185f72-20220301
-X-UUID: fc14a4853c7f4410be8a64c883185f72-20220301
+ id 1nOxRa-00FSkv-40; Tue, 01 Mar 2022 08:01:15 +0000
+X-UUID: a84b614674e843d2b21c8b28290fe782-20220301
+X-UUID: a84b614674e843d2b21c8b28290fe782-20220301
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1372849839; Tue, 01 Mar 2022 01:01:10 -0700
+ with ESMTP id 1410801535; Tue, 01 Mar 2022 01:01:10 -0700
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 1 Mar 2022 00:01:08 -0800
+ 15.0.1497.2; Tue, 1 Mar 2022 00:01:09 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 1 Mar 2022 16:01:06 +0800
+ 15.0.1497.2; Tue, 1 Mar 2022 16:01:07 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Tue, 1 Mar 2022 16:01:07 +0800
@@ -49,19 +49,17 @@ CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
  <dri-devel@lists.freedesktop.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
  <rex-bc.chen@mediatek.com>
-Subject: [PATCH V5 4/6] dt-bindings: display: mediatek: change to use enum for
- mutex
-Date: Tue, 1 Mar 2022 16:01:03 +0800
-Message-ID: <20220301080105.31323-5-rex-bc.chen@mediatek.com>
+Subject: [PATCH V5 6/6] drm/mediatek: add display support for MT8186
+Date: Tue, 1 Mar 2022 16:01:05 +0800
+Message-ID: <20220301080105.31323-7-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220301080105.31323-1-rex-bc.chen@mediatek.com>
 References: <20220301080105.31323-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_000113_355363_088E2325 
-X-CRM114-Status: UNSURE (   7.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220301_000114_189699_1E08A91A 
+X-CRM114-Status: GOOD (  10.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,48 +76,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-All single entry cases in mutex can be merged as a single enum.
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 
+Add mmsys driver data and compatible for MT8186 in mtk_drm_drv.c.
+
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- .../display/mediatek/mediatek,mutex.yaml      | 24 +++++++------------
- 1 file changed, 9 insertions(+), 15 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 33 ++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
-index 6eca525eced0..0378933201b4 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
-@@ -23,21 +23,15 @@ description: |
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 56ff8c57ef8f..be582e64d067 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -158,6 +158,24 @@ static const enum mtk_ddp_comp_id mt8183_mtk_ddp_ext[] = {
+ 	DDP_COMPONENT_DPI0,
+ };
  
- properties:
-   compatible:
--    oneOf:
--      - items:
--          - const: mediatek,mt2701-disp-mutex
--      - items:
--          - const: mediatek,mt2712-disp-mutex
--      - items:
--          - const: mediatek,mt8167-disp-mutex
--      - items:
--          - const: mediatek,mt8173-disp-mutex
--      - items:
--          - const: mediatek,mt8183-disp-mutex
--      - items:
--          - const: mediatek,mt8192-disp-mutex
--      - items:
--          - const: mediatek,mt8195-disp-mutex
-+    enum:
-+      - mediatek,mt2701-disp-mutex
-+      - mediatek,mt2712-disp-mutex
-+      - mediatek,mt8167-disp-mutex
-+      - mediatek,mt8173-disp-mutex
-+      - mediatek,mt8183-disp-mutex
-+      - mediatek,mt8192-disp-mutex
-+      - mediatek,mt8195-disp-mutex
++static const enum mtk_ddp_comp_id mt8186_mtk_ddp_main[] = {
++	DDP_COMPONENT_OVL0,
++	DDP_COMPONENT_RDMA0,
++	DDP_COMPONENT_COLOR0,
++	DDP_COMPONENT_CCORR,
++	DDP_COMPONENT_AAL0,
++	DDP_COMPONENT_GAMMA,
++	DDP_COMPONENT_POSTMASK0,
++	DDP_COMPONENT_DITHER,
++	DDP_COMPONENT_DSI0,
++};
 +
-   reg:
-     maxItems: 1
++static const enum mtk_ddp_comp_id mt8186_mtk_ddp_ext[] = {
++	DDP_COMPONENT_OVL_2L0,
++	DDP_COMPONENT_RDMA1,
++	DDP_COMPONENT_DPI0,
++};
++
+ static const enum mtk_ddp_comp_id mt8192_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_OVL0,
+ 	DDP_COMPONENT_OVL_2L0,
+@@ -221,6 +239,13 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
+ 	.ext_len = ARRAY_SIZE(mt8183_mtk_ddp_ext),
+ };
  
++static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
++	.main_path = mt8186_mtk_ddp_main,
++	.main_len = ARRAY_SIZE(mt8186_mtk_ddp_main),
++	.ext_path = mt8186_mtk_ddp_ext,
++	.ext_len = ARRAY_SIZE(mt8186_mtk_ddp_ext),
++};
++
+ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
+ 	.main_path = mt8192_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt8192_mtk_ddp_main),
+@@ -463,6 +488,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt8183-disp-mutex",
+ 	  .data = (void *)MTK_DISP_MUTEX },
++	{ .compatible = "mediatek,mt8186-disp-mutex",
++	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt8192-disp-mutex",
+ 	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt8173-disp-od",
+@@ -511,12 +538,16 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DPI },
+ 	{ .compatible = "mediatek,mt8183-dpi",
+ 	  .data = (void *)MTK_DPI },
++	{ .compatible = "mediatek,mt8186-dpi",
++	  .data = (void *)MTK_DPI },
+ 	{ .compatible = "mediatek,mt2701-dsi",
+ 	  .data = (void *)MTK_DSI },
+ 	{ .compatible = "mediatek,mt8173-dsi",
+ 	  .data = (void *)MTK_DSI },
+ 	{ .compatible = "mediatek,mt8183-dsi",
+ 	  .data = (void *)MTK_DSI },
++	{ .compatible = "mediatek,mt8186-dsi",
++	  .data = (void *)MTK_DSI },
+ 	{ }
+ };
+ 
+@@ -533,6 +564,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
+ 	  .data = &mt8173_mmsys_driver_data},
+ 	{ .compatible = "mediatek,mt8183-mmsys",
+ 	  .data = &mt8183_mmsys_driver_data},
++	{ .compatible = "mediatek,mt8186-mmsys",
++	  .data = &mt8186_mmsys_driver_data},
+ 	{ .compatible = "mediatek,mt8192-mmsys",
+ 	  .data = &mt8192_mmsys_driver_data},
+ 	{ }
 -- 
 2.18.0
 
