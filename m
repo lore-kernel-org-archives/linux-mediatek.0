@@ -4,78 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DA11C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 08:08:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B14BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 08:11:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n1REeK/7A7pyJ/6m+ixMuheEcUU9Yu+7sQkytgIWLhY=; b=4MeG0VKIU2oD4t
-	jvE4xWQeONSm6v20aRU8RZFx0kXiOc31ekUS8vfhh4YbRIvVabr6XHWwC8Dm5OFbv49YDaRBgO2t8
-	6IqH0dVh+jxgPPAafltETbTMTc624pLsisszN4JYRQRi8oHxLpJiBivk+sHeKBEYCwtPbANvf1eAO
-	hvdn6pH1KzOypp7xAcvy39BxYWH9saVNcdG1gXRr0shpNvGK43rABnmKYkbS7khnMA2QHHLUWzT+k
-	yUJNM2x3+XnfRJYerpHiKrWVHX4hjK2I+hrPT9Pff7F6OCZZI0ytk2+9pRRVX8Xcgc3t1k9eV2lGR
-	XdQaKf3YleG5dvoXSpzA==;
+	List-Owner; bh=Sz0LMx4daUo9TDYInGEuHaW/o1RvJnzzbKqzz/L4q5A=; b=suynkRIPh0gKr/
+	TFdTfWXIYi0cLctn3g8u9IRlVwR2h2Ed9sny5J0vT9tQ6/tMCqGGFdqrpahaccyMDUdexTEKAs4Ku
+	ztPEjaPq624gryys4bNjqXJKvbBf6yY8LLjiM5LDhuVThDL12Knb/oyamPR8uaGlkYqbubbDknssT
+	ypFgw3eUgu7BhEvx246rDpuO15uij/g/N1hi/rCdTCmXT3RtHp/P90Wedy4npx1ssIA7v9KPs9Yzn
+	KztMV8eTV80ThHE09bFUyw8e6KO1oImIhmpW2WJVr2UpDkGX1t1McQ5W5Nhau5PxpRik1LdzXt2Lj
+	9PaMHbIQxva+ifQh/b6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOxYI-00FVRr-0F; Tue, 01 Mar 2022 08:08:10 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1nOxbT-00FWNB-Lv; Tue, 01 Mar 2022 08:11:27 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOxYE-00FVQH-Mm; Tue, 01 Mar 2022 08:08:08 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id
- bg16-20020a05600c3c9000b00380f6f473b0so766837wmb.1; 
- Tue, 01 Mar 2022 00:08:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=53dOAB2vBN3+b4Fbz+8eHbf2N76aKf8ZDQVBCIga/q8=;
- b=cgJ73JoWW5R1zOaE3eQq/WB3EEbveu0prkJNYZDoReh5an/6ry8x1dpyLn9Qvc/R2A
- b5tnmvrCIQof0hhvjoTRtHtqF5nkzem96v72LhUPE3Kb93mXQ2YSAkH5JKRCkFZUISgC
- A1sza/UotJgRM3/DQTH523/h364l/EAA0t+BDeuhWV+CrTekoVgm/zyXdBONxlsz3FDB
- t2pni8nENIwm2ZYgqedL3wq3IR6XGs9Dm+zrsZi13NdajCtqcr+a2Imo+vo+V4O0J84U
- gvKqpxfmAifYU/DxKKjJGk1LCAQqeNuOdUMv2s/D65LqmrOuCRNT5e00UiDLPEbhBlIo
- Ussg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=53dOAB2vBN3+b4Fbz+8eHbf2N76aKf8ZDQVBCIga/q8=;
- b=RheJFdPpvqpGgRz/RkurUSfT+KWSf9egDBo04sBLwdFwbTArErsOItRdSS87WcC00B
- Ic15Br0uo/poPGgkp/jfuGyA7RgDyNRHKtYR70uVL0skrg0Hm0mnzFDIMEipCpY9NWbR
- jce+4t1bAm2rRyDtwPqT/9FiJyLeJf4bh/UZTPBkTJK2tYAc+EE3C1dfZpc0kQD/vIqK
- KBiehgMLdVAcNWaLwSLJXcRIqnPTjPUPFFKJhWtUydbT4oWFlgRDUGi6kNI4mpKiFel5
- yk4eMyNZvZGdOMBraGCMfThit0VXixqbwIwpVPTxRRTzkcU5EYv6n0dQDzPgcv6p+voi
- Z2Zg==
-X-Gm-Message-State: AOAM531bRMagDhZyBrfnk9E5W9TdLYZgDvMn9/iwWeBrfhui4xuYpIP3
- SQ63nQpZGIVArztlZPWxRP8=
-X-Google-Smtp-Source: ABdhPJwjGoPSylNWjBtSFXHIe6pLfehteffxF8Bjft8RLt4F+qM/K2M/+iCsfvHvSVeKej5MmXkXmQ==
-X-Received: by 2002:a7b:c959:0:b0:381:4b39:e9c3 with SMTP id
- i25-20020a7bc959000000b003814b39e9c3mr11055189wml.4.1646122084836; 
- Tue, 01 Mar 2022 00:08:04 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.167.132])
- by smtp.gmail.com with ESMTPSA id
- a9-20020a05600c2d4900b0038100a95903sm1641634wmg.41.2022.03.01.00.08.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 01 Mar 2022 00:08:04 -0800 (PST)
-Message-ID: <860747c9-109f-20d7-84d1-94e2eebee9d2@gmail.com>
-Date: Tue, 1 Mar 2022 09:08:03 +0100
+ id 1nOxbH-00FWK9-8L; Tue, 01 Mar 2022 08:11:16 +0000
+X-UUID: 113237a44b0e4cf0aca01e3749c1ae43-20220301
+X-UUID: 113237a44b0e4cf0aca01e3749c1ae43-20220301
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1931094236; Tue, 01 Mar 2022 01:11:11 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 1 Mar 2022 00:01:09 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 1 Mar 2022 16:01:07 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 1 Mar 2022 16:01:07 +0800
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>, <robh+dt@kernel.org>
+CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <jassisinghbrar@gmail.com>, <fparent@baylibre.com>,
+ <yongqiang.niu@mediatek.com>, <hsinyi@chromium.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: [PATCH V5 5/6] dt-bindings: display: mediatek: add MT8186 SoC binding
+Date: Tue, 1 Mar 2022 16:01:04 +0800
+Message-ID: <20220301080105.31323-6-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220301080105.31323-1-rex-bc.chen@mediatek.com>
+References: <20220301080105.31323-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v9 00/13] Add support for Airoha EN7523 SoC
-Content-Language: en-US
-To: Felix Fietkau <nbd@nbd.name>
-Cc: soc@kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, john@phrozen.org
-References: <20220130145116.88406-1-nbd@nbd.name>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220130145116.88406-1-nbd@nbd.name>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_000806_772287_BDE36329 
-X-CRM114-Status: GOOD (  14.91  )
+X-CRM114-CacheID: sfid-20220301_001115_312775_A04F48E1 
+X-CRM114-Status: UNSURE (   8.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,74 +73,171 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add MT8186 SoC binding to AAL, CCORR, COLOR, DITHER, GAMMA, MUTEX,
+OVL, POSTMASK and RDMA.
 
+Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+---
+ .../devicetree/bindings/display/mediatek/mediatek,aal.yaml   | 5 +++++
+ .../devicetree/bindings/display/mediatek/mediatek,ccorr.yaml | 5 +++++
+ .../devicetree/bindings/display/mediatek/mediatek,color.yaml | 1 +
+ .../bindings/display/mediatek/mediatek,dither.yaml           | 1 +
+ .../devicetree/bindings/display/mediatek/mediatek,gamma.yaml | 1 +
+ .../devicetree/bindings/display/mediatek/mediatek,mutex.yaml | 1 +
+ .../bindings/display/mediatek/mediatek,ovl-2l.yaml           | 5 +++++
+ .../devicetree/bindings/display/mediatek/mediatek,ovl.yaml   | 5 +++++
+ .../bindings/display/mediatek/mediatek,postmask.yaml         | 5 +++++
+ .../devicetree/bindings/display/mediatek/mediatek,rdma.yaml  | 1 +
+ 10 files changed, 30 insertions(+)
 
-On 30/01/2022 15:51, Felix Fietkau wrote:
-> This patchset adds support for the Airoha EN7523 SoC, intended primarily
-> for xPON/xDSL routers.
-> 
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+index bc1c70d089ba..214b4a605cfa 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+@@ -33,6 +33,11 @@ properties:
+               - mediatek,mt8195-disp-aal
+           - const:
+               - mediatek,mt8173-disp-aal
++      - items:
++          - enum:
++              - mediatek,mt8186-disp-aal
++          - const:
++              - mediatek,mt8183-disp-aal
+ 
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+index fc40e2981eaa..6aeb53d2dfe7 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+@@ -30,6 +30,11 @@ properties:
+               - mediatek,mt8195-disp-ccorr
+           - const:
+               - mediatek,mt8192-disp-ccorr
++      - items:
++          - enum:
++              - mediatek,mt8186-disp-ccorr
++          - const:
++              - mediatek,mt8183-disp-ccorr
+ 
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+index 22ed5d368cbe..0458b30bf6d1 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+@@ -37,6 +37,7 @@ properties:
+       - items:
+           - enum:
+               - mediatek,mt8183-disp-color
++              - mediatek,mt8186-disp-color
+               - mediatek,mt8192-disp-color
+               - mediatek,mt8195-disp-color
+           - const:
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+index 2a82792b2625..60e192189c12 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+@@ -26,6 +26,7 @@ properties:
+           - const: mediatek,mt8183-disp-dither
+       - items:
+           - enum:
++              - mediatek,mt8186-disp-dither
+               - mediatek,mt8192-disp-dither
+               - mediatek,mt8195-disp-dither
+           - const:
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+index 45f88bdf07bb..8bf270d59a6e 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+@@ -27,6 +27,7 @@ properties:
+           - const: mediatek,mt8183-disp-gamma
+       - items:
+           - enum:
++              - mediatek,mt8186-disp-gamma
+               - mediatek,mt8192-disp-gamma
+               - mediatek,mt8195-disp-gamma
+           - const:
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
+index 0378933201b4..edf5816cf7b4 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
+@@ -29,6 +29,7 @@ properties:
+       - mediatek,mt8167-disp-mutex
+       - mediatek,mt8173-disp-mutex
+       - mediatek,mt8183-disp-mutex
++      - mediatek,mt8186-disp-mutex
+       - mediatek,mt8192-disp-mutex
+       - mediatek,mt8195-disp-mutex
+ 
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
+index 611a2dbdefa4..2f29c9d1ce61 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
+@@ -25,6 +25,11 @@ properties:
+           - const: mediatek,mt8183-disp-ovl-2l
+       - items:
+           - const: mediatek,mt8192-disp-ovl-2l
++      - items:
++          - enum:
++              - mediatek,mt8186-disp-ovl-2l
++          - const:
++              - mediatek,mt8192-disp-ovl-2l
+ 
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+index 88ba3f27b0e4..4204a780610f 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+@@ -40,6 +40,11 @@ properties:
+               - mediatek,mt8195-disp-ovl
+           - const:
+               - mediatek,mt8183-disp-ovl
++      - items:
++          - enum:
++              - mediatek,mt8186-disp-ovl
++          - const:
++              - mediatek,mt8192-disp-ovl
+ 
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
+index 6ac1da2e8871..e42170874b24 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
+@@ -23,6 +23,11 @@ properties:
+     oneOf:
+       - items:
+           - const: mediatek,mt8192-disp-postmask
++      - items:
++          - enum:
++              - mediatek,mt8186-disp-postmask
++          - const:
++              - mediatek,mt8192-disp-postmask
+ 
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+index 56368c10d904..9f7eee8a3407 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+@@ -39,6 +39,7 @@ properties:
+               - mediatek,mt2701-disp-rdma
+       - items:
+           - enum:
++              - mediatek,mt8186-disp-rdma
+               - mediatek,mt8192-disp-rdma
+           - const:
+               - mediatek,mt8183-disp-rdma
+-- 
+2.18.0
 
-I applied patch 1, 2, 3, 4 and 13 to me tree. The rest unfortunately will need 
-to go through clk and pci tree or at least need a Acked-by from the maintainers.
-
-Thanks!
-Matthias
-
-> Felix Fietkau (4):
->    clk: en7523: Add clock driver for Airoha EN7523 SoC
->    ARM: dts: add clock support for Airoha EN7523
->    PCI: mediatek: Allow building for ARCH_AIROHA
->    ARM: dts: Add PCIe support for Airoha EN7523
-> 
-> John Crispin (9):
->    dt-bindings: Add vendor prefix for Airoha
->    dt-bindings: arm: airoha: Add binding for EN7523 SoC and EVB
->    ARM: Add basic support for Airoha EN7523 SoC
->    ARM: multi_v7_defconfig: Add support for Airoha EN7523 SoC
->    dt-bindings: Add en7523-scu device tree binding documentation
->    dt-bindings: PCI: Add support for Airoha EN7532
->    dt-bindings: arm: airoha: Add binding for Airoha GPIO controller
->    gpio: Add support for Airoha EN7523 GPIO controller
->    ARM: dts: add GPIO support for Airoha EN7523
-> 
->   .../devicetree/bindings/arm/airoha.yaml       |  28 ++
->   .../bindings/clock/airoha,en7523-scu.yaml     |  58 +++
->   .../bindings/gpio/airoha,en7523-gpio.yaml     |  67 ++++
->   .../devicetree/bindings/pci/mediatek-pcie.txt |   1 +
->   .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
->   arch/arm/Kconfig                              |  12 +
->   arch/arm/Makefile                             |   1 +
->   arch/arm/boot/dts/Makefile                    |   2 +
->   arch/arm/boot/dts/en7523-evb.dts              |  43 +++
->   arch/arm/boot/dts/en7523.dtsi                 | 205 ++++++++++
->   arch/arm/configs/multi_v7_defconfig           |   1 +
->   arch/arm/mach-airoha/Makefile                 |   2 +
->   arch/arm/mach-airoha/airoha.c                 |  16 +
->   drivers/clk/Kconfig                           |   9 +
->   drivers/clk/Makefile                          |   1 +
->   drivers/clk/clk-en7523.c                      | 350 ++++++++++++++++++
->   drivers/gpio/Kconfig                          |  10 +
->   drivers/gpio/Makefile                         |   1 +
->   drivers/gpio/gpio-en7523.c                    | 137 +++++++
->   drivers/pci/controller/Kconfig                |   2 +-
->   include/dt-bindings/clock/en7523-clk.h        |  17 +
->   21 files changed, 964 insertions(+), 1 deletion(-)
->   create mode 100644 Documentation/devicetree/bindings/arm/airoha.yaml
->   create mode 100644 Documentation/devicetree/bindings/clock/airoha,en7523-scu.yaml
->   create mode 100644 Documentation/devicetree/bindings/gpio/airoha,en7523-gpio.yaml
->   create mode 100644 arch/arm/boot/dts/en7523-evb.dts
->   create mode 100644 arch/arm/boot/dts/en7523.dtsi
->   create mode 100644 arch/arm/mach-airoha/Makefile
->   create mode 100644 arch/arm/mach-airoha/airoha.c
->   create mode 100644 drivers/clk/clk-en7523.c
->   create mode 100644 drivers/gpio/gpio-en7523.c
->   create mode 100644 include/dt-bindings/clock/en7523-clk.h
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
