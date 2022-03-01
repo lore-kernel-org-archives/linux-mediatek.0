@@ -4,48 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5DFAC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 09:44:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8402EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 09:44:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uHcPNSkqWteCtjhVEcavffpfYvkZ61aGH/LouyNdIUY=; b=CTRgNNKQ/49lSp
-	yYb5m+PpKTEHnG+VaYxYxHugasJG3z4ZLvzMOrngIihuB+JuBrhlaAl0Zo1OnAUtMdvPuINb6pLYt
-	jv5PudQHVXyYsoAFpU8Nt6hdrtbn/VpqVUoKqWsk+EqMwwXBfhIDlhBTOTwkHpSRBsw6tTdqlxqzC
-	Oue1wKNm4Sf/vk9J7b9P8aCysPFUiR587iUR/foUTAw1kke7ICjho5znlXAcK7FL+aeke1LcXt9q6
-	sX3vZRubp5TB2vcTfhsly1dDDzWSQ0gRixe8pIa7vSAxJ03ZPs0n7TWipSiTXHSwEcquLeW0RNhpU
-	CCmMbtpIi8biLutWuHuQ==;
+	List-Owner; bh=lqJr8hhN5DoR72v/9mMRqh3wBC+oQs/r2KyVx8pBfuA=; b=NSlGjqGlqE/hww
+	0O0okvk9nKHr4nWbMQcUDeEDd35js+BdoH/4tNfmpkcFxVoX5jt8ZWVrT0XvlWZ73UKmLWHtN20DQ
+	XkmsBKzaGxmZEP1fwh1XAg00M4Dz2laoCqNe9maV5VNYTP/R5RkuekvXr7G9J1pbpr1PoCrW7rK4l
+	fgdCd7O0IO1rKNYXqK5dhC9ihqWAjYbNB2sWttD1yT4cPmV6yzeGhyeKpQogmYdHPIrvY/EkQqHly
+	NPNEJn00c3lipTUOHDlo4iA3zwgPX829GZYbxX1OTJ2tcvFgBmxMtHRfPgAybPiDEsLdHgvVFbjxm
+	OM/nFnCBk5GGRHO4DQUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOz3S-00FtK8-PV; Tue, 01 Mar 2022 09:44:26 +0000
+	id 1nOz3h-00FtTg-7Q; Tue, 01 Mar 2022 09:44:41 +0000
 Received: from elvis.franken.de ([193.175.24.41])
  by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOz3P-00FtEv-L7; Tue, 01 Mar 2022 09:44:25 +0000
+ id 1nOz3P-00FtFX-KN; Tue, 01 Mar 2022 09:44:26 +0000
 Received: from uucp (helo=alpha)
  by elvis.franken.de with local-bsmtp (Exim 3.36 #1)
- id 1nOz3I-0003z9-01; Tue, 01 Mar 2022 10:44:16 +0100
+ id 1nOz3I-0003z9-00; Tue, 01 Mar 2022 10:44:16 +0100
 Received: by alpha.franken.de (Postfix, from userid 1000)
- id E43C2C28F0; Tue,  1 Mar 2022 10:10:56 +0100 (CET)
-Date: Tue, 1 Mar 2022 10:10:56 +0100
+ id A90D6C2860; Tue,  1 Mar 2022 10:09:58 +0100 (CET)
+Date: Tue, 1 Mar 2022 10:09:58 +0100
 From: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
-To: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Cc: John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Chuanhong Guo <gch981213@gmail.com>, linux-mips@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] MIPS: ralink: mt7621: use bitwise NOT instead of logical
-Message-ID: <20220301091056.GB6517@alpha.franken.de>
-References: <20220301011507.15494-1-ilya.lipnitskiy@gmail.com>
+To: Hauke Mehrtens <hauke@hauke-m.de>,
+ =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ "Maciej W. Rozycki" <macro@orcam.me.uk>,
+ Paul Cercueil <paul@crapouillou.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Huacai Chen <chenhuacai@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Vinod Koul <vkoul@kernel.org>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>,
+ Guenter Roeck <linux@roeck-us.net>, linux-mips@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, dmaengine@vger.kernel.org,
+ linux-watchdog@vger.kernel.org
+Subject: Re: [PATCH] MIPS: Remove TX39XX support
+Message-ID: <20220301090958.GA6517@alpha.franken.de>
+References: <20220222090435.62571-1-tsbogend@alpha.franken.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220301011507.15494-1-ilya.lipnitskiy@gmail.com>
+In-Reply-To: <20220222090435.62571-1-tsbogend@alpha.franken.de>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_014423_863784_683B5A55 
-X-CRM114-Status: GOOD (  17.61  )
+X-CRM114-CacheID: sfid-20220301_014423_988638_02E0CC1A 
+X-CRM114-Status: GOOD (  12.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,34 +68,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 28, 2022 at 05:15:07PM -0800, Ilya Lipnitskiy wrote:
-> It was the intention to reverse the bits, not make them all zero by
-> using logical NOT operator.
+On Tue, Feb 22, 2022 at 10:04:28AM +0100, Thomas Bogendoerfer wrote:
+> No (active) developer owns this hardware, so let's remove Linux support.
 > 
-> Fixes: cc19db8b312a ("MIPS: ralink: mt7621: do memory detection on KSEG1")
-> Suggested-by: Chuanhong Guo <gch981213@gmail.com>
-> Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+> Signed-off-by: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
 > ---
->  arch/mips/ralink/mt7621.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/mips/ralink/mt7621.c b/arch/mips/ralink/mt7621.c
-> index 12c8808e0dea..fb0565bc34fd 100644
-> --- a/arch/mips/ralink/mt7621.c
-> +++ b/arch/mips/ralink/mt7621.c
-> @@ -69,7 +69,7 @@ static bool __init mt7621_addr_wraparound_test(phys_addr_t size)
->  	__raw_writel(MT7621_MEM_TEST_PATTERN, dm);
->  	if (__raw_readl(dm) != __raw_readl(dm + size))
->  		return false;
-> -	__raw_writel(!MT7621_MEM_TEST_PATTERN, dm);
-> +	__raw_writel(~MT7621_MEM_TEST_PATTERN, dm);
->  	return __raw_readl(dm) == __raw_readl(dm + size);
->  }
->  
-> -- 
-> 2.35.1
+>  arch/mips/Kbuild.platforms                    |   1 -
+>  arch/mips/Kconfig                             |  24 +-
+>  arch/mips/Makefile                            |   1 -
+>  arch/mips/configs/jmr3927_defconfig           |  50 ---
+>  arch/mips/include/asm/cpu-features.h          |   3 -
+>  arch/mips/include/asm/cpu-type.h              |   6 -
+>  arch/mips/include/asm/cpu.h                   |   6 -
+>  arch/mips/include/asm/isadep.h                |   2 +-
+>  .../asm/mach-ath25/cpu-feature-overrides.h    |   1 -
+>  .../asm/mach-ath79/cpu-feature-overrides.h    |   1 -
+>  .../asm/mach-au1x00/cpu-feature-overrides.h   |   1 -
+>  .../asm/mach-bcm47xx/cpu-feature-overrides.h  |   1 -
+>  .../cpu-feature-overrides.h                   |   1 -
+>  .../asm/mach-cobalt/cpu-feature-overrides.h   |   1 -
+>  .../asm/mach-dec/cpu-feature-overrides.h      |   1 -
+>  .../asm/mach-ingenic/cpu-feature-overrides.h  |   1 -
+>  .../asm/mach-ip27/cpu-feature-overrides.h     |   1 -
+>  .../asm/mach-ip30/cpu-feature-overrides.h     |   1 -
+>  .../falcon/cpu-feature-overrides.h            |   1 -
+>  .../mach-loongson2ef/cpu-feature-overrides.h  |   1 -
+>  .../mach-loongson64/cpu-feature-overrides.h   |   1 -
+>  .../mt7620/cpu-feature-overrides.h            |   1 -
+>  .../mt7621/cpu-feature-overrides.h            |   1 -
+>  .../rt288x/cpu-feature-overrides.h            |   1 -
+>  .../rt305x/cpu-feature-overrides.h            |   1 -
+>  .../rt3883/cpu-feature-overrides.h            |   1 -
+>  .../asm/mach-rc32434/cpu-feature-overrides.h  |   1 -
+>  arch/mips/include/asm/mach-tx39xx/ioremap.h   |  25 --
+>  .../include/asm/mach-tx39xx/mangle-port.h     |  24 -
+>  arch/mips/include/asm/mach-tx39xx/spaces.h    |  17 -
+>  arch/mips/include/asm/stackframe.h            |   6 +-
+>  arch/mips/include/asm/txx9/boards.h           |   3 -
+>  arch/mips/include/asm/txx9/jmr3927.h          | 179 --------
+>  arch/mips/include/asm/txx9/tx3927.h           | 341 ---------------
+>  arch/mips/include/asm/txx9irq.h               |   4 -
+>  arch/mips/include/asm/txx9tmr.h               |   4 -
+>  arch/mips/include/asm/vermagic.h              |   2 -
+>  arch/mips/kernel/Makefile                     |   1 -
+>  arch/mips/kernel/cpu-probe.c                  |  23 -
+>  arch/mips/kernel/cpu-r3k-probe.c              |  22 -
+>  arch/mips/kernel/entry.S                      |   2 +-
+>  arch/mips/kernel/genex.S                      |   4 +-
+>  arch/mips/kernel/idle.c                       |  10 -
+>  arch/mips/kernel/irq_txx9.c                   |  13 -
+>  arch/mips/kernel/proc.c                       |   2 -
+>  arch/mips/kernel/process.c                    |   2 +-
+>  arch/mips/lib/Makefile                        |   1 -
+>  arch/mips/lib/r3k_dump_tlb.c                  |   4 -
+>  arch/mips/mm/Makefile                         |   1 -
+>  arch/mips/mm/c-tx39.c                         | 414 ------------------
+>  arch/mips/mm/cache.c                          |   5 -
+>  arch/mips/mm/tlb-r3k.c                        |  40 +-
+>  arch/mips/pci/Makefile                        |   2 -
+>  arch/mips/pci/fixup-jmr3927.c                 |  79 ----
+>  arch/mips/pci/ops-tx3927.c                    | 231 ----------
+>  arch/mips/txx9/Kconfig                        |  18 -
+>  arch/mips/txx9/Makefile                       |   6 -
+>  arch/mips/txx9/Platform                       |   3 -
+>  arch/mips/txx9/generic/Makefile               |   1 -
+>  arch/mips/txx9/generic/irq_tx3927.c           |  25 --
+>  arch/mips/txx9/generic/setup.c                |  55 ---
+>  arch/mips/txx9/generic/setup_tx3927.c         | 136 ------
+>  arch/mips/txx9/jmr3927/Makefile               |   6 -
+>  arch/mips/txx9/jmr3927/irq.c                  | 128 ------
+>  arch/mips/txx9/jmr3927/prom.c                 |  52 ---
+>  arch/mips/txx9/jmr3927/setup.c                | 223 ----------
+>  drivers/dma/Kconfig                           |   2 +-
+>  drivers/watchdog/Kconfig                      |   2 +-
+>  68 files changed, 18 insertions(+), 2212 deletions(-)
+>  delete mode 100644 arch/mips/configs/jmr3927_defconfig
+>  delete mode 100644 arch/mips/include/asm/mach-tx39xx/ioremap.h
+>  delete mode 100644 arch/mips/include/asm/mach-tx39xx/mangle-port.h
+>  delete mode 100644 arch/mips/include/asm/mach-tx39xx/spaces.h
+>  delete mode 100644 arch/mips/include/asm/txx9/jmr3927.h
+>  delete mode 100644 arch/mips/include/asm/txx9/tx3927.h
+>  delete mode 100644 arch/mips/mm/c-tx39.c
+>  delete mode 100644 arch/mips/pci/fixup-jmr3927.c
+>  delete mode 100644 arch/mips/pci/ops-tx3927.c
+>  delete mode 100644 arch/mips/txx9/generic/irq_tx3927.c
+>  delete mode 100644 arch/mips/txx9/generic/setup_tx3927.c
+>  delete mode 100644 arch/mips/txx9/jmr3927/Makefile
+>  delete mode 100644 arch/mips/txx9/jmr3927/irq.c
+>  delete mode 100644 arch/mips/txx9/jmr3927/prom.c
+>  delete mode 100644 arch/mips/txx9/jmr3927/setup.c
 
-applied to mips-fixes
+applied to mips-next.
 
 Thomas.
 
