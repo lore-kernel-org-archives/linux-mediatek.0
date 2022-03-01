@@ -4,97 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2C2FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 06:32:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2674CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 06:41:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QTCWXF3qtmXUuLegmsTVTq/S8ePAjNAQZCNPcCH0Pz0=; b=066tW1mJDzJHuX
-	4ukBTsqLcC0zP3l0E7rQ2adlxPsk4ISwc1BhC8IR6MZQh25W9M8GEYNY/mW3pmLZhFG9orfaohDsU
-	uzHYQl9eTNrkLRVgDTm59rvlN2x2GquTfKTxqhOT5XOIo26umxnO6dubVu287DxTKch/9WYMo57UR
-	NVCYXistXefDLSuZzhFSK2w4cUQkvPmPBXJgpBBV+wFtOVb4mnD8K3ljuv8cptg5PHFeBsikglUI6
-	6Tlyx2UxgIYWWrFmI2a6D7QdodjA4SL7+L43FkUTSW94djtRvzxVqN24cA/EHjEaf2p0wStsAtV+d
-	+HW4sLeu3JWA/pa3RF9w==;
+	List-Owner; bh=8Bs+VjFwACWiunYa6LUzbOxOMgLXvSkb7fsW/nZWMyc=; b=MDCT1pMmc2dyVG
+	Rk52YnRuyAYvj7mRtwmG+/iOAWtkYyVoS2d7NLokV+lw0P8o9Sc22kFPfbAPd/Fvh+6jafyqER+it
+	+pB9D0u+RBWwzHfvsv3bXFq8pYkaHqKOb1XorZj6biiIYsUivRra6CMJW9FYUBgR1caSaDSFdAYDV
+	y+RjOPFR1xRKwPu9hZihfjMwthGGF84kZGfzhtb8lm5cr5ofouL6TBFCO8KPVKf34i9TiIuQ0eYlR
+	EPg3iK7+PnINIaiXjejApQjrsyDIPaLVjwuFMzU9/AREHJqxQXb3ncY2Z6XcVH/LFleXMSDsdyZlx
+	cCvpMocZtBaolTWbsQzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOw3q-00FAio-Uu; Tue, 01 Mar 2022 06:32:38 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nOwBv-00FBDB-79; Tue, 01 Mar 2022 06:40:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOw3n-00FAhp-I6; Tue, 01 Mar 2022 06:32:37 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 2F0DDB816AD;
- Tue,  1 Mar 2022 06:32:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CDB1BC340F0;
- Tue,  1 Mar 2022 06:32:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646116351;
- bh=/Yg/Wtj2qqC5DtZph9xh9a5I6i9ac63I49JjnGAnbz0=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=VNHL/rpf4xC8OfR4t6vo9UDhccraY87hqDEaB5+IcVN4t3xSDpu027UghrvvyPQSS
- 4QuUBVLbP+fb/wau99bJi4r7o82Cq8bpmARbff3Kmy/AtDhoQCnd/xuFpD/mZTaTLe
- NB4lRdgymAA7RGUyYzHE9lasNH7iZMQkKEkyzKBO3tOdshLibbcwpXFMt0/8PjfBOI
- eBOAlJkJQ4cQoPLzxj+EO1bIuaMcgSLjX7K2SicEKpT/LLsGPP1i6N98tAlqdrYU3i
- Kp9mElgbXeQQFbCmQa35pv8BJ12s3DBVkk5Xbz9WcUOYNg9YRr2X/a7+Y15htjkLBQ
- B1WsfW9PNeplw==
-Date: Mon, 28 Feb 2022 22:32:28 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Linus Torvalds <torvalds@linux-foundation.org>
-Cc: Jakob Koschel <jakobkoschel@gmail.com>, Christian =?UTF-8?B?S8O2bmln?=
- <christian.koenig@amd.com>, alsa-devel@alsa-project.org,
- linux-aspeed@lists.ozlabs.org, "Gustavo A. R. Silva"
- <gustavo@embeddedor.com>, linux-iio@vger.kernel.org,
- nouveau@lists.freedesktop.org, Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- dri-devel <dri-devel@lists.freedesktop.org>, Cristiano Giuffrida
- <c.giuffrida@vu.nl>, amd-gfx list <amd-gfx@lists.freedesktop.org>,
- samba-technical@lists.samba.org, linux1394-devel@lists.sourceforge.net,
- drbd-dev@lists.linbit.com, linux-arch <linux-arch@vger.kernel.org>, CIFS
- <linux-cifs@vger.kernel.org>, KVM list <kvm@vger.kernel.org>, linux-scsi
- <linux-scsi@vger.kernel.org>, linux-rdma <linux-rdma@vger.kernel.org>,
- linux-staging@lists.linux.dev, "Bos, H.J." <h.j.bos@vu.nl>, Jason Gunthorpe
- <jgg@ziepe.ca>, intel-wired-lan@lists.osuosl.org,
- kgdb-bugreport@lists.sourceforge.net,
- bcm-kernel-feedback-list@broadcom.com, Dan Carpenter
- <dan.carpenter@oracle.com>, Linux Media Mailing List
- <linux-media@vger.kernel.org>, Kees Cook <keescook@chromium.org>, Arnd
- Bergman <arnd@arndb.de>, Linux PM <linux-pm@vger.kernel.org>, intel-gfx
- <intel-gfx@lists.freedesktop.org>, Brian Johannesmeyer
- <bjohannesmeyer@gmail.com>, Nathan Chancellor <nathan@kernel.org>,
- linux-fsdevel <linux-fsdevel@vger.kernel.org>, Christophe JAILLET
- <christophe.jaillet@wanadoo.fr>, v9fs-developer@lists.sourceforge.net,
- linux-tegra <linux-tegra@vger.kernel.org>, Thomas Gleixner
- <tglx@linutronix.de>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-sgx@vger.kernel.org, linux-block <linux-block@vger.kernel.org>,
- Netdev <netdev@vger.kernel.org>, linux-usb@vger.kernel.org, linux-wireless
- <linux-wireless@vger.kernel.org>, Linux Kernel Mailing List
- <linux-kernel@vger.kernel.org>, Linux F2FS Dev Mailing List        
- <linux-f2fs-devel@lists.sourceforge.net>,
- tipc-discussion@lists.sourceforge.net, Linux Crypto Mailing List
- <linux-crypto@vger.kernel.org>, dma <dmaengine@vger.kernel.org>,
- linux-mediatek@lists.infradead.org, Andrew Morton
- <akpm@linux-foundation.org>, linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
- Mike Rapoport <rppt@kernel.org>
-Subject: Re: [PATCH 2/6] treewide: remove using list iterator after loop
- body as a ptr
-Message-ID: <20220228223228.24cf3fd4@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
-In-Reply-To: <CAHk-=whLK11HyvpUtEftOjc3Gup2V77KpAQ2fycj3uai=qceHw@mail.gmail.com>
-References: <20220228110822.491923-1-jakobkoschel@gmail.com>
- <20220228110822.491923-3-jakobkoschel@gmail.com>
- <2e4e95d6-f6c9-a188-e1cd-b1eae465562a@amd.com>
- <CAHk-=wgQps58DPEOe4y5cTh5oE9EdNTWRLXzgMiETc+mFX7jzw@mail.gmail.com>
- <CAHk-=wj8fkosQ7=bps5K+DDazBXk=ypfn49A0sEq+7-nZnyfXA@mail.gmail.com>
- <CAHk-=wiTCvLQkHcJ3y0hpqH7FEk9D28LDvZZogC6OVLk7naBww@mail.gmail.com>
- <FC710A1A-524E-481B-A668-FC258F529A2E@gmail.com>
- <CAHk-=whLK11HyvpUtEftOjc3Gup2V77KpAQ2fycj3uai=qceHw@mail.gmail.com>
+ id 1nOwBf-00FBBG-4u; Tue, 01 Mar 2022 06:40:47 +0000
+X-UUID: a3e9fef3446d4c79bcd5392032372abf-20220228
+X-UUID: a3e9fef3446d4c79bcd5392032372abf-20220228
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 14780105; Mon, 28 Feb 2022 23:40:40 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 28 Feb 2022 22:33:34 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 1 Mar 2022 14:33:20 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 1 Mar 2022 14:33:20 +0800
+Message-ID: <c92342029f05748426df23d4d95ad178f7acc0f9.camel@mediatek.com>
+Subject: Re: [PATCH v4,2/5] dt-bindings: display: mediatek: add MT8186 SoC
+ binding
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+CC: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>,
+ <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <jassisinghbrar@gmail.com>, <fparent@baylibre.com>,
+ <yongqiang.niu@mediatek.com>, <hsinyi@chromium.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 1 Mar 2022 14:33:20 +0800
+In-Reply-To: <YhfaSqWInwgsu30x@robh.at.kernel.org>
+References: <20220222052803.3570-1-rex-bc.chen@mediatek.com>
+ <20220222052803.3570-3-rex-bc.chen@mediatek.com>
+ <YhfaSqWInwgsu30x@robh.at.kernel.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_223235_938202_21FA422D 
-X-CRM114-Status: GOOD (  18.49  )
+X-CRM114-CacheID: sfid-20220228_224043_213525_08DDD29C 
+X-CRM114-Status: GOOD (  18.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,74 +79,297 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 28 Feb 2022 16:41:04 -0800 Linus Torvalds wrote:
-> So yes, initially my idea had been to just move the iterator entirely
-> inside the macro. But specifying the type got so ugly that I think
-> that
+Hello Rob,
+
+Thanks for your review.
+I add comments below:
+
+On Thu, 2022-02-24 at 13:19 -0600, Rob Herring wrote:
+> On Tue, Feb 22, 2022 at 01:28:00PM +0800, Rex-BC Chen wrote:
+> > Add MT8186 SoC binding to AAL, CCORR, COLOR, DITHER, GAMMA, MUTEX,
+> > OVL, POSTMASK and RDMA.
+> > 
+> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/display/mediatek/mediatek,aal.yaml | 7
+> > +++++++
+> >  .../bindings/display/mediatek/mediatek,ccorr.yaml          | 5
+> > +++++
+> >  .../bindings/display/mediatek/mediatek,color.yaml          | 1 +
+> >  .../bindings/display/mediatek/mediatek,dither.yaml         | 1 +
+> >  .../bindings/display/mediatek/mediatek,gamma.yaml          | 1 +
+> >  .../bindings/display/mediatek/mediatek,mutex.yaml          | 2 ++
+> >  .../bindings/display/mediatek/mediatek,ovl-2l.yaml         | 5
+> > +++++
+> >  .../devicetree/bindings/display/mediatek/mediatek,ovl.yaml | 5
+> > +++++
+> >  .../bindings/display/mediatek/mediatek,postmask.yaml       | 5
+> > +++++
+> >  .../bindings/display/mediatek/mediatek,rdma.yaml           | 1 +
+> >  10 files changed, 33 insertions(+)
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.y
+> > aml
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.y
+> > aml
+> > index 225f9dd726d2..3a5416937293 100644
+> > ---
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.y
+> > aml
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.y
+> > aml
+> > @@ -23,6 +23,8 @@ properties:
+> >      oneOf:
+> >        - items:
+> >            - const: mediatek,mt8173-disp-aal
+> > +      - items:
+> > +          - const: mediatek,mt8183-disp-aal
 > 
->         typeof (pos) pos
+> This patch is for 8186...
+
+I will split it to another commit in next version.
+
 > 
-> trick inside the macro really ends up giving us the best of all worlds:
+> >        - items:
+> >            - enum:
+> >                - mediatek,mt2712-disp-aal
+> > @@ -31,6 +33,11 @@ properties:
+> >                - mediatek,mt8195-disp-aal
+> >            - enum:
+> >                - mediatek,mt8173-disp-aal
+> > +      - items:
+> > +          - enum:
+> > +              - mediatek,mt8186-disp-aal
+> > +          - enum:
+> > +              - mediatek,mt8183-disp-aal
 > 
->  (a) let's us keep the existing syntax and code for all the nice cases
-> that did everything inside the loop anyway
+> There won't be more than 1 fallback, so use const rather than enum.
 > 
->  (b) gives us a nice warning for any normal use-after-loop case
-> (unless you explicitly initialized it like that
-> sgx_mmu_notifier_release() function did for no good reason
+
+I will modify it in next version.
+
+> >  
+> >    reg:
+> >      maxItems: 1
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr
+> > .yaml
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr
+> > .yaml
+> > index 6894b6999412..8ac87b5896ac 100644
+> > ---
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr
+> > .yaml
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr
+> > .yaml
+> > @@ -30,6 +30,11 @@ properties:
+> >                - mediatek,mt8195-disp-ccorr
+> >            - enum:
+> >                - mediatek,mt8192-disp-ccorr
+> > +      - items:
+> > +          - enum:
+> > +              - mediatek,mt8186-disp-ccorr
+> > +          - enum:
+> > +              - mediatek,mt8183-disp-ccorr
 > 
->  (c) also guarantees that even if you don't get a warning,
-> non-converted (or newly written) bad code won't actually _work_
+> Same here.
+
+I will modify it in next version.
+
 > 
-> so you end up getting the new rules without any ambiguity or mistaken
+> >  
+> >    reg:
+> >      maxItems: 1
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,color
+> > .yaml
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,color
+> > .yaml
+> > index bc83155b3b4c..d0a4b9eb71fd 100644
+> > ---
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,color
+> > .yaml
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,color
+> > .yaml
+> > @@ -37,6 +37,7 @@ properties:
+> >        - items:
+> >            - enum:
+> >                - mediatek,mt8183-disp-color
+> > +              - mediatek,mt8186-disp-color
+> >                - mediatek,mt8192-disp-color
+> >                - mediatek,mt8195-disp-color
+> >            - enum:
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,dithe
+> > r.yaml
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,dithe
+> > r.yaml
+> > index 9d89297f5f1d..9a08514ed909 100644
+> > ---
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,dithe
+> > r.yaml
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,dithe
+> > r.yaml
+> > @@ -26,6 +26,7 @@ properties:
+> >            - const: mediatek,mt8183-disp-dither
+> >        - items:
+> >            - enum:
+> > +              - mediatek,mt8186-disp-dither
+> >                - mediatek,mt8192-disp-dither
+> >                - mediatek,mt8195-disp-dither
+> >            - enum:
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma
+> > .yaml
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma
+> > .yaml
+> > index 247baad147b3..6d96f6736d91 100644
+> > ---
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma
+> > .yaml
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma
+> > .yaml
+> > @@ -27,6 +27,7 @@ properties:
+> >            - const: mediatek,mt8183-disp-gamma
+> >        - items:
+> >            - enum:
+> > +              - mediatek,mt8186-disp-gamma
+> >                - mediatek,mt8192-disp-gamma
+> >                - mediatek,mt8195-disp-gamma
+> >            - enum:
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex
+> > .yaml
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex
+> > .yaml
+> > index 6eca525eced0..55391b5c08c4 100644
+> > ---
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex
+> > .yaml
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex
+> > .yaml
+> > @@ -34,6 +34,8 @@ properties:
+> >            - const: mediatek,mt8173-disp-mutex
+> >        - items:
+> >            - const: mediatek,mt8183-disp-mutex
+> > +      - items:
+> > +          - const: mediatek,mt8186-disp-mutex
+> >        - items:
+> >            - const: mediatek,mt8192-disp-mutex
+> 
+> All these single entry cases can be a single enum.
+> 
 
-I presume the goal is that we can do this without changing existing
-code? Otherwise actually moving the iterator into the loop body would
-be an option, by creating a different hidden variable:
+I will modify it in next version.
 
-#define list_iter(head)						\
-	for (struct list head *_l = (head)->next; _l != (head); _l = _l->next)
+> >        - items:
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-
+> > 2l.yaml
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-
+> > 2l.yaml
+> > index 611a2dbdefa4..f7f89485a5ae 100644
+> > ---
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-
+> > 2l.yaml
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-
+> > 2l.yaml
+> > @@ -25,6 +25,11 @@ properties:
+> >            - const: mediatek,mt8183-disp-ovl-2l
+> >        - items:
+> >            - const: mediatek,mt8192-disp-ovl-2l
+> > +      - items:
+> > +          - enum:
+> > +              - mediatek,mt8186-disp-ovl-2l
+> > +          - enum:
+> > +              - mediatek,mt8192-disp-ovl-2l
+> >  
+> >    reg:
+> >      maxItems: 1
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.y
+> > aml
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.y
+> > aml
+> > index e71f79bc2dee..110e6b2747bc 100644
+> > ---
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.y
+> > aml
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.y
+> > aml
+> > @@ -40,6 +40,11 @@ properties:
+> >                - mediatek,mt8195-disp-ovl
+> >            - enum:
+> >                - mediatek,mt8183-disp-ovl
+> > +      - items:
+> > +          - enum:
+> > +              - mediatek,mt8186-disp-ovl
+> > +          - enum:
+> > +              - mediatek,mt8192-disp-ovl
+> >  
+> >    reg:
+> >      maxItems: 1
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,postm
+> > ask.yaml
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,postm
+> > ask.yaml
+> > index 6ac1da2e8871..22c333d09465 100644
+> > ---
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,postm
+> > ask.yaml
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,postm
+> > ask.yaml
+> > @@ -23,6 +23,11 @@ properties:
+> >      oneOf:
+> >        - items:
+> >            - const: mediatek,mt8192-disp-postmask
+> > +      - items:
+> > +          - enum:
+> > +              - mediatek,mt8186-disp-postmask
+> > +          - enum:
+> > +              - mediatek,mt8192-disp-postmask
+> >  
+> >    reg:
+> >      maxItems: 1
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.
+> > yaml
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.
+> > yaml
+> > index 8ef821641672..4f1c935cdf70 100644
+> > ---
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.
+> > yaml
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.
+> > yaml
+> > @@ -39,6 +39,7 @@ properties:
+> >                - mediatek,mt2701-disp-rdma
+> >        - items:
+> >            - enum:
+> > +              - mediatek,mt8186-disp-rdma
+> >                - mediatek,mt8192-disp-rdma
+> >            - enum:
+> >                - mediatek,mt8183-disp-rdma
+> > -- 
+> > 2.18.0
+> > 
+> > 
 
-#define list_iter_entry(var, member)		\
-	list_entry(_l, typeof(*var), member)
+BRs,
+Rex
 
-
-	list_iter(&p->a_head) {
-		struct entry *e = list_iter_entry(e, a_member);
-
-		/* use e->... */
-	}
-
-
-Or we can slide into soft insanity and exploit one of Kees'es tricks
-to encode the type of the entries "next to" the head:
-
-#define LIST_HEAD_MEM(name, type)			\
-	union {						\
-		struct list_head name;			\
-		type *name ## _entry;			\
-	}
-
-struct entry {
-	struct list_head a_member;
-};
-
-struct parent {
-	LIST_HEAD_MEM(a_head, struct entry);
-};
-
-#define list_for_each_magic(pos, head, member)				\
-	for (typeof(**(head ## _entry)) *pos = list_first_entry(head, typeof(**(head ## _entry)), member); \
-	     &pos->member != (head);					\
-	     pos = list_next_entry(pos, member))
-
-
-	list_for_each_magic(e, &p->a_head, a_member) {
-		/* use e->... */
-	}
-
-
-I'll show myself out...
 
 _______________________________________________
 Linux-mediatek mailing list
