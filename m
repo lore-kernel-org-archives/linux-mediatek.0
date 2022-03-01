@@ -4,101 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85FB7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 19:01:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FFD5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Mar 2022 19:02:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nk7FBu5mqtJovDlH2qaqrnNZlzbFu2QQ1ircqR5lyFs=; b=bu+90L22ZC+DsT
-	jKIcB+juCPms9S6vqTCzIv+xmMS11V2FwDn/paV9qeZwc8X0pEY7rdVORjLO4AsZbg7ldQdUbhVpv
-	csCeMp8jzr+2IwK+Umv+czMtvTMwUAitfzfXszSweUixTJdF7uAcLGai4xaiX8+TLgSnG4k4hnjVt
-	5IXjvAMH2eE6F3WxBImkDv+BMWKCgbb64cqu1nYFFbiVI992HzV5limKSjHNLSKXhqDLdo7JePXwD
-	5UBBXEx9mzJKO+JFhqspCsNgqwovxdDtzozE2GR67pC1t/W7oB2nfn39Lc4qC98v9j+E+edWHdT3P
-	v1Xu0YdD+i5F6H7/42SA==;
+	List-Owner; bh=fZLe+9ALN8Nv0FxF1c3MpURPtRzhfc3wHyaxVkpFMyc=; b=Qqm+narhYurfe1
+	3QTIDyErEM7j1ttRpIHH21UwwaCq0SeJYXAYrr9PpyMrZYKFj0B9NByJfGd8RMuuDj6tXcHdRltHB
+	0Bnf4l2UDSc+7n50VWDveyibaxLP0gmmvPtWDBvgvn3/CqqEW46C0NLCci/yWhzkK7I5by8QECK09
+	cBz2dUSBMDOo8QvNJn69KKNWIvuvqKiXr24XT+XKp/DIpO1wimHW3N78os1NN9Fjnhmudgu7VQxlm
+	ENH0X+vhkUWHLelyO+6kvf++K//c2rYcs2N4vYDmGB3mzC+B1/U7jw0NIuXm5pC15Rr0dmPHAfvaQ
+	Zk8h5twc/HPYiQiaE68w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nP7kQ-000Ecw-Jy; Tue, 01 Mar 2022 19:01:22 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1nP7lc-000F3V-NQ; Tue, 01 Mar 2022 19:02:36 +0000
+Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nP7kO-000Ec6-GZ; Tue, 01 Mar 2022 19:01:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=/tBazeosVX7n1CPUUwf6PzIu6vjJVnHyHOkfjsv2zKo=; b=G2U9nPc+cKcx95Z9ga5OZXchNz
- blxZ0iNm1M+uKQvG5JCjwfBWD2Vqk/JNrOrkTtzRMLvR552E7A4wIdnYTrEx28aAxcIhZIBDk2OhJ
- 2mC2hcK77WGdKfwnLWC9xIRW2naQmlD6pg6blozExF50oYyrluLyuDKCR05dvj4lJCUJucJUHaufH
- 36UHt4On3fRFJ0YJCkBdWklX7NM/KDi/YeSecU8YxtgD7/WN7ClqH8GnFhU3JjJVUQnhYo8rNzSqS
- E0UBK85SGI9bRQfxw/IXmOle17eRFr0eUMCl1eNz3aBOX0q+MyaB3hvtdfAdZV9rP6eZ0vdNCYptA
- LfRWRgDg==;
-Received: from willy by casper.infradead.org with local (Exim 4.94.2 #2 (Red
- Hat Linux)) id 1nP7kD-009r7Z-Q4; Tue, 01 Mar 2022 19:01:09 +0000
-Date: Tue, 1 Mar 2022 19:01:09 +0000
-From: Matthew Wilcox <willy@infradead.org>
-To: Kees Cook <keescook@chromium.org>
-Cc: Linus Torvalds <torvalds@linux-foundation.org>,
- Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
- Jakob Koschel <jakobkoschel@gmail.com>, alsa-devel@alsa-project.org,
- linux-aspeed@lists.ozlabs.org,
- "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
- linux-iio@vger.kernel.org, nouveau@lists.freedesktop.org,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Cristiano Giuffrida <c.giuffrida@vu.nl>,
- amd-gfx list <amd-gfx@lists.freedesktop.org>,
- samba-technical@lists.samba.org,
- linux1394-devel@lists.sourceforge.net, drbd-dev@lists.linbit.com,
- linux-arch <linux-arch@vger.kernel.org>,
- CIFS <linux-cifs@vger.kernel.org>, KVM list <kvm@vger.kernel.org>,
- linux-scsi <linux-scsi@vger.kernel.org>,
- linux-rdma <linux-rdma@vger.kernel.org>,
- linux-staging@lists.linux.dev, "Bos, H.J." <h.j.bos@vu.nl>,
- Jason Gunthorpe <jgg@ziepe.ca>, intel-wired-lan@lists.osuosl.org,
- kgdb-bugreport@lists.sourceforge.net,
- bcm-kernel-feedback-list@broadcom.com,
- Dan Carpenter <dan.carpenter@oracle.com>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- Arnd Bergman <arnd@arndb.de>, Linux PM <linux-pm@vger.kernel.org>,
- intel-gfx <intel-gfx@lists.freedesktop.org>,
- Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
- Nathan Chancellor <nathan@kernel.org>,
- linux-fsdevel <linux-fsdevel@vger.kernel.org>,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- v9fs-developer@lists.sourceforge.net,
- linux-tegra <linux-tegra@vger.kernel.org>,
- Thomas Gleixner <tglx@linutronix.de>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-sgx@vger.kernel.org, linux-block <linux-block@vger.kernel.org>,
- Netdev <netdev@vger.kernel.org>, linux-usb@vger.kernel.org,
- linux-wireless <linux-wireless@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Linux F2FS Dev Mailing List <linux-f2fs-devel@lists.sourceforge.net>,
- tipc-discussion@lists.sourceforge.net,
- Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
- dma <dmaengine@vger.kernel.org>, linux-mediatek@lists.infradead.org,
- Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
- Mike Rapoport <rppt@kernel.org>
-Subject: Re: [PATCH 2/6] treewide: remove using list iterator after loop body
- as a ptr
-Message-ID: <Yh5tdcNNHw/z7VRZ@casper.infradead.org>
-References: <20220228110822.491923-3-jakobkoschel@gmail.com>
- <2e4e95d6-f6c9-a188-e1cd-b1eae465562a@amd.com>
- <CAHk-=wgQps58DPEOe4y5cTh5oE9EdNTWRLXzgMiETc+mFX7jzw@mail.gmail.com>
- <CAHk-=wj8fkosQ7=bps5K+DDazBXk=ypfn49A0sEq+7-nZnyfXA@mail.gmail.com>
- <CAHk-=wiTCvLQkHcJ3y0hpqH7FEk9D28LDvZZogC6OVLk7naBww@mail.gmail.com>
- <Yh0tl3Lni4weIMkl@casper.infradead.org>
- <CAHk-=wgBfJ1-cPA2LTvFyyy8owpfmtCuyiZi4+um8DhFNe+CyA@mail.gmail.com>
- <Yh1aMm3hFe/j9ZbI@casper.infradead.org>
- <CAHk-=wi0gSUMBr2SVF01Gy1xC1w1iGtJT5ztju9BPWYKjdh+NA@mail.gmail.com>
- <202203011008.AA0B5A2D@keescook>
+ id 1nP7lQ-000Ezs-Vh
+ for linux-mediatek@lists.infradead.org; Tue, 01 Mar 2022 19:02:26 +0000
+Received: by mail-qk1-x731.google.com with SMTP id d84so13684524qke.8
+ for <linux-mediatek@lists.infradead.org>; Tue, 01 Mar 2022 11:02:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ndufresne-ca.20210112.gappssmtp.com; s=20210112;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=GsGl1dGldgnpdLEXcvxrxYAF/SUgWFg5pNG0AUKw04w=;
+ b=v5QG28VLIZmA6C+9VU64CfSfh9FZ13n2yEH89RDA/5CBUpVZQ6ZijmlreX4/EXQMrP
+ dFKg1MxqW13FfKMGIq81pTFUPEEQNIv92eat+lBY0ISh7pgFQd8V9lQrQt7Vp6SwVr0F
+ P3YdCNICRmkCtBsdq2cantzryx93X8fr91clLV8S81Xs4f1eyVL1TV+Ide4FznDwmJTO
+ 3iXMvrZtgPOZjcPX4qKd5C0Ju4QlRA62+nmhwW0FlYQNeMzy4PYj5oS3SPKCzAW7Tsf0
+ 5hGvQU6x5Fd+AEaDjpN5WIb3SmB9S4DAFdcJuxbm2mmAlmRPbqRm/0e41O2jbrBmyz93
+ As0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=GsGl1dGldgnpdLEXcvxrxYAF/SUgWFg5pNG0AUKw04w=;
+ b=F3fHxwprazd9QewklyGk4iVqytIHj4ISLMadsPvGlaTaP50vSpNs2yb024mcanEKgz
+ vQiWEPOGHhYa6vTavB7+fQJ7FP/GwtXJXTQqyJAT+R2UO1008K+nBwZWZkJaU5dfM5OO
+ PGG5FZxfd3IjSgPHPvVzZn2EM3d7ZTTskZCgAGVx/tSuqeq7MbX+pK/4ptTHuTfZYLNz
+ m6yrlghCR9dpwfzFOyCYelybaDMli800DADCuC00s1wflXq/hvtIN7JAEOJ31WDlXlLw
+ KvyoqgJubYI5f462zN776IBTqLbHNy69zMDpP2u85sO8BjsfDqiC4k+GAlbXZUo5OG9g
+ 7jyg==
+X-Gm-Message-State: AOAM530OzdvGgFqVCxR9fpS+WmJI6lZWjiO88qnSQmuJLJYFPuXBhHQl
+ ZrXz3VjCfK9OO9Pths0MO5i13g==
+X-Google-Smtp-Source: ABdhPJzpmA5uFIaU8OToNP2i0XOhvtLd6r7cnQbc8qnuHs7rV4wShM354MApuOXKlSpD/7rOLJGNhg==
+X-Received: by 2002:a05:620a:22a6:b0:662:e97d:c7bc with SMTP id
+ p6-20020a05620a22a600b00662e97dc7bcmr6914032qkh.486.1646161343508; 
+ Tue, 01 Mar 2022 11:02:23 -0800 (PST)
+Received: from nicolas-tpx395.localdomain (173-246-12-168.qc.cable.ebox.net.
+ [173.246.12.168]) by smtp.gmail.com with ESMTPSA id
+ i128-20020a378686000000b00648ddd8a5c0sm6790641qkd.100.2022.03.01.11.02.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 01 Mar 2022 11:02:22 -0800 (PST)
+Message-ID: <90c57ac742bad5cd75ae76e01e6042739b4e8012.camel@ndufresne.ca>
+Subject: Re: [PATCH v7, 09/15] media: mtk-vcodec: disable vp8 4K capability
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi
+ Shih <tzungbi@chromium.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>, 
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+Cc: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
+ <xiaoyong.lu@mediatek.com>,  Hsin-Yi Wang <hsinyi@chromium.org>, Fritz
+ Koenig <frkoenig@chromium.org>, Dafna Hirschfeld
+ <dafna.hirschfeld@collabora.com>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel <dri-devel@lists.freedesktop.org>, Irui Wang
+ <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Date: Tue, 01 Mar 2022 14:02:21 -0500
+In-Reply-To: <20220223034008.15781-10-yunfei.dong@mediatek.com>
+References: <20220223034008.15781-1-yunfei.dong@mediatek.com>
+ <20220223034008.15781-10-yunfei.dong@mediatek.com>
+User-Agent: Evolution 3.42.3 (3.42.3-1.fc35) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <202203011008.AA0B5A2D@keescook>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20220301_110225_027554_EFE2CA0F 
+X-CRM114-Status: GOOD (  15.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,272 +101,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 01, 2022 at 10:14:07AM -0800, Kees Cook wrote:
-> On Mon, Feb 28, 2022 at 04:45:11PM -0800, Linus Torvalds wrote:
-> > Really. The "-Wshadow doesn't work on the kernel" is not some new
-> > issue, because you have to do completely insane things to the source
-> > code to enable it.
-> 
-> The first big glitch with -Wshadow was with shadowed global variables.
-> GCC 4.8 fixed that, but it still yells about shadowed functions. What
-> _almost_ works is -Wshadow=local. At first glace, all the warnings
-> look solvable, but then one will eventually discover __wait_event()
-> and associated macros that mix when and how deeply it intentionally
-> shadows variables. :)
-
-Well, that's just disgusting.  Macros fundamentally shouldn't be
-referring to things that aren't in their arguments.  The first step to
-cleaning this up is ...
-
-I'll take a look at the rest of cleaning this up soon.
-
-From 28ffe35d56223d4242b915832299e5acc926737e Mon Sep 17 00:00:00 2001
-From: "Matthew Wilcox (Oracle)" <willy@infradead.org>
-Date: Tue, 1 Mar 2022 13:47:07 -0500
-Subject: [PATCH] wait: Parameterize the return variable to ___wait_event()
-
-Macros should not refer to variables which aren't in their arguments.
-Pass the name from its callers.
-
-Signed-off-by: Matthew Wilcox (Oracle) <willy@infradead.org>
----
- include/linux/swait.h    | 12 ++++++------
- include/linux/wait.h     | 32 ++++++++++++++++----------------
- include/linux/wait_bit.h |  4 ++--
- 3 files changed, 24 insertions(+), 24 deletions(-)
-
-diff --git a/include/linux/swait.h b/include/linux/swait.h
-index 6a8c22b8c2a5..5e8e9b13be2d 100644
---- a/include/linux/swait.h
-+++ b/include/linux/swait.h
-@@ -191,14 +191,14 @@ do {									\
- } while (0)
- 
- #define __swait_event_timeout(wq, condition, timeout)			\
--	___swait_event(wq, ___wait_cond_timeout(condition),		\
-+	___swait_event(wq, ___wait_cond_timeout(condition, __ret),	\
- 		      TASK_UNINTERRUPTIBLE, timeout,			\
- 		      __ret = schedule_timeout(__ret))
- 
- #define swait_event_timeout_exclusive(wq, condition, timeout)		\
- ({									\
- 	long __ret = timeout;						\
--	if (!___wait_cond_timeout(condition))				\
-+	if (!___wait_cond_timeout(condition, __ret))			\
- 		__ret = __swait_event_timeout(wq, condition, timeout);	\
- 	__ret;								\
- })
-@@ -216,14 +216,14 @@ do {									\
- })
- 
- #define __swait_event_interruptible_timeout(wq, condition, timeout)	\
--	___swait_event(wq, ___wait_cond_timeout(condition),		\
-+	___swait_event(wq, ___wait_cond_timeout(condition, __ret),	\
- 		      TASK_INTERRUPTIBLE, timeout,			\
- 		      __ret = schedule_timeout(__ret))
- 
- #define swait_event_interruptible_timeout_exclusive(wq, condition, timeout)\
- ({									\
- 	long __ret = timeout;						\
--	if (!___wait_cond_timeout(condition))				\
-+	if (!___wait_cond_timeout(condition, __ret))			\
- 		__ret = __swait_event_interruptible_timeout(wq,		\
- 						condition, timeout);	\
- 	__ret;								\
-@@ -252,7 +252,7 @@ do {									\
- } while (0)
- 
- #define __swait_event_idle_timeout(wq, condition, timeout)		\
--	___swait_event(wq, ___wait_cond_timeout(condition),		\
-+	___swait_event(wq, ___wait_cond_timeout(condition, __ret),	\
- 		       TASK_IDLE, timeout,				\
- 		       __ret = schedule_timeout(__ret))
- 
-@@ -278,7 +278,7 @@ do {									\
- #define swait_event_idle_timeout_exclusive(wq, condition, timeout)	\
- ({									\
- 	long __ret = timeout;						\
--	if (!___wait_cond_timeout(condition))				\
-+	if (!___wait_cond_timeout(condition, __ret))			\
- 		__ret = __swait_event_idle_timeout(wq,			\
- 						   condition, timeout);	\
- 	__ret;								\
-diff --git a/include/linux/wait.h b/include/linux/wait.h
-index 851e07da2583..890cce3c0f2e 100644
---- a/include/linux/wait.h
-+++ b/include/linux/wait.h
-@@ -271,7 +271,7 @@ static inline void wake_up_pollfree(struct wait_queue_head *wq_head)
- 		__wake_up_pollfree(wq_head);
- }
- 
--#define ___wait_cond_timeout(condition)						\
-+#define ___wait_cond_timeout(condition, __ret)					\
- ({										\
- 	bool __cond = (condition);						\
- 	if (__cond && !__ret)							\
-@@ -386,7 +386,7 @@ do {										\
- })
- 
- #define __wait_event_timeout(wq_head, condition, timeout)			\
--	___wait_event(wq_head, ___wait_cond_timeout(condition),			\
-+	___wait_event(wq_head, ___wait_cond_timeout(condition, __ret),		\
- 		      TASK_UNINTERRUPTIBLE, 0, timeout,				\
- 		      __ret = schedule_timeout(__ret))
- 
-@@ -413,13 +413,13 @@ do {										\
- ({										\
- 	long __ret = timeout;							\
- 	might_sleep();								\
--	if (!___wait_cond_timeout(condition))					\
-+	if (!___wait_cond_timeout(condition, __ret))				\
- 		__ret = __wait_event_timeout(wq_head, condition, timeout);	\
- 	__ret;									\
- })
- 
- #define __wait_event_freezable_timeout(wq_head, condition, timeout)		\
--	___wait_event(wq_head, ___wait_cond_timeout(condition),			\
-+	___wait_event(wq_head, ___wait_cond_timeout(condition, __ret),		\
- 		      TASK_INTERRUPTIBLE, 0, timeout,				\
- 		      __ret = freezable_schedule_timeout(__ret))
- 
-@@ -431,7 +431,7 @@ do {										\
- ({										\
- 	long __ret = timeout;							\
- 	might_sleep();								\
--	if (!___wait_cond_timeout(condition))					\
-+	if (!___wait_cond_timeout(condition, __ret))				\
- 		__ret = __wait_event_freezable_timeout(wq_head, condition, timeout); \
- 	__ret;									\
- })
-@@ -503,7 +503,7 @@ do {										\
- })
- 
- #define __wait_event_interruptible_timeout(wq_head, condition, timeout)		\
--	___wait_event(wq_head, ___wait_cond_timeout(condition),			\
-+	___wait_event(wq_head, ___wait_cond_timeout(condition, __ret),		\
- 		      TASK_INTERRUPTIBLE, 0, timeout,				\
- 		      __ret = schedule_timeout(__ret))
- 
-@@ -531,7 +531,7 @@ do {										\
- ({										\
- 	long __ret = timeout;							\
- 	might_sleep();								\
--	if (!___wait_cond_timeout(condition))					\
-+	if (!___wait_cond_timeout(condition, __ret))				\
- 		__ret = __wait_event_interruptible_timeout(wq_head,		\
- 						condition, timeout);		\
- 	__ret;									\
-@@ -698,7 +698,7 @@ do {										\
- } while (0)
- 
- #define __wait_event_idle_timeout(wq_head, condition, timeout)			\
--	___wait_event(wq_head, ___wait_cond_timeout(condition),			\
-+	___wait_event(wq_head, ___wait_cond_timeout(condition, __ret),		\
- 		      TASK_IDLE, 0, timeout,					\
- 		      __ret = schedule_timeout(__ret))
- 
-@@ -725,13 +725,13 @@ do {										\
- ({										\
- 	long __ret = timeout;							\
- 	might_sleep();								\
--	if (!___wait_cond_timeout(condition))					\
-+	if (!___wait_cond_timeout(condition, __ret))				\
- 		__ret = __wait_event_idle_timeout(wq_head, condition, timeout);	\
- 	__ret;									\
- })
- 
- #define __wait_event_idle_exclusive_timeout(wq_head, condition, timeout)	\
--	___wait_event(wq_head, ___wait_cond_timeout(condition),			\
-+	___wait_event(wq_head, ___wait_cond_timeout(condition, __ret),		\
- 		      TASK_IDLE, 1, timeout,					\
- 		      __ret = schedule_timeout(__ret))
- 
-@@ -762,7 +762,7 @@ do {										\
- ({										\
- 	long __ret = timeout;							\
- 	might_sleep();								\
--	if (!___wait_cond_timeout(condition))					\
-+	if (!___wait_cond_timeout(condition, __ret))				\
- 		__ret = __wait_event_idle_exclusive_timeout(wq_head, condition, timeout);\
- 	__ret;									\
- })
-@@ -932,7 +932,7 @@ extern int do_wait_intr_irq(wait_queue_head_t *, wait_queue_entry_t *);
- })
- 
- #define __wait_event_killable_timeout(wq_head, condition, timeout)		\
--	___wait_event(wq_head, ___wait_cond_timeout(condition),			\
-+	___wait_event(wq_head, ___wait_cond_timeout(condition, __ret),		\
- 		      TASK_KILLABLE, 0, timeout,				\
- 		      __ret = schedule_timeout(__ret))
- 
-@@ -962,7 +962,7 @@ extern int do_wait_intr_irq(wait_queue_head_t *, wait_queue_entry_t *);
- ({										\
- 	long __ret = timeout;							\
- 	might_sleep();								\
--	if (!___wait_cond_timeout(condition))					\
-+	if (!___wait_cond_timeout(condition, __ret))				\
- 		__ret = __wait_event_killable_timeout(wq_head,			\
- 						condition, timeout);		\
- 	__ret;									\
-@@ -1107,7 +1107,7 @@ do {										\
- })
- 
- #define __wait_event_lock_irq_timeout(wq_head, condition, lock, timeout, state)	\
--	___wait_event(wq_head, ___wait_cond_timeout(condition),			\
-+	___wait_event(wq_head, ___wait_cond_timeout(condition, __ret),		\
- 		      state, 0, timeout,					\
- 		      spin_unlock_irq(&lock);					\
- 		      __ret = schedule_timeout(__ret);				\
-@@ -1141,7 +1141,7 @@ do {										\
- 						  timeout)			\
- ({										\
- 	long __ret = timeout;							\
--	if (!___wait_cond_timeout(condition))					\
-+	if (!___wait_cond_timeout(condition, __ret))				\
- 		__ret = __wait_event_lock_irq_timeout(				\
- 					wq_head, condition, lock, timeout,	\
- 					TASK_INTERRUPTIBLE);			\
-@@ -1151,7 +1151,7 @@ do {										\
- #define wait_event_lock_irq_timeout(wq_head, condition, lock, timeout)		\
- ({										\
- 	long __ret = timeout;							\
--	if (!___wait_cond_timeout(condition))					\
-+	if (!___wait_cond_timeout(condition, __ret))				\
- 		__ret = __wait_event_lock_irq_timeout(				\
- 					wq_head, condition, lock, timeout,	\
- 					TASK_UNINTERRUPTIBLE);			\
-diff --git a/include/linux/wait_bit.h b/include/linux/wait_bit.h
-index 7dec36aecbd9..227e6a20a978 100644
---- a/include/linux/wait_bit.h
-+++ b/include/linux/wait_bit.h
-@@ -292,7 +292,7 @@ do {									\
- })
- 
- #define __wait_var_event_timeout(var, condition, timeout)		\
--	___wait_var_event(var, ___wait_cond_timeout(condition),		\
-+	___wait_var_event(var, ___wait_cond_timeout(condition, __ret),	\
- 			  TASK_UNINTERRUPTIBLE, 0, timeout,		\
- 			  __ret = schedule_timeout(__ret))
- 
-@@ -300,7 +300,7 @@ do {									\
- ({									\
- 	long __ret = timeout;						\
- 	might_sleep();							\
--	if (!___wait_cond_timeout(condition))				\
-+	if (!___wait_cond_timeout(condition, __ret))			\
- 		__ret = __wait_var_event_timeout(var, condition, timeout); \
- 	__ret;								\
- })
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+TGUgbWVyY3JlZGkgMjMgZsOpdnJpZXIgMjAyMiDDoCAxMTo0MCArMDgwMCwgWXVuZmVpIERvbmcg
+YSDDqWNyaXTCoDoKPiBGb3IgdnA4IG5vdCBzdXBwb3J0IDRLLCBuZWVkIHRvIGRpc2FibGUgaXQu
+CgpUaGlzIHBhdGNoIHdpbGwgbmVlZCB0byBiZSBjaGFuZ2VkIGFmdGVyIHlvdSBoYXZlIG1vdmVk
+IHRoaXMgY29kZSBpbnRvIHRoZQpwcm9wZXIgaW9jdGwuCgo+IAo+IFNpZ25lZC1vZmYtYnk6IFl1
+bmZlaSBEb25nIDx5dW5mZWkuZG9uZ0BtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvbWVk
+aWEvcGxhdGZvcm0vbXRrLXZjb2RlYy9tdGtfdmNvZGVjX2RlYy5jIHwgMyArKy0KPiAgMSBmaWxl
+IGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay12Y29kZWMvbXRrX3Zjb2RlY19kZWMuYyBiL2Ry
+aXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZjb2RlYy9tdGtfdmNvZGVjX2RlYy5jCj4gaW5kZXgg
+YmFlNDM5MzhlZTM3Li5iYTE4OGQxNmYwZmIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9tZWRpYS9w
+bGF0Zm9ybS9tdGstdmNvZGVjL210a192Y29kZWNfZGVjLmMKPiArKysgYi9kcml2ZXJzL21lZGlh
+L3BsYXRmb3JtL210ay12Y29kZWMvbXRrX3Zjb2RlY19kZWMuYwo+IEBAIC01MzIsNyArNTMyLDgg
+QEAgc3RhdGljIGludCB2aWRpb2NfZW51bV9mcmFtZXNpemVzKHN0cnVjdCBmaWxlICpmaWxlLCB2
+b2lkICpwcml2LAo+ICAJCWZzaXplLT50eXBlID0gVjRMMl9GUk1TSVpFX1RZUEVfU1RFUFdJU0U7
+Cj4gIAkJZnNpemUtPnN0ZXB3aXNlID0gZGVjX3BkYXRhLT52ZGVjX2ZyYW1lc2l6ZXNbaV0uc3Rl
+cHdpc2U7Cj4gIAkJaWYgKCEoY3R4LT5kZXYtPmRlY19jYXBhYmlsaXR5ICYKPiAtCQkJCVZDT0RF
+Q19DQVBBQklMSVRZXzRLX0RJU0FCTEVEKSkgewo+ICsJCQkJVkNPREVDX0NBUEFCSUxJVFlfNEtf
+RElTQUJMRUQpICYmCj4gKwkJCQlmc2l6ZS0+cGl4ZWxfZm9ybWF0ICE9IFY0TDJfUElYX0ZNVF9W
+UDhfRlJBTUUpIHsKPiAgCQkJbXRrX3Y0bDJfZGVidWcoMywgIjRLIGlzIGVuYWJsZWQiKTsKPiAg
+CQkJZnNpemUtPnN0ZXB3aXNlLm1heF93aWR0aCA9Cj4gIAkJCQkJVkNPREVDX0RFQ180S19DT0RF
+RF9XSURUSDsKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LW1lZGlhdGVrCg==
