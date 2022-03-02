@@ -4,64 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3A23C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Mar 2022 09:45:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFBE5C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Mar 2022 09:59:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UZLMwNBEfA30fiX6rk7yQPGyU9fePAmhyOxPlXUlNdQ=; b=Du8SNVD7VFZtsC
-	DZiVu6Rn8IMlfK40B17yVeKVFQTHv0WOMq257MbAxliruQ4SwXyc42gI18I59yAHAW/AO/DMVd+LI
-	g1LdPAG4HF26Y5pVEj+NjObzAaz4GZ513Gg2WQ5yL6uo+SypsMneS+Wlnbfe+rb6oOu/SVJ5ebDQo
-	wox6JyojSgQsNTYndO+aAPIbvic9LUrxmLyoLXcof4CvE4wjZcxElWPqn2Hs1H2VLx6WqSLW0cSHa
-	ZisKpQIAOVwy0fD29e+CHGjP8a7kbQP4c2oqkGH8+0347LDG2uYBVAkzZTmTGaEafVnrREOyfgDZc
-	6tx1kX5nUI5IukLMXfMA==;
+	List-Owner; bh=SSBEs58PH9valEjp0XqhDTgBcBPScx0EJ3bd2ezrGCk=; b=iQtTT46te497Mt
+	7aC7bWg/Hlufyh7hDrfp2ZVjBF2z3WPtGmNwASu6cXza9g7gNKU0PFggZZ1MQSgySaTL+21Qylyks
+	XpFo9lHYLstjJu0SDYSV/uDwjVEeN3MKc6Wb5g16yS/vR3g8gc82y/R3uFk3Ok5kpCNNNooDaBlqX
+	1Li/M2R/2w2a7POxGz4oDlFDg/5xPQMwZXfVDHaYT6KHWeEVrUHK/zEPFFh0VgPUYF0EnMERijxLV
+	akbqmnVXnhTjHiZCRmtk7GZhCNahLjTqgxVeXjajia1iuUJm5TjYr8HSFSiWjZWzKGCaQL24tKbK8
+	cws2h3J0mY6tNmevu0wA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPLXw-00263q-Mt; Wed, 02 Mar 2022 09:45:24 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nPLlr-002Br0-Jt; Wed, 02 Mar 2022 09:59:47 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPLXi-0025ye-ET; Wed, 02 Mar 2022 09:45:12 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 411D01F410A9
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1646214309;
- bh=zrznIpBFL8LiCItblwyMn7DORd4urUBkf/OPWsULH8s=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=RWxbwhcNszQIibXpghBJ1fzAbnZAgqcSmSelbPLSfSIwt7OXxk9yODmdAFrjXk2KL
- kS1JCVexs9zuid8LlT1s/WEbQcTI8mnKEsoV0VAqrDiSLn3eAIh6uNOzAw51UFJ1W1
- TNf/vIHnU7s9cp/BH6wBhd9F9nqApEE/EQc52d7svGIN5kOl8O8rRlPQkvMVfjFeLt
- tm8OM2E/F6H1/RGQUAGju+kIir9elWnhAmwVtAoIE84KAuGtvigKg1u6G2ihFZFbFy
- Jei4dABf+536KNiQ8ugLQs9gJcKZNUBnT39S9Kpr5LQwhIQA+u8C/GAgv38dmrO25S
- 7Bk2fbYCNuMiw==
-Message-ID: <dee15f20-0f7d-58c6-728b-3e14f84f0833@collabora.com>
-Date: Wed, 2 Mar 2022 10:45:06 +0100
+ id 1nPLld-002BkN-2Y; Wed, 02 Mar 2022 09:59:34 +0000
+Received: by mail-wm1-x331.google.com with SMTP id
+ r187-20020a1c2bc4000000b003810e6b192aso899578wmr.1; 
+ Wed, 02 Mar 2022 01:59:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=bqn15CLszH8tgeYVXPDyS9PDZ9V24xOYhyZEU0cziCU=;
+ b=KLHxpiGmD+04NGOjMBe6yOlM94zblYrTamClh0LbnsP5jkc9u1g7CSCSgFsvmQsdh9
+ rYhEy0QAYYPsKcAZ7JiaQQdkByAkQB0VnHFbVu7duCCpZx+xQTGbbb41PCB+Qbe+L96Q
+ mJOm7oIUiqlzWKo5888GlAF8x6ukCruimuRmcXP+nwrnW0wGR66rhDGF+IP5ahEZb7ld
+ sOFRaaG1AuvKKxQAqfNao0dLczLwP7CD8liF5JkQ1ebJv5bbTaAOR96bjX/5olk9wg0a
+ k/n1p68zpRtldT4j/gUStEy9kRxdlsy9SuUJ/827EHh5kgWAJuEroI9VsulyYBLvuJMP
+ Bb1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=bqn15CLszH8tgeYVXPDyS9PDZ9V24xOYhyZEU0cziCU=;
+ b=sv4OcJueBbdR41YH9BNvFZtHf9YZaHoudKD04MTuBie2STN49HPNWhWLEJxVzgm4/P
+ hUoZ/7PP+3s+W16rwxj8veKhwhJO/BsNvMsE5tQii0KxSlqV7PNBfSptk5AM+uM09Mni
+ 93PVqO/CJugHERWjVYaErv/yQiyP49B/WMr3QweP+Qkimo4e+BloGXfZ7vR/FKTxr/V0
+ orB2mWIK24j288cIQXLKN5k+XyRWFWx3DU3lJWz8tjwOiLtlQ9Q4Lj2sjsQaiukGp8cP
+ ay8AMSyaB0z1B6kdBxftGgcDGFfEQO1PTLhHpHumX0ztfZqecY8o3TnnPm3aqVq9HV4i
+ kaLA==
+X-Gm-Message-State: AOAM532Vt+KDmf/H8viTFoaI7cf/EpWdlFVMlYU5PaFHRZEltCkEsIwD
+ c+EEN3ukKNKHq3LBBcyMYPWeFePzIAyFzA==
+X-Google-Smtp-Source: ABdhPJw99nTjEa0dXu0eyoXNDI7VMBV+HKjmZwzeXg3DgKKLpyej0dWV7jQr5um9TpsLlKMVGOWV1g==
+X-Received: by 2002:a05:600c:a06:b0:37b:fdd8:4f8 with SMTP id
+ z6-20020a05600c0a0600b0037bfdd804f8mr20490626wmp.41.1646215170531; 
+ Wed, 02 Mar 2022 01:59:30 -0800 (PST)
+Received: from [192.168.0.14] (static-63-182-85-188.ipcom.comunitel.net.
+ [188.85.182.63]) by smtp.gmail.com with ESMTPSA id
+ z5-20020a05600c0a0500b0037fa93193a8sm6844599wmp.44.2022.03.02.01.59.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Mar 2022 01:59:30 -0800 (PST)
+Message-ID: <00c646de-053c-d84f-cb70-e33060264d40@gmail.com>
+Date: Wed, 2 Mar 2022 10:59:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [RESEND, V7,
- 3/6] media: mtk-jpegenc: manage jpegenc multi-hardware
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v2 1/2] arm: dts: mediatek: Format mediatek,larbs as an
+ array of phandles
 Content-Language: en-US
-To: "kyrie.wu" <kyrie.wu@mediatek.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tzung-Bi Shih <tzungbi@chromium.org>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>,
- xia.jiang@mediatek.com, maoguang.meng@mediatek.com,
- srv_heupstream@mediatek.com
-References: <1645693637-627-1-git-send-email-kyrie.wu@mediatek.com>
- <1645693637-627-4-git-send-email-kyrie.wu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <1645693637-627-4-git-send-email-kyrie.wu@mediatek.com>
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20220301203147.1143782-1-nfraprado@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220301203147.1143782-1-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_014510_792023_671B7B2E 
-X-CRM114-Status: GOOD (  32.68  )
+X-CRM114-CacheID: sfid-20220302_015933_149778_FD8782AA 
+X-CRM114-Status: GOOD (  19.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,294 +91,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/02/22 10:07, kyrie.wu ha scritto:
-> From: kyrie wu <kyrie.wu@mediatek.com>
-> 
-> manage each hardware information, including irq/clk/power.
-> the hardware includes HW0 and HW1.
-> 
-> Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
-> ---
->   drivers/media/platform/mtk-jpeg/Makefile      |  11 +-
->   .../media/platform/mtk-jpeg/mtk_jpeg_core.c   |  76 +++++---
->   .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  37 ++++
->   .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 168 ++++++++++++++++++
->   4 files changed, 267 insertions(+), 25 deletions(-)
-> 
-
-Hello Kyrie,
-
-despite my v6 review, where I also gave you solutions for an issue with
-more than one example, this v7 still didn't get one out of the many
-requested fixes.
-
-I'm sure that this was not intentional, so it's not a problem...
-
-In any case, this gave me the opportunity to see some more issues inside
-of this patch: let's get it perfect!
-
-
-...snip...
-
-> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> index 3e4811a41ba2..31e941ef84bd 100644
-> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> @@ -9,6 +9,7 @@
->   #ifndef _MTK_JPEG_CORE_H
->   #define _MTK_JPEG_CORE_H
->   
-> +#include <linux/clk.h>
->   #include <linux/interrupt.h>
->   #include <media/v4l2-ctrls.h>
->   #include <media/v4l2-device.h>
-> @@ -60,6 +61,7 @@ enum mtk_jpeg_ctx_state {
->    * @cap_q_default_fourcc:	capture queue default fourcc
->    */
->   struct mtk_jpeg_variant {
-> +	bool is_multihw;
-
-Thanks for this fix, this name makes it way clearer!
-
->   	struct clk_bulk_data *clks;
->   	int num_clks;
->   	struct mtk_jpeg_fmt *formats;
-> @@ -74,6 +76,38 @@ struct mtk_jpeg_variant {
->   	u32 cap_q_default_fourcc;
->   };
->   
-> +enum mtk_jpegenc_hw_id {
-> +	MTK_JPEGENC_HW0,
-> +	MTK_JPEGENC_HW1,
-> +	MTK_JPEGENC_HW_MAX,
-> +};
-> +
-> +/**
-> + * struct mtk_vcodec_clk - Structure used to store vcodec clock information
-> + */
-> +struct mtk_jpegenc_clk {
-> +	struct clk_bulk_data *clks;
-> +	int	clk_num;
-
-Why is clk_num tabbed?
-
-> +};
-> +
-> +/**
-> + * struct mtk_jpegenc_comp_dev - JPEG COREX abstraction
-> + * @dev:		        JPEG device
-> + * @plat_dev:		    platform device data
-> + * @reg_base:		    JPEG registers mapping
-> + * @master_dev:		    mtk_jpeg_dev device
-> + * @pm:	                mtk_jpegenc_pm
-> + * @jpegenc_irq:	    jpeg encode irq num
-
-You're using tabulations *and* spaces.... please use either, not both, as it's
-not necessary. Besides, this is also producing bad indentation.
-
-> + */
-> +struct mtk_jpegenc_comp_dev {
-> +	struct device		*dev;
-> +	struct platform_device *plat_dev;
-> +	void __iomem		*reg_base;
-> +	struct mtk_jpeg_dev *master_dev;
-> +	struct mtk_jpegenc_clk	venc_clk;
-> +	int jpegenc_irq;
-> +};
-> +
->   /**
->    * struct mtk_jpeg_dev - JPEG IP abstraction
->    * @lock:		the mutex protecting this structure
-> @@ -100,6 +134,9 @@ struct mtk_jpeg_dev {
->   	void __iomem		*reg_base;
->   	struct delayed_work job_timeout_work;
->   	const struct mtk_jpeg_variant *variant;
-> +
-> +	void __iomem *reg_encbase[MTK_JPEGENC_HW_MAX];
-> +	struct mtk_jpegenc_comp_dev *enc_hw_dev[MTK_JPEGENC_HW_MAX];
->   };
->   
->   /**
-> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-> index a2b6e1f85c2d..3d967bff1352 100644
-> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-> @@ -5,11 +5,27 @@
->    *
->    */
->   
-> +#include <linux/clk.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/irq.h>
->   #include <linux/io.h>
->   #include <linux/kernel.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/of_device.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/slab.h>
-> +#include <media/media-device.h>
->   #include <media/videobuf2-core.h>
->   #include <media/videobuf2-dma-contig.h>
-> +#include <media/videobuf2-v4l2.h>
-> +#include <media/v4l2-mem2mem.h>
-> +#include <media/v4l2-dev.h>
-> +#include <media/v4l2-device.h>
-> +#include <media/v4l2-fh.h>
-> +#include <media/v4l2-event.h>
->   
-> +#include "mtk_jpeg_core.h"
->   #include "mtk_jpeg_enc_hw.h"
->   
->   static const struct mtk_jpeg_enc_qlt mtk_jpeg_enc_quality[] = {
-> @@ -30,6 +46,21 @@ static const struct mtk_jpeg_enc_qlt mtk_jpeg_enc_quality[] = {
->   	{.quality_param = 97, .hardware_value = JPEG_ENC_QUALITY_Q97},
->   };
->   
-> +#if defined(CONFIG_OF)
-> +static const struct of_device_id mtk_jpegenc_drv_ids[] = {
-> +	{
-> +		.compatible = "mediatek,mt8195-jpgenc0",
-> +		.data = (void *)MTK_JPEGENC_HW0,
-> +	},
-> +	{
-> +		.compatible = "mediatek,mt8195-jpgenc1",
-> +		.data = (void *)MTK_JPEGENC_HW1,
-> +	},
-
-I've already pointed out an issue with this in your v6 series:
-
-https://patchwork.kernel.org/comment/24726607/
-
-Besides, I want to add up that the SoC distinction is already done in the
-parent node which, in MT8195's case, is named "mediatek,mt8195-jpgenc", so
-you really don't have to redo this distinction "from scratch" here in the
-sub-driver, as you can just get your information from the parent device/node.
-
-So, just "mediatek,jpgenc-hw" should be totally enough here.
-
-Please fix this for v8.
-
-
-> +	{},
-> +};
-> +MODULE_DEVICE_TABLE(of, mtk_jpegenc_drv_ids);
-> +#endif
-> +
->   void mtk_jpeg_enc_reset(void __iomem *base)
->   {
->   	writel(0, base + JPEG_ENC_RSTB);
-
-...snip...
-
-> +
-> +static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
-> +{
-> +	struct mtk_jpegenc_clk *jpegenc_clk;
-> +	struct mtk_jpeg_dev *master_dev;
-> +	struct mtk_jpegenc_comp_dev *dev;
-> +	int ret, comp_idx;
-> +
-> +	struct device *decs = &pdev->dev;
-> +
-> +	if (!decs->parent)
-> +		return -EPROBE_DEFER;
-> +
-> +	master_dev = dev_get_drvdata(decs->parent);
-> +	if (!master_dev)
-> +		return -EPROBE_DEFER;
-> +
-> +	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
-> +	if (!dev)
-> +		return -ENOMEM;
-> +
-> +	dev->plat_dev = pdev;
-> +
-> +	jpegenc_clk = &dev->venc_clk;
-> +
-> +	jpegenc_clk->clk_num = devm_clk_bulk_get_all(&pdev->dev,
-> +						     &jpegenc_clk->clks);
-
-Using dev_err_probe() looks more appropriate here:
-
-	if (jpegenc_clk->clk_num < 0)
-		return dev_err_probe(&pdev->dev, jpegenc_clk->clk_num,
-				     "Failed to get jpegenc clocks\n");
-
-
-> +	if (jpegenc_clk->clk_num < 0) {
-> +		dev_err(&pdev->dev, "Failed to get jpegenc clock count\n");
-> +		return jpegenc_clk->clk_num;
-> +	}
-> +
-> +	dev->reg_base =
-> +		devm_platform_ioremap_resource(pdev, 0);
-> +	if (IS_ERR(dev->reg_base)) {
-> +		ret = PTR_ERR(dev->reg_base);
-> +		goto err;
-
-There's no need for any goto here, as you're not reverting any operation.
-
-Hence, you can just:
-
-	if (IS_ERR(dev->reg_base))
-		return PTR_ERR(dev->reg_base);
-
-> +	}
-> +
-> +	ret = mtk_jpegenc_hw_init_irq(dev);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Failed to register JPEGENC irq handler.\n");
-
-You are already printing an error inside of mtk_jpegenc_hw_init_irq(), so printing
-another one here is redundant.
-Either remove the prints in the function or, more appropriately, remove this print.
-
-Also, same "goto" comment applies here, you can simply return ret.
-
-> +		goto err;
-> +	}
-> +
-> +	comp_idx = (enum mtk_jpegenc_hw_id)of_device_get_match_data(decs);
-> +	if (comp_idx < MTK_JPEGENC_HW_MAX) {
-
-`comp_idx` is a bit misleading, this is not using the component framework.
-
-....but this will probably be refactored after following the suggestion that
-I gave you in v6 and again now.
-
-> +		master_dev->enc_hw_dev[comp_idx] = dev;
-> +		master_dev->reg_encbase[comp_idx] = dev->reg_base;
-> +		dev->master_dev = master_dev;
-> +	} else {
-> +		dev_err(&pdev->dev, "Failed to get_match_data.\n");
-> +		goto err;
-> +	}
-> +
-> +	platform_set_drvdata(pdev, dev);
-> +	pm_runtime_enable(&pdev->dev);
-> +
-> +	return 0;
-> +
-> +err:
-
-This label serves no real purpose: please remove.
-
-> +	return ret;
-> +}
-> +
-
-
-
-Regards,
-Angelo
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+CgpPbiAwMS8wMy8yMDIyIDIxOjMxLCBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyB3cm90ZToKPiBD
+b21taXQgMzliZDJiNmEzNzgzICgiZHQtYmluZGluZ3M6IEltcHJvdmUgcGhhbmRsZS1hcnJheSBz
+Y2hlbWFzIikKPiB1cGRhdGVkIHRoZSBtZWRpYXRlayxsYXJicyBwcm9wZXJ0eSBpbiB0aGUgbWVk
+aWF0ZWssaW9tbXUueWFtbAo+IGR0LWJpbmRpbmcgdG8gbWFrZSBpdCBjbGVhcmVyIHRoYXQgdGhl
+IHBoYW5kbGVzIHBhc3NlZCB0byB0aGUgcHJvcGVydHkKPiBhcmUgaW5kZXBlbmRlbnQsIHJhdGhl
+ciB0aGFuIHN1YnNlcXVlbnQgYXJndW1lbnRzIHRvIHRoZSBmaXJzdCBwaGFuZGxlLgo+IAo+IFVw
+ZGF0ZSB0aGUgbWVkaWF0ZWssbGFyYnMgcHJvcGVydHkgaW4gdGhlIGFybSBEZXZpY2V0cmVlcyB0
+byB1c2UgdGhlCj4gc2FtZSBmb3JtYXR0aW5nLiBUaGlzIGNoYW5nZSBkb2Vzbid0IGltcGFjdCBh
+bnkgYmVoYXZpb3I6IHRoZSBjb21waWxlZAo+IGR0YiBpcyBleGFjdGx5IHRoZSBzYW1lLiBJdCBk
+b2VzIGhvd2V2ZXIgZml4IHRoZSB3YXJuaW5ncyBnZW5lcmF0ZWQgYnkKPiBkdGJzX2NoZWNrLgo+
+IAo+IFNpZ25lZC1vZmYtYnk6IE7DrWNvbGFzIEYuIFIuIEEuIFByYWRvIDxuZnJhcHJhZG9AY29s
+bGFib3JhLmNvbT4KPiAKCkFwcGxpZWQsIHRoYW5rcyEKCk1hdHRoaWFzCgo+IC0tLQo+IHYxOiBo
+dHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1tZWRpYXRlay8yMDIyMDIyNTIyNTMxNS44MDIy
+MC0xLW5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tLwo+IAo+IENoYW5nZXMgaW4gdjI6Cj4gLSBTcGxp
+dCBhcm0gYW5kIGFybTY0IGNoYW5nZXMgaW50byBzZXBhcmF0ZSBjb21taXRzCj4gCj4gICBhcmNo
+L2FybS9ib290L2R0cy9tdDI3MDEuZHRzaSAgfCAyICstCj4gICBhcmNoL2FybS9ib290L2R0cy9t
+dDc2MjNuLmR0c2kgfCAyICstCj4gICAyIGZpbGVzIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwg
+MiBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vYm9vdC9kdHMvbXQyNzAx
+LmR0c2kgYi9hcmNoL2FybS9ib290L2R0cy9tdDI3MDEuZHRzaQo+IGluZGV4IDQ3NzZmODVkNmQ1
+Yi4uNjQ3MjIyODUyMjhjIDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtL2Jvb3QvZHRzL210MjcwMS5k
+dHNpCj4gKysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvbXQyNzAxLmR0c2kKPiBAQCAtMjIyLDcgKzIy
+Miw3IEBAIGlvbW11OiBtbXN5c19pb21tdUAxMDIwNTAwMCB7Cj4gICAJCWludGVycnVwdHMgPSA8
+R0lDX1NQSSAxMDYgSVJRX1RZUEVfTEVWRUxfTE9XPjsKPiAgIAkJY2xvY2tzID0gPCZpbmZyYWNm
+ZyBDTEtfSU5GUkFfTTRVPjsKPiAgIAkJY2xvY2stbmFtZXMgPSAiYmNsayI7Cj4gLQkJbWVkaWF0
+ZWssbGFyYnMgPSA8JmxhcmIwICZsYXJiMSAmbGFyYjI+Owo+ICsJCW1lZGlhdGVrLGxhcmJzID0g
+PCZsYXJiMD4sIDwmbGFyYjE+LCA8JmxhcmIyPjsKPiAgIAkJI2lvbW11LWNlbGxzID0gPDE+Owo+
+ICAgCX07Cj4gICAKPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vYm9vdC9kdHMvbXQ3NjIzbi5kdHNp
+IGIvYXJjaC9hcm0vYm9vdC9kdHMvbXQ3NjIzbi5kdHNpCj4gaW5kZXggYmNiMDg0NmUyOWZkLi5m
+OWUwMzE2MjFjODAgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvbXQ3NjIzbi5kdHNp
+Cj4gKysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvbXQ3NjIzbi5kdHNpCj4gQEAgLTEwNyw3ICsxMDcs
+NyBAQCBpb21tdTogbW1zeXNfaW9tbXVAMTAyMDUwMDAgewo+ICAgCQlpbnRlcnJ1cHRzID0gPEdJ
+Q19TUEkgMTA2IElSUV9UWVBFX0xFVkVMX0xPVz47Cj4gICAJCWNsb2NrcyA9IDwmaW5mcmFjZmcg
+Q0xLX0lORlJBX000VT47Cj4gICAJCWNsb2NrLW5hbWVzID0gImJjbGsiOwo+IC0JCW1lZGlhdGVr
+LGxhcmJzID0gPCZsYXJiMCAmbGFyYjEgJmxhcmIyPjsKPiArCQltZWRpYXRlayxsYXJicyA9IDwm
+bGFyYjA+LCA8JmxhcmIxPiwgPCZsYXJiMj47Cj4gICAJCSNpb21tdS1jZWxscyA9IDwxPjsKPiAg
+IAl9Owo+ICAgCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LW1lZGlhdGVrCg==
