@@ -4,75 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69CB7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Mar 2022 01:23:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1F16C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Mar 2022 01:43:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DWwfWgOHC52NXqc7ka8cE8dq+XUBNrqekli5EaplpgA=; b=DcXkYQaefwqgk+
-	MaghlSb5M6LFSUFf1KgOZ00bci9jfMEcJtgcvb/rsNkS9YHNfAHc8szDjXhWZ9yWINms8yPySVKB1
-	n5C84QLHbXSqrmOf8bh4ocxD7mKhtZrWuYiIKBV6X95nY8o3W5p+ubPWEdqCctwN2mRK/OGk34/9g
-	2UmxO6HRRR1BGIJvBywXniHEJ030/b8Ejz+es9iqss1evfRobbLKcg9/BCSybhJYsGDxRG/xd+iyY
-	KrLKwoRWe7J00AVfGa7gPEY/Tggn3CmbKe5T5T82oO5oeB3cvcnHy0jjUMkJSIuR8FDPykORGiu/9
-	EbeByjLVQRV9YHwDGWGQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0iBxBgAB8kyDjgdnhQ98HtI+92O83LFLAdWxsrv3WX4=; b=IXzXcmmE7ieZuR
+	swcIm984cowxmb94iYLvFktzrnPm3bGuvtrRSVFeJMkM0+kn2bmZJFWULu087ViYRpUOZc/5F3uyp
+	Sty3KVp6FOEOv299ky8o666/AllY76bXUxfBFpEiIg92BU++0GsRD5Gvj4JVtswrcibH6hH2ZFWtk
+	d6tLnhS9N6hbSn4BMBJk2cSfSQ/m8lw0lB28Krc5/uwY2BDJ2PmpSV2AzqoCrZlRg3DBcyaNcFq9l
+	kt+hSpC5vy/sSQxr+62whhDJBExQeNBp6qzDLETqHH+Y75/3XZ1c3NTeLEFay7B5OdnmYVJnlQY/F
+	tYRzhzYB5r6h73XRkV7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPDi6-000yhF-LF; Wed, 02 Mar 2022 01:23:22 +0000
-Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
+	id 1nPE15-0010LM-2E; Wed, 02 Mar 2022 01:42:59 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPDhv-000ydu-57
- for linux-mediatek@lists.infradead.org; Wed, 02 Mar 2022 01:23:12 +0000
-Received: by mail-yw1-x112a.google.com with SMTP id
- 00721157ae682-2dbc48104beso1095687b3.5
- for <linux-mediatek@lists.infradead.org>; Tue, 01 Mar 2022 17:23:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ZafyWrCRm6FANBOmjYAs3BX8tOsbMPnovvLplgzFND4=;
- b=cK/CT4+cjNdaqB/bq6onYRvRuaBZiEQDxJZG3nZzbEWSoC22iV0dPOwDBcGV9HX56D
- ND6Dj+1FAVJ3cyJqxC6tzp37/UegCdsU6f3uc8/xmd7dASF2LgPnKUagTPDKHP/8NHNt
- 3BARM+d3uKUnKHohwayXHbVwzBTXlm1BpUQrQt3KRLGma2vsLHEwWwMc85X7sJMUZ7T1
- V94yzxg+1k1xKAlHHYEtYsLFkXDyZTJIaESXgLOgP0zOsJPOttKrGFC1hJafHCDD+vB1
- TbO/XqsMj+UevbYicLmvXG93/GnrSdajRVKMNZ2RI/vhaedDbO3UM1TeVmiVun/eh8fs
- RnUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ZafyWrCRm6FANBOmjYAs3BX8tOsbMPnovvLplgzFND4=;
- b=1sM+shLOW31yijcGM6f+XCII/Gl4vPaWIbKfNps+2nwbCn4UZLvavIX8SNx1kaPKmd
- aD1u/OoqKd2pWtP0VCIT9W+Gz0SqkEN4cObdpbOr/EqRLrYYGjeCccLrLwUPnkp2tbkB
- xSojLDwaPR26bUjGfO1lXgvQ901OACphZRyBTkPah9EZzfCUCPpdpWRYxaLIFIrrsmBf
- +cexAWY5ImOFK2bqlR2gYZx6IaIv8VmRol3kdVwvEV92XEtSUwCssUKoM2Etfj09s3Kh
- kLL5WybfQKb0hmaatpE/lST68RzylLIa0KTYqgR9lySfWGd88y8/Ct7uTYQrIc97Jzkf
- TA5g==
-X-Gm-Message-State: AOAM531oL5kuFmykcAT0bWoRMCKc5MFORlqyAr93cywediwPx62QcPnL
- UPBp2CE9ISCzRLA9SISN3lwo4sCmAJ8bgs7uubxORg==
-X-Google-Smtp-Source: ABdhPJwu8VhHKIziIJ82Xtt68TP37xWYiasNx7hKoh62sy8WoW2FuyExQ5/AfbTQOYpOaJf6aCN7/8GJjrix3c7mR9Q=
-X-Received: by 2002:a81:6a0a:0:b0:2d0:c144:4be4 with SMTP id
- f10-20020a816a0a000000b002d0c1444be4mr28608461ywc.332.1646184185795; Tue, 01
- Mar 2022 17:23:05 -0800 (PST)
+ id 1nPE10-0010Kj-T9; Wed, 02 Mar 2022 01:42:57 +0000
+X-UUID: cefe5ae528344caf862945ff62505922-20220301
+X-UUID: cefe5ae528344caf862945ff62505922-20220301
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <jiaxin.yu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2006482743; Tue, 01 Mar 2022 18:42:25 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 1 Mar 2022 17:35:49 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 2 Mar 2022 09:35:36 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 2 Mar 2022 09:35:35 +0800
+From: Jiaxin Yu <jiaxin.yu@mediatek.com>
+To: <broonie@kernel.org>
+CC: <perex@perex.cz>, <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>,
+ <tzungbi@google.com>, <alsa-devel@alsa-project.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
+ <jiaxin.yu@mediatek.com>
+Subject: [v2] ASoC: bt-sco: fix bt-sco-pcm-wb dai widget don't connect to the
+ endpoint
+Date: Wed, 2 Mar 2022 09:35:33 +0800
+Message-ID: <20220302013533.29068-1-jiaxin.yu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <1646133431-8948-1-git-send-email-lena.wang@mediatek.com>
-In-Reply-To: <1646133431-8948-1-git-send-email-lena.wang@mediatek.com>
-From: Eric Dumazet <edumazet@google.com>
-Date: Tue, 1 Mar 2022 17:22:54 -0800
-Message-ID: <CANn89iLZUWpFC-kAfEbNwh4GDKM+975e_VugmWWT2DNK5K2mAQ@mail.gmail.com>
-Subject: Re: [PATCH net v2] net: fix up skbs delta_truesize in UDP GRO
- frag_list
-To: lena wang <lena.wang@mediatek.com>
-Cc: Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, 
- Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Willem de Bruijn <willemb@google.com>, Daniel Borkmann <daniel@iogearbox.net>, 
- Dongseok Yi <dseok.yi@samsung.com>, wsd_upstream@mediatek.com, 
- netdev <netdev@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-mediatek@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_172311_220616_442D3AE0 
-X-CRM114-Status: GOOD (  12.99  )
+X-CRM114-CacheID: sfid-20220301_174254_961050_F85C7B9F 
+X-CRM114-Status: GOOD (  13.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,29 +73,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 1, 2022 at 3:23 AM lena wang <lena.wang@mediatek.com> wrote:
->
-> The truesize for a UDP GRO packet is added by main skb and skbs in main
-> skb's frag_list:
-> skb_gro_receive_list
->         p->truesize += skb->truesize;
->
->
->
-> Fixes: 53475c5dd856 ("net: fix use-after-free when UDP GRO with shared fraglist")
-> Signed-off-by: lena wang <lena.wang@mediatek.com>
-> Acked-by: Paolo Abeni <pabeni@redhat.com>
-> ---
-> change since v1:
-> 1) add the fix tag.
-> 2) add net subtree to the subject
-> ---
-> ---
->  net/core/skbuff.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
+This patch fix the second dai driver's dai widget can't connect to the
+endpoint. Because "bt-sco-pcm" and "bt-sco-pcm-wb" dai driver have the
+same stream_name, so it will cause they have the same widget name.
+Therefor it will just create only one route when do snd_soc_dapm_add_route
+that only find the widget through the widget name.
 
-Reviewed-by: Eric Dumazet <edumazet@google.com>
+Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+---
+
+Change from v1:
+   fix build error
+
+Hi maintainer,
+   Need your comments. The patch is the one that I think it makes the
+   most sense. Maybe we can define the new stream_name for
+   "bt-sco-pcm-wb" and add the new route.
+
+ sound/soc/codecs/bt-sco.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/sound/soc/codecs/bt-sco.c b/sound/soc/codecs/bt-sco.c
+index 4d286844e3c8..cf17b9741bd8 100644
+--- a/sound/soc/codecs/bt-sco.c
++++ b/sound/soc/codecs/bt-sco.c
+@@ -13,11 +13,15 @@
+ static const struct snd_soc_dapm_widget bt_sco_widgets[] = {
+ 	SND_SOC_DAPM_INPUT("RX"),
+ 	SND_SOC_DAPM_OUTPUT("TX"),
++	SND_SOC_DAPM_AIF_IN("BT_SCO_RX", "Playback", 0,
++			    SND_SOC_NOPM, 0, 0),
++	SND_SOC_DAPM_AIF_OUT("BT_SCO_TX", "Capture", 0,
++			     SND_SOC_NOPM, 0, 0),
+ };
+ 
+ static const struct snd_soc_dapm_route bt_sco_routes[] = {
+-	{ "Capture", NULL, "RX" },
+-	{ "TX", NULL, "Playback" },
++	{ "BT_SCO_TX", NULL, "RX" },
++	{ "TX", NULL, "BT_SCO_RX" },
+ };
+ 
+ static struct snd_soc_dai_driver bt_sco_dai[] = {
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
