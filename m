@@ -4,59 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 480DEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Mar 2022 09:08:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F17A2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Mar 2022 09:29:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L7MNvUjAmkZtDSoUmlDhIrcbZGtNBxlyaPeBv8GSImo=; b=rlmPn6sjyEX0rR
-	Cx5ADob0xv1oZf5HvNb3QDQ7rL/dporzdt5mZiLRUvSaybhd3S6xlMZNdX5poLinOs3x09ccmoHN3
-	c+lxeWTyOh6PyQ+qua35Z6CjAr05DVL+S2X5eGJyqrAlyx9FQ0tULfqSksjQ2V5U9pI2rkB4ehhJl
-	h4o7MVZAJ+4uUgOre2MwXAtMnKaRahRDrcH5Z/HM4VlcvyFdHdOW/zSpj8xb/I4Vf7RJ3P9rj9UFR
-	zziLJ2C8ze6ajOAiTwRBwr7Ye45BQP3nlfn8GNZtVzoUh6VsR9VWPfyiBMfD8SEcl+Mwi2bBoEzRF
-	qTSAFSQv+y5yVYyiwFtw==;
+	List-Owner; bh=h4jzyxz7HPtxQYCG/IXOIdObcFPjgyuzGEn/USHnbq0=; b=qgZcGAdMINWY1c
+	/etL1lqRNmyPX+f9HnoXapwXS4aQl4RsOo+edwOAhF6JFGsyeG7ok6A7p4Vx3pz+UbbIFrPX0aXjo
+	KroDh8wfSbg6wJpPMoKIfZlcZS9OIBO5qJzYItHKUwp3LzLnXC5KQhb5uZnFuneBLFSMyZCNsrWeI
+	EwrtldCljn19+Q+teKKOn+nLx0/5gL+jmS3fijiEi2urWs2/z4aU0j9iTtcU+lPrKRGtfg/+lbRNT
+	RkM/NEPlrYX/bwIHdWZOGwuJ4vZzkLyIzZOvjUJz9LKAAvyL4IsqBS7JiLaorHA8DjSdTLms/5uQH
+	P+yeBNPio/q2W5Pzg0bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPKxi-001zJj-P6; Wed, 02 Mar 2022 09:07:58 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nPLIi-0023RV-CO; Wed, 02 Mar 2022 09:29:40 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPKxX-001zGN-5O; Wed, 02 Mar 2022 09:07:49 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 9E1911F44B8D
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1646212063;
- bh=Ztnm82SiYGhB+IIBhUFDj5KSeiwqthDaJ6+SaFW7jDc=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=KUqKDdi13sQCl89F9qY+zjLPxgs5aT4gvYm7hQTXhX6TFcjaXTQIejpmoLInjKlKA
- 1lze8Z9sdtK/kXRrpL4WgcxMkKmQ6jh06gyczXHxKFlD7nci9SKb2zUs8vUNvu0TlX
- pjOank8TIJwP8xfwXQcpWdKYWulNOfHAVel6b+EnHQiYhkmjvgxO+dNN2YrYSxRF29
- 1Zfnp4baunep0BjAasY4ZGsC4KivL339GlTHSRq/UX97qfW3/oYGX/Qi7b1WDUmPhk
- DnD9adkT3EOWlj0VrhKOe1/gBzEiWV3G/SIRWkEeh7gGOQ7bOXT6lphhTRCv/KnsqK
- /29lgW0vzuN0A==
-Message-ID: <6db20053-71dc-d0e3-aac9-de5da1d7ba9e@collabora.com>
-Date: Wed, 2 Mar 2022 10:07:40 +0100
+ id 1nPLIf-0023Pp-EB
+ for linux-mediatek@lists.infradead.org; Wed, 02 Mar 2022 09:29:39 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id 29so1346038ljv.10
+ for <linux-mediatek@lists.infradead.org>; Wed, 02 Mar 2022 01:29:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=rasmusvillemoes.dk; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=XH8CYV/Z50iBLZ27uSo3DlVY0KhJ8ZO+RiecWTcYel0=;
+ b=IQg4uBejV+wOE9gbvRPz3nvi4LkiiVw4YSIjC8NPteocLXX0uLpiZyGXJ60leACu72
+ E2mMgbaj2BDeYnhoOw0DKPRcT2bjIlB4yRTWQZ65OcYRTHhlWzgeq8LyFprIEpiij6N8
+ YNaymndxJaFKphqyYHlKdyPolm4uaJOX+WJuI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=XH8CYV/Z50iBLZ27uSo3DlVY0KhJ8ZO+RiecWTcYel0=;
+ b=N4pry7erG4o+rXrmMLO3eU47mCQE+hf3tC62ubn+CqrqKvqJ6mFVoXK3qXcNlsE5ez
+ Awd8yxYwPTd6jTneos3uSqjrYYo0RvmiEscMLHI6uv+PqQtvFlbo8lihr5R/p70pKSEm
+ jCo/9yksUT+/nPINZ3fscPwSQ3Fnr6CqzcKyGvgkI94DRDb2sR0HbGa+f/qDgiMoTdYC
+ UkpefiR3l7KFZLfiew+4WQiknpvfnjKgL3w0RcjkJ/8DgqEoWPKIgiV9wHYc2Ib4W0IK
+ 7494y+VYVfSE/8zLu4nnjsgQS8qk4lf87trW6qjt+1cMCTTBiHLmhVV9ovJfjGq5AC2c
+ FlZg==
+X-Gm-Message-State: AOAM532Q1EmTEVtkHTbo/KTxEVMnMHhAzau6KxIHktUBL+TUbrFINDq9
+ J0DULIDPVcyKq+RrqbEmfdly8Q==
+X-Google-Smtp-Source: ABdhPJxPRWTwhfDKGEWi/HTZUmtnN6xoKL1T2KNwEAF9KgB2sMMXSt6lke7BfBVtPRIEaNMyntkyzw==
+X-Received: by 2002:a2e:3c0d:0:b0:246:3c52:7ada with SMTP id
+ j13-20020a2e3c0d000000b002463c527adamr19885072lja.459.1646213374808; 
+ Wed, 02 Mar 2022 01:29:34 -0800 (PST)
+Received: from [172.16.11.74] ([81.216.59.226])
+ by smtp.gmail.com with ESMTPSA id
+ f36-20020a0565123b2400b0043795432e87sm1960430lfv.150.2022.03.02.01.29.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Mar 2022 01:29:33 -0800 (PST)
+Message-ID: <78ccb184-405e-da93-1e02-078f90d2b9bc@rasmusvillemoes.dk>
+Date: Wed, 2 Mar 2022 10:29:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v1,2/3] drm/mediatek: Add TOPCKGEN select mux control
- dpi_clk
+ Thunderbird/91.5.0
+Subject: Re: [PATCH 2/6] treewide: remove using list iterator after loop body
+ as a ptr
 Content-Language: en-US
-To: xinlei.lee@mediatek.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
- airlied@linux.ie, daniel@ffwll.ch, matthias.bgg@gmail.com
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, jitao.shi@mediatek.com,
- allen-kh.cheng@mediatek.com, rex-bc.chen@mediatek.com
-References: <1645782833-27875-1-git-send-email-xinlei.lee@mediatek.com>
- <1645782833-27875-3-git-send-email-xinlei.lee@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <1645782833-27875-3-git-send-email-xinlei.lee@mediatek.com>
+To: Linus Torvalds <torvalds@linux-foundation.org>,
+ David Laight <David.Laight@aculab.com>
+Cc: James Bottomley <James.Bottomley@hansenpartnership.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
+ KVM list <kvm@vger.kernel.org>, "Gustavo A. R. Silva"
+ <gustavo@embeddedor.com>,
+ "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
+ "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Cristiano Giuffrida <c.giuffrida@vu.nl>, "Bos, H.J." <h.j.bos@vu.nl>,
+ "linux1394-devel@lists.sourceforge.net"
+ <linux1394-devel@lists.sourceforge.net>,
+ "drbd-dev@lists.linbit.com" <drbd-dev@lists.linbit.com>,
+ linux-arch <linux-arch@vger.kernel.org>, CIFS <linux-cifs@vger.kernel.org>,
+ "linux-aspeed@lists.ozlabs.org" <linux-aspeed@lists.ozlabs.org>,
+ linux-scsi <linux-scsi@vger.kernel.org>,
+ linux-rdma <linux-rdma@vger.kernel.org>,
+ "linux-staging@lists.linux.dev" <linux-staging@lists.linux.dev>,
+ amd-gfx list <amd-gfx@lists.freedesktop.org>, Jason Gunthorpe
+ <jgg@ziepe.ca>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "kgdb-bugreport@lists.sourceforge.net"
+ <kgdb-bugreport@lists.sourceforge.net>,
+ "bcm-kernel-feedback-list@broadcom.com"
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Kees Cook <keescook@chromium.org>, Arnd Bergman <arnd@arndb.de>,
+ Linux PM <linux-pm@vger.kernel.org>,
+ intel-gfx <intel-gfx@lists.freedesktop.org>,
+ Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
+ Nathan Chancellor <nathan@kernel.org>, dma <dmaengine@vger.kernel.org>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ Jakob Koschel <jakobkoschel@gmail.com>,
+ "v9fs-developer@lists.sourceforge.net"
+ <v9fs-developer@lists.sourceforge.net>,
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ "linux-sgx@vger.kernel.org" <linux-sgx@vger.kernel.org>,
+ linux-block <linux-block@vger.kernel.org>, Netdev <netdev@vger.kernel.org>,
+ "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+ "samba-technical@lists.samba.org" <samba-technical@lists.samba.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Linux F2FS Dev Mailing List <linux-f2fs-devel@lists.sourceforge.net>,
+ "tipc-discussion@lists.sourceforge.net"
+ <tipc-discussion@lists.sourceforge.net>,
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
+ linux-fsdevel <linux-fsdevel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
+ =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
+ Mike Rapoport <rppt@kernel.org>
+References: <20220228110822.491923-1-jakobkoschel@gmail.com>
+ <20220228110822.491923-3-jakobkoschel@gmail.com>
+ <2e4e95d6-f6c9-a188-e1cd-b1eae465562a@amd.com>
+ <CAHk-=wgQps58DPEOe4y5cTh5oE9EdNTWRLXzgMiETc+mFX7jzw@mail.gmail.com>
+ <282f0f8d-f491-26fc-6ae0-604b367a5a1a@amd.com>
+ <b2d20961dbb7533f380827a7fcc313ff849875c1.camel@HansenPartnership.com>
+ <7D0C2A5D-500E-4F38-AD0C-A76E132A390E@kernel.org>
+ <73fa82a20910c06784be2352a655acc59e9942ea.camel@HansenPartnership.com>
+ <CAHk-=wiT5HX6Kp0Qv4ZYK_rkq9t5fZ5zZ7vzvi6pub9kgp=72g@mail.gmail.com>
+ <7dc860874d434d2288f36730d8ea3312@AcuMS.aculab.com>
+ <CAHk-=whKqg89zu4T95+ctY-hocR6kDArpo2qO14-kV40Ga7ufw@mail.gmail.com>
+ <0ced2b155b984882b39e895f0211037c@AcuMS.aculab.com>
+ <CAHk-=wix0HLCBs5sxAeW3uckg0YncXbTjMsE-Tv8WzmkOgLAXQ@mail.gmail.com>
+From: Rasmus Villemoes <linux@rasmusvillemoes.dk>
+In-Reply-To: <CAHk-=wix0HLCBs5sxAeW3uckg0YncXbTjMsE-Tv8WzmkOgLAXQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_010747_525624_BC19AB21 
-X-CRM114-Status: GOOD (  21.87  )
+X-CRM114-CacheID: sfid-20220302_012937_668210_66FAB06F 
+X-CRM114-Status: GOOD (  21.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,114 +152,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/02/22 10:53, xinlei.lee@mediatek.com ha scritto:
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
+On 02/03/2022 00.55, Linus Torvalds wrote:
+> On Tue, Mar 1, 2022 at 3:19 PM David Laight <David.Laight@aculab.com> wrote:
+>>
+
+> With the "don't use iterator outside the loop" approach, the exact
+> same code works in both the old world order and the new world order,
+> and you don't have the semantic confusion. And *if* you try to use the
+> iterator outside the loop, you'll _mostly_ (*) get a compiler warning
+> about it not being initialized.
 > 
-> Dpi_clk is controlled by the mux selected
-> by TOPCKGEN and APMIXEDSYS can support small resolution.
+>              Linus
 > 
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> (*) Unless somebody initializes the iterator pointer pointlessly.
+> Which clearly does happen. Thus the "mostly". It's not perfect, and
+> that's most definitely not nice - but it should at least hopefully
+> make it that much harder to mess up.
 
-Hello Xinlei,
+This won't help the current issue (because it doesn't exist and might
+never), but just in case some compiler people are listening, I'd like to
+have some sort of way to tell the compiler "treat this variable as
+uninitialized from here on". So one could do
 
-as it was pointed out by reviewers in the MT8195 DisplayPort series, that is
-adding the same logic that you are proposing in this patch, the clock parent
-selection should be performed by the clock drivers, I'd say in the callback
-.set_rate_and_parent(), and not by the mtk_dpi driver.
+#define kfree(p) do { __kfree(p); __magic_uninit(p); } while (0)
 
-Please fix this in the proper drivers (clocks!) instead.
+with __magic_uninit being a magic no-op that doesn't affect the
+semantics of the code, but could be used by the compiler's "[is/may be]
+used uninitialized" machinery to flag e.g. double frees on some odd
+error path etc. It would probably only work for local automatic
+variables, but it should be possible to just ignore the hint if p is
+some expression like foo->bar or has side effects. If we had that, the
+end-of-loop test could include that to "uninitialize" the iterator.
 
-Thanks,
-Angelo
+Maybe sparse/smatch or some other static analyzer could implement such a
+magic thing? Maybe it's better as a function attribute
+[__attribute__((uninitializes(1)))] to avoid having to macrofy all
+functions that release resources.
 
-> ---
->   drivers/gpu/drm/mediatek/mtk_dpi.c | 38 ++++++++++++++++++++++++++----
->   1 file changed, 34 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> index 4554e2de1430..bad686817e29 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -63,6 +63,14 @@ enum mtk_dpi_out_color_format {
->   	MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL
->   };
->   
-> +enum TVDPLL_CLK {
-> +	TVDPLL_PLL = 0,
-> +	TVDPLL_D2 = 2,
-> +	TVDPLL_D4 = 4,
-> +	TVDPLL_D8 = 8,
-> +	TVDPLL_D16 = 16,
-> +};
-> +
->   struct mtk_dpi {
->   	struct drm_encoder encoder;
->   	struct drm_bridge bridge;
-> @@ -73,6 +81,7 @@ struct mtk_dpi {
->   	struct clk *engine_clk;
->   	struct clk *pixel_clk;
->   	struct clk *tvd_clk;
-> +	struct clk *pclk_src[5];
->   	int irq;
->   	struct drm_display_mode mode;
->   	const struct mtk_dpi_conf *conf;
-> @@ -459,6 +468,7 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
->   	struct videomode vm = { 0 };
->   	unsigned long pll_rate;
->   	unsigned int factor;
-> +	struct clk *clksrc = NULL;
->   
->   	/* let pll_rate can fix the valid range of tvdpll (1G~2GHz) */
->   	factor = dpi->conf->cal_factor(mode->clock);
-> @@ -473,11 +483,26 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
->   
->   	vm.pixelclock = pll_rate / factor;
->   	if ((dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_LE) ||
-> -	    (dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_BE))
-> -		clk_set_rate(dpi->pixel_clk, vm.pixelclock * 2);
-> -	else
-> -		clk_set_rate(dpi->pixel_clk, vm.pixelclock);
-> +	    (dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_BE)) {
-> +		if (factor == 8)
-> +			clksrc = dpi->pclk_src[2];
-> +		else if (factor == 4)
-> +			clksrc = dpi->pclk_src[1];
-> +		else
-> +			clksrc = dpi->pclk_src[1];
-> +		}
-> +	else {
-> +		if (factor == 8)
-> +			clksrc = dpi->pclk_src[3];
-> +		else if (factor == 4)
-> +			clksrc = dpi->pclk_src[2];
-> +		else
-> +			clksrc = dpi->pclk_src[2];
-> +	}
->   
-> +	clk_prepare_enable(dpi->pixel_clk);
-> +	clk_set_parent(dpi->pixel_clk, clksrc);
-> +	clk_disable_unprepare(dpi->pixel_clk);
->   
->   	vm.pixelclock = clk_get_rate(dpi->pixel_clk);
->   
-> @@ -893,6 +918,11 @@ static int mtk_dpi_probe(struct platform_device *pdev)
->   		return ret;
->   	}
->   
-> +	dpi->pclk_src[1] = devm_clk_get_optional(dev, "tvdpll_d2");
-> +	dpi->pclk_src[2] = devm_clk_get_optional(dev, "tvdpll_d4");
-> +	dpi->pclk_src[3] = devm_clk_get_optional(dev, "tvdpll_d8");
-> +	dpi->pclk_src[4] = devm_clk_get_optional(dev, "tvdpll_d16");
-> +
->   	dpi->irq = platform_get_irq(pdev, 0);
->   	if (dpi->irq <= 0)
->   		return -EINVAL;
-
+Rasmus
 
 _______________________________________________
 Linux-mediatek mailing list
