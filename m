@@ -4,96 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 758D2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Mar 2022 09:31:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3A23C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Mar 2022 09:45:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IgbNugry4Ew6VOGMDpyZPf5GYCGR2WcjMEhGD+VDZCM=; b=WQ98yO+lOeX+dc
-	irkb2sxaxa1kT6Qkyt6EbborO5vUBErJDKXgEM47BH16csMX7WVUGjn48wsRS/wUfhgyT2TJ4a4aw
-	j2DQ/eYgVhqGAl+l2K9oP5NLMkTSTVWZd5zS5UURE1apNHwksSt0/JIWSVc0dNbl+GQ4bEQscRuS4
-	IY4n3++vB8wssE3pJPfJR3OXAM/lUD74CDMWf6nVYN8rfa4FTxeE6xkQI4r4af69jUMDyTbtCoMVi
-	/MgH/BhDwb3xVh0MRkmbZavW1lFFEOq3l2EkYQ4vFeckhq7Nc2dUFbcW1Afb7SjJEnirkiYs/Tt/L
-	LjuyPPhUKyUrn76vpDfw==;
+	List-Owner; bh=UZLMwNBEfA30fiX6rk7yQPGyU9fePAmhyOxPlXUlNdQ=; b=Du8SNVD7VFZtsC
+	DZiVu6Rn8IMlfK40B17yVeKVFQTHv0WOMq257MbAxliruQ4SwXyc42gI18I59yAHAW/AO/DMVd+LI
+	g1LdPAG4HF26Y5pVEj+NjObzAaz4GZ513Gg2WQ5yL6uo+SypsMneS+Wlnbfe+rb6oOu/SVJ5ebDQo
+	wox6JyojSgQsNTYndO+aAPIbvic9LUrxmLyoLXcof4CvE4wjZcxElWPqn2Hs1H2VLx6WqSLW0cSHa
+	ZisKpQIAOVwy0fD29e+CHGjP8a7kbQP4c2oqkGH8+0347LDG2uYBVAkzZTmTGaEafVnrREOyfgDZc
+	6tx1kX5nUI5IukLMXfMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPLKb-0023qT-Ro; Wed, 02 Mar 2022 09:31:37 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1nPLXw-00263q-Mt; Wed, 02 Mar 2022 09:45:24 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPLKY-0023ot-EA; Wed, 02 Mar 2022 09:31:36 +0000
-Received: by mail-pf1-x442.google.com with SMTP id t5so1413329pfg.4;
- Wed, 02 Mar 2022 01:31:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=yRnvPGVK9XQdKYPg/H0ecgdZJeSxpiKw/X1pv37GC+w=;
- b=FSwFYVuD0cAwR74FpWh/UVnJlZEuhHuzmEJF2CmWuTU5VQk08y1iQ6Cm+4Kk/IHZ7f
- ykn4dSn+LtVJ/QNPcAOF0Kr9OP0uyQbpGUjZhyE2BsGEuIYzlTgMZwHl/BYpjMpkMG0+
- P9mnuSE0YONb1xqLwPVeO/elgzKWhvv7I7OGEBThyQYghI00EIr5RS9MGp7GsCYrqLUi
- wR7dcG4fdae3Ke7WyU9tBlNyUPSMcC8RmnmBsmKYAmxRcsIUhLqhpYW4uCJTlnf3AogC
- YxEVbABh4/fwCz1Lhf2xi5Cnii6w5cwNjqEkAadiEwyP0C/cLXPnnAaLLll6ns+CdAHq
- Ceuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=yRnvPGVK9XQdKYPg/H0ecgdZJeSxpiKw/X1pv37GC+w=;
- b=iqWNK80+oBdMsdgJm4zWQfaP207d6LvVlgBIAtYLMvRng+trc8EYudNhgxi5RAxRmk
- 9U+a0GlBSEuxYKrmRUQcDCdJw9BltrtPuTqz/LQo/ZM5ZkE9J5HO1P26VIgXVP9BOZbd
- acucuQSOdNlgr7vSdJLEO6wagzKUnWooiqrwyI4dVzDm6w7BLVDv/qlejcIkA60g7Y0r
- 9IjNYdhHCFQAOP+gWxBmorJOJ1TTxKWMHI7iGsq3IbSLFu+3LLNXGHFF1/um4H5Um1Y2
- qQ6Pozzdv5B82nLuYpXr6z18onn5i8/DM0QcZWXHLEbTctLwQSEJ8oIYuuUfJXkPauqm
- vYvw==
-X-Gm-Message-State: AOAM5338GmO7RaDlXj0pzD8Ww8DjzqcJVoiuXrMcRS/yTzaHuw5a7t+1
- xdABm9B8njvKUpetbflke+g=
-X-Google-Smtp-Source: ABdhPJxxYDNcbSMxl56+YduSTiv9ULKN3/PKEO9PEtlxvCfSyuhc7esxotc8paaSBF6ReGk5V/MJxQ==
-X-Received: by 2002:a05:6a00:244b:b0:4c9:319e:ecb7 with SMTP id
- d11-20020a056a00244b00b004c9319eecb7mr31990006pfj.58.1646213490674; 
- Wed, 02 Mar 2022 01:31:30 -0800 (PST)
-Received: from ubuntu.huawei.com ([119.3.119.20])
- by smtp.googlemail.com with ESMTPSA id
- y74-20020a62644d000000b004f129e94f40sm19496506pfb.131.2022.03.02.01.31.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Mar 2022 01:31:30 -0800 (PST)
-From: Xiaomeng Tong <xiam0nd.tong@gmail.com>
-To: torvalds@linux-foundation.org
-Cc: akpm@linux-foundation.org, alsa-devel@alsa-project.org,
- amd-gfx@lists.freedesktop.org, andriy.shevchenko@linux.intel.com,
- arnd@arndb.de, bcm-kernel-feedback-list@broadcom.com,
- bjohannesmeyer@gmail.com, c.giuffrida@vu.nl, christian.koenig@amd.com,
- christophe.jaillet@wanadoo.fr, dan.carpenter@oracle.com,
- dmaengine@vger.kernel.org, drbd-dev@lists.linbit.com,
- dri-devel@lists.freedesktop.org, gustavo@embeddedor.com, h.j.bos@vu.nl,
- intel-gfx@lists.freedesktop.org, intel-wired-lan@lists.osuosl.org,
- jakobkoschel@gmail.com, jgg@ziepe.ca, keescook@chromium.org,
- kgdb-bugreport@lists.sourceforge.net, kvm@vger.kernel.org,
- linux-arch@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-aspeed@lists.ozlabs.org, linux-block@vger.kernel.org,
- linux-cifs@vger.kernel.org, linux-crypto@vger.kernel.org,
- linux-f2fs-devel@lists.sourceforge.net, linux-fsdevel@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org, linux-rdma@vger.kernel.org,
- linux-scsi@vger.kernel.org, linux-sgx@vger.kernel.org,
- linux-staging@lists.linux.dev, linux-tegra@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-wireless@vger.kernel.org,
- linux1394-devel@lists.sourceforge.net, linux@rasmusvillemoes.dk,
- linuxppc-dev@lists.ozlabs.org, nathan@kernel.org, netdev@vger.kernel.org,
- nouveau@lists.freedesktop.org, rppt@kernel.org,
- samba-technical@lists.samba.org, tglx@linutronix.de,
- tipc-discussion@lists.sourceforge.net, v9fs-developer@lists.sourceforge.net
-Subject: Re: [PATCH 2/6] treewide: remove using list iterator after loop body
- as a ptr
-Date: Wed,  2 Mar 2022 17:31:06 +0800
-Message-Id: <20220302093106.8402-1-xiam0nd.tong@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <CAHk-=whLK11HyvpUtEftOjc3Gup2V77KpAQ2fycj3uai=qceHw@mail.gmail.com>
-References: <CAHk-=whLK11HyvpUtEftOjc3Gup2V77KpAQ2fycj3uai=qceHw@mail.gmail.com>
+ id 1nPLXi-0025ye-ET; Wed, 02 Mar 2022 09:45:12 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 411D01F410A9
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1646214309;
+ bh=zrznIpBFL8LiCItblwyMn7DORd4urUBkf/OPWsULH8s=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=RWxbwhcNszQIibXpghBJ1fzAbnZAgqcSmSelbPLSfSIwt7OXxk9yODmdAFrjXk2KL
+ kS1JCVexs9zuid8LlT1s/WEbQcTI8mnKEsoV0VAqrDiSLn3eAIh6uNOzAw51UFJ1W1
+ TNf/vIHnU7s9cp/BH6wBhd9F9nqApEE/EQc52d7svGIN5kOl8O8rRlPQkvMVfjFeLt
+ tm8OM2E/F6H1/RGQUAGju+kIir9elWnhAmwVtAoIE84KAuGtvigKg1u6G2ihFZFbFy
+ Jei4dABf+536KNiQ8ugLQs9gJcKZNUBnT39S9Kpr5LQwhIQA+u8C/GAgv38dmrO25S
+ 7Bk2fbYCNuMiw==
+Message-ID: <dee15f20-0f7d-58c6-728b-3e14f84f0833@collabora.com>
+Date: Wed, 2 Mar 2022 10:45:06 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [RESEND, V7,
+ 3/6] media: mtk-jpegenc: manage jpegenc multi-hardware
+Content-Language: en-US
+To: "kyrie.wu" <kyrie.wu@mediatek.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tzung-Bi Shih <tzungbi@chromium.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>,
+ xia.jiang@mediatek.com, maoguang.meng@mediatek.com,
+ srv_heupstream@mediatek.com
+References: <1645693637-627-1-git-send-email-kyrie.wu@mediatek.com>
+ <1645693637-627-4-git-send-email-kyrie.wu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <1645693637-627-4-git-send-email-kyrie.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_013134_487622_E5713837 
-X-CRM114-Status: GOOD (  29.97  )
+X-CRM114-CacheID: sfid-20220302_014510_792023_671B7B2E 
+X-CRM114-Status: GOOD (  32.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,102 +73,292 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 28 Feb 2022 16:41:04 -0800, Linus Torvalds
-<torvalds@linux-foundation.org> wrote:
->
-> But basically to _me_, the important part is that the end result is
-> maintainable longer-term.
+Il 24/02/22 10:07, kyrie.wu ha scritto:
+> From: kyrie wu <kyrie.wu@mediatek.com>
+> 
+> manage each hardware information, including irq/clk/power.
+> the hardware includes HW0 and HW1.
+> 
+> Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+> ---
+>   drivers/media/platform/mtk-jpeg/Makefile      |  11 +-
+>   .../media/platform/mtk-jpeg/mtk_jpeg_core.c   |  76 +++++---
+>   .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  37 ++++
+>   .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 168 ++++++++++++++++++
+>   4 files changed, 267 insertions(+), 25 deletions(-)
+> 
 
-I couldn't agree more. And because of that, I stick with the following
-approach because it's maintainable longer-term than "type(pos) pos" one:
- Implements a new macro for each list_for_each_entry* with _inside suffix.
-  #define list_for_each_entry_inside(pos, type, head, member)
+Hello Kyrie,
 
-I have posted a patch series here to demonstrate this approach:
-https://lore.kernel.org/lkml/20220301075839.4156-3-xiam0nd.tong@gmail.com/
+despite my v6 review, where I also gave you solutions for an issue with
+more than one example, this v7 still didn't get one out of the many
+requested fixes.
 
-Although we need replace all the use of list_for_each_entry* (15000+)
-with list_for_each_entry*_inside, the work can be done gradually rather
-than all at once. We can incrementally replace these callers until
-all these in the kernel are completely updated with *_inside* one. At
-that time, we can just remove the implements of origin macros and rename
-the *_inside* macro back to the origin name just in one single patch.
+I'm sure that this was not intentional, so it's not a problem...
 
-And the "type(pos) pos" approach need teach developers to "not initialize
-the iterator variable, otherwise the use-after-loop will not be reported by
-compiler", which is unreasonable and impossible for all developers. 
+In any case, this gave me the opportunity to see some more issues inside
+of this patch: let's get it perfect!
 
-And it will mess up the following code logic and no warnning reported by
-compiler, even without initializing "ext" at the beginning:
-void foo(struct mem_extent *arg) {
-  struct mem_extent *ext;  // used both for iterator and normal ptr
-  ...
-  ext = arg;  // this assignment can alse be done in another bar() func
-  ...
-  list_for_each_entry(ext, head, member) {
-    if (found(ext))
-       break;
-  }
-  ...
-  // use ext after the loop
-  ret = ext;
-}
-If the loop hit the break, the last "ret" will be the found ext iterator.
-However, if the "type(pos) pos" approach applied, the last "ret" will be
-"arg" which is not the intention of the developers, because the "ext" is
-two different variables inside and outside the loop.
 
-Thus, my idea is *better a finger off than always aching*, let's choose
-the "list_for_each_entry_inside(pos, type, head, member)" approach.
+...snip...
 
-> It turns out that just syntactically, it's really nice to give the
-> type of the iterator from outside the way we do now. Yeah, it may be a
-> bit odd, and maybe it's partly because I'm so used to the
-> "list_for_each_list_entry()" syntax, but moving the type into the loop
-> construct really made it nasty - either one very complex line, or
-> having to split it over two lines which was even worse.
->
-> Maybe the place I looked at just happened to have a long typename, but
-> it's basically always going to be a struct, so it's never a _simple_
-> type. And it just looked very odd adn unnatural to have the type as
-> one of the "arguments" to that list_for_each_entry() macro.
+> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+> index 3e4811a41ba2..31e941ef84bd 100644
+> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+> @@ -9,6 +9,7 @@
+>   #ifndef _MTK_JPEG_CORE_H
+>   #define _MTK_JPEG_CORE_H
+>   
+> +#include <linux/clk.h>
+>   #include <linux/interrupt.h>
+>   #include <media/v4l2-ctrls.h>
+>   #include <media/v4l2-device.h>
+> @@ -60,6 +61,7 @@ enum mtk_jpeg_ctx_state {
+>    * @cap_q_default_fourcc:	capture queue default fourcc
+>    */
+>   struct mtk_jpeg_variant {
+> +	bool is_multihw;
 
-we can pass a shorter type name to list_for_each_entry_inside, thus no
-need to split it over two lines. Actually it is not a big problem.
-+ #define t struct sram_bank_info
-- list_for_each_entry(pos, head, member) {
-+ list_for_each_entry_inside(pos, t, head, member) {
+Thanks for this fix, this name makes it way clearer!
 
-I put the type at the second argument not the first to avoid messing up
-the pattern match in some coccinelle scripts.
+>   	struct clk_bulk_data *clks;
+>   	int num_clks;
+>   	struct mtk_jpeg_fmt *formats;
+> @@ -74,6 +76,38 @@ struct mtk_jpeg_variant {
+>   	u32 cap_q_default_fourcc;
+>   };
+>   
+> +enum mtk_jpegenc_hw_id {
+> +	MTK_JPEGENC_HW0,
+> +	MTK_JPEGENC_HW1,
+> +	MTK_JPEGENC_HW_MAX,
+> +};
+> +
+> +/**
+> + * struct mtk_vcodec_clk - Structure used to store vcodec clock information
+> + */
+> +struct mtk_jpegenc_clk {
+> +	struct clk_bulk_data *clks;
+> +	int	clk_num;
 
->  (b) gives us a nice warning for any normal use-after-loop case
-> (unless you explicitly initialized it like that
-> sgx_mmu_notifier_release() function did for no good reason
+Why is clk_num tabbed?
 
-sometimes developers can be confused by the reported warnning:
-"used without having been initialized", and can not figure out immediately
-that "oh, now i am using another different variable but with the same name
-of the loop iterator variable", which has changed the programming habits
-of developers.
+> +};
+> +
+> +/**
+> + * struct mtk_jpegenc_comp_dev - JPEG COREX abstraction
+> + * @dev:		        JPEG device
+> + * @plat_dev:		    platform device data
+> + * @reg_base:		    JPEG registers mapping
+> + * @master_dev:		    mtk_jpeg_dev device
+> + * @pm:	                mtk_jpegenc_pm
+> + * @jpegenc_irq:	    jpeg encode irq num
 
->  (c) also guarantees that even if you don't get a warning,
-> non-converted (or newly written) bad code won't actually _work_
->
-> so you end up getting the new rules without any ambiguity or mistaken
+You're using tabulations *and* spaces.... please use either, not both, as it's
+not necessary. Besides, this is also producing bad indentation.
 
-It will lead to a wrong/NULL pointer dereference if the pointer is used
-anywhere else, depend on which value is used to initialized with.
+> + */
+> +struct mtk_jpegenc_comp_dev {
+> +	struct device		*dev;
+> +	struct platform_device *plat_dev;
+> +	void __iomem		*reg_base;
+> +	struct mtk_jpeg_dev *master_dev;
+> +	struct mtk_jpegenc_clk	venc_clk;
+> +	int jpegenc_irq;
+> +};
+> +
+>   /**
+>    * struct mtk_jpeg_dev - JPEG IP abstraction
+>    * @lock:		the mutex protecting this structure
+> @@ -100,6 +134,9 @@ struct mtk_jpeg_dev {
+>   	void __iomem		*reg_base;
+>   	struct delayed_work job_timeout_work;
+>   	const struct mtk_jpeg_variant *variant;
+> +
+> +	void __iomem *reg_encbase[MTK_JPEGENC_HW_MAX];
+> +	struct mtk_jpegenc_comp_dev *enc_hw_dev[MTK_JPEGENC_HW_MAX];
+>   };
+>   
+>   /**
+> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+> index a2b6e1f85c2d..3d967bff1352 100644
+> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+> @@ -5,11 +5,27 @@
+>    *
+>    */
+>   
+> +#include <linux/clk.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/irq.h>
+>   #include <linux/io.h>
+>   #include <linux/kernel.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/of_device.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/slab.h>
+> +#include <media/media-device.h>
+>   #include <media/videobuf2-core.h>
+>   #include <media/videobuf2-dma-contig.h>
+> +#include <media/videobuf2-v4l2.h>
+> +#include <media/v4l2-mem2mem.h>
+> +#include <media/v4l2-dev.h>
+> +#include <media/v4l2-device.h>
+> +#include <media/v4l2-fh.h>
+> +#include <media/v4l2-event.h>
+>   
+> +#include "mtk_jpeg_core.h"
+>   #include "mtk_jpeg_enc_hw.h"
+>   
+>   static const struct mtk_jpeg_enc_qlt mtk_jpeg_enc_quality[] = {
+> @@ -30,6 +46,21 @@ static const struct mtk_jpeg_enc_qlt mtk_jpeg_enc_quality[] = {
+>   	{.quality_param = 97, .hardware_value = JPEG_ENC_QUALITY_Q97},
+>   };
+>   
+> +#if defined(CONFIG_OF)
+> +static const struct of_device_id mtk_jpegenc_drv_ids[] = {
+> +	{
+> +		.compatible = "mediatek,mt8195-jpgenc0",
+> +		.data = (void *)MTK_JPEGENC_HW0,
+> +	},
+> +	{
+> +		.compatible = "mediatek,mt8195-jpgenc1",
+> +		.data = (void *)MTK_JPEGENC_HW1,
+> +	},
 
-Best regard,
---
-Xiaomeng Tong
+I've already pointed out an issue with this in your v6 series:
+
+https://patchwork.kernel.org/comment/24726607/
+
+Besides, I want to add up that the SoC distinction is already done in the
+parent node which, in MT8195's case, is named "mediatek,mt8195-jpgenc", so
+you really don't have to redo this distinction "from scratch" here in the
+sub-driver, as you can just get your information from the parent device/node.
+
+So, just "mediatek,jpgenc-hw" should be totally enough here.
+
+Please fix this for v8.
+
+
+> +	{},
+> +};
+> +MODULE_DEVICE_TABLE(of, mtk_jpegenc_drv_ids);
+> +#endif
+> +
+>   void mtk_jpeg_enc_reset(void __iomem *base)
+>   {
+>   	writel(0, base + JPEG_ENC_RSTB);
+
+...snip...
+
+> +
+> +static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
+> +{
+> +	struct mtk_jpegenc_clk *jpegenc_clk;
+> +	struct mtk_jpeg_dev *master_dev;
+> +	struct mtk_jpegenc_comp_dev *dev;
+> +	int ret, comp_idx;
+> +
+> +	struct device *decs = &pdev->dev;
+> +
+> +	if (!decs->parent)
+> +		return -EPROBE_DEFER;
+> +
+> +	master_dev = dev_get_drvdata(decs->parent);
+> +	if (!master_dev)
+> +		return -EPROBE_DEFER;
+> +
+> +	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
+> +	if (!dev)
+> +		return -ENOMEM;
+> +
+> +	dev->plat_dev = pdev;
+> +
+> +	jpegenc_clk = &dev->venc_clk;
+> +
+> +	jpegenc_clk->clk_num = devm_clk_bulk_get_all(&pdev->dev,
+> +						     &jpegenc_clk->clks);
+
+Using dev_err_probe() looks more appropriate here:
+
+	if (jpegenc_clk->clk_num < 0)
+		return dev_err_probe(&pdev->dev, jpegenc_clk->clk_num,
+				     "Failed to get jpegenc clocks\n");
+
+
+> +	if (jpegenc_clk->clk_num < 0) {
+> +		dev_err(&pdev->dev, "Failed to get jpegenc clock count\n");
+> +		return jpegenc_clk->clk_num;
+> +	}
+> +
+> +	dev->reg_base =
+> +		devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(dev->reg_base)) {
+> +		ret = PTR_ERR(dev->reg_base);
+> +		goto err;
+
+There's no need for any goto here, as you're not reverting any operation.
+
+Hence, you can just:
+
+	if (IS_ERR(dev->reg_base))
+		return PTR_ERR(dev->reg_base);
+
+> +	}
+> +
+> +	ret = mtk_jpegenc_hw_init_irq(dev);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to register JPEGENC irq handler.\n");
+
+You are already printing an error inside of mtk_jpegenc_hw_init_irq(), so printing
+another one here is redundant.
+Either remove the prints in the function or, more appropriately, remove this print.
+
+Also, same "goto" comment applies here, you can simply return ret.
+
+> +		goto err;
+> +	}
+> +
+> +	comp_idx = (enum mtk_jpegenc_hw_id)of_device_get_match_data(decs);
+> +	if (comp_idx < MTK_JPEGENC_HW_MAX) {
+
+`comp_idx` is a bit misleading, this is not using the component framework.
+
+....but this will probably be refactored after following the suggestion that
+I gave you in v6 and again now.
+
+> +		master_dev->enc_hw_dev[comp_idx] = dev;
+> +		master_dev->reg_encbase[comp_idx] = dev->reg_base;
+> +		dev->master_dev = master_dev;
+> +	} else {
+> +		dev_err(&pdev->dev, "Failed to get_match_data.\n");
+> +		goto err;
+> +	}
+> +
+> +	platform_set_drvdata(pdev, dev);
+> +	pm_runtime_enable(&pdev->dev);
+> +
+> +	return 0;
+> +
+> +err:
+
+This label serves no real purpose: please remove.
+
+> +	return ret;
+> +}
+> +
+
+
+
+Regards,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
