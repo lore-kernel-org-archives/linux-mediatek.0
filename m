@@ -4,102 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E12DDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Mar 2022 19:06:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69E09C43219
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Mar 2022 20:07:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:Cc:References:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9+sVTEBtqtEmkjJ/P9m/lRz7Yy5cRorWE+PspP0QhvA=; b=Jn66KkiZK3gSZI
-	DGZSRi4yw0JtIQOl7vYOzXZPIf0oGF9WLZLCE0+rcrfn8HVcNSj2KfFwXiJP7KuR9FibrGGxhvbti
-	YzA40AbZ3Y/q88Zch4t0PZBcMck/aUGSSyXpe6ayqf/HoZQOsObo/YzU1YUNHFBy6/9FH9TpsHXkE
-	sVyZETtGWYdmYWmeoUspNIqyksl6ObpDDMcEJriCfXaKj4JL+qrZ3QAkdSqJGakBNL40WxftJWN6J
-	CDZ+7ohLSVKPLT7w2jmir0YXFA7RLXHoM8F21wFh2bWymm43xpIhaBcJNsIQp9mswN/NrebGC0bxU
-	EIqpkkWjOL84HaVMX0hg==;
+	List-Owner; bh=HupvV0t34u8tsEMTSleZUvdhAYtNpJNArdP85slHupw=; b=z/DLG82qf1uGeu
+	/yc2wdKPczxzxmdw+Tmjz52fqV6ZDj36xdFSpNvR3866JPZhRNU5TRZuQbYZGL86QE0U2q3jApTYf
+	NfgWivJSzMc0TRQXkRUvuPPAqOQYgMNmQpL7uDMwDz6tVxpJhN3HqXpuXTjrsqBzow+WzYMDzMtU0
+	zXPf4ltDQ2Cr6p4DwKJ+ZGWFU40GGDonxwxDRWF/DP8ZhPFVaKJXuLukN8MFtI6/8jdN6aDYw+sWw
+	G2wyw6K3Hrm3YcUZIr9OK7S0NRkw5/StHtmU1Pt4LMFA6krZWQf/oj7HdOAQm72mZOIxm+bYZy/b3
+	SBJ71LvoKv1zWc4JmNbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPUJH-003v1t-3h; Wed, 02 Mar 2022 19:06:51 +0000
-Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
+	id 1nPVFf-0043fX-Ft; Wed, 02 Mar 2022 20:07:11 +0000
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPUJ1-003uu7-Kd
- for linux-mediatek@lists.infradead.org; Wed, 02 Mar 2022 19:06:37 +0000
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id CB4DF3F614
- for <linux-mediatek@lists.infradead.org>; Wed,  2 Mar 2022 19:06:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1646247993;
- bh=m6ojeTgtogrdSSitR1acR3iefkQ9OYzxbBDb1IxSxtI=;
- h=Message-ID:Date:MIME-Version:Subject:To:References:Cc:From:
- In-Reply-To:Content-Type;
- b=X+EEE3qMq/w0NKio3LuzmquQDk3sYpRkro9Z/iEAg5GapOGFv2QL6TfbcoR0KzjaS
- vfC80vDfMo/dcISoA6CjZV4/9BWz2BNdB7zrmNlPLleb2MxOQZbjaqC82dn4Cf54RG
- dJFmz2d7RiiD1zZKHvL+iwBSHUZlGMlEW6KJhoilfZU2uvaOJTsOeARpXv97JkssUp
- 4gPzeah8OOb0kfgFevBUu26fsh9ZkoAu0PL68/zO5n5ICsg2yNR1teQ8dCiDxbii3C
- ptPgFJ2Ke87f0NmJzuxWmee9uZcZ2I8aL9q6UUfDv74gqivsMhNeRdisCX7WF30Qv7
- LKjuYJSdqLhhQ==
-Received: by mail-ej1-f72.google.com with SMTP id
- h22-20020a1709060f5600b006b11a2d3dcfso1471445ejj.4
- for <linux-mediatek@lists.infradead.org>; Wed, 02 Mar 2022 11:06:33 -0800 (PST)
+ id 1nPVFa-0043eL-HW
+ for linux-mediatek@lists.infradead.org; Wed, 02 Mar 2022 20:07:09 +0000
+Received: by mail-pj1-x102b.google.com with SMTP id
+ mg21-20020a17090b371500b001bef9e4657cso2394863pjb.0
+ for <linux-mediatek@lists.infradead.org>; Wed, 02 Mar 2022 12:07:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=9llME+iRL2iH9L07jwvbWbmbHLr47Rbz7WJ4fOgTlZc=;
+ b=IvpJRwG7ynxkReEE85KaN5rJUYtD4xKNHA+hy6TwBmoQ8B3uYeJI+QViQcnaGiWq86
+ F88M3HTERkoil1v4VBpPtCvYuei+/tfueI2kCXzM7ddvcotxLyWZwiewhTHLUCy28lRK
+ BraqPBOXvwYRthhpbxTgJWS9pGCc3zSZJBqHk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:references:cc:from:in-reply-to
- :content-transfer-encoding;
- bh=m6ojeTgtogrdSSitR1acR3iefkQ9OYzxbBDb1IxSxtI=;
- b=lQdixkTrGyd+d5zQ/OIAD4f5cFVnMwfBkB62xyxGQZ3I8Iyzy8eam0rNvxDpiePOu6
- vw5SiIIXtcHjdbi17C2YlLUwvQuFy1hPbQbiOb+65RNxAcQTupK8Z+/vKftAcwHF6BMR
- cb9a3Z4i+HC/GlC8DMfIDIO70CYWPLvTqNvdw/ad+US2ERji7yaBotjQIzGTU/4WUJMY
- y036dCiBy2JRZBYyA8TWBiJWZHUkx38wrk7HttmyDi/pwAbzYef9bRBVCZEKee7N/L1K
- Nsoaz6XNjVNfQaKnVOq4ZcdLIdfQHPxGjKkWwhxax38hVwKAXonHAdEkKRXnh4A+zo1s
- 0Fgg==
-X-Gm-Message-State: AOAM533XREPzXWiTTQYTCbYfauy/WvJIIMU89IObdyJ+OfdPnQGID12W
- CRyU/QyXyzJdMoV/dfowsTa4CiWl9GaCGqZRSW4jcV++/CPINL4q73oVzHJpayslCpEa8q20OVo
- Kg2bF1Z6W+TueqPRyjBE7FRt1lErb04ibdKVD/1UjxrkqAkK7fA==
-X-Received: by 2002:a17:906:6a0f:b0:6d7:1021:2bd2 with SMTP id
- qw15-20020a1709066a0f00b006d710212bd2mr6424443ejc.395.1646247992554; 
- Wed, 02 Mar 2022 11:06:32 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxeQrZWG2Oxg6RE7q9wIPUX3Z/sjjW6CdMRyOa97Yz1CbhreGcjtKJUbps/xbBHdxqhb0/UQQ==
-X-Received: by 2002:a17:906:6a0f:b0:6d7:1021:2bd2 with SMTP id
- qw15-20020a1709066a0f00b006d710212bd2mr6424403ejc.395.1646247992278; 
- Wed, 02 Mar 2022 11:06:32 -0800 (PST)
-Received: from [192.168.0.137] (xdsl-188-155-181-108.adslplus.ch.
- [188.155.181.108]) by smtp.gmail.com with ESMTPSA id
- cy1-20020a0564021c8100b003e359e4f54asm8827529edb.43.2022.03.02.11.06.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Mar 2022 11:06:31 -0800 (PST)
-Message-ID: <77fd3853-25b2-f9f7-6081-969ec54aa6a9@canonical.com>
-Date: Wed, 2 Mar 2022 20:06:30 +0100
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=9llME+iRL2iH9L07jwvbWbmbHLr47Rbz7WJ4fOgTlZc=;
+ b=sG8hLOidaoiOa1k7ezp2X1CKzwM3uPECc1hRQ3lBeCNAnWYFpsL7YRevf4Oeo2QgqG
+ UwlS1TZ953cX+sVoEAV/DYmeRk1M9i/3mD9TgNcBONF/VoafqqsOUXShfsloVzXvlwqz
+ YTsfKa7EjVRq3+RDjs1UB+6dBMge63+0O04UbQD1ORVBb8WDxEUH+5qG6opvjFVbHXxz
+ WJ9lTO8Y2IunhTlxO2FXvF1yOm8plMQCQP17x27qpEtIUidGz4ddLXWw0n7jdfWu2hj+
+ 6Cz97Ier87rx46h965geZMUaQXjyvqHi/2/ZJJnYlgiexNrFfRPoY9Liutw3+0jx2fjz
+ 7bfQ==
+X-Gm-Message-State: AOAM531HAfMpj3O8EGEcqKJEhY/fsa8698GOyAaB3bq9iDss2sStLiNj
+ Tax1g5Avym7YYUpycy8yJ0/vvA==
+X-Google-Smtp-Source: ABdhPJyalZw/yElDAQSdRYusWOxjkvZUrvn+e5j/jboS/+hXUtUpvVb6mMnbBbqlv1j/a0ygzQBPkQ==
+X-Received: by 2002:a17:90b:94e:b0:1bc:c99f:ede1 with SMTP id
+ dw14-20020a17090b094e00b001bcc99fede1mr1518926pjb.49.1646251625762; 
+ Wed, 02 Mar 2022 12:07:05 -0800 (PST)
+Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
+ by smtp.gmail.com with ESMTPSA id
+ d25-20020a637359000000b0037843afb785sm6664pgn.25.2022.03.02.12.07.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 02 Mar 2022 12:07:05 -0800 (PST)
+Date: Wed, 2 Mar 2022 12:07:04 -0800
+From: Kees Cook <keescook@chromium.org>
+To: Rasmus Villemoes <linux@rasmusvillemoes.dk>
+Cc: Linus Torvalds <torvalds@linux-foundation.org>,
+ David Laight <David.Laight@aculab.com>,
+ James Bottomley <James.Bottomley@hansenpartnership.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
+ KVM list <kvm@vger.kernel.org>,
+ "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
+ "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
+ "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Cristiano Giuffrida <c.giuffrida@vu.nl>, "Bos, H.J." <h.j.bos@vu.nl>,
+ "linux1394-devel@lists.sourceforge.net"
+ <linux1394-devel@lists.sourceforge.net>, 
+ "drbd-dev@lists.linbit.com" <drbd-dev@lists.linbit.com>,
+ linux-arch <linux-arch@vger.kernel.org>, CIFS <linux-cifs@vger.kernel.org>,
+ "linux-aspeed@lists.ozlabs.org" <linux-aspeed@lists.ozlabs.org>,
+ linux-scsi <linux-scsi@vger.kernel.org>,
+ linux-rdma <linux-rdma@vger.kernel.org>,
+ "linux-staging@lists.linux.dev" <linux-staging@lists.linux.dev>,
+ amd-gfx list <amd-gfx@lists.freedesktop.org>,
+ Jason Gunthorpe <jgg@ziepe.ca>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "kgdb-bugreport@lists.sourceforge.net" <kgdb-bugreport@lists.sourceforge.net>, 
+ "bcm-kernel-feedback-list@broadcom.com"
+ <bcm-kernel-feedback-list@broadcom.com>, 
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Arnd Bergman <arnd@arndb.de>, Linux PM <linux-pm@vger.kernel.org>,
+ intel-gfx <intel-gfx@lists.freedesktop.org>,
+ Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
+ Nathan Chancellor <nathan@kernel.org>, dma <dmaengine@vger.kernel.org>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ Jakob Koschel <jakobkoschel@gmail.com>,
+ "v9fs-developer@lists.sourceforge.net" <v9fs-developer@lists.sourceforge.net>, 
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ "linux-sgx@vger.kernel.org" <linux-sgx@vger.kernel.org>,
+ linux-block <linux-block@vger.kernel.org>, Netdev <netdev@vger.kernel.org>,
+ "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+ "samba-technical@lists.samba.org" <samba-technical@lists.samba.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Linux F2FS Dev Mailing List <linux-f2fs-devel@lists.sourceforge.net>,
+ "tipc-discussion@lists.sourceforge.net"
+ <tipc-discussion@lists.sourceforge.net>, 
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
+ linux-fsdevel <linux-fsdevel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
+ Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+ Mike Rapoport <rppt@kernel.org>
+Subject: Re: [PATCH 2/6] treewide: remove using list iterator after loop body
+ as a ptr
+Message-ID: <202203021158.DB5204A0@keescook>
+References: <282f0f8d-f491-26fc-6ae0-604b367a5a1a@amd.com>
+ <b2d20961dbb7533f380827a7fcc313ff849875c1.camel@HansenPartnership.com>
+ <7D0C2A5D-500E-4F38-AD0C-A76E132A390E@kernel.org>
+ <73fa82a20910c06784be2352a655acc59e9942ea.camel@HansenPartnership.com>
+ <CAHk-=wiT5HX6Kp0Qv4ZYK_rkq9t5fZ5zZ7vzvi6pub9kgp=72g@mail.gmail.com>
+ <7dc860874d434d2288f36730d8ea3312@AcuMS.aculab.com>
+ <CAHk-=whKqg89zu4T95+ctY-hocR6kDArpo2qO14-kV40Ga7ufw@mail.gmail.com>
+ <0ced2b155b984882b39e895f0211037c@AcuMS.aculab.com>
+ <CAHk-=wix0HLCBs5sxAeW3uckg0YncXbTjMsE-Tv8WzmkOgLAXQ@mail.gmail.com>
+ <78ccb184-405e-da93-1e02-078f90d2b9bc@rasmusvillemoes.dk>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH 2/4] arm64: dts: mt8183: align Google CROS EC PWM node
- name with dtschema
-Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>
-References: <20220214081916.162014-1-krzysztof.kozlowski@canonical.com>
- <20220214081916.162014-3-krzysztof.kozlowski@canonical.com>
-Cc: Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>,
- devicetree@vger.kernel.org, chrome-platform@lists.linux.dev,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Guenter Roeck <groeck@chromium.org>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- linux-mediatek@lists.infradead.org, Benson Leung <bleung@chromium.org>,
- Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org
-From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-In-Reply-To: <20220214081916.162014-3-krzysztof.kozlowski@canonical.com>
+Content-Disposition: inline
+In-Reply-To: <78ccb184-405e-da93-1e02-078f90d2b9bc@rasmusvillemoes.dk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_110635_830112_F3359883 
-X-CRM114-Status: GOOD (  13.69  )
+X-CRM114-CacheID: sfid-20220302_120706_626505_F106CF62 
+X-CRM114-Status: GOOD (  22.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,22 +148,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/02/2022 09:19, Krzysztof Kozlowski wrote:
-> dtschema expects PWM node name to be a generic "pwm".  This also matches
-> Devicetree specification requirements about generic node names.
+On Wed, Mar 02, 2022 at 10:29:31AM +0100, Rasmus Villemoes wrote:
+> This won't help the current issue (because it doesn't exist and might
+> never), but just in case some compiler people are listening, I'd like to
+> have some sort of way to tell the compiler "treat this variable as
+> uninitialized from here on". So one could do
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> #define kfree(p) do { __kfree(p); __magic_uninit(p); } while (0)
 > 
+> with __magic_uninit being a magic no-op that doesn't affect the
+> semantics of the code, but could be used by the compiler's "[is/may be]
+> used uninitialized" machinery to flag e.g. double frees on some odd
+> error path etc. It would probably only work for local automatic
+> variables, but it should be possible to just ignore the hint if p is
+> some expression like foo->bar or has side effects. If we had that, the
+> end-of-loop test could include that to "uninitialize" the iterator.
 
-Hi Matthias,
+I've long wanted to change kfree() to explicitly set pointers to NULL on
+free. https://github.com/KSPP/linux/issues/87
 
-Any comments on this patch?
+The thing stopping a trivial transformation of kfree() is:
 
-Best regards,
-Krzysztof
+	kfree(get_some_pointer());
+
+I would argue, though, that the above is poor form: the thing holding
+the pointer should be the thing freeing it, so these cases should be
+refactored and kfree() could do the NULLing by default.
+
+Quoting myself in the above issue:
+
+
+Without doing massive tree-wide changes, I think we need compiler
+support. If we had something like __builtin_is_lvalue(), we could
+distinguish function returns from lvalues. For example, right now a
+common case are things like:
+
+	kfree(get_some_ptr());
+
+But if we could at least gain coverage of the lvalue cases, and detect
+them statically at compile-time, we could do:
+
+#define __kfree_and_null(x) do { __kfree(*x); *x = NULL; } while (0)
+#define kfree(x) __builtin_choose_expr(__builtin_is_lvalue(x),
+			__kfree_and_null(&(x)), __kfree(x))
+
+Alternatively, we could do a tree-wide change of the former case (findable
+with Coccinelle) and change them into something like kfree_no_null()
+and redefine kfree() itself:
+
+#define kfree_no_null(x) do { void *__ptr = (x); __kfree(__ptr); } while (0)
+#define kfree(x) do { __kfree(x); x = NULL; } while (0)
+
+-- 
+Kees Cook
 
 _______________________________________________
 Linux-mediatek mailing list
