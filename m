@@ -4,64 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16942C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 03:29:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24DAFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 04:26:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WQAfcQbbiYn5BODAEC/snLd0+Nt46talDwE9J8NSQVk=; b=US0iL3/eIelOt/
-	DDwu6g5ltM1C/xKG+tCU02eoOPJZIQE6icbZjyMJ5xQs3h1NWI4YfIu//e0NKaaE7MXw5MbXOLa5O
-	WKRL0MAHSyqv8IBaQry1zxvII3M90n5I2sFG92JMow5TPXIqYslzVJnESIuLzPYX5KJyid/8Rx7OC
-	9hUu8hAKGbmVfdr//jWnx1TREmx0G4aFDRkAQO/iJvrzCOsj19L3EMMcaizy+4UHm6SCBelpFca6x
-	Qgt/tobxBHg2DCftzpCQQ9BWoVylC1PLCh3rHVqItuH20MMc4msHcDsdWls9RXcjMEH2j5lBrPSMf
-	hszd6TvzB1ZqIaH5WryA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yNj5XFIxqPjNmmf4K6YcYs69qXvUy24AVHEK7o+lXos=; b=rI0U6Zsrtk9PoW
+	i4zk5N9l5FekEA5vNBd3BMxJWRk8EYDMo2gl9HSskbUKbE0zDCKqiWpwtwdQDt06dr9cLGo01Mlz0
+	wE1mO/BvXlT/A0laONrSMHuJnTNqHBBv3jwfHRBcqMtYx6L/E049QaWNSXlMtY6/831X3OXTtrS7w
+	z6xvwdVVMJw+edtPPygpUNch2se00AJmt5xcvWU2AWtK0LONoda7+rxvJzH5qVjx/DvUXfZZ9KpSf
+	u7xK0eX9nm+P2Sk6WfI4CsAH7q43B0cFE2L4VH0ENHWspe3g9zIomwlawSDhqK4T3sh/y+ux8yBqV
+	+en70F/9u2wvj/2nae6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPc97-0056Cg-Vo; Thu, 03 Mar 2022 03:28:53 +0000
+	id 1nPd2O-005B1t-3Z; Thu, 03 Mar 2022 04:26:00 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPc94-0056C0-PF
- for linux-mediatek@lists.infradead.org; Thu, 03 Mar 2022 03:28:52 +0000
-X-UUID: f7b30670621a4107950f657f44b146ac-20220302
-X-UUID: f7b30670621a4107950f657f44b146ac-20220302
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <deren.wu@mediatek.com>)
+ id 1nPd28-005AzW-EO; Thu, 03 Mar 2022 04:25:49 +0000
+X-UUID: 89548d6786f84010bd8ae16d90650c44-20220302
+X-UUID: 89548d6786f84010bd8ae16d90650c44-20220302
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1262336279; Wed, 02 Mar 2022 20:28:46 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 429987662; Wed, 02 Mar 2022 21:25:37 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 2 Mar 2022 19:28:45 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 3 Mar 2022 11:28:43 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 3 Mar 2022 11:28:43 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Johannes Berg <johannes@sipsolutions.net>
-CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>, Sean Wang <sean.wang@mediatek.com>, Soul Huang
- <Soul.Huang@mediatek.com>, YN Chen <YN.Chen@mediatek.com>, Leon Yen
- <Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, Deren Wu
- <Deren.Wu@mediatek.com>, KM Lin <km.lin@mediatek.com>, Robin Chiu
- <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>, Posh Sun
- <posh.sun@mediatek.com>, Eric Liang <Eric.Liang@mediatek.com>, Stella Chang
- <Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, "Ryder
- Lee" <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH] mt76: fix monitor mode crash with sdio driver
-Date: Thu, 3 Mar 2022 11:28:40 +0800
-Message-ID: <d065e4492a9e995d6ebe95c7ad8a1ec6183f56ef.1646277169.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ 15.0.1497.2; Wed, 2 Mar 2022 20:25:36 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 3 Mar 2022 12:25:22 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 3 Mar 2022 12:25:22 +0800
+Message-ID: <c103927d7dbc3217431c83dc22a44c656c561228.camel@mediatek.com>
+Subject: Re: [PATCH v15 00/12] Add Mediatek Soc DRM (vdosys0) support for
+ mt8195
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>
+Date: Thu, 3 Mar 2022 12:25:22 +0800
+In-Reply-To: <CAL_Jsq+6k5EqouAO2Xm=GpBz3Pi-wfB-ixGwfyC+Y+qOrjUFTg@mail.gmail.com>
+References: <20220126071932.32615-1-jason-jh.lin@mediatek.com>
+ <CAL_Jsq+6k5EqouAO2Xm=GpBz3Pi-wfB-ixGwfyC+Y+qOrjUFTg@mail.gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_192850_851913_223E42C1 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20220302_202544_533522_4679E689 
+X-CRM114-Status: GOOD (  18.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,61 +65,299 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: David Airlie <airlied@linux.ie>, singo.chang@mediatek.com,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Fabien Parent <fparent@baylibre.com>, devicetree@vger.kernel.org, "moderated
+ list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>,
+ "roy-cw.yeh" <roy-cw.yeh@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Jitao shi <jitao.shi@mediatek.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, nancy.lin@mediatek.com,
+ "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Hsin-Yi
+ Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Moudy Ho <moudy.ho@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+Hi Rob,
 
-mt7921s driver may receive frames with fragment buffers. If there is a
-CTS packet received in monitor mode, the payload is 10 bytes only and
-need 6 bytes header padding after RXD buffer. However, only RXD in the
-first linear buffer, if we pull buffer size RXD-size+6 bytes with
-skb_pull(), that would trigger "BUG_ON(skb->len < skb->data_len)" in
-__skb_pull().
+Thanks for the reviews.
 
-To avoid the nonlinear buffer issue, enlarge the RXD size from 128 to
-136 to make sure all MCU operation in linear buffer.
+On Wed, 2022-03-02 at 17:50 -0600, Rob Herring wrote:
+> On Wed, Jan 26, 2022 at 1:19 AM jason-jh.lin <
+> jason-jh.lin@mediatek.com> wrote:
+> > 
 
-136 = 128 + 8
-  128 : RXD size
-  8   : max header padding length
+[snip]
 
-[   52.007562] kernel BUG at include/linux/skbuff.h:2313!
-[   52.007578] Internal error: Oops - BUG: 0 [#1] PREEMPT SMP
-[   52.007987] pc : skb_pull+0x48/0x4c
-[   52.008015] lr : mt7921_queue_rx_skb+0x494/0x890 [mt7921_common]
-[   52.008361] Call trace:
-[   52.008377]  skb_pull+0x48/0x4c
-[   52.008400]  mt76s_net_worker+0x134/0x1b0 [mt76_sdio 35339a92c6eb7d4bbcc806a1d22f56365565135c]
-[   52.008431]  __mt76_worker_fn+0xe8/0x170 [mt76 ef716597d11a77150bc07e3fdd68eeb0f9b56917]
-[   52.008449]  kthread+0x148/0x3ac
-[   52.008466]  ret_from_fork+0x10/0x30
-
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt76.h | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 5e10fe156926..4f4ce3b3df54 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -19,7 +19,8 @@
- 
- #define MT_MCU_RING_SIZE	32
- #define MT_RX_BUF_SIZE		2048
--#define MT_SKB_HEAD_LEN		128
-+/* 136 = 128+8. 128: RXD, 8:max header padding*/
-+#define MT_SKB_HEAD_LEN		136
- 
- #define MT_MAX_NON_AQL_PKT	16
- #define MT_TXQ_FREE_THR		32
+> > jason-jh.lin (12):
+> >   dt-bindings: arm: mediatek: mmsys: add power and gce properties
+> >   dt-bindings: arm: mediatek: mmsys: add mt8195 SoC binding
+> >   dt-bindings: display: mediatek: disp: split each block to
+> > individual
+> >     yaml
+> >   dt-bindings: display: mediatek: dsc: add yaml for mt8195 SoC
+> > binding
+> >   dt-bindings: display: mediatek: merge: add additional prop for
+> > mt8195
+> >   dt-bindings: display: mediatek: add mt8195 SoC binding for
+> > vdosys0
+> >   dt-bindings: arm: mediatek: move out common module from display
+> > folder
+> >   soc: mediatek: add mtk-mmsys support for mt8195 vdosys0
+> >   soc: mediatek: add mtk-mutex support for mt8195 vdosys0
+> >   drm/mediatek: add DSC support for mediatek-drm
+> >   drm/mediatek: add MERGE support for mediatek-drm
+> >   drm/mediatek: add mediatek-drm of vdosys0 support for mt8195
+> > 
+> >  .../bindings/arm/mediatek/mediatek,mmsys.yaml |  32 ++-
+> >  .../display/mediatek/mediatek,disp.txt        | 219 --------------
+> > --
+> >  .../display/mediatek/mediatek,dither.yaml     |  76 ++++++
+> >  .../display/mediatek/mediatek,dsc.yaml        |  71 +++++
+> >  .../display/mediatek/mediatek,gamma.yaml      |  77 ++++++
+> >  .../display/mediatek/mediatek,merge.yaml      | 106 ++++++++
+> >  .../display/mediatek/mediatek,od.yaml         |  53 ++++
+> >  .../display/mediatek/mediatek,ovl-2l.yaml     |  88 +++++++
+> >  .../display/mediatek/mediatek,ovl.yaml        | 103 ++++++++
+> >  .../display/mediatek/mediatek,postmask.yaml   |  69 +++++
+> >  .../display/mediatek/mediatek,rdma.yaml       | 117 +++++++++
+> >  .../display/mediatek/mediatek,split.yaml      |  58 +++++
+> >  .../display/mediatek/mediatek,ufoe.yaml       |  61 +++++
+> >  .../bindings/soc/mediatek/mediatek,aal.yaml   |  72 +++++
+> >  .../bindings/soc/mediatek/mediatek,ccorr.yaml |  46 +++-
+> >  .../bindings/soc/mediatek/mediatek,color.yaml |  81 ++++++
+> >  .../bindings/soc/mediatek/mediatek,mutex.yaml |  77 ++++++
+> >  .../bindings/soc/mediatek/mediatek,wdma.yaml  |  47 +++-
+> >  drivers/gpu/drm/mediatek/Makefile             |   1 +
+> >  drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   8 +
+> >  drivers/gpu/drm/mediatek/mtk_disp_merge.c     | 246
+> > ++++++++++++++++++
+> >  drivers/gpu/drm/mediatek/mtk_disp_rdma.c      |   6 +
+> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |  63 +++++
+> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |   2 +
+> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  32 ++-
+> >  drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   1 +
+> >  drivers/soc/mediatek/mt8195-mmsys.h           | 130 +++++++++
+> >  drivers/soc/mediatek/mtk-mmsys.c              |  11 +
+> >  drivers/soc/mediatek/mtk-mutex.c              | 103 +++++++-
+> >  include/linux/soc/mediatek/mtk-mmsys.h        |   9 +
+> >  30 files changed, 1832 insertions(+), 233 deletions(-)
+> >  delete mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,disp.tx
+> > t
+> >  create mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,dither.
+> > yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yam
+> > l
+> >  create mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.y
+> > aml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,merge.y
+> > aml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-
+> > 2l.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yam
+> > l
+> >  create mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,postmas
+> > k.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.ya
+> > ml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,split.y
+> > aml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.ya
+> > ml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/soc/mediatek/mediatek,aal.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/soc/mediatek/mediatek,color.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+> >  create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
+> >  create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+> 
+> Looks like this is in linux-next and now:
+> 
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,aal.examp
+> le.dts:27.27-28
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,aal.examp
+> le.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.exam
+> ple.dts:27.27-28
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.exam
+> ple.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.exa
+> mple.dts:27.27-28
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.exa
+> mple.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,dither.ex
+> ample.dts:27.27-28
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,dither.ex
+> ample.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.
+> example.dts:27.27-28
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.
+> example.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.exam
+> ple.dts:27.27-28
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.exam
+> ple.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.exa
+> mple.dts:27.27-28
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.exa
+> mple.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.exam
+> ple.dts:27.27-28
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.exam
+> ple.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,od.exampl
+> e.dts:24.30-31
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,od.exampl
+> e.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,color.exa
+> mple.dts:27.27-28
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,color.exa
+> mple.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.exa
+> mple.dts:35.50-51
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.exa
+> mple.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,split.exa
+> mple.dts:24.35-36
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,split.exa
+> mple.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,merge.exa
+> mple.dts:27.35-36
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,merge.exa
+> mple.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.exa
+> mple.dts:27.27-28
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.exa
+> mple.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.examp
+> le.dts:27.27-28
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.examp
+> le.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-
+> 2l.example.dts:27.27-28
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-
+> 2l.example.dt.yaml]
+> Error 1
+> Error:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.examp
+> le.dts:27.27-28
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:386:
+> Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.examp
+> le.dt.yaml]
+> Error 1
+> 
+> Please fix 'make dt_binding_check'.
+> 
+> Rob
 -- 
-2.18.0
+
+I'll fix it at the next version.
+
+Jason-JH Lin <jason-jh.lin@mediatek.com>
 
 
 _______________________________________________
