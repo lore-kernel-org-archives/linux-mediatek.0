@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 074A9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 03:09:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16942C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 03:29:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GUcKj0lmMjXOyzDYLE2uHWTX2rKTHXhBCtmD9YSUc8I=; b=OU/DWIB9sk6h8V
-	su7JWh6fGI0Glk8hnNCvZKh9odOQblRz2NFOimpRJexruXzlqfyf9LmRBv5tMv3FcPFuwGl9wsHJW
-	rM1uVMBQ8G5Mc6nMfmytd4Eevy9Yj62GFHqcSn91UK/taQgLXyhMyxjcQ4r8Jd0rPKiVLtyZ5G7xI
-	+eu2Amecj8bCIVgCKw/uCFONfW5UPMRNBy7tja/KPzeb9RCOQp6zGGrmgCQqz1LWmM7HYEX+LjjYn
-	l5aCWuHhYrgFsiBBoXcaG0Ry51iYUdEBx5XH9BrmhV7AfR/Q9Qv0koDVeCESELN69/M/MLPsRs6eB
-	+wIJ6nc/J+gUwL14qIPA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WQAfcQbbiYn5BODAEC/snLd0+Nt46talDwE9J8NSQVk=; b=US0iL3/eIelOt/
+	DDwu6g5ltM1C/xKG+tCU02eoOPJZIQE6icbZjyMJ5xQs3h1NWI4YfIu//e0NKaaE7MXw5MbXOLa5O
+	WKRL0MAHSyqv8IBaQry1zxvII3M90n5I2sFG92JMow5TPXIqYslzVJnESIuLzPYX5KJyid/8Rx7OC
+	9hUu8hAKGbmVfdr//jWnx1TREmx0G4aFDRkAQO/iJvrzCOsj19L3EMMcaizy+4UHm6SCBelpFca6x
+	Qgt/tobxBHg2DCftzpCQQ9BWoVylC1PLCh3rHVqItuH20MMc4msHcDsdWls9RXcjMEH2j5lBrPSMf
+	hszd6TvzB1ZqIaH5WryA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPbqT-0054Zt-3G; Thu, 03 Mar 2022 03:09:37 +0000
+	id 1nPc97-0056Cg-Vo; Thu, 03 Mar 2022 03:28:53 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPbqG-0054YT-BS; Thu, 03 Mar 2022 03:09:26 +0000
-X-UUID: 344b8f0992c045f693306ce2f3ec6cfd-20220302
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=FYoFu46Ri/P04jWalAqKzU/zPnHaFA7v/wBJHfwyBso=; 
- b=Ss/HdpeMYep0qA4P9oXjsUQSCWSRuv4mJ5gD4ifagoEUYLXe9Q+5mY00xauUwZELceqhaIpkyycEFvbrjRl2vTw8ly86DaXVn2zyo/xespV+2ZJ4l53xMO2UE5Y5fywjxINOm0Vpr8Ijerb+lrNCyscXLR+9BN3zhwaKFmwnPNc=;
-X-UUID: 344b8f0992c045f693306ce2f3ec6cfd-20220302
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <xinlei.lee@mediatek.com>)
+ id 1nPc94-0056C0-PF
+ for linux-mediatek@lists.infradead.org; Thu, 03 Mar 2022 03:28:52 +0000
+X-UUID: f7b30670621a4107950f657f44b146ac-20220302
+X-UUID: f7b30670621a4107950f657f44b146ac-20220302
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <deren.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1996339880; Wed, 02 Mar 2022 20:09:18 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 2 Mar 2022 19:09:16 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 3 Mar 2022 11:09:03 +0800
-Received: from mszsdhlt06 (10.16.6.206) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 3 Mar 2022 11:09:02 +0800
-Message-ID: <dab8913e9a50110fd13650e14f35f13a30239013.camel@mediatek.com>
-Subject: Re: [PATCH v1,2/3] drm/mediatek: Add TOPCKGEN select mux control
- dpi_clk
-From: xinlei.lee <xinlei.lee@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
- <daniel@ffwll.ch>, <matthias.bgg@gmail.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <jitao.shi@mediatek.com>, <allen-kh.cheng@mediatek.com>,
- <rex-bc.chen@mediatek.com>
-Date: Thu, 3 Mar 2022 11:09:17 +0800
-In-Reply-To: <6db20053-71dc-d0e3-aac9-de5da1d7ba9e@collabora.com>
-References: <1645782833-27875-1-git-send-email-xinlei.lee@mediatek.com>
- <1645782833-27875-3-git-send-email-xinlei.lee@mediatek.com>
- <6db20053-71dc-d0e3-aac9-de5da1d7ba9e@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ with ESMTP id 1262336279; Wed, 02 Mar 2022 20:28:46 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 2 Mar 2022 19:28:45 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 3 Mar 2022 11:28:43 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 3 Mar 2022 11:28:43 +0800
+From: Deren Wu <Deren.Wu@mediatek.com>
+To: Johannes Berg <johannes@sipsolutions.net>
+CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>, Sean Wang <sean.wang@mediatek.com>, Soul Huang
+ <Soul.Huang@mediatek.com>, YN Chen <YN.Chen@mediatek.com>, Leon Yen
+ <Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, Deren Wu
+ <Deren.Wu@mediatek.com>, KM Lin <km.lin@mediatek.com>, Robin Chiu
+ <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>, Posh Sun
+ <posh.sun@mediatek.com>, Eric Liang <Eric.Liang@mediatek.com>, Stella Chang
+ <Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, "Ryder
+ Lee" <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH] mt76: fix monitor mode crash with sdio driver
+Date: Thu, 3 Mar 2022 11:28:40 +0800
+Message-ID: <d065e4492a9e995d6ebe95c7ad8a1ec6183f56ef.1646277169.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_190924_426200_EF5C79B8 
-X-CRM114-Status: GOOD (  29.08  )
+X-CRM114-CacheID: sfid-20220302_192850_851913_223E42C1 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,140 +78,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-03-02 at 10:07 +0100, AngeloGioacchino Del Regno wrote:
-> Il 25/02/22 10:53, xinlei.lee@mediatek.com ha scritto:
-> > From: Xinlei Lee <xinlei.lee@mediatek.com>
-> > 
-> > Dpi_clk is controlled by the mux selected
-> > by TOPCKGEN and APMIXEDSYS can support small resolution.
-> > 
-> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> 
-> Hello Xinlei,
-> 
-> as it was pointed out by reviewers in the MT8195 DisplayPort series,
-> that is
-> adding the same logic that you are proposing in this patch, the clock
-> parent
-> selection should be performed by the clock drivers, I'd say in the
-> callback
-> .set_rate_and_parent(), and not by the mtk_dpi driver.
-> 
-> Please fix this in the proper drivers (clocks!) instead.
-> 
-> Thanks,
-> Angelo
-> 
-> > ---
-> >   drivers/gpu/drm/mediatek/mtk_dpi.c | 38
-> > ++++++++++++++++++++++++++----
-> >   1 file changed, 34 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > index 4554e2de1430..bad686817e29 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > @@ -63,6 +63,14 @@ enum mtk_dpi_out_color_format {
-> >   	MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL
-> >   };
-> >   
-> > +enum TVDPLL_CLK {
-> > +	TVDPLL_PLL = 0,
-> > +	TVDPLL_D2 = 2,
-> > +	TVDPLL_D4 = 4,
-> > +	TVDPLL_D8 = 8,
-> > +	TVDPLL_D16 = 16,
-> > +};
-> > +
-> >   struct mtk_dpi {
-> >   	struct drm_encoder encoder;
-> >   	struct drm_bridge bridge;
-> > @@ -73,6 +81,7 @@ struct mtk_dpi {
-> >   	struct clk *engine_clk;
-> >   	struct clk *pixel_clk;
-> >   	struct clk *tvd_clk;
-> > +	struct clk *pclk_src[5];
-> >   	int irq;
-> >   	struct drm_display_mode mode;
-> >   	const struct mtk_dpi_conf *conf;
-> > @@ -459,6 +468,7 @@ static int mtk_dpi_set_display_mode(struct
-> > mtk_dpi *dpi,
-> >   	struct videomode vm = { 0 };
-> >   	unsigned long pll_rate;
-> >   	unsigned int factor;
-> > +	struct clk *clksrc = NULL;
-> >   
-> >   	/* let pll_rate can fix the valid range of tvdpll (1G~2GHz) */
-> >   	factor = dpi->conf->cal_factor(mode->clock);
-> > @@ -473,11 +483,26 @@ static int mtk_dpi_set_display_mode(struct
-> > mtk_dpi *dpi,
-> >   
-> >   	vm.pixelclock = pll_rate / factor;
-> >   	if ((dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_LE) ||
-> > -	    (dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_BE))
-> > -		clk_set_rate(dpi->pixel_clk, vm.pixelclock * 2);
-> > -	else
-> > -		clk_set_rate(dpi->pixel_clk, vm.pixelclock);
-> > +	    (dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_BE)) {
-> > +		if (factor == 8)
-> > +			clksrc = dpi->pclk_src[2];
-> > +		else if (factor == 4)
-> > +			clksrc = dpi->pclk_src[1];
-> > +		else
-> > +			clksrc = dpi->pclk_src[1];
-> > +		}
-> > +	else {
-> > +		if (factor == 8)
-> > +			clksrc = dpi->pclk_src[3];
-> > +		else if (factor == 4)
-> > +			clksrc = dpi->pclk_src[2];
-> > +		else
-> > +			clksrc = dpi->pclk_src[2];
-> > +	}
-> >   
-> > +	clk_prepare_enable(dpi->pixel_clk);
-> > +	clk_set_parent(dpi->pixel_clk, clksrc);
-> > +	clk_disable_unprepare(dpi->pixel_clk);
-> >   
-> >   	vm.pixelclock = clk_get_rate(dpi->pixel_clk);
-> >   
-> > @@ -893,6 +918,11 @@ static int mtk_dpi_probe(struct
-> > platform_device *pdev)
-> >   		return ret;
-> >   	}
-> >   
-> > +	dpi->pclk_src[1] = devm_clk_get_optional(dev, "tvdpll_d2");
-> > +	dpi->pclk_src[2] = devm_clk_get_optional(dev, "tvdpll_d4");
-> > +	dpi->pclk_src[3] = devm_clk_get_optional(dev, "tvdpll_d8");
-> > +	dpi->pclk_src[4] = devm_clk_get_optional(dev, "tvdpll_d16");
-> > +
-> >   	dpi->irq = platform_get_irq(pdev, 0);
-> >   	if (dpi->irq <= 0)
-> >   		return -EINVAL;
-> 
-> 
+From: Deren Wu <deren.wu@mediatek.com>
 
-Hi Angelo:
+mt7921s driver may receive frames with fragment buffers. If there is a
+CTS packet received in monitor mode, the payload is 10 bytes only and
+need 6 bytes header padding after RXD buffer. However, only RXD in the
+first linear buffer, if we pull buffer size RXD-size+6 bytes with
+skb_pull(), that would trigger "BUG_ON(skb->len < skb->data_len)" in
+__skb_pull().
 
-Thanks for your review, I would like to explain why I operate clk in
-dpi driver.
-A patch I mentioned on the cover: 
-http://lists.infradead.org/pipermail/linux-mediatek/2016-May/005281.html
-It contains instructions:
+To avoid the nonlinear buffer issue, enlarge the RXD size from 128 to
+136 to make sure all MCU operation in linear buffer.
 
-+ * The dpi0_sel clock should not propagate rate changes to its parent
-+ * clock so the dpi driver can have full control over PLL and divider.
+136 = 128 + 8
+  128 : RXD size
+  8   : max header padding length
 
-My understanding is that the clk driver will no longer perform the
-set_rate_and_parent() operation on dpi_clk, but will hand over the
-control to the dpi driver.
-The current modification may be to synchronize the previous clk
-modification.
-Can we operate clk on dpi driver for this reson?
+[   52.007562] kernel BUG at include/linux/skbuff.h:2313!
+[   52.007578] Internal error: Oops - BUG: 0 [#1] PREEMPT SMP
+[   52.007987] pc : skb_pull+0x48/0x4c
+[   52.008015] lr : mt7921_queue_rx_skb+0x494/0x890 [mt7921_common]
+[   52.008361] Call trace:
+[   52.008377]  skb_pull+0x48/0x4c
+[   52.008400]  mt76s_net_worker+0x134/0x1b0 [mt76_sdio 35339a92c6eb7d4bbcc806a1d22f56365565135c]
+[   52.008431]  __mt76_worker_fn+0xe8/0x170 [mt76 ef716597d11a77150bc07e3fdd68eeb0f9b56917]
+[   52.008449]  kthread+0x148/0x3ac
+[   52.008466]  ret_from_fork+0x10/0x30
 
-Best Regards!
-xinlei
+Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt76.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 5e10fe156926..4f4ce3b3df54 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -19,7 +19,8 @@
+ 
+ #define MT_MCU_RING_SIZE	32
+ #define MT_RX_BUF_SIZE		2048
+-#define MT_SKB_HEAD_LEN		128
++/* 136 = 128+8. 128: RXD, 8:max header padding*/
++#define MT_SKB_HEAD_LEN		136
+ 
+ #define MT_MAX_NON_AQL_PKT	16
+ #define MT_TXQ_FREE_THR		32
+-- 
+2.18.0
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
