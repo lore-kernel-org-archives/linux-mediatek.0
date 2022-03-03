@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D6ECC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 06:59:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59DE6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 06:59:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=sNZZE4BO6V3szGtD9G8hTRd6GIPJ4ib/iwlRL8tXuos=; b=JJOyTD6fzQGdIo
-	nPnMO7wL29jb/FzTYZmARImENQ3iwJvzpKSR24Wnbesm5IU0jBmh5JaTMn88VXYKlf7TpEVMGIwuR
-	2QqCnqVpNmssl+78RAJjZF5NaMkPc2vxyfvn1EPNCpqXBI84ou3QOxcbkSh5bIGqsFdc2oXaf4OJr
-	L9qSCoGxi7rb/zkc4lf7xNtEUK9BSLEEBv6eP9zXdoZNzKQo2wglI8UCcDTRZAr9l6ddGaIw4rTW5
-	swArNSEDB1RTOyEx44s4UEgn2ZLqxXesIefLOWNmalZxiIU/xJS6ePWKj3tVl9AN55IyEnp1EhYYf
-	FHxM1Ilg9JTjb6oQ+MFQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4V8DWeTKF5kXQRFO7QM87vkmXZmCnTegmnj5h2H1fO0=; b=DUSmJlX7IVtrQ2
+	RKYLgXWPO/HmMBFDJJzAv1Pr/HZBPauRVQQxH9CTTWmwai5P4pLpEK99+XzOEafnRQ5pvr/Mta2x0
+	+4yfe989NdaCR9TNyvuCRweZ6nBvHPua8jjrBJtE+yi3YhPjdd0k+2GY0SRkJnreQtlEDUIwzldP0
+	pWYttEkPpct4dUDuSjRBYNHB7rc3d9rukkf124lqbf3GEFZMjxHd8EfJNlBXHIpJESq7XO4nHu8dM
+	1RRIhjwo1XA4umKdufvfLGrUI8xoRQyYRgxZIEWRFBb5Kq/u+ZfJ8k8UzJqyxDYFSc29zcx38tPPk
+	/EuSTIOzQu1jynhwdm8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPfQh-005TRx-7L; Thu, 03 Mar 2022 06:59:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nPfRG-005Tni-6U; Thu, 03 Mar 2022 06:59:50 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPfP5-005SRj-5l; Thu, 03 Mar 2022 06:57:38 +0000
-X-UUID: df7f9d7654f24abda2493afeb0a491a2-20220302
-X-UUID: df7f9d7654f24abda2493afeb0a491a2-20220302
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2031509542; Wed, 02 Mar 2022 23:57:30 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 2 Mar 2022 22:57:28 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 3 Mar 2022 14:57:26 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 3 Mar 2022 14:57:26 +0800
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>, <robh+dt@kernel.org>
-CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <jassisinghbrar@gmail.com>, <fparent@baylibre.com>,
- <yongqiang.niu@mediatek.com>, <hsinyi@chromium.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>
-Subject: [RESEND V6 0/5] add display support for MediaTek SoC MT8186
-Date: Thu, 3 Mar 2022 14:57:20 +0800
-Message-ID: <20220303065725.23384-1-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1nPfQf-005TOD-1W; Thu, 03 Mar 2022 06:59:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+ References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=2m4RpdrvDWJ2Lbwggqe1wkzLSnbf7tDq1lOz4LACayk=; b=GclwX64l6V5f8kehmfrWiI/+J4
+ 8RzkcfMFFgiuiQCodv/2gnIC3ikLB3SpzKZ+MKquDyTvf/2qcEKEzwnC6vkUyw5AA6m8mjD6nBBat
+ vT32LnKyaFoveOXK23R0XVuJkpl2HRzOcOM8BKTQACcHejpQBocleespRVWlGy48Yi+s=;
+Received: from p200300daa7204f000c852a81b34becd9.dip0.t-ipconnect.de
+ ([2003:da:a720:4f00:c85:2a81:b34b:ecd9] helo=nf.local)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1nPfQN-000124-AR; Thu, 03 Mar 2022 07:58:55 +0100
+Message-ID: <2bd80da6-944c-4c9d-febf-f83b4302492a@nbd.name>
+Date: Thu, 3 Mar 2022 07:58:54 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.6.1
+Subject: Re: [PATCH 03/11] net: ethernet: mtk_eth_soc: add support for
+ Wireless Ethernet Dispatch (WED)
+Content-Language: en-US
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: netdev@vger.kernel.org, John Crispin <john@phrozen.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20220225101811.72103-1-nbd@nbd.name>
+ <20220225101811.72103-4-nbd@nbd.name>
+ <20220225221848.7c7be7f6@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
+From: Felix Fietkau <nbd@nbd.name>
+In-Reply-To: <20220225221848.7c7be7f6@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_225735_269496_D06EB307 
-X-CRM114-Status: UNSURE (   8.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220302_225913_300356_81C47E41 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,65 +71,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-v6:
-1. Remove mmsys patches which are accepted.
-2. Fix error of dt-binding.
 
-v5:
-1. Add binding patch of aal for MT8183.
-2. Revise enum to const.
-3. Change to use enum for mutex.
-4. Remove patches which are accepted by maintainers. (mmsys and mutex)
+On 26.02.22 07:18, Jakub Kicinski wrote:
+> On Fri, 25 Feb 2022 11:18:02 +0100 Felix Fietkau wrote:
+>> +	page_list = kcalloc(n_pages, sizeof(*page_list), GFP_KERNEL);
+>> +	if (!page_list)
+>> +		return -ENOMEM;
+>> +
+>> +	dev->buf_ring.size = ring_size;
+>> +	dev->buf_ring.pages = page_list;
+>> +
+>> +	desc = dma_alloc_coherent(dev->hw->dev, ring_size * sizeof(*desc),
+>> +				  &desc_phys, GFP_KERNEL);
+>> +	if (!desc)
+>> +		return -ENOMEM;
+>> +
+>> +	dev->buf_ring.desc = desc;
+>> +	dev->buf_ring.desc_phys = desc_phys;
+>> +
+>> +	for (i = 0, page_idx = 0; i < ring_size; i += MTK_WED_BUF_PER_PAGE) {
+>> +		dma_addr_t page_phys, buf_phys;
+>> +		struct page *page;
+>> +		void *buf;
+>> +		int s;
+>> +
+>> +		page = __dev_alloc_pages(GFP_KERNEL, 0);
+>> +		if (!page)
+>> +			return -ENOMEM;
+> 
+> I haven't looked at the code, yet, but this sure looks leaky.
+It's not leaky. If the alloc fails, mtk_wed_detach is still called, 
+which cleans up even incomplete ring allocations.
 
-v4:
-1. Remove binding of dsi and dpi.
-2. Revise aal binding.
-3. Fix indention in [4/5].
-
-v3:
-1. Modify display binding based on mtk display binding patch. ([1])
-2. Remove patch: drm/mediatek: separate postmask component from mtk_disp_drv.c
-3. Remove compatible of 8186 ovl because we can re-use compatible of 8192 for 8186.
-4. Fix issue of space before tab on mutex patch.
-
-[1]: https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/commit/?h=mediatek-drm-next&id=4ed545e7d10049b5492afc184e61a67e478a2cfd
-
-v2:
-1. Add binding documentation for mmsys, mutex and mtk_display.
-2. Remove duplicated definition of postmask registers on mtk_drm_drv.
-3. Add disp_ovl support for MT8186.
-4. Add detailed commit messages.
-
-Rex-BC Chen (4):
-  dt-bindings: display: mediatek: add aal binding for MT8183
-  dt-bindings: display: mediatek: revise enum to const
-  dt-bindings: display: mediatek: change to use enum for mutex
-  dt-bindings: display: mediatek: add MT8186 SoC binding
-
-Yongqiang Niu (1):
-  drm/mediatek: add display support for MT8186
-
- .../display/mediatek/mediatek,aal.yaml        |  7 +++-
- .../display/mediatek/mediatek,ccorr.yaml      |  5 ++-
- .../display/mediatek/mediatek,color.yaml      |  7 ++--
- .../display/mediatek/mediatek,dither.yaml     |  4 +--
- .../display/mediatek/mediatek,gamma.yaml      |  4 +--
- .../display/mediatek/mediatek,mutex.yaml      | 25 ++++++--------
- .../display/mediatek/mediatek,ovl-2l.yaml     |  4 +++
- .../display/mediatek/mediatek,ovl.yaml        |  8 +++--
- .../display/mediatek/mediatek,postmask.yaml   |  4 +++
- .../display/mediatek/mediatek,rdma.yaml       |  7 ++--
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 33 +++++++++++++++++++
- 11 files changed, 76 insertions(+), 32 deletions(-)
-
--- 
-2.18.0
-
+- Felix
 
 _______________________________________________
 Linux-mediatek mailing list
