@@ -4,60 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EAADC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 13:33:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8DEDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 14:10:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yLLQwPKu2XxnBBKR3T/2bRGMPSIeKxfkMpUm4FfGT0c=; b=IF+CvkbTfIW653
-	9CtHkh6Kf8EAgnJOBXbmB2HW7xvsKbxSVrbakh4PCEbEj7cA8mdVK2eFm7FQHnFOuP57rKAPqCvkX
-	1CN4b2QQvxZl009PBNU3JHEKcUi52PG8ZJuBVG2+KXwm1UPEBzv9KY6JeLRyCT4E/CNlG80LQ2Za/
-	fr8E9jIAwN6xxehvP8TByixqLdiW9AdL77L/HXJ5ZflQT4yrFOO/qwOXzI3Bx5kKm1k4ZpyUIxiWJ
-	mSlJBqi2cL+0ZXpedUyxGwdQIYGhXl2EJs7EKfRYjsJ4zl1vhkf0rrdQeKj4FDif1qf5K+yKaaGxQ
-	54EsbKlHEgRrdyxAnrVw==;
+	List-Owner; bh=SooL+hZ49NZcUQNiRelVVJ9RMzsN5Cnt11nESMMZ/qU=; b=XUlJg77NyQiv1s
+	IKMA2PDciQ2Zz4Q5aHUqkJMu8yarGi3z2EhXSA3gLCNWr8IFozGbqGsfK1wdBFJIAP9/dn14N1+YZ
+	rlmCS1hjnRPnNA+B5RGeuhKbGfnWIJUWnMj9QE3Ub0UVoUsrTteXsKv4WYXsio+uxf8+FOWNmuhSx
+	k5liMvaDPxohH+J7c6vRa0khXOeeRmAy4VKfMZnf6uN5u4SKuYYoAiu3LhEbErHKO7HPm79kgS5Pa
+	FxZ3FUWJgB8+l1nsN+zWiUN+XHs3ukn+rpQlda10T1EE9TCNvO8AsQUy2HJ7FIhOhn5PvLUe6JK3A
+	rbVqwNXPsBxr57Iq21dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPlaB-006VS7-Am; Thu, 03 Mar 2022 13:33:27 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nPmA3-006ZQ2-NJ; Thu, 03 Mar 2022 14:10:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPlZy-006VPi-Ta; Thu, 03 Mar 2022 13:33:16 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 486FDB8254C;
- Thu,  3 Mar 2022 13:33:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6EAC9C004E1;
- Thu,  3 Mar 2022 13:33:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646314391;
- bh=p2C7b5c/cUQV9McqiJLePU5w1eCpvl0FqwxxR66KW3c=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=Hfiz7SzlXv23kTOu2VKGxKVgiYhP4fTT7098Cx4jimhp/UBzWjBSlsmpA4PwCP0BI
- ZDn+4+G8eE+Iiin/G+HGlKI6JW89ENHtP3szsQLgOSJpIUUy5K/pMmyikLSpu5n+uo
- FmBzmcY/4fnqIXvljAWbFHPO9duZuh4Eu92asbi6E0Ok1Q2k1rV1FNfj3DydPqGydM
- LzbDei8LBdviYQKbIAqDRRTnXwVO0YP7vKSG0beUdQgR9lz7BV30dEfxK9bfzRBjRR
- 4BOUrXs9w/KhHeeD6RZ4xWEsRaFwbg8sAZhSs3AY+RxNozi4NlZ9Im31Fupzl18zwG
- Hb8uFwEI84NCg==
-From: Mark Brown <broonie@kernel.org>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org, perex@perex.cz,
- devicetree@vger.kernel.org, trevor.wu@mediatek.com, tzungbi@google.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com, matthias.bgg@gmail.com,
- linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org,
- linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20220302013533.29068-1-jiaxin.yu@mediatek.com>
-References: <20220302013533.29068-1-jiaxin.yu@mediatek.com>
-Subject: Re: [v2] ASoC: bt-sco: fix bt-sco-pcm-wb dai widget don't connect to
- the endpoint
-Message-Id: <164631438805.1870788.7887428309950116158.b4-ty@kernel.org>
-Date: Thu, 03 Mar 2022 13:33:08 +0000
+ id 1nPm9n-006ZNz-VP; Thu, 03 Mar 2022 14:10:19 +0000
+X-UUID: b8356da488b8483aa896aa3fc7630206-20220303
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=doF9OblTASq2FuWLfBNoe602wJD34O5r4WQy4FmdrSY=; 
+ b=a2TeG+JtQ98MlgpRrd4EEomAt3xqm3bA4j0E6Ql8wnPSVspugS2k0K7V58IwhCOaL6HliLqU/k3i0jNRbi3N6uHxbauUqG+5kk0d//QcnVzXcj1N2jYHTD3cma4L1leK3X+T2tqTjuJuCCSWcFL2JwtpYIoSGli7Qarzhaekenk=;
+X-UUID: b8356da488b8483aa896aa3fc7630206-20220303
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <jiaxin.yu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1420362735; Thu, 03 Mar 2022 07:10:10 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 3 Mar 2022 06:10:09 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 3 Mar 2022 22:10:07 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 3 Mar 2022 22:10:06 +0800
+Message-ID: <9ba63387baecf598db696d0ebbc1583406a57a62.camel@mediatek.com>
+Subject: Re: [v2 09/17] ASoC: mediatek: mt8186: support tdm in platform driver
+From: Jiaxin Yu <jiaxin.yu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ <broonie@kernel.org>
+CC: <lgirdwood@gmail.com>, <tiwai@suse.com>, <robh+dt@kernel.org>,
+ <matthias.bgg@gmail.com>, <perex@perex.cz>, <p.zabel@pengutronix.de>,
+ <geert+renesas@glider.be>, <trevor.wu@mediatek.com>, <tzungbi@google.com>,
+ <aaronyu@google.com>, <zhangqilong3@huawei.com>,
+ <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>
+Date: Thu, 3 Mar 2022 22:10:06 +0800
+In-Reply-To: <fcae42a5-6e11-e683-8f3a-453650f08d38@collabora.com>
+References: <20220217134205.15400-1-jiaxin.yu@mediatek.com>
+ <20220217134205.15400-10-jiaxin.yu@mediatek.com>
+ <fcae42a5-6e11-e683-8f3a-453650f08d38@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220303_053315_146134_D61DE492 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20220303_061017_464302_BCE36933 
+X-CRM114-Status: GOOD (  23.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,44 +84,468 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2 Mar 2022 09:35:33 +0800, Jiaxin Yu wrote:
-> This patch fix the second dai driver's dai widget can't connect to the
-> endpoint. Because "bt-sco-pcm" and "bt-sco-pcm-wb" dai driver have the
-> same stream_name, so it will cause they have the same widget name.
-> Therefor it will just create only one route when do snd_soc_dapm_add_route
-> that only find the widget through the widget name.
+On Fri, 2022-02-18 at 15:54 +0100, AngeloGioacchino Del Regno wrote:
+> Il 17/02/22 14:41, Jiaxin Yu ha scritto:
+> > This patch adds mt8186 tdm dai driver.
+> > 
+> > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> > ---
+> >   sound/soc/mediatek/mt8186/mt8186-dai-tdm.c | 713
+> > +++++++++++++++++++++
+> >   1 file changed, 713 insertions(+)
+> >   create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
+> > 
+> > diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
+> > b/sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
+> > new file mode 100644
+> > index 000000000000..28dd3661f0e0
+> > --- /dev/null
+> > +++ b/sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
+> > @@ -0,0 +1,713 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +//
+> > +// MediaTek ALSA SoC Audio DAI TDM Control
+> > +//
+> > +// Copyright (c) 2022 MediaTek Inc.
+> > +// Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> > +
+> > +#include <linux/regmap.h>
+> > +#include <sound/pcm_params.h>
+> > +
+> > +#include "mt8186-afe-clk.h"
+> > +#include "mt8186-afe-common.h"
+> > +#include "mt8186-afe-gpio.h"
+> > +#include "mt8186-interconnection.h"
+> > +
+> > +#define TDM_HD_EN_W_NAME "TDM_HD_EN"
+> > +#define TDM_MCLK_EN_W_NAME "TDM_MCLK_EN"
+> > +#define MTK_AFE_TDM_KCONTROL_NAME "TDM_HD_Mux"
+> > +
+> > +struct mtk_afe_tdm_priv {
+> > +	unsigned int id;
+> > +	unsigned int rate; /* for determine which apll to use */
+> > +	unsigned int bck_invert;
+> > +	unsigned int lck_invert;
+> > +	unsigned int lrck_width;
+> > +	unsigned int mclk_id;
+> > +	unsigned int mclk_multiple; /* according to sample rate */
+> > +	unsigned int mclk_rate;
+> > +	unsigned int mclk_apll;
+> > +	unsigned int tdm_mode;
+> > +	unsigned int data_mode;
+> > +	unsigned int slave_mode;
+> > +	unsigned int low_jitter_en;
+> > +};
+> > +
+> > +enum {
+> > +	TDM_IN_I2S = 0,
+> > +	TDM_IN_LJ = 1,
+> > +	TDM_IN_RJ = 2,
+> > +	TDM_IN_DSP_A = 4,
+> > +	TDM_IN_DSP_B = 5,
+> > +};
+> > +
+> > +enum {
+> > +	TDM_DATA_ONE_PIN = 0,
+> > +	TDM_DATA_MULTI_PIN,
+> > +};
+> > +
+> > +enum {
+> > +	TDM_BCK_NON_INV = 0,
+> > +	TDM_BCK_INV = 1,
+> > +};
+> > +
+> > +enum {
+> > +	TDM_LCK_NON_INV = 0,
+> > +	TDM_LCK_INV = 1,
+> > +};
+> > +
+> > +static unsigned int get_tdm_lrck_width(snd_pcm_format_t format,
+> > +				       unsigned int mode)
+> > +{
+> > +	if (mode == TDM_IN_DSP_A || mode == TDM_IN_DSP_B)
+> > +		return 0;
+> > +	else
 > 
+> Drop the "else"
 > 
-> [...]
+> > +		return snd_pcm_format_physical_width(format) - 1;
+> > +}
+> > +
+> > +static unsigned int get_tdm_ch_fixup(unsigned int channels)
+> > +{
+> > +	if (channels > 4)
+> > +		return 8;
+> > +	else if (channels > 2)
+> > +		return 4;
+> > +	else
+> 
+> Same here
+> 
+> > +		return 2;
+> > +}
+> > +
+> > +static unsigned int get_tdm_ch_per_sdata(unsigned int mode,
+> > +					 unsigned int channels)
+> > +{
+> > +	if (mode == TDM_IN_DSP_A || mode == TDM_IN_DSP_B)
+> > +		return get_tdm_ch_fixup(channels);
+> > +	else
+> 
+> ...and same here
+> 
+> > +		return 2;
+> > +}
+> > +
+> > +enum {
+> > +	SUPPLY_SEQ_APLL,
+> > +	SUPPLY_SEQ_TDM_MCK_EN,
+> > +	SUPPLY_SEQ_TDM_HD_EN,
+> > +	SUPPLY_SEQ_TDM_EN,
+> > +};
+> > +
+> > +static int get_tdm_id_by_name(const char *name)
+> > +{
+> > +	return MT8186_DAI_TDM_IN;
+> > +}
+> > +
+> > +static int mtk_tdm_en_event(struct snd_soc_dapm_widget *w,
+> > +			    struct snd_kcontrol *kcontrol,
+> > +			    int event)
+> > +{
+> > +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w-
+> > >dapm);
+> > +	struct mtk_base_afe *afe =
+> > snd_soc_component_get_drvdata(cmpnt);
+> > +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
+> > +	int dai_id = get_tdm_id_by_name(w->name);
+> > +	struct mtk_afe_tdm_priv *tdm_priv = afe_priv->dai_priv[dai_id];
+> > +
+> > +	if (!tdm_priv) {
+> > +		dev_info(afe->dev, "%s(), tdm_priv == NULL", __func__);
+> 
+> dev_err()
+> 
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	dev_dbg(cmpnt->dev, "%s(), name %s, event 0x%x\n",
+> > +		__func__, w->name, event);
+> > +
+> > +	switch (event) {
+> > +	case SND_SOC_DAPM_PRE_PMU:
+> > +		mt8186_afe_gpio_request(afe->dev, true, tdm_priv->id,
+> > 0);
+> > +		break;
+> > +	case SND_SOC_DAPM_POST_PMD:
+> > +		mt8186_afe_gpio_request(afe->dev, false, tdm_priv->id,
+> > 0);
+> > +		break;
+> > +	default:
+> > +		break;
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_tdm_mck_en_event(struct snd_soc_dapm_widget *w,
+> > +				struct snd_kcontrol *kcontrol,
+> > +				int event)
+> > +{
+> > +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w-
+> > >dapm);
+> > +	struct mtk_base_afe *afe =
+> > snd_soc_component_get_drvdata(cmpnt);
+> > +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
+> > +	int dai_id = get_tdm_id_by_name(w->name);
+> > +	struct mtk_afe_tdm_priv *tdm_priv = afe_priv->dai_priv[dai_id];
+> > +
+> > +	if (!tdm_priv) {
+> > +		dev_info(afe->dev, "%s(), tdm_priv == NULL", __func__);
+> 
+> dev_err() - please fix all other instances
+> 
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	dev_dbg(cmpnt->dev, "%s(), name %s, event 0x%x, dai_id %d\n",
+> > +		__func__, w->name, event, dai_id);
+> > +
+> > +	switch (event) {
+> > +	case SND_SOC_DAPM_PRE_PMU:
+> > +		mt8186_mck_enable(afe, tdm_priv->mclk_id, tdm_priv-
+> > >mclk_rate);
+> > +		break;
+> > +	case SND_SOC_DAPM_POST_PMD:
+> > +		tdm_priv->mclk_rate = 0;
+> > +		mt8186_mck_disable(afe, tdm_priv->mclk_id);
+> > +		break;
+> > +	default:
+> > +		break;
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> 
+> ...snip...
+> 
+> > +
+> > +static int mt8186_tdm_hd_set(struct snd_kcontrol *kcontrol,
+> > +			     struct snd_ctl_elem_value *ucontrol)
+> > +{
+> > +	struct snd_soc_component *cmpnt =
+> > snd_soc_kcontrol_component(kcontrol);
+> > +	struct mtk_base_afe *afe =
+> > snd_soc_component_get_drvdata(cmpnt);
+> > +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
+> > +	int dai_id = get_tdm_id_by_name(kcontrol->id.name);
+> > +	struct mtk_afe_tdm_priv *tdm_priv = afe_priv->dai_priv[dai_id];
+> > +	struct soc_enum *e = (struct soc_enum *)kcontrol-
+> > >private_value;
+> > +	int hd_en;
+> > +
+> > +	if (ucontrol->value.enumerated.item[0] >= e->items)
+> > +		return -EINVAL;
+> > +
+> > +	hd_en = ucontrol->value.integer.value[0];
+> > +
+> > +	dev_info(afe->dev, "%s(), kcontrol name %s, hd_en %d\n",
+> > +		 __func__, kcontrol->id.name, hd_en);
+> 
+> dev_dbg()
+> 
+> > +
+> > +	if (!tdm_priv) {
+> > +		dev_info(afe->dev, "%s(), tdm_priv == NULL", __func__);
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	tdm_priv->low_jitter_en = hd_en;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static const struct snd_kcontrol_new mtk_dai_tdm_controls[] = {
+> > +	SOC_ENUM_EXT(MTK_AFE_TDM_KCONTROL_NAME, mt8186_tdm_enum[0],
+> > +		     mt8186_tdm_hd_get, mt8186_tdm_hd_set),
+> > +};
+> > +
+> > +static const struct snd_soc_dapm_route mtk_dai_tdm_routes[] = {
+> > +	{"TDM IN", NULL, "aud_tdm_clk"},
+> > +	{"TDM IN", NULL, "TDM_EN"},
+> > +	{"TDM IN", NULL, TDM_HD_EN_W_NAME, mtk_afe_tdm_hd_connect},
+> > +	{TDM_HD_EN_W_NAME, NULL, APLL1_W_NAME,
+> > mtk_afe_tdm_apll_connect},
+> > +	{TDM_HD_EN_W_NAME, NULL, APLL2_W_NAME,
+> > mtk_afe_tdm_apll_connect},
+> > +
+> > +	{"TDM IN", NULL, TDM_MCLK_EN_W_NAME, mtk_afe_tdm_mclk_connect},
+> > +	{TDM_MCLK_EN_W_NAME, NULL, APLL1_W_NAME,
+> > mtk_afe_tdm_mclk_apll_connect},
+> > +	{TDM_MCLK_EN_W_NAME, NULL, APLL2_W_NAME,
+> > mtk_afe_tdm_mclk_apll_connect},
+> > +
+> > +	/* allow tdm on without codec on */
+> > +	{"TDM IN", NULL, "TDM_In_Mux"},
+> > +	{"TDM_In_Mux", "Dummy_Widget", "TDM_DUMMY_IN"},
+> > +};
+> > +
+> > +/* dai ops */
+> > +static int mtk_dai_tdm_cal_mclk(struct mtk_base_afe *afe,
+> > +				struct mtk_afe_tdm_priv *tdm_priv,
+> > +				int freq)
+> > +{
+> > +	int apll;
+> > +	int apll_rate;
+> > +
+> > +	apll = mt8186_get_apll_by_rate(afe, freq);
+> > +	apll_rate = mt8186_get_apll_rate(afe, apll);
+> > +
+> > +	if (!freq || freq > apll_rate) {
+> > +		dev_info(afe->dev,
+> > +			 "%s(), freq(%d Hz) invalid\n", __func__,
+> > freq);
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	if (apll_rate % freq != 0) {
+> > +		dev_info(afe->dev,
+> > +			 "%s(), APLL cannot generate %d Hz", __func__,
+> > freq);
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	tdm_priv->mclk_rate = freq;
+> > +	tdm_priv->mclk_apll = apll;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_dai_tdm_hw_params(struct snd_pcm_substream
+> > *substream,
+> > +				 struct snd_pcm_hw_params *params,
+> > +				 struct snd_soc_dai *dai)
+> > +{
+> > +	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+> > +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
+> > +	int tdm_id = dai->id;
+> > +	struct mtk_afe_tdm_priv *tdm_priv = afe_priv->dai_priv[tdm_id];
+> > +	unsigned int tdm_mode = tdm_priv->tdm_mode;
+> > +	unsigned int data_mode = tdm_priv->data_mode;
+> > +	unsigned int rate = params_rate(params);
+> > +	unsigned int channels = params_channels(params);
+> > +	snd_pcm_format_t format = params_format(params);
+> > +	unsigned int bit_width =
+> > +		snd_pcm_format_physical_width(format);
+> > +	unsigned int tdm_channels = (data_mode == TDM_DATA_ONE_PIN) ?
+> > +		get_tdm_ch_per_sdata(tdm_mode, channels) : 2;
+> > +	unsigned int lrck_width =
+> > +		get_tdm_lrck_width(format, tdm_mode);
+> > +	unsigned int tdm_con = 0;
+> > +	bool slave_mode = tdm_priv->slave_mode;
+> > +	bool lrck_inv = tdm_priv->lck_invert;
+> > +	bool bck_inv = tdm_priv->bck_invert;
+> > +	unsigned int ctrl_reg;
+> > +	unsigned int ctrl_mask;
+> > +	unsigned int tran_rate;
+> > +	unsigned int tran_relatch_rate;
+> > +
+> > +	if (tdm_priv)
+> > +		tdm_priv->rate = rate;
+> > +	else
+> > +		dev_info(afe->dev, "%s(), tdm_priv == NULL", __func__);
+> > +
+> > +	tran_rate = mt8186_rate_transform(afe->dev, rate, dai->id);
+> > +	tran_relatch_rate = mt8186_tdm_relatch_rate_transform(afe->dev, 
+> > rate);
+> > +
+> > +	/* calculate mclk_rate, if not set explicitly */
+> > +	if (!tdm_priv->mclk_rate) {
+> > +		tdm_priv->mclk_rate = rate * tdm_priv->mclk_multiple;
+> > +		mtk_dai_tdm_cal_mclk(afe,
+> > +				     tdm_priv,
+> > +				     tdm_priv->mclk_rate);
+> > +	}
+> > +
+> > +	/* ETDM_IN1_CON0 */
+> > +	tdm_con |= slave_mode << ETDM_IN1_CON0_REG_SLAVE_MODE_SFT;
+> > +	tdm_con |= tdm_mode << ETDM_IN1_CON0_REG_FMT_SFT;
+> > +	tdm_con |= (bit_width - 1) << ETDM_IN1_CON0_REG_BIT_LENGTH_SFT;
+> > +	tdm_con |= (bit_width - 1) <<
+> > ETDM_IN1_CON0_REG_WORD_LENGTH_SFT;
+> > +	tdm_con |= (tdm_channels - 1) << ETDM_IN1_CON0_REG_CH_NUM_SFT;
+> > +	/* default disable sync mode */
+> > +	tdm_con |= 0 << ETDM_IN1_CON0_REG_SYNC_MODE_SFT;
+> 
+> 0 << (anything) == 0
+> 
+> (number |= 0) == number
+> 
+> Is this a mistake, or are you really doing nothing here?
+> 
+No, this is just to emphasize the need to set this bit to 0.
+It really do nothing here, just link a reminder.
+Can I keep this sentence?
+> 
+> > +	/* relatch fix to h26m */
+> > +	tdm_con |= 0 << ETDM_IN1_CON0_REG_RELATCH_1X_EN_SEL_DOMAIN_SFT;
+> > +
+> > +	ctrl_reg = ETDM_IN1_CON0;
+> > +	ctrl_mask = ETDM_IN_CON0_CTRL_MASK;
+> > +	regmap_update_bits(afe->regmap, ctrl_reg, ctrl_mask, tdm_con);
+> > +
+> > +	/* ETDM_IN1_CON1 */
+> > +	tdm_con = 0;
+> > +	tdm_con |= 0 << ETDM_IN1_CON1_REG_LRCK_AUTO_MODE_SFT;
+> > +	tdm_con |= 1 << ETDM_IN1_CON1_PINMUX_MCLK_CTRL_OE_SFT;
+> > +	tdm_con |= (lrck_width - 1) <<
+> > ETDM_IN1_CON1_REG_LRCK_WIDTH_SFT;
+> > +
+> > +	ctrl_reg = ETDM_IN1_CON1;
+> > +	ctrl_mask = ETDM_IN_CON1_CTRL_MASK;
+> > +	regmap_update_bits(afe->regmap, ctrl_reg, ctrl_mask, tdm_con);
+> 
+> You don't need the ctrl_reg, nor ctrl_mask variables...
+I was trying to avoid a line of more than 80 words, so I shortened the
+number of words through variables.
 
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/1] ASoC: bt-sco: fix bt-sco-pcm-wb dai widget don't connect to the endpoint
-      commit: 8f2b025abc31bc15d38657d1286d7470bbbd5efa
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+> 
+> regmap_update_bits(afe->regmap, ETDM_IN1_CON1,
+> ETDM_IN_CON1_CTRL_MASK, tdm_con);
+> 
+> > +
+> > +	/* ETDM_IN1_CON3 */
+> > +	tdm_con = 0;
+> > +	tdm_con = ETDM_IN_CON3_FS(tran_rate);
+> > +
+> > +	ctrl_reg = ETDM_IN1_CON3;
+> > +	ctrl_mask = ETDM_IN_CON3_CTRL_MASK;
+> > +	regmap_update_bits(afe->regmap, ctrl_reg, ctrl_mask, tdm_con);
+> 
+> same here
+> 
+> > +
+> > +	/* ETDM_IN1_CON4 */
+> > +	tdm_con = 0;
+> > +	tdm_con = ETDM_IN_CON4_FS(tran_relatch_rate);
+> > +	if (slave_mode) {
+> > +		if (lrck_inv)
+> > +			tdm_con |= ETDM_IN_CON4_CON0_SLAVE_LRCK_INV;
+> > +		if (bck_inv)
+> > +			tdm_con |= ETDM_IN_CON4_CON0_SLAVE_BCK_INV;
+> > +	} else {
+> > +		if (lrck_inv)
+> > +			tdm_con |= ETDM_IN_CON4_CON0_MASTER_LRCK_INV;
+> > +		if (bck_inv)
+> > +			tdm_con |= ETDM_IN_CON4_CON0_MASTER_BCK_INV;
+> > +	}
+> > +
+> > +	ctrl_reg = ETDM_IN1_CON4;
+> > +	ctrl_mask = ETDM_IN_CON4_CTRL_MASK;
+> > +	regmap_update_bits(afe->regmap, ctrl_reg, ctrl_mask, tdm_con);
+> 
+> and here
+> 
+> > +
+> > +	/* ETDM_IN1_CON2 */
+> > +	tdm_con = 0;
+> > +	if (data_mode == TDM_DATA_MULTI_PIN) {
+> > +		tdm_con |= ETDM_IN_CON2_MULTI_IP_2CH_MODE;
+> > +		tdm_con |= ETDM_IN_CON2_MULTI_IP_CH(channels);
+> > +	}
+> > +
+> > +	ctrl_reg = ETDM_IN1_CON2;
+> > +	ctrl_mask = ETDM_IN_CON2_CTRL_MASK;
+> > +	regmap_update_bits(afe->regmap, ctrl_reg, ctrl_mask, tdm_con);
+> 
+> and here
+> 
+> > +
+> > +	/* ETDM_IN1_CON8 */
+> > +	tdm_con = 0;
+> > +	if (slave_mode) {
+> > +		tdm_con |= 1 << ETDM_IN1_CON8_REG_ETDM_USE_AFIFO_SFT;
+> > +		tdm_con |= 0 <<
+> > ETDM_IN1_CON8_REG_AFIFO_CLOCK_DOMAIN_SEL_SFT;
+> > +		tdm_con |= ETDM_IN_CON8_FS(tran_relatch_rate);
+> > +	} else {
+> > +		tdm_con |= 0 << ETDM_IN1_CON8_REG_ETDM_USE_AFIFO_SFT;
+> > +	}
+> > +
+> > +	ctrl_reg = ETDM_IN1_CON8;
+> > +	ctrl_mask = ETDM_IN_CON8_CTRL_MASK;
+> > +	regmap_update_bits(afe->regmap, ctrl_reg, ctrl_mask, tdm_con);
+> 
+> finally, here too.
+> 
+> > +
+> > +	return 0;
+> > +}
+> > +
+> 
+> Thanks,
+> ANgelo
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
