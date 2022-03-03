@@ -4,66 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3438BC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 12:03:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA29C4321E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 12:18:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nUZnG6y2lWdgWCqG7Dp3zbomsCqxL51xcyy5ftvpA+k=; b=yMz37eNaHVU0Oj2Av5KShlPq6D
-	3AUErWn0IvqfNg/fLjEvGdiRrhuxDq3jyaKxRNDFJJMeqkY9pW5x/hMnJE5xsT75cY5kVjnsfM5+i
-	E9xVMPsr1W/CoAVpBQAnl3W704Bp7O+4JvHZmiw8Lf2RleJ7KWzN0ZNAWEDXtlKc89qNl5z8Zs8J9
-	bgTcjNBSSBzyml8GQ0e3T0vHt3G2DdHQN4FbX4YkERJkkrS4sd/HzajJ/j+uJMP+VmZOyft8/cUXo
-	+fQzoOMrRnE4+j79+peuvZPFW6RlsXFcIwXz422fGf7VsMwanMP8Cm+VE5upu5kdmlNHt8d30idJf
-	yw71AZWw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qIeTO7Nqr7lRHkJrYidGqGPydpj8R12YW9qyFPWLtdw=; b=yHwMIIRHgsWVlA
+	IZmCJHbobmRhsKil1miuBFDEGW9Btmmm4RlH+M37/4P6uAryDyfBxnX1DWUS0/8u3/wU8w6x57b6y
+	+wMWG4inPvjP/kz814khE9HGrSVMSbTZ0A4SDHvLuKGkHmFLQde3+0/8mBLXgck3DSJaJXwKz/w/E
+	f4Z+CenzvpqiTZhdWhyJfmKCejNKaVjiqUMhACvtVAbXVoX+M1/B7XMNRA7XqKW8KcQlIEZGfd1hu
+	PradOEXATjFv+L/BVIw0KUhrsrCeHSZqqCrzdPgpq1S5HoQsf/sxqtptaxQMvX0Ife89CQnohhYZ7
+	jUxujMDbYr+fjr6VJX9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPkAk-006Hl0-NS; Thu, 03 Mar 2022 12:03:06 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nPkPk-006JMW-E7; Thu, 03 Mar 2022 12:18:36 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPkAX-006HiU-ES; Thu, 03 Mar 2022 12:02:54 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id B3B52617B8;
- Thu,  3 Mar 2022 12:02:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C15EC004E1;
- Thu,  3 Mar 2022 12:02:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646308972;
- bh=joVFOZmms9HBOXgoZuJ9RkqFVCdj5U89jr7ZSVH6EQM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=TZZSF6TfMAQvdtUbORxyyZ1laxtoEDK+breNkO3og95FYG+sCa+lfCi20qQth4/yt
- CED3FwKQEixoFfzJDy1Px5awEACzAjHNWNtPw7YhoX20sBuRmdZ0gN1plPHNcwN1zu
- QsBhk0dinEYAp4Hc/tMYSHYOJ+8VGk5lg6NtzCh1PlXdy21Rx36AVYCH66UEmG2G1D
- ObRTKStZHJ5iZw4A87eI5bTzqTzkKAedEzmkUzzKEV6+/ZarqU7pxVlKrbDq/5VjlB
- cx4nyHUS4axCPej7NQkRqcft0KhM9ywXE3A8nbgJRN9TfgAmZa5ZQVbrW1yYPRU+E8
- kyjdwCJC5gaZg==
-Date: Thu, 3 Mar 2022 13:02:45 +0100
-From: Wolfram Sang <wsa@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: qii.wang@mediatek.com, matthias.bgg@gmail.com,
- linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com, Qii Wang <wii.wang@mediatek.com>
-Subject: Re: [PATCH v2] i2c: busses: i2c-mt65xx: Simplify with clk-bulk
-Message-ID: <YiCuZZs8T6AKtpbe@shikoro>
-Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- qii.wang@mediatek.com, matthias.bgg@gmail.com,
- linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com, Qii Wang <wii.wang@mediatek.com>
-References: <20220303091547.17522-1-angelogioacchino.delregno@collabora.com>
- <22eccb9e-45fa-683e-640d-6f34fa63ca52@collabora.com>
+ id 1nPkPf-006JIe-6O
+ for linux-mediatek@lists.infradead.org; Thu, 03 Mar 2022 12:18:34 +0000
+Received: by mail-wr1-x434.google.com with SMTP id u1so7514685wrg.11
+ for <linux-mediatek@lists.infradead.org>; Thu, 03 Mar 2022 04:18:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=W95klwG+EWnuJlXqfneyIPG4bMJIpYFCGfgCPBAo/s4=;
+ b=BVoUYAMy6igzOx7YCxgmD2obGVeA4FBbFy39UaDXpcyotfQj1WSs4cD2dBmZ3jehpH
+ Xv0H27JfD7LtNc3KTOYt5JsPQaESLbVZdrRIjVdCS/EqEN+LtHV3OI92ZhbhaxnOPsMB
+ zwIbvmQMtvcWtqQz/AOpNYfJzkMTFsv4hojr0PuJEFUbZHgxYNi3BKpDV1mgkUzm+fR0
+ 4lMaaRE5yh5PGutSdpreHiYAqhMDl6KUHTvi2q6aV5S93rhbYz2wGWOzwPq3hB3YVbYG
+ uAhL64o8wkOM/gpLUr2Hb7oB/DraMZLkoBj2jGHmKGFPjyxdoWyrLbd/6WyXGtmMO48w
+ vp2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=W95klwG+EWnuJlXqfneyIPG4bMJIpYFCGfgCPBAo/s4=;
+ b=0uOEetJaKjKj3cXUYKd6MqLRRHK6f4GQv8YtHA45vgLBxi2r1Rf4spCYiBs7q4H/e6
+ tMkpsNcuvDtmxujUsPYKIVx3DKIuCMHOu1c8cUZ1VX38aw4jjExDhLw3t1B4PZ28kBC+
+ lgzTgYJqy51riBGipKwNhnot3KOvQefI7aHbWQrI8dtwE+/Hv+27hipygeKbvWE6Qy+U
+ uzTfpw6StYfFsAPCk1jm6GQpguumK9G37ym4bNR5Brio2v3puS0nHFRyb3p4f4QSgrXp
+ BCx53n3VTTQCgmwEK88IxphHtPoidjPB28i1HGa2E6qsXRThLcfEeGb8oXqfbIVXiOi2
+ 2qNw==
+X-Gm-Message-State: AOAM532fvXybT1xuq6iPj7N8b3kMC1tRBGHL+/zN5i98/zdJ+xGUO/AI
+ 13keyRaBCLH4CmpJCG0Tv+h9Kw==
+X-Google-Smtp-Source: ABdhPJwgYeUN7RS9hQRShRziePljKQd/1cMutSSEkk4MeQ2QRRtTjZSLz5QSndDd2pML49XlqkHAqw==
+X-Received: by 2002:a5d:6d0d:0:b0:1e8:7b6a:38e7 with SMTP id
+ e13-20020a5d6d0d000000b001e87b6a38e7mr26568054wrq.625.1646309908722; 
+ Thu, 03 Mar 2022 04:18:28 -0800 (PST)
+Received: from maple.lan (cpc141216-aztw34-2-0-cust174.18-1.cable.virginm.net.
+ [80.7.220.175]) by smtp.gmail.com with ESMTPSA id
+ p6-20020a5d4586000000b001f0436cb325sm1774600wrq.52.2022.03.03.04.18.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 03 Mar 2022 04:18:28 -0800 (PST)
+Date: Thu, 3 Mar 2022 12:18:24 +0000
+From: Daniel Thompson <daniel.thompson@linaro.org>
+To: Xiaomeng Tong <xiam0nd.tong@gmail.com>
+Cc: david.laight@aculab.com, alsa-devel@alsa-project.org,
+ kvm@vger.kernel.org, gustavo@embeddedor.com,
+ linux-iio@vger.kernel.org, kgdb-bugreport@lists.sourceforge.net,
+ linux@rasmusvillemoes.dk, dri-devel@lists.freedesktop.org,
+ c.giuffrida@vu.nl, amd-gfx@lists.freedesktop.org,
+ torvalds@linux-foundation.org, samba-technical@lists.samba.org,
+ linux1394-devel@lists.sourceforge.net, drbd-dev@lists.linbit.com,
+ linux-arch@vger.kernel.org, linux-cifs@vger.kernel.org,
+ linux-aspeed@lists.ozlabs.org, linux-scsi@vger.kernel.org,
+ linux-rdma@vger.kernel.org, linux-staging@lists.linux.dev,
+ h.j.bos@vu.nl, jgg@ziepe.ca, intel-wired-lan@lists.osuosl.org,
+ nouveau@lists.freedesktop.org,
+ bcm-kernel-feedback-list@broadcom.com, dan.carpenter@oracle.com,
+ linux-media@vger.kernel.org, keescook@chromium.org, arnd@arndb.de,
+ linux-pm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ bjohannesmeyer@gmail.com, linux-block@vger.kernel.org,
+ linux-fsdevel@vger.kernel.org, christophe.jaillet@wanadoo.fr,
+ jakobkoschel@gmail.com, v9fs-developer@lists.sourceforge.net,
+ linux-tegra@vger.kernel.org, tglx@linutronix.de,
+ andriy.shevchenko@linux.intel.com,
+ linux-arm-kernel@lists.infradead.org, linux-sgx@vger.kernel.org,
+ nathan@kernel.org, netdev@vger.kernel.org,
+ linux-usb@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
+ tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
+ dmaengine@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ akpm@linux-foundation.org, linuxppc-dev@lists.ozlabs.org,
+ christian.koenig@amd.com, rppt@kernel.org
+Subject: Re: [Kgdb-bugreport] [PATCH 2/6] treewide: remove using list
+ iterator after loop body as a ptr
+Message-ID: <20220303121824.qdyrognluik74iph@maple.lan>
+References: <39404befad5b44b385698ff65465abe5@AcuMS.aculab.com>
+ <20220303072657.11124-1-xiam0nd.tong@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <22eccb9e-45fa-683e-640d-6f34fa63ca52@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20220303072657.11124-1-xiam0nd.tong@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220303_040253_563434_248208A8 
-X-CRM114-Status: UNSURE (   8.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220303_041831_340062_F3712E6D 
+X-CRM114-Status: GOOD (  21.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,60 +112,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2614771561085328788=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Mar 03, 2022 at 03:26:57PM +0800, Xiaomeng Tong wrote:
+> On Thu, 3 Mar 2022 04:58:23 +0000, David Laight wrote:
+> > on 3 Mar 2022 10:27:29 +0800, Xiaomeng Tong wrote:
+> > > The problem is the mis-use of iterator outside the loop on exit, and
+> > > the iterator will be the HEAD's container_of pointer which pointers
+> > > to a type-confused struct. Sidenote: The *mis-use* here refers to
+> > > mistakely access to other members of the struct, instead of the
+> > > list_head member which acutally is the valid HEAD.
+> >
+> > The problem is that the HEAD's container_of pointer should never
+> > be calculated at all.
+> > This is what is fundamentally broken about the current definition.
+> 
+> Yes, the rule is "the HEAD's container_of pointer should never be
+> calculated at all outside the loop", but how do you make sure everyone
+> follows this rule?
 
---===============2614771561085328788==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="j0lwsQweqcGwCt7j"
-Content-Disposition: inline
+Your formulation of the rule is correct: never run container_of() on HEAD
+pointer.
 
+However the rule that is introduced by list_for_each_entry_inside() is
+*not* this rule. The rule it introduces is: never access the iterator
+variable outside the loop.
 
---j0lwsQweqcGwCt7j
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-
-> Please, can you fix that while applying, or should I send a v3?
-
-I'll fix it. Thank you for the rebase!
-
-
---j0lwsQweqcGwCt7j
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmIgrmEACgkQFA3kzBSg
-KbZ7Vw/+P4t6jxxU+NlXS44NM14j/3DF6/rUS+26gLGmUiUUHI9Ggr63ImC/481K
-QeHlVA+WluBuP8OWKvFWReTCOM1t1KnapFDGWESqanG6W0vSN5Br3cNq2nLmD2+P
-JHdQ5m6Ssn12KkTm1i3+EpFpTlU4kx5TyvAvvQ1iM/W8jNRwmKIx93pcL1pYU9Z9
-xsNbJ6isE2ZdicxaaHuHnSy0XCIkl6YXtDwDNo3vMmmAvLvMwxGjcLO3PW+j9PWm
-YvMC+CuiyJ3l9OCA3vAEDuJdneW9sBz25mNpzE2esUuQrPyHjTTAHThbE075q40y
-5SkdcJL9G1gdPAHiJeFkW+P0j22o1JVFm7T6SZJdnvmilslBqtn7ay1QMuqDuBEr
-KuR2h9kB4wUs9bklY1coegtkNpk75O6wQ1CA5e8Ec5l6kq8S0OFxXXFa1jv9Q3a3
-kZ8si8YEH2+NWYESsbgtIQXoohFHC85x9T3PpvEewlNPpyCP6eRwfcUdkMHQuvcT
-oBkXd4OWlNZC9PLotz5NPp5xHPrKptRxoPcIfbdR9tYaSnN+vhq9VEU2qPS40iiB
-Ae1O6W82yVeTXZEQ5VUUnYdYvfBP3hUxFT+GHqBx+sV4hQrc70YDr10dVPf0IMPP
-loOnoSm7D5eXmeMecI6jxmEfd4SEApZ0E4faYO1pMMJ9SBaOtvA=
-=vPdX
------END PGP SIGNATURE-----
-
---j0lwsQweqcGwCt7j--
+Making the iterator NULL on loop exit does follow the rule you proposed
+but using a different technique: do not allow HEAD to be stored in the
+iterator variable after loop exit. This also makes it impossible to run
+container_of() on the HEAD pointer.
 
 
---===============2614771561085328788==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> Everyone makes mistakes, but we can eliminate them all from the beginning
+> with the help of compiler which can catch such use-after-loop things.
+
+Indeed but if we introduce new interfaces then we don't have to worry
+about existing usages and silent regressions. Code will have been
+written knowing the loop can exit with the iterator set to NULL.
+
+Sure it is still possible for programmers to make mistakes and
+dereference the NULL pointer but C programmers are well training w.r.t.
+NULL pointer checking so such mistakes are much less likely than with
+the current list_for_each_entry() macro. This risk must be offset
+against the way a NULLify approach can lead to more elegant code when we
+are doing a list search.
+
+
+Daniel.
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============2614771561085328788==--
-
