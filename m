@@ -2,42 +2,43 @@ Return-Path: <linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.in
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2716EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 06:55:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 573BBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 07:08:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=w0fffrivaua87nQ7hXO5zQBQmrm877bz1kTSIl4sUdI=; b=24i7Kixq0FPHwf
-	mBD7tgUm6RWspnJu2MtorDaWGIBwrJ8O3bjIq5uwDTaYeydwil+HAMwhEwGnT701ZRTS881Ccyp7k
-	C8a55OKWDeB5IzX0mgIQDotshpQ0sgGnojfaOd0A1aUfbtp6PqxC0KapqS6Kgo5s2XV8t72ndcv7n
-	AB7tl8dyNLoKcY7MuIRCLMhK8qlAyJqnwkFdq9pfT5aJUZq+VPwI0voZnN01zVtJeV7GMU2MWQmvO
-	ZWc/98ZkcoidBq/FSaGxPvv2eMxy/9Rn+X4tQ0lQhKJdz3HS7Cpq+tQ6MnYNU2d+x5FFhs9IUjmim
-	Fe5PhqP9puxNMlTkC4kw==;
+	List-Owner; bh=A3sL8gEFYtycEK70SJWfJdfbOq/A8VypIx8MYMCQMgM=; b=lQBWOrImYS7oJQ
+	tLszYqZzT2uVXwP0Gt+II7/pFYymbYR44/iT42UsbF9wY3ftkQdQMUgLBykNKCsleMZi2y/pRMMm+
+	88cm801/g915wlu4EaBd+ST/xRUealR294XJgVbv1/Dx//wm0S0M4gbJSFGBYog9H5S9MHSYeT/Bz
+	T/hyS70UFg6eduPWiuiQi7fd98+c7b8WLHYwtQVj1+0FlfqjYY4D9XTsQCtKijR+4S8Tk2hr4Xvgf
+	VBkNISURkIBh1ImVnSEKtX7Xuq+X0jOmbx5yzruAs92EjiTskiqweWm8JNGeH4MS+pbMh5GDR7DOE
+	V5WM0toCTjdcb0Ngfy5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPfLr-005RHT-Pl; Thu, 03 Mar 2022 06:54:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nPfZG-005WRN-OR; Thu, 03 Mar 2022 07:08:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPfLo-005RGA-QT
- for linux-mediatek@lists.infradead.org; Thu, 03 Mar 2022 06:54:13 +0000
-X-UUID: bc75dee765164d5597e04b8cbe5f0008-20220302
-X-UUID: bc75dee765164d5597e04b8cbe5f0008-20220302
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ id 1nPfYz-005WMb-16
+ for linux-mediatek@lists.infradead.org; Thu, 03 Mar 2022 07:07:49 +0000
+X-UUID: d98de6b6858045d8850446799df5633b-20220303
+X-UUID: d98de6b6858045d8850446799df5633b-20220303
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <shayne.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 181291655; Wed, 02 Mar 2022 23:54:00 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 2 Mar 2022 22:45:53 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 3 Mar 2022 14:45:48 +0800
+ with ESMTP id 2085861627; Thu, 03 Mar 2022 00:07:37 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 2 Mar 2022 23:01:24 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 3 Mar 2022 15:01:21 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 3 Mar 2022 14:45:47 +0800
+ Frontend Transport; Thu, 3 Mar 2022 15:01:21 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Josh Boyer <jwboyer@kernel.org>
 CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -45,14 +46,14 @@ CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
  <ryder.lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
  linux-mediatek <linux-mediatek@lists.infradead.org>, Shayne Chen
  <shayne.chen@mediatek.com>
-Subject: [PATCH] linux-firmware: add firmware for MT7986
-Date: Thu, 3 Mar 2022 14:44:25 +0800
-Message-ID: <20220303064425.22572-1-shayne.chen@mediatek.com>
+Subject: [PATCH v2] linux-firmware: add firmware for MT7986
+Date: Thu, 3 Mar 2022 15:00:42 +0800
+Message-ID: <20220303070042.23524-1-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
-X-Spam-Note: CRM114 run bypassed due to message size (1562493 bytes)
-X-Spam-Note: SpamAssassin run bypassed due to message size (1562493 bytes)
+X-Spam-Note: CRM114 run bypassed due to message size (1562956 bytes)
+X-Spam-Note: SpamAssassin run bypassed due to message size (1562956 bytes)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,7 +74,9 @@ This patch adds firmware files v21110113 for MT7986 WiFi.
 
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- WHENCE                                 |  19 +++++++++++++++++++
+v2: update description in WHENCE
+---
+ WHENCE                                 |  21 ++++++++++++++++++++-
  mediatek/mt7986_eeprom_mt7975_dual.bin | Bin 0 -> 4096 bytes
  mediatek/mt7986_eeprom_mt7976.bin      | Bin 0 -> 4096 bytes
  mediatek/mt7986_eeprom_mt7976_dbdc.bin | Bin 0 -> 4096 bytes
@@ -83,7 +86,7 @@ Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
  mediatek/mt7986_wa.bin                 | Bin 0 -> 505008 bytes
  mediatek/mt7986_wm.bin                 | Bin 0 -> 2221772 bytes
  mediatek/mt7986_wm_mt7975.bin          | Bin 0 -> 2221772 bytes
- 10 files changed, 19 insertions(+)
+ 10 files changed, 20 insertions(+), 1 deletion(-)
  create mode 100644 mediatek/mt7986_eeprom_mt7975_dual.bin
  create mode 100644 mediatek/mt7986_eeprom_mt7976.bin
  create mode 100644 mediatek/mt7986_eeprom_mt7976_dbdc.bin
@@ -95,9 +98,18 @@ Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
  create mode 100644 mediatek/mt7986_wm_mt7975.bin
 
 diff --git a/WHENCE b/WHENCE
-index 03c1b7a..78121f0 100644
+index 2394c51..78121f0 100644
 --- a/WHENCE
 +++ b/WHENCE
+@@ -5315,7 +5315,7 @@ Licence: Redistributable. See LICENCE.mediatek for details.
+ 
+ --------------------------------------------------------------------------
+ 
+-Driver: mt7915e - MediaTek Wireless MACs for MT7915/MT7916
++Driver: mt7915e - MediaTek Wireless MACs for MT7915/MT7916/MT7986
+ 
+ File: mediatek/mt7915_wm.bin
+ Version: 20211222184052
 @@ -5337,6 +5337,25 @@ Version: 20211230135620a
  File: mediatek/mt7916_eeprom.bin
  Version: 20211130
