@@ -4,54 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C2ACC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 13:05:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EAADC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 13:33:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0gReCWsmGSTFBNOXEleUj0YQt0F7wzZf5WYFTFyBfCo=; b=Dga+1dN67c5kEP
-	HqcbCwnocZmOV10WWmVCuD6tG/MS+9c8xN5YrsO3BBpASM1HdZ5HKXuxM/NVQpAsev9cOedVW3Wgo
-	1P4d4MurjDdDkwgnqpRNkdmZ7QgeSA4m87fNQvMmP9p71jFDYqqvuCbxI572rC7xcm0K+UfdjZoY7
-	eM0BPaNqMo1p9ddxNWhRvqsfmCm98MmGExIUDMvILBCErVtyY+S+F80PSzmgN4b0fqtqK5jwLFX5K
-	BAHTpQ/01/0b3Q2CNSEa1Z9yF7LbrvTZkt/mwE+elx+sXdf/YicGcJWxnS6rCLv0irbQYb4NoUWXQ
-	C4buppDuRohpQqKzxZnQ==;
+	List-Owner; bh=yLLQwPKu2XxnBBKR3T/2bRGMPSIeKxfkMpUm4FfGT0c=; b=IF+CvkbTfIW653
+	9CtHkh6Kf8EAgnJOBXbmB2HW7xvsKbxSVrbakh4PCEbEj7cA8mdVK2eFm7FQHnFOuP57rKAPqCvkX
+	1CN4b2QQvxZl009PBNU3JHEKcUi52PG8ZJuBVG2+KXwm1UPEBzv9KY6JeLRyCT4E/CNlG80LQ2Za/
+	fr8E9jIAwN6xxehvP8TByixqLdiW9AdL77L/HXJ5ZflQT4yrFOO/qwOXzI3Bx5kKm1k4ZpyUIxiWJ
+	mSlJBqi2cL+0ZXpedUyxGwdQIYGhXl2EJs7EKfRYjsJ4zl1vhkf0rrdQeKj4FDif1qf5K+yKaaGxQ
+	54EsbKlHEgRrdyxAnrVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPl93-006SWC-VF; Thu, 03 Mar 2022 13:05:25 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPl8k-006SOV-VP; Thu, 03 Mar 2022 13:05:13 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id F005C1480;
- Thu,  3 Mar 2022 05:05:04 -0800 (PST)
-Received: from [10.57.39.47] (unknown [10.57.39.47])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 94FC73F70D;
- Thu,  3 Mar 2022 05:05:02 -0800 (PST)
-Message-ID: <c63267a4-31f1-720e-c0e7-22a58ed4577a@arm.com>
-Date: Thu, 3 Mar 2022 13:04:58 +0000
+	id 1nPlaB-006VS7-Am; Thu, 03 Mar 2022 13:33:27 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nPlZy-006VPi-Ta; Thu, 03 Mar 2022 13:33:16 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 486FDB8254C;
+ Thu,  3 Mar 2022 13:33:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6EAC9C004E1;
+ Thu,  3 Mar 2022 13:33:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1646314391;
+ bh=p2C7b5c/cUQV9McqiJLePU5w1eCpvl0FqwxxR66KW3c=;
+ h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+ b=Hfiz7SzlXv23kTOu2VKGxKVgiYhP4fTT7098Cx4jimhp/UBzWjBSlsmpA4PwCP0BI
+ ZDn+4+G8eE+Iiin/G+HGlKI6JW89ENHtP3szsQLgOSJpIUUy5K/pMmyikLSpu5n+uo
+ FmBzmcY/4fnqIXvljAWbFHPO9duZuh4Eu92asbi6E0Ok1Q2k1rV1FNfj3DydPqGydM
+ LzbDei8LBdviYQKbIAqDRRTnXwVO0YP7vKSG0beUdQgR9lz7BV30dEfxK9bfzRBjRR
+ 4BOUrXs9w/KhHeeD6RZ4xWEsRaFwbg8sAZhSs3AY+RxNozi4NlZ9Im31Fupzl18zwG
+ Hb8uFwEI84NCg==
+From: Mark Brown <broonie@kernel.org>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org, perex@perex.cz,
+ devicetree@vger.kernel.org, trevor.wu@mediatek.com, tzungbi@google.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, matthias.bgg@gmail.com,
+ linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org,
+ linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20220302013533.29068-1-jiaxin.yu@mediatek.com>
+References: <20220302013533.29068-1-jiaxin.yu@mediatek.com>
+Subject: Re: [v2] ASoC: bt-sco: fix bt-sco-pcm-wb dai widget don't connect to
+ the endpoint
+Message-Id: <164631438805.1870788.7887428309950116158.b4-ty@kernel.org>
+Date: Thu, 03 Mar 2022 13:33:08 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.6.1
-Subject: Re: [PATCH v2] iommu/iova: Reset max32_alloc_size after cleaning
-Content-Language: en-GB
-To: "yf.wang@mediatek.com" <yf.wang@medaitek.com>,
- Miles Chen <miles.chen@mediatek.com>
-Cc: Libo.Kang@mediatek.com, Ning.Li@mediatek.com,
- iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, stable@vger.kernel.org, will@kernel.org,
- wsd_upstream@mediatek.com, yf.wang@mediatek.com
-References: <ca208635-449b-2c94-7317-09ed8eb86a2c@arm.com>
- <20220302235238.13099-1-miles.chen@mediatek.com>
- <7a56546b6333cfac175080ff35c74415d35cd628.camel@medaitek.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <7a56546b6333cfac175080ff35c74415d35cd628.camel@medaitek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220303_050507_171485_2B40A1A3 
-X-CRM114-Status: GOOD (  18.97  )
+X-CRM114-CacheID: sfid-20220303_053315_146134_D61DE492 
+X-CRM114-Status: GOOD (  14.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,190 +69,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-03-03 03:43, yf.wang@mediatek.com wrote:
-> On Thu, 2022-03-03 at 07:52 +0800, Miles Chen wrote:
->> Thanks for your explanation.
->>
->> YF showed me some numbers yesterday and maybe we can have a further
->> discussion in that test case. (It looks like that some iovas are
->> freed but
->> their pfn_lo(s) are less than cached_iova->pfn_lo, so
->> max32_alloc_size is not
->> reset. So there are enought free iovas but the allocation still
->> failed)
->>
->> __cached_rbnode_delete_update(struct iova_domain *iovad, struct iova
->> *free)
->> {
->> 	struct iova *cached_iova;
->>
->> 	cached_iova = to_iova(iovad->cached32_node);
->> 	if (free == cached_iova ||
->> 		(free->pfn_hi < iovad->dma_32bit_pfn &&
->> 		 free->pfn_lo >= cached_iova->pfn_lo)) {
->> 		iovad->cached32_node = rb_next(&free->node);
->> 		iovad->max32_alloc_size = iovad->dma_32bit_pfn;
->> 	}
->> 	...
->> }
->>
->> Hi YF,
->> Could your share your observation of the iova allocation failure you
->> hit?
->>
->> Thanks,
->> Miles
+On Wed, 2 Mar 2022 09:35:33 +0800, Jiaxin Yu wrote:
+> This patch fix the second dai driver's dai widget can't connect to the
+> endpoint. Because "bt-sco-pcm" and "bt-sco-pcm-wb" dai driver have the
+> same stream_name, so it will cause they have the same widget name.
+> Therefor it will just create only one route when do snd_soc_dapm_add_route
+> that only find the widget through the widget name.
 > 
-> Hi Miles & Robin,
 > 
-> The scenario we encountered in our actual test:
-> An iova domain with a 3GB iova region (0x4000_0000~0x1_0000_0000),
-> only alloc iova total size 614788KB), then alloc iova size=0x731f000
-> fail, and then the retry mechanism is free 300 cache iova at first,
-> and then retry still fail, the reason for fail is blocked by the
-> check condition (size >= iovad->max32_alloc_size) and goto iova32_full
-> directly.
-> 
-> Why is no reset max32_alloc_size in __cached_rbnode_delete_update?
-> Because of the pfn_lo of the freed cache iova is smaller than the
-> current cached32_node's pfn_lo (free->pfn_lo < cached_iova->pfn_lo),
-> so will not execute (iovad->max32_alloc_size = iovad->dma_32bit_pfn),
-> is blocked by the check condition (free->pfn_lo >= cached_iova-
->> pfn_lo).
-> 
-> The issue observed during stress testing, when alloc fail reset
-> max32_alloc_size to retry can help to allocate iova to those lower
-> addresses.
+> [...]
 
-Oh, now I see what's going on, thanks for clarifying. This is a 
-wonderfully obscure corner case, but ultimately what comes out of it is 
-that there's an assumption in __cached_rbnode_delete_update() which I 
-think was OK at the time it was written (due to other limitations), but 
-now deserves to be remedied.
+Applied to
 
-The proper fix is simple to make, but I think I'll need to have my lunch 
-before trying to write up the reasoning behind it for a patch... :)
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: bt-sco: fix bt-sco-pcm-wb dai widget don't connect to the endpoint
+      commit: 8f2b025abc31bc15d38657d1286d7470bbbd5efa
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
 Thanks,
-Robin.
-
-> The following is the actual stress test log dump:
-> ('pfn_lo', 'size' and 'pfn_hi' has iova_shift in dump log)
-> size:                 0x731f000
-> max32_alloc_size:     0x731f000
-> cached_iova:          0xffffff814751a1c0
-> cached_iova->pfn_lo:  0xf3500000
-> cached_iova->pfn_hi:  0xf35ff000
-> 
-> 1.__alloc_and_insert_iova_range_fail
-> [name:iova&]__alloc_and_insert_iova_range_fail:
-> iovad:0xffffff80d5be2808
->    {granule:0x1000, start_pfn:0x40000, dma_32bit_pfn:0x100000,
->    max32_alloc_size:0x731f},size:0x731f
-> 
-> 2.dump all iova nodes of rbtree, contain cached iova:
-> [name:iova&]dump_iova_rbtree start, iovad:0xffffff80d5be2808
->    {rbroot:0xffffff814751a4c0, cached_node:0xffffff80d5be2860,
->    cached32_node:0xffffff814751a1c0, granule:0x1000, start_pfn:0x40000,
->    dma_32bit_pfn:0x100000, max32_alloc_size:0x731f}
-> 
-> ('pfn_lo', 'size' and 'pfn_hi' has iova_shift in dump log)
-> [name:iova&]index    iova_object       pfn_lo     size       pfn_hi
-> [name:iova&]  1 0xffffff814751ae00  0x40800000  0x4c9000     0x40cc8000
-> [name:iova&]  2 0xffffff807c960880  0x40d00000  0xc4000      0x40dc3000
->    ...322 lines of log are omitted here...
-> [name:iova&]325 0xffffff814751a1c0  0xf3500000  0x100000     0xf35ff000
-> [name:iova&]326 0xffffff8004552080  0xf3600000  0x100000     0xf36ff000
-> [name:iova&]327 0xffffff80045524c0  0xf3700000  0xbc000      0xf37bb000
-> [name:iova&]328 0xffffff814751a700  0xf3800000  0x265000     0xf3a64000
-> [name:iova&]329 0xffffff8004552180  0xf3c00000  0xa13000     0xf4612000
-> [name:iova&]330 0xffffff80c1b3eb40  0xf4800000  0xb400000    0xffbff000
-> [name:iova&]331 0xffffff80d6e0b580  0xffcff000  0x1000       0xffcff000
-> [name:iova&]332 0xffffff80c8395140  0xffd00000  0x80000      0xffd7f000
-> [name:iova&]333 0xffffff80c8395000  0xffde0000  0x20000      0xffdff000
-> [name:iova&]334 0xffffff80c8395380  0xffe00000  0x80000      0xffe7f000
-> [name:iova&]335 0xffffff80c8395880  0xffec0000  0x20000      0xffedf000
-> [name:iova&]336 0xffffff80c83957c0  0xffef9000  0x1000       0xffef9000
-> [name:iova&]337 0xffffff80c83956c0  0xffefa000  0x1000       0xffefa000
-> [name:iova&]338 0xffffff80c8395f40  0xffefb000  0x1000       0xffefb000
-> [name:iova&]339 0xffffff80c8395a80  0xffefc000  0x4000       0xffeff000
-> [name:iova&]340 0xffffff80c1b3e840  0xfff00000  0x100000     0xfffff000
-> [name:iova&] 41 0xffffff80d5be2860  0xfffffffffffff000 0x1000
-> 0xfffffffffffff000
-> [name:iova&]dump_iova_rbtree done, iovad:0xffffff80d5be2808,
->    count:341, total_size:625876KB
-> 
-> 3.alloc fail, flushing rcache and retry.
-> [name:iova&]alloc_iova_fast, flushing rcache and retry,
->    iovad:0xffffff80d5be2808, size:0x731f, limit_pfn:0xfffff
-> 
-> 4.retry is executed into the __alloc_and_insert_iova_range function:
-> [name:iova&]__alloc_and_insert_iova_range fail goto iova32_full,
->    iovad:0xffffff80d5be2808 {granule:0x1000, start_pfn:0x40000,
->    dma_32bit_pfn:0x100000, max32_alloc_size:0x731f},size:0x731f
-> 
-> 5.dump all iova nodes of rbtree, current caches is already empty:
-> [name:iova&]dump_iova_rbtree start, iovad:0xffffff80d5be2808
->    {rbroot:0xffffff80fe76da80, cached_node:0xffffff80d5be2860,
->    cached32_node:0xffffff814751a1c0, granule:0x1000, start_pfn:0x40000,
->    dma_32bit_pfn:0x100000, max32_alloc_size:0x731f}
-> 
-> ('pfn_lo', 'size' and 'pfn_hi' has iova_shift in dump log)
-> [name:iova&]index    iova_object       pfn_lo     size       pfn_hi
-> [name:iova&]  1 0xffffff814751ae00  0x40800000  0x4c9000     0x40cc8000
-> [name:iova&]  2 0xffffff807c960880  0x40d00000  0xc4000      0x40dc3000
-> [name:iova&]  3 0xffffff81487ce840  0x40e00000  0x37a000     0x41179000
-> [name:iova&]  4 0xffffff80fe76d600  0x41200000  0x2400000    0x435ff000
-> [name:iova&]  5 0xffffff8004552000  0x46800000  0x47e2000    0x4afe1000
-> [name:iova&]  6 0xffffff807c960a40  0x50200000  0x400000     0x505ff000
-> [name:iova&]  7 0xffffff818cdb5780  0x50600000  0x265000     0x50864000
-> [name:iova&]  8 0xffffff814751a440  0x50a00000  0x2ae000     0x50cad000
-> [name:iova&]  9 0xffffff818cdb5d40  0x50e00000  0x4c9000     0x512c8000
-> [name:iova&] 10 0xffffff81487cef40  0x51400000  0x1a25000    0x52e24000
-> [name:iova&] 11 0xffffff818cdb5140  0x53c00000  0x400000     0x53fff000
-> [name:iova&] 12 0xffffff814751a7c0  0x54000000  0x400000     0x543ff000
-> [name:iova&] 13 0xffffff80fe76d2c0  0x54500000  0xbc000      0x545bb000
-> [name:iova&] 14 0xffffff81487ce0c0  0x54600000  0x400000     0x549ff000
-> [name:iova&] 15 0xffffff80fe76d740  0x54a00000  0xbc000      0x54abb000
-> [name:iova&] 16 0xffffff8004552440  0x54b00000  0xbc000      0x54bbb000
-> [name:iova&] 17 0xffffff80fe76db80  0x54c00000  0x47e2000    0x593e1000
-> [name:iova&] 18 0xffffff818cdb5440  0x65000000  0x400000     0x653ff000
-> [name:iova&] 19 0xffffff8004552880  0x65400000  0x47e2000    0x69be1000
-> [name:iova&] 20 0xffffff814751acc0  0x6c7e0000  0x20000      0x6c7ff000
-> [name:iova&] 21 0xffffff80fe76d700  0x6c800000  0x47e2000    0x70fe1000
-> //0x70fe1000 - 0xebc00000 = 0x7ac1f000:This free range is large enough
-> [name:iova&] 22 0xffffff80fe76da80  0xebc00000  0x400000     0xebfff000
-> [name:iova&] 23 0xffffff80045523c0  0xec000000  0x400000     0xec3ff000
-> [name:iova&] 24 0xffffff8004552780  0xec400000  0x400000     0xec7ff000
-> [name:iova&] 25 0xffffff814751a1c0  0xf3500000  0x100000     0xf35ff000
-> [name:iova&] 26 0xffffff8004552080  0xf3600000  0x100000     0xf36ff000
-> [name:iova&] 27 0xffffff80045524c0  0xf3700000  0xbc000      0xf37bb000
-> [name:iova&] 28 0xffffff814751a700  0xf3800000  0x265000     0xf3a64000
-> [name:iova&] 29 0xffffff8004552180  0xf3c00000  0xa13000     0xf4612000
-> [name:iova&] 30 0xffffff80c1b3eb40  0xf4800000  0xb400000    0xffbff000
-> [name:iova&] 31 0xffffff80d6e0b580  0xffcff000  0x1000       0xffcff000
-> [name:iova&] 32 0xffffff80c8395140  0xffd00000  0x80000      0xffd7f000
-> [name:iova&] 33 0xffffff80c8395000  0xffde0000  0x20000      0xffdff000
-> [name:iova&] 34 0xffffff80c8395380  0xffe00000  0x80000      0xffe7f000
-> [name:iova&] 35 0xffffff80c8395880  0xffec0000  0x20000      0xffedf000
-> [name:iova&] 36 0xffffff80c83957c0  0xffef9000  0x1000       0xffef9000
-> [name:iova&] 37 0xffffff80c83956c0  0xffefa000  0x1000       0xffefa000
-> [name:iova&] 38 0xffffff80c8395f40  0xffefb000  0x1000       0xffefb000
-> [name:iova&] 39 0xffffff80c8395a80  0xffefc000  0x4000       0xffeff000
-> [name:iova&] 40 0xffffff80c1b3e840  0xfff00000  0x100000     0xfffff000
-> [name:iova&] 41 0xffffff80d5be2860  0xfffffffffffff000 0x1000
-> 0xfffffffffffff000
-> [name:iova&]dump_iova_rbtree done, iovad:0xffffff80d5be2808,
-> count:41, total_size:614788KB
-> 
-> Thanks,
-> Yunfei.
-> 
+Mark
 
 _______________________________________________
 Linux-mediatek mailing list
