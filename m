@@ -4,74 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCEBDC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 08:00:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 046F9C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 08:19:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e5EeCRIKLFlR7+D/H0i56/01VXffkV6nL9A2VZgYyks=; b=gw+TczRC5eC2Fa
-	YgQi5WISN5cPbqD6BkAamdIc2TyaTfIgmR1DUm8N5E8QwYtLI3jFaks8axOOD1intUAk5YBMPyv+B
-	yL0PwkxUafNNUWUIHKdw/4of2Hev0zKkH8M8m0lf4iC5AJJmx2E6beGUh+bEsmC/Fz/vzFLuadB/d
-	/+qWul9EFk7H+baIHjW3rppK2KNZ8CfTnCBkP71owxxFG5KPTKL5khHmoCPPowJM8O4UTO9CsC+9W
-	t3svwQFsRyUIaH3xCB54gkPedxykrBnfjit8kMxO9G/mQuH7yleZc65hZCe096lbTTRLH1EuTCpKT
-	SEuSxJ95iB02/K53Zfpg==;
+	List-Owner; bh=FyOFUjLm7EGE5CosJtUdOd81MHTGmHyIGhwB8R0A4Iw=; b=g3h7mrgXat6OXh
+	//lc6GVGEm6T+ZkHDfvy3YPmVyaePOG+UHZ4t3VGzmTt2jfEgzvmLSOK0FXBhuACZTYoWHMxvI8+j
+	wHIlOpoLMSwv65rn88h99MnQKXHh169o3KHBzjVqnjWGBm2EaRNMpV5z7/ZBKGVslflvVj1FoSbDF
+	GpZNM3FsFH0lyCEMSYJNLNYwF7LfkvqWXYGi9d8I7Bc6KdpeAmjCTWzrpWRgbc++FnvLYkeuPaIOQ
+	DyQYtx1FZ9yHKe2WOrTw4p2My0HgGfPOTwXANc0c+diP8EHVafj9EvPPBjWw0NCPXRqPzmWuq6Xye
+	DFem2+VM8JaDhew4Y9qA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPgNU-005fAh-47; Thu, 03 Mar 2022 08:00:00 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nPgfm-005jVH-Ee; Thu, 03 Mar 2022 08:18:54 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPgNQ-005f9R-Os; Thu, 03 Mar 2022 07:59:58 +0000
-X-UUID: 40ba89c5de9441a98c675e96b014dbf1-20220303
-X-UUID: 40ba89c5de9441a98c675e96b014dbf1-20220303
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 803382512; Thu, 03 Mar 2022 00:59:49 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 2 Mar 2022 23:59:47 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 3 Mar 2022 15:59:45 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 3 Mar 2022 15:59:45 +0800
-Message-ID: <5bf227d6082545d519c9e92d51b939bd9a29ac90.camel@mediatek.com>
-Subject: Re: [PATCH v12 1/4] soc: mediatek: mmsys: add CMDQ write register
- function
-From: CK Hu <ck.hu@mediatek.com>
-To: Moudy Ho <moudy.ho@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Jernej
- Skrabec" <jernej.skrabec@siol.net>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- Alexandre Courbot <acourbot@chromium.org>, <tfiga@chromium.org>,
- <drinkcat@chromium.org>, <pihsun@chromium.org>, <hsinyi@google.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, <randy.wu@mediatek.com>,
- <jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
- <river.cheng@mediatek.com>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 3 Mar 2022 15:59:45 +0800
-In-Reply-To: <20220301100246.2153-2-moudy.ho@mediatek.com>
-References: <20220301100246.2153-1-moudy.ho@mediatek.com>
- <20220301100246.2153-2-moudy.ho@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nPgfj-005jU4-Qo
+ for linux-mediatek@lists.infradead.org; Thu, 03 Mar 2022 08:18:53 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id j7so7067864lfu.6
+ for <linux-mediatek@lists.infradead.org>; Thu, 03 Mar 2022 00:18:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=on4cm3w97gy7RevnM2fAc8kCbBYemQ93B0MGug+f2Sw=;
+ b=HbmOUBeULRAj4VjhmZVI3EKmNdxqiWcxb0dr+4Kpd3Uum3VcFHkK4pe8+KHgkMhEwG
+ XEhHYFpvjPm4aiqP904xnKALwPNGd2RH8l59cDmlnI68h8iSOcWWegi1H5Ir8tSZAbFc
+ m61+tI1InDj0JEM9IXyUtSFpJN7s4yoRuKDdc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=on4cm3w97gy7RevnM2fAc8kCbBYemQ93B0MGug+f2Sw=;
+ b=ozO5akCVMXqXfXwXn5r4+pWz7GQLlpWj9Q0FkNq6bKPnZHf8LM7GDtvoWCKoSdikqX
+ g3nE1xYmpQAv6WtJDt+3C2tLCzf9+1rqSE5WDkV4zoBDa1Boe7T9IYBWJ8jZ7HlUvtRC
+ 2qs5FgpB/a9Z1rOU/8LVnIxP/9UriVxP+1dMkBQ8IPtPbcCYt7VmwKlkjqejKog2okYb
+ id8Umr7nc9noBNTvVILIm5GbtUncjuOTsW4S9Srn4ax/O4u50KmJXbuXGVBkSYhY1hhu
+ lIUx/8tIT0id79HfViim8LngPmNKD/QZTJ1la3btFfJNODVMhl7bjx+AZpqYOpoc2/hN
+ BTng==
+X-Gm-Message-State: AOAM533QGinl5VZM9RMZs8kksYsFaP1ZAyuiOUZJliiVQ6oBlKOlMWZk
+ xVb9luaoUUMDBuNY5AXs1BWr502Na8wOCETOAUSa0w==
+X-Google-Smtp-Source: ABdhPJz7qOkcs9NrVpx+qNqlVj4sTQvZ7OlQDyiM5QuV1qHK2lks0edta7sb7odh4BSvah8kBcAyY+1/w97q+jW/l1Q=
+X-Received: by 2002:ac2:5fc2:0:b0:443:82cf:9603 with SMTP id
+ q2-20020ac25fc2000000b0044382cf9603mr20717684lfg.142.1646295528442; Thu, 03
+ Mar 2022 00:18:48 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220106065407.16036-1-johnson.wang@mediatek.com>
+ <20220106065407.16036-5-johnson.wang@mediatek.com>
+ <Yd4yy2emxSSh80UW@robh.at.kernel.org>
+In-Reply-To: <Yd4yy2emxSSh80UW@robh.at.kernel.org>
+From: Fei Shao <fshao@chromium.org>
+Date: Thu, 3 Mar 2022 16:18:12 +0800
+Message-ID: <CAJ66y9F67VNRWE3JsCqnX4AFzd+R9Y9WJHoxnk_t7u2rHhuimg@mail.gmail.com>
+Subject: Re: [PATCH 4/4] dt-bindings: regulator: Add MT6358 regulators
+To: Rob Herring <robh@kernel.org>
+Cc: Johnson Wang <johnson.wang@mediatek.com>, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, broonie@kernel.org, 
+ linux-kernel <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+ Lee Jones <lee.jones@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_235956_864037_7F570542 
-X-CRM114-Status: GOOD (  25.70  )
+X-CRM114-CacheID: sfid-20220303_001851_897015_B07B37BF 
+X-CRM114-Status: GOOD (  11.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,233 +85,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Moudy:
+On Tue, 11 Jan 2022 19:45:47 -0600, Rob Herring <robh@kernel.org> wrote:
+>
+> On Thu, 06 Jan 2022 14:54:07 +0800, Johnson Wang wrote:
+> > Add buck_vcore_sshub and ldo_vsram_others_sshub
+> > regulators to binding document for MT6358 and MT6366.
+> >
+> > Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+> > ---
+> >  .../bindings/regulator/mt6358-regulator.txt   | 22 ++++++++++++++-----
+> >  1 file changed, 17 insertions(+), 5 deletions(-)
+> >
+>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 
-On Tue, 2022-03-01 at 18:02 +0800, Moudy Ho wrote:
-> Adding the interface of writing MMSYS register via CMDQ,
-> users do not need to parse related dts information.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/soc/mediatek/Kconfig           |  1 +
->  drivers/soc/mediatek/mtk-mmsys.c       | 30 ++++++++++++++++
->  drivers/soc/mediatek/mtk-mmsys.h       |  1 +
->  include/linux/soc/mediatek/mtk-mmsys.h | 50
-> ++++++++++++++++++++++++++
->  4 files changed, 82 insertions(+)
-> 
-> diff --git a/drivers/soc/mediatek/Kconfig
-> b/drivers/soc/mediatek/Kconfig
-> index fdd8bc08569e..172bc7828aca 100644
-> --- a/drivers/soc/mediatek/Kconfig
-> +++ b/drivers/soc/mediatek/Kconfig
-> @@ -69,6 +69,7 @@ config MTK_MMSYS
->  	bool "MediaTek MMSYS Support"
->  	default ARCH_MEDIATEK
->  	depends on HAS_IOMEM
-> +	select MTK_CMDQ
-
-In MT8173, mmsys could work without CMDQ, so I think mmsys should not
-select CMDQ.
-
->  	help
->  	  Say yes here to add support for the MediaTek Multimedia
->  	  Subsystem (MMSYS).
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.c
-> b/drivers/soc/mediatek/mtk-mmsys.c
-> index 50c797d70ddd..04c0c7de395e 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.c
-> +++ b/drivers/soc/mediatek/mtk-mmsys.c
-> @@ -8,9 +8,11 @@
->  #include <linux/device.h>
->  #include <linux/io.h>
->  #include <linux/of_device.h>
-> +#include <linux/of_address.h>
->  #include <linux/platform_device.h>
->  #include <linux/reset-controller.h>
->  #include <linux/soc/mediatek/mtk-mmsys.h>
-> +#include <linux/soc/mediatek/mtk-cmdq.h>
->  
->  #include "mtk-mmsys.h"
->  #include "mt8167-mmsys.h"
-> @@ -55,6 +57,7 @@ static const struct mtk_mmsys_driver_data
-> mt8183_mmsys_driver_data = {
->  	.clk_driver = "clk-mt8183-mm",
->  	.routes = mmsys_mt8183_routing_table,
->  	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
-> +	.has_gce_client_reg = true,
->  };
->  
->  static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data =
-> {
-> @@ -81,6 +84,8 @@ struct mtk_mmsys {
->  	const struct mtk_mmsys_driver_data *data;
->  	spinlock_t lock; /* protects mmsys_sw_rst_b reg */
->  	struct reset_controller_dev rcdev;
-> +	struct cmdq_client_reg cmdq_base;
-> +	phys_addr_t addr;
->  };
->  
->  void mtk_mmsys_ddp_connect(struct device *dev,
-> @@ -120,6 +125,17 @@ void mtk_mmsys_ddp_disconnect(struct device
-> *dev,
->  }
->  EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_disconnect);
->  
-> +void mtk_mmsys_write_reg_by_cmdq(struct device *dev,
-> +				 struct mmsys_cmdq_cmd *cmd,
-> +				 u32 offset, u32 value, u32 mask)
-
-I would like mmsys provide high level interface rather than such low
-level interface.
-
-> +{
-> +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-> +
-> +	cmdq_pkt_write_mask(cmd->pkt, mmsys->cmdq_base.subsys,
-> +			    mmsys->addr + offset, value, mask);
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_mmsys_write_reg_by_cmdq);
-> +
->  static int mtk_mmsys_reset_update(struct reset_controller_dev
-> *rcdev, unsigned long id,
->  				  bool assert)
->  {
-> @@ -178,6 +194,7 @@ static int mtk_mmsys_probe(struct platform_device
-> *pdev)
->  	struct platform_device *clks;
->  	struct platform_device *drm;
->  	struct mtk_mmsys *mmsys;
-> +	struct resource res;
->  	int ret;
->  
->  	mmsys = devm_kzalloc(dev, sizeof(*mmsys), GFP_KERNEL);
-> @@ -203,6 +220,19 @@ static int mtk_mmsys_probe(struct
-> platform_device *pdev)
->  		return ret;
->  	}
->  
-> +	if (of_address_to_resource(dev->of_node, 0, &res) < 0)
-> +		mmsys->addr = 0L;
-> +	else
-> +		mmsys->addr = res.start;
-> +
-> +	if (mmsys->data->has_gce_client_reg) {
-> +		ret = cmdq_dev_get_client_reg(dev, &mmsys->cmdq_base,
-> 0);
-
-Add gce client reg in mmsys binding document [1].
-
-[1] 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml?h=v5.17-rc6
-
-> +		if (ret) {
-> +			dev_err(dev, "No mediatek,gce-client-reg!\n");
-> +			return ret;
-> +		}
-> +	}
-> +
->  	mmsys->data = of_device_get_match_data(&pdev->dev);
->  	platform_set_drvdata(pdev, mmsys);
->  
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.h
-> b/drivers/soc/mediatek/mtk-mmsys.h
-> index 8b0ed05117ea..9fce400507d2 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.h
-> +++ b/drivers/soc/mediatek/mtk-mmsys.h
-> @@ -92,6 +92,7 @@ struct mtk_mmsys_driver_data {
->  	const char *clk_driver;
->  	const struct mtk_mmsys_routes *routes;
->  	const unsigned int num_routes;
-> +	bool has_gce_client_reg;
->  };
->  
->  /*
-> diff --git a/include/linux/soc/mediatek/mtk-mmsys.h
-> b/include/linux/soc/mediatek/mtk-mmsys.h
-> index 4bba275e235a..7f8ecc98d023 100644
-> --- a/include/linux/soc/mediatek/mtk-mmsys.h
-> +++ b/include/linux/soc/mediatek/mtk-mmsys.h
-> @@ -7,8 +7,14 @@
->  #define __MTK_MMSYS_H
->  
->  enum mtk_ddp_comp_id;
-> +enum mtk_mdp_comp_id;
->  struct device;
->  
-> +struct mmsys_cmdq_cmd {
-> +	struct cmdq_pkt *pkt;
-> +	s32 *event;
-> +};
-> +
->  enum mtk_ddp_comp_id {
->  	DDP_COMPONENT_AAL0,
->  	DDP_COMPONENT_AAL1,
-> @@ -45,6 +51,46 @@ enum mtk_ddp_comp_id {
->  	DDP_COMPONENT_ID_MAX,
->  };
->  
-> +enum mtk_mdp_comp_id {
-> +	MDP_COMP_NONE = -1,	/* Invalid engine */
-> +
-> +	/* ISP */
-> +	MDP_COMP_WPEI = 0,
-> +	MDP_COMP_WPEO,		/* 1 */
-> +	MDP_COMP_WPEI2,		/* 2 */
-> +	MDP_COMP_WPEO2,		/* 3 */
-> +	MDP_COMP_ISP_IMGI,	/* 4 */
-> +	MDP_COMP_ISP_IMGO,	/* 5 */
-> +	MDP_COMP_ISP_IMG2O,	/* 6 */
-> +
-> +	/* IPU */
-> +	MDP_COMP_IPUI,		/* 7 */
-> +	MDP_COMP_IPUO,		/* 8 */
-> +
-> +	/* MDP */
-> +	MDP_COMP_CAMIN,		/* 9 */
-> +	MDP_COMP_CAMIN2,	/* 10 */
-> +	MDP_COMP_RDMA0,		/* 11 */
-> +	MDP_COMP_AAL0,		/* 12 */
-> +	MDP_COMP_CCORR0,	/* 13 */
-> +	MDP_COMP_RSZ0,		/* 14 */
-> +	MDP_COMP_RSZ1,		/* 15 */
-> +	MDP_COMP_TDSHP0,	/* 16 */
-> +	MDP_COMP_COLOR0,	/* 17 */
-> +	MDP_COMP_PATH0_SOUT,	/* 18 */
-> +	MDP_COMP_PATH1_SOUT,	/* 19 */
-> +	MDP_COMP_WROT0,		/* 20 */
-> +	MDP_COMP_WDMA,		/* 21 */
-> +
-> +	/* Dummy Engine */
-> +	MDP_COMP_RDMA1,		/* 22 */
-> +	MDP_COMP_RSZ2,		/* 23 */
-> +	MDP_COMP_TDSHP1,	/* 24 */
-> +	MDP_COMP_WROT1,		/* 25 */
-> +
-> +	MDP_MAX_COMP_COUNT	/* ALWAYS keep at the end */
-> +};
-
-Useless, remove this.
-
-Regards,
-CK
-
-> +
->  void mtk_mmsys_ddp_connect(struct device *dev,
->  			   enum mtk_ddp_comp_id cur,
->  			   enum mtk_ddp_comp_id next);
-> @@ -53,4 +99,8 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
->  			      enum mtk_ddp_comp_id cur,
->  			      enum mtk_ddp_comp_id next);
->  
-> +void mtk_mmsys_write_reg_by_cmdq(struct device *dev,
-> +				 struct mmsys_cmdq_cmd *cmd,
-> +				 u32 alias_id, u32 value, u32 mask);
-> +
->  #endif /* __MTK_MMSYS_H */
-
+Just a gentle ping on this - I assume there's no actionable item on
+Johnson's end? (or better to rebase & resend?)
 
 _______________________________________________
 Linux-mediatek mailing list
