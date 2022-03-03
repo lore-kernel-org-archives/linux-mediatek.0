@@ -4,59 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46361C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 06:12:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56ECBC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 06:20:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=I9S5XEA04o7vLBGjFE7K0bOk89d+weuh7BPzKGJ+vfM=; b=ckiwOJniQ5Lp7U
-	E0staI772JlLhr/UwhyFqHDfy4kRIaxkfmshr2DypeUgoLhriUIin+DOazv39nU1dtLpIiP4uhaxM
-	Mrxq4wGvuU7Ii5KRRSbRD4Kwtr/N6nLnTKUlkuQnFj4s1lx4mhycScecKMgzSUHLW30nlIHVHizuy
-	SL4MWNicJV9SVUPKbN76tW9+iaxBAZ2Rr/9WlPrY1gCL6Badh5DQsV4GK2F40DKgZXyC/c8rEfZmc
-	LKWAAcS/U719KY2lTX9gQ82dbCEmQazYTa47Ag3oPNdSuNN6V437nJG4n50U6SEQBvadB7pmqnCOD
-	W5cqgSvOYPd6vIEFE/tg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uiPdmWX6NNDyzLerfULDWemuR2nKp3mgiB16OfNkNZE=; b=gKKF52Yoj8kJzW
+	UJAiumdvy23hP4iV1QdU8Uq6Oy7B7COKxKUnqPFSBGOuSDF5yxiB6EMfd6V/OguPERYQOuAUmY3FW
+	AiSK2qQMk7trYnVMjlDbrKlivOhVG4Wh8WwFGWQw35BgqZuQ/0NAZeP/805bKpnwb4fKcLNs183Gr
+	J63BcF4ki2ziQYQOinbfZV+sDA4fT7WvWEqV8Bathlz/jDU0GOyld8fsF0EjAajkHc5hFPfFLbThx
+	tEC+Quf0qoo2sguuPzPVYn3Dnd3tBmOjs+nLXTGxwaEQuhvOQH0HPS/uRChzHX/LzHt6PZixSa/dt
+	AUBNGCeRDZJDa8fCMOzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPehB-005Ign-No; Thu, 03 Mar 2022 06:12:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nPep8-005JsC-6s; Thu, 03 Mar 2022 06:20:26 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPegy-005IeQ-A5; Thu, 03 Mar 2022 06:12:03 +0000
-X-UUID: 26e4912192c942a1acccd0bffeb4f531-20220302
-X-UUID: 26e4912192c942a1acccd0bffeb4f531-20220302
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1797754195; Wed, 02 Mar 2022 23:11:52 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 2 Mar 2022 22:11:50 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 3 Mar 2022 14:11:49 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 3 Mar 2022 14:11:48 +0800
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: <broonie@kernel.org>
-CC: <perex@perex.cz>, <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>,
- <tzungbi@google.com>, <alsa-devel@alsa-project.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, <aaronyu@google.com>,
- Jiaxin Yu <jiaxin.yu@mediatek.com>
-Subject: [PATCH] ASoC: mediatek: mt8183: support wb bt audio
-Date: Thu, 3 Mar 2022 14:11:47 +0800
-Message-ID: <20220303061147.5037-1-jiaxin.yu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ id 1nPeov-005JoP-S7; Thu, 03 Mar 2022 06:20:15 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id E5C37617F3;
+ Thu,  3 Mar 2022 06:20:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 4C9B9C340F0;
+ Thu,  3 Mar 2022 06:20:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1646288411;
+ bh=vX5vbaikPiileJ6XCxRR8wC2/rB2/17rVCRkkZXIKbM=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=I5HykwcBsuqO22vRlMc/9uFH6c6KUeLXLHK6HauHb789dDoFcSUKBfch/XKMBtECi
+ IlCg1/RaWkjUHYTxNfstT0S1/qS8cZdCGcDTzfqq3DVfSeEIM+bzdMShsBq5ZJirOm
+ ekz1WhscjoS5rlpiHgupYBr1vBwHvlsSV37vz1Gw6KSsj0TYsPfDrLZjjqrKm2rbta
+ 72iMxJvNRZAHwNW2THKEqX+uClBhKVjCavFVVamltNGmtAnb3PSQrzvfUMZU31vqq1
+ ob/eFvZ0IH8S3yoUUyuVNfqHQbjFpxWdHGoiSWG9ZCw5lmBWWDKb8iC/VgrOJ/Xsgj
+ bqIayr9gnyCgQ==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ 2C6CAEAC096; Thu,  3 Mar 2022 06:20:11 +0000 (UTC)
 MIME-Version: 1.0
-X-MTK: N
+Subject: Re: [PATCH net v2] net: fix up skbs delta_truesize in UDP GRO
+ frag_list
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <164628841116.5215.9483451947853237118.git-patchwork-notify@kernel.org>
+Date: Thu, 03 Mar 2022 06:20:11 +0000
+References: <1646133431-8948-1-git-send-email-lena.wang@mediatek.com>
+In-Reply-To: <1646133431-8948-1-git-send-email-lena.wang@mediatek.com>
+To: lena wang <lena.wang@mediatek.com>
+Cc: pabeni@redhat.com, edumazet@google.com, davem@davemloft.net,
+ kuba@kernel.org, matthias.bgg@gmail.com, willemb@google.com,
+ daniel@iogearbox.net, dseok.yi@samsung.com, wsd_upstream@mediatek.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_221200_377699_13281297 
-X-CRM114-Status: UNSURE (   8.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220302_222013_998234_9C3130B9 
+X-CRM114-Status: GOOD (  11.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,57 +78,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch use "bt-sco-pcm-wb" codec dai driver for wb bt audio.
+Hello:
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
----
+This patch was applied to netdev/net.git (master)
+by Jakub Kicinski <kuba@kernel.org>:
 
-This patch depends on:
-https://patchwork.kernel.org/project/alsa-devel/patch/20220302013533.29068-1-jiaxin.yu@mediatek.com/
+On Tue, 1 Mar 2022 19:17:09 +0800 you wrote:
+> The truesize for a UDP GRO packet is added by main skb and skbs in main
+> skb's frag_list:
+> skb_gro_receive_list
+>         p->truesize += skb->truesize;
+> 
+> The commit 53475c5dd856 ("net: fix use-after-free when UDP GRO with
+> shared fraglist") introduced a truesize increase for frag_list skbs.
+> When uncloning skb, it will call pskb_expand_head and trusesize for
+> frag_list skbs may increase. This can occur when allocators uses
+> __netdev_alloc_skb and not jump into __alloc_skb. This flow does not
+> use ksize(len) to calculate truesize while pskb_expand_head uses.
+> skb_segment_list
+> err = skb_unclone(nskb, GFP_ATOMIC);
+> pskb_expand_head
+>         if (!skb->sk || skb->destructor == sock_edemux)
+>                 skb->truesize += size - osize;
+> 
+> [...]
 
- sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+Here is the summary with links:
+  - [net,v2] net: fix up skbs delta_truesize in UDP GRO frag_list
+    https://git.kernel.org/netdev/net/c/224102de2ff1
 
-diff --git a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
-index b0ec5ebd4f2d..889f9e4a96aa 100644
---- a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
-@@ -260,7 +260,7 @@ SND_SOC_DAILINK_DEFS(pcm2,
- 
- SND_SOC_DAILINK_DEFS(i2s0,
- 	DAILINK_COMP_ARRAY(COMP_CPU("I2S0")),
--	DAILINK_COMP_ARRAY(COMP_CODEC("bt-sco", "bt-sco-pcm")),
-+	DAILINK_COMP_ARRAY(COMP_CODEC("bt-sco", "bt-sco-pcm-wb")),
- 	DAILINK_COMP_ARRAY(COMP_EMPTY()));
- 
- SND_SOC_DAILINK_DEFS(i2s1,
-@@ -291,7 +291,7 @@ SND_SOC_DAILINK_DEFS(i2s3_rt1015p,
- 
- SND_SOC_DAILINK_DEFS(i2s5,
- 	DAILINK_COMP_ARRAY(COMP_CPU("I2S5")),
--	DAILINK_COMP_ARRAY(COMP_CODEC("bt-sco", "bt-sco-pcm")),
-+	DAILINK_COMP_ARRAY(COMP_CODEC("bt-sco", "bt-sco-pcm-wb")),
- 	DAILINK_COMP_ARRAY(COMP_EMPTY()));
- 
- SND_SOC_DAILINK_DEFS(tdm,
-@@ -508,7 +508,6 @@ static struct snd_soc_dai_link mt8183_mt6358_ts3a227_dai_links[] = {
- 		.no_pcm = 1,
- 		.dpcm_capture = 1,
- 		.ignore_suspend = 1,
--		.be_hw_params_fixup = mt8183_i2s_hw_params_fixup,
- 		.ops = &mt8183_mt6358_i2s_ops,
- 		SND_SOC_DAILINK_REG(i2s0),
- 	},
-@@ -541,7 +540,6 @@ static struct snd_soc_dai_link mt8183_mt6358_ts3a227_dai_links[] = {
- 		.no_pcm = 1,
- 		.dpcm_playback = 1,
- 		.ignore_suspend = 1,
--		.be_hw_params_fixup = mt8183_i2s_hw_params_fixup,
- 		.ops = &mt8183_mt6358_i2s_ops,
- 		SND_SOC_DAILINK_REG(i2s5),
- 	},
+You are awesome, thank you!
 -- 
-2.25.1
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
 _______________________________________________
