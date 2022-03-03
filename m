@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 847FEC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Mar 2022 23:54:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E716C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 00:01:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=90i2m2p8FLO/CJSlFwmnFpffMgek0J3LIDgilg/V0vU=; b=r90SLnNbGHQr5W
-	UN6tul0FenVA1IF43S5pHJ9F7UcwDdnwTytq5Z0VfGZ3pH6oEM3wUbJ2ySt2sUSKZFgFPmV5gujOw
-	MZTHDZf6ZPXjejzdTJ0BKMO8AQYPs3yZMU8cKp8kGNKtYz+MfXSIejJtw4eJFQi8KHBtYpE8j+eR7
-	9R+o7lf0ObrL25kpUhHTVirzYPrVz8hoGA0Anf6DoWVtYeGCN9IKKubeqjo5TVdx8FULJeNwS5PuT
-	yMEKG1T7zHe8hVfpbmqTdjZ7lOnyVf9HVPeSi6SAk+HERmMwghgT4IU6BCBxuc9PqsoZE8Ok10ell
-	ogMTVQYdQL/qIVSNR32A==;
+	List-Owner; bh=VzQULThSMa3V8Wn0KB+WgzTkFY9z7EEkKp9dzElr/SY=; b=36bUNrE1x+KObX
+	34w4pmPqiFA2eORYPLSjYvwe6VPVeUdiQv+0M3ptx6O5HLv1tYfoqp/aSxKzGBIiY/LgWzy2o9IWN
+	Fu0mtkOdu7MV4yHz0/7gOpHM7gAB7hZaqT8ZEJH5Y1Tkb4vZbajxL9GA02NIyLUk290BXuxIu0WZk
+	Mtei2XvwzNnzJg9UGI7GMdbxt0HjJvnPlfGkRqGE5mrtf+t33U4JjNxC/FPmsStodIZRPt9ScHcTj
+	L3qVwqWWvmWgdc/7fC+7uzQgVeijwVbq5gpP2NVgjU+GWAOgnGB8XQUZiJecEdVyfFenhX+9sTJ0U
+	5Hn0CElD7p3zf7SgbI5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPYnO-004npF-1a; Wed, 02 Mar 2022 23:54:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nPYu1-004pbU-FS; Thu, 03 Mar 2022 00:01:05 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPYm6-004nQW-N8; Wed, 02 Mar 2022 23:52:57 +0000
-X-UUID: 4eb3b3e98b8245dc96f926a03584b2c7-20220302
-X-UUID: 4eb3b3e98b8245dc96f926a03584b2c7-20220302
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1048882562; Wed, 02 Mar 2022 16:52:47 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 2 Mar 2022 15:52:45 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 3 Mar 2022 07:52:43 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 3 Mar 2022 07:52:43 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <robin.murphy@arm.com>
-CC: <Libo.Kang@mediatek.com>, <Ning.Li@mediatek.com>,
- <iommu@lists.linux-foundation.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <matthias.bgg@gmail.com>, <miles.chen@mediatek.com>,
- <stable@vger.kernel.org>, <will@kernel.org>, <wsd_upstream@mediatek.com>,
- <yf.wang@mediatek.com>
-Subject: Re: [PATCH v2] iommu/iova: Reset max32_alloc_size after cleaning
-Date: Thu, 3 Mar 2022 07:52:38 +0800
-Message-ID: <20220302235238.13099-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <ca208635-449b-2c94-7317-09ed8eb86a2c@arm.com>
-References: <ca208635-449b-2c94-7317-09ed8eb86a2c@arm.com>
+ id 1nPYtm-004pXn-5v; Thu, 03 Mar 2022 00:00:51 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by sin.source.kernel.org (Postfix) with ESMTPS id 8C953CE16A1;
+ Thu,  3 Mar 2022 00:00:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1159C340F2;
+ Thu,  3 Mar 2022 00:00:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1646265647;
+ bh=Gh+Iw395lx9OcmDBaop4139TbIG8zRBjlYsZzNBFWco=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=BocpuqTmutORsZYOiNSdm6lbdqku4oUyiaGBbawYajhypmeyVq/AFKrfpskEbcDf1
+ Q4/3uRPtQVWQFi13n7scGMH2Wid9LMjelDkVKUG+YEX7DHDQZ0KWBXrrawYLftXc3k
+ imwIMLlwqpUJdpgJFKoH1Z3B51kHkMs0QNYnA8bhbSTXwnhU0Cu1B3wklft1sYv1Q5
+ sZrEciaPDY3ZaKJyqH1bwFDtdS/e3oeCQj2G8VxNKQ5Z3e8195bISM1iV0JOy11v3j
+ OMssM1DtJK+tk/y6B7eunZOi4e+gNL/pU1dRgivstJDAtlfMwXfKDmZjslIiDbLCgP
+ ZdiHHAR5HAnQQ==
+Received: by mail-ed1-f45.google.com with SMTP id g20so4445778edw.6;
+ Wed, 02 Mar 2022 16:00:46 -0800 (PST)
+X-Gm-Message-State: AOAM530KC/3XCpUHqvkp0RO1hdqq5YcyaZXNvAyw7glddtIKEUKW0/Sx
+ pnyzOoq6KXTe1n04z9vWeq4WUL4huM9PIHu5/A==
+X-Google-Smtp-Source: ABdhPJyCWS2G7IAO37h6jGUTcYx1AHcHdPNzIqNZZelMR25IBMLn05AR7M7SJt01irflojL+S4EdT9nvnMtxT4pRjgc=
+X-Received: by 2002:aa7:df12:0:b0:410:a50b:de00 with SMTP id
+ c18-20020aa7df12000000b00410a50bde00mr31738511edy.2.1646265645243; Wed, 02
+ Mar 2022 16:00:45 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220126071932.32615-1-jason-jh.lin@mediatek.com>
+ <20220126071932.32615-4-jason-jh.lin@mediatek.com>
+ <CAAOTY__K_0sp6+VdL0yi=wF9wA_uag4HKqK3ST7uySdkzfCHBA@mail.gmail.com>
+ <CAAOTY__Xz0Pu30tmUrNJ=Nji=03Xv_3Qw526_hT-zELME36Bxw@mail.gmail.com>
+In-Reply-To: <CAAOTY__Xz0Pu30tmUrNJ=Nji=03Xv_3Qw526_hT-zELME36Bxw@mail.gmail.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Wed, 2 Mar 2022 18:00:34 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqLU0m9C1OPdiBPTkofB4sfiAeUPbFHp0w8caWyP4XPOEw@mail.gmail.com>
+Message-ID: <CAL_JsqLU0m9C1OPdiBPTkofB4sfiAeUPbFHp0w8caWyP4XPOEw@mail.gmail.com>
+Subject: Re: [PATCH v15 03/12] dt-bindings: display: mediatek: disp: split
+ each block to individual yaml
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_155254_809413_B5E312A2 
-X-CRM114-Status: GOOD (  12.06  )
+X-CRM114-CacheID: sfid-20220302_160050_588023_39C12772 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,50 +77,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: David Airlie <airlied@linux.ie>, singo.chang@mediatek.com,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Fabien Parent <fparent@baylibre.com>,
+ "moderated list:ARM/STM32 ARCHITECTURE"
+ <linux-stm32@st-md-mailman.stormreply.com>,
+ "roy-cw.yeh" <roy-cw.yeh@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ DTML <devicetree@vger.kernel.org>, Jitao shi <jitao.shi@mediatek.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Nancy Lin <nancy.lin@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>, Moudy Ho <moudy.ho@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->> If no cached iova is freed, resetting max32_alloc_size before
->> the retry allocation only give us a retry. Is it possible that
->> other users free their iovas during the additional retry?
+On Mon, Feb 7, 2022 at 5:07 PM Chun-Kuang Hu <chunkuang.hu@kernel.org> wrote:
 >
-> No, it's not possible, since everyone's serialised by iova_rbtree_lock. 
-> If the caches were already empty and the retry gets the lock first, it 
-> will still fail again - forcing a reset of max32_alloc_size only means 
-> it has to take the slow path to that failure. If another caller *did* 
-> manage to get in and free something between free_global_cached_iovas() 
-> dropping the lock and alloc_iova() re-taking it, then that would have 
-> legitimately reset max32_alloc_size anyway.
+> OK, it seems no one has comment on this patch, so
 
-Thanks for your explanation.
+No comment because the patch was not in PW. That's most likely due to this:
 
-YF showed me some numbers yesterday and maybe we can have a further
-discussion in that test case. (It looks like that some iovas are freed but
-their pfn_lo(s) are less than cached_iova->pfn_lo, so max32_alloc_size is not
-reset. So there are enought free iovas but the allocation still failed)
+Subject: [PATCH v15 03/12] dt-bindings: display: mediatek: disp: split
+each block to individual yaml
+Date: Wed, 26 Jan 2022 15:19:23 +0800 [thread overview]
+Message-ID: <20220126071932.32615-4-jason-jh.lin@mediatek.com> (raw)
+In-Reply-To: <20220126071932.32615-1-jason-jh.lin@mediatek.com>
 
-__cached_rbnode_delete_update(struct iova_domain *iovad, struct iova *free)
-{
-	struct iova *cached_iova;
+[-- Warning: decoded text below may be mangled, UTF-8 assumed --]
+[-- Attachment #1: Type: text/plain; charset="y", Size: 50916 bytes --]
 
-	cached_iova = to_iova(iovad->cached32_node);
-	if (free == cached_iova ||
-		(free->pfn_hi < iovad->dma_32bit_pfn &&
-		 free->pfn_lo >= cached_iova->pfn_lo)) {
-		iovad->cached32_node = rb_next(&free->node);
-		iovad->max32_alloc_size = iovad->dma_32bit_pfn;
-	}
-	...
-}
+"y" is not a valid charset. This is caused when git-send-email asks
+for the encoding and you answer 'y' rather than <enter>.
 
-Hi YF,
-Could your share your observation of the iova allocation failure you hit?
-
-Thanks,
-Miles
-
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
