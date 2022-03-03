@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C770C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 06:56:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7AF9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 06:56:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O4nYi0MjlmclX5+Ye6UTZo/3kWmBMakDH++x+1jbZhY=; b=cGVMxqUq2Fo+cV
-	kxctjrK7Z1kR3vWCHlO4poBgYYsoJh7olHRWEg59cuRuuv2y7Ty10FoQUneaKF24U77TFtp9C+Igp
-	TMPhuenQi4rzOXgYtRrKJRAIpBR4oTH6oP/+a/Wkuds34J46bEXOR4LQtRm38FwOHzbvZTW5YG+cQ
-	+8nF6JOJknhuv9GJ1dSQ+iuoQuwLoUHJ7tST+2qhJGgad2ULhFwpfVHJQmrrgatSKtmOZP4RiAthT
-	23zvFj6DJY9FTZBtBc2hfMNZKwLyQ8geY5xuz70Ba8Z7n90p5DkWNrOweHHqXWMHVEzSwEaTLYKxE
-	2P/aCd1YF/MCnpYzos1g==;
+	List-Owner; bh=K9W5qB5HshPqkLeMs5fA+B5S2FmFzwVh9uJSRm7P0EU=; b=3atO+mfeF/9vdA
+	LBG9FvGkxu921+QraA1szG7eZhZ61A3jnaN8LENqqDgmL/Z8sqKvR1tc/Ok7vCrbaZ7/YWoQr758U
+	anM672OLggcMIpelEGRA6xppjHut10HDwn42Ryq6+SEEfrDplcyEi276ALvXA+edGGESwKioEVqYz
+	uM9vW5VpImOZBAJaAglCwyytgDAUVqXVCB+NviS5yFDtzUuFDckPB76cFA/7vESQzfyjr7UKNkpI6
+	dUYnT44Si6weOeZ+xS2CmZq1ETT9GCkbMs0iASvtfPu/WGxnKdrJyGiogLJPAiS5QDUnWtoCmOBEG
+	E/dHB9Ya+MSqlHp1iuiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPfNW-005RdA-Gx; Thu, 03 Mar 2022 06:55:58 +0000
+	id 1nPfNs-005Rjx-4v; Thu, 03 Mar 2022 06:56:20 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPfNU-005Rby-Dq; Thu, 03 Mar 2022 06:55:57 +0000
-X-UUID: d55d1ca163394880a79280e47542f8a1-20220302
-X-UUID: d55d1ca163394880a79280e47542f8a1-20220302
+ id 1nPfNV-005Rby-KN; Thu, 03 Mar 2022 06:55:58 +0000
+X-UUID: a781ce6368d54ac7b13ba5666df604f0-20220302
+X-UUID: a781ce6368d54ac7b13ba5666df604f0-20220302
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1875118203; Wed, 02 Mar 2022 23:55:52 -0700
+ with ESMTP id 193479396; Wed, 02 Mar 2022 23:55:52 -0700
 Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 2 Mar 2022 22:52:14 -0800
+ 15.0.1497.2; Wed, 2 Mar 2022 22:52:15 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
  (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 3 Mar 2022 14:52:06 +0800
+ Thu, 3 Mar 2022 14:52:09 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 3 Mar 2022 14:52:06 +0800
+ Frontend Transport; Thu, 3 Mar 2022 14:52:09 +0800
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
  <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
@@ -49,18 +49,18 @@ CC: <yongqiang.niu@mediatek.com>, <hsinyi@chromium.org>,
  <rex-bc.chen@mediatek.com>, <dri-devel@lists.freedesktop.org>,
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
-Subject: [PATCH V6 1/5] dt-bindings: display: mediatek: add aal binding for
- MT8183
-Date: Thu, 3 Mar 2022 14:51:31 +0800
-Message-ID: <20220303065205.22971-2-rex-bc.chen@mediatek.com>
+Subject: [PATCH V6 3/5] dt-bindings: display: mediatek: change to use enum for
+ mutex
+Date: Thu, 3 Mar 2022 14:51:33 +0800
+Message-ID: <20220303065205.22971-4-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220303065205.22971-1-rex-bc.chen@mediatek.com>
 References: <20220303065205.22971-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_225556_479988_75B6DF9D 
-X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-CacheID: sfid-20220302_225557_692179_4D125972 
+X-CRM114-Status: UNSURE (   9.04  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,26 +78,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add aal binding for MT8183.
+All single entry cases in mutex can be merged as a single enum.
 
 Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,aal.yaml      | 2 ++
- 1 file changed, 2 insertions(+)
+ .../display/mediatek/mediatek,mutex.yaml      | 24 +++++++------------
+ 1 file changed, 9 insertions(+), 15 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-index 225f9dd726d2..191b56e16bee 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-@@ -23,6 +23,8 @@ properties:
-     oneOf:
-       - items:
-           - const: mediatek,mt8173-disp-aal
-+      - items:
-+          - const: mediatek,mt8183-disp-aal
-       - items:
-           - enum:
-               - mediatek,mt2712-disp-aal
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
+index 6eca525eced0..0378933201b4 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
+@@ -23,21 +23,15 @@ description: |
+ 
+ properties:
+   compatible:
+-    oneOf:
+-      - items:
+-          - const: mediatek,mt2701-disp-mutex
+-      - items:
+-          - const: mediatek,mt2712-disp-mutex
+-      - items:
+-          - const: mediatek,mt8167-disp-mutex
+-      - items:
+-          - const: mediatek,mt8173-disp-mutex
+-      - items:
+-          - const: mediatek,mt8183-disp-mutex
+-      - items:
+-          - const: mediatek,mt8192-disp-mutex
+-      - items:
+-          - const: mediatek,mt8195-disp-mutex
++    enum:
++      - mediatek,mt2701-disp-mutex
++      - mediatek,mt2712-disp-mutex
++      - mediatek,mt8167-disp-mutex
++      - mediatek,mt8173-disp-mutex
++      - mediatek,mt8183-disp-mutex
++      - mediatek,mt8192-disp-mutex
++      - mediatek,mt8195-disp-mutex
++
+   reg:
+     maxItems: 1
+ 
 -- 
 2.18.0
 
