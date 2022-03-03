@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8DEDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 14:10:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8520C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 14:27:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SooL+hZ49NZcUQNiRelVVJ9RMzsN5Cnt11nESMMZ/qU=; b=XUlJg77NyQiv1s
-	IKMA2PDciQ2Zz4Q5aHUqkJMu8yarGi3z2EhXSA3gLCNWr8IFozGbqGsfK1wdBFJIAP9/dn14N1+YZ
-	rlmCS1hjnRPnNA+B5RGeuhKbGfnWIJUWnMj9QE3Ub0UVoUsrTteXsKv4WYXsio+uxf8+FOWNmuhSx
-	k5liMvaDPxohH+J7c6vRa0khXOeeRmAy4VKfMZnf6uN5u4SKuYYoAiu3LhEbErHKO7HPm79kgS5Pa
-	FxZ3FUWJgB8+l1nsN+zWiUN+XHs3ukn+rpQlda10T1EE9TCNvO8AsQUy2HJ7FIhOhn5PvLUe6JK3A
-	rbVqwNXPsBxr57Iq21dg==;
+	List-Owner; bh=vGL/wHRSE92/B2heHxRbywg3Ukt43aWN4GRnG9+yOI4=; b=v2sPobzkjnosXC
+	XFk+lAqB0GFmsUkZsKa/bDP8xG+4cj6vEoUMvxDbDFqu6WRdeg7wcwfvxRcS1cskzUDlkKqZdhBBW
+	rhxiM5xWXCy5ZmK85Ije7NOcp53R343z9ymRytwkqyifG15Ryi8XyHTb8I6ly6Z1dZUeJ3DtRqz1A
+	rim8xK/fy2qDBtK6kS75mv3ZVR4vmpPKtQrBdF3JaCHAYauV6asir2+S37oXFF0Esl7DBz2SjIP4U
+	bhhHX4RFDPVdT6WW6Gfs/QNm0/SOmE05vS6RfO5QCebW9S/DdBsmYk/pYF/eFqVgtwfmrQnJRkZUM
+	kqL5ZHFYneN74RKYbJUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPmA3-006ZQ2-NJ; Thu, 03 Mar 2022 14:10:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nPmQo-006dnu-Jz; Thu, 03 Mar 2022 14:27:50 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPm9n-006ZNz-VP; Thu, 03 Mar 2022 14:10:19 +0000
-X-UUID: b8356da488b8483aa896aa3fc7630206-20220303
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=doF9OblTASq2FuWLfBNoe602wJD34O5r4WQy4FmdrSY=; 
- b=a2TeG+JtQ98MlgpRrd4EEomAt3xqm3bA4j0E6Ql8wnPSVspugS2k0K7V58IwhCOaL6HliLqU/k3i0jNRbi3N6uHxbauUqG+5kk0d//QcnVzXcj1N2jYHTD3cma4L1leK3X+T2tqTjuJuCCSWcFL2JwtpYIoSGli7Qarzhaekenk=;
-X-UUID: b8356da488b8483aa896aa3fc7630206-20220303
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1420362735; Thu, 03 Mar 2022 07:10:10 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 3 Mar 2022 06:10:09 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 3 Mar 2022 22:10:07 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 3 Mar 2022 22:10:06 +0800
-Message-ID: <9ba63387baecf598db696d0ebbc1583406a57a62.camel@mediatek.com>
-Subject: Re: [v2 09/17] ASoC: mediatek: mt8186: support tdm in platform driver
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- <broonie@kernel.org>
-CC: <lgirdwood@gmail.com>, <tiwai@suse.com>, <robh+dt@kernel.org>,
- <matthias.bgg@gmail.com>, <perex@perex.cz>, <p.zabel@pengutronix.de>,
- <geert+renesas@glider.be>, <trevor.wu@mediatek.com>, <tzungbi@google.com>,
- <aaronyu@google.com>, <zhangqilong3@huawei.com>,
- <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>
-Date: Thu, 3 Mar 2022 22:10:06 +0800
-In-Reply-To: <fcae42a5-6e11-e683-8f3a-453650f08d38@collabora.com>
-References: <20220217134205.15400-1-jiaxin.yu@mediatek.com>
- <20220217134205.15400-10-jiaxin.yu@mediatek.com>
- <fcae42a5-6e11-e683-8f3a-453650f08d38@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nPmQX-006dkY-Md; Thu, 03 Mar 2022 14:27:40 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 212841F45A4A
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1646317651;
+ bh=5aoFPX83mqT7Su6fSXiDHoPE/ChMfStDKR4mfXjNsw4=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=B87bzoU3jGrh46hPKN831Hi2k0+UiLbAEqPu6GnqTnhyYUUzwlsE+AB11V35VZsja
+ MAhWjxh0AgXdO3FGokUcL5Q6xb48tEpPk/gS+ht3QY7GIvdFQduTKK45uXPq0ey2dQ
+ 3lK5n3+o+eUe5Ajhht75zmIJAeUqqwxLSbDzcxUO+n1VEmP3hETfW2gKOPcPg61IL5
+ fdPs1NezlZEIRSdzh0vz5Bk9deVdZg8wfFeSiy/hBow84xZgKRu8QpvdGf8y6F+CBr
+ uSkC1S9FYY+8ABeGZM9N1BfcAAmY9GUg5AoY0Lo513cVAOJS4UqiSQ+jq6dT/5nOl7
+ Ow/CVSV9b1/Dw==
+Message-ID: <3eaa4c05-f8f2-9e18-e6d9-a627fe5e1e40@collabora.com>
+Date: Thu, 3 Mar 2022 15:27:27 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH v2, 04/10] media: mtk-vcodec: Enable venc dual core usage
+Content-Language: en-US
+To: Irui Wang <irui.wang@mediatek.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
+ <tzungbi@chromium.org>, Alexandre Courbot <acourbot@chromium.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>, Yong Wu <yong.wu@mediatek.com>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>,
+ Maoguang Meng <maoguang.meng@mediatek.com>,
+ Longfei Wang <longfei.wang@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, Fritz Koenig
+ <frkoenig@chromium.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220117120615.21687-1-irui.wang@mediatek.com>
+ <20220117120615.21687-5-irui.wang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220117120615.21687-5-irui.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220303_061017_464302_BCE36933 
-X-CRM114-Status: GOOD (  23.35  )
+X-CRM114-CacheID: sfid-20220303_062734_084528_873D3401 
+X-CRM114-Status: GOOD (  41.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,473 +78,379 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-02-18 at 15:54 +0100, AngeloGioacchino Del Regno wrote:
-> Il 17/02/22 14:41, Jiaxin Yu ha scritto:
-> > This patch adds mt8186 tdm dai driver.
-> > 
-> > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-> > ---
-> >   sound/soc/mediatek/mt8186/mt8186-dai-tdm.c | 713
-> > +++++++++++++++++++++
-> >   1 file changed, 713 insertions(+)
-> >   create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
-> > 
-> > diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
-> > b/sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
-> > new file mode 100644
-> > index 000000000000..28dd3661f0e0
-> > --- /dev/null
-> > +++ b/sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
-> > @@ -0,0 +1,713 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +//
-> > +// MediaTek ALSA SoC Audio DAI TDM Control
-> > +//
-> > +// Copyright (c) 2022 MediaTek Inc.
-> > +// Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
-> > +
-> > +#include <linux/regmap.h>
-> > +#include <sound/pcm_params.h>
-> > +
-> > +#include "mt8186-afe-clk.h"
-> > +#include "mt8186-afe-common.h"
-> > +#include "mt8186-afe-gpio.h"
-> > +#include "mt8186-interconnection.h"
-> > +
-> > +#define TDM_HD_EN_W_NAME "TDM_HD_EN"
-> > +#define TDM_MCLK_EN_W_NAME "TDM_MCLK_EN"
-> > +#define MTK_AFE_TDM_KCONTROL_NAME "TDM_HD_Mux"
-> > +
-> > +struct mtk_afe_tdm_priv {
-> > +	unsigned int id;
-> > +	unsigned int rate; /* for determine which apll to use */
-> > +	unsigned int bck_invert;
-> > +	unsigned int lck_invert;
-> > +	unsigned int lrck_width;
-> > +	unsigned int mclk_id;
-> > +	unsigned int mclk_multiple; /* according to sample rate */
-> > +	unsigned int mclk_rate;
-> > +	unsigned int mclk_apll;
-> > +	unsigned int tdm_mode;
-> > +	unsigned int data_mode;
-> > +	unsigned int slave_mode;
-> > +	unsigned int low_jitter_en;
-> > +};
-> > +
-> > +enum {
-> > +	TDM_IN_I2S = 0,
-> > +	TDM_IN_LJ = 1,
-> > +	TDM_IN_RJ = 2,
-> > +	TDM_IN_DSP_A = 4,
-> > +	TDM_IN_DSP_B = 5,
-> > +};
-> > +
-> > +enum {
-> > +	TDM_DATA_ONE_PIN = 0,
-> > +	TDM_DATA_MULTI_PIN,
-> > +};
-> > +
-> > +enum {
-> > +	TDM_BCK_NON_INV = 0,
-> > +	TDM_BCK_INV = 1,
-> > +};
-> > +
-> > +enum {
-> > +	TDM_LCK_NON_INV = 0,
-> > +	TDM_LCK_INV = 1,
-> > +};
-> > +
-> > +static unsigned int get_tdm_lrck_width(snd_pcm_format_t format,
-> > +				       unsigned int mode)
-> > +{
-> > +	if (mode == TDM_IN_DSP_A || mode == TDM_IN_DSP_B)
-> > +		return 0;
-> > +	else
+Il 17/01/22 13:06, Irui Wang ha scritto:
+> Adds new venc core mode to indicate different venc hardware mode:
+> VENC_SINGLE_CORE_MODE means only one core, the device has its own
+> power/clk/irq, init_clk/request_irq helper can be used.
 > 
-> Drop the "else"
+> VENC_DUAL_CORE_MODE means more than one core inside, the core device
+> can use the init_clk/request_irq helper to initialize their own
+> power/clk/irq. And the main device doesn't need use these helper anymore.
 > 
-> > +		return snd_pcm_format_physical_width(format) - 1;
-> > +}
-> > +
-> > +static unsigned int get_tdm_ch_fixup(unsigned int channels)
-> > +{
-> > +	if (channels > 4)
-> > +		return 8;
-> > +	else if (channels > 2)
-> > +		return 4;
-> > +	else
+> MT8195 has two H264 venc cores, enable dual_core_mode for it.
 > 
-> Same here
+> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+> ---
+>   drivers/media/platform/mtk-vcodec/Makefile    |   4 +-
+>   .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  22 +++
+>   .../platform/mtk-vcodec/mtk_vcodec_enc_core.c | 153 ++++++++++++++++++
+>   .../platform/mtk-vcodec/mtk_vcodec_enc_core.h |  36 +++++
+>   .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  88 +++++-----
+>   5 files changed, 266 insertions(+), 37 deletions(-)
+>   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_core.c
+>   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_core.h
 > 
-> > +		return 2;
-> > +}
-> > +
-> > +static unsigned int get_tdm_ch_per_sdata(unsigned int mode,
-> > +					 unsigned int channels)
-> > +{
-> > +	if (mode == TDM_IN_DSP_A || mode == TDM_IN_DSP_B)
-> > +		return get_tdm_ch_fixup(channels);
-> > +	else
-> 
-> ...and same here
-> 
-> > +		return 2;
-> > +}
-> > +
-> > +enum {
-> > +	SUPPLY_SEQ_APLL,
-> > +	SUPPLY_SEQ_TDM_MCK_EN,
-> > +	SUPPLY_SEQ_TDM_HD_EN,
-> > +	SUPPLY_SEQ_TDM_EN,
-> > +};
-> > +
-> > +static int get_tdm_id_by_name(const char *name)
-> > +{
-> > +	return MT8186_DAI_TDM_IN;
-> > +}
-> > +
-> > +static int mtk_tdm_en_event(struct snd_soc_dapm_widget *w,
-> > +			    struct snd_kcontrol *kcontrol,
-> > +			    int event)
-> > +{
-> > +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w-
-> > >dapm);
-> > +	struct mtk_base_afe *afe =
-> > snd_soc_component_get_drvdata(cmpnt);
-> > +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
-> > +	int dai_id = get_tdm_id_by_name(w->name);
-> > +	struct mtk_afe_tdm_priv *tdm_priv = afe_priv->dai_priv[dai_id];
-> > +
-> > +	if (!tdm_priv) {
-> > +		dev_info(afe->dev, "%s(), tdm_priv == NULL", __func__);
-> 
-> dev_err()
-> 
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	dev_dbg(cmpnt->dev, "%s(), name %s, event 0x%x\n",
-> > +		__func__, w->name, event);
-> > +
-> > +	switch (event) {
-> > +	case SND_SOC_DAPM_PRE_PMU:
-> > +		mt8186_afe_gpio_request(afe->dev, true, tdm_priv->id,
-> > 0);
-> > +		break;
-> > +	case SND_SOC_DAPM_POST_PMD:
-> > +		mt8186_afe_gpio_request(afe->dev, false, tdm_priv->id,
-> > 0);
-> > +		break;
-> > +	default:
-> > +		break;
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int mtk_tdm_mck_en_event(struct snd_soc_dapm_widget *w,
-> > +				struct snd_kcontrol *kcontrol,
-> > +				int event)
-> > +{
-> > +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w-
-> > >dapm);
-> > +	struct mtk_base_afe *afe =
-> > snd_soc_component_get_drvdata(cmpnt);
-> > +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
-> > +	int dai_id = get_tdm_id_by_name(w->name);
-> > +	struct mtk_afe_tdm_priv *tdm_priv = afe_priv->dai_priv[dai_id];
-> > +
-> > +	if (!tdm_priv) {
-> > +		dev_info(afe->dev, "%s(), tdm_priv == NULL", __func__);
-> 
-> dev_err() - please fix all other instances
-> 
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	dev_dbg(cmpnt->dev, "%s(), name %s, event 0x%x, dai_id %d\n",
-> > +		__func__, w->name, event, dai_id);
-> > +
-> > +	switch (event) {
-> > +	case SND_SOC_DAPM_PRE_PMU:
-> > +		mt8186_mck_enable(afe, tdm_priv->mclk_id, tdm_priv-
-> > >mclk_rate);
-> > +		break;
-> > +	case SND_SOC_DAPM_POST_PMD:
-> > +		tdm_priv->mclk_rate = 0;
-> > +		mt8186_mck_disable(afe, tdm_priv->mclk_id);
-> > +		break;
-> > +	default:
-> > +		break;
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> 
-> ...snip...
-> 
-> > +
-> > +static int mt8186_tdm_hd_set(struct snd_kcontrol *kcontrol,
-> > +			     struct snd_ctl_elem_value *ucontrol)
-> > +{
-> > +	struct snd_soc_component *cmpnt =
-> > snd_soc_kcontrol_component(kcontrol);
-> > +	struct mtk_base_afe *afe =
-> > snd_soc_component_get_drvdata(cmpnt);
-> > +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
-> > +	int dai_id = get_tdm_id_by_name(kcontrol->id.name);
-> > +	struct mtk_afe_tdm_priv *tdm_priv = afe_priv->dai_priv[dai_id];
-> > +	struct soc_enum *e = (struct soc_enum *)kcontrol-
-> > >private_value;
-> > +	int hd_en;
-> > +
-> > +	if (ucontrol->value.enumerated.item[0] >= e->items)
-> > +		return -EINVAL;
-> > +
-> > +	hd_en = ucontrol->value.integer.value[0];
-> > +
-> > +	dev_info(afe->dev, "%s(), kcontrol name %s, hd_en %d\n",
-> > +		 __func__, kcontrol->id.name, hd_en);
-> 
-> dev_dbg()
-> 
-> > +
-> > +	if (!tdm_priv) {
-> > +		dev_info(afe->dev, "%s(), tdm_priv == NULL", __func__);
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	tdm_priv->low_jitter_en = hd_en;
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static const struct snd_kcontrol_new mtk_dai_tdm_controls[] = {
-> > +	SOC_ENUM_EXT(MTK_AFE_TDM_KCONTROL_NAME, mt8186_tdm_enum[0],
-> > +		     mt8186_tdm_hd_get, mt8186_tdm_hd_set),
-> > +};
-> > +
-> > +static const struct snd_soc_dapm_route mtk_dai_tdm_routes[] = {
-> > +	{"TDM IN", NULL, "aud_tdm_clk"},
-> > +	{"TDM IN", NULL, "TDM_EN"},
-> > +	{"TDM IN", NULL, TDM_HD_EN_W_NAME, mtk_afe_tdm_hd_connect},
-> > +	{TDM_HD_EN_W_NAME, NULL, APLL1_W_NAME,
-> > mtk_afe_tdm_apll_connect},
-> > +	{TDM_HD_EN_W_NAME, NULL, APLL2_W_NAME,
-> > mtk_afe_tdm_apll_connect},
-> > +
-> > +	{"TDM IN", NULL, TDM_MCLK_EN_W_NAME, mtk_afe_tdm_mclk_connect},
-> > +	{TDM_MCLK_EN_W_NAME, NULL, APLL1_W_NAME,
-> > mtk_afe_tdm_mclk_apll_connect},
-> > +	{TDM_MCLK_EN_W_NAME, NULL, APLL2_W_NAME,
-> > mtk_afe_tdm_mclk_apll_connect},
-> > +
-> > +	/* allow tdm on without codec on */
-> > +	{"TDM IN", NULL, "TDM_In_Mux"},
-> > +	{"TDM_In_Mux", "Dummy_Widget", "TDM_DUMMY_IN"},
-> > +};
-> > +
-> > +/* dai ops */
-> > +static int mtk_dai_tdm_cal_mclk(struct mtk_base_afe *afe,
-> > +				struct mtk_afe_tdm_priv *tdm_priv,
-> > +				int freq)
-> > +{
-> > +	int apll;
-> > +	int apll_rate;
-> > +
-> > +	apll = mt8186_get_apll_by_rate(afe, freq);
-> > +	apll_rate = mt8186_get_apll_rate(afe, apll);
-> > +
-> > +	if (!freq || freq > apll_rate) {
-> > +		dev_info(afe->dev,
-> > +			 "%s(), freq(%d Hz) invalid\n", __func__,
-> > freq);
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	if (apll_rate % freq != 0) {
-> > +		dev_info(afe->dev,
-> > +			 "%s(), APLL cannot generate %d Hz", __func__,
-> > freq);
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	tdm_priv->mclk_rate = freq;
-> > +	tdm_priv->mclk_apll = apll;
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int mtk_dai_tdm_hw_params(struct snd_pcm_substream
-> > *substream,
-> > +				 struct snd_pcm_hw_params *params,
-> > +				 struct snd_soc_dai *dai)
-> > +{
-> > +	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-> > +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
-> > +	int tdm_id = dai->id;
-> > +	struct mtk_afe_tdm_priv *tdm_priv = afe_priv->dai_priv[tdm_id];
-> > +	unsigned int tdm_mode = tdm_priv->tdm_mode;
-> > +	unsigned int data_mode = tdm_priv->data_mode;
-> > +	unsigned int rate = params_rate(params);
-> > +	unsigned int channels = params_channels(params);
-> > +	snd_pcm_format_t format = params_format(params);
-> > +	unsigned int bit_width =
-> > +		snd_pcm_format_physical_width(format);
-> > +	unsigned int tdm_channels = (data_mode == TDM_DATA_ONE_PIN) ?
-> > +		get_tdm_ch_per_sdata(tdm_mode, channels) : 2;
-> > +	unsigned int lrck_width =
-> > +		get_tdm_lrck_width(format, tdm_mode);
-> > +	unsigned int tdm_con = 0;
-> > +	bool slave_mode = tdm_priv->slave_mode;
-> > +	bool lrck_inv = tdm_priv->lck_invert;
-> > +	bool bck_inv = tdm_priv->bck_invert;
-> > +	unsigned int ctrl_reg;
-> > +	unsigned int ctrl_mask;
-> > +	unsigned int tran_rate;
-> > +	unsigned int tran_relatch_rate;
-> > +
-> > +	if (tdm_priv)
-> > +		tdm_priv->rate = rate;
-> > +	else
-> > +		dev_info(afe->dev, "%s(), tdm_priv == NULL", __func__);
-> > +
-> > +	tran_rate = mt8186_rate_transform(afe->dev, rate, dai->id);
-> > +	tran_relatch_rate = mt8186_tdm_relatch_rate_transform(afe->dev, 
-> > rate);
-> > +
-> > +	/* calculate mclk_rate, if not set explicitly */
-> > +	if (!tdm_priv->mclk_rate) {
-> > +		tdm_priv->mclk_rate = rate * tdm_priv->mclk_multiple;
-> > +		mtk_dai_tdm_cal_mclk(afe,
-> > +				     tdm_priv,
-> > +				     tdm_priv->mclk_rate);
-> > +	}
-> > +
-> > +	/* ETDM_IN1_CON0 */
-> > +	tdm_con |= slave_mode << ETDM_IN1_CON0_REG_SLAVE_MODE_SFT;
-> > +	tdm_con |= tdm_mode << ETDM_IN1_CON0_REG_FMT_SFT;
-> > +	tdm_con |= (bit_width - 1) << ETDM_IN1_CON0_REG_BIT_LENGTH_SFT;
-> > +	tdm_con |= (bit_width - 1) <<
-> > ETDM_IN1_CON0_REG_WORD_LENGTH_SFT;
-> > +	tdm_con |= (tdm_channels - 1) << ETDM_IN1_CON0_REG_CH_NUM_SFT;
-> > +	/* default disable sync mode */
-> > +	tdm_con |= 0 << ETDM_IN1_CON0_REG_SYNC_MODE_SFT;
-> 
-> 0 << (anything) == 0
-> 
-> (number |= 0) == number
-> 
-> Is this a mistake, or are you really doing nothing here?
-> 
-No, this is just to emphasize the need to set this bit to 0.
-It really do nothing here, just link a reminder.
-Can I keep this sentence?
-> 
-> > +	/* relatch fix to h26m */
-> > +	tdm_con |= 0 << ETDM_IN1_CON0_REG_RELATCH_1X_EN_SEL_DOMAIN_SFT;
-> > +
-> > +	ctrl_reg = ETDM_IN1_CON0;
-> > +	ctrl_mask = ETDM_IN_CON0_CTRL_MASK;
-> > +	regmap_update_bits(afe->regmap, ctrl_reg, ctrl_mask, tdm_con);
-> > +
-> > +	/* ETDM_IN1_CON1 */
-> > +	tdm_con = 0;
-> > +	tdm_con |= 0 << ETDM_IN1_CON1_REG_LRCK_AUTO_MODE_SFT;
-> > +	tdm_con |= 1 << ETDM_IN1_CON1_PINMUX_MCLK_CTRL_OE_SFT;
-> > +	tdm_con |= (lrck_width - 1) <<
-> > ETDM_IN1_CON1_REG_LRCK_WIDTH_SFT;
-> > +
-> > +	ctrl_reg = ETDM_IN1_CON1;
-> > +	ctrl_mask = ETDM_IN_CON1_CTRL_MASK;
-> > +	regmap_update_bits(afe->regmap, ctrl_reg, ctrl_mask, tdm_con);
-> 
-> You don't need the ctrl_reg, nor ctrl_mask variables...
-I was trying to avoid a line of more than 80 words, so I shortened the
-number of words through variables.
+> diff --git a/drivers/media/platform/mtk-vcodec/Makefile b/drivers/media/platform/mtk-vcodec/Makefile
+> index 93e7a343b5b0..c472b221bd6b 100644
+> --- a/drivers/media/platform/mtk-vcodec/Makefile
+> +++ b/drivers/media/platform/mtk-vcodec/Makefile
+> @@ -3,7 +3,8 @@
+>   obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC) += mtk-vcodec-dec.o \
+>   				       mtk-vcodec-enc.o \
+>   				       mtk-vcodec-common.o \
+> -				       mtk-vcodec-dec-hw.o
+> +				       mtk-vcodec-dec-hw.o \
+> +				       mtk-vcodec-enc-core.o
+>   
+>   mtk-vcodec-dec-y := vdec/vdec_h264_if.o \
+>   		vdec/vdec_vp8_if.o \
+> @@ -32,6 +33,7 @@ mtk-vcodec-enc-y := venc/venc_vp8_if.o \
+>   		venc_drv_if.o \
+>   		venc_vpu_if.o \
+>   
+> +mtk-vcodec-enc-core-y := mtk_vcodec_enc_core.o
+>   
+>   mtk-vcodec-common-y := mtk_vcodec_intr.o \
+>   		mtk_vcodec_util.o \
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> index f78463ff4551..9e4e4290a69a 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> @@ -117,6 +117,23 @@ enum mtk_vdec_hw_count {
+>   	MTK_VDEC_MAX_HW_COUNT,
+>   };
+>   
+> +/*
+> + * enum mtk_venc_core_id -- encoder core id
+> + */
+> +enum mtk_venc_core_id {
+> +	MTK_VENC_CORE0 = 0,
+> +	MTK_VENC_CORE1 = 1,
 
-> 
-> regmap_update_bits(afe->regmap, ETDM_IN1_CON1,
-> ETDM_IN_CON1_CTRL_MASK, tdm_con);
-> 
-> > +
-> > +	/* ETDM_IN1_CON3 */
-> > +	tdm_con = 0;
-> > +	tdm_con = ETDM_IN_CON3_FS(tran_rate);
-> > +
-> > +	ctrl_reg = ETDM_IN1_CON3;
-> > +	ctrl_mask = ETDM_IN_CON3_CTRL_MASK;
-> > +	regmap_update_bits(afe->regmap, ctrl_reg, ctrl_mask, tdm_con);
-> 
-> same here
-> 
-> > +
-> > +	/* ETDM_IN1_CON4 */
-> > +	tdm_con = 0;
-> > +	tdm_con = ETDM_IN_CON4_FS(tran_relatch_rate);
-> > +	if (slave_mode) {
-> > +		if (lrck_inv)
-> > +			tdm_con |= ETDM_IN_CON4_CON0_SLAVE_LRCK_INV;
-> > +		if (bck_inv)
-> > +			tdm_con |= ETDM_IN_CON4_CON0_SLAVE_BCK_INV;
-> > +	} else {
-> > +		if (lrck_inv)
-> > +			tdm_con |= ETDM_IN_CON4_CON0_MASTER_LRCK_INV;
-> > +		if (bck_inv)
-> > +			tdm_con |= ETDM_IN_CON4_CON0_MASTER_BCK_INV;
-> > +	}
-> > +
-> > +	ctrl_reg = ETDM_IN1_CON4;
-> > +	ctrl_mask = ETDM_IN_CON4_CTRL_MASK;
-> > +	regmap_update_bits(afe->regmap, ctrl_reg, ctrl_mask, tdm_con);
-> 
-> and here
-> 
-> > +
-> > +	/* ETDM_IN1_CON2 */
-> > +	tdm_con = 0;
-> > +	if (data_mode == TDM_DATA_MULTI_PIN) {
-> > +		tdm_con |= ETDM_IN_CON2_MULTI_IP_2CH_MODE;
-> > +		tdm_con |= ETDM_IN_CON2_MULTI_IP_CH(channels);
-> > +	}
-> > +
-> > +	ctrl_reg = ETDM_IN1_CON2;
-> > +	ctrl_mask = ETDM_IN_CON2_CTRL_MASK;
-> > +	regmap_update_bits(afe->regmap, ctrl_reg, ctrl_mask, tdm_con);
-> 
-> and here
-> 
-> > +
-> > +	/* ETDM_IN1_CON8 */
-> > +	tdm_con = 0;
-> > +	if (slave_mode) {
-> > +		tdm_con |= 1 << ETDM_IN1_CON8_REG_ETDM_USE_AFIFO_SFT;
-> > +		tdm_con |= 0 <<
-> > ETDM_IN1_CON8_REG_AFIFO_CLOCK_DOMAIN_SEL_SFT;
-> > +		tdm_con |= ETDM_IN_CON8_FS(tran_relatch_rate);
-> > +	} else {
-> > +		tdm_con |= 0 << ETDM_IN1_CON8_REG_ETDM_USE_AFIFO_SFT;
-> > +	}
-> > +
-> > +	ctrl_reg = ETDM_IN1_CON8;
-> > +	ctrl_mask = ETDM_IN_CON8_CTRL_MASK;
-> > +	regmap_update_bits(afe->regmap, ctrl_reg, ctrl_mask, tdm_con);
-> 
-> finally, here too.
-> 
-> > +
-> > +	return 0;
-> > +}
-> > +
-> 
-> Thanks,
-> ANgelo
+You don't have to say "= 1" for core1, just...
+
+	MTK_VENC_CORE0 = 0,
+	MTK_VENC_CORE1,
+
+...is fine, and better.
+
+> +	MTK_VENC_CORE_MAX,
+> +};
+> +
+> +/**
+> + * enmu mtk_venc_core_mode - Used to indicate different encode mode
+> + */
+> +enum mtk_venc_core_mode {
+> +	VENC_SINGLE_CORE_MODE = 0,
+> +	VENC_DUAL_CORE_MODE = 1,
+> +};
+> +
+>   /*
+>    * struct mtk_video_fmt - Structure used to store information about pixelformats
+>    */
+> @@ -420,6 +437,7 @@ struct mtk_vcodec_dec_pdata {
+>    * @output_formats: array of supported output formats
+>    * @num_output_formats: number of entries in output_formats
+>    * @core_type: stand for h264 or vp8 encode
+> + * @core_mode: indicate encode core mode
+>    */
+>   struct mtk_vcodec_enc_pdata {
+>   	bool uses_ext;
+> @@ -430,6 +448,7 @@ struct mtk_vcodec_enc_pdata {
+>   	const struct mtk_video_fmt *output_formats;
+>   	size_t num_output_formats;
+>   	int core_type;
+> +	enum mtk_venc_core_mode core_mode;
+>   };
+>   
+>   #define MTK_ENC_CTX_IS_EXT(ctx) ((ctx)->dev->venc_pdata->uses_ext)
+> @@ -479,6 +498,7 @@ struct mtk_vcodec_enc_pdata {
+>    * @subdev_dev: subdev hardware device
+>    * @subdev_prob_done: check whether all used hw device is prob done
+>    * @subdev_bitmap: used to record hardware is ready or not
+> + * @enc_core_dev: used to store venc core device
+>    */
+>   struct mtk_vcodec_dev {
+>   	struct v4l2_device v4l2_dev;
+> @@ -524,6 +544,8 @@ struct mtk_vcodec_dev {
+>   	void *subdev_dev[MTK_VDEC_HW_MAX];
+>   	int (*subdev_prob_done)(struct mtk_vcodec_dev *vdec_dev);
+>   	DECLARE_BITMAP(subdev_bitmap, MTK_VDEC_HW_MAX);
+> +
+> +	void *enc_core_dev[MTK_VENC_CORE_MAX];
+>   };
+>   
+>   static inline struct mtk_vcodec_ctx *fh_to_ctx(struct v4l2_fh *fh)
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_core.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_core.c
+> new file mode 100644
+> index 000000000000..d84914f615a5
+> --- /dev/null
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_core.c
+> @@ -0,0 +1,153 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2021 MediaTek Inc.
+> + */
+> +
+> +#include <linux/interrupt.h>
+> +#include <linux/irq.h>
+> +#include <linux/module.h>
+> +#include <linux/of_platform.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/slab.h>
+> +
+> +#include "mtk_vcodec_drv.h"
+> +#include "mtk_vcodec_enc.h"
+> +#include "mtk_vcodec_enc_core.h"
+> +
+> +static const struct of_device_id mtk_venc_core_ids[] = {
+> +	{
+> +		.compatible = "mediatek,mtk-venc-core0",
+> +		.data = (void *)MTK_VENC_CORE0,
+> +	},
+> +	{
+> +		.compatible = "mediatek,mtk-venc-core1",
+> +		.data = (void *)MTK_VENC_CORE1,
+> +	},
+> +	{},
+> +};
+
+Hello Irui,
+
+You don't need a different compatible for the different cores, as in the
+declaration, there's nothing special that differentiates them that much.
+
+I understand that there may be a need to differentiate the core number, as
+in, CORE0 always has to be the leader, while CORE1 would be the follower,
+but this is not a good reason to give them a different compatible string.
+
+I want to make you aware that Kyrie Wu did the same thing as you did here
+and in my review on his patch I was able to give an extensive example of
+how this should look; the exactly same logic would apply to this patch.
+
+Please have a look here: https://patchwork.kernel.org/comment/24726607/
+
+P.S.: In short, you should have only one "mediatek,mtk-venc-hw" compatible
+       used for probing both cores.
+
+> +MODULE_DEVICE_TABLE(of, mtk_venc_core_ids);
+> +
+> +static void clean_irq_status(unsigned int irq_status, void __iomem *addr)
+> +{
+> +	if (irq_status & MTK_VENC_IRQ_STATUS_PAUSE)
+> +		writel(MTK_VENC_IRQ_STATUS_PAUSE, addr);
+> +
+> +	if (irq_status & MTK_VENC_IRQ_STATUS_SWITCH)
+> +		writel(MTK_VENC_IRQ_STATUS_SWITCH, addr);
+> +
+> +	if (irq_status & MTK_VENC_IRQ_STATUS_DRAM)
+> +		writel(MTK_VENC_IRQ_STATUS_DRAM, addr);
+> +
+> +	if (irq_status & MTK_VENC_IRQ_STATUS_SPS)
+> +		writel(MTK_VENC_IRQ_STATUS_SPS, addr);
+> +
+> +	if (irq_status & MTK_VENC_IRQ_STATUS_PPS)
+> +		writel(MTK_VENC_IRQ_STATUS_PPS, addr);
+> +
+> +	if (irq_status & MTK_VENC_IRQ_STATUS_FRM)
+> +		writel(MTK_VENC_IRQ_STATUS_FRM, addr);
+> +}
+> +
+> +static irqreturn_t mtk_enc_core_irq_handler(int irq, void *priv)
+> +{
+> +	struct mtk_venc_core_dev *core = priv;
+> +	struct mtk_vcodec_ctx *ctx;
+> +	unsigned long flags;
+> +	void __iomem *addr;
+> +
+> +	spin_lock_irqsave(&core->main_dev->irqlock, flags);
+> +	ctx = core->curr_ctx;
+> +	spin_unlock_irqrestore(&core->main_dev->irqlock, flags);
+> +	if (!ctx)
+> +		return IRQ_HANDLED;
+> +
+> +	mtk_v4l2_debug(1, "id=%d core :%d", ctx->id, core->core_id);
+> +
+> +	addr = core->reg_base + MTK_VENC_IRQ_ACK_OFFSET;
+> +	ctx->irq_status = readl(core->reg_base + MTK_VENC_IRQ_STATUS_OFFSET);
+> +	clean_irq_status(ctx->irq_status, addr);
+> +
+> +	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED, 0);
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +static int mtk_venc_core_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct mtk_venc_core_dev *core;
+> +	struct mtk_vcodec_dev *main_dev;
+> +	int ret;
+> +
+> +	if (!dev->parent) {
+> +		dev_err(dev, "No parent for venc core device\n");
+> +		return -ENODEV;
+> +	}
+
+Please, use dev_err_probe(), here and everywhere else.
+
+> +
+> +	main_dev = dev_get_drvdata(dev->parent);
+> +	if (!main_dev) {
+> +		dev_err(dev, "Failed to get parent driver data");
+> +		return -EINVAL;
+> +	}
+> +
+> +	core = devm_kzalloc(&pdev->dev, sizeof(*core), GFP_KERNEL);
+> +	if (!core)
+> +		return -ENOMEM;
+> +
+> +	core->plat_dev = pdev;
+> +
+> +	core->reg_base = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(core->reg_base)) {
+> +		dev_err(&pdev->dev, "Failed to get reg base");
+> +		ret = PTR_ERR(core->reg_base);
+> +		goto err;
+
+You don't need the "err" label. Also, you can return dev_err_probe here too.
+Example:
+
+		return dev_err_probe(&pdev->dev, PTR_ERR(core->reg_base),
+				     "Failed to get reg base\n");
+
+> +	}
+> +
+> +	core->enc_irq = platform_get_irq(pdev, 0);
+> +	if (core->enc_irq < 0) {
+> +		dev_err(&pdev->dev, "Failed to get irq resource");
+> +		ret = core->enc_irq;
+> +		goto err;
+> +	}
+> +
+> +	ret = devm_request_irq(&pdev->dev, core->enc_irq,
+> +			       mtk_enc_core_irq_handler, 0,
+> +			       pdev->name, core);
+> +	if (ret) {
+> +		dev_err(&pdev->dev,
+> +			"Failed to install core->enc_irq %d (%d)",
+> +			core->enc_irq, ret);
+> +		ret = -EINVAL;
+> +		goto err;
+> +	}
+> +
+> +	core->core_id =
+
+core_id would be 0 if "mediatek,hw-leader", N if it's not a mediatek,hw-leader.
+
+> +		(enum mtk_venc_core_id)of_device_get_match_data(&pdev->dev);
+> +	if (core->core_id < 0 || core->core_id >= MTK_VENC_CORE_MAX) {
+> +		ret = -EINVAL;
+> +		goto err;
+> +	}
+> +
+> +	main_dev->enc_core_dev[core->core_id] = core;
+> +	core->main_dev = main_dev;
+> +
+> +	platform_set_drvdata(pdev, core);
+> +
+> +	dev_info(dev, "Venc core :%d probe done\n", core->core_id);
+
+Please change this to dev_dbg().
+
+> +
+> +	return 0;
+> +
+> +err:
+> +	return ret;
+> +}
+> +
+> +static struct platform_driver mtk_venc_core_driver = {
+> +	.probe  = mtk_venc_core_probe,
+> +	.driver = {
+> +		.name	 = "mtk-venc-core",
+> +		.of_match_table = mtk_venc_core_ids,
+> +	},
+> +};
+> +module_platform_driver(mtk_venc_core_driver);
+> +
+> +MODULE_LICENSE("GPL v2");
+> +MODULE_DESCRIPTION("Mediatek video encoder core driver");
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_core.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_core.h
+> new file mode 100644
+> index 000000000000..856681989869
+> --- /dev/null
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_core.h
+> @@ -0,0 +1,36 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2021 MediaTek Inc.
+> + */
+> +
+> +#ifndef _MTK_VCODEC_ENC_CORE_H_
+> +#define _MTK_VCODEC_ENC_CORE_H_
+> +
+> +#include <linux/platform_device.h>
+> +#include "mtk_vcodec_drv.h"
+> +
+> +/*
+
+I love when developers try to write kerneldoc, this is something that
+should really be done *always*, so thank you for this!!!!
+
+....but you missed something here: for this to be parsed by kerneldoc,
+you need to do:
+
+/**
+^^^ this one :))
+
+  * struct mtk_venc_core_dev - driver data
+
+P.S.: https://docs.kernel.org/doc-guide/kernel-doc.html
+
+> + * struct mtk_venc_core_dev - driver data
+> + * @plat_dev: platform_device
+> + * @main_dev: main device
+> + * @pm: power management data
+> + * @curr_ctx: the context that is waiting for venc hardware
+> + * @reg_base: mapped address of venc registers
+> + * @irq_status: venc core irq status
+> + * @enc_irq: venc device irq
+> + * @core id: for venc core id: core#0, core#1...
+> + */
+> +struct mtk_venc_core_dev {
+> +	struct platform_device *plat_dev;
+> +	struct mtk_vcodec_dev *main_dev;
+> +
+> +	struct mtk_vcodec_pm pm;
+> +	struct mtk_vcodec_ctx *curr_ctx;
+> +
+> +	void __iomem *reg_base;
+> +	unsigned int irq_status;
+> +	int enc_irq;
+> +	int core_id;
+> +};
+> +
+> +#endif /* _MTK_VCODEC_ENC_CORE_H_ */
+
+
+Thanks,
+Angelo
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
