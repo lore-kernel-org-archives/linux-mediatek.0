@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00122C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 15:17:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04117C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 15:18:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jY6eLw5Cj05Y/m8MVoyPQmUvnD1muEhvBlqJq6nDWRk=; b=aSXwuyPYbsFBff
-	UCVzrkdLr/v3KblXbkZbcO8sNXH2qqLatTGcidMXTHT2xGi2i0yMYyvK3FL98XzbKI7ivTpGOU5Uc
-	pBQFJTbCMrmnu1Ng4NPNdV8o6YJJC2oZDRjOSHX0XBN0qoaxgsX3DXknYGsUizQueCK73qK5KzniW
-	FsiZtYltuGFyJejiO3MlKiWMTtIyAkibhBotaiKMO4UBaXwIKy4RAIKAZcdlSrPlSiMlmhVQF3m7Y
-	Fh8/H3M9/67yaeHwxt3D94ZcZMP0Dj3M04H6wa19zH+/90b9EED3WVyrs5PlAkH4IGlvmiyJzvqVU
-	lHcPn0SLLBI9K/Y+NLuw==;
+	List-Owner; bh=LFdu7vjz42T6Qmz2lygDKtijcGiVflIp6aIPNAx0gc4=; b=arhXvK+yCNjVN1
+	tkaVk9q73QrCRMmPd6Y650cQtWSYv24kvmeK+cjgIjC/Or0vzrnQdvimW5t5xHA7x7VCDeE8Sm+ol
+	C1r27GmgEuYUqrGvW8gBBDqskzGHxoYpQC4+Bzt1D/nP+/anT9Bmf3VpvwdGDX8BBP2hH1DqBjXGK
+	YBgIM62T6UAnMazKN7h2IR0YA85FY837AFMlBXJ4hxOwBLS0pFMP2pRhvfRi+HbJlvCaj6/icVHml
+	pLUHk+udafhxMheA5cnXOkfy5EktK+UXyx66255xjk6fRfBqoAskhfzW8jBqM6YhtIgxBDrZE+TLg
+	Y8odVUzjGNNNzM1Awnnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPnCW-006mH1-69; Thu, 03 Mar 2022 15:17:08 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nPnDK-006mSo-Uf; Thu, 03 Mar 2022 15:17:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPnCC-006mEt-0G; Thu, 03 Mar 2022 15:16:57 +0000
-X-UUID: 33f9911869dc40b3a0fed6c538cbf86c-20220303
+ id 1nPnD6-006mNa-0l; Thu, 03 Mar 2022 15:17:47 +0000
+X-UUID: 1513405ea9fa43518e759a659d4cffff-20220303
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=oiuFvqMDF6QJ2mYMFGHPNs9c3y0sU2SwAAzXVHuCJKQ=; 
- b=Zi7jKSybP72pbiAEhYB+oam8VvKxp3d555OCNiwyZPsfiGUFgJ6AjfNIgZ8kalQGmc51B7Cg3G4POqhgIYblu/OP8o4Ef68ti5CMeEUGDvxBKl2LAw2VFgwKYFE3tyGIjvyPv72Fok+7tRxdwkGOskHjYQLj3JyU9OwBciLe10o=;
-X-UUID: 33f9911869dc40b3a0fed6c538cbf86c-20220303
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=z94BL8jKq44meDoJ30ftN0N/nqqgBz98jPgSQkvE/n8=; 
+ b=cZhhUKLwYOQPqQ5YHspVH50c/z90jvzjLV+TuaXsknx8M091qPxN44hHdDTLly6SSDcwxamW/rytXBD7TCaqQdY+PRBMo7P1kwa3NM5Sd9e8wWMtajjijbu/x8FRO9hHTuPxTYvaWYs5GLpFnENqycImIVwdgW8tMk9mRsWbP8c=;
+X-UUID: 1513405ea9fa43518e759a659d4cffff-20220303
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jiaxin.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1957944820; Thu, 03 Mar 2022 08:16:45 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 3 Mar 2022 07:16:43 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 3 Mar 2022 23:16:42 +0800
+ with ESMTP id 1983827285; Thu, 03 Mar 2022 08:17:34 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 3 Mar 2022 07:17:33 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 3 Mar 2022 23:17:24 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 3 Mar 2022 23:16:41 +0800
-Message-ID: <bab4302fbab4d2887e4ebd247c2da78128abaf21.camel@mediatek.com>
+ Transport; Thu, 3 Mar 2022 23:17:23 +0800
+Message-ID: <9c58c560ef0dffb3f9ab55fee483e721f660f382.camel@mediatek.com>
 Subject: Re: [v2 10/17] ASoC: mediatek: mt8186: support audio clock control
  in platform driver
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
@@ -57,7 +57,7 @@ CC: <lgirdwood@gmail.com>, <tiwai@suse.com>, <robh+dt@kernel.org>,
  <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>
-Date: Thu, 3 Mar 2022 23:16:40 +0800
+Date: Thu, 3 Mar 2022 23:17:23 +0800
 In-Reply-To: <e2d28d1a-4bbc-931d-3534-776ee18369f4@collabora.com>
 References: <20220217134205.15400-1-jiaxin.yu@mediatek.com>
  <20220217134205.15400-11-jiaxin.yu@mediatek.com>
@@ -66,8 +66,8 @@ X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220303_071649_518617_79114757 
-X-CRM114-Status: GOOD (  20.68  )
+X-CRM114-CacheID: sfid-20220303_071744_117438_228C73E2 
+X-CRM114-Status: GOOD (  19.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -283,8 +283,6 @@ On Fri, 2022-02-18 at 15:54 +0100, AngeloGioacchino Del Regno wrote:
 > > +	return 0;
 > 
 > You're returning 0 even in error cases, this is wrong.
-Thanka for your careful review. I will fix this issue in next version.
-
 > 
 > > +}
 > > +
@@ -734,9 +732,6 @@ Thanka for your careful review. I will fix this issue in next version.
 > may not
 > ever be less than zero.
 > 
-Yes, your suggestion is very correct. But I will remove some member fo
-this strcut because they are not needed in audio driver.
-
 > 
 > > +};
 > > +
@@ -1012,8 +1007,6 @@ this strcut because they are not needed in audio driver.
 > 
 > #define CLK_AUD_INTBUS_SEL_MASK_SFT		GENMASK(23, 22)
 > 
-I will remove these define because they are not used in audio driver.
-
 > > +
 > > +/* CLK_AUDDIV_0 */
 > > +#define APLL12_DIV0_PDN_SFT                0
@@ -1021,8 +1014,6 @@ I will remove these define because they are not used in audio driver.
 > > +#define APLL12_DIV0_PDN_MASK_SFT           (0x1 << 0)
 > 
 > BIT() macro please
-same
-
 > 
 > #define APLL12_DIV0_PDN_MASK_SFT		BIT(0)
 > 
@@ -1033,8 +1024,6 @@ same
 > > +#define APLL12_DIV1_PDN_MASK_SFT           (0x1 << 1)
 > 
 > Of course, BIT() macro again, here and everywhere else applicable.
-Yes, you are right.
-
 > 
 > > +#define APLL12_DIV2_PDN_SFT                2
 > > +#define APLL12_DIV2_PDN_MASK               0x1
