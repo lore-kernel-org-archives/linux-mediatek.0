@@ -4,62 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59DE6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 06:59:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70DAFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 07:08:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4V8DWeTKF5kXQRFO7QM87vkmXZmCnTegmnj5h2H1fO0=; b=DUSmJlX7IVtrQ2
-	RKYLgXWPO/HmMBFDJJzAv1Pr/HZBPauRVQQxH9CTTWmwai5P4pLpEK99+XzOEafnRQ5pvr/Mta2x0
-	+4yfe989NdaCR9TNyvuCRweZ6nBvHPua8jjrBJtE+yi3YhPjdd0k+2GY0SRkJnreQtlEDUIwzldP0
-	pWYttEkPpct4dUDuSjRBYNHB7rc3d9rukkf124lqbf3GEFZMjxHd8EfJNlBXHIpJESq7XO4nHu8dM
-	1RRIhjwo1XA4umKdufvfLGrUI8xoRQyYRgxZIEWRFBb5Kq/u+ZfJ8k8UzJqyxDYFSc29zcx38tPPk
-	/EuSTIOzQu1jynhwdm8w==;
+	List-Owner; bh=K9W5qB5HshPqkLeMs5fA+B5S2FmFzwVh9uJSRm7P0EU=; b=HZ8M0jRtZGMm0+
+	BMAk/lFNBV5p1LLXQoVuo6hG/+v+MidWOJ+h0IH+pavz9a5tTBCjIM+ZPwdTxyNEsWZat5M76YzyE
+	Fh9SnuhURPqID5MxrtKOwx4VLDo1dVOQW2GpiM/idyeHbbHU4nv+gaMtlwDhKPlbyXYZiUt66Zw0V
+	dOiFAsMiK/upzgURChgFpxM+0+32gZfHJfg1bQP8pLioo9vVTt/3tVyqhNjK/sJ7lIZ1xXLZdSSrR
+	tJwrT9Iun4ViXxQIypvb8hFxi3v/qbj7tgr2bJw/Smjllr0/LKmO2+D9WH0IIJmIlOrvgYHrG/Grd
+	2KfvmHIsmevwillZM1ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPfRG-005Tni-6U; Thu, 03 Mar 2022 06:59:50 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1nPfZ4-005WN5-6H; Thu, 03 Mar 2022 07:07:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPfQf-005TOD-1W; Thu, 03 Mar 2022 06:59:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
- References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=2m4RpdrvDWJ2Lbwggqe1wkzLSnbf7tDq1lOz4LACayk=; b=GclwX64l6V5f8kehmfrWiI/+J4
- 8RzkcfMFFgiuiQCodv/2gnIC3ikLB3SpzKZ+MKquDyTvf/2qcEKEzwnC6vkUyw5AA6m8mjD6nBBat
- vT32LnKyaFoveOXK23R0XVuJkpl2HRzOcOM8BKTQACcHejpQBocleespRVWlGy48Yi+s=;
-Received: from p200300daa7204f000c852a81b34becd9.dip0.t-ipconnect.de
- ([2003:da:a720:4f00:c85:2a81:b34b:ecd9] helo=nf.local)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1nPfQN-000124-AR; Thu, 03 Mar 2022 07:58:55 +0100
-Message-ID: <2bd80da6-944c-4c9d-febf-f83b4302492a@nbd.name>
-Date: Thu, 3 Mar 2022 07:58:54 +0100
+ id 1nPfYr-005WL6-Oi; Thu, 03 Mar 2022 07:07:43 +0000
+X-UUID: aad37bd9cd8f4ab09fa17d93853be626-20220303
+X-UUID: aad37bd9cd8f4ab09fa17d93853be626-20220303
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 233582107; Thu, 03 Mar 2022 00:07:37 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 2 Mar 2022 22:57:35 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 3 Mar 2022 14:57:27 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 3 Mar 2022 14:57:27 +0800
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>, <robh+dt@kernel.org>
+CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <jassisinghbrar@gmail.com>, <fparent@baylibre.com>,
+ <yongqiang.niu@mediatek.com>, <hsinyi@chromium.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: [RESEND V6 3/5] dt-bindings: display: mediatek: change to use enum
+ for mutex
+Date: Thu, 3 Mar 2022 14:57:23 +0800
+Message-ID: <20220303065725.23384-4-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220303065725.23384-1-rex-bc.chen@mediatek.com>
+References: <20220303065725.23384-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.6.1
-Subject: Re: [PATCH 03/11] net: ethernet: mtk_eth_soc: add support for
- Wireless Ethernet Dispatch (WED)
-Content-Language: en-US
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: netdev@vger.kernel.org, John Crispin <john@phrozen.org>,
- Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- "David S. Miller" <davem@davemloft.net>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20220225101811.72103-1-nbd@nbd.name>
- <20220225101811.72103-4-nbd@nbd.name>
- <20220225221848.7c7be7f6@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
-From: Felix Fietkau <nbd@nbd.name>
-In-Reply-To: <20220225221848.7c7be7f6@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_225913_300356_81C47E41 
-X-CRM114-Status: GOOD (  10.77  )
+X-CRM114-CacheID: sfid-20220302_230741_817650_9A683E9D 
+X-CRM114-Status: UNSURE (   7.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,44 +73,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+All single entry cases in mutex can be merged as a single enum.
 
-On 26.02.22 07:18, Jakub Kicinski wrote:
-> On Fri, 25 Feb 2022 11:18:02 +0100 Felix Fietkau wrote:
->> +	page_list = kcalloc(n_pages, sizeof(*page_list), GFP_KERNEL);
->> +	if (!page_list)
->> +		return -ENOMEM;
->> +
->> +	dev->buf_ring.size = ring_size;
->> +	dev->buf_ring.pages = page_list;
->> +
->> +	desc = dma_alloc_coherent(dev->hw->dev, ring_size * sizeof(*desc),
->> +				  &desc_phys, GFP_KERNEL);
->> +	if (!desc)
->> +		return -ENOMEM;
->> +
->> +	dev->buf_ring.desc = desc;
->> +	dev->buf_ring.desc_phys = desc_phys;
->> +
->> +	for (i = 0, page_idx = 0; i < ring_size; i += MTK_WED_BUF_PER_PAGE) {
->> +		dma_addr_t page_phys, buf_phys;
->> +		struct page *page;
->> +		void *buf;
->> +		int s;
->> +
->> +		page = __dev_alloc_pages(GFP_KERNEL, 0);
->> +		if (!page)
->> +			return -ENOMEM;
-> 
-> I haven't looked at the code, yet, but this sure looks leaky.
-It's not leaky. If the alloc fails, mtk_wed_detach is still called, 
-which cleans up even incomplete ring allocations.
+Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+---
+ .../display/mediatek/mediatek,mutex.yaml      | 24 +++++++------------
+ 1 file changed, 9 insertions(+), 15 deletions(-)
 
-- Felix
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
+index 6eca525eced0..0378933201b4 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
+@@ -23,21 +23,15 @@ description: |
+ 
+ properties:
+   compatible:
+-    oneOf:
+-      - items:
+-          - const: mediatek,mt2701-disp-mutex
+-      - items:
+-          - const: mediatek,mt2712-disp-mutex
+-      - items:
+-          - const: mediatek,mt8167-disp-mutex
+-      - items:
+-          - const: mediatek,mt8173-disp-mutex
+-      - items:
+-          - const: mediatek,mt8183-disp-mutex
+-      - items:
+-          - const: mediatek,mt8192-disp-mutex
+-      - items:
+-          - const: mediatek,mt8195-disp-mutex
++    enum:
++      - mediatek,mt2701-disp-mutex
++      - mediatek,mt2712-disp-mutex
++      - mediatek,mt8167-disp-mutex
++      - mediatek,mt8173-disp-mutex
++      - mediatek,mt8183-disp-mutex
++      - mediatek,mt8192-disp-mutex
++      - mediatek,mt8195-disp-mutex
++
+   reg:
+     maxItems: 1
+ 
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
