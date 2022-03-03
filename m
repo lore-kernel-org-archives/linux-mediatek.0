@@ -4,98 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9428AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 02:28:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 074A9C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 03:09:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qcFg2sYeH5POhL79MWK4BCqKn+t0c1ECGotaK0eNF1s=; b=EHNoi9u7rnhwTW
-	A1CqJwiwJ0KCzLBEOMsrLMZyGvEK2sOVWyrJnhTl7ogP76L8KYxW8R/NVh4xaq02u4FElaRnnieiV
-	rMy944KWCQYgx9O500t6IJmTwGAmcfFREB2JkykA2hacdd2rBCoKfUJnbiwvoffHcyd//4w8j2BYu
-	IF6fW/WvDs6W2qTPZAcj+zPD0ZOcxlmaeeOS9ZZdAm1n7Zt0oliYG7AtPGYfb8rwIg8D771j8acRU
-	+gv2063X1cOLUTwB5xM7F24ryVUMtyRHngcgCMLEd+6GRCnaP9T7ZJlEUOMXjIjF062zbYJ5y9yDo
-	zxnGaLChpL9aixEgEMag==;
+	List-Owner; bh=GUcKj0lmMjXOyzDYLE2uHWTX2rKTHXhBCtmD9YSUc8I=; b=OU/DWIB9sk6h8V
+	su7JWh6fGI0Glk8hnNCvZKh9odOQblRz2NFOimpRJexruXzlqfyf9LmRBv5tMv3FcPFuwGl9wsHJW
+	rM1uVMBQ8G5Mc6nMfmytd4Eevy9Yj62GFHqcSn91UK/taQgLXyhMyxjcQ4r8Jd0rPKiVLtyZ5G7xI
+	+eu2Amecj8bCIVgCKw/uCFONfW5UPMRNBy7tja/KPzeb9RCOQp6zGGrmgCQqz1LWmM7HYEX+LjjYn
+	l5aCWuHhYrgFsiBBoXcaG0Ry51iYUdEBx5XH9BrmhV7AfR/Q9Qv0koDVeCESELN69/M/MLPsRs6eB
+	+wIJ6nc/J+gUwL14qIPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPbCF-0050Wg-I0; Thu, 03 Mar 2022 02:28:03 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1nPbqT-0054Zt-3G; Thu, 03 Mar 2022 03:09:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPbCC-0050Tv-CI; Thu, 03 Mar 2022 02:28:01 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id
- ev16-20020a17090aead000b001bc3835fea8so3602052pjb.0; 
- Wed, 02 Mar 2022 18:27:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=C6016/38QKZUQAyk5HMPjenTvm42Pe8sPBzTcqL5vmY=;
- b=qBGtve+IuFrAkJa+gsN1WQjHRs2fvQkSK1D44BenBKAqsyswWIPF49CjeAw6Lc/Xiz
- 7VY9uX10GWOeYOq3Roffx9lK59MGCnSnWmLkHD6Zz3XGADMqQbIXFAspvzlfyt7tl87F
- C44YITS/y0gKUKqqxM42VKL4jH/Xx4KasojD++jZOWXtcwkx1m//DlSoFwhQEbp4i/NS
- eGEaCL2abI9d2Qo/vgVE47lljuFHl9RIsYb9haWI9DYl1+oIMHXMK3O9uyeK26H4D1AX
- Jy4saNgfSyFkb5FP8pbKE6ds3BSqIpGBCoZu+qijzq/vfSl1dGYXTnehjmH9/ySByi+z
- BIOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=C6016/38QKZUQAyk5HMPjenTvm42Pe8sPBzTcqL5vmY=;
- b=IzI32ltmJywPW2hPOS2D8Sot/xdxL08LPa5bCkZCdnKYpdlyifPGR8XGQZ/K2KnqK/
- hCoVVoZMMLBKkdf4+EYAKXRW3B5ckgR4xwpiOxwsbwErTiUChmcFbOLWYaEQdunuLD/W
- 5wZL8dPSYXks2CWu0yDzbKE6jXLoXSnYa9+MVr7tlLI0wNXtkgbWlXijIUTHkjuAkUU8
- 77Kgi+j9k5Y/tI6bcdWv0brY+82iiB5J5L3siwCTKcrVPKIC1zryto5YCHHrCTWocA9a
- 7qCPe2iFJGgKbYJUoGZEZZzNr4zW3s2Hjtvg2wdji+epZhhXSHzPMbjeOOzR01kNU2Wt
- kzRA==
-X-Gm-Message-State: AOAM531HNl2AmsvYRv31RyaOu2ywle+FeklwmYU2cqi7y5i+5KteOqvO
- nonSVAo4kpLOCp8k5VanYic=
-X-Google-Smtp-Source: ABdhPJwdGKGtPoJbq9KB0b78P8kOQOqlHazHAUCZQHvA6TzNHcldJErwW75BUHOqmaVxrll88UvLqQ==
-X-Received: by 2002:a17:902:ec90:b0:151:a632:7ebb with SMTP id
- x16-20020a170902ec9000b00151a6327ebbmr1936164plg.154.1646274473191; 
- Wed, 02 Mar 2022 18:27:53 -0800 (PST)
-Received: from ubuntu.huawei.com ([119.3.119.19])
- by smtp.googlemail.com with ESMTPSA id
- d15-20020a17090ab30f00b001b8e65326b3sm359822pjr.9.2022.03.02.18.27.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Mar 2022 18:27:52 -0800 (PST)
-From: Xiaomeng Tong <xiam0nd.tong@gmail.com>
-To: david.laight@aculab.com
-Cc: akpm@linux-foundation.org, alsa-devel@alsa-project.org,
- amd-gfx@lists.freedesktop.org, andriy.shevchenko@linux.intel.com,
- arnd@arndb.de, bcm-kernel-feedback-list@broadcom.com,
- bjohannesmeyer@gmail.com, c.giuffrida@vu.nl, christian.koenig@amd.com,
- christophe.jaillet@wanadoo.fr, dan.carpenter@oracle.com,
- dmaengine@vger.kernel.org, drbd-dev@lists.linbit.com,
- dri-devel@lists.freedesktop.org, gustavo@embeddedor.com, h.j.bos@vu.nl,
- intel-gfx@lists.freedesktop.org, intel-wired-lan@lists.osuosl.org,
- jakobkoschel@gmail.com, jgg@ziepe.ca, keescook@chromium.org,
- kgdb-bugreport@lists.sourceforge.net, kvm@vger.kernel.org,
- linux-arch@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-aspeed@lists.ozlabs.org, linux-block@vger.kernel.org,
- linux-cifs@vger.kernel.org, linux-crypto@vger.kernel.org,
- linux-f2fs-devel@lists.sourceforge.net, linux-fsdevel@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org, linux-rdma@vger.kernel.org,
- linux-scsi@vger.kernel.org, linux-sgx@vger.kernel.org,
- linux-staging@lists.linux.dev, linux-tegra@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-wireless@vger.kernel.org,
- linux1394-devel@lists.sourceforge.net, linux@rasmusvillemoes.dk,
- linuxppc-dev@lists.ozlabs.org, nathan@kernel.org, netdev@vger.kernel.org,
- nouveau@lists.freedesktop.org, rppt@kernel.org,
- samba-technical@lists.samba.org, tglx@linutronix.de,
- tipc-discussion@lists.sourceforge.net, torvalds@linux-foundation.org,
- v9fs-developer@lists.sourceforge.net, xiam0nd.tong@gmail.com
-Subject: RE: [PATCH 2/6] treewide: remove using list iterator after loop body
- as a ptr
-Date: Thu,  3 Mar 2022 10:27:29 +0800
-Message-Id: <20220303022729.9321-1-xiam0nd.tong@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <1077f17e50d34dc2bbfdf4e52a1cb2fd@AcuMS.aculab.com>
-References: <1077f17e50d34dc2bbfdf4e52a1cb2fd@AcuMS.aculab.com>
+ id 1nPbqG-0054YT-BS; Thu, 03 Mar 2022 03:09:26 +0000
+X-UUID: 344b8f0992c045f693306ce2f3ec6cfd-20220302
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=FYoFu46Ri/P04jWalAqKzU/zPnHaFA7v/wBJHfwyBso=; 
+ b=Ss/HdpeMYep0qA4P9oXjsUQSCWSRuv4mJ5gD4ifagoEUYLXe9Q+5mY00xauUwZELceqhaIpkyycEFvbrjRl2vTw8ly86DaXVn2zyo/xespV+2ZJ4l53xMO2UE5Y5fywjxINOm0Vpr8Ijerb+lrNCyscXLR+9BN3zhwaKFmwnPNc=;
+X-UUID: 344b8f0992c045f693306ce2f3ec6cfd-20220302
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <xinlei.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1996339880; Wed, 02 Mar 2022 20:09:18 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 2 Mar 2022 19:09:16 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 3 Mar 2022 11:09:03 +0800
+Received: from mszsdhlt06 (10.16.6.206) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 3 Mar 2022 11:09:02 +0800
+Message-ID: <dab8913e9a50110fd13650e14f35f13a30239013.camel@mediatek.com>
+Subject: Re: [PATCH v1,2/3] drm/mediatek: Add TOPCKGEN select mux control
+ dpi_clk
+From: xinlei.lee <xinlei.lee@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+ <daniel@ffwll.ch>, <matthias.bgg@gmail.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <jitao.shi@mediatek.com>, <allen-kh.cheng@mediatek.com>,
+ <rex-bc.chen@mediatek.com>
+Date: Thu, 3 Mar 2022 11:09:17 +0800
+In-Reply-To: <6db20053-71dc-d0e3-aac9-de5da1d7ba9e@collabora.com>
+References: <1645782833-27875-1-git-send-email-xinlei.lee@mediatek.com>
+ <1645782833-27875-3-git-send-email-xinlei.lee@mediatek.com>
+ <6db20053-71dc-d0e3-aac9-de5da1d7ba9e@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_182800_427407_C42C2AF2 
-X-CRM114-Status: GOOD (  15.05  )
+X-CRM114-CacheID: sfid-20220302_190924_426200_EF5C79B8 
+X-CRM114-Status: GOOD (  29.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,44 +78,145 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2 Mar 2022 14:04:06 +0000, David Laight
-<David.Laight@ACULAB.COM> wrote:
-> I think that it would be better to make any alternate loop macro
-> just set the variable to NULL on the loop exit.
-> That is easier to code for and the compiler might be persuaded to
-> not redo the test.
+On Wed, 2022-03-02 at 10:07 +0100, AngeloGioacchino Del Regno wrote:
+> Il 25/02/22 10:53, xinlei.lee@mediatek.com ha scritto:
+> > From: Xinlei Lee <xinlei.lee@mediatek.com>
+> > 
+> > Dpi_clk is controlled by the mux selected
+> > by TOPCKGEN and APMIXEDSYS can support small resolution.
+> > 
+> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> 
+> Hello Xinlei,
+> 
+> as it was pointed out by reviewers in the MT8195 DisplayPort series,
+> that is
+> adding the same logic that you are proposing in this patch, the clock
+> parent
+> selection should be performed by the clock drivers, I'd say in the
+> callback
+> .set_rate_and_parent(), and not by the mtk_dpi driver.
+> 
+> Please fix this in the proper drivers (clocks!) instead.
+> 
+> Thanks,
+> Angelo
+> 
+> > ---
+> >   drivers/gpu/drm/mediatek/mtk_dpi.c | 38
+> > ++++++++++++++++++++++++++----
+> >   1 file changed, 34 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > index 4554e2de1430..bad686817e29 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > @@ -63,6 +63,14 @@ enum mtk_dpi_out_color_format {
+> >   	MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL
+> >   };
+> >   
+> > +enum TVDPLL_CLK {
+> > +	TVDPLL_PLL = 0,
+> > +	TVDPLL_D2 = 2,
+> > +	TVDPLL_D4 = 4,
+> > +	TVDPLL_D8 = 8,
+> > +	TVDPLL_D16 = 16,
+> > +};
+> > +
+> >   struct mtk_dpi {
+> >   	struct drm_encoder encoder;
+> >   	struct drm_bridge bridge;
+> > @@ -73,6 +81,7 @@ struct mtk_dpi {
+> >   	struct clk *engine_clk;
+> >   	struct clk *pixel_clk;
+> >   	struct clk *tvd_clk;
+> > +	struct clk *pclk_src[5];
+> >   	int irq;
+> >   	struct drm_display_mode mode;
+> >   	const struct mtk_dpi_conf *conf;
+> > @@ -459,6 +468,7 @@ static int mtk_dpi_set_display_mode(struct
+> > mtk_dpi *dpi,
+> >   	struct videomode vm = { 0 };
+> >   	unsigned long pll_rate;
+> >   	unsigned int factor;
+> > +	struct clk *clksrc = NULL;
+> >   
+> >   	/* let pll_rate can fix the valid range of tvdpll (1G~2GHz) */
+> >   	factor = dpi->conf->cal_factor(mode->clock);
+> > @@ -473,11 +483,26 @@ static int mtk_dpi_set_display_mode(struct
+> > mtk_dpi *dpi,
+> >   
+> >   	vm.pixelclock = pll_rate / factor;
+> >   	if ((dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_LE) ||
+> > -	    (dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_BE))
+> > -		clk_set_rate(dpi->pixel_clk, vm.pixelclock * 2);
+> > -	else
+> > -		clk_set_rate(dpi->pixel_clk, vm.pixelclock);
+> > +	    (dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_BE)) {
+> > +		if (factor == 8)
+> > +			clksrc = dpi->pclk_src[2];
+> > +		else if (factor == 4)
+> > +			clksrc = dpi->pclk_src[1];
+> > +		else
+> > +			clksrc = dpi->pclk_src[1];
+> > +		}
+> > +	else {
+> > +		if (factor == 8)
+> > +			clksrc = dpi->pclk_src[3];
+> > +		else if (factor == 4)
+> > +			clksrc = dpi->pclk_src[2];
+> > +		else
+> > +			clksrc = dpi->pclk_src[2];
+> > +	}
+> >   
+> > +	clk_prepare_enable(dpi->pixel_clk);
+> > +	clk_set_parent(dpi->pixel_clk, clksrc);
+> > +	clk_disable_unprepare(dpi->pixel_clk);
+> >   
+> >   	vm.pixelclock = clk_get_rate(dpi->pixel_clk);
+> >   
+> > @@ -893,6 +918,11 @@ static int mtk_dpi_probe(struct
+> > platform_device *pdev)
+> >   		return ret;
+> >   	}
+> >   
+> > +	dpi->pclk_src[1] = devm_clk_get_optional(dev, "tvdpll_d2");
+> > +	dpi->pclk_src[2] = devm_clk_get_optional(dev, "tvdpll_d4");
+> > +	dpi->pclk_src[3] = devm_clk_get_optional(dev, "tvdpll_d8");
+> > +	dpi->pclk_src[4] = devm_clk_get_optional(dev, "tvdpll_d16");
+> > +
+> >   	dpi->irq = platform_get_irq(pdev, 0);
+> >   	if (dpi->irq <= 0)
+> >   		return -EINVAL;
+> 
+> 
 
-No, that would lead to a NULL dereference.
+Hi Angelo:
 
-The problem is the mis-use of iterator outside the loop on exit, and
-the iterator will be the HEAD's container_of pointer which pointers
-to a type-confused struct. Sidenote: The *mis-use* here refers to
-mistakely access to other members of the struct, instead of the
-list_head member which acutally is the valid HEAD.
+Thanks for your review, I would like to explain why I operate clk in
+dpi driver.
+A patch I mentioned on the cover: 
+http://lists.infradead.org/pipermail/linux-mediatek/2016-May/005281.html
+It contains instructions:
 
-IOW, you would dereference a (NULL + offset_of_member) address here.
++ * The dpi0_sel clock should not propagate rate changes to its parent
++ * clock so the dpi driver can have full control over PLL and divider.
 
-Please remind me if i missed something, thanks.
+My understanding is that the clk driver will no longer perform the
+set_rate_and_parent() operation on dpi_clk, but will hand over the
+control to the dpi driver.
+The current modification may be to synchronize the previous clk
+modification.
+Can we operate clk on dpi driver for this reson?
 
-> OTOH there may be alternative definitions that can be used to get
-> the compiler (or other compiler-like tools) to detect broken code.
-> Even if the definition can't possibly generate a working kerrnel.
-
-The "list_for_each_entry_inside(pos, type, head, member)" way makes
-the iterator invisiable outside the loop, and would be catched by
-compiler if use-after-loop things happened.
-
-Can you share your "alternative definitions" details? thanks!
-
---
-Xiaomeng Tong
-
+Best Regards!
+xinlei
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
