@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEA99C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 14:53:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03288C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 15:08:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gwqEkNhQALkDLkQjEHlVUiI1EHzXIucFjlsvNJISpDU=; b=kfTAIeYVyWGQtE
-	4FHHu3GITlk4ixKOUQcO5XmWTZseQh6btM3Y1S+IFamJwN0m0Zi0Z6Sy/fXID1PnEPMImooFKkT6e
-	HCpD32Hq9918Rtp3R6PPjhn75fRuoQ5SH3Ll5kTV86x9yYD8arcSsK1tb/VrEYx/8Owgqwgnc0ky+
-	THz8aMjNyQxAso2H4Eisvn0VBx+ufNNvFONQyi4fZ+l0y5WUmkKR9K4umPOExYE23YFCxpuWxj1+e
-	OItWNBfbgjNalWqz6wjFjPzYb5xjCijlVXRW9stPQr8f4Idnuizerx/u3weh3Hza/oipMWIYaqqW3
-	6FoRRQtJ9c800UAnbhWw==;
+	List-Owner; bh=Fi0zNd37JGgdE4DZbGNKXFMgJn0URLE0bQyKL9RbstE=; b=zEh0ThkzEMvoxJ
+	R7g/dX9fSSMvVuUorBv5smT0RABh77qDJ5KSsUUBvO7cv/wzwHNrcRFdCoSbER52E0ecVBEJ7+cwv
+	Xli2lPGdmhh1x75Q+tpgOMZGRqWPa38Y5HLwA6FsBzAS/HddMrUPiqWr/25WgpfGSeMeQlh+lteKL
+	ssxDoOHoTNVzL4Ja7YB+alyTqFW6jGCUk+bHR9Lkw3l2SsvVTugs27xGbOC7Nh75H8/I/h8ZMiDZJ
+	S1NHgj68kcckagOH/AG4Yk5BtBmuM+C3eu13m6ExQOTIdqBliq4L7SAn3CaBEdMxFloPKrAF+ZWdh
+	xN0xklalVkJylXUAhCKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPmpp-006i3w-CV; Thu, 03 Mar 2022 14:53:41 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nPn49-006l34-Ma; Thu, 03 Mar 2022 15:08:29 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPmpX-006hx4-27; Thu, 03 Mar 2022 14:53:26 +0000
+ id 1nPn3t-006kyQ-5Z; Thu, 03 Mar 2022 15:08:19 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 2F2FF1F45955
+ (Authenticated sender: kholk11) with ESMTPSA id E01201F417E5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1646319201;
- bh=Ble5iVaMAvjHc5tgrSsMsD/4kzoBi7xNbSaUci+2wB8=;
+ s=mail; t=1646320091;
+ bh=4AnpB0bYq27BC2obrhRVr+DJd2wAvFLS3ceAZEqlmi8=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=T0Ed+P8XT1vXh3m1n2h9wBeTHTpkQKT8hUqV8vU1oYMq50V87MsDZBRIanrCILBuF
- p2YPYRVIRrBY1SMksTjLIjHY67WygNK6qz5lOltemQpBqAJo2UxYbe050d5nwikxv2
- BNLc/13yRP3Br0iGVcwjvnXQ+WwXwhQX0jAZrud4FocrjSA7NfqWYn+QBZEEr6kop5
- F64ftokrxp7gBfZaSO0NApSwwrk0J5QbhHyadyDhoT//uSe85Sy2rEj6/Qyx6i21Zp
- oyKI9bzP23JPC8x2pIuGoHo5uqXKKMFdmTrzTU1UOol0ufPcEvmLv+kzySBbJ5UKod
- UR8KihXcNj5NQ==
-Message-ID: <0a867f1c-330b-16ac-6c87-42a181e50e1e@collabora.com>
-Date: Thu, 3 Mar 2022 15:53:16 +0100
+ b=YmxxYkponFYhDybTF8nddo7rMJTsASLxFCpeVD75jv0aJPhBhqX8kkXnCaPQJXvY3
+ nUzbIyxllmRywUCgmIxeDhHq8Zqbpo5WJ/rporDoCUl4h6eAMGvpfYry52LIqx0InJ
+ Qbg1cZKSA3fi0beT5Efr9M5IRzuFBhgzpb7xBWLv5SqCswmxDSYcW9tv+FJSs9cM7l
+ PJwxmT+Z3WGs+H1NCLLrBZrfOKacGUCyJF27EiNVYp2c7bqe4zBCv7J4XBzRJ/lG5/
+ dTaysJnMMzYdNSCfjYgqBwi+ZGnO09TH5IoWfFCocfLBlJZcEQ1zZ3lziCsS6x0zQF
+ 9H0xcfGdtKVRg==
+Message-ID: <6bc78592-36c0-8462-f4f8-ad9e04a13da6@collabora.com>
+Date: Thu, 3 Mar 2022 16:08:08 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
-Subject: Re: [PATCH v2, 03/10] dt-bindings: media: mtk-vcodec: Adds encoder
- cores dt-bindings for mt8195
+Subject: Re: [v2 09/17] ASoC: mediatek: mt8186: support tdm in platform driver
 Content-Language: en-US
-To: Irui Wang <irui.wang@mediatek.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
- <tzungbi@chromium.org>, Alexandre Courbot <acourbot@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>, Yong Wu <yong.wu@mediatek.com>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>,
- Maoguang Meng <maoguang.meng@mediatek.com>,
- Longfei Wang <longfei.wang@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, Fritz Koenig
- <frkoenig@chromium.org>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220117120615.21687-1-irui.wang@mediatek.com>
- <20220117120615.21687-4-irui.wang@mediatek.com>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>, broonie@kernel.org
+Cc: lgirdwood@gmail.com, tiwai@suse.com, robh+dt@kernel.org,
+ matthias.bgg@gmail.com, perex@perex.cz, p.zabel@pengutronix.de,
+ geert+renesas@glider.be, trevor.wu@mediatek.com, tzungbi@google.com,
+ aaronyu@google.com, zhangqilong3@huawei.com, alsa-devel@alsa-project.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220217134205.15400-1-jiaxin.yu@mediatek.com>
+ <20220217134205.15400-10-jiaxin.yu@mediatek.com>
+ <fcae42a5-6e11-e683-8f3a-453650f08d38@collabora.com>
+ <9ba63387baecf598db696d0ebbc1583406a57a62.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220117120615.21687-4-irui.wang@mediatek.com>
+In-Reply-To: <9ba63387baecf598db696d0ebbc1583406a57a62.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220303_065323_419931_244FA0E9 
-X-CRM114-Status: GOOD (  19.34  )
+X-CRM114-CacheID: sfid-20220303_070813_507307_9BB2D371 
+X-CRM114-Status: GOOD (  22.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,180 +75,143 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/01/22 13:06, Irui Wang ha scritto:
-> Adds encoder cores dt-bindings for mt8195
-> 
-> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
-> ---
->   .../media/mediatek,vcodec-encoder-core.yaml   | 214 ++++++++++++++++++
->   1 file changed, 214 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml
-> new file mode 100644
-> index 000000000000..d1e7bfa50bce
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml
-> @@ -0,0 +1,214 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +
-> +%YAML 1.2
-> +---
-> +$id: "http://devicetree.org/schemas/media/mediatek,vcodec-encoder-core.yaml#"
-> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-> +
-> +title: Mediatek Video Encoder Accelerator With Multi Core
-> +
-> +maintainers:
-> +  - Irui Wang <irui.wang@mediatek.com>
-> +
-> +description: |
-> +  Mediatek Video Encode is the video encode hardware present in Mediatek
-> +  SoCs which supports high resolution encoding functionalities. Required
-> +  parent and child device node.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8195-vcodec-enc
-> +
-> +  mediatek,scp:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
-> +    description: |
-> +      The node of system control processor (SCP), using
-> +      the remoteproc & rpmsg framework.
-> +
-> +  iommus:
-> +    minItems: 1
-> +    maxItems: 32
-> +    description: |
-> +      List of the hardware port in respective IOMMU block for current Socs.
-> +      Refer to bindings/iommu/mediatek,iommu.yaml.
-> +
-> +  dma-ranges:
-> +    maxItems: 1
-> +    description: |
-> +      Describes the physical address space of IOMMU maps to memory.
-> +
-> +  "#address-cells":
-> +    const: 1
-> +
-> +  "#size-cells":
-> +    const: 1
-> +
-> +  ranges: true
-> +
-> +# Required child node:
-> +patternProperties:
-> +  "venc_core0@1a020000":
-
-This should be a pattern, venc-coreN where N is a number between 0 and 9,
-and any iostart should be allowed, not just 1a020000; doing it that way
-allows you to do a spec for all the core subnodes in one.
-
-
-> +    type: object
-> +
-> +    properties:
-> +      compatible:
-> +        const: mediatek,mtk-venc-core0
-> +
+Il 03/03/22 15:10, Jiaxin Yu ha scritto:
+> On Fri, 2022-02-18 at 15:54 +0100, AngeloGioacchino Del Regno wrote:
+>> Il 17/02/22 14:41, Jiaxin Yu ha scritto:
+>>> This patch adds mt8186 tdm dai driver.
+>>>
+>>> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+>>> ---
+>>>    sound/soc/mediatek/mt8186/mt8186-dai-tdm.c | 713
+>>> +++++++++++++++++++++
+>>>    1 file changed, 713 insertions(+)
+>>>    create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
+>>>
+>>> diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
+>>> b/sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
+>>> new file mode 100644
+>>> index 000000000000..28dd3661f0e0
+>>> --- /dev/null
+>>> +++ b/sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
+>>> @@ -0,0 +1,713 @@
+>>> +// SPDX-License-Identifier: GPL-2.0
+>>> +//
+>>> +// MediaTek ALSA SoC Audio DAI TDM Control
+>>> +//
+>>> +// Copyright (c) 2022 MediaTek Inc.
+>>> +// Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
+>>> +
 
 ..snip..
 
-> +
-> +required:
-> +  - compatible
-> +  - mediatek,scp
-> +  - iommus
-> +  - dma-ranges
-> +  - ranges
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/memory/mt8195-memory-port.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/clock/mt8195-clk.h>
-> +    #include <dt-bindings/power/mt8195-power.h>
-> +
-> +    venc {
-> +        compatible = "mediatek,mt8195-vcodec-enc";
-> +        mediatek,scp = <&scp>;
-> +        iommus = <&iommu_vdo M4U_PORT_L19_VENC_RCPU>;
-> +        dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
-> +        #address-cells = <1>;
-> +        #size-cells = <1>;
-> +        ranges;
+>>> +
+>>> +static int mtk_dai_tdm_hw_params(struct snd_pcm_substream
+>>> *substream,
+>>> +				 struct snd_pcm_hw_params *params,
+>>> +				 struct snd_soc_dai *dai)
+>>> +{
+>>> +	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+>>> +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
+>>> +	int tdm_id = dai->id;
+>>> +	struct mtk_afe_tdm_priv *tdm_priv = afe_priv->dai_priv[tdm_id];
+>>> +	unsigned int tdm_mode = tdm_priv->tdm_mode;
+>>> +	unsigned int data_mode = tdm_priv->data_mode;
+>>> +	unsigned int rate = params_rate(params);
+>>> +	unsigned int channels = params_channels(params);
+>>> +	snd_pcm_format_t format = params_format(params);
+>>> +	unsigned int bit_width =
+>>> +		snd_pcm_format_physical_width(format);
+>>> +	unsigned int tdm_channels = (data_mode == TDM_DATA_ONE_PIN) ?
+>>> +		get_tdm_ch_per_sdata(tdm_mode, channels) : 2;
+>>> +	unsigned int lrck_width =
+>>> +		get_tdm_lrck_width(format, tdm_mode);
+>>> +	unsigned int tdm_con = 0;
+>>> +	bool slave_mode = tdm_priv->slave_mode;
+>>> +	bool lrck_inv = tdm_priv->lck_invert;
+>>> +	bool bck_inv = tdm_priv->bck_invert;
+>>> +	unsigned int ctrl_reg;
+>>> +	unsigned int ctrl_mask;
+>>> +	unsigned int tran_rate;
+>>> +	unsigned int tran_relatch_rate;
+>>> +
+>>> +	if (tdm_priv)
+>>> +		tdm_priv->rate = rate;
+>>> +	else
+>>> +		dev_info(afe->dev, "%s(), tdm_priv == NULL", __func__);
+>>> +
+>>> +	tran_rate = mt8186_rate_transform(afe->dev, rate, dai->id);
+>>> +	tran_relatch_rate = mt8186_tdm_relatch_rate_transform(afe->dev,
+>>> rate);
+>>> +
+>>> +	/* calculate mclk_rate, if not set explicitly */
+>>> +	if (!tdm_priv->mclk_rate) {
+>>> +		tdm_priv->mclk_rate = rate * tdm_priv->mclk_multiple;
+>>> +		mtk_dai_tdm_cal_mclk(afe,
+>>> +				     tdm_priv,
+>>> +				     tdm_priv->mclk_rate);
+>>> +	}
+>>> +
+>>> +	/* ETDM_IN1_CON0 */
+>>> +	tdm_con |= slave_mode << ETDM_IN1_CON0_REG_SLAVE_MODE_SFT;
+>>> +	tdm_con |= tdm_mode << ETDM_IN1_CON0_REG_FMT_SFT;
+>>> +	tdm_con |= (bit_width - 1) << ETDM_IN1_CON0_REG_BIT_LENGTH_SFT;
+>>> +	tdm_con |= (bit_width - 1) <<
+>>> ETDM_IN1_CON0_REG_WORD_LENGTH_SFT;
+>>> +	tdm_con |= (tdm_channels - 1) << ETDM_IN1_CON0_REG_CH_NUM_SFT;
+>>> +	/* default disable sync mode */
+>>> +	tdm_con |= 0 << ETDM_IN1_CON0_REG_SYNC_MODE_SFT;
+>>
+>> 0 << (anything) == 0
+>>
+>> (number |= 0) == number
+>>
+>> Is this a mistake, or are you really doing nothing here?
+>>
+> No, this is just to emphasize the need to set this bit to 0.
+> It really do nothing here, just link a reminder.
+> Can I keep this sentence?
 
-What about doing instead...
+If, in your judgement, it is very important to have a reminder about that
+bit having to be unset, then add a comment in the code saying so.
+Don't simply comment out the statement as it is.
 
-#address-cells = <2>;
-#size-cells = <2>;
-(or fix your dma-ranges property)
+A good way would be something like
+/* sync mode bit has to be unset because this that reason, otherwise X happens */
 
-and...
+>>
+>>> +	/* relatch fix to h26m */
+>>> +	tdm_con |= 0 << ETDM_IN1_CON0_REG_RELATCH_1X_EN_SEL_DOMAIN_SFT;
+>>> +
+>>> +	ctrl_reg = ETDM_IN1_CON0;
+>>> +	ctrl_mask = ETDM_IN_CON0_CTRL_MASK;
+>>> +	regmap_update_bits(afe->regmap, ctrl_reg, ctrl_mask, tdm_con);
+>>> +
+>>> +	/* ETDM_IN1_CON1 */
+>>> +	tdm_con = 0;
+>>> +	tdm_con |= 0 << ETDM_IN1_CON1_REG_LRCK_AUTO_MODE_SFT;
+>>> +	tdm_con |= 1 << ETDM_IN1_CON1_PINMUX_MCLK_CTRL_OE_SFT;
+>>> +	tdm_con |= (lrck_width - 1) <<
+>>> ETDM_IN1_CON1_REG_LRCK_WIDTH_SFT;
+>>> +
+>>> +	ctrl_reg = ETDM_IN1_CON1;
+>>> +	ctrl_mask = ETDM_IN_CON1_CTRL_MASK;
+>>> +	regmap_update_bits(afe->regmap, ctrl_reg, ctrl_mask, tdm_con);
+>>
+>> You don't need the ctrl_reg, nor ctrl_mask variables...
+> I was trying to avoid a line of more than 80 words, so I shortened the
+> number of words through variables.
+> 
 
-ranges = <0 0 0 0x1a020000 0 0x1020000>;
-     venc-core0@0 {
-         compatible = "mediatek,mtk-venc-hw";
-         reg = <0 0 0 0x10000>;
-         mediatek,hw-leader;
-          ..... other properties .....
-     };
+Yes, I know, I did understand what you were trying to do...
+...but it's fine to go past 80: in this case this would be 88 columns,
+which is still ok to have!
 
-     venc-core1@1000000 {
-         compatible = "mediatek,mtk-venc-hw";
-         reg = <0 0x1000000 0 0x10000>;
-          ..... other properties .....
-     }
+And note, this is the case with all of similar calls present in this function,
+that's why I said that you don't need these two variables! :)
 
-Regards,
+Thank you,
 Angelo
 
-> +
-> +        venc_core0@1a020000 {
-> +            compatible = "mediatek,mtk-venc-core0";
-> +            reg = <0x1a020000 0x10000>;
-> +            iommus = <&iommu_vdo M4U_PORT_L19_VENC_RCPU>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_REC>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_BSDMA>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_SV_COMV>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_RD_COMV>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_CUR_LUMA>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_CUR_CHROMA>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_REF_LUMA>,
-> +                     <&iommu_vdo M4U_PORT_L19_VENC_REF_CHROMA>;
-> +            interrupts = <GIC_SPI 341 IRQ_TYPE_LEVEL_HIGH 0>;
-> +            clocks = <&vencsys CLK_VENC_VENC>;
-> +            clock-names = "MT_CG_VENC0";
-> +            assigned-clocks = <&topckgen CLK_TOP_VENC>;
-> +            assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
-> +            power-domains = <&spm MT8195_POWER_DOMAIN_VENC>;
-> +        };
-> +
-> +        venc_core1@1b020000 {
-> +            compatible = "mediatek,mtk-venc-core1";
-> +            reg = <0x1b020000 0x10000>;
-> +            iommus = <&iommu_vpp M4U_PORT_L20_VENC_RCPU>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_REC>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_BSDMA>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_SV_COMV>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_RD_COMV>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_CUR_LUMA>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_CUR_CHROMA>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_REF_LUMA>,
-> +                     <&iommu_vpp M4U_PORT_L20_VENC_REF_CHROMA>;
-> +            interrupts = <GIC_SPI 346 IRQ_TYPE_LEVEL_HIGH 0>;
-> +            clocks = <&vencsys_core1 CLK_VENC_CORE1_VENC>;
-> +            clock-names = "MT_CG_VENC1";
-> +            assigned-clocks = <&topckgen CLK_TOP_VENC>;
-> +            assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
-> +            power-domains = <&spm MT8195_POWER_DOMAIN_VENC_CORE1>;
-> +        };
-> +    };
 
 
 _______________________________________________
