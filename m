@@ -4,70 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5469DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 15:31:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB3A9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Mar 2022 15:55:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iVJt81jnIXKes+82o6CTNcBC7cYPf/3flBAjTYuJHUI=; b=ogFneVztENxaWN
-	pRp4RnaWqmCk+w9NcqiddOfa0VdcPctnIWNsGyxxNpScgS7q5gtnu8kDvfketCb7AKqzlHvGeX2Wm
-	YcE6nYtJJGc5EKip/rgVSN5Wk70mmdKSGjSathR6EH7SbHlQmJQ/H4qhbncyPp+MNcWPXoeheJEx3
-	7qysxZKAXeVGiAFzGffhAAVOVIlel9vqJROSNV099Em3MTflq7pQmmL0gKpzbHjVF/uspHStwNgfq
-	th8l7/VWBtiDn2DEkIWROu7RugVB7WIUFSYs0Qk38OBejar5AL/ihq/EuLppjeapLdOGsKQuUkEYy
-	pf/tbBQPMlk0pwFPx27Q==;
+	List-Owner; bh=RRn6LABOT/rhcTjiJqJNDqz+hc9OdC+ZAqeBStM3osQ=; b=J30byeI3GhvS+Y
+	j+EpHNPa0U0MQDc3vbDYFGU3eek1wiVTgjtV0li7pGFS5cXHfvpzWJ0rCfHKWAhy7uBULV06dddi+
+	6wA6TDDrdChRxFwDoq5S5BQFhm73gwx512hmOcZqh1ws8I47izQgrKK97b5xUB7fndweSq7WFk6aW
+	qcj+DINfYQy2Q/yUGx4RyWa1ZerTgd6ZqeOHukslbm3/6XV7j2rqrAS/3aKjTXymc5Tdyt0fudfeU
+	XG221KXP3bb9lzZ93wTLGIVABPu2KgwkPO+y7pTAIIH2qtgo4ITdWFA76/F91EK4+tmyDwS1dMV9h
+	wcT/ptdPBts77+zgAWtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPnQh-006q3G-D8; Thu, 03 Mar 2022 15:31:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nPnnB-006y06-Bw; Thu, 03 Mar 2022 15:55:01 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPnQ1-006poo-ST; Thu, 03 Mar 2022 15:31:10 +0000
-X-UUID: f1fe399ef0fe4386b5600a2d9b5f980a-20220303
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Q/FAlT8SuZC8YHmRR3bTb0dG25U96KfISVPTTAyEV5A=; 
- b=Entg52F+SVVkw1vME0sSqzQ4m8hwdt6MImX/NLxhjiPiI1hexi0LHte1LJW7Owyojbbxq9hbGxbju5rKDbkrLe2R0dknNe3SxYuX5Cx8V8ocUmBC5VDsytxlyTY/8uav+8/W2KgeK/zw/hL26BGRtQ05drUNQ6MNmQUGLR91svQ=;
-X-UUID: f1fe399ef0fe4386b5600a2d9b5f980a-20220303
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 300533617; Thu, 03 Mar 2022 08:31:03 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 3 Mar 2022 07:31:01 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 3 Mar 2022 23:30:47 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 3 Mar 2022 23:30:46 +0800
-Message-ID: <a6a2c2e4acdd52bd3aa8b8551e0a9180255aecd2.camel@mediatek.com>
-Subject: Re: [v2 11/17] ASoC: mediatek: mt8186: support gpio control in
- platform driver
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- <broonie@kernel.org>
-CC: <lgirdwood@gmail.com>, <tiwai@suse.com>, <robh+dt@kernel.org>,
- <matthias.bgg@gmail.com>, <perex@perex.cz>, <p.zabel@pengutronix.de>,
- <geert+renesas@glider.be>, <trevor.wu@mediatek.com>, <tzungbi@google.com>,
- <aaronyu@google.com>, <zhangqilong3@huawei.com>,
- <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>
-Date: Thu, 3 Mar 2022 23:30:46 +0800
-In-Reply-To: <308642b6-3615-bb55-2667-e2e3150be015@collabora.com>
-References: <20220217134205.15400-1-jiaxin.yu@mediatek.com>
- <20220217134205.15400-12-jiaxin.yu@mediatek.com>
- <308642b6-3615-bb55-2667-e2e3150be015@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nPnbi-006tv8-B6
+ for linux-mediatek@lists.infradead.org; Thu, 03 Mar 2022 15:43:14 +0000
+Received: by mail-wm1-x335.google.com with SMTP id
+ r187-20020a1c2bc4000000b003810e6b192aso3499946wmr.1
+ for <linux-mediatek@lists.infradead.org>; Thu, 03 Mar 2022 07:43:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=qvgDxfixSnBIC4U2Qx+y1rXDt5KCfDdRN+geS33dt8U=;
+ b=LJc5EsSRKwC/y9D83XKQh92YQEPc97j9frFC9tKxEC7VHc8L47EtFEbGsT3Sxd4XY1
+ 5Z4jMy5Ff16QFqtE3aX01uwhWI6fLiGxl9VXwHyCHI5unMneXInPdmONYuWOEhZ747sN
+ COn1suGOQslk19IZgEMRzpqDvWjiQP6BxcXzruD1nvgbLRYrkyQB6bvCvoOoubtJlqAE
+ hb+hSY7/o03G5mO3T6wvwkYjUYL+/EYEmMqBQLR0S/HZprBmOlo8lFVpSJ/ayS80sA9O
+ 3WJTK1K08gLAKX/e95L0ed02Vj2WpB6GNff4Bu8zyHLnvTYGjk61RF5UskHNYTffbKVm
+ +tLA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=qvgDxfixSnBIC4U2Qx+y1rXDt5KCfDdRN+geS33dt8U=;
+ b=rk+GN9oF6P3Hi+AjSqv5kZvap69KJBbPt5rdu8KAapk2gzzsIgrSxH7s7Ht0fCxotF
+ eEK6j50Ui9qtcCwD/bq98/EpZ8gFD2JU9CrD044YxA0VOYHUmt9TnJ3/Vk+RAcvOJYll
+ hXDmsa8yiwFyIhQWBDiccJBnve98li7zi2bDhqs3y6+I6pM9a5bY0ZFR+MtO8y3cnweO
+ LFJFHsEE9pS/4dz9xpk6n1S6FnIFwsRa/nX7I11qCHaPXTy4BVKfPMcPUV7SAJz3sdt4
+ RccP6aQ/Ox/vQXLbodyESilaNCYkCGJJkwqAC21IoK71ETMlOzsc2Ie5mL5AhNtU/LQD
+ 9WDA==
+X-Gm-Message-State: AOAM5306/1aepapcgNmKf4MsGzY+HiFwTkwSq9QrYEFvLSPaFwH5/MJH
+ TePIKYTexJ+AuesZDYiqFeLAew==
+X-Google-Smtp-Source: ABdhPJyKxcIjDMZvDj1Q88hFM1nS7uCRsMbcaWtJ8QIvbD9LrP9UTTU0vAwO2xjUAHNha8wkdlZB5Q==
+X-Received: by 2002:a05:600c:3b83:b0:37c:e735:ad87 with SMTP id
+ n3-20020a05600c3b8300b0037ce735ad87mr4134101wms.120.1646322188478; 
+ Thu, 03 Mar 2022 07:43:08 -0800 (PST)
+Received: from localhost.localdomain
+ ([2a01:cb19:8b2c:5e00:e059:ffd7:be1c:ef2c])
+ by smtp.gmail.com with ESMTPSA id
+ d8-20020a056000114800b001f045f3435asm3272452wrx.108.2022.03.03.07.43.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 03 Mar 2022 07:43:08 -0800 (PST)
+From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Marco Felsch <m.felsch@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Fengping Yu <fengping.yu@mediatek.com>,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>
+Cc: Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+ Fabien Parent <fparent@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
+ linux-input@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>
+Subject: [PATCH v21 1/3] dt-bindings: input: Add bindings for Mediatek matrix
+ keypad
+Date: Thu,  3 Mar 2022 16:43:00 +0100
+Message-Id: <20220303154302.252041-2-mkorpershoek@baylibre.com>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20220303154302.252041-1-mkorpershoek@baylibre.com>
+References: <20220303154302.252041-1-mkorpershoek@baylibre.com>
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220303_073105_983880_965D1735 
-X-CRM114-Status: GOOD (  28.85  )
+X-CRM114-CacheID: sfid-20220303_074310_446066_DB7D83F1 
+X-CRM114-Status: GOOD (  14.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,392 +101,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-02-18 at 15:54 +0100, AngeloGioacchino Del Regno wrote:
-> Il 17/02/22 14:41, Jiaxin Yu ha scritto:
-> > This patch add gpio control for all audio interface separately.
-> > 
-> > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-> > ---
-> >   sound/soc/mediatek/mt8186/mt8186-afe-gpio.c | 210
-> > ++++++++++++++++++++
-> >   sound/soc/mediatek/mt8186/mt8186-afe-gpio.h |  19 ++
-> >   2 files changed, 229 insertions(+)
-> >   create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
-> >   create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-gpio.h
-> > 
-> > diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
-> > b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
-> > new file mode 100644
-> > index 000000000000..6faec5c95bf3
-> > --- /dev/null
-> > +++ b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
-> > @@ -0,0 +1,210 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +//
-> > +// mt8186-afe-gpio.c  --  Mediatek 8186 afe gpio ctrl
-> > +//
-> > +// Copyright (c) 2022 MediaTek Inc.
-> > +// Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
-> > +
-> > +#include <linux/gpio.h>
-> > +#include <linux/pinctrl/consumer.h>
-> > +
-> > +#include "mt8186-afe-common.h"
-> > +#include "mt8186-afe-gpio.h"
-> > +
-> > +struct pinctrl *aud_pinctrl;
-> > +
-> > +enum mt8186_afe_gpio {
-> > +	MT8186_AFE_GPIO_CLK_MOSI_OFF,
-> > +	MT8186_AFE_GPIO_CLK_MOSI_ON,
-> > +	MT8186_AFE_GPIO_CLK_MISO_OFF,
-> > +	MT8186_AFE_GPIO_CLK_MISO_ON,
-> > +	MT8186_AFE_GPIO_DAT_MISO_OFF,
-> > +	MT8186_AFE_GPIO_DAT_MISO_ON,
-> > +	MT8186_AFE_GPIO_DAT_MOSI_OFF,
-> > +	MT8186_AFE_GPIO_DAT_MOSI_ON,
-> > +	MT8186_AFE_GPIO_I2S0_OFF,
-> > +	MT8186_AFE_GPIO_I2S0_ON,
-> > +	MT8186_AFE_GPIO_I2S1_OFF,
-> > +	MT8186_AFE_GPIO_I2S1_ON,
-> > +	MT8186_AFE_GPIO_I2S2_OFF,
-> > +	MT8186_AFE_GPIO_I2S2_ON,
-> > +	MT8186_AFE_GPIO_I2S3_OFF,
-> > +	MT8186_AFE_GPIO_I2S3_ON,
-> > +	MT8186_AFE_GPIO_TDM_OFF,
-> > +	MT8186_AFE_GPIO_TDM_ON,
-> > +	MT8186_AFE_GPIO_PCM_OFF,
-> > +	MT8186_AFE_GPIO_PCM_ON,
-> > +	MT8186_AFE_GPIO_GPIO_NUM
-> > +};
-> > +
-> > +struct audio_gpio_attr {
-> > +	const char *name;
-> > +	bool gpio_prepare;
-> > +	struct pinctrl_state *gpioctrl;
-> > +};
-> > +
-> > +static struct audio_gpio_attr aud_gpios[MT8186_AFE_GPIO_GPIO_NUM]
-> > = {
-> > +	[MT8186_AFE_GPIO_CLK_MOSI_OFF] = {"aud_clk_mosi_off", false,
-> > NULL},
-> > +	[MT8186_AFE_GPIO_CLK_MOSI_ON] = {"aud_clk_mosi_on", false,
-> > NULL},
-> > +	[MT8186_AFE_GPIO_CLK_MISO_OFF] = {"aud_clk_miso_off", false,
-> > NULL},
-> > +	[MT8186_AFE_GPIO_CLK_MISO_ON] = {"aud_clk_miso_on", false,
-> > NULL},
-> > +	[MT8186_AFE_GPIO_DAT_MISO_OFF] = {"aud_dat_miso_off", false,
-> > NULL},
-> > +	[MT8186_AFE_GPIO_DAT_MISO_ON] = {"aud_dat_miso_on", false,
-> > NULL},
-> > +	[MT8186_AFE_GPIO_DAT_MOSI_OFF] = {"aud_dat_mosi_off", false,
-> > NULL},
-> > +	[MT8186_AFE_GPIO_DAT_MOSI_ON] = {"aud_dat_mosi_on", false,
-> > NULL},
-> > +	[MT8186_AFE_GPIO_I2S0_OFF] = {"aud_gpio_i2s0_off", false,
-> > NULL},
-> > +	[MT8186_AFE_GPIO_I2S0_ON] = {"aud_gpio_i2s0_on", false, NULL},
-> > +	[MT8186_AFE_GPIO_I2S1_OFF] = {"aud_gpio_i2s1_off", false,
-> > NULL},
-> > +	[MT8186_AFE_GPIO_I2S1_ON] = {"aud_gpio_i2s1_on", false, NULL},
-> > +	[MT8186_AFE_GPIO_I2S2_OFF] = {"aud_gpio_i2s2_off", false,
-> > NULL},
-> > +	[MT8186_AFE_GPIO_I2S2_ON] = {"aud_gpio_i2s2_on", false, NULL},
-> > +	[MT8186_AFE_GPIO_I2S3_OFF] = {"aud_gpio_i2s3_off", false,
-> > NULL},
-> > +	[MT8186_AFE_GPIO_I2S3_ON] = {"aud_gpio_i2s3_on", false, NULL},
-> > +	[MT8186_AFE_GPIO_TDM_OFF] = {"aud_gpio_tdm_off", false, NULL},
-> > +	[MT8186_AFE_GPIO_TDM_ON] = {"aud_gpio_tdm_on", false, NULL},
-> > +	[MT8186_AFE_GPIO_PCM_OFF] = {"aud_gpio_pcm_off", false, NULL},
-> > +	[MT8186_AFE_GPIO_PCM_ON] = {"aud_gpio_pcm_on", false, NULL},
-> > +};
-> > +
-> > +static DEFINE_MUTEX(gpio_request_mutex);
-> > +
-> > +int mt8186_afe_gpio_init(struct device *dev)
-> > +{
-> > +	int ret;
-> > +	int i = 0;
-> > +
-> > +	aud_pinctrl = devm_pinctrl_get(dev);
-> > +	if (IS_ERR(aud_pinctrl)) {
-> > +		ret = PTR_ERR(aud_pinctrl);
-> > +		dev_info(dev, "%s(), ret %d, cannot get
-> > aud_pinctrl!\n",
-> > +			 __func__, ret);
-> 
-> dev_err()
-> ... and return ret.
-> 
-> > +		return -ENODEV;
-> > +	}
-> > +
-> > +	for (i = 0; i < ARRAY_SIZE(aud_gpios); i++) {
-> > +		aud_gpios[i].gpioctrl =
-> > pinctrl_lookup_state(aud_pinctrl,
-> > +							     aud_gpios[
-> > i].name);
-> > +		if (IS_ERR(aud_gpios[i].gpioctrl)) {
-> > +			ret = PTR_ERR(aud_gpios[i].gpioctrl);
-> > +			dev_info(dev, "%s(), pinctrl_lookup_state %s
-> > fail, ret %d\n",
-> > +				 __func__, aud_gpios[i].name, ret);
-> 
-> dev_err()
-> 
-> P.S.: I think that this function should return ret, at this point, to
-> avoid
->        unexpected behavior.
+From: "fengping.yu" <fengping.yu@mediatek.com>
 
-Because we maybe don't need to config all of audio interface gpio in
-dtsi. for example, we may only use I2S0/I2S1 instead of I2S3/I2S4, so
-there only config I2S0/I2S1's pinctrl in dtsi. So I think there only
-need dev_info() as a reminder. How do you suggest for it?
+This patch add devicetree bindings for Mediatek matrix keypad driver.
 
-> 
-> 
-> > +		} else {
-> > +			aud_gpios[i].gpio_prepare = true;
-> > +		}
-> > +	}
-> > +
-> > +	/* gpio status init */
-> > +	mt8186_afe_gpio_request(dev, false, MT8186_DAI_ADDA, 0);
-> > +	mt8186_afe_gpio_request(dev, false, MT8186_DAI_ADDA, 1);
-> > +
-> > +	return 0;
-> > +}
-> > +EXPORT_SYMBOL_GPL(mt8186_afe_gpio_init);
-> > +
-> > +static int mt8186_afe_gpio_select(struct device *dev,
-> > +				  enum mt8186_afe_gpio type)
-> > +{
-> > +	int ret = 0;
-> > +
-> > +	if (type < 0 || type >= MT8186_AFE_GPIO_GPIO_NUM) {
-> > +		dev_info(dev, "%s(), error, invalid gpio type %d\n",
-> > +			 __func__, type);
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	if (!aud_gpios[type].gpio_prepare) {
-> > +		dev_info(dev, "%s(), error, gpio type %d not
-> > prepared\n",
-> > +			 __func__, type);
-> > +		return -EIO;
-> > +	}
-> > +
-> > +	ret = pinctrl_select_state(aud_pinctrl,
-> > +				   aud_gpios[type].gpioctrl);
-> > +	if (ret)
-> > +		dev_info(dev, "%s(), error, can not set gpio type
-> > %d\n",
-> > +			 __func__, type);
-> > +
-> > +	return ret;
-> 
-> Please change it like so:
-> 
-> 	if (ret) {
-> 		dev_err(dev, "Failed to select picntrl state for type
-> %d\n", type);
-> 		return ret;
-> 	}
-> 
-> 	return 0;
-> 
-> > +}
-> > +
-> > +static int mt8186_afe_gpio_adda_dl(struct device *dev, bool
-> > enable)
-> > +{
-> > +	if (enable) {
-> > +		mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_CLK_MOSI_ON);
-> > +		mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_DAT_MOSI_ON);
-> > +	} else {
-> > +		mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_DAT_MOSI_OFF);
-> > +		mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_CLK_MOSI_OFF);
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int mt8186_afe_gpio_adda_ul(struct device *dev, bool
-> > enable)
-> > +{
-> > +	if (enable) {
-> > +		mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_CLK_MISO_ON);
-> > +		mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_DAT_MISO_ON);
-> > +	} else {
-> > +		mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_DAT_MISO_OFF);
-> > +		mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_CLK_MISO_OFF);
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +int mt8186_afe_gpio_request(struct device *dev, bool enable,
-> > +			    int dai, int uplink)
-> > +{
-> 
-> I think that it's more readable and even shorter if you do:
-> 
-> 	enum mt8186_afe_gpio sel;
-> 
-> 	int ret = -EINVAL;
-> 
-> 
-> 
-> 	mutex_lock(&gpio_request_mutex);
-> 
-> 
-> 
-> 	switch (dai) {
-> 
-> 	case MT8186_DAI_ADDA:
-> 		if (uplink)
-> 			ret = mt8186_afe_gpio_adda_ul(dev, enable);
-> 		else
-> 			ret = mt8186_afe_gpio_adda_dl(dev, enable);
-> 		goto unlock;
-> 	case MT8186_DAI_I2S_0:
-> 
-> 		sel = enable ? MT8186_AFE_GPIO_I2S0_ON :
-> MT8186_AFE_GPIO_I2S0_OFF;
-> 
-> 		break;
-> 
-> 	case MT8186_DAI_I2S_1:
-> 
-> 		sel = enable ? MT8186_AFE_GPIO_I2S1_ON :
-> MT8186_AFE_GPIO_I2S1_OFF;
-> 
-> 		break;
-> 
-> 
-> 
-> 	.................... all other cases ................
-> 
-> 	default:
-> 
-> 		dev_err(dev, "invalid dai %d\n", dai);
-> 
-> 		goto unlock;
-> 
-> 	}
-> 
-> 
-> 	ret = mt8186_afe_gpio_select(dev, sel);
-> 
-> 
-> unlock:
-> 
-> 	mutex_unlock(&gpio_request_mutex);
-> 
-> 	return ret;
-> }
-> 
-> > +	mutex_lock(&gpio_request_mutex);
-> > +	switch (dai) {
-> > +	case MT8186_DAI_ADDA:
-> > +		if (uplink)
-> > +			mt8186_afe_gpio_adda_ul(dev, enable);
-> > +		else
-> > +			mt8186_afe_gpio_adda_dl(dev, enable);
-> > +		break;
-> > +	case MT8186_DAI_I2S_0:
-> > +		if (enable)
-> > +			mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_I2S0_ON);
-> > +		else
-> > +			mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_I2S0_OFF);
-> > +		break;
-> > +	case MT8186_DAI_I2S_1:
-> > +		if (enable)
-> > +			mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_I2S1_ON);
-> > +		else
-> > +			mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_I2S1_OFF);
-> > +		break;
-> > +	case MT8186_DAI_I2S_2:
-> > +		if (enable)
-> > +			mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_I2S2_ON);
-> > +		else
-> > +			mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_I2S2_OFF);
-> > +		break;
-> > +	case MT8186_DAI_I2S_3:
-> > +		if (enable)
-> > +			mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_I2S3_ON);
-> > +		else
-> > +			mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_I2S3_OFF);
-> > +		break;
-> > +	case MT8186_DAI_TDM_IN:
-> > +		if (enable)
-> > +			mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_TDM_ON);
-> > +		else
-> > +			mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_TDM_OFF);
-> > +		break;
-> > +	case MT8186_DAI_PCM:
-> > +		if (enable)
-> > +			mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_PCM_ON);
-> > +		else
-> > +			mt8186_afe_gpio_select(dev,
-> > MT8186_AFE_GPIO_PCM_OFF);
-> > +		break;
-> > +	default:
-> > +		mutex_unlock(&gpio_request_mutex);
-> > +		dev_info(dev, "%s(), invalid dai %d\n", __func__, dai);
-> > +		return -EINVAL;
-> > +	}
-> > +	mutex_unlock(&gpio_request_mutex);
-> > +	return 0;
-> > +}
-> > diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-gpio.h
-> > b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.h
-> > new file mode 100644
-> > index 000000000000..1ddc27838eb1
-> > --- /dev/null
-> > +++ b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.h
-> > @@ -0,0 +1,19 @@
-> > +/* SPDX-License-Identifier: GPL-2.0
-> > + *
-> > + * mt6833-afe-gpio.h  --  Mediatek 6833 afe gpio ctrl definition
-> > + *
-> > + * Copyright (c) 2022 MediaTek Inc.
-> > + * Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
-> > + */
-> > +
-> > +#ifndef _MT8186_AFE_GPIO_H_
-> > +#define _MT8186_AFE_GPIO_H_
-> > +
-> > +struct mtk_base_afe;
-> > +
-> > +int mt8186_afe_gpio_init(struct device *dev);
-> > +
-> > +int mt8186_afe_gpio_request(struct device *dev, bool enable,
-> > +			    int dai, int uplink);
-> > +
-> > +#endif
-> 
-> 
+Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
+Reviewed-by: Marco Felsch <m.felsch@pengutronix.de>
+Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+ .../input/mediatek,mt6779-keypad.yaml         | 77 +++++++++++++++++++
+ 1 file changed, 77 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
+
+diff --git a/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml b/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
+new file mode 100644
+index 000000000000..b1770640f94b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
+@@ -0,0 +1,77 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/input/mediatek,mt6779-keypad.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek's Keypad Controller device tree bindings
++
++maintainers:
++  - Fengping Yu <fengping.yu@mediatek.com>
++
++allOf:
++  - $ref: "/schemas/input/matrix-keymap.yaml#"
++
++description: |
++  Mediatek's Keypad controller is used to interface a SoC with a matrix-type
++  keypad device. The keypad controller supports multiple row and column lines.
++  A key can be placed at each intersection of a unique row and a unique column.
++  The keypad controller can sense a key-press and key-release and report the
++  event using a interrupt to the cpu.
++
++properties:
++  compatible:
++    oneOf:
++      - const: mediatek,mt6779-keypad
++      - items:
++          - enum:
++              - mediatek,mt6873-keypad
++          - const: mediatek,mt6779-keypad
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    maxItems: 1
++
++  clock-names:
++    items:
++      - const: kpd
++
++  wakeup-source:
++    description: use any event on keypad as wakeup event
++    type: boolean
++
++  debounce-delay-ms:
++    maximum: 256
++    default: 16
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/input/input.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        keyboard@10010000 {
++          compatible = "mediatek,mt6779-keypad";
++          reg = <0 0x10010000 0 0x1000>;
++          interrupts = <GIC_SPI 75 IRQ_TYPE_EDGE_FALLING>;
++          clocks = <&clk26m>;
++          clock-names = "kpd";
++        };
++    };
+-- 
+2.32.0
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
