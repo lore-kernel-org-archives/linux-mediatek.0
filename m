@@ -4,77 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13FCCC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 23:10:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2006EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 23:10:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4L1vplw/GZU3DKfOMqpVCT2srO05zbMtc72FvERS+jY=; b=RcDH37dgEKorcB
-	EECy9UaD1lDndnRWULwjq2y73o7z+OaOntUBLuRKybqexegEAtiNA6OcL/nJ8qoPTCNgtNAwd1iCw
-	bvael/6+fudVDzDP/lgmaDZBL+4QuPMc3nhRrulpz6XMR+auxHgRGngJIXZOzp77YDTZMPSd9oY1r
-	ebjCgA4FHvafvoCq0JcP/D/9zq3BWve60tkKmXIRgug6VJrVFY5gxoP+SY2yBdFZdUGt4visIenjZ
-	D8uX+SFLT7aCpRGLhrU9a74o/cJZgoCIIsMtUeCl4o6SRgqPMzbvHeIVbZDLuRS/v+qE6nY3rXNvO
-	5Vho9JkjfER5oubOEg1w==;
+	List-Owner; bh=NwQvM4YpMjuGRYj20eWiDXbMSkfV7FRN67nXe6bp1W8=; b=wnb4baEDO6KxJ2
+	msZ0D0ZQNsZJsWZZoYbjYoYV1DG+fitPJuPPnwq4Is7H2PIsH4RzUUO9JDCg3+jAfQCWs90v+AYc8
+	W6O/eOrMERdrnfaxfYe7X3RxIQNxpL5UkqerX7FBrIAWVjlYdjgk3ibl6gAW8ouUUO8YCtIGiMua0
+	/VXlXgNDLEpekjAPk2g3Wv3qsooidf5KdjdHvMIqiwJyj7S6nUBoo6PRWJCRRijhVCbMBjdd6FTMC
+	MrX2duhnN8P3bE2f8qyNCBLqV9WZQuyTonX7wkGQx8K96ttqPmjWD6KIO1/sLimmLOL6wNgJ9gMJi
+	VlCKLo7R4UDWS4mT1Aqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQH3q-00CHXu-FN; Fri, 04 Mar 2022 23:10:10 +0000
-Received: from mail-oi1-f171.google.com ([209.85.167.171])
+	id 1nQH4A-00CHeE-Ek; Fri, 04 Mar 2022 23:10:30 +0000
+Received: from mail-oi1-f182.google.com ([209.85.167.182])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQH3o-00CHXC-EJ; Fri, 04 Mar 2022 23:10:09 +0000
-Received: by mail-oi1-f171.google.com with SMTP id l25so9363040oic.13;
- Fri, 04 Mar 2022 15:10:07 -0800 (PST)
+ id 1nQH47-00CHcx-72; Fri, 04 Mar 2022 23:10:28 +0000
+Received: by mail-oi1-f182.google.com with SMTP id z8so6039111oix.3;
+ Fri, 04 Mar 2022 15:10:27 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:content-transfer-encoding
  :in-reply-to;
- bh=JW+rxnZpE9+fHEQrxDlG04ae248q2vaFTXN8LAiNdGI=;
- b=56n/aNCbQvaCEraq3gT2Go+pdN3TxlB9fddwF99TUw/1X6FlPOVqn9MiDL08HJFO6/
- kWjQMROX7OUZY9wkqYIekZqJtHxBlsdP81UVJOay02u9O2jpnUPAsIMdyJm6DAzgMbkd
- /7pXmmSjX6WEHZCXl/R9APU4Gnv3ikURtp0oxSAi48Hg6wvh6f3/FrijtBJOzARraVVT
- wigwrkisIheYFSlucQiL/kj1RGkK73c8fpObZaldtOxQbnR7lxmAlDGtzXwNmPqrEF6Q
- bseWq9luC4I68NSZTFjXo4S1kdeSKYBVMJ20M4UDMMgQqPnhe6MVn+zte2iP6VM2MECn
- ZCBw==
-X-Gm-Message-State: AOAM533k/ItCIyaubheJeApqVOxKtDZqwaLH0O8S5dlpthqXaG+QjE/Y
- KLQ0qDHLgLVTAjfP/m602g==
-X-Google-Smtp-Source: ABdhPJy9RdDp8xAHMMBepzvrVL3O5MwKYsIJ1gbpJkxbzCBhqvIZ4bNVu4BUg/Vl7bnetGqDDVqZQA==
-X-Received: by 2002:a05:6808:11cd:b0:2d5:3f90:b9e with SMTP id
- p13-20020a05680811cd00b002d53f900b9emr474875oiv.113.1646435406761; 
- Fri, 04 Mar 2022 15:10:06 -0800 (PST)
+ bh=nbp3CKVQIcxHEuP/e7OG3RMLG/oUR9xNYLZDthinbNQ=;
+ b=v3ORhnlKgOufHLeVkEqMi1mjMTtMsUK+TvNE2zUuqLev3Og5UHZ3ghmDXQEcpvPhz1
+ OL/u2b7iNV5Bdpo/Dy7jdXekWQ+QuakvOSxD7un/mU8PIACPYVEZBC2dXwnQ74KvQhDm
+ JcZ0q5CQ+6zPj8A6IPhHPGNXO7TeADL8bgT6stGCrTYDqk5zXWg0vRpraJ29urJ+GHuJ
+ /K5CgyTgCk3UdpARW2tw0+NECC7/O7mASGucs6d7udtgLaUtkk+TNhmixq2zxrdUmExg
+ DCVETMTPMW08foouGUwpQIIn+GpdSivMNU0MvLypjNVMuGTKQGEHY3Y4kX8f56vwuzbM
+ RZww==
+X-Gm-Message-State: AOAM532oCdVZsjf9bbf1x7Qci+kqgtWIsKp4sATNqlVI9RakEn+3TFtK
+ NO6F4H8wUDqVQeCaLuGW0A==
+X-Google-Smtp-Source: ABdhPJwjMiYZe7cZZuhCSr8Iua8jmpyFpnZyHA8jf+ETUHpBIA2Gusw3x5uJKpY+FBB/x9zSLnP85g==
+X-Received: by 2002:a05:6808:1691:b0:2d7:9354:3ec4 with SMTP id
+ bb17-20020a056808169100b002d793543ec4mr503845oib.62.1646435426601; 
+ Fri, 04 Mar 2022 15:10:26 -0800 (PST)
 Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
  [66.90.148.213]) by smtp.gmail.com with ESMTPSA id
- a12-20020a9d5c8c000000b005ad51592bd8sm2900602oti.49.2022.03.04.15.10.05
+ w36-20020a05687033a400b000d75f1d9b82sm2980440oae.47.2022.03.04.15.10.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Mar 2022 15:10:05 -0800 (PST)
-Received: (nullmailer pid 633452 invoked by uid 1000);
- Fri, 04 Mar 2022 23:10:04 -0000
-Date: Fri, 4 Mar 2022 17:10:04 -0600
+ Fri, 04 Mar 2022 15:10:25 -0800 (PST)
+Received: (nullmailer pid 634157 invoked by uid 1000);
+ Fri, 04 Mar 2022 23:10:24 -0000
+Date: Fri, 4 Mar 2022 17:10:24 -0600
 From: Rob Herring <robh@kernel.org>
 To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org,
- Mathieu Poirier <mathieu.poirier@linaro.org>, kernel@collabora.com,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- linux-remoteproc@vger.kernel.org,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- devicetree@vger.kernel.org, Tinghan Shen <tinghan.shen@mediatek.com>
-Subject: Re: [PATCH v1 1/3] dt-bindings: remoteproc: mediatek: Add interrupts
- property to mtk,scp
-Message-ID: <YiKcTH9alpE5FExj@robh.at.kernel.org>
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ kernel@collabora.com, Rob Herring <robh+dt@kernel.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v1 2/3] dt-bindings: usb: mtk-xhci: Allow wakeup
+ interrupt-names to be optional
+Message-ID: <YiKcYCV4HacnVO5z@robh.at.kernel.org>
 References: <20220225225854.81038-1-nfraprado@collabora.com>
- <20220225225854.81038-2-nfraprado@collabora.com>
+ <20220225225854.81038-3-nfraprado@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220225225854.81038-2-nfraprado@collabora.com>
+In-Reply-To: <20220225225854.81038-3-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220304_151008_505793_E6BD3AD9 
-X-CRM114-Status: GOOD (  10.71  )
+X-CRM114-CacheID: sfid-20220304_151027_276989_5DC66759 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,18 +90,17 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 25 Feb 2022 17:58:52 -0500, N=EDcolas F. R. A. Prado wrote:
-> The SCP node can have an associated interrupt. Add a property for it.
+On Fri, 25 Feb 2022 17:58:53 -0500, N=EDcolas F. R. A. Prado wrote:
+> Add missing 'minItems: 1' to the interrupt-names property to allow the
+> second interrupt-names, 'wakeup', to be optional.
 > =
 
 > Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
-> =
-
 > ---
 > =
 
->  Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml | 3 +++
->  1 file changed, 3 insertions(+)
+>  Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 > =
 
 
