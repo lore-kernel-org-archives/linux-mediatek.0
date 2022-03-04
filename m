@@ -4,62 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B862C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 13:29:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA61FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 14:03:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lPo7k6muNWKCB1JpupzNrxWsTTKm1jXroUUoo4W0fus=; b=MMqPGTG7zJpLEe
-	eXIJCDak8qIOFoYkVQWpZ8rKsNsboe/0WiONS3+dLGFJvXFVLLO4Y16TylIoY5YwzJRSKSTEtKBLI
-	g3FNhSbiZzDx7+52LLQ86apXRmjY0KwHjeV4iOzXmKUA0VVN43ovo+VJa/kNBjTiUvl/5kAtJ0Ns9
-	EHkaX+Bfj/0/co4GlV/LW9JJYY+VwAuDz5E5UfacLbiIaChOMttbMVr8YQ+Lw/4V0KME7/iqOyLJD
-	zIYEqKYg12cTdtTWw2lmr4OH0ZPbo7KJ8VnDmbUvnR0ypJk7bCh++0esyQfJOfNbDCYJZZu/IapRX
-	MzDXM8XYoETJ0tl4gQVA==;
+	List-Owner; bh=2Q93MGBlrZBOjeHWyeHS4Gb0EPpXO9K6GJmKaHh1Su0=; b=SDzwWor1OSWkUB
+	hy0m1lj6kVwJionxh2qLVgW5bQBVTwHOtu6PHMbloJZEn6oiqUIyVHnPPuILgp74GzynyWbuDqsZj
+	Q/AGGqs/I/e7MWlWEokXUCqFtcy+uw2H9DzuMoO9iPVSacX5yTULc9LCCmc1h4D3SS+YpmbTYgNws
+	KQ84WkusljpK2ai+D28HUoRZOLA5O922ko0wU7oXIvalr3feW0Ukdw2+eb2pGIBqcCNXZhnhMDCnn
+	QPxDRT27HnFDIbqKhU44y3TWukFOCPnELboN5V4rD+fqPX4bvFrM+8eyXZ+cx9D+gCX+Z9DFHgigQ
+	XkjK85AJR/bqy5ZF0ftQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQ801-00ADo5-N8; Fri, 04 Mar 2022 13:29:37 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQ7pL-00A92o-0a; Fri, 04 Mar 2022 13:18:36 +0000
-X-UUID: 7f04c69f17e94a10bc7aed04f15354fa-20220304
-X-UUID: 7f04c69f17e94a10bc7aed04f15354fa-20220304
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2084751779; Fri, 04 Mar 2022 06:18:25 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Mar 2022 05:08:32 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 4 Mar 2022 21:08:30 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 4 Mar 2022 21:08:30 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
- Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, "Hui Liu"
- <hui.liu@mediatek.com>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Subject: [PATCH v3 20/21] arm64: dts: mt8192: Add gce info for display nodes
-Date: Fri, 4 Mar 2022 21:08:08 +0800
-Message-ID: <20220304130809.12924-21-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220304130809.12924-1-allen-kh.cheng@mediatek.com>
-References: <20220304130809.12924-1-allen-kh.cheng@mediatek.com>
+	id 1nQ8Wy-00AOUx-9N; Fri, 04 Mar 2022 14:03:40 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nQ8Wk-00AOR2-NB; Fri, 04 Mar 2022 14:03:28 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 7893E1424;
+ Fri,  4 Mar 2022 06:03:25 -0800 (PST)
+Received: from [10.57.39.47] (unknown [10.57.39.47])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A7E423F70D;
+ Fri,  4 Mar 2022 06:03:23 -0800 (PST)
+Message-ID: <906a446e-3e25-5813-d380-de699a84b6f4@arm.com>
+Date: Fri, 4 Mar 2022 14:03:22 +0000
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.1
+Subject: Re: [PATCH] iommu/iova: Free all CPU rcache for retry when iova alloc
+ failure
+Content-Language: en-GB
+To: yf.wang@mediatek.com, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+Cc: wsd_upstream@mediatek.com, Libo Kang <Libo.Kang@mediatek.com>,
+ stable@vger.kernel.org, Ning Li <Ning.Li@mediatek.com>
+References: <20220304044635.4273-1-yf.wang@mediatek.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20220304044635.4273-1-yf.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220304_051835_134440_4AFD790D 
-X-CRM114-Status: UNSURE (   9.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220304_060326_839731_C8DCBD8E 
+X-CRM114-Status: GOOD (  18.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,133 +65,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add gce info for display nodes
-- It's required to get drivers' CMDQ support
+On 2022-03-04 04:46, yf.wang--- via iommu wrote:
+> From: Yunfei Wang <yf.wang@mediatek.com>
+> 
+> In alloc_iova_fast function, if an iova alloc request fail,
+> it will free the iova ranges present in the percpu iova
+> rcaches and free global iova rcache and then retry, but
+> flushing CPU iova rcaches only for each online CPU, which
+> will cause incomplete rcache cleaning, and iova rcaches of
+> not online CPU cannot be flushed, because iova rcaches may
+> also lead to fragmentation of iova space, so the next retry
+> action may still be fail.
+> 
+> Based on the above, so need to flushing all iova rcaches
+> for each possible CPU, use for_each_possible_cpu instead of
+> for_each_online_cpu like in free_iova_rcaches function,
+> so that all rcaches can be completely released to try
+> replenishing IOVAs.
 
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+OK, so either there's a mystery bug where IOVAs somehow get freed on 
+offline CPUs, or the hotplug notifier isn't working correctly, or you've 
+contrived a situation where alloc_iova_fast() is actually racing against 
+iova_cpuhp_dead(). In the latter case, the solution is "don't do that".
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 3d16cb0b3ea1..70b50aa0a03c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -1202,6 +1202,9 @@
- 		mmsys: syscon@14000000 {
- 			compatible = "mediatek,mt8192-mmsys", "syscon";
- 			reg = <0 0x14000000 0 0x1000>;
-+			mboxes = <&gce 0 CMDQ_THR_PRIO_HIGHEST 1>,
-+				 <&gce 1 CMDQ_THR_PRIO_HIGHEST 1>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
- 
-@@ -1210,6 +1213,8 @@
- 			reg = <0 0x14001000 0 0x1000>;
- 			interrupts = <GIC_SPI 252 IRQ_TYPE_LEVEL_HIGH 0>;
- 			clocks = <&mmsys CLK_MM_DISP_MUTEX0>;
-+			mediatek,gce-events = <CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_0>,
-+					      <CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_1>;
- 		};
- 
- 		smi_common: smi@14002000 {
-@@ -1251,6 +1256,7 @@
- 			iommus = <&iommu0 M4U_PORT_L0_OVL_RDMA0>,
- 				 <&iommu0 M4U_PORT_L0_OVL_RDMA0_HDR>;
- 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
- 		};
- 
- 		ovl_2l0: ovl@14006000 {
-@@ -1261,6 +1267,7 @@
- 			clocks = <&mmsys CLK_MM_DISP_OVL0_2L>;
- 			iommus = <&iommu0 M4U_PORT_L1_OVL_2L_RDMA0>,
- 				 <&iommu0 M4U_PORT_L1_OVL_2L_RDMA0_HDR>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
- 		};
- 
- 		rdma0: rdma@14007000 {
-@@ -1272,6 +1279,7 @@
- 			mediatek,larb = <&larb0>;
- 			mediatek,rdma-fifo-size = <5120>;
- 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x7000 0x1000>;
- 		};
- 
- 		color0: color@14009000 {
-@@ -1281,6 +1289,7 @@
- 			interrupts = <GIC_SPI 258 IRQ_TYPE_LEVEL_HIGH 0>;
- 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
- 			clocks = <&mmsys CLK_MM_DISP_COLOR0>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x9000 0x1000>;
- 		};
- 
- 		ccorr0: ccorr@1400a000 {
-@@ -1289,6 +1298,7 @@
- 			interrupts = <GIC_SPI 259 IRQ_TYPE_LEVEL_HIGH 0>;
- 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
- 			clocks = <&mmsys CLK_MM_DISP_CCORR0>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xa000 0x1000>;
- 		};
- 
- 		aal0: aal@1400b000 {
-@@ -1298,6 +1308,7 @@
- 			interrupts = <GIC_SPI 260 IRQ_TYPE_LEVEL_HIGH 0>;
- 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
- 			clocks = <&mmsys CLK_MM_DISP_AAL0>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xb000 0x1000>;
- 		};
- 
- 		gamma0: gamma@1400c000 {
-@@ -1307,6 +1318,7 @@
- 			interrupts = <GIC_SPI 261 IRQ_TYPE_LEVEL_HIGH 0>;
- 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
- 			clocks = <&mmsys CLK_MM_DISP_GAMMA0>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xc000 0x1000>;
- 		};
- 
- 		postmask0: postmask@1400d000 {
-@@ -1316,6 +1328,7 @@
- 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
- 			clocks = <&mmsys CLK_MM_DISP_POSTMASK0>;
- 			iommus = <&iommu0 M4U_PORT_L0_DISP_POSTMASK0>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xd000 0x1000>;
- 		};
- 
- 		dither0: dither@1400e000 {
-@@ -1325,6 +1338,7 @@
- 			interrupts = <GIC_SPI 263 IRQ_TYPE_LEVEL_HIGH 0>;
- 			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
- 			clocks = <&mmsys CLK_MM_DISP_DITHER0>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xe000 0x1000>;
- 		};
- 
- 		dsi0: dsi@14010000 {
-@@ -1349,6 +1363,7 @@
- 			clocks = <&mmsys CLK_MM_DISP_OVL2_2L>;
- 			iommus = <&iommu0 M4U_PORT_L1_OVL_2L_RDMA2>,
- 				 <&iommu0 M4U_PORT_L1_OVL_2L_RDMA2_HDR>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x4000 0x1000>;
- 		};
- 
- 		rdma4: rdma@14015000 {
-@@ -1359,6 +1374,7 @@
- 			clocks = <&mmsys CLK_MM_DISP_RDMA4>;
- 			iommus = <&iommu0 M4U_PORT_L1_DISP_RDMA4>;
- 			mediatek,rdma-fifo-size = <2048>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x5000 0x1000>;
- 		};
- 
- 		dpi0: dpi@14016000 {
--- 
-2.18.0
+This change should not be necessary.
 
+Thanks,
+Robin.
+
+> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+> Cc: <stable@vger.kernel.org> # 5.4.*
+> ---
+>   drivers/iommu/iova.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/iommu/iova.c b/drivers/iommu/iova.c
+> index b28c9435b898..5a0637cd7bc2 100644
+> --- a/drivers/iommu/iova.c
+> +++ b/drivers/iommu/iova.c
+> @@ -460,7 +460,7 @@ alloc_iova_fast(struct iova_domain *iovad, unsigned long size,
+>   
+>   		/* Try replenishing IOVAs by flushing rcache. */
+>   		flush_rcache = false;
+> -		for_each_online_cpu(cpu)
+> +		for_each_possible_cpu(cpu)
+>   			free_cpu_cached_iovas(cpu, iovad);
+>   		free_global_cached_iovas(iovad);
+>   		goto retry;
+> 
+> 
+> _______________________________________________
+> iommu mailing list
+> iommu@lists.linux-foundation.org
+> https://lists.linuxfoundation.org/mailman/listinfo/iommu
 
 _______________________________________________
 Linux-mediatek mailing list
