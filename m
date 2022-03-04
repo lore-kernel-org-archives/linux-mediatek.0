@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0F24C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 10:25:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13136C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 10:32:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LbC21VnsT1qyqcS1Xr4mgOUhhzMa+d+uLjEeDodG2rU=; b=Dxd7f1ExXFhz4N
-	3kK9rl8GKX67P6JXPlVNltG/4Zz3wgVnNCMVarBAAsbVKOy13mpx7+hMP3/VOnhL8/bx8JVSfRTve
-	OTa2orwf7bxtygju7j9jNBLe2d2qA9HjcBCT6t3gHkv1pd97cdhzwHl4ANxm1zTpc63XGctPcWBgO
-	7yOA9TgZL+S8QaFXLac1BVNh89rJp0RSIbQDrtIVpwh2ShKYtE92Eng9ri6pzTpye1VCS+RP2hX4D
-	+iQGVhOd2QkxKn1f0APS2Ju7bdff36P7ERh4fvvL7/BHbvVije8qbDL2C//s0pCHQ2i3U5hg9gdGY
-	d5I4bBbPDo0vqj/M1tkg==;
+	List-Owner; bh=zNnOK6qNWYn1Q2WA9khlIVLVEvD23ExvZv6m08/ORJ0=; b=FwIwA2Iy6ZYyTL
+	8Dzkt2XOECbYJVyN/LXBW7YmBe2JODWq9kagaNVv2NlNQwyybQ4MuQsBbvjh2hLvLgGuGdHPfFALa
+	vV/R3VbpB4mXiZL0nMiCCEUr2Hw20w7JJ4iR1dNm6zuVPia1LNCb+qLRqB1YqL05arssEWnTzZuF1
+	n+V4OIj7R4JYNHbe2T+/dlsTMLjNLTYauBVvnZTfU+CDHXUvblCx+C9Haqm14lnl1PeRrnHyjqLnx
+	iHJSKnW4tzEFieu2rzEc1ijMk+UcADtXqXCyhNHxUFdRJDuR8dbjw230Wb9c6AaZHqzDUVLeaPf5S
+	kF6iJ6ueqA2qcOjZM0mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQ57J-009ZpX-Pt; Fri, 04 Mar 2022 10:24:57 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nQ5E4-009b4r-AF; Fri, 04 Mar 2022 10:31:56 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQ576-009Zk3-78; Fri, 04 Mar 2022 10:24:45 +0000
-X-UUID: ffaf190f627b47d4a51203048e7ae0e7-20220304
-X-UUID: ffaf190f627b47d4a51203048e7ae0e7-20220304
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <xinlei.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1246623969; Fri, 04 Mar 2022 03:24:41 -0700
-Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Mar 2022 02:16:07 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS34N1.mediatek.inc
- (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 4 Mar 2022 18:16:05 +0800
-Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
- MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Fri, 4 Mar 2022 18:16:04 +0800
-From: <xinlei.lee@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
- <daniel@ffwll.ch>, <matthias.bgg@gmail.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <jitao.shi@mediatek.com>, <allen-kh.cheng@mediatek.com>,
- <rex-bc.chen@mediatek.com>, Xinlei Lee <xinlei.lee@mediatek.com>
-Subject: [PATCH v2,
- 2/4] drm/mediatek: Separate poweron/poweroff from enable/disable and
- define new funcs
-Date: Fri, 4 Mar 2022 18:15:54 +0800
-Message-ID: <1646388956-8033-3-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1646388956-8033-1-git-send-email-xinlei.lee@mediatek.com>
-References: <1646388956-8033-1-git-send-email-xinlei.lee@mediatek.com>
+ id 1nQ5Dr-009b2M-R8; Fri, 04 Mar 2022 10:31:46 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 5C74A1F46518
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1646389902;
+ bh=+Q25/NgNVE68oIuS3bZoss/fJ3ewI6fEylYzejB/9ds=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=cTl18Lgrip5Dv9ssmao9SIBcXHb9e6McbV97dfYnRK9v5KeOpOYrEewLzcZmbL+u1
+ dpaQ7t0LlNigs987LCZNAdKpwK6mmRpRWLXt/AlatiUhDsfBfy6NZYtbdY3y3L9f7T
+ OV1/9cyDnGaMI85XdZ5W7o6SplMb3VcmSRqov2UrRMBZj7LhsLZNyYiXlRBlYcSvTX
+ 45FuczS/BFZbkVwRupeeIyu1zsT1FkCA//t1aLrw07xgrXREKZHuYVh5ifLpp5IIV4
+ YD0R13ux/Rc4fBCESmfzwLwdPdK7DzLZDimv+6JUTcERfiu0CiavetH72LBZ6Jctsa
+ zVyOoavf161ww==
+Message-ID: <300114e2-6794-db3c-a51c-3f900b6476f9@collabora.com>
+Date: Fri, 4 Mar 2022 11:31:38 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH v21 2/3] Input: mt6779-keypad - Add MediaTek keypad driver
+Content-Language: en-US
+To: Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Marco Felsch <m.felsch@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Fengping Yu <fengping.yu@mediatek.com>,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>
+Cc: Fabien Parent <fparent@baylibre.com>, Kevin Hilman
+ <khilman@baylibre.com>, linux-input@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220303154302.252041-1-mkorpershoek@baylibre.com>
+ <20220303154302.252041-3-mkorpershoek@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220303154302.252041-3-mkorpershoek@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220304_022444_285424_88C73015 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20220304_023144_183152_42424B9E 
+X-CRM114-Status: GOOD (  36.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,111 +72,302 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jitao Shi <jitao.shi@mediatek.com>
+Il 03/03/22 16:43, Mattijs Korpershoek ha scritto:
+> From: "fengping.yu" <fengping.yu@mediatek.com>
+> 
+> This patch adds matrix keypad support for Mediatek SoCs.
+> 
+> Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
+> Reviewed-by: Marco Felsch <m.felsch@pengutronix.de>
+> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+> Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
 
-In order to match the changes of "Use the drm_panel_bridge API",
-the poweron/poweroff of dsi is extracted from enable/disable and
-defined as new funcs (pre_enable/post_disable).
+Hello Mattijs,
+thanks for the patch!
 
-Fixes: 2dd8075d2185 ("drm/mediatek: mtk_dsi: Use the drm_panel_bridge API")
+However, to make it perfect, there's something to improve....
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 45 +++++++++++++++++-------------
- 1 file changed, 26 insertions(+), 19 deletions(-)
+> ---
+>   drivers/input/keyboard/Kconfig         |  12 ++
+>   drivers/input/keyboard/Makefile        |   1 +
+>   drivers/input/keyboard/mt6779-keypad.c | 215 +++++++++++++++++++++++++
+>   3 files changed, 228 insertions(+)
+>   create mode 100644 drivers/input/keyboard/mt6779-keypad.c
+> 
+> diff --git a/drivers/input/keyboard/Kconfig b/drivers/input/keyboard/Kconfig
+> index 0c607da9ee10..03a9530f620e 100644
+> --- a/drivers/input/keyboard/Kconfig
+> +++ b/drivers/input/keyboard/Kconfig
+> @@ -779,6 +779,18 @@ config KEYBOARD_BCM
+>   	  To compile this driver as a module, choose M here: the
+>   	  module will be called bcm-keypad.
+>   
+> +config KEYBOARD_MT6779
+> +	tristate "MediaTek Keypad Support"
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	select REGMAP_MMIO
+> +	select INPUT_MATRIXKMAP
+> +	help
+> +	  Say Y here if you want to use the keypad on MediaTek SoCs.
+> +	  If unsure, say N.
+> +
+> +	  To compile this driver as a module, choose M here: the
+> +	  module will be called mt6779-keypad.
+> +
+>   config KEYBOARD_MTK_PMIC
+>   	tristate "MediaTek PMIC keys support"
+>   	depends on MFD_MT6397
+> diff --git a/drivers/input/keyboard/Makefile b/drivers/input/keyboard/Makefile
+> index e3c8648f834e..721936e90290 100644
+> --- a/drivers/input/keyboard/Makefile
+> +++ b/drivers/input/keyboard/Makefile
+> @@ -44,6 +44,7 @@ obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
+>   obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
+>   obj-$(CONFIG_KEYBOARD_MCS)		+= mcs_touchkey.o
+>   obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
+> +obj-$(CONFIG_KEYBOARD_MT6779)		+= mt6779-keypad.o
+>   obj-$(CONFIG_KEYBOARD_MTK_PMIC) 	+= mtk-pmic-keys.o
+>   obj-$(CONFIG_KEYBOARD_NEWTON)		+= newtonkbd.o
+>   obj-$(CONFIG_KEYBOARD_NOMADIK)		+= nomadik-ske-keypad.o
+> diff --git a/drivers/input/keyboard/mt6779-keypad.c b/drivers/input/keyboard/mt6779-keypad.c
+> new file mode 100644
+> index 000000000000..b207acdd1e2a
+> --- /dev/null
+> +++ b/drivers/input/keyboard/mt6779-keypad.c
+> @@ -0,0 +1,215 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (C) 2022 MediaTek Inc.
+> + * Author Fengping Yu <fengping.yu@mediatek.com>
+> + */
+> +#include <linux/bitops.h>
+> +#include <linux/clk.h>
+> +#include <linux/input/matrix_keypad.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/module.h>
+> +#include <linux/property.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/regmap.h>
+> +
+> +#define MTK_KPD_NAME		"mt6779-keypad"
+> +#define MTK_KPD_MEM		0x0004
+> +#define MTK_KPD_DEBOUNCE	0x0018
+> +#define MTK_KPD_DEBOUNCE_MASK	GENMASK(13, 0)
+> +#define MTK_KPD_DEBOUNCE_MAX_MS	256
+> +#define MTK_KPD_NUM_MEMS	5
+> +#define MTK_KPD_NUM_BITS	136	/* 4*32+8 MEM5 only use 8 BITS */
+> +
+> +struct mt6779_keypad {
+> +	struct regmap *regmap;
+> +	struct input_dev *input_dev;
+> +	struct clk *clk;
+> +	void __iomem *base;
+> +	u32 n_rows;
+> +	u32 n_cols;
+> +	DECLARE_BITMAP(keymap_state, MTK_KPD_NUM_BITS);
+> +};
+> +
+> +static const struct regmap_config mt6779_keypad_regmap_cfg = {
+> +	.reg_bits = 32,
+> +	.val_bits = 32,
+> +	.reg_stride = sizeof(u32),
+> +	.max_register = 36,
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 6d7b66d5da42..e47c338a7c22 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -679,16 +679,6 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
- 	if (--dsi->refcount != 0)
- 		return;
- 
--	/*
--	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
--	 * mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(),
--	 * which needs irq for vblank, and mtk_dsi_stop() will disable irq.
--	 * mtk_dsi_start() needs to be called in mtk_output_dsi_enable(),
--	 * after dsi is fully set.
--	 */
--	mtk_dsi_stop(dsi);
--
--	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
- 	mtk_dsi_reset_engine(dsi);
- 	mtk_dsi_lane0_ulp_mode_enter(dsi);
- 	mtk_dsi_clk_ulp_mode_enter(dsi);
-@@ -703,17 +693,9 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
- 
- static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
- {
--	int ret;
--
- 	if (dsi->enabled)
- 		return;
- 
--	ret = mtk_dsi_poweron(dsi);
--	if (ret < 0) {
--		DRM_ERROR("failed to power on dsi\n");
--		return;
--	}
--
- 	mtk_dsi_set_mode(dsi);
- 	mtk_dsi_clk_hs_mode(dsi, 1);
- 
-@@ -727,7 +709,16 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
- 	if (!dsi->enabled)
- 		return;
- 
--	mtk_dsi_poweroff(dsi);
-+	/*
-+	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
-+	 * mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(),
-+	 * which needs irq for vblank, and mtk_dsi_stop() will disable irq.
-+	 * mtk_dsi_start() needs to be called in mtk_output_dsi_enable(),
-+	 * after dsi is fully set.
-+	 */
-+	mtk_dsi_stop(dsi);
-+
-+	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
- 
- 	dsi->enabled = false;
- }
-@@ -765,10 +756,26 @@ static void mtk_dsi_bridge_enable(struct drm_bridge *bridge)
- 	mtk_output_dsi_enable(dsi);
- }
- 
-+static void mtk_dsi_bridge_pre_enable(struct drm_bridge *bridge)
-+{
-+	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
-+
-+	mtk_dsi_poweron(dsi);
-+}
-+
-+static void mtk_dsi_bridge_post_disable(struct drm_bridge *bridge)
-+{
-+	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
-+
-+	mtk_dsi_poweroff(dsi);
-+}
-+
- static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
- 	.attach = mtk_dsi_bridge_attach,
- 	.disable = mtk_dsi_bridge_disable,
- 	.enable = mtk_dsi_bridge_enable,
-+	.pre_enable = mtk_dsi_bridge_pre_enable,
-+	.post_disable = mtk_dsi_bridge_post_disable,
- 	.mode_set = mtk_dsi_bridge_mode_set,
- };
- 
--- 
-2.18.0
+Are you sure that you can't use .fast_io = true?
+
+Another version for the same question:
+Are you sure that you need to lock with a mutex here, and not with a spinlock?
+
+Since you're performing reads over a MMIO, I think that there's a very good
+chance that you can use fast_io.
+
+> +};
+> +
+> +static irqreturn_t mt6779_keypad_irq_handler(int irq, void *dev_id)
+> +{
+> +	struct mt6779_keypad *keypad = dev_id;
+> +	unsigned short *keycode = keypad->input_dev->keycode;
+> +	DECLARE_BITMAP(new_state, MTK_KPD_NUM_BITS);
+> +	DECLARE_BITMAP(change, MTK_KPD_NUM_BITS);
+> +	int bit_nr;
+> +	int pressed;
+> +	unsigned short code;
+> +	int row, col;
+> +	int row_shift = get_count_order(keypad->n_cols);
+> +
+> +	regmap_bulk_read(keypad->regmap, MTK_KPD_MEM,
+> +			 new_state, MTK_KPD_NUM_MEMS);
+> +
+> +	bitmap_xor(change, new_state, keypad->keymap_state, MTK_KPD_NUM_BITS);
+> +
+> +	for_each_set_bit(bit_nr, change, MTK_KPD_NUM_BITS) {
+> +	/* For 32bits register, only bits [15:0] use to indicate key status */
+> +		if (bit_nr % 32 >= 16)
+> +			continue;
+> +
+> +		/* 1: not pressed, 0: pressed */
+> +		pressed = !test_bit(bit_nr, new_state);
+> +		dev_dbg(&keypad->input_dev->dev, "%s",
+> +			pressed ? "pressed" : "released");
+> +
+> +		row = bit_nr / 32;
+> +		col = bit_nr % 32;
+> +
+> +		code = keycode[MATRIX_SCAN_CODE(row, col, row_shift)];
+> +
+> +		input_report_key(keypad->input_dev, code, pressed);
+> +		input_sync(keypad->input_dev);
+> +
+> +		dev_dbg(&keypad->input_dev->dev,
+> +			"report Linux keycode = %d\n", code);
+> +	}
+> +
+> +	bitmap_copy(keypad->keymap_state, new_state, MTK_KPD_NUM_BITS);
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +static void mt6779_keypad_clk_disable(void *data)
+> +{
+> +	clk_disable_unprepare(data);
+> +}
+> +
+> +static int mt6779_keypad_pdrv_probe(struct platform_device *pdev)
+> +{
+> +	struct mt6779_keypad *keypad;
+> +	unsigned int irq;
+> +	u32 debounce;
+> +	bool wakeup;
+> +	int error;
+> +
+> +	keypad = devm_kzalloc(&pdev->dev, sizeof(*keypad), GFP_KERNEL);
+> +	if (!keypad)
+> +		return -ENOMEM;
+> +
+> +	keypad->base = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(keypad->base))
+> +		return PTR_ERR(keypad->base);
+> +
+> +	keypad->regmap = devm_regmap_init_mmio(&pdev->dev,
+> +					       keypad->base,
+> +					       &mt6779_keypad_regmap_cfg);
+
+Please use dev_err_probe() to simplify error handling in probe functions: you've
+done a great job with adding a devm action for the error cases, avoiding gotos to
+get out cleanly.. it would be a pity to not finish this to perfection.
+
+I'll give you two examples for this, so that you'll be all set.
+
+	if (IS_ERR(keypad->regmap))
+		return dev_err_probe(&pdev->dev, PTR_ERR(keypad->regmap),
+				     "regmap init failed\n");
+
+P.S.: No need for %pe here, as dev_err_probe prints the error number for you!
+
+> +	if (IS_ERR(keypad->regmap)) {
+> +		dev_err(&pdev->dev,
+> +			"regmap init failed:%pe\n", keypad->regmap);
+> +		return PTR_ERR(keypad->regmap);
+> +	}
+> +
+> +	bitmap_fill(keypad->keymap_state, MTK_KPD_NUM_BITS);
+> +
+> +	keypad->input_dev = devm_input_allocate_device(&pdev->dev);
+
+	if (!keypad->input_dev)
+		return dev_err_probe(&pdev->dev, -ENOMEM,
+				     "Cannot allocate input device\n");
+
+> +	if (!keypad->input_dev) {
+> +		dev_err(&pdev->dev, "Failed to allocate input dev\n");
+> +		return -ENOMEM;
+> +	}
+> +
+> +	keypad->input_dev->name = MTK_KPD_NAME;
+> +	keypad->input_dev->id.bustype = BUS_HOST;
+> +
+> +	error = matrix_keypad_parse_properties(&pdev->dev, &keypad->n_rows,
+> +					       &keypad->n_cols);
+> +	if (error) {
+> +		dev_err(&pdev->dev, "Failed to parse keypad params\n");
+> +		return error;
+> +	}
+> +
+> +	if (device_property_read_u32(&pdev->dev, "debounce-delay-ms",
+> +				     &debounce))
+> +		debounce = 16;
+> +
+> +	if (debounce > MTK_KPD_DEBOUNCE_MAX_MS) {
+> +		dev_err(&pdev->dev, "Debounce time exceeds the maximum allowed time %dms\n",
+> +			MTK_KPD_DEBOUNCE_MAX_MS);
+> +		return -EINVAL;
+> +	}
+> +
+> +	wakeup = device_property_read_bool(&pdev->dev, "wakeup-source");
+> +
+> +	dev_dbg(&pdev->dev, "n_row=%d n_col=%d debounce=%d\n",
+> +		keypad->n_rows, keypad->n_cols, debounce);
+> +
+> +	error = matrix_keypad_build_keymap(NULL, NULL,
+> +					   keypad->n_rows,
+> +					   keypad->n_cols,
+> +					   NULL,
+> +					   keypad->input_dev);
+> +	if (error) {
+> +		dev_err(&pdev->dev, "Failed to build keymap\n");
+> +		return error;
+> +	}
+> +
+> +	regmap_write(keypad->regmap, MTK_KPD_DEBOUNCE,
+> +		     (debounce * (1 << 5)) & MTK_KPD_DEBOUNCE_MASK);
+> +
+> +	keypad->clk = devm_clk_get(&pdev->dev, "kpd");
+> +	if (IS_ERR(keypad->clk))
+> +		return PTR_ERR(keypad->clk);
+> +
+> +	error = clk_prepare_enable(keypad->clk);
+> +	if (error) {
+> +		dev_err(&pdev->dev, "cannot prepare/enable keypad clock\n");
+> +		return error;
+> +	}
+> +
+> +	error = devm_add_action_or_reset(&pdev->dev, mt6779_keypad_clk_disable, keypad->clk);
+> +	if (error)
+> +		return error;
+> +
+> +	irq = platform_get_irq(pdev, 0);
+> +	if (irq < 0)
+> +		return irq;
+> +
+> +	error = devm_request_threaded_irq(&pdev->dev, irq, NULL, mt6779_keypad_irq_handler,
+> +					  IRQF_ONESHOT, MTK_KPD_NAME, keypad);
+> +	if (error) {
+> +		dev_err(&pdev->dev, "Failed to request IRQ#%d:%d\n", irq, error);
+> +		return error;
+> +	}
+> +
+> +	error = input_register_device(keypad->input_dev);
+> +	if (error) {
+> +		dev_err(&pdev->dev, "Failed to register device\n");
+> +		return error;
+> +	}
+> +
+> +	error =  device_init_wakeup(&pdev->dev, wakeup);
+
+Whoops! Two spaces here! Please fix this typo.
+
+P.S.: Please add my email to the Cc's when you'll send the next version, so that
+       I will be able to timely give you a R-b tag.
+
+Cheers,
+Angelo
+
 
 
 _______________________________________________
