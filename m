@@ -4,88 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 228F5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 16:08:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D049C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 16:20:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m9Lw9ENK2rLFw2bJ0xdSGt+OkWW41khvVeU9mKgkz4I=; b=aMxFRcEGxy1OnI
-	79//see0pi8ZRnBpH/i3injyZpj9TUaVBC1ZHUTarA/4DM/v+yqA1mXQi1649XACHOnQ8ano6gBVb
-	4lMfK66uo6Dh7B7r2vn4TteL/n8gn3x8XWEAWlwHajR183NkkiHsikppn+As3k/D2Z3GlqW/G6sWY
-	SDOdHxkUcdqthVm3+XGUdYPxN16Q1fNQ4CAQp+80CXKhMJx+nz0WNUPb41n56RlecKq5MiKASasIM
-	3VSlQgUgWcVAUYIsGBQsA548lJskM2lnGkHiQ7ySz5/EZ3tdZDGigFNdG+jhmF5u8kfmCYM8995y3
-	aMF9fSIwD/+t8g9W6cDQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=AmpFBHYoV7pVXWZSlx9e2w0IrG+UEiLVdI7itZslrWU=; b=U2r9uFK4Y4oW4T
+	TXUPTdyWztUeiHks9lWB20eQmLrVj8lF4HSkJH2Ncg05Ntu3Hqf98IetnVIpvyMxHROGxoEmwifTg
+	oj+8YAhZKL8AYxcYfWakahKpIRtwob7TctMS4CTq5paYw+dqz9d3acOCB0dLZ6zKyMif4CXe4x7J8
+	HsQShiuWvMOESF26qxcFwJYbpM4vj/1+4Po61QPcHwleiJCla2SXcPWDc2al6TObf+lh81ndXRic/
+	1LdcJVh0WbQg5vdLbJPcM6+IAbxQ55+l7Si969ZCjNk4njPtdnE89vkAberLptKH9gIBBortKOrG6
+	R20ong7XzDl5bPkUQpgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQAT8-00Av7n-9X; Fri, 04 Mar 2022 16:07:50 +0000
-Received: from desiato.infradead.org ([90.155.92.199])
+	id 1nQAfB-00Azp8-Uo; Fri, 04 Mar 2022 16:20:18 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQASy-00AumP-Vq; Fri, 04 Mar 2022 16:07:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=IO1zrbMJCIdW27ZYcLkomHz9MZD/3xTBxiCCeGbY4nY=; b=pD+5TUOxe7Xj7X0QfNsNa/T3q3
- MCdFHKM+e4UOJ7cGmpyjARlhHVDh39HmCcIA3rNwV2fbBCQO5TIFBgHD4ixQCTvZM4Q/RS9x/lXst
- Cj1ehlFXn1pDz+Zk/H32qnT6HMB5ZsHGGuD7WFXUx0oPUSqrUnz7zP037bdRY1Fm/asnGFqOthdwP
- Lkml4dLCJyLg05mP3vHhsI7r53jby7KAng1TCsYz3T0abg7a4Bf36az2kpXnxcSZrIK0l4nCqKdyZ
- FEL82tvavTv31yU2hmRBFfVobJThTS7BCo9Gira/oQUIpWye4BqPgTXPJteQe29tyoWIjEgQSArKN
- JmyrefZA==;
-Received: from mail-oo1-f51.google.com ([209.85.161.51])
- by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQA1w-00FF2Y-AH; Fri, 04 Mar 2022 15:39:46 +0000
-Received: by mail-oo1-f51.google.com with SMTP id
- x6-20020a4a4106000000b003193022319cso9782350ooa.4; 
- Fri, 04 Mar 2022 07:39:42 -0800 (PST)
+ id 1nQAaW-00AxmI-AY
+ for linux-mediatek@lists.infradead.org; Fri, 04 Mar 2022 16:15:30 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id j26so3055794wrb.1
+ for <linux-mediatek@lists.infradead.org>; Fri, 04 Mar 2022 08:15:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=lrMkWfnep54u5iNgaB4r+dAM8d1KFFgig+FJrYuk0pk=;
+ b=BkiMi6QmBvXGp9TotIl0ob62+e/h6JsMQPZM3+y5rzZZJCBsHJxpaaaOjoXBA8rkK2
+ r8r1pfp0/szpXWvqKiXjt3t4MPV1T2w82B6u6dLDyR5B+1jhu3PEJp5glLmIcCA2jtyu
+ 9RNoMu3D73Tw1im9wuhPGSmXNf1/5ZLMI4yekxVC6TQx4VTNQEByZ2OjIAUci2P/OFxF
+ oX1swUgh/0s8jZMoZrdxMDkRk+7UbO6M5zgK096GY+itx49fUVAoQd1byRcon7r4k3tQ
+ bTEmZlQL5UsxpOR0KnH58n6vHHJpyzujgEnj/1Bk4yDnbs702oZVl3K6spPdUH1RJ6QI
+ 6JuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=IO1zrbMJCIdW27ZYcLkomHz9MZD/3xTBxiCCeGbY4nY=;
- b=P3i1nlM42NqOmDLRd/8XiWmlcesaBcdXdQD+CJQPCvkFdx6yN16kjOiz68UbwEG1E4
- Rn41oEEqACfUBq4vbAdBmn7v8T28+9A/GsmzZDqiin5L2ITxxHViaDTmfrQPUH8jroaY
- +uPE53JxbcLZamsqv5zx0yed/UGhNKdv7A2Bq8/N9RPTjAHolVDBZeuYSKu8Be2BsBg6
- zlflF0VvDKs8Rp8wWjyiTpPDB4pnWF4iiNtEqQnM+iXOnX9V7aL0JQzgQb0GqAJ+0nLg
- VTjRIQ9U8gMM4NVJB38UPwOiEGHL+9iKvc6lKF2X62sbV/dxWSkvx6DZO6whxz5ncumP
- 3WSA==
-X-Gm-Message-State: AOAM533y/2ir1I9j9yVMrjPc0o1GihXUcZ/GLSR8nRhGMVBt68HKEp4d
- IeN6/NVFkjb3I3R1dNGgjg==
-X-Google-Smtp-Source: ABdhPJzV3nnvTE6V/swPLdnnc8Rt2egbCzhY1OPkkrIIw8e54gAgN9Xe2bv5Gl3lRvSRncaFjcChng==
-X-Received: by 2002:a05:6870:248c:b0:d7:19f3:a52c with SMTP id
- s12-20020a056870248c00b000d719f3a52cmr8397016oaq.149.1646408380509; 
- Fri, 04 Mar 2022 07:39:40 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213]) by smtp.gmail.com with ESMTPSA id
- 35-20020a9d0026000000b005ad363440a2sm2376353ota.64.2022.03.04.07.39.39
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=lrMkWfnep54u5iNgaB4r+dAM8d1KFFgig+FJrYuk0pk=;
+ b=vUEdhCl49cNPYEarT9KtHpgq/qm4/ofAvsayw3Kt+xMGtBHYqdzSpAELDY4Bx8n3bk
+ vYzMcHX61OMoveA63z8TEiM1Tm77yeF8hlqD8tKfYoMxX8gTDuL+D/9vDYy49QCdVAlt
+ UkS6kmNVNSzegB/1aS8B2jp8JpGLRqrWX2Asi7Zt/grKOE/T+lV6GejU2kbmaQmZH45z
+ CgFOw7Spz50nh+GLS62cwdv2ePIalv2NUXvD/WB4jI4aEtKUVnKUjX5b+TCwWsgBQ6gL
+ QD8kUgU7jNFwK8UbFhFSi59uhlPYiJZf10X9OqqOwnuWtmSIAr/QbOiUWhiI1evXlbXK
+ GxZQ==
+X-Gm-Message-State: AOAM532ja2jBUjrrDbd27eX3DBayAkb6+LoTeNlOSuVhKeETpnowOSYj
+ RfHWmHmlFVHKfT6PRQW8ymXLBQ==
+X-Google-Smtp-Source: ABdhPJw+BrScSKY8cwPtWMHO+wpbI7pfRZr8TVd35OrIpG0qohLrXCNbxANPMJ2W58OrVGmXFPO0ig==
+X-Received: by 2002:adf:a34e:0:b0:1f0:1a15:c9b2 with SMTP id
+ d14-20020adfa34e000000b001f01a15c9b2mr13213798wrb.662.1646410525632; 
+ Fri, 04 Mar 2022 08:15:25 -0800 (PST)
+Received: from xps-9300.baylibre
+ (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+ by smtp.gmail.com with ESMTPSA id
+ g6-20020a5d5406000000b001f049726044sm4937307wrv.79.2022.03.04.08.15.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Mar 2022 07:39:39 -0800 (PST)
-Received: (nullmailer pid 3987557 invoked by uid 1000);
- Fri, 04 Mar 2022 15:39:38 -0000
-Date: Fri, 4 Mar 2022 09:39:38 -0600
-From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: jason-jh.lin@mediatek.com, daniel@ffwll.ch, chunkuang.hu@kernel.org,
- linux-mediatek@lists.infradead.org, p.zabel@pengutronix.de,
- krzysztof.kozlowski@canonical.com, robh+dt@kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- airlied@linux.ie, jitao.shi@mediatek.com, ck.hu@mediatek.com,
- alexandre.torgue@foss.st.com, mcoquelin.stm32@gmail.com,
- devicetree@vger.kernel.org, matthias.bgg@gmail.com
-Subject: Re: [PATCH 3/3] dt-bindings: display: mediatek: Fix examples on new
- bindings
-Message-ID: <YiIyupjEgdiaj0Dv@robh.at.kernel.org>
-References: <20220304095458.12409-1-angelogioacchino.delregno@collabora.com>
- <20220304095458.12409-4-angelogioacchino.delregno@collabora.com>
+ Fri, 04 Mar 2022 08:15:25 -0800 (PST)
+From: Alexandre Bailon <abailon@baylibre.com>
+To: ohad@wizery.com, bjorn.andersson@linaro.org, mathieu.poirier@linaro.org,
+ robh+dt@kernel.or
+Cc: matthias.bgg@gmail.com, linux-remoteproc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ stephane.leprovost@mediatek.com, khilman@baylibre.com,
+ Alexandre Bailon <abailon@baylibre.com>
+Subject: [PATCH v4 0/7] Add support of mt8183 APU
+Date: Fri,  4 Mar 2022 17:15:07 +0100
+Message-Id: <20220304161514.994128-1-abailon@baylibre.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220304095458.12409-4-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220304_153944_458079_A8B9ED81 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20220304_081528_387455_4D020302 
+X-CRM114-Status: GOOD (  18.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,38 +93,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 04 Mar 2022 10:54:58 +0100, AngeloGioacchino Del Regno wrote:
-> To avoid failure of dt_binding_check perform a slight refactoring
-> of the examples: the main block is kept, but that required fixing
-> the address and size cells, plus the inclusion of missing dt-bindings
-> headers, required to parse some of the values assigned to various
-> properties.
-> 
-> Fixes: 4ed545e7d100 ("dt-bindings: display: mediatek: disp: split each block to individual yaml")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../display/mediatek/mediatek,aal.yaml        | 24 +++--
->  .../display/mediatek/mediatek,ccorr.yaml      | 23 +++--
->  .../display/mediatek/mediatek,color.yaml      | 23 +++--
->  .../display/mediatek/mediatek,dither.yaml     | 23 +++--
->  .../display/mediatek/mediatek,dpi.yaml        |  3 +-
->  .../display/mediatek/mediatek,dsc.yaml        | 23 +++--
->  .../display/mediatek/mediatek,ethdr.yaml      | 99 ++++++++++---------
->  .../display/mediatek/mediatek,gamma.yaml      | 23 +++--
->  .../display/mediatek/mediatek,merge.yaml      | 49 +++++----
->  .../display/mediatek/mediatek,mutex.yaml      | 25 +++--
->  .../display/mediatek/mediatek,od.yaml         | 14 ++-
->  .../display/mediatek/mediatek,ovl-2l.yaml     | 26 +++--
->  .../display/mediatek/mediatek,ovl.yaml        | 26 +++--
->  .../display/mediatek/mediatek,postmask.yaml   | 23 +++--
->  .../display/mediatek/mediatek,rdma.yaml       | 28 ++++--
->  .../display/mediatek/mediatek,split.yaml      | 17 +++-
->  .../display/mediatek/mediatek,ufoe.yaml       | 19 ++--
->  .../display/mediatek/mediatek,wdma.yaml       | 26 +++--
->  18 files changed, 316 insertions(+), 178 deletions(-)
-> 
+Some Mediatek's SoC have an AI Processing Unit.
+This adds support of the one available in the mt8183
+(aswell some derivative SoC).
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+This v4 rework again the memory management.
+Now, vdev buffer and vring buffer are declared in device tree with a fixed
+physical address.
+Using a new property named "memory-region-da", the driver can map the vdev and
+vring buffers and make them available to the APU.
+The physical address must be fixed so the firmware can convert the physical
+address into APU device address.
+Using fixed address is not flexible but this is acceptable since the buffer
+addresses and size are not expected to be changed without a goog reason.
+
+Changes in v4:
+- Update the way to allocate and map the vdev and vring buffers
+- Simplfy the code
+- Add support of a second SoC (mt8365)
+- fix the dt bindings error detected by the bot
+- still use the threaded irq. calling rproc_vq_interrupt from irq causes
+  a scheduling while atomic isssue
+Changes in v3:
+- Remove IOMMU hack. Instead, manage the IOMMU directly from the driver
+- Update the device tree bindings: only use reserved memory for virtio.
+  All the other memory allocation will be done using DMA API.
+  This sould simplify the memory management.
+- Add more comments
+Changes in v2:
+- Drop the workarounds needed to load bad firmwares
+- There are many name for the APU (most common one is VPU).
+  Rename many functions and dts nodes to be more consistent.
+- Use the bulk clock API, and enable / disable clock at a better place
+- add few comments explaining how to start the APU
+- update the way to use pinctl for JTAG
+- fix some minors issues
+- fix device tree bindings
+
+
+Alexandre Bailon (5):
+  dt bindings: remoteproc: Add bindings for the MT8183 APU
+  dt-bindings: remoteproc: Add bindings for the MT8365 APU
+  remoteproc: Add a remoteproc driver for the MT8183's APU
+  remoteproc: mtk_apu: Add support of JTAG
+  ARM64: mt8183: Add support of APU to mt8183
+
+Julien STEPHAN (2):
+  remoteproc: mtk_apu: Use match_data
+  remoteproc: mtk-apu: Add support of MT8365
+
+ .../bindings/remoteproc/mtk,apu.yaml          | 155 ++++
+ .../boot/dts/mediatek/mt8183-pumpkin.dts      |  50 ++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  40 ++
+ drivers/remoteproc/Kconfig                    |  19 +
+ drivers/remoteproc/Makefile                   |   1 +
+ drivers/remoteproc/mtk_apu.c                  | 671 ++++++++++++++++++
+ 6 files changed, 936 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/remoteproc/mtk,apu.yaml
+ create mode 100644 drivers/remoteproc/mtk_apu.c
+
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
