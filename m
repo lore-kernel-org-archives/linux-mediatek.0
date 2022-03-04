@@ -4,56 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF537C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 15:34:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B563C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 15:42:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pY19A6t4Zr+SSx+6tWFl1ecxPdcJTupIy/bHopHZz3Y=; b=cnN4lSYFtX8QNZ
-	moucL0SlAauCLv1OMOH28yq9UzjGXDsM26wGT8jbVOH+UxBH2l0dV+KEhvGAtSQyUL099CffBIj3+
-	RfSH2Q+qpsnhzpyUfZqn+f0k5CF6cyW3CtSdr5CvfnSa1xzQ3KNnA3DruMjI1POimBGevmPuKIRqK
-	y8SDYpIHcTD0au4esYyyREKpY0uyNz8j01YDhV7yVneDpGqRzYShSepKSwlc/rPolRQ2e9ukYNUAL
-	1hE6Ye8VxP+t3jMDwpqTM8KeKMFFqPT07P6pEE/RQI3Nqip6IGNEqFfLp8fTdR06tDvcAZRJ6ZfR3
-	CYZmdvS+xv0FqPFbWA+Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ui6F3qwrqT8lb0KnLKSbmA8O5d2sThZYKWt1n7JkXyI=; b=VqH6Rjrofv7wmA
+	h10kb1McM5VdtKEtfKANsrbCdFZPizt84CQ+8hN2GbnaOuEN5S/L9eYjSft3rXUQyU2NvS2IgZWJR
+	HM72SnBxp8vvGkaUbSSK5dRirGYctRuUJWM4wQEQOooyzOyDdEgMlxDiK5q7MJZl7TGgiFR7ItwQY
+	T2uhDQotb5xIJPMhRtFd/eRpvy62+FUHlxnLnMrW4I0O0ihWWGxrmfRLGFUH27vDgi4cx+qnrN1Bz
+	Xd7+hDDPad+l4Kf8gWXUUvlb7h1v8P0EOLYrVUVsL9kGJ3gOK8R4I+T1mU3m6jFDoF3CPBqmNGLYP
+	+hK02LmqmQeo9ilr/Cig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQ9x9-00Akiz-Mq; Fri, 04 Mar 2022 15:34:47 +0000
-Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQ9x5-00Akge-Iv
- for linux-mediatek@lists.infradead.org; Fri, 04 Mar 2022 15:34:45 +0000
-Received: from smtpclient.apple (p5b3d2910.dip0.t-ipconnect.de [91.61.41.16])
- by mail.holtmann.org (Postfix) with ESMTPSA id 226F0CECCB;
- Fri,  4 Mar 2022 16:34:39 +0100 (CET)
-Mime-Version: 1.0 (Mac OS X Mail 15.0 \(3693.60.0.1.1\))
-Subject: Re: [PATCH 1/2] Bluetooth: btusb: Add a new PID/VID 13d3/3567 for
- MT7921
-From: Marcel Holtmann <marcel@holtmann.org>
-In-Reply-To: <dba1c05e4bfdf53e631ff134eaa9449e2ad5deef.1645573830.git.objelf@gmail.com>
-Date: Fri, 4 Mar 2022 16:34:38 +0100
-Cc: Johan Hedberg <johan.hedberg@gmail.com>,
- =?utf-8?B?Ik1hcmstWVcgQ2hlbiAo6Zmz5o+a5paHKSI=?= <Mark-YW.Chen@mediatek.com>, 
- Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
- Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com,
- robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, ch.yeh@mediatek.com,
- posh.sun@mediatek.com, ted.huang@mediatek.com, Eric.Liang@mediatek.com,
- Stella.Chang@mediatek.com, Tom.Chou@mediatek.com, steve.lee@mediatek.com,
- jsiuda@google.com, frankgor@google.com, jemele@google.com,
- abhishekpandit@google.com, michaelfsun@google.com, mcchou@chromium.org,
- shawnku@google.com, linux-bluetooth@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Yake Yang <yake.yang@mediatek.com>
-Message-Id: <21FFBCA3-0B34-4F37-AB67-E07D935832AD@holtmann.org>
-References: <dba1c05e4bfdf53e631ff134eaa9449e2ad5deef.1645573830.git.objelf@gmail.com>
-To: Sean Wang <sean.wang@mediatek.com>
-X-Mailer: Apple Mail (2.3693.60.0.1.1)
+	id 1nQA42-00AoVp-JN; Fri, 04 Mar 2022 15:41:54 +0000
+Received: from mail-oi1-f180.google.com ([209.85.167.180])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nQ9zf-00AlVy-41; Fri, 04 Mar 2022 15:37:25 +0000
+Received: by mail-oi1-f180.google.com with SMTP id z8so4815384oix.3;
+ Fri, 04 Mar 2022 07:37:22 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=PACe0xmx6r81EAuaFyvZQyZNTfONIujSTfg4d0qd68c=;
+ b=qp1QXfSWp0hF3GZzvW32grp/8RYb5nqRnWCrDbjvMlS1AIZhZqJYxJNB6XqbR9dA/z
+ l+qk5goZbG2jyoAxHUyA3YfWoGM5FXkI0E5m/EGIzJEA1gamJbSYoHkV1ROismvA8JOk
+ NBjVUcvP2g7FRIpy/wE1/HT/LTT7kC0iud08PQL+DE9W4YW5gmDl10gFLNMAqmpaccHX
+ bciz/IGvcIHjJ5Y9MQebflronD3ZGpz8nZObhkx/T+wh43qAxuw0yRHonwF2hDUAKW+1
+ u4CZz6kvXN0vjbDr2i3BabmEdVXn2jiBR88oSJwoq1R5yswwe48F1spWVZ3S241etaQ8
+ Pneg==
+X-Gm-Message-State: AOAM5307ZEGSNE64db8edGKGMiXlLG/MmT8DORq5VOK0C1R3qNp2ar6s
+ 9IOwjTpRMm707iWx/RZWgA==
+X-Google-Smtp-Source: ABdhPJyof2S988VwMuNZcB9U5XecU80emaNMSFoZxgT+mxIr6cGyJM+vro5tIuRKk2C7lcM5e49grw==
+X-Received: by 2002:a05:6808:1301:b0:2d5:4226:87e4 with SMTP id
+ y1-20020a056808130100b002d5422687e4mr9716207oiv.136.1646408241690; 
+ Fri, 04 Mar 2022 07:37:21 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213]) by smtp.gmail.com with ESMTPSA id
+ m26-20020a05680806da00b002d797266870sm2690848oih.9.2022.03.04.07.37.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 04 Mar 2022 07:37:21 -0800 (PST)
+Received: (nullmailer pid 3983773 invoked by uid 1000);
+ Fri, 04 Mar 2022 15:37:19 -0000
+Date: Fri, 4 Mar 2022 09:37:19 -0600
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ chunkuang.hu@kernel.org, jitao.shi@mediatek.com, matthias.bgg@gmail.com,
+ mcoquelin.stm32@gmail.com, linux-mediatek@lists.infradead.org,
+ krzysztof.kozlowski@canonical.com, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, alexandre.torgue@foss.st.com, ck.hu@mediatek.com,
+ linux-stm32@st-md-mailman.stormreply.com, airlied@linux.ie, daniel@ffwll.ch,
+ p.zabel@pengutronix.de, devicetree@vger.kernel.org, jason-jh.lin@mediatek.com
+Subject: Re: [PATCH 1/3] dt-bindings: display: mediatek,mutex: Fix
+ mediatek,gce-events type
+Message-ID: <YiIyL+Vd1zWiDKbm@robh.at.kernel.org>
+References: <20220304095458.12409-1-angelogioacchino.delregno@collabora.com>
+ <20220304095458.12409-2-angelogioacchino.delregno@collabora.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220304095458.12409-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220304_073443_821041_879D03AA 
-X-CRM114-Status: UNSURE (   9.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220304_073723_214701_70A28160 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,66 +87,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sean,
-
-> Add VID 13D3 & PID 3567 for MediaTek MT7921 USB Bluetooth chip.
+On Fri, 04 Mar 2022 10:54:56 +0100, AngeloGioacchino Del Regno wrote:
+> The mediatek,gce-events property needs as value an array of uint32
+> corresponding to the CMDQ events to listen to, and not any phandle.
 > 
-> The information in /sys/kernel/debug/usb/devices about the Bluetooth
-> device is listed as the below.
-> 
-> T:  Bus=05 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
-> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-> P:  Vendor=13d3 ProdID=3567 Rev= 1.00
-> S:  Manufacturer=MediaTek Inc.
-> S:  Product=Wireless_Device
-> S:  SerialNumber=000000000
-> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-> A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-> I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-> 
-> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Yake Yang <yake.yang@mediatek.com>
+> Fixes: 4ed545e7d100 ("dt-bindings: display: mediatek: disp: split each block to individual yaml")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
-> drivers/bluetooth/btusb.c | 3 +++
-> 1 file changed, 3 insertions(+)
+>  .../devicetree/bindings/display/mediatek/mediatek,mutex.yaml    | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
 
-patch has been applied to bluetooth-next tree.
-
-Regards
-
-Marcel
-
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
