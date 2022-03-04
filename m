@@ -4,82 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45CD2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 16:31:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6996C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 18:12:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cBMQjrB1FMQX0+AT1AiXjXiZwT7I2v1OYzAeN3g115M=; b=scqwyC5+Mvds6z
-	rsenTNz7MjIX5PdQpmkzYVzSyCrtPqBZyAEgKocgXL7uXI5d1AGMNWNzVdpLC7Ed4G4k4z8JiB0l+
-	Azr8bTyeoTUMld/29laY4/pvva7cMijuTASvLIEFJo5/WkdtGFnyYME4BqzPk/O1IkBlAY35gVebS
-	bjhCg7yyYhB6E0hnG1jGpces95UFjCXQC6ITKPVj9ZwNsXQ1eCy34Kse7ZOuMQAeLEFQiLjlGqbFg
-	R+dAtPsU60vHcRCu5YQJL49EpfdIG7PT61Ubgqu15IEMe5ut6HDmh/JmC0p+FqRsaJ8HcUMNsDK0K
-	YXbonzRNVmdXOZ7TRgqg==;
+	List-Owner; bh=Z01vGcuw2xoUkLuO+RUIoBrbPKoeri7SOWFHPffxs7I=; b=3+hozfmKaxY7cK
+	zVQRV4X4OuzxquMYO9hstFRTYXyYzAw5+gMWx85NVpBVV/a26rimLSSN5h6Vio/bS0cnSIn2O4EDq
+	2avhH+OZD7Kr/JUx7xH3xcABxA0KU6wkT9oO0OiTdyvDdyAZH2QqFbkrZ4nLb7dZDcNb33atjx4tT
+	QYnN3ORFXWz+Ifw8dQ06mt876Z/+DeIVPkx6WoMvQAaD9WWf0NzLDClkJvMFBugfqaGvtWnRhlqbQ
+	FJ5Q3FB8X9AMsAr1e5wnqqqCXLZSC6C4vDca4r7E0qCnADXCkO6I9nxdEabMkgqxic21jd1ixEqfq
+	y/Ofvp4vKSBufKL8NXLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQAqC-00B3rk-I6; Fri, 04 Mar 2022 16:31:40 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1nQCPa-00BYLI-B7; Fri, 04 Mar 2022 18:12:18 +0000
+Received: from mga01.intel.com ([192.55.52.88])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQAac-00Axrk-Tu
- for linux-mediatek@lists.infradead.org; Fri, 04 Mar 2022 16:15:39 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id u1so13388007wrg.11
- for <linux-mediatek@lists.infradead.org>; Fri, 04 Mar 2022 08:15:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=xJskNak95cvJcdUCyQawVbbPcPNz7aQv6i/qtIFC/D0=;
- b=1py/SiRHzXJFbv03+N9Hala6db1fZOCrZVfBakEeZ1XEqEzCNZ68ScYMDGX6fAyeUO
- hYeZgwCDOPK/5etYhM6FF8r9BmtRRtkdHxuM6ptY/4J01I0SZKaL44Od/4tjZVDGnMFj
- REa9Xex5sJEPK0jvhX7ZjrY0JsNUccCEe6WyqWZTYC4U8q+ZiWsj7fVnoA+9zkoj3gjl
- SEMRy8iuTI7qojEl+wDMmPnofqFSIxB2Q7JMb0bwuUUCK+MZfBo5s9I1XyZ5sUVm1++L
- XBxUYl0Pkvq9A2mdS3WgiOtdryfXlaz1zQdLnumxQLuwBiYtfBB8mrsBzW07IQ3I+Cpc
- np3w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=xJskNak95cvJcdUCyQawVbbPcPNz7aQv6i/qtIFC/D0=;
- b=pXp05Es/0wDwgpxxddmYdxQ7ZLLa2mQG51jvBcY6aREwbOEs5/hfUSdNVxoPOTrwvj
- OrJpkJGtRHWIkfaAScbJPXxS5K5v2QfSCs+6UHVTcEunAFBO2CM5jAMoqP7vuJN7LkOb
- Qz/wsKDmdlbktF+n6bsvCupASAlJ4AAhQNGcLZIf8SfMfVmAzFw8Opt0MCUjb6o2cLlu
- Yr7bligJOzbQya8aZiFCmuOobEdNt8GY5VlAFKeTgfMqW1WcPEuuA7jn1txLFKEGqdP4
- Xexrk/qMgmpy/relnYF+D6KwByuO10gsJNViA9YYNSVbxAkUvD4ywvwkqd9HWEPDp3HM
- vlbA==
-X-Gm-Message-State: AOAM532j74XOSOpGxT2Q4Rn2/o+tydhG6Ym0aN439Wm6t7iBRI4vRrMP
- vWmBuWOnms16STKy73KYB5hxHQ==
-X-Google-Smtp-Source: ABdhPJwbTnyZIIz3MhW8i2qeaIJqAT8wW1Pa+ypKCSwBrOZfy77WETAvGz5t2zqL46vAdLT4K0tDtw==
-X-Received: by 2002:adf:f389:0:b0:1ef:5f0f:cb83 with SMTP id
- m9-20020adff389000000b001ef5f0fcb83mr26228592wro.26.1646410533312; 
- Fri, 04 Mar 2022 08:15:33 -0800 (PST)
-Received: from xps-9300.baylibre
- (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
- by smtp.gmail.com with ESMTPSA id
- g6-20020a5d5406000000b001f049726044sm4937307wrv.79.2022.03.04.08.15.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Mar 2022 08:15:32 -0800 (PST)
-From: Alexandre Bailon <abailon@baylibre.com>
-To: ohad@wizery.com, bjorn.andersson@linaro.org, mathieu.poirier@linaro.org,
- robh+dt@kernel.or
-Cc: matthias.bgg@gmail.com, linux-remoteproc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- stephane.leprovost@mediatek.com, khilman@baylibre.com,
- Alexandre Bailon <abailon@baylibre.com>
-Subject: [PATCH v4 7/7] ARM64: mt8183: Add support of APU to mt8183
-Date: Fri,  4 Mar 2022 17:15:14 +0100
-Message-Id: <20220304161514.994128-8-abailon@baylibre.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220304161514.994128-1-abailon@baylibre.com>
-References: <20220304161514.994128-1-abailon@baylibre.com>
+ id 1nQCPO-00BYG2-Lg; Fri, 04 Mar 2022 18:12:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1646417526; x=1677953526;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=Ymhrhqjpe7iYgeVft/Kn+RQXzNz7BxHaO/WuLNq0Oig=;
+ b=XI6dRXxvJWD61QIQqdWPkaz2znPY39fVVaHMfGPt8LCwuJ2FflvNVNbr
+ xRR85qGbipTirQch1jgo+1QCmkjt4mei/dzGtIP6VXFQVD4pjfbRaORTb
+ OjvRkfMieV4JvQ0srxRMHWa0Z4ZOY4nWcsRqD6vkuQcsuQIDdk8mzNMl0
+ K8JrrjVg+8frQUnhy1iH2JpknKDOtBWTdtO15KV5yQMpIA/7FYTKc5cz+
+ pmz9y9A7bpTwb0EsQl+GenEt3duCj/n2ZmLYyn3ky8rGRo/YykcBd4oqO
+ vc2DsLFqrA3ba/BcKiKB378Sxb/OmgBVI6B8YQGRhBUWbJRB1CGO3kwB5 g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10276"; a="278722644"
+X-IronPort-AV: E=Sophos;i="5.90,155,1643702400"; d="scan'208";a="278722644"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Mar 2022 10:11:59 -0800
+X-IronPort-AV: E=Sophos;i="5.90,155,1643702400"; d="scan'208";a="511936238"
+Received: from smile.fi.intel.com ([10.237.72.59])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Mar 2022 10:11:57 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.95)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1nQCOU-00BKGo-SR; Fri, 04 Mar 2022 20:11:10 +0200
+Date: Fri, 4 Mar 2022 20:11:10 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Zhiyong Tao <zhiyong.tao@mediatek.com>, linux-serial@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 1/1] serial: 8520_mtk: Prepare for
+ platform_get_irq_optional() changes
+Message-ID: <YiJWPhWGEGg63zbe@smile.fi.intel.com>
+References: <20211217181547.48182-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20211217181547.48182-1-andriy.shevchenko@linux.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220304_081535_123928_101BEEFA 
-X-CRM114-Status: UNSURE (   8.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220304_101206_749795_9E243252 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,138 +83,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This adds the support of APU to mt8183.
+On Fri, Dec 17, 2021 at 08:15:47PM +0200, Andy Shevchenko wrote:
+> The platform_get_irq_optional() is going to be changed in a way
+> that the result of it:
+>    = 0 means no IRQ is provided
+>    < 0 means the error which needs to be propagated to the upper layers
+>    > 0 valid vIRQ is allocated
+> 
+> In this case, drop check for 0. Note, the 0 is not valid vIRQ and
+> platform_get_irq_optional() issues a big WARN() in such case,
+> 
+> It's safe to assume that 0 is not valid IRQ in this case since
+> the driver is only instantiated via Device Tree and corresponding
+> OF APIs should never ever return 0 for valid IRQ. Otherwise it is
+> a regression there.
 
-Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
----
- .../boot/dts/mediatek/mt8183-pumpkin.dts      | 50 +++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 40 +++++++++++++++
- 2 files changed, 90 insertions(+)
+Can it be applied now?
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-index ee912825cfc6..155c89c998d3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-@@ -37,6 +37,42 @@ scp_mem_reserved: scp_mem_region@50000000 {
- 			reg = <0 0x50000000 0 0x2900000>;
- 			no-map;
- 		};
-+
-+		vdev0buffer: vdev0buffer@52900000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x52900000 0 0x4000>;
-+			no-map;
-+		};
-+
-+		vdev0vring0: vdev0vring0@52904000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x52904000 0 0x2000>;
-+			no-map;
-+		};
-+
-+		vdev0vring1: vdev0vring1@52906000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x52906000 0 0x2000>;
-+			no-map;
-+		};
-+
-+		vdev1buffer: vdev1buffer@52908000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x52908000 0 0x4000>;
-+			no-map;
-+		};
-+
-+		vdev1vring0: vdev1vring0@5290C000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x5290C000 0 0x2000>;
-+			no-map;
-+		};
-+
-+		vdev1vring1: vdev1vring1@5290E000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x5290E000 0 0x2000>;
-+			no-map;
-+		};
- 	};
- 
- 	leds {
-@@ -381,3 +417,17 @@ &scp {
- &dsi0 {
- 	status = "disabled";
- };
-+
-+&apu0 {
-+	memory-region = <&vdev0buffer>, <&vdev0vring0>, <&vdev0vring1>;
-+	memory-region-names = "vdev0buffer", "vdev0vring0", "vdev0vring1";
-+	memory-region-da = <0x6fff8000>, <0x6fffc000>, <0x6fffe000>;
-+	status = "okay";
-+};
-+
-+&apu1 {
-+	memory-region = <&vdev1buffer>, <&vdev1vring0>, <&vdev1vring1>;
-+	memory-region-names = "vdev1buffer", "vdev1vring0", "vdev1vring1";
-+	memory-region-da = <0x6fff0000>, <0x6fff4000>, <0x6fff6000>;
-+	status = "okay";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index ba4584faca5a..cb02f57e000d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1542,12 +1542,52 @@ ipu_adl: syscon@19010000 {
- 			#clock-cells = <1>;
- 		};
- 
-+		apu0: apu@0x19100000 {
-+			compatible = "mediatek,mt8183-apu";
-+			reg = <0 0x19180000 0 0x14000>;
-+			interrupts = <GIC_SPI 292 IRQ_TYPE_LEVEL_LOW>;
-+
-+			iommus = <&iommu M4U_PORT_IMG_IPUO>,
-+				 <&iommu M4U_PORT_IMG_IPU3O>,
-+				 <&iommu M4U_PORT_IMG_IPUI>;
-+
-+			clocks = <&ipu_core0 CLK_IPU_CORE0_AXI>,
-+				 <&ipu_core0 CLK_IPU_CORE0_IPU>,
-+				 <&ipu_core0 CLK_IPU_CORE0_JTAG>;
-+
-+			clock-names = "axi", "ipu", "jtag";
-+
-+			power-domains = <&spm MT8183_POWER_DOMAIN_VPU_CORE0>;
-+
-+			status = "disabled";
-+		};
-+
- 		ipu_core0: syscon@19180000 {
- 			compatible = "mediatek,mt8183-ipu_core0", "syscon";
- 			reg = <0 0x19180000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
- 
-+		apu1: apu@19200000 {
-+			compatible = "mediatek,mt8183-apu";
-+			reg = <0 0x19280000 0 0x14000>;
-+			interrupts = <GIC_SPI 293 IRQ_TYPE_LEVEL_LOW>;
-+
-+			iommus = <&iommu M4U_PORT_CAM_IPUO>,
-+				 <&iommu M4U_PORT_CAM_IPU2O>,
-+				 <&iommu M4U_PORT_CAM_IPU3O>;
-+
-+			clocks = <&ipu_core0 CLK_IPU_CORE1_AXI>,
-+				 <&ipu_core0 CLK_IPU_CORE1_IPU>,
-+				 <&ipu_core0 CLK_IPU_CORE1_JTAG>;
-+
-+			clock-names = "axi", "ipu", "jtag";
-+
-+			power-domains = <&spm MT8183_POWER_DOMAIN_VPU_CORE1>;
-+
-+			status = "disabled";
-+		};
-+
- 		ipu_core1: syscon@19280000 {
- 			compatible = "mediatek,mt8183-ipu_core1", "syscon";
- 			reg = <0 0x19280000 0 0x1000>;
 -- 
-2.34.1
+With Best Regards,
+Andy Shevchenko
+
 
 
 _______________________________________________
