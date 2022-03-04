@@ -4,59 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2061BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 12:05:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17BDAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 12:39:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cK77XJat1+E9oLOLQw93xjL2orXh6lc4BDFk9mLPao4=; b=Q6OWuFWwX5AoSZ
-	Lv0Lh1MB1Zqjh8ZthpNT45UDfk4GN1O+zr5Pq3Og0t/b86UrFxfCuxrR/oIA10ngWz6m7HvkogxcJ
-	JPwE63qMP0ab8x+h99qeCAePkIlHltbcQIwDRSxJrX8Ie8gXX/WGaSdDVIzhQV60EQO8Xy+K2zTmR
-	DLtgM4G8YIy87xylbyqxCm3RsFgVpH61OnKCodHNzZCofXa+R8GntkutzkoBDqdOqP4cKeN3r/C+z
-	Dhf2iuBQhOZ8RQcXufnFSyilV5p+K+6bvYEdHfrZV395Oj/7yY4LztHet/t6B9ht0u7ys7KeSvLB7
-	24yhBptseh8gj0MJlXRw==;
+	List-Owner; bh=DuqUEu95MUZftUn9+6OUkui+wnc+/pi0cgdDbm5K86w=; b=ARt5grYAd+Rze7
+	FC+n8rozG6up6N2Vx6WpRtCXhMUmmeTFlM27U5YEVrmVCcjnTjTsw4UhJYMQW26PE8t+6GR6rMfh4
+	TrTpwqRUIpmj2K0iS10bV917mCYXZD9d/+60lX5EG6ZzIf/W8MLoY+wxvzNnrGo1La5wocpv7mtOY
+	Ptx1w22DsRSrBEufEbhCmNUjLofieKT25PVm9kZ7kZUw2s9cjYUIXGrC1+ipieH0iNbHsic6HdtQM
+	loDL7ds+UWxYBdew+66ld9LTSSY2ZMDEbrhi4F4pbt64CGEi+C3QnCAKPZbNKmlPZTrYy+Dl0U6Sx
+	eVQkAvpt1A/Relv5Jhxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQ6gc-009tHP-1k; Fri, 04 Mar 2022 12:05:30 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nQ7DK-009zjD-FD; Fri, 04 Mar 2022 12:39:18 +0000
+Received: from mga03.intel.com ([134.134.136.65])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQ6gJ-009t8y-R3; Fri, 04 Mar 2022 12:05:15 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 0B0381F4666B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1646395510;
- bh=VHYyfrj27ghhFNATqiJptaXl35MZfcmk6S/le8aQ8V0=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=lBWseeaKZhZUehk0Y28SYbDmAJ1Q/Hne5Swp5jgROU/3jmS5A7rr2qkQRqKMYQJY4
- mmWtA4wfg4dg2WR74NHRBkotetmfIKFd/19UPI1EziPT8FxeP1EryMr7JFB/XA2ZRx
- mSyoWgf1pGFRscJiMo5b2qdPe0ZiwGxdK50aBKTCf7tb8YD3mtWWJ41mOr8uNHbriY
- 8OZQUnPQkqpf71Vcnoih32oZyX69Rf73umh86Yn/rFQSaGuCV4/S9OvMT1oP9vl3Uz
- x9yUuOZLt3UOFRI20SlICBP9nhbraU/Da4iFv0zG99PVBysrkjQSg3wMUCiL0Aeo4v
- rxwFr5/NQ7sOQ==
-Message-ID: <4e45bd1d-c81c-97be-f505-cd03ffcdd442@collabora.com>
-Date: Fri, 4 Mar 2022 13:05:07 +0100
+ id 1nQ7D8-009zgT-9l; Fri, 04 Mar 2022 12:39:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1646397546; x=1677933546;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=QJ5044QybdgyBcGGWpEQ66a2p8/cp1NF4P4f5axlo9k=;
+ b=IOnez+9SwNKMA32FiVMVXQtue4uZlEn8hhrkvDpRi7W2Ff/a9zPi8LlU
+ Y+F3zJkJv1UjxRMIsuGWq6gB2HT4jGF0yZlSrkHdcnUofAoETTz/YGp91
+ YfK4sC6btc85ige2VdHXWsOraKOKXs6FkB/40XbhMGyegtL21mh2VH7q0
+ ntkkikTUkngZ1aTPY2O8BLZDbw6/t1gwmDLZ1v2OoO8s/DWE68OlZu9i/
+ CM2va5A3r867zha3XpYzpadoI1vO9PhVT9SSdKvjYnChUX+2JeW4n0dTq
+ bu08gpbKO82ynTiFW4rhA5x6jlix7EK14lzALGhm3zlP7a8sXdyb5W1IQ Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10275"; a="253898954"
+X-IronPort-AV: E=Sophos;i="5.90,155,1643702400"; d="scan'208";a="253898954"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Mar 2022 04:39:04 -0800
+X-IronPort-AV: E=Sophos;i="5.90,155,1643702400"; d="scan'208";a="576869293"
+Received: from smile.fi.intel.com ([10.237.72.59])
+ by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Mar 2022 04:39:01 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.95)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1nQ7CI-00BDcA-IQ; Fri, 04 Mar 2022 14:38:14 +0200
+Date: Fri, 4 Mar 2022 14:38:14 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Marco Felsch <m.felsch@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Fengping Yu <fengping.yu@mediatek.com>,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>,
+ Kevin Hilman <khilman@baylibre.com>, linux-input@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v21 2/3] Input: mt6779-keypad - Add MediaTek keypad driver
+Message-ID: <YiIINpi4zbJq/AZE@smile.fi.intel.com>
+References: <20220303154302.252041-1-mkorpershoek@baylibre.com>
+ <20220303154302.252041-3-mkorpershoek@baylibre.com>
+ <300114e2-6794-db3c-a51c-3f900b6476f9@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v2,3/3] drm/mediatek: Add mt8186 dsi compatible to
- mtk_dsi.c
-Content-Language: en-US
-To: xinlei.lee@mediatek.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
- airlied@linux.ie, daniel@ffwll.ch, matthias.bgg@gmail.com
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, jitao.shi@mediatek.com,
- allen-kh.cheng@mediatek.com, rex-bc.chen@mediatek.com
-References: <1645178869-18048-1-git-send-email-xinlei.lee@mediatek.com>
- <1645178869-18048-4-git-send-email-xinlei.lee@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <1645178869-18048-4-git-send-email-xinlei.lee@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <300114e2-6794-db3c-a51c-3f900b6476f9@collabora.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220304_040512_059400_878B3A9C 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20220304_043906_436065_6272F2A9 
+X-CRM114-Status: GOOD (  20.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,52 +84,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/02/22 11:07, xinlei.lee@mediatek.com ha scritto:
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
-> 
-> Add the compatible because use different cmdq addresses in mt8186.
-> 
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+On Fri, Mar 04, 2022 at 11:31:38AM +0100, AngeloGioacchino Del Regno wrote:
+> Il 03/03/22 16:43, Mattijs Korpershoek ha scritto:
+> > From: "fengping.yu" <fengping.yu@mediatek.com>
+> > 
+> > This patch adds matrix keypad support for Mediatek SoCs.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > +struct mt6779_keypad {
+> > +	struct regmap *regmap;
+> > +	struct input_dev *input_dev;
+> > +	struct clk *clk;
 
-> ---
->   drivers/gpu/drm/mediatek/mtk_dsi.c | 8 ++++++++
->   1 file changed, 8 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index bced4c7d668e..8c61c4f412bc 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -1140,6 +1140,12 @@ static const struct mtk_dsi_driver_data mt8183_dsi_driver_data = {
->   	.has_size_ctl = true,
->   };
->   
-> +static const struct mtk_dsi_driver_data mt8186_dsi_driver_data = {
-> +	.reg_cmdq_off = 0xd00,
-> +	.has_shadow_ctl = true,
-> +	.has_size_ctl = true,
-> +};
-> +
->   static const struct of_device_id mtk_dsi_of_match[] = {
->   	{ .compatible = "mediatek,mt2701-dsi",
->   	  .data = &mt2701_dsi_driver_data },
-> @@ -1147,6 +1153,8 @@ static const struct of_device_id mtk_dsi_of_match[] = {
->   	  .data = &mt8173_dsi_driver_data },
->   	{ .compatible = "mediatek,mt8183-dsi",
->   	  .data = &mt8183_dsi_driver_data },
-> +	{ .compatible = "mediatek,mt8186-dsi",
-> +	  .data = &mt8186_dsi_driver_data },
->   	{ },
->   };
->   MODULE_DEVICE_TABLE(of, mtk_dsi_of_match);
-> 
+> > +	void __iomem *base;
 
+Not sure why you need this here.
+
+> > +	u32 n_rows;
+> > +	u32 n_cols;
+> > +	DECLARE_BITMAP(keymap_state, MTK_KPD_NUM_BITS);
+> > +};
+> > +
+> > +static const struct regmap_config mt6779_keypad_regmap_cfg = {
+> > +	.reg_bits = 32,
+> > +	.val_bits = 32,
+> > +	.reg_stride = sizeof(u32),
+> > +	.max_register = 36,
+> 
+> Are you sure that you can't use .fast_io = true?
+> 
+> Another version for the same question:
+> Are you sure that you need to lock with a mutex here, and not with a spinlock?
+> 
+> Since you're performing reads over a MMIO, I think that there's a very good
+> chance that you can use fast_io.
+> 
+> > +};
+
+...
+
+> Please use dev_err_probe() to simplify error handling in probe functions: you've
+> done a great job with adding a devm action for the error cases, avoiding gotos to
+> get out cleanly.. it would be a pity to not finish this to perfection.
+> 
+> I'll give you two examples for this, so that you'll be all set.
+> 
+> 	if (IS_ERR(keypad->regmap))
+> 		return dev_err_probe(&pdev->dev, PTR_ERR(keypad->regmap),
+> 				     "regmap init failed\n");
+> 
+> P.S.: No need for %pe here, as dev_err_probe prints the error number for you!
+
+Maintainer of the input subsystem is strongly against dev_err_probe() API. See
+other files there. Ditto for other cases you mentioned below.
+
+-- 
+With Best Regards,
+Andy Shevchenko
 
 
 
