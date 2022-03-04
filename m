@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D049C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 16:20:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7DEEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 16:23:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=AmpFBHYoV7pVXWZSlx9e2w0IrG+UEiLVdI7itZslrWU=; b=U2r9uFK4Y4oW4T
-	TXUPTdyWztUeiHks9lWB20eQmLrVj8lF4HSkJH2Ncg05Ntu3Hqf98IetnVIpvyMxHROGxoEmwifTg
-	oj+8YAhZKL8AYxcYfWakahKpIRtwob7TctMS4CTq5paYw+dqz9d3acOCB0dLZ6zKyMif4CXe4x7J8
-	HsQShiuWvMOESF26qxcFwJYbpM4vj/1+4Po61QPcHwleiJCla2SXcPWDc2al6TObf+lh81ndXRic/
-	1LdcJVh0WbQg5vdLbJPcM6+IAbxQ55+l7Si969ZCjNk4njPtdnE89vkAberLptKH9gIBBortKOrG6
-	R20ong7XzDl5bPkUQpgw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ms7l+f1aBYtKZlreosYjk8AhbttkmPQETu8VR7sMC44=; b=GGh/l2a2HheE+m
+	BiU6aGlIFm/5CCE56uiqY1nfaFvHgoPfM/El4c/FrnABIU9moEdijClNVhubq3oIfEQ9hvS9aihuH
+	yfu3ZH+mu0uATv6wr8a7IyFiN/tUtFojqHNDcUL4CQ0I+QcHgkjY0ir8+0CVlNIDlBIwaBRWrE1OM
+	3hUmP8G1z1DTuyRhHjCX8ash6N/FQZKqZ6eP3EkKScaYXxoUZ7++xo/BKETNnMl0guS7AGEXfdgOC
+	tumRpD3Z/Tp+fIvqQKHrREyNRDFvTovxcmaJJ4r6ULqrbUVepb4T/hlAdwDhaC3XVMNKgWobusaS8
+	yfSpl7uqm6r3yuNz1/VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQAfB-00Azp8-Uo; Fri, 04 Mar 2022 16:20:18 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1nQAid-00B15v-GA; Fri, 04 Mar 2022 16:23:51 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQAaW-00AxmI-AY
- for linux-mediatek@lists.infradead.org; Fri, 04 Mar 2022 16:15:30 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id j26so3055794wrb.1
+ id 1nQAaW-00AxmH-VB
+ for linux-mediatek@lists.infradead.org; Fri, 04 Mar 2022 16:15:32 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id j17so13493291wrc.0
  for <linux-mediatek@lists.infradead.org>; Fri, 04 Mar 2022 08:15:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=lrMkWfnep54u5iNgaB4r+dAM8d1KFFgig+FJrYuk0pk=;
- b=BkiMi6QmBvXGp9TotIl0ob62+e/h6JsMQPZM3+y5rzZZJCBsHJxpaaaOjoXBA8rkK2
- r8r1pfp0/szpXWvqKiXjt3t4MPV1T2w82B6u6dLDyR5B+1jhu3PEJp5glLmIcCA2jtyu
- 9RNoMu3D73Tw1im9wuhPGSmXNf1/5ZLMI4yekxVC6TQx4VTNQEByZ2OjIAUci2P/OFxF
- oX1swUgh/0s8jZMoZrdxMDkRk+7UbO6M5zgK096GY+itx49fUVAoQd1byRcon7r4k3tQ
- bTEmZlQL5UsxpOR0KnH58n6vHHJpyzujgEnj/1Bk4yDnbs702oZVl3K6spPdUH1RJ6QI
- 6JuA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=8Nqj3Wj2afL4vH+AWQbMmnZZbmdqpSeJYR5BS2/Kv0Y=;
+ b=OOS1o/jw7tYZCPMkqoGNeane3XqwRqfkrZVcw7gh/2d4grjXT+DEjE7qawH3IEvUOS
+ KjJIsANa0cft/ebHmTMCPxTg0ND7PA5GXVbZpkAe9fWpLNJfkhz6iIBNBFMXYmLaNMfo
+ fonMddZ/xVAAAyHlU1wySfS63mLMTTTK6gZ3mCbX4nmmBeaccJd6X2bsfzS2nYoP1EbR
+ GrTAnaJ3qvyV9Y4woTsVIZsMYMF/znKif6xNvdbWnqb6M8tvluHkNcrdL1SUlDv1ODmP
+ bRXLomEr0uYQBtlHOnZnz4TdVhWoqzw0Q8fn9jyOvof+Sk/VHY0zASNZJSABovJTPT19
+ F2tQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=lrMkWfnep54u5iNgaB4r+dAM8d1KFFgig+FJrYuk0pk=;
- b=vUEdhCl49cNPYEarT9KtHpgq/qm4/ofAvsayw3Kt+xMGtBHYqdzSpAELDY4Bx8n3bk
- vYzMcHX61OMoveA63z8TEiM1Tm77yeF8hlqD8tKfYoMxX8gTDuL+D/9vDYy49QCdVAlt
- UkS6kmNVNSzegB/1aS8B2jp8JpGLRqrWX2Asi7Zt/grKOE/T+lV6GejU2kbmaQmZH45z
- CgFOw7Spz50nh+GLS62cwdv2ePIalv2NUXvD/WB4jI4aEtKUVnKUjX5b+TCwWsgBQ6gL
- QD8kUgU7jNFwK8UbFhFSi59uhlPYiJZf10X9OqqOwnuWtmSIAr/QbOiUWhiI1evXlbXK
- GxZQ==
-X-Gm-Message-State: AOAM532ja2jBUjrrDbd27eX3DBayAkb6+LoTeNlOSuVhKeETpnowOSYj
- RfHWmHmlFVHKfT6PRQW8ymXLBQ==
-X-Google-Smtp-Source: ABdhPJw+BrScSKY8cwPtWMHO+wpbI7pfRZr8TVd35OrIpG0qohLrXCNbxANPMJ2W58OrVGmXFPO0ig==
-X-Received: by 2002:adf:a34e:0:b0:1f0:1a15:c9b2 with SMTP id
- d14-20020adfa34e000000b001f01a15c9b2mr13213798wrb.662.1646410525632; 
- Fri, 04 Mar 2022 08:15:25 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=8Nqj3Wj2afL4vH+AWQbMmnZZbmdqpSeJYR5BS2/Kv0Y=;
+ b=Nsz2KkNpzcP1A3X+ix1BfYOPaRQslebLHQX5Eh7NdU4r9wt7onfMwkRjfTTenLiaiI
+ 5eTvRywweKHWDmEqG872to+XuOUNorUlvcmraf7OhZA9pfoHm0np9Gu3umCoDA76PWEh
+ 9VUdps+xwypjL6YzAJAbyRWL2rux4LgfXWDvIC7H498CstF9aDGrnk++6H04s50Hd4rZ
+ 7IXhNREb4ePRly/0+qwK6THEovkUHTxXoq8o53uNsvnEFCjj1L3XJaUAK416BfnsVsQa
+ OW9Wa6D5NSvPjqpj/XOjRFkruIsXENOcPnhSlaG64mIyn4uMAqeUSbRTaFATqfA3oOEe
+ MnUQ==
+X-Gm-Message-State: AOAM533CXxFOF9wsza1FlSy0Qsco4nOOlXlTnDki7hqCtDmrH+Mcs3I+
+ AAzaxAqVCBPrK8NRH7UnY6FM3g==
+X-Google-Smtp-Source: ABdhPJzNkPllUg3CGamJ/9qQ6VEA0o7v+Nic7Ku68JBY2CRMOsrZPqCMPRFONhuaEBXE9kW5K1f9Fw==
+X-Received: by 2002:a05:6000:186d:b0:1e8:49fc:69ce with SMTP id
+ d13-20020a056000186d00b001e849fc69cemr30513168wri.80.1646410526620; 
+ Fri, 04 Mar 2022 08:15:26 -0800 (PST)
 Received: from xps-9300.baylibre
  (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
  by smtp.gmail.com with ESMTPSA id
- g6-20020a5d5406000000b001f049726044sm4937307wrv.79.2022.03.04.08.15.24
+ g6-20020a5d5406000000b001f049726044sm4937307wrv.79.2022.03.04.08.15.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Mar 2022 08:15:25 -0800 (PST)
+ Fri, 04 Mar 2022 08:15:26 -0800 (PST)
 From: Alexandre Bailon <abailon@baylibre.com>
 To: ohad@wizery.com, bjorn.andersson@linaro.org, mathieu.poirier@linaro.org,
  robh+dt@kernel.or
@@ -69,14 +69,17 @@ Cc: matthias.bgg@gmail.com, linux-remoteproc@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
  stephane.leprovost@mediatek.com, khilman@baylibre.com,
  Alexandre Bailon <abailon@baylibre.com>
-Subject: [PATCH v4 0/7] Add support of mt8183 APU
-Date: Fri,  4 Mar 2022 17:15:07 +0100
-Message-Id: <20220304161514.994128-1-abailon@baylibre.com>
+Subject: [PATCH v4 1/7] dt bindings: remoteproc: Add bindings for the MT8183
+ APU
+Date: Fri,  4 Mar 2022 17:15:08 +0100
+Message-Id: <20220304161514.994128-2-abailon@baylibre.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220304161514.994128-1-abailon@baylibre.com>
+References: <20220304161514.994128-1-abailon@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220304_081528_387455_4D020302 
-X-CRM114-Status: GOOD (  18.79  )
+X-CRM114-CacheID: sfid-20220304_081529_087239_4B814390 
+X-CRM114-Status: GOOD (  12.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,65 +96,142 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some Mediatek's SoC have an AI Processing Unit.
-This adds support of the one available in the mt8183
-(aswell some derivative SoC).
+This adds dt bindings for the APU present in the MT8183.
 
-This v4 rework again the memory management.
-Now, vdev buffer and vring buffer are declared in device tree with a fixed
-physical address.
-Using a new property named "memory-region-da", the driver can map the vdev and
-vring buffers and make them available to the APU.
-The physical address must be fixed so the firmware can convert the physical
-address into APU device address.
-Using fixed address is not flexible but this is acceptable since the buffer
-addresses and size are not expected to be changed without a goog reason.
-
-Changes in v4:
-- Update the way to allocate and map the vdev and vring buffers
-- Simplfy the code
-- Add support of a second SoC (mt8365)
-- fix the dt bindings error detected by the bot
-- still use the threaded irq. calling rproc_vq_interrupt from irq causes
-  a scheduling while atomic isssue
-Changes in v3:
-- Remove IOMMU hack. Instead, manage the IOMMU directly from the driver
-- Update the device tree bindings: only use reserved memory for virtio.
-  All the other memory allocation will be done using DMA API.
-  This sould simplify the memory management.
-- Add more comments
-Changes in v2:
-- Drop the workarounds needed to load bad firmwares
-- There are many name for the APU (most common one is VPU).
-  Rename many functions and dts nodes to be more consistent.
-- Use the bulk clock API, and enable / disable clock at a better place
-- add few comments explaining how to start the APU
-- update the way to use pinctl for JTAG
-- fix some minors issues
-- fix device tree bindings
-
-
-Alexandre Bailon (5):
-  dt bindings: remoteproc: Add bindings for the MT8183 APU
-  dt-bindings: remoteproc: Add bindings for the MT8365 APU
-  remoteproc: Add a remoteproc driver for the MT8183's APU
-  remoteproc: mtk_apu: Add support of JTAG
-  ARM64: mt8183: Add support of APU to mt8183
-
-Julien STEPHAN (2):
-  remoteproc: mtk_apu: Use match_data
-  remoteproc: mtk-apu: Add support of MT8365
-
- .../bindings/remoteproc/mtk,apu.yaml          | 155 ++++
- .../boot/dts/mediatek/mt8183-pumpkin.dts      |  50 ++
- arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  40 ++
- drivers/remoteproc/Kconfig                    |  19 +
- drivers/remoteproc/Makefile                   |   1 +
- drivers/remoteproc/mtk_apu.c                  | 671 ++++++++++++++++++
- 6 files changed, 936 insertions(+)
+Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+---
+ .../bindings/remoteproc/mtk,apu.yaml          | 122 ++++++++++++++++++
+ 1 file changed, 122 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/remoteproc/mtk,apu.yaml
- create mode 100644 drivers/remoteproc/mtk_apu.c
 
+diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,apu.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,apu.yaml
+new file mode 100644
+index 000000000000..b640aa96d678
+--- /dev/null
++++ b/Documentation/devicetree/bindings/remoteproc/mtk,apu.yaml
+@@ -0,0 +1,122 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++
++---
++$id: "http://devicetree.org/schemas/remoteproc/mtk,apu.yaml#"
++$schema: "http://devicetree.org/meta-schemas/core.yaml#"
++
++title: Mediatek AI Processor Unit (APU)
++
++description:
++  This document defines the binding for the APU, a co-processor that could
++  offload the CPU for machine learning and neural network.
++
++maintainers:
++  - Alexandre Bailon <abailon@bayLibre.com>
++
++properties:
++  compatible:
++    const: mediatek,mt8183-apu
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    minItems: 3
++    maxItems: 3
++
++  clock-names:
++    items:
++      - const: axi
++      - const: ipu
++      - const: jtag
++
++  iommus:
++    maxItems: 3
++
++  memory-region:
++    maxItems: 3
++
++  memory-region-da:
++    description:
++      Array of APU device address. This is used to map the APU device address
++      to a physical address.
++    maxItems: 3
++
++  power-domains:
++    maxItems: 1
++
++  pinctrl:
++    description: pinctrl handles, required to configure pins for JTAG.
++
++  pinctrl-names:
++    items:
++      - const: jtag
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - iommus
++  - memory-region
++  - memory-region-da
++  - power-domains
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/memory/mt8183-larb-port.h>
++    #include <dt-bindings/power/mt8183-power.h>
++
++    reserved-memory {
++      #address-cells = <1>;
++      #size-cells = <1>;
++      ranges;
++
++      vdev0buffer: vdev0buffer@52900000 {
++        compatible = "shared-dma-pool";
++        reg = <0x52900000 0x4000>;
++        no-map;
++      };
++
++      vdev0vring0: vdev0vring0@52904000 {
++        compatible = "shared-dma-pool";
++        reg = <0x52904000 0x2000>;
++        no-map;
++      };
++
++      vdev0vring1: vdev0vring1@52906000 {
++        compatible = "shared-dma-pool";
++        reg = <0x52906000 0x2000>;
++        no-map;
++      };
++    };
++
++    apu0: apu@19100000 {
++      compatible = "mediatek,mt8183-apu";
++      reg = <0x19180000 0x14000>;
++      interrupts = <GIC_SPI 292 IRQ_TYPE_LEVEL_LOW>;
++
++      iommus = <&iommu M4U_PORT_IMG_IPUO>,
++         <&iommu M4U_PORT_IMG_IPU3O>,
++         <&iommu M4U_PORT_IMG_IPUI>;
++
++      clocks = <&ipu_core0 CLK_IPU_CORE0_AXI>,
++         <&ipu_core0 CLK_IPU_CORE0_IPU>,
++         <&ipu_core0 CLK_IPU_CORE0_JTAG>;
++
++      clock-names = "axi", "ipu", "jtag";
++
++      power-domains = <&scpsys MT8183_POWER_DOMAIN_VPU_CORE0>;
++      memory-region = <&vdev0buffer>, <&vdev0vring0>, <&vdev0vring1>;
++      memory-region-da = <0x6fff8000>, <0x6fffc000>, <0x6fffe000>;
++    };
++...
 -- 
 2.34.1
 
