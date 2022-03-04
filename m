@@ -4,65 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 105DBC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 14:55:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C322FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Mar 2022 15:34:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=URUv0Nncq9Z40MsTWYze6dwm9Ab3di5WZvLdPfh7hl4=; b=NePp8tnKLwo+75
-	vDXCnbdoRcbuXydIZSTSEAzvFiujDQHCna5X+zI5/RtfNPcAWmcx7lgdReZ81EaYDjGTnS2w8PnMk
-	Vz/RMjR1BWcSQpfjm2Az9WT0b+GE+ffYr5Na/l4KxWcRMhrmxeTusyLeSDuLDKmTdChUveCyvFZIS
-	LJQKUOWnFiGmioBC9WH7P1htd4lv2ZgDDPpT2dz1Qvylp6vpJfkR8G2fHw70VFF8jzIN1YJgb1R8P
-	Y+/0C+nMgbTJHzuhgyM+XU0dv6F8RVzhJLvhVQ29nWMhflKkRbY6Hn45glgEPzWYxmDPk3avjI39t
-	nBRX2a8oAzq9FpgoSIMw==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=X0YUNyZlYveLQ1cv3T1TlzC35tNnqrHWRIblsKEflXc=; b=Airz/ulcH07V0V
+	pq90Y5jTbF4RgGK8vhu5TaCfolmymr9DvlywzkjzPF7epYDUB/XraN8qaLuclX5Hvkv+cuFw72dNF
+	u+PGdrA3Qd+bJPyJw9mprGB+ZWHBz5CXEzDEEoP2dAmvYnf2X8PbF0NpHow0ur+EBAQ9rx8ZAM8Nu
+	e7c6b6u/HJjx+K2EXk47WGED3zVcc0xc94/3nPZ2ew4TsL62xjagsTYsQmJT+bW/uUueKU8rd2Z4V
+	xJ0tFnoCiaJdyJtL6fr4lZ6mOYfqYOZfsnyFjmdWi/87V+4oMt4ryU3FDZRSmj6c9ISn+f6oaOS//
+	0HRjRahYMESURn05/dvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQ9LD-00AcNM-5C; Fri, 04 Mar 2022 14:55:35 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQ9L8-00AcLn-W9
- for linux-mediatek@lists.infradead.org; Fri, 04 Mar 2022 14:55:33 +0000
-X-UUID: ad337187cb5e465db4eb737d7abb00c7-20220304
-X-UUID: ad337187cb5e465db4eb737d7abb00c7-20220304
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <deren.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 725679363; Fri, 04 Mar 2022 07:55:24 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Mar 2022 06:55:23 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Mar 2022 22:55:22 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 4 Mar 2022 22:55:21 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
- YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
- Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
- KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
- <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
- <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
- Chen" <shayne.chen@mediatek.com>, linux-wireless
- <linux-wireless@vger.kernel.org>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH v2] mt76: fix monitor mode crash with sdio driver
-Date: Fri, 4 Mar 2022 22:54:05 +0800
-Message-ID: <5483fa4cfcde4662e01120637618ba5c6fa66cac.1646404261.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-MIME-Version: 1.0
-X-MTK: N
+	id 1nQ9x8-00AkiS-Mw; Fri, 04 Mar 2022 15:34:46 +0000
+Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nQ9x5-00Akgn-F6
+ for linux-mediatek@lists.infradead.org; Fri, 04 Mar 2022 15:34:45 +0000
+Received: from smtpclient.apple (p5b3d2910.dip0.t-ipconnect.de [91.61.41.16])
+ by mail.holtmann.org (Postfix) with ESMTPSA id 5D89DCECCC;
+ Fri,  4 Mar 2022 16:34:40 +0100 (CET)
+Mime-Version: 1.0 (Mac OS X Mail 15.0 \(3693.60.0.1.1\))
+Subject: Re: [PATCH 2/2] Bluetooth: btmtksdio: Fix kernel oops when sdio
+ suspend.
+From: Marcel Holtmann <marcel@holtmann.org>
+In-Reply-To: <939606fc0825aa17729ab9a1400f3993043fa2d3.1645573830.git.objelf@gmail.com>
+Date: Fri, 4 Mar 2022 16:34:40 +0100
+Cc: Johan Hedberg <johan.hedberg@gmail.com>,
+ =?utf-8?B?Ik1hcmstWVcgQ2hlbiAo6Zmz5o+a5paHKSI=?= <Mark-YW.Chen@mediatek.com>, 
+ Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
+ Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com,
+ robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, ch.yeh@mediatek.com,
+ posh.sun@mediatek.com, ted.huang@mediatek.com, Eric.Liang@mediatek.com,
+ Stella.Chang@mediatek.com, Tom.Chou@mediatek.com, steve.lee@mediatek.com,
+ jsiuda@google.com, frankgor@google.com, jemele@google.com,
+ abhishekpandit@google.com, michaelfsun@google.com, mcchou@chromium.org,
+ shawnku@google.com, linux-bluetooth@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Yake Yang <yake.yang@mediatek.com>
+Message-Id: <0E9BE045-5600-4EBC-8461-8779967E6B7B@holtmann.org>
+References: <dba1c05e4bfdf53e631ff134eaa9449e2ad5deef.1645573830.git.objelf@gmail.com>
+ <939606fc0825aa17729ab9a1400f3993043fa2d3.1645573830.git.objelf@gmail.com>
+To: Sean Wang <sean.wang@mediatek.com>
+X-Mailer: Apple Mail (2.3693.60.0.1.1)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220304_065531_065929_9EA7BC01 
-X-CRM114-Status: GOOD (  13.08  )
+X-CRM114-CacheID: sfid-20220304_073443_705327_D4BBA358 
+X-CRM114-Status: UNSURE (   9.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,53 +71,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+Hi Sean,
 
-mt7921s driver may receive frames with fragment buffers. If there is a
-CTS packet received in monitor mode, the payload is 10 bytes only and
-need 6 bytes header padding after RXD buffer. However, only RXD in the
-first linear buffer, if we pull buffer size RXD-size+6 bytes with
-skb_pull(), that would trigger "BUG_ON(skb->len < skb->data_len)" in
-__skb_pull().
+> Do not kfree the skb when the skb failed to send with __hci_cmd_sync
+> 
+> 2435.241210] Call trace:
+> [ 2435.241224]  kfree_skb+0x20/0x140
+> [ 2435.241240]  btmtksdio_sdio_wakeup+0x8c/0xcc
+> [ 2435.241360]  hci_suspend_notifier+0x108/0x184
+> [ 2435.241377]  notifier_call_chain_robust+0x58/0xd8
+> [ 2435.241390]  blocking_notifier_call_chain_robust+0x54/0x84
+> [ 2435.241402]  pm_notifier_call_chain_robust+0x2c/0x4c
+> [ 2435.241414]  suspend_prepare+0x40/0x238
+> [ 2435.241425]  enter_state+0xec/0x3a8
+> [ 2435.241436]  pm_suspend+0x60/0xcc
+> [ 2435.241446]  state_store+0xb8/0x114
+> [ 2435.241460]  kobj_attr_store+0x18/0x2c
+> [ 2435.241473]  sysfs_kf_write+0x44/0x58
+> [ 2435.241486]  kernfs_fop_write_iter+0xf4/0x190
+> [ 2435.241500]  vfs_write+0x2b0/0x2e4
+> [ 2435.241511]  ksys_write+0x80/0xec
+> [ 2435.241523]  __arm64_sys_write+0x24/0x30
+> [ 2435.241538]  el0_svc_common+0xf0/0x1d8
+> [ 2435.241550]  do_el0_svc_compat+0x28/0x54
+> [ 2435.241564]  el0_svc_compat+0x10/0x1c
+> [ 2435.241574]  el0_sync_compat_handler+0xa8/0xcc
+> [ 2435.241586]  el0_sync_compat+0x188/0x1c0
+> [ 2435.241606] Code: a9014ff4 910003fd b40002c0 aa0003f3 (b84d4c08)
+> [ 2435.241619] ---[ end trace d496539b850baf14 ]---
+> 
+> Fixes: ce64b3e94919  ("Bluetooth: mt7921s: Support wake on bluetooth")
+> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Yake Yang <yake.yang@mediatek.com>
+> ---
+> drivers/bluetooth/btmtksdio.c | 4 ++--
+> 1 file changed, 2 insertions(+), 2 deletions(-)
 
-To avoid the nonlinear buffer issue, enlarge the RXD size from 128 to
-256 to make sure all MCU operation in linear buffer.
+patch has been applied to bluetooth-next tree.
 
-[   52.007562] kernel BUG at include/linux/skbuff.h:2313!
-[   52.007578] Internal error: Oops - BUG: 0 [#1] PREEMPT SMP
-[   52.007987] pc : skb_pull+0x48/0x4c
-[   52.008015] lr : mt7921_queue_rx_skb+0x494/0x890 [mt7921_common]
-[   52.008361] Call trace:
-[   52.008377]  skb_pull+0x48/0x4c
-[   52.008400]  mt76s_net_worker+0x134/0x1b0 [mt76_sdio 35339a92c6eb7d4bbcc806a1d22f56365565135c]
-[   52.008431]  __mt76_worker_fn+0xe8/0x170 [mt76 ef716597d11a77150bc07e3fdd68eeb0f9b56917]
-[   52.008449]  kthread+0x148/0x3ac
-[   52.008466]  ret_from_fork+0x10/0x30
+Regards
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
-v2 : update to 256, a safer value.
----
- drivers/net/wireless/mediatek/mt76/mt76.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 5e10fe156926..81078be3bd07 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -19,7 +19,7 @@
- 
- #define MT_MCU_RING_SIZE	32
- #define MT_RX_BUF_SIZE		2048
--#define MT_SKB_HEAD_LEN		128
-+#define MT_SKB_HEAD_LEN		256
- 
- #define MT_MAX_NON_AQL_PKT	16
- #define MT_TXQ_FREE_THR		32
--- 
-2.18.0
+Marcel
 
 
 _______________________________________________
