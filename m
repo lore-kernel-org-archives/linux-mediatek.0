@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91D8EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Mar 2022 08:22:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EEF2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Mar 2022 08:59:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V9b7M8r6AUJgd/5zrfciC4H5IhFaxfh2hZ+I+RnLFiM=; b=v2maHqLuIHjPsu
-	5clbaEjvVKlvDihWdaO9maVYyzigjvs5PwfKWPuiqN8V0Awyh8Avd1MV87rcB4RWuJfQSmpzdXTAc
-	c728SCw83XG5YVjx/8GuvIsjOKcKWb+YWFzZsL+ld7WoWSe4iN6WAeXxrkIWb2TRvSgnprmJNUX24
-	oZs/0uXxvnRxXEvSW+2doB8E6ghZgWd4uEoz6CWLUufor0eRlwb06/zcN6oF35YeP9WCXAq08H3Zs
-	btQodklPG1nHT6ZhEo4xKzJ45oaYhxj8gZyCyU1tSpwdtU29U7JLJH7zrmT2hEAuWQ65Idyh4U93D
-	wPaKSxXKlEXTLLs/6Lig==;
+	List-Owner; bh=iYqRywq//5FbMRRfZAvcSnf3MfEkqf6pX/amZShNvOs=; b=fsXtcX6qkzoCBc
+	8POfcNHN2XVPi32IZyNXkTd78rjwNwgJ7DFkSReretosHIoz3xosLl/9m3aq6Nf3cnwF3l34tZYul
+	v/BjW7aWVM/NlLFLM9E0JIJCTUiG10DYsZCWsn969Fd8b/icLEqFl5aSynF5cNUFem5ZySg3QN3s4
+	hL4tpc1gQiDaOI4eatYPIYcruc5zZkDME4dH/lcu11z2k2zYa49jded/FjxZKgekJwTn1q89FsU0u
+	q2OXWkNtBA7JM3UBrACCHcmJzDxWx0RtQhI1GegASjpSRIOl3ZSilJBfk0NFTWNqy8N+P81VwTmoL
+	nBvqIlYP0JtCa1tKNk0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQPgK-00CxQa-6v; Sat, 05 Mar 2022 08:22:28 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nQQFo-00D0qW-WC; Sat, 05 Mar 2022 08:59:09 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQPg5-00CxO8-GI; Sat, 05 Mar 2022 08:22:17 +0000
-X-UUID: 642038f3fbf1430a853931b6c4fd94a3-20220305
+ id 1nQQFb-00D0o4-VZ; Sat, 05 Mar 2022 08:58:58 +0000
+X-UUID: 7b91dd1f9fbc49c9b60cf0c696d024f3-20220305
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=EnoJZXBp8/aRg9Ov6AbIxtqMWo3mMNKvllVcVtGg6Fk=; 
- b=kuBr27ekRz9Ae/toIq2ahaVZ83rhuujRDbSFhuBEt0CzuoeTYGLojXi3vxEenR30cp5Tpd4ibl4IEtKeu7oJ5adv/GA9UZhtpLQYZTzkI6C8NN0VxZRgLi2J0G7k7aHJ0AeP+Jg76crJGBbQK9gyrl3sZiaTVoeu9rOvsORSfTE=;
-X-UUID: 642038f3fbf1430a853931b6c4fd94a3-20220305
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <leilk.liu@mediatek.com>)
+ bh=NWwr6J3cPBm92Ktn0U8+sTCTC3Wv2avTEDTA8nGphaM=; 
+ b=cmtEZH0BFvARg67fAvLsS3cNI6I6V4sxDjS6cHM1QSmSfF8rq7dzhUBqWM4eAsiUgps4kSlZDr3wIM2Q8sWay8b0G8QnkNpwnGBU6CsX2aU0QBqm1wJe8OxwLZGaHWEiURDgbjSFkphFL6PlljMM7XE5RDM6T+HsAN24P5+uT30=;
+X-UUID: 7b91dd1f9fbc49c9b60cf0c696d024f3-20220305
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <jiaxin.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1116277046; Sat, 05 Mar 2022 01:22:07 -0700
+ with ESMTP id 1839624732; Sat, 05 Mar 2022 01:58:46 -0700
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 5 Mar 2022 00:22:06 -0800
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 5 Mar 2022 00:58:44 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 5 Mar 2022 16:22:04 +0800
+ 15.0.1497.2; Sat, 5 Mar 2022 16:58:43 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 5 Mar 2022 16:22:04 +0800
-Message-ID: <88c09cbb11c76e17ce78376103d17ac408f3cfd5.camel@mediatek.com>
-Subject: Re: [PATCH V2 4/6] spi: mediatek: add spi memory support
-From: Leilk Liu <leilk.liu@mediatek.com>
+ Transport; Sat, 5 Mar 2022 16:58:42 +0800
+Message-ID: <4aa814cdac002dde73fe01054c642e90b043429a.camel@mediatek.com>
+Subject: Re: [v2 14/17] ASoC: mediatek: mt8186: add machine driver with
+ mt6366, da7219 and max98357
+From: Jiaxin Yu <jiaxin.yu@mediatek.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "Mark Brown" <broonie@kernel.org>
-CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Date: Sat, 5 Mar 2022 16:22:04 +0800
-In-Reply-To: <2c1a0925aeb1f3ba640a29e0f6f9765eb609293b.camel@mediatek.com>
-References: <20220221040717.3729-1-leilk.liu@mediatek.com>
- <20220221040717.3729-5-leilk.liu@mediatek.com>
- <2e994be0-8b60-a3dc-2ab7-34d93192dc09@collabora.com>
- <2c1a0925aeb1f3ba640a29e0f6f9765eb609293b.camel@mediatek.com>
+ <broonie@kernel.org>
+CC: <lgirdwood@gmail.com>, <tiwai@suse.com>, <robh+dt@kernel.org>,
+ <matthias.bgg@gmail.com>, <perex@perex.cz>, <p.zabel@pengutronix.de>,
+ <geert+renesas@glider.be>, <trevor.wu@mediatek.com>, <tzungbi@google.com>,
+ <aaronyu@google.com>, <zhangqilong3@huawei.com>,
+ <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>
+Date: Sat, 5 Mar 2022 16:58:41 +0800
+In-Reply-To: <70147e6f-a008-ab1a-eb07-dbb1236849b0@collabora.com>
+References: <20220217134205.15400-1-jiaxin.yu@mediatek.com>
+ <20220217134205.15400-15-jiaxin.yu@mediatek.com>
+ <70147e6f-a008-ab1a-eb07-dbb1236849b0@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220305_002215_003544_83D77C87 
-X-CRM114-Status: GOOD (  40.44  )
+X-CRM114-CacheID: sfid-20220305_005856_097789_238F7813 
+X-CRM114-Status: GOOD (  29.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,410 +84,517 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-02-23 at 09:59 +0800, Leilk Liu wrote:
-> On Tue, 2022-02-22 at 11:49 +0100, AngeloGioacchino Del Regno wrote:
-> > Il 21/02/22 05:07, Leilk Liu ha scritto:
-> > > this patch add the support of spi-mem.
-> > > 
-> > > Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
-> > > ---
-> > >   drivers/spi/spi-mt65xx.c | 310
-> > > ++++++++++++++++++++++++++++++++++++++-
-> > >   1 file changed, 309 insertions(+), 1 deletion(-)
-> > > 
-> > > diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-> > > index 5fa677a589a4..852fc008329a 100644
-> > > --- a/drivers/spi/spi-mt65xx.c
-> > > +++ b/drivers/spi/spi-mt65xx.c
-> > > @@ -17,6 +17,7 @@
-> > >   #include <linux/platform_data/spi-mt65xx.h>
-> > >   #include <linux/pm_runtime.h>
-> > >   #include <linux/spi/spi.h>
-> > > +#include <linux/spi/spi-mem.h>
-> > >   #include <linux/dma-mapping.h>
-> > >   
-> > >   #define SPI_CFG0_REG                      0x0000
-> > > @@ -75,8 +76,21 @@
-> > >   #define SPI_CMD_IPM_GET_TICKDLY_OFFSET    22
-> > >   
-> > >   #define SPI_CMD_IPM_GET_TICKDLY_MASK	GENMASK(24, 22)
-> > > +
-> > > +#define PIN_MODE_CFG(x)	((x) / 2)
-> > > +
-> > > +#define SPI_CFG3_IPM_PIN_MODE_OFFSET		0
-> > >   #define SPI_CFG3_IPM_HALF_DUPLEX_DIR		BIT(2)
-> > >   #define SPI_CFG3_IPM_HALF_DUPLEX_EN		BIT(3)
-> > > +#define SPI_CFG3_IPM_XMODE_EN			BIT(4)
-> > > +#define SPI_CFG3_IPM_NODATA_FLAG		BIT(5)
-> > > +#define SPI_CFG3_IPM_CMD_BYTELEN_OFFSET		8
-> > > +#define SPI_CFG3_IPM_ADDR_BYTELEN_OFFSET	12
-> > > +
-> > > +#define SPI_CFG3_IPM_CMD_PIN_MODE_MASK		GENMASK(1, 0)
-> > > +#define SPI_CFG3_IPM_CMD_BYTELEN_MASK		GENMASK(11, 8)
-> > > +#define SPI_CFG3_IPM_ADDR_BYTELEN_MASK		GENMASK(15, 12)
-> > > +
-> > >   #define MT8173_SPI_MAX_PAD_SEL 3
-> > >   
-> > >   #define MTK_SPI_PAUSE_INT_STATUS 0x2
-> > > @@ -87,6 +101,8 @@
-> > >   #define MTK_SPI_MAX_FIFO_SIZE 32U
-> > >   #define MTK_SPI_PACKET_SIZE 1024
-> > >   #define MTK_SPI_IPM_PACKET_SIZE SZ_64K
-> > > +#define MTK_SPI_IPM_PACKET_LOOP SZ_256
-> > > +
-> > >   #define MTK_SPI_32BITS_MASK  (0xffffffff)
-> > >   
-> > >   #define DMA_ADDR_EXT_BITS (36)
-> > > @@ -104,7 +120,8 @@ struct mtk_spi_compatible {
-> > >   	bool no_need_unprepare;
-> > >   	/* IPM design improve some single mode features */
-> > >   	bool ipm_design;
-> > > -
-> > > +	/* IPM design that support quad mode */
-> > > +	bool support_quad;
-> > >   };
-> > >   
-> > >   struct mtk_spi {
-> > > @@ -120,6 +137,11 @@ struct mtk_spi {
-> > >   	u32 tx_sgl_len, rx_sgl_len;
-> > >   	const struct mtk_spi_compatible *dev_comp;
-> > >   	u32 spi_clk_hz;
-> > > +	struct completion spimem_done;
-> > > +	bool use_spimem;
-> > > +	struct device *dev;
-> > > +	dma_addr_t tx_dma;
-> > > +	dma_addr_t rx_dma;
-> > >   };
-> > >   
-> > >   static const struct mtk_spi_compatible mtk_common_compat;
-> > > @@ -134,6 +156,13 @@ static const struct mtk_spi_compatible
-> > > ipm_compat_single = {
-> > >   	.ipm_design = true,
-> > >   };
-> > >   
-> > > +static const struct mtk_spi_compatible ipm_compat_quad = {
-> > > +	.enhance_timing = true,
-> > > +	.dma_ext = true,
-> > > +	.ipm_design = true,
-> > > +	.support_quad = true,
-> > > +};
-> > > +
-> > >   static const struct mtk_spi_compatible mt6765_compat = {
-> > >   	.need_pad_sel = true,
-> > >   	.must_tx = true,
-> > > @@ -178,6 +207,9 @@ static const struct of_device_id
-> > > mtk_spi_of_match[] = {
-> > >   	{ .compatible = "mediatek,ipm-spi-single",
-> > >   		.data = (void *)&ipm_compat_single,
-> > >   	},
-> > > +	{ .compatible = "mediatek,ipm-spi-quad",
-> > > +		.data = (void *)&ipm_compat_quad,
-> > > +	},
-> > >   	{ .compatible = "mediatek,mt2701-spi",
-> > >   		.data = (void *)&mtk_common_compat,
-> > >   	},
-> > > @@ -694,6 +726,13 @@ static irqreturn_t mtk_spi_interrupt(int
-> > > irq,
-> > > void *dev_id)
-> > >   	else
-> > >   		mdata->state = MTK_SPI_IDLE;
-> > >   
-> > > +	/* SPI-MEM ops */
-> > > +	if (mdata->use_spimem) {
-> > > +		complete(&mdata->spimem_done);
-> > > +
-> > > +		return IRQ_HANDLED;
-> > > +	}
-> > > +
+On Fri, 2022-02-18 at 15:54 +0100, AngeloGioacchino Del Regno wrote:
+> Il 17/02/22 14:42, Jiaxin Yu ha scritto:
+> > This patch adds support for mt8186 board with mt6366, da7219 and
+> > max98357.
 > > 
-> > I would instead make a new ISR for the SPI-MEM case... as you're
-> > bypassing the
-> > entire mtk_spi_interrupt() function like that.
+> > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> > ---
+> >   .../mt8186/mt8186-mt6366-da7219-max98357.c    | 910
+> > ++++++++++++++++++
+> >   1 file changed, 910 insertions(+)
+> >   create mode 100644 sound/soc/mediatek/mt8186/mt8186-mt6366-
+> > da7219-max98357.c
 > > 
-> > Example:
-> > 
-> > static void mtk_spi_check_and_set_state(struct mtk_spi *mdata)
-> > {
-> > 	u32 reg_val;
-> > 
-> > 	reg_val = readl(mdata->base + SPI_STATUS0_REG);
-> > 
-> > 	if (reg_val & MTK_SPI_PAUSE_INT_STATUS)
-> > 
-> > 		mdata->state = MTK_SPI_PAUSED;
-> > 
-> > 	else
-> > 
-> > 		mdata->state = MTK_SPI_IDLE;
-> > }
-> > 
-> > static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
-> > 
-> > {
-> > 	u32 cmd, reg_val, cnt, remainder, len;
-> > 
-> > 	struct spi_master *master = dev_id;
-> > 
-> > 	struct mtk_spi *mdata = spi_master_get_devdata(master);
-> > 
-> > 	struct spi_transfer *trans = mdata->cur_transfer;
-> > 
-> > 	mtk_spi_check_and_set_state(mdata);
-> > 
-> > 	if (!master->can_dma(........
-> > 	.... blurb...
-> > }
-> > 
-> > static irqreturn_t mtk_spimem_interrupt(int irq, void *dev_id)
-> > {
-> > 	struct spi_master *master = dev_id;
-> > 
-> > 	struct mtk_spi *mdata = spi_master_get_devdata(master);
-> > 
-> > 	mtk_spi_check_and_set_state(mdata);
-> > 	complete(&mdata->spimem_done);
-> > 
-> > 	return IRQ_HANDLED;
-> > }
-> > 
-> > ... of course, in mtk_spi_probe(), you would do something like
-> > 
-> > if (mdata->use_spimem)
-> > 	ret = devm_request_irq(&pdev->dev, irq, mtk_spimem_interrupt,
-> > 		...... blah ......
-> > else
-> > 	ret = devm_request_irq(&pdev->dev, irq, mtk_spi_interrupt,
-> > 		..... blah ......
-> > 
-> > This way, you're separating the two - increasing human readability
-> > and showing
-> > the simplifications (in that regard) in the IPM IP's SPI-MEM
-> > handling.
-> > 
+> > diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-
+> > max98357.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-
+> > max98357.c
+> > new file mode 100644
+> > index 000000000000..6ba53b8d1e46
+> > --- /dev/null
+> > +++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c
+> > @@ -0,0 +1,910 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +//
+> > +// mt8186-mt6366-da7219-max98357.c
+> > +//	--  MT8186-MT6366-DA7219-MAX98357 ALSA SoC machine driver
+> > +//
+> > +// Copyright (c) 2022 MediaTek Inc.
+> > +// Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> > +//
+> > +
+> > +#include <linux/input.h>
+> > +#include <linux/module.h>
+> > +#include <linux/pm_runtime.h>
+> > +#include <sound/pcm_params.h>
+> > +#include <sound/soc.h>
+> > +
+> > +#include "../../codecs/da7219-aad.h"
+> > +#include "../../codecs/da7219.h"
+> > +#include "../../codecs/mt6358.h"
+> > +#include "../common/mtk-afe-platform-driver.h"
+> > +#include "mt8186-afe-common.h"
+> > +#include "mt8186-afe-clk.h"
+> > +#include "mt8186-afe-gpio.h"
+> > +
+> > +#define DA7219_CODEC_DAI "da7219-hifi"
+> > +#define DA7219_DEV_NAME "da7219.5-001a"
+> > +
+> > +struct mt8186_mt6366_da7219_max98357_priv {
+> > +	struct snd_soc_jack headset_jack, hdmi_jack;
+> > +};
+> > +
+> > +static struct snd_soc_codec_conf mt6366_codec_conf[] = {
+> > +	{
+> > +		.dlc = COMP_CODEC_CONF("mt6358-sound"),
+> > +		.name_prefix = "Mt6366",
+> > +	},
+> > +};
+> > +
+> > +static int mt8186_da7219_init(struct snd_soc_pcm_runtime *rtd)
+> > +{
+> > +	struct mt8186_mt6366_da7219_max98357_priv *priv =
+> > +		snd_soc_card_get_drvdata(rtd->card);
+> > +	struct snd_soc_jack *jack = &priv->headset_jack;
+> > +	struct snd_soc_component *cmpnt_codec =
+> > +		asoc_rtd_to_codec(rtd, 0)->component;
+> > +	int ret;
+> > +
+> > +	/* Enable Headset and 4 Buttons Jack detection */
+> > +	ret = snd_soc_card_jack_new(rtd->card, "Headset Jack",
+> > +				    SND_JACK_HEADSET | SND_JACK_BTN_0 |
+> > +				    SND_JACK_BTN_1 | SND_JACK_BTN_2 |
+> > +				    SND_JACK_BTN_3 | SND_JACK_LINEOUT,
+> > +				    jack, NULL, 0);
+> > +	if (ret) {
+> > +		dev_err(rtd->dev, "Headset Jack creation failed: %d\n",
+> > ret);
+> > +		return ret;
+> > +	}
+> > +
+> > +	snd_jack_set_key(jack->jack, SND_JACK_BTN_0, KEY_PLAYPAUSE);
+> > +	snd_jack_set_key(jack->jack, SND_JACK_BTN_1, KEY_VOLUMEUP);
+> > +	snd_jack_set_key(jack->jack, SND_JACK_BTN_2, KEY_VOLUMEDOWN);
+> > +	snd_jack_set_key(jack->jack, SND_JACK_BTN_3, KEY_VOICECOMMAND);
+> > +
+> > +	da7219_aad_jack_det(cmpnt_codec, &priv->headset_jack);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mt8186_da7219_i2s_hw_params(struct snd_pcm_substream
+> > *substream,
+> > +				       struct snd_pcm_hw_params
+> > *params)
+> > +{
+> > +	struct snd_soc_pcm_runtime *rtd =
+> > asoc_substream_to_rtd(substream);
+> > +	struct snd_soc_dai *codec_dai;
+> > +	unsigned int rate = params_rate(params);
+> > +	unsigned int mclk_fs_ratio = 256;
+> > +	unsigned int mclk_fs = rate * mclk_fs_ratio;
+> > +	unsigned int freq;
+> > +	int ret = 0, j;
+> > +
+> > +	ret = snd_soc_dai_set_sysclk(asoc_rtd_to_cpu(rtd, 0), 0,
+> > +				     mclk_fs, SND_SOC_CLOCK_OUT);
+> > +	if (ret < 0)
+> > +		dev_err(rtd->dev, "failed to set cpu dai sysclk\n");
 > 
-> thanks for your advise, I'll do it in the next version.
-Hi AngeloGioacchino,
- It can't request mtk_spimem_interrupt() only while support spimem
-core, since spi driver should support spi_sync and spi_mem_exec_op
-both.
+> Does it really make sense to go on after this failure?
+> 
+> > +
+> > +	for_each_rtd_codec_dais(rtd, j, codec_dai) {
+> > +		if (!strcmp(codec_dai->component->name,
+> > DA7219_DEV_NAME)) {
+> > +			ret = snd_soc_dai_set_sysclk(codec_dai,
+> > +						     DA7219_CLKSRC_MCLK
+> > ,
+> > +						     mclk_fs,
+> > +						     SND_SOC_CLOCK_IN);
+> > +			if (ret < 0)
+> > +				dev_err(rtd->dev, "failed to set
+> > sysclk\n");
+> > +
+> 
+> I think that going on past this wouldn't make sense as well, as it
+> may result
+> in unexpected behavior... just return a failure here
+
+Yes, it is.
+> 
+> > +			if ((rate % 8000) == 0)
+> > +				freq = DA7219_PLL_FREQ_OUT_98304;
+> > +			else
+> > +				freq = DA7219_PLL_FREQ_OUT_90316;
+> > +
+> > +			ret = snd_soc_dai_set_pll(codec_dai, 0,
+> > +						  DA7219_SYSCLK_PLL_SRM
+> > ,
+> > +						  0, freq);
+> > +			if (ret)
+> > +				dev_err(rtd->dev, "failed to start PLL:
+> > %d\n",
+> > +					ret);
+> 
+> and here
+Yes, you are right.
 
 > 
-> > >   	if (!master->can_dma(master, NULL, trans)) {
-> > >   		if (trans->rx_buf) {
-> > >   			cnt = mdata->xfer_len / 4;
-> > > @@ -777,6 +816,266 @@ static irqreturn_t mtk_spi_interrupt(int
-> > > irq,
-> > > void *dev_id)
-> > >   	return IRQ_HANDLED;
-> > >   }
-> > >   
-> > > +static int mtk_spi_mem_adjust_op_size(struct spi_mem *mem,
-> > > +				      struct spi_mem_op *op)
-> > > +{
-> > > +	int opcode_len;
-> > > +
-> > > +	if (op->data.dir != SPI_MEM_NO_DATA) {
-> > > +		opcode_len = 1 + op->addr.nbytes + op->dummy.nbytes;
-> > > +		if (opcode_len + op->data.nbytes >
-> > > MTK_SPI_IPM_PACKET_SIZE) {
-> > > +			op->data.nbytes = MTK_SPI_IPM_PACKET_SIZE -
-> > > opcode_len;
-> > > +			/* force data buffer dma-aligned. */
-> > > +			op->data.nbytes -= op->data.nbytes % 4;
-> > > +		}
-> > > +	}
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +static bool mtk_spi_mem_supports_op(struct spi_mem *mem,
-> > > +				    const struct spi_mem_op *op)
-> > > +{
-> > > +	if (op->data.buswidth > 4 || op->addr.buswidth > 4 ||
-> > > +	    op->dummy.buswidth > 4 || op->cmd.buswidth > 4)
-> > > +		return false;
-> > > +
-> > > +	if (op->addr.nbytes && op->dummy.nbytes &&
-> > > +	    op->addr.buswidth != op->dummy.buswidth)
-> > > +		return false;
-> > > +
-> > > +	if (op->addr.nbytes + op->dummy.nbytes > 16)
-> > > +		return false;
-> > > +
-> > > +	if (op->data.nbytes > MTK_SPI_IPM_PACKET_SIZE) {
-> > > +		if (op->data.nbytes / MTK_SPI_IPM_PACKET_SIZE >
-> > > +		    MTK_SPI_IPM_PACKET_LOOP ||
-> > > +		    op->data.nbytes % MTK_SPI_IPM_PACKET_SIZE != 0)
-> > > +			return false;
-> > > +	}
-> > > +
-> > > +	return true;
-> > > +}
-> > > +
-> > > +static void mtk_spi_mem_setup_dma_xfer(struct spi_master
-> > > *master,
-> > > +				       const struct spi_mem_op *op)
-> > > +{
-> > > +	struct mtk_spi *mdata = spi_master_get_devdata(master);
-> > > +
-> > > +	writel((u32)(mdata->tx_dma & MTK_SPI_32BITS_MASK),
-> > > +	       mdata->base + SPI_TX_SRC_REG);
-> > > +#ifdef CONFIG_ARCH_DMA_ADDR_T_64BIT
-> > > +	if (mdata->dev_comp->dma_ext)
-> > > +		writel((u32)(mdata->tx_dma >> 32),
-> > > +		       mdata->base + SPI_TX_SRC_REG_64);
-> > > +#endif
-> > > +
-> > > +	if (op->data.dir == SPI_MEM_DATA_IN) {
-> > > +		writel((u32)(mdata->rx_dma & MTK_SPI_32BITS_MASK),
-> > > +		       mdata->base + SPI_RX_DST_REG);
-> > > +#ifdef CONFIG_ARCH_DMA_ADDR_T_64BIT
-> > > +		if (mdata->dev_comp->dma_ext)
-> > > +			writel((u32)(mdata->rx_dma >> 32),
-> > > +			       mdata->base + SPI_RX_DST_REG_64);
-> > > +#endif
-> > > +	}
-> > > +}
-> > > +
-> > > +static int mtk_spi_transfer_wait(struct spi_mem *mem,
-> > > +				 const struct spi_mem_op *op)
-> > > +{
-> > > +	struct mtk_spi *mdata = spi_master_get_devdata(mem->spi-
-> > > > master);
-> > > 
-> > > +	unsigned long long ms = 1;
-> > 
-> > Initializing ms to 1 here is useless, as you're anyway
-> > reinitializing
-> > it
-> > right after. I would do it as following:
-> > 
-> > u64 ms = 8000LL;
-> > 
-> > if (op->data.dir == SPI_MEM_NO_DATA)
-> > 	ms *= 32;
-> > else
-> > 	ms *= op->data.nbytes;
-> > 
+> > +		}
+> > +	}
+> > +
 > 
-> OK,I'll fix it.
+> So, you've covered all failure cases already, for which, you can
+> simply
+> return 0 here.
+Yes, it is.
+
 > 
-> > Besides, can you please add a comment to the code explaining why
-> > the
-> > reason for the waits (why 8, why 1000, why 32)?
-> > 
+> > +	return ret;
+> > +}
+> > +
+> > +static int mt8186_da7219_i2s_hw_free(struct snd_pcm_substream
+> > *substream)
+> > +{
+> > +	struct snd_soc_pcm_runtime *rtd =
+> > asoc_substream_to_rtd(substream);
+> > +	struct snd_soc_dai *codec_dai;
+> > +	int ret = 0, j;
+> > +
+> > +	for_each_rtd_codec_dais(rtd, j, codec_dai) {
+> > +		if (!strcmp(codec_dai->component->name,
+> > DA7219_DEV_NAME)) {
+> > +			ret = snd_soc_dai_set_pll(codec_dai,
+> > +						  0,
+> > DA7219_SYSCLK_MCLK, 0, 0);
+> > +			if (ret < 0) {
+> > +				dev_err(rtd->dev, "failed to stop PLL:
+> > %d\n",
+> > +					ret);
+> > +				break;
+> > +			}
+> > +		}
+> > +	}
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static const struct snd_soc_ops mt8186_da7219_i2s_ops = {
+> > +	.hw_params = mt8186_da7219_i2s_hw_params,
+> > +	.hw_free = mt8186_da7219_i2s_hw_free,
+> > +};
+> > +
+> > +static int mt8186_mt6366_hdmi_init(struct snd_soc_pcm_runtime
+> > *rtd)
+> > +{
+> > +	struct snd_soc_component *cmpnt_codec =
+> > +		asoc_rtd_to_codec(rtd, 0)->component;
+> > +	struct mt8186_mt6366_da7219_max98357_priv *priv =
+> > +		snd_soc_card_get_drvdata(rtd->card);
+> > +	int ret;
+> > +
+> > +	ret = snd_soc_card_jack_new(rtd->card, "HDMI Jack",
+> > SND_JACK_LINEOUT,
+> > +				    &priv->hdmi_jack, NULL, 0);
+> > +	if (ret) {
+> > +		dev_err(rtd->dev, "HDMI Jack creation failed: %d\n",
+> > ret);
+> > +		return ret;
+> > +	}
+> > +
+> > +	return snd_soc_component_set_jack(cmpnt_codec, &priv-
+> > >hdmi_jack, NULL);
+> > +}
+> > +
+> > +static int mt8186_mt6366_init(struct snd_soc_pcm_runtime *rtd)
+> > +{
+> > +	struct snd_soc_component *cmpnt_afe =
+> > +		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
+> > +	struct snd_soc_component *cmpnt_codec =
+> > +		asoc_rtd_to_codec(rtd, 0)->component;
+> > +	struct mtk_base_afe *afe =
+> > snd_soc_component_get_drvdata(cmpnt_afe);
+> > +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
+> > +	struct snd_soc_dapm_context *dapm = &rtd->card->dapm;
+> > +	int ret;
+> > +
+> > +	/* set mtkaif protocol */
+> > +	mt6358_set_mtkaif_protocol(cmpnt_codec,
+> > +				   MT6358_MTKAIF_PROTOCOL_1);
+> > +	afe_priv->mtkaif_protocol = MT6358_MTKAIF_PROTOCOL_1;
+> > +
+> > +	ret = snd_soc_dapm_sync(dapm);
+> > +	if (ret) {
+> > +		dev_info(rtd->dev, "failed to snd_soc_dapm_sync\n");
 > 
-> OK,THANKS
+> dev_err()
 > 
-> > > +
-> > > +	if (op->data.dir == SPI_MEM_NO_DATA)
-> > > +		ms = 8LL * 1000LL * 32;
-> > > +	else
-> > > +		ms = 8LL * 1000LL * op->data.nbytes;
-> > > +	do_div(ms, mem->spi->max_speed_hz);
-> > 
-> > I appreciate the usage of safe division helpers, but this is the
-> > wrong one:
-> > you have a unsigned long long (64-bits) dividend and a u32 divisor,
-> > so the
-> > right function to use here is div_u64().
-> > 
+> > +		return ret;
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mt8186_i2s_hw_params_fixup(struct snd_soc_pcm_runtime
+> > *rtd,
+> > +				      struct snd_pcm_hw_params *params)
+> > +{
+> > +	struct snd_interval *channels = hw_param_interval(params,
+> > +		SNDRV_PCM_HW_PARAM_CHANNELS);
+> > +	dev_info(rtd->dev, "%s(), fix format to 32bit\n", __func__);
+> > +
 > 
-> OK, I'll fix it. thanks!
+> dev_dbg()
 > 
-> > 	ms = div_u64(ms, mem->spi->max_speed_hz);
-> > 
-> > > +	ms += ms + 1000; /* 1s tolerance */
-> > > +
-> > > +	if (ms > UINT_MAX)
-> > > +		ms = UINT_MAX;
-> > > +
-> > > +	if (!wait_for_completion_timeout(&mdata->spimem_done,
-> > > +					 msecs_to_jiffies(ms))) {
-> > > +		dev_err(mdata->dev, "spi-mem transfer timeout\n");
-> > > +		return -ETIMEDOUT;
-> > > +	}
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +static int mtk_spi_mem_exec_op(struct spi_mem *mem,
-> > > +			       const struct spi_mem_op *op)
-> > > +{
-> > > +	struct mtk_spi *mdata = spi_master_get_devdata(mem->spi-
-> > > > master);
-> > > 
-> > > +	u32 reg_val, nio = 1, tx_size;
-> > > +	char *tx_tmp_buf, *rx_tmp_buf;
-> > > +	int ret = 0;
-> > > +
-> > > +	mdata->use_spimem = true;
-> > > +	reinit_completion(&mdata->spimem_done);
-> > > +
-> > > +	mtk_spi_reset(mdata);
-> > > +	mtk_spi_hw_init(mem->spi->master, mem->spi);
-> > > +	mtk_spi_prepare_transfer(mem->spi->master, mem->spi-
-> > > > max_speed_hz);
-> > > 
-> > > +
-> > > +	reg_val = readl(mdata->base + SPI_CFG3_IPM_REG);
-> > > +	/* opcode byte len */
-> > > +	reg_val &= ~SPI_CFG3_IPM_CMD_BYTELEN_MASK;
-> > > +	reg_val |= 1 << SPI_CFG3_IPM_CMD_BYTELEN_OFFSET;
-> > > +
-> > > +	/* addr & dummy byte len */
-> > > +	reg_val &= ~SPI_CFG3_IPM_ADDR_BYTELEN_MASK;
-> > > +	if (op->addr.nbytes || op->dummy.nbytes)
-> > > +		reg_val |= (op->addr.nbytes + op->dummy.nbytes) <<
-> > > +			    SPI_CFG3_IPM_ADDR_BYTELEN_OFFSET;
-> > > +
-> > > +	/* data byte len */
-> > > +	if (op->data.dir == SPI_MEM_NO_DATA) {
-> > > +		reg_val |= SPI_CFG3_IPM_NODATA_FLAG;
-> > > +		writel(0, mdata->base + SPI_CFG1_REG);
-> > > +	} else {
-> > > +		reg_val &= ~SPI_CFG3_IPM_NODATA_FLAG;
-> > > +		mdata->xfer_len = op->data.nbytes;
-> > > +		mtk_spi_setup_packet(mem->spi->master);
-> > > +	}
-> > > +
-> > > +	if (op->addr.nbytes || op->dummy.nbytes) {
-> > > +		if (op->addr.buswidth == 1 || op->dummy.buswidth == 1)
-> > > +			reg_val |= SPI_CFG3_IPM_XMODE_EN;
-> > > +		else
-> > > +			reg_val &= ~SPI_CFG3_IPM_XMODE_EN;
-> > > +	}
-> > > +
-> > > +	if (op->addr.buswidth == 2 ||
-> > > +	    op->dummy.buswidth == 2 ||
-> > > +	    op->data.buswidth == 2)
-> > > +		nio = 2;
-> > > +	else if (op->addr.buswidth == 4 ||
-> > > +		 op->dummy.buswidth == 4 ||
-> > > +		 op->data.buswidth == 4)
-> > > +		nio = 4;
-> > 
-> > 	else
-> > 		nio = 1;
-> > 
-> > ...so that you can avoid double initialization of the `nio`
-> > variable.
-> > 
+> > +	/* fix BE i2s channel to 2 channel */
+> > +	channels->min = 2;
+> > +	channels->max = 2;
+> > +
+> > +	/* fix BE i2s format to S32_LE, clean param mask first */
+> > +	snd_mask_reset_range(hw_param_mask(params,
+> > SNDRV_PCM_HW_PARAM_FORMAT),
+> > +			     0, (__force unsigned
+> > int)SNDRV_PCM_FORMAT_LAST);
+> > +
+> > +	params_set_format(params, SNDRV_PCM_FORMAT_S32_LE);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mt8186_hdmi_i2s_hw_params_fixup(struct
+> > snd_soc_pcm_runtime *rtd,
+> > +					   struct snd_pcm_hw_params
+> > *params)
+> > +{
+> > +	struct snd_interval *channels = hw_param_interval(params,
+> > +		SNDRV_PCM_HW_PARAM_CHANNELS);
+> > +	dev_info(rtd->dev, "%s(), fix format to 32bit\n", __func__);
+> > +
 > 
-> OK, I'll fix it,thanks
+> dev_dbg()
 > 
-> > > +
-> > > +	reg_val &= ~SPI_CFG3_IPM_CMD_PIN_MODE_MASK;
-> > > +	reg_val |= PIN_MODE_CFG(nio) << SPI_CFG3_IPM_PIN_MODE_OFFSET;
-> > > +
-> > 
-> > Regards,
-> > Angelo
+> > +	/* fix BE i2s channel to 2 channel */
+> > +	channels->min = 2;
+> > +	channels->max = 2;
+> > +
+> > +	/* fix BE i2s format to S24_LE, clean param mask first */
+> > +	snd_mask_reset_range(hw_param_mask(params,
+> > SNDRV_PCM_HW_PARAM_FORMAT),
+> > +			     0, (__force unsigned
+> > int)SNDRV_PCM_FORMAT_LAST);
+> > +
+> > +	params_set_format(params, SNDRV_PCM_FORMAT_S24_LE);
+> > +
+> > +	return 0;
+> > +}
 > 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+Ok, I will use this code which is really more concise.
+
+> Besides, I would do the following instead:
+> 
+> static int mt8186_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
+> 
+> 				  struct snd_pcm_hw_params *params,
+> 
+> 				  snd_pcm_format_t fmt)
+> 
+> {
+> 
+> 	struct snd_interval *channels = hw_param_interval(params,
+> 
+> 		SNDRV_PCM_HW_PARAM_CHANNELS);
+> 
+> 	dev_dbg(rtd->dev, "%s(), fix format to 32bit\n", __func__);
+> 
+> 
+> 
+> 	/* fix BE i2s channel to 2 channel */
+> 
+> 	channels->min = 2;
+> 
+> 	channels->max = 2;
+> 
+> 
+> 
+> 	/* fix BE i2s format to S32_LE, clean param mask first */
+> 
+> 	snd_mask_reset_range(hw_param_mask(params,
+> SNDRV_PCM_HW_PARAM_FORMAT),
+> 
+> 			     0, (__force unsigned
+> int)SNDRV_PCM_FORMAT_LAST);
+> 
+> 
+> 
+> 	params_set_format(params, fmt);
+> 
+> 
+> 
+> 	return 0;
+> 
+> }
+> 
+> 
+> 
+> static int mt8186_i2s_hw_params_fixup(struct snd_soc_pcm_runtime
+> *rtd,
+> 
+> 				      struct snd_pcm_hw_params *params)
+> 
+> {
+> 
+> 	return mt8186_hw_params_fixup(rtd, params,
+> SNDRV_PCM_FORMAT_S32_LE);
+> 
+> }
+> 
+> 
+> 
+> static int mt8186_hdmi_i2s_hw_params_fixup(struct snd_soc_pcm_runtime
+> *rtd,
+> 
+> 					   struct snd_pcm_hw_params
+> *params)
+> 
+> {
+> 
+> 	return mt8186_hw_params_fixup(rtd, params,
+> SNDRV_PCM_FORMAT_S24_LE);
+> 
+> }
+> 
+> ... this reduces code duplication!
+> 
+> > +
+> > +/* FE */
+> > +SND_SOC_DAILINK_DEFS(playback1,
+> > +		     DAILINK_COMP_ARRAY(COMP_CPU("DL1")),
+> > +		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
+> > +		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
+> 
+> 
+> ..snip..
+> 
+> > +static int mt8186_mt6366_da7219_max98357_dev_probe(struct
+> > platform_device *pdev)
+> > +{
+> > +	struct snd_soc_card *card =
+> > &mt8186_mt6366_da7219_max98357_soc_card;
+> > +	struct snd_soc_dai_link *dai_link;
+> > +	struct mt8186_mt6366_da7219_max98357_priv *priv;
+> > +	struct device_node *platform_node, *hdmi_codec;
+> > +	int ret, i;
+> > +
+> > +	dev_info(&pdev->dev, "%s(), ++\n", __func__);
+> > +
+> > +	card->dev = &pdev->dev;
+> > +
+> > +	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
+> > +	if (!priv)
+> > +		return -ENOMEM;
+> > +
+> > +	platform_node = of_parse_phandle(pdev->dev.of_node,
+> > +					 "mediatek,platform", 0);
+> > +	if (!platform_node) {
+> > +		dev_info(&pdev->dev,
+> > +			 "Property 'platform' missing or invalid\n");
+> 
+> 	if (!platform_node)
+> 		return dev_err_probe(&pdev->dev, -EINVAL,
+> 				    "mediatek,platform missing or
+> invalid\n");
+> 
+> > +		return -EINVAL;
+got err_platform_node;
+> > +	}
+> > +
+> > +	hdmi_codec = of_parse_phandle(pdev->dev.of_node,
+> > +				      "mediatek,hdmi-codec", 0);
+> > +	if (!hdmi_codec) {
+> > +		dev_info(&pdev->dev,
+> > +			 "Property 'hdmi' missing or invalid\n");
+> 
+> dev_err()
+> 
+> > +		return -EINVAL;
+> > +	}
+Should I of_node_put(platform_node) befor return?
+
+goto err_hdmi_node;
+
+
+> > +
+> > +	for_each_card_prelinks(card, i, dai_link) {
+> > +		if (dai_link->platforms->name)
+> > +			continue;
+> > +
+> > +		if (hdmi_codec && strcmp(dai_link->name, "I2S3") == 0)
+> > {
+> > +			dai_link->codecs->of_node = hdmi_codec;
+> > +			dai_link->ignore = 0;
+> > +		}
+> > +
+> > +		dai_link->platforms->of_node = platform_node;
+> > +	}
+> > +
+> > +	snd_soc_card_set_drvdata(card, priv);
+> > +
+> > +	/* init gpio */
+> > +	ret = mt8186_afe_gpio_init(&pdev->dev);
+> > +	if (ret)
+> > +		dev_info(&pdev->dev, "init gpio error\n");
+> 
+> dev_err() and goto end;
+Yes, goto err_init_gpio and of_node_put for hdmi_codec and
+platform_node.
+> 
+> > +
+> > +	dev_info(&pdev->dev, "%s(), devm_snd_soc_register_card\n",
+> > __func__);
+> > +	ret = devm_snd_soc_register_card(&pdev->dev, card);
+> > +	if (ret)
+> > +		dev_info(&pdev->dev, "%s snd_soc_register_card fail
+> > %d\n",
+> > +			 __func__, ret);
+> 
+> dev_err_probe()
+> 
+> end:
+> 
+err_init_gpio:
+> > +	of_node_put(hdmi_codec);
+err_hdmi_node:
+> > +	of_node_put(platform_node);
+> > +
+err_platform_node:
+> > +	return ret;
+> > +}
+> > +
+> > +#if IS_ENABLED(CONFIG_OF)
+> > +static const struct of_device_id
+> > mt8186_mt6366_da7219_max98357_dt_match[] = {
+> > +	{.compatible =
+> > "mediatek,mt8186_mt6366_da7219_max98357_sound",},
+> > +	{}
+> > +};
+> > +#endif
+> > +
+> > +static struct platform_driver mt8186_mt6366_da7219_max98357_driver
+> > = {
+> > +	.driver = {
+> > +		.name = "mt8186_mt6366_da7219_max98357",
+> > +#if IS_ENABLED(CONFIG_OF)
+> > +		.of_match_table =
+> > mt8186_mt6366_da7219_max98357_dt_match,
+> > +#endif
+> > +		.pm = &snd_soc_pm_ops,
+> > +	},
+> > +	.probe = mt8186_mt6366_da7219_max98357_dev_probe,
+> > +};
+> > +
+> > +module_platform_driver(mt8186_mt6366_da7219_max98357_driver);
+> > +
+> > +/* Module information */
+> > +MODULE_DESCRIPTION("MT8186-MT6366-DA7219-MAX98357 ALSA SoC machine
+> > driver");
+> > +MODULE_AUTHOR("Jiaxin Yu <jiaxin.yu@mediatek.com>");
+> > +MODULE_LICENSE("GPL v2");
+> > +MODULE_ALIAS("mt8186_mt6366_da7219_max98357 soc card");
+> 
+> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
