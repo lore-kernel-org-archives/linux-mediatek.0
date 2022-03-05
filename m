@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B086C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Mar 2022 15:39:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECB40C433FE
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Mar 2022 15:39:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=oQKAnr/pQ8rnle+jk72xtEvIX6/xdjlirzKoVDpJxjA=; b=lBJtaWNZvRIMNI
-	MTcIvLdIW0YZSlYsKMaIzqffiQ9ixgEDrwjwBGRjq00f+qHh90gyolB4e5YrXT7e1asVxwffyCB/Q
-	QrYY57190K46gFgj81OAv49xb8WxxIGcyNaCpILbK3uzUoEMaetQYuG5nc9kPqHQJ/D71hD59DtT5
-	NptVaQdfwT5mmp7KMPt6WGmSkux7S0yfx8nSo2E7KbhZRHqCMWjwFUR/C5JZOYuLaY5hlmN6AcG9V
-	khtlEBxgCpjfWDWeIRSEdZ/ga3guz7JUxJt4Xwp73WL8DavAr1c3plpyFlMEuX64Og92uBIohx42y
-	CuqgyHVqWIz+FZ22tigw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=PbAOdDQXZLuiZwg3DaykaTdEcDKrFVWp/tsfXryjFz4=; b=UWYMZ1og6c6MFX
+	N2TAFHpVrxjHJxLQVQpjrDtr0+r80MWWOcxtfkF9VSgYfkxlwVS6jZ2b32SP/NQD2j9Zt+822fQz/
+	v/+v44SDRM9aA1HtFS/7IdbC8c5KekRZ8wiPzPihe7Naz7S0BIRadgHLG0zQFl8N9dsgimhPBqn2R
+	fBAitPUGiMwzZ3NNOclvWJAQKBHh+fhx5TLfrP90FMvPm45AcvyyN5pc+jiZOOxLsUseTNNwhJJf2
+	OoS1XZUTfswddJcsh+6HpF+IcwrtWXaShiXWatdwDtF3SPnELARETDXDppEmiFs8VXADe5T1dWg39
+	Rcb2qdJatyNdARnVbp4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQWUe-00DTT4-NR; Sat, 05 Mar 2022 15:38:52 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nQWUj-00DTV5-8p; Sat, 05 Mar 2022 15:38:57 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQWUZ-00DTSE-S5
- for linux-mediatek@lists.infradead.org; Sat, 05 Mar 2022 15:38:49 +0000
+ id 1nQWUg-00DTTQ-10
+ for linux-mediatek@lists.infradead.org; Sat, 05 Mar 2022 15:38:56 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 17089B80AF6;
- Sat,  5 Mar 2022 15:38:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A070C004E1;
- Sat,  5 Mar 2022 15:38:42 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 261FC61236;
+ Sat,  5 Mar 2022 15:38:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 233EFC340EE;
+ Sat,  5 Mar 2022 15:38:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646494723;
- bh=zxvHvr27s0mGN1RkZiqCVZJvjw0t85N6ds69F5b781A=;
- h=From:To:Cc:Subject:Date:From;
- b=iN4nFl3fetdvAK6cdPAC/4tBC31SsH5HdXHwfVr7xsbAvQ0ncP4FrZnG0QjP+dKXs
- xL5Rj+q2v86I4S73oE77VS+N1MyH/kvR58t+FMi6I29vyoK0xFVOnGlzlb5IJ6DY+E
- w9rfkqI9KE20rfLsSBBHsFatnZIqSmRlrUESFU2UWTUhAd49jxwcnsxWk0xbNktylE
- 62jAu31KCEgneMJxRjJUNLeyuhj07XHTxeqvx1xdNaTvT/on0Q/olN9hfXVtKpSxA4
- i+VSp4Ca01LP8fgmv8tkb2x1jHsvfEltTML9tQkuRtyaT+CdAbcf2uptyML/LLNWDm
- fQUc2i4JAN11w==
+ s=k20201202; t=1646494730;
+ bh=grD4qCKg+5MGZS+dLKRq11Zn0kDOSZ1rhy9CLQmmYcQ=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=FLDweQS93nK4zbDElbqs+2afaSfXr5Bfm3QqH+g3VmWNrNKPqnmCqdGytPq1SDGbu
+ jwUycjyGhQGLx2NfK+dxC5xumfgZrXHTf5eKdL5nsOhiNWlE84Ym+OppyWVrN6tAp5
+ 0BI56+zFOzhUfIzhWQiCdasgpLiPLxBuM/Iags1sWJ690z3NxFJVSzHY0LYwHzdypv
+ GqoBzbENUmiLIjbTtE7PI+YQqIbgi2590m6jrlSiKtMxXBty4CKvQBPTcVQt9BCsQL
+ n6/EJ3oM3/gD1N+Mx7HVrONxn6JNjsBiGRqjmTHsAyh+WAwqaJkOUcgGiEZmSjFVb8
+ xel/KygrtwbrA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
 Cc: linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com,
  sean.wang@mediatek.com, deren.wu@mediatek.com,
  linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 0/9] introduce mt7921u driver
-Date: Sat,  5 Mar 2022 16:38:10 +0100
-Message-Id: <cover.1646494452.git.lorenzo@kernel.org>
+Subject: [PATCH v2 3/9] mt76: usb: introduce __mt76u_init utility routine
+Date: Sat,  5 Mar 2022 16:38:13 +0100
+Message-Id: <74e87446e7e09632ddd1b3299443be1b14742003.1646494452.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <cover.1646494452.git.lorenzo@kernel.org>
+References: <cover.1646494452.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220305_073848_114433_188A541A 
-X-CRM114-Status: UNSURE (   9.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220305_073854_178913_D019C0C1 
+X-CRM114-Status: GOOD (  18.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,47 +73,380 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce support for MT7921U 802.11ax 2x2:2SS wireless devices.
+Introduce __mt76u_init unitility routine and move mt7615 usb bus ops
+into mt7615 module in order to allow specifying driver specific
+parameter.
+This is a preliminary patch to add usb support to mt7921 driver.
 
-Changes since v1:
-- implement wfsys reset support
-- fixed power on procedure
-- fixed module unload
-
-Lorenzo Bianconi (9):
-  mt76: usb: add req_type to ___mt76u_rr signature
-  mt76: usb: add req_type to ___mt76u_wr signature
-  mt76: usb: introduce __mt76u_init utility routine
-  mt76: mt7921: disable runtime pm for usb
-  mt76: mt7921: update mt7921_skb_add_usb_sdio_hdr to support usb
-  mt76: mt7921: move mt7921_usb_sdio_tx_prepare_skb in common mac code
-  mt76: mt7921: move mt7921_usb_sdio_tx_complete_skb in common mac code.
-  mt76: mt7921: move mt7921_usb_sdio_tx_status_data in mac common code.
-  mt76: mt7921: add mt7921u driver
-
+Tested-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
  drivers/net/wireless/mediatek/mt76/mt76.h     |  12 +-
- .../net/wireless/mediatek/mt76/mt7615/usb.c   |  68 +++-
+ .../net/wireless/mediatek/mt76/mt7615/usb.c   |  68 ++++++++++-
  .../net/wireless/mediatek/mt76/mt76x0/usb.c   |   2 +-
  .../net/wireless/mediatek/mt76/mt76x2/usb.c   |   2 +-
- .../net/wireless/mediatek/mt76/mt7921/Kconfig |  11 +
- .../wireless/mediatek/mt76/mt7921/Makefile    |   2 +
- .../wireless/mediatek/mt76/mt7921/debugfs.c   |   6 +
- .../net/wireless/mediatek/mt76/mt7921/init.c  |  12 +-
- .../net/wireless/mediatek/mt76/mt7921/mac.c   |  91 ++++++
- .../net/wireless/mediatek/mt76/mt7921/mac.h   |   1 +
- .../net/wireless/mediatek/mt76/mt7921/main.c  |   3 +-
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  34 +-
- .../net/wireless/mediatek/mt76/mt7921/regs.h  |  50 ++-
- .../net/wireless/mediatek/mt76/mt7921/sdio.c  |   6 +-
- .../wireless/mediatek/mt76/mt7921/sdio_mac.c  |  83 -----
- .../wireless/mediatek/mt76/mt7921/sdio_mcu.c  |   2 +-
- .../net/wireless/mediatek/mt76/mt7921/usb.c   | 304 ++++++++++++++++++
- .../wireless/mediatek/mt76/mt7921/usb_mac.c   | 195 +++++++++++
- drivers/net/wireless/mediatek/mt76/usb.c      | 125 +++----
- 19 files changed, 814 insertions(+), 195 deletions(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/usb.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
+ drivers/net/wireless/mediatek/mt76/usb.c      | 112 +++++-------------
+ 5 files changed, 110 insertions(+), 86 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 5e10fe156926..9b2aee9b6ad7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -1274,13 +1274,21 @@ mt76u_bulk_msg(struct mt76_dev *dev, void *data, int len, int *actual_len,
+ void mt76_ethtool_worker(struct mt76_ethtool_worker_info *wi,
+ 			 struct mt76_sta_stats *stats);
+ int mt76_skb_adjust_pad(struct sk_buff *skb, int pad);
++int __mt76u_vendor_request(struct mt76_dev *dev, u8 req, u8 req_type,
++			   u16 val, u16 offset, void *buf, size_t len);
+ int mt76u_vendor_request(struct mt76_dev *dev, u8 req,
+ 			 u8 req_type, u16 val, u16 offset,
+ 			 void *buf, size_t len);
+ void mt76u_single_wr(struct mt76_dev *dev, const u8 req,
+ 		     const u16 offset, const u32 val);
+-int mt76u_init(struct mt76_dev *dev, struct usb_interface *intf,
+-	       bool ext);
++void mt76u_read_copy(struct mt76_dev *dev, u32 offset,
++		     void *data, int len);
++u32 ___mt76u_rr(struct mt76_dev *dev, u8 req, u8 req_type, u32 addr);
++void ___mt76u_wr(struct mt76_dev *dev, u8 req, u8 req_type,
++		 u32 addr, u32 val);
++int __mt76u_init(struct mt76_dev *dev, struct usb_interface *intf,
++		 struct mt76_bus_ops *ops);
++int mt76u_init(struct mt76_dev *dev, struct usb_interface *intf);
+ int mt76u_alloc_mcu_queue(struct mt76_dev *dev);
+ int mt76u_alloc_queues(struct mt76_dev *dev);
+ void mt76u_stop_tx(struct mt76_dev *dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/usb.c b/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
+index aeeba7c72f14..967641aebf5f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
+@@ -21,6 +21,64 @@ static const struct usb_device_id mt7615_device_table[] = {
+ 	{ },
+ };
+ 
++static u32 mt7663u_rr(struct mt76_dev *dev, u32 addr)
++{
++	u32 ret;
++
++	mutex_lock(&dev->usb.usb_ctrl_mtx);
++	ret = ___mt76u_rr(dev, MT_VEND_READ_EXT,
++			  USB_DIR_IN | USB_TYPE_VENDOR, addr);
++	mutex_unlock(&dev->usb.usb_ctrl_mtx);
++
++	return ret;
++}
++
++static void mt7663u_wr(struct mt76_dev *dev, u32 addr, u32 val)
++{
++	mutex_lock(&dev->usb.usb_ctrl_mtx);
++	___mt76u_wr(dev, MT_VEND_WRITE_EXT,
++		    USB_DIR_OUT | USB_TYPE_VENDOR, addr, val);
++	mutex_unlock(&dev->usb.usb_ctrl_mtx);
++}
++
++static u32 mt7663u_rmw(struct mt76_dev *dev, u32 addr,
++		       u32 mask, u32 val)
++{
++	mutex_lock(&dev->usb.usb_ctrl_mtx);
++	val |= ___mt76u_rr(dev, MT_VEND_READ_EXT,
++			   USB_DIR_IN | USB_TYPE_VENDOR, addr) & ~mask;
++	___mt76u_wr(dev, MT_VEND_WRITE_EXT,
++		    USB_DIR_OUT | USB_TYPE_VENDOR, addr, val);
++	mutex_unlock(&dev->usb.usb_ctrl_mtx);
++
++	return val;
++}
++
++static void mt7663u_copy(struct mt76_dev *dev, u32 offset,
++			 const void *data, int len)
++{
++	struct mt76_usb *usb = &dev->usb;
++	int ret, i = 0, batch_len;
++	const u8 *val = data;
++
++	len = round_up(len, 4);
++
++	mutex_lock(&usb->usb_ctrl_mtx);
++	while (i < len) {
++		batch_len = min_t(int, usb->data_len, len - i);
++		memcpy(usb->data, val + i, batch_len);
++		ret = __mt76u_vendor_request(dev, MT_VEND_WRITE_EXT,
++					     USB_DIR_OUT | USB_TYPE_VENDOR,
++					     (offset + i) >> 16, offset + i,
++					     usb->data, batch_len);
++		if (ret < 0)
++			break;
++
++		i += batch_len;
++	}
++	mutex_unlock(&usb->usb_ctrl_mtx);
++}
++
+ static void mt7663u_stop(struct ieee80211_hw *hw)
+ {
+ 	struct mt7615_phy *phy = mt7615_hw_phy(hw);
+@@ -66,6 +124,14 @@ static int mt7663u_probe(struct usb_interface *usb_intf,
+ 		.sta_remove = mt7615_mac_sta_remove,
+ 		.update_survey = mt7615_update_channel,
+ 	};
++	static struct mt76_bus_ops bus_ops = {
++		.rr = mt7663u_rr,
++		.wr = mt7663u_wr,
++		.rmw = mt7663u_rmw,
++		.read_copy = mt76u_read_copy,
++		.write_copy = mt7663u_copy,
++		.type = MT76_BUS_USB,
++	};
+ 	struct usb_device *udev = interface_to_usbdev(usb_intf);
+ 	struct ieee80211_ops *ops;
+ 	struct mt7615_dev *dev;
+@@ -92,7 +158,7 @@ static int mt7663u_probe(struct usb_interface *usb_intf,
+ 	INIT_WORK(&dev->mcu_work, mt7663u_init_work);
+ 	dev->reg_map = mt7663_usb_sdio_reg_map;
+ 	dev->ops = ops;
+-	ret = mt76u_init(mdev, usb_intf, true);
++	ret = __mt76u_init(mdev, usb_intf, &bus_ops);
+ 	if (ret < 0)
+ 		goto error;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+index 436daf6d6d86..0422c332354a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+@@ -245,7 +245,7 @@ static int mt76x0u_probe(struct usb_interface *usb_intf,
+ 	usb_set_intfdata(usb_intf, dev);
+ 
+ 	mt76x02u_init_mcu(mdev);
+-	ret = mt76u_init(mdev, usb_intf, false);
++	ret = mt76u_init(mdev, usb_intf);
+ 	if (ret)
+ 		goto err;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
+index 2575369e44e2..55068f3252ef 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
+@@ -57,7 +57,7 @@ static int mt76x2u_probe(struct usb_interface *intf,
+ 	usb_set_intfdata(intf, dev);
+ 
+ 	mt76x02u_init_mcu(mdev);
+-	err = mt76u_init(mdev, intf, false);
++	err = mt76u_init(mdev, intf);
+ 	if (err < 0)
+ 		goto err;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
+index 4b7a816f1b93..a85e192c9d59 100644
+--- a/drivers/net/wireless/mediatek/mt76/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/usb.c
+@@ -15,9 +15,8 @@ static bool disable_usb_sg;
+ module_param_named(disable_usb_sg, disable_usb_sg, bool, 0644);
+ MODULE_PARM_DESC(disable_usb_sg, "Disable usb scatter-gather support");
+ 
+-static int __mt76u_vendor_request(struct mt76_dev *dev, u8 req,
+-				  u8 req_type, u16 val, u16 offset,
+-				  void *buf, size_t len)
++int __mt76u_vendor_request(struct mt76_dev *dev, u8 req, u8 req_type,
++			   u16 val, u16 offset, void *buf, size_t len)
+ {
+ 	struct usb_interface *uintf = to_usb_interface(dev->dev);
+ 	struct usb_device *udev = interface_to_usbdev(uintf);
+@@ -45,6 +44,7 @@ static int __mt76u_vendor_request(struct mt76_dev *dev, u8 req,
+ 		req, offset, ret);
+ 	return ret;
+ }
++EXPORT_SYMBOL_GPL(__mt76u_vendor_request);
+ 
+ int mt76u_vendor_request(struct mt76_dev *dev, u8 req,
+ 			 u8 req_type, u16 val, u16 offset,
+@@ -62,8 +62,7 @@ int mt76u_vendor_request(struct mt76_dev *dev, u8 req,
+ }
+ EXPORT_SYMBOL_GPL(mt76u_vendor_request);
+ 
+-static u32 ___mt76u_rr(struct mt76_dev *dev, u8 req, u8 req_type,
+-		       u32 addr)
++u32 ___mt76u_rr(struct mt76_dev *dev, u8 req, u8 req_type, u32 addr)
+ {
+ 	struct mt76_usb *usb = &dev->usb;
+ 	u32 data = ~0;
+@@ -77,6 +76,7 @@ static u32 ___mt76u_rr(struct mt76_dev *dev, u8 req, u8 req_type,
+ 
+ 	return data;
+ }
++EXPORT_SYMBOL_GPL(___mt76u_rr);
+ 
+ static u32 __mt76u_rr(struct mt76_dev *dev, u32 addr)
+ {
+@@ -109,20 +109,8 @@ static u32 mt76u_rr(struct mt76_dev *dev, u32 addr)
+ 	return ret;
+ }
+ 
+-static u32 mt76u_rr_ext(struct mt76_dev *dev, u32 addr)
+-{
+-	u32 ret;
+-
+-	mutex_lock(&dev->usb.usb_ctrl_mtx);
+-	ret = ___mt76u_rr(dev, MT_VEND_READ_EXT,
+-			  USB_DIR_IN | USB_TYPE_VENDOR, addr);
+-	mutex_unlock(&dev->usb.usb_ctrl_mtx);
+-
+-	return ret;
+-}
+-
+-static void ___mt76u_wr(struct mt76_dev *dev, u8 req, u8 req_type,
+-			u32 addr, u32 val)
++void ___mt76u_wr(struct mt76_dev *dev, u8 req, u8 req_type,
++		 u32 addr, u32 val)
+ {
+ 	struct mt76_usb *usb = &dev->usb;
+ 
+@@ -131,6 +119,7 @@ static void ___mt76u_wr(struct mt76_dev *dev, u8 req, u8 req_type,
+ 			       addr, usb->data, sizeof(__le32));
+ 	trace_usb_reg_wr(dev, addr, val);
+ }
++EXPORT_SYMBOL_GPL(___mt76u_wr);
+ 
+ static void __mt76u_wr(struct mt76_dev *dev, u32 addr, u32 val)
+ {
+@@ -155,14 +144,6 @@ static void mt76u_wr(struct mt76_dev *dev, u32 addr, u32 val)
+ 	mutex_unlock(&dev->usb.usb_ctrl_mtx);
+ }
+ 
+-static void mt76u_wr_ext(struct mt76_dev *dev, u32 addr, u32 val)
+-{
+-	mutex_lock(&dev->usb.usb_ctrl_mtx);
+-	___mt76u_wr(dev, MT_VEND_WRITE_EXT,
+-		    USB_DIR_OUT | USB_TYPE_VENDOR, addr, val);
+-	mutex_unlock(&dev->usb.usb_ctrl_mtx);
+-}
+-
+ static u32 mt76u_rmw(struct mt76_dev *dev, u32 addr,
+ 		     u32 mask, u32 val)
+ {
+@@ -174,19 +155,6 @@ static u32 mt76u_rmw(struct mt76_dev *dev, u32 addr,
+ 	return val;
+ }
+ 
+-static u32 mt76u_rmw_ext(struct mt76_dev *dev, u32 addr,
+-			 u32 mask, u32 val)
+-{
+-	mutex_lock(&dev->usb.usb_ctrl_mtx);
+-	val |= ___mt76u_rr(dev, MT_VEND_READ_EXT,
+-			   USB_DIR_IN | USB_TYPE_VENDOR, addr) & ~mask;
+-	___mt76u_wr(dev, MT_VEND_WRITE_EXT,
+-		    USB_DIR_OUT | USB_TYPE_VENDOR, addr, val);
+-	mutex_unlock(&dev->usb.usb_ctrl_mtx);
+-
+-	return val;
+-}
+-
+ static void mt76u_copy(struct mt76_dev *dev, u32 offset,
+ 		       const void *data, int len)
+ {
+@@ -219,33 +187,8 @@ static void mt76u_copy(struct mt76_dev *dev, u32 offset,
+ 	mutex_unlock(&usb->usb_ctrl_mtx);
+ }
+ 
+-static void mt76u_copy_ext(struct mt76_dev *dev, u32 offset,
+-			   const void *data, int len)
+-{
+-	struct mt76_usb *usb = &dev->usb;
+-	int ret, i = 0, batch_len;
+-	const u8 *val = data;
+-
+-	len = round_up(len, 4);
+-	mutex_lock(&usb->usb_ctrl_mtx);
+-	while (i < len) {
+-		batch_len = min_t(int, usb->data_len, len - i);
+-		memcpy(usb->data, val + i, batch_len);
+-		ret = __mt76u_vendor_request(dev, MT_VEND_WRITE_EXT,
+-					     USB_DIR_OUT | USB_TYPE_VENDOR,
+-					     (offset + i) >> 16, offset + i,
+-					     usb->data, batch_len);
+-		if (ret < 0)
+-			break;
+-
+-		i += batch_len;
+-	}
+-	mutex_unlock(&usb->usb_ctrl_mtx);
+-}
+-
+-static void
+-mt76u_read_copy_ext(struct mt76_dev *dev, u32 offset,
+-		    void *data, int len)
++void mt76u_read_copy(struct mt76_dev *dev, u32 offset,
++		     void *data, int len)
+ {
+ 	struct mt76_usb *usb = &dev->usb;
+ 	int i = 0, batch_len, ret;
+@@ -267,6 +210,7 @@ mt76u_read_copy_ext(struct mt76_dev *dev, u32 offset,
+ 	}
+ 	mutex_unlock(&usb->usb_ctrl_mtx);
+ }
++EXPORT_SYMBOL_GPL(mt76u_read_copy);
+ 
+ void mt76u_single_wr(struct mt76_dev *dev, const u8 req,
+ 		     const u16 offset, const u32 val)
+@@ -1115,24 +1059,13 @@ static const struct mt76_queue_ops usb_queue_ops = {
+ 	.kick = mt76u_tx_kick,
+ };
+ 
+-int mt76u_init(struct mt76_dev *dev,
+-	       struct usb_interface *intf, bool ext)
++int __mt76u_init(struct mt76_dev *dev, struct usb_interface *intf,
++		 struct mt76_bus_ops *ops)
+ {
+-	static struct mt76_bus_ops mt76u_ops = {
+-		.read_copy = mt76u_read_copy_ext,
+-		.wr_rp = mt76u_wr_rp,
+-		.rd_rp = mt76u_rd_rp,
+-		.type = MT76_BUS_USB,
+-	};
+ 	struct usb_device *udev = interface_to_usbdev(intf);
+ 	struct mt76_usb *usb = &dev->usb;
+ 	int err;
+ 
+-	mt76u_ops.rr = ext ? mt76u_rr_ext : mt76u_rr;
+-	mt76u_ops.wr = ext ? mt76u_wr_ext : mt76u_wr;
+-	mt76u_ops.rmw = ext ? mt76u_rmw_ext : mt76u_rmw;
+-	mt76u_ops.write_copy = ext ? mt76u_copy_ext : mt76u_copy;
+-
+ 	INIT_WORK(&usb->stat_work, mt76u_tx_status_data);
+ 
+ 	usb->data_len = usb_maxpacket(udev, usb_sndctrlpipe(udev, 0), 1);
+@@ -1144,7 +1077,7 @@ int mt76u_init(struct mt76_dev *dev,
+ 		return -ENOMEM;
+ 
+ 	mutex_init(&usb->usb_ctrl_mtx);
+-	dev->bus = &mt76u_ops;
++	dev->bus = ops;
+ 	dev->queue_ops = &usb_queue_ops;
+ 
+ 	dev_set_drvdata(&udev->dev, dev);
+@@ -1170,6 +1103,23 @@ int mt76u_init(struct mt76_dev *dev,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(__mt76u_init);
++
++int mt76u_init(struct mt76_dev *dev, struct usb_interface *intf)
++{
++	static struct mt76_bus_ops bus_ops = {
++		.rr = mt76u_rr,
++		.wr = mt76u_wr,
++		.rmw = mt76u_rmw,
++		.read_copy = mt76u_read_copy,
++		.write_copy = mt76u_copy,
++		.wr_rp = mt76u_wr_rp,
++		.rd_rp = mt76u_rd_rp,
++		.type = MT76_BUS_USB,
++	};
++
++	return __mt76u_init(dev, intf, &bus_ops);
++}
+ EXPORT_SYMBOL_GPL(mt76u_init);
+ 
+ MODULE_AUTHOR("Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>");
 -- 
 2.35.1
 
