@@ -4,70 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ABAFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Mar 2022 11:13:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97210C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Mar 2022 15:39:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Pol1FGF2LaseulhrZCqSYl4dNsVFcyNZfs1ffXoSLY0=; b=MjgvBUUoYdjmhi
-	aBfRsBi++bK5pcQe1+e9j4YyajSM6qxVbAR9N3pPXtSRZFa4TdNWQ4KkC4Pt/AoA+zXGdUxhuUU1r
-	opTq/Hj6nDNdcrrGllTGCCUN0AsUOe1ubYzW5Zhdg8rFJL7q1VoZQpnEwTgQU8YVcGmAXxwz4matP
-	5o/oih6qJLYTYsN+5KCOFofkYtJatKArR4sOJjigge7vgPrc1WKjT/VTAdgSb7jNW58sTt3sO/sQx
-	rt7Cw6RL5tgCq2VLn9mRhTSAnlKQh9SGX8YqxFsHV1VuReZ1Z5qGtHNaIOPl1UzkpIr2fJX/1l4/l
-	hRLL0TefVWUrDFwlBs1w==;
+	List-Owner; bh=bI4f/YQCBrX2jvEX6OSm54TKyf51N83ApXmjX58ovoA=; b=UGxrSVAKPKRTO7
+	8rrxBo6ZGWs1m6wUeYcULWZZpMhygrlL3Qf9Msh4TKHWeJOgZ5UXfjqNErxHP20sl/DjLZ4AVC3vY
+	F+dw7qAxyPEgyBA5PcbO04ZgGVi54KfoBHfijUfIgTtt+4Pzx/a3//soxhT9kNmwRjFx3ywom/JZ2
+	pneZ+5SA49sUfIOtgOAwzl86vSQwkUPqG8TycviKiQfFjVxxgzh4dUr5JBuQe9hINhqZug+Dk2qG6
+	+wz6JdNQo8XdJCaIRbmcnO/FtOzkJ3bnByOvDTaKreR6aHodl3We14BY7O8pyVl/59bmf1F6vKo5k
+	03cr1OgodkIsMGA9+A8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQSLb-00DCTC-43; Sat, 05 Mar 2022 11:13:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nQWUg-00DTTx-7x; Sat, 05 Mar 2022 15:38:54 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQSLN-00DCPN-T0; Sat, 05 Mar 2022 11:13:03 +0000
-X-UUID: 1c6cb7337e36459db8d354c892e52196-20220305
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=6pIZmQxImdnfeYUfryuTfytEHi8Cp45HQS37GhtSebg=; 
- b=kQ33cOxZNArbEP4z3DLmWWZV4X4XkzDzubiMvGyZTW2g4Cm0TLWcR4H1tNDjhwnqphxQuGkHkEkahO+ptvFmaf1G6U/1TyuuDk5Ku911SdQ7D9i4+ETe5ZaxBYnuyi+rwqY/D239i3RyNbq24gzSiUDZNkv6ExWKhMpJ8DEhWGg=;
-X-UUID: 1c6cb7337e36459db8d354c892e52196-20220305
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1593983072; Sat, 05 Mar 2022 04:12:55 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 5 Mar 2022 03:12:53 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Sat, 5 Mar 2022 19:12:52 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 5 Mar 2022 19:12:51 +0800
-Message-ID: <f11791bc48c466ddc737e23d767bb8dadd218a36.camel@mediatek.com>
-Subject: Re: [v2 07/17] ASoC: mediatek: mt8186: support pcm in platform driver
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- <broonie@kernel.org>
-CC: <lgirdwood@gmail.com>, <tiwai@suse.com>, <robh+dt@kernel.org>,
- <matthias.bgg@gmail.com>, <perex@perex.cz>, <p.zabel@pengutronix.de>,
- <geert+renesas@glider.be>, <trevor.wu@mediatek.com>, <tzungbi@google.com>,
- <aaronyu@google.com>, <zhangqilong3@huawei.com>,
- <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>
-Date: Sat, 5 Mar 2022 19:12:51 +0800
-In-Reply-To: <78474983-a07c-6b1d-797a-d0788f3577b6@collabora.com>
-References: <20220217134205.15400-1-jiaxin.yu@mediatek.com>
- <20220217134205.15400-8-jiaxin.yu@mediatek.com>
- <78474983-a07c-6b1d-797a-d0788f3577b6@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nQWUd-00DTT3-E6
+ for linux-mediatek@lists.infradead.org; Sat, 05 Mar 2022 15:38:52 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 02CB6B80C76;
+ Sat,  5 Mar 2022 15:38:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40D2EC004E1;
+ Sat,  5 Mar 2022 15:38:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1646494728;
+ bh=7ghIDG7930tgRqC4mgjloK/gSp+YSv4hNVjtC4qVZ9Q=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=NNnG/gc0YH6gmEnlPgEgijojtim8ciwYZVSnRZ6oC7c2eiDgHHKxVqxxlgTFMQ5k7
+ MvqMZJt+Lq+Ao1utthjPyrfV0Ghue62ojU2qWPgjCeP635LsaO+r3a6ClozSGwCeV2
+ Z5l5nHihgCJKm79WHB2ouaR3g191g1VN+AT/ORycqX+p9rvxXzPnPZ4YysN5X8bCMr
+ AG+51AcIHxGVytuJgKdwFw2D8TzhHUsTrmdmzebWTyVJCbCCmAisK4iPAjJ0E2pVTP
+ Jban404sJDAHDjM+JQJ2/aDyqL3OYIbFGL+mHZo7y7yQ5raGDj+0tzwj3skh4OVdoQ
+ Pj4wQep2Ln/YQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: nbd@nbd.name
+Cc: linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com,
+ sean.wang@mediatek.com, deren.wu@mediatek.com,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 2/9] mt76: usb: add req_type to ___mt76u_wr signature
+Date: Sat,  5 Mar 2022 16:38:12 +0100
+Message-Id: <8e36680d6f280108d264a0166957f3f12b2c731f.1646494452.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <cover.1646494452.git.lorenzo@kernel.org>
+References: <cover.1646494452.git.lorenzo@kernel.org>
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220305_031301_978280_9BA5BBC4 
-X-CRM114-Status: GOOD (  22.51  )
+X-CRM114-CacheID: sfid-20220305_073851_655621_3FB4F15E 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,257 +73,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-02-18 at 15:54 +0100, AngeloGioacchino Del Regno wrote:
-> Il 17/02/22 14:41, Jiaxin Yu ha scritto:
-> > This patch adds mt8186 pcm dai driver.
-> > 
-> > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-> > ---
-> >   sound/soc/mediatek/mt8186/mt8186-dai-pcm.c | 432
-> > +++++++++++++++++++++
-> >   1 file changed, 432 insertions(+)
-> >   create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-pcm.c
-> > 
-> > diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-pcm.c
-> > b/sound/soc/mediatek/mt8186/mt8186-dai-pcm.c
-> > new file mode 100644
-> > index 000000000000..73b3f720ed35
-> > --- /dev/null
-> > +++ b/sound/soc/mediatek/mt8186/mt8186-dai-pcm.c
-> > @@ -0,0 +1,432 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +//
-> > +// MediaTek ALSA SoC Audio DAI I2S Control
-> > +//
-> > +// Copyright (c) 2022 MediaTek Inc.
-> > +// Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
-> > +
-> > +#include <linux/regmap.h>
-> > +#include <sound/pcm_params.h>
-> > +#include "mt8186-afe-common.h"
-> > +#include "mt8186-afe-gpio.h"
-> > +#include "mt8186-interconnection.h"
-> > +
-> > +struct mtk_afe_pcm_priv {
-> > +	unsigned int id;
-> > +	unsigned int fmt;
-> > +	unsigned int bck_invert;
-> > +	unsigned int lck_invert;
-> > +};
-> > +
-> > +enum AUD_TX_LCH_RPT {
-> 
-> lowercase enumeration names please...
-> 
-> enum aud_tx_lch_rpt {
-> 	AUD_TX....BLAH
-> };
-> 
-Ok, I will fix them.
+This is a preliminary patch to add usb support to mt7921 driver.
 
-> > +	AUD_TX_LCH_RPT_NO_REPEAT = 0,
-> > +	AUD_TX_LCH_RPT_REPEAT = 1
-> > +};
-> > +
-> > +enum AUD_VBT_16K_MODE {
-> > +	AUD_VBT_16K_MODE_DISABLE = 0,
-> > +	AUD_VBT_16K_MODE_ENABLE = 1
-> > +};
-> > +
-> > +enum AUD_EXT_MODEM {
-> > +	AUD_EXT_MODEM_SELECT_INTERNAL = 0,
-> > +	AUD_EXT_MODEM_SELECT_EXTERNAL = 1
-> > +};
-> > +
-> > +enum AUD_PCM_SYNC_TYPE {
-> > +	/* bck sync length = 1 */
-> > +	AUD_PCM_ONE_BCK_CYCLE_SYNC = 0,
-> > +	/* bck sync length = PCM_INTF_CON1[9:13] */
-> > +	AUD_PCM_EXTENDED_BCK_CYCLE_SYNC = 1
-> > +};
-> > +
-> > +enum AUD_BT_MODE {
-> > +	AUD_BT_MODE_DUAL_MIC_ON_TX = 0,
-> > +	AUD_BT_MODE_SINGLE_MIC_ON_TX = 1
-> > +};
-> > +
-> > +enum AUD_PCM_AFIFO_SRC {
-> > +	/* slave mode & external modem uses different crystal */
-> > +	AUD_PCM_AFIFO_ASRC = 0,
-> > +	/* slave mode & external modem uses the same crystal */
-> > +	AUD_PCM_AFIFO_AFIFO = 1
-> > +};
-> > +
-> > +enum AUD_PCM_CLOCK_SOURCE {
-> > +	AUD_PCM_CLOCK_MASTER_MODE = 0,
-> > +	AUD_PCM_CLOCK_SLAVE_MODE = 1
-> > +};
-> > +
-> > +enum AUD_PCM_WLEN {
-> > +	AUD_PCM_WLEN_PCM_32_BCK_CYCLES = 0,
-> > +	AUD_PCM_WLEN_PCM_64_BCK_CYCLES = 1
-> > +};
-> > +
-> > +enum AUD_PCM_24BIT {
-> > +	AUD_PCM_24BIT_PCM_16_BITS = 0,
-> > +	AUD_PCM_24BIT_PCM_24_BITS = 1
-> > +};
-> > +
-> > +enum AUD_PCM_MODE {
-> > +	AUD_PCM_MODE_PCM_MODE_8K = 0,
-> > +	AUD_PCM_MODE_PCM_MODE_16K = 1,
-> > +	AUD_PCM_MODE_PCM_MODE_32K = 2,
-> > +	AUD_PCM_MODE_PCM_MODE_48K = 3,
-> > +};
-> > +
-> > +enum AUD_PCM_FMT {
-> > +	AUD_PCM_FMT_I2S = 0,
-> > +	AUD_PCM_FMT_EIAJ = 1,
-> > +	AUD_PCM_FMT_PCM_MODE_A = 2,
-> > +	AUD_PCM_FMT_PCM_MODE_B = 3
-> > +};
-> > +
-> > +enum AUD_BCLK_OUT_INV {
-> > +	AUD_BCLK_OUT_INV_NO_INVERSE = 0,
-> > +	AUD_BCLK_OUT_INV_INVERSE = 1
-> > +};
-> > +
-> > +enum AUD_LRCLK_OUT_INV {
-> > +	AUD_LRCLK_OUT_INV_NO_INVERSE = 0,
-> > +	AUD_LRCLK_OUT_INV_INVERSE = 1
-> > +};
-> > +
-> > +enum AUD_PCM_EN {
-> > +	AUD_PCM_EN_DISABLE = 0,
-> > +	AUD_PCM_EN_ENABLE = 1
-> > +};
-> > +
-> 
-> ..snip..
-> 
-> > +
-> > +/* dai ops */
-> > +static int mtk_dai_pcm_hw_params(struct snd_pcm_substream
-> > *substream,
-> > +				 struct snd_pcm_hw_params *params,
-> > +				 struct snd_soc_dai *dai)
-> > +{
-> > +	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-> > +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
-> > +	int pcm_id = dai->id;
-> > +	struct mtk_afe_pcm_priv *pcm_priv = afe_priv->dai_priv[pcm_id];
-> > +	unsigned int rate = params_rate(params);
-> > +	unsigned int rate_reg = mt8186_rate_transform(afe->dev, rate,
-> > dai->id);
-> > +	snd_pcm_format_t format = params_format(params);
-> > +	unsigned int data_width =
-> > +		snd_pcm_format_width(format);
-> > +	unsigned int wlen_width =
-> > +		snd_pcm_format_physical_width(format);
-> > +	unsigned int pcm_con = 0;
-> > +
-> > +	dev_info(afe->dev, "%s(), id %d, stream %d, widget active p %d,
-> > c %d\n",
-> > +		 __func__,
-> > +		 dai->id,
-> > +		 substream->stream,
-> > +		 dai->playback_widget->active,
-> > +		 dai->capture_widget->active);
-> > +	dev_info(afe->dev, "%s(), rate %d, rate_reg %d, data_width %d,
-> > wlen_width %d\n",
-> > +		 __func__,
-> > +		 rate,
-> > +		 rate_reg,
-> > +		 data_width,
-> > +		 wlen_width);
-> 
-> dev_dbg() - also, you don't need one line per variable.
-> 
+Tested-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/usb.c | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
 
-Yes, I will line them up in two.
-> > +
-> > +	if (dai->playback_widget->active || dai->capture_widget-
-> > >active)
-> > +		return 0;
-> > +
-> > +	switch (dai->id) {
-> > +	case MT8186_DAI_PCM:
-> > +		pcm_con |= AUD_TX_LCH_RPT_NO_REPEAT <<
-> > PCM_TX_LCH_RPT_SFT;
-> > +		pcm_con |= AUD_VBT_16K_MODE_DISABLE <<
-> > PCM_VBT_16K_MODE_SFT;
-> > +		pcm_con |= AUD_EXT_MODEM_SELECT_EXTERNAL <<
-> > PCM_EXT_MODEM_SFT;
-> > +		pcm_con |= AUD_PCM_ONE_BCK_CYCLE_SYNC <<
-> > PCM_SYNC_TYPE_SFT;
-> > +		pcm_con |= AUD_BT_MODE_DUAL_MIC_ON_TX <<
-> > PCM_BT_MODE_SFT;
-> > +		pcm_con |= AUD_PCM_AFIFO_AFIFO << PCM_BYP_ASRC_SFT;
-> > +		pcm_con |= AUD_PCM_CLOCK_MASTER_MODE << PCM_SLAVE_SFT;
-> > +		pcm_con |= 0 << PCM_SYNC_LENGTH_SFT;
-> > +
-> > +		/* sampling rate */
-> > +		pcm_con |= rate_reg << PCM_MODE_SFT;
-> > +
-> > +		/* format */
-> > +		pcm_con |= pcm_priv->fmt << PCM_FMT_SFT;
-> > +
-> > +		/* 24bit data width */
-> > +		if (data_width > 16)
-> > +			pcm_con |= AUD_PCM_24BIT_PCM_24_BITS <<
-> > PCM_24BIT_SFT;
-> > +		else
-> > +			pcm_con |= AUD_PCM_24BIT_PCM_16_BITS <<
-> > PCM_24BIT_SFT;
-> > +
-> > +		/* wlen width*/
-> > +		if (wlen_width > 16)
-> > +			pcm_con |= AUD_PCM_WLEN_PCM_64_BCK_CYCLES <<
-> > PCM_WLEN_SFT;
-> > +		else
-> > +			pcm_con |= AUD_PCM_WLEN_PCM_32_BCK_CYCLES <<
-> > PCM_WLEN_SFT;
-> > +
-> > +		/* clock invert */
-> > +		pcm_con |= pcm_priv->lck_invert <<
-> > PCM_SYNC_OUT_INV_SFT;
-> > +		pcm_con |= pcm_priv->bck_invert <<
-> > PCM_BCLK_OUT_INV_SFT;
-> > +
-> > +		regmap_update_bits(afe->regmap, PCM_INTF_CON1,
-> > +				   0xfffffffe, pcm_con);
-> 
-> Fits in one line.
-> 
-> > +		break;
-> > +	default:
-> > +		dev_info(afe->dev, "%s(), id %d not support\n",
-> > +			 __func__, dai->id);
-> 
-> dev_err()
-> 
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int mtk_dai_pcm_set_fmt(struct snd_soc_dai *dai, unsigned
-> > int fmt)
-> > +{
-> > +	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-> > +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
-> > +	struct mtk_afe_pcm_priv *pcm_priv = afe_priv->dai_priv[dai-
-> > >id];
-> > +
-> > +	if (!pcm_priv) {
-> > +		dev_info(afe->dev, "%s(), tdm_priv == NULL", __func__);
-> 
-> dev_err()
-> 
-> > +		return -EINVAL;
-> > +	}
-> > +
+diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
+index 1b0435e0ea33..4b7a816f1b93 100644
+--- a/drivers/net/wireless/mediatek/mt76/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/usb.c
+@@ -121,16 +121,14 @@ static u32 mt76u_rr_ext(struct mt76_dev *dev, u32 addr)
+ 	return ret;
+ }
+ 
+-static void ___mt76u_wr(struct mt76_dev *dev, u8 req,
++static void ___mt76u_wr(struct mt76_dev *dev, u8 req, u8 req_type,
+ 			u32 addr, u32 val)
+ {
+ 	struct mt76_usb *usb = &dev->usb;
+ 
+ 	put_unaligned_le32(val, usb->data);
+-	__mt76u_vendor_request(dev, req,
+-			       USB_DIR_OUT | USB_TYPE_VENDOR,
+-			       addr >> 16, addr, usb->data,
+-			       sizeof(__le32));
++	__mt76u_vendor_request(dev, req, req_type, addr >> 16,
++			       addr, usb->data, sizeof(__le32));
+ 	trace_usb_reg_wr(dev, addr, val);
+ }
+ 
+@@ -146,7 +144,8 @@ static void __mt76u_wr(struct mt76_dev *dev, u32 addr, u32 val)
+ 		req = MT_VEND_MULTI_WRITE;
+ 		break;
+ 	}
+-	___mt76u_wr(dev, req, addr & ~MT_VEND_TYPE_MASK, val);
++	___mt76u_wr(dev, req, USB_DIR_OUT | USB_TYPE_VENDOR,
++		    addr & ~MT_VEND_TYPE_MASK, val);
+ }
+ 
+ static void mt76u_wr(struct mt76_dev *dev, u32 addr, u32 val)
+@@ -159,7 +158,8 @@ static void mt76u_wr(struct mt76_dev *dev, u32 addr, u32 val)
+ static void mt76u_wr_ext(struct mt76_dev *dev, u32 addr, u32 val)
+ {
+ 	mutex_lock(&dev->usb.usb_ctrl_mtx);
+-	___mt76u_wr(dev, MT_VEND_WRITE_EXT, addr, val);
++	___mt76u_wr(dev, MT_VEND_WRITE_EXT,
++		    USB_DIR_OUT | USB_TYPE_VENDOR, addr, val);
+ 	mutex_unlock(&dev->usb.usb_ctrl_mtx);
+ }
+ 
+@@ -180,7 +180,8 @@ static u32 mt76u_rmw_ext(struct mt76_dev *dev, u32 addr,
+ 	mutex_lock(&dev->usb.usb_ctrl_mtx);
+ 	val |= ___mt76u_rr(dev, MT_VEND_READ_EXT,
+ 			   USB_DIR_IN | USB_TYPE_VENDOR, addr) & ~mask;
+-	___mt76u_wr(dev, MT_VEND_WRITE_EXT, addr, val);
++	___mt76u_wr(dev, MT_VEND_WRITE_EXT,
++		    USB_DIR_OUT | USB_TYPE_VENDOR, addr, val);
+ 	mutex_unlock(&dev->usb.usb_ctrl_mtx);
+ 
+ 	return val;
+-- 
+2.35.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
