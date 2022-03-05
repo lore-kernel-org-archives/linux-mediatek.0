@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B718BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Mar 2022 11:08:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ABAFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Mar 2022 11:13:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iPxpnTt7Cx9ks/5ZbLBwzi5B+BuFR6hd7DG7O4n3HyY=; b=yFsDf48+Sel9lD
-	wB8CH/SO9kdOjrCEWoojpOAwZ+y5RYziI74ALAPpj1mThnrWEHussUfUPl/avvRtqEOKPeHzjrBoQ
-	3cmOazOn64II7/fbZy/ypGfbXPEd9jKldU+SZla/9EC7qwPFSFd18Y6msvy/Jz25z0daNWEFcOf+W
-	tfRMt/A+VxbDbsMDUX52z2TySEVpXci2DoNc1bcFwOsZnfBZxsp7fgSvsBZqxo9JTQx5hLc3/OoD2
-	dssJFLBMgepCOPjSb2q/XaILsY4Z6mf7EDaNbrNAsKNAhyR/q0+R5opHgLdwjoZt3ugzTuXRamziW
-	t6ETSyjH+bzjdCvO20Sw==;
+	List-Owner; bh=Pol1FGF2LaseulhrZCqSYl4dNsVFcyNZfs1ffXoSLY0=; b=MjgvBUUoYdjmhi
+	aBfRsBi++bK5pcQe1+e9j4YyajSM6qxVbAR9N3pPXtSRZFa4TdNWQ4KkC4Pt/AoA+zXGdUxhuUU1r
+	opTq/Hj6nDNdcrrGllTGCCUN0AsUOe1ubYzW5Zhdg8rFJL7q1VoZQpnEwTgQU8YVcGmAXxwz4matP
+	5o/oih6qJLYTYsN+5KCOFofkYtJatKArR4sOJjigge7vgPrc1WKjT/VTAdgSb7jNW58sTt3sO/sQx
+	rt7Cw6RL5tgCq2VLn9mRhTSAnlKQh9SGX8YqxFsHV1VuReZ1Z5qGtHNaIOPl1UzkpIr2fJX/1l4/l
+	hRLL0TefVWUrDFwlBs1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQSGp-00DBfc-G7; Sat, 05 Mar 2022 11:08:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nQSLb-00DCTC-43; Sat, 05 Mar 2022 11:13:15 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQSGc-00DBcc-JR; Sat, 05 Mar 2022 11:08:08 +0000
-X-UUID: ca81ba45d26e4fe383898cf93b55837a-20220305
+ id 1nQSLN-00DCPN-T0; Sat, 05 Mar 2022 11:13:03 +0000
+X-UUID: 1c6cb7337e36459db8d354c892e52196-20220305
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=pTpFUqzPhjgF5TXAsJfkE90sl5ECPp10g/Mc+gld0o0=; 
- b=SXbj3b8Cv6En2t0ci7351n45c2KBw1U39OWcP4K/Tdv63/AZK5nQxiyVntAjRg0vQv4HUSc7/YsIrwtLD82z+CMgVTXApm4IPnHOlnbUs5N5eQ0PItDIANdSC69fZW6DdnOiOX9LwsFaxHYVhFii8tiq4yDFjPhF9ZQIAVZaXVc=;
-X-UUID: ca81ba45d26e4fe383898cf93b55837a-20220305
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ bh=6pIZmQxImdnfeYUfryuTfytEHi8Cp45HQS37GhtSebg=; 
+ b=kQ33cOxZNArbEP4z3DLmWWZV4X4XkzDzubiMvGyZTW2g4Cm0TLWcR4H1tNDjhwnqphxQuGkHkEkahO+ptvFmaf1G6U/1TyuuDk5Ku911SdQ7D9i4+ETe5ZaxBYnuyi+rwqY/D239i3RyNbq24gzSiUDZNkv6ExWKhMpJ8DEhWGg=;
+X-UUID: 1c6cb7337e36459db8d354c892e52196-20220305
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <jiaxin.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1698275616; Sat, 05 Mar 2022 04:07:58 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 5 Mar 2022 03:07:56 -0800
+ with ESMTP id 1593983072; Sat, 05 Mar 2022 04:12:55 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 5 Mar 2022 03:12:53 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 5 Mar 2022 19:07:54 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Sat, 5 Mar 2022 19:12:52 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 5 Mar 2022 19:07:54 +0800
-Message-ID: <3acf0e4bc1a6ce41c04978c715dd3ed351e4de3d.camel@mediatek.com>
-Subject: Re: [v2 06/17] ASoC: mediatek: mt8186: support i2s in platform driver
+ Transport; Sat, 5 Mar 2022 19:12:51 +0800
+Message-ID: <f11791bc48c466ddc737e23d767bb8dadd218a36.camel@mediatek.com>
+Subject: Re: [v2 07/17] ASoC: mediatek: mt8186: support pcm in platform driver
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  <broonie@kernel.org>
@@ -56,17 +57,17 @@ CC: <lgirdwood@gmail.com>, <tiwai@suse.com>, <robh+dt@kernel.org>,
  <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>
-Date: Sat, 5 Mar 2022 19:07:53 +0800
-In-Reply-To: <30ec6389-5972-02c8-9147-c4624f5f97cb@collabora.com>
+Date: Sat, 5 Mar 2022 19:12:51 +0800
+In-Reply-To: <78474983-a07c-6b1d-797a-d0788f3577b6@collabora.com>
 References: <20220217134205.15400-1-jiaxin.yu@mediatek.com>
- <20220217134205.15400-7-jiaxin.yu@mediatek.com>
- <30ec6389-5972-02c8-9147-c4624f5f97cb@collabora.com>
+ <20220217134205.15400-8-jiaxin.yu@mediatek.com>
+ <78474983-a07c-6b1d-797a-d0788f3577b6@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220305_030806_693197_8789D214 
-X-CRM114-Status: GOOD (  30.01  )
+X-CRM114-CacheID: sfid-20220305_031301_978280_9BA5BBC4 
+X-CRM114-Status: GOOD (  22.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,22 +86,22 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Fri, 2022-02-18 at 15:54 +0100, AngeloGioacchino Del Regno wrote:
 > Il 17/02/22 14:41, Jiaxin Yu ha scritto:
-> > This patch adds mt8186 i2s dai driver
+> > This patch adds mt8186 pcm dai driver.
 > > 
 > > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
 > > ---
-> >   sound/soc/mediatek/mt8186/mt8186-dai-i2s.c | 1371
-> > ++++++++++++++++++++
-> >   1 file changed, 1371 insertions(+)
-> >   create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-i2s.c
+> >   sound/soc/mediatek/mt8186/mt8186-dai-pcm.c | 432
+> > +++++++++++++++++++++
+> >   1 file changed, 432 insertions(+)
+> >   create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-pcm.c
 > > 
-> > diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-i2s.c
-> > b/sound/soc/mediatek/mt8186/mt8186-dai-i2s.c
+> > diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-pcm.c
+> > b/sound/soc/mediatek/mt8186/mt8186-dai-pcm.c
 > > new file mode 100644
-> > index 000000000000..d6db5f6a7315
+> > index 000000000000..73b3f720ed35
 > > --- /dev/null
-> > +++ b/sound/soc/mediatek/mt8186/mt8186-dai-i2s.c
-> > @@ -0,0 +1,1371 @@
+> > +++ b/sound/soc/mediatek/mt8186/mt8186-dai-pcm.c
+> > @@ -0,0 +1,432 @@
 > > +// SPDX-License-Identifier: GPL-2.0
 > > +//
 > > +// MediaTek ALSA SoC Audio DAI I2S Control
@@ -108,328 +109,232 @@ On Fri, 2022-02-18 at 15:54 +0100, AngeloGioacchino Del Regno wrote:
 > > +// Copyright (c) 2022 MediaTek Inc.
 > > +// Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
 > > +
-> > +#include <linux/bitops.h>
 > > +#include <linux/regmap.h>
 > > +#include <sound/pcm_params.h>
-> > +#include "mt8186-afe-clk.h"
 > > +#include "mt8186-afe-common.h"
 > > +#include "mt8186-afe-gpio.h"
 > > +#include "mt8186-interconnection.h"
 > > +
-> > 
-> > +static int mtk_afe_i2s_share_connect(struct snd_soc_dapm_widget
-> > *source,
-> > +				     struct snd_soc_dapm_widget *sink)
-> > +{
-> > +	struct snd_soc_dapm_widget *w = sink;
-> > +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w-
-> > >dapm);
-> > +	struct mtk_base_afe *afe =
-> > snd_soc_component_get_drvdata(cmpnt);
-> > +	struct mtk_afe_i2s_priv *i2s_priv;
+> > +struct mtk_afe_pcm_priv {
+> > +	unsigned int id;
+> > +	unsigned int fmt;
+> > +	unsigned int bck_invert;
+> > +	unsigned int lck_invert;
+> > +};
 > > +
-> > +	i2s_priv = get_i2s_priv_by_name(afe, sink->name);
-> > +
-> > +	if (!i2s_priv) {
-> > +		dev_info(afe->dev, "%s(), i2s_priv == NULL", __func__);
+> > +enum AUD_TX_LCH_RPT {
 > 
-> Is this an error? => dev_err()
-> Is this expected? => dev_dbg()
+> lowercase enumeration names please...
 > 
-It should be an error here and use dev_err().
-I will fix the rest of the similar log level issues.
+> enum aud_tx_lch_rpt {
+> 	AUD_TX....BLAH
+> };
+> 
+Ok, I will fix them.
 
-> > +		return 0;
-> > +	}
+> > +	AUD_TX_LCH_RPT_NO_REPEAT = 0,
+> > +	AUD_TX_LCH_RPT_REPEAT = 1
+> > +};
 > > +
-> > +	if (i2s_priv->share_i2s_id < 0)
-> > +		return 0;
+> > +enum AUD_VBT_16K_MODE {
+> > +	AUD_VBT_16K_MODE_DISABLE = 0,
+> > +	AUD_VBT_16K_MODE_ENABLE = 1
+> > +};
 > > +
-> > +	return i2s_priv->share_i2s_id == get_i2s_id_by_name(afe,
-> > source->name);
-> > +}
+> > +enum AUD_EXT_MODEM {
+> > +	AUD_EXT_MODEM_SELECT_INTERNAL = 0,
+> > +	AUD_EXT_MODEM_SELECT_EXTERNAL = 1
+> > +};
 > > +
-> > +static int mtk_afe_i2s_hd_connect(struct snd_soc_dapm_widget
-> > *source,
-> > +				  struct snd_soc_dapm_widget *sink)
-> > +{
-> > +	struct snd_soc_dapm_widget *w = sink;
-> > +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w-
-> > >dapm);
-> > +	struct mtk_base_afe *afe =
-> > snd_soc_component_get_drvdata(cmpnt);
-> > +	struct mtk_afe_i2s_priv *i2s_priv;
+> > +enum AUD_PCM_SYNC_TYPE {
+> > +	/* bck sync length = 1 */
+> > +	AUD_PCM_ONE_BCK_CYCLE_SYNC = 0,
+> > +	/* bck sync length = PCM_INTF_CON1[9:13] */
+> > +	AUD_PCM_EXTENDED_BCK_CYCLE_SYNC = 1
+> > +};
 > > +
-> > +	i2s_priv = get_i2s_priv_by_name(afe, sink->name);
+> > +enum AUD_BT_MODE {
+> > +	AUD_BT_MODE_DUAL_MIC_ON_TX = 0,
+> > +	AUD_BT_MODE_SINGLE_MIC_ON_TX = 1
+> > +};
 > > +
-> > +	if (!i2s_priv) {
-> > +		dev_info(afe->dev, "%s(), i2s_priv == NULL", __func__);
+> > +enum AUD_PCM_AFIFO_SRC {
+> > +	/* slave mode & external modem uses different crystal */
+> > +	AUD_PCM_AFIFO_ASRC = 0,
+> > +	/* slave mode & external modem uses the same crystal */
+> > +	AUD_PCM_AFIFO_AFIFO = 1
+> > +};
+> > +
+> > +enum AUD_PCM_CLOCK_SOURCE {
+> > +	AUD_PCM_CLOCK_MASTER_MODE = 0,
+> > +	AUD_PCM_CLOCK_SLAVE_MODE = 1
+> > +};
+> > +
+> > +enum AUD_PCM_WLEN {
+> > +	AUD_PCM_WLEN_PCM_32_BCK_CYCLES = 0,
+> > +	AUD_PCM_WLEN_PCM_64_BCK_CYCLES = 1
+> > +};
+> > +
+> > +enum AUD_PCM_24BIT {
+> > +	AUD_PCM_24BIT_PCM_16_BITS = 0,
+> > +	AUD_PCM_24BIT_PCM_24_BITS = 1
+> > +};
+> > +
+> > +enum AUD_PCM_MODE {
+> > +	AUD_PCM_MODE_PCM_MODE_8K = 0,
+> > +	AUD_PCM_MODE_PCM_MODE_16K = 1,
+> > +	AUD_PCM_MODE_PCM_MODE_32K = 2,
+> > +	AUD_PCM_MODE_PCM_MODE_48K = 3,
+> > +};
+> > +
+> > +enum AUD_PCM_FMT {
+> > +	AUD_PCM_FMT_I2S = 0,
+> > +	AUD_PCM_FMT_EIAJ = 1,
+> > +	AUD_PCM_FMT_PCM_MODE_A = 2,
+> > +	AUD_PCM_FMT_PCM_MODE_B = 3
+> > +};
+> > +
+> > +enum AUD_BCLK_OUT_INV {
+> > +	AUD_BCLK_OUT_INV_NO_INVERSE = 0,
+> > +	AUD_BCLK_OUT_INV_INVERSE = 1
+> > +};
+> > +
+> > +enum AUD_LRCLK_OUT_INV {
+> > +	AUD_LRCLK_OUT_INV_NO_INVERSE = 0,
+> > +	AUD_LRCLK_OUT_INV_INVERSE = 1
+> > +};
+> > +
+> > +enum AUD_PCM_EN {
+> > +	AUD_PCM_EN_DISABLE = 0,
+> > +	AUD_PCM_EN_ENABLE = 1
+> > +};
+> > +
 > 
-> Is this an error? => dev_err()
-> Is this expected? => dev_dbg()
-> 
-> Please fix all of the other instances of this.
-> 
-Yes, I know.
-
-> > +		return 0;
-> > +	}
-> > +
-> > +	if (get_i2s_id_by_name(afe, sink->name) ==
-> > +	    get_i2s_id_by_name(afe, source->name))
-> > +		return i2s_priv->low_jitter_en;
-> > +
-> > +	/* check if share i2s need hd en */
-> > +	if (i2s_priv->share_i2s_id < 0)
-> > +		return 0;
-> > +
-> > +	if (i2s_priv->share_i2s_id == get_i2s_id_by_name(afe, source-
-> > >name))
-> > +		return i2s_priv->low_jitter_en;
-> > +
-> > +	return 0;
-> > +}
-> > +
-> 
-> ..snip...
+> ..snip..
 > 
 > > +
 > > +/* dai ops */
-> > +static int mtk_dai_connsys_i2s_hw_params(struct snd_pcm_substream
-> > *substream,
-> > +					 struct snd_pcm_hw_params
-> > *params,
-> > +					 struct snd_soc_dai *dai)
-> > +{
-> > +	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-> > +	unsigned int rate = params_rate(params);
-> > +	unsigned int rate_reg = mt8186_rate_transform(afe->dev,
-> > +						      rate, dai->id);
-> > +	unsigned int i2s_con = 0;
-> > +
-> > +	dev_info(afe->dev, "%s(), id %d, stream %d, rate %d\n",
-> > +		 __func__,
-> > +		 dai->id,
-> > +		 substream->stream,
-> > +		 rate);
-> > +
-> > +	/* non-inverse, i2s mode, slave, 16bits, from connsys */
-> > +	i2s_con |= 0 << INV_PAD_CTRL_SFT;
-> > +	i2s_con |= I2S_FMT_I2S << I2S_FMT_SFT;
-> > +	i2s_con |= 1 << I2S_SRC_SFT;
-> > +	i2s_con |= get_i2s_wlen(SNDRV_PCM_FORMAT_S16_LE) <<
-> > I2S_WLEN_SFT;
-> > +	i2s_con |= 0 << I2SIN_PAD_SEL_SFT;
-> > +	regmap_write(afe->regmap, AFE_CONNSYS_I2S_CON, i2s_con);
-> > +
-> > +	/* use asrc */
-> > +	regmap_update_bits(afe->regmap,
-> > +			   AFE_CONNSYS_I2S_CON,
-> > +			   I2S_BYPSRC_MASK_SFT,
-> > +			   0x0 << I2S_BYPSRC_SFT);
-> 
-> Zero shifted of a billion bits is still zero.
-> 
-Got it.
-
-> regmap_update_bits(afe->regmap, AFE_CONNSYS_I2S_CON,
-> I2S_BYPSRC_MASK_SFT, 0);
-> 
-> > +
-> > +	/* slave mode, set i2s for asrc */
-> > +	regmap_update_bits(afe->regmap,
-> > +			   AFE_CONNSYS_I2S_CON,
-> > +			   I2S_MODE_MASK_SFT,
-> > +			   rate_reg << I2S_MODE_SFT);
-> 
-> 	regmap_update_bits(afe->regmap, AFE_CONNSYS_I2S_CON,
-> 
-> 			   I2S_MODE_MASK_SFT, rate_reg <<
-> I2S_MODE_SFT);
-> 
-> > +
-> > +	if (rate == 44100)
-> > +		regmap_write(afe->regmap, AFE_ASRC_2CH_CON3,
-> > 0x001B9000);
-> 
-> lower case hex, please, and no leading zeros.
-> 
-Got it.
-> > +	else if (rate == 32000)
-> > +		regmap_write(afe->regmap, AFE_ASRC_2CH_CON3, 0x140000);
-> > +	else
-> > +		regmap_write(afe->regmap, AFE_ASRC_2CH_CON3,
-> > 0x001E0000);
-> > +
-> > +	/* Calibration setting */
-> > +	regmap_write(afe->regmap, AFE_ASRC_2CH_CON4, 0x00140000);
-> > +	regmap_write(afe->regmap, AFE_ASRC_2CH_CON9, 0x00036000);
-> > +	regmap_write(afe->regmap, AFE_ASRC_2CH_CON10, 0x0002FC00);
-> > +	regmap_write(afe->regmap, AFE_ASRC_2CH_CON6, 0x00007EF4);
-> > +	regmap_write(afe->regmap, AFE_ASRC_2CH_CON5, 0x00FF5986);
-> 
-
-snip...
-> > +
-> > +	if (i2s_priv)
-> > +		i2s_priv->rate = rate;
-> > +	else
-> > +		dev_info(afe->dev, "%s(), i2s_priv == NULL", __func__);
-> 
-> I'm not sure about this print, maybe this should also be dev_dbg()
-> 
-It should be return error.
-> > +
-> > +	switch (i2s_id) {
-> > +	case MT8186_DAI_I2S_0:
-> > +		i2s_con = I2S_IN_PAD_IO_MUX << I2SIN_PAD_SEL_SFT;
-> > +		i2s_con |= rate_reg << I2S_OUT_MODE_SFT;
-> > +		i2s_con |= I2S_FMT_I2S << I2S_FMT_SFT;
-> > +		i2s_con |= get_i2s_wlen(format) << I2S_WLEN_SFT;
-> > +		regmap_update_bits(afe->regmap, AFE_I2S_CON,
-> > +				   0xffffeffa, i2s_con);
-> > +		break;
-> > +	case MT8186_DAI_I2S_1:
-> > +		i2s_con = I2S1_SEL_O28_O29 << I2S2_SEL_O03_O04_SFT;
-> > +		i2s_con |= rate_reg << I2S2_OUT_MODE_SFT;
-> > +		i2s_con |= I2S_FMT_I2S << I2S2_FMT_SFT;
-> > +		i2s_con |= get_i2s_wlen(format) << I2S2_WLEN_SFT;
-> > +		regmap_update_bits(afe->regmap, AFE_I2S_CON1,
-> > +				   0xffffeffa, i2s_con);
-> > +		break;
-> > +	case MT8186_DAI_I2S_2:
-> > +		i2s_con = 8 << I2S3_UPDATE_WORD_SFT;
-> > +		i2s_con |= rate_reg << I2S3_OUT_MODE_SFT;
-> > +		i2s_con |= I2S_FMT_I2S << I2S3_FMT_SFT;
-> > +		i2s_con |= get_i2s_wlen(format) << I2S3_WLEN_SFT;
-> > +		regmap_update_bits(afe->regmap, AFE_I2S_CON2,
-> > +				   0xffffeffa, i2s_con);
-> > +		break;
-> > +	case MT8186_DAI_I2S_3:
-> > +		i2s_con = rate_reg << I2S4_OUT_MODE_SFT;
-> > +		i2s_con |= I2S_FMT_I2S << I2S4_FMT_SFT;
-> > +		i2s_con |= get_i2s_wlen(format) << I2S4_WLEN_SFT;
-> > +		regmap_update_bits(afe->regmap, AFE_I2S_CON3,
-> > +				   0xffffeffa, i2s_con);
-> > +		break;
-> > +	default:
-> > +		dev_info(afe->dev, "%s(), id %d not support\n",
-> > +			 __func__, i2s_id);
-> 
-> dev_err()
-> 
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	/* set share i2s */
-> > +	if (i2s_priv && i2s_priv->share_i2s_id >= 0)
-> > +		ret = mtk_dai_i2s_config(afe, params, i2s_priv-
-> > >share_i2s_id);
-> > +
-> 
-> 	if (i2s_priv && i2s_priv->share_i2s_id >= 0) {
-> 
-> 		ret = mtk_dai_i2s_config(afe, params, i2s_priv-
-> >share_i2s_id);
-> 
-> 		if (ret)
-> 
-> 			return ret;
-> 
-> 	}
-> 
-> 
-> 
-> 	return 0;
-> 
-> > +	return ret;
-> > +}
-> > +
-> > +static int mtk_dai_i2s_hw_params(struct snd_pcm_substream
+> > +static int mtk_dai_pcm_hw_params(struct snd_pcm_substream
 > > *substream,
 > > +				 struct snd_pcm_hw_params *params,
 > > +				 struct snd_soc_dai *dai)
 > > +{
 > > +	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-> > +
-> > +	return mtk_dai_i2s_config(afe, params, dai->id);
-> > +}
-> > +
-> > +static int mtk_dai_i2s_set_sysclk(struct snd_soc_dai *dai,
-> > +				  int clk_id, unsigned int freq, int
-> > dir)
-> > +{
-> > +	struct mtk_base_afe *afe = dev_get_drvdata(dai->dev);
 > > +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
-> > +	struct mtk_afe_i2s_priv *i2s_priv = afe_priv->dai_priv[dai-
-> > >id];
-> > +	int apll;
-> > +	int apll_rate;
+> > +	int pcm_id = dai->id;
+> > +	struct mtk_afe_pcm_priv *pcm_priv = afe_priv->dai_priv[pcm_id];
+> > +	unsigned int rate = params_rate(params);
+> > +	unsigned int rate_reg = mt8186_rate_transform(afe->dev, rate,
+> > dai->id);
+> > +	snd_pcm_format_t format = params_format(params);
+> > +	unsigned int data_width =
+> > +		snd_pcm_format_width(format);
+> > +	unsigned int wlen_width =
+> > +		snd_pcm_format_physical_width(format);
+> > +	unsigned int pcm_con = 0;
 > > +
-> > +	if (!i2s_priv) {
-> > +		dev_info(afe->dev, "%s(), i2s_priv == NULL", __func__);
+> > +	dev_info(afe->dev, "%s(), id %d, stream %d, widget active p %d,
+> > c %d\n",
+> > +		 __func__,
+> > +		 dai->id,
+> > +		 substream->stream,
+> > +		 dai->playback_widget->active,
+> > +		 dai->capture_widget->active);
+> > +	dev_info(afe->dev, "%s(), rate %d, rate_reg %d, data_width %d,
+> > wlen_width %d\n",
+> > +		 __func__,
+> > +		 rate,
+> > +		 rate_reg,
+> > +		 data_width,
+> > +		 wlen_width);
+> 
+> dev_dbg() - also, you don't need one line per variable.
+> 
+
+Yes, I will line them up in two.
+> > +
+> > +	if (dai->playback_widget->active || dai->capture_widget-
+> > >active)
+> > +		return 0;
+> > +
+> > +	switch (dai->id) {
+> > +	case MT8186_DAI_PCM:
+> > +		pcm_con |= AUD_TX_LCH_RPT_NO_REPEAT <<
+> > PCM_TX_LCH_RPT_SFT;
+> > +		pcm_con |= AUD_VBT_16K_MODE_DISABLE <<
+> > PCM_VBT_16K_MODE_SFT;
+> > +		pcm_con |= AUD_EXT_MODEM_SELECT_EXTERNAL <<
+> > PCM_EXT_MODEM_SFT;
+> > +		pcm_con |= AUD_PCM_ONE_BCK_CYCLE_SYNC <<
+> > PCM_SYNC_TYPE_SFT;
+> > +		pcm_con |= AUD_BT_MODE_DUAL_MIC_ON_TX <<
+> > PCM_BT_MODE_SFT;
+> > +		pcm_con |= AUD_PCM_AFIFO_AFIFO << PCM_BYP_ASRC_SFT;
+> > +		pcm_con |= AUD_PCM_CLOCK_MASTER_MODE << PCM_SLAVE_SFT;
+> > +		pcm_con |= 0 << PCM_SYNC_LENGTH_SFT;
+> > +
+> > +		/* sampling rate */
+> > +		pcm_con |= rate_reg << PCM_MODE_SFT;
+> > +
+> > +		/* format */
+> > +		pcm_con |= pcm_priv->fmt << PCM_FMT_SFT;
+> > +
+> > +		/* 24bit data width */
+> > +		if (data_width > 16)
+> > +			pcm_con |= AUD_PCM_24BIT_PCM_24_BITS <<
+> > PCM_24BIT_SFT;
+> > +		else
+> > +			pcm_con |= AUD_PCM_24BIT_PCM_16_BITS <<
+> > PCM_24BIT_SFT;
+> > +
+> > +		/* wlen width*/
+> > +		if (wlen_width > 16)
+> > +			pcm_con |= AUD_PCM_WLEN_PCM_64_BCK_CYCLES <<
+> > PCM_WLEN_SFT;
+> > +		else
+> > +			pcm_con |= AUD_PCM_WLEN_PCM_32_BCK_CYCLES <<
+> > PCM_WLEN_SFT;
+> > +
+> > +		/* clock invert */
+> > +		pcm_con |= pcm_priv->lck_invert <<
+> > PCM_SYNC_OUT_INV_SFT;
+> > +		pcm_con |= pcm_priv->bck_invert <<
+> > PCM_BCLK_OUT_INV_SFT;
+> > +
+> > +		regmap_update_bits(afe->regmap, PCM_INTF_CON1,
+> > +				   0xfffffffe, pcm_con);
+> 
+> Fits in one line.
+> 
+> > +		break;
+> > +	default:
+> > +		dev_info(afe->dev, "%s(), id %d not support\n",
+> > +			 __func__, dai->id);
 > 
 > dev_err()
 > 
 > > +		return -EINVAL;
 > > +	}
 > > +
-> > +	if (dir != SND_SOC_CLOCK_OUT) {
-> > +		dev_info(afe->dev, "%s(), dir != SND_SOC_CLOCK_OUT",
-> > __func__);
-> 
-> again...
-> 
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	dev_info(afe->dev, "%s(), freq %d\n", __func__, freq);
-> 
-> dev_dbg()
-> 
-> > +
-> > +	apll = mt8186_get_apll_by_rate(afe, freq);
-> > +	apll_rate = mt8186_get_apll_rate(afe, apll);
-> > +
-> > +	if (freq > apll_rate) {
-> > +		dev_info(afe->dev, "%s(), freq > apll rate", __func__);
-> 
-> dev_err() .... please fix the rest as well.
-> 
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	if (apll_rate % freq != 0) {
-> > +		dev_info(afe->dev, "%s(), APLL cannot generate freq
-> > Hz", __func__);
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	i2s_priv->mclk_rate = freq;
-> > +	i2s_priv->mclk_apll = apll;
-> > +
-> > +	if (i2s_priv->share_i2s_id > 0) {
-> > +		struct mtk_afe_i2s_priv *share_i2s_priv;
-> > +
-> > +		share_i2s_priv = afe_priv->dai_priv[i2s_priv-
-> > >share_i2s_id];
-> > +		if (!share_i2s_priv) {
-> > +			dev_info(afe->dev, "%s(), share_i2s_priv ==
-> > NULL", __func__);
-> > +			return -EINVAL;
-> > +		}
-> > +
-> > +		share_i2s_priv->mclk_rate = i2s_priv->mclk_rate;
-> > +		share_i2s_priv->mclk_apll = i2s_priv->mclk_apll;
-> > +	}
-> > +
 > > +	return 0;
 > > +}
 > > +
+> > +static int mtk_dai_pcm_set_fmt(struct snd_soc_dai *dai, unsigned
+> > int fmt)
+> > +{
+> > +	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+> > +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
+> > +	struct mtk_afe_pcm_priv *pcm_priv = afe_priv->dai_priv[dai-
+> > >id];
+> > +
+> > +	if (!pcm_priv) {
+> > +		dev_info(afe->dev, "%s(), tdm_priv == NULL", __func__);
 > 
-> Regards,
-> Angelo
+> dev_err()
 > 
+> > +		return -EINVAL;
+> > +	}
+> > +
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
