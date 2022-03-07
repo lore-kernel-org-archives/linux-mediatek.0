@@ -4,102 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B0E1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 21:43:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84FAAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 21:47:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9kx30NfCuoE4f7StDUBIgetC5cDSRTgNlQVxRoAeQXM=; b=ugxPczZgJOTYMX
-	KCEQV4NxXvs651KQjU5Qxw0vSmeNxNa7/vLwNjSVGSriqyIg5AVPKOPQol9QWnojH5FaeoqBIztXo
-	X/bwgmM74VzOzDxAZQOGmuqpV66fB0TcPqK7Zqwc8tdhVnlyNa6xMDo68h7AjshuSSEZSFinDxRF+
-	fV6ZQkOj28JhqzcASwvxozfc5HLxLPXXjEq+uU9VeQhoSShsCLqLo11HZ8dw1C9qf3y7MK2LJp0Tl
-	4YNubvULpoTaWWWwZuIqGH3/Q2336M5aTUe52egDG0eie0x/kUsO1lCLu8B2ka/meiF6Q1WIIRsEk
-	vNC079jvh+3kAmsqqp1A==;
+	List-Owner; bh=dRwcd0eFm2cULe6zKf/kzDYS7jPzHf52MKG1qNKtIlM=; b=3Mw6me7tqearFv
+	DFk8Cfqaxd7BETmU9MoFMTDTXlFVtw+H1saTnlo5ZFjzcYHIxXKzjkdw+7mIJL+l/5pKHuQ7+ta5I
+	PwwuAZB9hMi7WymzNqRJRx45XGywoFfovBGbmKg+xu6TxWcCYiAHLf2JEizmGiIMJ2hUz2nZRYesk
+	Hp29uvfGAIYkZ8TTu8RoTDDtvv23ECWmug6Y2nppS4byn2X5urUHqEm7hz71NAkjjCh3iJ63/RsiT
+	NP5s5x02nLsNtyNtHKR3GMO9goeWdCk9vmbJjqroKGsKFjBySUUtCb5OOqrmB8PTiWmeC4T5Jzxm5
+	Fo2aCHNNJh1UbrYHclHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRL82-001ex2-1Y; Mon, 07 Mar 2022 21:42:54 +0000
-Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
+	id 1nRLC6-001fSQ-MX; Mon, 07 Mar 2022 21:47:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRL7y-001ewC-Qe
- for linux-mediatek@lists.infradead.org; Mon, 07 Mar 2022 21:42:52 +0000
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id 134053F7E3
- for <linux-mediatek@lists.infradead.org>; Mon,  7 Mar 2022 21:42:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1646689368;
- bh=MhNMfDbHr8DyNFMUPNwO39VGUJ2PygUUS2WxU9QRbWs=;
- h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
- In-Reply-To:Content-Type;
- b=j7UA/72aChWwwyrSM5SeodvG2O8hOb1j0l/vXCSe85DNuUWXm/0POtwWD7kOqpo40
- wr4N9UJr4k4dmTln3U+BsjW+yWbxRes6LOpSZEhnFFkDwRON7toxmgn7UeTk7EZ+s4
- LDPECfarZzm4WUUlagn1sB6NN3GDP5hLBs9bDHjqId7/HrThMf4BAj8lctx6CBsMBG
- 0TORM93RHhYd8olIurjGRwCE061fLLolhwMUasiuuy6AluNjzLzbK68Rsaw0A1aUGp
- jnaVKYPZv3blDKZ4tN0NVxQnXCrI+2NszBiV8BOsYYWAFol++/Y+/CdMktGgWk0sve
- jXAwHuho+z5sA==
-Received: by mail-ed1-f71.google.com with SMTP id
- cm27-20020a0564020c9b00b004137effc24bso9408450edb.10
- for <linux-mediatek@lists.infradead.org>; Mon, 07 Mar 2022 13:42:48 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=MhNMfDbHr8DyNFMUPNwO39VGUJ2PygUUS2WxU9QRbWs=;
- b=QKnRNGYywDSxAeFby1wzXzBELFHaZ0jA5y0JGjhzwl9kcL1fAs7pHJyz/PYwdsaL7L
- OPBo5hr3oqEood0ZUQj/RRVdcr6PM45UkeR8Np1gug9h2J/VLbD30XyFFmuzjMumG0lA
- KguCo8aMGxkdzmgDUfnA7zDX+NucJ0YHnGNBLetq+ZefGVqJFh9qNGdVlEok62e7H6Cl
- ID1vYEvI7rBmVAWBvccd/6RQScKR/vs2dwR13Nr3L7UCsrHZTZ8u5ChfxwIClcBBPLIT
- +IEXPofC6Z1wxjuEN6f69//aNvOy5nw7ULyR47rrxOqfbpPZH2ERFW2B1JwdJCAh3RrS
- XqeQ==
-X-Gm-Message-State: AOAM532L8DDBw8tg14VSeFbWtNch7F2dUCdVbZTw7yGOeCQv/VjW/BpI
- yyqaeGqXunI5TbZ0Me7Ee2RVSJtXVrGMhfGQOsIKoJG5VVfQLeWGumdvSrMIqXpbr9o74P7QU8f
- RDmmWYfLOIKN4i+ANYisUvsEldw2BcZ11snpBHIHU43RbwqY7qg==
-X-Received: by 2002:a17:907:60ca:b0:6da:8f25:7983 with SMTP id
- hv10-20020a17090760ca00b006da8f257983mr10532846ejc.106.1646689367237; 
- Mon, 07 Mar 2022 13:42:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwYdGvNdcQTcQgY1xPFW9oHn64MaAA5xJnmohahgMntl3auBJxf8s7T1mVacTWUqEeHAeQ7HA==
-X-Received: by 2002:a17:907:60ca:b0:6da:8f25:7983 with SMTP id
- hv10-20020a17090760ca00b006da8f257983mr10532814ejc.106.1646689366933; 
- Mon, 07 Mar 2022 13:42:46 -0800 (PST)
-Received: from [192.168.0.143] (xdsl-188-155-174-239.adslplus.ch.
- [188.155.174.239]) by smtp.gmail.com with ESMTPSA id
- x1-20020a05640226c100b0041668b404basm234923edd.0.2022.03.07.13.42.44
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 07 Mar 2022 13:42:45 -0800 (PST)
-Message-ID: <bf418e08-2e32-5e61-abd8-abb0d8f5c080@canonical.com>
-Date: Mon, 7 Mar 2022 22:42:44 +0100
+ id 1nRLC0-001fRq-Fx
+ for linux-mediatek@lists.infradead.org; Mon, 07 Mar 2022 21:47:03 +0000
+X-UUID: 3928255c0d9842a2b675e4d80618091a-20220307
+X-UUID: 3928255c0d9842a2b675e4d80618091a-20220307
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1318082295; Mon, 07 Mar 2022 14:46:52 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 7 Mar 2022 13:46:51 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 8 Mar 2022 05:46:37 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 8 Mar 2022 05:46:37 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <Deren.Wu@mediatek.com>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH] mt76: mt7921: move mt7921_init_hw in a dedicated work
+Date: Tue, 8 Mar 2022 05:46:36 +0800
+Message-ID: <1646689596-21189-1-git-send-email-sean.wang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <0358e31e71481dec87f7ecb3b040db53076ffc4a.1646654230.git.lorenzo@kernel.org>
+References: <0358e31e71481dec87f7ecb3b040db53076ffc4a.1646654230.git.lorenzo@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH 1/3] dt-bindings: devfreq: mediatek: add mtk cci devfreq
- dt-bindings
-Content-Language: en-US
-To: Tim Chang <jia-wei.chang@mediatek.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, fan.chen@mediatek.com, louis.yu@mediatek.com,
- roger.lu@mediatek.com, Allen-yy.Lin@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com, hsinyi@google.com,
- Jia-Wei Chang <jia-wei.chang@mediatek.corp-partner.google.com>
-References: <20220307122513.11822-1-jia-wei.chang@mediatek.com>
- <20220307122513.11822-2-jia-wei.chang@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-In-Reply-To: <20220307122513.11822-2-jia-wei.chang@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220307_134251_105968_2E87D60A 
-X-CRM114-Status: GOOD (  26.10  )
+X-CRM114-CacheID: sfid-20220307_134700_599171_55748842 
+X-CRM114-Status: GOOD (  17.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,129 +71,156 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07/03/2022 13:25, Tim Chang wrote:
-> add devicetree binding of mtk cci devfreq on MediaTek SoC.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Start with capital letter.
+>Firmware initialization can take a while. Move mt7921_init_hw routine in a dedicated work in order to not slow down bootstrap process.
 
-> 
-> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.corp-partner.google.com>
+Hi, Lore
 
-This does not match your From. Please fix this in all your submissions.
+I don't think the patch is really needed and it creates the different state of the driver after mt7921_*_probe between without and with the patch
+we should be careful to handle it.
 
-> ---
->  .../devicetree/bindings/devfreq/mtk-cci.yaml  | 73 +++++++++++++++++++
->  1 file changed, 73 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/devfreq/mtk-cci.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/devfreq/mtk-cci.yaml b/Documentation/devicetree/bindings/devfreq/mtk-cci.yaml
-> new file mode 100644
-> index 000000000000..e64ac4c56758
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/devfreq/mtk-cci.yaml
-> @@ -0,0 +1,73 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/devfreq/mtk-cci.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek Cache Coherent Interconnect (CCI) Devfreq driver Device Tree Bindings
+For example.
 
-Similarly to your other patches - the title describes hardware. Please
-fix it in all your submissions of all your series.
+1) It is possible that ieee80211_ops mt7921_ops is working while mt7921_init_work is not completed, so that creates the race issue between ieee80211_ops mt7921_ops and mt7921_init_work still in progress
 
-Remove "driver Device Tree Bindings". "Devfreq" is Linuxism, so this
-maybe "bus frequency scaling"? Although later you call the device node
-as cci.
+2) mt7921[k,s,e].ko are always successful probed ( the .ko are always shown in `lsmod` ) that would confuse the users even when we actually got the failure of hardware initialization in mt7921_init_work
 
-> +
-> +maintainers:
-> +  - Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> +
-> +description: |
-> +  This module is used to create CCI DEVFREQ.
-> +  The performance will depend on both CCI frequency and CPU frequency.
-> +  For MT8186, CCI co-buck with Little core.
-> +  Contain CCI opp table for voltage and frequency scaling.
+so I would prefer to wait a while in mt7921_*_proble until the hardware is ready to be working to get rid of the extra synchronization to be added as well as keep the driver much simple.
 
-Half of this description (first and last sentence) does not describe the
-actual hardware. Please describe hardware, not driver.
+        Sean
 
-> +
-> +properties:
-> +  compatible:
-> +    const: "mediatek,mt8186-cci"
-
-No need for quotes.
-
-> +
-> +  clocks:
-> +    items:
-> +      - description:
-> +          The first one is the multiplexer for clock input of CPU cluster.
-> +      - description:
-> +          The other is used as an intermediate clock source when the original
-> +          CPU is under transition and not stable yet.
-> +
-> +  clock-names:
-> +    items:
-> +      - const: "cci"
-> +      - const: "intermediate"
-
-No need for quotes.
-
-> +
-> +  operating-points-v2:
-> +    description:
-> +      For details, please refer to
-> +      Documentation/devicetree/bindings/opp/opp-v2.yaml
-> +
-> +  opp-table: true
-
-Same comments as your CPU freq bindings apply.
-
-> +
-> +  proc-supply:
-> +    description:
-> +      Phandle of the regulator for CCI that provides the supply voltage.
-> +
-> +  sram-supply:
-> +    description:
-> +      Phandle of the regulator for sram of CCI that provides the supply
-> +      voltage. When present, the cci devfreq driver needs to do
-> +      "voltage tracking" to step by step scale up/down Vproc and Vsram to fit
-> +      SoC specific needs. When absent, the voltage scaling flow is handled by
-> +      hardware, hence no software "voltage tracking" is needed.
-> +
-> +required:
-> +  - compatible
-> +  - clocks
-> +  - clock-names
-> +  - operating-points-v2
-> +  - proc-supply
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mt8186-clk.h>
-> +    cci: cci {
-
-Node names should be generic and describe type of device. Are you sure
-this is a CCI? Maybe "interconnect" suits it better?
-
-> +      compatible = "mediatek,mt8186-cci";
-> +      clocks = <&mcusys CLK_MCU_ARMPLL_BUS_SEL>, <&apmixedsys CLK_APMIXED_MAINPLL>;
-> +      clock-names = "cci", "intermediate";
-> +      operating-points-v2 = <&cci_opp>;
-> +      proc-supply = <&mt6358_vproc12_reg>;
-> +      sram-supply = <&mt6358_vsram_proc12_reg>;
-> +    };
-
-
-Best regards,
-Krzysztof
+>
+>Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+>---
+> .../net/wireless/mediatek/mt76/mt7921/init.c  | 66 +++++++++++++------
+> .../wireless/mediatek/mt76/mt7921/mt7921.h    |  2 +
+> 2 files changed, 49 insertions(+), 19 deletions(-)
+>
+>diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+>index fa6af85bba7b..332af886b95a 100644
+>--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+>+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+>@@ -165,7 +165,7 @@ static int __mt7921_init_hardware(struct mt7921_dev *dev)
+>
+> static int mt7921_init_hardware(struct mt7921_dev *dev)  {
+>-	int ret, idx, i;
+>+	int ret, i;
+>
+>	set_bit(MT76_STATE_INITIALIZED, &dev->mphy.state);
+>
+>@@ -182,6 +182,13 @@ static int mt7921_init_hardware(struct mt7921_dev *dev)
+>		return ret;
+>	}
+>
+>+	return 0;
+>+}
+>+
+>+static int mt7921_init_wcid(struct mt7921_dev *dev) {
+>+	int idx;
+>+
+>	/* Beacon and mgmt frames should occupy wcid 0 */
+>	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7921_WTBL_STA - 1);
+>	if (idx)
+>@@ -195,6 +202,42 @@ static int mt7921_init_hardware(struct mt7921_dev *dev)
+>	return 0;
+> }
+>
+>+static void mt7921_init_work(struct work_struct *work) {
+>+	struct mt7921_dev *dev = container_of(work, struct mt7921_dev,
+>+					      init_work);
+>+	int ret;
+>+
+>+	ret = mt7921_init_hardware(dev);
+>+	if (ret)
+>+		return;
+>+
+>+	mt76_set_stream_caps(&dev->mphy, true);
+>+	mt7921_set_stream_he_caps(&dev->phy);
+>+
+>+	ret = mt76_register_device(&dev->mt76, true, mt76_rates,
+>+				   ARRAY_SIZE(mt76_rates));
+>+	if (ret) {
+>+		dev_err(dev->mt76.dev, "register device failed\n");
+>+		return;
+>+	}
+>+
+>+	ret = mt7921_init_debugfs(dev);
+>+	if (ret) {
+>+		dev_err(dev->mt76.dev, "debugfs register failed\n");
+>+		goto error;
+>+	}
+>+
+>+	ret = mt76_connac_mcu_set_deep_sleep(&dev->mt76, dev->pm.ds_enable);
+>+	if (ret)
+>+		goto error;
+>+
+>+	dev->hw_init_done = true;
+>+	return;
+>+error:
+>+	mt76_unregister_device(&dev->mt76);
+>+}
+>+
+> int mt7921_register_device(struct mt7921_dev *dev)  {
+>	struct ieee80211_hw *hw = mt76_hw(dev); @@ -222,6 +265,7 @@ int mt7921_register_device(struct mt7921_dev *dev)
+>	spin_lock_init(&dev->sta_poll_lock);
+>
+>	INIT_WORK(&dev->reset_work, mt7921_mac_reset_work);
+>+	INIT_WORK(&dev->init_work, mt7921_init_work);
+>
+>	dev->pm.idle_timeout = MT7921_PM_TIMEOUT;
+>	dev->pm.stats.last_wake_event = jiffies; @@ -234,7 +278,7 @@ int mt7921_register_device(struct mt7921_dev *dev)
+>	if (mt76_is_sdio(&dev->mt76))
+>		hw->extra_tx_headroom += MT_SDIO_TXD_SIZE + MT_SDIO_HDR_SIZE;
+>
+>-	ret = mt7921_init_hardware(dev);
+>+	ret = mt7921_init_wcid(dev);
+>	if (ret)
+>		return ret;
+>
+>@@ -262,23 +306,7 @@ int mt7921_register_device(struct mt7921_dev *dev)
+>	dev->mphy.hw->wiphy->available_antennas_rx = dev->mphy.chainmask;
+>	dev->mphy.hw->wiphy->available_antennas_tx = dev->mphy.chainmask;
+>
+>-	mt76_set_stream_caps(&dev->mphy, true);
+>-	mt7921_set_stream_he_caps(&dev->phy);
+>-
+>-	ret = mt76_register_device(&dev->mt76, true, mt76_rates,
+>-				   ARRAY_SIZE(mt76_rates));
+>-	if (ret)
+>-		return ret;
+>-
+>-	ret = mt7921_init_debugfs(dev);
+>-	if (ret)
+>-		return ret;
+>-
+>-	ret = mt76_connac_mcu_set_deep_sleep(&dev->mt76, dev->pm.ds_enable);
+>-	if (ret)
+>-		return ret;
+>-
+>-	dev->hw_init_done = true;
+>+	queue_work(system_wq, &dev->init_work);
+>
+>	return 0;
+> }
+>diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+>index 394a677140da..b6c8f84acb64 100644
+>--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+>+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+>@@ -204,6 +204,8 @@ struct mt7921_dev {
+>	struct list_head sta_poll_list;
+>	spinlock_t sta_poll_lock;
+>
+>+	struct work_struct init_work;
+>+
+>	u8 fw_debug;
+>
+>	struct mt76_connac_pm pm;
+>--
+>2.35.1
+>
+>
+>
 
 _______________________________________________
 Linux-mediatek mailing list
