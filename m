@@ -4,55 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06C60C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 15:57:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBB54C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 15:58:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mA0019PFHRV06gSt+IdFB4t3qlgcQDBKRD92Xpa2y4I=; b=kCBCzFmNBEBud2
-	ifMPFyc1nI7N1kV1ZWUzEfivnF3P8SMRX77+4nwsRD+N03Fv3MMao4ev2RtWREJ9ufXIH2OHlRFLE
-	MwSnt31e5h4iudvaXCA5aqVA+HeRulp4HCNKH5aELyOFd9RIkGJNJT4L5luCg0w5/RZRKMW6b5Llt
-	KQ+HHD4T9Z0LO0k2e4Nfy9SqgmofBiKZWf2lkQ4w8FLxoVZCHS1VI/Aha04UzIdksGJyDU5I6JZMO
-	ALk4HRg633YpwBtAzwpZfWIDWrVNkhaSL61jBkru4pYEAMBjjgvFsjdk3abEYVDeZmha0DyHSAvBz
-	80Ubwi1tHaMEv/6C0PfQ==;
+	List-Owner; bh=apq5EIREUx5HlkOaBIw0l9h1knG/Ih+M+QEhOYyg79Q=; b=W/KAHx++nvRSJX
+	vofbiROJ1g80Ku8ubq2K9zNuTveiNc2Kn9MOi7jlepD0kJFe6JlJloIMQGv54O0F8Vb8Egqsc6kSS
+	J5EYy8R318PhJuL57JVWz7fmsggC2lQb/y+gunS0SI2O4M0aUWTOoKbQKiNT2RfLA4j/TbsrV1nrN
+	i2CmT5/8wpUZ6XI0/Hc9juGdIAfSxQ708D2WnBOBKl7bJVqD76Jz9SXjZuIczdf6yq/jJ2G0DILcP
+	vJRbM7jwCBLtgXoo2iFM+EVqlm7I5vxB5msC3G6ddoMfVoyNtqi58yJoaATcWxRUxXJdIp2ArNPfb
+	gpecTQ829jIU34wOsCrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRFjk-000kqN-0Z; Mon, 07 Mar 2022 15:57:28 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nRFko-000lSH-CO; Mon, 07 Mar 2022 15:58:34 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRFjM-000kbX-FG; Mon, 07 Mar 2022 15:57:06 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id D3E731F43DE9
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1646668622;
- bh=6NoOklKLAvSst15nOrzs5E10D4lpohNoFGlreOLuXl0=;
- h=From:To:Cc:Subject:Date:From;
- b=RHBjRupZj0c8esNwufh5vf3czfEKDc/TX4C2+dN2UNabI1D3e+C0xSAlDfwnpiYK8
- Mg0lSXIa/yrlNUpzy2xYENcDpQ3IxknhWVICVnNncb/oSBDScemMddZteuM3+Grf2p
- Xea/DVARxjmj2MccLrD/zYUdCB7j5J4dpkuMsLoHiRTekU8JxIX86Nwct1OStnLxPC
- wtp6/Cd+/ymSmTmY5YNr8+VgPO2Kx9Zwbd3EVX7Zj2RPODGhiH4NYiTNS0xG0lC5O1
- CACHM5APJKHsBlf8TVPMjCtsx3oMmDTwsLfNbQZbvm0RJlaOOijBU9xerFFff2m5RN
- 7mUIAw5bvHyqg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: minghsiu.tsai@mediatek.com
-Cc: houlong.wei@mediatek.com, andrew-ct.chen@mediatek.com, mchehab@kernel.org,
- matthias.bgg@gmail.com, hans.verkuil@cisco.com,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com, acourbot@chromium.org, irui.wang@mediatek.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] media: platform: mtk-mdp: Fix mdp_ipi_comm structure alignment
-Date: Mon,  7 Mar 2022 16:56:53 +0100
-Message-Id: <20220307155653.460910-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
+ id 1nRFkV-000lGJ-Um; Mon, 07 Mar 2022 15:58:18 +0000
+X-UUID: f28da88335694567809102b0dc9afa75-20220307
+X-UUID: f28da88335694567809102b0dc9afa75-20220307
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <lecopzer.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1867811872; Mon, 07 Mar 2022 08:58:11 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 7 Mar 2022 07:48:09 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 7 Mar 2022 23:47:55 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 7 Mar 2022 23:47:54 +0800
+From: Lecopzer Chen <lecopzer.chen@mediatek.com>
+To: <linux-kernel@vger.kernel.org>
+CC: <lecopzer.chen@mediatek.com>, <acme@kernel.org>,
+ <akpm@linux-foundation.org>, <alexander.shishkin@linux.intel.com>,
+ <catalin.marinas@arm.com>, <davem@davemloft.net>, <jolsa@redhat.com>,
+ <jthierry@redhat.com>, <keescook@chromium.org>, <kernelfans@gmail.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-perf-users@vger.kernel.org>, <mark.rutland@arm.com>,
+ <masahiroy@kernel.org>, <matthias.bgg@gmail.com>, <maz@kernel.org>,
+ <mcgrof@kernel.org>, <mingo@redhat.com>, <namhyung@kernel.org>,
+ <nixiaoming@huawei.com>, <peterz@infradead.org>, <pmladek@suse.com>,
+ <sparclinux@vger.kernel.org>, <sumit.garg@linaro.org>, <wangqing@vivo.com>,
+ <will@kernel.org>, <yj.chiang@mediatek.com>
+Subject: [PATCH v2 0/5] Suppot hld based on Pseudo-NMI for arm64
+Date: Mon, 7 Mar 2022 23:47:24 +0800
+Message-ID: <20220307154729.13477-1-lecopzer.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220307_075704_701231_05E58421 
-X-CRM114-Status: UNSURE (   9.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220307_075816_030743_FDEB256A 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,54 +77,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mdp_ipi_comm structure defines a command that is either
-PROCESS (start processing) or DEINIT (destroy instance); we
-are using this one to send PROCESS or DEINIT commands from Linux
-to an MDP instance through a VPU write but, while the first wants
-us to stay 4-bytes aligned, the VPU instead requires an 8-bytes
-data alignment.
+As we already used hld internally for arm64 since 2020, there still
+doesn't have a proper commit on the upstream and we badly need it.
 
-Keeping in mind that these commands are executed immediately
-after sending them (hence not chained with others before the
-VPU/MDP "actually" start executing), it is fine to simply add
-a padding of 4 bytes to this structure: this keeps the same
-performance as before, as we're still stack-allocating it,
-while avoiding hackery inside of mtk-vpu to ensure alignment
-bringing a definitely bigger performance impact.
+This serise rework on 5.17-rc7 from [1] and the origin author is
+Pingfan Liu <kernelfans@gmail.com>
+Sumit Garg <sumit.garg@linaro.org>
 
-Fixes: c8eb2d7e8202 ("[media] media: Add Mediatek MDP Driver")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
+Qoute from [1]:
 
-This patch has been tested on Acer Chromebook R 13 (MT8173 Elm) on Debian Sid.
+> Hard lockup detector is helpful to diagnose unpaired irq enable/disable.
+> But the current watchdog framework can not cope with arm64 hw perf event
+> easily.
 
-This is an alternative solution to the mtk-vpu approach, found here:
-https://lore.kernel.org/all/20210920170408.1561-1-dafna.hirschfeld@collabora.com
+> On arm64, when lockup_detector_init()->watchdog_nmi_probe(), PMU is not
+> ready until device_initcall(armv8_pmu_driver_init).  And it is deeply
+> integrated with the driver model and cpuhp. Hence it is hard to push the
+> initialization of armv8_pmu_driver_init() before smp_init().
 
- drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h | 2 ++
- 1 file changed, 2 insertions(+)
+> But it is easy to take an opposite approach by enabling watchdog_hld to
+> get the capability of PMU async. 
+> The async model is achieved by expanding watchdog_nmi_probe() with
+> -EBUSY, and a re-initializing work_struct which waits on a
+> wait_queue_head.
 
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h b/drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h
-index 2cb8cecb3077..b810c96695c8 100644
---- a/drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h
-+++ b/drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h
-@@ -40,12 +40,14 @@ struct mdp_ipi_init {
-  * @ipi_id        : IPI_MDP
-  * @ap_inst       : AP mtk_mdp_vpu address
-  * @vpu_inst_addr : VPU MDP instance address
-+ * @padding       : Alignment padding
-  */
- struct mdp_ipi_comm {
- 	uint32_t msg_id;
- 	uint32_t ipi_id;
- 	uint64_t ap_inst;
- 	uint32_t vpu_inst_addr;
-+	uint32_t padding;
- };
- 
- /**
+[1] https://lore.kernel.org/lkml/20211014024155.15253-1-kernelfans@gmail.com/
+
+v2:
+  1. Tweak commit message in patch 01/02/04/05 
+  2. Remove vobose WARN in patch 04 within watchdog core.
+  3. Change from three states variable: detector_delay_init_state to
+     two states variable: lockup_detector_pending_init
+
+     Thanks Petr Mladek <pmladek@suse.com> for the idea.
+     > 1.  lockup_detector_work() called before lockup_detector_check().
+     >     In this case, wait_event() will wait until lockup_detector_check()
+     >     clears detector_delay_pending_init and calls wake_up().
+
+     > 2. lockup_detector_check() called before lockup_detector_work().
+     >    In this case, wait_even() will immediately continue because
+     >    it will see cleared detector_delay_pending_init.
+  4. Add comment in code in patch 04/05 for two states variable changing.
+
+
+Lecopzer Chen (4):
+  kernel/watchdog: remove WATCHDOG_DEFAULT
+  kernel/watchdog: change watchdog_nmi_enable() to void
+  kernel/watchdog: Adapt the watchdog_hld interface for async model
+  arm64: Enable perf events based hard lockup detector
+
+Pingfan Liu (1):
+  kernel/watchdog_hld: Ensure CPU-bound context when creating hardlockup
+    detector event
+
+ arch/arm64/Kconfig             |  2 +
+ arch/arm64/kernel/Makefile     |  1 +
+ arch/arm64/kernel/perf_event.c | 12 +++++-
+ arch/sparc/kernel/nmi.c        |  8 ++--
+ drivers/perf/arm_pmu.c         |  5 +++
+ include/linux/nmi.h            |  5 ++-
+ include/linux/perf/arm_pmu.h   |  2 +
+ kernel/watchdog.c              | 67 +++++++++++++++++++++++++++++++---
+ kernel/watchdog_hld.c          |  8 +++-
+ 9 files changed, 95 insertions(+), 15 deletions(-)
+
 -- 
-2.35.1
+2.25.1
 
 
 _______________________________________________
