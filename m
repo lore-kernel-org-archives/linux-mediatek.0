@@ -4,83 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31217C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 22:48:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32B0FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 23:01:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jR/J/7zA0uBqFqkaSAOmJGKpCO8Ut5vbDpP6O780OPg=; b=tGu6gntpc8DZqDr7W2gp/++vN+
-	TdKmq4jv9Zcs9PbvO79McNgkSPKU8+zX4WoRvu+j6sofeq/YUOlo/7SH5NJ6aJuO0MvYIZz1A7YSY
-	hfp1uYvINb0S+XFB5rKHm7DUfjH/dP49N+ubu5a7SJT985FK1wlx2CMCiksDeanZWtMGZ/1w2I8kl
-	nufaoRTSpOZWcpIM9WZNcO3UYnmHN7jgrbwdZF1kqazMjLD5QWcvY7nh6znbR8cU61tU6aizqsn32
-	f2yUPa9hc4rRduRnRpT5xen202lE5E/oE6Hpmg4RSt90t//bk9eDl9EhmNLwehwvfDeu8kd4BBZva
-	GJNH838Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Wxy0YJGRu28+kXIMnGm5ksdj5bsJ6M29Jqnb1htLkh4=; b=2GkdbVIGaEfffs
+	YD0gZ7xomTTDzTKRE5Is2mODiXfETPj5eMhZlzkfkoyLGrxNNUguVq/k/tPHt5vOfxZIN+brXtbPT
+	D9m2MObwFe3U/KFu2qzizdmaVQY7+a7Zx2loWCvElc+7CLeIo6ioy1YkSO1upXsbBbDVap8SSofk8
+	0+t1+/UNO33e9S20Ij6QZgpuUiwveB+ekzfA7lUt+SxPjBwGsovsOMJoZg/NxhlY5Oim7DCRMh9Je
+	JyGOh/JumcUpVJ95LoL6f44nn+HmlXyq+GXg0/RGuk1domg04ZO990d4Pv0nelslhJhx+CGVWmWkU
+	20E7ys0+Rq9JGvv0y+fA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRM93-001rVf-VD; Mon, 07 Mar 2022 22:48:01 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1nRMLm-001sty-4Q; Mon, 07 Mar 2022 23:01:10 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRM91-001rU0-6S
- for linux-mediatek@lists.infradead.org; Mon, 07 Mar 2022 22:48:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1646693276;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=R4l17NtUg/2qSB9utxPA3lCpWe8wKiOV5UHWKOcozVk=;
- b=LzbZv8O882aLFCw/PWuolBBMo6QKaHzLxFRcZ2j0D7/O3qZoK7KcJ9y+MTXY35nB8hKht2
- LH1eRhiGnAbZAzA152YbSNLzF2A4WoSUSF7IHOM6rQGMoBIi83JZnl8cLR5YL3LdDWCFyZ
- luvTxARzU3N3mj6ey0A31toytNXDcdg=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-50-lkH60AVwOPagkCDH1xo5dg-1; Mon, 07 Mar 2022 17:47:55 -0500
-X-MC-Unique: lkH60AVwOPagkCDH1xo5dg-1
-Received: by mail-qk1-f197.google.com with SMTP id
- 12-20020a37090c000000b0067b32f93b90so2772031qkj.16
- for <linux-mediatek@lists.infradead.org>; Mon, 07 Mar 2022 14:47:55 -0800 (PST)
+ id 1nRMLa-001srw-8w; Mon, 07 Mar 2022 23:00:59 +0000
+Received: by mail-wr1-x433.google.com with SMTP id j17so25756148wrc.0;
+ Mon, 07 Mar 2022 15:00:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=MXb6dcYiaIaX9vW+hIgXAOrUp0mAL09kFtXf/8jaaiQ=;
+ b=mCkLiR1F+3uFUHN4Cux2+9V699zxWgmjUYLh3QxL34WUQrw+14T92MMla/vjH+80f/
+ NWmngOJz6CORhAQ52gzeRJEknJGUvCMFo2lY5mUBfNIx1k761D8dwepm6nB+KcTS8r29
+ Z/tL8471T4EdmOur5LT0/MvjtYjU5dlT04NZIO3jsWRzYtfZk2gRGL474nJBcrAeqOHW
+ PBvBIg6dtvZlqNAGWAFD+Obd03An8gMA9WnL4BzFHq4M+MltcqsinuY3fAsPawHp7R6o
+ gmp4MOp1xj5bRkLarNdnDzD1aaiEhTalnZZmaSr5gNDoxZUMjq/Tan25jljU+w/4gKRS
+ /bbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=R4l17NtUg/2qSB9utxPA3lCpWe8wKiOV5UHWKOcozVk=;
- b=QFplv1MyZmBQrfs19Fx9iHsZXrtz+PglQVRxnP4cVG3pHcqSC5roO8ws1ojz0Fxz3u
- baGK6PIbxfFI4ETRY1VjnmpBAOVL8q38cvja4yXshxv5tpN5P877/EWM8eG6exGxCRkP
- y1GAvhBmJmpxdijDajGYa5p2B2l+5bajr17ts2lp8HQmH6tvUURimV955qlb7cWgsXkN
- j9mTRDsh/YqdoBCkdjPpLKLiUu54pV4G3j6kN5pjYHekQq2ptWlV38Ywy4Yd2sdXXOWu
- i397mFV+wOiPvcMBYCDrcYqpk5ZZNEHwiJo5CPZmfPsZuW9/3cunr3GaUiGQkFrwxI2S
- crNQ==
-X-Gm-Message-State: AOAM533XEDFS//LtlPVvBFRITPcYj68HQwgqtl//bu18VDYGp3UG3WYM
- VasBZfJC4yXGDxrZ4isLebfYFr/4PN3EpP/Z/we7hCRKxIJw7T4XkR+aE/Z8nMavrtpxvJXUGs2
- F9LGiJukvBAB/qvxc+mvMFbi+k7POScid
-X-Received: by 2002:ac8:4e46:0:b0:2cb:28cc:2157 with SMTP id
- e6-20020ac84e46000000b002cb28cc2157mr11399623qtw.167.1646693274930; 
- Mon, 07 Mar 2022 14:47:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwcgJP//sec9YUVIExe+YiSKE3N/wCsSa0MisM99MctdIJrdqhtw9gN3bVHYVXe6E/ckFThWg==
-X-Received: by 2002:ac8:4e46:0:b0:2cb:28cc:2157 with SMTP id
- e6-20020ac84e46000000b002cb28cc2157mr11399606qtw.167.1646693274646; 
- Mon, 07 Mar 2022 14:47:54 -0800 (PST)
-Received: from localhost ([37.183.9.66]) by smtp.gmail.com with ESMTPSA id
- q9-20020a05622a030900b002dd2c3a9fccsm9812369qtw.38.2022.03.07.14.47.53
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=MXb6dcYiaIaX9vW+hIgXAOrUp0mAL09kFtXf/8jaaiQ=;
+ b=H2S9Hh/uDM7qBTzzirM/vsfIN7/65bCbTckqyWKLmUyd6PVan8metIjg2srTPL4Exf
+ lrPljo4S/CzUVhUKozOPOvX+rrMlevNeoLaycvPSK3uAL0xP1MnIziGoG7NHZ6sa5rXl
+ Z/eyYQcIi4nHNGMvOgSM54sbXPR/0b3DGA/IhubFmr65QRJXQBPMqUIEH25pw5YersNg
+ ZqV4vwTdtgKmgPHApHKFd8pqGapOmZC3lLbOvNMYT335UZWrxbvrxQiZJFD5Q/8GnxGv
+ GrvH+Ii2097K+OEqE0I0pDTbbaBxRsIO07CE8hORF1+3/aoplUSMjtFDAJaAy/cAPI1o
+ eQ9w==
+X-Gm-Message-State: AOAM531PMkjFkR7iPF6pAO6TzCxuYJ0eIeMQEgmoQp3lr/yiOir5Abw4
+ +iT0sectgsj3J452hNYsqMQ=
+X-Google-Smtp-Source: ABdhPJzJ4l1a9rSOdkV9CuwVNPwfslbOek/f6oelAsw9LuF2HFvchYiiPxOVoaPIELc7zCRCOUd3kA==
+X-Received: by 2002:adf:aadd:0:b0:1f0:4848:2748 with SMTP id
+ i29-20020adfaadd000000b001f048482748mr10101067wrc.75.1646694056979; 
+ Mon, 07 Mar 2022 15:00:56 -0800 (PST)
+Received: from localhost (cpc154979-craw9-2-0-cust193.16-3.cable.virginm.net.
+ [80.193.200.194]) by smtp.gmail.com with ESMTPSA id
+ l25-20020a1c7919000000b0038999b380e9sm538653wme.38.2022.03.07.15.00.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Mar 2022 14:47:54 -0800 (PST)
-Date: Mon, 7 Mar 2022 23:47:51 +0100
-From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-To: sean.wang@mediatek.com
-Cc: nbd@nbd.name, Deren.Wu@mediatek.com, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] mt76: mt7921: move mt7921_init_hw in a dedicated work
-Message-ID: <YiaLl++oijKrByBA@lore-desk>
-References: <0358e31e71481dec87f7ecb3b040db53076ffc4a.1646654230.git.lorenzo@kernel.org>
- <1646689596-21189-1-git-send-email-sean.wang@mediatek.com>
+ Mon, 07 Mar 2022 15:00:56 -0800 (PST)
+From: Colin Ian King <colin.i.king@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-serial@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] serial: 8250_mtk: make two read-only arrays static const
+Date: Mon,  7 Mar 2022 23:00:55 +0000
+Message-Id: <20220307230055.168241-1-colin.i.king@gmail.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-In-Reply-To: <1646689596-21189-1-git-send-email-sean.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220307_144759_362569_F44B63B2 
-X-CRM114-Status: GOOD (  26.57  )
+X-CRM114-CacheID: sfid-20220307_150058_350523_561844F3 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,237 +84,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6312613654604106637=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Don't populate the read-only arrays fraction_L_mapping and
+fraction_M_mapping on the stack but instead make them static
+const. Also makes the object code a little smaller.
 
---===============6312613654604106637==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="G4rL/TNDZ89nVV1r"
-Content-Disposition: inline
+Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
+---
+ drivers/tty/serial/8250/8250_mtk.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+index fb65dc601b23..f4a0caa56f84 100644
+--- a/drivers/tty/serial/8250/8250_mtk.c
++++ b/drivers/tty/serial/8250/8250_mtk.c
+@@ -289,10 +289,10 @@ static void
+ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
+ 			struct ktermios *old)
+ {
+-	unsigned short fraction_L_mapping[] = {
++	static const unsigned short fraction_L_mapping[] = {
+ 		0, 1, 0x5, 0x15, 0x55, 0x57, 0x57, 0x77, 0x7F, 0xFF, 0xFF
+ 	};
+-	unsigned short fraction_M_mapping[] = {
++	static const unsigned short fraction_M_mapping[] = {
+ 		0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 3
+ 	};
+ 	struct uart_8250_port *up = up_to_u8250p(port);
+-- 
+2.35.1
 
---G4rL/TNDZ89nVV1r
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> From: Sean Wang <sean.wang@mediatek.com>
->=20
-> >Firmware initialization can take a while. Move mt7921_init_hw routine in=
- a dedicated work in order to not slow down bootstrap process.
->=20
-> Hi, Lore
-
-Hi Sean,
-
->=20
-> I don't think the patch is really needed and it creates the different sta=
-te of the driver after mt7921_*_probe between without and with the patch
-> we should be careful to handle it.
->=20
-> For example.
->=20
-> 1) It is possible that ieee80211_ops mt7921_ops is working while mt7921_i=
-nit_work is not completed, so that creates the race issue between ieee80211=
-_ops mt7921_ops and mt7921_init_work still in progress
-
-Can you please elaborate on this? The device will not be "visible" to mac80=
-211
-till init_work completes since we run mt76_register_device() in
-mt7921_init_work().
-
->=20
-> 2) mt7921[k,s,e].ko are always successful probed ( the .ko are always sho=
-wn in `lsmod` ) that would confuse the users even when we actually got the =
-failure of hardware initialization in mt7921_init_work
-
-If mt7921_init_work fails, we will remove the wiphy, so it will not be visi=
-ble
-to the user.
-
->=20
-> so I would prefer to wait a while in mt7921_*_proble until the hardware i=
-s ready to be working to get rid of the extra synchronization to be added a=
-s well as keep the driver much simple.
-
-In the current codebase the time needed for device probing is quite visible=
- on
-usb (afaiu this time is needed for fw initialization).
-
-Regards,
-Lorenzo
-
->=20
->         Sean
->=20
-> >
-> >Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> >---
-> > .../net/wireless/mediatek/mt76/mt7921/init.c  | 66 +++++++++++++------
-> > .../wireless/mediatek/mt76/mt7921/mt7921.h    |  2 +
-> > 2 files changed, 49 insertions(+), 19 deletions(-)
-> >
-> >diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/=
-net/wireless/mediatek/mt76/mt7921/init.c
-> >index fa6af85bba7b..332af886b95a 100644
-> >--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> >+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> >@@ -165,7 +165,7 @@ static int __mt7921_init_hardware(struct mt7921_dev =
-*dev)
-> >
-> > static int mt7921_init_hardware(struct mt7921_dev *dev)  {
-> >-	int ret, idx, i;
-> >+	int ret, i;
-> >
-> >	set_bit(MT76_STATE_INITIALIZED, &dev->mphy.state);
-> >
-> >@@ -182,6 +182,13 @@ static int mt7921_init_hardware(struct mt7921_dev *=
-dev)
-> >		return ret;
-> >	}
-> >
-> >+	return 0;
-> >+}
-> >+
-> >+static int mt7921_init_wcid(struct mt7921_dev *dev) {
-> >+	int idx;
-> >+
-> >	/* Beacon and mgmt frames should occupy wcid 0 */
-> >	idx =3D mt76_wcid_alloc(dev->mt76.wcid_mask, MT7921_WTBL_STA - 1);
-> >	if (idx)
-> >@@ -195,6 +202,42 @@ static int mt7921_init_hardware(struct mt7921_dev *=
-dev)
-> >	return 0;
-> > }
-> >
-> >+static void mt7921_init_work(struct work_struct *work) {
-> >+	struct mt7921_dev *dev =3D container_of(work, struct mt7921_dev,
-> >+					      init_work);
-> >+	int ret;
-> >+
-> >+	ret =3D mt7921_init_hardware(dev);
-> >+	if (ret)
-> >+		return;
-> >+
-> >+	mt76_set_stream_caps(&dev->mphy, true);
-> >+	mt7921_set_stream_he_caps(&dev->phy);
-> >+
-> >+	ret =3D mt76_register_device(&dev->mt76, true, mt76_rates,
-> >+				   ARRAY_SIZE(mt76_rates));
-> >+	if (ret) {
-> >+		dev_err(dev->mt76.dev, "register device failed\n");
-> >+		return;
-> >+	}
-> >+
-> >+	ret =3D mt7921_init_debugfs(dev);
-> >+	if (ret) {
-> >+		dev_err(dev->mt76.dev, "debugfs register failed\n");
-> >+		goto error;
-> >+	}
-> >+
-> >+	ret =3D mt76_connac_mcu_set_deep_sleep(&dev->mt76, dev->pm.ds_enable);
-> >+	if (ret)
-> >+		goto error;
-> >+
-> >+	dev->hw_init_done =3D true;
-> >+	return;
-> >+error:
-> >+	mt76_unregister_device(&dev->mt76);
-> >+}
-> >+
-> > int mt7921_register_device(struct mt7921_dev *dev)  {
-> >	struct ieee80211_hw *hw =3D mt76_hw(dev); @@ -222,6 +265,7 @@ int mt792=
-1_register_device(struct mt7921_dev *dev)
-> >	spin_lock_init(&dev->sta_poll_lock);
-> >
-> >	INIT_WORK(&dev->reset_work, mt7921_mac_reset_work);
-> >+	INIT_WORK(&dev->init_work, mt7921_init_work);
-> >
-> >	dev->pm.idle_timeout =3D MT7921_PM_TIMEOUT;
-> >	dev->pm.stats.last_wake_event =3D jiffies; @@ -234,7 +278,7 @@ int mt79=
-21_register_device(struct mt7921_dev *dev)
-> >	if (mt76_is_sdio(&dev->mt76))
-> >		hw->extra_tx_headroom +=3D MT_SDIO_TXD_SIZE + MT_SDIO_HDR_SIZE;
-> >
-> >-	ret =3D mt7921_init_hardware(dev);
-> >+	ret =3D mt7921_init_wcid(dev);
-> >	if (ret)
-> >		return ret;
-> >
-> >@@ -262,23 +306,7 @@ int mt7921_register_device(struct mt7921_dev *dev)
-> >	dev->mphy.hw->wiphy->available_antennas_rx =3D dev->mphy.chainmask;
-> >	dev->mphy.hw->wiphy->available_antennas_tx =3D dev->mphy.chainmask;
-> >
-> >-	mt76_set_stream_caps(&dev->mphy, true);
-> >-	mt7921_set_stream_he_caps(&dev->phy);
-> >-
-> >-	ret =3D mt76_register_device(&dev->mt76, true, mt76_rates,
-> >-				   ARRAY_SIZE(mt76_rates));
-> >-	if (ret)
-> >-		return ret;
-> >-
-> >-	ret =3D mt7921_init_debugfs(dev);
-> >-	if (ret)
-> >-		return ret;
-> >-
-> >-	ret =3D mt76_connac_mcu_set_deep_sleep(&dev->mt76, dev->pm.ds_enable);
-> >-	if (ret)
-> >-		return ret;
-> >-
-> >-	dev->hw_init_done =3D true;
-> >+	queue_work(system_wq, &dev->init_work);
-> >
-> >	return 0;
-> > }
-> >diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/driver=
-s/net/wireless/mediatek/mt76/mt7921/mt7921.h
-> >index 394a677140da..b6c8f84acb64 100644
-> >--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-> >+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-> >@@ -204,6 +204,8 @@ struct mt7921_dev {
-> >	struct list_head sta_poll_list;
-> >	spinlock_t sta_poll_lock;
-> >
-> >+	struct work_struct init_work;
-> >+
-> >	u8 fw_debug;
-> >
-> >	struct mt76_connac_pm pm;
-> >--
-> >2.35.1
-> >
-> >
-> >
->=20
-
---G4rL/TNDZ89nVV1r
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYiaLlwAKCRA6cBh0uS2t
-rINRAPwMEqqJSqZrKkBMHnZCGKdl0qG2LgtbR+2tHRFZb/NW+gEA5LiyDV3v8BRa
-zfjJ/6daLh/EcA8bJGgw2xEvs6FUBQw=
-=aVQc
------END PGP SIGNATURE-----
-
---G4rL/TNDZ89nVV1r--
-
-
-
---===============6312613654604106637==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============6312613654604106637==--
-
-
