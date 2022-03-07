@@ -4,65 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D4AAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Mar 2022 16:53:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AFC8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Mar 2022 17:49:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=YT+nwb6hAM7UgHVRwWi0nytIo+YVZ9Kkcp1BWvo6BG8=; b=xXsncxN8UBrp1v
-	wyPzQgpgZDaUDJ8DB1+ry24V7V4ioUbz1owSDi8s92MQYhdcAQsqeZbsFoiKc8Ts+zN8cmrf40K6T
-	9hHo8cKFznTBh3Gtk5ZI3xcbRaTMHqR/RSjToJpp6ophDmj84SXr5HmJSeZTynZPTu1+geMdP4C0T
-	9ySYQ7pb6ntpvLB6ZrM6QWhSNgAqdVHwFtMBz7j0Jjvp+ENPB50cxwq0wFGXDjgrDVteghP9oWv+e
-	ZfMr4h3SOQY0EQdomGyyc2DW/DYbSfbG/FTP2gFai7pPdyvBkuF5VdMuUHVPbphm65Lf2rhZ8gv0w
-	kc6zVKbSQtNkAbSdBQsQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:Subject:Cc:To:From:Date:MIME-Version:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=p6nR+n8BbC5SzpIysJ5yAWOFEMhROccdYBsllZvfVlQ=; b=FfKemXLoiO6U3NiOabuhcxBEox
+	ahbFVoj5gT4CaSBSH3t4QHNZe7LCxToWO0nuQKCy6EKIsCvvvYvvFnEt896u9cyOd2NvWm/m4xIYN
+	m8n2UWG1ZR8GVQ4WFzQbmydwu3lzR2cIVrRYW1olWg9x5+G7Roj2f/l1BZIuw8g4Zmaxr5aw0hA1+
+	evEzkYGFfnQhJUfowxVzkyZwRrmtU32pyA59DCO0tzh5s1YPHsbYiJeM4mcO3ymx1PoziKViyGuOj
+	jSFVVXLNDd0cCJ1G5kL1onXDEdO6Eh0cwNkaij2BrDM3zPAsnGqH/O9uHsH3x//bbPeRUIakLEegV
+	ApdYcfUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSM26-00DYap-LC; Thu, 10 Mar 2022 16:52:58 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nSMuZ-00DesT-QB; Thu, 10 Mar 2022 17:49:15 +0000
+Received: from mail.va1der.ca ([107.6.27.142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSM24-00DYZr-HD
- for linux-mediatek@lists.infradead.org; Thu, 10 Mar 2022 16:52:57 +0000
-X-UUID: 7e7087921a494407be63b5ea2b923359-20220310
-X-UUID: 7e7087921a494407be63b5ea2b923359-20220310
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <deren.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1301847064; Thu, 10 Mar 2022 09:52:49 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 10 Mar 2022 08:42:47 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Mar 2022 00:42:46 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 11 Mar 2022 00:42:46 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
- YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
- Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
- KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
- <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
- <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
- Chen" <shayne.chen@mediatek.com>, linux-wireless
- <linux-wireless@vger.kernel.org>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH] mt76: fix invalid rssi report
-Date: Fri, 11 Mar 2022 00:42:36 +0800
-Message-ID: <6143aa93f2b705ec84f9a0eef2d2cd61436a9b6f.1646929388.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1nRMvN-001zgw-Kb; Mon, 07 Mar 2022 23:37:59 +0000
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=va1der.ca;
+ i=@va1der.ca; q=dns/txt; s=ed25519; t=1646696260; h=mime-version :
+ date : from : to : cc : subject : message-id : content-type :
+ content-transfer-encoding : from;
+ bh=q8GEAHMQlNaRhusANlNy77UsivpPXDacShRAJqbTrBM=;
+ b=mjC4dp1pnxYID/Yy6itT+59j7h3EvOILdYS5gVeRXHGMpImn8G/xZZhEwNzHJ8gk3ZC6C
+ zsNcUa5fKCz9EMzCg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=va1der.ca;
+ i=@va1der.ca; q=dns/txt; s=rsa2k; t=1646696260; h=mime-version : date
+ : from : to : cc : subject : message-id : content-type :
+ content-transfer-encoding : from;
+ bh=q8GEAHMQlNaRhusANlNy77UsivpPXDacShRAJqbTrBM=;
+ b=MInQOjfTcUVm+rzshYppHW2tEI1D0s6F1WgY4rA7oeTTsCPK6H7Jv8WPBfA5yPVd0TfH1
+ R5nUkxHjmuwxE87UgKD4QIZol6POTOOX5XJxsW2T0LGnmzZH6y10M++nerjQAeXB4lUooxe
+ 14EEZMyo2FeicTBDCZnEL/ijdk/WWfi1LgakngrLmifvgU7A+STOZAuoSRNhMCX2Xs3bobf
+ slhaAb2NuTeulvYmCNEryCZAtisy6avUjCL+q0xA5WfyDqX668eF6SnFuNWp7Yus+eE3y/H
+ jw7AqD6KorX8Z02ixhUNqY0K9X8O5+hMV3S9J0HWRfRt8q2g7IHDPhR3vSLg==
+Received: from mail.va1der.ca (mail.va1der.ca [107.6.27.142])
+ by mail.va1der.ca (Postfix) with ESMTPSA id 3811D8027E;
+ Mon,  7 Mar 2022 19:37:40 -0400 (AST)
 MIME-Version: 1.0
-X-MTK: N
+Date: Mon, 07 Mar 2022 19:37:35 -0400
+From: kurt@va1der.ca
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: Aw: Re: [PATCH] arm: dts: mt7623: increase passive cooling trip
+User-Agent: Roundcube Webmail/1.4.11
+Message-ID: <2ca1bfd16fb26c63f5ef01f01528c79a@va1der.ca>
+X-Sender: kurt@va1der.ca
+X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220310_085256_586779_75E66012 
-X-CRM114-Status: UNSURE (   9.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220307_153757_872747_B9FD640B 
+X-CRM114-Status: GOOD (  24.95  )
+X-Mailman-Approved-At: Thu, 10 Mar 2022 09:49:15 -0800
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,44 +71,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
-
-Drop invalid rssi value to calculate a reasonable report
-
-Fixes: 4550fb9e9810 ("mt76: improve signal strength reporting")
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mac80211.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index 372b94a665ec..5b53d008eb66 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -942,10 +942,11 @@ mt76_rx_signal(struct mt76_rx_status *status)
- 	for (chains = status->chains; chains; chains >>= 1, chain_signal++) {
- 		int cur, diff;
- 
--		if (!(chains & BIT(0)))
-+		cur = *chain_signal;
-+		if (!(chains & BIT(0)) ||
-+		    cur > 0)
- 			continue;
- 
--		cur = *chain_signal;
- 		if (cur > signal)
- 			swap(cur, signal);
- 
--- 
-2.18.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgRnJhbmssCgpPbiAyMDIyLTAzLTA1IDEyOjM3LCBGcmFuayBXdW5kZXJsaWNoIHdyb3RlOgoK
+PiBkb2VzIHlvdXIgUGF0Y2ggZml4ZXMgdGhlIGlzc3VlPyBpZiB5ZXMgeW91IGNhbiBzZW5kIGEg
+UGF0Y2ggYmFzZWQgb24KPiBjdXJyZW50IG1haW5saW5lIGR0cy4KCkkgc2hvdWxkIGFwb2xvZ2l6
+ZS4gIEkgZGlkbid0IHB1dCB0aGUga2luZCBvZiBzY3J1dGlueSBpbnRvIHRoaXMgdGhhdCBJIApz
+aG91bGQgaGF2ZSBiZWZvcmUgcHJvcG9zaW5nIGEga2VybmVsIHBhdGNoLgoKTG9va2luZyBhdCB0
+aGlzIGR0cyBtb3JlIGRlZXBseSwgSSBzZWUgdGhhdCBJIHdhcyBtaXNsZWFkIGJ5IE1lZGlhdGVr
+J3MgCnVzZSBvZiAiYWN0aXZlIiBhbmQgInBhc3NpdmUiIHRyaXAgcG9pbnRzLiAgQW4gYWN0aXZl
+IHRyaXAgcG9pbnQgaXMgCnN1cHBvc2VkIHRvIG9ubHkgYmUgZm9yIGZhbnMgYW5kIHRoZSBsaWtl
+LiAgQnV0IGluIHRoaXMgY2FzZSwgbG9va2luZyBhdCAKdGhlIGNvb2xpbmcgbWFwcyB0aGUgdHJp
+cCBwb2ludHMgcmVmZXJlbmNlLCBJIHNlZSBwYXNzaXZlIGFuZCBhY3RpdmUgCihhbmQgaG90IGFz
+IHdlbGwpIGFyZSBhbGwgbWFwcGVkIHRvIHRoZSBzYW1lIGV4YWN0IENQVSBzY2FsaW5nIAptZWNo
+YW5pc20uICBUaGV5IGV2ZW4gYWxsIGhhdmUgdGhlIHNhbWUgdW5saW1pdGVkIHNjYWxpbmcgcmFu
+Z2UuICBXaGljaCAKbWVhbnMgdHdvIG9mIHRoZW0gY2FuJ3QgZXZlciBoYXZlIGFueSBlZmZlY3Qu
+ICBJIHN1c3BlY3QgYXQgb25lIHBvaW50IAp0aGV5IGhhZCBoYXJkd2FyZSBmYW4gc3VwcG9ydCBp
+biB0aGVpciBkZXZlbG9wbWVudCBjeWNsZSB3aGljaCB3YXMgCmRlbGV0ZWQuCgpTbyB3ZSBjYW4n
+dCBzd2FwIHBhc3NpdmUvYWN0aXZlIHdpdGggYW55IGVmZmVjdC4gIEJ1dCBJIHN0aWxsIHRoaW5r
+IGV2ZW4gCjU3wrBDIGlzIGEgbGl0dGxlIGxvdyB0byBsb2NrIHRoZSBDUFUgYXQsIHNpbmNlIGl0
+J3Mgbm90IGEgZGFuZ2Vyb3VzIAp0ZW1wZXJhdHVyZSBhbmQgaXQncyBub3QgZGlmZmljdWx0IHRv
+IGdldCBkZXZpY2VzIHRoYXQgd2FybS4gIEkgc3VnZ2VzdCAKd2UgZGVsZXRlIHRoZSBjdXJyZW50
+ICJBY3RpdmUiIHRyaXAgcG9pbnQgZW50aXJlbHksIGFuZCB0aGVuIGhhdmUgb25seSAKdGhyZWUg
+dHJpcCBwb2ludHMgc3RhcnRpbmcgYXQgNjfCsEMuICBJIGhhdmUgdHdvIHRlc3QgYm9hcmRzIChC
+UEkgUjIgYW5kIApVbmlFbGVjIFU3NjIzKSBlYWNoIHJ1bm5pbmcgYSBrZXJuZWwgd2l0aCB0aGlz
+IHNldHVwIG5vdyBhbmQgaXQgd29ya3MgCnF1aXRlIHdlbGwuCgogICAgS3VydAoKPiAKPiBpdCBs
+b29rcyBhIGJpdCB3ZWlyZWQgdG8gbWUgaGF2aW5nIGFjdGl2ZSBiZWZvcmUgcGFzc2l2ZS4uLmJ1
+dCBpJ20gbm8KPiBleHBlcnQgaW4gdGhlIGNvb2xpbmcgdHJpcHMuCj4gaSBqdXN0IGluY3JlYXNl
+ZCB0aGUgdGVtcHMgOikKPiAKPiBwbGVhc2Ugc2VlIG5vdGVzIGJlbG93Cj4gCj4+IE9uIDIwMjEt
+MDctMjUgMTozNCBwLm0uLCBGcmFuayBXdW5kZXJsaWNoIHdyb3RlOgo+PiA+IEZyb206IEZyYW5r
+IFd1bmRlcmxpY2ggPGZyYW5rLXdAcHVibGljLWZpbGVzLmRlPgo+PiA+Cj4+ID4gTVQ3NjIzL0JQ
+SS1SMiBoYXMgaWRsZSB0ZW1wZXJhdHVyZSBhZnRlciBib290dXAgZnJvbSA0OCBkZWdyZWVzIGNl
+bHNpdXMKPj4gPiBpbmNyZWFzZSB0aGUgcGFzc2l2ZSB0cmlwIHRlbXAgdGhyZXNob2xkIHRvIG5v
+dCB0cm90dGxlIENQVSBmcmVxdWVuY3kgYXQKPj4gPiB0aGlzIHRlbXBlcmF0dXJlCj4+IAo+PiBU
+aGUgZHRzIGZpbGUgZm9yIHRoZSBtdDc2MjMgaGFzIGZvdXIgdHJpcCBwb2ludHM6Cj4+IC0gVHJp
+cCBwb2ludCAwLCBUeXBlPVBhc3NpdmUgQCA0N8KwQyAob3JpZ2luYWxseSwgbm93IDU3wrBDKQo+
+PiAtIFRyaXAgcG9pbnQgMSwgVHlwZT1BY3RpdmUgQCA2N8KwQwo+PiAtIFRyaXAgcG9pbnQgMiwg
+VHlwZT1Ib3QgQCA4N8KwQwo+PiAtIFRyaXAgcG9pbnQgMywgVHlwZT1Dcml0aWNhbCBAIDEwN8Kw
+Qwo+PiAKPj4gSXQgbWFrZXMgbGl0dGxlIHNlbnNlIHRvIGhhdmUgcGFzc2l2ZSBDUFUgdGhyb3R0
+bGluZyBlbXBsb3llZCAqYmVmb3JlKgo+PiBlbmdhZ2luZyBhIGZhbi4gIEdlbmVyYWxseSB1c2Vy
+cyB3YW50IGEgZmFuIChpZiBwcmVzZW50KSB0byBiZSBlbmdhZ2VkCj4+IGJlZm9yZSBpbnRlbnRp
+b25hbCBwZXJmb3JtYW5jZSBkZWdyYWRhdGlvbiBpcyBlbXBsb3llZC4KPj4gCj4+ID4gICAJCQkJ
+CWNwdV9wYXNzaXZlOiBjcHUtcGFzc2l2ZSB7Cj4+ID4gLQkJCQkJCXRlbXBlcmF0dXJlID0gPDQ3
+MDAwPjsKPj4gPiArCQkJCQkJdGVtcGVyYXR1cmUgPSA8NTcwMDA+Owo+PiAKPj4gVGhlIG9sZCB0
+ZW1wZXJhdHVyZSBvZiA0N8KwQyBhcHBlYXJzLCBpbiBwcmFjdGljZSwgdG8gYmUgYSBnb29kCj4+
+IHRlbXBlcmF0dXJlIGZvciBhbiBhY3RpdmUgY29vbGluZyB0cmlwIHBvaW50LiAgSXQgaXMganVz
+dCBhYm92ZSB0aGUKPj4gdGVtcGVyYXR1cmUgdGhhdCBhIGdlbmVyYWxseSBpZGxlIG10NzYyMyBz
+aXRzIGF0IGluIGVuY2xvc3VyZXMgd2hlcmUKPj4gdGhpcyBTb0MgaXMgZW1wbG95ZWQsIGJ1dCBh
+bHNvIGEgdGVtcGVyYXR1cmUgdGhhdCBhIENQVSB1bmRlciBsb2FkIAo+PiB3aWxsCj4+IHF1aWNr
+bHkgcmVhY2guCj4+IAo+PiBUaGVyZWZvcmUgSSBwcm9wb3NlIHRoZSB0eXBlcyBvZiB0cmlwIHBv
+aW50cyAwIGFuZCAxIGJlIHJldmVyc2VkIGFuZCAKPj4gdGhlCj4+IHRlbXBlcmF0dXJlcyBsZWZ0
+IGFzIHRoZXkgd2VyZS4KPj4gCj4+IAo+PiAtLS0gYS9hcmNoL2FybS9ib290L2R0cy9tdDc2MjMu
+ZHRzaQkyMDIyLTAyLTI3IDE4OjM2OjMzIC0wNDAwCj4+ICsrKyBiL2FyY2gvYXJtL2Jvb3QvZHRz
+L210NzYyMy5kdHNpCTIwMjItMDMtMDUgMTE6Mzc6NTIgLTA0MDAKPj4gQEAgLTE1OCwxOSArMTU4
+LDE5IEBACj4+IAo+PiAgIAkJCQl0aGVybWFsLXNlbnNvcnMgPSA8JnRoZXJtYWwgMD47Cj4+IAo+
+PiAgIAkJCQl0cmlwcyB7Cj4+ICAgCQkJCQljcHVfcGFzc2l2ZTogY3B1LXBhc3NpdmUgewo+PiAt
+CQkJCQkJdGVtcGVyYXR1cmUgPSA8NTcwMDA+Owo+PiArCQkJCQkJdGVtcGVyYXR1cmUgPSA8NDcw
+MDA+Owo+PiAgIAkJCQkJCWh5c3RlcmVzaXMgPSA8MjAwMD47Cj4+IC0JCQkJCQl0eXBlID0gInBh
+c3NpdmUiOwo+PiArCQkJCQkJdHlwZSA9ICJhY3RpdmUiOwo+PiAgIAkJCQkJfTsKPiAKPiBpZiB0
+eXBlIGlzIGRpZmZlcmVudCwgaW1obyB0aGUgbmFtZStsYWJlbCBzaG91bGQgYmUgY2hhbmdlZCB0
+b28KPiAKPj4gICAJCQkJCWNwdV9hY3RpdmU6IGNwdS1hY3RpdmUgewo+PiAgIAkJCQkJCXRlbXBl
+cmF0dXJlID0gPDY3MDAwPjsKPj4gICAJCQkJCQloeXN0ZXJlc2lzID0gPDIwMDA+Owo+PiAtCQkJ
+CQkJdHlwZSA9ICJhY3RpdmUiOwo+PiArCQkJCQkJdHlwZSA9ICJwYXNzaXZlIjsKPj4gICAJCQkJ
+CX07Cj4gCj4gZGl0bwo+IAo+PiAgIAkJCQkJY3B1X2hvdDogY3B1LWhvdCB7Cj4+ICAgCQkJCQkJ
+dGVtcGVyYXR1cmUgPSA8ODcwMDA+Owo+PiAgIAkJCQkJCWh5c3RlcmVzaXMgPSA8MjAwMD47Cj4g
+Cj4gcmVnYXJkcyBGcmFuawoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3Rz
+LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9saW51eC1tZWRpYXRlawo=
