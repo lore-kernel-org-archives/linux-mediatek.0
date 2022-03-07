@@ -4,68 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5760EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 02:43:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57A8DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 03:12:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yn9RILBA31Sq5cni64kBBNauPG718wlFovNgsmGbKH0=; b=BYfiT2duAM5CVQ
-	NXRKC5K9yVVQ6Bcb1mhpcNDCpPb5lt+NQpIuyU3kJdAYfYkRkeXOm7MB8Z3Ip27hwdpxBPfU+lWN+
-	pShbis8q0uNJE6aJ27S7Y0q0EYpg1MAtaqqUPksDef/VD58f0LKhkSos+sKAHz3PlSSOqHeAILceo
-	GRlNraxLD1+BPpyQhx4PgSRUzPoZYZ8g7f8ndj5g9wPflmKOaMgwYvN+qW+SM6O1QDG9wcVaYHjRx
-	bj7CDk974+jsSvsyQeIX0WXj8D1Hg35iZNU1Ev6g1ZUyn7QCNHftLigOadoRzPevz3hFnvJMZKDF6
-	/vtGqqVtKWQ8pAVqQzdg==;
+	List-Owner; bh=N5p2oOO+foEvrK0WD6p87C6HQUOIcVDxZHuZCdfaL9I=; b=cSXOl1hcUQwn27
+	mM9jfDR/1CvXQeZKS/Y2JLin1Nzh3R8mdfFxpQf0Z9lPLYDgilEWXwf49ugbw6IUTPhCk+2G/i03H
+	4Hg/djtZxz2AlgwcKuCNXegwDqZINXbLcGsOUQIBc+0GTNWit2HxeU4mAJtSOJ0jT8n1PIZ17YZAm
+	39QGwOWCizukzTOQbRzWdPWspHK8iWdr5rYsZjbYc2aEkd52LZFi7RUFkZPebM+t/WafAEymZdwQ/
+	SXidPq7KuJYMtR3Tli6XD4pGbTK3YnTPxHDrj1XtAa57Qo8ZTnaZm/vF8rP5BYOSp7uz3JzD9eS2j
+	pjulI3CfgCrxaFP0YbgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nR3Kn-00FdFo-C6; Mon, 07 Mar 2022 02:42:53 +0000
+	id 1nR3n0-00Fgz2-Jg; Mon, 07 Mar 2022 03:12:02 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nR3Kk-00FdEw-DM; Mon, 07 Mar 2022 02:42:52 +0000
-X-UUID: 56dc888887974e32b5168cfd571f4f3a-20220306
-X-UUID: 56dc888887974e32b5168cfd571f4f3a-20220306
+ id 1nR3mv-00Fgyd-LZ
+ for linux-mediatek@lists.infradead.org; Mon, 07 Mar 2022 03:12:01 +0000
+X-UUID: c3219ab5b03c4d7ab6bd8c41e6041e91-20220306
+X-UUID: c3219ab5b03c4d7ab6bd8c41e6041e91-20220306
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <nancy.lin@mediatek.com>)
+ (envelope-from <meichia.chiu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 248037821; Sun, 06 Mar 2022 19:42:48 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 1507836930; Sun, 06 Mar 2022 20:11:52 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 6 Mar 2022 18:33:12 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 7 Mar 2022 10:33:11 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 7 Mar 2022 10:33:11 +0800
-Message-ID: <70f7c7bcf9d2b0596bd5f75444c6c12bd593e387.camel@mediatek.com>
-Subject: Re: [PATCH v12 03/23] dt-bindings: mediatek: add ethdr definition
- for mt8195
-From: Nancy.Lin <nancy.lin@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "CK
- Hu" <ck.hu@mediatek.com>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
- <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <singo.chang@mediatek.com>,
- <srv_heupstream@mediatek.com>
-Date: Mon, 7 Mar 2022 10:33:11 +0800
-In-Reply-To: <243c2a77-6fbf-6afa-b773-de9b58aa4997@collabora.com>
-References: <20220222100741.30138-1-nancy.lin@mediatek.com>
- <20220222100741.30138-4-nancy.lin@mediatek.com>
- <243c2a77-6fbf-6afa-b773-de9b58aa4997@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ 15.0.1497.2; Sun, 6 Mar 2022 19:11:46 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 7 Mar 2022 11:11:44 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 7 Mar 2022 11:11:44 +0800
+From: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee
+ <ryder.lee@mediatek.com>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, MeiChia Chiu
+ <MeiChia.Chiu@mediatek.com>, Shayne Chen <Shayne.Chen@mediatek.com>, "Peter
+ Chiu" <Chui-Hao.Chiu@mediatek.com>, Money Wang <Money.Wang@mediatek.com>
+Subject: [PATCH v2 2/4] mt76: mt7915: add 6 GHz support
+Date: Mon, 7 Mar 2022 11:11:23 +0800
+Message-ID: <20220307031125.2585-2-MeiChia.Chiu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220307031125.2585-1-MeiChia.Chiu@mediatek.com>
+References: <20220307031125.2585-1-MeiChia.Chiu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220306_184250_468430_86EAE677 
-X-CRM114-Status: GOOD (  30.77  )
+X-CRM114-CacheID: sfid-20220306_191157_750780_9B41E4B9 
+X-CRM114-Status: GOOD (  20.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,236 +75,344 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+Basic 6 GHz support is added to mt76.
+Modification includes:
+1. Add 6 GHz E2P definition
+2. Register 6 GHz HE cap
+3. Refactor existing code of adding a STA
 
-Thanks for the review.
+This adds support for Wi-Fi 6E on MT7986/MT7916.
+Detailed link:
+https://www.mediatek.com/products/mediatek-filogic-830
+Detailed link:
+https://www.mediatek.com/products/products/broadband-wifi/mediatek-filogic-630
 
-On Wed, 2022-03-02 at 11:13 +0100, AngeloGioacchino Del Regno wrote:
-> Il 22/02/22 11:07, Nancy.Lin ha scritto:
-> > Add vdosys1 ETHDR definition.
-> > 
-> > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> > Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> > ---
-> >   .../display/mediatek/mediatek,ethdr.yaml      | 147
-> > ++++++++++++++++++
-> >   1 file changed, 147 insertions(+)
-> >   create mode 100644
-> > Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.y
-> > aml
-> > 
-> > diff --git
-> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr
-> > .yaml
-> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr
-> > .yaml
-> > new file mode 100644
-> > index 000000000000..131eed5eeeb7
-> > --- /dev/null
-> > +++
-> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr
-> > .yaml
-> > @@ -0,0 +1,147 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: 
-> > https://urldefense.com/v3/__http://devicetree.org/schemas/display/mediatek/mediatek,ethdr.yaml*__;Iw!!CTRNKA9wMg0ARbw!y6qWSq3epOM61tyVt6ijw6CRNaNmcK382oF8TQ-a57UAcXvx8o1yIPd7pTKakQkU$
-> >  
-> > +$schema: 
-> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!y6qWSq3epOM61tyVt6ijw6CRNaNmcK382oF8TQ-a57UAcXvx8o1yIPd7pTQVqP2v$
-> >  
-> > +
-> > +title: Mediatek Ethdr Device Tree Bindings
-> > +
-> > +maintainers:
-> > +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> > +  - Philipp Zabel <p.zabel@pengutronix.de>
-> > +
-> > +description: |
-> > +  ETHDR is designed for HDR video and graphics conversion in the
-> > external display path.
-> > +  It handles multiple HDR input types and performs tone mapping,
-> > color space/color
-> > +  format conversion, and then combine different layers, output the
-> > required HDR or
-> > +  SDR signal to the subsequent display path. This engine is
-> > composed of two video
-> > +  frontends, two graphic frontends, one video backend and a mixer.
-> > ETHDR has two
-> > +  DMA function blocks, DS and ADL. These two function blocks read
-> > the pre-programmed
-> > +  registers from DRAM and set them to HW in the v-blanking period.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    items:
-> > +      - const: mediatek,mt8195-disp-ethdr
-> > +  reg:
-> > +    maxItems: 7
-> > +  reg-names:
-> > +    items:
-> > +      - const: mixer
-> > +      - const: vdo_fe0
-> > +      - const: vdo_fe1
-> > +      - const: gfx_fe0
-> > +      - const: gfx_fe1
-> > +      - const: vdo_be
-> > +      - const: adl_ds
-> > +  interrupts:
-> > +    minItems: 1
-> > +  iommus:
-> > +    description: The compatible property is DMA function blocks.
-> > +      Should point to the respective IOMMU block with master port
-> > as argument,
-> > +      see
-> > Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for
-> > +      details.
-> > +    minItems: 1
-> > +    maxItems: 2
-> > +  clocks:
-> > +    items:
-> > +      - description: mixer clock
-> > +      - description: video frontend 0 clock
-> > +      - description: video frontend 1 clock
-> > +      - description: graphic frontend 0 clock
-> > +      - description: graphic frontend 1 clock
-> > +      - description: video backend clock
-> > +      - description: autodownload and menuload clock
-> > +      - description: video frontend 0 async clock
-> > +      - description: video frontend 1 async clock
-> > +      - description: graphic frontend 0 async clock
-> > +      - description: graphic frontend 1 async clock
-> > +      - description: video backend async clock
-> > +      - description: ethdr top clock
-> > +  clock-names:
-> > +    items:
-> > +      - const: mixer
-> > +      - const: vdo_fe0
-> > +      - const: vdo_fe1
-> > +      - const: gfx_fe0
-> > +      - const: gfx_fe1
-> > +      - const: vdo_be
-> > +      - const: adl_ds
-> > +      - const: vdo_fe0_async
-> > +      - const: vdo_fe1_async
-> > +      - const: gfx_fe0_async
-> > +      - const: gfx_fe1_async
-> > +      - const: vdo_be_async
-> > +      - const: ethdr_top
-> > +  power-domains:
-> > +    maxItems: 1
-> > +  resets:
-> > +    maxItems: 5
-> > +  mediatek,gce-client-reg:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> > +    description: The register of display function block to be set
-> > by gce.
-> > +      There are 4 arguments in this property, gce node, subsys id,
-> > offset and
-> > +      register size. The subsys id is defined in the gce header of
-> > each chips
-> > +      include/include/dt-bindings/gce/<chip>-gce.h, mapping to the
-> > register of
-> > +      display function block.
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - clocks
-> > +  - clock-names
-> > +  - interrupts
-> > +  - power-domains
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> 
-> Please fix inclusions and address/size cells.
-> 
-> Thanks,
-> Angelo
-> 
+Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Shayne Chen <Shayne.Chen@mediatek.com>
+Signed-off-by: Peter Chiu <Chui-Hao.Chiu@mediatek.com>
+Signed-off-by: Money Wang <Money.Wang@mediatek.com>
+Signed-off-by: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
+---
+v2:
+update commit message
+avoid open-coded for 6G cap
+---
+ .../wireless/mediatek/mt76/mt7915/eeprom.c    | 21 ++++++++++++--
+ .../wireless/mediatek/mt76/mt7915/eeprom.h    |  7 +++++
+ .../net/wireless/mediatek/mt76/mt7915/init.c  | 28 +++++++++++++++++--
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   | 12 +++++---
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 28 ++++++++++++++++---
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  2 +-
+ .../wireless/mediatek/mt76/mt7915/testmode.c  |  4 +++
+ 7 files changed, 88 insertions(+), 14 deletions(-)
 
-Because the patch has been applied to mediatek-drm-next [1].
-I saw that you have a patch for fixing this issue [2]. I think I will
-just remove this patch in the next revision. Do you think this is OK? 
-
-[1] 
-https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/log/?h=mediatek-drm-next
-[2] 
-https://patchwork.kernel.org/project/linux-mediatek/patch/20220304095458.12409-4-
-angelogioacchino.delregno@collabora.com/
-
-Best,
-Nancy
-
-> > +
-> > +    disp_ethdr@1c114000 {
-> > +            compatible = "mediatek,mt8195-disp-ethdr";
-> > +            reg = <0 0x1c114000 0 0x1000>,
-> > +                  <0 0x1c115000 0 0x1000>,
-> > +                  <0 0x1c117000 0 0x1000>,
-> > +                  <0 0x1c119000 0 0x1000>,
-> > +                  <0 0x1c11A000 0 0x1000>,
-> > +                  <0 0x1c11B000 0 0x1000>,
-> > +                  <0 0x1c11C000 0 0x1000>;
-> > +            reg-names = "mixer", "vdo_fe0", "vdo_fe1", "gfx_fe0",
-> > "gfx_fe1",
-> > +                        "vdo_be", "adl_ds";
-> > +            mediatek,gce-client-reg = <&gce0 SUBSYS_1c11XXXX
-> > 0x4000 0x1000>,
-> > +                                      <&gce0 SUBSYS_1c11XXXX
-> > 0x5000 0x1000>,
-> > +                                      <&gce0 SUBSYS_1c11XXXX
-> > 0x7000 0x1000>,
-> > +                                      <&gce0 SUBSYS_1c11XXXX
-> > 0x9000 0x1000>,
-> > +                                      <&gce0 SUBSYS_1c11XXXX
-> > 0xA000 0x1000>,
-> > +                                      <&gce0 SUBSYS_1c11XXXX
-> > 0xB000 0x1000>,
-> > +                                      <&gce0 SUBSYS_1c11XXXX
-> > 0xC000 0x1000>;
-> > +            clocks = <&vdosys1 CLK_VDO1_DISP_MIXER>,
-> > +                     <&vdosys1 CLK_VDO1_HDR_VDO_FE0>,
-> > +                     <&vdosys1 CLK_VDO1_HDR_VDO_FE1>,
-> > +                     <&vdosys1 CLK_VDO1_HDR_GFX_FE0>,
-> > +                     <&vdosys1 CLK_VDO1_HDR_GFX_FE1>,
-> > +                     <&vdosys1 CLK_VDO1_HDR_VDO_BE>,
-> > +                     <&vdosys1 CLK_VDO1_26M_SLOW>,
-> > +                     <&vdosys1 CLK_VDO1_HDR_VDO_FE0_DL_ASYNC>,
-> > +                     <&vdosys1 CLK_VDO1_HDR_VDO_FE1_DL_ASYNC>,
-> > +                     <&vdosys1 CLK_VDO1_HDR_GFX_FE0_DL_ASYNC>,
-> > +                     <&vdosys1 CLK_VDO1_HDR_GFX_FE1_DL_ASYNC>,
-> > +                     <&vdosys1 CLK_VDO1_HDR_VDO_BE_DL_ASYNC>,
-> > +                     <&topckgen CLK_TOP_ETHDR_SEL>;
-> > +            clock-names = "mixer", "vdo_fe0", "vdo_fe1",
-> > "gfx_fe0", "gfx_fe1",
-> > +                          "vdo_be", "adl_ds", "vdo_fe0_async",
-> > "vdo_fe1_async",
-> > +                          "gfx_fe0_async",
-> > "gfx_fe1_async","vdo_be_async",
-> > +                          "ethdr_top";
-> > +            power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-> > +            iommus = <&iommu_vpp M4U_PORT_L3_HDR_DS>,
-> > +                     <&iommu_vpp M4U_PORT_L3_HDR_ADL>;
-> > +            interrupts = <GIC_SPI 517 IRQ_TYPE_LEVEL_HIGH 0>; /*
-> > disp mixer */
-> > +            resets = <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE0_DL_ASYNC>,
-> > +                     <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE1_DL_ASYNC>,
-> > +                     <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE0_DL_ASYNC>,
-> > +                     <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE1_DL_ASYNC>,
-> > +                     <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_BE_DL_ASYNC>;
-> > +    };
-> > +
-> > +...
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+index 0fa539479aa7..136a6adab3df 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+@@ -135,9 +135,24 @@ static void mt7915_eeprom_parse_band_config(struct mt7915_phy *phy)
+ 
+ 	val = eeprom[MT_EE_WIFI_CONF + phy->band_idx];
+ 	val = FIELD_GET(MT_EE_WIFI_CONF0_BAND_SEL, val);
+-	if (val == MT_EE_BAND_SEL_DEFAULT &&
+-	    (!is_mt7915(&dev->mt76) || dev->dbdc_support))
+-		val = phy->band_idx ? MT_EE_BAND_SEL_5GHZ : MT_EE_BAND_SEL_2GHZ;
++
++	if (!is_mt7915(&dev->mt76)) {
++		switch (val) {
++		case MT_EE_V2_BAND_SEL_5GHZ:
++			phy->mt76->cap.has_5ghz = true;
++			return;
++		case MT_EE_V2_BAND_SEL_6GHZ:
++			phy->mt76->cap.has_6ghz = true;
++			return;
++		case MT_EE_V2_BAND_SEL_5GHZ_6GHZ:
++			phy->mt76->cap.has_5ghz = true;
++			phy->mt76->cap.has_6ghz = true;
++			return;
++		default:
++			phy->mt76->cap.has_2ghz = true;
++			return;
++		}
++	}
+ 
+ 	switch (val) {
+ 	case MT_EE_BAND_SEL_5GHZ:
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
+index 5ffc56bb5c51..5dad5b0b5ac6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
+@@ -76,6 +76,13 @@ enum mt7915_eeprom_band {
+ 	MT_EE_BAND_SEL_DUAL,
+ };
+ 
++enum {
++	MT_EE_V2_BAND_SEL_2GHZ,
++	MT_EE_V2_BAND_SEL_5GHZ,
++	MT_EE_V2_BAND_SEL_6GHZ,
++	MT_EE_V2_BAND_SEL_5GHZ_6GHZ,
++};
++
+ enum mt7915_sku_rate_group {
+ 	SKU_CCK,
+ 	SKU_OFDM,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index fd16d777f2e4..9a696687d61c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -872,7 +872,7 @@ mt7915_init_he_caps(struct mt7915_phy *phy, enum nl80211_band band,
+ 		if (band == NL80211_BAND_2GHZ)
+ 			he_cap_elem->phy_cap_info[0] =
+ 				IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_40MHZ_IN_2G;
+-		else if (band == NL80211_BAND_5GHZ)
++		else
+ 			he_cap_elem->phy_cap_info[0] =
+ 				IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_40MHZ_80MHZ_IN_5G |
+ 				IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_160MHZ_IN_5G |
+@@ -911,7 +911,7 @@ mt7915_init_he_caps(struct mt7915_phy *phy, enum nl80211_band band,
+ 			if (band == NL80211_BAND_2GHZ)
+ 				he_cap_elem->phy_cap_info[0] |=
+ 					IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_RU_MAPPING_IN_2G;
+-			else if (band == NL80211_BAND_5GHZ)
++			else
+ 				he_cap_elem->phy_cap_info[0] |=
+ 					IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_RU_MAPPING_IN_5G;
+ 
+@@ -961,6 +961,21 @@ mt7915_init_he_caps(struct mt7915_phy *phy, enum nl80211_band band,
+ 				u8_encode_bits(IEEE80211_HE_PHY_CAP9_NOMINAL_PKT_PADDING_16US,
+ 					       IEEE80211_HE_PHY_CAP9_NOMINAL_PKT_PADDING_MASK);
+ 		}
++
++		if (band == NL80211_BAND_6GHZ) {
++			u16 cap = IEEE80211_HE_6GHZ_CAP_TX_ANTPAT_CONS |
++				  IEEE80211_HE_6GHZ_CAP_RX_ANTPAT_CONS;
++
++			cap |= u16_encode_bits(IEEE80211_HT_MPDU_DENSITY_8,
++					       IEEE80211_HE_6GHZ_CAP_MIN_MPDU_START) |
++			       u16_encode_bits(IEEE80211_VHT_MAX_AMPDU_1024K,
++					       IEEE80211_HE_6GHZ_CAP_MAX_AMPDU_LEN_EXP) |
++			       u16_encode_bits(IEEE80211_VHT_CAP_MAX_MPDU_LENGTH_11454,
++					       IEEE80211_HE_6GHZ_CAP_MAX_MPDU_LEN);
++
++			data[idx].he_6ghz_capa.capa = cpu_to_le16(cap);
++		}
++
+ 		idx++;
+ 	}
+ 
+@@ -990,6 +1005,15 @@ void mt7915_set_stream_he_caps(struct mt7915_phy *phy)
+ 		band->iftype_data = data;
+ 		band->n_iftype_data = n;
+ 	}
++
++	if (phy->mt76->cap.has_6ghz) {
++		data = phy->iftype[NL80211_BAND_6GHZ];
++		n = mt7915_init_he_caps(phy, NL80211_BAND_6GHZ, data);
++
++		band = &phy->mt76->sband_6g.sband;
++		band->iftype_data = data;
++		band->n_iftype_data = n;
++	}
+ }
+ 
+ static void mt7915_unregister_ext_phy(struct mt7915_dev *dev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 1da551f0b389..f3f48e7fc593 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -638,6 +638,8 @@ mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_buff *skb)
+ 	status->band = mphy->chandef.chan->band;
+ 	if (status->band == NL80211_BAND_5GHZ)
+ 		sband = &mphy->sband_5g.sband;
++	else if (status->band == NL80211_BAND_6GHZ)
++		sband = &mphy->sband_6g.sband;
+ 	else
+ 		sband = &mphy->sband_2g.sband;
+ 
+@@ -1350,7 +1352,7 @@ mt7915_tx_check_aggr(struct ieee80211_sta *sta, __le32 *txwi)
+ 	u16 fc, tid;
+ 	u32 val;
+ 
+-	if (!sta || !sta->ht_cap.ht_supported)
++	if (!sta || !(sta->ht_cap.ht_supported || sta->he_cap.has_he))
+ 		return;
+ 
+ 	tid = FIELD_GET(MT_TXD1_TID, le32_to_cpu(txwi[1]));
+@@ -1558,6 +1560,8 @@ mt7915_mac_add_txs_skb(struct mt7915_dev *dev, struct mt76_wcid *wcid, int pid,
+ 
+ 		if (mphy->chandef.chan->band == NL80211_BAND_5GHZ)
+ 			sband = &mphy->sband_5g.sband;
++		else if (mphy->chandef.chan->band == NL80211_BAND_6GHZ)
++			sband = &mphy->sband_6g.sband;
+ 		else
+ 			sband = &mphy->sband_2g.sband;
+ 
+@@ -1803,7 +1807,7 @@ void mt7915_mac_set_timing(struct mt7915_phy *phy)
+ 	u32 ofdm = FIELD_PREP(MT_TIMEOUT_VAL_PLCP, 60) |
+ 		   FIELD_PREP(MT_TIMEOUT_VAL_CCA, 28);
+ 	int offset;
+-	bool is_5ghz = phy->mt76->chandef.chan->band == NL80211_BAND_5GHZ;
++	bool a_band = !(phy->mt76->chandef.chan->band == NL80211_BAND_2GHZ);
+ 
+ 	if (!test_bit(MT76_STATE_RUNNING, &phy->mt76->state))
+ 		return;
+@@ -1823,7 +1827,7 @@ void mt7915_mac_set_timing(struct mt7915_phy *phy)
+ 	mt76_wr(dev, MT_TMAC_CDTR(phy->band_idx), cck + reg_offset);
+ 	mt76_wr(dev, MT_TMAC_ODTR(phy->band_idx), ofdm + reg_offset);
+ 	mt76_wr(dev, MT_TMAC_ICR0(phy->band_idx),
+-		FIELD_PREP(MT_IFS_EIFS_OFDM, is_5ghz ? 84 : 78) |
++		FIELD_PREP(MT_IFS_EIFS_OFDM, a_band ? 84 : 78) |
+ 		FIELD_PREP(MT_IFS_RIFS, 2) |
+ 		FIELD_PREP(MT_IFS_SIFS, 10) |
+ 		FIELD_PREP(MT_IFS_SLOT, phy->slottime));
+@@ -1831,7 +1835,7 @@ void mt7915_mac_set_timing(struct mt7915_phy *phy)
+ 	mt76_wr(dev, MT_TMAC_ICR1(phy->band_idx),
+ 		FIELD_PREP(MT_IFS_EIFS_CCK, 314));
+ 
+-	if (phy->slottime < 20 || is_5ghz)
++	if (phy->slottime < 20 || a_band)
+ 		val = MT7915_CFEND_RATE_DEFAULT;
+ 	else
+ 		val = MT7915_CFEND_RATE_11B;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 77bf3d94782b..1bc86a289e8c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -987,6 +987,9 @@ mt7915_mcu_sta_ht_tlv(struct sk_buff *skb, struct ieee80211_sta *sta)
+ 	struct sta_rec_ht *ht;
+ 	struct tlv *tlv;
+ 
++	if (!sta->ht_cap.ht_supported)
++		return;
++
+ 	tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_HT, sizeof(*ht));
+ 
+ 	ht = (struct sta_rec_ht *)tlv;
+@@ -1267,6 +1270,9 @@ mt7915_mcu_sta_bfer_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
+ 	};
+ 	bool ebf;
+ 
++	if (!(sta->ht_cap.ht_supported || sta->he_cap.has_he))
++		return;
++
+ 	ebf = mt7915_is_ebf_supported(phy, vif, sta, false);
+ 	if (!ebf && !dev->ibf)
+ 		return;
+@@ -1327,6 +1333,9 @@ mt7915_mcu_sta_bfee_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
+ 	struct tlv *tlv;
+ 	u8 nrow = 0;
+ 
++	if (!(sta->vht_cap.vht_supported || sta->he_cap.has_he))
++		return;
++
+ 	if (!mt7915_is_ebf_supported(phy, vif, sta, true))
+ 		return;
+ 
+@@ -1621,6 +1630,10 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 	if (sta->he_cap.has_he) {
+ 		ra->supp_mode |= MODE_HE;
+ 		cap |= STA_CAP_HE;
++
++		if (sta->he_6ghz_capa.capa)
++			ra->af = le16_get_bits(sta->he_6ghz_capa.capa,
++					       IEEE80211_HE_6GHZ_CAP_MAX_AMPDU_LEN_EXP);
+ 	}
+ 
+ 	ra->sta_cap = cpu_to_le32(cap);
+@@ -1643,7 +1656,7 @@ int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 	 * once dev->rc_work changes the settings driver should also
+ 	 * update sta_rec_he here.
+ 	 */
+-	if (sta->he_cap.has_he && changed)
++	if (changed)
+ 		mt7915_mcu_sta_he_tlv(skb, sta, vif);
+ 
+ 	/* sta_rec_ra accommodates BW, NSS and only MCS range format
+@@ -1712,7 +1725,7 @@ int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 		goto out;
+ 
+ 	/* tag order is in accordance with firmware dependency. */
+-	if (sta && sta->ht_cap.ht_supported) {
++	if (sta) {
+ 		/* starec bfer */
+ 		mt7915_mcu_sta_bfer_tlv(dev, skb, vif, sta);
+ 		/* starec ht */
+@@ -1729,7 +1742,7 @@ int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 		return ret;
+ 	}
+ 
+-	if (sta && sta->ht_cap.ht_supported) {
++	if (sta) {
+ 		/* starec amsdu */
+ 		mt7915_mcu_sta_amsdu_tlv(dev, skb, vif, sta);
+ 		/* starec he */
+@@ -2772,6 +2785,11 @@ int mt7915_mcu_rdd_background_enable(struct mt7915_phy *phy,
+ 
+ int mt7915_mcu_set_chan_info(struct mt7915_phy *phy, int cmd)
+ {
++	static const u8 ch_band[] = {
++		[NL80211_BAND_2GHZ] = 0,
++		[NL80211_BAND_5GHZ] = 1,
++		[NL80211_BAND_6GHZ] = 2,
++	};
+ 	struct mt7915_dev *dev = phy->dev;
+ 	struct cfg80211_chan_def *chandef = &phy->mt76->chandef;
+ 	int freq1 = chandef->center_freq1;
+@@ -2799,7 +2817,7 @@ int mt7915_mcu_set_chan_info(struct mt7915_phy *phy, int cmd)
+ 		.tx_streams_num = hweight8(phy->mt76->antenna_mask),
+ 		.rx_streams = phy->mt76->antenna_mask,
+ 		.band_idx = phy->band_idx,
+-		.channel_band = chandef->chan->band,
++		.channel_band = ch_band[chandef->chan->band],
+ 	};
+ 
+ #ifdef CONFIG_NL80211_TESTMODE
+@@ -3461,6 +3479,8 @@ int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif *vif,
+ 	case MT_PHY_TYPE_OFDM:
+ 		if (mphy->chandef.chan->band == NL80211_BAND_5GHZ)
+ 			sband = &mphy->sband_5g.sband;
++		else if (mphy->chandef.chan->band == NL80211_BAND_6GHZ)
++			sband = &mphy->sband_6g.sband;
+ 		else
+ 			sband = &mphy->sband_2g.sband;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index 2fe737f2f844..6efa0a2e2345 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -227,7 +227,7 @@ struct mt7915_phy {
+ 	struct mt76_phy *mt76;
+ 	struct mt7915_dev *dev;
+ 
+-	struct ieee80211_sband_iftype_data iftype[2][NUM_NL80211_IFTYPES];
++	struct ieee80211_sband_iftype_data iftype[NUM_NL80211_BANDS][NUM_NL80211_IFTYPES];
+ 
+ 	struct ieee80211_vif *monitor_vif;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
+index 6605e24c4593..20f63644e929 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
+@@ -271,6 +271,8 @@ mt7915_tm_set_tx_len(struct mt7915_phy *phy, u32 tx_time)
+ 	case MT76_TM_TX_MODE_OFDM:
+ 		if (mphy->chandef.chan->band == NL80211_BAND_5GHZ)
+ 			sband = &mphy->sband_5g.sband;
++		else if (mphy->chandef.chan->band == NL80211_BAND_6GHZ)
++			sband = &mphy->sband_6g.sband;
+ 		else
+ 			sband = &mphy->sband_2g.sband;
+ 
+@@ -572,6 +574,8 @@ mt7915_tm_set_tx_cont(struct mt7915_phy *phy, bool en)
+ 
+ 		if (chandef->chan->band == NL80211_BAND_5GHZ)
+ 			sband = &phy->mt76->sband_5g.sband;
++		else if (chandef->chan->band == NL80211_BAND_6GHZ)
++			sband = &phy->mt76->sband_6g.sband;
+ 		else
+ 			sband = &phy->mt76->sband_2g.sband;
+ 
+-- 
+2.18.0
 
 
 _______________________________________________
