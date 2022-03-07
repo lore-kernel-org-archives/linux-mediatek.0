@@ -4,59 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1166CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 03:42:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C612C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 03:47:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=aq5EiUR0J7KqJUC+X7CEm7O8o18Xj3qFbIiPsf9gIKU=; b=oG/d8SLqeacVFA
-	LM/di/hyUuvysxTENLdtVOifSb51kbDjyha2s9bPMqYRHeG44DKSn9QMzwx7ZksrOw+DXafF2P6yj
-	9EA8FmFyRybpTo/8ObDakyB4OEgRz88wUNyv8ONgidrA1Sckm5+lepwhmrmQfcOFT0rR1VngStkD8
-	Q2T/sS4aC+L9N7pJeLBmTH31sN1EwGHEjIxCJwBONRqX/8e8kqaO7G6p0lGVYgMiq5NLg4e7+Yl1l
-	abHX0bexc6mE0pjDWCogBwQcB9q4Be8LOBB3KJiqqVMIG/Qr5LCKkuAR5WWcO5TWYKnZubOKOQJZb
-	M3ipUnmbmSTZXqK4pTgQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VwlGzXVmlnPB95Hp2fcbSKvJlskNEM13npvFtvo8QKo=; b=Nj5qdAJlSCFZA8
+	mENJ7effBWI9FgA3v/grBZFzVbK5Akr3DuflMaR2z8Kt+pMo8F/t9/vg/YjQP2QG3+qA7CRuear9Q
+	kz957lWlgo87QRGimH8MTIpcgv0EOOafhJeIR7f9BO7RluhmsdiYzR2o9GvZ/E8USgt71VW7xAtX7
+	IiylrRJlkzWoYPqnhiYApCUcoRqVvNihddRYmkt8brIf27g5DDrm5qqvFwqpVZK/6YewQUn1tXuvD
+	iUcm4f2xkOp/hiVS7VdW+xl6Klm59Tyvm4wUuNXUm0lKknIx9vg9Z3NL2keNRoAACt64omldU5UJq
+	rnSHAD5c1gFDWcHQKp3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nR4Fw-00FnSn-Hx; Mon, 07 Mar 2022 03:41:56 +0000
+	id 1nR4L7-00Foq7-Iz; Mon, 07 Mar 2022 03:47:17 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nR4FB-00FnAy-Jo; Mon, 07 Mar 2022 03:41:10 +0000
-X-UUID: e130fae780294f2db531bc579f5256de-20220306
-X-UUID: e130fae780294f2db531bc579f5256de-20220306
+ id 1nR4Kt-00FooR-GB; Mon, 07 Mar 2022 03:47:07 +0000
+X-UUID: 69532c1556f5429aa7580ee18248cf77-20220306
+X-UUID: 69532c1556f5429aa7580ee18248cf77-20220306
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
+ (envelope-from <kewei.xu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2135550470; Sun, 06 Mar 2022 20:41:02 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 6 Mar 2022 19:31:00 -0800
+ with ESMTP id 2034722462; Sun, 06 Mar 2022 20:46:57 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 6 Mar 2022 19:36:55 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 7 Mar 2022 11:30:58 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 7 Mar 2022 11:36:55 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 7 Mar 2022 11:30:58 +0800
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: <broonie@kernel.org>
-CC: <perex@perex.cz>, <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>,
- <tzungbi@google.com>, <alsa-devel@alsa-project.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
- <jiaxin.yu@mediatek.com>, Tzung-Bi Shih <tzungbi@kernel.org>
-Subject: [v2] ASoC: mediatek: mt8183: support wb bt audio
-Date: Mon, 7 Mar 2022 11:30:56 +0800
-Message-ID: <20220307033056.11463-1-jiaxin.yu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ Transport; Mon, 7 Mar 2022 11:36:54 +0800
+From: Kewei Xu <kewei.xu@mediatek.com>
+To: <wsa@the-dreams.de>
+CC: <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
+ <linux-i2c@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <leilk.liu@mediatek.com>, <qii.wang@mediatek.com>,
+ <liguo.zhang@mediatek.com>, <caiyu.chen@mediatek.com>,
+ <housong.zhang@mediatek.com>, <yuhan.wei@mediatek.com>,
+ <kewei.xu@mediatek.com>
+Subject: [PATCH v1 2/2] i2c: mediatek: Add i2c compatible for Mediatek MT8168
+Date: Mon, 7 Mar 2022 11:36:49 +0800
+Message-ID: <20220307033649.11564-3-kewei.xu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220307033649.11564-1-kewei.xu@mediatek.com>
+References: <20220307033649.11564-1-kewei.xu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220306_194109_674931_11E8B72D 
-X-CRM114-Status: UNSURE (   8.42  )
+X-CRM114-CacheID: sfid-20220306_194703_554763_31971713 
+X-CRM114-Status: UNSURE (   9.61  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,59 +78,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use "bt-sco-pcm-wb" codec dai driver for wb bt audio.
+Add i2c compatible for MT8168. Compare to MT2712 i2c controller,
+MT8168 need to synchronize signal with dma.
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Reviewed-by: Tzung-Bi Shih <tzungbi@kernel.org>
+Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
 ---
+ drivers/i2c/busses/i2c-mt65xx.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-changed from v1: 
-  - describe changes in imperative mood
-  - remove description of unnecessary dependenceies
-
- sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
-
-diff --git a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
-index b0ec5ebd4f2d..889f9e4a96aa 100644
---- a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
-@@ -260,7 +260,7 @@ SND_SOC_DAILINK_DEFS(pcm2,
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index 682293ec9825..99db0a2ebe9c 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -371,6 +371,19 @@ static const struct mtk_i2c_compatible mt7622_compat = {
+ 	.max_dma_support = 32,
+ };
  
- SND_SOC_DAILINK_DEFS(i2s0,
- 	DAILINK_COMP_ARRAY(COMP_CPU("I2S0")),
--	DAILINK_COMP_ARRAY(COMP_CODEC("bt-sco", "bt-sco-pcm")),
-+	DAILINK_COMP_ARRAY(COMP_CODEC("bt-sco", "bt-sco-pcm-wb")),
- 	DAILINK_COMP_ARRAY(COMP_EMPTY()));
- 
- SND_SOC_DAILINK_DEFS(i2s1,
-@@ -291,7 +291,7 @@ SND_SOC_DAILINK_DEFS(i2s3_rt1015p,
- 
- SND_SOC_DAILINK_DEFS(i2s5,
- 	DAILINK_COMP_ARRAY(COMP_CPU("I2S5")),
--	DAILINK_COMP_ARRAY(COMP_CODEC("bt-sco", "bt-sco-pcm")),
-+	DAILINK_COMP_ARRAY(COMP_CODEC("bt-sco", "bt-sco-pcm-wb")),
- 	DAILINK_COMP_ARRAY(COMP_EMPTY()));
- 
- SND_SOC_DAILINK_DEFS(tdm,
-@@ -508,7 +508,6 @@ static struct snd_soc_dai_link mt8183_mt6358_ts3a227_dai_links[] = {
- 		.no_pcm = 1,
- 		.dpcm_capture = 1,
- 		.ignore_suspend = 1,
--		.be_hw_params_fixup = mt8183_i2s_hw_params_fixup,
- 		.ops = &mt8183_mt6358_i2s_ops,
- 		SND_SOC_DAILINK_REG(i2s0),
- 	},
-@@ -541,7 +540,6 @@ static struct snd_soc_dai_link mt8183_mt6358_ts3a227_dai_links[] = {
- 		.no_pcm = 1,
- 		.dpcm_playback = 1,
- 		.ignore_suspend = 1,
--		.be_hw_params_fixup = mt8183_i2s_hw_params_fixup,
- 		.ops = &mt8183_mt6358_i2s_ops,
- 		SND_SOC_DAILINK_REG(i2s5),
- 	},
++static const struct mtk_i2c_compatible mt8168_compat = {
++	.regs = mt_i2c_regs_v1,
++	.pmic_i2c = 0,
++	.dcm = 1,
++	.auto_restart = 1,
++	.aux_len_reg = 1,
++	.timing_adjust = 1,
++	.dma_sync = 1,
++	.ltiming_adjust = 0,
++	.apdma_sync = 0,
++	.max_dma_support = 33,
++};
++
+ static const struct mtk_i2c_compatible mt8173_compat = {
+ 	.regs = mt_i2c_regs_v1,
+ 	.pmic_i2c = 0,
+@@ -430,6 +443,7 @@ static const struct of_device_id mtk_i2c_of_match[] = {
+ 	{ .compatible = "mediatek,mt6577-i2c", .data = &mt6577_compat },
+ 	{ .compatible = "mediatek,mt6589-i2c", .data = &mt6589_compat },
+ 	{ .compatible = "mediatek,mt7622-i2c", .data = &mt7622_compat },
++	{ .compatible = "mediatek,mt8168-i2c", .data = &mt8168_compat },
+ 	{ .compatible = "mediatek,mt8173-i2c", .data = &mt8173_compat },
+ 	{ .compatible = "mediatek,mt8183-i2c", .data = &mt8183_compat },
+ 	{ .compatible = "mediatek,mt8186-i2c", .data = &mt8186_compat },
 -- 
-2.25.1
+2.18.0
 
 
 _______________________________________________
