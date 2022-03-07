@@ -4,59 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68609C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 07:03:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48E27C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 07:10:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qX56xGBVQindFTFOLcq6DGuoLJd7pkkWhT1wgF1XRYw=; b=jRi/1Wfu/CE3YS
-	DXunkfAI0xV+LKK8DLByIv2XF1uem0HoPPfOGK76K/3LlqpeVghpE8KrUvHiJlojLZHdSJ2p0SjOj
-	eSVwrlPMCkORe3T10ZFClvSldlpcJNchjRosokXslSbkepY7xs40lmKs8zYLvWJQ2yVBu+j93u80p
-	9qeTRaTXJ3Agn5gFpJQNyfyhS21yXLotlcGlZrSnSUu9KlxWqzy4obtWuyeHucNSNLE+HAKi1Kbri
-	5bMwVuWLlzuxr9u9QUD9eZrj6l7nzM/TjlX5R9suGMFi9dJvyIvX1jtgcJp61PLIrtWI/FxcS9HJM
-	j8O4iLMquJd9KKlZSSgw==;
+	List-Owner; bh=N5p2oOO+foEvrK0WD6p87C6HQUOIcVDxZHuZCdfaL9I=; b=OWEbxb67ZyPD9U
+	8Ca2vN7rmq/+4pqlgkYBMRY7yPS1M58E3KOa9ZcHMRXmlnW/4mBnsy8cFCocN6s2OvUMgIeIFxTPv
+	IKJ46nkgNXzXBcn9u+HEWQL8sMjNpRz91FhHx7Yycv43OGaCMjB+Uc2XQgK8ar8m4YOAEA33XfkHd
+	+fPJXmbIMsxgvn/a61m/RSepmDcGHS513vuD03W2GXy/j0LspqB6BQvP1PGtvQjiNhXXJztoRV20u
+	RRh1LaWXuQTTDUSzqhGtiPtXIMpYP+BVznOXJOeoARMJIkcHdTv5CGHQgXM/1155SzyJmWwRF9XJd
+	mufqx1wZ4W8rw5OOmfGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nR7Op-00GDBc-SF; Mon, 07 Mar 2022 07:03:19 +0000
+	id 1nR7W2-00GFYJ-37; Mon, 07 Mar 2022 07:10:46 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nR7OJ-00GCvV-Fy; Mon, 07 Mar 2022 07:02:49 +0000
-X-UUID: 2df523504bf94e68aff90c24092639c3-20220307
-X-UUID: 2df523504bf94e68aff90c24092639c3-20220307
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <leilk.liu@mediatek.com>)
+ id 1nR7Vy-00GFXb-MP
+ for linux-mediatek@lists.infradead.org; Mon, 07 Mar 2022 07:10:44 +0000
+X-UUID: cd91b245fa5a438e8eb6997d69475b46-20220307
+X-UUID: cd91b245fa5a438e8eb6997d69475b46-20220307
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <meichia.chiu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 765314908; Mon, 07 Mar 2022 00:02:41 -0700
+ with ESMTP id 454290717; Mon, 07 Mar 2022 00:10:37 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 6 Mar 2022 22:52:39 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ 15.0.1497.2; Sun, 6 Mar 2022 23:10:35 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 7 Mar 2022 14:52:37 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 7 Mar 2022 14:52:37 +0800
-From: Leilk Liu <leilk.liu@mediatek.com>
-To: Mark Brown <broonie@kernel.org>
-CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Leilk Liu
- <leilk.liu@mediatek.com>
-Subject: [PATCH V3 5/7] spi: mediatek: add spi memory support for MT7986
-Date: Mon, 7 Mar 2022 14:52:28 +0800
-Message-ID: <20220307065230.12655-6-leilk.liu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220307065230.12655-1-leilk.liu@mediatek.com>
-References: <20220307065230.12655-1-leilk.liu@mediatek.com>
+ 15.0.1497.2; Mon, 7 Mar 2022 15:10:34 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 7 Mar 2022 15:10:34 +0800
+From: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee
+ <ryder.lee@mediatek.com>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, MeiChia Chiu
+ <MeiChia.Chiu@mediatek.com>, Shayne Chen <Shayne.Chen@mediatek.com>, "Peter
+ Chiu" <Chui-Hao.Chiu@mediatek.com>, Money Wang <Money.Wang@mediatek.com>
+Subject: [PATCH v3 2/4] mt76: mt7915: add 6 GHz support
+Date: Mon, 7 Mar 2022 15:10:26 +0800
+Message-ID: <20220307071028.5711-2-MeiChia.Chiu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220307071028.5711-1-MeiChia.Chiu@mediatek.com>
+References: <20220307071028.5711-1-MeiChia.Chiu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220306_230247_576588_736DC197 
-X-CRM114-Status: GOOD (  28.41  )
+X-CRM114-CacheID: sfid-20220306_231042_752646_C51B11A0 
+X-CRM114-Status: GOOD (  20.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,409 +75,344 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-this patch add the support of spi-mem for MT7986.
+Basic 6 GHz support is added to mt76.
+Modification includes:
+1. Add 6 GHz E2P definition
+2. Register 6 GHz HE cap
+3. Refactor existing code of adding a STA
 
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+This adds support for Wi-Fi 6E on MT7986/MT7916.
+Detailed link:
+https://www.mediatek.com/products/mediatek-filogic-830
+Detailed link:
+https://www.mediatek.com/products/products/broadband-wifi/mediatek-filogic-630
+
+Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Shayne Chen <Shayne.Chen@mediatek.com>
+Signed-off-by: Peter Chiu <Chui-Hao.Chiu@mediatek.com>
+Signed-off-by: Money Wang <Money.Wang@mediatek.com>
+Signed-off-by: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
 ---
- drivers/spi/spi-mt65xx.c | 318 ++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 317 insertions(+), 1 deletion(-)
+v2:
+update commit message
+avoid open-coded for 6G cap
+---
+ .../wireless/mediatek/mt76/mt7915/eeprom.c    | 21 ++++++++++++--
+ .../wireless/mediatek/mt76/mt7915/eeprom.h    |  7 +++++
+ .../net/wireless/mediatek/mt76/mt7915/init.c  | 28 +++++++++++++++++--
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   | 12 +++++---
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 28 ++++++++++++++++---
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  2 +-
+ .../wireless/mediatek/mt76/mt7915/testmode.c  |  4 +++
+ 7 files changed, 88 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index aa282cace7db..2f09b9d7a998 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -17,6 +17,7 @@
- #include <linux/platform_data/spi-mt65xx.h>
- #include <linux/pm_runtime.h>
- #include <linux/spi/spi.h>
-+#include <linux/spi/spi-mem.h>
- #include <linux/dma-mapping.h>
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+index 0fa539479aa7..136a6adab3df 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+@@ -135,9 +135,24 @@ static void mt7915_eeprom_parse_band_config(struct mt7915_phy *phy)
  
- #define SPI_CFG0_REG                      0x0000
-@@ -78,8 +79,21 @@
- #define SPI_CMD_IPM_GET_TICKDLY_OFFSET    22
+ 	val = eeprom[MT_EE_WIFI_CONF + phy->band_idx];
+ 	val = FIELD_GET(MT_EE_WIFI_CONF0_BAND_SEL, val);
+-	if (val == MT_EE_BAND_SEL_DEFAULT &&
+-	    (!is_mt7915(&dev->mt76) || dev->dbdc_support))
+-		val = phy->band_idx ? MT_EE_BAND_SEL_5GHZ : MT_EE_BAND_SEL_2GHZ;
++
++	if (!is_mt7915(&dev->mt76)) {
++		switch (val) {
++		case MT_EE_V2_BAND_SEL_5GHZ:
++			phy->mt76->cap.has_5ghz = true;
++			return;
++		case MT_EE_V2_BAND_SEL_6GHZ:
++			phy->mt76->cap.has_6ghz = true;
++			return;
++		case MT_EE_V2_BAND_SEL_5GHZ_6GHZ:
++			phy->mt76->cap.has_5ghz = true;
++			phy->mt76->cap.has_6ghz = true;
++			return;
++		default:
++			phy->mt76->cap.has_2ghz = true;
++			return;
++		}
++	}
  
- #define SPI_CMD_IPM_GET_TICKDLY_MASK	GENMASK(24, 22)
-+
-+#define PIN_MODE_CFG(x)	((x) / 2)
-+
-+#define SPI_CFG3_IPM_PIN_MODE_OFFSET		0
- #define SPI_CFG3_IPM_HALF_DUPLEX_DIR		BIT(2)
- #define SPI_CFG3_IPM_HALF_DUPLEX_EN		BIT(3)
-+#define SPI_CFG3_IPM_XMODE_EN			BIT(4)
-+#define SPI_CFG3_IPM_NODATA_FLAG		BIT(5)
-+#define SPI_CFG3_IPM_CMD_BYTELEN_OFFSET		8
-+#define SPI_CFG3_IPM_ADDR_BYTELEN_OFFSET	12
-+
-+#define SPI_CFG3_IPM_CMD_PIN_MODE_MASK		GENMASK(1, 0)
-+#define SPI_CFG3_IPM_CMD_BYTELEN_MASK		GENMASK(11, 8)
-+#define SPI_CFG3_IPM_ADDR_BYTELEN_MASK		GENMASK(15, 12)
-+
- #define MT8173_SPI_MAX_PAD_SEL 3
- 
- #define MTK_SPI_PAUSE_INT_STATUS 0x2
-@@ -90,6 +104,8 @@
- #define MTK_SPI_MAX_FIFO_SIZE 32U
- #define MTK_SPI_PACKET_SIZE 1024
- #define MTK_SPI_IPM_PACKET_SIZE SZ_64K
-+#define MTK_SPI_IPM_PACKET_LOOP SZ_256
-+
- #define MTK_SPI_32BITS_MASK  (0xffffffff)
- 
- #define DMA_ADDR_EXT_BITS (36)
-@@ -107,7 +123,8 @@ struct mtk_spi_compatible {
- 	bool no_need_unprepare;
- 	/* IPM design improve some single mode features */
- 	bool ipm_design;
--
-+	/* IPM design that support quad mode */
-+	bool support_quad;
+ 	switch (val) {
+ 	case MT_EE_BAND_SEL_5GHZ:
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
+index 5ffc56bb5c51..5dad5b0b5ac6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
+@@ -76,6 +76,13 @@ enum mt7915_eeprom_band {
+ 	MT_EE_BAND_SEL_DUAL,
  };
  
- struct mtk_spi {
-@@ -123,6 +140,11 @@ struct mtk_spi {
- 	u32 tx_sgl_len, rx_sgl_len;
- 	const struct mtk_spi_compatible *dev_comp;
- 	u32 spi_clk_hz;
-+	struct completion spimem_done;
-+	bool use_spimem;
-+	struct device *dev;
-+	dma_addr_t tx_dma;
-+	dma_addr_t rx_dma;
- };
- 
- static const struct mtk_spi_compatible mtk_common_compat;
-@@ -137,6 +159,13 @@ static const struct mtk_spi_compatible mt7986_compat_single = {
- 	.ipm_design = true,
- };
- 
-+static const struct mtk_spi_compatible mt7986_compat_quad = {
-+	.enhance_timing = true,
-+	.dma_ext = true,
-+	.ipm_design = true,
-+	.support_quad = true,
++enum {
++	MT_EE_V2_BAND_SEL_2GHZ,
++	MT_EE_V2_BAND_SEL_5GHZ,
++	MT_EE_V2_BAND_SEL_6GHZ,
++	MT_EE_V2_BAND_SEL_5GHZ_6GHZ,
 +};
 +
- static const struct mtk_spi_compatible mt6765_compat = {
- 	.need_pad_sel = true,
- 	.must_tx = true,
-@@ -181,6 +210,9 @@ static const struct of_device_id mtk_spi_of_match[] = {
- 	{ .compatible = "mediatek,mt7986-spi-single",
- 		.data = (void *)&mt7986_compat_single,
- 	},
-+	{ .compatible = "mediatek,mt7986-spi-quad",
-+		.data = (void *)&mt7986_compat_quad,
-+	},
- 	{ .compatible = "mediatek,mt2701-spi",
- 		.data = (void *)&mtk_common_compat,
- 	},
-@@ -704,6 +736,12 @@ static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
- 	else
- 		mdata->state = MTK_SPI_IDLE;
+ enum mt7915_sku_rate_group {
+ 	SKU_CCK,
+ 	SKU_OFDM,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index fd16d777f2e4..9a696687d61c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -872,7 +872,7 @@ mt7915_init_he_caps(struct mt7915_phy *phy, enum nl80211_band band,
+ 		if (band == NL80211_BAND_2GHZ)
+ 			he_cap_elem->phy_cap_info[0] =
+ 				IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_40MHZ_IN_2G;
+-		else if (band == NL80211_BAND_5GHZ)
++		else
+ 			he_cap_elem->phy_cap_info[0] =
+ 				IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_40MHZ_80MHZ_IN_5G |
+ 				IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_160MHZ_IN_5G |
+@@ -911,7 +911,7 @@ mt7915_init_he_caps(struct mt7915_phy *phy, enum nl80211_band band,
+ 			if (band == NL80211_BAND_2GHZ)
+ 				he_cap_elem->phy_cap_info[0] |=
+ 					IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_RU_MAPPING_IN_2G;
+-			else if (band == NL80211_BAND_5GHZ)
++			else
+ 				he_cap_elem->phy_cap_info[0] |=
+ 					IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_RU_MAPPING_IN_5G;
  
-+	/* SPI-MEM ops */
-+	if (mdata->use_spimem) {
-+		complete(&mdata->spimem_done);
-+		return IRQ_HANDLED;
-+	}
+@@ -961,6 +961,21 @@ mt7915_init_he_caps(struct mt7915_phy *phy, enum nl80211_band band,
+ 				u8_encode_bits(IEEE80211_HE_PHY_CAP9_NOMINAL_PKT_PADDING_16US,
+ 					       IEEE80211_HE_PHY_CAP9_NOMINAL_PKT_PADDING_MASK);
+ 		}
 +
- 	if (!master->can_dma(master, NULL, trans)) {
- 		if (trans->rx_buf) {
- 			cnt = mdata->xfer_len / 4;
-@@ -787,6 +825,275 @@ static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
- 	return IRQ_HANDLED;
++		if (band == NL80211_BAND_6GHZ) {
++			u16 cap = IEEE80211_HE_6GHZ_CAP_TX_ANTPAT_CONS |
++				  IEEE80211_HE_6GHZ_CAP_RX_ANTPAT_CONS;
++
++			cap |= u16_encode_bits(IEEE80211_HT_MPDU_DENSITY_8,
++					       IEEE80211_HE_6GHZ_CAP_MIN_MPDU_START) |
++			       u16_encode_bits(IEEE80211_VHT_MAX_AMPDU_1024K,
++					       IEEE80211_HE_6GHZ_CAP_MAX_AMPDU_LEN_EXP) |
++			       u16_encode_bits(IEEE80211_VHT_CAP_MAX_MPDU_LENGTH_11454,
++					       IEEE80211_HE_6GHZ_CAP_MAX_MPDU_LEN);
++
++			data[idx].he_6ghz_capa.capa = cpu_to_le16(cap);
++		}
++
+ 		idx++;
+ 	}
+ 
+@@ -990,6 +1005,15 @@ void mt7915_set_stream_he_caps(struct mt7915_phy *phy)
+ 		band->iftype_data = data;
+ 		band->n_iftype_data = n;
+ 	}
++
++	if (phy->mt76->cap.has_6ghz) {
++		data = phy->iftype[NL80211_BAND_6GHZ];
++		n = mt7915_init_he_caps(phy, NL80211_BAND_6GHZ, data);
++
++		band = &phy->mt76->sband_6g.sband;
++		band->iftype_data = data;
++		band->n_iftype_data = n;
++	}
  }
  
-+static int mtk_spi_mem_adjust_op_size(struct spi_mem *mem,
-+				      struct spi_mem_op *op)
-+{
-+	int opcode_len;
-+
-+	if (op->data.dir != SPI_MEM_NO_DATA) {
-+		opcode_len = 1 + op->addr.nbytes + op->dummy.nbytes;
-+		if (opcode_len + op->data.nbytes > MTK_SPI_IPM_PACKET_SIZE) {
-+			op->data.nbytes = MTK_SPI_IPM_PACKET_SIZE - opcode_len;
-+			/* force data buffer dma-aligned. */
-+			op->data.nbytes -= op->data.nbytes % 4;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static bool mtk_spi_mem_supports_op(struct spi_mem *mem,
-+				    const struct spi_mem_op *op)
-+{
-+	if (op->data.buswidth > 4 || op->addr.buswidth > 4 ||
-+	    op->dummy.buswidth > 4 || op->cmd.buswidth > 4)
-+		return false;
-+
-+	if (op->addr.nbytes && op->dummy.nbytes &&
-+	    op->addr.buswidth != op->dummy.buswidth)
-+		return false;
-+
-+	if (op->addr.nbytes + op->dummy.nbytes > 16)
-+		return false;
-+
-+	if (op->data.nbytes > MTK_SPI_IPM_PACKET_SIZE) {
-+		if (op->data.nbytes / MTK_SPI_IPM_PACKET_SIZE >
-+		    MTK_SPI_IPM_PACKET_LOOP ||
-+		    op->data.nbytes % MTK_SPI_IPM_PACKET_SIZE != 0)
-+			return false;
-+	}
-+
-+	return true;
-+}
-+
-+static void mtk_spi_mem_setup_dma_xfer(struct spi_master *master,
-+				       const struct spi_mem_op *op)
-+{
-+	struct mtk_spi *mdata = spi_master_get_devdata(master);
-+
-+	writel((u32)(mdata->tx_dma & MTK_SPI_32BITS_MASK),
-+	       mdata->base + SPI_TX_SRC_REG);
-+#ifdef CONFIG_ARCH_DMA_ADDR_T_64BIT
-+	if (mdata->dev_comp->dma_ext)
-+		writel((u32)(mdata->tx_dma >> 32),
-+		       mdata->base + SPI_TX_SRC_REG_64);
-+#endif
-+
-+	if (op->data.dir == SPI_MEM_DATA_IN) {
-+		writel((u32)(mdata->rx_dma & MTK_SPI_32BITS_MASK),
-+		       mdata->base + SPI_RX_DST_REG);
-+#ifdef CONFIG_ARCH_DMA_ADDR_T_64BIT
-+		if (mdata->dev_comp->dma_ext)
-+			writel((u32)(mdata->rx_dma >> 32),
-+			       mdata->base + SPI_RX_DST_REG_64);
-+#endif
-+	}
-+}
-+
-+static int mtk_spi_transfer_wait(struct spi_mem *mem,
-+				 const struct spi_mem_op *op)
-+{
-+	struct mtk_spi *mdata = spi_master_get_devdata(mem->spi->master);
-+	/*
-+	 * For each byte we wait for 8 cycles of the SPI clock.
-+	 * Since speed is defined in Hz and we want milliseconds,
-+	 * so it should be 8 * 1000.
-+	 */
-+	u64 ms = 8000LL;
-+
-+	if (op->data.dir == SPI_MEM_NO_DATA)
-+		ms *= 32; /* prevent we may get 0 for short transfers. */
-+	else
-+		ms *= op->data.nbytes;
-+	ms = div_u64(ms, mem->spi->max_speed_hz);
-+	ms += ms + 1000; /* 1s tolerance */
-+
-+	if (ms > UINT_MAX)
-+		ms = UINT_MAX;
-+
-+	if (!wait_for_completion_timeout(&mdata->spimem_done,
-+					 msecs_to_jiffies(ms))) {
-+		dev_err(mdata->dev, "spi-mem transfer timeout\n");
-+		return -ETIMEDOUT;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_spi_mem_exec_op(struct spi_mem *mem,
-+			       const struct spi_mem_op *op)
-+{
-+	struct mtk_spi *mdata = spi_master_get_devdata(mem->spi->master);
-+	u32 reg_val, nio, tx_size;
-+	char *tx_tmp_buf, *rx_tmp_buf;
-+	int ret = 0;
-+
-+	mdata->use_spimem = true;
-+	reinit_completion(&mdata->spimem_done);
-+
-+	mtk_spi_reset(mdata);
-+	mtk_spi_hw_init(mem->spi->master, mem->spi);
-+	mtk_spi_prepare_transfer(mem->spi->master, mem->spi->max_speed_hz);
-+
-+	reg_val = readl(mdata->base + SPI_CFG3_IPM_REG);
-+	/* opcode byte len */
-+	reg_val &= ~SPI_CFG3_IPM_CMD_BYTELEN_MASK;
-+	reg_val |= 1 << SPI_CFG3_IPM_CMD_BYTELEN_OFFSET;
-+
-+	/* addr & dummy byte len */
-+	reg_val &= ~SPI_CFG3_IPM_ADDR_BYTELEN_MASK;
-+	if (op->addr.nbytes || op->dummy.nbytes)
-+		reg_val |= (op->addr.nbytes + op->dummy.nbytes) <<
-+			    SPI_CFG3_IPM_ADDR_BYTELEN_OFFSET;
-+
-+	/* data byte len */
-+	if (op->data.dir == SPI_MEM_NO_DATA) {
-+		reg_val |= SPI_CFG3_IPM_NODATA_FLAG;
-+		writel(0, mdata->base + SPI_CFG1_REG);
-+	} else {
-+		reg_val &= ~SPI_CFG3_IPM_NODATA_FLAG;
-+		mdata->xfer_len = op->data.nbytes;
-+		mtk_spi_setup_packet(mem->spi->master);
-+	}
-+
-+	if (op->addr.nbytes || op->dummy.nbytes) {
-+		if (op->addr.buswidth == 1 || op->dummy.buswidth == 1)
-+			reg_val |= SPI_CFG3_IPM_XMODE_EN;
-+		else
-+			reg_val &= ~SPI_CFG3_IPM_XMODE_EN;
-+	}
-+
-+	if (op->addr.buswidth == 2 ||
-+	    op->dummy.buswidth == 2 ||
-+	    op->data.buswidth == 2)
-+		nio = 2;
-+	else if (op->addr.buswidth == 4 ||
-+		 op->dummy.buswidth == 4 ||
-+		 op->data.buswidth == 4)
-+		nio = 4;
-+	else
-+		nio = 1;
-+
-+	reg_val &= ~SPI_CFG3_IPM_CMD_PIN_MODE_MASK;
-+	reg_val |= PIN_MODE_CFG(nio) << SPI_CFG3_IPM_PIN_MODE_OFFSET;
-+
-+	reg_val |= SPI_CFG3_IPM_HALF_DUPLEX_EN;
-+	if (op->data.dir == SPI_MEM_DATA_IN)
-+		reg_val |= SPI_CFG3_IPM_HALF_DUPLEX_DIR;
-+	else
-+		reg_val &= ~SPI_CFG3_IPM_HALF_DUPLEX_DIR;
-+	writel(reg_val, mdata->base + SPI_CFG3_IPM_REG);
-+
-+	tx_size = 1 + op->addr.nbytes + op->dummy.nbytes;
-+	if (op->data.dir == SPI_MEM_DATA_OUT)
-+		tx_size += op->data.nbytes;
-+
-+	tx_size = max_t(u32, tx_size, 32);
-+
-+	tx_tmp_buf = kzalloc(tx_size, GFP_KERNEL | GFP_DMA);
-+	if (!tx_tmp_buf) {
-+		mdata->use_spimem = false;
-+		return -ENOMEM;
-+	}
-+
-+	tx_tmp_buf[0] = op->cmd.opcode;
-+
-+	if (op->addr.nbytes) {
-+		int i;
-+
-+		for (i = 0; i < op->addr.nbytes; i++)
-+			tx_tmp_buf[i + 1] = op->addr.val >>
-+					(8 * (op->addr.nbytes - i - 1));
-+	}
-+
-+	if (op->dummy.nbytes)
-+		memset(tx_tmp_buf + op->addr.nbytes + 1,
-+		       0xff,
-+		       op->dummy.nbytes);
-+
-+	if (op->data.nbytes && op->data.dir == SPI_MEM_DATA_OUT)
-+		memcpy(tx_tmp_buf + op->dummy.nbytes + op->addr.nbytes + 1,
-+		       op->data.buf.out,
-+		       op->data.nbytes);
-+
-+	mdata->tx_dma = dma_map_single(mdata->dev, tx_tmp_buf,
-+				       tx_size, DMA_TO_DEVICE);
-+	if (dma_mapping_error(mdata->dev, mdata->tx_dma)) {
-+		ret = -ENOMEM;
-+		goto err_exit;
-+	}
-+
-+	if (op->data.dir == SPI_MEM_DATA_IN) {
-+		if (!IS_ALIGNED((size_t)op->data.buf.in, 4)) {
-+			rx_tmp_buf = kzalloc(op->data.nbytes,
-+					     GFP_KERNEL | GFP_DMA);
-+			if (!rx_tmp_buf) {
-+				ret = -ENOMEM;
-+				goto unmap_tx_dma;
-+			}
-+		} else {
-+			rx_tmp_buf = op->data.buf.in;
-+		}
-+
-+		mdata->rx_dma = dma_map_single(mdata->dev,
-+					       rx_tmp_buf,
-+					       op->data.nbytes,
-+					       DMA_FROM_DEVICE);
-+		if (dma_mapping_error(mdata->dev, mdata->rx_dma)) {
-+			ret = -ENOMEM;
-+			goto kfree_rx_tmp_buf;
-+		}
-+	}
-+
-+	reg_val = readl(mdata->base + SPI_CMD_REG);
-+	reg_val |= SPI_CMD_TX_DMA;
-+	if (op->data.dir == SPI_MEM_DATA_IN)
-+		reg_val |= SPI_CMD_RX_DMA;
-+	writel(reg_val, mdata->base + SPI_CMD_REG);
-+
-+	mtk_spi_mem_setup_dma_xfer(mem->spi->master, op);
-+
-+	mtk_spi_enable_transfer(mem->spi->master);
-+
-+	/* Wait for the interrupt. */
-+	ret = mtk_spi_transfer_wait(mem, op);
-+	if (ret)
-+		goto unmap_rx_dma;
-+
-+	/* spi disable dma */
-+	reg_val = readl(mdata->base + SPI_CMD_REG);
-+	reg_val &= ~SPI_CMD_TX_DMA;
-+	if (op->data.dir == SPI_MEM_DATA_IN)
-+		reg_val &= ~SPI_CMD_RX_DMA;
-+	writel(reg_val, mdata->base + SPI_CMD_REG);
-+
-+unmap_rx_dma:
-+	if (op->data.dir == SPI_MEM_DATA_IN) {
-+		dma_unmap_single(mdata->dev, mdata->rx_dma,
-+				 op->data.nbytes, DMA_FROM_DEVICE);
-+		if (!IS_ALIGNED((size_t)op->data.buf.in, 4))
-+			memcpy(op->data.buf.in, rx_tmp_buf, op->data.nbytes);
-+	}
-+kfree_rx_tmp_buf:
-+	if (op->data.dir == SPI_MEM_DATA_IN &&
-+	    !IS_ALIGNED((size_t)op->data.buf.in, 4))
-+		kfree(rx_tmp_buf);
-+unmap_tx_dma:
-+	dma_unmap_single(mdata->dev, mdata->tx_dma,
-+			 tx_size, DMA_TO_DEVICE);
-+err_exit:
-+	kfree(tx_tmp_buf);
-+	mdata->use_spimem = false;
-+
-+	return ret;
-+}
-+
-+static const struct spi_controller_mem_ops mtk_spi_mem_ops = {
-+	.adjust_op_size = mtk_spi_mem_adjust_op_size,
-+	.supports_op = mtk_spi_mem_supports_op,
-+	.exec_op = mtk_spi_mem_exec_op,
-+};
-+
- static int mtk_spi_probe(struct platform_device *pdev)
- {
- 	struct spi_master *master;
-@@ -830,6 +1137,15 @@ static int mtk_spi_probe(struct platform_device *pdev)
- 	if (mdata->dev_comp->ipm_design)
- 		master->mode_bits |= SPI_LOOP;
+ static void mt7915_unregister_ext_phy(struct mt7915_dev *dev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 1da551f0b389..f3f48e7fc593 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -638,6 +638,8 @@ mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_buff *skb)
+ 	status->band = mphy->chandef.chan->band;
+ 	if (status->band == NL80211_BAND_5GHZ)
+ 		sband = &mphy->sband_5g.sband;
++	else if (status->band == NL80211_BAND_6GHZ)
++		sband = &mphy->sband_6g.sband;
+ 	else
+ 		sband = &mphy->sband_2g.sband;
  
-+	if (mdata->dev_comp->support_quad) {
-+		master->mem_ops = &mtk_spi_mem_ops;
-+		master->mode_bits |= SPI_RX_DUAL | SPI_TX_DUAL |
-+				     SPI_RX_QUAD | SPI_TX_QUAD;
+@@ -1350,7 +1352,7 @@ mt7915_tx_check_aggr(struct ieee80211_sta *sta, __le32 *txwi)
+ 	u16 fc, tid;
+ 	u32 val;
+ 
+-	if (!sta || !sta->ht_cap.ht_supported)
++	if (!sta || !(sta->ht_cap.ht_supported || sta->he_cap.has_he))
+ 		return;
+ 
+ 	tid = FIELD_GET(MT_TXD1_TID, le32_to_cpu(txwi[1]));
+@@ -1558,6 +1560,8 @@ mt7915_mac_add_txs_skb(struct mt7915_dev *dev, struct mt76_wcid *wcid, int pid,
+ 
+ 		if (mphy->chandef.chan->band == NL80211_BAND_5GHZ)
+ 			sband = &mphy->sband_5g.sband;
++		else if (mphy->chandef.chan->band == NL80211_BAND_6GHZ)
++			sband = &mphy->sband_6g.sband;
+ 		else
+ 			sband = &mphy->sband_2g.sband;
+ 
+@@ -1803,7 +1807,7 @@ void mt7915_mac_set_timing(struct mt7915_phy *phy)
+ 	u32 ofdm = FIELD_PREP(MT_TIMEOUT_VAL_PLCP, 60) |
+ 		   FIELD_PREP(MT_TIMEOUT_VAL_CCA, 28);
+ 	int offset;
+-	bool is_5ghz = phy->mt76->chandef.chan->band == NL80211_BAND_5GHZ;
++	bool a_band = !(phy->mt76->chandef.chan->band == NL80211_BAND_2GHZ);
+ 
+ 	if (!test_bit(MT76_STATE_RUNNING, &phy->mt76->state))
+ 		return;
+@@ -1823,7 +1827,7 @@ void mt7915_mac_set_timing(struct mt7915_phy *phy)
+ 	mt76_wr(dev, MT_TMAC_CDTR(phy->band_idx), cck + reg_offset);
+ 	mt76_wr(dev, MT_TMAC_ODTR(phy->band_idx), ofdm + reg_offset);
+ 	mt76_wr(dev, MT_TMAC_ICR0(phy->band_idx),
+-		FIELD_PREP(MT_IFS_EIFS_OFDM, is_5ghz ? 84 : 78) |
++		FIELD_PREP(MT_IFS_EIFS_OFDM, a_band ? 84 : 78) |
+ 		FIELD_PREP(MT_IFS_RIFS, 2) |
+ 		FIELD_PREP(MT_IFS_SIFS, 10) |
+ 		FIELD_PREP(MT_IFS_SLOT, phy->slottime));
+@@ -1831,7 +1835,7 @@ void mt7915_mac_set_timing(struct mt7915_phy *phy)
+ 	mt76_wr(dev, MT_TMAC_ICR1(phy->band_idx),
+ 		FIELD_PREP(MT_IFS_EIFS_CCK, 314));
+ 
+-	if (phy->slottime < 20 || is_5ghz)
++	if (phy->slottime < 20 || a_band)
+ 		val = MT7915_CFEND_RATE_DEFAULT;
+ 	else
+ 		val = MT7915_CFEND_RATE_11B;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 77bf3d94782b..1bc86a289e8c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -987,6 +987,9 @@ mt7915_mcu_sta_ht_tlv(struct sk_buff *skb, struct ieee80211_sta *sta)
+ 	struct sta_rec_ht *ht;
+ 	struct tlv *tlv;
+ 
++	if (!sta->ht_cap.ht_supported)
++		return;
 +
-+		mdata->dev = &pdev->dev;
-+		init_completion(&mdata->spimem_done);
-+	}
+ 	tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_HT, sizeof(*ht));
+ 
+ 	ht = (struct sta_rec_ht *)tlv;
+@@ -1267,6 +1270,9 @@ mt7915_mcu_sta_bfer_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
+ 	};
+ 	bool ebf;
+ 
++	if (!(sta->ht_cap.ht_supported || sta->he_cap.has_he))
++		return;
 +
- 	if (mdata->dev_comp->need_pad_sel) {
- 		mdata->pad_num = of_property_count_u32_elems(
- 			pdev->dev.of_node,
+ 	ebf = mt7915_is_ebf_supported(phy, vif, sta, false);
+ 	if (!ebf && !dev->ibf)
+ 		return;
+@@ -1327,6 +1333,9 @@ mt7915_mcu_sta_bfee_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
+ 	struct tlv *tlv;
+ 	u8 nrow = 0;
+ 
++	if (!(sta->vht_cap.vht_supported || sta->he_cap.has_he))
++		return;
++
+ 	if (!mt7915_is_ebf_supported(phy, vif, sta, true))
+ 		return;
+ 
+@@ -1621,6 +1630,10 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 	if (sta->he_cap.has_he) {
+ 		ra->supp_mode |= MODE_HE;
+ 		cap |= STA_CAP_HE;
++
++		if (sta->he_6ghz_capa.capa)
++			ra->af = le16_get_bits(sta->he_6ghz_capa.capa,
++					       IEEE80211_HE_6GHZ_CAP_MAX_AMPDU_LEN_EXP);
+ 	}
+ 
+ 	ra->sta_cap = cpu_to_le32(cap);
+@@ -1643,7 +1656,7 @@ int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 	 * once dev->rc_work changes the settings driver should also
+ 	 * update sta_rec_he here.
+ 	 */
+-	if (sta->he_cap.has_he && changed)
++	if (changed)
+ 		mt7915_mcu_sta_he_tlv(skb, sta, vif);
+ 
+ 	/* sta_rec_ra accommodates BW, NSS and only MCS range format
+@@ -1712,7 +1725,7 @@ int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 		goto out;
+ 
+ 	/* tag order is in accordance with firmware dependency. */
+-	if (sta && sta->ht_cap.ht_supported) {
++	if (sta) {
+ 		/* starec bfer */
+ 		mt7915_mcu_sta_bfer_tlv(dev, skb, vif, sta);
+ 		/* starec ht */
+@@ -1729,7 +1742,7 @@ int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 		return ret;
+ 	}
+ 
+-	if (sta && sta->ht_cap.ht_supported) {
++	if (sta) {
+ 		/* starec amsdu */
+ 		mt7915_mcu_sta_amsdu_tlv(dev, skb, vif, sta);
+ 		/* starec he */
+@@ -2772,6 +2785,11 @@ int mt7915_mcu_rdd_background_enable(struct mt7915_phy *phy,
+ 
+ int mt7915_mcu_set_chan_info(struct mt7915_phy *phy, int cmd)
+ {
++	static const u8 ch_band[] = {
++		[NL80211_BAND_2GHZ] = 0,
++		[NL80211_BAND_5GHZ] = 1,
++		[NL80211_BAND_6GHZ] = 2,
++	};
+ 	struct mt7915_dev *dev = phy->dev;
+ 	struct cfg80211_chan_def *chandef = &phy->mt76->chandef;
+ 	int freq1 = chandef->center_freq1;
+@@ -2799,7 +2817,7 @@ int mt7915_mcu_set_chan_info(struct mt7915_phy *phy, int cmd)
+ 		.tx_streams_num = hweight8(phy->mt76->antenna_mask),
+ 		.rx_streams = phy->mt76->antenna_mask,
+ 		.band_idx = phy->band_idx,
+-		.channel_band = chandef->chan->band,
++		.channel_band = ch_band[chandef->chan->band],
+ 	};
+ 
+ #ifdef CONFIG_NL80211_TESTMODE
+@@ -3461,6 +3479,8 @@ int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif *vif,
+ 	case MT_PHY_TYPE_OFDM:
+ 		if (mphy->chandef.chan->band == NL80211_BAND_5GHZ)
+ 			sband = &mphy->sband_5g.sband;
++		else if (mphy->chandef.chan->band == NL80211_BAND_6GHZ)
++			sband = &mphy->sband_6g.sband;
+ 		else
+ 			sband = &mphy->sband_2g.sband;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index 2fe737f2f844..6efa0a2e2345 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -227,7 +227,7 @@ struct mt7915_phy {
+ 	struct mt76_phy *mt76;
+ 	struct mt7915_dev *dev;
+ 
+-	struct ieee80211_sband_iftype_data iftype[2][NUM_NL80211_IFTYPES];
++	struct ieee80211_sband_iftype_data iftype[NUM_NL80211_BANDS][NUM_NL80211_IFTYPES];
+ 
+ 	struct ieee80211_vif *monitor_vif;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
+index 6605e24c4593..20f63644e929 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
+@@ -271,6 +271,8 @@ mt7915_tm_set_tx_len(struct mt7915_phy *phy, u32 tx_time)
+ 	case MT76_TM_TX_MODE_OFDM:
+ 		if (mphy->chandef.chan->band == NL80211_BAND_5GHZ)
+ 			sband = &mphy->sband_5g.sband;
++		else if (mphy->chandef.chan->band == NL80211_BAND_6GHZ)
++			sband = &mphy->sband_6g.sband;
+ 		else
+ 			sband = &mphy->sband_2g.sband;
+ 
+@@ -572,6 +574,8 @@ mt7915_tm_set_tx_cont(struct mt7915_phy *phy, bool en)
+ 
+ 		if (chandef->chan->band == NL80211_BAND_5GHZ)
+ 			sband = &phy->mt76->sband_5g.sband;
++		else if (chandef->chan->band == NL80211_BAND_6GHZ)
++			sband = &phy->mt76->sband_6g.sband;
+ 		else
+ 			sband = &phy->mt76->sband_2g.sband;
+ 
 -- 
-2.25.1
+2.18.0
 
 
 _______________________________________________
