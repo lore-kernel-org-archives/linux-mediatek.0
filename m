@@ -4,98 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BC11C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Mar 2022 11:17:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A1E5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 01:57:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uX3fJ9fpLKPiEXdDS/VQXjZ1HeQNZCT5FiCPnYLI9VU=; b=qDk4/uZUJ0+fO3
-	8wvKsrKBqh0eCFSGHEvzcZ9LIYyT8+MKdTFSGU2z4I+gGc1ELZnv35XyGtUiYggNXmSb0XrFcdI6H
-	ZWaG8fAKORoEKRfFk1Y3+EuPF75+quG6VryPE0eZd4VGTeAaevdj43DwBi/oozwc5ibOAIKM/+RNE
-	aSDuOyUBv/SaaxCBW6so5Bwo/bnzuZZI08OLwXBrCK5G8ha3r4aQSuohKMlL6PguG4x6kHP40v/Q9
-	EQym36BbhsbzUpV+K3MAac5zHz7qeZBmbUiUMJhMODhVqimR7ibj4gXjqRc7SJ4OnkI11Y98jPc6Q
-	U0EPeqS5lckWxSViu7WA==;
+	List-Owner; bh=1cOD93JevumSBUNBmAimFJ46bpAlUfym23ZLLoeZR4U=; b=EiDUdYrhbMD8Qt
+	Z3O7IlPp44Qp8uGGDDxerRV15RCql26wN7ThafEmXqYf4L8f9O3NHPl/LO1y/VgY5tIos/HelMgPU
+	Eo7WRsfSLwZsAFX8KhxHpdSxAzTqyi+r0RqqbsicCtE0AOuP78oOxb452g5MEQGLQGw0REq6HHeUl
+	ozcR3N/ZLuiJTpgfl1Oa9sgpSgme6qa5kVSUUBmqa5BAOhfdDZLxze/mrGlYdiNaBUzPcNXHFwH5g
+	qcnP5Kz3H+UUp7cQfgmi0GgXw25lq13VHAjQta2UAWQRC3qzHw1ZWb2JuKg3CXb0VzFlIx/zyJyPZ
+	Ef+pFhC38U1gi+O8p4tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQosl-00EXlm-Uh; Sun, 06 Mar 2022 11:16:59 +0000
-Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
+	id 1nR2cg-00FWTa-Kj; Mon, 07 Mar 2022 01:57:18 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQooS-00EVLq-H7
- for linux-mediatek@lists.infradead.org; Sun, 06 Mar 2022 11:12:35 +0000
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id B9D903F635
- for <linux-mediatek@lists.infradead.org>; Sun,  6 Mar 2022 11:12:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1646565130;
- bh=wgqfJLkBNpY/mAWjYm7cIkcCFLA2nEZfPDvOkx5plvo=;
- h=From:To:Cc:Subject:Date:Message-Id:In-Reply-To:References:
- MIME-Version;
- b=XpmvNknC22UxnjOPzKL23Xr3Fq6BWCDFxe2wMBCZXLnCUYLdm0A2kQUfpSbNxtV7y
- TQfyBCmWe3u1Me/9q5JoVyVLJOrp1o5RUbnovr3oVnYKuCvuPpJ8ZICMmoUZSWMYwM
- TdnwLiBtdjEeUHB9nVON9qb8pwwlT9wxZBtW2mXPPMI4WVGIKaEgtVHtEUSUe49Uff
- /jgv7Ck14bO9iku4EGeca0FFLo7GYLsdNDL2QU0m6EaCqYl2tk+jRsVG89xZdFxCu+
- gJbNY23aE09Qp38yzFwTdzAFP4Zwab6hfUmh61kHE4CDMzzFA57ECwwOdW8PILsciz
- TCeYrXLa2B7Xw==
-Received: by mail-ed1-f71.google.com with SMTP id
- co2-20020a0564020c0200b00415f9fa6ca8so3281608edb.6
- for <linux-mediatek@lists.infradead.org>; Sun, 06 Mar 2022 03:12:10 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=wgqfJLkBNpY/mAWjYm7cIkcCFLA2nEZfPDvOkx5plvo=;
- b=CCQbs/nwKjNa76jVDH/oEPDPt1beJc9H9E0CR3IiDU0FMQ4UI+3AwQ0jzEJCxCGibW
- RBYV/PC3VB3RA98egUHDfPeqM4neblpFnnFBkzA8mw4UdRW3GtqsSV9sKMlu7QP2aWXv
- Psu4AWsHRY16cGi5sB7k08dO37RGd7kaTklm5xO9howpDRWA5DvJgOsG7W3qShsZLZfP
- mFw6eLW4JeUT20odciLqMlnSjYUh1nVDvCDkDRjcP0WKlUvUAv2nOjGOF4aYcz6go3Ls
- F0C5yGSEnDR6SKVnQOVnYn7MvkDBoSjjwwzF47VQS4D4s0U5R0exjPTJWUHS5BgaVb+O
- xdKA==
-X-Gm-Message-State: AOAM531487SuLu6+4i1CXdpOpWWAb1g8qkQwThna42o2jLAtkRSwgLLm
- 3Y2IrH82GYAONhwSK8a1WgLqUyhjt1Td+bPG5+hgOjex0uEB87+f09zB0Gcw3BsbQhf20K9Z1/Q
- puMLOq7UXZiBogVOvFDSICzcyPet3KrvTv/nRXOYpD94jvsCBNQ==
-X-Received: by 2002:a17:907:97c7:b0:6da:b3ba:6d9f with SMTP id
- js7-20020a17090797c700b006dab3ba6d9fmr5656073ejc.256.1646565101840; 
- Sun, 06 Mar 2022 03:11:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzI/f9oe/d9Yo/mQsZljd3XsbvAm03QZ35EIUbF5Mn8Bm1LIQVAU9sQSoq11d5BH7Hd2xRHBA==
-X-Received: by 2002:a17:907:97c7:b0:6da:b3ba:6d9f with SMTP id
- js7-20020a17090797c700b006dab3ba6d9fmr5656059ejc.256.1646565101607; 
- Sun, 06 Mar 2022 03:11:41 -0800 (PST)
-Received: from localhost.localdomain (xdsl-188-155-181-108.adslplus.ch.
- [188.155.181.108]) by smtp.gmail.com with ESMTPSA id
- a9-20020a1709066d4900b006da888c3ef0sm3720444ejt.108.2022.03.06.03.11.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 06 Mar 2022 03:11:40 -0800 (PST)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Wei Xu <xuwei5@hisilicon.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Jan Kotas <jank@cadence.com>, Li Wei <liwei213@huawei.com>,
- Stanley Chu <stanley.chu@mediatek.com>,
- Vignesh Raghavendra <vigneshr@ti.com>, linux-scsi@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: Rob Herring <robh@kernel.org>
-Subject: [PATCH v3 07/12] dt-bindings: ufs: mediatek,ufs: convert to dtschema
-Date: Sun,  6 Mar 2022 12:11:20 +0100
-Message-Id: <20220306111125.116455-8-krzysztof.kozlowski@canonical.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220306111125.116455-1-krzysztof.kozlowski@canonical.com>
-References: <20220306111125.116455-1-krzysztof.kozlowski@canonical.com>
+ id 1nR2cQ-00FWSE-Uk; Mon, 07 Mar 2022 01:57:06 +0000
+X-UUID: 254221b345c444828e7a1ad0d8dae5e9-20220306
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=4tH2voEjL/gR4OpABXzr7aShO9hWEmQUr2VIAtkfchM=; 
+ b=Z/0Qxv+39U3JX7RPgp7AUbgJNVKMLaWGfG+pGNEuIBPHGr8iO830EPybEaU+6QoDr2G3BpokRVKSbQAxi+T+hFeEla4vL4t2iB5tIz9lt6TzRNOwBnsZFUeZY9RUVz2Ew9G3FSprMVI3Y8cqcbHNFuILFJ1TAGYWIgek368jH7k=;
+X-UUID: 254221b345c444828e7a1ad0d8dae5e9-20220306
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <kyrie.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 660620490; Sun, 06 Mar 2022 18:56:55 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 6 Mar 2022 17:46:52 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 7 Mar 2022 09:46:51 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 7 Mar 2022 09:46:50 +0800
+Message-ID: <71a7cfff99e4492fff899438f1a480689a9e8f0f.camel@mediatek.com>
+Subject: Re: [RESEND,V7,3/6] media: mtk-jpegenc: manage jpegenc multi-hardware
+From: kyrie.wu <kyrie.wu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans
+ Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+ <xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>,
+ <srv_heupstream@mediatek.com>
+Date: Mon, 7 Mar 2022 09:46:50 +0800
+In-Reply-To: <dee15f20-0f7d-58c6-728b-3e14f84f0833@collabora.com>
+References: <1645693637-627-1-git-send-email-kyrie.wu@mediatek.com>
+ <1645693637-627-4-git-send-email-kyrie.wu@mediatek.com>
+ <dee15f20-0f7d-58c6-728b-3e14f84f0833@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220306_031232_723255_429124A0 
-X-CRM114-Status: GOOD (  17.88  )
+X-CRM114-CacheID: sfid-20220306_175704_447341_B57E879E 
+X-CRM114-Status: GOOD (  46.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,146 +85,323 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert the Mediatek Universal Flash Storage (UFS) Controller to DT
-schema format.
+On Wed, 2022-03-02 at 10:45 +0100, AngeloGioacchino Del Regno wrote:
+> Il 24/02/22 10:07, kyrie.wu ha scritto:
+> > From: kyrie wu <kyrie.wu@mediatek.com>
+> > 
+> > manage each hardware information, including irq/clk/power.
+> > the hardware includes HW0 and HW1.
+> > 
+> > Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+> > ---
+> >   drivers/media/platform/mtk-jpeg/Makefile      |  11 +-
+> >   .../media/platform/mtk-jpeg/mtk_jpeg_core.c   |  76 +++++---
+> >   .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  37 ++++
+> >   .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 168
+> > ++++++++++++++++++
+> >   4 files changed, 267 insertions(+), 25 deletions(-)
+> > 
+> 
+> Hello Kyrie,
+> 
+> despite my v6 review, where I also gave you solutions for an issue
+> with
+> more than one example, this v7 still didn't get one out of the many
+> requested fixes.
+> 
+> I'm sure that this was not intentional, so it's not a problem...
+> 
+> In any case, this gave me the opportunity to see some more issues
+> inside
+> of this patch: let's get it perfect!
+> 
+> 
+> ...snip...
+> 
+> > diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+> > b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+> > index 3e4811a41ba2..31e941ef84bd 100644
+> > --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+> > +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+> > @@ -9,6 +9,7 @@
+> >   #ifndef _MTK_JPEG_CORE_H
+> >   #define _MTK_JPEG_CORE_H
+> >   
+> > +#include <linux/clk.h>
+> >   #include <linux/interrupt.h>
+> >   #include <media/v4l2-ctrls.h>
+> >   #include <media/v4l2-device.h>
+> > @@ -60,6 +61,7 @@ enum mtk_jpeg_ctx_state {
+> >    * @cap_q_default_fourcc:	capture queue default fourcc
+> >    */
+> >   struct mtk_jpeg_variant {
+> > +	bool is_multihw;
+> 
+> Thanks for this fix, this name makes it way clearer!
+> 
+> >   	struct clk_bulk_data *clks;
+> >   	int num_clks;
+> >   	struct mtk_jpeg_fmt *formats;
+> > @@ -74,6 +76,38 @@ struct mtk_jpeg_variant {
+> >   	u32 cap_q_default_fourcc;
+> >   };
+> >   
+> > +enum mtk_jpegenc_hw_id {
+> > +	MTK_JPEGENC_HW0,
+> > +	MTK_JPEGENC_HW1,
+> > +	MTK_JPEGENC_HW_MAX,
+> > +};
+> > +
+> > +/**
+> > + * struct mtk_vcodec_clk - Structure used to store vcodec clock
+> > information
+> > + */
+> > +struct mtk_jpegenc_clk {
+> > +	struct clk_bulk_data *clks;
+> > +	int	clk_num;
+> 
+> Why is clk_num tabbed?
+> 
+> > +};
+> > +
+> > +/**
+> > + * struct mtk_jpegenc_comp_dev - JPEG COREX abstraction
+> > + * @dev:		        JPEG device
+> > + * @plat_dev:		    platform device data
+> > + * @reg_base:		    JPEG registers mapping
+> > + * @master_dev:		    mtk_jpeg_dev device
+> > + * @pm:	                mtk_jpegenc_pm
+> > + * @jpegenc_irq:	    jpeg encode irq num
+> 
+> You're using tabulations *and* spaces.... please use either, not
+> both, as it's
+> not necessary. Besides, this is also producing bad indentation.
+> 
+> > + */
+> > +struct mtk_jpegenc_comp_dev {
+> > +	struct device		*dev;
+> > +	struct platform_device *plat_dev;
+> > +	void __iomem		*reg_base;
+> > +	struct mtk_jpeg_dev *master_dev;
+> > +	struct mtk_jpegenc_clk	venc_clk;
+> > +	int jpegenc_irq;
+> > +};
+> > +
+> >   /**
+> >    * struct mtk_jpeg_dev - JPEG IP abstraction
+> >    * @lock:		the mutex protecting this structure
+> > @@ -100,6 +134,9 @@ struct mtk_jpeg_dev {
+> >   	void __iomem		*reg_base;
+> >   	struct delayed_work job_timeout_work;
+> >   	const struct mtk_jpeg_variant *variant;
+> > +
+> > +	void __iomem *reg_encbase[MTK_JPEGENC_HW_MAX];
+> > +	struct mtk_jpegenc_comp_dev *enc_hw_dev[MTK_JPEGENC_HW_MAX];
+> >   };
+> >   
+> >   /**
+> > diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+> > b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+> > index a2b6e1f85c2d..3d967bff1352 100644
+> > --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+> > +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+> > @@ -5,11 +5,27 @@
+> >    *
+> >    */
+> >   
+> > +#include <linux/clk.h>
+> > +#include <linux/interrupt.h>
+> > +#include <linux/irq.h>
+> >   #include <linux/io.h>
+> >   #include <linux/kernel.h>
+> > +#include <linux/module.h>
+> > +#include <linux/of.h>
+> > +#include <linux/of_device.h>
+> > +#include <linux/pm_runtime.h>
+> > +#include <linux/slab.h>
+> > +#include <media/media-device.h>
+> >   #include <media/videobuf2-core.h>
+> >   #include <media/videobuf2-dma-contig.h>
+> > +#include <media/videobuf2-v4l2.h>
+> > +#include <media/v4l2-mem2mem.h>
+> > +#include <media/v4l2-dev.h>
+> > +#include <media/v4l2-device.h>
+> > +#include <media/v4l2-fh.h>
+> > +#include <media/v4l2-event.h>
+> >   
+> > +#include "mtk_jpeg_core.h"
+> >   #include "mtk_jpeg_enc_hw.h"
+> >   
+> >   static const struct mtk_jpeg_enc_qlt mtk_jpeg_enc_quality[] = {
+> > @@ -30,6 +46,21 @@ static const struct mtk_jpeg_enc_qlt
+> > mtk_jpeg_enc_quality[] = {
+> >   	{.quality_param = 97, .hardware_value = JPEG_ENC_QUALITY_Q97},
+> >   };
+> >   
+> > +#if defined(CONFIG_OF)
+> > +static const struct of_device_id mtk_jpegenc_drv_ids[] = {
+> > +	{
+> > +		.compatible = "mediatek,mt8195-jpgenc0",
+> > +		.data = (void *)MTK_JPEGENC_HW0,
+> > +	},
+> > +	{
+> > +		.compatible = "mediatek,mt8195-jpgenc1",
+> > +		.data = (void *)MTK_JPEGENC_HW1,
+> > +	},
+> 
+> I've already pointed out an issue with this in your v6 series:
+> 
+> https://patchwork.kernel.org/comment/24726607/
+> 
+> Besides, I want to add up that the SoC distinction is already done in
+> the
+> parent node which, in MT8195's case, is named "mediatek,mt8195-
+> jpgenc", so
+> you really don't have to redo this distinction "from scratch" here in
+> the
+> sub-driver, as you can just get your information from the parent
+> device/node.
+> 
+> So, just "mediatek,jpgenc-hw" should be totally enough here.
+> 
+> Please fix this for v8.
+Dear Angelo,
+Thank you for your prompt reply.
+I'm terrible sorry for that I got a misunderstanding from your preview
+comments. The device node have fixed  in [RESEND,V7,1/6], base on this
+patch, I thought that your suggestion is adopt properly.
+Thanks again for your advice, I will fix driver data in the next
+version.
+> 
+> 
+> > +	{},
+> > +};
+> > +MODULE_DEVICE_TABLE(of, mtk_jpegenc_drv_ids);
+> > +#endif
+> > +
+> >   void mtk_jpeg_enc_reset(void __iomem *base)
+> >   {
+> >   	writel(0, base + JPEG_ENC_RSTB);
+> 
+> ...snip...
+> 
+> > +
+> > +static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
+> > +{
+> > +	struct mtk_jpegenc_clk *jpegenc_clk;
+> > +	struct mtk_jpeg_dev *master_dev;
+> > +	struct mtk_jpegenc_comp_dev *dev;
+> > +	int ret, comp_idx;
+> > +
+> > +	struct device *decs = &pdev->dev;
+> > +
+> > +	if (!decs->parent)
+> > +		return -EPROBE_DEFER;
+> > +
+> > +	master_dev = dev_get_drvdata(decs->parent);
+> > +	if (!master_dev)
+> > +		return -EPROBE_DEFER;
+> > +
+> > +	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
+> > +	if (!dev)
+> > +		return -ENOMEM;
+> > +
+> > +	dev->plat_dev = pdev;
+> > +
+> > +	jpegenc_clk = &dev->venc_clk;
+> > +
+> > +	jpegenc_clk->clk_num = devm_clk_bulk_get_all(&pdev->dev,
+> > +						     &jpegenc_clk-
+> > >clks);
+> 
+> Using dev_err_probe() looks more appropriate here:
+Dear Angelo,
+The follow suggestions are same as jpegdec patch in the preview
+version. I wiil fix all of them.
+Thanks.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
----
- .../devicetree/bindings/ufs/mediatek,ufs.yaml | 67 +++++++++++++++++++
- .../devicetree/bindings/ufs/ufs-mediatek.txt  | 45 -------------
- 2 files changed, 67 insertions(+), 45 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
- delete mode 100644 Documentation/devicetree/bindings/ufs/ufs-mediatek.txt
-
-diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-new file mode 100644
-index 000000000000..32fd535a514a
---- /dev/null
-+++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-@@ -0,0 +1,67 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/ufs/mediatek,ufs.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Universal Flash Storage (UFS) Controller
-+
-+maintainers:
-+  - Stanley Chu <stanley.chu@mediatek.com>
-+
-+allOf:
-+  - $ref: ufs-common.yaml
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt8183-ufshci
-+      - mediatek,mt8192-ufshci
-+
-+  clocks:
-+    maxItems: 1
-+
-+  clock-names:
-+    items:
-+      - const: ufs
-+
-+  phys:
-+    maxItems: 1
-+
-+  reg:
-+    maxItems: 1
-+
-+  vcc-supply: true
-+
-+required:
-+  - compatible
-+  - clocks
-+  - clock-names
-+  - phys
-+  - reg
-+  - vcc-supply
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8183-clk.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        ufs@ff3c0000 {
-+            compatible = "mediatek,mt8183-ufshci";
-+            reg = <0 0x11270000 0 0x2300>;
-+            interrupts = <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>;
-+            phys = <&ufsphy>;
-+
-+            clocks = <&infracfg_ao CLK_INFRA_UFS>;
-+            clock-names = "ufs";
-+            freq-table-hz = <0 0>;
-+
-+            vcc-supply = <&mt_pmic_vemc_ldo_reg>;
-+        };
-+    };
-diff --git a/Documentation/devicetree/bindings/ufs/ufs-mediatek.txt b/Documentation/devicetree/bindings/ufs/ufs-mediatek.txt
-deleted file mode 100644
-index 63a953b672d2..000000000000
---- a/Documentation/devicetree/bindings/ufs/ufs-mediatek.txt
-+++ /dev/null
-@@ -1,45 +0,0 @@
--* Mediatek Universal Flash Storage (UFS) Host Controller
--
--UFS nodes are defined to describe on-chip UFS hardware macro.
--Each UFS Host Controller should have its own node.
--
--To bind UFS PHY with UFS host controller, the controller node should
--contain a phandle reference to UFS M-PHY node.
--
--Required properties for UFS nodes:
--- compatible         : Compatible list, contains the following controller:
--                       "mediatek,mt8183-ufshci" for MediaTek UFS host controller
--                       present on MT8183 chipsets.
--                       "mediatek,mt8192-ufshci" for MediaTek UFS host controller
--                       present on MT8192 chipsets.
--- reg                : Address and length of the UFS register set.
--- phys               : phandle to m-phy.
--- clocks             : List of phandle and clock specifier pairs.
--- clock-names        : List of clock input name strings sorted in the same
--                       order as the clocks property. "ufs" is mandatory.
--                       "ufs": ufshci core control clock.
--- freq-table-hz      : Array of <min max> operating frequencies stored in the same
--                       order as the clocks property. If this property is not
--                       defined or a value in the array is "0" then it is assumed
--                       that the frequency is set by the parent clock or a
--                       fixed rate clock source.
--- vcc-supply         : phandle to VCC supply regulator node.
--
--Example:
--
--	ufsphy: phy@11fa0000 {
--		...
--	};
--
--	ufshci@11270000 {
--		compatible = "mediatek,mt8183-ufshci";
--		reg = <0 0x11270000 0 0x2300>;
--		interrupts = <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>;
--		phys = <&ufsphy>;
--
--		clocks = <&infracfg_ao INFRACFG_AO_UFS_CG>;
--		clock-names = "ufs";
--		freq-table-hz = <0 0>;
--
--		vcc-supply = <&mt_pmic_vemc_ldo_reg>;
--	};
--- 
-2.32.0
-
-
+Regards,
+Kyrie
+> 
+> 	if (jpegenc_clk->clk_num < 0)
+> 		return dev_err_probe(&pdev->dev, jpegenc_clk->clk_num,
+> 				     "Failed to get jpegenc clocks\n");
+> 
+> 
+> > +	if (jpegenc_clk->clk_num < 0) {
+> > +		dev_err(&pdev->dev, "Failed to get jpegenc clock
+> > count\n");
+> > +		return jpegenc_clk->clk_num;
+> > +	}
+> > +
+> > +	dev->reg_base =
+> > +		devm_platform_ioremap_resource(pdev, 0);
+> > +	if (IS_ERR(dev->reg_base)) {
+> > +		ret = PTR_ERR(dev->reg_base);
+> > +		goto err;
+> 
+> There's no need for any goto here, as you're not reverting any
+> operation.
+> 
+> Hence, you can just:
+> 
+> 	if (IS_ERR(dev->reg_base))
+> 		return PTR_ERR(dev->reg_base);
+> 
+> > +	}
+> > +
+> > +	ret = mtk_jpegenc_hw_init_irq(dev);
+> > +	if (ret) {
+> > +		dev_err(&pdev->dev, "Failed to register JPEGENC irq
+> > handler.\n");
+> 
+> You are already printing an error inside of
+> mtk_jpegenc_hw_init_irq(), so printing
+> another one here is redundant.
+> Either remove the prints in the function or, more appropriately,
+> remove this print.
+> 
+> Also, same "goto" comment applies here, you can simply return ret.
+> 
+> > +		goto err;
+> > +	}
+> > +
+> > +	comp_idx = (enum
+> > mtk_jpegenc_hw_id)of_device_get_match_data(decs);
+> > +	if (comp_idx < MTK_JPEGENC_HW_MAX) {
+> 
+> `comp_idx` is a bit misleading, this is not using the component
+> framework.
+> 
+> ....but this will probably be refactored after following the
+> suggestion that
+> I gave you in v6 and again now.
+> 
+> > +		master_dev->enc_hw_dev[comp_idx] = dev;
+> > +		master_dev->reg_encbase[comp_idx] = dev->reg_base;
+> > +		dev->master_dev = master_dev;
+> > +	} else {
+> > +		dev_err(&pdev->dev, "Failed to get_match_data.\n");
+> > +		goto err;
+> > +	}
+> > +
+> > +	platform_set_drvdata(pdev, dev);
+> > +	pm_runtime_enable(&pdev->dev);
+> > +
+> > +	return 0;
+> > +
+> > +err:
+> 
+> This label serves no real purpose: please remove.
+> 
+> > +	return ret;
+> > +}
+> > +
+> 
+> 
+> 
+> Regards,
+> Angelo
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
