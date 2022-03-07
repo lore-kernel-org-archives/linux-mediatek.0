@@ -4,59 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54425C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 10:49:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DB12C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 11:29:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XWgb7Q/9jZqvi3v1phFZu4ANYj9TcW1e83DYt18H4ek=; b=X0e/GmAbRDnXWE
-	MevyXSMrDUjK42/d4+VIc+EAijHZQVKCsCpSLm71wIB0yB+InMvciV4oVBCbN4SVIWCnNbNQ6pmbB
-	UyY9RsIKwAZxBshD1t5sSZMqcQqbOL4dZ4xeOFt3f5pJohV9o81I1VV6oEqDk+PKnk0wMnGXFWE56
-	hgWEbaVKBfVdx3rMtXmHcmiMKVLAt/I1Ne58VGrs040UunYi5ETBIuv7eOyYajutDi6W/Bu4F8Cvk
-	f6NpXlndDcFNiqOC6eefRlVt3aTc6hfiR85fL3z/ZupRYwFd/Vo+oWNR4ToeXpseT41ikM2fih9iY
-	o2oAkW7cYHtCMqa+1Q7Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=KkranUYIvXvSFJKKISZdeW/RLHC8P5b2aLh2uJRJ0Hc=; b=CWrdROn1rcOjcu
+	6uAP4NCMO1MfDv4Uxeduy0zhll/mb8ywmcb1ILtQEDXK2J0ukLZi0TgnUbDlQKHMp058IMIHnV/vd
+	9UHaKfnniC4bzF3wB+A3yr5egGVubEeAL93/8u3h5oGrPPKOaaNncxRUx7baiUCx4USq13R3OB3+A
+	9+JEh9zRIbuVwKEC063KCmDyzosCIo+jNRah+dSTIulUSZUSK4uqPH+Wt1/46l65vMaUiRrwqV7mx
+	JyLT8IpTm+uCbJ/Tb8ITcHOBYrF8EAn2mF7A+Xu5y2o1MUfcpz6gQ6UB2CO7tDYSEcVOEDwmBHwKj
+	lcc8ldvhtoZFQ5Lkxlhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRAvm-00HDEW-Uf; Mon, 07 Mar 2022 10:49:34 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nRBXp-00HJ4n-At; Mon, 07 Mar 2022 11:28:53 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRAva-00HD9a-Fe; Mon, 07 Mar 2022 10:49:23 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 93BCB1F439B4
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1646650161;
- bh=xcHrA688gBPqRiYshhBRs/w3XKYVKzPjdXoPUfWuwIE=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=L13Iyh+MGBgvI0+tRh+GV1faYYieScGpgDewVXwECjJOGs0Be9EP46wJ9pTu2C+Vf
- jE2+08RPH668Jm6/nzpThsMw64DRj7rerCOm/d11db6g9CN+nQj5/osNf4gM7UcHGk
- IbjFT9Nikm0rMTBALl3aQuXam4cON5Zfu9R1U60H/rtTGR0gjx8mTb12WVe2y4sfN0
- wuKA3cctlK1YphfdNOiye9xiUMo+cxTci5x+4vaPURnX3OB8weYV90R84cT6iI/zTe
- TUXxFmRp96zvCBLJnIoI0bpGuuNG8Cblen2IMjDTUNt3V1u3n0tVF0no4rty11xpqd
- oGEmac2YETZaA==
-Message-ID: <60248c8a-89a4-6f87-71f7-0732c3826e0b@collabora.com>
-Date: Mon, 7 Mar 2022 11:49:18 +0100
+ id 1nRBXm-00HJ31-Bd
+ for linux-mediatek@lists.infradead.org; Mon, 07 Mar 2022 11:28:51 +0000
+X-UUID: 1e2ccb314fd9482a9fff0fd8d47de32a-20220307
+X-UUID: 1e2ccb314fd9482a9fff0fd8d47de32a-20220307
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <peter.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1336433111; Mon, 07 Mar 2022 04:28:41 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 7 Mar 2022 03:18:39 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 7 Mar 2022 19:18:38 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 7 Mar 2022 19:18:38 +0800
+From: <peter.wang@mediatek.com>
+To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
+ <martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+ <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+ <alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+ <chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+ <powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+ <mikebi@micron.com>, <beanhuo@micron.com>
+Subject: [PATCH v1] scsi: ufs: scsi_get_lba error fix by check cmd opcode
+Date: Mon, 7 Mar 2022 19:17:52 +0800
+Message-ID: <20220307111752.10465-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v1 1/2] dt-bindings: i2c: update bindings for MT8168 SoC
-Content-Language: en-US
-To: Kewei Xu <kewei.xu@mediatek.com>, wsa@the-dreams.de
-Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, linux-i2c@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, leilk.liu@mediatek.com, qii.wang@mediatek.com,
- liguo.zhang@mediatek.com, caiyu.chen@mediatek.com,
- housong.zhang@mediatek.com, yuhan.wei@mediatek.com
-References: <20220307033649.11564-1-kewei.xu@mediatek.com>
- <20220307033649.11564-2-kewei.xu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220307033649.11564-2-kewei.xu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220307_024922_708785_AF8C5DF7 
-X-CRM114-Status: GOOD (  12.04  )
+X-CRM114-CacheID: sfid-20220307_032850_444726_9CFDD7CD 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,38 +71,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/03/22 04:36, Kewei Xu ha scritto:
-> Add a DT binding documentation for the MT8168 soc.
-> 
-> Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
+From: Peter Wang <peter.wang@mediatek.com>
 
-A conversion to dt-binding (yaml) would be very appreciated... however there
-is nothing wrong with this addition, so:
+When ufs init without scmd->device->sector_size set,
+scsi_get_lba will get a wrong shift number and ubsan error.
+shift exponent 4294967286 is too large for 64-bit type
+'sector_t' (aka 'unsigned long long')
+Call scsi_get_lba only when opcode is READ_10/WRITE_10/UNMAP.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/scsi/ufs/ufshcd.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-> ---
->   Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
-> index 88f74a3c81ec..026985b8f61a 100644
-> --- a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
-> +++ b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
-> @@ -12,6 +12,7 @@ Required properties:
->         "mediatek,mt7622-i2c": for MediaTek MT7622
->         "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for MediaTek MT7623
->         "mediatek,mt7629-i2c", "mediatek,mt2712-i2c": for MediaTek MT7629
-> +      "mediatek,mt8168-i2c": for MediaTek MT8168
->         "mediatek,mt8173-i2c": for MediaTek MT8173
->         "mediatek,mt8183-i2c": for MediaTek MT8183
->         "mediatek,mt8186-i2c": for MediaTek MT8186
-
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 9349557b8a01..3c4caee8fb93 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -367,7 +367,7 @@ static void ufshcd_add_uic_command_trace(struct ufs_hba *hba,
+ static void ufshcd_add_command_trace(struct ufs_hba *hba, unsigned int tag,
+ 				     enum ufs_trace_str_t str_t)
+ {
+-	u64 lba;
++	u64 lba = 0;
+ 	u8 opcode = 0, group_id = 0;
+ 	u32 intr, doorbell;
+ 	struct ufshcd_lrb *lrbp = &hba->lrb[tag];
+@@ -384,7 +384,6 @@ static void ufshcd_add_command_trace(struct ufs_hba *hba, unsigned int tag,
+ 		return;
+ 
+ 	opcode = cmd->cmnd[0];
+-	lba = scsi_get_lba(cmd);
+ 
+ 	if (opcode == READ_10 || opcode == WRITE_10) {
+ 		/*
+@@ -392,6 +391,7 @@ static void ufshcd_add_command_trace(struct ufs_hba *hba, unsigned int tag,
+ 		 */
+ 		transfer_len =
+ 		       be32_to_cpu(lrbp->ucd_req_ptr->sc.exp_data_transfer_len);
++		lba = scsi_get_lba(cmd);
+ 		if (opcode == WRITE_10)
+ 			group_id = lrbp->cmd->cmnd[6];
+ 	} else if (opcode == UNMAP) {
+@@ -399,6 +399,7 @@ static void ufshcd_add_command_trace(struct ufs_hba *hba, unsigned int tag,
+ 		 * The number of Bytes to be unmapped beginning with the lba.
+ 		 */
+ 		transfer_len = blk_rq_bytes(rq);
++		lba = scsi_get_lba(cmd);
+ 	}
+ 
+ 	intr = ufshcd_readl(hba, REG_INTERRUPT_STATUS);
+-- 
+2.18.0
 
 
 _______________________________________________
