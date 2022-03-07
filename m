@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A1E5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 01:57:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BA97C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 02:37:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1cOD93JevumSBUNBmAimFJ46bpAlUfym23ZLLoeZR4U=; b=EiDUdYrhbMD8Qt
-	Z3O7IlPp44Qp8uGGDDxerRV15RCql26wN7ThafEmXqYf4L8f9O3NHPl/LO1y/VgY5tIos/HelMgPU
-	Eo7WRsfSLwZsAFX8KhxHpdSxAzTqyi+r0RqqbsicCtE0AOuP78oOxb452g5MEQGLQGw0REq6HHeUl
-	ozcR3N/ZLuiJTpgfl1Oa9sgpSgme6qa5kVSUUBmqa5BAOhfdDZLxze/mrGlYdiNaBUzPcNXHFwH5g
-	qcnP5Kz3H+UUp7cQfgmi0GgXw25lq13VHAjQta2UAWQRC3qzHw1ZWb2JuKg3CXb0VzFlIx/zyJyPZ
-	Ef+pFhC38U1gi+O8p4tw==;
+	List-Owner; bh=BrVMqulh6/Jyi+v/frew1BB/PJzQUsP3VnLMUBI1jas=; b=kXqv0S2FLQOyCW
+	vglkYwo1r0deFDWY+2xCub1leq2BvgX7O8clTtTbrSdvY9I4429+qY//qjhoYCSXT9c+s2tkQ8vRa
+	aE7MZFrhhjDdppYRDrXy0fqHSiusg9/i4FRojdNp23AsjyzNfFuy4IvlIK9aDmInew6aiOBkqpH0q
+	rdtsZin9SCyqMQ9ve018h6HagTHgqj4wAG0s58MpmVWFFHqRfecBhN4G8Ho9BYIjjuVQoPrLlISgr
+	BdIOCUFMlZ413V+Ok/lEbP6yWeys0EbIlF/X7Dor6mFHfQy6ojQ3S2IRH59OjnmIzOnmt6OGuvZDJ
+	wsB98ZZITI8haQnjmQ7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nR2cg-00FWTa-Kj; Mon, 07 Mar 2022 01:57:18 +0000
+	id 1nR3FM-00Fcp5-0O; Mon, 07 Mar 2022 02:37:16 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nR2cQ-00FWSE-Uk; Mon, 07 Mar 2022 01:57:06 +0000
-X-UUID: 254221b345c444828e7a1ad0d8dae5e9-20220306
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=4tH2voEjL/gR4OpABXzr7aShO9hWEmQUr2VIAtkfchM=; 
- b=Z/0Qxv+39U3JX7RPgp7AUbgJNVKMLaWGfG+pGNEuIBPHGr8iO830EPybEaU+6QoDr2G3BpokRVKSbQAxi+T+hFeEla4vL4t2iB5tIz9lt6TzRNOwBnsZFUeZY9RUVz2Ew9G3FSprMVI3Y8cqcbHNFuILFJ1TAGYWIgek368jH7k=;
-X-UUID: 254221b345c444828e7a1ad0d8dae5e9-20220306
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <kyrie.wu@mediatek.com>)
+ id 1nR3FG-00FcoR-MQ; Mon, 07 Mar 2022 02:37:13 +0000
+X-UUID: f4f1aac0f8964e42b1ca7c3da9c598fb-20220306
+X-UUID: f4f1aac0f8964e42b1ca7c3da9c598fb-20220306
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 660620490; Sun, 06 Mar 2022 18:56:55 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 246196590; Sun, 06 Mar 2022 19:37:06 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 6 Mar 2022 17:46:52 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 7 Mar 2022 09:46:51 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Sun, 6 Mar 2022 18:37:04 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 7 Mar 2022 10:37:03 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 7 Mar 2022 09:46:50 +0800
-Message-ID: <71a7cfff99e4492fff899438f1a480689a9e8f0f.camel@mediatek.com>
-Subject: Re: [RESEND,V7,3/6] media: mtk-jpegenc: manage jpegenc multi-hardware
-From: kyrie.wu <kyrie.wu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans
- Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
- <xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>,
+ Transport; Mon, 7 Mar 2022 10:37:02 +0800
+Message-ID: <89e2c254cb8a391aef5fed550b65ba6531b5adee.camel@mediatek.com>
+Subject: Re: [PATCH v12 01/23] dt-bindings: mediatek: add vdosys1 RDMA
+ definition for mt8195
+From: Nancy.Lin <nancy.lin@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "CK
+ Hu" <ck.hu@mediatek.com>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
+ <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <singo.chang@mediatek.com>,
  <srv_heupstream@mediatek.com>
-Date: Mon, 7 Mar 2022 09:46:50 +0800
-In-Reply-To: <dee15f20-0f7d-58c6-728b-3e14f84f0833@collabora.com>
-References: <1645693637-627-1-git-send-email-kyrie.wu@mediatek.com>
- <1645693637-627-4-git-send-email-kyrie.wu@mediatek.com>
- <dee15f20-0f7d-58c6-728b-3e14f84f0833@collabora.com>
+Date: Mon, 7 Mar 2022 10:37:02 +0800
+In-Reply-To: <a958a934-5a24-e5c5-c4c9-ce46a2b140b6@collabora.com>
+References: <20220222100741.30138-1-nancy.lin@mediatek.com>
+ <20220222100741.30138-2-nancy.lin@mediatek.com>
+ <a958a934-5a24-e5c5-c4c9-ce46a2b140b6@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220306_175704_447341_B57E879E 
-X-CRM114-Status: GOOD (  46.55  )
+X-CRM114-CacheID: sfid-20220306_183710_777334_FEFB980D 
+X-CRM114-Status: GOOD (  26.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,323 +82,147 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-03-02 at 10:45 +0100, AngeloGioacchino Del Regno wrote:
-> Il 24/02/22 10:07, kyrie.wu ha scritto:
-> > From: kyrie wu <kyrie.wu@mediatek.com>
-> > 
-> > manage each hardware information, including irq/clk/power.
-> > the hardware includes HW0 and HW1.
-> > 
-> > Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
-> > ---
-> >   drivers/media/platform/mtk-jpeg/Makefile      |  11 +-
-> >   .../media/platform/mtk-jpeg/mtk_jpeg_core.c   |  76 +++++---
-> >   .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  37 ++++
-> >   .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 168
-> > ++++++++++++++++++
-> >   4 files changed, 267 insertions(+), 25 deletions(-)
-> > 
-> 
-> Hello Kyrie,
-> 
-> despite my v6 review, where I also gave you solutions for an issue
-> with
-> more than one example, this v7 still didn't get one out of the many
-> requested fixes.
-> 
-> I'm sure that this was not intentional, so it's not a problem...
-> 
-> In any case, this gave me the opportunity to see some more issues
-> inside
-> of this patch: let's get it perfect!
-> 
-> 
-> ...snip...
-> 
-> > diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> > b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> > index 3e4811a41ba2..31e941ef84bd 100644
-> > --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> > +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> > @@ -9,6 +9,7 @@
-> >   #ifndef _MTK_JPEG_CORE_H
-> >   #define _MTK_JPEG_CORE_H
-> >   
-> > +#include <linux/clk.h>
-> >   #include <linux/interrupt.h>
-> >   #include <media/v4l2-ctrls.h>
-> >   #include <media/v4l2-device.h>
-> > @@ -60,6 +61,7 @@ enum mtk_jpeg_ctx_state {
-> >    * @cap_q_default_fourcc:	capture queue default fourcc
-> >    */
-> >   struct mtk_jpeg_variant {
-> > +	bool is_multihw;
-> 
-> Thanks for this fix, this name makes it way clearer!
-> 
-> >   	struct clk_bulk_data *clks;
-> >   	int num_clks;
-> >   	struct mtk_jpeg_fmt *formats;
-> > @@ -74,6 +76,38 @@ struct mtk_jpeg_variant {
-> >   	u32 cap_q_default_fourcc;
-> >   };
-> >   
-> > +enum mtk_jpegenc_hw_id {
-> > +	MTK_JPEGENC_HW0,
-> > +	MTK_JPEGENC_HW1,
-> > +	MTK_JPEGENC_HW_MAX,
-> > +};
-> > +
-> > +/**
-> > + * struct mtk_vcodec_clk - Structure used to store vcodec clock
-> > information
-> > + */
-> > +struct mtk_jpegenc_clk {
-> > +	struct clk_bulk_data *clks;
-> > +	int	clk_num;
-> 
-> Why is clk_num tabbed?
-> 
-> > +};
-> > +
-> > +/**
-> > + * struct mtk_jpegenc_comp_dev - JPEG COREX abstraction
-> > + * @dev:		        JPEG device
-> > + * @plat_dev:		    platform device data
-> > + * @reg_base:		    JPEG registers mapping
-> > + * @master_dev:		    mtk_jpeg_dev device
-> > + * @pm:	                mtk_jpegenc_pm
-> > + * @jpegenc_irq:	    jpeg encode irq num
-> 
-> You're using tabulations *and* spaces.... please use either, not
-> both, as it's
-> not necessary. Besides, this is also producing bad indentation.
-> 
-> > + */
-> > +struct mtk_jpegenc_comp_dev {
-> > +	struct device		*dev;
-> > +	struct platform_device *plat_dev;
-> > +	void __iomem		*reg_base;
-> > +	struct mtk_jpeg_dev *master_dev;
-> > +	struct mtk_jpegenc_clk	venc_clk;
-> > +	int jpegenc_irq;
-> > +};
-> > +
-> >   /**
-> >    * struct mtk_jpeg_dev - JPEG IP abstraction
-> >    * @lock:		the mutex protecting this structure
-> > @@ -100,6 +134,9 @@ struct mtk_jpeg_dev {
-> >   	void __iomem		*reg_base;
-> >   	struct delayed_work job_timeout_work;
-> >   	const struct mtk_jpeg_variant *variant;
-> > +
-> > +	void __iomem *reg_encbase[MTK_JPEGENC_HW_MAX];
-> > +	struct mtk_jpegenc_comp_dev *enc_hw_dev[MTK_JPEGENC_HW_MAX];
-> >   };
-> >   
-> >   /**
-> > diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-> > b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-> > index a2b6e1f85c2d..3d967bff1352 100644
-> > --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-> > +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-> > @@ -5,11 +5,27 @@
-> >    *
-> >    */
-> >   
-> > +#include <linux/clk.h>
-> > +#include <linux/interrupt.h>
-> > +#include <linux/irq.h>
-> >   #include <linux/io.h>
-> >   #include <linux/kernel.h>
-> > +#include <linux/module.h>
-> > +#include <linux/of.h>
-> > +#include <linux/of_device.h>
-> > +#include <linux/pm_runtime.h>
-> > +#include <linux/slab.h>
-> > +#include <media/media-device.h>
-> >   #include <media/videobuf2-core.h>
-> >   #include <media/videobuf2-dma-contig.h>
-> > +#include <media/videobuf2-v4l2.h>
-> > +#include <media/v4l2-mem2mem.h>
-> > +#include <media/v4l2-dev.h>
-> > +#include <media/v4l2-device.h>
-> > +#include <media/v4l2-fh.h>
-> > +#include <media/v4l2-event.h>
-> >   
-> > +#include "mtk_jpeg_core.h"
-> >   #include "mtk_jpeg_enc_hw.h"
-> >   
-> >   static const struct mtk_jpeg_enc_qlt mtk_jpeg_enc_quality[] = {
-> > @@ -30,6 +46,21 @@ static const struct mtk_jpeg_enc_qlt
-> > mtk_jpeg_enc_quality[] = {
-> >   	{.quality_param = 97, .hardware_value = JPEG_ENC_QUALITY_Q97},
-> >   };
-> >   
-> > +#if defined(CONFIG_OF)
-> > +static const struct of_device_id mtk_jpegenc_drv_ids[] = {
-> > +	{
-> > +		.compatible = "mediatek,mt8195-jpgenc0",
-> > +		.data = (void *)MTK_JPEGENC_HW0,
-> > +	},
-> > +	{
-> > +		.compatible = "mediatek,mt8195-jpgenc1",
-> > +		.data = (void *)MTK_JPEGENC_HW1,
-> > +	},
-> 
-> I've already pointed out an issue with this in your v6 series:
-> 
-> https://patchwork.kernel.org/comment/24726607/
-> 
-> Besides, I want to add up that the SoC distinction is already done in
-> the
-> parent node which, in MT8195's case, is named "mediatek,mt8195-
-> jpgenc", so
-> you really don't have to redo this distinction "from scratch" here in
-> the
-> sub-driver, as you can just get your information from the parent
-> device/node.
-> 
-> So, just "mediatek,jpgenc-hw" should be totally enough here.
-> 
-> Please fix this for v8.
-Dear Angelo,
-Thank you for your prompt reply.
-I'm terrible sorry for that I got a misunderstanding from your preview
-comments. The device node have fixed  in [RESEND,V7,1/6], base on this
-patch, I thought that your suggestion is adopt properly.
-Thanks again for your advice, I will fix driver data in the next
-version.
-> 
-> 
-> > +	{},
-> > +};
-> > +MODULE_DEVICE_TABLE(of, mtk_jpegenc_drv_ids);
-> > +#endif
-> > +
-> >   void mtk_jpeg_enc_reset(void __iomem *base)
-> >   {
-> >   	writel(0, base + JPEG_ENC_RSTB);
-> 
-> ...snip...
-> 
-> > +
-> > +static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
-> > +{
-> > +	struct mtk_jpegenc_clk *jpegenc_clk;
-> > +	struct mtk_jpeg_dev *master_dev;
-> > +	struct mtk_jpegenc_comp_dev *dev;
-> > +	int ret, comp_idx;
-> > +
-> > +	struct device *decs = &pdev->dev;
-> > +
-> > +	if (!decs->parent)
-> > +		return -EPROBE_DEFER;
-> > +
-> > +	master_dev = dev_get_drvdata(decs->parent);
-> > +	if (!master_dev)
-> > +		return -EPROBE_DEFER;
-> > +
-> > +	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
-> > +	if (!dev)
-> > +		return -ENOMEM;
-> > +
-> > +	dev->plat_dev = pdev;
-> > +
-> > +	jpegenc_clk = &dev->venc_clk;
-> > +
-> > +	jpegenc_clk->clk_num = devm_clk_bulk_get_all(&pdev->dev,
-> > +						     &jpegenc_clk-
-> > >clks);
-> 
-> Using dev_err_probe() looks more appropriate here:
-Dear Angelo,
-The follow suggestions are same as jpegdec patch in the preview
-version. I wiil fix all of them.
-Thanks.
+Hi Angelo,
 
-Regards,
-Kyrie
-> 
-> 	if (jpegenc_clk->clk_num < 0)
-> 		return dev_err_probe(&pdev->dev, jpegenc_clk->clk_num,
-> 				     "Failed to get jpegenc clocks\n");
-> 
-> 
-> > +	if (jpegenc_clk->clk_num < 0) {
-> > +		dev_err(&pdev->dev, "Failed to get jpegenc clock
-> > count\n");
-> > +		return jpegenc_clk->clk_num;
-> > +	}
+Thanks for the review.
+
+On Wed, 2022-03-02 at 11:13 +0100, AngeloGioacchino Del Regno wrote:
+> Il 22/02/22 11:07, Nancy.Lin ha scritto:
+> > Add vdosys1 RDMA definition.
+> > 
+> > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> > ---
+> >   .../arm/mediatek/mediatek,mdp-rdma.yaml       | 77
+> > +++++++++++++++++++
+> >   1 file changed, 77 insertions(+)
+> >   create mode 100644
+> > Documentation/devicetree/bindings/arm/mediatek/mediatek,mdp-
+> > rdma.yaml
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdp-
+> > rdma.yaml
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdp-
+> > rdma.yaml
+> > new file mode 100644
+> > index 000000000000..d70b81ec1914
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdp-
+> > rdma.yaml
+> > @@ -0,0 +1,77 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: 
+> > https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,mdp-rdma.yaml*__;Iw!!CTRNKA9wMg0ARbw!zIPCtbPPoflk_hFhtOHugiiLMs-r5rgosZX1t7X_vJxEL13ZNvZ3fMKFvJ5XPNDs$
+> >  
+> > +$schema: 
+> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!zIPCtbPPoflk_hFhtOHugiiLMs-r5rgosZX1t7X_vJxEL13ZNvZ3fMKFvECZss8_$
+> >  
 > > +
-> > +	dev->reg_base =
-> > +		devm_platform_ioremap_resource(pdev, 0);
-> > +	if (IS_ERR(dev->reg_base)) {
-> > +		ret = PTR_ERR(dev->reg_base);
-> > +		goto err;
-> 
-> There's no need for any goto here, as you're not reverting any
-> operation.
-> 
-> Hence, you can just:
-> 
-> 	if (IS_ERR(dev->reg_base))
-> 		return PTR_ERR(dev->reg_base);
-> 
-> > +	}
+> > +title: Mediatek MDP RDMA
 > > +
-> > +	ret = mtk_jpegenc_hw_init_irq(dev);
-> > +	if (ret) {
-> > +		dev_err(&pdev->dev, "Failed to register JPEGENC irq
-> > handler.\n");
-> 
-> You are already printing an error inside of
-> mtk_jpegenc_hw_init_irq(), so printing
-> another one here is redundant.
-> Either remove the prints in the function or, more appropriately,
-> remove this print.
-> 
-> Also, same "goto" comment applies here, you can simply return ret.
-> 
-> > +		goto err;
-> > +	}
+> > +maintainers:
+> > +  - Matthias Brugger <matthias.bgg@gmail.com>
 > > +
-> > +	comp_idx = (enum
-> > mtk_jpegenc_hw_id)of_device_get_match_data(decs);
-> > +	if (comp_idx < MTK_JPEGENC_HW_MAX) {
-> 
-> `comp_idx` is a bit misleading, this is not using the component
-> framework.
-> 
-> ....but this will probably be refactored after following the
-> suggestion that
-> I gave you in v6 and again now.
-> 
-> > +		master_dev->enc_hw_dev[comp_idx] = dev;
-> > +		master_dev->reg_encbase[comp_idx] = dev->reg_base;
-> > +		dev->master_dev = master_dev;
-> > +	} else {
-> > +		dev_err(&pdev->dev, "Failed to get_match_data.\n");
-> > +		goto err;
-> > +	}
+> > +description: |
+> > +  The mediatek MDP RDMA stands for Read Direct Memory Access.
+> > +  It provides real time data to the back-end panel driver, such as
+> > DSI,
+> > +  DPI and DP_INTF.
+> > +  It contains one line buffer to store the sufficient pixel data.
+> > +  RDMA device node must be siblings to the central MMSYS_CONFIG
+> > node.
+> > +  For a description of the MMSYS_CONFIG binding, see
+> > +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.ya
+> > ml for details.
 > > +
-> > +	platform_set_drvdata(pdev, dev);
-> > +	pm_runtime_enable(&pdev->dev);
+> > +properties:
+> > +  compatible:
+> > +    oneOf:
+> > +      - items:
+> > +          - const: mediatek,mt8195-vdo1-rdma
 > > +
-> > +	return 0;
+> > +  reg:
+> > +    maxItems: 1
 > > +
-> > +err:
-> 
-> This label serves no real purpose: please remove.
-> 
-> > +	return ret;
-> > +}
+> > +  interrupts:
+> > +    maxItems: 1
 > > +
+> > +  power-domains:
+> > +    description: A phandle and PM domain specifier as defined by
+> > bindings of
+> > +      the power controller specified by phandle. See
+> > +      Documentation/devicetree/bindings/power/power-domain.yaml
+> > for details.
+> > +
+> > +  clocks:
+> > +    items:
+> > +      - description: RDMA Clock
+> > +
+> > +  iommus:
+> > +    description:
+> > +      This property should point to the respective IOMMU block
+> > with master port as argument,
+> > +      see
+> > Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for
+> > details.
+> > +
+> > +  mediatek,gce-client-reg:
+> > +    description:
+> > +      The register of display function block to be set by gce.
+> > There are 4 arguments,
+> > +      such as gce node, subsys id, offset and register size. The
+> > subsys id that is
+> > +      mapping to the register of display function blocks is
+> > defined in the gce header
+> > +      include/include/dt-bindings/gce/<chip>-gce.h of each chips.
+> > +    $ref: /schemas/types.yaml#/definitions/phandle-array
+> > +    maxItems: 1
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - power-domains
+> > +  - clocks
+> > +  - iommus
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
 > 
+> You're missing a couple of header inclusions and relying on the
+> default
+> address-cells, size-cells, which is wrong here, as you have two of
+> both.
 > 
+> #include .........
 > 
-> Regards,
-> Angelo
+> soc {
+>      #address-cells = <2>;
+>      #size-cells = <2>;
+> 
+>          vdo1_rdma0: .......
+> 
+OK, I will fix it in the next revision.
+
+Best,
+Nancy
+> > +
+> > +    vdo1_rdma0: vdo1_rdma@1c104000 {
+> > +        compatible = "mediatek,mt8195-vdo1-rdma";
+> > +        reg = <0 0x1c104000 0 0x1000>;
+> > +        interrupts = <GIC_SPI 495 IRQ_TYPE_LEVEL_HIGH 0>;
+> > +        clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
+> > +        power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
+> > +        iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA0>;
+> > +        mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0x4000
+> > 0x1000>;
+> > +    };
+> > +
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
