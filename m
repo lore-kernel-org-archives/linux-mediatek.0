@@ -4,135 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE3B2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 18:40:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA8B6C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 18:47:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:MIME-Version:Message-ID:Date
-	:Subject:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4FpBRg+AfjKFpD9ZnPEo1cQUQPMxrcqFSH3uyrUao80=; b=WXGVqXiYMEJBsf
-	gZXgYC+jhdFHy8+qJQgMV05lLRd1rN6g4PqC7DvRB1JxbQFymOPT4gL8O5sLAXj3VuY+Pjbr4VATX
-	LJ9HOFSevKy2Q6A4F8OT61iLv9nlwzZWBBi594Xbbs0ReqkU/IySQuTEqq6V6l69RVSWWpdr2qR2H
-	ybZPgW694NZVd3d5WxjZ8os580jHHh9dam46Zj73+WDHU8Kor9QBoF1x8gn9d9W4dIu0GeMKdW57G
-	AnYESCGv8EIg2omwwi+fSKEz7WuIjMihyOyYCe/cqDdXqv7Mjq/5JshgciGKWH3iuLeVaZEN+GgAu
-	dc422LhCtN4aCTsgy7mQ==;
+	List-Owner; bh=AoFZbIyanyeX5TDL05rxYRQGE7zu1DHkclOBdbpQ8f0=; b=M/mmmfNpFIspJl
+	gFZK37qzrNZDWEXp0zysLzjSbtR1hJr1ry8JZ3xpEaka4JBKM9RJykGk9virwDLzUYHMoTCdxN17M
+	oglnsaYr2OaZJycGN25tR0BRiWeK1S4isOppOB9NK9LVbaK7JEiU9eZZUOTK4q0GuaYnvz1uxyqQa
+	6pCwVBRV+ZASURFWy80H+y2VPFClI9qUYNQES9MNQwKhv+bkUsCwokQMM3+yJ+obpn9kmouTEUFbe
+	xtP5U/lRm0BN5oqQboy2lQaNM4EC3lBaBx3EnbSXn5WwjXamQq3vXBj0jKTNKGjJHK0mS+4DfXcym
+	OAVjK73c70cORtcN5eBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRIHE-001C5L-F2; Mon, 07 Mar 2022 18:40:12 +0000
-Received: from mailout2.samsung.com ([203.254.224.25])
+	id 1nRINt-001CnH-6Y; Mon, 07 Mar 2022 18:47:05 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRIHB-001C4f-UB
- for linux-mediatek@lists.infradead.org; Mon, 07 Mar 2022 18:40:11 +0000
-Received: from epcas5p2.samsung.com (unknown [182.195.41.40])
- by mailout2.samsung.com (KnoxPortal) with ESMTP id
- 20220307184007epoutp02443a648c9d6dd087d2d182e9402150c3~aLUmJ9DMb1491514915epoutp02E
- for <linux-mediatek@lists.infradead.org>; Mon,  7 Mar 2022 18:40:07 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.samsung.com
- 20220307184007epoutp02443a648c9d6dd087d2d182e9402150c3~aLUmJ9DMb1491514915epoutp02E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1646678407;
- bh=eiDqlXkyLxJk7tUavFB6NBVRulB8atwBogOljjBUCeI=;
- h=From:To:Cc:In-Reply-To:Subject:Date:References:From;
- b=kcmFqyEZA54asLw4qnDChdVqZpyesCNpmNLlS/xHvKGPW85ozW5rcE+tfjxnb1z9A
- prj+oYY/QFIbzW+atb1MmzTYBGJ9w1cW8MERDDQkGGcWdyyLrXQsGida08ZvbvbmYv
- ZU3aHon++MMr94JO31p0z68ivW/T0ejf4gdsAWq0=
-Received: from epsnrtp2.localdomain (unknown [182.195.42.163]) by
- epcas5p4.samsung.com (KnoxPortal) with ESMTP id
- 20220307184006epcas5p435cd41207507bc414337f86a13ef33ac~aLUlYqroB1486114861epcas5p4C;
- Mon,  7 Mar 2022 18:40:06 +0000 (GMT)
-Received: from epsmges5p2new.samsung.com (unknown [182.195.38.174]) by
- epsnrtp2.localdomain (Postfix) with ESMTP id 4KC6hK2Kycz4x9Pt; Mon,  7 Mar
- 2022 18:40:01 +0000 (GMT)
-Received: from epcas5p1.samsung.com ( [182.195.41.39]) by
- epsmges5p2new.samsung.com (Symantec Messaging Gateway) with SMTP id
- 75.DD.46822.FCE46226; Tue,  8 Mar 2022 03:28:31 +0900 (KST)
-Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
- epcas5p4.samsung.com (KnoxPortal) with ESMTPA id
- 20220307184000epcas5p4e57a7bc3e82124d1018167e63c3960d0~aLUfI-jfF2748727487epcas5p43;
- Mon,  7 Mar 2022 18:40:00 +0000 (GMT)
-Received: from epsmgms1p2.samsung.com (unknown [182.195.42.42]) by
- epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
- 20220307184000epsmtrp2f4368f8a7c713a60fdf675c9c3c5d4cc~aLUfIEoRQ1421214212epsmtrp2d;
- Mon,  7 Mar 2022 18:40:00 +0000 (GMT)
-X-AuditID: b6c32a4a-dfbff7000000b6e6-a9-62264ecf32c0
-Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
- epsmgms1p2.samsung.com (Symantec Messaging Gateway) with SMTP id
- 96.17.03370.F7156226; Tue,  8 Mar 2022 03:39:59 +0900 (KST)
-Received: from alimakhtar03 (unknown [107.122.12.5]) by epsmtip1.samsung.com
- (KnoxPortal) with ESMTPA id
- 20220307183957epsmtip1d83677fad9d10a49385889fb09c9081f~aLUck0svH1520315203epsmtip1U;
- Mon,  7 Mar 2022 18:39:57 +0000 (GMT)
-From: "Alim Akhtar" <alim.akhtar@samsung.com>
-To: "'Krzysztof Kozlowski'" <krzysztof.kozlowski@canonical.com>, "'Avri
- Altman'" <avri.altman@wdc.com>, "'Rob Herring'" <robh+dt@kernel.org>, "'Andy
- Gross'" <agross@kernel.org>, "'Bjorn	Andersson'"
- <bjorn.andersson@linaro.org>, "'Wei Xu'" <xuwei5@hisilicon.com>, "'Matthias
- Brugger'" <matthias.bgg@gmail.com>, "'Jan Kotas'" <jank@cadence.com>, "'Li
- Wei'" <liwei213@huawei.com>, "'Stanley Chu'" <stanley.chu@mediatek.com>,
- "'Vignesh	Raghavendra'" <vigneshr@ti.com>, <linux-scsi@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-msm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-samsung-soc@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Cc: "'Rob Herring'" <robh@kernel.org>
-In-Reply-To: <20220306111125.116455-3-krzysztof.kozlowski@canonical.com>
-Subject: RE: [PATCH v3 02/12] dt-bindings: ufs: samsung,exynos-ufs: use
- common bindings
-Date: Tue, 8 Mar 2022 00:09:56 +0530
-Message-ID: <000501d83252$c0094650$401bd2f0$@samsung.com>
+ id 1nRINq-001CmT-9W
+ for linux-mediatek@lists.infradead.org; Mon, 07 Mar 2022 18:47:03 +0000
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 0F4A13F60F
+ for <linux-mediatek@lists.infradead.org>; Mon,  7 Mar 2022 18:46:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1646678817;
+ bh=7Du6NUZLSH6JPd0VdCqJVM5KAFisPVhRd3glhN4UZOQ=;
+ h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+ In-Reply-To:Content-Type;
+ b=ZH/oSi7URveDAMBb9Lavf3tmKC61lAgU695SejnodQd4GV5svsK1W7Lmo04xCrxq3
+ ypYtQYtBQGE8/8Zfxu/KyBp5giI8zBtWx943Vpag856JYNkQtrjysDMBTomNZOlsiW
+ zGuU/3xWlFjlR8NlZ8nor338G8Y5TXSAnwSkJdvYn9kkYVjdmc7S4zxohx24ohci1h
+ mUmkGx8K8w5eNURmV0yFQ9u0Sp4tsCwLPAoUEY4I/zy4XiWxzdRVi7LG5MGYMuKP34
+ LVCNQEzOWowCvEoxrQIgkI/wvO+21JNEnB5NDqb8k85yro6P/GiomC5tojJ2fX+Y1b
+ O0UQSjlZ+VuIg==
+Received: by mail-ej1-f70.google.com with SMTP id
+ hr26-20020a1709073f9a00b006d6d1ee8cf8so7336355ejc.19
+ for <linux-mediatek@lists.infradead.org>; Mon, 07 Mar 2022 10:46:57 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=7Du6NUZLSH6JPd0VdCqJVM5KAFisPVhRd3glhN4UZOQ=;
+ b=dPPra2oF9loRE5Xq1JbTuLF6eUtlfLx6ZU2wm3JDjb7Eh6Vdl1BAXEf76oi6MfD1/g
+ IWYgn9CzTjdfn1MoedFFyIuf+CjxJv8mLpz8Q4+m/46fUs5tALdyNb49ZnejGCNX+7Mo
+ QnCk/02ClezJ+mlD/lMXwZ2t+v5Zi8jAafsAjkQhus2dKa1yww5Ci315putwKaRGQV35
+ GelZYUQ/l9KU0zxRKvm0VKcUTRLf/5XnCPSf+a+Ynz9y3hcujj7IqjvfBGK0X7b/NHFo
+ +NfTHRXjcCqF1dRpsU8e3FXAo4RGnb62o4/zX9hdKj+p84EOI97HlHlfNb+3rAR++YQ2
+ KwLQ==
+X-Gm-Message-State: AOAM530mjRFlzK8WBe0giJ++B12Rtk+TqDBmcMPUNnD/t/PkMjp+Ob0V
+ 9Yf7ATAVXcDaHYqST7btKQi+xE9oZo16pvyk+/QSn18OqZi0WnAdI2U0WilBD77rRXBfUNeOucV
+ gfdcz2c3oUky5WE9aAVyHG0P4J35gVyk0vpQzL2hmBogKAsBRWA==
+X-Received: by 2002:a17:907:9956:b0:6cf:cd25:c5a7 with SMTP id
+ kl22-20020a170907995600b006cfcd25c5a7mr9944892ejc.635.1646678816734; 
+ Mon, 07 Mar 2022 10:46:56 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxpJUHm+abc5eCLSEqkNsLa+Mh4u6+Bzb3sUElgNYSsiueLRLyvJgLpRmFoXyMOzSLGycIl0Q==
+X-Received: by 2002:a17:907:9956:b0:6cf:cd25:c5a7 with SMTP id
+ kl22-20020a170907995600b006cfcd25c5a7mr9944880ejc.635.1646678816500; 
+ Mon, 07 Mar 2022 10:46:56 -0800 (PST)
+Received: from [192.168.0.143] (xdsl-188-155-174-239.adslplus.ch.
+ [188.155.174.239]) by smtp.gmail.com with ESMTPSA id
+ t19-20020a1709060c5300b006d582121f99sm4960417ejf.36.2022.03.07.10.46.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 07 Mar 2022 10:46:55 -0800 (PST)
+Message-ID: <0901c63a-6684-348c-6f74-919075700e8b@canonical.com>
+Date: Mon, 7 Mar 2022 19:46:54 +0100
 MIME-Version: 1.0
-X-Mailer: Microsoft Outlook 16.0
-Thread-Index: AQHMSLK+HcMgkjgstDaV74uAa2rDeQFlagdDAil/trGsr5wPEA==
-Content-Language: en-us
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrCJsWRmVeSWpSXmKPExsWy7bCmuu55P7Ukg2e3uCzOPf7NYvHy51U2
- i9P737FYzD9yjtWi+3imxca3P5gsNj2+xmoxcf9ZdovLu+awWVxuvshoMeP8PiaL7us72Cz+
- zjnCaNHUYmzRuvcIu8X/PTvYLZZuvclo8f/sB3aLJ0enMDsIe6zpfM3kMauhl81j56y77B6P
- 525k92g58pbVY9OqTjaPO9f2sHlsXlLv0XJyP4vH8RvbmTw+b5LzaD/QzRTAE5Vtk5GamJJa
- pJCal5yfkpmXbqvkHRzvHG9qZmCoa2hpYa6kkJeYm2qr5OIToOuWmQP0opJCWWJOKVAoILG4
- WEnfzqYov7QkVSEjv7jEVim1ICWnwKRArzgxt7g0L10vL7XEytDAwMgUqDAhO2PRxn1sBdNE
- Km7NZ21g7BbsYuTkkBAwkbi4rY+pi5GLQ0hgN6PEr90X2CCcT4wSSx7eZ4FwPjNKHLj0jx2m
- ZeeOecwgtpDALkaJL5OjIIpeMko8mPGBESTBJqArsWNxGxuILSJwkVXi3kl9EJtZQFVizp9f
- YM2cAh4Sl85+B6sXFoiUOP1pMlg9i4CKxORVs1hAbF4BS4lVm/6wQ9iCEidnPmGBmCMvsf3t
- HGaIgxQkfj5dxgqxy0liRdMiNogacYmXR4+wgxwnITCfU2LvmqOsEA0uEpvfHWKBsIUlXh3f
- AvWZlMTnd3uBmjmA7GyJnl3GEOEaiaXzjkGV20scuDKHBaSEWUBTYv0uqLf4JHp/P2GC6OSV
- 6GgTgqhWlWh+dxWqU1piYnc31AEeEkcnr2aewKg4C8ljs5A8NgvJA7MQli1gZFnFKJlaUJyb
- nlpsWmCUl1oOj+3k/NxNjODkr+W1g/Hhgw96hxiZOBgPMUpwMCuJ8N4/r5IkxJuSWFmVWpQf
- X1Sak1p8iNEUGNoTmaVEk/OB+SevJN7QxNLAxMzMzMTS2MxQSZz3dPqGRCGB9MSS1OzU1ILU
- Ipg+Jg5OqQamHQZ/2WeUf018EBpzwFrt/ZeqJa8OHHVfbP2Ae2Fmp/C0huP1RqkMsUEzFz4/
- vs7gnt7UZU6LH9xQPJietO/tdkfmYr6F+oFOkpf67s07L3clKOxXbZOu/MSw2THHwxMSbzMs
- XRzAEMbg9XWeCmtDBLtqQRqLX0nI06eLy3Wvf7wi8K7O0vvnA+/WQ4++LVouw/h4g9AUY40a
- DYePa1Qyolr8XPhXdqZM2BPPf27zijsWe77Z9V8Oa1seX6UVGVW8Yh73K1VBg8d2X4v9TkQu
- PbV5ysvStdM2zV+fZf74fIjb9/PcaiY1/gtKTh073DyN9zirCE/TjmknJz1tr9h0P93l7MaY
- w8kscQe2Xo3yU2Ipzkg01GIuKk4EAC0hLGCHBAAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrLIsWRmVeSWpSXmKPExsWy7bCSnG59oFqSwaltVhbnHv9msXj58yqb
- xen971gs5h85x2rRfTzTYuPbH0wWmx5fY7WYuP8su8XlXXPYLC43X2S0mHF+H5NF9/UdbBZ/
- 5xxhtGhqMbZo3XuE3eL/nh3sFku33mS0+H/2A7vFk6NTmB2EPdZ0vmbymNXQy+axc9Zddo/H
- czeye7QcecvqsWlVJ5vHnWt72Dw2L6n3aDm5n8Xj+I3tTB6fN8l5tB/oZgrgieKySUnNySxL
- LdK3S+DKWLRxH1vBNJGKW/NZGxi7BbsYOTkkBEwkdu6Yx9zFyMUhJLCDUWL2ybWMEAlpiesb
- J7BD2MISK/89B7OFBJ4zSpw7UwliswnoSuxY3MYG0iwi8JBVYuXVWSwgCWYBVYk5f35BTb3K
- KPFm/0Kwbk4BD4lLZ7+DbRAWCJfY+XYNK4jNIqAiMXkVRDOvgKXEqk1/2CFsQYmTM58AxTmA
- hupJtG1khJgvL7H97RxmiOMUJH4+XQY2RkTASWJF0yI2iBpxiZdHj7BPYBSehWTSLIRJs5BM
- moWkYwEjyypGydSC4tz03GLDAqO81HK94sTc4tK8dL3k/NxNjOAUoKW1g3HPqg96hxiZOBgP
- MUpwMCuJ8N4/r5IkxJuSWFmVWpQfX1Sak1p8iFGag0VJnPdC18l4IYH0xJLU7NTUgtQimCwT
- B6dUA1PWJ5VXPpnbLvT1uzLtVz4Vdvu5jsen2xuCXQwYoiufPJhgXav59+FDrcOdL/WiZnKx
- yWQtPSboWvvYTqnJSYNRfoIYk9BfzcfvNrQ3qlxdXzIxkpf9gMqvmpl8zGentGxgu1Ly4HBA
- 9c3ghadu9G2U+V8nxPzQSfjHlilbdzI9qHt11itm9s5zP9IENP7HGbf7nXK58CBLXkW08fzz
- orTwibYXkt+Zb9tY8i3gTqb7eenF98MLu6vOGj7/z+X5e23SnqhzbipZR0O/tvI470//tWTV
- w6Nljz6m8bW92ctif3zvi3Op+lsDP5s/CZv2a0dPyKqVByKCuLtZOU/HnzZksM7XqetvWHyn
- 75xPcKwSS3FGoqEWc1FxIgCA8KoHcAMAAA==
-X-CMS-MailID: 20220307184000epcas5p4e57a7bc3e82124d1018167e63c3960d0
-X-Msg-Generator: CA
-CMS-TYPE: 105P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20220306111139epcas5p17c8aa66853ef371e7486aa64ea89b484
-References: <20220306111125.116455-1-krzysztof.kozlowski@canonical.com>
- <CGME20220306111139epcas5p17c8aa66853ef371e7486aa64ea89b484@epcas5p1.samsung.com>
- <20220306111125.116455-3-krzysztof.kozlowski@canonical.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v1 1/2] dt-bindings: i2c: update bindings for MT8168 SoC
+Content-Language: en-US
+To: Kewei Xu <kewei.xu@mediatek.com>, wsa@the-dreams.de
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, linux-i2c@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, leilk.liu@mediatek.com, qii.wang@mediatek.com,
+ liguo.zhang@mediatek.com, caiyu.chen@mediatek.com,
+ housong.zhang@mediatek.com, yuhan.wei@mediatek.com
+References: <20220307033649.11564-1-kewei.xu@mediatek.com>
+ <20220307033649.11564-2-kewei.xu@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+In-Reply-To: <20220307033649.11564-2-kewei.xu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220307_104010_348461_A994E39F 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20220307_104702_574588_AF795058 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,89 +110,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 07/03/2022 04:36, Kewei Xu wrote:
+> Add a DT binding documentation for the MT8168 soc.
+> 
+> Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
 
->-----Original Message-----
->From: Krzysztof Kozlowski [mailto:krzysztof.kozlowski@canonical.com]
->Sent: Sunday, March 6, 2022 4:41 PM
->To: Alim Akhtar <alim.akhtar@samsung.com>; Avri Altman
-><avri.altman@wdc.com>; Rob Herring <robh+dt@kernel.org>; Krzysztof
->Kozlowski <krzysztof.kozlowski@canonical.com>; Andy Gross
-><agross@kernel.org>; Bjorn Andersson <bjorn.andersson@linaro.org>; Wei
->Xu <xuwei5@hisilicon.com>; Matthias Brugger <matthias.bgg@gmail.com>;
->Jan Kotas <jank@cadence.com>; Li Wei <liwei213@huawei.com>; Stanley Chu
-><stanley.chu@mediatek.com>; Vignesh Raghavendra <vigneshr@ti.com>;
->linux-scsi@vger.kernel.org; devicetree@vger.kernel.org; linux-
->kernel@vger.kernel.org; linux-arm-msm@vger.kernel.org; linux-arm-
->kernel@lists.infradead.org; linux-samsung-soc@vger.kernel.org; linux-
->mediatek@lists.infradead.org
->Cc: Rob Herring <robh@kernel.org>
->Subject: [PATCH v3 02/12] dt-bindings: ufs: samsung,exynos-ufs: use common
->bindings
->
->Use common UFS bindings in Samsung Exynos UFS to cover generic/common
->properties in DTS.
->
->Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
->Reviewed-by: Rob Herring <robh@kernel.org>
->---
-
-Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
-
-> .../devicetree/bindings/ufs/samsung,exynos-ufs.yaml | 13 ++++---------
-> 1 file changed, 4 insertions(+), 9 deletions(-)
->
->diff --git a/Documentation/devicetree/bindings/ufs/samsung,exynos-
->ufs.yaml b/Documentation/devicetree/bindings/ufs/samsung,exynos-
->ufs.yaml
->index 95ac1c18334d..c949eb617313 100644
->--- a/Documentation/devicetree/bindings/ufs/samsung,exynos-ufs.yaml
->+++ b/Documentation/devicetree/bindings/ufs/samsung,exynos-ufs.yaml
->@@ -11,12 +11,11 @@ maintainers:
->
-> description: |
->   Each Samsung UFS host controller instance should have its own node.
->-  This binding define Samsung specific binding other then what is used
->-  in the common ufshcd bindings
->-  [1] Documentation/devicetree/bindings/ufs/ufshcd-pltfrm.txt
->
->-properties:
->+allOf:
->+  - $ref: ufs-common.yaml
->
->+properties:
->   compatible:
->     enum:
->       - samsung,exynos7-ufs
->@@ -47,9 +46,6 @@ properties:
->       - const: core_clk
->       - const: sclk_unipro_main
->
->-  interrupts:
->-    maxItems: 1
->-
->   phys:
->     maxItems: 1
->
->@@ -67,13 +63,12 @@ properties:
-> required:
->   - compatible
->   - reg
->-  - interrupts
->   - phys
->   - phy-names
->   - clocks
->   - clock-names
->
->-additionalProperties: false
->+unevaluatedProperties: false
->
-> examples:
->   - |
->--
->2.32.0
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 
 
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
