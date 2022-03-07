@@ -4,42 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13BA8C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 03:12:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8141C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 03:12:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XVU+HpW879FeYfio35wFB9dMOxvsZ4aRIM7P1ZwhYhk=; b=ShAkEOn3gJb3ey
-	YNahsoEFv4nsUcIQZDUC88bv3no4tPna7UD41VzFBMFpChQEhj5jVMh3IXDA4f0lA5IVMW0+z0Nq/
-	HqXt4BGjitAM4xHe6T3iJRFv2u1Cd9RUPWQ8nYwLOYNyz5sB+athD+o3VPFCmUCU9Rqk5w7+U9EmE
-	MqIz8Dvd7imaaOeNsQCf7j+9M1V2/4C6gSgCDgtL5PLJOtl4LVTgsKVJUvPQeJnMVigW+JYsCZJ4X
-	++FvkatFV2rTKyTNdmpMW/hjn/eN6InCB/R5ImENQGiBuBWMCXzTuNVS+yXXjIM7C23sQ12/BkIRd
-	GWz2n9MtlkfnfAxsBqBQ==;
+	List-Owner; bh=RbHpYA/UbMY8LrqMuKAOumoLJQnvbZsPkKgBeiBkkzs=; b=LlfWJf+s9jZeVD
+	7ZiSQZtdVqYhL35ZM3R2bAKCHn2XHv0mG7mrfzNtMC23Q+Jb7a2EYqpzVQ/Gf66av0WR538aoBkfV
+	IZXlsvKdS6GzQn2bKY1hcgw7VT0SZPuAK5KmHGvB+UCivRWlDr6Tv2XZW2ug6QbxlgaHiz7q9en7Q
+	JRANNmr4LAoDnEBCptmtT2R1m300XD8Rh0zCuDDSPqALc9wlgFEamDjnmuq++aHhWKiCak+6HCk3X
+	asVNM4rHnGlg74INqQY8M/h3XYQBmjIBJlYgMlmUeiyZ90OHzfwugxS8hZOudMpvToz/UllGI2cF2
+	a46KDDQEzX5eyFDju4nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nR3n5-00Fgzk-An; Mon, 07 Mar 2022 03:12:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nR3nX-00Fh66-5n; Mon, 07 Mar 2022 03:12:35 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nR3n2-00Fgyw-5j
- for linux-mediatek@lists.infradead.org; Mon, 07 Mar 2022 03:12:05 +0000
-X-UUID: 35916eece865449287e7748d563aa1b4-20220306
-X-UUID: 35916eece865449287e7748d563aa1b4-20220306
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1nR3nV-00Fh5P-0E
+ for linux-mediatek@lists.infradead.org; Mon, 07 Mar 2022 03:12:34 +0000
+X-UUID: 521fe91c8dd047afa74c8552a0d0b6eb-20220306
+X-UUID: 521fe91c8dd047afa74c8552a0d0b6eb-20220306
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <meichia.chiu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 923492015; Sun, 06 Mar 2022 20:11:56 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 6 Mar 2022 19:11:55 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 7 Mar 2022 11:11:47 +0800
+ with ESMTP id 1639500817; Sun, 06 Mar 2022 20:12:28 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 6 Mar 2022 19:11:59 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 7 Mar 2022 11:11:58 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 7 Mar 2022 11:11:47 +0800
+ Frontend Transport; Mon, 7 Mar 2022 11:11:58 +0800
 From: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
@@ -47,17 +48,17 @@ CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
  <ryder.lee@mediatek.com>, <linux-wireless@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>, MeiChia Chiu
  <MeiChia.Chiu@mediatek.com>
-Subject: [PATCH v2 3/4] mt76: mt7915: fix eeprom fields of txpower init values
-Date: Mon, 7 Mar 2022 11:11:24 +0800
-Message-ID: <20220307031125.2585-3-MeiChia.Chiu@mediatek.com>
+Subject: [PATCH v2 4/4] mt76: mt7915: add txpower init for 6GHz
+Date: Mon, 7 Mar 2022 11:11:25 +0800
+Message-ID: <20220307031125.2585-4-MeiChia.Chiu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220307031125.2585-1-MeiChia.Chiu@mediatek.com>
 References: <20220307031125.2585-1-MeiChia.Chiu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220306_191204_247680_53D800D8 
-X-CRM114-Status: GOOD (  13.33  )
+X-CRM114-CacheID: sfid-20220306_191233_081888_9F5DE4D1 
+X-CRM114-Status: GOOD (  14.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,128 +77,120 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Shayne Chen <shayne.chen@mediatek.com>
 
-A-die 7976 has different offset and uses different channel group
-definition on txpower init values.
+Add support to init txpower values of 6GHz band.
 
-Fixes: 99ad32a4ca3a ("mt76: mt7915: add support for MT7986")
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 Signed-off-by: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt7915/eeprom.c    | 52 ++++++++++---------
- .../wireless/mediatek/mt76/mt7915/eeprom.h    | 14 ++++-
- 2 files changed, 40 insertions(+), 26 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7915/eeprom.c    | 15 +++++++++++----
+ .../net/wireless/mediatek/mt76/mt7915/eeprom.h    | 13 ++++++++++++-
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c  |  2 ++
+ 3 files changed, 25 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
-index 136a6adab3df..317c3bc2db44 100644
+index 317c3bc2db44..5b133bcdab17 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
-@@ -263,32 +263,38 @@ int mt7915_eeprom_get_target_power(struct mt7915_dev *dev,
- {
- 	u8 *eeprom = dev->mt76.eeprom.data;
- 	int index, target_power;
--	bool tssi_on;
-+	bool tssi_on, is_7976;
+@@ -282,8 +282,8 @@ int mt7915_eeprom_get_target_power(struct mt7915_dev *dev,
+ 			if (!tssi_on)
+ 				target_power += eeprom[index + 1];
+ 		}
+-	} else {
+-		int group = mt7915_get_channel_group(chan->hw_value, is_7976);
++	} else if (chan->band == NL80211_BAND_5GHZ) {
++		int group = mt7915_get_channel_group_5g(chan->hw_value, is_7976);
  
- 	if (chain_idx > 3)
- 		return -EINVAL;
- 
- 	tssi_on = mt7915_tssi_enabled(dev, chan->band);
-+	is_7976 = mt7915_check_adie(dev, false) || is_mt7916(&dev->mt76);
- 
- 	if (chan->band == NL80211_BAND_2GHZ) {
--		u32 power = is_mt7915(&dev->mt76) ?
--			    MT_EE_TX0_POWER_2G : MT_EE_TX0_POWER_2G_V2;
--
--		index = power + chain_idx * 3;
--		target_power = eeprom[index];
-+		if (is_7976) {
-+			index = MT_EE_TX0_POWER_2G_V2 + chain_idx;
-+			target_power = eeprom[index];
-+		} else {
-+			index = MT_EE_TX0_POWER_2G + chain_idx * 3;
-+			target_power = eeprom[index];
- 
--		if (!tssi_on)
--			target_power += eeprom[index + 1];
-+			if (!tssi_on)
-+				target_power += eeprom[index + 1];
-+		}
- 	} else {
--		int group = mt7915_get_channel_group(chan->hw_value);
--		u32 power = is_mt7915(&dev->mt76) ?
--			    MT_EE_TX0_POWER_5G : MT_EE_TX0_POWER_5G_V2;
-+		int group = mt7915_get_channel_group(chan->hw_value, is_7976);
- 
--		index = power + chain_idx * 12;
--		target_power = eeprom[index + group];
-+		if (is_7976) {
-+			index = MT_EE_TX0_POWER_5G_V2 + chain_idx * 5;
-+			target_power = eeprom[index + group];
-+		} else {
-+			index = MT_EE_TX0_POWER_5G + chain_idx * 12;
-+			target_power = eeprom[index + group];
- 
--		if (!tssi_on)
--			target_power += eeprom[index + 8];
-+			if (!tssi_on)
-+				target_power += eeprom[index + 8];
-+		}
+ 		if (is_7976) {
+ 			index = MT_EE_TX0_POWER_5G_V2 + chain_idx * 5;
+@@ -295,6 +295,11 @@ int mt7915_eeprom_get_target_power(struct mt7915_dev *dev,
+ 			if (!tssi_on)
+ 				target_power += eeprom[index + 8];
+ 		}
++	} else {
++		int group = mt7915_get_channel_group_6g(chan->hw_value);
++
++		index = MT_EE_TX0_POWER_6G_V2 + chain_idx * 8;
++		target_power = is_7976 ? eeprom[index + group] : 0;
  	}
  
  	return target_power;
-@@ -297,20 +303,16 @@ int mt7915_eeprom_get_target_power(struct mt7915_dev *dev,
- s8 mt7915_eeprom_get_power_delta(struct mt7915_dev *dev, int band)
- {
- 	u8 *eeprom = dev->mt76.eeprom.data;
--	u32 val;
-+	u32 val, offs;
- 	s8 delta;
--	u32 rate_2g, rate_5g;
--
--	rate_2g = is_mt7915(&dev->mt76) ?
--		  MT_EE_RATE_DELTA_2G : MT_EE_RATE_DELTA_2G_V2;
--
--	rate_5g = is_mt7915(&dev->mt76) ?
--		  MT_EE_RATE_DELTA_5G : MT_EE_RATE_DELTA_5G_V2;
-+	bool is_7976 = mt7915_check_adie(dev, false) || is_mt7916(&dev->mt76);
+@@ -309,12 +314,14 @@ s8 mt7915_eeprom_get_power_delta(struct mt7915_dev *dev, int band)
  
  	if (band == NL80211_BAND_2GHZ)
--		val = eeprom[rate_2g];
-+		offs = is_7976 ? MT_EE_RATE_DELTA_2G_V2 : MT_EE_RATE_DELTA_2G;
- 	else
--		val = eeprom[rate_5g];
-+		offs = is_7976 ? MT_EE_RATE_DELTA_5G_V2 : MT_EE_RATE_DELTA_5G;
-+
-+	val = eeprom[offs];
+ 		offs = is_7976 ? MT_EE_RATE_DELTA_2G_V2 : MT_EE_RATE_DELTA_2G;
+-	else
++	else if (band == NL80211_BAND_5GHZ)
+ 		offs = is_7976 ? MT_EE_RATE_DELTA_5G_V2 : MT_EE_RATE_DELTA_5G;
++	else
++		offs = is_7976 ? MT_EE_RATE_DELTA_6G_V2 : 0;
  
- 	if (!(val & MT_EE_RATE_DELTA_EN))
+ 	val = eeprom[offs];
+ 
+-	if (!(val & MT_EE_RATE_DELTA_EN))
++	if (!offs || !(val & MT_EE_RATE_DELTA_EN))
  		return 0;
+ 
+ 	delta = FIELD_GET(MT_EE_RATE_DELTA_MASK, val);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
-index 5dad5b0b5ac6..45760917c54d 100644
+index 45760917c54d..7578ac6d0be6 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
-@@ -103,8 +103,20 @@ enum mt7915_sku_rate_group {
+@@ -25,8 +25,10 @@ enum mt7915_eeprom_field {
+ 	MT_EE_TX0_POWER_5G =	0x34b,
+ 	MT_EE_RATE_DELTA_2G_V2 = 0x7d3,
+ 	MT_EE_RATE_DELTA_5G_V2 = 0x81e,
++	MT_EE_RATE_DELTA_6G_V2 = 0x884, /* 6g fields only appear in eeprom v2 */
+ 	MT_EE_TX0_POWER_2G_V2 =	0x441,
+ 	MT_EE_TX0_POWER_5G_V2 =	0x445,
++	MT_EE_TX0_POWER_6G_V2 =	0x465,
+ 	MT_EE_ADIE_FT_VERSION =	0x9a0,
+ 
+ 	__MT_EE_MAX =		0xe00,
+@@ -103,7 +105,7 @@ enum mt7915_sku_rate_group {
  };
  
  static inline int
--mt7915_get_channel_group(int channel)
-+mt7915_get_channel_group(int channel, bool is_7976)
+-mt7915_get_channel_group(int channel, bool is_7976)
++mt7915_get_channel_group_5g(int channel, bool is_7976)
  {
-+	if (is_7976) {
-+		if (channel <= 64)
-+			return 0;
-+		if (channel <= 96)
-+			return 1;
-+		if (channel <= 128)
-+			return 2;
-+		if (channel <= 144)
-+			return 3;
-+		return 4;
-+	}
+ 	if (is_7976) {
+ 		if (channel <= 64)
+@@ -134,6 +136,15 @@ mt7915_get_channel_group(int channel, bool is_7976)
+ 	return 7;
+ }
+ 
++static inline int
++mt7915_get_channel_group_6g(int channel)
++{
++	if (channel <= 29)
++		return 0;
 +
- 	if (channel >= 184 && channel <= 196)
- 		return 0;
- 	if (channel <= 48)
++	return DIV_ROUND_UP(channel - 29, 32);
++}
++
+ static inline bool
+ mt7915_tssi_enabled(struct mt7915_dev *dev, enum nl80211_band band)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index 9a696687d61c..668244e0d11e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -312,6 +312,7 @@ mt7915_regd_notifier(struct wiphy *wiphy,
+ 
+ 	mt7915_init_txpower(dev, &mphy->sband_2g.sband);
+ 	mt7915_init_txpower(dev, &mphy->sband_5g.sband);
++	mt7915_init_txpower(dev, &mphy->sband_6g.sband);
+ 
+ 	mphy->dfs_state = MT_DFS_STATE_UNKNOWN;
+ 	mt7915_dfs_init_radar_detector(phy);
+@@ -558,6 +559,7 @@ static void mt7915_init_work(struct work_struct *work)
+ 	mt7915_mac_init(dev);
+ 	mt7915_init_txpower(dev, &dev->mphy.sband_2g.sband);
+ 	mt7915_init_txpower(dev, &dev->mphy.sband_5g.sband);
++	mt7915_init_txpower(dev, &dev->mphy.sband_6g.sband);
+ 	mt7915_txbf_init(dev);
+ }
+ 
 -- 
 2.18.0
 
