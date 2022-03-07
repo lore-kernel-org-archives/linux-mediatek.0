@@ -4,62 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8900C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 12:48:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72955C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 13:00:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+fFUiRpwY3KKKOKgyODICE9ZyCcmBO25iQEpA4/udXo=; b=okmcdvk6z6ShiN
-	/Fp3YZ9EwG1/DD34PZy5i1XZZBl5z+pJtFoltjkE86Vdes/S6ReQolOc78Vmj0LphtxydnEDlNirw
-	k7TcvvBPB0cP9ZRn3jdl7eN/+gmpvse+PeufOiMvg1/h8MBxqOOthK6iF5HqvJIlm6+TiRd7top02
-	5fLPsFAfFQ4FeQ/pYGe4IF2R2kk+s+tGKYNNT/n57tp3JFOmndSztpXGWem2aAQT9vn4RHKY2AbrG
-	lvrOtNOqC2TQKW4rf9x8iJy7jgmBQUrDTlFccaYDhgONWwd1xQM0wn+Yr91g5bscFz1L3uy4b4dUA
-	gJhyJyxhNOelZeO8/lcw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rw+or4zNSpkmLTOrdPf8FXu/TOWsvgIULpQDBeNebKo=; b=CkkY+RKlVzzgg8
+	Y9us7STuEZ9eIpuTlzcQipqG0/iFwnlFrO0fBnOVU1LZfBMay3iL++FbLHpEkK0ZnxGqyxhd9do5j
+	EaFkoN+Xim6b9fusrClrcB9TSmjtCToxV4hAteIFodW9RjnZB59MK0yxp1Y9uTpBKSSNlHJtXKU7y
+	qEs8xKmlJIodSXjGVBtGPOva0MI3xBR7lQ/aRTUUqerPmOGrT3rdQ/D0DF28p5xWfTbgNtoqy18jH
+	Qul5NfB5H917Ul7tEkeGUyx3OXiVNYseGlvZr01008Nh80TEXshCIsssRUQXTyOKYbxWuI1LZahgY
+	BoSXdbpVBSLUvD0gS4Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRCn2-0007A8-QS; Mon, 07 Mar 2022 12:48:40 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nRCyb-000BAH-OU; Mon, 07 Mar 2022 13:00:37 +0000
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRCa7-0002QR-KO; Mon, 07 Mar 2022 12:35:20 +0000
-X-UUID: 33def4b6b24f4182878411c409d1cf07-20220307
-X-UUID: 33def4b6b24f4182878411c409d1cf07-20220307
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jia-wei.chang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 126769639; Mon, 07 Mar 2022 05:35:17 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 7 Mar 2022 04:25:15 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 7 Mar 2022 20:25:14 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 7 Mar 2022 20:25:13 +0800
-From: Tim Chang <jia-wei.chang@mediatek.com>
-To: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park
- <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, "Rob
- Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- "Liam Girdwood" <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- "Jia-Wei Chang" <jia-wei.chang@mediatek.com>
-CC: <linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <fan.chen@mediatek.com>,
- <louis.yu@mediatek.com>, <roger.lu@mediatek.com>,
- <Allen-yy.Lin@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>
-Subject: [PATCH 0/3] devfreq: mediatek: introduce MTK cci devfreq
-Date: Mon, 7 Mar 2022 20:25:10 +0800
-Message-ID: <20220307122513.11822-1-jia-wei.chang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1nRCyZ-000B8F-0Q
+ for linux-mediatek@lists.infradead.org; Mon, 07 Mar 2022 13:00:36 +0000
+Received: by mail-yb1-xb34.google.com with SMTP id u10so10913608ybd.9
+ for <linux-mediatek@lists.infradead.org>; Mon, 07 Mar 2022 05:00:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=cV/iRWpEISoBT8RqYrC9Loyzy60WPxJLdJrpUBpn9N4=;
+ b=LVb++RVBZfne8vu4GpNufR3TESTWg0xLaPgW4a8mWdgu+RsfCq0eSp7KjWLVehEZMi
+ Nqc9VQ04sWEuTzePC1BAc92teVEUvdGyPyD24J9VgfOlza/1uyEZeVS4Rz+ev0Kg+g+w
+ mVMXXPm1QDuom6dMCjngUykQ4yCV1nwKEqJwjVs8PmDIVYk7pJ+0X9Fc1Ucm82OLgzKY
+ rFrdY08sjABSAp4mH5xB7Jz6UfirJs2eorbxcisS7cxmYySScStHT7AH6YMGEz0Mv4jA
+ x4/UXhyzWP0afg9vP2AQLMwR4es9LiI26n22K0Fn0iAsm4g/NOcto86FXEk64Rn1bgyX
+ 7uHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=cV/iRWpEISoBT8RqYrC9Loyzy60WPxJLdJrpUBpn9N4=;
+ b=Ub1PnfwLzw8CiUg3eEWQwRZ/CRPgtzaWphz5ZVsPI0rXwQagFYikbGZlKJCYXMf5uc
+ wr4xix0Aqx6pvXEgFpYc5nCdH4mZmZOF7gaNKw2vhhF5k4400eFvyioxUciw0iNRsIPq
+ Hv9snYc7rgaw7zGRDWlQaT0LyPZ0uNaaK/qpNZaJqu2uLSQ0EjqbGGjQd75iiTIkhysb
+ JORV6gKoeHcYn9/O7aHQqC99kr4xM/Fbpb7+k7LY6iD+Gq0B4/hEfU2V9XKtaKGd1rR4
+ FbH53TrldkLL1E619ZgoE8mgxtOL5C5/BP9xVVM7PX2EPsbNJp8sriCKX/o7jqCNMYie
+ Dqjg==
+X-Gm-Message-State: AOAM532rid9/iwJ8jiGP3zROp0IaJ8BE9dlEKziKXgM+/1qSezjpDiRg
+ xqZfk/Ohb+jcJ1qYKc02Bcl8qxda4lHAypoSfClHTw==
+X-Google-Smtp-Source: ABdhPJz7y/I54piNlQLkLmG1TBL8cO2TtZqqA/3TeporXhO/Ll4av+9Oeyrz2ZsqrqwcxxAf9U2afKUDEFHXjPyXHVY=
+X-Received: by 2002:a25:5090:0:b0:628:b76b:b9d3 with SMTP id
+ e138-20020a255090000000b00628b76bb9d3mr7938482ybb.128.1646658029569; Mon, 07
+ Mar 2022 05:00:29 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220307091702.378509770@linuxfoundation.org>
+In-Reply-To: <20220307091702.378509770@linuxfoundation.org>
+From: Naresh Kamboju <naresh.kamboju@linaro.org>
+Date: Mon, 7 Mar 2022 18:30:18 +0530
+Message-ID: <CA+G9fYtXE1TvxtXZPw++ZkGAUZ4f1rD1tBkMsDb33jsm-C1OZw@mail.gmail.com>
+Subject: Re: [PATCH 5.15 000/262] 5.15.27-rc1 review
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Netdev <netdev@vger.kernel.org>, dri-devel@lists.freedesktop.org
+Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org, 
+ torvalds@linux-foundation.org, akpm@linux-foundation.org, linux@roeck-us.net, 
+ shuah@kernel.org, patches@kernelci.org, lkft-triage@lists.linaro.org, 
+ pavel@denx.de, jonathanh@nvidia.com, f.fainelli@gmail.com, 
+ sudipm.mukherjee@gmail.com, slade@sladewatkins.com, 
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Hou Tao <houtao1@huawei.com>, 
+ Christoph Hellwig <hch@lst.de>, Tiezhu Yang <yangtiezhu@loongson.cn>, 
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+ David Airlie <airlied@linux.ie>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220307_043519_701316_39E0EB7E 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20220307_050035_058511_A71513D5 
+X-CRM114-Status: GOOD (  18.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,27 +93,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Cache Coherent Interconnect (CCI) is the management of cache
-coherency by hardware. CCI DEVFREQ is DVFS driver for power saving by
-scaling clock frequency and supply voltage of CCI. CCI uses the same
-input clock source and power rail as LITTLE CPUs on Mediatek SoCs.
+On Mon, 7 Mar 2022 at 15:07, Greg Kroah-Hartman
+<gregkh@linuxfoundation.org> wrote:
+>
+> This is the start of the stable review cycle for the 5.15.27 release.
+> There are 262 patches in this series, all will be posted as a response
+> to this one.  If anyone has any issues with these being applied, please
+> let me know.
+>
+> Responses should be made by Wed, 09 Mar 2022 09:16:25 +0000.
+> Anything received after that time might be too late.
+>
+> The whole patch series can be found in one patch at:
+>         https://www.kernel.org/pub/linux/kernel/v5.x/stable-review/patch-5.15.27-rc1.gz
+> or in the git tree and branch at:
+>         git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git linux-5.15.y
+> and the diffstat can be found below.
+>
+> thanks,
+>
+> greg k-h
 
-Jia-Wei Chang (3):
-  dt-bindings: devfreq: mediatek: add mtk cci devfreq dt-bindings
-  devfreq: mediatek: add mt8183 cci devfreq driver
-  devfreq: mediatek: add platform data to support mt8186
 
- .../devicetree/bindings/devfreq/mtk-cci.yaml  |  73 +++
- drivers/devfreq/Kconfig                       |  11 +-
- drivers/devfreq/Makefile                      |   2 +-
- drivers/devfreq/mtk-cci-devfreq.c             | 481 ++++++++++++++++++
- 4 files changed, 565 insertions(+), 2 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/devfreq/mtk-cci.yaml
- create mode 100644 drivers/devfreq/mtk-cci-devfreq.c
+Following build errors/warnings noticed on arm64.
 
--- 
-2.18.0
 
+arch/arm64/net/bpf_jit_comp.c: In function 'build_insn':
+arch/arm64/net/bpf_jit_comp.c:791:21: error: implicit declaration of
+function 'bpf_pseudo_func' [-Werror=implicit-function-declaration]
+  791 |                 if (bpf_pseudo_func(insn))
+      |                     ^~~~~~~~~~~~~~~
+cc1: some warnings being treated as errors
+
+
+drivers/gpu/drm/mediatek/mtk_dsi.c: In function 'mtk_dsi_host_attach':
+drivers/gpu/drm/mediatek/mtk_dsi.c:858:28: error: implicit declaration
+of function 'devm_drm_of_get_bridge'; did you mean
+'devm_drm_panel_bridge_add'? [-Werror=implicit-function-declaration]
+  858 |         dsi->next_bridge = devm_drm_of_get_bridge(dev,
+dev->of_node, 0, 0);
+      |                            ^~~~~~~~~~~~~~~~~~~~~~
+      |                            devm_drm_panel_bridge_add
+drivers/gpu/drm/mediatek/mtk_dsi.c:858:26: warning: assignment to
+'struct drm_bridge *' from 'int' makes pointer from integer without a
+cast [-Wint-conversion]
+  858 |         dsi->next_bridge = devm_drm_of_get_bridge(dev,
+dev->of_node, 0, 0);
+      |                          ^
+cc1: some warnings being treated as errors
+
+Reported-by: Linux Kernel Functional Testing <lkft@linaro.org>
+
+Build log [1].
+
+--
+Linaro LKFT
+https://lkft.linaro.org
+
+[1] https://builds.tuxbuild.com/263ZKyWWLLcPGRbiZwIEZw3wvXX/
 
 _______________________________________________
 Linux-mediatek mailing list
