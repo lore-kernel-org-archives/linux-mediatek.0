@@ -4,77 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B45CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 17:33:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A839C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Mar 2022 17:52:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nocq6AAKcBqUuTTZkMI9ouwAcIc/TjTbwXq8mGWKqHE=; b=GKmP0u/KCPNkAw
-	tqReNHnKEzdXITZ8lPaNmzI1z9HAc6W23Cr8/eb6Pas1ZWECDK9lVkGo1Ger8sFqkCOBARRd1rAhA
-	CbXfEaiPHLZXShdDLM6YtNu6Nhl5WqgWRKKU4ijhc/AIIGwcQosQMARTgNNA/ZmtfpcX++gFeMsQf
-	uFLIGJacM7cOZCFbE830bJz9gPCEKEgmGSuS2TJU82CFS9GF9OV2YtnU6hdLQkn3mniIk+NeSiFm8
-	8OMVQj0hg3foDp86VK9sW5sW1EteUFlHHf4nNOBhFt+/v9Fr/Y5M5cImR14IuBpBPPyFL+zVOzzpl
-	JhuKJH05M8b5/2Gltoig==;
+	List-Owner; bh=NX5bJbWmxaQshUfCrgpY5103p78+HOi1IFzMA3iI19I=; b=4NXQxLqqVaJ/wu
+	eEQJNTXPQuCeV+qY7lUDPx1bQjZwU+EFAHSnTg8MChcd/ErvejYnlH+pUf7Er7xyy6PJMl48ZuwiL
+	l/fFYBlHTGA+1akfwqfTxM7N76m5zNrBnqKSiUWXkSnHLgowkYEaTU4cfYhwqf1dT/TOWNjN6JL13
+	ZfAsBmuACFwWneGPq2TprL84qn6j3EFrYoG5aqSVKfGsFIdtL78KKziRIOKfBfdeLxNiLoJww27ZB
+	Qxla31v1w2PICycnDRbUFemkR0oux8pTDqErhMW1kcZ5ARhIDDeVSfIYqsJUg+xM8eyra+MCRE9z6
+	CgPsxQO3ZLtcHnNugf/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRHEF-0011i3-Ti; Mon, 07 Mar 2022 17:33:03 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nRHX0-00146C-QP; Mon, 07 Mar 2022 17:52:26 +0000
+Received: from mail-pj1-f50.google.com ([209.85.216.50])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRHE3-0011fD-F9; Mon, 07 Mar 2022 17:32:53 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 1D946B810DB;
- Mon,  7 Mar 2022 17:32:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D80EAC340E9;
- Mon,  7 Mar 2022 17:32:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646674368;
- bh=MTx+FSN4s0xomMOmVQ++nOaBz1hENZXctDzB+UA3WSo=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=rHHC8PyAe0g6wqoZv/RLj0BHY5FdVHkeOKVC13tFqH7fCIEUuUl2I2mrM4UrHvdvV
- dNhV+82wSgojcoKvfaAGnzYdVHDJaXha9AgLIdGr+EY5nxHkNrNBi0EfM9/2rsxNEL
- +R1PyCWtL8m4Fh1vczEXZ8i0C9UlGqPyeFRquNsJE4buppw9GvsczWeSHjrlI3JUVY
- vSniQTbtOWlnEuzxFVZ9Z4jsknXTEjTbCzBRMLSUZTy6RBP9RQNSUHseDAZeKjrXhE
- rjkjjbXzkIjfMJAhz1wifevRJU6hhfoyC+KwN6tf6ndUoC0y7F08Sdsi7bV3i9Mdkm
- We5i4BU8ReUKA==
-Received: by mail-ej1-f50.google.com with SMTP id yy13so24722284ejb.2;
- Mon, 07 Mar 2022 09:32:48 -0800 (PST)
-X-Gm-Message-State: AOAM530o+8axPs0RiOQyDsSXGoMuC85MY7vRiv3vSyY4qB3SlnORbEKs
- 40d8pDQXapO5URIs6FgQuOijt4C11cS3nO1qxw==
-X-Google-Smtp-Source: ABdhPJyGmG3VkKnaYLa4PSf98LUiuSxcHYDSLhP/e/6IDPs0vEMo0pjg2pGSJgqWmgK/4anl0xt7rL3jNlIY+nDhFcY=
-X-Received: by 2002:a17:906:9913:b0:6d6:dc48:5d49 with SMTP id
- zl19-20020a170906991300b006d6dc485d49mr9995459ejb.325.1646674367107; Mon, 07
- Mar 2022 09:32:47 -0800 (PST)
+ id 1nRHWy-00145G-G1
+ for linux-mediatek@lists.infradead.org; Mon, 07 Mar 2022 17:52:25 +0000
+Received: by mail-pj1-f50.google.com with SMTP id
+ p3-20020a17090a680300b001bbfb9d760eso17499790pjj.2
+ for <linux-mediatek@lists.infradead.org>; Mon, 07 Mar 2022 09:52:23 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=DwprjYwNE5LcdqrWbAc8Ni1ALn/1vHszc3TMMAI/bKY=;
+ b=eP14lB6ne8ZL9USU3M6UHIPi943ZXMzWYajZZuQj/opnWpI/HafcRVy3uAeFHvGTuA
+ GDMyXGOMIuDolYGvl05rNIwQI6pn8ajVL7MJkQeEV/KTz+pgW3v2l574zsJuHl2x9q+Z
+ t+1wKoQ9vNTz/e8llq1oBWrfYJhXkHvCgur85FUnIZQqHF3N8Y0/AEFxVntt9FPCPKgp
+ uvfOwfXDYgxlHyPnu0lLdJJM+XwDX2FJ7oCm/lrH2f4R09fXIaIvg8OM6s9OFRTnRpeZ
+ f13cARBFmoW91wXQXK3ejweK+pkeUNScJ4NWPN9TNmcs7NU6SswHumdI7/5SfhcZPLQx
+ s1sA==
+X-Gm-Message-State: AOAM530YaxJBu/ee+1vLHYRF8LlxZMGKJy6YUmMT1r1pa79irKHXcS1V
+ OjgeKTnUAZkqk2AssXv6a88=
+X-Google-Smtp-Source: ABdhPJy7/vQEF/R2zXFSBVgPpq7S1lU/2A3Z2FmPOFHEXpsOmmhHUuvouFaAa0cHtZ/rNQQEq36uuQ==
+X-Received: by 2002:a17:902:b210:b0:14f:d0ff:46bb with SMTP id
+ t16-20020a170902b21000b0014fd0ff46bbmr13174842plr.47.1646675542435; 
+ Mon, 07 Mar 2022 09:52:22 -0800 (PST)
+Received: from ?IPV6:2601:647:4000:d7:feaa:14ff:fe9d:6dbd?
+ ([2601:647:4000:d7:feaa:14ff:fe9d:6dbd])
+ by smtp.gmail.com with ESMTPSA id
+ k20-20020a056a00135400b004ecc81067b8sm17889091pfu.144.2022.03.07.09.52.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 07 Mar 2022 09:52:22 -0800 (PST)
+Message-ID: <19ad4174-0435-85b2-0762-1fae5e0b5f9e@acm.org>
+Date: Mon, 7 Mar 2022 09:52:20 -0800
 MIME-Version: 1.0
-References: <20220307154558.2505734-1-robert.foss@linaro.org>
- <20220307154558.2505734-2-robert.foss@linaro.org>
- <YiY1CP6DkfgU4re/@robh.at.kernel.org>
- <CAG3jFyssPxuRXzZsZkVHWrSS8b6pRHRRmpZCTvLmDV-t2CDA1g@mail.gmail.com>
- <YiY8ko5WX3mQfDLY@pendragon.ideasonboard.com>
-In-Reply-To: <YiY8ko5WX3mQfDLY@pendragon.ideasonboard.com>
-From: Rob Herring <robh@kernel.org>
-Date: Mon, 7 Mar 2022 11:32:35 -0600
-X-Gmail-Original-Message-ID: <CAL_Jsq+AqKJ7hU3j4sEf_61ibiyJqOWocc43B0q2G4fHDxPi1g@mail.gmail.com>
-Message-ID: <CAL_Jsq+AqKJ7hU3j4sEf_61ibiyJqOWocc43B0q2G4fHDxPi1g@mail.gmail.com>
-Subject: Re: [PATCH v1 1/2] Revert "dt-bindings:drm/bridge:anx7625:add vendor
- define"
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Robert Foss <robert.foss@linaro.org>
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Xin Ji <xji@analogixsemi.com>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>,
- devicetree@vger.kernel.org, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Chen-Yu Tsai <wenst@chromium.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.1
+Subject: Re: [PATCH v1] scsi: ufs: scsi_get_lba error fix by check cmd opcode
+Content-Language: en-US
+To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
+ linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
+ alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, mikebi@micron.com,
+ beanhuo@micron.com
+References: <20220307111752.10465-1-peter.wang@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20220307111752.10465-1-peter.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220307_093251_843178_7225CDFF 
-X-CRM114-Status: GOOD (  44.47  )
+X-CRM114-CacheID: sfid-20220307_095224_560670_2CDBD98F 
+X-CRM114-Status: UNSURE (   8.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,160 +85,29 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 7, 2022 at 11:11 AM Laurent Pinchart
-<laurent.pinchart@ideasonboard.com> wrote:
->
-> On Mon, Mar 07, 2022 at 05:57:47PM +0100, Robert Foss wrote:
-> > On Mon, 7 Mar 2022 at 17:38, Rob Herring <robh@kernel.org> wrote:
-> > >
-> > > On Mon, Mar 07, 2022 at 04:45:57PM +0100, Robert Foss wrote:
-> > > > This reverts commit a43661e7e819b100e1f833a35018560a1d9abb39.
-> > >
-> > > S-o-b and reason for the revert?
-> > >
-> > > > ---
-> > > >  .../display/bridge/analogix,anx7625.yaml      | 65 +------------------
-> > > >  1 file changed, 2 insertions(+), 63 deletions(-)
-> > > >
-> > > > diff --git a/Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml b/Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
-> > > > index 1d3e88daca041..ab48ab2f4240d 100644
-> > > > --- a/Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
-> > > > +++ b/Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
-> > > > @@ -43,70 +43,14 @@ properties:
-> > > >    vdd33-supply:
-> > > >      description: Regulator that provides the supply 3.3V power.
-> > > >
-> > > > -  analogix,lane0-swing:
-> > > > -    $ref: /schemas/types.yaml#/definitions/uint8-array
-> > > > -    minItems: 1
-> > > > -    maxItems: 20
-> > > > -    description:
-> > > > -      an array of swing register setting for DP tx lane0 PHY.
-> > > > -      Registers 0~9 are Swing0_Pre0, Swing1_Pre0, Swing2_Pre0,
-> > > > -      Swing3_Pre0, Swing0_Pre1, Swing1_Pre1, Swing2_Pre1, Swing0_Pre2,
-> > > > -      Swing1_Pre2, Swing0_Pre3, they are for [Boost control] and
-> > > > -      [Swing control] setting.
-> > > > -      Registers 0~9, bit 3:0 is [Boost control], these bits control
-> > > > -      post cursor manual, increase the [Boost control] to increase
-> > > > -      Pre-emphasis value.
-> > > > -      Registers 0~9, bit 6:4 is [Swing control], these bits control
-> > > > -      swing manual, increase [Swing control] setting to add Vp-p value
-> > > > -      for each Swing, Pre.
-> > > > -      Registers 10~19 are Swing0_Pre0, Swing1_Pre0, Swing2_Pre0,
-> > > > -      Swing3_Pre0, Swing0_Pre1, Swing1_Pre1, Swing2_Pre1, Swing0_Pre2,
-> > > > -      Swing1_Pre2, Swing0_Pre3, they are for [R select control] and
-> > > > -      [R Termination control] setting.
-> > > > -      Registers 10~19, bit 4:0 is [R select control], these bits are
-> > > > -      compensation manual, increase it can enhance IO driven strength
-> > > > -      and Vp-p.
-> > > > -      Registers 10~19, bit 5:6 is [R termination control], these bits
-> > > > -      adjust 50ohm impedance of DP tx termination. 00:55 ohm,
-> > > > -      01:50 ohm(default), 10:45 ohm, 11:40 ohm.
-> > > > -
-> > > > -  analogix,lane1-swing:
-> > > > -    $ref: /schemas/types.yaml#/definitions/uint8-array
-> > > > -    minItems: 1
-> > > > -    maxItems: 20
-> > > > -    description:
-> > > > -      an array of swing register setting for DP tx lane1 PHY.
-> > > > -      DP TX lane1 swing register setting same with lane0
-> > > > -      swing, please refer lane0-swing property description.
-> > >
-> > > These apply to the DP side, so no need to revert this part.
-> >
-> > Ack.
-> >
-> > >
-> > > > -
-> > > > -  analogix,audio-enable:
-> > > > -    type: boolean
-> > > > -    description: let the driver enable audio HDMI codec function or not.
-> > > > -
-> > >
-> > > Not sure on this one...
-> >
-> > These additions are independent from my reading of this, would you
-> > like a v2 with only the bus-type related changes reverted?
-
-Yes.
-
-> >
-> > >
-> > > >    ports:
-> > > >      $ref: /schemas/graph.yaml#/properties/ports
-> > > >
-> > > >      properties:
-> > > >        port@0:
-> > > > -        $ref: /schemas/graph.yaml#/$defs/port-base
-> > > > -        unevaluatedProperties: false
-> > > > +        $ref: /schemas/graph.yaml#/properties/port
-> > > >          description:
-> > > > -          MIPI DSI/DPI input.
-> > > > -
-> > > > -        properties:
-> > > > -          endpoint:
-> > > > -            $ref: /schemas/media/video-interfaces.yaml#
-> > > > -            type: object
-> > > > -            additionalProperties: false
-> > > > -
-> > > > -            properties:
-> > > > -              remote-endpoint: true
-> > > > -
-> > > > -              bus-type:
-> > > > -                enum: [1, 5]
-> > >
-> > > I think the error here is really 1 should be 4 which corresponds to
-> > > D-PHY which is used by both CSI and DSI. Otherwise, I don't really see
-> > > the issue with bus-type being shared between CSI and DSI.
-> >
-> > I think that would be a correct solution. And ignoring everything
-> > else, the range of this property is something that should be fixed.
-> >
-> > But that would mean that CPI (camera parallel interface) and DPI
-> > (display parallel interface) would share the
-> > V4L2_FWNODE_BUS_TYPE_PARALLEL enum. I think that would be perfectly
-> > functional, but it is not what V4L2_FWNODE_BUS_TYPE_PARALLEL is
-> > documented to represent. As far as I can see it's only intended to
-> > represent CPI.
->
-> Are you aware of any standard documenting camera parallel interfaces
-> with separate sync signals ? I was looking for that the other day, and
-> couldn't find much. CPI seems to be an old MIPI standard, but I couldn't
-> find any public document, I'not not sure if it actually matches.
-
-I don't recall. Generally, I think the camera side is not quite the
-mess the display side is with all the formats.
-
-> Another common parallel interface in SoCs is AXI4 Stream, which we will
-> likely need a bus type for. We'll then have to decide on how to handle
-> on-SoC custom parallel buses.
-
-Except for those maybe.
-
-> > Instead of having V4L2_FWNODE_BUS_TYPE_PARALLEL represent two
-> > standards, I think they should be split. And possibly
-> > V4L2_FWNODE_BUS_TYPE_PARALLEL should be renamed for CPI, but that is a
-> > separate story. This would provide for the neatest and most legible
-> > solution. If this solution is implemented, this range would be
-> > incorrect. Additionally the snippet reverted in 2/2 of this series
-> > would no longer be valid.
-> >
-> > As it stands V4L2_FWNODE_BUS_TYPE_PARALLEL was used to represent DPI
-> > due to not being caught in the review process.
->
-> We may end up using those values, but I think it should be discussed and
-> not rushed in v5.17 if possible.
-
-Given it's not actually used (correctly), agreed.
-
-Rob
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gMy83LzIyIDAzOjE3LCBwZXRlci53YW5nQG1lZGlhdGVrLmNvbSB3cm90ZToKPiBXaGVuIHVm
+cyBpbml0IHdpdGhvdXQgc2NtZC0+ZGV2aWNlLT5zZWN0b3Jfc2l6ZSBzZXQsCj4gc2NzaV9nZXRf
+bGJhIHdpbGwgZ2V0IGEgd3Jvbmcgc2hpZnQgbnVtYmVyIGFuZCB1YnNhbiBlcnJvci4KPiBzaGlm
+dCBleHBvbmVudCA0Mjk0OTY3Mjg2IGlzIHRvbyBsYXJnZSBmb3IgNjQtYml0IHR5cGUKPiAnc2Vj
+dG9yX3QnIChha2EgJ3Vuc2lnbmVkIGxvbmcgbG9uZycpCj4gQ2FsbCBzY3NpX2dldF9sYmEgb25s
+eSB3aGVuIG9wY29kZSBpcyBSRUFEXzEwL1dSSVRFXzEwL1VOTUFQLgoKSG1tIC4uLiBob3cgY2Fu
+IGl0IGhhcHBlbiB0aGF0IHNlY3Rvcl9zaXplIGhhcyBub3QgYmVlbiBzZXQ/IEkgdGhpbmsgCnRo
+YXQgY2FuIG9ubHkgaGFwcGVuIGZvciBMVU5zIG9mIHR5cGUgU0NTSSBESVNLIGlmIHNkX3JlYWRf
+Y2FwYWNpdHkoKSAKZmFpbHM/IElmIHNkX3JlYWRfY2FwYWNpdHkoKSBmYWlscyBJIHRoaW5rIHRo
+ZSBzZCBkcml2ZXIgaXMgZXhwZWN0ZWQgdG8gCnNldCB0aGUgY2FwYWNpdHkgdG8gemVybz8KCnJx
+LT5fX3NlY3RvciA9PSAtMSBmb3IgZmx1c2ggcmVxdWVzdHMgYW5kIHRoZSB0eXBlIG9mIHRoYXQg
+bWVtYmVyIAooc2VjdG9yX3QpIGlzIHVuc2lnbmVkLiBJIHRoaW5rIHRoYXQgaXQgaXMgYWxsb3dl
+ZCBmb3IgYSBzaGlmdCBsZWZ0IG9mIAphbiB1bnNpZ25lZCB0eXBlIHRvIG92ZXJmbG93LiBGcm9t
+IHRoZSBDIHN0YW5kYXJkOiAiVGhlIHJlc3VsdCBvZiBFMSA8PCAKRTIgaXMgRTEgbGVmdC1zaGlm
+dGVkIEUyIGJpdCBwb3NpdGlvbnM7IHZhY2F0ZWQgYml0cyBhcmUgZmlsbGVkIHdpdGgKemVyb3Mu
+IElmIEUxIGhhcyBhbiB1bnNpZ25lZCB0eXBlLCB0aGUgdmFsdWUgb2YgdGhlIHJlc3VsdCBpcyBF
+MSDDlyAyRTIgLCAKcmVkdWNlZCBtb2R1bG8gb25lIG1vcmUgdGhhbiB0aGUgbWF4aW11bSB2YWx1
+ZSByZXByZXNlbnRhYmxlIGluIHRoZSAKcmVzdWx0IHR5cGUuIgoKVGhhbmtzLAoKQmFydC4KCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlh
+dGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
