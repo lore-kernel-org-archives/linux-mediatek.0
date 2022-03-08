@@ -4,77 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49FD7C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 10:03:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25A21C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 10:07:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=yonr7qQtvjQYtePMQ/WJaRA2+Em0Umj7wMQtM7byCLY=; b=NqMLO7rwUMF522
-	1RuQ/hbDAA/uGvE1yDZe32AgiGUUDtWlY0eAagVKpWzywkU/BxVF6hqFjGar62CZVzsGa15ltW5/t
-	cz5ajP52bLoxUODfDaBymNL5vw+KKnqDhpwn8V/6IgDtmOocWEUQ1DNw7KGi/iUix47LhtjkwAKe5
-	HBi7lkRRJotBNIXkggyIPglZ5wm99v5CbV1OrrbRXfGkFbE8r9AitN8kVZUoXGU9uhQQDp2UkT6rL
-	GSjmvlkEuvBmsvwc4NSH7+okrKyVoHO5L0BgPmRYunnJRkmcl4JRPa1YiseZNQqGXlxy3pTBYqIwu
-	Ur6xpmxfUM0U/s2UK6Kw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GZVaNchi6cBYQLXk6z/uiRCZ6NBdX1NLrFFkRnUMyNA=; b=fOLZKciMHVMeUG
+	tLBHhYwDbWxSh29l0tOLIkvEU+DjeE8p1Q++Yw+FZMwR5n6NF7QXWgUtR3uzmC8Y0gWwpbvYAxliI
+	QsH6HOEgnVFKLYJtZH0HzfN0PrylpPH5m5vAogGU2zJ2SXGIvEXUVS5iFunwdguUaiYn7Tvv9mv4L
+	fAxmhcv36gEdGMePR6eMI7eiyvlKaFuE+tQBEVnvom5L50Md9tH6PFDj9MKYoAxSHA32CEark3fEe
+	FWEftH4qcom83MwV5W3VVlmXptMUpyowEhTs8pHcHifsvalEeCVEq/Si7Uq+hhGmiQ9VlwuPW6qlM
+	rznfcOOhjKQtYWEPy3BA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRWgP-003hFg-TY; Tue, 08 Mar 2022 10:03:09 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1nRWkn-003j2l-9t; Tue, 08 Mar 2022 10:07:41 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRWTC-003cHR-Ij
- for linux-mediatek@lists.infradead.org; Tue, 08 Mar 2022 09:49:33 +0000
-Received: by mail-wm1-x336.google.com with SMTP id
- 7-20020a05600c228700b00385fd860f49so1119185wmf.0
- for <linux-mediatek@lists.infradead.org>; Tue, 08 Mar 2022 01:49:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=4AMWeZkxp95RTDe+wPDPpAGms0iHGajzkgE4/KUX8bI=;
- b=H8aMYJdR1rsOnt5DsE/e5rdF/g5CVV/ImrAKuw+9/cPZfWZFiO38RKfkOvUCOzHRn8
- XqHP7+POHekXwKNA2LJVFDHwX+y+rUUhqpN+UDJJiOP9kpvWRKUzcDrjA7dZDZ6ZFcuG
- lR77zCxBUR8/BaJhSXHGHagB54eapbQhSvnO7oaIsLzsZIo+g5XDnNZ/tR3IA39RQ3Ue
- 1mX0ri0O8X/Doruf5c5kTxOKzZiu3HcYBDifhFyTMf4rpLsMed0VvxDc2+rIjKVUehDs
- /FB/JGFsa5DbFlN2zWnoxDd/1EIYwRbp1nGtO5+Xrc0XJn6TmBBRWsZIqqDuKUB9YT8l
- SkPg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=4AMWeZkxp95RTDe+wPDPpAGms0iHGajzkgE4/KUX8bI=;
- b=5ENcTF+YmI4mv3Bb/HjgIN5Wu2qQVuoBR4t2O1xZUznkWtIJkfKnJVUNgo62T4kfkn
- kgz9aTfCF9mmeHLjNelCYzAN0zzCk0OTrrfi1GE3pKBEidFnsax0aO1sJkOX8Quf5E9/
- ygRUW13xX9UCer5whtvjSTF/MbPW5OjAYUA2I737WxUInLuqr3xq3MfNXs4aelL9ZPBi
- 233Dy9SCgOQqiFRvSz6SyEIb/qMvGgTOC8LpL1sVTKkNGhIB8xhIkEVjFjVaG/U1TY9t
- e8Gnl7moqkfsoHeeq9E47haHkPNTCsYvlDrxCSSDPvrAFC0oVTDGTisSjdjnBgU9Zbn6
- pEOQ==
-X-Gm-Message-State: AOAM530OtjPCVuM+iX7toakNi5ATnzgBK5k+/aBbe4WsZZZXXcOr2udC
- Pg/yyYzcterU76qEwwazCXg/BQ==
-X-Google-Smtp-Source: ABdhPJygU94zXAM1Uu54IBoLXA1LSudb52qrcnlJ03Lk9v6Rot2IWk4fYtPCBHBO4UAJEig/w3RXCg==
-X-Received: by 2002:a1c:f616:0:b0:37d:1e1c:f90a with SMTP id
- w22-20020a1cf616000000b0037d1e1cf90amr2688313wmc.148.1646732967642; 
- Tue, 08 Mar 2022 01:49:27 -0800 (PST)
-Received: from xps-9300.baylibre
- (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
- by smtp.gmail.com with ESMTPSA id
- b1-20020a5d40c1000000b001f1dd6ea504sm8014205wrq.59.2022.03.08.01.49.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Mar 2022 01:49:27 -0800 (PST)
-From: Alexandre Bailon <abailon@baylibre.com>
-To: chaotian.jing@mediatek.com, ulf.hansson@linaro.org, matthias.bgg@gmail.com
-Cc: linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Alexandre Bailon <abailon@baylibre.com>
-Subject: [PATCH] mmc: mtk-msdc: change a log level
-Date: Tue,  8 Mar 2022 10:49:24 +0100
-Message-Id: <20220308094924.2868042-1-abailon@baylibre.com>
-X-Mailer: git-send-email 2.34.1
+ id 1nRWb2-003fB4-H1; Tue, 08 Mar 2022 09:57:39 +0000
+X-UUID: 4ee83fb031204e418b91c1af3f8863b4-20220308
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=dtlagHUn7D9//4toY/dfzlzPVkrVa4Yz9PjFxXFFhnE=; 
+ b=Okbk1ODXOhySFmOguLwyD59VUKOIkpKKTglhDFflQDtRTobJOs2ZStUYz3zdLayBIcZURaLwJRbZfmBLS1ohDrzH1ZgWDkl5fmdi/2Vl5nvzMdLus28QxQ237xrL12jmSdnP6Q46GuJlOq1t+LWWTsY3lUOdtNQasaXXreKJYJk=;
+X-UUID: 4ee83fb031204e418b91c1af3f8863b4-20220308
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <xinlei.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1474018927; Tue, 08 Mar 2022 02:57:31 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Mar 2022 01:57:29 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 8 Mar 2022 17:57:22 +0800
+Received: from mszsdhlt06 (10.16.6.206) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 8 Mar 2022 17:57:21 +0800
+Message-ID: <e410a1916d8dad431822c811ab50e837f90c5654.camel@mediatek.com>
+Subject: Re: [PATCH v2, 1/3] dt-bindings: display: mediatek: dsi: Convert
+ dsi_dtbinding to .yaml
+From: xinlei.lee <xinlei.lee@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+ <daniel@ffwll.ch>, <matthias.bgg@gmail.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <jitao.shi@mediatek.com>, <allen-kh.cheng@mediatek.com>,
+ <rex-bc.chen@mediatek.com>
+Date: Tue, 8 Mar 2022 17:57:36 +0800
+In-Reply-To: <386e5a59-8b06-58f5-90d0-2c5a5eaa614f@collabora.com>
+References: <1645178869-18048-1-git-send-email-xinlei.lee@mediatek.com>
+ <1645178869-18048-2-git-send-email-xinlei.lee@mediatek.com>
+ <386e5a59-8b06-58f5-90d0-2c5a5eaa614f@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_014930_651186_77F21117 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20220308_015736_632106_9C9E57AE 
+X-CRM114-Status: GOOD (  25.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,36 +83,237 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We write data to RPMB, we get many time the following log:
-mtk-msdc 11230000.mmc: phase: [map:ffffffff] [maxlen:32] [final:10]
+On Fri, 2022-03-04 at 13:03 +0100, AngeloGioacchino Del Regno wrote:
+> Il 18/02/22 11:07, xinlei.lee@mediatek.com ha scritto:
+> > From: Xinlei Lee <xinlei.lee@mediatek.com>
+> > 
+> > Convert mediatek,dsi.txt to mediatek,dsi.yaml format
+> > 
+> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> > ---
+> >   .../display/mediatek/mediatek,dsi.txt         | 62 --------------
+> >   .../display/mediatek/mediatek,dsi.yaml        | 85
+> > +++++++++++++++++++
+> >   2 files changed, 85 insertions(+), 62 deletions(-)
+> >   delete mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
+> >   create mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yam
+> > l
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.t
+> > xt
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.t
+> > xt
+> > deleted file mode 100644
+> > index 36b01458f45c..000000000000
+> > ---
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.t
+> > xt
+> > +++ /dev/null
+> > @@ -1,62 +0,0 @@
+> > -Mediatek DSI Device
+> > -===================
+> > -
+> > -The Mediatek DSI function block is a sink of the display subsystem
+> > and can
+> > -drive up to 4-lane MIPI DSI output. Two DSIs can be synchronized
+> > for dual-
+> > -channel output.
+> > -
+> > -Required properties:
+> > -- compatible: "mediatek,<chip>-dsi"
+> > -- the supported chips are mt2701, mt7623, mt8167, mt8173 and
+> > mt8183.
+> > -- reg: Physical base address and length of the controller's
+> > registers
+> > -- interrupts: The interrupt signal from the function block.
+> > -- clocks: device clocks
+> > -  See Documentation/devicetree/bindings/clock/clock-bindings.txt
+> > for details.
+> > -- clock-names: must contain "engine", "digital", and "hs"
+> > -- phys: phandle link to the MIPI D-PHY controller.
+> > -- phy-names: must contain "dphy"
+> > -- port: Output port node with endpoint definitions as described in
+> > -  Documentation/devicetree/bindings/graph.txt. This port should be
+> > connected
+> > -  to the input port of an attached DSI panel or DSI-to-eDP encoder
+> > chip.
+> > -
+> > -Optional properties:
+> > -- resets: list of phandle + reset specifier pair, as described in
+> > [1].
+> > -
+> > -[1] Documentation/devicetree/bindings/reset/reset.txt
+> > -
+> > -MIPI TX Configuration Module
+> > -============================
+> > -
+> > -See phy/mediatek,dsi-phy.yaml
+> > -
+> > -Example:
+> > -
+> > -mipi_tx0: mipi-dphy@10215000 {
+> > -	compatible = "mediatek,mt8173-mipi-tx";
+> > -	reg = <0 0x10215000 0 0x1000>;
+> > -	clocks = <&clk26m>;
+> > -	clock-output-names = "mipi_tx0_pll";
+> > -	#clock-cells = <0>;
+> > -	#phy-cells = <0>;
+> > -	drive-strength-microamp = <4600>;
+> > -	nvmem-cells= <&mipi_tx_calibration>;
+> > -	nvmem-cell-names = "calibration-data";
+> > -};
+> > -
+> > -dsi0: dsi@1401b000 {
+> > -	compatible = "mediatek,mt8173-dsi";
+> > -	reg = <0 0x1401b000 0 0x1000>;
+> > -	interrupts = <GIC_SPI 192 IRQ_TYPE_LEVEL_LOW>;
+> > -	clocks = <&mmsys MM_DSI0_ENGINE>, <&mmsys MM_DSI0_DIGITAL>,
+> > -		 <&mipi_tx0>;
+> > -	clock-names = "engine", "digital", "hs";
+> > -	resets = <&mmsys MT8173_MMSYS_SW0_RST_B_DISP_DSI0>;
+> > -	phys = <&mipi_tx0>;
+> > -	phy-names = "dphy";
+> > -
+> > -	port {
+> > -		dsi0_out: endpoint {
+> > -			remote-endpoint = <&panel_in>;
+> > -		};
+> > -	};
+> > -};
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.y
+> > aml
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.y
+> > aml
+> > new file mode 100644
+> > index 000000000000..552a013786fe
+> > --- /dev/null
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.y
+> > aml
+> > @@ -0,0 +1,85 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: 
+> > http://devicetree.org/schemas/display/mediatek/mediatek,dsi.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: mediatek DSI Controller Device Tree Bindings
+> 
+> Shouldn't this be "MediaTek"?
+> 
+> > +
+> > +maintainers:
+> > +  - CK Hu <ck.hu@mediatek.com>
+> > +  - Jitao Shi <jitao.shi@mediatek.com>
+> > +  - Xinlei Lee <xinlei.lee@mediatek.com>
+> > +
+> > +properties:
+> > +  compatible:
+> > +    enum:
+> > +      - mediatek,mt2701-dsi
+> > +      - mediatek,mt8173-dsi
+> > +      - mediatek,mt8183-dsi
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  interrupts:
+> > +    maxItems: 1
+> > +
+> > +  power-domains:
+> > +    maxItems: 1
+> > +
+> > +  clocks:
+> > +    items:
+> > +      - description: Engine Clock
+> > +      - description: Digital Clock
+> > +      - description: Hs Clock
+> 
+> HS should be all capital letters.
+> 
+> > +
+> > +  clock-names:
+> > +    items:
+> > +      - const: engine
+> > +      - const: digital
+> > +      - const: hs
+> > +
+> > +  resets:
+> > +    maxItems: 1
+> > +
+> > +  phys:
+> > +    maxItems: 1
+> > +
+> > +  phy-names:
+> > +    items:
+> > +      - const: dphy
+> 
+> Add #address-cells, #size-cells with const 2
+> 
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - interrupts
+> > +  - power-domains
+> > +  - clocks
+> > +  - clock-names
+> > +  - phys
+> > +  - phy-names
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/clock/mt8183-clk.h>
+> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > +    #include <dt-bindings/power/mt8183-power.h>
+> > +    #include <dt-bindings/phy/phy.h>
+> > +    #include <dt-bindings/reset/mt8183-resets.h>
+> > +
+> 
+> Since all users are using two address and size cells:
+> 
+>      soc {
+>          #address-cells = <2>;
+>          #size-cells = <2>;
+> 
+>          dsi0: dsi@14014000 {
+>              compatible = "mediatek,mt8183-dsi";
+>              reg = <0 0x14014000 0 0x1000>;
+>                    .....etc.....
+>          };
+>      };
+> 
+> > +    dsi0: dsi@14014000 {
+> > +        compatible = "mediatek,mt8183-dsi";
+> > +        reg = <0x14014000 0x1000>;
+> > +        interrupts = <GIC_SPI 236 IRQ_TYPE_LEVEL_LOW>;
+> > +        power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+> > +        clocks = <&mmsys CLK_MM_DSI0_MM>,
+> > +            <&mmsys CLK_MM_DSI0_IF>,
+> > +            <&mipi_tx0>;
+> > +        clock-names = "engine", "digital", "hs";
+> > +        resets = <&mmsys MT8183_MMSYS_SW0_RST_B_DISP_DSI0>;
+> > +        phys = <&mipi_tx0>;
+> > +        phy-names = "dphy";
+> > +    };
+> 
+> 
 
-dev_info is used to print that log but it seems that log is only
-useful for debbuging. Use dev_dbg instead of dev_info.
+Hi angelogioacchino:
 
-Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
----
- drivers/mmc/host/mtk-sd.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Thank you for your review, I will revise it according to your
+suggestion and send the next v3 in the near future.
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index d5a9c269d492..05c8b4de46f3 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -1914,8 +1914,8 @@ static struct msdc_delay_phase get_best_delay(struct msdc_host *host, u32 delay)
- 		final_phase = (start_final + len_final / 3) % PAD_DELAY_MAX;
- 	else
- 		final_phase = (start_final + len_final / 2) % PAD_DELAY_MAX;
--	dev_info(host->dev, "phase: [map:%x] [maxlen:%d] [final:%d]\n",
--		 delay, len_final, final_phase);
-+	dev_dbg(host->dev, "phase: [map:%x] [maxlen:%d] [final:%d]\n",
-+		delay, len_final, final_phase);
- 
- 	delay_phase.maxlen = len_final;
- 	delay_phase.start = start_final;
--- 
-2.34.1
-
-
+Best Regards!
+xinlei
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
