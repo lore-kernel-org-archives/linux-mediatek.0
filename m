@@ -4,60 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C438DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 17:36:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9ED8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 22:11:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LY3i0WzR4QPAvOdE5+CejxE7xAPiSFx2dp1Lgzfx/iA=; b=h+M4BMqJOr2vjZ
-	9q1A9SqIavWqwgn25rotm+XVCA9Gx7JL2soLPpAJmi+2+38aSpmZhZ3GOWFi7xZ0Yw1JD03RzpwTb
-	eQv2SgaayTmYF3qviQKh7TM4bqjH34u6D1zNHEaL9bdnMiPcR8CHhOwLi/WKxFv901mn070J7jWAV
-	tmYCepfEeGY1C1aZKWLMNbUtZS64456pLSs2HxqXaBe3605oWODcI9jdIntM5gaVRqgsH78YOosgg
-	GvcQgNHxYir4Xs6hR0qq4AAD7RUBjMLsOduKNWpg4VcavKJc3M8rzjeS63hL5EJMNbNFD/ikTzUGD
-	s52wk6ROr7lCYHQ/Shvg==;
+	List-Owner; bh=2otmKkjmAc5s+A6c5rTjjBiRw9h4sRyYl1EnsyUGTq0=; b=tpTnMJCtKxNv7/
+	G+NSXziAsaC9ZIGJEBcsBHzxgyfn0ChR79oXS0m0feXR7K7TXSJhkmUj2ZdQQCoNCAVE5dJRaVH8j
+	bOJMzCMJFALaPwWRDGEaCp2dAoE8BhUvepu2rb/chyr3cK1RnqAXWQpxj7gnx4umAovGgJgTzm8R1
+	uX+SU1YxaIjKca8nqWFl2dRWzQ7FrWQhUgMBH7XQcYg8hBNmJ+UqLeytt+TYRIeQ3moRXtfwcN5OO
+	Epbk6cQZ0AFsrzRJjxWAhlZvU/UJVu4p4JQADf2EfmvCSmoqFtb+Cjr0oXlWgs5Op+siD8Hc+ORfv
+	9NR7Gdy+xyy4ZepEDd3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRdkh-005Zgp-NM; Tue, 08 Mar 2022 17:36:03 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nRi3W-006Q3K-J7; Tue, 08 Mar 2022 22:11:46 +0000
+Received: from mail-pj1-f47.google.com ([209.85.216.47])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRdWE-005UrL-2p; Tue, 08 Mar 2022 17:21:07 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 93DC5B81B8E;
- Tue,  8 Mar 2022 17:21:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C297C340EB;
- Tue,  8 Mar 2022 17:21:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646760063;
- bh=VXtXZwmTg2CbEhaflPUS8x55Hns993/Kt31uJMvMLc8=;
- h=From:To:In-Reply-To:References:Subject:Date:From;
- b=tW64Ce1U/EXWJOzttKG02pKqy8yiAZ70nH7BuHMz+MNAdF4xKAk9EreguqHoWCcRM
- cjwQqF3L4KsOt+qTMEQCwZHJKe2t+FhbZoaQ7fYpHuydx9MDYwf1NN0aaP2ymzJNV8
- 3Ij3yHlCb9vnWoC2lSpDTQIgrVNGiZ1Z9WaJ8XY2VvziCg8VEqSwZ3JHbPlXW8s9LL
- tjHJa3rfNX8GmTa34F07Dej2TMTcWG75LyNtEGt5FL+8GxDv3FjqwptnClpjgtxUds
- TphFgFT8MywsNP4ofWThY1I9VFfw6XAOKV1ONQTUheu8WCHrh/Zkfx9cv6mUZ6QdDl
- 3kwuI5Kcm61Ng==
-From: Mark Brown <broonie@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- Tzung-Bi Shih <tzungbi@google.com>, Jaroslav Kysela <perex@perex.cz>,
- alsa-devel@alsa-project.org, Jiaxin Yu <jiaxin.yu@mediatek.com>,
- Takashi Iwai <tiwai@suse.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>,
- Miaoqian Lin <linmq006@gmail.com>, linux-mediatek@lists.infradead.org
-In-Reply-To: <20220308015224.23585-1-linmq006@gmail.com>
-References: <20220308015224.23585-1-linmq006@gmail.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8192-mt6359: Fix error handling in
- mt8192_mt6359_dev_probe
-Message-Id: <164676006096.54315.8478351478662604607.b4-ty@kernel.org>
-Date: Tue, 08 Mar 2022 17:21:00 +0000
+ id 1nRi3U-006Q2T-0G
+ for linux-mediatek@lists.infradead.org; Tue, 08 Mar 2022 22:11:45 +0000
+Received: by mail-pj1-f47.google.com with SMTP id bx5so594667pjb.3
+ for <linux-mediatek@lists.infradead.org>; Tue, 08 Mar 2022 14:11:43 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=zsuN6YZ8l60CNL3ec8tnGiB7TFkpcMErgCfCkAo2B4I=;
+ b=Zo5XU5DnSPP3Zyeej6ngqAZ6p+f9i4lBUz7gcvbC0KblB0ZnV8z7xTUgX/3omcwIsr
+ 84Z5jQIWYjsXjHapmxgShHx5srqvpk1OR7u+orTjlNQlxgTLvS6Mo6vjpQ/yklMVq0Vb
+ I8WfeDLzNK52jv2WlFAn692JVSnv4+sf36bHgOCXwMa59kt6Z0Tld3xb8aY+VrhzMuYX
+ MkWCBhRh+VG4+2B1ZeslWeM5v/WAZiAPam/E/CSnN91StyBTF3L9ML4vPO2wzmJbiIeo
+ JMYwP34kkhwAgs53fDXab7nEie2CTxhqnjtZOUPjuZ/nuLYXzn6W0507VYnd3aLGizrA
+ PYNA==
+X-Gm-Message-State: AOAM530gXuwlSpno6E5JMXpeAkYc5Rj0bEh4P//Tz+s0UF34NPVBfQ5D
+ VZy2X5AcANtbL5I/KOXlKeg=
+X-Google-Smtp-Source: ABdhPJwy/p0tWeBMYKahZbXIxu9gJnAw5AeTU3wvkcEtpbhfcyhI3vDafIBBiSgYY92GvI/w0YJzLg==
+X-Received: by 2002:a17:90a:bf91:b0:1b9:bda3:10ff with SMTP id
+ d17-20020a17090abf9100b001b9bda310ffmr6956053pjs.38.1646777502510; 
+ Tue, 08 Mar 2022 14:11:42 -0800 (PST)
+Received: from ?IPV6:2620:15c:211:201:88cc:528c:d341:9395?
+ ([2620:15c:211:201:88cc:528c:d341:9395])
+ by smtp.gmail.com with ESMTPSA id
+ f6-20020a056a00228600b004f709f5f3c1sm60541pfe.28.2022.03.08.14.11.40
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 08 Mar 2022 14:11:42 -0800 (PST)
+Message-ID: <4f464024-d114-dafb-8a0d-fa77c6fdd5d6@acm.org>
+Date: Tue, 8 Mar 2022 14:11:39 -0800
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.0
+Subject: Re: [PATCH v1] scsi: ufs: scsi_get_lba error fix by check cmd opcode
+Content-Language: en-US
+To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
+ linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
+ alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, mikebi@micron.com,
+ beanhuo@micron.com
+References: <20220307111752.10465-1-peter.wang@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20220307111752.10465-1-peter.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_092106_322063_4AFE2A6B 
-X-CRM114-Status: GOOD (  16.16  )
+X-CRM114-CacheID: sfid-20220308_141144_102790_72543B7E 
+X-CRM114-Status: UNSURE (   5.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,48 +84,19 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 8 Mar 2022 01:52:22 +0000, Miaoqian Lin wrote:
-> The device_node pointer is returned by of_parse_phandle()  with refcount
-> incremented. We should use of_node_put() on it when done.
-> 
-> This function only calls of_node_put() in the regular path.
-> And it will cause refcount leak in error paths.
-> Fix this by calling of_node_put() in error handling too.
-> 
-> [...]
+On 3/7/22 03:17, peter.wang@mediatek.com wrote:
+> When ufs init without scmd->device->sector_size set,
+> scsi_get_lba will get a wrong shift number and ubsan error.
+> shift exponent 4294967286 is too large for 64-bit type
+> 'sector_t' (aka 'unsigned long long')
+> Call scsi_get_lba only when opcode is READ_10/WRITE_10/UNMAP.
 
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/1] ASoC: mediatek: mt8192-mt6359: Fix error handling in mt8192_mt6359_dev_probe
-      commit: e45ac7831ff3e2934d58cce319c17c8ec763c95c
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
 _______________________________________________
 Linux-mediatek mailing list
