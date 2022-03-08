@@ -4,81 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB07DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 10:03:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49FD7C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 10:03:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4J08Op9JFOeTejqeU7wqgTynPrkMJ04FnNyBgFZJy/A=; b=11xGr/OAD4I95L
-	pk6KoSacNUeLsbI5SHj/9TH/36FOchk9lAaknxswXOCOStcvSr61RBheQdueDftlmO0f+BPVi81ii
-	6umitEnZMV9IBuye/r6KVJ1OjafLYzIN1Qx3JDjhUcZy+IF0j/CshnMFOcCUDlRFucaL7Pe1oBNIf
-	tGEvDSkSfAOzD5KloaAOgd2WVgjswCvwlLSF/d68PRqKnr1qbQsxlEfc3P3bJlFJY5XdX5TkCqU9m
-	jIJnz0UohmKZgzdPdAl1pqx5FRp+e1D+ccLyyuqHCmzaaBovL+iNqnChQFBNJEXStYuUNWFoXlTec
-	2ncfOSnLn7JjsmL7BPfQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yonr7qQtvjQYtePMQ/WJaRA2+Em0Umj7wMQtM7byCLY=; b=NqMLO7rwUMF522
+	1RuQ/hbDAA/uGvE1yDZe32AgiGUUDtWlY0eAagVKpWzywkU/BxVF6hqFjGar62CZVzsGa15ltW5/t
+	cz5ajP52bLoxUODfDaBymNL5vw+KKnqDhpwn8V/6IgDtmOocWEUQ1DNw7KGi/iUix47LhtjkwAKe5
+	HBi7lkRRJotBNIXkggyIPglZ5wm99v5CbV1OrrbRXfGkFbE8r9AitN8kVZUoXGU9uhQQDp2UkT6rL
+	GSjmvlkEuvBmsvwc4NSH7+okrKyVoHO5L0BgPmRYunnJRkmcl4JRPa1YiseZNQqGXlxy3pTBYqIwu
+	Ur6xpmxfUM0U/s2UK6Kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRWgK-003hDu-Oe; Tue, 08 Mar 2022 10:03:04 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1nRWgP-003hFg-TY; Tue, 08 Mar 2022 10:03:09 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRWT1-003cB6-6U
- for linux-mediatek@lists.infradead.org; Tue, 08 Mar 2022 09:49:20 +0000
-Received: by mail-wr1-x430.google.com with SMTP id t11so27547953wrm.5
- for <linux-mediatek@lists.infradead.org>; Tue, 08 Mar 2022 01:49:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ id 1nRWTC-003cHR-Ij
+ for linux-mediatek@lists.infradead.org; Tue, 08 Mar 2022 09:49:33 +0000
+Received: by mail-wm1-x336.google.com with SMTP id
+ 7-20020a05600c228700b00385fd860f49so1119185wmf.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 08 Mar 2022 01:49:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=6Vptup9snjTByrwJQ9zSJpQbWeuT9OeToRX24egqXZE=;
- b=ZkvqwDQcHKwDX84OOnDMiAlBzjBS5NMVrq2VBIAW9dRo+lZGFGg3x8XK1DFS0RuYw1
- jkV5mgBKgGBFp5ULdFQWgj/rYPEFcRog/8vMTiSd1HDGyxrndTzswnzycMaUOgt3FaSq
- Si4oRF2seEYg/4ywLp4m+dCSVQ21bFYQs4tdSA/h9Zqw8dlrlIjX/8JZ7tHQoslw4+BM
- mfZcM7JvwHmpjVfSeSZpYHdOEViNZa1ftqdyTxnwads01Am5McQdyroikyUjnWjDG/ZM
- vas1/rV6+k4Du8d0onFwDWKgrEL58IWmFBTXPLQ14vSzHRBVn/5T7oAtbmci3wBzyYAN
- RkWg==
+ bh=4AMWeZkxp95RTDe+wPDPpAGms0iHGajzkgE4/KUX8bI=;
+ b=H8aMYJdR1rsOnt5DsE/e5rdF/g5CVV/ImrAKuw+9/cPZfWZFiO38RKfkOvUCOzHRn8
+ XqHP7+POHekXwKNA2LJVFDHwX+y+rUUhqpN+UDJJiOP9kpvWRKUzcDrjA7dZDZ6ZFcuG
+ lR77zCxBUR8/BaJhSXHGHagB54eapbQhSvnO7oaIsLzsZIo+g5XDnNZ/tR3IA39RQ3Ue
+ 1mX0ri0O8X/Doruf5c5kTxOKzZiu3HcYBDifhFyTMf4rpLsMed0VvxDc2+rIjKVUehDs
+ /FB/JGFsa5DbFlN2zWnoxDd/1EIYwRbp1nGtO5+Xrc0XJn6TmBBRWsZIqqDuKUB9YT8l
+ SkPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=6Vptup9snjTByrwJQ9zSJpQbWeuT9OeToRX24egqXZE=;
- b=uZeNTlsWjn9Gc5xFtphNsQP1j00FWKM4+X9dYleNxwd6lRpXSL7UE12uDJUbsF32WE
- jQw2IcyWe3wv5MXPM9SLccWSio1CfILwGAKnZyd+RMvQ/sAaLxPe+g0dM1OXCaCQt6O+
- krwqfREUYn3hfTu/AnU8Lafu3tVbbTXqPgbjqVP1j7gszeOsBkUa4eOGM6w9GFmA2wPo
- ssmbNPlUfr7/mrmWVz7QsBJgP8S4u6p9y0vipY0JpHq6lo2JTwks2kZnEchllKH0D6bo
- 0Qg/6tv9jIa0h7NSOL/4jXngTnMEh9krhGPTlppze67wzhuIjSQi7drC8iNAPlVRkW/U
- 0y6Q==
-X-Gm-Message-State: AOAM533Py7CmyDac7+4bMQjpU67/fwvr2Rh+P7ohhKQzup6eHid6DBz7
- nEbsDGp8My3LKaziesL2lEmRzg==
-X-Google-Smtp-Source: ABdhPJwyHtSnI5DdyZsEddgf/hq4aj4GLJcAaVuxD5wI/kt3z5s/DN1pKpabP9/LthhErPegg06whQ==
-X-Received: by 2002:a5d:6e0f:0:b0:1ea:9418:c2a5 with SMTP id
- h15-20020a5d6e0f000000b001ea9418c2a5mr11280082wrz.244.1646732957483; 
- Tue, 08 Mar 2022 01:49:17 -0800 (PST)
-Received: from prec5560.. (freifunk-gw.bsa1-cpe1.syseleven.net. [176.74.57.43])
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=4AMWeZkxp95RTDe+wPDPpAGms0iHGajzkgE4/KUX8bI=;
+ b=5ENcTF+YmI4mv3Bb/HjgIN5Wu2qQVuoBR4t2O1xZUznkWtIJkfKnJVUNgo62T4kfkn
+ kgz9aTfCF9mmeHLjNelCYzAN0zzCk0OTrrfi1GE3pKBEidFnsax0aO1sJkOX8Quf5E9/
+ ygRUW13xX9UCer5whtvjSTF/MbPW5OjAYUA2I737WxUInLuqr3xq3MfNXs4aelL9ZPBi
+ 233Dy9SCgOQqiFRvSz6SyEIb/qMvGgTOC8LpL1sVTKkNGhIB8xhIkEVjFjVaG/U1TY9t
+ e8Gnl7moqkfsoHeeq9E47haHkPNTCsYvlDrxCSSDPvrAFC0oVTDGTisSjdjnBgU9Zbn6
+ pEOQ==
+X-Gm-Message-State: AOAM530OtjPCVuM+iX7toakNi5ATnzgBK5k+/aBbe4WsZZZXXcOr2udC
+ Pg/yyYzcterU76qEwwazCXg/BQ==
+X-Google-Smtp-Source: ABdhPJygU94zXAM1Uu54IBoLXA1LSudb52qrcnlJ03Lk9v6Rot2IWk4fYtPCBHBO4UAJEig/w3RXCg==
+X-Received: by 2002:a1c:f616:0:b0:37d:1e1c:f90a with SMTP id
+ w22-20020a1cf616000000b0037d1e1cf90amr2688313wmc.148.1646732967642; 
+ Tue, 08 Mar 2022 01:49:27 -0800 (PST)
+Received: from xps-9300.baylibre
+ (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
  by smtp.gmail.com with ESMTPSA id
- z3-20020a1cf403000000b0037d1f4a2201sm1684885wma.21.2022.03.08.01.49.16
+ b1-20020a5d40c1000000b001f1dd6ea504sm8014205wrq.59.2022.03.08.01.49.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Mar 2022 01:49:17 -0800 (PST)
-From: Robert Foss <robert.foss@linaro.org>
-To: airlied@linux.ie, daniel@ffwll.ch, robh+dt@kernel.org,
- matthias.bgg@gmail.com, robert.foss@linaro.org,
- laurent.pinchart@ideasonboard.com, xji@analogixsemi.com,
- hsinyi@chromium.org, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, arnd@arndb.de
-Subject: [PATCH v2 2/2] Revert "arm64: dts: mt8183: jacuzzi: Fix bus
- properties in anx's DSI endpoint"
-Date: Tue,  8 Mar 2022 10:49:11 +0100
-Message-Id: <20220308094911.2680291-3-robert.foss@linaro.org>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220308094911.2680291-1-robert.foss@linaro.org>
-References: <20220308094911.2680291-1-robert.foss@linaro.org>
+ Tue, 08 Mar 2022 01:49:27 -0800 (PST)
+From: Alexandre Bailon <abailon@baylibre.com>
+To: chaotian.jing@mediatek.com, ulf.hansson@linaro.org, matthias.bgg@gmail.com
+Cc: linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Alexandre Bailon <abailon@baylibre.com>
+Subject: [PATCH] mmc: mtk-msdc: change a log level
+Date: Tue,  8 Mar 2022 10:49:24 +0100
+Message-Id: <20220308094924.2868042-1-abailon@baylibre.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_014919_262235_E3D0F738 
-X-CRM114-Status: UNSURE (   7.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220308_014930_651186_77F21117 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,30 +91,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This reverts commit 32568ae37596b529628ac09b875f4874e614f63f.
+We write data to RPMB, we get many time the following log:
+mtk-msdc 11230000.mmc: phase: [map:ffffffff] [maxlen:32] [final:10]
 
-Signed-off-by: Robert Foss <robert.foss@linaro.org>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+dev_info is used to print that log but it seems that log is only
+useful for debbuging. Use dev_dbg instead of dev_info.
+
+Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/mmc/host/mtk-sd.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-index e8f133dc96b95..8f7bf33f607da 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-@@ -171,8 +171,6 @@ port@0 {
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index d5a9c269d492..05c8b4de46f3 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -1914,8 +1914,8 @@ static struct msdc_delay_phase get_best_delay(struct msdc_host *host, u32 delay)
+ 		final_phase = (start_final + len_final / 3) % PAD_DELAY_MAX;
+ 	else
+ 		final_phase = (start_final + len_final / 2) % PAD_DELAY_MAX;
+-	dev_info(host->dev, "phase: [map:%x] [maxlen:%d] [final:%d]\n",
+-		 delay, len_final, final_phase);
++	dev_dbg(host->dev, "phase: [map:%x] [maxlen:%d] [final:%d]\n",
++		delay, len_final, final_phase);
  
- 			anx7625_in: endpoint {
- 				remote-endpoint = <&dsi_out>;
--				bus-type = <5>;
--				data-lanes = <0 1 2 3>;
- 			};
- 		};
- 
+ 	delay_phase.maxlen = len_final;
+ 	delay_phase.start = start_final;
 -- 
-2.32.0
+2.34.1
 
 
 _______________________________________________
