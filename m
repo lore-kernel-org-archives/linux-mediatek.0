@@ -4,62 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6D8CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 12:56:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74FFCC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 13:10:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=249nA6gbDZyWw39zZcam+P1hcmC1yBmWyT/xmK3x7Pc=; b=QmVPMB0C/lBv+K
-	QyclCFlIjz7wEZsMEj7Btfftg8WMGlg1tSWnNJEq42x7kOgVW63ieeVwzw3eD2ZK69sAor+zZLbVk
-	xVx/BSKMrCmeOgtapNTxG69ONRzVW5zKlw+mOJ5H2+r2gad6ovuuSNrmBqYG1C1PtMhXjUHVm1/xC
-	MZO5kOtR1hV8XvYwx4Am6hGC5CZ36srPEdvDKLH8yW1eVBknKjw3kaLJ29nlz6gF+Ak4WMV2FY6UT
-	XQdpOi94PrIelCkKgbxgb8HlY/tFnPs5jGmRFD2S/85u80w+6FJ+YRFbaC4VvGlf9IHcouDGHfvan
-	bQ7y/DiA2D0BQobpC8Zw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=teLIOdaShhnrTfLgmgOQMW6f360DLmRsOA2zJld8Lo4=; b=fMOu1VvA+ETAsz
+	YbAj4JLNbYPU+55N8gKabulxyVixQ/4O85/MzP4LlN8Pem8NFezpaL7ngkLsQE7jqvzLpPtkwNPXo
+	E5Q/KP9Uy1J1o2OXck2sBe0wqZW1EU3ewFO381CsCevgap3yiY86K8vbRpxpGBX3h++VZFXST9GI3
+	J+1PUovROhcFOnp8L9HwBhPy+RR910pAAemM34poKQrWKlhvuXbfr915plwjPIFcuzcJ3Ki6eQPUQ
+	KyATDpNJk0WRY5JzCICkBNcyveS3Volf4kcBbcd7kAwXbDM/kzPyR5OE33ST7AilQaBipqwQlGrbd
+	C1LJlmtX2Vs5+lGcE72Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRZOL-004QJK-Jt; Tue, 08 Mar 2022 12:56:41 +0000
-Received: from mo4-p01-ob.smtp.rzone.de ([81.169.146.166])
+	id 1nRZbF-004Sut-Av; Tue, 08 Mar 2022 13:10:01 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRZO7-004Q9W-B4; Tue, 08 Mar 2022 12:56:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1646744168;
- s=strato-dkim-0002; d=goldelico.com;
- h=Message-Id:Date:Subject:Cc:To:From:Cc:Date:From:Subject:Sender;
- bh=N0uiBZn2X99YIa2R7oMyRvvyodifjNHPrFhmT4qjKWM=;
- b=dj1V3bPdkot3GmVUYUhCbuoNjRI8Gx2vEUwy//jdJqSnGV25/iIONM2DvcyLAEF1SZ
- WYjSiZgord8ZWkOSRDMXxMguy5dNNbiAlKb7jhBNC3E9x5J8lct1TEepJTRpT/kKt5HK
- oxK7+4wKEdanbKnppoUnClrF5qtmrfGGSVRe+sbLUBZnvBQVx2jfgHFzACdU9YD6hI4I
- b4eIH/h3Tevc32f7bq+KsyNU6BS/PSCjNwh6u25ELOu8v/iCeWlLonHqbTPY4/evUyOY
- hXHbnWzCvZVmyO8EWUlZfpj1f8ds1IttJ78zgWQjM4pv/RZIwNWQ65zSp/EAMyNXiTQT
- y/tA==
-Authentication-Results: strato.com;
-    dkim=none
-X-RZG-AUTH: ":JGIXVUS7cutRB/49FwqZ7WcJeFKiMhflhwDubTJ9o1OAA2UMf2MwPVbpc9Y="
-X-RZG-CLASS-ID: mo00
-Received: from iMac.fritz.box by smtp.strato.de (RZmta 47.40.1 DYNA|AUTH)
- with ESMTPSA id n729cey28Cu7SHj
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256 bits))
- (Client did not present a certificate);
- Tue, 8 Mar 2022 13:56:07 +0100 (CET)
-From: "H. Nikolaus Schaller" <hns@goldelico.com>
-To: Rob Herring <robh@kernel.org>, Bin Liu <b-liu@ti.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-usb@vger.kernel.org, linux-omap@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, letux-kernel@openphoenux.org,
- kernel@pyra-handheld.com, "H. Nikolaus Schaller" <hns@goldelico.com>
-Subject: [PATCH] partially Revert "usb: musb: Set the DT node on the child
- device"
-Date: Tue,  8 Mar 2022 13:56:06 +0100
-Message-Id: <f62f5fc11f9ecae7e57f3fd66939e051bd3b11fc.1646744166.git.hns@goldelico.com>
-X-Mailer: git-send-email 2.33.0
+ id 1nRZb1-004Sq1-Pm
+ for linux-mediatek@lists.infradead.org; Tue, 08 Mar 2022 13:09:49 +0000
+Received: by mail-wm1-x334.google.com with SMTP id
+ p184-20020a1c29c1000000b0037f76d8b484so1442967wmp.5
+ for <linux-mediatek@lists.infradead.org>; Tue, 08 Mar 2022 05:09:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=jIHKyDto3VNe0jan3Q4InEbXVdDFGcIeT9QW9S/Z1yA=;
+ b=jbpt5SwnC5KT4ZXh7IxtNsrgGcj7VVb16w1WO4pHVIMxgFqMDC2JVfEPhSd28qEdum
+ FEhf6akwghJ1GAdNEziVNhjKIH5oZhPKAHZWQn6kvsYB/rvdJu07tyfVVUP6n59UEdZk
+ a+sTDSQY7s5diyafXaq1avAkL4tv1Cp+14rasUL2eS3xOajI9/1d7j8SnSIO6wy42QFf
+ DzGN68fI4s1xdo+a7Oa3NAQYmyxk0T39uRam8sUb6a5aU3aUStstOpNCALE5ceUStn7d
+ e9YqUUHzXiq0Fu2QMKF1xi1HYTKkgTe6tmCUVMcZV3yg/ygNVYX8oG0ShH4xujfam9L2
+ B5nw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=jIHKyDto3VNe0jan3Q4InEbXVdDFGcIeT9QW9S/Z1yA=;
+ b=lb5xYMQveJ/J4dcMsgeyVhW4pWl0FRBDBh+ABc4mRdCUFKImq5/vfaxFCZTp9xpTHK
+ WokuZ8JkKU0Kf+aEl0nH4G549CWzQILtGj1MLl0Yl/W6RvpV/n/fXDBK18GGVDJHsPzm
+ ps3lV5WYW6qtr5VFmUd4kfsQEK+w2U+bn7c90eDOQCjn+vT8tm0s7Smg4knr+Z83shai
+ wrOn9wfFVhoaa5JEQVmnAp4ThQp7l2CF2W19KgujM3h+Id+HDPmXJaXi1C4y2Qn6BIxr
+ t+Ejc1GLTafqIAdNp88Epp8nWo5YrinmgIKvGjt84clQGGi/6L0050AF4/1ACr+fkxA6
+ PYpg==
+X-Gm-Message-State: AOAM532CMuNzXRlL8Alnyh7qJQyCRcaignV22uuJjjhdi6eMXnVecu0z
+ 9mSgA69DiBUuaPc3U2r4EKhG7A==
+X-Google-Smtp-Source: ABdhPJyMETb54ZQiFJs9pNCVwtDVfsBQoRRZgo7hsLXgxVZq02upIxNHSYYzogAJuAPCDIJ/7we1ew==
+X-Received: by 2002:a1c:3b8a:0:b0:380:e40a:289 with SMTP id
+ i132-20020a1c3b8a000000b00380e40a0289mr3481063wma.17.1646744984144; 
+ Tue, 08 Mar 2022 05:09:44 -0800 (PST)
+Received: from google.com (cpc155339-bagu17-2-0-cust87.1-3.cable.virginm.net.
+ [86.27.177.88]) by smtp.gmail.com with ESMTPSA id
+ z6-20020adfd0c6000000b001f1ffd04672sm4048217wrh.12.2022.03.08.05.09.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 08 Mar 2022 05:09:43 -0800 (PST)
+Date: Tue, 8 Mar 2022 13:09:41 +0000
+From: Lee Jones <lee.jones@linaro.org>
+To: Mark Brown <broonie@kernel.org>
+Cc: Johnson Wang <johnson.wang@mediatek.com>, robh+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [GIT PULL - FAO MARK BROWN]: Immutable branch for MediaTek
+ MT6366 due for the v5.18 merge window
+Message-ID: <YidVlV8Rg8N5TT8A@google.com>
+References: <20220106065407.16036-1-johnson.wang@mediatek.com>
+ <YicTu6FwOR7zIC6I@google.com> <YidQvkIYsacSPsXv@sirena.org.uk>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <YidQvkIYsacSPsXv@sirena.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_045627_741392_ADDBC914 
-X-CRM114-Status: GOOD (  15.03  )
+X-CRM114-CacheID: sfid-20220308_050947_854010_2A050B74 
+X-CRM114-Status: GOOD (  15.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,156 +90,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This reverts the omap2430 changes of
-
-commit cf081d009c44 ("usb: musb: Set the DT node on the child device")
-
-Since v5.17-rc1, musb is broken on the gta04 and openpandora devices
-(omap3530/dm3730). BeagleBone Black (am335x) seems to work.
-
-Symptoms of this bug are
-
-a) main symptom
-
-[   21.336517] using random host ethernet address
-[   21.341430] using host ethernet address: 32:70:05:18:ff:78
-[   21.341461] using self ethernet address: 46:10:3a:b3:af:d9
-[   21.358184] usb0: HOST MAC 32:70:05:18:ff:78
-[   21.376678] usb0: MAC 46:10:3a:b3:af:d9
-[   21.388305] using random self ethernet address
-[   21.393371] using random host ethernet address
-[   21.398162] g_ether gadget: Ethernet Gadget, version: Memorial Day 2008
-[   21.421081] g_ether gadget: g_ether ready
-[   21.492156] musb-hdrc musb-hdrc.1.auto: Could not enable: -22
-[   21.691345] musb-hdrc musb-hdrc.1.auto: Could not enable: -22
-[   21.803192] musb-hdrc musb-hdrc.1.auto: Could not enable: -22
-[   21.819427] musb-hdrc musb-hdrc.1.auto: Could not enable: -22
-[   22.124450] musb-hdrc musb-hdrc.1.auto: Could not enable: -22
-[   22.168518] musb-hdrc musb-hdrc.1.auto: Could not enable: -22
-[   22.179382] musb-hdrc musb-hdrc.1.auto: Could not enable: -22
-[   23.213592] musb-hdrc musb-hdrc.1.auto: pm runtime get failed in musb_gadget_queue
-[   23.221832] musb-hdrc musb-hdrc.1.auto: Could not enable: -22
-[   23.227905] musb-hdrc musb-hdrc.1.auto: Could not enable: -22
-[   23.239440] musb-hdrc musb-hdrc.1.auto: Could not enable: -22
-[   23.401000] musb-hdrc musb-hdrc.1.auto: Could not enable: -22
-[   23.407073] musb-hdrc musb-hdrc.1.auto: Could not enable: -22
-[   23.426361] musb-hdrc musb-hdrc.1.auto: Could not enable: -22
-[   23.734466] musb-hdrc musb-hdrc.1.auto: pm runtime get failed in musb_gadget_queue
-[   23.742462] musb-hdrc musb-hdrc.1.auto: pm runtime get failed in musb_gadget_queue
-[   23.750396] musb-hdrc musb-hdrc.1.auto: pm runtime get failed in musb_gadget_queue
-... (repeats with high frequency)
-
-This stops if the USB cable is unplugged and restarts if it is plugged in again.
-
-b) also found in the log
-
-[    6.498107] ------------[ cut here ]------------
-[    6.502960] WARNING: CPU: 0 PID: 868 at arch/arm/mach-omap2/omap_hwmod.c:1885 _enable+0x50/0x234
-[    6.512207] omap_hwmod: usb_otg_hs: enabled state can only be entered from initialized, idle, or disabled state
-[    6.522766] Modules linked in: omap2430(+) bmp280_i2c bmp280 itg3200 at24 tsc2007 leds_tca6507 bma180 hmc5843_i2c hmc5843_core industrialio_triggered_buffer lis3lv02d_i2c kfifo_buf lis3lv02d phy_twl4030_usb snd_soc_omap_mcbsp snd_soc_ti_sdma musb_hdrc snd_soc_twl4030 gnss_sirf twl4030_vibra twl4030_madc twl4030_charger twl4030_pwrbutton gnss industrialio ehci_omap omapdrm drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm drm_panel_orientation_quirks cec
-[    6.566436] CPU: 0 PID: 868 Comm: udevd Not tainted 5.16.0-rc5-letux+ #8251
-[    6.573730] Hardware name: Generic OMAP36xx (Flattened Device Tree)
-[    6.580322] [<c010ed30>] (unwind_backtrace) from [<c010a1d0>] (show_stack+0x10/0x14)
-[    6.588470] [<c010a1d0>] (show_stack) from [<c0897c14>] (dump_stack_lvl+0x40/0x4c)
-[    6.596405] [<c0897c14>] (dump_stack_lvl) from [<c0130cc4>] (__warn+0xb4/0xdc)
-[    6.604003] [<c0130cc4>] (__warn) from [<c0130d5c>] (warn_slowpath_fmt+0x70/0x9c)
-[    6.611846] [<c0130d5c>] (warn_slowpath_fmt) from [<c011f4d4>] (_enable+0x50/0x234)
-[    6.619903] [<c011f4d4>] (_enable) from [<c012081c>] (omap_hwmod_enable+0x28/0x40)
-[    6.627838] [<c012081c>] (omap_hwmod_enable) from [<c0120ff4>] (omap_device_enable+0x4c/0x78)
-[    6.636779] [<c0120ff4>] (omap_device_enable) from [<c0121030>] (_od_runtime_resume+0x10/0x3c)
-[    6.645812] [<c0121030>] (_od_runtime_resume) from [<c05c688c>] (__rpm_callback+0x3c/0xf4)
-[    6.654510] [<c05c688c>] (__rpm_callback) from [<c05c6994>] (rpm_callback+0x50/0x54)
-[    6.662628] [<c05c6994>] (rpm_callback) from [<c05c66b0>] (rpm_resume+0x448/0x4e4)
-[    6.670593] [<c05c66b0>] (rpm_resume) from [<c05c6784>] (__pm_runtime_resume+0x38/0x50)
-[    6.678985] [<c05c6784>] (__pm_runtime_resume) from [<bf14ab20>] (musb_init_controller+0x350/0xa5c [musb_hdrc])
-[    6.689727] [<bf14ab20>] (musb_init_controller [musb_hdrc]) from [<c05bccb8>] (platform_probe+0x58/0xa8)
-[    6.699737] [<c05bccb8>] (platform_probe) from [<c05badf0>] (really_probe+0x170/0x2fc)
-[    6.708068] [<c05badf0>] (really_probe) from [<c05bb040>] (__driver_probe_device+0xc4/0xd8)
-[    6.716827] [<c05bb040>] (__driver_probe_device) from [<c05bb084>] (driver_probe_device+0x30/0xac)
-[    6.726226] [<c05bb084>] (driver_probe_device) from [<c05bb3d0>] (__device_attach_driver+0x94/0xb4)
-[    6.735717] [<c05bb3d0>] (__device_attach_driver) from [<c05b93f8>] (bus_for_each_drv+0xa0/0xb4)
-[    6.744934] [<c05b93f8>] (bus_for_each_drv) from [<c05bb248>] (__device_attach+0xc0/0x134)
-[    6.753631] [<c05bb248>] (__device_attach) from [<c05b9fcc>] (bus_probe_device+0x28/0x80)
-[    6.762207] [<c05b9fcc>] (bus_probe_device) from [<c05b7e40>] (device_add+0x5fc/0x788)
-[    6.770507] [<c05b7e40>] (device_add) from [<c05bd240>] (platform_device_add+0x70/0x1bc)
-[    6.779022] [<c05bd240>] (platform_device_add) from [<bf177830>] (omap2430_probe+0x260/0x2d4 [omap2430])
-[    6.789001] [<bf177830>] (omap2430_probe [omap2430]) from [<c05bccb8>] (platform_probe+0x58/0xa8)
-[    6.798309] [<c05bccb8>] (platform_probe) from [<c05badf0>] (really_probe+0x170/0x2fc)
-[    6.806610] [<c05badf0>] (really_probe) from [<c05bb040>] (__driver_probe_device+0xc4/0xd8)
-[    6.815399] [<c05bb040>] (__driver_probe_device) from [<c05bb084>] (driver_probe_device+0x30/0xac)
-[    6.824798] [<c05bb084>] (driver_probe_device) from [<c05bb4b4>] (__driver_attach+0xc4/0xd8)
-[    6.833648] [<c05bb4b4>] (__driver_attach) from [<c05b9308>] (bus_for_each_dev+0x64/0xa0)
-[    6.842224] [<c05b9308>] (bus_for_each_dev) from [<c05ba248>] (bus_add_driver+0x148/0x1a4)
-[    6.850891] [<c05ba248>] (bus_add_driver) from [<c05bbd1c>] (driver_register+0xb4/0xf8)
-[    6.859313] [<c05bbd1c>] (driver_register) from [<c0101f54>] (do_one_initcall+0x90/0x1c8)
-[    6.867889] [<c0101f54>] (do_one_initcall) from [<c0893968>] (do_init_module+0x4c/0x204)
-[    6.876373] [<c0893968>] (do_init_module) from [<c01b4c30>] (load_module+0x13f0/0x1928)
-[    6.884796] [<c01b4c30>] (load_module) from [<c01b53a0>] (sys_finit_module+0xa0/0xc0)
-[    6.893005] [<c01b53a0>] (sys_finit_module) from [<c0100080>] (ret_fast_syscall+0x0/0x54)
-[    6.901580] Exception stack(0xc2807fa8 to 0xc2807ff0)
-[    6.906890] 7fa0:                   b6e517d4 00052068 00000006 b6e509f8 00000000 b6e5131c
-[    6.915466] 7fc0: b6e517d4 00052068 cd718000 0000017b 00020000 00037f78 00050048 00063368
-[    6.924011] 7fe0: bed8fef0 bed8fee0 b6e4ac4b b6f55a42
-[    6.929321] ---[ end trace d715ff121b58763c ]---
-
-c) git bisect result on testing for "musb-hdrc" in the console log:
-
-cf081d009c447647c6b36aced535ca427dbebe72 is the first bad commit
-commit cf081d009c447647c6b36aced535ca427dbebe72
-Author: Rob Herring <robh@kernel.org>
-Date:   Wed Dec 15 17:07:57 2021 -0600
-
-  usb: musb: Set the DT node on the child device
-
-  The musb glue drivers just copy the glue resources to the musb child device.
-  Instead, set the musb child device's DT node pointer to the parent device's
-  node so that platform_get_irq_byname() can find the resources in the DT.
-  This removes the need for statically populating the IRQ resources from the
-  DT which has been deprecated for some time.
-
-  Signed-off-by: Rob Herring <robh@kernel.org>
-  Link: https://lore.kernel.org/r/20211215230756.2009115-3-robh@kernel.org
-  Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
-drivers/usb/musb/am35x.c    | 2 ++
-drivers/usb/musb/da8xx.c    | 2 ++
-drivers/usb/musb/jz4740.c   | 1 +
-drivers/usb/musb/mediatek.c | 2 ++
-drivers/usb/musb/omap2430.c | 1 +
-drivers/usb/musb/ux500.c    | 1 +
-6 files changed, 9 insertions(+)
-
-Reverting this patch makes musb work again as before.
-
-Fixes: cf081d009c44 ("usb: musb: Set the DT node on the child device")
-Cc: Rob Herring <robh@kernel.org>
-Signed-off-by: H. Nikolaus Schaller <hns@goldelico.com>
----
- drivers/usb/musb/omap2430.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/usb/musb/omap2430.c b/drivers/usb/musb/omap2430.c
-index 7d4d0713f4f0..d2b7e613eb34 100644
---- a/drivers/usb/musb/omap2430.c
-+++ b/drivers/usb/musb/omap2430.c
-@@ -327,7 +327,6 @@ static int omap2430_probe(struct platform_device *pdev)
- 	musb->dev.parent		= &pdev->dev;
- 	musb->dev.dma_mask		= &omap2430_dmamask;
- 	musb->dev.coherent_dma_mask	= omap2430_dmamask;
--	device_set_of_node_from_dev(&musb->dev, &pdev->dev);
- 
- 	glue->dev			= &pdev->dev;
- 	glue->musb			= musb;
--- 
-2.33.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gVHVlLCAwOCBNYXIgMjAyMiwgTWFyayBCcm93biB3cm90ZToKCj4gT24gVHVlLCBNYXIgMDgs
+IDIwMjIgYXQgMDg6Mjg6NDNBTSArMDAwMCwgTGVlIEpvbmVzIHdyb3RlOgo+ID4gTWFyaywKPiA+
+IAo+ID4gVGhpcyBvbmUgaXMganVzdCBmb3IgeW91LCBzbyB5b3UgY2FuIG1lcmdlIHRoZSBvdGhl
+ciBwYXRjaGVzLgo+IAo+IEkgZG9uJ3Qga25vdyB3aGF0IHRoZSBvdGhlciBwYXRjaGVzIHlvdSdy
+ZSByZWZlcnJpbmcgdG8gaGVyZSBhcmUsCj4gc29tZW9uZSdzIGdvaW5nIHRvIG5lZWQgdG8gcmVz
+ZW5kIHRoZW0uCj4gCj4gSSdtIGFsc28gbm90IHN1cmUgdGhpbmdzIGxpa2UgbGlrZSAiRkFPIE1B
+UksgQlJPV04iIGluIHRoZSBzdWJqZWN0IGxpbmUKPiBvZiB0aGUgZS1tYWlsLCBJIGNhbiBhbHJl
+YWR5IHNlZSBpZiBhIG1lc3NhZ2UgaGFzIGJlZW4gc2VudCB0byBtZSBmcm9tCj4gdGhlIFRvIGFu
+ZCBpdCBtZWFucyBsZXNzIG9mIHRoZSBhY3R1YWwgc3ViamVjdCBpcyB3cmFwcGVkIG91dCBvZiBz
+aWdodAo+IGluIG15IGluYm94LgoKTWlnaHQgYmUgdGltZSB0byB1cGdyYWRlIHlvdXIgVlQxMDAh
+CgotLSAKTGVlIEpvbmVzIFvmnY7nkLzmlq9dClByaW5jaXBhbCBUZWNobmljYWwgTGVhZCAtIERl
+dmVsb3BlciBTZXJ2aWNlcwpMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3Ig
+QXJtIFNvQ3MKRm9sbG93IExpbmFybzogRmFjZWJvb2sgfCBUd2l0dGVyIHwgQmxvZwoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsg
+bWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
