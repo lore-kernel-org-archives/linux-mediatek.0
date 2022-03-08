@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBE5EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 10:30:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB9FAC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 10:32:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ysHZ8jEeM++QDGfzUebNDXItk40Km+I6R5rRxsQxNYo=; b=BOwFm7/MP7Z8yU
-	ntYp5AonzYjZPgKSk6NV3z35YC0Tm4IaO5HWLLZtAa0aGDGfj9u/d2r+Ozpdv3QLzE1HaExYChCdR
-	GJsHaEGFrsLu0cPYMgrSdeKpq3MC0JhEEWH8JN0jgI7vIVE3y/2Yi38CaSn3vnOUPXCVxHKkLj7IF
-	Lz2XY4iQmtDppw94kxSbzkQl5LZ5PJ2gzIA5LNh1nkZsQE9nEamt0N4DYtqmOa8W9ywkrdCkBx5LX
-	dolgH3W+4Z5EjNhzaWK5jVTPOe16UBXTKdzHvQeeowm96ZOByzKGBQ4mMUyW1o4EVmIjvmbxDFA/5
-	DkhNGaMtQljsLkyGiYCA==;
+	List-Owner; bh=rU/4ST/Z4HIE4iDcRG8L3q2ypDYMbpL/8FHkB1tQqAY=; b=dq1LUHSaxFXGk/
+	i89oPsIdlUj9yzwlP3fukMsykTPPr9yfI8k7b1ZULTqODme7e0/WPA1X1UI5hQ5mpuyw4g/GJlFbo
+	vDX9Y4KttCVGttb9ee78886gxBfAxj+/sw2WSwCktdDEhioPG8KkN9nHqwDClqLiS8O64csYLAXdo
+	Gttx+B1nYUsn+pwH0RVO3CVrKqcgWy7ysMIcslXsldygyZd6ZQ3s8Hfa4C5QIE7qwOvvfo1StgR0B
+	p50PeSDfR4x5SMrABXW+NcDhkYHZPOne79KHkyR7q7O6/+sLGDgKY7605jWwQEhtqP9SbNECmj9uU
+	igyj4yIQTKylLlP3x60A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRX76-003sjF-2y; Tue, 08 Mar 2022 10:30:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nRX9A-003tfu-Vb; Tue, 08 Mar 2022 10:32:53 +0000
+Received: from mga03.intel.com ([134.134.136.65])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRWrV-003lsH-UM; Tue, 08 Mar 2022 10:14:40 +0000
-X-UUID: adc7b3d3e8da42a98dfef15282fbbc7e-20220308
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=CsXv8NXxtbgGiiBYrjWnOoZeOQtvLkvmPIooThficOE=; 
- b=JGRit2a3G8haB6Rx659sOev8Qj6VvZ3jifFrZcKNQBYLQSjrc0AMFO9AZXrYIw0PHiTCWbziA+CQHHxtc+FZbR5AgeWtvftQkkATHt6yFjwXweH9yqHWEVUhAqbAkI0IkJlmV7rSbEhI4qlqIEyhe5/Xlx+O7G7jpPCokNpiHRo=;
-X-UUID: adc7b3d3e8da42a98dfef15282fbbc7e-20220308
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <xinlei.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 281859763; Tue, 08 Mar 2022 03:14:29 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Mar 2022 02:14:27 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Mar 2022 18:14:26 +0800
-Received: from mszsdhlt06 (10.16.6.206) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 8 Mar 2022 18:14:25 +0800
-Message-ID: <9e3cd215a2f771236855bdb2f5faa172dcbd1aec.camel@mediatek.com>
+ id 1nRWyg-003os0-3E; Tue, 08 Mar 2022 10:22:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1646734922; x=1678270922;
+ h=from:to:cc:subject:in-reply-to:references:date:
+ message-id:mime-version;
+ bh=tlfAGEzWZupbhLz4z0/Y6/HTRgwEljOiRNv5zyXFBDo=;
+ b=IIF6XHsCEggxzAr6ziXdnTd32wi1tYftd/rHomIS77B1usfr6y5PIoli
+ DyqnkZgIv+W8LOyMrTW7KB5xe6isAdgQT+kzXx++aC0fIhFMmwp9mFpoT
+ H4hJNNvb3xmoTyGNjr9lmMm98oic2UWCeViQOA36GgCs0il4LobgBMu28
+ mFvq/91qiquDMru/C3SOUpmQBmPtppJGfVDwjXoqBADVa3uc3EtWQRixc
+ 0+miydphBAItH7q9b2JRhDOFMRuQzqwLblRmiO2p4U+OwwA7QmQdEBidu
+ zpOyhr8kY9M9OCZeNoiKU7LKpdIuIA6ChyM5AGuuZNX7If/Sn7upGPCs8 g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10279"; a="254589322"
+X-IronPort-AV: E=Sophos;i="5.90,164,1643702400"; d="scan'208";a="254589322"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Mar 2022 02:21:49 -0800
+X-IronPort-AV: E=Sophos;i="5.90,164,1643702400"; d="scan'208";a="513055616"
+Received: from acushion-mobl1.ger.corp.intel.com (HELO localhost)
+ ([10.252.29.47])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Mar 2022 02:21:45 -0800
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: "xinlei.lee" <xinlei.lee@mediatek.com>, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
+ matthias.bgg@gmail.com
+Cc: jitao.shi@mediatek.com, allen-kh.cheng@mediatek.com,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, rex-bc.chen@mediatek.com,
+ linux-arm-kernel@lists.infradead.org
 Subject: Re: [PATCH v2, 0/4] Cooperate with DSI RX devices to modify dsi
  funcs and delay mipi high to cooperate with panel sequence
-From: xinlei.lee <xinlei.lee@mediatek.com>
-To: Jani Nikula <jani.nikula@linux.intel.com>, <chunkuang.hu@kernel.org>,
- <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <matthias.bgg@gmail.com>
-CC: <jitao.shi@mediatek.com>, <allen-kh.cheng@mediatek.com>,
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-mediatek@lists.infradead.org>, <rex-bc.chen@mediatek.com>,
- <linux-arm-kernel@lists.infradead.org>
-Date: Tue, 8 Mar 2022 18:14:40 +0800
-In-Reply-To: <87lexq2aw4.fsf@intel.com>
+In-Reply-To: <9e3cd215a2f771236855bdb2f5faa172dcbd1aec.camel@mediatek.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 References: <1646388956-8033-1-git-send-email-xinlei.lee@mediatek.com>
  <87lexq2aw4.fsf@intel.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ <9e3cd215a2f771236855bdb2f5faa172dcbd1aec.camel@mediatek.com>
+Date: Tue, 08 Mar 2022 12:21:42 +0200
+Message-ID: <87tuc8218p.fsf@intel.com>
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_021438_092656_D86BAEFE 
-X-CRM114-Status: GOOD (  16.03  )
+X-CRM114-CacheID: sfid-20220308_022202_241260_B693EEBC 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,52 +84,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-03-04 at 13:51 +0200, Jani Nikula wrote:
-> Please also prefix cover letters with drm/mediatek if that's the only
-> place you're touching.
-> 
-> BR,
-> Jani.
-> 
-> 
-> On Fri, 04 Mar 2022, <xinlei.lee@mediatek.com> wrote:
-> > From: Xinlei Lee <xinlei.lee@mediatek.com>
-> > 
-> > In upstream-v5.8, dsi_enable will operate panel_enable, but this
-> > modification has been moved in v5.9. In order to ensure the timing
-> > of
-> > dsi_power_on/off and the timing of pulling up/down the MIPI signal,
-> > the modification of v5.9 is synchronized in this series of patches.
-> > 
-> > Changes since v1:
-> > 1. Dsi sequence marked with patch adjustment
-> > 2. Fixes: mtk_dsi: Use the drm_panel_bridge
-> > 
-> > Jitao Shi (3):
-> >   drm/mediatek: Adjust the timing of mipi signal from LP00 to LP11
-> >   drm/mediatek: Separate poweron/poweroff from enable/disable and
-> > define
-> >     new funcs
-> >   drm/mediatek: keep dsi as LP00 before dcs cmds transfer
-> > 
-> > Xinlei Lee (1):
-> >   drm/mediatek: Add pull-down MIPI operation in mtk_dsi_poweroff
-> >     function
-> > 
-> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 73 ++++++++++++++++++++----
-> > ------
-> >  1 file changed, 49 insertions(+), 24 deletions(-)
-> 
-> 
+On Tue, 08 Mar 2022, xinlei.lee <xinlei.lee@mediatek.com> wrote:
+> On Fri, 2022-03-04 at 13:51 +0200, Jani Nikula wrote:
+>> Please also prefix cover letters with drm/mediatek if that's the only
+>> place you're touching.
+>
+> Thanks for your review.
+> Is your suggestion for me to put the fix id on the cover ?
 
-Hi Jani:
+Heh, it's not really review, just something to ease me going through the
+dri-devel mails in the future.
 
-Thanks for your review.
-Is your suggestion for me to put the fix id on the cover ?
+The cover letter subject is "Cooperate with DSI RX devices to modify dsi
+funcs and delay mipi high to cooperate with panel sequence" and I don't
+know whether the thread is about drm dsi helpers or some drivers and
+what drivers. If the cover letter subject also had the prefix
+"drm/mediatek:" like all the patches, I could've just skipped it
+altogether.
 
-Best Regards!
-xinlei
+Just something to consider in the future, no need to do anything here.
 
+Thanks,
+Jani.
+
+-- 
+Jani Nikula, Intel Open Source Graphics Center
 
 _______________________________________________
 Linux-mediatek mailing list
