@@ -4,83 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D4F7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 04:40:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9311C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 05:37:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ld6HkBOBfFqrFN7vSVxGegm5lQKjgT56U0O8dVe9Yco=; b=rgQuJxk22s7iJ/
-	QlzFehxV99iG642RB+PRYwZBHJzNATsFVkhx4bw1s5Fx7QLFsyOMLBfO8Yn5McxbyZxLZOnOl9V6N
-	snmqMObnegABl7TGndjeYuoXDiRIoN77vPDeg9zlFt1A/essO4HnUmS9rW6yBjjvzUqT1TzG0GDBx
-	Arjn6z5q0uGtgaiU9VaR4+gM7cafD7coVEg5WJXaxnpufVYv09xbKVMO+hzrAWnD8ZPeVUb4KaZZy
-	z3c2zKQQowDC/H7Ppft1zt/TinGL6M87n6ED7b37RNKSVJ0IRVOJbwzsPXm/JFT8DGvt4S9BOXvu6
-	EdKR4s/7KCbNlotOB3Sw==;
+	List-Owner; bh=ij2F7bRncWpKweJTdXcTfNDGXPoRw1jRUD2UwFZDpDI=; b=xizaiLgtI5ViJe
+	XlhvGXEnf0MG3vl/nFnIVz6u1bT1ATt0M94D3XHz+1DVPu871W21j7BUNd/E2s1CGRqTDxQeupWRn
+	+XQ1DBwx/CYjY0+D+GN/IlNbhqOsv6zkFwRAwUVqMGcv1X2VZosp4IBniCmBcHE3isrVwTLUTuj/s
+	KK0phKiqN660wzOR63FIdr0s9yfG4/FXvu1CCvLJIL6poaxlqHOKtr5mZ43U0xuKLbCtt5e1UkjVZ
+	RvQHeO8Wu6xCtCOyTcxOi9eLxwdx5QV1pR5/i2Z7QWhcOQeT64y6UfhVTj1+BEqaNMePia9ApnLpM
+	hdy8hGWIkBjuXrQIsdNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRReR-002d7H-9y; Tue, 08 Mar 2022 04:40:47 +0000
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+	id 1nRSWg-002hFi-KI; Tue, 08 Mar 2022 05:36:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRReO-002d6H-1K
- for linux-mediatek@lists.infradead.org; Tue, 08 Mar 2022 04:40:45 +0000
-Received: by mail-pf1-x435.google.com with SMTP id g1so16342787pfv.1
- for <linux-mediatek@lists.infradead.org>; Mon, 07 Mar 2022 20:40:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=j7+ip+oxWRLl9656rm8jl0V3j8tN7hrFGr/zIiKB03k=;
- b=vYVlbsZ2GNxgUkflM3UI2Yl4zQoI0NjuO+druEsm9oIjrPivL/zZA4KHWJaaCBI9h8
- ymMyi+Tu6ep+HSLTFk4av+DLYG1KlNrEgiqRd/ksI1KTYHtls5+A1jFtxQH6Y4aE1yMV
- +f3jn11ujyDj+MaiGpFe/2ZDTFs0oZ2UyxnUVyWhS4965TWccx55RIPpmDmcAkZrftWi
- +sMwTtnKPtVfuBVMROh7iaBNj9SEZZyYj5UHbw15CMe+mhznitZvfzFN2J5QvY9mtmiu
- MG/jQc9d10ay3b35Yv6OyXpMlfKtdCJJ4YRV92NM6EYklEHHhzk0X2bsOKPco3IdFsZj
- GiUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=j7+ip+oxWRLl9656rm8jl0V3j8tN7hrFGr/zIiKB03k=;
- b=uW5l2dyL+g+F4W2oMTaEPXruczx0ZCBo5EA2HYEORGpv7AUl6c8A1wEuGjD2P6Jx6E
- XHTb7Z8QSMoCCUyQDibR7MRd80kZaKmYJutleqmrOZEKnvvn7m9aR43a7vK/Kzqui3hP
- TI9JmMOcYZXlly8YewKIz6kgn7CXLhPFg2IncjMn1qyOvWHHBSYg9ahEy6NsaRSLGwyh
- dFrmps+d6oxGQA3JEKqz2iaL4E+EoMyMZyCizLEP53SQS/ANhkyBOKHdbMYzBGXEm+cY
- B89yZBKyuyed/vtw6mqYIYnrfVQwJZNK9AONi3pXAU6DDfqjgMgzldO+cUd8cSGZPENu
- O1Ag==
-X-Gm-Message-State: AOAM530nKZGM+xgz1NMqKyani/qIpaoTrXLJLHI3+KmMpmJH6MVE8YI8
- jkFH64guyidjVP7hOSVis1bkoQ==
-X-Google-Smtp-Source: ABdhPJxmE71kOOa7pwUTgkBKicaxgWByq9zu6dCpOFWEyt2Fx7IFTLvqmQV2Cd013olm2iZcXnU0Tg==
-X-Received: by 2002:a62:1a43:0:b0:4f6:ce73:d572 with SMTP id
- a64-20020a621a43000000b004f6ce73d572mr16545228pfa.69.1646714443061; 
- Mon, 07 Mar 2022 20:40:43 -0800 (PST)
-Received: from localhost ([223.184.83.228]) by smtp.gmail.com with ESMTPSA id
- pc17-20020a17090b3b9100b001bf88fe5edcsm769661pjb.9.2022.03.07.20.40.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Mar 2022 20:40:42 -0800 (PST)
-Date: Tue, 8 Mar 2022 10:10:40 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Tim Chang <jia-wei.chang@mediatek.com>
-Cc: "Rafael J . Wysocki" <rafael@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, fan.chen@mediatek.com,
- louis.yu@mediatek.com, roger.lu@mediatek.com, Allen-yy.Lin@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com, hsinyi@google.com,
- Jia-Wei Chang <jia-wei.chang@mediatek.corp-partner.google.com>
-Subject: Re: [PATCH 3/4] cpufreq: mediatek: clean up cpufreq driver
-Message-ID: <20220308044040.6b53fpdaw4fonfui@vireshk-i7>
-References: <20220307122151.11666-1-jia-wei.chang@mediatek.com>
- <20220307122151.11666-4-jia-wei.chang@mediatek.com>
+ id 1nRSWT-002hE8-8H; Tue, 08 Mar 2022 05:36:39 +0000
+X-UUID: 050489aba0ee43a3bc1e83fe2599843e-20220307
+X-UUID: 050489aba0ee43a3bc1e83fe2599843e-20220307
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1863637855; Mon, 07 Mar 2022 22:36:28 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 7 Mar 2022 21:36:26 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 8 Mar 2022 13:36:25 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 8 Mar 2022 13:36:25 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <linmq006@gmail.com>
+CC: <amitk@kernel.org>, <daniel.lezcano@linaro.org>, <henry.yen@mediatek.com>, 
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-pm@vger.kernel.org>,
+ <matthias.bgg@gmail.com>, <rafael@kernel.org>, <rui.zhang@intel.com>
+Subject: Re: [PATCH] thermal: mediatek: Fix some leaks in mtk_thermal_probe
+Date: Tue, 8 Mar 2022 13:36:25 +0800
+Message-ID: <20220308053625.21359-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220307113438.21338-1-linmq006@gmail.com>
+References: <20220307113438.21338-1-linmq006@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220307122151.11666-4-jia-wei.chang@mediatek.com>
-User-Agent: NeoMutt/20180716-391-311a52
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220307_204044_103265_A9D8A48B 
-X-CRM114-Status: GOOD (  12.84  )
+X-CRM114-CacheID: sfid-20220307_213637_318664_29C7A3F1 
+X-CRM114-Status: UNSURE (   6.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,24 +74,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07-03-22, 20:21, Tim Chang wrote:
-> cleanup of naming, print log and comments.
+Hi Miaoqian,
 
-As told by Krzysztof, this should be broken into several patches. One
-patch for each rename, if you really need to do that.
+> If an error occurs after a successful 'of_iomap()' call, it must be undone
+> by a corresponding 'iounmap()' call
+> 
+> Fixes: 89945047b166 ("thermal: mediatek: Add tsensor support for V2 thermal system")
+> Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+>
 
-You shouldn't just change "err" to "ret". It is fine if the driver
-used "err" at some places and "ret" at others, but otherwise there is
-no need of that change.
+Thanks for fixing this.
 
-This should be easier for us to review, we aren't going to dig into
-every minute change here, that you don't describe in the message, and
-see if something is wrong. Please make this easier for us.
+Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 
-This patch alone may end up in 5-10 different patches.
 
--- 
-viresh
+Thanks,
+Miles
 
 _______________________________________________
 Linux-mediatek mailing list
