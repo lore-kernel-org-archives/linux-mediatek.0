@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35632C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 01:48:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84569C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 01:52:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=99izoDZGasr2e/GXWSiLtX1KNorG21DSFDm3gOP28eE=; b=O/J2q+xIh7JO6b
-	OMcTkXu3P0+YsQXrseuhYtnUydoxOUcIDRlocPc8XYqs7fKUPDLGWJ3WaQV83uVhm5TUlk1NZisfA
-	8/0jLeiR0QHU7GPVsXjPhQNrKP+Sj8MF7I52KsPvV0zQUIG1LDfj9alPjFD25r9exyh78uUr7SHO8
-	vN9+oFYrtDxBQI+L44Od//dIVfx4PdLSBGhtpk5dU8AsayBQoO1huY7HYX+efW+tk7lOhLBvW+4TS
-	uC2UEcPRJFnwwvVRmfAn2TODWGOaWpUm7GdC8k5wIkXZZ3tcF2WuJaIZSDgacopYibGaxOWhVtixC
-	/oxAnSQdLGBQxQ55Q5lA==;
+	List-Owner; bh=3GahCDG1Jh6F+H64E+xZIzEnY7cind/JVwIzcsO5rVQ=; b=UO6Ma3X1FeZyvs
+	CGFSgPOB7uiVJAL0wt0jedhVBJKIMgMxcXdwXh3pxC8MxS3/MjGFU/0m8CeJFvJARjBbWyuJHN0Vz
+	wOIcqhWuuXrVY/RtdqO9ChTc1V9eSudysJkBLl1D4sHaVLzkQFz+c50wpUUWp4jfZCo1e3Wj1eTQP
+	OPaqhG1cL8w/0aprOS+czmes2FSQuwJKcLGZckKva/IQDCuNXsKB9B/Gm+GvAiOkAg4HzcMQY+pAa
+	+KDb/fQqfEK69HuoyvvkxoL4lJzTLhE3sjAcYaO1AKDDoUi74pnHfvvel6eMtEsZzFgw3ZO2Exl0L
+	4BaGNGlJ74vzG5qy7RCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nROxr-002Mo4-Iz; Tue, 08 Mar 2022 01:48:39 +0000
+	id 1nRP17-002NBy-Ko; Tue, 08 Mar 2022 01:52:01 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nROxf-002MlS-Pq; Tue, 08 Mar 2022 01:48:29 +0000
-X-UUID: 78c30bf9306e4ae5b7e0bb6ddef08799-20220307
+ id 1nRP0v-002N9V-09; Tue, 08 Mar 2022 01:51:50 +0000
+X-UUID: 001c54a367b24e0a875ec6fb1d74137f-20220307
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=bnF+lbD1o97VEDXYqBFsjdpdo40rLl31ESLAGAXqQPI=; 
- b=GzL2yEkgH+aSGgx9OvPtaLXspAFC22T8xZ8A4eqLAtMbOmLa5Rn2QXSf8hAAeP0Yelc41ft3P1d/M+Bnwx6nSxlhqi5olf8tktXjMASB44seCsvGVcu51MulPKl9tmK396XHwFvHowEHcVscSRYatdHkAmOPxLPOw8s4Q47XrWk=;
-X-UUID: 78c30bf9306e4ae5b7e0bb6ddef08799-20220307
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=UEx22GynCCxut7puztAW+3Z2X6ycbV8EnxlqwxRD56o=; 
+ b=kJgC2slXCW8BPEg247eqgJQ+Ic0GxCEaxQrP0nTe3kWQ+qwpzbmF/vMlk7q3yQOP+69qdlLClV/+fnY3uXJxqYXzeV/qCCBGNBaMnHdzdIm0ZHwQZUH1AdkCoBBZcNiMKu+WSrLhtxcbcJyNa6ITOF8vsPjHNaTzJUQswOkI430=;
+X-UUID: 001c54a367b24e0a875ec6fb1d74137f-20220307
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <leilk.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 790130939; Mon, 07 Mar 2022 18:48:21 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 7 Mar 2022 17:48:19 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Mar 2022 09:48:18 +0800
+ with ESMTP id 1193800484; Mon, 07 Mar 2022 18:51:40 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 7 Mar 2022 17:51:39 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 8 Mar 2022 09:51:37 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 8 Mar 2022 09:48:17 +0800
-Message-ID: <31d61f3b8d9ba206d25555dd48bdb4bf323edf6b.camel@mediatek.com>
-Subject: Re: [PATCH V3 6/7] dt-bindings: spi: support spi-hclk
+ Transport; Tue, 8 Mar 2022 09:51:37 +0800
+Message-ID: <7ae469a94ad51be85f0731c4c42088d65b241581.camel@mediatek.com>
+Subject: Re: [PATCH V3 2/7] dt-bindings: spi: Add compatible for MT7986 with
+ single mode
 From: Leilk Liu <leilk.liu@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Mark Brown <broonie@kernel.org>, Matthias Brugger
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "Mark Brown" <broonie@kernel.org>
+CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Date: Tue, 8 Mar 2022 09:48:17 +0800
-In-Reply-To: <YiaYXwj0C8NeWjzz@robh.at.kernel.org>
+ <linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, "Rob
+ Herring" <robh@kernel.org>
+Date: Tue, 8 Mar 2022 09:51:36 +0800
+In-Reply-To: <b3950b6b-bfbe-da80-90cc-1a836958f931@collabora.com>
 References: <20220307065230.12655-1-leilk.liu@mediatek.com>
- <20220307065230.12655-7-leilk.liu@mediatek.com>
- <YiaYXwj0C8NeWjzz@robh.at.kernel.org>
+ <20220307065230.12655-3-leilk.liu@mediatek.com>
+ <b3950b6b-bfbe-da80-90cc-1a836958f931@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220307_174827_873056_89B783A2 
-X-CRM114-Status: GOOD (  16.14  )
+X-CRM114-CacheID: sfid-20220307_175149_075184_657DEB98 
+X-CRM114-Status: GOOD (  23.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,55 +82,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-03-07 at 17:42 -0600, Rob Herring wrote:
-> On Mon, Mar 07, 2022 at 02:52:29PM +0800, Leilk Liu wrote:
-> > this patch support spi-hclk.
+On Mon, 2022-03-07 at 11:32 +0100, AngeloGioacchino Del Regno wrote:
+> Il 07/03/22 07:52, Leilk Liu ha scritto:
+> > This patch adds dt-binding documentation for MT7986 with single
+> > mode.
 > > 
 > > Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+> > Acked-by: Rob Herring <robh@kernel.org>
 > > ---
-> >  .../devicetree/bindings/spi/mediatek,spi-mt65xx.yaml          | 4
-> > ++++
-> >  1 file changed, 4 insertions(+)
+> >   Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml |
+> > 1 +
+> >   1 file changed, 1 insertion(+)
 > > 
 > > diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-
 > > mt65xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-
 > > mt65xx.yaml
-> > index a8a15a9a6c46..195793aa79b7 100644
+> > index bfa44acb1bdd..48024b98408a 100644
 > > --- a/Documentation/devicetree/bindings/spi/mediatek,spi-
 > > mt65xx.yaml
 > > +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-
 > > mt65xx.yaml
-> > @@ -51,16 +51,20 @@ properties:
-> >      maxItems: 1
-> >  
-> >    clocks:
-> > +    minItems: 3
-> >      items:
-> >        - description: clock used for the parent clock
-> >        - description: clock used for the muxes clock
-> >        - description: clock used for the clock gate
-> > +      - description: clock used for the AHB bus, this clock is
-> > optional
-> >  
-> >    clock-names:
-> > +    minItems: 3
-> >      items:
-> >        - const: parent-clk
-> >        - const: sel-clk
-> >        - const: spi-clk
-> > +      - const: spi-hclk
+> > @@ -41,6 +41,7 @@ properties:
+> >                 - mediatek,mt8135-spi
+> >                 - mediatek,mt8173-spi
+> >                 - mediatek,mt8183-spi
+> > +              - mediatek,mt7986-spi-single
+> >   
+> >     reg:
+> >       maxItems: 1
 > 
-> 'spi' is redundant. Just 'hclk'.
+> I think that the best way to do this is to better organize the
+> compatibles
+> per-hardware, here... or the compatibles list will eventually grow
+> out of
+> control for little reason.
 > 
-OK, I'll fix it,thanks
+> Since "IPM" is a new SPI controller IP, I would expect more and more
+> MediaTek
+> SoCs using it in the future, so here's my proposal:
+Yes, we plan to use this IP with new ICs.
 
-> >  
-> >    mediatek,pad-select:
-> >      $ref: /schemas/types.yaml#/definitions/uint32-array
-> > -- 
-> > 2.25.1
-> > 
-> > 
+> 
+> - Add a generic (const) compatible "mediatek,spi-ipm" to describe the
+> hardware
+> - Add an enumeration with "mediatek,mt7986-spi-ipm" as the only
+> member, as to
+>    prepare this binding for the future.
+> - Single and quad mode can be expressed with generic SPI bindings!
+> 
+> Specifically, you can express that with "spi-rx-bus-width" for
+> SPI_RX_{....}
+> and "spi-tx-bus-width" for SPI_TX_{....}, so you don't need different
+> compatibles
+> for "mediatek,mt7986-spi-single" and "mediatek,mt7896-spi-quad".
+> 
+> Fast example:
+> 
+> spi@12345678 {
+>      compatible = "mediatek,mt7986-spi-ipm", "mediatek,spi-ipm";
+>      reg = <....>
+>      /* Quad mode */
+>      spi-rx-bus-width = <4>;
+>      spi-tx-bus-width = <4>;
+> 
+>      .... etc ....
+> }
+> 
+OK, thanks for your advice.
+
+> Regards,
+> Angelo
+> 
+> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
