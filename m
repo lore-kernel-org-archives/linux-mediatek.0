@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDA56C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 09:59:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7820C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 10:01:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=B3IJ8mPayCxSdUCE1VMGMO8XNOe/xoFFlnYyRliz2f8=; b=NjUtgQadSQ05T8
-	pcEuW9t+pMfmvK60IQg8puU/X92o/IGyaeGvoz2/I1WB9wXwy1LvTNz2Zy0B13IudeFJs7L3gJN8G
-	mangk99w2NyOsCiHrUw5Gmc4NxkypNcQNZwgj6+IBriH0f70lBuuAKwrp2ys4RHXnARMvMaGCH/kx
-	EwzgHGB5OJsn3x/iGMLiZ8MeZsOeiDeaBznm0+P7EMktNRxUuWSJTC6Go0qbulxUECt4Dbw2shX5n
-	Qw1S94KA23qqILgxjbouG+IV0i3G/Apwl0AvpTe8qCGAGC03T6lF4eZg29NJUZligE+AKMydPtHe8
-	DPehyT6YAl7FjzlJf2ug==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1Q2pWCMQEpUjmp0LD/XSQH5zViblha4T0DSEzE4MXvI=; b=C5DFb+Kip24+5a
+	4+98KMaxrRHXxYFqksaaA6OIq1H95860aNUR4oPsrKqxmx0vZOnbxTkY0zxqhTKM1LiJdzF/iyPfo
+	c6529zTI5KquS+uD13Esz6i796dgpzaj1yn4t9oEH5HNpECeaSVJmGVIRUxggSdnenMSzZ58+lUe7
+	LZ1K02xNqnxERosB5349XrbKb2t9iu17KJvT7ujAS0Ewz6lRLstF//r4fKHyN8U27C1EQfpzEPf1H
+	LcU18INBLmDDTd5wf/Cj4cE9ENjs2cLZEgshuel4bYOY/jcG4nnnDVBpSDmynZnzPWOENsIr4rTe3
+	fX/0IvtDiZgmdxdBLQUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRWd4-003fyW-Gq; Tue, 08 Mar 2022 09:59:42 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1nRWeV-003gZk-Pu; Tue, 08 Mar 2022 10:01:11 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRWSy-003c9H-Ao
- for linux-mediatek@lists.infradead.org; Tue, 08 Mar 2022 09:49:17 +0000
-Received: by mail-wr1-x435.google.com with SMTP id p9so27518598wra.12
- for <linux-mediatek@lists.infradead.org>; Tue, 08 Mar 2022 01:49:15 -0800 (PST)
+ id 1nRWSz-003cAN-Kt
+ for linux-mediatek@lists.infradead.org; Tue, 08 Mar 2022 09:49:19 +0000
+Received: by mail-wr1-x433.google.com with SMTP id e24so14545772wrc.10
+ for <linux-mediatek@lists.infradead.org>; Tue, 08 Mar 2022 01:49:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=02UDf1pdb0U70hOLizwodglM9/0MIkQTrFbx130jmiE=;
- b=TjZphH9hgyELIqRwTi2WvGdoGj1J9+ko37q3Dy+QljjxZrcmoDk6pGD+9BkVeoWGl1
- c9cQYim68QjDDKBJC75LgOBARQdj4uHxDI5dHKKBf7O/my4JRPQbITljSvXVICz+kIzQ
- uzMuCIEvQpgxiO7KMGkHAA9CI20uLtfq+mC2kUGMuJymhFoQsgvBfeH8Dh37Ijctf9/1
- j9s1H20UTvvd4CNKc+lJbQwbO0zPanfu1nuz0cHXv/0abJA/1RsruwvnID4aMwSvIGmN
- GPY9CCl/Vys09GOCr4GHKBC8J9A02W7kZrjPxLAvuU0LUvaGFMMvdelTSF37S0lPxzqf
- ddAA==
+ bh=8Gn7RMbXnK5pOX3NLfwNAKfKCwU3agMth+Gnkiqncgw=;
+ b=n1mtQkUkGKPBmZFNsNswSmpz1kilToriI0Gn2TXWimIaqUwnDcc793xA5k7sXREWB6
+ aDIQ/y9tV1HqnLZy8JuSpLONMKWZBzeYvyd/x5N+mpbnjbPY2kBQ/c/WhErow4Fj1gor
+ uOUMKwuD3519EGocbq+2HEjX84vF+gNrm4pDky3TtSrp9TCsWw1OZXF1eKhWMwb6bucv
+ AWU1SucCnbuQgDzehoDmQV4lYdc4iMbLZtYMON9jA38ZZANdSt7LNKT/DbZXN9Z64NET
+ EM7BtQDNvqOrhthwtkfpqZjHH6GSMyGu3tVGyEkyZ95FwSLGaBhQvvuuU3nXZgpE7ZyV
+ yYJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=02UDf1pdb0U70hOLizwodglM9/0MIkQTrFbx130jmiE=;
- b=D4UFt2yRpmJJA/PNCd+88UyFj7DQ7bCrWVKjgVHQnywczfK5n/U2JC9xeK6tuNG38k
- djJ/r6h0gj+9IGDUJkefK0faikYJ6QL4OOUpY/xykTnLeXRxHws1BuLB3HX5SXbjNT2f
- T7TUf2nrZSkwzy6JJTML227CJGZUe1XJX/tATBEOMS/+VW7QrPqNGwvepHIM3/MFj2n1
- Z5SxaiTfgDR1TyXhBq7dBJtq16o61NsS9eVm5pnM1SzeZjLOr8JOI7Mc5DYKFbeOxxp/
- 4nDZr+Xr0Mm9rTNb9COeEL4x9g967hsOV9lyPOKhN/7m5JfubbpuiRIRCGnC9cyRwxNz
- qsig==
-X-Gm-Message-State: AOAM531JfS4TClK1PUV2VwtTe7j67XuA1uKAvoWfW8yVPGbIJhsc+1kh
- 9di8rufTdzTIz7Y+oAFquxb2/w==
-X-Google-Smtp-Source: ABdhPJwJl4t5Tn7r80HbhzAHKE1pKs8GUwcFZWPV2LvK0bS7AXZojL7riB/OQzKcrK/Px9dayrwCYg==
-X-Received: by 2002:adf:fa46:0:b0:1f1:d99a:4b1 with SMTP id
- y6-20020adffa46000000b001f1d99a04b1mr11663745wrr.516.1646732954621; 
- Tue, 08 Mar 2022 01:49:14 -0800 (PST)
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=8Gn7RMbXnK5pOX3NLfwNAKfKCwU3agMth+Gnkiqncgw=;
+ b=AaHpfssyIHRsKPXZNUaugqW6Wtql5/T0nxHHTjjet4HlhMz6no5bFFzMYqTn1J0MRW
+ LFXIIqOb/WP66VvhnxCLx7TH5Dc7s5n9YLffiPeAO7p4PjAC1o001TjaYOKm+CExOgvV
+ PvGAYqkVLhUNy/3+dSM8vaXsoQcyxe7HPji8FbZ9fAUqhLKy89bJPYDLzfUEGC1CvS14
+ PEXc2Gs3uKHIbVwOvklCZq3PiGYcziv9O7CCtMiBUpuNarCVE/us4zczKptq717tk+t9
+ iAFvfZ+5G2Ts7vjG4EUZHH9MetAr5QSHt1YHtCkTxgfgdkis2W2xCyqRQqCdk+XF1Sjf
+ X4Vw==
+X-Gm-Message-State: AOAM533u+eV5QunTCNgSGSEH8sPumq1c7bKw06zSvouMP5HQcoV5sgHB
+ AbuQK5IENZ5vtxrBxy+vzdQbcw==
+X-Google-Smtp-Source: ABdhPJwgpwNlL+6iw/j8w2WjZiYerIbGT8Nl7xwa9rGUtNmbZvaZejExak5PLKkv0MXEHhHj+9F2TQ==
+X-Received: by 2002:a5d:6344:0:b0:1f0:21ee:9705 with SMTP id
+ b4-20020a5d6344000000b001f021ee9705mr11450999wrw.93.1646732955982; 
+ Tue, 08 Mar 2022 01:49:15 -0800 (PST)
 Received: from prec5560.. (freifunk-gw.bsa1-cpe1.syseleven.net. [176.74.57.43])
  by smtp.gmail.com with ESMTPSA id
- z3-20020a1cf403000000b0037d1f4a2201sm1684885wma.21.2022.03.08.01.49.13
+ z3-20020a1cf403000000b0037d1f4a2201sm1684885wma.21.2022.03.08.01.49.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Mar 2022 01:49:14 -0800 (PST)
+ Tue, 08 Mar 2022 01:49:15 -0800 (PST)
 From: Robert Foss <robert.foss@linaro.org>
 To: airlied@linux.ie, daniel@ffwll.ch, robh+dt@kernel.org,
  matthias.bgg@gmail.com, robert.foss@linaro.org,
@@ -67,14 +67,17 @@ To: airlied@linux.ie, daniel@ffwll.ch, robh+dt@kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  Chen-Yu Tsai <wenst@chromium.org>, arnd@arndb.de
-Subject: [PATCH v2 0/2] Revert vendor property from anx7625 bindings
-Date: Tue,  8 Mar 2022 10:49:09 +0100
-Message-Id: <20220308094911.2680291-1-robert.foss@linaro.org>
+Subject: [PATCH v2 1/2] dt-bindings: drm/bridge: anx7625: Revert DPI support
+Date: Tue,  8 Mar 2022 10:49:10 +0100
+Message-Id: <20220308094911.2680291-2-robert.foss@linaro.org>
 X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20220308094911.2680291-1-robert.foss@linaro.org>
+References: <20220308094911.2680291-1-robert.foss@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_014916_401300_76780947 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20220308_014917_704419_8C796A9C 
+X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,41 +94,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-An issue[1] related to how the V4L2_FWNODE_BUS_TYPE_PARALLEL flag is mis-used
-was found in recent addition to the anx7625 driver.
+Revert DPI support from binding.
 
-As used currently CPI (camera parallel interface) and DPI
-(display parallel interface) would share the
-V4L2_FWNODE_BUS_TYPE_PARALLEL enum. I think that would be perfectly
-functional, but it is not what V4L2_FWNODE_BUS_TYPE_PARALLEL is
-documented to represent. As far as I can see it's only intended to
-represent CPI.
+DPI support relies on the bus-type enum which does not yet support
+Mipi DPI, since no v4l2_fwnode_bus_type has been defined for this
+bus type.
 
-Instead of having V4L2_FWNODE_BUS_TYPE_PARALLEL represent two
-standards, I think they should be split. And possibly
-V4L2_FWNODE_BUS_TYPE_PARALLEL should be renamed for CPI, but that is a
-separate story. This would provide for the neatest and most legible
-solution. If this solution is implemented, this range would be
-incorrect. Additionally the snippet reverted in 2/2 of this series
-would no longer be valid.
+When DPI for anx7625 was initially added, it assumed that
+V4L2_FWNODE_BUS_TYPE_PARALLEL was the correct bus type for
+representing DPI, which it is not.
 
-As it stands V4L2_FWNODE_BUS_TYPE_PARALLEL was used to represent DPI
-due to not being caught in the review process.
+In order to prevent adding this mis-usage to the ABI, let's revert
+the support.
 
-In order to not introduce this issue into the ABI, let's revert the changes
-to the anx7625 dt-binding related to this.
+Signed-off-by: Robert Foss <robert.foss@linaro.org>
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+---
 
-[1] https://lore.kernel.org/all/YiTruiCIkyxs3jTC@pendragon.ideasonboard.com/
-
-Robert Foss (2):
-  dt-bindings: drm/bridge: anx7625: Revert DPI support
-  Revert "arm64: dts: mt8183: jacuzzi: Fix bus properties in anx's DSI
-    endpoint"
+Changes since v1:
+- Rob: Instead of reverting the entire commit introducing this,
+       do a partial revert of only the relevant parts.
 
  .../display/bridge/analogix,anx7625.yaml      | 19 +------------------
- .../dts/mediatek/mt8183-kukui-jacuzzi.dtsi    |  2 --
- 2 files changed, 1 insertion(+), 20 deletions(-)
+ 1 file changed, 1 insertion(+), 18 deletions(-)
 
+diff --git a/Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml b/Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
+index 1d3e88daca041..25b5ef3f759ca 100644
+--- a/Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
++++ b/Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
+@@ -91,22 +91,7 @@ properties:
+         $ref: /schemas/graph.yaml#/$defs/port-base
+         unevaluatedProperties: false
+         description:
+-          MIPI DSI/DPI input.
+-
+-        properties:
+-          endpoint:
+-            $ref: /schemas/media/video-interfaces.yaml#
+-            type: object
+-            additionalProperties: false
+-
+-            properties:
+-              remote-endpoint: true
+-
+-              bus-type:
+-                enum: [1, 5]
+-                default: 1
+-
+-              data-lanes: true
++          Video port for MIPI DSI input.
+ 
+       port@1:
+         $ref: /schemas/graph.yaml#/properties/port
+@@ -155,8 +140,6 @@ examples:
+                     reg = <0>;
+                     anx7625_in: endpoint {
+                         remote-endpoint = <&mipi_dsi>;
+-                        bus-type = <5>;
+-                        data-lanes = <0 1 2 3>;
+                     };
+                 };
+ 
 -- 
 2.32.0
 
