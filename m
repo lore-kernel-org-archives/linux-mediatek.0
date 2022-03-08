@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51839C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 15:28:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7109C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 15:28:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yMP15A/IrcHPVcp91U8azI9Iv28TeVIYJRVkjSnqJt8=; b=hwtiQjPbd4HBQO
-	AVOTT/nBF/QfCWiLw6gIcwJbicvNV71pI1vgmCff+pdXuJRfXxJ9cpTDFyVMCufSbp4V5OkoA8Ye/
-	cVCBG3f3dJaoVm6CBn1kuj98C5x+TucIQkBiSSFdV1x6LeEPoXJmNnPTMp5RD6OBsTVWjVh7nTmST
-	S+VuU1scDEFeYrs4fn13YXYl3AvLJBE3cnyC0FdIIix32imI0+3v/URk4qEf6CoQFWPudb/MfUUdg
-	XWTZRTYLZrTJThE5yt+LwaM0KXWdJH/NSSG3nWyvQTDvIuYMrZmGBd5pzrlDCn77+BGLXrL4oGjVt
-	VppaQgpB4idDpDoRzVgQ==;
+	List-Owner; bh=bPn/tw0zzVjRMjgyHrz7W9XbcPLrzRS432bdVlyUyM8=; b=F4EohQBwred7PL
+	jrzR73+UkVVNwFaWO+SF7qoRMXYTbIPNYtZ5ioJLOczmDv1AYYt8ZF4l0Fb9RPKIJ2A3YaVm6cwTY
+	4xFiACVMarrqV5FMOIYJVlQROJY5IPmvZ8ejv2GYhdpEwVXGLcZRxG71z0mDlbZtT+9RqkQt3hFmX
+	xIpvGPvRfdP2iwFjLyFEe0znYcjGFnQjPaH8tigai1QRhnNG649LW34D0A/67zzBm26zDqfq5Ysj1
+	c4lsTxS56IsDjMNEVeGy08XSIaQYGc1GTDFCkRwpTkZ1R6vRhKMfAwNSX37puMWnIM3HgLgNEBHG9
+	+CalmYBftQzi6pcwOwNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRbkg-004xOg-22; Tue, 08 Mar 2022 15:27:54 +0000
+	id 1nRbkh-004xPQ-Qp; Tue, 08 Mar 2022 15:27:55 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRbk9-004xDm-8X; Tue, 08 Mar 2022 15:27:22 +0000
+ id 1nRbk9-004xDC-8W; Tue, 08 Mar 2022 15:27:22 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 7841A1F42FA2
+ (Authenticated sender: kholk11) with ESMTPSA id 151A41F42FA1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1646753240;
- bh=mIroQP3tB1a7rDkP2yeLhxzu7G9KButjFXnb5VdUlUA=;
+ s=mail; t=1646753237;
+ bh=YrSAmlhNuPnA20I9mMIbUEsD2fCEnGkr+ilv13TXmk0=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=nbipGJDxzfwckK1I0UeDsp0CromMA5ceLPeeCxHVxHPLCzUBzHs4PzQnsAIEgcvhT
- NnO9ozCej3tF4E43fGFhwZKO1dqS8B+DvIPKEBgNTcojdA5EnEUowxNXwiPEPuel2s
- juPy82lrRaT6y6Gcr1s8KCzkbXrDTmZi61piJq48YyRRD5GsRgKrL0IICJFL1IQd0j
- JH9It5qs/TSfJDnuMsBfuL/sUtmCtsyyxigw1MrkUIF94ifxn9ottwtquLi7ahhKGv
- lKhAj2x0AjwgVOC9dIRqJIJHxYVFNz/5NmCeFz/ANKwXXBlgkMCmbsv2lLUlalZ6tK
- v1oEA2MmlUO3A==
-Message-ID: <979ed023-ce90-ebae-7729-b5a2982b05d0@collabora.com>
-Date: Tue, 8 Mar 2022 16:27:16 +0100
+ b=aZym5RVsJPVDcroiovKdN5qUHaiQw37QTqDdx6ByCKcjne7NAEcAa855Qxs2Qy+2J
+ 4Erm1YYwLasG3hnrcp8f521OYbDSlkLMryuCh8uHkckeFMY6NyhlLoN2F7oIfV3hF1
+ F0Uy5gnihs4lYPJcdqAKH+8CARbpTD5P9QOlevuoPwC9yeJdeYAkeCOKc7pvOvumzK
+ 5ikJdOToe7gKT1qIplS7M21F4FyLLpViSLYOpz0otypIGMJx72aGO3r4kMAmt/I//K
+ BXY7nM2LmyWl5W2v+kl1JWgPHo+Cx0ClCTosYQ3RArpsb2+ugZ0q/WNzX/GUiHTK7G
+ eh6swMwlBtAOg==
+Message-ID: <1dacb30a-ee81-d6a9-d2a0-500385c57de4@collabora.com>
+Date: Tue, 8 Mar 2022 16:27:14 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
-Subject: Re: [PATCH v2 07/11] pinctrl: mediatek: paris: Rework
- mtk_pinconf_{get,set} switch/case logic
+Subject: Re: [PATCH v2 02/11] pinctrl: mediatek: paris: Fix PIN_CONFIG_BIAS_*
+ readback
 Content-Language: en-US
 To: Chen-Yu Tsai <wenst@chromium.org>, Sean Wang <sean.wang@kernel.org>,
  Linus Walleij <linus.walleij@linaro.org>,
@@ -50,12 +50,12 @@ To: Chen-Yu Tsai <wenst@chromium.org>, Sean Wang <sean.wang@kernel.org>,
 Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20220308100956.2750295-1-wenst@chromium.org>
- <20220308100956.2750295-8-wenst@chromium.org>
+ <20220308100956.2750295-3-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220308100956.2750295-8-wenst@chromium.org>
+In-Reply-To: <20220308100956.2750295-3-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_072721_535758_20401B22 
-X-CRM114-Status: GOOD (  16.20  )
+X-CRM114-CacheID: sfid-20220308_072721_533198_8A61C6F5 
+X-CRM114-Status: GOOD (  19.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,32 +73,55 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 08/03/22 11:09, Chen-Yu Tsai ha scritto:
-> The current code deals with optional features by testing for the
-> function pointers and returning -ENOTSUPP if it is not valid. This is
-> done for multiple pin config settings and results in the code that
-> handles the supporting cases to get indented by one level. This is
-> aggrevated by the fact that some features require another level of
-> conditionals.
+> When reading back pin bias settings, if the pin is not in the
+> corresponding bias state, the function should return -EINVAL.
 > 
-> Instead of assigning the same error code in all unsupported optional
-> feature cases, simply have that error code as the default, and break
-> out of the switch/case block whenever a feature is unsupported, or an
-> error is returned. This reduces indentation by one level for the useful
-> code.
+> Fix this in the mediatek-paris pinctrl library so that the read back
+> state is not littered with bogus a "input bias disabled" combined with
+> "pull up" or "pull down" states.
 > 
-> Also replace the goto statements with break statements. The result is
-> the same, as the gotos simply exit the switch/case block, which can
-> also be achieved with a break statement. With the latter the intent
-> is clear and easier to understand.
-> 
+> Fixes: 805250982bb5 ("pinctrl: mediatek: add pinctrl-paris that implements the vendor dt-bindings")
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 > ---
->   drivers/pinctrl/mediatek/pinctrl-paris.c | 144 ++++++++++-------------
->   1 file changed, 61 insertions(+), 83 deletions(-)
+>   drivers/pinctrl/mediatek/pinctrl-paris.c | 16 ++++++----------
+>   1 file changed, 6 insertions(+), 10 deletions(-)
 > 
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> index f9f9110f2107..7037560ecda9 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> @@ -96,20 +96,16 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
+>   			err = hw->soc->bias_get_combo(hw, desc, &pullup, &ret);
+>   			if (err)
+>   				goto out;
+> +			if (ret == MTK_PUPD_SET_R1R0_00)
+> +				ret = MTK_DISABLE;
+>   			if (param == PIN_CONFIG_BIAS_DISABLE) {
+> -				if (ret == MTK_PUPD_SET_R1R0_00)
+> -					ret = MTK_DISABLE;
+> +				if (ret != MTK_DISABLE)
+> +					err = -EINVAL;
+>   			} else if (param == PIN_CONFIG_BIAS_PULL_UP) {
+> -				/* When desire to get pull-up value, return
+> -				 *  error if current setting is pull-down
+> -				 */
+> -				if (!pullup)
+> +				if (!pullup || ret == MTK_DISABLE)
+>   					err = -EINVAL;
+>   			} else if (param == PIN_CONFIG_BIAS_PULL_DOWN) {
+> -				/* When desire to get pull-down value, return
+> -				 *  error if current setting is pull-up
+> -				 */
+> -				if (pullup)
+> +				if (pullup || ret == MTK_DISABLE)
+>   					err = -EINVAL;
+>   			}
+>   		} else {
+
+
 
 
 _______________________________________________
