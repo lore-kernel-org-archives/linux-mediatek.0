@@ -4,64 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80FF1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 12:30:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC20CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 12:49:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mMCmw5hzHP8ja1lWwES8M/2Z8fwq+4teZUssqpoj1U4=; b=vbZTtUnTm6ubbM
-	7OWfUSB5EI573ffh2nvzSx9lRBljQUTPsM8zej6JMkBtTbxWmQieJIUSWvUJhlw0IQmkYtL2UsPHp
-	R7idWatEIFxC823EmIdaq2ebxUZHQrMR7qGWESYvmcztzKGRlRcDLNlh6l3zFyaKNOEBqNUjt5+J3
-	4KnVL53oms8qHzdvN8FWEY94Ip9haheMMjVrzPe9cZl45KufDhQt/pSMRBLL0u1wb4w5KC0Nuk0fU
-	s+dIKg6nKSzYYApQ8oD05fbcjEL0/gR0e05x5/YGRKQQvVmnJPBFdyDWJ1hduIAlOJYpQn5vad8UP
-	NY7SYVIzY3yYnXLcpVig==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5r8wCdTPMGwl15eR6oMTE8q0lw8uDAgdl7uJ5qC7aLc=; b=JoSFCmsLv726vGlpWu7VkHh6EG
+	4Z/NenFEsS7FyPTjvPmMvdXL3iNch6ci6zRZRL77r1UNNGwLywfwY6XWN5fQbFQupVs0tOtS0cKxn
+	BEi5pDcRjIX1bEb/k8dwaUpaSdDZnM6ribF3rw2nvZMZQzZTgp/Uso0grkpmlINcdZqZoDZFJcC9t
+	8mgkTWnoUeffLVwSwqghrd6t83gRK2fjEAxWBt2rouUAiOptBQTOfjMc/08NuhpbYh9MgCC/rM5LC
+	VgPkxXDeu+2nHNDiamceMdlNLJ3RggzV7f/H56e9qJDexmUq2FUGHSDIgpsvLeeEE5wf3sUxnBUzn
+	vxbSYr+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRYyx-004Mat-Vw; Tue, 08 Mar 2022 12:30:27 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nRZHG-004P6k-R0; Tue, 08 Mar 2022 12:49:22 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRYyk-004MZI-Kz; Tue, 08 Mar 2022 12:30:16 +0000
+ id 1nRZH4-004P4M-Ca; Tue, 08 Mar 2022 12:49:12 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id F1AF7B818A4;
- Tue,  8 Mar 2022 12:30:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 967C4C340EC;
- Tue,  8 Mar 2022 12:30:10 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 11091B818B2;
+ Tue,  8 Mar 2022 12:49:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F0917C340EB;
+ Tue,  8 Mar 2022 12:49:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646742610;
- bh=6FszrISk1dSIgT1ZCr4pn2WXttnNm0A9IShBszaSE4g=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=Z15SDG5piWI0HQAlErMTBxXMpfTZA8SZ24/okqswokz4BZdXb4OSJJk8QdVzL3gDB
- RoY5yzBj7G4lwHC34DrvUp3NBBs36XIM95cJrSAxFjy7QvPhBcePAY/RZdOsVEkT1h
- +KbDfS1m969124FOAcUgT5JLZLW9pgEW4gAi3M6AsIQcFUE+AaLKnSv6QMLTqyc3SZ
- 1syl2C0NYquaxaCdLsr1RvfzL2fUeAUoa+/YrURAyRUghJ8qPCPxRN9fpFMMXZ+HXU
- N16NMQCSRw79Z38eM454+5kQxxt0K55SjenDV02ek++NkzUbWDWPvqlm3fnP31w0oa
- 5eAP9aVW+n/aQ==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
- (localhost.localdomain [127.0.0.1])
- by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
- 777B4E6D3DD; Tue,  8 Mar 2022 12:30:10 +0000 (UTC)
+ s=k20201202; t=1646743747;
+ bh=2uWXtW9QT2635460+Dinu7D098A/hUaWfqozGWkV7w8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=KeO8tTIKHAtU2R13GSd/FvDMehJL18154CQO3JCqCvkQPQ8n+B0lvR3IxQZfSA0Lu
+ 1vjB9ymejx/bqO/0VJFtuKj01n/Cwapbs7aDf3gGJCVeHyrzgLP8HFt7/2YHbyeG0E
+ 4Ex8BOUGPcKuvUZsrre0k10LjzN2vZde+/5C98q3rUH8ckjNoXwKp7Xy0KTpRexAYB
+ 1RiMF7TKeFnJjyGZfCBiIfSuVpJmTalnoVOvCTKaQ6gAcue/mZHzLapOTDqswPlYjf
+ lbu6mMYFvC2PQH+fKalcdrV61NatbFaQvawOwjFk1ZWoKwE8YzQ+7TearH3RjpLYlv
+ F8792+X1779cg==
+Date: Tue, 8 Mar 2022 12:49:02 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Lee Jones <lee.jones@linaro.org>
+Cc: Johnson Wang <johnson.wang@mediatek.com>, robh+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [GIT PULL - FAO MARK BROWN]: Immutable branch for MediaTek
+ MT6366 due for the v5.18 merge window
+Message-ID: <YidQvkIYsacSPsXv@sirena.org.uk>
+References: <20220106065407.16036-1-johnson.wang@mediatek.com>
+ <YicTu6FwOR7zIC6I@google.com>
 MIME-Version: 1.0
-Subject: Re: [PATCH net] net: dsa: mt7530: fix incorrect test in
- mt753x_phylink_validate()
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <164674261048.611.6556079639015466902.git-patchwork-notify@kernel.org>
-Date: Tue, 08 Mar 2022 12:30:10 +0000
-References: <E1nRCF0-00CiXD-7q@rmk-PC.armlinux.org.uk>
-In-Reply-To: <E1nRCF0-00CiXD-7q@rmk-PC.armlinux.org.uk>
-To: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-Cc: dqfext@gmail.com, Landen.Chao@mediatek.com, sean.wang@mediatek.com,
- andrew@lunn.ch, vivien.didelot@gmail.com, f.fainelli@gmail.com,
- olteanv@gmail.com, davem@davemloft.net, kuba@kernel.org,
- matthias.bgg@gmail.com, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <YicTu6FwOR7zIC6I@google.com>
+X-Cookie: Dental health is next to mental health.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_043014_895632_6903C949 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20220308_044910_589854_0F108E83 
+X-CRM114-Status: GOOD (  14.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,41 +70,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3152415538822928233=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
 
-This patch was applied to netdev/net.git (master)
-by Paolo Abeni <pabeni@redhat.com>:
-
-On Mon, 07 Mar 2022 12:13:30 +0000 you wrote:
-> Discussing one of the tests in mt753x_phylink_validate() with Landen
-> Chao confirms that the "||" should be "&&". Fix this.
-> 
-> Fixes: c288575f7810 ("net: dsa: mt7530: Add the support of MT7531 switch")
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> ---
-> As the mt7530 maintainers are not very responsive to my recent two patch
-> series, but Landen Chao did state that this should be "&&" not "||", lets
-> at least get this patch merged.
-> 
-> [...]
-
-Here is the summary with links:
-  - [net] net: dsa: mt7530: fix incorrect test in mt753x_phylink_validate()
-    https://git.kernel.org/netdev/net/c/e5417cbf7ab5
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+--===============3152415538822928233==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="QE9JO7JgZCx+voQy"
+Content-Disposition: inline
 
 
+--QE9JO7JgZCx+voQy
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Mar 08, 2022 at 08:28:43AM +0000, Lee Jones wrote:
+> Mark,
+>=20
+> This one is just for you, so you can merge the other patches.
+
+I don't know what the other patches you're referring to here are,
+someone's going to need to resend them.
+
+I'm also not sure things like like "FAO MARK BROWN" in the subject line
+of the e-mail, I can already see if a message has been sent to me from
+the To and it means less of the actual subject is wrapped out of sight
+in my inbox.
+
+--QE9JO7JgZCx+voQy
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmInUL0ACgkQJNaLcl1U
+h9C/Qgf/WnaMYcqzKVQ8vePGa5v2ViuhDUssLXOHgpAuydZbERN+Gwrs4SHm1O9w
+xgvNZuX7aZ1BAOn0IsMmhyNdj+18fvA3kvuX33MQcwi4gpg/WyQU5n0Ff4YmgaFu
+MZe4Lqt0ZVAxsWccgFXjkBvrObZQwK+GB28brmPBgnteeJj/ZnAY6w7C53pTBJwm
+SpxCdc20Nz5QP/Mfvfqos766weCM3ptP8dxGJzn5Cinb2Wi+ZXchoB6PU32L+lzX
+FYOxFT8z3NaKPsqhFfIS9nvo+zwzhI0GJ3Cb5Oy2Cu4S5t3kcfb/3qplEJPk6hvT
+YOHPeANMYG38LxYZf84nAJqKHEXoDQ==
+=IkM/
+-----END PGP SIGNATURE-----
+
+--QE9JO7JgZCx+voQy--
+
+
+--===============3152415538822928233==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============3152415538822928233==--
+
