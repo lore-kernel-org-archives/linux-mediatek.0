@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9311C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 05:37:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70790C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 06:20:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ij2F7bRncWpKweJTdXcTfNDGXPoRw1jRUD2UwFZDpDI=; b=xizaiLgtI5ViJe
-	XlhvGXEnf0MG3vl/nFnIVz6u1bT1ATt0M94D3XHz+1DVPu871W21j7BUNd/E2s1CGRqTDxQeupWRn
-	+XQ1DBwx/CYjY0+D+GN/IlNbhqOsv6zkFwRAwUVqMGcv1X2VZosp4IBniCmBcHE3isrVwTLUTuj/s
-	KK0phKiqN660wzOR63FIdr0s9yfG4/FXvu1CCvLJIL6poaxlqHOKtr5mZ43U0xuKLbCtt5e1UkjVZ
-	RvQHeO8Wu6xCtCOyTcxOi9eLxwdx5QV1pR5/i2Z7QWhcOQeT64y6UfhVTj1+BEqaNMePia9ApnLpM
-	hdy8hGWIkBjuXrQIsdNA==;
+	List-Owner; bh=1w/JXwuBUHkjKEiTlW8qyPF2a7nyJuNSALQi4yNCedM=; b=VdnaOjlIqWqZKv
+	xP9kLmdp9pU0Evk5SxIlHoXihqF4NaDjmiVWa0G1zSoU2cKMHWGLEiUtlny/u53hjjODmrjXhUMn5
+	OGUA3hc7COlMSBpUj5WWfICsOxsKwjbjerMuWKOybhiooULOLPTdwIdZKmdWKOLOlwRweitf1ShQf
+	4MdqK9Qo8N54fg9mFqhiev3GPK5EIYm0W1OediOvcNINIdwkJoMIlLiV5KVPGtC23i27hgYdNHup8
+	TduO0Ka6Rma5+71cgw23RnYSJ7aajIWnMlnCJai8Sh6eAgnaQS0dQuwocqNPf/22dzfZeiUnTHvOU
+	AT9on8v31/yiNmGURSmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRSWg-002hFi-KI; Tue, 08 Mar 2022 05:36:50 +0000
+	id 1nRTCt-002mY1-Tc; Tue, 08 Mar 2022 06:20:27 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRSWT-002hE8-8H; Tue, 08 Mar 2022 05:36:39 +0000
-X-UUID: 050489aba0ee43a3bc1e83fe2599843e-20220307
-X-UUID: 050489aba0ee43a3bc1e83fe2599843e-20220307
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
+ id 1nRTCp-002mWB-TE; Tue, 08 Mar 2022 06:20:26 +0000
+X-UUID: 1115591e0926442aaf38e920712f8e2e-20220307
+X-UUID: 1115591e0926442aaf38e920712f8e2e-20220307
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1863637855; Mon, 07 Mar 2022 22:36:28 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 7 Mar 2022 21:36:26 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 8 Mar 2022 13:36:25 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ with ESMTP id 654514624; Mon, 07 Mar 2022 23:20:18 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 7 Mar 2022 22:20:17 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 8 Mar 2022 14:20:15 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 8 Mar 2022 13:36:25 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <linmq006@gmail.com>
-CC: <amitk@kernel.org>, <daniel.lezcano@linaro.org>, <henry.yen@mediatek.com>, 
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-pm@vger.kernel.org>,
- <matthias.bgg@gmail.com>, <rafael@kernel.org>, <rui.zhang@intel.com>
-Subject: Re: [PATCH] thermal: mediatek: Fix some leaks in mtk_thermal_probe
-Date: Tue, 8 Mar 2022 13:36:25 +0800
-Message-ID: <20220308053625.21359-1-miles.chen@mediatek.com>
+ Frontend Transport; Tue, 8 Mar 2022 14:20:15 +0800
+From: Nancy.Lin <nancy.lin@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
+ <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ "Nancy . Lin" <nancy.lin@mediatek.com>, Yongqiang Niu
+ <yongqiang.niu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+ <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>
+Subject: [PATCH v13 02/22] dt-bindings: reset: mt8195: add vdosys1 reset
+ control bit
+Date: Tue, 8 Mar 2022 14:19:52 +0800
+Message-ID: <20220308062012.21838-3-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220307113438.21338-1-linmq006@gmail.com>
-References: <20220307113438.21338-1-linmq006@gmail.com>
+In-Reply-To: <20220308062012.21838-1-nancy.lin@mediatek.com>
+References: <20220308062012.21838-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220307_213637_318664_29C7A3F1 
-X-CRM114-Status: UNSURE (   6.89  )
+X-CRM114-CacheID: sfid-20220307_222023_973674_7AD9E1E6 
+X-CRM114-Status: UNSURE (   9.21  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,22 +80,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Miaoqian,
+Add vdosys1 reset control bit for MT8195 platform.
 
-> If an error occurs after a successful 'of_iomap()' call, it must be undone
-> by a corresponding 'iounmap()' call
-> 
-> Fixes: 89945047b166 ("thermal: mediatek: Add tsensor support for V2 thermal system")
-> Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
->
+Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ include/dt-bindings/reset/mt8195-resets.h | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-Thanks for fixing this.
+diff --git a/include/dt-bindings/reset/mt8195-resets.h b/include/dt-bindings/reset/mt8195-resets.h
+index a26bccc8b957..aab8d74496a6 100644
+--- a/include/dt-bindings/reset/mt8195-resets.h
++++ b/include/dt-bindings/reset/mt8195-resets.h
+@@ -26,4 +26,16 @@
+ 
+ #define MT8195_TOPRGU_SW_RST_NUM               16
+ 
++/* VDOSYS1 */
++#define MT8195_VDOSYS1_SW0_RST_B_MERGE0_DL_ASYNC          25
++#define MT8195_VDOSYS1_SW0_RST_B_MERGE1_DL_ASYNC          26
++#define MT8195_VDOSYS1_SW0_RST_B_MERGE2_DL_ASYNC          27
++#define MT8195_VDOSYS1_SW0_RST_B_MERGE3_DL_ASYNC          28
++#define MT8195_VDOSYS1_SW0_RST_B_MERGE4_DL_ASYNC          29
++#define MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE0_DL_ASYNC     51
++#define MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE1_DL_ASYNC     52
++#define MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE0_DL_ASYNC     53
++#define MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE1_DL_ASYNC     54
++#define MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_BE_DL_ASYNC      55
++
+ #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8195 */
+-- 
+2.18.0
 
-Reviewed-by: Miles Chen <miles.chen@mediatek.com>
-
-
-Thanks,
-Miles
 
 _______________________________________________
 Linux-mediatek mailing list
