@@ -4,77 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E69AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 16:35:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABE89C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 16:52:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hujRjx6gCrAsQqlqdC743xUFigJGe2KjY9DYM/HRXvU=; b=eKA4DvQ3v1vFKI
-	uDirpNGH4z0f3MJIVGGl0eTKMhsHxs6bYKESjSEf8LKYe7EeEAdgXBOe6yM7fSbJecm1anur3u1n/
-	KdqmxWGAqzemFHNCzrMjNSEIKf+cOtsEGZRXMbYGs9rLFV7Vp0xsxAQbC3IpyA7YHrtRnJI8TuOeh
-	G3nNOUApttHyxViSlhduKxgHo8CxOj9LNd8p/vSnoTW78r332PY2RKTfY/gQ1vsQL+QL6FXEi67eI
-	OPN7onPegrEZ0wOJIHys1MkWMV9XHrDkAVzATZRT8XdYFlJGqa9cdP9X0caq5i3C/cbwPdW5qFd34
-	UhGrAGLY/ejFyKsjC0Yw==;
+	List-Owner; bh=vF+QPifSi5jRRpimT/NNpAl6fmP9aTZPpj5W6zpqc/w=; b=RNxKKc7LVvGGNR
+	7grmtE8X0szNdXS5memXq6+wd1UwdT/BHCqQt3BcMBlZkCFTYr/8PfhmN8ylmeIWthsjGhfqBwbRD
+	PHDpQ/HR73Qrlu19ssWNDngmN6zHQnfiFzI0OjZeHpMe09/kNGSS8Y5ms04KHkgacXcPPYDKBM43R
+	JvVCdgtHb/UNOT5KvdiY5l2bc5JXgEKR+d0nxcXqx+1eVyNlhknQF2Pr3WxSqoRwxXCHjQefX0mbu
+	0rLSqsPmKGAIKiPTwZVJ/Dd9gcEEEUBOAuh+jdGmvUxU41ckuhPbFv21p9ijx8fXI3XyCla+6qOSI
+	xR0q1FXwm90Lyxl9UGzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRcnc-005EyZ-Ku; Tue, 08 Mar 2022 16:35:00 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nRd4L-005Kr7-IP; Tue, 08 Mar 2022 16:52:17 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRcT6-0059B9-ET; Tue, 08 Mar 2022 16:13:49 +0000
+ id 1nRcxh-005IfO-0P; Tue, 08 Mar 2022 16:45:26 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id F2052B81ABA;
- Tue,  8 Mar 2022 16:13:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC7C6C340EF;
- Tue,  8 Mar 2022 16:13:45 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 5CED76175F;
+ Tue,  8 Mar 2022 16:45:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48674C340F4;
+ Tue,  8 Mar 2022 16:45:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646756025;
- bh=jXBz2f9tChtMFtKyOyZ4Q3h2mhlA6Onv+Izw71UufzM=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=UnxR/RJqQQzmrMWTZA3iu/62twkicgqrZxqPlgt9nko9YFkMPdzqQdhKoUlmtE+sA
- LsIrzYMHxXsjIhdqok6IGMj9Rq+1a6gWFNyB+Z+70KJtOOsqpOWNvFYljWZILzQJFj
- LCxFHq/7Of/gQbIlyvcaL2wihl5o1JEWd4jIsnhVX/JV05yIIeslM8V9wzZWNaplmt
- l79agZVVIiUMcMfcrko3HrLFLt+J5HqqOBuZ0IiRMIWFolhZ93VD/j8oJUDeiczv1Y
- ubHFl6HiKUy6yf1IWu6VGT4SBvF3/AqCtwo8kPFLx0yRK8d3B/jrDwCqPJscQUbEO6
- W1eCuj5HSAGvw==
-Received: by mail-ej1-f47.google.com with SMTP id qt6so40326879ejb.11;
- Tue, 08 Mar 2022 08:13:45 -0800 (PST)
-X-Gm-Message-State: AOAM5325pZLUZkIo/4AajyFHejyDUZTT0Zw8Q7YV+SwnQJ+uB/2svAIe
- byDgLTM+2hW7uBrxAU7fuVsfn3HG46MY0TWRcg==
-X-Google-Smtp-Source: ABdhPJwgjUirqReFAL6N3dmjsf1cllJkmUJ+TfjKooqF93ar8SLKSqqP4oME9QxeInU2UXWZqXn7edss5wrmTCZW8Po=
-X-Received: by 2002:a17:906:181a:b0:6d0:ebf5:c064 with SMTP id
- v26-20020a170906181a00b006d0ebf5c064mr13580319eje.82.1646756024055; Tue, 08
- Mar 2022 08:13:44 -0800 (PST)
-MIME-Version: 1.0
-References: <20220304095458.12409-1-angelogioacchino.delregno@collabora.com>
- <CAAOTY_8CTewRw2Le9RjXoCrqF8AyHD0_p01EMiJ2QQ63yf-HKQ@mail.gmail.com>
-In-Reply-To: <CAAOTY_8CTewRw2Le9RjXoCrqF8AyHD0_p01EMiJ2QQ63yf-HKQ@mail.gmail.com>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Tue, 8 Mar 2022 10:13:31 -0600
-X-Gmail-Original-Message-ID: <CAL_Jsq+qqCHvzg8uKx6xaD4cDJJq7hOUvJGME18V7cuLW5OPqQ@mail.gmail.com>
-Message-ID: <CAL_Jsq+qqCHvzg8uKx6xaD4cDJJq7hOUvJGME18V7cuLW5OPqQ@mail.gmail.com>
-Subject: Re: [PATCH 0/3] Fix MediaTek display dt-bindings issues
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- DTML <devicetree@vger.kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- David Airlie <airlied@linux.ie>, Jason-JH Lin <jason-jh.lin@mediatek.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- DRI Development <dri-devel@lists.freedesktop.org>, 
- linux-kernel <linux-kernel@vger.kernel.org>, 
+ s=k20201202; t=1646757923;
+ bh=GYIufgGGLr9GxrrY4rIU9KUo4E+VCK3yFeTecR6ehQ4=;
+ h=From:List-Id:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=sLMGfu3du1eA0pEoO32ZidYhCnRUjTuBXbYA1+1igjKi0Td7z4XaE1ef8TMuUKM4M
+ 5ekJScG2sCUfs34bsEQc9RQsnCrnOH6+YMqjh9IGlz64pi1P4LpbMFW6lXFLFqeT9u
+ enrHOUbg/gNwUNsvqgGf8UB2HSDd1TxjBxI2FenAF4rNUUhSeruEPx7zt+OY8R9NGT
+ lzMbaKYYgUIgKKHqynTBDjcdNUogISNiN/8/OeJ/7Az5aIe6b4L4Pjbn3HTQdXmtSp
+ KBhzsS3Yz5z83m10rTnMWazdy/fVp2W1aI3Adsiv6ft8MyHZba9i2WUPtmBCHJ/sZi
+ iUvzSy0aUNqOQ==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, SoC Team <soc@kernel.org>,
+ arm-soc <arm@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+ Maoguang Meng <maoguang.meng@mediatek.com>,
+ "allen-kh.cheng" <allen-kh.cheng@mediatek.com>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- "moderated list:ARM/STM32 ARCHITECTURE"
- <linux-stm32@st-md-mailman.stormreply.com>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Sam Shih <sam.shih@mediatek.com>,
+ Mattijs Korpershoek <mkorpershoek@baylibre.com>
+Subject: Re: [GIT PULL] arm64: dts: mediatek updates for v5.18
+Date: Tue,  8 Mar 2022 17:44:41 +0100
+Message-Id: <164675781051.4163171.14022771995881024304.b4-ty@arndb.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <c2064dcc-acdc-c86b-5ef7-cb8e7ae3122f@gmail.com>
+References: <c2064dcc-acdc-c86b-5ef7-cb8e7ae3122f@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_081348_663232_93524BDD 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20220308_084525_181167_29D73080 
+X-CRM114-Status: GOOD (  12.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,16 +78,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 4, 2022 at 5:49 PM Chun-Kuang Hu <chunkuang.hu@kernel.org> wrote:
->
-> Hi, Rob:
->
-> Would you like to take this series into your tree, or I take this
-> series into my tree?
+From: Arnd Bergmann <arnd@arndb.de>
 
-I can't. I don't have the broken commits in my tree.
+On Tue, 1 Mar 2022 10:43:41 +0100, Matthias Brugger wrote:
+> Please have a look into the below updates for v5.18
+> Little by little the mt8192 is getting into shape, now that the devices have the
+> corresponding clock drivers. We also gained watchdog and power domain controller.
+> Also mt8183 has now support for the keyboard connected to the PMIC as well as
+> the JPGEG enconder.
+> On the router side, unfortunately the mt7986 is moving a bit slow. Hopefully in
+> the next cycle we can get more drivers supported for this new chip.
+> 
+> [...]
 
-Rob
+Merged into arm/dt, thanks!
+
+merge commit: c723b6b7b7a1331709b44f16655ad702e10b025a
+
+       Arnd
 
 _______________________________________________
 Linux-mediatek mailing list
