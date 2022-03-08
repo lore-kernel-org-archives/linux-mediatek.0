@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84569C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 01:52:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF00FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 01:52:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3GahCDG1Jh6F+H64E+xZIzEnY7cind/JVwIzcsO5rVQ=; b=UO6Ma3X1FeZyvs
-	CGFSgPOB7uiVJAL0wt0jedhVBJKIMgMxcXdwXh3pxC8MxS3/MjGFU/0m8CeJFvJARjBbWyuJHN0Vz
-	wOIcqhWuuXrVY/RtdqO9ChTc1V9eSudysJkBLl1D4sHaVLzkQFz+c50wpUUWp4jfZCo1e3Wj1eTQP
-	OPaqhG1cL8w/0aprOS+czmes2FSQuwJKcLGZckKva/IQDCuNXsKB9B/Gm+GvAiOkAg4HzcMQY+pAa
-	+KDb/fQqfEK69HuoyvvkxoL4lJzTLhE3sjAcYaO1AKDDoUi74pnHfvvel6eMtEsZzFgw3ZO2Exl0L
-	4BaGNGlJ74vzG5qy7RCg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=g2+bVk8epdTqnd/gN9SuXjrtbjUFDVM21U5NEZ8oNfQ=; b=A5GZfqwNuEJmDQ
+	1DfrcGURpED9o6ns8HYgfipFh6aC7riBgwqWXDA74gfzLxO2uOHQDYtHvL4MbtWtP60Kl6VPZQ7+b
+	i/0udZNBk9kC8Np8GpJY5oEWWgmYWrTVjP66lYw0F8EQE4UQO5UhmD7dppAYdPjvLQV+TQHdFwY0W
+	GtMOhJqxhBMWYyrv9azErE9iEogcuTEeYUWT2AzXIJY1FmYidCnODSv0PDZgsQbhXfsqJ3+Kwt4jD
+	E3JmWBGLFFWyOoRrhhpLb+Rm6arY9cR7dmM/Kn2/ATHieqrF5RybqZtG+d9k8KRD8HNBDD6gpYxHe
+	l+V9FL311+4erwGbToCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRP17-002NBy-Ko; Tue, 08 Mar 2022 01:52:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nRP1p-002NPE-RB; Tue, 08 Mar 2022 01:52:45 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRP0v-002N9V-09; Tue, 08 Mar 2022 01:51:50 +0000
-X-UUID: 001c54a367b24e0a875ec6fb1d74137f-20220307
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=UEx22GynCCxut7puztAW+3Z2X6ycbV8EnxlqwxRD56o=; 
- b=kJgC2slXCW8BPEg247eqgJQ+Ic0GxCEaxQrP0nTe3kWQ+qwpzbmF/vMlk7q3yQOP+69qdlLClV/+fnY3uXJxqYXzeV/qCCBGNBaMnHdzdIm0ZHwQZUH1AdkCoBBZcNiMKu+WSrLhtxcbcJyNa6ITOF8vsPjHNaTzJUQswOkI430=;
-X-UUID: 001c54a367b24e0a875ec6fb1d74137f-20220307
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <leilk.liu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1193800484; Mon, 07 Mar 2022 18:51:40 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 7 Mar 2022 17:51:39 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 8 Mar 2022 09:51:37 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 8 Mar 2022 09:51:37 +0800
-Message-ID: <7ae469a94ad51be85f0731c4c42088d65b241581.camel@mediatek.com>
-Subject: Re: [PATCH V3 2/7] dt-bindings: spi: Add compatible for MT7986 with
- single mode
-From: Leilk Liu <leilk.liu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "Mark Brown" <broonie@kernel.org>
-CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, "Rob
- Herring" <robh@kernel.org>
-Date: Tue, 8 Mar 2022 09:51:36 +0800
-In-Reply-To: <b3950b6b-bfbe-da80-90cc-1a836958f931@collabora.com>
-References: <20220307065230.12655-1-leilk.liu@mediatek.com>
- <20220307065230.12655-3-leilk.liu@mediatek.com>
- <b3950b6b-bfbe-da80-90cc-1a836958f931@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-MIME-Version: 1.0
-X-MTK: N
+ id 1nRP1c-002NJq-6Q; Tue, 08 Mar 2022 01:52:33 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id bx5so15745560pjb.3;
+ Mon, 07 Mar 2022 17:52:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:subject:date:message-id;
+ bh=58lwskYug/llHkpIrMRW+dy3O3RN+GbIpdAcgfBEttk=;
+ b=HSCYAeLoHcpnnM2uKaIA5lifN/t97U2w1M5ioRJjGdZ++5Thz9qLLXuH5q/V+ioCpJ
+ B7idQN5/gHfstOY+ov8+wbbGw2JRhsWSbIXivdKSDdTjBQMdQSKSpbhMs47dVwah6oPX
+ Cdw95MMMXeJfH+NbYVToxnzsV4ATd/bMKUbC+mBicPFKU5UwSVTZB6u2IkCPHWFW4ezg
+ EiUVoRYJ3oIqF1DqnUZ4HSXwSPgLTtVK+2I/P9IWNrr5wEok0ATlQItCDJ/rHikjkIi/
+ 3sITJfYrTlT+L13h6lvijlT1xW0UsPl4LoL+AEbFNMRYi8Llyj74Jat8B395qAzctYcr
+ Fstg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:subject:date:message-id;
+ bh=58lwskYug/llHkpIrMRW+dy3O3RN+GbIpdAcgfBEttk=;
+ b=NPD1v7awyfjRV4uamPxDClnrJ0hvmtQ4iKUHtE4roVymBZoIrucSF61vtnCulxg6Pm
+ j+kQKUw1YON5lStYqy4qqorFuLatsjw8/Rsm+Yylhg652V8Npq8I9CJ0aUftdz1Sa4u6
+ U6SeafjdfbItY4ktxqGKcAecGWaz8fyHGdQH1uB2w/4nmxmYXZPCPerzDQExZfMAia1e
+ j/sMJKSLfZ7Tq2f9sExEeLRDWtWWgcWlX9vySos+vEVPapkrbqCRTFOxJflKcdT/E1Yr
+ tuQVFZRTpcUCNkCCSw64RMwTgdyAnlWFqiFpNPPLbO3md5e6A8sBkLktLZpe9DjsJRnG
+ nkWg==
+X-Gm-Message-State: AOAM530gWeD+FT3OrRS++Aq9ThjfCa4vXr4ru3485IIu0XMqn9Ne1rwH
+ Nl/wfGwRI7vUKpVdTszgEih4K9UTckShiONkTc0DZQ==
+X-Google-Smtp-Source: ABdhPJz6lbpi9VHXqUtR/ZCOi8FTsWcSS1kfqtODKavlvexuo70DQjYtfjWCTLdBrNr2bb1jMtcHAg==
+X-Received: by 2002:a17:90b:4b0b:b0:1bf:764c:1bc1 with SMTP id
+ lx11-20020a17090b4b0b00b001bf764c1bc1mr2012864pjb.85.1646704351035; 
+ Mon, 07 Mar 2022 17:52:31 -0800 (PST)
+Received: from localhost.localdomain ([159.226.95.43])
+ by smtp.googlemail.com with ESMTPSA id
+ pf15-20020a17090b1d8f00b001bf5d59a8fdsm645663pjb.2.2022.03.07.17.52.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 07 Mar 2022 17:52:30 -0800 (PST)
+From: Miaoqian Lin <linmq006@gmail.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Tzung-Bi Shih <tzungbi@google.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
+ Miaoqian Lin <linmq006@gmail.com>, alsa-devel@alsa-project.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] ASoC: mediatek: mt8192-mt6359: Fix error handling in
+ mt8192_mt6359_dev_probe
+Date: Tue,  8 Mar 2022 01:52:22 +0000
+Message-Id: <20220308015224.23585-1-linmq006@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220307_175149_075184_657DEB98 
-X-CRM114-Status: GOOD (  23.94  )
+X-CRM114-CacheID: sfid-20220307_175232_273915_E5546095 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,83 +83,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-03-07 at 11:32 +0100, AngeloGioacchino Del Regno wrote:
-> Il 07/03/22 07:52, Leilk Liu ha scritto:
-> > This patch adds dt-binding documentation for MT7986 with single
-> > mode.
-> > 
-> > Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
-> > Acked-by: Rob Herring <robh@kernel.org>
-> > ---
-> >   Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml |
-> > 1 +
-> >   1 file changed, 1 insertion(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-
-> > mt65xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-
-> > mt65xx.yaml
-> > index bfa44acb1bdd..48024b98408a 100644
-> > --- a/Documentation/devicetree/bindings/spi/mediatek,spi-
-> > mt65xx.yaml
-> > +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-
-> > mt65xx.yaml
-> > @@ -41,6 +41,7 @@ properties:
-> >                 - mediatek,mt8135-spi
-> >                 - mediatek,mt8173-spi
-> >                 - mediatek,mt8183-spi
-> > +              - mediatek,mt7986-spi-single
-> >   
-> >     reg:
-> >       maxItems: 1
-> 
-> I think that the best way to do this is to better organize the
-> compatibles
-> per-hardware, here... or the compatibles list will eventually grow
-> out of
-> control for little reason.
-> 
-> Since "IPM" is a new SPI controller IP, I would expect more and more
-> MediaTek
-> SoCs using it in the future, so here's my proposal:
-Yes, we plan to use this IP with new ICs.
+The device_node pointer is returned by of_parse_phandle()  with refcount
+incremented. We should use of_node_put() on it when done.
 
-> 
-> - Add a generic (const) compatible "mediatek,spi-ipm" to describe the
-> hardware
-> - Add an enumeration with "mediatek,mt7986-spi-ipm" as the only
-> member, as to
->    prepare this binding for the future.
-> - Single and quad mode can be expressed with generic SPI bindings!
-> 
-> Specifically, you can express that with "spi-rx-bus-width" for
-> SPI_RX_{....}
-> and "spi-tx-bus-width" for SPI_TX_{....}, so you don't need different
-> compatibles
-> for "mediatek,mt7986-spi-single" and "mediatek,mt7896-spi-quad".
-> 
-> Fast example:
-> 
-> spi@12345678 {
->      compatible = "mediatek,mt7986-spi-ipm", "mediatek,spi-ipm";
->      reg = <....>
->      /* Quad mode */
->      spi-rx-bus-width = <4>;
->      spi-tx-bus-width = <4>;
-> 
->      .... etc ....
-> }
-> 
-OK, thanks for your advice.
+This function only calls of_node_put() in the regular path.
+And it will cause refcount leak in error paths.
+Fix this by calling of_node_put() in error handling too.
 
-> Regards,
-> Angelo
-> 
-> 
+Fixes: 4e28491a7a19 ("ASoC: mediatek: mt8192-mt6359: fix device_node leak")
+Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+---
+ .../mt8192/mt8192-mt6359-rt1015-rt5682.c       | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
+index f7daad1bfe1e..ee91569c0911 100644
+--- a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
++++ b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
+@@ -1116,8 +1116,10 @@ static int mt8192_mt6359_dev_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	card = (struct snd_soc_card *)of_device_get_match_data(&pdev->dev);
+-	if (!card)
+-		return -EINVAL;
++	if (!card) {
++		ret = -EINVAL;
++		goto put_platform_node;
++	}
+ 	card->dev = &pdev->dev;
+ 
+ 	hdmi_codec = of_parse_phandle(pdev->dev.of_node,
+@@ -1159,20 +1161,24 @@ static int mt8192_mt6359_dev_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
+-	if (!priv)
+-		return -ENOMEM;
++	if (!priv) {
++		ret = -ENOMEM;
++		goto put_hdmi_codec;
++	}
+ 	snd_soc_card_set_drvdata(card, priv);
+ 
+ 	ret = mt8192_afe_gpio_init(&pdev->dev);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "init gpio error %d\n", ret);
+-		return ret;
++		goto put_hdmi_codec;
+ 	}
+ 
+ 	ret = devm_snd_soc_register_card(&pdev->dev, card);
+ 
+-	of_node_put(platform_node);
++put_hdmi_codec:
+ 	of_node_put(hdmi_codec);
++put_platform_node:
++	of_node_put(platform_node);
+ 	return ret;
+ }
+ 
+-- 
+2.17.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
