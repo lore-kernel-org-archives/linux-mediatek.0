@@ -4,59 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05C70C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 17:34:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C438DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 17:36:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	References:In-Reply-To:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=846AMvNEk7IVaJayEmV28WGMxaD5x5Zv7zInt1V8jz8=; b=VORnqQb6LHaCTX
-	S15VQKB/vjNxe3tmIQ/o9AS/aXvYRn/z9+auYDJj0SLHy6i1HhoNylw7yTAgitbzE6C2wzZgC8VQp
-	LhxYEdx8K6wIz2LuQbyP/9HUvMAdRapu+FY5GfgqpW7yTdf+HBCzLGxyrrUeXAUiXZalY7akLb/5d
-	Ss+o8oKo6iNpE/CgACemT9kHaV0bc5xDIQ4HDxCRWbBwdayMAmnVJ3L3jLt0zruSVSWgbzT+J43fB
-	Lvp3nzU+3q3QHMsTmn7/LSgr7bUQUy2OSfqqxnf/U4WxPtHxwr+/RdiUk2c+7yLYT2RPfaNiGNunm
-	VaGQy4MoH8G2Ga/+DqTw==;
+	List-Owner; bh=LY3i0WzR4QPAvOdE5+CejxE7xAPiSFx2dp1Lgzfx/iA=; b=h+M4BMqJOr2vjZ
+	9q1A9SqIavWqwgn25rotm+XVCA9Gx7JL2soLPpAJmi+2+38aSpmZhZ3GOWFi7xZ0Yw1JD03RzpwTb
+	eQv2SgaayTmYF3qviQKh7TM4bqjH34u6D1zNHEaL9bdnMiPcR8CHhOwLi/WKxFv901mn070J7jWAV
+	tmYCepfEeGY1C1aZKWLMNbUtZS64456pLSs2HxqXaBe3605oWODcI9jdIntM5gaVRqgsH78YOosgg
+	GvcQgNHxYir4Xs6hR0qq4AAD7RUBjMLsOduKNWpg4VcavKJc3M8rzjeS63hL5EJMNbNFD/ikTzUGD
+	s52wk6ROr7lCYHQ/Shvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRdjM-005ZG2-NY; Tue, 08 Mar 2022 17:34:40 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nRdkh-005Zgp-NM; Tue, 08 Mar 2022 17:36:03 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRdW7-005Uo6-D7; Tue, 08 Mar 2022 17:21:01 +0000
+ id 1nRdWE-005UrL-2p; Tue, 08 Mar 2022 17:21:07 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 977C160F89;
- Tue,  8 Mar 2022 17:20:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA83DC340EF;
- Tue,  8 Mar 2022 17:20:55 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 93DC5B81B8E;
+ Tue,  8 Mar 2022 17:21:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C297C340EB;
+ Tue,  8 Mar 2022 17:21:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646760058;
- bh=wSgfdJeBnQuD5Tw0f9riM3mLX4grfj+Fq6bUvc86P64=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=OCeTIOQh9qpUvmWZfWOIAHCl07UBaqndWDIed2WZLKCEj6mM+IAu2/OlhJ/IH590C
- LpcWjyKkTwoDt7u2nBbe4ZeBMRTANTgGV3HkoH+vLArzFNOfSs+rNX8Qz0Numr2JkT
- b/LWAdoFLatB4+ZAoUxXHipZX1Y5Lo69Xx6xu/ebiAwlUu6JGnRABEBqF5epD0APUm
- 8txfRgGU+zsu+02WBuxVu8dxvE3QozWxKbKaXI6nWMDN8gepdgRtDcbqk9dsE//RC4
- 5eEtaNCoEjamqaakfjzWwRcbp3LiqKstoY++yeAfDkS64QrlH2MnLi/AA4FBnQglrp
- TK9zbhdiwpTBg==
+ s=k20201202; t=1646760063;
+ bh=VXtXZwmTg2CbEhaflPUS8x55Hns993/Kt31uJMvMLc8=;
+ h=From:To:In-Reply-To:References:Subject:Date:From;
+ b=tW64Ce1U/EXWJOzttKG02pKqy8yiAZ70nH7BuHMz+MNAdF4xKAk9EreguqHoWCcRM
+ cjwQqF3L4KsOt+qTMEQCwZHJKe2t+FhbZoaQ7fYpHuydx9MDYwf1NN0aaP2ymzJNV8
+ 3Ij3yHlCb9vnWoC2lSpDTQIgrVNGiZ1Z9WaJ8XY2VvziCg8VEqSwZ3JHbPlXW8s9LL
+ tjHJa3rfNX8GmTa34F07Dej2TMTcWG75LyNtEGt5FL+8GxDv3FjqwptnClpjgtxUds
+ TphFgFT8MywsNP4ofWThY1I9VFfw6XAOKV1ONQTUheu8WCHrh/Zkfx9cv6mUZ6QdDl
+ 3kwuI5Kcm61Ng==
 From: Mark Brown <broonie@kernel.org>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Cc: alsa-devel@alsa-project.org, trevor.wu@mediatek.com,
- Tzung-Bi Shih <tzungbi@kernel.org>, matthias.bgg@gmail.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- perex@perex.cz, Project_Global_Chrome_Upstream_Group@mediatek.com,
- tzungbi@google.com, linux-mediatek@lists.infradead.org
-In-Reply-To: <20220307033056.11463-1-jiaxin.yu@mediatek.com>
-References: <20220307033056.11463-1-jiaxin.yu@mediatek.com>
-Subject: Re: [v2] ASoC: mediatek: mt8183: support wb bt audio
-Message-Id: <164676005561.54315.8574406268011125156.b4-ty@kernel.org>
-Date: Tue, 08 Mar 2022 17:20:55 +0000
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Tzung-Bi Shih <tzungbi@google.com>, Jaroslav Kysela <perex@perex.cz>,
+ alsa-devel@alsa-project.org, Jiaxin Yu <jiaxin.yu@mediatek.com>,
+ Takashi Iwai <tiwai@suse.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>,
+ Miaoqian Lin <linmq006@gmail.com>, linux-mediatek@lists.infradead.org
+In-Reply-To: <20220308015224.23585-1-linmq006@gmail.com>
+References: <20220308015224.23585-1-linmq006@gmail.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8192-mt6359: Fix error handling in
+ mt8192_mt6359_dev_probe
+Message-Id: <164676006096.54315.8478351478662604607.b4-ty@kernel.org>
+Date: Tue, 08 Mar 2022 17:21:00 +0000
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_092059_525261_8ECD4DCB 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20220308_092106_322063_4AFE2A6B 
+X-CRM114-Status: GOOD (  16.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,10 +74,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 7 Mar 2022 11:30:56 +0800, Jiaxin Yu wrote:
-> Use "bt-sco-pcm-wb" codec dai driver for wb bt audio.
+On Tue, 8 Mar 2022 01:52:22 +0000, Miaoqian Lin wrote:
+> The device_node pointer is returned by of_parse_phandle()  with refcount
+> incremented. We should use of_node_put() on it when done.
 > 
+> This function only calls of_node_put() in the regular path.
+> And it will cause refcount leak in error paths.
+> Fix this by calling of_node_put() in error handling too.
 > 
+> [...]
 
 Applied to
 
@@ -84,8 +90,8 @@ Applied to
 
 Thanks!
 
-[1/1] ASoC: mediatek: mt8183: support wb bt audio
-      commit: 5ea14bf62ef4501c13f56fce75f6752cf643748f
+[1/1] ASoC: mediatek: mt8192-mt6359: Fix error handling in mt8192_mt6359_dev_probe
+      commit: e45ac7831ff3e2934d58cce319c17c8ec763c95c
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
