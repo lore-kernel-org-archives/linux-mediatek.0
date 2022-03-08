@@ -4,76 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F052C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 02:51:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAC23C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Mar 2022 03:48:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ymvYy0Du08ktIA7bgntUFQEZpcqxJeyZNvE8wdt71IU=; b=n2x1WAmZq3a9lx
-	E1UXTP815nKfkviK5k1/MD2L/qej9xcnC+b7KmkJ4jwM0bh7tvpxdjwvlEMfj1lkXbwIrn/RwDuDi
-	gczCiE2UnE0um50vlrcQvcZDlxXdQSPTHLSnwNXl6S9fyoLnHG/7h5taSrfuVGYJfzliSRqA+wSiu
-	qDrConwD7kh4pp9wUA0JC5rmkpVq8YGyNw4PidI8OT/90DWmJj/J+r/jNxFcBCj5v5rsAu6G7FWGt
-	kVsbmjc8XMGh5+mFDarzqK21V5qvOcBYz9zF0/zk9HswyNauglqXYT3SUbmoi21imLF4mGjetM8KS
-	E1b8LgNSr2g3AlZB2Ouw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JOyIp2mA8p+HLK3OOuNr1dAJgkgKEgz1ErJt0m8jSDo=; b=NDjEC6pO52ibiy
+	GaqKMPmqUlHUi4F/sQgvBebfnCFd0LFUxb7sDy/JX+cS1BGq7CN/FchxtoMIuZvdTHFWl5ZTE2VBk
+	jFbjA6+sXZVpBx7fwl5Ke0Qkofx8HvaKYJAa5V+GDOpS/ufz6FOMQ60rfbIT/DTpSyCkJY3Tf3/SF
+	y/mq4mrDcfbgY3NXxfr0PJPtlBehTh1pxXHc0os5aCeBFtjz+GEyAN5xgk5DdBQ5DUUVh482Ml7uz
+	Nz0KjRJhHMgX9qH8XfFXHFRv1l2YPLPlwxxcbGMRWcicd5PAH15Ez8DEhMNKQc8T2QjbJuRv9tdS3
+	O/zQ7Ocl/aWK4A+C4mnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRPwU-002Ukr-Sk; Tue, 08 Mar 2022 02:51:18 +0000
-Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e])
+	id 1nRQpf-002ZCK-DR; Tue, 08 Mar 2022 03:48:19 +0000
+Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRPwF-002Ug9-Hd; Tue, 08 Mar 2022 02:51:04 +0000
-Received: by mail-qk1-x72e.google.com with SMTP id z66so13730485qke.10;
- Mon, 07 Mar 2022 18:51:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=dHziwswHK6uNSR77kAaO2ffhpQzUQz0uMTDDzxEF4Ok=;
- b=F+Kwc2v0NjeMR4vC8LyG9ZsURiTPhcvH8Epa7frmH6GHTEIUAHL1iAnRFlZR9OhAVy
- HtEXQI7Nph4PySyAjpqSf3vKWyyfwvrZb0PSK950nYBCQk3av2NoEcwrLzewuhSx55Lg
- SBMI5LJJ69CSmcmL303PSjB16okbG3qLF1tllQeG/J6PigTysYUx3hMsIYRu2PjERy4E
- fHKlvBZYTaWFzi5vPKGlm8AWO6WA7wpgx6HFpFfX3HdSy1WV3s3nN0250Xp/Z2E7WGpS
- mzwU5ZzizP/oYsFcdRCIKXEEI62xHUBAA6As0l5UmnMcRDkew4HOW7Wz1lrC3FxphPh0
- OhbA==
+ id 1nRQpT-002Z9Z-F5
+ for linux-mediatek@lists.infradead.org; Tue, 08 Mar 2022 03:48:08 +0000
+Received: by mail-yb1-xb2d.google.com with SMTP id u10so15375288ybd.9
+ for <linux-mediatek@lists.infradead.org>; Mon, 07 Mar 2022 19:48:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=SB1pR6R36cG/5vqUJ9L1OYX7dRask2g/0weyNuOkOYQ=;
+ b=Aqt++puDVTDcltryRW77a9cwhFd1XciMKNs9AsjManml5e4eEQPtDOB/5nEXjsn+P9
+ GkEs/gI5+4vK3gNMFYbQocu8XMlxE9wCZPPoS8OfoPNDIE6avBWb/hU6LMu1/Cf2whCu
+ FFb8lEOczvnEeE5kzWcvCMw/ecWn+5SZxlX2s=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=dHziwswHK6uNSR77kAaO2ffhpQzUQz0uMTDDzxEF4Ok=;
- b=Sn+k5Wtt/0a0u9RjXvviSTyUjioLy7VgeQVf6b5FBB2aBlBwAJ47eulfdBSwKPMfhc
- KM3qJhHgvQwtARaUA0EkCVAsNyefMNtI7ngejfTSs7YPWQPR68wBlnUFPXadYxrOq3NX
- MGa8Lnf3k2pqaYFQBZ7rgPY3+KlB0cKrRTcC457Z6VFwUv7Ey9S838SkFS6t/q7sBwgM
- /3iR0qyKbXUhBfEN6ctHPNiam3Zo7Zpv+tPBNlkGfZMD9zXlQQfcsDv+qWNwY0gvGUA8
- DySumt/FwJjSVOA9ZSEDimMF2/g7mhK3s8hKDMEVh5lt/Tj32iUwX+iZ7ue6uXUSkwNm
- o+9g==
-X-Gm-Message-State: AOAM532PiwHShLH1xXSWLTjVzMWeADtHQN0TmLXb0YyyZ6TaisTGFKvF
- eAF9E/MuxkV5l+l/q+rIaeQ=
-X-Google-Smtp-Source: ABdhPJzRTUy5nLA4k0FOzG3DQXk/0Q2mTdSiWzr1tJiLmP001iyJl/Q2/IX8p96NjKA2WEMjYSob6Q==
-X-Received: by 2002:a05:620a:40d1:b0:67b:ce7:702 with SMTP id
- g17-20020a05620a40d100b0067b0ce70702mr7712663qko.183.1646707862525; 
- Mon, 07 Mar 2022 18:51:02 -0800 (PST)
-Received: from localhost.localdomain ([193.203.214.57])
- by smtp.gmail.com with ESMTPSA id
- d21-20020a05622a101500b002e07151139fsm244291qte.17.2022.03.07.18.50.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Mar 2022 18:51:01 -0800 (PST)
-From: cgel.zte@gmail.com
-X-Google-Original-From: lv.ruyi@zte.com.cn
-To: dmitry.torokhov@gmail.com
-Cc: matthias.bgg@gmail.com, mkorpershoek@baylibre.com, lv.ruyi@zte.com.cn,
- fengping.yu@mediatek.com, m.felsch@pengutronix.de,
- linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Zeal Robot <zealci@zte.com.cn>
-Subject: [PATCH] input: fix variable type
-Date: Tue,  8 Mar 2022 02:50:54 +0000
-Message-Id: <20220308025054.2077162-1-lv.ruyi@zte.com.cn>
-X-Mailer: git-send-email 2.25.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=SB1pR6R36cG/5vqUJ9L1OYX7dRask2g/0weyNuOkOYQ=;
+ b=Hg9a3jsPBrqPf+0ObKCyukMqIwQl19rZri9GJxuXhp5qTgz4Lpp1srVScsNYl5WG7B
+ hnGuMtEmSGh6ndUYji0l+rY6bozlhXeIH3x+Ipj8nErVAhv1PZZCAtwGg8v3LqEmv7u7
+ h5ZXUlKNbRhmCNRbFNExMXJ1eFXkdPEY/Qpeb9U4PTdTVW0KugATRq6s/24gd2ws3A67
+ NrAvzGUk4Teah7sCo4YZ5E+k3wKrBeFG+fEv4NhSq097XyEfORnhSlWhyR4JwrMllhvZ
+ YNYb8oGIQ0/6/F4vkacjPxSpUSzOWGjtbF8YkKFm0ZvbcNiUEZ8U/Q3NJTFf27HL+PHN
+ iy4w==
+X-Gm-Message-State: AOAM532S+5OLfAhZ9ji2VjKZ4fQCfY/BrbEye0hBltlzhJ2MrnoQwDJD
+ dh+ybHnAmTP7v+gHUQKZ9oKQn4delNjis9Gwsr1dfQ==
+X-Google-Smtp-Source: ABdhPJyuGeWIUlb3utDkOR1PhipoTjIrNi/Cf0gmscf2NmU/0KOasS7EzcBrtPdNSmwisXmV8F84klzvCTpKGd/lH2w=
+X-Received: by 2002:a25:d449:0:b0:628:945d:713c with SMTP id
+ m70-20020a25d449000000b00628945d713cmr11205541ybf.164.1646711284731; Mon, 07
+ Mar 2022 19:48:04 -0800 (PST)
 MIME-Version: 1.0
+References: <20220307154558.2505734-1-robert.foss@linaro.org>
+ <20220307154558.2505734-3-robert.foss@linaro.org>
+ <CAG3jFytGV3NNfkEPqx_rZX9O9aZjTjzo2tpeSK8mFimOrYt9zw@mail.gmail.com>
+In-Reply-To: <CAG3jFytGV3NNfkEPqx_rZX9O9aZjTjzo2tpeSK8mFimOrYt9zw@mail.gmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 8 Mar 2022 11:47:53 +0800
+Message-ID: <CAGXv+5H7RvczEeAyLEmJ-RNAwqV1G71FhsG3Kpi0r+qPkXVaeQ@mail.gmail.com>
+Subject: Re: [PATCH v1 2/2] Revert "arm64: dts: mt8183: jacuzzi: Fix bus
+ properties in anx's DSI endpoint"
+To: Robert Foss <robert.foss@linaro.org>, Arnd Bergmann <arnd@arndb.de>, 
+ Olof Johansson <olof@lixom.net>
+Cc: airlied@linux.ie, daniel@ffwll.ch, robh+dt@kernel.org, 
+ matthias.bgg@gmail.com, xji@analogixsemi.com, hsinyi@chromium.org, 
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220307_185103_620298_7BEF8E09 
-X-CRM114-Status: GOOD (  11.09  )
+X-CRM114-CacheID: sfid-20220307_194807_545777_CB55D621 
+X-CRM114-Status: GOOD (  14.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,33 +87,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lv Ruyi (CGEL ZTE) <lv.ruyi@zte.com.cn>
+On Tue, Mar 8, 2022 at 12:20 AM Robert Foss <robert.foss@linaro.org> wrote:
+>
+> Signed-off-by: Robert Foss <robert.foss@linaro.org>
 
-The irq is defined unsigned int. If the platform_get_irq return a negative
-value, data type cast may result in error.
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Reported-by: Zeal Robot <zealci@zte.com.cn>
-Signed-off-by: Lv Ruyi (CGEL ZTE) <lv.ruyi@zte.com.cn>
----
- drivers/input/keyboard/mt6779-keypad.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I think we need to send this directly to the soc maintainers to get it
+picked up before the final 5.17 release?
 
-diff --git a/drivers/input/keyboard/mt6779-keypad.c b/drivers/input/keyboard/mt6779-keypad.c
-index 5ff23250ed37..0dbbddc7f298 100644
---- a/drivers/input/keyboard/mt6779-keypad.c
-+++ b/drivers/input/keyboard/mt6779-keypad.c
-@@ -91,7 +91,7 @@ static void mt6779_keypad_clk_disable(void *data)
- static int mt6779_keypad_pdrv_probe(struct platform_device *pdev)
- {
- 	struct mt6779_keypad *keypad;
--	unsigned int irq;
-+	int irq;
- 	u32 debounce;
- 	bool wakeup;
- 	int error;
--- 
-2.25.1
-
+>
+> On Mon, 7 Mar 2022 at 16:46, Robert Foss <robert.foss@linaro.org> wrote:
+> >
+> > This reverts commit 32568ae37596b529628ac09b875f4874e614f63f.
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi | 2 --
+> >  1 file changed, 2 deletions(-)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> > index e8f133dc96b95..8f7bf33f607da 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> > @@ -171,8 +171,6 @@ port@0 {
+> >
+> >                         anx7625_in: endpoint {
+> >                                 remote-endpoint = <&dsi_out>;
+> > -                               bus-type = <5>;
+> > -                               data-lanes = <0 1 2 3>;
+> >                         };
+> >                 };
+> >
+> > --
+> > 2.32.0
+> >
 
 _______________________________________________
 Linux-mediatek mailing list
