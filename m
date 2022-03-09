@@ -4,66 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83A0CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Mar 2022 07:45:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 825EFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Mar 2022 09:14:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0eSAz/x+5ZLl+kHT9iM3Kkl2hRZjaRTi5L0o/5dGPZc=; b=fdBRXcRJL0eeUp
-	2prhVcfqP0yR3zQ2oO8lGeRfFXNOQ4WoOsUPuDJpFCyQUmJphZomtI/osGMiXOWApTlGGzOn1s07R
-	ypua6PN+y1rfNjkiqkxDgAGkdSPI2jRG6miHiT4dhYizt7FdUQJy2I8xnPTzKPYGzM8qah7aNEjX+
-	JzXwnN9btguvxvuzLswAELK16EQBLXcRtPZjBgk8Lx8H2WZPLOL2PBZn/sgMA5yire0nfbcBV2IXd
-	VFAm++FrUMa7kpwMqP0CIq4MYai12it//D1jSdmsA/+N4Rfs2HRymywMv8t5v8nIiph9DBZ7nFSpp
-	undwg1nN84gpMLPwm+PA==;
+	List-Owner; bh=em+hnf13W0mLSs7E2YowGJvJuTBS1hhr4G2KXsLoLFg=; b=MPVOBCc/gj+pAG
+	AkGJY0Lbue2VDoSNkAJUizGLaSsbF10TlPj4xIa4oYTbeg0l96Mflnjv0v/NMmzmbVSKBZHp+a1eO
+	TAypR0T+FC6J5DHaBYTsZDZeuqxSMyPR0yWUmi6Jg6SbAXyUxxHzh6yBH3J5cfvEjEO0LRTLGW/pj
+	u28rcflWITPKnlP7PUjkllh/9t/thXjJ/4lCye7XzzGmP7VPLs9WIC5PLc/XxmJrd4LhNwB93PGoq
+	I5AHKwNKEDOXnwXsyvJiIierENt+39cu1Xoqok6T6UBahF2rgiLIYX0L0PD3GXAZgmNw5q2mlQmb3
+	PoCqioEdHp1LGctXhJvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRr0v-007edC-Mt; Wed, 09 Mar 2022 07:45:41 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nRsOp-007s0q-JP; Wed, 09 Mar 2022 09:14:27 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRr0s-007ecT-8r; Wed, 09 Mar 2022 07:45:39 +0000
-X-UUID: 444afb74b4f143e2a3b6dacc4a2883e3-20220309
-X-UUID: 444afb74b4f143e2a3b6dacc4a2883e3-20220309
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
+ id 1nRsOk-007rxm-3I; Wed, 09 Mar 2022 09:14:25 +0000
+X-UUID: 91580a931217417da0881f3e7f102557-20220309
+X-UUID: 91580a931217417da0881f3e7f102557-20220309
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <moudy.ho@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 765928808; Wed, 09 Mar 2022 00:45:33 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 2038776629; Wed, 09 Mar 2022 02:14:14 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Mar 2022 23:36:40 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 9 Mar 2022 15:36:39 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 9 Mar 2022 15:36:39 +0800
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <daniel@ffwll.ch>, <airlied@linux.ie>,
- <maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
- <tzimmermann@suse.de>, <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>,
- <matthias.bgg@gmail.com>, <robert.foss@linaro.org>,
- <andrzej.hajda@intel.com>, <narmstrong@baylibre.com>
-CC: <xji@analogixsemi.com>, <jitao.shi@mediatek.com>,
- <xinlei.lee@mediatek.com>, <khilman@baylibre.com>,
- <angelogioacchino.delregno@collabora.com>, <dri-devel@lists.freedesktop.org>, 
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>
-Subject: [RESEND V11 2/3] drm/mediatek: implement the DSI HS packets aligned
-Date: Wed, 9 Mar 2022 15:36:36 +0800
-Message-ID: <20220309073637.3591-3-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220309073637.3591-1-rex-bc.chen@mediatek.com>
-References: <20220309073637.3591-1-rex-bc.chen@mediatek.com>
+ 15.0.1497.2; Wed, 9 Mar 2022 01:14:12 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 9 Mar 2022 17:14:04 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 9 Mar 2022 17:14:04 +0800
+Message-ID: <6da50a5b69538e44ba06d6f90dc4e64ee74048ca.camel@mediatek.com>
+Subject: Re: [PATCH v12 3/4] soc: mediatek: mutex: add support for MDP
+From: moudy.ho <moudy.ho@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Jernej Skrabec
+ <jernej.skrabec@siol.net>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
+ <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
+ <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ Alexandre Courbot <acourbot@chromium.org>, <tfiga@chromium.org>,
+ <drinkcat@chromium.org>, <pihsun@chromium.org>, <hsinyi@google.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Maoguang Meng <maoguang.meng@mediatek.com>, daoyuan huang
+ <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+ <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
+ <allen-kh.cheng@mediatek.com>, <randy.wu@mediatek.com>,
+ <jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
+ <river.cheng@mediatek.com>, <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 9 Mar 2022 17:14:04 +0800
+In-Reply-To: <1c665549b28c206126b1407eaf6ca97269bf1169.camel@mediatek.com>
+References: <20220301100246.2153-1-moudy.ho@mediatek.com>
+ <20220301100246.2153-4-moudy.ho@mediatek.com>
+ <1c665549b28c206126b1407eaf6ca97269bf1169.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_234538_330352_F8657F02 
-X-CRM114-Status: GOOD (  13.40  )
+X-CRM114-CacheID: sfid-20220309_011422_155537_171DCFF2 
+X-CRM114-Status: GOOD (  27.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,61 +88,140 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some DSI RX devices (for example, anx7625) require last alignment of
-packets on all lanes after each row of data is sent.
-Otherwise, there will be some issues of shift or scroll for screen.
+On Thu, 2022-03-03 at 17:33 +0800, CK Hu wrote:
+> Hi, Moudy:
+> 
+> On Tue, 2022-03-01 at 18:02 +0800, Moudy Ho wrote:
+> > For the purpose of module independence, related settings should be
+> > moved
+> > from MDP to the corresponding driver.
+> > This patch adds more 8183 MDP settings and interface.
+> > 
+> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> > Acked-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >  drivers/soc/mediatek/mtk-mutex.c       | 68
+> > ++++++++++++++++++++++++++
+> >  include/linux/soc/mediatek/mtk-mutex.h |  3 ++
+> >  2 files changed, 71 insertions(+)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-mutex.c
+> > b/drivers/soc/mediatek/mtk-mutex.c
+> > index aaf8fc1abb43..a6268ecde240 100644
+> > --- a/drivers/soc/mediatek/mtk-mutex.c
+> > +++ b/drivers/soc/mediatek/mtk-mutex.c
+> > @@ -136,6 +136,18 @@
+(snip)
+> >  struct mtk_mutex {
+> >  	int id;
+> >  	bool claimed;
+> > @@ -156,6 +168,10 @@ struct mtk_mutex_data {
+> >  	const unsigned int *mutex_sof;
+> >  	const unsigned int mutex_mod_reg;
+> >  	const unsigned int mutex_sof_reg;
+> > +	const unsigned int *mutex_mdp_offset;
+> > +	const unsigned int *mutex_mdp_mod;
+> > +	const unsigned int mutex_mdp_mod_mask;
+> 
+> Useless, so remove this.
+> 
+> > +	const unsigned int mutex_mdp_sof_mask;
+> 
+> Useless, so remove this.
+> 
+> >  	const bool no_clk;
+> >  };
+> >  
+Hi CK,
 
-Take horizontal_sync_active_byte for a example,
-we roundup the HSA packet data to lane number, and the subtraction of 2
-is the packet data value added by the roundup operation, making the
-long packets are integer multiples of lane number.
-This value (2) varies with the lane number, and that is the reason we
-do this operation when the lane number is 4.
+Thanks for the suggestion, these two can indeed be removed and will be
+fixed in the next version.
 
-In the previous operation of function "mtk_dsi_config_vdo_timing",
-the length of HSA and HFP data packets has been adjusted to an
-integration multiple of lane number.
-Since the number of RGB data packets cannot be guaranteed to be an
-integer multiple of lane number, we modify the data packet length of
-HBP so that the number of HBP + RGB is equal to the lane number.
-So after sending a line of data (HSA + HBP + RGB + HFP), the data
-lanes are aligned.
+(snip)
+> >  
+> > @@ -366,6 +405,21 @@ struct mtk_mutex *mtk_mutex_get(struct device
+> > *dev)
+> >  }
+> >  EXPORT_SYMBOL_GPL(mtk_mutex_get);
+> >  
+> > +struct mtk_mutex *mtk_mutex_mdp_get(struct device *dev,
+> > +				    enum mtk_mdp_pipe_id id)
+> 
+> For DRM, mutex id does not physically bound to specific hardware, why
+> do MDP need the pipeline id?
+> 
+> Regards,
+> CK
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-Reviewed-by: Andrzej Hajda <andrzej.hajda@intel.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+In the next version I will remove this mandatory designation method and
+change it to the existing API.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index bced4c7d668e..208463dbf326 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -500,6 +500,18 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
- 		DRM_WARN("HFP + HBP less than d-phy, FPS will under 60Hz\n");
- 	}
- 
-+	if ((dsi->mode_flags & MIPI_DSI_HS_PKT_END_ALIGNED) &&
-+	    (dsi->lanes == 4)) {
-+		horizontal_sync_active_byte =
-+			roundup(horizontal_sync_active_byte, dsi->lanes) - 2;
-+		horizontal_frontporch_byte =
-+			roundup(horizontal_frontporch_byte, dsi->lanes) - 2;
-+		horizontal_backporch_byte =
-+			roundup(horizontal_backporch_byte, dsi->lanes) - 2;
-+		horizontal_backporch_byte -=
-+			(vm->hactive * dsi_tmp_buf_bpp + 2) % dsi->lanes;
-+	}
-+
- 	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
- 	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
- 	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
--- 
-2.18.0
+Thanks & Regrads,
+Moudy Ho
+> > +{
+> > +	struct mtk_mutex_ctx *mtx = dev_get_drvdata(dev);
+> > +	int i = mtx->data->mutex_mdp_offset[id];
+> > +
+> > +	if (!mtx->mutex[i].claimed) {
+> > +		mtx->mutex[i].claimed = true;
+> > +		return &mtx->mutex[i];
+> > +	}
+> > +
+> > +	return ERR_PTR(-EBUSY);
+> > +}
+> > +EXPORT_SYMBOL_GPL(mtk_mutex_mdp_get);
+> > +
+> >  void mtk_mutex_put(struct mtk_mutex *mutex)
+> >  {
+> >  	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
+> > mtk_mutex_ctx,
+> > @@ -485,6 +539,20 @@ void mtk_mutex_remove_comp(struct mtk_mutex
+> > *mutex,
+> >  }
+> >  EXPORT_SYMBOL_GPL(mtk_mutex_remove_comp);
+> >  
+> > +u32 mtk_mutex_get_mdp_mod(struct mtk_mutex *mutex, enum
+> > mtk_mdp_comp_id id)
+> > +{
+> > +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
+> > mtk_mutex_ctx,
+> > +						 mutex[mutex->id]);
+> > +
+> > +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+> > +
+> > +	if (mtx->data->mutex_mdp_mod)
+> > +		return mtx->data->mutex_mdp_mod[id];
+> > +
+> > +	return 0;
+> > +}
+> > +EXPORT_SYMBOL_GPL(mtk_mutex_get_mdp_mod);
+> > +
+> >  void mtk_mutex_enable(struct mtk_mutex *mutex)
+> >  {
+> >  	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
+> > mtk_mutex_ctx,
+> > diff --git a/include/linux/soc/mediatek/mtk-mutex.h
+> > b/include/linux/soc/mediatek/mtk-mutex.h
+> > index 6fe4ffbde290..b2608f4220ee 100644
+> > --- a/include/linux/soc/mediatek/mtk-mutex.h
+> > +++ b/include/linux/soc/mediatek/mtk-mutex.h
+> > @@ -11,9 +11,12 @@ struct device;
+> >  struct mtk_mutex;
+> >  
+> >  struct mtk_mutex *mtk_mutex_get(struct device *dev);
+> > +struct mtk_mutex *mtk_mutex_mdp_get(struct device *dev,
+> > +				    enum mtk_mdp_pipe_id id);
+> >  int mtk_mutex_prepare(struct mtk_mutex *mutex);
+> >  void mtk_mutex_add_comp(struct mtk_mutex *mutex,
+> >  			enum mtk_ddp_comp_id id);
+> > +u32 mtk_mutex_get_mdp_mod(struct mtk_mutex *mutex, enum
+> > mtk_mdp_comp_id id);
+> >  void mtk_mutex_enable(struct mtk_mutex *mutex);
+> >  void mtk_mutex_disable(struct mtk_mutex *mutex);
+> >  void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
+> 
+> 
 
 
 _______________________________________________
