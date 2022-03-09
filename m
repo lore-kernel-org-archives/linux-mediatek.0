@@ -4,76 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A3BDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Mar 2022 07:07:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB2EBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Mar 2022 07:39:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mn5PXoMdUocP7Iz4ZXDDizSMN6ndsVzT/B8Zh9uK3WE=; b=L+ZFGWLCZwUAeL
-	adobnpI3blvxzGTVYVFQJ437msKMIyQZcsJETgHcyYzxoU0IYs714/9yVejU+5wcZg363PuFVzgyL
-	/aMMkcqQeNnh8HubgxjkyTlV2A/6fa3h9xUuN58QGb7bd2rFLaoNP8DGY9B5bMqoGa4KjFSlm0HQG
-	b9qH1aPyGzSyxdZuTfqH2bgcRIs9wd/YtlWsbu0Im4EcS8UaQZPzuHYM3QkOfUPuF0vz6z1ZvR0/T
-	2Xs8cuqTLa+VTjGQu0UmvlAoBNAh7cxJQ6Yrxi+oPEQhBLWUPNFzr1JgdCAMmdKkLVuVhwynNgJjm
-	NlOrkzD+d6kraNSc5WAQ==;
+	List-Owner; bh=34+TgoDD7AvCaFeMkGUDiYA6Sx31n6DWWSBomkw/crg=; b=J9xmg5B607AR0Z
+	PH0iEC+3Q3hegVoaSti6cBwZYTWDPiF06r9zCu2IHaAlDkL9MjD45V63V9s8PsbJKJ60RdAWFV/dh
+	1GflE/otQOIL0ENQ3gOP01VZLSab0fcIVXAuQmxKGQrUF8cnBiazkwpdxG5eEsuFfXVI5FEVs4Osx
+	/bMydX7aHJ2jfZF/HuuexwK70EYXzNrhur0N/rPCPeuoLHvOd1KkBnPIKW0YKC0BpVBTPqI77D6oU
+	2Ews6sLj2pdWl1izaiikolm71S/mwRZqv4fE6MrQ7Ug4ufRxjJFo60eh7o3yXuCS1JT7yLU0JIGRN
+	p/2s0rMpzIhpnrwS0HaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRqQA-007ZSH-3Y; Wed, 09 Mar 2022 07:07:42 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1nRquR-007d21-TM; Wed, 09 Mar 2022 07:38:59 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRqPx-007ZPE-4i
- for linux-mediatek@lists.infradead.org; Wed, 09 Mar 2022 07:07:32 +0000
-Received: by mail-wr1-x431.google.com with SMTP id e24so1481893wrc.10
- for <linux-mediatek@lists.infradead.org>; Tue, 08 Mar 2022 23:07:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:in-reply-to:references:date:message-id
- :mime-version; bh=UKkOGj96yEPkJXREWpXf/ZxC/thW+x6mQGM5X+KzoqI=;
- b=Vm5nzBF+VMiWvwLDRlVhoTttIZnnwG9hQkgmU6lhcEKjellU9RaCXIbHUQ+s9vopbh
- fqUxjfZu9KfNHw0ik21qV5WvsEPBLb2xLeCE8bYKqM/3o3HZ1rPywXSqZ9IE+PZaAjp+
- AawEkLPcP0HZjlHvEiAcW9G3xfjwubjC6WHmMqI4DP4R5u2skH7xfL1CbfI0Jypn/WjX
- 7XB4E+IxevaAP46ENlzhPOzW1MAcpzDA95PH3tYZ5W/2xTrtnpB5X7JR9OtP2Y/NCE2t
- 0iHGLJSrJsFeBMJgqCzv2c+BS8uvMLvBEeShcEIIf/XXswwqrpXuzW0N/y6TKZWWP7jw
- p/sQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
- :message-id:mime-version;
- bh=UKkOGj96yEPkJXREWpXf/ZxC/thW+x6mQGM5X+KzoqI=;
- b=MIuyVHnBFCxEe22SNE7H3L6sCghZamKF68sAGA7EdG66oB7dvgPutEVXTgHqo8W8C+
- AvMMbqw6gGarm30MOWS+ET+lgX+N4/+POKxM+eF2uNZ4MiD9JogcKl66duGeLtaP9s3p
- b3MfDLmQ/I2iv7wpx2mxyWivU+ecFpaFNPpVjor0G3OJiARhV4vJgvJXESbm41hssPtJ
- 0KBduzaLxyDtFUobUi713fShWsI2QMbw6o27qrvoImA8jtjd6ZhVKAdXqm8z4ryIjsmG
- BDT3tZDhkZ/T1pdSLzfKOH91LhjTMCxO5Ppuunf9wwzjv02fo+UtbwF8y2j7ejJ3NqZS
- BhVg==
-X-Gm-Message-State: AOAM5313Ju8lKis1AufhuxSy2EYKGGi7sTUHwuIZfjubIcWbUGdD8QTt
- 9iaekHgCWsr6CT+nj0CK4MXbCw==
-X-Google-Smtp-Source: ABdhPJzlhZkmPvte5X0WJu7dgTlK9ftWSz9F9e479R/RNfghnaKH7QPJhwJ/dXiKt3gcN/HGMjhong==
-X-Received: by 2002:a5d:47a4:0:b0:1f0:46e4:19bc with SMTP id
- 4-20020a5d47a4000000b001f046e419bcmr16034223wrb.601.1646809646825; 
- Tue, 08 Mar 2022 23:07:26 -0800 (PST)
-Received: from localhost ([2a01:e0a:a84:e4a0:bc38:63f8:c31:e108])
- by smtp.gmail.com with ESMTPSA id
- k18-20020adfe8d2000000b0020294da2b42sm1240410wrn.117.2022.03.08.23.07.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Mar 2022 23:07:26 -0800 (PST)
-From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-To: cgel.zte@gmail.com, dmitry.torokhov@gmail.com
-Cc: matthias.bgg@gmail.com, lv.ruyi@zte.com.cn, fengping.yu@mediatek.com,
- m.felsch@pengutronix.de, linux-input@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Zeal Robot <zealci@zte.com.cn>
-Subject: Re: [PATCH] input: fix variable type
-In-Reply-To: <20220308025054.2077162-1-lv.ruyi@zte.com.cn>
-References: <20220308025054.2077162-1-lv.ruyi@zte.com.cn>
-Date: Wed, 09 Mar 2022 08:07:25 +0100
-Message-ID: <875yontxhu.fsf@baylibre.com>
+ id 1nRquD-007cxu-94; Wed, 09 Mar 2022 07:38:47 +0000
+X-UUID: b784c21a82da4bfc950be60aec871063-20220309
+X-UUID: b784c21a82da4bfc950be60aec871063-20220309
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1654864655; Wed, 09 Mar 2022 00:38:38 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Mar 2022 23:36:40 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 9 Mar 2022 15:36:39 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 9 Mar 2022 15:36:39 +0800
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <daniel@ffwll.ch>, <airlied@linux.ie>,
+ <maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
+ <tzimmermann@suse.de>, <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>,
+ <matthias.bgg@gmail.com>, <robert.foss@linaro.org>,
+ <andrzej.hajda@intel.com>, <narmstrong@baylibre.com>
+CC: <xji@analogixsemi.com>, <jitao.shi@mediatek.com>,
+ <xinlei.lee@mediatek.com>, <khilman@baylibre.com>,
+ <angelogioacchino.delregno@collabora.com>, <dri-devel@lists.freedesktop.org>, 
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: [RESEND V11 1/3] drm/dsi: transfer DSI HS packets ending at the same
+ time
+Date: Wed, 9 Mar 2022 15:36:35 +0800
+Message-ID: <20220309073637.3591-2-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220309073637.3591-1-rex-bc.chen@mediatek.com>
+References: <20220309073637.3591-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_230729_264338_FB8170BD 
-X-CRM114-Status: GOOD (  14.10  )
+X-CRM114-CacheID: sfid-20220308_233845_333214_4F945608 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,36 +80,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 08, 2022 at 02:50, cgel.zte@gmail.com wrote:
+Since a HS transmission is composed of an arbitrary number
+of bytes that may not be an integer multiple of lanes, some
+lanes may run out of data before others.
+(Defined in 6.1.3 of mipi_DSI_specification_v.01-02-00)
 
-> From: Lv Ruyi (CGEL ZTE) <lv.ruyi@zte.com.cn>
->
-> The irq is defined unsigned int. If the platform_get_irq return a negative
-> value, data type cast may result in error.
->
-> Reported-by: Zeal Robot <zealci@zte.com.cn>
-> Signed-off-by: Lv Ruyi (CGEL ZTE) <lv.ruyi@zte.com.cn>
-> ---
->  drivers/input/keyboard/mt6779-keypad.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/input/keyboard/mt6779-keypad.c b/drivers/input/keyboard/mt6779-keypad.c
-> index 5ff23250ed37..0dbbddc7f298 100644
-> --- a/drivers/input/keyboard/mt6779-keypad.c
-> +++ b/drivers/input/keyboard/mt6779-keypad.c
-> @@ -91,7 +91,7 @@ static void mt6779_keypad_clk_disable(void *data)
->  static int mt6779_keypad_pdrv_probe(struct platform_device *pdev)
->  {
->  	struct mt6779_keypad *keypad;
-> -	unsigned int irq;
-> +	int irq;
->  	u32 debounce;
->  	bool wakeup;
->  	int error;
+However, for some DSI RX devices (for example, anx7625),
+there is a limitation that packet number should be the same
+on all DSI lanes. In other words, they need to end a HS at
+the same time.
 
-Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-> -- 
-> 2.25.1
+Because this limitation is for some specific DSI RX devices,
+it is more reasonable to put the enable control in these
+DSI RX drivers. If DSI TX driver knows the information,
+they can adjust the setting for this situation.
+
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Andrzej Hajda <andrzej.hajda@intel.com>
+---
+ include/drm/drm_mipi_dsi.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/drm/drm_mipi_dsi.h b/include/drm/drm_mipi_dsi.h
+index 147e51b6d241..51e09a1a106a 100644
+--- a/include/drm/drm_mipi_dsi.h
++++ b/include/drm/drm_mipi_dsi.h
+@@ -137,6 +137,8 @@ struct mipi_dsi_host *of_find_mipi_dsi_host_by_node(struct device_node *node);
+ #define MIPI_DSI_CLOCK_NON_CONTINUOUS	BIT(10)
+ /* transmit data in low power */
+ #define MIPI_DSI_MODE_LPM		BIT(11)
++/* transmit data ending at the same time for all lanes within one hsync */
++#define MIPI_DSI_HS_PKT_END_ALIGNED	BIT(12)
+ 
+ enum mipi_dsi_pixel_format {
+ 	MIPI_DSI_FMT_RGB888,
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
