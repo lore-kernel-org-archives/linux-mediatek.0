@@ -4,75 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6F00C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Mar 2022 10:08:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBA65C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Mar 2022 10:14:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9I6q9IDZI9T7ZBx+IY1HjCNUw975YWt5+4C4x6tAGyQ=; b=ZQwnnhnZvtfsSW
-	vkt+eClwM3A94HpU2uCe+QS16b023yTxp3nUMj+ullTFtJP62vfY0fSWYO9NM7K25JT9gHHRizsv/
-	JXy8U8fR3/kZ4U44SJxaJDCIB5O8N8Uv1t8qcBqQ+LyG/rgTE2hOMId3idfYdHUmmH0MH/T5tcjau
-	sGKnquySyTRTNPHr9V6LdposYsgmOXQFYw8vw8pjLAAii2D0A7ccxCUHutIICwYw8uILWmnMS/9jO
-	lxmMx09vbO7xUMagB6IAuoPPsztUQ2jP542lvIOpV3IfJjLKE6ykNw9gJ/ewsgHqVc3osjUmbfslg
-	JH64F/kzyqSMIMdOY/cg==;
+	List-Owner; bh=VWdp6edt6MkDuDnUTj7ug7sxU6dr8js9M8BKUFKe74M=; b=4CBZ50Xm8mE6RC
+	YF5bv5hxOUcDtmoVEIiU60DsXWx06NIm1NymyMennRmEgRoODP0FAxh9sBbk4JK9XQc9O75jmRkCW
+	imx3s/qrueHkQX4MWJUjf+E33V5eDuhLm+cOP5CKs1minUUTfxrnbQzVcRyi5lIyJWCi7vic4b2dd
+	iy3UyzzsLWWEz7PLalVd7+pf1KnkAyqEEGWOdSbucrjQwjCOhh8rI67K/z7MZXFsF4xp5zwJyUqRh
+	g/ENBt6B5f5Rxlos4NBQ5klvZyjM1L7c0MmWVJ2HqoBlyITC73+zncEF+fscR9WebvVADG40HLAbL
+	E80/spBjuJYzgQyh8GpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRtFH-0085EO-Fh; Wed, 09 Mar 2022 10:08:39 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nRtKq-0086YV-Sf; Wed, 09 Mar 2022 10:14:24 +0000
+Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRtFE-0085DE-9a; Wed, 09 Mar 2022 10:08:38 +0000
-X-UUID: 50854304677e4330bc9386ddf7b2fad3-20220309
-X-UUID: 50854304677e4330bc9386ddf7b2fad3-20220309
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <moudy.ho@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 546306631; Wed, 09 Mar 2022 03:08:33 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Mar 2022 02:02:33 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 9 Mar 2022 18:02:31 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 9 Mar 2022 18:02:31 +0800
-Message-ID: <9befcc6aa35c85e2fba8ceee751e3aafe24c05c6.camel@mediatek.com>
-Subject: Re: [PATCH v12 2/4] soc: mediatek: mmsys: add support for ISP control
-From: moudy.ho <moudy.ho@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Jernej Skrabec
- <jernej.skrabec@siol.net>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- Alexandre Courbot <acourbot@chromium.org>, <tfiga@chromium.org>,
- <drinkcat@chromium.org>, <pihsun@chromium.org>, <hsinyi@google.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, <randy.wu@mediatek.com>,
- <jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
- <river.cheng@mediatek.com>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 9 Mar 2022 18:02:31 +0800
-In-Reply-To: <de1816aeb02206935567eee5af7fac10f3bae4ff.camel@mediatek.com>
-References: <20220301100246.2153-1-moudy.ho@mediatek.com>
- <20220301100246.2153-3-moudy.ho@mediatek.com>
- <de1816aeb02206935567eee5af7fac10f3bae4ff.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nRtKd-0086VX-R7
+ for linux-mediatek@lists.infradead.org; Wed, 09 Mar 2022 10:14:13 +0000
+Received: by mail-yb1-xb33.google.com with SMTP id j2so3389943ybu.0
+ for <linux-mediatek@lists.infradead.org>; Wed, 09 Mar 2022 02:14:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KCZhZco+0KFMyvuCDhItj2e0NHWXHNetfjkFnAqoWkA=;
+ b=S3cgBjeFwa4noJjQAcXN/JsibairXFtbUXo1zZduqt6MBg4NTVWQlXy7CyORsMtfCJ
+ Yb79zDE3TZGRo+HW0IYQLkcA4VssO3t3ZLZoE/IcyyvJeDhjJb+gnDLXoP4eKepJ1mMp
+ sCiw8DlUD8HAf1zQRugIGTRzk/SD/ww4tm4hs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KCZhZco+0KFMyvuCDhItj2e0NHWXHNetfjkFnAqoWkA=;
+ b=V5xtewbAsLo51YwgS+H2twiQvywVz+HtbKNO5y+GVnrCSAJryZvCHVCkN2T75e1CCm
+ wADhAK7+9+KGWjwgFYLFLCPYdscK09b3kDlvRyfpnhcUqpYN+9cdDbA4t082dkCkCOL9
+ LFiKb06FfFgQ443DzxvWDjP/FveALr4GVejmHvMngxFoh2iP3j2hr1eWeMmNe9ScG/LP
+ BQY5CgseahFuXnjgVj7DTi+Bt9U9rThf+9vz1FwmWadqYLDBza3lF797nlnnpmgiM6q2
+ BE9gFg2/W3SHooTvnPXQzI4AgDK7LxHXOjupmBvQL8K/NA4EwqTKxGVgLJLv3DosiAkk
+ joBw==
+X-Gm-Message-State: AOAM531ym8S/+hCcWh/LtdN0vgC/w6HaURFIae6g8yYvm/ZjTLmrpmKg
+ xQBlmEPNQ8gDEe260dGLTFzwM/NE9QD2HhdNUZ46UQ==
+X-Google-Smtp-Source: ABdhPJx2cW0ywz0SegJTQ+R92hI1gP1aKA2eosKmS45iuxzgvK62ipaxN+q/w5JWJ9Th9IBnbmcaCuX8B0vy11f6CL4=
+X-Received: by 2002:a25:d449:0:b0:628:945d:713c with SMTP id
+ m70-20020a25d449000000b00628945d713cmr16379825ybf.164.1646820850490; Wed, 09
+ Mar 2022 02:14:10 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220221015258.913-1-chun-jie.chen@mediatek.com>
+ <20220221015258.913-3-chun-jie.chen@mediatek.com>
+In-Reply-To: <20220221015258.913-3-chun-jie.chen@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 9 Mar 2022 18:13:59 +0800
+Message-ID: <CAGXv+5Fq4_dZBWJvKZ8ADUSQF4bTu-QWZ+7KG1dsJoWDrT2nXg@mail.gmail.com>
+Subject: Re: [PATCH v2 02/15] clk: mediatek: Add MT8186 mcusys clock support
+To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, 
+ devicetree@vger.kernel.org, srv_heupstream@mediatek.com, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220309_020836_353259_0308FD47 
-X-CRM114-Status: GOOD (  29.15  )
+X-CRM114-CacheID: sfid-20220309_021411_923326_F0D06234 
+X-CRM114-Status: GOOD (  28.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,347 +84,192 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-03-03 at 17:03 +0800, CK Hu wrote:
-> Hi, Moudy:
-> 
-> On Tue, 2022-03-01 at 18:02 +0800, Moudy Ho wrote:
-> > This patch adds 8183 ISP settings in MMSYS domain and interface.
-> > 
-> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> > Acked-by: AngeloGioacchino Del Regno <
-> > angelogioacchino.delregno@collabora.com>
-> > ---
-> >  drivers/soc/mediatek/mt8183-mmsys.h    |  26 ++++++
-> >  drivers/soc/mediatek/mtk-mmsys.c       | 115
-> > +++++++++++++++++++++++++
-> >  drivers/soc/mediatek/mtk-mmsys.h       |   1 +
-> >  include/linux/soc/mediatek/mtk-mmsys.h |  30 +++++++
-> >  4 files changed, 172 insertions(+)
-> > 
-> > diff --git a/drivers/soc/mediatek/mt8183-mmsys.h
-> > b/drivers/soc/mediatek/mt8183-mmsys.h
-> > index 9dee485807c9..179d5996c659 100644
-> > --- a/drivers/soc/mediatek/mt8183-mmsys.h
-> > +++ b/drivers/soc/mediatek/mt8183-mmsys.h
-> > @@ -13,6 +13,18 @@
-> >  #define MT8183_DISP_RDMA0_SOUT_SEL_IN		0xf50
-> >  #define MT8183_DISP_RDMA1_SOUT_SEL_IN		0xf54
-> >  
-> > +#define MT8183_ISP_REG_MMSYS_SW0_RST_B		0x140
-> > +#define MT8183_ISP_REG_MMSYS_SW1_RST_B		0x144
-> > +#define MT8183_ISP_REG_MDP_ASYNC_CFG_WD		0x934
-> > +#define MT8183_ISP_REG_MDP_ASYNC_IPU_CFG_WD	0x93C
-> > +#define MT8183_ISP_REG_ISP_RELAY_CFG_WD		0x994
-> > +#define MT8183_ISP_REG_IPU_RELAY_CFG_WD		0x9a0
-> > +#define MT8183_ISP_BIT_MDP_DL_ASYNC_TX		BIT(3)
-> > +#define MT8183_ISP_BIT_MDP_DL_ASYNC_TX2		BIT(4)
-> > +#define MT8183_ISP_BIT_MDP_DL_ASYNC_RX		BIT(10)
-> > +#define MT8183_ISP_BIT_MDP_DL_ASYNC_RX2		BIT(11)
-> > +#define MT8183_ISP_BIT_NO_SOF_MODE		BIT(31)
-> > +
-> >  #define MT8183_OVL0_MOUT_EN_OVL0_2L		BIT(4)
-> >  #define MT8183_OVL0_2L_MOUT_EN_DISP_PATH0	BIT(0)
-> >  #define MT8183_OVL1_2L_MOUT_EN_RDMA1		BIT(4)
-> > @@ -57,5 +69,19 @@ static const struct mtk_mmsys_routes
-> > mmsys_mt8183_routing_table[] = {
-> >  	}
-> >  };
-> >  
-> > +static const unsigned int
-> > mmsys_mt8183_mdp_isp_ctrl_table[ISP_CTRL_MAX] = {
-> > +	[ISP_REG_MMSYS_SW0_RST_B] = MT8183_ISP_REG_MMSYS_SW0_RST_B,
-> > +	[ISP_REG_MMSYS_SW1_RST_B] = MT8183_ISP_REG_MMSYS_SW1_RST_B,
-> > +	[ISP_REG_MDP_ASYNC_CFG_WD] = MT8183_ISP_REG_MDP_ASYNC_CFG_WD,
-> > +	[ISP_REG_MDP_ASYNC_IPU_CFG_WD] =
-> > MT8183_ISP_REG_MDP_ASYNC_IPU_CFG_WD,
-> > +	[ISP_REG_ISP_RELAY_CFG_WD] = MT8183_ISP_REG_ISP_RELAY_CFG_WD,
-> > +	[ISP_REG_IPU_RELAY_CFG_WD] = MT8183_ISP_REG_IPU_RELAY_CFG_WD,
-> > +	[ISP_BIT_MDP_DL_ASYNC_TX] = MT8183_ISP_BIT_MDP_DL_ASYNC_TX,
-> > +	[ISP_BIT_MDP_DL_ASYNC_TX2] = MT8183_ISP_BIT_MDP_DL_ASYNC_TX2,
-> > +	[ISP_BIT_MDP_DL_ASYNC_RX] = MT8183_ISP_BIT_MDP_DL_ASYNC_RX,
-> > +	[ISP_BIT_MDP_DL_ASYNC_RX2] = MT8183_ISP_BIT_MDP_DL_ASYNC_RX2,
-> > +	[ISP_BIT_NO_SOF_MODE] = MT8183_ISP_BIT_NO_SOF_MODE,
-> > +};
-> > +
-> >  #endif /* __SOC_MEDIATEK_MT8183_MMSYS_H */
-> >  
-> > diff --git a/drivers/soc/mediatek/mtk-mmsys.c
-> > b/drivers/soc/mediatek/mtk-mmsys.c
-> > index 04c0c7de395e..0e271d1a86e5 100644
-> > --- a/drivers/soc/mediatek/mtk-mmsys.c
-> > +++ b/drivers/soc/mediatek/mtk-mmsys.c
-> > @@ -58,6 +58,7 @@ static const struct mtk_mmsys_driver_data
-> > mt8183_mmsys_driver_data = {
-> >  	.routes = mmsys_mt8183_routing_table,
-> >  	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
-> >  	.has_gce_client_reg = true,
-> > +	.mdp_isp_ctrl = mmsys_mt8183_mdp_isp_ctrl_table,
-> >  };
-> >  
-> >  static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data
-> > =
-> > {
-> > @@ -136,6 +137,120 @@ void mtk_mmsys_write_reg_by_cmdq(struct
-> > device
-> > *dev,
-> >  }
-> >  EXPORT_SYMBOL_GPL(mtk_mmsys_write_reg_by_cmdq);
-> >  
-> > +void mtk_mmsys_mdp_isp_ctrl(struct device *dev, struct
-> > mmsys_cmdq_cmd *cmd,
-> > +			    enum mtk_mdp_comp_id id)
-> > +{
-> > +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-> > +	const unsigned int *isp_ctrl = mmsys->data->mdp_isp_ctrl;
-> > +	u32 reg;
-> > +
-> > +	/* Direct link */
-> > +	if (id == MDP_COMP_CAMIN) {
-> > +		/* Reset MDP_DL_ASYNC_TX */
-> 
-> Why do you reset this hardware by CMDQ? Usually we reset one hardware
-> before it start or after it stop. In this timing, we could easily use
-> CPU to reset this hardware.
-> 
-> Regards,
-> CK
-> 
-Hi CK,
+Hi,
 
-As mentioned in patch 4/4, due to HW limitations, it is currently
-necessary to set MUTEX enable and SW reset in each frame to avoid
-unpredictable artifacts.
+On Mon, Feb 21, 2022 at 9:59 AM Chun-Jie Chen
+<chun-jie.chen@mediatek.com> wrote:
+>
+> Add MT8186 mcusys clock controller which provides muxes
+> to select the clock source of APMCU.
+>
+> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  drivers/clk/mediatek/Kconfig          |   8 ++
+>  drivers/clk/mediatek/Makefile         |   1 +
+>  drivers/clk/mediatek/clk-mt8186-mcu.c | 106 ++++++++++++++++++++++++++
+>  3 files changed, 115 insertions(+)
+>  create mode 100644 drivers/clk/mediatek/clk-mt8186-mcu.c
+>
+> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+> index 01ef02c54725..d5936cfb3bee 100644
+> --- a/drivers/clk/mediatek/Kconfig
+> +++ b/drivers/clk/mediatek/Kconfig
+> @@ -512,6 +512,14 @@ config COMMON_CLK_MT8183_VENCSYS
+>         help
+>           This driver supports MediaTek MT8183 vencsys clocks.
+>
+> +config COMMON_CLK_MT8186
+> +       bool "Clock driver for MediaTek MT8186"
+> +       depends on ARM64 || COMPILE_TEST
+> +       select COMMON_CLK_MEDIATEK
+> +       default ARCH_MEDIATEK
+> +       help
+> +         This driver supports MediaTek MT8186 clocks.
+> +
+>  config COMMON_CLK_MT8192
+>         bool "Clock driver for MediaTek MT8192"
+>         depends on ARM64 || COMPILE_TEST
+> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+> index 7b0c2646ce4a..677fa4f0eea2 100644
+> --- a/drivers/clk/mediatek/Makefile
+> +++ b/drivers/clk/mediatek/Makefile
+> @@ -71,6 +71,7 @@ obj-$(CONFIG_COMMON_CLK_MT8183_MFGCFG) += clk-mt8183-mfgcfg.o
+>  obj-$(CONFIG_COMMON_CLK_MT8183_MMSYS) += clk-mt8183-mm.o
+>  obj-$(CONFIG_COMMON_CLK_MT8183_VDECSYS) += clk-mt8183-vdec.o
+>  obj-$(CONFIG_COMMON_CLK_MT8183_VENCSYS) += clk-mt8183-venc.o
+> +obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o
+>  obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
+>  obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
+>  obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
+> diff --git a/drivers/clk/mediatek/clk-mt8186-mcu.c b/drivers/clk/mediatek/clk-mt8186-mcu.c
+> new file mode 100644
+> index 000000000000..6d82c5de16c1
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt8186-mcu.c
+> @@ -0,0 +1,106 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +//
+> +// Copyright (c) 2022 MediaTek Inc.
+> +// Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> +
+> +#include "clk-mtk.h"
 
-Thanks & Regards,
-Moudy Ho
-> > +		if (isp_ctrl[ISP_REG_MMSYS_SW0_RST_B]) {
-> > +			reg = mmsys->addr +
-> > isp_ctrl[ISP_REG_MMSYS_SW0_RST_B];
-> > +			cmdq_pkt_write_mask(cmd->pkt, mmsys-
-> > > cmdq_base.subsys, reg,
-> > 
-> > +					    0x0,
-> > +					    isp_ctrl[ISP_BIT_MDP_DL_ASY
-> > NC_TX]);
-> > +			cmdq_pkt_write_mask(cmd->pkt, mmsys-
-> > > cmdq_base.subsys, reg,
-> > 
-> > +					    isp_ctrl[ISP_BIT_MDP_DL_ASY
-> > NC_TX],
-> > +					    isp_ctrl[ISP_BIT_MDP_DL_ASY
-> > NC_TX]);
-> > +		}
-> > +
-> > +		/* Reset MDP_DL_ASYNC_RX */
-> > +		if (isp_ctrl[ISP_REG_MMSYS_SW1_RST_B]) {
-> > +			reg = mmsys->addr +
-> > isp_ctrl[ISP_REG_MMSYS_SW1_RST_B];
-> > +			cmdq_pkt_write_mask(cmd->pkt, mmsys-
-> > > cmdq_base.subsys, reg,
-> > 
-> > +					    0x0,
-> > +					    isp_ctrl[ISP_BIT_MDP_DL_ASY
-> > NC_RX]);
-> > +			cmdq_pkt_write_mask(cmd->pkt, mmsys-
-> > > cmdq_base.subsys, reg,
-> > 
-> > +					    isp_ctrl[ISP_BIT_MDP_DL_ASY
-> > NC_RX],
-> > +					    isp_ctrl[ISP_BIT_MDP_DL_ASY
-> > NC_RX]);
-> > +		}
-> > +
-> > +		/* Enable sof mode */
-> > +		if (isp_ctrl[ISP_REG_ISP_RELAY_CFG_WD]) {
-> > +			reg = mmsys->addr +
-> > isp_ctrl[ISP_REG_ISP_RELAY_CFG_WD];
-> > +			cmdq_pkt_write_mask(cmd->pkt, mmsys-
-> > > cmdq_base.subsys, reg,
-> > 
-> > +					    0x0,
-> > +					    isp_ctrl[ISP_BIT_NO_SOF_MOD
-> > E]);
-> > +		}
-> > +	}
-> > +
-> > +	if (id == MDP_COMP_CAMIN2) {
-> > +		/* Reset MDP_DL_ASYNC2_TX */
-> > +		if (isp_ctrl[ISP_REG_MMSYS_SW0_RST_B]) {
-> > +			reg = mmsys->addr +
-> > isp_ctrl[ISP_REG_MMSYS_SW0_RST_B];
-> > +			cmdq_pkt_write_mask(cmd->pkt, mmsys-
-> > > cmdq_base.subsys, reg,
-> > 
-> > +					    0x0,
-> > +					    isp_ctrl[ISP_BIT_MDP_DL_ASY
-> > NC_TX2]);
-> > +			cmdq_pkt_write_mask(cmd->pkt, mmsys-
-> > > cmdq_base.subsys, reg,
-> > 
-> > +					    isp_ctrl[ISP_BIT_MDP_DL_ASY
-> > NC_TX2],
-> > +					    isp_ctrl[ISP_BIT_MDP_DL_ASY
-> > NC_TX2]);
-> > +		}
-> > +
-> > +		/* Reset MDP_DL_ASYNC2_RX */
-> > +		if (isp_ctrl[ISP_REG_MMSYS_SW1_RST_B]) {
-> > +			reg = mmsys->addr +
-> > isp_ctrl[ISP_REG_MMSYS_SW1_RST_B];
-> > +			cmdq_pkt_write_mask(cmd->pkt, mmsys-
-> > > cmdq_base.subsys, reg,
-> > 
-> > +					    0x0,
-> > +					    isp_ctrl[ISP_BIT_MDP_DL_ASY
-> > NC_RX2]);
-> > +			cmdq_pkt_write_mask(cmd->pkt, mmsys-
-> > > cmdq_base.subsys, reg,
-> > 
-> > +					    isp_ctrl[ISP_BIT_MDP_DL_ASY
-> > NC_RX2],
-> > +					    isp_ctrl[ISP_BIT_MDP_DL_ASY
-> > NC_RX2]);
-> > +		}
-> > +
-> > +		/* Enable sof mode */
-> > +		if (isp_ctrl[ISP_REG_IPU_RELAY_CFG_WD]) {
-> > +			reg = mmsys->addr +
-> > isp_ctrl[ISP_REG_IPU_RELAY_CFG_WD];
-> > +			cmdq_pkt_write_mask(cmd->pkt, mmsys-
-> > > cmdq_base.subsys, reg,
-> > 
-> > +					    0x0,
-> > +					    isp_ctrl[ISP_BIT_NO_SOF_MOD
-> > E]);
-> > +		}
-> > +	}
-> > +}
-> > +EXPORT_SYMBOL_GPL(mtk_mmsys_mdp_isp_ctrl);
-> > +
-> > +void mtk_mmsys_mdp_camin_ctrl(struct device *dev, struct
-> > mmsys_cmdq_cmd *cmd,
-> > +			      enum mtk_mdp_comp_id id, u32 camin_w, u32
-> > camin_h)
-> > +{
-> > +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-> > +	const unsigned int *isp_ctrl = mmsys->data->mdp_isp_ctrl;
-> > +	u32 reg;
-> > +
-> > +	/* Config for direct link */
-> > +	if (id == MDP_COMP_CAMIN) {
-> > +		if (isp_ctrl[ISP_REG_MDP_ASYNC_CFG_WD]) {
-> > +			reg = mmsys->addr +
-> > isp_ctrl[ISP_REG_MDP_ASYNC_CFG_WD];
-> > +			cmdq_pkt_write_mask(cmd->pkt, mmsys-
-> > > cmdq_base.subsys, reg,
-> > 
-> > +					    (camin_h << 16) + camin_w,
-> > +					    0x3FFF3FFF);
-> > +		}
-> > +
-> > +		if (isp_ctrl[ISP_REG_ISP_RELAY_CFG_WD]) {
-> > +			reg = mmsys->addr +
-> > isp_ctrl[ISP_REG_ISP_RELAY_CFG_WD];
-> > +			cmdq_pkt_write_mask(cmd->pkt, mmsys-
-> > > cmdq_base.subsys, reg,
-> > 
-> > +					    (camin_h << 16) + camin_w,
-> > +					    0x3FFF3FFF);
-> > +		}
-> > +	}
-> > +	if (id == MDP_COMP_CAMIN2) {
-> > +		if (isp_ctrl[ISP_REG_MDP_ASYNC_IPU_CFG_WD]) {
-> > +			reg = mmsys->addr +
-> > isp_ctrl[ISP_REG_MDP_ASYNC_IPU_CFG_WD];
-> > +			cmdq_pkt_write_mask(cmd->pkt, mmsys-
-> > > cmdq_base.subsys, reg,
-> > 
-> > +					    (camin_h << 16) + camin_w,
-> > +					    0x3FFF3FFF);
-> > +		}
-> > +		if (isp_ctrl[ISP_REG_IPU_RELAY_CFG_WD]) {
-> > +			reg = mmsys->addr +
-> > isp_ctrl[ISP_REG_IPU_RELAY_CFG_WD];
-> > +			cmdq_pkt_write_mask(cmd->pkt, mmsys-
-> > > cmdq_base.subsys, reg,
-> > 
-> > +					    (camin_h << 16) + camin_w,
-> > +					    0x3FFF3FFF);
-> > +		}
-> > +	}
-> > +}
-> > +EXPORT_SYMBOL_GPL(mtk_mmsys_mdp_camin_ctrl);
-> > +
-> >  static int mtk_mmsys_reset_update(struct reset_controller_dev
-> > *rcdev, unsigned long id,
-> >  				  bool assert)
-> >  {
-> > diff --git a/drivers/soc/mediatek/mtk-mmsys.h
-> > b/drivers/soc/mediatek/mtk-mmsys.h
-> > index 9fce400507d2..ad8b92389b54 100644
-> > --- a/drivers/soc/mediatek/mtk-mmsys.h
-> > +++ b/drivers/soc/mediatek/mtk-mmsys.h
-> > @@ -93,6 +93,7 @@ struct mtk_mmsys_driver_data {
-> >  	const struct mtk_mmsys_routes *routes;
-> >  	const unsigned int num_routes;
-> >  	bool has_gce_client_reg;
-> > +	const unsigned int *mdp_isp_ctrl;
-> >  };
-> >  
-> >  /*
-> > diff --git a/include/linux/soc/mediatek/mtk-mmsys.h
-> > b/include/linux/soc/mediatek/mtk-mmsys.h
-> > index 7f8ecc98d023..45e77d1cd6c1 100644
-> > --- a/include/linux/soc/mediatek/mtk-mmsys.h
-> > +++ b/include/linux/soc/mediatek/mtk-mmsys.h
-> > @@ -91,6 +91,29 @@ enum mtk_mdp_comp_id {
-> >  	MDP_MAX_COMP_COUNT	/* ALWAYS keep at the end */
-> >  };
-> >  
-> > +enum mtk_mdp_pipe_id {
-> > +	MDP_PIPE_RDMA0,
-> > +	MDP_PIPE_IMGI,
-> > +	MDP_PIPE_WPEI,
-> > +	MDP_PIPE_WPEI2,
-> > +	MDP_PIPE_MAX
-> > +};
-> > +
-> > +enum mtk_isp_ctrl {
-> > +	ISP_REG_MMSYS_SW0_RST_B,
-> > +	ISP_REG_MMSYS_SW1_RST_B,
-> > +	ISP_REG_MDP_ASYNC_CFG_WD,
-> > +	ISP_REG_MDP_ASYNC_IPU_CFG_WD,
-> > +	ISP_REG_ISP_RELAY_CFG_WD,
-> > +	ISP_REG_IPU_RELAY_CFG_WD,
-> > +	ISP_BIT_MDP_DL_ASYNC_TX,
-> > +	ISP_BIT_MDP_DL_ASYNC_TX2,
-> > +	ISP_BIT_MDP_DL_ASYNC_RX,
-> > +	ISP_BIT_MDP_DL_ASYNC_RX2,
-> > +	ISP_BIT_NO_SOF_MODE,
-> > +	ISP_CTRL_MAX
-> > +};
-> > +
-> >  void mtk_mmsys_ddp_connect(struct device *dev,
-> >  			   enum mtk_ddp_comp_id cur,
-> >  			   enum mtk_ddp_comp_id next);
-> > @@ -103,4 +126,11 @@ void mtk_mmsys_write_reg_by_cmdq(struct device
-> > *dev,
-> >  				 struct mmsys_cmdq_cmd *cmd,
-> >  				 u32 alias_id, u32 value, u32 mask);
-> >  
-> > +void mtk_mmsys_mdp_isp_ctrl(struct device *dev, struct
-> > mmsys_cmdq_cmd *cmd,
-> > +			    enum mtk_mdp_comp_id id);
-> > +
-> > +void mtk_mmsys_mdp_camin_ctrl(struct device *dev, struct
-> > mmsys_cmdq_cmd *cmd,
-> > +			      enum mtk_mdp_comp_id id,
-> > +			      u32 camin_w, u32 camin_h);
-> > +
-> >  #endif /* __MTK_MMSYS_H */
-> 
-> 
+Please move local headers after global ones. And please do this for all
+patches.
 
+> +
+> +#include <dt-bindings/clock/mt8186-clk.h>
+> +#include <linux/clk-provider.h>
+> +#include <linux/platform_device.h>
+> +
+> +static DEFINE_SPINLOCK(mt8186_clk_lock);
+> +
+> +static const char * const mcu_armpll_ll_parents[] = {
+> +       "clk26m",
+> +       "armpll_ll",
+> +       "mainpll",
+> +       "univpll_d2"
+> +};
+> +
+> +static const char * const mcu_armpll_bl_parents[] = {
+> +       "clk26m",
+> +       "armpll_bl",
+> +       "mainpll",
+> +       "univpll_d2"
+> +};
+> +
+> +static const char * const mcu_armpll_bus_parents[] = {
+> +       "clk26m",
+> +       "ccipll",
+> +       "mainpll",
+> +       "univpll_d2"
+> +};
+> +
+> +static struct mtk_composite mcu_muxes[] = {
+> +       /* CPU_PLLDIV_CFG0 */
+> +       MUX(CLK_MCU_ARMPLL_LL_SEL, "mcu_armpll_ll_sel", mcu_armpll_ll_parents, 0x2A0, 9, 2),
+
+Can you add a comment stating that these registers have other bits that
+should not be touched? Otherwise anyone reading the datasheet might
+consider this to be incomplete.
+
+I assume the other bits (such as one field that looks like a divider) are
+configured in the bootloader, or the POR defaults are correct.
+
+> +       /* CPU_PLLDIV_CFG1 */
+> +       MUX(CLK_MCU_ARMPLL_BL_SEL, "mcu_armpll_bl_sel", mcu_armpll_bl_parents, 0x2A4, 9, 2),
+> +       /* BUS_PLLDIV_CFG */
+> +       MUX(CLK_MCU_ARMPLL_BUS_SEL, "mcu_armpll_bus_sel", mcu_armpll_bus_parents, 0x2E0, 9, 2),
+> +};
+
+Note: I've checked the register bits against the datasheet.
+
+> +
+> +static const struct of_device_id of_match_clk_mt8186_mcu[] = {
+> +       { .compatible = "mediatek,mt8186-mcusys", },
+> +       {}
+> +};
+> +
+> +static int clk_mt8186_mcu_probe(struct platform_device *pdev)
+> +{
+> +       struct clk_onecell_data *clk_data;
+> +       struct device_node *node = pdev->dev.of_node;
+> +       int r;
+> +       void __iomem *base;
+> +
+> +       clk_data = mtk_alloc_clk_data(CLK_MCU_NR_CLK);
+> +       if (!clk_data)
+> +               return -ENOMEM;
+> +
+> +       base = devm_platform_ioremap_resource(pdev, 0);
+> +       if (IS_ERR(base)) {
+> +               r = PTR_ERR(base);
+> +               goto free_mcu_data;
+> +       }
+> +
+> +       r = mtk_clk_register_composites(mcu_muxes, ARRAY_SIZE(mcu_muxes), base,
+> +                                       &mt8186_clk_lock, clk_data);
+
+I don't think you need the lock. None of the bit fields you have defined
+in this driver have overlapping registers.
+
+
+Regards
+ChenYu
+
+> +       if (r)
+> +               goto free_mcu_data;
+> +
+> +       r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+> +       if (r)
+> +               goto unregister_composite_muxes;
+> +
+> +       platform_set_drvdata(pdev, clk_data);
+> +
+> +       return r;
+> +
+> +unregister_composite_muxes:
+> +       mtk_clk_unregister_composites(mcu_muxes, ARRAY_SIZE(mcu_muxes), clk_data);
+> +free_mcu_data:
+> +       mtk_free_clk_data(clk_data);
+> +       return r;
+> +}
+> +
+> +static int clk_mt8186_mcu_remove(struct platform_device *pdev)
+> +{
+> +       struct clk_onecell_data *clk_data = platform_get_drvdata(pdev);
+> +       struct device_node *node = pdev->dev.of_node;
+> +
+> +       of_clk_del_provider(node);
+> +       mtk_clk_unregister_composites(mcu_muxes, ARRAY_SIZE(mcu_muxes), clk_data);
+> +       mtk_free_clk_data(clk_data);
+> +
+> +       return 0;
+> +}
+> +
+> +static struct platform_driver clk_mt8186_mcu_drv = {
+> +       .probe = clk_mt8186_mcu_probe,
+> +       .remove = clk_mt8186_mcu_remove,
+> +       .driver = {
+> +               .name = "clk-mt8186-mcu",
+> +               .of_match_table = of_match_clk_mt8186_mcu,
+> +       },
+> +};
+> +builtin_platform_driver(clk_mt8186_mcu_drv);
+> --
+> 2.18.0
+>
 
 _______________________________________________
 Linux-mediatek mailing list
