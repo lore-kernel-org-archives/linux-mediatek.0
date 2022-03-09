@@ -4,67 +4,164 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40F14C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Mar 2022 03:52:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3F18C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Mar 2022 03:53:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3bHyZ5WX6XZP7YV49akPr1dNkR0/f59Mih64SiC5rSo=; b=rgOZLQDHjtLmOe
-	YkUi5kNY9HaMgwJyTE5ffbL9ENwPC9slnsi6/wTVsATdQqsaL2FUsukUkwwantci+lrylaNSBEzIY
-	2WUK24UqRTtdOEeMnO9LDhzI+pmJSheNjl1ZrQ6y7TH6g/hKPYMCdzc8tduIvTNgWWeReCMz6Fx3C
-	RtmNzTwZqJ4aHfCq0mvmdfm2p8Oi6J6McVK/GxFXtzUOoYIQlLonz+mTFPErU4ihkY06/2w2bvMxl
-	5QdAmtTiOnV9TIkCTXqzQCX7XQuw6tQ4sqziwxYBO8BQaJPhYVv7t7LjA54zWeHuPlQZhTpMapC+K
-	gtwALliOmyDSDeDTS7gA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:
+	References:Message-ID:From:Subject:Cc:To:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=ZPH5KaTtaJQVquSUfaOol11qSrlENx3I2QQhaMmSdwY=; b=GepAXkw+3ljoDr5A3QrkFtTFjr
+	2J0PVEkmA9dcmUMtKU8DBunGIX53z5odT5GLqjvMedM74Dh6utQNoB7ykGzqP8ImSYd28S/hTl8N4
+	sxryPJ56nAHHC0gDRd3SX1LxmBYz9b2SF4mM/AYwpjzHzPqb6JcrYGb0BRbdAbOMWjnhtAVik8NVv
+	Okuk6yh1AFeBEmxt9ZgSg1DeFI7Hp3Er4JvL66r3o5lPjPfCAyGD2TuNd6hPXc3uEDgWCtQF1kc07
+	L/HI2jwEBWtdbWOQKMUoE1ZFVQuDnMdg1QBE1zPbZfo6UzxKrn4EbaRaqur6Cclsosiy9LPtIZNxK
+	8919VP6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRnMh-007BXZ-P0; Wed, 09 Mar 2022 03:51:55 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nRnNd-007BjI-EC; Wed, 09 Mar 2022 03:52:53 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRnMd-007BWx-C4; Wed, 09 Mar 2022 03:51:55 +0000
-X-UUID: e4887753dc1247f691da4843aa922674-20220308
-X-UUID: e4887753dc1247f691da4843aa922674-20220308
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jason-jh.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 654627036; Tue, 08 Mar 2022 20:51:44 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Mar 2022 19:42:42 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 9 Mar 2022 11:42:41 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 9 Mar 2022 11:42:41 +0800
-Message-ID: <5cccaada06b76c0ce8e66abf1336cf565f4ccc0a.camel@mediatek.com>
-Subject: Re: [PATCH 3/3] dt-bindings: display: mediatek: Fix examples on new
- bindings
-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- <chunkuang.hu@kernel.org>
-CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <robh+dt@kernel.org>, <krzysztof.kozlowski@canonical.com>,
- <mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>,
- <matthias.bgg@gmail.com>, <ck.hu@mediatek.com>, <jitao.shi@mediatek.com>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-stm32@st-md-mailman.stormreply.com>,
- <linux-arm-kernel@lists.infradead.org>
-Date: Wed, 9 Mar 2022 11:42:41 +0800
-In-Reply-To: <84e2bb5d7047fc1291d765131ce3f6b265a5304e.camel@mediatek.com>
-References: <20220304095458.12409-1-angelogioacchino.delregno@collabora.com>
- <20220304095458.12409-4-angelogioacchino.delregno@collabora.com>
- <84e2bb5d7047fc1291d765131ce3f6b265a5304e.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nRnNa-007Bib-OM
+ for linux-mediatek@lists.infradead.org; Wed, 09 Mar 2022 03:52:51 +0000
+Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 228M9B3E010436; 
+ Wed, 9 Mar 2022 03:52:49 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=to : cc : subject :
+ from : message-id : references : date : in-reply-to : content-type :
+ mime-version; s=corp-2021-07-09;
+ bh=nX3YdotVJW+N5iX1qPkPChOnepcLxPikF/mwl4YN/w8=;
+ b=xaRN1/c6+vS4SNAc8UMUQbaX+HUR0RLaP3s68otu05hQ/yRDz+iKwg6AutXOZzoj2tuK
+ Q+DZ5ZN0qGp/GIfvUTw9pmZ6McNNYnUzOgIoxyDLRmwNBM4Nz19ULtIPSiL3retEqP6b
+ zP4aTyrr0KJZywJpaCEe7PbAcUYRFpB2vV/qkSdx2teu5Md+GNlXi8QUy1eayFZKYann
+ aJAmV35Cg6ZgTMrIU+weRRLDzjnME5B9VUVzsnR+Bz53n0P45wmqcFBP5FGivwDujzJa
+ h+b6jEkeg7H2PkDVOhDxXlAha2rYiEVWzOXV8+Kh8N+zALVI1bpANqSZR9T6+SyYA5QI rw== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by mx0b-00069f02.pphosted.com with ESMTP id 3ekyrargft-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 09 Mar 2022 03:52:49 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 2293paEA145603;
+ Wed, 9 Mar 2022 03:52:48 GMT
+Received: from nam02-dm3-obe.outbound.protection.outlook.com
+ (mail-dm3nam07lp2043.outbound.protection.outlook.com [104.47.56.43])
+ by aserp3020.oracle.com with ESMTP id 3ekyp2q733-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 09 Mar 2022 03:52:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=DcWcE4MgYNFt7suygvn8QHR56LUPYK7YpHSThkLj4RsYUe996HzgxnvyO7ytrjS5KshluVPJdpuljiPrCLGCN9p9jCDtkBgwmB7bpP6VQBaalc5ngcjifJJFH+SFZ8/vp6bL3/X068GSSdP0Ri3xnrFRUA3hUYI7Zt3MxYXW5X9c6fWGrLPL1Kr5Pt08QVMBdHBnS37WAbYeVOyqmsf/0X/+9jt7M9GWimXb4X7fgkiQSo0BHcABe/dubuutay7SCYJFsZCa6NWb1JpOgEbU2rJ0NMJIMwa/ikKZw1q1iobqhquc88pzCPhG1f4C8GaCQtdlS8a+JfcqF4C2cUsmDA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=nX3YdotVJW+N5iX1qPkPChOnepcLxPikF/mwl4YN/w8=;
+ b=Z9328coctQufTzCTV3fadveCVeX2gChIsgKWTKrKKxjWmBqoaBh0wc7WruuVR7pYyfHFN6m+0hdJI0UrgPbGAqPvmWkpV/7bK6hDZSbHidOGxgl7Fr9qFKw0EV9fo+wTZFtZbilrPSzcxs9L/isL3dG6FnJfRFyg5904QXDLlX4q6RwCpxPItXRoEYpUGDPubpkGOTcWReCWD3O6Q1FF8tp32aIcf3sIKMsCjl8M0BLHlFfAqlaU7mueOu8B+RRZFZb2W9DJAEU7NQ9vM1kzUZkHWXZ4R7bYSaKR6pGiRJL41jqo4SDgLHY1h4iIokDCgjyeap9mi48oHk2e84vp4g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nX3YdotVJW+N5iX1qPkPChOnepcLxPikF/mwl4YN/w8=;
+ b=PTylVXNMkhoXofjFEwr3XNX6yyD5PTQCyzM3ifK4I1SFRFxJlZfF8z7xbmJQuEg1HLVMoGVkT3T9hHLEbtrEkkUmW9wiPL2ZYFQMWG6jOoDRe7URXQ4Lh89DCcBe5bxuLRmczb2EOYp+uOdfulkaIKWl831LBEktzn1/gSSzV9c=
+Received: from SA2PR10MB4763.namprd10.prod.outlook.com (2603:10b6:806:117::19)
+ by DM5PR1001MB2332.namprd10.prod.outlook.com (2603:10b6:4:30::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5038.26; Wed, 9 Mar
+ 2022 03:52:46 +0000
+Received: from SA2PR10MB4763.namprd10.prod.outlook.com
+ ([fe80::a045:e293:518:7604]) by SA2PR10MB4763.namprd10.prod.outlook.com
+ ([fe80::a045:e293:518:7604%3]) with mapi id 15.20.5038.026; Wed, 9 Mar 2022
+ 03:52:46 +0000
+To: <peter.wang@mediatek.com>
+Cc: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
+ <martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+ <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
+ <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <chun-hung.wu@mediatek.com>, <alice.chao@mediatek.com>,
+ <cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
+ <jiajie.hao@mediatek.com>, <powen.kao@mediatek.com>,
+ <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>, <mikebi@micron.com>,
+ <beanhuo@micron.com>
+Subject: Re: [PATCH v1] scsi: ufs: scsi_get_lba error fix by check cmd opcode
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+Organization: Oracle Corporation
+Message-ID: <yq1fsnrkcjj.fsf@ca-mkp.ca.oracle.com>
+References: <20220307111752.10465-1-peter.wang@mediatek.com>
+Date: Tue, 08 Mar 2022 22:52:44 -0500
+In-Reply-To: <20220307111752.10465-1-peter.wang@mediatek.com> (peter wang's
+ message of "Mon, 7 Mar 2022 19:17:52 +0800")
+X-ClientProxiedBy: SN4PR0501CA0068.namprd05.prod.outlook.com
+ (2603:10b6:803:41::45) To SA2PR10MB4763.namprd10.prod.outlook.com
+ (2603:10b6:806:117::19)
 MIME-Version: 1.0
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 6f5c4876-f3d6-4824-fc11-08da018045c4
+X-MS-TrafficTypeDiagnostic: DM5PR1001MB2332:EE_
+X-Microsoft-Antispam-PRVS: <DM5PR1001MB2332606508742F9B437656C38E0A9@DM5PR1001MB2332.namprd10.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ZB652y1Ay1aFB3kxL+IiSBgH9wyosMjc4TnF3cy4SHMc+DZmCBle1+p8fCqgS4VfkIR4uXV6JuIG8mPxFcyyPRb8VOtSasGQS1YxEGiAHAnGbUmPSGY6DFiRXbBPXt390PCQkK3aTmdIVavkmxj6WyjrdAOA6+IJUg3DBK+m3tL4hYMs9dZx0GCTByOeMKJ9mOwp84tg3jd3zErzDpceXggTIpylXYJjs7+io1x0MzuZC1V2MvxhkfOIUmxe93WbHA8ZRRUqQH2yrUxPptRLrv8z+07dnHRexo4z0AzbXS3IcsVT2XJoK1VY2+L0TcujDBkeiqnd4UJDCypyUQpxmeytK5vnslIpfnLlAVILNkogjR9+xMPcQ6o8yJGCDZHYLsZ7DCrRTUJ6hAZwcQBtGSYVlJvS8Py+WJNjTHnG6BwkN9G29XoSs7fcalXaQdiVs/u5YvTIYjNkWvyVSF9wdLwOsF5+543Baq43TGWTAhYYGrTpnpzTe3JjbPkyAHc15GFQTX2sZSfN4NsfE3Wi0LruMDWnUqamyKfD+TYzOpBSl5Eb1VWTOK++4hjR/H8HVNz2gKXvEBHGY4JFTQ4c4APvlnSf45k9GR/Qwilv0vAuKgb1qNnpddkcr2t+lYXBDeCQPhQ9dz7oEeVP3/wbV4mNVmMuV2j00dNRvrjuUhgP5Mo+vRA10wm1MNUNu41m80bwWrg8wmKTsywZDuEcRQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SA2PR10MB4763.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(366004)(186003)(26005)(38350700002)(38100700002)(7416002)(2906002)(8936002)(5660300002)(4744005)(6512007)(6916009)(8676002)(4326008)(66476007)(6506007)(86362001)(52116002)(66946007)(36916002)(54906003)(316002)(508600001)(6486002)(66556008);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?cIuRZQWIfQtCLmEQ0vtVRLN/T7zxZchX+tXxX4drLxnWlDRZ/Nosmlgsv0PG?=
+ =?us-ascii?Q?cDlmZ9HDTUEzmr9NSLyG8MGdayXOdfxTnJLFs4Hr1niBZ5gpLXKdb60ee0FG?=
+ =?us-ascii?Q?iI/N2nkartny9MVBhFrG2FupKoXQ0zNs6tlUC1UuTsFla/LVBaWxwXszyy8z?=
+ =?us-ascii?Q?6ft7ww53BwJyOWuj1tt4GsBsiBfbq/rfUBPvexDqO6AGyE+dA8iVoTIMHvbZ?=
+ =?us-ascii?Q?Nr809GMh8+d8VQ3+hTJmbXoHSP4tMTdEXfxWFV4BKlxfgYnk2XXPYpuJXzB9?=
+ =?us-ascii?Q?uumkDtJ9p8rtgNpdNZaPD5eGiU6LMAEZs85WivwkQycujgNS9IICut6GIEvq?=
+ =?us-ascii?Q?1QP3jQwMq0jMwnjwVSjaBi5Ign40kytpMgkSujtx64SevppPjMsSa2VYxc0Q?=
+ =?us-ascii?Q?8oqREKKVaik4+m4roSHFH1SopSL8tnRLjF7w5/dCG9Mj2FAnLSuTwbeuOAM7?=
+ =?us-ascii?Q?q5Z744DJPlB88yOOmiOUVn5BAqckQrXtfUi1WH80LmTz0rA5c2l+zAT+XeEf?=
+ =?us-ascii?Q?iv3Gr6SSr5QJDNgmX6/ceBEskd/JnRBjoX9vCs6HSCZF17RMCpTkQE9sM6VN?=
+ =?us-ascii?Q?qEUQFHD0fT9sXMEyMTyNaWJ4I56UimP6IwNNT0P17JWWJSYrBMBllWSHOPnA?=
+ =?us-ascii?Q?ZEVaZMEw0ykHv4x2J/UmwGvxwdkOXvqofy9rbgasZAw4GvSDIpSnZpmUQAVV?=
+ =?us-ascii?Q?jFwARn74w41YeNqBnZOki0OYOqyoPApvDEOhTwKswhu86Vj9BiaXLo0RzS6R?=
+ =?us-ascii?Q?4Jn7MxSKK41liwF5nOzM6mjrTIIl5i6yze/aaelLY58tL0c5BjVK4k/j9zcQ?=
+ =?us-ascii?Q?XCP/utp66VVuxJ0UPZ+Y+7etzTje644lg8FYG4YnN29G1801een0g/Gplgkr?=
+ =?us-ascii?Q?cKX31xT6KuEvRKlGLrYYRvS+0oN90raNh011U8hH+z4RV4q72ZHym50ByQpg?=
+ =?us-ascii?Q?kzWRvEiFPUxGGuadiXpJ/uNQgib5B+LLVOOJuumJa3vQlos1RgUzuWSFDhWi?=
+ =?us-ascii?Q?xHNrqs4IPmntGX9fRMxV9QeLMxa80PKLXxIqHRRVltkxXNc7x4s5C+A1npiM?=
+ =?us-ascii?Q?32/WWdwLrkSl0Dv3cSPQDs9on/MgC3lvP7EyrUAhiWHHPTZGQrpKgzK/I7GG?=
+ =?us-ascii?Q?m16tRVBNbDFyCek8DTjWpYBbrbHKz09gVLkNlkZnFGKg2K6ok+bi3Px9Hd34?=
+ =?us-ascii?Q?lrXHgPBM54uPJcddgxU6zkPBIuEZomc2X5C8FJnuX7DmnlVIOLSPpVcMSAdY?=
+ =?us-ascii?Q?tJ56jNyulqoAEyHend+0oysGMK5BdVuKz9FKvpas23PyC73D+Y6BVqObfHfZ?=
+ =?us-ascii?Q?gD7H/WnoPPeb+n3SR4CraNYR+qNUbROwhqmU4G9JaFmelJHJlwmyHTyzN3TY?=
+ =?us-ascii?Q?I1uU/IQpjicT0/V0epf7zwYAj8CwDkpeYnN0dSkKWxAP9l90jqRW/4jMojj4?=
+ =?us-ascii?Q?Sv/9bM5xBBXO1O1VH04LjFCYjTFENtRbTif/eQ6X8q7k89GgiP6BRY+eS3yK?=
+ =?us-ascii?Q?s2QzQYYgw9ytndobk7k8dt7HDHcjTN5YVafhXLZ/DnT0hCjxxh5AP7duNQ0M?=
+ =?us-ascii?Q?CrEZCIJtVPF/eP2o8O/oT8but6AKbXa2QOAo9nDGJGfrQ1ET72oYTyihy9Dr?=
+ =?us-ascii?Q?0326k6NGOJjBcGnmfnJtQpaCRBG7cByeUpcQzMU5b/ogdQ1DCcjB95NK1Kla?=
+ =?us-ascii?Q?Lr5uL6oRdyxHyVLMzRI+jJEAEVw=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6f5c4876-f3d6-4824-fc11-08da018045c4
+X-MS-Exchange-CrossTenant-AuthSource: SA2PR10MB4763.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Mar 2022 03:52:46.5419 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: pSrvIsrcmW6xzMeYO0UPL2i/8GuFP+OuL97QeuKPn1eujzYQZ3zzC9HMgvC+AZJZkjDSiiiRD5UXfUDceMBRti1XKAEnyRZRC6ercYEHL8A=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR1001MB2332
+X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10280
+ signatures=690848
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ phishscore=0 mlxscore=0
+ bulkscore=0 mlxlogscore=728 spamscore=0 adultscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2202240000
+ definitions=main-2203090021
+X-Proofpoint-GUID: qkBGOVD8kQ3lKJv7rX4zRHl5ON7ZVJP0
+X-Proofpoint-ORIG-GUID: qkBGOVD8kQ3lKJv7rX4zRHl5ON7ZVJP0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_195151_435058_DE7CA306 
-X-CRM114-Status: GOOD (  25.99  )
+X-CRM114-CacheID: sfid-20220308_195250_823361_B245579D 
+X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,319 +178,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
 
-Would you like to let me resend this patch?
+> When ufs init without scmd->device->sector_size set, scsi_get_lba will
+> get a wrong shift number and ubsan error.  shift exponent 4294967286
+> is too large for 64-bit type 'sector_t' (aka 'unsigned long long')
+> Call scsi_get_lba only when opcode is READ_10/WRITE_10/UNMAP.
 
-I will revert this patch to fix up the problem of mediatek,ethdr.yaml
-needing to be rebased on [1][2]:
+Applied to 5.18/scsi-staging, thanks!
 
-https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/commit/?h=mediatek-drm-next&id=e7dcfe64204a5cd9a74a9ca7d9c7a22434dc7fe5
-Then Nancy will add mediatek,ethdr.yaml with your fix at the next
-version of vdosys1 series:
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=621401
-
-I will also fix up include header of mediatek,ovl-2l.yaml from mt8173
-to mt8183.
-
-
-Regards,
-Jason-JH.Lin
-
-On Sun, 2022-03-06 at 02:34 +0800, Jason-JH Lin wrote:
-> Hi Angelo,
-> 
-> Thank you very much for fixing them all.
-> I really appreciate it :-)
-> 
-> I tested these patches and found some small problem.
-> 
-> 
-> On Fri, 2022-03-04 at 10:54 +0100, AngeloGioacchino Del Regno wrote:
-> > To avoid failure of dt_binding_check perform a slight refactoring
-> > of the examples: the main block is kept, but that required fixing
-> > the address and size cells, plus the inclusion of missing dt-
-> > bindings
-> > headers, required to parse some of the values assigned to various
-> > properties.
-> > 
-> > Fixes: 4ed545e7d100 ("dt-bindings: display: mediatek: disp: split
-> > each block to individual yaml")
-> > Signed-off-by: AngeloGioacchino Del Regno <
-> > angelogioacchino.delregno@collabora.com>
-> > ---
-> >  .../display/mediatek/mediatek,aal.yaml        | 24 +++--
-> >  .../display/mediatek/mediatek,ccorr.yaml      | 23 +++--
-> >  .../display/mediatek/mediatek,color.yaml      | 23 +++--
-> >  .../display/mediatek/mediatek,dither.yaml     | 23 +++--
-> >  .../display/mediatek/mediatek,dpi.yaml        |  3 +-
-> >  .../display/mediatek/mediatek,dsc.yaml        | 23 +++--
-> >  .../display/mediatek/mediatek,ethdr.yaml      | 99 ++++++++++-----
-> > --
-> > --
-> >  .../display/mediatek/mediatek,gamma.yaml      | 23 +++--
-> >  .../display/mediatek/mediatek,merge.yaml      | 49 +++++----
-> >  .../display/mediatek/mediatek,mutex.yaml      | 25 +++--
-> >  .../display/mediatek/mediatek,od.yaml         | 14 ++-
-> >  .../display/mediatek/mediatek,ovl-2l.yaml     | 26 +++--
-> >  .../display/mediatek/mediatek,ovl.yaml        | 26 +++--
-> >  .../display/mediatek/mediatek,postmask.yaml   | 23 +++--
-> >  .../display/mediatek/mediatek,rdma.yaml       | 28 ++++--
-> >  .../display/mediatek/mediatek,split.yaml      | 17 +++-
-> >  .../display/mediatek/mediatek,ufoe.yaml       | 19 ++--
-> >  .../display/mediatek/mediatek,wdma.yaml       | 26 +++--
-> >  18 files changed, 316 insertions(+), 178 deletions(-)
-> 
-> [snip]
-> 
-> > diff --git
-> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr
-> > .y
-> > aml
-> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr
-> > .y
-> > aml
-> > index 131eed5eeeb7..e16deca0dc2b 100644
-> > ---
-> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr
-> > .y
-> > aml
-> > +++
-> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr
-> > .y
-> > aml
-> > @@ -97,51 +97,62 @@ additionalProperties: false
-> >  
-> >  examples:
-> >    - |
-> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +    #include <dt-bindings/clock/mt8195-clk.h>
-> > +    #include <dt-bindings/gce/mt8195-gce.h>
-> > +    #include <dt-bindings/memory/mt8195-memory-port.h>
-> 
-> This header file should base on [1].
-> [1] dt-bindings: mediatek: mt8195: Add binding for MM IOMMU
-> 
-> 
-https://patchwork.kernel.org/project/linux-mediatek/patch/20220217113453.13658-2-yong.wu@mediatek.com/
-> 
-> > +    #include <dt-bindings/power/mt8195-power.h>
-> > +    #include <dt-bindings/reset/mt8195-resets.h>
-> >  
-> > -    disp_ethdr@1c114000 {
-> > -            compatible = "mediatek,mt8195-disp-ethdr";
-> > -            reg = <0 0x1c114000 0 0x1000>,
-> > -                  <0 0x1c115000 0 0x1000>,
-> > -                  <0 0x1c117000 0 0x1000>,
-> > -                  <0 0x1c119000 0 0x1000>,
-> > -                  <0 0x1c11A000 0 0x1000>,
-> > -                  <0 0x1c11B000 0 0x1000>,
-> > -                  <0 0x1c11C000 0 0x1000>;
-> > -            reg-names = "mixer", "vdo_fe0", "vdo_fe1", "gfx_fe0",
-> > "gfx_fe1",
-> > -                        "vdo_be", "adl_ds";
-> > -            mediatek,gce-client-reg = <&gce0 SUBSYS_1c11XXXX
-> > 0x4000
-> > 0x1000>,
-> > -                                      <&gce0 SUBSYS_1c11XXXX
-> > 0x5000
-> > 0x1000>,
-> > -                                      <&gce0 SUBSYS_1c11XXXX
-> > 0x7000
-> > 0x1000>,
-> > -                                      <&gce0 SUBSYS_1c11XXXX
-> > 0x9000
-> > 0x1000>,
-> > -                                      <&gce0 SUBSYS_1c11XXXX
-> > 0xA000
-> > 0x1000>,
-> > -                                      <&gce0 SUBSYS_1c11XXXX
-> > 0xB000
-> > 0x1000>,
-> > -                                      <&gce0 SUBSYS_1c11XXXX
-> > 0xC000
-> > 0x1000>;
-> > -            clocks = <&vdosys1 CLK_VDO1_DISP_MIXER>,
-> > -                     <&vdosys1 CLK_VDO1_HDR_VDO_FE0>,
-> > -                     <&vdosys1 CLK_VDO1_HDR_VDO_FE1>,
-> > -                     <&vdosys1 CLK_VDO1_HDR_GFX_FE0>,
-> > -                     <&vdosys1 CLK_VDO1_HDR_GFX_FE1>,
-> > -                     <&vdosys1 CLK_VDO1_HDR_VDO_BE>,
-> > -                     <&vdosys1 CLK_VDO1_26M_SLOW>,
-> > -                     <&vdosys1 CLK_VDO1_HDR_VDO_FE0_DL_ASYNC>,
-> > -                     <&vdosys1 CLK_VDO1_HDR_VDO_FE1_DL_ASYNC>,
-> > -                     <&vdosys1 CLK_VDO1_HDR_GFX_FE0_DL_ASYNC>,
-> > -                     <&vdosys1 CLK_VDO1_HDR_GFX_FE1_DL_ASYNC>,
-> > -                     <&vdosys1 CLK_VDO1_HDR_VDO_BE_DL_ASYNC>,
-> > -                     <&topckgen CLK_TOP_ETHDR_SEL>;
-> > -            clock-names = "mixer", "vdo_fe0", "vdo_fe1",
-> > "gfx_fe0",
-> > "gfx_fe1",
-> > -                          "vdo_be", "adl_ds", "vdo_fe0_async",
-> > "vdo_fe1_async",
-> > -                          "gfx_fe0_async",
-> > "gfx_fe1_async","vdo_be_async",
-> > -                          "ethdr_top";
-> > -            power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-> > -            iommus = <&iommu_vpp M4U_PORT_L3_HDR_DS>,
-> > -                     <&iommu_vpp M4U_PORT_L3_HDR_ADL>;
-> > -            interrupts = <GIC_SPI 517 IRQ_TYPE_LEVEL_HIGH 0>; /*
-> > disp mixer */
-> > -            resets = <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE0_DL_ASYNC>,
-> > -                     <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE1_DL_ASYNC>,
-> > -                     <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE0_DL_ASYNC>,
-> > -                     <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE1_DL_ASYNC>,
-> > -                     <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_BE_DL_ASYNC>;
-> > +    soc {
-> > +        #address-cells = <2>;
-> > +        #size-cells = <2>;
-> > +
-> > +        disp_ethdr@1c114000 {
-> > +                compatible = "mediatek,mt8195-disp-ethdr";
-> > +                reg = <0 0x1c114000 0 0x1000>,
-> > +                      <0 0x1c115000 0 0x1000>,
-> > +                      <0 0x1c117000 0 0x1000>,
-> > +                      <0 0x1c119000 0 0x1000>,
-> > +                      <0 0x1c11A000 0 0x1000>,
-> > +                      <0 0x1c11B000 0 0x1000>,
-> > +                      <0 0x1c11C000 0 0x1000>;
-> > +                reg-names = "mixer", "vdo_fe0", "vdo_fe1",
-> > "gfx_fe0", "gfx_fe1",
-> > +                            "vdo_be", "adl_ds";
-> > +                mediatek,gce-client-reg = <&gce0 SUBSYS_1c11XXXX
-> > 0x4000 0x1000>,
-> > +                                          <&gce0 SUBSYS_1c11XXXX
-> > 0x5000 0x1000>,
-> > +                                          <&gce0 SUBSYS_1c11XXXX
-> > 0x7000 0x1000>,
-> > +                                          <&gce0 SUBSYS_1c11XXXX
-> > 0x9000 0x1000>,
-> > +                                          <&gce0 SUBSYS_1c11XXXX
-> > 0xA000 0x1000>,
-> > +                                          <&gce0 SUBSYS_1c11XXXX
-> > 0xB000 0x1000>,
-> > +                                          <&gce0 SUBSYS_1c11XXXX
-> > 0xC000 0x1000>;
-> > +                clocks = <&vdosys1 CLK_VDO1_DISP_MIXER>,
-> > +                         <&vdosys1 CLK_VDO1_HDR_VDO_FE0>,
-> > +                         <&vdosys1 CLK_VDO1_HDR_VDO_FE1>,
-> > +                         <&vdosys1 CLK_VDO1_HDR_GFX_FE0>,
-> > +                         <&vdosys1 CLK_VDO1_HDR_GFX_FE1>,
-> > +                         <&vdosys1 CLK_VDO1_HDR_VDO_BE>,
-> > +                         <&vdosys1 CLK_VDO1_26M_SLOW>,
-> > +                         <&vdosys1 CLK_VDO1_HDR_VDO_FE0_DL_ASYNC>,
-> > +                         <&vdosys1 CLK_VDO1_HDR_VDO_FE1_DL_ASYNC>,
-> > +                         <&vdosys1 CLK_VDO1_HDR_GFX_FE0_DL_ASYNC>,
-> > +                         <&vdosys1 CLK_VDO1_HDR_GFX_FE1_DL_ASYNC>,
-> > +                         <&vdosys1 CLK_VDO1_HDR_VDO_BE_DL_ASYNC>,
-> > +                         <&topckgen CLK_TOP_ETHDR>;
-> > +                clock-names = "mixer", "vdo_fe0", "vdo_fe1",
-> > "gfx_fe0", "gfx_fe1",
-> > +                              "vdo_be", "adl_ds", "vdo_fe0_async",
-> > "vdo_fe1_async",
-> > +                              "gfx_fe0_async",
-> > "gfx_fe1_async","vdo_be_async",
-> > +                              "ethdr_top";
-> > +                power-domains = <&spm
-> > MT8195_POWER_DOMAIN_VDOSYS1>;
-> > +                iommus = <&iommu_vpp M4U_PORT_L3_HDR_DS>,
-> > +                         <&iommu_vpp M4U_PORT_L3_HDR_ADL>;
-> > +                interrupts = <GIC_SPI 517 IRQ_TYPE_LEVEL_HIGH 0>;
-> > /*
-> > disp mixer */
-> > +                resets = <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE0_DL_ASYNC>,
-> > +                         <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE1_DL_ASYNC>,
-> > +                         <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE0_DL_ASYNC>,
-> > +                         <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE1_DL_ASYNC>,
-> > +                         <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_BE_DL_ASYNC>;
-> 
-> These define should base on [2].
-> [2] dt-bindings: reset: mt8195: add vdosys1 reset control bit
-> 
-> 
-https://patchwork.kernel.org/project/linux-mediatek/patch/20220222100741.30138-5-nancy.lin@mediatek.com/
-> 
-> +        };
-> >      };
-> >  
-> 
-> [snip]
-> 
-> > diff --git
-> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-
-> > 2l.yaml
-> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-
-> > 2l.yaml
-> > index e3cef99d0f98..25d2ac2a4f05 100644
-> > ---
-> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-
-> > 2l.yaml
-> > +++
-> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-
-> > 2l.yaml
-> > @@ -66,13 +66,23 @@ additionalProperties: false
-> >  
-> >  examples:
-> >    - |
-> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +    #include <dt-bindings/clock/mt8173-clk.h>
-> > +    #include <dt-bindings/power/mt8173-power.h>
-> > +    #include <dt-bindings/gce/mt8173-gce.h>
-> > +    #include <dt-bindings/memory/mt8173-larb-port.h>
-> 
-> These should be mt8183 header files.
-> 
-> #include <dt-bindings/clock/mt8183-clk.h>
-> #include <dt-bindings/power/mt8183-power.h>
-> #include <dt-bindings/gce/mt8183-gce.h>
-> #include <dt-bindings/memory/mt8183-larb-port.h>
-> 
-> > -    ovl_2l0: ovl@14009000 {
-> > -        compatible = "mediatek,mt8183-disp-ovl-2l";
-> > -        reg = <0 0x14009000 0 0x1000>;
-> > -        interrupts = <GIC_SPI 226 IRQ_TYPE_LEVEL_LOW>;
-> > -        power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-> > -        clocks = <&mmsys CLK_MM_DISP_OVL0_2L>;
-> > -        iommus = <&iommu M4U_PORT_DISP_2L_OVL0_LARB0>;
-> > -        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x9000
-> > 0x1000>;
-> > +    soc {
-> > +        #address-cells = <2>;
-> > +        #size-cells = <2>;
-> > +
-> > +        ovl_2l0: ovl@14009000 {
-> > +            compatible = "mediatek,mt8183-disp-ovl-2l";
-> > +            reg = <0 0x14009000 0 0x1000>;
-> > +            interrupts = <GIC_SPI 226 IRQ_TYPE_LEVEL_LOW>;
-> > +            power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-> > +            clocks = <&mmsys CLK_MM_DISP_OVL0_2L>;
-> > +            iommus = <&iommu M4U_PORT_DISP_2L_OVL0_LARB0>;
-> > +            mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x9000
-> > 0x1000>;
-> > +        };
-> >      };
-> 
-> [snip]
-> 
-> Thanks again! 
-> Tested-by: Jason-JH.Lin <jason-jh.lin@medaitek.com>
-> 
-> Regards,
-> Jason-JH.Lin
-> 
 -- 
-Jason-JH Lin <jason-jh.lin@mediatek.com>
-
+Martin K. Petersen	Oracle Linux Engineering
 
 _______________________________________________
 Linux-mediatek mailing list
