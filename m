@@ -4,74 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 908AAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Mar 2022 05:56:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A04EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Mar 2022 06:35:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SOjoJ+cM1oSK8Ebsk+diCpz5u1W9DrYnvZrOhOCp8qI=; b=0i/lGRT6VZCAVw
-	utK/qEMlOx7LiTVu6IiAKiRSxsjflFc9dEF9F1bb7weu3qxFN1uGmb3uShH9F5EQJWKj6gtx0oH8x
-	beimo4pT/Yjnb5y/hvDuOEv9IWc083T7Fx+rPX8gc1GnBlZAg9rjaM25W76phJtO42OUcVm8DvdNy
-	6uOqBgs/1gWu2thh6DUFNpWYpwhk7QlKPq97ilThRM3oeOH65LynOf6oVlqKJa2uJNF5nTc7oe3sD
-	FMefgw8JDznswSikchpKA/vdVSV9YB8lpRqUqI7118PLQDiueQcQH5p8XlxCzh4JXM5fg+OUBG+EP
-	mHcFGIPBvTbNuc9GjbMg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fqRvHErN5+1nYaQoAYSkIHtsDSrOIcJ1HQV0VQwbxb4=; b=oozrShwDqSFT/7
+	Surmuh+eRa8BdBmmVQLWstp6GOVyBVw2aLfaY7R+V0+SExKKhLcVyuOJ5NFdaV3wvIx4y8cp6YL98
+	3Vuw7hoO/VbKHlYqR8Dq/78iuRWWI3yq0NM3JvDeGNzTfJejK5eUzC4jQpsKIMQFxNYt/cMSBxzD/
+	Dr+ZJBYdkKmHTjpYO4SficS0z6ZqxTLWoOT9qJrpkx7Y4cRpPwaIzWKiRzsumwUqKdQC1lCyd58Mh
+	IOt+2H0Pk2Zt/VUFhpE2V12n23Yr6je1po/qC3rLk+ZVPeU4V9t4Pngvg0ePZeq32sqCO4Zi9/tbm
+	SqkEPSsiL9EQiojQ4xPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRpJ0-007OV4-C4; Wed, 09 Mar 2022 05:56:14 +0000
-Received: from mail-vk1-xa2c.google.com ([2607:f8b0:4864:20::a2c])
+	id 1nRpvA-007Wk5-GH; Wed, 09 Mar 2022 06:35:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRpIw-007OU8-PT
- for linux-mediatek@lists.infradead.org; Wed, 09 Mar 2022 05:56:12 +0000
-Received: by mail-vk1-xa2c.google.com with SMTP id i133so701407vki.8
- for <linux-mediatek@lists.infradead.org>; Tue, 08 Mar 2022 21:56:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=y4/OuWLBji+6VTiCXM/a3doY0qINZlzqUpyxddd3GcI=;
- b=By0ECgOBNferd8GoY7Rpp+PRxebOZD7PPCp+nGiF/LW0MdaikNTnNmKa9d3ZX+5HN9
- JOa8qy7tkOJIb8OkDXsZJ6O0ho+xKSPdo1T1Id22V3EnqR8OZkkADh0RSOswlpCAV65E
- SUjay/6GhnEZ8Np0ukadlOMqZzjUx12HJRhJM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=y4/OuWLBji+6VTiCXM/a3doY0qINZlzqUpyxddd3GcI=;
- b=G06l7Sb3d08WlxDlx7xDRLC93KnH2w4zJZ/W7bbhpcjYSbkIZyxq6kwktf+/9Y6Tl9
- LGuk0anGMKLE0KDKmsMj2iyvhok3EZqEt5kGCzKB889axcZ5HXO5pSrT2pLfPGRrajyg
- vvzYm1JIsLk4UB+Msu2BoeDG7KRUcREpGKwy1vfJJClYwg+70xkjLjOpkLR0Bs6ZwhEw
- HS3Iu0xob8G1AXaWGRMQFRm3QnO95hA6QAcEChvSSJZuzcAbpFVeW3hQvTx0cIuSrlMr
- qzr+tzWMLMNEy0AqIu9Y0lKXb6xza0vZQXspU9+N0I7+Q8Fc2JFj3atBUEyHBzLlVfqV
- T8yg==
-X-Gm-Message-State: AOAM5319/+RTBxFIgLmVoAxDRsK/fk3GqbxcViT3+IEbE62/9s9uidjV
- nwCZmL124/WbGf7/InLiAgGIv/hv3hQlaPXoM5uRGQ==
-X-Google-Smtp-Source: ABdhPJzHCZbKdmWp591ZwsY/ysoow9x2y7PHhTzdKgGF+rgOfISnKuRzxOCbEK52EyyYVHd1n8LtqmiJ6uO9Ppn3v6M=
-X-Received: by 2002:a1f:ae10:0:b0:337:7a83:899b with SMTP id
- x16-20020a1fae10000000b003377a83899bmr5437397vke.17.1646805369369; Tue, 08
- Mar 2022 21:56:09 -0800 (PST)
+ id 1nRpv4-007WjW-MS
+ for linux-mediatek@lists.infradead.org; Wed, 09 Mar 2022 06:35:38 +0000
+X-UUID: 37124d534e2b47cdb768e927a2fc0440-20220308
+X-UUID: 37124d534e2b47cdb768e927a2fc0440-20220308
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1865790596; Tue, 08 Mar 2022 23:35:25 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Mar 2022 22:29:27 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 9 Mar 2022 14:29:26 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 9 Mar 2022 14:29:25 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Ryder
+ Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] mt76: use le32/16_get_bits() whenever possible
+Date: Wed, 9 Mar 2022 14:29:24 +0800
+Message-ID: <e6365d47178fe3f62186fbd94ce8294493254331.1646806346.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <1646388956-8033-1-git-send-email-xinlei.lee@mediatek.com>
- <fb73a54a-7e75-2e5d-d78a-cacb5f065b06@collabora.com>
- <CAJMQK-jkmw1iKmy1s6CU5rbngQWNPDS4zT23PnuDf2nGus=X2w@mail.gmail.com>
- <d6f880e1-83c6-7663-2a8a-8541115f5242@collabora.com>
-In-Reply-To: <d6f880e1-83c6-7663-2a8a-8541115f5242@collabora.com>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Wed, 9 Mar 2022 13:55:43 +0800
-Message-ID: <CAJMQK-ghfMF==qvPk9ecKGeE5HhyvLG2T8nLSBzji2-9wzJeNA@mail.gmail.com>
-Subject: Re: [PATCH v2, 0/4] Cooperate with DSI RX devices to modify dsi funcs
- and delay mipi high to cooperate with panel sequence
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: xinlei.lee@mediatek.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
- airlied@linux.ie, daniel@ffwll.ch, matthias.bgg@gmail.com, 
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, jitao.shi@mediatek.com, 
- allen-kh.cheng@mediatek.com, Rex-BC.Chen@mediatek.com
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_215610_870743_BF102AB1 
-X-CRM114-Status: GOOD (  30.49  )
+X-CRM114-CacheID: sfid-20220308_223534_777288_4DB05D5E 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,164 +67,412 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBNYXIgOCwgMjAyMiBhdCA2OjAwIFBNIEJlbmphbWluIEdhaWduYXJkCjxiZW5qYW1p
-bi5nYWlnbmFyZEBjb2xsYWJvcmEuY29tPiB3cm90ZToKPgo+Cj4gTGUgMDgvMDMvMjAyMiDDoCAx
-MDoxMiwgSHNpbi1ZaSBXYW5nIGEgw6ljcml0IDoKPiA+IE9uIEZyaSwgTWFyIDQsIDIwMjIgYXQg
-NzoyNSBQTSBCZW5qYW1pbiBHYWlnbmFyZAo+ID4gPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9y
-YS5jb20+IHdyb3RlOgo+ID4+Cj4gPj4gTGUgMDQvMDMvMjAyMiDDoCAxMToxNSwgeGlubGVpLmxl
-ZUBtZWRpYXRlay5jb20gYSDDqWNyaXQgOgo+ID4+PiBGcm9tOiBYaW5sZWkgTGVlIDx4aW5sZWku
-bGVlQG1lZGlhdGVrLmNvbT4KPiA+Pj4KPiA+Pj4gSW4gdXBzdHJlYW0tdjUuOCwgZHNpX2VuYWJs
-ZSB3aWxsIG9wZXJhdGUgcGFuZWxfZW5hYmxlLCBidXQgdGhpcwo+ID4+PiBtb2RpZmljYXRpb24g
-aGFzIGJlZW4gbW92ZWQgaW4gdjUuOS4gSW4gb3JkZXIgdG8gZW5zdXJlIHRoZSB0aW1pbmcgb2YK
-PiA+Pj4gZHNpX3Bvd2VyX29uL29mZiBhbmQgdGhlIHRpbWluZyBvZiBwdWxsaW5nIHVwL2Rvd24g
-dGhlIE1JUEkgc2lnbmFsLAo+ID4+PiB0aGUgbW9kaWZpY2F0aW9uIG9mIHY1LjkgaXMgc3luY2hy
-b25pemVkIGluIHRoaXMgc2VyaWVzIG9mIHBhdGNoZXMuCj4gPj4gSGVsbG8sCj4gPj4KPiA+PiBJ
-J20gdHJ5aW5nIHRvIGRlYnVnIGFuIGlzc3VlIG9uIG10ODE4MyBrdWt1aSBrcmFuZSBza3UxNzYg
-ZGV2aWNlLgo+ID4+IFRoZSBwcm9ibGVtIGlzIHRoYXQgYm9lLXR2MTAxd3VtLW5sNiBwYW5lbCBp
-c24ndCB3b3JraW5nLgo+ID4+IEF0IGJvb3QgdGltZSBJIGNhbiBzZWUgdGhlc2UgbG9nczoKPiA+
-PiBwYW5lbC1ib2UtdHYxMDF3dW0tbmw2IDE0MDE0MDAwLmRzaS4wOiBmYWlsZWQgdG8gd3JpdGUg
-Y29tbWFuZCAxCj4gPj4gcGFuZWwtYm9lLXR2MTAxd3VtLW5sNiAxNDAxNDAwMC5kc2kuMDogZmFp
-bGVkIHRvIGluaXQgcGFuZWw6IC02Mgo+ID4+IGFuZCBhIERTSSBpbnRlcnJ1cHQgdGltZSBvdXQu
-Cj4gPj4KPiA+PiBTaW5jZSBJIGJlbGlldmUgdGhlIHByb2JsZW0gaXMgbGluayB0byBEU0kvcGFu
-ZWwgZW5hYmxpbmcgc2VxdWVuY2UKPiA+PiBJIGhhdmUgdHJ5IHRoaXMgc2VyaWVzIGJ1dCB0aGF0
-IGRvZXNuJ3Qgc29sdmUgdGhlIGlzc3VlLgo+ID4+IEkgbm90aWNlIHRoYXQgd2hlbiBnb2luZyBv
-dXQgb2YgZGVlcCBzbGVlcCBtb2RlIHBhbmVsIGlzIGZ1bmN0aW9uYWwuCj4gPj4KPiA+PiBNYXkg
-eW91IGhhdmUgYW55IGlkZWEgdG8gZGVidWcvc29sdmUgdGhpcyBwcm9ibGVtID8KPiA+Pgo+ID4g
-SGkgQmVuamFtaW4sCj4gPgo+ID4gSSB0aGluayB0aGlzIG1pZ2h0IG5vdCBiZSByZWxhdGVkIHRv
-IHRoaXMgc2VyaWVzLiBXaGljaCBrZXJuZWwgYXJlIHlvdSB1c2luZz8KPiA+IEkgdHJpZWQgdGhl
-IGtyYW5lIHNrdTE3NiB3aXRoIGxpbnV4LW5leHQgNS4xNy1yYzYKPiA+ICg1MTlkZDZjMTk5ODY2
-OTZmNTk4NDdmZjhiZjkzMDQzNmNjZmZkOWExICh0YWc6IG5leHQtMjAyMjAzMDcsCj4gPiBsaW51
-eC1uZXh0L21hc3Rlcikgd2l0aCBvciB3aXRob3V0IHRoaXMgc2VyaWVzLCBib3RoIGNhbiBnZXQg
-dGhlIGRpc3BsYXkgb24uCj4gPgo+ID4gZHNpIHJlbGF0ZWQgbWVzc2FnZToKPiA+IFsgICAgMC4y
-MDYzMzBdIG1lZGlhdGVrLWRybSBtZWRpYXRlay1kcm0uMS5hdXRvOiBBZGRpbmcgY29tcG9uZW50
-Cj4gPiBtYXRjaCBmb3IgL3NvYy9kc2lAMTQwMTQwMDAKPiA+IFsgICAgNC41Njc1NzddIHBhbmVs
-LWJvZS10djEwMXd1bS1ubDYgMTQwMTQwMDAuZHNpLjA6IHN1cHBseSBwcDMzMDAKPiA+IG5vdCBm
-b3VuZCwgdXNpbmcgZHVtbXkgcmVndWxhdG9yCj4gPiBbICAgIDQuNTY3NzMyXSBwYW5lbC1ib2Ut
-dHYxMDF3dW0tbmw2IDE0MDE0MDAwLmRzaS4wOiBHUElPIGxvb2t1cCBmb3IKPiA+IGNvbnN1bWVy
-IGVuYWJsZQo+ID4gWyAgICA0LjU2NzczOF0gcGFuZWwtYm9lLXR2MTAxd3VtLW5sNiAxNDAxNDAw
-MC5kc2kuMDogdXNpbmcgZGV2aWNlCj4gPiB0cmVlIGZvciBHUElPIGxvb2t1cAo+ID4gWyAgICA0
-LjU2Nzc1N10gb2ZfZ2V0X25hbWVkX2dwaW9kX2ZsYWdzOiBwYXJzZWQgJ2VuYWJsZS1ncGlvcycK
-PiA+IHByb3BlcnR5IG9mIG5vZGUgJy9zb2MvZHNpQDE0MDE0MDAwL3BhbmVsQDBbMF0nIC0gc3Rh
-dHVzICgwKQo+ID4gWyAgICA0LjU4NTg4NF0gcGFuZWwtYm9lLXR2MTAxd3VtLW5sNiAxNDAxNDAw
-MC5kc2kuMDogc3VwcGx5IHBwMzMwMAo+ID4gbm90IGZvdW5kLCB1c2luZyBkdW1teSByZWd1bGF0
-b3IKPiA+IFsgICAgNC41ODYwMzddIHBhbmVsLWJvZS10djEwMXd1bS1ubDYgMTQwMTQwMDAuZHNp
-LjA6IEdQSU8gbG9va3VwIGZvcgo+ID4gY29uc3VtZXIgZW5hYmxlCj4gPiBbICAgIDQuNTg2MDQy
-XSBwYW5lbC1ib2UtdHYxMDF3dW0tbmw2IDE0MDE0MDAwLmRzaS4wOiB1c2luZyBkZXZpY2UKPiA+
-IHRyZWUgZm9yIEdQSU8gbG9va3VwCj4gPiBbICAgIDQuNTg2MDU5XSBvZl9nZXRfbmFtZWRfZ3Bp
-b2RfZmxhZ3M6IHBhcnNlZCAnZW5hYmxlLWdwaW9zJwo+ID4gcHJvcGVydHkgb2Ygbm9kZSAnL3Nv
-Yy9kc2lAMTQwMTQwMDAvcGFuZWxAMFswXScgLSBzdGF0dXMgKDApCj4gPiBbICAgIDQuNTg3NDMw
-XSBtZWRpYXRlay1kcm0gbWVkaWF0ZWstZHJtLjEuYXV0bzogYm91bmQgMTQwMTQwMDAuZHNpCj4g
-PiAob3BzIDB4ZmZmZmZmZDM2OWE3NTJiOCkKPiA+Cj4gPgo+ID4gTWF5YmUgc29tZSBjb25maWcg
-aXMgbm90IGVuYWJsZWQ/Cj4KPiBJIHVzaW5nIDUuMTcuMC1yYzEtbmV4dC0yMDIyMDEyNyBrZXJu
-ZWwgdGFnLgo+IFRoZSBjb25maWdzIGxvb2sgc2ltaWxhci4KPgo+IEkgaGF2ZSB0aGUgZm9sbG93
-IGxvZyBhdCBib290IHRpbWU6Cj4KSGkgWGlubGVpLAoKQ2FuIHlvdSByZXNlbmQgdGhpcyBwYXRj
-aCB0byBiYXNlIG9uIHRoZSBsYXRlc3QgcmM/IFRoaXMgcGF0Y2ggbm8KbG9uZ2VyIGFwcGxpZXMg
-dG8gcmM2LCBJIGhhdmUgdG8gcmVzb2x2ZSBjb25mbGljdCBsb2NhbGx5LgoKVGhhbmtzCgoKPiBb
-ICAgIDEuNTMzMzg0XSBwaHkgcGh5LTExZTUwMDAwLmRzaS1waHkuMjogTG9va2luZyB1cCBwaHkt
-c3VwcGx5IGZyb20gZGV2aWNlIHRyZWUKPiBbICAgIDEuNTMzNDAyXSBwaHkgcGh5LTExZTUwMDAw
-LmRzaS1waHkuMjogTG9va2luZyB1cCBwaHktc3VwcGx5IHByb3BlcnR5IGluIG5vZGUgL3NvYy9k
-c2ktcGh5QDExZTUwMDAwIGZhaWxlZAo+IFsgICAgMy4xNzMwNjhdIG1lZGlhdGVrLWRybSBtZWRp
-YXRlay1kcm0uMS5hdXRvOiBBZGRpbmcgY29tcG9uZW50IG1hdGNoIGZvciAvc29jL2RzaUAxNDAx
-NDAwMAo+IFsgICAgNC42NzE4MDZdIHBhbmVsLWJvZS10djEwMXd1bS1ubDYgMTQwMTQwMDAuZHNp
-LjA6IExvb2tpbmcgdXAgYXZkZC1zdXBwbHkgZnJvbSBkZXZpY2UgdHJlZQo+IFsgICAgNC42ODAz
-NDhdIHBhbmVsLWJvZS10djEwMXd1bS1ubDYgMTQwMTQwMDAuZHNpLjA6IExvb2tpbmcgdXAgYXZl
-ZS1zdXBwbHkgZnJvbSBkZXZpY2UgdHJlZQo+IFsgICAgNC42ODg3ODRdIHBhbmVsLWJvZS10djEw
-MXd1bS1ubDYgMTQwMTQwMDAuZHNpLjA6IExvb2tpbmcgdXAgcHAzMzAwLXN1cHBseSBmcm9tIGRl
-dmljZSB0cmVlCj4gWyAgICA0LjY5NzgxNl0gcGFuZWwtYm9lLXR2MTAxd3VtLW5sNiAxNDAxNDAw
-MC5kc2kuMDogTG9va2luZyB1cCBwcDE4MDAtc3VwcGx5IGZyb20gZGV2aWNlIHRyZWUKPiBbICAg
-IDQuODQyMzQ2XSBwYW5lbC1ib2UtdHYxMDF3dW0tbmw2IDE0MDE0MDAwLmRzaS4wOiBMb29raW5n
-IHVwIGF2ZGQtc3VwcGx5IGZyb20gZGV2aWNlIHRyZWUKPiBbICAgIDQuODU0NTczXSBwYW5lbC1i
-b2UtdHYxMDF3dW0tbmw2IDE0MDE0MDAwLmRzaS4wOiBMb29raW5nIHVwIGF2ZWUtc3VwcGx5IGZy
-b20gZGV2aWNlIHRyZWUKPiBbICAgIDQuODYyOTc2XSBwYW5lbC1ib2UtdHYxMDF3dW0tbmw2IDE0
-MDE0MDAwLmRzaS4wOiBMb29raW5nIHVwIHBwMzMwMC1zdXBwbHkgZnJvbSBkZXZpY2UgdHJlZQo+
-IFsgICAgNC44NzE1NjhdIHBhbmVsLWJvZS10djEwMXd1bS1ubDYgMTQwMTQwMDAuZHNpLjA6IExv
-b2tpbmcgdXAgcHAxODAwLXN1cHBseSBmcm9tIGRldmljZSB0cmVlCj4gWyAgICA0Ljk2NDAyMV0g
-bWVkaWF0ZWstZHJtIG1lZGlhdGVrLWRybS4xLmF1dG86IGJvdW5kIDE0MDE0MDAwLmRzaSAob3Bz
-IG10a19kc2lfY29tcG9uZW50X29wcykKPiAuLi4KPiBbICAgMzguMjczNDM3XSBbZHJtXSBXYWl0
-IERTSSBJUlEoMHgwMDAwMDAwMikgVGltZW91dAo+IFsgICAzOC4yODE1ODRdIHBhbmVsLWJvZS10
-djEwMXd1bS1ubDYgMTQwMTQwMDAuZHNpLjA6IGZhaWxlZCB0byB3cml0ZSBjb21tYW5kIDEKPiBb
-ICAgMzguMjg4NjUxXSBwYW5lbC1ib2UtdHYxMDF3dW0tbmw2IDE0MDE0MDAwLmRzaS4wOiBmYWls
-ZWQgdG8gaW5pdCBwYW5lbDogLTYyCj4gLi4uCj4gWyAgIDcwLjExMzY3NF0gbWVkaWF0ZWstZHJt
-IG1lZGlhdGVrLWRybS4xLmF1dG86IFtkcm1dICpFUlJPUiogZmxpcF9kb25lIHRpbWVkIG91dAo+
-IFsgICA3MC4xMjEwNTRdIG1lZGlhdGVrLWRybSBtZWRpYXRlay1kcm0uMS5hdXRvOiBbZHJtXSAq
-RVJST1IqIFtDUlRDOjQ1OmNydGMtMF0gY29tbWl0IHdhaXQgdGltZWQgb3V0Cj4gWyAgIDcwLjEz
-MDAzN10gW2RybTptdGtfZHJtX2NydGNfYXRvbWljX2JlZ2luXSAqRVJST1IqIG5ldyBldmVudCB3
-aGlsZSB0aGVyZSBpcyBzdGlsbCBhIHBlbmRpbmcgZXZlbnQKPiBbICAgNzAuMjQxMjIyXSAtLS0t
-LS0tLS0tLS1bIGN1dCBoZXJlIF0tLS0tLS0tLS0tLS0KPiBbICAgNzAuMjQ1ODk4XSBbQ1JUQzo0
-NTpjcnRjLTBdIHZibGFuayB3YWl0IHRpbWVkIG91dAo+IFsgICA3MC4yNTA3MjldIFdBUk5JTkc6
-IENQVTogNyBQSUQ6IDM5NyBhdCBkcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21pY19oZWxwZXIuYzox
-NTI5IGRybV9hdG9taWNfaGVscGVyX3dhaXRfZm9yX3ZibGFua3MucGFydC4wKzB4MjkwLzB4MjQK
-PiBbICAgNzAuMjYyODE1XSBNb2R1bGVzIGxpbmtlZCBpbjogaGNpX3VhcnQgYnRxY2EgYnRiY20g
-Ymx1ZXRvb3RoIGNkY19ldGhlciB1c2JuZXQgcjgxNTIgbXRrX21kcDMgaGlkX211bHRpdG91Y2gg
-bXRrX2pwZWcgcGFuZnJvc3QgY3Jvc182Cj4gWyAgIDcwLjMwOTM0OF0gQ1BVOiA3IFBJRDogMzk3
-IENvbW06IGdub21lLXNoZWxsIFRhaW50ZWQ6IEcgICAgICAgIFcgICAgICAgICA1LjE3LjAtcmMx
-LW5leHQtMjAyMjAxMjcrICM1Nwo+IFsgICA3MC4zMTg3MzFdIEhhcmR3YXJlIG5hbWU6IE1lZGlh
-VGVrIGtyYW5lIHNrdTE3NiBib2FyZCAoRFQpCj4gWyAgIDcwLjMyNDI5M10gcHN0YXRlOiA2MDAw
-MDAwNSAoblpDdiBkYWlmIC1QQU4gLVVBTyAtVENPIC1ESVQgLVNTQlMgQlRZUEU9LS0pCj4gWyAg
-IDcwLjMzMTI0NF0gcGMgOiBkcm1fYXRvbWljX2hlbHBlcl93YWl0X2Zvcl92YmxhbmtzLnBhcnQu
-MCsweDI5MC8weDJiNAo+IFsgICA3MC4zMzc3NjJdIGxyIDogZHJtX2F0b21pY19oZWxwZXJfd2Fp
-dF9mb3JfdmJsYW5rcy5wYXJ0LjArMHgyOTAvMHgyYjQKPiBbICAgNzAuMzQ0Mjc5XSBzcCA6IGZm
-ZmY4MDAwMDkyMzM5ZTAKPiBbICAgNzAuMzQ3NTgzXSB4Mjk6IGZmZmY4MDAwMDkyMzM5ZTAgeDI4
-OiAwMDAwMDAwMDAwMDAwMDAxIHgyNzogMDAwMDAwMDAwMDAwMDAwMAo+IFsgICA3MC4zNTQ3MTNd
-IHgyNjogMDAwMDAwMDAwMDAwMDAwMCB4MjU6IGZmZmZjN2U4ZmVlZTQ2NjAgeDI0OiAwMDAwMDAw
-MDAwMDAwMDM4Cj4gWyAgIDcwLjM2MTg0Ml0geDIzOiBmZmZmNmZlNzAyYjBkMDAwIHgyMjogMDAw
-MDAwMDAwMDAwMDAwMSB4MjE6IGZmZmY2ZmU3MDMwZDUwODAKPiBbICAgNzAuMzY4OTcwXSB4MjA6
-IGZmZmY2ZmU3MDlkN2Q3MDAgeDE5OiAwMDAwMDAwMDAwMDAwMDAwIHgxODogMDAwMDAwMDAwMDAw
-MDAzMAo+IFsgICA3MC4zNzYwOTldIHgxNzogMDAwMDAwMDQwMDQ0ZmZmZiB4MTY6IDAwNDAwMDMy
-YjU1MDM1MTAgeDE1OiBmZmZmZmZmZmZmZmZmZmZmCj4gWyAgIDcwLjM4MzIyN10geDE0OiBmZmZm
-YzdlOGZmYTk5MjIwIHgxMzogMDAwMDAwMDAwMDAwMDk0YiB4MTI6IDAwMDAwMDAwMDAwMDAzMTkK
-PiBbICAgNzAuMzkwMzU0XSB4MTE6IDZlNjE2YzYyNzYyMDVkMzAgeDEwOiBmZmZmYzdlOGZmYjQ5
-MjIwIHg5IDogMDAwMDAwMDBmZmZmZTAwMAo+IFsgICA3MC4zOTc0ODNdIHg4IDogZmZmZmM3ZThm
-ZmE5OTIyMCB4NyA6IDAwMDAwMDAwMDAwMDAwMDEgeDYgOiAwMDAwMDAwMDAwMDAwMDAwCj4gWyAg
-IDcwLjQwNDYxMV0geDUgOiAwMDAwMDAwMDAwMDAwMDAwIHg0IDogZmZmZjZmZTczYjVlNGNmOCB4
-MyA6IGZmZmY2ZmU3M2I1ZjA4NDAKPiBbICAgNzAuNDExNzM4XSB4MiA6IDAwMDAwMDAwMDAwMDAw
-MDAgeDEgOiAwMDAwMDAwMDAwMDAwMDAwIHgwIDogZmZmZjZmZTcwMmYyMDAwMAo+IFsgICA3MC40
-MTg4NjZdIENhbGwgdHJhY2U6Cj4gWyAgIDcwLjQyMTMwMV0gIGRybV9hdG9taWNfaGVscGVyX3dh
-aXRfZm9yX3ZibGFua3MucGFydC4wKzB4MjkwLzB4MmI0Cj4gWyAgIDcwLjQyNzQ3Ml0gIGRybV9h
-dG9taWNfaGVscGVyX2NvbW1pdF90YWlsX3JwbSsweDg4LzB4YWMKPiBbICAgNzAuNDMyNzc1XSAg
-Y29tbWl0X3RhaWwrMHhhMC8weDE3Ywo+IFsgICA3MC40MzYyNTRdICBkcm1fYXRvbWljX2hlbHBl
-cl9jb21taXQrMHgxOTAvMHgzYTAKPiBbICAgNzAuNDQwOTQ5XSAgZHJtX2F0b21pY19jb21taXQr
-MHg1Yy8weDZjCj4gWyAgIDcwLjQ0NDg2NF0gIGRybV9tb2RlX2dhbW1hX3NldF9pb2N0bCsweDQ1
-Yy8weDY0MAo+IFsgICA3MC40NDk1NjBdICBkcm1faW9jdGxfa2VybmVsKzB4YzQvMHgxNzQKPiBb
-ICAgNzAuNDUzNDc1XSAgZHJtX2lvY3RsKzB4MjM4LzB4NDVjCj4gWyAgIDcwLjQ1Njg2OF0gIF9f
-YXJtNjRfc3lzX2lvY3RsKzB4YWMvMHhmMAo+IFsgICA3MC40NjA3ODZdICBpbnZva2Vfc3lzY2Fs
-bCsweDQ4LzB4MTE0Cj4gWyAgIDcwLjQ2NDUyOV0gIGVsMF9zdmNfY29tbW9uLmNvbnN0cHJvcC4w
-KzB4NjAvMHgxMWMKPiBbICAgNzAuNDY5MzEyXSAgZG9fZWwwX3N2YysweDI4LzB4OTAKPiBbICAg
-NzAuNDcyNjE5XSAgZWwwX3N2YysweDRjLzB4MTAwCj4gWyAgIDcwLjQ3NTc1NF0gIGVsMHRfNjRf
-c3luY19oYW5kbGVyKzB4ZWMvMHhmMAo+IFsgICA3MC40Nzk5MjhdICBlbDB0XzY0X3N5bmMrMHgx
-YTAvMHgxYTQKPiBbICAgNzAuNDgzNTgyXSBpcnEgZXZlbnQgc3RhbXA6IDAKPiBbICAgNzAuNDg2
-NjI1XSBoYXJkaXJxcyBsYXN0ICBlbmFibGVkIGF0ICgwKTogWzwwMDAwMDAwMDAwMDAwMDAwPl0g
-MHgwCj4gWyAgIDcwLjQ5Mjg4M10gaGFyZGlycXMgbGFzdCBkaXNhYmxlZCBhdCAoMCk6IFs8ZmZm
-ZmM3ZThmZDQ5MzgzYz5dIGNvcHlfcHJvY2VzcysweDY1OC8weDE5N2MKPiBbICAgNzAuNTAxMDUz
-XSBzb2Z0aXJxcyBsYXN0ICBlbmFibGVkIGF0ICgwKTogWzxmZmZmYzdlOGZkNDkzODNjPl0gY29w
-eV9wcm9jZXNzKzB4NjU4LzB4MTk3Ywo+IFsgICA3MC41MDkyMTldIHNvZnRpcnFzIGxhc3QgZGlz
-YWJsZWQgYXQgKDApOiBbPDAwMDAwMDAwMDAwMDAwMDA+XSAweDAKPiBbICAgNzAuNTE1NDc1XSAt
-LS1bIGVuZCB0cmFjZSAwMDAwMDAwMDAwMDAwMDAwIF0tLS0KPgo+IFJlZ2FyZHMsCj4gQmVuamFt
-aW4KPgo+ID4KPiA+Cj4gPgo+ID4+IFJlZ2FyZHMsCj4gPj4gQmVuamFtaW4KPiA+Pgo+ID4+PiBD
-aGFuZ2VzIHNpbmNlIHYxOgo+ID4+PiAxLiBEc2kgc2VxdWVuY2UgbWFya2VkIHdpdGggcGF0Y2gg
-YWRqdXN0bWVudAo+ID4+PiAyLiBGaXhlczogbXRrX2RzaTogVXNlIHRoZSBkcm1fcGFuZWxfYnJp
-ZGdlCj4gPj4+Cj4gPj4+IEppdGFvIFNoaSAoMyk6Cj4gPj4+ICAgICBkcm0vbWVkaWF0ZWs6IEFk
-anVzdCB0aGUgdGltaW5nIG9mIG1pcGkgc2lnbmFsIGZyb20gTFAwMCB0byBMUDExCj4gPj4+ICAg
-ICBkcm0vbWVkaWF0ZWs6IFNlcGFyYXRlIHBvd2Vyb24vcG93ZXJvZmYgZnJvbSBlbmFibGUvZGlz
-YWJsZSBhbmQgZGVmaW5lCj4gPj4+ICAgICAgIG5ldyBmdW5jcwo+ID4+PiAgICAgZHJtL21lZGlh
-dGVrOiBrZWVwIGRzaSBhcyBMUDAwIGJlZm9yZSBkY3MgY21kcyB0cmFuc2Zlcgo+ID4+Pgo+ID4+
-PiBYaW5sZWkgTGVlICgxKToKPiA+Pj4gICAgIGRybS9tZWRpYXRlazogQWRkIHB1bGwtZG93biBN
-SVBJIG9wZXJhdGlvbiBpbiBtdGtfZHNpX3Bvd2Vyb2ZmCj4gPj4+ICAgICAgIGZ1bmN0aW9uCj4g
-Pj4+Cj4gPj4+ICAgIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCA3MyArKysr
-KysrKysrKysrKysrKysrKy0tLS0tLS0tLS0KPiA+Pj4gICAgMSBmaWxlIGNoYW5nZWQsIDQ5IGlu
-c2VydGlvbnMoKyksIDI0IGRlbGV0aW9ucygtKQo+ID4+Pgo+ID4+IF9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gPj4gTGludXgtbWVkaWF0ZWsgbWFpbGlu
-ZyBsaXN0Cj4gPj4gTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwo+ID4+IGh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsKPiA+
-Pgo+ID4+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4g
-Pj4gTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Cj4gPj4gTGludXgtbWVkaWF0ZWtAbGlzdHMu
-aW5mcmFkZWFkLm9yZwo+ID4+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtbWVkaWF0ZWsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0Bs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtbWVkaWF0ZWsK
+Switch to use le32/16_get_bits() to simplfy codes and specify
+the size explicitly to avoid potential issues.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+This caught my eye https://lore.kernel.org/netdev/87pmsf60h0.fsf@codeaurora.org/
+---
+ .../net/wireless/mediatek/mt76/mt7603/dma.c   |  2 +-
+ .../net/wireless/mediatek/mt76/mt7603/mac.c   |  9 ++---
+ .../net/wireless/mediatek/mt76/mt7615/mac.c   | 20 +++++------
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   | 35 +++++++------------
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   | 31 +++++++---------
+ .../wireless/mediatek/mt76/mt7921/pci_mac.c   | 13 +++----
+ .../wireless/mediatek/mt76/mt7921/sdio_mac.c  |  2 +-
+ .../net/wireless/mediatek/mt76/sdio_txrx.c    |  2 +-
+ 8 files changed, 46 insertions(+), 68 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/dma.c b/drivers/net/wireless/mediatek/mt76/mt7603/dma.c
+index 415ea17b9be6..37b092e3ea51 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/dma.c
+@@ -76,7 +76,7 @@ void mt7603_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
+ 	__le32 *end = (__le32 *)&skb->data[skb->len];
+ 	enum rx_pkt_type type;
+ 
+-	type = FIELD_GET(MT_RXD0_PKT_TYPE, le32_to_cpu(rxd[0]));
++	type = le32_get_bits(rxd[0], MT_RXD0_PKT_TYPE);
+ 
+ 	if (q == MT_RXQ_MCU) {
+ 		if (type == PKT_TYPE_RX_EVENT)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+index 2e5d26616bc2..17713c821d80 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+@@ -1130,7 +1130,7 @@ mt7603_fill_txs(struct mt7603_dev *dev, struct mt7603_sta *sta,
+ 	}
+ 
+ 	rate_set_tsf = READ_ONCE(sta->rate_set_tsf);
+-	rs_idx = !((u32)(FIELD_GET(MT_TXS1_F0_TIMESTAMP, le32_to_cpu(txs_data[1])) -
++	rs_idx = !((u32)(le32_get_bits(txs_data[1], MT_TXS1_F0_TIMESTAMP) -
+ 			 rate_set_tsf) < 1000000);
+ 	rs_idx ^= rate_set_tsf & BIT(0);
+ 	rs = &sta->rateset[rs_idx];
+@@ -1244,14 +1244,11 @@ void mt7603_mac_add_txs(struct mt7603_dev *dev, void *data)
+ 	struct mt7603_sta *msta = NULL;
+ 	struct mt76_wcid *wcid;
+ 	__le32 *txs_data = data;
+-	u32 txs;
+ 	u8 wcidx;
+ 	u8 pid;
+ 
+-	txs = le32_to_cpu(txs_data[4]);
+-	pid = FIELD_GET(MT_TXS4_PID, txs);
+-	txs = le32_to_cpu(txs_data[3]);
+-	wcidx = FIELD_GET(MT_TXS3_WCID, txs);
++	pid = le32_get_bits(txs_data[4], MT_TXS4_PID);
++	wcidx = le32_get_bits(txs_data[3], MT_TXS3_WCID);
+ 
+ 	if (pid == MT_PACKET_ID_NO_ACK)
+ 		return;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index d1d87240f24f..bd687f7de628 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -261,7 +261,7 @@ static int mt7615_reverse_frag0_hdr_trans(struct sk_buff *skb, u16 hdr_gap)
+ 	struct ieee80211_hdr hdr;
+ 	u16 frame_control;
+ 
+-	if (FIELD_GET(MT_RXD1_NORMAL_ADDR_TYPE, le32_to_cpu(rxd[1])) !=
++	if (le32_get_bits(rxd[1], MT_RXD1_NORMAL_ADDR_TYPE) !=
+ 	    MT_RXD1_NORMAL_U2M)
+ 		return -EINVAL;
+ 
+@@ -1427,7 +1427,7 @@ static bool mt7615_fill_txs(struct mt7615_dev *dev, struct mt7615_sta *sta,
+ 	}
+ 
+ 	rate_set_tsf = READ_ONCE(sta->rate_set_tsf);
+-	rs_idx = !((u32)(FIELD_GET(MT_TXS4_F0_TIMESTAMP, le32_to_cpu(txs_data[4])) -
++	rs_idx = !((u32)(le32_get_bits(txs_data[4], MT_TXS4_F0_TIMESTAMP) -
+ 			 rate_set_tsf) < 1000000);
+ 	rs_idx ^= rate_set_tsf & BIT(0);
+ 	rs = &sta->rateset[rs_idx];
+@@ -1558,14 +1558,11 @@ static void mt7615_mac_add_txs(struct mt7615_dev *dev, void *data)
+ 	struct mt76_wcid *wcid;
+ 	struct mt76_phy *mphy = &dev->mt76.phy;
+ 	__le32 *txs_data = data;
+-	u32 txs;
+ 	u8 wcidx;
+ 	u8 pid;
+ 
+-	txs = le32_to_cpu(txs_data[0]);
+-	pid = FIELD_GET(MT_TXS0_PID, txs);
+-	txs = le32_to_cpu(txs_data[2]);
+-	wcidx = FIELD_GET(MT_TXS2_WCID, txs);
++	pid = le32_get_bits(txs_data[0], MT_TXS0_PID);
++	wcidx = le32_get_bits(txs_data[2], MT_TXS2_WCID);
+ 
+ 	if (pid == MT_PACKET_ID_NO_ACK)
+ 		return;
+@@ -1653,7 +1650,7 @@ static void mt7615_mac_tx_free(struct mt7615_dev *dev, void *data, int len)
+ 			mt76_queue_tx_cleanup(dev, dev->mphy.q_tx[i], false);
+ 	}
+ 
+-	count = FIELD_GET(MT_TX_FREE_MSDU_ID_CNT, le16_to_cpu(free->ctrl));
++	count = le16_get_bits(free->ctrl, MT_TX_FREE_MSDU_ID_CNT);
+ 	if (is_mt7615(&dev->mt76)) {
+ 		__le16 *token = &free->token[0];
+ 
+@@ -1686,7 +1683,8 @@ bool mt7615_rx_check(struct mt76_dev *mdev, void *data, int len)
+ 	__le32 *end = (__le32 *)&rxd[len / 4];
+ 	enum rx_pkt_type type;
+ 
+-	type = FIELD_GET(MT_RXD0_PKT_TYPE, le32_to_cpu(rxd[0]));
++	type = le32_get_bits(rxd[0], MT_RXD0_PKT_TYPE);
++
+ 	switch (type) {
+ 	case PKT_TYPE_TXRX_NOTIFY:
+ 		mt7615_mac_tx_free(dev, data, len);
+@@ -1710,8 +1708,8 @@ void mt7615_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
+ 	enum rx_pkt_type type;
+ 	u16 flag;
+ 
+-	type = FIELD_GET(MT_RXD0_PKT_TYPE, le32_to_cpu(rxd[0]));
+-	flag = FIELD_GET(MT_RXD0_PKT_FLAG, le32_to_cpu(rxd[0]));
++	type = le32_get_bits(rxd[0], MT_RXD0_PKT_TYPE);
++	flag = le32_get_bits(rxd[0], MT_RXD0_PKT_FLAG);
+ 	if (type == PKT_TYPE_RX_EVENT && flag == 0x1)
+ 		type = PKT_TYPE_NORMAL_MCU;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 71e889b56581..0beac3049a2e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -226,8 +226,8 @@ mt7915_mac_decode_he_radiotap_ru(struct mt76_rx_status *status,
+ 	u32 ru_h, ru_l;
+ 	u8 ru, offs = 0;
+ 
+-	ru_l = FIELD_GET(MT_PRXV_HE_RU_ALLOC_L, le32_to_cpu(rxv[0]));
+-	ru_h = FIELD_GET(MT_PRXV_HE_RU_ALLOC_H, le32_to_cpu(rxv[1]));
++	ru_l = le32_get_bits(rxv[0], MT_PRXV_HE_RU_ALLOC_L);
++	ru_h = le32_get_bits(rxv[1], MT_PRXV_HE_RU_ALLOC_H);
+ 	ru = (u8)(ru_l | ru_h << 4);
+ 
+ 	status->bw = RATE_INFO_BW_HE_RU;
+@@ -400,7 +400,7 @@ static int mt7915_reverse_frag0_hdr_trans(struct sk_buff *skb, u16 hdr_gap)
+ 	struct ieee80211_hdr hdr;
+ 	u16 frame_control;
+ 
+-	if (FIELD_GET(MT_RXD3_NORMAL_ADDR_TYPE, le32_to_cpu(rxd[3])) !=
++	if (le32_get_bits(rxd[3], MT_RXD3_NORMAL_ADDR_TYPE) !=
+ 	    MT_RXD3_NORMAL_U2M)
+ 		return -EINVAL;
+ 
+@@ -859,7 +859,7 @@ mt7915_mac_fill_rx_vector(struct mt7915_dev *dev, struct sk_buff *skb)
+ 	u8 snr;
+ 	int i;
+ 
+-	band_idx = FIELD_GET(MT_RXV_HDR_BAND_IDX, le32_to_cpu(rxv_hdr[1]));
++	band_idx = le32_get_bits(rxv_hdr[1], MT_RXV_HDR_BAND_IDX);
+ 	if (band_idx && !phy->band_idx)
+ 		phy = mt7915_ext_phy(dev);
+ 
+@@ -1354,7 +1354,7 @@ mt7915_tx_check_aggr(struct ieee80211_sta *sta, __le32 *txwi)
+ 	if (!sta || !sta->ht_cap.ht_supported)
+ 		return;
+ 
+-	tid = FIELD_GET(MT_TXD1_TID, le32_to_cpu(txwi[1]));
++	tid = le32_get_bits(txwi[1], MT_TXD1_TID);
+ 	if (tid >= 6) /* skip VO queue */
+ 		return;
+ 
+@@ -1402,7 +1402,7 @@ mt7915_txwi_free(struct mt7915_dev *dev, struct mt76_txwi_cache *t,
+ 		if (likely(t->skb->protocol != cpu_to_be16(ETH_P_PAE)))
+ 			mt7915_tx_check_aggr(sta, txwi);
+ 	} else {
+-		wcid_idx = FIELD_GET(MT_TXD1_WLAN_IDX, le32_to_cpu(txwi[1]));
++		wcid_idx = le32_get_bits(txwi[1], MT_TXD1_WLAN_IDX);
+ 	}
+ 
+ 	__mt76_tx_complete_skb(mdev, wcid_idx, t->skb, free_list);
+@@ -1436,12 +1436,7 @@ mt7915_mac_tx_free(struct mt7915_dev *dev, void *data, int len)
+ 		mt76_queue_tx_cleanup(dev, mphy_ext->q_tx[MT_TXQ_BE], false);
+ 	}
+ 
+-	/*
+-	 * TODO: MT_TX_FREE_LATENCY is msdu time from the TXD is queued into PLE,
+-	 * to the time ack is received or dropped by hw (air + hw queue time).
+-	 * Should avoid accessing WTBL to get Tx airtime, and use it instead.
+-	 */
+-	total = FIELD_GET(MT_TX_FREE_MSDU_CNT, le16_to_cpu(free->ctrl));
++	total = le16_get_bits(free->ctrl, MT_TX_FREE_MSDU_CNT);
+ 	v3 = (FIELD_GET(MT_TX_FREE_VER, txd) == 0x4);
+ 	if (WARN_ON_ONCE((void *)&free->info[total >> v3] > end))
+ 		return;
+@@ -1632,18 +1627,13 @@ static void mt7915_mac_add_txs(struct mt7915_dev *dev, void *data)
+ 	struct mt76_wcid *wcid;
+ 	__le32 *txs_data = data;
+ 	u16 wcidx;
+-	u32 txs;
+ 	u8 pid;
+ 
+-	txs = le32_to_cpu(txs_data[0]);
+-	if (FIELD_GET(MT_TXS0_TXS_FORMAT, txs) > 1)
++	if (le32_get_bits(txs_data[0], MT_TXS0_TXS_FORMAT) > 1)
+ 		return;
+ 
+-	txs = le32_to_cpu(txs_data[2]);
+-	wcidx = FIELD_GET(MT_TXS2_WCID, txs);
+-
+-	txs = le32_to_cpu(txs_data[3]);
+-	pid = FIELD_GET(MT_TXS3_PID, txs);
++	wcidx = le32_get_bits(txs_data[2], MT_TXS2_WCID);
++	pid = le32_get_bits(txs_data[3], MT_TXS3_PID);
+ 
+ 	if (pid < MT_PACKET_ID_FIRST)
+ 		return;
+@@ -1680,7 +1670,8 @@ bool mt7915_rx_check(struct mt76_dev *mdev, void *data, int len)
+ 	__le32 *end = (__le32 *)&rxd[len / 4];
+ 	enum rx_pkt_type type;
+ 
+-	type = FIELD_GET(MT_RXD0_PKT_TYPE, le32_to_cpu(rxd[0]));
++	type = le32_get_bits(rxd[0], MT_RXD0_PKT_TYPE);
++
+ 	switch (type) {
+ 	case PKT_TYPE_TXRX_NOTIFY:
+ 		mt7915_mac_tx_free(dev, data, len);
+@@ -1705,7 +1696,7 @@ void mt7915_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
+ 	__le32 *end = (__le32 *)&skb->data[skb->len];
+ 	enum rx_pkt_type type;
+ 
+-	type = FIELD_GET(MT_RXD0_PKT_TYPE, le32_to_cpu(rxd[0]));
++	type = le32_get_bits(rxd[0], MT_RXD0_PKT_TYPE);
+ 
+ 	switch (type) {
+ 	case PKT_TYPE_TXRX_NOTIFY:
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index ea2a655acc6a..8bd8b4fe1047 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -176,8 +176,8 @@ mt7921_mac_decode_he_radiotap_ru(struct mt76_rx_status *status,
+ 	u32 ru_h, ru_l;
+ 	u8 ru, offs = 0;
+ 
+-	ru_l = FIELD_GET(MT_PRXV_HE_RU_ALLOC_L, le32_to_cpu(rxv[0]));
+-	ru_h = FIELD_GET(MT_PRXV_HE_RU_ALLOC_H, le32_to_cpu(rxv[1]));
++	ru_l = le32_get_bits(rxv[0], MT_PRXV_HE_RU_ALLOC_L);
++	ru_h = le32_get_bits(rxv[1], MT_PRXV_HE_RU_ALLOC_H);
+ 	ru = (u8)(ru_l | ru_h << 4);
+ 
+ 	status->bw = RATE_INFO_BW_HE_RU;
+@@ -247,19 +247,19 @@ mt7921_mac_decode_he_mu_radiotap(struct sk_buff *skb, __le32 *rxv)
+ 			 MU_PREP(FLAGS2_SIG_B_SYMS_USERS,
+ 				 le32_get_bits(rxv[2], MT_CRXV_HE_NUM_USER));
+ 
+-	he_mu->ru_ch1[0] = FIELD_GET(MT_CRXV_HE_RU0, le32_to_cpu(rxv[3]));
++	he_mu->ru_ch1[0] = le32_get_bits(rxv[3], MT_CRXV_HE_RU0);
+ 
+ 	if (status->bw >= RATE_INFO_BW_40) {
+ 		he_mu->flags1 |= HE_BITS(MU_FLAGS1_CH2_RU_KNOWN);
+ 		he_mu->ru_ch2[0] =
+-			FIELD_GET(MT_CRXV_HE_RU1, le32_to_cpu(rxv[3]));
++			le32_get_bits(rxv[3], MT_CRXV_HE_RU1);
+ 	}
+ 
+ 	if (status->bw >= RATE_INFO_BW_80) {
+ 		he_mu->ru_ch1[1] =
+-			FIELD_GET(MT_CRXV_HE_RU2, le32_to_cpu(rxv[3]));
++			le32_get_bits(rxv[3], MT_CRXV_HE_RU2);
+ 		he_mu->ru_ch2[1] =
+-			FIELD_GET(MT_CRXV_HE_RU3, le32_to_cpu(rxv[3]));
++			le32_get_bits(rxv[3], MT_CRXV_HE_RU3);
+ 	}
+ }
+ 
+@@ -409,7 +409,7 @@ static int mt7921_reverse_frag0_hdr_trans(struct sk_buff *skb, u16 hdr_gap)
+ 	struct ieee80211_hdr hdr;
+ 	u16 frame_control;
+ 
+-	if (FIELD_GET(MT_RXD3_NORMAL_ADDR_TYPE, le32_to_cpu(rxd[3])) !=
++	if (le32_get_bits(rxd[3], MT_RXD3_NORMAL_ADDR_TYPE) !=
+ 	    MT_RXD3_NORMAL_U2M)
+ 		return -EINVAL;
+ 
+@@ -1024,7 +1024,7 @@ void mt7921_tx_check_aggr(struct ieee80211_sta *sta, __le32 *txwi)
+ 	if (!sta || !(sta->ht_cap.ht_supported || sta->he_cap.has_he))
+ 		return;
+ 
+-	tid = FIELD_GET(MT_TXD1_TID, le32_to_cpu(txwi[1]));
++	tid = le32_get_bits(txwi[1], MT_TXD1_TID);
+ 	if (tid >= 6) /* skip VO queue */
+ 		return;
+ 
+@@ -1163,18 +1163,13 @@ void mt7921_mac_add_txs(struct mt7921_dev *dev, void *data)
+ 	struct mt76_wcid *wcid;
+ 	__le32 *txs_data = data;
+ 	u16 wcidx;
+-	u32 txs;
+ 	u8 pid;
+ 
+-	txs = le32_to_cpu(txs_data[0]);
+-	if (FIELD_GET(MT_TXS0_TXS_FORMAT, txs) > 1)
++	if (le32_get_bits(txs_data[0], MT_TXS0_TXS_FORMAT) > 1)
+ 		return;
+ 
+-	txs = le32_to_cpu(txs_data[2]);
+-	wcidx = FIELD_GET(MT_TXS2_WCID, txs);
+-
+-	txs = le32_to_cpu(txs_data[3]);
+-	pid = FIELD_GET(MT_TXS3_PID, txs);
++	wcidx = le32_get_bits(txs_data[2], MT_TXS2_WCID);
++	pid = le32_get_bits(txs_data[3], MT_TXS3_PID);
+ 
+ 	if (pid < MT_PACKET_ID_FIRST)
+ 		return;
+@@ -1213,8 +1208,8 @@ void mt7921_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
+ 	enum rx_pkt_type type;
+ 	u16 flag;
+ 
+-	type = FIELD_GET(MT_RXD0_PKT_TYPE, le32_to_cpu(rxd[0]));
+-	flag = FIELD_GET(MT_RXD0_PKT_FLAG, le32_to_cpu(rxd[0]));
++	type = le32_get_bits(rxd[0], MT_RXD0_PKT_TYPE);
++	flag = le32_get_bits(rxd[0], MT_RXD0_PKT_FLAG);
+ 
+ 	if (type == PKT_TYPE_RX_EVENT && flag == 0x1)
+ 		type = PKT_TYPE_NORMAL_MCU;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+index 8ca58293ddf1..5ca14dbbdd26 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+@@ -137,7 +137,7 @@ mt7921_txwi_free(struct mt7921_dev *dev, struct mt76_txwi_cache *t,
+ 
+ 		wcid_idx = wcid->idx;
+ 	} else {
+-		wcid_idx = FIELD_GET(MT_TXD1_WLAN_IDX, le32_to_cpu(txwi[1]));
++		wcid_idx = le32_get_bits(txwi[1], MT_TXD1_WLAN_IDX);
+ 	}
+ 
+ 	__mt76_tx_complete_skb(mdev, wcid_idx, t->skb, free_list);
+@@ -164,11 +164,7 @@ mt7921e_mac_tx_free(struct mt7921_dev *dev, void *data, int len)
+ 	mt76_queue_tx_cleanup(dev, dev->mphy.q_tx[MT_TXQ_PSD], false);
+ 	mt76_queue_tx_cleanup(dev, dev->mphy.q_tx[MT_TXQ_BE], false);
+ 
+-	/* TODO: MT_TX_FREE_LATENCY is msdu time from the TXD is queued into PLE,
+-	 * to the time ack is received or dropped by hw (air + hw queue time).
+-	 * Should avoid accessing WTBL to get Tx airtime, and use it instead.
+-	 */
+-	count = FIELD_GET(MT_TX_FREE_MSDU_CNT, le16_to_cpu(free->ctrl));
++	count = le16_get_bits(free->ctrl, MT_TX_FREE_MSDU_CNT);
+ 	if (WARN_ON_ONCE((void *)&free->info[count] > end))
+ 		return;
+ 
+@@ -231,7 +227,8 @@ bool mt7921e_rx_check(struct mt76_dev *mdev, void *data, int len)
+ 	__le32 *end = (__le32 *)&rxd[len / 4];
+ 	enum rx_pkt_type type;
+ 
+-	type = FIELD_GET(MT_RXD0_PKT_TYPE, le32_to_cpu(rxd[0]));
++	type = le32_get_bits(rxd[0], MT_RXD0_PKT_TYPE);
++
+ 	switch (type) {
+ 	case PKT_TYPE_TXRX_NOTIFY:
+ 		mt7921e_mac_tx_free(dev, data, len);
+@@ -252,7 +249,7 @@ void mt7921e_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
+ 	__le32 *rxd = (__le32 *)skb->data;
+ 	enum rx_pkt_type type;
+ 
+-	type = FIELD_GET(MT_RXD0_PKT_TYPE, le32_to_cpu(rxd[0]));
++	type = le32_get_bits(rxd[0], MT_RXD0_PKT_TYPE);
+ 
+ 	switch (type) {
+ 	case PKT_TYPE_TXRX_NOTIFY:
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
+index 4fd1d4765b04..09bcabd6cb8a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
+@@ -202,7 +202,7 @@ void mt7921s_tx_complete_skb(struct mt76_dev *mdev, struct mt76_queue_entry *e)
+ 	struct mt76_wcid *wcid;
+ 	u16 idx;
+ 
+-	idx = FIELD_GET(MT_TXD1_WLAN_IDX, le32_to_cpu(txwi[1]));
++	idx = le32_get_bits(txwi[1], MT_TXD1_WLAN_IDX);
+ 	wcid = rcu_dereference(mdev->wcid[idx]);
+ 	sta = wcid_to_sta(wcid);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
+index 9fcf507e09bd..a2601aa9e7b1 100644
+--- a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
++++ b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
+@@ -118,7 +118,7 @@ mt76s_rx_run_queue(struct mt76_dev *dev, enum mt76_rxq_id qid,
+ 		__le32 *rxd = (__le32 *)buf;
+ 
+ 		/* parse rxd to get the actual packet length */
+-		len = FIELD_GET(GENMASK(15, 0), le32_to_cpu(rxd[0]));
++		len = le32_get_bits(rxd[0], GENMASK(15, 0));
+ 		e->skb = mt76s_build_rx_skb(buf, len, round_up(len + 4, 4));
+ 		if (!e->skb)
+ 			break;
+-- 
+2.29.2
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
