@@ -4,64 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7877C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Mar 2022 13:36:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB98DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Mar 2022 14:41:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iWqbx3vcw8yU1NN8RQlxgXPe6vzggnR71qvFB7mzuSY=; b=Ps1tEnGXQgjLLa
-	q3jnM68NcaTfXm7QqdVKgaUlCuv1q0m46rqiswEkQyTPAIIB6somS3W+oe/cJcgFRejO5HK6Ar2qG
-	05x8FfoZ4B8L2EZMIMMDw7vajzwNxbDNgIvEFwG0zhkOaVRzfk5kEJXmj+1othRYIof5P2B3kZCP9
-	EbmelfkD5J3qg70rUIkZNLyBTuBCX5hz1n9hCrjqIn20o2BSzCBFJXaL5i+K49/6KlRLbadw4rlZm
-	0msoS96/1BBDCGvDsxsoD76o60BdpoUB6jhL1FHrXdu8bq/pySK2YvmkP7FNDFMPuUdjMFhf5e+yy
-	9wk2nA3vydF0psmwtKmA==;
+	List-Owner; bh=ERFWs9up/HflohmfWV+EcLuXdRXzVooset5b7R8+cos=; b=yrLiRjYKoPWeE2
+	/kltUtowo1GWRCsk3L2/dy1vmCwOkEk79YHFteuActT1CVnROd2ADE+9H1F7yKipVqmMBQca3Kv0X
+	oLYns7Y94WaybnW1BfQzrajz1uN7loIgEno7qj2KYSlO+l8oj73+Tegpt4VnogseoAG163vSx+xRt
+	0RAsp1tvkbXXyRO2DYBTtmUZHG8H/XmdkslCSzKpKrmzrbvsiGUxq3C8NfBnEc0tcFvngIArDxZ8H
+	NteJhv9zkmtmHji2YX0uRKTRHhNrGvi8EyOJIIkdkM12Ml4NTQ4LN/ljkD6Y2E6569lqsRbvZA0Tn
+	GN0BiZnSg4Y+9NWZKXmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSIyF-00CxFy-L4; Thu, 10 Mar 2022 13:36:47 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nSJyJ-00D9OR-Me; Thu, 10 Mar 2022 14:40:55 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSIy3-00CxDj-N0; Thu, 10 Mar 2022 13:36:37 +0000
-X-UUID: 1fa1a6c5286f4b8f9cb0ef7ecb7133cc-20220310
-X-UUID: 1fa1a6c5286f4b8f9cb0ef7ecb7133cc-20220310
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <chun-jie.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 648867539; Thu, 10 Mar 2022 06:36:31 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 10 Mar 2022 05:36:29 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 10 Mar 2022 21:36:27 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 10 Mar 2022 21:36:27 +0800
-Message-ID: <d80c89fd5fb704ed03244a7e333d59d0ee972e8f.camel@mediatek.com>
-Subject: Re: [PATCH v2 01/15] dt-bindings: ARM: Mediatek: Add new document
- bindings of MT8186 clock
-From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
- <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 10 Mar 2022 21:36:27 +0800
-In-Reply-To: <YhkmnnIApvU7gRlZ@robh.at.kernel.org>
-References: <20220221015258.913-1-chun-jie.chen@mediatek.com>
- <20220221015258.913-2-chun-jie.chen@mediatek.com>
- <YhkmnnIApvU7gRlZ@robh.at.kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nSJy6-00D9Ll-Jq; Thu, 10 Mar 2022 14:40:45 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 42B881F4592C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1646923240;
+ bh=twmvPMBXpCtjQaOxFlhSQ0t2WCEZ9mk4gP1Gmfjc8cY=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=bu6K6V2iDa++LupO2x7yaRGExEZNhxm11yrUSf02TZ9Kxyrz7sb9akpciPqa7AZ1H
+ /lGsHPgeVloLRWcIFAb3182BKNwYEyU5OktHpyzzRENe8KOYfeY+0eljBkpJui6AAU
+ Z535DZMSTrDqmXmw6DoVWIxVeZFvkXtJyfRbazGi5XS7KHwGzOFlwDHRzZt9i43rAZ
+ KEWauRFPe8gk8QJRmjPCAX5xO+/rvRSjZkCVNuinwhy4Egew/utvEcPNJy9uuhfRLa
+ HTp9gAPz2rhoqAhCnKwpX0wDXclIsmca4LRGlheB1nVPfbPB9R4UieXX2Y/9opXp3h
+ MlLZxpKubHQFg==
+Message-ID: <4974d21c-953c-30c1-8dbf-5826dbb20d8e@collabora.com>
+Date: Thu, 10 Mar 2022 15:40:37 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH] remoteproc: mediatek: fix side effect of mt8195 sram
+ power on
+Content-Language: en-US
+To: Tinghan Shen <tinghan.shen@mediatek.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220309114713.8156-1-tinghan.shen@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220309114713.8156-1-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220310_053635_839935_84D04CF6 
-X-CRM114-Status: GOOD (  22.65  )
+X-CRM114-CacheID: sfid-20220310_064042_994491_444CF868 
+X-CRM114-Status: GOOD (  29.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,163 +68,145 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-02-25 at 12:57 -0600, Rob Herring wrote:
-> On Mon, Feb 21, 2022 at 09:52:44AM +0800, Chun-Jie Chen wrote:
-> > This patch adds the new binding documentation for system clock
-> > and functional clock on Mediatek MT8186.
-> > 
-> > Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-> > ---
-> >  .../arm/mediatek/mediatek,mt8186-clock.yaml   |  56 +++
-> >  .../mediatek/mediatek,mt8186-sys-clock.yaml   |  54 +++
-> >  include/dt-bindings/clock/mt8186-clk.h        | 445
-> > ++++++++++++++++++
-> >  3 files changed, 555 insertions(+)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
-> > clock.yaml
-> >  create mode 100644
-> > Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-sys-
-> > clock.yaml
-> >  create mode 100644 include/dt-bindings/clock/mt8186-clk.h
-> > 
-> > diff --git
-> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
-> > clock.yaml
-> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
-> > clock.yaml
-> > new file mode 100644
-> > index 000000000000..373e8a100da3
-> > --- /dev/null
-> > +++
-> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
-> > clock.yaml
-> > @@ -0,0 +1,56 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: "
-> > https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,mt8186-clock.yaml*__;Iw!!CTRNKA9wMg0ARbw!xKDeg6ddrFWd8p__fZiG7r5F5Py9NVWCmi7zVue5fUzuxKtvqHCSu_pslcpXRWfJmMCT$
-> >  "
-> > +$schema: "
-> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!xKDeg6ddrFWd8p__fZiG7r5F5Py9NVWCmi7zVue5fUzuxKtvqHCSu_pslcpXRfM3OA21$
-> >  "
-> > +
-> > +title: Mediatek Functional Clock Controller for MT8186
-> > +
-> > +maintainers:
-> > +  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
-> > +
-> > +description:
+Il 09/03/22 12:47, Tinghan Shen ha scritto:
+> The definition of L1TCM_SRAM_PDN bits on mt8195 is different to mt8192.
 > 
-> You need a '|' to preserve the formatting.
+> L1TCM_SRAM_PDN bits[3:0] control the power of mt8195 L1TCM SRAM.
 > 
-> > +  The clock architecture in Mediatek like below
-> > +  PLLs -->
-> > +          dividers -->
-> > +                      muxes
-> > +                           -->
-> > +                              clock gate
-> > +
-> > +  The devices provide clock gate control in different IP blocks.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    items:
-> > +      - enum:
-> > +          - mediatek,mt8186-imp_iic_wrap
-> > +          - mediatek,mt8186-mfgsys
-> > +          - mediatek,mt8186-wpesys
-> > +          - mediatek,mt8186-imgsys1
-> > +          - mediatek,mt8186-imgsys2
-> > +          - mediatek,mt8186-vdecsys
-> > +          - mediatek,mt8186-vencsys
-> > +          - mediatek,mt8186-camsys
-> > +          - mediatek,mt8186-camsys_rawa
-> > +          - mediatek,mt8186-camsys_rawb
-> > +          - mediatek,mt8186-mdpsys
-> > +          - mediatek,mt8186-ipesys
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  '#clock-cells':
-> > +    const: 1
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    imp_iic_wrap: clock-controller@11017000 {
-> > +        compatible = "mediatek,mt8186-imp_iic_wrap";
-> > +        reg = <0x11017000 0x1000>;
-> > +        #clock-cells = <1>;
-> > +    };
-> > diff --git
-> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
-> > sys-clock.yaml
-> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
-> > sys-clock.yaml
-> > new file mode 100644
-> > index 000000000000..4c071dd66b76
-> > --- /dev/null
-> > +++
-> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
-> > sys-clock.yaml
-> > @@ -0,0 +1,54 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: "
-> > https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,mt8186-sys-clock.yaml*__;Iw!!CTRNKA9wMg0ARbw!xKDeg6ddrFWd8p__fZiG7r5F5Py9NVWCmi7zVue5fUzuxKtvqHCSu_pslcpXRRtmGvUx$
-> >  "
-> > +$schema: "
-> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!xKDeg6ddrFWd8p__fZiG7r5F5Py9NVWCmi7zVue5fUzuxKtvqHCSu_pslcpXRfM3OA21$
-> >  "
-> > +
-> > +title: Mediatek System Clock Controller for MT8186
-> > +
-> > +maintainers:
-> > +  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
-> > +
-> > +description:
+> L1TCM_SRAM_PDN bits[7:4] control the access path to EMI for SCP.
+> These bits have to be powered on to allow EMI access for SCP.
 > 
-> And here.
+> Bits[7:4] also affect audio DSP because audio DSP and SCP are
+> placed on the same hardware bus. If SCP cannot access EMI, audio DSP is
+> blocked too.
 > 
-> With that,
+> L1TCM_SRAM_PDN bits[31:8] are not used.
 > 
-> Reviewed-by: Rob Herring <robh@kernel.org>
+> This fix removes modification of bits[7:4] when power on/off mt8195 SCP
+> L1TCM. It's because the modification introduces a short period of time
+> blocking audio DSP to access EMI. This was not a problem until we have
+> to load both SCP module and audio DSP module. audio DSP needs to access
+> EMI because it has source/data on DRAM. Audio DSP will have unexpected
+> behavior when it accesses EMI and the SCP driver blocks the EMI path at
+> the same time.
 > 
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> ---
+>   drivers/remoteproc/mtk_common.h |  4 +++
+>   drivers/remoteproc/mtk_scp.c    | 57 +++++++++++++++++++++++++++++----
+>   2 files changed, 55 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+> index 5ff3867c72f3..27e7172c926d 100644
+> --- a/drivers/remoteproc/mtk_common.h
+> +++ b/drivers/remoteproc/mtk_common.h
+> @@ -51,6 +51,10 @@
+>   #define MT8192_CORE0_WDT_IRQ		0x10030
+>   #define MT8192_CORE0_WDT_CFG		0x10034
+>   
+> +#define MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS		0xF0
 
-Ok, I will fix it in next version.
+This is GENMASK(7, 4)..
 
-Thanks!
+> +#define MT8195_L1TCM_SRAM_PDN_RESERVED_BITS \
+> +	MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS
+> +
 
-> > +  The clock architecture in Mediatek like below
-> > +  PLLs -->
-> > +          dividers -->
-> > +                      muxes
-> > +                           -->
-> > +                              clock gate
-> > +
-> > +  The apmixedsys provides most of PLLs which generated from SoC
-> > 26m.
-> > +  The topckgen provides dividers and muxes which provide the clock
-> > source to other IP blocks.
-> > +  The infracfg_ao provides clock gate in peripheral and
-> > infrastructure IP blocks.
-> > +  The mcusys provides mux control to select the clock source in AP
-> > MCU.
-> > +  The device nodes also provide the system control capacity for
-> > configuration.
+Why are you defining the same thing twice?
+Please drop this.
+
+>   #define SCP_FW_VER_LEN			32
+>   #define SCP_SHARE_BUFFER_SIZE		288
+>   
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index dcddb33e9997..4d75af856fd1 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -365,22 +365,32 @@ static int mt8183_scp_before_load(struct mtk_scp *scp)
+>   	return 0;
+>   }
+>   
+> -static void mt8192_power_on_sram(void __iomem *addr)
+> +static void scp_sram_power_on(void __iomem *addr, u32 reserved_mask)
+>   {
+>   	int i;
+>   
+>   	for (i = 31; i >= 0; i--)
+> -		writel(GENMASK(i, 0), addr);
+> +		writel(GENMASK(i, 0) & ~reserved_mask, addr);
+>   	writel(0, addr);
+>   }
+>   
+> -static void mt8192_power_off_sram(void __iomem *addr)
+> +static void scp_sram_power_off(void __iomem *addr, u32 reserved_mask)
+>   {
+>   	int i;
+>   
+>   	writel(0, addr);
+>   	for (i = 0; i < 32; i++)
+> -		writel(GENMASK(i, 0), addr);
+> +		writel(GENMASK(i, 0) & ~reserved_mask, addr);
+> +}
+> +
+> +static void mt8192_power_on_sram(void __iomem *addr)
+> +{
+> +	scp_sram_power_on(addr, 0);
+> +}
+> +
+> +static void mt8192_power_off_sram(void __iomem *addr)
+> +{
+> +	scp_sram_power_off(addr, 0);
+>   }
+>   
+>   static int mt8192_scp_before_load(struct mtk_scp *scp)
+> @@ -403,6 +413,27 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
+>   	return 0;
+>   }
+>   
+> +static int mt8195_scp_before_load(struct mtk_scp *scp)
+> +{
+> +	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
+> +	writel(0xff, scp->reg_base + MT8192_SCP2SPM_IPC_CLR);
+> +
+> +	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
+> +
+> +	/* enable SRAM clock */
+> +	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_0);
+
+At this point, you can simply use scp_sram_power_{on, off} instead of defining
+a new function for just one call... I get that your intent here is to enhance
+human readability, but I don't think that this is really happening with that and,
+if it is, it's just about a little ignorable difference.
+
+Please use scp_sram_power_on() and scp_sram_power_off() directly.
+
+	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+	... etc :)
+
+> +	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_1);
+> +	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_2);
+> +	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
+> +			  MT8195_L1TCM_SRAM_PDN_RESERVED_BITS);
+> +	mt8192_power_on_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
+> +
+> +	/* enable MPU for all memory regions */
+> +	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
+> +
+> +	return 0;
+> +}
+> +
+
+Please remember to add me to the Cc's for the next version, so that I will be
+able to timely give you my R-b tag for this one.
+
+Regards,
+Angelo
+
 
 
 _______________________________________________
