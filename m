@@ -4,61 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D152EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Mar 2022 03:26:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 219EDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Mar 2022 03:30:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VgdBuvHICZGJh+OxodIwReV5nz7zQIKP3QBUXACg+QE=; b=JT4sm4TbjHYYv3
-	S/uQm+jfHjB8on+QXZwGOyE2JDoe2DUw15hBBPdYYxLXqFi1FqDCDlisB5c5nbF0dCih+diASkFI4
-	91c2xfTU+3wGzhJ+OQeH6+cro/yxbztu2UrjQLMo3o4Q7U3LGYbzSsO5T4FmG9+oCE1fNnoNf4+N9
-	qPRXkdd4o8r3mvbZjFyGSRAqv5390sJkdxxka5ek3SQTaYj+Dt6Ckj0XpckrQ6J32rUz4eSDVWQGh
-	dUCqev3+FsRryWWM/QduM7GxthkuAC4Yh3rZewFp/G0VKYyNNKaUW2bakjt9rsK5Atbp2X5/FcM3s
-	XcQhYWmcLMG9AO0gwnCw==;
+	List-Owner; bh=ObkEnuuH6gOnqCgYYHi3bc1hx2szK3N1+NcE/YyxwBo=; b=HjiYBmwpVEHgrH
+	tdqyP7SZyM9GSEA1YbjtlbldT7YkuHmIXfbpQeoLEGoHXuVz+lxxLSRHSCDmzxrStWYZCRmaOQkBP
+	MsM5uOVGIjsjMtA1W2UFBdJw6Sto1SiL1aGbdYnLETaobQ0rmDZsE03Vt5bYB8ffqK7+TmaXPqfQa
+	DjV+YZiLn/ouKjtfK/2c4xY6VbtCulUJe/PcBA657Pz6Ng46tb6R2Rl8bmuSIYHu5l5VdVUrxLOk8
+	vSNBCUR8+vCSKv6hyJn054Bg/T+p4dJkJN6t5M/xgeZLzsllT2YA+ZQUc08t8bxog20muklTCE8LS
+	VDpZVPieI/gQ6+6D8U3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nS9RY-00BAN2-Lj; Thu, 10 Mar 2022 03:26:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nS9VT-00BB8m-U3; Thu, 10 Mar 2022 03:30:27 +0000
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nS9RL-00BAKP-B8; Thu, 10 Mar 2022 03:26:14 +0000
-X-UUID: a57d3c410f7a49dfa09ac65b60a83d7c-20220309
-X-UUID: a57d3c410f7a49dfa09ac65b60a83d7c-20220309
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1343575250; Wed, 09 Mar 2022 20:26:04 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Mar 2022 19:18:36 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 10 Mar 2022 11:18:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 10 Mar 2022 11:18:34 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <hanyihao@vivo.com>
-CC: <andrew-ct.chen@mediatek.com>, <kernel@vivo.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-media@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <matthias.bgg@gmail.com>, <mchehab@kernel.org>, <tiffany.lin@mediatek.com>
-Subject: Re: [PATCH] media: platform: mtk-vcodec: fix platform_get_irq.cocci
- warning
-Date: Thu, 10 Mar 2022 11:18:34 +0800
-Message-ID: <20220310031834.6030-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220310023645.10082-1-hanyihao@vivo.com>
-References: <20220310023645.10082-1-hanyihao@vivo.com>
+ id 1nS9VR-00BB7S-5Z
+ for linux-mediatek@lists.infradead.org; Thu, 10 Mar 2022 03:30:26 +0000
+Received: by mail-yw1-x1136.google.com with SMTP id
+ 00721157ae682-2dc28791ecbso44582237b3.4
+ for <linux-mediatek@lists.infradead.org>; Wed, 09 Mar 2022 19:30:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=WgRCsCLWYCcRTmUTMqwnDRYue1IsKXpGcRsc3GS7hcU=;
+ b=bTmH5bmcH/U/4uCsCmXzu+Ix6JFxxrKutkNq+STjXVK63oKlZUPzuNjfK3ADEaQxV6
+ JOOXFEOr+zjOHCrbYY/H33UEZk2p4cb1Famj9f87Uy8+SH31gNUlQpdF5YfxwZprAfVO
+ qA4wQh+0eK0n3aqJBtjY59fXp9MZGpaYELU0I=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=WgRCsCLWYCcRTmUTMqwnDRYue1IsKXpGcRsc3GS7hcU=;
+ b=4NVi5JAqlpt5MaLpCi3YxT/OPT20xTWuwbTKAwHhIwgPSCylMr3EBv+69EbqJVHFR9
+ ax2JLfYjDtRjCBFxBTebUhIP2eMLEL+MwDqX9cRfoOiAoyLoaC6lcJb9E2hXPNT0DZiF
+ k5YfZUNRt5sLcegQw/tj6J5jyuAvIxirnS+VcCj68IfmyO37vO8dViX9HyyNmpcUkfn0
+ LF5nOfeOoMTSSwxN/fqK4m1S5RySnWR/swY3S72ndulMhcsyUCI/9NUqRcrbOF/Nt61Q
+ jmGOXlpdd8y5tk8Aib9w7Gsmz70ItG43q9MlWJG/NTtVFDMkavPnfZE2KwV/4y7z9PNR
+ pT7Q==
+X-Gm-Message-State: AOAM533WvaDF2LmpYateEvkPEhQEr+5AbxjVu2XtR+MZYit83m9vPu+8
+ U8DtMEWnZDLtKjdHE2BEKiZorkBDOBSXCIPza6Nikw==
+X-Google-Smtp-Source: ABdhPJzXi4nwrmcagVkrjtM225SxnGi8cQ0ildeViV9+Ph+DRtdhBYcRycwlj8wpEmf6UJ4qvADYZ6TExd3tXQlrEE4=
+X-Received: by 2002:a81:b044:0:b0:2d6:bd1f:5d8b with SMTP id
+ x4-20020a81b044000000b002d6bd1f5d8bmr2386642ywk.27.1646883023764; Wed, 09 Mar
+ 2022 19:30:23 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220310011548.2487-1-chun-jie.chen@mediatek.com>
+In-Reply-To: <20220310011548.2487-1-chun-jie.chen@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 10 Mar 2022 11:30:12 +0800
+Message-ID: <CAGXv+5HecgmXVMnAqUJVvjy2S1P5qvPWSVkcu5BwkhfAqDPEYQ@mail.gmail.com>
+Subject: Re: [PATCH v1] soc: mediatek: pm-domains: Fix the power glitch issue
+To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+Cc: Enric Balletbo Serra <eballetbo@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Nicolas Boichat <drinkcat@chromium.org>, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ srv_heupstream@mediatek.com, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220309_192611_393644_E669BF09 
-X-CRM114-Status: UNSURE (   5.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220309_193025_249029_247731AA 
+X-CRM114-Status: GOOD (  17.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,18 +84,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yihao,
+On Thu, Mar 10, 2022 at 9:20 AM Chun-Jie Chen
+<chun-jie.chen@mediatek.com> wrote:
+>
+> Power reset maybe generate unexpected signal. In order to avoid
+> the glitch issue, we need to enable isolation first to guarantee the
+> stable signal when power reset is triggered.
+>
+> Fixes: 59b644b01cf4 ("soc: mediatek: Add MediaTek SCPSYS power domains")
+> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 
-> Remove dev_err() messages after platform_get_irq*() failures.
-> platform_get_irq() already prints an error.
-> 
-> Generated by: scripts/coccinelle/api/platform_get_irq.cocci
-> 
-> Signed-off-by: Yihao Han <hanyihao@vivo.com>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Thanks for the patch.
-
-Reviewed-by: Miles Chen <miles.chen@mediatek.com>
+> ---
+> This patch is based on 5.17-rc1.
+> ---
+>  drivers/soc/mediatek/mtk-pm-domains.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+> index b762bc40f56b..0195f6c3396b 100644
+> --- a/drivers/soc/mediatek/mtk-pm-domains.c
+> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
+> @@ -272,9 +272,9 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>         clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
+>
+>         /* subsys power off */
+> -       regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
+>         regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_ISO_BIT);
+>         regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_CLK_DIS_BIT);
+> +       regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
+>         regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ON_2ND_BIT);
+>         regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ON_BIT);
+>
+> --
+> 2.18.0
+>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
