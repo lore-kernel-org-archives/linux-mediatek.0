@@ -4,58 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E98F2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Mar 2022 16:07:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D4AAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Mar 2022 16:53:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Stc6mbLg+CejExDJsmXQAlaQp1xZpU6qMtjhAUI387Y=; b=D2Qy73K+2CR3eBfN5vdfb2Aii6
-	lVQUmJBqIHTdAgBg0l2YwbhY0ux0Y91VJEefeMSzWguP4wZIhEYBU5JQ4pX41u/L8LPYzlsEqjFIJ
-	4daaGt7p8sQ4iHMp2H1lEsExsDgtw2BCVxfUCZcYikQ9BvqiiNhPTXvgm1xcCBSwu7BbWNX0FvkJr
-	NOpTMugIDe+wtLaDdS3zM/TlkYMO/khS1gkrYFh5VFH9I1V3FEWNhjJO/E5Je/vm0+tn3+cYHpnZY
-	lRByDqrnGqXCI+tMxh+8W/CQoGD0Cu9xx/xZrU3w/EBWMCpSVo6I+/CMM11fvEoey7gE3JV6KCkrC
-	kyj2H8ww==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YT+nwb6hAM7UgHVRwWi0nytIo+YVZ9Kkcp1BWvo6BG8=; b=xXsncxN8UBrp1v
+	wyPzQgpgZDaUDJ8DB1+ry24V7V4ioUbz1owSDi8s92MQYhdcAQsqeZbsFoiKc8Ts+zN8cmrf40K6T
+	9hHo8cKFznTBh3Gtk5ZI3xcbRaTMHqR/RSjToJpp6ophDmj84SXr5HmJSeZTynZPTu1+geMdP4C0T
+	9ySYQ7pb6ntpvLB6ZrM6QWhSNgAqdVHwFtMBz7j0Jjvp+ENPB50cxwq0wFGXDjgrDVteghP9oWv+e
+	ZfMr4h3SOQY0EQdomGyyc2DW/DYbSfbG/FTP2gFai7pPdyvBkuF5VdMuUHVPbphm65Lf2rhZ8gv0w
+	kc6zVKbSQtNkAbSdBQsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSLJn-00DSSI-FQ; Thu, 10 Mar 2022 16:07:11 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nSM26-00DYap-LC; Thu, 10 Mar 2022 16:52:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSLJb-00DSQP-33; Thu, 10 Mar 2022 16:07:00 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id A441E1F40649
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1646928417;
- bh=ZiS/SPnwQg61kBgd93FXFvniwS51SClGVI0Qf1ZMNxk=;
- h=Date:Subject:To:References:From:In-Reply-To:From;
- b=VFAI6Al10tnepVyxeGIIzzYWTeLv5ZQBIqdkRLEtxjcGAt2khOqoqObnB7LoK6+yz
- N9YEyXhenA8DXI0VTQcbby7Si5uZpdZJNJJC8jBhV3V7bwSeNVGn5f0y95yQvmTn/G
- CRhaEbydHUGeJVNZpo60qJ0OhDFG+4YCJBKECSdSmXUo2+v7Q/lO8xJSzZplnDgDnI
- RCBXTLzrqMcVqq16Rltr1qS2Dnqov9qLLCllIRVSzzqVqRjPbDeBbA+ODnkFvScLOe
- xSAr3zv6md0Zz9+YKjkBPgl7vaudM1LuTWqF4lDvDbJlPncEkvCI5S2zfSwHEIA+sK
- T45amm6QPgw5A==
-Message-ID: <f6e2a491-d701-d05c-eb3b-2f8f5c080a16@collabora.com>
-Date: Thu, 10 Mar 2022 17:06:54 +0100
+ id 1nSM24-00DYZr-HD
+ for linux-mediatek@lists.infradead.org; Thu, 10 Mar 2022 16:52:57 +0000
+X-UUID: 7e7087921a494407be63b5ea2b923359-20220310
+X-UUID: 7e7087921a494407be63b5ea2b923359-20220310
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <deren.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1301847064; Thu, 10 Mar 2022 09:52:49 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 10 Mar 2022 08:42:47 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 11 Mar 2022 00:42:46 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 11 Mar 2022 00:42:46 +0800
+From: Deren Wu <Deren.Wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
+ Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+ KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+ <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
+ <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
+ Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
+ Chen" <shayne.chen@mediatek.com>, linux-wireless
+ <linux-wireless@vger.kernel.org>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH] mt76: fix invalid rssi report
+Date: Fri, 11 Mar 2022 00:42:36 +0800
+Message-ID: <6143aa93f2b705ec84f9a0eef2d2cd61436a9b6f.1646929388.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH] pinctrl: mediatek: Fix missing of_node_put() in
- mtk_pctrl_init
-Content-Language: en-US
-To: Miaoqian Lin <linmq006@gmail.com>, Sean Wang <sean.wang@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Hongzhou Yang <hongzhou.yang@mediatek.com>,
- linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220308071155.21114-1-linmq006@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220308071155.21114-1-linmq006@gmail.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220310_080659_342288_212448F1 
-X-CRM114-Status: GOOD (  16.08  )
+X-CRM114-CacheID: sfid-20220310_085256_586779_75E66012 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,47 +74,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/03/22 08:11, Miaoqian Lin ha scritto:
-> The device_node pointer is returned by of_parse_phandle()  with refcount
-> incremented. We should use of_node_put() on it when done.
-> 
-> Fixes: a6df410d420a ("pinctrl: mediatek: Add Pinctrl/GPIO driver for mt8135.")
-> Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+From: Deren Wu <deren.wu@mediatek.com>
 
-Thanks!
+Drop invalid rssi value to calculate a reasonable report
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Fixes: 4550fb9e9810 ("mt76: improve signal strength reporting")
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mac80211.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-> ---
->   drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> index 5f7c421ab6e7..334cb85855a9 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> @@ -1038,6 +1038,7 @@ int mtk_pctrl_init(struct platform_device *pdev,
->   	node = of_parse_phandle(np, "mediatek,pctl-regmap", 0);
->   	if (node) {
->   		pctl->regmap1 = syscon_node_to_regmap(node);
-> +		of_node_put(node);
->   		if (IS_ERR(pctl->regmap1))
->   			return PTR_ERR(pctl->regmap1);
->   	} else if (regmap) {
-> @@ -1051,6 +1052,7 @@ int mtk_pctrl_init(struct platform_device *pdev,
->   	node = of_parse_phandle(np, "mediatek,pctl-regmap", 1);
->   	if (node) {
->   		pctl->regmap2 = syscon_node_to_regmap(node);
-> +		of_node_put(node);
->   		if (IS_ERR(pctl->regmap2))
->   			return PTR_ERR(pctl->regmap2);
->   	}
-> 
+diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
+index 372b94a665ec..5b53d008eb66 100644
+--- a/drivers/net/wireless/mediatek/mt76/mac80211.c
++++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+@@ -942,10 +942,11 @@ mt76_rx_signal(struct mt76_rx_status *status)
+ 	for (chains = status->chains; chains; chains >>= 1, chain_signal++) {
+ 		int cur, diff;
+ 
+-		if (!(chains & BIT(0)))
++		cur = *chain_signal;
++		if (!(chains & BIT(0)) ||
++		    cur > 0)
+ 			continue;
+ 
+-		cur = *chain_signal;
+ 		if (cur > signal)
+ 			swap(cur, signal);
+ 
+-- 
+2.18.0
 
 
 _______________________________________________
