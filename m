@@ -4,60 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF41AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Mar 2022 09:16:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF3C1C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Mar 2022 09:58:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QLbOipOj8e2p/0aOobUZgpHnpBJ7K/Lolz1jKQPLao8=; b=aOLuDm6hWm8J42
-	sG7VDDXu1yezPznqNfa2AIP2XxyTKmdhW2T5st6dV4esXHvsf46VDn/3WJ0rxOQRRtvifnk0U1AQP
-	z23Q84R7w8wpi8lGNHWSIj6y/8AnfzYIPJt5PCHGtMTbG+T8u1d7obO+lVG8zF23rLmXswY8vnq2v
-	4Th/14X1ikuu7L2eXOA1SixnVLV6aZDa8w8DCtW+KHJyKAGw8vgFePDNJOBrwnYtUOI8G7w6hguwV
-	zUP8TgOtdwCVHhWiAeCtSUi+B5dXLsv+gs3JFKDLhVWW6OqIb43Cp+CvegxzL5e+IjQKwTfPgtyPy
-	cjBQLDgZcTmor6C90DaQ==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=m8axL4Nt/5wyxR6x3vbGkBHJDGdMA1AAkwKEBc9TlNE=; b=ePvLJvMD4leZpW
+	IxiQuLz3xAnPxthlVDi3F4RVjIj/xfTnf80bNANgfk4Ill56BAc0qICbudf4J1brt+IqB4eQdmk+E
+	5ycW6hX4etuCjPnh8bi5vXv+n7LzpKrQwCf3adkijzwRLVNntwvHDi68iaJR4UsQWMT5AOZIPLblB
+	71pMy2yMW5siqSdUUPpz8djiWYsGGucAlchLVUl3TYZCNIDBpQ1KCquBbw0SYZb+u+hveTY1oH+qz
+	3QcB76rvvxqmFk2/q+DEz7mjcBRjsFOQ1Kx5zQTLS91YAxr9oufczLZmefqLkR/W8EOOAveG0KXzq
+	oqP+Q0LkBCrgY97NGTIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSEtt-00C5MG-2z; Thu, 10 Mar 2022 09:16:01 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSEtf-00C5Gk-B7; Thu, 10 Mar 2022 09:15:48 +0000
-X-UUID: faaa1b1f7a224082b1bf1000e2d82124-20220310
-X-UUID: faaa1b1f7a224082b1bf1000e2d82124-20220310
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1058209516; Thu, 10 Mar 2022 02:15:43 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 10 Mar 2022 01:15:42 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 10 Mar 2022 17:15:40 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 10 Mar 2022 17:15:40 +0800
-Message-ID: <0a05150360b7d5ec075396820ee7339c49fb5367.camel@mediatek.com>
-Subject: Re: [RESEND V2 0/3] Add watchdog support for MT8186 SoC
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <wim@linux-watchdog.org>, <linux@roeck-us.net>, <matthias.bgg@gmail.com>, 
- <robh+dt@kernel.org>, <p.zabel@pengutronix.de>
-CC: <runyang.chen@mediatek.com>, <linux-watchdog@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 10 Mar 2022 17:15:40 +0800
-In-Reply-To: <b2195d5a5d9e7c18eb5e2269a04cb9b8ce431d90.camel@mediatek.com>
-References: <20220301054405.25021-1-rex-bc.chen@mediatek.com>
- <b2195d5a5d9e7c18eb5e2269a04cb9b8ce431d90.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-MIME-Version: 1.0
-X-MTK: N
+	id 1nSFYV-00CEvu-Vk; Thu, 10 Mar 2022 09:58:00 +0000
+Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nSFVl-00CDay-Jq
+ for linux-mediatek@lists.infradead.org; Thu, 10 Mar 2022 09:55:11 +0000
+Received: from smtpclient.apple (p5b3d2183.dip0.t-ipconnect.de [91.61.33.131])
+ by mail.holtmann.org (Postfix) with ESMTPSA id 40891CECD8;
+ Thu, 10 Mar 2022 10:55:04 +0100 (CET)
+Mime-Version: 1.0 (Mac OS X Mail 15.0 \(3693.60.0.1.1\))
+Subject: Re: [PATCH 1/3] Bluetooth: btmtkuart: rely on BT_MTK module
+From: Marcel Holtmann <marcel@holtmann.org>
+In-Reply-To: <f0167a9631fd0b392490311825ff0f826c054bc1.1646783737.git.objelf@gmail.com>
+Date: Thu, 10 Mar 2022 10:55:03 +0100
+Cc: Johan Hedberg <johan.hedberg@gmail.com>, linux-bluetooth@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Message-Id: <A29B0681-F83F-4509-895B-427A467D07DC@holtmann.org>
+References: <f0167a9631fd0b392490311825ff0f826c054bc1.1646783737.git.objelf@gmail.com>
+To: Sean Wang <sean.wang@mediatek.com>
+X-Mailer: Apple Mail (2.3693.60.0.1.1)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220310_011547_420343_C230A6AA 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20220310_015509_877674_189B0F2E 
+X-CRM114-Status: UNSURE (   8.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,55 +59,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-03-10 at 16:34 +0800, Rex-BC Chen wrote:
-> On Tue, 2022-03-01 at 13:44 +0800, Rex-BC Chen wrote:
-> > resend v2:
-> > 1. Fix topic to V2.
-> > 
-> > v2:
-> > 1. Squash [1] into [2] in v1.
-> > 2. Add tags of acked-by and reviewed-by.
-> > 
-> > [1]: [3/4] dt-bindings: reset: mt8186: add DSI reset bit for MMSYS
-> > [2]: [2/4] dt-bindings: reset: mt8186: add toprgu reset-controller
-> > header file
-> > 
-> > v1:
-> > 1. Add mt8186-resets.h to define definition of reset bits.
-> > 2. Add wdt compatible for MT8186.
-> > 
-> > Rex-BC Chen (1):
-> >   dt-bindings: watchdog: Add compatible for MediaTek MT8186
-> > 
-> > Runyang Chen (2):
-> >   dt-bindings: reset: mt8186: add reset-controller header file
-> >   watchdog: mediatek: mt8186: add wdt support
-> > 
-> >  .../devicetree/bindings/watchdog/mtk-wdt.txt  |  1 +
-> >  drivers/watchdog/mtk_wdt.c                    |  6 ++++
-> >  include/dt-bindings/reset/mt8186-resets.h     | 36
-> > +++++++++++++++++++
-> >  3 files changed, 43 insertions(+)
-> >  create mode 100644 include/dt-bindings/reset/mt8186-resets.h
-> > 
-> 
-> Hello Guenter,
-> 
-> All patches are reviewed-by and acked-by.
-> Do you have any suggestion for this series?
-> 
-> Thanks!
-> 
-> BRs,
-> Rex
-> 
-Hello Guenter,
+Hi Sean,
 
-I am sorry that I did not notice this series is in watchdog-next.
-Thanks for accepting this series!
+> Rely on btmtk module to reduce duplicated code
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+> drivers/bluetooth/Kconfig     |   1 +
+> drivers/bluetooth/btmtk.c     |   1 +
+> drivers/bluetooth/btmtk.h     |   1 +
+> drivers/bluetooth/btmtkuart.c | 184 +++++-----------------------------
+> 4 files changed, 29 insertions(+), 158 deletions(-)
 
-BRs,
-Rex
+all 3 patches have been applied to bluetooth-next tree.
+
+Regards
+
+Marcel
 
 
 _______________________________________________
