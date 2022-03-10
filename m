@@ -4,66 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6364C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Mar 2022 10:57:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7877C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Mar 2022 13:36:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BJMx+4pK3OJ2ucAOzWeuUtcaBt5+6iN/qsxN/+AUhn4=; b=ESF8szmDdmsRbO
-	PRAICHTZLt8huTTqHLrsNfF9eGzBU0XSnrctfsU0ThN9DSyUOTQx1DKj4R3jgMCmUOzVctRboa58G
-	TcUQdO3BTBH3X7aS4ebIel175BcNeA9GwzAUULcCuGPF8A9HX/JX2DmG2q6ACIUjTyJ4oO6W/vSJ+
-	tvI12bWr9KCOl9m5BskkBclyo/pxAOlx6ax0L9Qp0uHXrmnkA/OMc9tCRCF+H60GFfKh73/RQa2n7
-	l1iV+wY+Z/9i0gNOGyoR5P8dQ73nZ3Wca7fCgkrT/Dc5p9r2/Eu2Q1FtZ4Uokk+Z0mkUF1Ym00t/v
-	bRVKyJ+xTiq53c4EfRgQ==;
+	List-Owner; bh=iWqbx3vcw8yU1NN8RQlxgXPe6vzggnR71qvFB7mzuSY=; b=Ps1tEnGXQgjLLa
+	q3jnM68NcaTfXm7QqdVKgaUlCuv1q0m46rqiswEkQyTPAIIB6somS3W+oe/cJcgFRejO5HK6Ar2qG
+	05x8FfoZ4B8L2EZMIMMDw7vajzwNxbDNgIvEFwG0zhkOaVRzfk5kEJXmj+1othRYIof5P2B3kZCP9
+	EbmelfkD5J3qg70rUIkZNLyBTuBCX5hz1n9hCrjqIn20o2BSzCBFJXaL5i+K49/6KlRLbadw4rlZm
+	0msoS96/1BBDCGvDsxsoD76o60BdpoUB6jhL1FHrXdu8bq/pySK2YvmkP7FNDFMPuUdjMFhf5e+yy
+	9wk2nA3vydF0psmwtKmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSGTn-00CWex-D2; Thu, 10 Mar 2022 10:57:11 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nSIyF-00CxFy-L4; Thu, 10 Mar 2022 13:36:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSGPs-00CUMv-KJ; Thu, 10 Mar 2022 10:53:10 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 70CF21F454C6
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1646909587;
- bh=/gNWVadDfDGHqNyl7lJyNQZh6ChwEINYUFyIGatCL1M=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=AGV3VigDWxu0PfehGZ2acLaX+HM0VeKT3xlJoPRA6pxisHTKZUbrEmzSW9Jrzwfqk
- cVncWHKPaXKR/u9m9paG+QZxjyyCe67geLsp3EgoZ0dd06LCTfzKJC4d7yviicTnzE
- JthQlmrJNZBZjaXDV486nsWQeXnt20hA+EgwmbPEq2INHfNox7yS5uBDSR7XrfI028
- eWCBlBdYnyFZANqf8VzT+xBDf7lVW3TpUscXIDxEWSr/UI1CwFp5EjvPjxr/DWPizN
- VCLLsM4JmYf8XCMQucjmDVQbpHTpU6/N8wlClJEy33dotHvE10bnC2H9OwQ8EYjNL7
- ZXbABZYumsrxQ==
-Message-ID: <b9404776-b5c7-7321-f352-1995dafa1565@collabora.com>
-Date: Thu, 10 Mar 2022 11:53:04 +0100
+ id 1nSIy3-00CxDj-N0; Thu, 10 Mar 2022 13:36:37 +0000
+X-UUID: 1fa1a6c5286f4b8f9cb0ef7ecb7133cc-20220310
+X-UUID: 1fa1a6c5286f4b8f9cb0ef7ecb7133cc-20220310
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <chun-jie.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 648867539; Thu, 10 Mar 2022 06:36:31 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 10 Mar 2022 05:36:29 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 10 Mar 2022 21:36:27 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 10 Mar 2022 21:36:27 +0800
+Message-ID: <d80c89fd5fb704ed03244a7e333d59d0ee972e8f.camel@mediatek.com>
+Subject: Re: [PATCH v2 01/15] dt-bindings: ARM: Mediatek: Add new document
+ bindings of MT8186 clock
+From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
+ <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 10 Mar 2022 21:36:27 +0800
+In-Reply-To: <YhkmnnIApvU7gRlZ@robh.at.kernel.org>
+References: <20220221015258.913-1-chun-jie.chen@mediatek.com>
+ <20220221015258.913-2-chun-jie.chen@mediatek.com>
+ <YhkmnnIApvU7gRlZ@robh.at.kernel.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v14 22/22] arm64: dts: mt8195: add display node for vdosys1
-Content-Language: en-US
-To: "Nancy.Lin" <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, wim@linux-watchdog.org,
- linux@roeck-us.net
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Nathan Chancellor <nathan@kernel.org>,
- Nick Desaulniers <ndesaulniers@google.com>,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
- llvm@lists.linux.dev, singo.chang@mediatek.com, srv_heupstream@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220310035515.16881-1-nancy.lin@mediatek.com>
- <20220310035515.16881-23-nancy.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220310035515.16881-23-nancy.lin@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220310_025308_846406_5693FA66 
-X-CRM114-Status: GOOD (  13.82  )
+X-CRM114-CacheID: sfid-20220310_053635_839935_84D04CF6 
+X-CRM114-Status: GOOD (  22.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,89 +73,163 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/03/22 04:55, Nancy.Lin ha scritto:
-> Add display node for vdosys1.
+On Fri, 2022-02-25 at 12:57 -0600, Rob Herring wrote:
+> On Mon, Feb 21, 2022 at 09:52:44AM +0800, Chun-Jie Chen wrote:
+> > This patch adds the new binding documentation for system clock
+> > and functional clock on Mediatek MT8186.
+> > 
+> > Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> > ---
+> >  .../arm/mediatek/mediatek,mt8186-clock.yaml   |  56 +++
+> >  .../mediatek/mediatek,mt8186-sys-clock.yaml   |  54 +++
+> >  include/dt-bindings/clock/mt8186-clk.h        | 445
+> > ++++++++++++++++++
+> >  3 files changed, 555 insertions(+)
+> >  create mode 100644
+> > Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
+> > clock.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-sys-
+> > clock.yaml
+> >  create mode 100644 include/dt-bindings/clock/mt8186-clk.h
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
+> > clock.yaml
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
+> > clock.yaml
+> > new file mode 100644
+> > index 000000000000..373e8a100da3
+> > --- /dev/null
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
+> > clock.yaml
+> > @@ -0,0 +1,56 @@
+> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: "
+> > https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,mt8186-clock.yaml*__;Iw!!CTRNKA9wMg0ARbw!xKDeg6ddrFWd8p__fZiG7r5F5Py9NVWCmi7zVue5fUzuxKtvqHCSu_pslcpXRWfJmMCT$
+> >  "
+> > +$schema: "
+> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!xKDeg6ddrFWd8p__fZiG7r5F5Py9NVWCmi7zVue5fUzuxKtvqHCSu_pslcpXRfM3OA21$
+> >  "
+> > +
+> > +title: Mediatek Functional Clock Controller for MT8186
+> > +
+> > +maintainers:
+> > +  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> > +
+> > +description:
 > 
-> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 223 +++++++++++++++++++++++
->   1 file changed, 223 insertions(+)
+> You need a '|' to preserve the formatting.
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index dbca699bba05..e650ec759235 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > +  The clock architecture in Mediatek like below
+> > +  PLLs -->
+> > +          dividers -->
+> > +                      muxes
+> > +                           -->
+> > +                              clock gate
+> > +
+> > +  The devices provide clock gate control in different IP blocks.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    items:
+> > +      - enum:
+> > +          - mediatek,mt8186-imp_iic_wrap
+> > +          - mediatek,mt8186-mfgsys
+> > +          - mediatek,mt8186-wpesys
+> > +          - mediatek,mt8186-imgsys1
+> > +          - mediatek,mt8186-imgsys2
+> > +          - mediatek,mt8186-vdecsys
+> > +          - mediatek,mt8186-vencsys
+> > +          - mediatek,mt8186-camsys
+> > +          - mediatek,mt8186-camsys_rawa
+> > +          - mediatek,mt8186-camsys_rawb
+> > +          - mediatek,mt8186-mdpsys
+> > +          - mediatek,mt8186-ipesys
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  '#clock-cells':
+> > +    const: 1
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    imp_iic_wrap: clock-controller@11017000 {
+> > +        compatible = "mediatek,mt8186-imp_iic_wrap";
+> > +        reg = <0x11017000 0x1000>;
+> > +        #clock-cells = <1>;
+> > +    };
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
+> > sys-clock.yaml
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
+> > sys-clock.yaml
+> > new file mode 100644
+> > index 000000000000..4c071dd66b76
+> > --- /dev/null
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
+> > sys-clock.yaml
+> > @@ -0,0 +1,54 @@
+> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: "
+> > https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,mt8186-sys-clock.yaml*__;Iw!!CTRNKA9wMg0ARbw!xKDeg6ddrFWd8p__fZiG7r5F5Py9NVWCmi7zVue5fUzuxKtvqHCSu_pslcpXRRtmGvUx$
+> >  "
+> > +$schema: "
+> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!xKDeg6ddrFWd8p__fZiG7r5F5Py9NVWCmi7zVue5fUzuxKtvqHCSu_pslcpXRfM3OA21$
+> >  "
+> > +
+> > +title: Mediatek System Clock Controller for MT8186
+> > +
+> > +maintainers:
+> > +  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> > +
+> > +description:
+> 
+> And here.
+> 
+> With that,
+> 
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> 
 
+Ok, I will fix it in next version.
 
-..snip..
+Thanks!
 
-> +
-> +		ethdr0: ethdr@1c114000 {
-> +			compatible = "mediatek,mt8195-disp-ethdr";
-> +			reg = <0 0x1c114000 0 0x1000>,
-> +			      <0 0x1c115000 0 0x1000>,
-> +			      <0 0x1c117000 0 0x1000>,
-> +			      <0 0x1c119000 0 0x1000>,
-> +			      <0 0x1c11A000 0 0x1000>,
-> +			      <0 0x1c11B000 0 0x1000>,
-> +			      <0 0x1c11C000 0 0x1000>;
-
-Hello Nancy,
-looks like you partially forgot to use lower-case hex here...
-
-0x1c11a000 0x1c11b000 0x1c11c000
-
-> +			reg-names = "mixer", "vdo_fe0", "vdo_fe1", "gfx_fe0", "gfx_fe1",
-> +				    "vdo_be", "adl_ds";
-> +			mediatek,gce-client-reg = <&gce0 SUBSYS_1c11XXXX 0x4000 0x1000>,
-> +						  <&gce0 SUBSYS_1c11XXXX 0x5000 0x1000>,
-> +						  <&gce0 SUBSYS_1c11XXXX 0x7000 0x1000>,
-> +						  <&gce0 SUBSYS_1c11XXXX 0x9000 0x1000>,
-> +						  <&gce0 SUBSYS_1c11XXXX 0xA000 0x1000>,
-> +						  <&gce0 SUBSYS_1c11XXXX 0xB000 0x1000>,
-> +						  <&gce0 SUBSYS_1c11XXXX 0xC000 0x1000>;
-
-...and here too: 0xa000 0xb000 0xc000
-
-Please fix that, after which, you can add my
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> +			clocks = <&vdosys1 CLK_VDO1_DISP_MIXER>,
-> +				 <&vdosys1 CLK_VDO1_HDR_VDO_FE0>,
-> +				 <&vdosys1 CLK_VDO1_HDR_VDO_FE1>,
-> +				 <&vdosys1 CLK_VDO1_HDR_GFX_FE0>,
-> +				 <&vdosys1 CLK_VDO1_HDR_GFX_FE1>,
-> +				 <&vdosys1 CLK_VDO1_HDR_VDO_BE>,
-> +				 <&vdosys1 CLK_VDO1_26M_SLOW>,
-> +				 <&vdosys1 CLK_VDO1_HDR_VDO_FE0_DL_ASYNC>,
-> +				 <&vdosys1 CLK_VDO1_HDR_VDO_FE1_DL_ASYNC>,
-> +				 <&vdosys1 CLK_VDO1_HDR_GFX_FE0_DL_ASYNC>,
-> +				 <&vdosys1 CLK_VDO1_HDR_GFX_FE1_DL_ASYNC>,
-> +				 <&vdosys1 CLK_VDO1_HDR_VDO_BE_DL_ASYNC>,
-> +				 <&topckgen CLK_TOP_ETHDR>;
-> +			clock-names = "mixer", "vdo_fe0", "vdo_fe1", "gfx_fe0", "gfx_fe1",
-> +				      "vdo_be", "adl_ds", "vdo_fe0_async", "vdo_fe1_async",
-> +				      "gfx_fe0_async", "gfx_fe1_async","vdo_be_async",
-> +				      "ethdr_top";
-> +			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-> +			iommus = <&iommu_vpp M4U_PORT_L3_HDR_DS>,
-> +				 <&iommu_vpp M4U_PORT_L3_HDR_ADL>;
-> +			interrupts = <GIC_SPI 517 IRQ_TYPE_LEVEL_HIGH 0>; /* disp mixer */
-> +			resets = <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE0_DL_ASYNC>,
-> +				 <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE1_DL_ASYNC>,
-> +				 <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE0_DL_ASYNC>,
-> +				 <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE1_DL_ASYNC>,
-> +				 <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_BE_DL_ASYNC>;
-> +		};
-> +
->   	};
->   };
+> > +  The clock architecture in Mediatek like below
+> > +  PLLs -->
+> > +          dividers -->
+> > +                      muxes
+> > +                           -->
+> > +                              clock gate
+> > +
+> > +  The apmixedsys provides most of PLLs which generated from SoC
+> > 26m.
+> > +  The topckgen provides dividers and muxes which provide the clock
+> > source to other IP blocks.
+> > +  The infracfg_ao provides clock gate in peripheral and
+> > infrastructure IP blocks.
+> > +  The mcusys provides mux control to select the clock source in AP
+> > MCU.
+> > +  The device nodes also provide the system control capacity for
+> > configuration.
 
 
 _______________________________________________
