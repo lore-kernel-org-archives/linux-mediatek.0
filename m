@@ -4,74 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE4D0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Mar 2022 23:36:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C189C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Mar 2022 23:45:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+6rJ4UDaMRYi/RvG3HFrjN6bt15LQNH4Ov/IpS0f6H0=; b=FHU2YSri9koKYn
-	MNilOqYExPCk+rqjpiwUUCuebTYffgA5eXPhAspzi0M1WGYxMrC9TU1xOcg4AX4xy8BBDd7IxdtOn
-	9YY9z9+kH1Q8NSNjip83HG+IJWj8qtxpV9uXLjpjnv5jDFTZ59zrwcO27xSLaDYXYvlmyn5BJTDfP
-	/fKwfd9DyvLDDpKpIDG3USKlMi42tc3TSPUOjZuO0phW+V/1ByVMLKFl4hpi6lK2RMz6+L54YkDvp
-	7jwepEhNk+W9yaEUjAwvUae6/y3D+jtrI5GgApyQzQgVShbTwi9c3vc8gEc2RhZy9iuOEQc1rJa6o
-	6vSKktIUYY5rJFfrfsig==;
+	List-Owner; bh=GnRUkjtqK/JfhbQINe1EFJ3ifpTprgtNZVZqAUtFMh4=; b=WwNNVde5vYmqme
+	2acI9C4TMYMWIXNOVUC11h38qICryOXKkwXUm0aON8SeVSecyWK/6I1v/du46eAzQE1GQtVWejIlB
+	nReWdm1d5266Q8gf6ecSlQBpMcN9NYHyCXEQF6iHyFFzyypDwWQsuS+/Ur/pFR0fkQaZpnH/Ms0EK
+	9DJB2HvR4El4enVm1JMdHn21xKXMjnLsjcKIIi4ujSG2pL5mETkIJxj757jzncIHK+7JoKz8Z7p8M
+	C3bNbjvR6w13YRMvuHkZzolsA50XFDmpuckkAxzS4Hsb0SAmd4rpfJxG1O823UHlPsRyAVbkIh7fk
+	p2VAjf6ubnqSg2qfCQOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSSKX-00EK75-DT; Thu, 10 Mar 2022 23:36:25 +0000
-Received: from mail-oo1-f47.google.com ([209.85.161.47])
+	id 1nSSTL-00ELNw-Ma; Thu, 10 Mar 2022 23:45:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSSKI-00EK1z-1Z; Thu, 10 Mar 2022 23:36:12 +0000
-Received: by mail-oo1-f47.google.com with SMTP id
- x26-20020a4a621a000000b00320d7d4af22so8707897ooc.4; 
- Thu, 10 Mar 2022 15:36:09 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=PN2mbzwXUHAto8HEAzTj4rJG8ZQQNjc7Bn/bempRCVw=;
- b=7ka6dru1DwIczm5lPdiktlW9Stsa56GO/XU3YjR2NMnPpVTXxtJrweve6Rm9i9kq5X
- 7jwL+OeLhb1TVk8Dxh07sVDPplvJo79kRQDTysE1po1kMpEtyQPuW2eT1l5yUDpfcvGC
- GnNMlf85z4cRQ1/Bd+dtVawlgCtgf8idwbD36rnQ3YlJD/G8RVQHc0MpSEk8izL0RCPx
- ByFy05j9pMNLogvrXc2LUi592MJaMJizE19RTJhbDF3aMN/jADRkVXTQCfmLNrNFsvgF
- +YCN3PZGHlYDi340DcFVDPVZrKIIatai8YPq5bQ3sp8oLVSRc8AnScA5bYk4OB2n65GH
- amKQ==
-X-Gm-Message-State: AOAM530DjYhBGCt3dDElQMDRMxm6Gx+WUbsVB3uonpbQ2N39fO1IAifl
- vDeb56zjQCmxI3nGD18Ijg==
-X-Google-Smtp-Source: ABdhPJy3WyBuiJCTvq7ROLUbeX9qqGYkbaV0JeTVbnxhQPBonkoYgM8I+g7Jc0luE+fcUw2ZTX8vyQ==
-X-Received: by 2002:a05:6871:7a8:b0:c5:a1b3:43eb with SMTP id
- o40-20020a05687107a800b000c5a1b343ebmr4189847oap.103.1646955368603; 
- Thu, 10 Mar 2022 15:36:08 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- 36-20020a9d0ba7000000b005ad59f1f783sm3112902oth.3.2022.03.10.15.36.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Mar 2022 15:36:08 -0800 (PST)
-Received: (nullmailer pid 2331942 invoked by uid 1000);
- Thu, 10 Mar 2022 23:36:06 -0000
-Date: Thu, 10 Mar 2022 17:36:06 -0600
-From: Rob Herring <robh@kernel.org>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Cc: aaronyu@google.com, tzungbi@google.com,
- linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
- trevor.wu@mediatek.com, devicetree@vger.kernel.org,
- alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linmq006@gmail.com, broonie@kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, robh+dt@kernel.org
-Subject: Re: [v2 1/2] ASoC: dt-bindings: mt8192-mt6359: add new compatible
- for using rt1015p and rt5682
-Message-ID: <YiqLZiRO4K4fbSNt@robh.at.kernel.org>
-References: <20220310153707.29722-1-jiaxin.yu@mediatek.com>
- <20220310153707.29722-2-jiaxin.yu@mediatek.com>
+ id 1nSST8-00ELMT-81; Thu, 10 Mar 2022 23:45:21 +0000
+X-UUID: a12bb70cbe8c409d99ac17f3eff57867-20220310
+X-UUID: a12bb70cbe8c409d99ac17f3eff57867-20220310
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 641705972; Thu, 10 Mar 2022 16:45:12 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 10 Mar 2022 15:45:10 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 11 Mar 2022 07:45:09 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 11 Mar 2022 07:45:09 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <chun-jie.chen@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <drinkcat@chromium.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <matthias.bgg@gmail.com>, <robh+dt@kernel.org>, <sboyd@kernel.org>,
+ <srv_heupstream@mediatek.com>
+Subject: Re: [PATCH v2 01/15] dt-bindings: ARM: Mediatek: Add new document
+ bindings of MT8186 clock
+Date: Fri, 11 Mar 2022 07:45:09 +0800
+Message-ID: <20220310234509.32636-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220221015258.913-2-chun-jie.chen@mediatek.com>
+References: <20220221015258.913-2-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220310153707.29722-2-jiaxin.yu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220310_153610_125107_AE5D22CB 
-X-CRM114-Status: UNSURE (   9.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220310_154518_319691_20549D6C 
+X-CRM114-Status: GOOD (  15.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,17 +76,122 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 10 Mar 2022 23:37:06 +0800, Jiaxin Yu wrote:
-> Adds new compatible string "mt8192_mt6359_rt1015p_rt5682s" for machines
-> with rt1015p and rt5682s.
-> 
-> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-> ---
->  .../devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml   | 1 +
->  1 file changed, 1 insertion(+)
-> 
+Hi Chun-Jie,
 
-Acked-by: Rob Herring <robh@kernel.org>
+> [PATCH v2 01/15] dt-bindings: ARM: Mediatek: Add new document bindings of MT8186 clock
+
+s/Mediatek/MediaTek/
+
+> This patch adds the new binding documentation for system clock
+> and functional clock on Mediatek MT8186.
+
+s/Mediatek/MediaTek/
+> 
+> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> ---
+>  .../arm/mediatek/mediatek,mt8186-clock.yaml   |  56 +++
+>  .../mediatek/mediatek,mt8186-sys-clock.yaml   |  54 +++
+>  include/dt-bindings/clock/mt8186-clk.h        | 445 ++++++++++++++++++
+>  3 files changed, 555 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-clock.yaml
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-sys-clock.yaml
+>  create mode 100644 include/dt-bindings/clock/mt8186-clk.h
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-clock.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-clock.yaml
+> new file mode 100644
+> index 000000000000..373e8a100da3
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-clock.yaml
+> @@ -0,0 +1,56 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: "http://devicetree.org/schemas/arm/mediatek/mediatek,mt8186-clock.yaml#"
+> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
+> +
+> +title: Mediatek Functional Clock Controller for MT8186
+
+s/Mediatek/MediaTek/
+
+> +
+> +maintainers:
+> +  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> +
+> +description:
+> +  The clock architecture in Mediatek like below
+
+s/Mediatek/MediaTek/
+
+> +  PLLs -->
+> +          dividers -->
+> +                      muxes
+> +                           -->
+> +                              clock gate
+> +
+> +  The devices provide clock gate control in different IP blocks.
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - enum:
+> +          - mediatek,mt8186-imp_iic_wrap
+> +          - mediatek,mt8186-mfgsys
+> +          - mediatek,mt8186-wpesys
+> +          - mediatek,mt8186-imgsys1
+> +          - mediatek,mt8186-imgsys2
+> +          - mediatek,mt8186-vdecsys
+> +          - mediatek,mt8186-vencsys
+> +          - mediatek,mt8186-camsys
+> +          - mediatek,mt8186-camsys_rawa
+> +          - mediatek,mt8186-camsys_rawb
+> +          - mediatek,mt8186-mdpsys
+> +          - mediatek,mt8186-ipesys
+> +  reg:
+> +    maxItems: 1
+> +
+> +  '#clock-cells':
+> +    const: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    imp_iic_wrap: clock-controller@11017000 {
+> +        compatible = "mediatek,mt8186-imp_iic_wrap";
+> +        reg = <0x11017000 0x1000>;
+> +        #clock-cells = <1>;
+> +    };
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-sys-clock.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-sys-clock.yaml
+> new file mode 100644
+> index 000000000000..4c071dd66b76
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-sys-clock.yaml
+> @@ -0,0 +1,54 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: "http://devicetree.org/schemas/arm/mediatek/mediatek,mt8186-sys-clock.yaml#"
+> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
+> +
+> +title: Mediatek System Clock Controller for MT8186
+>
+s/Mediatek/MediaTek/
+
+> +
+> +maintainers:
+> +  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> +
+> +description:
+> +  The clock architecture in Mediatek like below
+
+s/Mediatek/MediaTek/
+
+Thanks,
+Miles
 
 _______________________________________________
 Linux-mediatek mailing list
