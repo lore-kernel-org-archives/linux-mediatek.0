@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56951C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 13:07:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 409C4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 13:08:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FSX0oCdkHqQrX7o1KZrtv9pbYSw4491YN4+CClylIqk=; b=cC5zRbFj17MnQ4
-	fRPfNozZYaJinVXEdfODiMBs8vWdQ5jWU0iibytEyysC7A6oY3nLtNrok8APlyby+a3dSZRhcYNq3
-	b0A2sBbVOhHr/xMP2NdGfsLquqwS89ZxKHoMptYGF/t/n2Y/z4GyCE7zgD638DgKmj1EtDgRAUZBY
-	myfnC4lB4MhN/TgpRBrcoX3TcD+F4IDi7l4Tng8UUIAQKYC0hR4sTlZvYDFPvY3csGwaiZkZqqxcK
-	jhxFMIhwdqYd7G+LA9Dszq1sBZDCMkox8Nz2YjOXNmDNqITiJcVNzIGHwIQABtKNFmgYNsQ7exwqB
-	F7Kd72M+D7MXInSmdDPw==;
+	List-Owner; bh=CvwnfQoMbYAGQjXpem4frK+U7JhEvq9rz3ce0vS6UeQ=; b=WcPBP+wjrF3T12
+	aVlo0TwQNgcTU08eNR1V1ZUgku+MoV/HNCILZiNGqKd1IYiLJbOCGh2Sc0kgIjKfXfh7KaISmq1GJ
+	sqadXKnQKFXbJyxo/lBd6rB6W2f6O29I8tmcFDo2oO08n3XkCp/h1GlCVCSoES+9cqNn7uRTywmZ8
+	10kVls1pOd1K5oqIH/JU8epBV9urDwns3whHxX5I0TLwDgH3+Dbw0B+Y6Ba/us84RZG34h7TWKU/P
+	QjzL0rdf9586RL+JtoI8PR44lYl+RctycLDT8OdsrIQMtvmX+FW1mTONeMfQ48QXbB6FE6WLPVEf3
+	vPs3TGfE3RyuwxCsPaPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSezl-00GRMC-4w; Fri, 11 Mar 2022 13:07:49 +0000
+	id 1nSf08-00GRXg-Dy; Fri, 11 Mar 2022 13:08:12 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSezh-00GRKi-Iy; Fri, 11 Mar 2022 13:07:48 +0000
-X-UUID: daec68dd175747038784914cd6179825-20220311
-X-UUID: daec68dd175747038784914cd6179825-20220311
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ id 1nSezk-00GRKd-AL; Fri, 11 Mar 2022 13:07:50 +0000
+X-UUID: 36777158a73f4fe69e5695884bcbebb7-20220311
+X-UUID: 36777158a73f4fe69e5695884bcbebb7-20220311
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 84097411; Fri, 11 Mar 2022 06:07:37 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Mar 2022 05:07:36 -0800
+ with ESMTP id 632279681; Fri, 11 Mar 2022 06:07:39 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 11 Mar 2022 05:07:38 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Mar 2022 21:07:34 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 11 Mar 2022 21:07:36 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 11 Mar 2022 21:07:34 +0800
+ Frontend Transport; Fri, 11 Mar 2022 21:07:36 +0800
 From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>, "Daniel
@@ -49,19 +49,18 @@ CC: <hsinyi@chromium.org>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
  <linux-watchdog@vger.kernel.org>, Allen-KH Cheng
  <Allen-KH.Cheng@mediatek.com>
-Subject: [PATCH v4 2/4] dt-bindings: watchdog: Add compatible for Mediatek
- MT8186
-Date: Fri, 11 Mar 2022 21:07:30 +0800
-Message-ID: <20220311130732.22706-3-allen-kh.cheng@mediatek.com>
+Subject: [PATCH v4 4/4] arm64: dts: Add Mediatek SoC MT8186 dts and evaluation
+ board and Makefile
+Date: Fri, 11 Mar 2022 21:07:32 +0800
+Message-ID: <20220311130732.22706-5-allen-kh.cheng@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220311130732.22706-1-allen-kh.cheng@mediatek.com>
 References: <20220311130732.22706-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_050745_672902_D7625223 
-X-CRM114-Status: UNSURE (   9.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220311_050748_413125_21E72D94 
+X-CRM114-Status: GOOD (  14.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,26 +79,420 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 
-This commit adds dt-binding documentation of watchdog for Mediatek
-MT8186 SoC Platform.
+Add basic chip support for Mediatek MT8186.
 
 Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 ---
- Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/mediatek/Makefile       |   1 +
+ arch/arm64/boot/dts/mediatek/mt8186-evb.dts |  24 ++
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi    | 356 ++++++++++++++++++++
+ 3 files changed, 381 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186.dtsi
 
-diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-index a97418c74f6b..762c62e428ef 100644
---- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-+++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-@@ -16,6 +16,7 @@ Required properties:
- 	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
- 	"mediatek,mt7986-wdt", "mediatek,mt6589-wdt": for MT7986
- 	"mediatek,mt8183-wdt": for MT8183
-+	"mediatek,mt8186-wdt", "mediatek,mt6589-wdt": for MT8186
- 	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
- 	"mediatek,mt8192-wdt": for MT8192
- 	"mediatek,mt8195-wdt", "mediatek,mt6589-wdt": for MT8195
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index 8c1e18032f9f..d32fdcf9afc6 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -37,5 +37,6 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku32.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-evb.dts b/arch/arm64/boot/dts/mediatek/mt8186-evb.dts
+new file mode 100644
+index 000000000000..eb23d1f19f87
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8186-evb.dts
+@@ -0,0 +1,24 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright (C) 2022 MediaTek Inc.
++ */
++/dts-v1/;
++#include "mt8186.dtsi"
++
++/ {
++	model = "MediaTek MT8186 evaluation board";
++	compatible = "mediatek,mt8186-evb", "mediatek,mt8186";
++
++	aliases {
++		serial0 = &uart0;
++	};
++
++	chosen {
++		stdout-path = "serial0:921600n8";
++	};
++
++	memory {
++		device_type = "memory";
++		reg = <0 0x40000000 0 0x80000000>;
++	};
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+new file mode 100644
+index 000000000000..aa45c75b18c7
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+@@ -0,0 +1,356 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright (C) 2022 MediaTek Inc.
++ * Author: Allen-KH Cheng <allenn-kh.cheng@mediatek.com>
++ */
++/dts-v1/;
++
++#include <dt-bindings/interrupt-controller/arm-gic.h>
++#include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/phy/phy.h>
++
++/ {
++	compatible = "mediatek,mt8186";
++	interrupt-parent = <&gic>;
++	#address-cells = <2>;
++	#size-cells = <2>;
++
++	clk13m: oscillator0 {
++		compatible = "fixed-clock";
++		#clock-cells = <0>;
++		clock-frequency = <13000000>;
++		clock-output-names = "clk13m";
++	};
++
++	clk26m: oscillator1 {
++		compatible = "fixed-clock";
++		#clock-cells = <0>;
++		clock-frequency = <26000000>;
++		clock-output-names = "clk26m";
++	};
++
++	clk32k: oscillator2 {
++		compatible = "fixed-clock";
++		#clock-cells = <0>;
++		clock-frequency = <32000>;
++		clock-output-names = "clk32k";
++	};
++
++	cpus {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		cpu0: cpu@000 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a55", "arm,armv8";
++			reg = <0x0000>;
++			enable-method = "psci";
++			clock-frequency = <2000000000>;
++			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
++			next-level-cache = <&l2_0>;
++		};
++
++		cpu1: cpu@100 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a55", "arm,armv8";
++			reg = <0x0100>;
++			enable-method = "psci";
++			clock-frequency = <2000000000>;
++			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
++			next-level-cache = <&l2_0>;
++		};
++
++		cpu2: cpu@200 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a55", "arm,armv8";
++			reg = <0x0200>;
++			enable-method = "psci";
++			clock-frequency = <2000000000>;
++			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
++			next-level-cache = <&l2_0>;
++		};
++
++		cpu3: cpu@300 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a55", "arm,armv8";
++			reg = <0x0300>;
++			enable-method = "psci";
++			clock-frequency = <2000000000>;
++			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
++			next-level-cache = <&l2_0>;
++		};
++
++		cpu4: cpu@400 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a55", "arm,armv8";
++			reg = <0x0400>;
++			enable-method = "psci";
++			clock-frequency = <2000000000>;
++			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
++			next-level-cache = <&l2_0>;
++		};
++
++		cpu5: cpu@500 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a55", "arm,armv8";
++			reg = <0x0500>;
++			enable-method = "psci";
++			clock-frequency = <2000000000>;
++			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
++			next-level-cache = <&l2_0>;
++		};
++
++		cpu6: cpu@600 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a75", "arm,armv8";
++			reg = <0x0600>;
++			enable-method = "psci";
++			clock-frequency = <2050000000>;
++			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
++			next-level-cache = <&l2_1>;
++		};
++
++		cpu7: cpu@700 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a75", "arm,armv8";
++			reg = <0x0700>;
++			enable-method = "psci";
++			clock-frequency = <2050000000>;
++			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
++			next-level-cache = <&l2_1>;
++		};
++
++		cpu-map {
++			cluster0 {
++				core0 {
++					cpu = <&cpu0>;
++				};
++
++				core1 {
++					cpu = <&cpu1>;
++				};
++
++				core2 {
++					cpu = <&cpu2>;
++				};
++
++				core3 {
++					cpu = <&cpu3>;
++				};
++
++				core4 {
++					cpu = <&cpu4>;
++				};
++
++				core5 {
++					cpu = <&cpu5>;
++				};
++			};
++
++			cluster1 {
++				core0 {
++					cpu = <&cpu6>;
++				};
++
++				core1 {
++					cpu = <&cpu7>;
++				};
++			};
++		};
++
++		idle-states {
++			entry-method = "arm,psci";
++
++			cpuoff_l: cpu-off-l {
++				compatible = "arm,idle-state";
++				arm,psci-suspend-param = <0x00010001>;
++				local-timer-stop;
++				entry-latency-us = <50>;
++				exit-latency-us = <100>;
++				min-residency-us = <1600>;
++			};
++
++			cpuoff_b: cpu-off-b {
++				compatible = "arm,idle-state";
++				arm,psci-suspend-param = <0x00010001>;
++				local-timer-stop;
++				entry-latency-us = <50>;
++				exit-latency-us = <100>;
++				min-residency-us = <1400>;
++			};
++
++			clusteroff_l: cluster-off-l {
++				compatible = "arm,idle-state";
++				arm,psci-suspend-param = <0x01010001>;
++				local-timer-stop;
++				entry-latency-us = <100>;
++				exit-latency-us = <250>;
++				min-residency-us = <2100>;
++			};
++
++			clusteroff_b: cluster-off-b {
++				compatible = "arm,idle-state";
++				arm,psci-suspend-param = <0x01010001>;
++				local-timer-stop;
++				entry-latency-us = <100>;
++				exit-latency-us = <250>;
++				min-residency-us = <1900>;
++			};
++		};
++
++		l2_0: l2-cache0 {
++			compatible = "cache";
++			next-level-cache = <&l3_0>;
++		};
++
++		l2_1: l2-cache1 {
++			compatible = "cache";
++			next-level-cache = <&l3_0>;
++		};
++
++		l3_0: l3-cache {
++			compatible = "cache";
++		};
++	};
++
++	psci {
++		compatible = "arm,psci-1.0";
++		method = "smc";
++	};
++
++	timer: timer {
++		compatible = "arm,armv8-timer";
++		interrupt-parent = <&gic>;
++		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
++		clock-frequency = <13000000>;
++	};
++
++	soc {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		compatible = "simple-bus";
++		ranges;
++
++		gic: interrupt-controller@c000000 {
++			compatible = "arm,gic-v3";
++			#interrupt-cells = <3>;
++			#address-cells = <2>;
++			#size-cells = <2>;
++			#redistributor-regions = <1>;
++			interrupt-parent = <&gic>;
++			interrupt-controller;
++			reg = <0 0x0c000000 0 0x40000>, // distributor
++			      <0 0x0c040000 0 0x200000>; // redistributor
++			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
++		};
++
++		watchdog: watchdog@10007000 {
++			compatible = "mediatek,mt8186-wdt",
++				     "mediatek,mt6589-wdt";
++			mediatek,disable-extrst;
++			reg = <0 0x10007000 0 0x1000>;
++			#reset-cells = <1>;
++		};
++
++		systimer: timer@10017000 {
++			compatible = "mediatek,mt8186-timer",
++				     "mediatek,mt6765-timer";
++			reg = <0 0x10017000 0 0x1000>;
++			interrupts = <GIC_SPI 207 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&clk13m>;
++		};
++
++		uart0: serial@11002000 {
++			compatible = "mediatek,mt8186-uart",
++				     "mediatek,mt6577-uart";
++			reg = <0 0x11002000 0 0x1000>;
++			interrupts = <GIC_SPI 112 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&clk26m>, <&clk26m>;
++			clock-names = "baud", "bus";
++		};
++
++		uart1: serial@11003000 {
++			compatible = "mediatek,mt8186-uart",
++				     "mediatek,mt6577-uart";
++			reg = <0 0x11003000 0 0x1000>;
++			interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&clk26m>, <&clk26m>;
++			clock-names = "baud", "bus";
++			status = "disabled";
++		};
++
++		uart2: serial@11018000 {
++			compatible = "mediatek,mt8186-uart",
++				     "mediatek,mt6577-uart";
++			reg = <0 0x11018000 0 0x1000>;
++			interrupts = <GIC_SPI 246 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&clk26m>, <&clk26m>;
++			clock-names = "baud", "bus";
++			status = "disabled";
++		};
++
++		mmc0: mmc@11230000 {
++			compatible = "mediatek,mt8186-mmc",
++				     "mediatek,mt8183-mmc";
++			reg = <0 0x11230000 0 0x1000>,
++			      <0 0x11cd0000 0 0x1000>;
++			interrupts = <GIC_SPI 100 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&clk26m>, <&clk26m>, <&clk26m>,
++				 <&clk26m>;
++			clock-names = "source", "hclk", "source_cg", "ahb_clk";
++			status = "disabled";
++		};
++
++		mmc1: mmc@11240000 {
++			compatible = "mediatek,mt8186-mmc",
++				     "mediatek,mt8183-mmc";
++			reg = <0 0x11240000 0 0x1000>,
++			      <0 0x11c90000 0 0x1000>;
++			interrupts = <GIC_SPI 101 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&clk26m>, <&clk26m>, <&clk26m>;
++			clock-names = "source", "hclk", "source_cg";
++			status = "disabled";
++		};
++
++		u3phy0: t-phy@11c80000 {
++			compatible = "mediatek,mt8186-tphy",
++				     "mediatek,generic-tphy-v2";
++			#address-cells = <1>;
++			#size-cells = <1>;
++			ranges = <0x0 0x0 0x11c80000 0x1000>;
++
++			u2port1: usb2-phy1@0 {
++				reg = <0x0 0x700>;
++				clocks = <&clk26m>;
++				clock-names = "ref";
++				#phy-cells = <1>;
++			};
++
++			u3port1: usb3-phy1@700 {
++				reg = <0x700 0x900>;
++				clocks = <&clk26m>;
++				clock-names = "ref";
++				#phy-cells = <1>;
++			};
++		};
++
++		u3phy1: t-phy@11ca0000 {
++			compatible = "mediatek,mt8186-tphy",
++				     "mediatek,generic-tphy-v2";
++			#address-cells = <1>;
++			#size-cells = <1>;
++			ranges = <0x0 0x0 0x11ca0000 0x1000>;
++
++			u2port0: usb-phy@0 {
++				reg = <0x0 0x700>;
++				clocks = <&clk26m>;
++				clock-names = "ref";
++				#phy-cells = <1>;
++				mediatek,discth = <0x8>;
++			};
++		};
++	};
++};
 -- 
 2.18.0
 
