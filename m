@@ -4,55 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3DB5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 11:37:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CED5C43217
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 11:43:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qStU48k5o6DqgXtT+0+SdF+d39BVLJvbD03YSdSRcm0=; b=XNHlh08u28CBcB
-	zfTFn55NDElLoEqjmDZ4KmqfvUWPTocMSEiHPwVB73zBGZxmTlif8xvCozl11iV4rJt3bYlaSLo6A
-	Ue/zoEVShUTuSuPm+esvBXfsYYqS3LnwPOtm6rH6j7FmLMrdnKDG2EEmhT3Znj06iTXql9Q5+aGwN
-	G13QHZ5dtFu7+GZkq77xGiBwTaaMa/TQUSXPRh5AxApj5ppEDU9GByCQysUQs51eRL4NpIdor0w0+
-	6+lQZaG/GrWUAFi0MrpmAghFVNFJzZuJJoBTYlbbwNNVKUxnOCfiDT5OMI90fmCA5BJQKuA33zMb8
-	6h9ZBlpyFlamIMUQ+8Pw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YYMF4+gkKQQ7QnoFCbXLM8eRLV9DzD/iNw3FcFLcbl8=; b=pOWnc1lRpGj0y0
+	8VNy6RO+fAvpM6ZFldeinOoKuN3UPEBfPcI4eoe0SEWZtWY6Y8HKKdDG0UsuEJnI/mK3R2Jfy2Hu2
+	U7L80o7YMG0kT7Bt8sA0o8jUovF4W1miD8ahaECDbC9C2QNswWehXRitMcwdS767RFSHfO1BJazoA
+	uw5WnDRULjb5nOfJFWX6nfvF3LP6b8k9hUmH5kyHEG9NffDtD0bbQq893k/KCTGXobDmMhEgCArL3
+	rQeX7ZuolKfo62DIlo1tQieTvIoZO63P6T10WRfw42u9rQOoNxSg/XsXccUUWTs+mgn2MNZAUX1u7
+	qrPE2eTBsADSsakwn+PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSdaD-00GCDN-1A; Fri, 11 Mar 2022 11:37:21 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nSdgC-00GCvb-Tr; Fri, 11 Mar 2022 11:43:32 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSdaA-00GCCM-1T; Fri, 11 Mar 2022 11:37:19 +0000
-X-UUID: bba3f6937bf043d098b25e72d4643fd4-20220311
-X-UUID: bba3f6937bf043d098b25e72d4643fd4-20220311
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <mark-pk.tsai@mediatek.com>)
+ id 1nSdfz-00GCrK-N9; Fri, 11 Mar 2022 11:43:21 +0000
+X-UUID: 1e169c120b72491ca87975c36541579c-20220311
+X-UUID: 1e169c120b72491ca87975c36541579c-20220311
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chun-jie.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1161350473; Fri, 11 Mar 2022 04:37:08 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Mar 2022 03:27:07 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 11 Mar 2022 19:26:59 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ with ESMTP id 243585244; Fri, 11 Mar 2022 04:43:14 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 11 Mar 2022 03:43:03 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 11 Mar 2022 19:43:01 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 11 Mar 2022 19:26:59 +0800
-From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-To: <rostedt@goodmis.org>, <mingo@redhat.com>
-CC: <matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <mark-pk.tsai@mediatek.com>, <yj.chiang@mediatek.com>
-Subject: [PATCH] tracing: make tracer_init_tracefs initcall asynchronous
-Date: Fri, 11 Mar 2022 19:26:56 +0800
-Message-ID: <20220311112656.25348-1-mark-pk.tsai@mediatek.com>
+ Frontend Transport; Fri, 11 Mar 2022 19:43:01 +0800
+From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
+ <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
+ <robh+dt@kernel.org>
+CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chun-Jie Chen
+ <chun-jie.chen@mediatek.com>
+Subject: [PATCH v3 02/15] clk: mediatek: Add MT8186 mcusys clock support
+Date: Fri, 11 Mar 2022 19:42:16 +0800
+Message-ID: <20220311114229.32504-3-chun-jie.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220311114229.32504-1-chun-jie.chen@mediatek.com>
+References: <20220311114229.32504-1-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_033718_103981_F4828CE5 
-X-CRM114-Status: GOOD (  19.39  )
+X-CRM114-CacheID: sfid-20220311_034319_774439_0E9C1FCD 
+X-CRM114-Status: GOOD (  19.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,157 +76,161 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-tracer_init_tracefs() is slow especially when there are
-lots of trace events.
-Create a kthread to do tracer_init_tracefs() asynchronously
-to speed up the initialization of kernel and move the
-related functions and variables out of init section.
+Add MT8186 mcusys clock controller which provides muxes
+to select the clock source of APMCU.
 
-Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- fs/tracefs/inode.c          |  8 ++++----
- kernel/trace/ftrace.c       | 12 ++++++------
- kernel/trace/trace.c        | 21 ++++++++++++++++-----
- kernel/trace/trace_events.c |  2 +-
- 4 files changed, 27 insertions(+), 16 deletions(-)
+ drivers/clk/mediatek/Kconfig          |   8 ++
+ drivers/clk/mediatek/Makefile         |   1 +
+ drivers/clk/mediatek/clk-mt8186-mcu.c | 106 ++++++++++++++++++++++++++
+ 3 files changed, 115 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-mcu.c
 
-diff --git a/fs/tracefs/inode.c b/fs/tracefs/inode.c
-index de7252715b12..9a713d6bcb7e 100644
---- a/fs/tracefs/inode.c
-+++ b/fs/tracefs/inode.c
-@@ -561,10 +561,10 @@ struct dentry *tracefs_create_dir(const char *name, struct dentry *parent)
-  *
-  * Returns the dentry of the instances directory.
-  */
--__init struct dentry *tracefs_create_instance_dir(const char *name,
--					  struct dentry *parent,
--					  int (*mkdir)(const char *name),
--					  int (*rmdir)(const char *name))
-+struct dentry *tracefs_create_instance_dir(const char *name,
-+					   struct dentry *parent,
-+					   int (*mkdir)(const char *name),
-+					   int (*rmdir)(const char *name))
- {
- 	struct dentry *dentry;
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index 01ef02c54725..d5936cfb3bee 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -512,6 +512,14 @@ config COMMON_CLK_MT8183_VENCSYS
+ 	help
+ 	  This driver supports MediaTek MT8183 vencsys clocks.
  
-diff --git a/kernel/trace/ftrace.c b/kernel/trace/ftrace.c
-index a4b462b6f944..197630cbd5dd 100644
---- a/kernel/trace/ftrace.c
-+++ b/kernel/trace/ftrace.c
-@@ -940,7 +940,7 @@ static const struct file_operations ftrace_profile_fops = {
- };
- 
- /* used to initialize the real stat files */
--static struct tracer_stat function_stats __initdata = {
-+static struct tracer_stat function_stats = {
- 	.name		= "functions",
- 	.stat_start	= function_stat_start,
- 	.stat_next	= function_stat_next,
-@@ -949,7 +949,7 @@ static struct tracer_stat function_stats __initdata = {
- 	.stat_show	= function_stat_show
- };
- 
--static __init void ftrace_profile_tracefs(struct dentry *d_tracer)
-+static void ftrace_profile_tracefs(struct dentry *d_tracer)
- {
- 	struct ftrace_profile_stat *stat;
- 	struct dentry *entry;
-@@ -991,7 +991,7 @@ static __init void ftrace_profile_tracefs(struct dentry *d_tracer)
- }
- 
- #else /* CONFIG_FUNCTION_PROFILER */
--static __init void ftrace_profile_tracefs(struct dentry *d_tracer)
-+static void ftrace_profile_tracefs(struct dentry *d_tracer)
- {
- }
- #endif /* CONFIG_FUNCTION_PROFILER */
-@@ -6359,7 +6359,7 @@ void ftrace_destroy_filter_files(struct ftrace_ops *ops)
- 	mutex_unlock(&ftrace_lock);
- }
- 
--static __init int ftrace_init_dyn_tracefs(struct dentry *d_tracer)
-+static int ftrace_init_dyn_tracefs(struct dentry *d_tracer)
- {
- 
- 	trace_create_file("available_filter_functions", TRACE_MODE_READ,
-@@ -7754,8 +7754,8 @@ void ftrace_init_tracefs(struct trace_array *tr, struct dentry *d_tracer)
- 			  d_tracer, tr, &ftrace_no_pid_fops);
- }
- 
--void __init ftrace_init_tracefs_toplevel(struct trace_array *tr,
--					 struct dentry *d_tracer)
-+void ftrace_init_tracefs_toplevel(struct trace_array *tr,
-+				  struct dentry *d_tracer)
- {
- 	/* Only the top level directory has the dyn_tracefs and profile */
- 	WARN_ON(!(tr->flags & TRACE_ARRAY_FL_GLOBAL));
-diff --git a/kernel/trace/trace.c b/kernel/trace/trace.c
-index eb44418574f9..f55da82060e2 100644
---- a/kernel/trace/trace.c
-+++ b/kernel/trace/trace.c
-@@ -9562,10 +9562,10 @@ int tracing_init_dentry(void)
- extern struct trace_eval_map *__start_ftrace_eval_maps[];
- extern struct trace_eval_map *__stop_ftrace_eval_maps[];
- 
--static struct workqueue_struct *eval_map_wq __initdata;
--static struct work_struct eval_map_work __initdata;
-+static struct workqueue_struct *eval_map_wq;
-+static struct work_struct eval_map_work;
- 
--static void __init eval_map_work_func(struct work_struct *work)
-+static void eval_map_work_func(struct work_struct *work)
- {
- 	int len;
- 
-@@ -9573,7 +9573,7 @@ static void __init eval_map_work_func(struct work_struct *work)
- 	trace_insert_eval_map(NULL, __start_ftrace_eval_maps, len);
- }
- 
--static int __init trace_eval_init(void)
-+static int trace_eval_init(void)
- {
- 	INIT_WORK(&eval_map_work, eval_map_work_func);
- 
-@@ -9671,7 +9671,7 @@ static struct notifier_block trace_module_nb = {
- };
- #endif /* CONFIG_MODULES */
- 
--static __init int tracer_init_tracefs(void)
-+static int tracefs_init(void *data)
- {
- 	int ret;
- 
-@@ -9721,6 +9721,17 @@ static __init int tracer_init_tracefs(void)
- 	return 0;
- }
- 
-+static __init int tracer_init_tracefs(void)
-+{
-+	struct task_struct *thread;
++config COMMON_CLK_MT8186
++	bool "Clock driver for MediaTek MT8186"
++	depends on ARM64 || COMPILE_TEST
++	select COMMON_CLK_MEDIATEK
++	default ARCH_MEDIATEK
++	help
++	  This driver supports MediaTek MT8186 clocks.
 +
-+	thread = kthread_run(tracefs_init, NULL, "tracefs_init");
-+	if (IS_ERR(thread))
-+		return PTR_ERR(thread);
+ config COMMON_CLK_MT8192
+ 	bool "Clock driver for MediaTek MT8192"
+ 	depends on ARM64 || COMPILE_TEST
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index 7b0c2646ce4a..677fa4f0eea2 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -71,6 +71,7 @@ obj-$(CONFIG_COMMON_CLK_MT8183_MFGCFG) += clk-mt8183-mfgcfg.o
+ obj-$(CONFIG_COMMON_CLK_MT8183_MMSYS) += clk-mt8183-mm.o
+ obj-$(CONFIG_COMMON_CLK_MT8183_VDECSYS) += clk-mt8183-vdec.o
+ obj-$(CONFIG_COMMON_CLK_MT8183_VENCSYS) += clk-mt8183-venc.o
++obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o
+ obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
+diff --git a/drivers/clk/mediatek/clk-mt8186-mcu.c b/drivers/clk/mediatek/clk-mt8186-mcu.c
+new file mode 100644
+index 000000000000..6d82c5de16c1
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt8186-mcu.c
+@@ -0,0 +1,106 @@
++// SPDX-License-Identifier: GPL-2.0-only
++//
++// Copyright (c) 2022 MediaTek Inc.
++// Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
++
++#include "clk-mtk.h"
++
++#include <dt-bindings/clock/mt8186-clk.h>
++#include <linux/clk-provider.h>
++#include <linux/platform_device.h>
++
++static DEFINE_SPINLOCK(mt8186_clk_lock);
++
++static const char * const mcu_armpll_ll_parents[] = {
++	"clk26m",
++	"armpll_ll",
++	"mainpll",
++	"univpll_d2"
++};
++
++static const char * const mcu_armpll_bl_parents[] = {
++	"clk26m",
++	"armpll_bl",
++	"mainpll",
++	"univpll_d2"
++};
++
++static const char * const mcu_armpll_bus_parents[] = {
++	"clk26m",
++	"ccipll",
++	"mainpll",
++	"univpll_d2"
++};
++
++static struct mtk_composite mcu_muxes[] = {
++	/* CPU_PLLDIV_CFG0 */
++	MUX(CLK_MCU_ARMPLL_LL_SEL, "mcu_armpll_ll_sel", mcu_armpll_ll_parents, 0x2A0, 9, 2),
++	/* CPU_PLLDIV_CFG1 */
++	MUX(CLK_MCU_ARMPLL_BL_SEL, "mcu_armpll_bl_sel", mcu_armpll_bl_parents, 0x2A4, 9, 2),
++	/* BUS_PLLDIV_CFG */
++	MUX(CLK_MCU_ARMPLL_BUS_SEL, "mcu_armpll_bus_sel", mcu_armpll_bus_parents, 0x2E0, 9, 2),
++};
++
++static const struct of_device_id of_match_clk_mt8186_mcu[] = {
++	{ .compatible = "mediatek,mt8186-mcusys", },
++	{}
++};
++
++static int clk_mt8186_mcu_probe(struct platform_device *pdev)
++{
++	struct clk_onecell_data *clk_data;
++	struct device_node *node = pdev->dev.of_node;
++	int r;
++	void __iomem *base;
++
++	clk_data = mtk_alloc_clk_data(CLK_MCU_NR_CLK);
++	if (!clk_data)
++		return -ENOMEM;
++
++	base = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(base)) {
++		r = PTR_ERR(base);
++		goto free_mcu_data;
++	}
++
++	r = mtk_clk_register_composites(mcu_muxes, ARRAY_SIZE(mcu_muxes), base,
++					&mt8186_clk_lock, clk_data);
++	if (r)
++		goto free_mcu_data;
++
++	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++	if (r)
++		goto unregister_composite_muxes;
++
++	platform_set_drvdata(pdev, clk_data);
++
++	return r;
++
++unregister_composite_muxes:
++	mtk_clk_unregister_composites(mcu_muxes, ARRAY_SIZE(mcu_muxes), clk_data);
++free_mcu_data:
++	mtk_free_clk_data(clk_data);
++	return r;
++}
++
++static int clk_mt8186_mcu_remove(struct platform_device *pdev)
++{
++	struct clk_onecell_data *clk_data = platform_get_drvdata(pdev);
++	struct device_node *node = pdev->dev.of_node;
++
++	of_clk_del_provider(node);
++	mtk_clk_unregister_composites(mcu_muxes, ARRAY_SIZE(mcu_muxes), clk_data);
++	mtk_free_clk_data(clk_data);
 +
 +	return 0;
 +}
 +
- fs_initcall(tracer_init_tracefs);
- 
- static int trace_panic_handler(struct notifier_block *this,
-diff --git a/kernel/trace/trace_events.c b/kernel/trace/trace_events.c
-index 3147614c1812..fe055bef1e8f 100644
---- a/kernel/trace/trace_events.c
-+++ b/kernel/trace/trace_events.c
-@@ -3687,7 +3687,7 @@ static __init int event_trace_init_fields(void)
- 	return 0;
- }
- 
--__init int event_trace_init(void)
-+int event_trace_init(void)
- {
- 	struct trace_array *tr;
- 	struct dentry *entry;
++static struct platform_driver clk_mt8186_mcu_drv = {
++	.probe = clk_mt8186_mcu_probe,
++	.remove = clk_mt8186_mcu_remove,
++	.driver = {
++		.name = "clk-mt8186-mcu",
++		.of_match_table = of_match_clk_mt8186_mcu,
++	},
++};
++builtin_platform_driver(clk_mt8186_mcu_drv);
 -- 
 2.18.0
 
