@@ -4,68 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA06EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 14:16:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4D59C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 14:28:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y+FBkYSa06mgKVO1q7xKUQkWi4NnQpcoNe1BDHAuXT0=; b=o0dyG9iTmVOqUW
-	8bb2E7Vm1rnK3mwh1GxY6LMG5TYFVRwUqGf/CLCVydAA7bBgNUptgmUEN4pcdXgSYWWhvrGeme7dh
-	l/+lQNKtZVUpDJ/MLkq8T16ZwZp0KGfKHXIrAgVgeR98Pxk1Ka8NHVHKKAXir4cAg34JIC25Jbyt7
-	95VOaU3b6RTnMCz6pMLFVi++ml1/kOTK+1Q+OaavvqwtZc/DebZFBmaFwIY7gvaevHcz2xVG53ye6
-	Y5TsRH6trzDUv3VVy3+8Ei2869BrENisf6oALR4qTt02VDVXQUV1PI6rt3XLsv+ONd4yPdA7+e5se
-	SjuLz6/JgjcaVD97d60w==;
+	List-Owner; bh=DB/jZAqp4IHZGBMnPO95cP+zhq8Y+CkKf1p3SVGBHoI=; b=FmAMWflifmO5db
+	6I5YxGOO29zJLbV+eIaTjB+Ag0d0HGqDmkn3oxImqm4LidVTDf8vGdCIrSD+XRGxeSjVj81GrVskI
+	Zs6Yngs9BsEFPK9vNSCiQa138qvlDszz497w7WWEaAQK6/Bykgdh6rpzcktWhwf63Q6J08T7ETyjN
+	0rBBWH7yVzApuW4zhnK2qRmuhYcmDQS3a1oNikabQov7/II7+54ceeJ/Gucmqq23g9+VxfEAS5hGd
+	8OfZFcsDc08ZJSIKkiksaG6fuX1tQL/xQvFboOs6acEzQhL+HCyQ8NtX1ERfYKKF8SE9tvRbNqMdc
+	HLi1jInAzh/h7xZF58OA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSg3w-00Ghsh-Gj; Fri, 11 Mar 2022 14:16:12 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nSgG0-00GmT3-RW; Fri, 11 Mar 2022 14:28:40 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSfxd-00GeQA-6h; Fri, 11 Mar 2022 14:09:50 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ id 1nSgFx-00GmRF-Mr
+ for linux-mediatek@lists.infradead.org; Fri, 11 Mar 2022 14:28:39 +0000
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 8EFE1B82C09;
- Fri, 11 Mar 2022 14:09:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 734EEC36AE2;
- Fri, 11 Mar 2022 14:09:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647007777;
- bh=H/WtLlPvqonunkqsJM9/To1ZriYUO8O8KNV0Z6F0ADg=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=jiJgivGaCJyn7+92eS2UzaOSvTwQ2BChVPIVdlL+/Yh75QCZmG4ZvbVMCIJuMqti/
- A7SWYgHmdhECA42jAUKYgBRPkTdb5K7igCd7IuiQ8LbKPQlYzrjR0Tm6W3pBGHgdGD
- +iPrGvLnAsE/CsDmpmVnSBZFNToRN4UyV/1V+M4rhfx+tGb+HjyJFD8ilfX6ifq1yq
- Bns1HPvBblBRVfWcEGXn1Caeh1FpdQ4fusSa8cEtxKrYjCcOY/HeV+RngYuKCtae47
- PhTAHOlgIeWXSo5gQWYQhUWR4XBCwc34bf4FtCcEe1Wp+tp4SRAZlaty/3/unhxjaz
- UirqmHG+W7ujQ==
-Received: from mchehab by mail.kernel.org with local (Exim 4.94.2)
- (envelope-from <mchehab@kernel.org>)
- id 1nSfxX-000lHN-6W; Fri, 11 Mar 2022 15:09:35 +0100
-From: Mauro Carvalho Chehab <mchehab@kernel.org>
-To: 
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- =?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
- Bin Liu <bin.liu@mediatek.com>, Dmitry Osipenko <digetx@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Ming Qian <ming.qian@nxp.com>,
- Rick Chang <rick.chang@mediatek.com>, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 16/38] media: platform: mtk-jpeg: move config to its own
- file
-Date: Fri, 11 Mar 2022 15:07:29 +0100
-Message-Id: <b3e46789ac2e7cce2fcfef96749191f640a44fc2.1647006877.git.mchehab@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <cover.1647006877.git.mchehab@kernel.org>
-References: <cover.1647006877.git.mchehab@kernel.org>
+ by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id C0EB63F5FC
+ for <linux-mediatek@lists.infradead.org>; Fri, 11 Mar 2022 14:28:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1647008910;
+ bh=PdIndayzdh0p1erKParNfrZ1poZ/AkWCjFd9nsPB1bM=;
+ h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+ In-Reply-To:Content-Type;
+ b=S987aXtzxnc0F6va7ZxIQ738MXvanDyrXuV98nZZJTiw0w8peWrDQS20Sa8MPkNg5
+ tGUsk27hV1VBit12Z/Ees/5zJ7qAEmPDzHMeQOmBg2tTI4sr0YM0TmT040ps0Vass9
+ vQNYS3VvtM7eA98s31QIHibb+8WGkjvHCd+F+O6z1FA4X/TC+yPFOeBtDwdM0W9AtL
+ mAu3ywmOXb6Hd11BChR5nEMsg6MBEJWcApjsYfeUeyMR6LXQUYz+K7DmZvzqOj6FU/
+ UNSqykcvmQLM7VNeZa2tbHJCORM0eQ3RFFokS8lY2uJgz4ziFENNALLZ4tmtI+mdpp
+ sK80FEr4rbGcA==
+Received: by mail-ed1-f70.google.com with SMTP id
+ b9-20020aa7d489000000b0041669cd2cbfso4946912edr.16
+ for <linux-mediatek@lists.infradead.org>; Fri, 11 Mar 2022 06:28:30 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=PdIndayzdh0p1erKParNfrZ1poZ/AkWCjFd9nsPB1bM=;
+ b=Ap+4HodkAq4wz975POMnlOAhMsYdUG5edxGrUdgrSMS0SmjQHN0u2fqJIlkLvsqlfq
+ LiR6W4MJhtjdRW+KqVvl5PNuKYL3Ids4kLxCziG0nQdMJ4Z7C0+u5coB4DcyE1pODO3Y
+ xY1z23SJKaH7yjnDVPRMMXSnm2Br5yJoSdrdrQAmWka1Sxu3QwdwsuG87DbJyQFsZ4nZ
+ SWwvfuw/TfUO1SDAviCaoPpKGlU/C54t3en7gEiUC0KFnpF0GreJ2nJI9RyPpOTsqCnS
+ g1TzxankXU9PoxvcJNf5/9IdxxcNrFG6hxaj8pZSfkVVmANOdJNor+O8X0JaVQcYlKeH
+ ohcw==
+X-Gm-Message-State: AOAM5300wHddloMU6XdaqLCWhRZ3otYqvpjAFpiHBp7XbGDIxGYp8hiI
+ DEZcA03MN4IOADvzKUI0lQaQlhfs6PnWpQgwur70Oil16+vKKoz2i8roIplbktiVPEfYFgyufR6
+ 7B48idDp17l6lOUJBi3nyMSpqhcRLgNdM/2alWsAogJaN7O2Llg==
+X-Received: by 2002:a17:906:40a:b0:6db:3e2a:a7ce with SMTP id
+ d10-20020a170906040a00b006db3e2aa7cemr8563508eja.255.1647008910476; 
+ Fri, 11 Mar 2022 06:28:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxu7HRELcvW932dJyiTM8RcnBlSViVbwCdvsfEGJ7B4Ej6w1K6mhpjwwmEC8B/O6gJR4wVowQ==
+X-Received: by 2002:a17:906:40a:b0:6db:3e2a:a7ce with SMTP id
+ d10-20020a170906040a00b006db3e2aa7cemr8563494eja.255.1647008910276; 
+ Fri, 11 Mar 2022 06:28:30 -0800 (PST)
+Received: from [192.168.0.148] (xdsl-188-155-174-239.adslplus.ch.
+ [188.155.174.239]) by smtp.gmail.com with ESMTPSA id
+ z7-20020a05640240c700b00416cee953dasm1089877edb.24.2022.03.11.06.28.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 11 Mar 2022 06:28:29 -0800 (PST)
+Message-ID: <0454647b-7aa3-ed70-0b92-1e5c98d0adc0@canonical.com>
+Date: Fri, 11 Mar 2022 15:28:28 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH 2/2] dt-bindings: phy: mediatek: Add YAML schema for PCIe
+ PHY
+Content-Language: en-US
+To: Jianjun Wang <jianjun.wang@mediatek.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, rex-bc.chen@mediatek.com,
+ randy.wu@mediatek.com, jieyy.yang@mediatek.com, chuanjia.liu@mediatek.com,
+ qizhong.cheng@mediatek.com, jian.yang@mediatek.com
+References: <20220311133527.5914-1-jianjun.wang@mediatek.com>
+ <20220311133527.5914-3-jianjun.wang@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+In-Reply-To: <20220311133527.5914-3-jianjun.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_060941_562478_6A52C75E 
-X-CRM114-Status: GOOD (  15.64  )
+X-CRM114-CacheID: sfid-20220311_062837_907885_022F7E6A 
+X-CRM114-Status: GOOD (  17.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,81 +113,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to better organize the platform/Kconfig, place
-mtk-jpeg-specific config stuff on a separate Kconfig file.
+On 11/03/2022 14:35, Jianjun Wang wrote:
+> Add YAML schema documentation for PCIe PHY on MediaTek chipsets.
+> 
+> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> ---
+>  .../bindings/phy/mediatek,pcie-phy.yaml       | 71 +++++++++++++++++++
+>  1 file changed, 71 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
+> new file mode 100644
+> index 000000000000..da15b4bf3117
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
+> @@ -0,0 +1,71 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/phy/mediatek,pcie-phy.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek PCIe PHY Device Tree Binding
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
-Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
----
+Title is for hardware, so s/Device Tree Binding//
 
-To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
-See [PATCH v2 00/38] at: https://lore.kernel.org/all/cover.1647006877.git.mchehab@kernel.org/
+> +
+> +maintainers:
+> +  - Jianjun Wang <jianjun.wang@mediatek.com>
+> +
+> +description: |
+> +  The PCIe PHY supports physical layer functionality for PCIe Gen3 port.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,pcie-phy
 
- drivers/media/platform/Kconfig          | 17 +----------------
- drivers/media/platform/mtk-jpeg/Kconfig | 16 ++++++++++++++++
- 2 files changed, 17 insertions(+), 16 deletions(-)
- create mode 100644 drivers/media/platform/mtk-jpeg/Kconfig
+Is it going to be exactly one pcie-phy for all Mediatek chipsets for
+next years? Are you sure about that? It sounds highly unlikely....
 
-diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-index da1fa4642bca..41162dcfafcc 100644
---- a/drivers/media/platform/Kconfig
-+++ b/drivers/media/platform/Kconfig
-@@ -55,6 +55,7 @@ source "drivers/media/platform/davinci/Kconfig"
- 
- source "drivers/media/platform/exynos-gsc/Kconfig"
- source "drivers/media/platform/meson/ge2d/Kconfig"
-+source "drivers/media/platform/mtk-jpeg/Kconfig"
- source "drivers/media/platform/omap/Kconfig"
- 
- source "drivers/media/platform/aspeed/Kconfig"
-@@ -192,22 +193,6 @@ config VIDEO_TI_CAL_MC
- 
- source "drivers/media/platform/imx-jpeg/Kconfig"
- 
--config VIDEO_MEDIATEK_JPEG
--	tristate "Mediatek JPEG Codec driver"
--	depends on V4L_MEM2MEM_DRIVERS
--	depends on MTK_IOMMU_V1 || MTK_IOMMU || COMPILE_TEST
--	depends on VIDEO_DEV && VIDEO_V4L2
--	depends on ARCH_MEDIATEK || COMPILE_TEST
--	depends on MTK_SMI || (COMPILE_TEST && MTK_SMI=n)
--	select VIDEOBUF2_DMA_CONTIG
--	select V4L2_MEM2MEM_DEV
--	help
--	  Mediatek jpeg codec driver provides HW capability to decode
--	  JPEG format
--
--	  To compile this driver as a module, choose M here: the
--	  module will be called mtk-jpeg
--
- config VIDEO_MEDIATEK_VPU
- 	tristate "Mediatek Video Processor Unit"
- 	depends on V4L_MEM2MEM_DRIVERS
-diff --git a/drivers/media/platform/mtk-jpeg/Kconfig b/drivers/media/platform/mtk-jpeg/Kconfig
-new file mode 100644
-index 000000000000..72ed920b011a
---- /dev/null
-+++ b/drivers/media/platform/mtk-jpeg/Kconfig
-@@ -0,0 +1,16 @@
-+# SPDX-License-Identifier: GPL-2.0-only
-+config VIDEO_MEDIATEK_JPEG
-+	tristate "Mediatek JPEG Codec driver"
-+	depends on V4L_MEM2MEM_DRIVERS
-+	depends on MTK_IOMMU_V1 || MTK_IOMMU || COMPILE_TEST
-+	depends on VIDEO_DEV && VIDEO_V4L2
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on MTK_SMI || (COMPILE_TEST && MTK_SMI=n)
-+	select VIDEOBUF2_DMA_CONTIG
-+	select V4L2_MEM2MEM_DEV
-+	help
-+	  Mediatek jpeg codec driver provides HW capability to decode
-+	  JPEG format
-+
-+	  To compile this driver as a module, choose M here: the
-+	  module will be called mtk-jpeg
--- 
-2.35.1
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  reg-names:
+> +    items:
+> +      - const: sif
+> +
+> +  "#phy-cells":
+> +    const: 0
+> +
+> +  nvmem-cells:
+> +    maxItems: 7
+> +    description:
+> +      Phandles to nvmem cell that contains the efuse data, if unspecified,
+> +      default value is used.
+> +
+> +  nvmem-cell-names:
+> +    items:
+> +      - const: glb_intr
+> +      - const: tx_ln0_pmos
+> +      - const: tx_ln0_nmos
+> +      - const: rx_ln0
+> +      - const: tx_ln1_pmos
+> +      - const: tx_ln1_nmos
+> +      - const: rx_ln1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - reg-names
+> +  - "#phy-cells"
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    pciephy: phy@11e80000 {
+> +        compatible = "mediatek,pcie-phy";
+> +        #phy-cells = <0>;
+> +        reg = <0x11e80000 0x10000>;
+> +        reg-names = "sif";
+> +        nvmem-cells = <&pciephy_glb_intr>,
+> +                      <&pciephy_tx_ln0_pmos>,
+> +                      <&pciephy_tx_ln0_nmos>,
+> +                      <&pciephy_rx_ln0>,
+> +                      <&pciephy_tx_ln1_pmos>,
+> +                      <&pciephy_tx_ln1_nmos>,
+> +                      <&pciephy_rx_ln1>;
+> +        nvmem-cell-names = "glb_intr", "tx_ln0_pmos",
+> +                           "tx_ln0_nmos", "rx_ln0",
+> +                           "tx_ln1_pmos", "tx_ln1_nmos",
+> +                           "rx_ln1";
+> +    };
 
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
