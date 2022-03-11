@@ -4,60 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C29A1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 20:23:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F3C3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 20:36:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VV6XWKvK13KNJiFjoaIySRafrR0wsbSSRMTJmSC9F+0=; b=u66HNioeUiLJjW
-	HZbMVo0IAiWLHgvXLE83BTWvhbgfRe6JDLZS+hjI6NFx28Pm5zbg4PMQCm8K89M8cImY73r6yUDT+
-	qa5OiGjqQ5XyNekhJzhL2s2I+I7VRhgj15+FGgasB57DoqSyQOlw/okNxVFB6XFgGhYoNHruG5IWr
-	vG40T+0gpNjnr7TRcF56a/Rp3LNiVtjs2IDRlBVovOGvhRrniPYZigdtAzD8e9Uj7yN65cNbLvWkp
-	SVImcD+YMBImg2DIy4ljlZHVOto8zsOfWlFl8N09NNfn+fwg74f7wjHZcFhsi+MSIxjE/YP4RgnUA
-	t9ZSZ/AUs3/ErDDEOIIw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p9bSbKlzi/C5foHUK3v351HM2wBQGCXsR01JiZFYy+c=; b=FMwla0Y6pCfn2tgils35TkbVHH
+	DNqTEoD65w6uVVOlPGmOMSWItDo8HGGuHqPCWpQ+eP1N24DOwBCipBiCcuJrOQzsWgHH430wMANEC
+	lC0CXcOT7fCTmt9BMdAYYV5f3InIhRdCaYOmN/epuYUoh47Z7AtDMOut8gky8NeXqKz9ZH1+wr2rI
+	yyWRWTWxVfdPM4R6efPXxkNbit0emiB/arWFv2xX4NBYkbm8+QrCONM0JrGFT1gW3qYJg//F1sOMd
+	rqyKByAWfYskjcMqjnncxKP5g1vni3//pMEi0EUFl8NTmDJw8y8miCyUbjxDzip8/zmOABJ9Z+OoY
+	GssAjZnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSlmq-000Aq5-NA; Fri, 11 Mar 2022 20:22:56 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nSlzU-000Clg-UO; Fri, 11 Mar 2022 20:36:00 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSlmb-000Al4-K6; Fri, 11 Mar 2022 20:22:43 +0000
+ id 1nSlzI-000Cji-N0; Fri, 11 Mar 2022 20:35:49 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id D4024B82CF4;
- Fri, 11 Mar 2022 20:22:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E7A0C340EC;
- Fri, 11 Mar 2022 20:22:36 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 1F3D561E82;
+ Fri, 11 Mar 2022 20:35:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15CABC340E9;
+ Fri, 11 Mar 2022 20:35:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647030158;
- bh=ij5VNrvsFSwVimJAGBzflRTGoXGWzMpxgzmX4BZ5YPM=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=HHNaw7dTrZhU8k9UkXkpKfOG0tJZfuBuqv9Cnw/jdFmXn7Roa1c5D0seA0jWQQE3+
- PPperXekmJv4dIX8v++kZu5+di4c56v490qAun1wq/d2+gvDWT42ko/5Hck3Ac9VF3
- 5hroXOwdq3hyDD+PpEvHbgi7iDGJea/QZ2BPhuxIHTAhiTRPVQchCF3adPou0k2X0d
- KCaRlbsFteozlEa0juMWWUChr1gWNL0Py1EA5ReWQuqsP5ireRzSV4ZvjOe5Ka6+e9
- pby/qGRugO9UdzPT6P3j4XCQnHSejOORcX8XORNW+iuIhmeMhyQW5JafYtRWmCx4rr
- 9NnHSLA9zMqYg==
-From: Mark Brown <broonie@kernel.org>
-To: Trevor Wu <trevor.wu@mediatek.com>, tiwai@suse.com, matthias.bgg@gmail.com,
- robh+dt@kernel.org
-Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org,
- aaronyu@google.com, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- yc.hung@mediatek.com
-In-Reply-To: <20220308072435.22460-1-trevor.wu@mediatek.com>
-References: <20220308072435.22460-1-trevor.wu@mediatek.com>
-Subject: Re: (subset) [PATCH 0/5] ASoC: mediatek: Add support for MT8195 sound
- card with max98390 and rt5682
-Message-Id: <164703015624.264137.9730451216130586080.b4-ty@kernel.org>
-Date: Fri, 11 Mar 2022 20:22:36 +0000
+ s=k20201202; t=1647030947;
+ bh=YP9SzrgQyjOQZskM7I0k1hU6CTv2m60VmTGJYg+FQNA=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=MTmQn9kYhV2vDgtP9ZbrZTDgz3ww0WANjipJ9cNFF+MoGIsJ1leq1/4UrDwYkuREx
+ qCZrxi4PVxz1rixel+Jjq7JGSbPQbsE8tHy15vcPUxtEz99jK9/dmEnIK/uFeajruM
+ tAPiHKtePtmTOYdsglDRt5UQsiEbqsMYpgb3ABqvD0fZQHfvbKPG1BkSwp1sXsR8YY
+ FM8eaQlREpHiH523xHHItfNaJRznXQSSdL9gRO/D1+rSCjnzQwWPixXHMQQCvOpgbe
+ 1pkQMrZv36CCVtGXE6SiSndrgnAP+G1s0dxMFTsPI/sTDNadAJ5zGOFZTegsuSOmXP
+ mVz4RYoNDlH3Q==
+Date: Fri, 11 Mar 2022 21:35:43 +0100
+From: Wolfram Sang <wsa@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: qii.wang@mediatek.com, matthias.bgg@gmail.com,
+ linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com, Qii Wang <wii.wang@mediatek.com>
+Subject: Re: [PATCH v2] i2c: busses: i2c-mt65xx: Simplify with clk-bulk
+Message-ID: <Yiuyn4269G/hXunT@ninjato>
+Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ qii.wang@mediatek.com, matthias.bgg@gmail.com,
+ linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com, Qii Wang <wii.wang@mediatek.com>
+References: <20220303091547.17522-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
+In-Reply-To: <20220303091547.17522-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_122241_845180_F91DCA8F 
-X-CRM114-Status: GOOD (  16.39  )
+X-CRM114-CacheID: sfid-20220311_123548_815437_9F4DB959 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,54 +73,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4078846240836836601=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 8 Mar 2022 15:24:30 +0800, Trevor Wu wrote:
-> This series of patches adds support for mt8195 board with mt6359, max98390
-> and rt5682.
-> 
-> Reset controller is included because mt8195 etdm is used to play sound via
-> max98390 before kernel boot.
-> 
-> In addition, the common part of machine driver is extracted for
-> simplification.
-> 
-> [...]
 
-Applied to
+--===============4078846240836836601==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="iM51bsSenGYDG0Ia"
+Content-Disposition: inline
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Thanks!
+--iM51bsSenGYDG0Ia
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-[1/5] ASoC: mediatek: mt8195: add reset controller
-      commit: f67084148dac015d059c64f25e57abd0ab18946c
-[2/5] dt-bindings: mediatek: mt8195: add reset property
-      commit: ee7f79a81a27c47088fe0af95788621644826d91
+On Thu, Mar 03, 2022 at 10:15:47AM +0100, AngeloGioacchino Del Regno wrote:
+> Since depending on the SoC or specific bus functionality some clocks
+> may be optional, we cannot get the benefit of using devm_clk_bulk_get()
+> but, by migrating to clk-bulk, we are able to remove the custom functions
+> mtk_i2c_clock_enable() and mtk_i2c_clock_disable(), increasing common
+> APIs usage, hence (lightly) decreasing kernel footprint.
+>=20
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> Reviewed-by: Qii Wang <wii.wang@mediatek.com>
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+Applied to for-next with the typo fixed, thanks!
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+--iM51bsSenGYDG0Ia
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+-----BEGIN PGP SIGNATURE-----
 
-Thanks,
-Mark
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmIrsp8ACgkQFA3kzBSg
+KbYVhA/9Fdk1lLIyW+tXH7zNHFJt6bDQCScxVKi/bTuMFCDG4CXIDWa7vy2KZbkK
+6jDhklB8Okkyd8O15z1Sm4Qi6xUNpS8tTDtctbYo34ydjl2TcCGZu88HZguCtI21
+yXOvW4Yi0J4F0/+w/ENfwX2i8g7esPcP967YWsIpAhWv+VI7CYhigrIspCJ/DahW
+IaI3m3l9XP1+QLoFHF2QFqpHhcUlrFty6cs1YTaK3iQgzqBhyxMlkwSvBlldpxsV
+pHkK8BfIEPf3kshDbRma1N0nwZEdkaZwjX7XPzUGgvBrY1YaFIXLUzTwy+/kI2lJ
+lcJs4ypUkJaQMXjt3s+hYWRHuTqpBDiVEvubpn2uxiEE1w6T2OHkpnvYLdIP5sxZ
+1G09p348JoaC4zFlezEpORn6WV/O+E7qjebKyJ9sGX6/iDEjPH5941+sBp7sQ69A
+deUJ0s/1l8nSscTw5YcsRmdhuPfbDE/GfkKCkqV32syiojZXHKtogdlOstpjc9My
+D532FqE+L/hwOiUzmZ1C9AHoqluTU+SeVq97iHk2KZAftkr3NsarhQsZyiImrEOr
+jFbS8SaTZNBbv+9paHK2TZQUqrKS4X4V5VNRFFOp+WmgRV/PoPXa655mTNWMNAUf
+DtA1j/GIjSNBE1Vlo3t4Zaiu3YqFmGA+MISD5N+k9oyH65K24q8=
+=+Dxs
+-----END PGP SIGNATURE-----
+
+--iM51bsSenGYDG0Ia--
+
+
+--===============4078846240836836601==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============4078846240836836601==--
+
