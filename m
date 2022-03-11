@@ -4,63 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C08EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 13:46:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A117CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 14:08:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UjmYDq4BXTl9Tl13F8QNjXKhwRHaTTgcGEYMB5vinSQ=; b=2kDV46N8tTbLkv
-	k0bJnLSeo2IZd9jyE64P+/hMDLCqU+eM67bOie0MNJ0jXP8E+d7eBAvbgDCYPVzf2tzw7JIUzUAf/
-	Za22KIqy6p8bCxxxePXvKRLxoc9ROr1JNiE0Rs35pw8uxR5QA9ebOPlokiO7xcu8FMVGQOUWpAn+0
-	ocXNqnXf28FbnOynOIZ/0mW0ntMHTYsXHQUdwyE89UwLxE1Ggpmn7tukt1Dx/mt7IWWx+QebldIN3
-	AlFbB0edC+cIm1o+K0quX3fKM76AFN9Q5hyRlfh6KY9ScCZiDzS0sF8AHkE29IOtG/G0qS7v0V1Pq
-	GnebQk2JAjOFyUntbHYg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Vd5YX8BRbQqSFBqhhlbMI3AUpes8NsL1+fKqVRef/H4=; b=NFAdv/ClZcvA4A
+	wmeo3aSxNwwdo1DSsJG3UDjN7dkS5p7MD+NcnCJnoEh0pBNbMCdcfyk2WShXWM/Nofwrt7mAj1nWi
+	BrWwX3+sn6mxjX2YGDzberUl6Olql/Fu/FA/GcmJRAo8s/KqG8b30UkRw332gsS1avehusP762AFs
+	YKkYekTMJbMFfpX/nQjOnOaCaRSUtcSgC9UkdQ/nn0Y/qmdt89bGWMbc0c0oOb8UbGyaCI6rRdMwd
+	3yrSvKlJFnL8WlkCXNu0ZO7boyBP1zpwHfRNv3GCBLcky7gW8kmHCb5/g91Atb8NnpHWB/ddlbuaA
+	zjRZyDyEReqlFe48jUZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSfag-00Ga2g-3W; Fri, 11 Mar 2022 13:45:58 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nSfwg-00GdlY-9F; Fri, 11 Mar 2022 14:08:42 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSfaT-00Ga0r-Co; Fri, 11 Mar 2022 13:45:47 +0000
-X-UUID: 0ab0cb648e324c8bbd494a8a21ade2c5-20220311
-X-UUID: 0ab0cb648e324c8bbd494a8a21ade2c5-20220311
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jianjun.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1061876310; Fri, 11 Mar 2022 06:45:42 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Mar 2022 05:35:40 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 11 Mar 2022 21:35:32 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 11 Mar 2022 21:35:31 +0800
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
- <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: Jianjun Wang <jianjun.wang@mediatek.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <rex-bc.chen@mediatek.com>,
- <randy.wu@mediatek.com>, <jieyy.yang@mediatek.com>,
- <chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
- <jian.yang@mediatek.com>
-Subject: [PATCH 1/2] phy: mediatek: Add PCIe PHY driver
-Date: Fri, 11 Mar 2022 21:35:26 +0800
-Message-ID: <20220311133527.5914-2-jianjun.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220311133527.5914-1-jianjun.wang@mediatek.com>
-References: <20220311133527.5914-1-jianjun.wang@mediatek.com>
+ id 1nSfw1-00GdSH-Eq; Fri, 11 Mar 2022 14:08:08 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id DD2E6B82C24;
+ Fri, 11 Mar 2022 14:07:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05B1DC340F5;
+ Fri, 11 Mar 2022 14:07:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1647007676;
+ bh=oxhEMvElWODt6u9CQYS0TOzkW9ZRnJdY8HwZrc0XbnA=;
+ h=From:To:Cc:Subject:Date:From;
+ b=I1IWazuBan229oTPyXer46CT9bijBRhJJ438WpPXOCKnJHuH3LeSiHJtETgwak7Cp
+ RriKkP6rtuas2UOOhvuwjNOEDgPJfjFZhnKcr8zG6zQViko9vb21SdMBmnSKh1PQSc
+ Qy0JIkMVupausOA+J7sYzH1JLhewlQtAO6NFu5t6x5zXy7qvKJh0SGW3PPVYsP8HRT
+ LGlj/1X9iqZK64iYH49dD+0mM5TFOxCzC9kS/v92w1KYH4o34oP4eI8wkIF2V70jO5
+ 6TShJ2I2kNzNWoacqVs4hAwAQiDPtgn4VVvEsv3RJ2XfrO2bKsDhF2zGb3FOd1oouB
+ xG+udw2dDr8EA==
+Received: from mchehab by mail.kernel.org with local (Exim 4.94.2)
+ (envelope-from <mchehab@kernel.org>)
+ id 1nSfvt-000lAX-Ey; Fri, 11 Mar 2022 15:07:53 +0100
+From: Mauro Carvalho Chehab <mchehab@kernel.org>
+To: 
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
+ =?UTF-8?q?=C5=81ukasz=20Stelmach?= <l.stelmach@samsung.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+ Andy Gross <agross@kernel.org>, Andy Walls <awalls@md.metrocast.net>,
+ Benoit Parrot <bparrot@ti.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, Chen-Yu Tsai <wens@csie.org>,
+ Dafna Hirschfeld <dafna@fastmail.com>, Dmitry Osipenko <digetx@gmail.com>,
+ Eddie James <eajames@linux.ibm.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ Jacob Chen <jacob-chen@iotwrt.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jerome Brunet <jbrunet@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Maxime Ripard <mripard@kernel.org>, Michael Krufky <mkrufky@linuxtv.org>,
+ Michael Tretter <m.tretter@pengutronix.de>,
+ Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>,
+ Ming Qian <ming.qian@nxp.com>, Mirela Rabulea <mirela.rabulea@nxp.com>,
+ NXP Linux Team <linux-imx@nxp.com>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Robert Foss <robert.foss@linaro.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ Shijie Qin <shijie.qin@nxp.com>,
+ Stanimir Varbanov <stanimir.varbanov@linaro.org>,
+ Stefan Richter <stefanr@s5r6.in-berlin.de>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Sylwester Nawrocki <sylvester.nawrocki@gmail.com>,
+ Todor Tomov <todor.too@gmail.com>, Tomasz Figa <tfiga@chromium.org>,
+ Yong Deng <yong.deng@magewell.com>, Zhou Peng <eagle.zhou@nxp.com>,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, linux1394-devel@lists.sourceforge.net,
+ openbmc@lists.ozlabs.org
+Subject: [PATCH v2 00/38] Sort Makefiles and platform/Kconfig
+Date: Fri, 11 Mar 2022 15:07:13 +0100
+Message-Id: <cover.1647006877.git.mchehab@kernel.org>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_054545_453237_015323EE 
-X-CRM114-Status: GOOD (  22.41  )
+X-CRM114-CacheID: sfid-20220311_060801_889238_7CB832C2 
+X-CRM114-Status: GOOD (  17.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,253 +118,263 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add PCIe GEN3 PHY driver support on MediaTek chipsets.
+Entries at Makefiles and Kconfig files end being merged on random order. 
 
-Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
----
- drivers/phy/mediatek/Kconfig        |  11 ++
- drivers/phy/mediatek/Makefile       |   1 +
- drivers/phy/mediatek/phy-mtk-pcie.c | 198 ++++++++++++++++++++++++++++
- 3 files changed, 210 insertions(+)
- create mode 100644 drivers/phy/mediatek/phy-mtk-pcie.c
+Sort Makefile entries in alphabetical order. 
 
-diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
-index 55f8e6c048ab..387ed1b3f2cc 100644
---- a/drivers/phy/mediatek/Kconfig
-+++ b/drivers/phy/mediatek/Kconfig
-@@ -55,3 +55,14 @@ config PHY_MTK_MIPI_DSI
- 	select GENERIC_PHY
- 	help
- 	  Support MIPI DSI for Mediatek SoCs.
-+
-+config PHY_MTK_PCIE
-+	tristate "MediaTek PCIe-PHY Driver"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on OF
-+	select GENERIC_PHY
-+	help
-+	  Say 'Y' here to add support for MediaTek PCIe PHY driver.
-+	  This driver create the basic PHY instance and provides initialize
-+	  callback for PCIe GEN3 port, it supports software efuse
-+	  initialization.
-diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
-index ace660fbed3a..788c13147f63 100644
---- a/drivers/phy/mediatek/Makefile
-+++ b/drivers/phy/mediatek/Makefile
-@@ -6,6 +6,7 @@
- obj-$(CONFIG_PHY_MTK_TPHY)		+= phy-mtk-tphy.o
- obj-$(CONFIG_PHY_MTK_UFS)		+= phy-mtk-ufs.o
- obj-$(CONFIG_PHY_MTK_XSPHY)		+= phy-mtk-xsphy.o
-+obj-$(CONFIG_PHY_MTK_PCIE)		+= phy-mtk-pcie.o
- 
- phy-mtk-hdmi-drv-y			:= phy-mtk-hdmi.o
- phy-mtk-hdmi-drv-y			+= phy-mtk-hdmi-mt2701.o
-diff --git a/drivers/phy/mediatek/phy-mtk-pcie.c b/drivers/phy/mediatek/phy-mtk-pcie.c
-new file mode 100644
-index 000000000000..45a67d9171f6
---- /dev/null
-+++ b/drivers/phy/mediatek/phy-mtk-pcie.c
-@@ -0,0 +1,198 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Jianjun Wang <jianjun.wang@mediatek.com>
-+ */
-+
-+#include <linux/io.h>
-+#include <linux/iopoll.h>
-+#include <linux/module.h>
-+#include <linux/nvmem-consumer.h>
-+#include <linux/of_address.h>
-+#include <linux/of_device.h>
-+#include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
-+
-+#include "phy-mtk-io.h"
-+
-+#define PEXTP_ANA_GLB_00_REG		0x9000
-+#define PEXTP_ANA_LN0_TX_REG		0xA004
-+#define PEXTP_ANA_LN0_RX_REG		0xA03C
-+#define PEXTP_ANA_LN1_TX_REG		0xA104
-+#define PEXTP_ANA_LN1_RX_REG		0xA13c
-+
-+/* PEXTP_GLB_00_RG[28:24] Internal Resistor Selection of TX Bias Current */
-+#define EFUSE_GLB_INTR_SEL		GENMASK(28, 24)
-+#define EFUSE_GLB_INTR_VAL(x)		((0x1f & (x)) << 24)
-+
-+/* PEXTP_ANA_LN_RX_RG[3:0] LN0 RX impedance selection */
-+#define EFUSE_LN_RX_SEL			GENMASK(3, 0)
-+#define EFUSE_LN_RX_VAL(x)		(0xf & (x))
-+
-+/* PEXTP_ANA_LN_TX_RG[5:2] LN0 TX PMOS impedance selection */
-+#define EFUSE_LN_TX_PMOS_SEL		GENMASK(5, 2)
-+#define EFUSE_LN_TX_PMOS_VAL(x)		((0xf & (x)) << 2)
-+
-+/* PEXTP_ANA_LN_TX_RG[11:8] LN0 TX NMOS impedance selection */
-+#define EFUSE_LN_TX_NMOS_SEL		GENMASK(11, 8)
-+#define EFUSE_LN_TX_NMOS_VAL(x)		((0xf & (x)) << 8)
-+
-+struct mtk_pcie_phy {
-+	struct device *dev;
-+	struct phy *phy;
-+	void __iomem *sif_base;
-+};
-+
-+static int mtk_pcie_phy_init(struct phy *phy)
-+{
-+	struct mtk_pcie_phy *pcie_phy = phy_get_drvdata(phy);
-+	struct device *dev = pcie_phy->dev;
-+	bool nvmem_enabled;
-+	u32 glb_intr, tx_pmos, tx_nmos, rx_data;
-+	int ret;
-+
-+	nvmem_enabled = device_property_read_bool(dev, "nvmem-cells");
-+	if (!nvmem_enabled)
-+		return 0;
-+
-+	/* Set efuse value for lane0 */
-+	ret = nvmem_cell_read_variable_le_u32(dev, "tx_ln0_pmos", &tx_pmos);
-+	if (ret) {
-+		dev_err(dev, "%s: Failed to read tx_ln0_pmos\n", __func__);
-+		return ret;
-+	}
-+
-+	ret = nvmem_cell_read_variable_le_u32(dev, "tx_ln0_nmos", &tx_nmos);
-+	if (ret) {
-+		dev_err(dev, "%s: Failed to read tx_ln0_nmos\n", __func__);
-+		return ret;
-+	}
-+
-+	ret = nvmem_cell_read_variable_le_u32(dev, "rx_ln0", &rx_data);
-+	if (ret) {
-+		dev_err(dev, "%s: Failed to read rx_ln0\n", __func__);
-+		return ret;
-+	}
-+
-+	/* Don't wipe the old data if there is no data in efuse cell */
-+	if (!(tx_pmos || tx_nmos || rx_data)) {
-+		dev_warn(dev, "%s: No efuse data found, but dts enable it\n",
-+			 __func__);
-+		return 0;
-+	}
-+
-+	mtk_phy_update_bits(pcie_phy->sif_base + PEXTP_ANA_LN0_TX_REG,
-+			    EFUSE_LN_TX_PMOS_SEL,
-+			    EFUSE_LN_TX_PMOS_VAL(tx_pmos));
-+
-+	mtk_phy_update_bits(pcie_phy->sif_base + PEXTP_ANA_LN0_TX_REG,
-+			    EFUSE_LN_TX_NMOS_SEL,
-+			    EFUSE_LN_TX_NMOS_VAL(tx_nmos));
-+
-+	mtk_phy_update_bits(pcie_phy->sif_base + PEXTP_ANA_LN0_RX_REG,
-+			    EFUSE_LN_RX_SEL, EFUSE_LN_RX_VAL(rx_data));
-+
-+	/* Set global data */
-+	ret = nvmem_cell_read_variable_le_u32(dev, "glb_intr", &glb_intr);
-+	if (ret) {
-+		dev_err(dev, "%s: Failed to read glb_intr\n", __func__);
-+		return ret;
-+	}
-+
-+	mtk_phy_update_bits(pcie_phy->sif_base + PEXTP_ANA_GLB_00_REG,
-+			    EFUSE_GLB_INTR_SEL, EFUSE_GLB_INTR_VAL(glb_intr));
-+
-+	/*
-+	 * Set efuse value for lane1, only available for the platform which
-+	 * supports two lane.
-+	 */
-+	ret = nvmem_cell_read_variable_le_u32(dev, "tx_ln1_pmos", &tx_pmos);
-+	if (ret) {
-+		dev_err(dev, "%s: Failed to read tx_ln1_pmos, efuse value not support for lane 1\n",
-+			__func__);
-+		return 0;
-+	}
-+
-+	ret = nvmem_cell_read_variable_le_u32(dev, "tx_ln1_nmos", &tx_nmos);
-+	if (ret) {
-+		dev_err(dev, "%s: Failed to read tx_ln1_pmos\n", __func__);
-+		return ret;
-+	}
-+
-+	ret = nvmem_cell_read_variable_le_u32(dev, "rx_ln1", &rx_data);
-+	if (ret) {
-+		dev_err(dev, "%s: Failed to read rx_ln1\n", __func__);
-+		return ret;
-+	}
-+
-+	if (!(tx_pmos || tx_nmos || rx_data))
-+		return 0;
-+
-+	mtk_phy_update_bits(pcie_phy->sif_base + PEXTP_ANA_LN1_TX_REG,
-+			    EFUSE_LN_TX_PMOS_SEL,
-+			    EFUSE_LN_TX_PMOS_VAL(tx_pmos));
-+
-+	mtk_phy_update_bits(pcie_phy->sif_base + PEXTP_ANA_LN1_TX_REG,
-+			    EFUSE_LN_TX_NMOS_SEL,
-+			    EFUSE_LN_TX_NMOS_VAL(tx_nmos));
-+
-+	mtk_phy_update_bits(pcie_phy->sif_base + PEXTP_ANA_LN1_RX_REG,
-+			    EFUSE_LN_RX_SEL, EFUSE_LN_RX_VAL(rx_data));
-+
-+	return 0;
-+}
-+
-+static const struct phy_ops mtk_pcie_phy_ops = {
-+	.init	= mtk_pcie_phy_init,
-+	.owner	= THIS_MODULE,
-+};
-+
-+static int mtk_pcie_phy_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct phy_provider *provider;
-+	struct mtk_pcie_phy *pcie_phy;
-+
-+	pcie_phy = devm_kzalloc(dev, sizeof(*pcie_phy), GFP_KERNEL);
-+	if (!pcie_phy)
-+		return -ENOMEM;
-+
-+	pcie_phy->dev = dev;
-+
-+	pcie_phy->sif_base = devm_platform_ioremap_resource_byname(pdev, "sif");
-+	if (IS_ERR(pcie_phy->sif_base)) {
-+		dev_err(dev, "%s: Failed to map phy-sif base\n", __func__);
-+		return PTR_ERR(pcie_phy->sif_base);
-+	}
-+
-+	pcie_phy->phy = devm_phy_create(dev, dev->of_node, &mtk_pcie_phy_ops);
-+	if (IS_ERR(pcie_phy->phy)) {
-+		dev_err(dev, "%s: Failed to create PCIe phy\n", __func__);
-+		return PTR_ERR(pcie_phy->phy);
-+	}
-+
-+	phy_set_drvdata(pcie_phy->phy, pcie_phy);
-+
-+	provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
-+
-+	return PTR_ERR_OR_ZERO(provider);
-+}
-+
-+static const struct of_device_id mtk_pcie_phy_of_match[] = {
-+	{ .compatible = "mediatek,pcie-phy" },
-+	{ },
-+};
-+MODULE_DEVICE_TABLE(of, mtk_pcie_phy_of_match);
-+
-+static struct platform_driver mtk_pcie_phy_driver = {
-+	.probe	= mtk_pcie_phy_probe,
-+	.driver	= {
-+		.name = "mtk-pcie-phy",
-+		.of_match_table = mtk_pcie_phy_of_match,
-+	},
-+};
-+module_platform_driver(mtk_pcie_phy_driver);
-+
-+MODULE_DESCRIPTION("MediaTek PCIe PHY driver");
-+MODULE_AUTHOR("Jianjun Wang <jianjun.wang@mediatek.com>");
-+MODULE_LICENSE("GPL v2");
+Sorting Kconfig is harder. So, for now, do it only for platform/Kconfig.
+
+On platform/Kconfig, there is a mix of:
+	- two ancillary drivers;
+	- per-SoC drivers whose Kconfig/Makefile is on separate files;
+	- per-SoC drivers whose Makefile is on separate files, but the
+	  driver is at platform/Makefile;
+	- per-SoC drivers that are specified inside platform/Makefile and
+	  platform/Kconfig.
+
+Give some order by ensuring that all non-generic drivers will be on
+subdirectories.
+
+The end goal is to have one directory below platform per manufacturer,
+This series prepare for that.
+
+Suggested-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+-
+
+v2:
+  - removed some renames at DVB frontend;
+  - added patches for platform/Kconfig sort.
+
+Mauro Carvalho Chehab (38):
+  media: xc2028: rename the driver from tuner-xc2028
+  media: Makefiles: remove extra spaces
+  media: Makefiles: sort entries where it fits
+  media: platform: Makefile: reorganize its contents
+  media: platform: move platform menu dependencies to drivers
+  media: platform: place Aspeed driver on a separate dir
+  media: platform: place NXP drivers on a separate dir
+  media: platform: place Intel drivers on a separate dir
+  media: platform: place Via drivers on a separate dir
+  media: platform: place Renesas drivers on a separate dir
+  media: platform: allegro-dvt: move config to its own file
+  media: platform: amphion: move config to its own file
+  media: platform: coda: move config to its own file
+  media: platform: exynos-gsc: move config to its own file
+  media: platform: ge2d: move config to its own file
+  media: platform: mtk-jpeg: move config to its own file
+  media: platform: mtk-mdp: move config to its own file
+  media: platform: mtk-vcodec: move config to its own file
+  media: platform: mtk-vpu: move config to its own file
+  media: platform: omap3isp: move config to its own file
+  media: platform: camss: move config to its own file
+  media: platform: venus: move config to its own file
+  media: platform: rga: move config to its own file
+  media: platform: s3c-camif: move config to its own file
+  media: platform: s5p-g2d: move config to its own file
+  media: platform: hva: move config to its own file
+  media: platform: stm32: move config to its own file
+  media: platform: sun8i-di: move config to its own file
+  media: platform: sun8i-rotate: move config to its own file
+  media: platform: vde: move config to its own file
+  media: platform: ti-vpe: move config to its own file
+  media: platform: rkisp1: move config to its own file
+  media: platform: delta: move config to its own file
+  media: platform: bdisp: move config to its own file
+  media: platform: s5p-mfc: move config to its own file
+  media: platform: s5p-jpeg: move config to its own file
+  media: platform: Kconfig: sort entries
+  drivers: media: platform: move some manufacturer entries
+
+ .../admin-guide/media/i2c-cardlist.rst        |   2 +-
+ MAINTAINERS                                   |  22 +-
+ drivers/media/Makefile                        |   4 +-
+ drivers/media/cec/platform/Makefile           |  16 +-
+ drivers/media/common/Makefile                 |   4 +-
+ drivers/media/common/videobuf2/Makefile       |   6 +-
+ drivers/media/dvb-frontends/Makefile          | 192 ++---
+ drivers/media/firewire/Makefile               |   2 +-
+ drivers/media/i2c/Makefile                    |  92 +--
+ drivers/media/pci/Makefile                    |  18 +-
+ drivers/media/pci/cx18/cx18-driver.c          |   2 +-
+ drivers/media/pci/cx18/cx18-dvb.c             |   2 +-
+ drivers/media/pci/cx18/cx18-gpio.c            |   2 +-
+ drivers/media/pci/cx23885/cx23885-cards.c     |   2 +-
+ drivers/media/pci/cx23885/cx23885-dvb.c       |   2 +-
+ drivers/media/pci/cx23885/cx23885-video.c     |   2 +-
+ drivers/media/pci/cx88/cx88.h                 |   2 +-
+ drivers/media/pci/ivtv/ivtv-driver.c          |   2 +-
+ drivers/media/pci/ivtv/ivtv-gpio.c            |   2 +-
+ drivers/media/pci/saa7134/saa7134-cards.c     |   2 +-
+ drivers/media/pci/saa7134/saa7134-dvb.c       |   2 +-
+ drivers/media/platform/Kconfig                | 755 ++----------------
+ drivers/media/platform/Makefile               | 132 +--
+ drivers/media/platform/allegro-dvt/Kconfig    |  16 +
+ drivers/media/platform/am437x/Kconfig         |   1 +
+ drivers/media/platform/amphion/Kconfig        |  20 +
+ drivers/media/platform/aspeed/Kconfig         |  10 +
+ drivers/media/platform/aspeed/Makefile        |   1 +
+ .../platform/{ => aspeed}/aspeed-video.c      |   0
+ drivers/media/platform/atmel/Kconfig          |   4 +
+ drivers/media/platform/cadence/Kconfig        |   1 +
+ drivers/media/platform/coda/Kconfig           |  17 +
+ drivers/media/platform/davinci/Kconfig        |   6 +
+ drivers/media/platform/exynos-gsc/Kconfig     |  10 +
+ drivers/media/platform/exynos4-is/Kconfig     |   1 +
+ drivers/media/platform/imx-jpeg/Kconfig       |   1 +
+ drivers/media/platform/imx/Kconfig            |   1 +
+ drivers/media/platform/intel/Kconfig          |  11 +
+ drivers/media/platform/intel/Makefile         |   1 +
+ .../media/platform/{ => intel}/pxa_camera.c   |   0
+ drivers/media/platform/marvell-ccic/Kconfig   |   2 +
+ drivers/media/platform/meson/ge2d/Kconfig     |  14 +
+ drivers/media/platform/mtk-jpeg/Kconfig       |  16 +
+ drivers/media/platform/mtk-mdp/Kconfig        |  17 +
+ drivers/media/platform/mtk-vcodec/Kconfig     |  36 +
+ drivers/media/platform/mtk-vpu/Kconfig        |  15 +
+ drivers/media/platform/nxp/Kconfig            |  40 +
+ drivers/media/platform/nxp/Makefile           |   5 +
+ drivers/media/platform/{ => nxp}/fsl-viu.c    |   0
+ drivers/media/platform/{ => nxp}/imx-pxp.c    |   0
+ drivers/media/platform/{ => nxp}/imx-pxp.h    |   0
+ .../media/platform/{ => nxp}/mx2_emmaprp.c    |   0
+ drivers/media/platform/omap/Kconfig           |   1 +
+ drivers/media/platform/omap3isp/Kconfig       |  21 +
+ drivers/media/platform/qcom/Kconfig           |   3 +
+ drivers/media/platform/qcom/camss/Kconfig     |   9 +
+ drivers/media/platform/qcom/venus/Kconfig     |  14 +
+ drivers/media/platform/renesas/Kconfig        | 119 +++
+ drivers/media/platform/renesas/Makefile       |  14 +
+ .../media/platform/{ => renesas}/rcar-fcp.c   |   0
+ .../media/platform/{ => renesas}/rcar-isp.c   |   0
+ .../platform/{ => renesas}/rcar-vin/Kconfig   |   2 +
+ .../platform/{ => renesas}/rcar-vin/Makefile  |   0
+ .../{ => renesas}/rcar-vin/rcar-core.c        |   0
+ .../{ => renesas}/rcar-vin/rcar-csi2.c        |   0
+ .../{ => renesas}/rcar-vin/rcar-dma.c         |   0
+ .../{ => renesas}/rcar-vin/rcar-v4l2.c        |   0
+ .../{ => renesas}/rcar-vin/rcar-vin.h         |   0
+ .../media/platform/{ => renesas}/rcar_drif.c  |   0
+ .../media/platform/{ => renesas}/rcar_fdp1.c  |   0
+ .../media/platform/{ => renesas}/rcar_jpu.c   |   0
+ .../platform/{ => renesas}/renesas-ceu.c      |   0
+ drivers/media/platform/{ => renesas}/sh_vou.c |   0
+ drivers/media/platform/rockchip/Kconfig       |   3 +
+ drivers/media/platform/rockchip/rga/Kconfig   |  14 +
+ .../media/platform/rockchip/rkisp1/Kconfig    |  19 +
+ drivers/media/platform/s3c-camif/Kconfig      |  15 +
+ drivers/media/platform/s5p-g2d/Kconfig        |  11 +
+ drivers/media/platform/s5p-jpeg/Kconfig       |  12 +
+ drivers/media/platform/s5p-mfc/Kconfig        |   9 +
+ drivers/media/platform/sti/Kconfig            |   5 +
+ drivers/media/platform/sti/bdisp/Kconfig      |  10 +
+ drivers/media/platform/sti/c8sectpfe/Kconfig  |   1 +
+ drivers/media/platform/sti/delta/Kconfig      |  36 +
+ drivers/media/platform/sti/hva/Kconfig        |  26 +
+ drivers/media/platform/stm32/Kconfig          |  31 +
+ drivers/media/platform/sunxi/Kconfig          |   2 +
+ .../media/platform/sunxi/sun4i-csi/Kconfig    |   1 +
+ .../media/platform/sunxi/sun6i-csi/Kconfig    |   1 +
+ drivers/media/platform/sunxi/sun8i-di/Kconfig |  14 +
+ .../media/platform/sunxi/sun8i-rotate/Kconfig |  14 +
+ drivers/media/platform/tegra/vde/Kconfig      |  17 +
+ drivers/media/platform/ti-vpe/Kconfig         |  62 ++
+ drivers/media/platform/via/Kconfig            |  11 +
+ drivers/media/platform/via/Makefile           |   1 +
+ drivers/media/platform/{ => via}/via-camera.c |   0
+ drivers/media/platform/{ => via}/via-camera.h |   0
+ drivers/media/platform/xilinx/Kconfig         |   1 +
+ drivers/media/radio/Makefile                  |  42 +-
+ drivers/media/rc/Makefile                     |  45 +-
+ drivers/media/rc/keymaps/Makefile             |  33 +-
+ drivers/media/spi/Makefile                    |   5 +-
+ drivers/media/test-drivers/Makefile           |  13 +-
+ drivers/media/tuners/Makefile                 |  66 +-
+ drivers/media/tuners/tuner-types.c            |   2 +-
+ .../{tuner-xc2028-types.h => xc2028-types.h}  |   6 +-
+ .../media/tuners/{tuner-xc2028.c => xc2028.c} |   6 +-
+ .../media/tuners/{tuner-xc2028.h => xc2028.h} |   2 +-
+ drivers/media/tuners/xc4000.c                 |   2 +-
+ drivers/media/usb/Makefile                    |  25 +-
+ drivers/media/usb/dvb-usb/cxusb.c             |   2 +-
+ drivers/media/usb/dvb-usb/dib0700_devices.c   |   2 +-
+ drivers/media/usb/em28xx/em28xx-i2c.c         |   2 +-
+ drivers/media/usb/em28xx/em28xx.h             |   2 +-
+ drivers/media/usb/gspca/Makefile              |  88 +-
+ drivers/media/usb/tm6000/tm6000-cards.c       |   2 +-
+ drivers/media/usb/tm6000/tm6000-dvb.c         |   2 +-
+ drivers/media/usb/tm6000/tm6000-i2c.c         |   2 +-
+ drivers/media/v4l2-core/Makefile              |  29 +-
+ drivers/media/v4l2-core/tuner-core.c          |   2 +-
+ 120 files changed, 1248 insertions(+), 1144 deletions(-)
+ create mode 100644 drivers/media/platform/allegro-dvt/Kconfig
+ create mode 100644 drivers/media/platform/amphion/Kconfig
+ create mode 100644 drivers/media/platform/aspeed/Kconfig
+ create mode 100644 drivers/media/platform/aspeed/Makefile
+ rename drivers/media/platform/{ => aspeed}/aspeed-video.c (100%)
+ create mode 100644 drivers/media/platform/coda/Kconfig
+ create mode 100644 drivers/media/platform/exynos-gsc/Kconfig
+ create mode 100644 drivers/media/platform/intel/Kconfig
+ create mode 100644 drivers/media/platform/intel/Makefile
+ rename drivers/media/platform/{ => intel}/pxa_camera.c (100%)
+ create mode 100644 drivers/media/platform/meson/ge2d/Kconfig
+ create mode 100644 drivers/media/platform/mtk-jpeg/Kconfig
+ create mode 100644 drivers/media/platform/mtk-mdp/Kconfig
+ create mode 100644 drivers/media/platform/mtk-vcodec/Kconfig
+ create mode 100644 drivers/media/platform/mtk-vpu/Kconfig
+ create mode 100644 drivers/media/platform/nxp/Kconfig
+ create mode 100644 drivers/media/platform/nxp/Makefile
+ rename drivers/media/platform/{ => nxp}/fsl-viu.c (100%)
+ rename drivers/media/platform/{ => nxp}/imx-pxp.c (100%)
+ rename drivers/media/platform/{ => nxp}/imx-pxp.h (100%)
+ rename drivers/media/platform/{ => nxp}/mx2_emmaprp.c (100%)
+ create mode 100644 drivers/media/platform/omap3isp/Kconfig
+ create mode 100644 drivers/media/platform/qcom/Kconfig
+ create mode 100644 drivers/media/platform/qcom/camss/Kconfig
+ create mode 100644 drivers/media/platform/qcom/venus/Kconfig
+ create mode 100644 drivers/media/platform/renesas/Kconfig
+ create mode 100644 drivers/media/platform/renesas/Makefile
+ rename drivers/media/platform/{ => renesas}/rcar-fcp.c (100%)
+ rename drivers/media/platform/{ => renesas}/rcar-isp.c (100%)
+ rename drivers/media/platform/{ => renesas}/rcar-vin/Kconfig (93%)
+ rename drivers/media/platform/{ => renesas}/rcar-vin/Makefile (100%)
+ rename drivers/media/platform/{ => renesas}/rcar-vin/rcar-core.c (100%)
+ rename drivers/media/platform/{ => renesas}/rcar-vin/rcar-csi2.c (100%)
+ rename drivers/media/platform/{ => renesas}/rcar-vin/rcar-dma.c (100%)
+ rename drivers/media/platform/{ => renesas}/rcar-vin/rcar-v4l2.c (100%)
+ rename drivers/media/platform/{ => renesas}/rcar-vin/rcar-vin.h (100%)
+ rename drivers/media/platform/{ => renesas}/rcar_drif.c (100%)
+ rename drivers/media/platform/{ => renesas}/rcar_fdp1.c (100%)
+ rename drivers/media/platform/{ => renesas}/rcar_jpu.c (100%)
+ rename drivers/media/platform/{ => renesas}/renesas-ceu.c (100%)
+ rename drivers/media/platform/{ => renesas}/sh_vou.c (100%)
+ create mode 100644 drivers/media/platform/rockchip/Kconfig
+ create mode 100644 drivers/media/platform/rockchip/rga/Kconfig
+ create mode 100644 drivers/media/platform/rockchip/rkisp1/Kconfig
+ create mode 100644 drivers/media/platform/s3c-camif/Kconfig
+ create mode 100644 drivers/media/platform/s5p-g2d/Kconfig
+ create mode 100644 drivers/media/platform/s5p-jpeg/Kconfig
+ create mode 100644 drivers/media/platform/s5p-mfc/Kconfig
+ create mode 100644 drivers/media/platform/sti/Kconfig
+ create mode 100644 drivers/media/platform/sti/bdisp/Kconfig
+ create mode 100644 drivers/media/platform/sti/delta/Kconfig
+ create mode 100644 drivers/media/platform/sti/hva/Kconfig
+ create mode 100644 drivers/media/platform/stm32/Kconfig
+ create mode 100644 drivers/media/platform/sunxi/sun8i-di/Kconfig
+ create mode 100644 drivers/media/platform/sunxi/sun8i-rotate/Kconfig
+ create mode 100644 drivers/media/platform/tegra/vde/Kconfig
+ create mode 100644 drivers/media/platform/ti-vpe/Kconfig
+ create mode 100644 drivers/media/platform/via/Kconfig
+ create mode 100644 drivers/media/platform/via/Makefile
+ rename drivers/media/platform/{ => via}/via-camera.c (100%)
+ rename drivers/media/platform/{ => via}/via-camera.h (100%)
+ rename drivers/media/tuners/{tuner-xc2028-types.h => xc2028-types.h} (96%)
+ rename drivers/media/tuners/{tuner-xc2028.c => xc2028.c} (99%)
+ rename drivers/media/tuners/{tuner-xc2028.h => xc2028.h} (99%)
+
 -- 
-2.18.0
+2.35.1
+
 
 
 _______________________________________________
