@@ -4,59 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00EE5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 13:05:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E7CCC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 13:07:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TTVQbFMKz7jH+Ujw4uWYfqeN/N4UKuBNeG9aab9gHeI=; b=YIvBRP/CZocu1T
-	92wKn5UK0BOs0fu90yoJeQ6OE6di4QUS704eUwYdzXq4dcM4X7eo88an9v/xAJ4RRPgHpy5JQUMQY
-	s43TVqM/MwEbXUsSB3vd3OFWd1aAdolGHJBY5KTG33GsZnCxElPC5axrrHbywYsVTyS4EwVlKsysr
-	3F4Tnpy9Ws1I2as2OeChRPI+fzKkmLdHrEhJzqBPMI8k5PZZdjO5QOWpJkVIZ2/Ris8XlQve8UK4i
-	rAb2+gzupY19A7jb/ngcgCthu4TzxWtRvDJ7pmPLfMx9ib3/AXV1+jp1YKohzWeYaxOY+9/pIpH2b
-	8ge0DineSpTO/2NiJlQQ==;
+	List-Owner; bh=wQ3Z5AdxYmLaSUhsHseubqTIvL+kaC/YW7UmJ/1w1wc=; b=fqfk2iTCHHhpRb
+	vxMBnqJKdei1abC5qm3eYPwtZlCkFMD0hXk+MDulA8RvFyKwP/1IlXxwpXyri3+ykAcmLz3lSoa+1
+	wXcdrwjhCaWPtBmsYdoVGhoI7bi1Z86d1V4Jw90CmzectZl20P6qhqbtHsT9UF3VkHazHsCZlPXPT
+	qSctkkv6wD4OgzF8Pr2BvIdXRrO2MUtTvoZusCwanrKZB973hb8GsUAPjxCIuuMFJnhLdil9SZRSk
+	VDhEtVNWdtxvbj9vP/F64lQcetgAg+As6VccY+SP+rymDkFO6+w2SfXLk9DLdeiWWrMRo8ECn6PKr
+	bzj0cTPTPH5wPYwB5Zpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSexj-00GR27-1Z; Fri, 11 Mar 2022 13:05:43 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nSezm-00GRML-3v; Fri, 11 Mar 2022 13:07:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSexW-00GQxu-QK; Fri, 11 Mar 2022 13:05:32 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id DE2DD1F46728
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647003926;
- bh=rUy82retHJplKsOR9NC+ggwiU5URGWHncAnTi8Qja1k=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=b5CclgDI9qqQWiOv0XaimrlRwcCrB7SNZ0MclyNUAxVJg9vTL1mJh7nWzNQH0jHyu
- DWkdpEasXBx1rh1imN83XkeZn4WFwtU96uOqujPKOOqJNh1h0icNuHJ+oTMj4RUH5E
- 6LHGj/bsgY1uT3tdSF/pobWJUBQ8cd7BUuXTw0GtkyuRynVTBFElMTRmUEd2Xtybr8
- RoxIKtN5sViBiUjMXKzdrRJVaNZTC1geAt6fKlnk5rZQzZiDIO4w9oZoO6PpzJJulf
- MgemYS+3NmUkEGSvA+GtFnje2Cyze0qQqC/nezugk6gaaZY3HwF0gVZiMkWgmrJ91J
- 3ZUmcSoaJxpPQ==
-Message-ID: <d1d746b3-4452-6424-a2fb-62faebcc7b92@collabora.com>
-Date: Fri, 11 Mar 2022 14:05:23 +0100
+ id 1nSezh-00GRKd-JD; Fri, 11 Mar 2022 13:07:48 +0000
+X-UUID: 0f0e40e10d7f4299bd4af1ccc75cedc6-20220311
+X-UUID: 0f0e40e10d7f4299bd4af1ccc75cedc6-20220311
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1661964287; Fri, 11 Mar 2022 06:07:37 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 11 Mar 2022 05:07:35 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 11 Mar 2022 21:07:34 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 11 Mar 2022 21:07:33 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>, "Daniel
+ Lezcano" <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>
+CC: <hsinyi@chromium.org>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
+ <linux-watchdog@vger.kernel.org>, Allen-KH Cheng
+ <Allen-KH.Cheng@mediatek.com>
+Subject: [PATCH v4 1/4] dt-bindings: timer: Add compatible for Mediatek MT8186
+Date: Fri, 11 Mar 2022 21:07:29 +0800
+Message-ID: <20220311130732.22706-2-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220311130732.22706-1-allen-kh.cheng@mediatek.com>
+References: <20220311130732.22706-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v2] remoteproc: mediatek: fix side effect of mt8195 sram
- power on
-Content-Language: en-US
-To: Tinghan Shen <tinghan.shen@mediatek.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220311123056.32689-1-tinghan.shen@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220311123056.32689-1-tinghan.shen@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_050531_213930_30CE9E39 
-X-CRM114-Status: GOOD (  28.11  )
+X-CRM114-CacheID: sfid-20220311_050745_675715_609BF041 
+X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,172 +72,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/03/22 13:30, Tinghan Shen ha scritto:
-> The definition of L1TCM_SRAM_PDN bits on mt8195 is different to mt8192.
-> 
-> L1TCM_SRAM_PDN bits[3:0] control the power of mt8195 L1TCM SRAM.
-> 
-> L1TCM_SRAM_PDN bits[7:4] control the access path to EMI for SCP.
-> These bits have to be powered on to allow EMI access for SCP.
-> 
-> Bits[7:4] also affect audio DSP because audio DSP and SCP are
-> placed on the same hardware bus. If SCP cannot access EMI, audio DSP is
-> blocked too.
-> 
-> L1TCM_SRAM_PDN bits[31:8] are not used.
-> 
-> This fix removes modification of bits[7:4] when power on/off mt8195 SCP
-> L1TCM. It's because the modification introduces a short period of time
-> blocking audio DSP to access EMI. This was not a problem until we have
-> to load both SCP module and audio DSP module. audio DSP needs to access
-> EMI because it has source/data on DRAM. Audio DSP will have unexpected
-> behavior when it accesses EMI and the SCP driver blocks the EMI path at
-> the same time.
-> 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> ---
->   drivers/remoteproc/mtk_common.h |  2 +
->   drivers/remoteproc/mtk_scp.c    | 67 +++++++++++++++++++++++++--------
->   2 files changed, 53 insertions(+), 16 deletions(-)
-> 
-> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-> index 5ff3867c72f3..ff954a06637c 100644
-> --- a/drivers/remoteproc/mtk_common.h
-> +++ b/drivers/remoteproc/mtk_common.h
-> @@ -51,6 +51,8 @@
->   #define MT8192_CORE0_WDT_IRQ		0x10030
->   #define MT8192_CORE0_WDT_CFG		0x10034
->   
-> +#define MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS		GENMASK(7, 4)
-> +
->   #define SCP_FW_VER_LEN			32
->   #define SCP_SHARE_BUFFER_SIZE		288
->   
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index dcddb33e9997..086cf8263f6c 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -365,22 +365,22 @@ static int mt8183_scp_before_load(struct mtk_scp *scp)
->   	return 0;
->   }
->   
-> -static void mt8192_power_on_sram(void __iomem *addr)
-> +static void scp_sram_power_on(void __iomem *addr, u32 reserved_mask)
->   {
->   	int i;
->   
->   	for (i = 31; i >= 0; i--)
-> -		writel(GENMASK(i, 0), addr);
-> +		writel(GENMASK(i, 0) & ~reserved_mask, addr);
->   	writel(0, addr);
->   }
->   
-> -static void mt8192_power_off_sram(void __iomem *addr)
-> +static void scp_sram_power_off(void __iomem *addr, u32 reserved_mask)
->   {
->   	int i;
->   
->   	writel(0, addr);
->   	for (i = 0; i < 32; i++)
-> -		writel(GENMASK(i, 0), addr);
-> +		writel(GENMASK(i, 0) & ~reserved_mask, addr);
->   }
->   
->   static int mt8192_scp_before_load(struct mtk_scp *scp)
-> @@ -391,11 +391,32 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
->   	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
->   
->   	/* enable SRAM clock */
-> -	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_0);
-> -	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_1);
-> -	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_2);
-> -	mt8192_power_on_sram(scp->reg_base + MT8192_L1TCM_SRAM_PDN);
-> -	mt8192_power_on_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
-> +
-> +	/* enable MPU for all memory regions */
-> +	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
-> +
-> +	return 0;
-> +}
-> +
-> +static int mt8195_scp_before_load(struct mtk_scp *scp)
-> +{
-> +	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
-> +	writel(0xff, scp->reg_base + MT8192_SCP2SPM_IPC_CLR);
-> +
-> +	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
-> +
-> +	/* enable SRAM clock */
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
-> +			  MT8195_L1TCM_SRAM_PDN_RESERVED_BITS);
+From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 
-This is supposed to be MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS.
+This commit adds dt-binding documentation of timer for Mediatek MT8186 SoC
+Platform.
 
-> +	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
->   
->   	/* enable MPU for all memory regions */
->   	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
-> @@ -551,11 +572,25 @@ static void mt8183_scp_stop(struct mtk_scp *scp)
->   static void mt8192_scp_stop(struct mtk_scp *scp)
->   {
->   	/* Disable SRAM clock */
-> -	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_0);
-> -	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_1);
-> -	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_2);
-> -	mt8192_power_off_sram(scp->reg_base + MT8192_L1TCM_SRAM_PDN);
-> -	mt8192_power_off_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
-> +
-> +	/* Disable SCP watchdog */
-> +	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
-> +}
-> +
-> +static void mt8195_scp_stop(struct mtk_scp *scp)
-> +{
-> +	/* Disable SRAM clock */
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
-> +			   MT8195_L1TCM_SRAM_PDN_RESERVED_BITS);
+Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+---
+ Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-same here.
-
-> +	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
->   
->   	/* Disable SCP watchdog */
->   	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
-> @@ -888,11 +923,11 @@ static const struct mtk_scp_of_data mt8192_of_data = {
->   
->   static const struct mtk_scp_of_data mt8195_of_data = {
->   	.scp_clk_get = mt8195_scp_clk_get,
-> -	.scp_before_load = mt8192_scp_before_load,
-> +	.scp_before_load = mt8195_scp_before_load,
->   	.scp_irq_handler = mt8192_scp_irq_handler,
->   	.scp_reset_assert = mt8192_scp_reset_assert,
->   	.scp_reset_deassert = mt8192_scp_reset_deassert,
-> -	.scp_stop = mt8192_scp_stop,
-> +	.scp_stop = mt8195_scp_stop,
->   	.scp_da_to_va = mt8192_scp_da_to_va,
->   	.host_to_scp_reg = MT8192_GIPC_IN_SET,
->   	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
+diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+index fbd76a8e023b..6f1f9dba6e88 100644
+--- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
++++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+@@ -23,6 +23,7 @@ Required properties:
+ 
+ 	For those SoCs that use SYST
+ 	* "mediatek,mt8183-timer" for MT8183 compatible timers (SYST)
++	* "mediatek,mt8186-timer" for MT8186 compatible timers (SYST)
+ 	* "mediatek,mt8192-timer" for MT8192 compatible timers (SYST)
+ 	* "mediatek,mt8195-timer" for MT8195 compatible timers (SYST)
+ 	* "mediatek,mt7629-timer" for MT7629 compatible timers (SYST)
+-- 
+2.18.0
 
 
 _______________________________________________
