@@ -4,79 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7CFFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 10:33:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DCEAC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 10:37:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Lt04FcobeccFkwm0pbtL1PdtHaYZAQj8iSwBTn5U+Tg=; b=RKDuMKq4rI1KXE
-	qe3NoWu7p4Q37kXorf5TFM0jM+xTeyjIYcSXXc0L9QsUugi/0I0LtitPVeKHI0y+XNo/qAY4UYGV+
-	oa2o2ZfR4/YMHMxEy6f/X44NsP/KVjs3rDkD7JXaI6aepwcI3dhDo1HQD5lMRztSdMfzpjUsEvGgB
-	zqNv4d4efhsG5t36mElPR9xXvoRAb30R+3f0F+qaWs+ZvBmXABjsOBmZ/jMaWzhDa4XekassL/uRs
-	Ax8180p8HwzWdD1wvT12BHum1rGzBRWu7gxcxuL+LtU3cCVCLd2aYQxn+fWf9iYHOzYMRMdOLCwAi
-	CcIGj9a0BgeFa6AsLFCw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fUXPyGUSVb1W9jXqSHuyygwA9qkwRIAuVS85w76I2XQ=; b=KPMAZY/qyf6XBK
+	4tY/j6+zSmABQC5qO8JsSLXWLxAph9+OUgl3YYZkIoU2Pdyx/MWKOhaY545YSAnTKqIxrHTgGQb8u
+	/nzdE5/SmD6lyqLqxxxFlETqjS50fdDBMuNwH6bDCHboYGgXkdUmmOp2vopks6rOialCm9aZUKoWF
+	3FWZi5m0sZ8FBMc1h0djrm711qIs2b8T7hTpubn/4y8rZv1DFKJygmJyDvZYbmHgBAT0UXM+raQFe
+	i349DsPuT8pdm1OTEjA2BMUB2ZxzmoIJs5+5/tb2miqN6LEzyF1s3ha5lYb7vKOHCQAalifR2hn91
+	d09SGyMjG1sNZuEvfnkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nScaV-00G11I-8U; Fri, 11 Mar 2022 10:33:35 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1nSceQ-00G2dj-BU; Fri, 11 Mar 2022 10:37:38 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nScaS-00G0zm-Hu
- for linux-mediatek@lists.infradead.org; Fri, 11 Mar 2022 10:33:34 +0000
-Received: by mail-wm1-x333.google.com with SMTP id
- r187-20020a1c2bc4000000b003810e6b192aso5074259wmr.1
- for <linux-mediatek@lists.infradead.org>; Fri, 11 Mar 2022 02:33:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=tHzWauNR3dX3JRCdUQ2Wh7sQFhVa1g70Y/fsse/k3yk=;
- b=OgmwPVe3iTZnA/fxf5BvpufbW18UFWKBkE6DauL5sDY3H5EGsXZuQnYiUcls3Xp/Yb
- ngodX1pS/phKVnyzuXFIoy84AfunMsefM49Ss1BSHYZl6/FrupaTRIDnlfY0f8IBKgXd
- 7Sb27GyhcyaZiEt0ybiWuBKbtISdNMGVC5OqP/hs6OCZ0k6uAggfx7ulG284ELodkOSO
- b9BmifiA+AEWhfDJsB+JV8hPlwMmAQCKiHeN5IdCpB9fFof9PgSNmRPrZHLq2qijnyLW
- kIzOHxQUZjxBbpRfgPQRVk0EUp+1ki1OYhihN8GHetTjVQ0uIC4DknrszIyxGchHGiaL
- VVRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=tHzWauNR3dX3JRCdUQ2Wh7sQFhVa1g70Y/fsse/k3yk=;
- b=yE6EmG+Npl19F3ixbyyresXATb8iW3m5GqZe9TjZA1uHNGZASPDHa3dsPoPRPlhK7I
- +NTfTXVQzZ0kkrE4LW/WYbOuxuvQmLnMk+390fZTXxcxqYXPgysaPsvCdjIMfCADxZuJ
- FWNiJCtEaT24FzWpgE3nLzQgJbZrHnNS0Hhou4zncaUNmPahrhkE5jhgvOPjaz5/Z52X
- cGkQbrGQkI7Z4eNOP+9CVx3lJwO2ztGwfhC87KJds+OQidtybheFXB7JqMC59iEnxMa/
- 2+kgjnNzJDhkwA1ncKSTjv0aKN6aQiGbe9H8Z2pFQ5qwKotKlz+e7GqZFK3Ix8+XW43j
- dmWQ==
-X-Gm-Message-State: AOAM533zyCYWOVQEtvV4DnuEie4AW8OTfFoqGoI21GugFgGbzzN8tqqF
- ThyLAFLJIW4I710oWUuIaIGLog==
-X-Google-Smtp-Source: ABdhPJwR2NyG/o0epriqRgWZiafPO4iha8N9ZD/x+FYDnBCO3aAzDwH1hjTV0yNCeh6rbGezo3zDgQ==
-X-Received: by 2002:a05:600c:4615:b0:386:9f67:8c63 with SMTP id
- m21-20020a05600c461500b003869f678c63mr15020537wmo.12.1646994809922; 
- Fri, 11 Mar 2022 02:33:29 -0800 (PST)
-Received: from xps-9300.baylibre
- (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
- by smtp.gmail.com with ESMTPSA id
- e10-20020a056000178a00b0020393321552sm2264138wrg.85.2022.03.11.02.33.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 11 Mar 2022 02:33:29 -0800 (PST)
-From: Alexandre Bailon <abailon@baylibre.com>
-To: chaotian.jing@mediatek.com, ulf.hansson@linaro.org, matthias.bgg@gmail.com
-Cc: linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Alexandre Bailon <abailon@baylibre.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2] mmc: mtk-sd: Silence delay phase calculation debug log
-Date: Fri, 11 Mar 2022 11:33:20 +0100
-Message-Id: <20220311103320.3072171-1-abailon@baylibre.com>
-X-Mailer: git-send-email 2.34.1
+ id 1nScdY-00G2H1-8j; Fri, 11 Mar 2022 10:36:45 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 59A65619EE;
+ Fri, 11 Mar 2022 10:36:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 370C1C340E9;
+ Fri, 11 Mar 2022 10:36:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1646995002;
+ bh=u/kSXHMnN1+8U8Bxqk12Hxiaac0bWzzSiArit+3M1pI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=cRLPr4iyT9paIUvttcU5ai23HQDgfsYOs7z6XuN2Sz0mUYoEN0xMKxpoKcuqgF/me
+ VFfkjVcGII0WVu1b/br3JPEd1aO3wlO1AF0AnmAl8ddehFqGtLOArHi766J/AyZEnH
+ r/Klyi/uiwpfT63OgS827fjLeMb3HKiZlzYtnv1GM6OQAJmTY+sMXgtXwu3NzOYU8l
+ pf8WCuORXZUG+QJbiI0hxdzAVJV6uPPcQ58gSnK8M9fh14m1DZQ00VgGXTa9yJtPn1
+ 9/d+2GIG48OT04vmAAAACXsSVyt3nmvpOkugVZ1ZSM6xC3l7rJzuzCbACqwFT8Ky51
+ Ns9phry68Hsng==
+Date: Fri, 11 Mar 2022 16:06:38 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
+Cc: Sean Wang <sean.wang@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Andy Shevchenko <andy.shevchenko@gmail.com>,
+ LAK <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH v2 0/3] dmaengine: Use platform_get_irq*() variants to
+ fetch IRQ's
+Message-ID: <YismNmydtp3KEmo+@matsya>
+References: <20220104163519.21929-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
+ <CA+V-a8sRizPbhG1qrFy1SLhWWuL2AM4ZM68y_jb4cg0_G5VPUA@mail.gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CA+V-a8sRizPbhG1qrFy1SLhWWuL2AM4ZM68y_jb4cg0_G5VPUA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_023332_602407_6BB8F476 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220311_023644_371369_E7BE1459 
+X-CRM114-Status: GOOD (  17.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,36 +78,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The driver prints the following log everytime data is written to RPMB:
-mtk-msdc 11230000.mmc: phase: [map:ffffffff] [maxlen:32] [final:10]
+On 09-03-22, 11:37, Lad, Prabhakar wrote:
+> Hi Sean/Vinod,
+> 
+> Not sure how I missed you to add in the To/CC list.
+> 
+> On Tue, Jan 4, 2022 at 4:35 PM Lad Prabhakar
+> <prabhakar.mahadev-lad.rj@bp.renesas.com> wrote:
+> >
+> > Hi All,
+> >
+> > This patch series aims to drop using platform_get_resource() for IRQ types
+> > in preparation for removal of static setup of IRQ resource from DT core
+> > code.
+> >
+> > Dropping usage of platform_get_resource() was agreed based on
+> > the discussion [0].
+> >
+> > [0] https://patchwork.kernel.org/project/linux-renesas-soc/
+> > patch/20211209001056.29774-1-prabhakar.mahadev-lad.rj@bp.renesas.com/
+> >
+> > Cheers,
+> > Prabhakar
+> >
+> > Lad Prabhakar (3):
+> >   dmaengine: nbpfaxi: Use platform_get_irq_optional() to get the
+> >     interrupt
+> >   dmaengine: mediatek: mtk-hsdma: Use platform_get_irq() to get the
+> >     interrupt
+> >   dmaengine: mediatek-cqdma: Use platform_get_irq() to get the interrupt
+> >
+> >  drivers/dma/mediatek/mtk-cqdma.c | 12 ++++--------
+> >  drivers/dma/mediatek/mtk-hsdma.c | 11 ++++-------
+> >  drivers/dma/nbpfaxi.c            | 14 ++++++--------
+> >  3 files changed, 14 insertions(+), 23 deletions(-)
+> >
+> These patches aren't in -next yet. Do you want me to resend them?
 
-dev_info is used to print that log but it seems that log is only
-useful for debbuging. Use dev_dbg instead of dev_info.
+Yes that would be ideal! But after upcoming merge window closes
 
-Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/mmc/host/mtk-sd.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index d5a9c269d492..05c8b4de46f3 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -1914,8 +1914,8 @@ static struct msdc_delay_phase get_best_delay(struct msdc_host *host, u32 delay)
- 		final_phase = (start_final + len_final / 3) % PAD_DELAY_MAX;
- 	else
- 		final_phase = (start_final + len_final / 2) % PAD_DELAY_MAX;
--	dev_info(host->dev, "phase: [map:%x] [maxlen:%d] [final:%d]\n",
--		 delay, len_final, final_phase);
-+	dev_dbg(host->dev, "phase: [map:%x] [maxlen:%d] [final:%d]\n",
-+		delay, len_final, final_phase);
- 
- 	delay_phase.maxlen = len_final;
- 	delay_phase.start = start_final;
 -- 
-2.34.1
-
+~Vinod
 
 _______________________________________________
 Linux-mediatek mailing list
