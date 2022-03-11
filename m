@@ -4,76 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED39EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 15:51:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F025CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 15:52:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T2btlBP4BXpn4kOwEoqZExPSSR6a2JGcaSWdysEn7c0=; b=sX22F9HZhk+Z5/
-	l7fUQh8JIwUNZhCjIkZRKAfAD/tZ2CIzaeb63c9CamY99rKsKopjjuRDApWCgl1iSpsz1SxPLISgv
-	LL2UXxZkMK0Im079z64v3AeGXoTRtLdrpigE4LRULTB58yClHZJfT+bZ/q48CVLeFnm0fRLo+YG5f
-	FGQlUDFVM5u7j5EHCpd4g6HGb+BiO0VifVKplVTZCYP9Au6128IVWrVZIL0armmVvJJ3H0rE6/ueR
-	fvC20A2GZrh5xgAjHIwXaOj+O2wTS91SX23E5csRyC/6gtGRJxxjSRpOGUG3z+C6wyj9AUi01QzPL
-	DivkpuPhnOEuBiwDlxAw==;
+	List-Owner; bh=GyemIGKyeLsbfANuYqcJr9L31/LZPSp/cfu13iYDuuY=; b=G1C44qWXr3i4lT
+	eAKQInpe60IPQABmApnWqC8GBq158fDdcw4OePQ8Zr8S1MKLbGNYROmWQaow+7EcioXEiS15z2B7g
+	VBU8O0mV5wQHee4TohRrq4/Ibtm7NieXu+A3Ri2Rhmt4z2wTihnUiV204CbSWtasxElb3eG8MuJkl
+	1rVOqtPSgTOIrLDjd+jWMsJGHF5t7eWepuDK0DRVKPsP51SlvejKKYPbCMBZDMhTNwfBv1MfI8gGG
+	kB75e2G84eTyP5hfIaETIQX1fVmoyMQyZoEdMUM4jpmblVFRyU320sx36rftQYUsRiNX8ZV+cv7BO
+	5zdXeU6syJmtlvfVpvQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nShYC-00HCrb-3e; Fri, 11 Mar 2022 15:51:32 +0000
-Received: from mail-oi1-f172.google.com ([209.85.167.172])
+	id 1nShZS-00HDTf-RV; Fri, 11 Mar 2022 15:52:50 +0000
+Received: from mail-oo1-f41.google.com ([209.85.161.41])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nShXh-00HCbc-Bp; Fri, 11 Mar 2022 15:51:02 +0000
-Received: by mail-oi1-f172.google.com with SMTP id o83so2308479oif.0;
- Fri, 11 Mar 2022 07:51:01 -0800 (PST)
+ id 1nShXx-00HCjc-3N; Fri, 11 Mar 2022 15:51:18 +0000
+Received: by mail-oo1-f41.google.com with SMTP id
+ s203-20020a4a3bd4000000b003191c2dcbe8so10915976oos.9; 
+ Fri, 11 Mar 2022 07:51:15 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=6NEUsk0pZcf1ZvCBxSl99gFtqxiz2JOvHrLo+iX2PNw=;
- b=66RKGgMtAAOlmCG6dGJutKgm+Wy8eYcK5Nr/VBEoUta67IrVipksxri0O55FNyonfl
- 7k6V6gnXmtVYrbk21sy+ly05/AOfoarceCaWV1Fgh1RUkA4QFbtDbtREiJVI7tBT3XMI
- TaF9TrsICfRzYudTuRa96C93uyeur+LQkfICHzYSHjFqukuBAaYiYVmp3Sj1psKxy9JJ
- TjaboniL7FgRp1FYFfrzJVjnsoTO7hy702vb68ohsPaINasspqEBk4bvvY9+bYx01ZQq
- vKoyTWYgISFwB2oApPTmkguDF2BYespWZRt5zNAsRbAnX9Ld+55SCCUjfcxYSLZwxTeU
- xZwg==
-X-Gm-Message-State: AOAM533+vQ7J+xZ1lFj3Gapl/G63yexuhPZhSqlIRSxuwhkZMrKN/TuL
- GJ8OLq+YfWuSfg8C/7rNoQ==
-X-Google-Smtp-Source: ABdhPJz2tFjP0i1YZqYFU0hfa5NCSKGTYu5YnNfXEZ09NUTvDUZh3jhw1aVDauubxBUJCcGUqbsMog==
-X-Received: by 2002:a05:6808:2c4:b0:2d7:968c:dd37 with SMTP id
- a4-20020a05680802c400b002d7968cdd37mr13361942oid.146.1647013860505; 
- Fri, 11 Mar 2022 07:51:00 -0800 (PST)
+ bh=hPWhM8gN2fHMMyrikld9pWWRJCFMx1eu3IDjtAq9vSg=;
+ b=E9VRCjWL5DRuYE4g3ZcdZXUB6PzvbpZoAFfhdcCwyuz1MGbvZioktPY86v5qNU9TLk
+ asFyz/8BYFvPW6wIxt6fXpnDmvWsNzAknSaoE6jFYvySd9H4+gefYLxyEmqir8D/Zw9s
+ U3L1D8sAovDlqqmdBzEcpmoe2aNDeaRiLWba1KviEVcsGVivoaGLo1xWmWOiH802cxoP
+ 06H8ZhIYF510sIqTwMQiXsKKE/78oUzxJ2yH7vibXg8LDi85O3pifi9SYOSgM7Tq08nq
+ 9QOiAKSiT21YsUt4nCQRTvhFx97QxcvUdXuu9G+Hj4x3n3Hb4SlxyqBBh94mdaXjkw74
+ OCYQ==
+X-Gm-Message-State: AOAM5302FPY3d4MxSg09NEBO788I73yi6FtJot8KWJwSf6jZdgRPIIb4
+ 1fVvLznaCPbWZ/Tbg6dY3Q==
+X-Google-Smtp-Source: ABdhPJz2sr1dPO2TtCSOl0PyLmP0mZIX3n1FVaxV/vXDtF9QhVnqHd4tRPJROZ4bwmk+VGMkC8zkjw==
+X-Received: by 2002:a05:6870:2318:b0:d9:a0fb:cec5 with SMTP id
+ w24-20020a056870231800b000d9a0fbcec5mr11325663oao.77.1647013875390; 
+ Fri, 11 Mar 2022 07:51:15 -0800 (PST)
 Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
  [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- p67-20020acabf46000000b002d97bda3868sm3886508oif.45.2022.03.11.07.50.59
+ v10-20020a9d7d0a000000b005b229f99815sm3660710otn.80.2022.03.11.07.51.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 11 Mar 2022 07:50:59 -0800 (PST)
-Received: (nullmailer pid 3867630 invoked by uid 1000);
- Fri, 11 Mar 2022 15:50:58 -0000
-Date: Fri, 11 Mar 2022 09:50:58 -0600
+ Fri, 11 Mar 2022 07:51:14 -0800 (PST)
+Received: (nullmailer pid 3868129 invoked by uid 1000);
+ Fri, 11 Mar 2022 15:51:13 -0000
+Date: Fri, 11 Mar 2022 09:51:13 -0600
 From: Rob Herring <robh@kernel.org>
 To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
- Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Thomas Gleixner <tglx@linutronix.de>, linux-mediatek@lists.infradead.org,
- linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
- Kishon Vijay Abraham I <kishon@ti.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, hsinyi@chromium.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
+Cc: Thomas Gleixner <tglx@linutronix.de>, Guenter Roeck <linux@roeck-us.net>,
+ linux-watchdog@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ devicetree@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org,
+ Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>, hsinyi@chromium.org,
+ Wim Van Sebroeck <wim@linux-watchdog.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH v4 2/4] dt-bindings: watchdog: Add compatible for
- Mediatek MT8186
-Message-ID: <Yitv4sRQMuewLcfT@robh.at.kernel.org>
+ linux-arm-kernel@lists.infradead.org,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 3/4] dt-bindings: arm: Add compatible for Mediatek
+ MT8186
+Message-ID: <Yitv8TKk8KJkVg9Y@robh.at.kernel.org>
 References: <20220311130732.22706-1-allen-kh.cheng@mediatek.com>
- <20220311130732.22706-3-allen-kh.cheng@mediatek.com>
+ <20220311130732.22706-4-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220311130732.22706-3-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220311130732.22706-4-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_075101_447505_E8F2AC75 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20220311_075117_175732_AA6F2BAD 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,16 +91,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 11 Mar 2022 21:07:30 +0800, Allen-KH Cheng wrote:
+On Fri, 11 Mar 2022 21:07:31 +0800, Allen-KH Cheng wrote:
 > From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 > 
-> This commit adds dt-binding documentation of watchdog for Mediatek
-> MT8186 SoC Platform.
+> This commit adds dt-binding documentation for the Mediatek MT8186
+> reference board.
 > 
 > Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
->  1 file changed, 1 insertion(+)
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+>  1 file changed, 4 insertions(+)
 > 
 
 Acked-by: Rob Herring <robh@kernel.org>
