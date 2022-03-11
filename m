@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89A31C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 01:51:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B4D6C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 01:55:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eKa/75aiVpH/iDQJAKRkj0+wgMgLvmVBIPZ1kwRBB3E=; b=GnukjtM91KB/2k
-	xTd4uArjuFTYgY7chH9BDejmyabPyTBYpGvTiGf3uBIKJzjRI6iUOMbGg06naZS+Rr+1PXRBMAgGl
-	vyfZfAAgbDgtptSoibm4UyUFLdP7nQSauXat5sh6gD+eH6E/wkJPW0hXzS6qp/3BmeIEwhPoJjSQj
-	pybu/KWRg+8s1MwNth9d/W+OaiSRgMUrlnwu46Zo9ZKfvkCDHtAx+LZevP0mLWDXYZrKoYR/xngki
-	ToWyCLLXkY+U63Hj6thNS7vkgxEXJlZj82ty5ojjsvdH1kuX9laf1+H9NAgGngfHNzRDBXt5jDoCX
-	vfqZPCdMR9aky6yhFb0Q==;
+	List-Owner; bh=LAgbL96ch4z3KmAAtl7zu6pqq2zCXfIVcqQsPgtHd4A=; b=KMi8jffsxPTJay
+	piZx3vQ/QPnAWUrgnkNU2wlY1gJj+kTti4LhsnVQIKdEkn7OpjNf3yKMlUkBAsEzPrY03onTRfyNh
+	hegjrBYFq+QY3sYAhg3VyBS9oWWDHuXDL2ob4Ch/fs9qPdPofMz0x0PegYaULR3nixMe2cIBAZQ5L
+	+z75DAi2v06javcMFLXOboPMLVV7qVxLzYQzPWPbN5mkSOPLag/KRI8hvlYXmELGFeQ4CStaiOwYb
+	+VSQh2xF+3itPE/t8NuAJB0onzvjA5Pdhnxvs4Ys6w6gErH7Gk3Mn08C1dz6LX7CSIf0fCq0zZuRf
+	atZpFxOgZ8/J5o185fGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSUQj-00EX4t-MX; Fri, 11 Mar 2022 01:50:57 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nSUVO-00EY1a-Ji; Fri, 11 Mar 2022 01:55:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSUQX-00EX2x-5Z; Fri, 11 Mar 2022 01:50:46 +0000
-X-UUID: 03fd05da0af647ce8115e7077bb54ec0-20220310
-X-UUID: 03fd05da0af647ce8115e7077bb54ec0-20220310
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1nSUUw-00EXlP-LT; Fri, 11 Mar 2022 01:55:20 +0000
+X-UUID: df59fea9275e4568b447ced188cfadf5-20220310
+X-UUID: df59fea9275e4568b447ced188cfadf5-20220310
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2013685090; Thu, 10 Mar 2022 18:50:40 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 10 Mar 2022 17:50:39 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Mar 2022 09:50:37 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 11 Mar 2022 09:50:37 +0800
-Message-ID: <b9c16bac0268fd8646b3e359f07303cd1c7d9041.camel@mediatek.com>
-Subject: Re: [PATCH v14 22/22] arm64: dts: mt8195: add display node for vdosys1
+ with ESMTP id 1156465648; Thu, 10 Mar 2022 18:55:11 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 10 Mar 2022 17:55:10 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 11 Mar 2022 09:55:09 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 11 Mar 2022 09:55:09 +0800
 From: Nancy.Lin <nancy.lin@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rob
- Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, <linux@roeck-us.net>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
+ Zabel" <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, "AngeloGioacchino
+ Del Regno" <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
 CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
  Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>, Yongqiang Niu
- <yongqiang.niu@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <dri-devel@lists.freedesktop.org>,
- <llvm@lists.linux.dev>, <singo.chang@mediatek.com>,
- <srv_heupstream@mediatek.com>,
+ "Nancy . Lin" <nancy.lin@mediatek.com>, "jason-jh . lin"
+ <jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
+ <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 11 Mar 2022 09:50:37 +0800
-In-Reply-To: <b9404776-b5c7-7321-f352-1995dafa1565@collabora.com>
-References: <20220310035515.16881-1-nancy.lin@mediatek.com>
- <20220310035515.16881-23-nancy.lin@mediatek.com>
- <b9404776-b5c7-7321-f352-1995dafa1565@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+Subject: [PATCH v15 11/22] drm/mediatek: add display merge advance config API
+ for MT8195
+Date: Fri, 11 Mar 2022 09:54:55 +0800
+Message-ID: <20220311015506.11232-12-nancy.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220311015506.11232-1-nancy.lin@mediatek.com>
+References: <20220311015506.11232-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220310_175045_247329_AB1ABA20 
-X-CRM114-Status: GOOD (  16.82  )
+X-CRM114-CacheID: sfid-20220310_175518_761996_53242520 
+X-CRM114-Status: GOOD (  17.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,122 +81,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+Add merge new advance config API. The original merge API is
+mtk_ddp_comp_funcs function prototype. The API interface parameters
+cannot be modified, so add a new config API for extension. This is
+the preparation for ovl_adaptor merge control.
 
-Thanks for the review.
+Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  3 ++
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c | 52 ++++++++++++++++++++---
+ 2 files changed, 48 insertions(+), 7 deletions(-)
 
-On Thu, 2022-03-10 at 11:53 +0100, AngeloGioacchino Del Regno wrote:
-> Il 10/03/22 04:55, Nancy.Lin ha scritto:
-> > Add display node for vdosys1.
-> > 
-> > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 223
-> > +++++++++++++++++++++++
-> >   1 file changed, 223 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > index dbca699bba05..e650ec759235 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> 
-> 
-> ..snip..
-> 
-> > +
-> > +		ethdr0: ethdr@1c114000 {
-> > +			compatible = "mediatek,mt8195-disp-ethdr";
-> > +			reg = <0 0x1c114000 0 0x1000>,
-> > +			      <0 0x1c115000 0 0x1000>,
-> > +			      <0 0x1c117000 0 0x1000>,
-> > +			      <0 0x1c119000 0 0x1000>,
-> > +			      <0 0x1c11A000 0 0x1000>,
-> > +			      <0 0x1c11B000 0 0x1000>,
-> > +			      <0 0x1c11C000 0 0x1000>;
-> 
-> Hello Nancy,
-> looks like you partially forgot to use lower-case hex here...
-> 
-> 0x1c11a000 0x1c11b000 0x1c11c000
-> 
-> > +			reg-names = "mixer", "vdo_fe0", "vdo_fe1",
-> > "gfx_fe0", "gfx_fe1",
-> > +				    "vdo_be", "adl_ds";
-> > +			mediatek,gce-client-reg = <&gce0
-> > SUBSYS_1c11XXXX 0x4000 0x1000>,
-> > +						  <&gce0
-> > SUBSYS_1c11XXXX 0x5000 0x1000>,
-> > +						  <&gce0
-> > SUBSYS_1c11XXXX 0x7000 0x1000>,
-> > +						  <&gce0
-> > SUBSYS_1c11XXXX 0x9000 0x1000>,
-> > +						  <&gce0
-> > SUBSYS_1c11XXXX 0xA000 0x1000>,
-> > +						  <&gce0
-> > SUBSYS_1c11XXXX 0xB000 0x1000>,
-> > +						  <&gce0
-> > SUBSYS_1c11XXXX 0xC000 0x1000>;
-> 
-> ...and here too: 0xa000 0xb000 0xc000
-> 
-> Please fix that, after which, you can add my
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> 
-
-OK, I will fix it. Thank you.
-
-Regards,
-Nancy
-> > +			clocks = <&vdosys1 CLK_VDO1_DISP_MIXER>,
-> > +				 <&vdosys1 CLK_VDO1_HDR_VDO_FE0>,
-> > +				 <&vdosys1 CLK_VDO1_HDR_VDO_FE1>,
-> > +				 <&vdosys1 CLK_VDO1_HDR_GFX_FE0>,
-> > +				 <&vdosys1 CLK_VDO1_HDR_GFX_FE1>,
-> > +				 <&vdosys1 CLK_VDO1_HDR_VDO_BE>,
-> > +				 <&vdosys1 CLK_VDO1_26M_SLOW>,
-> > +				 <&vdosys1
-> > CLK_VDO1_HDR_VDO_FE0_DL_ASYNC>,
-> > +				 <&vdosys1
-> > CLK_VDO1_HDR_VDO_FE1_DL_ASYNC>,
-> > +				 <&vdosys1
-> > CLK_VDO1_HDR_GFX_FE0_DL_ASYNC>,
-> > +				 <&vdosys1
-> > CLK_VDO1_HDR_GFX_FE1_DL_ASYNC>,
-> > +				 <&vdosys1
-> > CLK_VDO1_HDR_VDO_BE_DL_ASYNC>,
-> > +				 <&topckgen CLK_TOP_ETHDR>;
-> > +			clock-names = "mixer", "vdo_fe0", "vdo_fe1",
-> > "gfx_fe0", "gfx_fe1",
-> > +				      "vdo_be", "adl_ds",
-> > "vdo_fe0_async", "vdo_fe1_async",
-> > +				      "gfx_fe0_async",
-> > "gfx_fe1_async","vdo_be_async",
-> > +				      "ethdr_top";
-> > +			power-domains = <&spm
-> > MT8195_POWER_DOMAIN_VDOSYS1>;
-> > +			iommus = <&iommu_vpp M4U_PORT_L3_HDR_DS>,
-> > +				 <&iommu_vpp M4U_PORT_L3_HDR_ADL>;
-> > +			interrupts = <GIC_SPI 517 IRQ_TYPE_LEVEL_HIGH
-> > 0>; /* disp mixer */
-> > +			resets = <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE0_DL_ASYNC>,
-> > +				 <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE1_DL_ASYNC>,
-> > +				 <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE0_DL_ASYNC>,
-> > +				 <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE1_DL_ASYNC>,
-> > +				 <&vdosys1
-> > MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_BE_DL_ASYNC>;
-> > +		};
-> > +
-> >   	};
-> >   };
-> 
-> 
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index b3a372cab0bd..c2de53a5892e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -63,6 +63,9 @@ void mtk_merge_config(struct device *dev, unsigned int width,
+ 		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+ void mtk_merge_start(struct device *dev);
+ void mtk_merge_stop(struct device *dev);
++void mtk_merge_advance_config(struct device *dev, unsigned int l_w, unsigned int r_w,
++			      unsigned int h, unsigned int vrefresh, unsigned int bpc,
++			      struct cmdq_pkt *cmdq_pkt);
+ 
+ void mtk_ovl_bgclr_in_on(struct device *dev);
+ void mtk_ovl_bgclr_in_off(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+index 45face638153..40da0555416d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+@@ -17,6 +17,7 @@
+ #define DISP_REG_MERGE_CTRL		0x000
+ #define MERGE_EN				1
+ #define DISP_REG_MERGE_CFG_0		0x010
++#define DISP_REG_MERGE_CFG_1		0x014
+ #define DISP_REG_MERGE_CFG_4		0x020
+ #define DISP_REG_MERGE_CFG_10		0x038
+ /* no swap */
+@@ -25,9 +26,12 @@
+ #define DISP_REG_MERGE_CFG_12		0x040
+ #define CFG_10_10_1PI_2PO_BUF_MODE		6
+ #define CFG_10_10_2PI_2PO_BUF_MODE		8
++#define CFG_11_10_1PI_2PO_MERGE			18
+ #define FLD_CFG_MERGE_MODE			GENMASK(4, 0)
+ #define DISP_REG_MERGE_CFG_24		0x070
+ #define DISP_REG_MERGE_CFG_25		0x074
++#define DISP_REG_MERGE_CFG_26		0x078
++#define DISP_REG_MERGE_CFG_27		0x07c
+ #define DISP_REG_MERGE_CFG_36		0x0a0
+ #define ULTRA_EN				BIT(0)
+ #define PREULTRA_EN				BIT(4)
+@@ -98,12 +102,19 @@ static void mtk_merge_fifo_setting(struct mtk_disp_merge *priv,
+ void mtk_merge_config(struct device *dev, unsigned int w,
+ 		      unsigned int h, unsigned int vrefresh,
+ 		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
++{
++	mtk_merge_advance_config(dev, w, 0, h, vrefresh, bpc, cmdq_pkt);
++}
++
++void mtk_merge_advance_config(struct device *dev, unsigned int l_w, unsigned int r_w,
++			      unsigned int h, unsigned int vrefresh, unsigned int bpc,
++			      struct cmdq_pkt *cmdq_pkt)
+ {
+ 	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
+ 	unsigned int mode = CFG_10_10_1PI_2PO_BUF_MODE;
+ 
+-	if (!h || !w) {
+-		dev_err(dev, "%s: input width(%d) or height(%d) is invalid\n", __func__, w, h);
++	if (!h || !l_w) {
++		dev_err(dev, "%s: input width(%d) or height(%d) is invalid\n", __func__, l_w, h);
+ 		return;
+ 	}
+ 
+@@ -112,14 +123,41 @@ void mtk_merge_config(struct device *dev, unsigned int w,
+ 		mode = CFG_10_10_2PI_2PO_BUF_MODE;
+ 	}
+ 
+-	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
++	if (r_w)
++		mode = CFG_11_10_1PI_2PO_MERGE;
++
++	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
+ 		      DISP_REG_MERGE_CFG_0);
+-	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
++	mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MERGE_CFG_1);
++	mtk_ddp_write(cmdq_pkt, h << 16 | (l_w + r_w), &priv->cmdq_reg, priv->regs,
+ 		      DISP_REG_MERGE_CFG_4);
+-	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
++	/*
++	 * DISP_REG_MERGE_CFG_24 is merge SRAM0 w/h
++	 * DISP_REG_MERGE_CFG_25 is merge SRAM1 w/h.
++	 * If r_w > 0, the merge is in merge mode (input0 and input1 merge together),
++	 * the input0 goes to SRAM0, and input1 goes to SRAM1.
++	 * If r_w = 0, the merge is in buffer mode, the input goes through SRAM0 and
++	 * then to SRAM1. Both SRAM0 and SRAM1 are set to the same size.
++	 */
++	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
+ 		      DISP_REG_MERGE_CFG_24);
+-	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
+-		      DISP_REG_MERGE_CFG_25);
++	if (r_w)
++		mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv->regs,
++			      DISP_REG_MERGE_CFG_25);
++	else
++		mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
++			      DISP_REG_MERGE_CFG_25);
++
++	/*
++	 * DISP_REG_MERGE_CFG_26 and DISP_REG_MERGE_CFG_27 is only used in LR merge.
++	 * Only take effect when the merge is setting to merge mode.
++	 */
++	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MERGE_CFG_26);
++	mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MERGE_CFG_27);
++
+ 	mtk_ddp_write_mask(cmdq_pkt, SWAP_MODE, &priv->cmdq_reg, priv->regs,
+ 			   DISP_REG_MERGE_CFG_10, FLD_SWAP_MODE);
+ 	mtk_ddp_write_mask(cmdq_pkt, mode, &priv->cmdq_reg, priv->regs,
+-- 
+2.18.0
 
 
 _______________________________________________
