@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38250C433F5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96410C433EF
 	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Mar 2022 11:53:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,34 +12,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M5LehTk0G3T0/cIStro3CvNRfeRe89E884o+E1FhOaQ=; b=V+oaz+uG2kdpY5
-	aIDntnBRhQpcVx71NbWXMUPKLaBYXunXWMwFh4DcDML9BORHFGE5O6B4WkMh1fZORKYhIO4D3W4A3
-	IYAfOW5GYzo5mev5UVZk6822KbYUmWKXzIkpBS1KPrM+UAwr4nnb3xQoTtbox8lcMGQc7c6rjirHC
-	Q2djN49OucNSjjLg/+eaSi7Qsbk4Cdbk9wtp9yoDRVJSSl4bvWRv2vN0jYjYrpXgsa6fF1tDwBi+O
-	UKqG95abfeeZ7TUxKPSk2tdIUyuzMJ21LI2WxaWLHii4BAMTM4Y1B8Z+Rx/uzJ3iamJmNBc/hH/bs
-	CDv1aYk0VcTOE6owscvA==;
+	List-Owner; bh=jBdf5AC112QMsiDks0U4Vod3sM6B5P0HBqeeABTSFQs=; b=UX7Odi+8tHkyTy
+	5oCOXHY/EiKSIcKPTLfQ8OiuW2e7eLuLZFPcA7zvKptjtHuMxrfQDJnEfgmHW0EniDDPYfuGaUbOE
+	vtIBv2Ty05W6FvrSQJh85C6rbCIRfWDsIQ1nW50LF5DlqTjYya2kRmcgjtrpi6BRwpSOxtE1eHMVL
+	IBT99AyXAY2I/vlbly7J39s46XbIsSW3Q3Kv+XYuVdCt0LvNEQWjzAcg5pfiEsIVypf6/+kp1887l
+	p8v55hL8U500ys2YJVbbZx7phKLbPSfIhH9qce2Wf3IPr2k7bqUj4vWZjNc44p2p8roDjPuyvSbS9
+	DiSccN8Zn8DEHQl8NvFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSdpx-00GGKo-Oz; Fri, 11 Mar 2022 11:53:37 +0000
+	id 1nSdpy-00GGLB-N4; Fri, 11 Mar 2022 11:53:38 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSdpV-00GGB0-M6; Fri, 11 Mar 2022 11:53:11 +0000
-X-UUID: 9c123a7709894ff09fcc22cc780b1d1e-20220311
-X-UUID: 9c123a7709894ff09fcc22cc780b1d1e-20220311
+ id 1nSdpV-00GGBO-Tj; Fri, 11 Mar 2022 11:53:11 +0000
+X-UUID: b5d8752af09344f2b9404531bb2de7d9-20220311
+X-UUID: b5d8752af09344f2b9404531bb2de7d9-20220311
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chun-jie.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 884106646; Fri, 11 Mar 2022 04:53:03 -0700
+ with ESMTP id 51772903; Fri, 11 Mar 2022 04:53:03 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Mar 2022 03:43:11 -0800
+ 15.0.1497.2; Fri, 11 Mar 2022 03:43:24 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 11 Mar 2022 19:43:10 +0800
+ Fri, 11 Mar 2022 19:43:22 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 11 Mar 2022 19:43:09 +0800
+ Frontend Transport; Fri, 11 Mar 2022 19:43:22 +0800
 From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
  <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
@@ -49,17 +49,17 @@ CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chun-Jie Chen
  <chun-jie.chen@mediatek.com>
-Subject: [PATCH v3 07/15] clk: mediatek: Add MT8186 mfgsys clock support
-Date: Fri, 11 Mar 2022 19:42:21 +0800
-Message-ID: <20220311114229.32504-8-chun-jie.chen@mediatek.com>
+Subject: [PATCH v3 14/15] clk: mediatek: Add MT8186 mdpsys clock support
+Date: Fri, 11 Mar 2022 19:42:28 +0800
+Message-ID: <20220311114229.32504-15-chun-jie.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220311114229.32504-1-chun-jie.chen@mediatek.com>
 References: <20220311114229.32504-1-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_035309_740334_ABCD577D 
-X-CRM114-Status: GOOD (  16.36  )
+X-CRM114-CacheID: sfid-20220311_035310_037903_75C884FC 
+X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,37 +76,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8186 mfg clock controller which provides clock gate
-control for GPU.
+Add MT8186 mdpsys clock controller which provides clock gate
+control in Multimedia Data Path.
 
 Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/clk/mediatek/Makefile         |  3 +-
- drivers/clk/mediatek/clk-mt8186-mfg.c | 48 +++++++++++++++++++++++++++
- 2 files changed, 50 insertions(+), 1 deletion(-)
- create mode 100644 drivers/clk/mediatek/clk-mt8186-mfg.c
+ drivers/clk/mediatek/Makefile         |  2 +-
+ drivers/clk/mediatek/clk-mt8186-mdp.c | 80 +++++++++++++++++++++++++++
+ 2 files changed, 81 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-mdp.c
 
 diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 3510e8a0ecac..86e4f4d61688 100644
+index 3ad27f94eeef..6902da61e150 100644
 --- a/drivers/clk/mediatek/Makefile
 +++ b/drivers/clk/mediatek/Makefile
-@@ -72,7 +72,8 @@ obj-$(CONFIG_COMMON_CLK_MT8183_MMSYS) += clk-mt8183-mm.o
- obj-$(CONFIG_COMMON_CLK_MT8183_VDECSYS) += clk-mt8183-vdec.o
- obj-$(CONFIG_COMMON_CLK_MT8183_VENCSYS) += clk-mt8183-venc.o
- obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt8186-infra_ao.o \
--				   clk-mt8186-apmixedsys.o clk-mt8186-imp_iic_wrap.o
-+				   clk-mt8186-apmixedsys.o clk-mt8186-imp_iic_wrap.o \
-+				   clk-mt8186-mfg.o
+@@ -75,7 +75,7 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt
+ 				   clk-mt8186-apmixedsys.o clk-mt8186-imp_iic_wrap.o \
+ 				   clk-mt8186-mfg.o clk-mt8186-mm.o clk-mt8186-wpe.o \
+ 				   clk-mt8186-img.o clk-mt8186-vdec.o clk-mt8186-venc.o \
+-				   clk-mt8186-cam.o
++				   clk-mt8186-cam.o clk-mt8186-mdp.o
  obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
  obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
  obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8186-mfg.c b/drivers/clk/mediatek/clk-mt8186-mfg.c
+diff --git a/drivers/clk/mediatek/clk-mt8186-mdp.c b/drivers/clk/mediatek/clk-mt8186-mdp.c
 new file mode 100644
-index 000000000000..8ecb489a7fe0
+index 000000000000..dfa0750acec1
 --- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8186-mfg.c
-@@ -0,0 +1,48 @@
++++ b/drivers/clk/mediatek/clk-mt8186-mdp.c
+@@ -0,0 +1,80 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +//
 +// Copyright (c) 2022 MediaTek Inc.
@@ -119,42 +118,74 @@ index 000000000000..8ecb489a7fe0
 +#include <linux/clk-provider.h>
 +#include <linux/platform_device.h>
 +
-+static const struct mtk_gate_regs mfg_cg_regs = {
-+	.set_ofs = 0x4,
-+	.clr_ofs = 0x8,
-+	.sta_ofs = 0x0,
++static const struct mtk_gate_regs mdp0_cg_regs = {
++	.set_ofs = 0x104,
++	.clr_ofs = 0x108,
++	.sta_ofs = 0x100,
 +};
 +
-+#define GATE_MFG(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &mfg_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
-+static const struct mtk_gate mfg_clks[] = {
-+	GATE_MFG(CLK_MFG_BG3D, "mfg_bg3d", "top_mfg", 0),
++static const struct mtk_gate_regs mdp2_cg_regs = {
++	.set_ofs = 0x124,
++	.clr_ofs = 0x128,
++	.sta_ofs = 0x120,
 +};
 +
-+static const struct mtk_clk_desc mfg_desc = {
-+	.clks = mfg_clks,
-+	.num_clks = ARRAY_SIZE(mfg_clks),
++#define GATE_MDP0(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &mdp0_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++#define GATE_MDP2(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &mdp2_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++static const struct mtk_gate mdp_clks[] = {
++	/* MDP0 */
++	GATE_MDP0(CLK_MDP_RDMA0, "mdp_rdma0", "top_mdp", 0),
++	GATE_MDP0(CLK_MDP_TDSHP0, "mdp_tdshp0", "top_mdp", 1),
++	GATE_MDP0(CLK_MDP_IMG_DL_ASYNC0, "mdp_img_dl_async0", "top_mdp", 2),
++	GATE_MDP0(CLK_MDP_IMG_DL_ASYNC1, "mdp_img_dl_async1", "top_mdp", 3),
++	GATE_MDP0(CLK_MDP_DISP_RDMA, "mdp_disp_rdma", "top_mdp", 4),
++	GATE_MDP0(CLK_MDP_HMS, "mdp_hms", "top_mdp", 5),
++	GATE_MDP0(CLK_MDP_SMI0, "mdp_smi0", "top_mdp", 6),
++	GATE_MDP0(CLK_MDP_APB_BUS, "mdp_apb_bus", "top_mdp", 7),
++	GATE_MDP0(CLK_MDP_WROT0, "mdp_wrot0", "top_mdp", 8),
++	GATE_MDP0(CLK_MDP_RSZ0, "mdp_rsz0", "top_mdp", 9),
++	GATE_MDP0(CLK_MDP_HDR0, "mdp_hdr0", "top_mdp", 10),
++	GATE_MDP0(CLK_MDP_MUTEX0, "mdp_mutex0", "top_mdp", 11),
++	GATE_MDP0(CLK_MDP_WROT1, "mdp_wrot1", "top_mdp", 12),
++	GATE_MDP0(CLK_MDP_RSZ1, "mdp_rsz1", "top_mdp", 13),
++	GATE_MDP0(CLK_MDP_FAKE_ENG0, "mdp_fake_eng0", "top_mdp", 14),
++	GATE_MDP0(CLK_MDP_AAL0, "mdp_aal0", "top_mdp", 15),
++	GATE_MDP0(CLK_MDP_DISP_WDMA, "mdp_disp_wdma", "top_mdp", 16),
++	GATE_MDP0(CLK_MDP_COLOR, "mdp_color", "top_mdp", 17),
++	GATE_MDP0(CLK_MDP_IMG_DL_ASYNC2, "mdp_img_dl_async2", "top_mdp", 18),
++	/* MDP2 */
++	GATE_MDP2(CLK_MDP_IMG_DL_RELAY0_ASYNC0, "mdp_img_dl_rel0_as0", "top_mdp", 0),
++	GATE_MDP2(CLK_MDP_IMG_DL_RELAY1_ASYNC1, "mdp_img_dl_rel1_as1", "top_mdp", 8),
++	GATE_MDP2(CLK_MDP_IMG_DL_RELAY2_ASYNC2, "mdp_img_dl_rel2_as2", "top_mdp", 24),
 +};
 +
-+static const struct of_device_id of_match_clk_mt8186_mfg[] = {
++static const struct mtk_clk_desc mdp_desc = {
++	.clks = mdp_clks,
++	.num_clks = ARRAY_SIZE(mdp_clks),
++};
++
++static const struct of_device_id of_match_clk_mt8186_mdp[] = {
 +	{
-+		.compatible = "mediatek,mt8186-mfgsys",
-+		.data = &mfg_desc,
++		.compatible = "mediatek,mt8186-mdpsys",
++		.data = &mdp_desc,
 +	}, {
 +		/* sentinel */
 +	}
 +};
 +
-+static struct platform_driver clk_mt8186_mfg_drv = {
++static struct platform_driver clk_mt8186_mdp_drv = {
 +	.probe = mtk_clk_simple_probe,
 +	.remove = mtk_clk_simple_remove,
 +	.driver = {
-+		.name = "clk-mt8186-mfg",
-+		.of_match_table = of_match_clk_mt8186_mfg,
++		.name = "clk-mt8186-mdp",
++		.of_match_table = of_match_clk_mt8186_mdp,
 +	},
 +};
-+builtin_platform_driver(clk_mt8186_mfg_drv);
++builtin_platform_driver(clk_mt8186_mdp_drv);
 -- 
 2.18.0
 
