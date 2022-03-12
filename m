@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CF01C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Mar 2022 23:24:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B25FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Mar 2022 23:24:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P1i/S5uU7kGHjhLcK45/4PBfv5hAz20AiRznksslAy0=; b=G0TVJQQ82YzbLW
-	oPOMPJEmGoCj8RBGi91n/ZCvBkUWMcWm83AJ38OHux5KpXG5iFVcO1AnWTGUDv1LthNg69w7s0vT7
-	hwlL24dONASOMWCFUM8eABP8si4PW1uEZaStvIHK66Ebq96MIhANOqW4hR1kD3STFkVrt23VVqYco
-	fAx2cr03kIOQ4I2uzcmBz8dyo2OhmS5knvcM2B9O6PoVtE/9All00tEhykAPGs8tsFpfZgyA5esfx
-	uWEVaF7Ui+gwzjeljukXhEDk4+ZZROWOvGTG9I5nKkONVSVqnl6JC0YQJWXW5MTq2JUkBxNH/lshH
-	nhYTU3UPRrwvBVac6WoQ==;
+	List-Owner; bh=lnzYosdOFttXt8/3ElrpHQl0BUHY8CXj0Bgf9QinXDs=; b=ICj4g68asCxbtx
+	ZxwBOai8HAYsgepTGtziu8uuaqHAr33W4xDaq3DFLhcwUevYWpeEEOkAmGOrhzrOWUgrX6qE7cbrY
+	XIjUXLuXnVkXpDpLZD9LrLu1w/3guI50nn590kh0qavQ922pq873BWPlEuJ5Gp4Mxq+aiRUB/S6hk
+	qGHWO81+FB4p4sbmYJMBPDkN6FeUZbZVY06oZB/OSbtYa+E0y4RgEYSazbk/FhkmUs71MAj4gQxPS
+	eBX/zGWCR9tXYF0AU+2sMg81+6hTzNH0DgXnYlsM+ibJ+ys9t5+E80zfoWtQIW2rXOiotz+xDpO9Y
+	enYWW+pbwtemZDsGEKqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTB5X-001yKK-OD; Sat, 12 Mar 2022 23:23:55 +0000
+	id 1nTB5j-001yPv-4d; Sat, 12 Mar 2022 23:24:07 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTB5I-001yCe-06; Sat, 12 Mar 2022 23:23:41 +0000
-X-UUID: c8f822fc669e41f6aa80620edbff574b-20220312
-X-UUID: c8f822fc669e41f6aa80620edbff574b-20220312
+ id 1nTB5I-001yDV-WF; Sat, 12 Mar 2022 23:23:42 +0000
+X-UUID: dcc11f3ed1c34c17b4f21b93e0059931-20220312
+X-UUID: dcc11f3ed1c34c17b4f21b93e0059931-20220312
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 827591428; Sat, 12 Mar 2022 16:23:38 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 1167237406; Sat, 12 Mar 2022 16:23:38 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 12 Mar 2022 15:21:23 -0800
+ 15.0.1497.2; Sat, 12 Mar 2022 15:13:36 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Sun, 13 Mar 2022 07:21:21 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Sun, 13 Mar 2022 07:13:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sun, 13 Mar 2022 07:21:21 +0800
+ Frontend Transport; Sun, 13 Mar 2022 07:13:34 +0800
 From: Miles Chen <miles.chen@mediatek.com>
 To: <chun-jie.chen@mediatek.com>
 CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
@@ -48,17 +48,17 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
  <matthias.bgg@gmail.com>, <robh+dt@kernel.org>, <sboyd@kernel.org>,
  <srv_heupstream@mediatek.com>
-Subject: Re: [PATCH v3 12/15] clk: mediatek: Add MT8186 vencsys clock support
-Date: Sun, 13 Mar 2022 07:21:21 +0800
-Message-ID: <20220312232121.12540-1-miles.chen@mediatek.com>
+Subject: Re: [PATCH v3 09/15] clk: mediatek: Add MT8186 wpesys clock support
+Date: Sun, 13 Mar 2022 07:13:34 +0800
+Message-ID: <20220312231334.7962-1-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220311114229.32504-13-chun-jie.chen@mediatek.com>
-References: <20220311114229.32504-13-chun-jie.chen@mediatek.com>
+In-Reply-To: <20220311114229.32504-10-chun-jie.chen@mediatek.com>
+References: <20220311114229.32504-10-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220312_152340_054167_D1836C18 
-X-CRM114-Status: UNSURE (   6.09  )
+X-CRM114-CacheID: sfid-20220312_152341_055065_F9003D68 
+X-CRM114-Status: UNSURE (   5.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,8 +76,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Add MT8186 vencsys clock controller which provide clock gate
-> control for video encoder.
+> Add MT8186 wpesys clock controllers which provide clock gate
+> control in Wrapping Engine.
 > 
 > Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 > Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
