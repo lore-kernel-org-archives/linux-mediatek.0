@@ -4,59 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F46CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Mar 2022 16:23:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77B6BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Mar 2022 19:00:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XjkDaRGnIOSyuh7YE2SisIBglxwMqAAw5+d8LS16mto=; b=LTlnRzLe2v4sVt
-	fnqhGb4Mtlxe+bFHD+NhtX1SGjqyFGwK6bOsZOHT6xbzUbGfyHVUJX/17ql7Hf+Xk/PlAJRKLQsSF
-	bzQRUSfeSzL3yxpMFUATXyJTqTr7hBXL/g2TvhdCv8l2FkWP3TmwFqXOhiYxIURHuNgQpBBff1Qu6
-	7u72mfKnEkSNeBRrZHJNMV+8n3DfhBQqVhM45mkvhm/1aYUA0YPafCHlEbBOej0jPDlbIg7MwHier
-	Pw1WjmNYiQlyxFSgj+H9D7DOuYtgkRIkv+qpNtU5/fTnVh5mHhF6oLNV3XrfMQfSfGBwTElM81CwU
-	PoyZR0oYhVZIqSZzRr4w==;
+	List-Owner; bh=XLxlXowZuy2N+nLe1uMrPVJQt7iiDoOeBcvLOK3H7wM=; b=g/sp4zo7r5qCrN
+	ZXGjZEHeT2kWmK7ZykiL2cWCbMDvBPYcAqsghu0BoDahA9nezNF3u5f/DCI+iyAbmpwrZR/qSKI0Q
+	/fPPPY22fviaL5i1/D9XRxjuFxwxk4H9SVaTHkLT3nhiQBouiO6/c0if1aAJrNtB2amf3u/4W3Y2L
+	ytjuBLtKQbO2B8LuMW2l8C3vlUXKjkfRxmIXHEQEumjXdAxGBnlOkVhwcJz5DUcgmLrMhdQ7iyShl
+	vUerJaaFNe73f+jF92UiCFAQE9zVVro/mD8zIxDuvKxWzIVy26GEPXdl+nM1172IlmXLSzVeSqEq2
+	TeYj5orUbLO6jYiaORUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTR0G-0038tS-BQ; Sun, 13 Mar 2022 16:23:32 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nTTS3-003FuM-Ik; Sun, 13 Mar 2022 19:00:23 +0000
+Received: from mga01.intel.com ([192.55.52.88])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTR0B-0038pP-Ng
- for linux-mediatek@lists.infradead.org; Sun, 13 Mar 2022 16:23:31 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 405D0B80B9F;
- Sun, 13 Mar 2022 16:23:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5700EC340F4;
- Sun, 13 Mar 2022 16:23:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647188604;
- bh=99av0t5/JRc+nO8a8aG85fHOfDc5q6KR1bwUj3P9Cfg=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=MBTTeV+mAcf4WMkfVAT1XpSO1IPScVi23jaPVS83enchWPo6YOi12X/DHPvfjs2xa
- p9zWnfoOwzUIqlCh1cFWdumnv+8MgkC2BdPwOeJ2Yv+5E0t2Qq5WDt217MhDMwywZJ
- x0h+gkqCp8YyuwVAMlwcFGt6cogHXDyKkdDqADAzRCI3GDx5nHQPh+wY2VUSj5r8TK
- mBQYk1tijhOoWiY9VdLmzG0CzRUcxbpi6aUhG05RiJk9jHomVZd7ZPL+gBwCk/iswD
- y8j7TXTVBPYyZKfciZcRUa+dbgE/N8P+S9YGaFIWYMXxNxSo5Y1Ja9EVQ3e918SBan
- X49AE5EB4071A==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: nbd@nbd.name
-Cc: linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com,
- sean.wang@mediatek.com, deren.wu@mediatek.com,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 9/9] mt76: mt7921: add mt7921u driver
-Date: Sun, 13 Mar 2022 17:22:41 +0100
-Message-Id: <a2354c401f4776f365de99ec17ee9f0f78d55b5a.1647188302.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <cover.1647188301.git.lorenzo@kernel.org>
-References: <cover.1647188301.git.lorenzo@kernel.org>
+ id 1nTTRr-003FqG-4O; Sun, 13 Mar 2022 19:00:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1647198011; x=1678734011;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=7A56rvBq2Ze2rosgzGpqZSzGRYf4vonTsoVqZ1kpJGA=;
+ b=Bw9rE3YOsiPwcgTM6f0qejRSCbcZ6XX0qEP64dADPvAk+4ofXRNH0fzN
+ 8yxMG0xR+kjX7POmiQ4R3PSsnxOWhkS/xMWD0opDQ05v052G+eBLizw6j
+ FCwibnhk9Deh5ltAT6lpaHshTXHhxf2SsrE3rlLBdz+/ceCd5U89CeDPi
+ uCWxSEktSfwYX0QCsrMWVtd+2Wpxr6sA/OOQO58H00qS4WfEiUnCLSZpF
+ yo0xE1kW2BuFfyjHetljmaZMHc35W89EFhofpK23aZy/IFRvefXYQSISm
+ 5Q2z1xlWyOR0X+9KQXwP6f5W4bPOCR2UY34Aoonp/djuUBJ6KDE6tPBzD A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10285"; a="280647315"
+X-IronPort-AV: E=Sophos;i="5.90,179,1643702400"; d="scan'208";a="280647315"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Mar 2022 12:00:07 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,179,1643702400"; d="scan'208";a="612673907"
+Received: from lkp-server02.sh.intel.com (HELO 89b41b6ae01c) ([10.239.97.151])
+ by fmsmga004.fm.intel.com with ESMTP; 13 Mar 2022 12:00:03 -0700
+Received: from kbuild by 89b41b6ae01c with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1nTTRi-0009DE-LF; Sun, 13 Mar 2022 19:00:02 +0000
+Date: Mon, 14 Mar 2022 02:59:45 +0800
+From: kernel test robot <lkp@intel.com>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>, broonie@kernel.org,
+ robh+dt@kernel.org, angelogioacchino.delregno@collabora.com
+Cc: kbuild-all@lists.01.org, aaronyu@google.com, matthias.bgg@gmail.com,
+ trevor.wu@mediatek.com, tzungbi@google.com, julianbraha@gmail.com,
+ alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Jiaxin Yu <jiaxin.yu@mediatek.com>
+Subject: Re: [v3 13/19] ASoC: mediatek: mt8186: add platform driver
+Message-ID: <202203140250.ob821GmA-lkp@intel.com>
+References: <20220313151023.21229-14-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220313151023.21229-14-jiaxin.yu@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220313_092328_113577_934DBDD5 
-X-CRM114-Status: GOOD (  23.60  )
+X-CRM114-CacheID: sfid-20220313_120011_244179_338E9875 
+X-CRM114-Status: GOOD (  18.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,815 +85,226 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce support for MT7921U 802.11ax 2x2:2SS wireless devices.
+Hi Jiaxin,
 
-Tested-by: Sean Wang <sean.wang@mediatek.com>
-Tested-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Thank you for the patch! Yet something to improve:
+
+[auto build test ERROR on broonie-sound/for-next]
+[also build test ERROR on broonie-spi/for-next robh/for-next v5.17-rc7 next-20220310]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
+
+url:    https://github.com/0day-ci/linux/commits/Jiaxin-Yu/ASoC-mediatek-Add-support-for-MT8186-SoC/20220313-231330
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+config: m68k-allyesconfig (https://download.01.org/0day-ci/archive/20220314/202203140250.ob821GmA-lkp@intel.com/config)
+compiler: m68k-linux-gcc (GCC) 11.2.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/0day-ci/linux/commit/088850061de683cf1cac329e1187f45fb1d25085
+        git remote add linux-review https://github.com/0day-ci/linux
+        git fetch --no-tags linux-review Jiaxin-Yu/ASoC-mediatek-Add-support-for-MT8186-SoC/20220313-231330
+        git checkout 088850061de683cf1cac329e1187f45fb1d25085
+        # save the config file to linux build tree
+        mkdir build_dir
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=m68k SHELL=/bin/bash
+
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
+
+All errors (new ones prefixed by >>):
+
+   In file included from include/linux/device.h:15,
+                    from include/linux/dma-mapping.h:7,
+                    from sound/soc/mediatek/mt8186/mt8186-afe-pcm.c:9:
+   sound/soc/mediatek/mt8186/mt8186-afe-pcm.c: In function 'mt8186_afe_pcm_dev_probe':
+>> sound/soc/mediatek/mt8186/mt8186-afe-pcm.c:2914:40: error: 'struct dev_pm_info' has no member named 'runtime_error'
+    2914 |                         ret, dev->power.runtime_error);
+         |                                        ^
+   include/linux/dev_printk.h:110:37: note: in definition of macro 'dev_printk_index_wrap'
+     110 |                 _p_func(dev, fmt, ##__VA_ARGS__);                       \
+         |                                     ^~~~~~~~~~~
+   sound/soc/mediatek/mt8186/mt8186-afe-pcm.c:2913:17: note: in expansion of macro 'dev_err'
+    2913 |                 dev_err(dev, "get_ret:%d, rpm_error:%d\n",
+         |                 ^~~~~~~
+   sound/soc/mediatek/mt8186/mt8186-afe-pcm.c:2948:40: error: 'struct dev_pm_info' has no member named 'runtime_error'
+    2948 |                         ret, dev->power.runtime_error);
+         |                                        ^
+   include/linux/dev_printk.h:110:37: note: in definition of macro 'dev_printk_index_wrap'
+     110 |                 _p_func(dev, fmt, ##__VA_ARGS__);                       \
+         |                                     ^~~~~~~~~~~
+   sound/soc/mediatek/mt8186/mt8186-afe-pcm.c:2947:17: note: in expansion of macro 'dev_err'
+    2947 |                 dev_err(dev, "put_ret:%d, rpm_error:%d\n",
+         |                 ^~~~~~~
+
+
+vim +2914 sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
+
+  2803	
+  2804	static int mt8186_afe_pcm_dev_probe(struct platform_device *pdev)
+  2805	{
+  2806		struct mtk_base_afe *afe;
+  2807		struct mt8186_afe_private *afe_priv;
+  2808		struct resource *res;
+  2809		struct reset_control *rstc;
+  2810		struct device *dev = &pdev->dev;
+  2811		int i, ret, irq_id;
+  2812	
+  2813		ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(34));
+  2814		if (ret)
+  2815			return ret;
+  2816	
+  2817		afe = devm_kzalloc(dev, sizeof(*afe), GFP_KERNEL);
+  2818		if (!afe)
+  2819			return -ENOMEM;
+  2820		platform_set_drvdata(pdev, afe);
+  2821	
+  2822		afe->platform_priv = devm_kzalloc(dev, sizeof(*afe_priv), GFP_KERNEL);
+  2823		if (!afe->platform_priv)
+  2824			return -ENOMEM;
+  2825	
+  2826		afe_priv = afe->platform_priv;
+  2827		afe->dev = &pdev->dev;
+  2828	
+  2829		res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+  2830		afe->base_addr = devm_ioremap_resource(&pdev->dev, res);
+  2831		if (IS_ERR(afe->base_addr))
+  2832			return PTR_ERR(afe->base_addr);
+  2833	
+  2834		/* init audio related clock */
+  2835		ret = mt8186_init_clock(afe);
+  2836		if (ret) {
+  2837			dev_err(dev, "init clock error, ret %d\n", ret);
+  2838			return ret;
+  2839		}
+  2840	
+  2841		/* init memif */
+  2842		afe->memif_32bit_supported = 0;
+  2843		afe->memif_size = MT8186_MEMIF_NUM;
+  2844		afe->memif = devm_kcalloc(dev, afe->memif_size, sizeof(*afe->memif),
+  2845					  GFP_KERNEL);
+  2846	
+  2847		if (!afe->memif)
+  2848			return -ENOMEM;
+  2849	
+  2850		for (i = 0; i < afe->memif_size; i++) {
+  2851			afe->memif[i].data = &memif_data[i];
+  2852			afe->memif[i].irq_usage = memif_irq_usage[i];
+  2853			afe->memif[i].const_irq = 1;
+  2854		}
+  2855	
+  2856		mutex_init(&afe->irq_alloc_lock);	/* needed when dynamic irq */
+  2857	
+  2858		/* init irq */
+  2859		afe->irqs_size = MT8186_IRQ_NUM;
+  2860		afe->irqs = devm_kcalloc(dev, afe->irqs_size, sizeof(*afe->irqs),
+  2861					 GFP_KERNEL);
+  2862	
+  2863		if (!afe->irqs)
+  2864			return -ENOMEM;
+  2865	
+  2866		for (i = 0; i < afe->irqs_size; i++)
+  2867			afe->irqs[i].irq_data = &irq_data[i];
+  2868	
+  2869		/* request irq */
+  2870		irq_id = platform_get_irq(pdev, 0);
+  2871		if (irq_id <= 0)
+  2872			return dev_err_probe(dev, irq_id < 0 ? irq_id : -ENXIO,
+  2873					     "no irq found");
+  2874	
+  2875		ret = devm_request_irq(dev, irq_id, mt8186_afe_irq_handler,
+  2876				       IRQF_TRIGGER_NONE,
+  2877				       "Afe_ISR_Handle", (void *)afe);
+  2878		if (ret)
+  2879			return dev_err_probe(dev, ret, "could not request_irq for Afe_ISR_Handle\n");
+  2880	
+  2881		ret = enable_irq_wake(irq_id);
+  2882		if (ret < 0)
+  2883			return dev_err_probe(dev, ret, "enable_irq_wake %d\n", irq_id);
+  2884	
+  2885		/* init sub_dais */
+  2886		INIT_LIST_HEAD(&afe->sub_dais);
+  2887	
+  2888		for (i = 0; i < ARRAY_SIZE(dai_register_cbs); i++) {
+  2889			ret = dai_register_cbs[i](afe);
+  2890			if (ret)
+  2891				return dev_err_probe(dev, ret, "dai register i %d fail\n", i);
+  2892		}
+  2893	
+  2894		/* init dai_driver and component_driver */
+  2895		ret = mtk_afe_combine_sub_dai(afe);
+  2896		if (ret)
+  2897			return dev_err_probe(dev, ret, "mtk_afe_combine_sub_dai fail\n");
+  2898	
+  2899		/* reset controller to reset audio regs before regmap cache */
+  2900		rstc = devm_reset_control_get_exclusive(dev, "audiosys");
+  2901		if (IS_ERR(rstc))
+  2902			return dev_err_probe(dev, PTR_ERR(rstc), "could not get audiosys reset\n");
+  2903	
+  2904		ret = reset_control_reset(rstc);
+  2905		if (ret)
+  2906			return dev_err_probe(dev, ret, "failed to trigger audio reset\n");
+  2907	
+  2908		/* enable clock for regcache get default value from hw */
+  2909		afe_priv->pm_runtime_bypass_reg_ctl = true;
+  2910		pm_runtime_enable(dev);
+  2911		ret = pm_runtime_get_sync(dev);
+  2912		if (ret)
+  2913			dev_err(dev, "get_ret:%d, rpm_error:%d\n",
+> 2914				ret, dev->power.runtime_error);
+  2915	
+  2916		afe->regmap = devm_regmap_init_mmio(dev, afe->base_addr,
+  2917						    &mt8186_afe_regmap_config);
+  2918		if (IS_ERR(afe->regmap)) {
+  2919			ret = PTR_ERR(afe->regmap);
+  2920			goto err_pm_disable;
+  2921		}
+  2922	
+  2923		/* others */
+  2924		afe->mtk_afe_hardware = &mt8186_afe_hardware;
+  2925		afe->memif_fs = mt8186_memif_fs;
+  2926		afe->irq_fs = mt8186_irq_fs;
+  2927		afe->get_dai_fs = mt8186_get_dai_fs;
+  2928		afe->get_memif_pbuf_size = mt8186_get_memif_pbuf_size;
+  2929	
+  2930		afe->runtime_resume = mt8186_afe_runtime_resume;
+  2931		afe->runtime_suspend = mt8186_afe_runtime_suspend;
+  2932	
+  2933		/* register platform */
+  2934		dev_info(dev, "%s(), devm_snd_soc_register_component\n", __func__);
+  2935	
+  2936		ret = devm_snd_soc_register_component(dev,
+  2937						      &mt8186_afe_component,
+  2938						      afe->dai_drivers,
+  2939						      afe->num_dai_drivers);
+  2940		if (ret) {
+  2941			dev_err(dev, "err_dai_component\n");
+  2942			goto err_pm_disable;
+  2943		}
+  2944	
+  2945		ret = pm_runtime_put_sync(dev);
+  2946		if (ret)
+  2947			dev_err(dev, "put_ret:%d, rpm_error:%d\n",
+  2948				ret, dev->power.runtime_error);
+  2949		afe_priv->pm_runtime_bypass_reg_ctl = false;
+  2950	
+  2951		regcache_cache_only(afe->regmap, true);
+  2952		regcache_mark_dirty(afe->regmap);
+  2953	
+  2954		return 0;
+  2955	
+  2956	err_pm_disable:
+  2957		pm_runtime_put_sync(dev);
+  2958		pm_runtime_disable(dev);
+  2959	
+  2960		return ret;
+  2961	}
+  2962	
+
 ---
- .../net/wireless/mediatek/mt76/mt7921/Kconfig |  11 +
- .../wireless/mediatek/mt76/mt7921/Makefile    |   2 +
- .../net/wireless/mediatek/mt76/mt7921/init.c  |   2 +-
- .../net/wireless/mediatek/mt76/mt7921/mac.h   |   1 +
- .../net/wireless/mediatek/mt76/mt7921/main.c  |   3 +-
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  12 +
- .../net/wireless/mediatek/mt76/mt7921/regs.h  |  50 ++-
- .../net/wireless/mediatek/mt76/mt7921/usb.c   | 305 ++++++++++++++++++
- .../wireless/mediatek/mt76/mt7921/usb_mac.c   | 252 +++++++++++++++
- 9 files changed, 635 insertions(+), 3 deletions(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/usb.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/Kconfig b/drivers/net/wireless/mediatek/mt76/mt7921/Kconfig
-index 71154fc2a87c..adff2d7350b5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/Kconfig
-@@ -24,3 +24,14 @@ config MT7921S
- 	  This adds support for MT7921S 802.11ax 2x2:2SS wireless devices.
- 
- 	  To compile this driver as a module, choose M here.
-+
-+config MT7921U
-+	tristate "MediaTek MT7921U (USB) support"
-+	select MT76_USB
-+	select MT7921_COMMON
-+	depends on MAC80211
-+	depends on USB
-+	help
-+	  This adds support for MT7921U 802.11ax 2x2:2SS wireless devices.
-+
-+	  To compile this driver as a module, choose M here.
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/Makefile b/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
-index 1187acedfeda..0a146818c623 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
-@@ -3,6 +3,7 @@
- obj-$(CONFIG_MT7921_COMMON) += mt7921-common.o
- obj-$(CONFIG_MT7921E) += mt7921e.o
- obj-$(CONFIG_MT7921S) += mt7921s.o
-+obj-$(CONFIG_MT7921U) += mt7921u.o
- 
- CFLAGS_trace.o := -I$(src)
- 
-@@ -10,3 +11,4 @@ mt7921-common-y := mac.o mcu.o main.o init.o debugfs.o trace.o
- mt7921-common-$(CONFIG_NL80211_TESTMODE) += testmode.o
- mt7921e-y := pci.o pci_mac.o pci_mcu.o dma.o
- mt7921s-y := sdio.o sdio_mac.o sdio_mcu.o
-+mt7921u-y := usb.o usb_mac.o
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-index 54f51e7b48a0..ceb22653e4bb 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-@@ -233,7 +233,7 @@ int mt7921_register_device(struct mt7921_dev *dev)
- 		dev->pm.ds_enable = true;
- 	}
- 
--	if (mt76_is_sdio(&dev->mt76))
-+	if (!mt76_is_mmio(&dev->mt76))
- 		hw->extra_tx_headroom += MT_SDIO_TXD_SIZE + MT_SDIO_HDR_SIZE;
- 
- 	ret = mt7921_init_hardware(dev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.h b/drivers/net/wireless/mediatek/mt76/mt7921/mac.h
-index 12e1cf8abe6e..79447e2d0143 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.h
-@@ -202,6 +202,7 @@ enum tx_mcu_port_q_idx {
- #define MT_SDIO_TXD_SIZE		(MT_TXD_SIZE + 8 * 4)
- #define MT_SDIO_TAIL_SIZE		8
- #define MT_SDIO_HDR_SIZE		4
-+#define MT_USB_TAIL_SIZE		4
- 
- #define MT_TXD0_Q_IDX			GENMASK(31, 25)
- #define MT_TXD0_PKT_FMT			GENMASK(24, 23)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index b6e836a4fad7..4fe181bb111b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -264,7 +264,7 @@ static int mt7921_start(struct ieee80211_hw *hw)
- 	return err;
- }
- 
--static void mt7921_stop(struct ieee80211_hw *hw)
-+void mt7921_stop(struct ieee80211_hw *hw)
- {
- 	struct mt7921_dev *dev = mt7921_hw_dev(hw);
- 	struct mt7921_phy *phy = mt7921_hw_phy(hw);
-@@ -281,6 +281,7 @@ static void mt7921_stop(struct ieee80211_hw *hw)
- 	mt76_connac_mcu_set_mac_enable(&dev->mt76, 0, false, false);
- 	mt7921_mutex_release(dev);
- }
-+EXPORT_SYMBOL_GPL(mt7921_stop);
- 
- static int mt7921_add_interface(struct ieee80211_hw *hw,
- 				struct ieee80211_vif *vif)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index bdcc68b85f35..437dd0969b1a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -30,6 +30,7 @@
- 
- #define MT7921_DRV_OWN_RETRY_COUNT	10
- #define MT7921_MCU_INIT_RETRY_COUNT	10
-+#define MT7921_WFSYS_INIT_RETRY_COUNT	2
- 
- #define MT7921_FIRMWARE_WM		"mediatek/WIFI_RAM_CODE_MT7961_1.bin"
- #define MT7921_ROM_PATCH		"mediatek/WIFI_MT7961_patch_mcu_1_2_hdr.bin"
-@@ -365,6 +366,7 @@ mt7921_skb_add_usb_sdio_hdr(struct mt7921_dev *dev, struct sk_buff *skb,
- 	put_unaligned_le32(hdr, skb_push(skb, sizeof(hdr)));
- }
- 
-+void mt7921_stop(struct ieee80211_hw *hw);
- int mt7921_mac_init(struct mt7921_dev *dev);
- bool mt7921_mac_wtbl_update(struct mt7921_dev *dev, int idx, u32 mask);
- void mt7921_mac_reset_counters(struct mt7921_phy *phy);
-@@ -454,4 +456,14 @@ int mt7921_usb_sdio_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
- void mt7921_usb_sdio_tx_complete_skb(struct mt76_dev *mdev,
- 				     struct mt76_queue_entry *e);
- bool mt7921_usb_sdio_tx_status_data(struct mt76_dev *mdev, u8 *update);
-+
-+/* usb */
-+#define MT_USB_TYPE_VENDOR	(USB_TYPE_VENDOR | 0x1f)
-+#define MT_USB_TYPE_UHW_VENDOR	(USB_TYPE_VENDOR | 0x1e)
-+
-+int mt7921u_mcu_power_on(struct mt7921_dev *dev);
-+int mt7921u_wfsys_reset(struct mt7921_dev *dev);
-+int mt7921u_dma_init(struct mt7921_dev *dev);
-+int mt7921u_init_reset(struct mt7921_dev *dev);
-+int mt7921u_mac_reset(struct mt7921_dev *dev);
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
-index 33578e0dfde3..6712ff60c722 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
-@@ -353,6 +353,7 @@
- #define MT_WFDMA0_GLO_CFG_RX_DMA_EN	BIT(2)
- #define MT_WFDMA0_GLO_CFG_RX_DMA_BUSY	BIT(3)
- #define MT_WFDMA0_GLO_CFG_TX_WB_DDONE	BIT(6)
-+#define MT_WFDMA0_GLO_CFG_FW_DWLD_BYPASS_DMASHDL BIT(9)
- #define MT_WFDMA0_GLO_CFG_FIFO_LITTLE_ENDIAN	BIT(12)
- #define MT_WFDMA0_GLO_CFG_CSR_DISP_BASE_PTR_CHAIN_EN BIT(15)
- #define MT_WFDMA0_GLO_CFG_OMIT_RX_INFO_PFET2	BIT(21)
-@@ -377,6 +378,9 @@
- #define MT_WFDMA0_TX_RING16_EXT_CTRL	MT_WFDMA0(0x640)
- #define MT_WFDMA0_TX_RING17_EXT_CTRL	MT_WFDMA0(0x644)
- 
-+#define MT_WPDMA0_MAX_CNT_MASK		GENMASK(7, 0)
-+#define MT_WPDMA0_BASE_PTR_MASK		GENMASK(31, 16)
-+
- #define MT_WFDMA0_RX_RING0_EXT_CTRL	MT_WFDMA0(0x680)
- #define MT_WFDMA0_RX_RING1_EXT_CTRL	MT_WFDMA0(0x684)
- #define MT_WFDMA0_RX_RING2_EXT_CTRL	MT_WFDMA0(0x688)
-@@ -425,6 +429,10 @@
- #define MT_WFDMA_DUMMY_CR		MT_MCU_WPDMA0(0x120)
- #define MT_WFDMA_NEED_REINIT		BIT(1)
- 
-+#define MT_CBTOP_RGU(ofs)		(0x70002000 + (ofs))
-+#define MT_CBTOP_RGU_WF_SUBSYS_RST	MT_CBTOP_RGU(0x600)
-+#define MT_CBTOP_RGU_WF_SUBSYS_RST_WF_WHOLE_PATH BIT(0)
-+
- #define MT_HW_BOUND			0x70010020
- #define MT_HW_CHIPID			0x70010200
- #define MT_HW_REV			0x70010204
-@@ -433,12 +441,14 @@
- #define MT_PCIE_MAC(ofs)		(MT_PCIE_MAC_BASE + (ofs))
- #define MT_PCIE_MAC_INT_ENABLE		MT_PCIE_MAC(0x188)
- 
--#define MT_DMA_SHDL(ofs)		(0xd6000 + (ofs))
-+#define MT_DMA_SHDL(ofs)		(0x7c026000 + (ofs))
- #define MT_DMASHDL_SW_CONTROL		MT_DMA_SHDL(0x004)
- #define MT_DMASHDL_DMASHDL_BYPASS	BIT(28)
- #define MT_DMASHDL_OPTIONAL		MT_DMA_SHDL(0x008)
- #define MT_DMASHDL_PAGE			MT_DMA_SHDL(0x00c)
-+#define MT_DMASHDL_GROUP_SEQ_ORDER	BIT(16)
- #define MT_DMASHDL_REFILL		MT_DMA_SHDL(0x010)
-+#define MT_DMASHDL_REFILL_MASK		GENMASK(31, 16)
- #define MT_DMASHDL_PKT_MAX_SIZE		MT_DMA_SHDL(0x01c)
- #define MT_DMASHDL_PKT_MAX_SIZE_PLE	GENMASK(11, 0)
- #define MT_DMASHDL_PKT_MAX_SIZE_PSE	GENMASK(27, 16)
-@@ -453,6 +463,43 @@
- 
- #define MT_DMASHDL_SCHED_SET(_n)	MT_DMA_SHDL(0x070 + ((_n) << 2))
- 
-+#define MT_WFDMA_HOST_CONFIG		0x7c027030
-+#define MT_WFDMA_HOST_CONFIG_USB_RXEVT_EP4_EN	BIT(6)
-+
-+#define MT_UMAC(ofs)			(0x74000000 + (ofs))
-+#define MT_UDMA_TX_QSEL			MT_UMAC(0x008)
-+#define MT_FW_DL_EN			BIT(3)
-+
-+#define MT_UDMA_WLCFG_1			MT_UMAC(0x00c)
-+#define MT_WL_RX_AGG_PKT_LMT		GENMASK(7, 0)
-+#define MT_WL_TX_TMOUT_LMT		GENMASK(27, 8)
-+
-+#define MT_UDMA_WLCFG_0			MT_UMAC(0x18)
-+#define MT_WL_RX_AGG_TO			GENMASK(7, 0)
-+#define MT_WL_RX_AGG_LMT		GENMASK(15, 8)
-+#define MT_WL_TX_TMOUT_FUNC_EN		BIT(16)
-+#define MT_WL_TX_DPH_CHK_EN		BIT(17)
-+#define MT_WL_RX_MPSZ_PAD0		BIT(18)
-+#define MT_WL_RX_FLUSH			BIT(19)
-+#define MT_TICK_1US_EN			BIT(20)
-+#define MT_WL_RX_AGG_EN			BIT(21)
-+#define MT_WL_RX_EN			BIT(22)
-+#define MT_WL_TX_EN			BIT(23)
-+#define MT_WL_RX_BUSY			BIT(30)
-+#define MT_WL_TX_BUSY			BIT(31)
-+
-+#define MT_UDMA_CONN_INFRA_STATUS	MT_UMAC(0xa20)
-+#define MT_UDMA_CONN_WFSYS_INIT_DONE	BIT(22)
-+#define MT_UDMA_CONN_INFRA_STATUS_SEL	MT_UMAC(0xa24)
-+
-+#define MT_SSUSB_EPCTL_CSR(ofs)		(0x74011800 + (ofs))
-+#define MT_SSUSB_EPCTL_CSR_EP_RST_OPT	MT_SSUSB_EPCTL_CSR(0x090)
-+
-+#define MT_UWFDMA0(ofs)			(0x7c024000 + (ofs))
-+#define MT_UWFDMA0_GLO_CFG		MT_UWFDMA0(0x208)
-+#define MT_UWFDMA0_GLO_CFG_EXT0		MT_UWFDMA0(0x2b0)
-+#define MT_UWFDMA0_TX_RING_EXT_CTRL(_n)	MT_UWFDMA0(0x600 + ((_n) << 2))
-+
- #define MT_CONN_STATUS			0x7c053c10
- #define MT_WIFI_PATCH_DL_STATE		BIT(0)
- 
-@@ -466,6 +513,7 @@
- #define WFSYS_SW_INIT_DONE		BIT(4)
- 
- #define MT_CONN_ON_MISC			0x7c0600f0
-+#define MT_TOP_MISC2_FW_PWR_ON		BIT(0)
- #define MT_TOP_MISC2_FW_N9_RDY		GENMASK(1, 0)
- 
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-new file mode 100644
-index 000000000000..0f99d059d319
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-@@ -0,0 +1,305 @@
-+// SPDX-License-Identifier: ISC
-+/* Copyright (C) 2022 MediaTek Inc.
-+ *
-+ * Author: Lorenzo Bianconi <lorenzo@kernel.org>
-+ */
-+
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/usb.h>
-+
-+#include "mt7921.h"
-+#include "mcu.h"
-+#include "mac.h"
-+
-+static const struct usb_device_id mt7921u_device_table[] = {
-+	{ USB_DEVICE_AND_INTERFACE_INFO(0x0e8d, 0x7961, 0xff, 0xff, 0xff) },
-+	{ },
-+};
-+
-+static u32 mt7921u_rr(struct mt76_dev *dev, u32 addr)
-+{
-+	u32 ret;
-+
-+	mutex_lock(&dev->usb.usb_ctrl_mtx);
-+	ret = ___mt76u_rr(dev, MT_VEND_READ_EXT,
-+			  USB_DIR_IN | MT_USB_TYPE_VENDOR, addr);
-+	mutex_unlock(&dev->usb.usb_ctrl_mtx);
-+
-+	return ret;
-+}
-+
-+static void mt7921u_wr(struct mt76_dev *dev, u32 addr, u32 val)
-+{
-+	mutex_lock(&dev->usb.usb_ctrl_mtx);
-+	___mt76u_wr(dev, MT_VEND_WRITE_EXT,
-+		    USB_DIR_OUT | MT_USB_TYPE_VENDOR, addr, val);
-+	mutex_unlock(&dev->usb.usb_ctrl_mtx);
-+}
-+
-+static u32 mt7921u_rmw(struct mt76_dev *dev, u32 addr,
-+		       u32 mask, u32 val)
-+{
-+	mutex_lock(&dev->usb.usb_ctrl_mtx);
-+	val |= ___mt76u_rr(dev, MT_VEND_READ_EXT,
-+			   USB_DIR_IN | MT_USB_TYPE_VENDOR, addr) & ~mask;
-+	___mt76u_wr(dev, MT_VEND_WRITE_EXT,
-+		    USB_DIR_OUT | MT_USB_TYPE_VENDOR, addr, val);
-+	mutex_unlock(&dev->usb.usb_ctrl_mtx);
-+
-+	return val;
-+}
-+
-+static void mt7921u_copy(struct mt76_dev *dev, u32 offset,
-+			 const void *data, int len)
-+{
-+	struct mt76_usb *usb = &dev->usb;
-+	int ret, i = 0, batch_len;
-+	const u8 *val = data;
-+
-+	len = round_up(len, 4);
-+
-+	mutex_lock(&usb->usb_ctrl_mtx);
-+	while (i < len) {
-+		batch_len = min_t(int, usb->data_len, len - i);
-+		memcpy(usb->data, val + i, batch_len);
-+		ret = __mt76u_vendor_request(dev, MT_VEND_WRITE_EXT,
-+					     USB_DIR_OUT | MT_USB_TYPE_VENDOR,
-+					     (offset + i) >> 16, offset + i,
-+					     usb->data, batch_len);
-+		if (ret < 0)
-+			break;
-+
-+		i += batch_len;
-+	}
-+	mutex_unlock(&usb->usb_ctrl_mtx);
-+}
-+
-+int mt7921u_mcu_power_on(struct mt7921_dev *dev)
-+{
-+	int ret;
-+
-+	ret = mt76u_vendor_request(&dev->mt76, MT_VEND_POWER_ON,
-+				   USB_DIR_OUT | MT_USB_TYPE_VENDOR,
-+				   0x0, 0x1, NULL, 0);
-+	if (ret)
-+		return ret;
-+
-+	if (!mt76_poll_msec(dev, MT_CONN_ON_MISC, MT_TOP_MISC2_FW_PWR_ON,
-+			    MT_TOP_MISC2_FW_PWR_ON, 500)) {
-+		dev_err(dev->mt76.dev, "Timeout for power on\n");
-+		ret = -EIO;
-+	}
-+
-+	return ret;
-+}
-+
-+static int
-+mt7921u_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
-+			 int cmd, int *seq)
-+{
-+	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-+	u32 pad, ep;
-+	int ret;
-+
-+	ret = mt7921_mcu_fill_message(mdev, skb, cmd, seq);
-+	if (ret)
-+		return ret;
-+
-+	if (cmd != MCU_CMD(FW_SCATTER))
-+		ep = MT_EP_OUT_INBAND_CMD;
-+	else
-+		ep = MT_EP_OUT_AC_BE;
-+
-+	mt7921_skb_add_usb_sdio_hdr(dev, skb, 0);
-+	pad = round_up(skb->len, 4) + 4 - skb->len;
-+	__skb_put_zero(skb, pad);
-+
-+	ret = mt76u_bulk_msg(&dev->mt76, skb->data, skb->len, NULL,
-+			     1000, ep);
-+	dev_kfree_skb(skb);
-+
-+	return ret;
-+}
-+
-+static int mt7921u_mcu_init(struct mt7921_dev *dev)
-+{
-+	static const struct mt76_mcu_ops mcu_ops = {
-+		.headroom = MT_SDIO_HDR_SIZE + sizeof(struct mt7921_mcu_txd),
-+		.tailroom = MT_USB_TAIL_SIZE,
-+		.mcu_skb_send_msg = mt7921u_mcu_send_message,
-+		.mcu_parse_response = mt7921_mcu_parse_response,
-+		.mcu_restart = mt76_connac_mcu_restart,
-+	};
-+	int ret;
-+
-+	dev->mt76.mcu_ops = &mcu_ops;
-+
-+	mt76_set(dev, MT_UDMA_TX_QSEL, MT_FW_DL_EN);
-+	ret = mt7921_run_firmware(dev);
-+	if (ret)
-+		return ret;
-+
-+	set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
-+	mt76_clear(dev, MT_UDMA_TX_QSEL, MT_FW_DL_EN);
-+
-+	return 0;
-+}
-+
-+static void mt7921u_stop(struct ieee80211_hw *hw)
-+{
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+
-+	mt76u_stop_tx(&dev->mt76);
-+	mt7921_stop(hw);
-+}
-+
-+static void mt7921u_cleanup(struct mt7921_dev *dev)
-+{
-+	clear_bit(MT76_STATE_INITIALIZED, &dev->mphy.state);
-+	mt7921u_wfsys_reset(dev);
-+	mt7921_mcu_exit(dev);
-+	mt76u_queues_deinit(&dev->mt76);
-+}
-+
-+static int mt7921u_probe(struct usb_interface *usb_intf,
-+			 const struct usb_device_id *id)
-+{
-+	static const struct mt76_driver_ops drv_ops = {
-+		.txwi_size = MT_SDIO_TXD_SIZE,
-+		.drv_flags = MT_DRV_RX_DMA_HDR | MT_DRV_HW_MGMT_TXQ,
-+		.survey_flags = SURVEY_INFO_TIME_TX |
-+				SURVEY_INFO_TIME_RX |
-+				SURVEY_INFO_TIME_BSS_RX,
-+		.tx_prepare_skb = mt7921_usb_sdio_tx_prepare_skb,
-+		.tx_complete_skb = mt7921_usb_sdio_tx_complete_skb,
-+		.tx_status_data = mt7921_usb_sdio_tx_status_data,
-+		.rx_skb = mt7921_queue_rx_skb,
-+		.sta_ps = mt7921_sta_ps,
-+		.sta_add = mt7921_mac_sta_add,
-+		.sta_assoc = mt7921_mac_sta_assoc,
-+		.sta_remove = mt7921_mac_sta_remove,
-+		.update_survey = mt7921_update_channel,
-+	};
-+	static const struct mt7921_hif_ops hif_ops = {
-+		.mcu_init = mt7921u_mcu_init,
-+		.init_reset = mt7921u_init_reset,
-+		.reset = mt7921u_mac_reset,
-+	};
-+	static struct mt76_bus_ops bus_ops = {
-+		.rr = mt7921u_rr,
-+		.wr = mt7921u_wr,
-+		.rmw = mt7921u_rmw,
-+		.read_copy = mt76u_read_copy,
-+		.write_copy = mt7921u_copy,
-+		.type = MT76_BUS_USB,
-+	};
-+	struct usb_device *udev = interface_to_usbdev(usb_intf);
-+	struct ieee80211_ops *ops;
-+	struct ieee80211_hw *hw;
-+	struct mt7921_dev *dev;
-+	struct mt76_dev *mdev;
-+	int ret;
-+
-+	ops = devm_kmemdup(&usb_intf->dev, &mt7921_ops, sizeof(mt7921_ops),
-+			   GFP_KERNEL);
-+	if (!ops)
-+		return -ENOMEM;
-+
-+	ops->stop = mt7921u_stop;
-+
-+	mdev = mt76_alloc_device(&usb_intf->dev, sizeof(*dev), ops, &drv_ops);
-+	if (!mdev)
-+		return -ENOMEM;
-+
-+	dev = container_of(mdev, struct mt7921_dev, mt76);
-+	dev->hif_ops = &hif_ops;
-+
-+	udev = usb_get_dev(udev);
-+	usb_reset_device(udev);
-+
-+	usb_set_intfdata(usb_intf, dev);
-+
-+	ret = __mt76u_init(mdev, usb_intf, &bus_ops);
-+	if (ret < 0)
-+		goto error;
-+
-+	mdev->rev = (mt76_rr(dev, MT_HW_CHIPID) << 16) |
-+		    (mt76_rr(dev, MT_HW_REV) & 0xff);
-+	dev_dbg(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
-+
-+	if (mt76_get_field(dev, MT_CONN_ON_MISC, MT_TOP_MISC2_FW_N9_RDY)) {
-+		ret = mt7921u_wfsys_reset(dev);
-+		if (ret)
-+			goto error;
-+	}
-+
-+	ret = mt7921u_mcu_power_on(dev);
-+	if (ret)
-+		goto error;
-+
-+	ret = mt76u_alloc_mcu_queue(&dev->mt76);
-+	if (ret)
-+		goto error;
-+
-+	ret = mt76u_alloc_queues(&dev->mt76);
-+	if (ret)
-+		goto error;
-+
-+	ret = mt7921u_dma_init(dev);
-+	if (ret)
-+		return ret;
-+
-+	hw = mt76_hw(dev);
-+	/* check hw sg support in order to enable AMSDU */
-+	hw->max_tx_fragments = mdev->usb.sg_en ? MT_HW_TXP_MAX_BUF_NUM : 1;
-+
-+	ret = mt7921_register_device(dev);
-+	if (ret)
-+		goto error;
-+
-+	return 0;
-+
-+error:
-+	mt76u_queues_deinit(&dev->mt76);
-+
-+	usb_set_intfdata(usb_intf, NULL);
-+	usb_put_dev(interface_to_usbdev(usb_intf));
-+
-+	mt76_free_device(&dev->mt76);
-+
-+	return ret;
-+}
-+
-+static void mt7921u_disconnect(struct usb_interface *usb_intf)
-+{
-+	struct mt7921_dev *dev = usb_get_intfdata(usb_intf);
-+
-+	if (!test_bit(MT76_STATE_INITIALIZED, &dev->mphy.state))
-+		return;
-+
-+	mt76_unregister_device(&dev->mt76);
-+	mt7921u_cleanup(dev);
-+
-+	usb_set_intfdata(usb_intf, NULL);
-+	usb_put_dev(interface_to_usbdev(usb_intf));
-+
-+	mt76_free_device(&dev->mt76);
-+}
-+
-+MODULE_DEVICE_TABLE(usb, mt7921u_device_table);
-+MODULE_FIRMWARE(MT7921_FIRMWARE_WM);
-+MODULE_FIRMWARE(MT7921_ROM_PATCH);
-+
-+static struct usb_driver mt7921u_driver = {
-+	.name		= KBUILD_MODNAME,
-+	.id_table	= mt7921u_device_table,
-+	.probe		= mt7921u_probe,
-+	.disconnect	= mt7921u_disconnect,
-+	.soft_unbind	= 1,
-+	.disable_hub_initiated_lpm = 1,
-+};
-+module_usb_driver(mt7921u_driver);
-+
-+MODULE_AUTHOR("Lorenzo Bianconi <lorenzo@kernel.org>");
-+MODULE_LICENSE("Dual BSD/GPL");
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
-new file mode 100644
-index 000000000000..99bcbd858b65
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
-@@ -0,0 +1,252 @@
-+// SPDX-License-Identifier: ISC
-+/* Copyright (C) 2022 MediaTek Inc.
-+ *
-+ * Author: Lorenzo Bianconi <lorenzo@kernel.org>
-+ */
-+
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/usb.h>
-+
-+#include "mt7921.h"
-+#include "mcu.h"
-+#include "mac.h"
-+
-+static u32 mt7921u_uhw_rr(struct mt76_dev *dev, u32 addr)
-+{
-+	u32 ret;
-+
-+	mutex_lock(&dev->usb.usb_ctrl_mtx);
-+	ret = ___mt76u_rr(dev, MT_VEND_DEV_MODE,
-+			  USB_DIR_IN | MT_USB_TYPE_UHW_VENDOR, addr);
-+	mutex_unlock(&dev->usb.usb_ctrl_mtx);
-+
-+	return ret;
-+}
-+
-+static void mt7921u_uhw_wr(struct mt76_dev *dev, u32 addr, u32 val)
-+{
-+	mutex_lock(&dev->usb.usb_ctrl_mtx);
-+	___mt76u_wr(dev, MT_VEND_WRITE,
-+		    USB_DIR_OUT | MT_USB_TYPE_UHW_VENDOR, addr, val);
-+	mutex_unlock(&dev->usb.usb_ctrl_mtx);
-+}
-+
-+static void mt7921u_dma_prefetch(struct mt7921_dev *dev)
-+{
-+	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(0),
-+		 MT_WPDMA0_MAX_CNT_MASK, 4);
-+	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(0),
-+		 MT_WPDMA0_BASE_PTR_MASK, 0x80);
-+
-+	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(1),
-+		 MT_WPDMA0_MAX_CNT_MASK, 4);
-+	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(1),
-+		 MT_WPDMA0_BASE_PTR_MASK, 0xc0);
-+
-+	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(2),
-+		 MT_WPDMA0_MAX_CNT_MASK, 4);
-+	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(2),
-+		 MT_WPDMA0_BASE_PTR_MASK, 0x100);
-+
-+	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(3),
-+		 MT_WPDMA0_MAX_CNT_MASK, 4);
-+	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(3),
-+		 MT_WPDMA0_BASE_PTR_MASK, 0x140);
-+
-+	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(4),
-+		 MT_WPDMA0_MAX_CNT_MASK, 4);
-+	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(4),
-+		 MT_WPDMA0_BASE_PTR_MASK, 0x180);
-+
-+	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(16),
-+		 MT_WPDMA0_MAX_CNT_MASK, 4);
-+	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(16),
-+		 MT_WPDMA0_BASE_PTR_MASK, 0x280);
-+
-+	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(17),
-+		 MT_WPDMA0_MAX_CNT_MASK, 4);
-+	mt76_rmw(dev, MT_UWFDMA0_TX_RING_EXT_CTRL(17),
-+		 MT_WPDMA0_BASE_PTR_MASK,  0x2c0);
-+}
-+
-+static void mt7921u_wfdma_init(struct mt7921_dev *dev)
-+{
-+	mt7921u_dma_prefetch(dev);
-+
-+	mt76_clear(dev, MT_UWFDMA0_GLO_CFG, MT_WFDMA0_GLO_CFG_OMIT_RX_INFO);
-+	mt76_set(dev, MT_UWFDMA0_GLO_CFG,
-+		 MT_WFDMA0_GLO_CFG_OMIT_TX_INFO |
-+		 MT_WFDMA0_GLO_CFG_OMIT_RX_INFO_PFET2 |
-+		 MT_WFDMA0_GLO_CFG_FW_DWLD_BYPASS_DMASHDL |
-+		 MT_WFDMA0_GLO_CFG_TX_DMA_EN |
-+		 MT_WFDMA0_GLO_CFG_RX_DMA_EN);
-+
-+	/* disable dmashdl */
-+	mt76_clear(dev, MT_UWFDMA0_GLO_CFG_EXT0,
-+		   MT_WFDMA0_CSR_TX_DMASHDL_ENABLE);
-+	mt76_set(dev, MT_DMASHDL_SW_CONTROL, MT_DMASHDL_DMASHDL_BYPASS);
-+
-+	mt76_set(dev, MT_WFDMA_DUMMY_CR, MT_WFDMA_NEED_REINIT);
-+}
-+
-+static int mt7921u_dma_rx_evt_ep4(struct mt7921_dev *dev)
-+{
-+	if (!mt76_poll(dev, MT_UWFDMA0_GLO_CFG,
-+		       MT_WFDMA0_GLO_CFG_RX_DMA_BUSY, 0, 1000))
-+		return -ETIMEDOUT;
-+
-+	mt76_clear(dev, MT_UWFDMA0_GLO_CFG, MT_WFDMA0_GLO_CFG_RX_DMA_EN);
-+	mt76_set(dev, MT_WFDMA_HOST_CONFIG,
-+		 MT_WFDMA_HOST_CONFIG_USB_RXEVT_EP4_EN);
-+	mt76_set(dev, MT_UWFDMA0_GLO_CFG, MT_WFDMA0_GLO_CFG_RX_DMA_EN);
-+
-+	return 0;
-+}
-+
-+static void mt7921u_epctl_rst_opt(struct mt7921_dev *dev, bool reset)
-+{
-+	u32 val;
-+
-+	/* usb endpoint reset opt
-+	 * bits[4,9]: out blk ep 4-9
-+	 * bits[20,21]: in blk ep 4-5
-+	 * bits[22]: in int ep 6
-+	 */
-+	val = mt7921u_uhw_rr(&dev->mt76, MT_SSUSB_EPCTL_CSR_EP_RST_OPT);
-+	if (reset)
-+		val |= GENMASK(9, 4) | GENMASK(22, 20);
-+	else
-+		val &= ~(GENMASK(9, 4) | GENMASK(22, 20));
-+	mt7921u_uhw_wr(&dev->mt76, MT_SSUSB_EPCTL_CSR_EP_RST_OPT, val);
-+}
-+
-+int mt7921u_dma_init(struct mt7921_dev *dev)
-+{
-+	int err;
-+
-+	mt7921u_wfdma_init(dev);
-+
-+	mt76_clear(dev, MT_UDMA_WLCFG_0, MT_WL_RX_FLUSH);
-+
-+	mt76_set(dev, MT_UDMA_WLCFG_0,
-+		 MT_WL_RX_EN | MT_WL_TX_EN |
-+		 MT_WL_RX_MPSZ_PAD0 | MT_TICK_1US_EN);
-+	mt76_clear(dev, MT_UDMA_WLCFG_0,
-+		   MT_WL_RX_AGG_TO | MT_WL_RX_AGG_LMT);
-+	mt76_clear(dev, MT_UDMA_WLCFG_1, MT_WL_RX_AGG_PKT_LMT);
-+
-+	err = mt7921u_dma_rx_evt_ep4(dev);
-+	if (err)
-+		return err;
-+
-+	mt7921u_epctl_rst_opt(dev, false);
-+
-+	return 0;
-+}
-+
-+int mt7921u_wfsys_reset(struct mt7921_dev *dev)
-+{
-+	u32 val;
-+	int i;
-+
-+	mt7921u_epctl_rst_opt(dev, false);
-+
-+	val = mt7921u_uhw_rr(&dev->mt76, MT_CBTOP_RGU_WF_SUBSYS_RST);
-+	val |= MT_CBTOP_RGU_WF_SUBSYS_RST_WF_WHOLE_PATH;
-+	mt7921u_uhw_wr(&dev->mt76, MT_CBTOP_RGU_WF_SUBSYS_RST, val);
-+
-+	usleep_range(10, 20);
-+
-+	val = mt7921u_uhw_rr(&dev->mt76, MT_CBTOP_RGU_WF_SUBSYS_RST);
-+	val &= ~MT_CBTOP_RGU_WF_SUBSYS_RST_WF_WHOLE_PATH;
-+	mt7921u_uhw_wr(&dev->mt76, MT_CBTOP_RGU_WF_SUBSYS_RST, val);
-+
-+	mt7921u_uhw_wr(&dev->mt76, MT_UDMA_CONN_INFRA_STATUS_SEL, 0);
-+	for (i = 0; i < MT7921_WFSYS_INIT_RETRY_COUNT; i++) {
-+		val = mt7921u_uhw_rr(&dev->mt76, MT_UDMA_CONN_INFRA_STATUS);
-+		if (val & MT_UDMA_CONN_WFSYS_INIT_DONE)
-+			break;
-+
-+		msleep(100);
-+	}
-+
-+	if (i == MT7921_WFSYS_INIT_RETRY_COUNT)
-+		return -ETIMEDOUT;
-+
-+	return 0;
-+}
-+
-+int mt7921u_init_reset(struct mt7921_dev *dev)
-+{
-+	set_bit(MT76_RESET, &dev->mphy.state);
-+
-+	wake_up(&dev->mt76.mcu.wait);
-+	mt7921_mcu_exit(dev);
-+
-+	mt76u_stop_rx(&dev->mt76);
-+	mt76u_stop_tx(&dev->mt76);
-+
-+	mt7921u_wfsys_reset(dev);
-+
-+	clear_bit(MT76_RESET, &dev->mphy.state);
-+
-+	return mt76u_resume_rx(&dev->mt76);
-+}
-+
-+int mt7921u_mac_reset(struct mt7921_dev *dev)
-+{
-+	int err;
-+
-+	mt76_txq_schedule_all(&dev->mphy);
-+	mt76_worker_disable(&dev->mt76.tx_worker);
-+
-+	set_bit(MT76_RESET, &dev->mphy.state);
-+	set_bit(MT76_MCU_RESET, &dev->mphy.state);
-+
-+	wake_up(&dev->mt76.mcu.wait);
-+	mt7921_mcu_exit(dev);
-+
-+	mt76u_stop_rx(&dev->mt76);
-+	mt76u_stop_tx(&dev->mt76);
-+
-+	mt7921u_wfsys_reset(dev);
-+
-+	clear_bit(MT76_MCU_RESET, &dev->mphy.state);
-+	err = mt76u_resume_rx(&dev->mt76);
-+	if (err)
-+		goto out;
-+
-+	err = mt7921u_mcu_power_on(dev);
-+	if (err)
-+		goto out;
-+
-+	err = mt7921u_dma_init(dev);
-+	if (err)
-+		goto out;
-+
-+	mt76_wr(dev, MT_SWDEF_MODE, MT_SWDEF_NORMAL_MODE);
-+	mt76_set(dev, MT_UDMA_TX_QSEL, MT_FW_DL_EN);
-+
-+	err = mt7921_run_firmware(dev);
-+	if (err)
-+		goto out;
-+
-+	mt76_clear(dev, MT_UDMA_TX_QSEL, MT_FW_DL_EN);
-+
-+	err = mt7921_mcu_set_eeprom(dev);
-+	if (err)
-+		goto out;
-+
-+	err = mt7921_mac_init(dev);
-+	if (err)
-+		goto out;
-+
-+	err = __mt7921_start(&dev->phy);
-+out:
-+	clear_bit(MT76_RESET, &dev->mphy.state);
-+
-+	mt76_worker_enable(&dev->mt76.tx_worker);
-+
-+	return err;
-+}
--- 
-2.35.1
-
+0-DAY CI Kernel Test Service
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
 _______________________________________________
 Linux-mediatek mailing list
