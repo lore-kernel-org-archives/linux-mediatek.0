@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 333B0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Mar 2022 15:07:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FCD9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Mar 2022 15:10:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d412117bjH7ykM3GO6xWOWFUXTs24Jn7FZ9GKONGvFU=; b=MQHCckGyeuGycE
-	BWqwdon2HxkrOISuA0UkR/FgVqQWD1wIQNZ8Sl7CIaAZ5Gb63YkCm68rFQ9xb8arDY2/Tkq2kPF9q
-	KfGICS88QfgT5F7GHAc6zW1K35KIGcIVs7M4NqpGOXt8G/CoibmjWRgKVEe0a4tx0JgtT7QoaOVB3
-	tsZrVVkpNKJPqIJB/BbHYTuOLP44Q5ph/uCNDa9ClJ5cxNwbIDdtOT8xWlhe40N2sv4oqA4oam0We
-	T0KE64AulIFqMuyQCZWHFpXuSJNyjD9Ur5LX5QooK5A8UmzvhhFxIj8dKKDuR+HSQnHL/M1gPDsoB
-	ejhOGBFQoGHffY8LXY6A==;
+	List-Owner; bh=xKJ6WYHFiaxHliDsMo7LwIjSXhHhd5immnJJzSK6ORY=; b=lWg19TJzyJV4pR
+	x3vdOos7OwrJCTWwgbg9+935Z5SdWGxJtEa28RU9GzP4kQuQ/JuRf3TzKLNd9zLNDB3PS6xS9+Lhy
+	N3CsNAYHQU7YuDYftpOyyNhdn0G0GjEzpedU1vsHEOJQ/xvgUrFDZR57qEzfJQSgpWH1lBlfoyl3a
+	VATa+WM9AnjcULuOu+Ttv7b+L+0VjssCXfpoo9hPNf4PGP7Je1tfmQY7uF0KQJ4SLK1aKAXf+GnmM
+	GAcmQ14JYy3MFixdN1M/vAuuqPc3lB0Ai6Rl1NoROdExhRg2VwKQZVvuklw2dN8zB1T12ogxcbVnj
+	UYvU2d3aDZvhVwHTlAqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTPoO-002uxt-Dj; Sun, 13 Mar 2022 15:07:12 +0000
-Received: from mga12.intel.com ([192.55.52.136])
+	id 1nTPro-002vBD-EN; Sun, 13 Mar 2022 15:10:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTPoK-002uxZ-Gu
- for linux-mediatek@lists.infradead.org; Sun, 13 Mar 2022 15:07:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1647184028; x=1678720028;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=mmvI+t9c7JC+R20YEUrxGV58zTdAMt/4tplAzgcpDE8=;
- b=hDLjTHll7ljOU5PKTvYs31ut09oNJbCEBk20WfCg/Strcva6raujzdpj
- jEIG+IucmtNrFC9snePl3lUGMy2V/sSJ0g7ouMvSHZOdFrj7zfb/v7msk
- sYRPAeCv8nfkqGcb2XRLAYeNrqOit9Af2TMBdtLFmu8CUGicAgr+oqyM3
- xa39A45GxWOcCE74GaF/MxIQZzsG8sPOeFcSNsUcQet2uQsckFsrxPWdu
- JIVj5FV9CpKEgqWxqv/QwrlmE2ECgGsTzzmO40o7PW4YPp7/yh2Zc7/Z3
- XuOoL+hVwx7MHtjnbgPM0OFs55N4ulqPdVykkNmbi40rbFG01VMuEVtuj A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10285"; a="235824157"
-X-IronPort-AV: E=Sophos;i="5.90,178,1643702400"; d="scan'208";a="235824157"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Mar 2022 08:07:01 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,178,1643702400"; d="scan'208";a="713437404"
-Received: from lkp-server02.sh.intel.com (HELO 89b41b6ae01c) ([10.239.97.151])
- by orsmga005.jf.intel.com with ESMTP; 13 Mar 2022 08:06:59 -0700
-Received: from kbuild by 89b41b6ae01c with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1nTPoA-00093C-Ix; Sun, 13 Mar 2022 15:06:58 +0000
-Date: Sun, 13 Mar 2022 23:06:12 +0800
-From: kernel test robot <lkp@intel.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>, nbd@nbd.name
-Cc: kbuild-all@lists.01.org, linux-wireless@vger.kernel.org,
- lorenzo.bianconi@redhat.com, sean.wang@mediatek.com,
- deren.wu@mediatek.com, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 9/9] mt76: mt7921: add mt7921u driver
-Message-ID: <202203132225.CbMappWu-lkp@intel.com>
-References: <af6cc4770cfed30a3baba5897c737008e0584719.1647175554.git.lorenzo@kernel.org>
+ id 1nTPrk-002v7v-Fz; Sun, 13 Mar 2022 15:10:42 +0000
+X-UUID: 9f15f1dd5dca4286809cb7da2314b86d-20220313
+X-UUID: 9f15f1dd5dca4286809cb7da2314b86d-20220313
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <jiaxin.yu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1861098443; Sun, 13 Mar 2022 08:10:32 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 13 Mar 2022 08:10:30 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Sun, 13 Mar 2022 23:10:27 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sun, 13 Mar 2022 23:10:26 +0800
+From: Jiaxin Yu <jiaxin.yu@mediatek.com>
+To: <broonie@kernel.org>, <robh+dt@kernel.org>,
+ <angelogioacchino.delregno@collabora.com>
+CC: <aaronyu@google.com>, <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>, 
+ <tzungbi@google.com>, <julianbraha@gmail.com>,
+ <alsa-devel@alsa-project.org>, 
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
+ <jiaxin.yu@mediatek.com>
+Subject: [v3 02/19] dt-bindings: mediatek: mt6358: add new compatible for
+ using mt6366
+Date: Sun, 13 Mar 2022 23:10:06 +0800
+Message-ID: <20220313151023.21229-3-jiaxin.yu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220313151023.21229-1-jiaxin.yu@mediatek.com>
+References: <20220313151023.21229-1-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <af6cc4770cfed30a3baba5897c737008e0584719.1647175554.git.lorenzo@kernel.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220313_080708_619141_BF66A588 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20220313_081040_560214_BC8B8C23 
+X-CRM114-Status: UNSURE (   7.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,79 +79,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Lorenzo,
+Add new compatible string "mediatek,mt6366-sound" for using mt6366.
 
-I love your patch! Yet something to improve:
-
-[auto build test ERROR on wireless-next/main]
-[also build test ERROR on next-20220310]
-[cannot apply to wireless/main v5.17-rc7]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
-
-url:    https://github.com/0day-ci/linux/commits/Lorenzo-Bianconi/introduce-mt7921u-driver/20220313-205210
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
-config: i386-allyesconfig (https://download.01.org/0day-ci/archive/20220313/202203132225.CbMappWu-lkp@intel.com/config)
-compiler: gcc-9 (Ubuntu 9.4.0-1ubuntu1~20.04) 9.4.0
-reproduce (this is a W=1 build):
-        # https://github.com/0day-ci/linux/commit/63a67380659a7ab972a09206bc2b581fdb6766b6
-        git remote add linux-review https://github.com/0day-ci/linux
-        git fetch --no-tags linux-review Lorenzo-Bianconi/introduce-mt7921u-driver/20220313-205210
-        git checkout 63a67380659a7ab972a09206bc2b581fdb6766b6
-        # save the config file to linux build tree
-        mkdir build_dir
-        make W=1 O=build_dir ARCH=i386 SHELL=/bin/bash
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
-
-All errors (new ones prefixed by >>):
-
-   drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c: In function 'mt7921u_mac_reset':
->> drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c:224:8: error: too many arguments to function 'mt7921u_dma_init'
-     224 |  err = mt7921u_dma_init(dev, false);
-         |        ^~~~~~~~~~~~~~~~
-   drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c:124:5: note: declared here
-     124 | int mt7921u_dma_init(struct mt7921_dev *dev)
-         |     ^~~~~~~~~~~~~~~~
-
-
-vim +/mt7921u_dma_init +224 drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
-
-   196	
-   197	int mt7921u_mac_reset(struct mt7921_dev *dev)
-   198	{
-   199		int err;
-   200	
-   201		mt76_txq_schedule_all(&dev->mphy);
-   202		mt76_worker_disable(&dev->mt76.tx_worker);
-   203	
-   204		set_bit(MT76_RESET, &dev->mphy.state);
-   205		set_bit(MT76_MCU_RESET, &dev->mphy.state);
-   206	
-   207		wake_up(&dev->mt76.mcu.wait);
-   208		mt7921_mcu_exit(dev);
-   209	
-   210		mt76u_stop_rx(&dev->mt76);
-   211		mt76u_stop_tx(&dev->mt76);
-   212	
-   213		mt7921u_wfsys_reset(dev);
-   214	
-   215		clear_bit(MT76_MCU_RESET, &dev->mphy.state);
-   216		err = mt76u_resume_rx(&dev->mt76);
-   217		if (err)
-   218			goto out;
-   219	
-   220		err = mt7921u_mcu_power_on(dev);
-   221		if (err)
-   222			goto out;
-   223	
- > 224		err = mt7921u_dma_init(dev, false);
-
+Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
 ---
-0-DAY CI Kernel Test Service
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ Documentation/devicetree/bindings/sound/mt6358.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/sound/mt6358.txt b/Documentation/devicetree/bindings/sound/mt6358.txt
+index 59a73ffdf1d3..fbe9e55c68f5 100644
+--- a/Documentation/devicetree/bindings/sound/mt6358.txt
++++ b/Documentation/devicetree/bindings/sound/mt6358.txt
+@@ -7,7 +7,9 @@ Must be a child node of PMIC wrapper.
+ 
+ Required properties:
+ 
+-- compatible : "mediatek,mt6358-sound".
++- compatible - "string" - One of:
++    "mediatek,mt6358-sound"
++    "mediatek,mt6366-sound"
+ - Avdd-supply : power source of AVDD
+ 
+ Optional properties:
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
