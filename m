@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF971C433FE
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Mar 2022 16:23:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 970AFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Mar 2022 16:23:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ChskwJDy5ZUIJ9TrR+0yRd0eX/Q/wIWa+ovOh6ioiDE=; b=uMpxW7e26/d8aQ
-	L3yUBJrWIHiPj5Ef+Ta75U8pny0f+kGeYOyyh4M88+mxr/xBb+IPmUrHsxmBkQm4dbVoIWbXCDQD6
-	XHwFID3ey+tHXekvMZm62xspvX5ae56lhThche8gFQK7ssW+FMjeHEwIUh5KLfAAZIbZohUsupiXR
-	sEE2iTcox+Y7vonBPUOnvV+86kaQ98r8vy5MUPaPDuTUVZZzqFY2RIsl3ksZeE/0bf45v0o+8n2K2
-	7syf4FfjCWTbUQg4QbmsydOxOjyHaJrD9Bd7qKshCF1XOLpclBTYhVtBVq6rrB3fdEHowCH2Zpp6Y
-	NfnGsKLSBqruuYZAPuxw==;
+	List-Owner; bh=CkppzYANvYEt8NDUhEwgOVDbSD1VI4RNBAS67Ho9VdI=; b=HH5Vzo3JZODdDu
+	485wCadBjQvfhRb59aYuYWSJsXWBu/iTzW1gSRJ9Sc/wxiuuiyJUeQ79Zxc0vMv74EIPxT8AFE6nR
+	LYw4z8AeIQDUqQI8PcrovG2O02MeGgiqcvPPQB0EiqQrJDKCNrikS/NHDt3ASVRn6oJ5ADkrbhJGN
+	eeZtrMmm96fsVMwkFSMoqwAQCRccyHydwWJZN/MttMuC4tj2aIGZ/LyQE0fW2nHetLCtCSZmtU7SN
+	kKkPhRC7XuaAon0RXD8gI7d4FN08QSb8GtZ3o2/dGjfKpOdmGP4gE/KlCibQ1K15bJ5gMQGV+Mi25
+	nR4P+atpB2NN8Z7gyN3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTR0A-0038oi-Ct; Sun, 13 Mar 2022 16:23:26 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nTR0B-0038ph-L5; Sun, 13 Mar 2022 16:23:27 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTR04-0038jr-8Q
- for linux-mediatek@lists.infradead.org; Sun, 13 Mar 2022 16:23:24 +0000
+ id 1nTR07-0038mu-Tr
+ for linux-mediatek@lists.infradead.org; Sun, 13 Mar 2022 16:23:25 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id CF625B80C9E;
- Sun, 13 Mar 2022 16:23:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA9B6C340E8;
- Sun, 13 Mar 2022 16:23:15 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 7639B611F6;
+ Sun, 13 Mar 2022 16:23:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B60EC340F6;
+ Sun, 13 Mar 2022 16:23:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647188597;
- bh=DVaBtUDkkMcB4eyNDjBZeuwCK+da3683tL6OZe4IULQ=;
+ s=k20201202; t=1647188602;
+ bh=iOnTymIef0AyAtZy+eqdTRzdqkwvlWyBJHKNsM+a0+8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=kPQQ0kmwjGG0qUV7smUx2MJIxTrrls9AnamNHlqs0cytd+uGoKBH7i3/4V3nhub4M
- ef9buwiUcL3mz2q4baPjQP4XR6uE4xBmzOOTjnKaUcaEn8oJ6fSvphwuLQmg1bXlQW
- Sw1Txz+fscFgW+prhHZqWnAV113Bbh+GaXlhnPH2cUFhpWY3yIX8/lIRdkk4CwvlGb
- ONMXFTLXm0kFmOndm2/j5tLucQPdauVFrsJV1qNHwjGi1SjLto0OL6wYrQzjTN0dNx
- pqJ/z238rsm8bmKXAjSmKljaZmAbeEQuTSRrBghjIrf5xDBJKA/00E/e6y2QVj0LEK
- RnWAsaHo3Tjhw==
+ b=DLRuNlVu4gfQF2gLkUVBQHmqlJPVzUDUVfBzIKUR2o3TuR7P87WiXh17Z9PJPNg7N
+ +7m7I94Tn+3DWU1EsM53qcuq8SvS0Zksu2c1QrKYIhQNDxAiMLxFgR39qU+RTNR3hd
+ oFFBi4o9k7IzOFEfAHb0DSIHZMCR4fW+rE+xtGZ5Q8AFSArB7AfGLYgOTHs3d16J+7
+ SH2tNnq5L9d2RqTBi7WU8AMuv2HwG8EKcy3SgqSOSknYwrWM+O4qIM63u350dFzPkm
+ oVPvuOEKw5u5qfnLUjPxbYfT8yWmYUnZ+OnXoX9qivcFgeX/Xru4oPEYiNGxy59iu+
+ xzUrSaB0V1BGQ==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
 Cc: linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com,
  sean.wang@mediatek.com, deren.wu@mediatek.com,
  linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 5/9] mt76: mt7921: update mt7921_skb_add_usb_sdio_hdr to
- support usb
-Date: Sun, 13 Mar 2022 17:22:37 +0100
-Message-Id: <4ced0548dc8f60266cca3e1800b42f962d29a156.1647188302.git.lorenzo@kernel.org>
+Subject: [PATCH v4 8/9] mt76: mt7921: move mt7921_usb_sdio_tx_status_data in
+ mac common code.
+Date: Sun, 13 Mar 2022 17:22:40 +0100
+Message-Id: <2f41acfadc4466e920a991be4c88df158972da7e.1647188302.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <cover.1647188301.git.lorenzo@kernel.org>
 References: <cover.1647188301.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220313_092320_639632_5DE62182 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20220313_092324_086914_3385B110 
+X-CRM114-Status: GOOD (  10.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,60 +79,82 @@ This is a preliminary patch to add mt7921u driver support.
 Tested-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h   | 10 ++++++----
- drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c |  2 +-
- drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c |  2 +-
- 3 files changed, 8 insertions(+), 6 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7921/mac.c      | 12 ++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h   |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt7921/sdio.c     |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c | 11 -----------
+ 4 files changed, 14 insertions(+), 13 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index c0f78e3c05b2..0c0309133502 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -1706,3 +1706,15 @@ void mt7921_usb_sdio_tx_complete_skb(struct mt76_dev *mdev,
+ 	mt76_tx_complete_skb(mdev, e->wcid, e->skb);
+ }
+ EXPORT_SYMBOL_GPL(mt7921_usb_sdio_tx_complete_skb);
++
++bool mt7921_usb_sdio_tx_status_data(struct mt76_dev *mdev, u8 *update)
++{
++	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
++
++	mt7921_mutex_acquire(dev);
++	mt7921_mac_sta_poll(dev);
++	mt7921_mutex_release(dev);
++
++	return false;
++}
++EXPORT_SYMBOL_GPL(mt7921_usb_sdio_tx_status_data);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index 394a677140da..66b331d003b4 100644
+index 310b3da77d83..bdcc68b85f35 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -352,12 +352,14 @@ static inline void mt7921_mcu_tx_cleanup(struct mt7921_dev *dev)
- 	mt76_queue_tx_cleanup(dev, dev->mt76.q_mcu[MT_MCUQ_WA], false);
- }
+@@ -444,7 +444,6 @@ int mt7921e_mcu_fw_pmctrl(struct mt7921_dev *dev);
+ int mt7921s_mcu_init(struct mt7921_dev *dev);
+ int mt7921s_mcu_drv_pmctrl(struct mt7921_dev *dev);
+ int mt7921s_mcu_fw_pmctrl(struct mt7921_dev *dev);
+-bool mt7921s_tx_status_data(struct mt76_dev *mdev, u8 *update);
+ void mt7921_mac_add_txs(struct mt7921_dev *dev, void *data);
+ void mt7921_set_runtime_pm(struct mt7921_dev *dev);
  
--static inline void mt7921_skb_add_sdio_hdr(struct sk_buff *skb,
--					   enum mt7921_sdio_pkt_type type)
-+static inline void
-+mt7921_skb_add_usb_sdio_hdr(struct mt7921_dev *dev, struct sk_buff *skb,
-+			    int type)
- {
--	u32 hdr;
-+	u32 hdr, len;
- 
--	hdr = FIELD_PREP(MT7921_SDIO_HDR_TX_BYTES, skb->len + sizeof(hdr)) |
-+	len = mt76_is_usb(&dev->mt76) ? skb->len : skb->len + sizeof(hdr);
-+	hdr = FIELD_PREP(MT7921_SDIO_HDR_TX_BYTES, len) |
- 	      FIELD_PREP(MT7921_SDIO_HDR_PKT_TYPE, type);
- 
- 	put_unaligned_le32(hdr, skb_push(skb, sizeof(hdr)));
+@@ -454,4 +453,5 @@ int mt7921_usb_sdio_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+ 				   struct mt76_tx_info *tx_info);
+ void mt7921_usb_sdio_tx_complete_skb(struct mt76_dev *mdev,
+ 				     struct mt76_queue_entry *e);
++bool mt7921_usb_sdio_tx_status_data(struct mt76_dev *mdev, u8 *update);
+ #endif
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+index 507bd550b063..9b2bc0b11492 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+@@ -93,7 +93,7 @@ static int mt7921s_probe(struct sdio_func *func,
+ 				SURVEY_INFO_TIME_BSS_RX,
+ 		.tx_prepare_skb = mt7921_usb_sdio_tx_prepare_skb,
+ 		.tx_complete_skb = mt7921_usb_sdio_tx_complete_skb,
+-		.tx_status_data = mt7921s_tx_status_data,
++		.tx_status_data = mt7921_usb_sdio_tx_status_data,
+ 		.rx_skb = mt7921_queue_rx_skb,
+ 		.sta_ps = mt7921_sta_ps,
+ 		.sta_add = mt7921_mac_sta_add,
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
-index 4fd1d4765b04..5462ab05fb13 100644
+index fa9db21bb3e8..1b3adb3d91e8 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
-@@ -183,7 +183,7 @@ int mt7921s_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
- 	pktid = mt76_tx_status_skb_add(&dev->mt76, wcid, skb);
- 	mt7921s_write_txwi(dev, wcid, qid, sta, key, pktid, skb);
+@@ -140,14 +140,3 @@ int mt7921s_mac_reset(struct mt7921_dev *dev)
  
--	mt7921_skb_add_sdio_hdr(skb, MT7921_SDIO_DATA);
-+	mt7921_skb_add_usb_sdio_hdr(dev, skb, MT7921_SDIO_DATA);
- 	pad = round_up(skb->len, 4) - skb->len;
- 
- 	err = mt76_skb_adjust_pad(skb, pad);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
-index 5d8af18c7026..54a5c712a3c3 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
-@@ -36,7 +36,7 @@ mt7921s_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
- 	if (cmd == MCU_CMD(FW_SCATTER))
- 		type = MT7921_SDIO_FWDL;
- 
--	mt7921_skb_add_sdio_hdr(skb, type);
-+	mt7921_skb_add_usb_sdio_hdr(dev, skb, type);
- 	pad = round_up(skb->len, 4) - skb->len;
- 	__skb_put_zero(skb, pad);
- 
+ 	return err;
+ }
+-
+-bool mt7921s_tx_status_data(struct mt76_dev *mdev, u8 *update)
+-{
+-	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
+-
+-	mt7921_mutex_acquire(dev);
+-	mt7921_mac_sta_poll(dev);
+-	mt7921_mutex_release(dev);
+-
+-	return false;
+-}
 -- 
 2.35.1
 
