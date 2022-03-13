@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AA42C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Mar 2022 23:26:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54158C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Mar 2022 00:01:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+9AZX6dEK9Ma4nwRBeO/Bx4H8yXPcMLyJM4Z1Syqu3Q=; b=cK+Awk4FMi2y94
-	Vu5XPRaWWKbMgSPP7GM5Syc0g9cw8iPfofgSdaDq+2+apbzYDHPy/d/OcKWrMGq/hk26m3dilmXgq
-	3GtUUYybsDCS5p7szqDLrpGdThbpg8yDikyT0LdjVcn4YEElaJmBq/r3UanxKtqLqan8+SUoCK9jG
-	0vlVtSAkEUT+rgFceEjecCc97yANpMs+iK9TuwpGvehr/8Yrg9B12TkDMuWnm7gG7ANwKsElcMutb
-	oJlsDyG+u1vpzRDFF5G7Vf5yVAyonWO1w51xD5Yv7Ciaj9BewROK5fOOy5ctUbu7YNzXhRd/3VaOV
-	4xhq/K1diFy9DmewLNPA==;
+	List-Owner; bh=/hoAY0kyqzuXtfrgGNI2tlDRjz/6Hkf957hlN1DteyY=; b=R31h3tNI2kTvTS
+	K4JxIHgAyMlH/z4gXLiLTWEvBRUGX7UlZf1hNNf0ZUYMggfEoQ33l9TAIMZOGtSpPs9p0jybUC3AB
+	avHxjZwrwpEb6U0v29h7GRrNyYRv4lraSXMas9J95u0TD42slu+CjWMAW3rCjY9YFVJ14fU5bP4Qr
+	3SpJtoP3H+LwDi7X+i81szl1TwGWy81UTW7Y2auplA2DKn8YUL3ghNXZqgqWHAxCZ5kVDFX0XAKfN
+	iECk7mNg8CdOZB9DMszURCqnq9cyf+f/rdaFiHaNs993sOyojwMxaI5t8Py1C7T/IfZFL/mTzsc33
+	Bl7kQ10uzYF/VCTrZwVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTB86-001zRh-Tl; Sat, 12 Mar 2022 23:26:34 +0000
+	id 1nTBfx-00224w-Pb; Sun, 13 Mar 2022 00:01:33 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTB7p-001zJn-0W; Sat, 12 Mar 2022 23:26:18 +0000
-X-UUID: 327223ddd88e4777b5c2751740b5d872-20220312
-X-UUID: 327223ddd88e4777b5c2751740b5d872-20220312
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ id 1nTBfu-00223e-IP; Sun, 13 Mar 2022 00:01:31 +0000
+X-UUID: 5e3099a226374f0d84fa83f49b38c482-20220312
+X-UUID: 5e3099a226374f0d84fa83f49b38c482-20220312
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 351069210; Sat, 12 Mar 2022 16:26:11 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 752179623; Sat, 12 Mar 2022 17:01:26 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 12 Mar 2022 15:26:10 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Sun, 13 Mar 2022 07:26:08 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ 15.0.1497.2; Sat, 12 Mar 2022 16:01:24 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sun, 13 Mar 2022 08:01:10 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sun, 13 Mar 2022 07:26:08 +0800
+ Frontend Transport; Sun, 13 Mar 2022 08:01:10 +0800
 From: Miles Chen <miles.chen@mediatek.com>
-To: <chun-jie.chen@mediatek.com>
+To: <lkp@intel.com>
 CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <devicetree@vger.kernel.org>, <drinkcat@chromium.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+ <angelogioacchino.delregno@collabora.com>, <bjorn.andersson@linaro.org>,
+ <kbuild-all@lists.01.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <matthias.bgg@gmail.com>, <robh+dt@kernel.org>, <sboyd@kernel.org>,
- <srv_heupstream@mediatek.com>
-Subject: Re: [PATCH v3 15/15] clk: mediatek: Add MT8186 ipesys clock support
-Date: Sun, 13 Mar 2022 07:26:08 +0800
-Message-ID: <20220312232608.15365-1-miles.chen@mediatek.com>
+ <linux-remoteproc@vger.kernel.org>, <mathieu.poirier@linaro.org>,
+ <matthias.bgg@gmail.com>, <tinghan.shen@mediatek.com>
+Subject: Re: [PATCH v2] remoteproc: mediatek: fix side effect of mt8195 sram
+ power on
+Date: Sun, 13 Mar 2022 08:01:10 +0800
+Message-ID: <20220313000110.3869-1-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220311114229.32504-16-chun-jie.chen@mediatek.com>
-References: <20220311114229.32504-16-chun-jie.chen@mediatek.com>
+In-Reply-To: <202203120056.qtDEVoye-lkp@intel.com>
+References: <202203120056.qtDEVoye-lkp@intel.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220312_152617_081052_016418D7 
-X-CRM114-Status: UNSURE (   5.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220312_160130_652454_2F81D114 
+X-CRM114-Status: GOOD (  10.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,13 +75,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->  Add MT8186 ipesys clock controller which provides clock gate
->  control for Image Process Engine.
->  
->  Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
->  Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hi Tinghan,
 
-Reviewed-by: Miles Chen <miles.chen@mediatek.com> 
+>      418 |                           MT8195_L1TCM_SRAM_PDN_RESERVED_BITS);
+>          |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>          |                           MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS
+>    drivers/remoteproc/mtk_scp.c:418:27: note: each undeclared identifier is reported only once for each function it appears in
+>    drivers/remoteproc/mtk_scp.c: In function 'mt8195_scp_stop':
+>    drivers/remoteproc/mtk_scp.c:592:28: error: 'MT8195_L1TCM_SRAM_PDN_RESERVED_BITS' undeclared (first use in this function); did you mean 'MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS'?
+>      592 |                            MT8195_L1TCM_SRAM_PDN_RESERVED_BITS);
+>          |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>          |                            MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS
+
+I tested this patch and it can should be caught by the
+internal build test.
+
+Could you do the test before submitting patches out?
+
+
+Thanks,
+Miles
 
 _______________________________________________
 Linux-mediatek mailing list
