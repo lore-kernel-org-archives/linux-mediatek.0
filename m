@@ -4,76 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0C45C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Mar 2022 11:03:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A9C2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Mar 2022 12:49:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:From:Date:Reply-To:To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+3CYCFXutgeujp3tpjKsuFRFJt2xw7ZMUnLYYkSPA/o=; b=rIqH+B7SeZ08mT
-	Z7Ut/zLIx7o10jR3kRNXtRkSqyr19C3eKaJGWqQBnSvmFREsjpAx5Rfu9cwMjXrsvlO4oS6JV8nMF
-	tynr9YEKQrJbJK3+0kah2/4Q9sxYMBcyUL7gJMh+D5bC8C65StYXJre3aAY4NEdzlm0FtYQSmKS5E
-	VbuhyJey5a8569e6vBGlWP095gOf5pc5/5l1YzAsrlF0SOm+KiZI7Cd2SnRRJH9/jHgnPT2j3/nId
-	uscZwwe+4P/ec0zawghvnWFD2usOWrkngTJXHbj90JK4KHoepEH4MalDAxyWAkmgXkVj6Q96qd9ak
-	So7x9y2hKREI7mJMF6Uw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zgE9g3CMN4Vv8gzMxsM3Mt+vS+cLNfh5asjW6jzgjhg=; b=C1aiXwBwyVrYK1
+	F3a1MwCn9Wlh6+VgI05itgGhotaxSqnstk29aUeJ0Li3XlP4nD3lovgt/ifFCFednRwYXhgwe+HE3
+	WwCR6YHtv8HlvOaryLeY+y+OBRSVauFjwg8UPsAL5BrPmXGcb/an7zL5t0DwaGMFymR+g/jrjCSo4
+	4IzNBgXHYEMAMnA/XzK0SU8THe5Krlxr3dZ1AkDoXg6kQMQiTRGj831x7Fx3Hpluy9gTBgYzaWJzO
+	2xLe3xMHQ+DGRy/YIFXWI90fWucbNdB34yCzaJ9kgWfOOv2R6YtKrZRcVhjTTzP30BmB/7hr1OfjL
+	i9CsSOjS37oPYmM0tNXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTM0S-002eff-FA; Sun, 13 Mar 2022 11:03:24 +0000
+	id 1nTNf4-002mCf-JB; Sun, 13 Mar 2022 12:49:26 +0000
 Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTLxQ-002dDU-KJ; Sun, 13 Mar 2022 11:00:21 +0000
+ id 1nTNf1-002mBg-Ec
+ for linux-mediatek@lists.infradead.org; Sun, 13 Mar 2022 12:49:24 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id AD0F1B80CA8;
- Sun, 13 Mar 2022 11:00:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9060C340EC;
- Sun, 13 Mar 2022 11:00:05 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 43512B8009F;
+ Sun, 13 Mar 2022 12:49:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80112C340E8;
+ Sun, 13 Mar 2022 12:49:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647169213;
- bh=K6raQ3hcVYXvtlWvYXOLgzshf6ywpYtouqfgtS4XSgI=;
- h=Date:From:Cc:Subject:In-Reply-To:References:From;
- b=f6FajvJWGzBUEAJpip4FTCW+ziT2N4Fes+bwxhm6P4X7wHhwUaOMcP7i6caQXwqAV
- SWFJaTRBzr7UeVqgZ+iQvK2L3/es8ZmF5h5H5xaq7iNbSQ7hOWUmfOoqgkr4yH0Kyi
- NtI8zelQGEh4QkIsNyt+pRe1NmA2S5GeVN6NyJtGOiToEcx9OvPpDe6BbFPYjsJ0TW
- Q2BxYhRUItV5G1A7lThY+qbpnEFFMkYGlshPOVw01Xmd9feBk2BRWRn4e0xWiwwXF3
- /6jc7G1QK35edetsIKmeke+nHWz8o2iqh3gG38fXqgG+tLtV3iKAFRUZpClo/8XJVp
- Lk/RW6spFk5+g==
-Date: Sun, 13 Mar 2022 12:00:02 +0100
-From: Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Andrew Jeffery <andrew@aj.id.au>, Andrzej
- Hajda <andrzej.hajda@intel.com>, Andy Gross <agross@kernel.org>, Bjorn
- Andersson <bjorn.andersson@linaro.org>, Eddie James
- <eajames@linux.ibm.com>, Fabio Estevam <festevam@gmail.com>, Heiko Stuebner
- <heiko@sntech.de>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Jerome
- Brunet <jbrunet@baylibre.com>, Kevin Hilman <khilman@baylibre.com>, Martin
- Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Michael Tretter <m.tretter@pengutronix.de>, Mikhail Ulyanov
- <mikhail.ulyanov@cogentembedded.com>, NXP Linux Team <linux-imx@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, Philipp Zabel
- <p.zabel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo
- <shawnguo@kernel.org>, Sylwester Nawrocki <sylvester.nawrocki@gmail.com>,
- Yong Deng <yong.deng@magewell.com>, linux-amlogic@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-aspeed@lists.ozlabs.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, openbmc@lists.ozlabs.org
-Subject: Re: [PATCH 00/24] Organize media platform drivers per manufacturer
-Message-ID: <20220313120002.0d782ce7@coco.lan>
-In-Reply-To: <cover.1647167750.git.mchehab@kernel.org>
-References: <cover.1647167750.git.mchehab@kernel.org>
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.31; x86_64-redhat-linux-gnu)
+ s=k20201202; t=1647175759;
+ bh=JXuGDn4nZcF36whCtPHWaQTYGuLhBuWoCCeGHtanIYs=;
+ h=From:To:Cc:Subject:Date:From;
+ b=ghb3b+GDUDfCFZ9bvoqLqceSlWtp4Hck/khGh2/ygZL11yZdzNwcZ3GPHFlgYhZQ5
+ KgnKSR6Fq/Df7Th0KYM0oLJmWoKjzBYRnSmPdZSXKGMv01SJzd4eXBPRb6dsMemQZS
+ rHSxAbNDy0TxX90x2YpvvuSx5BJmPKJzFV5adrxOlGcCaHTf//1VK0qbkUTQJcLcXx
+ 0p8XW4UeR9NZEXWDadoLRiMywYU30i1W08DDit0NgrmBjMXqxvTNsoLwwkck4RX34m
+ IPDiLds7gfRxHu6mjkjCs0+YWKTSFp2ZC52Yc161t8meZlrt0LBAtawMgpOB/ovxa/
+ Ymh+zKMp3+1PQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: nbd@nbd.name
+Cc: linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com,
+ sean.wang@mediatek.com, deren.wu@mediatek.com,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH v3 0/9] introduce mt7921u driver
+Date: Sun, 13 Mar 2022 13:48:50 +0100
+Message-Id: <cover.1647175554.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220313_040017_051065_57D4EBFA 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20220313_054923_680342_05C0B6C6 
+X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,217 +72,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Em Sun, 13 Mar 2022 11:51:41 +0100
-Mauro Carvalho Chehab <mchehab@kernel.org> escreveu:
+Introduce support for MT7921U 802.11ax 2x2:2SS wireless devices.
 
-> This series comes after the one I sent earlier today sorting media/platform Makefile and Kconfig.
-> 
-> It basically groups all drivers per vendor, ensuring that each vendor has a Makefile/Kconfig
-> pair.
-> 
-> The end goal is to keep the platform Makefile/Kconfig clean and easier to maintain, less
-> prune to errors. After applying both series, the size of such files were drastically reduced:
-> 
-> 	 drivers/media/platform/Kconfig  |  731 ++------------------------------
-> 	 drivers/media/platform/Makefile |  115 +----
-> 	 2 files changed, 78 insertions(+), 768 deletions(-)
-> 
-> Mauro Carvalho Chehab (24):
->   media: platform: rename coda/ to chips-media/
->   media: platform: rename marvell-ccic/ to marvell/
->   media: platform: rename meson/ge2d/ to amlogic/meson-ge2d/
->   media: platform: rename mtk-jpeg/ to mediatek/mtk-jpeg/
->   media: platform: rename mtk-mdp/ to mediatek/mtk-mdp/
->   media: platform: rename mtk-vcodec/ to mediatek/mtk-vcodec/
->   media: platform: rename mtk-vpu/ to mediatek/mtk-vpu/
->   media: platform: rename sunxi/ to allwinner/
->   media: platform: rename tegra/vde/ to nvidia/tegra-vde/
->   media: platform: rename amphion/ to nxp/amphion/
->   media: platform: rename exynos4-is/ to samsung/exynos4-is/
->   media: platform: rename exynos-gsc/ to samsung/exynos-gsc/
->   media: platform: rename s3c-camif/ to samsung/s3c-camif/
->   media: platform: rename s5p-g2d/ to samsung/s5p-g2d/
->   media: platform: rename s5p-jpeg/ to samsung/s5p-jpeg/
->   media: platform: rename s5p-mfc/ to samsung/s5p-mfc/
->   media: platform: rename stm32/ to sti/stm32/
->   media: platform: rename am437x/ to ti/am437x/
->   media: platform: rename davinci/ to ti/davinci/
->   media: platform: rename omap3isp/ to ti/omap3isp/
->   media: platform: rename omap/ to ti/omap/
->   media: platform: rename ti-vpe/ to ti/vpe/
->   media: platform: Create vendor/{Makefile,Kconfig} files
+Changes since v2:
+- implemented full reset support in mt7921u_mac_reset routine
 
-Worth mention that, while the above changes are really trivial, it is
-no fun to do them individually. It is also subject to errors.
+Changes since v1:
+- implement wfsys reset support
+- fixed power on procedure
+- fixed module unload
 
-So, after manually doing a couple of them, I decided to revert
-to the original state and do it via the script below, checking
-the patches and editing the last one.
+Lorenzo Bianconi (9):
+  mt76: usb: add req_type to ___mt76u_rr signature
+  mt76: usb: add req_type to ___mt76u_wr signature
+  mt76: usb: introduce __mt76u_init utility routine
+  mt76: mt7921: disable runtime pm for usb
+  mt76: mt7921: update mt7921_skb_add_usb_sdio_hdr to support usb
+  mt76: mt7921: move mt7921_usb_sdio_tx_prepare_skb in common mac code
+  mt76: mt7921: move mt7921_usb_sdio_tx_complete_skb in common mac code.
+  mt76: mt7921: move mt7921_usb_sdio_tx_status_data in mac common code.
+  mt76: mt7921: add mt7921u driver
 
-Thanks,
-Mauro
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  12 +-
+ .../net/wireless/mediatek/mt76/mt7615/usb.c   |  68 +++-
+ .../net/wireless/mediatek/mt76/mt76x0/usb.c   |   2 +-
+ .../net/wireless/mediatek/mt76/mt76x2/usb.c   |   2 +-
+ .../net/wireless/mediatek/mt76/mt7921/Kconfig |  11 +
+ .../wireless/mediatek/mt76/mt7921/Makefile    |   2 +
+ .../wireless/mediatek/mt76/mt7921/debugfs.c   |   6 +
+ .../net/wireless/mediatek/mt76/mt7921/init.c  |  12 +-
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   |  91 ++++++
+ .../net/wireless/mediatek/mt76/mt7921/mac.h   |   1 +
+ .../net/wireless/mediatek/mt76/mt7921/main.c  |   3 +-
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  36 ++-
+ .../net/wireless/mediatek/mt76/mt7921/regs.h  |  50 ++-
+ .../net/wireless/mediatek/mt76/mt7921/sdio.c  |   6 +-
+ .../wireless/mediatek/mt76/mt7921/sdio_mac.c  |  83 -----
+ .../wireless/mediatek/mt76/mt7921/sdio_mcu.c  |   2 +-
+ .../net/wireless/mediatek/mt76/mt7921/usb.c   | 305 ++++++++++++++++++
+ .../wireless/mediatek/mt76/mt7921/usb_mac.c   | 252 +++++++++++++++
+ drivers/net/wireless/mediatek/mt76/usb.c      | 125 +++----
+ 19 files changed, 874 insertions(+), 195 deletions(-)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
 
----
+-- 
+2.35.1
 
-#!/bin/bash -e
-
-export LC_ALL=C # Needed by sort
-
-TMP=$(mktemp /tmp/rename.XXXXXXXXX)
-
-trap 'catch $LINENO' ERR SIGINT
-catch()
-{
-	echo "Error on line $1"
-	rm $TMP || true
-	exit 1
-}
-
-sort_makefile()
-{
-	# sort Makefile
-	sed '/^obj-y/Q' drivers/media/platform/Makefile> $TMP
-	grep "^obj-y" drivers/media/platform/Makefile |sort | uniq >> $TMP
-	cat <<EOF >> $TMP
-
-# Please place here only ancillary drivers that aren't SoC-specific
-# Please keep it alphabetically sorted by Kconfig name
-# (e. g. LC_ALL=C sort Makefile)
-obj-\$(CONFIG_VIDEO_MEM2MEM_DEINTERLACE)	+= m2m-deinterlace.o
-obj-\$(CONFIG_VIDEO_MUX)			+= video-mux.o
-EOF
-	mv $TMP drivers/media/platform/Makefile
-}
-
-sort_kconfig()
-{
-	# sort Kconfig
-	sed '/^source/Q' drivers/media/platform/Kconfig> $TMP
-	grep "^source" drivers/media/platform/Kconfig |sort | uniq >> $TMP
-	cat <<EOF >> $TMP
-
-endif # MEDIA_PLATFORM_DRIVERS
-EOF
-
-	mv $TMP drivers/media/platform/Kconfig
-}
-
-do_rename_vendor()
-{
-	old=$(echo $1 |perl -ne 's,/$,,; print $_')
-	new=$(echo $2 |perl -ne 's,/$,,; print $_')
-
-	echo "$old -> $new"
-
-	mkdir -p dirname drivers/media/platform/$new
-
-	git mv drivers/media/platform/$old/* drivers/media/platform/$new/
-
-	sed s,$old/,$new/, -i $(find drivers/media/platform/ -name Kconfig) $(find drivers/media/platform/ -name Makefile)
-	sed s,drivers/media/platform/$old,drivers/media/platform/$new, -i $(git grep -l drivers/media/platform/$old) || true
-
-	# Remove obj files, to make the directory cleaner
-	rm -rf drivers/media/platform/$old/ || true
-
-	sort_makefile
-	sort_kconfig
-
-	cat <<EOF >> $TMP
-media: platform: rename $old/ to $new/
-
-As the end goal is to have platform drivers split by vendor,
-rename $old/ to $new/.
-EOF
-
-	git commit -as -m "$(cat $TMP)" --no-edit
-}
-
-do_rename_vendor coda chips-media
-do_rename_vendor marvell-ccic/ marvell/
-do_rename_vendor meson/ge2d/ amlogic/meson-ge2d/
-do_rename_vendor mtk-jpeg mediatek/mtk-jpeg
-do_rename_vendor mtk-mdp mediatek/mtk-mdp
-do_rename_vendor mtk-vcodec mediatek/mtk-vcodec
-do_rename_vendor mtk-vpu mediatek/mtk-vpu
-do_rename_vendor sunxi/ allwinner/
-do_rename_vendor tegra/vde nvidia/tegra-vde
-do_rename_vendor amphion nxp/amphion
-do_rename_vendor exynos4-is/ samsung/exynos4-is/
-do_rename_vendor exynos-gsc samsung/exynos-gsc
-do_rename_vendor s3c-camif samsung/s3c-camif
-do_rename_vendor s5p-g2d samsung/s5p-g2d
-do_rename_vendor s5p-jpeg samsung/s5p-jpeg
-do_rename_vendor s5p-mfc samsung/s5p-mfc
-do_rename_vendor stm32 sti/stm32
-do_rename_vendor am437x/ ti/am437x/
-do_rename_vendor davinci ti/davinci
-do_rename_vendor omap3isp ti/omap3isp
-do_rename_vendor omap ti/omap
-do_rename_vendor ti-vpe ti/vpe
-
-# Create or update drivers/media/platform/*/Kconfig
-
-IFS=$'\n'
-
-# Fixup Kconfig files
-for i in $(cat drivers/media/platform/Kconfig|perl -ne 'if (m,platform/([^/]+)/([^/]+)/Kconfig,) { print "$1 $2\n" }'); do
-        echo "Handling $i Kconfig entries"
-
-        a=$(echo $i|cut -d' ' -f1)
-        b=$(echo $i|cut -d' ' -f2)
-
-	kconfig="drivers/media/platform/$a/$b/Kconfig"
-	parent="drivers/media/platform/$a/Kconfig"
-
-        if [ ! -e $parent ]; then
-                echo "creating $parent..."
-                echo "# SPDX-License-Identifier: GPL-2.0" > $parent
-		git add $parent
-        fi
-
-        echo "source \"$kconfig\"" >> drivers/media/platform/$a/Kconfig
-        echo "source \"$parent\"" >> drivers/media/platform/Kconfig
-
-        sed s,$kconfig,$parent, -i drivers/media/platform/Kconfig
-
-        echo "sorting..."
-	sort_kconfig
-done
-
-# Create or update drivers/media/platform/*/Makefile
-
-for i in $(cat drivers/media/platform/Makefile|perl -ne 'if (m,.*=\s*([^/]+)/([^/]+)/,) { print "$1 $2\n" }'); do
-        echo "Handling $i Makefile entries"
-
-        a=$(echo $i|cut -d' ' -f1)
-        b=$(echo $i|cut -d' ' -f2)
-
-        make="$a/$b/"
-        parent="$a/"
-
-        if [ ! -e drivers/media/platform/$a/Makefile ]; then
-                echo "creating $parent..."
-                echo "# SPDX-License-Identifier: GPL-2.0" > drivers/media/platform/$a/Makefile
-                git add drivers/media/platform/$a/Makefile
-        fi
-        echo "obj-y += $b/" >> drivers/media/platform/$a/Makefile
-        echo "obj-y += $parent" >> drivers/media/platform/Makefile
-
-        sed s,$make\$,$parent, -i drivers/media/platform/Makefile
-done
-
-sort_kconfig
-sort_makefile
-
-	cat <<EOF >> $TMP
-media: platform: Create vendor/{Makefile,Kconfig} files
-
-Instead of placing multiple per-vendor entries at the
-platform/{Makefile,Kconfig}, create them at the per-vendor
-directories.
-EOF
-
-git commit -as -m "$(cat $TMP)" --no-edit
 
 _______________________________________________
 Linux-mediatek mailing list
