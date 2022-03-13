@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A9C2C433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B534FC433FE
 	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Mar 2022 12:49:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zgE9g3CMN4Vv8gzMxsM3Mt+vS+cLNfh5asjW6jzgjhg=; b=C1aiXwBwyVrYK1
-	F3a1MwCn9Wlh6+VgI05itgGhotaxSqnstk29aUeJ0Li3XlP4nD3lovgt/ifFCFednRwYXhgwe+HE3
-	WwCR6YHtv8HlvOaryLeY+y+OBRSVauFjwg8UPsAL5BrPmXGcb/an7zL5t0DwaGMFymR+g/jrjCSo4
-	4IzNBgXHYEMAMnA/XzK0SU8THe5Krlxr3dZ1AkDoXg6kQMQiTRGj831x7Fx3Hpluy9gTBgYzaWJzO
-	2xLe3xMHQ+DGRy/YIFXWI90fWucbNdB34yCzaJ9kgWfOOv2R6YtKrZRcVhjTTzP30BmB/7hr1OfjL
-	i9CsSOjS37oPYmM0tNXw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=If/Y4GtqaOeYsxQ8Psj+WlWq3bPfVikQuS57W+Ar6/Q=; b=fZ3uKy/64kEFvK
+	5FVCbHa3c8tB5CqQ2IEbOxCohtQm+ixnARNHTime7nqP0dophN7sN1WZwfWeFYPhbdeTOrei8tYz/
+	3V8DYjbWyNKP7TsMjUeYU2M70SrjiymOdmDzUESzw67cE3ZNWxE6dGwmOsD6Yc6YLEAhdFlkx2kvd
+	fMlwL+8ldBRXMSMld2bC4dj00uzpxMxn/jbBCy08flDk1WAhJ8ycYMS5Ge0CJvKfHz+IofcyhAGaP
+	M+eayGkJdVE/9x3Kb0ceWdpdpFfsF7U8S+TaznmRErz9fc4gJbWSSS/Du5QnRFQSOoOoHfJVegK9E
+	B29sc4hnzg4X5f0z7IMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTNf4-002mCf-JB; Sun, 13 Mar 2022 12:49:26 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nTNf5-002mCq-Bv; Sun, 13 Mar 2022 12:49:27 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTNf1-002mBg-Ec
- for linux-mediatek@lists.infradead.org; Sun, 13 Mar 2022 12:49:24 +0000
+ id 1nTNf2-002mBu-0d
+ for linux-mediatek@lists.infradead.org; Sun, 13 Mar 2022 12:49:25 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 43512B8009F;
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 81BCE61117;
+ Sun, 13 Mar 2022 12:49:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7AF32C340EC;
  Sun, 13 Mar 2022 12:49:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80112C340E8;
- Sun, 13 Mar 2022 12:49:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647175759;
- bh=JXuGDn4nZcF36whCtPHWaQTYGuLhBuWoCCeGHtanIYs=;
- h=From:To:Cc:Subject:Date:From;
- b=ghb3b+GDUDfCFZ9bvoqLqceSlWtp4Hck/khGh2/ygZL11yZdzNwcZ3GPHFlgYhZQ5
- KgnKSR6Fq/Df7Th0KYM0oLJmWoKjzBYRnSmPdZSXKGMv01SJzd4eXBPRb6dsMemQZS
- rHSxAbNDy0TxX90x2YpvvuSx5BJmPKJzFV5adrxOlGcCaHTf//1VK0qbkUTQJcLcXx
- 0p8XW4UeR9NZEXWDadoLRiMywYU30i1W08DDit0NgrmBjMXqxvTNsoLwwkck4RX34m
- IPDiLds7gfRxHu6mjkjCs0+YWKTSFp2ZC52Yc161t8meZlrt0LBAtawMgpOB/ovxa/
- Ymh+zKMp3+1PQ==
+ s=k20201202; t=1647175762;
+ bh=kiAGpf+4zwJ+zHiQl7xLk7QVnsQZlXGbdf0DELrdgHY=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=FpyQAttU8yl52xqmYsc36mBoDeHiB4r6/2pznU/psePZAYsPDeA6aiu5BQyrQcFnp
+ MDXoyZly41w4NqcF2qGWf/J9IGJwJ37oL2HZXu3613FsBVZynCHbTcnfbli4/ExxRN
+ Ul1Hzko+FvdSd0f4cGDGS9lYj8Uy0MseNU2MDWSINclhYMQCuWfZlEIq9788+m4Aax
+ zEbMH/cM9FcKCVJfrXivP7W/AYVbVtRX9D0DarXHZNDGiCQk/up+62xonKyx73cCiK
+ 4X34kNUQeNTdLZ5jt2ux9HPcT3DGeo8KjhZYqCN3YcTuxw8Cm9WTZK0W182/c+nOFB
+ qIwLVgkC5egkg==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
 Cc: linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com,
  sean.wang@mediatek.com, deren.wu@mediatek.com,
  linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 0/9] introduce mt7921u driver
-Date: Sun, 13 Mar 2022 13:48:50 +0100
-Message-Id: <cover.1647175554.git.lorenzo@kernel.org>
+Subject: [PATCH v3 1/9] mt76: usb: add req_type to ___mt76u_rr signature
+Date: Sun, 13 Mar 2022 13:48:51 +0100
+Message-Id: <f7efc2f855e4756ae13accfc990e2af69a1fb3f0.1647175554.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <cover.1647175554.git.lorenzo@kernel.org>
+References: <cover.1647175554.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220313_054923_680342_05C0B6C6 
-X-CRM114-Status: UNSURE (   9.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220313_054924_114649_CA4E9436 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,50 +73,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce support for MT7921U 802.11ax 2x2:2SS wireless devices.
+This is a preliminary patch to add usb support to mt7921 driver.
 
-Changes since v2:
-- implemented full reset support in mt7921u_mac_reset routine
+Tested-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/usb.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
 
-Changes since v1:
-- implement wfsys reset support
-- fixed power on procedure
-- fixed module unload
-
-Lorenzo Bianconi (9):
-  mt76: usb: add req_type to ___mt76u_rr signature
-  mt76: usb: add req_type to ___mt76u_wr signature
-  mt76: usb: introduce __mt76u_init utility routine
-  mt76: mt7921: disable runtime pm for usb
-  mt76: mt7921: update mt7921_skb_add_usb_sdio_hdr to support usb
-  mt76: mt7921: move mt7921_usb_sdio_tx_prepare_skb in common mac code
-  mt76: mt7921: move mt7921_usb_sdio_tx_complete_skb in common mac code.
-  mt76: mt7921: move mt7921_usb_sdio_tx_status_data in mac common code.
-  mt76: mt7921: add mt7921u driver
-
- drivers/net/wireless/mediatek/mt76/mt76.h     |  12 +-
- .../net/wireless/mediatek/mt76/mt7615/usb.c   |  68 +++-
- .../net/wireless/mediatek/mt76/mt76x0/usb.c   |   2 +-
- .../net/wireless/mediatek/mt76/mt76x2/usb.c   |   2 +-
- .../net/wireless/mediatek/mt76/mt7921/Kconfig |  11 +
- .../wireless/mediatek/mt76/mt7921/Makefile    |   2 +
- .../wireless/mediatek/mt76/mt7921/debugfs.c   |   6 +
- .../net/wireless/mediatek/mt76/mt7921/init.c  |  12 +-
- .../net/wireless/mediatek/mt76/mt7921/mac.c   |  91 ++++++
- .../net/wireless/mediatek/mt76/mt7921/mac.h   |   1 +
- .../net/wireless/mediatek/mt76/mt7921/main.c  |   3 +-
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  36 ++-
- .../net/wireless/mediatek/mt76/mt7921/regs.h  |  50 ++-
- .../net/wireless/mediatek/mt76/mt7921/sdio.c  |   6 +-
- .../wireless/mediatek/mt76/mt7921/sdio_mac.c  |  83 -----
- .../wireless/mediatek/mt76/mt7921/sdio_mcu.c  |   2 +-
- .../net/wireless/mediatek/mt76/mt7921/usb.c   | 305 ++++++++++++++++++
- .../wireless/mediatek/mt76/mt7921/usb_mac.c   | 252 +++++++++++++++
- drivers/net/wireless/mediatek/mt76/usb.c      | 125 +++----
- 19 files changed, 874 insertions(+), 195 deletions(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/usb.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
-
+diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
+index 0a7006c8959b..1b0435e0ea33 100644
+--- a/drivers/net/wireless/mediatek/mt76/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/usb.c
+@@ -62,16 +62,15 @@ int mt76u_vendor_request(struct mt76_dev *dev, u8 req,
+ }
+ EXPORT_SYMBOL_GPL(mt76u_vendor_request);
+ 
+-static u32 ___mt76u_rr(struct mt76_dev *dev, u8 req, u32 addr)
++static u32 ___mt76u_rr(struct mt76_dev *dev, u8 req, u8 req_type,
++		       u32 addr)
+ {
+ 	struct mt76_usb *usb = &dev->usb;
+ 	u32 data = ~0;
+ 	int ret;
+ 
+-	ret = __mt76u_vendor_request(dev, req,
+-				     USB_DIR_IN | USB_TYPE_VENDOR,
+-				     addr >> 16, addr, usb->data,
+-				     sizeof(__le32));
++	ret = __mt76u_vendor_request(dev, req, req_type, addr >> 16,
++				     addr, usb->data, sizeof(__le32));
+ 	if (ret == sizeof(__le32))
+ 		data = get_unaligned_le32(usb->data);
+ 	trace_usb_reg_rr(dev, addr, data);
+@@ -95,7 +94,8 @@ static u32 __mt76u_rr(struct mt76_dev *dev, u32 addr)
+ 		break;
+ 	}
+ 
+-	return ___mt76u_rr(dev, req, addr & ~MT_VEND_TYPE_MASK);
++	return ___mt76u_rr(dev, req, USB_DIR_IN | USB_TYPE_VENDOR,
++			   addr & ~MT_VEND_TYPE_MASK);
+ }
+ 
+ static u32 mt76u_rr(struct mt76_dev *dev, u32 addr)
+@@ -114,7 +114,8 @@ static u32 mt76u_rr_ext(struct mt76_dev *dev, u32 addr)
+ 	u32 ret;
+ 
+ 	mutex_lock(&dev->usb.usb_ctrl_mtx);
+-	ret = ___mt76u_rr(dev, MT_VEND_READ_EXT, addr);
++	ret = ___mt76u_rr(dev, MT_VEND_READ_EXT,
++			  USB_DIR_IN | USB_TYPE_VENDOR, addr);
+ 	mutex_unlock(&dev->usb.usb_ctrl_mtx);
+ 
+ 	return ret;
+@@ -177,7 +178,8 @@ static u32 mt76u_rmw_ext(struct mt76_dev *dev, u32 addr,
+ 			 u32 mask, u32 val)
+ {
+ 	mutex_lock(&dev->usb.usb_ctrl_mtx);
+-	val |= ___mt76u_rr(dev, MT_VEND_READ_EXT, addr) & ~mask;
++	val |= ___mt76u_rr(dev, MT_VEND_READ_EXT,
++			   USB_DIR_IN | USB_TYPE_VENDOR, addr) & ~mask;
+ 	___mt76u_wr(dev, MT_VEND_WRITE_EXT, addr, val);
+ 	mutex_unlock(&dev->usb.usb_ctrl_mtx);
+ 
 -- 
 2.35.1
 
