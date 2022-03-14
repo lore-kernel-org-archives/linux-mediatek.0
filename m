@@ -4,76 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6BCFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 08:02:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8AC4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 08:07:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=08mIdph+URsaKq8AOJYJHf0Ygala/YHxMm48YVu1bt4=; b=39feSz2VHjZMEW
-	aR1W1F/tfNpqb5HWbuPNyJ4vsiLwmq5KVXKMlIa8oojEb61OH6umFMUJkiblBUOZIYylO6UdvpCKz
-	/2QtASYzyVeKr4g7yV+Ymah6+PiLMdwl6yTNSxe3m+HY1OH+8HKw5ER5VPObn9SEJfgoT4gQiJPt6
-	nILJDAfgy03MZj3FnMhpzX7LlgjQsS5wW5iSv0i0kA21s1IGCwNBXRgs1nWpfXdBRMUZOMR4+QrVM
-	I+Uphn9m5vd9w8AnLD6DwzgESnB5aEMpMAyBRFDaozUOg8cQz1qOeyLetgVTQlAPPqnfhu2ccEu4w
-	yC72QyZOUEuaTN1zXCHA==;
+	List-Owner; bh=BwCDt65CdQSIwI/2q0XPa4Ezi2nDYm5nKE59G+0tvYo=; b=cMhZaaz/8Ir/RV
+	hEMAqTL6C7OSVPN9qOutcYwK6WRENLVvk5J3/qOXm0hBeokVqTS01HWyB5ju8wgaaGEUrFRMzAXvt
+	5HqBW2bNaALS6XnS0Qr7NlH5u3F36qKtjoW2P5Ki8pzxuR9dT+nuHy1o83b+ZynP2YhWmDvDCf0Rn
+	kd68zYHvFHThLfKOIoEZih3No52sq6O94sndyji9G5UaHFuFsO2NeUI/PlTC5YgXhQ3TX8MNtM49X
+	d8Uxq7sjXcPNLAhxJjxDh6oY73+R/tUGfTK94gxQGhA5DxwgyRwbIP7HXZ9tGmhMo1yyE9NoUCou9
+	VYiEksseJJ+facN+vj8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTfei-004IQW-1J; Mon, 14 Mar 2022 08:02:16 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nTfjC-004KHh-PY; Mon, 14 Mar 2022 08:06:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTfYs-004Fgm-4A; Mon, 14 Mar 2022 07:56:23 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id B633D6121D;
- Mon, 14 Mar 2022 07:56:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4EFF5C36B06;
- Mon, 14 Mar 2022 07:56:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647244562;
- bh=S1VM+oW7wRch+UqYMXOGytVT7MR4fILO5/kTGL/OkT4=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=gULm8d4rxnTObBSGKxu44j/nPccwYXumWmDybuhcsBhvy8zB21W+bLRDm8RE9sTRK
- VJ5XBAzSm0OoyNNoqkdYT6UIGOFNJo/AmPIaHhtvM/BzRsuTWKpI2yuPVPkLLNtvom
- QxwP1jfAqKMbTsvqfhLXwEq6GlqHBFeDVV+nlBoM+4Q4K60uVEigLNzbiHr6HCjcOA
- Hzl0M13SNZJ10FWzrLT1ABzad+tC51GVlNvX8xU3rsX41ZvAgk2DEm4tJCdiwUrtCF
- o9ErVvoqBrfcsBAeFEX7lg7RLn9PXJvbi8iWJcHknNzpVoA5XSFEMWcaFcpVRO/+gp
- XXzE4Ixlhwvmw==
-Received: from mchehab by mail.kernel.org with local (Exim 4.94.2)
- (envelope-from <mchehab@kernel.org>)
- id 1nTfYe-001kWx-2L; Mon, 14 Mar 2022 08:56:00 +0100
-From: Mauro Carvalho Chehab <mchehab@kernel.org>
-To: 
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- =?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Bin Liu <bin.liu@mediatek.com>, Cai Huoqing <caihuoqing@baidu.com>,
- Colin Ian King <colin.king@intel.com>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Dmitry Osipenko <digetx@gmail.com>,
- Eugen Hristev <eugen.hristev@microchip.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Jacopo Mondi <jacopo@jmondi.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Ming Qian <ming.qian@nxp.com>,
- Rick Chang <rick.chang@mediatek.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>, Xu Wang <vulab@iscas.ac.cn>,
- Yong Wu <yong.wu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH 43/64] media: platform: rename mtk-jpeg/ to mediatek/mtk-jpeg/
-Date: Mon, 14 Mar 2022 08:55:35 +0100
-Message-Id: <6b4d80f28b481bdf9385faeb3bf46f10bc1242cb.1647242579.git.mchehab@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <cover.1647242578.git.mchehab@kernel.org>
-References: <cover.1647242578.git.mchehab@kernel.org>
+ id 1nTfa4-004GBK-8w; Mon, 14 Mar 2022 07:57:33 +0000
+X-UUID: 1d5e2ff657054d2c9b0a98b2a752a003-20220314
+X-UUID: 1d5e2ff657054d2c9b0a98b2a752a003-20220314
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <biao.huang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1391694252; Mon, 14 Mar 2022 00:57:24 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 14 Mar 2022 00:57:23 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 14 Mar 2022 15:57:21 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 14 Mar 2022 15:57:20 +0800
+From: Biao Huang <biao.huang@mediatek.com>
+To: <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, <angelogioacchino.delregno@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro
+ <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Biao Huang <biao.huang@mediatek.com>,
+ <netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
+ <macpaul.lin@mediatek.com>, <dkirjanov@suse.de>
+Subject: [PATCH net-next v13 4/7] arm64: dts: mt2712: update ethernet device
+ node
+Date: Mon, 14 Mar 2022 15:57:10 +0800
+Message-ID: <20220314075713.29140-5-biao.huang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220314075713.29140-1-biao.huang@mediatek.com>
+References: <20220314075713.29140-1-biao.huang@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_005614_326070_8116EC5D 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20220314_005728_392149_D236C4BC 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,127 +80,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As the end goal is to have platform drivers split by vendor,
-rename mtk-jpeg/ to mediatek/mtk-jpeg/.
+Since there are some changes in ethernet driver:
+update ethernet device node in dts to accommodate to it.
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+1. stmmac_probe_config_dt() in stmmac_platform.c will initialize specified
+   parameters according to compatible string "snps,dwmac-4.20a", then,
+   dwmac-mediatek.c can skip the initialization if add compatible string
+   "snps,dwmac-4.20a" in eth device node.
+2. commit 882007ed7832 ("net-next: dt-binding: dwmac-mediatek: add more
+   description for RMII") added rmii internal support, we should add
+   corresponding clocks/clocks-names in eth device node.
+3. add "snps,reset-delays-us = <0 10000 10000>;" to ensure reset delay
+   can meet PHY requirement.
+
+Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 ---
+ arch/arm64/boot/dts/mediatek/mt2712-evb.dts |  1 +
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi   | 14 +++++++++-----
+ 2 files changed, 10 insertions(+), 5 deletions(-)
 
-To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
-See [PATCH 00/64] at: https://lore.kernel.org/all/cover.1647242578.git.mchehab@kernel.org/
-
- MAINTAINERS                                                     | 2 +-
- drivers/media/platform/Kconfig                                  | 2 +-
- drivers/media/platform/Makefile                                 | 2 +-
- drivers/media/platform/{ => mediatek}/mtk-jpeg/Kconfig          | 0
- drivers/media/platform/{ => mediatek}/mtk-jpeg/Makefile         | 0
- drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_core.c  | 0
- drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_core.h  | 0
- .../media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_hw.c    | 0
- .../media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_hw.h    | 0
- .../media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_parse.c | 0
- .../media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_parse.h | 0
- .../media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_reg.h   | 0
- .../media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_enc_hw.c    | 0
- .../media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_enc_hw.h    | 0
- 14 files changed, 3 insertions(+), 3 deletions(-)
- rename drivers/media/platform/{ => mediatek}/mtk-jpeg/Kconfig (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-jpeg/Makefile (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_core.c (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_core.h (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_hw.c (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_hw.h (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_parse.c (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_parse.h (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_reg.h (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_enc_hw.c (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_enc_hw.h (100%)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 09b0e60da4e9..fa0a3de3865f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -12130,7 +12130,7 @@ M:	Rick Chang <rick.chang@mediatek.com>
- M:	Bin Liu <bin.liu@mediatek.com>
- S:	Supported
- F:	Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
--F:	drivers/media/platform/mtk-jpeg/
-+F:	drivers/media/platform/mediatek/mtk-jpeg/
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+index 7d369fdd3117..11aa135aa0f3 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+@@ -110,6 +110,7 @@ &eth {
+ 	phy-handle = <&ethernet_phy0>;
+ 	mediatek,tx-delay-ps = <1530>;
+ 	snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
++	snps,reset-delays-us = <0 10000 10000>;
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&eth_default>;
+ 	pinctrl-1 = <&eth_sleep>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+index a9cca9c146fd..9e850e04fffb 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+@@ -726,7 +726,7 @@ queue2 {
+ 	};
  
- MEDIATEK MDP DRIVER
- M:	Minghsiu Tsai <minghsiu.tsai@mediatek.com>
-diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-index b4faee0a1b63..f1746529e763 100644
---- a/drivers/media/platform/Kconfig
-+++ b/drivers/media/platform/Kconfig
-@@ -78,7 +78,7 @@ source "drivers/media/platform/exynos-gsc/Kconfig"
- source "drivers/media/platform/exynos4-is/Kconfig"
- source "drivers/media/platform/intel/Kconfig"
- source "drivers/media/platform/marvell/Kconfig"
--source "drivers/media/platform/mtk-jpeg/Kconfig"
-+source "drivers/media/platform/mediatek/mtk-jpeg/Kconfig"
- source "drivers/media/platform/mtk-mdp/Kconfig"
- source "drivers/media/platform/mtk-vcodec/Kconfig"
- source "drivers/media/platform/mtk-vpu/Kconfig"
-diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
-index 48531f93d92f..c792f6216918 100644
---- a/drivers/media/platform/Makefile
-+++ b/drivers/media/platform/Makefile
-@@ -18,7 +18,7 @@ obj-y += exynos-gsc/
- obj-y += exynos4-is/
- obj-y += intel/
- obj-y += marvell/
--obj-y += mtk-jpeg/
-+obj-y += mediatek/mtk-jpeg/
- obj-y += mtk-mdp/
- obj-y += mtk-vcodec/
- obj-y += mtk-vpu/
-diff --git a/drivers/media/platform/mtk-jpeg/Kconfig b/drivers/media/platform/mediatek/mtk-jpeg/Kconfig
-similarity index 100%
-rename from drivers/media/platform/mtk-jpeg/Kconfig
-rename to drivers/media/platform/mediatek/mtk-jpeg/Kconfig
-diff --git a/drivers/media/platform/mtk-jpeg/Makefile b/drivers/media/platform/mediatek/mtk-jpeg/Makefile
-similarity index 100%
-rename from drivers/media/platform/mtk-jpeg/Makefile
-rename to drivers/media/platform/mediatek/mtk-jpeg/Makefile
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_core.c
-similarity index 100%
-rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_core.c
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_core.h
-similarity index 100%
-rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_core.h
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_hw.c
-similarity index 100%
-rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
-rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_hw.c
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_hw.h
-similarity index 100%
-rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
-rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_hw.h
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.c b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_parse.c
-similarity index 100%
-rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.c
-rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_parse.c
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.h b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_parse.h
-similarity index 100%
-rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.h
-rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_parse.h
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_reg.h b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_reg.h
-similarity index 100%
-rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_reg.h
-rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_reg.h
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_enc_hw.c
-similarity index 100%
-rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_enc_hw.c
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_enc_hw.h
-similarity index 100%
-rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h
-rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_enc_hw.h
+ 	eth: ethernet@1101c000 {
+-		compatible = "mediatek,mt2712-gmac";
++		compatible = "mediatek,mt2712-gmac", "snps,dwmac-4.20a";
+ 		reg = <0 0x1101c000 0 0x1300>;
+ 		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
+ 		interrupt-names = "macirq";
+@@ -734,15 +734,19 @@ eth: ethernet@1101c000 {
+ 		clock-names = "axi",
+ 			      "apb",
+ 			      "mac_main",
+-			      "ptp_ref";
++			      "ptp_ref",
++			      "rmii_internal";
+ 		clocks = <&pericfg CLK_PERI_GMAC>,
+ 			 <&pericfg CLK_PERI_GMAC_PCLK>,
+ 			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
+-			 <&topckgen CLK_TOP_ETHER_50M_SEL>;
++			 <&topckgen CLK_TOP_ETHER_50M_SEL>,
++			 <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
+ 		assigned-clocks = <&topckgen CLK_TOP_ETHER_125M_SEL>,
+-				  <&topckgen CLK_TOP_ETHER_50M_SEL>;
++				  <&topckgen CLK_TOP_ETHER_50M_SEL>,
++				  <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
+ 		assigned-clock-parents = <&topckgen CLK_TOP_ETHERPLL_125M>,
+-					 <&topckgen CLK_TOP_APLL1_D3>;
++					 <&topckgen CLK_TOP_APLL1_D3>,
++					 <&topckgen CLK_TOP_ETHERPLL_50M>;
+ 		power-domains = <&scpsys MT2712_POWER_DOMAIN_AUDIO>;
+ 		mediatek,pericfg = <&pericfg>;
+ 		snps,axi-config = <&stmmac_axi_setup>;
 -- 
-2.35.1
+2.25.1
 
 
 _______________________________________________
