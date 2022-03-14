@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BED7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 08:07:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1B4FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 08:07:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xTbIJcZOK3GQcAEC3dxatUzae3+h1qYz1UIzMvgpaEg=; b=hrZceD4ZW7RtxG
-	PW1y7UjCMF1KDA0zOipQ3G/mAzs2g1XjCheu2zlrNRNkauwJxE5hexjYQkBTwp4nMI9hYICz/LbJH
-	tOjJ0qaVApl2U1DSP3Er9DCNHpGTclVrM+5vNIOcYWQ3Pfuhl/mxT4freC+fdgO1nnT1y//6DoL8t
-	tobI6C2A7IkLku3xOP2JNag58ylMvXx4Tw9XIJozgwMTbaD2nIAHisL4e43vZ+DbeTEc/Z1ZjOrg5
-	jQ3MwrgTIiDJprVPJ7JLkSyOKTR+4CyoYzPkyX2qD8JD+M+PsbUY1YUnwbIokOOHu06S9rt+M5qmz
-	wUMWxwKTi0isFDbx+b2g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=rotp7XWXEWzHbsPVlywvysZCRah56+bc6KR31oenOwU=; b=awcuDp5+rFqMUq
+	gWwbdVkEDeduP4ZcXepj6quArYUplL6sv7HSt5owrPf7W5RZpf6AhRKuJgErfKZYwpaUj0oJHEMBi
+	b4JIuBuESCYAa760xiKpfN4wy+HcMj+d3hWqci8nO3m/2WH7uOyAbo72+XZMV3SBa/7jPxLpXh6xT
+	sLXZoHyHg3IhCO1u8oDvRlErzlF4yPlmkpOwEuU7um9Pz7oaMp/Dhlna06Aj+q7sIsDCCwp/Hk20C
+	P8oNlXMiqH1kQErFnHB1olg29dM+qxe0zmbfKH4jNApVx1DUSnViCQ1vdfDZ1asCz+JAEJnbsMsX/
+	BB2DZnbGWiGuT53KWBxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTfjI-004KKC-0q; Mon, 14 Mar 2022 08:07:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nTfjS-004KO8-0S; Mon, 14 Mar 2022 08:07:10 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTfa4-004GAs-Sv; Mon, 14 Mar 2022 07:57:33 +0000
-X-UUID: 20d1b27b607b4685bfa23094c8fd4550-20220314
-X-UUID: 20d1b27b607b4685bfa23094c8fd4550-20220314
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ id 1nTfa1-004GA5-Eg; Mon, 14 Mar 2022 07:57:34 +0000
+X-UUID: 720fea85db6a434b8b33016b74aa7e72-20220314
+X-UUID: 720fea85db6a434b8b33016b74aa7e72-20220314
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <biao.huang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 17862145; Mon, 14 Mar 2022 00:57:21 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Mar 2022 00:57:19 -0700
+ with ESMTP id 1051430021; Mon, 14 Mar 2022 00:57:19 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 14 Mar 2022 00:57:18 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 14 Mar 2022 15:57:18 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 14 Mar 2022 15:57:16 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 14 Mar 2022 15:57:16 +0800
+ Transport; Mon, 14 Mar 2022 15:57:15 +0800
 From: Biao Huang <biao.huang@mediatek.com>
 To: <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Rob Herring
  <robh+dt@kernel.org>, <angelogioacchino.delregno@collabora.com>
@@ -52,18 +52,15 @@ CC: Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro
  <linux-mediatek@lists.infradead.org>,
  <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
  <macpaul.lin@mediatek.com>, <dkirjanov@suse.de>
-Subject: [PATCH net-next v13 1/7] stmmac: dwmac-mediatek: add platform level
- clocks management
-Date: Mon, 14 Mar 2022 15:57:07 +0800
-Message-ID: <20220314075713.29140-2-biao.huang@mediatek.com>
+Subject: [PATCH net-next v13 0/7] MediaTek Ethernet Patches on MT8195
+Date: Mon, 14 Mar 2022 15:57:06 +0800
+Message-ID: <20220314075713.29140-1-biao.huang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220314075713.29140-1-biao.huang@mediatek.com>
-References: <20220314075713.29140-1-biao.huang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_005729_028719_13BAACB7 
-X-CRM114-Status: GOOD (  13.32  )
+X-CRM114-CacheID: sfid-20220314_005725_563840_3CEF09E3 
+X-CRM114-Status: GOOD (  16.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,76 +77,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch implements clks_config callback for dwmac-mediatek platform,
-which could support platform level clocks management.
+Changes in v13:
+1. add reviewed-by in "net: dt-bindings: dwmac: add support for mt8195"
+   as Rob's comments.
+2. drop num_clks defined in mediatek_dwmac_plat_data struct in "stmmac:
+   dwmac-mediatek: Reuse more common features" as Angelo's comments.
 
-Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 25 +++++++++++++------
- 1 file changed, 18 insertions(+), 7 deletions(-)
+Changes in v12:
+1. add a new patch "stmmac: dwmac-mediatek: re-arrange clock setting" to
+   this series, to simplify clock handling in driver, which benefits to
+   binding file mediatek-dwmac.yaml.
+2. modify dt-binding description in patch "net: dt-bindings: dwmac: add
+   support for mt8195" as Rob's comments in v10 series, put mac_cg to the
+   end of clock list.
+3. there are small changes in patch "stmmac: dwmac-mediatek: add support
+   for mt8195", @AngeloGioacchino, please review it kindly.
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-index 58c0feaa8131..0ff57c268dca 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-@@ -9,7 +9,6 @@
- #include <linux/of.h>
- #include <linux/of_device.h>
- #include <linux/of_net.h>
--#include <linux/pm_runtime.h>
- #include <linux/regmap.h>
- #include <linux/stmmac.h>
- 
-@@ -359,9 +358,6 @@ static int mediatek_dwmac_init(struct platform_device *pdev, void *priv)
- 		return ret;
- 	}
- 
--	pm_runtime_enable(&pdev->dev);
--	pm_runtime_get_sync(&pdev->dev);
--
- 	return 0;
- }
- 
-@@ -370,11 +366,25 @@ static void mediatek_dwmac_exit(struct platform_device *pdev, void *priv)
- 	struct mediatek_dwmac_plat_data *plat = priv;
- 
- 	clk_bulk_disable_unprepare(plat->num_clks_to_config, plat->clks);
--
--	pm_runtime_put_sync(&pdev->dev);
--	pm_runtime_disable(&pdev->dev);
- }
- 
-+static int mediatek_dwmac_clks_config(void *priv, bool enabled)
-+{
-+	struct mediatek_dwmac_plat_data *plat = priv;
-+	int ret = 0;
-+
-+	if (enabled) {
-+		ret = clk_bulk_prepare_enable(plat->num_clks_to_config, plat->clks);
-+		if (ret) {
-+			dev_err(plat->dev, "failed to enable clks, err = %d\n", ret);
-+			return ret;
-+		}
-+	} else {
-+		clk_bulk_disable_unprepare(plat->num_clks_to_config, plat->clks);
-+	}
-+
-+	return ret;
-+}
- static int mediatek_dwmac_probe(struct platform_device *pdev)
- {
- 	struct mediatek_dwmac_plat_data *priv_plat;
-@@ -420,6 +430,7 @@ static int mediatek_dwmac_probe(struct platform_device *pdev)
- 	plat_dat->bsp_priv = priv_plat;
- 	plat_dat->init = mediatek_dwmac_init;
- 	plat_dat->exit = mediatek_dwmac_exit;
-+	plat_dat->clks_config = mediatek_dwmac_clks_config;
- 	mediatek_dwmac_init(pdev, priv_plat);
- 
- 	ret = stmmac_dvr_probe(&pdev->dev, plat_dat, &stmmac_res);
+Changes in v11:
+1. add reivewed-by in "net: dt-bindings: dwmac: Convert mediatek-dwmac to
+   DT schema" as Rob's comments.
+2. fall back "net: dt-bindings: dwmac: add support for mt8195" to v8 version
+   as mentioned in previous reply(https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20211216055328.15953-7-biao.huang@mediatek.com/):
+   2.1 there is already a special clock named "rmii_internal", which need to
+       be put to the end of the clock list(driver special handling),
+       so we can't simply put new "mac_cg" for mt8195 to the end of the clock
+       list.
+   2.2 we prefer the if-then schema, which will make mt8195 clock list clearer
+       with some duplicated information.
+   2.3 we expect the future IC will follow mt2712 or mt8195, so we only need
+       add new IC name to compatible list for future IC, and will not make the
+       clock list binding files worse.
+
+Changes in v10:
+1. add detailed description in "arm64: dts: mt2712: update ethernet
+   device node" to make the modifications clearer as Matthias's comments.
+2. modify dt-binding description as Rob's comments, and "make dtbs_check" runs
+   pass locally with "arm64: dts: mt2712: update ethernet device node"
+   in this series.
+
+Changes in v9:
+1. remove oneOf for 1 entry as Rob's comments.
+2. add new clocks to the end of existing clocks to simplify
+   the binding as Rob's comments.
+
+Changes in v8:
+1. add acked-by in "stmmac: dwmac-mediatek: add platform level clocks
+   management" patch
+
+Changes in v7:
+1. fix uninitialized warning as Jakub's comments.
+
+Changes in v6:
+1. update commit message as Jakub's comments.
+2. split mt8195 eth dts patch("arm64: dts: mt8195: add ethernet device
+   node") from this series, since mt8195 dtsi/dts basic patches is still
+   under reviewing.
+   https://patchwork.kernel.org/project/linux-mediatek/list/?series=579071
+   we'll resend mt8195 eth dts patch once all the dependent patches are
+   accepted.
+
+Changes in v5:
+1. remove useless inclusion in dwmac-mediatek.c as Angelo's comments.
+2. add acked-by in "net-next: stmmac: dwmac-mediatek: add support for
+   mt8195" patch
+
+Changes in v4:
+1. add changes in commit message in "net-next: dt-bindings: dwmac:
+   Convert mediatek-dwmac to DT schema" patch.
+2. remove ethernet-controller.yaml since snps,dwmac.yaml already include it.
+
+Changes in v3:
+1. Add prefix "net-next" to support new IC as Denis's suggestion.
+2. Split dt-bindings to two patches, one for conversion, and the other for
+   new IC.
+3. add a new patch to update device node in mt2712-evb.dts to accommodate to
+   changes in driver.
+4. remove unnecessary wrapper as Angelo's suggestion.
+5. Add acked-by in "net-next: stmmac: dwmac-mediatek: Reuse more common
+   features" patch.
+
+Changes in v2:
+1. fix errors/warnings in mediatek-dwmac.yaml with upgraded dtschema tools
+
+Changes in v1:
+This series include 5 patches:
+1. add platform level clocks management for dwmac-mediatek
+2. resue more common features defined in stmmac_platform.c
+3. add ethernet entry for mt8195
+
+Biao Huang (7):
+  stmmac: dwmac-mediatek: add platform level clocks management
+  stmmac: dwmac-mediatek: Reuse more common features
+  stmmac: dwmac-mediatek: re-arrange clock setting
+  arm64: dts: mt2712: update ethernet device node
+  net: dt-bindings: dwmac: Convert mediatek-dwmac to DT schema
+  stmmac: dwmac-mediatek: add support for mt8195
+  net: dt-bindings: dwmac: add support for mt8195
+
+ .../bindings/net/mediatek-dwmac.txt           |  91 ----
+ .../bindings/net/mediatek-dwmac.yaml          | 175 ++++++++
+ arch/arm64/boot/dts/mediatek/mt2712-evb.dts   |   1 +
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |  14 +-
+ .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 388 +++++++++++++++---
+ 5 files changed, 525 insertions(+), 144 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+ create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+
 -- 
 2.25.1
+
 
 
 _______________________________________________
