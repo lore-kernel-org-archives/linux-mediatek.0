@@ -4,87 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 728A0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 17:21:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F727C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 17:21:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4WZ+FB3W8YrqZe1OIAi8rI+fSCaEC3pRwI1luipz49w=; b=EB5Rz02oE1ujVQ
-	ZUnpzMQycg28p7eF5UJ1XZ6X0gex2CwbuUW3svNP+DKm6hLRNfkTfxEbjro3O+2OcmCFBv2LPtCIO
-	u6nuYZ3x7Ej6NME3kRfcNn//TPIu9vVSrudBrn1ncGK2WP/L3tygXKimMcJi7fzqOQKMiclgKsCG2
-	TKQ+/RUOtXK0zmLUBMFrA2cLhYdS2amNJee/4ZBxKoDT1dl+6GWt3XxF3P5iBmpSKxvuM7DIPg050
-	5d2+2df61AAS/u0gvWO8p6yitwhy0CLYz1oa/SaXu7JoKtG8PIFba0wAIizR5+MFgNNPV6YORCjvi
-	9qtC3A6VH13sa+e3qrlg==;
+	List-Owner; bh=2vBHx3Tv5dsKXTY0X1zB8JL5aVDk1XsIHc96mHcV4ek=; b=b2q+xCjNDirppS
+	d/hy/PeiaEk0EFPm4q1LEzpgkhc7mNcsaVRLcUPiM4n/uNAgBYyWVrcW+nMAkG9XE2A9uAHj2bl8f
+	3HPYFzocURTKTVTXYOnfVWY42b4I3cpf5FNW1detRoY2GfbaNvRDDuTWdmXikLs5XVr33JGvZnEsD
+	7upbeMtu80qir8mgT0EPbj7OsirjCn9hhmBbf+KA395OzcCRqoUGgg+4b4gCqn2VcPEjFs1ClMOqa
+	ZDzaTordFIGeGRz958FgJt1Cd97Apfooe7xUGexDM79fJ74PktUMd1gFN/lslFg+Hv/p4dvMCbe2E
+	Iu9LtY1krLve0mhX1gXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nToNf-006LPC-Dk; Mon, 14 Mar 2022 17:21:15 +0000
+	id 1nToNn-006LST-4I; Mon, 14 Mar 2022 17:21:23 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nToDB-006HQe-N0; Mon, 14 Mar 2022 17:10:25 +0000
+ id 1nToDE-006HQe-6d; Mon, 14 Mar 2022 17:10:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
  :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
  Content-Type:Content-ID:Content-Description;
- bh=pSX7+LSdiUpirjtamvMB01vqzQzGGVJDo6bMg8sXOkw=; b=XJCADYjcimiTkXcp5GfAW/0rlX
- zk5Vkk1f3i7fwLuqJwFX5nCPX6p7RySqHxZI+0h9FC+om50pRIs1ikjW01wwF61TAdFeJ+BINTh7W
- 2WqeOkKEKrAWEYrX4oiK/EGfbIaFmdE1QSyQuM/nXcBANL44zPfrzq5r/HFE6olFQlEJrnQnioBt9
- dclGO+RRfcHAAZF1CbFXUaHo5kK9zErb50TiT8TSyZWeDl/8/xK1RoVBbIUngCbtfxcAlzWh6omga
- uzfU/qbkvaWK9WKk36EDoV/8EDbhO3mxNmL295pcVMZ6Psj1wPPOcHQAKbj4hl++tfVeOazbumISn
- 0UWcrwdw==;
+ bh=L455oWX63UMXOXvN1TtmBCqGYlOLXYwJOXk8mwuQUpA=; b=e+wNqqB5VEDPid0oBpxzfgU2Aa
+ DCXovc3gI6tMtQrbPEQL2e4COabmOUOREBMWINp+zjr65omxdJFI5LGAk6pkXsVBE9QdH7ZIp4Pxy
+ PLywVbtaURt1dTNMZ6Mkhr/8J6wDauG61oGdGqj7B/SDjY/BT69c4xFA6fTEHm6dnNwL0nun5rHUV
+ ra+U8uiEgLWsEp1uYIBJLn5VkgmDC99ytbwyo+McFNquG0OW6DwKvy8I4zPTj3/2O20iZMrriYD5v
+ kU9TE23v/1fKsoVkrFxEqvPt0R5MjgPGMaFVszaugInT5qvLKiGO7jRzP2bA710dbTHtSbPa3gYMQ
+ 7a1ABFWg==;
 Received: from ams.source.kernel.org ([145.40.68.75])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTnf5-000uEu-Fw; Mon, 14 Mar 2022 16:35:17 +0000
+ id 1nTnf5-000uEs-Cj; Mon, 14 Mar 2022 16:35:16 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 5255BB80EAF;
+ by ams.source.kernel.org (Postfix) with ESMTPS id 4497DB80EAE;
  Mon, 14 Mar 2022 16:35:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD2CFC36AFB;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3228C36AFE;
  Mon, 14 Mar 2022 16:35:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1647275709;
- bh=hQD9ONOl5WXP8OLmTwqlzucf8/noeaEmBZnVG9VfKEU=;
+ bh=5qkQfzu+0qcnFdiNfdOuDKAMdtwC15GE2FC6FRqmOyg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=OiOnt3YzrD1gBcriZleCrHhiEi/g1KQYvVYGadZAXTlfkebLh8qx9l1CrmHSHJ2TQ
- eVNz7AoMz1C4QTgyJmXi/mpw5PghIhFj4xPEgaogURihOqH4ASCbLQP1MqwYO0zTBr
- LWDj161O5Hq+VZp1E7zEH23VCduZKg+iRyVrEQPfOAD5x7JA8cZUXJx9EgGWJpWa3v
- L1h2odQTrc6Yc03OK30FfufXvaR3F59GT2v1t1iS4Tg33t/bQK7GCRn1U8/of34/jm
- qL09fE2LoMYLIdpi2hf5wjNipLv6NdxIn2m0TrmGGNk/uGe/sd5BWmsrfkhgfLR6NG
- ScZwI+xcoqzGQ==
+ b=Qt+k9XczkLDLhF9rswDa4vbk6/Q2B5ORsxMbAfp2tQadFCL0br/E178B8xutzddxg
+ Ii1VsclQKk0oGdXtQJt9sOM0vZWyUOTm6Z+o0SjOcUSsFBV9vFsXDfkmP7O8Gc3/+O
+ KLDUYMKhTfs6KneKFyUFyghotRaogFgxqBDuL+dGj1tITNecCHfhzhdhIGNPVqy6CS
+ wtLwANyJwYQq/L8VJ/zqUcdP/ISzYNHKdOyzgz9QKKi/YqXceutiIHV/eKnTTQz292
+ B7X+S0+PILeRdFSJ0JBLcH6Hl7j9zzrnUkG8HmNncOqkPKTRwQvFlch/obYcrAuUf4
+ DNuThKexyMwYg==
 Received: from mchehab by mail.kernel.org with local (Exim 4.94.2)
  (envelope-from <mchehab@kernel.org>)
- id 1nTnf0-001wyy-Iu; Mon, 14 Mar 2022 17:35:06 +0100
+ id 1nTnf0-001wyu-Gk; Mon, 14 Mar 2022 17:35:06 +0100
 From: Mauro Carvalho Chehab <mchehab@kernel.org>
 To: 
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
  =?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Arnd Bergmann <arnd@arndb.de>,
+ Cai Huoqing <caihuoqing@baidu.com>, Colin Ian King <colin.king@intel.com>,
  Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>,
  Dmitry Osipenko <digetx@gmail.com>,
  Eugen Hristev <eugen.hristev@microchip.com>,
  Evan Green <evgreen@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Houlong Wei <houlong.wei@mediatek.com>, Jacopo Mondi <jacopo@jmondi.org>,
+ Jacopo Mondi <jacopo@jmondi.org>,
  Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Ming Qian <ming.qian@nxp.com>,
- Xu Wang <vulab@iscas.ac.cn>, Yong Wu <yong.wu@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 44/67] media: platform: rename mtk-mdp/ to mediatek/mtk-mdp/
-Date: Mon, 14 Mar 2022 17:34:39 +0100
-Message-Id: <8a2f9f065b1a38e3d444ad5408c809f339cbecdd.1647274407.git.mchehab@kernel.org>
+ Rick Chang <rick.chang@mediatek.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, Xu Wang <vulab@iscas.ac.cn>,
+ Yong Wu <yong.wu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 43/67] media: platform: rename mtk-jpeg/ to
+ mediatek/mtk-jpeg/
+Date: Mon, 14 Mar 2022 17:34:38 +0100
+Message-Id: <0a08968029e91ff6d126e7bc4b8e17efdd64254d.1647274407.git.mchehab@kernel.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <cover.1647274406.git.mchehab@kernel.org>
 References: <cover.1647274406.git.mchehab@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_163511_743766_CE5C7425 
-X-CRM114-Status: GOOD (  11.39  )
+X-CRM114-CacheID: sfid-20220314_163511_711483_955BDA59 
+X-CRM114-Status: GOOD (  11.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,7 +106,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 As the end goal is to have platform drivers split by vendor,
-rename mtk-mdp/ to mediatek/mtk-mdp/.
+rename mtk-jpeg/ to mediatek/mtk-jpeg/.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 ---
@@ -110,128 +114,116 @@ Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
 See [PATCH v2 00/67] at: https://lore.kernel.org/all/cover.1647274406.git.mchehab@kernel.org/
 
- MAINTAINERS                                                  | 2 +-
- drivers/media/platform/Kconfig                               | 2 +-
- drivers/media/platform/Makefile                              | 2 +-
- drivers/media/platform/{ => mediatek}/mtk-mdp/Kconfig        | 0
- drivers/media/platform/{ => mediatek}/mtk-mdp/Makefile       | 0
- drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_comp.c | 0
- drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_comp.h | 0
- drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_core.c | 0
- drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_core.h | 0
- drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_ipi.h  | 0
- drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_m2m.c  | 0
- drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_m2m.h  | 0
- drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_regs.c | 0
- drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_regs.h | 0
- drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_vpu.c  | 0
- drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_vpu.h  | 0
- 16 files changed, 3 insertions(+), 3 deletions(-)
- rename drivers/media/platform/{ => mediatek}/mtk-mdp/Kconfig (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-mdp/Makefile (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_comp.c (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_comp.h (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_core.c (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_core.h (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_ipi.h (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_m2m.c (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_m2m.h (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_regs.c (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_regs.h (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_vpu.c (100%)
- rename drivers/media/platform/{ => mediatek}/mtk-mdp/mtk_mdp_vpu.h (100%)
+ MAINTAINERS                                                     | 2 +-
+ drivers/media/platform/Kconfig                                  | 2 +-
+ drivers/media/platform/Makefile                                 | 2 +-
+ drivers/media/platform/{ => mediatek}/mtk-jpeg/Kconfig          | 0
+ drivers/media/platform/{ => mediatek}/mtk-jpeg/Makefile         | 0
+ drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_core.c  | 0
+ drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_core.h  | 0
+ .../media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_hw.c    | 0
+ .../media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_hw.h    | 0
+ .../media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_parse.c | 0
+ .../media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_parse.h | 0
+ .../media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_reg.h   | 0
+ .../media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_enc_hw.c    | 0
+ .../media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_enc_hw.h    | 0
+ 14 files changed, 3 insertions(+), 3 deletions(-)
+ rename drivers/media/platform/{ => mediatek}/mtk-jpeg/Kconfig (100%)
+ rename drivers/media/platform/{ => mediatek}/mtk-jpeg/Makefile (100%)
+ rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_core.c (100%)
+ rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_core.h (100%)
+ rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_hw.c (100%)
+ rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_hw.h (100%)
+ rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_parse.c (100%)
+ rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_parse.h (100%)
+ rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_dec_reg.h (100%)
+ rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_enc_hw.c (100%)
+ rename drivers/media/platform/{ => mediatek}/mtk-jpeg/mtk_jpeg_enc_hw.h (100%)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index fa0a3de3865f..2203d98bbcf1 100644
+index 09b0e60da4e9..fa0a3de3865f 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -12138,7 +12138,7 @@ M:	Houlong Wei <houlong.wei@mediatek.com>
- M:	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+@@ -12130,7 +12130,7 @@ M:	Rick Chang <rick.chang@mediatek.com>
+ M:	Bin Liu <bin.liu@mediatek.com>
  S:	Supported
- F:	Documentation/devicetree/bindings/media/mediatek-mdp.txt
--F:	drivers/media/platform/mtk-mdp/
-+F:	drivers/media/platform/mediatek/mtk-mdp/
- F:	drivers/media/platform/mtk-vpu/
+ F:	Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
+-F:	drivers/media/platform/mtk-jpeg/
++F:	drivers/media/platform/mediatek/mtk-jpeg/
  
- MEDIATEK MEDIA DRIVER
+ MEDIATEK MDP DRIVER
+ M:	Minghsiu Tsai <minghsiu.tsai@mediatek.com>
 diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-index f1746529e763..8a7ac0b8e09f 100644
+index b4faee0a1b63..f1746529e763 100644
 --- a/drivers/media/platform/Kconfig
 +++ b/drivers/media/platform/Kconfig
-@@ -79,7 +79,7 @@ source "drivers/media/platform/exynos4-is/Kconfig"
+@@ -78,7 +78,7 @@ source "drivers/media/platform/exynos-gsc/Kconfig"
+ source "drivers/media/platform/exynos4-is/Kconfig"
  source "drivers/media/platform/intel/Kconfig"
  source "drivers/media/platform/marvell/Kconfig"
- source "drivers/media/platform/mediatek/mtk-jpeg/Kconfig"
--source "drivers/media/platform/mtk-mdp/Kconfig"
-+source "drivers/media/platform/mediatek/mtk-mdp/Kconfig"
+-source "drivers/media/platform/mtk-jpeg/Kconfig"
++source "drivers/media/platform/mediatek/mtk-jpeg/Kconfig"
+ source "drivers/media/platform/mtk-mdp/Kconfig"
  source "drivers/media/platform/mtk-vcodec/Kconfig"
  source "drivers/media/platform/mtk-vpu/Kconfig"
- source "drivers/media/platform/nxp/Kconfig"
 diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
-index c792f6216918..6f5d09cd8f9b 100644
+index 48531f93d92f..c792f6216918 100644
 --- a/drivers/media/platform/Makefile
 +++ b/drivers/media/platform/Makefile
-@@ -19,7 +19,7 @@ obj-y += exynos4-is/
+@@ -18,7 +18,7 @@ obj-y += exynos-gsc/
+ obj-y += exynos4-is/
  obj-y += intel/
  obj-y += marvell/
- obj-y += mediatek/mtk-jpeg/
--obj-y += mtk-mdp/
-+obj-y += mediatek/mtk-mdp/
+-obj-y += mtk-jpeg/
++obj-y += mediatek/mtk-jpeg/
+ obj-y += mtk-mdp/
  obj-y += mtk-vcodec/
  obj-y += mtk-vpu/
- obj-y += nxp/
-diff --git a/drivers/media/platform/mtk-mdp/Kconfig b/drivers/media/platform/mediatek/mtk-mdp/Kconfig
+diff --git a/drivers/media/platform/mtk-jpeg/Kconfig b/drivers/media/platform/mediatek/mtk-jpeg/Kconfig
 similarity index 100%
-rename from drivers/media/platform/mtk-mdp/Kconfig
-rename to drivers/media/platform/mediatek/mtk-mdp/Kconfig
-diff --git a/drivers/media/platform/mtk-mdp/Makefile b/drivers/media/platform/mediatek/mtk-mdp/Makefile
+rename from drivers/media/platform/mtk-jpeg/Kconfig
+rename to drivers/media/platform/mediatek/mtk-jpeg/Kconfig
+diff --git a/drivers/media/platform/mtk-jpeg/Makefile b/drivers/media/platform/mediatek/mtk-jpeg/Makefile
 similarity index 100%
-rename from drivers/media/platform/mtk-mdp/Makefile
-rename to drivers/media/platform/mediatek/mtk-mdp/Makefile
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c b/drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_comp.c
+rename from drivers/media/platform/mtk-jpeg/Makefile
+rename to drivers/media/platform/mediatek/mtk-jpeg/Makefile
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_core.c
 similarity index 100%
-rename from drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
-rename to drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_comp.c
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h b/drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_comp.h
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_core.c
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_core.h
 similarity index 100%
-rename from drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
-rename to drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_comp.h
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_core.c
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_core.h
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_hw.c
 similarity index 100%
-rename from drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-rename to drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_core.c
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h b/drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_core.h
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
+rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_hw.c
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_hw.h
 similarity index 100%
-rename from drivers/media/platform/mtk-mdp/mtk_mdp_core.h
-rename to drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_core.h
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h b/drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_ipi.h
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
+rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_hw.h
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.c b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_parse.c
 similarity index 100%
-rename from drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h
-rename to drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_ipi.h
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_m2m.c
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.c
+rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_parse.c
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.h b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_parse.h
 similarity index 100%
-rename from drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-rename to drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_m2m.c
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.h b/drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_m2m.h
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_parse.h
+rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_parse.h
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_reg.h b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_reg.h
 similarity index 100%
-rename from drivers/media/platform/mtk-mdp/mtk_mdp_m2m.h
-rename to drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_m2m.h
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_regs.c b/drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_regs.c
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_reg.h
+rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_dec_reg.h
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_enc_hw.c
 similarity index 100%
-rename from drivers/media/platform/mtk-mdp/mtk_mdp_regs.c
-rename to drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_regs.c
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_regs.h b/drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_regs.h
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_enc_hw.c
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h b/drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_enc_hw.h
 similarity index 100%
-rename from drivers/media/platform/mtk-mdp/mtk_mdp_regs.h
-rename to drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_regs.h
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c b/drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_vpu.c
-similarity index 100%
-rename from drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c
-rename to drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_vpu.c
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.h b/drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_vpu.h
-similarity index 100%
-rename from drivers/media/platform/mtk-mdp/mtk_mdp_vpu.h
-rename to drivers/media/platform/mediatek/mtk-mdp/mtk_mdp_vpu.h
+rename from drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h
+rename to drivers/media/platform/mediatek/mtk-jpeg/mtk_jpeg_enc_hw.h
 -- 
 2.35.1
 
