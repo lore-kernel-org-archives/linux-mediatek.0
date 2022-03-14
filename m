@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35B11C35273
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 07:56:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23C83C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 07:58:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SjESqkY1lCTfdl1bAJmWB2xd/ctKamOWSgvx9x5tzG4=; b=ZAybnFng5wd3f5
-	G0CbHUAir64x2UWOsT8a5wG8yC20L8EOABAbDfv94/kAxj/JGiWGdkX+EQfhzjpDVHa8TzFESAuHZ
-	Blnwt6fhb8TzkK3gNaEdoItSr11uvwVii2DFM9m4kHv/6O2kDlGZnT4n8bVbAwj6ySgCmR/8aIbjQ
-	XiDLhuJ+ISQCuNdzwpGrH6vQnPzAiPvdT4yOG2nkfYat6qaRGCZx6/3iqLhnKEsSrHoB3QiMCdyv1
-	Jla29aBOhBV8I48/YPrYVAkurc6l+AB7/5gMS6FcDCPu2AZ5647US6Fpss9/yk8NOxQ4aksveGyN5
-	C+Gj2Noyb0kpF/qWNT2A==;
+	List-Owner; bh=MpefFgi5jbvY/iHFGaPENb2QegVpJlQtSGptUc1gJVc=; b=L5iVES2UBq1Wz0
+	IH71Wlb6j/aSf3d0kXUqodbVGj6qG/t8rfMahWVb1giGCsnwGyppJCnGPTLZLEaUTPtg5fkdGHfZf
+	FD0Quj7jWdcljx6YjsBO5JznfIrXKOG37sc1KaOR8YKAN8ptEM/yt+LVf+51Dj6dRrhSCPChgHY+q
+	zSn48I09x1YFMScVEz4HsmRpY5MCzFLUbFeOscvpxNq6Unp77Us83vSJrujUKeri0zDIlUtoxlnNV
+	AzX7VgC4sNGEVO0w3/W+lxapwEXzrYCMjE7kev4F+QJZmeQnR1kCYV/p67HpDnvucFmfZ7sL7Axx5
+	zTmUZejmC1WGdlNjG5ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTfZR-004FsP-9A; Mon, 14 Mar 2022 07:56:49 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nTfb3-004GdX-If; Mon, 14 Mar 2022 07:58:29 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTfYh-004FYD-M1; Mon, 14 Mar 2022 07:56:11 +0000
+ id 1nTfYi-004FZH-Re; Mon, 14 Mar 2022 07:56:15 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 4205F61197;
+ by ams.source.kernel.org (Postfix) with ESMTPS id 6FC2EB80D42;
  Mon, 14 Mar 2022 07:56:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41AEAC34110;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 58969C34119;
  Mon, 14 Mar 2022 07:56:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1647244561;
- bh=TFsfQFdGOSp/d2PY6RK1+XJEsuW1EnlOtXk3B099kBo=;
+ bh=DjiCdyYvB4UUNtqgLi3zsTof0sw84gOhwYX3QCkID5E=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=VX/jvbS7nV2e0TlzfwCiVHIzl0joaQ35X/MHYCHIN3bjM9xe2Tszss55sZ1UQNCKV
- 0Q92u6BvqClo5apTNzTQ/E4pGgUo2A51NctP+/TWyGt2AmZA+9wnoW/dHmHkUj8E+k
- +BSFPi5DC/liMM0F7aleBJO/0j7tXnvFiwEtpwHa1mIKhTssFz6Uwu2i1Rm0x88lZ1
- VA2u5+6GvK1sg1fgLpooFbZxW7ztH4EXm5CUpUl5eH6Pl4MH4J8o8+xA5VpaqHV6Q7
- Ierpr5QlCyuj0ADWODYbrtNgiyiX/JHlEszH/czm/yNgn66ID7tmLZlL74oCDHGOXv
- YzmO62TwICfNw==
+ b=fbl2QjB6x4k9dSCUTexsF8ojPBdkwnUmJF1UOKJi1JYjY3fswGScDc/NbOQtuB50Z
+ lwzI1XHXVStHV+F4VUNKtBDypA4YeaSq27lKgxm/VKTdjQxxQynHNzk/UKHoE19wzW
+ Rv5n+YvgzlTdKK6Y2KTHWaDiiM+ngC7wcul1p3J9MK0A5qi9HPbo89qI5y+ma0asoP
+ DIcVC6NLJScB08lVbQrRV55zb8YWVhilIhsS1qVDTaL8iJMsFz4tZ+FbmxSn4jCBva
+ iIz3QapyICklQBzcoiZDPxJYXcHiDduQkvbOuWYgAaVgDPjZcProdnoF5t/NRqbu7q
+ xH9TnxUhZbooA==
 Received: from mchehab by mail.kernel.org with local (Exim 4.94.2)
  (envelope-from <mchehab@kernel.org>)
- id 1nTfYd-001kVH-1t; Mon, 14 Mar 2022 08:55:59 +0100
+ id 1nTfYd-001kVP-4L; Mon, 14 Mar 2022 08:55:59 +0100
 From: Mauro Carvalho Chehab <mchehab@kernel.org>
 To: 
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -55,16 +55,16 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Ming Qian <ming.qian@nxp.com>,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH 17/64] media: platform: mtk-mdp: move config to its own file
-Date: Mon, 14 Mar 2022 08:55:09 +0100
-Message-Id: <ae30b7f5d43c6d9f25137dc7c46009a42cc52310.1647242579.git.mchehab@kernel.org>
+Subject: [PATCH 19/64] media: platform: mtk-vpu: move config to its own file
+Date: Mon, 14 Mar 2022 08:55:11 +0100
+Message-Id: <39b3a411ab46bc7fcd5333bad7c5ccd5042bf16e.1647242579.git.mchehab@kernel.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <cover.1647242578.git.mchehab@kernel.org>
 References: <cover.1647242578.git.mchehab@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_005603_821040_99FC35DE 
-X-CRM114-Status: GOOD (  16.46  )
+X-CRM114-CacheID: sfid-20220314_005605_236409_5DCD623B 
+X-CRM114-Status: GOOD (  15.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,7 +82,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 In order to better organize the platform/Kconfig, place
-mtk-mdp-specific config stuff on a separate Kconfig file.
+mtk-vpu-specific config stuff on a separate Kconfig file.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 ---
@@ -90,70 +90,65 @@ Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
 See [PATCH 00/64] at: https://lore.kernel.org/all/cover.1647242578.git.mchehab@kernel.org/
 
- drivers/media/platform/Kconfig         | 18 +-----------------
- drivers/media/platform/mtk-mdp/Kconfig | 17 +++++++++++++++++
- 2 files changed, 18 insertions(+), 17 deletions(-)
- create mode 100644 drivers/media/platform/mtk-mdp/Kconfig
+ drivers/media/platform/Kconfig         | 15 +--------------
+ drivers/media/platform/mtk-vpu/Kconfig | 15 +++++++++++++++
+ 2 files changed, 16 insertions(+), 14 deletions(-)
+ create mode 100644 drivers/media/platform/mtk-vpu/Kconfig
 
 diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-index f517aa951460..3b3d7af47ca1 100644
+index ab7c85613625..39bf4c57e044 100644
 --- a/drivers/media/platform/Kconfig
 +++ b/drivers/media/platform/Kconfig
-@@ -49,6 +49,7 @@ source "drivers/media/platform/davinci/Kconfig"
- source "drivers/media/platform/exynos-gsc/Kconfig"
- source "drivers/media/platform/meson/ge2d/Kconfig"
+@@ -51,6 +51,7 @@ source "drivers/media/platform/meson/ge2d/Kconfig"
  source "drivers/media/platform/mtk-jpeg/Kconfig"
-+source "drivers/media/platform/mtk-mdp/Kconfig"
+ source "drivers/media/platform/mtk-mdp/Kconfig"
+ source "drivers/media/platform/mtk-vcodec/Kconfig"
++source "drivers/media/platform/mtk-vpu/Kconfig"
  source "drivers/media/platform/omap/Kconfig"
  
  source "drivers/media/platform/aspeed/Kconfig"
-@@ -196,23 +197,6 @@ config VIDEO_MEDIATEK_VPU
- 	    To compile this driver as a module, choose M here: the
- 	    module will be called mtk-vpu.
+@@ -184,20 +185,6 @@ config VIDEO_TI_CAL_MC
  
--config VIDEO_MEDIATEK_MDP
--	tristate "Mediatek MDP driver"
+ # Mem2mem drivers
+ 
+-config VIDEO_MEDIATEK_VPU
+-	tristate "Mediatek Video Processor Unit"
 -	depends on V4L_MEM2MEM_DRIVERS
--	depends on MTK_IOMMU || COMPILE_TEST
 -	depends on VIDEO_DEV && VIDEO_V4L2
 -	depends on ARCH_MEDIATEK || COMPILE_TEST
--	depends on MTK_SMI || (COMPILE_TEST && MTK_SMI=n)
--	select VIDEOBUF2_DMA_CONTIG
--	select V4L2_MEM2MEM_DEV
--	select VIDEO_MEDIATEK_VPU
 -	help
--	    It is a v4l2 driver and present in Mediatek MT8173 SoCs.
--	    The driver supports for scaling and color space conversion.
+-	    This driver provides downloading VPU firmware and
+-	    communicating with VPU. This driver for hw video
+-	    codec embedded in Mediatek's MT8173 SOCs. It is able
+-	    to handle video decoding/encoding in a range of formats.
 -
 -	    To compile this driver as a module, choose M here: the
--	    module will be called mtk-mdp.
+-	    module will be called mtk-vpu.
 -
- config VIDEO_MEDIATEK_VCODEC
- 	tristate "Mediatek Video Codec driver"
+ config VIDEO_MEM2MEM_DEINTERLACE
+ 	tristate "Deinterlace support"
  	depends on V4L_MEM2MEM_DRIVERS
-diff --git a/drivers/media/platform/mtk-mdp/Kconfig b/drivers/media/platform/mtk-mdp/Kconfig
+diff --git a/drivers/media/platform/mtk-vpu/Kconfig b/drivers/media/platform/mtk-vpu/Kconfig
 new file mode 100644
-index 000000000000..0cc743165a1a
+index 000000000000..df679ea79ed0
 --- /dev/null
-+++ b/drivers/media/platform/mtk-mdp/Kconfig
-@@ -0,0 +1,17 @@
++++ b/drivers/media/platform/mtk-vpu/Kconfig
+@@ -0,0 +1,15 @@
 +# SPDX-License-Identifier: GPL-2.0-only
-+config VIDEO_MEDIATEK_MDP
-+	tristate "Mediatek MDP driver"
++
++config VIDEO_MEDIATEK_VPU
++	tristate "Mediatek Video Processor Unit"
 +	depends on V4L_MEM2MEM_DRIVERS
-+	depends on MTK_IOMMU || COMPILE_TEST
 +	depends on VIDEO_DEV && VIDEO_V4L2
 +	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on MTK_SMI || (COMPILE_TEST && MTK_SMI=n)
-+	select VIDEOBUF2_DMA_CONTIG
-+	select V4L2_MEM2MEM_DEV
-+	select VIDEO_MEDIATEK_VPU
 +	help
-+	    It is a v4l2 driver and present in Mediatek MT8173 SoCs.
-+	    The driver supports for scaling and color space conversion.
++	    This driver provides downloading VPU firmware and
++	    communicating with VPU. This driver for hw video
++	    codec embedded in Mediatek's MT8173 SOCs. It is able
++	    to handle video decoding/encoding in a range of formats.
 +
 +	    To compile this driver as a module, choose M here: the
-+	    module will be called mtk-mdp.
++	    module will be called mtk-vpu.
 -- 
 2.35.1
 
