@@ -4,61 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D64D0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 10:12:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0C48C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 10:18:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ntAl0VyhLT6buAk1U5AL7S9Vm7779l63lFMRKLidN0M=; b=akL+P50ntMO7HG
-	ikKNEAr3VTRMwkQmUrbsazyfy943XsUM9/O1KemDuFM43jfm9wVVn2t/aCk0dtC5qQddZA99ipHG4
-	vNBGdsprnP7ZOxWmj0ZkY2WQYnTy43jMNdvFYuWOkaaPTOqHATnfIyfTYU7PSxee2tl0X2TrbRcxM
-	m7asjymaRYjf+5GsRRjLb9WE2D+SK86u7p9LNg+gwgbauknXuI1l9y1dcpjnCmR3sM7Q+Ueu2BLcL
-	ew7nuxYnT9lxSZdz6mTT2L/3TDPDx5ms2T7uOI6hGS1l8g3Lu0PIdf5yfgUy6lKwVE53WJeR1lWfr
-	HL/ROP2wtt/NfhBy25Cw==;
+	List-Owner; bh=GI02Ql5p5tpvst7vroHWhgKJFkF4Ohb4gEC+juFcMnU=; b=nECE8ZXDKv9uy6
+	0I2s7w35Qvm5+mzVOCreOQkuIc1dGafodm3VeWSAYsVAluBl7LIfB6gdURUlr+D+PUrcB5cCY3waE
+	f3KzeJxKszdhhqnFeQ2xEMOCKnVRAVFysaUUktB+sV/Uc4ym+6TRu6IlslonUlaVOQOncWYkmBg5E
+	BEJKDd6ur7v92BSl/aRao72MQ7YGnK3dnx9e+GTAaKxt6UC3M4KAwqTGQPuoX4jV+r+vW3DcoLG+f
+	KdbIBZ+B9Tw9JbCQe0nOJCE+IyHs0vysK+zhoNHE7iMOVVwDvBmCFVpP4K+Z2zjQDc8WHSa7frAhJ
+	8MNXGfTF1HEt9sLNpnIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nThgN-004s9I-22; Mon, 14 Mar 2022 10:12:07 +0000
+	id 1nThmP-004uGf-LN; Mon, 14 Mar 2022 10:18:21 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nThfa-004rki-7B; Mon, 14 Mar 2022 10:11:19 +0000
+ id 1nThmB-004uBJ-Fg; Mon, 14 Mar 2022 10:18:08 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 570641F43E0C
+ (Authenticated sender: kholk11) with ESMTPSA id 503631F43E42
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647252677;
- bh=bh/ot0gyUXjiizNGIRbwL29lZq8POFQ8narx72tYYBk=;
+ s=mail; t=1647253086;
+ bh=nQGCEaQV4SSt7P7Vs4H6IutV6PQurOMGF3CTakySQ4Y=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=n2Zp7NYnWcqXpGm/3VYq6d2gu9k/IgIQWVB1oDk18aQU/kEUpt3qPhZaS3ExQPCzG
- DRN60BMs1+boTWX4HgiGFDW+iIyHrhpJY2JUP5hrQ+ngco4pVDiEcv1UKwRS+kP/HU
- 9RyAebdQ739o06kd3ykBbv7Ff4DGp7s769KKPlxaZbqKZEpKp/0KwPRN+VHR1zSH4a
- FV3nWTegQtNrHej2fH7oKeLFtvkvOUG07fSx8DpzZePyxjQ1jbhSmwHTRKkesiPMA5
- eRLILwkis4aHK+SSEtKKvUJY5WjgAvcBkQxvo/BRpAZI7uB2ugVvm7PBSEsM5goOUK
- PXThe59vLepmg==
-Message-ID: <15fed391-a94f-aaca-906c-ffd96caead69@collabora.com>
-Date: Mon, 14 Mar 2022 11:11:14 +0100
+ b=dZPSbnMF4ru8XqiTI61+q3Z0UEJ7yUYvUGIdlnPn8gD/ZAKNSSa9xQKI6cEe39jCT
+ yEn5aSAbkzH4PgPoFNVjWXMx09Knhf/u9WT41z1wMPWXxjAl4e34+gi2RL4gFrD4ZF
+ sm5PKK1jQRFrwxhYg95pzkz9pL9aQgrB/SAjl1aAfSA7ClNhLIOX0G2TNkoHbmfr5s
+ hckhD84BpWv2LmD71gMNYe8wiqVfNke5nffD8VZHRQIGarIxuTViBB3NTIBi+8iTt2
+ aFhq4s1Rrx2Iby/cyGUWO9kkNZaaRVmFoMBdHRzILvvqZNzd5njH38XEpiJU3I0H9V
+ jiA5EFb9NLzHQ==
+Message-ID: <a497b403-5b20-9a2f-498e-b43727b26675@collabora.com>
+Date: Mon, 14 Mar 2022 11:18:02 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
-Subject: Re: [PATCH V7 1/5] dt-bindings: display: mediatek: add aal binding
- for MT8183
+Subject: Re: [v3 19/19] ASoC: mediatek: mt6358: add missing EXPORT_SYMBOLs
 Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
- matthias.bgg@gmail.com, robh+dt@kernel.org
-Cc: p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
- jassisinghbrar@gmail.com, fparent@baylibre.com, yongqiang.niu@mediatek.com,
- hsinyi@chromium.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>, broonie@kernel.org, robh+dt@kernel.org
+Cc: aaronyu@google.com, matthias.bgg@gmail.com, trevor.wu@mediatek.com,
+ tzungbi@google.com, julianbraha@gmail.com, alsa-devel@alsa-project.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220314090033.25773-1-rex-bc.chen@mediatek.com>
- <20220314090033.25773-2-rex-bc.chen@mediatek.com>
+References: <20220313151023.21229-1-jiaxin.yu@mediatek.com>
+ <20220313151023.21229-20-jiaxin.yu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220314090033.25773-2-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220313151023.21229-20-jiaxin.yu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_031118_450624_2F6A39AB 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20220314_031807_720975_CF752677 
+X-CRM114-Status: GOOD (  14.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,32 +72,67 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/03/22 10:00, Rex-BC Chen ha scritto:
-> Add aal binding for MT8183.
+Il 13/03/22 16:10, Jiaxin Yu ha scritto:
+> This fixes the following build errors when mt6358 is configured as module:
 > 
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> Acked-by: Rob Herring <robh@kernel.org>
+>>> ERROR: modpost: "mt6358_set_mtkaif_protocol"
+>>> [sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.ko] undefined!
+>>> ERROR: modpost: "mt6358_set_mtkaif_protocol"
+>>> [sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.ko] undefined!
+> 
+> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
 
+Hello Jiaxin,
+
+Can you please add a Fixes tag to this patch and send it separately from
+the MT8186 series?
+
+After adding the Fixes tag:
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> ---
->   .../devicetree/bindings/display/mediatek/mediatek,aal.yaml      | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-> index 61f0ed1e388f..6c8c83988a24 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-> @@ -23,6 +23,8 @@ properties:
->       oneOf:
->         - items:
->             - const: mediatek,mt8173-disp-aal
-> +      - items:
-> +          - const: mediatek,mt8183-disp-aal
->         - items:
->             - enum:
->                 - mediatek,mt2712-disp-aal
+Thanks,
+Angelo
 
+> ---
+>   sound/soc/codecs/mt6358.c | 4 ++++
+>   1 file changed, 4 insertions(+)
+> 
+> diff --git a/sound/soc/codecs/mt6358.c b/sound/soc/codecs/mt6358.c
+> index 1fdd2f8cf877..61f2a7632fd4 100644
+> --- a/sound/soc/codecs/mt6358.c
+> +++ b/sound/soc/codecs/mt6358.c
+> @@ -107,6 +107,7 @@ int mt6358_set_mtkaif_protocol(struct snd_soc_component *cmpnt,
+>   	priv->mtkaif_protocol = mtkaif_protocol;
+>   	return 0;
+>   }
+> +EXPORT_SYMBOL_GPL(mt6358_set_mtkaif_protocol);
+>   
+>   static void playback_gpio_set(struct mt6358_priv *priv)
+>   {
+> @@ -273,6 +274,7 @@ int mt6358_mtkaif_calibration_enable(struct snd_soc_component *cmpnt)
+>   			   1 << RG_AUD_PAD_TOP_DAT_MISO_LOOPBACK_SFT);
+>   	return 0;
+>   }
+> +EXPORT_SYMBOL_GPL(mt6358_mtkaif_calibration_enable);
+>   
+>   int mt6358_mtkaif_calibration_disable(struct snd_soc_component *cmpnt)
+>   {
+> @@ -296,6 +298,7 @@ int mt6358_mtkaif_calibration_disable(struct snd_soc_component *cmpnt)
+>   	capture_gpio_reset(priv);
+>   	return 0;
+>   }
+> +EXPORT_SYMBOL_GPL(mt6358_mtkaif_calibration_disable);
+>   
+>   int mt6358_set_mtkaif_calibration_phase(struct snd_soc_component *cmpnt,
+>   					int phase_1, int phase_2)
+> @@ -310,6 +313,7 @@ int mt6358_set_mtkaif_calibration_phase(struct snd_soc_component *cmpnt,
+>   			   phase_2 << RG_AUD_PAD_TOP_PHASE_MODE2_SFT);
+>   	return 0;
+>   }
+> +EXPORT_SYMBOL_GPL(mt6358_set_mtkaif_calibration_phase);
+>   
+>   /* dl pga gain */
+>   enum {
 
 
 _______________________________________________
