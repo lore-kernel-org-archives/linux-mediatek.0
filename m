@@ -4,59 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95C8DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 11:32:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1C15C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 11:54:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k9Xp7oOD4Ii+VRcyMD8lKWobBchXCFn5tGNmixlwwhE=; b=t0YN9q+zPq0HT1
-	Fl8UYg3yIlQ+K7lur4Qc/G2YWEI1/h579xVfYYrp6jr6IvOBdKC3bzd4c9VzdmbxP4sQi2O6K1YKV
-	08Z3O+x2EURR2YoYHVUmb5qEtm92bK/b1HKZM0F9QIbuA41+blcSE5vHrSLMdv0LcO3xP2Ol5vgAY
-	4wXjbl364cBqYOM2d9PUUXUTry555jEMyCrmhd7IrpXjP7LcOWVQkaAiNdQc/6Vd5lxiB02ngYA/h
-	xm54A6jZX97gEtQx+Jl6CGpQbpcz8YzXasWTXPpeT0dwdxOSKUkDpfQJdLItndmPGd85THqIqcqt0
-	xqfNzbq8jGNVIh4uPppw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=TqzPNP1UT1KtpDIXZ+Mv91oRKkmnaY1hQTNaNaIjrBY=; b=T7ZYpeFLSbNn7q
+	3xe+rSN7me5W2Vn+6s8JfySkHiPSaO6RfC3dte8hPd7168ve6Drr224pXyPCm23YZrzbD4KXEVXLY
+	VlG2IwTDBY/YxeP7sMJtiOdZRgyqi3HVRheopcnMZzujFJfVscWLKFnXkwJVtCXS1LmtaZuCtuYnq
+	QExGPIjNIZJE5gJeBDsNK2nVJiNmgo5bYfuwpqNHijfg1JLHKH/Hw3+ZKL8FXKQfOvnuW7YJ8I3pX
+	pZVjx+dyr+mr4hiU+NNX+DGYDnz91c2cgmC6q+qXPbuL3V2hNF4VXy1OwDNgsiyyPHkUuZuvHFe6z
+	IHxkGlKvjTa0csmuMwyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTivb-0059kb-PV; Mon, 14 Mar 2022 11:31:55 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nTjHY-005Fi4-0I; Mon, 14 Mar 2022 11:54:36 +0000
+Received: from mail2-relais-roc.national.inria.fr ([192.134.164.83])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTivO-0059g2-JJ; Mon, 14 Mar 2022 11:31:44 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 4BBDF1F433F2
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647257500;
- bh=xtxrT2bamlWz6iXZa45LA5QO3D2qQ09Z7rxdq4K7m4I=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=bkBm6JJXlTt7MmmN71Nlm9cMk1/zHBg9MkbwKg8XzoEbuWmK26zYeYrFews0nI0Jc
- ZapKj23jnPtVXFcL9OvYTNKp1EGu/NJcb6d71cjcer+T9Mx3rvu9UFCzc+ld1qQeBA
- 9uEnDlUOwDWdL4Zx6tGjWL1aeflzZy3egX8igARPlUQljEFqe1da/qMhVUIgpUBZnA
- 5dSnKmYi4jY1aPW2PEJd7M9hZ1fZfsR7UHosTf8KR3PhyoofUvZfHCq/u2Z/YTetVY
- MNOcG4qj1X/k5yVwDuaza7hnsT61Ti/gReMcOUdMai3hKLRBU9FQXkwj73AzwcWRHU
- KasflN6tsJ26w==
-Message-ID: <36e7847e-56ed-8768-388e-c6a00a2cb0ec@collabora.com>
-Date: Mon, 14 Mar 2022 12:31:38 +0100
+ id 1nTjH3-005FQy-0C; Mon, 14 Mar 2022 11:54:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=inria.fr; s=dc;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=41PUcU9tzULCiIgb8Uibh/5DuRgn44vcqHlit9be1ys=;
+ b=da5ZDADTYjfUb4CkZvv1ifI5i+2sUHWvJw+dkr6l96rFI9+3qCoi3gnv
+ q0ycGdD5ccrm59796HzJuglqTi/Zn7sM07eq2eqJ7FQY8P7GtUxL24J6z
+ 5W/zcd3/E6fo/TuVnTzoYm6lik0f+KcMTza69NkDCls6kpW1/h8PdxP5f k=;
+Authentication-Results: mail2-relais-roc.national.inria.fr;
+ dkim=none (message not signed) header.i=none;
+ spf=SoftFail smtp.mailfrom=Julia.Lawall@inria.fr;
+ dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.90,180,1643670000"; d="scan'208";a="25997332"
+Received: from i80.paris.inria.fr (HELO i80.paris.inria.fr.) ([128.93.90.48])
+ by mail2-relais-roc.national.inria.fr with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Mar 2022 12:53:59 +0100
+From: Julia Lawall <Julia.Lawall@inria.fr>
+To: linux-can@vger.kernel.org
+Cc: kernel-janitors@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ linux-spi@vger.kernel.org, target-devel@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-mtd@lists.infradead.org,
+ linux-usb@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-staging@lists.linux.dev, platform-driver-x86@vger.kernel.org,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ linux-leds@vger.kernel.org, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-omap@vger.kernel.org,
+ linux-clk@vger.kernel.org, "Rafael J. Wysocki" <rafael@kernel.org>,
+ linux-rdma@vger.kernel.org,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Sven Schnelle <svens@linux.ibm.com>, linux-s390@vger.kernel.org,
+ Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
+ linux-power@fi.rohmeurope.com, Mark Rutland <mark.rutland@arm.com>,
+ Alexander Shishkin <alexander.shishkin@linux.intel.com>,
+ Jiri Olsa <jolsa@kernel.org>, Namhyung Kim <namhyung@kernel.org>,
+ linux-perf-users@vger.kernel.org
+Subject: [PATCH 00/30] fix typos in comments
+Date: Mon, 14 Mar 2022 12:53:24 +0100
+Message-Id: <20220314115354.144023-1-Julia.Lawall@inria.fr>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v3] remoteproc: mediatek: fix side effect of mt8195 sram
- power on
-Content-Language: en-US
-To: Tinghan Shen <tinghan.shen@mediatek.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220314111806.28168-1-tinghan.shen@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220314111806.28168-1-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_043142_845784_A637712F 
-X-CRM114-Status: GOOD (  19.46  )
+X-CRM114-CacheID: sfid-20220314_045405_357632_69DC0AF4 
+X-CRM114-Status: UNSURE (   5.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,56 +83,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/03/22 12:18, Tinghan Shen ha scritto:
-> The definition of L1TCM_SRAM_PDN bits on mt8195 is different to mt8192.
-> 
-> L1TCM_SRAM_PDN bits[3:0] control the power of mt8195 L1TCM SRAM.
-> 
-> L1TCM_SRAM_PDN bits[7:4] control the access path to EMI for SCP.
-> These bits have to be powered on to allow EMI access for SCP.
-> 
-> Bits[7:4] also affect audio DSP because audio DSP and SCP are
-> placed on the same hardware bus. If SCP cannot access EMI, audio DSP is
-> blocked too.
-> 
-> L1TCM_SRAM_PDN bits[31:8] are not used.
-> 
-> This fix removes modification of bits[7:4] when power on/off mt8195 SCP
-> L1TCM. It's because the modification introduces a short period of time
-> blocking audio DSP to access EMI. This was not a problem until we have
-> to load both SCP module and audio DSP module. audio DSP needs to access
-> EMI because it has source/data on DRAM. Audio DSP will have unexpected
-> behavior when it accesses EMI and the SCP driver blocks the EMI path at
-> the same time.
-> 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Various spelling mistakes in comments.
+Detected with the help of Coccinelle.
 
+---
 
-Hello Tinghan,
-
-I'm sorry, but in the last review I forgot to mention that you should
-really add a Fixes tag to this commit, since this is.. a fix.
-
-This is the tag that you should use:
-
-Fixes: 79111df414fc ("remoteproc: mediatek: Support mt8195 scp")
-
-After adding that,
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> ---
-> v3: fix build error
-> v2: apply comments about macro definition and function calls
-> ---
->   drivers/remoteproc/mtk_common.h |  2 +
->   drivers/remoteproc/mtk_scp.c    | 67 +++++++++++++++++++++++++--------
->   2 files changed, 53 insertions(+), 16 deletions(-)
-> 
+ drivers/base/devres.c                               |    4 ++--
+ drivers/clk/qcom/gcc-sm6125.c                       |    2 +-
+ drivers/clk/ti/clkctrl.c                            |    2 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_cs.c              |    4 ++--
+ drivers/gpu/drm/amd/display/dc/bios/command_table.c |    6 +++---
+ drivers/gpu/drm/amd/pm/amdgpu_pm.c                  |    2 +-
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c  |    4 ++--
+ drivers/gpu/drm/sti/sti_gdp.c                       |    2 +-
+ drivers/infiniband/hw/qib/qib_iba7220.c             |    4 ++--
+ drivers/leds/leds-pca963x.c                         |    2 +-
+ drivers/media/i2c/ov5695.c                          |    2 +-
+ drivers/mfd/rohm-bd9576.c                           |    2 +-
+ drivers/mtd/ubi/block.c                             |    2 +-
+ drivers/net/can/usb/ucan.c                          |    4 ++--
+ drivers/net/ethernet/packetengines/yellowfin.c      |    2 +-
+ drivers/net/wireless/ath/ath6kl/htc_mbox.c          |    2 +-
+ drivers/net/wireless/cisco/airo.c                   |    2 +-
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c    |    2 +-
+ drivers/net/wireless/realtek/rtlwifi/rtl8821ae/dm.c |    6 +++---
+ drivers/platform/x86/uv_sysfs.c                     |    2 +-
+ drivers/s390/crypto/pkey_api.c                      |    2 +-
+ drivers/scsi/aic7xxx/aicasm/aicasm.c                |    2 +-
+ drivers/scsi/elx/libefc_sli/sli4.c                  |    2 +-
+ drivers/scsi/lpfc/lpfc_mbox.c                       |    2 +-
+ drivers/scsi/qla2xxx/qla_gs.c                       |    2 +-
+ drivers/spi/spi-sun4i.c                             |    2 +-
+ drivers/staging/rtl8723bs/core/rtw_mlme.c           |    2 +-
+ drivers/usb/gadget/udc/snps_udc_core.c              |    2 +-
+ fs/kernfs/file.c                                    |    2 +-
+ kernel/events/core.c                                |    2 +-
+ 30 files changed, 39 insertions(+), 39 deletions(-)
 
 _______________________________________________
 Linux-mediatek mailing list
