@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 354F5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 03:17:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB4ACC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 06:31:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TwCnu2ScxgA2PF4A+X9gEAHFscj0+fxnyFqXI/pDt+E=; b=1xDzuWhCI03arN
-	NlWqCiE5HoGCycF4XNhkmVgrqp5eCNtGxu76GkgNnWzWzyYkGoBpOrm3ronv2OOp/LPJa4h5Ck6jx
-	h/8ay8RbMESHQeLmRDl2mdMTzrFyYMc9ao1uKR7/fQhF95iOA41fUxT2IUTxZNGOJzhk03+U1RdAK
-	LCD6FZ3UMGT7vR8/QFOCpWhaooJdRESIL4NYLFw1hcj4bIsXhQj5mln4BX9XxgvQ7sO7aX2JPCQQT
-	OkXxrZRV60yn/+5CRK7JdwJ8Qq94iTzFSNeW4QxkODjRB8zhqGNP4KPLAWSpAn7frXcOz/QCTonbe
-	xPFqvvKLhcvfkQy+e22w==;
+	List-Owner; bh=iqZtaUWa/EN2t9EmoOhxLKLXquYghJCd1bjDA8nxqSA=; b=YeAfc8iWAkhDUx
+	dL4yx0mBvi4J7ksh7KAVQDBgL42D/0xZ7tK7fS9YiGn9Ip3Tvuh27lceWVnhAuE8wK6q3K8Row7UT
+	KFgBnY94fDOy4Y+QPA04GMfOP+QvpE3WpJHO/yfyeJjpTxz25h4+1jI2MXwGHJVAeaCjxc+ID9gGU
+	BzrFVD/p4F3RWMSIPloo4qqLOnyLJr1pBSsQx0gOPPdwZn5m9tmiMK84UMtdN4Gxj+D0D5rrHPkET
+	W4lUTyRpn5WAMfBoztbuAioJ46jh6pAU3Fy16Ioz6JwbgqEbJB9C9Gbx75NlJW+9gPOukBDhD3BoW
+	6VIXJ16OcCMea5G9FYsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTbCZ-003iBu-NN; Mon, 14 Mar 2022 03:16:55 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nTeEH-003xgM-4L; Mon, 14 Mar 2022 06:30:53 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTbCN-003iAz-Qd; Mon, 14 Mar 2022 03:16:45 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 4F62D60F7C;
- Mon, 14 Mar 2022 03:16:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C70CC340E9;
- Mon, 14 Mar 2022 03:16:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647227801;
- bh=pqkDNAeAEYNvG49k/Hx0tByN0ecvsp2DdmQ6if+3LdA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=K6stHjXByT/LIIEPIIN7gV5+ue1kVhi02UDo/UKc/m29vF0fX3xut4Yg4viAqkjQ6
- 1xe5srH6/IkKVbXiIHrX2MrjP8vuOu03F5X+2fbduJUhQ7Fnk1h9me4H3aqfbCngOp
- dxsGOek5ppdJBELp7JOkg0DA8kH+UwxOsJ9fdy27kGaHlG8nEHE8jQIV+W4X8tUxOg
- azJ/56yD5EYylptV+CI2SzgAZhq4poAfP/p1mNf5P3Vk5pqFwi56V3pfdYEm4pX+aN
- Y1vEaMqAca9yOZE7ajA25CxUIDKZDeJH6MVkyab2wvikK3vpXfRqig5ckIY6hTAcJj
- fR4pOtOJOq5Qw==
-Date: Mon, 14 Mar 2022 11:16:36 +0800
-From: Tzung-Bi Shih <tzungbi@kernel.org>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Cc: broonie@kernel.org, robh+dt@kernel.org, aaronyu@google.com,
- matthias.bgg@gmail.com, trevor.wu@mediatek.com, linmq006@gmail.com,
- alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- kernel test robot <lkp@intel.com>
-Subject: Re: [v4 2/2] ASoC: mediatek: mt8192: support rt1015p_rt5682s
-Message-ID: <Yi6zlIvA6t+yEbza@google.com>
-References: <20220311162213.6942-1-jiaxin.yu@mediatek.com>
- <20220311162213.6942-3-jiaxin.yu@mediatek.com>
+ id 1nTeE4-003xcZ-EF; Mon, 14 Mar 2022 06:30:42 +0000
+X-UUID: 440fbcde93864ae38a1ec86b549990ac-20220313
+X-UUID: 440fbcde93864ae38a1ec86b549990ac-20220313
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1411379549; Sun, 13 Mar 2022 23:30:31 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 13 Mar 2022 23:30:30 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 14 Mar 2022 14:30:28 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 14 Mar 2022 14:30:28 +0800
+Message-ID: <bf6c9d9270f54fe7baff62998498c1a75a69f723.camel@mediatek.com>
+Subject: Re: [RESEND V6 0/5] add display support for MediaTek SoC MT8186
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>, <robh+dt@kernel.org>
+CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <jassisinghbrar@gmail.com>, <fparent@baylibre.com>,
+ <yongqiang.niu@mediatek.com>, <hsinyi@chromium.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Mon, 14 Mar 2022 14:30:28 +0800
+In-Reply-To: <20220303065725.23384-1-rex-bc.chen@mediatek.com>
+References: <20220303065725.23384-1-rex-bc.chen@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220311162213.6942-3-jiaxin.yu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220313_201643_991480_2B2E2E2C 
-X-CRM114-Status: GOOD (  21.16  )
+X-CRM114-CacheID: sfid-20220313_233040_514179_73F02553 
+X-CRM114-Status: GOOD (  14.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,125 +75,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Mar 12, 2022 at 12:22:13AM +0800, Jiaxin Yu wrote:
-> Supports machines with rt1015p and rt5682s. Uses new proposed compatible
-> string "mt8192_mt6359_rt1015p_rt5682s". Using define to simplifies card
-> name and compatible name, and uses the snd_soc_of_get_dai_link_codecs()
-> to complete the configuration of dai_link's codecs.
+Hello Chun-Kuang,
 
-Rephrase the paragraph and consider to use imperative mood as [1] suggests.
+Do I need to rebase this series to your branch mediatek-drm-fixes and
+send next version?
 
-[1]: https://www.kernel.org/doc/html/latest/process/submitting-patches.html#describe-your-changes
+BRs,
+Rex
 
-The patch includes multiple changes.  Could you further separate it into:
-1. Refactor for I2S3 DAI links for original amps.
-2. Refactor for I2S8 and I2S9 DAI links for original headset codec RT5682.
-3. Support mt8192_mt6359_rt1015p_rt5682s for RT5682S.
+On Thu, 2022-03-03 at 14:57 +0800, Rex-BC Chen wrote:
+> v6:
+> 1. Remove mmsys patches which are accepted.
+> 2. Fix error of dt-binding.
+> 
+> v5:
+> 1. Add binding patch of aal for MT8183.
+> 2. Revise enum to const.
+> 3. Change to use enum for mutex.
+> 4. Remove patches which are accepted by maintainers. (mmsys and
+> mutex)
+> 
+> v4:
+> 1. Remove binding of dsi and dpi.
+> 2. Revise aal binding.
+> 3. Fix indention in [4/5].
+> 
+> v3:
+> 1. Modify display binding based on mtk display binding patch. ([1])
+> 2. Remove patch: drm/mediatek: separate postmask component from
+> mtk_disp_drv.c
+> 3. Remove compatible of 8186 ovl because we can re-use compatible of
+> 8192 for 8186.
+> 4. Fix issue of space before tab on mutex patch.
+> 
+> [1]: 
+> https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/commit/?h=mediatek-drm-next&id=4ed545e7d10049b5492afc184e61a67e478a2cfd
+> 
+> v2:
+> 1. Add binding documentation for mmsys, mutex and mtk_display.
+> 2. Remove duplicated definition of postmask registers on mtk_drm_drv.
+> 3. Add disp_ovl support for MT8186.
+> 4. Add detailed commit messages.
+> 
+> Rex-BC Chen (4):
+>   dt-bindings: display: mediatek: add aal binding for MT8183
+>   dt-bindings: display: mediatek: revise enum to const
+>   dt-bindings: display: mediatek: change to use enum for mutex
+>   dt-bindings: display: mediatek: add MT8186 SoC binding
+> 
+> Yongqiang Niu (1):
+>   drm/mediatek: add display support for MT8186
+> 
+>  .../display/mediatek/mediatek,aal.yaml        |  7 +++-
+>  .../display/mediatek/mediatek,ccorr.yaml      |  5 ++-
+>  .../display/mediatek/mediatek,color.yaml      |  7 ++--
+>  .../display/mediatek/mediatek,dither.yaml     |  4 +--
+>  .../display/mediatek/mediatek,gamma.yaml      |  4 +--
+>  .../display/mediatek/mediatek,mutex.yaml      | 25 ++++++--------
+>  .../display/mediatek/mediatek,ovl-2l.yaml     |  4 +++
+>  .../display/mediatek/mediatek,ovl.yaml        |  8 +++--
+>  .../display/mediatek/mediatek,postmask.yaml   |  4 +++
+>  .../display/mediatek/mediatek,rdma.yaml       |  7 ++--
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 33
+> +++++++++++++++++++
+>  11 files changed, 76 insertions(+), 32 deletions(-)
+> 
 
-> Reported-by: kernel test robot <lkp@intel.com>
-
-The tag can be dropped as "Supports machines with rt1015p and rt5682s" is not
-an idea from the bot.  Put it in change logs if you would like it to be a
-record.
-
-> +static int mt8192_mt6359_card_set_be_link(struct snd_soc_card *card,
-> +					  struct snd_soc_dai_link *link,
-> +					  struct device_node *node,
-> +					  char *link_name)
-> +{
-> +	int ret;
-> +
-> +	if (node && strcmp(link->name, link_name) == 0) {
-> +		ret = snd_soc_of_get_dai_link_codecs(card->dev, node, link);
-> +		if (ret < 0) {
-> +			dev_err(card->dev, "get dai link codecs fail\n");
-
-How about using dev_err_probe()?  As the callers also report errors if
-mt8192_mt6359_card_set_be_link() fails, the log can be dropped.
-
->  static int mt8192_mt6359_dev_probe(struct platform_device *pdev)
->  {
->  	struct snd_soc_card *card;
-> -	struct device_node *platform_node, *hdmi_codec;
-> +	struct device_node *platform_node, *hdmi_codec, *headset_codec, *speaker_codec;
->  	int ret, i;
->  	struct snd_soc_dai_link *dai_link;
->  	struct mt8192_mt6359_priv *priv;
-> +	struct device *dev;
-[...]
-> +	dev = &pdev->dev;
-
-I don't think it could help too much unless it was struggling for code
-columns.  Please consider to drop the variable or you should s/&pdev->dev/dev/g
-for the function.
-
-> +	speaker_codec = of_get_child_by_name(dev->of_node, "mediatek,speaker-codec");
-> +	if (!speaker_codec) {
-> +		ret = -EINVAL;
-> +		dev_err_probe(dev, ret, "Property 'speaker_codec' missing or invalid\n");
-> +		goto err_speaker_codec;
-> +	}
-> +
-> +	headset_codec = of_get_child_by_name(dev->of_node, "mediatek,headset-codec");
-> +	if (!headset_codec) {
-> +		ret = -EINVAL;
-> +		dev_err_probe(dev, ret, "Property 'headset_codec' missing or invalid\n");
-> +		goto err_headset_codec;
-> +	}
-
-Are these new DT bindings?  They are not in
-Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml.
-
-> +		ret = mt8192_mt6359_card_set_be_link(card, dai_link, speaker_codec, "I2S3");
-> +		if (ret) {
-> +			dev_err_probe(&pdev->dev, ret, "%s set speaker_codec fail\n",
-
-As mentioned above, I don't think `dev` could help too much.  However, to be
-consistent, either drop the `dev` variable or use `dev` here.
-
-> +		ret = mt8192_mt6359_card_set_be_link(card, dai_link, headset_codec, "I2S8");
-> +		if (ret) {
-> +			dev_err_probe(&pdev->dev, ret, "%s set headset_codec fail\n",
-> +				      dai_link->name);
-
-Ditto.
-
-> +		ret = mt8192_mt6359_card_set_be_link(card, dai_link, headset_codec, "I2S9");
-> +		if (ret) {
-> +			dev_err_probe(&pdev->dev, ret, "%s set headset_codec fail\n",
-> +				      dai_link->name);
-
-Ditto.
-
->  	ret = mt8192_afe_gpio_init(&pdev->dev);
->  	if (ret) {
-> -		dev_err(&pdev->dev, "init gpio error %d\n", ret);
-> -		goto put_hdmi_codec;
-> +		dev_err_probe(&pdev->dev, ret, "%s init gpio error\n", __func__);
-
-Ditto.
-
->  	ret = devm_snd_soc_register_card(&pdev->dev, card);
-> -
-> -put_hdmi_codec:
-> +	if (ret)
-> +		dev_err_probe(&pdev->dev, ret,
-
-Ditto.
-
-> +err_probe:
-> +	of_node_put(headset_codec);
-> +err_headset_codec:
-> +	of_node_put(speaker_codec);
-> +err_speaker_codec:
->  	of_node_put(hdmi_codec);
-> -put_platform_node:
-> +err_hdmi_codec:
->  	of_node_put(platform_node);
-> +err_platform_node:
-> +
-
-The new line can be dropped.
 
 _______________________________________________
 Linux-mediatek mailing list
