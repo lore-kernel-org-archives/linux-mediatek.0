@@ -4,55 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01E0DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 08:44:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA0CEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 08:45:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W49N38GWUVHm1Kko8HFfHGkZ6rePca33Mx8Q/mh3TTg=; b=ZIo/VEjOpTP2Ie
-	IuWolJMeEwH6NBQ9ewv9SwnH8Zhyz6oC1axQbu0Nsc0HSXri4Y4nFFJ40eHGsRJ3UGXt98jCAWbRX
-	nLCCzF6H4hBLUWp/THX0sh/ejQsx/vhm3amqf4W+aoGSAGkb38qsExvMkeHHU9e8U2lnbmc4v7S33
-	dQ8jCVUgGfigrcfmpiQs7yW3NONm+RmgVKMY8pOUGQuuk7kqjl+DPo2aVBVQRzH+X0QH0iREPTkGC
-	UGnswm4QIEoKpTeTkIcYfRZjtlj315/HX/sty/QPARAu+//QspDve2CnTLBXEymN56B+RRIjB/nSp
-	ocVSMURSkiDmcGh7PYmw==;
+	List-Owner; bh=ZOsCqLQ0l6xA2GOJtBVBc1SokBwhpf4PrixtjaSxGL4=; b=E0RuQIGkylXii5
+	3MmSfv/Q/EUya/i9hOGvIqtiysYK9DN1HN9R7oMuYS3qQqXMlBc7wLTgsUIzrHsCCffxhXuVp3Xje
+	/9NTwOfHnyCVJsGDlgh5yNxrqJOgSwm+sgxdioinT72UWbz5KSInuP5qqtSG0ULLGTnZqI59X5Vw9
+	jNSVg92Np2zdv7Ffd0YOdGhEbCzzUQu/dEFvwWaI6chu80uVvbp8Z74J68gKxswDjK3riqAqS2Y+e
+	x8HJg38KMfGYsooZIxWDKmG4lWTFVjQSibK8NDvqPteNOmEVhfQ0YLAMY/rPaLfh92aNSHKT1UT8z
+	rhqdiKiy3Ta6s2qC6nkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTgJl-004aBA-8v; Mon, 14 Mar 2022 08:44:41 +0000
+	id 1nTgJz-004aHZ-08; Mon, 14 Mar 2022 08:44:55 +0000
 Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTgJU-004a2k-Ro; Mon, 14 Mar 2022 08:44:27 +0000
+ id 1nTgJX-004a5D-7Q; Mon, 14 Mar 2022 08:44:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
  s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
  Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=UPZIGRUhEgeZEuYwXHCw/OeVuq+IZh/TeJF0FMiXACE=; b=BV/vKH253XxeLkp6IbqfcpZ1rl
- 40Y+NeW2y/S4VNuyNVdBVdeWBqWWEU3aNH9RNLxoAQSEhilcJFIMm93Yf3s/AlJvTSBaHIyEw/4M+
- VPsvmgRTWsSTXWDlTjXkUiFATMRhQKsvoqJ8JRIZl1WkcL7dssNb0G5EH7ZOuxMFtp/0=;
+ bh=6ImD41bXLPZ3s174jOan+nIVPHawWoXaei/Njo6KaX0=; b=E89KJXMWrrqIAef78ucWmI6nLc
+ 1xxm/caEG872VmrBcU/b9NoGmF6mKVHRPTKAfNXWF+FV9QGIY6p3VfKqNU6FvZ7X8yk6OklqsFVOD
+ DEYC3YvRanhGAHe1vWMj/WAoYPuBLA5xT3pEtkzNrRsKkycbdBFWzU6yVtQuaEgqW9Rs=;
 Received: from p200300daa7204f006c015a90d6b6c4d6.dip0.t-ipconnect.de
  ([2003:da:a720:4f00:6c01:5a90:d6b6:c4d6] helo=Maecks.lan)
  by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1nTgJS-0002UN-Of; Mon, 14 Mar 2022 09:44:22 +0100
+ id 1nTgJR-0002UN-Hy; Mon, 14 Mar 2022 09:44:21 +0100
 From: Felix Fietkau <nbd@nbd.name>
-To: soc@kernel.org, Rob Herring <robh+dt@kernel.org>,
+To: soc@kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>
 Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v10 6/6] ARM: dts: Add PCIe support for Airoha EN7523
-Date: Mon, 14 Mar 2022 09:44:08 +0100
-Message-Id: <20220314084409.84394-7-nbd@nbd.name>
+ John Crispin <john@phrozen.org>, Rob Herring <robh@kernel.org>,
+ linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v10 4/6] dt-bindings: PCI: Add support for Airoha EN7532
+Date: Mon, 14 Mar 2022 09:44:06 +0100
+Message-Id: <20220314084409.84394-5-nbd@nbd.name>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220314084409.84394-1-nbd@nbd.name>
 References: <20220314084409.84394-1-nbd@nbd.name>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_014425_154534_11C2D228 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20220314_014427_488391_81CA299A 
+X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,98 +74,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This uses the MediaTek MT7622 PCIe driver, since the PCIe IP block is nearly
-identical to the one in MT7622
+From: John Crispin <john@phrozen.org>
 
+EN7532 is an ARM based platform SoC integrating the same PCIe IP as
+MT7622, add a binding for it.
+
+Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: John Crispin <john@phrozen.org>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 ---
- arch/arm/boot/dts/en7523-evb.dts |  8 +++++
- arch/arm/boot/dts/en7523.dtsi    | 58 ++++++++++++++++++++++++++++++++
- 2 files changed, 66 insertions(+)
+ Documentation/devicetree/bindings/pci/mediatek-pcie.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/boot/dts/en7523-evb.dts b/arch/arm/boot/dts/en7523-evb.dts
-index a8d8bb0419a0..f23a25cce119 100644
---- a/arch/arm/boot/dts/en7523-evb.dts
-+++ b/arch/arm/boot/dts/en7523-evb.dts
-@@ -33,3 +33,11 @@ &gpio0 {
- &gpio1 {
- 	status = "okay";
- };
-+
-+&pcie0 {
-+	status = "okay";
-+};
-+
-+&pcie1 {
-+	status = "okay";
-+};
-diff --git a/arch/arm/boot/dts/en7523.dtsi b/arch/arm/boot/dts/en7523.dtsi
-index 2e705b87b6c1..7f839331a777 100644
---- a/arch/arm/boot/dts/en7523.dtsi
-+++ b/arch/arm/boot/dts/en7523.dtsi
-@@ -143,4 +143,62 @@ gpio1: gpio@1fbf0270 {
- 		gpio-controller;
- 		#gpio-cells = <2>;
- 	};
-+
-+	pcie0: pcie@1fa91000 {
-+		compatible = "airoha,en7523-pcie", "mediatek,mt7622-pcie";
-+		device_type = "pci";
-+		reg = <0x1fa91000 0x1000>;
-+		reg-names = "port0";
-+		linux,pci-domain = <0>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "pcie_irq";
-+		clocks = <&scu EN7523_CLK_PCIE>;
-+		clock-names = "sys_ck0";
-+		bus-range = <0x00 0xff>;
-+		ranges = <0x82000000 0 0x20000000  0x20000000  0 0x8000000>;
-+		status = "disabled";
-+
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie_intc0 0>,
-+				<0 0 0 2 &pcie_intc0 1>,
-+				<0 0 0 3 &pcie_intc0 2>,
-+				<0 0 0 4 &pcie_intc0 3>;
-+		pcie_intc0: interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+		};
-+	};
-+
-+	pcie1: pcie@1fa92000 {
-+		compatible = "airoha,en7523-pcie", "mediatek,mt7622-pcie";
-+		device_type = "pci";
-+		reg = <0x1fa92000 0x1000>;
-+		reg-names = "port1";
-+		linux,pci-domain = <1>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "pcie_irq";
-+		clocks = <&scu EN7523_CLK_PCIE>;
-+		clock-names = "sys_ck1";
-+		bus-range = <0x00 0xff>;
-+		ranges = <0x82000000 0 0x28000000  0x28000000  0 0x8000000>;
-+		status = "disabled";
-+
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie_intc1 0>,
-+				<0 0 0 2 &pcie_intc1 1>,
-+				<0 0 0 3 &pcie_intc1 2>,
-+				<0 0 0 4 &pcie_intc1 3>;
-+		pcie_intc1: interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+		};
-+	};
- };
+diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
+index 57ae73462272..684227522267 100644
+--- a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
++++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
+@@ -7,6 +7,7 @@ Required properties:
+ 	"mediatek,mt7622-pcie"
+ 	"mediatek,mt7623-pcie"
+ 	"mediatek,mt7629-pcie"
++	"airoha,en7523-pcie"
+ - device_type: Must be "pci"
+ - reg: Base addresses and lengths of the root ports.
+ - reg-names: Names of the above areas to use during resource lookup.
 -- 
 2.35.1
 
