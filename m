@@ -1,74 +1,68 @@
 Return-Path: <linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
-Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
+Received: from bombadil.infradead.org (unknown [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8756AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 01:52:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD14FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 01:57:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nml6TSGMcsRr4UhShHGnb/wCtP0R3JGpUrx+IDWjvDA=; b=a5QgOGhq1nH7WR
-	HCxPzxlySOww6rPrFEiChyVcfQzpeL4b0JZF+Sjy0MjVWIq923OTz5TD2g6YXfOW3pSw21pa52WHn
-	iuhyCcnZduQHnlvrDZUAtfiJaJ33Y33C8xvDuns60nRHCUQ7uJEQlY1z5kFa6qCue2CklIyFEcGKN
-	T94mXiHOGIcxainIdb6UxzoLhZvPPOMyBvUW4mWuCJFLJcV2lj47okT5+ljSk/5eEpYBv4eZQLpb9
-	XlDAQNYiwSlb1gG20ZRczYCER59itqDW0D5bJiYxMFeMuHIKI/BPafq5DOvpImCoQaiC2aM3T3TVj
-	IgSZCVIg9ZQ5RLIzazYg==;
+	List-Owner; bh=pMKOnnQv1Krr4jn3kCN9OH4KX/OTWU4Xhh1ARdF9juk=; b=eos98aKwrCMmig
+	OJ4FiETWSa5eY/JXUfOsGV/IhAOaKreuFSHxTxbKIHgNCnXQobxR+Cc9kngSbuwHqhPRF4RL0Z1qe
+	TXSG4UI/FP2V4uelhFMHnXZ04DWpfheSyZdyVeda9vstPvz72IhS4l9TdcYuTBaYD7PYeXKMrMxwq
+	2soMuLAFcx/22/259RFCCe/tMuN3yb6iff7bAzMaueP1PmPO8+20zAay89sLTZNs1G28MpX1JU9MI
+	5GCfA49dJs6yuRYpv0Lg/kj6xGguUyyh/J4NOEtSUqgdU1QSZVUcNWHFeI/3RE/Ns9CaRq2lunQa5
+	Q2i9QsD3ZE74kXcb4ihA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTZsF-003aGc-Hx; Mon, 14 Mar 2022 01:51:51 +0000
+	id 1nTZxL-003ax6-5p; Mon, 14 Mar 2022 01:57:07 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTZs0-003aDY-H1; Mon, 14 Mar 2022 01:51:39 +0000
-X-UUID: 8b7874f1f6754708a820e0beba5b3dbf-20220313
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=1adJAz774TTLYmBmMDmcxmXiroZFFIF+CkkbDcsXQ/g=; 
- b=g9KdGhpo+B+0nEVYRJ8lGQbOXBft97UPoN82BeHQsxq6iA82WBh7zniqXFOSOF7p/lOxFz2Jco1auquQHa+cIjK2wnlIKYMhcJyEcUc7bu3xx/lAhmv4d6OZNuDvKxe/+glRMvf6fBnfadiDJxk2AbydCi2sefqNk8p7JdeCZiE=;
-X-UUID: 8b7874f1f6754708a820e0beba5b3dbf-20220313
+ id 1nTZxI-003awN-Ri; Mon, 14 Mar 2022 01:57:06 +0000
+X-UUID: 7fa6333e68334be48b749721bde78039-20220313
+X-UUID: 7fa6333e68334be48b749721bde78039-20220313
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jianjun.wang@mediatek.com>)
+ (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 993470443; Sun, 13 Mar 2022 18:51:16 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 13 Mar 2022 18:42:18 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 14 Mar 2022 09:42:16 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ with ESMTP id 390357205; Sun, 13 Mar 2022 18:56:51 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 13 Mar 2022 18:46:48 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 14 Mar 2022 09:46:47 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 14 Mar 2022 09:42:15 +0800
-Message-ID: <e7765c888e6fc8eb4b15fa01d19afda335b16c26.camel@mediatek.com>
-Subject: Re: [PATCH 2/2] dt-bindings: phy: mediatek: Add YAML schema for
- PCIe PHY
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>, "Vinod
- Koul" <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>
-CC: <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <rex-bc.chen@mediatek.com>, <randy.wu@mediatek.com>,
- <jieyy.yang@mediatek.com>, <chuanjia.liu@mediatek.com>,
- <qizhong.cheng@mediatek.com>, <jian.yang@mediatek.com>
-Date: Mon, 14 Mar 2022 09:42:15 +0800
-In-Reply-To: <0454647b-7aa3-ed70-0b92-1e5c98d0adc0@canonical.com>
-References: <20220311133527.5914-1-jianjun.wang@mediatek.com>
- <20220311133527.5914-3-jianjun.wang@mediatek.com>
- <0454647b-7aa3-ed70-0b92-1e5c98d0adc0@canonical.com>
+ Transport; Mon, 14 Mar 2022 09:46:47 +0800
+Message-ID: <c429d079010051552c3673baafc3b20289043875.camel@mediatek.com>
+Subject: Re: [PATCH v4 2/4] dt-bindings: watchdog: Add compatible for
+ Mediatek MT8186
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+CC: Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>, <linux-mediatek@lists.infradead.org>,
+ <linux-watchdog@vger.kernel.org>, <devicetree@vger.kernel.org>, "Kishon Vijay
+ Abraham I" <kishon@ti.com>, Wim Van Sebroeck <wim@linux-watchdog.org>,
+ <hsinyi@chromium.org>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel Lezcano
+ <daniel.lezcano@linaro.org>
+Date: Mon, 14 Mar 2022 09:46:47 +0800
+In-Reply-To: <Yitv4sRQMuewLcfT@robh.at.kernel.org>
+References: <20220311130732.22706-1-allen-kh.cheng@mediatek.com>
+ <20220311130732.22706-3-allen-kh.cheng@mediatek.com>
+ <Yitv4sRQMuewLcfT@robh.at.kernel.org>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220313_185138_011334_A53A05B0 
-X-CRM114-Status: GOOD (  22.32  )
+X-CRM114-CacheID: sfid-20220313_185704_931611_4C801E9C 
+X-CRM114-Status: GOOD (  12.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,119 +79,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
-
-On Fri, 2022-03-11 at 15:28 +0100, Krzysztof Kozlowski wrote:
-> On 11/03/2022 14:35, Jianjun Wang wrote:
-> > Add YAML schema documentation for PCIe PHY on MediaTek chipsets.
+On Fri, 2022-03-11 at 09:50 -0600, Rob Herring wrote:
+> On Fri, 11 Mar 2022 21:07:30 +0800, Allen-KH Cheng wrote:
+> > From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 > > 
-> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> > This commit adds dt-binding documentation of watchdog for Mediatek
+> > MT8186 SoC Platform.
+> > 
+> > Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 > > ---
-> >  .../bindings/phy/mediatek,pcie-phy.yaml       | 71
-> > +++++++++++++++++++
-> >  1 file changed, 71 insertions(+)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
+> >  Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
+> >  1 file changed, 1 insertion(+)
 > > 
-> > diff --git a/Documentation/devicetree/bindings/phy/mediatek,pcie-
-> > phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,pcie-
-> > phy.yaml
-> > new file mode 100644
-> > index 000000000000..da15b4bf3117
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
-> > @@ -0,0 +1,71 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/phy/mediatek,pcie-phy.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: MediaTek PCIe PHY Device Tree Binding
 > 
-> Title is for hardware, so s/Device Tree Binding//
-> 
-> > +
-> > +maintainers:
-> > +  - Jianjun Wang <jianjun.wang@mediatek.com>
-> > +
-> > +description: |
-> > +  The PCIe PHY supports physical layer functionality for PCIe Gen3
-> > port.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: mediatek,pcie-phy
-> 
-> Is it going to be exactly one pcie-phy for all Mediatek chipsets for
-> next years? Are you sure about that? It sounds highly unlikely....
+> Acked-by: Rob Herring <robh@kernel.org>
 
-We have only one pcie-phy for now, but if this is not recommended, I
-will replace it with a specific name in the next version, thanks for
-your review.
+Hello Allen,
+
+I have mentioned I also upstreamed wdt serires for MT8186 which is
+inclduing binding patch, and my patch is accepted by Guenter in [1].
+Please drop this patch in next version.
 
 Thanks.
 
-> 
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  reg-names:
-> > +    items:
-> > +      - const: sif
-> > +
-> > +  "#phy-cells":
-> > +    const: 0
-> > +
-> > +  nvmem-cells:
-> > +    maxItems: 7
-> > +    description:
-> > +      Phandles to nvmem cell that contains the efuse data, if
-> > unspecified,
-> > +      default value is used.
-> > +
-> > +  nvmem-cell-names:
-> > +    items:
-> > +      - const: glb_intr
-> > +      - const: tx_ln0_pmos
-> > +      - const: tx_ln0_nmos
-> > +      - const: rx_ln0
-> > +      - const: tx_ln1_pmos
-> > +      - const: tx_ln1_nmos
-> > +      - const: rx_ln1
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - reg-names
-> > +  - "#phy-cells"
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    pciephy: phy@11e80000 {
-> > +        compatible = "mediatek,pcie-phy";
-> > +        #phy-cells = <0>;
-> > +        reg = <0x11e80000 0x10000>;
-> > +        reg-names = "sif";
-> > +        nvmem-cells = <&pciephy_glb_intr>,
-> > +                      <&pciephy_tx_ln0_pmos>,
-> > +                      <&pciephy_tx_ln0_nmos>,
-> > +                      <&pciephy_rx_ln0>,
-> > +                      <&pciephy_tx_ln1_pmos>,
-> > +                      <&pciephy_tx_ln1_nmos>,
-> > +                      <&pciephy_rx_ln1>;
-> > +        nvmem-cell-names = "glb_intr", "tx_ln0_pmos",
-> > +                           "tx_ln0_nmos", "rx_ln0",
-> > +                           "tx_ln1_pmos", "tx_ln1_nmos",
-> > +                           "rx_ln1";
-> > +    };
-> 
-> 
-> Best regards,
-> Krzysztof
+[1]:
+https://git.kernel.org/pub/scm/linux/kernel/git/groeck/linux-staging.git/commit/?h=watchdog-next&id=888423f98c8fbf67e8cb2df8099678ff57274911
+
+BRs,
+Rex
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
