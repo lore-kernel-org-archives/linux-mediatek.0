@@ -4,85 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3E14C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 08:16:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECE71C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 08:18:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jSAv9CMs8DqmK0Hzb2QMbfEFL7IRBNeS6UEPQQwX/zQ=; b=TItGfgpKyDs8UZ
-	uayPzkwrhMWmTck1v1SLe7VDc74gfbEEhyr4AzCiBoE8AoxFdlgFBNwKuXzhfr/0q5F8/uBObw4/I
-	OUOFiyPcGS8/wJ5LYQGZ3GtZNQ3msQVFyY01EXrJCwV61rfbT+sCOohUyfEnNdl66Be2mBngYUMFX
-	43MkzAg3xOPfmrmXOqOgNVg6e3cjf/IZax9M/9r12ZuKC1+4Up0R/uR84DeryZxnktlS6qreNABv3
-	CgGh7ZqvykkFO+f4a6//O8y4Y3TJoo28KUlbt7QYJrwdsn/BTiW9fxuwubBLGZ2vRHtxF3Cxld87Z
-	Du4MCEAxH7z7kgjGIWWg==;
+	List-Owner; bh=+8Lrs/+MllbH0EaND+y5sdEN8MnOT2GnsWA0+3oTxQk=; b=cxOz8HSRvxtSP+
+	SU9Jey31XytlJ3GgXZFlhrPPqf8oovqZxuw1pwc+mGFucMbBIPr+N8OAKS0KXl3J2ff5wz4ifuSV3
+	xwAd1o8bCDfz7ttQ0BsHFTb9Q/TUXyg/WoddLDGLTGka0cDauOin606ukUXNrLaoeuqL5/iIVNftq
+	zY6APilosQq98o+P8ooxroGvlxwH7T7LpyejLfWt1i6kMNPOIkqeg/eYEU7OCtq/8Z75lnyiv5jFR
+	lmAPktba58b3NllNiBhERTGwuxGN8X0l63lXC/vlV/mu7M5c9424yOyzzDQyuDpE/f+rfki8V9CDd
+	/Q4dtCn+eshDaXodFH/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTfse-004OlL-SE; Mon, 14 Mar 2022 08:16:40 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1nTfuk-004Ppd-RZ; Mon, 14 Mar 2022 08:18:50 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTfcq-004HYB-TI
- for linux-mediatek@lists.infradead.org; Mon, 14 Mar 2022 08:00:22 +0000
-Received: by mail-wm1-x335.google.com with SMTP id
- l1-20020a05600c4f0100b00389645443d2so9082120wmq.2
- for <linux-mediatek@lists.infradead.org>; Mon, 14 Mar 2022 01:00:20 -0700 (PDT)
+ id 1nTfdp-004HzO-9b
+ for linux-mediatek@lists.infradead.org; Mon, 14 Mar 2022 08:01:24 +0000
+Received: by mail-wr1-x432.google.com with SMTP id h15so22443557wrc.6
+ for <linux-mediatek@lists.infradead.org>; Mon, 14 Mar 2022 01:01:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:in-reply-to:references:date:message-id
- :mime-version; bh=Cfv85awAmoyZzNe4XhXxrHLPFirYqlR4GxEuXMqMPG0=;
- b=DpH1bJNPog08D3meVY94qXN/ZTbqAbz22x6qEBi18AI0VYBHw6WBAPeMRRQHnLK3ar
- 6HYGEv/sONT9p/YzmzdZ6x0n5bTSIzEpRrq8evBqUfUerZXm9mDecwejCayDb70xdG7A
- si5mAoEzOlZ9dvqP5coB2biSOtdVjibaVqwRORZpNfXQ1Guq+mQvlEsWdnkKdQ0KiIRS
- Cw8OHPaLOI7KY6AZESsF9Pl7sTyfKGx+6PnvoM0AbaY+3rToip30Sp2dwCH4yZO/XLXZ
- n3baygYKvIa3OTUtAteiF+YGnrI3kDcuOZyiUdN+6MMRuuF0d/Ik0M4DmI6pU7V3rkmD
- HSdA==
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:organization:in-reply-to
+ :content-transfer-encoding;
+ bh=ZbQvHoyGIYzvUki2Rr3koBlbf8HphwGvoPoiGFCWjVI=;
+ b=Px/AIFSkS5xiQntL+czEDZNooaKyKwCT5+5oX3Dxiuaq0p2Muil6CAGE/yKjTcSPRk
+ zDe4uh38/LLZAeLwbHMGwjTg12kmpC6yeWSofKA0umP5cCfX9/OYY82Bw345RNYb0ncn
+ orCm5F+5ZfCmlxK+d1VXp7nIMCWzluoafQnmDOcfqWejvaYNcsBVEphbI2O0YMhV2/Sw
+ btjwvk4hgGfi1Ebtg7vyteqdSKhr8lp3tlnQhW8mViZOmcTxC9P84ODdx/3FeHEOfW8P
+ 6h58+Jo9NlVZHRXuw0qPEJXdJKCF5VgLcohK/rtJkyKSW2QSe8R2Hvd+nhg3g9Uwmmee
+ CRRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
- :message-id:mime-version;
- bh=Cfv85awAmoyZzNe4XhXxrHLPFirYqlR4GxEuXMqMPG0=;
- b=5Nr/8MOrFvrC+6reqVH7/c8O42U4pVSWO/jm3yAPoF6/VXVe5wPzsT5zJKaHwtetKJ
- 5alXFFOhF9Aph4/6+f2D4Xf5+ujTWyuFwEYeM9Gi/JdXk7Pi5i0zMJVGbI9URV/zPcvl
- b8S+sZUgojQ7rjmE4Q4I0tiq2j1Fyd9uYtCILXv+bAqlIdL+bND+YXhgxhQKDMZtl5+P
- PEE1p3GFw6dkB2t6Ykz0idzPv47vGnT0ksPkSJo3OJqW6myvKnSyhE/dYHxKwkrIht9V
- nAspeFi3E9E9INShax8auNmo6RLZ9VqOYu4MFtyOD0UH294tEdZelQe6rrTbw/d6b5G3
- kReA==
-X-Gm-Message-State: AOAM530htu6RcnofO5h+OFvMMSopSP2A0W3e4f8GIn0QnCtaplDmL3b6
- yKEMxalf7i9Vlt7ZgxkOUgWKZg==
-X-Google-Smtp-Source: ABdhPJzbOI0b73c/qadaAd7iEJGOVJ5hLgp/CgtYvpQSgMgQpjxw37Y+EMVduvNyqB6rfHgzaz11tw==
-X-Received: by 2002:a05:600c:4a12:b0:389:9c7d:5917 with SMTP id
- c18-20020a05600c4a1200b003899c7d5917mr16243062wmp.0.1647244819585; 
- Mon, 14 Mar 2022 01:00:19 -0700 (PDT)
-Received: from localhost ([2a01:cb19:826e:8e00:bcd3:63d9:c9dc:840d])
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:organization:in-reply-to
+ :content-transfer-encoding;
+ bh=ZbQvHoyGIYzvUki2Rr3koBlbf8HphwGvoPoiGFCWjVI=;
+ b=rH6SnZ/O8X1V73D9L0ASlHCIULPEEh+KWXniHM/IMdLS7jxA/y2IXRGyO2W/W4Ozs5
+ qdCByqKgWx06MsQR7r+XFogUjOi3Xxr695GwUuWDGfxdkD2ApB2ThB9DEXyvEEoTnWjX
+ fP9zaO2tZOhuJA9mlXYYZZIxMAeuKYwLNhB+iT28B2boIkI+5Gm7CVkVy2B98+JtGYWG
+ 6KbO6lhm2N1ledUxi9UzT3iBKckuSFIR65ICfZTrO3pOeUPS4/lgSLaf5qR5IC6w8lx3
+ oG+jJdFkgOizE1MUaVgMuydG7+LHCZuS6np3xy+c48mEZLGMBNUCG68tqd0zG8p45qOn
+ lTwg==
+X-Gm-Message-State: AOAM530ViuAKrSPpLWCdYkddEZBeUU0PJ7Lx17Nsau4VBSJSaMFQ0e2R
+ ZQ5DldqmOhWnagSVn39NbgbauQ==
+X-Google-Smtp-Source: ABdhPJztePfcEZyw3gKDCW6el7zVf+skc/7D+PKs0YU6FDvddmqBB//lsO2gITU97Xj5EZ5qC+/51g==
+X-Received: by 2002:adf:fb4e:0:b0:1e3:3e66:d5f6 with SMTP id
+ c14-20020adffb4e000000b001e33e66d5f6mr16194756wrs.615.1647244875196; 
+ Mon, 14 Mar 2022 01:01:15 -0700 (PDT)
+Received: from ?IPV6:2001:861:44c0:66c0:67f0:57f7:2185:6d18?
+ ([2001:861:44c0:66c0:67f0:57f7:2185:6d18])
  by smtp.gmail.com with ESMTPSA id
- 10-20020adf808a000000b001edd413a952sm12568861wrl.95.2022.03.14.01.00.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Mar 2022 01:00:19 -0700 (PDT)
-From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, AngeloGioacchino
- Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Marco Felsch
- <m.felsch@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Fengping Yu <fengping.yu@mediatek.com>,
- Yingjoe Chen <yingjoe.chen@mediatek.com>, Fabien Parent
- <fparent@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
- linux-input@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v21 2/3] Input: mt6779-keypad - Add MediaTek keypad driver
-In-Reply-To: <YiIINpi4zbJq/AZE@smile.fi.intel.com>
-References: <20220303154302.252041-1-mkorpershoek@baylibre.com>
- <20220303154302.252041-3-mkorpershoek@baylibre.com>
- <300114e2-6794-db3c-a51c-3f900b6476f9@collabora.com>
- <YiIINpi4zbJq/AZE@smile.fi.intel.com>
-Date: Mon, 14 Mar 2022 09:00:18 +0100
-Message-ID: <87ee35rmjx.fsf@baylibre.com>
+ v188-20020a1cacc5000000b00384b71a50d5sm14188253wme.24.2022.03.14.01.01.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Mar 2022 01:01:14 -0700 (PDT)
+Message-ID: <18f984ff-36c8-dbe5-6dd0-404c4fe9deab@baylibre.com>
+Date: Mon, 14 Mar 2022 09:01:19 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH 64/64] media: Kconfig: cleanup VIDEO_DEV dependencies
+Content-Language: en-US
+To: Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: alsa-devel@alsa-project.org, bcm-kernel-feedback-list@broadcom.com,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
+ linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-staging@lists.linux.dev, linux-stm32@st-md-mailman.stormreply.com,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ linux-usb@vger.kernel.org, mjpeg-users@lists.sourceforge.net,
+ openbmc@lists.ozlabs.org
+References: <cover.1647242578.git.mchehab@kernel.org>
+ <decd26e90adc5c16470e4f738810f22fe6478b27.1647242579.git.mchehab@kernel.org>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Organization: Baylibre
+In-Reply-To: <decd26e90adc5c16470e4f738810f22fe6478b27.1647242579.git.mchehab@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_010021_017131_AF56BA9D 
-X-CRM114-Status: GOOD (  20.42  )
+X-CRM114-CacheID: sfid-20220314_010121_430434_4B27688A 
+X-CRM114-Status: GOOD (  21.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,75 +101,182 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On ven., mars 04, 2022 at 14:38, Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
+On 14/03/2022 08:55, Mauro Carvalho Chehab wrote:
+> media Kconfig has two entries associated to V4L API:
+> VIDEO_DEV and VIDEO_V4L2.
+> 
+> On Kernel 2.6.x, there were two V4L APIs, each one with its own flag.
+> VIDEO_DEV were meant to:
+> 	1) enable Video4Linux and make its Kconfig options to appear;
+> 	2) it makes the Kernel build the V4L core.
+> 
+> while VIDEO_V4L2 where used to distinguish between drivers that
+> implement the newer API and drivers that implemented the former one.
+> 
+> With time, such meaning changed, specially after the removal of
+> all V4L version 1 drivers.
+> 
+> At the current implementation, VIDEO_DEV only does (1): it enables
+> the media options related to V4L, that now has:
+> 
+> 	menu "Video4Linux options"
+> 		visible if VIDEO_DEV
+> 
+> 	source "drivers/media/v4l2-core/Kconfig"
+> 	endmenu
+> 
+> but it doesn't affect anymore the V4L core drivers.
+> 
+> The rationale is that the V4L2 core has a "soft" dependency
+> at the I2C bus, and now requires to select a number of other
+> Kconfig options:
+> 
+> 	config VIDEO_V4L2
+> 		tristate
+> 		depends on (I2C || I2C=n) && VIDEO_DEV
+> 		select RATIONAL
+> 		select VIDEOBUF2_V4L2 if VIDEOBUF2_CORE
+> 		default (I2C || I2C=n) && VIDEO_DEV
+> 
+> In the past, merging them would be tricky, but it seems that it is now
+> possible to merge those symbols, in order to simplify V4L dependencies.
+> 
+> Let's keep VIDEO_DEV, as this one is used on some make *defconfig
+> configurations.
+> 
+> Suggested-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+> ---
+> 
+> To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
+> See [PATCH 00/64] at: https://lore.kernel.org/all/cover.1647242578.git.mchehab@kernel.org/
+> 
+>   drivers/input/rmi4/Kconfig                    |   2 +-
+>   drivers/input/touchscreen/Kconfig             |   4 +-
+>   drivers/media/Kconfig                         |   3 +
+>   drivers/media/common/saa7146/Kconfig          |   2 +-
+>   drivers/media/dvb-core/Kconfig                |   2 +-
+>   drivers/media/dvb-frontends/Kconfig           |   4 +-
+>   drivers/media/i2c/Kconfig                     | 250 +++++++++---------
+>   drivers/media/i2c/ccs/Kconfig                 |   2 +-
+>   drivers/media/i2c/cx25840/Kconfig             |   2 +-
+>   drivers/media/i2c/et8ek8/Kconfig              |   2 +-
+>   drivers/media/i2c/m5mols/Kconfig              |   2 +-
+>   drivers/media/pci/Kconfig                     |   2 +-
+>   drivers/media/pci/bt8xx/Kconfig               |   2 +-
+>   drivers/media/pci/cobalt/Kconfig              |   2 +-
+>   drivers/media/pci/cx18/Kconfig                |   2 +-
+>   drivers/media/pci/dt3155/Kconfig              |   2 +-
+>   drivers/media/pci/intel/ipu3/Kconfig          |   2 +-
+>   drivers/media/pci/ivtv/Kconfig                |   2 +-
+>   drivers/media/pci/meye/Kconfig                |   2 +-
+>   drivers/media/pci/saa7146/Kconfig             |   6 +-
+>   drivers/media/pci/sta2x11/Kconfig             |   2 +-
+>   drivers/media/pci/tw5864/Kconfig              |   2 +-
+>   drivers/media/pci/tw68/Kconfig                |   2 +-
+>   drivers/media/pci/tw686x/Kconfig              |   2 +-
+>   drivers/media/platform/Kconfig                |   6 +-
+>   drivers/media/platform/allegro-dvt/Kconfig    |   2 +-
+>   .../platform/allwinner/sun4i-csi/Kconfig      |   2 +-
+>   .../platform/allwinner/sun6i-csi/Kconfig      |   2 +-
+>   .../media/platform/allwinner/sun8i-di/Kconfig |   2 +-
+>   .../platform/allwinner/sun8i-rotate/Kconfig   |   2 +-
+>   .../media/platform/amlogic/meson-ge2d/Kconfig |   2 +-
+>   drivers/media/platform/aspeed/Kconfig         |   2 +-
+>   drivers/media/platform/atmel/Kconfig          |   8 +-
+>   drivers/media/platform/cadence/Kconfig        |   4 +-
+>   drivers/media/platform/chips-media/Kconfig    |   2 +-
+>   drivers/media/platform/intel/Kconfig          |   2 +-
+>   drivers/media/platform/marvell/Kconfig        |   4 +-
+>   .../media/platform/mediatek/mtk-jpeg/Kconfig  |   2 +-
+>   .../media/platform/mediatek/mtk-mdp/Kconfig   |   2 +-
+>   .../platform/mediatek/mtk-vcodec/Kconfig      |   2 +-
+>   .../media/platform/mediatek/mtk-vpu/Kconfig   |   2 +-
+>   .../media/platform/nvidia/tegra-vde/Kconfig   |   2 +-
+>   drivers/media/platform/nxp/Kconfig            |   6 +-
+>   drivers/media/platform/nxp/amphion/Kconfig    |   2 +-
+>   drivers/media/platform/nxp/imx-jpeg/Kconfig   |   2 +-
+>   drivers/media/platform/qcom/camss/Kconfig     |   2 +-
+>   drivers/media/platform/qcom/venus/Kconfig     |   2 +-
+>   drivers/media/platform/renesas/Kconfig        |  30 +--
+>   .../media/platform/renesas/rcar-vin/Kconfig   |   4 +-
+>   drivers/media/platform/rockchip/rga/Kconfig   |   2 +-
+>   .../media/platform/rockchip/rkisp1/Kconfig    |   2 +-
+>   .../media/platform/samsung/exynos-gsc/Kconfig |   2 +-
+>   .../media/platform/samsung/exynos4-is/Kconfig |   2 +-
+>   .../media/platform/samsung/s3c-camif/Kconfig  |   2 +-
+>   .../media/platform/samsung/s5p-g2d/Kconfig    |   2 +-
+>   .../media/platform/samsung/s5p-jpeg/Kconfig   |   2 +-
+>   .../media/platform/samsung/s5p-mfc/Kconfig    |   2 +-
+>   drivers/media/platform/sti/bdisp/Kconfig      |   2 +-
+>   drivers/media/platform/sti/delta/Kconfig      |   2 +-
+>   drivers/media/platform/sti/hva/Kconfig        |   2 +-
+>   drivers/media/platform/sti/stm32/Kconfig      |   4 +-
+>   drivers/media/platform/ti/am437x/Kconfig      |   2 +-
+>   drivers/media/platform/ti/davinci/Kconfig     |  12 +-
+>   drivers/media/platform/ti/omap/Kconfig        |   2 +-
+>   drivers/media/platform/ti/omap3isp/Kconfig    |   2 +-
+>   drivers/media/platform/ti/vpe/Kconfig         |   4 +-
+>   drivers/media/platform/via/Kconfig            |   2 +-
+>   drivers/media/platform/xilinx/Kconfig         |   2 +-
+>   drivers/media/radio/Kconfig                   |  54 ++--
+>   drivers/media/radio/si470x/Kconfig            |   2 +-
+>   drivers/media/radio/wl128x/Kconfig            |   2 +-
+>   drivers/media/spi/Kconfig                     |   4 +-
+>   drivers/media/test-drivers/Kconfig            |   2 +-
+>   drivers/media/test-drivers/vicodec/Kconfig    |   2 +-
+>   drivers/media/test-drivers/vimc/Kconfig       |   2 +-
+>   drivers/media/test-drivers/vivid/Kconfig      |   2 +-
+>   drivers/media/tuners/Kconfig                  |   6 +-
+>   drivers/media/tuners/e4000.c                  |   6 +-
+>   drivers/media/tuners/fc2580.c                 |   6 +-
+>   drivers/media/usb/airspy/Kconfig              |   2 +-
+>   drivers/media/usb/au0828/Kconfig              |   6 +-
+>   drivers/media/usb/cpia2/Kconfig               |   2 +-
+>   drivers/media/usb/dvb-usb-v2/Kconfig          |   8 +-
+>   drivers/media/usb/dvb-usb/Kconfig             |   4 +-
+>   drivers/media/usb/gspca/Kconfig               |  96 +++----
+>   drivers/media/usb/gspca/gl860/Kconfig         |   2 +-
+>   drivers/media/usb/gspca/m5602/Kconfig         |   2 +-
+>   drivers/media/usb/hackrf/Kconfig              |   2 +-
+>   drivers/media/usb/hdpvr/Kconfig               |   2 +-
+>   drivers/media/usb/msi2500/Kconfig             |   2 +-
+>   drivers/media/usb/pvrusb2/Kconfig             |   2 +-
+>   drivers/media/usb/pwc/Kconfig                 |   2 +-
+>   drivers/media/usb/s2255/Kconfig               |   2 +-
+>   drivers/media/usb/stkwebcam/Kconfig           |   2 +-
+>   drivers/media/usb/usbtv/Kconfig               |   2 +-
+>   drivers/media/usb/uvc/Kconfig                 |   2 +-
+>   drivers/media/usb/zr364xx/Kconfig             |   2 +-
+>   drivers/media/v4l2-core/Kconfig               |  12 +-
+>   drivers/media/v4l2-core/Makefile              |   2 +-
+>   drivers/staging/media/atomisp/Kconfig         |   2 +-
+>   drivers/staging/media/atomisp/i2c/Kconfig     |  14 +-
+>   drivers/staging/media/hantro/Kconfig          |   2 +-
+>   drivers/staging/media/imx/Kconfig             |   2 +-
+>   drivers/staging/media/ipu3/Kconfig            |   2 +-
+>   drivers/staging/media/max96712/Kconfig        |   2 +-
+>   drivers/staging/media/meson/vdec/Kconfig      |   2 +-
+>   drivers/staging/media/omap4iss/Kconfig        |   2 +-
+>   drivers/staging/media/rkvdec/Kconfig          |   2 +-
+>   drivers/staging/media/sunxi/cedrus/Kconfig    |   2 +-
+>   drivers/staging/media/tegra-video/Kconfig     |   2 +-
+>   drivers/staging/media/zoran/Kconfig           |   2 +-
+>   drivers/staging/most/video/Kconfig            |   2 +-
+>   .../vc04_services/bcm2835-camera/Kconfig      |   2 +-
+>   drivers/usb/gadget/Kconfig                    |   2 +-
+>   drivers/usb/gadget/legacy/Kconfig             |   2 +-
+>   sound/pci/Kconfig                             |   4 +-
+>   116 files changed, 371 insertions(+), 376 deletions(-)
 
-> On Fri, Mar 04, 2022 at 11:31:38AM +0100, AngeloGioacchino Del Regno wrote:
->> Il 03/03/22 16:43, Mattijs Korpershoek ha scritto:
->> > From: "fengping.yu" <fengping.yu@mediatek.com>
->> > 
->> > This patch adds matrix keypad support for Mediatek SoCs.
->
->> > +struct mt6779_keypad {
->> > +	struct regmap *regmap;
->> > +	struct input_dev *input_dev;
->> > +	struct clk *clk;
->
->> > +	void __iomem *base;
->
-> Not sure why you need this here.
-You are right. There is no point of keeping this __iomem region as part
-of the structure, since it's only used in the probe() function to create
-the regmap.
 
-Will send an improvement part of a later series.
-
->
->> > +	u32 n_rows;
->> > +	u32 n_cols;
->> > +	DECLARE_BITMAP(keymap_state, MTK_KPD_NUM_BITS);
->> > +};
->> > +
->> > +static const struct regmap_config mt6779_keypad_regmap_cfg = {
->> > +	.reg_bits = 32,
->> > +	.val_bits = 32,
->> > +	.reg_stride = sizeof(u32),
->> > +	.max_register = 36,
->> 
->> Are you sure that you can't use .fast_io = true?
->> 
->> Another version for the same question:
->> Are you sure that you need to lock with a mutex here, and not with a spinlock?
->> 
->> Since you're performing reads over a MMIO, I think that there's a very good
->> chance that you can use fast_io.
->> 
->> > +};
->
-> ...
->
->> Please use dev_err_probe() to simplify error handling in probe functions: you've
->> done a great job with adding a devm action for the error cases, avoiding gotos to
->> get out cleanly.. it would be a pity to not finish this to perfection.
->> 
->> I'll give you two examples for this, so that you'll be all set.
->> 
->> 	if (IS_ERR(keypad->regmap))
->> 		return dev_err_probe(&pdev->dev, PTR_ERR(keypad->regmap),
->> 				     "regmap init failed\n");
->> 
->> P.S.: No need for %pe here, as dev_err_probe prints the error number for you!
->
-> Maintainer of the input subsystem is strongly against dev_err_probe() API. See
-> other files there. Ditto for other cases you mentioned below.
->
-> -- 
-> With Best Regards,
-> Andy Shevchenko
+Reviewed-by: Neil Armstrong <narmstrong@baylibre.com> # for meson-vdec & meson-ge2d
 
 _______________________________________________
 Linux-mediatek mailing list
