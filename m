@@ -4,67 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD288C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 07:58:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 396A9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Mar 2022 08:01:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n1B3PPfhQFfyMWmFzaJLmxxH2esx9M6EZ0bG0IQqHpg=; b=nn8wjtKqDskrSz
-	e6Z7HmKY57AV9YXmKWr6aD7bZz8iVTxgcZlYlCZYnVy/PAHdlfEnH6ALnaGhROJ6ya97qQ5G/CV0G
-	ouR1YPwo5ukFE0wHYHeLwFTx80N0ky9Q22J51mSDxxsGO/p43sfH9lu5hUPBSwnBgqVB/6UrpMtem
-	93OJmFqbJe68DuZbSDJEP/3kpgUzGW0JM7sgZ0MXlQamunj+RBORU3DWbZWycWgI/6EjotLs7VCDc
-	oucVnzrGjfzmEdHaaLG7hjD2+fv9qBFGvo2k9yj1Cq4JKrfL7ZymKaOwncG7Q7AMoQo2+Oei2wF7c
-	nr8oeDrF1OIx8PFJIQVQ==;
+	List-Owner; bh=lX7AEGmjV46heMCgIawpck7yNZi5wne3jaoYn3e76YY=; b=LqfDg9V7MtJMve
+	WIycG8j4BG4mUBt5tsHP2sevkouUKjWy0twld+9JKX64adwpaZ2hJROQBc0o1xTTCLUPF9aeCfs7o
+	z3GO0sowOTCD/O19RPiYo+Sg+fYwmJTsNU9L86eK75jLwJvzSeh1P5ij5o3nbYfU/0XxdG+ld6j+j
+	OkVOcAfbgiXeZfIj9hxuJ3igLYkqo92IgS1YsK8opgpFADHvnGt54bWfodcTpqRgo9WccrPP7ar2T
+	iW+FkIipaBHRS0f4ljAS381IhABtcUo5f667uaDOtpCC6IhC3kRnRVldQsKfL+NuREDzKaeSmsjgv
+	WgujfnzqtkzK8qc1xccA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTfbL-004GnG-UU; Mon, 14 Mar 2022 07:58:47 +0000
+	id 1nTfe4-004I9L-L4; Mon, 14 Mar 2022 08:01:36 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTfYk-004FcI-Vn; Mon, 14 Mar 2022 07:56:17 +0000
+ id 1nTfYs-004Fgh-2R; Mon, 14 Mar 2022 07:56:23 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 8240F611B7;
- Mon, 14 Mar 2022 07:56:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F41AC3410F;
- Mon, 14 Mar 2022 07:56:01 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id B10286121C;
+ Mon, 14 Mar 2022 07:56:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D3F4C36B0A;
+ Mon, 14 Mar 2022 07:56:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647244561;
- bh=h2oPKiOhkQOnumUdeyDJRnfkogJA7+jnEd2l+b1ekfM=;
+ s=k20201202; t=1647244562;
+ bh=frM2TrgnfHXXWxzvLlBjDHJ6SZXKkAW32KrVCq9TUeg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=MaBb4LOGt7po3yDa+ua8Q8EZNPqnBdafzREASDBHBGvhGm3jlqZYqltVcIrxpKatb
- NfoC0FLkGiMLCJU1bGNfF6c/7/oLYOrnfD5GsJPOkHZs0D7NDyUFcwbYcS8mph4A/X
- y0WgUT/e2iGiRYSIBSqBOdyNutnoHjmMwMsAF6kUBFFuqUetV/whPo9Rrnz8hPgNbN
- wgK/sSN+Ins1dgUdEhJri3jvz0q4yOiKidQ7ykRq2GKJ1YAJYbT8aa18BimMByzW0t
- G3+mPWRIbEuSkWTHzpONTT5aLD1KmEPchbN6r/PNzgGOyU/I4RKxL8fLuVY/0/95UP
- VDhxA17LHFWBw==
+ b=lYplchdHkgp1dzoIMq6v5/pU/0JEfGkpMoc7Ci3sHQRRW4492Cjj+U7QzOCowIPz9
+ 982e6MnMwdtaOpVKIuBMg8dOwk92NUGtjJxzGkv/kZCxi0dhSXAIy7TQH1Qbjfcft1
+ yJN11ww/PfxUXKSorLWUO1+Rdiax1Rg1txwntuODonaMRXqBthLP5UtHHDIAFmnN/Z
+ /6DPxlTE5J4ARvkn915mAkRhLRiSVsbpWieIZ385Itaieds6tdsdgKVK9uwwmaav19
+ bTYIoZHUzE1/LbeMmKbL6/FUjDdIu1nsawBpPkwofhnIzK5XTy4xECVOVVT0bJ6eua
+ T0R34Ir6ZhP4A==
 Received: from mchehab by mail.kernel.org with local (Exim 4.94.2)
  (envelope-from <mchehab@kernel.org>)
- id 1nTfYd-001kVD-0c; Mon, 14 Mar 2022 08:55:59 +0100
+ id 1nTfYe-001kX9-7N; Mon, 14 Mar 2022 08:56:00 +0100
 From: Mauro Carvalho Chehab <mchehab@kernel.org>
 To: 
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
  =?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
- Dmitry Osipenko <digetx@gmail.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Ding Senjie <dingsenjie@yulong.com>, Dmitry Osipenko <digetx@gmail.com>,
+ Eugen Hristev <eugen.hristev@microchip.com>,
  Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Houlong Wei <houlong.wei@mediatek.com>, Jacopo Mondi <jacopo@jmondi.org>,
  Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Ming Qian <ming.qian@nxp.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH 16/64] media: platform: mtk-jpeg: move config to its own file
-Date: Mon, 14 Mar 2022 08:55:08 +0100
-Message-Id: <0eed3a494bdfcdefe2155a15c8ab2c916a003850.1647242579.git.mchehab@kernel.org>
+Subject: [PATCH 46/64] media: platform: rename mtk-vpu/ to mediatek/mtk-vpu/
+Date: Mon, 14 Mar 2022 08:55:38 +0100
+Message-Id: <019918d9c896ddb1f3968d0fcd825c0ef1464899.1647242579.git.mchehab@kernel.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <cover.1647242578.git.mchehab@kernel.org>
 References: <cover.1647242578.git.mchehab@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_005607_137262_8B5744E1 
-X-CRM114-Status: GOOD (  15.53  )
+X-CRM114-CacheID: sfid-20220314_005614_240216_D8BE856F 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,8 +90,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to better organize the platform/Kconfig, place
-mtk-jpeg-specific config stuff on a separate Kconfig file.
+As the end goal is to have platform drivers split by vendor,
+rename mtk-vpu/ to mediatek/mtk-vpu/.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 ---
@@ -90,68 +99,94 @@ Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
 See [PATCH 00/64] at: https://lore.kernel.org/all/cover.1647242578.git.mchehab@kernel.org/
 
- drivers/media/platform/Kconfig          | 17 +----------------
- drivers/media/platform/mtk-jpeg/Kconfig | 16 ++++++++++++++++
- 2 files changed, 17 insertions(+), 16 deletions(-)
- create mode 100644 drivers/media/platform/mtk-jpeg/Kconfig
+ MAINTAINERS                                             | 4 ++--
+ drivers/media/platform/Kconfig                          | 2 +-
+ drivers/media/platform/Makefile                         | 2 +-
+ drivers/media/platform/mediatek/mtk-mdp/Makefile        | 2 +-
+ drivers/media/platform/{ => mediatek}/mtk-vpu/Kconfig   | 0
+ drivers/media/platform/{ => mediatek}/mtk-vpu/Makefile  | 0
+ drivers/media/platform/{ => mediatek}/mtk-vpu/mtk_vpu.c | 0
+ drivers/media/platform/{ => mediatek}/mtk-vpu/mtk_vpu.h | 0
+ 8 files changed, 5 insertions(+), 5 deletions(-)
+ rename drivers/media/platform/{ => mediatek}/mtk-vpu/Kconfig (100%)
+ rename drivers/media/platform/{ => mediatek}/mtk-vpu/Makefile (100%)
+ rename drivers/media/platform/{ => mediatek}/mtk-vpu/mtk_vpu.c (100%)
+ rename drivers/media/platform/{ => mediatek}/mtk-vpu/mtk_vpu.h (100%)
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index bfe014870a77..58e0d42b1278 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -12139,7 +12139,7 @@ M:	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+ S:	Supported
+ F:	Documentation/devicetree/bindings/media/mediatek-mdp.txt
+ F:	drivers/media/platform/mediatek/mtk-mdp/
+-F:	drivers/media/platform/mtk-vpu/
++F:	drivers/media/platform/mediatek/mtk-vpu/
+ 
+ MEDIATEK MEDIA DRIVER
+ M:	Tiffany Lin <tiffany.lin@mediatek.com>
+@@ -12148,7 +12148,7 @@ S:	Supported
+ F:	Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+ F:	Documentation/devicetree/bindings/media/mediatek-vpu.txt
+ F:	drivers/media/platform/mediatek/mtk-vcodec/
+-F:	drivers/media/platform/mtk-vpu/
++F:	drivers/media/platform/mediatek/mtk-vpu/
+ 
+ MEDIATEK MMC/SD/SDIO DRIVER
+ M:	Chaotian Jing <chaotian.jing@mediatek.com>
 diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-index d3b7bef19237..f517aa951460 100644
+index 10055af0c7f8..a9ad0c3bd0cc 100644
 --- a/drivers/media/platform/Kconfig
 +++ b/drivers/media/platform/Kconfig
-@@ -48,6 +48,7 @@ source "drivers/media/platform/davinci/Kconfig"
- 
- source "drivers/media/platform/exynos-gsc/Kconfig"
- source "drivers/media/platform/meson/ge2d/Kconfig"
-+source "drivers/media/platform/mtk-jpeg/Kconfig"
+@@ -81,7 +81,7 @@ source "drivers/media/platform/marvell/Kconfig"
+ source "drivers/media/platform/mediatek/mtk-jpeg/Kconfig"
+ source "drivers/media/platform/mediatek/mtk-mdp/Kconfig"
+ source "drivers/media/platform/mediatek/mtk-vcodec/Kconfig"
+-source "drivers/media/platform/mtk-vpu/Kconfig"
++source "drivers/media/platform/mediatek/mtk-vpu/Kconfig"
+ source "drivers/media/platform/nxp/Kconfig"
  source "drivers/media/platform/omap/Kconfig"
+ source "drivers/media/platform/omap3isp/Kconfig"
+diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
+index 637a3a7ac036..954ad8f2cde1 100644
+--- a/drivers/media/platform/Makefile
++++ b/drivers/media/platform/Makefile
+@@ -21,7 +21,7 @@ obj-y += marvell/
+ obj-y += mediatek/mtk-jpeg/
+ obj-y += mediatek/mtk-mdp/
+ obj-y += mediatek/mtk-vcodec/
+-obj-y += mtk-vpu/
++obj-y += mediatek/mtk-vpu/
+ obj-y += nxp/
+ obj-y += omap/
+ obj-y += omap3isp/
+diff --git a/drivers/media/platform/mediatek/mtk-mdp/Makefile b/drivers/media/platform/mediatek/mtk-mdp/Makefile
+index 5982d65c9971..eab6f984aeea 100644
+--- a/drivers/media/platform/mediatek/mtk-mdp/Makefile
++++ b/drivers/media/platform/mediatek/mtk-mdp/Makefile
+@@ -7,4 +7,4 @@ mtk-mdp-y += mtk_mdp_vpu.o
  
- source "drivers/media/platform/aspeed/Kconfig"
-@@ -181,22 +182,6 @@ config VIDEO_TI_CAL_MC
+ obj-$(CONFIG_VIDEO_MEDIATEK_MDP) += mtk-mdp.o
  
- # Mem2mem drivers
- 
--config VIDEO_MEDIATEK_JPEG
--	tristate "Mediatek JPEG Codec driver"
--	depends on V4L_MEM2MEM_DRIVERS
--	depends on MTK_IOMMU_V1 || MTK_IOMMU || COMPILE_TEST
--	depends on VIDEO_DEV && VIDEO_V4L2
--	depends on ARCH_MEDIATEK || COMPILE_TEST
--	depends on MTK_SMI || (COMPILE_TEST && MTK_SMI=n)
--	select VIDEOBUF2_DMA_CONTIG
--	select V4L2_MEM2MEM_DEV
--	help
--	  Mediatek jpeg codec driver provides HW capability to decode
--	  JPEG format
--
--	  To compile this driver as a module, choose M here: the
--	  module will be called mtk-jpeg
--
- config VIDEO_MEDIATEK_VPU
- 	tristate "Mediatek Video Processor Unit"
- 	depends on V4L_MEM2MEM_DRIVERS
-diff --git a/drivers/media/platform/mtk-jpeg/Kconfig b/drivers/media/platform/mtk-jpeg/Kconfig
-new file mode 100644
-index 000000000000..72ed920b011a
---- /dev/null
-+++ b/drivers/media/platform/mtk-jpeg/Kconfig
-@@ -0,0 +1,16 @@
-+# SPDX-License-Identifier: GPL-2.0-only
-+config VIDEO_MEDIATEK_JPEG
-+	tristate "Mediatek JPEG Codec driver"
-+	depends on V4L_MEM2MEM_DRIVERS
-+	depends on MTK_IOMMU_V1 || MTK_IOMMU || COMPILE_TEST
-+	depends on VIDEO_DEV && VIDEO_V4L2
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on MTK_SMI || (COMPILE_TEST && MTK_SMI=n)
-+	select VIDEOBUF2_DMA_CONTIG
-+	select V4L2_MEM2MEM_DEV
-+	help
-+	  Mediatek jpeg codec driver provides HW capability to decode
-+	  JPEG format
-+
-+	  To compile this driver as a module, choose M here: the
-+	  module will be called mtk-jpeg
+-ccflags-y += -I$(srctree)/drivers/media/platform/mtk-vpu
++ccflags-y += -I$(srctree)/drivers/media/platform/mediatek/mtk-vpu
+diff --git a/drivers/media/platform/mtk-vpu/Kconfig b/drivers/media/platform/mediatek/mtk-vpu/Kconfig
+similarity index 100%
+rename from drivers/media/platform/mtk-vpu/Kconfig
+rename to drivers/media/platform/mediatek/mtk-vpu/Kconfig
+diff --git a/drivers/media/platform/mtk-vpu/Makefile b/drivers/media/platform/mediatek/mtk-vpu/Makefile
+similarity index 100%
+rename from drivers/media/platform/mtk-vpu/Makefile
+rename to drivers/media/platform/mediatek/mtk-vpu/Makefile
+diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mediatek/mtk-vpu/mtk_vpu.c
+similarity index 100%
+rename from drivers/media/platform/mtk-vpu/mtk_vpu.c
+rename to drivers/media/platform/mediatek/mtk-vpu/mtk_vpu.c
+diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.h b/drivers/media/platform/mediatek/mtk-vpu/mtk_vpu.h
+similarity index 100%
+rename from drivers/media/platform/mtk-vpu/mtk_vpu.h
+rename to drivers/media/platform/mediatek/mtk-vpu/mtk_vpu.h
 -- 
 2.35.1
 
