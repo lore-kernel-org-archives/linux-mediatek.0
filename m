@@ -4,69 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71978C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 05:18:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71399C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 06:10:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0dlfymtcPZAhsrDq2R7KO5sAa9HI+TkMZzDgHpzgLmE=; b=f9+4RaPIdEU3Dm
-	GcjU4lJ9jX916RopmHO9xIeguj/5HIGO+LqvAAy5kDuBBDaT4A1X3v2LVFlyBfMCnDxWp0pTYWN5d
-	9hDDAB34rrZYIlYn1PZVGPhezkIraVrpZdjRKFMQ6zNvkEDtCg0i2+yrvr/3QQCJlgg0JpxZ1wV76
-	XXWFH7Wx2c+h4ncQ4lh0EaN40c4CVYtRvqrSBgUKJUFgWX2H2eZxjaYGX/M32Uxb3r6PobASsn+1z
-	kWtP0xZtgQx2cmu92Cn1yR9Ab4S7Le3D4j3zn0XaZSPNvQyMflr4CUJp6ls1wyeQpErUy79dxuH7W
-	Yd2DfJPOEf5nncyymIQw==;
+	List-Owner; bh=W76BK02gbdAnVaNaqZ9xOc1nNgJxkG+Gpb3nnCNIZ6A=; b=1BLFnXLQRU7A3Q
+	izJPPs56dlMzGtpzDhNAn9ts1XqPsnzz2H8e53hBErY9CZSREzShCJxlGq04WjJprpKYjuO/wRWkg
+	NhHJDO8J2IiMNI82JkDtMWsw5eIotU7TuTIiGtBijmg2cmvNmBik+mHBFR242BbcOoHEQ6K5M1Fvb
+	yIrppFhZ3xmN64VSUdNSV5NwZU6YcgL8o0a9zNzlWgEcKwWBWqPTJIPWJZe/Rb4G6MtIj84GZ2UTT
+	X9WTIZa21YICA856XoLkeXvOAfp/n9ZPT78FKBw6Kukq0KCB1CtwddEvAilEM5/6DYUYLR6bpB0Bz
+	RrlYyujOj+iEI5qbz9ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTzZg-007lNO-DH; Tue, 15 Mar 2022 05:18:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nU0Ng-007uab-QK; Tue, 15 Mar 2022 06:10:04 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTzZd-007lMw-6M; Tue, 15 Mar 2022 05:18:22 +0000
-X-UUID: 4e09de9de5bd47dea386646220ef6345-20220314
-X-UUID: 4e09de9de5bd47dea386646220ef6345-20220314
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 187761291; Mon, 14 Mar 2022 22:18:18 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Mar 2022 22:08:16 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 15 Mar 2022 13:08:14 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 15 Mar 2022 13:08:14 +0800
-Message-ID: <9ef2d9d33430c146c010d017678b37c5960e1316.camel@mediatek.com>
-Subject: Re: [PATCH v15 20/22] drm/mediatek: add drm ovl_adaptor sub driver
- for MT8195
-From: CK Hu <ck.hu@mediatek.com>
-To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- <wim@linux-watchdog.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
-CC: <devicetree@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Yongqiang Niu
- <yongqiang.niu@mediatek.com>, <srv_heupstream@mediatek.com>, David Airlie
- <airlied@linux.ie>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- <singo.chang@mediatek.com>, <llvm@lists.linux.dev>, Nick Desaulniers
- <ndesaulniers@google.com>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, Nathan Chancellor <nathan@kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
-Date: Tue, 15 Mar 2022 13:08:14 +0800
-In-Reply-To: <20220311015506.11232-21-nancy.lin@mediatek.com>
-References: <20220311015506.11232-1-nancy.lin@mediatek.com>
- <20220311015506.11232-21-nancy.lin@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nU0Nf-007uZu-G7
+ for linux-mediatek@bombadil.infradead.org; Tue, 15 Mar 2022 06:10:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+ :MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=F+cbAGYnny0iSeDsc7twzJUA2Syx+pyIyz+9xYL+xBE=; b=TPFKAHmDGJuYksVthp73wlZMSN
+ Nii+SQy4CkInWuUt4iYCJXTjiW+2wlxlepfcCBB8bYy4qfa9DBY5ovthyM0lkbw5dNS24/M26BJMF
+ RLljkiRFNlR94afap8CN/1zvhVenYvePd9OZcirma0A15xawuIn6x7lFKdgiFoLDtczSr/n9ouveL
+ Y0PPuXw/Rjzqg3KzJTHZWgu/N34GWqmAe4s/zNLg1xWyI+q7qj7g+zewikM+ciNWNCuJHJBKhAPKO
+ h7cREMN6MMSY096pNMiw0swY3IA170FxoblmubuwVNcGC/P+FRaQnAWnl+khhnIWtYt4TGJQNAMIJ
+ rdozTOsw==;
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+ by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nTzLd-0016Vy-1x
+ for linux-mediatek@lists.infradead.org; Tue, 15 Mar 2022 05:03:56 +0000
+Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 22F3O8im008016; 
+ Tue, 15 Mar 2022 05:02:43 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=corp-2021-07-09;
+ bh=F+cbAGYnny0iSeDsc7twzJUA2Syx+pyIyz+9xYL+xBE=;
+ b=nLE45LPef2Fzx4rwPHxO9zpKsqEtIiWTbgmRqQ1qVHlzXCQZCeRMa1v2iwMrs8kePxKm
+ gVUKGAdAHvtD1zOTRy9LY1+u2pU8VgIF4l+P0YzhfQ3uL6rG6TExROKOc81sBEhsDd2B
+ VJu1GUeogkty7qGjOl/d9vIciwL2kcr0/hsDhAtv4D5XCBy+dskdbsnEC/W63oGf/CHN
+ 99/QtLKCJ8vc2ShmZ+w8yH1KgM8Bx5WiYr6uNk22GOJe15nP8yE9COJqZgvSeoS+qTE5
+ ZVdj04WClTGuNTQbJ/WidmWT/7WC93vboeKNQDgum6VlXcH1GEUVofmnXUd8TclPk03i bQ== 
+Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
+ by mx0b-00069f02.pphosted.com with ESMTP id 3et5s6j20g-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 15 Mar 2022 05:02:43 +0000
+Received: from pps.filterd
+ (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.16.1.2/8.16.1.2)
+ with SMTP id 22F51JJk004866; Tue, 15 Mar 2022 05:02:42 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com with ESMTP id
+ 3erhy25wv9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 15 Mar 2022 05:02:42 +0000
+Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 22F52cq7007094;
+ Tue, 15 Mar 2022 05:02:41 GMT
+Received: from ca-mkp.mkp.ca.oracle.com (ca-mkp.ca.oracle.com [10.156.108.201])
+ by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com with ESMTP id
+ 3erhy25wts-3; Tue, 15 Mar 2022 05:02:41 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: linux-scsi@vger.kernel.org, jejb@linux.ibm.com, peter.wang@mediatek.com,
+ avri.altman@wdc.com, alim.akhtar@samsung.com, stanley.chu@mediatek.com
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+ linux-mediatek@lists.infradead.org, chun-hung.wu@mediatek.com,
+ chaotian.jing@mediatek.com, beanhuo@micron.com,
+ wsd_upstream@mediatek.com, alice.chao@mediatek.com,
+ jiajie.hao@mediatek.com, powen.kao@mediatek.com, cc.chou@mediatek.com,
+ mikebi@micron.com, qilin.tan@mediatek.com, lin.gui@mediatek.com
+Subject: Re: [PATCH v1] scsi: ufs: scsi_get_lba error fix by check cmd opcode
+Date: Tue, 15 Mar 2022 01:02:33 -0400
+Message-Id: <164732052814.23186.8418060830463850785.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20220307111752.10465-1-peter.wang@mediatek.com>
+References: <20220307111752.10465-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+X-Proofpoint-GUID: CGHBTJI2hPrbY2UpGNc2X2W0cgtXK5GY
+X-Proofpoint-ORIG-GUID: CGHBTJI2hPrbY2UpGNc2X2W0cgtXK5GY
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_221821_257026_C059A426 
-X-CRM114-Status: GOOD (  30.24  )
+X-CRM114-CacheID: sfid-20220315_050353_740815_15059AB8 
+X-CRM114-Status: GOOD (  11.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,264 +110,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Nancy:
+On Mon, 7 Mar 2022 19:17:52 +0800, peter.wang@mediatek.com wrote:
 
-On Fri, 2022-03-11 at 09:55 +0800, Nancy.Lin wrote:
-> Add drm ovl_adaptor sub driver. Bring up ovl_adaptor sub driver if
-> the component exists in the path.
+> From: Peter Wang <peter.wang@mediatek.com>
 > 
-> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 18 ++++------
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 31 +++++++++++++---
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  1 +
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 40 ++++++++++++-------
-> --
->  4 files changed, 58 insertions(+), 32 deletions(-)
+> When ufs init without scmd->device->sector_size set,
+> scsi_get_lba will get a wrong shift number and ubsan error.
+> shift exponent 4294967286 is too large for 64-bit type
+> 'sector_t' (aka 'unsigned long long')
+> Call scsi_get_lba only when opcode is READ_10/WRITE_10/UNMAP.
 > 
-> 
+> [...]
 
-[snip]
+Applied to 5.18/scsi-queue, thanks!
 
-> +
->  static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] =
-> {
->  	[MTK_DISP_AAL] = "aal",
->  	[MTK_DISP_BLS] = "bls",
-> @@ -398,6 +411,7 @@ static const char * const
-> mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
->  	[MTK_DISP_OD] = "od",
->  	[MTK_DISP_OVL] = "ovl",
->  	[MTK_DISP_OVL_2L] = "ovl-2l",
-> +	[MTK_DISP_OVL_ADAPTOR] = "ovl_adaptor",
->  	[MTK_DISP_POSTMASK] = "postmask",
->  	[MTK_DISP_PWM] = "pwm",
->  	[MTK_DISP_RDMA] = "rdma",
-> @@ -443,6 +457,7 @@ static const struct mtk_ddp_comp_match
-> mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
->  	[DDP_COMPONENT_OVL_2L0]		= { MTK_DISP_OVL_2L,	0,
-> &ddp_ovl },
->  	[DDP_COMPONENT_OVL_2L1]		= { MTK_DISP_OVL_2L,	1,
-> &ddp_ovl },
->  	[DDP_COMPONENT_OVL_2L2]		= { MTK_DISP_OVL_2L,    2,
-> &ddp_ovl },
-> +	[DDP_COMPONENT_OVL_ADAPTOR]	= { MTK_DISP_OVL_ADAPTOR,	
-> 0, &ddp_ovl_adaptor },
+[1/1] scsi: ufs: scsi_get_lba error fix by check cmd opcode
+      https://git.kernel.org/mkp/scsi/c/2bd3b6b75946
 
-I'm not sure this indent is align to other line or not. If aligned or
-not aligned and modify other line to be aligned,
-
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
-
->  	[DDP_COMPONENT_POSTMASK0]	= { MTK_DISP_POSTMASK,	0,
-> &ddp_postmask },
->  	[DDP_COMPONENT_PWM0]		= { MTK_DISP_PWM,	0,
-> NULL },
->  	[DDP_COMPONENT_PWM1]		= { MTK_DISP_PWM,	1,
-> NULL },
-> @@ -548,12 +563,17 @@ int mtk_ddp_comp_init(struct device_node *node,
-> struct mtk_ddp_comp *comp,
->  
->  	comp->id = comp_id;
->  	comp->funcs = mtk_ddp_matches[comp_id].funcs;
-> -	comp_pdev = of_find_device_by_node(node);
-> -	if (!comp_pdev) {
-> -		DRM_INFO("Waiting for device %s\n", node->full_name);
-> -		return -EPROBE_DEFER;
-> +	/* Not all drm components have a DTS device node, such as
-> ovl_adaptor,
-> +	 * which is the drm bring up sub driver
-> +	 */
-> +	if (node) {
-> +		comp_pdev = of_find_device_by_node(node);
-> +		if (!comp_pdev) {
-> +			DRM_INFO("Waiting for device %s\n", node-
-> >full_name);
-> +			return -EPROBE_DEFER;
-> +		}
-> +		comp->dev = &comp_pdev->dev;
->  	}
-> -	comp->dev = &comp_pdev->dev;
->  
->  	/* Only DMA capable components need the LARB property */
->  	if (type == MTK_DISP_OVL ||
-> @@ -573,6 +593,7 @@ int mtk_ddp_comp_init(struct device_node *node,
-> struct mtk_ddp_comp *comp,
->  	    type == MTK_DISP_MERGE ||
->  	    type == MTK_DISP_OVL ||
->  	    type == MTK_DISP_OVL_2L ||
-> +	    type == MTK_DISP_OVL_ADAPTOR ||
->  	    type == MTK_DISP_PWM ||
->  	    type == MTK_DISP_RDMA ||
->  	    type == MTK_DPI ||
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> index 4f7fae41c916..1862eba41c45 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> @@ -30,6 +30,7 @@ enum mtk_ddp_comp_type {
->  	MTK_DISP_OD,
->  	MTK_DISP_OVL,
->  	MTK_DISP_OVL_2L,
-> +	MTK_DISP_OVL_ADAPTOR,
->  	MTK_DISP_POSTMASK,
->  	MTK_DISP_PWM,
->  	MTK_DISP_RDMA,
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index a05703843af2..99f37f8f6639 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -351,9 +351,7 @@ static int mtk_drm_kms_init(struct drm_device
-> *drm)
->  {
->  	struct mtk_drm_private *private = drm->dev_private;
->  	struct mtk_drm_private *priv_n;
-> -	struct platform_device *pdev;
-> -	struct device_node *np = NULL;
-> -	struct device *dma_dev;
-> +	struct device *dma_dev = NULL;
->  	int ret, i, j;
->  
->  	ret = drmm_mode_config_init(drm);
-> @@ -388,7 +386,6 @@ static int mtk_drm_kms_init(struct drm_device
-> *drm)
->  	 *    different drm private data structures. Loop through crtc
-> index to
->  	 *    create crtc from the main path and then ext_path and
-> finally the
->  	 *    third path.
-> -	 * 3. Use OVL device for all DMA memory allocations
->  	 */
->  	for (i = 0; i < MAX_CRTC; i++) {
->  		for (j = 0; j < private->data->mmsys_dev_num; j++) {
-> @@ -400,9 +397,6 @@ static int mtk_drm_kms_init(struct drm_device
-> *drm)
->  				if (ret)
->  					goto err_component_unbind;
->  
-> -				if (!np)
-> -					np = priv_n->comp_node[priv_n-
-> >data->main_path[0]];
-> -
->  				continue;
->  			} else if (i == 1 && priv_n->data->ext_len) {
->  				ret = mtk_drm_crtc_create(drm, priv_n-
-> >data->ext_path,
-> @@ -410,9 +404,6 @@ static int mtk_drm_kms_init(struct drm_device
-> *drm)
->  				if (ret)
->  					goto err_component_unbind;
->  
-> -				if (!np)
-> -					np = priv_n->comp_node[priv_n-
-> >data->ext_path[0]];
-> -
->  				continue;
->  			} else if (i == 2 && priv_n->data->third_len) {
->  				ret = mtk_drm_crtc_create(drm, priv_n-
-> >data->third_path,
-> @@ -420,22 +411,19 @@ static int mtk_drm_kms_init(struct drm_device
-> *drm)
->  				if (ret)
->  					goto err_component_unbind;
->  
-> -				if (!np)
-> -					np = priv_n->comp_node[priv_n-
-> >data->third_path[0]];
-> -
->  				continue;
->  			}
->  		}
->  	}
->  
-> -	pdev = of_find_device_by_node(np);
-> -	if (!pdev) {
-> +	/* Use OVL device for all DMA memory allocations */
-> +	dma_dev = mtk_drm_crtc_dma_dev_get(drm_crtc_from_index(drm,
-> 0));
-> +	if (!dma_dev) {
->  		ret = -ENODEV;
->  		dev_err(drm->dev, "Need at least one OVL device\n");
->  		goto err_component_unbind;
->  	}
->  
-> -	dma_dev = &pdev->dev;
->  	for (i = 0; i < private->data->mmsys_dev_num; i++)
->  		private->all_drm_private[i]->dma_dev = dma_dev;
->  
-> @@ -514,6 +502,11 @@ static int compare_of(struct device *dev, void
-> *data)
->  	return dev->of_node == data;
->  }
->  
-> +static int compare_dev(struct device *dev, void *data)
-> +{
-> +	return dev == (struct device *)data;
-> +}
-> +
->  static int mtk_drm_bind(struct device *dev)
->  {
->  	struct mtk_drm_private *private = dev_get_drvdata(dev);
-> @@ -702,6 +695,7 @@ static int mtk_drm_probe(struct platform_device
-> *pdev)
->  	struct mtk_drm_private *private;
->  	struct device_node *node;
->  	struct component_match *match = NULL;
-> +	struct platform_device *ovl_adaptor;
->  	int ret;
->  	int i;
->  
-> @@ -727,6 +721,18 @@ static int mtk_drm_probe(struct platform_device
-> *pdev)
->  		return -ENODEV;
->  	}
->  
-> +	/* Bringup ovl_adaptor */
-> +	if (mtk_drm_find_mmsys_comp(private,
-> DDP_COMPONENT_OVL_ADAPTOR)) {
-> +		ovl_adaptor = platform_device_register_data(dev,
-> "mediatek-disp-ovl-adaptor",
-> +							    PLATFORM_DE
-> VID_AUTO,
-> +							    (void
-> *)private->mmsys_dev,
-> +							    sizeof(*pri
-> vate->mmsys_dev));
-> +		private->ddp_comp[DDP_COMPONENT_OVL_ADAPTOR].dev =
-> &ovl_adaptor->dev;
-> +		mtk_ddp_comp_init(NULL, &private-
-> >ddp_comp[DDP_COMPONENT_OVL_ADAPTOR],
-> +				  DDP_COMPONENT_OVL_ADAPTOR);
-> +		component_match_add(dev, &match, compare_dev,
-> &ovl_adaptor->dev);
-> +	}
-> +
->  	/* Iterate over sibling DISP function blocks */
->  	for_each_child_of_node(phandle->parent, node) {
->  		const struct of_device_id *of_id;
-> @@ -780,6 +786,7 @@ static int mtk_drm_probe(struct platform_device
-> *pdev)
->  		    comp_type == MTK_DISP_MERGE ||
->  		    comp_type == MTK_DISP_OVL ||
->  		    comp_type == MTK_DISP_OVL_2L ||
-> +		    comp_type == MTK_DISP_OVL_ADAPTOR ||
->  		    comp_type == MTK_DISP_RDMA ||
->  		    comp_type == MTK_DPI ||
->  		    comp_type == MTK_DSI) {
-> @@ -882,6 +889,7 @@ static struct platform_driver * const
-> mtk_drm_drivers[] = {
->  	&mtk_disp_color_driver,
->  	&mtk_disp_gamma_driver,
->  	&mtk_disp_merge_driver,
-> +	&mtk_disp_ovl_adaptor_driver,
->  	&mtk_disp_ovl_driver,
->  	&mtk_disp_rdma_driver,
->  	&mtk_dpi_driver,
-
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
 _______________________________________________
 Linux-mediatek mailing list
