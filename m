@@ -4,57 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE527C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 03:34:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D201C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 04:21:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Yf29izVakFzTdWQ3IFo715cKfy34OefuLYQoDqlfWvc=; b=xnC2kgNpFeIOw7
-	+DcsjHOAWUAbFCM/bnHLDpxj9oTcPbR4cbKveaCacsXiE9F6v1GYo0sigA0gQfIKUlCS9U5rKjbx7
-	d/rEvxtm/cTz/0nLcyScY4ioKcIspGI9oBt3SOJKh2Bamb54beG/jasZJKzi9a9NLNUfcp/cDrsAf
-	926KsTWcH+9cGCHzSlU846DaVVasZ7/rlLWVHecscSOyYOgIoesHfME2zZ5VjnzdxfkmQ5oOwE9rv
-	LsdqekbSwWKguWgL+vXeLmMTCUhaIkWAU+I8M2SVaeyerqsJmyksMO8EVvRJLKwcRlRSS9oVbHdsK
-	zRHrF8getFuZyXcIhZGg==;
+	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
+	Message-Id:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+gPa0nwvmyXROQj70tlYH91LsTrIn8+UxP4ZHlm7p2Y=; b=4KZTFNEsKitXok
+	MDYv0fdtJrxOJUuNvUxW4E6IJHrNbs8TzILzSq8DxYyJUISEe6VjUDA21UA4TibHzWxB/i1FbsNRx
+	zwmLyHpJf8eZAj6aPbilzi+Pkc8HZn/e4Ptvu8lQ4JTnXWDNbLxlppInHz3TDWNZ2wkf5Af5FgOLa
+	0L1Tkr/XXMbU9ACrTuz3+tT2EnltB3MlDeRREXRJ8pxjg3JVmBOp9V1BMJ0rvmpuo/gdopyhg3M12
+	dfr+DhH68RVHswvyoYYp51jlMeBBgrX4sdrCC7yrT/2V4ri9pJw1Puc3TiRWUz3NNVbBamooHHuYb
+	6WuSgwwqTca935Nr3P4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTxx9-007euK-Gn; Tue, 15 Mar 2022 03:34:31 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nTygs-007hlQ-ML; Tue, 15 Mar 2022 04:21:46 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTxwx-007erO-QG; Tue, 15 Mar 2022 03:34:21 +0000
-X-UUID: 6740c70262ee4f8f9604039157bbf41d-20220314
-X-UUID: 6740c70262ee4f8f9604039157bbf41d-20220314
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <leilk.liu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1432720808; Mon, 14 Mar 2022 20:34:16 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Mar 2022 20:24:15 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Mar 2022 11:24:13 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 15 Mar 2022 11:24:13 +0800
-From: Leilk Liu <leilk.liu@mediatek.com>
-To: Mark Brown <broonie@kernel.org>
-CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH V4 0/6] spi: mediatek: add single/quad mode support
-Date: Tue, 15 Mar 2022 11:24:05 +0800
-Message-ID: <20220315032411.2826-1-leilk.liu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-MIME-Version: 1.0
-X-MTK: N
+ id 1nTygg-007hj7-6l; Tue, 15 Mar 2022 04:21:35 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id CF877B80FAC;
+ Tue, 15 Mar 2022 04:21:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4DFCC340E8;
+ Tue, 15 Mar 2022 04:21:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
+ s=korg; t=1647318088;
+ bh=92N7wiO5DH6MIG7OI/keYmonozvVE63Ota9hoIR7/bo=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=a3nmDbj9hIT5BHXOrUkOgHJYejfbiyt36AMauCj+660L/ij+0r8qn3+t7ZeUru05p
+ WmdLq6/EgFi+wTmQStXFtofJdKqaaEwD4lQAg9BIftk1nxnhH5IwKLeX47t6SzeBmJ
+ moVvwt94fdpD5H2p6mEK36/n8WHJ+mkJBLKt07w8=
+Date: Mon, 14 Mar 2022 21:21:27 -0700
+From: Andrew Morton <akpm@linux-foundation.org>
+To: Andrew Yang <andrew.yang@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Matthew Wilcox
+ <willy@infradead.org>, "Vlastimil Babka" <vbabka@suse.cz>, David Howells
+ <dhowells@redhat.com>, "William Kucharski" <william.kucharski@oracle.com>,
+ David Hildenbrand <david@redhat.com>, Yang Shi <shy828301@gmail.com>, Marc
+ Zyngier <maz@kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mm@kvack.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>, Nicholas
+ Tang <nicholas.tang@mediatek.com>, Kuan-Ying Lee
+ <Kuan-Ying.Lee@mediatek.com>
+Subject: Re: [PATCH] mm/migrate: fix race between lock page and clear
+ PG_Isolated
+Message-Id: <20220314212127.a2797926ee0ef8a7ad05dcaa@linux-foundation.org>
+In-Reply-To: <20220315030515.20263-1-andrew.yang@mediatek.com>
+References: <20220315030515.20263-1-andrew.yang@mediatek.com>
+X-Mailer: Sylpheed 3.7.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
+Mime-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_203419_867403_18F9276D 
-X-CRM114-Status: UNSURE (   8.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220314_212134_435092_1F03A60F 
+X-CRM114-Status: GOOD (  16.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,38 +76,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series of patches are based on spi for-next, and provide 6 patches to support MT7986.
+On Tue, 15 Mar 2022 11:05:15 +0800 Andrew Yang <andrew.yang@mediatek.com> wrote:
 
-v4:
- 1. fix Rob comment in v3;
- 2. use "mediatek,mt7986-spi-ipm","mediatek,spi-ipm"
+> When memory is tight, system may start to compact memory for large
+> continuous memory demands. If one process tries to lock a memory page
+> that is being locked and isolated for compaction, it may wait a long time
+> or even forever. This is because compaction will perform non-atomic
+> PG_Isolated clear while holding page lock, this may overwrite PG_waiters
+> set by the process that can't obtain the page lock and add itself to the
+> waiting queue to wait for the lock to be unlocked.
+> 
+> CPU1                            CPU2
+> lock_page(page); (successful)
+>                                 lock_page(); (failed)
+> __ClearPageIsolated(page);      SetPageWaiters(page) (may be overwritten)
+> unlock_page(page);
+> 
+> The solution is to not perform non-atomic operation on page flags while
+> holding page lock.
 
-v3:
- 1. add Rob Acked-by in "dt-bindings: spi: Add compatible for MT7986 with single mode";
- 2. add a fix patch "spi: mediatek: support tick_delay without enhance_timing";
- 3. fix Angelogioacchino comments;
- 4. use mt7986 instead of ipm in dt-binding.
+Sure, the non-atomic bitop optimization is really risky and I suspect
+we reach for it too often.  Or at least without really clearly
+demonstrating that it is safe, and documenting our assumptions.
 
-v2:
- 1. rebase this series on spi for-next.
- 2. fix Rob and Krzysztof comments in v1.
-
-Leilk Liu (6):
-  spi: mediatek: support tick_delay without enhance_timing
-  dt-bindings: spi: Add compatible for MT7986
-  spi: mediatek: add ipm design support for MT7986
-  spi: mediatek: add spi memory support for ipm design
-  dt-bindings: spi: support hclk
-  spi: mediatek: support hclk
-
- .../bindings/spi/mediatek,spi-mt65xx.yaml     |   8 +
- drivers/spi/spi-mt65xx.c                      | 543 +++++++++++++++++-
- 2 files changed, 520 insertions(+), 31 deletions(-)
-
---
-2.25.1
-
-
+I'm thinking this one should be backported, so I'll queue it for
+5.18-rc1, with a cc:stable so it gets trickled back.
 
 _______________________________________________
 Linux-mediatek mailing list
