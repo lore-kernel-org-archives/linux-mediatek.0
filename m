@@ -4,82 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08A48C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 15:18:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 056B6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 15:45:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=48EI315MQOjCOThcHKEmc9DntDAARZUe5UjxDuZ02nQ=; b=yyVopAiBL92NZW
-	rrGA1C2nLzcmtvxJKbEUeJryedtQKY9MflPTiIqOoHAuzlGf7yu4nLft8fK1KW45gWbj4VjRfBdNF
-	DqBrBMt4tm/+MtlQ+7BI+AbTnGYxYrwAPpe1X2LTxBt2EqD9tt38mTOJafMrfETxMDF1oJ2GqZr3J
-	5u8DNe9ZgI8xVj8k8WgP5NEscQ88rsLBcKtdkxFLGk+yEc0QEpRuXPuJ7+z2xqA9ZgSjE7q7g2b8y
-	oYKJyNcW1ACHc48c50YtlDeMp8XMfXY7lFD5nr0R1ogDJJSpMJhwZ3y/FWl5pHSx60RkhDp1reo3n
-	qEr53GtltM4h7EZk3J3g==;
+	List-Owner; bh=l3D+V2ml7aooRJMMxRXIalmOpLBqlxfAxyi784312nk=; b=iJ+102wzDX5kGo
+	KK74nIQZ14HxRhEpo+vmB/BK5YESvCjta3pQ8fXlNq5HVKxNGuSYT0CuJpidtpjeDgp7gY7DdCKna
+	U/+mEDfEH1T1UXRh0U5cVK4Ai+Fz83gasdxRjz+b5iGgNPioobr6r+U7F5Nz5USYiJ+j7zNJ1YuOA
+	mK2az7ArIqP8QvBkPRauLc6yPYLXDvc9wcq/W146fpL3d+xUx0vJgwJFL4HHIVygiU3DktpQ1EJCq
+	WuWWQKD/sFkEoiLWne7mi4xAxuW9AJHBP4WdLHjcwkF1rsNe0Hf2eOX4x1ivBFwk1bJL5k/T9xsxm
+	qcp1Z98IZECHYVQCbB+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nU8vz-009h8l-2g; Tue, 15 Mar 2022 15:18:03 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1nU9MP-009ljo-7q; Tue, 15 Mar 2022 15:45:21 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nU8v9-009gwZ-UZ; Tue, 15 Mar 2022 15:17:13 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id r7so904004wmq.2;
- Tue, 15 Mar 2022 08:17:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:content-language:to:cc
- :references:from:subject:in-reply-to:content-transfer-encoding;
- bh=C9xGFdivsssXWQwIpTJgkBRJXk+js/43FamWLZ8jXQM=;
- b=LifupL2qn79wRXct5I3MyJs8xKpHeVvtJjPYO6rBp0cJiBmLByOnlphZcUEWJWJRF5
- s+wbQ8KPQxWZXMEOYzpGlSqUyZYVEVR5rjZBQLUvAPRiYJntAwSm/0/c3deh6bAwNioV
- AdFpn/Z0am6nPBdX+L6yzReMzHQtQlE81iwJBqNJ39Gpkh9QZLe72IrovpolSvl8iuO7
- zxeV6TaqDS9JPIy6ZeTCjn6RshQSoBDbGy/EiMPOJ7p1rixhPrr+a6c3bWOXuU1I3OaZ
- UQ4OzFH/f2j9Wf0poYTucMeK5hCeh4WmKtGKWvfs3bV5DgwvsBXI3EobRcSPTefIWcJ8
- 5FIA==
+ id 1nU9MM-009li9-JA
+ for linux-mediatek@lists.infradead.org; Tue, 15 Mar 2022 15:45:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1647359117;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=bYl1LSBqhgpJOo7T6+g24bgPe/Xpp9f9wR/UlrFgmkY=;
+ b=bEimwjB7kvETAn4XMfFwiJe0hZNoakIphJPVkHcRW+9p6sUdJncxyQff4sa0HOi1T4nrH2
+ ub9OJ/UdwYfYqFd/fGhZaHFoqg5i0GOM3+lMZ05Ls5/UrQM10rc5bqJQR/qBgCAVv/M0g9
+ DeQKoAqTaRzFZFVSFjY+OR+PDUA31yY=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-509-p9pASEfwOieVX2ibIVMrlA-1; Tue, 15 Mar 2022 11:45:16 -0400
+X-MC-Unique: p9pASEfwOieVX2ibIVMrlA-1
+Received: by mail-wr1-f71.google.com with SMTP id
+ h11-20020a5d430b000000b001f01a35a86fso5413798wrq.4
+ for <linux-mediatek@lists.infradead.org>; Tue, 15 Mar 2022 08:45:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent
- :content-language:to:cc:references:from:subject:in-reply-to
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:organization:in-reply-to
  :content-transfer-encoding;
- bh=C9xGFdivsssXWQwIpTJgkBRJXk+js/43FamWLZ8jXQM=;
- b=Hlj5j+gPVWBKvLP1aHCTRDlsx0fc5bxuDXupPWDq/ai7dTIwD2EYewu4eC4oI4BeKh
- D37pVEwiIT0zKeSXDGiV6vQxwGzpb+VqhoS8LIwiOXHfcMvZ8LEO0cJ6S/+GZdidNJ75
- cFfb9JjjjNZhg/aHfqiOrnLaRuRwVQGAKwTEVuuIq6cTTsVFWAAdN62rOT+cv9bbKhui
- zY0VfsS4l2T8m8f+acWOd1993zuwC/qgjN2D9WQ8T4pnyFEMVAjMx6sJng1a71Z8QoZA
- aVq2kj2RhYNBg1STm/KTkr1mXqxoedz4bIjOlhT1J+lLdRTeQX/95/M08HEq7qjZSc7y
- v3uw==
-X-Gm-Message-State: AOAM5336ja7oEz3x7MtJOOAqWRqO0ioxKz6Tnx1LzZe1zNWTdob+4Cr8
- O0gVSLkRB0oMgE7l/sov8F4=
-X-Google-Smtp-Source: ABdhPJx7A44+7ld24ZRFIERu7tDwMi3RwuzTJV4KmbfR3MRWP4ExQXr0lKKFoU2RLYk6CuOwhNdWIg==
-X-Received: by 2002:a05:600c:3b13:b0:389:cf43:eaf5 with SMTP id
- m19-20020a05600c3b1300b00389cf43eaf5mr3722567wms.198.1647357425651; 
- Tue, 15 Mar 2022 08:17:05 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
+ bh=bYl1LSBqhgpJOo7T6+g24bgPe/Xpp9f9wR/UlrFgmkY=;
+ b=qqj8BMmReGanitTi0ddEGskBG9WM0Hvfqka7hGKMcovkSZZ5n2b7DhTZQSyooWv4to
+ 0sHjqM3rFxyIgqf+q03qym3wIbySJxkmLqW+EaUE72Yl/5S8XOq63S9JgCjgEX92OZii
+ r6IdEYAhBoqDFmXP/p+H1Y2RbyKR9LL8lOVskA1+o6IP0bnC577rCoTDmGnTv2o5kHnp
+ IuFnlgHxIFf7PYb/wL65OaJng0VarQScXl2SFVMKZHrtQe9X8rMYX4ResdqVy9CKK5gm
+ L4PcMaUIF+tKxxyTAqpa1OhSlvNDFBIDwYhTO0pFWq4a7MLOlYBKfPAv4EmxccAELOrp
+ c+yQ==
+X-Gm-Message-State: AOAM530TnBuS4s8sebTHwI5iQHG7i55rtz9ogEaHqHgmH8pq+2GunGY5
+ K1SiElK2F8Dr1GMBbQexEy2CvWPb5bJTDWlEFBp9oWJCuiVzLO+sFxQouZgxbMwh+0j3WtA5MBe
+ imCJv9XaEsrWkTW3bWsX/eqESYwEs1yHF
+X-Received: by 2002:a5d:5887:0:b0:1f1:eb44:724e with SMTP id
+ n7-20020a5d5887000000b001f1eb44724emr21315051wrf.44.1647359114936; 
+ Tue, 15 Mar 2022 08:45:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzPoEJ1GBznl0gSlJSA8PP9PMIE7udTKKIyZAmfT4CMnFBi93qUV9w8thhZ2jRKEb3NPxfnVA==
+X-Received: by 2002:a5d:5887:0:b0:1f1:eb44:724e with SMTP id
+ n7-20020a5d5887000000b001f1eb44724emr21315036wrf.44.1647359114709; 
+ Tue, 15 Mar 2022 08:45:14 -0700 (PDT)
+Received: from ?IPV6:2003:cb:c708:1800:42bd:3cac:d22a:3c62?
+ (p200300cbc708180042bd3cacd22a3c62.dip0.t-ipconnect.de.
+ [2003:cb:c708:1800:42bd:3cac:d22a:3c62])
  by smtp.gmail.com with ESMTPSA id
- v5-20020adfe4c5000000b001edc1e5053esm15713875wrm.82.2022.03.15.08.17.04
+ r4-20020a1c2b04000000b0038a0e15ee13sm2637525wmr.8.2022.03.15.08.45.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 15 Mar 2022 08:17:04 -0700 (PDT)
-Message-ID: <e56bd5ed-ecaa-2fe1-c03e-f7f7456d7761@gmail.com>
-Date: Tue, 15 Mar 2022 16:17:03 +0100
+ Tue, 15 Mar 2022 08:45:14 -0700 (PDT)
+Message-ID: <4cb789a5-c49c-f095-1f7e-67be65ba508a@redhat.com>
+Date: Tue, 15 Mar 2022 16:45:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
+ Thunderbird/91.6.2
+Subject: Re: [PATCH] mm/migrate: fix race between lock page and clear
+ PG_Isolated
+To: Andrew Morton <akpm@linux-foundation.org>,
+ Andrew Yang <andrew.yang@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Matthew Wilcox <willy@infradead.org>, Vlastimil Babka <vbabka@suse.cz>,
+ David Howells <dhowells@redhat.com>,
+ William Kucharski <william.kucharski@oracle.com>,
+ Yang Shi <shy828301@gmail.com>, Marc Zyngier <maz@kernel.org>,
+ linux-kernel@vger.kernel.org, linux-mm@kvack.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ wsd_upstream@mediatek.com, Nicholas Tang <nicholas.tang@mediatek.com>,
+ Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+References: <20220315030515.20263-1-andrew.yang@mediatek.com>
+ <20220314212127.a2797926ee0ef8a7ad05dcaa@linux-foundation.org>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat
+In-Reply-To: <20220314212127.a2797926ee0ef8a7ad05dcaa@linux-foundation.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Tinghan Shen <tinghan.shen@mediatek.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>
-Cc: linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220314111806.28168-1-tinghan.shen@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v3] remoteproc: mediatek: fix side effect of mt8195 sram
- power on
-In-Reply-To: <20220314111806.28168-1-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_081712_056281_78B44C9A 
-X-CRM114-Status: GOOD (  28.29  )
+X-CRM114-CacheID: sfid-20220315_084518_773305_EEA172B5 
+X-CRM114-Status: GOOD (  14.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,174 +114,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 15.03.22 05:21, Andrew Morton wrote:
+> On Tue, 15 Mar 2022 11:05:15 +0800 Andrew Yang <andrew.yang@mediatek.com> wrote:
+> 
+>> When memory is tight, system may start to compact memory for large
+>> continuous memory demands. If one process tries to lock a memory page
+>> that is being locked and isolated for compaction, it may wait a long time
+>> or even forever. This is because compaction will perform non-atomic
+>> PG_Isolated clear while holding page lock, this may overwrite PG_waiters
+>> set by the process that can't obtain the page lock and add itself to the
+>> waiting queue to wait for the lock to be unlocked.
+>>
+>> CPU1                            CPU2
+>> lock_page(page); (successful)
+>>                                 lock_page(); (failed)
+>> __ClearPageIsolated(page);      SetPageWaiters(page) (may be overwritten)
+>> unlock_page(page);
+>>
+>> The solution is to not perform non-atomic operation on page flags while
+>> holding page lock.
+> 
+> Sure, the non-atomic bitop optimization is really risky and I suspect
+> we reach for it too often.  Or at least without really clearly
+> demonstrating that it is safe, and documenting our assumptions.
 
+I agree. IIRC, non-atomic variants are mostly only safe while the
+refcount is 0. Everything else is just absolutely fragile.
 
-On 14/03/2022 12:18, Tinghan Shen wrote:
-> The definition of L1TCM_SRAM_PDN bits on mt8195 is different to mt8192.
-> 
-> L1TCM_SRAM_PDN bits[3:0] control the power of mt8195 L1TCM SRAM.
-> 
-> L1TCM_SRAM_PDN bits[7:4] control the access path to EMI for SCP.
-> These bits have to be powered on to allow EMI access for SCP.
-> 
-> Bits[7:4] also affect audio DSP because audio DSP and SCP are
-> placed on the same hardware bus. If SCP cannot access EMI, audio DSP is
-> blocked too.
-> 
-> L1TCM_SRAM_PDN bits[31:8] are not used.
-> 
-> This fix removes modification of bits[7:4] when power on/off mt8195 SCP
-> L1TCM. It's because the modification introduces a short period of time
-> blocking audio DSP to access EMI. This was not a problem until we have
-> to load both SCP module and audio DSP module. audio DSP needs to access
-> EMI because it has source/data on DRAM. Audio DSP will have unexpected
-> behavior when it accesses EMI and the SCP driver blocks the EMI path at
-> the same time.
-> 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+-- 
+Thanks,
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+David / dhildenb
 
-> ---
-> v3: fix build error
-> v2: apply comments about macro definition and function calls
-> ---
->   drivers/remoteproc/mtk_common.h |  2 +
->   drivers/remoteproc/mtk_scp.c    | 67 +++++++++++++++++++++++++--------
->   2 files changed, 53 insertions(+), 16 deletions(-)
-> 
-> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-> index 5ff3867c72f3..ff954a06637c 100644
-> --- a/drivers/remoteproc/mtk_common.h
-> +++ b/drivers/remoteproc/mtk_common.h
-> @@ -51,6 +51,8 @@
->   #define MT8192_CORE0_WDT_IRQ		0x10030
->   #define MT8192_CORE0_WDT_CFG		0x10034
->   
-> +#define MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS		GENMASK(7, 4)
-> +
->   #define SCP_FW_VER_LEN			32
->   #define SCP_SHARE_BUFFER_SIZE		288
->   
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index dcddb33e9997..d498f6354cd0 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -365,22 +365,22 @@ static int mt8183_scp_before_load(struct mtk_scp *scp)
->   	return 0;
->   }
->   
-> -static void mt8192_power_on_sram(void __iomem *addr)
-> +static void scp_sram_power_on(void __iomem *addr, u32 reserved_mask)
->   {
->   	int i;
->   
->   	for (i = 31; i >= 0; i--)
-> -		writel(GENMASK(i, 0), addr);
-> +		writel(GENMASK(i, 0) & ~reserved_mask, addr);
->   	writel(0, addr);
->   }
->   
-> -static void mt8192_power_off_sram(void __iomem *addr)
-> +static void scp_sram_power_off(void __iomem *addr, u32 reserved_mask)
->   {
->   	int i;
->   
->   	writel(0, addr);
->   	for (i = 0; i < 32; i++)
-> -		writel(GENMASK(i, 0), addr);
-> +		writel(GENMASK(i, 0) & ~reserved_mask, addr);
->   }
->   
->   static int mt8192_scp_before_load(struct mtk_scp *scp)
-> @@ -391,11 +391,32 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
->   	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
->   
->   	/* enable SRAM clock */
-> -	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_0);
-> -	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_1);
-> -	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_2);
-> -	mt8192_power_on_sram(scp->reg_base + MT8192_L1TCM_SRAM_PDN);
-> -	mt8192_power_on_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
-> +
-> +	/* enable MPU for all memory regions */
-> +	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
-> +
-> +	return 0;
-> +}
-> +
-> +static int mt8195_scp_before_load(struct mtk_scp *scp)
-> +{
-> +	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
-> +	writel(0xff, scp->reg_base + MT8192_SCP2SPM_IPC_CLR);
-> +
-> +	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
-> +
-> +	/* enable SRAM clock */
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
-> +			  MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
-> +	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
->   
->   	/* enable MPU for all memory regions */
->   	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
-> @@ -551,11 +572,25 @@ static void mt8183_scp_stop(struct mtk_scp *scp)
->   static void mt8192_scp_stop(struct mtk_scp *scp)
->   {
->   	/* Disable SRAM clock */
-> -	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_0);
-> -	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_1);
-> -	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_2);
-> -	mt8192_power_off_sram(scp->reg_base + MT8192_L1TCM_SRAM_PDN);
-> -	mt8192_power_off_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
-> +
-> +	/* Disable SCP watchdog */
-> +	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
-> +}
-> +
-> +static void mt8195_scp_stop(struct mtk_scp *scp)
-> +{
-> +	/* Disable SRAM clock */
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
-> +			   MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
-> +	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
->   
->   	/* Disable SCP watchdog */
->   	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
-> @@ -888,11 +923,11 @@ static const struct mtk_scp_of_data mt8192_of_data = {
->   
->   static const struct mtk_scp_of_data mt8195_of_data = {
->   	.scp_clk_get = mt8195_scp_clk_get,
-> -	.scp_before_load = mt8192_scp_before_load,
-> +	.scp_before_load = mt8195_scp_before_load,
->   	.scp_irq_handler = mt8192_scp_irq_handler,
->   	.scp_reset_assert = mt8192_scp_reset_assert,
->   	.scp_reset_deassert = mt8192_scp_reset_deassert,
-> -	.scp_stop = mt8192_scp_stop,
-> +	.scp_stop = mt8195_scp_stop,
->   	.scp_da_to_va = mt8192_scp_da_to_va,
->   	.host_to_scp_reg = MT8192_GIPC_IN_SET,
->   	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
 
 _______________________________________________
 Linux-mediatek mailing list
