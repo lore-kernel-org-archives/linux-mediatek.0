@@ -4,80 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2A04C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 16:34:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8894C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 17:44:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JaMdu3TrVFYn7ZSvFucplretVqOGhDAiYNfhVfCCbpo=; b=bSMiHPyr04x0lj
-	uRC5svn4pc60+8roxqng2pXrKRDEsQKdFUogm0jAaROxnTtU8bStO1Btyi4ngCm8wqJVyTinGVDvE
-	/LmrunwXEDl/imBPsQL6t53ZMUeZBu/TZLIOc7d81D5nMjm349gJn4rpDpleiNMNX1sp4o5GsOVCM
-	RBOTvCkW/NtCcU7caD9Bc22faV8hrNqMM6NRxkVWjWn/3qB3wwz3OSo1Ur19VxlFeX+2e/6zEc6bN
-	1dulQcv8RSvjvabegOx0/5RNpgO191pkY24cGHaOZhff7+J/Io1jyIdDK+2+hAK3o58NDQ92bl7Jk
-	JiLU1yGl+gitGPxULXMQ==;
+	List-Owner; bh=UyWz86ccLJGvBcGkmCW7b9Rwsm7jIgNO/h+BdRpJsvc=; b=0wFfLcb+ufmxky
+	A7eEyFudlE0+hXbwyJ+qXEbJcJVWNuQTiLaPwGea/6csnC5SRolEoyF5ousxAO6iadCcDaeRabJ5e
+	TNYsIkipq33AxpCPtvP9Cb/BCJg9dApSISFoi1iMz5qtIPVHpSd2rF+3C/4WPT6z7dNgapoXc+OTT
+	vxBPtz2G6QQiqRlQGklVcqLyLfdPJ17uKxa9OPWpJ8kRxXRcrhzqN5M76oIblOHULZVxriMsD5eBj
+	Q94i/i74p4UT+4YYRa7hEcxN0Nw7uy+e3yX60HgCVOz7Bd/zetcK48Pm9rqRQ8yCF2gHLkPKT6+8E
+	nAItNXsBITmW+MVQMlcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUA7u-009tVz-8j; Tue, 15 Mar 2022 16:34:26 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1nUBD6-00A65W-TP; Tue, 15 Mar 2022 17:43:52 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUA7r-009tVW-Bz; Tue, 15 Mar 2022 16:34:25 +0000
-Received: by mail-wr1-x435.google.com with SMTP id t11so29854116wrm.5;
- Tue, 15 Mar 2022 09:34:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=tyUnuXIDfilf67oqdDzi7HyRYDor5UNbV5JcMlFjM9Y=;
- b=XpNS+OXKY0dknfWFfc40jBwuVKUvfnGKAqQFkSxlUFKYvWgjc4rfXLs8OQg3iEmuWK
- S9iCy3wdXkD+T/zpclR/eYEDalGrdw+ohSRT5+0XRSlOi7qLjJYagj2dCcUKXxBe4t6a
- I9VKbXJ2Zb0YWETulir4L0gljF6xjvrW5eRVZzbd1iWV2Xq9RW+dIKkMH4aq1idL8jxA
- dVT5rYkYy5q7eiSFA08eGzCTtCdS7shfenLy0cInyd1mzmIoCSGP9J5KTzwXWt6NKW2n
- U5A+qesjL2nXt3p2lJWJzRhoGKvSCdOFyphuJO4NQHTVR92P7dwR8dQ6zBcUa0Lp63Au
- W/1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=tyUnuXIDfilf67oqdDzi7HyRYDor5UNbV5JcMlFjM9Y=;
- b=XGYdvDs9AwH/acjsu72t0NC9/c7BEJd/3L1Zx53wmkZVbRt1RfK0kWNpbhrjPylbnW
- Di8bwKVOpsODfEg65erUg1pjiXUZyj1Uz4h1jvp/O25qFuTsUMFE/FHFP6iSfPDMkhu/
- Vc5tMUPgvdRoCx9ZO87AsJy3edvUPGrFuOXEJypeV6RJRzEenIqvOB3t/h2h5Qa195wK
- Rtcqsw9BZq9+sRpcnF0ueOdMji0jAq2vd2UcHhbNON5WSpNB/tYj9zknwSdwMYEibeGL
- ej70wS5KuXaaGJ0R+TC6dGfgKOw6rKzdpllzixMd0ENfO8z7OGyrgi6cEs+1SvwmKxWg
- iA2Q==
-X-Gm-Message-State: AOAM532+w7ExdeYgWx67ctTqKb/nv1HWthulOuUJT4whug/Hd6sAQGOD
- Yfho9UaVo/ju4GwUqndTZE1AcCfu5YP6fQ==
-X-Google-Smtp-Source: ABdhPJw3y6LK2ci5/PRTL2tmbjIWEOtt2zXlZ36eZDUGb7j30QgeQ5PZ2RowTNYsXrBLtQ91ef3FKQ==
-X-Received: by 2002:a5d:5987:0:b0:203:a4a6:c496 with SMTP id
- n7-20020a5d5987000000b00203a4a6c496mr12168651wri.205.1647362061583; 
- Tue, 15 Mar 2022 09:34:21 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
- by smtp.gmail.com with ESMTPSA id
- f12-20020a5d64cc000000b00203da79ca2fsm825522wri.97.2022.03.15.09.34.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 15 Mar 2022 09:34:20 -0700 (PDT)
-Message-ID: <5ef446ee-f7b4-e8df-93fc-fc7ec9cd816a@gmail.com>
-Date: Tue, 15 Mar 2022 17:34:19 +0100
+ id 1nUBCx-00A645-1s; Tue, 15 Mar 2022 17:43:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=9pix+9SYxTuRDwLng5y7yIMLfweBib50HhucdHeBtV8=; b=NYpXmo/lC67e8NGFr3lxnBFGQe
+ tK0dLkVgTBREiEfAfL+cAgHJtIl5GII0YxxNuYEhUHAvNtImmJua7o/d+Dx6HUm/dY4V7bTXoGZUV
+ 0UhgMdosi7uwS09pKtcXS6wUFJ9SOVo9Jo0Dpha0BpKNs+aLxMrj2RkjXU5/dvfCCYBT0RyPtDoai
+ mZ+bTYpTO6NLiVROTByF86Dhj5C2yGhCmJR6zODjFdnte6s9cb6UgZhSFzH+hTCpmsgHxwQ3PsWww
+ be4XeaPDganE7k6QcOsapL20PPH0RgjLh1JGLrP6SmRrs0DDcVjtT1frS9iY7spPsx/eE1QNzVrYo
+ FXjZqNnA==;
+Received: from willy by casper.infradead.org with local (Exim 4.94.2 #2 (Red
+ Hat Linux)) id 1nUBCn-005FAg-4i; Tue, 15 Mar 2022 17:43:33 +0000
+Date: Tue, 15 Mar 2022 17:43:33 +0000
+From: Matthew Wilcox <willy@infradead.org>
+To: David Hildenbrand <david@redhat.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>,
+ Andrew Yang <andrew.yang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Vlastimil Babka <vbabka@suse.cz>, David Howells <dhowells@redhat.com>,
+ William Kucharski <william.kucharski@oracle.com>,
+ Yang Shi <shy828301@gmail.com>, Marc Zyngier <maz@kernel.org>,
+ linux-kernel@vger.kernel.org, linux-mm@kvack.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com,
+ Nicholas Tang <nicholas.tang@mediatek.com>,
+ Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+Subject: Re: [PATCH] mm/migrate: fix race between lock page and clear
+ PG_Isolated
+Message-ID: <YjDQRdShE6syVSnM@casper.infradead.org>
+References: <20220315030515.20263-1-andrew.yang@mediatek.com>
+ <20220314212127.a2797926ee0ef8a7ad05dcaa@linux-foundation.org>
+ <4cb789a5-c49c-f095-1f7e-67be65ba508a@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v10 2/6] clk: en7523: Add clock driver for Airoha EN7523
- SoC
-Content-Language: en-US
-To: Felix Fietkau <nbd@nbd.name>, soc@kernel.org,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
-References: <20220314084409.84394-1-nbd@nbd.name>
- <20220314084409.84394-3-nbd@nbd.name>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220314084409.84394-3-nbd@nbd.name>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_093423_485025_1DE99D71 
-X-CRM114-Status: GOOD (  32.44  )
+Content-Disposition: inline
+In-Reply-To: <4cb789a5-c49c-f095-1f7e-67be65ba508a@redhat.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,418 +70,79 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 14/03/2022 09:44, Felix Fietkau wrote:
-> This driver only registers fixed rate clocks, since the clocks are fully
-> initialized by the boot loader and should not be changed later, according
-> to Airoha.
+On Tue, Mar 15, 2022 at 04:45:13PM +0100, David Hildenbrand wrote:
+> On 15.03.22 05:21, Andrew Morton wrote:
+> > On Tue, 15 Mar 2022 11:05:15 +0800 Andrew Yang <andrew.yang@mediatek.com> wrote:
+> > 
+> >> When memory is tight, system may start to compact memory for large
+> >> continuous memory demands. If one process tries to lock a memory page
+> >> that is being locked and isolated for compaction, it may wait a long time
+> >> or even forever. This is because compaction will perform non-atomic
+> >> PG_Isolated clear while holding page lock, this may overwrite PG_waiters
+> >> set by the process that can't obtain the page lock and add itself to the
+> >> waiting queue to wait for the lock to be unlocked.
+> >>
+> >> CPU1                            CPU2
+> >> lock_page(page); (successful)
+> >>                                 lock_page(); (failed)
+> >> __ClearPageIsolated(page);      SetPageWaiters(page) (may be overwritten)
+> >> unlock_page(page);
+> >>
+> >> The solution is to not perform non-atomic operation on page flags while
+> >> holding page lock.
+> > 
+> > Sure, the non-atomic bitop optimization is really risky and I suspect
+> > we reach for it too often.  Or at least without really clearly
+> > demonstrating that it is safe, and documenting our assumptions.
 > 
-> Signed-off-by: Felix Fietkau <nbd@nbd.name>
+> I agree. IIRC, non-atomic variants are mostly only safe while the
+> refcount is 0. Everything else is just absolutely fragile.
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+We could add an assertion ... I just tried this:
 
-> ---
->   drivers/clk/Kconfig      |   9 +
->   drivers/clk/Makefile     |   1 +
->   drivers/clk/clk-en7523.c | 351 +++++++++++++++++++++++++++++++++++++++
->   3 files changed, 361 insertions(+)
->   create mode 100644 drivers/clk/clk-en7523.c
-> 
-> diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
-> index ad4256d54361..4765e4c6f2a1 100644
-> --- a/drivers/clk/Kconfig
-> +++ b/drivers/clk/Kconfig
-> @@ -200,6 +200,15 @@ config COMMON_CLK_CS2000_CP
->   	help
->   	  If you say yes here you get support for the CS2000 clock multiplier.
->   
-> +config COMMON_CLK_EN7523
-> +	bool "Clock driver for Airoha EN7523 SoC system clocks"
-> +	depends on OF
-> +	depends on ARCH_AIROHA || COMPILE_TEST
-> +	default ARCH_AIROHA
-> +	help
-> +	  This driver provides the fixed clocks and gates present on Airoha
-> +	  ARM silicon.
-> +
->   config COMMON_CLK_FSL_FLEXSPI
->   	tristate "Clock driver for FlexSPI on Layerscape SoCs"
->   	depends on ARCH_LAYERSCAPE || COMPILE_TEST
-> diff --git a/drivers/clk/Makefile b/drivers/clk/Makefile
-> index 16e588630472..da8dd3ab304f 100644
-> --- a/drivers/clk/Makefile
-> +++ b/drivers/clk/Makefile
-> @@ -27,6 +27,7 @@ obj-$(CONFIG_COMMON_CLK_CDCE925)	+= clk-cdce925.o
->   obj-$(CONFIG_ARCH_CLPS711X)		+= clk-clps711x.o
->   obj-$(CONFIG_COMMON_CLK_CS2000_CP)	+= clk-cs2000-cp.o
->   obj-$(CONFIG_ARCH_SPARX5)		+= clk-sparx5.o
-> +obj-$(CONFIG_COMMON_CLK_EN7523)		+= clk-en7523.o
->   obj-$(CONFIG_COMMON_CLK_FIXED_MMIO)	+= clk-fixed-mmio.o
->   obj-$(CONFIG_COMMON_CLK_FSL_FLEXSPI)	+= clk-fsl-flexspi.o
->   obj-$(CONFIG_COMMON_CLK_FSL_SAI)	+= clk-fsl-sai.o
-> diff --git a/drivers/clk/clk-en7523.c b/drivers/clk/clk-en7523.c
-> new file mode 100644
-> index 000000000000..076a70c2e173
-> --- /dev/null
-> +++ b/drivers/clk/clk-en7523.c
-> @@ -0,0 +1,351 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +
-> +#include <linux/delay.h>
-> +#include <linux/clk-provider.h>
-> +#include <linux/of.h>
-> +#include <linux/of_address.h>
-> +#include <linux/of_device.h>
-> +#include <linux/platform_device.h>
-> +#include <dt-bindings/clock/en7523-clk.h>
-> +
-> +#define REG_PCI_CONTROL			0x88
-> +#define   REG_PCI_CONTROL_PERSTOUT	BIT(29)
-> +#define   REG_PCI_CONTROL_PERSTOUT1	BIT(26)
-> +#define   REG_PCI_CONTROL_REFCLK_EN1	BIT(22)
-> +#define REG_GSW_CLK_DIV_SEL		0x1b4
-> +#define REG_EMI_CLK_DIV_SEL		0x1b8
-> +#define REG_BUS_CLK_DIV_SEL		0x1bc
-> +#define REG_SPI_CLK_DIV_SEL		0x1c4
-> +#define REG_SPI_CLK_FREQ_SEL		0x1c8
-> +#define REG_NPU_CLK_DIV_SEL		0x1fc
-> +#define REG_CRYPTO_CLKSRC		0x200
-> +#define REG_RESET_CONTROL		0x834
-> +#define   REG_RESET_CONTROL_PCIEHB	BIT(29)
-> +#define   REG_RESET_CONTROL_PCIE1	BIT(27)
-> +#define   REG_RESET_CONTROL_PCIE2	BIT(26)
-> +
-> +struct en_clk_desc {
-> +	int id;
-> +	const char *name;
-> +	u32 base_reg;
-> +	u8 base_bits;
-> +	u8 base_shift;
-> +	union {
-> +		const unsigned int *base_values;
-> +		unsigned int base_value;
-> +	};
-> +	size_t n_base_values;
-> +
-> +	u16 div_reg;
-> +	u8 div_bits;
-> +	u8 div_shift;
-> +	u16 div_val0;
-> +	u8 div_step;
-> +};
-> +
-> +struct en_clk_gate {
-> +	void __iomem *base;
-> +	struct clk_hw hw;
-> +};
-> +
-> +static const u32 gsw_base[] = { 400000000, 500000000 };
-> +static const u32 emi_base[] = { 333000000, 400000000 };
-> +static const u32 bus_base[] = { 500000000, 540000000 };
-> +static const u32 slic_base[] = { 100000000, 3125000 };
-> +static const u32 npu_base[] = { 333000000, 400000000, 500000000 };
-> +
-> +static const struct en_clk_desc en7523_base_clks[] = {
-> +	{
-> +		.id = EN7523_CLK_GSW,
-> +		.name = "gsw",
-> +
-> +		.base_reg = REG_GSW_CLK_DIV_SEL,
-> +		.base_bits = 1,
-> +		.base_shift = 8,
-> +		.base_values = gsw_base,
-> +		.n_base_values = ARRAY_SIZE(gsw_base),
-> +
-> +		.div_bits = 3,
-> +		.div_shift = 0,
-> +		.div_step = 1,
-> +	}, {
-> +		.id = EN7523_CLK_EMI,
-> +		.name = "emi",
-> +
-> +		.base_reg = REG_EMI_CLK_DIV_SEL,
-> +		.base_bits = 1,
-> +		.base_shift = 8,
-> +		.base_values = emi_base,
-> +		.n_base_values = ARRAY_SIZE(emi_base),
-> +
-> +		.div_bits = 3,
-> +		.div_shift = 0,
-> +		.div_step = 1,
-> +	}, {
-> +		.id = EN7523_CLK_BUS,
-> +		.name = "bus",
-> +
-> +		.base_reg = REG_BUS_CLK_DIV_SEL,
-> +		.base_bits = 1,
-> +		.base_shift = 8,
-> +		.base_values = bus_base,
-> +		.n_base_values = ARRAY_SIZE(bus_base),
-> +
-> +		.div_bits = 3,
-> +		.div_shift = 0,
-> +		.div_step = 1,
-> +	}, {
-> +		.id = EN7523_CLK_SLIC,
-> +		.name = "slic",
-> +
-> +		.base_reg = REG_SPI_CLK_FREQ_SEL,
-> +		.base_bits = 1,
-> +		.base_shift = 0,
-> +		.base_values = slic_base,
-> +		.n_base_values = ARRAY_SIZE(slic_base),
-> +
-> +		.div_reg = REG_SPI_CLK_DIV_SEL,
-> +		.div_bits = 5,
-> +		.div_shift = 24,
-> +		.div_val0 = 20,
-> +		.div_step = 2,
-> +	}, {
-> +		.id = EN7523_CLK_SPI,
-> +		.name = "spi",
-> +
-> +		.base_reg = REG_SPI_CLK_DIV_SEL,
-> +
-> +		.base_value = 400000000,
-> +
-> +		.div_bits = 5,
-> +		.div_shift = 8,
-> +		.div_val0 = 40,
-> +		.div_step = 2,
-> +	}, {
-> +		.id = EN7523_CLK_NPU,
-> +		.name = "npu",
-> +
-> +		.base_reg = REG_NPU_CLK_DIV_SEL,
-> +		.base_bits = 2,
-> +		.base_shift = 8,
-> +		.base_values = npu_base,
-> +		.n_base_values = ARRAY_SIZE(npu_base),
-> +
-> +		.div_bits = 3,
-> +		.div_shift = 0,
-> +		.div_step = 1,
-> +	}, {
-> +		.id = EN7523_CLK_CRYPTO,
-> +		.name = "crypto",
-> +
-> +		.base_reg = REG_CRYPTO_CLKSRC,
-> +		.base_bits = 1,
-> +		.base_shift = 8,
-> +		.base_values = emi_base,
-> +		.n_base_values = ARRAY_SIZE(emi_base),
-> +	}
-> +};
-> +
-> +static const struct of_device_id of_match_clk_en7523[] = {
-> +	{ .compatible = "airoha,en7523-scu", },
-> +	{ /* sentinel */ }
-> +};
-> +
-> +static unsigned int en7523_get_base_rate(void __iomem *base, unsigned int i)
-> +{
-> +	const struct en_clk_desc *desc = &en7523_base_clks[i];
-> +	u32 val;
-> +
-> +	if (!desc->base_bits)
-> +		return desc->base_value;
-> +
-> +	val = readl(base + desc->base_reg);
-> +	val >>= desc->base_shift;
-> +	val &= (1 << desc->base_bits) - 1;
-> +
-> +	if (val >= desc->n_base_values)
-> +		return 0;
-> +
-> +	return desc->base_values[val];
-> +}
-> +
-> +static u32 en7523_get_div(void __iomem *base, int i)
-> +{
-> +	const struct en_clk_desc *desc = &en7523_base_clks[i];
-> +	u32 reg, val;
-> +
-> +	if (!desc->div_bits)
-> +		return 1;
-> +
-> +	reg = desc->div_reg ? desc->div_reg : desc->base_reg;
-> +	val = readl(base + reg);
-> +	val >>= desc->div_shift;
-> +	val &= (1 << desc->div_bits) - 1;
-> +
-> +	if (!val && desc->div_val0)
-> +		return desc->div_val0;
-> +
-> +	return (val + 1) * desc->div_step;
-> +}
-> +
-> +static int en7523_pci_is_enabled(struct clk_hw *hw)
-> +{
-> +	struct en_clk_gate *cg = container_of(hw, struct en_clk_gate, hw);
-> +
-> +	return !!(readl(cg->base + REG_PCI_CONTROL) & REG_PCI_CONTROL_REFCLK_EN1);
-> +}
-> +
-> +static int en7523_pci_prepare(struct clk_hw *hw)
-> +{
-> +	struct en_clk_gate *cg = container_of(hw, struct en_clk_gate, hw);
-> +	void __iomem *np_base = cg->base;
-> +	u32 val, mask;
-> +
-> +	/* Need to pull device low before reset */
-> +	val = readl(np_base + REG_PCI_CONTROL);
-> +	val &= ~(REG_PCI_CONTROL_PERSTOUT1 | REG_PCI_CONTROL_PERSTOUT);
-> +	writel(val, np_base + REG_PCI_CONTROL);
-> +	usleep_range(1000, 2000);
-> +
-> +	/* Enable PCIe port 1 */
-> +	val |= REG_PCI_CONTROL_REFCLK_EN1;
-> +	writel(val, np_base + REG_PCI_CONTROL);
-> +	usleep_range(1000, 2000);
-> +
-> +	/* Reset to default */
-> +	val = readl(np_base + REG_RESET_CONTROL);
-> +	mask = REG_RESET_CONTROL_PCIE1 | REG_RESET_CONTROL_PCIE2 |
-> +	       REG_RESET_CONTROL_PCIEHB;
-> +	writel(val & ~mask, np_base + REG_RESET_CONTROL);
-> +	usleep_range(1000, 2000);
-> +	writel(val | mask, np_base + REG_RESET_CONTROL);
-> +	msleep(100);
-> +	writel(val & ~mask, np_base + REG_RESET_CONTROL);
-> +	usleep_range(5000, 10000);
-> +
-> +	/* Release device */
-> +	mask = REG_PCI_CONTROL_PERSTOUT1 | REG_PCI_CONTROL_PERSTOUT;
-> +	val = readl(np_base + REG_PCI_CONTROL);
-> +	writel(val & ~mask, np_base + REG_PCI_CONTROL);
-> +	usleep_range(1000, 2000);
-> +	writel(val | mask, np_base + REG_PCI_CONTROL);
-> +	msleep(250);
-> +
-> +	return 0;
-> +}
-> +
-> +static void en7523_pci_unprepare(struct clk_hw *hw)
-> +{
-> +	struct en_clk_gate *cg = container_of(hw, struct en_clk_gate, hw);
-> +	void __iomem *np_base = cg->base;
-> +	u32 val;
-> +
-> +	val = readl(np_base + REG_PCI_CONTROL);
-> +	val &= ~REG_PCI_CONTROL_REFCLK_EN1;
-> +	writel(val, np_base + REG_PCI_CONTROL);
-> +}
-> +
-> +static struct clk_hw *en7523_register_pcie_clk(struct device *dev,
-> +					       void __iomem *np_base)
-> +{
-> +	static const struct clk_ops pcie_gate_ops = {
-> +		.is_enabled = en7523_pci_is_enabled,
-> +		.prepare = en7523_pci_prepare,
-> +		.unprepare = en7523_pci_unprepare,
-> +	};
-> +	struct clk_init_data init = {
-> +		.name = "pcie",
-> +		.ops = &pcie_gate_ops,
-> +	};
-> +	struct en_clk_gate *cg;
-> +
-> +	cg = devm_kzalloc(dev, sizeof(*cg), GFP_KERNEL);
-> +	if (!cg)
-> +		return NULL;
-> +
-> +	cg->base = np_base;
-> +	cg->hw.init = &init;
-> +	en7523_pci_unprepare(&cg->hw);
-> +
-> +	if (clk_hw_register(dev, &cg->hw))
-> +		return NULL;
-> +
-> +	return &cg->hw;
-> +}
-> +
-> +static void en7523_register_clocks(struct device *dev, struct clk_hw_onecell_data *clk_data,
-> +				   void __iomem *base, void __iomem *np_base)
-> +{
-> +	struct clk_hw *hw;
-> +	u32 rate;
-> +	int i;
-> +
-> +	for (i = 0; i < ARRAY_SIZE(en7523_base_clks); i++) {
-> +		const struct en_clk_desc *desc = &en7523_base_clks[i];
-> +
-> +		rate = en7523_get_base_rate(base, i);
-> +		rate /= en7523_get_div(base, i);
-> +
-> +		hw = clk_hw_register_fixed_rate(dev, desc->name, NULL, 0, rate);
-> +		if (IS_ERR(hw)) {
-> +			pr_err("Failed to register clk %s: %ld\n",
-> +			       desc->name, PTR_ERR(hw));
-> +			continue;
-> +		}
-> +
-> +		clk_data->hws[desc->id] = hw;
-> +	}
-> +
-> +	hw = en7523_register_pcie_clk(dev, np_base);
-> +	clk_data->hws[EN7523_CLK_PCIE] = hw;
-> +
-> +	clk_data->num = EN7523_NUM_CLOCKS;
-> +}
-> +
-> +static int en7523_clk_probe(struct platform_device *pdev)
-> +{
-> +	struct device_node *node = pdev->dev.of_node;
-> +	struct clk_hw_onecell_data *clk_data;
-> +	void __iomem *base, *np_base;
-> +	int r;
-> +
-> +	base = devm_platform_ioremap_resource(pdev, 0);
-> +	if (IS_ERR(base))
-> +		return PTR_ERR(base);
-> +
-> +	np_base = devm_platform_ioremap_resource(pdev, 1);
-> +	if (IS_ERR(base))
-> +		return PTR_ERR(np_base);
-> +
-> +	clk_data = devm_kzalloc(&pdev->dev,
-> +				struct_size(clk_data, hws, EN7523_NUM_CLOCKS),
-> +				GFP_KERNEL);
-> +	if (!clk_data)
-> +		return -ENOMEM;
-> +
-> +	en7523_register_clocks(&pdev->dev, clk_data, base, np_base);
-> +
-> +	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
-> +	if (r)
-> +		dev_err(&pdev->dev,
-> +			"could not register clock provider: %s: %d\n",
-> +			pdev->name, r);
-> +
-> +	return r;
-> +}
-> +
-> +static struct platform_driver clk_en7523_drv = {
-> +	.probe = en7523_clk_probe,
-> +	.driver = {
-> +		.name = "clk-en7523",
-> +		.of_match_table = of_match_clk_en7523,
-> +		.suppress_bind_attrs = true,
-> +	},
-> +};
-> +
-> +static int __init clk_en7523_init(void)
-> +{
-> +	return platform_driver_register(&clk_en7523_drv);
-> +}
-> +
-> +arch_initcall(clk_en7523_init);
++++ b/include/linux/page-flags.h
+@@ -342,14 +342,16 @@ static __always_inline                                                    \
+ void __folio_set_##lname(struct folio *folio)                          \
+ { __set_bit(PG_##lname, folio_flags(folio, FOLIO_##policy)); }         \
+ static __always_inline void __SetPage##uname(struct page *page)                \
+-{ __set_bit(PG_##lname, &policy(page, 1)->flags); }
++{ VM_BUG_ON_PGFLAGS(atomic_read(&policy(page, 1)->_refcount), page);   \
++  __set_bit(PG_##lname, &policy(page, 1)->flags); }
+
+ #define __CLEARPAGEFLAG(uname, lname, policy)                          \
+ static __always_inline                                                 \
+ void __folio_clear_##lname(struct folio *folio)                                \
+ { __clear_bit(PG_##lname, folio_flags(folio, FOLIO_##policy)); }       \
+ static __always_inline void __ClearPage##uname(struct page *page)      \
+-{ __clear_bit(PG_##lname, &policy(page, 1)->flags); }
++{ VM_BUG_ON_PGFLAGS(atomic_read(&policy(page, 1)->_refcount), page);   \
++  __clear_bit(PG_##lname, &policy(page, 1)->flags); }
+
+ #define TESTSETFLAG(uname, lname, policy)                              \
+ static __always_inline                                                 \
+
+... but it dies _really_ early:
+
+(gdb) bt
+#0  0xffffffff820055e5 in native_halt ()
+    at ../arch/x86/include/asm/irqflags.h:57
+#1  halt () at ../arch/x86/include/asm/irqflags.h:98
+#2  early_fixup_exception (regs=regs@entry=0xffffffff81e03cf8,
+    trapnr=trapnr@entry=6) at ../arch/x86/mm/extable.c:283
+#3  0xffffffff81ff243c in do_early_exception (regs=0xffffffff81e03cf8,
+    trapnr=6) at ../arch/x86/kernel/head64.c:419
+#4  0xffffffff81ff214f in early_idt_handler_common ()
+    at ../arch/x86/kernel/head_64.S:417
+#5  0x0000000000000000 in ?? ()
+
+and honestly, I'm not sure how to debug something that goes wrong this
+early.  Maybe I need to make that start warning 5 seconds after boot
+or only if we're not in pid 1, or something ...
 
 _______________________________________________
 Linux-mediatek mailing list
