@@ -4,87 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ADACC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 20:34:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0BC8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 21:21:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XONtQ8we9UVRGxmqfaKcrdjdVzKtgYNXGkVpBcISd+Y=; b=s025rxHOfRmB6h
-	jmKaP3YdvlV1JhQX1wCButMhgQmbtTtBUeuiahADyQ6ydYgQRKNE8NREigEfr2Qt8bDl/w+tLgbC7
-	FDRjjsEnT6xNGvr3c/NkywdXXP0cQmdnsM7iesYC5Eo6ccTdGy3DN61G0HjUOTF+y2FF2Z6YbpNoG
-	OTQYxCeOWbVQG94PTTyTX20S0P1QYSDwvP8nyXzYlwGuOxfw2Tg9df2s/IrDOUHGRKKEiXxPpHTh7
-	/L8+BkqmVT2jmjHfGnMXPoHydze9qNcawyO5NT4+T6A1Z+LmBl1HFwWbLYyBgoueE/IDCo3GSh+Gc
-	lx1vzr8QIvEZH8Ha693Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EZ3BW4LzTgC+/kZ1SBgWcgcaWW1LVO/DIPCvhar7+Mw=; b=hy2GCyHaDGAgPT
+	uStLHEPPDwdRxW6LAyrGQwIBas5S0VjoqPm5HgC1Jc0tZg2OF6AQbujBxauHXlq1NYvjSu+EmoQgz
+	QFDhRxIPQKvJVPswC7gSohwg6cohoVowhfsid+vQq1aXSCcDUL1t3BX/lsEEqcbq6n0zddngRhp9c
+	h7bEWwpKgdy/G9dZhHG5Xt1CPIHkpAKo08NEeE07JgxDrvqgHaCSI4QlhXWFz+RZmukHXHzX04PyF
+	L/d8qzv7FmoGVLiSPCriHFmo4BBQ1fQDK3yKWWT76Ef26nUgZN0vks3pB0aG5Oc6cVqxRwf2hEJP7
+	V90A03NYBryd1UJn6+1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUDsT-00AZmh-IW; Tue, 15 Mar 2022 20:34:45 +0000
-Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233])
+	id 1nUEbT-00Ae7X-Rt; Tue, 15 Mar 2022 21:21:15 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUDsH-00AZjz-JA
- for linux-mediatek@lists.infradead.org; Tue, 15 Mar 2022 20:34:34 +0000
-Received: by mail-oi1-x233.google.com with SMTP id q189so527112oia.9
- for <linux-mediatek@lists.infradead.org>; Tue, 15 Mar 2022 13:34:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :mime-version; bh=HuxzPBFcNGizUpUFeFsNjMUynwK/YImVehMj2Mb+h5A=;
- b=K3HGrbkU3n9yvQYCY/kzElGn6znziTraIc5bj7MoyQgemj6Jy89aSAsaWRBNeSQirf
- 5XAGCDiWwqOiXzbReSY3yKhwLgKrG7zIljAb0MxtNcmhyYqdc+BbqjG11NdnvjIGO7pF
- WhYkc0Pj2Lpv6CKFjhncgf5mGTCONSuF6qVBOAl3I/yiUt3sNVL9My/LEgJzuZ9PNz1+
- KNp706Dq/JKj2fKDY5vdz4tqkqUxLy0tS2/hFySkXnSULhgAZIqeLKYu1+UvCMNJsCH5
- IhISLb9TUOzNwHkwJbSji4zTaCSKtDvaR3Ge1ojWe2ATreVqSqdLJBV+Jk1aDaeLLEjs
- owUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:mime-version;
- bh=HuxzPBFcNGizUpUFeFsNjMUynwK/YImVehMj2Mb+h5A=;
- b=19PpSkeQ0bDYyjmTwnZCYxoYz7y52iXgrzYLsVNIW4KOL3Hssnpg0Fxd6C1IZohyY4
- d7888gQLfUMHWi0E7BEG9joI440zlscK/LBDt0EUUsHDrNiH4BhqoM53ly18SgusXd+Q
- azw8WWjbV41kwuSYbUJRtc+ANbbKd20VFduqIUx6pkOYE/WsG/IR5sPN5IJ90FCeiky/
- bqzGg8ZUkIxK0MA92CuS7o78IH+OhSpKiGJ+w0+yOnPMThAZx0yOARmM59cWoW2poAKT
- UmilwAcj5D52RyKQ5semSCpdiEtig+/s2GtnqY6Kb79tuVik+pkx2m4rYu/UpIiOHHKH
- ldqg==
-X-Gm-Message-State: AOAM530ks7XpoOIS57IMZu2/2SRFi74YpxoMIA5U6JQX6PfXOlCGF5vr
- DBVVK5Id8EcwNRB3CTUk1ZdS1w==
-X-Google-Smtp-Source: ABdhPJyIXsrs++KyhkbY8OaCTfEwShUw+XWKA+egNWequzBiJdYyCj3Gy31D2jBYT9eCoIr7cy9G0w==
-X-Received: by 2002:a54:4e11:0:b0:2ec:e0ee:ac29 with SMTP id
- a17-20020a544e11000000b002ece0eeac29mr2429740oiy.257.1647376470526; 
- Tue, 15 Mar 2022 13:34:30 -0700 (PDT)
-Received: from ripple.attlocal.net
- (172-10-233-147.lightspeed.sntcca.sbcglobal.net. [172.10.233.147])
- by smtp.gmail.com with ESMTPSA id
- a10-20020a056808120a00b002d404a71444sm95511oil.35.2022.03.15.13.34.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Mar 2022 13:34:29 -0700 (PDT)
-Date: Tue, 15 Mar 2022 13:34:02 -0700 (PDT)
-From: Hugh Dickins <hughd@google.com>
-X-X-Sender: hugh@ripple.anvils
-To: David Hildenbrand <david@redhat.com>
-cc: Andrew Morton <akpm@linux-foundation.org>, 
- Andrew Yang <andrew.yang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Matthew Wilcox <willy@infradead.org>, Vlastimil Babka <vbabka@suse.cz>, 
- David Howells <dhowells@redhat.com>, 
- William Kucharski <william.kucharski@oracle.com>, 
- Yang Shi <shy828301@gmail.com>, Marc Zyngier <maz@kernel.org>, 
- linux-kernel@vger.kernel.org, linux-mm@kvack.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- wsd_upstream@mediatek.com, Nicholas Tang <nicholas.tang@mediatek.com>, 
- Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-Subject: Re: [PATCH] mm/migrate: fix race between lock page and clear
- PG_Isolated
-In-Reply-To: <4cb789a5-c49c-f095-1f7e-67be65ba508a@redhat.com>
-Message-ID: <883877a-30b0-96e0-48a6-7cfc3c59de93@google.com>
-References: <20220315030515.20263-1-andrew.yang@mediatek.com>
- <20220314212127.a2797926ee0ef8a7ad05dcaa@linux-foundation.org>
- <4cb789a5-c49c-f095-1f7e-67be65ba508a@redhat.com>
+ id 1nUEb8-00AdzO-U4; Tue, 15 Mar 2022 21:20:56 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 669FC1F42B7C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1647379246;
+ bh=GsxKwxEoyVMpi9QnEKrL5AuRZVqQ1PwZULVbs0dY27k=;
+ h=From:To:Cc:Subject:Date:From;
+ b=h61l0YcKl1B4Yzl5OA0aoMfTb2YVYT1Gse4wDVqGX1o2XqvO+ac/C6hh/mpCngk8K
+ ouUjOaAOYCjREhwUtZM/DVAD1Lv4SY1E1IZWPp5jcYaQlQAHAVrJ2qGcnpsg+EYLL6
+ 8mTZa1+ISpCXJ7K87vzznR7apFqH/208bNq2cEgSzaY1gxgnpVMcZSIqwcz07aMMKW
+ b35qUMoj43TS9a8uC2TWs56lGQYnpSJ0L+iOaJnwoapr94Q00l0ds577mEa1bHXCQ5
+ 08cTqHwFamAqgZyC9/8XZEQpaAYf720FPrRY/fud09FjO9dAUD0detyNgq1PWf85RQ
+ ghbr76+NAhqGg==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
+ <nfraprado@collabora.com>
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>
+Cc: kernel@collabora.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
+ <nfraprado@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH v1 0/4] dt-bindings: pinctrl: mt8192: Add missing wrapping
+ node and properties
+Date: Tue, 15 Mar 2022 17:19:32 -0400
+Message-Id: <20220315211936.442708-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_133433_689213_0AAB124B 
-X-CRM114-Status: GOOD (  20.84  )
+X-CRM114-CacheID: sfid-20220315_142055_107236_A315C4F0 
+X-CRM114-Status: UNSURE (   7.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,61 +67,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 15 Mar 2022, David Hildenbrand wrote:
-> On 15.03.22 05:21, Andrew Morton wrote:
-> > On Tue, 15 Mar 2022 11:05:15 +0800 Andrew Yang <andrew.yang@mediatek.com> wrote:
-> > 
-> >> When memory is tight, system may start to compact memory for large
-> >> continuous memory demands. If one process tries to lock a memory page
-> >> that is being locked and isolated for compaction, it may wait a long time
-> >> or even forever. This is because compaction will perform non-atomic
-> >> PG_Isolated clear while holding page lock, this may overwrite PG_waiters
-> >> set by the process that can't obtain the page lock and add itself to the
-> >> waiting queue to wait for the lock to be unlocked.
-> >>
-> >> CPU1                            CPU2
-> >> lock_page(page); (successful)
-> >>                                 lock_page(); (failed)
-> >> __ClearPageIsolated(page);      SetPageWaiters(page) (may be overwritten)
-> >> unlock_page(page);
-> >>
-> >> The solution is to not perform non-atomic operation on page flags while
-> >> holding page lock.
-> > 
-> > Sure, the non-atomic bitop optimization is really risky and I suspect
-> > we reach for it too often.  Or at least without really clearly
-> > demonstrating that it is safe, and documenting our assumptions.
-> 
-> I agree. IIRC, non-atomic variants are mostly only safe while the
-> refcount is 0. Everything else is just absolutely fragile.
-
-It is normal and correct to use __SetPageFlag(page) on a page just allocated
-from the buddy, and not yet logically visible to others: that has refcount 1.
-
-Of course, it might have refcount 2 or more, through being speculatively
-visible to get_page_unless_zero() users: perhaps through earlier usage of
-the same struct page, or by physical scan of memmap.
-
-Those few such others - compaction's isolate_migratepages_block() is the
-one I know best - must be very careful in their sequence of operations.
-
-Preliminary read-only checks are usually okay (but some VM_BUG_ON_PGFLAGS
-are increasingly problematic: I've had to turn off that CONFIG), then
-get_page_unless_zero(), then read-only check that the page is of the
-manageable kind (PageLRU in my world), and only then can it be safe to
-lock the page - which of course touches page flags, and so would be
-problematic for a racing user's __SetPageFlag(page).
-
-But PageMovable and PageIsolated are beyond my ken: I can't say there.
-
-Hugh
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+ClRoaXMgc2VyaWVzIGFkZHMgdGhlIHdyYXBwaW5nIG5vZGUgZm9yIHBpbm11eCBub2RlcyB0aGF0
+IHdhcyBtaXNzaW5nIGluCnRoZSBtdDgxOTItcGluY3RybCBkdC1iaW5kaW5nIGFzIHdlbGwgYXMg
+YSBjb3VwbGUgb3RoZXIgbWlzc2luZwpwcm9wZXJ0aWVzLgoKCk7DrWNvbGFzIEYuIFIuIEEuIFBy
+YWRvICg0KToKICBkdC1iaW5kaW5nczogcGluY3RybDogbXQ4MTkyOiBBZGQgd3JhcHBpbmcgbm9k
+ZSBmb3IgcGluIGNvbmZpZ3VyYXRpb25zCiAgZHQtYmluZGluZ3M6IHBpbmN0cmw6IG10ODE5Mjog
+QWRkIG1lZGlhdGVrLGRyaXZlLXN0cmVuZ3RoLWFkdiBwcm9wZXJ0eQogIGR0LWJpbmRpbmdzOiBw
+aW5jdHJsOiBtdDgxOTI6IEFkZCBtZWRpYXRlayxwdWxsLXVwLWFkdiBwcm9wZXJ0eQogIGR0LWJp
+bmRpbmdzOiBwaW5jdHJsOiBtdDgxOTI6IEFkZCBncGlvLWxpbmUtbmFtZXMgcHJvcGVydHkKCiAu
+Li4vYmluZGluZ3MvcGluY3RybC9waW5jdHJsLW10ODE5Mi55YW1sICAgICAgfCAxNTUgKysrKysr
+KysrKystLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgOTggaW5zZXJ0aW9ucygrKSwgNTcgZGVsZXRp
+b25zKC0pCgotLSAKMi4zNS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1tZWRpYXRlawo=
