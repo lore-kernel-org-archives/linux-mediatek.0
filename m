@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE11EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 17:54:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F16F4C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 17:54:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=guKp423VrOKaSw9cNNQuejav0DtRW0ecAzljQz98s+s=; b=WBC76h+VKXvtVf
-	yXYuP1QsoO76Inv7MlRMgfk2nbWyb3aYRe09w0CsE/9QaOj/i+w0uuWs8u+A858sE+lHnbY3xRYcS
-	UonRxzRy87S6MHFs4IDsxwbxDjAYz46MfzXO3K1rtazcii6BTc/gpBVan2346ksbRqlBfR48KBCx3
-	Dhsxc7OgtHZQ4KcYPCJ4QF1PszTh+Rm3EOv8djSzJ35mlvTbVB77LncG+wb0VxII4Pflm0zd45qIj
-	qDL1IQdQUTmbvJ/q4adP8zG8faszgCljqZjjk+vOpPKmm4OJuDKEo/tFWLb2t+5XFU2Cv6jka8BRO
-	K+9VsdaHyuoluil2796w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VcCXPEQWoonsJNi2BaZgrWx2SxdTSsXBa3ZannnYBAY=; b=rMJZor5eXXYjr0
+	2qiSWCXStmGJ8qLfJd0xqx2PXSEMoOUkuOyyXPK/oOpa3Iu/VFfHlQQU1AI9R2dsxHlkbNudnZw4i
+	xJf+Y3ziiCm/2C4iWa3wPIqHDGLRHiFpRJsT/NP2m24Hyxh9EZPTHOl8j6MvE2AJK5Xn40fhPh78s
+	Vcrvb1eWz9/dwZnDPsFxFq53i7lk+TOtqVvxpfAF/2pqsGqI8MMgq6IifmDUpzsGwc67SOnoCNR+8
+	79DDptc6AnQDo0BHrqom5uNopYIAywUezrkXr0/RMn99Qqrr/yQtwb32jrGL1v6JSuT41JMB8Pw4o
+	RCai3eq54Lm3LxMkArwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUBNP-00A78X-BO; Tue, 15 Mar 2022 17:54:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nUBNT-00A7Ah-3U; Tue, 15 Mar 2022 17:54:35 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUBNK-00A76f-TH
- for linux-mediatek@lists.infradead.org; Tue, 15 Mar 2022 17:54:29 +0000
-X-UUID: f6e2fabc98df4145be87df162d498aba-20220315
-X-UUID: f6e2fabc98df4145be87df162d498aba-20220315
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ id 1nUBNQ-00A78i-JP
+ for linux-mediatek@lists.infradead.org; Tue, 15 Mar 2022 17:54:33 +0000
+X-UUID: b713726861284d9abf6b1711d1c9dbf2-20220315
+X-UUID: b713726861284d9abf6b1711d1c9dbf2-20220315
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1715938317; Tue, 15 Mar 2022 10:54:19 -0700
+ with ESMTP id 964525821; Tue, 15 Mar 2022 10:54:26 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Mar 2022 10:54:17 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Mar 2022 10:54:24 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Mar 2022 01:54:16 +0800
+ 15.0.1497.2; Wed, 16 Mar 2022 01:54:23 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 16 Mar 2022 01:54:10 +0800
+ Frontend Transport; Wed, 16 Mar 2022 01:54:23 +0800
 From: <sean.wang@mediatek.com>
 To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
 CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
@@ -53,16 +53,17 @@ CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
  <shawnku@google.com>, <linux-bluetooth@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Yake
  Yang" <yake.yang@mediatek.com>
-Subject: [PATCH v4 1/5] Bluetooth: btmtksdio: Fix kernel oops in
- btmtksdio_interrupt
-Date: Wed, 16 Mar 2022 01:54:04 +0800
-Message-ID: <7b4627d5017be2c26ded9daf7fd297bed6614852.1647366404.git.objelf@gmail.com>
+Subject: [PATCH v4 3/5] Bluetooth: mt7921s: Add .get_data_path_id
+Date: Wed, 16 Mar 2022 01:54:06 +0800
+Message-ID: <b790033dfbaded0ccec1247200dc2bc22a7a7cac.1647366404.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <7b4627d5017be2c26ded9daf7fd297bed6614852.1647366404.git.objelf@gmail.com>
+References: <7b4627d5017be2c26ded9daf7fd297bed6614852.1647366404.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_105426_982424_8FE18986 
-X-CRM114-Status: GOOD (  15.44  )
+X-CRM114-CacheID: sfid-20220315_105432_698514_9237383D 
+X-CRM114-Status: GOOD (  12.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,64 +82,52 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yake Yang <yake.yang@mediatek.com>
 
-Fix the following kernel oops in btmtksdio_interrrupt
+Add .get_data_path_id to fetch data_path_id for MT7921 to support HFP
+offload use case.
 
-[   14.339134]  btmtksdio_interrupt+0x28/0x54
-[   14.339139]  process_sdio_pending_irqs+0x68/0x1a0
-[   14.339144]  sdio_irq_work+0x40/0x70
-[   14.339154]  process_one_work+0x184/0x39c
-[   14.339160]  worker_thread+0x228/0x3e8
-[   14.339168]  kthread+0x148/0x3ac
-[   14.339176]  ret_from_fork+0x10/0x30
+This is a preliminary patch to add the WBS support to the MT7921 driver.
 
-That happened because hdev->power_on is already called before
-sdio_set_drvdata which btmtksdio_interrupt handler relies on is not
-properly set up.
-
-The details are shown as the below: hci_register_dev would run
-queue_work(hdev->req_workqueue, &hdev->power_on) as WQ_HIGHPRI
-workqueue_struct to complete the power-on sequeunce and thus hci_power_on
-may run before sdio_set_drvdata is done in btmtksdio_probe.
-
-The hci_dev_do_open in hci_power_on would initialize the device and enable
-the interrupt and thus it is possible that btmtksdio_interrupt is being
-called right before sdio_set_drvdata is filled out.
-
-When btmtksdio_interrupt is being called and sdio_set_drvdata is not filled
-, the kernel oops is going to happen because btmtksdio_interrupt access an
-uninitialized pointer.
-
-Fixes: 9aebfd4a2200 ("Bluetooth: mediatek: add support for MediaTek MT7663S and MT7668S SDIO devices")
 Reviewed-by: Mark Chen <markyawenchen@gmail.com>
 Co-developed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Yake Yang <yake.yang@mediatek.com>
 ---
- drivers/bluetooth/btmtksdio.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/bluetooth/btmtksdio.c | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index df3f9d090529..9644069cecbb 100644
+index 034e55278c56..4000a994fe2c 100644
 --- a/drivers/bluetooth/btmtksdio.c
 +++ b/drivers/bluetooth/btmtksdio.c
-@@ -1281,6 +1281,8 @@ static int btmtksdio_probe(struct sdio_func *func,
- 	hdev->manufacturer = 70;
- 	set_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks);
+@@ -936,6 +936,13 @@ static int btmtksdio_mtk_reg_write(struct hci_dev *hdev, u32 reg, u32 val, u32 m
+ 	return err;
+ }
  
-+	sdio_set_drvdata(func, bdev);
++static int btmtksdio_get_data_path_id(struct hci_dev *hdev, __u8 *data_path_id)
++{
++	/* uses 1 as data path id for all the usecases */
++	*data_path_id = 1;
++	return 0;
++}
 +
- 	err = hci_register_dev(hdev);
- 	if (err < 0) {
- 		dev_err(&func->dev, "Can't register HCI device\n");
-@@ -1288,8 +1290,6 @@ static int btmtksdio_probe(struct sdio_func *func,
+ static int btmtksdio_sco_setting(struct hci_dev *hdev)
+ {
+ 	const struct btmtk_sco sco_setting = {
+@@ -968,7 +975,13 @@ static int btmtksdio_sco_setting(struct hci_dev *hdev)
  		return err;
- 	}
  
--	sdio_set_drvdata(func, bdev);
--
- 	/* pm_runtime_enable would be done after the firmware is being
- 	 * downloaded because the core layer probably already enables
- 	 * runtime PM for this func such as the case host->caps &
+ 	val |= 0x00000101;
+-	return btmtksdio_mtk_reg_write(hdev, MT7921_PINMUX_1, val, ~0);
++	err =  btmtksdio_mtk_reg_write(hdev, MT7921_PINMUX_1, val, ~0);
++	if (err < 0)
++		return err;
++
++	hdev->get_data_path_id = btmtksdio_get_data_path_id;
++
++	return err;
+ }
+ 
+ static int btmtksdio_reset_setting(struct hci_dev *hdev)
 -- 
 2.25.1
 
