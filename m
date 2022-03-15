@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E090CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 09:13:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E614C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 09:13:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KjQIpSFSR3PQyE2DX/H48b8ashMK9NObO3H/w20NOoM=; b=GgbHb91htZnxuF
-	UBVARGjUUVAk8V7gcRURENcjsdmLe6aMaTM63CNCdmxUZIDm8xrMTG4H1IjZKTeoiJtseUyKidhw3
-	ZlFOuZiqAehOfn1GKPsP4TCxhJp+GWGqGhDY9jwziJ4WCDMueCH4HF/5MrFFu48si6ttIiZUWOKPl
-	IFarLY9EawMoy8D4dlQsg7ufAr3xAEOgjV55+9/PuD6uha7XZF/XL58mSi0znyUTMB4VJX4gzAM74
-	83WrPoExaZ/sHDNcJKLY1xx1nrsyINl7HSMnZqF3gnT+5zKIStG4iHbxmMcVpQZ9e0dB6UKdUBkNZ
-	HxOMw3tbxshkxoTtxjRg==;
+	List-Owner; bh=+fMIF1oGkQgrIL31OkUoZ82W3j7Fawy0xcHWVYd/LZw=; b=kv1GTmYrHq9s5/
+	U8R1RLEu/pccPzp3Eg0puibasg3sgseUJPa1tV3jR2BTZV59knen9Hrf4+DbL+lzKZ6osI2QrtbhL
+	ggYICK4URL7zngDJh2PkQOB/iFRlOcNfyd2HnbUkdS2iS5O1YbxyqBAlRNNESZMnOuNKcG/HhIJPf
+	5BdSiirpcRepmFDzrTHUnZRQkkBQgAlyrvKmvF4MvcBi41OVuqOLbdMruwX/Rw+dnxI41tEn0abqb
+	AXuypRC4zxWecfFRrGyvHy42z2KFCuo461sZiQ92YtvB9MCtAO2TL5J6DlcDwfXke88iW+76lvR1G
+	d+mNY3u3Kf9lXA6CwgeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nU3F3-008T7P-Fg; Tue, 15 Mar 2022 09:13:21 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nU3FW-008TRM-N6; Tue, 15 Mar 2022 09:13:50 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nU3E8-008Sar-2I; Tue, 15 Mar 2022 09:12:25 +0000
+ id 1nU3F5-008T7v-2r; Tue, 15 Mar 2022 09:13:24 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 7638E1F4362D
+ (Authenticated sender: kholk11) with ESMTPSA id 446551F4362D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647335542;
- bh=u28Nk0sHB5aIGD6kSuL/VfMjcGeiLg2nPpRYF0PqaGg=;
+ s=mail; t=1647335601;
+ bh=WTLghMeeqz2nQSPwBowI6r0QAX6EDrZ3m29sr4Yi4ho=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=iITRw8Vuy/qMAbPzWuq075nN3Ch63cOrUwA2Dsc1f1WngMnmZucnunqX9VlSNtU6G
- 83gCw7N/NLj2aH/vG3++zjZ0OAnlou3eMuUmg5xRvJuRAAfx400wc5uYFADc5wsCo5
- 4WdBPzQ0j+8RnmszoPzHPTMiuc+wgxFO3tZohusTMTzIZXpcaXm8D0EfzsLcFEBPu9
- rxspCF6uIBQpSjD8UqmvS67lLQP6aVS2G2pzse+zEU06P1BESySK94ldm30U6BtgMn
- Vb7oL3stBwt1qwcuL1UtbG5zE1JYvYymi63EIhnt9RFFQdjITCz7JTjwzQMTziKDPy
- Cy6y/BZucDoJQ==
-Message-ID: <713555d9-753b-2480-9597-99dfc54a8f40@collabora.com>
-Date: Tue, 15 Mar 2022 10:12:18 +0100
+ b=Oi1ZZjAsd6/qOeKtUyGx8/ixu79ia/qbH4VoFPcFMWoVY8pV3Zu1zwIR6VA5csjQr
+ uo5jscAUKtBxJK3aG8FzWinOow4i6RTQvAv4wgC5FapKTvFZcuIfNl8TpP5tgxz+9Y
+ k6+mdae2ApV4i2I6leHG0pdaCjatXJtZvvjxdxaP3oZwpbTpw53iQooCjAjOZ7KwHk
+ nUbK4EQlturOL/GHmBKbZAoUUHsSFBmkD5oRApjljgDarEHwenrHVFpcs+US7S8c/2
+ Z9V8aBKwyBx8sWPQi3iYjvshI+oohpw2yDy6xFochfp+r++vuU7s+dnYSNXyYNDghv
+ Fp8lwNjMQ9g1A==
+Message-ID: <5fb2d5bc-9951-86f7-d825-8dae9b7c7698@collabora.com>
+Date: Tue, 15 Mar 2022 10:13:17 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
-Subject: Re: [PATCH v13 5/6] dts: arm64: mt8183: add GCE client property for
- Mediatek MUTEX
+Subject: Re: [PATCH v13 6/6] soc: mediatek: mutex: add functions that operate
+ registers by CMDQ
 Content-Language: en-US
 To: Moudy Ho <moudy.ho@mediatek.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
@@ -64,12 +64,13 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  river.cheng@mediatek.com, srv_heupstream@mediatek.com,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20220315061031.21642-1-moudy.ho@mediatek.com>
- <20220315061031.21642-6-moudy.ho@mediatek.com>
+ <20220315061031.21642-7-moudy.ho@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220315061031.21642-6-moudy.ho@mediatek.com>
+In-Reply-To: <20220315061031.21642-7-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_021224_290299_A1AB420D 
-X-CRM114-Status: GOOD (  13.04  )
+X-CRM114-CacheID: sfid-20220315_021323_315210_59C7C4CB 
+X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,30 +88,16 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 15/03/22 07:10, Moudy Ho ha scritto:
-> In order to allow modules with latency requirements such as MDP3
-> to set registers through CMDQ, add the relevant dts property.
+> Due to hardware limitations, MDP3 is necessary to enable MUTEX in
+> each frame for SOF triggering and cooperate with CMDQ control to
+> reduce the amount of interrupts generated(also, reduce frame latency).
+> 
+> In response to the above situation, a new interface
+> "mtk_mutex_enable_by_cmdq" has been added to achieve the purpose.
 > 
 > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> ---
->   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 4b08691ed39e..fc6ac2a46324 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -1514,6 +1514,7 @@
->   			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
->   			mediatek,gce-events = <CMDQ_EVENT_MUTEX_STREAM_DONE0>,
->   					      <CMDQ_EVENT_MUTEX_STREAM_DONE1>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x6000 0x1000>;
->   		};
->   
->   		larb0: larb@14017000 {
-
 
 
 _______________________________________________
