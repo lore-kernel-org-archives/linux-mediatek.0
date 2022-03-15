@@ -4,60 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34925C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 23:33:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4035C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 23:44:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dhVCKtOf9LyozzDvguFfgpiVMKiFQYU+A0wJkrFRkUQ=; b=BdEbVsjm95hAT0
-	IseiCqyIndk1cHYfteIPCCUseDsI71jhf2gNLYiX4Mc2SfNhOg6APj3reY0tVybvH1UeW/ZwLD/Vl
-	jEnjPYZo4wRew3zn9y70mT6SW7Y5JDMlLDQC1VrPb7yUU5P3A/JcVJqAji3xY6bF53BQMtzwdUGJV
-	SwS9f3C6U8D36gdG32cIfGXAdPfwOjJBrgZ1qTT3aAlFYq3e7xSjSKMI0y7++1tJDGp8wwDYScn1c
-	dpVw3HF4wDMQnV6AdmL2xXVAfcw55jMiSpqnw78UY6Og9v+QuYKLypfWPLUdIsgKRNqzdHr68iYr3
-	f9SBLipCqBUSRP0BbV8A==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=evpDBMz1FcTqUJXJjya6l7F7ld+8HKPJZw3AuItg3C0=; b=lNudCw53nLPTOF
+	JEfE7ypBoddzGYo5uBY0zdxsatLBEu0BJvq2mTfe7wFiFCUn2SsMHuhbXT8mHkfB3OLi3wehU7oou
+	Q21RPqUATF19zVqYp9lmZRkBDDfAnjG1r4wWpVDbNeXQyDQdukocIcxh3t7czr2VWrYJw5GmNVdSe
+	owCJxGsB714FjUGJaRB+BMZE9oTzDKcI7dYZAXjOuOgNWwjvsooLdzWD2mh/mFKrmtKWbKJ3Apvlc
+	Ycr9xvL6kVWi9hsaMm2z36vw2m0funNSNUufOTfFDciuHtPHYsH/BdQMqkMYRuRymun5juLqfj68K
+	Ee1H7lcQZJDnbz+01lPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUGfd-00Au8r-JK; Tue, 15 Mar 2022 23:33:41 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nUGq8-00AulV-8r; Tue, 15 Mar 2022 23:44:32 +0000
+Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUGfP-00Au6S-CJ; Tue, 15 Mar 2022 23:33:30 +0000
-X-UUID: 03f7ceb1b433495cb22e170770ddfe79-20220315
-X-UUID: 03f7ceb1b433495cb22e170770ddfe79-20220315
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 438542943; Tue, 15 Mar 2022 16:33:18 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Mar 2022 16:23:16 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 16 Mar 2022 07:23:02 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 16 Mar 2022 07:23:02 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
- <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, Jie Qiu
- <jie.qiu@mediatek.com>, Junzhi Zhao <junzhi.zhao@mediatek.com>
-CC: Miles Chen <miles.chen@mediatek.com>, Zhiqiang Lin
- <zhiqiang.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>, "AngeloGioacchino
- Del Regno" <angelogioacchino.delregno@collabora.com>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [RESEND v4 PATCH] drm/mediatek: Fix mtk_cec_mask()
-Date: Wed, 16 Mar 2022 07:23:00 +0800
-Message-ID: <20220315232301.2434-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1nUGq6-00Aukl-1a
+ for linux-mediatek@lists.infradead.org; Tue, 15 Mar 2022 23:44:31 +0000
+Received: by mail-oi1-x235.google.com with SMTP id w2so985693oie.2
+ for <linux-mediatek@lists.infradead.org>; Tue, 15 Mar 2022 16:44:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:in-reply-to:references:from:user-agent:date:message-id
+ :subject:to:cc;
+ bh=Nl6Jm5jwM/rVHzRNNh97f8PcjadQYjuZsAfdQpOQyA0=;
+ b=LxYOO0RPSWJ4K6iwzOJRwfNMombgLBlr4vAwpGEOYkw2dzq1693vjR1qRS2XBJSKkt
+ deml4CTSqowDWH2shKvpncOJLWwxHJRyNaiM5u4IJ6I563znsvqL6DE18GXoyst5m9GK
+ 8GAger7v6dWSFEZbx5zEg6NRCTe0yHq7Bm0cU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from
+ :user-agent:date:message-id:subject:to:cc;
+ bh=Nl6Jm5jwM/rVHzRNNh97f8PcjadQYjuZsAfdQpOQyA0=;
+ b=rETuzZk/7hqwnPo3vPf8Lij1SNrPEWbXuprct+TCueE5ImIW3FuB+Z+izxhdN7ky4i
+ RmUhdaDfEWQgD1pSuQ6+9JWmgEorOU1KZuSR/MaFW7dO+E/WLLqP0bNj+hcQAMOpb/0w
+ XeueWNxAaRNujzjlE1yXCZvJ6xwGo96FU1mUd43caubMamHqYxQs6y+NW7vuGyvWQpQ2
+ Wfj6X5tifwjsOKQcuzijdlRLwCEUZ7Iz9TbEXFHr+L6A2yBY+DHBjwNS4/7uJ16Kq06b
+ ra9s2S6OQcVc25fJLrE0rpmNEd7UvH/5FfWMJhEFzmOa1/9pCwXLgTDCwbGyZ83NgPUz
+ tIFA==
+X-Gm-Message-State: AOAM532eBbeFxqTcHKkXHOi05MJrVYruNToRDvhTCUtGydIeU0IMjyq5
+ jG3LAvyR1uqH3V3RtSaSYcO98+IDubpBmSJKW1pxXg==
+X-Google-Smtp-Source: ABdhPJwATAVHk6WtwRZmZrxjAV5ap1yBhOFyk+oiJLjCOS2Plq9sWvEpEoc/wJjnOQ7el0ZklA7Lp4p8ATvjU2eiYgA=
+X-Received: by 2002:aca:a9c8:0:b0:2da:45b6:b796 with SMTP id
+ s191-20020acaa9c8000000b002da45b6b796mr2652734oie.193.1647387868162; Tue, 15
+ Mar 2022 16:44:28 -0700 (PDT)
+Received: from 753933720722 named unknown by gmailapi.google.com with
+ HTTPREST; Tue, 15 Mar 2022 16:44:27 -0700
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20220314084409.84394-1-nbd@nbd.name>
+References: <20220314084409.84394-1-nbd@nbd.name>
+From: Stephen Boyd <swboyd@chromium.org>
+User-Agent: alot/0.10
+Date: Tue, 15 Mar 2022 16:44:27 -0700
+Message-ID: <CAE-0n50tDVmQnruVy5cvseQrH9dWjHWr7qAoLwDnAL=oS9AEzw@mail.gmail.com>
+Subject: Re: [PATCH v10 0/6] Clock and PCIe support for Airoha EN7523 SoC
+To: Felix Fietkau <nbd@nbd.name>, Matthias Brugger <matthias.bgg@gmail.com>,
+ soc@kernel.org
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_163327_431409_491E7533 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20220315_164430_125052_1849E0DB 
+X-CRM114-Status: UNSURE (   5.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,52 +84,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In current implementation, mtk_cec_mask() writes val into target register
-and ignores the mask. After talking to our hdmi experts, mtk_cec_mask()
-should read a register, clean only mask bits, and update (val | mask) bits
-to the register.
+Quoting Felix Fietkau (2022-03-14 01:44:02)
+> This patchset adds the remaining patches needed from the last Airoha EN7523
+> SoC support series
 
-Fixes: 8f83f26891e1 ("drm/mediatek: Add HDMI support")
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Zhiqiang Lin <zhiqiang.lin@mediatek.com>
-Cc: CK Hu <ck.hu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
----
-
-Change since v1:
-add Fixes tag
-
-Change since v2:
-add explanation of mtk_cec_mask()
-
-Change since v3:
-change misleading subject and modify the commit message since this is a bug fix patch
-
----
- drivers/gpu/drm/mediatek/mtk_cec.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_cec.c b/drivers/gpu/drm/mediatek/mtk_cec.c
-index e9cef5c0c8f7..cdfa648910b2 100644
---- a/drivers/gpu/drm/mediatek/mtk_cec.c
-+++ b/drivers/gpu/drm/mediatek/mtk_cec.c
-@@ -85,7 +85,7 @@ static void mtk_cec_mask(struct mtk_cec *cec, unsigned int offset,
- 	u32 tmp = readl(cec->regs + offset) & ~mask;
- 
- 	tmp |= val & mask;
--	writel(val, cec->regs + offset);
-+	writel(tmp, cec->regs + offset);
- }
- 
- void mtk_cec_set_hpd_event(struct device *dev,
--- 
-2.18.0
-
+Please add a changelog here, preferably with lore links to previous
+revisions. It helps folks recall the patch series.
 
 _______________________________________________
 Linux-mediatek mailing list
