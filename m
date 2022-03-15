@@ -4,42 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F16F4C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 17:54:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21C5BC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 17:54:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VcCXPEQWoonsJNi2BaZgrWx2SxdTSsXBa3ZannnYBAY=; b=rMJZor5eXXYjr0
-	2qiSWCXStmGJ8qLfJd0xqx2PXSEMoOUkuOyyXPK/oOpa3Iu/VFfHlQQU1AI9R2dsxHlkbNudnZw4i
-	xJf+Y3ziiCm/2C4iWa3wPIqHDGLRHiFpRJsT/NP2m24Hyxh9EZPTHOl8j6MvE2AJK5Xn40fhPh78s
-	Vcrvb1eWz9/dwZnDPsFxFq53i7lk+TOtqVvxpfAF/2pqsGqI8MMgq6IifmDUpzsGwc67SOnoCNR+8
-	79DDptc6AnQDo0BHrqom5uNopYIAywUezrkXr0/RMn99Qqrr/yQtwb32jrGL1v6JSuT41JMB8Pw4o
-	RCai3eq54Lm3LxMkArwA==;
+	List-Owner; bh=iXhYyk/fCEholTJzSWdtDlLMAqF9s6hB/usHUZRkvaQ=; b=s9eOnTgM/vZwe4
+	Q8abss96q2Y7aTEHsksR/UiEuDKsIsyRazh5VYl/hP/WQrs+roMGxCycdOktfVv2cz4AkaCfwYRws
+	g50O7oYxrFcDE3ThyLKNpC7EVFjmPhd7w0t4th+vCHNZ+lZEvediNgozjNOo1IpZKKT2nAtQ9UfiX
+	kDza+s7SZf9rnx3324NI0I86EAjEu8JEhKshtbYm4blW7WHuZ4Tk6y05Dpx/4+ezCWbmt7ZUZDD+9
+	Qa3iyYwWoVnvc5tl7SARtSxeDNEPxjlv9BCujv7vwpQzY8hR2AOlmJyWbd72kKKSWCIQHrcp2IC0p
+	LKf2UfDOfT/a7QUAzm8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUBNT-00A7Ah-3U; Tue, 15 Mar 2022 17:54:35 +0000
+	id 1nUBNV-00A7Bg-2E; Tue, 15 Mar 2022 17:54:37 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUBNQ-00A78i-JP
- for linux-mediatek@lists.infradead.org; Tue, 15 Mar 2022 17:54:33 +0000
-X-UUID: b713726861284d9abf6b1711d1c9dbf2-20220315
-X-UUID: b713726861284d9abf6b1711d1c9dbf2-20220315
+ id 1nUBNQ-00A77u-JO
+ for linux-mediatek@lists.infradead.org; Tue, 15 Mar 2022 17:54:35 +0000
+X-UUID: 3af23e60112842cea451a1bdd72d441f-20220315
+X-UUID: 3af23e60112842cea451a1bdd72d441f-20220315
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 964525821; Tue, 15 Mar 2022 10:54:26 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Mar 2022 10:54:24 -0700
+ with ESMTP id 1288744386; Tue, 15 Mar 2022 10:54:24 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Mar 2022 10:54:22 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Mar 2022 01:54:23 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 16 Mar 2022 01:54:21 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 16 Mar 2022 01:54:23 +0800
+ Frontend Transport; Wed, 16 Mar 2022 01:54:20 +0800
 From: <sean.wang@mediatek.com>
 To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
 CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
@@ -53,17 +54,18 @@ CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
  <shawnku@google.com>, <linux-bluetooth@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Yake
  Yang" <yake.yang@mediatek.com>
-Subject: [PATCH v4 3/5] Bluetooth: mt7921s: Add .get_data_path_id
-Date: Wed, 16 Mar 2022 01:54:06 +0800
-Message-ID: <b790033dfbaded0ccec1247200dc2bc22a7a7cac.1647366404.git.objelf@gmail.com>
+Subject: [PATCH v4 2/5] Bluetooth: mt7921s: Set HCI_QUIRK_VALID_LE_STATES
+Date: Wed, 16 Mar 2022 01:54:05 +0800
+Message-ID: <9318ce1b76f8ed9b2c726362d3202310a54ae758.1647366404.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <7b4627d5017be2c26ded9daf7fd297bed6614852.1647366404.git.objelf@gmail.com>
 References: <7b4627d5017be2c26ded9daf7fd297bed6614852.1647366404.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_105432_698514_9237383D 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20220315_105432_707596_5285EC9C 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,52 +84,31 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yake Yang <yake.yang@mediatek.com>
 
-Add .get_data_path_id to fetch data_path_id for MT7921 to support HFP
-offload use case.
-
-This is a preliminary patch to add the WBS support to the MT7921 driver.
+The patch set HCI_QUIRK_VALID_LE_STATES to be consistent with the btusb for
+MT7921 and is required for the likes of experimental LE simultaneous roles.
 
 Reviewed-by: Mark Chen <markyawenchen@gmail.com>
 Co-developed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Yake Yang <yake.yang@mediatek.com>
 ---
- drivers/bluetooth/btmtksdio.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
+ drivers/bluetooth/btmtksdio.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index 034e55278c56..4000a994fe2c 100644
+index 9644069cecbb..034e55278c56 100644
 --- a/drivers/bluetooth/btmtksdio.c
 +++ b/drivers/bluetooth/btmtksdio.c
-@@ -936,6 +936,13 @@ static int btmtksdio_mtk_reg_write(struct hci_dev *hdev, u32 reg, u32 val, u32 m
- 	return err;
- }
+@@ -1070,6 +1070,9 @@ static int btmtksdio_setup(struct hci_dev *hdev)
+ 			}
+ 		}
  
-+static int btmtksdio_get_data_path_id(struct hci_dev *hdev, __u8 *data_path_id)
-+{
-+	/* uses 1 as data path id for all the usecases */
-+	*data_path_id = 1;
-+	return 0;
-+}
++		/* Valid LE States quirk for MediaTek 7921 */
++		set_bit(HCI_QUIRK_VALID_LE_STATES, &hdev->quirks);
 +
- static int btmtksdio_sco_setting(struct hci_dev *hdev)
- {
- 	const struct btmtk_sco sco_setting = {
-@@ -968,7 +975,13 @@ static int btmtksdio_sco_setting(struct hci_dev *hdev)
- 		return err;
- 
- 	val |= 0x00000101;
--	return btmtksdio_mtk_reg_write(hdev, MT7921_PINMUX_1, val, ~0);
-+	err =  btmtksdio_mtk_reg_write(hdev, MT7921_PINMUX_1, val, ~0);
-+	if (err < 0)
-+		return err;
-+
-+	hdev->get_data_path_id = btmtksdio_get_data_path_id;
-+
-+	return err;
- }
- 
- static int btmtksdio_reset_setting(struct hci_dev *hdev)
+ 		break;
+ 	case 0x7663:
+ 	case 0x7668:
 -- 
 2.25.1
 
