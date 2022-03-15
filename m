@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBE14C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 14:39:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46E17C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 14:41:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FrxEBf2oe3h6hjtvxmxVjCBIiFzX8FHN6kMy6e5UB9k=; b=Jwi0dRX3/5wzZY
-	2Wgx1SFnYhVCPtJjXSfr8TDvljHlvzr+nvjjJ3lQ1cwM8F98DKjXZk6UAuwBsNuP6RB7vOP2u5/qW
-	jfoYhd7xlEQp+qdzwe0it+5Aqphsb4QafMvHmWB/SLgGBoFPKu4tChBNDPVhUx7YVAOs/p4h2/uRm
-	xQOZILdK33qzZ6RmfMfuVHUV+j6o3VkZ7KzOyhjp4lY3ltFgs/uKzd1EnSwSn7/BNdsGbHiFshMak
-	Q59Dn9tC1xGSlQj2rq/c3Ska0soj22vL66hW5LtFm048g3EtPoKPbH9vtDwMHv/pbxKkfkJ2t/spg
-	Oeg3VcAOKoCPgKVKLEag==;
+	List-Owner; bh=MugKePVe2i/Y5MLYNitql+sjOZYf3x6GQ1nsZOO3g9Y=; b=4A1+EXihsQFHO6
+	kIA3PxQ4KVriGXSt1wc4pAVGBR93SOgg07U/N28W10xurwaqFonGWHlHqkVbSKIRebwBjy4zyRvkY
+	T6osyhzyz+vnsGTSdBvE1L4Kkk57QKDNtQ/S0SRMhNdfAqYZZjdNxqj+XsdASjVD3GF2Nuu8O9Z06
+	mrfm/7f5jO7wRPkIIq7aTYnZbQtv1kd4lOp8jVAVNW2nbe/Vd2es2knLcvy2TBlZJtVrXH8WIOju/
+	TXR5pvZiVuK3Z10xlX/yE0T3Fj44uJGeMfr39EJhRD3hBDRCffXW9nVxwGS60Bzxc42oS9/SvniDp
+	xWRe0XTE9jwU7S7u+z1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nU8Kh-009Uwf-R2; Tue, 15 Mar 2022 14:39:31 +0000
+	id 1nU8Mj-009VoS-Lm; Tue, 15 Mar 2022 14:41:37 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nU8KP-009Uq7-Jc; Tue, 15 Mar 2022 14:39:15 +0000
+ id 1nU8MI-009Vem-3K; Tue, 15 Mar 2022 14:41:11 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 9773E1F44380
+ (Authenticated sender: kholk11) with ESMTPSA id 60ADB1F42F80
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647355152;
- bh=+uXxnDg10Cf+ufXL862eCjkJ4f88NJ/VQyoGpWcd7Qs=;
+ s=mail; t=1647355269;
+ bh=zG3ISQgXBa0GgHMtE7ZUAA2puxpswZTMQYR0Vz+CGO0=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=Y36doFKf4npPYWCd9y3nFrv1m4lo956dMyubnypYTjdWhPwrF4U7Mheu5Ig/7FYeS
- qwGI/sxoSpGD6NaPBiGBm7ZlLc1CGLl0/AdPYIZNrRCCkXdVrdvQTM8m63CmUDW6Xw
- A9rtJ1fVca+A/VCFehFtJHuD4wOFpWBcYPXzw6d0GoP50jiSYEBe0kSrbSAayYr/0F
- ZNnrPfdWFLqWzlEQSXmrE5Kglrol3lebiHpMMllda0Cl0szEptUyphr+x4tUdPZ0DR
- 3zTXbtIOnMQ7VteODe1hpb+b5RlrnImlB/2iYNzm7oRe9tmLwLP8DQSHh4FZGfaaA3
- /HsfSKGZCtzgQ==
-Message-ID: <c47d6a99-e59e-97cf-a803-af2b307ed1d1@collabora.com>
-Date: Tue, 15 Mar 2022 15:39:08 +0100
+ b=CHon2w99Nvf6JpJ6msZQtSMqk41bhHpcNZwCq06IQ7xlZopTIgY3n//bkFFndRivI
+ LmAW8v296pfs/G2oS/6xF8HNYs8iAFlMmMPDD7Xj7XX0/N6rInNBU7r21XfqDTQyeX
+ yvM0TpG5vzU7f1G/tTgcYkZdPjn/0UFz07z7Z2jlzBB52AGugNwWcrcCtAqhATy8im
+ c9Ii1r1vJ8qWyLAK0fSmJpBvqxrrkiOop3uA/5ouj1Z43nkYHmaWG1WhkUOY9MNThP
+ 29QxYy8JFREO0c9uI9xiY+6QJSf+YMMFHoMChw/TKkaaSjGUcONHMhdBnsL+7TLSOO
+ fvICl7jtNBzOA==
+Message-ID: <9b2e6f63-e8ef-1427-4677-df654e2e7000@collabora.com>
+Date: Tue, 15 Mar 2022 15:41:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
-Subject: Re: [PATCH v3 16/21] arm64: dts: mt8192: Add vcodec lat and core nodes
+Subject: Re: [PATCH v3 17/21] arm64: dts: mt8192: Add dpi node
 Content-Language: en-US
 To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
@@ -52,12 +52,13 @@ Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
  Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
  Hui Liu <hui.liu@mediatek.com>
 References: <20220304130809.12924-1-allen-kh.cheng@mediatek.com>
- <20220304130809.12924-17-allen-kh.cheng@mediatek.com>
+ <20220304130809.12924-18-allen-kh.cheng@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220304130809.12924-17-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220304130809.12924-18-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_073913_832783_A88A417D 
-X-CRM114-Status: GOOD (  13.09  )
+X-CRM114-CacheID: sfid-20220315_074110_307825_75F5E8D3 
+X-CRM114-Status: UNSURE (   7.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,46 +76,12 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 04/03/22 14:08, Allen-KH Cheng ha scritto:
-> Add vcodec lat and core nodes for mt8192 SoC.
+> Add dpi node for mt8192 SoC.
 > 
 > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 58 ++++++++++++++++++++++++
->   1 file changed, 58 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index ac69033737bb..5fd1fed354d0 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -1285,6 +1285,64 @@
->   			power-domains = <&spm MT8192_POWER_DOMAIN_ISP2>;
->   		};
->   
-> +		vcodec_dec: vcodec-dec@16000000 {
-> +			compatible = "mediatek,mt8192-vcodec-dec";
-> +			reg = <0 0x16000000 0 0x1000>;	/* VDEC_SYS */
-> +			mediatek,scp = <&scp>;
-> +			iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
 
-Hello Allen-KH,
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-please, use ranges whenever possible. Example:
-
-			ranges = <0 0 0 0x16000000 0 0x26000>;
-
-			vcodec-lat@1000 {
-				reg = <0 0x1000 0 0x800>;
-				.......
-
-			};
-
-			vcodec-core@25000 {
-				reg = <0 0x25000 0 0x1000>;
-				.......
-			};
-
-Thanks,
-Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
