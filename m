@@ -4,65 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1451AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 11:45:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADCACC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 12:24:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/I3vn+IjTYCiEyc7F5yhidAkTBeUBu5MkRDqDXaZVks=; b=dAT8pHfsYp+3cj
-	eC7n4pNWF+xWaiKabqSEGnyVmzKQwoLfNBfQA3sYxyGa9+T/fb9UMtoJ26qwUDJcCKunJ5u35trkt
-	fKdncTJ+JK3ibexg3h5F7Tsafl4dLMMh0DZx3qzt8t+5Wyu0jzJ/Q/PqNjWOenNG01tfYCPNmp2P/
-	hFmNVGehecaMhiGLdBGyKUGGIcRAn35Rci7SSAvMlyRBxDZEAtkscpoIT0b9aKmdHq8yz/KAOg+Ua
-	STrHR1c3Nign17DcRWaM+Efxet1R9gZS7ta3Wje+qGBqwpZgMmC1aU0Ewi3Yt27DdHikuEViLKym6
-	lnRULSYlDPEJ38fcMcSQ==;
+	List-Owner; bh=QLOSOvjR2EXOVYgJwxU4LErUfw1f9DEAyH9b1XW1Csw=; b=BbxTeUExBgUM/+
+	qvzKzWfY80lrImh+DxyWtE2QZrs22W9pyGJNlQzFY41nRn+u2w9XX5uTdvoQ5G3rm6HgiueXWPRFP
+	4YJip9BejsB7TXY59+wcu8mKlWhDk38q2SI9ECjASR//521Ap89So2KM39VJFJAb9ZuCyk6L9zR1U
+	+iK9REcMbVTkhFWGKwD51TeKLWJuN2zqQiuOpLh3TILVHRoVPjsdPNYuJTjiyofeyEXqoa5+IKzcB
+	fw5crje5ID0dAdMAwcx6XG1U7M1zkgGYF8NMwF4qUfvw7F6NQVzod7ep5rUbaxZe3bZ/GJFcjLrtI
+	Le1TZwByj+CUKKt9J5EA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nU5bq-008uOV-3d; Tue, 15 Mar 2022 11:45:02 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nU6DP-0090Yt-Od; Tue, 15 Mar 2022 12:23:51 +0000
+Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nU5bd-008uLE-Pf; Tue, 15 Mar 2022 11:44:51 +0000
-X-UUID: 4e03c3fdfd3e440f856160b1edcec18d-20220315
-X-UUID: 4e03c3fdfd3e440f856160b1edcec18d-20220315
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 851064772; Tue, 15 Mar 2022 04:44:44 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Mar 2022 04:44:42 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Mar 2022 19:44:41 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 15 Mar 2022 19:44:41 +0800
-Message-ID: <77ba20c7fbe42daf27696f784b46c3ad8a43ebc1.camel@mediatek.com>
-Subject: Re: [PATCH V7 1/5] dt-bindings: display: mediatek: add aal binding
- for MT8183
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>, <robh+dt@kernel.org>
-CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <jassisinghbrar@gmail.com>, <fparent@baylibre.com>,
- <yongqiang.niu@mediatek.com>, <hsinyi@chromium.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 15 Mar 2022 19:44:41 +0800
-In-Reply-To: <095b4dad-ade6-c742-1993-e5dc89f5cb93@canonical.com>
-References: <20220314090033.25773-1-rex-bc.chen@mediatek.com>
- <20220314090033.25773-2-rex-bc.chen@mediatek.com>
- <095b4dad-ade6-c742-1993-e5dc89f5cb93@canonical.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nU6DC-0090TZ-GU
+ for linux-mediatek@lists.infradead.org; Tue, 15 Mar 2022 12:23:39 +0000
+Received: by mail-lj1-x235.google.com with SMTP id z26so26199110lji.8
+ for <linux-mediatek@lists.infradead.org>; Tue, 15 Mar 2022 05:23:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=MRpn9k07AvFRGh0gF6YNXgmPxpnxq7wyCuwbzm66mLY=;
+ b=NpcMfLCqOAjT2sSeV2QqGd3mVpMck4r8/tTTwR2NqNCDqUgjj1ku8olci2AYbWVWSM
+ 7/pwvHGIT4rLhKXrwy9JGibkOvzcmbIBtdsjb73CDUIt15Tv1gKSbdqdj00GESjfXH4v
+ Re/lrRPmgkYVNgNBKm3V9vwRYgxGVMxS6fXIANYcBpaUNRxd81mFdoDXuAaZAKxNL7Kr
+ tsNlouITyJipc4mN1YQDc06DHWRtdgOskGMbY2Frn6vypqk1p+pAiP0imz2KQA3QbMbe
+ xMby9/TNvVxnrvP3GrelxqBxGtR10TmBCHNVA8f+vB8C5+BUbC2KK34tQUgLuprmojc6
+ QWdw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=MRpn9k07AvFRGh0gF6YNXgmPxpnxq7wyCuwbzm66mLY=;
+ b=aaSkX0VJP0LiQQoWpDgKr87TCKrKx0WM5Pa5K2LBKgwNMXSwJ3/gMPaFBFSbkCilf0
+ iX3gS0tyMGTzNap8ykfp+CBiH/cBMbmFoU+SKHxUM3VBT2vJHs1WMoPm9EIHqNGDuUmn
+ WJMTvml+K6pWSq6OgefL0mkNoCrmksxIEAvJBlqf239leOGw942u+O2hddrjjVgVghpv
+ yjJyI1JkWuWU19FSD3pGTKKPF3641JGq/mqXWJhdQYsagnEY08yP9u9wEYqfuTweF23u
+ pMATTNCX0Vcsi/lSbx0PnbyYIPKZH4t4BPWRLjABP/o493O0puTkP8721ES/LOR65dCB
+ VE7g==
+X-Gm-Message-State: AOAM533dyEZXgjdUoKuhHKAuQfVxqD2VSn/R6dv4Y6g3IMu1e0NZsqYe
+ 2F370RyDfBNsadShcV08KpwKe7IN3dNN0nxxrIeqnw==
+X-Google-Smtp-Source: ABdhPJzu8qPCA6D1kpxXHeMtMO8O3TbgLh0QyLY8oWy5P2UKXJg3HmMXMtdXQRnulGznlGIGslhhvaCuFE5JlYb47eI=
+X-Received: by 2002:a2e:890e:0:b0:249:295a:eb40 with SMTP id
+ d14-20020a2e890e000000b00249295aeb40mr9371355lji.463.1647347015757; Tue, 15
+ Mar 2022 05:23:35 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220311103320.3072171-1-abailon@baylibre.com>
+In-Reply-To: <20220311103320.3072171-1-abailon@baylibre.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 15 Mar 2022 13:22:59 +0100
+Message-ID: <CAPDyKFp4QbaCvOQoK_5rdh4X_iuvvsZ6M-iGiBCNp-VuQ+WChg@mail.gmail.com>
+Subject: Re: [PATCH v2] mmc: mtk-sd: Silence delay phase calculation debug log
+To: Alexandre Bailon <abailon@baylibre.com>
+Cc: chaotian.jing@mediatek.com, matthias.bgg@gmail.com, 
+ linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_044449_868457_DB48CC13 
-X-CRM114-Status: GOOD (  13.63  )
+X-CRM114-CacheID: sfid-20220315_052338_556946_75D2EE04 
+X-CRM114-Status: GOOD (  15.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,56 +84,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-03-15 at 11:56 +0100, Krzysztof Kozlowski wrote:
-> On 14/03/2022 10:00, Rex-BC Chen wrote:
-> > Add aal binding for MT8183.
-> > 
-> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> > Acked-by: Rob Herring <robh@kernel.org>
-> > ---
-> >  .../devicetree/bindings/display/mediatek/mediatek,aal.yaml      |
-> > 2 ++
-> >  1 file changed, 2 insertions(+)
-> > 
-> > diff --git
-> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.y
-> > aml
-> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.y
-> > aml
-> > index 61f0ed1e388f..6c8c83988a24 100644
-> > ---
-> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.y
-> > aml
-> > +++
-> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.y
-> > aml
-> > @@ -23,6 +23,8 @@ properties:
-> >      oneOf:
-> >        - items:
-> >            - const: mediatek,mt8173-disp-aal
-> > +      - items:
-> > +          - const: mediatek,mt8183-disp-aal
-> 
-> Use enum in previous entry. This is weird setup to have items with
-> one
-> element and then duplicate it for another oneOf entry.
-> 
-> >        - items:
-> >            - enum:
-> >                - mediatek,mt2712-disp-aal
-> 
-> 
-> Best regards,
-> Krzysztof
+On Fri, 11 Mar 2022 at 11:33, Alexandre Bailon <abailon@baylibre.com> wrote:
+>
+> The driver prints the following log everytime data is written to RPMB:
+> mtk-msdc 11230000.mmc: phase: [map:ffffffff] [maxlen:32] [final:10]
+>
+> dev_info is used to print that log but it seems that log is only
+> useful for debbuging. Use dev_dbg instead of dev_info.
+>
+> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Hello Krzysztof,
+Applied for next, thanks!
 
-Thanks for your review.
-I will modify it in next version.
+Kind regards
+Uffe
 
-BRs,
-Rex
 
+> ---
+>  drivers/mmc/host/mtk-sd.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index d5a9c269d492..05c8b4de46f3 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -1914,8 +1914,8 @@ static struct msdc_delay_phase get_best_delay(struct msdc_host *host, u32 delay)
+>                 final_phase = (start_final + len_final / 3) % PAD_DELAY_MAX;
+>         else
+>                 final_phase = (start_final + len_final / 2) % PAD_DELAY_MAX;
+> -       dev_info(host->dev, "phase: [map:%x] [maxlen:%d] [final:%d]\n",
+> -                delay, len_final, final_phase);
+> +       dev_dbg(host->dev, "phase: [map:%x] [maxlen:%d] [final:%d]\n",
+> +               delay, len_final, final_phase);
+>
+>         delay_phase.maxlen = len_final;
+>         delay_phase.start = start_final;
+> --
+> 2.34.1
+>
 
 _______________________________________________
 Linux-mediatek mailing list
