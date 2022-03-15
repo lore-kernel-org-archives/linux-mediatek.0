@@ -4,105 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 056B6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 15:45:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A59E4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Mar 2022 16:25:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l3D+V2ml7aooRJMMxRXIalmOpLBqlxfAxyi784312nk=; b=iJ+102wzDX5kGo
-	KK74nIQZ14HxRhEpo+vmB/BK5YESvCjta3pQ8fXlNq5HVKxNGuSYT0CuJpidtpjeDgp7gY7DdCKna
-	U/+mEDfEH1T1UXRh0U5cVK4Ai+Fz83gasdxRjz+b5iGgNPioobr6r+U7F5Nz5USYiJ+j7zNJ1YuOA
-	mK2az7ArIqP8QvBkPRauLc6yPYLXDvc9wcq/W146fpL3d+xUx0vJgwJFL4HHIVygiU3DktpQ1EJCq
-	WuWWQKD/sFkEoiLWne7mi4xAxuW9AJHBP4WdLHjcwkF1rsNe0Hf2eOX4x1ivBFwk1bJL5k/T9xsxm
-	qcp1Z98IZECHYVQCbB+A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WCoNEXEg5f82iSlWWtIQHEEPpS1XY9ZKJoFEOoyVo48=; b=3m6N1CXOHC6ZPS
+	u+kYb3KqUhB5P8mHfOVG8P7ZEskxzroWs6fXsVFU/AzbQdWoDWDokqi2Qm6Y2fwXbp1TyhHnF6adf
+	wqSdUvQpnTMOqv8mgpLMc/YyNz0tXh1KuNgU9EceU6yCnUcf1rjiXTNPNAN7fSpdppwMU+Zkq4fgx
+	ZaKHv5+6qrWVtXe0unKXH5J07rjARejDFnEiSsWvGyPPyYZz1FK7IxShWcaIQp24gs7tezipAy8zh
+	PG77ynzi/yN98DME7SiNoFcR5xEfu4VFlVaciHhUgyWmx2YYiK21Yg6Phh7lz/D2Jfdm2ZSLgeqAX
+	gcFxe8hIXELAWMQo8tpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nU9MP-009ljo-7q; Tue, 15 Mar 2022 15:45:21 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1nU9yl-009sMM-Ny; Tue, 15 Mar 2022 16:24:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nU9MM-009li9-JA
- for linux-mediatek@lists.infradead.org; Tue, 15 Mar 2022 15:45:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1647359117;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=bYl1LSBqhgpJOo7T6+g24bgPe/Xpp9f9wR/UlrFgmkY=;
- b=bEimwjB7kvETAn4XMfFwiJe0hZNoakIphJPVkHcRW+9p6sUdJncxyQff4sa0HOi1T4nrH2
- ub9OJ/UdwYfYqFd/fGhZaHFoqg5i0GOM3+lMZ05Ls5/UrQM10rc5bqJQR/qBgCAVv/M0g9
- DeQKoAqTaRzFZFVSFjY+OR+PDUA31yY=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-509-p9pASEfwOieVX2ibIVMrlA-1; Tue, 15 Mar 2022 11:45:16 -0400
-X-MC-Unique: p9pASEfwOieVX2ibIVMrlA-1
-Received: by mail-wr1-f71.google.com with SMTP id
- h11-20020a5d430b000000b001f01a35a86fso5413798wrq.4
- for <linux-mediatek@lists.infradead.org>; Tue, 15 Mar 2022 08:45:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:organization:in-reply-to
- :content-transfer-encoding;
- bh=bYl1LSBqhgpJOo7T6+g24bgPe/Xpp9f9wR/UlrFgmkY=;
- b=qqj8BMmReGanitTi0ddEGskBG9WM0Hvfqka7hGKMcovkSZZ5n2b7DhTZQSyooWv4to
- 0sHjqM3rFxyIgqf+q03qym3wIbySJxkmLqW+EaUE72Yl/5S8XOq63S9JgCjgEX92OZii
- r6IdEYAhBoqDFmXP/p+H1Y2RbyKR9LL8lOVskA1+o6IP0bnC577rCoTDmGnTv2o5kHnp
- IuFnlgHxIFf7PYb/wL65OaJng0VarQScXl2SFVMKZHrtQe9X8rMYX4ResdqVy9CKK5gm
- L4PcMaUIF+tKxxyTAqpa1OhSlvNDFBIDwYhTO0pFWq4a7MLOlYBKfPAv4EmxccAELOrp
- c+yQ==
-X-Gm-Message-State: AOAM530TnBuS4s8sebTHwI5iQHG7i55rtz9ogEaHqHgmH8pq+2GunGY5
- K1SiElK2F8Dr1GMBbQexEy2CvWPb5bJTDWlEFBp9oWJCuiVzLO+sFxQouZgxbMwh+0j3WtA5MBe
- imCJv9XaEsrWkTW3bWsX/eqESYwEs1yHF
-X-Received: by 2002:a5d:5887:0:b0:1f1:eb44:724e with SMTP id
- n7-20020a5d5887000000b001f1eb44724emr21315051wrf.44.1647359114936; 
- Tue, 15 Mar 2022 08:45:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzPoEJ1GBznl0gSlJSA8PP9PMIE7udTKKIyZAmfT4CMnFBi93qUV9w8thhZ2jRKEb3NPxfnVA==
-X-Received: by 2002:a5d:5887:0:b0:1f1:eb44:724e with SMTP id
- n7-20020a5d5887000000b001f1eb44724emr21315036wrf.44.1647359114709; 
- Tue, 15 Mar 2022 08:45:14 -0700 (PDT)
-Received: from ?IPV6:2003:cb:c708:1800:42bd:3cac:d22a:3c62?
- (p200300cbc708180042bd3cacd22a3c62.dip0.t-ipconnect.de.
- [2003:cb:c708:1800:42bd:3cac:d22a:3c62])
- by smtp.gmail.com with ESMTPSA id
- r4-20020a1c2b04000000b0038a0e15ee13sm2637525wmr.8.2022.03.15.08.45.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 15 Mar 2022 08:45:14 -0700 (PDT)
-Message-ID: <4cb789a5-c49c-f095-1f7e-67be65ba508a@redhat.com>
-Date: Tue, 15 Mar 2022 16:45:13 +0100
+ id 1nU9yi-009sL9-5p
+ for linux-mediatek@lists.infradead.org; Tue, 15 Mar 2022 16:24:58 +0000
+X-UUID: 82ba5ddbc1e4462d8d2e9979c61dfe54-20220315
+X-UUID: 82ba5ddbc1e4462d8d2e9979c61dfe54-20220315
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <deren.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 922478829; Tue, 15 Mar 2022 09:24:48 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Mar 2022 09:24:47 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 16 Mar 2022 00:24:45 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 16 Mar 2022 00:24:45 +0800
+From: Deren Wu <Deren.Wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
+ Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+ KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+ <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
+ <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
+ Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
+ Chen" <shayne.chen@mediatek.com>, linux-wireless
+ <linux-wireless@vger.kernel.org>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH] mt76: fix wrong HE data rate in sniffer tool
+Date: Wed, 16 Mar 2022 00:24:34 +0800
+Message-ID: <0c9519fe98d40970017a01e40c6d35885937fde2.1647360139.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.2
-Subject: Re: [PATCH] mm/migrate: fix race between lock page and clear
- PG_Isolated
-To: Andrew Morton <akpm@linux-foundation.org>,
- Andrew Yang <andrew.yang@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Matthew Wilcox <willy@infradead.org>, Vlastimil Babka <vbabka@suse.cz>,
- David Howells <dhowells@redhat.com>,
- William Kucharski <william.kucharski@oracle.com>,
- Yang Shi <shy828301@gmail.com>, Marc Zyngier <maz@kernel.org>,
- linux-kernel@vger.kernel.org, linux-mm@kvack.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- wsd_upstream@mediatek.com, Nicholas Tang <nicholas.tang@mediatek.com>,
- Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-References: <20220315030515.20263-1-andrew.yang@mediatek.com>
- <20220314212127.a2797926ee0ef8a7ad05dcaa@linux-foundation.org>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat
-In-Reply-To: <20220314212127.a2797926ee0ef8a7ad05dcaa@linux-foundation.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_084518_773305_EEA172B5 
-X-CRM114-Status: GOOD (  14.21  )
+X-CRM114-CacheID: sfid-20220315_092456_256286_4D30B621 
+X-CRM114-Status: UNSURE (   9.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,37 +80,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 15.03.22 05:21, Andrew Morton wrote:
-> On Tue, 15 Mar 2022 11:05:15 +0800 Andrew Yang <andrew.yang@mediatek.com> wrote:
-> 
->> When memory is tight, system may start to compact memory for large
->> continuous memory demands. If one process tries to lock a memory page
->> that is being locked and isolated for compaction, it may wait a long time
->> or even forever. This is because compaction will perform non-atomic
->> PG_Isolated clear while holding page lock, this may overwrite PG_waiters
->> set by the process that can't obtain the page lock and add itself to the
->> waiting queue to wait for the lock to be unlocked.
->>
->> CPU1                            CPU2
->> lock_page(page); (successful)
->>                                 lock_page(); (failed)
->> __ClearPageIsolated(page);      SetPageWaiters(page) (may be overwritten)
->> unlock_page(page);
->>
->> The solution is to not perform non-atomic operation on page flags while
->> holding page lock.
-> 
-> Sure, the non-atomic bitop optimization is really risky and I suspect
-> we reach for it too often.  Or at least without really clearly
-> demonstrating that it is safe, and documenting our assumptions.
+From: Deren Wu <deren.wu@mediatek.com>
 
-I agree. IIRC, non-atomic variants are mostly only safe while the
-refcount is 0. Everything else is just absolutely fragile.
+Due to the missing IEEE80211_RADIOTAP_HE_DATA1_BW_RU_ALLOC_KNOWN in
+status report, the HE rate in wirehsark/tcpdump always shows wrong value.
+Applications will refer to IEEE80211_RADIOTAP_HE_DATA5_DATA_BW_RU_ALLOC
+when the flag is set and shows the correct data rate.
 
+Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 6 ++++--
+ drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 6 ++++--
+ 2 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 47d5a993c9c7..e9e7efbf350d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -349,14 +349,16 @@ mt7915_mac_decode_he_radiotap(struct sk_buff *skb, __le32 *rxv, u32 mode)
+ 	case MT_PHY_TYPE_HE_SU:
+ 		he->data1 |= HE_BITS(DATA1_FORMAT_SU) |
+ 			     HE_BITS(DATA1_UL_DL_KNOWN) |
+-			     HE_BITS(DATA1_BEAM_CHANGE_KNOWN);
++			     HE_BITS(DATA1_BEAM_CHANGE_KNOWN) |
++			     HE_BITS(DATA1_BW_RU_ALLOC_KNOWN);
+ 
+ 		he->data3 |= HE_PREP(DATA3_BEAM_CHANGE, BEAM_CHNG, rxv[14]) |
+ 			     HE_PREP(DATA3_UL_DL, UPLINK, rxv[2]);
+ 		break;
+ 	case MT_PHY_TYPE_HE_EXT_SU:
+ 		he->data1 |= HE_BITS(DATA1_FORMAT_EXT_SU) |
+-			     HE_BITS(DATA1_UL_DL_KNOWN);
++			     HE_BITS(DATA1_UL_DL_KNOWN) |
++			     HE_BITS(DATA1_BW_RU_ALLOC_KNOWN);
+ 
+ 		he->data3 |= HE_PREP(DATA3_UL_DL, UPLINK, rxv[2]);
+ 		break;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index 8bd8b4fe1047..3ff2a4c428ce 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -304,14 +304,16 @@ mt7921_mac_decode_he_radiotap(struct sk_buff *skb, __le32 *rxv, u32 mode)
+ 	case MT_PHY_TYPE_HE_SU:
+ 		he->data1 |= HE_BITS(DATA1_FORMAT_SU) |
+ 			     HE_BITS(DATA1_UL_DL_KNOWN) |
+-			     HE_BITS(DATA1_BEAM_CHANGE_KNOWN);
++			     HE_BITS(DATA1_BEAM_CHANGE_KNOWN) |
++			     HE_BITS(DATA1_BW_RU_ALLOC_KNOWN);
+ 
+ 		he->data3 |= HE_PREP(DATA3_BEAM_CHANGE, BEAM_CHNG, rxv[14]) |
+ 			     HE_PREP(DATA3_UL_DL, UPLINK, rxv[2]);
+ 		break;
+ 	case MT_PHY_TYPE_HE_EXT_SU:
+ 		he->data1 |= HE_BITS(DATA1_FORMAT_EXT_SU) |
+-			     HE_BITS(DATA1_UL_DL_KNOWN);
++			     HE_BITS(DATA1_UL_DL_KNOWN) |
++			     HE_BITS(DATA1_BW_RU_ALLOC_KNOWN);
+ 
+ 		he->data3 |= HE_PREP(DATA3_UL_DL, UPLINK, rxv[2]);
+ 		break;
 -- 
-Thanks,
-
-David / dhildenb
+2.18.0
 
 
 _______________________________________________
