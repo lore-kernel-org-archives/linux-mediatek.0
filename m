@@ -4,75 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08B20C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 13:35:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D1FCC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 14:14:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=icHKrC+ZUVNLRzqIQ0Rv72/29tiMjrivczyahS5Ha5Y=; b=u5CWhyiK4jAEy2
-	uCMSP1T3bHvBUy+gZQc/KMGzZNfcO1H3iQl8GgXT5CFqk/wYSGrGdAhfQSpcOyOiIlGWR3I4JF3nj
-	l8eVATFypvYe5gpvTze1kXnlZCv3+Rip5lPE9uGE5PeRKs9RVUjI4vRYumGBvq0vCUjto8dhVEemE
-	i1QnER5ktvdj/4esJX4Wtd8XYByuENv1ZGml6B+RrfIvzCF6eONIvMXYv9d7PnA/sxkhGIIHiyG5N
-	PAlPwH/3Pvv+5uyovYkBIZ8sK2whxdD4mlXRxIDKcyCB92bSz7TuIaqNaGKb0SfceGHjkqg69pRbJ
-	BorvqukQ2IVCnLUQAmqQ==;
+	List-Owner; bh=gcPiWqk8eegX/S5Kks1Ukm3bk92UUZwXvrPwp/i27LQ=; b=v+RrexTACWIXVG
+	mkYtW0k+TX1YZMlN0iZSVUA/4w3+ozl/USx5ScOp3HNM+XHC/tkl32U1dgoUPx2o56J1/QsAE/SsC
+	nVQKoC6ECqaXsuriMvvSQy6vNDT0esM/PWGQ7mZlda79Aa0nHx4mvF0S9sHh24ebDDk2I5bvtajna
+	nUS193ZR3w2NeFftKRvTHXnLfWxYj/9GW5Zn6x9TazXWLkn/iHUhM0j3tvBzDcUseipGwO08sgnRD
+	CjeCtUyykUuhpQ/JwlybZiJv6Fr4OqDjsKw3hfFrKnNXj/RKCvtQniEWKKnkQ/otXEawy/QK2/qBb
+	1Dno4i8eIJ2oHXsY6f6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUTo8-00D4Ek-MV; Wed, 16 Mar 2022 13:35:20 +0000
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
+	id 1nUUQD-00DBWW-Ii; Wed, 16 Mar 2022 14:14:41 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUTo4-00D4A5-J5
- for linux-mediatek@lists.infradead.org; Wed, 16 Mar 2022 13:35:18 +0000
-Received: by mail-yb1-xb29.google.com with SMTP id j2so4544670ybu.0
- for <linux-mediatek@lists.infradead.org>; Wed, 16 Mar 2022 06:35:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=WNRIm2snhOLrjHDrRT45Al18e6yX+6IjtBw2hvIFtuc=;
- b=bl6xXHfUk0jza37f3JJNngv7+hb+rNkTVteG8qFGpuWSZHFNpW4/ck2144lMbppgke
- VedQEh+UgY27QEqhYUahKxZl39G0PAUbDtvPwRPCvG2MDO02K9a0KFdCt+8/lRSGUOHd
- lzT7xMJd3npkRtbQq5icH4pCvllCLjPtlpTzw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=WNRIm2snhOLrjHDrRT45Al18e6yX+6IjtBw2hvIFtuc=;
- b=eMDdjhnWq+KMtoBmL38pWaVxVSq8SZ4xuKDIGlBaBRra8dIiTWT7DMqj9/ImiafYk2
- nrfIJWoY9NcrxlYFd7RU2yaQibKM6bomVxigGugtVemMk9yXHi7pYVu55Y2JOdSGP3W9
- G5+ejTIPvDYGGgg6TsgLBMDwqRJZy4VNmJ5W6pzA8DOEKJo1ewuv+IjzA8FJRXBnknh8
- PooIZt3e/wtomH5vo7Y29U1OqHhBnPoGSaFUlkpae1Q4NC3fHLNZKlHRALFh5PznfIF5
- pz5fKWnb1kQ/1rQAv1v85Ot2LD5JRmDiB3sW+SJTQYpYjNpaeo2cAgsr1fSfFR88kDV1
- aTPg==
-X-Gm-Message-State: AOAM5321iuETmoP3KxdIHGMtJuF0+zxMkPKezFKL1VGJrlG0xBGPxGly
- hqLKL6+cL+54XBpvA2oX7qv5sTWOfGgY0E0M4S28sQ==
-X-Google-Smtp-Source: ABdhPJzBoD2Jj2tGf6FiQyu4qnE17Z74AigshCqdfSdH9Nn6dOvJw3Guj90WJtvPBJPDHtGui5i1uCXGBcxMlWg7L7k=
-X-Received: by 2002:a25:3403:0:b0:628:a2e4:ae8a with SMTP id
- b3-20020a253403000000b00628a2e4ae8amr27494313yba.219.1647437712360; Wed, 16
- Mar 2022 06:35:12 -0700 (PDT)
+ id 1nUUPw-00DBQp-PU; Wed, 16 Mar 2022 14:14:26 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 561A5612FF;
+ Wed, 16 Mar 2022 14:14:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D26DAC340EC;
+ Wed, 16 Mar 2022 14:14:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1647440062;
+ bh=P35xTf4iwp/DUEsFUMcqfNfZ7QDo6NaErTy6nzlq8/c=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=F5l+ZlbSLSUx02v2BspO11mre3cmcbwRYHNts3vBRnLVZQbSF3gVfgSPvRQQXqTXA
+ 2OQxFsWhsi2WYJJki0MUgiMBbQDJm5XdE8/T+wNXZUsd6xQoq5efKaAB7VJQJCLv2d
+ BDiNphQ3Y1nirexAIr5YqjKR8VkJSryMY/iSPixZ2IiMEgCpEFH5AXLQ91KDTdnVIj
+ nR+yM0/9GZ3Hm3Ndn3G9oIPvsHCTJ+TjxVNterJwYg0XYR0S7ZrgBqiWBV4eGnxk2x
+ LkBsCmLXeSi4UXR98ZteKUD0jlyaPT48raoryeugUjD+rNaSCEIrni07XKqHf53+4H
+ VIfjhQ+szdo2Q==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Lina Wang <lina.wang@mediatek.com>,
+ Steffen Klassert <steffen.klassert@secunet.com>,
+ Sasha Levin <sashal@kernel.org>, davem@davemloft.net,
+ yoshfuji@linux-ipv6.org, dsahern@kernel.org, kuba@kernel.org,
+ matthias.bgg@gmail.com, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.16 04/13] xfrm: fix tunnel model fragmentation
+ behavior
+Date: Wed, 16 Mar 2022 10:13:45 -0400
+Message-Id: <20220316141354.247750-4-sashal@kernel.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220316141354.247750-1-sashal@kernel.org>
+References: <20220316141354.247750-1-sashal@kernel.org>
 MIME-Version: 1.0
-References: <20220218145437.18563-1-granquet@baylibre.com>
- <20220218145437.18563-19-granquet@baylibre.com>
-In-Reply-To: <20220218145437.18563-19-granquet@baylibre.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 16 Mar 2022 21:35:01 +0800
-Message-ID: <CAGXv+5GfiVhK1cvgjnnxHxHnL7rQnUyQJD93d9NHNmT+txfgcg@mail.gmail.com>
-Subject: Re: [PATCH v8 18/19] drm/mediatek: change the aux retries times when
- receiving AUX_DEFER
-To: Guillaume Ranquet <granquet@baylibre.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie, 
- daniel@ffwll.ch, robh+dt@kernel.org, maarten.lankhorst@linux.intel.com, 
- mripard@kernel.org, tzimmermann@suse.de, matthias.bgg@gmail.com, 
- chunfeng.yun@mediatek.com, kishon@ti.com, vkoul@kernel.org, deller@gmx.de, 
- ck.hu@mediatek.com, jitao.shi@mediatek.com, 
- angelogioacchino.delregno@collabora.com, dri-devel@lists.freedesktop.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-phy@lists.infradead.org, linux-fbdev@vger.kernel.org
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220316_063516_669391_ADAD34EB 
-X-CRM114-Status: UNSURE (   7.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220316_071424_941078_162ABFDD 
+X-CRM114-Status: GOOD (  19.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,21 +79,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 18, 2022 at 11:15 PM Guillaume Ranquet
-<granquet@baylibre.com> wrote:
->
-> From: Jitao Shi <jitao.shi@mediatek.com>
->
-> DP 1.4a Section 2.8.7.1.5.6.1:
-> A DP Source device shall retry at least seven times upon receiving
-> AUX_DEFER before giving up the AUX transaction.
->
-> Aux should retry to send msg whether how many bytes.
->
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+From: Lina Wang <lina.wang@mediatek.com>
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+[ Upstream commit 4ff2980b6bd2aa6b4ded3ce3b7c0ccfab29980af ]
+
+in tunnel mode, if outer interface(ipv4) is less, it is easily to let
+inner IPV6 mtu be less than 1280. If so, a Packet Too Big ICMPV6 message
+is received. When send again, packets are fragmentized with 1280, they
+are still rejected with ICMPV6(Packet Too Big) by xfrmi_xmit2().
+
+According to RFC4213 Section3.2.2:
+if (IPv4 path MTU - 20) is less than 1280
+	if packet is larger than 1280 bytes
+		Send ICMPv6 "packet too big" with MTU=1280
+                Drop packet
+        else
+		Encapsulate but do not set the Don't Fragment
+                flag in the IPv4 header.  The resulting IPv4
+                packet might be fragmented by the IPv4 layer
+                on the encapsulator or by some router along
+                the IPv4 path.
+	endif
+else
+	if packet is larger than (IPv4 path MTU - 20)
+        	Send ICMPv6 "packet too big" with
+                MTU = (IPv4 path MTU - 20).
+                Drop packet.
+        else
+                Encapsulate and set the Don't Fragment flag
+                in the IPv4 header.
+        endif
+endif
+Packets should be fragmentized with ipv4 outer interface, so change it.
+
+After it is fragemtized with ipv4, there will be double fragmenation.
+No.48 & No.51 are ipv6 fragment packets, No.48 is double fragmentized,
+then tunneled with IPv4(No.49& No.50), which obey spec. And received peer
+cannot decrypt it rightly.
+
+48              2002::10        2002::11 1296(length) IPv6 fragment (off=0 more=y ident=0xa20da5bc nxt=50)
+49   0x0000 (0) 2002::10        2002::11 1304         IPv6 fragment (off=0 more=y ident=0x7448042c nxt=44)
+50   0x0000 (0) 2002::10        2002::11 200          ESP (SPI=0x00035000)
+51              2002::10        2002::11 180          Echo (ping) request
+52   0x56dc     2002::10        2002::11 248          IPv6 fragment (off=1232 more=n ident=0xa20da5bc nxt=50)
+
+xfrm6_noneed_fragment has fixed above issues. Finally, it acted like below:
+1   0x6206 192.168.1.138   192.168.1.1 1316 Fragmented IP protocol (proto=Encap Security Payload 50, off=0, ID=6206) [Reassembled in #2]
+2   0x6206 2002::10        2002::11    88   IPv6 fragment (off=0 more=y ident=0x1f440778 nxt=50)
+3   0x0000 2002::10        2002::11    248  ICMPv6    Echo (ping) request
+
+Signed-off-by: Lina Wang <lina.wang@mediatek.com>
+Signed-off-by: Steffen Klassert <steffen.klassert@secunet.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ net/ipv6/xfrm6_output.c   | 16 ++++++++++++++++
+ net/xfrm/xfrm_interface.c |  5 ++++-
+ 2 files changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/net/ipv6/xfrm6_output.c b/net/ipv6/xfrm6_output.c
+index d0d280077721..ad07904642ca 100644
+--- a/net/ipv6/xfrm6_output.c
++++ b/net/ipv6/xfrm6_output.c
+@@ -45,6 +45,19 @@ static int __xfrm6_output_finish(struct net *net, struct sock *sk, struct sk_buf
+ 	return xfrm_output(sk, skb);
+ }
+ 
++static int xfrm6_noneed_fragment(struct sk_buff *skb)
++{
++	struct frag_hdr *fh;
++	u8 prevhdr = ipv6_hdr(skb)->nexthdr;
++
++	if (prevhdr != NEXTHDR_FRAGMENT)
++		return 0;
++	fh = (struct frag_hdr *)(skb->data + sizeof(struct ipv6hdr));
++	if (fh->nexthdr == NEXTHDR_ESP || fh->nexthdr == NEXTHDR_AUTH)
++		return 1;
++	return 0;
++}
++
+ static int __xfrm6_output(struct net *net, struct sock *sk, struct sk_buff *skb)
+ {
+ 	struct dst_entry *dst = skb_dst(skb);
+@@ -73,6 +86,9 @@ static int __xfrm6_output(struct net *net, struct sock *sk, struct sk_buff *skb)
+ 		xfrm6_local_rxpmtu(skb, mtu);
+ 		kfree_skb(skb);
+ 		return -EMSGSIZE;
++	} else if (toobig && xfrm6_noneed_fragment(skb)) {
++		skb->ignore_df = 1;
++		goto skip_frag;
+ 	} else if (!skb->ignore_df && toobig && skb->sk) {
+ 		xfrm_local_error(skb, mtu);
+ 		kfree_skb(skb);
+diff --git a/net/xfrm/xfrm_interface.c b/net/xfrm/xfrm_interface.c
+index 4e3c62d1ad9e..1e8b26eecb3f 100644
+--- a/net/xfrm/xfrm_interface.c
++++ b/net/xfrm/xfrm_interface.c
+@@ -304,7 +304,10 @@ xfrmi_xmit2(struct sk_buff *skb, struct net_device *dev, struct flowi *fl)
+ 			if (mtu < IPV6_MIN_MTU)
+ 				mtu = IPV6_MIN_MTU;
+ 
+-			icmpv6_ndo_send(skb, ICMPV6_PKT_TOOBIG, 0, mtu);
++			if (skb->len > 1280)
++				icmpv6_ndo_send(skb, ICMPV6_PKT_TOOBIG, 0, mtu);
++			else
++				goto xmit;
+ 		} else {
+ 			if (!(ip_hdr(skb)->frag_off & htons(IP_DF)))
+ 				goto xmit;
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
