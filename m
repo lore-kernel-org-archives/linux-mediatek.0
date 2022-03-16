@@ -4,60 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45266C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 08:19:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 651CDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 08:36:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JhOSaHa9IDz3/tNt9LnHWYTw0O6AatKt7IjeipdZgHs=; b=4RyJoJyPNS6Wap
-	VSlngDolSuVVWfkCcGQ4p3FgI90i1eWwDzSZTpU2rPz0RRLk4SteZL3ryVzi9uDtCGAehK2ey076P
-	jxoo1f6l0/mT6i0To+H3nUtrhwtHaP5McnXWReITeCjcyVBJdZPLqA3u2ePD4XQFWT1M2BTY4JR9S
-	SYhvHxGFfVn2Ej6O9M32IM+hzzkpBGrPJyaz8gFj1gylkZ2Fzntk8CraB20DSKfhftglspxFIaRL3
-	rczSBfdT7n4dw0sd1WEHfaWrZaembRF5dV4Ib9QZov1c2JAaeWL8l5ZbrdmFXc9Vmy3N0zPmc/j90
-	rIvTMkKdfuctE8znVcCw==;
+	List-Owner; bh=fgO5Pebnxa5PuajTVxaIlnROe+HzKNQ6/WAMMNwJDI4=; b=mOUK1OoYEajNft
+	Ad5Vl4wOKoLl955/ZyNsOyFdGzYvvuiYQeewkpw4ttNTA5ZMzlps6g7NT6HF9xcWOAEm3LIieQ3r0
+	khsaIqwcxuz8dlVdmN5e89ORO45QJuWVAna9VRYSsrPUsp3lvUUgEMc4AcvmJMNunVnuWlwTZ2aXv
+	QbPvB8+fzThUtbV9EUa+KJz2cHG12gGDY/RGrAk648Gn0h3eaAUMwIVirc8/we9R6QDR3/D33QGlN
+	oesl6LLo0mfi6JZ3amLoxkTE7Q1ARZP6R/wtspN5ekhDAVtPfspAtY5dpWvEQu/wpLNzluIqTdkhV
+	qEHvV5s0wha1YbMPWj4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUOrx-00C5d8-V6; Wed, 16 Mar 2022 08:18:57 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nUP8l-00C8mr-7p; Wed, 16 Mar 2022 08:36:19 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUOrl-00C5YA-9t; Wed, 16 Mar 2022 08:18:46 +0000
-X-UUID: 86b0443f302840f0b188198ea55c8c05-20220316
-X-UUID: 86b0443f302840f0b188198ea55c8c05-20220316
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2110501651; Wed, 16 Mar 2022 01:18:42 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Mar 2022 01:18:40 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 16 Mar 2022 16:18:39 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 16 Mar 2022 16:18:38 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <yang.lee@linux.alibaba.com>
-CC: <abaci@linux.alibaba.com>, <andrew-ct.chen@mediatek.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-media@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <matthias.bgg@gmail.com>, <mchehab@kernel.org>, <tiffany.lin@mediatek.com>
-Subject: Re: [PATCH -next] media: platform: Remove unnecessary print function
- dev_err()
-Date: Wed, 16 Mar 2022 16:18:39 +0800
-Message-ID: <20220316081839.22093-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220316001411.80167-1-yang.lee@linux.alibaba.com>
-References: <20220316001411.80167-1-yang.lee@linux.alibaba.com>
+ id 1nUP8U-00C8iR-6h; Wed, 16 Mar 2022 08:36:07 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id EFC5B1F42B80
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1647419760;
+ bh=efJeF6dJBeqxwFUqrdFttfn3nFeJx5A/SlouGiahdVs=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=I4ANDCEjwel37JTQn85VKIWejFYOpyQ5k4f5gxx8UpCivaB4pcanORinaev9dBjN/
+ 5x4jXs0nGSy1KyAbqbwM+LMileTZEeTh2gUVZHbwJ6IytFNfV9XnUlVo0pD9IcAapl
+ sD73bvhIEs8AiyWZPFmh5TvrXFBcGdbq2LAEgn+5Uli4H9z6DO5/kz8nW6nhJo2/6L
+ wTPA0/LwuXnlUBTWX0VO2gqvRlABO9+n3qLIsQpqm3hopPpi2KranGBQTq2sGMwNvj
+ dcNniQhl0bV0aTz5ZjSi1J4FA9E2BWWPzRQ6pfWWeOZl6XqgWEvj1zCMjJZQzrYnOi
+ 11/z8ZMpkPUlQ==
+Message-ID: <fb2f47a9-49ca-b7d1-64a3-c1bada0519f5@collabora.com>
+Date: Wed, 16 Mar 2022 09:35:56 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH v11 0/3] media: mediatek: support mdp3 on mt8183 platform
+Content-Language: en-US
+To: Moudy Ho <moudy.ho@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Jernej Skrabec <jernej.skrabec@siol.net>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>, Rob Landley <rob@landley.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>,
+ tfiga@chromium.org, drinkcat@chromium.org, pihsun@chromium.org,
+ hsinyi@google.com, Maoguang Meng <maoguang.meng@mediatek.com>,
+ daoyuan huang <daoyuan.huang@mediatek.com>,
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, menghui.lin@mediatek.com,
+ sj.huang@mediatek.com, allen-kh.cheng@mediatek.com, randy.wu@mediatek.com,
+ jason-jh.lin@mediatek.com, roy-cw.yeh@mediatek.com,
+ river.cheng@mediatek.com, srv_heupstream@mediatek.com
+References: <20220105093758.6850-1-moudy.ho@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220105093758.6850-1-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220316_011845_375125_643F3D90 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20220316_013602_591729_6E2652DC 
+X-CRM114-Status: GOOD (  30.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,71 +78,134 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yang,
-
->The print function dev_err() is redundant because platform_get_irq()
->already prints an error.
->
->Eliminate the follow coccicheck warnings:
->./drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c:119:2-9:
->line 119 is redundant because platform_get_irq() already prints an error
->./drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c:103:2-9:
->line 103 is redundant because platform_get_irq() already prints an error
->
->Reported-by: Abaci Robot <abaci@linux.alibaba.com>
->Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
->---
-> drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c | 4 +---
-> drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c  | 4 +---
-> 2 files changed, 2 insertions(+), 6 deletions(-)
->
->diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
->index 48dad9bb13d2..df7b25e9cbc8 100644
->--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
->+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
->@@ -115,10 +115,8 @@ static int mtk_vcodec_init_dec_resources(struct mtk_vcodec_dev *dev)
-> 		return 0;
+Il 05/01/22 10:37, Moudy Ho ha scritto:
+> Change since v10:
+> - The routing table needs to be discarded, and the calculation result
+>    on the SCP side is used to write a suitable mux setting for
+>    1 input port and 2 output ports.
+> - Adjust dts parsing flow to remove redundant HW IDs.
+> - Fix memory leak caused by no free path information in function "mdp_cmdq_send".
 > 
-> 	dev->dec_irq = platform_get_irq(pdev, 0);
->-	if (dev->dec_irq < 0) {
->-		dev_err(&pdev->dev, "failed to get irq number");
->+	if (dev->dec_irq < 0)
-> 		return dev->dec_irq;
->-	}
+> Change since v9:
+> - Keep only the MDP3 driver patches and split the remaining mmsys and
+>    mutex patches into another mail.
+> - Move mutex mod settings to corresponding driver and make relevant adjustments
+>    for this in MDP3 driver.
+> - Fix compile warning reported by kernel test robot.
+> 
+> Change since v8:
+> - Rebase on v5.16-rc2.
+> - Refer to Angelo's suggestion, adjust the register writing format to increase
+>    readability and significance.
+> - Refer to Angelo's suggestion, adjust or reduce inappropriate debugging
+>    messages.
+> - Refer to Rob Herring's suggestion to correct the the binding file
+>    to make it with the specification.
+> - Fix compile warning reported by kernel test robot.
+> 
+> Change since v7:
+> - Rebase on v5.15-rc6.
+> - Revise several V4L2 M2M settings to pass v4l2-compliance test.
+> - Integrate those same component dt-binding documents of DRM and MDP, and
+>    move them under the MMSYS domain.
+> - Split MMSYS and MUTEX into two different files according to
+>    their functional properties.
+> 
+> Changes since v6:
+> - Refactor GCE event to corresponding node.
+> - Fix dt_binding_check fail.
+> - Fix compilation errors.
+> 
+> Changes since v5:
+> - Rebase on v5.14-rc6.
+> - Move MMSYS/Mutex settings to corresponding driver.
+> - Revise the software license description and copyright.
+> - Remove unnecessary enum. or definitions.
+> - Optimize platform/chip definition conditions.
+> - Use general printing functions instead of MDP3 private ones.
+> - Fix compile warning.
+> 
+> Changes since v4:
+> - Rebase on v5.13-rc1.
+> - Remove the CMDQ flush flow to match the CMDQ API change.
+> - Integrate four of MDP's direct-link subcomponents into MDP controller node
+>    from syscon node to avoid illegal clock usage.
+> - Rewrite dt-binding in a JSON compatible subset of YAML
+> - Fix a bit of macro argument precedence.
+> 
+> Changes since v3:
+> - Rebase on v5.9-rc1.
+> - modify code for review comment from Rob Herring, cancel multiple nodes using
+>    same register base situation.
+> - control IOMMU port through pm runtime get/put to DMA components' device.
+> - SCP(VPU) driver revision.
+> - stop queuing jobs(remove flush_workqueue()) after mdp_m2m_release().
+> - add computation of plane address with data_offset.
+> - fix scale ratio check issue.
+> - add default v4l2_format setting.
+> 
+> Changes since v2:
+> - modify code for review comment from Tomasz Figa & Alexandre Courbot
+> - review comment from Rob Herring will offer code revision in v4, due to
+>    it's related to device node modification, will need to modify code
+>    architecture
+> 
+> Changes since v1:
+> - modify code for CMDQ v3 API support
+> - EC ipi cmd migration
+> - fix compliance test fail item (m2m cmd with -f) due to there is two problem in runing all format(-f) cmd:
+> 1. out of memory before test complete
+>          Due to capture buffer mmap (refcount + 1) after reqbuf but seems
+>          no corresponding munmap called before device close.
+>          There are total 12XX items(formats) in format test and each format
+>          alloc 8 capture/output buffers.
+> 2. unceasingly captureBufs() (randomly)
+>          Seems the break statement didn't catch the count == 0 situation:
+>          In v4l2-test-buffers.cpp, function: captureBufs()
+>                          ...
+>                          count--;
+>                          if (!node->is_m2m && !count)
+>                                  break;
+>          Log is as attachment
+> 
+> I will paste the test result with problem part in another e-mail
+> 
+> Hi,
+> 
+> This is the first version of RFC patch for Media Data Path 3 (MDP3),
+> MDP3 is used for scaling and color format conversion.
+> support using GCE to write register in critical time limitation.
+> support V4L2 m2m device control.
+> 
+> Moudy Ho (3):
+>    dt-binding: mt8183: add Mediatek MDP3 dt-bindings
+>    dts: arm64: mt8183: add Mediatek MDP3 nodes
+>    media: platform: mtk-mdp3: add Mediatek MDP3 driver
 > 
 
-Thanks for the patch, 
-Yihao has submitted a patch to fix mtk_vcodec_init_dec_resources() [1]
-[1] https://lore.kernel.org/lkml/20220310023645.10082-1-hanyihao@vivo.com/
+Hello Moudy,
 
-> 	irq_set_status_flags(dev->dec_irq, IRQ_NOAUTOEN);
-> 	ret = devm_request_irq(&pdev->dev, dev->dec_irq,
->diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
->index 8d2a641d92f1..5f07313676bb 100644
->--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
->+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
->@@ -99,10 +99,8 @@ static int mtk_vdec_hw_init_irq(struct mtk_vdec_hw_dev *dev)
-> 	int ret;
-> 
-> 	dev->dec_irq = platform_get_irq(pdev, 0);
->-	if (dev->dec_irq < 0) {
->-		dev_err(&pdev->dev, "Failed to get irq resource");
->+	if (dev->dec_irq < 0)
-> 		return dev->dec_irq;
->-	}
-> 
-> 	irq_set_status_flags(dev->dec_irq, IRQ_NOAUTOEN);
-> 	ret = devm_request_irq(&pdev->dev, dev->dec_irq,
+In next-20220315, all MediaTek media drivers have been moved in a different
+subdirectory. Now they are all in drivers/media/platform/mediatek/.
 
-Would you mind submitting mtk_vdec_hw_init_irq() part by another patch?
+Can you please rebase this series, placing the MDP3 driver in
+drivers/media/platform/mediatek/mdp3 ?
 
-Thanks,
-Miles
+While at it, also please include the additional documentation and address the
+rdma/rsz (etc) suggestions about using one compatible and a instance-id property
+to express the multiple instances (remember: "mediatek,mt8183-mdp3-rdma",
+mediatek,instance-id = <0>).... and all the other constructive suggestions that
+were given during the extensive review of patch 1/3 of this series.
+
+Looking forward to see a new version!
+
+Regards,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
