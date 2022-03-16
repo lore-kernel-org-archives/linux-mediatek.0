@@ -4,98 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFE76C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 15:31:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DCF0C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 15:33:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CwEL+rYFxG/Ee+MLegeB6IsI/mCw20VbwZ4hzHNhfAw=; b=smvo49xwL0O/No
-	poBIWggCjIGLkwb4Jd4UkcbxI6bjwxg0Lp9fUhcw6ZDk27buNwfu9FcfpXXd3ydTK/ByBPLp8olua
-	FmzHOax5Km4EjKfeE9IRLKwjuvqld7PjJYJHqhrv97/ErBbBMSprjkcR7NAKtEXC57M8JHiDHfXBP
-	MWpqCBMRL37J/7nD4pw/qSbj9vUn+Fng0C8qWkUK0CGepJeS2Rdlhsy5TIkZiO5J4XAcDiQe8k8zH
-	6y9/gjiAu/cVAcAhi+tnaxgp5zh48a8yFdyKjiYGlnw5aacSQV7K+/kegFSW1WNPT1frS3Fp75E3/
-	pQbApQaTmSmxirJaojQw==;
+	List-Owner; bh=GyfToEIyyLAIW+Y8FpBDb7XVP68pzfm/VTRFYBjuvNw=; b=pHD6DB2VbPh9br
+	kAtX9XqoM2vG52cveTDA0Kjto4PSze3VY/SyY0pCtDDWx92xKPULGjABqVc8pXdrWOYSR6g3hKrH+
+	6yHac/7sFOYcybgFKZRKlpSqtCc9gerBIF814sLuw06V6vOCxO8vn5xztIzijKk/0ZVZVTh0V0n2N
+	VxfFUmwTeAYjl5Wd11B6rMUVpOJgRRkNuj3K4dEUibc6QxlNOD4I5YgPtps6V3yIvVkNKIFIxkpjh
+	Gg7icwEOgwiTmCDLkgCBXADp771XQhOcZdBuhkmzzBkdSQ0V4kp4Ttrd8YllcwTB7vtTJROlHdsrz
+	EY21vvy7dVJL6gbTS75Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUVc1-00DZJv-7j; Wed, 16 Mar 2022 15:30:57 +0000
-Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
+	id 1nUVe1-00DaIX-4h; Wed, 16 Mar 2022 15:33:01 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUVQd-00DUQl-F9
- for linux-mediatek@lists.infradead.org; Wed, 16 Mar 2022 15:19:13 +0000
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ id 1nUVcR-00DZWc-1D
+ for linux-mediatek@lists.infradead.org; Wed, 16 Mar 2022 15:31:24 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id CC3B73F602
- for <linux-mediatek@lists.infradead.org>; Wed, 16 Mar 2022 15:19:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1647443949;
- bh=n1R86AH40JMDGlhsJXdbdtccHR5xtuigPuTWuYsB7aU=;
- h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
- In-Reply-To:Content-Type;
- b=UJuuWIeYpKlkSRWZdfyhkgTgFFjXz3peZ0FKAA7w4xF0tqNVoiEyMVZHYhMxp9p9u
- 3XSNNtSRpnmda9d8Oy1SFzSZO0t975j2d/eoBKsSDCk/E+aDMJP95XSxed3SRw7HdA
- tz6VHZWOwK9/Lnq8jjUIzQYZq3lwWF/HYmP23+fvIPHs6+C7yFWk12VqtgA5DpED+a
- Cz7F7XLfdYOfFGE52p50wQV99adWZ+ztQnuFhZBdB6iZDunnCS9gPL336rXXdFGKhb
- vYT70Ylhp20XZWFwTGUZ+e2DkodqT70am2un482Kxo8zrs3moj+38RRZygFhxGmJWj
- VIJh6aPB0PaCA==
-Received: by mail-wm1-f69.google.com with SMTP id
- k26-20020a05600c0b5a00b0038c6c41159bso1179788wmr.0
- for <linux-mediatek@lists.infradead.org>; Wed, 16 Mar 2022 08:19:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=n1R86AH40JMDGlhsJXdbdtccHR5xtuigPuTWuYsB7aU=;
- b=yIUTfKo0K5XXAAQztSs5FurjCWag+R2vEP9HmZKJnZwZvIs8F1ZC6IMQlGwzYQW7cG
- UXlQa+qReBLIiWUAK1LOo5UM6nU1YZYIQDfRTtVeVewdJbQautIMwNa26mh9G8uvxzid
- RIaCfeoMdQG/jDwSKIEuMiXmrgj3G3vq702VWQZX4PTAjhS2Fouz+mYpUwxCglUvIper
- 0NA6Q2eORjv/BRpMxJjtfKdNQ1sJrkzfUKd9kSVQbCQS26m18kO9c4mH6ji9+sA9T+7o
- R/OsLpdsofMjai4puclSZZfghBx+hcsc+lQi1g9UtrkL/xliaZlib0UjxSrFQwmnMS2+
- 02QA==
-X-Gm-Message-State: AOAM533TD+eDG6HAqdzvI2GB8NQCyaT5TjFdQynpqxuBCPTtQQqt+6DZ
- etVAT7+BQJ87Riescop27kOf2ZuF2Wr/lhVpL11yt6w2mEoX6aIsIB2H4it/wcCZu+SEJCeokYT
- vXSB11YlmP97skrM+a3OrKoWjd2T9Y2TwWBaL7eq+RW0pRQUHFw==
-X-Received: by 2002:adf:fe81:0:b0:1f0:246e:ae5 with SMTP id
- l1-20020adffe81000000b001f0246e0ae5mr353638wrr.652.1647443949237; 
- Wed, 16 Mar 2022 08:19:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw7KtAfQn8O30h7vKxDeRV7uri401Yg0lHLAU4i8wtnkZBBAptCPe0PeY+wSBS+LC5ypMwvEw==
-X-Received: by 2002:adf:fe81:0:b0:1f0:246e:ae5 with SMTP id
- l1-20020adffe81000000b001f0246e0ae5mr353605wrr.652.1647443948978; 
- Wed, 16 Mar 2022 08:19:08 -0700 (PDT)
-Received: from [192.168.0.17] (78-11-189-27.static.ip.netia.com.pl.
- [78.11.189.27]) by smtp.googlemail.com with ESMTPSA id
- v10-20020a056000144a00b00203df06cf9bsm1821028wrx.106.2022.03.16.08.18.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 16 Mar 2022 08:18:41 -0700 (PDT)
-Message-ID: <cf765199-30c3-f963-4d9b-8f225efd5b32@canonical.com>
-Date: Wed, 16 Mar 2022 16:18:39 +0100
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 43C79616D5;
+ Wed, 16 Mar 2022 15:31:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57C7BC340F3;
+ Wed, 16 Mar 2022 15:31:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1647444680;
+ bh=9ctp6RO64kNLGedDE5QkD08/qc84M9aO0xsGgkUdehw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=rbdgDUxuV20gBW39s5SKCt2nvq2SBNoQ4CZ8CvVauZuAhkOH6ykjfmVUJyK5lT2sS
+ siH4lKCSC6pZY+c4rM2Cuf4+hXJA4gGUXrs7LdePLkGUS7LorSIXrgxrWUAeEFAtEH
+ gN7mqVQsnmO3N3HccK2YMl4GaQmAThBpy0U5x/ZM=
+Date: Wed, 16 Mar 2022 16:31:17 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Waiman Long <longman@redhat.com>
+Cc: Cheng Jui Wang <cheng-jui.wang@mediatek.com>, stable@vger.kernel.org,
+ Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>,
+ "Peter Zijlstra (Intel)" <peterz@infradead.org>,
+ Bart Van Assche <bvanassche@acm.org>, linux-mediatek@lists.infradead.org,
+ Eason-YH Lin <eason-yh.lin@mediatek.com>
+Subject: Re: apply commit 61cc4534b655 ("locking/lockdep: Avoid potential
+ access of invalid memory in lock_class") to linux-5.4-stable
+Message-ID: <YjICxcNVK+1VBNtz@kroah.com>
+References: <6eb2052f463d323b0a82e795d765afb9d5925f6e.camel@mediatek.com>
+ <YjHzl3Arey7KH0CB@kroah.com>
+ <ee1e2ab4-c498-c047-ad70-fc46b508fe74@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH V8 1/5] dt-bindings: display: mediatek: add aal binding
- for MT8183
-Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
- matthias.bgg@gmail.com, robh+dt@kernel.org
-Cc: p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
- jassisinghbrar@gmail.com, fparent@baylibre.com, yongqiang.niu@mediatek.com,
- hsinyi@chromium.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220316115155.17834-1-rex-bc.chen@mediatek.com>
- <20220316115155.17834-2-rex-bc.chen@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-In-Reply-To: <20220316115155.17834-2-rex-bc.chen@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <ee1e2ab4-c498-c047-ad70-fc46b508fe74@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220316_081911_797991_07DB5F7D 
-X-CRM114-Status: GOOD (  14.63  )
+X-CRM114-CacheID: sfid-20220316_083123_141468_B845AA09 
+X-CRM114-Status: GOOD (  19.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,33 +75,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/03/2022 12:51, Rex-BC Chen wrote:
-> Add aal binding for MT8183.
+On Wed, Mar 16, 2022 at 10:38:04AM -0400, Waiman Long wrote:
+> On 3/16/22 10:26, Greg KH wrote:
+> > On Wed, Mar 16, 2022 at 02:01:12PM +0800, Cheng Jui Wang wrote:
+> > > Hi Reviewers,
+> > > 
+> > > This patch fixes a use-after-free error when /proc/lockdep is read by
+> > > user after a lockdep splat.
+> > > 
+> > > I checked and I think this patch can be applied to stable-5.4 and
+> > > later.
+> > > 
+> > > commit: 61cc4534b6550997c97a03759ab46b29d44c0017
+> > > Subject: locking/lockdep: Avoid potential access of invalid memory in
+> > > lock_class
+> > I do not see that commit id in Linus's tree, are you sure it is correct?
 > 
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> ---
->  .../devicetree/bindings/display/mediatek/mediatek,aal.yaml    | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-> index 61f0ed1e388f..eb0299b80522 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-> @@ -22,7 +22,9 @@ properties:
->    compatible:
->      oneOf:
->        - items:
-> -          - const: mediatek,mt8173-disp-aal
-> +          - enum:
-> +              - mediatek,mt8173-disp-aal
-> +              - mediatek,mt8183-disp-aal
+> This commit is currently in the tip tree. It have not been merged into the
+> mainline yet, though it should happen in the upcoming merge window.
 
-This should not be under items. You have just one element here, so
-directly "enum" under oneOf.
+As per the stable kernel rules, the commit has to be in Linus's tree
+first.  Please email us again when that has happened.
 
+thanks,
 
-Best regards,
-Krzysztof
+greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
