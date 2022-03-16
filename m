@@ -4,60 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDAD3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 08:41:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FB1BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 08:47:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D2h3K39uyTEA/jPBXP3OZwSlBweNuJabHvt1XaPFYpU=; b=V/xJcNG22Y85gw
-	fC1ihg3bTECwYIfEUCnCM8l3fRxmk9OdA9fGk7fzBnGOXiGS/5r93aUVSYHw7voKwlRV9Q0wS0L9p
-	0Rp5z119K7gqZAYeU5bXTglRNGYruUiiHhb+H6DcU/8Fi06Eybf9mJCldp+HD2cc1gzG+q5jT7hKZ
-	GH+ulP+AfXgPFs+wUktNXIeiEEOfCuT0cVWW6aAtbWyIq9bCyzMehpjBjMG0Qq2LUz0lew/X5DPl/
-	ZqOiLodHnCMBxAFYNLFpETSf2dcGNnFogKWTMSypDdBBsKSK2eCTMdBrMUWyTojAVc5ZbdP+SZ38l
-	2Xo3j4K16UxT0HUEZpvg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+nnNUDnBrNtg34Flia7bfuVfMZKHz4QmpflQe5/zdwI=; b=R7zIlnGDlpN0Gk
+	qXEKHAfYNinTW5rt7yMmyszlACk+sHpIf7kb88hVOHF06fcerCMm3G5tUEW7HOzi63AjEO16QaHbW
+	4IZh28VfjGUFsy2WnN/xRZN0XM62B6iBnoALth37WVzSCWmC+8wf6ADjSlTzM9jRn8wD7PmwPYq79
+	FfgLUgiyodpL+xbUxe7EGkNdHuYJb9Ad3oXoLCY9NZEY8YipC1TWd+mZyutpMvv1PI8tGNcwDIYXH
+	3OmLtWF3lM+XmnKoZ0MIXkGSGh1b+Ntmyh3S6gfe7lmQ+tFMcEDHG3lIXCPtVyjmBYSIsgenODCDw
+	nhpUqtLBwsXjPVPm1JlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUPDe-00CAen-A2; Wed, 16 Mar 2022 08:41:22 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nUPJ7-00CCiE-2D; Wed, 16 Mar 2022 08:47:01 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUPCL-00C9zX-2N; Wed, 16 Mar 2022 08:40:02 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 6DEB01F42D12
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647419999;
- bh=YmBxd4JR5L4/vFYAKhWIFVHSjJr+fUNPnVrFxHmeKo8=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=NzFGdhzShxGXV6dG+cbC30Co4S2EULReO2T1ACBEqPUytpdbhDTqQXxb76yzxt5bJ
- HEe+VLxL70NgoPqikcA687L1/mtXYNb7Uq1q8Vamlz6Lm90gm5fAbgJU9v8pXL9h1r
- MyWcI/2n8Kv15rrHmr4wYozJwiuwAnAQUjh9pAHvV9dlUaY0/G50RcLgke0yTn2nl+
- QVh1bBGudArZZKq9flV1OJVf1x4OIR6gFlmsm4NdDW+vcaDpgPcPqB0xOUUHsvlF4D
- 9XP/OSTQ3U+mhwHHMnL6x23RtEPm/Iyqs5qmaSZQpJjA65CCqXGdqVwVAfI5ZoIACN
- gTSkXMaTSS4Uw==
-Message-ID: <bf85ae3c-968d-c138-cedd-d144cabf1e44@collabora.com>
-Date: Wed, 16 Mar 2022 09:39:56 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v1 3/4] dt-bindings: pinctrl: mt8192: Add
- mediatek,pull-up-adv property
-Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>
-Cc: kernel@collabora.com, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20220315211936.442708-1-nfraprado@collabora.com>
- <20220315211936.442708-4-nfraprado@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220315211936.442708-4-nfraprado@collabora.com>
+ id 1nUPIe-00CCa8-Gy; Wed, 16 Mar 2022 08:46:33 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id t2so3068038pfj.10;
+ Wed, 16 Mar 2022 01:46:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:subject:date:message-id;
+ bh=o2a1XLIA6SCc0OXj4X5fM3NulfHLBIGjv/KhHaIx6PQ=;
+ b=GNDL68UBBmY9vm3mPI6hh9CD2lRNaMjHpLpzwJYp4vN18zMrNfL27bTXmeAheLjH7Z
+ ecZl5cZJ34sM/UeT0NIJxgjzQOAw/qlejEiRiv1+pBxV9tsO461LciCvRpMAE2cgajjU
+ z830dTGPQ+ZAvvyzvy1Pc6UbLiLN4rDNupCRklX8g1Y4zE/SKTxak6T8hbT/v4ZMp5+G
+ 7C56/ec+oJnQXcXHzmPbWmj0/RrwPCU9g+oQa37G6Uc0V7OIwplZH4PiV5Amn5HO9P+F
+ qKbi3nrAxG9LnsTuVdfE069vEEzlbTr+1ysYmMF0qoA+svztQ6fDMkHJcE4m6sXMmDEc
+ fueg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:subject:date:message-id;
+ bh=o2a1XLIA6SCc0OXj4X5fM3NulfHLBIGjv/KhHaIx6PQ=;
+ b=0oiC59XDENS+fCQxiNwHTrfsD7bRZ/OdZ47ail6HMKMqmjbyeTJEVGmfwAT8pK0ES7
+ TkUugY6fFzMTkwPxMlxG69+qnC7N1HPnR364ErfRryygJ0RYitSgQADuJbafDu8+FNVD
+ 7OFm0fI0mVAXBYmIgF6PJ+CVTErZGfcbA65InpudL53XVGOOCtXHn0t6Xe74xWNdqtJz
+ bOs0TaV1fIhcLJkf7fc3NgPhGKpwztH2J6vYeAiCAf24f8MpYvQVSCO5H2SFMF5uptFQ
+ qYJEN1TL72Lvye5MQAslOm/kGZZ0gtzO0HdSrLub+wejNbPZAcX6TIzQupBDx+VVh8gH
+ SThA==
+X-Gm-Message-State: AOAM532tXJKvpnnUn/oR2vuyGYs0Sv+ETDMMJPnWTdlSXC4HhG9WxQvM
+ EySmr3Z9OhhuaHE5TY5+xbY=
+X-Google-Smtp-Source: ABdhPJwcB/cDd4LmceuZ9xTWzG6XnUJNJeFpS8VorH67V1q4Tm8M7vPqz5CjVnvFBNjLjZwice/4BA==
+X-Received: by 2002:a63:5751:0:b0:381:4050:143a with SMTP id
+ h17-20020a635751000000b003814050143amr10698013pgm.410.1647420391500; 
+ Wed, 16 Mar 2022 01:46:31 -0700 (PDT)
+Received: from localhost.localdomain ([159.226.95.43])
+ by smtp.googlemail.com with ESMTPSA id
+ l10-20020a056a00140a00b004c55d0dcbd1sm2055283pfu.120.2022.03.16.01.46.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Mar 2022 01:46:31 -0700 (PDT)
+From: Miaoqian Lin <linmq006@gmail.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Trevor Wu <trevor.wu@mediatek.com>, Tzung-Bi Shih <tzungbi@google.com>,
+ YC Hung <yc.hung@mediatek.com>,
+ Rikard Falkeborn <rikard.falkeborn@gmail.com>,
+ Miaoqian Lin <linmq006@gmail.com>, Bixuan Cui <cuibixuan@huawei.com>,
+ alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] ASoC: mediatek: mt8195: Fix error handling in
+ mt8195_mt6359_rt1019_rt5682_dev_probe
+Date: Wed, 16 Mar 2022 08:46:15 +0000
+Message-Id: <20220316084623.24238-1-linmq006@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220316_014001_318704_A4AECCEB 
-X-CRM114-Status: UNSURE (   8.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220316_014632_607531_F6BC7633 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,18 +85,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SWwgMTUvMDMvMjIgMjI6MTksIE7DrWNvbGFzIEYuIFIuIEEuIFByYWRvIGhhIHNjcml0dG86Cj4g
-QWRkIHRoZSBtZWRpYXRlayxwdWxsLXVwLWFkdiBwcm9wZXJ0eSB0byB0aGUgcGluY3RybC1tdDgx
-OTIgZHQtYmluZGluZwo+IHRvIGFsbG93IGNvbmZpZ3VyaW5nIHB1bGwtdXAgcmVzaXN0b3JzIG9u
-IHRoZSBwaW5zIG9mIE1UODE5Mi4gSXQgaXMgdGhlCj4gc2FtZSBhcyBpbiBtdDgxODMtcGluY3Ry
-bC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyA8bmZyYXByYWRv
-QGNvbGxhYm9yYS5jb20+CgpSZXZpZXdlZC1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8g
-PGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFib3JhLmNvbT4KCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcg
-bGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+The device_node pointer is returned by of_parse_phandle()  with refcount
+incremented. We should use of_node_put() on it when done.
+
+This function only calls of_node_put() in the regular path.
+And it will cause refcount leak in error path.
+
+Fixes: 082482a50227 ("ASoC: mediatek: mt8195: release device_node after snd_soc_register_card")
+Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+---
+ sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
+index 29c2d3407cc7..e3146311722f 100644
+--- a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
++++ b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
+@@ -1342,7 +1342,8 @@ static int mt8195_mt6359_rt1019_rt5682_dev_probe(struct platform_device *pdev)
+ 					      "mediatek,dai-link");
+ 		if (ret) {
+ 			dev_dbg(&pdev->dev, "Parse dai-link fail\n");
+-			return -EINVAL;
++			ret = -EINVAL;
++			goto put_node;
+ 		}
+ 	} else {
+ 		if (!sof_on)
+@@ -1398,6 +1399,7 @@ static int mt8195_mt6359_rt1019_rt5682_dev_probe(struct platform_device *pdev)
+ 
+ 	ret = devm_snd_soc_register_card(&pdev->dev, card);
+ 
++put_node:
+ 	of_node_put(platform_node);
+ 	of_node_put(adsp_node);
+ 	of_node_put(dp_node);
+-- 
+2.17.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
