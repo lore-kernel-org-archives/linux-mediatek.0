@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2687C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 06:11:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C54EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 06:11:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Pm+Hh79xLcgKjp+7whj/Vgbo19chMmmUNE/NSMwg2Rw=; b=L5PcsehtaVleld
-	hfjYzIKMgTzp0uTU6tUuqfSY90HWL/x8tvze5fraBu86vHpdR4WnIokNrNgEXtmB+/kW4p0wHpVS+
-	0AeDg0NETXjXtKrS4wXSAsCq075TmJUw1e+huvr6maB6v6PJTHGGFEp5DIqbEB0pMKw+UVQ5CL6dO
-	mpCkq+zJaq7+llXZ1+SQpG8+LPyntBi6Lo+dcDw3rmozX5A+M38N7YvAoIc0mZCG1jI0LaeQqZcjc
-	u+ifknBsjE7iKh45Zm3iLbcjCuxHnvfHQinj7YHrZ4FxJFdAE5naHGHEnG4H72PfOWZVQc1+grJ2p
-	ypA9/XgSWzxJ5bQ6rrJg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=v4ZtVHLo6PkR5MNsopLLr0eGaKhAsan7GWSNEFTOtkE=; b=e6Nasi2sFTO6qt
+	C29Zls4YVDANM/lS9fOZvwoHVPdzaED+fXaVPZNoWCFOV7Pr+1oNGueXq2zrYe3pD9UuChzl8rCYy
+	k4lfbABKO674eaLFeQHU3q9Umkcf+E0MvqRVAjzSwlOTvN7dRHzKAJsjxZ2UREtGeKZOdPxAqfxWo
+	iXyfvVsT/qtOD/Vo1U2isWHhLSVayoPcHAZVL0D1MezwsoUx/HAQC1vwQxBMto8a2xe59YKGITm7d
+	KJFnn/8F4DiInuhzvrlHvzucBBWK8LgafWs5z7FfB9AuxwAl/0vAuhI6DACth4MxOg7ABxvjWQDmT
+	62FXcPqqIlZtYX5w8SOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUMsF-00Bd35-Jj; Wed, 16 Mar 2022 06:11:07 +0000
+	id 1nUMsG-00Bd3V-VI; Wed, 16 Mar 2022 06:11:08 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUMre-00Bcsk-8y; Wed, 16 Mar 2022 06:10:38 +0000
-X-UUID: 22dadbb0232f478dbfafb2fe7107d329-20220315
-X-UUID: 22dadbb0232f478dbfafb2fe7107d329-20220315
+ id 1nUMri-00BcsI-Pi; Wed, 16 Mar 2022 06:10:37 +0000
+X-UUID: 055dcc9e745e40cb8da89824c718fde2-20220315
+X-UUID: 055dcc9e745e40cb8da89824c718fde2-20220315
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <axe.yang@mediatek.com>)
+ (envelope-from <trevor.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 40693675; Tue, 15 Mar 2022 23:10:00 -0700
+ with ESMTP id 901366466; Tue, 15 Mar 2022 23:10:00 -0700
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Mar 2022 23:00:19 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ 15.0.1497.2; Tue, 15 Mar 2022 23:01:48 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Mar 2022 14:00:18 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 16 Mar 2022 14:00:17 +0800
-From: Axe Yang <axe.yang@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>
-CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
- <satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>, Axe Yang
- <axe.yang@mediatek.com>, Lucas Stach <dev@lynxeye.de>, Eric Biggers
- <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd
- <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu
- <huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
- <angelogioacchino.delregno@collabora.com>, <linux-mmc@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v6 0/3] mmc: mediatek: add support for SDIO async IRQ
-Date: Wed, 16 Mar 2022 14:00:11 +0800
-Message-ID: <20220316060014.12732-1-axe.yang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ 15.0.1497.2; Wed, 16 Mar 2022 14:01:46 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 16 Mar 2022 14:01:46 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
+ <matthias.bgg@gmail.com>
+CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <aaronyu@google.com>, <angelogioacchino.delregno@collabora.com>,
+ <yc.hung@mediatek.com>
+Subject: [PATCH v2 5/5] ASoC: dt-bindings: mediatek: mt8195: support
+ mt8195-mt6359-max98390-rt5682
+Date: Wed, 16 Mar 2022 14:01:39 +0800
+Message-ID: <20220316060139.6211-6-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220316060139.6211-1-trevor.wu@mediatek.com>
+References: <20220316060139.6211-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_231030_331313_96E3AA10 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20220315_231034_864809_5C910357 
+X-CRM114-Status: UNSURE (   8.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,51 +76,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change in v6:
-- abandon cap-sdio-async-irq flag, use wakeup-source flag instead
-- extend interrupts and pinctrls in mediatek mmc host controller DT documents
-- add mmc_card_enable_async_irq() to access enable_async_irq flag
-- simplify wakeup irq implementation with dedicate wake up irq related interface
+This patch adds compatible string "mediatek,mt8195-mt6359-max98390-rt5682"
+to support mt8195 board with mt6359, max98390 and rt5682.
 
-Change in v5:
-- resort variables to reversed xmas tree order
-- restore old copyright year range and add current year back
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+---
+ Documentation/devicetree/bindings/sound/mt8195-mt6359.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-Change in v4:
-- add MMC_CAP2_SDIO_ASYNC_IRQ judge before lookup eint pinctrl
-- replace spin_lock_irqsave() variant with spin_lock() in eint irq handler
-
-Changes in v3:
-- correct abbreviations with capital letters in commit message
-- replace copyright year with 2022 in mtk-sd.c
-- remove unnessary pointer casting
-- adjust variable order to reversed xmas tree
-- remove a redundant blank line
-- refine if statement, following standard pattern
-
-Change in v2:
-- change flag name from 'cap-sdio-async-int' to 'cap-sdio-async-irq'
-- change corresponding macro names from xxx_INT to xxx_IRQ
-- resort new member in msdc_host structure
-- refine function msdc_request_dat1_eint_irq()
-- rename msdc_{suspend,resume} function names, add suffix '_noirq'
-- add MMC_CAP2_NO_SDIO judgement before parse eint related pin setting
-
-Axe Yang (3):
-  dt-bindings: mmc: mtk-sd: extend interrupts and pinctrls properties
-  mmc: core: Add support for SDIO wakeup interrupt
-  mmc: mediatek: add support for SDIO eint wakup IRQ
-
- .../devicetree/bindings/mmc/mtk-sd.yaml       | 24 ++++-
- drivers/mmc/core/sdio.c                       | 17 ++++
- drivers/mmc/host/mtk-sd.c                     | 99 +++++++++++++++++--
- include/linux/mmc/card.h                      |  8 +-
- include/linux/mmc/sdio.h                      |  5 +
- 5 files changed, 143 insertions(+), 10 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/sound/mt8195-mt6359.yaml b/Documentation/devicetree/bindings/sound/mt8195-mt6359.yaml
+index 74227fba91c7..6222ef2cf7e4 100644
+--- a/Documentation/devicetree/bindings/sound/mt8195-mt6359.yaml
++++ b/Documentation/devicetree/bindings/sound/mt8195-mt6359.yaml
+@@ -17,6 +17,7 @@ properties:
+     enum:
+       - mediatek,mt8195_mt6359_rt1019_rt5682
+       - mediatek,mt8195_mt6359_rt1011_rt5682
++      - mediatek,mt8195_mt6359_max98390_rt5682
+ 
+   model:
+     $ref: /schemas/types.yaml#/definitions/string
 -- 
-2.25.1
-
+2.18.0
 
 
 _______________________________________________
