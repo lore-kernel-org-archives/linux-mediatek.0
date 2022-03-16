@@ -4,65 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57A39C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 23:25:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3C4DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 23:52:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=uNRbD1t2nMCn1RYH3Yol6SDLic+yGvKMSY65cizFzCM=; b=o60Q8Clt6NCgcf
-	vnfF72PXRIzHZPO5z7T1Lco88JTVXfh0ikOyYC8AC+P0nlQPGH731oJOxMdKWiWewe+YuhjS0DJCt
-	lQc9AvYFI8aZ8NKzoOdRwRhpU51DUch7+zyJLJ/vVWpOcTu2fs0SLhkitKPC5krJw7UxJoN0sMlTT
-	uTLmNByYxC9taMAkiB2vtu6k5zPgsnNdIpDo2lsUcQIceSPW4a+87D0GoxBM8dhWdqN3CbNrZYuLM
-	2cglHdGFgDDwXToaopbmvqZFdHh2jTQ7O/u5C1AorgKiG+hvqOkYS6LKKRTtlRt52JWFimqAqD3S0
-	Ab0+SXOCboTIR/eoz82g==;
+	List-Owner; bh=/Hsrv3oYCQu9avI9f3SrTotQrLNdecGPQq/Av4PIif0=; b=IssTfIUz8cgFLb
+	FvnQElqZX27I7C0XxMJGIWnadmJ0IHKYNDdZf691OAxqnuDsGjvtEXcdQjPSVnQ9c7U9qxiNXWrZl
+	WaigKmMoe4PZAGtPOrnWyCCKjMfSO4c+tlCAjZG0/pqHFH9BgNw9CxGKd3mRuSm5MBGfOw2f/zx+S
+	6mv86BAY7oDa153Eig/RmvLWBPe/brBAAoxtOAj6Hun4+GQmeykpsepQZVQ8azEflgkQS8Cqx3ZOc
+	mj+LhVLE7zHSX38L/11/yckdhC2PAa5LX4NPh7TP/8klLFI9gr670N1BxBn/5zwmcr/P1wY4ZBSMK
+	0FVEYnE4MncPyoIi231A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUd1Y-00ETiJ-Ui; Wed, 16 Mar 2022 23:25:48 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUd1U-00ETgp-Sm
- for linux-mediatek@lists.infradead.org; Wed, 16 Mar 2022 23:25:47 +0000
-X-UUID: 755557540e0e4c339d7c85de93bf8c2c-20220316
-X-UUID: 755557540e0e4c339d7c85de93bf8c2c-20220316
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1475401155; Wed, 16 Mar 2022 16:25:41 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Mar 2022 16:15:39 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 17 Mar 2022 07:15:25 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 17 Mar 2022 07:15:25 +0800
-From: <sean.wang@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
- <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
- <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
- <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
- <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
- <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
- <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
- <abhishekpandit@google.com>, <michaelfsun@google.com>, <mcchou@chromium.org>, 
- <shawnku@google.com>, <linux-bluetooth@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Yake
- Yang" <yake.yang@mediatek.com>
-Subject: [PATCH v5 1/5] Bluetooth: btmtksdio: Fix kernel oops in
- btmtksdio_interrupt
-Date: Thu, 17 Mar 2022 07:15:19 +0800
-Message-ID: <d4be9c9c1ce2757bad4df19885d605e97a1ceec8.1647472087.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
-MIME-Version: 1.0
-X-MTK: N
+	id 1nUdRZ-00EW0y-4e; Wed, 16 Mar 2022 23:52:41 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nUdRM-00EVvb-QX; Wed, 16 Mar 2022 23:52:30 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 4DA3F1476;
+ Wed, 16 Mar 2022 16:52:23 -0700 (PDT)
+Received: from e123648.arm.com (unknown [10.57.19.225])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 61BC43F766;
+ Wed, 16 Mar 2022 16:52:20 -0700 (PDT)
+From: Lukasz Luba <lukasz.luba@arm.com>
+To: linux-kernel@vger.kernel.org
+Cc: lukasz.luba@arm.com, dietmar.eggemann@arm.com, Pierre.Gondois@arm.com,
+ ionela.voinescu@arm.com, viresh.kumar@linaro.org, rafael@kernel.org,
+ daniel.lezcano@linaro.org, linux-pm@vger.kernel.org, mka@chromium.org,
+ nm@ti.com, sboyd@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, cristian.marussi@arm.com,
+ sudeep.holla@arm.com, matthias.bgg@gmail.com
+Subject: [0/8] Introduce support for artificial Energy Model
+Date: Wed, 16 Mar 2022 23:52:03 +0000
+Message-Id: <20220316235211.29370-1-lukasz.luba@arm.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220316_162544_942159_3F006BB3 
-X-CRM114-Status: GOOD (  14.28  )
+X-CRM114-CacheID: sfid-20220316_165228_954308_AC72C579 
+X-CRM114-Status: GOOD (  12.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,75 +56,77 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yake Yang <yake.yang@mediatek.com>
+Hi all,
 
-Fix the following kernel oops in btmtksdio_interrrupt
+This patch set adds new callback and support for artificial Energy Model (EM).
+The new EMs have artificially generated performance states.
+Such EMs can be created from lean information sources, such
+as the relative energy efficiency between CPUs. The ACPI based
+platforms provide this information
+(ACPI 6.4, s5.2.12.14 'GIC CPU Interface (GICC) Structure'
+'Processor Power efficiency Class' field).
 
-[   14.339134]  btmtksdio_interrupt+0x28/0x54
-[   14.339139]  process_sdio_pending_irqs+0x68/0x1a0
-[   14.339144]  sdio_irq_work+0x40/0x70
-[   14.339154]  process_one_work+0x184/0x39c
-[   14.339160]  worker_thread+0x228/0x3e8
-[   14.339168]  kthread+0x148/0x3ac
-[   14.339176]  ret_from_fork+0x10/0x30
+Artificial EMs might require to directly provide the 'cost' of
+the generated performance state. This patch set adds a new callback
+.get_cost() for this. The EM framework does not force any model
+or formula, it's up to the platform code.
 
-That happened because hdev->power_on is already called before
-sdio_set_drvdata which btmtksdio_interrupt handler relies on is not
-properly set up.
+Artificial EMs aim to leverage the Energy Aware Scheduler
+(EAS). Other frameworks relying on performance states
+information (i.e. IPA/DTPM) must be informed of the
+EM type and might be prevented from using it. This patch
+sets also does this by introducing a new flag:
+EM_PERF_DOMAIN_ARTIFICIAL.
 
-The details are shown as the below: hci_register_dev would run
-queue_work(hdev->req_workqueue, &hdev->power_on) as WQ_HIGHPRI
-workqueue_struct to complete the power-on sequeunce and thus hci_power_on
-may run before sdio_set_drvdata is done in btmtksdio_probe.
+The patch set is based on current linux-next, where some
+changes to OPP & EM are queuing.
 
-The hci_dev_do_open in hci_power_on would initialize the device and enable
-the interrupt and thus it is possible that btmtksdio_interrupt is being
-called right before sdio_set_drvdata is filled out.
+The patch set also contains (patch 7/8 and patch 8/8) logic which prevents
+two EM's client frameworks from using this new EM type. Some other approach,
+using 'milli-watts', has been proposed and discussed, but refused [1].
+This new flag is more precised and should not leave space for
+wrong interpretation.
 
-When btmtksdio_interrupt is being called and sdio_set_drvdata is not filled
-, the kernel oops is going to happen because btmtksdio_interrupt access an
-uninitialized pointer.
+Shortly after this patch set you will see a patch set implementing the
+platform code and registering this new EM.
 
-Fixes: 9aebfd4a2200 ("Bluetooth: mediatek: add support for MediaTek MT7663S and MT7668S SDIO devices")
-Reviewed-by: Mark Chen <markyawenchen@gmail.com>
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Yake Yang <yake.yang@mediatek.com>
----
-v4->v5: no change
----
- drivers/bluetooth/btmtksdio.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Regards,
+Lukasz Luba
 
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index df3f9d090529..9644069cecbb 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -1281,6 +1281,8 @@ static int btmtksdio_probe(struct sdio_func *func,
- 	hdev->manufacturer = 70;
- 	set_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks);
- 
-+	sdio_set_drvdata(func, bdev);
-+
- 	err = hci_register_dev(hdev);
- 	if (err < 0) {
- 		dev_err(&func->dev, "Can't register HCI device\n");
-@@ -1288,8 +1290,6 @@ static int btmtksdio_probe(struct sdio_func *func,
- 		return err;
- 	}
- 
--	sdio_set_drvdata(func, bdev);
--
- 	/* pm_runtime_enable would be done after the firmware is being
- 	 * downloaded because the core layer probably already enables
- 	 * runtime PM for this func such as the case host->caps &
+[1] https://lore.kernel.org/linux-pm/20220207073036.14901-1-lukasz.luba@arm.com/
+
+Lukasz Luba (7):
+  PM: EM: Add .get_cost() callback
+  PM: EM: Use the new .get_cost() callback while registering EM
+  PM: EM: Change the order of arguments in the .active_power() callback
+  PM: EM: Remove old debugfs files and print all 'flags'
+  Documentation: EM: Add artificial EM registration description
+  thermal: cooling: Check Energy Model type in cpufreq_cooling and
+    devfreq_cooling
+  powercap: DTPM: Check for Energy Model type
+
+Pierre Gondois (1):
+  PM: EM: Add artificial EM flag
+
+ Documentation/power/energy-model.rst  | 24 +++++++++-
+ drivers/cpufreq/mediatek-cpufreq-hw.c |  4 +-
+ drivers/cpufreq/scmi-cpufreq.c        |  4 +-
+ drivers/opp/of.c                      |  6 +--
+ drivers/powercap/dtpm_cpu.c           |  2 +-
+ drivers/thermal/cpufreq_cooling.c     |  2 +-
+ drivers/thermal/devfreq_cooling.c     |  8 ++--
+ include/linux/energy_model.h          | 35 +++++++++++++--
+ kernel/power/energy_model.c           | 63 +++++++++++++++------------
+ 9 files changed, 101 insertions(+), 47 deletions(-)
+
 -- 
-2.25.1
+2.17.1
 
 
 _______________________________________________
