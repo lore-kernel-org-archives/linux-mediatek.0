@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CABDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 06:05:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0749AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 06:05:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4GCG2nH69xuR0z5QkY2yiUCNtXVZgIAgOeiX5cKHIi0=; b=ODkRN95MR0i3Lm
-	U3bijXcjcOUBz5v/KveC9LUVAFlMyak3GACWln5Q4HC/y0rBRaP2PA7dQUyOqy/aOoe2zn7snezB8
-	lFiZQgDbr8K2S6KAUZrZ7OaCiT3LYcYPTFsOfTv/DoBFb7ezPj0xlHKUNTgiQcfQjWN6erxlPOUmZ
-	zHvZtnxFTRN+s2BXQYIQXoPclq7d6fzbRIOTVFyDt6BlIyDWGJGME6miV1b0x8hjEcYIe1JZ9jpbw
-	WFntOFQ7P5lzP/ply8pKlZTA9nxftmm3R4tI2QZzU+jgqDUgcFNsEdrS+wv+bOHYMUdcyJiUwfcEX
-	A/mAVyc3wMKhDhxUWmYA==;
+	List-Owner; bh=q5ZAC0W0kaU9agMyq8UfU2YQlYPNm7SXOBYxP3Cl9bU=; b=HhKkz3oG974lAz
+	/eHeVIP63aYHdJRCTcYit5BdxSOy0o64xZ2kVPpwC3ROBmwmmjK/z6/4mjlgOJYlyjUyYvO+vkots
+	d4FofW3tnq2SNEq5p9ai9Rmqmmeh2lEncd/ZMaiM7h91ce9DIzSuL6PYPBcNlBIrE5bl799ZeX3Cr
+	mKuJSAIb1ZomLLvPIUJj9CDlyfOgts7cQOQSTxfpy+2xVEUueSVHPEVcwpTHUsXy6OECeHJwS0f7L
+	R7hLSZTpWXAo/yj1fsvpYkknb1euSKoJ73kgm1BlZYogOTHvP1YiV/yDvCqW3ipbift4b/4+dMdHM
+	1y2RithIfzknvxICttbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUMmV-00Bawj-UL; Wed, 16 Mar 2022 06:05:11 +0000
+	id 1nUMmr-00Bb8C-Mo; Wed, 16 Mar 2022 06:05:33 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUMmG-00Bapg-Kl; Wed, 16 Mar 2022 06:04:58 +0000
-X-UUID: 535afab820b64ef284958815306970fe-20220315
-X-UUID: 535afab820b64ef284958815306970fe-20220315
+ id 1nUMmJ-00Bapa-EE; Wed, 16 Mar 2022 06:05:00 +0000
+X-UUID: a0cd800502ae4fdf94b76bf025ed38a3-20220315
+X-UUID: a0cd800502ae4fdf94b76bf025ed38a3-20220315
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <axe.yang@mediatek.com>)
+ (envelope-from <trevor.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1991065202; Tue, 15 Mar 2022 23:04:48 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ with ESMTP id 123327721; Tue, 15 Mar 2022 23:04:48 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Mar 2022 23:00:25 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 16 Mar 2022 14:00:22 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 16 Mar 2022 14:00:21 +0800
-From: Axe Yang <axe.yang@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>
-CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
- <satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>, Axe Yang
- <axe.yang@mediatek.com>, Lucas Stach <dev@lynxeye.de>, Eric Biggers
- <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd
- <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu
- <huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
- <angelogioacchino.delregno@collabora.com>, <linux-mmc@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v6 2/3] mmc: core: Add support for SDIO wakeup interrupt
-Date: Wed, 16 Mar 2022 14:00:13 +0800
-Message-ID: <20220316060014.12732-3-axe.yang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220316060014.12732-1-axe.yang@mediatek.com>
-References: <20220316060014.12732-1-axe.yang@mediatek.com>
+ 15.0.1497.2; Tue, 15 Mar 2022 23:01:47 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 16 Mar 2022 14:01:46 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 16 Mar 2022 14:01:46 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
+ <matthias.bgg@gmail.com>
+CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <aaronyu@google.com>, <angelogioacchino.delregno@collabora.com>,
+ <yc.hung@mediatek.com>
+Subject: [PATCH v2 3/5] ASoC: mediatek: mt8195: rename card controls
+Date: Wed, 16 Mar 2022 14:01:37 +0800
+Message-ID: <20220316060139.6211-4-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220316060139.6211-1-trevor.wu@mediatek.com>
+References: <20220316060139.6211-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_230456_701941_CDBA6417 
-X-CRM114-Status: GOOD (  15.77  )
+X-CRM114-CacheID: sfid-20220315_230459_504869_4A383A59 
+X-CRM114-Status: GOOD (  11.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,92 +75,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If wakeup-source flag is set in host dts node, parse EAI information
-from SDIO CCCR interrupt externsion segment for in-band wakeup. If
-async interrupt is supported by SDIO card then enable it and set
-enable_async_irq flag in sdio_cccr structure to 1. The parse flow is
-implemented in sdio_read_cccr().
+In order to be able to reuse the same configurations in user space,
+rename the controls to generic names.
 
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+"Headphone Jack" -> "Headphone"
+"Speakers" -> "Ext Spk"
+"Left Speaker" -> "Left Spk"
+"Right Speaker" -> "Right SPk"
+
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
 ---
- drivers/mmc/core/sdio.c  | 17 +++++++++++++++++
- include/linux/mmc/card.h |  8 +++++++-
- include/linux/mmc/sdio.h |  5 +++++
- 3 files changed, 29 insertions(+), 1 deletion(-)
+ sound/soc/mediatek/mt8195/mt8195-mt6359.c | 26 +++++++++++------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/mmc/core/sdio.c b/drivers/mmc/core/sdio.c
-index 25799accf8a0..4898c5e9a299 100644
---- a/drivers/mmc/core/sdio.c
-+++ b/drivers/mmc/core/sdio.c
-@@ -226,6 +226,23 @@ static int sdio_read_cccr(struct mmc_card *card, u32 ocr)
- 				card->sw_caps.sd3_drv_type |= SD_DRIVER_TYPE_C;
- 			if (data & SDIO_DRIVE_SDTD)
- 				card->sw_caps.sd3_drv_type |= SD_DRIVER_TYPE_D;
-+
-+			if (card->host->pm_caps & MMC_PM_WAKE_SDIO_IRQ) {
-+				ret = mmc_io_rw_direct(card, 0, 0, SDIO_CCCR_INTERRUPT_EXT, 0,
-+						       &data);
-+				if (ret)
-+					goto out;
-+
-+				if (data & SDIO_INTERRUPT_EXT_SAI) {
-+					data |= SDIO_INTERRUPT_EXT_EAI;
-+					ret = mmc_io_rw_direct(card, 1, 0, SDIO_CCCR_INTERRUPT_EXT,
-+							       data, NULL);
-+					if (ret)
-+						goto out;
-+
-+					card->cccr.enable_async_irq = 1;
-+				}
-+			}
- 		}
+diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359.c b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
+index 544e99c83f3f..5ad6363e1bc9 100644
+--- a/sound/soc/mediatek/mt8195/mt8195-mt6359.c
++++ b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
+@@ -64,7 +64,7 @@ struct sof_conn_stream {
+ #define SOF_DMA_UL5 "SOF_DMA_UL5"
  
- 		/* if no uhs mode ensure we check for high speed */
-diff --git a/include/linux/mmc/card.h b/include/linux/mmc/card.h
-index 37f975875102..968650c0b345 100644
---- a/include/linux/mmc/card.h
-+++ b/include/linux/mmc/card.h
-@@ -219,7 +219,8 @@ struct sdio_cccr {
- 				wide_bus:1,
- 				high_power:1,
- 				high_speed:1,
--				disable_cd:1;
-+				disable_cd:1,
-+				enable_async_irq:1;
+ static const struct snd_soc_dapm_widget mt8195_mt6359_widgets[] = {
+-	SND_SOC_DAPM_HP("Headphone Jack", NULL),
++	SND_SOC_DAPM_HP("Headphone", NULL),
+ 	SND_SOC_DAPM_MIC("Headset Mic", NULL),
+ 	SND_SOC_DAPM_MIXER(SOF_DMA_DL2, SND_SOC_NOPM, 0, 0, NULL, 0),
+ 	SND_SOC_DAPM_MIXER(SOF_DMA_DL3, SND_SOC_NOPM, 0, 0, NULL, 0),
+@@ -73,14 +73,14 @@ static const struct snd_soc_dapm_widget mt8195_mt6359_widgets[] = {
  };
  
- struct sdio_cis {
-@@ -343,6 +344,11 @@ static inline bool mmc_large_sector(struct mmc_card *card)
- 	return card->ext_csd.data_sector_size == 4096;
- }
+ static const struct snd_kcontrol_new mt8195_mt6359_controls[] = {
+-	SOC_DAPM_PIN_SWITCH("Headphone Jack"),
++	SOC_DAPM_PIN_SWITCH("Headphone"),
+ 	SOC_DAPM_PIN_SWITCH("Headset Mic"),
+ };
  
-+static inline int mmc_card_enable_async_irq(struct mmc_card *card)
-+{
-+	return card->cccr.enable_async_irq;
-+}
-+
- bool mmc_card_is_blockaddr(struct mmc_card *card);
+ static const struct snd_soc_dapm_route mt8195_mt6359_routes[] = {
+ 	/* headset */
+-	{ "Headphone Jack", NULL, "HPOL" },
+-	{ "Headphone Jack", NULL, "HPOR" },
++	{ "Headphone", NULL, "HPOL" },
++	{ "Headphone", NULL, "HPOR" },
+ 	{ "IN1P", NULL, "Headset Mic" },
+ 	/* SOF Uplink */
+ 	{SOF_DMA_UL4, NULL, "O034"},
+@@ -95,30 +95,30 @@ static const struct snd_soc_dapm_route mt8195_mt6359_routes[] = {
+ };
  
- #define mmc_card_mmc(c)		((c)->type == MMC_TYPE_MMC)
-diff --git a/include/linux/mmc/sdio.h b/include/linux/mmc/sdio.h
-index 2a05d1ac4f0e..1ef400f28642 100644
---- a/include/linux/mmc/sdio.h
-+++ b/include/linux/mmc/sdio.h
-@@ -159,6 +159,11 @@
- #define  SDIO_DTSx_SET_TYPE_A	(1 << SDIO_DRIVE_DTSx_SHIFT)
- #define  SDIO_DTSx_SET_TYPE_C	(2 << SDIO_DRIVE_DTSx_SHIFT)
- #define  SDIO_DTSx_SET_TYPE_D	(3 << SDIO_DRIVE_DTSx_SHIFT)
-+
-+#define SDIO_CCCR_INTERRUPT_EXT	0x16
-+#define SDIO_INTERRUPT_EXT_SAI	(1 << 0)
-+#define SDIO_INTERRUPT_EXT_EAI	(1 << 1)
-+
- /*
-  * Function Basic Registers (FBR)
-  */
+ static const struct snd_soc_dapm_widget mt8195_dual_speaker_widgets[] = {
+-	SND_SOC_DAPM_SPK("Left Speaker", NULL),
+-	SND_SOC_DAPM_SPK("Right Speaker", NULL),
++	SND_SOC_DAPM_SPK("Left Spk", NULL),
++	SND_SOC_DAPM_SPK("Right Spk", NULL),
+ };
+ 
+ static const struct snd_kcontrol_new mt8195_dual_speaker_controls[] = {
+-	SOC_DAPM_PIN_SWITCH("Left Speaker"),
+-	SOC_DAPM_PIN_SWITCH("Right Speaker"),
++	SOC_DAPM_PIN_SWITCH("Left Spk"),
++	SOC_DAPM_PIN_SWITCH("Right Spk"),
+ };
+ 
+ static const struct snd_soc_dapm_widget mt8195_speaker_widgets[] = {
+-	SND_SOC_DAPM_SPK("Speakers", NULL),
++	SND_SOC_DAPM_SPK("Ext Spk", NULL),
+ };
+ 
+ static const struct snd_kcontrol_new mt8195_speaker_controls[] = {
+-	SOC_DAPM_PIN_SWITCH("Speakers"),
++	SOC_DAPM_PIN_SWITCH("Ext Spk"),
+ };
+ 
+ static const struct snd_soc_dapm_route mt8195_rt1011_routes[] = {
+-	{ "Left Speaker", NULL, "Left SPO" },
+-	{ "Right Speaker", NULL, "Right SPO" },
++	{ "Left Spk", NULL, "Left SPO" },
++	{ "Right Spk", NULL, "Right SPO" },
+ };
+ 
+ static const struct snd_soc_dapm_route mt8195_rt1019_routes[] = {
+-	{ "Speakers", NULL, "Speaker" },
++	{ "Ext Spk", NULL, "Speaker" },
+ };
+ 
+ #define CKSYS_AUD_TOP_CFG 0x032c
 -- 
-2.25.1
+2.18.0
 
 
 _______________________________________________
