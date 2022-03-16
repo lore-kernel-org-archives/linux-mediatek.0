@@ -4,74 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5755C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 02:35:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E54C9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 03:21:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jmLa7xhc28k9uiqPX8JnosWp0latTIJnlNnhH0KQnY8=; b=yh0i3mdPwKBkwh
-	5vjPsZFPDN/ePrm4ZjoN0zcQFKmMrFzEahdccXDOc6pwyQWmc338rGhZAS9EI/tY6ExINIjzjawbf
-	Urcl76Doe2N63UDMEjPZjhTiFqea8lepS8uKL+/Rkgd4hPL35Qubqnxa8rJ0ZsCD7wlfuSt3B30Z2
-	JtzpTjJ4x9gJITFZmjActtbagj1U8QA5Y03YvGHdQ9dhcZb4XwYE23ZcgcYFRTzlbmWpY8uU9Sof1
-	wOnKkEUnFMWvzmWZ4N/Oh2gfHSOvAsN8zjouteIy9vTdy8s9qd6Bg7/P6Y1f9kh2tQsN2Y9TsLYiM
-	HoioT0A2qay5+z8kYwrw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=suhtx5Q1dPZ7x7nLpor8s+3vVli2aPElPdvHQoNbRcQ=; b=OKQMrMwaWNP2r8
+	JMhw2KbmK1zmsKxA+b54a7DiSdEUE3Drxw8+3P3DFig1hZkDYSzVg8VpnsoOAoa/jOeUBAeW2Kkxo
+	c9bd5u8Qq2kU66HZaMFIE7Ceaj1o/qPE1MCitPY4qEK67qgiTZ1mApzAuRyA2+GJUPuTslcVifV25
+	8A65GpdbXQRk2Pk7gCJfPocei7JsnGIltXdSQdxiQkh9SfvVAF0GGQ+0EQ8uw3vCW0kUIR0HSPtou
+	IgOL3qQovebkxTs7AYwGCxHnJveIUgv0abEAcajj3c3uYMfyZDseLker+ub2zGvsxLndlhGTi0cPs
+	NO61g0rswufA0IqfGUow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUJVQ-00BDio-IF; Wed, 16 Mar 2022 02:35:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nUKEH-00BIJc-Qr; Wed, 16 Mar 2022 03:21:41 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUJVN-00BDhl-9J; Wed, 16 Mar 2022 02:35:18 +0000
-X-UUID: a1f0a9a2ef4844d98a2d2ef6940488a5-20220315
-X-UUID: a1f0a9a2ef4844d98a2d2ef6940488a5-20220315
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ id 1nUKE5-00BIIW-1d; Wed, 16 Mar 2022 03:21:31 +0000
+X-UUID: 247236e66aa7413cb0815a6d7ef03d85-20220315
+X-UUID: 247236e66aa7413cb0815a6d7ef03d85-20220315
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <tinghan.shen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1293687709; Tue, 15 Mar 2022 19:35:12 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Mar 2022 19:25:09 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 16 Mar 2022 10:25:06 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 16 Mar 2022 10:25:06 +0800
-Message-ID: <00a1b51452d0a8fcdd9807845580678f6739e974.camel@mediatek.com>
-Subject: Re: [PATCH v13 1/6] soc: mediatek: mutex: add common interface to
- accommodate multiple modules operationg MUTEX
-From: CK Hu <ck.hu@mediatek.com>
-To: Moudy Ho <moudy.ho@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Jernej
- Skrabec" <jernej.skrabec@siol.net>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- Alexandre Courbot <acourbot@chromium.org>, <tfiga@chromium.org>,
- <drinkcat@chromium.org>, <pihsun@chromium.org>, <hsinyi@google.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, <randy.wu@mediatek.com>,
- <jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
- <river.cheng@mediatek.com>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 16 Mar 2022 10:25:06 +0800
-In-Reply-To: <20220315061031.21642-2-moudy.ho@mediatek.com>
-References: <20220315061031.21642-1-moudy.ho@mediatek.com>
- <20220315061031.21642-2-moudy.ho@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ with ESMTP id 583172475; Tue, 15 Mar 2022 20:21:24 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Mar 2022 20:11:21 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 16 Mar 2022 11:11:20 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 16 Mar 2022 11:11:20 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Bjorn Andersson <bjorn.andersson@linaro.org>, Mathieu Poirier
+ <mathieu.poirier@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <linux-remoteproc@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Tinghan Shen
+ <tinghan.shen@mediatek.com>
+Subject: [PATCH v4] remoteproc: mediatek: Fix side effect of mt8195 sram power
+ on
+Date: Wed, 16 Mar 2022 11:11:17 +0800
+Message-ID: <20220316031117.7311-1-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.15.GIT
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_193517_346324_FC97D30F 
-X-CRM114-Status: GOOD (  19.51  )
+X-CRM114-CacheID: sfid-20220315_202129_137908_01CF850B 
+X-CRM114-Status: GOOD (  16.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,97 +75,169 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Moudy:
+The definition of L1TCM_SRAM_PDN bits on mt8195 is different to mt8192.
 
-On Tue, 2022-03-15 at 14:10 +0800, Moudy Ho wrote:
-> In order to allow multiple modules to operate MUTEX hardware through
-> a common interfrace, a flexible index "mtk_mutex_table_index" needs
-> to
-> be added to replace original component ID so that like DDP and MDP
-> can add their own MUTEX table settings independently.
-> 
-> In addition, 4 generic interface "mtk_mutex_set_mod",
-> "mtk_mutex_set_sof",
-> "mtk_mutex_clear_mod" and "mtk_mutex_clear_sof" have been added,
-> which is
-> expected to replace the "mtk_mutex_add_comp" and
-> "mtk_mutex_remove_comp"
-> pair originally dedicated to DDP in the future.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> ---
->  drivers/soc/mediatek/mtk-mutex.c       | 122
-> +++++++++++++++++++++++++
->  include/linux/soc/mediatek/mtk-mutex.h |  33 +++++++
->  2 files changed, 155 insertions(+)
-> 
+L1TCM_SRAM_PDN bits[3:0] control the power of mt8195 L1TCM SRAM.
 
-[snip]
+L1TCM_SRAM_PDN bits[7:4] control the access path to EMI for SCP.
+These bits have to be powered on to allow EMI access for SCP.
 
-> 
-> diff --git a/include/linux/soc/mediatek/mtk-mutex.h
-> b/include/linux/soc/mediatek/mtk-mutex.h
-> index 6fe4ffbde290..c8355bb0e6d6 100644
-> --- a/include/linux/soc/mediatek/mtk-mutex.h
-> +++ b/include/linux/soc/mediatek/mtk-mutex.h
-> @@ -10,14 +10,47 @@ struct regmap;
->  struct device;
->  struct mtk_mutex;
->  
-> +enum mtk_mutex_table_index {
-> +	MUTEX_TABLE_IDX_NONE = 0,	/* Invalid engine */
+Bits[7:4] also affect audio DSP because audio DSP and SCP are
+placed on the same hardware bus. If SCP cannot access EMI, audio DSP is
+blocked too.
 
-Useless, so remove this.
+L1TCM_SRAM_PDN bits[31:8] are not used.
 
-> +
-> +	/* MDP table index */
-> +	MUTEX_TABLE_IDX_MDP_RDMA0,
-> +	MUTEX_TABLE_IDX_MDP_RSZ0,
-> +	MUTEX_TABLE_IDX_MDP_RSZ1,
-> +	MUTEX_TABLE_IDX_MDP_TDSHP0,
-> +	MUTEX_TABLE_IDX_MDP_WROT0,
-> +	MUTEX_TABLE_IDX_MDP_WDMA,
-> +	MUTEX_TABLE_IDX_MDP_AAL0,
-> +	MUTEX_TABLE_IDX_MDP_CCORR0,
-> +
-> +	/* DDP table index */
-> +	MUTEX_TABLE_IDX_DDP_DSI0,
-> +	MUTEX_TABLE_IDX_DDP_DSI1,
-> +	MUTEX_TABLE_IDX_DDP_DSI2,
-> +	MUTEX_TABLE_IDX_DDP_DSI3,
-> +	MUTEX_TABLE_IDX_DDP_DPI0,
-> +	MUTEX_TABLE_IDX_DDP_DPI1,
-> +	MUTEX_TABLE_IDX_DDP_DP_INTF0,
-> +	MUTEX_TABLE_IDX_DDP_DP_INTF1,
+This fix removes modification of bits[7:4] when power on/off mt8195 SCP
+L1TCM. It's because the modification introduces a short period of time
+blocking audio DSP to access EMI. This was not a problem until we have
+to load both SCP module and audio DSP module. audio DSP needs to access
+EMI because it has source/data on DRAM. Audio DSP will have unexpected
+behavior when it accesses EMI and the SCP driver blocks the EMI path at
+the same time.
 
-If this patch would support DDP, add all DDP index. If this patch does
-not support DDP, remove these.
+Fixes: 79111df414fc ("remoteproc: mediatek: Support mt8195 scp")
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
+v4: add Fixes and Reviewed-by tags
+v3: fix build error
+v2: apply comments about macro definition and function calls
+---
+ drivers/remoteproc/mtk_common.h |  2 ++
+ drivers/remoteproc/mtk_scp.c    | 67 +++++++++++++++++++++++++++++++----------
+ 2 files changed, 53 insertions(+), 16 deletions(-)
 
-Regards,
-CK
-
-> +
-> +	MUTEX_TABLE_IDX_MAX		/* ALWAYS keep at the end */
-> +};
-> +
->  struct mtk_mutex *mtk_mutex_get(struct device *dev);
->  int mtk_mutex_prepare(struct mtk_mutex *mutex);
->  void mtk_mutex_add_comp(struct mtk_mutex *mutex,
->  			enum mtk_ddp_comp_id id);
-> +void mtk_mutex_set_mod(struct mtk_mutex *mutex,
-> +		       enum mtk_mutex_table_index idx);
-> +void mtk_mutex_set_sof(struct mtk_mutex *mutex,
-> +		       enum mtk_mutex_table_index idx);
->  void mtk_mutex_enable(struct mtk_mutex *mutex);
->  void mtk_mutex_disable(struct mtk_mutex *mutex);
->  void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
->  			   enum mtk_ddp_comp_id id);
-> +void mtk_mutex_clear_mod(struct mtk_mutex *mutex,
-> +			 enum mtk_mutex_table_index idx);
-> +void mtk_mutex_clear_sof(struct mtk_mutex *mutex);
->  void mtk_mutex_unprepare(struct mtk_mutex *mutex);
->  void mtk_mutex_put(struct mtk_mutex *mutex);
->  void mtk_mutex_acquire(struct mtk_mutex *mutex);
+diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+index 5ff3867c72f3..ff954a06637c 100644
+--- a/drivers/remoteproc/mtk_common.h
++++ b/drivers/remoteproc/mtk_common.h
+@@ -51,6 +51,8 @@
+ #define MT8192_CORE0_WDT_IRQ		0x10030
+ #define MT8192_CORE0_WDT_CFG		0x10034
+ 
++#define MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS		GENMASK(7, 4)
++
+ #define SCP_FW_VER_LEN			32
+ #define SCP_SHARE_BUFFER_SIZE		288
+ 
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index 36e48cf58ed6..5f686fe09203 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -365,22 +365,22 @@ static int mt8183_scp_before_load(struct mtk_scp *scp)
+ 	return 0;
+ }
+ 
+-static void mt8192_power_on_sram(void __iomem *addr)
++static void scp_sram_power_on(void __iomem *addr, u32 reserved_mask)
+ {
+ 	int i;
+ 
+ 	for (i = 31; i >= 0; i--)
+-		writel(GENMASK(i, 0), addr);
++		writel(GENMASK(i, 0) & ~reserved_mask, addr);
+ 	writel(0, addr);
+ }
+ 
+-static void mt8192_power_off_sram(void __iomem *addr)
++static void scp_sram_power_off(void __iomem *addr, u32 reserved_mask)
+ {
+ 	int i;
+ 
+ 	writel(0, addr);
+ 	for (i = 0; i < 32; i++)
+-		writel(GENMASK(i, 0), addr);
++		writel(GENMASK(i, 0) & ~reserved_mask, addr);
+ }
+ 
+ static int mt8192_scp_before_load(struct mtk_scp *scp)
+@@ -391,11 +391,32 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
+ 	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
+ 
+ 	/* enable SRAM clock */
+-	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_0);
+-	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_1);
+-	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_2);
+-	mt8192_power_on_sram(scp->reg_base + MT8192_L1TCM_SRAM_PDN);
+-	mt8192_power_on_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
++
++	/* enable MPU for all memory regions */
++	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
++
++	return 0;
++}
++
++static int mt8195_scp_before_load(struct mtk_scp *scp)
++{
++	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
++	writel(0xff, scp->reg_base + MT8192_SCP2SPM_IPC_CLR);
++
++	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
++
++	/* enable SRAM clock */
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
++			  MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
++	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
+ 
+ 	/* enable MPU for all memory regions */
+ 	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
+@@ -551,11 +572,25 @@ static void mt8183_scp_stop(struct mtk_scp *scp)
+ static void mt8192_scp_stop(struct mtk_scp *scp)
+ {
+ 	/* Disable SRAM clock */
+-	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_0);
+-	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_1);
+-	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_2);
+-	mt8192_power_off_sram(scp->reg_base + MT8192_L1TCM_SRAM_PDN);
+-	mt8192_power_off_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
++
++	/* Disable SCP watchdog */
++	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
++}
++
++static void mt8195_scp_stop(struct mtk_scp *scp)
++{
++	/* Disable SRAM clock */
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
++			   MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
++	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
+ 
+ 	/* Disable SCP watchdog */
+ 	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
+@@ -901,11 +936,11 @@ static const struct mtk_scp_of_data mt8192_of_data = {
+ 
+ static const struct mtk_scp_of_data mt8195_of_data = {
+ 	.scp_clk_get = mt8195_scp_clk_get,
+-	.scp_before_load = mt8192_scp_before_load,
++	.scp_before_load = mt8195_scp_before_load,
+ 	.scp_irq_handler = mt8192_scp_irq_handler,
+ 	.scp_reset_assert = mt8192_scp_reset_assert,
+ 	.scp_reset_deassert = mt8192_scp_reset_deassert,
+-	.scp_stop = mt8192_scp_stop,
++	.scp_stop = mt8195_scp_stop,
+ 	.scp_da_to_va = mt8192_scp_da_to_va,
+ 	.host_to_scp_reg = MT8192_GIPC_IN_SET,
+ 	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
+-- 
+2.15.GIT
 
 
 _______________________________________________
