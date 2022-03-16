@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B458BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 05:42:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D78B4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 05:42:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Os28HrQ+nyfiZyZjUokIbmnIHcbFsqJFlH9ZN+bcr9A=; b=tH7Qkzb/77hd+A
-	zx+P7NnM5lDGNznyvUBzlfRTCt8yUrMUaJAUecKYdZNRwbW1fDPVBS8g/sZEbcBne5oaRxiOoP69Z
-	NqPR1GNA/sEKr650KHRJxWSFjHldvzgdSfhWV4DhDeJTqUvMip21cnQ6uPtwDOmCZlOK/J5mDZSfR
-	oqNd0ktvrVOpnmMibRk1VnHhnsbGWZ/aMhXA5yTakd1NoVpvlBO9vU1MCXvhv44fWfhRbzgjZKCTS
-	0VYZIVLA/5WVV+3GcOT2sPLeaAxChIGEmWfM3kNNXAOcOixlJaQUb6lnCVLVnqvFmiJPE6yZyygah
-	LQ3gy//zXnFtgRjRZDSw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4oIJ4oyE2TtYsW4NGHtDE4Uo8eymTxaLU3PMfyI1rjY=; b=SqIlls8Ssd977q
+	ik68PH5zSE4LemyexmkMgwpcGftytYTEnKzqeHbhx7t6ahFZW77nUWD+MmwYKxVtwQzF5KKEQAdSz
+	9MUWRuWjAAUi1DSS6k5QvOnHb3i1RiaUTvEZYrUX9f13A+M+OO0VuhGvLN60iwrdbJoD+Rcax/sb3
+	/0gDVMXTRjjB9efhiPikCyL8SwEub6HAkFZTpF76PIeohZzYeBijEIXNii0DCYrQHBbe/NaYmAI8u
+	S/I9NhfWObEAqV0x1JmY3aHJHKayjGF2W/NMGKwcryOsNGgXgTGDeBcdUrecvFGA3z4jwZDnlkW3T
+	8f+zmpkjzor8Qf/OPa2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUMQV-00BVt8-Pm; Wed, 16 Mar 2022 05:42:27 +0000
+	id 1nUMQi-00BVxt-Go; Wed, 16 Mar 2022 05:42:40 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUMQ6-00BVlm-64; Wed, 16 Mar 2022 05:42:05 +0000
-X-UUID: 769550e20f6c4a80bcbca78222c356fc-20220315
-X-UUID: 769550e20f6c4a80bcbca78222c356fc-20220315
+ id 1nUMQT-00BVs1-TV; Wed, 16 Mar 2022 05:42:27 +0000
+X-UUID: ab22a5550efb4fb09b1e502acc657824-20220315
+X-UUID: ab22a5550efb4fb09b1e502acc657824-20220315
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <xinlei.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1823466484; Tue, 15 Mar 2022 22:41:55 -0700
+ with ESMTP id 393260252; Tue, 15 Mar 2022 22:42:20 -0700
 Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Mar 2022 22:35:41 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Mar 2022 22:35:45 -0700
 Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS34N1.mediatek.inc
  (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 16 Mar 2022 13:35:38 +0800
+ Wed, 16 Mar 2022 13:35:43 +0800
 Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
  MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Wed, 16 Mar 2022 13:35:37 +0800
+ 15.0.1497.2 via Frontend Transport; Wed, 16 Mar 2022 13:35:42 +0800
 From: <xinlei.lee@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
  <daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
@@ -49,15 +49,18 @@ CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
  <jitao.shi@mediatek.com>, <rex-bc.chen@mediatek.com>,
  <allen-kh.cheng@mediatek.com>, Xinlei Lee <xinlei.lee@mediatek.com>
 Subject: [PATCH v3,
- 0/3] Add mt8186 dsi compatoble & Convert  dsi_dtbinding to .yaml
-Date: Wed, 16 Mar 2022 13:35:31 +0800
-Message-ID: <1647408934-15775-1-git-send-email-xinlei.lee@mediatek.com>
+ 2/3] dt-bindings: display: mediatek: dsi: Add compatible for MediaTek
+ MT8186
+Date: Wed, 16 Mar 2022 13:35:33 +0800
+Message-ID: <1647408934-15775-3-git-send-email-xinlei.lee@mediatek.com>
 X-Mailer: git-send-email 2.6.4
+In-Reply-To: <1647408934-15775-1-git-send-email-xinlei.lee@mediatek.com>
+References: <1647408934-15775-1-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_224202_234328_BBE57986 
-X-CRM114-Status: UNSURE (   7.70  )
+X-CRM114-CacheID: sfid-20220315_224225_966458_DD90BAB7 
+X-CRM114-Status: UNSURE (   7.43  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,27 +80,26 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Xinlei Lee <xinlei.lee@mediatek.com>
 
-Changes since v2:
-1. Added #address-cells, #size-cells two properties.
-2. Fix some formatting issues.
+Add dt-binding documentation of dsi for MediaTek MT8186 SoC.
 
-Changes since v1:
-1. Delete the mediatek,dsi.txt & Add the mediatek,dsi.yaml.
-2. Ignore the Move the getting bridge node function patch for V1.
+Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../devicetree/bindings/display/mediatek/mediatek,dsi.yaml       | 1 +
+ 1 file changed, 1 insertion(+)
 
-Xinlei Lee (3):
-  dt-bindings: display: mediatek: dsi: Convert dsi_dtbinding to .yaml
-  dt-bindings: display: mediatek: dsi: Add compatible for MediaTek
-    MT8186
-  drm/mediatek: Add mt8186 dsi compatible to mtk_dsi.c
-
- .../display/mediatek/mediatek,dsi.txt         | 62 ------------
- .../display/mediatek/mediatek,dsi.yaml        | 97 +++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_dsi.c            |  8 ++
- 3 files changed, 105 insertions(+), 62 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
-
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
+index eb49a7bb6a74..f6d8c2695dd0 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
+@@ -17,6 +17,7 @@ properties:
+       - mediatek,mt2701-dsi
+       - mediatek,mt8173-dsi
+       - mediatek,mt8183-dsi
++      - mediatek,mt8186-dsi
+ 
+   reg:
+     maxItems: 1
 -- 
 2.18.0
 
