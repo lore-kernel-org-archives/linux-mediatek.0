@@ -4,49 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8668EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 00:14:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC54CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 01:41:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ONIzEKSwtlkX03TFqAtZgDxy2YIPy0Y0zZTg5ue4UNU=; b=P0FItvhJb+hduJ
-	jejvfhu95VzcbpTwgak0r86VZA0RxSz0IR3f/qydWI1jK0DmPzizWVN+jqfgv5PYiuRutxYSQ6FVn
-	xWl8grNvi4vDAbc0PeraMG0DNIeM7a5egFT0Jdtu4BD9f/6gIqX1xa3luunpRz3R+jc+0eEzzpbcm
-	2AgR2CAhHIxw5Je48FelIfM4UAj3GeTa8JQyn1zC67xohiiMRDpZJwN5b37cpoOPDTMlfyr6F9VkU
-	UaFxFfsfZv/A/Re3PMa1J2O2zX98ugQ8KYNaLToYLo15gtjVf1CJi796oN6hKc87lZxOVKgFSfA6i
-	7Z500lqpII2r+H1kXpew==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DsKXVRQ0ZdkJY/I+Ur16lCjheIUzdLw5eZUIgwZM4ko=; b=uPQ6BTu5tp/dMl
+	5DEhSDvU015vyz+a9gviBpYmY0gbmkj29sVU8CAhkeIA0WbVIHRrTfG2kovA0tPF+uckP0ExBCv4r
+	5zDnsBQrVOourEkcfgzisdZJzFrFZcogY1jGIMZwq9pqai9zABSJuJ7FaHaS831P62Kv7fFcqOy8x
+	+Xg3vGn5ia5OnHrLb6dxl6whCMfKk63dkiX7vVLxNmzOj5YgDFBTMDB051BHOtKWaPPSmv7P3pNhC
+	XjUBumvBZMnBZBKpGIP3KjpA7h6TI1p209VMDU7azAbG4ucETCsy1T5Wf2SSOQYtOkNDWURRjgJQ/
+	oA50R38pGjdPkWLedgMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUHJ7-00AyYx-4p; Wed, 16 Mar 2022 00:14:29 +0000
-Received: from out30-56.freemail.mail.aliyun.com ([115.124.30.56])
+	id 1nUIfA-00B5uV-Fr; Wed, 16 Mar 2022 01:41:20 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUHIu-00AyW1-U2; Wed, 16 Mar 2022 00:14:18 +0000
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R171e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e01424; MF=yang.lee@linux.alibaba.com;
- NM=1; PH=DS; RN=10; SR=0; TI=SMTPD_---0V7JcKdl_1647389652; 
-Received: from localhost(mailfrom:yang.lee@linux.alibaba.com
- fp:SMTPD_---0V7JcKdl_1647389652) by smtp.aliyun-inc.com(127.0.0.1);
- Wed, 16 Mar 2022 08:14:13 +0800
-From: Yang Li <yang.lee@linux.alibaba.com>
-To: mchehab@kernel.org
-Cc: matthias.bgg@gmail.com, tiffany.lin@mediatek.com,
- andrew-ct.chen@mediatek.com, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Yang Li <yang.lee@linux.alibaba.com>,
- Abaci Robot <abaci@linux.alibaba.com>
-Subject: [PATCH -next] media: platform: Remove unnecessary print function
- dev_err()
-Date: Wed, 16 Mar 2022 08:14:11 +0800
-Message-Id: <20220316001411.80167-1-yang.lee@linux.alibaba.com>
-X-Mailer: git-send-email 2.20.1.7.g153144c
-MIME-Version: 1.0
+ id 1nUIey-00B5sr-6P; Wed, 16 Mar 2022 01:41:10 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id z16so1800903pfh.3;
+ Tue, 15 Mar 2022 18:41:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:subject:date:message-id:in-reply-to:references;
+ bh=5TN7lZdXFXxg1iaTCPv4OVG95Uy6qF3btAwL8YcaPoo=;
+ b=fp6lcFh5R0fHZgw6XCRFpUL7I5I1gXmE8/vyIb2woJggGoKpx50bjig+qMBd33Y7WJ
+ kVuGkMUNDOsxAT0LxoZMiZktQafTk6zX8IBjtpBWOr6JKAc+pGnn41DSEGPcj+K5e5j7
+ 9eEPSz1tMiJuALgTV9pauBZGx9f0iZO8XsNtGu7s/plgCrynSjgc15H4XiFvzXE5sjlr
+ ZhVXs0KI7GY5UGlPLEaDuBg3g0I3YVUzZiXewCh6skyTB6rGNJOvcKadRTiLEn7VaWUh
+ ZsVBekxVVg3Q4R57fTjai04UeQos0/OyCC9zSRyl+l1y5I893f5j9Li8nS1yujnNx0qj
+ BZKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references;
+ bh=5TN7lZdXFXxg1iaTCPv4OVG95Uy6qF3btAwL8YcaPoo=;
+ b=EMavi095N0+NTa+aDQCfC6+iKP3WkXLq4L5prOOGo0GvGZ6CPMT4gryX48TSI+IGqD
+ Uhtdgyg8aY7JlYK5SJbNjsSbx2Dxu4ybdGuLxzbeowixzUgY7igeq8okj4+RGrP21sJM
+ lMPeFBrvNyC9vCQ9Xq0tnmjZQ2FZuAkyVVXopc7arkuMMuZAQq+GK7jhwzoezLOrP8mr
+ dMWbx14naUUn9mtIXPCa2323UGVn6hGh/QLnrJzb1bma9aRW9137W6dgDXtEvYmS+gkO
+ uQz/5eHcvud1RMaH+WNikWCAu4KMXgPDF/BFQ3wiBBtVZtuJa2H0LIJNBWdI18PsKJt7
+ 2k6w==
+X-Gm-Message-State: AOAM531qu+YftUrBnDewUDjv37gN5fjR0HEWddbPQNseAEhkiZSoxh5a
+ 7Fssm42xHsiFfDwtBggDRYU=
+X-Google-Smtp-Source: ABdhPJxK7nJ6x3EXhO8mMTf3wXoWFtWkzGi6+LnIsadkdyjrPZjF5qTX1txO598/jtLONqY44bQ5Jw==
+X-Received: by 2002:a63:8e:0:b0:380:93d7:e85f with SMTP id
+ 136-20020a63008e000000b0038093d7e85fmr26142946pga.177.1647394866646; 
+ Tue, 15 Mar 2022 18:41:06 -0700 (PDT)
+Received: from localhost.localdomain ([159.226.95.43])
+ by smtp.googlemail.com with ESMTPSA id
+ me5-20020a17090b17c500b001c63699ff60sm4485594pjb.57.2022.03.15.18.41.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 15 Mar 2022 18:41:06 -0700 (PDT)
+From: Miaoqian Lin <linmq006@gmail.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Tzung-Bi Shih <tzungbi@google.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
+ Miaoqian Lin <linmq006@gmail.com>, Shunli Wang <shunli.wang@mediatek.com>,
+ alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v2] ASoC: mediatek: Fix error handling in
+ mt8183_da7219_max98357_dev_probe
+Date: Wed, 16 Mar 2022 01:40:57 +0000
+Message-Id: <20220316014059.19292-1-linmq006@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <Yia5XgkGyLbIRc1f@google.com>
+References: <Yia5XgkGyLbIRc1f@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_171417_158508_6E769248 
-X-CRM114-Status: UNSURE (   8.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220315_184108_275292_7E3CBE16 
+X-CRM114-Status: GOOD (  14.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,61 +86,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The print function dev_err() is redundant because platform_get_irq()
-already prints an error.
+The device_node pointer is returned by of_parse_phandle()  with refcount
+incremented. We should use of_node_put() on it when done.
 
-Eliminate the follow coccicheck warnings:
-./drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c:119:2-9:
-line 119 is redundant because platform_get_irq() already prints an error
-./drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c:103:2-9:
-line 103 is redundant because platform_get_irq() already prints an error
+This function only calls of_node_put() in the regular path.
+And it will cause refcount leak in error paths.
+Fix this by calling of_node_put() in error handling too.
 
-Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
+Fixes: 5bdbe9771177 ("ASoC: mediatek: mt8183-da7219: use hdmi-codec")
+Fixes: ebbddc75bbe8 ("ASoC: Mediatek: MT8183: Add machine driver with DA7219")
+Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
 ---
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c | 4 +---
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c  | 4 +---
- 2 files changed, 2 insertions(+), 6 deletions(-)
+change in v2:
+- update Fixes tag.
+---
+ .../mediatek/mt8183/mt8183-da7219-max98357.c  | 23 +++++++++++++------
+ 1 file changed, 16 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-index 48dad9bb13d2..df7b25e9cbc8 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-@@ -115,10 +115,8 @@ static int mtk_vcodec_init_dec_resources(struct mtk_vcodec_dev *dev)
- 		return 0;
+diff --git a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
+index 718505c75418..f090dee0c7a4 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
++++ b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
+@@ -695,8 +695,11 @@ static int mt8183_da7219_max98357_dev_probe(struct platform_device *pdev)
+ 	}
  
- 	dev->dec_irq = platform_get_irq(pdev, 0);
--	if (dev->dec_irq < 0) {
--		dev_err(&pdev->dev, "failed to get irq number");
-+	if (dev->dec_irq < 0)
- 		return dev->dec_irq;
--	}
+ 	card = (struct snd_soc_card *)of_device_get_match_data(&pdev->dev);
+-	if (!card)
+-		return -EINVAL;
++	if (!card) {
++		ret = -EINVAL;
++		goto put_platform_node;
++	}
++
+ 	card->dev = &pdev->dev;
  
- 	irq_set_status_flags(dev->dec_irq, IRQ_NOAUTOEN);
- 	ret = devm_request_irq(&pdev->dev, dev->dec_irq,
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-index 8d2a641d92f1..5f07313676bb 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-@@ -99,10 +99,8 @@ static int mtk_vdec_hw_init_irq(struct mtk_vdec_hw_dev *dev)
- 	int ret;
+ 	hdmi_codec = of_parse_phandle(pdev->dev.of_node,
+@@ -761,12 +764,15 @@ static int mt8183_da7219_max98357_dev_probe(struct platform_device *pdev)
+ 	if (!mt8183_da7219_max98357_headset_dev.dlc.of_node) {
+ 		dev_err(&pdev->dev,
+ 			"Property 'mediatek,headset-codec' missing/invalid\n");
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto put_hdmi_codec;
+ 	}
  
- 	dev->dec_irq = platform_get_irq(pdev, 0);
--	if (dev->dec_irq < 0) {
--		dev_err(&pdev->dev, "Failed to get irq resource");
-+	if (dev->dec_irq < 0)
- 		return dev->dec_irq;
--	}
+ 	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
+-	if (!priv)
+-		return -ENOMEM;
++	if (!priv) {
++		ret = -ENOMEM;
++		goto put_hdmi_codec;
++	}
  
- 	irq_set_status_flags(dev->dec_irq, IRQ_NOAUTOEN);
- 	ret = devm_request_irq(&pdev->dev, dev->dec_irq,
+ 	snd_soc_card_set_drvdata(card, priv);
+ 
+@@ -775,13 +781,16 @@ static int mt8183_da7219_max98357_dev_probe(struct platform_device *pdev)
+ 		ret = PTR_ERR(pinctrl);
+ 		dev_err(&pdev->dev, "%s failed to select default state %d\n",
+ 			__func__, ret);
+-		return ret;
++		goto put_hdmi_codec;
+ 	}
+ 
+ 	ret = devm_snd_soc_register_card(&pdev->dev, card);
+ 
+-	of_node_put(platform_node);
++
++put_hdmi_codec:
+ 	of_node_put(hdmi_codec);
++put_platform_node:
++	of_node_put(platform_node);
+ 	return ret;
+ }
+ 
 -- 
-2.20.1.7.g153144c
+2.17.1
 
 
 _______________________________________________
