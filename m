@@ -4,61 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50837C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 05:43:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECAD6C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 06:01:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GrhlUgI8RkwIH7eIbnXVOWcr8AEbV/WE3tEiZqD+UHw=; b=gFNXHKqHUxZHun
-	xOYo8Oj3RIYWOE+1GcDxtd81FFe6+BDo+Is1FCX8uPMwmcO4kMiygCYezzoFybY9yMElh3oGtHGx7
-	bjmSXWICA+1+baKC2mIODCabRjx9GrK7KAVXbkYxwvgH1tkdgzK/jHWPyER9HBNYGWbGvrazVIuAz
-	SJk2J+1Kf2c73jFwRCHfNbitVf8QJ1bw9oQWR0Pg7LUjVIagcJUVxF6BU4M+iaFlvChgYCHEOZDcl
-	bR+jzo4CqOiFQJS3JaWw27ln9vUHCvAUPVBbgvse9/KO7lC35tDRyVStHTjrmflVF6P5qTV1cImuf
-	71knzWEvRGEgWAtI2hsg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1Huc0xC9GZxhY2T7aDEmUssNFUitcvio4AlVv4jwvd4=; b=oNs0Xq39Qu/wIX
+	m5w2ZvjS3hiQ/nOeEHE/f4z5IHZlN5uasJeKIKSQZl6cMTXDqA7hEVHpPVg3T8jpkchqh7BVoTEGw
+	e4J7XdMWcWUg2GMeCi9nhG8E5FsrUagCscGGqai7C1+j6ojXWQalbFWxSse6e6LOcQ47Pm2usvDQK
+	ABw0chSl/goxOTYgklg8I19e/XsVyW1Hn35wkUKC+D7e+ymiggxS0SNewKsVJuGrjq9CvLfEd8ltd
+	Fa3H0sz0DWu51r3Wq8n4Iq5Ij1ESGzoPBZ7taA5+U0R7wMDo0sSd/TmFvgRGSWuO5evycLViUPOK2
+	FoGqE8YI37lJkgV26gzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUMQw-00BW4d-1N; Wed, 16 Mar 2022 05:42:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nUMim-00BZcv-RD; Wed, 16 Mar 2022 06:01:20 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUMQU-00BVsU-Ti; Wed, 16 Mar 2022 05:42:28 +0000
-X-UUID: 32b9bc832aae4a58a719c4b954aac7ba-20220315
-X-UUID: 32b9bc832aae4a58a719c4b954aac7ba-20220315
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <xinlei.lee@mediatek.com>)
+ id 1nUMik-00BZbW-1f
+ for linux-mediatek@lists.infradead.org; Wed, 16 Mar 2022 06:01:19 +0000
+X-UUID: 35c7ea6e72e244618f53366490a68d93-20220315
+X-UUID: 35c7ea6e72e244618f53366490a68d93-20220315
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <cheng-jui.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1198238449; Tue, 15 Mar 2022 22:42:21 -0700
-Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
+ with ESMTP id 1328035554; Tue, 15 Mar 2022 23:01:15 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Mar 2022 22:35:46 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS34N1.mediatek.inc
- (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 16 Mar 2022 13:35:46 +0800
-Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
- MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Wed, 16 Mar 2022 13:35:44 +0800
-From: <xinlei.lee@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
- <daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
- <angelogioacchino.delregno@collabora.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <jitao.shi@mediatek.com>, <rex-bc.chen@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, Xinlei Lee <xinlei.lee@mediatek.com>
-Subject: [PATCH v3,3/3] drm/mediatek: Add mt8186 dsi compatible to mtk_dsi.c
-Date: Wed, 16 Mar 2022 13:35:34 +0800
-Message-ID: <1647408934-15775-4-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1647408934-15775-1-git-send-email-xinlei.lee@mediatek.com>
-References: <1647408934-15775-1-git-send-email-xinlei.lee@mediatek.com>
+ 15.0.1497.2; Tue, 15 Mar 2022 23:01:13 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Mar 2022 14:01:12 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 16 Mar 2022 14:01:11 +0800
+Message-ID: <6eb2052f463d323b0a82e795d765afb9d5925f6e.camel@mediatek.com>
+Subject: apply commit 61cc4534b655 ("locking/lockdep: Avoid potential access
+ of invalid memory in lock_class") to linux-5.4-stable
+From: Cheng Jui Wang <cheng-jui.wang@mediatek.com>
+To: <stable@vger.kernel.org>
+CC: Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>, Waiman Long
+ <longman@redhat.com>, "Peter Zijlstra (Intel)" <peterz@infradead.org>, "Bart
+ Van Assche" <bvanassche@acm.org>, <linux-mediatek@lists.infradead.org>,
+ Eason-YH Lin <eason-yh.lin@mediatek.com>
+Date: Wed, 16 Mar 2022 14:01:12 +0800
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_224226_974290_02D56F77 
-X-CRM114-Status: UNSURE (   9.24  )
+X-CRM114-CacheID: sfid-20220315_230118_127612_801ED572 
+X-CRM114-Status: UNSURE (   5.78  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,44 +73,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Xinlei Lee <xinlei.lee@mediatek.com>
+Hi Reviewers,
 
-Add the compatible because use different cmdq addresses in mt8186.
+This patch fixes a use-after-free error when /proc/lockdep is read by
+user after a lockdep splat.
 
-Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+I checked and I think this patch can be applied to stable-5.4 and
+later. 
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index bced4c7d668e..8c61c4f412bc 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -1140,6 +1140,12 @@ static const struct mtk_dsi_driver_data mt8183_dsi_driver_data = {
- 	.has_size_ctl = true,
- };
- 
-+static const struct mtk_dsi_driver_data mt8186_dsi_driver_data = {
-+	.reg_cmdq_off = 0xd00,
-+	.has_shadow_ctl = true,
-+	.has_size_ctl = true,
-+};
-+
- static const struct of_device_id mtk_dsi_of_match[] = {
- 	{ .compatible = "mediatek,mt2701-dsi",
- 	  .data = &mt2701_dsi_driver_data },
-@@ -1147,6 +1153,8 @@ static const struct of_device_id mtk_dsi_of_match[] = {
- 	  .data = &mt8173_dsi_driver_data },
- 	{ .compatible = "mediatek,mt8183-dsi",
- 	  .data = &mt8183_dsi_driver_data },
-+	{ .compatible = "mediatek,mt8186-dsi",
-+	  .data = &mt8186_dsi_driver_data },
- 	{ },
- };
- MODULE_DEVICE_TABLE(of, mtk_dsi_of_match);
--- 
-2.18.0
+commit: 61cc4534b6550997c97a03759ab46b29d44c0017
+Subject: locking/lockdep: Avoid potential access of invalid memory in
+lock_class
+
+Thanks.
+Cheng-Jui Wang
+
 
 
 _______________________________________________
