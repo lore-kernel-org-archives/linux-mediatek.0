@@ -4,67 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D54EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 10:42:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84F11C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 10:58:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7K7osKxvL035iOXe02zH2RbqDMUei6SEA9XSylbOrkg=; b=GZOIG/9lwBe7+t
-	I+NlScqhLkFnU0ZSDlcjtZOf7/ugVgQvQKrayAzBrT2JJQ/CH937MVN67nHMzMvzXVYQixvgdrat5
-	gWIsc7qJgJj+8G1dHiF9h1SJIjDf8aiX7s8DqQ8aGGRoVmT4Ns9Oe2toJ+85XYZvYQvQmoyf2vGfS
-	47twJbA2m13dW0rC7ErGdS2rBgSw/xWotlmuS8x4NcsIc4hWQN7yLSwJvwiZJMQO8dvbYATNSpfDC
-	9Lynsup6nJcoXMKOLdgq1AYHncmmhzLvDlUccCEp0Frq4adYJeu5LvVRGSVxS2rKL7UN2XYyvxYNH
-	ksgWFq/x82cWeZ0x3zdg==;
+	List-Owner; bh=0H1xG903hH4C0CVzqlCDRCiwaqOH+0VWFn1NO89omTI=; b=CPp8Ft1ESFX7vt
+	+WMktNvgymh80ERpvL9jgdNCHkxR0U8kMjfbjGZOWN0sE96mPbwY75tj5c95zNbOA12lu2s3lhyrF
+	7/ZVdSSvPRiWeIhzxaKva4eVfPmAAHSy+0m6PqJXZlV/s63umi70M2wvZmh1FL3w8jUWpp95x6HUW
+	4Ye9+KpAZg0B1tjFq3rheM1TdAnOabjJTtS9OGOjwUZr54wB7ShDO/DFELhhRqIzIOQWdj+Q2+yiY
+	4NMf0MqbOYx+rRUll7q3v17KA+7AHXG8HftFHDyoQe7cDm+QXFRL7mKU336SS8bieBRpRRqCOXeEV
+	XHKcXsXflfL/MSszMVqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUR6i-00CVh3-Kh; Wed, 16 Mar 2022 10:42:20 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nURLl-00CYLt-4B; Wed, 16 Mar 2022 10:57:53 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUR6V-00CVdb-En; Wed, 16 Mar 2022 10:42:10 +0000
-X-UUID: 369b5faa93634440ab869ded48abae43-20220316
-X-UUID: 369b5faa93634440ab869ded48abae43-20220316
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 62668293; Wed, 16 Mar 2022 03:42:01 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Mar 2022 03:41:10 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 16 Mar 2022 18:41:09 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 16 Mar 2022 18:41:08 +0800
-Message-ID: <9b4deaeb6ab6baaaf771e817f9c2163111796bb9.camel@mediatek.com>
-Subject: Re: [V2: 1/1] dt-bindings: media: mtk-vcodec: Adds encoder
- dt-bindings for mt8186
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: kyrie.wu <kyrie.wu@mediatek.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Tzung-Bi Shih
- <tzungbi@chromium.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
- <xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>,
- <srv_heupstream@mediatek.com>
-Date: Wed, 16 Mar 2022 18:41:09 +0800
-In-Reply-To: <1647416417-15176-2-git-send-email-kyrie.wu@mediatek.com>
-References: <1647416417-15176-1-git-send-email-kyrie.wu@mediatek.com>
- <1647416417-15176-2-git-send-email-kyrie.wu@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nURLY-00CY7m-KN; Wed, 16 Mar 2022 10:57:42 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id B85311F4454D
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1647428259;
+ bh=+B786kmjh9bVhF2dKutVQcJCHSHyfhNNrMNo6Cs2QQo=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=Htic6mUCNGozdobaaT2ZH9DnFUpA3VUjw9aytlaQcKQMsh4mDtjvQ4L8arnYmHveS
+ k/QlQjTJS2giW6WpcAi7/mYPOlnQl+BuSG+HnUJVisxaGeicYRfoUmgiMX4yOZ1M1Z
+ f1Rag2nzFgD4tLZAjkIY3y0g8VlBZoXLMiX7t2LGQakwVVhZCO4ZHUpqVpKJlnwriN
+ rX+trRcxFmD/Q3n3ZQEzHKl/R0xNCbfEKKuYQr5MGGBKH20ULZ4nT5TD353J503tS9
+ Iguqwt8793ig+QEiV9BPHBt42E7Q3gscBku2eokd3b9o/61M/IpQbVDT0mYmW+uM9k
+ 3TfRWAKlbtb4A==
+Message-ID: <a06003ae-2dcc-f5a4-3b5c-62db99d18950@collabora.com>
+Date: Wed, 16 Mar 2022 11:57:36 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH v2 0/5] MediaTek pinctrl drivers cleanups
+Content-Language: en-US
+To: sean.wang@kernel.org
+Cc: linus.walleij@linaro.org, matthias.bgg@gmail.com,
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com, wenst@chromium.org
+References: <20220222111144.20796-1-angelogioacchino.delregno@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220222111144.20796-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220316_034207_517167_9ABD1532 
-X-CRM114-Status: GOOD (  13.32  )
+X-CRM114-CacheID: sfid-20220316_035740_837208_57B073E8 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,46 +65,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-03-16 at 15:40 +0800, kyrie.wu wrote:
-> From: kyrie wu <kyrie.wu@mediatek.com>
+Il 22/02/22 12:11, AngeloGioacchino Del Regno ha scritto:
+> Hello!
+> This series performs some cleanups to the MediaTek pinctrl drivers
+> by commonizing some functions (reducing code duplication) hence also
+> simplifying the probe mechanism by removing unnecessary per-driver
+> probe functions.
 > 
-> Adds encoder dt-bindings for mt8186.
+> This code was tested against multiple platforms.
 > 
-> Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
-> ---
->  .../devicetree/bindings/media/mediatek,vcodec-encoder.yaml       | 1
-> +
->  1 file changed, 1 insertion(+)
+> Changes in v2:
+> - Patch 2/5: Changed -ENOENT to -ENODEV as per Chen-Yu's suggestion
+> - Patch 4/5: Removed unnoticed wrong comment change (Chen-Yu)
 > 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-
-> encoder.yaml
-> b/Documentation/devicetree/bindings/media/mediatek,vcodec-
-> encoder.yaml
-> index e7b65a91c92c..6d52947f30a5 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-
-> encoder.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-
-> encoder.yaml
-> @@ -22,6 +22,7 @@ properties:
->        - mediatek,mt8183-vcodec-enc
->        - mediatek,mt8192-vcodec-enc
->        - mediatek,mt8195-vcodec-enc
-> +      - mediatek,mt8186-vcodec-enc
->  
-Hello Kyrie,
+> AngeloGioacchino Del Regno (5):
+>    pinctrl: mediatek: paris: Unify probe function by using OF match data
+>    pinctrl: mediatek: common-v1: Add common probe function
+>    pinctrl: mediatek: common-v1: Use common probe function
+>    pinctrl: mediatek: common-v1: Commonize spec_pupd callback
+>    pinctrl: mediatek: common-v1: Commonize spec_ies_smt_set callback
+> 
+>   drivers/pinctrl/mediatek/pinctrl-mt2701.c     | 40 ++++--------
+>   drivers/pinctrl/mediatek/pinctrl-mt2712.c     | 44 +++----------
+>   drivers/pinctrl/mediatek/pinctrl-mt6765.c     |  9 +--
+>   drivers/pinctrl/mediatek/pinctrl-mt6779.c     |  9 +--
+>   drivers/pinctrl/mediatek/pinctrl-mt6797.c     |  9 +--
+>   drivers/pinctrl/mediatek/pinctrl-mt8127.c     | 39 +++---------
+>   drivers/pinctrl/mediatek/pinctrl-mt8135.c     | 17 ++----
+>   drivers/pinctrl/mediatek/pinctrl-mt8167.c     | 40 +++---------
+>   drivers/pinctrl/mediatek/pinctrl-mt8173.c     | 29 +++------
+>   drivers/pinctrl/mediatek/pinctrl-mt8183.c     |  9 +--
+>   drivers/pinctrl/mediatek/pinctrl-mt8192.c     |  9 +--
+>   drivers/pinctrl/mediatek/pinctrl-mt8195.c     |  9 +--
+>   drivers/pinctrl/mediatek/pinctrl-mt8365.c     | 40 +++---------
+>   drivers/pinctrl/mediatek/pinctrl-mt8516.c     | 40 +++---------
+>   drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 61 ++++++++++++++-----
+>   drivers/pinctrl/mediatek/pinctrl-mtk-common.h | 33 +++++++---
+>   drivers/pinctrl/mediatek/pinctrl-paris.c      |  9 ++-
+>   drivers/pinctrl/mediatek/pinctrl-paris.h      |  3 +-
+>   18 files changed, 164 insertions(+), 285 deletions(-)
+> 
 
-As metioned in v1, I think it's better to move the 8186 below 8183.
 
-BRs,
-Rex
->    reg:
->      maxItems: 1
+Hello maintainers,
 
+friendly ping for this series that already got a Reviewed-by tag on all patches :)
+
+Cheers,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
