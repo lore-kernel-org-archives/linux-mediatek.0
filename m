@@ -4,65 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21E15C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 10:00:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6389BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 10:40:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Y0RQMsLOjKYH9ag3s4wzcHbI5gh8QPgW6mh1O2r1tG8=; b=CchlL61VnduOJI
-	NB931+CzPdDuaBfn4u+VjPT3CshZ3asbI/Oh/bwklNkVuHaaJqUUv/BkO4DubFobNjSjcup/0i0iy
-	wxHQr/7+3OiVqhJpbhIi2WoP0IGDpFivFLiYcFuAGRYChpetCRF5BSnN/dMYpq4XyTbE+m+kM/w18
-	2kjNR0Qfqa5XY75KwdK1YW1poBZqi4QM/1JolDO5aWN9worUJPzTC2ihfgllsgspLYjzH7ybk2fSl
-	DKbX6gaumNEbo7IknqOgnC5s+nmPD07o9GR4IcqEbsT1Q59jtISgX0jDmDw+fOxPtHEstjpaxocY0
-	S9AtV209/wo4Qq9ySC8w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZaebdO9T/8rCIsmbCMmqqGHxxq06Lc5ryStJO+IXUwE=; b=xeR7HtK0xqnKgC
+	Xhm+VU2jFSpJ1/MdSpJiCzRF+G6AH9KK59yWns0Fb4EQxRgYHxUE3uQu5Pz5HON1JwaHByk45FJUY
+	k4yWZHuxVaxhqp4D8TGcMcFRIXvqhxzE/tt4HXfMcCGpHqAmp7DuhXak2DGufKigeMYeiHsC5MznW
+	PHEPj5rWxnPxXI1WgPmOfwvpIHXl0EelLKoD4ZmHZu2rpnC3Np/GXoLAw9FPkYedFfCDe/NdECFKf
+	XzopqosY1DTCfX1jA0eFNHgQ99YkaK6X9UH17z00IdyeaoI3xl0H8kSU9Zs02FbO3xo7uzFg3JneL
+	Fm/sIBg1/t0wOMGdl9LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUQSO-00CQUl-SH; Wed, 16 Mar 2022 10:00:40 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nUR54-00CVQw-HF; Wed, 16 Mar 2022 10:40:38 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUQSL-00CQSx-T0
- for linux-mediatek@lists.infradead.org; Wed, 16 Mar 2022 10:00:39 +0000
-X-UUID: ae45b7bb7a714f1b8d467d14db6709d5-20220316
-X-UUID: ae45b7bb7a714f1b8d467d14db6709d5-20220316
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <deren.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 903291872; Wed, 16 Mar 2022 03:00:32 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Mar 2022 02:52:00 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 16 Mar 2022 17:51:58 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 16 Mar 2022 17:51:58 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
- YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
- Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
- KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
- <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
- <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
- Chen" <shayne.chen@mediatek.com>, linux-wireless
- <linux-wireless@vger.kernel.org>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH] mt76: fix monitor rx FCS error in DFS channel
-Date: Wed, 16 Mar 2022 17:51:52 +0800
-Message-ID: <7243650f3d51b1919bd4fd0017ff8b0186149e54.1647421054.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1nUR4r-00CVNj-T6; Wed, 16 Mar 2022 10:40:27 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id B255E1F4440A
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1647427222;
+ bh=6HfrXX6kj8MJICTuM+ecnk15KUT574Z69o6G90jNQS8=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=IB8kfAy1h7y3n32fNOTs9ePoDLrvI3c5Hf412n+cTcSTTassKABkYo97j2exYIvji
+ x7ANB9jdE6pPVFVQ4dvsyyuEQ3IIIeBIYfAqhhZMJLxDDFMQAeZRepNJmEDzfA8DN0
+ d3kbzLQimiZjwhPZaU3vWxJslT5lw6bDu+I54oiEu03PkDdHZHFutjd3eF10Nu/423
+ Xv+5iofl+b+Zpir7bzh+/Ma6wRQa9/O/nAnYkEaOznIOo+WhzvLIfya+NfroIJ0yjk
+ wC6dq+VgYiOHu0PFXjRGPKaeedJj3JCkcGe/ONx5hkAd8d7TDAryVuj7sVrYZaZoaf
+ 15yHMQP3b6+8A==
+Message-ID: <e4b16e67-ccb5-78d1-bbbb-a4a7f82b7c11@collabora.com>
+Date: Wed, 16 Mar 2022 11:40:18 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH 1/2] drm: mediatek: mtk_drm_plane: Use kmalloc in
+ mtk_plane_duplicate_state
+Content-Language: en-US
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Collabora Kernel ML <kernel@collabora.com>
+References: <20220118133759.112458-1-angelogioacchino.delregno@collabora.com>
+ <CAAOTY__59-tYZNAQqFytdZgAYs+hmFxHUrF1FAj4zphiguv12g@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAAOTY__59-tYZNAQqFytdZgAYs+hmFxHUrF1FAj4zphiguv12g@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220316_030037_984652_EF943CC1 
-X-CRM114-Status: UNSURE (   9.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220316_034026_155464_F7A7C6A9 
+X-CRM114-Status: GOOD (  12.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,73 +71,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
-
-When setup monitor mode in DFS channel, mt76 send CH_SWITCH_DFS to
-fw for channel config. This would cause rx performance bad while
-monitoring frames. Settings CH_SWITCH_NORMAL in monitor mode would
-get the same performance as normal channels.
-
-Reviewed-by: Shayne Chen <shayne.chen@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 3 ++-
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 3 ++-
- drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 3 ++-
- 3 files changed, 6 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 390add3144c2..97e2a85cb728 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -2151,7 +2151,8 @@ int mt7615_mcu_set_chan_info(struct mt7615_phy *phy, int cmd)
- 		.center_chan2 = ieee80211_frequency_to_channel(freq2),
- 	};
- 
--	if (cmd == MCU_EXT_CMD(SET_RX_PATH))
-+	if (cmd == MCU_EXT_CMD(SET_RX_PATH) ||
-+	    dev->mt76.hw->conf.flags & IEEE80211_CONF_MONITOR)
- 		req.switch_reason = CH_SWITCH_NORMAL;
- 	else if (phy->mt76->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)
- 		req.switch_reason = CH_SWITCH_SCAN_BYPASS_DPD;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 10dc4bf5adec..c56d48342aaf 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -2833,7 +2833,8 @@ int mt7915_mcu_set_chan_info(struct mt7915_phy *phy, int cmd)
- 	}
- #endif
- 
--	if (cmd == MCU_EXT_CMD(SET_RX_PATH))
-+	if (cmd == MCU_EXT_CMD(SET_RX_PATH) ||
-+	    dev->mt76.hw->conf.flags & IEEE80211_CONF_MONITOR)
- 		req.switch_reason = CH_SWITCH_NORMAL;
- 	else if (phy->mt76->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)
- 		req.switch_reason = CH_SWITCH_SCAN_BYPASS_DPD;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index 5ef8b24f0ab3..da2be050ed7c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -863,7 +863,8 @@ int mt7921_mcu_set_chan_info(struct mt7921_phy *phy, int cmd)
- 	else
- 		req.channel_band = chandef->chan->band;
- 
--	if (cmd == MCU_EXT_CMD(SET_RX_PATH))
-+	if (cmd == MCU_EXT_CMD(SET_RX_PATH) ||
-+	    dev->mt76.hw->conf.flags & IEEE80211_CONF_MONITOR)
- 		req.switch_reason = CH_SWITCH_NORMAL;
- 	else if (dev->mt76.hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)
- 		req.switch_reason = CH_SWITCH_SCAN_BYPASS_DPD;
--- 
-2.18.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SWwgMjUvMDEvMjIgMTc6MzYsIENodW4tS3VhbmcgSHUgaGEgc2NyaXR0bzoKPiBIaSwgQW5nZWxv
+R2lvYWNjaGlubzoKPiAKPiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8YW5nZWxvZ2lvYWNj
+aGluby5kZWxyZWdub0Bjb2xsYWJvcmEuY29tPiDmlrwKPiAyMDIy5bm0MeaciDE45pelIOmAseS6
+jCDkuIvljYg5OjM45a+r6YGT77yaCj4+Cj4+IFRoZXJlIGlzIG5vIG5lZWQgdG8gemVybyBvdXQg
+dGhlIG5ld2x5IGFsbG9jYXRlZCBtZW1vcnkgYmVjYXVzZSB3ZSBhcmUKPj4gZHVwbGljYXRpbmcg
+YWxsIG1lbWJlcnMgb2Ygc3RydWN0IG10a19wbGFuZV9zdGF0ZTogc3dpdGNoIHRvIGttYWxsb2MK
+Pj4gdG8gc2F2ZSBzb21lIG92ZXJoZWFkLgo+IAo+IFJldmlld2VkLWJ5OiBDaHVuLUt1YW5nIEh1
+IDxjaHVua3VhbmcuaHVAa2VybmVsLm9yZz4KPiAKPj4KPj4gU2lnbmVkLW9mZi1ieTogQW5nZWxv
+R2lvYWNjaGlubyBEZWwgUmVnbm8gPGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFib3Jh
+LmNvbT4KPj4gLS0tCj4+ICAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUu
+YyB8IDIgKy0KPj4gICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24o
+LSkKPj4KCkhlbGxvLAoKdGhpcyBzZXJpZXMgd2FzIHNlbnQgYW5kIHJldmlld2VkIHR3byBtb250
+aHMgYWdvLCBidXQgaXQgaGFzbid0IGJlZW4gcGlja2VkCmluIGFueSBtYWludGFpbmVyIHRyZWUu
+CgpUaGlzIGlzIGEgZnJpZW5kbHkgcGluZyB0byBub3QgbGV0IHRoZXNlIHR3byBwYXRjaGVzIHRv
+IGJlIGxvc3QgYW5kIGZvcmdvdHRlbi4KCkNoZWVycywKQW5nZWxvCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxp
+c3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
