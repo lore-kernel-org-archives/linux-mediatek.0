@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F15AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 14:18:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 136A9C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Mar 2022 14:19:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RzmZrajQSwYOtUsAfjJINTtFFYyefFtDaC33JAINCHc=; b=XpYYkWwUomlwMj
-	NX8M/8IM7SUybcto+Dv+rkMRxNBDXGB8+Z7/209Qf73lVTD8gXygpPWqVT7BNcu8FxXdP7WYbxi+r
-	P4cS37uSfv+UwUIhP0NhJWaghnh1K0u1fhUMBDfyhYZEuN2EBzE9d7cG24BL3BgthUz7kmefqGs+y
-	y01f2g37A1/BuXlko74fIS9pX/3ur4fpRSHFhW3y0WEiH87GLPW7aBRkRqnreST4GcI8SlUkX1i4w
-	dg5S7NjfQ84kR1QL+GudRaYhyrnsdRPmdjI2Ejjc3T3HTbluP5Qqq0kXy1+aLXI/Eyf1p3oXg+oB/
-	jJQgNB2EDJA0myXCoJKA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bla7v1WtP/dmFTa8gK952xTYCO7DIWg5Ar6kXxrs6Rk=; b=PnceUae0zZJSGc
+	8J4VWtD/hZtLJlzUm9o1tNI2XMELrXjtxpBRlqGpYeT5ZkUHBPBiSfpgMWL8NhlRT9YU5Hhx4tuUT
+	kHqf1shKnmDWtM7MXd/JsbJz3PKomCddE2YYufVj1k0F9vrqqHFvMp6CR++xwbT+Eo6jDA1fM+Vfu
+	t9b4E/Sa3Jncn0wAbHjPwsom8uHh88pzzFLTWs+RdCFb9dT55ralXLaPs2zYZuTKyyu+j5G8vPIZV
+	1KMtFWz116Yl5QEW5gz/5p8COlFIHsvfT09+iwGp53iAxlXobjbCEv6pzosXVYUbXkbiamvFVxsaR
+	A7Zl9hkdu4I7si5ZBWdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUUTk-00DDYa-72; Wed, 16 Mar 2022 14:18:20 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nUUUM-00DDvI-FP; Wed, 16 Mar 2022 14:18:58 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUUTK-00DDKs-L3; Wed, 16 Mar 2022 14:17:59 +0000
+ id 1nUUTs-00DDe2-KU; Wed, 16 Mar 2022 14:18:30 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 1E39E6148D;
- Wed, 16 Mar 2022 14:17:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 65703C36AE2;
- Wed, 16 Mar 2022 14:17:48 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 57921B81B80;
+ Wed, 16 Mar 2022 14:18:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA118C340E9;
+ Wed, 16 Mar 2022 14:18:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647440273;
- bh=+Reu/sFL5kUPHNsKKiXeECII173+QNrgjoZbQTNpzyU=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=J7lnCPYoz/4fYr/ikQCtWzMzwrTyJM+Wob4W9QdIErVC9nf98dSRg+KYdSJHEb40r
- Gmldvl+QPivka4JQfDdd3N6YTuw72hXptZDZqjunweRLHmUweK2QRIA4M0MguVojOz
- K2y9p29zAF18Sac6YVup2vj2rb4tlMzBd8fW3eK3JB3QAQ7KP92I1r6bj/TjK0mAUP
- 6Wav+FJNKLvxZcmAi9iTxlyIwRrcVWsJxEBAUyke0HQOlieaPr0z6dCeE4d9Sqe96l
- IkjBIEELFnbkn2mZzRgcqNwDMoRE5ZgyN7LO9lUSTdO35Dr92zRn/ccHscmKmVS++m
- Ox7ZZyte5ftvw==
+ s=k20201202; t=1647440306;
+ bh=HRWp0DPtkLnjg5wRAjN9vQZy9JHLc0iQkk9SIi8PfKw=;
+ h=From:To:Cc:Subject:Date:From;
+ b=AnhMEmyoYSMLf2Us8CZcOfUP58gvseQs7O7B4wetC92OH4B51xbuD1ySWnxwxMDzc
+ 3b+SblgwdPtxZN53z+eAWtwX0iDWSWLV0skDEH68AMEvOPB9R6WWxh5g3rhunKdCIB
+ usIpZ7MPi9JQcwb5PT6q3tJX8nnV1DP9T62DQIhb4SZNM4mVNAHkYSEeeUYgsQlQUH
+ 3DTRD55qNxm14N7TbbsPKDaxObwSKCn/k4dlNoAQezWo44pUhzmuI9U/u6uzZw2ETl
+ lT7sZZsxE4l+GF8GghxC1PNqBJ7LX20bvddi2G4bckp1La9qPOBG7Z3QTo1XvjE2tv
+ LaSpcd5BQLcow==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -50,18 +50,16 @@ Cc: Lina Wang <lina.wang@mediatek.com>,
  yoshfuji@linux-ipv6.org, dsahern@kernel.org, kuba@kernel.org,
  matthias.bgg@gmail.com, netdev@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.4 2/7] xfrm: fix tunnel model fragmentation behavior
-Date: Wed, 16 Mar 2022 10:17:33 -0400
-Message-Id: <20220316141738.248513-2-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 1/6] xfrm: fix tunnel model fragmentation behavior
+Date: Wed, 16 Mar 2022 10:18:12 -0400
+Message-Id: <20220316141817.248621-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220316141738.248513-1-sashal@kernel.org>
-References: <20220316141738.248513-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220316_071754_831129_7E6621AB 
-X-CRM114-Status: GOOD (  19.65  )
+X-CRM114-CacheID: sfid-20220316_071829_002758_B7189398 
+X-CRM114-Status: GOOD (  19.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,11 +134,11 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  2 files changed, 20 insertions(+), 1 deletion(-)
 
 diff --git a/net/ipv6/xfrm6_output.c b/net/ipv6/xfrm6_output.c
-index 6b0ed6c593e2..a6f13fab963f 100644
+index b5941c9475f3..fbcec4827071 100644
 --- a/net/ipv6/xfrm6_output.c
 +++ b/net/ipv6/xfrm6_output.c
-@@ -140,6 +140,19 @@ static int __xfrm6_output_finish(struct net *net, struct sock *sk, struct sk_buf
- 	return __xfrm6_output_state_finish(x, sk, skb);
+@@ -142,6 +142,19 @@ static int __xfrm6_output_finish(struct net *net, struct sock *sk, struct sk_buf
+ 	return x->outer_mode->afinfo->output_finish(sk, skb);
  }
  
 +static int xfrm6_noneed_fragment(struct sk_buff *skb)
@@ -159,7 +157,7 @@ index 6b0ed6c593e2..a6f13fab963f 100644
  static int __xfrm6_output(struct net *net, struct sock *sk, struct sk_buff *skb)
  {
  	struct dst_entry *dst = skb_dst(skb);
-@@ -168,6 +181,9 @@ static int __xfrm6_output(struct net *net, struct sock *sk, struct sk_buff *skb)
+@@ -170,6 +183,9 @@ static int __xfrm6_output(struct net *net, struct sock *sk, struct sk_buff *skb)
  		xfrm6_local_rxpmtu(skb, mtu);
  		kfree_skb(skb);
  		return -EMSGSIZE;
@@ -170,7 +168,7 @@ index 6b0ed6c593e2..a6f13fab963f 100644
  		xfrm_local_error(skb, mtu);
  		kfree_skb(skb);
 diff --git a/net/xfrm/xfrm_interface.c b/net/xfrm/xfrm_interface.c
-index 3932d3aaff27..4cfa79e04e3d 100644
+index 1ae8caca28a0..3c642328a117 100644
 --- a/net/xfrm/xfrm_interface.c
 +++ b/net/xfrm/xfrm_interface.c
 @@ -300,7 +300,10 @@ xfrmi_xmit2(struct sk_buff *skb, struct net_device *dev, struct flowi *fl)
