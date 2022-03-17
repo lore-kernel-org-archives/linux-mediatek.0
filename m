@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C721DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 10:11:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43EEAC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 10:12:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zDi3qFwXe2/X8O4yRHY6AUdZxZNo4gfcbUL5Ivsb8/I=; b=Pb7zdZEQhK9R44
-	e14Q2InC4T7fCMNTd3KVyI/FkWq//n9jRygwJg0AJVJ9O1Wp+YEGXNslHAa49/dnkp7C6L7As+nVJ
-	QkMierV1pzjy5HiKIq08OupUnKzzmjAaNBt5a4MWoNzkoJVP1akivE/p48kkj7Z7sj3/l9It+WO13
-	jtrYEE5CSQ6MnPKv69wvhYIy/7pJbGqswynJKcl97kHi/XE3SI1xMCl0/kJ0gPuYCKrdroO4/xi05
-	v1VoY0N1rX/TQok9LA6fgRlZN3UbMPcsSlkpJYUiwTTtHLNNImI4ngAgRDhLW2a8CM+vXFklsCn9G
-	3O2/doLIR5uz2xaGCbCg==;
+	List-Owner; bh=zDi3qFwXe2/X8O4yRHY6AUdZxZNo4gfcbUL5Ivsb8/I=; b=0p1tby4FazKLL3
+	E0J6/7D1pzR2Lr8LyhqM95UsdTTTuGpuCDaA6xeLnFkY9KvDn5tqu/2wLf6EFWKpj13aV+4+hEByO
+	DLpLDWwStD+VA1zIAM1Jp5BzN8DwMmsg5x6m8izYMPhhY2AOfldxJlvxqv1Tl15/NkBrUEQ7cGpDW
+	yl5gSkJPfcqggmrYvEfZz1EHHuqdFFln/dNWkMqqaVhvWF+iZ5nxzw5ErchIJJN+gzy7IXzv/GsJ5
+	c9HPzAt5hRvJFrPlokaxf2R12qud5KHKrr/8qsqusE6Ao0cKCh6VRE3ePUhEUncqk7aO6UrirtKCa
+	Sfth9XLT96dCUMNL0/8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUn6V-00FePi-Bm; Thu, 17 Mar 2022 10:11:35 +0000
+	id 1nUn7O-00Fehm-Mw; Thu, 17 Mar 2022 10:12:30 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUn6T-00FeP3-4u; Thu, 17 Mar 2022 10:11:34 +0000
-X-UUID: 6c7ba98421a046299d2ac4f3d50bd80f-20220317
-X-UUID: 6c7ba98421a046299d2ac4f3d50bd80f-20220317
+ id 1nUn7L-00Feg6-Kt; Thu, 17 Mar 2022 10:12:28 +0000
+X-UUID: 05b57920c2084c8ea6301e234fea2737-20220317
+X-UUID: 05b57920c2084c8ea6301e234fea2737-20220317
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <axe.yang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 50944774; Thu, 17 Mar 2022 03:11:28 -0700
+ with ESMTP id 1674470256; Thu, 17 Mar 2022 03:12:22 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Mar 2022 03:08:24 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Mar 2022 03:12:20 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Mar 2022 18:08:22 +0800
+ 15.0.1497.2; Thu, 17 Mar 2022 18:12:19 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 17 Mar 2022 18:08:20 +0800
+ Transport; Thu, 17 Mar 2022 18:12:17 +0800
 From: Axe Yang <axe.yang@mediatek.com>
 To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
@@ -53,15 +53,16 @@ CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
  <angelogioacchino.delregno@collabora.com>, <linux-mmc@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v7 0/3] mmc: mediatek: add support for SDIO async IRQ
-Date: Thu, 17 Mar 2022 18:08:15 +0800
-Message-ID: <20220317100818.24908-1-axe.yang@mediatek.com>
+Subject: [RESEND v7 0/3] mmc: mediatek: add support for SDIO async IRQ
+Date: Thu, 17 Mar 2022 18:12:12 +0800
+Message-ID: <20220317101215.24985-1-axe.yang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220317_031133_206699_78E47CE5 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20220317_031227_700328_5197B39D 
+X-CRM114-Status: UNSURE (   9.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
