@@ -4,82 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A948EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 16:29:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D497FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 16:56:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LD4p4sfEQZPIC3T25oNYTksum1ifXdgQj+79StS1Azk=; b=JhDLFUrKvfHggn
-	A0R4DaFSXNs5gTN1/XEFUHDV6ISXALEZNp3jHMvn3fsE6WItKtpVpsdigDYC5hHej8HvvzS+plx+U
-	63omcWMtKFZ6lIw5gdZTMRK7WITJJOEM3Dm0nsd3sR8+rGvnDcUzoYntoC79HthVAnFZ1JT2l4Mga
-	Y2TJ1+QL/gx+5vBLTpe+HfheEFn0vXC4QyiKtyaxJLajWlClWUMHlZSGqBSmUvfBvV0kE958ouzuw
-	sI0uPT8gHLMtfmAm0RBO1xu19w6O3RIrsaEHHxyduxW/yNSZiaLAX5LkmjGfBanYisOqrJVqU3bSi
-	hFVVpq+hh8+iB2Pdz81g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8kojXYk5LCQkG18IfGSeTEhdzvYFDaK9OQVhj0tExeE=; b=UbuEnXG/Pcd1mx
+	muQlLq3A9PwrTkt2klxgA4Evs7ANm0m+PHvHE0uYA7GnntAaYuC5RxJKZbzAHoMFHMM6d7FQIecIA
+	GIz9qskSfyEKLLmm0LQMr68Txu+CTwBho6LmUSSeQ3WJJz+Qz65RWv8TYSeCLmcmh7JUz3Noya8PJ
+	TxR4aKr9u4aaGk8m1zhlSCFEdRMZjH/aONBi2VBj58FOAxha4zaqaASnJLZghIIrJBLQS5UtqS6n3
+	MDEkJxziaYFbw3p7NIUO6xekaKzkJSR01REy/MVoHlvU/+9Skboxvk6RYeXluDtF2XWzP1rIddsv1
+	26LgpspY5DrvU4qZ844Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUszn-00GmZG-Ro; Thu, 17 Mar 2022 16:29:03 +0000
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+	id 1nUtQB-00GrQt-5s; Thu, 17 Mar 2022 16:56:19 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUsw5-00GkYs-Vz
- for linux-mediatek@lists.infradead.org; Thu, 17 Mar 2022 16:25:17 +0000
-Received: by mail-pj1-x1032.google.com with SMTP id gb19so5323177pjb.1
- for <linux-mediatek@lists.infradead.org>; Thu, 17 Mar 2022 09:25:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=6sSNVFojWkEa+kB1rxVwpwdlRixm4OOVySYgWgA6hHU=;
- b=MIjoGDMSbCb+8RaIRBW4suJHxfXpTo855FIRj8RMraN9uYrseVjLtsfrJaw8R1WJRC
- w7a/cIO3C4JIYz+QMRRQycoo5YTjncyXCvOMJEJrWvAuq9oZjUyAGlG32MpJ7JLZ4KVQ
- UuIs7rZVwuFSzXVdmtTDGuiHE4yihgkRMDzdEBLzr4WJGgGovWg8w9oRagk3iJksXpiP
- j+6kzguWQ39dcsXRZSE0xnhH+Z4dzJ9j1NO5YApUmQYCVNaeFvltVT0gEu64ITs0BluW
- 4VoClCJ/rnS+Pdl4OyVHHYU/2ftCeULXTeKY23yLhfY0f5m4g4ssHj+30FXiuBSncF1c
- Ycjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=6sSNVFojWkEa+kB1rxVwpwdlRixm4OOVySYgWgA6hHU=;
- b=3BC+qN+m988IywLbD9U9VdwXCosBSLDiU/KrBoH5A2vYDhqQXu4acYuguGwMiAfao/
- 0rgiVQmyDlQEMZWot3CzEExGgeDcD7nBt4QuHEVsf0SbVYbCrYGpqp3H/94Prt+lafix
- bro/sudtn00MfklTluvQYJblqq+jaq7091f6bgKbxudd5DILrdfR4r1aebKyWxnEH4lA
- L/hvdhdQ6Bvsh6+D5SKyxnfMrUk3HkulJz2hhG9GI+T4hCMOQkwX22qTCpXC1TaH8/hD
- nW/QF3l52wEMz1IxCMLbe0MGjJbe87a18HtO+DSfJvyh03bNpdalncXLSVmaEUoy2+UG
- bqjA==
-X-Gm-Message-State: AOAM532pJHwooXAw0WqWnmJlQuTlpHxEaj6nSIqZs3Zb1Vfmnj1JC9fR
- 5qJiutPU1T1be7QPQrArhRlbWA==
-X-Google-Smtp-Source: ABdhPJwFtbsxAvxS4DCDF9la8zCNKh+F6SHycDDweS3/B6oT2kQgW7jmQaauv6istzAcTM5eZtk0rQ==
-X-Received: by 2002:a17:90a:6441:b0:1c6:8de6:9fc0 with SMTP id
- y1-20020a17090a644100b001c68de69fc0mr3243379pjm.163.1647534312833; 
- Thu, 17 Mar 2022 09:25:12 -0700 (PDT)
-Received: from p14s (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
- by smtp.gmail.com with ESMTPSA id
- mq6-20020a17090b380600b001c6357f146csm10359793pjb.12.2022.03.17.09.25.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Mar 2022 09:25:11 -0700 (PDT)
-Date: Thu, 17 Mar 2022 10:25:09 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Tinghan Shen <tinghan.shen@mediatek.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v4] remoteproc: mediatek: Fix side effect of mt8195 sram
- power on
-Message-ID: <20220317162509.GA2630429@p14s>
-References: <20220316031117.7311-1-tinghan.shen@mediatek.com>
- <20220316163451.GA2546942@p14s>
- <8a7be596-531a-52f4-c1b0-ed1d23cfa1bb@collabora.com>
+ id 1nUtQ7-00GrPR-LR
+ for linux-mediatek@lists.infradead.org; Thu, 17 Mar 2022 16:56:17 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 7B0F1614ED;
+ Thu, 17 Mar 2022 16:56:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75B03C340E9;
+ Thu, 17 Mar 2022 16:56:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1647536173;
+ bh=kBBByNMLrkjCMdd2lU+nQrX8EsLYhXWFLHlmHOqlLXE=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Ikx0ixPQ6BUL6//q62UnWjAKTULspF9Jis1U6V0fxRm33YNrjCMRwBRyE98Enklbg
+ YEwloDoSsa8qQMdjt5mYGeG5In5hlWguokg5IM7O5TFXmhzcUvtVwDk1Yenahh2h/N
+ Lvpye6K7HwTid96b6qDVJaH7+UNhc1yDXdAVIvjqfGoHFOedB+uJlczFioRCrw9U20
+ 1RdFXR3Vr37/AJSEnkzx8rPzfbLhbKantkbu7cVRBqli8mKAk2j4oGaTEpZsUG6y1A
+ CqiGFPTxDmtO2n+ve5WeUFDhke14ieCRud2QDdmR4ogSsYR7vF0W/4iFytka4G4+7K
+ NeCiynVn2QYPQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: nbd@nbd.name
+Cc: linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com,
+ sean.wang@mediatek.com, deren.wu@mediatek.com,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH] mt76: mt7921u: add suspend/resume support
+Date: Thu, 17 Mar 2022 17:55:59 +0100
+Message-Id: <f07e7ab403b3b72e6c1f72046a90026b398c179f.1647536048.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <8a7be596-531a-52f4-c1b0-ed1d23cfa1bb@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220317_092514_091119_066EEC64 
-X-CRM114-Status: GOOD (  36.90  )
+X-CRM114-CacheID: sfid-20220317_095615_825787_4121F1B8 
+X-CRM114-Status: GOOD (  17.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,147 +71,166 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 16, 2022 at 05:44:04PM +0100, AngeloGioacchino Del Regno wrote:
-> Il 16/03/22 17:34, Mathieu Poirier ha scritto:
-> > Good morning,
-> > 
-> > On Wed, Mar 16, 2022 at 11:11:17AM +0800, Tinghan Shen wrote:
-> > > The definition of L1TCM_SRAM_PDN bits on mt8195 is different to mt8192.
-> > > 
-> > > L1TCM_SRAM_PDN bits[3:0] control the power of mt8195 L1TCM SRAM.
-> > > 
-> > > L1TCM_SRAM_PDN bits[7:4] control the access path to EMI for SCP.
-> > > These bits have to be powered on to allow EMI access for SCP.
-> > > 
-> > > Bits[7:4] also affect audio DSP because audio DSP and SCP are
-> > > placed on the same hardware bus. If SCP cannot access EMI, audio DSP is
-> > > blocked too.
-> > > 
-> > > L1TCM_SRAM_PDN bits[31:8] are not used.
-> > > 
-> > > This fix removes modification of bits[7:4] when power on/off mt8195 SCP
-> > > L1TCM. It's because the modification introduces a short period of time
-> > > blocking audio DSP to access EMI. This was not a problem until we have
-> > > to load both SCP module and audio DSP module. audio DSP needs to access
-> > > EMI because it has source/data on DRAM. Audio DSP will have unexpected
-> > > behavior when it accesses EMI and the SCP driver blocks the EMI path at
-> > > the same time.
-> > > 
-> > > Fixes: 79111df414fc ("remoteproc: mediatek: Support mt8195 scp")
-> > > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> > > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> > > ---
-> > > v4: add Fixes and Reviewed-by tags
-> > > v3: fix build error
-> > > v2: apply comments about macro definition and function calls
-> > > ---
-> > >   drivers/remoteproc/mtk_common.h |  2 ++
-> > >   drivers/remoteproc/mtk_scp.c    | 67 +++++++++++++++++++++++++++++++----------
-> > >   2 files changed, 53 insertions(+), 16 deletions(-)
-> > > 
-> > > diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-> > > index 5ff3867c72f3..ff954a06637c 100644
-> > > --- a/drivers/remoteproc/mtk_common.h
-> > > +++ b/drivers/remoteproc/mtk_common.h
-> > > @@ -51,6 +51,8 @@
-> > >   #define MT8192_CORE0_WDT_IRQ		0x10030
-> > >   #define MT8192_CORE0_WDT_CFG		0x10034
-> > > +#define MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS		GENMASK(7, 4)
-> > > +
-> > >   #define SCP_FW_VER_LEN			32
-> > >   #define SCP_SHARE_BUFFER_SIZE		288
-> > > diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> > > index 36e48cf58ed6..5f686fe09203 100644
-> > > --- a/drivers/remoteproc/mtk_scp.c
-> > > +++ b/drivers/remoteproc/mtk_scp.c
-> > > @@ -365,22 +365,22 @@ static int mt8183_scp_before_load(struct mtk_scp *scp)
-> > >   	return 0;
-> > >   }
-> > > -static void mt8192_power_on_sram(void __iomem *addr)
-> > > +static void scp_sram_power_on(void __iomem *addr, u32 reserved_mask)
-> > 
-> > Why is @reserved_mask needed?  It is not described in the changelong and as far
-> > as I can see in this patchset the parameter is always set to '0', which has no
-> > effect on the mask that gets generated.
-> > 
-> 
-> Hello Mathieu,
-> the @reserved_mask is explained in perhaps not very very clear terms, meaning
-> that he's not explicitly saying the name of the new param, but that's it:
-> 
-> "This fix removes modification of bits[7:4] when power on/off mt8195 SCP
-> L1TCM."
-> 
-> ....and it's actually being used, check below....
-> 
-> > Thanks,
-> > Mathieu
-> > 
-> > >   {
-> > >   	int i;
-> > >   	for (i = 31; i >= 0; i--)
-> > > -		writel(GENMASK(i, 0), addr);
-> > > +		writel(GENMASK(i, 0) & ~reserved_mask, addr);
-> > >   	writel(0, addr);
-> > >   }
-> > > -static void mt8192_power_off_sram(void __iomem *addr)
-> > > +static void scp_sram_power_off(void __iomem *addr, u32 reserved_mask)
-> 
-> ...snip...
-> 
-> > > +static int mt8195_scp_before_load(struct mtk_scp *scp)
-> > > +{
-> > > +	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
-> > > +	writel(0xff, scp->reg_base + MT8192_SCP2SPM_IPC_CLR);
-> > > +
-> > > +	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
-> > > +
-> > > +	/* enable SRAM clock */
-> > > +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-> > > +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-> > > +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-> 
-> 
-> > > +	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
-> > > +			  MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
-> 
-> here	
+Introduce suspend/resume callbacks for mt7921u driver.
 
-Yes - it's obvious now that you point it out.  
+Tested-by: Deren Wu <deren.wu@mediatek.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  2 +-
+ .../net/wireless/mediatek/mt76/mt7921/regs.h  |  5 ++
+ .../net/wireless/mediatek/mt76/mt7921/usb.c   | 62 ++++++++++++++++++-
+ .../wireless/mediatek/mt76/mt7921/usb_mac.c   |  7 ++-
+ 4 files changed, 72 insertions(+), 4 deletions(-)
 
-This patch conflicts with the newly added support for mt8186[1].  I tried to fix
-it but did not know if mt8185 needed the same kind of bit masking as mt8195.
-Please have a look and rebase to rproc-next.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+index 7690364bc079..459226c5bb11 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+@@ -467,7 +467,7 @@ bool mt7921_usb_sdio_tx_status_data(struct mt76_dev *mdev, u8 *update);
+ 
+ int mt7921u_mcu_power_on(struct mt7921_dev *dev);
+ int mt7921u_wfsys_reset(struct mt7921_dev *dev);
+-int mt7921u_dma_init(struct mt7921_dev *dev);
++int mt7921u_dma_init(struct mt7921_dev *dev, bool resume);
+ int mt7921u_init_reset(struct mt7921_dev *dev);
+ int mt7921u_mac_reset(struct mt7921_dev *dev);
+ #endif
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
+index 6712ff60c722..ea643260ceb6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
+@@ -516,4 +516,9 @@
+ #define MT_TOP_MISC2_FW_PWR_ON		BIT(0)
+ #define MT_TOP_MISC2_FW_N9_RDY		GENMASK(1, 0)
+ 
++#define MT_WF_SW_DEF_CR(ofs)		(0x401a00 + (ofs))
++#define MT_WF_SW_DEF_CR_USB_MCU_EVENT	MT_WF_SW_DEF_CR(0x028)
++#define MT_WF_SW_SER_TRIGGER_SUSPEND	BIT(6)
++#define MT_WF_SW_SER_DONE_SUSPEND	BIT(7)
++
+ #endif
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+index b7771e9f1fcd..dc38baef273a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+@@ -246,7 +246,7 @@ static int mt7921u_probe(struct usb_interface *usb_intf,
+ 	if (ret)
+ 		goto error;
+ 
+-	ret = mt7921u_dma_init(dev);
++	ret = mt7921u_dma_init(dev, false);
+ 	if (ret)
+ 		return ret;
+ 
+@@ -288,6 +288,61 @@ static void mt7921u_disconnect(struct usb_interface *usb_intf)
+ 	mt76_free_device(&dev->mt76);
+ }
+ 
++#ifdef CONFIG_PM
++static int mt7921u_suspend(struct usb_interface *intf, pm_message_t state)
++{
++	struct mt7921_dev *dev = usb_get_intfdata(intf);
++	int err;
++
++	err = mt76_connac_mcu_set_hif_suspend(&dev->mt76, true);
++	if (err)
++		return err;
++
++	mt76u_stop_rx(&dev->mt76);
++	mt76u_stop_tx(&dev->mt76);
++
++	set_bit(MT76_STATE_SUSPEND, &dev->mphy.state);
++
++	return 0;
++}
++
++static int mt7921u_resume(struct usb_interface *intf)
++{
++	struct mt7921_dev *dev = usb_get_intfdata(intf);
++	bool reinit = true;
++	int err, i;
++
++	for (i = 0; i < 10; i++) {
++		u32 val = mt76_rr(dev, MT_WF_SW_DEF_CR_USB_MCU_EVENT);
++
++		if (!(val & MT_WF_SW_SER_TRIGGER_SUSPEND)) {
++			reinit = false;
++			break;
++		}
++		if (val & MT_WF_SW_SER_DONE_SUSPEND) {
++			mt76_wr(dev, MT_WF_SW_DEF_CR_USB_MCU_EVENT, 0);
++			break;
++		}
++
++		msleep(20);
++	}
++
++	if (reinit || mt7921_dma_need_reinit(dev)) {
++		err = mt7921u_dma_init(dev, true);
++		if (err)
++			return err;
++	}
++
++	clear_bit(MT76_STATE_SUSPEND, &dev->mphy.state);
++
++	err = mt76u_resume_rx(&dev->mt76);
++	if (err < 0)
++		return err;
++
++	return mt76_connac_mcu_set_hif_suspend(&dev->mt76, false);
++}
++#endif /* CONFIG_PM */
++
+ MODULE_DEVICE_TABLE(usb, mt7921u_device_table);
+ MODULE_FIRMWARE(MT7921_FIRMWARE_WM);
+ MODULE_FIRMWARE(MT7921_ROM_PATCH);
+@@ -297,6 +352,11 @@ static struct usb_driver mt7921u_driver = {
+ 	.id_table	= mt7921u_device_table,
+ 	.probe		= mt7921u_probe,
+ 	.disconnect	= mt7921u_disconnect,
++#ifdef CONFIG_PM
++	.suspend	= mt7921u_suspend,
++	.resume		= mt7921u_resume,
++	.reset_resume	= mt7921u_resume,
++#endif /* CONFIG_PM */
+ 	.soft_unbind	= 1,
+ 	.disable_hub_initiated_lpm = 1,
+ };
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
+index 99bcbd858b65..cd2f09743d2f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
+@@ -121,7 +121,7 @@ static void mt7921u_epctl_rst_opt(struct mt7921_dev *dev, bool reset)
+ 	mt7921u_uhw_wr(&dev->mt76, MT_SSUSB_EPCTL_CSR_EP_RST_OPT, val);
+ }
+ 
+-int mt7921u_dma_init(struct mt7921_dev *dev)
++int mt7921u_dma_init(struct mt7921_dev *dev, bool resume)
+ {
+ 	int err;
+ 
+@@ -136,6 +136,9 @@ int mt7921u_dma_init(struct mt7921_dev *dev)
+ 		   MT_WL_RX_AGG_TO | MT_WL_RX_AGG_LMT);
+ 	mt76_clear(dev, MT_UDMA_WLCFG_1, MT_WL_RX_AGG_PKT_LMT);
+ 
++	if (resume)
++		return 0;
++
+ 	err = mt7921u_dma_rx_evt_ep4(dev);
+ 	if (err)
+ 		return err;
+@@ -221,7 +224,7 @@ int mt7921u_mac_reset(struct mt7921_dev *dev)
+ 	if (err)
+ 		goto out;
+ 
+-	err = mt7921u_dma_init(dev);
++	err = mt7921u_dma_init(dev, false);
+ 	if (err)
+ 		goto out;
+ 
+-- 
+2.35.1
 
-Thanks,
-Mathieu
-
-[1]. 80d691854ffb remoteproc: mediatek: Support mt8186 scp
-
-> 
-> > > +	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
-> > >   	/* enable MPU for all memory regions */
-> > >   	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
-> 
-> ...snip...
-> 
-> > > +
-> > > +static void mt8195_scp_stop(struct mtk_scp *scp)
-> > > +{
-> > > +	/* Disable SRAM clock */
-> > > +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-> > > +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-> > > +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-> > > +	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
-> > > +			   MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
-> 
-> and here 			^^^^^^^^
-> 
-> > > +	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
-> 
-> Cheers,
-> Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
