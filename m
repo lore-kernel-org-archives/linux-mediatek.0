@@ -4,71 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23983C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 23:31:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D25FDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 23:32:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n1dk4L7P1OG2wZPUBkzNRD/km3XyuSBRfbXouyGNSmU=; b=ITc5OEWMlYn+LR
-	8rOSpw8RPp4ca/3OvSOIPAsFeNmrfOCVlqe3JejfkMsUjbuoQ2PgUP5INdKOTyZ/wVmxjWrRTieRv
-	NdkId66ZvLxZAHDRMTJvbXd+Cu0qMmUuWaIbB1ZbDZpn+Vs3AIJTQWaMjGZ6NpaFyzailZEm02i1r
-	CjRqyRVwAMFyeyNBaJlss/bR4jLW/059vO936J12qO6WTaMTaXck7xbaOAMqiwhO0n1W660QLLD/Q
-	9Unv5g/EGcnVVtBDxFlHQ2bpNdxKbhOM0sjfU26Wbtlsk9CTs4w1bEsnBPuSJkGONYnTYSniKa9RE
-	ZrGCJuMP2WYnv2gKR2IA==;
+	List-Owner; bh=MgBDII4Aa39+4df6HmHJw1NqOHFRxSFyHFx9BaMkHgM=; b=r+wiF1ssSNmJI3
+	H4Jn6P1KF4QpEXqXHs7Wz4Yfa2siuwZdH876Q3fQXD6a8NQa9pEj+NaPirdRAhs88tcEKIdIxUV6+
+	9ewP/g9KG04wBnbslVLU02LHEGZEMKMjHSDWQxayR6FVeX3KkVeFDlbr6JZt+bwH2BTTpdIo3rUs8
+	NgDqZM+2XJ5voDfUuv5gmvhMoW4QVfcRgEXUpHVk8vCDeozK5r2KjttpLi71xWrnRxJs89cC9zBfE
+	xiqZthMG9RF7TDc2qMhKZ6vLYkwxHj0hAbg8zNzZSx7SIYwbjQtDTsbLYYK5QVIzW/h0DA7KDcO5T
+	yiLOCqOC5GMHtHSx9/pA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUzaP-00HaeD-PP; Thu, 17 Mar 2022 23:31:17 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nUzbT-00Haol-Pf; Thu, 17 Mar 2022 23:32:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUzaL-00HadH-PD; Thu, 17 Mar 2022 23:31:16 +0000
-X-UUID: b7c711e7818940ab960aa72d7731cd42-20220317
-X-UUID: b7c711e7818940ab960aa72d7731cd42-20220317
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1nUzbR-00HanS-GI; Thu, 17 Mar 2022 23:32:22 +0000
+X-UUID: 0fc2381e1440401998c60df8f556afe5-20220317
+X-UUID: 0fc2381e1440401998c60df8f556afe5-20220317
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1902914437; Thu, 17 Mar 2022 16:31:08 -0700
+ with ESMTP id 1006713268; Thu, 17 Mar 2022 16:32:14 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Mar 2022 16:31:06 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Mar 2022 16:32:12 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 18 Mar 2022 07:31:04 +0800
+ Fri, 18 Mar 2022 07:32:10 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 18 Mar 2022 07:31:04 +0800
+ Frontend Transport; Fri, 18 Mar 2022 07:32:10 +0800
 From: Miles Chen <miles.chen@mediatek.com>
-To: <moudy.ho@mediatek.com>
+To: <irui.wang@mediatek.com>
 CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <acourbot@chromium.org>, <allen-kh.cheng@mediatek.com>,
- <angelogioacchino.delregno@collabora.com>, <chunkuang.hu@kernel.org>,
- <daoyuan.huang@mediatek.com>, <devicetree@vger.kernel.org>,
- <drinkcat@chromium.org>, <geert+renesas@glider.be>, <hsinyi@google.com>,
- <hverkuil-cisco@xs4all.nl>, <jason-jh.lin@mediatek.com>,
- <jernej.skrabec@siol.net>, <laurent.pinchart@ideasonboard.com>,
+ <acourbot@chromium.org>, <andrew-ct.chen@mediatek.com>,
+ <angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
+ <frkoenig@chromium.org>, <hsinyi@chromium.org>, <hverkuil-cisco@xs4all.nl>,
  <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <linux-media@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <maoguang.meng@mediatek.com>, <matthias.bgg@gmail.com>, <mchehab@kernel.org>, 
- <menghui.lin@mediatek.com>, <pihsun@chromium.org>,
- <ping-hsun.wu@mediatek.com>, <randy.wu@mediatek.com>,
- <river.cheng@mediatek.com>, <rob@landley.net>, <robh+dt@kernel.org>,
- <roy-cw.yeh@mediatek.com>, <sj.huang@mediatek.com>,
- <srv_heupstream@mediatek.com>, <tfiga@chromium.org>
-Subject: Re: [PATCH v14 6/6] soc: mediatek: mutex: add functions that operate
- registers by CMDQ
-Date: Fri, 18 Mar 2022 07:31:04 +0800
-Message-ID: <20220317233104.5994-1-miles.chen@mediatek.com>
+ <longfei.wang@mediatek.com>, <maoguang.meng@mediatek.com>,
+ <matthias.bgg@gmail.com>, <mchehab@kernel.org>, <robh+dt@kernel.org>,
+ <srv_heupstream@mediatek.com>, <tfiga@google.com>,
+ <tiffany.lin@mediatek.com>, <tzungbi@chromium.org>, <yong.wu@mediatek.com>,
+ <yunfei.dong@mediatek.com>
+Subject: Re: [PATCH v3,
+ 03/10] dt-bindings: media: mtk-vcodec: Adds encoder cores dt-bindings
+ for mt8195
+Date: Fri, 18 Mar 2022 07:32:10 +0800
+Message-ID: <20220317233210.6744-1-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220317143926.15835-7-moudy.ho@mediatek.com>
-References: <20220317143926.15835-7-moudy.ho@mediatek.com>
+In-Reply-To: <20220317082230.23622-4-irui.wang@mediatek.com>
+References: <20220317082230.23622-4-irui.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220317_163113_853144_77AEBC18 
-X-CRM114-Status: GOOD (  14.83  )
+X-CRM114-CacheID: sfid-20220317_163221_571178_396E5503 
+X-CRM114-Status: UNSURE (   5.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,76 +83,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Moudy,
+Hi Irui,
 
->  #define MT2701_MUTEX0_MOD0			0x2c
->  #define MT2701_MUTEX0_SOF0			0x30
-> @@ -180,6 +184,9 @@ struct mtk_mutex_ctx {
->  	void __iomem			*regs;
->  	struct mtk_mutex		mutex[10];
->  	const struct mtk_mutex_data	*data;
-> +	phys_addr_t			addr;
-> +	struct cmdq_client_reg		cmdq_reg;
-> +	bool				has_gce_client_reg;
->  };
->
-
-...snip...
-
->  static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-> @@ -638,6 +645,29 @@ void mtk_mutex_enable(struct mtk_mutex *mutex)
->  }
->  EXPORT_SYMBOL_GPL(mtk_mutex_enable);
->  
-> +void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex, void *pkt)
-> +{
-> +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-> +						 mutex[mutex->id]);
-> +	struct cmdq_pkt *cmdq_pkt = (struct cmdq_pkt *)pkt;
 > +
-> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+> +%YAML 1.2
+> +---
+> +$id: "http://devicetree.org/schemas/media/mediatek,vcodec-encoder-core.yaml#"
+> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
 > +
-> +	if (!mtx->has_gce_client_reg) {
-> +		dev_dbg(mtx->dev, "mediatek,gce-client-reg hasn't been set in dts");
-> +		return;
-> +	}
+> +title: Mediatek Video Encoder Accelerator With Multi Core
+
+s/Mediatek/MediaTek/
 > +
-> +	cmdq_pkt_write_mask(cmdq_pkt, mtx->cmdq_reg.subsys,
-> +			    mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
-> +			    MTK_MUTEX_ENABLE, MTK_MUTEX_ENABLE);
-
-We do not check if mtx->addr is valid.
-
-> +#else
-> +	dev_dbg(mtx->dev, "Not support for enable MUTEX by CMDQ");
-> +#endif
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_mutex_enable_by_cmdq);
+> +maintainers:
+> +  - Irui Wang <irui.wang@mediatek.com>
 > +
->  void mtk_mutex_disable(struct mtk_mutex *mutex)
->  {
->  	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-> @@ -676,7 +706,7 @@ static int mtk_mutex_probe(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
->  	struct mtk_mutex_ctx *mtx;
-> -	struct resource *regs;
-> +	struct resource *regs, addr;
->  	int i;
->  
->  	mtx = devm_kzalloc(dev, sizeof(*mtx), GFP_KERNEL);
-> @@ -697,6 +727,19 @@ static int mtk_mutex_probe(struct platform_device *pdev)
->  		}
->  	}
->  
-> +	if (of_address_to_resource(dev->of_node, 0, &addr) < 0)
-> +		mtx->addr = 0L;
+> +description: |
+> +  Mediatek Video Encode is the video encode hardware present in Mediatek
 
-addr is phys_addr_t, which means that it holds a physical address.
-0 may be a valid address in some platforms, so I think
-we should not set mtx->addr = 0L when of_address_to_resource fails.
-Maybe probe fail by returning dev_err_probe()?
+s/Mediatek/MediaTek/
+
+> +  SoCs which supports high resolution encoding functionalities. Required
+> +  parent and child device node.
+> +
 
 Thanks,
 Miles
