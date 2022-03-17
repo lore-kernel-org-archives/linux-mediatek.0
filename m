@@ -4,62 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10B33C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 02:24:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3649C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 03:04:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P77HP4xexm9/rJk+I0EojZG6mNfJN2+lSmyhoYFdaFk=; b=WlxFodIEQil9Sn
-	VE6oBq8L8qUgy6hViawPqvLbGJtoatV+39c+/ozZuqP4NG8PuREu7Z5pr3Cp5hULhcx5pFybwPOIe
-	YR5a4mNagERuxQXyIqSH1jx287upmfVF9D3Cf7t56rOmg1EcTtAoCCgENIufRoNl8TYJ9g5BaewQx
-	z7YKcDDH5Txzkxb6SF0+HbuXWDFb+fz7nz8wY9Pe1/tAp1zQUiITpKmdd0G1vsfslwglk4Sc1/gmq
-	ulD2YPmxy6V91wbEM9dT7uc0mA5r7S7wzeP3cUwgAtUdRmxG1MbSl3soRe4XKl+lfGojZYq0Xw5Kc
-	OExMeN1B1p0sPV3KIuAg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=f37yXNR27XYdvqlcHTovHORTnd9lzgal/5Lu07rvUPw=; b=gSto78JNZT4j4J
+	TAF+vhEQCz8xuuP/6ksNfoKXBkgTNyohLukynf7HduPlEM/sZvjrpK1yL06IPGg5gZijC0R0vT6J2
+	76dwagIR9mjM4Fg4waFPz/KYrx+fcVn3vk6a707I/K5AFU26wwmtYpP8+Y38rit6AOhjVUJfpsugq
+	6AXUCRcdiGNlyXdRDW9xKIkebEZpcCVs129WAmKhkkb5PXvz5Cg7/NTIdONQx2xXKEl/ohzy/fe/6
+	xqTxy2KpLwUHARA8Ntvu1VzZdtL0RFdrYxqTsRp9Y1FhqaiWEU+fKW6r5qeu8DzF76vcC0PaJRjMy
+	fEvWXsUTjevT1g1FUWiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUfoT-00Eip9-6h; Thu, 17 Mar 2022 02:24:29 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nUgRG-00EmNl-Jt; Thu, 17 Mar 2022 03:04:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUfoH-00Eing-IQ; Thu, 17 Mar 2022 02:24:19 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 1B11F60FD3;
- Thu, 17 Mar 2022 02:24:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4CB34C340E9;
- Thu, 17 Mar 2022 02:24:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647483856;
- bh=Ix1jQ+FTzwE7Py6xt22i052YfsEmKH5ZWqPAWdPOfew=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=rOU9qujVX+uI4/9wMBgvpeASYF6Pp7QCCm7v8rFExMAZYljME4XvGhHrvM8+Lem7q
- dreeq5nCd89J0a1oej6Lz3z0E6cLTph6Fa7Gc0Nm8DCa48vEsk3izsQSCWvvUnirVQ
- oYW3k5XYpC9y+mkIaDGQsdG9Pb6gBdS+weljL0jRp7OwM9vD5sfrISLVQjehrQoY2A
- 6+RimgJFqSLbg7rKS/Kvrno9QzEDM1kC3Td2OMrG9mzOj+XJ4CSiHI+AcF72nRjQ4e
- 0SaPZfS/oGJwWGDgjLVJvMsXjJtFs8eeuKVLfpmo9AadwgL/RqoVOhwsG04c99WOTt
- Fd+wbtdwqIQQw==
-Date: Thu, 17 Mar 2022 10:24:11 +0800
-From: Tzung-Bi Shih <tzungbi@kernel.org>
-To: Trevor Wu <trevor.wu@mediatek.com>
-Cc: broonie@kernel.org, tiwai@suse.com, robh+dt@kernel.org,
- matthias.bgg@gmail.com, devicetree@vger.kernel.org,
- alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, yc.hung@mediatek.com,
- aaronyu@google.com, linux-arm-kernel@lists.infradead.org,
- angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH v2 1/5] ASoC: mediatek: mt8195: merge machine driver
-Message-ID: <YjKby/RYpMtcxeUm@google.com>
-References: <20220316060139.6211-1-trevor.wu@mediatek.com>
- <20220316060139.6211-2-trevor.wu@mediatek.com>
+ id 1nUgR3-00EmKH-2k; Thu, 17 Mar 2022 03:04:24 +0000
+X-UUID: a30bd0fd683d4d4992f4b26bc77f84f2-20220316
+X-UUID: a30bd0fd683d4d4992f4b26bc77f84f2-20220316
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <johnson.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1020911449; Wed, 16 Mar 2022 20:04:10 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Mar 2022 20:04:08 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 17 Mar 2022 11:04:07 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 17 Mar 2022 11:04:07 +0800
+From: Johnson Wang <johnson.wang@mediatek.com>
+To: <broonie@kernel.org>, <robh+dt@kernel.org>
+CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Johnson Wang
+ <johnson.wang@mediatek.com>
+Subject: [PATCH v2 0/2] Add support for MediaTek PMIC MT6366
+Date: Thu, 17 Mar 2022 11:04:00 +0800
+Message-ID: <20220317030402.24894-1-johnson.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220316060139.6211-2-trevor.wu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220316_192417_726427_127BF673 
-X-CRM114-Status: GOOD (  22.77  )
+X-CRM114-CacheID: sfid-20220316_200421_150383_1A3E0830 
+X-CRM114-Status: UNSURE (   7.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,155 +72,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-I didn't review too many details because I found the patch is not easy to
-review.  Please consider to not reorder symbols if it can.  If it is still
-hard to generate reasonable chunks or the reorders are necessary, it could
-put some refactor patches prior to the "merge".
+This patchset adds support for MediaTek PMIC MT6366.
+MT6366 is the primary PMIC for MT8186 and probably other SOCs.
 
-On Wed, Mar 16, 2022 at 02:01:35PM +0800, Trevor Wu wrote:
-> diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-[...]
->  #include <linux/input.h>
->  #include <linux/module.h>
-> +#include <linux/of_device.h>
->  #include <linux/pm_runtime.h>
->  #include <sound/jack.h>
->  #include <sound/pcm_params.h>
->  #include <sound/rt5682.h>
-> -#include <sound/sof.h>
+Changes in v2:
+- rebase on Linux 5.17-rc8
+- change subject line
 
-Why does it remove the header?
+Johnson Wang (2):
+  regulator: mt6366: Add support for MT6366 regulator
+  dt-bindings: regulator: Add BUCK and LDO document for MT6358 and
+    MT6366
 
-> +struct mt8195_mt6359_priv {
-> +	struct snd_soc_jack headset_jack;
-> +	struct snd_soc_jack dp_jack;
-> +	struct snd_soc_jack hdmi_jack;
-> +	struct clk *i2so1_mclk;
-> +};
-> +
-> +struct mt8195_card_data {
-> +	const char *name;
-> +	unsigned long quirk;
-> +};
-> +
-> +struct sof_conn_stream {
-> +	const char *normal_link;
-> +	const char *sof_link;
-> +	const char *sof_dma;
-> +	int stream_dir;
-> +};
-[...]
-> -struct sof_conn_stream {
-> -	const char *normal_link;
-> -	const char *sof_link;
-> -	const char *sof_dma;
-> -	int stream_dir;
-> -};
-> -
-> -struct mt8195_mt6359_rt1019_rt5682_priv {
-> -	struct snd_soc_jack headset_jack;
-> -	struct snd_soc_jack dp_jack;
-> -	struct snd_soc_jack hdmi_jack;
-> -	struct clk *i2so1_mclk;
-> -};
+ .../bindings/regulator/mt6358-regulator.txt   |  22 +-
+ drivers/regulator/mt6358-regulator.c          | 213 +++++++++++++++++-
+ include/linux/regulator/mt6358-regulator.h    |  45 ++++
+ 3 files changed, 270 insertions(+), 10 deletions(-)
 
-The effective operation here: rename from mt8195_mt6359_rt1019_rt5682_priv
-to mt8195_mt6359_priv.  However, it somehow reorders the code.  As a result,
-the change looks like more complicated than just a "merge" operation.
+-- 
+2.18.0
 
-> -static const struct snd_soc_dapm_route mt8195_mt6359_rt1019_rt5682_routes[] = {
-> -	/* speaker */
-> -	{ "Speakers", NULL, "Speaker" },
-> +static const struct snd_kcontrol_new mt8195_mt6359_controls[] = {
-> +	SOC_DAPM_PIN_SWITCH("Headphone Jack"),
-> +	SOC_DAPM_PIN_SWITCH("Headset Mic"),
-> +};
-> +
-> +static const struct snd_soc_dapm_route mt8195_mt6359_routes[] = {
->  	/* headset */
->  	{ "Headphone Jack", NULL, "HPOL" },
->  	{ "Headphone Jack", NULL, "HPOR" },
-> @@ -80,55 +94,31 @@ static const struct snd_soc_dapm_route mt8195_mt6359_rt1019_rt5682_routes[] = {
->  	{"I021", NULL, SOF_DMA_DL3},
->  };
->  
-> -static const struct snd_kcontrol_new mt8195_mt6359_rt1019_rt5682_controls[] = {
-> -	SOC_DAPM_PIN_SWITCH("Speakers"),
-> -	SOC_DAPM_PIN_SWITCH("Headphone Jack"),
-> -	SOC_DAPM_PIN_SWITCH("Headset Mic"),
-> +static const struct snd_soc_dapm_widget mt8195_dual_speaker_widgets[] = {
-> +	SND_SOC_DAPM_SPK("Left Speaker", NULL),
-> +	SND_SOC_DAPM_SPK("Right Speaker", NULL),
->  };
->  
-> -static int mt8195_rt5682_etdm_hw_params(struct snd_pcm_substream *substream,
-> -					struct snd_pcm_hw_params *params)
-> -{
-[...]
-> +static const struct snd_kcontrol_new mt8195_dual_speaker_controls[] = {
-> +	SOC_DAPM_PIN_SWITCH("Left Speaker"),
-> +	SOC_DAPM_PIN_SWITCH("Right Speaker"),
-> +};
-
-Ditto.  I would expect it only renames and adds something.  However, if you
-look at the block and the following, it looks like changed a lot.
-
-> @@ -143,20 +133,20 @@ static int mt8195_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
->  	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt_afe);
->  	struct mt8195_afe_private *afe_priv = afe->platform_priv;
->  	struct mtkaif_param *param = &afe_priv->mtkaif_params;
-> -	int phase;
-> -	unsigned int monitor;
-> -	int mtkaif_calibration_num_phase;
-> +	int chosen_phase_1, chosen_phase_2, chosen_phase_3;
-> +	int prev_cycle_1, prev_cycle_2, prev_cycle_3;
->  	int test_done_1, test_done_2, test_done_3;
->  	int cycle_1, cycle_2, cycle_3;
-> -	int prev_cycle_1, prev_cycle_2, prev_cycle_3;
-> -	int chosen_phase_1, chosen_phase_2, chosen_phase_3;
-> -	int counter;
-> -	bool mtkaif_calibration_ok;
->  	int mtkaif_chosen_phase[MT8195_MTKAIF_MISO_NUM];
->  	int mtkaif_phase_cycle[MT8195_MTKAIF_MISO_NUM];
-> +	int mtkaif_calibration_num_phase;
-> +	bool mtkaif_calibration_ok;
-> +	unsigned int monitor;
-> +	int counter;
-> +	int phase;
->  	int i;
-
-The reorder of variable declaration is irrelevant to the patch.  Drop them.
-If it has good reason to do so, send another patch for the purpose.
-
-> @@ -513,7 +446,7 @@ static int mt8195_playback_startup(struct snd_pcm_substream *substream)
->  	return 0;
->  }
->  
-> -static const struct snd_soc_ops mt8195_playback_ops = {
-> +const struct snd_soc_ops mt8195_playback_ops = {
->  	.startup = mt8195_playback_startup,
-
-Why does it remove the `static`?
-
-> +static int mt8195_mt6359_dev_probe(struct platform_device *pdev)
->  {
-[...]
-> +	match = of_match_device(pdev->dev.driver->of_match_table, &pdev->dev);
-> +	if (!match || !match->data)
-> +		return -EINVAL;
-> +
-> +	card_data = (struct mt8195_card_data *)match->data;
-
-Use of_device_get_match_data().
-
-> -static const struct dev_pm_ops mt8195_mt6359_rt1019_rt5682_pm_ops = {
-> +const struct dev_pm_ops mt8195_mt6359_pm_ops = {
->  	.poweroff = snd_soc_poweroff,
->  	.restore = snd_soc_resume,
->  };
-
-Why does it remove the `static`?
 
 _______________________________________________
 Linux-mediatek mailing list
