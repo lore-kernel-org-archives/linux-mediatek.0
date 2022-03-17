@@ -4,57 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D497FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 16:56:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E863C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 19:22:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8kojXYk5LCQkG18IfGSeTEhdzvYFDaK9OQVhj0tExeE=; b=UbuEnXG/Pcd1mx
-	muQlLq3A9PwrTkt2klxgA4Evs7ANm0m+PHvHE0uYA7GnntAaYuC5RxJKZbzAHoMFHMM6d7FQIecIA
-	GIz9qskSfyEKLLmm0LQMr68Txu+CTwBho6LmUSSeQ3WJJz+Qz65RWv8TYSeCLmcmh7JUz3Noya8PJ
-	TxR4aKr9u4aaGk8m1zhlSCFEdRMZjH/aONBi2VBj58FOAxha4zaqaASnJLZghIIrJBLQS5UtqS6n3
-	MDEkJxziaYFbw3p7NIUO6xekaKzkJSR01REy/MVoHlvU/+9Skboxvk6RYeXluDtF2XWzP1rIddsv1
-	26LgpspY5DrvU4qZ844Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	References:MIME-Version:Message-ID:In-Reply-To:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/55rvfMyElZgIs21ofHrqPAmHI0G2VFK+ReI1zFa9P4=; b=YyGDPKhjKA+ZXb9joXQkhQrgOr
+	1nHHRZLYthOc35Wnwpv6iZNjjGSr6MVZNCxI+ACRMM6csFixK7FIBFDn21hYOW11fZuKq2ODvRlTz
+	e4zKCcye/bI27kyderLTQM7NTXdRbDXwaFp/iKJniJlRrny5Es3dmT+zEtV5TVAqFZVVr6o8W93J3
+	iQAh42HZ5PV2VeGnWeaE2DtI/kCaIjFgP9zGMZb99CNtjDFcklkk34kdGiRUFBoK01aMhRlVJDVpn
+	fj0rYxi1fENa8yq4JkJpjyASejYjPnI0LSKsf9unIviIeC6sA33nMpsC/6nmjFDybnbXtIUZ+/wZM
+	vIFpzuMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUtQB-00GrQt-5s; Thu, 17 Mar 2022 16:56:19 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nUvhD-00HBSm-S7; Thu, 17 Mar 2022 19:22:03 +0000
+Received: from mailout1.w1.samsung.com ([210.118.77.11])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUtQ7-00GrPR-LR
- for linux-mediatek@lists.infradead.org; Thu, 17 Mar 2022 16:56:17 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 7B0F1614ED;
- Thu, 17 Mar 2022 16:56:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75B03C340E9;
- Thu, 17 Mar 2022 16:56:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647536173;
- bh=kBBByNMLrkjCMdd2lU+nQrX8EsLYhXWFLHlmHOqlLXE=;
- h=From:To:Cc:Subject:Date:From;
- b=Ikx0ixPQ6BUL6//q62UnWjAKTULspF9Jis1U6V0fxRm33YNrjCMRwBRyE98Enklbg
- YEwloDoSsa8qQMdjt5mYGeG5In5hlWguokg5IM7O5TFXmhzcUvtVwDk1Yenahh2h/N
- Lvpye6K7HwTid96b6qDVJaH7+UNhc1yDXdAVIvjqfGoHFOedB+uJlczFioRCrw9U20
- 1RdFXR3Vr37/AJSEnkzx8rPzfbLhbKantkbu7cVRBqli8mKAk2j4oGaTEpZsUG6y1A
- CqiGFPTxDmtO2n+ve5WeUFDhke14ieCRud2QDdmR4ogSsYR7vF0W/4iFytka4G4+7K
- NeCiynVn2QYPQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: nbd@nbd.name
-Cc: linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com,
- sean.wang@mediatek.com, deren.wu@mediatek.com,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH] mt76: mt7921u: add suspend/resume support
-Date: Thu, 17 Mar 2022 17:55:59 +0100
-Message-Id: <f07e7ab403b3b72e6c1f72046a90026b398c179f.1647536048.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.35.1
+ id 1nUvgq-00HBLM-CW; Thu, 17 Mar 2022 19:21:42 +0000
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+ by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id
+ 20220317192137euoutp017e71ba0ed22d1b91ba2d8624c345a9c9~dQVr6851W0692706927euoutp01j;
+ Thu, 17 Mar 2022 19:21:37 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com
+ 20220317192137euoutp017e71ba0ed22d1b91ba2d8624c345a9c9~dQVr6851W0692706927euoutp01j
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1647544897;
+ bh=8AJD7LLy/THFDuNHTzws2WZ7Rh8dubqLenZAtO6y33w=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=SSsYA3sB8VCPS64sV7bKPBdT8Gs/9iazS1cVIbja0uftAb3Jtq7aVK0HmcrvM88Y1
+ NoEJ9kl4mWA5MXUH10J7hVGyfodyRX1b5gMz1n+rN5J9woekIMHDbFexQ8XqDOWVDm
+ SBXoHQ05p7Jo9XqAW4y1w7OlZTplPAkddYsl9vKc=
+Received: from eusmges2new.samsung.com (unknown [203.254.199.244]) by
+ eucas1p2.samsung.com (KnoxPortal) with ESMTP id
+ 20220317192137eucas1p26a509d5aaf346c7b64b070301bf61eb3~dQVrnVIS11741017410eucas1p2i;
+ Thu, 17 Mar 2022 19:21:37 +0000 (GMT)
+Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
+ eusmges2new.samsung.com (EUCPMTA) with SMTP id 08.B3.09887.14A83326; Thu, 17
+ Mar 2022 19:21:37 +0000 (GMT)
+Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
+ eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+ 20220317192136eucas1p185dfbf79e792ebdc4c5614a90c1b0cd8~dQVqafbfc3134231342eucas1p1O;
+ Thu, 17 Mar 2022 19:21:36 +0000 (GMT)
+Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
+ eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
+ 20220317192136eusmtrp180d92f8748820fe9ee93ff913a9123e8~dQVqZWQ871868218682eusmtrp1x;
+ Thu, 17 Mar 2022 19:21:36 +0000 (GMT)
+X-AuditID: cbfec7f4-45bff7000000269f-39-62338a41cdcf
+Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
+ eusmgms2.samsung.com (EUCPMTA) with SMTP id C4.14.09404.F3A83326; Thu, 17
+ Mar 2022 19:21:35 +0000 (GMT)
+Received: from localhost (unknown [106.120.51.46]) by eusmtip1.samsung.com
+ (KnoxPortal) with ESMTPA id
+ 20220317192135eusmtip11512036116a92f228b87ec99e1e8e94b~dQVqJMrcG1419214192eusmtip1r;
+ Thu, 17 Mar 2022 19:21:35 +0000 (GMT)
+From: Lukasz Stelmach <l.stelmach@samsung.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: alsa-devel@alsa-project.org,  bcm-kernel-feedback-list@broadcom.com,
+ linux-amlogic@lists.infradead.org,  linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org,  linux-aspeed@lists.ozlabs.org,
+ linux-input@vger.kernel.org,  linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org,  linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org,  linux-rockchip@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org,  linux-samsung-soc@vger.kernel.org,
+ linux-staging@lists.linux.dev,  linux-stm32@st-md-mailman.stormreply.com,
+ linux-sunxi@lists.linux.dev,  linux-tegra@vger.kernel.org,
+ linux-usb@vger.kernel.org,  mjpeg-users@lists.sourceforge.net,
+ openbmc@lists.ozlabs.org
+Subject: Re: [PATCH v2 65/67] media: Kconfig: cleanup VIDEO_DEV dependencies
+Date: Thu, 17 Mar 2022 20:21:35 +0100
+In-Reply-To: <d5b6678363c4374436014137fecc22ff666e3ebc.1647274407.git.mchehab@kernel.org>
+ (Mauro Carvalho Chehab's message of "Mon, 14 Mar 2022 17:35:00 +0100")
+Message-ID: <dleftj1qz0mlkw.fsf%l.stelmach@samsung.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
+X-Brightmail-Tracker: H4sIAAAAAAAAA02Sf1DTZRzHe77f7777Dhw+DpDnlkfdMCo4QcPySQj0sLvvVWdcWnnVNSd8
+ BY6xrf3IrDNmUMGaIAMvmJhACZ78aA5FI52JlqfEYETkgoSEFCe6k3GQhNC2L9753/vz+bzf
+ r+f5PPcwpKSUljK5Kj2nVSmUMjqEav/lvnPVRlPSjtV/+8Jwv6uTwC37fqZw7cFQbB8dEODy
+ c91CXNjkJLF7clqAf+uoobHZdtKvCl0An7x1l8CTIwskLh+0CXFVj4PAF30cNg2MCXClo4PG
+ JVNWGtc3fE7iBvscgfsLXTS+UjRObVjO2nyf0ax1uJtm7cdKaLbtuwJ2vK0asD1VdYD9sdZH
+ sOcda1ifPTpD9E5IShanzP2Q0yambg/JcR9Sac5lfOS746CMoDvZBEQMgmvR78YaygRCGAk8
+ CtDtwQeLxZS/GHcL+cIH0I0+i/BhxHSiIqglsBGgQnsOb7oJ0IzxG2ACDEPDBNTSsi3gifDL
+ m22uIJWEfQI0MlBOBQbh8DXU5hgMgij4FBo1zQoCWgTrAXowvzrAEcN16KuFjEA7Er6I5m7c
+ C9rFcBm6XD0WxJAwH1X3TIAAH8FpESobHAP8RTehhVNzJK/DkefSicUFVqCuCjMV4CNYgCos
+ L/BZM0DtNf9SvCcZDTlnaV5vRJMXviR4fxi6emcZf24YsrR/TfJtMSr+QsK7V6LWsjOLFCna
+ 5zkKeAuLLjue4F+qGSBX6RC9HzxpfWQb6yPbWP0REj6Lvu9I5NvxqKHuNsnrl1Brq5eqBYJj
+ IIoz6PKzOd1zKm5Xgk6RrzOoshMy1fl24P+mXfOXpk6DRs+9hE5AMKATrPSHr9uaeoGUUqlV
+ nCxC/Ot44g6JOEux+2NOq5ZrDUpO1wkeZyhZlDgz16aQwGyFnsvjOA2nfTglGJHUSCz5jwiT
+ Wuf7RPGMO0ZuT1txPm1XkdfIls/Id8rfDE9LuYqFOvnFmLzZvriu++7imOvc3U+lWUmHt2yO
+ X/hpiIJdbrOtd/3zfzmUu/fH1Vz5IzZ9xHDw7AFxaDdXJd++NEUc++7a9brmptKYvMhrFq/y
+ afVpvUEtK4YTinWV2Y/1vz165NVXNlSFbrFr0jPet+6xaupPSXGvfucz8tSRt6hts9NJwkNQ
+ f2RJkbh55nikWd+YWnLGLV1aklz3AV7Vku6JOr75FpP5Hrd36z/RzuE3csctzJDn8ITrdW/l
+ /IGXzw57DWWfwGvfOlMKNBfizVunueU/RPzp3rM32hs7kFMmo3Q5ijVxpFan+B+mhywbIQQA
+ AA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFmplleLIzCtJLcpLzFFi42I5/e/4XV37LuMkg4XvLSyuXDzEZLG29yiL
+ xYLZ3BabHl9jtZi4/yy7RfPqc8wWNz99Y7W4vGsOm0XPhq1AVvNFRoutL98xWXx68J/ZYuLt
+ DewWM87vY7I48jnVouvaE1aLKft2sVl0fpnFZrFoWSuzxbJNf5gsrjRfZLM41fKCxUHMY8Pn
+ JjaPWffPsnlsWtXJ5rF5Sb3Hi80zGT3Oz1jI6LF7wWcmj4P7DD0+b5IL4IzSsynKLy1JVcjI
+ Ly6xVYo2tDDSM7S00DMysdQzNDaPtTIyVdK3s0lJzcksSy3St0vQy7g5N69gf0DF57f7WBoY
+ z1p3MXJySAiYSHRtmcwOYgsJLGWU+Po2p4uRAyguJbFybjpEibDEn2tdbBAlTxklVr1yAClh
+ E9CTWLs2AiQsAmQ+33yRpYuRi4NZ4A6rRPPBLUwgCWEBH4nN+25DjY+QeDT/ClicRUBV4nHX
+ L1YQm1NgEaPE338GIDN5Bcwluv8HgIRFBSwl/jz7CNbKKyAocXLmExYQm1kgW+Lr6ufMExgF
+ ZiFJzUKSmgU0iVlAU2L9Ln2IsLbEsoWvmSFsW4l1696zLGBkXcUoklpanJueW2ykV5yYW1ya
+ l66XnJ+7iRGYBrYd+7llB+PKVx/1DjEycTAeYlQB6ny0YfUFRimWvPy8VCUR3jMv9JOEeFMS
+ K6tSi/Lji0pzUosPMZoCfTaRWUo0OR+YoPJK4g3NDEwNTcwsDUwtzYyVxHk9CzoShQTSE0tS
+ s1NTC1KLYPqYODilGphibDLLzno6a12RuDKlvcxuZvKmx2eWWB5gnB5gUWXGNVsodHGRqhCz
+ Pg9XyWxtr7VzpZ9P3hNRbMCt65M2a2Ge2rfLJw5tj9m7M9oh9VdhTkTaD/uPSTwRbxS7jzSL
+ B4vd17WZInhyi7znJvmJfHYZ0y9uzPf51et2rNRa7eyadRl3RJdb7c6dG5/5ZvPfVelu/OFy
+ pQ0xXB+yAqOC/zGZPEqxNDt5IlYh/0Lr14P3pCMCd6oZ3JLTZbry59WdaRMc3e6+YHjx+I13
+ 6cwlzY/az/VOm73l4jPeGON4HienzZ/YF5RyXNizpM3tTnXW/W13Xuzus3NWTZE+0dB6LGOj
+ pbZ4/N24dTtW7mBSmajEUpyRaKjFXFScCABQmWVNmAMAAA==
+X-CMS-MailID: 20220317192136eucas1p185dfbf79e792ebdc4c5614a90c1b0cd8
+X-Msg-Generator: CA
+X-RootMTR: 20220317192136eucas1p185dfbf79e792ebdc4c5614a90c1b0cd8
+X-EPHeader: CA
+CMS-TYPE: 201P
+X-CMS-RootMailID: 20220317192136eucas1p185dfbf79e792ebdc4c5614a90c1b0cd8
+References: <d5b6678363c4374436014137fecc22ff666e3ebc.1647274407.git.mchehab@kernel.org>
+ <CGME20220317192136eucas1p185dfbf79e792ebdc4c5614a90c1b0cd8@eucas1p1.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220317_095615_825787_4121F1B8 
-X-CRM114-Status: GOOD (  17.25  )
+X-CRM114-CacheID: sfid-20220317_122140_809250_5315BA63 
+X-CRM114-Status: GOOD (  24.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,173 +138,245 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7590632408569038078=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce suspend/resume callbacks for mt7921u driver.
+--===============7590632408569038078==
+Content-Type: multipart/signed; boundary="=-=-="; micalg="pgp-sha256";
+	protocol="application/pgp-signature"
 
-Tested-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  2 +-
- .../net/wireless/mediatek/mt76/mt7921/regs.h  |  5 ++
- .../net/wireless/mediatek/mt76/mt7921/usb.c   | 62 ++++++++++++++++++-
- .../wireless/mediatek/mt76/mt7921/usb_mac.c   |  7 ++-
- 4 files changed, 72 insertions(+), 4 deletions(-)
+--=-=-=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index 7690364bc079..459226c5bb11 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -467,7 +467,7 @@ bool mt7921_usb_sdio_tx_status_data(struct mt76_dev *mdev, u8 *update);
- 
- int mt7921u_mcu_power_on(struct mt7921_dev *dev);
- int mt7921u_wfsys_reset(struct mt7921_dev *dev);
--int mt7921u_dma_init(struct mt7921_dev *dev);
-+int mt7921u_dma_init(struct mt7921_dev *dev, bool resume);
- int mt7921u_init_reset(struct mt7921_dev *dev);
- int mt7921u_mac_reset(struct mt7921_dev *dev);
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
-index 6712ff60c722..ea643260ceb6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
-@@ -516,4 +516,9 @@
- #define MT_TOP_MISC2_FW_PWR_ON		BIT(0)
- #define MT_TOP_MISC2_FW_N9_RDY		GENMASK(1, 0)
- 
-+#define MT_WF_SW_DEF_CR(ofs)		(0x401a00 + (ofs))
-+#define MT_WF_SW_DEF_CR_USB_MCU_EVENT	MT_WF_SW_DEF_CR(0x028)
-+#define MT_WF_SW_SER_TRIGGER_SUSPEND	BIT(6)
-+#define MT_WF_SW_SER_DONE_SUSPEND	BIT(7)
-+
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-index b7771e9f1fcd..dc38baef273a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-@@ -246,7 +246,7 @@ static int mt7921u_probe(struct usb_interface *usb_intf,
- 	if (ret)
- 		goto error;
- 
--	ret = mt7921u_dma_init(dev);
-+	ret = mt7921u_dma_init(dev, false);
- 	if (ret)
- 		return ret;
- 
-@@ -288,6 +288,61 @@ static void mt7921u_disconnect(struct usb_interface *usb_intf)
- 	mt76_free_device(&dev->mt76);
- }
- 
-+#ifdef CONFIG_PM
-+static int mt7921u_suspend(struct usb_interface *intf, pm_message_t state)
-+{
-+	struct mt7921_dev *dev = usb_get_intfdata(intf);
-+	int err;
-+
-+	err = mt76_connac_mcu_set_hif_suspend(&dev->mt76, true);
-+	if (err)
-+		return err;
-+
-+	mt76u_stop_rx(&dev->mt76);
-+	mt76u_stop_tx(&dev->mt76);
-+
-+	set_bit(MT76_STATE_SUSPEND, &dev->mphy.state);
-+
-+	return 0;
-+}
-+
-+static int mt7921u_resume(struct usb_interface *intf)
-+{
-+	struct mt7921_dev *dev = usb_get_intfdata(intf);
-+	bool reinit = true;
-+	int err, i;
-+
-+	for (i = 0; i < 10; i++) {
-+		u32 val = mt76_rr(dev, MT_WF_SW_DEF_CR_USB_MCU_EVENT);
-+
-+		if (!(val & MT_WF_SW_SER_TRIGGER_SUSPEND)) {
-+			reinit = false;
-+			break;
-+		}
-+		if (val & MT_WF_SW_SER_DONE_SUSPEND) {
-+			mt76_wr(dev, MT_WF_SW_DEF_CR_USB_MCU_EVENT, 0);
-+			break;
-+		}
-+
-+		msleep(20);
-+	}
-+
-+	if (reinit || mt7921_dma_need_reinit(dev)) {
-+		err = mt7921u_dma_init(dev, true);
-+		if (err)
-+			return err;
-+	}
-+
-+	clear_bit(MT76_STATE_SUSPEND, &dev->mphy.state);
-+
-+	err = mt76u_resume_rx(&dev->mt76);
-+	if (err < 0)
-+		return err;
-+
-+	return mt76_connac_mcu_set_hif_suspend(&dev->mt76, false);
-+}
-+#endif /* CONFIG_PM */
-+
- MODULE_DEVICE_TABLE(usb, mt7921u_device_table);
- MODULE_FIRMWARE(MT7921_FIRMWARE_WM);
- MODULE_FIRMWARE(MT7921_ROM_PATCH);
-@@ -297,6 +352,11 @@ static struct usb_driver mt7921u_driver = {
- 	.id_table	= mt7921u_device_table,
- 	.probe		= mt7921u_probe,
- 	.disconnect	= mt7921u_disconnect,
-+#ifdef CONFIG_PM
-+	.suspend	= mt7921u_suspend,
-+	.resume		= mt7921u_resume,
-+	.reset_resume	= mt7921u_resume,
-+#endif /* CONFIG_PM */
- 	.soft_unbind	= 1,
- 	.disable_hub_initiated_lpm = 1,
- };
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
-index 99bcbd858b65..cd2f09743d2f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
-@@ -121,7 +121,7 @@ static void mt7921u_epctl_rst_opt(struct mt7921_dev *dev, bool reset)
- 	mt7921u_uhw_wr(&dev->mt76, MT_SSUSB_EPCTL_CSR_EP_RST_OPT, val);
- }
- 
--int mt7921u_dma_init(struct mt7921_dev *dev)
-+int mt7921u_dma_init(struct mt7921_dev *dev, bool resume)
- {
- 	int err;
- 
-@@ -136,6 +136,9 @@ int mt7921u_dma_init(struct mt7921_dev *dev)
- 		   MT_WL_RX_AGG_TO | MT_WL_RX_AGG_LMT);
- 	mt76_clear(dev, MT_UDMA_WLCFG_1, MT_WL_RX_AGG_PKT_LMT);
- 
-+	if (resume)
-+		return 0;
-+
- 	err = mt7921u_dma_rx_evt_ep4(dev);
- 	if (err)
- 		return err;
-@@ -221,7 +224,7 @@ int mt7921u_mac_reset(struct mt7921_dev *dev)
- 	if (err)
- 		goto out;
- 
--	err = mt7921u_dma_init(dev);
-+	err = mt7921u_dma_init(dev, false);
- 	if (err)
- 		goto out;
- 
--- 
-2.35.1
+It was <2022-03-14 pon 17:35>, when Mauro Carvalho Chehab wrote:
+> media Kconfig has two entries associated to V4L API:
+> VIDEO_DEV and VIDEO_V4L2.
+>
+> On Kernel 2.6.x, there were two V4L APIs, each one with its own flag.
+> VIDEO_DEV were meant to:
+> 	1) enable Video4Linux and make its Kconfig options to appear;
+> 	2) it makes the Kernel build the V4L core.
+>
+> while VIDEO_V4L2 where used to distinguish between drivers that
+> implement the newer API and drivers that implemented the former one.
+>
+> With time, such meaning changed, specially after the removal of
+> all V4L version 1 drivers.
+>
+> At the current implementation, VIDEO_DEV only does (1): it enables
+> the media options related to V4L, that now has:
+>
+> 	menu "Video4Linux options"
+> 		visible if VIDEO_DEV
+>
+> 	source "drivers/media/v4l2-core/Kconfig"
+> 	endmenu
+>
+> but it doesn't affect anymore the V4L core drivers.
+>
+> The rationale is that the V4L2 core has a "soft" dependency
+> at the I2C bus, and now requires to select a number of other
+> Kconfig options:
+>
+> 	config VIDEO_V4L2
+> 		tristate
+> 		depends on (I2C || I2C=3Dn) && VIDEO_DEV
+> 		select RATIONAL
+> 		select VIDEOBUF2_V4L2 if VIDEOBUF2_CORE
+> 		default (I2C || I2C=3Dn) && VIDEO_DEV
+>
+> In the past, merging them would be tricky, but it seems that it is now
+> possible to merge those symbols, in order to simplify V4L dependencies.
+>
+> Let's keep VIDEO_DEV, as this one is used on some make *defconfig
+> configurations.
+>
+> Suggested-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Reviewed-by: Jacopo Mondi <jacopo@jmondi.org>
+> Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+> ---
+>
+> To avoid mailbombing on a large number of people, only mailing lists were=
+ C/C on the cover.
+> See [PATCH v2 00/67] at: https://lore.kernel.org/all/cover.1647274406.git=
+.mchehab@kernel.org/
+>
+>  drivers/input/rmi4/Kconfig                    |   2 +-
+>  drivers/input/touchscreen/Kconfig             |   4 +-
+>  drivers/media/Kconfig                         |   3 +
+>  drivers/media/common/saa7146/Kconfig          |   2 +-
+>  drivers/media/dvb-core/Kconfig                |   2 +-
+>  drivers/media/dvb-frontends/Kconfig           |   4 +-
+>  drivers/media/i2c/Kconfig                     | 250 +++++++++---------
+>  drivers/media/i2c/ccs/Kconfig                 |   2 +-
+>  drivers/media/i2c/cx25840/Kconfig             |   2 +-
+>  drivers/media/i2c/et8ek8/Kconfig              |   2 +-
+>  drivers/media/i2c/m5mols/Kconfig              |   2 +-
+>  drivers/media/pci/Kconfig                     |   2 +-
+>  drivers/media/pci/bt8xx/Kconfig               |   2 +-
+>  drivers/media/pci/cobalt/Kconfig              |   2 +-
+>  drivers/media/pci/cx18/Kconfig                |   2 +-
+>  drivers/media/pci/dt3155/Kconfig              |   2 +-
+>  drivers/media/pci/intel/ipu3/Kconfig          |   2 +-
+>  drivers/media/pci/ivtv/Kconfig                |   2 +-
+>  drivers/media/pci/meye/Kconfig                |   2 +-
+>  drivers/media/pci/saa7146/Kconfig             |   6 +-
+>  drivers/media/pci/sta2x11/Kconfig             |   2 +-
+>  drivers/media/pci/tw5864/Kconfig              |   2 +-
+>  drivers/media/pci/tw68/Kconfig                |   2 +-
+>  drivers/media/pci/tw686x/Kconfig              |   2 +-
+>  drivers/media/platform/Kconfig                |   6 +-
+>  drivers/media/platform/allegro-dvt/Kconfig    |   2 +-
+>  .../platform/allwinner/sun4i-csi/Kconfig      |   2 +-
+>  .../platform/allwinner/sun6i-csi/Kconfig      |   2 +-
+>  .../media/platform/allwinner/sun8i-di/Kconfig |   2 +-
+>  .../platform/allwinner/sun8i-rotate/Kconfig   |   2 +-
+>  .../media/platform/amlogic/meson-ge2d/Kconfig |   2 +-
+>  drivers/media/platform/amphion/Kconfig        |   1 -
+>  drivers/media/platform/aspeed/Kconfig         |   2 +-
+>  drivers/media/platform/atmel/Kconfig          |   8 +-
+>  drivers/media/platform/cadence/Kconfig        |   4 +-
+>  drivers/media/platform/chips-media/Kconfig    |   2 +-
+>  drivers/media/platform/intel/Kconfig          |   2 +-
+>  drivers/media/platform/marvell/Kconfig        |   4 +-
+>  .../media/platform/mediatek/mtk-jpeg/Kconfig  |   2 +-
+>  .../media/platform/mediatek/mtk-mdp/Kconfig   |   2 +-
+>  .../platform/mediatek/mtk-vcodec/Kconfig      |   2 +-
+>  .../media/platform/mediatek/mtk-vpu/Kconfig   |   2 +-
+>  .../media/platform/nvidia/tegra-vde/Kconfig   |   2 +-
+>  drivers/media/platform/nxp/Kconfig            |   6 +-
+>  drivers/media/platform/nxp/imx-jpeg/Kconfig   |   2 +-
+>  drivers/media/platform/qcom/camss/Kconfig     |   2 +-
+>  drivers/media/platform/qcom/venus/Kconfig     |   2 +-
+>  drivers/media/platform/renesas/Kconfig        |  30 +--
+>  .../media/platform/renesas/rcar-vin/Kconfig   |   4 +-
+>  drivers/media/platform/rockchip/rga/Kconfig   |   2 +-
+>  .../media/platform/rockchip/rkisp1/Kconfig    |   2 +-
+>  .../media/platform/samsung/exynos-gsc/Kconfig |   2 +-
+>  .../media/platform/samsung/exynos4-is/Kconfig |   2 +-
+>  .../media/platform/samsung/s3c-camif/Kconfig  |   2 +-
+>  .../media/platform/samsung/s5p-g2d/Kconfig    |   2 +-
+>  .../media/platform/samsung/s5p-jpeg/Kconfig   |   2 +-
+>  .../media/platform/samsung/s5p-mfc/Kconfig    |   2 +-
+>  drivers/media/platform/stm/sti/bdisp/Kconfig  |   2 +-
+>  drivers/media/platform/stm/sti/delta/Kconfig  |   2 +-
+>  drivers/media/platform/stm/sti/hva/Kconfig    |   2 +-
+>  drivers/media/platform/stm/stm32/Kconfig      |   4 +-
+>  drivers/media/platform/ti/am437x/Kconfig      |   2 +-
+>  drivers/media/platform/ti/davinci/Kconfig     |  12 +-
+>  drivers/media/platform/ti/omap/Kconfig        |   2 +-
+>  drivers/media/platform/ti/omap3isp/Kconfig    |   2 +-
+>  drivers/media/platform/via/Kconfig            |   2 +-
+>  drivers/media/platform/xilinx/Kconfig         |   2 +-
+>  drivers/media/radio/Kconfig                   |  42 ++-
+>  drivers/media/radio/si470x/Kconfig            |   2 +-
+>  drivers/media/radio/wl128x/Kconfig            |   2 +-
+>  drivers/media/spi/Kconfig                     |   4 +-
+>  drivers/media/test-drivers/Kconfig            |   2 +-
+>  drivers/media/test-drivers/vicodec/Kconfig    |   2 +-
+>  drivers/media/test-drivers/vimc/Kconfig       |   2 +-
+>  drivers/media/test-drivers/vivid/Kconfig      |   2 +-
+>  drivers/media/tuners/Kconfig                  |   6 +-
+>  drivers/media/tuners/e4000.c                  |   6 +-
+>  drivers/media/tuners/fc2580.c                 |   6 +-
+>  drivers/media/usb/airspy/Kconfig              |   2 +-
+>  drivers/media/usb/au0828/Kconfig              |   6 +-
+>  drivers/media/usb/cpia2/Kconfig               |   2 +-
+>  drivers/media/usb/dvb-usb-v2/Kconfig          |   8 +-
+>  drivers/media/usb/dvb-usb/Kconfig             |   4 +-
+>  drivers/media/usb/gspca/Kconfig               |  96 +++----
+>  drivers/media/usb/gspca/gl860/Kconfig         |   2 +-
+>  drivers/media/usb/gspca/m5602/Kconfig         |   2 +-
+>  drivers/media/usb/hackrf/Kconfig              |   2 +-
+>  drivers/media/usb/hdpvr/Kconfig               |   2 +-
+>  drivers/media/usb/msi2500/Kconfig             |   2 +-
+>  drivers/media/usb/pvrusb2/Kconfig             |   2 +-
+>  drivers/media/usb/pwc/Kconfig                 |   2 +-
+>  drivers/media/usb/s2255/Kconfig               |   2 +-
+>  drivers/media/usb/stkwebcam/Kconfig           |   2 +-
+>  drivers/media/usb/usbtv/Kconfig               |   2 +-
+>  drivers/media/usb/uvc/Kconfig                 |   2 +-
+>  drivers/media/usb/zr364xx/Kconfig             |   2 +-
+>  drivers/media/v4l2-core/Kconfig               |  12 +-
+>  drivers/media/v4l2-core/Makefile              |   2 +-
+>  drivers/staging/media/atomisp/Kconfig         |   2 +-
+>  drivers/staging/media/atomisp/i2c/Kconfig     |  14 +-
+>  drivers/staging/media/hantro/Kconfig          |   2 +-
+>  drivers/staging/media/imx/Kconfig             |   2 +-
+>  drivers/staging/media/ipu3/Kconfig            |   2 +-
+>  drivers/staging/media/max96712/Kconfig        |   2 +-
+>  drivers/staging/media/meson/vdec/Kconfig      |   2 +-
+>  drivers/staging/media/omap4iss/Kconfig        |   2 +-
+>  drivers/staging/media/rkvdec/Kconfig          |   2 +-
+>  drivers/staging/media/sunxi/cedrus/Kconfig    |   2 +-
+>  drivers/staging/media/tegra-video/Kconfig     |   2 +-
+>  drivers/staging/media/zoran/Kconfig           |   2 +-
+>  drivers/staging/most/video/Kconfig            |   2 +-
+>  .../vc04_services/bcm2835-camera/Kconfig      |   2 +-
+>  drivers/usb/gadget/Kconfig                    |   2 +-
+>  drivers/usb/gadget/legacy/Kconfig             |   2 +-
+>  sound/pci/Kconfig                             |   4 +-
+>  115 files changed, 356 insertions(+), 374 deletions(-)
+>
 
+Acked-by: =C5=81ukasz Stelmach <l.stelmach@samsung.com>
+
+[...]
+
+
+> diff --git a/drivers/media/platform/samsung/s5p-g2d/Kconfig b/drivers/med=
+ia/platform/samsung/s5p-g2d/Kconfig
+> index 9bc9d90a666a..28ab88fc2d7c 100644
+> --- a/drivers/media/platform/samsung/s5p-g2d/Kconfig
+> +++ b/drivers/media/platform/samsung/s5p-g2d/Kconfig
+> @@ -1,7 +1,7 @@
+>  config VIDEO_SAMSUNG_S5P_G2D
+>  	tristate "Samsung S5P and EXYNOS4 G2D 2d graphics accelerator driver"
+>  	depends on V4L_MEM2MEM_DRIVERS
+> -	depends on VIDEO_DEV && VIDEO_V4L2
+> +	depends on VIDEO_DEV
+>  	depends on ARCH_S5PV210 || ARCH_EXYNOS || COMPILE_TEST
+>  	select VIDEOBUF2_DMA_CONTIG
+>  	select V4L2_MEM2MEM_DEV
+
+[...]
+
+
+=2D-=20
+=C5=81ukasz Stelmach
+Samsung R&D Institute Poland
+Samsung Electronics
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEXpuyqjq9kGEVr9UQsK4enJilgBAFAmIzij8ACgkQsK4enJil
+gBBbcgf/aneuRLpVmb3t9XhFHinqWTwAHjmHijfM4Bxpeie5LGPD+ZODOQbbTHI/
+SXYJS3DSxcgXnRGiv7g4MNmazBgof2zjvt/C8g0cTWdthAC4RALkjvOFd+4JyyJP
+ozwCmesdus9emei4oZwgFKK914YZDEjYr8bWMicgALtwdnF7z9A00O5RwqaptPTX
+jSFQlpjo5s4gYR2xpQZaLPRwnr328DtW8oertBocpd32+OtNe+A2u1cjdxKuOPqt
+1iB2h/WFOgzqi5noKYu5eQ37WtWZsiPlUuEcrUXRddHEj/TYOFwBEclb+TtkaO0X
+ysdUvYWSGALn6XAUtaiDpl43o6bQ2A==
+=1sCe
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+
+--===============7590632408569038078==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============7590632408569038078==--
+
