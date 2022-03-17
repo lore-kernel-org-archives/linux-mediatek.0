@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98C6FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 08:23:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5110C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 08:33:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ae4lDMeXIC+4fhbnkQ5JpLVKbaCR5Z8I1UsUzFfzMNg=; b=zknlNwOnl862lQ
-	tBHrDqs4/cir5ajizBRVI3M7wXzZgw71TN049em1LG/kFRxEl+sMHCheQBpVygV4HupJoRniDsf2j
-	b2/6H4JhBwlArTQQUSdSrPw3B2EIkZayDWEWENG0z/JgrxET3rfb4IMJT/U4NV5C9D+T+rJqULKca
-	MzL+YmfhYZqcfPfuy9Dqiz1HI/mquRC9lIkVN5NNovgpNSjatomZHIHZQjDrMa6E/8imJMZYZez0w
-	BiuDA3gaPoNOurl6z8De3Gc3FidsQSkmqXCOT4wcFBGL/T8073DB11EPssgChJJbEp0c+DsCF+UoL
-	hdi2ZCJo2/1eeauURFQQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tpOC8gPbwkQN4LXBc57bE2Gszeq10xrJh6ssDfAcZ2w=; b=z0mW/WJNhvr4MT
+	AJsY9YoEsaMSx0f11JL9D5G1VseNclkHwyNC6Q588tsODEMTS3JBetTAoolEjWSIwNVvM4069U3ub
+	7mhzF74zIORwgjPAvToEkg+YwjfPbsNaEb8jDwcgKkSzzfTvKw4jFoOhhT1Vo5G1rp7r7sA4gKVpk
+	f9nIUjZkMo7D+2rxzSTMPzRU63+X3vCgxlePIw1UEsLBFUSh60yoqtLvi2FeP6SFU4tx9bGoYcWYp
+	OZyRc8hRS2Ft5+ap4Utr8qAOu+a0y15UKSEaIF3DLiT9a3GPurb9vxHvOd0lexuyClkHVeFFUYnZJ
+	tQmLgMKBOL7avnCpmgzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUlPs-00FIlv-Bx; Thu, 17 Mar 2022 08:23:28 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nUlZ0-00FKeV-HH; Thu, 17 Mar 2022 08:32:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUlPi-00FIgD-7E; Thu, 17 Mar 2022 08:23:19 +0000
-X-UUID: a9d7b79c06be43b2b095b52ddfde0d03-20220317
-X-UUID: a9d7b79c06be43b2b095b52ddfde0d03-20220317
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1nUlYx-00FKcu-JF; Thu, 17 Mar 2022 08:32:53 +0000
+X-UUID: 91283aeebbba4eba8264363b46df1f26-20220317
+X-UUID: 91283aeebbba4eba8264363b46df1f26-20220317
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <irui.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 635571992; Thu, 17 Mar 2022 01:23:15 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Mar 2022 01:23:13 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 17 Mar 2022 16:22:59 +0800
+ with ESMTP id 916239237; Thu, 17 Mar 2022 01:32:44 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Mar 2022 01:22:41 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Mar 2022 16:22:34 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 17 Mar 2022 16:22:57 +0800
+ Transport; Thu, 17 Mar 2022 16:22:32 +0800
 From: Irui Wang <irui.wang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
  <tzungbi@chromium.org>, Rob Herring <robh+dt@kernel.org>, Alexandre Courbot
@@ -55,18 +55,15 @@ CC: Hsin-Yi Wang <hsinyi@chromium.org>, Maoguang Meng
  <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3,
- 01/10] media: mtk-vcodec: Use core type to indicate h264 and vp8 enc
-Date: Thu, 17 Mar 2022 16:22:21 +0800
-Message-ID: <20220317082230.23622-2-irui.wang@mediatek.com>
+Subject: [PATCH v3, 00/10] Enable two H264 encoder core on MT8195
+Date: Thu, 17 Mar 2022 16:22:20 +0800
+Message-ID: <20220317082230.23622-1-irui.wang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220317082230.23622-1-irui.wang@mediatek.com>
-References: <20220317082230.23622-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220317_012318_283586_C0E48BBA 
-X-CRM114-Status: GOOD (  15.31  )
+X-CRM114-CacheID: sfid-20220317_013251_657459_01CD7035 
+X-CRM114-Status: GOOD (  13.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,136 +80,99 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-use core type variables to indicate h264 and vp8 encoder
+MT8195 has two H264 encoder cores, they have their own power-domains,
+clocks, interrupts, register base. The two H264 encoder cores can work
+together to achieve higher performance, it's a core mode called
+frame-racing, one core has 4K@30fps performance, two cores can achieve
+4K@60fps.
+The two encoder core encoding process looks like this:
 
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+    VENC Core0: frm#0....frm#2....frm#4....
+    VENC Core1: ..frm#1....frm#3....frm#5....
+
+This series of patches are used to enable the two H264 encoder cores,
+encoding process will be changed:
+As-Is: Synchronous
+V4L2_VIDIOC_QBUF#0 --> device_run(triger encoder) --> wait encoder IRQ -->
+encoding done with result --> job_finish
+V4l2_VIDIOC_QBUF#1 --> device_run(triger encoder) --> wait encoder IRQ -->
+encoding done with result --> job_finish
+...
+
+To-Be: Asynchronous
+V4L2_VIDIOC_QBUF#0 --> device_run(triger encoder) --> job_finish
+..V4l2_VIDIOC_QBUF#1 --> device_run(triger encoder) --> job_finish
+(venc core0 may encode done here, done the encoding result to client)
+V4L2_VIDIOC_QBUF#2 --> device_run(triger encoder) --> job_finish.
+
+There is no "wait encoder IRQ" synchronous call during frame-racing mode
+encoding process, it can full use the two encoder cores to achieve higher
+performance.
+
 ---
- .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  4 +--
- .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  | 30 ++++++++++---------
- 2 files changed, 18 insertions(+), 16 deletions(-)
+This series patches dependent on:
+media_stage tree:
+[1]
+https://git.linuxtv.org/media_stage.git/commit/?id=b3627647f9ea7473d10fb08a95fd7c4133a17ca4
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index ea58f11e7659..3affb2d4a4ec 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -416,7 +416,7 @@ struct mtk_vcodec_dec_pdata {
-  * @num_capture_formats: number of entries in capture_formats
-  * @output_formats: array of supported output formats
-  * @num_output_formats: number of entries in output_formats
-- * @core_id: stand for h264 or vp8 encode index
-+ * @core_type: stand for h264 or vp8 encode
-  */
- struct mtk_vcodec_enc_pdata {
- 	bool uses_ext;
-@@ -426,7 +426,7 @@ struct mtk_vcodec_enc_pdata {
- 	size_t num_capture_formats;
- 	const struct mtk_video_fmt *output_formats;
- 	size_t num_output_formats;
--	int core_id;
-+	int core_type;
- };
- 
- #define MTK_ENC_CTX_IS_EXT(ctx) ((ctx)->dev->venc_pdata->uses_ext)
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-index 95e8c29ccc65..f12f887e4bdc 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-@@ -94,11 +94,13 @@ static irqreturn_t mtk_vcodec_enc_irq_handler(int irq, void *priv)
- 	ctx = dev->curr_ctx;
- 	spin_unlock_irqrestore(&dev->irqlock, flags);
- 
--	mtk_v4l2_debug(1, "id=%d coreid:%d", ctx->id, dev->venc_pdata->core_id);
--	addr = dev->reg_base[dev->venc_pdata->core_id] +
-+	mtk_v4l2_debug(1, "id: %d core type: %d",
-+		       ctx->id, dev->venc_pdata->core_type);
-+
-+	addr = dev->reg_base[dev->venc_pdata->core_type] +
- 				MTK_VENC_IRQ_ACK_OFFSET;
- 
--	ctx->irq_status = readl(dev->reg_base[dev->venc_pdata->core_id] +
-+	ctx->irq_status = readl(dev->reg_base[dev->venc_pdata->core_type] +
- 				(MTK_VENC_IRQ_STATUS_OFFSET));
- 
- 	clean_irq_status(ctx->irq_status, addr);
-@@ -265,10 +267,10 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 
- 	pm_runtime_enable(&pdev->dev);
- 
--	dev->reg_base[dev->venc_pdata->core_id] =
-+	dev->reg_base[dev->venc_pdata->core_type] =
- 		devm_platform_ioremap_resource(pdev, 0);
--	if (IS_ERR(dev->reg_base[dev->venc_pdata->core_id])) {
--		ret = PTR_ERR(dev->reg_base[dev->venc_pdata->core_id]);
-+	if (IS_ERR(dev->reg_base[dev->venc_pdata->core_type])) {
-+		ret = PTR_ERR(dev->reg_base[dev->venc_pdata->core_type]);
- 		goto err_res;
- 	}
- 
-@@ -286,8 +288,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 			       0, pdev->name, dev);
- 	if (ret) {
- 		dev_err(&pdev->dev,
--			"Failed to install dev->enc_irq %d (%d) core_id (%d)",
--			dev->enc_irq, ret, dev->venc_pdata->core_id);
-+			"Failed to install dev->enc_irq %d (%d) core_type (%d)",
-+			dev->enc_irq, ret, dev->venc_pdata->core_type);
- 		ret = -EINVAL;
- 		goto err_res;
- 	}
-@@ -356,7 +358,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 	}
- 
- 	mtk_v4l2_debug(0, "encoder %d registered as /dev/video%d",
--		       dev->venc_pdata->core_id, vfd_enc->num);
-+		       dev->venc_pdata->core_type, vfd_enc->num);
- 
- 	return 0;
- 
-@@ -382,7 +384,7 @@ static const struct mtk_vcodec_enc_pdata mt8173_avc_pdata = {
- 	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output),
- 	.min_bitrate = 64,
- 	.max_bitrate = 60000000,
--	.core_id = VENC_SYS,
-+	.core_type = VENC_SYS,
- };
- 
- static const struct mtk_vcodec_enc_pdata mt8173_vp8_pdata = {
-@@ -392,7 +394,7 @@ static const struct mtk_vcodec_enc_pdata mt8173_vp8_pdata = {
- 	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output),
- 	.min_bitrate = 64,
- 	.max_bitrate = 9000000,
--	.core_id = VENC_LT_SYS,
-+	.core_type = VENC_LT_SYS,
- };
- 
- static const struct mtk_vcodec_enc_pdata mt8183_pdata = {
-@@ -403,7 +405,7 @@ static const struct mtk_vcodec_enc_pdata mt8183_pdata = {
- 	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output),
- 	.min_bitrate = 64,
- 	.max_bitrate = 40000000,
--	.core_id = VENC_SYS,
-+	.core_type = VENC_SYS,
- };
- 
- static const struct mtk_vcodec_enc_pdata mt8192_pdata = {
-@@ -414,7 +416,7 @@ static const struct mtk_vcodec_enc_pdata mt8192_pdata = {
- 	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output),
- 	.min_bitrate = 64,
- 	.max_bitrate = 100000000,
--	.core_id = VENC_SYS,
-+	.core_type = VENC_SYS,
- };
- 
- static const struct mtk_vcodec_enc_pdata mt8195_pdata = {
-@@ -425,7 +427,7 @@ static const struct mtk_vcodec_enc_pdata mt8195_pdata = {
- 	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output),
- 	.min_bitrate = 64,
- 	.max_bitrate = 100000000,
--	.core_id = VENC_SYS,
-+	.core_type = VENC_SYS,
- };
- 
- static const struct of_device_id mtk_vcodec_enc_match[] = {
+mt8192 decoder:
+[2] https://patchwork.kernel.org/project/linux-mediatek/list/?series=616991
+
+patch3 new venc dt-bindings included files
+[3] MM IOMMU binding:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220217113453.13658-2-yong.wu@mediatek.com/
+
+[4] MT8195 power domain:
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=580579
+
+changes compared with v2:
+- update venc core dt-bindings, add two new properties for current usage.
+- parse venc multi_core mode from device tree.
+- rebase to the newer linux media stage.
+
+changes compared with v1:
+- of_platform_populate was used in place of the component framework.
+- new yaml file for venc cores.
+- some modifications for patch v1's review comments.
+---
+
+Irui Wang (10):
+  media: mtk-vcodec: Use core type to indicate h264 and vp8 enc
+  media: mtk-vcodec: export encoder functions
+  dt-bindings: media: mtk-vcodec: Adds encoder cores dt-bindings for
+    mt8195
+  media: mtk-vcodec: Enable venc dual core usage
+  media: mtk-vcodec: mtk-vcodec: Rewrite venc power manage interface
+  media: mtk-vcodec: Add venc power on/off interface
+  media: mtk-vcodec: Rewrite venc clock interface
+  media: mtk-vcodec: Add more extra processing for venc_multi_core mode
+  media: mtk-vcodec: Add venc_multi_core mode encode process
+  media: mtk-vcodec: Done encode result to client
+
+ .../media/mediatek,vcodec-encoder-core.yaml   | 181 +++++++++++++++
+ .../media/mediatek,vcodec-encoder.yaml        |   1 -
+ drivers/media/platform/mtk-vcodec/Makefile    |   4 +-
+ .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  36 ++-
+ .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 113 +++++++---
+ .../platform/mtk-vcodec/mtk_vcodec_enc.h      |   7 +-
+ .../platform/mtk-vcodec/mtk_vcodec_enc_core.c | 169 ++++++++++++++
+ .../platform/mtk-vcodec/mtk_vcodec_enc_core.h |  36 +++
+ .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  | 107 +++++----
+ .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 183 +++++++++++++--
+ .../platform/mtk-vcodec/mtk_vcodec_enc_pm.h   |  11 +-
+ .../platform/mtk-vcodec/mtk_vcodec_util.c     |  19 ++
+ .../platform/mtk-vcodec/mtk_vcodec_util.h     |   5 +
+ .../platform/mtk-vcodec/venc/venc_h264_if.c   | 212 +++++++++++++++---
+ .../platform/mtk-vcodec/venc/venc_vp8_if.c    |   3 +-
+ .../media/platform/mtk-vcodec/venc_drv_if.c   |  79 +++++--
+ .../media/platform/mtk-vcodec/venc_drv_if.h   |   7 +
+ .../media/platform/mtk-vcodec/venc_vpu_if.c   |  11 +-
+ .../media/platform/mtk-vcodec/venc_vpu_if.h   |   3 +-
+ 19 files changed, 1026 insertions(+), 161 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml
+ create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_core.c
+ create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_core.h
+
 -- 
 2.18.0
 
