@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCBE8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 10:13:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11952C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 10:13:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4GCG2nH69xuR0z5QkY2yiUCNtXVZgIAgOeiX5cKHIi0=; b=M9VqsKRVBQ9P5r
-	oaY7FmeFOlRBKke3aAfXYKwxSqkcIcBwFCreo4J8IO4Apqcux5boATI3SAl6sV1VN+YmyAnuw5dWm
-	PpcP0S347ZKYnMOWfNbl/kzPzpsdGsgVZkrmqTNVrsfHUivAJjbNTZYDEY4ZtsiFW/kYlIjKB748U
-	D3Rxz2dZReC9mAQXSXRPnWoW+NFsmeo3ors9WCQxVXhGmEAihi9cTHe9keBEJXeia/OgRFipei75G
-	sFQHGpnrmFcTQ9q9eXVkRExrVI2gS6Woz7ADUet74PGLfSOdpfqRetGHks9oMR0bJzVoV0YwNonh5
-	gIObPvN1u9nYDD6tFICg==;
+	List-Owner; bh=PETjsLM5OnlY7JDEHU8NG16NlZbtFx2gh2zi9YBKjFY=; b=NPdF/pIO5oCAC2
+	0CLmDur0I1eGnL92P10li7kMCYCw/5NRTmW1XkX4x+y8zdyy69jqn16SkxCkrvQq69un4/B6c6YwC
+	3U18+G0MjfTDADpxkHEhF0cU5jH8Dm40daR99KxjsrwGEZhRAr+Gkm4jqMrfoMsYBJmzK9BL4u7/Q
+	dgPyeM/h+vra7uTmipMCuEjCvtWzF0OfNJzv+2bhT2GT66Fx/8A1mhDNJRup8daHeRwAsYe0n63OC
+	ECM22G2ObPm4AHhDCFy6XZiL096zyWmIb5Mw/a42TN/9iW4CuHi7EOe9Tpf2fvTqmUlDI4Tb0kJSe
+	LFkpkpTJj655qkpOTxgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUn7u-00FexQ-TS; Thu, 17 Mar 2022 10:13:02 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nUn7v-00Fexs-Pz; Thu, 17 Mar 2022 10:13:03 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUn7R-00Feiz-2a; Thu, 17 Mar 2022 10:12:37 +0000
-X-UUID: 2042e92b0781482bae959dcfe51f69a6-20220317
-X-UUID: 2042e92b0781482bae959dcfe51f69a6-20220317
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ id 1nUn7R-00Fej1-IU; Thu, 17 Mar 2022 10:12:37 +0000
+X-UUID: 898689ad537f460cb8e76e512a21a063-20220317
+X-UUID: 898689ad537f460cb8e76e512a21a063-20220317
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <axe.yang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 857425329; Thu, 17 Mar 2022 03:12:25 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Mar 2022 03:12:23 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 17 Mar 2022 18:12:21 +0800
+ with ESMTP id 1815731414; Thu, 17 Mar 2022 03:12:29 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Mar 2022 03:12:28 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 17 Mar 2022 18:12:20 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 17 Mar 2022 18:12:20 +0800
+ Transport; Thu, 17 Mar 2022 18:12:19 +0800
 From: Axe Yang <axe.yang@mediatek.com>
 To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
@@ -54,17 +53,18 @@ CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
  <angelogioacchino.delregno@collabora.com>, <linux-mmc@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [RESEND v7 2/3] mmc: core: Add support for SDIO wakeup interrupt
-Date: Thu, 17 Mar 2022 18:12:14 +0800
-Message-ID: <20220317101215.24985-3-axe.yang@mediatek.com>
+Subject: [RESEND v7 1/3] dt-bindings: mmc: mtk-sd: extend interrupts and
+ pinctrls properties
+Date: Thu, 17 Mar 2022 18:12:13 +0800
+Message-ID: <20220317101215.24985-2-axe.yang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220317101215.24985-1-axe.yang@mediatek.com>
 References: <20220317101215.24985-1-axe.yang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220317_031233_188296_10DE2BCC 
-X-CRM114-Status: GOOD (  14.39  )
+X-CRM114-CacheID: sfid-20220317_031233_665956_3E57B4D6 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,90 +81,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If wakeup-source flag is set in host dts node, parse EAI information
-from SDIO CCCR interrupt externsion segment for in-band wakeup. If
-async interrupt is supported by SDIO card then enable it and set
-enable_async_irq flag in sdio_cccr structure to 1. The parse flow is
-implemented in sdio_read_cccr().
+Extend interrupts and pinctrls for SDIO wakeup interrupt feature.
+This feature allow SDIO devices alarm asynchronous interrupt to host
+even when host stop providing clock to SDIO card. An extra wakeup
+interrupt and pinctrl states for SDIO DAT1 pin state switching are
+required in this scenario.
 
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Axe Yang <axe.yang@mediatek.com>
 ---
- drivers/mmc/core/sdio.c  | 17 +++++++++++++++++
- include/linux/mmc/card.h |  8 +++++++-
- include/linux/mmc/sdio.h |  5 +++++
- 3 files changed, 29 insertions(+), 1 deletion(-)
+ .../devicetree/bindings/mmc/mtk-sd.yaml       | 24 ++++++++++++++++++-
+ 1 file changed, 23 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/mmc/core/sdio.c b/drivers/mmc/core/sdio.c
-index 25799accf8a0..4898c5e9a299 100644
---- a/drivers/mmc/core/sdio.c
-+++ b/drivers/mmc/core/sdio.c
-@@ -226,6 +226,23 @@ static int sdio_read_cccr(struct mmc_card *card, u32 ocr)
- 				card->sw_caps.sd3_drv_type |= SD_DRIVER_TYPE_C;
- 			if (data & SDIO_DRIVE_SDTD)
- 				card->sw_caps.sd3_drv_type |= SD_DRIVER_TYPE_D;
-+
-+			if (card->host->pm_caps & MMC_PM_WAKE_SDIO_IRQ) {
-+				ret = mmc_io_rw_direct(card, 0, 0, SDIO_CCCR_INTERRUPT_EXT, 0,
-+						       &data);
-+				if (ret)
-+					goto out;
-+
-+				if (data & SDIO_INTERRUPT_EXT_SAI) {
-+					data |= SDIO_INTERRUPT_EXT_EAI;
-+					ret = mmc_io_rw_direct(card, 1, 0, SDIO_CCCR_INTERRUPT_EXT,
-+							       data, NULL);
-+					if (ret)
-+						goto out;
-+
-+					card->cccr.enable_async_irq = 1;
-+				}
-+			}
- 		}
+diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+index 297ada03e3de..fb66b042c32f 100644
+--- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
++++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+@@ -69,12 +69,24 @@ properties:
+       - const: ahb_cg
  
- 		/* if no uhs mode ensure we check for high speed */
-diff --git a/include/linux/mmc/card.h b/include/linux/mmc/card.h
-index 37f975875102..968650c0b345 100644
---- a/include/linux/mmc/card.h
-+++ b/include/linux/mmc/card.h
-@@ -219,7 +219,8 @@ struct sdio_cccr {
- 				wide_bus:1,
- 				high_power:1,
- 				high_speed:1,
--				disable_cd:1;
-+				disable_cd:1,
-+				enable_async_irq:1;
- };
+   interrupts:
+-    maxItems: 1
++    description:
++      Should at least contain MSDC GIC interrupt. To support SDIO in-band wakeup, an extended
++      interrupt is required and be configured as wakeup source irq.
++    minItems: 1
++    maxItems: 2
  
- struct sdio_cis {
-@@ -343,6 +344,11 @@ static inline bool mmc_large_sector(struct mmc_card *card)
- 	return card->ext_csd.data_sector_size == 4096;
- }
+   pinctrl-names:
++    description:
++      Should at least contain default and state_uhs. To support SDIO in-band wakeup, dat1 pin
++      will be switched between GPIO mode and SDIO DAT1 mode, state_eint and state_dat1 are
++      mandatory in this scenarios.
++    minItems: 2
++    maxItems: 4
+     items:
+       - const: default
+       - const: state_uhs
++      - const: state_eint
++      - const: state_dat1
  
-+static inline int mmc_card_enable_async_irq(struct mmc_card *card)
-+{
-+	return card->cccr.enable_async_irq;
-+}
-+
- bool mmc_card_is_blockaddr(struct mmc_card *card);
+   pinctrl-0:
+     description:
+@@ -86,6 +98,16 @@ properties:
+       should contain uhs mode pin ctrl.
+     maxItems: 1
  
- #define mmc_card_mmc(c)		((c)->type == MMC_TYPE_MMC)
-diff --git a/include/linux/mmc/sdio.h b/include/linux/mmc/sdio.h
-index 2a05d1ac4f0e..1ef400f28642 100644
---- a/include/linux/mmc/sdio.h
-+++ b/include/linux/mmc/sdio.h
-@@ -159,6 +159,11 @@
- #define  SDIO_DTSx_SET_TYPE_A	(1 << SDIO_DRIVE_DTSx_SHIFT)
- #define  SDIO_DTSx_SET_TYPE_C	(2 << SDIO_DRIVE_DTSx_SHIFT)
- #define  SDIO_DTSx_SET_TYPE_D	(3 << SDIO_DRIVE_DTSx_SHIFT)
++  pinctrl-2:
++    description:
++      should switch dat1 pin to GPIO mode.
++    maxItems: 1
 +
-+#define SDIO_CCCR_INTERRUPT_EXT	0x16
-+#define SDIO_INTERRUPT_EXT_SAI	(1 << 0)
-+#define SDIO_INTERRUPT_EXT_EAI	(1 << 1)
++  pinctrl-3:
++    description:
++      should switch SDIO dat1 pin from GPIO mode back to SDIO mode.
++    maxItems: 1
 +
- /*
-  * Function Basic Registers (FBR)
-  */
+   assigned-clocks:
+     description:
+       PLL of the source clock.
 -- 
 2.25.1
 
