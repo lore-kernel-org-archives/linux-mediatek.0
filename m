@@ -4,75 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15986C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 10:21:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9EAAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 10:22:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HkzPz6gqowDXqqmX3V4wgnaAntr2mXLnEvZ9bMMxYVs=; b=S7y4lIkfDOO2TC
-	Q7Og+EvdtLRwbBsspFx0sYqDIXqM9JF/MDOYCefJlAKn3uhJ8kD0JURHPYXYsZL98jNXeO9R+JTt7
-	MGpKfcIF8sQ8ta+Q+7ge42R3tPDskgOxmHX9Sc3mYw8HqOK026wipgnbxtu5utPvR7mNzmhB3aLRD
-	cps027QrTIvvJciRy1S4hqQOBfk+rSXN911I67NhyK0ZYF9TLNQ4ptaSbORc/s8jeLaJDbnLdr0Nl
-	B1jbjsMV1paII38CB8eHnl4+9i8bb1584b+jI/vhqgw+3cjFTWvzRck/Rs2rlfov8yGCj2M45vQff
-	3OlIMWLCLa8PARD+wXFA==;
+	List-Owner; bh=xg1axsO7kFuWDCNa0JaPC9cvUJ1RJ3qCwizN9pCu8gA=; b=msYmJVVfuhi668
+	gqSc5hGOtJOGRAxS9Di6EQKD+NKqRLc54GAdKhk2e31g2QQl9501YRBC2MiKG5T38e6e4kiwqIDod
+	OhhtgZ1snl4S+yzwhtiC5U/4e2yaz4RWOxcvp6A7FeLPoF76IMC95GRFapSmZin22E6+ztbLJ5Z7t
+	6XYB1GFVgR4ez/xTmGnxP9N0EjXjLLXGTEn+x61BprQiGS86f1P7/zZJ4wj3feiF/dopLZmMxbzpL
+	QcaM6NkMNXO2eCh1HXxsij4KY72sgDJxZmYo8IZ6+WJmZgDPRs8SNOjRYU+TOeCGLNyf39PUIBMYj
+	7af2wc3ng69tIlipxSpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUnGB-00FhcP-QR; Thu, 17 Mar 2022 10:21:35 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nUnHH-00Fhus-1K; Thu, 17 Mar 2022 10:22:43 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUnG8-00FhbS-KX; Thu, 17 Mar 2022 10:21:34 +0000
-X-UUID: 5f9631a1df2d4e0a965a0636598ee5f2-20220317
-X-UUID: 5f9631a1df2d4e0a965a0636598ee5f2-20220317
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <moudy.ho@mediatek.com>)
+ id 1nUnHD-00FhtB-M8; Thu, 17 Mar 2022 10:22:41 +0000
+X-UUID: bb0e05b9b4f74b8283a06a97cf8cd2cd-20220317
+X-UUID: bb0e05b9b4f74b8283a06a97cf8cd2cd-20220317
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <axe.yang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2074558749; Thu, 17 Mar 2022 03:21:26 -0700
+ with ESMTP id 413760112; Thu, 17 Mar 2022 03:22:33 -0700
 Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Mar 2022 03:11:24 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Mar 2022 03:12:31 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
  (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 17 Mar 2022 18:11:22 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ Thu, 17 Mar 2022 18:12:23 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 17 Mar 2022 18:11:21 +0800
-Message-ID: <00715fdbc03815d683d85b5e4ef7250a07141f78.camel@mediatek.com>
-Subject: Re: [PATCH v13 2/6] soc: mediatek: mutex: add 8183 MUTEX MOD
- settings for MDP
-From: moudy.ho <moudy.ho@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Jernej Skrabec
- <jernej.skrabec@siol.net>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- Alexandre Courbot <acourbot@chromium.org>, <tfiga@chromium.org>,
- <drinkcat@chromium.org>, <pihsun@chromium.org>, <hsinyi@google.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, <randy.wu@mediatek.com>,
- <jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
- <river.cheng@mediatek.com>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 17 Mar 2022 18:11:21 +0800
-In-Reply-To: <4958a206e1fb1d7bf729c501c8548e9d83f7cff5.camel@mediatek.com>
-References: <20220315061031.21642-1-moudy.ho@mediatek.com>
- <20220315061031.21642-3-moudy.ho@mediatek.com>
- <4958a206e1fb1d7bf729c501c8548e9d83f7cff5.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Thu, 17 Mar 2022 18:12:21 +0800
+From: Axe Yang <axe.yang@mediatek.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>
+CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
+ <satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>, Axe Yang
+ <axe.yang@mediatek.com>, Lucas Stach <dev@lynxeye.de>, Eric Biggers
+ <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd
+ <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu
+ <huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
+ <angelogioacchino.delregno@collabora.com>, <linux-mmc@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ Yong Mao <yong.mao@mediatek.com>
+Subject: [RESEND v7 3/3] mmc: mediatek: add support for SDIO eint wakup IRQ
+Date: Thu, 17 Mar 2022 18:12:15 +0800
+Message-ID: <20220317101215.24985-4-axe.yang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220317101215.24985-1-axe.yang@mediatek.com>
+References: <20220317101215.24985-1-axe.yang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220317_032132_697879_55AA403A 
-X-CRM114-Status: GOOD (  21.01  )
+X-CRM114-CacheID: sfid-20220317_032239_742926_E57D5CA5 
+X-CRM114-Status: GOOD (  24.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,46 +76,249 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyMDIyLTAzLTE2IGF0IDExOjMxICswODAwLCBDSyBIdSB3cm90ZToKPiBIaSwgTW91
-ZHk6Cj4gCj4gT24gVHVlLCAyMDIyLTAzLTE1IGF0IDE0OjEwICswODAwLCBNb3VkeSBIbyB3cm90
-ZToKPiA+IEZvciB0aGUgcHVycG9zZSBvZiBtb2R1bGUgaW5kZXBlbmRlbmNlLCByZWxhdGVkIHNl
-dHRpbmdzIHNob3VsZCBiZQo+ID4gbW92ZWQKPiA+IGZyb20gTURQIHRvIHRoZSBjb3JyZXNwb25k
-aW5nIGRyaXZlci4KPiA+IFRoaXMgcGF0Y2ggYWRkcyA4MTgzIE1VVEVYIE1PRCBzZXR0aW5ncyBm
-b3IgTURQLgo+ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBNb3VkeSBIbyA8bW91ZHkuaG9AbWVkaWF0
-ZWsuY29tPgo+ID4gLS0tCj4gPiAgZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLW11dGV4LmMgfCAy
-MSArKysrKysrKysrKysrKysrKysrKysKPiA+ICAxIGZpbGUgY2hhbmdlZCwgMjEgaW5zZXJ0aW9u
-cygrKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLW11dGV4
-LmMKPiA+IGIvZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLW11dGV4LmMKPiA+IGluZGV4IDc3OGIw
-MWNlOWU4Zi4uODhmYjRmYzhmMjE2IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9zb2MvbWVkaWF0
-ZWsvbXRrLW11dGV4LmMKPiA+ICsrKyBiL2RyaXZlcnMvc29jL21lZGlhdGVrL210ay1tdXRleC5j
-Cj4gPiBAQCAtODAsNiArODAsMTUgQEAKPiA+ICAjZGVmaW5lIE1UODE4M19NVVRFWF9NT0RfRElT
-UF9HQU1NQTAJCTE2Cj4gPiAgI2RlZmluZSBNVDgxODNfTVVURVhfTU9EX0RJU1BfRElUSEVSMAkJ
-MTcKPiA+ICAKPiA+ICsjZGVmaW5lIE1UODE4M19NVVRFWF9NT0RfTURQX1JETUEwCQlCSVQoMikK
-PiAKPiBEaXNwbGF5IGRlZmluaXRpb24gaXMgYSBudW1iZXIsIHdoeSBNRFAgaXMgYml0IGRlZmlu
-aXRpb24/Cj4gCj4gUmVnYXJkcywKPiBDSwo+IApIaSBDSywKClRoYW5rcyBmb3IgdGhlIHJlbWlu
-ZGVyLgogKiBJdCB3YXMgaW50ZW5kZWQgdG8gYXBwbHkgdGhlIG5ldyBkZWNsYXJhdGlvbiBzdHls
-ZSAocmVmOsKgCiAgIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1t
-ZWRpYXRlay9wYXRjaC8yMDIyMDMxMTAxNTUwNi4xMTIzMi05LW5hbmN5LmxpbkBtZWRpYXRlay5j
-b20vCiAgICksIGJ1dCBpdCBzZWVtcyByZWR1bmRhbnQuIEkgc2hvdWxkIGFkZCB0aGUgbmV3IHNl
-dHRpbmdzIGluIHRoZQogICBvcmlnaW5hbCB3YXkgZmlyc3QsIHRoZW4ga2VlcCB0aGUgZGVmaW5p
-dGlvbiBjaGFuZ2VzIGluIHRoZQogICBzdWJzZXF1ZW5jZSBwYXRjaC4KClRoYW5rcywKTW91ZHkK
-PiA+ICsjZGVmaW5lIE1UODE4M19NVVRFWF9NT0RfTURQX1JTWjAJCUJJVCg0KQo+ID4gKyNkZWZp
-bmUgTVQ4MTgzX01VVEVYX01PRF9NRFBfUlNaMQkJQklUKDUpCj4gPiArI2RlZmluZSBNVDgxODNf
-TVVURVhfTU9EX01EUF9URFNIUDAJCUJJVCg2KQo+ID4gKyNkZWZpbmUgTVQ4MTgzX01VVEVYX01P
-RF9NRFBfV1JPVDAJCUJJVCg3KQo+ID4gKyNkZWZpbmUgTVQ4MTgzX01VVEVYX01PRF9NRFBfV0RN
-QQkJQklUKDgpCj4gPiArI2RlZmluZSBNVDgxODNfTVVURVhfTU9EX01EUF9BQUwwCQlCSVQoMjMp
-Cj4gPiArI2RlZmluZSBNVDgxODNfTVVURVhfTU9EX01EUF9DQ09SUjAJCUJJVCgyNCkKPiA+ICsK
-PiA+ICAjZGVmaW5lIE1UODE3M19NVVRFWF9NT0RfRElTUF9PVkwwCQkxMQo+ID4gICNkZWZpbmUg
-TVQ4MTczX01VVEVYX01PRF9ESVNQX09WTDEJCTEyCj4gPiAgI2RlZmluZSBNVDgxNzNfTVVURVhf
-TU9EX0RJU1BfUkRNQTAJCTEzCj4gPiBAQCAtMjQ0LDYgKzI1MywxNyBAQCBzdGF0aWMgY29uc3Qg
-dW5zaWduZWQgaW50Cj4gPiBtdDgxODNfbXV0ZXhfbW9kW0REUF9DT01QT05FTlRfSURfTUFYXSA9
-IHsKPiA+ICAJW0REUF9DT01QT05FTlRfV0RNQTBdID0gTVQ4MTgzX01VVEVYX01PRF9ESVNQX1dE
-TUEwLAo+ID4gIH07Cj4gPiAgCj4gPiAKPiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgt
-bWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Add support for eint IRQ when MSDC is used as an SDIO host. This
+feature requires SDIO device support async IRQ function. With this
+feature, SDIO host can be awakened by SDIO card in suspend state,
+without additional pin.
+
+MSDC driver will time-share the SDIO DAT1 pin. During suspend, MSDC
+turn off clock and switch SDIO DAT1 pin to GPIO mode. And during
+resume, switch GPIO function back to DAT1 mode then turn on clock.
+
+Some device tree property should be added or modified in MSDC node
+to support SDIO eint IRQ. Pinctrls named "state_dat1" and "state_eint"
+are mandatory. Since this feature depends on asynchronous interrupts,
+"wakeup-source", "keep-power-in-suspend" and "cap-sdio-irq" flags are
+necessary, and the interrupts list should be extended:
+        &mmcX {
+		...
+		interrupts-extended = <...>,
+                              	      <&pio xxx IRQ_TYPE_LEVEL_LOW>;
+                ...
+                pinctrl-names = "default", "state_uhs", "state_eint",
+                                "state_dat1";
+                ...
+                pinctrl-2 = <&mmc2_pins_eint>;
+                pinctrl-3 = <&mmc2_pins_dat1>;
+                ...
+                cap-sdio-irq;
+		keep-power-in-suspend;
+		wakeup-source;
+                ...
+        };
+
+Co-developed-by: Yong Mao <yong.mao@mediatek.com>
+Signed-off-by: Yong Mao <yong.mao@mediatek.com>
+Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+---
+ drivers/mmc/host/mtk-sd.c | 100 +++++++++++++++++++++++++++++++++++---
+ 1 file changed, 92 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 65037e1d7723..8560d040bacb 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+- * Copyright (c) 2014-2015 MediaTek Inc.
++ * Copyright (c) 2014-2015, 2022 MediaTek Inc.
+  * Author: Chaotian.Jing <chaotian.jing@mediatek.com>
+  */
+ 
+@@ -20,6 +20,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/pm.h>
+ #include <linux/pm_runtime.h>
++#include <linux/pm_wakeirq.h>
+ #include <linux/regulator/consumer.h>
+ #include <linux/slab.h>
+ #include <linux/spinlock.h>
+@@ -440,8 +441,12 @@ struct msdc_host {
+ 	struct pinctrl *pinctrl;
+ 	struct pinctrl_state *pins_default;
+ 	struct pinctrl_state *pins_uhs;
++	struct pinctrl_state *pins_eint;
++	struct pinctrl_state *pins_dat1;
+ 	struct delayed_work req_timeout;
+ 	int irq;		/* host interrupt */
++	int eint_irq;		/* interrupt from sdio device for waking up system */
++	int sdio_wake_irq_depth;
+ 	struct reset_control *reset;
+ 
+ 	struct clk *src_clk;	/* msdc source clock */
+@@ -465,6 +470,7 @@ struct msdc_host {
+ 	bool hs400_tuning;	/* hs400 mode online tuning */
+ 	bool internal_cd;	/* Use internal card-detect logic */
+ 	bool cqhci;		/* support eMMC hw cmdq */
++	bool sdio_eint_ready;	/* Ready to support SDIO eint interrupt */
+ 	struct msdc_save_para save_para; /* used when gate HCLK */
+ 	struct msdc_tune_para def_tune_para; /* default tune setting */
+ 	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
+@@ -1527,10 +1533,12 @@ static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
+ 	__msdc_enable_sdio_irq(host, enb);
+ 	spin_unlock_irqrestore(&host->lock, flags);
+ 
+-	if (enb)
+-		pm_runtime_get_noresume(host->dev);
+-	else
+-		pm_runtime_put_noidle(host->dev);
++	if (mmc->card && !mmc_card_enable_async_irq(mmc->card)) {
++		if (enb)
++			pm_runtime_get_noresume(host->dev);
++		else
++			pm_runtime_put_noidle(host->dev);
++	}
+ }
+ 
+ static irqreturn_t msdc_cmdq_irq(struct msdc_host *host, u32 intsts)
+@@ -2631,6 +2639,23 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 		goto host_free;
+ 	}
+ 
++	/* Support for SDIO eint irq ? */
++	if (mmc->pm_caps & MMC_PM_WAKE_SDIO_IRQ) {
++		host->pins_eint = pinctrl_lookup_state(host->pinctrl, "state_eint");
++		if (IS_ERR(host->pins_eint)) {
++			dev_dbg(&pdev->dev, "Cannot find pinctrl eint!\n");
++		} else {
++			host->pins_dat1 = pinctrl_lookup_state(host->pinctrl, "state_dat1");
++			if (IS_ERR(host->pins_dat1)) {
++				ret = dev_err_probe(&pdev->dev, PTR_ERR(host->pins_dat1),
++						    "Cannot find pinctrl dat1!\n");
++				goto host_free;
++			}
++
++			host->sdio_eint_ready = true;
++		}
++	}
++
+ 	msdc_of_property_parse(pdev, host);
+ 
+ 	host->dev = &pdev->dev;
+@@ -2722,6 +2747,21 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		goto release;
+ 
++	if (host->sdio_eint_ready) {
++		host->eint_irq = irq_of_parse_and_map(host->dev->of_node, 1);
++		ret = host->eint_irq ? dev_pm_set_dedicated_wake_irq(host->dev, host->eint_irq) :
++		      -ENODEV;
++
++		if (ret) {
++			dev_err(host->dev, "Failed to register data1 eint irq!\n");
++			goto release;
++		}
++
++		dev_pm_disable_wake_irq(host->dev);
++		pinctrl_select_state(host->pinctrl, host->pins_dat1);
++	}
++
++	device_init_wakeup(host->dev, true);
+ 	pm_runtime_set_active(host->dev);
+ 	pm_runtime_set_autosuspend_delay(host->dev, MTK_MMC_AUTOSUSPEND_DELAY);
+ 	pm_runtime_use_autosuspend(host->dev);
+@@ -2734,6 +2774,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 	return 0;
+ end:
+ 	pm_runtime_disable(host->dev);
++	dev_pm_clear_wake_irq(host->dev);
+ release:
+ 	platform_set_drvdata(pdev, NULL);
+ 	msdc_deinit_hw(host);
+@@ -2845,6 +2886,16 @@ static int __maybe_unused msdc_runtime_suspend(struct device *dev)
+ 	struct msdc_host *host = mmc_priv(mmc);
+ 
+ 	msdc_save_reg(host);
++
++	if (host->sdio_eint_ready) {
++		disable_irq(host->irq);
++		pinctrl_select_state(host->pinctrl, host->pins_eint);
++		if (host->sdio_wake_irq_depth == 0) {
++			dev_pm_enable_wake_irq(dev);
++			host->sdio_wake_irq_depth++;
++		}
++		sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
++	}
+ 	msdc_gate_clock(host);
+ 	return 0;
+ }
+@@ -2860,12 +2911,25 @@ static int __maybe_unused msdc_runtime_resume(struct device *dev)
+ 		return ret;
+ 
+ 	msdc_restore_reg(host);
++
++	if (host->sdio_eint_ready) {
++		if (host->sdio_wake_irq_depth > 0) {
++			dev_pm_disable_wake_irq(dev);
++			host->sdio_wake_irq_depth--;
++			sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
++		} else {
++			sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
++		}
++		pinctrl_select_state(host->pinctrl, host->pins_dat1);
++		enable_irq(host->irq);
++	}
+ 	return 0;
+ }
+ 
+-static int __maybe_unused msdc_suspend(struct device *dev)
++static int __maybe_unused msdc_suspend_noirq(struct device *dev)
+ {
+ 	struct mmc_host *mmc = dev_get_drvdata(dev);
++	struct msdc_host *host = mmc_priv(mmc);
+ 	int ret;
+ 
+ 	if (mmc->caps2 & MMC_CAP2_CQE) {
+@@ -2874,16 +2938,36 @@ static int __maybe_unused msdc_suspend(struct device *dev)
+ 			return ret;
+ 	}
+ 
++	if (host->sdio_eint_ready)
++		enable_irq_wake(host->eint_irq);
++
+ 	return pm_runtime_force_suspend(dev);
+ }
+ 
+-static int __maybe_unused msdc_resume(struct device *dev)
++static int __maybe_unused msdc_resume_noirq(struct device *dev)
+ {
++	struct mmc_host *mmc = dev_get_drvdata(dev);
++	struct msdc_host *host = mmc_priv(mmc);
++
++	if (host->sdio_eint_ready) {
++		disable_irq_wake(host->eint_irq);
++
++		/*
++		 * In noirq resume stage, msdc_runtime_resume()
++		 * won't be called, so disalbe wake irq here
++		 * to block dedicated wake irq handler callback.
++		 */
++		if (likely(host->sdio_wake_irq_depth > 0)) {
++			dev_pm_disable_wake_irq(dev);
++			host->sdio_wake_irq_depth--;
++		}
++	}
++
+ 	return pm_runtime_force_resume(dev);
+ }
+ 
+ static const struct dev_pm_ops msdc_dev_pm_ops = {
+-	SET_SYSTEM_SLEEP_PM_OPS(msdc_suspend, msdc_resume)
++	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(msdc_suspend_noirq, msdc_resume_noirq)
+ 	SET_RUNTIME_PM_OPS(msdc_runtime_suspend, msdc_runtime_resume, NULL)
+ };
+ 
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
