@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 099F6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 14:40:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5BF0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 14:40:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wG2BKlXOS3D7vWtkO6k6p+sB3akGRLopVGsK8X3yQBg=; b=1OeesscWQqp8Oy
-	y3+bNgU2jqoItjFsWDqcIgwvdoZu/yTV7UvDncrH6qQWeD44T78TwAF2dCqeUMk5T4yvm5OR1y30Z
-	62OvjNmls73SdZjlTMwSfcSqaiSdezTRIQ4Cepxb0o7Na5e9MvAXjY98CQJ2z5BAWPI6qU9fedYuw
-	g4rt+V2OycmuQMggY83Kq7fH5vmxIUzE1UNRTQDq5uy279MhTWFYZ8xAybk852r+rUMMNYR0/8h8B
-	7VlGOtuEYw/9iGSy7TIur9wvY0DUj/UROjii5bhrJCBIWTCn7KhUP1HoVaaNrOROq96RaSquMZxRk
-	aT6Pf5/Ta815cxjYMKrw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=XrgDmqHlWc1bcDxfR6vjJTgRstkuRzXKi2VUYiolP94=; b=zrtyeYUAjRF7AC
+	eqE1vcfebB9vR8T45EhIsvqKg4iUABnc+RQ01NwtyHi6MAxXk2Bxc1mxAJTQZHk8oF6xI1w9usohm
+	Gm/alu1kF6OGMkZRz4FDY4rm4Ja5yZ9NaM46UgpeZ71QyTCnQkX/tuKB1jHU2SVXIdgW+XHvKH7JG
+	0VdjT06yu2n1vzTfsJyQ9IAJ4upK0MKlieiWyxFJJpf9PWiqLbzYoC3TthA1LFYSPk1c0fp03qwCQ
+	f19NrgKhwkQhYE+WjzVSrCyu2xooiAaQKzG+5CsGenkF9UNummJVRTydjznbczvMGLur8znMGmiJd
+	hyIyHIbuniPra+s7VunA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUrIo-00GSaw-QG; Thu, 17 Mar 2022 14:40:34 +0000
+	id 1nUrJ3-00GSlC-QY; Thu, 17 Mar 2022 14:40:49 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUrI3-00GS8f-PO; Thu, 17 Mar 2022 14:39:49 +0000
-X-UUID: 5e589cb5e5d94464bb73ac950a569f53-20220317
-X-UUID: 5e589cb5e5d94464bb73ac950a569f53-20220317
+ id 1nUrI4-00GS9M-PM; Thu, 17 Mar 2022 14:39:50 +0000
+X-UUID: ba3c09e1d9f24b828c4d27b090f91167-20220317
+X-UUID: ba3c09e1d9f24b828c4d27b090f91167-20220317
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <moudy.ho@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1278210183; Thu, 17 Mar 2022 07:39:44 -0700
+ with ESMTP id 1737740743; Thu, 17 Mar 2022 07:39:44 -0700
 Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Mar 2022 07:39:43 -0700
+ 15.0.1497.2; Thu, 17 Mar 2022 07:39:42 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
  (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 17 Mar 2022 22:39:28 +0800
+ Thu, 17 Mar 2022 22:39:27 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 17 Mar 2022 22:39:28 +0800
+ Frontend Transport; Thu, 17 Mar 2022 22:39:27 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil
@@ -59,18 +59,15 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
  <roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
  <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v14 4/6] dt-bindings: soc: mediatek: add gce-client-reg for
- MUTEX
-Date: Thu, 17 Mar 2022 22:39:24 +0800
-Message-ID: <20220317143926.15835-5-moudy.ho@mediatek.com>
+Subject: [PATCH v14 0/6] Add mutex support for MDP
+Date: Thu, 17 Mar 2022 22:39:20 +0800
+Message-ID: <20220317143926.15835-1-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220317143926.15835-1-moudy.ho@mediatek.com>
-References: <20220317143926.15835-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220317_073947_852278_044F3760 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20220317_073948_865137_4F532E42 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,35 +84,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to allow modules with latency requirements such as MDP3
-to set registers through CMDQ, add the relevant GCE property.
+Change since V13:
+- Rebase on linux-next tag:next-20220316
+- Adjust the MUTEX MOD table structure and corresponding functions.
+- Adjust the definition style about 8183 MDP MOD.
+- Remove redundant definitions and enumerations.
+- Adjust the CMDQ operation in MUTEX to be backward compatible
 
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
----
- .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml  | 8 ++++++++
- 1 file changed, 8 insertions(+)
+Change since V12:
+- Rebase on linux-next
+- Remove ISP related settings in MMSYS
+- Removed CMDQ operations previously used by MDP in MMSYS
+- Move mediatek MUTEX dt-binding path
+- Add additional property in MUTEX for CMDQ operations
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-index f825af49f820..a4892979480c 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-@@ -60,6 +60,14 @@ properties:
-       include/dt-bindings/gce/<chip>-gce.h of each chips.
-     $ref: /schemas/types.yaml#/definitions/phandle-array
- 
-+  mediatek,gce-client-reg:
-+    description: The register of client driver can be configured by gce with
-+      4 arguments defined in this property, such as phandle of gce, subsys id,
-+      register offset and size. Each GCE subsys id is mapping to a client
-+      defined in the header include/dt-bindings/gce/<chip>-gce.h.
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    maxItems: 1
-+
- required:
-   - compatible
-   - reg
+Change since V11:
+- Rebase on v5.17-rc6.
+
+[1]: https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.17-next/soc&id=5f9b5b757e44de47ebdc116c14b90e3cc8bc7acb
+[2]: https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.17-next/soc&id=831785f0e5b919c29e1bc5f9a74e9ebd38289e24
+[3]: https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.17-next/soc&id=15f1768365aed810826a61fef4a744437aa5b426
+
+Change since v10:
+- For some ISP application scenarios, such as preview and recording
+  at the same time.
+  The routing table needs to be discarded, and the calculation result
+  on the SCP side is used to write a suitable mux setting for
+  1 input and 2 output.
+- Adjust the GCE client register parsing method to avoid redundant warning logs.
+
+Change since v9:
+- Add API for MDP getting mutex mod.
+
+Hi,
+
+This patch splits mmsys and mutex settings from Media Data Path 3 (MDP3),
+and original mailling list list below:
+https://patchwork.kernel.org/project/linux-mediatek/cover/20211201095031.31606-1-moudy.ho@mediatek.com/
+Corresponding settings and interfaces are added for MDP operation in the
+mutex drivers, which increases the independence of the modules
+
+Moudy Ho (6):
+  soc: mediatek: mutex: add common interface to accommodate multiple
+    modules operationg MUTEX
+  soc: mediatek: mutex: add 8183 MUTEX MOD settings for MDP
+  dt-bindings: soc: mediatek: move out common module from display folder
+  dt-bindings: soc: mediatek: add gce-client-reg for MUTEX
+  dts: arm64: mt8183: add GCE client property for Mediatek MUTEX
+  soc: mediatek: mutex: add functions that operate registers by CMDQ
+
+ .../mediatek/mediatek,mutex.yaml              |  10 +-
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      |   1 +
+ drivers/soc/mediatek/mtk-mutex.c              | 187 +++++++++++++++++-
+ include/linux/soc/mediatek/mtk-mutex.h        |  23 +++
+ 4 files changed, 219 insertions(+), 2 deletions(-)
+ rename Documentation/devicetree/bindings/{display => soc}/mediatek/mediatek,mutex.yaml (83%)
+
 -- 
 2.18.0
 
