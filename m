@@ -4,64 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0A2EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 19:47:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23983C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 23:31:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cb4LReF8prl5qz+1QTyry3rp2JOEHAXGXCZybGdhS8Q=; b=rv0t7QkvMPYtCs
-	svGfD/cVG3cQ1WQVdMYddZ8QKBWjIoVFtVpvQj0HBeVuDpbLiZkPztjtQtBazzNun7EaUB1uNryPI
-	tmP6fwjEjjdgc0RkI3s/MrzfHMrcTjJspUaER58VTKAzWUL6N8vwyBWj2xoyEwsBs9S7+Sx7BHoQg
-	4DqILMAzzAAvK8jVHPWWx5lJS/LfOSM/Zj9yf9FxsCArjk5xZYVeDYZu9KvYMYY3bPtY9WbbRGgZR
-	aVP6IoPvkF9y+4Ng1KUvulrXVHg8VnDQnOMxYSJgViO0a3zGcJYzXSDjZeiPphD25UGoxEhN4coNF
-	2UQCJqoRqISU7KAnrEEQ==;
+	List-Owner; bh=n1dk4L7P1OG2wZPUBkzNRD/km3XyuSBRfbXouyGNSmU=; b=ITc5OEWMlYn+LR
+	8rOSpw8RPp4ca/3OvSOIPAsFeNmrfOCVlqe3JejfkMsUjbuoQ2PgUP5INdKOTyZ/wVmxjWrRTieRv
+	NdkId66ZvLxZAHDRMTJvbXd+Cu0qMmUuWaIbB1ZbDZpn+Vs3AIJTQWaMjGZ6NpaFyzailZEm02i1r
+	CjRqyRVwAMFyeyNBaJlss/bR4jLW/059vO936J12qO6WTaMTaXck7xbaOAMqiwhO0n1W660QLLD/Q
+	9Unv5g/EGcnVVtBDxFlHQ2bpNdxKbhOM0sjfU26Wbtlsk9CTs4w1bEsnBPuSJkGONYnTYSniKa9RE
+	ZrGCJuMP2WYnv2gKR2IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUw5u-00HEEy-Ud; Thu, 17 Mar 2022 19:47:34 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nUzaP-00HaeD-PP; Thu, 17 Mar 2022 23:31:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUw5j-00HECl-3U; Thu, 17 Mar 2022 19:47:24 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id ABFAA618EE;
- Thu, 17 Mar 2022 19:47:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0947EC340E9;
- Thu, 17 Mar 2022 19:47:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647546442;
- bh=8O4xojYXJ2O3v1mIxSIElqegPelL1l70GLiAdhxHFp8=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=Rmu3sp6XO5V4kWS5PcgJND2BvL8Zt+ZoZ/h6/YTsa+Gsi0WP0VcCeafoeVI9xysMJ
- 3Fk+E4MkYkXAwPq0/dqnpnJz2ZNW8d4H0fzj4VXImoNH7r6ooHGxGFooyXBlPvUCfl
- Cd9SbHehrGuLEkkeAtWreQ5kY+7NGagrsfsJ1MVdShXOeMvQ/Xnya4ULh0qo6GebZk
- zy/ZMWD3O9HXaGMeh2qJl6Id4LbsNkuL2gHE4tj9iaRJ3Gzgs2N0DhYDYmtKMRpPoV
- PRYoSS+vnkfhdghGIqbwqarAmP9hQSXKAe7AEsXXbgNKMfjsmHDtRIlDnDOAYjp09K
- T6rxMLrZvALmw==
+ id 1nUzaL-00HadH-PD; Thu, 17 Mar 2022 23:31:16 +0000
+X-UUID: b7c711e7818940ab960aa72d7731cd42-20220317
+X-UUID: b7c711e7818940ab960aa72d7731cd42-20220317
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1902914437; Thu, 17 Mar 2022 16:31:08 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Mar 2022 16:31:06 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 18 Mar 2022 07:31:04 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 18 Mar 2022 07:31:04 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <moudy.ho@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <acourbot@chromium.org>, <allen-kh.cheng@mediatek.com>,
+ <angelogioacchino.delregno@collabora.com>, <chunkuang.hu@kernel.org>,
+ <daoyuan.huang@mediatek.com>, <devicetree@vger.kernel.org>,
+ <drinkcat@chromium.org>, <geert+renesas@glider.be>, <hsinyi@google.com>,
+ <hverkuil-cisco@xs4all.nl>, <jason-jh.lin@mediatek.com>,
+ <jernej.skrabec@siol.net>, <laurent.pinchart@ideasonboard.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-media@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <maoguang.meng@mediatek.com>, <matthias.bgg@gmail.com>, <mchehab@kernel.org>, 
+ <menghui.lin@mediatek.com>, <pihsun@chromium.org>,
+ <ping-hsun.wu@mediatek.com>, <randy.wu@mediatek.com>,
+ <river.cheng@mediatek.com>, <rob@landley.net>, <robh+dt@kernel.org>,
+ <roy-cw.yeh@mediatek.com>, <sj.huang@mediatek.com>,
+ <srv_heupstream@mediatek.com>, <tfiga@chromium.org>
+Subject: Re: [PATCH v14 6/6] soc: mediatek: mutex: add functions that operate
+ registers by CMDQ
+Date: Fri, 18 Mar 2022 07:31:04 +0800
+Message-ID: <20220317233104.5994-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220317143926.15835-7-moudy.ho@mediatek.com>
+References: <20220317143926.15835-7-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20220311114229.32504-3-chun-jie.chen@mediatek.com>
-References: <20220311114229.32504-1-chun-jie.chen@mediatek.com>
- <20220311114229.32504-3-chun-jie.chen@mediatek.com>
-Subject: Re: [PATCH v3 02/15] clk: mediatek: Add MT8186 mcusys clock support
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>
-To: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>
-Date: Thu, 17 Mar 2022 12:47:20 -0700
-User-Agent: alot/0.10
-Message-Id: <20220317194722.0947EC340E9@smtp.kernel.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220317_124723_202085_217592D8 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220317_163113_853144_77AEBC18 
+X-CRM114-Status: GOOD (  14.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,30 +85,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Chun-Jie Chen (2022-03-11 03:42:16)
-> diff --git a/drivers/clk/mediatek/clk-mt8186-mcu.c b/drivers/clk/mediatek/clk-mt8186-mcu.c
-> new file mode 100644
-> index 000000000000..6d82c5de16c1
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mt8186-mcu.c
-> @@ -0,0 +1,106 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +//
-> +// Copyright (c) 2022 MediaTek Inc.
-> +// Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+Hi Moudy,
+
+>  #define MT2701_MUTEX0_MOD0			0x2c
+>  #define MT2701_MUTEX0_SOF0			0x30
+> @@ -180,6 +184,9 @@ struct mtk_mutex_ctx {
+>  	void __iomem			*regs;
+>  	struct mtk_mutex		mutex[10];
+>  	const struct mtk_mutex_data	*data;
+> +	phys_addr_t			addr;
+> +	struct cmdq_client_reg		cmdq_reg;
+> +	bool				has_gce_client_reg;
+>  };
+>
+
+...snip...
+
+>  static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+> @@ -638,6 +645,29 @@ void mtk_mutex_enable(struct mtk_mutex *mutex)
+>  }
+>  EXPORT_SYMBOL_GPL(mtk_mutex_enable);
+>  
+> +void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex, void *pkt)
+> +{
+> +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
+> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+> +						 mutex[mutex->id]);
+> +	struct cmdq_pkt *cmdq_pkt = (struct cmdq_pkt *)pkt;
 > +
-> +#include "clk-mtk.h"
+> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
 > +
-> +#include <dt-bindings/clock/mt8186-clk.h>
-> +#include <linux/clk-provider.h>
-> +#include <linux/platform_device.h>
+> +	if (!mtx->has_gce_client_reg) {
+> +		dev_dbg(mtx->dev, "mediatek,gce-client-reg hasn't been set in dts");
+> +		return;
+> +	}
+> +
+> +	cmdq_pkt_write_mask(cmdq_pkt, mtx->cmdq_reg.subsys,
+> +			    mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
+> +			    MTK_MUTEX_ENABLE, MTK_MUTEX_ENABLE);
 
-Order should be
+We do not check if mtx->addr is valid.
 
-	<linux/*>
-	<dt-bindings/*>
+> +#else
+> +	dev_dbg(mtx->dev, "Not support for enable MUTEX by CMDQ");
+> +#endif
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mutex_enable_by_cmdq);
+> +
+>  void mtk_mutex_disable(struct mtk_mutex *mutex)
+>  {
+>  	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+> @@ -676,7 +706,7 @@ static int mtk_mutex_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+>  	struct mtk_mutex_ctx *mtx;
+> -	struct resource *regs;
+> +	struct resource *regs, addr;
+>  	int i;
+>  
+>  	mtx = devm_kzalloc(dev, sizeof(*mtx), GFP_KERNEL);
+> @@ -697,6 +727,19 @@ static int mtk_mutex_probe(struct platform_device *pdev)
+>  		}
+>  	}
+>  
+> +	if (of_address_to_resource(dev->of_node, 0, &addr) < 0)
+> +		mtx->addr = 0L;
 
-	"local.h"
+addr is phys_addr_t, which means that it holds a physical address.
+0 may be a valid address in some platforms, so I think
+we should not set mtx->addr = 0L when of_address_to_resource fails.
+Maybe probe fail by returning dev_err_probe()?
+
+Thanks,
+Miles
 
 _______________________________________________
 Linux-mediatek mailing list
