@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C07AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 11:13:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B185BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 11:20:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G4vdkE7Ec0old0UOGDQXJpKUH20TYPBIPtqJxqDWrcw=; b=gaq3dsIjEsq8r0
-	IZGEBpudN3Onzm5eOIYa9KJJ1c/HhqH2sKrRr1Uc8a2rlUe7Pz/1/26DcWUF51D4hhZclpdrnD4La
-	qx3d9+8kZxMFiFfNLAawyn3rXrKx0Cps7NlCL/OQxG02yIqBZI0uWpx8LzB4fu7NZBDSyEIJNMBTU
-	Na5hiQfxBnh4WGb72QAqqD9Rh/MhpVwBILQOnopYQNZp/Cr4gQVd6wdjWayTYNRlVIX9WQGKVxvNo
-	dFv8Q5J1wqY/9j5G4PgtD8KcrEpwoT+L8fUkSaUZ1qUiFh6735pH7/Q7qMY1Othx3s7AJaV3LiuLm
-	yznQpFqzqHzGo9L0SJ7Q==;
+	List-Owner; bh=26IHYl+k/Qw6BtN6AqlZk1xXb8qLGq6DVfqplOtDXBE=; b=KwF/08GT0bjKMx
+	cNf5f7WxZBpTihD5LaRORQu3xdz9/6IaVuaxkz4HXqhqiAlhH9a5aWLqfPJerNbkMbOFUdFCWcxBh
+	ndt6503VG5ORpGWVkWokA39K4AaQfVfylRsFBrbtKl1o4+tcTZiOYYTXijwhVU0t+gOrDnGnlMoOw
+	f/K0C7ZJ8FSdxVfPEQUG8c5pL2e0jEpNq2V+rDs7bcTVRozc3UxC1D37zZGoMdCCAl4DMO5cUJfOO
+	dkxAh1QhnOKpEUhqoldsfr3dkCZzE4fnDa77hXLbg1D0Ks+Xs6KFdilcYfXlMzaEciJBF6TVtLJaV
+	T00zeS4q+Y3/bUjJ18RQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUo4O-00FnM7-Gf; Thu, 17 Mar 2022 11:13:28 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nUoB9-00FoHl-Ph; Thu, 17 Mar 2022 11:20:27 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUo4K-00FnK4-3o; Thu, 17 Mar 2022 11:13:26 +0000
-X-UUID: f9a17fec2bcb44a49757a6ac4d783d48-20220317
-X-UUID: f9a17fec2bcb44a49757a6ac4d783d48-20220317
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1581864359; Thu, 17 Mar 2022 04:13:19 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Mar 2022 04:13:17 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 17 Mar 2022 19:13:15 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 17 Mar 2022 19:13:15 +0800
-Message-ID: <235c5bca8da7118bad6bb5cb3c8cba6e022e4411.camel@mediatek.com>
-Subject: Re: [PATCH v3,1/4] drm/mediatek: Adjust the timing of mipi signal
- from LP00 to LP11
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
- <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <matthias.bgg@gmail.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, <jitao.shi@mediatek.com>
-Date: Thu, 17 Mar 2022 19:13:15 +0800
-In-Reply-To: <1647503611-13144-2-git-send-email-xinlei.lee@mediatek.com>
-References: <1647503611-13144-1-git-send-email-xinlei.lee@mediatek.com>
- <1647503611-13144-2-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nUoAy-00FoDC-CE
+ for linux-mediatek@lists.infradead.org; Thu, 17 Mar 2022 11:20:17 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 161CE618BB;
+ Thu, 17 Mar 2022 11:20:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 803F3C36AE2;
+ Thu, 17 Mar 2022 11:20:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1647516014;
+ bh=nCuwQehZV3E3+yHCPJUenkVbOnNfVLacM411RXq1JBQ=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=lX9UWohllyxg/2VmSSr4NgF9UCMF0/A/Tpq7Et1aKpk87D77wei9aN4oI7mr5KWf9
+ g15UpVyqIArst4kd2Vnh22Nrt8QwnYXHJXWZ4TCxK5rQo6WywInZEVNA2f48vApRru
+ Qx78D/GS8slE1Ez465DFyfl/LucxYSqZQ+m59CS4cqFHj+HzuD5cGwDBNLpUd89ZjX
+ YR2PDXYQXNipw2uK3xN6G0MDYqplflniczsiRv5pX4GS0ek5Hi7aAEzM9p/jZwQGqQ
+ PhA/QRYb9fOBn1cePptVSZaH84wMr1hm6oonpasWLmsG9kGx8IyCm+3ekHZjkVb9De
+ lo0Rx+p8BdlfQ==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ 663C1E8DD5B; Thu, 17 Mar 2022 11:20:14 +0000 (UTC)
 MIME-Version: 1.0
-X-MTK: N
+Subject: Re: [PATCH] Bluetooth: btmtkuart: fix error handling in
+ mtk_hci_wmt_sync()
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <164751601441.15552.578400949800414032.git-patchwork-notify@kernel.org>
+Date: Thu, 17 Mar 2022 11:20:14 +0000
+References: <20220317075740.GE25237@kili>
+In-Reply-To: <20220317075740.GE25237@kili>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: sean.wang@mediatek.com, marcel@holtmann.org, johan.hedberg@gmail.com,
+ luiz.dentz@gmail.com, matthias.bgg@gmail.com,
+ linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ kernel-janitors@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220317_041324_194890_54AA52DA 
-X-CRM114-Status: GOOD (  16.51  )
+X-CRM114-CacheID: sfid-20220317_042016_492150_0DE3D2DC 
+X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,67 +79,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Xinlei,
+Hello:
 
-Thanks for your patch, and there are something I want to know:
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Marcel Holtmann <marcel@holtmann.org>:
 
-On Thu, 2022-03-17 at 15:53 +0800, xinlei.lee@mediatek.com wrote:
-> From: Jitao Shi <jitao.shi@mediatek.com>
+On Thu, 17 Mar 2022 10:57:40 +0300 you wrote:
+> This code has an uninitialized variable warning:
 > 
-> Old sequence:
-> 1. Pull the MIPI signal high
-> 2. Delay & Dsi_reset
-> 3. Set the dsi timing register
-> 4. dsi clk & lanes leave ulp mode and enter hs mode
+>     drivers/bluetooth/btmtkuart.c:184 mtk_hci_wmt_sync()
+>     error: uninitialized symbol 'wc'.
 > 
-> New sequence:
-> 1. Set the dsi timing register
-> 2. Pull the MIPI signal high
-> 3. Delay & Dsi_reset
-> 4. dsi clk & lanes leave ulp mode and enter hs mode
+> But it also has error paths which have memory leaks.
 > 
+> [...]
 
-Could you explain why you want to change original power on sequence?
-From this commit message, I don't know why you want to do this.
-If the reason is in cover letter, I think you should move them here.
+Here is the summary with links:
+  - Bluetooth: btmtkuart: fix error handling in mtk_hci_wmt_sync()
+    https://git.kernel.org/bluetooth/bluetooth-next/c/65d6602f6334
 
-> In the new sequence 2 & 3 & 4 will be moved to dsi_enbale in later
-> patch.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-I think this is no need to describe here.
-
-BRs,
-Rex
-> 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index ccb0511b9cd5..262c027d8c2f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -649,14 +649,14 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
->  	mtk_dsi_reset_engine(dsi);
->  	mtk_dsi_phy_timconfig(dsi);
->  
-> -	mtk_dsi_rxtx_control(dsi);
-> -	usleep_range(30, 100);
-> -	mtk_dsi_reset_dphy(dsi);
->  	mtk_dsi_ps_control_vact(dsi);
->  	mtk_dsi_set_vm_cmd(dsi);
->  	mtk_dsi_config_vdo_timing(dsi);
->  	mtk_dsi_set_interrupt_enable(dsi);
->  
-> +	mtk_dsi_rxtx_control(dsi);
-> +	usleep_range(30, 100);
-> +	mtk_dsi_reset_dphy(dsi);
->  	mtk_dsi_clk_ulp_mode_leave(dsi);
->  	mtk_dsi_lane0_ulp_mode_leave(dsi);
->  	mtk_dsi_clk_hs_mode(dsi, 0);
 
 
 _______________________________________________
