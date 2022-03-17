@@ -4,95 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E623C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 09:04:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DF14C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Mar 2022 09:15:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=phWNNblko4C08ph+KUT/9tP5ehwCeTwh/L+GUgIuO54=; b=Jfx+QvkUZ/qVn8392r2b9cqiIe
-	FaFbIJ6GE3CbZ/w62S9+JECkjVSGiz0p3wReL44qD5fsS8jHplrTgNQ3a4Uzgbz98lf71YlFx1ut3
-	7o3vY8eiplokMTzNOrvV7BQiSimzfyUs/41ZbAPAdQ6TrEpe+hakx8qAdJnUKFUmpKaZlNioxoBhB
-	K3TzsR0mJ2l/OD2H5zS/+QoAWdKu+rLbFTNG/egNda4hgOZ5A2Pd5iFhdUG4hAcLWPsPvu/GkyNG/
-	GfPszxIlOvBkooHtBkcItV/eAZg7OFLE7EIR+rdxPoxRBl/s0Et8ad/21cKvgxSGf5urS38tBMiwY
-	u6DTgE5w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fVwIhXbfSzMMC9UUXiu52rBze4D6bzEi0adpegudidM=; b=cfG04vqXw3fZ72
+	D/kHD3uV43+Fmarxwz8/vp955uyRWAtpxOY9Ta8ROAVUoLh2z56bnonOsVHwQutXtvFD+nJPYy7BL
+	qoElaPRQ6gSTS0i/tAE9a4j8fFv+Isq5bSKpvW+qRQbPn2iNrBraL6UtkBn5iABZP/0J+GXqxYtHf
+	X+ZuFw3m1QHJGwZNzXIxeKzdMFhAcgVfby2OScOXw7NoLi7N1QDVlB7cx1aYSEugEQ3UuRU6aSBEc
+	Gon+VYNPapzcRbEUMYyG+a3m5zRxUqSH1egMDHfPMnumJanCRBgn2qL9cp01mr3kR/ZutugxLLN03
+	KKsdZIcxqOcsh9PGoMOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUm3A-00FT79-FZ; Thu, 17 Mar 2022 09:04:04 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1nUmDu-00FUXp-Bp; Thu, 17 Mar 2022 09:15:10 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUm38-00FT6E-D0
- for linux-mediatek@lists.infradead.org; Thu, 17 Mar 2022 09:04:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1647507841;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=R9qqzVKD4bzKL/JelFivaINl/L/KOQW4w8HcJ8yqItI=;
- b=TDPk2emmLD3yzIg6Mb0dxw/rMPlX8hI528F9Hg47Q8N8dRUNQ4l5zVaCAr5kzbQXYj+YTi
- uP1NI/VuOoLr2R3wu390vTqoQWI8zZ4A5QiKO+cDMNrrMLB3GV881KBIkLKB2S0k3wtleD
- A8vGcPpPIWUA4wiL+VIk4kwMFoZND6k=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-472-E7qYW7rpPMqM4laEbGmBvA-1; Thu, 17 Mar 2022 05:03:57 -0400
-X-MC-Unique: E7qYW7rpPMqM4laEbGmBvA-1
-Received: by mail-wm1-f69.google.com with SMTP id
- r83-20020a1c4456000000b00385c3f3defaso34719wma.3
- for <linux-mediatek@lists.infradead.org>; Thu, 17 Mar 2022 02:03:57 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=R9qqzVKD4bzKL/JelFivaINl/L/KOQW4w8HcJ8yqItI=;
- b=kmeH8uGvC08h2gZTpidoo6d827NyiHymAIcMsgtYtGfhvwTdOxbCZIfM0Wj8joITa9
- QGtWIMWoA387ZV1swuv5dHIh96KAnCzlFYYbTm6h06rmW6X5z1NjvGVzPPrvcJe2JHtP
- VdfB0zO4hranxjRpDmoSKSmmDirLwJWDhuW6gK4HIwDt1ELj7ydLBUWzE+sJ2g6VjiHB
- W257jAoFcHMlojWGNdUqkZl9o5WJduby2ZPP1LtEwMCjHlAXVlAzZBLSQLzSzSGBYa83
- bWJEu9c0yzsxXnmaP253oc49yJ0VRtCaDZEqNT8heZr1sQ/DmmQFyJtafitOtA1uk4oR
- cfMA==
-X-Gm-Message-State: AOAM531zoRofdRO/N14uPZ+Dc0A73lFPOIoikSVbYwH3btPwBUj6CShF
- MaqsNuMshGAoppXSZzNagEHQSB+rQRDbXFOX6U+rUYK+06XGzNAR0kTsRDy0yXQ9UAwQwA8/QM6
- 3qhZZAiLrUM+A4itZNGM987neGZiEhNrw
-X-Received: by 2002:adf:816b:0:b0:203:7fae:a245 with SMTP id
- 98-20020adf816b000000b002037faea245mr3072217wrm.619.1647507836525; 
- Thu, 17 Mar 2022 02:03:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzExt6iMQxlvIY5XabLDtCiG/Czc36a1klsSly4lwbam9nCGD9/JSLvaBuOG236YqudHLFxyg==
-X-Received: by 2002:adf:816b:0:b0:203:7fae:a245 with SMTP id
- 98-20020adf816b000000b002037faea245mr3072197wrm.619.1647507836205; 
- Thu, 17 Mar 2022 02:03:56 -0700 (PDT)
-Received: from localhost (net-93-144-71-136.cust.vodafonedsl.it.
- [93.144.71.136]) by smtp.gmail.com with ESMTPSA id
- o41-20020a05600c512900b00389d8c3e2b9sm3850893wms.15.2022.03.17.02.03.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Mar 2022 02:03:55 -0700 (PDT)
-Date: Thu, 17 Mar 2022 10:03:53 +0100
-From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-To: Deren Wu <deren.wu@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
- Soul Huang <Soul.Huang@mediatek.com>,
- YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
- Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
- KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
- CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
- Eric Liang <Eric.Liang@mediatek.com>,
- Stella Chang <Stella.Chang@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] mt76: fix monitor rx FCS error in DFS channel
-Message-ID: <YjL5ecm51SUyxxpb@lore-desk>
-References: <7243650f3d51b1919bd4fd0017ff8b0186149e54.1647421054.git.deren.wu@mediatek.com>
- <YjH/GCCfQoZ5OPPM@localhost.localdomain>
- <ef6a0d876587e3efaa228f9d28f5a6f7b97e4aef.camel@mediatek.com>
+ id 1nUmDh-00FUUr-F0; Thu, 17 Mar 2022 09:14:59 +0000
+X-UUID: c5a10a00e253405685dab861929eb3ed-20220317
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=iW3a6TGZr9IJo38yl13xFT/NScQMH3jqoOZfFvCf7Do=; 
+ b=J4Nsuait1YIlxTfLlkel2SH412C2BNfwzEddwe7iCIJ77CVSO7LCgRH98S3g0hY0RNYi5/cvELRXuF3aidimEzxyYqWhtKZ6f2i7xxmXkUocBRHYsOItPBjotByNCL8TaHvN4RKKoJZuxGN/vFtB1VkFA9BXhzn1ZD8EASGK4Mo=;
+X-UUID: c5a10a00e253405685dab861929eb3ed-20220317
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <leilk.liu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1360147000; Thu, 17 Mar 2022 02:14:51 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Mar 2022 02:14:50 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 17 Mar 2022 17:14:42 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 17 Mar 2022 17:14:42 +0800
+Message-ID: <42ab6ee6bdad6157a9d24197cd9d0311da0423e7.camel@mediatek.com>
+Subject: Re: [PATCH V4 6/6] spi: mediatek: support hclk
+From: Leilk Liu <leilk.liu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "Mark Brown" <broonie@kernel.org>
+CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Date: Thu, 17 Mar 2022 17:14:42 +0800
+In-Reply-To: <e3facd86-9e93-bda7-b6dd-c18f1660466a@collabora.com>
+References: <20220315032411.2826-1-leilk.liu@mediatek.com>
+ <20220315032411.2826-7-leilk.liu@mediatek.com>
+ <e3facd86-9e93-bda7-b6dd-c18f1660466a@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-In-Reply-To: <ef6a0d876587e3efaa228f9d28f5a6f7b97e4aef.camel@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220317_020402_545307_CA86DA63 
-X-CRM114-Status: GOOD (  22.81  )
+X-CRM114-CacheID: sfid-20220317_021457_542703_4637D596 
+X-CRM114-Status: GOOD (  24.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,148 +75,245 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7556106158216492036=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, 2022-03-15 at 10:37 +0100, AngeloGioacchino Del Regno wrote:
+> Il 15/03/22 04:24, Leilk Liu ha scritto:
+> > this patch adds hclk support.
+> > 
+> > Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+> > ---
+> >   drivers/spi/spi-mt65xx.c | 85 ++++++++++++++++++++++++++++++++---
+> > -----
+> >   1 file changed, 69 insertions(+), 16 deletions(-)
+> > 
+> > diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+> > index 8958c3fa4fea..d4a602e78aa7 100644
+> > --- a/drivers/spi/spi-mt65xx.c
+> > +++ b/drivers/spi/spi-mt65xx.c
+> > @@ -130,7 +130,7 @@ struct mtk_spi {
+> >   	u32 state;
+> >   	int pad_num;
+> >   	u32 *pad_sel;
+> > -	struct clk *parent_clk, *sel_clk, *spi_clk;
+> > +	struct clk *parent_clk, *sel_clk, *spi_clk, *spi_hclk;
+> >   	struct spi_transfer *cur_transfer;
+> >   	u32 xfer_len;
+> >   	u32 num_xfered;
+> > @@ -1252,25 +1252,38 @@ static int mtk_spi_probe(struct
+> > platform_device *pdev)
+> >   		goto err_put_master;
+> >   	}
+> >   
+> > +	mdata->spi_hclk = devm_clk_get(&pdev->dev, "hclk");
+> > +	if (!IS_ERR(mdata->spi_hclk)) {
+> 
+> What you're doing here can be simplified by using
+> devm_clk_get_optional() instead.
+> Please use that.
 
---===============7556106158216492036==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="AuwHAuPZagE1dC5E"
-Content-Disposition: inline
+Hi AngeloGioacchino, thanks for your suggestion, I'll fix it.
 
+> 
+> > +		ret = clk_prepare_enable(mdata->spi_hclk);
+> > +		if (ret < 0) {
+> > +			dev_err(&pdev->dev, "failed to enable hclk
+> > (%d)\n", ret);
+> > +			goto err_put_master;
+> > +		}
+> > +	}
+> > +
+> >   	ret = clk_prepare_enable(mdata->spi_clk);
+> >   	if (ret < 0) {
+> >   		dev_err(&pdev->dev, "failed to enable spi_clk (%d)\n",
+> > ret);
+> > -		goto err_put_master;
+> > +		goto err_disable_spi_hclk;
+> >   	}
+> >   
+> >   	ret = clk_set_parent(mdata->sel_clk, mdata->parent_clk);
+> >   	if (ret < 0) {
+> >   		dev_err(&pdev->dev, "failed to clk_set_parent (%d)\n",
+> > ret);
+> > -		clk_disable_unprepare(mdata->spi_clk);
+> > -		goto err_put_master;
+> > +		goto err_disable_spi_clk;
+> >   	}
+> >   
+> >   	mdata->spi_clk_hz = clk_get_rate(mdata->spi_clk);
+> >   
+> > -	if (mdata->dev_comp->no_need_unprepare)
+> > +	if (mdata->dev_comp->no_need_unprepare) {
+> >   		clk_disable(mdata->spi_clk);
+> > -	else
+> > +		if (!IS_ERR(mdata->spi_hclk))
+> > +			clk_disable(mdata->spi_hclk);
+> > +	} else {
+> >   		clk_disable_unprepare(mdata->spi_clk);
+> > +		if (!IS_ERR(mdata->spi_hclk))
+> > +			clk_disable_unprepare(mdata->spi_hclk);
+> > +	}
+> >   
+> >   	pm_runtime_enable(&pdev->dev);
+> >   
+> > @@ -1310,6 +1323,11 @@ static int mtk_spi_probe(struct
+> > platform_device *pdev)
+> >   
+> >   err_disable_runtime_pm:
+> >   	pm_runtime_disable(&pdev->dev);
+> > +err_disable_spi_clk:
+> > +	clk_disable_unprepare(mdata->spi_clk);
+> > +err_disable_spi_hclk:
+> > +	if (!IS_ERR(mdata->spi_hclk))
+> 
+> When using devm_clk_get_optional(), you can simply omit this check,
+> since it will
+> be impossible to reach this point with an error pointer stored in
+> spi_hclk.
+OK, I'll fix it.
 
---AuwHAuPZagE1dC5E
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> 
+> > +		clk_disable_unprepare(mdata->spi_hclk);
+> >   err_put_master:
+> >   	spi_master_put(master);
+> >   
+> > @@ -1325,8 +1343,11 @@ static int mtk_spi_remove(struct
+> > platform_device *pdev)
+> >   
+> >   	mtk_spi_reset(mdata);
+> >   
+> > -	if (mdata->dev_comp->no_need_unprepare)
+> > +	if (mdata->dev_comp->no_need_unprepare) {
+> >   		clk_unprepare(mdata->spi_clk);
+> > +		if (!IS_ERR(mdata->spi_hclk))
+> > +			clk_unprepare(mdata->spi_hclk);
+> > +	}
+> >   
+> >   	return 0;
+> >   }
+> > @@ -1342,8 +1363,11 @@ static int mtk_spi_suspend(struct device
+> > *dev)
+> >   	if (ret)
+> >   		return ret;
+> >   
+> > -	if (!pm_runtime_suspended(dev))
+> > +	if (!pm_runtime_suspended(dev)) {
+> >   		clk_disable_unprepare(mdata->spi_clk);
+> > +		if (!IS_ERR(mdata->spi_hclk))
+> > +			clk_disable_unprepare(mdata->spi_hclk);
+> > +	}
+> >   
+> >   	return ret;
+> >   }
+> > @@ -1360,11 +1384,23 @@ static int mtk_spi_resume(struct device
+> > *dev)
+> >   			dev_err(dev, "failed to enable spi_clk (%d)\n",
+> > ret);
+> >   			return ret;
+> >   		}
+> > +
+> > +		if (!IS_ERR(mdata->spi_hclk)) {
+> 
+> Since you will be using devm_clk_get_optional(), you can also omit
+> this check.
+OK, I'll fix it.
 
-> Hi Lore,
->=20
-> On Wed, 2022-03-16 at 16:15 +0100, Lorenzo Bianconi wrote:
-> > > From: Deren Wu <deren.wu@mediatek.com>
-> > >=20
-> > > When setup monitor mode in DFS channel, mt76 send CH_SWITCH_DFS to
-> > > fw for channel config. This would cause rx performance bad while
-> > > monitoring frames. Settings CH_SWITCH_NORMAL in monitor mode would
-> > > get the same performance as normal channels.
-> >=20
-> > Hi Deren,
-> >=20
-> > >=20
-> > > Reviewed-by: Shayne Chen <shayne.chen@mediatek.com>
-> > > Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> > > ---
-> > >  drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 3 ++-
-> > >  drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 3 ++-
-> > >  drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 3 ++-
-> > >  3 files changed, 6 insertions(+), 3 deletions(-)
-> > >=20
-> > > diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> > > b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> > > index 390add3144c2..97e2a85cb728 100644
-> > > --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> > > +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> > > @@ -2151,7 +2151,8 @@ int mt7615_mcu_set_chan_info(struct
-> > > mt7615_phy *phy, int cmd)
-> > >  		.center_chan2 =3D ieee80211_frequency_to_channel(freq2),
-> > >  	};
-> > > =20
-> > > -	if (cmd =3D=3D MCU_EXT_CMD(SET_RX_PATH))
-> > > +	if (cmd =3D=3D MCU_EXT_CMD(SET_RX_PATH) ||
-> > > +	    dev->mt76.hw->conf.flags & IEEE80211_CONF_MONITOR)
-> >=20
-> > is this patch compliant with 802.11h DFS standard?
->=20
-> Monitor mode would not tx packets and still follow standard. We will
-> keep tracking this point to avoid violations.
+> 
+> > +			clk_prepare_enable(mdata->spi_hclk);
+> 
+> There's a typo. ret = clk_prepare_enable....
+OK, I'll fix it.
 
-Hi Deren,
+> 
+> > +			if (ret < 0) {
+> > +				dev_err(dev, "failed to enable spi_hclk
+> > (%d)\n", ret);
+> > +				clk_disable_unprepare(mdata->spi_clk);
+> > +				return ret;
+> > +			}
+> > +		}
+> >   	}
+> >   
+> >   	ret = spi_master_resume(master);
+> > -	if (ret < 0)
+> > +	if (ret < 0) {
+> >   		clk_disable_unprepare(mdata->spi_clk);
+> > +		if (!IS_ERR(mdata->spi_hclk))
+> 
+> Same here and everywhere else, no error check if you set this as
+> optional clock.
+OK, I'll fix it.
 
-this IEEE80211_CONF_MONITOR flags indicates there is a monitor interface,
-not it is the only one so we can have multiple vifs on the device
-(e.g. AP + monitor). I was wondering if CH_SWITCH_SCAN_BYPASS_DPD is used
-to avoid transmitting packets during chip calibration on DFS channels.
-
-Regards,
-Lorenzo
-
->=20
->=20
+> 
+> > +			clk_disable_unprepare(mdata->spi_hclk);
+> > +	}
+> >   
+> >   	return ret;
+> >   }
+> > @@ -1376,10 +1412,15 @@ static int mtk_spi_runtime_suspend(struct
+> > device *dev)
+> >   	struct spi_master *master = dev_get_drvdata(dev);
+> >   	struct mtk_spi *mdata = spi_master_get_devdata(master);
+> >   
+> > -	if (mdata->dev_comp->no_need_unprepare)
+> > +	if (mdata->dev_comp->no_need_unprepare) {
+> >   		clk_disable(mdata->spi_clk);
+> > -	else
+> > +		if (!IS_ERR(mdata->spi_hclk))
+> > +			clk_disable(mdata->spi_hclk);
+> > +	} else {
+> >   		clk_disable_unprepare(mdata->spi_clk);
+> > +		if (!IS_ERR(mdata->spi_hclk))
+> > +			clk_disable_unprepare(mdata->spi_hclk);
+> > +	}
+> >   
+> >   	return 0;
+> >   }
+> > @@ -1390,13 +1431,25 @@ static int mtk_spi_runtime_resume(struct
+> > device *dev)
+> >   	struct mtk_spi *mdata = spi_master_get_devdata(master);
+> >   	int ret;
+> >   
+> > -	if (mdata->dev_comp->no_need_unprepare)
+> > +	if (mdata->dev_comp->no_need_unprepare) {
+> >   		ret = clk_enable(mdata->spi_clk);
+> > -	else
+> > +		if (!IS_ERR(mdata->spi_hclk))
+> > +			clk_enable(mdata->spi_hclk);
+> > +	} else {
+> >   		ret = clk_prepare_enable(mdata->spi_clk);
+> > -	if (ret < 0) {
+> > -		dev_err(dev, "failed to enable spi_clk (%d)\n", ret);
+> > -		return ret;
+> > +		if (ret < 0) {
+> > +			dev_err(dev, "failed to enable spi_clk (%d)\n",
+> > ret);
+> > +			return ret;
+> > +		}
+> > +
+> > +		if (!IS_ERR(mdata->spi_hclk)) {
+> > +			ret = clk_prepare_enable(mdata->spi_hclk);
+> > +			if (ret < 0) {
+> > +				dev_err(dev, "failed to enable spi_hclk
+> > (%d)\n", ret);
+> > +				clk_disable_unprepare(mdata->spi_clk);
+> > +				return ret;
+> > +			}
+> > +		}
+> >   	}
+> >   
+> >   	return 0;
+> > 
+> 
+> 
 > Regards,
-> Deren
->=20
->=20
-> >=20
-> > Regards,
-> > Lorenzo
-> >=20
-> > >  		req.switch_reason =3D CH_SWITCH_NORMAL;
-> > >  	else if (phy->mt76->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)
-> > >  		req.switch_reason =3D CH_SWITCH_SCAN_BYPASS_DPD;
-> > > diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> > > b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> > > index 10dc4bf5adec..c56d48342aaf 100644
-> > > --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> > > +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> > > @@ -2833,7 +2833,8 @@ int mt7915_mcu_set_chan_info(struct
-> > > mt7915_phy *phy, int cmd)
-> > >  	}
-> > >  #endif
-> > > =20
-> > > -	if (cmd =3D=3D MCU_EXT_CMD(SET_RX_PATH))
-> > > +	if (cmd =3D=3D MCU_EXT_CMD(SET_RX_PATH) ||
-> > > +	    dev->mt76.hw->conf.flags & IEEE80211_CONF_MONITOR)
-> > >  		req.switch_reason =3D CH_SWITCH_NORMAL;
-> > >  	else if (phy->mt76->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)
-> > >  		req.switch_reason =3D CH_SWITCH_SCAN_BYPASS_DPD;
-> > > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-> > > b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-> > > index 5ef8b24f0ab3..da2be050ed7c 100644
-> > > --- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-> > > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-> > > @@ -863,7 +863,8 @@ int mt7921_mcu_set_chan_info(struct mt7921_phy
-> > > *phy, int cmd)
-> > >  	else
-> > >  		req.channel_band =3D chandef->chan->band;
-> > > =20
-> > > -	if (cmd =3D=3D MCU_EXT_CMD(SET_RX_PATH))
-> > > +	if (cmd =3D=3D MCU_EXT_CMD(SET_RX_PATH) ||
-> > > +	    dev->mt76.hw->conf.flags & IEEE80211_CONF_MONITOR)
-> > >  		req.switch_reason =3D CH_SWITCH_NORMAL;
-> > >  	else if (dev->mt76.hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)
-> > >  		req.switch_reason =3D CH_SWITCH_SCAN_BYPASS_DPD;
-> > > --=20
-> > > 2.18.0
-> > >=20
->=20
-
---AuwHAuPZagE1dC5E
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYjL5eQAKCRA6cBh0uS2t
-rHeaAP9rpvWFTEXCqoSqp2KBbPfjlbHUhLkVwIYctyl72HZEXAD/TlpNfsswC5Of
-65WCUQJGGY7nSTVIzV2Msoim8lT3RwY=
-=e04/
------END PGP SIGNATURE-----
-
---AuwHAuPZagE1dC5E--
-
-
-
---===============7556106158216492036==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+> Angelo
+> 
+> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============7556106158216492036==--
-
-
