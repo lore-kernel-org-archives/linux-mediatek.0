@@ -4,57 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1666C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 11:42:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 289DCC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 11:43:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nPAz+gywsCJG4wlvnrBjEQMnn6vQdtdDdOzwRxLFFjQ=; b=MYrzCpoGasoedc
-	+trnKITJplwTP+Quc4fz2xHBjNw6BP514twMuIJ0boHExlmfO+0ci+0flIPsPwzKoGQwRP0aqqfTm
-	NIG14NEFyPEE8IYjwyfiuiXAQz9KkIthO5vACASVzSaf3/APpAKtBk4pUV+cT6CFCLEloUtFAmCPe
-	nqXfnkiYLcZ7VpocoQjRp6+Cupfuv8QeioPFI1dY0wMEmrLbfUDgxI+MOQd+bmi8ebrbjlhY+qmb3
-	cVSBciFCGu8l1+ttWaMlI6mT9mm5qmKlEUa7SV/wVOcwDb24e0LAPAXz+U7xdBDBU7wEchJqzjhvf
-	OgI5L1sxCrP+2FQvq+Ig==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3fzJPuOrwt8UJ2TDn95bkDvLcnd9F9IfjKK6DXu0T+M=; b=spDcuy0KGCkIuG
+	RMmYzuakb8SL00N6anEzJ5dPKUeiEgsHdUzx02rTv5oE83Z20NGZAHmPrNUvOLTtO/KPGgvtM/Y0F
+	Srp8+WfoRw3IjgLKjz8zvFL0TpK5v8i1qC/0NGjGxi7vsgGeAUH/uUmdu5e+O9kqX8cAqY61VsA6j
+	D3TODDBk4mdYvkv5cLcVKaUav2GxxgTUofd/yCBqNog8RPROQwEUkjfFDt5s4R3TNLz60iPsmDs4Z
+	8pokuBAxPeYs7bPh7ASuAQ2ix094P+Kb7MOHMSsIMmUlPiKDnyNLmTcVW5lcXv2beuMk8QfjxdnnO
+	ItmG6jG6hIm7eF/bx4WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVAzw-001Ssm-5j; Fri, 18 Mar 2022 11:42:24 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nVB0T-001T8T-4f; Fri, 18 Mar 2022 11:42:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVAzW-001Sir-CL; Fri, 18 Mar 2022 11:42:00 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id C64901F45EBC
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647603717;
- bh=38LWzYJDtDdvCT+rEuKuiIONjBDiSSh7TRAEYzRgbQA=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=LhYBoKjN1NdA3+zF6zvnERYP7YgAG1aMkjiCxnTw00yK87owK5SvAoZTgcbtGmsxS
- 1Qdc9p77vNYwYKLtPC8liOtDnZ9hETH8zPKUB7ZIwYy2HWcH7ysngbvny4F/KODc1a
- A3AHI0uAeTvvgJbd9dj9exQYEY5BqGkfk+mrgCnAuBVLFyJoMsWKl/bcgfp8WS88Ye
- 4xvYWEHvnqsUnO9M9gBDFiMXZHlacSu3PI8ngrLnmwgVNTJpD4DDDScW/hCbCdNm8E
- aeet8ZhJ3srH2vf5L/01UD9oL1K3IYHgJ90wL3GfcUaTQygjVsfgNEhUgi+CqWgRQA
- 3AqYF3cbDx5Gw==
-Message-ID: <07a02061-6528-a772-c91f-a658c6170a83@collabora.com>
-Date: Fri, 18 Mar 2022 12:41:54 +0100
+ id 1nVAzh-001SnS-CY; Fri, 18 Mar 2022 11:42:11 +0000
+X-UUID: f8d0ca0c80764d9fa217ea5f950f3495-20220318
+X-UUID: f8d0ca0c80764d9fa217ea5f950f3495-20220318
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <tinghan.shen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1822197754; Fri, 18 Mar 2022 04:42:06 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 18 Mar 2022 04:42:04 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 18 Mar 2022 19:42:03 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 18 Mar 2022 19:42:02 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Bjorn Andersson <bjorn.andersson@linaro.org>, Mathieu Poirier
+ <mathieu.poirier@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <linux-remoteproc@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Tinghan Shen
+ <tinghan.shen@mediatek.com>
+Subject: [PATCH v5] remoteproc: mediatek: Fix side effect of mt8195 sram power
+ on
+Date: Fri, 18 Mar 2022 19:42:00 +0800
+Message-ID: <20220318114200.4344-1-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.15.GIT
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v1 00/10] Introduce support for MediaTek MT8192 Google
- Chromebooks
-Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel@collabora.com, Rob Herring <robh+dt@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20220316151327.564214-1-nfraprado@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220316151327.564214-1-nfraprado@collabora.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_044158_615649_BDC16BC5 
-X-CRM114-Status: GOOD (  15.10  )
+X-CRM114-CacheID: sfid-20220318_044209_477664_0942E847 
+X-CRM114-Status: GOOD (  16.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,52 +70,179 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SWwgMTYvMDMvMjIgMTY6MTMsIE7DrWNvbGFzIEYuIFIuIEEuIFByYWRvIGhhIHNjcml0dG86Cj4g
-Cj4gVGhpcyBzZXJpZXMgaW50cm9kdWNlcyBEZXZpY2V0cmVlcyBmb3IgdGhlIE1UODE5Mi1iYXNl
-ZCBBc3VyYWRhIHBsYXRmb3JtCj4gYXMgd2VsbCBhcyBBc3VyYWRhIFNwaGVyaW9uIGFuZCBBc3Vy
-YWRhIEhheWF0byBib2FyZHMuCj4gCj4gU3VwcG9ydCBmb3IgdGhlIGJvYXJkcyBpcyBhZGRlZCB0
-byB0aGUgZXh0ZW50IHRoYXQgaXMgY3VycmVudGx5IGVuYWJsZWQKPiBpbiB0aGUgbXQ4MTkyLmR0
-c2ksIGFzIHRvIG5vdCBhZGQgYW55IGRlcGVuZGVuY2llcyB0byB0aGlzIHNlcmllcy4KPiAKPiBB
-ZnRlciB0aGUgc2VyaWVzIGFkZGluZyB2YXJpb3VzIG1pc3Npbmcgbm9kZXMgb24gTVQ4MTkyIFsx
-XSBpcyBtZXJnZWQsIGEKPiBuZXcgc2VyaWVzIHdpbGwgYmUgc2VudCBlbmFibGluZyB0aGUgcmVt
-YWluaW5nIGRldmljZXMgb24gdGhlIEFzdXJhZGEKPiBwbGF0Zm9ybS4KPiAKPiBXaGlsZSB0aGUg
-ZHRzIGZpbGVzIGFkZGVkIGluIHRoaXMgc2VyaWVzIGludHJvZHVjZSBhIGNvdXBsZSBuZXcKPiBk
-dGJzX2NoZWNrIHdhcm5pbmdzLCB0aGV5IGFyZSBmaXhlZCBieSBhbm90aGVyIHNlcmllcyBbMl0u
-Cj4gCj4gVGhpcyBzZXJpZXMgd2FzIHBlZXItcmV2aWV3ZWQgaW50ZXJuYWxseSBiZWZvcmUgc3Vi
-bWlzc2lvbi4KClRoaXMgc2VyaWVzIHdhcyBub3Qgb25seSBwZWVyLXJldmlld2VkIGludGVybmFs
-bHksIGJ1dCBhbHNvIHRlc3RlZCBzbywgZm9yIHRoZQplbnRpcmUgc2VyaWVzLCBvdGhlciB0aGFu
-IG15IFItYiwgaWYgdGhhdCdzIHJlbGV2YW50OgoKVGVzdGVkLWJ5OiBBbmdlbG9HaW9hY2NoaW5v
-IERlbCBSZWdubyA8YW5nZWxvZ2lvYWNjaGluby5kZWxyZWdub0Bjb2xsYWJvcmEuY29tPgoKPiAK
-PiBbMV0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWF0ZWsvMjAyMjAzMDQxMzA4
-MDkuMTI5MjQtMS1hbGxlbi1raC5jaGVuZ0BtZWRpYXRlay5jb20vCj4gWzJdIGh0dHBzOi8vbG9y
-ZS5rZXJuZWwub3JnL2xpbnV4LW1lZGlhdGVrLzIwMjIwMzE1MjExOTM2LjQ0MjcwOC0xLW5mcmFw
-cmFkb0Bjb2xsYWJvcmEuY29tLwo+IAo+IAo+IE7DrWNvbGFzIEYuIFIuIEEuIFByYWRvICgxMCk6
-Cj4gICAgYXJtNjQ6IGR0czogbWVkaWF0ZWs6IEludHJvZHVjZSBNVDgxOTItYmFzZWQgQXN1cmFk
-YSBib2FyZCBmYW1pbHkKPiAgICBhcm02NDogZHRzOiBtZWRpYXRlazogYXN1cmFkYTogRG9jdW1l
-bnQgR1BJTyBuYW1lcwo+ICAgIGFybTY0OiBkdHM6IG1lZGlhdGVrOiBhc3VyYWRhOiBBZGQgc3lz
-dGVtLXdpZGUgcG93ZXIgc3VwcGxpZXMKPiAgICBhcm02NDogZHRzOiBtZWRpYXRlazogYXN1cmFk
-YTogRW5hYmxlIGFuZCBjb25maWd1cmUgSTJDIGFuZCBTUEkgYnVzc2VzCj4gICAgYXJtNjQ6IGR0
-czogbWVkaWF0ZWs6IGFzdXJhZGE6IEFkZCBDaHJvbWVPUyBFQwo+ICAgIGFybTY0OiBkdHM6IG1l
-ZGlhdGVrOiBhc3VyYWRhOiBBZGQga2V5Ym9hcmQgbWFwcGluZyBmb3IgdGhlIHRvcCByb3cKPiAg
-ICBhcm02NDogZHRzOiBtZWRpYXRlazogYXN1cmFkYTogQWRkIENyNTAgVFBNCj4gICAgYXJtNjQ6
-IGR0czogbWVkaWF0ZWs6IGFzdXJhZGE6IEFkZCBFbGFuIGVLVEgzMDAwIEkyQyB0cmFja3BhZAo+
-ICAgIGFybTY0OiBkdHM6IG1lZGlhdGVrOiBhc3VyYWRhOiBBZGQgSTJDIHRvdWNoc2NyZWVuCj4g
-ICAgYXJtNjQ6IGR0czogbWVkaWF0ZWs6IHNwaGVyaW9uOiBBZGQga2V5Ym9hcmQgYmFja2xpZ2h0
-Cj4gCj4gICBhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL01ha2VmaWxlICAgICAgICAgfCAg
-IDIgKwo+ICAgLi4uL2R0cy9tZWRpYXRlay9tdDgxOTItYXN1cmFkYS1oYXlhdG8tcjEuZHRzIHwg
-IDE4ICsKPiAgIC4uLi9tZWRpYXRlay9tdDgxOTItYXN1cmFkYS1zcGhlcmlvbi1yMC5kdHMgICB8
-ICAzMyArCj4gICAuLi4vYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTkyLWFzdXJhZGEuZHRzaSAgICAg
-fCA2MTYgKysrKysrKysrKysrKysrKysrCj4gICA0IGZpbGVzIGNoYW5nZWQsIDY2OSBpbnNlcnRp
-b25zKCspCj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRl
-ay9tdDgxOTItYXN1cmFkYS1oYXlhdG8tcjEuZHRzCj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJj
-aC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxOTItYXN1cmFkYS1zcGhlcmlvbi1yMC5kdHMK
-PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE5
-Mi1hc3VyYWRhLmR0c2kKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LW1lZGlhdGVrCg==
+The definition of L1TCM_SRAM_PDN bits on mt8195 is different to mt8192.
+
+L1TCM_SRAM_PDN bits[3:0] control the power of mt8195 L1TCM SRAM.
+
+L1TCM_SRAM_PDN bits[7:4] control the access path to EMI for SCP.
+These bits have to be powered on to allow EMI access for SCP.
+
+Bits[7:4] also affect audio DSP because audio DSP and SCP are
+placed on the same hardware bus. If SCP cannot access EMI, audio DSP is
+blocked too.
+
+L1TCM_SRAM_PDN bits[31:8] are not used.
+
+This fix removes modification of bits[7:4] when power on/off mt8195 SCP
+L1TCM. It's because the modification introduces a short period of time
+blocking audio DSP to access EMI. This was not a problem until we have
+to load both SCP module and audio DSP module. audio DSP needs to access
+EMI because it has source/data on DRAM. Audio DSP will have unexpected
+behavior when it accesses EMI and the SCP driver blocks the EMI path at
+the same time.
+
+Fixes: 79111df414fc ("remoteproc: mediatek: Support mt8195 scp")
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+---
+v5: rebased on rproc-next
+v4: add Fixes and Reviewed-by tags
+v3: fix build error
+v2: apply comments about macro definition and function calls
+---
+ drivers/remoteproc/mtk_common.h |  2 +
+ drivers/remoteproc/mtk_scp.c    | 67 +++++++++++++++++++++++++--------
+ 2 files changed, 53 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+index 71ce4977cb0b..ea6fa1100a00 100644
+--- a/drivers/remoteproc/mtk_common.h
++++ b/drivers/remoteproc/mtk_common.h
+@@ -54,6 +54,8 @@
+ #define MT8192_CORE0_WDT_IRQ		0x10030
+ #define MT8192_CORE0_WDT_CFG		0x10034
+ 
++#define MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS		GENMASK(7, 4)
++
+ #define SCP_FW_VER_LEN			32
+ #define SCP_SHARE_BUFFER_SIZE		288
+ 
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index 38609153bf64..068edf21ea51 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -365,22 +365,22 @@ static int mt8183_scp_before_load(struct mtk_scp *scp)
+ 	return 0;
+ }
+ 
+-static void mt8192_power_on_sram(void __iomem *addr)
++static void scp_sram_power_on(void __iomem *addr, u32 reserved_mask)
+ {
+ 	int i;
+ 
+ 	for (i = 31; i >= 0; i--)
+-		writel(GENMASK(i, 0), addr);
++		writel(GENMASK(i, 0) & ~reserved_mask, addr);
+ 	writel(0, addr);
+ }
+ 
+-static void mt8192_power_off_sram(void __iomem *addr)
++static void scp_sram_power_off(void __iomem *addr, u32 reserved_mask)
+ {
+ 	int i;
+ 
+ 	writel(0, addr);
+ 	for (i = 0; i < 32; i++)
+-		writel(GENMASK(i, 0), addr);
++		writel(GENMASK(i, 0) & ~reserved_mask, addr);
+ }
+ 
+ static int mt8186_scp_before_load(struct mtk_scp *scp)
+@@ -412,11 +412,32 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
+ 	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
+ 
+ 	/* enable SRAM clock */
+-	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_0);
+-	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_1);
+-	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_2);
+-	mt8192_power_on_sram(scp->reg_base + MT8192_L1TCM_SRAM_PDN);
+-	mt8192_power_on_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
++
++	/* enable MPU for all memory regions */
++	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
++
++	return 0;
++}
++
++static int mt8195_scp_before_load(struct mtk_scp *scp)
++{
++	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
++	writel(0xff, scp->reg_base + MT8192_SCP2SPM_IPC_CLR);
++
++	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
++
++	/* enable SRAM clock */
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
++			  MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
++	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
+ 
+ 	/* enable MPU for all memory regions */
+ 	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
+@@ -572,11 +593,25 @@ static void mt8183_scp_stop(struct mtk_scp *scp)
+ static void mt8192_scp_stop(struct mtk_scp *scp)
+ {
+ 	/* Disable SRAM clock */
+-	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_0);
+-	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_1);
+-	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_2);
+-	mt8192_power_off_sram(scp->reg_base + MT8192_L1TCM_SRAM_PDN);
+-	mt8192_power_off_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
++
++	/* Disable SCP watchdog */
++	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
++}
++
++static void mt8195_scp_stop(struct mtk_scp *scp)
++{
++	/* Disable SRAM clock */
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
++			   MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
++	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
+ 
+ 	/* Disable SCP watchdog */
+ 	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
+@@ -922,11 +957,11 @@ static const struct mtk_scp_of_data mt8192_of_data = {
+ 
+ static const struct mtk_scp_of_data mt8195_of_data = {
+ 	.scp_clk_get = mt8195_scp_clk_get,
+-	.scp_before_load = mt8192_scp_before_load,
++	.scp_before_load = mt8195_scp_before_load,
+ 	.scp_irq_handler = mt8192_scp_irq_handler,
+ 	.scp_reset_assert = mt8192_scp_reset_assert,
+ 	.scp_reset_deassert = mt8192_scp_reset_deassert,
+-	.scp_stop = mt8192_scp_stop,
++	.scp_stop = mt8195_scp_stop,
+ 	.scp_da_to_va = mt8192_scp_da_to_va,
+ 	.host_to_scp_reg = MT8192_GIPC_IN_SET,
+ 	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
