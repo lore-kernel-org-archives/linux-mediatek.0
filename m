@@ -4,56 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81F15C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 10:28:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F9EBC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 10:54:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N3CezcQLmJdFveRSoRGVh8vaVM48qKX+1SABHHNxcSE=; b=r5lE0QfNDxJm8x
-	jzgCLkJMXH5pcLJw1wz+OIdGBmFBWcAA97RvwAVa0rqz+j79DzIL4PfhxwCd4XfHuHRp61nzT+ted
-	AruMiS2/RA26qVMjtQ8FKzK+VS6YHfT1LGTXgBH3oklDidrfI8NReEkM9Ba+T6/yYLEHLhU8jKtaA
-	biMv+xrX9Qy9SIbGKwbRk0kAKS/rN+SpGE5TjQVuQp0qZr90i31dmjCnhBWjQuqgTirUaaxidXxbL
-	2L0Lac/EmoOqKUYQeisfYPFxRluLynhgsV8Jmg+Zp4nddgEOScefjpsYWQFEzGZLWaZ/8+CmV4eWV
-	hz+erR2/HxF4pXBOg2NA==;
+	List-Owner; bh=Ieqog06XaACfd4vKAlKO3751UvA+TSS5KDPIAsPKL7U=; b=ElGP2cVtAXBeXn
+	UY7tsBAxDKhqDxxftUL8jLG599en7HqMqidegHp9h44CM5Kv7SsgNz5yfnHPyz2IRJIZIF6sUPt6f
+	xN5fqAftQDThWsyLHMY6VwijycjhkhYRj5ItHLVZuW4xfTI8Ed4P7CG/N5oGQuRLDCo4cm8gT8V6f
+	cWnRTd3rRbOS6PVfL2XmapVxMYnzz1dWQ3PAm55uLY+d5P0jbrtZbIE0JaLHyL7ROkYKBZl2yjG7T
+	AgX+uDVs2rsfadKEmtS5FOnrd1AqJAAYDqz7UNvs8U5l273LLC7xBBCbmIJGR56onHmVd/rPu6pWN
+	MPlzT8ZY2yKDjTv1EQYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nV9qd-0018Zf-TE; Fri, 18 Mar 2022 10:28:43 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nVAF4-001HWe-5S; Fri, 18 Mar 2022 10:53:58 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nV9qb-0018ZG-6o
- for linux-mediatek@lists.infradead.org; Fri, 18 Mar 2022 10:28:42 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id BBADD1F45DFA
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647599319;
- bh=RLh0iGI//uz1ksSyMfYq/kKVW5zQwl6rIk1/V3IyKlI=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=kgBQV8a2vitxThYInEsApGhTJkbu2ywe5oNv3dQpcWXlMQowFGW2k0rjeuOcL6kmS
- O6ZxllIkYiBARFIi+gW4Zn1ejhluQAVWXRdskhqgRX6m8jJcWVKkr/8hscZ26Uke6B
- cPELa3vvVg9Dz1rR0LlMlR+KrLiSg1iLIXFnAm64kVPOBgVWR3bI5rEXYEZ6QltTHR
- zt3Lpf72rvseN8a+mXeJxU542Zin4zvEYjZMsDPn22Hxm3pfkRI6Bs5SNdmctnJ1TR
- 26jbMLjd1mXiLi4Xb3/5hfaAEhI6/0Svtl4A43gP+dIJq4BV73FLPaEdmf1PuxUKpT
- 5CApo9pFWCo3A==
-Message-ID: <89a49057-50c5-5abe-559a-744447a60774@collabora.com>
-Date: Fri, 18 Mar 2022 11:28:36 +0100
+ id 1nVA28-001BHK-HX; Fri, 18 Mar 2022 10:40:38 +0000
+Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
+ by smtp-out2.suse.de (Postfix) with ESMTP id DE2A11F390;
+ Fri, 18 Mar 2022 10:40:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
+ t=1647600034; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=eAuiFb+OsFON4yFjKLQAFK1dNFxRsTZb0OnrTTRn9u0=;
+ b=C32sGETYRNnx5Wr8LQxLIcbYrT0DnLCxlclsrJfisEggI2MYD0T8o8/CrHNpZcBjoK1VdT
+ IuD1+udT+EDwEVmHcfnZNIpGNuSCmV63GQW/SnEpa40zWyu7spaviICSz3zugBpPoOCc2r
+ PPqFl/cthhqlzZ1HPJOrpBbQGOKDa8k=
+Received: from suse.cz (unknown [10.100.224.162])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by relay2.suse.de (Postfix) with ESMTPS id 46B10A3B8A;
+ Fri, 18 Mar 2022 10:40:34 +0000 (UTC)
+Date: Fri, 18 Mar 2022 11:40:31 +0100
+From: Petr Mladek <pmladek@suse.com>
+To: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, acme@kernel.org,
+ akpm@linux-foundation.org, alexander.shishkin@linux.intel.com,
+ catalin.marinas@arm.com, davem@davemloft.net, jolsa@redhat.com,
+ jthierry@redhat.com, keescook@chromium.org, kernelfans@gmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-perf-users@vger.kernel.org, mark.rutland@arm.com,
+ masahiroy@kernel.org, matthias.bgg@gmail.com, maz@kernel.org,
+ mcgrof@kernel.org, mingo@redhat.com, namhyung@kernel.org,
+ nixiaoming@huawei.com, peterz@infradead.org,
+ sparclinux@vger.kernel.org, sumit.garg@linaro.org,
+ wangqing@vivo.com, will@kernel.org, yj.chiang@mediatek.com
+Subject: Re: [PATCH v2 4/5] kernel/watchdog: Adapt the watchdog_hld interface
+ for async model
+Message-ID: <YjRhnxg3L3cHUU/l@alley>
+References: <20220307154729.13477-1-lecopzer.chen@mediatek.com>
+ <20220307154729.13477-5-lecopzer.chen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH -next] dmaengine: mediatek:Fix PM usage reference leak of
- tegra
-Content-Language: en-US
-To: Zhang Qilong <zhangqilong3@huawei.com>, sean.wang@mediatek.com,
- vkoul@kernel.org, matthias.bgg@gmail.com
-Cc: dmaengine@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20220318080809.22562-1-zhangqilong3@huawei.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220318080809.22562-1-zhangqilong3@huawei.com>
+Content-Disposition: inline
+In-Reply-To: <20220307154729.13477-5-lecopzer.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_032841_416251_75BC09DA 
-X-CRM114-Status: GOOD (  16.03  )
+X-CRM114-CacheID: sfid-20220318_034036_783031_AFAC98B5 
+X-CRM114-Status: GOOD (  27.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,77 +76,126 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/03/22 09:08, Zhang Qilong ha scritto:
-> From: zhangqilong <zhangqilong3@huawei.com>
+On Mon 2022-03-07 23:47:28, Lecopzer Chen wrote:
+> When lockup_detector_init()->watchdog_nmi_probe(), PMU may be not ready
+> yet. E.g. on arm64, PMU is not ready until
+> device_initcall(armv8_pmu_driver_init).  And it is deeply integrated
+> with the driver model and cpuhp. Hence it is hard to push this
+> initialization before smp_init().
+
+The above is clear.
+
+> But it is easy to take an opposite approach by enabling watchdog_hld to
+> get the capability of PMU async.
 > 
-> pm_runtime_get_sync will increment pm usage counter even it failed.
-> Forgetting to putting operation will result in reference leak here.
-> We fix it:
-> 1) Replacing it with pm_runtime_resume_and_get to keep usage counter
->     balanced.
-> 2) Add putting operation before returning error.
-> 
-> Fixes:9135408c3ace4 ("dmaengine: mediatek: Add MediaTek UART APDMA support")
-> Signed-off-by: Zhang Qilong <zhangqilong3@huawei.com>
+> The async model is achieved by expanding watchdog_nmi_probe() with
+> -EBUSY, and a re-initializing work_struct which waits on a wait_queue_head.
 
-Hello Zhang,
+These two paragraphs are a bit confusing to me. It might be just a
+problem with translation. I am not a native speaker. Anyway, I wonder
+if the following is more clear:
 
-I agree with this change, but the commit message is misleading, as this is not
-Tegra.
+<proposal>
+But it is easy to take an opposite approach and try to initialize
+the watchdog once again later.
 
-Please fix it.
+The delayed probe is called using workqueues. It need to allocate
+memory and must be proceed in a normal context.
 
-Regards,
-Angelo
+The delayed probe is queued only when the early one returns -EBUSY.
+It is the return code returned when PMU is not ready yet.
+</proposal>
 
-> ---
->   drivers/dma/mediatek/mtk-uart-apdma.c | 9 ++++++---
->   1 file changed, 6 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
-> index 375e7e647df6..a1517ef1f4a0 100644
-> --- a/drivers/dma/mediatek/mtk-uart-apdma.c
-> +++ b/drivers/dma/mediatek/mtk-uart-apdma.c
-> @@ -274,7 +274,7 @@ static int mtk_uart_apdma_alloc_chan_resources(struct dma_chan *chan)
->   	unsigned int status;
->   	int ret;
->   
-> -	ret = pm_runtime_get_sync(mtkd->ddev.dev);
-> +	ret = pm_runtime_resume_and_get(mtkd->ddev.dev);
->   	if (ret < 0) {
->   		pm_runtime_put_noidle(chan->device->dev);
->   		return ret;
-> @@ -288,18 +288,21 @@ static int mtk_uart_apdma_alloc_chan_resources(struct dma_chan *chan)
->   	ret = readx_poll_timeout(readl, c->base + VFF_EN,
->   			  status, !status, 10, 100);
->   	if (ret)
-> -		return ret;
-> +		goto err_pm;
->   
->   	ret = request_irq(c->irq, mtk_uart_apdma_irq_handler,
->   			  IRQF_TRIGGER_NONE, KBUILD_MODNAME, chan);
->   	if (ret < 0) {
->   		dev_err(chan->device->dev, "Can't request dma IRQ\n");
-> -		return -EINVAL;
-> +		ret = -EINVAL;
-> +		goto err_pm;
->   	}
->   
->   	if (mtkd->support_33bits)
->   		mtk_uart_apdma_write(c, VFF_4G_SUPPORT, VFF_4G_SUPPORT_CLR_B);
->   
-> +err_pm:
-> +	pm_runtime_put_noidle(mtkd->ddev.dev);
->   	return ret;
->   }
->   
-> 
+> --- a/kernel/watchdog.c
+> +++ b/kernel/watchdog.c
+> @@ -103,7 +103,11 @@ void __weak watchdog_nmi_disable(unsigned int cpu)
+>  	hardlockup_detector_perf_disable();
+>  }
+>  
+> -/* Return 0, if a NMI watchdog is available. Error code otherwise */
+> +/*
+> + * Arch specific API. Return 0, if a NMI watchdog is available. -EBUSY if not
+> + * ready, and arch code should wake up hld_detector_wait when ready. Other
+> + * negative value if not support.
+> + */
 
+I wonder if the following is slightly more clear:
+
+ /*
+ * Arch specific API.
+ *
+ * Return 0 when NMI watchdog is available, negative value otherwise.
+ * The error code -EBUSY is special. It means that a deferred probe
+ * might succeed later.
+ */
+
+>  int __weak __init watchdog_nmi_probe(void)
+>  {
+>  	return hardlockup_detector_perf_init();
+> @@ -839,16 +843,70 @@ static void __init watchdog_sysctl_init(void)
+>  #define watchdog_sysctl_init() do { } while (0)
+>  #endif /* CONFIG_SYSCTL */
+>  
+> +static void lockup_detector_delay_init(struct work_struct *work);
+> +bool lockup_detector_pending_init __initdata;
+> +
+> +struct wait_queue_head hld_detector_wait __initdata =
+> +		__WAIT_QUEUE_HEAD_INITIALIZER(hld_detector_wait);
+> +
+> +static struct work_struct detector_work __initdata =
+> +		__WORK_INITIALIZER(detector_work, lockup_detector_delay_init);
+> +
+> +static void __init lockup_detector_delay_init(struct work_struct *work)
+> +{
+> +	int ret;
+> +
+> +	wait_event(hld_detector_wait,
+> +			lockup_detector_pending_init == false);
+> +
+> +	/*
+> +	 * Here, we know the PMU should be ready, so set pending to true to
+> +	 * inform watchdog_nmi_probe() that it shouldn't return -EBUSY again.
+> +	 */
+> +	lockup_detector_pending_init = true;
+
+This does not make sense to me. We are here only when:
+
+   1. lockup_detector_init() queued this work.
+
+   2. Someone cleared @lockup_detector_pending_init and woke the
+      worker via wait_queue. IT might be either PMU init code
+      or the late lockup_detector_check().
+
+watchdog_nmi_probe() might still return -EBUSY when PMU init failed.
+
+If you wanted to try the delayed probe once again (3rd attempt) from
+lockup_detector_check(), you would need to queue the work once again.
+But you need to be sure that lockup_detector_check() was not called
+yet. Otherwise, the 2nd work might wait forewer.
+
+IMHO, it is not worth the complexity.
+
+> +	ret = watchdog_nmi_probe();
+> +	if (ret) {
+> +		pr_info("Delayed init of the lockup detector failed: %d\n", ret);
+> +		pr_info("Perf NMI watchdog permanently disabled\n");
+> +		return;
+> +	}
+> +
+> +	nmi_watchdog_available = true;
+> +	lockup_detector_setup();
+> +	lockup_detector_pending_init = false;
+> +}
+
+Otherwise, it looks good to me.
+
+Best Regards,
+Petr
 
 _______________________________________________
 Linux-mediatek mailing list
