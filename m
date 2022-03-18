@@ -4,63 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAF0FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 12:32:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62AB2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 13:04:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OBBDaOGCcA88rJq+uIQmv3tI+FwYo/sVi1oqqwtXp4Y=; b=5DxM75z4K1qs9V
-	UuUiHD2ocrHlSFZwOOfrWtNdps6fP4xUqV8sPGvwrCq/K6qNjxk3n/5B/s/3kWKhZ9dtuFmZyd3Da
-	RGnstdcM2Pmc/uyNf0rwc9GyMewTaKf2MfJziaWcNYl0capxwOPnd2lmYj2DiXTmaCJmc65SzhHrS
-	fsuiVewQ2HMnNM39vgVyct2MKyZeDer9qDod/9MKRyAs5mndyIf9lsRmNbx0sVevKKjM3pfWktxjd
-	r/BJ0gb2p629ES4GPdgIFWieXZv8Jl2ynK9HsWyEVCylI6BbOHDGkB1TSNQbP46421YMFXctWsOBZ
-	Lrsdv49lbMjGKQmnbV2A==;
+	List-Owner; bh=8bTRaR8YcU5iLRftYPguEq4sw/DAn4a3Lbk+Nc8LGC4=; b=U4XA+vIvBHm3RK
+	jxbVAbgXdjicdAPQvWaYjj7UVhvt5N+MTP51bFJLjmLkC0ijsU1a3a2778aEHjAAEhfpbhDwMVC9L
+	9D3v2GXTKhgiKAbWkxKm4u7SsdjTNLJeIwylrg2kKjuEqZL4JFkhXg/BwaTi12itqDeF5GfVjyzPu
+	p5X4x1qTy4ukA71sPyfs9ty9eTSZ16Ej51Cpffgp0D1V8FB1FnzMlsx+S2FusLNHrosjd+nEuSBo+
+	mft8ewORqoHXv/JmTJEty4YJon/lSacL09tBT73DwBErpG3fPXD63Uo/jc/ZVDaKQIC4t+LdKkfzm
+	7xOlnxx1FsSYKWVIWR7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVBmd-001aaX-NC; Fri, 18 Mar 2022 12:32:43 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nVCHJ-001g97-HR; Fri, 18 Mar 2022 13:04:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVBmZ-001aZS-MT; Fri, 18 Mar 2022 12:32:42 +0000
-X-UUID: 07cdc904925d4eeea7cc19a40aa0fdae-20220318
-X-UUID: 07cdc904925d4eeea7cc19a40aa0fdae-20220318
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
+ id 1nVCHG-001g86-JN; Fri, 18 Mar 2022 13:04:24 +0000
+X-UUID: 952df146d52443609ab6f8a40de147b7-20220318
+X-UUID: 952df146d52443609ab6f8a40de147b7-20220318
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 460829865; Fri, 18 Mar 2022 05:32:36 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 506439869; Fri, 18 Mar 2022 06:04:17 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Mar 2022 05:22:34 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 18 Mar 2022 20:22:20 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ 15.0.1497.2; Fri, 18 Mar 2022 06:04:15 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 18 Mar 2022 21:04:13 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 18 Mar 2022 20:22:20 +0800
-Message-ID: <d9e15033a4f42e8ecd7ea69089b7b43955abd16c.camel@mediatek.com>
-Subject: Re: [PATCH v3 16/21] arm64: dts: mt8192: Add vcodec lat and core nodes
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
- Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, "Hui Liu"
- <hui.liu@mediatek.com>
-Date: Fri, 18 Mar 2022 20:22:20 +0800
-In-Reply-To: <c47d6a99-e59e-97cf-a803-af2b307ed1d1@collabora.com>
-References: <20220304130809.12924-1-allen-kh.cheng@mediatek.com>
- <20220304130809.12924-17-allen-kh.cheng@mediatek.com>
- <c47d6a99-e59e-97cf-a803-af2b307ed1d1@collabora.com>
+ Transport; Fri, 18 Mar 2022 21:04:13 +0800
+Message-ID: <4a59806ad9adbfcaa4c34cdf79d615e24e666442.camel@mediatek.com>
+Subject: Re: [PATCH v15 19/22] drm/mediatek: modify mediatek-drm for mt8195
+ multi mmsys support
+From: Nancy.Lin <nancy.lin@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Rob Herring <robh+dt@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ <linux@roeck-us.net>
+CC: <devicetree@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Yongqiang Niu
+ <yongqiang.niu@mediatek.com>, <srv_heupstream@mediatek.com>, David Airlie
+ <airlied@linux.ie>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ <singo.chang@mediatek.com>, <llvm@lists.linux.dev>, Nick Desaulniers
+ <ndesaulniers@google.com>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>, Nathan Chancellor <nathan@kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
+Date: Fri, 18 Mar 2022 21:04:13 +0800
+In-Reply-To: <abdf2bf18c57b8c622970252f58d4849823e48bd.camel@mediatek.com>
+References: <20220311015506.11232-1-nancy.lin@mediatek.com>
+ <20220311015506.11232-20-nancy.lin@mediatek.com>
+ <abdf2bf18c57b8c622970252f58d4849823e48bd.camel@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_053239_768430_978E0610 
-X-CRM114-Status: GOOD (  15.27  )
+X-CRM114-CacheID: sfid-20220318_060422_675519_56A0161B 
+X-CRM114-Status: GOOD (  21.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,60 +84,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+Hi CK,
 
-On Tue, 2022-03-15 at 15:39 +0100, AngeloGioacchino Del Regno wrote:
-> Il 04/03/22 14:08, Allen-KH Cheng ha scritto:
-> > Add vcodec lat and core nodes for mt8192 SoC.
+Thanks for the review.
+
+On Mon, 2022-03-14 at 18:08 +0800, CK Hu wrote:
+> Hi, Nancy:
+> 
+> On Fri, 2022-03-11 at 09:55 +0800, Nancy.Lin wrote:
+> > MT8195 have two mmsys. Modify drm for MT8195 multi-mmsys support.
+> > The two mmsys (vdosys0 and vdosys1) will bring up two drm drivers,
+> > only one drm driver register as the drm device.
+> > Each drm driver binds its own component. The last bind drm driver
+> > allocates and registers the drm device to drm core.
+> > Each crtc path is created with the corresponding drm driver data.
 > > 
-> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
 > > ---
-> >   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 58
-> > ++++++++++++++++++++++++
-> >   1 file changed, 58 insertions(+)
+> >  drivers/gpu/drm/mediatek/mtk_drm_crtc.c |  24 +-
+> >  drivers/gpu/drm/mediatek/mtk_drm_crtc.h |   3 +-
+> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c  | 300 ++++++++++++++++++--
+> > ----
+> >  drivers/gpu/drm/mediatek/mtk_drm_drv.h  |  10 +-
+> >  4 files changed, 246 insertions(+), 91 deletions(-)
 > > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> > index ac69033737bb..5fd1fed354d0 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> > @@ -1285,6 +1285,64 @@
-> >   			power-domains = <&spm
-> > MT8192_POWER_DOMAIN_ISP2>;
-> >   		};
-> >   
-> > +		vcodec_dec: vcodec-dec@16000000 {
-> > +			compatible = "mediatek,mt8192-vcodec-dec";
-> > +			reg = <0 0x16000000 0 0x1000>;	/* VDEC_SYS
-> > */
-> > +			mediatek,scp = <&scp>;
-> > +			iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
+> > 
 > 
-> Hello Allen-KH,
+> [snip]
 > 
-> please, use ranges whenever possible. Example:
+> >  
+> >  static const struct mtk_mmsys_driver_data
+> > mt8195_vdosys0_driver_data
+> > = {
+> >  	.main_path = mt8195_mtk_ddp_main,
+> >  	.main_len = ARRAY_SIZE(mt8195_mtk_ddp_main),
+> > +	.mmsys_dev_num = 2,
 > 
-> 			ranges = <0 0 0 0x16000000 0 0x26000>;
+> After apply this patch, vdosys0 only would not work. So I think this
+> should be set to 1 in this patch, and set to 2 in the patch that
+> support mt8195 vdosys1. With this modification,
 > 
-> 			vcodec-lat@1000 {
-> 				reg = <0 0x1000 0 0x800>;
-> 				.......
-> 
-> 			};
-> 
-> 			vcodec-core@25000 {
-> 				reg = <0 0x25000 0 0x1000>;
-> 				.......
-> 			};
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
 > 
 
-NO problem, I will update this.
+OK, I will fix it.
 
-Thanks,
-Allen
+Regards,
+Nancy
 
-> Thanks,
-> Angelo
+
+> >  };
+> >  
+> > 
+> 
+> 
 
 
 _______________________________________________
