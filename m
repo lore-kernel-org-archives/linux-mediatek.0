@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76BFEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 14:32:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58F8FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 14:35:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6l7M9JPGhHojwojXASfW78G/dH+tI55l2iHm6O8xTI4=; b=IWt3kv3fRgL8rf
-	yky7zTIie7Bsbmm8+XS1mcmzI8Ky9DgAJ2T9iH7MphqMghqvQIDNeAH/n5I6Xoyp/F2oND0gOfORd
-	soHiFiTNdhLSDsHd9oGZRaj2i6EpUgEGw4FW5/hHuUwsCQ3dCAd/jVhYRr/0sN/JZjLAIjlGVBeIi
-	TErxdyvYGh0x2tqPICel4IGFiscmZn90qP6/1Pf22DowfaDcC1IxbyHQ2ma4EPPeL0svmMLJReES4
-	nyma+HKTRazOzB0teVIn+uLsGc4ANOXSetQHuFQopxyqjEj7hlxj14Epi1Kisdk5HG8SFee5TZGWl
-	PXg6oDI2i99bzmlEgAHA==;
+	List-Owner; bh=WoNGZ8f1HvKMp1YIbobaHiuTbfvHhYI0CiOOfJroYYk=; b=L0Yqrlrv6/CWn7
+	woMhE4SIWwmwtr0CeOUpcBsYduKZLKsJlTvDlkgfzcHlpkc/I0RL8QPa4nDj+6AemlJ74hrZUjaJg
+	70ZxyKMSO+CiYHHW+fTowiTD3Hkqh1znlqJ0BiWQX7i8JdMR2NjgnN2jCW+t+4ndE8JZDEbR9v40A
+	qbRDflWg1lcDaLk+QHrIOvevrDzJs4oYKSsn+B9TiOqSxms77oPfdWDzMhO6DuwQbG7GeemPQWW2U
+	nnpxbwmr0Ykor3Mp2qoW9xepUETpI9R/Q1VubqeALQmVb5IDzhHWj7uAml3khqPlL5iCAzCP6H0+j
+	zrLEiEmSJztMV4+M+GEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVDeS-001xUF-0T; Fri, 18 Mar 2022 14:32:24 +0000
+	id 1nVDhn-001yzZ-4j; Fri, 18 Mar 2022 14:35:51 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVDcZ-001wnT-SR; Fri, 18 Mar 2022 14:30:30 +0000
-X-UUID: bf072d836deb490cbce6bd296bd18ca6-20220318
-X-UUID: bf072d836deb490cbce6bd296bd18ca6-20220318
+ id 1nVDcc-001wmR-Jm; Fri, 18 Mar 2022 14:30:35 +0000
+X-UUID: 60238caf81fb42dc8e4b8fc8da57afa6-20220318
+X-UUID: 60238caf81fb42dc8e4b8fc8da57afa6-20220318
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1211903656; Fri, 18 Mar 2022 07:30:19 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 2026977437; Fri, 18 Mar 2022 07:30:19 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Mar 2022 07:20:17 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 18 Mar 2022 22:20:14 +0800
+ 15.0.1497.2; Fri, 18 Mar 2022 07:20:27 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 18 Mar 2022 22:20:16 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 18 Mar 2022 22:20:14 +0800
+ Frontend Transport; Fri, 18 Mar 2022 22:20:16 +0800
 From: Nancy.Lin <nancy.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
@@ -54,18 +53,18 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
  <dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
  <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v16 13/22] drm/mediatek: add display merge mute/unmute support
+Subject: [PATCH v16 21/22] drm/mediatek: add mediatek-drm of vdosys1 support
  for MT8195
-Date: Fri, 18 Mar 2022 22:20:00 +0800
-Message-ID: <20220318142009.2796-14-nancy.lin@mediatek.com>
+Date: Fri, 18 Mar 2022 22:20:08 +0800
+Message-ID: <20220318142009.2796-22-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220318142009.2796-1-nancy.lin@mediatek.com>
 References: <20220318142009.2796-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_073027_968357_F42CCD7E 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20220318_073030_725988_911A1FC6 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,67 +81,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add merge mute/unmute setting for MT8195.
-MT8195 Vdosys1 merge1~merge4 support HW mute function.
+Add driver data of mt8195 vdosys1 to mediatek-drm.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_merge.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-index c0d9b43b2a66..9dca145cfb71 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-@@ -58,12 +58,15 @@
- #define FLD_PREULTRA_TH_LOW			GENMASK(15, 0)
- #define FLD_PREULTRA_TH_HIGH			GENMASK(31, 16)
- 
-+#define DISP_REG_MERGE_MUTE_0		0xf00
-+
- struct mtk_disp_merge {
- 	void __iomem			*regs;
- 	struct clk			*clk;
- 	struct clk			*async_clk;
- 	struct cmdq_client_reg		cmdq_reg;
- 	bool				fifo_en;
-+	bool				mute_support;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 1d461dce0d27..2a32e5d24f19 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -190,6 +190,12 @@ static const enum mtk_ddp_comp_id mt8195_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_DP_INTF0,
  };
  
- void mtk_merge_start(struct device *dev)
-@@ -82,6 +85,10 @@ void mtk_merge_start_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt)
- {
- 	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
- 
-+	if (priv->mute_support)
-+		mtk_ddp_write(cmdq_pkt, 0x0, &priv->cmdq_reg, priv->regs,
-+			      DISP_REG_MERGE_MUTE_0);
++static const enum mtk_ddp_comp_id mt8195_mtk_ddp_ext[] = {
++	DDP_COMPONENT_OVL_ADAPTOR,
++	DDP_COMPONENT_MERGE5,
++	DDP_COMPONENT_DP_INTF1,
++};
 +
- 	mtk_ddp_write(cmdq_pkt, 1, &priv->cmdq_reg, priv->regs,
- 		      DISP_REG_MERGE_CTRL);
- }
-@@ -90,6 +97,10 @@ void mtk_merge_stop_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt)
- {
- 	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
- 
-+	if (priv->mute_support)
-+		mtk_ddp_write(cmdq_pkt, 0x1, &priv->cmdq_reg, priv->regs,
-+			      DISP_REG_MERGE_MUTE_0);
+ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+ 	.main_path = mt2701_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
+@@ -251,7 +257,14 @@ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
+ static const struct mtk_mmsys_driver_data mt8195_vdosys0_driver_data = {
+ 	.main_path = mt8195_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt8195_mtk_ddp_main),
+-	.mmsys_dev_num = 1,
++	.mmsys_dev_num = 2,
++};
 +
- 	mtk_ddp_write(cmdq_pkt, 0, &priv->cmdq_reg, priv->regs,
- 		      DISP_REG_MERGE_CTRL);
- }
-@@ -264,6 +275,8 @@ static int mtk_disp_merge_probe(struct platform_device *pdev)
- 	priv->fifo_en = of_property_read_bool(dev->of_node,
- 					      "mediatek,merge-fifo-en");
++static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
++	.ext_path = mt8195_mtk_ddp_ext,
++	.ext_len = ARRAY_SIZE(mt8195_mtk_ddp_ext),
++	.mmsys_id = 1,
++	.mmsys_dev_num = 2,
+ };
  
-+	priv->mute_support = of_property_read_bool(dev->of_node,
-+						   "mediatek,merge-mute");
- 	platform_set_drvdata(pdev, priv);
- 
- 	ret = component_add(dev, &mtk_disp_merge_component_ops);
+ static const struct of_device_id mtk_drm_of_ids[] = {
+@@ -271,6 +284,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
+ 	  .data = &mt8192_mmsys_driver_data},
+ 	{ .compatible = "mediatek,mt8195-vdosys0",
+ 	  .data = &mt8195_vdosys0_driver_data},
++	{ .compatible = "mediatek,mt8195-vdosys1",
++	  .data = &mt8195_vdosys1_driver_data},
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
 -- 
 2.18.0
 
