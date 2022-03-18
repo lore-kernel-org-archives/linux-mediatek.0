@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 391D9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 10:58:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7BD8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 11:10:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jHuTOOIwiTGBn/NfsXstpnXkLk0p2EuX7ut/om2UP/Y=; b=H94VLwLmkgzQAo
-	9Z9MtvOLJwsYVZXhqMC2AY+bhiOP5rsKOMuvcbNQvWjzeICmtWnkcYFRrse+/bJqx2MaOjUSAUxtF
-	JE+je79ksrFlI/6C/Up+CO+OK8+IHnxpB0gJ7Uf95s3Ym++8hvmwXmFlPQE2UAPdSk0Lr+e7ByDwt
-	fvibbp9d+/xXF1DHQtKFsAhOySDdyz4OzUBGEFW5HR4p45sWrSlQy8mm8EDpbc+9jfnu/x+hBSp25
-	MS/TddOkvhqe6oBqB/H8ADoJdTVfz6XNf+CAdgJiawP+NGzWUBf/+oO/TPh5Bkd2iM3AccthuAc19
-	i961fPxAC6vCBaFhFKBA==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JgdjxEgoin9SawiTIi/X2MqbXjhPbNqyZdbJ2p0tObg=; b=xoXBf+MfHW2+oK8Nx0o78qYqvM
+	9OgDIlq+R4pGwI023iINSGW6hNQ2sUOh70BCxgqdZH5uL3jrivd1UYhUdytiqsPewoCE8Vpygnkch
+	+NkTBdYlmps5cT2+a4iggTI9/Pk7X/HsGOO1//6aThV3k+DK6sM9AtjdhAil459QjNfn+GfXymmJA
+	5gbDmj0nzVzCFUeUUnPVjPL7eRqUFj7kDdyVFUk7cwAIJzf3ayFu67eC+nbiWeU3pvHBlMJL7AcxD
+	ys31p+S9qbHrXviK2HW8FLrNpBjP/I6gfurJwPxY2x4RxURF8OWIzFe7Wj/UMPAeI/b3JthpDn2hb
+	H7IOeG1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVAJD-001JUB-5a; Fri, 18 Mar 2022 10:58:15 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nVAUZ-001LXF-37; Fri, 18 Mar 2022 11:09:59 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVAIs-001JL9-LR; Fri, 18 Mar 2022 10:57:56 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 4DE9B1F45E72
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647601073;
- bh=QFMATzqfLU4fdYkBOKl2poTrZxOt3e3lamYNlbklolU=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=Y+HKyBYlb6kRxRzZf19aWqC84CXIBmX1Ds5iOqLt/HVYn9kn9/xQf3oY1dGmL1ppV
- b5AAhQF/LbCmY8eU8sBNW0MY9XMZHUKjYJCRXB9aMsOAwIwXNL7H3//sR3BCiQSzsc
- O28Loczx6AGJOnFI/qXH3lkFRDQwTxPf2W9LsHLHp/DGKLjMH+Ab4kEPKtNnpuy9Dm
- xg4FM8ygImFhrjI/qUVm8r4a05O0AfduZLa2GkKNm3jW3I1Hqh2699H/qxlT2F0Ta/
- T9/s6qTPnLt0DRuzCjEvOVlxLgBSJVmsM/8sa+vOQeOu+wQ3vYBTOy5cNGMPN5IFB1
- yicf9tMJESXAA==
-Message-ID: <a3ccba54-9076-0966-f282-1943f10a0346@collabora.com>
-Date: Fri, 18 Mar 2022 11:57:49 +0100
+ id 1nVAUO-001LWN-1D; Fri, 18 Mar 2022 11:09:49 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id EC2C4616F9;
+ Fri, 18 Mar 2022 11:09:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90687C340E8;
+ Fri, 18 Mar 2022 11:09:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1647601786;
+ bh=SXnERjf7sMUEmSDOYADqk0NehLbz+bFri+b2as9Ucgc=;
+ h=Date:From:To:Subject:References:In-Reply-To:From;
+ b=LqEW2LGUWnpy0gIOVQNtrp1vB9raUEBE3dL18K3pYUsuMrFziJ36/rfWcTJmwH7pM
+ C7WOUzLXJAeDx0aepr+CqylLr5ZPMw6EAkr2oT9EfooIYJ/sa/q8eq/HLnQPFTsM8r
+ MqctyMaPVQg2qZyQLzXTs0hSvZVfXWJzHlShcBRwR8FMuF+z4QeV2ZOvQQ6VPmXVZI
+ m8cF9iSYnmkU8AK8/vmx2KMczAfaVAGA5C/Dl903SHYyjJoZ94jfD9X7JTEaSY85NQ
+ N+yYfh2u2PzxqUl7lxEz+jUiU/TKkyO1oxqgWLBZe+nu3rVwwl/2/RKPwCuh1PpcAm
+ hnXCzZTelw1Gg==
+Date: Fri, 18 Mar 2022 12:09:42 +0100
+From: Wolfram Sang <wsa@kernel.org>
+To: Boris Lysov <arzamas-16@mail.ee>, linux-i2c@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, qii.wang@mediatek.com
+Subject: Re: [PATCH 0/2] i2c: mediatek: remove mt6577 support
+Message-ID: <YjRodtoWRhlNUg14@shikoro>
+Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
+ Boris Lysov <arzamas-16@mail.ee>, linux-i2c@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, qii.wang@mediatek.com
+References: <20220120185853.24266-1-arzamas-16@mail.ee>
+ <Yh45nDwqnLInrzzE@ninjato>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v2 2/2] phy: mediatek: Add PCIe PHY driver
-Content-Language: en-US
-To: Jianjun Wang <jianjun.wang@mediatek.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, rex-bc.chen@mediatek.com,
- randy.wu@mediatek.com, jieyy.yang@mediatek.com, chuanjia.liu@mediatek.com,
- qizhong.cheng@mediatek.com, jian.yang@mediatek.com
-References: <20220318095417.2016-1-jianjun.wang@mediatek.com>
- <20220318095417.2016-3-jianjun.wang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220318095417.2016-3-jianjun.wang@mediatek.com>
+In-Reply-To: <Yh45nDwqnLInrzzE@ninjato>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_035755_023600_D666F5AA 
-X-CRM114-Status: GOOD (  36.71  )
+X-CRM114-CacheID: sfid-20220318_040948_196951_29514355 
+X-CRM114-Status: GOOD (  19.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,277 +70,94 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============3671499012887973573=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/03/22 10:54, Jianjun Wang ha scritto:
-> Add PCIe GEN3 PHY driver support on MediaTek chipsets.
-> 
-> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> ---
->   drivers/phy/mediatek/Kconfig        |  11 ++
->   drivers/phy/mediatek/Makefile       |   1 +
->   drivers/phy/mediatek/phy-mtk-pcie.c | 246 ++++++++++++++++++++++++++++
->   3 files changed, 258 insertions(+)
->   create mode 100644 drivers/phy/mediatek/phy-mtk-pcie.c
-> 
-> diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
-> index 55f8e6c048ab..387ed1b3f2cc 100644
-> --- a/drivers/phy/mediatek/Kconfig
-> +++ b/drivers/phy/mediatek/Kconfig
-> @@ -55,3 +55,14 @@ config PHY_MTK_MIPI_DSI
->   	select GENERIC_PHY
->   	help
->   	  Support MIPI DSI for Mediatek SoCs.
-> +
-> +config PHY_MTK_PCIE
-> +	tristate "MediaTek PCIe-PHY Driver"
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	depends on OF
-> +	select GENERIC_PHY
-> +	help
-> +	  Say 'Y' here to add support for MediaTek PCIe PHY driver.
-> +	  This driver create the basic PHY instance and provides initialize
-> +	  callback for PCIe GEN3 port, it supports software efuse
-> +	  initialization.
-> diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
-> index ace660fbed3a..788c13147f63 100644
-> --- a/drivers/phy/mediatek/Makefile
-> +++ b/drivers/phy/mediatek/Makefile
-> @@ -6,6 +6,7 @@
->   obj-$(CONFIG_PHY_MTK_TPHY)		+= phy-mtk-tphy.o
->   obj-$(CONFIG_PHY_MTK_UFS)		+= phy-mtk-ufs.o
->   obj-$(CONFIG_PHY_MTK_XSPHY)		+= phy-mtk-xsphy.o
-> +obj-$(CONFIG_PHY_MTK_PCIE)		+= phy-mtk-pcie.o
->   
->   phy-mtk-hdmi-drv-y			:= phy-mtk-hdmi.o
->   phy-mtk-hdmi-drv-y			+= phy-mtk-hdmi-mt2701.o
-> diff --git a/drivers/phy/mediatek/phy-mtk-pcie.c b/drivers/phy/mediatek/phy-mtk-pcie.c
-> new file mode 100644
-> index 000000000000..0f5d7c7e2b7e
-> --- /dev/null
-> +++ b/drivers/phy/mediatek/phy-mtk-pcie.c
-> @@ -0,0 +1,246 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + * Author: Jianjun Wang <jianjun.wang@mediatek.com>
-> + */
-> +
-> +#include <linux/bits.h>
-> +#include <linux/compiler_types.h>
-> +#include <linux/module.h>
-> +#include <linux/nvmem-consumer.h>
-> +#include <linux/phy/phy.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/slab.h>
-> +
-> +#include "phy-mtk-io.h"
-> +
-> +#define PEXTP_ANA_GLB_00_REG		0x9000
-> +#define PEXTP_ANA_LN0_TRX_REG		0xa000
-> +#define PEXTP_ANA_TX_OFFSET		0x04
-> +#define PEXTP_ANA_RX_OFFSET		0x3c
-> +#define PEXTP_ANA_LANE_OFFSET		0x100
-> +
-> +/* PEXTP_GLB_00_REG[28:24] Internal Resistor Selection of TX Bias Current */
-> +#define EFUSE_GLB_INTR_SEL		GENMASK(28, 24)
-> +#define EFUSE_GLB_INTR_VAL(x)		((0x1f & (x)) << 24)
-> +
-> +/* PEXTP_ANA_LN_RX_REG[3:0] RX impedance selection */
-> +#define EFUSE_LN_RX_SEL			GENMASK(3, 0)
-> +#define EFUSE_LN_RX_VAL(x)		(0xf & (x))
-> +
-> +/* PEXTP_ANA_LN_TX_REG[5:2] TX PMOS impedance selection */
-> +#define EFUSE_LN_TX_PMOS_SEL		GENMASK(5, 2)
-> +#define EFUSE_LN_TX_PMOS_VAL(x)		((0xf & (x)) << 2)
-> +
-> +/* PEXTP_ANA_LN_TX_REG[11:8] TX NMOS impedance selection */
-> +#define EFUSE_LN_TX_NMOS_SEL		GENMASK(11, 8)
-> +#define EFUSE_LN_TX_NMOS_VAL(x)		((0xf & (x)) << 8)
-> +
-> +/* Efuse data for each lane */
 
-What about some kerneldoc?
-
-/**
-  * struct mtk_pcie_lane_efuse - eFuse data for each lane
-  * @tx_pmos:
-  ......etc :))
-
-> +struct mtk_pcie_lane_efuse {
-> +	u32 tx_pmos;
-> +	u32 tx_nmos;
-> +	u32 rx_data;
-> +	bool lane_efuse_supported;
-> +};
-> +
-
-Same here
-
-/**
-  * struct mtk_pcie_phy - PCIe phy driver main structure
-  * @dev: ......
-
-> +struct mtk_pcie_phy {
-> +	struct device *dev;
-> +	struct phy *phy;
-> +	void __iomem *sif_base;
-> +
-> +	/*
-> +	 * Support software efuse initialization,
-> +	 * currently we only support 2 lane in maximum.
-> +	 */
-
-Obviously, if you add kerneldoc, this comment would get moved to that kerneldoc.
-
-> +	bool sw_efuse_supported;
-> +	u32 efuse_glb_intr;
+--===============3671499012887973573==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="iBARJ5cjDICW8t1U"
+Content-Disposition: inline
 
 
-> +	struct mtk_pcie_lane_efuse efuse[2];
+--iBARJ5cjDICW8t1U
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-If you dynamically allocate this one, you will be able to support any number
-of lanes, futureproofing this driver and giving it more flexibility.
+On Tue, Mar 01, 2022 at 04:19:56PM +0100, Wolfram Sang wrote:
+> On Thu, Jan 20, 2022 at 09:58:51PM +0300, Boris Lysov wrote:
+> > This small patch series removes mt6577 support from the i2c-mt65xx driv=
+er and
+> > devicectree binding documentation.
+> >=20
+> > The existing i2c-mt65xx driver relies on DMA since it was first introdu=
+ced.
+> > mt6577 does not support DMA [1] for I2C and SoC's Generic DMA engine ca=
+nnot
+> > be used for this purpose, too, which makes this particular driver incom=
+patible
+> > with mt6577 and other similar SoCs with same I2C IP.
+>=20
+> Qii Wang, what do you think about this series?
 
-> +};
-> +
+This series makes sense to me. If you do not disagree, Qii Wang, I will
+apply it soon. All the best, everyone.
 
-..snip..
+>=20
+> >=20
+> > [1] see references in
+> > https://lists.infradead.org/pipermail/linux-mediatek/2021-October/03033=
+3.html
+> >=20
+> > Boris Lysov (2):
+> >   dt-bindings: i2c: i2c-mt65xx: remove compatibility with mt6577
+> >   i2c: mediatek: remove compatibility with mt6577
+> >=20
+> >  .../devicetree/bindings/i2c/i2c-mt65xx.txt    |  9 +++---
+> >  drivers/i2c/busses/i2c-mt65xx.c               | 28 +++++++++----------
+> >  2 files changed, 18 insertions(+), 19 deletions(-)
+> >=20
+> > --=20
+> > 2.20.1
+> >=20
 
-> +
-> +static int mtk_pcie_efuse_read_for_lane(struct mtk_pcie_phy *pcie_phy,
-> +					unsigned int lane)
-> +{
-> +	struct device *dev = pcie_phy->dev;
-> +	struct mtk_pcie_lane_efuse *data;
-> +	char efuse_id[15];
-> +	int ret;
-> +
-> +	if (lane >= ARRAY_SIZE(pcie_phy->efuse))
-> +		return dev_err_probe(pcie_phy->dev, -EINVAL,
-> +				     "Requested lane number %d exceeds maximum %ld\n",
-> +				     lane, ARRAY_SIZE(pcie_phy->efuse) - 1);
 
-I don't like seeing dev_err_probe() outside of a probe function, but I acknowledge
-that the Linux documentation doesn't seem to give any direction about that, so
-this is a personal preference, at this point.
 
-> +
-> +	data = &pcie_phy->efuse[lane];
-> +
-> +	snprintf(efuse_id, sizeof(efuse_id), "tx_ln%d_pmos", lane);
-> +	ret = nvmem_cell_read_variable_le_u32(dev, efuse_id, &data->tx_pmos);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "Failed to read %s\n", efuse_id);
-> +
-> +	snprintf(efuse_id, sizeof(efuse_id), "tx_ln%d_nmos", lane);
-> +	ret = nvmem_cell_read_variable_le_u32(dev, efuse_id, &data->tx_nmos);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "Failed to read %s\n", efuse_id);
-> +
-> +	snprintf(efuse_id, sizeof(efuse_id), "rx_ln%d", lane);
-> +	ret = nvmem_cell_read_variable_le_u32(dev, efuse_id, &data->rx_data);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "Failed to read %s\n", efuse_id);
-> +
-> +	if (!(data->tx_pmos || data->tx_nmos || data->rx_data))
-> +		return dev_err_probe(dev, -EINVAL,
-> +				     "No efuse data found for lane%d, but dts enable it\n",
-> +				     lane);
-> +
-> +	data->lane_efuse_supported = true;
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_pcie_read_efuse(struct mtk_pcie_phy *pcie_phy)
-> +{
-> +	struct device *dev = pcie_phy->dev;
-> +	bool nvmem_enabled;
-> +	int ret;
-> +
-> +	nvmem_enabled = device_property_read_bool(dev, "nvmem-cells");
-> +	if (!nvmem_enabled)
-> +		return -ENODEV;
-> +
-> +	ret = nvmem_cell_read_variable_le_u32(dev, "glb_intr",
-> +					      &pcie_phy->efuse_glb_intr);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "Failed to read glb_intr\n");
-> +
-> +	pcie_phy->sw_efuse_supported = true;
-> +
-> +	ret = mtk_pcie_efuse_read_for_lane(pcie_phy, 0);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = mtk_pcie_efuse_read_for_lane(pcie_phy, 1);
-> +	if (ret)
-> +		return ret;
+--iBARJ5cjDICW8t1U
+Content-Type: application/pgp-signature; name="signature.asc"
 
-To give some more future-proofing to this driver, I would instead either add a
-u32 devicetree property "num-lanes" or, if the same SoC may not have a different
-number of lanes across controller instances, I would add a number of lanes
-parameter as data for each of_match.
+-----BEGIN PGP SIGNATURE-----
 
-You'd be at that point using a for loop here like:
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmI0aHUACgkQFA3kzBSg
+KbZ60w/9HKOEiLJBPS53guHScO1S1QuOaD1AVgB1GXVELCJGJdPhAnOGyjayIlQD
+S5s/yMcHZWZhs2WadOukW1y2YZDMLS5hrhqI5Q9G0vbwRCAsIbiugyxjPOVCZiSZ
+PfrgpgTOig8Gnyrx1pWQjwcFRpIhXSVqLITssGFfP4HZjkv9bTaLnPyXqD8/GHN9
+NAbi6fT7UAI/gGAnNUAAY+PHv3Ynq62UCRd3p0zM8cSEiJTKvcWIRkmKQqXXG73Z
+JXPMsRt6WB2kM6ZPLl1G7gYXjTMPhOE8GyNskqV2SuqdRaxIC2TZqZypnFaKrVSr
+wvgY8VG3pyTgCCpbkXq/E7aGxJtfuet4oylCmufdw9PtB9X82fEr0p6980JXWX0/
+Z7xy1leutV+H1vwZeD3Rg2+xFV8osYvIx8L8Elh7AlPQ7UIOpD14YoXxA0kYzULR
+H3L5zuCLAWE3CFn7X8xYlS/Boj8G6hlVA6e/WlhdzFA9yRbYoIHeEgMOO1P8Gclz
+dTd6KhSMSUmyTVF2xlHn2kuMp5+pBQIKAt2xxuEHTuXRdos4sozSrqEmlSBKFi8H
+hz2hbGYQqK+20fcSfJEEwKWhVyqVMGQXb+7EzNXRJCzHP53xL1uwKBpZI5aYrd4h
+GWfrD4ydDKTKiJ+sm2X4RQvM/2deiZgnkb4h0Iir1FIj7IfbC64=
+=PSx7
+-----END PGP SIGNATURE-----
 
-for (i = 0; i < pcie_phy->num_lanes, i++) {
-	ret = mtk_pcie_efuse_read_for_lane(pcie_phy, i);
-	if (ret)
-		return ret;
-}
+--iBARJ5cjDICW8t1U--
 
-Of course, the same logic would apply to mtk_pcie_phy_init(), where you are
-instead calling mtk_pcie_efuse_set_lane().
 
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_pcie_phy_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct phy_provider *provider;
-> +	struct mtk_pcie_phy *pcie_phy;
-> +
-> +	pcie_phy = devm_kzalloc(dev, sizeof(*pcie_phy), GFP_KERNEL);
-> +	if (!pcie_phy)
-> +		return -ENOMEM;
-> +
-> +	pcie_phy->dev = dev;
-> +
-> +	pcie_phy->sif_base = devm_platform_ioremap_resource_byname(pdev, "sif");
-> +	if (IS_ERR(pcie_phy->sif_base))
-> +		return dev_err_probe(dev, PTR_ERR(pcie_phy->sif_base),
-> +				     "Failed to map phy-sif base\n");
-> +
-> +	pcie_phy->phy = devm_phy_create(dev, dev->of_node, &mtk_pcie_phy_ops);
-> +	if (IS_ERR(pcie_phy->phy))
-> +		return dev_err_probe(dev, PTR_ERR(pcie_phy->phy),
-> +				     "Failed to create PCIe phy\n");
-> +
-> +	/*
-> +	 * Failed to read the efuse data is not a fatal problem,
-> +	 * ignore the failure and keep going.
-> +	 */
-> +	mtk_pcie_read_efuse(pcie_phy);
-
-If you get an -EPROBE_DEFER here, you surely want to defer probing this driver,
-so, yes you're free to ignore the other failures, but you should fix that corner
-case.
-
-Everything else looks good, so, please make sure to add me to the Cc's for the
-next version of this series for me to give you a faster review.
-
-Regards,
-Angelo
-
+--===============3671499012887973573==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============3671499012887973573==--
+
