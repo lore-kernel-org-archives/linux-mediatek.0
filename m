@@ -4,59 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D204C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 05:24:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34A78C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 06:27:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6k2HDS0L4Z+hBo1Jh7PCI61MJpZQM2OsrMnO2q3xP/I=; b=ZXELjFebJ0/nm2
-	wcobPIjTw2Bm8FU8F9UwmPT8k+ufJnhaQT7rx6ONtbP39uKGKL/279D9GKneQEfG2nCW4hefD094u
-	Kq/WWUBf0a5gCJZbeI38T7qQgIJQ89dLEk4RZOz9HPSyJ7Hq9cQS+Ov3W8JBx0969PdXzxjsgkIcv
-	6v5QZ628CjONhXTQz3ZzbvLtBuXR4auqkKtUi0+X48HeHCaQENqnOEedTvgH9Ir2Fqgy9gtkjlenH
-	AREVyB4nTsJQSfExXkBGaiXopDqWqzn9CR0V+BuWMLW/C8PV2CNp1Y8rYcXV9BDk5nLBiyH3ZyQvW
-	xdAGy6SG0D8Y97pbJXSw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Pl2opjkygB6BM5MG1og0RNnNF7D8p8eFJ6bybYjfol4=; b=RxOh87iGUU9CW+
+	obqkyFvlL0AyMKSVoBzP5QcBLq25t+EMNS2hGbZWlXlKgN3Cp6XX96qqAa5re+G87N4ckQW55jEVA
+	Tctl6MM2zxBMlkMlnq6FqGHtL+TnB+SxTusCs6I5GADsPLWmnKnkDyVwKcJRC7VMRzbqOZUtxnvYE
+	h5wv+3PWvrwZuLQ9vw4Iifl7dIc+QnGCTZoTVa8bvF23rchO3VfFEmb/92J58pRyzgLFCc9ccPBzP
+	JsI7mGnQ73REVhOeA1keKBHiai5JtrJq2ltLF2xUfZINOHwlxIxoE2uRQDNxkyig+ughVLKyGqnB3
+	OkBmpL2MXNQNA1OUzOCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nV56E-000Nw5-8Q; Fri, 18 Mar 2022 05:24:30 +0000
+	id 1nV65N-000T2F-VF; Fri, 18 Mar 2022 06:27:41 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nV569-000Nv8-TL; Fri, 18 Mar 2022 05:24:28 +0000
-X-UUID: 88968a490e634207b3676f22cd87f4a0-20220317
-X-UUID: 88968a490e634207b3676f22cd87f4a0-20220317
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ id 1nV65C-000T0J-3O; Fri, 18 Mar 2022 06:27:31 +0000
+X-UUID: a1e9d26f04e14809ac0885878117ae55-20220317
+X-UUID: a1e9d26f04e14809ac0885878117ae55-20220317
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <kyrie.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 753453227; Thu, 17 Mar 2022 22:24:15 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Mar 2022 22:14:14 -0700
+ with ESMTP id 1833184170; Thu, 17 Mar 2022 23:27:19 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Mar 2022 23:27:18 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Mar 2022 13:14:12 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 18 Mar 2022 14:27:16 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 18 Mar 2022 13:14:12 +0800
-Message-ID: <7ae4f4a56e4a56c0869b84d48c0a584fb3c4cf9e.camel@mediatek.com>
-Subject: Re: [PATCH v16 2/8] dt-bindings: arm: mediatek: mmsys: add power
- and gce properties
-From: CK Hu <ck.hu@mediatek.com>
-To: jason-jh.lin <jason-jh.lin@mediatek.com>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Chun-Kuang
- Hu" <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Date: Fri, 18 Mar 2022 13:14:12 +0800
-In-Reply-To: <20220307032859.3275-3-jason-jh.lin@mediatek.com>
-References: <20220307032859.3275-1-jason-jh.lin@mediatek.com>
- <20220307032859.3275-3-jason-jh.lin@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Fri, 18 Mar 2022 14:27:15 +0800
+From: kyrie.wu <kyrie.wu@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+ <xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, kyrie wu
+ <kyrie.wu@mediatek.com>, <srv_heupstream@mediatek.com>
+Subject: [V8,0/6] Enable two hardware jpeg encoder for MT8195
+Date: Fri, 18 Mar 2022 14:27:07 +0800
+Message-ID: <1647584833-32750-1-git-send-email-kyrie.wu@mediatek.com>
+X-Mailer: git-send-email 2.6.4
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220317_222425_993789_01E93C6A 
-X-CRM114-Status: GOOD (  20.45  )
+X-CRM114-CacheID: sfid-20220317_232730_174592_AF936AA5 
+X-CRM114-Status: GOOD (  13.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,99 +70,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- singo.chang@mediatek.com, Alexandre Torgue <alexandre.torgue@foss.st.com>,
- roy-cw.yeh@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
- Fabien Parent <fparent@baylibre.com>, moudy.ho@mediatek.com,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- hsinyi@chromium.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- nancy.lin@mediatek.com, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Jason:
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-On Mon, 2022-03-07 at 11:28 +0800, jason-jh.lin wrote:
-> Power:
-> 1. Add description for power-domains property.
-> 
-> GCE:
-> 1. Add description for mboxes property.
-> 2. Add description for mediatek,gce-client-reg property.
+This series adds support for multi hardware jpeg encoding, by first
+adding use of_platform_populate to manage each hardware information:
+interrupt, clock, register bases and power. Secondly add encoding
+work queue to deal with the encoding requestsof multi-hardware
+at the same time. Lastly, add output picture reorder function
+interface to eliminate the out of order images.
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
+This series has been tested with both MT8195.
+Encoding worked for this chip.
 
-> 
-> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> ---
->  .../bindings/arm/mediatek/mediatek,mmsys.yaml | 31
-> +++++++++++++++++++
->  1 file changed, 31 insertions(+)
-> 
-> diff --git
-> a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> index b31d90dc9eb4..6c2c3edcd443 100644
-> ---
-> a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> +++
-> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> @@ -41,6 +41,30 @@ properties:
->    reg:
->      maxItems: 1
->  
-> +  power-domains:
-> +    description:
-> +      A phandle and PM domain specifier as defined by bindings
-> +      of the power controller specified by phandle. See
-> +      Documentation/devicetree/bindings/power/power-domain.yaml for
-> details.
-> +
-> +  mboxes:
-> +    description:
-> +      Using mailbox to communicate with GCE, it should have this
-> +      property and list of phandle, mailbox specifiers. See
-> +      Documentation/devicetree/bindings/mailbox/mtk-gce.txt for
-> details.
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +
-> +  mediatek,gce-client-reg:
-> +    description:
-> +      The register of client driver can be configured by gce with 4
-> arguments
-> +      defined in this property, such as phandle of gce, subsys id,
-> +      register offset and size.
-> +      Each subsys id is mapping to a base address of display
-> function blocks
-> +      register which is defined in the gce header
-> +      include/dt-bindings/gce/<chip>-gce.h.
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    maxItems: 1
-> +
->    "#clock-cells":
->      const: 1
->  
-> @@ -56,9 +80,16 @@ additionalProperties: false
->  
->  examples:
->    - |
-> +    #include <dt-bindings/power/mt8173-power.h>
-> +    #include <dt-bindings/gce/mt8173-gce.h>
-> +
->      mmsys: syscon@14000000 {
->          compatible = "mediatek,mt8173-mmsys", "syscon";
->          reg = <0x14000000 0x1000>;
-> +        power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
->          #clock-cells = <1>;
->          #reset-cells = <1>;
-> +        mboxes = <&gce 0 CMDQ_THR_PRIO_HIGHEST>,
-> +                 <&gce 1 CMDQ_THR_PRIO_HIGHEST>;
-> +        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
->      };
+Patches 1 Adds jpeg encoder dt-bindings for mt8195
+
+Patches 2 jpeg encoder builds two module for using Multi-HW,
+export some functions to make them visible by other modules.
+
+Patches 3 use devm_of_platform_populate to manage multi-hardware.
+
+Patch 4 add jpeg encoding timeout function to judge hardware timeout.
+
+Patch 5 add encoding work queue to deal with multi-hardware encoding
+at the same time.
+
+Patch 6 add output picture reorder function to order images.
+---
+This series patches dependent on:
+media_stage tree:
+[1]
+https://git.linuxtv.org/media_stage.git/commit/?id=b3627647f9ea7473d10fb08a95fd7c4133a17ca4
+
+patch1 new jpegenc dt-bindings included files
+[2] MM IOMMU binding:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220217113453.13658-2-yong.wu@mediatek.com/
+
+[3] MT8195 power domain:
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=580579
+
+Changes compared with v7:
+- some modifications for patch v6's review comments.
+
+Changes compared with v6:
+- new yaml file for mt8195 jpeg encoder.
+- some modifications for patch v5's review comments.
+
+Changes compared with v5:
+- use of_platform_populate to replace component framework to
+manage multi-hardware in patch 2.
+
+Changes compared with v4:
+--No change compaered with v4
+
+Changes compared with v3:
+--Structure patches for consistency, non-backward
+  compatible and do not break any existing functionality
+
+Changes compared with v2:
+--Split the last two patches into several patches
+  to enhance readability
+--Correct some syntax errors
+--Explain why the component framework is used
+
+Changes compared with v1:
+--Add jpeg encoder dt-bindings for MT8195
+--Use component framework to manage jpegenc HW
+--Add jpegenc output pic reorder function interface
+
+kyrie wu (6):
+  dt-bindings: mediatek: Add mediatek, mt8195-jpgenc compatible
+  media: mtk-jpegenc: export jpeg encoder functions
+  media: mtk-jpegenc: manage jpegenc multi-hardware
+  media: mtk-jpegenc: add jpegenc timeout func interface
+  media: mtk-jpegenc: add jpeg encode worker interface
+  media: mtk-jpegenc: add output pic reorder interface
+
+ .../media/mediatek,mt8195-jpegenc.yaml        | 144 +++++++++
+ drivers/media/platform/mtk-jpeg/Makefile      |  11 +-
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 292 +++++++++++++++---
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  82 ++++-
+ .../media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c |   1 +
+ .../media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h |   3 +-
+ .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 250 +++++++++++++++
+ 7 files changed, 729 insertions(+), 54 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
+
+-- 
+2.18.0
 
 
 _______________________________________________
