@@ -4,67 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F9EBC433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 10:54:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 391D9C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 10:58:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ieqog06XaACfd4vKAlKO3751UvA+TSS5KDPIAsPKL7U=; b=ElGP2cVtAXBeXn
-	UY7tsBAxDKhqDxxftUL8jLG599en7HqMqidegHp9h44CM5Kv7SsgNz5yfnHPyz2IRJIZIF6sUPt6f
-	xN5fqAftQDThWsyLHMY6VwijycjhkhYRj5ItHLVZuW4xfTI8Ed4P7CG/N5oGQuRLDCo4cm8gT8V6f
-	cWnRTd3rRbOS6PVfL2XmapVxMYnzz1dWQ3PAm55uLY+d5P0jbrtZbIE0JaLHyL7ROkYKBZl2yjG7T
-	AgX+uDVs2rsfadKEmtS5FOnrd1AqJAAYDqz7UNvs8U5l273LLC7xBBCbmIJGR56onHmVd/rPu6pWN
-	MPlzT8ZY2yKDjTv1EQYg==;
+	List-Owner; bh=jHuTOOIwiTGBn/NfsXstpnXkLk0p2EuX7ut/om2UP/Y=; b=H94VLwLmkgzQAo
+	9Z9MtvOLJwsYVZXhqMC2AY+bhiOP5rsKOMuvcbNQvWjzeICmtWnkcYFRrse+/bJqx2MaOjUSAUxtF
+	JE+je79ksrFlI/6C/Up+CO+OK8+IHnxpB0gJ7Uf95s3Ym++8hvmwXmFlPQE2UAPdSk0Lr+e7ByDwt
+	fvibbp9d+/xXF1DHQtKFsAhOySDdyz4OzUBGEFW5HR4p45sWrSlQy8mm8EDpbc+9jfnu/x+hBSp25
+	MS/TddOkvhqe6oBqB/H8ADoJdTVfz6XNf+CAdgJiawP+NGzWUBf/+oO/TPh5Bkd2iM3AccthuAc19
+	i961fPxAC6vCBaFhFKBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVAF4-001HWe-5S; Fri, 18 Mar 2022 10:53:58 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1nVAJD-001JUB-5a; Fri, 18 Mar 2022 10:58:15 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVA28-001BHK-HX; Fri, 18 Mar 2022 10:40:38 +0000
-Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
- by smtp-out2.suse.de (Postfix) with ESMTP id DE2A11F390;
- Fri, 18 Mar 2022 10:40:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
- t=1647600034; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=eAuiFb+OsFON4yFjKLQAFK1dNFxRsTZb0OnrTTRn9u0=;
- b=C32sGETYRNnx5Wr8LQxLIcbYrT0DnLCxlclsrJfisEggI2MYD0T8o8/CrHNpZcBjoK1VdT
- IuD1+udT+EDwEVmHcfnZNIpGNuSCmV63GQW/SnEpa40zWyu7spaviICSz3zugBpPoOCc2r
- PPqFl/cthhqlzZ1HPJOrpBbQGOKDa8k=
-Received: from suse.cz (unknown [10.100.224.162])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by relay2.suse.de (Postfix) with ESMTPS id 46B10A3B8A;
- Fri, 18 Mar 2022 10:40:34 +0000 (UTC)
-Date: Fri, 18 Mar 2022 11:40:31 +0100
-From: Petr Mladek <pmladek@suse.com>
-To: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, acme@kernel.org,
- akpm@linux-foundation.org, alexander.shishkin@linux.intel.com,
- catalin.marinas@arm.com, davem@davemloft.net, jolsa@redhat.com,
- jthierry@redhat.com, keescook@chromium.org, kernelfans@gmail.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-perf-users@vger.kernel.org, mark.rutland@arm.com,
- masahiroy@kernel.org, matthias.bgg@gmail.com, maz@kernel.org,
- mcgrof@kernel.org, mingo@redhat.com, namhyung@kernel.org,
- nixiaoming@huawei.com, peterz@infradead.org,
- sparclinux@vger.kernel.org, sumit.garg@linaro.org,
- wangqing@vivo.com, will@kernel.org, yj.chiang@mediatek.com
-Subject: Re: [PATCH v2 4/5] kernel/watchdog: Adapt the watchdog_hld interface
- for async model
-Message-ID: <YjRhnxg3L3cHUU/l@alley>
-References: <20220307154729.13477-1-lecopzer.chen@mediatek.com>
- <20220307154729.13477-5-lecopzer.chen@mediatek.com>
+ id 1nVAIs-001JL9-LR; Fri, 18 Mar 2022 10:57:56 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 4DE9B1F45E72
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1647601073;
+ bh=QFMATzqfLU4fdYkBOKl2poTrZxOt3e3lamYNlbklolU=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=Y+HKyBYlb6kRxRzZf19aWqC84CXIBmX1Ds5iOqLt/HVYn9kn9/xQf3oY1dGmL1ppV
+ b5AAhQF/LbCmY8eU8sBNW0MY9XMZHUKjYJCRXB9aMsOAwIwXNL7H3//sR3BCiQSzsc
+ O28Loczx6AGJOnFI/qXH3lkFRDQwTxPf2W9LsHLHp/DGKLjMH+Ab4kEPKtNnpuy9Dm
+ xg4FM8ygImFhrjI/qUVm8r4a05O0AfduZLa2GkKNm3jW3I1Hqh2699H/qxlT2F0Ta/
+ T9/s6qTPnLt0DRuzCjEvOVlxLgBSJVmsM/8sa+vOQeOu+wQ3vYBTOy5cNGMPN5IFB1
+ yicf9tMJESXAA==
+Message-ID: <a3ccba54-9076-0966-f282-1943f10a0346@collabora.com>
+Date: Fri, 18 Mar 2022 11:57:49 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220307154729.13477-5-lecopzer.chen@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH v2 2/2] phy: mediatek: Add PCIe PHY driver
+Content-Language: en-US
+To: Jianjun Wang <jianjun.wang@mediatek.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, rex-bc.chen@mediatek.com,
+ randy.wu@mediatek.com, jieyy.yang@mediatek.com, chuanjia.liu@mediatek.com,
+ qizhong.cheng@mediatek.com, jian.yang@mediatek.com
+References: <20220318095417.2016-1-jianjun.wang@mediatek.com>
+ <20220318095417.2016-3-jianjun.wang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220318095417.2016-3-jianjun.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_034036_783031_AFAC98B5 
-X-CRM114-Status: GOOD (  27.96  )
+X-CRM114-CacheID: sfid-20220318_035755_023600_D666F5AA 
+X-CRM114-Status: GOOD (  36.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,126 +71,275 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon 2022-03-07 23:47:28, Lecopzer Chen wrote:
-> When lockup_detector_init()->watchdog_nmi_probe(), PMU may be not ready
-> yet. E.g. on arm64, PMU is not ready until
-> device_initcall(armv8_pmu_driver_init).  And it is deeply integrated
-> with the driver model and cpuhp. Hence it is hard to push this
-> initialization before smp_init().
-
-The above is clear.
-
-> But it is easy to take an opposite approach by enabling watchdog_hld to
-> get the capability of PMU async.
+Il 18/03/22 10:54, Jianjun Wang ha scritto:
+> Add PCIe GEN3 PHY driver support on MediaTek chipsets.
 > 
-> The async model is achieved by expanding watchdog_nmi_probe() with
-> -EBUSY, and a re-initializing work_struct which waits on a wait_queue_head.
-
-These two paragraphs are a bit confusing to me. It might be just a
-problem with translation. I am not a native speaker. Anyway, I wonder
-if the following is more clear:
-
-<proposal>
-But it is easy to take an opposite approach and try to initialize
-the watchdog once again later.
-
-The delayed probe is called using workqueues. It need to allocate
-memory and must be proceed in a normal context.
-
-The delayed probe is queued only when the early one returns -EBUSY.
-It is the return code returned when PMU is not ready yet.
-</proposal>
-
-> --- a/kernel/watchdog.c
-> +++ b/kernel/watchdog.c
-> @@ -103,7 +103,11 @@ void __weak watchdog_nmi_disable(unsigned int cpu)
->  	hardlockup_detector_perf_disable();
->  }
->  
-> -/* Return 0, if a NMI watchdog is available. Error code otherwise */
+> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> ---
+>   drivers/phy/mediatek/Kconfig        |  11 ++
+>   drivers/phy/mediatek/Makefile       |   1 +
+>   drivers/phy/mediatek/phy-mtk-pcie.c | 246 ++++++++++++++++++++++++++++
+>   3 files changed, 258 insertions(+)
+>   create mode 100644 drivers/phy/mediatek/phy-mtk-pcie.c
+> 
+> diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
+> index 55f8e6c048ab..387ed1b3f2cc 100644
+> --- a/drivers/phy/mediatek/Kconfig
+> +++ b/drivers/phy/mediatek/Kconfig
+> @@ -55,3 +55,14 @@ config PHY_MTK_MIPI_DSI
+>   	select GENERIC_PHY
+>   	help
+>   	  Support MIPI DSI for Mediatek SoCs.
+> +
+> +config PHY_MTK_PCIE
+> +	tristate "MediaTek PCIe-PHY Driver"
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on OF
+> +	select GENERIC_PHY
+> +	help
+> +	  Say 'Y' here to add support for MediaTek PCIe PHY driver.
+> +	  This driver create the basic PHY instance and provides initialize
+> +	  callback for PCIe GEN3 port, it supports software efuse
+> +	  initialization.
+> diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
+> index ace660fbed3a..788c13147f63 100644
+> --- a/drivers/phy/mediatek/Makefile
+> +++ b/drivers/phy/mediatek/Makefile
+> @@ -6,6 +6,7 @@
+>   obj-$(CONFIG_PHY_MTK_TPHY)		+= phy-mtk-tphy.o
+>   obj-$(CONFIG_PHY_MTK_UFS)		+= phy-mtk-ufs.o
+>   obj-$(CONFIG_PHY_MTK_XSPHY)		+= phy-mtk-xsphy.o
+> +obj-$(CONFIG_PHY_MTK_PCIE)		+= phy-mtk-pcie.o
+>   
+>   phy-mtk-hdmi-drv-y			:= phy-mtk-hdmi.o
+>   phy-mtk-hdmi-drv-y			+= phy-mtk-hdmi-mt2701.o
+> diff --git a/drivers/phy/mediatek/phy-mtk-pcie.c b/drivers/phy/mediatek/phy-mtk-pcie.c
+> new file mode 100644
+> index 000000000000..0f5d7c7e2b7e
+> --- /dev/null
+> +++ b/drivers/phy/mediatek/phy-mtk-pcie.c
+> @@ -0,0 +1,246 @@
+> +// SPDX-License-Identifier: GPL-2.0
 > +/*
-> + * Arch specific API. Return 0, if a NMI watchdog is available. -EBUSY if not
-> + * ready, and arch code should wake up hld_detector_wait when ready. Other
-> + * negative value if not support.
+> + * Copyright (c) 2022 MediaTek Inc.
+> + * Author: Jianjun Wang <jianjun.wang@mediatek.com>
 > + */
+> +
+> +#include <linux/bits.h>
+> +#include <linux/compiler_types.h>
+> +#include <linux/module.h>
+> +#include <linux/nvmem-consumer.h>
+> +#include <linux/phy/phy.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/slab.h>
+> +
+> +#include "phy-mtk-io.h"
+> +
+> +#define PEXTP_ANA_GLB_00_REG		0x9000
+> +#define PEXTP_ANA_LN0_TRX_REG		0xa000
+> +#define PEXTP_ANA_TX_OFFSET		0x04
+> +#define PEXTP_ANA_RX_OFFSET		0x3c
+> +#define PEXTP_ANA_LANE_OFFSET		0x100
+> +
+> +/* PEXTP_GLB_00_REG[28:24] Internal Resistor Selection of TX Bias Current */
+> +#define EFUSE_GLB_INTR_SEL		GENMASK(28, 24)
+> +#define EFUSE_GLB_INTR_VAL(x)		((0x1f & (x)) << 24)
+> +
+> +/* PEXTP_ANA_LN_RX_REG[3:0] RX impedance selection */
+> +#define EFUSE_LN_RX_SEL			GENMASK(3, 0)
+> +#define EFUSE_LN_RX_VAL(x)		(0xf & (x))
+> +
+> +/* PEXTP_ANA_LN_TX_REG[5:2] TX PMOS impedance selection */
+> +#define EFUSE_LN_TX_PMOS_SEL		GENMASK(5, 2)
+> +#define EFUSE_LN_TX_PMOS_VAL(x)		((0xf & (x)) << 2)
+> +
+> +/* PEXTP_ANA_LN_TX_REG[11:8] TX NMOS impedance selection */
+> +#define EFUSE_LN_TX_NMOS_SEL		GENMASK(11, 8)
+> +#define EFUSE_LN_TX_NMOS_VAL(x)		((0xf & (x)) << 8)
+> +
+> +/* Efuse data for each lane */
 
-I wonder if the following is slightly more clear:
+What about some kerneldoc?
 
- /*
- * Arch specific API.
- *
- * Return 0 when NMI watchdog is available, negative value otherwise.
- * The error code -EBUSY is special. It means that a deferred probe
- * might succeed later.
- */
+/**
+  * struct mtk_pcie_lane_efuse - eFuse data for each lane
+  * @tx_pmos:
+  ......etc :))
 
->  int __weak __init watchdog_nmi_probe(void)
->  {
->  	return hardlockup_detector_perf_init();
-> @@ -839,16 +843,70 @@ static void __init watchdog_sysctl_init(void)
->  #define watchdog_sysctl_init() do { } while (0)
->  #endif /* CONFIG_SYSCTL */
->  
-> +static void lockup_detector_delay_init(struct work_struct *work);
-> +bool lockup_detector_pending_init __initdata;
+> +struct mtk_pcie_lane_efuse {
+> +	u32 tx_pmos;
+> +	u32 tx_nmos;
+> +	u32 rx_data;
+> +	bool lane_efuse_supported;
+> +};
 > +
-> +struct wait_queue_head hld_detector_wait __initdata =
-> +		__WAIT_QUEUE_HEAD_INITIALIZER(hld_detector_wait);
-> +
-> +static struct work_struct detector_work __initdata =
-> +		__WORK_INITIALIZER(detector_work, lockup_detector_delay_init);
-> +
-> +static void __init lockup_detector_delay_init(struct work_struct *work)
-> +{
-> +	int ret;
-> +
-> +	wait_event(hld_detector_wait,
-> +			lockup_detector_pending_init == false);
+
+Same here
+
+/**
+  * struct mtk_pcie_phy - PCIe phy driver main structure
+  * @dev: ......
+
+> +struct mtk_pcie_phy {
+> +	struct device *dev;
+> +	struct phy *phy;
+> +	void __iomem *sif_base;
 > +
 > +	/*
-> +	 * Here, we know the PMU should be ready, so set pending to true to
-> +	 * inform watchdog_nmi_probe() that it shouldn't return -EBUSY again.
+> +	 * Support software efuse initialization,
+> +	 * currently we only support 2 lane in maximum.
 > +	 */
-> +	lockup_detector_pending_init = true;
 
-This does not make sense to me. We are here only when:
+Obviously, if you add kerneldoc, this comment would get moved to that kerneldoc.
 
-   1. lockup_detector_init() queued this work.
+> +	bool sw_efuse_supported;
+> +	u32 efuse_glb_intr;
 
-   2. Someone cleared @lockup_detector_pending_init and woke the
-      worker via wait_queue. IT might be either PMU init code
-      or the late lockup_detector_check().
 
-watchdog_nmi_probe() might still return -EBUSY when PMU init failed.
+> +	struct mtk_pcie_lane_efuse efuse[2];
 
-If you wanted to try the delayed probe once again (3rd attempt) from
-lockup_detector_check(), you would need to queue the work once again.
-But you need to be sure that lockup_detector_check() was not called
-yet. Otherwise, the 2nd work might wait forewer.
+If you dynamically allocate this one, you will be able to support any number
+of lanes, futureproofing this driver and giving it more flexibility.
 
-IMHO, it is not worth the complexity.
-
-> +	ret = watchdog_nmi_probe();
-> +	if (ret) {
-> +		pr_info("Delayed init of the lockup detector failed: %d\n", ret);
-> +		pr_info("Perf NMI watchdog permanently disabled\n");
-> +		return;
-> +	}
+> +};
 > +
-> +	nmi_watchdog_available = true;
-> +	lockup_detector_setup();
-> +	lockup_detector_pending_init = false;
+
+..snip..
+
+> +
+> +static int mtk_pcie_efuse_read_for_lane(struct mtk_pcie_phy *pcie_phy,
+> +					unsigned int lane)
+> +{
+> +	struct device *dev = pcie_phy->dev;
+> +	struct mtk_pcie_lane_efuse *data;
+> +	char efuse_id[15];
+> +	int ret;
+> +
+> +	if (lane >= ARRAY_SIZE(pcie_phy->efuse))
+> +		return dev_err_probe(pcie_phy->dev, -EINVAL,
+> +				     "Requested lane number %d exceeds maximum %ld\n",
+> +				     lane, ARRAY_SIZE(pcie_phy->efuse) - 1);
+
+I don't like seeing dev_err_probe() outside of a probe function, but I acknowledge
+that the Linux documentation doesn't seem to give any direction about that, so
+this is a personal preference, at this point.
+
+> +
+> +	data = &pcie_phy->efuse[lane];
+> +
+> +	snprintf(efuse_id, sizeof(efuse_id), "tx_ln%d_pmos", lane);
+> +	ret = nvmem_cell_read_variable_le_u32(dev, efuse_id, &data->tx_pmos);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to read %s\n", efuse_id);
+> +
+> +	snprintf(efuse_id, sizeof(efuse_id), "tx_ln%d_nmos", lane);
+> +	ret = nvmem_cell_read_variable_le_u32(dev, efuse_id, &data->tx_nmos);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to read %s\n", efuse_id);
+> +
+> +	snprintf(efuse_id, sizeof(efuse_id), "rx_ln%d", lane);
+> +	ret = nvmem_cell_read_variable_le_u32(dev, efuse_id, &data->rx_data);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to read %s\n", efuse_id);
+> +
+> +	if (!(data->tx_pmos || data->tx_nmos || data->rx_data))
+> +		return dev_err_probe(dev, -EINVAL,
+> +				     "No efuse data found for lane%d, but dts enable it\n",
+> +				     lane);
+> +
+> +	data->lane_efuse_supported = true;
+> +
+> +	return 0;
 > +}
+> +
+> +static int mtk_pcie_read_efuse(struct mtk_pcie_phy *pcie_phy)
+> +{
+> +	struct device *dev = pcie_phy->dev;
+> +	bool nvmem_enabled;
+> +	int ret;
+> +
+> +	nvmem_enabled = device_property_read_bool(dev, "nvmem-cells");
+> +	if (!nvmem_enabled)
+> +		return -ENODEV;
+> +
+> +	ret = nvmem_cell_read_variable_le_u32(dev, "glb_intr",
+> +					      &pcie_phy->efuse_glb_intr);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to read glb_intr\n");
+> +
+> +	pcie_phy->sw_efuse_supported = true;
+> +
+> +	ret = mtk_pcie_efuse_read_for_lane(pcie_phy, 0);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = mtk_pcie_efuse_read_for_lane(pcie_phy, 1);
+> +	if (ret)
+> +		return ret;
 
-Otherwise, it looks good to me.
+To give some more future-proofing to this driver, I would instead either add a
+u32 devicetree property "num-lanes" or, if the same SoC may not have a different
+number of lanes across controller instances, I would add a number of lanes
+parameter as data for each of_match.
 
-Best Regards,
-Petr
+You'd be at that point using a for loop here like:
+
+for (i = 0; i < pcie_phy->num_lanes, i++) {
+	ret = mtk_pcie_efuse_read_for_lane(pcie_phy, i);
+	if (ret)
+		return ret;
+}
+
+Of course, the same logic would apply to mtk_pcie_phy_init(), where you are
+instead calling mtk_pcie_efuse_set_lane().
+
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_pcie_phy_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct phy_provider *provider;
+> +	struct mtk_pcie_phy *pcie_phy;
+> +
+> +	pcie_phy = devm_kzalloc(dev, sizeof(*pcie_phy), GFP_KERNEL);
+> +	if (!pcie_phy)
+> +		return -ENOMEM;
+> +
+> +	pcie_phy->dev = dev;
+> +
+> +	pcie_phy->sif_base = devm_platform_ioremap_resource_byname(pdev, "sif");
+> +	if (IS_ERR(pcie_phy->sif_base))
+> +		return dev_err_probe(dev, PTR_ERR(pcie_phy->sif_base),
+> +				     "Failed to map phy-sif base\n");
+> +
+> +	pcie_phy->phy = devm_phy_create(dev, dev->of_node, &mtk_pcie_phy_ops);
+> +	if (IS_ERR(pcie_phy->phy))
+> +		return dev_err_probe(dev, PTR_ERR(pcie_phy->phy),
+> +				     "Failed to create PCIe phy\n");
+> +
+> +	/*
+> +	 * Failed to read the efuse data is not a fatal problem,
+> +	 * ignore the failure and keep going.
+> +	 */
+> +	mtk_pcie_read_efuse(pcie_phy);
+
+If you get an -EPROBE_DEFER here, you surely want to defer probing this driver,
+so, yes you're free to ignore the other failures, but you should fix that corner
+case.
+
+Everything else looks good, so, please make sure to add me to the Cc's for the
+next version of this series for me to give you a faster review.
+
+Regards,
+Angelo
+
 
 _______________________________________________
 Linux-mediatek mailing list
