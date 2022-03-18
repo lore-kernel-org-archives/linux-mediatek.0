@@ -4,72 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24609C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 14:45:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0A59C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 14:46:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4jlSg0SZR8GxgazHPS4WG9RzhMPcVsldy8L+YHWFNgU=; b=J6DTcbq1247I2G
-	vjYQaCL7mjp7DY+sV6jgrDkC0xr/AodzKt+jpp2b3Wo1sH75v5nkMPgwqWIIO9u9YRPTXuzm0rvNg
-	RF5ggZoE8iKGnSGKoTHb2ZW7yKYE5B4nZwNtocBE1oIgSBO7Uv60AjAjKAA04x0DUdJR7nsKuwPQn
-	wTc7d1/EmSCs6mOQk3jPsWMf/yF5KSJshvd4XlDjwEHS4OQoeWpw+i4Pnnan+ZtqlhbjN16qSjiuE
-	xGRmzDWZdVYypMsergWayKC+b3Qnn63xlECkKez/tO0bgnrUchRGYWh23gubCxB1ujjrceGD3hSO5
-	bDnCdaaZ+S0r5s10UcFA==;
+	List-Owner; bh=BGmYbk9C2/fdistEL+2qX1lwugVnJEc14Ub8p/U3pog=; b=v+4i9acGrPS4T4
+	0Lco7U+dyLlDP42jHvOCEcspHFhIIJboXhW7WiUhhGOBgPt3RDKhIyetLn41I1nZOimVbgNQH543A
+	YCrBl3BXovHqU9TrAENAXU44EZzNvYDkAnOZNMZgeSMCx76BNzgz4JjDLxHYLAgDDU6FOAieQj98Q
+	Wnaz0THEfYE74NtYyKFcnTLsaSahflhZDlQ7vsMi0xNGn7X+PesdxFM4J9KdNNN5YP9aZeUZxITi/
+	4mdrVJpGWGTBuGGHn7RJaqgXBpgR+ySXWasHPhjO2MjMrZhXupHBS+6UbOUjamXkUeKARIrfTYgWm
+	6qeKM7ImYbwn4Y1Rm0cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVDrS-0022Y1-KQ; Fri, 18 Mar 2022 14:45:50 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nVDrZ-0022b3-GP; Fri, 18 Mar 2022 14:45:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVDrC-0022Ts-6J; Fri, 18 Mar 2022 14:45:39 +0000
-X-UUID: a9dc31bc9fe04fffada5584b06e748b5-20220318
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=y13DznyUBzvvaC2IBma6I1tgAx0sZ7RVv3vdchtq1Ek=; 
- b=O99fmHrloMZvbcXz889dG8yHCUWxCIEdiMmFqISYkcy2Nh8meIN5ru4v1TWL3ApSH1m3dkMyZLjqrsYnN0KndfnKpT2VjJZaSvOw/wYLV0JoWSTETicF0pWJ0OblqvnWpsk3Cg7fGSKrEv8+9xVzX9CvLyjjG+FveGY/gwSH0kY=;
-X-UUID: a9dc31bc9fe04fffada5584b06e748b5-20220318
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <jianjun.wang@mediatek.com>)
+ id 1nVDrT-0022Xo-DO; Fri, 18 Mar 2022 14:45:56 +0000
+X-UUID: 0245e3ca73224a4a92bd7215266f7ede-20220318
+X-UUID: 0245e3ca73224a4a92bd7215266f7ede-20220318
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2068538118; Fri, 18 Mar 2022 07:45:27 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Mar 2022 07:45:26 -0700
+ with ESMTP id 130957417; Fri, 18 Mar 2022 07:45:44 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 18 Mar 2022 07:45:42 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 18 Mar 2022 22:45:24 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 18 Mar 2022 22:45:23 +0800
-Message-ID: <da5eec2a0f96c882f79d124ecefcd357fe0d6b63.camel@mediatek.com>
-Subject: Re: [PATCH v2 1/2] dt-bindings: phy: mediatek: Add YAML schema for
- PCIe PHY
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>, "Vinod
- Koul" <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>
-CC: <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <rex-bc.chen@mediatek.com>, <randy.wu@mediatek.com>,
- <jieyy.yang@mediatek.com>, <chuanjia.liu@mediatek.com>,
- <qizhong.cheng@mediatek.com>, <jian.yang@mediatek.com>
-Date: Fri, 18 Mar 2022 22:45:23 +0800
-In-Reply-To: <d48c0023-231c-4011-5548-4b260b3fe172@kernel.org>
-References: <20220318095417.2016-1-jianjun.wang@mediatek.com>
- <20220318095417.2016-2-jianjun.wang@mediatek.com>
- <d48c0023-231c-4011-5548-4b260b3fe172@kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 18 Mar 2022 22:45:41 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 18 Mar 2022 22:45:41 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ "Chen-Yu Tsai" <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, Hui
+ Liu <hui.liu@mediatek.com>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Subject: [PATCH v4 01/22] arm64: dts: mt8192: Add pwrap node
+Date: Fri, 18 Mar 2022 22:45:13 +0800
+Message-ID: <20220318144534.17996-2-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
+References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_074534_292793_4606A5BD 
-X-CRM114-Status: GOOD (  19.00  )
+X-CRM114-CacheID: sfid-20220318_074551_506647_8BC6A6D5 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,76 +70,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
-
-On Fri, 2022-03-18 at 14:55 +0100, Krzysztof Kozlowski wrote:
-> On 18/03/2022 10:54, Jianjun Wang wrote:
-> > Add YAML schema documentation for PCIe PHY on MediaTek chipsets.
-> > 
-> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> > ---
-> >  .../bindings/phy/mediatek,pcie-phy.yaml       | 75
-> > +++++++++++++++++++
-> >  1 file changed, 75 insertions(+)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/phy/mediatek,pcie-
-> > phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,pcie-
-> > phy.yaml
-> > new file mode 100644
-> > index 000000000000..868bf976568b
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
-> > @@ -0,0 +1,75 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/phy/mediatek,pcie-phy.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: MediaTek PCIe PHY
-> > +
-> > +maintainers:
-> > +  - Jianjun Wang <jianjun.wang@mediatek.com>
-> > +
-> > +description: |
-> > +  The PCIe PHY supports physical layer functionality for PCIe Gen3
-> > port.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: mediatek,mt8195-pcie-phy
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  reg-names:
-> > +    items:
-> > +      - const: sif
-> > +
-> > +  "#phy-cells":
-> > +    const: 0
-> > +
-> > +  nvmem-cells:
-> > +    description:
-> > +      Phandles to nvmem cell that contains the efuse data, if
-> > unspecified,
-> > +      default value is used.
-> 
-> maxItems: 7
-
-Thanks for your review, I'll fix it in the next version.
-
-> 
-> Best regards,
-> Krzysztof
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+QWRkIHB3cmFwIG5vZGUgZm9yIG10ODE5MiBTb0MuCgpTaWduZWQtb2ZmLWJ5OiBBbGxlbi1LSCBD
+aGVuZyA8YWxsZW4ta2guY2hlbmdAbWVkaWF0ZWsuY29tPgpSZXZpZXdlZC1ieTogTsOtY29sYXMg
+Ri4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tPgpSZXZpZXdlZC1ieTogQW5n
+ZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFi
+b3JhLmNvbT4KLS0tCiBhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE5Mi5kdHNpIHwg
+MTIgKysrKysrKysrKysrCiAxIGZpbGUgY2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygrKQoKZGlmZiAt
+LWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTkyLmR0c2kgYi9hcmNoL2Fy
+bTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE5Mi5kdHNpCmluZGV4IDQxMWZlYjI5NDYxMy4uNzY0
+Mjg1OTk0NDRlIDEwMDY0NAotLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE5
+Mi5kdHNpCisrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTkyLmR0c2kKQEAg
+LTUyMyw2ICs1MjMsMTggQEAKIAkJCWNsb2NrLW5hbWVzID0gImNsazEzbSI7CiAJCX07CiAKKwkJ
+cHdyYXA6IHB3cmFwQDEwMDI2MDAwIHsKKwkJCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ2ODcz
+LXB3cmFwIjsKKwkJCXJlZyA9IDwwIDB4MTAwMjYwMDAgMCAweDEwMDA+OworCQkJcmVnLW5hbWVz
+ID0gInB3cmFwIjsKKwkJCWludGVycnVwdHMgPSA8R0lDX1NQSSAyMjAgSVJRX1RZUEVfTEVWRUxf
+SElHSCAwPjsKKwkJCWNsb2NrcyA9IDwmaW5mcmFjZmcgQ0xLX0lORlJBX1BNSUNfQVA+LAorCQkJ
+CSA8JmluZnJhY2ZnIENMS19JTkZSQV9QTUlDX1RNUj47CisJCQljbG9jay1uYW1lcyA9ICJzcGki
+LCAid3JhcCI7CisJCQlhc3NpZ25lZC1jbG9ja3MgPSA8JnRvcGNrZ2VuIENMS19UT1BfUFdSQVBf
+VUxQT1NDX1NFTD47CisJCQlhc3NpZ25lZC1jbG9jay1wYXJlbnRzID0gPCZ0b3Bja2dlbiBDTEtf
+VE9QX09TQ19EMTA+OworCQl9OworCiAJCXNjcF9hZHNwOiBjbG9jay1jb250cm9sbGVyQDEwNzIw
+MDAwIHsKIAkJCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTkyLXNjcF9hZHNwIjsKIAkJCXJl
+ZyA9IDwwIDB4MTA3MjAwMDAgMCAweDEwMDA+OwotLSAKMi4xOC4wCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBs
+aXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
