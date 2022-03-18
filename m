@@ -4,55 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92922C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 22:18:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AB4FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 23:52:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=sZfV9fUo3WJZfqRkjC84YkpG4fHAvdIjTF+pwjpNpbM=; b=V0Zj92RJFgSnUR
-	NtIL/tt3YB6MpDch6V0Q8xr5SaICxmBLdkNLPkAKac+rP/YSUeV0sJ6Phh4nNQKLO72iMlm9Totpk
-	/oFBaX1o2bK3G+U9hBD0yCoLNIKNkFke47ONoqbrTrmrzo55JoDsicf1ZBtwqlcWnSB9VWLd1AuzE
-	+tLafU/nlUtKvbk/JqaTgxtjMQ2hYJHXFkOjxcfBYP0dz+OKTLitzrxXH7ZpzJXTIbio3V0pUVuKl
-	4s6cozn75QdiAis1P9hRG8q3KVf6rMhp5WoB0jcrvHsV8PchK+8opxZ1+bX2UdbcOmlto9hhPQw64
-	ZMeXjaz5IyG6rGJOam3w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=464MQApI0YqgTpOGQWY5BbbtP9tWHALY7bYAhgAZnWg=; b=o0prmUq0kTYZ0x
+	QxZUDG36c6eU5ov8E5OwoawNKkRAlJO1pQLmXvDeGfYKsFEje5PNpdTBrFXeUbGZhuyo/8kffHtaH
+	9cu7zlx7H4l9sJiDZUzKaS/c49yKMSS0lI/r1CJOH8fOX1d/YicWbSO75eqE6NvNHksVpy7mao4T2
+	3yNDSBzKo+YbbrawLb4K+FpHRCqRCWtO0h3wssq2p4KYjh80oH1VT33WnMaNx9SR+6e1LxCd0cqzr
+	AyF7Uiyjf401SjdrG2N3rGpC2cvg4QzE3Jl3eEDzrhJYn9TeeeT7mLz/43mjW3lIut2B6epNBBocu
+	gB/tg12rA/6TnkuQNhzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVKvN-002wmK-VJ; Fri, 18 Mar 2022 22:18:21 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nVMOm-00311I-1a; Fri, 18 Mar 2022 23:52:48 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVKvK-002wm0-JW
- for linux-mediatek@lists.infradead.org; Fri, 18 Mar 2022 22:18:21 +0000
-X-UUID: e33bca8e049e420b90df49f929f04438-20220318
-X-UUID: e33bca8e049e420b90df49f929f04438-20220318
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
+ id 1nVMOi-003106-BR; Fri, 18 Mar 2022 23:52:46 +0000
+X-UUID: df9ec80b2478437eaa999befe8a37994-20220318
+X-UUID: df9ec80b2478437eaa999befe8a37994-20220318
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1833342029; Fri, 18 Mar 2022 15:18:14 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1326054029; Fri, 18 Mar 2022 16:52:39 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Mar 2022 15:18:13 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 19 Mar 2022 06:18:11 +0800
+ 15.0.1497.2; Fri, 18 Mar 2022 16:52:37 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sat, 19 Mar 2022 07:52:29 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 19 Mar 2022 06:18:11 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Johannes Berg <johannes.berg@intel.com>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH] mac80211: adjust the replace_state of ieee80211_find_chanctx()
-Date: Sat, 19 Mar 2022 06:18:10 +0800
-Message-ID: <40aabb3e10302f1d7da92b7a4eb46577d5ed8e05.1647641256.git.ryder.lee@mediatek.com>
+ Frontend Transport; Sat, 19 Mar 2022 07:52:29 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <allen-kh.cheng@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <hui.liu@mediatek.com>,
+ <krzysztof.kozlowski@canonical.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <matthias.bgg@gmail.com>, <robh+dt@kernel.org>, <ryder.lee@kernel.org>,
+ <wenst@chromium.org>
+Subject: Re: [PATCH v4 10/22] arm64: dts: mt8192: Fix nor_flash status disable
+ typo
+Date: Sat, 19 Mar 2022 07:52:29 +0800
+Message-ID: <20220318235229.8344-1-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220318144534.17996-11-allen-kh.cheng@mediatek.com>
+References: <20220318144534.17996-11-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_151818_677701_B4BDD7D8 
-X-CRM114-Status: GOOD (  10.81  )
+X-CRM114-CacheID: sfid-20220318_165244_407423_C31466B0 
+X-CRM114-Status: UNSURE (   5.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,36 +76,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We observe that the condition of chanctx could not be back to
-IEEE80211_CHANCTX_REPLACE_NONE occasionally while STA connection.
+> Correct nor_flash status disable typo of mt8192 SoC.
+> 
+> Fixes: d0a197a0d064a ("arm64: dts: mt8192: add nor_flash device node")
+> 
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-In this case the state could be IEEE80211_CHANCTX_REPLACE_OTHER, which
-fails the check and then creates another chanctx that leads to the next
-round of chan_switch failure in cfg80211_check_combinations().
-
-So, modify state to just rule out IEEE80211_CHANCTX_WILL_BE_REPLACED.
-
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- net/mac80211/chan.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/net/mac80211/chan.c b/net/mac80211/chan.c
-index e26d42de14ec..604095ff7a5b 100644
---- a/net/mac80211/chan.c
-+++ b/net/mac80211/chan.c
-@@ -477,7 +477,7 @@ ieee80211_find_chanctx(struct ieee80211_local *local,
- 	list_for_each_entry(ctx, &local->chanctx_list, list) {
- 		const struct cfg80211_chan_def *compat;
- 
--		if (ctx->replace_state != IEEE80211_CHANCTX_REPLACE_NONE)
-+		if (ctx->replace_state == IEEE80211_CHANCTX_WILL_BE_REPLACED)
- 			continue;
- 
- 		if (ctx->mode == IEEE80211_CHANCTX_EXCLUSIVE)
--- 
-2.29.2
-
+Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 
 _______________________________________________
 Linux-mediatek mailing list
