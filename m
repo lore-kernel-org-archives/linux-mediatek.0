@@ -4,67 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E716C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 15:09:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 553B1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 16:41:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7y7oZQp/gO10OFt3iGSsydeVx73gLsIi0MshXooPYC8=; b=OaMUK7Kny18+Qx
-	zyHt1zVDwuWkb22b5NmBh2sPbLYlfsl0acaxpUZm4q24Z2FvOKtecsedpOkl4kh+xlmYbKPW9KXWa
-	O/605lLp2YubvHnVQt6tQ51fpNtP6/nKCE8X86t0YroibC02UiVzF2hb0BH/P/ZkhR2QUBjpKmxcS
-	8aYnfWBCkP3gMcjhjcR0qOhvGM/qyjHY4c6eLTB0q7+Aq6Uo/JocmvvmrFP+sCh/Nd3Z+gZVGIscG
-	GRln7GTvzz+55JRB93gNMHdu3BCqfq1L69R8xizR5r7OspEuJ0zoZ510j2Z0nm/TizYkKYd/js6/4
-	dVxx/EFHx0G79VMc3GYQ==;
+	List-Owner; bh=wUEJVM+xuU+hoL67Jm0KjjVLFy5SKk/1A3CrLPZlto8=; b=HVGnbQlyMxGj4z
+	Ka/cBfoQsxVEuMqdyZ8Ru9nf0JQKrIixloPfVX63/ecE2nljlS0WF3M709LM7iKVRgGyFUqhEaopK
+	ZnSttxc+R43X9Ok9yO/3qDqbcxogJJVC7Xdlx2BXUwHVL8KqaeTtuCACCXCu7sXrZFU15BDxcIOM6
+	s1PRlSyzUtcdPPDD8zuFwUS58a1vfa7UAyEl+NdNFSm/SHm1QUCsfE5CRl0jCu8Y2HORsdOo/qTKg
+	CQe2RfZWvtZN7KsmsUPT0lv8uMiZpSKwkSYs8EVvibFxjoi2Zg0ZTrJprdrdn3MsgPFnWRxGO5pJZ
+	uRBEepFxaBFGrkdbLJsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVEE3-002DDF-Jn; Fri, 18 Mar 2022 15:09:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nVFf3-002QMx-Sw; Fri, 18 Mar 2022 16:41:09 +0000
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVECJ-002CJv-1n; Fri, 18 Mar 2022 15:07:25 +0000
-X-UUID: 72c92902a75b4a5497c4c2b1363dc23b-20220318
-X-UUID: 72c92902a75b4a5497c4c2b1363dc23b-20220318
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 94764011; Fri, 18 Mar 2022 08:07:16 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Mar 2022 08:07:14 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Mar 2022 23:07:13 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 18 Mar 2022 23:07:13 +0800
-Message-ID: <0e6432862efc629377cb5dd40cd581c93b38cfed.camel@mediatek.com>
-Subject: Re: [RESEND v6 1/1] firmware: mediatek: add adsp ipc protocol
- interface
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>
-CC: Kevin Hilman <khilman@baylibre.com>, Linux-ALSA
- <alsa-devel@alsa-project.org>, <tzungbi@google.com>, Chen-Yu Tsai
- <wenst@chromium.org>, <cujomalainey@google.com>, Pierre-Louis Bossart
- <pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, Kai Vehmanen
- <kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <sound-open-firmware@alsa-project.org>
-Date: Fri, 18 Mar 2022 23:07:12 +0800
-In-Reply-To: <20220224133737.28056-2-allen-kh.cheng@mediatek.com>
-References: <20220224133737.28056-1-allen-kh.cheng@mediatek.com>
- <20220224133737.28056-2-allen-kh.cheng@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nVFf1-002QM3-JX
+ for linux-mediatek@lists.infradead.org; Fri, 18 Mar 2022 16:41:09 +0000
+Received: by mail-pj1-x102d.google.com with SMTP id
+ bx24-20020a17090af49800b001c6872a9e4eso4667108pjb.5
+ for <linux-mediatek@lists.infradead.org>; Fri, 18 Mar 2022 09:41:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=YqeA3yzSovnWISu9O1IIYzrK5bErdUVNL8Ziq3eSYwE=;
+ b=WWKSAR2dgARpIW+G+PXd3YLnUwrniUXkKPt4go9LCVGTfI7J10WokWED37htpO3ypO
+ PRWjgCRVpAfvFv+fs3eZMCUSm95FrQTtkg6ASkXVMubxcEWKs/W75JAGMhxCKeTnOPuM
+ nwz7TlEXlYnApEeYVJpKxo40kB3RIcEHdgE6/nnnS9wJGfimhPImk+44654WHfr+rN12
+ Fv0J1cnKU5hBIPH8NJ/VlmiaAeOvyRzPECfkJftxdXKuFTTiOqLhgp1eHL8Ai7ikHygW
+ Oqt4tlJskcbTGGopUy1m2LHruXrlLjdPTHfb2NfyrhUQta5/BBu8zwaM7Goi9Q9izRnX
+ YKew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=YqeA3yzSovnWISu9O1IIYzrK5bErdUVNL8Ziq3eSYwE=;
+ b=T9lJnxnY0uf45Dr4nn/j7nZ1QvkgvNFttTCsQfZNLBTANH42PLS+PL2pEg0qsuN+Cv
+ Vj6R0FntSEzcJYc2YOG3zDuoV2trWWnrhPBz/VEoOBeFnh5dT7QiYmLRLmWXGy7wxesq
+ GCtNyZDGF9xP0FZUPO/lqxqHsn0+g8U2z6cEGtgdCpm+PN69BgkA/A+SV9SddpO6uqLx
+ Q0PKhXL/Bm5E/Vp6XaonJOJ590mXECKBnLT9Ds9KwRoImXPFDW6oWuzEjOVxYtepgCno
+ tAge3blbpQm0nmn+Q8IRNks2tBTc0yTGviLh8Ky8Ik4zdg4/AaSjoWI5HKh5bNNI+RJ9
+ DD+g==
+X-Gm-Message-State: AOAM533FWjSzY8zrRWH2hcqBGOGu8nJ/0hOOT+boinzDRVjUkWu5DMJU
+ YQ9W5MusAT36N53v1B0KgWdotg==
+X-Google-Smtp-Source: ABdhPJyXYHj5tfou62Tf3lMqf0AvHuY99MCgO1pcsZ+JpImXFJRu9csewD/PBr64ga/R0Dzup1yxYw==
+X-Received: by 2002:a17:902:70cc:b0:154:1cc8:9df8 with SMTP id
+ l12-20020a17090270cc00b001541cc89df8mr333225plt.32.1647621665507; 
+ Fri, 18 Mar 2022 09:41:05 -0700 (PDT)
+Received: from p14s (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
+ by smtp.gmail.com with ESMTPSA id
+ y8-20020a17090aa40800b001c6ccb2c395sm327061pjp.9.2022.03.18.09.41.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 18 Mar 2022 09:41:04 -0700 (PDT)
+Date: Fri, 18 Mar 2022 10:41:02 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v5] remoteproc: mediatek: Fix side effect of mt8195 sram
+ power on
+Message-ID: <20220318164102.GA2898105@p14s>
+References: <20220318114200.4344-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20220318114200.4344-1-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_080723_203888_F762EEB6 
-X-CRM114-Status: GOOD (  34.53  )
+X-CRM114-CacheID: sfid-20220318_094107_657913_E4020E96 
+X-CRM114-Status: GOOD (  29.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,356 +91,158 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
-
-Could you please help me confirm this patch?
-
-I'd appreciate your help
-
-Best regards,
-Allen
-
-On Thu, 2022-02-24 at 21:37 +0800, Allen-KH Cheng wrote:
-> From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-> 
-> Some of mediatek processors contain
-> the Tensilica HiFix DSP for audio processing.
-> 
-> The communication between Host CPU and DSP firmware is
-> taking place using a shared memory area for message passing.
-> 
-> ADSP IPC protocol offers (send/recv) interfaces using
-> mediatek-mailbox APIs.
-> 
-> We use two mbox channels to implement a request-reply protocol.
-> 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Reviewed-by: Pierre-Louis Bossart <
-> pierre-louis.bossart@linux.intel.com>
-> Reviewed-by: Curtis Malainey <cujomalainey@chromium.org>
-> Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
-> Reviewed-by: YC Hung <yc.hung@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/firmware/Kconfig                      |   1 +
->  drivers/firmware/Makefile                     |   1 +
->  drivers/firmware/mediatek/Kconfig             |   9 +
->  drivers/firmware/mediatek/Makefile            |   2 +
->  drivers/firmware/mediatek/mtk-adsp-ipc.c      | 161
-> ++++++++++++++++++
->  .../linux/firmware/mediatek/mtk-adsp-ipc.h    |  65 +++++++
->  6 files changed, 239 insertions(+)
->  create mode 100644 drivers/firmware/mediatek/Kconfig
->  create mode 100644 drivers/firmware/mediatek/Makefile
->  create mode 100644 drivers/firmware/mediatek/mtk-adsp-ipc.c
->  create mode 100644 include/linux/firmware/mediatek/mtk-adsp-ipc.h
-> 
-> diff --git a/drivers/firmware/Kconfig b/drivers/firmware/Kconfig
-> index 75cb91055c17..f3578c60cff0 100644
-> --- a/drivers/firmware/Kconfig
-> +++ b/drivers/firmware/Kconfig
-> @@ -299,6 +299,7 @@ source "drivers/firmware/cirrus/Kconfig"
->  source "drivers/firmware/google/Kconfig"
->  source "drivers/firmware/efi/Kconfig"
->  source "drivers/firmware/imx/Kconfig"
-> +source "drivers/firmware/mediatek/Kconfig"
->  source "drivers/firmware/meson/Kconfig"
->  source "drivers/firmware/psci/Kconfig"
->  source "drivers/firmware/smccc/Kconfig"
-> diff --git a/drivers/firmware/Makefile b/drivers/firmware/Makefile
-> index 4e58cb474a68..88fbdc110100 100644
-> --- a/drivers/firmware/Makefile
-> +++ b/drivers/firmware/Makefile
-> @@ -34,6 +34,7 @@ obj-$(CONFIG_GOOGLE_FIRMWARE)	+= google/
->  obj-$(CONFIG_EFI)		+= efi/
->  obj-$(CONFIG_UEFI_CPER)		+= efi/
->  obj-y				+= imx/
-> +obj-y				+= mediatek/
->  obj-y				+= psci/
->  obj-y				+= smccc/
->  obj-y				+= tegra/
-> diff --git a/drivers/firmware/mediatek/Kconfig
-> b/drivers/firmware/mediatek/Kconfig
-> new file mode 100644
-> index 000000000000..6d1e580b967b
-> --- /dev/null
-> +++ b/drivers/firmware/mediatek/Kconfig
-> @@ -0,0 +1,9 @@
-> +# SPDX-License-Identifier: GPL-2.0-only
-> +config MTK_ADSP_IPC
-> +	tristate "MTK ADSP IPC Protocol driver"
-> +	depends on MTK_ADSP_MBOX
-> +	help
-> +	  Say yes here to add support for the MediaTek ADSP IPC
-> +	  between host AP (Linux) and the firmware running on ADSP.
-> +	  ADSP exists on some mtk processors.
-> +	  Client might use shared memory to exchange information with
-> ADSP side.
-> diff --git a/drivers/firmware/mediatek/Makefile
-> b/drivers/firmware/mediatek/Makefile
-> new file mode 100644
-> index 000000000000..4e840b65650d
-> --- /dev/null
-> +++ b/drivers/firmware/mediatek/Makefile
-> @@ -0,0 +1,2 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +obj-$(CONFIG_MTK_ADSP_IPC)		+= mtk-adsp-ipc.o
-> diff --git a/drivers/firmware/mediatek/mtk-adsp-ipc.c
-> b/drivers/firmware/mediatek/mtk-adsp-ipc.c
-> new file mode 100644
-> index 000000000000..9c535d2688d9
-> --- /dev/null
-> +++ b/drivers/firmware/mediatek/mtk-adsp-ipc.c
-> @@ -0,0 +1,161 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2022 MediaTek Corporation. All rights reserved.
-> + * Author: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> + */
-> +
-> +#include <linux/firmware/mediatek/mtk-adsp-ipc.h>
-> +#include <linux/kernel.h>
-> +#include <linux/mailbox_client.h>
-> +#include <linux/module.h>
-> +#include <linux/of_platform.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/slab.h>
-> +
-> +/*
-> + * mtk_adsp_ipc_send - send ipc cmd to MTK ADSP
-> + *
-> + * @ipc: ADSP IPC handle
-> + * @idx: index of the mailbox channel
-> + * @msg: IPC cmd (reply or request)
-> + *
-> + * Returns zero for success from mbox_send_message
-> + * negative value for error
-> + */
-> +int mtk_adsp_ipc_send(struct mtk_adsp_ipc *ipc, unsigned int idx,
-> uint32_t msg)
-> +{
-> +	struct mtk_adsp_chan *adsp_chan;
-> +	int ret;
-> +
-> +	if (idx >= MTK_ADSP_MBOX_NUM)
-> +		return -EINVAL;
-> +
-> +	adsp_chan = &ipc->chans[idx];
-> +	ret = mbox_send_message(adsp_chan->ch, &msg);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	/*
-> +	 * mbox_send_message returns non-negative value on success,
-> +	 * return zero for success
-> +	 */
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL(mtk_adsp_ipc_send);
-> +
-> +/*
-> + * mtk_adsp_ipc_recv - recv callback used by MTK ADSP mailbox
-> + *
-> + * @c: mbox client
-> + * @msg: message received
-> + *
-> + * Users of ADSP IPC will need to privde handle_reply and
-> handle_request
-> + * callbacks.
-> + */
-> +static void mtk_adsp_ipc_recv(struct mbox_client *c, void *msg)
-> +{
-> +	struct mtk_adsp_chan *chan = container_of(c, struct
-> mtk_adsp_chan, cl);
-> +	struct device *dev = c->dev;
-> +
-> +	switch (chan->idx) {
-> +	case MTK_ADSP_MBOX_REPLY:
-> +		chan->ipc->ops->handle_reply(chan->ipc);
-> +		break;
-> +	case MTK_ADSP_MBOX_REQUEST:
-> +		chan->ipc->ops->handle_request(chan->ipc);
-> +		break;
-> +	default:
-> +		dev_err(dev, "wrong mbox chan %d\n", chan->idx);
-> +		break;
-> +	}
-> +}
-> +
-> +static int mtk_adsp_ipc_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct mtk_adsp_ipc *adsp_ipc;
-> +	struct mtk_adsp_chan *adsp_chan;
-> +	struct mbox_client *cl;
-> +	char *chan_name;
-> +	int ret;
-> +	int i, j;
-> +
-> +	device_set_of_node_from_dev(&pdev->dev, pdev->dev.parent);
-> +
-> +	adsp_ipc = devm_kzalloc(dev, sizeof(*adsp_ipc), GFP_KERNEL);
-> +	if (!adsp_ipc)
-> +		return -ENOMEM;
-> +
-> +	for (i = 0; i < MTK_ADSP_MBOX_NUM; i++) {
-> +		chan_name = kasprintf(GFP_KERNEL, "mbox%d", i);
-> +		if (!chan_name) {
-> +			ret = -ENOMEM;
-> +			goto out;
-> +		}
-> +
-> +		adsp_chan = &adsp_ipc->chans[i];
-> +		cl = &adsp_chan->cl;
-> +		cl->dev = dev->parent;
-> +		cl->tx_block = false;
-> +		cl->knows_txdone = false;
-> +		cl->tx_prepare = NULL;
-> +		cl->rx_callback = mtk_adsp_ipc_recv;
-> +
-> +		adsp_chan->ipc = adsp_ipc;
-> +		adsp_chan->idx = i;
-> +		adsp_chan->ch = mbox_request_channel_byname(cl,
-> chan_name);
-> +		if (IS_ERR(adsp_chan->ch)) {
-> +			ret = PTR_ERR(adsp_chan->ch);
-> +			if (ret != -EPROBE_DEFER)
-> +				dev_err(dev, "Failed to request mbox
-> chan %d ret %d\n",
-> +					i, ret);
-> +			goto out_free;
-> +		}
-> +
-> +		dev_dbg(dev, "request mbox chan %s\n", chan_name);
-> +		kfree(chan_name);
-> +	}
-> +
-> +	adsp_ipc->dev = dev;
-> +	dev_set_drvdata(dev, adsp_ipc);
-> +	dev_dbg(dev, "MTK ADSP IPC initialized\n");
-> +
-> +	return 0;
-> +
-> +out_free:
-> +	kfree(chan_name);
-> +out:
-> +	for (j = 0; j < i; j++) {
-> +		adsp_chan = &adsp_ipc->chans[j];
-> +		mbox_free_channel(adsp_chan->ch);
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +static int mtk_adsp_ipc_remove(struct platform_device *pdev)
-> +{
-> +	struct mtk_adsp_ipc *adsp_ipc = dev_get_drvdata(&pdev->dev);
-> +	struct mtk_adsp_chan *adsp_chan;
-> +	int i;
-> +
-> +	for (i = 0; i < MTK_ADSP_MBOX_NUM; i++) {
-> +		adsp_chan = &adsp_ipc->chans[i];
-> +		mbox_free_channel(adsp_chan->ch);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static struct platform_driver mtk_adsp_ipc_driver = {
-> +	.driver = {
-> +		.name = "mtk-adsp-ipc",
-> +	},
-> +	.probe = mtk_adsp_ipc_probe,
-> +	.remove = mtk_adsp_ipc_remove,
-> +};
-> +builtin_platform_driver(mtk_adsp_ipc_driver);
-> +
-> +MODULE_AUTHOR("Allen-KH Cheng <allen-kh.cheng@mediatek.com>");
-> +MODULE_DESCRIPTION("MTK ADSP IPC Driver");
-> +MODULE_LICENSE("GPL v2");
-> diff --git a/include/linux/firmware/mediatek/mtk-adsp-ipc.h
-> b/include/linux/firmware/mediatek/mtk-adsp-ipc.h
-> new file mode 100644
-> index 000000000000..28fd313340b8
-> --- /dev/null
-> +++ b/include/linux/firmware/mediatek/mtk-adsp-ipc.h
-> @@ -0,0 +1,65 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + */
-> +
-> +#ifndef MTK_ADSP_IPC_H
-> +#define MTK_ADSP_IPC_H
-> +
-> +#include <linux/device.h>
-> +#include <linux/types.h>
-> +#include <linux/mailbox_controller.h>
-> +#include <linux/mailbox_client.h>
-> +
-> +#define MTK_ADSP_IPC_REQ 0
-> +#define MTK_ADSP_IPC_RSP 1
-> +#define MTK_ADSP_IPC_OP_REQ 0x1
-> +#define MTK_ADSP_IPC_OP_RSP 0x2
-> +
-> +enum {
-> +	MTK_ADSP_MBOX_REPLY,
-> +	MTK_ADSP_MBOX_REQUEST,
-> +	MTK_ADSP_MBOX_NUM,
-> +};
-> +
-> +struct mtk_adsp_ipc;
-> +
-> +struct mtk_adsp_ipc_ops {
-> +	void (*handle_reply)(struct mtk_adsp_ipc *ipc);
-> +	void (*handle_request)(struct mtk_adsp_ipc *ipc);
-> +};
-> +
-> +struct mtk_adsp_chan {
-> +	struct mtk_adsp_ipc *ipc;
-> +	struct mbox_client cl;
-> +	struct mbox_chan *ch;
-> +	char *name;
-> +	int idx;
-> +};
-> +
-> +struct mtk_adsp_ipc {
-> +	struct mtk_adsp_chan chans[MTK_ADSP_MBOX_NUM];
-> +	struct device *dev;
-> +	struct mtk_adsp_ipc_ops *ops;
-> +	void *private_data;
-> +};
-> +
-> +static inline void mtk_adsp_ipc_set_data(struct mtk_adsp_ipc *ipc,
-> void *data)
-> +{
-> +	if (!ipc)
-> +		return;
-> +
-> +	ipc->private_data = data;
-> +}
-> +
-> +static inline void *mtk_adsp_ipc_get_data(struct mtk_adsp_ipc *ipc)
-> +{
-> +	if (!ipc)
-> +		return NULL;
-> +
-> +	return ipc->private_data;
-> +}
-> +
-> +int mtk_adsp_ipc_send(struct mtk_adsp_ipc *ipc, unsigned int idx,
-> uint32_t op);
-> +
-> +#endif /* MTK_ADSP_IPC_H */
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gRnJpLCBNYXIgMTgsIDIwMjIgYXQgMDc6NDI6MDBQTSArMDgwMCwgVGluZ2hhbiBTaGVuIHdy
+b3RlOgo+IFRoZSBkZWZpbml0aW9uIG9mIEwxVENNX1NSQU1fUEROIGJpdHMgb24gbXQ4MTk1IGlz
+IGRpZmZlcmVudCB0byBtdDgxOTIuCj4gCj4gTDFUQ01fU1JBTV9QRE4gYml0c1szOjBdIGNvbnRy
+b2wgdGhlIHBvd2VyIG9mIG10ODE5NSBMMVRDTSBTUkFNLgo+IAo+IEwxVENNX1NSQU1fUEROIGJp
+dHNbNzo0XSBjb250cm9sIHRoZSBhY2Nlc3MgcGF0aCB0byBFTUkgZm9yIFNDUC4KPiBUaGVzZSBi
+aXRzIGhhdmUgdG8gYmUgcG93ZXJlZCBvbiB0byBhbGxvdyBFTUkgYWNjZXNzIGZvciBTQ1AuCj4g
+Cj4gQml0c1s3OjRdIGFsc28gYWZmZWN0IGF1ZGlvIERTUCBiZWNhdXNlIGF1ZGlvIERTUCBhbmQg
+U0NQIGFyZQo+IHBsYWNlZCBvbiB0aGUgc2FtZSBoYXJkd2FyZSBidXMuIElmIFNDUCBjYW5ub3Qg
+YWNjZXNzIEVNSSwgYXVkaW8gRFNQIGlzCj4gYmxvY2tlZCB0b28uCj4gCj4gTDFUQ01fU1JBTV9Q
+RE4gYml0c1szMTo4XSBhcmUgbm90IHVzZWQuCj4gCj4gVGhpcyBmaXggcmVtb3ZlcyBtb2RpZmlj
+YXRpb24gb2YgYml0c1s3OjRdIHdoZW4gcG93ZXIgb24vb2ZmIG10ODE5NSBTQ1AKPiBMMVRDTS4g
+SXQncyBiZWNhdXNlIHRoZSBtb2RpZmljYXRpb24gaW50cm9kdWNlcyBhIHNob3J0IHBlcmlvZCBv
+ZiB0aW1lCj4gYmxvY2tpbmcgYXVkaW8gRFNQIHRvIGFjY2VzcyBFTUkuIFRoaXMgd2FzIG5vdCBh
+IHByb2JsZW0gdW50aWwgd2UgaGF2ZQo+IHRvIGxvYWQgYm90aCBTQ1AgbW9kdWxlIGFuZCBhdWRp
+byBEU1AgbW9kdWxlLiBhdWRpbyBEU1AgbmVlZHMgdG8gYWNjZXNzCj4gRU1JIGJlY2F1c2UgaXQg
+aGFzIHNvdXJjZS9kYXRhIG9uIERSQU0uIEF1ZGlvIERTUCB3aWxsIGhhdmUgdW5leHBlY3RlZAo+
+IGJlaGF2aW9yIHdoZW4gaXQgYWNjZXNzZXMgRU1JIGFuZCB0aGUgU0NQIGRyaXZlciBibG9ja3Mg
+dGhlIEVNSSBwYXRoIGF0Cj4gdGhlIHNhbWUgdGltZS4KPiAKPiBGaXhlczogNzkxMTFkZjQxNGZj
+ICgicmVtb3RlcHJvYzogbWVkaWF0ZWs6IFN1cHBvcnQgbXQ4MTk1IHNjcCIpCj4gU2lnbmVkLW9m
+Zi1ieTogVGluZ2hhbiBTaGVuIDx0aW5naGFuLnNoZW5AbWVkaWF0ZWsuY29tPgo+IFJldmlld2Vk
+LWJ5OiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8YW5nZWxvZ2lvYWNjaGluby5kZWxyZWdu
+b0Bjb2xsYWJvcmEuY29tPgo+IFJldmlld2VkLWJ5OiBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlh
+cy5iZ2dAZ21haWwuY29tPgo+IAo+IC0tLQo+IHY1OiByZWJhc2VkIG9uIHJwcm9jLW5leHQKPiB2
+NDogYWRkIEZpeGVzIGFuZCBSZXZpZXdlZC1ieSB0YWdzCj4gdjM6IGZpeCBidWlsZCBlcnJvcgo+
+IHYyOiBhcHBseSBjb21tZW50cyBhYm91dCBtYWNybyBkZWZpbml0aW9uIGFuZCBmdW5jdGlvbiBj
+YWxscwo+IC0tLQo+ICBkcml2ZXJzL3JlbW90ZXByb2MvbXRrX2NvbW1vbi5oIHwgIDIgKwo+ICBk
+cml2ZXJzL3JlbW90ZXByb2MvbXRrX3NjcC5jICAgIHwgNjcgKysrKysrKysrKysrKysrKysrKysr
+KysrKy0tLS0tLS0tCj4gIDIgZmlsZXMgY2hhbmdlZCwgNTMgaW5zZXJ0aW9ucygrKSwgMTYgZGVs
+ZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcmVtb3RlcHJvYy9tdGtfY29tbW9u
+LmggYi9kcml2ZXJzL3JlbW90ZXByb2MvbXRrX2NvbW1vbi5oCj4gaW5kZXggNzFjZTQ5NzdjYjBi
+Li5lYTZmYTExMDBhMDAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9yZW1vdGVwcm9jL210a19jb21t
+b24uaAo+ICsrKyBiL2RyaXZlcnMvcmVtb3RlcHJvYy9tdGtfY29tbW9uLmgKPiBAQCAtNTQsNiAr
+NTQsOCBAQAo+ICAjZGVmaW5lIE1UODE5Ml9DT1JFMF9XRFRfSVJRCQkweDEwMDMwCj4gICNkZWZp
+bmUgTVQ4MTkyX0NPUkUwX1dEVF9DRkcJCTB4MTAwMzQKPiAgCj4gKyNkZWZpbmUgTVQ4MTk1X0wx
+VENNX1NSQU1fUEROX1JFU0VSVkVEX1JTSV9CSVRTCQlHRU5NQVNLKDcsIDQpCj4gKwo+ICAjZGVm
+aW5lIFNDUF9GV19WRVJfTEVOCQkJMzIKPiAgI2RlZmluZSBTQ1BfU0hBUkVfQlVGRkVSX1NJWkUJ
+CTI4OAo+ICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9yZW1vdGVwcm9jL210a19zY3AuYyBiL2Ry
+aXZlcnMvcmVtb3RlcHJvYy9tdGtfc2NwLmMKPiBpbmRleCAzODYwOTE1M2JmNjQuLjA2OGVkZjIx
+ZWE1MSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3JlbW90ZXByb2MvbXRrX3NjcC5jCj4gKysrIGIv
+ZHJpdmVycy9yZW1vdGVwcm9jL210a19zY3AuYwo+IEBAIC0zNjUsMjIgKzM2NSwyMiBAQCBzdGF0
+aWMgaW50IG10ODE4M19zY3BfYmVmb3JlX2xvYWQoc3RydWN0IG10a19zY3AgKnNjcCkKPiAgCXJl
+dHVybiAwOwo+ICB9Cj4gIAo+IC1zdGF0aWMgdm9pZCBtdDgxOTJfcG93ZXJfb25fc3JhbSh2b2lk
+IF9faW9tZW0gKmFkZHIpCj4gK3N0YXRpYyB2b2lkIHNjcF9zcmFtX3Bvd2VyX29uKHZvaWQgX19p
+b21lbSAqYWRkciwgdTMyIHJlc2VydmVkX21hc2spCj4gIHsKPiAgCWludCBpOwo+ICAKPiAgCWZv
+ciAoaSA9IDMxOyBpID49IDA7IGktLSkKPiAtCQl3cml0ZWwoR0VOTUFTSyhpLCAwKSwgYWRkcik7
+Cj4gKwkJd3JpdGVsKEdFTk1BU0soaSwgMCkgJiB+cmVzZXJ2ZWRfbWFzaywgYWRkcik7Cj4gIAl3
+cml0ZWwoMCwgYWRkcik7Cj4gIH0KPiAgCj4gLXN0YXRpYyB2b2lkIG10ODE5Ml9wb3dlcl9vZmZf
+c3JhbSh2b2lkIF9faW9tZW0gKmFkZHIpCj4gK3N0YXRpYyB2b2lkIHNjcF9zcmFtX3Bvd2VyX29m
+Zih2b2lkIF9faW9tZW0gKmFkZHIsIHUzMiByZXNlcnZlZF9tYXNrKQo+ICB7Cj4gIAlpbnQgaTsK
+PiAgCj4gIAl3cml0ZWwoMCwgYWRkcik7Cj4gIAlmb3IgKGkgPSAwOyBpIDwgMzI7IGkrKykKPiAt
+CQl3cml0ZWwoR0VOTUFTSyhpLCAwKSwgYWRkcik7Cj4gKwkJd3JpdGVsKEdFTk1BU0soaSwgMCkg
+JiB+cmVzZXJ2ZWRfbWFzaywgYWRkcik7Cj4gIH0KPiAgCj4gIHN0YXRpYyBpbnQgbXQ4MTg2X3Nj
+cF9iZWZvcmVfbG9hZChzdHJ1Y3QgbXRrX3NjcCAqc2NwKQo+IEBAIC00MTIsMTEgKzQxMiwzMiBA
+QCBzdGF0aWMgaW50IG10ODE5Ml9zY3BfYmVmb3JlX2xvYWQoc3RydWN0IG10a19zY3AgKnNjcCkK
+PiAgCXdyaXRlbCgxLCBzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0NPUkUwX1NXX1JTVE5fU0VUKTsK
+PiAgCj4gIAkvKiBlbmFibGUgU1JBTSBjbG9jayAqLwo+IC0JbXQ4MTkyX3Bvd2VyX29uX3NyYW0o
+c2NwLT5yZWdfYmFzZSArIE1UODE5Ml9MMlRDTV9TUkFNX1BEXzApOwo+IC0JbXQ4MTkyX3Bvd2Vy
+X29uX3NyYW0oc2NwLT5yZWdfYmFzZSArIE1UODE5Ml9MMlRDTV9TUkFNX1BEXzEpOwo+IC0JbXQ4
+MTkyX3Bvd2VyX29uX3NyYW0oc2NwLT5yZWdfYmFzZSArIE1UODE5Ml9MMlRDTV9TUkFNX1BEXzIp
+Owo+IC0JbXQ4MTkyX3Bvd2VyX29uX3NyYW0oc2NwLT5yZWdfYmFzZSArIE1UODE5Ml9MMVRDTV9T
+UkFNX1BETik7Cj4gLQltdDgxOTJfcG93ZXJfb25fc3JhbShzY3AtPnJlZ19iYXNlICsgTVQ4MTky
+X0NQVTBfU1JBTV9QRCk7Cj4gKwlzY3Bfc3JhbV9wb3dlcl9vbihzY3AtPnJlZ19iYXNlICsgTVQ4
+MTkyX0wyVENNX1NSQU1fUERfMCwgMCk7Cj4gKwlzY3Bfc3JhbV9wb3dlcl9vbihzY3AtPnJlZ19i
+YXNlICsgTVQ4MTkyX0wyVENNX1NSQU1fUERfMSwgMCk7Cj4gKwlzY3Bfc3JhbV9wb3dlcl9vbihz
+Y3AtPnJlZ19iYXNlICsgTVQ4MTkyX0wyVENNX1NSQU1fUERfMiwgMCk7Cj4gKwlzY3Bfc3JhbV9w
+b3dlcl9vbihzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0wxVENNX1NSQU1fUEROLCAwKTsKPiArCXNj
+cF9zcmFtX3Bvd2VyX29uKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfQ1BVMF9TUkFNX1BELCAwKTsK
+PiArCj4gKwkvKiBlbmFibGUgTVBVIGZvciBhbGwgbWVtb3J5IHJlZ2lvbnMgKi8KPiArCXdyaXRl
+bCgweGZmLCBzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0NPUkUwX01FTV9BVFRfUFJFREVGKTsKPiAr
+Cj4gKwlyZXR1cm4gMDsKPiArfQo+ICsKPiArc3RhdGljIGludCBtdDgxOTVfc2NwX2JlZm9yZV9s
+b2FkKHN0cnVjdCBtdGtfc2NwICpzY3ApCj4gK3sKPiArCS8qIGNsZWFyIFNQTSBpbnRlcnJ1cHQs
+IFNDUDJTUE1fSVBDX0NMUiAqLwo+ICsJd3JpdGVsKDB4ZmYsIHNjcC0+cmVnX2Jhc2UgKyBNVDgx
+OTJfU0NQMlNQTV9JUENfQ0xSKTsKPiArCj4gKwl3cml0ZWwoMSwgc2NwLT5yZWdfYmFzZSArIE1U
+ODE5Ml9DT1JFMF9TV19SU1ROX1NFVCk7Cj4gKwo+ICsJLyogZW5hYmxlIFNSQU0gY2xvY2sgKi8K
+PiArCXNjcF9zcmFtX3Bvd2VyX29uKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01fU1JBTV9Q
+RF8wLCAwKTsKPiArCXNjcF9zcmFtX3Bvd2VyX29uKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJU
+Q01fU1JBTV9QRF8xLCAwKTsKPiArCXNjcF9zcmFtX3Bvd2VyX29uKHNjcC0+cmVnX2Jhc2UgKyBN
+VDgxOTJfTDJUQ01fU1JBTV9QRF8yLCAwKTsKPiArCXNjcF9zcmFtX3Bvd2VyX29uKHNjcC0+cmVn
+X2Jhc2UgKyBNVDgxOTJfTDFUQ01fU1JBTV9QRE4sCj4gKwkJCSAgTVQ4MTk1X0wxVENNX1NSQU1f
+UEROX1JFU0VSVkVEX1JTSV9CSVRTKTsKPiArCXNjcF9zcmFtX3Bvd2VyX29uKHNjcC0+cmVnX2Jh
+c2UgKyBNVDgxOTJfQ1BVMF9TUkFNX1BELCAwKTsKPiAgCj4gIAkvKiBlbmFibGUgTVBVIGZvciBh
+bGwgbWVtb3J5IHJlZ2lvbnMgKi8KPiAgCXdyaXRlbCgweGZmLCBzY3AtPnJlZ19iYXNlICsgTVQ4
+MTkyX0NPUkUwX01FTV9BVFRfUFJFREVGKTsKPiBAQCAtNTcyLDExICs1OTMsMjUgQEAgc3RhdGlj
+IHZvaWQgbXQ4MTgzX3NjcF9zdG9wKHN0cnVjdCBtdGtfc2NwICpzY3ApCj4gIHN0YXRpYyB2b2lk
+IG10ODE5Ml9zY3Bfc3RvcChzdHJ1Y3QgbXRrX3NjcCAqc2NwKQo+ICB7Cj4gIAkvKiBEaXNhYmxl
+IFNSQU0gY2xvY2sgKi8KPiAtCW10ODE5Ml9wb3dlcl9vZmZfc3JhbShzY3AtPnJlZ19iYXNlICsg
+TVQ4MTkyX0wyVENNX1NSQU1fUERfMCk7Cj4gLQltdDgxOTJfcG93ZXJfb2ZmX3NyYW0oc2NwLT5y
+ZWdfYmFzZSArIE1UODE5Ml9MMlRDTV9TUkFNX1BEXzEpOwo+IC0JbXQ4MTkyX3Bvd2VyX29mZl9z
+cmFtKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01fU1JBTV9QRF8yKTsKPiAtCW10ODE5Ml9w
+b3dlcl9vZmZfc3JhbShzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0wxVENNX1NSQU1fUEROKTsKPiAt
+CW10ODE5Ml9wb3dlcl9vZmZfc3JhbShzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0NQVTBfU1JBTV9Q
+RCk7Cj4gKwlzY3Bfc3JhbV9wb3dlcl9vZmYoc2NwLT5yZWdfYmFzZSArIE1UODE5Ml9MMlRDTV9T
+UkFNX1BEXzAsIDApOwo+ICsJc2NwX3NyYW1fcG93ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBNVDgx
+OTJfTDJUQ01fU1JBTV9QRF8xLCAwKTsKPiArCXNjcF9zcmFtX3Bvd2VyX29mZihzY3AtPnJlZ19i
+YXNlICsgTVQ4MTkyX0wyVENNX1NSQU1fUERfMiwgMCk7Cj4gKwlzY3Bfc3JhbV9wb3dlcl9vZmYo
+c2NwLT5yZWdfYmFzZSArIE1UODE5Ml9MMVRDTV9TUkFNX1BETiwgMCk7Cj4gKwlzY3Bfc3JhbV9w
+b3dlcl9vZmYoc2NwLT5yZWdfYmFzZSArIE1UODE5Ml9DUFUwX1NSQU1fUEQsIDApOwo+ICsKPiAr
+CS8qIERpc2FibGUgU0NQIHdhdGNoZG9nICovCj4gKwl3cml0ZWwoMCwgc2NwLT5yZWdfYmFzZSAr
+IE1UODE5Ml9DT1JFMF9XRFRfQ0ZHKTsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgbXQ4MTk1X3Nj
+cF9zdG9wKHN0cnVjdCBtdGtfc2NwICpzY3ApCj4gK3sKPiArCS8qIERpc2FibGUgU1JBTSBjbG9j
+ayAqLwo+ICsJc2NwX3NyYW1fcG93ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01f
+U1JBTV9QRF8wLCAwKTsKPiArCXNjcF9zcmFtX3Bvd2VyX29mZihzY3AtPnJlZ19iYXNlICsgTVQ4
+MTkyX0wyVENNX1NSQU1fUERfMSwgMCk7Cj4gKwlzY3Bfc3JhbV9wb3dlcl9vZmYoc2NwLT5yZWdf
+YmFzZSArIE1UODE5Ml9MMlRDTV9TUkFNX1BEXzIsIDApOwo+ICsJc2NwX3NyYW1fcG93ZXJfb2Zm
+KHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDFUQ01fU1JBTV9QRE4sCj4gKwkJCSAgIE1UODE5NV9M
+MVRDTV9TUkFNX1BETl9SRVNFUlZFRF9SU0lfQklUUyk7Cj4gKwlzY3Bfc3JhbV9wb3dlcl9vZmYo
+c2NwLT5yZWdfYmFzZSArIE1UODE5Ml9DUFUwX1NSQU1fUEQsIDApOwo+ICAKPiAgCS8qIERpc2Fi
+bGUgU0NQIHdhdGNoZG9nICovCj4gIAl3cml0ZWwoMCwgc2NwLT5yZWdfYmFzZSArIE1UODE5Ml9D
+T1JFMF9XRFRfQ0ZHKTsKPiBAQCAtOTIyLDExICs5NTcsMTEgQEAgc3RhdGljIGNvbnN0IHN0cnVj
+dCBtdGtfc2NwX29mX2RhdGEgbXQ4MTkyX29mX2RhdGEgPSB7Cj4gIAo+ICBzdGF0aWMgY29uc3Qg
+c3RydWN0IG10a19zY3Bfb2ZfZGF0YSBtdDgxOTVfb2ZfZGF0YSA9IHsKPiAgCS5zY3BfY2xrX2dl
+dCA9IG10ODE5NV9zY3BfY2xrX2dldCwKPiAtCS5zY3BfYmVmb3JlX2xvYWQgPSBtdDgxOTJfc2Nw
+X2JlZm9yZV9sb2FkLAo+ICsJLnNjcF9iZWZvcmVfbG9hZCA9IG10ODE5NV9zY3BfYmVmb3JlX2xv
+YWQsCj4gIAkuc2NwX2lycV9oYW5kbGVyID0gbXQ4MTkyX3NjcF9pcnFfaGFuZGxlciwKPiAgCS5z
+Y3BfcmVzZXRfYXNzZXJ0ID0gbXQ4MTkyX3NjcF9yZXNldF9hc3NlcnQsCj4gIAkuc2NwX3Jlc2V0
+X2RlYXNzZXJ0ID0gbXQ4MTkyX3NjcF9yZXNldF9kZWFzc2VydCwKPiAtCS5zY3Bfc3RvcCA9IG10
+ODE5Ml9zY3Bfc3RvcCwKPiArCS5zY3Bfc3RvcCA9IG10ODE5NV9zY3Bfc3RvcCwKPiAgCS5zY3Bf
+ZGFfdG9fdmEgPSBtdDgxOTJfc2NwX2RhX3RvX3ZhLAo+ICAJLmhvc3RfdG9fc2NwX3JlZyA9IE1U
+ODE5Ml9HSVBDX0lOX1NFVCwKPiAgCS5ob3N0X3RvX3NjcF9pbnRfYml0ID0gTVQ4MTkyX0hPU1Rf
+SVBDX0lOVF9CSVQsCgoKICBHRU4gICAgIE1ha2VmaWxlCiAgVVBEICAgICBpbmNsdWRlL2NvbmZp
+Zy9rZXJuZWwucmVsZWFzZQogIFVQRCAgICAgaW5jbHVkZS9nZW5lcmF0ZWQvdXRzcmVsZWFzZS5o
+CiAgQ0FMTCAgICAvaG9tZS9tcG9pcmllci93b3JrL3JlbW90ZXByb2Mva2VybmVsLXJldmlldy9z
+Y3JpcHRzL2F0b21pYy9jaGVjay1hdG9taWNzLnNoCiAgQ0FMTCAgICAvaG9tZS9tcG9pcmllci93
+b3JrL3JlbW90ZXByb2Mva2VybmVsLXJldmlldy9zY3JpcHRzL2NoZWNrc3lzY2FsbHMuc2gKICBD
+SEsgICAgIGluY2x1ZGUvZ2VuZXJhdGVkL2NvbXBpbGUuaAogIENDICAgICAgaW5pdC92ZXJzaW9u
+Lm8KICBBUiAgICAgIGluaXQvYnVpbHQtaW4uYQogIENDICAgICAga2VybmVsL3N5cy5vCiAgQ0Mg
+ICAgICBuZXQvZXRodG9vbC9pb2N0bC5vCiAgQ0MgICAgICBrZXJuZWwvbW9kdWxlLm8KICBDQyAg
+ICAgIGtlcm5lbC90cmFjZS90cmFjZS5vCiAgQ0MgICAgICBkcml2ZXJzL2Jhc2UvZmlybXdhcmVf
+bG9hZGVyL21haW4ubwogIENDICAgICAgZHJpdmVycy9iYXNlL2Zpcm13YXJlX2xvYWRlci9idWls
+dGluL21haW4ubwogIEFSICAgICAgbmV0L2V0aHRvb2wvYnVpbHQtaW4uYQogIEFSICAgICAgZHJp
+dmVycy9iYXNlL2Zpcm13YXJlX2xvYWRlci9idWlsdGluL2J1aWx0LWluLmEKICBBUiAgICAgIG5l
+dC9idWlsdC1pbi5hCiAgQVIgICAgICBkcml2ZXJzL2Jhc2UvZmlybXdhcmVfbG9hZGVyL2J1aWx0
+LWluLmEKICBBUiAgICAgIGRyaXZlcnMvYmFzZS9idWlsdC1pbi5hCiAgQ0MgICAgICBkcml2ZXJz
+L3JlbW90ZXByb2MvbXRrX3NjcC5vCiAgQ0MgICAgICBkcml2ZXJzL3JlbW90ZXByb2MvbXRrX3Nj
+cF9pcGkubwogIENDICAgICAgZHJpdmVycy9yYXMvcmFzLm8KICBDQyAgICAgIGRyaXZlcnMvcmVt
+b3RlcHJvYy9zdG0zMl9ycHJvYy5vCiAgQ0MgICAgICBkcml2ZXJzL252bWVtL2NvcmUubwogIEFS
+ICAgICAga2VybmVsL3RyYWNlL2J1aWx0LWluLmEKICBBUiAgICAgIGtlcm5lbC9idWlsdC1pbi5h
+Ci9ob21lL21wb2lyaWVyL3dvcmsvcmVtb3RlcHJvYy9rZXJuZWwtcmV2aWV3L2RyaXZlcnMvcmVt
+b3RlcHJvYy9tdGtfc2NwLmM6IEluIGZ1bmN0aW9uIOKAmG10ODE4Nl9zY3BfYmVmb3JlX2xvYWTi
+gJk6Ci9ob21lL21wb2lyaWVyL3dvcmsvcmVtb3RlcHJvYy9rZXJuZWwtcmV2aWV3L2RyaXZlcnMv
+cmVtb3RlcHJvYy9tdGtfc2NwLmM6Mzk2OjI6IGVycm9yOiBpbXBsaWNpdCBkZWNsYXJhdGlvbiBv
+ZiBmdW5jdGlvbiDigJhtdDgxOTJfcG93ZXJfb25fc3JhbeKAmSBbLVdlcnJvcj1pbXBsaWNpdC1m
+dW5jdGlvbi1kZWNsYXJhdGlvbl0KICAzOTYgfCAgbXQ4MTkyX3Bvd2VyX29uX3NyYW0oc2NwLT5y
+ZWdfYmFzZSArIE1UODE4M19TQ1BfU1JBTV9QRE4pOwogICAgICB8ICBefn5+fn5+fn5+fn5+fn5+
+fn5+fgouLi4KCk5vIG5lZWQgdG8gc2VuZCBtZSBhbm90aGVyIHJldmlzaW9uIHJpZ2h0IGF3YXkg
+LSBJIHdvbid0IGFwcGx5IHlvdXIgY29kZSBmb3IKdGhpcyBtZXJnZSB3aW5kb3cuCgo+IC0tIAo+
+IDIuMTguMAo+IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1tZWRpYXRlawo=
