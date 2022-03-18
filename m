@@ -4,69 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3428C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 07:47:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F846C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 08:08:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k6BPo7XWHivRqEHEYbVNDnQHuMOoX13UIZG9b43Z5hg=; b=AVwgC9YVIm98Kk
-	uSD3n8fh3YSw2o8afihv2CVUzhfVsYL79Te83UGBSpkQ0ED12IhktAloFOjlZdEhfZbEsQXaElGSO
-	ri37v9YR7BIpYebsqjzl4+xcUxm+Xmj+XazgE92wKqTi9FJ8SqyBdmmziyKxQ6T6eCM/OEr4pisJJ
-	DmCQIyfaYFa8rZhUMchFFYYMrnAMyUDfkDSRa/YzZYQR7+wECwGnT5metOVPQ5rIDCzAzGIFzvq53
-	aktAbOw7CXKF6z21XG/lBdIlFbjMUlPGdAEG7Vm9EXwTR4KDmLsZGkcVQUKVzysZBhFF8QGFpMrml
-	C9cxL8No0i+4JazwCdCw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UrO4JPe033CR2X7wVUMJf38pxfVzKMG2h2ceSu7rzR0=; b=YvqTpw8S7qe4i2
+	0SF/D4KPWyEpmXRrzg2/Y+yYYa1l/gL4gLr7GZmeLihKhaiDqUnBnTQ4UZsUGX9bMf9roLwJE+7rn
+	0DOGTbG/e9L8hiDShtJGL5vi9zJa/z8aGTvxEKu8oIBUAbxsM+DVryEpfH4nsJqEYMDsKdQ8L9f8S
+	RkmG88gJInduYabD1fpBnHc/zG4Yc5D5Bn4amavyk4/KepFf24oQ5iIFikEaZHgXizvd63INYi/UF
+	cOX8GHhUF/ji7JBvZEHHxvoaUrS//yP40DkEXKEyXsER4fYSxhKUqyIF/lhuI/FtQ7nQy74h+k2di
+	ruTsDauZNxLi0F8smvgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nV7KO-000gTY-7Q; Fri, 18 Mar 2022 07:47:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nV7f1-000k5v-Qn; Fri, 18 Mar 2022 08:08:35 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nV7KM-000gT6-1b; Fri, 18 Mar 2022 07:47:15 +0000
-X-UUID: 3e9fb56352c646fcb5328769ece856f8-20220318
-X-UUID: 3e9fb56352c646fcb5328769ece856f8-20220318
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 346932014; Fri, 18 Mar 2022 00:47:08 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Mar 2022 00:43:20 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 18 Mar 2022 15:43:18 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 18 Mar 2022 15:43:18 +0800
-Message-ID: <9bd729a6e2d8a23f25c55c3aec81cb5b64eb0057.camel@mediatek.com>
-Subject: Re: [PATCH v14 01/22] dt-bindings: mediatek: add vdosys1 RDMA
- definition for mt8195
-From: CK Hu <ck.hu@mediatek.com>
-To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- <wim@linux-watchdog.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
-CC: <devicetree@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Yongqiang Niu
- <yongqiang.niu@mediatek.com>, <srv_heupstream@mediatek.com>, David Airlie
- <airlied@linux.ie>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- <singo.chang@mediatek.com>, <llvm@lists.linux.dev>, Nick Desaulniers
- <ndesaulniers@google.com>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, Nathan Chancellor <nathan@kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
-Date: Fri, 18 Mar 2022 15:43:18 +0800
-In-Reply-To: <20220310035515.16881-2-nancy.lin@mediatek.com>
-References: <20220310035515.16881-1-nancy.lin@mediatek.com>
- <20220310035515.16881-2-nancy.lin@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nV7ez-000k4C-2t
+ for linux-mediatek@lists.infradead.org; Fri, 18 Mar 2022 08:08:34 +0000
+Received: from kwepemi500020.china.huawei.com (unknown [172.30.72.57])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4KKc660dXjzCqqj;
+ Fri, 18 Mar 2022 16:06:22 +0800 (CST)
+Received: from kwepemm600014.china.huawei.com (7.193.23.54) by
+ kwepemi500020.china.huawei.com (7.221.188.8) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Fri, 18 Mar 2022 16:08:24 +0800
+Received: from huawei.com (10.90.53.225) by kwepemm600014.china.huawei.com
+ (7.193.23.54) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.21; Fri, 18 Mar
+ 2022 16:08:24 +0800
+From: Zhang Qilong <zhangqilong3@huawei.com>
+To: <sean.wang@mediatek.com>, <vkoul@kernel.org>, <matthias.bgg@gmail.com>
+CC: <dmaengine@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH -next] dmaengine: mediatek:Fix PM usage reference leak of tegra
+Date: Fri, 18 Mar 2022 16:08:09 +0800
+Message-ID: <20220318080809.22562-1-zhangqilong3@huawei.com>
+X-Mailer: git-send-email 2.26.0.106.g9fadedd
 MIME-Version: 1.0
-X-MTK: N
+X-Originating-IP: [10.90.53.225]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ kwepemm600014.china.huawei.com (7.193.23.54)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_004714_108462_AA433BF3 
-X-CRM114-Status: GOOD (  22.93  )
+X-CRM114-CacheID: sfid-20220318_010833_348321_DF2ABDBC 
+X-CRM114-Status: UNSURE (   7.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,148 +68,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Nancy:
+From: zhangqilong <zhangqilong3@huawei.com>
 
-On Thu, 2022-03-10 at 11:54 +0800, Nancy.Lin wrote:
-> Add vdosys1 RDMA definition.
-> 
-> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> ---
->  .../arm/mediatek/mediatek,mdp-rdma.yaml       | 86
-> +++++++++++++++++++
->  1 file changed, 86 insertions(+)
->  create mode 100644
-> Documentation/devicetree/bindings/arm/mediatek/mediatek,mdp-rdma.yaml
+pm_runtime_get_sync will increment pm usage counter even it failed.
+Forgetting to putting operation will result in reference leak here.
+We fix it:
+1) Replacing it with pm_runtime_resume_and_get to keep usage counter
+   balanced.
+2) Add putting operation before returning error.
 
-The better path:
-Documentation/devicetree/bindings/soc/mediatek/mediatek,mdp-rdma.yaml
+Fixes:9135408c3ace4 ("dmaengine: mediatek: Add MediaTek UART APDMA support")
+Signed-off-by: Zhang Qilong <zhangqilong3@huawei.com>
+---
+ drivers/dma/mediatek/mtk-uart-apdma.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-Does this mdp-rdma has relation with mdp3-rdma [1]? If the hardware are
-compatible, I think the binding document could be squashed. If no
-relation, I think mdp-rdma could be placed in display folder.
-
-[1] 
-https://patchwork.kernel.org/project/linux-mediatek/patch/20220117055254.9777-15-roy-cw.yeh@mediatek.com/
-
-Regards,
-CK
-
-> 
-> diff --git
-> a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdp-
-> rdma.yaml
-> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdp-
-> rdma.yaml
-> new file mode 100644
-> index 000000000000..6ab773569462
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdp-
-> rdma.yaml
-> @@ -0,0 +1,86 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: 
-> https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,mdp-rdma.yaml*__;Iw!!CTRNKA9wMg0ARbw!0sVM-qGMUv6LrYRyg_gOLC9Em4NHxZhbtdmygv32phBHBUyLUzixXPduIIqCKA$
->  
-> +$schema: 
-> https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!0sVM-qGMUv6LrYRyg_gOLC9Em4NHxZhbtdmygv32phBHBUyLUzixXPfYY-0O3A$
->  
-> +
-> +title: Mediatek MDP RDMA
-> +
-> +maintainers:
-> +  - Matthias Brugger <matthias.bgg@gmail.com>
-> +
-> +description: |
-> +  The mediatek MDP RDMA stands for Read Direct Memory Access.
-> +  It provides real time data to the back-end panel driver, such as
-> DSI,
-> +  DPI and DP_INTF.
-> +  It contains one line buffer to store the sufficient pixel data.
-> +  RDMA device node must be siblings to the central MMSYS_CONFIG
-> node.
-> +  For a description of the MMSYS_CONFIG binding, see
-> +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> for details.
-> +
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      - items:
-> +          - const: mediatek,mt8195-vdo1-rdma
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  power-domains:
-> +    description: A phandle and PM domain specifier as defined by
-> bindings of
-> +      the power controller specified by phandle. See
-> +      Documentation/devicetree/bindings/power/power-domain.yaml for
-> details.
-> +
-> +  clocks:
-> +    items:
-> +      - description: RDMA Clock
-> +
-> +  iommus:
-> +    description:
-> +      This property should point to the respective IOMMU block with
-> master port as argument,
-> +      see
-> Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for
-> details.
-> +
-> +  mediatek,gce-client-reg:
-> +    description:
-> +      The register of display function block to be set by gce. There
-> are 4 arguments,
-> +      such as gce node, subsys id, offset and register size. The
-> subsys id that is
-> +      mapping to the register of display function blocks is defined
-> in the gce header
-> +      include/include/dt-bindings/gce/<chip>-gce.h of each chips.
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    maxItems: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - power-domains
-> +  - clocks
-> +  - iommus
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/clock/mt8195-clk.h>
-> +    #include <dt-bindings/power/mt8195-power.h>
-> +    #include <dt-bindings/gce/mt8195-gce.h>
-> +    #include <dt-bindings/memory/mt8195-memory-port.h>
-> +
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        vdo1_rdma0: mdp-rdma@1c104000 {
-> +            compatible = "mediatek,mt8195-vdo1-rdma";
-> +            reg = <0 0x1c104000 0 0x1000>;
-> +            interrupts = <GIC_SPI 495 IRQ_TYPE_LEVEL_HIGH 0>;
-> +            clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
-> +            power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-> +            iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA0>;
-> +            mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0x4000
-> 0x1000>;
-> +        };
-> +    };
+diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
+index 375e7e647df6..a1517ef1f4a0 100644
+--- a/drivers/dma/mediatek/mtk-uart-apdma.c
++++ b/drivers/dma/mediatek/mtk-uart-apdma.c
+@@ -274,7 +274,7 @@ static int mtk_uart_apdma_alloc_chan_resources(struct dma_chan *chan)
+ 	unsigned int status;
+ 	int ret;
+ 
+-	ret = pm_runtime_get_sync(mtkd->ddev.dev);
++	ret = pm_runtime_resume_and_get(mtkd->ddev.dev);
+ 	if (ret < 0) {
+ 		pm_runtime_put_noidle(chan->device->dev);
+ 		return ret;
+@@ -288,18 +288,21 @@ static int mtk_uart_apdma_alloc_chan_resources(struct dma_chan *chan)
+ 	ret = readx_poll_timeout(readl, c->base + VFF_EN,
+ 			  status, !status, 10, 100);
+ 	if (ret)
+-		return ret;
++		goto err_pm;
+ 
+ 	ret = request_irq(c->irq, mtk_uart_apdma_irq_handler,
+ 			  IRQF_TRIGGER_NONE, KBUILD_MODNAME, chan);
+ 	if (ret < 0) {
+ 		dev_err(chan->device->dev, "Can't request dma IRQ\n");
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto err_pm;
+ 	}
+ 
+ 	if (mtkd->support_33bits)
+ 		mtk_uart_apdma_write(c, VFF_4G_SUPPORT, VFF_4G_SUPPORT_CLR_B);
+ 
++err_pm:
++	pm_runtime_put_noidle(mtkd->ddev.dev);
+ 	return ret;
+ }
+ 
+-- 
+2.31.1
 
 
 _______________________________________________
