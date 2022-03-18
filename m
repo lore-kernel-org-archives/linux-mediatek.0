@@ -4,68 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21E6EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 09:27:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68AD6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 09:57:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+LXHcRVq3c9Rjz1t19gZ1IODo9WKiTNmIpGT6TtRRgI=; b=wIsjtIiiWiukVT
-	1ky4v1aXKgak6jpY0244jXihBQF9Vw74LxygSsRvYxHAOu1rtzUI2hd9nDIRNpsr/hDh3mnGoxNH0
-	2zAvVTNsymUpDxeusWmuHym8tNPCCKaQ9XfYWtK9iG9A+gX1U6MtQlYG7+OfVcOMGkarOyLifl0WA
-	LFEE2zCZfFNi4ez3hm7Zvt8R0gvYAHFcil7nq3Q39wD8z53AzqRIeVesnLppPWy/tOLGpuLEb4pQj
-	VC7/STHGwRbBJC2QTaYMbMyVHFGIm1sCzPXTyc081nUOsyn+F8KJk7u23BEgCDCCixl2rMq3XmVGe
-	HU1a/ByJ9AUonoXQaKAQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ugL8HD9K000EHdom4msUNtBMQXhMc4vbzyRTg/VARZg=; b=Joc/sUaCcO3jcY
+	mL5JCqyyP5Dl4D9fyk1Hj/zzxJs+XfysgW/UORtebfK+/6KXYY0iy384RYuHHM0nIRCZmYSD7S0LI
+	ipERSJZLfuCYp2kf4aZg1EAlVOMFx1vd3onrhermsiX1OEd7hXqq8fiYh4jpfDxXLCMMlQSLA+1SJ
+	q7elzAbrQ5nKVcCpwtjvizzj52CVFvCGkTtJaIl4raZLRSn/17Wb8J6QtefoIcT5RNnydqtQU58hU
+	v6ka3BEJVZpxtdMLtBF+IKXTiP4EC/jeCl4ThzhsYQk8uJNemM5XniMwiQr8OTCZf0WEJy376jAfq
+	IOP3p6O303R5R+x7iAog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nV8tJ-000xYY-00; Fri, 18 Mar 2022 09:27:25 +0000
+	id 1nV9Mb-0013Nc-I8; Fri, 18 Mar 2022 09:57:41 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nV8t6-000xW9-BG; Fri, 18 Mar 2022 09:27:14 +0000
-X-UUID: 82390930c742411fb919353aacef7553-20220318
-X-UUID: 82390930c742411fb919353aacef7553-20220318
+ id 1nV9MH-0013Jo-6C; Fri, 18 Mar 2022 09:57:22 +0000
+X-UUID: aa794da78da04840aee329bbadd2a4e7-20220318
+X-UUID: aa794da78da04840aee329bbadd2a4e7-20220318
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ (envelope-from <jianjun.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 362498480; Fri, 18 Mar 2022 02:27:10 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Mar 2022 02:23:23 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 18 Mar 2022 17:23:21 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ with ESMTP id 549748431; Fri, 18 Mar 2022 02:57:12 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 18 Mar 2022 02:54:21 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 18 Mar 2022 17:54:20 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 18 Mar 2022 17:23:21 +0800
-Message-ID: <4adcccde9165cd52faa13d5b0d60cc4d58f52ec1.camel@mediatek.com>
-Subject: Re: [PATCH v1 02/14] soc: mediatek: mutex: expand parameter for mdp
- mutex function
-From: CK Hu <ck.hu@mediatek.com>
-To: roy-cw.yeh <roy-cw.yeh@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>
-CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Fabien Parent
- <fparent@baylibre.com>, "jason-jh . lin" <jason-jh.lin@mediatek.com>, daoyuan
- huang <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, 
- Moudy Ho <moudy.ho@mediatek.com>, "river . cheng" <river.cheng@mediatek.com>, 
- Enric Balletbo i Serra <enric.balletbo@collabora.com>, Yongqiang Niu
- <yongqiang.niu@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Date: Fri, 18 Mar 2022 17:23:21 +0800
-In-Reply-To: <20220117055254.9777-3-roy-cw.yeh@mediatek.com>
-References: <20220117055254.9777-1-roy-cw.yeh@mediatek.com>
- <20220117055254.9777-3-roy-cw.yeh@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Fri, 18 Mar 2022 17:54:19 +0800
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
+ <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chen-Yu Tsai
+ <wenst@chromium.org>
+CC: Jianjun Wang <jianjun.wang@mediatek.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <rex-bc.chen@mediatek.com>,
+ <randy.wu@mediatek.com>, <jieyy.yang@mediatek.com>,
+ <chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
+ <jian.yang@mediatek.com>
+Subject: [PATCH v2 0/2] phy: mediatek: Add PCIe PHY driver
+Date: Fri, 18 Mar 2022 17:54:15 +0800
+Message-ID: <20220318095417.2016-1-jianjun.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_022712_405114_DEA326C4 
-X-CRM114-Status: GOOD (  22.65  )
+X-CRM114-CacheID: sfid-20220318_025721_242880_87823B23 
+X-CRM114-Status: UNSURE (   9.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,163 +77,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Roy:
+These series patches add support for PCIe PHY driver on MediaTek chipsets.
 
-On Mon, 2022-01-17 at 13:52 +0800, roy-cw.yeh wrote:
-> From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
-> 
-> Expand parameter for mdp mutex function
-> 
-> Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
-> ---
-> This patch is base on [1][2]
-> [1] soc: mediatek: mutex: add functions that operate registers by
-> CMDQ
-> - 
-> https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20220104091712.25670-5-moudy.ho@mediatek.com/__;!!CTRNKA9wMg0ARbw!28saNp-15JnZswiyVpRSXYtGcevLvGr2FEapxkshXVSBltSnkpE2iPgK4HDCWg$
->  
-> [2] media: platform: mtk-mdp3: add Mediatek MDP3 driver
-> - 
-> https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20220105093758.6850-4-moudy.ho@mediatek.com/__;!!CTRNKA9wMg0ARbw!28saNp-15JnZswiyVpRSXYtGcevLvGr2FEapxkshXVSBltSnkpE2iPhg9ACQ7Q$
->  
-> ---
->  .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.c   |  3 ++-
->  drivers/soc/mediatek/mtk-mutex.c              | 26 +++++++++++++--
-> ----
->  include/linux/soc/mediatek/mtk-mutex.h        |  2 +-
->  3 files changed, 21 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-> b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-> index 4a08502952d6..87751f0e2513 100644
-> --- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-> +++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-> @@ -101,7 +101,8 @@ static int mdp_path_subfrm_require(struct
-> mdp_path_subfrm *subfrm,
->  	}
->  
->  	if (subfrm->mutex_mod)
-> -		mtk_mutex_add_mod_by_cmdq(mutex[mutex_id], subfrm-
-> >mutex_mod, cmd);
-> +		mtk_mutex_add_mod_by_cmdq(mutex[mutex_id], subfrm-
-> >mutex_mod,
-> +					  0, 0, cmd);
->  
->  	/* Set SOF */
->  	for (index = 0; index < config->num_components; index++) {
-> diff --git a/drivers/soc/mediatek/mtk-mutex.c
-> b/drivers/soc/mediatek/mtk-mutex.c
-> index 89daab7e6863..7da0f44b6f9a 100644
-> --- a/drivers/soc/mediatek/mtk-mutex.c
-> +++ b/drivers/soc/mediatek/mtk-mutex.c
-> @@ -27,8 +27,9 @@
->  #define DISP_REG_MUTEX_EN(n)			(0x20 + 0x20 * (n))
->  #define DISP_REG_MUTEX(n)			(0x24 + 0x20 * (n))
->  #define DISP_REG_MUTEX_RST(n)			(0x28 + 0x20 *
-> (n))
-> -#define DISP_REG_MUTEX_MOD(mutex_mod_reg, n)	(mutex_mod_reg + 0x20 *
-> (n))
-> -#define DISP_REG_MUTEX_SOF(mutex_sof_reg, n)	(mutex_sof_reg + 0x20 *
-> (n))
-> +#define DISP_REG_MUTEX_MOD(mutex_mod_reg, n)	((mutex_mod_reg) + 0x20
-> * (n))
-> +#define DISP_REG_MUTEX_MOD1(mutex_mod_reg, n)	((mutex_mod_reg
-> ) + 0x20 * (n) + 0x4)
-> +#define DISP_REG_MUTEX_SOF(mutex_sof_reg, n)	((mutex_sof_reg) + 0x20
-> * (n))
->  #define DISP_REG_MUTEX_MOD2(n)			(0x34 + 0x20 *
-> (n))
->  
->  #define INT_MUTEX				BIT(1)
-> @@ -180,6 +181,11 @@
->  #define MT8183_MUTEX_MOD_MDP_AAL0		BIT(23)
->  #define MT8183_MUTEX_MOD_MDP_CCORR0		BIT(24)
->  
-> +#define
-> MT8183_MDP_PIPE_IMGI                   MT8183_MUTEX_MDP_START
-> +#define
-> MT8183_MDP_PIPE_RDMA0                  (MT8183_MUTEX_MDP_START + 1)
-> +#define
-> MT8183_MDP_PIPE_WPEI                   (MT8183_MUTEX_MDP_START + 2)
-> +#define
-> MT8183_MDP_PIPE_WPEI2                  (MT8183_MUTEX_MDP_START + 3)
-> +
->  struct mtk_mutex {
->  	int id;
->  	bool claimed;
-> @@ -364,10 +370,10 @@ static const unsigned int
-> mt8183_mutex_sof[DDP_MUTEX_SOF_MAX] = {
->  
->  /* indicate which mutex is used by each pipepline */
->  static const unsigned int mt8183_mutex_mdp_offset[MDP_PIPE_MAX] = {
-> -	[MDP_PIPE_IMGI] = MT8183_MUTEX_MDP_START,
-> -	[MDP_PIPE_RDMA0] = MT8183_MUTEX_MDP_START + 1,
-> -	[MDP_PIPE_WPEI] = MT8183_MUTEX_MDP_START + 2,
-> -	[MDP_PIPE_WPEI2] = MT8183_MUTEX_MDP_START + 3
-> +	[MDP_PIPE_IMGI] = MT8183_MDP_PIPE_IMGI,
-> +	[MDP_PIPE_RDMA0] = MT8183_MDP_PIPE_RDMA0,
-> +	[MDP_PIPE_WPEI] = MT8183_MDP_PIPE_WPEI,
-> +	[MDP_PIPE_WPEI2] = MT8183_MDP_PIPE_WPEI2,
->  };
->  
->  static const unsigned int mt8195_mutex_sof[DDP_MUTEX_SOF_MAX] = {
-> @@ -606,7 +612,7 @@ u32 mtk_mutex_get_mdp_mod(struct mtk_mutex
-> *mutex, enum mtk_mdp_comp_id id)
->  EXPORT_SYMBOL_GPL(mtk_mutex_get_mdp_mod);
->  
->  void mtk_mutex_add_mod_by_cmdq(struct mtk_mutex *mutex, u32 mod,
-> -			       struct mmsys_cmdq_cmd *cmd)
-> +			       u32 mod1, u32 sof, struct mmsys_cmdq_cmd
-> *cmd)
+Changes in v2:
+1. Add specific compatible name;
+2. Read NVMEM data at probe time;
+3. Fix typos.
 
-In cover letter, describe this series depend on which series.
-And, why do you need add mod by cmdq? I expect that pipeline is fixed
-before it start working.
+Jianjun Wang (2):
+  dt-bindings: phy: mediatek: Add YAML schema for PCIe PHY
+  phy: mediatek: Add PCIe PHY driver
 
-Regards,
-CK
+ .../bindings/phy/mediatek,pcie-phy.yaml       |  75 ++++++
+ drivers/phy/mediatek/Kconfig                  |  11 +
+ drivers/phy/mediatek/Makefile                 |   1 +
+ drivers/phy/mediatek/phy-mtk-pcie.c           | 246 ++++++++++++++++++
+ 4 files changed, 333 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
+ create mode 100644 drivers/phy/mediatek/phy-mtk-pcie.c
 
->  {
->  	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
-> mtk_mutex_ctx,
->  						 mutex[mutex->id]);
-> @@ -618,9 +624,13 @@ void mtk_mutex_add_mod_by_cmdq(struct mtk_mutex
-> *mutex, u32 mod,
->  	cmdq_pkt_write_mask(cmd->pkt, mtx->cmdq_reg.subsys, mtx->addr +
-> offset,
->  			    mod, mtx->data->mutex_mdp_mod_mask);
->  
-> +	offset = DISP_REG_MUTEX_MOD1(mtx->data->mutex_mod_reg, mutex-
-> >id);
-> +	cmdq_pkt_write_mask(cmd->pkt, mtx->cmdq_reg.subsys, mtx->addr +
-> offset,
-> +			    mod1, mtx->data->mutex_mdp_mod_mask);
-> +
->  	offset = DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg, mutex-
-> >id);
->  	cmdq_pkt_write_mask(cmd->pkt, mtx->cmdq_reg.subsys, mtx->addr +
-> offset,
-> -			    0, mtx->data->mutex_mdp_sof_mask);
-> +			    sof, mtx->data->mutex_mdp_sof_mask);
->  }
->  EXPORT_SYMBOL_GPL(mtk_mutex_add_mod_by_cmdq);
->  
-> diff --git a/include/linux/soc/mediatek/mtk-mutex.h
-> b/include/linux/soc/mediatek/mtk-mutex.h
-> index 05de7ad4a124..dbb7324c12d9 100644
-> --- a/include/linux/soc/mediatek/mtk-mutex.h
-> +++ b/include/linux/soc/mediatek/mtk-mutex.h
-> @@ -18,7 +18,7 @@ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
->  			enum mtk_ddp_comp_id id);
->  u32 mtk_mutex_get_mdp_mod(struct mtk_mutex *mutex, enum
-> mtk_mdp_comp_id id);
->  void mtk_mutex_add_mod_by_cmdq(struct mtk_mutex *mutex, u32 mod,
-> -			       struct mmsys_cmdq_cmd *cmd);
-> +			       u32 mod1, u32 sof, struct mmsys_cmdq_cmd
-> *cmd);
->  void mtk_mutex_enable(struct mtk_mutex *mutex);
->  void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex,
->  			      struct mmsys_cmdq_cmd *cmd);
+-- 
+2.18.0
 
 
 _______________________________________________
