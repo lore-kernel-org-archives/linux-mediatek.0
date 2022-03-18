@@ -4,45 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A131C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 11:29:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 062D9C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 11:30:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZZn0/bUL/R3+BbxIltrZMIryUyJPxLS/EdXBarSfxvM=; b=X35Ck6W7BPpX1q
-	ATURKB9jpSuCWTJhW4d/DPcWzTavEBbrFAzvFbHW6fCPlE9MZ50KNE1koTu97bWXxDy3zvK0NFkmg
-	LXeWP2JRAqmCZ4Ja1D8RjrSuXUdU0rzhso2YdMO8Jb2AeZNRO0TWAv/qjTqwWD30I8pFk/NS45bYy
-	Vefu5H+kQjWh3VT8ocF9UJrcfBjJc1lSyHmBOhdHKLQNpkzcVXr7NKrtWTduqvKc2cZBigzU/kEph
-	NjgbE41pKC4BY0teeWO0ktf191OHFm1O9qXBwwN/zYBHF4LHripf0cvxThN3hJ9VV3YAGMwuqRKAx
-	deiOfGQ3G6zOxUmu/I5g==;
+	List-Owner; bh=jagX5W1RAANpsNhVDnHH+9IIvcUG5Aoi6hMx8EGvQic=; b=PYlu1RcCLPJFTW
+	zREj7WpNrv2zwx9fnT0bYfF0WUZln3Ej1BxZ8NDqC1hqCClFu2y7+cOyXGQe6+ez5K/rSXbKNlYX6
+	R9xIblkqzWd0IrcMmOOT48/PHsqsBql+6U4nNhqmEW2gdZZLJKbnXk00q1LomuTaRSowYbPtoZGUE
+	l7LpTrbdvjvT1ouU45+sPb/9v46PRpuju6bggPNKamNZGU+0TvlfIy2sw65CQnln1/ACYfoMOBe1D
+	xgBWl3vmQABWC3zDZDBhSIB3OTXjbChpBRl+vS0RdgcGcTF0uOMpNpUkAgGc0TtPSamYxXDLv2kNq
+	m6GLnFXzeCai95N6OguA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVAnT-001ONn-2N; Fri, 18 Mar 2022 11:29:31 +0000
+	id 1nVAo5-001Ocq-RA; Fri, 18 Mar 2022 11:30:09 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVAnF-001OJf-Ez; Fri, 18 Mar 2022 11:29:18 +0000
+ id 1nVAnq-001OWx-FG; Fri, 18 Mar 2022 11:29:57 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 2FC531F45EB1
+ (Authenticated sender: kholk11) with ESMTPSA id C12C91F45BE5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647602954;
- bh=yR6YIljfGinF+pJoIGBmN8q7+1O8ZzcAnqybJw3gz6o=;
+ s=mail; t=1647602993;
+ bh=hEq5CQBIYDpOSE8rYqrF9Pr2CGQ6yjPai9TP2Z1F2Ww=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=E8KU89+4XqdG3J8L/OLvNgA8upKBw/lygW9TlmKTChO/fWZuTxAKqOVrkhGEHE5PR
- c1Ryx3Vb+ETKbMRiLx6pJnL+NA2cDmyUdUJynygITn8Wb9TBa5wDM295sjIftjUl2B
- MAg9nV3rdwRkQQpDBMxI0C90KVKWsDkNvPDrOuy1HDy4YCzPHEQgVfA7C1LsGVRhAj
- pfu271TQ3FdfpyAjnkxjslqSIpCW4nytRx86bQwaPHHVJaPhfTN1btlb7QpB0l0lYA
- 8ZgZiIiTho3/i1kGNMNsbs/WiZ/aS8aDvQqp0uTJp4CRPanOklvbHzknoBcvPf4Zok
- qLFCymsgSwXhw==
-Message-ID: <a6844feb-98d5-4f44-f8fa-87f47aa9ec93@collabora.com>
-Date: Fri, 18 Mar 2022 12:29:11 +0100
+ b=Ix2SDlHuXaTogi0wYj6ufFFJZqPuqpM1n79MzBo8NDi4SOUeYE4KyPND+KBtoxNmE
+ voxSeyzl2PdqfO6XlRk6356TZ+I1h2JCsTCb/QdIhj7JkUfcecDnrAwU5TkLMwVpzE
+ GvAG4jN6U8A1zYZTaYmJkbgKyMOjNprrMBh9MnL/t/E583gZWGzzBms0Zu1ekJRBpS
+ ieuH0seSPBh48BSLPxrU4d6o/7iXw3UL11WEedd7wEGoTvk9X04i3Ru3C1E0iEKENf
+ 0GCOFp+98JmOiFyIhYSe1iXg0GVQQhE1TGwOOmA+4FtAAokELo89Cp071lVVAp1Yz4
+ EigmWM14xVyXg==
+Message-ID: <fc5f0554-dc37-d514-039c-cfacbe407813@collabora.com>
+Date: Fri, 18 Mar 2022 12:29:50 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
-Subject: Re: [PATCH V5 1/3] spi: mediatek: add spi memory support for ipm
- design
+Subject: Re: [PATCH V5 2/3] dt-bindings: spi: support hclk
 Content-Language: en-US
 To: Leilk Liu <leilk.liu@mediatek.com>, Mark Brown <broonie@kernel.org>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -50,12 +49,12 @@ Cc: Rob Herring <robh+dt@kernel.org>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org
 References: <20220318025027.31281-1-leilk.liu@mediatek.com>
- <20220318025027.31281-2-leilk.liu@mediatek.com>
+ <20220318025027.31281-3-leilk.liu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220318025027.31281-2-leilk.liu@mediatek.com>
+In-Reply-To: <20220318025027.31281-3-leilk.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_042917_709858_B8D795AF 
-X-CRM114-Status: GOOD (  14.10  )
+X-CRM114-CacheID: sfid-20220318_042954_724947_6A06132E 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,36 +72,44 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 18/03/22 03:50, Leilk Liu ha scritto:
-> this patch add the support of spi-mem for ipm design.
+> this patch support hclk for AHB bus.
 > 
 > Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
-> ---
->   drivers/spi/spi-mt65xx.c | 302 ++++++++++++++++++++++++++++++++++++++-
->   1 file changed, 301 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-> index 1a0b3208dfca..ea6223259060 100644
-> --- a/drivers/spi/spi-mt65xx.c
-> +++ b/drivers/spi/spi-mt65xx.c
-
-...snip...
-
-> @@ -78,8 +79,21 @@
->   #define SPI_CMD_IPM_GET_TICKDLY_OFFSET    22
->   
->   #define SPI_CMD_IPM_GET_TICKDLY_MASK	GENMASK(24, 22)
-> +
-> +#define PIN_MODE_CFG(x)	((x) / 2)
-> +
-> +#define SPI_CFG3_IPM_PIN_MODE_OFFSET		0
-
-This definition is useless, the offset is zero... and this is used
-to bitshift zero.
-
-
-Please remove that, after which:
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+> ---
+>   .../devicetree/bindings/spi/mediatek,spi-mt65xx.yaml          | 4 ++++
+>   1 file changed, 4 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
+> index 7247a177466b..ecb4a5002cc1 100644
+> --- a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
+> +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
+> @@ -53,16 +53,20 @@ properties:
+>       maxItems: 1
+>   
+>     clocks:
+> +    minItems: 3
+>       items:
+>         - description: clock used for the parent clock
+>         - description: clock used for the muxes clock
+>         - description: clock used for the clock gate
+> +      - description: clock used for the AHB bus, this clock is optional
+>   
+>     clock-names:
+> +    minItems: 3
+>       items:
+>         - const: parent-clk
+>         - const: sel-clk
+>         - const: spi-clk
+> +      - const: hclk
+>   
+>     mediatek,pad-select:
+>       $ref: /schemas/types.yaml#/definitions/uint32-array
+
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
