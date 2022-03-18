@@ -4,60 +4,141 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E8F8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 20:07:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8815FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 20:59:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AMpzO6zE4HVE6VR1Jp8JMtI6azl/BB9jxbTB3169DQw=; b=k9gM6my8lHFKUNNf5iN+2qfxpQ
-	dK15fTKo8fN5f5fRL95TFYXg8enm1X0EfjzY8l/Jn5SllIOB0dT9RknmX9XkzCgAtxJKqNVueZ6Kl
-	edKgJQCMLQcQcguxIAc6q6ZkoNbXXYABjHeLFbHaiX8cUn5Htq02pry+V9f1sKZbu7Tiiu6f5PT29
-	8fp4OSgHxzOn/bWgD6afoSO3li32RlTfSKe8PiWst/4NOr7sOMFNrvRDBz7oKdn5IBnoYrau9xKfi
-	l928CYsjJeFU4v0kg82Ou2O35j0CMgpr2wUSTmcd7R+x54EnVjM0VqxR474jQFWScN65nlC4i8KOM
-	K3TrOguQ==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gOkAA1NcpHbBoIW3l/A9VsZyyrCggFrUiBnvUKEdFPs=; b=39UdojRw+9L82CGUi9Br0pUWHU
+	IjJD+HFZWubnz+tmcqKa7EJL2dDAnCvN6I7Z9AAxDC4eHZGoDyY+uYXwpltYBE5P0TCLneIEhkmlN
+	ww2f0OTg52sOAAV4vNEZQ8d6IaD+9hRQ1DSgesGlrpv1SVX8ZtUEGCAxIWoJPQBwOQ2Cj/hmeFaXi
+	OUMnlM+5k33a2GUWy8XeAqbh4mObMZ7U4Db4RLA034qpuU9ZHaWRibA0oEwqymAu8oBr7PzrStmKp
+	HTE/K5EEIjHsMShmtZOlF9wx+Tqt7JcPnX0jwmJFOvzs8E4Q4ckwaoVhQyndyX6AbNZ91lrLEUwA6
+	WxLxhkuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVIsV-002lSa-I0; Fri, 18 Mar 2022 20:07:15 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nVJgn-002sDW-GI; Fri, 18 Mar 2022 20:59:13 +0000
+Received: from mail-io1-xd35.google.com ([2607:f8b0:4864:20::d35])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVIsH-002lMF-Nv; Fri, 18 Mar 2022 20:07:04 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 3B58A61BFE;
- Fri, 18 Mar 2022 20:06:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E71FCC340E8;
- Fri, 18 Mar 2022 20:06:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647634014;
- bh=rSGGClOlzviu7qkL+I7KVERK4YDLJC8pYpOpKPqJJK0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Npde3rcPofiP71idHFhci+gdU0jskf1HHFMqaTG7nUDPGVTBJXr2yRTeVK4LzrM2t
- 0wbUMOyas0ySPe+bdTzesvXShUi1ThNq+5vaGCDjggKeJ8UeIzIvCnPfTIMefD01L7
- IrYOwetq+KSqKIm1DgUie/oJUvHkwCriV8hvVy2fAH+CJjU+9I9JVZS2fHBPVoSAQV
- ZxBSqycloVMcYWR5MTds5BjM7ARDme8pjS22ONBeDce16Spawtl87kU8rqJknreaKF
- CSMddJ4q5wVCkX05S8PHHOpFVfIP2oOhI9sa7OzG+0JFWh/EglGiuwKGy6mG46pxPu
- WzIuvJjRko+JQ==
-Date: Fri, 18 Mar 2022 20:06:49 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Johnson Wang <johnson.wang@mediatek.com>
-Cc: robh+dt@kernel.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v2 1/2] regulator: mt6366: Add support for MT6366 regulator
-Message-ID: <YjTmWR3xNOpmztew@sirena.org.uk>
-References: <20220317030402.24894-1-johnson.wang@mediatek.com>
- <20220317030402.24894-2-johnson.wang@mediatek.com>
+ id 1nVJgk-002sAo-KF
+ for linux-mediatek@lists.infradead.org; Fri, 18 Mar 2022 20:59:12 +0000
+Received: by mail-io1-xd35.google.com with SMTP id z6so1117457iot.0
+ for <linux-mediatek@lists.infradead.org>; Fri, 18 Mar 2022 13:59:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linuxfoundation.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=oNAPpR+5qx5bHO8wJ1SIgWig3LUKuwuqLo641jvFAak=;
+ b=R3B03hXdzmRL4FMHavxss76+tb9Q0Hy78NbdGoHIgmWRsuIfciGr2JWywHMf/Kpkhf
+ QniqntLtfhiE8E3Wo0oxTFcS1KWerJtG5tNgnrk3j2xUiX43wMMg+/mjp1wKd5A4aRIu
+ ErIGjgvdava6sQlmLmDCO8Qr2P9RfzXvczFjE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=oNAPpR+5qx5bHO8wJ1SIgWig3LUKuwuqLo641jvFAak=;
+ b=GUp/RP5N7fQK46DXFMe9Qvd4frM5KBAnVnOHTMOQ8OFw+a05J07yn8HG/mluVGgASE
+ hVzxhcWyQZ0vKmQJtC3U10zuPR1Gy89BNs1jCyvaa+zDzfgiIxI2S4gJDodUYN+qTWzI
+ 86KeMpC0/OYmcib05TExRUEwsmt4H5CPyzB4ShBiyphqflqHScMe+k4WDk6ynlm5ZkxT
+ Y2Dno5S21bNwiBoZVjUt+YsMIvvhYzSNSGCTAPqzsqCpiFl0SKntI6y0sNIkgRtZ7N6J
+ 3bV+NwgWeXwly7w+qbc2M7+Vax9Ux1/E6KB/eG905GQ/M7lGLWGVVZNc2o2eOxXO9hm7
+ CDOw==
+X-Gm-Message-State: AOAM532usCLTXnL3TJ0NqSFXDOZOB7cl7UZbr2NvhtNiDz7UwtWNNu6M
+ lGEJu1ZovLPdq/NmCo8yczPJ5A==
+X-Google-Smtp-Source: ABdhPJw+g6qtXnLujFKVRv55AGvVhZcbGPndogV4eznqetPdpLwXYueCN6beIFsP8OoV/l235xaSaw==
+X-Received: by 2002:a5d:9542:0:b0:648:f92b:7bc6 with SMTP id
+ a2-20020a5d9542000000b00648f92b7bc6mr5223132ios.73.1647637149068; 
+ Fri, 18 Mar 2022 13:59:09 -0700 (PDT)
+Received: from [192.168.1.128] ([71.205.29.0])
+ by smtp.gmail.com with ESMTPSA id
+ d14-20020a056602328e00b006494aa126c2sm3528385ioz.11.2022.03.18.13.59.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 18 Mar 2022 13:59:08 -0700 (PDT)
+Subject: Re: [PATCH 64/64] media: Kconfig: cleanup VIDEO_DEV dependencies
+To: Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Fabio Estevam <festevam@gmail.com>, Felipe Balbi <balbi@kernel.org>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Giulio Benetti <giulio.benetti@benettiengineering.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hans Verkuil <hverkuil@xs4all.nl>, Heiko Stuebner <heiko@sntech.de>,
+ Heungjun Kim <riverful.kim@samsung.com>,
+ Houlong Wei <houlong.wei@mediatek.com>,
+ Hugues Fruchet <hugues.fruchet@foss.st.com>, Hyun Kwon
+ <hyun.kwon@xilinx.com>, Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ Jacob Chen <jacob-chen@iotwrt.com>, Jaroslav Kysela <perex@perex.cz>,
+ Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>,
+ Jeff LaBundy <jeff@labundy.com>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jerome Brunet <jbrunet@baylibre.com>, Joe Hung <joe_hung@ilitek.com>,
+ Joel Stanley <joel@jms.id.au>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Kevin Hilman <khilman@baylibre.com>,
+ Kieran Bingham <kieran.bingham@ideasonboard.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>, Marek Vasut <marex@denx.de>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Martina Krasteva <martinax.krasteva@intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Michael Grzeschik <m.grzeschik@pengutronix.de>,
+ Michael Tretter <m.tretter@pengutronix.de>,
+ Michal Simek <michal.simek@xilinx.com>, Mike Isely <isely@pobox.com>,
+ Ming Qian <ming.qian@nxp.com>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Mirela Rabulea <mirela.rabulea@nxp.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Neil Armstrong <narmstrong@baylibre.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Nicolas Saenz Julienne <nsaenz@kernel.org>,
+ Olivier Lorin <o.lorin@laposte.net>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Pavel Machek <pavel@ucw.cz>, Pengutronix Kernel Team
+ <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Randy Dunlap <rdunlap@infradead.org>, Ray Jui <rjui@broadcom.com>,
+ Rick Chang <rick.chang@mediatek.com>, Robert Foss <robert.foss@linaro.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Scott Branden
+ <sbranden@broadcom.com>, Sean Young <sean@mess.org>,
+ Shawn Guo <shawnguo@kernel.org>, Shawn Tu <shawnx.tu@intel.com>,
+ Shijie Qin <shijie.qin@nxp.com>, Sowjanya Komatineni
+ <skomatineni@nvidia.com>, Stanimir Varbanov <stanimir.varbanov@linaro.org>,
+ Steve Longerbeam <slongerbeam@gmail.com>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>, Takashi Iwai <tiwai@suse.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Tianshu Qiu <tian.shu.qiu@intel.com>, Tiffany Lin
+ <tiffany.lin@mediatek.com>, Todor Tomov <todor.too@gmail.com>,
+ Vincent Knecht <vincent.knecht@mailoo.org>,
+ Yong Deng <yong.deng@magewell.com>, Yong Zhi <yong.zhi@intel.com>,
+ Zhou Peng <eagle.zhou@nxp.com>, alsa-devel@alsa-project.org,
+ bcm-kernel-feedback-list@broadcom.com, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-aspeed@lists.ozlabs.org, linux-input@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, linux-usb@vger.kernel.org,
+ mjpeg-users@lists.sourceforge.net, openbmc@lists.ozlabs.org,
+ Shuah Khan <skhan@linuxfoundation.org>
+References: <cover.1647242578.git.mchehab@kernel.org>
+ <decd26e90adc5c16470e4f738810f22fe6478b27.1647242579.git.mchehab@kernel.org>
+From: Shuah Khan <skhan@linuxfoundation.org>
+Message-ID: <9e02d88a-3344-8d91-c652-72cb989506de@linuxfoundation.org>
+Date: Fri, 18 Mar 2022 14:59:05 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20220317030402.24894-2-johnson.wang@mediatek.com>
-X-Cookie: How do I get HOME?
+In-Reply-To: <decd26e90adc5c16470e4f738810f22fe6478b27.1647242579.git.mchehab@kernel.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_130701_893026_7919C838 
-X-CRM114-Status: GOOD (  12.01  )
+X-CRM114-CacheID: sfid-20220318_135910_759723_11B6A332 
+X-CRM114-Status: GOOD (  23.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,295 +150,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0774359163161907477=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 3/14/22 1:55 AM, Mauro Carvalho Chehab wrote:
+> media Kconfig has two entries associated to V4L API:
+> VIDEO_DEV and VIDEO_V4L2.
+> 
+> On Kernel 2.6.x, there were two V4L APIs, each one with its own flag.
+> VIDEO_DEV were meant to:
+> 	1) enable Video4Linux and make its Kconfig options to appear;
+> 	2) it makes the Kernel build the V4L core.
+> 
+> while VIDEO_V4L2 where used to distinguish between drivers that
+> implement the newer API and drivers that implemented the former one.
+> 
+> With time, such meaning changed, specially after the removal of
+> all V4L version 1 drivers.
+> 
+> At the current implementation, VIDEO_DEV only does (1): it enables
+> the media options related to V4L, that now has:
+> 
+> 	menu "Video4Linux options"
+> 		visible if VIDEO_DEV
+> 
+> 	source "drivers/media/v4l2-core/Kconfig"
+> 	endmenu
+> 
+> but it doesn't affect anymore the V4L core drivers.
+> 
+> The rationale is that the V4L2 core has a "soft" dependency
+> at the I2C bus, and now requires to select a number of other
+> Kconfig options:
+> 
+> 	config VIDEO_V4L2
+> 		tristate
+> 		depends on (I2C || I2C=n) && VIDEO_DEV
+> 		select RATIONAL
+> 		select VIDEOBUF2_V4L2 if VIDEOBUF2_CORE
+> 		default (I2C || I2C=n) && VIDEO_DEV
+> 
+> In the past, merging them would be tricky, but it seems that it is now
+> possible to merge those symbols, in order to simplify V4L dependencies.
+> 
+> Let's keep VIDEO_DEV, as this one is used on some make *defconfig
+> configurations.
+> 
+> Suggested-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+> ---
+> 
 
---===============0774359163161907477==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ow9NmIg9bBeggGxL"
-Content-Disposition: inline
+>   drivers/media/test-drivers/vicodec/Kconfig    |   2 +-
+>   drivers/media/test-drivers/vimc/Kconfig       |   2 +-
+>   drivers/media/test-drivers/vivid/Kconfig      |   2 +-
+>
 
+For vimc change: (trimmed the recipient list to send response)
 
---ow9NmIg9bBeggGxL
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Acked-by: Shuah Khan <skhan@linuxfoundation.org>
 
-On Thu, Mar 17, 2022 at 11:04:01AM +0800, Johnson Wang wrote:
-> The MT6366 is a regulator found on boards based on MediaTek MT8186 and
-> probably other SoCs. It is a so called pmic and connects as a slave to
-> SoC using SPI, wrapped inside the pmic-wrapper.
-
-This doesn't build, please resend once the dependencies have been merged:
-
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:51:15: error: 'MT6358_BUCK_VCORE_SSHUB_ELR0' undeclared here (not in a function); did you mean 'MT6358_BUCK_VCORE_ELR0'?
-   51 |   .vsel_reg = MT6358_BUCK_##vreg##_ELR0, \
-      |               ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:508:2: note: in expansion of macro 'MT6358_BUCK'
-  508 |  MT6358_BUCK("buck_vcore_sshub", VCORE_SSHUB, 500000, 1293750, 6250,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:53:17: error: 'MT6358_BUCK_VCORE_SSHUB_CON0' undeclared here (not in a function); did you mean 'MT6358_BUCK_VCORE_CON0'?
-   53 |   .enable_reg = MT6358_BUCK_##vreg##_CON0, \
-      |                 ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:508:2: note: in expansion of macro 'MT6358_BUCK'
-  508 |  MT6358_BUCK("buck_vcore_sshub", VCORE_SSHUB, 500000, 1293750, 6250,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:57:16: error: 'MT6358_BUCK_VCORE_SSHUB_DBG1' undeclared here (not in a function); did you mean 'MT6358_BUCK_VCORE_DBG1'?
-   57 |  .status_reg = MT6358_BUCK_##vreg##_DBG1, \
-      |                ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:508:2: note: in expansion of macro 'MT6358_BUCK'
-  508 |  MT6358_BUCK("buck_vcore_sshub", VCORE_SSHUB, 500000, 1293750, 6250,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:593:7: error: 'MT6358_LDO_VSRAM_OTHERS_SSHUB_CON1' undeclared here (not in a function); did you mean 'MT6358_ID_VSRAM_OTHERS_SSHUB'?
-  593 |       MT6358_LDO_VSRAM_OTHERS_SSHUB_CON1, 0x7f),
-      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:103:15: note: in definition of macro 'MT6358_LDO1'
-  103 |   .vsel_reg = vosel, \
-      |               ^~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:105:17: error: 'MT6358_LDO_VSRAM_OTHERS_SSHUB_CON0' undeclared here (not in a function); did you mean 'MT6358_LDO_VSRAM_OTHERS_CON0'?
-  105 |   .enable_reg = MT6358_LDO_##vreg##_CON0, \
-      |                 ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:590:2: note: in expansion of macro 'MT6358_LDO1'
-  590 |  MT6358_LDO1("ldo_vsram_others_sshub", VSRAM_OTHERS_SSHUB, 500000,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:110:16: error: 'MT6358_LDO_VSRAM_OTHERS_SSHUB_DBG1' undeclared here (not in a function); did you mean 'MT6358_LDO_VSRAM_OTHERS_DBG1'?
-  110 |  .status_reg = MT6358_LDO_##vreg##_DBG1, \
-      |                ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:590:2: note: in expansion of macro 'MT6358_LDO1'
-  590 |  MT6358_LDO1("ldo_vsram_others_sshub", VSRAM_OTHERS_SSHUB, 500000,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:147:15: warning: initialization of 'unsigned int' from 'struct mt6358_regulator_info *' makes integer from pointer without a cast [-Wint-conversion]
-  147 |   .vsel_reg = MT6358_BUCK_##vreg##_ELR0, \
-      |               ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:610:2: note: in expansion of macro 'MT6366_BUCK'
-  610 |  MT6366_BUCK("buck_vcore_sshub", VCORE_SSHUB, 500000, 1293750, 6250,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:147:15: note: (near initialization for 'mt6366_regulators[36].desc.vsel_reg')
-  147 |   .vsel_reg = MT6358_BUCK_##vreg##_ELR0, \
-      |               ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:610:2: note: in expansion of macro 'MT6366_BUCK'
-  610 |  MT6366_BUCK("buck_vcore_sshub", VCORE_SSHUB, 500000, 1293750, 6250,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:147:15: error: initializer element is not constant
-  147 |   .vsel_reg = MT6358_BUCK_##vreg##_ELR0, \
-      |               ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:610:2: note: in expansion of macro 'MT6366_BUCK'
-  610 |  MT6366_BUCK("buck_vcore_sshub", VCORE_SSHUB, 500000, 1293750, 6250,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:147:15: note: (near initialization for 'mt6366_regulators[36].desc.vsel_reg')
-  147 |   .vsel_reg = MT6358_BUCK_##vreg##_ELR0, \
-      |               ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:610:2: note: in expansion of macro 'MT6366_BUCK'
-  610 |  MT6366_BUCK("buck_vcore_sshub", VCORE_SSHUB, 500000, 1293750, 6250,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:149:17: warning: initialization of 'unsigned int' from 'struct mt6358_regulator_info *' makes integer from pointer without a cast [-Wint-conversion]
-  149 |   .enable_reg = MT6358_BUCK_##vreg##_CON0, \
-      |                 ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:610:2: note: in expansion of macro 'MT6366_BUCK'
-  610 |  MT6366_BUCK("buck_vcore_sshub", VCORE_SSHUB, 500000, 1293750, 6250,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:149:17: note: (near initialization for 'mt6366_regulators[36].desc.enable_reg')
-  149 |   .enable_reg = MT6358_BUCK_##vreg##_CON0, \
-      |                 ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:610:2: note: in expansion of macro 'MT6366_BUCK'
-  610 |  MT6366_BUCK("buck_vcore_sshub", VCORE_SSHUB, 500000, 1293750, 6250,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:149:17: error: initializer element is not constant
-  149 |   .enable_reg = MT6358_BUCK_##vreg##_CON0, \
-      |                 ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:610:2: note: in expansion of macro 'MT6366_BUCK'
-  610 |  MT6366_BUCK("buck_vcore_sshub", VCORE_SSHUB, 500000, 1293750, 6250,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:149:17: note: (near initialization for 'mt6366_regulators[36].desc.enable_reg')
-  149 |   .enable_reg = MT6358_BUCK_##vreg##_CON0, \
-      |                 ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:610:2: note: in expansion of macro 'MT6366_BUCK'
-  610 |  MT6366_BUCK("buck_vcore_sshub", VCORE_SSHUB, 500000, 1293750, 6250,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:153:16: warning: initialization of 'unsigned int' from 'struct mt6358_regulator_info *' makes integer from pointer without a cast [-Wint-conversion]
-  153 |  .status_reg = MT6358_BUCK_##vreg##_DBG1, \
-      |                ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:610:2: note: in expansion of macro 'MT6366_BUCK'
-  610 |  MT6366_BUCK("buck_vcore_sshub", VCORE_SSHUB, 500000, 1293750, 6250,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:153:16: note: (near initialization for 'mt6366_regulators[36].status_reg')
-  153 |  .status_reg = MT6358_BUCK_##vreg##_DBG1, \
-      |                ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:610:2: note: in expansion of macro 'MT6366_BUCK'
-  610 |  MT6366_BUCK("buck_vcore_sshub", VCORE_SSHUB, 500000, 1293750, 6250,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:153:16: error: initializer element is not constant
-  153 |  .status_reg = MT6358_BUCK_##vreg##_DBG1, \
-      |                ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:610:2: note: in expansion of macro 'MT6366_BUCK'
-  610 |  MT6366_BUCK("buck_vcore_sshub", VCORE_SSHUB, 500000, 1293750, 6250,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:153:16: note: (near initialization for 'mt6366_regulators[36].status_reg')
-  153 |  .status_reg = MT6358_BUCK_##vreg##_DBG1, \
-      |                ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:610:2: note: in expansion of macro 'MT6366_BUCK'
-  610 |  MT6366_BUCK("buck_vcore_sshub", VCORE_SSHUB, 500000, 1293750, 6250,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:611:31: warning: initialization of 'unsigned int' from 'struct mt6358_regulator_info *' makes integer from pointer without a cast [-Wint-conversion]
-  611 |       buck_volt_range1, 0x7f, MT6358_BUCK_VCORE_SSHUB_ELR0, 0x7f,
-      |                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:155:17: note: in definition of macro 'MT6366_BUCK'
-  155 |  .da_vsel_reg = _da_vsel_reg, \
-      |                 ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:611:31: note: (near initialization for 'mt6366_regulators[36].da_vsel_reg')
-  611 |       buck_volt_range1, 0x7f, MT6358_BUCK_VCORE_SSHUB_ELR0, 0x7f,
-      |                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:155:17: note: in definition of macro 'MT6366_BUCK'
-  155 |  .da_vsel_reg = _da_vsel_reg, \
-      |                 ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:611:31: error: initializer element is not constant
-  611 |       buck_volt_range1, 0x7f, MT6358_BUCK_VCORE_SSHUB_ELR0, 0x7f,
-      |                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:155:17: note: in definition of macro 'MT6366_BUCK'
-  155 |  .da_vsel_reg = _da_vsel_reg, \
-      |                 ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:611:31: note: (near initialization for 'mt6366_regulators[36].da_vsel_reg')
-  611 |       buck_volt_range1, 0x7f, MT6358_BUCK_VCORE_SSHUB_ELR0, 0x7f,
-      |                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:155:17: note: in definition of macro 'MT6366_BUCK'
-  155 |  .da_vsel_reg = _da_vsel_reg, \
-      |                 ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:684:7: warning: initialization of 'unsigned int' from 'struct mt6358_regulator_info *' makes integer from pointer without a cast [-Wint-conversion]
-  684 |       MT6358_LDO_VSRAM_OTHERS_SSHUB_CON1, 0x7f),
-      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:199:15: note: in definition of macro 'MT6366_LDO1'
-  199 |   .vsel_reg = vosel, \
-      |               ^~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:684:7: note: (near initialization for 'mt6366_regulators[37].desc.vsel_reg')
-  684 |       MT6358_LDO_VSRAM_OTHERS_SSHUB_CON1, 0x7f),
-      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:199:15: note: in definition of macro 'MT6366_LDO1'
-  199 |   .vsel_reg = vosel, \
-      |               ^~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:684:7: error: initializer element is not constant
-  684 |       MT6358_LDO_VSRAM_OTHERS_SSHUB_CON1, 0x7f),
-      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:199:15: note: in definition of macro 'MT6366_LDO1'
-  199 |   .vsel_reg = vosel, \
-      |               ^~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:684:7: note: (near initialization for 'mt6366_regulators[37].desc.vsel_reg')
-  684 |       MT6358_LDO_VSRAM_OTHERS_SSHUB_CON1, 0x7f),
-      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:199:15: note: in definition of macro 'MT6366_LDO1'
-  199 |   .vsel_reg = vosel, \
-      |               ^~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:201:17: warning: initialization of 'unsigned int' from 'struct mt6358_regulator_info *' makes integer from pointer without a cast [-Wint-conversion]
-  201 |   .enable_reg = MT6358_LDO_##vreg##_CON0, \
-      |                 ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:681:2: note: in expansion of macro 'MT6366_LDO1'
-  681 |  MT6366_LDO1("ldo_vsram_others_sshub", VSRAM_OTHERS_SSHUB, 500000,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:201:17: note: (near initialization for 'mt6366_regulators[37].desc.enable_reg')
-  201 |   .enable_reg = MT6358_LDO_##vreg##_CON0, \
-      |                 ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:681:2: note: in expansion of macro 'MT6366_LDO1'
-  681 |  MT6366_LDO1("ldo_vsram_others_sshub", VSRAM_OTHERS_SSHUB, 500000,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:201:17: error: initializer element is not constant
-  201 |   .enable_reg = MT6358_LDO_##vreg##_CON0, \
-      |                 ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:681:2: note: in expansion of macro 'MT6366_LDO1'
-  681 |  MT6366_LDO1("ldo_vsram_others_sshub", VSRAM_OTHERS_SSHUB, 500000,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:201:17: note: (near initialization for 'mt6366_regulators[37].desc.enable_reg')
-  201 |   .enable_reg = MT6358_LDO_##vreg##_CON0, \
-      |                 ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:681:2: note: in expansion of macro 'MT6366_LDO1'
-  681 |  MT6366_LDO1("ldo_vsram_others_sshub", VSRAM_OTHERS_SSHUB, 500000,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:683:7: warning: initialization of 'unsigned int' from 'struct mt6358_regulator_info *' makes integer from pointer without a cast [-Wint-conversion]
-  683 |       MT6358_LDO_VSRAM_OTHERS_SSHUB_CON1, 0x7f,
-      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:204:17: note: in definition of macro 'MT6366_LDO1'
-  204 |  .da_vsel_reg = _da_vsel_reg, \
-      |                 ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:683:7: note: (near initialization for 'mt6366_regulators[37].da_vsel_reg')
-  683 |       MT6358_LDO_VSRAM_OTHERS_SSHUB_CON1, 0x7f,
-      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:204:17: note: in definition of macro 'MT6366_LDO1'
-  204 |  .da_vsel_reg = _da_vsel_reg, \
-      |                 ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:683:7: error: initializer element is not constant
-  683 |       MT6358_LDO_VSRAM_OTHERS_SSHUB_CON1, 0x7f,
-      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:204:17: note: in definition of macro 'MT6366_LDO1'
-  204 |  .da_vsel_reg = _da_vsel_reg, \
-      |                 ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:683:7: note: (near initialization for 'mt6366_regulators[37].da_vsel_reg')
-  683 |       MT6358_LDO_VSRAM_OTHERS_SSHUB_CON1, 0x7f,
-      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:204:17: note: in definition of macro 'MT6366_LDO1'
-  204 |  .da_vsel_reg = _da_vsel_reg, \
-      |                 ^~~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:206:16: warning: initialization of 'unsigned int' from 'struct mt6358_regulator_info *' makes integer from pointer without a cast [-Wint-conversion]
-  206 |  .status_reg = MT6358_LDO_##vreg##_DBG1, \
-      |                ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:681:2: note: in expansion of macro 'MT6366_LDO1'
-  681 |  MT6366_LDO1("ldo_vsram_others_sshub", VSRAM_OTHERS_SSHUB, 500000,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:206:16: note: (near initialization for 'mt6366_regulators[37].status_reg')
-  206 |  .status_reg = MT6358_LDO_##vreg##_DBG1, \
-      |                ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:681:2: note: in expansion of macro 'MT6366_LDO1'
-  681 |  MT6366_LDO1("ldo_vsram_others_sshub", VSRAM_OTHERS_SSHUB, 500000,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:206:16: error: initializer element is not constant
-  206 |  .status_reg = MT6358_LDO_##vreg##_DBG1, \
-      |                ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:681:2: note: in expansion of macro 'MT6366_LDO1'
-  681 |  MT6366_LDO1("ldo_vsram_others_sshub", VSRAM_OTHERS_SSHUB, 500000,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:206:16: note: (near initialization for 'mt6366_regulators[37].status_reg')
-  206 |  .status_reg = MT6358_LDO_##vreg##_DBG1, \
-      |                ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:681:2: note: in expansion of macro 'MT6366_LDO1'
-  681 |  MT6366_LDO1("ldo_vsram_others_sshub", VSRAM_OTHERS_SSHUB, 500000,
-      |  ^~~~~~~~~~~
-/mnt/kernel/drivers/regulator/mt6358-regulator.c: In function 'mt6358_regulator_probe':
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:701:25: error: 'MT6366_CHIP_ID' undeclared (first use in this function); did you mean 'MT6397_CHIP_ID'?
-  701 |  if (mt6397->chip_id == MT6366_CHIP_ID) {
-      |                         ^~~~~~~~~~~~~~
-      |                         MT6397_CHIP_ID
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:701:25: note: each undeclared identifier is reported only once for each function it appears in
-/mnt/kernel/drivers/regulator/mt6358-regulator.c:701:22: warning: comparison between pointer and integer
-  701 |  if (mt6397->chip_id == MT6366_CHIP_ID) {
-      |                      ^~
+thanks,
+-- Shuah
 
 
---ow9NmIg9bBeggGxL
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmI05lgACgkQJNaLcl1U
-h9B/6gf/Y+634iYDE/CByhWCn2OxcMgMgLKyHFYVUPjJF2M6YE78HyOi2AGK8A1t
-IjGD7gay4LDgNuUUHAXEf/q/g7rks1Fhr4h99fILg+aVXjsJxoRnFUTnviqKH8kb
-kvGNxQ4Y44EiDCrCWh85dTl2XMVkqBW870NCGteY8QswisyDdV77tgn9jPpQnrZ6
-77eojWk3bOEUT4tIYzVV/2PsuXsod5DdJq3R9a7YZK9PUJmt7ltITlyLME2wModn
-APveEV6LYt2jgvAgyvKGXXTaDBnJtooQvqVKAjrenPsvxDz3H0YOBKd/I1JGxKdr
-W2c1w2/0KuXPQ4rM2C0bDAGgVcksYw==
-=MQ6X
------END PGP SIGNATURE-----
-
---ow9NmIg9bBeggGxL--
-
-
---===============0774359163161907477==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============0774359163161907477==--
-
