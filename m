@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F25C8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 07:31:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DEDDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 07:32:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ox+ppS0FbXl4VRVOOReBn53B7E6ro2n7Lvdkf6ejiQQ=; b=PJ+MTpID0uIDHG
-	3/w2/2t6frZxV4Vt1Cp3vsfzfM7LuJXzf10T2waS3xvl63ixyJVkvR1N/bZv57zsI4xVhC7UC0I6W
-	nJjV+yG6G3XAeFNPTjGRlJnL3LLdmBkkvRFMnYDS3BAxYvHTBOwcA+aPB4JRxgz57rKOO+1LRVmT2
-	HsOMmcFlKt24aemiqnoK+RbEGofFPyiQ7hbsqQUweXvSxESLJBmGeQ9MkQ2SeKJ9gjxEP/AH9hUvd
-	/HIfLglTiuRoYGffts82ZNQl0qiqIUz3NVn5TfjzqC3xN0izIeZKBAUjWEaEds8CW4RUisa6XNmzk
-	ul1gFZmak9s3fDKzvODA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qgsU1lf6HCusB5KE1hEfcm/05wMI99LoZwK2K064pNc=; b=euKCWkHor5LCb9
+	1csYqUtqYiTQpEiabmwea6IzBjx2+EBgvij7Y8eCYcC71zgiD0wE8U0WECu4hjyAR2hHfknaEWPka
+	Pmsk100pZlciWeePLr+EA5suOtp91wZxvhQwGnh9sH+uSp1Ka2GCA/qoJHe+3aULX/s74L9CTspUa
+	gz0jYq7h+WTejsfGIFHprK5Nam+uY1eBGkSEnyQyVPT20E3U913w4wCFDln/O94xVROwLMj6dTIIK
+	I2sqOo0nn3H50F879g7vX2E0BAYlMMCfSOS7fosMOLHHjVUEca4r8g50J7RQGBgwMnuvuPP9HPOJA
+	kDwDkEODXNwHuOwHzTyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nV75D-000bkx-HJ; Fri, 18 Mar 2022 07:31:35 +0000
+	id 1nV75Y-000bqG-N3; Fri, 18 Mar 2022 07:31:56 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nV751-000biN-MG; Fri, 18 Mar 2022 07:31:25 +0000
-X-UUID: be0209d7dd294eaa9b863c6ec8660b1a-20220318
-X-UUID: be0209d7dd294eaa9b863c6ec8660b1a-20220318
+ id 1nV751-000biS-OJ; Fri, 18 Mar 2022 07:31:26 +0000
+X-UUID: 34109da2428c45e998d54eb767aafa6d-20220318
+X-UUID: 34109da2428c45e998d54eb767aafa6d-20220318
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <kyrie.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1809917923; Fri, 18 Mar 2022 00:31:17 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 1939304597; Fri, 18 Mar 2022 00:31:17 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Mar 2022 00:28:01 -0700
+ 15.0.1497.2; Fri, 18 Mar 2022 00:27:52 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 18 Mar 2022 15:27:59 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 18 Mar 2022 15:27:51 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 18 Mar 2022 15:27:58 +0800
+ Transport; Fri, 18 Mar 2022 15:27:49 +0800
 From: kyrie.wu <kyrie.wu@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
  <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
@@ -50,17 +50,16 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
  <xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, kyrie wu
  <kyrie.wu@mediatek.com>, <srv_heupstream@mediatek.com>
-Subject: [V2,4/7] media: mtk-jpegdec: add jpegdec timeout func interface
-Date: Fri, 18 Mar 2022 15:27:43 +0800
-Message-ID: <1647588466-761-5-git-send-email-kyrie.wu@mediatek.com>
+Subject: [V2,
+ 0/7] Support multi-hardware jpeg decoding using of_platform_populate
+Date: Fri, 18 Mar 2022 15:27:39 +0800
+Message-ID: <1647588466-761-1-git-send-email-kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1647588466-761-1-git-send-email-kyrie.wu@mediatek.com>
-References: <1647588466-761-1-git-send-email-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_003123_741193_2F1C20BA 
-X-CRM114-Status: GOOD (  14.78  )
+X-CRM114-CacheID: sfid-20220318_003123_802170_0E43D29D 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,78 +78,68 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: kyrie wu <kyrie.wu@mediatek.com>
 
-Generalizes jpegdec timeout func interfaces to handle HW timeout.
+This series adds support for multi hardware jpeg decoding,
+by first adding use of_platform_populate to manage each hardware
+information: interrupt, clock, register bases and power.
+Secondly add decoding work queue to deal with the decoding requests
+of multi-hardware at the same time. Lastly, add output picture
+reorder function interface to eliminate the out of order images.
 
-Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+This series has been tested with both MT8195.
+Decoding worked for this chip.
+
+Patch 1 Adds jpeg decoder dt-bindings for mt8195
+
+Patches 2 jpeg decoder builds three module for using Multi-HW,
+export some functions to make them visible by other modules.
+
+Patch 3 use of_platform_populate to manage multi-hardware.
+
+Patch 4 add jpeg decoding timeout function to judge hardware timeout.
+
+Patch 5 add decoding work queue to deal with multi-hardware decoding
+at the same time.
+
+Patch 6 add output picture reorder function to order images.
+
+Patch 7 refactor jpegdec func interface for HW working.
+
 ---
- .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  2 ++
- .../media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c | 25 ++++++++++++++++++-
- 2 files changed, 26 insertions(+), 1 deletion(-)
+This series patches dependent on:
+media_stage tree:
+[1]
+https://git.linuxtv.org/media_stage.git/commit/?id=b3627647f9ea7473d10fb08a95fd7c4133a17ca4
 
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-index de8dd51dfb94..1c75ce45f89a 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-@@ -173,6 +173,8 @@ struct mtk_jpegdec_comp_dev {
- 	struct mtk_jpegdec_clk jdec_clk;
- 	int jpegdec_irq;
- 	int hw_id;
-+	struct delayed_work job_timeout_work;
-+	struct mtk_jpeg_hw_param hw_param;
- };
- 
- /**
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
-index e89ca51555ab..170018e26d49 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
-@@ -440,6 +440,24 @@ void mtk_jpeg_dec_set_config(void __iomem *base,
- }
- EXPORT_SYMBOL_GPL(mtk_jpeg_dec_set_config);
- 
-+static void mtk_jpegdec_timeout_work(struct work_struct *work)
-+{
-+	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
-+	struct mtk_jpegdec_comp_dev *cjpeg =
-+		container_of(work, struct mtk_jpegdec_comp_dev,
-+			     job_timeout_work.work);
-+	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-+
-+	src_buf = cjpeg->hw_param.src_buffer;
-+	dst_buf = cjpeg->hw_param.dst_buffer;
-+
-+	mtk_jpeg_dec_reset(cjpeg->reg_base);
-+	clk_disable_unprepare(cjpeg->jdec_clk.clks->clk);
-+	pm_runtime_put(cjpeg->dev);
-+	v4l2_m2m_buf_done(src_buf, buf_state);
-+	v4l2_m2m_buf_done(dst_buf, buf_state);
-+}
-+
- static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
- {
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-@@ -453,6 +471,8 @@ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
- 	struct mtk_jpegdec_comp_dev *jpeg = priv;
- 	struct mtk_jpeg_dev *master_jpeg = jpeg->master_dev;
- 
-+	cancel_delayed_work(&jpeg->job_timeout_work);
-+
- 	irq_status = mtk_jpeg_dec_get_int_status(jpeg->reg_base);
- 	dec_irq_ret = mtk_jpeg_dec_enum_result(irq_status);
- 	if (dec_irq_ret >= MTK_JPEG_DEC_RESULT_UNDERFLOW)
-@@ -531,8 +551,11 @@ static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	dev->plat_dev = pdev;
--	jpegdec_clk = &dev->jdec_clk;
- 
-+	INIT_DELAYED_WORK(&dev->job_timeout_work,
-+			  mtk_jpegdec_timeout_work);
-+
-+	jpegdec_clk = &dev->jdec_clk;
- 	jpegdec_clk->clk_num = devm_clk_bulk_get_all(&pdev->dev,
- 						     &jpegdec_clk->clks);
- 	if (jpegdec_clk->clk_num < 0)
+patch1 new jpegdec dt-bindings included files
+[2] MM IOMMU binding:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220217113453.13658-2-yong.wu@mediatek.com/
+
+[3] MT8195 power domain:
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=580579
+
+Changes compared with v1:
+- new yaml file for mt8195 jpeg decoder.
+- some modifications for patch v1's review comments.
+
+kyrie wu (7):
+  dt-bindings: mediatek: Add mediatek,mt8195-jpgdec compatible
+  media: mtk-jpegdec: export jpeg decoder functions
+  media: mtk-jpegdec: manage jpegdec multi-hardware
+  media: mtk-jpegdec: add jpegdec timeout func interface
+  media: mtk-jpegdec: add jpeg decode worker interface
+  media: mtk-jpegdec: add output pic reorder interface
+  media: mtk-jpegdec: refactor jpegdec func interface
+
+ .../media/mediatek,mt8195-jpegdec.yaml        | 166 ++++++++++
+ drivers/media/platform/mtk-jpeg/Makefile      |   5 +-
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 286 +++++++++++++++-
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  46 +++
+ .../media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c | 311 ++++++++++++++++--
+ .../media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h |   3 +-
+ .../platform/mtk-jpeg/mtk_jpeg_dec_reg.h      |   1 +
+ 7 files changed, 775 insertions(+), 43 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
+
 -- 
 2.18.0
 
