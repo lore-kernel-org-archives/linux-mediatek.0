@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06EC5C433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65C4BC433F5
 	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Mar 2022 11:51:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Ej8ascngAlbv7VeicGiW3s0HRGJkAllMKSF0q8157hg=; b=NfUC0VWE5pifpz
-	7d+jKeIzx5ZtmlCMl1HxgJLCCsAa5W5fhM13fSDi6JpqeKS8YMS083SosCnpCvZnGfHL0xQeqlTBK
-	yAfoQN09S7IItf2XhFFgacRJ7fEGx8nVxBaMzJsmeVWAENFQx2CZfSMyepL0OUrsiZoZwO3d3Q7Aj
-	6lPzKtJQ+EnDNXwOHdqTnYs6WW5EwZnxYrfrbc4fXRXcB2cSTmUbbGTu+IvBRCM2x3hZTI7jNwRhr
-	n5TiTMvViIhilSKuRVVcaxM5D5n/3eFeW+QxZ1THjVO0usQwboaEZncYqEd5qii2yEXeYqrjy9FTb
-	SarfeD86AreOHgyoiLeg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=R4e4XspNTHYw7zQzpJNtAp+KwpJTxBC09iDPKvQngrY=; b=kOs1TBMwwbWxiY
+	xikUKnoizlitcghoc486MG+AUMTGwzI/tXbsIVmlYMNwFMYzgmmpcIDW/xVWQ9a6zhZP2OX/K/v/s
+	TVNxzwPCiZLHWwe7Fz5/V3Z9IJZ4eJiNE2nUqj02tPFta5Z8ReXE0Rx8vKxgr0pDcZ9MU7yxMyiWH
+	JNH/5ZukLV/SULqCMt9cfVU8LVk58t2gSqI9l5Bp0FxfSTHqpJq8tXpXkSSWO1xxXJJVSGQVN5tmq
+	nffizpo+edBKyZ1WVlO89fRVuQ+IoFKEHgP65H2TfnvGttUaKmIIaqRG8mSXHXs7QTaqkkbzJMEav
+	SvyA9/TUG1lalzT5M5Dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVXcI-003hUt-WB; Sat, 19 Mar 2022 11:51:31 +0000
+	id 1nVXcJ-003hVJ-Q4; Sat, 19 Mar 2022 11:51:31 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVXcF-003hTT-4s; Sat, 19 Mar 2022 11:51:29 +0000
-X-UUID: 41b5608cbad44f0ea55038694e82cae3-20220319
-X-UUID: 41b5608cbad44f0ea55038694e82cae3-20220319
+ id 1nVXcF-003hTY-E7; Sat, 19 Mar 2022 11:51:30 +0000
+X-UUID: a52dab74ade946a78b9ccac5995fbcaa-20220319
+X-UUID: a52dab74ade946a78b9ccac5995fbcaa-20220319
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jiaxin.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 248884733; Sat, 19 Mar 2022 04:51:21 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 487324641; Sat, 19 Mar 2022 04:51:21 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 19 Mar 2022 04:41:18 -0700
+ 15.0.1497.2; Sat, 19 Mar 2022 04:41:19 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Sat, 19 Mar 2022 19:41:17 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Sat, 19 Mar 2022 19:41:18 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 19 Mar 2022 19:41:16 +0800
+ Transport; Sat, 19 Mar 2022 19:41:17 +0800
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
 To: <broonie@kernel.org>, <robh+dt@kernel.org>, <tzungbi@google.com>
 CC: <angelogioacchino.delregno@collabora.com>, <aaronyu@google.com>,
@@ -49,15 +49,18 @@ CC: <angelogioacchino.delregno@collabora.com>, <aaronyu@google.com>,
  <linux-kernel@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
  <jiaxin.yu@mediatek.com>
-Subject: [v5 0/4] ASoC: mediatek: mt8192: support rt1015p_rt5682s
-Date: Sat, 19 Mar 2022 19:41:07 +0800
-Message-ID: <20220319114111.11496-1-jiaxin.yu@mediatek.com>
+Subject: [v5 1/4] ASoC: dt-bindings: mt8192-mt6359: add new compatible and new
+ properties
+Date: Sat, 19 Mar 2022 19:41:08 +0800
+Message-ID: <20220319114111.11496-2-jiaxin.yu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220319114111.11496-1-jiaxin.yu@mediatek.com>
+References: <20220319114111.11496-1-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220319_045127_210998_04E1B13B 
-X-CRM114-Status: UNSURE (   7.85  )
+X-CRM114-CacheID: sfid-20220319_045127_489653_EB2162C7 
+X-CRM114-Status: UNSURE (   7.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,37 +78,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The series reuses mt8192-mt6359-rt10150rt5682.c for supporting machine
-driver with rt1015p speaker amplifier and rt5682s headset codec.
+1. Adds new compatible string "mt8192_mt6359_rt1015p_rt5682s" for machines
+with rt1015p and rt5682s.
+2. Adds new property "mediatek,headset-codec" for getting headset codecs.
+3. Adds new property "mediatek,speaker-codec" for getting speaker codecs.
 
-Changes form v4:
-  - split a large patch into three small patches for easy reviewing
-  - correct coding style
+Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+---
+ .../sound/mt8192-mt6359-rt1015-rt5682.yaml    | 29 +++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-Changes from v3:
-  - fix build error: too many arguments for format
-    [-Werror-format-extra-args]
-
-Changes from v2:
-  - fix build warnings such as "data argument not used by format string"
-
-Changes from v1:
-  - uses the snd_soc_of_get_dai_link_codecs to complete the
-  configuration of dai_link's codecs
-  - uses definitions to simplifies card name and compatible name
-
-Jiaxin Yu (4):
-  ASoC: dt-bindings: mt8192-mt6359: add new compatible and new
-    properties
-  ASoC: mediatek: mt8192: refactor for I2S3 DAI link of speaker
-  ASoC: mediatek: mt8192: refactor for I2S8/I2S9 DAI links of headset
-  ASoC: mediatek: mt8192: support rt1015p_rt5682s
-
- .../sound/mt8192-mt6359-rt1015-rt5682.yaml    |  29 +++
- sound/soc/mediatek/Kconfig                    |   1 +
- .../mt8192/mt8192-mt6359-rt1015-rt5682.c      | 201 +++++++++++-------
- 3 files changed, 153 insertions(+), 78 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
+index a781e7aaaa38..aa0476eedd38 100644
+--- a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
++++ b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
+@@ -18,6 +18,7 @@ properties:
+     enum:
+       - mediatek,mt8192_mt6359_rt1015_rt5682
+       - mediatek,mt8192_mt6359_rt1015p_rt5682
++      - mediatek,mt8192_mt6359_rt1015p_rt5682s
+ 
+   mediatek,platform:
+     $ref: "/schemas/types.yaml#/definitions/phandle"
+@@ -27,6 +28,25 @@ properties:
+     $ref: "/schemas/types.yaml#/definitions/phandle"
+     description: The phandle of HDMI codec.
+ 
++patternProperties:
++  "^mediatek,headset-codec$":
++    description: Holds subnode which indicates headset dai.
++    type: object
++    properties:
++      sound-dai:
++        $ref: /schemas/types.yaml#/definitions/phandle-array
++        description: List of phandles to the headset codec nodes.
++    additionalProperties: false
++
++  "^mediatek,speaker-codec$":
++    description: Holds subnode which indicates speaker dai.
++    type: object
++    properties:
++      sound-dai:
++        $ref: /schemas/types.yaml#/definitions/phandle-array
++        description: List of phandles to the speaker codec nodes.
++    additionalProperties: false
++
+ additionalProperties: false
+ 
+ required:
+@@ -44,6 +64,15 @@ examples:
+                         "aud_clk_mosi_on";
+         pinctrl-0 = <&aud_clk_mosi_off>;
+         pinctrl-1 = <&aud_clk_mosi_on>;
++
++        mediatek,headset-codec {
++            sound-dai = <&rt5682>;
++        };
++
++        mediatek,speaker-codec {
++            sound-dai = <&rt1015_l>,
++                        <&rt1015_r>;
++        };
+     };
+ 
+ ...
 -- 
 2.18.0
 
