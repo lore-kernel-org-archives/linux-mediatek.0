@@ -4,97 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A53F8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Mar 2022 03:57:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3651FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Mar 2022 04:54:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ohY/fArB8uuBd5gmlnRKzO/7+XxX30qmUdz4t7kfEL4=; b=gxbmpUwjqMvKwj
-	3jJ2/0SToMLYPpugjcQY2HGs2kYnAmNdng+N9XS6WPkeqoQBEW8p+QRQ7wtH/2jwv82KaUl7Rx7yV
-	j78ycxsFu9aoiPY5mDmPzQ7MvptzkHqyY5q+BUS95K6Lo5ortLhA+yF0o1lGtyRBPcinIkyeF+oSh
-	/VybXRN8Bi7i7Vt5Db/Xw1w6QLaAaSSRAnh6T1ryCQ7/AgBQy7yaJWtlcynBiLC6zVA4x254Qm1Jm
-	/fLsYG95S4IoUV3v4Z079sNrrKXTGpXAiuupVI2UTCVmsY0IpmixPZ4X77CHVqR9KysQxhjKR+BNG
-	v86fWJlZVLFfym30Yc1Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=533he/AVsyUrqIyUDj3DV5x+U8LkJNqu5ktiVN0CZlc=; b=Wl6DPyfUzrLpqM
+	TDErCzsuSNH64V7BR/Lipny9HVLEGgqoBqRZopi/m26JrTX8WmAHudjI8tvdTrvFrbnFUK3p51tO8
+	bLBCiWCtqlJdSDGgo5yKSOwZx1sq/ixjVkD0VBGl0e2I+E/pPE9ZkwQ6Pni9z0NgEDhDa2K1rhvOa
+	LSyFtt+8HR+nLgZBoZG34lNiJinaobxaq3k2b96paX0oXmCI6fZFYJoX4fSxiLWw8J1Y5nimil6ls
+	ENFhUio6Vau0xYHASsjgVV6gcQPkVi5TA5temRqN+SLzezze9i4WK+0Uxizw5Er7eVk+WTENpLmtt
+	gkjhN3I2DbdAmE9/4n8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVQDk-003CKc-Ot; Sat, 19 Mar 2022 03:57:41 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1nVR6M-003F7B-Ff; Sat, 19 Mar 2022 04:54:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVQDh-003CGu-Q7; Sat, 19 Mar 2022 03:57:39 +0000
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 22J2ro58012531; 
- Sat, 19 Mar 2022 03:57:15 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-type : content-transfer-encoding; s=corp-2021-07-09;
- bh=dOCvppNUKgOlcA89bNUdrq8FTQRYfsjfsvR3rEo7hmg=;
- b=rB4F0btdvmuQ8qSVzB0TI/MVdj6L1wLlPT1srOv4birzBP2VsA5D9mxqDnty9FGI031e
- OhuXiDi8PP/hnk9+43pScgnlvc1Msx3IXhpur+XlVll5oz+03KUF4YG2ZJeO5ctAVyuc
- ABInatOkvEpdjQe0XOBM3Vw23gTi3RCDw1NbsqI8/p8gXop58M1CrcTLpLi34DxilkOw
- aIKWvxzBLmxogO1BmHkA0n6pbxmOlCrA4EQcUelFgQP2O0W9a5LqlQOoSqpIeuQaOZbZ
- 7pKjNVt7qrQPqi5lf6wtbxwtbMHhpxhomcEA8IcEfMLaUK5a8MKBz0qkUbZ41JgSbvMB dA== 
-Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
- by mx0b-00069f02.pphosted.com with ESMTP id 3ew6ss016q-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sat, 19 Mar 2022 03:57:15 +0000
-Received: from pps.filterd
- (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.16.1.2/8.16.1.2)
- with SMTP id 22J3uvsm007045; Sat, 19 Mar 2022 03:57:14 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com with ESMTP id
- 3ew5kyshp1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sat, 19 Mar 2022 03:57:14 +0000
-Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 22J3v5Qm007126;
- Sat, 19 Mar 2022 03:57:13 GMT
-Received: from ca-mkp.mkp.ca.oracle.com (ca-mkp.ca.oracle.com [10.156.108.201])
- by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com with ESMTP id
- 3ew5kyshmn-6; Sat, 19 Mar 2022 03:57:13 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: Julia Lawall <Julia.Lawall@inria.fr>, linux-can@vger.kernel.org
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
- Sean Wang <sean.wang@mediatek.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rdma@vger.kernel.org,
- Jonas Karlman <jonas@kwiboo.se>, linux-s390@vger.kernel.org,
- Alexander Shishkin <alexander.shishkin@linux.intel.com>,
- dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- linux-clk@vger.kernel.org, linux-spi@vger.kernel.org,
- Shayne Chen <shayne.chen@mediatek.com>, netdev@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Jiri Olsa <jolsa@kernel.org>, kernel-janitors@vger.kernel.org,
- Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
- linux-staging@lists.linux.dev, Namhyung Kim <namhyung@kernel.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- linux-perf-users@vger.kernel.org, linux-wireless@vger.kernel.org,
- platform-driver-x86@vger.kernel.org, linux-sunxi@lists.linux.dev,
- Sven Schnelle <svens@linux.ibm.com>, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-scsi@vger.kernel.org, linux-leds@vger.kernel.org,
- linux-omap@vger.kernel.org, linux-power@fi.rohmeurope.com,
- linux-mtd@lists.infradead.org, target-devel@vger.kernel.org,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Mark Rutland <mark.rutland@arm.com>, linux-mediatek@lists.infradead.org,
- Christian Borntraeger <borntraeger@linux.ibm.com>
-Subject: Re: [PATCH 00/30] fix typos in comments
-Date: Fri, 18 Mar 2022 23:56:56 -0400
-Message-Id: <164766213032.31329.14855996441316567317.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220314115354.144023-1-Julia.Lawall@inria.fr>
-References: <20220314115354.144023-1-Julia.Lawall@inria.fr>
+ id 1nVR6I-003F6g-4Z
+ for linux-mediatek@lists.infradead.org; Sat, 19 Mar 2022 04:54:05 +0000
+X-UUID: 82de0c8dc9c74b9ca2b03da4e87e4ee4-20220318
+X-UUID: 82de0c8dc9c74b9ca2b03da4e87e4ee4-20220318
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1470232256; Fri, 18 Mar 2022 21:53:54 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 18 Mar 2022 21:53:52 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Sat, 19 Mar 2022 12:53:51 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sat, 19 Mar 2022 12:53:51 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Ryder
+ Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] mt76: mt7915: always call mt7915_wfsys_reset() during init
+Date: Sat, 19 Mar 2022 12:53:50 +0800
+Message-ID: <884cf46908e7f723f8b52ec5bb38ae17142a794c.1647665580.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-Proofpoint-ORIG-GUID: ryygBDbx4ESlJehbCVsBuy2qL-PPuldd
-X-Proofpoint-GUID: ryygBDbx4ESlJehbCVsBuy2qL-PPuldd
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_205738_009808_84F5686A 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20220318_215402_213615_9C3F6079 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,25 +72,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 14 Mar 2022 12:53:24 +0100, Julia Lawall wrote:
+Soft reboot might not clear certain condition, so always call
+mt7915_wfsys_reset() during init.
 
-> Various spelling mistakes in comments.
-> Detected with the help of Coccinelle.
-> 
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c | 15 +++------------
+ 1 file changed, 3 insertions(+), 12 deletions(-)
 
-Applied to 5.18/scsi-queue, thanks!
-
-[02/30] scsi: lpfc: fix typos in comments
-        https://git.kernel.org/mkp/scsi/c/9a866e6aaf4e
-[17/30] scsi: elx: libefc_sli: fix typos in comments
-        https://git.kernel.org/mkp/scsi/c/8037185d1ad8
-[24/30] scsi: qla2xxx: fix typos in comments
-        https://git.kernel.org/mkp/scsi/c/5419e0f15622
-[25/30] treewide: fix typos in comments
-        https://git.kernel.org/mkp/scsi/c/9d05790f5187
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index fd16d777f2e4..666ea7b0d3e5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -651,10 +651,7 @@ static int mt7915_init_hardware(struct mt7915_dev *dev)
+ 
+ 	dev->dbdc_support = mt7915_band_config(dev);
+ 
+-	/* If MCU was already running, it is likely in a bad state */
+-	if (mt76_get_field(dev, MT_TOP_MISC, MT_TOP_MISC_FW_STATE) >
+-	    FW_STATE_FW_DOWNLOAD)
+-		mt7915_wfsys_reset(dev);
++	mt7915_wfsys_reset(dev);
+ 
+ 	ret = mt7915_dma_init(dev);
+ 	if (ret)
+@@ -663,14 +660,8 @@ static int mt7915_init_hardware(struct mt7915_dev *dev)
+ 	set_bit(MT76_STATE_INITIALIZED, &dev->mphy.state);
+ 
+ 	ret = mt7915_mcu_init(dev);
+-	if (ret) {
+-		/* Reset and try again */
+-		mt7915_wfsys_reset(dev);
+-
+-		ret = mt7915_mcu_init(dev);
+-		if (ret)
+-			return ret;
+-	}
++	if (ret)
++		return ret;
+ 
+ 	ret = mt7915_eeprom_init(dev);
+ 	if (ret < 0)
 -- 
-Martin K. Petersen	Oracle Linux Engineering
+2.29.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
