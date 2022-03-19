@@ -4,61 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AB4FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Mar 2022 23:52:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49F79C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Mar 2022 02:22:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=464MQApI0YqgTpOGQWY5BbbtP9tWHALY7bYAhgAZnWg=; b=o0prmUq0kTYZ0x
-	QxZUDG36c6eU5ov8E5OwoawNKkRAlJO1pQLmXvDeGfYKsFEje5PNpdTBrFXeUbGZhuyo/8kffHtaH
-	9cu7zlx7H4l9sJiDZUzKaS/c49yKMSS0lI/r1CJOH8fOX1d/YicWbSO75eqE6NvNHksVpy7mao4T2
-	3yNDSBzKo+YbbrawLb4K+FpHRCqRCWtO0h3wssq2p4KYjh80oH1VT33WnMaNx9SR+6e1LxCd0cqzr
-	AyF7Uiyjf401SjdrG2N3rGpC2cvg4QzE3Jl3eEDzrhJYn9TeeeT7mLz/43mjW3lIut2B6epNBBocu
-	gB/tg12rA/6TnkuQNhzA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=M+qx/RcmEwLyJVnFCd0f6MxzGRs+vayjH0NCluJXxe8=; b=0No8RyuOzu1Qp/
+	2oehW1vWmpzjtuYfDnmg+LJq6k4v1yjynrT69I/TloGWf0qmGAskJ+7FknqCf/KVydGaU0R534cr/
+	umjZNA6ekL9wS2SC1HLk9ATlWV5EHI3jedClT3zW8WIJQa+B9tT75UTBgyD5d8rKVpQdEKLlky0qp
+	orsg2owJJVrEXvT202R1rpC2MOKKpIc4TPhtOIwWFexw31quPUFCSWC+0d18NmIa7w3hkT6/UJ+CN
+	V5BKtjNIKYiGvqMPMtSz7Vv/mpnESINXbeorVpWSf5NECj0hI5kVlVw3TQfeACu0irk6M1155PQ1H
+	rMdSGpDg1vDk4UtqGI2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVMOm-00311I-1a; Fri, 18 Mar 2022 23:52:48 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nVOjJ-0036YJ-RV; Sat, 19 Mar 2022 02:22:09 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVMOi-003106-BR; Fri, 18 Mar 2022 23:52:46 +0000
-X-UUID: df9ec80b2478437eaa999befe8a37994-20220318
-X-UUID: df9ec80b2478437eaa999befe8a37994-20220318
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1326054029; Fri, 18 Mar 2022 16:52:39 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Mar 2022 16:52:37 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 19 Mar 2022 07:52:29 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 19 Mar 2022 07:52:29 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <allen-kh.cheng@mediatek.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <devicetree@vger.kernel.org>, <hui.liu@mediatek.com>,
- <krzysztof.kozlowski@canonical.com>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <matthias.bgg@gmail.com>, <robh+dt@kernel.org>, <ryder.lee@kernel.org>,
- <wenst@chromium.org>
-Subject: Re: [PATCH v4 10/22] arm64: dts: mt8192: Fix nor_flash status disable
- typo
-Date: Sat, 19 Mar 2022 07:52:29 +0800
-Message-ID: <20220318235229.8344-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220318144534.17996-11-allen-kh.cheng@mediatek.com>
-References: <20220318144534.17996-11-allen-kh.cheng@mediatek.com>
+ id 1nVOjG-0036Xi-Sj
+ for linux-mediatek@lists.infradead.org; Sat, 19 Mar 2022 02:22:08 +0000
+Received: from kwepemi500021.china.huawei.com (unknown [172.30.72.56])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4KL4Mt35gvzCqlx;
+ Sat, 19 Mar 2022 10:19:54 +0800 (CST)
+Received: from kwepemm600014.china.huawei.com (7.193.23.54) by
+ kwepemi500021.china.huawei.com (7.221.188.245) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Sat, 19 Mar 2022 10:21:57 +0800
+Received: from huawei.com (10.90.53.225) by kwepemm600014.china.huawei.com
+ (7.193.23.54) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2308.21; Sat, 19 Mar
+ 2022 10:21:57 +0800
+From: Zhang Qilong <zhangqilong3@huawei.com>
+To: <angelogioacchino.delregno@collabora.com>, <sean.wang@mediatek.com>,
+ <vkoul@kernel.org>, <matthias.bgg@gmail.com>
+CC: <dmaengine@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH -next v2] dmaengine: mediatek:Fix PM usage reference leak of
+ mtk_uart_apdma_alloc_chan_resources
+Date: Sat, 19 Mar 2022 10:21:42 +0800
+Message-ID: <20220319022142.142709-1-zhangqilong3@huawei.com>
+X-Mailer: git-send-email 2.26.0.106.g9fadedd
 MIME-Version: 1.0
-X-MTK: N
+X-Originating-IP: [10.90.53.225]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ kwepemm600014.china.huawei.com (7.193.23.54)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_165244_407423_C31466B0 
-X-CRM114-Status: UNSURE (   5.89  )
+X-CRM114-CacheID: sfid-20220318_192207_101643_990C9CD2 
+X-CRM114-Status: UNSURE (   7.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,14 +70,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Correct nor_flash status disable typo of mt8192 SoC.
-> 
-> Fixes: d0a197a0d064a ("arm64: dts: mt8192: add nor_flash device node")
-> 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: zhangqilong <zhangqilong3@huawei.com>
 
-Reviewed-by: Miles Chen <miles.chen@mediatek.com>
+pm_runtime_get_sync will increment pm usage counter even it failed.
+Forgetting to putting operation will result in reference leak here.
+We fix it:
+1) Replacing it with pm_runtime_resume_and_get to keep usage counter
+   balanced.
+2) Add putting operation before returning error.
+
+Fixes:9135408c3ace4 ("dmaengine: mediatek: Add MediaTek UART APDMA support")
+Signed-off-by: Zhang Qilong <zhangqilong3@huawei.com>
+---
+v2:
+- Fix misleadin commit message.
+---
+ drivers/dma/mediatek/mtk-uart-apdma.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
+index 375e7e647df6..a1517ef1f4a0 100644
+--- a/drivers/dma/mediatek/mtk-uart-apdma.c
++++ b/drivers/dma/mediatek/mtk-uart-apdma.c
+@@ -274,7 +274,7 @@ static int mtk_uart_apdma_alloc_chan_resources(struct dma_chan *chan)
+ 	unsigned int status;
+ 	int ret;
+ 
+-	ret = pm_runtime_get_sync(mtkd->ddev.dev);
++	ret = pm_runtime_resume_and_get(mtkd->ddev.dev);
+ 	if (ret < 0) {
+ 		pm_runtime_put_noidle(chan->device->dev);
+ 		return ret;
+@@ -288,18 +288,21 @@ static int mtk_uart_apdma_alloc_chan_resources(struct dma_chan *chan)
+ 	ret = readx_poll_timeout(readl, c->base + VFF_EN,
+ 			  status, !status, 10, 100);
+ 	if (ret)
+-		return ret;
++		goto err_pm;
+ 
+ 	ret = request_irq(c->irq, mtk_uart_apdma_irq_handler,
+ 			  IRQF_TRIGGER_NONE, KBUILD_MODNAME, chan);
+ 	if (ret < 0) {
+ 		dev_err(chan->device->dev, "Can't request dma IRQ\n");
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto err_pm;
+ 	}
+ 
+ 	if (mtkd->support_33bits)
+ 		mtk_uart_apdma_write(c, VFF_4G_SUPPORT, VFF_4G_SUPPORT_CLR_B);
+ 
++err_pm:
++	pm_runtime_put_noidle(mtkd->ddev.dev);
+ 	return ret;
+ }
+ 
+-- 
+2.31.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
