@@ -4,66 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 474F7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 04:25:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28ACDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 04:25:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z3Y3gXEtaPQ4oNFag6xOoJyMuIUg1FoB3hEChZU2N5M=; b=t0u/fWvevevdTH
-	oJCvY0eiAUDXKG275br2hD/UswTkK3TP78/hf8LLKH64fyE9j0W13sCLGbCbsPlkJ9v3as06sx0iU
-	sj7Vd6nxvXIoNXTC7VV9bq6nC5f574yJl8vsjI/lmCK/OyeOWyd40liXwwbjAsAUtbE3GvXbX3VT9
-	AWLc10pBCJ+kmIppxqa0Ap570zvCBmeNDxDqYsthWZwg6qf/SOPM9UNM7O3hb9pz0w5JPo8FknUFk
-	HSENZQTi2CJQXtNptfe16mdXFC2EleL2AAk8nVcyBE2++PngwQb7KtB5+bf5FkfRe2EMtQ7GZiL+X
-	2bnv3tbXroQxV5PyKuzQ==;
+	List-Owner; bh=YXjOzMTQ7//e114UQ0clDG9V5znIzXYLo7CHJ3JrXxk=; b=Bj+Yg37tqFZlO6
+	Zm50wiV296KEZP0pPjX/uHuI50uC1jbbXZ266QzfraShNdXYIenq5Wa7sNIdeCtUNL1Odzw8+w7oB
+	wQO6xXNe/OV4l5gu4pNt/sD27+WuAYO7hlx0zXpgnnZH/XQqt4H+7yaCbV5AA9fF4ShKKfC8AFdtv
+	qNwmhXD51p4d/tR9GgEY4DfpMFpWrjj8Ro30AH6g8sGX2Vn/jB4ZI3jeEmxvq7mIwCfdosB2UKKgL
+	2al/qEMcvdg23XjGO+J5nD1M/53AZjf8nGW0RC94j7vp9u8QybyfAAAz8IbUcwVa5bbYaR/5G7e7O
+	ppYMFCsKX2jI7MzIuZ0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nW9bD-006SvR-Je; Mon, 21 Mar 2022 04:24:55 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nW9bq-006T8U-MJ; Mon, 21 Mar 2022 04:25:34 +0000
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nW9b9-006SuO-WE; Mon, 21 Mar 2022 04:24:53 +0000
-X-UUID: 875a8a54db834eda8eef101a32b233b3-20220320
-X-UUID: 875a8a54db834eda8eef101a32b233b3-20220320
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1271639340; Sun, 20 Mar 2022 21:24:46 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 20 Mar 2022 21:17:16 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 21 Mar 2022 12:17:15 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 21 Mar 2022 12:17:15 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <robh@kernel.org>
-CC: <adrian.hunter@intel.com>, <andrew@aj.id.au>,
- <andriy.shevchenko@linux.intel.com>,
- <angelogioacchino.delregno@collabora.com>, <axe.yang@mediatek.com>,
- <chaotian.jing@mediatek.com>, <dev@lynxeye.de>, <devicetree@vger.kernel.org>, 
- <ebiggers@google.com>, <huyue2@yulong.com>, <kwmad.kim@samsung.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-mmc@vger.kernel.org>,
- <matthias.bgg@gmail.com>, <robh+dt@kernel.org>, <satyat@google.com>,
- <swboyd@chromium.org>, <tiantao6@hisilicon.com>, <ulf.hansson@linaro.org>,
- <wsa+renesas@sang-engineering.com>, <yoshihiro.shimoda.uh@renesas.com>
-Subject: Re: [RESEND v7 1/3] dt-bindings: mmc: mtk-sd: extend interrupts and
- pinctrls properties
-Date: Mon, 21 Mar 2022 12:17:15 +0800
-Message-ID: <20220321041715.8424-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <1647742413.962309.2990518.nullmailer@robh.at.kernel.org>
-References: <1647742413.962309.2990518.nullmailer@robh.at.kernel.org>
+ id 1nW9bS-006SzA-Cc
+ for linux-mediatek@lists.infradead.org; Mon, 21 Mar 2022 04:25:13 +0000
+Received: by mail-yw1-x1132.google.com with SMTP id
+ 00721157ae682-2e612af95e3so31325477b3.9
+ for <linux-mediatek@lists.infradead.org>; Sun, 20 Mar 2022 21:25:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=4NSXl8x9VQewgRZHgqXMmZGOEdV3eFjb3sYvvvg6pNg=;
+ b=J6gele5F7EmCQLLAJAVg85lJycQ/fkbtMV60Bxn6mvBD54K/cP91HfuCJSamixeAe6
+ SMimZpLUVi6GEmvbVU07gyHdeCeiYdtk4dmtLUJ8nH0xQuKRP5nXagiIZ3LrTCv9YfDe
+ C+mSOTSyfmPr+Jge0Xnm2nipVd5HfDakmx2EM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=4NSXl8x9VQewgRZHgqXMmZGOEdV3eFjb3sYvvvg6pNg=;
+ b=HHcsXUGmvppQ0airmRzuYByIDOSM35MquWkK431IIiGIkofmmgAOyNTbt8bfplk3Z5
+ 1izH8rRYiXMFdFJ7us6dM1E/PW4xPA7+dpyTCC6lgkMUovBTgK1FOo08B/+7STW8nrAK
+ fm1RcFIncBB9SSvUGC8PhDEXBUd6uOnnGK1F0Lr0K7aQJBy8mOj7iGGcB94sMFoKZ1uz
+ fa/Xo1cc6DTsCLd73aj0w3HQn+9Fpr4DDEMy0zOW7j0zmeINSjKGbjRZf0kphaSnynmd
+ qeHerzFY6vAhk+j948a7McSwvOA/OPxIJ34MjFCO3jm3UNI1Nvqbuhs/14nu7zEW66S8
+ M24w==
+X-Gm-Message-State: AOAM530NMmE0F/GPlqM+WWN3BAKhZPHJT1L6aBx5fCcwVsNvslBAXfmJ
+ iyeUD5TpKlZcHL2tswGmtORITn9lxED5BkJVeUNT/Q==
+X-Google-Smtp-Source: ABdhPJxzqdQkJL+E26J8ZUZbTwrpFeuieBZ6OBpvDJ70M8HbgvzqPpoqzxqTXlsc0yVVk8krFj2m/iV9tyn319SkBwY=
+X-Received: by 2002:a05:690c:9c:b0:2e6:4ca0:d140 with SMTP id
+ be28-20020a05690c009c00b002e64ca0d140mr502772ywb.161.1647836709475; Sun, 20
+ Mar 2022 21:25:09 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220318095417.2016-1-jianjun.wang@mediatek.com>
+ <20220318095417.2016-2-jianjun.wang@mediatek.com>
+ <2e0989c3-7132-6091-5c9e-5dc8d9af22e8@collabora.com>
+ <319cf016-55fb-dcd4-9157-ad795c8e68ff@kernel.org>
+ <e0adbb4d-aa87-49ea-d79f-11c5f4fc4bdd@collabora.com>
+In-Reply-To: <e0adbb4d-aa87-49ea-d79f-11c5f4fc4bdd@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 21 Mar 2022 12:24:58 +0800
+Message-ID: <CAGXv+5GzC_LFd_1uTBDT=2otiUrJn9NGa4g=R4NhED7-p-G9RA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: phy: mediatek: Add YAML schema for
+ PCIe PHY
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>,
+ Jianjun Wang <jianjun.wang@mediatek.com>, 
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, rex-bc.chen@mediatek.com, Randy.Wu@mediatek.com, 
+ jieyy.yang@mediatek.com, chuanjia.liu@mediatek.com, 
+ qizhong.cheng@mediatek.com, jian.yang@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220320_212452_057110_1D42FA5E 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20220320_212510_451521_23BE833E 
+X-CRM114-Status: GOOD (  22.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,46 +93,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+On Fri, Mar 18, 2022 at 9:56 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 18/03/22 14:51, Krzysztof Kozlowski ha scritto:
+> > On 18/03/2022 12:12, AngeloGioacchino Del Regno wrote:
+> >> Il 18/03/22 10:54, Jianjun Wang ha scritto:
+> >>> Add YAML schema documentation for PCIe PHY on MediaTek chipsets.
+> >>>
+> >>> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> >>> ---
+> >>>    .../bindings/phy/mediatek,pcie-phy.yaml       | 75 +++++++++++++++++++
+> >>>    1 file changed, 75 insertions(+)
+> >>>    create mode 100644 Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
+> >>>
+> >>> diff --git a/Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
+> >>> new file mode 100644
+> >>> index 000000000000..868bf976568b
+> >>> --- /dev/null
+> >>> +++ b/Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
+> >>> @@ -0,0 +1,75 @@
+> >>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> >>> +%YAML 1.2
+> >>> +---
+> >>> +$id: http://devicetree.org/schemas/phy/mediatek,pcie-phy.yaml#
+> >>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> >>> +
+> >>> +title: MediaTek PCIe PHY
+> >>> +
+> >>> +maintainers:
+> >>> +  - Jianjun Wang <jianjun.wang@mediatek.com>
+> >>> +
+> >>> +description: |
+> >>> +  The PCIe PHY supports physical layer functionality for PCIe Gen3 port.
+> >>> +
+> >>> +properties:
+> >>> +  compatible:
+> >>> +    const: mediatek,mt8195-pcie-phy
+> >>
+> >> Since I don't expect this driver to be only for MT8195, but to be extended to
+> >> support some more future MediaTek SoCs and, depending on the number of differences
+> >> in the possible future Gen4 PHYs, even different gen's, I propose to add a generic
+> >> compatible as const.
+> >>
+> >> So you'll have something like:
+> >>
+> >> - enum:
+> >>       - mediatek,mt8195-pcie-phy
+> >> - const: mediatek,pcie-gen3-phy
+> >
+> > I am not sure if this is a good idea. How sure are you that there will
+> > be no different PCIe Gen3 PHY not compatible with this one?
+> >
+> >
+>
+> Thanks for pointing that out, I have underestimated this option.
+>
+> Perhaps Jianjun may be more informed about whether my proposal is valid or not.
 
->My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
->on your patch (DT_CHECKER_FLAGS is new in v5.13):
->
->yamllint warnings/errors:
->
->dtschema/dtc warnings/errors:
->/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mmc/mtk-sd.yaml: properties:pinctrl-names: {'description': 'Should at least contain default and state_uhs. To support SDIO in-band wakeup, dat1 pin will be switched between GPIO mode and SDIO DAT1 mode, state_eint and state_dat1 are mandatory in this scenarios.', 'minItems': 2, 'maxItems': 4, 'items': [{'const': 'default'}, {'const': 'state_uhs'}, {'const': 'state_eint'}, {'const': 'state_dat1'}]} should not be valid under {'required': ['maxItems']}
->	hint: "maxItems" is not needed with an "items" list
->	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
->/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mmc/mtk-sd.yaml: ignoring, error in schema: properties: pinctrl-names
->Documentation/devicetree/bindings/mmc/mtk-sd.example.dt.yaml:0:0: /example-0/mmc@11230000: failed to match any schema with compatible: ['mediatek,mt8173-mmc']
->
->doc reference errors (make refcheckdocs):
->
->See https://patchwork.ozlabs.org/patch/1606491
->
->This check can fail if there are any dependencies. The base for a patch
->series is generally the most recent rc1.
->
->If you already ran 'make dt_binding_check' and didn't see the above
->error(s), then make sure 'yamllint' is installed and dt-schema is up to
->date:
->
->pip3 install dtschema --upgrade
->
->Please check and re-submit.
+Just FYI, for Allwinner and I believe Rockchip as well, the compatible strings
+always list the first SoC the hardware block was seen on known at the time
+of driver/binding submission. No generic compatible strings are ever used.
 
-Thanks for this check.
+Not sure if that's the general rule or not.
 
-When I use 'make DT_CHECKER_FLAGS=-m dt_binding_check' on this patch,
-the warning message does show up but the 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-does not exit, so I am not able to tell if any error occurs by the exit value.
 
-Would you mind sharing the way your bot capture this error? (Do I have to grep 'error'
-from the log or is there any warning-as-error flags?)
-
-Thanks,
-Miles
+ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
