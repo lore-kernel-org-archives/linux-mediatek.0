@@ -4,63 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 459C2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 09:36:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A22AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 09:58:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BWV5aX+mPOAKx6Du23TGKvHbUQRNccB8g/kiedQkNqU=; b=WQuDk+hXv7axSN
-	1lz+72n1CySVq9xr1vI/0EUvYVqrmgfY3ieEvHUOPGkNXgi+Rjt46u4TNekdZZuhSRdtHae6sGRFV
-	O0PhrZm+1oFpnUutJI6ji/V2/YeMINMPFnM11fmita5q+XprPMpMO0XU6m1Q4FKd6N89orNuZiAyz
-	ygkX4PX2JeFrRaYW+v56O7NOlFNRpsgAd7yhsNbItS4OCkNLh7fdjFTEiyoebUsSDrfiG1WYqh3ew
-	eiP9NqRteZqmauoWfTOWVhZAMDz/hJlfC/hAcfWdTlIXViehg6FWLSWwDCGxFmTHf6738tiqPSOvc
-	F+pXaoL1WxSW4VZRKmMg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/Hsrv3oYCQu9avI9f3SrTotQrLNdecGPQq/Av4PIif0=; b=N2G8yI8J/s3x4H
+	bNrcqVP8Ni2PUKlCXR/l93eusHdJ2u6CvBKAMpkmQuSq8ASdCTxfBFY/tP9Gn1ST49bW9WUrtLErh
+	YzxVPFuiewi8uB626RvbD8zUFkcmYRr1Zfk1L0gckJsCecJX58p4SNbGuhvQCzaP5QaLvlV07KH0/
+	T2asj4h+ivIiZB8teMqQ722qDfbQRbnqH4jQ8SGJeMn8gwC7txWaI9zskuZLYVXs99DIykqWQFx0z
+	0R6RO8/NNy5Vsa019an3Ph7ql7NV+24djWcmH6joKwpNRRbQnZyi6AB4IKIIHPhkTJnkdwgYB/vfs
+	1F9P3A4OKMZvPMe9cGtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWET6-007Cgm-6h; Mon, 21 Mar 2022 09:36:52 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWESu-007CeE-DN; Mon, 21 Mar 2022 09:36:41 +0000
-X-UUID: 407aab7fae5341b09a560afe8a3c2818-20220321
-X-UUID: 407aab7fae5341b09a560afe8a3c2818-20220321
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1025965278; Mon, 21 Mar 2022 02:36:36 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Mar 2022 02:36:34 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Mar 2022 17:36:32 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 21 Mar 2022 17:36:32 +0800
-Message-ID: <0e4344e084e3306cd265580883c0093c7cb40d45.camel@mediatek.com>
-Subject: Re: [PATCH v3, 1/4] drm/mediatek: Adjust the timing of mipi signal
- from LP00 to LP11
-From: CK Hu <ck.hu@mediatek.com>
-To: <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
- <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <matthias.bgg@gmail.com>
-CC: <jitao.shi@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-mediatek@lists.infradead.org>, <rex-bc.chen@mediatek.com>,
- <linux-arm-kernel@lists.infradead.org>
-Date: Mon, 21 Mar 2022 17:36:32 +0800
-In-Reply-To: <1647503611-13144-2-git-send-email-xinlei.lee@mediatek.com>
-References: <1647503611-13144-1-git-send-email-xinlei.lee@mediatek.com>
- <1647503611-13144-2-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-MIME-Version: 1.0
-X-MTK: N
+	id 1nWEnn-007Ejo-NT; Mon, 21 Mar 2022 09:58:15 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nWEnR-007EXu-7P; Mon, 21 Mar 2022 09:57:54 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id EBD5C1042;
+ Mon, 21 Mar 2022 02:57:46 -0700 (PDT)
+Received: from e123648.arm.com (unknown [10.57.22.222])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 125BC3F766;
+ Mon, 21 Mar 2022 02:57:43 -0700 (PDT)
+From: Lukasz Luba <lukasz.luba@arm.com>
+To: linux-kernel@vger.kernel.org
+Cc: lukasz.luba@arm.com, dietmar.eggemann@arm.com, Pierre.Gondois@arm.com,
+ ionela.voinescu@arm.com, viresh.kumar@linaro.org, rafael@kernel.org,
+ daniel.lezcano@linaro.org, linux-pm@vger.kernel.org, mka@chromium.org,
+ nm@ti.com, sboyd@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, cristian.marussi@arm.com,
+ sudeep.holla@arm.com, matthias.bgg@gmail.com
+Subject: [RESEND][PATCH 0/8] Introduce support for artificial Energy Model
+Date: Mon, 21 Mar 2022 09:57:21 +0000
+Message-Id: <20220321095729.20655-1-lukasz.luba@arm.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220321_023640_496208_0DC376F5 
-X-CRM114-Status: GOOD (  18.15  )
+X-CRM114-CacheID: sfid-20220321_025753_341306_E2BFA39E 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,76 +56,77 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Xinlei:
+Hi all,
 
-On Thu, 2022-03-17 at 15:53 +0800, xinlei.lee@mediatek.com wrote:
-> From: Jitao Shi <jitao.shi@mediatek.com>
-> 
-> Old sequence:
-> 1. Pull the MIPI signal high
-> 2. Delay & Dsi_reset
-> 3. Set the dsi timing register
-> 4. dsi clk & lanes leave ulp mode and enter hs mode
-> 
-> New sequence:
-> 1. Set the dsi timing register
-> 2. Pull the MIPI signal high
-> 3. Delay & Dsi_reset
-> 4. dsi clk & lanes leave ulp mode and enter hs mode
-> 
-> In the new sequence 2 & 3 & 4 will be moved to dsi_enbale in later
-> patch.
+This patch set adds new callback and support for artificial Energy Model (EM).
+The new EMs have artificially generated performance states.
+Such EMs can be created from lean information sources, such
+as the relative energy efficiency between CPUs. The ACPI based
+platforms provide this information
+(ACPI 6.4, s5.2.12.14 'GIC CPU Interface (GICC) Structure'
+'Processor Power efficiency Class' field).
 
-I think there would be one patch in 5.9 make the wrong sequence, so add
-'Fixes' tag to indicate which patch make the wrong sequence. Use the
-term correct/wrong instead old/new sequence.
+Artificial EMs might require to directly provide the 'cost' of
+the generated performance state. This patch set adds a new callback
+.get_cost() for this. The EM framework does not force any model
+or formula, it's up to the platform code.
 
-I still do not understand what is the sequence after apply this patch?
+Artificial EMs aim to leverage the Energy Aware Scheduler
+(EAS). Other frameworks relying on performance states
+information (i.e. IPA/DTPM) must be informed of the
+EM type and might be prevented from using it. This patch
+sets also does this by introducing a new flag:
+EM_PERF_DOMAIN_ARTIFICIAL.
 
-Does the sequence is this after apply this patch?
-1. Set the dsi timing register
-2. Pull the MIPI signal high
-3. Delay & Dsi_reset
-4. dsi clk & lanes leave ulp mode and enter hs mode
+The patch set is based on current linux-next, where some
+changes to OPP & EM are queuing.
+
+The patch set also contains (patch 7/8 and patch 8/8) logic which prevents
+two EM's client frameworks from using this new EM type. Some other approach,
+using 'milli-watts', has been proposed and discussed, but refused [1].
+This new flag is more precised and should not leave space for
+wrong interpretation.
+
+Shortly after this patch set you will see a patch set implementing the
+platform code and registering this new EM.
 
 Regards,
-CK
+Lukasz Luba
 
-> 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index ccb0511b9cd5..262c027d8c2f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -649,14 +649,14 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
->  	mtk_dsi_reset_engine(dsi);
->  	mtk_dsi_phy_timconfig(dsi);
->  
-> -	mtk_dsi_rxtx_control(dsi);
-> -	usleep_range(30, 100);
-> -	mtk_dsi_reset_dphy(dsi);
->  	mtk_dsi_ps_control_vact(dsi);
->  	mtk_dsi_set_vm_cmd(dsi);
->  	mtk_dsi_config_vdo_timing(dsi);
->  	mtk_dsi_set_interrupt_enable(dsi);
->  
-> +	mtk_dsi_rxtx_control(dsi);
-> +	usleep_range(30, 100);
-> +	mtk_dsi_reset_dphy(dsi);
->  	mtk_dsi_clk_ulp_mode_leave(dsi);
->  	mtk_dsi_lane0_ulp_mode_leave(dsi);
->  	mtk_dsi_clk_hs_mode(dsi, 0);
+[1] https://lore.kernel.org/linux-pm/20220207073036.14901-1-lukasz.luba@arm.com/
+
+Lukasz Luba (7):
+  PM: EM: Add .get_cost() callback
+  PM: EM: Use the new .get_cost() callback while registering EM
+  PM: EM: Change the order of arguments in the .active_power() callback
+  PM: EM: Remove old debugfs files and print all 'flags'
+  Documentation: EM: Add artificial EM registration description
+  thermal: cooling: Check Energy Model type in cpufreq_cooling and
+    devfreq_cooling
+  powercap: DTPM: Check for Energy Model type
+
+Pierre Gondois (1):
+  PM: EM: Add artificial EM flag
+
+ Documentation/power/energy-model.rst  | 24 +++++++++-
+ drivers/cpufreq/mediatek-cpufreq-hw.c |  4 +-
+ drivers/cpufreq/scmi-cpufreq.c        |  4 +-
+ drivers/opp/of.c                      |  6 +--
+ drivers/powercap/dtpm_cpu.c           |  2 +-
+ drivers/thermal/cpufreq_cooling.c     |  2 +-
+ drivers/thermal/devfreq_cooling.c     |  8 ++--
+ include/linux/energy_model.h          | 35 +++++++++++++--
+ kernel/power/energy_model.c           | 63 +++++++++++++++------------
+ 9 files changed, 101 insertions(+), 47 deletions(-)
+
+-- 
+2.17.1
 
 
 _______________________________________________
