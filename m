@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7184BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 06:12:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D504C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 07:11:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=M1OC1ebUeZVGkghKT9kAilH6IYLUSTickIRI4Kr8/ns=; b=oXCNaFKhC8pBQk
-	pcnMwD3Jz4LUQFe6ZPbpXX5AWUa0/d/I/QnYsgLV8rtMV8MI1ubDz6HvV9Z+B3DWyo7ShekmnS14X
-	7aSItbfl7kZqgew4k2pe2CzPwD9tEUS5pbd3swx6dlyF826GGURHf/zL1J6D36GvudwdIdhK6WESD
-	SS2c0O9n7T5EPh3tBqXgVAcEPkaXxgB+vwitIz/8UplGTFnblT9ldW7hruxz+dUk+IMh0EeICoQ+b
-	59bzaF6znjv489XlO8oZhXvwODPQwJ7EslhtPGGOl7wNVwtOu2eN2jaDEqt+faDsNxk8sf13w4ddV
-	wS+yH/0Yc8o1x6izJGBQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KPzfGHlTAxNQcHK5KwH2ZfOzEd/xT2E25333duUvjLI=; b=cl0OajroOmObgz
+	zscTv0qozOHjdhdXdGcH85FLErTgIUyLgbHdqYqhnoTYnR6mBIPwdobSX4omeolmWI2n335QrHepI
+	Ysrrs4+parukgIogF9aYljNEAt+yWQ+gI+lDOE7IDQyyL7cMXaPxwPTBmfe7yoEx+d8DTD3QrVKVN
+	1IrpAjWF3UC9bboJCCkXJOS9Hoc8C2Wx9TTX8iaTgDWJYnqEMEpWa8n3EVgengiIXefpVEIEjDrX+
+	Usy2AjnskJVPNIoKw+d2TRJsJz/79pkMSA0acXjs8W13p7QVJHq2d5tH5tvGaleE8ldO1Yryb5xIv
+	S2ZryAxipP6ETlVGFFvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWBHB-006eD4-1Q; Mon, 21 Mar 2022 06:12:21 +0000
+	id 1nWCCI-006lmX-6M; Mon, 21 Mar 2022 07:11:22 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWBH7-006eCG-Ru; Mon, 21 Mar 2022 06:12:19 +0000
-X-UUID: 95700526595b4160ad50cf3e2bf2fc38-20220320
-X-UUID: 95700526595b4160ad50cf3e2bf2fc38-20220320
+ id 1nWCCE-006lls-Gc; Mon, 21 Mar 2022 07:11:21 +0000
+X-UUID: a74939992f58410a8cda470ebb3eb335-20220321
+X-UUID: a74939992f58410a8cda470ebb3eb335-20220321
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <tinghan.shen@mediatek.com>)
+ (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1292962232; Sun, 20 Mar 2022 23:12:15 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 1374965084; Mon, 21 Mar 2022 00:11:13 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 20 Mar 2022 23:03:43 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 21 Mar 2022 14:03:42 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 21 Mar 2022 14:03:42 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Bjorn Andersson <bjorn.andersson@linaro.org>, Mathieu Poirier
- <mathieu.poirier@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: <linux-remoteproc@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Tinghan Shen
- <tinghan.shen@mediatek.com>
-Subject: [PATCH v6] remoteproc: mediatek: Fix side effect of mt8195 sram power
- on
-Date: Mon, 21 Mar 2022 14:03:40 +0800
-Message-ID: <20220321060340.10975-1-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.15.GIT
+ 15.0.1497.2; Mon, 21 Mar 2022 00:07:02 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 21 Mar 2022 15:07:01 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 21 Mar 2022 15:07:01 +0800
+Message-ID: <f5206c975be3be1652f8f304a906e48b7dea75f0.camel@mediatek.com>
+Subject: Re: [PATCH V1] drm/mediatek: Fix issue of vblank callback data is NULL
+From: CK Hu <ck.hu@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>
+CC: <airlied@linux.ie>, <jason-jh.lin@mediatek.com>,
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <nancy.lin@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <yongqiang.niu@mediatek.com>, <hsinyi@google.com>, <matthias.bgg@gmail.com>,
+ <linux-arm-kernel@lists.infradead.org>
+Date: Mon, 21 Mar 2022 15:07:01 +0800
+In-Reply-To: <20220321055345.10195-1-rex-bc.chen@mediatek.com>
+References: <20220321055345.10195-1-rex-bc.chen@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220320_231217_925205_2E79B077 
-X-CRM114-Status: GOOD (  16.74  )
+X-CRM114-CacheID: sfid-20220321_001118_575305_8B87D995 
+X-CRM114-Status: GOOD (  26.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,181 +75,313 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The definition of L1TCM_SRAM_PDN bits on mt8195 is different to mt8192.
+Hi, Rex:
 
-L1TCM_SRAM_PDN bits[3:0] control the power of mt8195 L1TCM SRAM.
+I would like the title be WHAT does this patch do and the commit
+message be WHY does this patch do. I think what does this patch do is
+adding vblank register/unregister function.
 
-L1TCM_SRAM_PDN bits[7:4] control the access path to EMI for SCP.
-These bits have to be powered on to allow EMI access for SCP.
+Regards,
+CK
 
-Bits[7:4] also affect audio DSP because audio DSP and SCP are
-placed on the same hardware bus. If SCP cannot access EMI, audio DSP is
-blocked too.
-
-L1TCM_SRAM_PDN bits[31:8] are not used.
-
-This fix removes modification of bits[7:4] when power on/off mt8195 SCP
-L1TCM. It's because the modification introduces a short period of time
-blocking audio DSP to access EMI. This was not a problem until we have
-to load both SCP module and audio DSP module. audio DSP needs to access
-EMI because it has source/data on DRAM. Audio DSP will have unexpected
-behavior when it accesses EMI and the SCP driver blocks the EMI path at
-the same time.
-
-Fixes: 79111df414fc ("remoteproc: mediatek: Support mt8195 scp")
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
----
-v6: fix build error
-v5: rebased on rproc-next
-v4: add Fixes and Reviewed-by tags
-v3: fix build error
-v2: apply comments about macro definition and function calls
----
- drivers/remoteproc/mtk_common.h |  2 +
- drivers/remoteproc/mtk_scp.c    | 69 +++++++++++++++++++++++++--------
- 2 files changed, 54 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-index 71ce4977cb0b..ea6fa1100a00 100644
---- a/drivers/remoteproc/mtk_common.h
-+++ b/drivers/remoteproc/mtk_common.h
-@@ -54,6 +54,8 @@
- #define MT8192_CORE0_WDT_IRQ		0x10030
- #define MT8192_CORE0_WDT_CFG		0x10034
- 
-+#define MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS		GENMASK(7, 4)
-+
- #define SCP_FW_VER_LEN			32
- #define SCP_SHARE_BUFFER_SIZE		288
- 
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index 38609153bf64..ee6c4009586e 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -365,22 +365,22 @@ static int mt8183_scp_before_load(struct mtk_scp *scp)
- 	return 0;
- }
- 
--static void mt8192_power_on_sram(void __iomem *addr)
-+static void scp_sram_power_on(void __iomem *addr, u32 reserved_mask)
- {
- 	int i;
- 
- 	for (i = 31; i >= 0; i--)
--		writel(GENMASK(i, 0), addr);
-+		writel(GENMASK(i, 0) & ~reserved_mask, addr);
- 	writel(0, addr);
- }
- 
--static void mt8192_power_off_sram(void __iomem *addr)
-+static void scp_sram_power_off(void __iomem *addr, u32 reserved_mask)
- {
- 	int i;
- 
- 	writel(0, addr);
- 	for (i = 0; i < 32; i++)
--		writel(GENMASK(i, 0), addr);
-+		writel(GENMASK(i, 0) & ~reserved_mask, addr);
- }
- 
- static int mt8186_scp_before_load(struct mtk_scp *scp)
-@@ -393,7 +393,7 @@ static int mt8186_scp_before_load(struct mtk_scp *scp)
- 	writel(0x0, scp->reg_base + MT8183_SCP_CLK_DIV_SEL);
- 
- 	/* Turn on the power of SCP's SRAM before using it. Enable 1 block per time*/
--	mt8192_power_on_sram(scp->reg_base + MT8183_SCP_SRAM_PDN);
-+	scp_sram_power_on(scp->reg_base + MT8183_SCP_SRAM_PDN, 0);
- 
- 	/* Initialize TCM before loading FW. */
- 	writel(0x0, scp->reg_base + MT8183_SCP_L1_SRAM_PD);
-@@ -412,11 +412,32 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
- 	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
- 
- 	/* enable SRAM clock */
--	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_0);
--	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_1);
--	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_2);
--	mt8192_power_on_sram(scp->reg_base + MT8192_L1TCM_SRAM_PDN);
--	mt8192_power_on_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
-+	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-+	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-+	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-+	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
-+	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
-+
-+	/* enable MPU for all memory regions */
-+	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
-+
-+	return 0;
-+}
-+
-+static int mt8195_scp_before_load(struct mtk_scp *scp)
-+{
-+	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
-+	writel(0xff, scp->reg_base + MT8192_SCP2SPM_IPC_CLR);
-+
-+	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
-+
-+	/* enable SRAM clock */
-+	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-+	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-+	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-+	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
-+			  MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
-+	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
- 
- 	/* enable MPU for all memory regions */
- 	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
-@@ -572,11 +593,25 @@ static void mt8183_scp_stop(struct mtk_scp *scp)
- static void mt8192_scp_stop(struct mtk_scp *scp)
- {
- 	/* Disable SRAM clock */
--	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_0);
--	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_1);
--	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_2);
--	mt8192_power_off_sram(scp->reg_base + MT8192_L1TCM_SRAM_PDN);
--	mt8192_power_off_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
-+	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-+	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-+	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-+	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
-+	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
-+
-+	/* Disable SCP watchdog */
-+	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
-+}
-+
-+static void mt8195_scp_stop(struct mtk_scp *scp)
-+{
-+	/* Disable SRAM clock */
-+	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-+	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-+	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-+	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
-+			   MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
-+	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
- 
- 	/* Disable SCP watchdog */
- 	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
-@@ -922,11 +957,11 @@ static const struct mtk_scp_of_data mt8192_of_data = {
- 
- static const struct mtk_scp_of_data mt8195_of_data = {
- 	.scp_clk_get = mt8195_scp_clk_get,
--	.scp_before_load = mt8192_scp_before_load,
-+	.scp_before_load = mt8195_scp_before_load,
- 	.scp_irq_handler = mt8192_scp_irq_handler,
- 	.scp_reset_assert = mt8192_scp_reset_assert,
- 	.scp_reset_deassert = mt8192_scp_reset_deassert,
--	.scp_stop = mt8192_scp_stop,
-+	.scp_stop = mt8195_scp_stop,
- 	.scp_da_to_va = mt8192_scp_da_to_va,
- 	.host_to_scp_reg = MT8192_GIPC_IN_SET,
- 	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
--- 
-2.18.0
+On Mon, 2022-03-21 at 13:53 +0800, Rex-BC Chen wrote:
+> We encountered a kernel panic issue that callback data will be NULL
+> when
+> it's using in ovl irq handler. There is a timing issue between
+> mtk_disp_ovl_irq_handler() and mtk_ovl_disable_vblank().
+> 
+> To resolve this issue, we use the flow to register/unregister vblank
+> cb:
+> - Register callback function and callback data when crtc creates.
+> - Unregister callback function and callback data when crtc destroies.
+> 
+> With this solution, we can assure callback data will not be NULL when
+> vblank is disable.
+> 
+> Fixes: 9b0704988b15 ("drm/mediatek: Register vblank callback
+> function")
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Reviewed-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_disp_drv.h     | 16 +++++++-----
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c     | 22 ++++++++++++----
+>  drivers/gpu/drm/mediatek/mtk_disp_rdma.c    | 20 +++++++++-----
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 14 +++++++++-
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  4 +++
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 29 ++++++++++++++++---
+> --
+>  6 files changed, 80 insertions(+), 25 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> index 86c3068894b1..974462831133 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> @@ -76,9 +76,11 @@ void mtk_ovl_layer_off(struct device *dev,
+> unsigned int idx,
+>  void mtk_ovl_start(struct device *dev);
+>  void mtk_ovl_stop(struct device *dev);
+>  unsigned int mtk_ovl_supported_rotations(struct device *dev);
+> -void mtk_ovl_enable_vblank(struct device *dev,
+> -			   void (*vblank_cb)(void *),
+> -			   void *vblank_cb_data);
+> +void mtk_ovl_register_vblank_cb(struct device *dev,
+> +				void (*vblank_cb)(void *),
+> +				void *vblank_cb_data);
+> +void mtk_ovl_unregister_vblank_cb(struct device *dev);
+> +void mtk_ovl_enable_vblank(struct device *dev);
+>  void mtk_ovl_disable_vblank(struct device *dev);
+>  
+>  void mtk_rdma_bypass_shadow(struct device *dev);
+> @@ -93,9 +95,11 @@ void mtk_rdma_layer_config(struct device *dev,
+> unsigned int idx,
+>  			   struct cmdq_pkt *cmdq_pkt);
+>  void mtk_rdma_start(struct device *dev);
+>  void mtk_rdma_stop(struct device *dev);
+> -void mtk_rdma_enable_vblank(struct device *dev,
+> -			    void (*vblank_cb)(void *),
+> -			    void *vblank_cb_data);
+> +void mtk_rdma_register_vblank_cb(struct device *dev,
+> +				 void (*vblank_cb)(void *),
+> +				 void *vblank_cb_data);
+> +void mtk_rdma_unregister_vblank_cb(struct device *dev);
+> +void mtk_rdma_enable_vblank(struct device *dev);
+>  void mtk_rdma_disable_vblank(struct device *dev);
+>  
+>  #endif
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> index 2146299e5f52..1fa1bbac9f9c 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> @@ -96,14 +96,28 @@ static irqreturn_t mtk_disp_ovl_irq_handler(int
+> irq, void *dev_id)
+>  	return IRQ_HANDLED;
+>  }
+>  
+> -void mtk_ovl_enable_vblank(struct device *dev,
+> -			   void (*vblank_cb)(void *),
+> -			   void *vblank_cb_data)
+> +void mtk_ovl_register_vblank_cb(struct device *dev,
+> +				void (*vblank_cb)(void *),
+> +				void *vblank_cb_data)
+>  {
+>  	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
+>  
+>  	ovl->vblank_cb = vblank_cb;
+>  	ovl->vblank_cb_data = vblank_cb_data;
+> +}
+> +
+> +void mtk_ovl_unregister_vblank_cb(struct device *dev)
+> +{
+> +	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
+> +
+> +	ovl->vblank_cb = NULL;
+> +	ovl->vblank_cb_data = NULL;
+> +}
+> +
+> +void mtk_ovl_enable_vblank(struct device *dev)
+> +{
+> +	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
+> +
+>  	writel(0x0, ovl->regs + DISP_REG_OVL_INTSTA);
+>  	writel_relaxed(OVL_FME_CPL_INT, ovl->regs +
+> DISP_REG_OVL_INTEN);
+>  }
+> @@ -112,8 +126,6 @@ void mtk_ovl_disable_vblank(struct device *dev)
+>  {
+>  	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
+>  
+> -	ovl->vblank_cb = NULL;
+> -	ovl->vblank_cb_data = NULL;
+>  	writel_relaxed(0x0, ovl->regs + DISP_REG_OVL_INTEN);
+>  }
+>  
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> index d41a3970b944..943780fc7bf6 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> @@ -94,24 +94,32 @@ static void rdma_update_bits(struct device *dev,
+> unsigned int reg,
+>  	writel(tmp, rdma->regs + reg);
+>  }
+>  
+> -void mtk_rdma_enable_vblank(struct device *dev,
+> -			    void (*vblank_cb)(void *),
+> -			    void *vblank_cb_data)
+> +void mtk_rdma_register_vblank_cb(struct device *dev,
+> +				 void (*vblank_cb)(void *),
+> +				 void *vblank_cb_data)
+>  {
+>  	struct mtk_disp_rdma *rdma = dev_get_drvdata(dev);
+>  
+>  	rdma->vblank_cb = vblank_cb;
+>  	rdma->vblank_cb_data = vblank_cb_data;
+> -	rdma_update_bits(dev, DISP_REG_RDMA_INT_ENABLE,
+> RDMA_FRAME_END_INT,
+> -			 RDMA_FRAME_END_INT);
+>  }
+>  
+> -void mtk_rdma_disable_vblank(struct device *dev)
+> +void mtk_rdma_unregister_vblank_cb(struct device *dev)
+>  {
+>  	struct mtk_disp_rdma *rdma = dev_get_drvdata(dev);
+>  
+>  	rdma->vblank_cb = NULL;
+>  	rdma->vblank_cb_data = NULL;
+> +}
+> +
+> +void mtk_rdma_enable_vblank(struct device *dev)
+> +{
+> +	rdma_update_bits(dev, DISP_REG_RDMA_INT_ENABLE,
+> RDMA_FRAME_END_INT,
+> +			 RDMA_FRAME_END_INT);
+> +}
+> +
+> +void mtk_rdma_disable_vblank(struct device *dev)
+> +{
+>  	rdma_update_bits(dev, DISP_REG_RDMA_INT_ENABLE,
+> RDMA_FRAME_END_INT, 0);
+>  }
+>  
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> index d661edf7e0fe..e42a9bfa0ecb 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -152,6 +152,7 @@ static void mtk_drm_cmdq_pkt_destroy(struct
+> cmdq_pkt *pkt)
+>  static void mtk_drm_crtc_destroy(struct drm_crtc *crtc)
+>  {
+>  	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+> +	int i;
+>  
+>  	mtk_mutex_put(mtk_crtc->mutex);
+>  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+> @@ -162,6 +163,14 @@ static void mtk_drm_crtc_destroy(struct drm_crtc
+> *crtc)
+>  		mtk_crtc->cmdq_client.chan = NULL;
+>  	}
+>  #endif
+> +
+> +	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
+> +		struct mtk_ddp_comp *comp;
+> +
+> +		comp = mtk_crtc->ddp_comp[i];
+> +		mtk_ddp_comp_unregister_vblank_cb(comp);
+> +	}
+> +
+>  	drm_crtc_cleanup(crtc);
+>  }
+>  
+> @@ -616,7 +625,7 @@ static int mtk_drm_crtc_enable_vblank(struct
+> drm_crtc *crtc)
+>  	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+>  	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
+>  
+> -	mtk_ddp_comp_enable_vblank(comp, mtk_crtc_ddp_irq, &mtk_crtc-
+> >base);
+> +	mtk_ddp_comp_enable_vblank(comp);
+>  
+>  	return 0;
+>  }
+> @@ -916,6 +925,9 @@ int mtk_drm_crtc_create(struct drm_device
+> *drm_dev,
+>  			if (comp->funcs->ctm_set)
+>  				has_ctm = true;
+>  		}
+> +
+> +		mtk_ddp_comp_register_vblank_cb(comp, mtk_crtc_ddp_irq,
+> +						&mtk_crtc->base);
+>  	}
+>  
+>  	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++)
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> index b4b682bc1991..028cf76b9531 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> @@ -297,6 +297,8 @@ static const struct mtk_ddp_comp_funcs ddp_ovl =
+> {
+>  	.config = mtk_ovl_config,
+>  	.start = mtk_ovl_start,
+>  	.stop = mtk_ovl_stop,
+> +	.register_vblank_cb = mtk_ovl_register_vblank_cb,
+> +	.unregister_vblank_cb = mtk_ovl_unregister_vblank_cb,
+>  	.enable_vblank = mtk_ovl_enable_vblank,
+>  	.disable_vblank = mtk_ovl_disable_vblank,
+>  	.supported_rotations = mtk_ovl_supported_rotations,
+> @@ -321,6 +323,8 @@ static const struct mtk_ddp_comp_funcs ddp_rdma =
+> {
+>  	.config = mtk_rdma_config,
+>  	.start = mtk_rdma_start,
+>  	.stop = mtk_rdma_stop,
+> +	.register_vblank_cb = mtk_rdma_register_vblank_cb,
+> +	.unregister_vblank_cb = mtk_rdma_unregister_vblank_cb,
+>  	.enable_vblank = mtk_rdma_enable_vblank,
+>  	.disable_vblank = mtk_rdma_disable_vblank,
+>  	.layer_nr = mtk_rdma_layer_nr,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> index 4c6a98662305..b83f24cb045f 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> @@ -48,9 +48,11 @@ struct mtk_ddp_comp_funcs {
+>  		       unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+>  	void (*start)(struct device *dev);
+>  	void (*stop)(struct device *dev);
+> -	void (*enable_vblank)(struct device *dev,
+> -			      void (*vblank_cb)(void *),
+> -			      void *vblank_cb_data);
+> +	void (*register_vblank_cb)(struct device *dev,
+> +				   void (*vblank_cb)(void *),
+> +				   void *vblank_cb_data);
+> +	void (*unregister_vblank_cb)(struct device *dev);
+> +	void (*enable_vblank)(struct device *dev);
+>  	void (*disable_vblank)(struct device *dev);
+>  	unsigned int (*supported_rotations)(struct device *dev);
+>  	unsigned int (*layer_nr)(struct device *dev);
+> @@ -111,12 +113,25 @@ static inline void mtk_ddp_comp_stop(struct
+> mtk_ddp_comp *comp)
+>  		comp->funcs->stop(comp->dev);
+>  }
+>  
+> -static inline void mtk_ddp_comp_enable_vblank(struct mtk_ddp_comp
+> *comp,
+> -					      void (*vblank_cb)(void
+> *),
+> -					      void *vblank_cb_data)
+> +static inline void mtk_ddp_comp_register_vblank_cb(struct
+> mtk_ddp_comp *comp,
+> +						   void
+> (*vblank_cb)(void *),
+> +						   void
+> *vblank_cb_data)
+> +{
+> +	if (comp->funcs && comp->funcs->register_vblank_cb)
+> +		comp->funcs->register_vblank_cb(comp->dev, vblank_cb,
+> +						vblank_cb_data);
+> +}
+> +
+> +static inline void mtk_ddp_comp_unregister_vblank_cb(struct
+> mtk_ddp_comp *comp)
+> +{
+> +	if (comp->funcs && comp->funcs->unregister_vblank_cb)
+> +		comp->funcs->unregister_vblank_cb(comp->dev);
+> +}
+> +
+> +static inline void mtk_ddp_comp_enable_vblank(struct mtk_ddp_comp
+> *comp)
+>  {
+>  	if (comp->funcs && comp->funcs->enable_vblank)
+> -		comp->funcs->enable_vblank(comp->dev, vblank_cb,
+> vblank_cb_data);
+> +		comp->funcs->enable_vblank(comp->dev);
+>  }
+>  
+>  static inline void mtk_ddp_comp_disable_vblank(struct mtk_ddp_comp
+> *comp)
 
 
 _______________________________________________
