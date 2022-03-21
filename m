@@ -4,62 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB546C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 06:10:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7184BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 06:12:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sgtpTUzDxC8xfV2dfdPtMCIzuzfkab6k/P4DttzXpxg=; b=Z+7dmdyrwsFKIm
-	1MpGQCPqd487XEAP/akdlZfKcnl20vkDDXtdEXBFI7GyEeSiHt08KVrfQwZInTpokAZiLvleRY8Ry
-	ElzhSbpw9zJYlqkWdJpPcJKxTumzWEoqZsp/Ycqga1VLdcWuj9i3cSOqyjZRrs5JZpRdf4tAuyDW6
-	KNU6zG+t44ZkBMYhiNiwioFt/5SVfID9ItIbDsPW5SZ0gDFFqKbOIKu5iYGuBSZPaBMQ1k4yokyhV
-	8qa9msGueFMXBkr/G/tFIvTYqqFOZCQ+Sb12TA8TAwcvyfLVGeo/DYXLRjPhFqXLrn5urvjbFbagz
-	SwQcnm7eMig+Ps2Dj9Gg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=M1OC1ebUeZVGkghKT9kAilH6IYLUSTickIRI4Kr8/ns=; b=oXCNaFKhC8pBQk
+	pcnMwD3Jz4LUQFe6ZPbpXX5AWUa0/d/I/QnYsgLV8rtMV8MI1ubDz6HvV9Z+B3DWyo7ShekmnS14X
+	7aSItbfl7kZqgew4k2pe2CzPwD9tEUS5pbd3swx6dlyF826GGURHf/zL1J6D36GvudwdIdhK6WESD
+	SS2c0O9n7T5EPh3tBqXgVAcEPkaXxgB+vwitIz/8UplGTFnblT9ldW7hruxz+dUk+IMh0EeICoQ+b
+	59bzaF6znjv489XlO8oZhXvwODPQwJ7EslhtPGGOl7wNVwtOu2eN2jaDEqt+faDsNxk8sf13w4ddV
+	wS+yH/0Yc8o1x6izJGBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWBFO-006dpL-49; Mon, 21 Mar 2022 06:10:30 +0000
+	id 1nWBHB-006eD4-1Q; Mon, 21 Mar 2022 06:12:21 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWBFK-006doi-H1; Mon, 21 Mar 2022 06:10:28 +0000
-X-UUID: f52c6376462f4c1e8f2b9da6a65db7fc-20220320
-X-UUID: f52c6376462f4c1e8f2b9da6a65db7fc-20220320
+ id 1nWBH7-006eCG-Ru; Mon, 21 Mar 2022 06:12:19 +0000
+X-UUID: 95700526595b4160ad50cf3e2bf2fc38-20220320
+X-UUID: 95700526595b4160ad50cf3e2bf2fc38-20220320
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <tinghan.shen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1916230772; Sun, 20 Mar 2022 23:10:22 -0700
+ with ESMTP id 1292962232; Sun, 20 Mar 2022 23:12:15 -0700
 Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 20 Mar 2022 23:02:40 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 20 Mar 2022 23:03:43 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
  (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 21 Mar 2022 14:02:26 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 21 Mar 2022 14:02:25 +0800
-Message-ID: <d1fc78ca8bd6d11d44599a960022d8c78812eb9c.camel@mediatek.com>
-Subject: Re: [PATCH v5] remoteproc: mediatek: Fix side effect of mt8195 sram
- power on
+ Mon, 21 Mar 2022 14:03:42 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 21 Mar 2022 14:03:42 +0800
 From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Mathieu Poirier <mathieu.poirier@linaro.org>
-CC: Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-remoteproc@vger.kernel.org>,
+To: Bjorn Andersson <bjorn.andersson@linaro.org>, Mathieu Poirier
+ <mathieu.poirier@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <linux-remoteproc@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, AngeloGioacchino Del Regno
  <angelogioacchino.delregno@collabora.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 21 Mar 2022 14:02:26 +0800
-In-Reply-To: <20220318164102.GA2898105@p14s>
-References: <20220318114200.4344-1-tinghan.shen@mediatek.com>
- <20220318164102.GA2898105@p14s>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Tinghan Shen
+ <tinghan.shen@mediatek.com>
+Subject: [PATCH v6] remoteproc: mediatek: Fix side effect of mt8195 sram power
+ on
+Date: Mon, 21 Mar 2022 14:03:40 +0800
+Message-ID: <20220321060340.10975-1-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.15.GIT
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220320_231026_582676_E08762A6 
-X-CRM114-Status: GOOD (  36.13  )
+X-CRM114-CacheID: sfid-20220320_231217_925205_2E79B077 
+X-CRM114-Status: GOOD (  16.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,167 +69,189 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCAyMDIyLTAzLTE4IGF0IDEwOjQxIC0wNjAwLCBNYXRoaWV1IFBvaXJpZXIgd3JvdGU6
-Cj4gT24gRnJpLCBNYXIgMTgsIDIwMjIgYXQgMDc6NDI6MDBQTSArMDgwMCwgVGluZ2hhbiBTaGVu
-IHdyb3RlOgo+ID4gVGhlIGRlZmluaXRpb24gb2YgTDFUQ01fU1JBTV9QRE4gYml0cyBvbiBtdDgx
-OTUgaXMgZGlmZmVyZW50IHRvIG10ODE5Mi4KPiA+IAo+ID4gTDFUQ01fU1JBTV9QRE4gYml0c1sz
-OjBdIGNvbnRyb2wgdGhlIHBvd2VyIG9mIG10ODE5NSBMMVRDTSBTUkFNLgo+ID4gCj4gPiBMMVRD
-TV9TUkFNX1BETiBiaXRzWzc6NF0gY29udHJvbCB0aGUgYWNjZXNzIHBhdGggdG8gRU1JIGZvciBT
-Q1AuCj4gPiBUaGVzZSBiaXRzIGhhdmUgdG8gYmUgcG93ZXJlZCBvbiB0byBhbGxvdyBFTUkgYWNj
-ZXNzIGZvciBTQ1AuCj4gPiAKPiA+IEJpdHNbNzo0XSBhbHNvIGFmZmVjdCBhdWRpbyBEU1AgYmVj
-YXVzZSBhdWRpbyBEU1AgYW5kIFNDUCBhcmUKPiA+IHBsYWNlZCBvbiB0aGUgc2FtZSBoYXJkd2Fy
-ZSBidXMuIElmIFNDUCBjYW5ub3QgYWNjZXNzIEVNSSwgYXVkaW8gRFNQIGlzCj4gPiBibG9ja2Vk
-IHRvby4KPiA+IAo+ID4gTDFUQ01fU1JBTV9QRE4gYml0c1szMTo4XSBhcmUgbm90IHVzZWQuCj4g
-PiAKPiA+IFRoaXMgZml4IHJlbW92ZXMgbW9kaWZpY2F0aW9uIG9mIGJpdHNbNzo0XSB3aGVuIHBv
-d2VyIG9uL29mZiBtdDgxOTUgU0NQCj4gPiBMMVRDTS4gSXQncyBiZWNhdXNlIHRoZSBtb2RpZmlj
-YXRpb24gaW50cm9kdWNlcyBhIHNob3J0IHBlcmlvZCBvZiB0aW1lCj4gPiBibG9ja2luZyBhdWRp
-byBEU1AgdG8gYWNjZXNzIEVNSS4gVGhpcyB3YXMgbm90IGEgcHJvYmxlbSB1bnRpbCB3ZSBoYXZl
-Cj4gPiB0byBsb2FkIGJvdGggU0NQIG1vZHVsZSBhbmQgYXVkaW8gRFNQIG1vZHVsZS4gYXVkaW8g
-RFNQIG5lZWRzIHRvIGFjY2Vzcwo+ID4gRU1JIGJlY2F1c2UgaXQgaGFzIHNvdXJjZS9kYXRhIG9u
-IERSQU0uIEF1ZGlvIERTUCB3aWxsIGhhdmUgdW5leHBlY3RlZAo+ID4gYmVoYXZpb3Igd2hlbiBp
-dCBhY2Nlc3NlcyBFTUkgYW5kIHRoZSBTQ1AgZHJpdmVyIGJsb2NrcyB0aGUgRU1JIHBhdGggYXQK
-PiA+IHRoZSBzYW1lIHRpbWUuCj4gPiAKPiA+IEZpeGVzOiA3OTExMWRmNDE0ZmMgKCJyZW1vdGVw
-cm9jOiBtZWRpYXRlazogU3VwcG9ydCBtdDgxOTUgc2NwIikKPiA+IFNpZ25lZC1vZmYtYnk6IFRp
-bmdoYW4gU2hlbiA8dGluZ2hhbi5zaGVuQG1lZGlhdGVrLmNvbT4KPiA+IFJldmlld2VkLWJ5OiBB
-bmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8YW5nZWxvZ2lvYWNjaGluby5kZWxyZWdub0Bjb2xs
-YWJvcmEuY29tPgo+ID4gUmV2aWV3ZWQtYnk6IE1hdHRoaWFzIEJydWdnZXIgPG1hdHRoaWFzLmJn
-Z0BnbWFpbC5jb20+Cj4gPiAKPiA+IC0tLQo+ID4gdjU6IHJlYmFzZWQgb24gcnByb2MtbmV4dAo+
-ID4gdjQ6IGFkZCBGaXhlcyBhbmQgUmV2aWV3ZWQtYnkgdGFncwo+ID4gdjM6IGZpeCBidWlsZCBl
-cnJvcgo+ID4gdjI6IGFwcGx5IGNvbW1lbnRzIGFib3V0IG1hY3JvIGRlZmluaXRpb24gYW5kIGZ1
-bmN0aW9uIGNhbGxzCj4gPiAtLS0KPiA+ICBkcml2ZXJzL3JlbW90ZXByb2MvbXRrX2NvbW1vbi5o
-IHwgIDIgKwo+ID4gIGRyaXZlcnMvcmVtb3RlcHJvYy9tdGtfc2NwLmMgICAgfCA2NyArKysrKysr
-KysrKysrKysrKysrKysrKysrLS0tLS0tLS0KPiA+ICAyIGZpbGVzIGNoYW5nZWQsIDUzIGluc2Vy
-dGlvbnMoKyksIDE2IGRlbGV0aW9ucygtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9y
-ZW1vdGVwcm9jL210a19jb21tb24uaCBiL2RyaXZlcnMvcmVtb3RlcHJvYy9tdGtfY29tbW9uLmgK
-PiA+IGluZGV4IDcxY2U0OTc3Y2IwYi4uZWE2ZmExMTAwYTAwIDEwMDY0NAo+ID4gLS0tIGEvZHJp
-dmVycy9yZW1vdGVwcm9jL210a19jb21tb24uaAo+ID4gKysrIGIvZHJpdmVycy9yZW1vdGVwcm9j
-L210a19jb21tb24uaAo+ID4gQEAgLTU0LDYgKzU0LDggQEAKPiA+ICAjZGVmaW5lIE1UODE5Ml9D
-T1JFMF9XRFRfSVJRCQkweDEwMDMwCj4gPiAgI2RlZmluZSBNVDgxOTJfQ09SRTBfV0RUX0NGRwkJ
-MHgxMDAzNAo+ID4gIAo+ID4gKyNkZWZpbmUgTVQ4MTk1X0wxVENNX1NSQU1fUEROX1JFU0VSVkVE
-X1JTSV9CSVRTCQlHRU5NQVNLKDcsIDQpCj4gPiArCj4gPiAgI2RlZmluZSBTQ1BfRldfVkVSX0xF
-TgkJCTMyCj4gPiAgI2RlZmluZSBTQ1BfU0hBUkVfQlVGRkVSX1NJWkUJCTI4OAo+ID4gIAo+ID4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvcmVtb3RlcHJvYy9tdGtfc2NwLmMgYi9kcml2ZXJzL3JlbW90
-ZXByb2MvbXRrX3NjcC5jCj4gPiBpbmRleCAzODYwOTE1M2JmNjQuLjA2OGVkZjIxZWE1MSAxMDA2
-NDQKPiA+IC0tLSBhL2RyaXZlcnMvcmVtb3RlcHJvYy9tdGtfc2NwLmMKPiA+ICsrKyBiL2RyaXZl
-cnMvcmVtb3RlcHJvYy9tdGtfc2NwLmMKPiA+IEBAIC0zNjUsMjIgKzM2NSwyMiBAQCBzdGF0aWMg
-aW50IG10ODE4M19zY3BfYmVmb3JlX2xvYWQoc3RydWN0IG10a19zY3AgKnNjcCkKPiA+ICAJcmV0
-dXJuIDA7Cj4gPiAgfQo+ID4gIAo+ID4gLXN0YXRpYyB2b2lkIG10ODE5Ml9wb3dlcl9vbl9zcmFt
-KHZvaWQgX19pb21lbSAqYWRkcikKPiA+ICtzdGF0aWMgdm9pZCBzY3Bfc3JhbV9wb3dlcl9vbih2
-b2lkIF9faW9tZW0gKmFkZHIsIHUzMiByZXNlcnZlZF9tYXNrKQo+ID4gIHsKPiA+ICAJaW50IGk7
-Cj4gPiAgCj4gPiAgCWZvciAoaSA9IDMxOyBpID49IDA7IGktLSkKPiA+IC0JCXdyaXRlbChHRU5N
-QVNLKGksIDApLCBhZGRyKTsKPiA+ICsJCXdyaXRlbChHRU5NQVNLKGksIDApICYgfnJlc2VydmVk
-X21hc2ssIGFkZHIpOwo+ID4gIAl3cml0ZWwoMCwgYWRkcik7Cj4gPiAgfQo+ID4gIAo+ID4gLXN0
-YXRpYyB2b2lkIG10ODE5Ml9wb3dlcl9vZmZfc3JhbSh2b2lkIF9faW9tZW0gKmFkZHIpCj4gPiAr
-c3RhdGljIHZvaWQgc2NwX3NyYW1fcG93ZXJfb2ZmKHZvaWQgX19pb21lbSAqYWRkciwgdTMyIHJl
-c2VydmVkX21hc2spCj4gPiAgewo+ID4gIAlpbnQgaTsKPiA+ICAKPiA+ICAJd3JpdGVsKDAsIGFk
-ZHIpOwo+ID4gIAlmb3IgKGkgPSAwOyBpIDwgMzI7IGkrKykKPiA+IC0JCXdyaXRlbChHRU5NQVNL
-KGksIDApLCBhZGRyKTsKPiA+ICsJCXdyaXRlbChHRU5NQVNLKGksIDApICYgfnJlc2VydmVkX21h
-c2ssIGFkZHIpOwo+ID4gIH0KPiA+ICAKPiA+ICBzdGF0aWMgaW50IG10ODE4Nl9zY3BfYmVmb3Jl
-X2xvYWQoc3RydWN0IG10a19zY3AgKnNjcCkKPiA+IEBAIC00MTIsMTEgKzQxMiwzMiBAQCBzdGF0
-aWMgaW50IG10ODE5Ml9zY3BfYmVmb3JlX2xvYWQoc3RydWN0IG10a19zY3AgKnNjcCkKPiA+ICAJ
-d3JpdGVsKDEsIHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfQ09SRTBfU1dfUlNUTl9TRVQpOwo+ID4g
-IAo+ID4gIAkvKiBlbmFibGUgU1JBTSBjbG9jayAqLwo+ID4gLQltdDgxOTJfcG93ZXJfb25fc3Jh
-bShzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0wyVENNX1NSQU1fUERfMCk7Cj4gPiAtCW10ODE5Ml9w
-b3dlcl9vbl9zcmFtKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01fU1JBTV9QRF8xKTsKPiA+
-IC0JbXQ4MTkyX3Bvd2VyX29uX3NyYW0oc2NwLT5yZWdfYmFzZSArIE1UODE5Ml9MMlRDTV9TUkFN
-X1BEXzIpOwo+ID4gLQltdDgxOTJfcG93ZXJfb25fc3JhbShzY3AtPnJlZ19iYXNlICsgTVQ4MTky
-X0wxVENNX1NSQU1fUEROKTsKPiA+IC0JbXQ4MTkyX3Bvd2VyX29uX3NyYW0oc2NwLT5yZWdfYmFz
-ZSArIE1UODE5Ml9DUFUwX1NSQU1fUEQpOwo+ID4gKwlzY3Bfc3JhbV9wb3dlcl9vbihzY3AtPnJl
-Z19iYXNlICsgTVQ4MTkyX0wyVENNX1NSQU1fUERfMCwgMCk7Cj4gPiArCXNjcF9zcmFtX3Bvd2Vy
-X29uKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01fU1JBTV9QRF8xLCAwKTsKPiA+ICsJc2Nw
-X3NyYW1fcG93ZXJfb24oc2NwLT5yZWdfYmFzZSArIE1UODE5Ml9MMlRDTV9TUkFNX1BEXzIsIDAp
-Owo+ID4gKwlzY3Bfc3JhbV9wb3dlcl9vbihzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0wxVENNX1NS
-QU1fUEROLCAwKTsKPiA+ICsJc2NwX3NyYW1fcG93ZXJfb24oc2NwLT5yZWdfYmFzZSArIE1UODE5
-Ml9DUFUwX1NSQU1fUEQsIDApOwo+ID4gKwo+ID4gKwkvKiBlbmFibGUgTVBVIGZvciBhbGwgbWVt
-b3J5IHJlZ2lvbnMgKi8KPiA+ICsJd3JpdGVsKDB4ZmYsIHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJf
-Q09SRTBfTUVNX0FUVF9QUkVERUYpOwo+ID4gKwo+ID4gKwlyZXR1cm4gMDsKPiA+ICt9Cj4gPiAr
-Cj4gPiArc3RhdGljIGludCBtdDgxOTVfc2NwX2JlZm9yZV9sb2FkKHN0cnVjdCBtdGtfc2NwICpz
-Y3ApCj4gPiArewo+ID4gKwkvKiBjbGVhciBTUE0gaW50ZXJydXB0LCBTQ1AyU1BNX0lQQ19DTFIg
-Ki8KPiA+ICsJd3JpdGVsKDB4ZmYsIHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfU0NQMlNQTV9JUENf
-Q0xSKTsKPiA+ICsKPiA+ICsJd3JpdGVsKDEsIHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfQ09SRTBf
-U1dfUlNUTl9TRVQpOwo+ID4gKwo+ID4gKwkvKiBlbmFibGUgU1JBTSBjbG9jayAqLwo+ID4gKwlz
-Y3Bfc3JhbV9wb3dlcl9vbihzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0wyVENNX1NSQU1fUERfMCwg
-MCk7Cj4gPiArCXNjcF9zcmFtX3Bvd2VyX29uKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01f
-U1JBTV9QRF8xLCAwKTsKPiA+ICsJc2NwX3NyYW1fcG93ZXJfb24oc2NwLT5yZWdfYmFzZSArIE1U
-ODE5Ml9MMlRDTV9TUkFNX1BEXzIsIDApOwo+ID4gKwlzY3Bfc3JhbV9wb3dlcl9vbihzY3AtPnJl
-Z19iYXNlICsgTVQ4MTkyX0wxVENNX1NSQU1fUEROLAo+ID4gKwkJCSAgTVQ4MTk1X0wxVENNX1NS
-QU1fUEROX1JFU0VSVkVEX1JTSV9CSVRTKTsKPiA+ICsJc2NwX3NyYW1fcG93ZXJfb24oc2NwLT5y
-ZWdfYmFzZSArIE1UODE5Ml9DUFUwX1NSQU1fUEQsIDApOwo+ID4gIAo+ID4gIAkvKiBlbmFibGUg
-TVBVIGZvciBhbGwgbWVtb3J5IHJlZ2lvbnMgKi8KPiA+ICAJd3JpdGVsKDB4ZmYsIHNjcC0+cmVn
-X2Jhc2UgKyBNVDgxOTJfQ09SRTBfTUVNX0FUVF9QUkVERUYpOwo+ID4gQEAgLTU3MiwxMSArNTkz
-LDI1IEBAIHN0YXRpYyB2b2lkIG10ODE4M19zY3Bfc3RvcChzdHJ1Y3QgbXRrX3NjcCAqc2NwKQo+
-ID4gIHN0YXRpYyB2b2lkIG10ODE5Ml9zY3Bfc3RvcChzdHJ1Y3QgbXRrX3NjcCAqc2NwKQo+ID4g
-IHsKPiA+ICAJLyogRGlzYWJsZSBTUkFNIGNsb2NrICovCj4gPiAtCW10ODE5Ml9wb3dlcl9vZmZf
-c3JhbShzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0wyVENNX1NSQU1fUERfMCk7Cj4gPiAtCW10ODE5
-Ml9wb3dlcl9vZmZfc3JhbShzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0wyVENNX1NSQU1fUERfMSk7
-Cj4gPiAtCW10ODE5Ml9wb3dlcl9vZmZfc3JhbShzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0wyVENN
-X1NSQU1fUERfMik7Cj4gPiAtCW10ODE5Ml9wb3dlcl9vZmZfc3JhbShzY3AtPnJlZ19iYXNlICsg
-TVQ4MTkyX0wxVENNX1NSQU1fUEROKTsKPiA+IC0JbXQ4MTkyX3Bvd2VyX29mZl9zcmFtKHNjcC0+
-cmVnX2Jhc2UgKyBNVDgxOTJfQ1BVMF9TUkFNX1BEKTsKPiA+ICsJc2NwX3NyYW1fcG93ZXJfb2Zm
-KHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01fU1JBTV9QRF8wLCAwKTsKPiA+ICsJc2NwX3Ny
-YW1fcG93ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01fU1JBTV9QRF8xLCAwKTsK
-PiA+ICsJc2NwX3NyYW1fcG93ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01fU1JB
-TV9QRF8yLCAwKTsKPiA+ICsJc2NwX3NyYW1fcG93ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBNVDgx
-OTJfTDFUQ01fU1JBTV9QRE4sIDApOwo+ID4gKwlzY3Bfc3JhbV9wb3dlcl9vZmYoc2NwLT5yZWdf
-YmFzZSArIE1UODE5Ml9DUFUwX1NSQU1fUEQsIDApOwo+ID4gKwo+ID4gKwkvKiBEaXNhYmxlIFND
-UCB3YXRjaGRvZyAqLwo+ID4gKwl3cml0ZWwoMCwgc2NwLT5yZWdfYmFzZSArIE1UODE5Ml9DT1JF
-MF9XRFRfQ0ZHKTsKPiA+ICt9Cj4gPiArCj4gPiArc3RhdGljIHZvaWQgbXQ4MTk1X3NjcF9zdG9w
-KHN0cnVjdCBtdGtfc2NwICpzY3ApCj4gPiArewo+ID4gKwkvKiBEaXNhYmxlIFNSQU0gY2xvY2sg
-Ki8KPiA+ICsJc2NwX3NyYW1fcG93ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01f
-U1JBTV9QRF8wLCAwKTsKPiA+ICsJc2NwX3NyYW1fcG93ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBN
-VDgxOTJfTDJUQ01fU1JBTV9QRF8xLCAwKTsKPiA+ICsJc2NwX3NyYW1fcG93ZXJfb2ZmKHNjcC0+
-cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01fU1JBTV9QRF8yLCAwKTsKPiA+ICsJc2NwX3NyYW1fcG93
-ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDFUQ01fU1JBTV9QRE4sCj4gPiArCQkJICAg
-TVQ4MTk1X0wxVENNX1NSQU1fUEROX1JFU0VSVkVEX1JTSV9CSVRTKTsKPiA+ICsJc2NwX3NyYW1f
-cG93ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfQ1BVMF9TUkFNX1BELCAwKTsKPiA+ICAK
-PiA+ICAJLyogRGlzYWJsZSBTQ1Agd2F0Y2hkb2cgKi8KPiA+ICAJd3JpdGVsKDAsIHNjcC0+cmVn
-X2Jhc2UgKyBNVDgxOTJfQ09SRTBfV0RUX0NGRyk7Cj4gPiBAQCAtOTIyLDExICs5NTcsMTEgQEAg
-c3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfc2NwX29mX2RhdGEgbXQ4MTkyX29mX2RhdGEgPSB7Cj4g
-PiAgCj4gPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfc2NwX29mX2RhdGEgbXQ4MTk1X29mX2Rh
-dGEgPSB7Cj4gPiAgCS5zY3BfY2xrX2dldCA9IG10ODE5NV9zY3BfY2xrX2dldCwKPiA+IC0JLnNj
-cF9iZWZvcmVfbG9hZCA9IG10ODE5Ml9zY3BfYmVmb3JlX2xvYWQsCj4gPiArCS5zY3BfYmVmb3Jl
-X2xvYWQgPSBtdDgxOTVfc2NwX2JlZm9yZV9sb2FkLAo+ID4gIAkuc2NwX2lycV9oYW5kbGVyID0g
-bXQ4MTkyX3NjcF9pcnFfaGFuZGxlciwKPiA+ICAJLnNjcF9yZXNldF9hc3NlcnQgPSBtdDgxOTJf
-c2NwX3Jlc2V0X2Fzc2VydCwKPiA+ICAJLnNjcF9yZXNldF9kZWFzc2VydCA9IG10ODE5Ml9zY3Bf
-cmVzZXRfZGVhc3NlcnQsCj4gPiAtCS5zY3Bfc3RvcCA9IG10ODE5Ml9zY3Bfc3RvcCwKPiA+ICsJ
-LnNjcF9zdG9wID0gbXQ4MTk1X3NjcF9zdG9wLAo+ID4gIAkuc2NwX2RhX3RvX3ZhID0gbXQ4MTky
-X3NjcF9kYV90b192YSwKPiA+ICAJLmhvc3RfdG9fc2NwX3JlZyA9IE1UODE5Ml9HSVBDX0lOX1NF
-VCwKPiA+ICAJLmhvc3RfdG9fc2NwX2ludF9iaXQgPSBNVDgxOTJfSE9TVF9JUENfSU5UX0JJVCwK
-PiAKPiAKPiAgIEdFTiAgICAgTWFrZWZpbGUKPiAgIFVQRCAgICAgaW5jbHVkZS9jb25maWcva2Vy
-bmVsLnJlbGVhc2UKPiAgIFVQRCAgICAgaW5jbHVkZS9nZW5lcmF0ZWQvdXRzcmVsZWFzZS5oCj4g
-ICBDQUxMICAgIC9ob21lL21wb2lyaWVyL3dvcmsvcmVtb3RlcHJvYy9rZXJuZWwtcmV2aWV3L3Nj
-cmlwdHMvYXRvbWljL2NoZWNrLWF0b21pY3Muc2gKPiAgIENBTEwgICAgL2hvbWUvbXBvaXJpZXIv
-d29yay9yZW1vdGVwcm9jL2tlcm5lbC1yZXZpZXcvc2NyaXB0cy9jaGVja3N5c2NhbGxzLnNoCj4g
-ICBDSEsgICAgIGluY2x1ZGUvZ2VuZXJhdGVkL2NvbXBpbGUuaAo+ICAgQ0MgICAgICBpbml0L3Zl
-cnNpb24ubwo+ICAgQVIgICAgICBpbml0L2J1aWx0LWluLmEKPiAgIENDICAgICAga2VybmVsL3N5
-cy5vCj4gICBDQyAgICAgIG5ldC9ldGh0b29sL2lvY3RsLm8KPiAgIENDICAgICAga2VybmVsL21v
-ZHVsZS5vCj4gICBDQyAgICAgIGtlcm5lbC90cmFjZS90cmFjZS5vCj4gICBDQyAgICAgIGRyaXZl
-cnMvYmFzZS9maXJtd2FyZV9sb2FkZXIvbWFpbi5vCj4gICBDQyAgICAgIGRyaXZlcnMvYmFzZS9m
-aXJtd2FyZV9sb2FkZXIvYnVpbHRpbi9tYWluLm8KPiAgIEFSICAgICAgbmV0L2V0aHRvb2wvYnVp
-bHQtaW4uYQo+ICAgQVIgICAgICBkcml2ZXJzL2Jhc2UvZmlybXdhcmVfbG9hZGVyL2J1aWx0aW4v
-YnVpbHQtaW4uYQo+ICAgQVIgICAgICBuZXQvYnVpbHQtaW4uYQo+ICAgQVIgICAgICBkcml2ZXJz
-L2Jhc2UvZmlybXdhcmVfbG9hZGVyL2J1aWx0LWluLmEKPiAgIEFSICAgICAgZHJpdmVycy9iYXNl
-L2J1aWx0LWluLmEKPiAgIENDICAgICAgZHJpdmVycy9yZW1vdGVwcm9jL210a19zY3Aubwo+ICAg
-Q0MgICAgICBkcml2ZXJzL3JlbW90ZXByb2MvbXRrX3NjcF9pcGkubwo+ICAgQ0MgICAgICBkcml2
-ZXJzL3Jhcy9yYXMubwo+ICAgQ0MgICAgICBkcml2ZXJzL3JlbW90ZXByb2Mvc3RtMzJfcnByb2Mu
-bwo+ICAgQ0MgICAgICBkcml2ZXJzL252bWVtL2NvcmUubwo+ICAgQVIgICAgICBrZXJuZWwvdHJh
-Y2UvYnVpbHQtaW4uYQo+ICAgQVIgICAgICBrZXJuZWwvYnVpbHQtaW4uYQo+IC9ob21lL21wb2ly
-aWVyL3dvcmsvcmVtb3RlcHJvYy9rZXJuZWwtcmV2aWV3L2RyaXZlcnMvcmVtb3RlcHJvYy9tdGtf
-c2NwLmM6IEluIGZ1bmN0aW9uCj4g4oCYbXQ4MTg2X3NjcF9iZWZvcmVfbG9hZOKAmToKPiAvaG9t
-ZS9tcG9pcmllci93b3JrL3JlbW90ZXByb2Mva2VybmVsLXJldmlldy9kcml2ZXJzL3JlbW90ZXBy
-b2MvbXRrX3NjcC5jOjM5NjoyOiBlcnJvcjogaW1wbGljaXQKPiBkZWNsYXJhdGlvbiBvZiBmdW5j
-dGlvbiDigJhtdDgxOTJfcG93ZXJfb25fc3JhbeKAmSBbLVdlcnJvcj1pbXBsaWNpdC1mdW5jdGlv
-bi1kZWNsYXJhdGlvbl0KPiAgIDM5NiB8ICBtdDgxOTJfcG93ZXJfb25fc3JhbShzY3AtPnJlZ19i
-YXNlICsgTVQ4MTgzX1NDUF9TUkFNX1BETik7Cj4gICAgICAgfCAgXn5+fn5+fn5+fn5+fn5+fn5+
-fn4KPiAuLi4KPiAKPiBObyBuZWVkIHRvIHNlbmQgbWUgYW5vdGhlciByZXZpc2lvbiByaWdodCBh
-d2F5IC0gSSB3b24ndCBhcHBseSB5b3VyIGNvZGUgZm9yCj4gdGhpcyBtZXJnZSB3aW5kb3cuCgpI
-aSBNYXRoaWV1LAoKCkknbSBzb3JyeS4gSSdsbCBjb3JyZWN0IHRoaXMgYXQgbmV4dCB2ZXJzaW9u
-LgoKCgpCZXN0IHJlZ2FyZHMsClRpbmdIYW4KCj4gCj4gPiAtLSAKPiA+IDIuMTguMAo+ID4gCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
-aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+The definition of L1TCM_SRAM_PDN bits on mt8195 is different to mt8192.
+
+L1TCM_SRAM_PDN bits[3:0] control the power of mt8195 L1TCM SRAM.
+
+L1TCM_SRAM_PDN bits[7:4] control the access path to EMI for SCP.
+These bits have to be powered on to allow EMI access for SCP.
+
+Bits[7:4] also affect audio DSP because audio DSP and SCP are
+placed on the same hardware bus. If SCP cannot access EMI, audio DSP is
+blocked too.
+
+L1TCM_SRAM_PDN bits[31:8] are not used.
+
+This fix removes modification of bits[7:4] when power on/off mt8195 SCP
+L1TCM. It's because the modification introduces a short period of time
+blocking audio DSP to access EMI. This was not a problem until we have
+to load both SCP module and audio DSP module. audio DSP needs to access
+EMI because it has source/data on DRAM. Audio DSP will have unexpected
+behavior when it accesses EMI and the SCP driver blocks the EMI path at
+the same time.
+
+Fixes: 79111df414fc ("remoteproc: mediatek: Support mt8195 scp")
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+---
+v6: fix build error
+v5: rebased on rproc-next
+v4: add Fixes and Reviewed-by tags
+v3: fix build error
+v2: apply comments about macro definition and function calls
+---
+ drivers/remoteproc/mtk_common.h |  2 +
+ drivers/remoteproc/mtk_scp.c    | 69 +++++++++++++++++++++++++--------
+ 2 files changed, 54 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+index 71ce4977cb0b..ea6fa1100a00 100644
+--- a/drivers/remoteproc/mtk_common.h
++++ b/drivers/remoteproc/mtk_common.h
+@@ -54,6 +54,8 @@
+ #define MT8192_CORE0_WDT_IRQ		0x10030
+ #define MT8192_CORE0_WDT_CFG		0x10034
+ 
++#define MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS		GENMASK(7, 4)
++
+ #define SCP_FW_VER_LEN			32
+ #define SCP_SHARE_BUFFER_SIZE		288
+ 
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index 38609153bf64..ee6c4009586e 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -365,22 +365,22 @@ static int mt8183_scp_before_load(struct mtk_scp *scp)
+ 	return 0;
+ }
+ 
+-static void mt8192_power_on_sram(void __iomem *addr)
++static void scp_sram_power_on(void __iomem *addr, u32 reserved_mask)
+ {
+ 	int i;
+ 
+ 	for (i = 31; i >= 0; i--)
+-		writel(GENMASK(i, 0), addr);
++		writel(GENMASK(i, 0) & ~reserved_mask, addr);
+ 	writel(0, addr);
+ }
+ 
+-static void mt8192_power_off_sram(void __iomem *addr)
++static void scp_sram_power_off(void __iomem *addr, u32 reserved_mask)
+ {
+ 	int i;
+ 
+ 	writel(0, addr);
+ 	for (i = 0; i < 32; i++)
+-		writel(GENMASK(i, 0), addr);
++		writel(GENMASK(i, 0) & ~reserved_mask, addr);
+ }
+ 
+ static int mt8186_scp_before_load(struct mtk_scp *scp)
+@@ -393,7 +393,7 @@ static int mt8186_scp_before_load(struct mtk_scp *scp)
+ 	writel(0x0, scp->reg_base + MT8183_SCP_CLK_DIV_SEL);
+ 
+ 	/* Turn on the power of SCP's SRAM before using it. Enable 1 block per time*/
+-	mt8192_power_on_sram(scp->reg_base + MT8183_SCP_SRAM_PDN);
++	scp_sram_power_on(scp->reg_base + MT8183_SCP_SRAM_PDN, 0);
+ 
+ 	/* Initialize TCM before loading FW. */
+ 	writel(0x0, scp->reg_base + MT8183_SCP_L1_SRAM_PD);
+@@ -412,11 +412,32 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
+ 	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
+ 
+ 	/* enable SRAM clock */
+-	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_0);
+-	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_1);
+-	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_2);
+-	mt8192_power_on_sram(scp->reg_base + MT8192_L1TCM_SRAM_PDN);
+-	mt8192_power_on_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
++
++	/* enable MPU for all memory regions */
++	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
++
++	return 0;
++}
++
++static int mt8195_scp_before_load(struct mtk_scp *scp)
++{
++	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
++	writel(0xff, scp->reg_base + MT8192_SCP2SPM_IPC_CLR);
++
++	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
++
++	/* enable SRAM clock */
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
++	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
++			  MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
++	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
+ 
+ 	/* enable MPU for all memory regions */
+ 	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
+@@ -572,11 +593,25 @@ static void mt8183_scp_stop(struct mtk_scp *scp)
+ static void mt8192_scp_stop(struct mtk_scp *scp)
+ {
+ 	/* Disable SRAM clock */
+-	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_0);
+-	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_1);
+-	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_2);
+-	mt8192_power_off_sram(scp->reg_base + MT8192_L1TCM_SRAM_PDN);
+-	mt8192_power_off_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
++
++	/* Disable SCP watchdog */
++	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
++}
++
++static void mt8195_scp_stop(struct mtk_scp *scp)
++{
++	/* Disable SRAM clock */
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
++	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
++			   MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
++	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
+ 
+ 	/* Disable SCP watchdog */
+ 	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
+@@ -922,11 +957,11 @@ static const struct mtk_scp_of_data mt8192_of_data = {
+ 
+ static const struct mtk_scp_of_data mt8195_of_data = {
+ 	.scp_clk_get = mt8195_scp_clk_get,
+-	.scp_before_load = mt8192_scp_before_load,
++	.scp_before_load = mt8195_scp_before_load,
+ 	.scp_irq_handler = mt8192_scp_irq_handler,
+ 	.scp_reset_assert = mt8192_scp_reset_assert,
+ 	.scp_reset_deassert = mt8192_scp_reset_deassert,
+-	.scp_stop = mt8192_scp_stop,
++	.scp_stop = mt8195_scp_stop,
+ 	.scp_da_to_va = mt8192_scp_da_to_va,
+ 	.host_to_scp_reg = MT8192_GIPC_IN_SET,
+ 	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
