@@ -4,63 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF6FFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 15:13:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA10C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 15:23:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YEJutGurVYq9V1AyldYdRkA26U9OmW3/MFJMC9WuzKI=; b=t36lobh9LTpZJI
-	pR1wFPF+YcOX+BJXtgXLIpMeJvAVYL+Hp/JvOkotUVq8fW77VEpDI5YwXFFWdJKsCHTe2nrsTaRBl
-	fP37JBlBlUjCRc3mMv2kyvoHtAu+yJawHFZUbj/lW1yXjipj+tz2mh25EADorrCFY+EyZooqe/wdy
-	U8sOWkbtn/4/1mJHHA6qVsBwfkwIyF2nvdwtlcp/e0M2cJF0+rLCwgMhw8Pb27yWbbKyS4mTwwavA
-	cKHF7hs+VbR7vO6l+EkmvwepHfGyb87/95hgGRJwnAgRMInSkyayF1Qg2dGyN5kAOJPY2FXmHWZ0G
-	Gmem3al6wDVxIu03ixcA==;
+	List-Owner; bh=RAfc6ItU53/j7Dw5xGbW1bQiqhEHcCFdkkyMGrwsT00=; b=hSqDfykundSGsA
+	IdyMwczKuwgh+/kPXoxxNtEqPLl0LGSZcVDtAMm+W61H35m4Vtnq0gXA1TOxyvQcC5/VOXtdNGpqZ
+	X/R+84Nz9499oqPZRvMlQ1SkDq0VMq86htttluTaLWK4Jz5Mg1oMWpNRR3MVj0h44LORDj2zOUZdO
+	Sxa1IhD6r45MyC5QQMr3CFOgdUW7spSXnp75ozTJuTP3dgd2nrfzm3/v+zfyQb/cSF5QAaWdlim9u
+	mAQjE8inavvM5RmYzUit7lUp17vfGmhCjBhD/mNqbMhVIvPVrvvEW2YXOliMOtTQUK34QuTSfGrvj
+	8LwgWzzOKrGdJXBfCY4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWJib-0087jB-Q5; Mon, 21 Mar 2022 15:13:13 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nWJsq-008Beg-Lt; Mon, 21 Mar 2022 15:23:48 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWJiN-0087cb-N3; Mon, 21 Mar 2022 15:13:01 +0000
+ id 1nWJsa-008BYV-B4; Mon, 21 Mar 2022 15:23:33 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 543AFB8170A;
- Mon, 21 Mar 2022 15:12:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8905C340E8;
- Mon, 21 Mar 2022 15:12:54 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id CFE7860FA7;
+ Mon, 21 Mar 2022 15:23:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D2884C340E8;
+ Mon, 21 Mar 2022 15:23:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647875577;
- bh=ipkgJQjf5K2R+S1QsRulpTCFGjeQCivNGHqHR4lHm5g=;
+ s=k20201202; t=1647876211;
+ bh=4ZpyIyXYDcZ36RfZOIv4oxh4lJ+vIIHH8n+8gbprSCg=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=NlAnS+O1h0ZwjtCK+NlIhwFXGU5XDIfc6JGdZ3urIL2RJgtikmxARsu5T/xn2sG44
- +sMa8uQKAJl5lDfb0Gtk130vRqiUiPP4k7Ew+S0s4pW6avdeWP4xku+nyMuhTN2Rmp
- iPSaHZ/oH4lRowbTla4PbRXLvuADQ/+xfZAP3HMpj7TQNLOIM2sr1tYVt+2Vt7cOKO
- fY2tr+LI2U4d3OjryhCDpf+ExYtyfDMrOm2C/W/LtZRXW0qUNsEhHhU0rpggDyVl5b
- yPNWxbwu/5SL1vBKAPkQ5TKZrNkyEeob1ohw/VLGf7GFhUoKlpm7JKIIKcT3ys79Cl
- yMdFEDZAz58Qw==
-Date: Mon, 21 Mar 2022 23:12:52 +0800
+ b=FLUh+ySfIHCMJccWzOujn77JxsZSejOrwn2p+855hwyPXkF77aZrr9VGfNd3TNBae
+ Jv/ZNWbw9RsZ+dfUJ84+PcHkfujZL0NeibCYTsty4A6WSXYyMYGmUmcj2w2lcgxd4P
+ cf8c1Gms39QL09R0tr7PAs6V8cKQg33YUUbBvLVsjcnKMHMgi57S0ZTfSyDw1nfGl/
+ HoyUkLDdnEeKZ8mYgoL+WPh+F2bKLY/gcv6y9AFrzpORCRUSuBTM7+tSlEiZbuUDU6
+ 80L7Ocezq1BqkwgAuVGW8CVX5utlXtGw9ev6MzSOKgVw2psVepJdNKjc6a5a4AXINL
+ /VeaMprAovbNg==
+Date: Mon, 21 Mar 2022 23:23:26 +0800
 From: Tzung-Bi Shih <tzungbi@kernel.org>
-To: Trevor Wu <trevor.wu@mediatek.com>
-Cc: broonie@kernel.org, tiwai@suse.com, robh+dt@kernel.org,
- matthias.bgg@gmail.com, alsa-devel@alsa-project.org,
- linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, aaronyu@google.com,
- angelogioacchino.delregno@collabora.com, yc.hung@mediatek.com
-Subject: Re: [PATCH v3 5/6] ASoC: mediatek: mt8195: add machine support for
- max98390 and rt5682
-Message-ID: <YjiV9DfLC7T1uweb@google.com>
-References: <20220321072312.14972-1-trevor.wu@mediatek.com>
- <20220321072312.14972-6-trevor.wu@mediatek.com>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: broonie@kernel.org, robh+dt@kernel.org, devicetree@vger.kernel.org,
+ linmq006@gmail.com, alsa-devel@alsa-project.org,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, trevor.wu@mediatek.com,
+ matthias.bgg@gmail.com, aaronyu@google.com,
+ linux-arm-kernel@lists.infradead.org,
+ angelogioacchino.delregno@collabora.com
+Subject: Re: [v5 3/4] ASoC: mediatek: mt8192: refactor for I2S8/I2S9 DAI
+ links of headset
+Message-ID: <YjiYbqtrxlgrUplq@google.com>
+References: <20220319114111.11496-1-jiaxin.yu@mediatek.com>
+ <20220319114111.11496-4-jiaxin.yu@mediatek.com>
+ <Yjf4KjXpVJaNnvb8@google.com>
+ <17e6e8895ebc1113911481c7e097b394005db123.camel@mediatek.com>
+ <YjhDqKhtYastPhf0@google.com>
+ <f9cd3c31cc41f0f3c72930664445646d8175c760.camel@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220321072312.14972-6-trevor.wu@mediatek.com>
+In-Reply-To: <f9cd3c31cc41f0f3c72930664445646d8175c760.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220321_081259_927353_D813E4ED 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20220321_082332_501718_38B9C206 
+X-CRM114-Status: GOOD (  21.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,33 +83,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 21, 2022 at 03:23:11PM +0800, Trevor Wu wrote:
-> diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359.c b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-[...]
->  #define RT1011_SPEAKER_AMP_PRESENT		BIT(0)
->  #define RT1019_SPEAKER_AMP_PRESENT		BIT(1)
-> +#define MAX98390_SPEAKER_AMP_PRESENT		BIT(2)
-> +
-> +#define MAX98390_CODEC_DAI	"max98390-aif1"
-> +#define MAX98390_DEV0_NAME	"max98390.2-0038" /* right */
-> +#define MAX98390_DEV1_NAME	"max98390.2-0039" /* left */
+On Mon, Mar 21, 2022 at 10:38:48PM +0800, Jiaxin Yu wrote:
+> On Mon, 2022-03-21 at 17:21 +0800, Tzung-Bi Shih wrote:
+> > On Mon, Mar 21, 2022 at 05:14:08PM +0800, Jiaxin Yu wrote:
+> > > On Mon, 2022-03-21 at 11:59 +0800, Tzung-Bi Shih wrote:
+> > > > On Sat, Mar 19, 2022 at 07:41:10PM +0800, Jiaxin Yu wrote:
+> > > > > @@ -1145,6 +1140,13 @@ static int
+> > > > > mt8192_mt6359_dev_probe(struct
+> > > > > platform_device *pdev)
+> > > > >  		goto err_speaker_codec;
+> > > > >  	}
+> > > > >  
+> > > > > +	headset_codec = of_get_child_by_name(pdev->dev.of_node,
+> > > > > "mediatek,headset-codec");
+> > > > > +	if (!headset_codec) {
+> > > > > +		ret = -EINVAL;
+> > > > > +		dev_err_probe(&pdev->dev, ret, "Property
+> > > > > 'headset_codec' missing or invalid\n");
+> > > > > +		goto err_headset_codec;
+> > > > > +	}
+> > > > 
+> > > > (to be neat) Does it have any reason to prevent from using
+> > > > of_parse_phandle()
+> > > > but of_get_child_by_name()?
+> > > 
+> > > "mediatek,headset-codec" is a child node of pdev->dev.of_node, so I
+> > > use
+> > > of_get_child_by_name() to get and   pass it to
+> > > snd_soc_of_get_dai_link_codecs().
+> > 
+> > "mediatek,platform" and "mediatek,hdmi-codec" are also children of
+> > pdev->dev.of_node.  I guess my question is: why doesn't it also use
+> > of_parse_phandle() for "mediatek,headset-codec"?  Did I
+> > misunderstand?
+> 
+> The following is from bindings, "mediatek,speaker-codec" and
+> "mediatek,headset-codec" are sub nodes of sound but "mediatek,platform"
+> and "mediatek,hdmi-codec" are the name of properties. So we can't get
+> the sub node pointer through of_parse_phandle().
+> 
+>       sound: mt8192-sound {
+>           compatible = "mediatek,mt8192_mt6359_rt1015_rt5682";
+>           mediatek,platform = <&afe>;
+>           mediatek,hdmi-codec = <&anx_bridge_dp>;
+>           pinctrl-names = "aud_clk_mosi_off",
+>                           "aud_clk_mosi_on";
+>           pinctrl-0 = <&aud_clk_mosi_off>;
+>           pinctrl-1 = <&aud_clk_mosi_on>;
 >  
->  #define RT1011_CODEC_DAI	"rt1011-aif"
->  #define RT1011_DEV0_NAME	"rt1011.2-0038"
+>           mediatek,headset-codec {
+>               sound-dai = <&rt5682>;
+>           };
+>  
+>           mediatek,speaker-codec {
+>               sound-dai = <&rt1015_l>,
+>                           <&rt1015_r>;
+>           };
+>       };
 
-The quirk bit order: RT1011, RT1019, and MAX98390.  To be neat, move
-MAX98390_CODEC_DAI, MAX98390_DEV0_NAME, and MAX98390_DEV1_NAME after
-RT1019_DEV0_NAME to maintain the order.
-
-> +static int mt8195_max98390_init(struct snd_soc_pcm_runtime *rtd)
-[...]
-> +
-> +	ret = snd_soc_dapm_add_routes(&card->dapm, mt8195_max98390_routes,
-> +				      ARRAY_SIZE(mt8195_max98390_routes));
-> +
-> +	if (ret)
-
-Remove the extra blank line.
+Got it, thanks for the explanation.  Will provide my R-b tag in another
+thread.
 
 _______________________________________________
 Linux-mediatek mailing list
