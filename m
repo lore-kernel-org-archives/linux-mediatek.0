@@ -4,80 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C653C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 23:29:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E40CC46467
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 23:34:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HMDyOkZEGrzQz8nQSjdEbLakeNZJMepO27YCh6hRZtA=; b=srFavENn8qUxXs
-	c/S7u0jVLjDdtpktoxVFcQY2bT1C/euW9UKPnePvbjXWjlDWavoJsSuI0t7825tsimrUIXtnpm53x
-	tT5lCVmmySTNzpIaZXAenercOXOI4CXUiZ4X5O+ii9XXRmajs+A0ts2hF6QHV+ufoqDTFGiMesk1o
-	6S7M/eETDUmVbQ2bx0QrzG2J2lzdeDmhvb+a7Jj2wIvg1QVtLljP01ti6h7BR3Lf2B9gJwnib59Im
-	nKe+u6oFOXqHeuUqko7/XBqH1mesHO+XMWYD+GNuDrqmhQqa8oHok0+il4jbRVTq0m9dK385mxPO6
-	iofH+pswkvPrCHKKzieQ==;
+	List-Owner; bh=ygHaLsykW/JknWclh9KeXRlEeFhGEqXBXYa/Vg1+fhQ=; b=bkv84Zhudz9D1t
+	iG3Df77HsEAH9bzTd4s2qifgTpXOmOGvnXno79z6/fNWyuMBguPGIH8CQ6jV/D6vxszfi4/qY0td5
+	9gJ8fdLXjnF0OVJutS+uSZr2/vFkFlp3huWx31lmhZreuR2RGA37SWmVS23LXFE5ww380SWDA9xMp
+	4jcmr3W+Q6A7oBoVRaj2EK3JKuC5sD7hlxEui5V+Mom70RO3wJl3kX1LNbyZEj3Rq4tucQRL7cy04
+	j4DyBhF40ngfd/gnVTjSK7iovv0U9Jz/fYm6bs65sjsRzM0ceM8FaEGD92EC9amKBJQYhwaLSCZSq
+	164G9R5JZDxT7eg5fscQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWRT4-009PW6-M2; Mon, 21 Mar 2022 23:29:42 +0000
-Received: from mail-oi1-f179.google.com ([209.85.167.179])
+	id 1nWRXD-009QPV-LV; Mon, 21 Mar 2022 23:33:59 +0000
+Received: from mail-ot1-f49.google.com ([209.85.210.49])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWRSn-009PSG-O2; Mon, 21 Mar 2022 23:29:31 +0000
-Received: by mail-oi1-f179.google.com with SMTP id e4so14865950oif.2;
- Mon, 21 Mar 2022 16:29:24 -0700 (PDT)
+ id 1nWRX0-009QLw-Dq; Mon, 21 Mar 2022 23:33:48 +0000
+Received: by mail-ot1-f49.google.com with SMTP id
+ k25-20020a056830151900b005b25d8588dbso11523892otp.4; 
+ Mon, 21 Mar 2022 16:33:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=1eYyatCQZd3YZhjNaHOmfvqTN+inYRTrGVc7sx+pnE0=;
- b=hKCtI1s2w31GMPl1ZVuzAXj4mZYEzyXvlebK/w5SqIdXaoul4sLyeSUGillv/LlsOG
- 9A5SXWMCrUd2jGU3k7eIJ6dQbKGwGzGdLPtRXknT5dSQvFlDRtb/plUQK0+dzzhsy40a
- GkEVNNzIfGQQwkIGvLVF7vXOtmRUJZ6ouiOUz+gboKrJ5y3ddOVLUDvw3VfrIi2K4jY6
- cg0p7xxcmUGsNBG+O5jXg/xYG77mPZ9Mg+qj0SoJ4d+DlC+jOtMuCjvRIUmYI2YU1qTi
- QrrMRD3C0+Gs+wppRL+mf3QIGvVal8DBNOaZ/1OI9744D157+GQRhcKs1MFNRcRmn8U1
- Z4qQ==
-X-Gm-Message-State: AOAM530I1WdDxP8pPWwADhjfQmRGbnHo+8+FQDuOKbnIMviP85DQhNhP
- VEYzIwST57vUSL8goNnEow==
-X-Google-Smtp-Source: ABdhPJyL1wG4H9T4Ik1hQtcDoVEUgVmKOxTNyJ47cLWpAoUJUz0YuC27Z4XHCxLH9HKrwTpQSKukJQ==
-X-Received: by 2002:aca:59d5:0:b0:2ef:2125:ec15 with SMTP id
- n204-20020aca59d5000000b002ef2125ec15mr841064oib.4.1647905364052; 
- Mon, 21 Mar 2022 16:29:24 -0700 (PDT)
+ bh=iqlGJqAp9J3mBYn2W544lt1cPtvAWKBsX1sKB8vjaFQ=;
+ b=QrbqD524LDIO7lfQi+qPSPWu5d+Mt+9KcRqiLuFfvlUBtMlnv/f73mhqjyavZbcIjO
+ ObN1K0rkamH9HuMxlpJGE9LZdROcL1Tz961zucNsi/Et6rbJbVstXCebglhtoELKR81F
+ sa7tdEcFLaUv69IXex/Upbrr/07H4Zo5iyObOL7e2G4HQr5cxB2m5VL9LXNiT2jd3kuO
+ 8HIRrm2oXeZY2o/SuRHt6idFjBW6Fg7CY0Ix4PW/JY0b9LEV1m6hK/qCcu7SUmmV+wcN
+ zfFG37pPlXxhfD0gtskZoe5XGxSuaCu/p6OIa6nz5OEoOFzfsUCxJicLfzCFBgaDDL8c
+ lAdA==
+X-Gm-Message-State: AOAM531TDOTsADIScYdcb0V36M9t5DLbE+nHC0qLSD+74fGnbOc5PXXm
+ WtwR6ruRwxB0gIyaBVWUvQ==
+X-Google-Smtp-Source: ABdhPJzxxO+k7l8znxP0vjnY2lEafBroFgaKOlvFVHd8JKFt8pjObiL7SWOFKakst91i39pW6Q1Hgw==
+X-Received: by 2002:a9d:5f16:0:b0:5cb:51de:6761 with SMTP id
+ f22-20020a9d5f16000000b005cb51de6761mr6071903oti.139.1647905625156; 
+ Mon, 21 Mar 2022 16:33:45 -0700 (PDT)
 Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
  [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- 4-20020a056870004400b000dabe0c435bsm6809638oaz.7.2022.03.21.16.29.22
+ p14-20020a9d744e000000b005b235f5cf92sm8228647otk.65.2022.03.21.16.33.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Mar 2022 16:29:23 -0700 (PDT)
-Received: (nullmailer pid 744835 invoked by uid 1000);
- Mon, 21 Mar 2022 23:29:21 -0000
-Date: Mon, 21 Mar 2022 18:29:21 -0500
+ Mon, 21 Mar 2022 16:33:44 -0700 (PDT)
+Received: (nullmailer pid 751258 invoked by uid 1000);
+ Mon, 21 Mar 2022 23:33:43 -0000
+Date: Mon, 21 Mar 2022 18:33:43 -0500
 From: Rob Herring <robh@kernel.org>
-To: Axe Yang <axe.yang@mediatek.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Adrian Hunter <adrian.hunter@intel.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Satya Tangirala <satyat@google.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach <dev@lynxeye.de>,
- Eric Biggers <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>,
- Stephen Boyd <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>,
- Yue Hu <huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
- angelogioacchino.delregno@collabora.com, linux-mmc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v8 1/3] dt-bindings: mmc: mtk-sd: extend interrupts and
- pinctrls properties
-Message-ID: <YjkKURNzg8JPbXcg@robh.at.kernel.org>
-References: <20220321115133.32121-1-axe.yang@mediatek.com>
- <20220321115133.32121-2-axe.yang@mediatek.com>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: broonie@kernel.org, tzungbi@google.com,
+ angelogioacchino.delregno@collabora.com, aaronyu@google.com,
+ matthias.bgg@gmail.com, trevor.wu@mediatek.com, linmq006@gmail.com,
+ alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [v5 1/4] ASoC: dt-bindings: mt8192-mt6359: add new compatible
+ and new properties
+Message-ID: <YjkLVwvxvOKr30qL@robh.at.kernel.org>
+References: <20220319114111.11496-1-jiaxin.yu@mediatek.com>
+ <20220319114111.11496-2-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220321115133.32121-2-axe.yang@mediatek.com>
+In-Reply-To: <20220319114111.11496-2-jiaxin.yu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220321_162925_803463_5AD57951 
-X-CRM114-Status: GOOD (  18.81  )
+X-CRM114-CacheID: sfid-20220321_163346_490955_68A08CF3 
+X-CRM114-Status: GOOD (  15.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,69 +88,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 21, 2022 at 07:51:32PM +0800, Axe Yang wrote:
-> Extend interrupts and pinctrls for SDIO wakeup interrupt feature.
-> This feature allow SDIO devices alarm asynchronous interrupt to host
-> even when host stop providing clock to SDIO card. An extra wakeup
-> interrupt and pinctrl states for SDIO DAT1 pin state switching are
-> required in this scenario.
+On Sat, Mar 19, 2022 at 07:41:08PM +0800, Jiaxin Yu wrote:
+> 1. Adds new compatible string "mt8192_mt6359_rt1015p_rt5682s" for machines
+> with rt1015p and rt5682s.
+> 2. Adds new property "mediatek,headset-codec" for getting headset codecs.
+> 3. Adds new property "mediatek,speaker-codec" for getting speaker codecs.
 > 
-> Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
 > ---
->  .../devicetree/bindings/mmc/mtk-sd.yaml       | 23 ++++++++++++++++++-
->  1 file changed, 22 insertions(+), 1 deletion(-)
+>  .../sound/mt8192-mt6359-rt1015-rt5682.yaml    | 29 +++++++++++++++++++
+>  1 file changed, 29 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> index 297ada03e3de..f57774535a1d 100644
-> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> @@ -69,12 +69,23 @@ properties:
->        - const: ahb_cg
+> diff --git a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
+> index a781e7aaaa38..aa0476eedd38 100644
+> --- a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
+> +++ b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
+> @@ -18,6 +18,7 @@ properties:
+>      enum:
+>        - mediatek,mt8192_mt6359_rt1015_rt5682
+>        - mediatek,mt8192_mt6359_rt1015p_rt5682
+> +      - mediatek,mt8192_mt6359_rt1015p_rt5682s
 >  
->    interrupts:
-> -    maxItems: 1
-> +    description:
-> +      Should at least contain MSDC GIC interrupt. To support SDIO in-band wakeup, an extended
-> +      interrupt is required and be configured as wakeup source irq.
-> +    minItems: 1
-> +    maxItems: 2
+>    mediatek,platform:
+>      $ref: "/schemas/types.yaml#/definitions/phandle"
+> @@ -27,6 +28,25 @@ properties:
+>      $ref: "/schemas/types.yaml#/definitions/phandle"
+>      description: The phandle of HDMI codec.
 >  
->    pinctrl-names:
-> +    description:
-> +      Should at least contain default and state_uhs. To support SDIO in-band wakeup, dat1 pin
-> +      will be switched between GPIO mode and SDIO DAT1 mode, state_eint and state_dat1 are
-> +      mandatory in this scenarios.
-> +    minItems: 2
->      items:
->        - const: default
->        - const: state_uhs
-> +      - const: state_eint
-> +      - const: state_dat1
->  
->    pinctrl-0:
->      description:
-> @@ -86,6 +97,16 @@ properties:
->        should contain uhs mode pin ctrl.
->      maxItems: 1
->  
-> +  pinctrl-2:
-> +    description:
-> +      should switch dat1 pin to GPIO mode.
-> +    maxItems: 1
-> +
-> +  pinctrl-3:
-> +    description:
-> +      should switch SDIO dat1 pin from GPIO mode back to SDIO mode.
+> +patternProperties:
+> +  "^mediatek,headset-codec$":
 
-How is this different than pinctrl-0?
+Fixed string, not a pattern. Move to 'properties'. Drop the vendor 
+prefix too.
 
-> +    maxItems: 1
+> +    description: Holds subnode which indicates headset dai.
+> +    type: object
+> +    properties:
+> +      sound-dai:
+> +        $ref: /schemas/types.yaml#/definitions/phandle-array
+
+Standard property, don't need a type or description. Just how many and 
+what each one is if more than 1.
+
+> +        description: List of phandles to the headset codec nodes.
+
+More than 1?
+
+> +    additionalProperties: false
 > +
->    assigned-clocks:
->      description:
->        PLL of the source clock.
+> +  "^mediatek,speaker-codec$":
+> +    description: Holds subnode which indicates speaker dai.
+> +    type: object
+> +    properties:
+> +      sound-dai:
+> +        $ref: /schemas/types.yaml#/definitions/phandle-array
+> +        description: List of phandles to the speaker codec nodes.
+
+Same here.
+
+> +    additionalProperties: false
+> +
+>  additionalProperties: false
+>  
+>  required:
+> @@ -44,6 +64,15 @@ examples:
+>                          "aud_clk_mosi_on";
+>          pinctrl-0 = <&aud_clk_mosi_off>;
+>          pinctrl-1 = <&aud_clk_mosi_on>;
+> +
+> +        mediatek,headset-codec {
+> +            sound-dai = <&rt5682>;
+> +        };
+> +
+> +        mediatek,speaker-codec {
+> +            sound-dai = <&rt1015_l>,
+> +                        <&rt1015_r>;
+> +        };
+>      };
+>  
+>  ...
 > -- 
-> 2.25.1
+> 2.18.0
 > 
 > 
 
