@@ -4,60 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34E3EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 22:30:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A55E4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 22:30:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VBP46qFwUioIgaYECS/7qjlBkvBamiczGGENFFSpiOo=; b=MowsJALATzuOGQ
-	pt1Y2uRr/44vOOdSHrig/GyJoTA+kCwL8dcWhekL1aYLcu9taMj4KFTo/aUnmrKBRY3WIEXP1GNRf
-	/rtyry9JkSjuMQ24r8F2ATLryuyNaViMC0W42CXjxNkufJznM4uzVOqQeb+3odFVifBaIb3ENOdrO
-	RLl4PUmwyjpBzQ0OqDHF+vjhq9z2SurXBvNSRxzK9AiIDBcj7WDwVxW8CIqEqWqHF06paPLHFeURN
-	pBYuC24pI+FIA5py8iE3eYlJCmTRshgXc8xjR32GavyrM0Udz5dqE+JrzBtz+IGhafrJN1cuY8iRM
-	SW0nT1tj2Pae3Jq4O9lw==;
+	List-Owner; bh=vxsA8XLaOyUTm/We0yA7puZJJxPrrzk1rWOaJbPUaek=; b=ak/JY7PHkHfh0C
+	e5gZ5DZK6bXbRe9BzrOtg1LGmOtT37nFyJIbJBRYp6U6CcSsQym8csUHYlXHxyO3XrEgs6vj+r1Xy
+	vvDOnmeaqnThvJj3G2G4uv0yMTzygWLXEa0+fEwVpRctsjVbmpiJhodX+FzM/9BHSlxDMju+EVx4B
+	EJC6slIhnd4hJYxPkNUqPOaPWiKswPzYsaKhU/gAy1a9o05y/FEx2wG8Nk6b+s4IRJyMjNSsBbdhr
+	Yai995k4xXnBFd/UFGEAoMybDJuCTKp7LVcn/DvclCF1gH+UM47KM6+MFdt6Koo4Uzj6Q8d37hJ48
+	EORNiQ/2Pd6zCy8vvbxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWQXm-009FCP-Ry; Mon, 21 Mar 2022 22:30:30 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nWQXx-009FEu-5s; Mon, 21 Mar 2022 22:30:41 +0000
+Received: from mail-oi1-f174.google.com ([209.85.167.174])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWQXa-009FA5-IS; Mon, 21 Mar 2022 22:30:19 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id EB1D81F42B4D
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647901817;
- bh=dFAsJXFVHpj6L27TiVAj76slpePHnCZeJGPIhOfYCBs=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=nxvWJ72cpm4nlluTG0iCgd2ziG647YzSolB4dxZnRO85gg4mrgijbJeZL6LTxb1l2
- pbpmGP9/0UpQnCZ+qrHlR7fj7kB7qNuY0CRU4pyvzloXxtG7vKjEAamIWEH82W06X3
- R8m/KRlyY6iUk+AzQJaVFJOjWm0muPpMYznIttYtzFv8UzkN/ky0Mc0HZldN7ZM8HD
- UjHJfz5hNBJQ40v84w9v7VnMumX0upmZ2l+MuH4r8DJvKz36Q2ZMgQiJu3br1Eb6+7
- /SWphaLm19v4JzxXKGxvoFsDAWSUPn32iAj7bA3FaeX5u+djgv6/ZbwiUs9u3Zb6li
- nv/+Oxk8cgwtg==
-Date: Mon, 21 Mar 2022 18:30:12 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
- Hui Liu <hui.liu@mediatek.com>
-Subject: Re: [PATCH v4 10/22] arm64: dts: mt8192: Fix nor_flash status
- disable typo
-Message-ID: <20220321223012.4sbj63pywc4mjqvc@notapiano>
-References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
- <20220318144534.17996-11-allen-kh.cheng@mediatek.com>
+ id 1nWQXg-009FAw-IA; Mon, 21 Mar 2022 22:30:25 +0000
+Received: by mail-oi1-f174.google.com with SMTP id q129so15797471oif.4;
+ Mon, 21 Mar 2022 15:30:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=zbp0hIb8uBy2/xVSmAWjwvVhJzm0B0givR3TBIiOw0Q=;
+ b=FdaYEq8qDGe2egjvEgWQmUTtcKsPcVJGHGOXKPS5ypA6oaEsfFftq2I+dcDsSGZCwH
+ 34P66ktSil/MKKIAOCH9pgPtfNM2GpJcD1nLNke3KXPicmEwvOlw4QdHotm7mhSyQAnU
+ x/tUROgyUGFKM66xqHCbfrUdDVAnD3UQ5EaT/B5Iol/8GLJCmWsfgCdR7QACuRPZgZ8h
+ Ya9G8veq6aFOc+jfKD9t0aiv6JTaIK1tJCtdGhBD+ESExgtnXKmql82I6zyxfr3X1UlY
+ p8X+uCHFh2KH1fzm9g1Sez9+bLqx1mXnC4nFrMe9rHP9E5A52o4x/aHM/mjMVMznek7K
+ 2sTQ==
+X-Gm-Message-State: AOAM5305u9FdJJxSblKDmDzxc8HWVDOb220yO+mB6trIACt6eMkxC6CI
+ XLGBqDLxke6OBDQYkz8tYg==
+X-Google-Smtp-Source: ABdhPJwt1zw6TNwDij87xVlDMEQVe7cTjU5dSscPmUpAKgOWzXQ8WYcqWpTBlrQ/KYGd/g16yMgQ4Q==
+X-Received: by 2002:a05:6808:30a2:b0:2da:3ab6:2c83 with SMTP id
+ bl34-20020a05680830a200b002da3ab62c83mr675374oib.206.1647901823127; 
+ Mon, 21 Mar 2022 15:30:23 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ p18-20020a056830131200b005ccf8ac6207sm2491234otq.80.2022.03.21.15.30.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 21 Mar 2022 15:30:22 -0700 (PDT)
+Received: (nullmailer pid 656090 invoked by uid 1000);
+ Mon, 21 Mar 2022 22:30:18 -0000
+Date: Mon, 21 Mar 2022 17:30:18 -0500
+From: Rob Herring <robh@kernel.org>
+To: Moudy Ho <moudy.ho@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Jernej Skrabec <jernej.skrabec@siol.net>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Rob Landley <rob@landley.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>,
+ tfiga@chromium.org, 
+ drinkcat@chromium.org, pihsun@chromium.org, hsinyi@google.com, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Maoguang Meng <maoguang.meng@mediatek.com>,
+ daoyuan huang <daoyuan.huang@mediatek.com>, 
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, menghui.lin@mediatek.com,
+ sj.huang@mediatek.com, 
+ allen-kh.cheng@mediatek.com, randy.wu@mediatek.com, jason-jh.lin@mediatek.com, 
+ roy-cw.yeh@mediatek.com, river.cheng@mediatek.com, 
+ srv_heupstream@mediatek.com, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v14 4/6] dt-bindings: soc: mediatek: add gce-client-reg
+ for MUTEX
+Message-ID: <Yjj8eoXmsYRRvb1I@robh.at.kernel.org>
+References: <20220317143926.15835-1-moudy.ho@mediatek.com>
+ <20220317143926.15835-5-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220318144534.17996-11-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220317143926.15835-5-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220321_153018_763343_6BBBED9D 
-X-CRM114-Status: GOOD (  14.37  )
+X-CRM114-CacheID: sfid-20220321_153024_639117_728650D7 
+X-CRM114-Status: GOOD (  17.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,51 +97,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 18, 2022 at 10:45:22PM +0800, Allen-KH Cheng wrote:
-> Correct nor_flash status disable typo of mt8192 SoC.
-> =
-
-> Fixes: d0a197a0d064a ("arm64: dts: mt8192: add nor_flash device node")
-> =
-
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-
-Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
-
+On Thu, Mar 17, 2022 at 10:39:24PM +0800, Moudy Ho wrote:
+> In order to allow modules with latency requirements such as MDP3
+> to set registers through CMDQ, add the relevant GCE property.
+> 
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> =
+>  .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml  | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+> index f825af49f820..a4892979480c 100644
+> --- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+> @@ -60,6 +60,14 @@ properties:
+>        include/dt-bindings/gce/<chip>-gce.h of each chips.
+>      $ref: /schemas/types.yaml#/definitions/phandle-array
+>  
+> +  mediatek,gce-client-reg:
+> +    description: The register of client driver can be configured by gce with
+> +      4 arguments defined in this property, such as phandle of gce, subsys id,
+> +      register offset and size. Each GCE subsys id is mapping to a client
+> +      defined in the header include/dt-bindings/gce/<chip>-gce.h.
+> +    $ref: /schemas/types.yaml#/definitions/phandle-array
+> +    maxItems: 1
 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/d=
-ts/mediatek/mt8192.dtsi
-> index 3a7f93d8eeaa..75c21edccf85 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -934,7 +934,7 @@
->  			assigned-clock-parents =3D <&clk26m>;
->  			#address-cells =3D <1>;
->  			#size-cells =3D <0>;
-> -			status =3D "disable";
-> +			status =3D "disabled";
->  		};
->  =
+items:
+  items:
+    - description: phandle of GCE
+    - description: GCE subsys id
+    - description: register offset
+    - description: register size
 
->  		i2c3: i2c@11cb0000 {
-> -- =
-
+> +
+>  required:
+>    - compatible
+>    - reg
+> -- 
 > 2.18.0
-> =
-
-> =
-
+> 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
