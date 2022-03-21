@@ -4,59 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4624AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 05:54:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB546C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 06:10:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0hSm53J2H89/HQPuCteLW+L4ey4unrWW0qoxHGoabu8=; b=pHwJy08NN1eDS1
-	xFH4ArAk0JSDXNWLG4jd+xI+gJaFvRiD0+RODKeqwy6sBwOUWqUem7j3TTRb/PpqyKc2hBOGl85X9
-	gnR24aJbyNmN3UphjMkMDSMLnSgfTTQevRWUmOB49SU/6aaiijyyGuOTQjpYC63L0W42CNVKXVOaO
-	ANIbkmMBIuQhnDVADX197P7qD1OIWEC+PaLv08i7TW+wLxx9TSkplFEUS+5Y6uhBcnzLvvHReLm7p
-	U/D6t6juVG3vyP+OXjcauZyDytX9sZbDjdqY8xSw0qVT+22ODyxXdfdVUif/JpYayZo3Oz7holOh1
-	c5T6GEzgk3X/FZH/DEgQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sgtpTUzDxC8xfV2dfdPtMCIzuzfkab6k/P4DttzXpxg=; b=Z+7dmdyrwsFKIm
+	1MpGQCPqd487XEAP/akdlZfKcnl20vkDDXtdEXBFI7GyEeSiHt08KVrfQwZInTpokAZiLvleRY8Ry
+	ElzhSbpw9zJYlqkWdJpPcJKxTumzWEoqZsp/Ycqga1VLdcWuj9i3cSOqyjZRrs5JZpRdf4tAuyDW6
+	KNU6zG+t44ZkBMYhiNiwioFt/5SVfID9ItIbDsPW5SZ0gDFFqKbOIKu5iYGuBSZPaBMQ1k4yokyhV
+	8qa9msGueFMXBkr/G/tFIvTYqqFOZCQ+Sb12TA8TAwcvyfLVGeo/DYXLRjPhFqXLrn5urvjbFbagz
+	SwQcnm7eMig+Ps2Dj9Gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWB05-006c47-Kh; Mon, 21 Mar 2022 05:54:41 +0000
+	id 1nWBFO-006dpL-49; Mon, 21 Mar 2022 06:10:30 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWB02-006c24-Bp; Mon, 21 Mar 2022 05:54:40 +0000
-X-UUID: 403d21351e5f448184765f447519b257-20220320
-X-UUID: 403d21351e5f448184765f447519b257-20220320
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
+ id 1nWBFK-006doi-H1; Mon, 21 Mar 2022 06:10:28 +0000
+X-UUID: f52c6376462f4c1e8f2b9da6a65db7fc-20220320
+X-UUID: f52c6376462f4c1e8f2b9da6a65db7fc-20220320
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <tinghan.shen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 870508567; Sun, 20 Mar 2022 22:54:26 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 20 Mar 2022 22:54:25 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 21 Mar 2022 13:54:11 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 21 Mar 2022 13:54:11 +0800
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <chunkuang.hu@kernel.org>
-CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <matthias.bgg@gmail.com>, <jason-jh.lin@mediatek.com>,
- <yongqiang.niu@mediatek.com>, <nancy.lin@mediatek.com>, <hsinyi@google.com>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>
-Subject: [PATCH V1] drm/mediatek: Fix issue of vblank callback data is NULL
-Date: Mon, 21 Mar 2022 13:53:45 +0800
-Message-ID: <20220321055345.10195-1-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ with ESMTP id 1916230772; Sun, 20 Mar 2022 23:10:22 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 20 Mar 2022 23:02:40 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 21 Mar 2022 14:02:26 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 21 Mar 2022 14:02:25 +0800
+Message-ID: <d1fc78ca8bd6d11d44599a960022d8c78812eb9c.camel@mediatek.com>
+Subject: Re: [PATCH v5] remoteproc: mediatek: Fix side effect of mt8195 sram
+ power on
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Mathieu Poirier <mathieu.poirier@linaro.org>
+CC: Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <linux-remoteproc@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Mon, 21 Mar 2022 14:02:26 +0800
+In-Reply-To: <20220318164102.GA2898105@p14s>
+References: <20220318114200.4344-1-tinghan.shen@mediatek.com>
+ <20220318164102.GA2898105@p14s>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220320_225438_420960_3C8F1BCD 
-X-CRM114-Status: GOOD (  16.72  )
+X-CRM114-CacheID: sfid-20220320_231026_582676_E08762A6 
+X-CRM114-Status: GOOD (  36.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,278 +71,167 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We encountered a kernel panic issue that callback data will be NULL when
-it's using in ovl irq handler. There is a timing issue between
-mtk_disp_ovl_irq_handler() and mtk_ovl_disable_vblank().
-
-To resolve this issue, we use the flow to register/unregister vblank cb:
-- Register callback function and callback data when crtc creates.
-- Unregister callback function and callback data when crtc destroies.
-
-With this solution, we can assure callback data will not be NULL when
-vblank is disable.
-
-Fixes: 9b0704988b15 ("drm/mediatek: Register vblank callback function")
-Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Reviewed-by: jason-jh.lin <jason-jh.lin@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_drv.h     | 16 +++++++-----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c     | 22 ++++++++++++----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c    | 20 +++++++++-----
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 14 +++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  4 +++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 29 ++++++++++++++++-----
- 6 files changed, 80 insertions(+), 25 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index 86c3068894b1..974462831133 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -76,9 +76,11 @@ void mtk_ovl_layer_off(struct device *dev, unsigned int idx,
- void mtk_ovl_start(struct device *dev);
- void mtk_ovl_stop(struct device *dev);
- unsigned int mtk_ovl_supported_rotations(struct device *dev);
--void mtk_ovl_enable_vblank(struct device *dev,
--			   void (*vblank_cb)(void *),
--			   void *vblank_cb_data);
-+void mtk_ovl_register_vblank_cb(struct device *dev,
-+				void (*vblank_cb)(void *),
-+				void *vblank_cb_data);
-+void mtk_ovl_unregister_vblank_cb(struct device *dev);
-+void mtk_ovl_enable_vblank(struct device *dev);
- void mtk_ovl_disable_vblank(struct device *dev);
- 
- void mtk_rdma_bypass_shadow(struct device *dev);
-@@ -93,9 +95,11 @@ void mtk_rdma_layer_config(struct device *dev, unsigned int idx,
- 			   struct cmdq_pkt *cmdq_pkt);
- void mtk_rdma_start(struct device *dev);
- void mtk_rdma_stop(struct device *dev);
--void mtk_rdma_enable_vblank(struct device *dev,
--			    void (*vblank_cb)(void *),
--			    void *vblank_cb_data);
-+void mtk_rdma_register_vblank_cb(struct device *dev,
-+				 void (*vblank_cb)(void *),
-+				 void *vblank_cb_data);
-+void mtk_rdma_unregister_vblank_cb(struct device *dev);
-+void mtk_rdma_enable_vblank(struct device *dev);
- void mtk_rdma_disable_vblank(struct device *dev);
- 
- #endif
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 2146299e5f52..1fa1bbac9f9c 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -96,14 +96,28 @@ static irqreturn_t mtk_disp_ovl_irq_handler(int irq, void *dev_id)
- 	return IRQ_HANDLED;
- }
- 
--void mtk_ovl_enable_vblank(struct device *dev,
--			   void (*vblank_cb)(void *),
--			   void *vblank_cb_data)
-+void mtk_ovl_register_vblank_cb(struct device *dev,
-+				void (*vblank_cb)(void *),
-+				void *vblank_cb_data)
- {
- 	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
- 
- 	ovl->vblank_cb = vblank_cb;
- 	ovl->vblank_cb_data = vblank_cb_data;
-+}
-+
-+void mtk_ovl_unregister_vblank_cb(struct device *dev)
-+{
-+	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
-+
-+	ovl->vblank_cb = NULL;
-+	ovl->vblank_cb_data = NULL;
-+}
-+
-+void mtk_ovl_enable_vblank(struct device *dev)
-+{
-+	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
-+
- 	writel(0x0, ovl->regs + DISP_REG_OVL_INTSTA);
- 	writel_relaxed(OVL_FME_CPL_INT, ovl->regs + DISP_REG_OVL_INTEN);
- }
-@@ -112,8 +126,6 @@ void mtk_ovl_disable_vblank(struct device *dev)
- {
- 	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
- 
--	ovl->vblank_cb = NULL;
--	ovl->vblank_cb_data = NULL;
- 	writel_relaxed(0x0, ovl->regs + DISP_REG_OVL_INTEN);
- }
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index d41a3970b944..943780fc7bf6 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -94,24 +94,32 @@ static void rdma_update_bits(struct device *dev, unsigned int reg,
- 	writel(tmp, rdma->regs + reg);
- }
- 
--void mtk_rdma_enable_vblank(struct device *dev,
--			    void (*vblank_cb)(void *),
--			    void *vblank_cb_data)
-+void mtk_rdma_register_vblank_cb(struct device *dev,
-+				 void (*vblank_cb)(void *),
-+				 void *vblank_cb_data)
- {
- 	struct mtk_disp_rdma *rdma = dev_get_drvdata(dev);
- 
- 	rdma->vblank_cb = vblank_cb;
- 	rdma->vblank_cb_data = vblank_cb_data;
--	rdma_update_bits(dev, DISP_REG_RDMA_INT_ENABLE, RDMA_FRAME_END_INT,
--			 RDMA_FRAME_END_INT);
- }
- 
--void mtk_rdma_disable_vblank(struct device *dev)
-+void mtk_rdma_unregister_vblank_cb(struct device *dev)
- {
- 	struct mtk_disp_rdma *rdma = dev_get_drvdata(dev);
- 
- 	rdma->vblank_cb = NULL;
- 	rdma->vblank_cb_data = NULL;
-+}
-+
-+void mtk_rdma_enable_vblank(struct device *dev)
-+{
-+	rdma_update_bits(dev, DISP_REG_RDMA_INT_ENABLE, RDMA_FRAME_END_INT,
-+			 RDMA_FRAME_END_INT);
-+}
-+
-+void mtk_rdma_disable_vblank(struct device *dev)
-+{
- 	rdma_update_bits(dev, DISP_REG_RDMA_INT_ENABLE, RDMA_FRAME_END_INT, 0);
- }
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index d661edf7e0fe..e42a9bfa0ecb 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -152,6 +152,7 @@ static void mtk_drm_cmdq_pkt_destroy(struct cmdq_pkt *pkt)
- static void mtk_drm_crtc_destroy(struct drm_crtc *crtc)
- {
- 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	int i;
- 
- 	mtk_mutex_put(mtk_crtc->mutex);
- #if IS_REACHABLE(CONFIG_MTK_CMDQ)
-@@ -162,6 +163,14 @@ static void mtk_drm_crtc_destroy(struct drm_crtc *crtc)
- 		mtk_crtc->cmdq_client.chan = NULL;
- 	}
- #endif
-+
-+	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
-+		struct mtk_ddp_comp *comp;
-+
-+		comp = mtk_crtc->ddp_comp[i];
-+		mtk_ddp_comp_unregister_vblank_cb(comp);
-+	}
-+
- 	drm_crtc_cleanup(crtc);
- }
- 
-@@ -616,7 +625,7 @@ static int mtk_drm_crtc_enable_vblank(struct drm_crtc *crtc)
- 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
- 
--	mtk_ddp_comp_enable_vblank(comp, mtk_crtc_ddp_irq, &mtk_crtc->base);
-+	mtk_ddp_comp_enable_vblank(comp);
- 
- 	return 0;
- }
-@@ -916,6 +925,9 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 			if (comp->funcs->ctm_set)
- 				has_ctm = true;
- 		}
-+
-+		mtk_ddp_comp_register_vblank_cb(comp, mtk_crtc_ddp_irq,
-+						&mtk_crtc->base);
- 	}
- 
- 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++)
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index b4b682bc1991..028cf76b9531 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -297,6 +297,8 @@ static const struct mtk_ddp_comp_funcs ddp_ovl = {
- 	.config = mtk_ovl_config,
- 	.start = mtk_ovl_start,
- 	.stop = mtk_ovl_stop,
-+	.register_vblank_cb = mtk_ovl_register_vblank_cb,
-+	.unregister_vblank_cb = mtk_ovl_unregister_vblank_cb,
- 	.enable_vblank = mtk_ovl_enable_vblank,
- 	.disable_vblank = mtk_ovl_disable_vblank,
- 	.supported_rotations = mtk_ovl_supported_rotations,
-@@ -321,6 +323,8 @@ static const struct mtk_ddp_comp_funcs ddp_rdma = {
- 	.config = mtk_rdma_config,
- 	.start = mtk_rdma_start,
- 	.stop = mtk_rdma_stop,
-+	.register_vblank_cb = mtk_rdma_register_vblank_cb,
-+	.unregister_vblank_cb = mtk_rdma_unregister_vblank_cb,
- 	.enable_vblank = mtk_rdma_enable_vblank,
- 	.disable_vblank = mtk_rdma_disable_vblank,
- 	.layer_nr = mtk_rdma_layer_nr,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index 4c6a98662305..b83f24cb045f 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -48,9 +48,11 @@ struct mtk_ddp_comp_funcs {
- 		       unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
- 	void (*start)(struct device *dev);
- 	void (*stop)(struct device *dev);
--	void (*enable_vblank)(struct device *dev,
--			      void (*vblank_cb)(void *),
--			      void *vblank_cb_data);
-+	void (*register_vblank_cb)(struct device *dev,
-+				   void (*vblank_cb)(void *),
-+				   void *vblank_cb_data);
-+	void (*unregister_vblank_cb)(struct device *dev);
-+	void (*enable_vblank)(struct device *dev);
- 	void (*disable_vblank)(struct device *dev);
- 	unsigned int (*supported_rotations)(struct device *dev);
- 	unsigned int (*layer_nr)(struct device *dev);
-@@ -111,12 +113,25 @@ static inline void mtk_ddp_comp_stop(struct mtk_ddp_comp *comp)
- 		comp->funcs->stop(comp->dev);
- }
- 
--static inline void mtk_ddp_comp_enable_vblank(struct mtk_ddp_comp *comp,
--					      void (*vblank_cb)(void *),
--					      void *vblank_cb_data)
-+static inline void mtk_ddp_comp_register_vblank_cb(struct mtk_ddp_comp *comp,
-+						   void (*vblank_cb)(void *),
-+						   void *vblank_cb_data)
-+{
-+	if (comp->funcs && comp->funcs->register_vblank_cb)
-+		comp->funcs->register_vblank_cb(comp->dev, vblank_cb,
-+						vblank_cb_data);
-+}
-+
-+static inline void mtk_ddp_comp_unregister_vblank_cb(struct mtk_ddp_comp *comp)
-+{
-+	if (comp->funcs && comp->funcs->unregister_vblank_cb)
-+		comp->funcs->unregister_vblank_cb(comp->dev);
-+}
-+
-+static inline void mtk_ddp_comp_enable_vblank(struct mtk_ddp_comp *comp)
- {
- 	if (comp->funcs && comp->funcs->enable_vblank)
--		comp->funcs->enable_vblank(comp->dev, vblank_cb, vblank_cb_data);
-+		comp->funcs->enable_vblank(comp->dev);
- }
- 
- static inline void mtk_ddp_comp_disable_vblank(struct mtk_ddp_comp *comp)
--- 
-2.18.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gRnJpLCAyMDIyLTAzLTE4IGF0IDEwOjQxIC0wNjAwLCBNYXRoaWV1IFBvaXJpZXIgd3JvdGU6
+Cj4gT24gRnJpLCBNYXIgMTgsIDIwMjIgYXQgMDc6NDI6MDBQTSArMDgwMCwgVGluZ2hhbiBTaGVu
+IHdyb3RlOgo+ID4gVGhlIGRlZmluaXRpb24gb2YgTDFUQ01fU1JBTV9QRE4gYml0cyBvbiBtdDgx
+OTUgaXMgZGlmZmVyZW50IHRvIG10ODE5Mi4KPiA+IAo+ID4gTDFUQ01fU1JBTV9QRE4gYml0c1sz
+OjBdIGNvbnRyb2wgdGhlIHBvd2VyIG9mIG10ODE5NSBMMVRDTSBTUkFNLgo+ID4gCj4gPiBMMVRD
+TV9TUkFNX1BETiBiaXRzWzc6NF0gY29udHJvbCB0aGUgYWNjZXNzIHBhdGggdG8gRU1JIGZvciBT
+Q1AuCj4gPiBUaGVzZSBiaXRzIGhhdmUgdG8gYmUgcG93ZXJlZCBvbiB0byBhbGxvdyBFTUkgYWNj
+ZXNzIGZvciBTQ1AuCj4gPiAKPiA+IEJpdHNbNzo0XSBhbHNvIGFmZmVjdCBhdWRpbyBEU1AgYmVj
+YXVzZSBhdWRpbyBEU1AgYW5kIFNDUCBhcmUKPiA+IHBsYWNlZCBvbiB0aGUgc2FtZSBoYXJkd2Fy
+ZSBidXMuIElmIFNDUCBjYW5ub3QgYWNjZXNzIEVNSSwgYXVkaW8gRFNQIGlzCj4gPiBibG9ja2Vk
+IHRvby4KPiA+IAo+ID4gTDFUQ01fU1JBTV9QRE4gYml0c1szMTo4XSBhcmUgbm90IHVzZWQuCj4g
+PiAKPiA+IFRoaXMgZml4IHJlbW92ZXMgbW9kaWZpY2F0aW9uIG9mIGJpdHNbNzo0XSB3aGVuIHBv
+d2VyIG9uL29mZiBtdDgxOTUgU0NQCj4gPiBMMVRDTS4gSXQncyBiZWNhdXNlIHRoZSBtb2RpZmlj
+YXRpb24gaW50cm9kdWNlcyBhIHNob3J0IHBlcmlvZCBvZiB0aW1lCj4gPiBibG9ja2luZyBhdWRp
+byBEU1AgdG8gYWNjZXNzIEVNSS4gVGhpcyB3YXMgbm90IGEgcHJvYmxlbSB1bnRpbCB3ZSBoYXZl
+Cj4gPiB0byBsb2FkIGJvdGggU0NQIG1vZHVsZSBhbmQgYXVkaW8gRFNQIG1vZHVsZS4gYXVkaW8g
+RFNQIG5lZWRzIHRvIGFjY2Vzcwo+ID4gRU1JIGJlY2F1c2UgaXQgaGFzIHNvdXJjZS9kYXRhIG9u
+IERSQU0uIEF1ZGlvIERTUCB3aWxsIGhhdmUgdW5leHBlY3RlZAo+ID4gYmVoYXZpb3Igd2hlbiBp
+dCBhY2Nlc3NlcyBFTUkgYW5kIHRoZSBTQ1AgZHJpdmVyIGJsb2NrcyB0aGUgRU1JIHBhdGggYXQK
+PiA+IHRoZSBzYW1lIHRpbWUuCj4gPiAKPiA+IEZpeGVzOiA3OTExMWRmNDE0ZmMgKCJyZW1vdGVw
+cm9jOiBtZWRpYXRlazogU3VwcG9ydCBtdDgxOTUgc2NwIikKPiA+IFNpZ25lZC1vZmYtYnk6IFRp
+bmdoYW4gU2hlbiA8dGluZ2hhbi5zaGVuQG1lZGlhdGVrLmNvbT4KPiA+IFJldmlld2VkLWJ5OiBB
+bmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8YW5nZWxvZ2lvYWNjaGluby5kZWxyZWdub0Bjb2xs
+YWJvcmEuY29tPgo+ID4gUmV2aWV3ZWQtYnk6IE1hdHRoaWFzIEJydWdnZXIgPG1hdHRoaWFzLmJn
+Z0BnbWFpbC5jb20+Cj4gPiAKPiA+IC0tLQo+ID4gdjU6IHJlYmFzZWQgb24gcnByb2MtbmV4dAo+
+ID4gdjQ6IGFkZCBGaXhlcyBhbmQgUmV2aWV3ZWQtYnkgdGFncwo+ID4gdjM6IGZpeCBidWlsZCBl
+cnJvcgo+ID4gdjI6IGFwcGx5IGNvbW1lbnRzIGFib3V0IG1hY3JvIGRlZmluaXRpb24gYW5kIGZ1
+bmN0aW9uIGNhbGxzCj4gPiAtLS0KPiA+ICBkcml2ZXJzL3JlbW90ZXByb2MvbXRrX2NvbW1vbi5o
+IHwgIDIgKwo+ID4gIGRyaXZlcnMvcmVtb3RlcHJvYy9tdGtfc2NwLmMgICAgfCA2NyArKysrKysr
+KysrKysrKysrKysrKysrKysrLS0tLS0tLS0KPiA+ICAyIGZpbGVzIGNoYW5nZWQsIDUzIGluc2Vy
+dGlvbnMoKyksIDE2IGRlbGV0aW9ucygtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9y
+ZW1vdGVwcm9jL210a19jb21tb24uaCBiL2RyaXZlcnMvcmVtb3RlcHJvYy9tdGtfY29tbW9uLmgK
+PiA+IGluZGV4IDcxY2U0OTc3Y2IwYi4uZWE2ZmExMTAwYTAwIDEwMDY0NAo+ID4gLS0tIGEvZHJp
+dmVycy9yZW1vdGVwcm9jL210a19jb21tb24uaAo+ID4gKysrIGIvZHJpdmVycy9yZW1vdGVwcm9j
+L210a19jb21tb24uaAo+ID4gQEAgLTU0LDYgKzU0LDggQEAKPiA+ICAjZGVmaW5lIE1UODE5Ml9D
+T1JFMF9XRFRfSVJRCQkweDEwMDMwCj4gPiAgI2RlZmluZSBNVDgxOTJfQ09SRTBfV0RUX0NGRwkJ
+MHgxMDAzNAo+ID4gIAo+ID4gKyNkZWZpbmUgTVQ4MTk1X0wxVENNX1NSQU1fUEROX1JFU0VSVkVE
+X1JTSV9CSVRTCQlHRU5NQVNLKDcsIDQpCj4gPiArCj4gPiAgI2RlZmluZSBTQ1BfRldfVkVSX0xF
+TgkJCTMyCj4gPiAgI2RlZmluZSBTQ1BfU0hBUkVfQlVGRkVSX1NJWkUJCTI4OAo+ID4gIAo+ID4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvcmVtb3RlcHJvYy9tdGtfc2NwLmMgYi9kcml2ZXJzL3JlbW90
+ZXByb2MvbXRrX3NjcC5jCj4gPiBpbmRleCAzODYwOTE1M2JmNjQuLjA2OGVkZjIxZWE1MSAxMDA2
+NDQKPiA+IC0tLSBhL2RyaXZlcnMvcmVtb3RlcHJvYy9tdGtfc2NwLmMKPiA+ICsrKyBiL2RyaXZl
+cnMvcmVtb3RlcHJvYy9tdGtfc2NwLmMKPiA+IEBAIC0zNjUsMjIgKzM2NSwyMiBAQCBzdGF0aWMg
+aW50IG10ODE4M19zY3BfYmVmb3JlX2xvYWQoc3RydWN0IG10a19zY3AgKnNjcCkKPiA+ICAJcmV0
+dXJuIDA7Cj4gPiAgfQo+ID4gIAo+ID4gLXN0YXRpYyB2b2lkIG10ODE5Ml9wb3dlcl9vbl9zcmFt
+KHZvaWQgX19pb21lbSAqYWRkcikKPiA+ICtzdGF0aWMgdm9pZCBzY3Bfc3JhbV9wb3dlcl9vbih2
+b2lkIF9faW9tZW0gKmFkZHIsIHUzMiByZXNlcnZlZF9tYXNrKQo+ID4gIHsKPiA+ICAJaW50IGk7
+Cj4gPiAgCj4gPiAgCWZvciAoaSA9IDMxOyBpID49IDA7IGktLSkKPiA+IC0JCXdyaXRlbChHRU5N
+QVNLKGksIDApLCBhZGRyKTsKPiA+ICsJCXdyaXRlbChHRU5NQVNLKGksIDApICYgfnJlc2VydmVk
+X21hc2ssIGFkZHIpOwo+ID4gIAl3cml0ZWwoMCwgYWRkcik7Cj4gPiAgfQo+ID4gIAo+ID4gLXN0
+YXRpYyB2b2lkIG10ODE5Ml9wb3dlcl9vZmZfc3JhbSh2b2lkIF9faW9tZW0gKmFkZHIpCj4gPiAr
+c3RhdGljIHZvaWQgc2NwX3NyYW1fcG93ZXJfb2ZmKHZvaWQgX19pb21lbSAqYWRkciwgdTMyIHJl
+c2VydmVkX21hc2spCj4gPiAgewo+ID4gIAlpbnQgaTsKPiA+ICAKPiA+ICAJd3JpdGVsKDAsIGFk
+ZHIpOwo+ID4gIAlmb3IgKGkgPSAwOyBpIDwgMzI7IGkrKykKPiA+IC0JCXdyaXRlbChHRU5NQVNL
+KGksIDApLCBhZGRyKTsKPiA+ICsJCXdyaXRlbChHRU5NQVNLKGksIDApICYgfnJlc2VydmVkX21h
+c2ssIGFkZHIpOwo+ID4gIH0KPiA+ICAKPiA+ICBzdGF0aWMgaW50IG10ODE4Nl9zY3BfYmVmb3Jl
+X2xvYWQoc3RydWN0IG10a19zY3AgKnNjcCkKPiA+IEBAIC00MTIsMTEgKzQxMiwzMiBAQCBzdGF0
+aWMgaW50IG10ODE5Ml9zY3BfYmVmb3JlX2xvYWQoc3RydWN0IG10a19zY3AgKnNjcCkKPiA+ICAJ
+d3JpdGVsKDEsIHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfQ09SRTBfU1dfUlNUTl9TRVQpOwo+ID4g
+IAo+ID4gIAkvKiBlbmFibGUgU1JBTSBjbG9jayAqLwo+ID4gLQltdDgxOTJfcG93ZXJfb25fc3Jh
+bShzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0wyVENNX1NSQU1fUERfMCk7Cj4gPiAtCW10ODE5Ml9w
+b3dlcl9vbl9zcmFtKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01fU1JBTV9QRF8xKTsKPiA+
+IC0JbXQ4MTkyX3Bvd2VyX29uX3NyYW0oc2NwLT5yZWdfYmFzZSArIE1UODE5Ml9MMlRDTV9TUkFN
+X1BEXzIpOwo+ID4gLQltdDgxOTJfcG93ZXJfb25fc3JhbShzY3AtPnJlZ19iYXNlICsgTVQ4MTky
+X0wxVENNX1NSQU1fUEROKTsKPiA+IC0JbXQ4MTkyX3Bvd2VyX29uX3NyYW0oc2NwLT5yZWdfYmFz
+ZSArIE1UODE5Ml9DUFUwX1NSQU1fUEQpOwo+ID4gKwlzY3Bfc3JhbV9wb3dlcl9vbihzY3AtPnJl
+Z19iYXNlICsgTVQ4MTkyX0wyVENNX1NSQU1fUERfMCwgMCk7Cj4gPiArCXNjcF9zcmFtX3Bvd2Vy
+X29uKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01fU1JBTV9QRF8xLCAwKTsKPiA+ICsJc2Nw
+X3NyYW1fcG93ZXJfb24oc2NwLT5yZWdfYmFzZSArIE1UODE5Ml9MMlRDTV9TUkFNX1BEXzIsIDAp
+Owo+ID4gKwlzY3Bfc3JhbV9wb3dlcl9vbihzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0wxVENNX1NS
+QU1fUEROLCAwKTsKPiA+ICsJc2NwX3NyYW1fcG93ZXJfb24oc2NwLT5yZWdfYmFzZSArIE1UODE5
+Ml9DUFUwX1NSQU1fUEQsIDApOwo+ID4gKwo+ID4gKwkvKiBlbmFibGUgTVBVIGZvciBhbGwgbWVt
+b3J5IHJlZ2lvbnMgKi8KPiA+ICsJd3JpdGVsKDB4ZmYsIHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJf
+Q09SRTBfTUVNX0FUVF9QUkVERUYpOwo+ID4gKwo+ID4gKwlyZXR1cm4gMDsKPiA+ICt9Cj4gPiAr
+Cj4gPiArc3RhdGljIGludCBtdDgxOTVfc2NwX2JlZm9yZV9sb2FkKHN0cnVjdCBtdGtfc2NwICpz
+Y3ApCj4gPiArewo+ID4gKwkvKiBjbGVhciBTUE0gaW50ZXJydXB0LCBTQ1AyU1BNX0lQQ19DTFIg
+Ki8KPiA+ICsJd3JpdGVsKDB4ZmYsIHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfU0NQMlNQTV9JUENf
+Q0xSKTsKPiA+ICsKPiA+ICsJd3JpdGVsKDEsIHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfQ09SRTBf
+U1dfUlNUTl9TRVQpOwo+ID4gKwo+ID4gKwkvKiBlbmFibGUgU1JBTSBjbG9jayAqLwo+ID4gKwlz
+Y3Bfc3JhbV9wb3dlcl9vbihzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0wyVENNX1NSQU1fUERfMCwg
+MCk7Cj4gPiArCXNjcF9zcmFtX3Bvd2VyX29uKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01f
+U1JBTV9QRF8xLCAwKTsKPiA+ICsJc2NwX3NyYW1fcG93ZXJfb24oc2NwLT5yZWdfYmFzZSArIE1U
+ODE5Ml9MMlRDTV9TUkFNX1BEXzIsIDApOwo+ID4gKwlzY3Bfc3JhbV9wb3dlcl9vbihzY3AtPnJl
+Z19iYXNlICsgTVQ4MTkyX0wxVENNX1NSQU1fUEROLAo+ID4gKwkJCSAgTVQ4MTk1X0wxVENNX1NS
+QU1fUEROX1JFU0VSVkVEX1JTSV9CSVRTKTsKPiA+ICsJc2NwX3NyYW1fcG93ZXJfb24oc2NwLT5y
+ZWdfYmFzZSArIE1UODE5Ml9DUFUwX1NSQU1fUEQsIDApOwo+ID4gIAo+ID4gIAkvKiBlbmFibGUg
+TVBVIGZvciBhbGwgbWVtb3J5IHJlZ2lvbnMgKi8KPiA+ICAJd3JpdGVsKDB4ZmYsIHNjcC0+cmVn
+X2Jhc2UgKyBNVDgxOTJfQ09SRTBfTUVNX0FUVF9QUkVERUYpOwo+ID4gQEAgLTU3MiwxMSArNTkz
+LDI1IEBAIHN0YXRpYyB2b2lkIG10ODE4M19zY3Bfc3RvcChzdHJ1Y3QgbXRrX3NjcCAqc2NwKQo+
+ID4gIHN0YXRpYyB2b2lkIG10ODE5Ml9zY3Bfc3RvcChzdHJ1Y3QgbXRrX3NjcCAqc2NwKQo+ID4g
+IHsKPiA+ICAJLyogRGlzYWJsZSBTUkFNIGNsb2NrICovCj4gPiAtCW10ODE5Ml9wb3dlcl9vZmZf
+c3JhbShzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0wyVENNX1NSQU1fUERfMCk7Cj4gPiAtCW10ODE5
+Ml9wb3dlcl9vZmZfc3JhbShzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0wyVENNX1NSQU1fUERfMSk7
+Cj4gPiAtCW10ODE5Ml9wb3dlcl9vZmZfc3JhbShzY3AtPnJlZ19iYXNlICsgTVQ4MTkyX0wyVENN
+X1NSQU1fUERfMik7Cj4gPiAtCW10ODE5Ml9wb3dlcl9vZmZfc3JhbShzY3AtPnJlZ19iYXNlICsg
+TVQ4MTkyX0wxVENNX1NSQU1fUEROKTsKPiA+IC0JbXQ4MTkyX3Bvd2VyX29mZl9zcmFtKHNjcC0+
+cmVnX2Jhc2UgKyBNVDgxOTJfQ1BVMF9TUkFNX1BEKTsKPiA+ICsJc2NwX3NyYW1fcG93ZXJfb2Zm
+KHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01fU1JBTV9QRF8wLCAwKTsKPiA+ICsJc2NwX3Ny
+YW1fcG93ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01fU1JBTV9QRF8xLCAwKTsK
+PiA+ICsJc2NwX3NyYW1fcG93ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01fU1JB
+TV9QRF8yLCAwKTsKPiA+ICsJc2NwX3NyYW1fcG93ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBNVDgx
+OTJfTDFUQ01fU1JBTV9QRE4sIDApOwo+ID4gKwlzY3Bfc3JhbV9wb3dlcl9vZmYoc2NwLT5yZWdf
+YmFzZSArIE1UODE5Ml9DUFUwX1NSQU1fUEQsIDApOwo+ID4gKwo+ID4gKwkvKiBEaXNhYmxlIFND
+UCB3YXRjaGRvZyAqLwo+ID4gKwl3cml0ZWwoMCwgc2NwLT5yZWdfYmFzZSArIE1UODE5Ml9DT1JF
+MF9XRFRfQ0ZHKTsKPiA+ICt9Cj4gPiArCj4gPiArc3RhdGljIHZvaWQgbXQ4MTk1X3NjcF9zdG9w
+KHN0cnVjdCBtdGtfc2NwICpzY3ApCj4gPiArewo+ID4gKwkvKiBEaXNhYmxlIFNSQU0gY2xvY2sg
+Ki8KPiA+ICsJc2NwX3NyYW1fcG93ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01f
+U1JBTV9QRF8wLCAwKTsKPiA+ICsJc2NwX3NyYW1fcG93ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBN
+VDgxOTJfTDJUQ01fU1JBTV9QRF8xLCAwKTsKPiA+ICsJc2NwX3NyYW1fcG93ZXJfb2ZmKHNjcC0+
+cmVnX2Jhc2UgKyBNVDgxOTJfTDJUQ01fU1JBTV9QRF8yLCAwKTsKPiA+ICsJc2NwX3NyYW1fcG93
+ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfTDFUQ01fU1JBTV9QRE4sCj4gPiArCQkJICAg
+TVQ4MTk1X0wxVENNX1NSQU1fUEROX1JFU0VSVkVEX1JTSV9CSVRTKTsKPiA+ICsJc2NwX3NyYW1f
+cG93ZXJfb2ZmKHNjcC0+cmVnX2Jhc2UgKyBNVDgxOTJfQ1BVMF9TUkFNX1BELCAwKTsKPiA+ICAK
+PiA+ICAJLyogRGlzYWJsZSBTQ1Agd2F0Y2hkb2cgKi8KPiA+ICAJd3JpdGVsKDAsIHNjcC0+cmVn
+X2Jhc2UgKyBNVDgxOTJfQ09SRTBfV0RUX0NGRyk7Cj4gPiBAQCAtOTIyLDExICs5NTcsMTEgQEAg
+c3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfc2NwX29mX2RhdGEgbXQ4MTkyX29mX2RhdGEgPSB7Cj4g
+PiAgCj4gPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfc2NwX29mX2RhdGEgbXQ4MTk1X29mX2Rh
+dGEgPSB7Cj4gPiAgCS5zY3BfY2xrX2dldCA9IG10ODE5NV9zY3BfY2xrX2dldCwKPiA+IC0JLnNj
+cF9iZWZvcmVfbG9hZCA9IG10ODE5Ml9zY3BfYmVmb3JlX2xvYWQsCj4gPiArCS5zY3BfYmVmb3Jl
+X2xvYWQgPSBtdDgxOTVfc2NwX2JlZm9yZV9sb2FkLAo+ID4gIAkuc2NwX2lycV9oYW5kbGVyID0g
+bXQ4MTkyX3NjcF9pcnFfaGFuZGxlciwKPiA+ICAJLnNjcF9yZXNldF9hc3NlcnQgPSBtdDgxOTJf
+c2NwX3Jlc2V0X2Fzc2VydCwKPiA+ICAJLnNjcF9yZXNldF9kZWFzc2VydCA9IG10ODE5Ml9zY3Bf
+cmVzZXRfZGVhc3NlcnQsCj4gPiAtCS5zY3Bfc3RvcCA9IG10ODE5Ml9zY3Bfc3RvcCwKPiA+ICsJ
+LnNjcF9zdG9wID0gbXQ4MTk1X3NjcF9zdG9wLAo+ID4gIAkuc2NwX2RhX3RvX3ZhID0gbXQ4MTky
+X3NjcF9kYV90b192YSwKPiA+ICAJLmhvc3RfdG9fc2NwX3JlZyA9IE1UODE5Ml9HSVBDX0lOX1NF
+VCwKPiA+ICAJLmhvc3RfdG9fc2NwX2ludF9iaXQgPSBNVDgxOTJfSE9TVF9JUENfSU5UX0JJVCwK
+PiAKPiAKPiAgIEdFTiAgICAgTWFrZWZpbGUKPiAgIFVQRCAgICAgaW5jbHVkZS9jb25maWcva2Vy
+bmVsLnJlbGVhc2UKPiAgIFVQRCAgICAgaW5jbHVkZS9nZW5lcmF0ZWQvdXRzcmVsZWFzZS5oCj4g
+ICBDQUxMICAgIC9ob21lL21wb2lyaWVyL3dvcmsvcmVtb3RlcHJvYy9rZXJuZWwtcmV2aWV3L3Nj
+cmlwdHMvYXRvbWljL2NoZWNrLWF0b21pY3Muc2gKPiAgIENBTEwgICAgL2hvbWUvbXBvaXJpZXIv
+d29yay9yZW1vdGVwcm9jL2tlcm5lbC1yZXZpZXcvc2NyaXB0cy9jaGVja3N5c2NhbGxzLnNoCj4g
+ICBDSEsgICAgIGluY2x1ZGUvZ2VuZXJhdGVkL2NvbXBpbGUuaAo+ICAgQ0MgICAgICBpbml0L3Zl
+cnNpb24ubwo+ICAgQVIgICAgICBpbml0L2J1aWx0LWluLmEKPiAgIENDICAgICAga2VybmVsL3N5
+cy5vCj4gICBDQyAgICAgIG5ldC9ldGh0b29sL2lvY3RsLm8KPiAgIENDICAgICAga2VybmVsL21v
+ZHVsZS5vCj4gICBDQyAgICAgIGtlcm5lbC90cmFjZS90cmFjZS5vCj4gICBDQyAgICAgIGRyaXZl
+cnMvYmFzZS9maXJtd2FyZV9sb2FkZXIvbWFpbi5vCj4gICBDQyAgICAgIGRyaXZlcnMvYmFzZS9m
+aXJtd2FyZV9sb2FkZXIvYnVpbHRpbi9tYWluLm8KPiAgIEFSICAgICAgbmV0L2V0aHRvb2wvYnVp
+bHQtaW4uYQo+ICAgQVIgICAgICBkcml2ZXJzL2Jhc2UvZmlybXdhcmVfbG9hZGVyL2J1aWx0aW4v
+YnVpbHQtaW4uYQo+ICAgQVIgICAgICBuZXQvYnVpbHQtaW4uYQo+ICAgQVIgICAgICBkcml2ZXJz
+L2Jhc2UvZmlybXdhcmVfbG9hZGVyL2J1aWx0LWluLmEKPiAgIEFSICAgICAgZHJpdmVycy9iYXNl
+L2J1aWx0LWluLmEKPiAgIENDICAgICAgZHJpdmVycy9yZW1vdGVwcm9jL210a19zY3Aubwo+ICAg
+Q0MgICAgICBkcml2ZXJzL3JlbW90ZXByb2MvbXRrX3NjcF9pcGkubwo+ICAgQ0MgICAgICBkcml2
+ZXJzL3Jhcy9yYXMubwo+ICAgQ0MgICAgICBkcml2ZXJzL3JlbW90ZXByb2Mvc3RtMzJfcnByb2Mu
+bwo+ICAgQ0MgICAgICBkcml2ZXJzL252bWVtL2NvcmUubwo+ICAgQVIgICAgICBrZXJuZWwvdHJh
+Y2UvYnVpbHQtaW4uYQo+ICAgQVIgICAgICBrZXJuZWwvYnVpbHQtaW4uYQo+IC9ob21lL21wb2ly
+aWVyL3dvcmsvcmVtb3RlcHJvYy9rZXJuZWwtcmV2aWV3L2RyaXZlcnMvcmVtb3RlcHJvYy9tdGtf
+c2NwLmM6IEluIGZ1bmN0aW9uCj4g4oCYbXQ4MTg2X3NjcF9iZWZvcmVfbG9hZOKAmToKPiAvaG9t
+ZS9tcG9pcmllci93b3JrL3JlbW90ZXByb2Mva2VybmVsLXJldmlldy9kcml2ZXJzL3JlbW90ZXBy
+b2MvbXRrX3NjcC5jOjM5NjoyOiBlcnJvcjogaW1wbGljaXQKPiBkZWNsYXJhdGlvbiBvZiBmdW5j
+dGlvbiDigJhtdDgxOTJfcG93ZXJfb25fc3JhbeKAmSBbLVdlcnJvcj1pbXBsaWNpdC1mdW5jdGlv
+bi1kZWNsYXJhdGlvbl0KPiAgIDM5NiB8ICBtdDgxOTJfcG93ZXJfb25fc3JhbShzY3AtPnJlZ19i
+YXNlICsgTVQ4MTgzX1NDUF9TUkFNX1BETik7Cj4gICAgICAgfCAgXn5+fn5+fn5+fn5+fn5+fn5+
+fn4KPiAuLi4KPiAKPiBObyBuZWVkIHRvIHNlbmQgbWUgYW5vdGhlciByZXZpc2lvbiByaWdodCBh
+d2F5IC0gSSB3b24ndCBhcHBseSB5b3VyIGNvZGUgZm9yCj4gdGhpcyBtZXJnZSB3aW5kb3cuCgpI
+aSBNYXRoaWV1LAoKCkknbSBzb3JyeS4gSSdsbCBjb3JyZWN0IHRoaXMgYXQgbmV4dCB2ZXJzaW9u
+LgoKCgpCZXN0IHJlZ2FyZHMsClRpbmdIYW4KCj4gCj4gPiAtLSAKPiA+IDIuMTguMAo+ID4gCgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
+aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
