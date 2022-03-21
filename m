@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6765BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 07:29:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48221C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 07:29:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KaPkC7wKT8sqtJeFstwDkREX3bAQ2fV5vno5w82MMPg=; b=WkMXWv9BuJ3HiX
-	2XWUs5fFm40SHo1RundhnmK4DxD57MyoA17RDHrNWqft+ZmQxo37C2kuI/1sX2bBZRN4uCXuJ9diy
-	wnn6GxG7WDzidk8aZJPjK4kr2op7G2C61GOEMYtcc85X8KDeWY0/NLfhtPNPeKd8qaONWf/zXSvh7
-	8NRsgxKdJIYbyPG0lgz/5Cy/ShoaFYki5Jgv0/px8LxptB78pnF6c9ZuLptCm4/osCebaGWomeXtw
-	j6CCzRlci8yhv4wo8lyRGZPr22wxNu/Wg0n3PY5fWaCgae+p2JasagaqVjw0NuhcF2Xk86bDekUiI
-	3vbz6I6cmmaODzq/RzKQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zHdw0KQWD+nJZYqT9vThYdB6M0aYjK/wjd0IGM3qlqk=; b=2MEEqwbEMOpNzT
+	awBfouB8ulXzC0mZnFqvbRuU4u1X8HXrR9ilX4IJzm68lYz3NAi+hvZaT7ClkQVf6FQVkEOISHPkY
+	ylJ98yXJJTREPdbfk7VrWDJLcbKKPmUWmgGaTOn4CXdI2xAs8uftRgeICk80sSpMI/Kl8N68uI5tB
+	VIXrZMI0fxDwQoysq+uDQovYj464w6WOjCSVIQi1WGmzflw5HXvSUPfaqOVWbsmK4MnjSqzSmpYa5
+	qeYj2u64thAlB6xouhk7r5+oPo+YrxosbHhkXOD9TPQ+OiaXjyLWMwiB89pmiIAmalRsSRIS43Vjk
+	fY8d1yxSm5E7eLW69ypA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWCTn-006q25-F1; Mon, 21 Mar 2022 07:29:27 +0000
+	id 1nWCTp-006q2k-DQ; Mon, 21 Mar 2022 07:29:29 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWCSn-006pfJ-19; Mon, 21 Mar 2022 07:28:26 +0000
-X-UUID: 1242d021aa42470d93aba537d98b6e26-20220321
-X-UUID: 1242d021aa42470d93aba537d98b6e26-20220321
+ id 1nWCSn-006pfw-5L; Mon, 21 Mar 2022 07:28:27 +0000
+X-UUID: 030761edddea447e9c050e845b771b7a-20220321
+X-UUID: 030761edddea447e9c050e845b771b7a-20220321
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <trevor.wu@mediatek.com>)
+ (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1991721389; Mon, 21 Mar 2022 00:28:20 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 775407180; Mon, 21 Mar 2022 00:28:20 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Mar 2022 00:23:17 -0700
+ 15.0.1497.2; Mon, 21 Mar 2022 00:23:22 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Mar 2022 15:23:15 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 21 Mar 2022 15:23:21 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 21 Mar 2022 15:23:15 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
- <matthias.bgg@gmail.com>
-CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <aaronyu@google.com>, <angelogioacchino.delregno@collabora.com>,
- <tzungbi@google.com>, <yc.hung@mediatek.com>
-Subject: [PATCH v3 3/6] ASoC: dt-bindings: mediatek: mt8195: merge mt8195
- machine yaml
-Date: Mon, 21 Mar 2022 15:23:09 +0800
-Message-ID: <20220321072312.14972-4-trevor.wu@mediatek.com>
+ Frontend Transport; Mon, 21 Mar 2022 15:23:20 +0800
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <chunkuang.hu@kernel.org>
+CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <matthias.bgg@gmail.com>, <jason-jh.lin@mediatek.com>,
+ <yongqiang.niu@mediatek.com>, <nancy.lin@mediatek.com>, <hsinyi@google.com>,
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: [PATCH V2] drm/mediatek: Add vblank register/unregister callback
+ functions
+Date: Mon, 21 Mar 2022 15:23:20 +0800
+Message-ID: <20220321072320.15019-1-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220321072312.14972-1-trevor.wu@mediatek.com>
-References: <20220321072312.14972-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220321_002825_117113_B5F4926D 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20220321_002825_232377_275C0013 
+X-CRM114-Status: GOOD (  16.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,109 +74,274 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Because the same binding components can be shared by all codecs
-combinations, we only reserve one binding file for mt8195 machine driver
-and rename to a generic name.
+We encountered a kernel panic issue that callback data will be NULL when
+it's using in ovl irq handler. There is a timing issue between
+mtk_disp_ovl_irq_handler() and mtk_ovl_disable_vblank().
 
-We use compatible string to separate different codec combination instead
-of creating a new binding file for new codec combination.
+To resolve this issue, we use the flow to register/unregister vblank cb:
+- Register callback function and callback data when crtc creates.
+- Unregister callback function and callback data when crtc destroies.
 
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
----
- .../sound/mt8195-mt6359-rt1011-rt5682.yaml    | 51 -------------------
- ...-rt1019-rt5682.yaml => mt8195-mt6359.yaml} |  8 +--
- 2 files changed, 5 insertions(+), 54 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1011-rt5682.yaml
- rename Documentation/devicetree/bindings/sound/{mt8195-mt6359-rt1019-rt5682.yaml => mt8195-mt6359.yaml} (87%)
+With this solution, we can assure callback data will not be NULL when
+vblank is disable.
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1011-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1011-rt5682.yaml
-deleted file mode 100644
-index cf6ad7933e23..000000000000
---- a/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1011-rt5682.yaml
-+++ /dev/null
-@@ -1,51 +0,0 @@
--# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
--%YAML 1.2
+Fixes: 9b0704988b15 ("drm/mediatek: Register vblank callback function")
+Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+
 ----
--$id: http://devicetree.org/schemas/sound/mt8195-mt6359-rt1011-rt5682.yaml#
--$schema: http://devicetree.org/meta-schemas/core.yaml#
--
--title: Mediatek MT8195 with MT6359, RT1011 and RT5682 ASoC sound card driver
--
--maintainers:
--  - Trevor Wu <trevor.wu@mediatek.com>
--
--description:
--  This binding describes the MT8195 sound card with RT1011 and RT5682.
--
--properties:
--  compatible:
--    const: mediatek,mt8195_mt6359_rt1011_rt5682
--
--  model:
--    $ref: /schemas/types.yaml#/definitions/string
--    description: User specified audio sound card name
--
--  mediatek,platform:
--    $ref: "/schemas/types.yaml#/definitions/phandle"
--    description: The phandle of MT8195 ASoC platform.
--
--  mediatek,dptx-codec:
--    $ref: "/schemas/types.yaml#/definitions/phandle"
--    description: The phandle of MT8195 Display Port Tx codec node.
--
--  mediatek,hdmi-codec:
--    $ref: "/schemas/types.yaml#/definitions/phandle"
--    description: The phandle of MT8195 HDMI codec node.
--
--additionalProperties: false
--
--required:
--  - compatible
--  - mediatek,platform
--
--examples:
--  - |
--
--    sound: mt8195-sound {
--        compatible = "mediatek,mt8195_mt6359_rt1011_rt5682";
--        mediatek,platform = <&afe>;
--        pinctrl-names = "default";
--        pinctrl-0 = <&aud_pins_default>;
--    };
--
--...
-diff --git a/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1019-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8195-mt6359.yaml
-similarity index 87%
-rename from Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1019-rt5682.yaml
-rename to Documentation/devicetree/bindings/sound/mt8195-mt6359.yaml
-index 8f177e02ad35..74227fba91c7 100644
---- a/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1019-rt5682.yaml
-+++ b/Documentation/devicetree/bindings/sound/mt8195-mt6359.yaml
-@@ -1,10 +1,10 @@
- # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
- %YAML 1.2
- ---
--$id: http://devicetree.org/schemas/sound/mt8195-mt6359-rt1019-rt5682.yaml#
-+$id: http://devicetree.org/schemas/sound/mt8195-mt6359.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
+V2:
+1. Change title to "Add vblank register/unregister callback functions".
+----
+
+---
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     | 16 +++++++-----
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c     | 22 ++++++++++++----
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c    | 20 +++++++++-----
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 14 +++++++++-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  4 +++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 29 ++++++++++++++++-----
+ 6 files changed, 80 insertions(+), 25 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index 86c3068894b1..974462831133 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -76,9 +76,11 @@ void mtk_ovl_layer_off(struct device *dev, unsigned int idx,
+ void mtk_ovl_start(struct device *dev);
+ void mtk_ovl_stop(struct device *dev);
+ unsigned int mtk_ovl_supported_rotations(struct device *dev);
+-void mtk_ovl_enable_vblank(struct device *dev,
+-			   void (*vblank_cb)(void *),
+-			   void *vblank_cb_data);
++void mtk_ovl_register_vblank_cb(struct device *dev,
++				void (*vblank_cb)(void *),
++				void *vblank_cb_data);
++void mtk_ovl_unregister_vblank_cb(struct device *dev);
++void mtk_ovl_enable_vblank(struct device *dev);
+ void mtk_ovl_disable_vblank(struct device *dev);
  
--title: Mediatek MT8195 with MT6359, RT1019 and RT5682 ASoC sound card driver
-+title: Mediatek MT8195 ASoC sound card driver
+ void mtk_rdma_bypass_shadow(struct device *dev);
+@@ -93,9 +95,11 @@ void mtk_rdma_layer_config(struct device *dev, unsigned int idx,
+ 			   struct cmdq_pkt *cmdq_pkt);
+ void mtk_rdma_start(struct device *dev);
+ void mtk_rdma_stop(struct device *dev);
+-void mtk_rdma_enable_vblank(struct device *dev,
+-			    void (*vblank_cb)(void *),
+-			    void *vblank_cb_data);
++void mtk_rdma_register_vblank_cb(struct device *dev,
++				 void (*vblank_cb)(void *),
++				 void *vblank_cb_data);
++void mtk_rdma_unregister_vblank_cb(struct device *dev);
++void mtk_rdma_enable_vblank(struct device *dev);
+ void mtk_rdma_disable_vblank(struct device *dev);
  
- maintainers:
-   - Trevor Wu <trevor.wu@mediatek.com>
-@@ -14,7 +14,9 @@ description:
+ #endif
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index 2146299e5f52..1fa1bbac9f9c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -96,14 +96,28 @@ static irqreturn_t mtk_disp_ovl_irq_handler(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
+ }
  
- properties:
-   compatible:
--    const: mediatek,mt8195_mt6359_rt1019_rt5682
-+    enum:
-+      - mediatek,mt8195_mt6359_rt1019_rt5682
-+      - mediatek,mt8195_mt6359_rt1011_rt5682
+-void mtk_ovl_enable_vblank(struct device *dev,
+-			   void (*vblank_cb)(void *),
+-			   void *vblank_cb_data)
++void mtk_ovl_register_vblank_cb(struct device *dev,
++				void (*vblank_cb)(void *),
++				void *vblank_cb_data)
+ {
+ 	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
  
-   model:
-     $ref: /schemas/types.yaml#/definitions/string
+ 	ovl->vblank_cb = vblank_cb;
+ 	ovl->vblank_cb_data = vblank_cb_data;
++}
++
++void mtk_ovl_unregister_vblank_cb(struct device *dev)
++{
++	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
++
++	ovl->vblank_cb = NULL;
++	ovl->vblank_cb_data = NULL;
++}
++
++void mtk_ovl_enable_vblank(struct device *dev)
++{
++	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
++
+ 	writel(0x0, ovl->regs + DISP_REG_OVL_INTSTA);
+ 	writel_relaxed(OVL_FME_CPL_INT, ovl->regs + DISP_REG_OVL_INTEN);
+ }
+@@ -112,8 +126,6 @@ void mtk_ovl_disable_vblank(struct device *dev)
+ {
+ 	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
+ 
+-	ovl->vblank_cb = NULL;
+-	ovl->vblank_cb_data = NULL;
+ 	writel_relaxed(0x0, ovl->regs + DISP_REG_OVL_INTEN);
+ }
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+index d41a3970b944..943780fc7bf6 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+@@ -94,24 +94,32 @@ static void rdma_update_bits(struct device *dev, unsigned int reg,
+ 	writel(tmp, rdma->regs + reg);
+ }
+ 
+-void mtk_rdma_enable_vblank(struct device *dev,
+-			    void (*vblank_cb)(void *),
+-			    void *vblank_cb_data)
++void mtk_rdma_register_vblank_cb(struct device *dev,
++				 void (*vblank_cb)(void *),
++				 void *vblank_cb_data)
+ {
+ 	struct mtk_disp_rdma *rdma = dev_get_drvdata(dev);
+ 
+ 	rdma->vblank_cb = vblank_cb;
+ 	rdma->vblank_cb_data = vblank_cb_data;
+-	rdma_update_bits(dev, DISP_REG_RDMA_INT_ENABLE, RDMA_FRAME_END_INT,
+-			 RDMA_FRAME_END_INT);
+ }
+ 
+-void mtk_rdma_disable_vblank(struct device *dev)
++void mtk_rdma_unregister_vblank_cb(struct device *dev)
+ {
+ 	struct mtk_disp_rdma *rdma = dev_get_drvdata(dev);
+ 
+ 	rdma->vblank_cb = NULL;
+ 	rdma->vblank_cb_data = NULL;
++}
++
++void mtk_rdma_enable_vblank(struct device *dev)
++{
++	rdma_update_bits(dev, DISP_REG_RDMA_INT_ENABLE, RDMA_FRAME_END_INT,
++			 RDMA_FRAME_END_INT);
++}
++
++void mtk_rdma_disable_vblank(struct device *dev)
++{
+ 	rdma_update_bits(dev, DISP_REG_RDMA_INT_ENABLE, RDMA_FRAME_END_INT, 0);
+ }
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index d661edf7e0fe..e42a9bfa0ecb 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -152,6 +152,7 @@ static void mtk_drm_cmdq_pkt_destroy(struct cmdq_pkt *pkt)
+ static void mtk_drm_crtc_destroy(struct drm_crtc *crtc)
+ {
+ 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
++	int i;
+ 
+ 	mtk_mutex_put(mtk_crtc->mutex);
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+@@ -162,6 +163,14 @@ static void mtk_drm_crtc_destroy(struct drm_crtc *crtc)
+ 		mtk_crtc->cmdq_client.chan = NULL;
+ 	}
+ #endif
++
++	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
++		struct mtk_ddp_comp *comp;
++
++		comp = mtk_crtc->ddp_comp[i];
++		mtk_ddp_comp_unregister_vblank_cb(comp);
++	}
++
+ 	drm_crtc_cleanup(crtc);
+ }
+ 
+@@ -616,7 +625,7 @@ static int mtk_drm_crtc_enable_vblank(struct drm_crtc *crtc)
+ 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+ 	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
+ 
+-	mtk_ddp_comp_enable_vblank(comp, mtk_crtc_ddp_irq, &mtk_crtc->base);
++	mtk_ddp_comp_enable_vblank(comp);
+ 
+ 	return 0;
+ }
+@@ -916,6 +925,9 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 			if (comp->funcs->ctm_set)
+ 				has_ctm = true;
+ 		}
++
++		mtk_ddp_comp_register_vblank_cb(comp, mtk_crtc_ddp_irq,
++						&mtk_crtc->base);
+ 	}
+ 
+ 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++)
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index b4b682bc1991..028cf76b9531 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -297,6 +297,8 @@ static const struct mtk_ddp_comp_funcs ddp_ovl = {
+ 	.config = mtk_ovl_config,
+ 	.start = mtk_ovl_start,
+ 	.stop = mtk_ovl_stop,
++	.register_vblank_cb = mtk_ovl_register_vblank_cb,
++	.unregister_vblank_cb = mtk_ovl_unregister_vblank_cb,
+ 	.enable_vblank = mtk_ovl_enable_vblank,
+ 	.disable_vblank = mtk_ovl_disable_vblank,
+ 	.supported_rotations = mtk_ovl_supported_rotations,
+@@ -321,6 +323,8 @@ static const struct mtk_ddp_comp_funcs ddp_rdma = {
+ 	.config = mtk_rdma_config,
+ 	.start = mtk_rdma_start,
+ 	.stop = mtk_rdma_stop,
++	.register_vblank_cb = mtk_rdma_register_vblank_cb,
++	.unregister_vblank_cb = mtk_rdma_unregister_vblank_cb,
+ 	.enable_vblank = mtk_rdma_enable_vblank,
+ 	.disable_vblank = mtk_rdma_disable_vblank,
+ 	.layer_nr = mtk_rdma_layer_nr,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index 4c6a98662305..b83f24cb045f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -48,9 +48,11 @@ struct mtk_ddp_comp_funcs {
+ 		       unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+ 	void (*start)(struct device *dev);
+ 	void (*stop)(struct device *dev);
+-	void (*enable_vblank)(struct device *dev,
+-			      void (*vblank_cb)(void *),
+-			      void *vblank_cb_data);
++	void (*register_vblank_cb)(struct device *dev,
++				   void (*vblank_cb)(void *),
++				   void *vblank_cb_data);
++	void (*unregister_vblank_cb)(struct device *dev);
++	void (*enable_vblank)(struct device *dev);
+ 	void (*disable_vblank)(struct device *dev);
+ 	unsigned int (*supported_rotations)(struct device *dev);
+ 	unsigned int (*layer_nr)(struct device *dev);
+@@ -111,12 +113,25 @@ static inline void mtk_ddp_comp_stop(struct mtk_ddp_comp *comp)
+ 		comp->funcs->stop(comp->dev);
+ }
+ 
+-static inline void mtk_ddp_comp_enable_vblank(struct mtk_ddp_comp *comp,
+-					      void (*vblank_cb)(void *),
+-					      void *vblank_cb_data)
++static inline void mtk_ddp_comp_register_vblank_cb(struct mtk_ddp_comp *comp,
++						   void (*vblank_cb)(void *),
++						   void *vblank_cb_data)
++{
++	if (comp->funcs && comp->funcs->register_vblank_cb)
++		comp->funcs->register_vblank_cb(comp->dev, vblank_cb,
++						vblank_cb_data);
++}
++
++static inline void mtk_ddp_comp_unregister_vblank_cb(struct mtk_ddp_comp *comp)
++{
++	if (comp->funcs && comp->funcs->unregister_vblank_cb)
++		comp->funcs->unregister_vblank_cb(comp->dev);
++}
++
++static inline void mtk_ddp_comp_enable_vblank(struct mtk_ddp_comp *comp)
+ {
+ 	if (comp->funcs && comp->funcs->enable_vblank)
+-		comp->funcs->enable_vblank(comp->dev, vblank_cb, vblank_cb_data);
++		comp->funcs->enable_vblank(comp->dev);
+ }
+ 
+ static inline void mtk_ddp_comp_disable_vblank(struct mtk_ddp_comp *comp)
 -- 
 2.18.0
 
