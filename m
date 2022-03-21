@@ -4,59 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0774C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 22:41:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C567C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 23:26:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
+	Message-Id:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5Eln7DL8t2S1Asbb369vKBE6f6nwtvIut6DLt8AvDpQ=; b=j96IurTTHyzlrr
-	8LPP6mXiFXEFnuYdXLOZdJKn4whhHK7pxc746p6bSlrpWLC7m+bucImMyPHmcF270dowe4onzNdCX
-	scowhXoAvs0/+pxiVzzhUuFgT+z3XJMi/O0OHIyOE/YIotfCIs1dYAZCes9sQCnQlwzUORRgBIBXY
-	auB2CD3qqnEHClqqp4qF973iq/Kf+Z6tFlhXHJYqTP4Rhzqi9jc4bFQO6iQFfEAw3Syl2gLez1CMu
-	AKqeIh/JUTuwKvjtWojxiVBiS3ywlzX4fYk06MdA7SblzLvX7jdGb5uGtxAAMbG03cGDNz3j3V0yU
-	I2pvP1MVCA/qJlJd+QKg==;
+	List-Owner; bh=brFPAz+0FKhSexzsU5Naru6T385rMC5LaoSYIJwBLz4=; b=3u8FfiGI6Z6Xz9
+	fnVouIl48Mh/fm2RVLYfG/HfBr+wXixADBth2Ngp7S0Wnq9fFDFTS/qgOM+vtSGZd5QD+kAEjh4NM
+	N5Fvwk/fFLUjIpIU+fVqCoKKwLS5tr9+ufU6aA5/9yxEaM0Zfh6aoGEfJuOK+FSDa7OksDMTpH0HH
+	tYQfEvisFCyewpp4J2iSc+2Q+P774puA2rU8xp43QbqjAt9tgyGRmo8EtT62oYvedbMeTEVqLK0Ch
+	ku5AosCAASjC7dgTx0QgUvGETlaJqQVJUPAyPAM4ScobznnMHqzWBVJvknlVLGL6ToSBFu+r0y6vN
+	BqXwpYxUPFEWRg37Efdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWQil-009HL8-Ef; Mon, 21 Mar 2022 22:41:51 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nWRQ0-009Og8-C9; Mon, 21 Mar 2022 23:26:32 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWQiZ-009HJA-H0; Mon, 21 Mar 2022 22:41:40 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 1CDC01F43824
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647902498;
- bh=kI/wjHaSk0veo5TLOr3KNgxZeKIdR/WCP+DeGO3YYFA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=iS3YE/xkM6pS7zwzvrFBf/k+0phCo54uO8OLGHbzvfBi2CzRboZXCE7HUyOG3168o
- ZwQaigQV4XLRXSAOpGNFATX6kAg/ZPxusmhLLj5ScYifylmF/RRzF/u/JHRcs+1wc4
- yhQ93sTnljzF41D9nX/qBx7d7A3F9ghtiWsNPVQ4MaJtBKnYRTxS8k5Zxz3U8WggOp
- DtXFcYqTPIj44ETXfHk7vNJmubHcLkXJuKlyPLKKVJjAqswxoRX7aJtqLSLs0+NaTP
- dLlRVTDZ3wnrWty48KAhhNGG9jR1C/z3XJ9hQhF5TkUCqUHucYV3cJRnHyL/gLGKxS
- t044I3mz6MUbQ==
-Date: Mon, 21 Mar 2022 18:41:33 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
- Hui Liu <hui.liu@mediatek.com>
-Subject: Re: [PATCH v4 13/22] arm64: dts: mt8192: Add mipi_tx node
-Message-ID: <20220321224133.jjodvrurv6kvrouf@notapiano>
-References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
- <20220318144534.17996-14-allen-kh.cheng@mediatek.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220318144534.17996-14-allen-kh.cheng@mediatek.com>
+ id 1nWRPl-009Obj-GH; Mon, 21 Mar 2022 23:26:21 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 2CDBAB817FB;
+ Mon, 21 Mar 2022 23:26:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 727CDC340E8;
+ Mon, 21 Mar 2022 23:26:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
+ s=korg; t=1647905175;
+ bh=zm2PRxe5xFsuwQYNcENkfpKJjH4eQjyHej02f6w7vjg=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=fGhw3WkLFHitotKvT3JlzZG0riB2q+AE/MkryHbgTQjYGLXL1C233leDbR81IFofB
+ NsHl5gPddbUrnzYwKJ7L5eLUUCYrCoFtWd8VdcspYc3DsurGS3obuw3Itzlr/3UxFF
+ ypV18Zu9I53mSAM9ws3iNQX4xxY19wBQRcw++xqQ=
+Date: Mon, 21 Mar 2022 16:26:13 -0700
+From: Andrew Morton <akpm@linux-foundation.org>
+To: Matthew Wilcox <willy@infradead.org>
+Cc: Andrew Yang <andrew.yang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Vlastimil Babka <vbabka@suse.cz>, David Howells
+ <dhowells@redhat.com>, William Kucharski <william.kucharski@oracle.com>,
+ David Hildenbrand <david@redhat.com>, Yang Shi <shy828301@gmail.com>, Marc
+ Zyngier <maz@kernel.org>, linux-kernel@vger.kernel.org, linux-mm@kvack.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ wsd_upstream@mediatek.com, Nicholas Tang <nicholas.tang@mediatek.com>,
+ Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+Subject: Re: [PATCH] mm/migrate: fix race between lock page and clear
+ PG_Isolated
+Message-Id: <20220321162613.0a3510d18f1fa0f1637e9661@linux-foundation.org>
+In-Reply-To: <YjAIwAT6PnQnbckn@casper.infradead.org>
+References: <20220315030515.20263-1-andrew.yang@mediatek.com>
+ <YjAIwAT6PnQnbckn@casper.infradead.org>
+X-Mailer: Sylpheed 3.7.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
+Mime-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220321_154139_719178_B1A0FB8B 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20220321_162617_879536_F6E8D804 
+X-CRM114-Status: GOOD (  25.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,57 +71,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 18, 2022 at 10:45:25PM +0800, Allen-KH Cheng wrote:
-> Add mipi_tx node for mt8192 SoC.
-> =
+On Tue, 15 Mar 2022 03:32:16 +0000 Matthew Wilcox <willy@infradead.org> wrote:
 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 10 ++++++++++
->  1 file changed, 10 insertions(+)
-> =
+> On Tue, Mar 15, 2022 at 11:05:15AM +0800, Andrew Yang wrote:
+> > When memory is tight, system may start to compact memory for large
+> > continuous memory demands. If one process tries to lock a memory page
+> > that is being locked and isolated for compaction, it may wait a long time
+> > or even forever. This is because compaction will perform non-atomic
+> > PG_Isolated clear while holding page lock, this may overwrite PG_waiters
+> > set by the process that can't obtain the page lock and add itself to the
+> > waiting queue to wait for the lock to be unlocked.
+> > 
+> > CPU1                            CPU2
+> > lock_page(page); (successful)
+> >                                 lock_page(); (failed)
+> > __ClearPageIsolated(page);      SetPageWaiters(page) (may be overwritten)
+> > unlock_page(page);
+> > 
+> > The solution is to not perform non-atomic operation on page flags while
+> > holding page lock.
+> > 
+> > Signed-off-by: andrew.yang <andrew.yang@mediatek.com>
+> > ---
+> >  include/linux/page-flags.h |  2 +-
+> >  mm/migrate.c               | 12 ++++++------
+> >  2 files changed, 7 insertions(+), 7 deletions(-)
+> > 
+> > diff --git a/include/linux/page-flags.h b/include/linux/page-flags.h
+> > index 1c3b6e5c8bfd..64a84a9835cb 100644
+> > --- a/include/linux/page-flags.h
+> > +++ b/include/linux/page-flags.h
+> > @@ -918,7 +918,7 @@ PAGE_TYPE_OPS(Guard, guard)
+> >  
+> >  extern bool is_free_buddy_page(struct page *page);
+> >  
+> > -__PAGEFLAG(Isolated, isolated, PF_ANY);
+> > +PAGEFLAG(Isolated, isolated, PF_ANY);
+> 
+> Agreed.  Further, page cannot be a tail page (this is implied by the
+> get_page_unless_zero() as tailpages have a zero refcount, and it
+> is assumed by __PageMovable() as page->mapping is undefined for tail
+> pages).  So this can actually be:
+> 
+> +PAGEFLAG(Isolated, isolated, PF_NO_TAIL);
+> 
+> I considered PF_ONLY_HEAD, but there are a lot more places that _check_
+> PageIsolated() and I don't want to prove that they're all definitely
+> working on head pages.
 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/d=
-ts/mediatek/mt8192.dtsi
-> index 2648f2847993..6b769fa5b427 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -1110,6 +1110,16 @@
->  			};
->  		};
->  =
-
-> +		mipi_tx0: dsi-dphy@11e50000 {
-
-Typo here, should be dsi-phy, not dsi-dphy.
-
-Other than that,
-
-Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
-
-> +			compatible =3D "mediatek,mt8183-mipi-tx";
-> +			reg =3D <0 0x11e50000 0 0x1000>;
-> +			clocks =3D <&apmixedsys CLK_APMIXED_MIPID26M>;
-> +			#clock-cells =3D <0>;
-> +			#phy-cells =3D <0>;
-> +			clock-output-names =3D "mipi_tx0_pll";
-> +			status =3D "disabled";
-> +		};
-> +
->  		i2c0: i2c@11f00000 {
->  			compatible =3D "mediatek,mt8192-i2c";
->  			reg =3D <0 0x11f00000 0 0x1000>,
-> -- =
-
-> 2.18.0
-> =
-
-> =
+There was no followup to this.  I'll send the patch upstream as-is, but
+please let's not forget this idea.
 
 
 _______________________________________________
