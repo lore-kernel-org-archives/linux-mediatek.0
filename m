@@ -4,75 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2097BC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 11:54:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA672C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 12:01:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LPpkpQAAbBhAhEmIHzYzONdtlBlOKrtI8LIqwfxcui4=; b=zygw1edl1J4+0S
-	fnYrYrNRKtiaDHtGSl15cEN+H3ivJr9AHps/RgR2dsvkQpTEb9lyCEmR8n0q+UMcnCyROnqDfzsT6
-	oZ9Nr3u8EPRiJlV+JEbc/X9NAytsBNAhVNE5Vc2FrSh+IhBXEzgRwSJlUY0J9qjCyKthZuE0PVWhO
-	deapZDOWw7KnK3YDJA8mJr2HjARkE6INhiC2vwRNFTNFDwzF3YoBwn2qtqsVjg4LOC2GlwOSXLwC9
-	JNJCEDKPB12on2BXYAGLp3S3d7U7W0mQ/35y8vlAjFqXm04CNsFSbqLgyWT1A2ltd10T500mQET3Q
-	hhCrdQ7GtmQtddIWWvHA==;
+	List-Owner; bh=rWxKOyPPYocgLEKPuplwmiVRM4Ywkhf0ny7/fUl6GkQ=; b=Fs6Yr51E8Bfvg6
+	iWNS7kKOo3Mm/FllG6LFBrFZXqw4is/4v4ugxDpH/oUhjeK77wFKat3Lk3uV2hsDvCt1ihkiA5AlE
+	IRAhqhklURGSzmDQCoAyASiLaw384TzMdYWcK0GGsAZyQ0IPOTDHH35jo//QNly1OIxIQ7dk8HFcw
+	L7jyn3dedxpHEQIijrZV0KPAh++8Nb0eORtjjI9Lim0u080nH/iJmYTTW1oR+2SQQPgzsOmGxmAtq
+	wmML7tX5NdFkEH8ArTJy8iRRZSSpJlbuAwqIlKJRhXEyWKplpJK7NDZXHmcigfKRpS7wJms+Z2/FL
+	5ilTUc9vrQhUxueLKsrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWGcW-007WHk-8j; Mon, 21 Mar 2022 11:54:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nWGj1-007Yrs-Sq; Mon, 21 Mar 2022 12:01:27 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWGcT-007WFZ-3N; Mon, 21 Mar 2022 11:54:42 +0000
-X-UUID: 3f676ed01dcc4703ba9c6a6cf2e07dfa-20220321
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=wBZ0qYu+mkECpK0J2wk0YxEDb52TU4U0zJd7YLj8pkc=; 
- b=u8FvI//f8A24xp8c/JItuQZTsK5SQTFUSJEO/fUja3q0vDXlJ/ZdYj1G10K5VndIJlkRA3FEHAZlrEDw3rppXIrJe9GJOEi5DVwwZ3Ld2+6QdV0NN5lhCY/uTkJ8eZm2cJEkNao/CTNQttQRkuFEkFJd1EJ5g88d5p/EvkBm/Tk=;
-X-UUID: 3f676ed01dcc4703ba9c6a6cf2e07dfa-20220321
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <axe.yang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2108165061; Mon, 21 Mar 2022 04:54:35 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Mar 2022 04:54:34 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 21 Mar 2022 19:54:32 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 21 Mar 2022 19:54:31 +0800
-Message-ID: <b71b2496a19745648d6b1a9788f35b0371b45847.camel@mediatek.com>
-Subject: Re: [RESEND v7 1/3] dt-bindings: mmc: mtk-sd: extend interrupts and
- pinctrls properties
-From: Axe Yang <axe.yang@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Tian Tao <tiantao6@hisilicon.com>, Ulf Hansson <ulf.hansson@linaro.org>,
- Yue Hu <huyue2@yulong.com>, <linux-arm-kernel@lists.infradead.org>, Yoshihiro
- Shimoda <yoshihiro.shimoda.uh@renesas.com>, Andrew Jeffery <andrew@aj.id.au>, 
- <angelogioacchino.delregno@collabora.com>, Andy Shevchenko
- <andriy.shevchenko@linux.intel.com>, Rob Herring <robh+dt@kernel.org>, "Eric
- Biggers" <ebiggers@google.com>, Satya Tangirala <satyat@google.com>, "Stephen
- Boyd" <swboyd@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>, <linux-mmc@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Adrian Hunter
- <adrian.hunter@intel.com>, <linux-mediatek@lists.infradead.org>, Lucas Stach
- <dev@lynxeye.de>, Wolfram Sang <wsa+renesas@sang-engineering.com>, "Kiwoong
- Kim" <kwmad.kim@samsung.com>
-Date: Mon, 21 Mar 2022 19:54:31 +0800
-In-Reply-To: <1647742413.962309.2990518.nullmailer@robh.at.kernel.org>
-References: <20220317101215.24985-1-axe.yang@mediatek.com>
- <20220317101215.24985-2-axe.yang@mediatek.com>
- <1647742413.962309.2990518.nullmailer@robh.at.kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nWGiH-007YcV-RZ; Mon, 21 Mar 2022 12:00:43 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by sin.source.kernel.org (Postfix) with ESMTPS id EA44FCE1762;
+ Mon, 21 Mar 2022 12:00:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78E71C340E8;
+ Mon, 21 Mar 2022 12:00:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1647864037;
+ bh=x7RIt4mLNf8mNberwc71l5fBa0XC8ugDp4MrJBP6Nek=;
+ h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+ b=Xa6xRMwoEmgjWxCWOEJdmmp7L8ZGpxrrK/IlLjLMCpZPbOecdMtKsY4ttW5bkyiQn
+ RQdQv+QdS/hH+Aa4AWx213Q864twi8Ro6gvE6BX1ttwwdPhY3CO+n685a17NeHdXJb
+ r4n7YMUlYiqSq4O6IGLvRKMpHHAgTmgI5N4PzK+fNfeh4BtsVZWG+/n9ODaVQ5RkdU
+ ftCJHj+SPsQQWa/J28XMkReAUUpgUaXPsRdx74w0qkQSPZTcOO7SicAeBXGbGliEZj
+ A1elc8hIO0p5rT5DdSpiLF6IBT+FCWBMHYDjMzNVotBhhHO7pcD2qt3VnOEYimFV/p
+ DKAYtWS5X3zPw==
+From: Mark Brown <broonie@kernel.org>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ trevor.wu@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
+ alsa-devel@alsa-project.org, angelogioacchino.delregno@collabora.com,
+ tzungbi@google.com, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20220319120325.11882-1-jiaxin.yu@mediatek.com>
+References: <20220319120325.11882-1-jiaxin.yu@mediatek.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt6358: add missing EXPORT_SYMBOLs
+Message-Id: <164786403520.879132.12234155577870165792.b4-ty@kernel.org>
+Date: Mon, 21 Mar 2022 12:00:35 +0000
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220321_045441_200176_9A722A2B 
-X-CRM114-Status: GOOD (  23.42  )
+X-CRM114-CacheID: sfid-20220321_050042_150725_DC43B6CB 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,73 +72,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+On Sat, 19 Mar 2022 20:03:25 +0800, Jiaxin Yu wrote:
+> Fixes the following build errors when mt6358 is configured as module:
+> 
+> >> ERROR: modpost: "mt6358_set_mtkaif_protocol"
+> >> [sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.ko] undefined!
+> >> ERROR: modpost: "mt6358_set_mtkaif_protocol"
+> >> [sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.ko] undefined!
+> 
+> [...]
 
-Thanks for your review.
+Applied to
 
-On Sat, 2022-03-19 at 20:13 -0600, Rob Herring wrote:
-> On Thu, 17 Mar 2022 18:12:13 +0800, Axe Yang wrote:
-> > Extend interrupts and pinctrls for SDIO wakeup interrupt feature.
-> > This feature allow SDIO devices alarm asynchronous interrupt to
-> > host
-> > even when host stop providing clock to SDIO card. An extra wakeup
-> > interrupt and pinctrl states for SDIO DAT1 pin state switching are
-> > required in this scenario.
-> > 
-> > Signed-off-by: Axe Yang <axe.yang@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/mmc/mtk-sd.yaml       | 24
-> > ++++++++++++++++++-
-> >  1 file changed, 23 insertions(+), 1 deletion(-)
-> > 
-> 
-> My bot found errors running 'make DT_CHECKER_FLAGS=-m
-> dt_binding_check'
-> on your patch (DT_CHECKER_FLAGS is new in v5.13):
-> 
-> yamllint warnings/errors:
-> 
-> dtschema/dtc warnings/errors:
-> /builds/robherring/linux-dt-
-> review/Documentation/devicetree/bindings/mmc/mtk-sd.yaml:
-> properties:pinctrl-names: {'description': 'Should at least contain
-> default and state_uhs. To support SDIO in-band wakeup, dat1 pin will
-> be switched between GPIO mode and SDIO DAT1 mode, state_eint and
-> state_dat1 are mandatory in this scenarios.', 'minItems': 2,
-> 'maxItems': 4, 'items': [{'const': 'default'}, {'const':
-> 'state_uhs'}, {'const': 'state_eint'}, {'const': 'state_dat1'}]}
-> should not be valid under {'required': ['maxItems']}
-> 	hint: "maxItems" is not needed with an "items" list
-> 	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
-> /builds/robherring/linux-dt-
-> review/Documentation/devicetree/bindings/mmc/mtk-sd.yaml: ignoring,
-> error in schema: properties: pinctrl-names
-> Documentation/devicetree/bindings/mmc/mtk-sd.example.dt.yaml:0:0: 
-> /example-0/mmc@11230000: failed to match any schema with compatible:
-> ['mediatek,mt8173-mmc']
-> 
-> doc reference errors (make refcheckdocs):
-> 
-> See https://patchwork.ozlabs.org/patch/1606491
-> 
-> This check can fail if there are any dependencies. The base for a
-> patch
-> series is generally the most recent rc1.
-> 
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure 'yamllint' is installed and dt-schema is up
-> to
-> date:
-> 
-> pip3 install dtschema --upgrade
-> 
-> Please check and re-submit.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-linus
 
+Thanks!
 
-I reproduced the error and already fix it in v8.
+[1/1] ASoC: mediatek: mt6358: add missing EXPORT_SYMBOLs
+      commit: a7663c89f4193dbf717572e46e5a3251940dbdc8
 
-Regards,
-Axe
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
