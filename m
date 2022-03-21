@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D88C3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 04:00:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 474F7C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 04:25:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TEHs9iY9CZJsBNWnxkPkDom8IB0yFqC7lOa7a69vt2I=; b=fPw1O+haYlGTtl
-	TvbuwICBvB+5lEMYVrXOW+iwH+UCJ7QTVcft24UAvSlss4D+BurlaPyOo4MmQ6WhLygj3xfuqT4Ix
-	GE06z+IcWPdOs5tQdbbUjSy/wVjP4HEDMFVyNp9ew7sFNjsBMpR2fV0Y+1c5DJQ4C+uxKS0kb9dYs
-	eQDLm/qfy/oNsSma8z1BvaIrrcabCxjY94gXtQo/3RjETPYEHYKL4pgd3w2wP3StWXqNpfgHV5ctn
-	0iZhm9B5tFOZUcRYWiYKKQ766omCT8M1e1RRIN6FgvdYhmMG+lmiOK78KN9V+Uo15+wIYSpqva2nY
-	s/sN9E6z2ynz36skCUFg==;
+	List-Owner; bh=z3Y3gXEtaPQ4oNFag6xOoJyMuIUg1FoB3hEChZU2N5M=; b=t0u/fWvevevdTH
+	oJCvY0eiAUDXKG275br2hD/UswTkK3TP78/hf8LLKH64fyE9j0W13sCLGbCbsPlkJ9v3as06sx0iU
+	sj7Vd6nxvXIoNXTC7VV9bq6nC5f574yJl8vsjI/lmCK/OyeOWyd40liXwwbjAsAUtbE3GvXbX3VT9
+	AWLc10pBCJ+kmIppxqa0Ap570zvCBmeNDxDqYsthWZwg6qf/SOPM9UNM7O3hb9pz0w5JPo8FknUFk
+	HSENZQTi2CJQXtNptfe16mdXFC2EleL2AAk8nVcyBE2++PngwQb7KtB5+bf5FkfRe2EMtQ7GZiL+X
+	2bnv3tbXroQxV5PyKuzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nW9DP-006QI4-J5; Mon, 21 Mar 2022 04:00:19 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nW9bD-006SvR-Je; Mon, 21 Mar 2022 04:24:55 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nW9DB-006QBI-MI; Mon, 21 Mar 2022 04:00:07 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 2842BB80976;
- Mon, 21 Mar 2022 04:00:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48308C340E8;
- Mon, 21 Mar 2022 03:59:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647835199;
- bh=rcfrMRNmcGIva2FzJ8WXEWjgFGNXQHRVjZF1XPtl/r0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=jRcKMSnHJ9F9XnbMGSSUgxWHnYrGWbB6zbWYOuqt9C/JhMOPTNUf/PpxSrPqKGrX0
- Nzewz1gbzoDa6ZiRiJk5GEv9s0dfICawGiauzSgQ7+qvkaYfEdhKnwCk1zRkDg/cBh
- N9udM8kaZwU430q4Fsmxv8EinXUtViPTKJVvfoH5SO+2XW4zjfCyzpmfLlNqpOgt7p
- UICdAwfcN0HeUvXYVGmPhuzlqQXObqdZs4+MU0jwUzEXlGZCcQOda84d+uwsIoUIeA
- /FNE3mByRgKe+LKYfnwcaMCoQ+ix2aGv0aBNOmFwPXAVElb598UXzSx9YMrK86BND4
- se7eaUbgIc9xA==
-Date: Mon, 21 Mar 2022 11:59:54 +0800
-From: Tzung-Bi Shih <tzungbi@kernel.org>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Cc: broonie@kernel.org, robh+dt@kernel.org,
- angelogioacchino.delregno@collabora.com, aaronyu@google.com,
- matthias.bgg@gmail.com, trevor.wu@mediatek.com, linmq006@gmail.com,
- alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [v5 4/4] ASoC: mediatek: mt8192: support rt1015p_rt5682s
-Message-ID: <Yjf4Ogkr4MPzS0vr@google.com>
-References: <20220319114111.11496-1-jiaxin.yu@mediatek.com>
- <20220319114111.11496-5-jiaxin.yu@mediatek.com>
+ id 1nW9b9-006SuO-WE; Mon, 21 Mar 2022 04:24:53 +0000
+X-UUID: 875a8a54db834eda8eef101a32b233b3-20220320
+X-UUID: 875a8a54db834eda8eef101a32b233b3-20220320
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1271639340; Sun, 20 Mar 2022 21:24:46 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 20 Mar 2022 21:17:16 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 21 Mar 2022 12:17:15 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 21 Mar 2022 12:17:15 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <robh@kernel.org>
+CC: <adrian.hunter@intel.com>, <andrew@aj.id.au>,
+ <andriy.shevchenko@linux.intel.com>,
+ <angelogioacchino.delregno@collabora.com>, <axe.yang@mediatek.com>,
+ <chaotian.jing@mediatek.com>, <dev@lynxeye.de>, <devicetree@vger.kernel.org>, 
+ <ebiggers@google.com>, <huyue2@yulong.com>, <kwmad.kim@samsung.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-mmc@vger.kernel.org>,
+ <matthias.bgg@gmail.com>, <robh+dt@kernel.org>, <satyat@google.com>,
+ <swboyd@chromium.org>, <tiantao6@hisilicon.com>, <ulf.hansson@linaro.org>,
+ <wsa+renesas@sang-engineering.com>, <yoshihiro.shimoda.uh@renesas.com>
+Subject: Re: [RESEND v7 1/3] dt-bindings: mmc: mtk-sd: extend interrupts and
+ pinctrls properties
+Date: Mon, 21 Mar 2022 12:17:15 +0800
+Message-ID: <20220321041715.8424-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <1647742413.962309.2990518.nullmailer@robh.at.kernel.org>
+References: <1647742413.962309.2990518.nullmailer@robh.at.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220319114111.11496-5-jiaxin.yu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220320_210005_882559_2E468941 
-X-CRM114-Status: UNSURE (   8.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220320_212452_057110_1D42FA5E 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,14 +80,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Mar 19, 2022 at 07:41:11PM +0800, Jiaxin Yu wrote:
-> To support machine that only choose one of the rt5682s and rt5682 as
-> headset codec, adds new compatible string "mt8192_mt6359_rt1015p_rt5682s".
-> Meanwhile, using macros to simplifies card name and compatible name.
-> 
-> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Hi Rob,
 
-Reviewed-by: Tzung-Bi Shih <tzungbi@kernel.org>
+>My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+>on your patch (DT_CHECKER_FLAGS is new in v5.13):
+>
+>yamllint warnings/errors:
+>
+>dtschema/dtc warnings/errors:
+>/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mmc/mtk-sd.yaml: properties:pinctrl-names: {'description': 'Should at least contain default and state_uhs. To support SDIO in-band wakeup, dat1 pin will be switched between GPIO mode and SDIO DAT1 mode, state_eint and state_dat1 are mandatory in this scenarios.', 'minItems': 2, 'maxItems': 4, 'items': [{'const': 'default'}, {'const': 'state_uhs'}, {'const': 'state_eint'}, {'const': 'state_dat1'}]} should not be valid under {'required': ['maxItems']}
+>	hint: "maxItems" is not needed with an "items" list
+>	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+>/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mmc/mtk-sd.yaml: ignoring, error in schema: properties: pinctrl-names
+>Documentation/devicetree/bindings/mmc/mtk-sd.example.dt.yaml:0:0: /example-0/mmc@11230000: failed to match any schema with compatible: ['mediatek,mt8173-mmc']
+>
+>doc reference errors (make refcheckdocs):
+>
+>See https://patchwork.ozlabs.org/patch/1606491
+>
+>This check can fail if there are any dependencies. The base for a patch
+>series is generally the most recent rc1.
+>
+>If you already ran 'make dt_binding_check' and didn't see the above
+>error(s), then make sure 'yamllint' is installed and dt-schema is up to
+>date:
+>
+>pip3 install dtschema --upgrade
+>
+>Please check and re-submit.
+
+Thanks for this check.
+
+When I use 'make DT_CHECKER_FLAGS=-m dt_binding_check' on this patch,
+the warning message does show up but the 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+does not exit, so I am not able to tell if any error occurs by the exit value.
+
+Would you mind sharing the way your bot capture this error? (Do I have to grep 'error'
+from the log or is there any warning-as-error flags?)
+
+Thanks,
+Miles
 
 _______________________________________________
 Linux-mediatek mailing list
