@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E40CC46467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 23:34:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 957D1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 23:36:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ygHaLsykW/JknWclh9KeXRlEeFhGEqXBXYa/Vg1+fhQ=; b=bkv84Zhudz9D1t
-	iG3Df77HsEAH9bzTd4s2qifgTpXOmOGvnXno79z6/fNWyuMBguPGIH8CQ6jV/D6vxszfi4/qY0td5
-	9gJ8fdLXjnF0OVJutS+uSZr2/vFkFlp3huWx31lmhZreuR2RGA37SWmVS23LXFE5ww380SWDA9xMp
-	4jcmr3W+Q6A7oBoVRaj2EK3JKuC5sD7hlxEui5V+Mom70RO3wJl3kX1LNbyZEj3Rq4tucQRL7cy04
-	j4DyBhF40ngfd/gnVTjSK7iovv0U9Jz/fYm6bs65sjsRzM0ceM8FaEGD92EC9amKBJQYhwaLSCZSq
-	164G9R5JZDxT7eg5fscQ==;
+	List-Owner; bh=YGQN25hhWQNZrx2GvJoDaGhqjpCTaW2arM/8ka++m6U=; b=CukQecZKe3gVfA
+	iNHRRHBRWyZaF7HTbW2N/HaVdRV2dJII1uJ/wdW/YOw1BywVE7ZJFUibLMzOrUc0uZSDeFlh97jNW
+	sSgvN4q6/KnWN307F88MupF0ljITwNcIdXODpPcgZwgrgeOiu1xE5+xjJsUCt5GWzufV+Lp8H1ql8
+	lXSd9urZmYVH2fXAKB5+cbRruP9U1qjhOlbA1B0WyVqW87GKd46RU94oRC0bo0beH/LfwhhP0OFFU
+	/7lGRVGLMdlUbUZ3GE9d2YRDi7NK/D+bMV4UtnPu3kxBJdRYlNQV8IVvqX8CR64q/dv+6Fhmho3OA
+	ihvAftOiaT0nVOH6t3pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWRXD-009QPV-LV; Mon, 21 Mar 2022 23:33:59 +0000
-Received: from mail-ot1-f49.google.com ([209.85.210.49])
+	id 1nWRa2-009R09-27; Mon, 21 Mar 2022 23:36:54 +0000
+Received: from mail-oa1-f54.google.com ([209.85.160.54])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWRX0-009QLw-Dq; Mon, 21 Mar 2022 23:33:48 +0000
-Received: by mail-ot1-f49.google.com with SMTP id
- k25-20020a056830151900b005b25d8588dbso11523892otp.4; 
- Mon, 21 Mar 2022 16:33:46 -0700 (PDT)
+ id 1nWRZz-009Qzc-9V; Mon, 21 Mar 2022 23:36:53 +0000
+Received: by mail-oa1-f54.google.com with SMTP id
+ 586e51a60fabf-d6ca46da48so326941fac.12; 
+ Mon, 21 Mar 2022 16:36:50 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=iqlGJqAp9J3mBYn2W544lt1cPtvAWKBsX1sKB8vjaFQ=;
- b=QrbqD524LDIO7lfQi+qPSPWu5d+Mt+9KcRqiLuFfvlUBtMlnv/f73mhqjyavZbcIjO
- ObN1K0rkamH9HuMxlpJGE9LZdROcL1Tz961zucNsi/Et6rbJbVstXCebglhtoELKR81F
- sa7tdEcFLaUv69IXex/Upbrr/07H4Zo5iyObOL7e2G4HQr5cxB2m5VL9LXNiT2jd3kuO
- 8HIRrm2oXeZY2o/SuRHt6idFjBW6Fg7CY0Ix4PW/JY0b9LEV1m6hK/qCcu7SUmmV+wcN
- zfFG37pPlXxhfD0gtskZoe5XGxSuaCu/p6OIa6nz5OEoOFzfsUCxJicLfzCFBgaDDL8c
- lAdA==
-X-Gm-Message-State: AOAM531TDOTsADIScYdcb0V36M9t5DLbE+nHC0qLSD+74fGnbOc5PXXm
- WtwR6ruRwxB0gIyaBVWUvQ==
-X-Google-Smtp-Source: ABdhPJzxxO+k7l8znxP0vjnY2lEafBroFgaKOlvFVHd8JKFt8pjObiL7SWOFKakst91i39pW6Q1Hgw==
-X-Received: by 2002:a9d:5f16:0:b0:5cb:51de:6761 with SMTP id
- f22-20020a9d5f16000000b005cb51de6761mr6071903oti.139.1647905625156; 
- Mon, 21 Mar 2022 16:33:45 -0700 (PDT)
+ bh=jcbOalPGoZlPVOYBNp+MHPtkQGuUqsNk0ulK/GNGgc8=;
+ b=SGnnyEQyL8oi9e8G++pY4oTXYG2ukiBnfUa6O91AJ81d0HN6wSLsckCJe7Du/PRXel
+ w1io2DALtLUWBo//4We9N3e7XRIgaJ0m0r/LCcEgEZv8bGxlrcZnanJgY+P4FwyCpyC5
+ j503zv81lJLuX70iBHZSnSypbdF+UkWlVafhfg2i29gNJQ2ItSYh4zqhA8/qjZcGs8pd
+ P7zSoEHONGCxJ9uOdKyoeQqqK/L9XcdgDLOhrWmk57UneX8o99SopxQBfaMPKyflLODv
+ Lcbmrd6M00TqkeSe3HXf/bjd2//6lNWFW26Ee6qimfBHAK+iB7GU0qnEJyJDu54LPI65
+ OyEg==
+X-Gm-Message-State: AOAM530FZUVgN5FM9oyK9CpcDrhu0jucFCrMOXhzBgpb6iNFJdVcBqpi
+ iq0dgAsdej4nGksZRYl0bJIbnxMJAA==
+X-Google-Smtp-Source: ABdhPJwus8FT5y2o3/MJA9opEbTL/aWgDuKhBeOv7vLJJLqBbRBk4A9XVfafmZwyivYO4tXGW68qrQ==
+X-Received: by 2002:a05:6870:5687:b0:dd:d21b:4e54 with SMTP id
+ p7-20020a056870568700b000ddd21b4e54mr604717oao.184.1647905407981; 
+ Mon, 21 Mar 2022 16:30:07 -0700 (PDT)
 Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
  [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- p14-20020a9d744e000000b005b235f5cf92sm8228647otk.65.2022.03.21.16.33.43
+ x25-20020a056830409900b005af164235b4sm7795352ott.2.2022.03.21.16.30.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Mar 2022 16:33:44 -0700 (PDT)
-Received: (nullmailer pid 751258 invoked by uid 1000);
- Mon, 21 Mar 2022 23:33:43 -0000
-Date: Mon, 21 Mar 2022 18:33:43 -0500
+ Mon, 21 Mar 2022 16:30:07 -0700 (PDT)
+Received: (nullmailer pid 746077 invoked by uid 1000);
+ Mon, 21 Mar 2022 23:30:06 -0000
+Date: Mon, 21 Mar 2022 18:30:06 -0500
 From: Rob Herring <robh@kernel.org>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Cc: broonie@kernel.org, tzungbi@google.com,
- angelogioacchino.delregno@collabora.com, aaronyu@google.com,
- matthias.bgg@gmail.com, trevor.wu@mediatek.com, linmq006@gmail.com,
- alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [v5 1/4] ASoC: dt-bindings: mt8192-mt6359: add new compatible
- and new properties
-Message-ID: <YjkLVwvxvOKr30qL@robh.at.kernel.org>
-References: <20220319114111.11496-1-jiaxin.yu@mediatek.com>
- <20220319114111.11496-2-jiaxin.yu@mediatek.com>
+To: Leilk Liu <leilk.liu@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, linux-spi@vger.kernel.org
+Subject: Re: [PATCH V6 2/3] dt-bindings: spi: support hclk
+Message-ID: <YjkKfjeJ5cuSyE3d@robh.at.kernel.org>
+References: <20220321013922.24067-1-leilk.liu@mediatek.com>
+ <20220321013922.24067-3-leilk.liu@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220319114111.11496-2-jiaxin.yu@mediatek.com>
+In-Reply-To: <20220321013922.24067-3-leilk.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220321_163346_490955_68A08CF3 
-X-CRM114-Status: GOOD (  15.74  )
+X-CRM114-CacheID: sfid-20220321_163651_343465_81DC2D68 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,89 +87,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Mar 19, 2022 at 07:41:08PM +0800, Jiaxin Yu wrote:
-> 1. Adds new compatible string "mt8192_mt6359_rt1015p_rt5682s" for machines
-> with rt1015p and rt5682s.
-> 2. Adds new property "mediatek,headset-codec" for getting headset codecs.
-> 3. Adds new property "mediatek,speaker-codec" for getting speaker codecs.
+On Mon, 21 Mar 2022 09:39:21 +0800, Leilk Liu wrote:
+> this patch support hclk for AHB bus.
 > 
-> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../sound/mt8192-mt6359-rt1015-rt5682.yaml    | 29 +++++++++++++++++++
->  1 file changed, 29 insertions(+)
+>  .../devicetree/bindings/spi/mediatek,spi-mt65xx.yaml          | 4 ++++
+>  1 file changed, 4 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
-> index a781e7aaaa38..aa0476eedd38 100644
-> --- a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
-> +++ b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
-> @@ -18,6 +18,7 @@ properties:
->      enum:
->        - mediatek,mt8192_mt6359_rt1015_rt5682
->        - mediatek,mt8192_mt6359_rt1015p_rt5682
-> +      - mediatek,mt8192_mt6359_rt1015p_rt5682s
->  
->    mediatek,platform:
->      $ref: "/schemas/types.yaml#/definitions/phandle"
-> @@ -27,6 +28,25 @@ properties:
->      $ref: "/schemas/types.yaml#/definitions/phandle"
->      description: The phandle of HDMI codec.
->  
-> +patternProperties:
-> +  "^mediatek,headset-codec$":
 
-Fixed string, not a pattern. Move to 'properties'. Drop the vendor 
-prefix too.
-
-> +    description: Holds subnode which indicates headset dai.
-> +    type: object
-> +    properties:
-> +      sound-dai:
-> +        $ref: /schemas/types.yaml#/definitions/phandle-array
-
-Standard property, don't need a type or description. Just how many and 
-what each one is if more than 1.
-
-> +        description: List of phandles to the headset codec nodes.
-
-More than 1?
-
-> +    additionalProperties: false
-> +
-> +  "^mediatek,speaker-codec$":
-> +    description: Holds subnode which indicates speaker dai.
-> +    type: object
-> +    properties:
-> +      sound-dai:
-> +        $ref: /schemas/types.yaml#/definitions/phandle-array
-> +        description: List of phandles to the speaker codec nodes.
-
-Same here.
-
-> +    additionalProperties: false
-> +
->  additionalProperties: false
->  
->  required:
-> @@ -44,6 +64,15 @@ examples:
->                          "aud_clk_mosi_on";
->          pinctrl-0 = <&aud_clk_mosi_off>;
->          pinctrl-1 = <&aud_clk_mosi_on>;
-> +
-> +        mediatek,headset-codec {
-> +            sound-dai = <&rt5682>;
-> +        };
-> +
-> +        mediatek,speaker-codec {
-> +            sound-dai = <&rt1015_l>,
-> +                        <&rt1015_r>;
-> +        };
->      };
->  
->  ...
-> -- 
-> 2.18.0
-> 
-> 
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
