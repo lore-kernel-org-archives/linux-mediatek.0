@@ -4,69 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 858D7C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 10:00:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18289C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 11:51:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Va5AiGdPtDG7/hzs65wdvlVgXc34F3y37LnRvbtWgHY=; b=JkcCI0ryG+SDhI
-	PbYLX28jx4UKboqkvlWc/KkMCE7OvEK9VymF5RgMDazLkSVdGPmYfXTOmxyRqHWH5xP66ue70A6PI
-	wJZUjnQj5VHnulUXZHcBUOGRGI4tL9IyjJQBhJrG1o9/OMgLtfYIMzgQ501f+0GVhE1qULRn+Wo99
-	n9NbLPVeDQsBB0/PFWfj5v8hNcqNxtUXn8t5qcdouAm+DUrmHTLRbJfREEdNHJ0IGOy/WL1lsE5R0
-	FdO8RYtZvMrg2l2vxGfbRKt8aPlgEtfIEtsBJdcWQtTrhWDKvEZxY91xEz9hQQ1/zVs5ZsI0gAO6M
-	LyNkIhLJKw13bbobGaVw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=KEvWZitGPcOMbds/szdlyRQVSvCbw6ygyu/in0oo5OM=; b=T+BGBc8jzGcQPP
+	lt8Wr3+cZIhJ6JjZgPhURdCXQdVuZsPsEqjJRCgo9k7RT3gDtgyf2OmeOV8ZnLzRe5ilTst4MDUKt
+	2Mz4sT8v0S7Aaj+vuKw70korJ/lnmPOC5D+RhH+MGaalFgGkBFN1qEUnhEcL7ok0M87FRMYuz6pl9
+	JDmnrZEiLX1ELb4165CIsZC5ZufIi9xYvFIthJhBa3UewoBj5phM4S17MSaVT9mxkHDqz5XLwtxsE
+	Afp6nC39ylONX4dQ3yjXpXDMq+EzPrWXmJI0nAUI3tUbXR1inNMpyy1jkCAe+pQFJif8MNvDKQCuq
+	2IhSKDm4zk+RY3I2mjCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWEpr-007GBu-Cq; Mon, 21 Mar 2022 10:00:23 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nWGZP-007UG2-2n; Mon, 21 Mar 2022 11:51:31 +0000
+Received: from www.zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWEpl-007G7G-Eu; Mon, 21 Mar 2022 10:00:21 +0000
-X-UUID: 65a04b6022ea44c28e4bb281e8893121-20220321
-X-UUID: 65a04b6022ea44c28e4bb281e8893121-20220321
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1231296082; Mon, 21 Mar 2022 03:00:13 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Mar 2022 02:52:10 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 21 Mar 2022 17:52:08 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 21 Mar 2022 17:52:08 +0800
-Message-ID: <08f212f745ed5d1fde90b3d714c6f71b6f6f8f18.camel@mediatek.com>
-Subject: Re: [PATCH v16 01/22] dt-bindings: mediatek: add vdosys1 RDMA
- definition for mt8195
-From: CK Hu <ck.hu@mediatek.com>
-To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- <wim@linux-watchdog.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
-CC: <devicetree@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Yongqiang Niu
- <yongqiang.niu@mediatek.com>, <srv_heupstream@mediatek.com>, David Airlie
- <airlied@linux.ie>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- <singo.chang@mediatek.com>, <llvm@lists.linux.dev>, Nick Desaulniers
- <ndesaulniers@google.com>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, Nathan Chancellor <nathan@kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
-Date: Mon, 21 Mar 2022 17:52:04 +0800
-In-Reply-To: <20220318142009.2796-2-nancy.lin@mediatek.com>
-References: <20220318142009.2796-1-nancy.lin@mediatek.com>
- <20220318142009.2796-2-nancy.lin@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nWGZ8-007U6m-18
+ for linux-mediatek@lists.infradead.org; Mon, 21 Mar 2022 11:51:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple; d=sang-engineering.com; h=
+ from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding; s=k1; bh=4S4Px63e2+0FVo0SEWjX4AYw/Zi
+ RThDbqzQpdXY0uk8=; b=oAESevOu8MJwUG4o1adMH4KtpWH/2eoSmcbwjO+TA6a
+ lGEZ8rUQjQZl1MfxvSzBiy3fAd0gwqzMWEeOtzhQbUH+mntJ6x+4KhSO6kL0y7/R
+ vDJOP8mgSH4whimqnpvNWnAMtcn0K6Zt+5CKKMjWEzEhQbvxiJEy/7Rgh8TG52l4
+ =
+Received: (qmail 860167 invoked from network); 21 Mar 2022 12:51:05 +0100
+Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted,
+ authenticated); 21 Mar 2022 12:51:05 +0100
+X-UD-Smtp-Session: l3s3148p1@EjOBHLnaAKcgAQnoAFxnAN8BywfgXJ9V
+From: Wolfram Sang <wsa+renesas@sang-engineering.com>
+To: linux-mmc@vger.kernel.org
+Cc: linux-renesas-soc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ ath10k@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com,
+ brcm80211-dev-list.pdl@broadcom.com, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ SHA-cyfmac-dev-list@infineon.com
+Subject: [RFC PATCH 00/10] mmc: improve API to make clear {h|s}w_reset is for
+ cards
+Date: Mon, 21 Mar 2022 12:50:46 +0100
+Message-Id: <20220321115059.21803-1-wsa+renesas@sang-engineering.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220321_030017_529062_6B51FF4D 
-X-CRM114-Status: GOOD (  21.95  )
+X-CRM114-CacheID: sfid-20220321_045114_715983_159E2283 
+X-CRM114-Status: GOOD (  14.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,143 +71,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Nancy:
+As discussed in 2020 [1], Ulf and I agreed that it would be easier to
+understand the {h|s}w_reset mechanisms if it was clear that they are for
+cards. This RFC series implements that by adding 'card' to the function
+names and changing the parameter to mmc_card where apropriate. Note that
+I only changed the MMC core. The SDHCI driver still uses hw_reset in its
+ops, I leave it to the SDHCI maintainers if they want to change that.
+Also, I didn't convert CAP_HW_RESET to CAP_CARD_HW_RESET yet although it
+should be done IMHO. However, we need an agreement on that first.
+Finally, I also did not check if all the host drivers are really doing a
+card reset or a controller reset. I tried but it was often not obvious
+what is actually happening in these functions without proper manuals.
 
-On Fri, 2022-03-18 at 22:19 +0800, Nancy.Lin wrote:
-> Add vdosys1 RDMA definition.
+I tested it with my Renesas boards, so far no regressions. Buildbots are
+currently checking the series. For this RFC, I sent this as one series
+so people can get an overview and comment on that. For a proper release,
+I think patches 1-5 should be one series, and 7-10 probably. Patch 6
+could then be applied once patches 2-4 hit the net tree. That's my
+proposal.
 
-See my review comment in v14 [1].
+This series is based on mmc/next as of yesterday. A branch is here:
 
-[1] 
-https://patchwork.kernel.org/project/linux-mediatek/patch/20220310035515.16881-2-nancy.lin@mediatek.com/
+git://git.kernel.org/pub/scm/linux/kernel/git/wsa/linux.git renesas/mmc/reset-api
 
-Regards,
-CK
+Looking forward to comments. Happy hacking,
 
-> 
-> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> ---
->  .../arm/mediatek/mediatek,mdp-rdma.yaml       | 86
-> +++++++++++++++++++
->  1 file changed, 86 insertions(+)
->  create mode 100644
-> Documentation/devicetree/bindings/arm/mediatek/mediatek,mdp-rdma.yaml
-> 
-> diff --git
-> a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdp-
-> rdma.yaml
-> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdp-
-> rdma.yaml
-> new file mode 100644
-> index 000000000000..6ab773569462
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdp-
-> rdma.yaml
-> @@ -0,0 +1,86 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: 
-> https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,mdp-rdma.yaml*__;Iw!!CTRNKA9wMg0ARbw!wJXD2xhE7TC3ASmUW1ftsqaOyZ8KrCjFHeXywwGFdNi56kNKasQxnWfzt81DUQ$
->  
-> +$schema: 
-> https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!wJXD2xhE7TC3ASmUW1ftsqaOyZ8KrCjFHeXywwGFdNi56kNKasQxnWcP0BMRuw$
->  
-> +
-> +title: Mediatek MDP RDMA
-> +
-> +maintainers:
-> +  - Matthias Brugger <matthias.bgg@gmail.com>
-> +
-> +description: |
-> +  The mediatek MDP RDMA stands for Read Direct Memory Access.
-> +  It provides real time data to the back-end panel driver, such as
-> DSI,
-> +  DPI and DP_INTF.
-> +  It contains one line buffer to store the sufficient pixel data.
-> +  RDMA device node must be siblings to the central MMSYS_CONFIG
-> node.
-> +  For a description of the MMSYS_CONFIG binding, see
-> +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> for details.
-> +
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      - items:
-> +          - const: mediatek,mt8195-vdo1-rdma
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  power-domains:
-> +    description: A phandle and PM domain specifier as defined by
-> bindings of
-> +      the power controller specified by phandle. See
-> +      Documentation/devicetree/bindings/power/power-domain.yaml for
-> details.
-> +
-> +  clocks:
-> +    items:
-> +      - description: RDMA Clock
-> +
-> +  iommus:
-> +    description:
-> +      This property should point to the respective IOMMU block with
-> master port as argument,
-> +      see
-> Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for
-> details.
-> +
-> +  mediatek,gce-client-reg:
-> +    description:
-> +      The register of display function block to be set by gce. There
-> are 4 arguments,
-> +      such as gce node, subsys id, offset and register size. The
-> subsys id that is
-> +      mapping to the register of display function blocks is defined
-> in the gce header
-> +      include/include/dt-bindings/gce/<chip>-gce.h of each chips.
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    maxItems: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - power-domains
-> +  - clocks
-> +  - iommus
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/clock/mt8195-clk.h>
-> +    #include <dt-bindings/power/mt8195-power.h>
-> +    #include <dt-bindings/gce/mt8195-gce.h>
-> +    #include <dt-bindings/memory/mt8195-memory-port.h>
-> +
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        vdo1_rdma0: mdp-rdma@1c104000 {
-> +            compatible = "mediatek,mt8195-vdo1-rdma";
-> +            reg = <0 0x1c104000 0 0x1000>;
-> +            interrupts = <GIC_SPI 495 IRQ_TYPE_LEVEL_HIGH 0>;
-> +            clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
-> +            power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-> +            iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA0>;
-> +            mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0x4000
-> 0x1000>;
-> +        };
-> +    };
+   Wolfram
+
+[1] https://lore.kernel.org/all/20200916090121.2350-1-wsa+renesas@sang-engineering.com/
+
+Wolfram Sang (10):
+  mmc: core: improve API to make clear mmc_hw_reset is for cards
+  ath10k: sdio: update to new MMC API for resetting cards
+  brcmfmac: sdio: update to new MMC API for resetting cards
+  mwifiex: sdio: update to new MMC API for resetting cards
+  wlcore: sdio: update to new MMC API for resetting cards
+  mmc: core: remove fallback for mmc_hw_reset()
+  mmc: core: improve API to make clear that mmc_sw_reset is for cards
+  mmc: core: improve API to make clear hw_reset from bus_ops is for
+    cards
+  mmc: core: improve API to make clear sw_reset from bus_ops is for
+    cards
+  mmc: improve API to make clear hw_reset callback is for cards
+
+ drivers/mmc/core/block.c                      |  2 +-
+ drivers/mmc/core/core.c                       | 31 ++++++++++---------
+ drivers/mmc/core/core.h                       |  4 +--
+ drivers/mmc/core/mmc.c                        | 10 +++---
+ drivers/mmc/core/mmc_test.c                   |  3 +-
+ drivers/mmc/core/sd.c                         |  8 ++---
+ drivers/mmc/core/sdio.c                       | 12 ++++---
+ drivers/mmc/host/bcm2835.c                    |  2 +-
+ drivers/mmc/host/dw_mmc.c                     |  2 +-
+ drivers/mmc/host/meson-mx-sdhc-mmc.c          |  2 +-
+ drivers/mmc/host/mtk-sd.c                     |  2 +-
+ drivers/mmc/host/sdhci.c                      |  2 +-
+ drivers/mmc/host/sunxi-mmc.c                  |  2 +-
+ drivers/mmc/host/uniphier-sd.c                |  2 +-
+ drivers/net/wireless/ath/ath10k/sdio.c        |  2 +-
+ .../broadcom/brcm80211/brcmfmac/sdio.c        |  2 +-
+ drivers/net/wireless/marvell/mwifiex/sdio.c   |  2 +-
+ drivers/net/wireless/ti/wlcore/sdio.c         |  2 +-
+ include/linux/mmc/core.h                      |  4 +--
+ include/linux/mmc/host.h                      |  2 +-
+ 20 files changed, 51 insertions(+), 47 deletions(-)
+
+-- 
+2.30.2
 
 
 _______________________________________________
