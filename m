@@ -4,59 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0387C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 22:26:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A551CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 22:28:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6oF/8+yU6JJJa9apE8slAYoeQzldTyeU+xuk30XDggc=; b=PuqNlNKWX7MiCF
-	MtcimeQNx8ThqzDy0tdyK0oiKYGmUfhjtLETii1PaQQwZeL6JUkxME4eqM5H9xR469cjQiC7/jo7d
-	+Op6Xbi8mtOyzlaK3oQqZv8WVPsBd/w/C3EoepqLO3AljVlbnneGNzVtlFmQI7UkVpsgpnA5Rpkn0
-	Tqzublnq1OqYET49+VciEjCEcp1CFunMnySds8/RonNK3yNyEN6ZxX1g85Qi9LE5bk1GlZPzmHn0q
-	uOb9j9lhnj3Z6sbFxjrcc9YLyV2RKfatA8b6aM6mR3H5SVS2plpXLPVPU727syjvI5rVGSrzO+Id8
-	JFa36j5sClVkkiW/HoFw==;
+	List-Owner; bh=DH9Crx5Qp7wWIU7zCKv5NbHZ1uzzDUgr1XpjBYXjC6w=; b=d+Osk1CFFJ/Ppp
+	R1kFPxGNDJU21oIokFe+dbY/y8CkRog2+qk04Lg04AlN/whLU7f412U2Nl128/ofgzPbciIOBZctx
+	4pmNGmcYvQZLTyHWMOY2ufsTFIdaTaUQwnCQDKoIga2Rw+OD+dAaf8xn2byMZZEh58SiJt5slft/l
+	wWBJ50mwiCwzkjboT1AfjbdJBKv7gBpuOH3qNEHKDnL8Ot4FavBDlcPr3fJNMVmy/MpeUIOX6nGL4
+	DeEt7QIaXxf6Bqx7AhnRfTKt7/7QQ3n8z25GOzWv1Y+PC3pLOgxOX/qjys1njPy2D5PtjUBBdckNd
+	/zJqkN12xrhdnncBPkhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWQTw-009Ean-4o; Mon, 21 Mar 2022 22:26:32 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nWQW1-009Eu0-R3; Mon, 21 Mar 2022 22:28:41 +0000
+Received: from mail-ot1-f51.google.com ([209.85.210.51])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWQTk-009EZ6-9V; Mon, 21 Mar 2022 22:26:21 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 77B891F43C7A
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647901578;
- bh=B8Pb07hkCfW+xPaMdiwdl2p2fFiGYRzPCnnydlob/vg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Tr6qLx7D1I+cpf7Bg25M1DfpHYW3LmJzrS546wmKykxyPgOQv1Df3Rntju+oWv201
- 1Ra/PeOakKqLV/N3BEUPbzEaYb0wn1biZgAZA65z7cMHgQsuxjTGm3bpqjzW59xCGk
- 5jhd37GA0/JDDEMVWyMozFZN9JK48X3vUMl+o8x/BB1h00W5ATPRwwTdYFbXNLc9ep
- RF5R5bwIIjsOsc+qU22Boj5yX79cEyZo4KS94s1yRpcME8W8RJ4VU7JDonUHzP2zr3
- LGR7UELzrHvuqenyN4atQ0SwuxsVfoD3SIGKIZANQ2uKd+Tscr4Miw5sZXKZ/l+G1Q
- n99LtvS7z+gkw==
-Date: Mon, 21 Mar 2022 18:26:13 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
- Hui Liu <hui.liu@mediatek.com>
-Subject: Re: [PATCH v4 06/22] arm64: dts: mt8192: Add xhci node
-Message-ID: <20220321222613.aro6m72hoyubsggg@notapiano>
-References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
- <20220318144534.17996-7-allen-kh.cheng@mediatek.com>
+ id 1nWQVp-009ErW-Uq; Mon, 21 Mar 2022 22:28:31 +0000
+Received: by mail-ot1-f51.google.com with SMTP id
+ a17-20020a9d3e11000000b005cb483c500dso7025131otd.6; 
+ Mon, 21 Mar 2022 15:28:29 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=P30I1IvBZVWzxnjjs8xKnvlDjjaGWLFseUJUE0t0iug=;
+ b=KxFBuYaO13xE1iEvDyOBwNrIg7ysj0vE9+TAHeIRQfCV3B8Vd4t008duH+x/sjtBs1
+ iCSk2g2txabK9vP1Qp3nICC/9lpj8256AkH0KlfxCPl9s4Zqp74Ev/8cuMugSpxy7Pc4
+ V/DIAqq7DEyoNIzx4R3D4SG4YWR+7qFbxqzGWpKZelFfeT6RubmZ19MTMuehYAbout4D
+ vgmmOkysZRUmOz0T9PkSqf1f08nCCWBNKjjqg+4Wk1cLuzAr9NLs06E43+QMoMe3JK2h
+ Y1epy1vnPng1MC/vnOdMZDIcbK33zCZt8KebtCM1AYxk/RftYDPRnHGhisuisNeCMoxQ
+ t3hQ==
+X-Gm-Message-State: AOAM532oXbYVfY16PxYRGJhcM5rdVKLq/issQr9GKDdTq+RFYOVzbqzn
+ BqQ4zKuCu56VA2JirU74YA==
+X-Google-Smtp-Source: ABdhPJwhjaMdN3trRKuth/6PhzKCiyCDabep5R8B9rofsON9bTADl679fotxe+oPsBcjqvQOnCb4+Q==
+X-Received: by 2002:a9d:7994:0:b0:5b2:3110:e69c with SMTP id
+ h20-20020a9d7994000000b005b23110e69cmr8812492otm.267.1647901708497; 
+ Mon, 21 Mar 2022 15:28:28 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ g8-20020acab608000000b002ecf38fb699sm8030714oif.38.2022.03.21.15.28.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 21 Mar 2022 15:28:27 -0700 (PDT)
+Received: (nullmailer pid 653541 invoked by uid 1000);
+ Mon, 21 Mar 2022 22:28:25 -0000
+Date: Mon, 21 Mar 2022 17:28:25 -0500
+From: Rob Herring <robh@kernel.org>
+To: Moudy Ho <moudy.ho@mediatek.com>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ linux-media@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, 
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, tfiga@chromium.org, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Maoguang Meng <maoguang.meng@mediatek.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ jason-jh.lin@mediatek.com, river.cheng@mediatek.com, 
+ linux-kernel@vger.kernel.org, roy-cw.yeh@mediatek.com, 
+ srv_heupstream@mediatek.com, Jernej Skrabec <jernej.skrabec@siol.net>,
+ pihsun@chromium.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
+ hsinyi@google.com, linux-arm-kernel@lists.infradead.org, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ daoyuan huang <daoyuan.huang@mediatek.com>, randy.wu@mediatek.com, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, allen-kh.cheng@mediatek.com, 
+ sj.huang@mediatek.com, linux-mediatek@lists.infradead.org, 
+ drinkcat@chromium.org, menghui.lin@mediatek.com, 
+ Alexandre Courbot <acourbot@chromium.org>, Rob Landley <rob@landley.net>
+Subject: Re: [PATCH v14 3/6] dt-bindings: soc: mediatek: move out common
+ module from display folder
+Message-ID: <Yjj8CanzmdHeX7qz@robh.at.kernel.org>
+References: <20220317143926.15835-1-moudy.ho@mediatek.com>
+ <20220317143926.15835-4-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220318144534.17996-7-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220317143926.15835-4-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220321_152620_480858_F359D4CE 
-X-CRM114-Status: GOOD (  14.10  )
+X-CRM114-CacheID: sfid-20220321_152830_018503_DD1141F2 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,78 +96,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 18, 2022 at 10:45:18PM +0800, Allen-KH Cheng wrote:
-> Add xhci node for mt8192 SoC.
-> =
-
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-
-Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
-
+On Thu, 17 Mar 2022 22:39:23 +0800, Moudy Ho wrote:
+> In order to share the same hardware information with MDP3,
+> change the MUTEX dt-binding to the path "soc/mediatek".
+> 
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 24 ++++++++++++++++++++++++
->  1 file changed, 24 insertions(+)
-> =
+>  .../bindings/{display => soc}/mediatek/mediatek,mutex.yaml      | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>  rename Documentation/devicetree/bindings/{display => soc}/mediatek/mediatek,mutex.yaml (97%)
+> 
 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/d=
-ts/mediatek/mt8192.dtsi
-> index 28b93b76fe17..6bc36a4076f4 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -10,6 +10,7 @@
->  #include <dt-bindings/interrupt-controller/arm-gic.h>
->  #include <dt-bindings/interrupt-controller/irq.h>
->  #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
-> +#include <dt-bindings/phy/phy.h>
->  #include <dt-bindings/power/mt8192-power.h>
->  =
-
->  / {
-> @@ -718,6 +719,29 @@
->  			status =3D "disabled";
->  		};
->  =
-
-> +		xhci: usb@11200000 {
-> +			compatible =3D "mediatek,mt8192-xhci",
-> +				     "mediatek,mtk-xhci";
-> +			reg =3D <0 0x11200000 0 0x1000>,
-> +			      <0 0x11203e00 0 0x0100>;
-> +			reg-names =3D "mac", "ippc";
-> +			interrupts-extended =3D <&gic GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			interrupt-names =3D "host";
-> +			phys =3D <&u2port0 PHY_TYPE_USB2>,
-> +			       <&u3port0 PHY_TYPE_USB3>;
-> +			assigned-clocks =3D <&topckgen CLK_TOP_USB_TOP_SEL>,
-> +					  <&topckgen CLK_TOP_SSUSB_XHCI_SEL>;
-> +			assigned-clock-parents =3D <&topckgen CLK_TOP_UNIVPLL_D5_D4>,
-> +						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-> +			clocks =3D <&infracfg CLK_INFRA_SSUSB>,
-> +				 <&infracfg CLK_INFRA_SSUSB_XHCI>,
-> +				 <&apmixedsys CLK_APMIXED_USBPLL>;
-> +			clock-names =3D "sys_ck", "xhci_ck", "ref_ck";
-> +			wakeup-source;
-> +			mediatek,syscon-wakeup =3D <&pericfg 0x420 102>;
-> +			status =3D "disabled";
-> +		};
-> +
->  		nor_flash: spi@11234000 {
->  			compatible =3D "mediatek,mt8192-nor";
->  			reg =3D <0 0x11234000 0 0xe0>;
-> -- =
-
-> 2.18.0
-> =
-
-> =
-
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
