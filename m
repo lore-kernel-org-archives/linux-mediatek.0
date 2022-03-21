@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C74B4C43219
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 07:23:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6030BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 07:25:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2cSwoU91ypqJcxLsE3FPBoUjEtKI98jwHMa+xeo+QPI=; b=tOskOXoQg6p4J7
-	CL1/hAB8PVPRc9/HGYOcqgHHOp3MnjAi94Ph3pq4FUhFt+HDP96BqgdLqJ9RU6Z6Y4rx5OWwwfPyB
-	h1vCnRbk4bJSqGZTSOGO0ojvugxl5wX+OgU7LHQPyO+H37ybfQ3hWfnDz6Jrnq3/LU43LnyYglNj5
-	ZJRLVczECMfEFOlyBwtwfwx2+02tMcpvW9i25vP88xavgFOxVJnLzi+BoOm08IDk5oILg2936VDqD
-	PKvHjQcJ9QvTzhvSlybMk27EKR1UNBxYbKQi301Ajzs/3fW0PG3k98Vv9EwSinY3/SLm+5N8aGtzp
-	QNHUaeyvafxhorgHfghg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YZJvxvakyy4ZH7B5rabcR04+Vs6FKI+H5SC0w2142Sw=; b=XvrW7kiGsvGGwp
+	Qm4teQG7VqyCB2eamyvsK+cC/6dg0o9zHTpzuogT6/PZVHFJGYY5D7spTmbzqs0JCnwGZWnj9h4Vb
+	nCNutkKMw6Sx6mQPCST1++kLd+6U9tev4HCEh63uWb1UeGEVQtI03k0kICPNM+n8rIKiTtbgxoD4T
+	ZDLY07y9idfGVuIBNsmvztQ+jyzsdJa/b7LuRlJtpB/2PSgSjTvrKQ9Sr+um3yA5bBgFx8mKVbEev
+	LwsWHlwGPUdzC69zdY8CLJY5iE0DyXAmc9KNVkl3sFVQPLO7goD8hmuIjVMF72/U273X/WMlRX7x1
+	HPbg+noOytWW6oAYVAiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWCOG-006nph-Gt; Mon, 21 Mar 2022 07:23:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nWCPp-006oQh-25; Mon, 21 Mar 2022 07:25:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWCNx-006ngj-LU; Mon, 21 Mar 2022 07:23:28 +0000
-X-UUID: e4fa31cb83f745539e9704f2cb54b2b2-20220321
-X-UUID: e4fa31cb83f745539e9704f2cb54b2b2-20220321
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ id 1nWCPV-006oJI-8B; Mon, 21 Mar 2022 07:25:02 +0000
+X-UUID: b080d6c3fcd44f23a3780f353b12af44-20220321
+X-UUID: b080d6c3fcd44f23a3780f353b12af44-20220321
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <trevor.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 759624329; Mon, 21 Mar 2022 00:23:18 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Mar 2022 00:23:16 -0700
+ with ESMTP id 342015066; Mon, 21 Mar 2022 00:24:54 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 21 Mar 2022 00:23:14 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 21 Mar 2022 15:23:15 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 21 Mar 2022 15:23:13 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 21 Mar 2022 15:23:14 +0800
+ Frontend Transport; Mon, 21 Mar 2022 15:23:13 +0800
 From: Trevor Wu <trevor.wu@mediatek.com>
 To: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
  <matthias.bgg@gmail.com>
@@ -48,18 +47,17 @@ CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
  <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <aaronyu@google.com>, <angelogioacchino.delregno@collabora.com>,
  <tzungbi@google.com>, <yc.hung@mediatek.com>
-Subject: [PATCH v3 1/6] ASoC: mediatek: mt8195: revise
- mt8195-mt6359-rt1019-rt5682.c
-Date: Mon, 21 Mar 2022 15:23:07 +0800
-Message-ID: <20220321072312.14972-2-trevor.wu@mediatek.com>
+Subject: [PATCH v3 0/6] ASoC: mediatek: Add support for MT8195 sound card with
+ max98390 and rt5682
+Date: Mon, 21 Mar 2022 15:23:06 +0800
+Message-ID: <20220321072312.14972-1-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220321072312.14972-1-trevor.wu@mediatek.com>
-References: <20220321072312.14972-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220321_002325_778574_B211AB7C 
-X-CRM114-Status: GOOD (  21.17  )
+X-CRM114-CacheID: sfid-20220321_002501_317232_AFEB315D 
+X-CRM114-Status: UNSURE (   8.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,620 +74,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Revise driver for the coming driver combination.
-There are two major parts including in the patch.
-1. Apply some suggested changes used in mt8195-mt6359-rt1011-rt5682.c.
-2. Reorder the layout for centralizing the codec related code.
+This series of patches adds support for mt8195 board with mt6359, max98390
+and rt5682.
 
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
----
- .../mt8195/mt8195-mt6359-rt1019-rt5682.c      | 488 +++++++++---------
- 1 file changed, 240 insertions(+), 248 deletions(-)
+To prevent from copy-paste components, mt8195 machine drivers and 
+dt-bindings are merged in the patch.
 
-diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
-index e3146311722f..a144ef188dfb 100644
---- a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
-@@ -14,7 +14,6 @@
- #include <sound/jack.h>
- #include <sound/pcm_params.h>
- #include <sound/rt5682.h>
--#include <sound/sof.h>
- #include <sound/soc.h>
- #include "../../codecs/mt6359.h"
- #include "../../codecs/rt5682.h"
-@@ -86,51 +85,6 @@ static const struct snd_kcontrol_new mt8195_mt6359_rt1019_rt5682_controls[] = {
- 	SOC_DAPM_PIN_SWITCH("Headset Mic"),
- };
- 
--static int mt8195_rt5682_etdm_hw_params(struct snd_pcm_substream *substream,
--					struct snd_pcm_hw_params *params)
--{
--	struct snd_soc_pcm_runtime *rtd = substream->private_data;
--	struct snd_soc_card *card = rtd->card;
--	struct snd_soc_dai *cpu_dai = asoc_rtd_to_cpu(rtd, 0);
--	struct snd_soc_dai *codec_dai = asoc_rtd_to_codec(rtd, 0);
--	unsigned int rate = params_rate(params);
--	int bitwidth;
--	int ret;
--
--	bitwidth = snd_pcm_format_width(params_format(params));
--	if (bitwidth < 0) {
--		dev_err(card->dev, "invalid bit width: %d\n", bitwidth);
--		return bitwidth;
--	}
--
--	ret = snd_soc_dai_set_tdm_slot(codec_dai, 0x00, 0x0, 0x2, bitwidth);
--	if (ret) {
--		dev_err(card->dev, "failed to set tdm slot\n");
--		return ret;
--	}
--
--	ret = snd_soc_dai_set_pll(codec_dai, RT5682_PLL1, RT5682_PLL1_S_MCLK,
--				  rate * 256, rate * 512);
--	if (ret) {
--		dev_err(card->dev, "failed to set pll\n");
--		return ret;
--	}
--
--	ret = snd_soc_dai_set_sysclk(codec_dai, RT5682_SCLK_S_PLL1,
--				     rate * 512, SND_SOC_CLOCK_IN);
--	if (ret) {
--		dev_err(card->dev, "failed to set sysclk\n");
--		return ret;
--	}
--
--	return snd_soc_dai_set_sysclk(cpu_dai, 0, rate * 256,
--				      SND_SOC_CLOCK_OUT);
--}
--
--static const struct snd_soc_ops mt8195_rt5682_etdm_ops = {
--	.hw_params = mt8195_rt5682_etdm_hw_params,
--};
--
- #define CKSYS_AUD_TOP_CFG 0x032c
- #define CKSYS_AUD_TOP_MON 0x0330
- 
-@@ -143,20 +97,20 @@ static int mt8195_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
- 	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt_afe);
- 	struct mt8195_afe_private *afe_priv = afe->platform_priv;
- 	struct mtkaif_param *param = &afe_priv->mtkaif_params;
--	int phase;
--	unsigned int monitor;
--	int mtkaif_calibration_num_phase;
-+	int chosen_phase_1, chosen_phase_2, chosen_phase_3;
-+	int prev_cycle_1, prev_cycle_2, prev_cycle_3;
- 	int test_done_1, test_done_2, test_done_3;
- 	int cycle_1, cycle_2, cycle_3;
--	int prev_cycle_1, prev_cycle_2, prev_cycle_3;
--	int chosen_phase_1, chosen_phase_2, chosen_phase_3;
--	int counter;
--	bool mtkaif_calibration_ok;
- 	int mtkaif_chosen_phase[MT8195_MTKAIF_MISO_NUM];
- 	int mtkaif_phase_cycle[MT8195_MTKAIF_MISO_NUM];
-+	int mtkaif_calibration_num_phase;
-+	bool mtkaif_calibration_ok;
-+	unsigned int monitor;
-+	int counter;
-+	int phase;
- 	int i;
- 
--	dev_info(afe->dev, "%s(), start\n", __func__);
-+	dev_dbg(afe->dev, "%s(), start\n", __func__);
- 
- 	param->mtkaif_calibration_ok = false;
- 	for (i = 0; i < MT8195_MTKAIF_MISO_NUM; i++) {
-@@ -312,57 +266,6 @@ static int mt8195_mt6359_init(struct snd_soc_pcm_runtime *rtd)
- 	return 0;
- }
- 
--static int mt8195_rt5682_init(struct snd_soc_pcm_runtime *rtd)
--{
--	struct snd_soc_component *cmpnt_codec =
--		asoc_rtd_to_codec(rtd, 0)->component;
--	struct mt8195_mt6359_rt1019_rt5682_priv *priv =
--		snd_soc_card_get_drvdata(rtd->card);
--	struct snd_soc_jack *jack = &priv->headset_jack;
--	struct snd_soc_component *cmpnt_afe =
--		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
--	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt_afe);
--	struct mt8195_afe_private *afe_priv = afe->platform_priv;
--	int ret;
--
--	priv->i2so1_mclk = afe_priv->clk[MT8195_CLK_TOP_APLL12_DIV2];
--
--	ret = snd_soc_card_jack_new(rtd->card, "Headset Jack",
--				    SND_JACK_HEADSET | SND_JACK_BTN_0 |
--				    SND_JACK_BTN_1 | SND_JACK_BTN_2 |
--				    SND_JACK_BTN_3,
--				    jack, NULL, 0);
--	if (ret) {
--		dev_err(rtd->dev, "Headset Jack creation failed: %d\n", ret);
--		return ret;
--	}
--
--	snd_jack_set_key(jack->jack, SND_JACK_BTN_0, KEY_PLAYPAUSE);
--	snd_jack_set_key(jack->jack, SND_JACK_BTN_1, KEY_VOICECOMMAND);
--	snd_jack_set_key(jack->jack, SND_JACK_BTN_2, KEY_VOLUMEUP);
--	snd_jack_set_key(jack->jack, SND_JACK_BTN_3, KEY_VOLUMEDOWN);
--
--	ret = snd_soc_component_set_jack(cmpnt_codec, jack, NULL);
--	if (ret) {
--		dev_err(rtd->dev, "Headset Jack set failed: %d\n", ret);
--		return ret;
--	}
--
--	return 0;
--};
--
--static int mt8195_etdm_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
--				       struct snd_pcm_hw_params *params)
--{
--	/* fix BE i2s format to S24_LE, clean param mask first */
--	snd_mask_reset_range(hw_param_mask(params, SNDRV_PCM_HW_PARAM_FORMAT),
--			     0, (__force unsigned int)SNDRV_PCM_FORMAT_LAST);
--
--	params_set_format(params, SNDRV_PCM_FORMAT_S24_LE);
--
--	return 0;
--}
--
- static int mt8195_hdmitx_dptx_startup(struct snd_pcm_substream *substream)
- {
- 	static const unsigned int rates[] = {
-@@ -414,11 +317,8 @@ static int mt8195_dptx_hw_params(struct snd_pcm_substream *substream,
- {
- 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
- 	struct snd_soc_dai *cpu_dai = asoc_rtd_to_cpu(rtd, 0);
--	unsigned int rate = params_rate(params);
--	unsigned int mclk_fs_ratio = 256;
--	unsigned int mclk_fs = rate * mclk_fs_ratio;
- 
--	return snd_soc_dai_set_sysclk(cpu_dai, 0, mclk_fs,
-+	return snd_soc_dai_set_sysclk(cpu_dai, 0, params_rate(params) * 256,
- 				      SND_SOC_CLOCK_OUT);
- }
- 
-@@ -432,7 +332,7 @@ static int mt8195_dptx_codec_init(struct snd_soc_pcm_runtime *rtd)
- 		snd_soc_card_get_drvdata(rtd->card);
- 	struct snd_soc_component *cmpnt_codec =
- 		asoc_rtd_to_codec(rtd, 0)->component;
--	int ret = 0;
-+	int ret;
- 
- 	ret = snd_soc_card_jack_new(rtd->card, "DP Jack", SND_JACK_LINEOUT,
- 				    &priv->dp_jack, NULL, 0);
-@@ -448,7 +348,7 @@ static int mt8195_hdmi_codec_init(struct snd_soc_pcm_runtime *rtd)
- 		snd_soc_card_get_drvdata(rtd->card);
- 	struct snd_soc_component *cmpnt_codec =
- 		asoc_rtd_to_codec(rtd, 0)->component;
--	int ret = 0;
-+	int ret;
- 
- 	ret = snd_soc_card_jack_new(rtd->card, "HDMI Jack", SND_JACK_LINEOUT,
- 				    &priv->hdmi_jack, NULL, 0);
-@@ -460,7 +360,6 @@ static int mt8195_hdmi_codec_init(struct snd_soc_pcm_runtime *rtd)
- 
- static int mt8195_dptx_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
- 				       struct snd_pcm_hw_params *params)
--
- {
- 	/* fix BE i2s format to S24_LE, clean param mask first */
- 	snd_mask_reset_range(hw_param_mask(params, SNDRV_PCM_HW_PARAM_FORMAT),
-@@ -563,6 +462,102 @@ static const struct snd_soc_ops mt8195_capture_ops = {
- 	.startup = mt8195_capture_startup,
- };
- 
-+static int mt8195_rt5682_etdm_hw_params(struct snd_pcm_substream *substream,
-+					struct snd_pcm_hw_params *params)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct snd_soc_card *card = rtd->card;
-+	struct snd_soc_dai *cpu_dai = asoc_rtd_to_cpu(rtd, 0);
-+	struct snd_soc_dai *codec_dai = asoc_rtd_to_codec(rtd, 0);
-+	unsigned int rate = params_rate(params);
-+	int bitwidth;
-+	int ret;
-+
-+	bitwidth = snd_pcm_format_width(params_format(params));
-+	if (bitwidth < 0) {
-+		dev_err(card->dev, "invalid bit width: %d\n", bitwidth);
-+		return bitwidth;
-+	}
-+
-+	ret = snd_soc_dai_set_tdm_slot(codec_dai, 0x00, 0x0, 0x2, bitwidth);
-+	if (ret) {
-+		dev_err(card->dev, "failed to set tdm slot\n");
-+		return ret;
-+	}
-+
-+	ret = snd_soc_dai_set_pll(codec_dai, RT5682_PLL1, RT5682_PLL1_S_MCLK,
-+				  rate * 256, rate * 512);
-+	if (ret) {
-+		dev_err(card->dev, "failed to set pll\n");
-+		return ret;
-+	}
-+
-+	ret = snd_soc_dai_set_sysclk(codec_dai, RT5682_SCLK_S_PLL1,
-+				     rate * 512, SND_SOC_CLOCK_IN);
-+	if (ret) {
-+		dev_err(card->dev, "failed to set sysclk\n");
-+		return ret;
-+	}
-+
-+	return snd_soc_dai_set_sysclk(cpu_dai, 0, rate * 256,
-+				      SND_SOC_CLOCK_OUT);
-+}
-+
-+static const struct snd_soc_ops mt8195_rt5682_etdm_ops = {
-+	.hw_params = mt8195_rt5682_etdm_hw_params,
-+};
-+
-+static int mt8195_rt5682_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct snd_soc_component *cmpnt_codec =
-+		asoc_rtd_to_codec(rtd, 0)->component;
-+	struct mt8195_mt6359_rt1019_rt5682_priv *priv =
-+		snd_soc_card_get_drvdata(rtd->card);
-+	struct snd_soc_jack *jack = &priv->headset_jack;
-+	struct snd_soc_component *cmpnt_afe =
-+		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt_afe);
-+	struct mt8195_afe_private *afe_priv = afe->platform_priv;
-+	int ret;
-+
-+	priv->i2so1_mclk = afe_priv->clk[MT8195_CLK_TOP_APLL12_DIV2];
-+
-+	ret = snd_soc_card_jack_new(rtd->card, "Headset Jack",
-+				    SND_JACK_HEADSET | SND_JACK_BTN_0 |
-+				    SND_JACK_BTN_1 | SND_JACK_BTN_2 |
-+				    SND_JACK_BTN_3,
-+				    jack, NULL, 0);
-+	if (ret) {
-+		dev_err(rtd->dev, "Headset Jack creation failed: %d\n", ret);
-+		return ret;
-+	}
-+
-+	snd_jack_set_key(jack->jack, SND_JACK_BTN_0, KEY_PLAYPAUSE);
-+	snd_jack_set_key(jack->jack, SND_JACK_BTN_1, KEY_VOICECOMMAND);
-+	snd_jack_set_key(jack->jack, SND_JACK_BTN_2, KEY_VOLUMEUP);
-+	snd_jack_set_key(jack->jack, SND_JACK_BTN_3, KEY_VOLUMEDOWN);
-+
-+	ret = snd_soc_component_set_jack(cmpnt_codec, jack, NULL);
-+	if (ret) {
-+		dev_err(rtd->dev, "Headset Jack set failed: %d\n", ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+};
-+
-+static int mt8195_etdm_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
-+				       struct snd_pcm_hw_params *params)
-+{
-+	/* fix BE i2s format to S24_LE, clean param mask first */
-+	snd_mask_reset_range(hw_param_mask(params, SNDRV_PCM_HW_PARAM_FORMAT),
-+			     0, (__force unsigned int)SNDRV_PCM_FORMAT_LAST);
-+
-+	params_set_format(params, SNDRV_PCM_FORMAT_S24_LE);
-+
-+	return 0;
-+}
-+
- static int mt8195_set_bias_level_post(struct snd_soc_card *card,
- 	struct snd_soc_dapm_context *dapm, enum snd_soc_bias_level level)
- {
-@@ -581,7 +576,6 @@ static int mt8195_set_bias_level_post(struct snd_soc_card *card,
- 	    strcmp(component->name, RT5682S_DEV0_NAME)))
- 		return 0;
- 
--
- 	switch (level) {
- 	case SND_SOC_BIAS_OFF:
- 		if (!__clk_is_enabled(priv->i2so1_mclk))
-@@ -808,127 +802,6 @@ static const struct sof_conn_stream g_sof_conn_streams[] = {
- 	{ "ETDM2_IN_BE", "AFE_SOF_UL5", SOF_DMA_UL5, SNDRV_PCM_STREAM_CAPTURE},
- };
- 
--/* fixup the BE DAI link to match any values from topology */
--static int mt8195_dai_link_fixup(struct snd_soc_pcm_runtime *rtd,
--				 struct snd_pcm_hw_params *params)
--{
--	struct snd_soc_card *card = rtd->card;
--	struct snd_soc_dai_link *sof_dai_link = NULL;
--	struct snd_soc_pcm_runtime *runtime;
--	struct snd_soc_dai *cpu_dai;
--	int i, j, ret = 0;
--
--	for (i = 0; i < ARRAY_SIZE(g_sof_conn_streams); i++) {
--		const struct sof_conn_stream *conn = &g_sof_conn_streams[i];
--
--		if (strcmp(rtd->dai_link->name, conn->normal_link))
--			continue;
--
--		for_each_card_rtds(card, runtime) {
--			if (strcmp(runtime->dai_link->name, conn->sof_link))
--				continue;
--
--			for_each_rtd_cpu_dais(runtime, j, cpu_dai) {
--				if (cpu_dai->stream_active[conn->stream_dir] > 0) {
--					sof_dai_link = runtime->dai_link;
--					break;
--				}
--			}
--			break;
--		}
--
--		if (sof_dai_link && sof_dai_link->be_hw_params_fixup)
--			ret = sof_dai_link->be_hw_params_fixup(runtime, params);
--
--		break;
--	}
--
--	if (!strcmp(rtd->dai_link->name, "ETDM2_IN_BE") ||
--	    !strcmp(rtd->dai_link->name, "ETDM1_OUT_BE")) {
--		mt8195_etdm_hw_params_fixup(runtime, params);
--	}
--
--	return ret;
--}
--
--static int mt8195_mt6359_rt1019_rt5682_card_late_probe(struct snd_soc_card *card)
--{
--	struct snd_soc_pcm_runtime *runtime;
--	struct snd_soc_component *sof_comp = NULL;
--	int i;
--
--	/* 1. find sof component */
--	for_each_card_rtds(card, runtime) {
--		for (i = 0; i < runtime->num_components; i++) {
--			if (!runtime->components[i]->driver->name)
--				continue;
--			if (!strcmp(runtime->components[i]->driver->name, "sof-audio-component")) {
--				sof_comp = runtime->components[i];
--				break;
--			}
--		}
--	}
--
--	if (!sof_comp) {
--		dev_info(card->dev, " probe without component\n");
--		return 0;
--	}
--	/* 2. add route path and fixup callback */
--	for (i = 0; i < ARRAY_SIZE(g_sof_conn_streams); i++) {
--		const struct sof_conn_stream *conn = &g_sof_conn_streams[i];
--		struct snd_soc_pcm_runtime *sof_rtd = NULL;
--		struct snd_soc_pcm_runtime *normal_rtd = NULL;
--		struct snd_soc_pcm_runtime *rtd = NULL;
--
--		for_each_card_rtds(card, rtd) {
--			if (!strcmp(rtd->dai_link->name, conn->sof_link)) {
--				sof_rtd = rtd;
--				continue;
--			}
--			if (!strcmp(rtd->dai_link->name, conn->normal_link)) {
--				normal_rtd = rtd;
--				continue;
--			}
--			if (normal_rtd && sof_rtd)
--				break;
--		}
--		if (normal_rtd && sof_rtd) {
--			int j;
--			struct snd_soc_dai *cpu_dai;
--
--			for_each_rtd_cpu_dais(sof_rtd, j, cpu_dai) {
--				struct snd_soc_dapm_route route;
--				struct snd_soc_dapm_path *p = NULL;
--				struct snd_soc_dapm_widget *play_widget =
--					cpu_dai->playback_widget;
--				struct snd_soc_dapm_widget *cap_widget =
--					cpu_dai->capture_widget;
--				memset(&route, 0, sizeof(route));
--				if (conn->stream_dir == SNDRV_PCM_STREAM_CAPTURE &&
--				    cap_widget) {
--					snd_soc_dapm_widget_for_each_sink_path(cap_widget, p) {
--						route.source = conn->sof_dma;
--						route.sink = p->sink->name;
--						snd_soc_dapm_add_routes(&card->dapm, &route, 1);
--					}
--				} else if (conn->stream_dir == SNDRV_PCM_STREAM_PLAYBACK &&
--						play_widget){
--					snd_soc_dapm_widget_for_each_source_path(play_widget, p) {
--						route.source = p->source->name;
--						route.sink = conn->sof_dma;
--						snd_soc_dapm_add_routes(&card->dapm, &route, 1);
--					}
--				} else {
--					dev_err(cpu_dai->dev, "stream dir and widget not pair\n");
--				}
--			}
--			normal_rtd->dai_link->be_hw_params_fixup = mt8195_dai_link_fixup;
--		}
--	}
--
--	return 0;
--}
--
- static struct snd_soc_dai_link mt8195_mt6359_rt1019_rt5682_dai_links[] = {
- 	/* FE */
- 	[DAI_LINK_DL2_FE] = {
-@@ -1248,6 +1121,127 @@ static struct snd_soc_card mt8195_mt6359_rt1019_rt5682_soc_card = {
- 	.set_bias_level_post = mt8195_set_bias_level_post,
- };
- 
-+/* fixup the BE DAI link to match any values from topology */
-+static int mt8195_dai_link_fixup(struct snd_soc_pcm_runtime *rtd,
-+				 struct snd_pcm_hw_params *params)
-+{
-+	struct snd_soc_card *card = rtd->card;
-+	struct snd_soc_dai_link *sof_dai_link = NULL;
-+	struct snd_soc_pcm_runtime *runtime;
-+	struct snd_soc_dai *cpu_dai;
-+	int i, j, ret = 0;
-+
-+	for (i = 0; i < ARRAY_SIZE(g_sof_conn_streams); i++) {
-+		const struct sof_conn_stream *conn = &g_sof_conn_streams[i];
-+
-+		if (strcmp(rtd->dai_link->name, conn->normal_link))
-+			continue;
-+
-+		for_each_card_rtds(card, runtime) {
-+			if (strcmp(runtime->dai_link->name, conn->sof_link))
-+				continue;
-+
-+			for_each_rtd_cpu_dais(runtime, j, cpu_dai) {
-+				if (cpu_dai->stream_active[conn->stream_dir] > 0) {
-+					sof_dai_link = runtime->dai_link;
-+					break;
-+				}
-+			}
-+			break;
-+		}
-+
-+		if (sof_dai_link && sof_dai_link->be_hw_params_fixup)
-+			ret = sof_dai_link->be_hw_params_fixup(runtime, params);
-+
-+		break;
-+	}
-+
-+	if (!strcmp(rtd->dai_link->name, "ETDM2_IN_BE") ||
-+	    !strcmp(rtd->dai_link->name, "ETDM1_OUT_BE")) {
-+		mt8195_etdm_hw_params_fixup(runtime, params);
-+	}
-+
-+	return ret;
-+}
-+
-+static int mt8195_mt6359_rt1019_rt5682_card_late_probe(struct snd_soc_card *card)
-+{
-+	struct snd_soc_pcm_runtime *runtime;
-+	struct snd_soc_component *sof_comp = NULL;
-+	int i;
-+
-+	/* 1. find sof component */
-+	for_each_card_rtds(card, runtime) {
-+		for (i = 0; i < runtime->num_components; i++) {
-+			if (!runtime->components[i]->driver->name)
-+				continue;
-+			if (!strcmp(runtime->components[i]->driver->name, "sof-audio-component")) {
-+				sof_comp = runtime->components[i];
-+				break;
-+			}
-+		}
-+	}
-+
-+	if (!sof_comp) {
-+		dev_info(card->dev, " probe without component\n");
-+		return 0;
-+	}
-+	/* 2. add route path and fixup callback */
-+	for (i = 0; i < ARRAY_SIZE(g_sof_conn_streams); i++) {
-+		const struct sof_conn_stream *conn = &g_sof_conn_streams[i];
-+		struct snd_soc_pcm_runtime *sof_rtd = NULL;
-+		struct snd_soc_pcm_runtime *normal_rtd = NULL;
-+		struct snd_soc_pcm_runtime *rtd = NULL;
-+
-+		for_each_card_rtds(card, rtd) {
-+			if (!strcmp(rtd->dai_link->name, conn->sof_link)) {
-+				sof_rtd = rtd;
-+				continue;
-+			}
-+			if (!strcmp(rtd->dai_link->name, conn->normal_link)) {
-+				normal_rtd = rtd;
-+				continue;
-+			}
-+			if (normal_rtd && sof_rtd)
-+				break;
-+		}
-+		if (normal_rtd && sof_rtd) {
-+			int j;
-+			struct snd_soc_dai *cpu_dai;
-+
-+			for_each_rtd_cpu_dais(sof_rtd, j, cpu_dai) {
-+				struct snd_soc_dapm_route route;
-+				struct snd_soc_dapm_path *p = NULL;
-+				struct snd_soc_dapm_widget *play_widget =
-+					cpu_dai->playback_widget;
-+				struct snd_soc_dapm_widget *cap_widget =
-+					cpu_dai->capture_widget;
-+				memset(&route, 0, sizeof(route));
-+				if (conn->stream_dir == SNDRV_PCM_STREAM_CAPTURE &&
-+				    cap_widget) {
-+					snd_soc_dapm_widget_for_each_sink_path(cap_widget, p) {
-+						route.source = conn->sof_dma;
-+						route.sink = p->sink->name;
-+						snd_soc_dapm_add_routes(&card->dapm, &route, 1);
-+					}
-+				} else if (conn->stream_dir == SNDRV_PCM_STREAM_PLAYBACK &&
-+						play_widget){
-+					snd_soc_dapm_widget_for_each_source_path(play_widget, p) {
-+						route.source = p->source->name;
-+						route.sink = conn->sof_dma;
-+						snd_soc_dapm_add_routes(&card->dapm, &route, 1);
-+					}
-+				} else {
-+					dev_err(cpu_dai->dev, "stream dir and widget not pair\n");
-+				}
-+			}
-+			normal_rtd->dai_link->be_hw_params_fixup = mt8195_dai_link_fixup;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- static int mt8195_dailink_parse_of(struct snd_soc_card *card, struct device_node *np,
- 				   const char *propname)
- {
-@@ -1322,6 +1316,18 @@ static int mt8195_mt6359_rt1019_rt5682_dev_probe(struct platform_device *pdev)
- 	if (!priv)
- 		return -ENOMEM;
- 
-+	if (of_property_read_bool(pdev->dev.of_node, "mediatek,dai-link")) {
-+		ret = mt8195_dailink_parse_of(card, pdev->dev.of_node,
-+					      "mediatek,dai-link");
-+		if (ret) {
-+			dev_dbg(&pdev->dev, "Parse dai-link fail\n");
-+			return -EINVAL;
-+		}
-+	} else {
-+		if (!sof_on)
-+			card->num_links = DAI_LINK_REGULAR_NUM;
-+	}
-+
- 	platform_node = of_parse_phandle(pdev->dev.of_node,
- 					 "mediatek,platform", 0);
- 	if (!platform_node) {
-@@ -1337,19 +1343,6 @@ static int mt8195_mt6359_rt1019_rt5682_dev_probe(struct platform_device *pdev)
- 	hdmi_node = of_parse_phandle(pdev->dev.of_node,
- 				     "mediatek,hdmi-codec", 0);
- 
--	if (of_property_read_bool(pdev->dev.of_node, "mediatek,dai-link")) {
--		ret = mt8195_dailink_parse_of(card, pdev->dev.of_node,
--					      "mediatek,dai-link");
--		if (ret) {
--			dev_dbg(&pdev->dev, "Parse dai-link fail\n");
--			ret = -EINVAL;
--			goto put_node;
--		}
--	} else {
--		if (!sof_on)
--			card->num_links = DAI_LINK_REGULAR_NUM;
--	}
--
- 	for_each_card_prelinks(card, i, dai_link) {
- 		if (!dai_link->platforms->name) {
- 			if (!strncmp(dai_link->name, "AFE_SOF", strlen("AFE_SOF")) && sof_on)
-@@ -1399,7 +1392,6 @@ static int mt8195_mt6359_rt1019_rt5682_dev_probe(struct platform_device *pdev)
- 
- 	ret = devm_snd_soc_register_card(&pdev->dev, card);
- 
--put_node:
- 	of_node_put(platform_node);
- 	of_node_put(adsp_node);
- 	of_node_put(dp_node);
+Patches are based on broonie tree "for-next" branch.
+
+Changes since v2:
+  - split "merge machine driver" into two parts for better understanding
+
+Changes since v1:
+  - remove merged patches about reset controller
+  - propose a common machine driver instead of machine driver common code
+  - propose a common dt-bindings for mt8195 sound card
+
+Trevor Wu (6):
+  ASoC: mediatek: mt8195: revise mt8195-mt6359-rt1019-rt5682.c
+  ASoC: mediatek: mt8195: merge machine driver
+  ASoC: dt-bindings: mediatek: mt8195: merge mt8195 machine yaml
+  ASoC: mediatek: mt8195: rename card controls
+  ASoC: mediatek: mt8195: add machine support for max98390 and rt5682
+  ASoC: dt-bindings: mediatek: mt8195: support
+    mt8195-mt6359-max98390-rt5682
+
+ .../sound/mt8195-mt6359-rt1011-rt5682.yaml    |   51 -
+ ...-rt1019-rt5682.yaml => mt8195-mt6359.yaml} |    9 +-
+ sound/soc/mediatek/Kconfig                    |   26 +-
+ sound/soc/mediatek/mt8195/Makefile            |    3 +-
+ .../mt8195/mt8195-mt6359-rt1011-rt5682.c      | 1198 -----------------
+ ...mt6359-rt1019-rt5682.c => mt8195-mt6359.c} |  865 +++++++-----
+ 6 files changed, 569 insertions(+), 1583 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1011-rt5682.yaml
+ rename Documentation/devicetree/bindings/sound/{mt8195-mt6359-rt1019-rt5682.yaml => mt8195-mt6359.yaml} (84%)
+ delete mode 100644 sound/soc/mediatek/mt8195/mt8195-mt6359-rt1011-rt5682.c
+ rename sound/soc/mediatek/mt8195/{mt8195-mt6359-rt1019-rt5682.c => mt8195-mt6359.c} (78%)
+
 -- 
 2.18.0
 
