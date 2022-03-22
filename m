@@ -4,53 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 975B4C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 09:21:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97FC7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 09:33:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Iyn6FttzNfa7SKbGn8cEm/M/oJXHiflxM/2URYmtgPY=; b=HIZtnjOOykpU68
-	xnAX5WE2FdNBIViD+YSN5ZSPecSR6V/spELtfpA50fPCdTWjZvOVSKCDrogS52YWXe4QuEYaGYTm4
-	XnmfgTdKAm/WFs7RGvG579pJcxZimYYtQZwFhh/oWerwXaSy1if9rnvOsjhlTcGLjK71lI7AcZVja
-	zIcAQvLypbgvBVGV4b4sjz2mbD1HhEp3b794pT1X7x/4mGMIZyDIBV/eOOKs2nE6JuMWrpRS7y6OS
-	E89Ovg7tgARgLi9ftoxnwvo8HSv17I8KIrS9v7IENqRdOvKJmftNNM2/vcdxZR9erZ+NMbfNyq+gw
-	dU7wuY+wU0nswrS+SArg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GkZv0ICWEKBRHsGsFXaPx4s6p7XHKIDJGYaYSQ1p9RE=; b=zOdFK4Xc1sEe6Q
+	pfJWSoTvsizQKC4Ww9UxJDrmUu4JJq6sBz3eKM+qx3nS72gn6Vhkm1MZQtbo74TrsNz91VxjC81Kq
+	GW6tzQjE3+IYy7OGWh1WUJdS7hxmMByHkGixeDITH4qvi6KFAIFKLhHlPO3WNqFbQkqfTpUwUE81d
+	3YfnD+l6nAoHIJeSBGEFWRb+dP0NQ9deDyA0+M6D1S361rvaOftbntbYzrWpw09XsJNWibv7Tx6sd
+	yDY9XPwoOHC/Ml0m5aR0Dv1+xRU8ZHksa5XjEdX5VftcQd9xrwPQURgtDYNYnmtKpg0b2k0V+jvaW
+	bfUjkLg9ydOaZQw/mUkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWahK-00AZQx-Ea; Tue, 22 Mar 2022 09:21:02 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nWat2-00AbiB-JX; Tue, 22 Mar 2022 09:33:08 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWah4-00AZK0-Or; Tue, 22 Mar 2022 09:20:50 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 024181F42543
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647940845;
- bh=RGXVtcqwObkEQ+VQOAEz9wVt9MEokAHE3MUZMVVtBvc=;
- h=From:To:Cc:Subject:Date:From;
- b=UzOwni4fe5KpVwbEvF0d/tDv9CWET0DGk7i0Y2J0bOi0gSgpOvoiaVUVDA1ZXEDKu
- CY5vufRptkjeDYrWaG4mUc6dBYcuWHulOFodk6OxZCkuN/Zlz7u9PhbolfPtBbhEqt
- N4TOjRzW+IMTkriCer9Qh6CE74x2PMxAPZKdWXlUPE7CmVo2UQSUR7ILhEnMhyTiZb
- PvdKO6vCCPqwt59DdAp3CocDdkKEOBM+avVgUoUoKwcrQkx4aHwABOweg9/3/b88Ed
- fyIwo+izlElu82xou8Sd9RqcUNcA+17/YTC+sdIVpB4Tv0ikETL7VK9Ud/twe1OYk+
- XO6/v3b2ZNtnw==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com,
- rex-bc.chen@mediatek.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] soc: mediatek: mmsys: Add sw0_rst_offset for MT8192
-Date: Tue, 22 Mar 2022 10:20:40 +0100
-Message-Id: <20220322092040.12010-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
+ id 1nWasq-00Abfx-8s; Tue, 22 Mar 2022 09:32:57 +0000
+X-UUID: 4d5c6eabb196498091d84f3e43a52f76-20220322
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=SZiIAjMoKatInPZZZjb3y8PlI6FV94VIn1UDqGxPTAQ=; 
+ b=rzj5tdG0x3Xbq0+zMfnKmO17918ZmfYHSJrc0kWan/9xjdd7d4fNwBNBJmvYGPWZKMOVYGRbq8dqDmS/quatMxkanD+ni6hQqpe14iVXXowCyq8bxxV4BWed0zIBRSPTurz+DZrLLIM4ttYHufeo3B7bYo0N4T4T8XKY0Uujw6U=;
+X-UUID: 4d5c6eabb196498091d84f3e43a52f76-20220322
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <xinlei.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2085356851; Tue, 22 Mar 2022 02:32:49 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Mar 2022 02:22:47 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Mar 2022 17:22:45 +0800
+Received: from mszsdhlt06 (10.16.6.206) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 22 Mar 2022 17:22:41 +0800
+Message-ID: <4d022881d08ea1d4a222b3439510c6d6d26d7284.camel@mediatek.com>
+Subject: Re: [PATCH v3,2/4] drm/mediatek: Separate poweron/poweroff from
+ enable/disable and define new funcs
+From: xinlei.lee <xinlei.lee@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+ <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <matthias.bgg@gmail.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, <jitao.shi@mediatek.com>
+Date: Tue, 22 Mar 2022 17:23:02 +0800
+In-Reply-To: <390025b57d3345c34071231c68350e9311af64c9.camel@mediatek.com>
+References: <1647503611-13144-1-git-send-email-xinlei.lee@mediatek.com>
+ <1647503611-13144-3-git-send-email-xinlei.lee@mediatek.com>
+ <390025b57d3345c34071231c68350e9311af64c9.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220322_022046_968347_D76B9C90 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220322_023256_349798_B7E0BCA3 
+X-CRM114-Status: GOOD (  33.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,31 +81,176 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8192 has the same sw0 reset offset as MT8183: add the parameter
-to be able to use mmsys as a reset controller for managing at
-least the DSI reset line.
+On Thu, 2022-03-17 at 20:02 +0800, Rex-BC Chen wrote:
+> Hello Xinlei,
+> 
+> On Thu, 2022-03-17 at 15:53 +0800, xinlei.lee@mediatek.com wrote:
+> > From: Jitao Shi <jitao.shi@mediatek.com>
+> > 
+> > In order to match the changes of "Use the drm_panel_bridge API",
+> > the poweron/poweroff of dsi is extracted from enable/disable and
+> > defined as new funcs (pre_enable/post_disable).
+> > 
+> > Fixes: 2dd8075d2185 ("drm/mediatek: mtk_dsi: Use the
+> > drm_panel_bridge
+> > API")
+> > 
+> > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 45 +++++++++++++++++---------
+> > --
+> > --
+> >  1 file changed, 26 insertions(+), 19 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > index 262c027d8c2f..e33caaca11a7 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > @@ -679,16 +679,6 @@ static void mtk_dsi_poweroff(struct mtk_dsi
+> > *dsi)
+> >  	if (--dsi->refcount != 0)
+> >  		return;
+> >  
+> > -	/*
+> > -	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
+> > -	 * mtk_dsi_stop() should be called after
+> > mtk_drm_crtc_atomic_disable(),
+> > -	 * which needs irq for vblank, and mtk_dsi_stop() will disable
+> > irq.
+> > -	 * mtk_dsi_start() needs to be called in
+> > mtk_output_dsi_enable(),
+> > -	 * after dsi is fully set.
+> > -	 */
+> > -	mtk_dsi_stop(dsi);
+> > -
+> > -	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
+> >  	mtk_dsi_reset_engine(dsi);
+> >  	mtk_dsi_lane0_ulp_mode_enter(dsi);
+> >  	mtk_dsi_clk_ulp_mode_enter(dsi);
+> > @@ -703,17 +693,9 @@ static void mtk_dsi_poweroff(struct mtk_dsi
+> > *dsi)
+> >  
+> >  static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
+> >  {
+> > -	int ret;
+> > -
+> >  	if (dsi->enabled)
+> >  		return;
+> >  
+> > -	ret = mtk_dsi_poweron(dsi);
+> > -	if (ret < 0) {
+> > -		DRM_ERROR("failed to power on dsi\n");
+> > -		return;
+> > -	}
+> > -
+> >  	mtk_dsi_set_mode(dsi);
+> >  	mtk_dsi_clk_hs_mode(dsi, 1);
+> >  
+> > @@ -727,7 +709,16 @@ static void mtk_output_dsi_disable(struct
+> > mtk_dsi *dsi)
+> >  	if (!dsi->enabled)
+> >  		return;
+> >  
+> > -	mtk_dsi_poweroff(dsi);
+> > +	/*
+> > +	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
+> 
+> Why they are asymmetric?
+> 
+> > +	 * mtk_dsi_stop() should be called after
+> > mtk_drm_crtc_atomic_disable(),
+> > +	 * which needs irq for vblank, and mtk_dsi_stop() will disable
+> > irq.
+> > +	 * mtk_dsi_start() needs to be called in
+> > mtk_output_dsi_enable(),
+> > +	 * after dsi is fully set.
+> > +	 */
+> > +	mtk_dsi_stop(dsi);
+> > +
+> > +	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
+> >  
+> >  	dsi->enabled = false;
+> >  }
+> > @@ -765,10 +756,26 @@ static void mtk_dsi_bridge_enable(struct
+> > drm_bridge *bridge)
+> >  	mtk_output_dsi_enable(dsi);
+> >  }
+> >  
+> > +static void mtk_dsi_bridge_pre_enable(struct drm_bridge *bridge)
+> > +{
+> > +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
+> > +
+> > +	mtk_dsi_poweron(dsi);
+> 
+> Should you handle the error of mtk_dsi_poweron?
+> If you failed to mtk_dsi_bridge_pre_enable and do
+> mtk_dsi_bridge_enable,
+> what will happend?
+> 
+> > +}
+> > +
+> > +static void mtk_dsi_bridge_post_disable(struct drm_bridge *bridge)
+> > +{
+> > +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
+> > +
+> > +	mtk_dsi_poweroff(dsi);
+> 
+> If you failed to mtk_dsi_bridge_disable and you do
+> mtk_dsi_bridge_post_disable,
+> what will happend?
+> Do you need to handle this?
+> 
+> BRs,
+> Rex
+> 
+> > +}
+> > +
+> >  static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
+> >  	.attach = mtk_dsi_bridge_attach,
+> >  	.disable = mtk_dsi_bridge_disable,
+> >  	.enable = mtk_dsi_bridge_enable,
+> > +	.pre_enable = mtk_dsi_bridge_pre_enable,
+> > +	.post_disable = mtk_dsi_bridge_post_disable,
+> >  	.mode_set = mtk_dsi_bridge_mode_set,
+> >  };
+> >  
+> 
+> 
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mtk-mmsys.c | 1 +
- 1 file changed, 1 insertion(+)
+Hi Rex:
 
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index 4fc4c2c9ea20..f69521fabcce 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -70,6 +70,7 @@ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
- 	.clk_driver = "clk-mt8192-mm",
- 	.routes = mmsys_mt8192_routing_table,
- 	.num_routes = ARRAY_SIZE(mmsys_mt8192_routing_table),
-+	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
- };
- 
- static const struct mtk_mmsys_driver_data mt8365_mmsys_driver_data = {
--- 
-2.35.1
+Thanks for your review!
 
+1.Why they are asymmetric?
+=>My understanding mtk_dsi_stop() and mtk_dsi_start() is to make dsi
+switch from LP11 and HS mode.DSI has two working modes:
+If it is cmd mode, the data sent is sent by LP11, and dsi_start is just
+a signal. In this mode, dsi_stop is not required after sending cmd.
+If it is video mode, because the data needs to be sent in HS mode,
+dsi_start is required to make dsi enter HS mode from LP11. After
+suspend, drm will call dsi_disable, and call dsi_stop to make dsi
+return from HS mode to LP11 state.
+Therefore mtk_dsi_stop() and mtk_dsi_start() are asymmetric.
+For example, in the dsi_host_transfer function, only dsi_stop has no
+dsi_start operation.
 
+2.
+Because the return type of pre_enable & post_disable in common code is
+void type. If there is an error, it will be processed in
+poweron/poweroff, and the error message will be printed.
+Do you mean that pre_enable & post_disable needs to accept the
+poweron/poweroff error return value and then print the error log?
+
+3.
+If pre_enable fails, there is only a problem with the dsi module, and
+it does not affect the execution of other modules and enable funcs
+under drm. 
+Same goes for post_disable & disable.
+
+Best Regrds!
+xinlei
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
