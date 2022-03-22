@@ -4,59 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76D41C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 14:35:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6B25C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 15:10:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OzAfKESOTg2X01Hu/foXivDHsNpeSAvnr8csSjJNo9U=; b=veiXGfyV6cq90D
-	UDkTcrx408oLvj+Opm5CasKIVfeo0jE07fdeMNYo+J2YUVAGzCd+KiqH4PLPJINUvt3DhPkqbQTKS
-	8afrGBLWgp+dF/+m4Wd9htpB07YMpfAGANRQv6dpDERCZ5cAqHqr57eo0O8Cuww9qoz18vx9K4ZWd
-	1xveBkRQ8sEpk3JsTMuN2WIYvg/6CGgGAdfBxOfYDyiavis+jaGBSR5cVLhroChBgHzSmX2nSziWA
-	B5ZYLY3j/tOF9iqMEXO7n2w/fFEuAU7+UQcKgklruVy4RWO7Fpo4BpGHbmfCuqD+1lNqPtEikMHuq
-	2v3Mb2SryAReHA6OJLZg==;
+	List-Owner; bh=gHc3zOHagPcK5J1cuBwzjnE16mKJ7j8/AzU8kLse+dc=; b=uHvBsUhrMA30Nk
+	l+eDfclJjoGfHgNIfloArZsYtMGcuDtruzbCoofUVwUwaZILYMlCFkVlRHpTMTn53lEQCYpXWylUe
+	CiDpKiW7HCTuTFwR5JEvFI63GUo9sYn0SZBcX7x2EL67hkf3upcIdGyHzGXV5h96EJLgzEZ0I40dq
+	VfS2oEpIBWumkW2FKxE/+7T2K5poQV0xjyCwvGJc92WkQcGH71BPx//FED6ZqiBlqjBqDqxvy2pz7
+	SpJPPXGFdMugohYJ+DuBeSdL+SCBWWY8kUEUG7BUPd67MjorVORPiJK4ay+fIQsIGNo0DbUS7+42s
+	LrrSzPSgwCYJRZwV3mXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWfbO-00BFin-D5; Tue, 22 Mar 2022 14:35:14 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nWg8z-00BUTF-4f; Tue, 22 Mar 2022 15:09:57 +0000
+Received: from mail-oa1-f47.google.com ([209.85.160.47])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWfbB-00BFe3-OV; Tue, 22 Mar 2022 14:35:03 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 4A85D1F44168
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647959700;
- bh=aNbxXQ/SWTcyB0DYx3I3/ERMzeu2JAiNEzh7tn5j4wE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=PH97x9fGWNjR9ZafBX72qdRbmIzVwKx9irbMtnG21KzUrfNSFcVwxferoJpZSZ/z5
- OJ4DP+GIVHNY1x2JNg94ne1kWTU8mnmhCFLO6jRqyxGycTQjZSXNb3nM1EmQVszbkj
- a0DVTFrmX0Tce65fW25rRtLIDu32/ansGYY8memvI0SlPcHaQm+t4XZow1sNE8bFmb
- 51kqueaI3W2fN/k2MRCuB+w0fR2WXNPkxJC6TYSk7yGUMtQuDhfpFCoEXHEaPgCTfU
- fKb2lI5FVxWKaj40ZIKS9mrjAAc7a1US64tzPIEngTqXyNKFXz115hyfjuhCAWU5tV
- kCJVWVquz2dsA==
-Date: Tue, 22 Mar 2022 10:34:55 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
- Hui Liu <hui.liu@mediatek.com>
-Subject: Re: [PATCH v4 12/22] arm64: dts: mt8192: Add mmc device nodes
-Message-ID: <20220322143455.fbaavvhf3uh5otbn@notapiano>
-References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
- <20220318144534.17996-13-allen-kh.cheng@mediatek.com>
+ id 1nWg8n-00BURJ-Nu; Tue, 22 Mar 2022 15:09:47 +0000
+Received: by mail-oa1-f47.google.com with SMTP id
+ 586e51a60fabf-dd9d3e7901so1966495fac.8; 
+ Tue, 22 Mar 2022 08:09:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=LZrnZENFzHAcyG4z8YXGbb1cPaECVD2LaEEDGj9rfYI=;
+ b=uxYon8tjJyp7y67iuTW6B8XqAEaJ582zM1dUloj9v8o3/RYyi1sA8qLzxIla/HWoTc
+ jtScxBsJwe8eNfXKqIvz5nupZZX54Zbch5+VW5yZlCkX2jPyeUfB+pSuFe54rG2eh/vv
+ g+knwvSljpN11Vsx+URdSEl/8r1qsAKhj5F3vYrgzwzBnd/3ywT5qlvfhmEwt+lSZD5e
+ qVLkDz3X6RNLCVSI1V7DmhcQzxGL9NB6Do1/VNG/E0QMtAsXQJxMO0Y+rqPjVjhqXfG6
+ Igk3HxLamqTPlg5PDLBmUvkYvGE62w5OFZKygeNwvt6ld8ELgtpLizjcbeBhxYJIpVFr
+ u9Ug==
+X-Gm-Message-State: AOAM532fxurP20mcdJsUrErvdG9p47OTfSn7iNbpRwMO/zUhLZYDSz8X
+ N8UWFmDmURRS7VWjVN3vPkB7K2BuDw==
+X-Google-Smtp-Source: ABdhPJxdZIXeGXL5BgfAh0JHUsLAqnvcG4qAGL//HhwVWpYiVL440dU2hgKLJXDQsjMwp3OqJlK5gg==
+X-Received: by 2002:a05:6870:4789:b0:dd:e6e0:2471 with SMTP id
+ c9-20020a056870478900b000dde6e02471mr1892795oaq.195.1647961338852; 
+ Tue, 22 Mar 2022 08:02:18 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ n62-20020acaef41000000b002ef646e6690sm3141414oih.53.2022.03.22.08.02.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 22 Mar 2022 08:02:17 -0700 (PDT)
+Received: (nullmailer pid 2012421 invoked by uid 1000);
+ Tue, 22 Mar 2022 15:02:16 -0000
+Date: Tue, 22 Mar 2022 10:02:16 -0500
+From: Rob Herring <robh@kernel.org>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: broonie@kernel.org, tzungbi@google.com,
+ angelogioacchino.delregno@collabora.com, aaronyu@google.com,
+ matthias.bgg@gmail.com, trevor.wu@mediatek.com, linmq006@gmail.com,
+ alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [v5 1/4] ASoC: dt-bindings: mt8192-mt6359: add new compatible
+ and new properties
+Message-ID: <Yjnk+AYb0Eo8ufJA@robh.at.kernel.org>
+References: <20220319114111.11496-1-jiaxin.yu@mediatek.com>
+ <20220319114111.11496-2-jiaxin.yu@mediatek.com>
+ <YjkLVwvxvOKr30qL@robh.at.kernel.org>
+ <0e909de12a52ae88633634d868bd5001eef1b830.camel@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220318144534.17996-13-allen-kh.cheng@mediatek.com>
+In-Reply-To: <0e909de12a52ae88633634d868bd5001eef1b830.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220322_073501_966324_BE62D87E 
-X-CRM114-Status: GOOD (  13.98  )
+X-CRM114-CacheID: sfid-20220322_080945_792965_F9451AF8 
+X-CRM114-Status: GOOD (  21.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,81 +85,97 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 18, 2022 at 10:45:24PM +0800, Allen-KH Cheng wrote:
-> Add mmc nodes for mt8192 SoC.
-> =
+On Tue, Mar 22, 2022 at 11:45:24AM +0800, Jiaxin Yu wrote:
+> On Mon, 2022-03-21 at 18:33 -0500, Rob Herring wrote:
+> > On Sat, Mar 19, 2022 at 07:41:08PM +0800, Jiaxin Yu wrote:
+> > > 1. Adds new compatible string "mt8192_mt6359_rt1015p_rt5682s" for
+> > > machines
+> > > with rt1015p and rt5682s.
+> > > 2. Adds new property "mediatek,headset-codec" for getting headset
+> > > codecs.
+> > > 3. Adds new property "mediatek,speaker-codec" for getting speaker
+> > > codecs.
+> > > 
+> > > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> > > ---
+> > >  .../sound/mt8192-mt6359-rt1015-rt5682.yaml    | 29
+> > > +++++++++++++++++++
+> > >  1 file changed, 29 insertions(+)
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/sound/mt8192-mt6359-
+> > > rt1015-rt5682.yaml
+> > > b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-
+> > > rt5682.yaml
+> > > index a781e7aaaa38..aa0476eedd38 100644
+> > > --- a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-
+> > > rt5682.yaml
+> > > +++ b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-
+> > > rt5682.yaml
+> > > @@ -18,6 +18,7 @@ properties:
+> > >      enum:
+> > >        - mediatek,mt8192_mt6359_rt1015_rt5682
+> > >        - mediatek,mt8192_mt6359_rt1015p_rt5682
+> > > +      - mediatek,mt8192_mt6359_rt1015p_rt5682s
+> > >  
+> > >    mediatek,platform:
+> > >      $ref: "/schemas/types.yaml#/definitions/phandle"
+> > > @@ -27,6 +28,25 @@ properties:
+> > >      $ref: "/schemas/types.yaml#/definitions/phandle"
+> > >      description: The phandle of HDMI codec.
+> > >  
+> > > +patternProperties:
+> > > +  "^mediatek,headset-codec$":
+> > 
+> > Fixed string, not a pattern. Move to 'properties'. Drop the vendor 
+> > prefix too.
+> > 
+> Hi Rob,
+> 
+> I originally referred to simple-card.yaml and move "xxx.yyy" to the
+> patternProperties.
+> 
+> Such as:
+> # use patternProperties to avoid naming "xxx,yyy" issue
+> patternProperties:
+>   "^simple-audio-card,widgets$":
+>     $ref: "#/definitions/widgets"
 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
+That was working around an issue and I've now fixed this.
 
-Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+> But your comment is more reasonable. I will move them to 'properties'
+> and drop the vendor prefix. Thanks for your review.
+> 
+> 
+> > > +    description: Holds subnode which indicates headset dai.
+> > > +    type: object
+> > > +    properties:
+> > > +      sound-dai:
+> > > +        $ref: /schemas/types.yaml#/definitions/phandle-array
+> > 
+> > Standard property, don't need a type or description. Just how many
+> > and 
+> > what each one is if more than 1.
+> 
+> Should I describe them as below?
+> 
+> properties:
+> ...
+>   speaker-codec:
+>     type: object
+>     properties:
+>       sound-dai:
+>          maxItems: 1
+> ...
 
-> ---
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 34 +++++++++++++++++++++---
->  1 file changed, 30 insertions(+), 4 deletions(-)
-> =
+Yes.
 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/d=
-ts/mediatek/mt8192.dtsi
-> index 6220d6962f58..2648f2847993 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -1150,10 +1150,36 @@
->  			#clock-cells =3D <1>;
->  		};
->  =
-
-> -		msdc: clock-controller@11f60000 {
-> -			compatible =3D "mediatek,mt8192-msdc";
-> -			reg =3D <0 0x11f60000 0 0x1000>;
-> -			#clock-cells =3D <1>;
-> +		mmc0: mmc@11f60000 {
-> +			compatible =3D "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
-> +			reg =3D <0 0x11f60000 0 0x1000>, <0 0x11f50000 0 0x1000>;
-> +			interrupts =3D <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			clocks =3D <&topckgen CLK_TOP_MSDC50_0_SEL>,
-> +				 <&msdc_top CLK_MSDC_TOP_H_MST_0P>,
-> +				 <&msdc_top CLK_MSDC_TOP_SRC_0P>,
-> +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
-> +				 <&msdc_top CLK_MSDC_TOP_P_MSDC0>,
-> +				 <&msdc_top CLK_MSDC_TOP_AXI>,
-> +				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
-> +			clock-names =3D "source", "hclk", "source_cg", "sys_cg",
-> +				      "pclk_cg", "axi_cg", "ahb_cg";
-> +			status =3D "disabled";
-> +		};
-> +
-> +		mmc1: mmc@11f70000 {
-> +			compatible =3D "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
-> +			reg =3D <0 0x11f70000 0 0x1000>, <0 0x11c70000 0 0x1000>;
-> +			interrupts =3D <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			clocks =3D <&topckgen CLK_TOP_MSDC30_1_SEL>,
-> +				 <&msdc_top CLK_MSDC_TOP_H_MST_1P>,
-> +				 <&msdc_top CLK_MSDC_TOP_SRC_1P>,
-> +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
-> +				 <&msdc_top CLK_MSDC_TOP_P_MSDC1>,
-> +				 <&msdc_top CLK_MSDC_TOP_AXI>,
-> +				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
-> +			clock-names =3D "source", "hclk", "source_cg", "sys_cg",
-> +				      "pclk_cg", "axi_cg", "ahb_cg";
-> +			status =3D "disabled";
->  		};
->  =
-
->  		mfgcfg: clock-controller@13fbf000 {
-> -- =
-
-> 2.18.0
-> =
-
-> =
-
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
