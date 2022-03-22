@@ -4,67 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97FC7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 09:33:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFD5BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 09:38:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GkZv0ICWEKBRHsGsFXaPx4s6p7XHKIDJGYaYSQ1p9RE=; b=zOdFK4Xc1sEe6Q
-	pfJWSoTvsizQKC4Ww9UxJDrmUu4JJq6sBz3eKM+qx3nS72gn6Vhkm1MZQtbo74TrsNz91VxjC81Kq
-	GW6tzQjE3+IYy7OGWh1WUJdS7hxmMByHkGixeDITH4qvi6KFAIFKLhHlPO3WNqFbQkqfTpUwUE81d
-	3YfnD+l6nAoHIJeSBGEFWRb+dP0NQ9deDyA0+M6D1S361rvaOftbntbYzrWpw09XsJNWibv7Tx6sd
-	yDY9XPwoOHC/Ml0m5aR0Dv1+xRU8ZHksa5XjEdX5VftcQd9xrwPQURgtDYNYnmtKpg0b2k0V+jvaW
-	bfUjkLg9ydOaZQw/mUkw==;
+	List-Owner; bh=3UGY6qBNxJKYkg9EgOm91HAGwNN/n0LVzy1U/k27qiQ=; b=UvFRC6Ttb7aP9E
+	D0vh3XpCUOmDW227WbNnSKCCB0Fu6Af/wCMuv8mBITRmWV1STzRT9WGGyzGx7532THEdpdj2Z4M1G
+	90+tl3xrylF0fk7/ouIJO+4sXVkygg7CmRT1MbVp3pJKt7nbfw3yPHD/W1yaEDQasogm2T+0rmM0p
+	O0whKZff0uWscWKvjL9bsjVBusGqee0vmUs5TrwzUDDubE1XWbqPj72VCUkZl+zRMU2pwFvxx1lp0
+	AwDt9rIRMnsal3cIyfUsIJaz3XzkpzjhuqmZpxJbIciyrycnz+gzHEQuG/5OUlvf2JrWJTuTNvaKS
+	+5Q95xrVFwMGL5SegB3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWat2-00AbiB-JX; Tue, 22 Mar 2022 09:33:08 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nWaxf-00AcK7-PW; Tue, 22 Mar 2022 09:37:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWasq-00Abfx-8s; Tue, 22 Mar 2022 09:32:57 +0000
-X-UUID: 4d5c6eabb196498091d84f3e43a52f76-20220322
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=SZiIAjMoKatInPZZZjb3y8PlI6FV94VIn1UDqGxPTAQ=; 
- b=rzj5tdG0x3Xbq0+zMfnKmO17918ZmfYHSJrc0kWan/9xjdd7d4fNwBNBJmvYGPWZKMOVYGRbq8dqDmS/quatMxkanD+ni6hQqpe14iVXXowCyq8bxxV4BWed0zIBRSPTurz+DZrLLIM4ttYHufeo3B7bYo0N4T4T8XKY0Uujw6U=;
-X-UUID: 4d5c6eabb196498091d84f3e43a52f76-20220322
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <xinlei.lee@mediatek.com>)
+ id 1nWaxc-00AcIi-Dh; Tue, 22 Mar 2022 09:37:54 +0000
+X-UUID: 328674ffb758477bb2704b228977a062-20220322
+X-UUID: 328674ffb758477bb2704b228977a062-20220322
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2085356851; Tue, 22 Mar 2022 02:32:49 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1834304159; Tue, 22 Mar 2022 02:37:46 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Mar 2022 02:22:47 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Mar 2022 17:22:45 +0800
-Received: from mszsdhlt06 (10.16.6.206) by mtkcas10.mediatek.inc
+ 15.0.1497.2; Tue, 22 Mar 2022 02:37:44 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 22 Mar 2022 17:37:41 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 22 Mar 2022 17:22:41 +0800
-Message-ID: <4d022881d08ea1d4a222b3439510c6d6d26d7284.camel@mediatek.com>
-Subject: Re: [PATCH v3,2/4] drm/mediatek: Separate poweron/poweroff from
- enable/disable and define new funcs
-From: xinlei.lee <xinlei.lee@mediatek.com>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
- <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <matthias.bgg@gmail.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, <jitao.shi@mediatek.com>
-Date: Tue, 22 Mar 2022 17:23:02 +0800
-In-Reply-To: <390025b57d3345c34071231c68350e9311af64c9.camel@mediatek.com>
-References: <1647503611-13144-1-git-send-email-xinlei.lee@mediatek.com>
- <1647503611-13144-3-git-send-email-xinlei.lee@mediatek.com>
- <390025b57d3345c34071231c68350e9311af64c9.camel@mediatek.com>
+ Transport; Tue, 22 Mar 2022 17:37:41 +0800
+Message-ID: <0a81bedfecd0f691c4da06640c50fc409f1e2cb0.camel@mediatek.com>
+Subject: Re: [PATCH v14 1/6] soc: mediatek: mutex: add common interface to
+ accommodate multiple modules operationg MUTEX
+From: CK Hu <ck.hu@mediatek.com>
+To: Moudy Ho <moudy.ho@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Jernej
+ Skrabec" <jernej.skrabec@siol.net>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
+ <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
+ <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ Alexandre Courbot <acourbot@chromium.org>, <tfiga@chromium.org>,
+ <drinkcat@chromium.org>, <pihsun@chromium.org>, <hsinyi@google.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Maoguang Meng <maoguang.meng@mediatek.com>, daoyuan huang
+ <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+ <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
+ <allen-kh.cheng@mediatek.com>, <randy.wu@mediatek.com>,
+ <jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
+ <river.cheng@mediatek.com>, <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 22 Mar 2022 17:37:41 +0800
+In-Reply-To: <20220317143926.15835-2-moudy.ho@mediatek.com>
+References: <20220317143926.15835-1-moudy.ho@mediatek.com>
+ <20220317143926.15835-2-moudy.ho@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220322_023256_349798_B7E0BCA3 
-X-CRM114-Status: GOOD (  33.48  )
+X-CRM114-CacheID: sfid-20220322_023752_504710_2A09CF62 
+X-CRM114-Status: GOOD (  22.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,176 +88,234 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-03-17 at 20:02 +0800, Rex-BC Chen wrote:
-> Hello Xinlei,
-> 
-> On Thu, 2022-03-17 at 15:53 +0800, xinlei.lee@mediatek.com wrote:
-> > From: Jitao Shi <jitao.shi@mediatek.com>
-> > 
-> > In order to match the changes of "Use the drm_panel_bridge API",
-> > the poweron/poweroff of dsi is extracted from enable/disable and
-> > defined as new funcs (pre_enable/post_disable).
-> > 
-> > Fixes: 2dd8075d2185 ("drm/mediatek: mtk_dsi: Use the
-> > drm_panel_bridge
-> > API")
-> > 
-> > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 45 +++++++++++++++++---------
-> > --
-> > --
-> >  1 file changed, 26 insertions(+), 19 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > index 262c027d8c2f..e33caaca11a7 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > @@ -679,16 +679,6 @@ static void mtk_dsi_poweroff(struct mtk_dsi
-> > *dsi)
-> >  	if (--dsi->refcount != 0)
-> >  		return;
-> >  
-> > -	/*
-> > -	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
-> > -	 * mtk_dsi_stop() should be called after
-> > mtk_drm_crtc_atomic_disable(),
-> > -	 * which needs irq for vblank, and mtk_dsi_stop() will disable
-> > irq.
-> > -	 * mtk_dsi_start() needs to be called in
-> > mtk_output_dsi_enable(),
-> > -	 * after dsi is fully set.
-> > -	 */
-> > -	mtk_dsi_stop(dsi);
-> > -
-> > -	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
-> >  	mtk_dsi_reset_engine(dsi);
-> >  	mtk_dsi_lane0_ulp_mode_enter(dsi);
-> >  	mtk_dsi_clk_ulp_mode_enter(dsi);
-> > @@ -703,17 +693,9 @@ static void mtk_dsi_poweroff(struct mtk_dsi
-> > *dsi)
-> >  
-> >  static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
-> >  {
-> > -	int ret;
-> > -
-> >  	if (dsi->enabled)
-> >  		return;
-> >  
-> > -	ret = mtk_dsi_poweron(dsi);
-> > -	if (ret < 0) {
-> > -		DRM_ERROR("failed to power on dsi\n");
-> > -		return;
-> > -	}
-> > -
-> >  	mtk_dsi_set_mode(dsi);
-> >  	mtk_dsi_clk_hs_mode(dsi, 1);
-> >  
-> > @@ -727,7 +709,16 @@ static void mtk_output_dsi_disable(struct
-> > mtk_dsi *dsi)
-> >  	if (!dsi->enabled)
-> >  		return;
-> >  
-> > -	mtk_dsi_poweroff(dsi);
-> > +	/*
-> > +	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
-> 
-> Why they are asymmetric?
-> 
-> > +	 * mtk_dsi_stop() should be called after
-> > mtk_drm_crtc_atomic_disable(),
-> > +	 * which needs irq for vblank, and mtk_dsi_stop() will disable
-> > irq.
-> > +	 * mtk_dsi_start() needs to be called in
-> > mtk_output_dsi_enable(),
-> > +	 * after dsi is fully set.
-> > +	 */
-> > +	mtk_dsi_stop(dsi);
-> > +
-> > +	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
-> >  
-> >  	dsi->enabled = false;
-> >  }
-> > @@ -765,10 +756,26 @@ static void mtk_dsi_bridge_enable(struct
-> > drm_bridge *bridge)
-> >  	mtk_output_dsi_enable(dsi);
-> >  }
-> >  
-> > +static void mtk_dsi_bridge_pre_enable(struct drm_bridge *bridge)
-> > +{
-> > +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
-> > +
-> > +	mtk_dsi_poweron(dsi);
-> 
-> Should you handle the error of mtk_dsi_poweron?
-> If you failed to mtk_dsi_bridge_pre_enable and do
-> mtk_dsi_bridge_enable,
-> what will happend?
-> 
-> > +}
-> > +
-> > +static void mtk_dsi_bridge_post_disable(struct drm_bridge *bridge)
-> > +{
-> > +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
-> > +
-> > +	mtk_dsi_poweroff(dsi);
-> 
-> If you failed to mtk_dsi_bridge_disable and you do
-> mtk_dsi_bridge_post_disable,
-> what will happend?
-> Do you need to handle this?
-> 
-> BRs,
-> Rex
-> 
-> > +}
-> > +
-> >  static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
-> >  	.attach = mtk_dsi_bridge_attach,
-> >  	.disable = mtk_dsi_bridge_disable,
-> >  	.enable = mtk_dsi_bridge_enable,
-> > +	.pre_enable = mtk_dsi_bridge_pre_enable,
-> > +	.post_disable = mtk_dsi_bridge_post_disable,
-> >  	.mode_set = mtk_dsi_bridge_mode_set,
-> >  };
-> >  
-> 
-> 
+Hi, Moudy:
 
-Hi Rex:
+On Thu, 2022-03-17 at 22:39 +0800, Moudy Ho wrote:
+> In order to allow multiple modules to operate MUTEX hardware through
+> a common interfrace, a flexible index "mtk_mutex_table_index" needs
+> to
+> be added to replace original component ID so that like DDP and MDP
+> can add their own MUTEX table settings independently.
+> 
+> In addition, 4 generic interface "mtk_mutex_set_mod",
+> "mtk_mutex_set_sof",
+> "mtk_mutex_clear_mod" and "mtk_mutex_clear_sof" have been added,
+> which is
+> expected to replace the "mtk_mutex_add_comp" and
+> "mtk_mutex_remove_comp"
+> pair originally dedicated to DDP in the future.
+> 
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mtk-mutex.c       | 105
+> +++++++++++++++++++++++++
+>  include/linux/soc/mediatek/mtk-mutex.h |  21 +++++
+>  2 files changed, 126 insertions(+)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-mutex.c
+> b/drivers/soc/mediatek/mtk-mutex.c
+> index aaf8fc1abb43..f8c33186685a 100644
+> --- a/drivers/soc/mediatek/mtk-mutex.c
+> +++ b/drivers/soc/mediatek/mtk-mutex.c
+> @@ -151,11 +151,17 @@ enum mtk_mutex_sof_id {
+>  	MUTEX_SOF_DSI3,
+>  };
+>  
+> +struct mtk_mutex_mod {
+> +	u8 tab;
 
-Thanks for your review!
+tab is always 0 in this series, so remove this.
 
-1.Why they are asymmetric?
-=>My understanding mtk_dsi_stop() and mtk_dsi_start() is to make dsi
-switch from LP11 and HS mode.DSI has two working modes:
-If it is cmd mode, the data sent is sent by LP11, and dsi_start is just
-a signal. In this mode, dsi_stop is not required after sending cmd.
-If it is video mode, because the data needs to be sent in HS mode,
-dsi_start is required to make dsi enter HS mode from LP11. After
-suspend, drm will call dsi_disable, and call dsi_stop to make dsi
-return from HS mode to LP11 state.
-Therefore mtk_dsi_stop() and mtk_dsi_start() are asymmetric.
-For example, in the dsi_host_transfer function, only dsi_stop has no
-dsi_start operation.
+> +	u32 value;
 
-2.
-Because the return type of pre_enable & post_disable in common code is
-void type. If there is an error, it will be processed in
-poweron/poweroff, and the error message will be printed.
-Do you mean that pre_enable & post_disable needs to accept the
-poweron/poweroff error return value and then print the error log?
+Without tab, this struct is not necessary.
 
-3.
-If pre_enable fails, there is only a problem with the dsi module, and
-it does not affect the execution of other modules and enable funcs
-under drm. 
-Same goes for post_disable & disable.
+> +};
+> +
+>  struct mtk_mutex_data {
+>  	const unsigned int *mutex_mod;
+>  	const unsigned int *mutex_sof;
+>  	const unsigned int mutex_mod_reg;
+>  	const unsigned int mutex_sof_reg;
+> +	const struct mtk_mutex_mod *mutex_table_mod;
+>  	const bool no_clk;
+>  };
+>  
+> @@ -445,6 +451,65 @@ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
+>  }
+>  EXPORT_SYMBOL_GPL(mtk_mutex_add_comp);
+>  
+> +void mtk_mutex_set_mod(struct mtk_mutex *mutex,
+> +		       enum mtk_mutex_table_index idx)
+> +{
+> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
+> mtk_mutex_ctx,
+> +						 mutex[mutex->id]);
+> +	unsigned int reg;
+> +	unsigned int offset;
+> +
+> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+> +
+> +	if (idx < MUTEX_TABLE_IDX_MDP_RDMA0 ||
+> +	    idx >= MUTEX_TABLE_IDX_MAX)
 
-Best Regrds!
-xinlei
+error message?
+
+> +		return;
+> +
+> +	if (mtx->data->mutex_table_mod[idx].tab)
+> +		offset = DISP_REG_MUTEX_MOD2(mutex->id);
+> +	else
+> +		offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
+> +					    mutex->id);
+> +
+> +	reg = readl_relaxed(mtx->regs + offset);
+> +	reg |= 1 << mtx->data->mutex_table_mod[idx].value;
+> +	writel_relaxed(reg, mtx->regs + offset);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mutex_set_mod);
+> +
+> +void mtk_mutex_set_sof(struct mtk_mutex *mutex,
+> +		       enum mtk_mutex_table_index idx)
+> +{
+> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
+> mtk_mutex_ctx,
+> +						 mutex[mutex->id]);
+> +	unsigned int sof_id;
+> +
+> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+> +
+> +	if (idx < MUTEX_TABLE_IDX_MDP_RDMA0 ||
+> +	    idx >= MUTEX_TABLE_IDX_MAX)
+
+Ditto.
+
+> +		return;
+> +
+> +	switch (idx) {
+> +	case MUTEX_TABLE_IDX_MDP_RDMA0:
+> +	case MUTEX_TABLE_IDX_MDP_RSZ0:
+> +	case MUTEX_TABLE_IDX_MDP_RSZ1:
+> +	case MUTEX_TABLE_IDX_MDP_TDSHP0:
+> +	case MUTEX_TABLE_IDX_MDP_WROT0:
+> +	case MUTEX_TABLE_IDX_MDP_WDMA:
+> +	case MUTEX_TABLE_IDX_MDP_AAL0:
+> +	case MUTEX_TABLE_IDX_MDP_CCORR0:
+
+Error & return?
+
+Regards,
+CK
+
+> +	default:
+> +		sof_id = MUTEX_SOF_SINGLE_MODE;
+> +		break;
+> +	}
+> +
+> +	writel_relaxed(mtx->data->mutex_sof[sof_id],
+> +		       mtx->regs +
+> +		       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg,
+> mutex->id));
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mutex_set_sof);
+> +
+>  void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
+>  			   enum mtk_ddp_comp_id id)
+>  {
+> @@ -485,6 +550,46 @@ void mtk_mutex_remove_comp(struct mtk_mutex
+> *mutex,
+>  }
+>  EXPORT_SYMBOL_GPL(mtk_mutex_remove_comp);
+>  
+> +void mtk_mutex_clear_mod(struct mtk_mutex *mutex,
+> +			 enum mtk_mutex_table_index idx)
+> +{
+> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
+> mtk_mutex_ctx,
+> +						 mutex[mutex->id]);
+> +	unsigned int reg;
+> +	unsigned int offset;
+> +
+> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+> +
+> +	if (idx < MUTEX_TABLE_IDX_MDP_RDMA0 ||
+> +	    idx >= MUTEX_TABLE_IDX_MAX)
+> +		return;
+> +
+> +	if (mtx->data->mutex_table_mod[idx].tab)
+> +		offset = DISP_REG_MUTEX_MOD2(mutex->id);
+> +	else
+> +		offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
+> +					    mutex->id);
+> +
+> +	reg = readl_relaxed(mtx->regs + offset);
+> +	reg &= ~(1 << mtx->data->mutex_table_mod[idx].value);
+> +	writel_relaxed(reg, mtx->regs + offset);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mutex_clear_mod);
+> +
+> +void mtk_mutex_clear_sof(struct mtk_mutex *mutex)
+> +{
+> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
+> mtk_mutex_ctx,
+> +						 mutex[mutex->id]);
+> +
+> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+> +
+> +	writel_relaxed(MUTEX_SOF_SINGLE_MODE,
+> +		       mtx->regs +
+> +		       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg,
+> +					  mutex->id));
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mutex_clear_sof);
+> +
+>  void mtk_mutex_enable(struct mtk_mutex *mutex)
+>  {
+>  	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
+> mtk_mutex_ctx,
+> diff --git a/include/linux/soc/mediatek/mtk-mutex.h
+> b/include/linux/soc/mediatek/mtk-mutex.h
+> index 6fe4ffbde290..200f4365c950 100644
+> --- a/include/linux/soc/mediatek/mtk-mutex.h
+> +++ b/include/linux/soc/mediatek/mtk-mutex.h
+> @@ -10,14 +10,35 @@ struct regmap;
+>  struct device;
+>  struct mtk_mutex;
+>  
+> +enum mtk_mutex_table_index {
+> +	/* MDP table index */
+> +	MUTEX_TABLE_IDX_MDP_RDMA0,
+> +	MUTEX_TABLE_IDX_MDP_RSZ0,
+> +	MUTEX_TABLE_IDX_MDP_RSZ1,
+> +	MUTEX_TABLE_IDX_MDP_TDSHP0,
+> +	MUTEX_TABLE_IDX_MDP_WROT0,
+> +	MUTEX_TABLE_IDX_MDP_WDMA,
+> +	MUTEX_TABLE_IDX_MDP_AAL0,
+> +	MUTEX_TABLE_IDX_MDP_CCORR0,
+> +
+> +	MUTEX_TABLE_IDX_MAX		/* ALWAYS keep at the end */
+> +};
+> +
+>  struct mtk_mutex *mtk_mutex_get(struct device *dev);
+>  int mtk_mutex_prepare(struct mtk_mutex *mutex);
+>  void mtk_mutex_add_comp(struct mtk_mutex *mutex,
+>  			enum mtk_ddp_comp_id id);
+> +void mtk_mutex_set_mod(struct mtk_mutex *mutex,
+> +		       enum mtk_mutex_table_index idx);
+> +void mtk_mutex_set_sof(struct mtk_mutex *mutex,
+> +		       enum mtk_mutex_table_index idx);
+>  void mtk_mutex_enable(struct mtk_mutex *mutex);
+>  void mtk_mutex_disable(struct mtk_mutex *mutex);
+>  void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
+>  			   enum mtk_ddp_comp_id id);
+> +void mtk_mutex_clear_mod(struct mtk_mutex *mutex,
+> +			 enum mtk_mutex_table_index idx);
+> +void mtk_mutex_clear_sof(struct mtk_mutex *mutex);
+>  void mtk_mutex_unprepare(struct mtk_mutex *mutex);
+>  void mtk_mutex_put(struct mtk_mutex *mutex);
+>  void mtk_mutex_acquire(struct mtk_mutex *mutex);
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
