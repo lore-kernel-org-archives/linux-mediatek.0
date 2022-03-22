@@ -4,60 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF116C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 12:33:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FD4DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 13:04:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=63CC44T76yDL6djZx9juh3vJRfwo/VWs18EyyoLb2rA=; b=WKcKpUZq2ZTN/A
-	FkWLoTvBRCi49/6xvg73K+KwXizzsWpbPc5C1fHFnt7MMxIQme1Z+jWT0l/HGiZz1aBWU2tzek82U
-	5dYLld5oxycaUyTQXsYJPnwbKtS3P6ytNfa8cyUfTkdNz5KSBw4CI3HuK9FhjrOjN7yEf4RiXGvZo
-	doL5/N37Bg6dTEuyREphW1hn7IfMor2bMCOLMeVkeXkoqZx5nTo54rEqIILWRBrL6jwMEEDS0V0Ww
-	PIVxwH+0hr5ai0GI4DyK5HLZMhJdX9OyUH0uy53KGNU873E6jaACVEYT8kotu9DUbc+wfOXFd1h0X
-	/cnFBdH8Ms2UOOXOnF5g==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7V1LSH0eNMxj2red0inf/rl7NcicKtuVOXky0p9aLjc=; b=YsXzI5USNIctB6
+	iSWnSveCUwwkZ28YyltzQBOXETlc1H8o29VJLOEza5Jo1tLthP5pQIkSjysml0IiNwizQgKZNa8Kn
+	5d2kBaSIuqSTzsTjzWSkn/k/Xfauh1gLuqZHm1LXMInCZKwoDDm61neP23T+efNAZg5bZiDHGjKO1
+	+G7b8pyn20YFtpzjCq44rr7jpgkipj97LgPoZV4ZnMtYufQeNcLBlPHFpnojKUCTciHLSH6hDlqxj
+	YMvdP36HN1KwwAiBHCTqBSUGuab2tPFZjpU5FZlWILT1VMPkdRYrQIN3XBWcRD01GzyJDqz7NVT2r
+	BVqeVv77tTRMp2qm1dcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWdhS-00AyFw-JX; Tue, 22 Mar 2022 12:33:22 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nWeB1-00B1I5-SN; Tue, 22 Mar 2022 13:03:55 +0000
+Received: from mga18.intel.com ([134.134.136.126])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWdhM-00AyFO-Mk; Tue, 22 Mar 2022 12:33:20 +0000
-X-UUID: e3f5f673c03b408ebb1abd48aa28e059-20220322
-X-UUID: e3f5f673c03b408ebb1abd48aa28e059-20220322
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1923388601; Tue, 22 Mar 2022 05:33:12 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Mar 2022 05:28:48 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 22 Mar 2022 20:28:47 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 22 Mar 2022 20:28:46 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Ohad Ben-Cohen <ohad@wizery.com>, Bjorn Andersson
- <bjorn.andersson@linaro.org>, Mathieu Poirier <mathieu.poirier@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: Tinghan Shen <tinghan.shen@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
- <linux-remoteproc@vger.kernel.org>, Allen-KH Cheng
- <allen-kh.cheng@mediatek.com>
-Subject: [PATCH] remoteproc: mediatek: enable cache for mt8186 SCP
-Date: Tue, 22 Mar 2022 20:28:45 +0800
-Message-ID: <20220322122845.4068-1-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1nWeAz-00B1HC-2Q; Tue, 22 Mar 2022 13:03:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1647954233; x=1679490233;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=wTEFoqt0sHeodi8gzP7osTTZGHMVkgdCnObqjc11j/U=;
+ b=aCckxnh1LIOfgeD+jfVUlGZsT0keCOaZfITg6uTKnoYYl5+YYebAU5r3
+ iffI5LtsvaWWE29Dip4BSGUqM0rvUpI95MiKsS8YjRzRR+svTkwmC9/9m
+ s4yHX8gNRCyvfljrn+vCwqW996ZzL1etReDSgHImyAgNO5bJixBuvcFWk
+ mxuQAO4Tbvq43oD1se9kBYDiq5sBLt+PayVb1RmS7gmoyZNdV8wTm4OIc
+ GSz2VSSw9Ds9qgv52QkZISfzMpFsB7HTDWd35XZ8Nw35vlDAzirParirg
+ XXjwTikYISupazeBo2eaGLpOkcmv8g7anQIEpMFBkYt+JaN4puRDqW4OH Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10293"; a="239968562"
+X-IronPort-AV: E=Sophos;i="5.90,201,1643702400"; d="scan'208";a="239968562"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Mar 2022 06:03:47 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,201,1643702400"; d="scan'208";a="543682073"
+Received: from lkp-server02.sh.intel.com (HELO 89b41b6ae01c) ([10.239.97.151])
+ by orsmga007.jf.intel.com with ESMTP; 22 Mar 2022 06:03:43 -0700
+Received: from kbuild by 89b41b6ae01c with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1nWeAo-000Iou-Bs; Tue, 22 Mar 2022 13:03:42 +0000
+Date: Tue, 22 Mar 2022 21:03:08 +0800
+From: kernel test robot <lkp@intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kbuild-all@lists.01.org, linux-gpio@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Chen-Yu Tsai <wenst@chromium.org>, Sean Wang <sean.wang@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] pinctrl: mediatek: common-v1: fix semicolon.cocci warnings
+Message-ID: <20220322130308.GA21877@65fc916127a5>
+References: <202203222145.UcCrXHfm-lkp@intel.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <202203222145.UcCrXHfm-lkp@intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220322_053316_753734_9E976EF8 
-X-CRM114-Status: GOOD (  11.64  )
+X-CRM114-CacheID: sfid-20220322_060353_309890_E8C0787A 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,49 +83,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. Set SCP cache size before loading SCP FW. (8KB+8KB)
-2. Adjust ipi_buf_offset from 0x7bdb0 to 0x3BDB0 for enableing cache
+From: kernel test robot <lkp@intel.com>
 
-SCP side
- - IPI Buffer: 0x3BDB0 <-> 0x3C000
- - Cache: 0x3C000 <-> 0x40000
+drivers/pinctrl/mediatek/pinctrl-mtk-common.c:171:2-3: Unneeded semicolon
 
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+
+ Remove unneeded semicolon.
+
+Generated by: scripts/coccinelle/misc/semicolon.cocci
+
+Fixes: 156f721704b5 ("pinctrl: mediatek: common-v1: Commonize spec_ies_smt_set callback")
+CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reported-by: kernel test robot <lkp@intel.com>
+Signed-off-by: kernel test robot <lkp@intel.com>
 ---
- drivers/remoteproc/mtk_scp.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index 38609153bf64..24065b6b4da8 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -401,6 +401,14 @@ static int mt8186_scp_before_load(struct mtk_scp *scp)
- 	writel(0x0, scp->reg_base + MT8186_SCP_L1_SRAM_PD_P1);
- 	writel(0x0, scp->reg_base + MT8186_SCP_L1_SRAM_PD_p2);
- 
-+	/*
-+	 * Set I-cache and D-cache size before loading SCP FW.
-+	 * SCP SRAM logical address may change when cache size setting differs.
-+	 */
-+	writel(MT8183_SCP_CACHE_CON_WAYEN | MT8183_SCP_CACHESIZE_8KB,
-+	       scp->reg_base + MT8183_SCP_CACHE_CON);
-+	writel(MT8183_SCP_CACHESIZE_8KB, scp->reg_base + MT8183_SCP_DCACHE_CON);
-+
- 	return 0;
- }
- 
-@@ -905,7 +913,7 @@ static const struct mtk_scp_of_data mt8186_of_data = {
- 	.scp_da_to_va = mt8183_scp_da_to_va,
- 	.host_to_scp_reg = MT8183_HOST_TO_SCP,
- 	.host_to_scp_int_bit = MT8183_HOST_IPC_INT_BIT,
--	.ipi_buf_offset = 0x7bdb0,
-+	.ipi_buf_offset = 0x3bdb0,
- };
- 
- static const struct mtk_scp_of_data mt8192_of_data = {
--- 
-2.18.0
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git for-next
+head:   4d3a82e4ec28e7956db55487eeb480407a002c37
+commit: 156f721704b5c9e8fae02270f606f09d710ff27e [76/78] pinctrl: mediatek: common-v1: Commonize spec_ies_smt_set callback
+:::::: branch date: 6 days ago
+:::::: commit date: 6 days ago
 
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -168,7 +168,7 @@ int mtk_pconf_spec_set_ies_smt_range(str
+ 		break;
+ 	default:
+ 		break;
+-	};
++	}
+ 
+ 	if (!ies_smt_infos)
+ 		return -EINVAL;
 
 _______________________________________________
 Linux-mediatek mailing list
