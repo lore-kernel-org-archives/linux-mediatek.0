@@ -4,73 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AAC3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 08:09:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D762AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 08:31:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HnzVvBDa21I+ruqgIw5qBX3yJXyLKVQUnBs2+jbKEsA=; b=3/fZYcBiEIWFxc
-	EJ9G2vlPiLVC5A6jMxDQvikj08GUwp5oscbeGDamWUU8fppoHDgtnlkbhQJKFCk7m0/jpGfwTi87f
-	OjIL/kup8U220Ggvqw6thpLdw+X5Tin9lkuQ3t9S8vuTxXrqOHKxfO1OsU2FgmgSUFVvNOJv0BVHK
-	Ufr1gaXotuDg+IwgLbaytXI/kc3y+c0oGUscUaSWsAbxymEdkhGfOCmvZsgLYNnRTTDN4+edT2Pbi
-	d1gbMMFEJpraKsEwHtiHHw5EIswrEj56rz7/B0Pe0VsojkAKeVCEHzxEgixY2orF9XRpzVxRIH4vY
-	Sfn3mo0y4yLiG4zM39Yw==;
+	List-Owner; bh=QWMhFXqp5YGwrYaDLaytYiJg3lxsusKYIUf/Cyrh64Y=; b=IER9n9I+EzlOY5
+	42iSKe7/ceDcbr4MocdypmrHLFhkcC+KOPQefGztQSjw35yH1ulV/+azWRHyGp/6v/ajDFyYeFemU
+	oTAhZARZzc5mBQnoN4Jgehd9JwvjUETkA/IO5tieFDBjIHwtXo8nil6YeW8L/P0h1rg5JSk9beJHq
+	XnpXH+YRnU2QIHqVPWKedYzLVRZTBZJB4RTQQxjE64nW/tCO6603P/RzC901bToIjGLrsAzinLUky
+	5/4bO8pcL9Pi5iKQh3EFskR1N8HwEWnNgSRl+3d2cX68McOj4Qx9dB3w0uKoqbUCLgnc5F8tNrptl
+	xZSA1t2sRp9ORBcWhxkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWZZw-00AL70-5Q; Tue, 22 Mar 2022 08:09:20 +0000
+	id 1nWZut-00APwc-HV; Tue, 22 Mar 2022 08:30:59 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWZZh-00AL2O-Mq; Tue, 22 Mar 2022 08:09:09 +0000
-X-UUID: ccfac8c41d634ba6b7603a68a5ca776d-20220322
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=TLuv7YL3JBLqof++85VKCCJ+k/OgSpUQIbwNcR55YrQ=; 
- b=W7e82D/ldJ6iLjVtB93wm3O57yKt7yjHjGGpEK2dSirUJCLgplMstP9k9CkpQQwfkoZ1TTokmCO7GEQifPqm0jDHqfcZU2vK3D/lqbyMsjbqADYZX5CEX66kGkFfiU06updjlsZAkFK19HrtmmkqjnauK7NDUlBMmtmSbWk7t6s=;
-X-UUID: ccfac8c41d634ba6b7603a68a5ca776d-20220322
+ id 1nWZuK-00APn0-Na; Tue, 22 Mar 2022 08:30:26 +0000
+X-UUID: bbae800a1a4b4f379d614d61ebe138ad-20220322
+X-UUID: bbae800a1a4b4f379d614d61ebe138ad-20220322
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
+ (envelope-from <chun-jie.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2064980424; Tue, 22 Mar 2022 01:09:00 -0700
+ with ESMTP id 2007259630; Tue, 22 Mar 2022 01:30:20 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Mar 2022 01:08:59 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Mar 2022 01:30:18 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 22 Mar 2022 16:08:57 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ 15.2.792.15; Tue, 22 Mar 2022 16:30:17 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 22 Mar 2022 16:08:56 +0800
-Message-ID: <fb0f14cf952623557c8d71866b1d0eb38ffc4d11.camel@mediatek.com>
-Subject: Re: [PATCH v3 2/2] phy: mediatek: Add PCIe PHY driver
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Jianjun Wang <jianjun.wang@mediatek.com>, Kishon Vijay Abraham I
- <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Chen-Yu
- Tsai" <wenst@chromium.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski
- <krzk@kernel.org>
-CC: Wei-Shun Chang <weishunc@google.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <rex-bc.chen@mediatek.com>,
- <randy.wu@mediatek.com>, <jieyy.yang@mediatek.com>,
- <chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
- <jian.yang@mediatek.com>
-Date: Tue, 22 Mar 2022 16:08:56 +0800
-In-Reply-To: <20220322024705.9665-3-jianjun.wang@mediatek.com>
-References: <20220322024705.9665-1-jianjun.wang@mediatek.com>
- <20220322024705.9665-3-jianjun.wang@mediatek.com>
+ Transport; Tue, 22 Mar 2022 16:30:17 +0800
+Message-ID: <51750d230b38aa3d2e9d370247bcb4be93a35877.camel@mediatek.com>
+Subject: Re: [PATCH v2 02/15] clk: mediatek: Add MT8186 mcusys clock support
+From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
+ <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
+ <robh+dt@kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-clk@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 22 Mar 2022 16:30:17 +0800
+In-Reply-To: <CAGXv+5Fq4_dZBWJvKZ8ADUSQF4bTu-QWZ+7KG1dsJoWDrT2nXg@mail.gmail.com>
+References: <20220221015258.913-1-chun-jie.chen@mediatek.com>
+ <20220221015258.913-3-chun-jie.chen@mediatek.com>
+ <CAGXv+5Fq4_dZBWJvKZ8ADUSQF4bTu-QWZ+7KG1dsJoWDrT2nXg@mail.gmail.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220322_010907_193507_F595AF95 
-X-CRM114-Status: GOOD (  33.07  )
+X-CRM114-CacheID: sfid-20220322_013024_879915_F8BFF131 
+X-CRM114-Status: GOOD (  38.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,366 +78,224 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-03-22 at 10:47 +0800, Jianjun Wang wrote:
-> Add PCIe GEN3 PHY driver support on MediaTek chipsets.
+On Wed, 2022-03-09 at 18:13 +0800, Chen-Yu Tsai wrote:
+> Hi,
 > 
-> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> ---
->  drivers/phy/mediatek/Kconfig        |  11 ++
->  drivers/phy/mediatek/Makefile       |   1 +
->  drivers/phy/mediatek/phy-mtk-pcie.c | 271
-> ++++++++++++++++++++++++++++
->  3 files changed, 283 insertions(+)
->  create mode 100644 drivers/phy/mediatek/phy-mtk-pcie.c
+> On Mon, Feb 21, 2022 at 9:59 AM Chun-Jie Chen
+> <chun-jie.chen@mediatek.com> wrote:
+> > 
+> > Add MT8186 mcusys clock controller which provides muxes
+> > to select the clock source of APMCU.
+> > 
+> > Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> > Acked-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >  drivers/clk/mediatek/Kconfig          |   8 ++
+> >  drivers/clk/mediatek/Makefile         |   1 +
+> >  drivers/clk/mediatek/clk-mt8186-mcu.c | 106
+> > ++++++++++++++++++++++++++
+> >  3 files changed, 115 insertions(+)
+> >  create mode 100644 drivers/clk/mediatek/clk-mt8186-mcu.c
+> > 
+> > diff --git a/drivers/clk/mediatek/Kconfig
+> > b/drivers/clk/mediatek/Kconfig
+> > index 01ef02c54725..d5936cfb3bee 100644
+> > --- a/drivers/clk/mediatek/Kconfig
+> > +++ b/drivers/clk/mediatek/Kconfig
+> > @@ -512,6 +512,14 @@ config COMMON_CLK_MT8183_VENCSYS
+> >         help
+> >           This driver supports MediaTek MT8183 vencsys clocks.
+> > 
+> > +config COMMON_CLK_MT8186
+> > +       bool "Clock driver for MediaTek MT8186"
+> > +       depends on ARM64 || COMPILE_TEST
+> > +       select COMMON_CLK_MEDIATEK
+> > +       default ARCH_MEDIATEK
+> > +       help
+> > +         This driver supports MediaTek MT8186 clocks.
+> > +
+> >  config COMMON_CLK_MT8192
+> >         bool "Clock driver for MediaTek MT8192"
+> >         depends on ARM64 || COMPILE_TEST
+> > diff --git a/drivers/clk/mediatek/Makefile
+> > b/drivers/clk/mediatek/Makefile
+> > index 7b0c2646ce4a..677fa4f0eea2 100644
+> > --- a/drivers/clk/mediatek/Makefile
+> > +++ b/drivers/clk/mediatek/Makefile
+> > @@ -71,6 +71,7 @@ obj-$(CONFIG_COMMON_CLK_MT8183_MFGCFG) += clk-
+> > mt8183-mfgcfg.o
+> >  obj-$(CONFIG_COMMON_CLK_MT8183_MMSYS) += clk-mt8183-mm.o
+> >  obj-$(CONFIG_COMMON_CLK_MT8183_VDECSYS) += clk-mt8183-vdec.o
+> >  obj-$(CONFIG_COMMON_CLK_MT8183_VENCSYS) += clk-mt8183-venc.o
+> > +obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o
+> >  obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
+> >  obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
+> >  obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
+> > diff --git a/drivers/clk/mediatek/clk-mt8186-mcu.c
+> > b/drivers/clk/mediatek/clk-mt8186-mcu.c
+> > new file mode 100644
+> > index 000000000000..6d82c5de16c1
+> > --- /dev/null
+> > +++ b/drivers/clk/mediatek/clk-mt8186-mcu.c
+> > @@ -0,0 +1,106 @@
+> > +// SPDX-License-Identifier: GPL-2.0-only
+> > +//
+> > +// Copyright (c) 2022 MediaTek Inc.
+> > +// Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> > +
+> > +#include "clk-mtk.h"
 > 
-> diff --git a/drivers/phy/mediatek/Kconfig
-> b/drivers/phy/mediatek/Kconfig
-> index 55f8e6c048ab..387ed1b3f2cc 100644
-> --- a/drivers/phy/mediatek/Kconfig
-> +++ b/drivers/phy/mediatek/Kconfig
-> @@ -55,3 +55,14 @@ config PHY_MTK_MIPI_DSI
->  	select GENERIC_PHY
->  	help
->  	  Support MIPI DSI for Mediatek SoCs.
-> +
-> +config PHY_MTK_PCIE
-> +	tristate "MediaTek PCIe-PHY Driver"
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	depends on OF
-> +	select GENERIC_PHY
-> +	help
-> +	  Say 'Y' here to add support for MediaTek PCIe PHY driver.
-> +	  This driver create the basic PHY instance and provides
-> initialize
-> +	  callback for PCIe GEN3 port, it supports software efuse
-> +	  initialization.
-> diff --git a/drivers/phy/mediatek/Makefile
-> b/drivers/phy/mediatek/Makefile
-> index ace660fbed3a..788c13147f63 100644
-> --- a/drivers/phy/mediatek/Makefile
-> +++ b/drivers/phy/mediatek/Makefile
-> @@ -6,6 +6,7 @@
->  obj-$(CONFIG_PHY_MTK_TPHY)		+= phy-mtk-tphy.o
->  obj-$(CONFIG_PHY_MTK_UFS)		+= phy-mtk-ufs.o
->  obj-$(CONFIG_PHY_MTK_XSPHY)		+= phy-mtk-xsphy.o
-> +obj-$(CONFIG_PHY_MTK_PCIE)		+= phy-mtk-pcie.o
->  
->  phy-mtk-hdmi-drv-y			:= phy-mtk-hdmi.o
->  phy-mtk-hdmi-drv-y			+= phy-mtk-hdmi-mt2701.o
-> diff --git a/drivers/phy/mediatek/phy-mtk-pcie.c
-> b/drivers/phy/mediatek/phy-mtk-pcie.c
-> new file mode 100644
-> index 000000000000..2f19c253238f
-> --- /dev/null
-> +++ b/drivers/phy/mediatek/phy-mtk-pcie.c
-> @@ -0,0 +1,271 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + * Author: Jianjun Wang <jianjun.wang@mediatek.com>
-> + */
-> +
-> +#include <linux/bits.h>
-> +#include <linux/compiler_types.h>
-> +#include <linux/module.h>
-> +#include <linux/nvmem-consumer.h>
-> +#include <linux/of_device.h>
-> +#include <linux/phy/phy.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/slab.h>
-> +
-> +#include "phy-mtk-io.h"
-> +
-> +#define PEXTP_ANA_GLB_00_REG		0x9000
-> +#define PEXTP_ANA_LN0_TRX_REG		0xa000
-> +#define PEXTP_ANA_TX_OFFSET		0x04
-> +#define PEXTP_ANA_RX_OFFSET		0x3c
-> +#define PEXTP_ANA_LANE_OFFSET		0x100
-> +
-> +/* PEXTP_GLB_00_REG[28:24] Internal Resistor Selection of TX Bias
-> Current */
-> +#define EFUSE_GLB_INTR_SEL		GENMASK(28, 24)
-> +#define EFUSE_GLB_INTR_VAL(x)		((0x1f & (x)) << 24)
-> +
-> +/* PEXTP_ANA_LN_RX_REG[3:0] RX impedance selection */
-> +#define EFUSE_LN_RX_SEL			GENMASK(3, 0)
-> +#define EFUSE_LN_RX_VAL(x)		(0xf & (x))
-> +
-> +/* PEXTP_ANA_LN_TX_REG[5:2] TX PMOS impedance selection */
-> +#define EFUSE_LN_TX_PMOS_SEL		GENMASK(5, 2)
-> +#define EFUSE_LN_TX_PMOS_VAL(x)		((0xf & (x)) << 2)
-> +
-> +/* PEXTP_ANA_LN_TX_REG[11:8] TX NMOS impedance selection */
-> +#define EFUSE_LN_TX_NMOS_SEL		GENMASK(11, 8)
-> +#define EFUSE_LN_TX_NMOS_VAL(x)		((0xf & (x)) << 8)
-> +
-> +/**
-> + * struct mtk_pcie_lane_efuse - eFuse data for each lane
-> + * @tx_pmos: TX PMOS impedance selection data
-> + * @tx_nmos: TX NMOS impedance selection data
-> + * @rx_data: RX impedance selection data
-> + * @lane_efuse_supported: software eFuse data is supported for this
-> lane
-> + */
-> +struct mtk_pcie_lane_efuse {
-> +	u32 tx_pmos;
-> +	u32 tx_nmos;
-> +	u32 rx_data;
-> +	bool lane_efuse_supported;
-> +};
-> +
-> +/**
-> + * struct mtk_pcie_phy_data - phy data for each SoC
-> + * @num_lanes: supported lane numbers
-> + * @sw_efuse_supported: support software to load eFuse data
-> + */
-> +struct mtk_pcie_phy_data {
-> +	int num_lanes;
-> +	bool sw_efuse_supported;
-> +};
-> +
-> +/**
-> + * struct mtk_pcie_phy - PCIe phy driver main structure
-> + * @dev: pointer to device
-> + * @phy: pointer to generic phy
-> + * @sif_base: IO mapped register base address of system interface
-> + * @data: pointer to SoC dependent data
-> + * @sw_efuse_en: software eFuse enable status
-> + * @efuse_glb_intr: internal resistor selection of TX bias current
-> data
-> + * @efuse: pointer to eFues data for each lane
-> + */
-> +struct mtk_pcie_phy {
-> +	struct device *dev;
-> +	struct phy *phy;
-> +	void __iomem *sif_base;
-> +	const struct mtk_pcie_phy_data *data;
-> +
-> +	bool sw_efuse_en;
-> +	u32 efuse_glb_intr;
-> +	struct mtk_pcie_lane_efuse *efuse;
-> +};
-> +
-> +static void mtk_pcie_efuse_set_lane(struct mtk_pcie_phy *pcie_phy,
-> +				    unsigned int lane)
-> +{
-> +	struct mtk_pcie_lane_efuse *data = &pcie_phy->efuse[lane];
-> +	void __iomem *addr;
-> +
-> +	if (!data->lane_efuse_supported)
-> +		return;
-> +
-> +	addr = pcie_phy->sif_base + PEXTP_ANA_LN0_TRX_REG +
-> +	       lane * PEXTP_ANA_LANE_OFFSET;
-> +
-> +	mtk_phy_update_bits(addr + PEXTP_ANA_TX_OFFSET,
-> EFUSE_LN_TX_PMOS_SEL,
-> +			    EFUSE_LN_TX_PMOS_VAL(data->tx_pmos));
-> +
-> +	mtk_phy_update_bits(addr + PEXTP_ANA_TX_OFFSET,
-> EFUSE_LN_TX_NMOS_SEL,
-> +			    EFUSE_LN_TX_NMOS_VAL(data->tx_nmos));
-> +
-> +	mtk_phy_update_bits(addr + PEXTP_ANA_RX_OFFSET,
-> EFUSE_LN_RX_SEL,
-> +			    EFUSE_LN_RX_VAL(data->rx_data));
-> +}
-> +
-> +/**
-> + * mtk_pcie_phy_init() - Initialize the phy
-> + * @phy: the phy to be initialized
-> + *
-> + * Initialize the phy by setting the efuse data.
-> + * The hardware settings will be reset during suspend, it should be
-> + * reinitialized when the consumer calls phy_init() again on resume.
-> + */
-> +static int mtk_pcie_phy_init(struct phy *phy)
-> +{
-> +	struct mtk_pcie_phy *pcie_phy = phy_get_drvdata(phy);
-> +	int i;
-> +
-> +	if (!pcie_phy->sw_efuse_en)
-> +		return 0;
-> +
-> +	/* Set global data */
-> +	mtk_phy_update_bits(pcie_phy->sif_base + PEXTP_ANA_GLB_00_REG,
-> +			    EFUSE_GLB_INTR_SEL,
-> +			    EFUSE_GLB_INTR_VAL(pcie_phy-
-> >efuse_glb_intr));
-> +
-> +	for (i = 0; i < pcie_phy->data->num_lanes; i++)
-> +		mtk_pcie_efuse_set_lane(pcie_phy, i);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct phy_ops mtk_pcie_phy_ops = {
-> +	.init	= mtk_pcie_phy_init,
-> +	.owner	= THIS_MODULE,
-> +};
-> +
-> +static int mtk_pcie_efuse_read_for_lane(struct mtk_pcie_phy
-> *pcie_phy,
-> +					unsigned int lane)
-> +{
-> +	struct mtk_pcie_lane_efuse *efuse = &pcie_phy->efuse[lane];
-> +	struct device *dev = pcie_phy->dev;
-> +	char efuse_id[15];
-> +	int ret;
-> +
-> +	snprintf(efuse_id, sizeof(efuse_id), "tx_ln%d_pmos", lane);
-> +	ret = nvmem_cell_read_variable_le_u32(dev, efuse_id, &efuse-
-> >tx_pmos);
-> +	if (ret)
-> +		dev_err_probe(dev, ret, "Failed to read %s\n",
-> efuse_id);
-skip this error?
+> Please move local headers after global ones. And please do this for
+> all
+> patches.
+> 
+> > +
+> > +#include <dt-bindings/clock/mt8186-clk.h>
+> > +#include <linux/clk-provider.h>
+> > +#include <linux/platform_device.h>
+> > +
+> > +static DEFINE_SPINLOCK(mt8186_clk_lock);
+> > +
+> > +static const char * const mcu_armpll_ll_parents[] = {
+> > +       "clk26m",
+> > +       "armpll_ll",
+> > +       "mainpll",
+> > +       "univpll_d2"
+> > +};
+> > +
+> > +static const char * const mcu_armpll_bl_parents[] = {
+> > +       "clk26m",
+> > +       "armpll_bl",
+> > +       "mainpll",
+> > +       "univpll_d2"
+> > +};
+> > +
+> > +static const char * const mcu_armpll_bus_parents[] = {
+> > +       "clk26m",
+> > +       "ccipll",
+> > +       "mainpll",
+> > +       "univpll_d2"
+> > +};
+> > +
+> > +static struct mtk_composite mcu_muxes[] = {
+> > +       /* CPU_PLLDIV_CFG0 */
+> > +       MUX(CLK_MCU_ARMPLL_LL_SEL, "mcu_armpll_ll_sel",
+> > mcu_armpll_ll_parents, 0x2A0, 9, 2),
+> 
+> Can you add a comment stating that these registers have other bits
+> that
+> should not be touched? Otherwise anyone reading the datasheet might
+> consider this to be incomplete.
+> 
+> I assume the other bits (such as one field that looks like a divider)
+> are
+> configured in the bootloader, or the POR defaults are correct.
+> 
 
-> +
-> +	snprintf(efuse_id, sizeof(efuse_id), "tx_ln%d_nmos", lane);
-> +	ret = nvmem_cell_read_variable_le_u32(dev, efuse_id, &efuse-
-> >tx_nmos);
-> +	if (ret)
-> +		dev_err_probe(dev, ret, "Failed to read %s\n",
-> efuse_id);
-> +
-> +	snprintf(efuse_id, sizeof(efuse_id), "rx_ln%d", lane);
-> +	ret = nvmem_cell_read_variable_le_u32(dev, efuse_id, &efuse-
-> >rx_data);
-> +	if (ret)
-> +		dev_err_probe(dev, ret, "Failed to read %s\n",
-> efuse_id);
-> +
-> +	if (!(efuse->tx_pmos || efuse->tx_nmos || efuse->rx_data))
-> +		dev_err_probe(dev, -EINVAL,
-> +			      "No eFuse data found for lane%d, but dts
-> enable it\n",
-> +			      lane);
-> +
-> +	efuse->lane_efuse_supported = true;
+Yes, We only control mux in linux side and keep same value in divider.
+I will add more description in v4. Sorry I missed this comment before.
 
-Seems efuse->lane_efuse_supported is always true?
-but is false if all these three efuse values are zero, right?
+> > +       /* CPU_PLLDIV_CFG1 */
+> > +       MUX(CLK_MCU_ARMPLL_BL_SEL, "mcu_armpll_bl_sel",
+> > mcu_armpll_bl_parents, 0x2A4, 9, 2),
+> > +       /* BUS_PLLDIV_CFG */
+> > +       MUX(CLK_MCU_ARMPLL_BUS_SEL, "mcu_armpll_bus_sel",
+> > mcu_armpll_bus_parents, 0x2E0, 9, 2),
+> > +};
+> 
+> Note: I've checked the register bits against the datasheet.
+> 
+> > +
+> > +static const struct of_device_id of_match_clk_mt8186_mcu[] = {
+> > +       { .compatible = "mediatek,mt8186-mcusys", },
+> > +       {}
+> > +};
+> > +
+> > +static int clk_mt8186_mcu_probe(struct platform_device *pdev)
+> > +{
+> > +       struct clk_onecell_data *clk_data;
+> > +       struct device_node *node = pdev->dev.of_node;
+> > +       int r;
+> > +       void __iomem *base;
+> > +
+> > +       clk_data = mtk_alloc_clk_data(CLK_MCU_NR_CLK);
+> > +       if (!clk_data)
+> > +               return -ENOMEM;
+> > +
+> > +       base = devm_platform_ioremap_resource(pdev, 0);
+> > +       if (IS_ERR(base)) {
+> > +               r = PTR_ERR(base);
+> > +               goto free_mcu_data;
+> > +       }
+> > +
+> > +       r = mtk_clk_register_composites(mcu_muxes,
+> > ARRAY_SIZE(mcu_muxes), base,
+> > +                                       &mt8186_clk_lock,
+> > clk_data);
+> 
+> I don't think you need the lock. None of the bit fields you have
+> defined
+> in this driver have overlapping registers.
+> 
+> 
+> Regards
+> ChenYu
+> 
 
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_pcie_read_efuse(struct mtk_pcie_phy *pcie_phy)
-> +{
-> +	struct device *dev = pcie_phy->dev;
-> +	bool nvmem_enabled;
-> +	int ret, i;
-> +
-> +	nvmem_enabled = device_property_read_bool(dev, "nvmem-cells");
-> +	if (!nvmem_enabled)
-> +		return -ENODEV;
-> +
-> +	ret = nvmem_cell_read_variable_le_u32(dev, "glb_intr",
-> +					      &pcie_phy-
-> >efuse_glb_intr);
-> +	if (ret)
-> +		dev_err_probe(dev, ret, "Failed to read glb_intr\n");
-also here, skip the error?
+Yes, the muxes register of big and little CPU are not overlapping,
+I will remove the lock in next patch.
 
-> +
-> +	pcie_phy->sw_efuse_en = true;
-> +
-> +	pcie_phy->efuse = devm_kzalloc(dev, pcie_phy->data->num_lanes *
-> +				       sizeof(*pcie_phy->efuse),
-> GFP_KERNEL);
-> +	if (!pcie_phy->efuse)
-> +		return -ENOMEM;
-> +
-> +	for (i = 0; i < pcie_phy->data->num_lanes; i++) {
-> +		ret = mtk_pcie_efuse_read_for_lane(pcie_phy, i);
-> +		if (ret)
-> +			return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_pcie_phy_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct phy_provider *provider;
-> +	struct mtk_pcie_phy *pcie_phy;
-> +	int ret;
-> +
-> +	pcie_phy = devm_kzalloc(dev, sizeof(*pcie_phy), GFP_KERNEL);
-> +	if (!pcie_phy)
-> +		return -ENOMEM;
-> +
-> +	pcie_phy->sif_base =
-> devm_platform_ioremap_resource_byname(pdev, "sif");
-> +	if (IS_ERR(pcie_phy->sif_base))
-> +		return dev_err_probe(dev, PTR_ERR(pcie_phy->sif_base),
-> +				     "Failed to map phy-sif base\n");
-> +
-> +	pcie_phy->phy = devm_phy_create(dev, dev->of_node,
-> &mtk_pcie_phy_ops);
-> +	if (IS_ERR(pcie_phy->phy))
-> +		return dev_err_probe(dev, PTR_ERR(pcie_phy->phy),
-> +				     "Failed to create PCIe phy\n");
-> +
-> +	pcie_phy->dev = dev;
-> +	pcie_phy->data = of_device_get_match_data(dev);
-> +	if (!pcie_phy->data)
-> +		return dev_err_probe(dev, -EINVAL, "Failed to get phy
-> data\n");
-> +
-> +	if (pcie_phy->data->sw_efuse_supported) {
-> +		/*
-> +		 * Failed to read the efuse data is not a fatal
-> problem,
-> +		 * ignore the failure and keep going.
-> +		 */
-> +		ret = mtk_pcie_read_efuse(pcie_phy);
-> +		if (ret == -EPROBE_DEFER)
-> +			return ret;
-> +	}
-> +
-> +	phy_set_drvdata(pcie_phy->phy, pcie_phy);
-> +
-> +	provider = devm_of_phy_provider_register(dev,
-> of_phy_simple_xlate);
-> +	if (IS_ERR(provider))
-> +		return dev_err_probe(dev, PTR_ERR(provider),
-> +				     "PCIe phy probe failed\n");
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct mtk_pcie_phy_data mt8195_data = {
-> +	.num_lanes = 2,
-> +	.sw_efuse_supported = true,
-> +};
-> +
-> +static const struct of_device_id mtk_pcie_phy_of_match[] = {
-> +	{ .compatible = "mediatek,mt8195-pcie-phy", .data =
-> &mt8195_data },
-> +	{ },
-> +};
-> +MODULE_DEVICE_TABLE(of, mtk_pcie_phy_of_match);
-Do we need add a generic compatible which sw_efuse_supported is set
-false? if no need, then pcie driver should handle the case without phy
-due to we may use hw auto efuse and do not this driver anymore.
+Thanks!
+
+> > +       if (r)
+> > +               goto free_mcu_data;
+> > +
+> > +       r = of_clk_add_provider(node, of_clk_src_onecell_get,
+> > clk_data);
+> > +       if (r)
+> > +               goto unregister_composite_muxes;
+> > +
+> > +       platform_set_drvdata(pdev, clk_data);
+> > +
+> > +       return r;
+> > +
+> > +unregister_composite_muxes:
+> > +       mtk_clk_unregister_composites(mcu_muxes,
+> > ARRAY_SIZE(mcu_muxes), clk_data);
+> > +free_mcu_data:
+> > +       mtk_free_clk_data(clk_data);
+> > +       return r;
+> > +}
+> > +
+> > +static int clk_mt8186_mcu_remove(struct platform_device *pdev)
+> > +{
+> > +       struct clk_onecell_data *clk_data =
+> > platform_get_drvdata(pdev);
+> > +       struct device_node *node = pdev->dev.of_node;
+> > +
+> > +       of_clk_del_provider(node);
+> > +       mtk_clk_unregister_composites(mcu_muxes,
+> > ARRAY_SIZE(mcu_muxes), clk_data);
+> > +       mtk_free_clk_data(clk_data);
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +static struct platform_driver clk_mt8186_mcu_drv = {
+> > +       .probe = clk_mt8186_mcu_probe,
+> > +       .remove = clk_mt8186_mcu_remove,
+> > +       .driver = {
+> > +               .name = "clk-mt8186-mcu",
+> > +               .of_match_table = of_match_clk_mt8186_mcu,
+> > +       },
+> > +};
+> > +builtin_platform_driver(clk_mt8186_mcu_drv);
+> > --
+> > 2.18.0
+> > 
 
 
-> +
-> +static struct platform_driver mtk_pcie_phy_driver = {
-> +	.probe	= mtk_pcie_phy_probe,
-> +	.driver	= {
-> +		.name = "mtk-pcie-phy",
-> +		.of_match_table = mtk_pcie_phy_of_match,
-> +	},
-> +};
-> +module_platform_driver(mtk_pcie_phy_driver);
-> +
-> +MODULE_DESCRIPTION("MediaTek PCIe PHY driver");
-> +MODULE_AUTHOR("Jianjun Wang <jianjun.wang@mediatek.com>");
-> +MODULE_LICENSE("GPL v2");
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
