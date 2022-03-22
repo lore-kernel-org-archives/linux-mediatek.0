@@ -4,62 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ED95C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Mar 2022 23:42:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1329EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 01:45:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uM965ZY0leJ8BIsyx2r+bXDZV38FFDU/CEVqrh/GX0Q=; b=G9HMoHXAU92K5j
-	ytulgHkK2QfsHEODt+mk8pGZUYQ/N36NMFYJpgcuhorTs+sNyVwGICTiu4/dJoBMh4tBJhg5ijyVl
-	y83wQ2y6lLYMLJG/wy4DlD1gzmlgTVKrU+zsrg6MUVzself5utqK1sar05SLlft+AXIkOj2fWKriF
-	qWmlGQe5pHNen9E90AKC9LTWZAPr9DEsJhxWroOIDpiTaLs3lOkipBMaXyiIkf2PF0/eJLIK0RdAp
-	CCSghwGzepadjlgtwyXIbrXrwwpwnBhTTjb2yJ/dyYBIWNnOD7O/V4Lf6AZ7WBzq+0KdhFh5yhs/g
-	LsJS5WX5aMHjOWeowQ/Q==;
+	List-Owner; bh=HznNNmRF9sHUDj0qgnX0pGofP+R627RaYz7J6HY1tX4=; b=CeYYNBy12Uoq3u
+	loaxFFBIcH2IEzKvcuKdaaohsQSFYjqJnEc5x/N/CUFYY8gpYj/67enNQetsjg3AB9ifRA52RXxmX
+	BPzJKyh4Te+kILCaBqGSPPLx49df0UBgKZc03RRL1HuwDwyAKjmOKeZoSOSd/fHFqz5JEmE/X3R4r
+	ODu28iRxqzwYdA5qDyq7W6tnEcjV4edg5m5wQkHn5kBYKPKadpuWnhA3eb+/+IGv4IdrtDWDr38rE
+	KjHbd6pdl4LFWmQh7tpgB0lr3NYSAP+QHE0NgLaSZdmMfiJW0rjPQyL5B7mN71u35KEpiAajLXtjk
+	4txxZ9no/p9r+95jpvKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWRfV-009Ruj-8N; Mon, 21 Mar 2022 23:42:33 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nWTaV-009cgM-NZ; Tue, 22 Mar 2022 01:45:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWRfR-009Ru5-Jd; Mon, 21 Mar 2022 23:42:31 +0000
-X-UUID: 9b05282119a04f9991d9d3e810cc099a-20220321
-X-UUID: 9b05282119a04f9991d9d3e810cc099a-20220321
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
+ id 1nWTaE-009ccy-Qf; Tue, 22 Mar 2022 01:45:21 +0000
+X-UUID: ab219ab00fc246ac87509d48fa9bf2e5-20220321
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=a669kASSOW8yV0ncywkLLqqxbgsh2EqZUbItlsiRdpY=; 
+ b=DouXB9LPrmEDg0H9bnHrQneqcm0B3MzcTfOpRVGuskto+KFyH/nAj93HK67fCDieDk/+YskXwGL8DWhCKiHgkhAWetMJafmipJOjohc8fbcdDOeJ8GyTOi7G4vaPf6aMitXCeH/qQD6FRn/YptPatcpiYBfgcCBnjq355tl2skU=;
+X-UUID: ab219ab00fc246ac87509d48fa9bf2e5-20220321
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <axe.yang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 487124177; Mon, 21 Mar 2022 16:40:48 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Mar 2022 16:30:46 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Mar 2022 07:30:45 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 22 Mar 2022 07:30:45 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <trevor.wu@mediatek.com>
-CC: <aaronyu@google.com>, <alsa-devel@alsa-project.org>,
- <angelogioacchino.delregno@collabora.com>, <broonie@kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <matthias.bgg@gmail.com>, <robh+dt@kernel.org>, <tiwai@suse.com>,
- <tzungbi@google.com>, <yc.hung@mediatek.com>
-Subject: Re: [PATCH v3 3/6] ASoC: dt-bindings: mediatek: mt8195: merge mt8195
- machine yaml
-Date: Tue, 22 Mar 2022 07:30:45 +0800
-Message-ID: <20220321233045.22156-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220321072312.14972-4-trevor.wu@mediatek.com>
-References: <20220321072312.14972-4-trevor.wu@mediatek.com>
+ with ESMTP id 1408976696; Mon, 21 Mar 2022 18:45:07 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 21 Mar 2022 18:35:04 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 22 Mar 2022 09:35:03 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 22 Mar 2022 09:35:01 +0800
+Message-ID: <b03df175f871ee9a6561862f5bd7bceb9cafbde1.camel@mediatek.com>
+Subject: Re: [PATCH v8 1/3] dt-bindings: mmc: mtk-sd: extend interrupts and
+ pinctrls properties
+From: Axe Yang <axe.yang@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+CC: Ulf Hansson <ulf.hansson@linaro.org>, Chaotian Jing
+ <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Adrian Hunter <adrian.hunter@intel.com>, Yoshihiro Shimoda
+ <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala <satyat@google.com>, Andy
+ Shevchenko <andriy.shevchenko@linux.intel.com>, Wolfram Sang
+ <wsa+renesas@sang-engineering.com>, Lucas Stach <dev@lynxeye.de>, "Eric
+ Biggers" <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, "Stephen
+ Boyd" <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu
+ <huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
+ <angelogioacchino.delregno@collabora.com>, <linux-mmc@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Date: Tue, 22 Mar 2022 09:35:01 +0800
+In-Reply-To: <YjkKURNzg8JPbXcg@robh.at.kernel.org>
+References: <20220321115133.32121-1-axe.yang@mediatek.com>
+ <20220321115133.32121-2-axe.yang@mediatek.com>
+ <YjkKURNzg8JPbXcg@robh.at.kernel.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220321_164229_662959_C8D9E3BA 
-X-CRM114-Status: UNSURE (   6.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220321_184516_297034_47D86A81 
+X-CRM114-Status: GOOD (  20.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,31 +89,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Trevor,
+On Mon, 2022-03-21 at 18:29 -0500, Rob Herring wrote:
+> On Mon, Mar 21, 2022 at 07:51:32PM +0800, Axe Yang wrote:
+> > Extend interrupts and pinctrls for SDIO wakeup interrupt feature.
+> > This feature allow SDIO devices alarm asynchronous interrupt to
+> > host
+> > even when host stop providing clock to SDIO card. An extra wakeup
+> > interrupt and pinctrl states for SDIO DAT1 pin state switching are
+> > required in this scenario.
+> > 
+> > Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/mmc/mtk-sd.yaml       | 23
+> > ++++++++++++++++++-
+> >  1 file changed, 22 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > index 297ada03e3de..f57774535a1d 100644
+> > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > @@ -69,12 +69,23 @@ properties:
+> >        - const: ahb_cg
+> >  
+> >    interrupts:
+> > -    maxItems: 1
+> > +    description:
+> > +      Should at least contain MSDC GIC interrupt. To support SDIO
+> > in-band wakeup, an extended
+> > +      interrupt is required and be configured as wakeup source
+> > irq.
+> > +    minItems: 1
+> > +    maxItems: 2
+> >  
+> >    pinctrl-names:
+> > +    description:
+> > +      Should at least contain default and state_uhs. To support
+> > SDIO in-band wakeup, dat1 pin
+> > +      will be switched between GPIO mode and SDIO DAT1 mode,
+> > state_eint and state_dat1 are
+> > +      mandatory in this scenarios.
+> > +    minItems: 2
+> >      items:
+> >        - const: default
+> >        - const: state_uhs
+> > +      - const: state_eint
+> > +      - const: state_dat1
+> >  
+> >    pinctrl-0:
+> >      description:
+> > @@ -86,6 +97,16 @@ properties:
+> >        should contain uhs mode pin ctrl.
+> >      maxItems: 1
+> >  
+> > +  pinctrl-2:
+> > +    description:
+> > +      should switch dat1 pin to GPIO mode.
+> > +    maxItems: 1
+> > +
+> > +  pinctrl-3:
+> > +    description:
+> > +      should switch SDIO dat1 pin from GPIO mode back to SDIO
+> > mode.
+> 
+> How is this different than pinctrl-0?
 
->  
-> -title: Mediatek MT8195 with MT6359, RT1019 and RT5682 ASoC sound card driver
-> +title: Mediatek MT8195 ASoC sound card driver
+pinctrl-0 contains default settings for all IO pins(CLK/CMD/DAT).
+pinctrl-1 contains settings for all IO pins(CLK/CMD/DAT) in UHS mode.
+pinctrl-3 is lightweight pinctrl-1, only keep SDIO DAT1 pin function
+switch part.
 
-s/Mediatek/MediaTek/
+...
 
-Thanks,
-Miles
->  
->  maintainers:
->    - Trevor Wu <trevor.wu@mediatek.com>
-> @@ -14,7 +14,9 @@ description:
->  
->  properties:
->    compatible:
-> -    const: mediatek,mt8195_mt6359_rt1019_rt5682
-> +    enum:
-> +      - mediatek,mt8195_mt6359_rt1019_rt5682
-> +      - mediatek,mt8195_mt6359_rt1011_rt5682
->  
->    model:
->      $ref: /schemas/types.yaml#/definitions/string
-
+Regards,
+Axe
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
