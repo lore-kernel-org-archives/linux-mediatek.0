@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E05CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 03:41:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6C2DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 03:45:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5zPYD5T68naVmiPxIyQg1UlmzBZfwy1UboAoh0dGt90=; b=P3WG6RoulAtRSb
-	yGAYSBgTtDYZKv8FnHCKVjSzXXD0CcvmJjutUCZ+7CehsHH0SVc9RCD1amal0NfnbEODkfc6jHIDL
-	fM5bO4rJ7VVLZBjuBYaarEfNAt9vZoXKpk24Ee9P/l+5jTe/vc8RSUifJZ5p1ZPpFQMPEKrhb0pR3
-	wtdWymcrKUn3bv9Cv0CZVwTRbnU9Q0VneoOoBermI8iP9BuGwAghsCqmtmqiGYFssKWtvhOJI0qFP
-	VG5gcVPEnuBJH3ex0YuUqCVOb2uHIqFeE9ekLeiE2w8F7XTlv2yAbvOu6aKMxU0qlY9E8MYb0Z/7u
-	kfeIpvAwiL+M+wcXJ/zw==;
+	List-Owner; bh=Ix9S2mqcvLurtLZeCnlvbXq/ssbKT9zNNHw8TWGpBT4=; b=BaVE3HTURyKlVV
+	zJjZ9UJatB0DMVR6ri9Fh9kfCEaMv+51yBiYhfP8/t96SKkcavSbOI95rWDKtToFSw+J89mzRtM/O
+	6ZTfj9RQ76J46DcaKsjCulhRT9CTHHQHkhKWf5QBHt/DwIe77uX4tzWO8Bb4AvOm9CUKFfyUFT+WS
+	lfJokpO3ksXCd6IH2aqoKSO8bYm2D94ptl9Y/8jEIjXaslcQZPTpWxlfUuzBjuuaT0yV6wI/Z994z
+	TmWIBFU3kzLtQT2bcK4U1zfPgbHi/tWb7lmlOZcRNxmZ8A1NBSBlaalBMTLuwkXj3Hx7BB0en+nui
+	52o8Nm2GIJEHEkGq9DhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWVP5-009uLN-Qo; Tue, 22 Mar 2022 03:41:51 +0000
+	id 1nWVSv-009uuH-E7; Tue, 22 Mar 2022 03:45:49 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWVP2-009uKU-A1; Tue, 22 Mar 2022 03:41:50 +0000
-X-UUID: 746121c2ac4948249426665a9582bcf9-20220321
-X-UUID: 746121c2ac4948249426665a9582bcf9-20220321
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ id 1nWVSo-009utA-Nd; Tue, 22 Mar 2022 03:45:48 +0000
+X-UUID: 038aa053f0c6487285b6a36826e5b9be-20220321
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=X9jhCnGqvno9UdTXf2UXhoimqw9YrbSB8oycMk9qWeQ=; 
+ b=OcNVjehuMa7c7sUa8+Sz8Ys/9LdiooiqtfOY4NFxDam3hD2am0Bdod7jCUxfhNOhLWMCTemg6+Pov4W09YTDgzKNiTfDmWUnT8Qo/hvdOFjnqPK29OmR1yNCn85pRdeo8N3AiAGWLziLIp6fM+Q06G2O1pWkcFnm2EnE0nV+/fI=;
+X-UUID: 038aa053f0c6487285b6a36826e5b9be-20220321
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <jiaxin.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1350750257; Mon, 21 Mar 2022 20:41:39 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Mar 2022 20:31:37 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 22 Mar 2022 11:31:35 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ with ESMTP id 786835327; Mon, 21 Mar 2022 20:45:40 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 21 Mar 2022 20:45:38 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 22 Mar 2022 11:45:25 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 22 Mar 2022 11:31:35 +0800
-Message-ID: <b391cb9ab341ed83f8d640867c8dbba856a7c454.camel@mediatek.com>
-Subject: Re: [PATCH v16 04/22] soc: mediatek: add mtk-mmsys support for
- mt8195 vdosys1
-From: CK Hu <ck.hu@mediatek.com>
-To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- <wim@linux-watchdog.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
-CC: <devicetree@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Yongqiang Niu
- <yongqiang.niu@mediatek.com>, <srv_heupstream@mediatek.com>, David Airlie
- <airlied@linux.ie>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- <singo.chang@mediatek.com>, <llvm@lists.linux.dev>, Nick Desaulniers
- <ndesaulniers@google.com>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, Nathan Chancellor <nathan@kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
-Date: Tue, 22 Mar 2022 11:31:35 +0800
-In-Reply-To: <20220318142009.2796-5-nancy.lin@mediatek.com>
-References: <20220318142009.2796-1-nancy.lin@mediatek.com>
- <20220318142009.2796-5-nancy.lin@mediatek.com>
+ Transport; Tue, 22 Mar 2022 11:45:25 +0800
+Message-ID: <0e909de12a52ae88633634d868bd5001eef1b830.camel@mediatek.com>
+Subject: Re: [v5 1/4] ASoC: dt-bindings: mt8192-mt6359: add new compatible
+ and new properties
+From: Jiaxin Yu <jiaxin.yu@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+CC: <broonie@kernel.org>, <tzungbi@google.com>,
+ <angelogioacchino.delregno@collabora.com>, <aaronyu@google.com>,
+ <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>, <linmq006@gmail.com>,
+ <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 22 Mar 2022 11:45:24 +0800
+In-Reply-To: <YjkLVwvxvOKr30qL@robh.at.kernel.org>
+References: <20220319114111.11496-1-jiaxin.yu@mediatek.com>
+ <20220319114111.11496-2-jiaxin.yu@mediatek.com>
+ <YjkLVwvxvOKr30qL@robh.at.kernel.org>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220321_204148_369929_0147FC8C 
-X-CRM114-Status: GOOD (  18.15  )
+X-CRM114-CacheID: sfid-20220321_204542_805459_5D62786A 
+X-CRM114-Status: GOOD (  19.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,276 +83,130 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Nancy:
-
-On Fri, 2022-03-18 at 22:19 +0800, Nancy.Lin wrote:
-> Add mt8195 vdosys1 clock driver name and routing table to
-> the driver data of mtk-mmsys.
+On Mon, 2022-03-21 at 18:33 -0500, Rob Herring wrote:
+> On Sat, Mar 19, 2022 at 07:41:08PM +0800, Jiaxin Yu wrote:
+> > 1. Adds new compatible string "mt8192_mt6359_rt1015p_rt5682s" for
+> > machines
+> > with rt1015p and rt5682s.
+> > 2. Adds new property "mediatek,headset-codec" for getting headset
+> > codecs.
+> > 3. Adds new property "mediatek,speaker-codec" for getting speaker
+> > codecs.
+> > 
+> > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> > ---
+> >  .../sound/mt8192-mt6359-rt1015-rt5682.yaml    | 29
+> > +++++++++++++++++++
+> >  1 file changed, 29 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/sound/mt8192-mt6359-
+> > rt1015-rt5682.yaml
+> > b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-
+> > rt5682.yaml
+> > index a781e7aaaa38..aa0476eedd38 100644
+> > --- a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-
+> > rt5682.yaml
+> > +++ b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-
+> > rt5682.yaml
+> > @@ -18,6 +18,7 @@ properties:
+> >      enum:
+> >        - mediatek,mt8192_mt6359_rt1015_rt5682
+> >        - mediatek,mt8192_mt6359_rt1015p_rt5682
+> > +      - mediatek,mt8192_mt6359_rt1015p_rt5682s
+> >  
+> >    mediatek,platform:
+> >      $ref: "/schemas/types.yaml#/definitions/phandle"
+> > @@ -27,6 +28,25 @@ properties:
+> >      $ref: "/schemas/types.yaml#/definitions/phandle"
+> >      description: The phandle of HDMI codec.
+> >  
+> > +patternProperties:
+> > +  "^mediatek,headset-codec$":
 > 
-> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> ---
->  drivers/soc/mediatek/mt8195-mmsys.h    | 136
-> +++++++++++++++++++++++++
->  drivers/soc/mediatek/mtk-mmsys.c       |  10 ++
->  include/linux/soc/mediatek/mtk-mmsys.h |   2 +
->  3 files changed, 148 insertions(+)
+> Fixed string, not a pattern. Move to 'properties'. Drop the vendor 
+> prefix too.
 > 
-> diff --git a/drivers/soc/mediatek/mt8195-mmsys.h
-> b/drivers/soc/mediatek/mt8195-mmsys.h
-> index 24a3afe23bc8..369fb0aab56d 100644
-> --- a/drivers/soc/mediatek/mt8195-mmsys.h
-> +++ b/drivers/soc/mediatek/mt8195-mmsys.h
-> @@ -75,6 +75,70 @@
->  #define MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0		(2 <<
-> 16)
->  #define MT8195_SOUT_DSC_WRAP1_OUT_TO_VPP_MERGE			
-> (3 << 16)
->  
-> +#define MT8195_VDO1_VPP_MERGE0_P0_SEL_IN			0xf04
-> +#define MT8195_VPP_MERGE0_P0_SEL_IN_FROM_MDP_RDMA0			
-> 1
-> +
-> +#define MT8195_VDO1_VPP_MERGE0_P1_SEL_IN			0xf08
-> +#define MT8195_VPP_MERGE0_P1_SEL_IN_FROM_MDP_RDMA1			
-> 1
-> +
-> +#define MT8195_VDO1_DISP_DPI1_SEL_IN				0xf10
-> +#define MT8195_DISP_DPI1_SEL_IN_FROM_VPP_MERGE4_MOUT			
-> 0
-> +
-> +#define MT8195_VDO1_DISP_DP_INTF0_SEL_IN			0xf14
-> +#define MT8195_DISP_DP_INTF0_SEL_IN_FROM_VPP_MERGE4_MOUT		
-> 0
-> +
-> +#define MT8195_VDO1_MERGE4_SOUT_SEL				0xf18
-> +#define MT8195_MERGE4_SOUT_TO_DPI1_SEL				
-> 	2
-> +#define MT8195_MERGE4_SOUT_TO_DP_INTF0_SEL				
-> 3
-> +
-> +#define MT8195_VDO1_MIXER_IN1_SEL_IN				0xf24
-> +#define MT8195_MIXER_IN1_SEL_IN_FROM_MERGE0_ASYNC_SOUT		
-> 	1
-> +
-> +#define MT8195_VDO1_MIXER_IN2_SEL_IN				0xf28
-> +#define MT8195_MIXER_IN2_SEL_IN_FROM_MERGE1_ASYNC_SOUT		
-> 	1
-> +
-> +#define MT8195_VDO1_MIXER_IN3_SEL_IN				0xf2c
-> +#define MT8195_MIXER_IN3_SEL_IN_FROM_MERGE2_ASYNC_SOUT		
-> 	1
-> +
-> +#define MT8195_VDO1_MIXER_IN4_SEL_IN				0xf30
-> +#define MT8195_MIXER_IN4_SEL_IN_FROM_MERGE3_ASYNC_SOUT		
-> 	1
-> +
-> +#define MT8195_VDO1_MIXER_OUT_SOUT_SEL				
-> 0xf34
-> +#define MT8195_MIXER_SOUT_TO_MERGE4_ASYNC_SEL			
-> 	1
-> +
-> +#define MT8195_VDO1_VPP_MERGE1_P0_SEL_IN			0xf3c
-> +#define MT8195_VPP_MERGE1_P0_SEL_IN_FROM_MDP_RDMA2			
-> 1
-> +
-> +#define MT8195_VDO1_MERGE0_ASYNC_SOUT_SEL			0xf40
-> +#define MT8195_SOUT_TO_MIXER_IN1_SEL					
-> 1
-> +
-> +#define MT8195_VDO1_MERGE1_ASYNC_SOUT_SEL			0xf44
-> +#define MT8195_SOUT_TO_MIXER_IN2_SEL					
-> 1
-> +
-> +#define MT8195_VDO1_MERGE2_ASYNC_SOUT_SEL			0xf48
-> +#define MT8195_SOUT_TO_MIXER_IN3_SEL					
-> 1
-> +
-> +#define MT8195_VDO1_MERGE3_ASYNC_SOUT_SEL			0xf4c
-> +#define MT8195_SOUT_TO_MIXER_IN4_SEL					
-> 1
-> +
-> +#define MT8195_VDO1_MERGE4_ASYNC_SEL_IN				
-> 0xf50
-> +#define MT8195_MERGE4_ASYNC_SEL_IN_FROM_MIXER_OUT_SOUT		
-> 	1
-> +
-> +#define MT8195_VDO1_MIXER_IN1_SOUT_SEL				
-> 0xf58
-> +#define MT8195_MIXER_IN1_SOUT_TO_DISP_MIXER				
-> 0
-> +
-> +#define MT8195_VDO1_MIXER_IN2_SOUT_SEL				
-> 0xf5c
-> +#define MT8195_MIXER_IN2_SOUT_TO_DISP_MIXER				
-> 0
-> +
-> +#define MT8195_VDO1_MIXER_IN3_SOUT_SEL				
-> 0xf60
-> +#define MT8195_MIXER_IN3_SOUT_TO_DISP_MIXER				
-> 0
-> +
-> +#define MT8195_VDO1_MIXER_IN4_SOUT_SEL				
-> 0xf64
-> +#define MT8195_MIXER_IN4_SOUT_TO_DISP_MIXER				
-> 0
-> +
-> +#define MT8195_VDO1_MIXER_SOUT_SEL_IN				
-> 0xf68
-> +#define MT8195_MIXER_SOUT_SEL_IN_FROM_DISP_MIXER			
-> 0
-> +
->  static const struct mtk_mmsys_routes mmsys_mt8195_routing_table[] =
-> {
->  	{
->  		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
-> @@ -124,6 +188,78 @@ static const struct mtk_mmsys_routes
-> mmsys_mt8195_routing_table[] = {
->  		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DP_INTF0,
->  		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_MASK,
->  		MT8195_SOUT_VPP_MERGE_TO_DP_INTF0
-> +	}, {
-> +		DDP_COMPONENT_OVL_ADAPTOR, DDP_COMPONENT_MERGE5,
-> +		MT8195_VDO1_VPP_MERGE0_P0_SEL_IN, GENMASK(0, 0),
-> +		MT8195_VPP_MERGE0_P0_SEL_IN_FROM_MDP_RDMA0
-> +	}, {
-> +		DDP_COMPONENT_OVL_ADAPTOR, DDP_COMPONENT_MERGE5,
-> +		MT8195_VDO1_VPP_MERGE0_P1_SEL_IN, GENMASK(0, 0),
-> +		MT8195_VPP_MERGE0_P1_SEL_IN_FROM_MDP_RDMA1
-> +	}, {
-> +		DDP_COMPONENT_OVL_ADAPTOR, DDP_COMPONENT_MERGE5,
-> +		MT8195_VDO1_VPP_MERGE1_P0_SEL_IN, GENMASK(0, 0),
-> +		MT8195_VPP_MERGE1_P0_SEL_IN_FROM_MDP_RDMA2
-> +	}, {
-> +		DDP_COMPONENT_OVL_ADAPTOR, DDP_COMPONENT_MERGE5,
-> +		MT8195_VDO1_MERGE0_ASYNC_SOUT_SEL, GENMASK(1, 0),
-> +		MT8195_SOUT_TO_MIXER_IN1_SEL
-> +	}, {
-> +		DDP_COMPONENT_OVL_ADAPTOR, DDP_COMPONENT_MERGE5,
-> +		MT8195_VDO1_MERGE1_ASYNC_SOUT_SEL, GENMASK(1, 0),
-> +		MT8195_SOUT_TO_MIXER_IN2_SEL
-> +	}, {
-> +		DDP_COMPONENT_OVL_ADAPTOR, DDP_COMPONENT_MERGE5,
-> +		MT8195_VDO1_MERGE2_ASYNC_SOUT_SEL, GENMASK(1, 0),
-> +		MT8195_SOUT_TO_MIXER_IN3_SEL
-> +	}, {
-> +		DDP_COMPONENT_OVL_ADAPTOR, DDP_COMPONENT_MERGE5,
-> +		MT8195_VDO1_MERGE3_ASYNC_SOUT_SEL, GENMASK(1, 0),
-> +		MT8195_SOUT_TO_MIXER_IN4_SEL
-> +	}, {
-> +		DDP_COMPONENT_OVL_ADAPTOR, DDP_COMPONENT_MERGE5,
-> +		MT8195_VDO1_MIXER_OUT_SOUT_SEL, GENMASK(0, 0),
-> +		MT8195_MIXER_SOUT_TO_MERGE4_ASYNC_SEL
-> +	}, {
-> +		DDP_COMPONENT_OVL_ADAPTOR, DDP_COMPONENT_MERGE5,
-> +		MT8195_VDO1_MIXER_IN1_SEL_IN, GENMASK(0, 0),
-> +		MT8195_MIXER_IN1_SEL_IN_FROM_MERGE0_ASYNC_SOUT
-> +	}, {
-> +		DDP_COMPONENT_OVL_ADAPTOR, DDP_COMPONENT_MERGE5,
-> +		MT8195_VDO1_MIXER_IN2_SEL_IN, GENMASK(0, 0),
-> +		MT8195_MIXER_IN2_SEL_IN_FROM_MERGE1_ASYNC_SOUT
-> +	}, {
-> +		DDP_COMPONENT_OVL_ADAPTOR, DDP_COMPONENT_MERGE5,
-> +		MT8195_VDO1_MIXER_IN3_SEL_IN, GENMASK(0, 0),
-> +		MT8195_MIXER_IN3_SEL_IN_FROM_MERGE2_ASYNC_SOUT
-> +	}, {
-> +		DDP_COMPONENT_OVL_ADAPTOR, DDP_COMPONENT_MERGE5,
-> +		MT8195_VDO1_MIXER_IN4_SEL_IN, GENMASK(0, 0),
-> +		MT8195_MIXER_IN4_SEL_IN_FROM_MERGE3_ASYNC_SOUT
-> +	}, {
-> +		DDP_COMPONENT_OVL_ADAPTOR, DDP_COMPONENT_MERGE5,
-> +		MT8195_VDO1_MIXER_SOUT_SEL_IN, GENMASK(2, 0),
-> +		MT8195_MIXER_SOUT_SEL_IN_FROM_DISP_MIXER
-> +	}, {
-> +		DDP_COMPONENT_OVL_ADAPTOR, DDP_COMPONENT_MERGE5,
-> +		MT8195_VDO1_MERGE4_ASYNC_SEL_IN, GENMASK(2, 0),
-> +		MT8195_MERGE4_ASYNC_SEL_IN_FROM_MIXER_OUT_SOUT
+Hi Rob,
 
-I would like to expose each mod instead of ovl adaptor. ovl adaptor is
-an application that combine these mod to achieve ovl function, maybe
-another application would combine part of these mod to achieve another
-function. Let application to decide the combination.
+I originally referred to simple-card.yaml and move "xxx.yyy" to the
+patternProperties.
 
-Regards,
-CK
+Such as:
+# use patternProperties to avoid naming "xxx,yyy" issue
+patternProperties:
+  "^simple-audio-card,widgets$":
+    $ref: "#/definitions/widgets"
 
-> +	}, {
-> +		DDP_COMPONENT_MERGE5, DDP_COMPONENT_DPI1,
-> +		MT8195_VDO1_DISP_DPI1_SEL_IN, GENMASK(1, 0),
-> +		MT8195_DISP_DPI1_SEL_IN_FROM_VPP_MERGE4_MOUT
-> +	}, {
-> +		DDP_COMPONENT_MERGE5, DDP_COMPONENT_DPI1,
-> +		MT8195_VDO1_MERGE4_SOUT_SEL, GENMASK(1, 0),
-> +		MT8195_MERGE4_SOUT_TO_DPI1_SEL
-> +	}, {
-> +		DDP_COMPONENT_MERGE5, DDP_COMPONENT_DP_INTF1,
-> +		MT8195_VDO1_DISP_DP_INTF0_SEL_IN, GENMASK(1, 0),
-> +		MT8195_DISP_DP_INTF0_SEL_IN_FROM_VPP_MERGE4_MOUT
-> +	}, {
-> +		DDP_COMPONENT_MERGE5, DDP_COMPONENT_DP_INTF1,
-> +		MT8195_VDO1_MERGE4_SOUT_SEL, GENMASK(1, 0),
-> +		MT8195_MERGE4_SOUT_TO_DP_INTF0_SEL
->  	}
->  };
->  
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.c
-> b/drivers/soc/mediatek/mtk-mmsys.c
-> index dc5c51f0ccc8..0b77624cf6ca 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.c
-> +++ b/drivers/soc/mediatek/mtk-mmsys.c
-> @@ -79,6 +79,12 @@ static const struct mtk_mmsys_driver_data
-> mt8195_vdosys0_driver_data = {
->  	.num_routes = ARRAY_SIZE(mmsys_mt8195_routing_table),
->  };
->  
-> +static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data
-> = {
-> +	.clk_driver = "clk-mt8195-vdo1",
-> +	.routes = mmsys_mt8195_routing_table,
-> +	.num_routes = ARRAY_SIZE(mmsys_mt8195_routing_table),
-> +};
-> +
->  static const struct mtk_mmsys_driver_data mt8365_mmsys_driver_data =
-> {
->  	.clk_driver = "clk-mt8365-mm",
->  	.routes = mt8365_mmsys_routing_table,
-> @@ -271,6 +277,10 @@ static const struct of_device_id
-> of_match_mtk_mmsys[] = {
->  		.compatible = "mediatek,mt8195-vdosys0",
->  		.data = &mt8195_vdosys0_driver_data,
->  	},
-> +	{
-> +		.compatible = "mediatek,mt8195-vdosys1",
-> +		.data = &mt8195_vdosys1_driver_data,
-> +	},
->  	{
->  		.compatible = "mediatek,mt8365-mmsys",
->  		.data = &mt8365_mmsys_driver_data,
-> diff --git a/include/linux/soc/mediatek/mtk-mmsys.h
-> b/include/linux/soc/mediatek/mtk-mmsys.h
-> index 64c77c4a6c56..eaf7f7345519 100644
-> --- a/include/linux/soc/mediatek/mtk-mmsys.h
-> +++ b/include/linux/soc/mediatek/mtk-mmsys.h
-> @@ -18,6 +18,7 @@ enum mtk_ddp_comp_id {
->  	DDP_COMPONENT_COLOR1,
->  	DDP_COMPONENT_DITHER,
->  	DDP_COMPONENT_DP_INTF0,
-> +	DDP_COMPONENT_DP_INTF1,
->  	DDP_COMPONENT_DPI0,
->  	DDP_COMPONENT_DPI1,
->  	DDP_COMPONENT_DSC0,
-> @@ -39,6 +40,7 @@ enum mtk_ddp_comp_id {
->  	DDP_COMPONENT_OVL_2L0,
->  	DDP_COMPONENT_OVL_2L1,
->  	DDP_COMPONENT_OVL_2L2,
-> +	DDP_COMPONENT_OVL_ADAPTOR,
->  	DDP_COMPONENT_OVL1,
->  	DDP_COMPONENT_POSTMASK0,
->  	DDP_COMPONENT_PWM0,
+But your comment is more reasonable. I will move them to 'properties'
+and drop the vendor prefix. Thanks for your review.
 
 
+> > +    description: Holds subnode which indicates headset dai.
+> > +    type: object
+> > +    properties:
+> > +      sound-dai:
+> > +        $ref: /schemas/types.yaml#/definitions/phandle-array
+> 
+> Standard property, don't need a type or description. Just how many
+> and 
+> what each one is if more than 1.
+
+Should I describe them as below?
+
+properties:
+...
+  speaker-codec:
+    type: object
+    properties:
+      sound-dai:
+         maxItems: 1
+...
+
+> 
+> > +        description: List of phandles to the headset codec nodes.
+> 
+> More than 1?
+> 
+
+Sorry, the description here is incorrect, there is only one phandle.
+
+> > +    additionalProperties: false
+> > +
+> > +  "^mediatek,speaker-codec$":
+> > +    description: Holds subnode which indicates speaker dai.
+> > +    type: object
+> > +    properties:
+> > +      sound-dai:
+> > +        $ref: /schemas/types.yaml#/definitions/phandle-array
+> > +        description: List of phandles to the speaker codec nodes.
+> 
+> Same here.
+> 
+> > +    additionalProperties: false
+> > +
+> >  additionalProperties: false
+> >  
+> >  required:
+> > @@ -44,6 +64,15 @@ examples:
+> >                          "aud_clk_mosi_on";
+> >          pinctrl-0 = <&aud_clk_mosi_off>;
+> >          pinctrl-1 = <&aud_clk_mosi_on>;
+> > +
+> > +        mediatek,headset-codec {
+> > +            sound-dai = <&rt5682>;
+> > +        };
+> > +
+> > +        mediatek,speaker-codec {
+> > +            sound-dai = <&rt1015_l>,
+> > +                        <&rt1015_r>;
+> > +        };
+> >      };
+> >  
+> >  ...
+> > -- 
+> > 2.18.0
+> > 
+> > 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
