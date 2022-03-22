@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E5A9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 14:19:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76D41C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 14:35:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lWoaJIwJMMvR8kea8HRTwqEUUS+nAIRs08VM0jZwVlk=; b=v+Y7Zxfj/KMkro
-	9lBMYcBKsVbiSBZbK7KpH+uU7zkCW27ygjYyj49yMbZkXRcSy75M/2zS+Zdii8aNKOqUgmxfyHcrC
-	LKsC8VdRQHoMtvl99Mo6m6LVtv1RH1phsC9bHlnB/1NXvw/f0hFuUgm62RMKAiOdQwS+tlGOEb+kU
-	+dm+WCUQkYWyV4F9awK2hrnA/hFTltczwaTE8VEUKj2Tn72ZJIDXPjn6zuwyk+Z0v3GLwUvaHKmzW
-	EkrstX/yytaJYhPj9VQFyVi9aBVaI4/nAmg2fzLivRXdDtsSAUOnw6RhFzindeMyTDbNujaW0sYYb
-	CCzeSC+Q0HXcfKH/MMJA==;
+	List-Owner; bh=OzAfKESOTg2X01Hu/foXivDHsNpeSAvnr8csSjJNo9U=; b=veiXGfyV6cq90D
+	UDkTcrx408oLvj+Opm5CasKIVfeo0jE07fdeMNYo+J2YUVAGzCd+KiqH4PLPJINUvt3DhPkqbQTKS
+	8afrGBLWgp+dF/+m4Wd9htpB07YMpfAGANRQv6dpDERCZ5cAqHqr57eo0O8Cuww9qoz18vx9K4ZWd
+	1xveBkRQ8sEpk3JsTMuN2WIYvg/6CGgGAdfBxOfYDyiavis+jaGBSR5cVLhroChBgHzSmX2nSziWA
+	B5ZYLY3j/tOF9iqMEXO7n2w/fFEuAU7+UQcKgklruVy4RWO7Fpo4BpGHbmfCuqD+1lNqPtEikMHuq
+	2v3Mb2SryAReHA6OJLZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWfMU-00BBU4-AP; Tue, 22 Mar 2022 14:19:50 +0000
+	id 1nWfbO-00BFin-D5; Tue, 22 Mar 2022 14:35:14 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWfMH-00BBRl-Lw; Tue, 22 Mar 2022 14:19:39 +0000
+ id 1nWfbB-00BFe3-OV; Tue, 22 Mar 2022 14:35:03 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 9F78D1F4413E
+ (Authenticated sender: nfraprado) with ESMTPSA id 4A85D1F44168
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647958775;
- bh=2ZZiH3Q6QoDzKHSBWyIRldNto/3FwFwrN/F38RcE6Ec=;
+ s=mail; t=1647959700;
+ bh=aNbxXQ/SWTcyB0DYx3I3/ERMzeu2JAiNEzh7tn5j4wE=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=h5WICPDqkPjkv2ZhwlTveB9UxtzmX5E4wncmi9Ziyd6CbKMgZwtyBpgIb7JhyvuhG
- t58Of7F4ECbXqfCKOxpgzIpQK0Ex2YRglMYSlVfuc+MCTK/HyAbw3biC4iE171edH8
- X//Y1FGFuhChsFJtX1ngmIFqxC4+nHAlcjywAUtzNxJhzFZDq047MXnn8unHJtm6xV
- JsrU7RMeNX9VIpRcA/exhmTiQN69hklPbFV0NguvQNKNSb/kqxnnpZIO/gwBCyAMGG
- uCJYyHRegXLoa2WnYqYbiiGasWtZfHldT7oY32nTxvaXzTnmP0DuqqQZpuK/Huhcj4
- B5gTzqBwgGPUA==
-Date: Tue, 22 Mar 2022 10:19:30 -0400
+ b=PH97x9fGWNjR9ZafBX72qdRbmIzVwKx9irbMtnG21KzUrfNSFcVwxferoJpZSZ/z5
+ OJ4DP+GIVHNY1x2JNg94ne1kWTU8mnmhCFLO6jRqyxGycTQjZSXNb3nM1EmQVszbkj
+ a0DVTFrmX0Tce65fW25rRtLIDu32/ansGYY8memvI0SlPcHaQm+t4XZow1sNE8bFmb
+ 51kqueaI3W2fN/k2MRCuB+w0fR2WXNPkxJC6TYSk7yGUMtQuDhfpFCoEXHEaPgCTfU
+ fKb2lI5FVxWKaj40ZIKS9mrjAAc7a1US64tzPIEngTqXyNKFXz115hyfjuhCAWU5tV
+ kCJVWVquz2dsA==
+Date: Tue, 22 Mar 2022 10:34:55 -0400
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
@@ -47,18 +47,16 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
  Hui Liu <hui.liu@mediatek.com>
-Subject: Re: [PATCH v4 18/22] arm64: dts: mt8192: Add display nodes
-Message-ID: <20220322141930.blpksmixuefhdguv@notapiano>
+Subject: Re: [PATCH v4 12/22] arm64: dts: mt8192: Add mmc device nodes
+Message-ID: <20220322143455.fbaavvhf3uh5otbn@notapiano>
 References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
- <20220318144534.17996-19-allen-kh.cheng@mediatek.com>
- <20220321232657.6z2g3p2aflixzamp@notapiano>
- <28c6f778b312b53ec22aec536dadfb3d7d85c35e.camel@mediatek.com>
+ <20220318144534.17996-13-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <28c6f778b312b53ec22aec536dadfb3d7d85c35e.camel@mediatek.com>
+In-Reply-To: <20220318144534.17996-13-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220322_071937_878766_96C3DF98 
-X-CRM114-Status: GOOD (  17.22  )
+X-CRM114-CacheID: sfid-20220322_073501_966324_BE62D87E 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,61 +73,76 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 22, 2022 at 02:15:28PM +0800, allen-kh.cheng wrote:
-> On Mon, 2022-03-21 at 19:26 -0400, N=EDcolas F. R. A. Prado wrote:
-> > On Fri, Mar 18, 2022 at 10:45:30PM +0800, Allen-KH Cheng wrote:
-> > > +		aal0: aal@1400b000 {
-> > > +			compatible =3D "mediatek,mt8192-disp-aal",
-> > > +				     "mediatek,mt8193-disp-aal";
-> > =
-
-> > Typo: "mediatek,mt8193-disp-aal" should be "mediatek,mt8173-disp-
-> > aal", otherwise =
-
-> > the drm driver doesn't even probe. Typos happen, just please make
-> > sure you're
-> > testing before sending to the list so these kind of issues can be
-> > caught
-> > earlier.
-> > =
-
-> > Thanks,
-> > N=EDcolas
-> > =
-
-> Hi N=EDcolas,
+On Fri, Mar 18, 2022 at 10:45:24PM +0800, Allen-KH Cheng wrote:
+> Add mmc nodes for mt8192 SoC.
 > =
 
-> Thanks for your kindly reminder.
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+
+Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 34 +++++++++++++++++++++---
+>  1 file changed, 30 insertions(+), 4 deletions(-)
 > =
 
-> There are two compatibles in drivers/gpu/drm/mediatek/mtk_disp_aal.c
-> (mediatek,mt8173-disp-aal adn mediatek,mt8183-disp-aal)
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt8192.dtsi
+> index 6220d6962f58..2648f2847993 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> @@ -1150,10 +1150,36 @@
+>  			#clock-cells =3D <1>;
+>  		};
+>  =
+
+> -		msdc: clock-controller@11f60000 {
+> -			compatible =3D "mediatek,mt8192-msdc";
+> -			reg =3D <0 0x11f60000 0 0x1000>;
+> -			#clock-cells =3D <1>;
+> +		mmc0: mmc@11f60000 {
+> +			compatible =3D "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
+> +			reg =3D <0 0x11f60000 0 0x1000>, <0 0x11f50000 0 0x1000>;
+> +			interrupts =3D <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			clocks =3D <&topckgen CLK_TOP_MSDC50_0_SEL>,
+> +				 <&msdc_top CLK_MSDC_TOP_H_MST_0P>,
+> +				 <&msdc_top CLK_MSDC_TOP_SRC_0P>,
+> +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
+> +				 <&msdc_top CLK_MSDC_TOP_P_MSDC0>,
+> +				 <&msdc_top CLK_MSDC_TOP_AXI>,
+> +				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
+> +			clock-names =3D "source", "hclk", "source_cg", "sys_cg",
+> +				      "pclk_cg", "axi_cg", "ahb_cg";
+> +			status =3D "disabled";
+> +		};
+> +
+> +		mmc1: mmc@11f70000 {
+> +			compatible =3D "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
+> +			reg =3D <0 0x11f70000 0 0x1000>, <0 0x11c70000 0 0x1000>;
+> +			interrupts =3D <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			clocks =3D <&topckgen CLK_TOP_MSDC30_1_SEL>,
+> +				 <&msdc_top CLK_MSDC_TOP_H_MST_1P>,
+> +				 <&msdc_top CLK_MSDC_TOP_SRC_1P>,
+> +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
+> +				 <&msdc_top CLK_MSDC_TOP_P_MSDC1>,
+> +				 <&msdc_top CLK_MSDC_TOP_AXI>,
+> +				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
+> +			clock-names =3D "source", "hclk", "source_cg", "sys_cg",
+> +				      "pclk_cg", "axi_cg", "ahb_cg";
+> +			status =3D "disabled";
+>  		};
+>  =
+
+>  		mfgcfg: clock-controller@13fbf000 {
+> -- =
+
+> 2.18.0
 > =
 
-> In 8192, We should use mediatek,mt8183-disp-aal because of design.
-
-If that's the case, then the mediatek,aal.yaml binding should be fixed. As =
-it
-currently is, the mt8173 compatible is expected as a fallback for mt8192. [=
-1]
-
 > =
 
-> Do I need to add some information for this in mediatek,disp.txt?
-
-Note that the mediatek,disp.txt binding was split into several yaml binding=
-s.
-The binding for this node is now mediatek,aal.yaml and can be seen in Chun-=
-Kuang
-Hu's tree [1].
-
-Thanks,
-N=EDcolas
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-tree/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml?h=
-=3Dmediatek-drm-next
 
 _______________________________________________
 Linux-mediatek mailing list
