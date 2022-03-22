@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EBD0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 20:16:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A6E0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 20:28:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FM9jS1QDreZngYs16mwHjycUo53/CJxseZ9mM6FLu70=; b=4vxRHJUlV9ToFD
-	+Bx+gWSTMN+qSIc0a/hQqlMijkY/mZ/nUtzr3yFWExbycDiC+4LegFJjrnq+9wtueGHkrW7x0OVeQ
-	vQI+vJ6f/YBO1vIZRMIk1LEVEcq0JHG45ivHan0F0bEzo/W7GIaquRCivdR75SDcvLAN7IyM8n7oo
-	p1hhi1CuDsTAVL3ms0FXVKU7nSY8XsCMcF6flnZoM8uqY2pCWGfXAdvWIwsqS18HyuXAQCSGAUQAz
-	ApP/IcmffkzJ07ND6FVnKw1rbYIy/VTxJsQnXhBnEAiBE57/wWTtDlw65z6sJT0HaP0kJcOv6nh+b
-	ruTESZLEsCfvAs5814MQ==;
+	List-Owner; bh=w3Uhj8ScqknpsLVVqLtCddC4NtPFIv3SZs6GdQkXM80=; b=CZ/+iDTSE9yJjE
+	7bZZe3lOkFqkYu19PQw2bBQoSVZy6BZjfHxiGPEwb6QE0pCs/tNVyGGvGE94OF+QcLeV6q37PL5Pd
+	PGjYWPceaR/5O39X+e7Rd2qzKIBbo4H1qvDFEJAmAs9/75RMx8pFV9LDWVYLRsfaJsdWkq32AUOa4
+	680MitzN9zeA9nsx5KYpidjIRwBCaYyxZSFQ/Nl7XFWAx4DB1hPiyMxMvonLJucO91ZFx8pepZjRC
+	mtlW7BlkMYDF9zEmmmAPWbRfPq0jr49PZUilnkqUkFXVt5nEo8PpcPQ7+W7ojhI1ALKWU6AsID+Xz
+	03Rn7oUmnvjBsDkhlCCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWkvk-00C5B9-8z; Tue, 22 Mar 2022 20:16:36 +0000
+	id 1nWl7U-00C71p-Pd; Tue, 22 Mar 2022 20:28:44 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWkvX-00C58v-QN; Tue, 22 Mar 2022 20:16:25 +0000
+ id 1nWl7J-00C6zY-1S; Tue, 22 Mar 2022 20:28:34 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 64D721F42F6C
+ (Authenticated sender: nfraprado) with ESMTPSA id 89B281F431E4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647980182;
- bh=zvjZFzW+8eVSVcYN3AYKVNtaszJpAGzALDjXSoRAcFk=;
+ s=mail; t=1647980911;
+ bh=1CkcBWcFLWap6uKtAh1dSlwHTFBzBqGJJwNqC1b53nE=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=kabOxj6vgJIgSb4+zJOxfFHg2gUKHisLnUGdjCXL47ayPobEqtmU85Se5OnNj1ZKJ
- lHP5OYBoSg+zSqGB2cC6MdOldJKA/cs+Liva5ByTacI1Awr38/OSbKArkS2YRXwX/7
- qK/jOXG1uryB6BADQMhkNszS+CnEP8PqjbkNXCk9XkidPUA9rxS7USwczoQ1Vxjnkr
- q6l2devdSG6Oi6kfoaZcqxXptUJQEKRp+6QU2roR80ZDC3ughWFSIKZSdgpE6+N5TI
- kwx2ariVWo4dTQHkIaw55uVLOOBXeuVUPYzbRvYmavZCpmxL+ThvshomxHrZaUUVnJ
- 9sgQUhcnq+aNA==
-Date: Tue, 22 Mar 2022 16:16:17 -0400
+ b=PHjlpq/kg6OUyZsGSXY47+FiRpjGpYfOtwTS/cXDajteWi2DMGrrBKg6pE/7K3lit
+ s9yP6YOd5Z4JxBuQVUJz+kAgLusobcFRv9lDwH28EGDMoA+7RN16Ix6MUdm58yNVHf
+ Kp4mrq/U/GI837iIIhkn9SmYVZxWeYqFq5fKAn2FAU53c7oH1QMIBFK94w8MDS4MIN
+ s80J5IKqlHe0us25z6HONWFDRaFRuc89AK082yO3eQY4EUGOObsSjOL4jGXZdFa1py
+ aA7ig2syp6EBtOxAz1HJEdiv8M8P+S/6LSv4WOe+/3YrtpSHUfNU0j3vVPW2ksnoJi
+ lq6cazoWPVLTQ==
+Date: Tue, 22 Mar 2022 16:28:26 -0400
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
 To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>,
@@ -47,17 +47,16 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
  Hui Liu <hui.liu@mediatek.com>
-Subject: Re: [PATCH v4 19/22] arm64: dts: mt8192: Add the mmsys reset bit to
- reset the dsi0
-Message-ID: <20220322201617.s55p4xp3hcb4zgvi@notapiano>
+Subject: Re: [PATCH v4 04/22] arm64: dts: mt8192: Add SCP node
+Message-ID: <20220322202826.64kwisnka5xq64vc@notapiano>
 References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
- <20220318144534.17996-20-allen-kh.cheng@mediatek.com>
+ <20220318144534.17996-5-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220318144534.17996-20-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220318144534.17996-5-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220322_131624_013007_1D65AC5E 
-X-CRM114-Status: GOOD (  15.42  )
+X-CRM114-CacheID: sfid-20220322_132833_236944_463EA637 
+X-CRM114-Status: GOOD (  13.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,9 +73,8 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 18, 2022 at 10:45:31PM +0800, Allen-KH Cheng wrote:
-> Reset the DSI hardware is needed to prevent different settings between
-> the bootloader and the kernel.
+On Fri, Mar 18, 2022 at 10:45:16PM +0800, Allen-KH Cheng wrote:
+> Add SCP node for mt8192 SoC.
 > =
 
 > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
@@ -84,25 +82,35 @@ On Fri, Mar 18, 2022 at 10:45:31PM +0800, Allen-KH Cheng wrote:
 Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
 
 > ---
->  include/dt-bindings/reset/mt8192-resets.h | 3 +++
->  1 file changed, 3 insertions(+)
+>  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
 > =
 
-> diff --git a/include/dt-bindings/reset/mt8192-resets.h b/include/dt-bindi=
-ngs/reset/mt8192-resets.h
-> index be9a7ca245b9..764ca9910fa9 100644
-> --- a/include/dt-bindings/reset/mt8192-resets.h
-> +++ b/include/dt-bindings/reset/mt8192-resets.h
-> @@ -27,4 +27,7 @@
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt8192.dtsi
+> index 9e1b563bebab..195d50894df4 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> @@ -706,6 +706,18 @@
+>  			status =3D "disabled";
+>  		};
 >  =
 
->  #define MT8192_TOPRGU_SW_RST_NUM				23
->  =
-
-> +/* MMSYS resets */
-> +#define MT8192_MMSYS_SW0_RST_B_DISP_DSI0			15
+> +		scp: scp@10500000 {
+> +			compatible =3D "mediatek,mt8192-scp";
+> +			reg =3D <0 0x10500000 0 0x100000>,
+> +			      <0 0x10700000 0 0x8000>,
+> +			      <0 0x10720000 0 0xe0000>;
+> +			reg-names =3D "sram", "l1tcm", "cfg";
+> +			interrupts =3D <GIC_SPI 435 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			clocks =3D <&infracfg CLK_INFRA_SCPSYS>;
+> +			clock-names =3D "main";
+> +			status =3D "disabled";
+> +		};
 > +
->  #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8192 */
+>  		nor_flash: spi@11234000 {
+>  			compatible =3D "mediatek,mt8192-nor";
+>  			reg =3D <0 0x11234000 0 0xe0>;
 > -- =
 
 > 2.18.0
