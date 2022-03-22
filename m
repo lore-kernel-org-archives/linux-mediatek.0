@@ -4,90 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B697C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 15:11:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6139C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 16:42:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6IWVlnWbZaPX/4bng2pCRtOYNZ4cYiDBPwgHR5Qe3gg=; b=seZ6701QE4w82W
-	G4iEXk+lAtwhOTN+qGi2Bb38Iy4HFRQxOYbI9xXnbJgHsdZTrbMwE1AnraHfka5bx/N+qAy+VwPBK
-	dxZ2xSYkzdiopCzzSEDHqszDP9XC+f+JsDhAS+0Nz47WHAmHLtU0BhtWSzljlFURAQ4QsffSqJgBN
-	pBs6bwRFI4DaMKkS6Sipw/HT8Tp/jxIM4LU5R02kjuXW4GQox9ql3nSn+Jy4fAH/1sSuMk6ksRVPc
-	GIVlf631Y5YyOdfNEe4wfedVfNOiBoPcvmGbJ5Da6Jx0HwHuJI/qGts5gwdEnJMqq6sWJ0KsjiX8I
-	7YXWXvmVkx6c3NmJjilw==;
+	List-Owner; bh=WeTFciQjIIL/Tw3FwmHbZ7c+CisGZ1iSdrOCJJp764A=; b=Hd3s2ALW0dt8wF
+	u3zzarAzNmqo6Uk9KukpRrBZSGF3NtitNfnu+Wq4C1zzwUdQ9farg5DGJkxClnk+MItRGps6O77ni
+	/P2BG7JlRuqHnLG9v83GUTTsbvYLUtNbF6K7saY2wvZj0foYjaGpMmttsjBXgsNOspJRbbrusoGPa
+	S+V96cAfFTFsHSZ0uTH3+EVZU/vMn1myz2PzrsDZBnIKMHTaVVodieIsMFqyHLwV/TTQsggwg9Seo
+	giF7lK6G5X2YJP87eBAPbbh5IjJzMTpVsRv3u+dC3GlqAUH2iC2IgXFTr8wONZ3swJr+PP8ogz571
+	lAU//Vy5k7QMPGF0Zhng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWgA6-00BUth-Ej; Tue, 22 Mar 2022 15:11:06 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nWhaa-00BedA-JX; Tue, 22 Mar 2022 16:42:32 +0000
+Received: from mail-oi1-f181.google.com ([209.85.167.181])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWg9o-00BUj6-4b; Tue, 22 Mar 2022 15:10:49 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 41AB9B81D13;
- Tue, 22 Mar 2022 15:10:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F20FEC340ED;
- Tue, 22 Mar 2022 15:10:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647961845;
- bh=iD3r2C8ohus5StZzu+HIHENCtSsyhMruFFh9RM7/ok0=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=lTfrr6Xx5T7dbCIZGWoVSA4ezDO8SPB4V6YiBOHileBU/8ywOv7AWeMUKIdBFO6mz
- MvY51MObY0A/m/xTXiyLMLUAPYZ6+actWLn4LlYJqH3g/L4jHHzy1wCWg70oZIXspZ
- U6x970s8lT3VvnYOpTRHlqx2tDKXxKQ8DwacUVkUrJ627HzygQZjwNdf37sragLX6I
- bv5f/jPoJ3qdHmRLPmHthWGXr32polEsPw4OQWIeCq8MGYMWb/SYtKycLUnFl/f0w3
- gU4qi+iDUfcOw13fViapVaP64M1Fj7vJK1yygwrMI30M63p4q3O58w9LVF3z2np3Le
- yUcdLHGQehvQQ==
-Received: by mail-ej1-f49.google.com with SMTP id bi12so36913982ejb.3;
- Tue, 22 Mar 2022 08:10:44 -0700 (PDT)
-X-Gm-Message-State: AOAM532QS46lavK3WrWxEiIVJX/SiwynnppTPj1EjLJdxh6W5U0NP/CE
- PX4WYDzEchK0lecp58CrLEC43slr1w7V+qDIgQ==
-X-Google-Smtp-Source: ABdhPJwcstYlhae/VDeErmYlaX8hBZSodjccbiEArN1YhP3mCzfkMUHmbq6+FoN7ayATI+AtiuwrK2GB7QQaqZOLugM=
-X-Received: by 2002:a17:907:97c9:b0:6db:ab53:1fdf with SMTP id
- js9-20020a17090797c900b006dbab531fdfmr26610884ejc.406.1647961843159; Tue, 22
- Mar 2022 08:10:43 -0700 (PDT)
+ id 1nWhaL-00BeZd-3Q; Tue, 22 Mar 2022 16:42:22 +0000
+Received: by mail-oi1-f181.google.com with SMTP id v75so20081673oie.1;
+ Tue, 22 Mar 2022 09:42:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=f19PtgxgIFInjc+IlAHkQp6KzpsdEzJgw42yMBWHdQg=;
+ b=pqtHhc4hDwPiGRbQ0VSiziwYqo0xMtXDS7BkibaCLaPWc6P7xiQnxMZraiUo5tpViU
+ uwxE+sVSEDKJJtfc/MtL+1VGGZaGTxJevvl0Z3HGhNxshD5RRcB9GzRUPX0mFm+Ki5FF
+ xn5Sf0vn4jK1t27fjriEmgDxKzwbDY+WtQOHJ//BbwTGI7appK3PK19mQuvx/BGzjnRa
+ jWzKBpAgkjDgS8NxX7vVjaa1PHB8YpDrvg7xZO+EDvkJJtb89YWqwqjoCZHBR00eVlDB
+ lOByLUmJTBEHByhUpWubgiPZcDABTMfPzRiDg1qAnlMQlGR66dqb/ZM98sKs/of1zaej
+ yMnQ==
+X-Gm-Message-State: AOAM5329bLacV3+9nEg61KpHOhq6R75fufypL+QSfr4lW2KuY86UstRr
+ RLdAY0q8z2s64LyWFj7n4A==
+X-Google-Smtp-Source: ABdhPJy77nVIsmtyMrQZ89IidhxzPS7fqu8uM2zZDvVPEioBV9LTEyx/xmCMVJUZEAwG9u6Urw0D7Q==
+X-Received: by 2002:aca:eb58:0:b0:2d9:deea:2014 with SMTP id
+ j85-20020acaeb58000000b002d9deea2014mr2513406oih.83.1647967324171; 
+ Tue, 22 Mar 2022 09:42:04 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ s125-20020acaa983000000b002ecdbaf98fesm8932484oie.34.2022.03.22.09.42.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 22 Mar 2022 09:42:03 -0700 (PDT)
+Received: (nullmailer pid 2149693 invoked by uid 1000);
+ Tue, 22 Mar 2022 16:42:01 -0000
+Date: Tue, 22 Mar 2022 11:42:01 -0500
+From: Rob Herring <robh@kernel.org>
+To: Axe Yang <axe.yang@mediatek.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Satya Tangirala <satyat@google.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach <dev@lynxeye.de>,
+ Eric Biggers <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Stephen Boyd <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>,
+ Yue Hu <huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
+ linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v8 1/3] dt-bindings: mmc: mtk-sd: extend interrupts and
+ pinctrls properties
+Message-ID: <Yjn8WVBdwiCrstx5@robh.at.kernel.org>
+References: <20220321115133.32121-1-axe.yang@mediatek.com>
+ <20220321115133.32121-2-axe.yang@mediatek.com>
+ <YjkKURNzg8JPbXcg@robh.at.kernel.org>
+ <b03df175f871ee9a6561862f5bd7bceb9cafbde1.camel@mediatek.com>
+ <5d9c7655-b05e-aa77-d405-c1ec971daa77@collabora.com>
+ <4e7a532814510b03b74455f5a924b50a70699ca1.camel@mediatek.com>
 MIME-Version: 1.0
-References: <20220317143926.15835-1-moudy.ho@mediatek.com>
- <20220317143926.15835-4-moudy.ho@mediatek.com>
- <Yjj8CanzmdHeX7qz@robh.at.kernel.org>
-In-Reply-To: <Yjj8CanzmdHeX7qz@robh.at.kernel.org>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 22 Mar 2022 23:10:32 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-nTojmt44ts2VtXU3_kNpbn=CniHJh8dDeM0bPj8ouRA@mail.gmail.com>
-Message-ID: <CAAOTY_-nTojmt44ts2VtXU3_kNpbn=CniHJh8dDeM0bPj8ouRA@mail.gmail.com>
-Subject: Re: [PATCH v14 3/6] dt-bindings: soc: mediatek: move out common
- module from display folder
-To: Rob Herring <robh@kernel.org>
-Cc: Moudy Ho <moudy.ho@mediatek.com>, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, 
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>, 
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, Tomasz Figa <tfiga@chromium.org>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Maoguang Meng <maoguang.meng@mediatek.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Jason-JH Lin <jason-jh.lin@mediatek.com>, river.cheng@mediatek.com, 
- linux-kernel <linux-kernel@vger.kernel.org>, roy-cw.yeh@mediatek.com, 
- srv_heupstream <srv_heupstream@mediatek.com>,
- Jernej Skrabec <jernej.skrabec@siol.net>, 
- Pi-Hsun Shih <pihsun@chromium.org>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, DTML <devicetree@vger.kernel.org>, 
- Hsin-Yi Wang <hsinyi@google.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- daoyuan huang <daoyuan.huang@mediatek.com>, randy.wu@mediatek.com, 
- Geert Uytterhoeven <geert+renesas@glider.be>, allen-kh.cheng@mediatek.com, 
- =?UTF-8?B?U2ogSHVhbmcgKOm7g+S/oeeSiyk=?= <sj.huang@mediatek.com>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Nicolas Boichat <drinkcat@chromium.org>, menghui.lin@mediatek.com, 
- Alexandre Courbot <acourbot@chromium.org>, Rob Landley <rob@landley.net>
+Content-Disposition: inline
+In-Reply-To: <4e7a532814510b03b74455f5a924b50a70699ca1.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220322_081048_556479_0B544910 
-X-CRM114-Status: GOOD (  12.85  )
+X-CRM114-CacheID: sfid-20220322_094217_163444_331F037C 
+X-CRM114-Status: GOOD (  31.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,23 +94,117 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Um9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4g5pa8IDIwMjLlubQz5pyIMjLml6Ug6YCx5LqM
-IOS4iuWNiDY6Mjjlr6vpgZPvvJoKPgo+IE9uIFRodSwgMTcgTWFyIDIwMjIgMjI6Mzk6MjMgKzA4
-MDAsIE1vdWR5IEhvIHdyb3RlOgo+ID4gSW4gb3JkZXIgdG8gc2hhcmUgdGhlIHNhbWUgaGFyZHdh
-cmUgaW5mb3JtYXRpb24gd2l0aCBNRFAzLAo+ID4gY2hhbmdlIHRoZSBNVVRFWCBkdC1iaW5kaW5n
-IHRvIHRoZSBwYXRoICJzb2MvbWVkaWF0ZWsiLgoKQWNrZWQtYnk6IENodW4tS3VhbmcgSHUgPGNo
-dW5rdWFuZy5odUBrZXJuZWwub3JnPgoKPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBNb3VkeSBIbyA8
-bW91ZHkuaG9AbWVkaWF0ZWsuY29tPgo+ID4gLS0tCj4gPiAgLi4uL2JpbmRpbmdzL3tkaXNwbGF5
-ID0+IHNvY30vbWVkaWF0ZWsvbWVkaWF0ZWssbXV0ZXgueWFtbCAgICAgIHwgMiArLQo+ID4gIDEg
-ZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+ID4gIHJlbmFtZSBE
-b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mve2Rpc3BsYXkgPT4gc29jfS9tZWRpYXRl
-ay9tZWRpYXRlayxtdXRleC55YW1sICg5NyUpCj4gPgo+Cj4gQWNrZWQtYnk6IFJvYiBIZXJyaW5n
-IDxyb2JoQGtlcm5lbC5vcmc+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Tue, Mar 22, 2022 at 05:33:55PM +0800, Axe Yang wrote:
+> Hello AngeloGioacchino,
+> 
+> On Tue, 2022-03-22 at 09:42 +0100, AngeloGioacchino Del Regno wrote:
+> > Il 22/03/22 02:35, Axe Yang ha scritto:
+> > > On Mon, 2022-03-21 at 18:29 -0500, Rob Herring wrote:
+> > > > On Mon, Mar 21, 2022 at 07:51:32PM +0800, Axe Yang wrote:
+> > > > > Extend interrupts and pinctrls for SDIO wakeup interrupt
+> > > > > feature.
+> > > > > This feature allow SDIO devices alarm asynchronous interrupt to
+> > > > > host
+> > > > > even when host stop providing clock to SDIO card. An extra
+> > > > > wakeup
+> > > > > interrupt and pinctrl states for SDIO DAT1 pin state switching
+> > > > > are
+> > > > > required in this scenario.
+> > > > > 
+> > > > > Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+> > > > > ---
+> > > > >   .../devicetree/bindings/mmc/mtk-sd.yaml       | 23
+> > > > > ++++++++++++++++++-
+> > > > >   1 file changed, 22 insertions(+), 1 deletion(-)
+> > > > > 
+> > > > > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > > > > b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > > > > index 297ada03e3de..f57774535a1d 100644
+> > > > > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > > > > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > > > > @@ -69,12 +69,23 @@ properties:
+> > > > >         - const: ahb_cg
+> > > > >   
+> > > > >     interrupts:
+> > > > > -    maxItems: 1
+> > > > > +    description:
+> > > > > +      Should at least contain MSDC GIC interrupt. To support
+> > > > > SDIO
+> > > > > in-band wakeup, an extended
+> > > > > +      interrupt is required and be configured as wakeup source
+> > > > > irq.
+> > > > > +    minItems: 1
+> > > > > +    maxItems: 2
+> > > > >   
+> > > > >     pinctrl-names:
+> > > > > +    description:
+> > > > > +      Should at least contain default and state_uhs. To
+> > > > > support
+> > > > > SDIO in-band wakeup, dat1 pin
+> > > > > +      will be switched between GPIO mode and SDIO DAT1 mode,
+> > > > > state_eint and state_dat1 are
+> > > > > +      mandatory in this scenarios.
+> > > > > +    minItems: 2
+> > > > >       items:
+> > > > >         - const: default
+> > > > >         - const: state_uhs
+> > > > > +      - const: state_eint
+> > > > > +      - const: state_dat1
+> > > > >   
+> > > > >     pinctrl-0:
+> > > > >       description:
+> > > > > @@ -86,6 +97,16 @@ properties:
+> > > > >         should contain uhs mode pin ctrl.
+> > > > >       maxItems: 1
+> > > > >   
+> > > > > +  pinctrl-2:
+> > > > > +    description:
+> > > > > +      should switch dat1 pin to GPIO mode.
+> > > > > +    maxItems: 1
+> > > > > +
+> > > > > +  pinctrl-3:
+> > > > > +    description:
+> > > > > +      should switch SDIO dat1 pin from GPIO mode back to SDIO
+> > > > > mode.
+> > > > 
+> > > > How is this different than pinctrl-0?
+> > > 
+> > > pinctrl-0 contains default settings for all IO pins(CLK/CMD/DAT).
+> > > pinctrl-1 contains settings for all IO pins(CLK/CMD/DAT) in UHS
+> > > mode.
+> > > pinctrl-3 is lightweight pinctrl-1, only keep SDIO DAT1 pin
+> > > function
+> > > switch part.
+> > > 
+> > 
+> > Is there any particular reason why we cannot simply select pinctrl-1
+> > again
+> > instead of pinctrl-3, apart from the virtually not existent overhead
+> > of one more mmio write?
+> 
+> No, there is no particular reason. 
+> I just want to do the pin function switch quick and clean. 
+> 
+> The intention of pinctrl-1 is to set the most initial state of IO pins
+> in UHS mode. If I don't need to adjust IO settings any longer, it is
+> okay to select pinctrl-1 state instead of pinctrl-3. 
+> But think about this scenarios: after initial SDIO IO pins to UHS mode,
+> I want to adjust some IO related properties, such as driving strength.
+> And I want to keep these settings because with new driving strength,
+> the signal is better. I'd rather to choose pinctrl-3 but not pinctrl-1, 
+> because I do not want the change be restored after next runtime resume.
+
+The pinctrl-X properties set modes, they aren't supposed to be a state 
+machine.
+
+Rob
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
