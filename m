@@ -4,78 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2728DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 09:38:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DADA0C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 09:56:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P1r49Kw1tjJFYQZ+svBez4ClhDSn7uFsD/DQdpTCBxM=; b=yTNrrqwwqZD12i
-	S9kVwih3l9pIn3TRddDnxjx1zM/JWhbRyoCKe7qbwVweVyJtSGKmp/xjoMNKVOJ0vSwPkHj8ZDLJc
-	OWz1koR9e6bQPlw+qhu/YVnPxQmedY5gQNZcxfUbvDi40QWsFSvdFhK7aUSdVxSiOUL6vnKvs/ESb
-	vTkCRMn1zCpAIOyXxqITAOPbiK3MglCZFgTT8HJlrMD4E+t3lf9tQkLRuanAt8Vs9zDTBhiZQJGfo
-	W6zfVZn638P2oOM+sEasREfmH47dI6inm6pII1suOp/6m9Dk3/Ae65qXB1cIKYjrrALWtQ0ZK/lXT
-	DctNT4/fhRUd6va93X4Q==;
+	List-Owner; bh=PL5QpqC90ZYJOImbiAdPCjXGfaAuRz/uWVFNoXmk+9k=; b=Cvm64X9XaTFGkc
+	hJcNsF1ekgpunMpXbipjfePD0LahmjeN2TZ6s4TQ5YitCArcFxGyQucramVUP9GoWtTmTEHoF2/Xs
+	bFB66YQvwwDSF7KXDgjEuU4RkZsPnFoeLRxPnae0DSwXQKu8tfh6F4LWwzkmIGfLX52wFY78KoJqP
+	wbkPsMuph7xJhXvVqD2eZfylFh+37masEw6eVbNcAeyYKbJ5ix1SYdniegJjokX2yppUwnR+eVFQJ
+	fdgcq6C/EZJrMpU7OiO1Qg9KLv3WYK/wYIs60sXT0mcyXPqFzYG7EnB8gwMj1yN34/EzPdWqNi745
+	Q42uB5nLwLckw+v22B1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWay2-00AcRT-Qz; Tue, 22 Mar 2022 09:38:18 +0000
+	id 1nWbFg-00Aec3-R4; Tue, 22 Mar 2022 09:56:32 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWaxm-00AcMW-L3; Tue, 22 Mar 2022 09:38:04 +0000
-X-UUID: 9436d3e6b1fb44e1b059024f88cff18b-20220322
+ id 1nWbFU-00Aeaj-Jn; Tue, 22 Mar 2022 09:56:22 +0000
+X-UUID: 54ba5df8267249ed82b4b7322955f73a-20220322
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Kg/PHBY7SCtNrfBeQQUw9qMpRjgYiBYmxp2mwvOkM/A=; 
- b=PihCs6zIoQ4Y45XJflZWA99I0aDsBxoz9bFfocrAfe5+tV4ibr6Q7vPgl2NZJHn0N8cXC1aI9WUA3aq5A2m+hUVKZ5I3e+knrea1DB4brirj7DKaF55v4hBHJpldRzIVkIJX4NNGEFLU21ak8X3WmOnWGE3hvJWFzJnn5xBQs5w=;
-X-UUID: 9436d3e6b1fb44e1b059024f88cff18b-20220322
+ bh=F4c4bGINPd9DLBnDYjrXvlknrqcZVMQ3Aq3YpOQb/Js=; 
+ b=LwVWkZK3MWcRoIxVA2lBavpgBHMzUG+j46Sso76flmniyCGqseHjvSGO6kQmXZALhOJKRhk8D6F471qAmW9WVDJMjhclEoHeQEjjCQuDEIFudjtl+hoe8eVsUIP2hwfWEkETyrUspCBHQPg/m9da4KSK1nUw4gmhKzTEkGkzoUo=;
+X-UUID: 54ba5df8267249ed82b4b7322955f73a-20220322
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <axe.yang@mediatek.com>)
+ (envelope-from <xinlei.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1496096315; Tue, 22 Mar 2022 02:37:59 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Mar 2022 02:33:58 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 22 Mar 2022 17:33:56 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ with ESMTP id 2093622373; Tue, 22 Mar 2022 02:56:16 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Mar 2022 02:46:13 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Mar 2022 17:46:11 +0800
+Received: from mszsdhlt06 (10.16.6.206) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 22 Mar 2022 17:33:55 +0800
-Message-ID: <4e7a532814510b03b74455f5a924b50a70699ca1.camel@mediatek.com>
-Subject: Re: [PATCH v8 1/3] dt-bindings: mmc: mtk-sd: extend interrupts and
- pinctrls properties
-From: Axe Yang <axe.yang@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rob
- Herring" <robh@kernel.org>
-CC: Ulf Hansson <ulf.hansson@linaro.org>, Chaotian Jing
- <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Adrian Hunter <adrian.hunter@intel.com>, Yoshihiro Shimoda
- <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala <satyat@google.com>, Andy
- Shevchenko <andriy.shevchenko@linux.intel.com>, Wolfram Sang
- <wsa+renesas@sang-engineering.com>, Lucas Stach <dev@lynxeye.de>, "Eric
- Biggers" <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, "Stephen
- Boyd" <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu
- <huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
- <linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Date: Tue, 22 Mar 2022 17:33:55 +0800
-In-Reply-To: <5d9c7655-b05e-aa77-d405-c1ec971daa77@collabora.com>
-References: <20220321115133.32121-1-axe.yang@mediatek.com>
- <20220321115133.32121-2-axe.yang@mediatek.com>
- <YjkKURNzg8JPbXcg@robh.at.kernel.org>
- <b03df175f871ee9a6561862f5bd7bceb9cafbde1.camel@mediatek.com>
- <5d9c7655-b05e-aa77-d405-c1ec971daa77@collabora.com>
+ Transport; Tue, 22 Mar 2022 17:46:11 +0800
+Message-ID: <be6c51b69651edf0d9c42c6e1894724ed391fa34.camel@mediatek.com>
+Subject: Re: [PATCH v3,3/4] drm/mediatek: keep dsi as LP00 before dcs cmds
+ transfer
+From: xinlei.lee <xinlei.lee@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+ <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <matthias.bgg@gmail.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, <jitao.shi@mediatek.com>
+Date: Tue, 22 Mar 2022 17:46:31 +0800
+In-Reply-To: <8b331befede093265cd9fc0773000c1bf715a2c8.camel@mediatek.com>
+References: <1647503611-13144-1-git-send-email-xinlei.lee@mediatek.com>
+ <1647503611-13144-4-git-send-email-xinlei.lee@mediatek.com>
+ <8b331befede093265cd9fc0773000c1bf715a2c8.camel@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220322_023802_739922_4CCD95EB 
-X-CRM114-Status: GOOD (  27.80  )
+X-CRM114-CacheID: sfid-20220322_025620_699518_743E2557 
+X-CRM114-Status: GOOD (  29.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,109 +81,154 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello AngeloGioacchino,
-
-On Tue, 2022-03-22 at 09:42 +0100, AngeloGioacchino Del Regno wrote:
-> Il 22/03/22 02:35, Axe Yang ha scritto:
-> > On Mon, 2022-03-21 at 18:29 -0500, Rob Herring wrote:
-> > > On Mon, Mar 21, 2022 at 07:51:32PM +0800, Axe Yang wrote:
-> > > > Extend interrupts and pinctrls for SDIO wakeup interrupt
-> > > > feature.
-> > > > This feature allow SDIO devices alarm asynchronous interrupt to
-> > > > host
-> > > > even when host stop providing clock to SDIO card. An extra
-> > > > wakeup
-> > > > interrupt and pinctrl states for SDIO DAT1 pin state switching
-> > > > are
-> > > > required in this scenario.
-> > > > 
-> > > > Signed-off-by: Axe Yang <axe.yang@mediatek.com>
-> > > > ---
-> > > >   .../devicetree/bindings/mmc/mtk-sd.yaml       | 23
-> > > > ++++++++++++++++++-
-> > > >   1 file changed, 22 insertions(+), 1 deletion(-)
-> > > > 
-> > > > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > > > b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > > > index 297ada03e3de..f57774535a1d 100644
-> > > > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > > > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > > > @@ -69,12 +69,23 @@ properties:
-> > > >         - const: ahb_cg
-> > > >   
-> > > >     interrupts:
-> > > > -    maxItems: 1
-> > > > +    description:
-> > > > +      Should at least contain MSDC GIC interrupt. To support
-> > > > SDIO
-> > > > in-band wakeup, an extended
-> > > > +      interrupt is required and be configured as wakeup source
-> > > > irq.
-> > > > +    minItems: 1
-> > > > +    maxItems: 2
-> > > >   
-> > > >     pinctrl-names:
-> > > > +    description:
-> > > > +      Should at least contain default and state_uhs. To
-> > > > support
-> > > > SDIO in-band wakeup, dat1 pin
-> > > > +      will be switched between GPIO mode and SDIO DAT1 mode,
-> > > > state_eint and state_dat1 are
-> > > > +      mandatory in this scenarios.
-> > > > +    minItems: 2
-> > > >       items:
-> > > >         - const: default
-> > > >         - const: state_uhs
-> > > > +      - const: state_eint
-> > > > +      - const: state_dat1
-> > > >   
-> > > >     pinctrl-0:
-> > > >       description:
-> > > > @@ -86,6 +97,16 @@ properties:
-> > > >         should contain uhs mode pin ctrl.
-> > > >       maxItems: 1
-> > > >   
-> > > > +  pinctrl-2:
-> > > > +    description:
-> > > > +      should switch dat1 pin to GPIO mode.
-> > > > +    maxItems: 1
-> > > > +
-> > > > +  pinctrl-3:
-> > > > +    description:
-> > > > +      should switch SDIO dat1 pin from GPIO mode back to SDIO
-> > > > mode.
-> > > 
-> > > How is this different than pinctrl-0?
+On Thu, 2022-03-17 at 20:06 +0800, Rex-BC Chen wrote:
+> Hello Xinlei,
+> 
+> On Thu, 2022-03-17 at 15:53 +0800, xinlei.lee@mediatek.com wrote:
+> > From: Jitao Shi <jitao.shi@mediatek.com>
 > > 
-> > pinctrl-0 contains default settings for all IO pins(CLK/CMD/DAT).
-> > pinctrl-1 contains settings for all IO pins(CLK/CMD/DAT) in UHS
-> > mode.
-> > pinctrl-3 is lightweight pinctrl-1, only keep SDIO DAT1 pin
-> > function
-> > switch part.
+> > To comply with the panel sequence, hold the mipi signal to LP00 
+> 
+> Could you provide a example panel power sequence to let me understand
+> that?
+> Maybe you can put them in commit message.
+> 
+> > before the dcs cmds transmission,
+> > and pull the mipi signal high from LP00 to LP11 until the start of
+> > the dcs cmds transmission.
+> 
+> Maybe you can try to write as:
+> To comply with...
+> - Hold the mipi signal...
+> - Pul the miip signal high....
+> 
+> > If dsi is not in cmd mode, then dsi will pull the mipi signal high
+> > in
+> > the mtk_output_dsi_enable function.
+> > 
+> > Fixes: 2dd8075d2185 ("drm/mediatek: mtk_dsi: Use the
+> > drm_panel_bridge
+> > API")
 > > 
 > 
-> Is there any particular reason why we cannot simply select pinctrl-1
-> again
-> instead of pinctrl-3, apart from the virtually not existent overhead
-> of one more mmio write?
+> Can you remove this blank line?
+> 
+> > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 31 +++++++++++++++++++++++---
+> > --
+> > --
+> >  1 file changed, 24 insertions(+), 7 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > index e33caaca11a7..b509d59235e2 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > @@ -203,6 +203,7 @@ struct mtk_dsi {
+> >  	struct mtk_phy_timing phy_timing;
+> >  	int refcount;
+> >  	bool enabled;
+> > +	bool lanes_ready;
+> >  	u32 irq_data;
+> >  	wait_queue_head_t irq_wait_queue;
+> >  	const struct mtk_dsi_driver_data *driver_data;
+> > @@ -654,13 +655,6 @@ static int mtk_dsi_poweron(struct mtk_dsi
+> > *dsi)
+> >  	mtk_dsi_config_vdo_timing(dsi);
+> >  	mtk_dsi_set_interrupt_enable(dsi);
+> >  
+> > -	mtk_dsi_rxtx_control(dsi);
+> > -	usleep_range(30, 100);
+> > -	mtk_dsi_reset_dphy(dsi);
+> > -	mtk_dsi_clk_ulp_mode_leave(dsi);
+> > -	mtk_dsi_lane0_ulp_mode_leave(dsi);
+> > -	mtk_dsi_clk_hs_mode(dsi, 0);
+> > -
+> >  	return 0;
+> >  err_disable_engine_clk:
+> >  	clk_disable_unprepare(dsi->engine_clk);
+> > @@ -689,6 +683,8 @@ static void mtk_dsi_poweroff(struct mtk_dsi
+> > *dsi)
+> >  	clk_disable_unprepare(dsi->digital_clk);
+> >  
+> >  	phy_power_off(dsi->phy);
+> > +
+> > +	dsi->lanes_ready = false;
+> >  }
+> >  
+> >  static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
+> > @@ -696,6 +692,16 @@ static void mtk_output_dsi_enable(struct
+> > mtk_dsi
+> > *dsi)
+> >  	if (dsi->enabled)
+> >  		return;
+> >  
+> > +	if (!dsi->lanes_ready) {
+> > +		dsi->lanes_ready = true;
+> > +		mtk_dsi_rxtx_control(dsi);
+> > +		usleep_range(30, 100);
+> > +		mtk_dsi_reset_dphy(dsi);
+> > +		mtk_dsi_clk_ulp_mode_leave(dsi);
+> > +		mtk_dsi_lane0_ulp_mode_leave(dsi);
+> > +		mtk_dsi_clk_hs_mode(dsi, 0);
+> > +	}
+> > +
+> >  	mtk_dsi_set_mode(dsi);
+> >  	mtk_dsi_clk_hs_mode(dsi, 1);
+> >  
+> > @@ -995,6 +1001,17 @@ static ssize_t mtk_dsi_host_transfer(struct
+> > mipi_dsi_host *host,
+> >  	if (MTK_DSI_HOST_IS_READ(msg->type))
+> >  		irq_flag |= LPRX_RD_RDY_INT_FLAG;
+> >  
+> > +	if (!dsi->lanes_ready) {
+> > +		dsi->lanes_ready = true;
+> > +		mtk_dsi_rxtx_control(dsi);
+> > +		usleep_range(30, 100);
+> > +		mtk_dsi_reset_dphy(dsi);
+> > +		mtk_dsi_clk_ulp_mode_leave(dsi);
+> > +		mtk_dsi_lane0_ulp_mode_leave(dsi);
+> > +		mtk_dsi_clk_hs_mode(dsi, 0);
+> 
+> The drivers are the same with previous modification.
+> I think you can use a funtion for them?
+> 
+> > +		msleep(20);
+> 
+> Why delay 20ms but not in mtk_output_dsi_enable?
+> 
+> BRs,
+> Rex
+> > +	}
+> > +
+> >  	ret = mtk_dsi_host_send_cmd(dsi, msg, irq_flag);
+> >  	if (ret)
+> >  		goto restore_dsi_mode;
+> 
+> 
 
-No, there is no particular reason. 
-I just want to do the pin function switch quick and clean. 
+Hi rex:
 
-The intention of pinctrl-1 is to set the most initial state of IO pins
-in UHS mode. If I don't need to adjust IO settings any longer, it is
-okay to select pinctrl-1 state instead of pinctrl-3. 
-But think about this scenarios: after initial SDIO IO pins to UHS mode,
-I want to adjust some IO related properties, such as driving strength.
-And I want to keep these settings because with new driving strength,
-the signal is better. I'd rather to choose pinctrl-3 but not pinctrl-1, 
-because I do not want the change be restored after next runtime resume.
+Thanks for your review.
 
-Regards,
-Axe
+1.The normal panel timing is as follows (I will add to the commit
+message in the next version):
+(1) pp1800 DC pull up
+(2) avdd & avee AC pull high
+(3) lcm_reset pull high -> pull low -> pull high
+(4) Pull MIPI signal high (LP11) -> initial code -> send video data(HS
+mode)
+The power-off sequence is reversed.
 
-
+2.
+The 20ms delay in dsi_host_transfer is because dsi needs to give
+dsi_rx(panel) a reaction time after pulling up the mipi signal.
+If you suggest encapsulating it as a function I will add a delay to
+mtk_output_dsi_enable in the next version as well.
+Best Regards!
+xinlei
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
