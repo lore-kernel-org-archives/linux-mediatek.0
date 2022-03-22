@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6C2DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 03:45:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1B56C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 06:10:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ix9S2mqcvLurtLZeCnlvbXq/ssbKT9zNNHw8TWGpBT4=; b=BaVE3HTURyKlVV
-	zJjZ9UJatB0DMVR6ri9Fh9kfCEaMv+51yBiYhfP8/t96SKkcavSbOI95rWDKtToFSw+J89mzRtM/O
-	6ZTfj9RQ76J46DcaKsjCulhRT9CTHHQHkhKWf5QBHt/DwIe77uX4tzWO8Bb4AvOm9CUKFfyUFT+WS
-	lfJokpO3ksXCd6IH2aqoKSO8bYm2D94ptl9Y/8jEIjXaslcQZPTpWxlfUuzBjuuaT0yV6wI/Z994z
-	TmWIBFU3kzLtQT2bcK4U1zfPgbHi/tWb7lmlOZcRNxmZ8A1NBSBlaalBMTLuwkXj3Hx7BB0en+nui
-	52o8Nm2GIJEHEkGq9DhQ==;
+	List-Owner; bh=v49tS9xKfD4dbGJW7ld3PCSrbzTyUMi8eVjWZ8jfN80=; b=dqpKdh8OZopvI2
+	OS0yFVQ/wYJkswb7d//rgaUUoEr1MPSqxw36GxSwz3Zm755PVFTroG6UBG8w10Rx4R0pe7D9q7uwO
+	gpJkdPs9rZR01faFf2kN0ROot8Zsg89sVwctpZL3LnPhxAZ2S0PMucIxplmr+s9JPHOxfJDWr26CJ
+	nyShR+a4sLSe+dRYQcwUrSTl+PzCFDoCIk27cLEFvAB4nxco3UnUEIQMexv8oa57Xy1ClKCLdp6Cb
+	jYv7jyzN6+zOwFq84hmCpLrAagrT6hfOgdOT4APMgIwKQa8b4LiThmKaSEbMZhK8uULkLTiYiD/xL
+	O53E+OOP+sOsL4dkAepg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWVSv-009uuH-E7; Tue, 22 Mar 2022 03:45:49 +0000
+	id 1nWXiS-00A5r9-AT; Tue, 22 Mar 2022 06:10:00 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWVSo-009utA-Nd; Tue, 22 Mar 2022 03:45:48 +0000
-X-UUID: 038aa053f0c6487285b6a36826e5b9be-20220321
+ id 1nWXiD-00A5pb-Gg; Tue, 22 Mar 2022 06:09:48 +0000
+X-UUID: f2be2262357943bf89767eb8d439bb45-20220321
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=X9jhCnGqvno9UdTXf2UXhoimqw9YrbSB8oycMk9qWeQ=; 
- b=OcNVjehuMa7c7sUa8+Sz8Ys/9LdiooiqtfOY4NFxDam3hD2am0Bdod7jCUxfhNOhLWMCTemg6+Pov4W09YTDgzKNiTfDmWUnT8Qo/hvdOFjnqPK29OmR1yNCn85pRdeo8N3AiAGWLziLIp6fM+Q06G2O1pWkcFnm2EnE0nV+/fI=;
-X-UUID: 038aa053f0c6487285b6a36826e5b9be-20220321
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
+ bh=7W32S13NNaB9h0MWNsObJlUZSrQBOYZFQxHSffzezfM=; 
+ b=FI8XgwaKm/S0EI1Jq8UI6EDM+M/JXnL0Vy1ORVeHnwIiM72CXXQsismB5eMlESaRNGBOo7kD0gkYhDozduyj2/MrtPkgGmAEN/cwDKpdUUYMu6kAqhTWCRGnMtZw3CVahl6aiuxwGnlwP8NXXCjJb6iyCm6knwS43Ib6zeu0InA=;
+X-UUID: f2be2262357943bf89767eb8d439bb45-20220321
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <xinlei.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 786835327; Mon, 21 Mar 2022 20:45:40 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 1628651889; Mon, 21 Mar 2022 23:09:40 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Mar 2022 20:45:38 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 22 Mar 2022 11:45:25 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Mon, 21 Mar 2022 22:59:37 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Mar 2022 13:59:36 +0800
+Received: from mszsdhlt06 (10.16.6.206) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 22 Mar 2022 11:45:25 +0800
-Message-ID: <0e909de12a52ae88633634d868bd5001eef1b830.camel@mediatek.com>
-Subject: Re: [v5 1/4] ASoC: dt-bindings: mt8192-mt6359: add new compatible
- and new properties
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: <broonie@kernel.org>, <tzungbi@google.com>,
- <angelogioacchino.delregno@collabora.com>, <aaronyu@google.com>,
- <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>, <linmq006@gmail.com>,
- <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 22 Mar 2022 11:45:24 +0800
-In-Reply-To: <YjkLVwvxvOKr30qL@robh.at.kernel.org>
-References: <20220319114111.11496-1-jiaxin.yu@mediatek.com>
- <20220319114111.11496-2-jiaxin.yu@mediatek.com>
- <YjkLVwvxvOKr30qL@robh.at.kernel.org>
+ Transport; Tue, 22 Mar 2022 13:59:35 +0800
+Message-ID: <ca8c83e15808b7c6a54ebd28cead59c18f814023.camel@mediatek.com>
+Subject: Re: [PATCH v3,1/4] drm/mediatek: Adjust the timing of mipi signal
+ from LP00 to LP11
+From: xinlei.lee <xinlei.lee@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+ <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <matthias.bgg@gmail.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, <jitao.shi@mediatek.com>
+Date: Tue, 22 Mar 2022 13:59:56 +0800
+In-Reply-To: <235c5bca8da7118bad6bb5cb3c8cba6e022e4411.camel@mediatek.com>
+References: <1647503611-13144-1-git-send-email-xinlei.lee@mediatek.com>
+ <1647503611-13144-2-git-send-email-xinlei.lee@mediatek.com>
+ <235c5bca8da7118bad6bb5cb3c8cba6e022e4411.camel@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220321_204542_805459_5D62786A 
-X-CRM114-Status: GOOD (  19.71  )
+X-CRM114-CacheID: sfid-20220321_230946_999935_66A5DFC9 
+X-CRM114-Status: GOOD (  23.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,130 +81,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-03-21 at 18:33 -0500, Rob Herring wrote:
-> On Sat, Mar 19, 2022 at 07:41:08PM +0800, Jiaxin Yu wrote:
-> > 1. Adds new compatible string "mt8192_mt6359_rt1015p_rt5682s" for
-> > machines
-> > with rt1015p and rt5682s.
-> > 2. Adds new property "mediatek,headset-codec" for getting headset
-> > codecs.
-> > 3. Adds new property "mediatek,speaker-codec" for getting speaker
-> > codecs.
+On Thu, 2022-03-17 at 19:13 +0800, Rex-BC Chen wrote:
+> Hello Xinlei,
+> 
+> Thanks for your patch, and there are something I want to know:
+> 
+> On Thu, 2022-03-17 at 15:53 +0800, xinlei.lee@mediatek.com wrote:
+> > From: Jitao Shi <jitao.shi@mediatek.com>
 > > 
-> > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> > Old sequence:
+> > 1. Pull the MIPI signal high
+> > 2. Delay & Dsi_reset
+> > 3. Set the dsi timing register
+> > 4. dsi clk & lanes leave ulp mode and enter hs mode
+> > 
+> > New sequence:
+> > 1. Set the dsi timing register
+> > 2. Pull the MIPI signal high
+> > 3. Delay & Dsi_reset
+> > 4. dsi clk & lanes leave ulp mode and enter hs mode
+> > 
+> 
+> Could you explain why you want to change original power on sequence?
+> From this commit message, I don't know why you want to do this.
+> If the reason is in cover letter, I think you should move them here.
+> 
+> > In the new sequence 2 & 3 & 4 will be moved to dsi_enbale in later
+> > patch.
+> 
+> I think this is no need to describe here.
+> 
+> BRs,
+> Rex
+> > 
+> > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
 > > ---
-> >  .../sound/mt8192-mt6359-rt1015-rt5682.yaml    | 29
-> > +++++++++++++++++++
-> >  1 file changed, 29 insertions(+)
+> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 6 +++---
+> >  1 file changed, 3 insertions(+), 3 deletions(-)
 > > 
-> > diff --git a/Documentation/devicetree/bindings/sound/mt8192-mt6359-
-> > rt1015-rt5682.yaml
-> > b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-
-> > rt5682.yaml
-> > index a781e7aaaa38..aa0476eedd38 100644
-> > --- a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-
-> > rt5682.yaml
-> > +++ b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-
-> > rt5682.yaml
-> > @@ -18,6 +18,7 @@ properties:
-> >      enum:
-> >        - mediatek,mt8192_mt6359_rt1015_rt5682
-> >        - mediatek,mt8192_mt6359_rt1015p_rt5682
-> > +      - mediatek,mt8192_mt6359_rt1015p_rt5682s
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > index ccb0511b9cd5..262c027d8c2f 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > @@ -649,14 +649,14 @@ static int mtk_dsi_poweron(struct mtk_dsi
+> > *dsi)
+> >  	mtk_dsi_reset_engine(dsi);
+> >  	mtk_dsi_phy_timconfig(dsi);
 > >  
-> >    mediatek,platform:
-> >      $ref: "/schemas/types.yaml#/definitions/phandle"
-> > @@ -27,6 +28,25 @@ properties:
-> >      $ref: "/schemas/types.yaml#/definitions/phandle"
-> >      description: The phandle of HDMI codec.
+> > -	mtk_dsi_rxtx_control(dsi);
+> > -	usleep_range(30, 100);
+> > -	mtk_dsi_reset_dphy(dsi);
+> >  	mtk_dsi_ps_control_vact(dsi);
+> >  	mtk_dsi_set_vm_cmd(dsi);
+> >  	mtk_dsi_config_vdo_timing(dsi);
+> >  	mtk_dsi_set_interrupt_enable(dsi);
 > >  
-> > +patternProperties:
-> > +  "^mediatek,headset-codec$":
+> > +	mtk_dsi_rxtx_control(dsi);
+> > +	usleep_range(30, 100);
+> > +	mtk_dsi_reset_dphy(dsi);
+> >  	mtk_dsi_clk_ulp_mode_leave(dsi);
+> >  	mtk_dsi_lane0_ulp_mode_leave(dsi);
+> >  	mtk_dsi_clk_hs_mode(dsi, 0);
 > 
-> Fixed string, not a pattern. Move to 'properties'. Drop the vendor 
-> prefix too.
 > 
-Hi Rob,
+Hi Rex:
 
-I originally referred to simple-card.yaml and move "xxx.yyy" to the
-patternProperties.
+Thanks for your review!
+Explain to you that this change does not actually affect the function
+of dsi. We have verified this.
+After this modification, it is convenient to move them into the if
+(!dsi->lanes_ready) condition, which is just an adjustment action.
+If you still have questions about my later explanation, please give
+another suggestion.
 
-Such as:
-# use patternProperties to avoid naming "xxx,yyy" issue
-patternProperties:
-  "^simple-audio-card,widgets$":
-    $ref: "#/definitions/widgets"
+Thanks!
+xinlei
 
-But your comment is more reasonable. I will move them to 'properties'
-and drop the vendor prefix. Thanks for your review.
-
-
-> > +    description: Holds subnode which indicates headset dai.
-> > +    type: object
-> > +    properties:
-> > +      sound-dai:
-> > +        $ref: /schemas/types.yaml#/definitions/phandle-array
-> 
-> Standard property, don't need a type or description. Just how many
-> and 
-> what each one is if more than 1.
-
-Should I describe them as below?
-
-properties:
-...
-  speaker-codec:
-    type: object
-    properties:
-      sound-dai:
-         maxItems: 1
-...
-
-> 
-> > +        description: List of phandles to the headset codec nodes.
-> 
-> More than 1?
-> 
-
-Sorry, the description here is incorrect, there is only one phandle.
-
-> > +    additionalProperties: false
-> > +
-> > +  "^mediatek,speaker-codec$":
-> > +    description: Holds subnode which indicates speaker dai.
-> > +    type: object
-> > +    properties:
-> > +      sound-dai:
-> > +        $ref: /schemas/types.yaml#/definitions/phandle-array
-> > +        description: List of phandles to the speaker codec nodes.
-> 
-> Same here.
-> 
-> > +    additionalProperties: false
-> > +
-> >  additionalProperties: false
-> >  
-> >  required:
-> > @@ -44,6 +64,15 @@ examples:
-> >                          "aud_clk_mosi_on";
-> >          pinctrl-0 = <&aud_clk_mosi_off>;
-> >          pinctrl-1 = <&aud_clk_mosi_on>;
-> > +
-> > +        mediatek,headset-codec {
-> > +            sound-dai = <&rt5682>;
-> > +        };
-> > +
-> > +        mediatek,speaker-codec {
-> > +            sound-dai = <&rt1015_l>,
-> > +                        <&rt1015_r>;
-> > +        };
-> >      };
-> >  
-> >  ...
-> > -- 
-> > 2.18.0
-> > 
-> > 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
