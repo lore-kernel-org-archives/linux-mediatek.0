@@ -4,74 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFD5BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 09:38:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2728DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 09:38:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3UGY6qBNxJKYkg9EgOm91HAGwNN/n0LVzy1U/k27qiQ=; b=UvFRC6Ttb7aP9E
-	D0vh3XpCUOmDW227WbNnSKCCB0Fu6Af/wCMuv8mBITRmWV1STzRT9WGGyzGx7532THEdpdj2Z4M1G
-	90+tl3xrylF0fk7/ouIJO+4sXVkygg7CmRT1MbVp3pJKt7nbfw3yPHD/W1yaEDQasogm2T+0rmM0p
-	O0whKZff0uWscWKvjL9bsjVBusGqee0vmUs5TrwzUDDubE1XWbqPj72VCUkZl+zRMU2pwFvxx1lp0
-	AwDt9rIRMnsal3cIyfUsIJaz3XzkpzjhuqmZpxJbIciyrycnz+gzHEQuG/5OUlvf2JrWJTuTNvaKS
-	+5Q95xrVFwMGL5SegB3w==;
+	List-Owner; bh=P1r49Kw1tjJFYQZ+svBez4ClhDSn7uFsD/DQdpTCBxM=; b=yTNrrqwwqZD12i
+	S9kVwih3l9pIn3TRddDnxjx1zM/JWhbRyoCKe7qbwVweVyJtSGKmp/xjoMNKVOJ0vSwPkHj8ZDLJc
+	OWz1koR9e6bQPlw+qhu/YVnPxQmedY5gQNZcxfUbvDi40QWsFSvdFhK7aUSdVxSiOUL6vnKvs/ESb
+	vTkCRMn1zCpAIOyXxqITAOPbiK3MglCZFgTT8HJlrMD4E+t3lf9tQkLRuanAt8Vs9zDTBhiZQJGfo
+	W6zfVZn638P2oOM+sEasREfmH47dI6inm6pII1suOp/6m9Dk3/Ae65qXB1cIKYjrrALWtQ0ZK/lXT
+	DctNT4/fhRUd6va93X4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWaxf-00AcK7-PW; Tue, 22 Mar 2022 09:37:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nWay2-00AcRT-Qz; Tue, 22 Mar 2022 09:38:18 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWaxc-00AcIi-Dh; Tue, 22 Mar 2022 09:37:54 +0000
-X-UUID: 328674ffb758477bb2704b228977a062-20220322
-X-UUID: 328674ffb758477bb2704b228977a062-20220322
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ id 1nWaxm-00AcMW-L3; Tue, 22 Mar 2022 09:38:04 +0000
+X-UUID: 9436d3e6b1fb44e1b059024f88cff18b-20220322
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Kg/PHBY7SCtNrfBeQQUw9qMpRjgYiBYmxp2mwvOkM/A=; 
+ b=PihCs6zIoQ4Y45XJflZWA99I0aDsBxoz9bFfocrAfe5+tV4ibr6Q7vPgl2NZJHn0N8cXC1aI9WUA3aq5A2m+hUVKZ5I3e+knrea1DB4brirj7DKaF55v4hBHJpldRzIVkIJX4NNGEFLU21ak8X3WmOnWGE3hvJWFzJnn5xBQs5w=;
+X-UUID: 9436d3e6b1fb44e1b059024f88cff18b-20220322
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <axe.yang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1834304159; Tue, 22 Mar 2022 02:37:46 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Mar 2022 02:37:44 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 22 Mar 2022 17:37:41 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ with ESMTP id 1496096315; Tue, 22 Mar 2022 02:37:59 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Mar 2022 02:33:58 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 22 Mar 2022 17:33:56 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 22 Mar 2022 17:37:41 +0800
-Message-ID: <0a81bedfecd0f691c4da06640c50fc409f1e2cb0.camel@mediatek.com>
-Subject: Re: [PATCH v14 1/6] soc: mediatek: mutex: add common interface to
- accommodate multiple modules operationg MUTEX
-From: CK Hu <ck.hu@mediatek.com>
-To: Moudy Ho <moudy.ho@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Jernej
- Skrabec" <jernej.skrabec@siol.net>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- Alexandre Courbot <acourbot@chromium.org>, <tfiga@chromium.org>,
- <drinkcat@chromium.org>, <pihsun@chromium.org>, <hsinyi@google.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, <randy.wu@mediatek.com>,
- <jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
- <river.cheng@mediatek.com>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 22 Mar 2022 17:37:41 +0800
-In-Reply-To: <20220317143926.15835-2-moudy.ho@mediatek.com>
-References: <20220317143926.15835-1-moudy.ho@mediatek.com>
- <20220317143926.15835-2-moudy.ho@mediatek.com>
+ Transport; Tue, 22 Mar 2022 17:33:55 +0800
+Message-ID: <4e7a532814510b03b74455f5a924b50a70699ca1.camel@mediatek.com>
+Subject: Re: [PATCH v8 1/3] dt-bindings: mmc: mtk-sd: extend interrupts and
+ pinctrls properties
+From: Axe Yang <axe.yang@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rob
+ Herring" <robh@kernel.org>
+CC: Ulf Hansson <ulf.hansson@linaro.org>, Chaotian Jing
+ <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Adrian Hunter <adrian.hunter@intel.com>, Yoshihiro Shimoda
+ <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala <satyat@google.com>, Andy
+ Shevchenko <andriy.shevchenko@linux.intel.com>, Wolfram Sang
+ <wsa+renesas@sang-engineering.com>, Lucas Stach <dev@lynxeye.de>, "Eric
+ Biggers" <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, "Stephen
+ Boyd" <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu
+ <huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
+ <linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Date: Tue, 22 Mar 2022 17:33:55 +0800
+In-Reply-To: <5d9c7655-b05e-aa77-d405-c1ec971daa77@collabora.com>
+References: <20220321115133.32121-1-axe.yang@mediatek.com>
+ <20220321115133.32121-2-axe.yang@mediatek.com>
+ <YjkKURNzg8JPbXcg@robh.at.kernel.org>
+ <b03df175f871ee9a6561862f5bd7bceb9cafbde1.camel@mediatek.com>
+ <5d9c7655-b05e-aa77-d405-c1ec971daa77@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220322_023752_504710_2A09CF62 
-X-CRM114-Status: GOOD (  22.94  )
+X-CRM114-CacheID: sfid-20220322_023802_739922_4CCD95EB 
+X-CRM114-Status: GOOD (  27.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,232 +92,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Moudy:
+Hello AngeloGioacchino,
 
-On Thu, 2022-03-17 at 22:39 +0800, Moudy Ho wrote:
-> In order to allow multiple modules to operate MUTEX hardware through
-> a common interfrace, a flexible index "mtk_mutex_table_index" needs
-> to
-> be added to replace original component ID so that like DDP and MDP
-> can add their own MUTEX table settings independently.
+On Tue, 2022-03-22 at 09:42 +0100, AngeloGioacchino Del Regno wrote:
+> Il 22/03/22 02:35, Axe Yang ha scritto:
+> > On Mon, 2022-03-21 at 18:29 -0500, Rob Herring wrote:
+> > > On Mon, Mar 21, 2022 at 07:51:32PM +0800, Axe Yang wrote:
+> > > > Extend interrupts and pinctrls for SDIO wakeup interrupt
+> > > > feature.
+> > > > This feature allow SDIO devices alarm asynchronous interrupt to
+> > > > host
+> > > > even when host stop providing clock to SDIO card. An extra
+> > > > wakeup
+> > > > interrupt and pinctrl states for SDIO DAT1 pin state switching
+> > > > are
+> > > > required in this scenario.
+> > > > 
+> > > > Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+> > > > ---
+> > > >   .../devicetree/bindings/mmc/mtk-sd.yaml       | 23
+> > > > ++++++++++++++++++-
+> > > >   1 file changed, 22 insertions(+), 1 deletion(-)
+> > > > 
+> > > > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > > > b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > > > index 297ada03e3de..f57774535a1d 100644
+> > > > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > > > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > > > @@ -69,12 +69,23 @@ properties:
+> > > >         - const: ahb_cg
+> > > >   
+> > > >     interrupts:
+> > > > -    maxItems: 1
+> > > > +    description:
+> > > > +      Should at least contain MSDC GIC interrupt. To support
+> > > > SDIO
+> > > > in-band wakeup, an extended
+> > > > +      interrupt is required and be configured as wakeup source
+> > > > irq.
+> > > > +    minItems: 1
+> > > > +    maxItems: 2
+> > > >   
+> > > >     pinctrl-names:
+> > > > +    description:
+> > > > +      Should at least contain default and state_uhs. To
+> > > > support
+> > > > SDIO in-band wakeup, dat1 pin
+> > > > +      will be switched between GPIO mode and SDIO DAT1 mode,
+> > > > state_eint and state_dat1 are
+> > > > +      mandatory in this scenarios.
+> > > > +    minItems: 2
+> > > >       items:
+> > > >         - const: default
+> > > >         - const: state_uhs
+> > > > +      - const: state_eint
+> > > > +      - const: state_dat1
+> > > >   
+> > > >     pinctrl-0:
+> > > >       description:
+> > > > @@ -86,6 +97,16 @@ properties:
+> > > >         should contain uhs mode pin ctrl.
+> > > >       maxItems: 1
+> > > >   
+> > > > +  pinctrl-2:
+> > > > +    description:
+> > > > +      should switch dat1 pin to GPIO mode.
+> > > > +    maxItems: 1
+> > > > +
+> > > > +  pinctrl-3:
+> > > > +    description:
+> > > > +      should switch SDIO dat1 pin from GPIO mode back to SDIO
+> > > > mode.
+> > > 
+> > > How is this different than pinctrl-0?
+> > 
+> > pinctrl-0 contains default settings for all IO pins(CLK/CMD/DAT).
+> > pinctrl-1 contains settings for all IO pins(CLK/CMD/DAT) in UHS
+> > mode.
+> > pinctrl-3 is lightweight pinctrl-1, only keep SDIO DAT1 pin
+> > function
+> > switch part.
+> > 
 > 
-> In addition, 4 generic interface "mtk_mutex_set_mod",
-> "mtk_mutex_set_sof",
-> "mtk_mutex_clear_mod" and "mtk_mutex_clear_sof" have been added,
-> which is
-> expected to replace the "mtk_mutex_add_comp" and
-> "mtk_mutex_remove_comp"
-> pair originally dedicated to DDP in the future.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> ---
->  drivers/soc/mediatek/mtk-mutex.c       | 105
-> +++++++++++++++++++++++++
->  include/linux/soc/mediatek/mtk-mutex.h |  21 +++++
->  2 files changed, 126 insertions(+)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-mutex.c
-> b/drivers/soc/mediatek/mtk-mutex.c
-> index aaf8fc1abb43..f8c33186685a 100644
-> --- a/drivers/soc/mediatek/mtk-mutex.c
-> +++ b/drivers/soc/mediatek/mtk-mutex.c
-> @@ -151,11 +151,17 @@ enum mtk_mutex_sof_id {
->  	MUTEX_SOF_DSI3,
->  };
->  
-> +struct mtk_mutex_mod {
-> +	u8 tab;
+> Is there any particular reason why we cannot simply select pinctrl-1
+> again
+> instead of pinctrl-3, apart from the virtually not existent overhead
+> of one more mmio write?
 
-tab is always 0 in this series, so remove this.
+No, there is no particular reason. 
+I just want to do the pin function switch quick and clean. 
 
-> +	u32 value;
-
-Without tab, this struct is not necessary.
-
-> +};
-> +
->  struct mtk_mutex_data {
->  	const unsigned int *mutex_mod;
->  	const unsigned int *mutex_sof;
->  	const unsigned int mutex_mod_reg;
->  	const unsigned int mutex_sof_reg;
-> +	const struct mtk_mutex_mod *mutex_table_mod;
->  	const bool no_clk;
->  };
->  
-> @@ -445,6 +451,65 @@ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
->  }
->  EXPORT_SYMBOL_GPL(mtk_mutex_add_comp);
->  
-> +void mtk_mutex_set_mod(struct mtk_mutex *mutex,
-> +		       enum mtk_mutex_table_index idx)
-> +{
-> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
-> mtk_mutex_ctx,
-> +						 mutex[mutex->id]);
-> +	unsigned int reg;
-> +	unsigned int offset;
-> +
-> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-> +
-> +	if (idx < MUTEX_TABLE_IDX_MDP_RDMA0 ||
-> +	    idx >= MUTEX_TABLE_IDX_MAX)
-
-error message?
-
-> +		return;
-> +
-> +	if (mtx->data->mutex_table_mod[idx].tab)
-> +		offset = DISP_REG_MUTEX_MOD2(mutex->id);
-> +	else
-> +		offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
-> +					    mutex->id);
-> +
-> +	reg = readl_relaxed(mtx->regs + offset);
-> +	reg |= 1 << mtx->data->mutex_table_mod[idx].value;
-> +	writel_relaxed(reg, mtx->regs + offset);
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_mutex_set_mod);
-> +
-> +void mtk_mutex_set_sof(struct mtk_mutex *mutex,
-> +		       enum mtk_mutex_table_index idx)
-> +{
-> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
-> mtk_mutex_ctx,
-> +						 mutex[mutex->id]);
-> +	unsigned int sof_id;
-> +
-> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-> +
-> +	if (idx < MUTEX_TABLE_IDX_MDP_RDMA0 ||
-> +	    idx >= MUTEX_TABLE_IDX_MAX)
-
-Ditto.
-
-> +		return;
-> +
-> +	switch (idx) {
-> +	case MUTEX_TABLE_IDX_MDP_RDMA0:
-> +	case MUTEX_TABLE_IDX_MDP_RSZ0:
-> +	case MUTEX_TABLE_IDX_MDP_RSZ1:
-> +	case MUTEX_TABLE_IDX_MDP_TDSHP0:
-> +	case MUTEX_TABLE_IDX_MDP_WROT0:
-> +	case MUTEX_TABLE_IDX_MDP_WDMA:
-> +	case MUTEX_TABLE_IDX_MDP_AAL0:
-> +	case MUTEX_TABLE_IDX_MDP_CCORR0:
-
-Error & return?
+The intention of pinctrl-1 is to set the most initial state of IO pins
+in UHS mode. If I don't need to adjust IO settings any longer, it is
+okay to select pinctrl-1 state instead of pinctrl-3. 
+But think about this scenarios: after initial SDIO IO pins to UHS mode,
+I want to adjust some IO related properties, such as driving strength.
+And I want to keep these settings because with new driving strength,
+the signal is better. I'd rather to choose pinctrl-3 but not pinctrl-1, 
+because I do not want the change be restored after next runtime resume.
 
 Regards,
-CK
-
-> +	default:
-> +		sof_id = MUTEX_SOF_SINGLE_MODE;
-> +		break;
-> +	}
-> +
-> +	writel_relaxed(mtx->data->mutex_sof[sof_id],
-> +		       mtx->regs +
-> +		       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg,
-> mutex->id));
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_mutex_set_sof);
-> +
->  void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
->  			   enum mtk_ddp_comp_id id)
->  {
-> @@ -485,6 +550,46 @@ void mtk_mutex_remove_comp(struct mtk_mutex
-> *mutex,
->  }
->  EXPORT_SYMBOL_GPL(mtk_mutex_remove_comp);
->  
-> +void mtk_mutex_clear_mod(struct mtk_mutex *mutex,
-> +			 enum mtk_mutex_table_index idx)
-> +{
-> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
-> mtk_mutex_ctx,
-> +						 mutex[mutex->id]);
-> +	unsigned int reg;
-> +	unsigned int offset;
-> +
-> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-> +
-> +	if (idx < MUTEX_TABLE_IDX_MDP_RDMA0 ||
-> +	    idx >= MUTEX_TABLE_IDX_MAX)
-> +		return;
-> +
-> +	if (mtx->data->mutex_table_mod[idx].tab)
-> +		offset = DISP_REG_MUTEX_MOD2(mutex->id);
-> +	else
-> +		offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
-> +					    mutex->id);
-> +
-> +	reg = readl_relaxed(mtx->regs + offset);
-> +	reg &= ~(1 << mtx->data->mutex_table_mod[idx].value);
-> +	writel_relaxed(reg, mtx->regs + offset);
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_mutex_clear_mod);
-> +
-> +void mtk_mutex_clear_sof(struct mtk_mutex *mutex)
-> +{
-> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
-> mtk_mutex_ctx,
-> +						 mutex[mutex->id]);
-> +
-> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-> +
-> +	writel_relaxed(MUTEX_SOF_SINGLE_MODE,
-> +		       mtx->regs +
-> +		       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg,
-> +					  mutex->id));
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_mutex_clear_sof);
-> +
->  void mtk_mutex_enable(struct mtk_mutex *mutex)
->  {
->  	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
-> mtk_mutex_ctx,
-> diff --git a/include/linux/soc/mediatek/mtk-mutex.h
-> b/include/linux/soc/mediatek/mtk-mutex.h
-> index 6fe4ffbde290..200f4365c950 100644
-> --- a/include/linux/soc/mediatek/mtk-mutex.h
-> +++ b/include/linux/soc/mediatek/mtk-mutex.h
-> @@ -10,14 +10,35 @@ struct regmap;
->  struct device;
->  struct mtk_mutex;
->  
-> +enum mtk_mutex_table_index {
-> +	/* MDP table index */
-> +	MUTEX_TABLE_IDX_MDP_RDMA0,
-> +	MUTEX_TABLE_IDX_MDP_RSZ0,
-> +	MUTEX_TABLE_IDX_MDP_RSZ1,
-> +	MUTEX_TABLE_IDX_MDP_TDSHP0,
-> +	MUTEX_TABLE_IDX_MDP_WROT0,
-> +	MUTEX_TABLE_IDX_MDP_WDMA,
-> +	MUTEX_TABLE_IDX_MDP_AAL0,
-> +	MUTEX_TABLE_IDX_MDP_CCORR0,
-> +
-> +	MUTEX_TABLE_IDX_MAX		/* ALWAYS keep at the end */
-> +};
-> +
->  struct mtk_mutex *mtk_mutex_get(struct device *dev);
->  int mtk_mutex_prepare(struct mtk_mutex *mutex);
->  void mtk_mutex_add_comp(struct mtk_mutex *mutex,
->  			enum mtk_ddp_comp_id id);
-> +void mtk_mutex_set_mod(struct mtk_mutex *mutex,
-> +		       enum mtk_mutex_table_index idx);
-> +void mtk_mutex_set_sof(struct mtk_mutex *mutex,
-> +		       enum mtk_mutex_table_index idx);
->  void mtk_mutex_enable(struct mtk_mutex *mutex);
->  void mtk_mutex_disable(struct mtk_mutex *mutex);
->  void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
->  			   enum mtk_ddp_comp_id id);
-> +void mtk_mutex_clear_mod(struct mtk_mutex *mutex,
-> +			 enum mtk_mutex_table_index idx);
-> +void mtk_mutex_clear_sof(struct mtk_mutex *mutex);
->  void mtk_mutex_unprepare(struct mtk_mutex *mutex);
->  void mtk_mutex_put(struct mtk_mutex *mutex);
->  void mtk_mutex_acquire(struct mtk_mutex *mutex);
+Axe
 
 
 _______________________________________________
