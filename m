@@ -4,59 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 015AAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 22:18:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60539C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 23:31:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DirKvaCvD8I4ntdTIaN2U9tCcI2rtnZibjIfy7Aww00=; b=JHMRlZOoayjPz0
-	Ymdm5KkAc+5OWSa+RV+dfFc29aheABy3KBRiBh5SDN7Kl88+i9x3OuVY2i3WC7kfAfvKs1CVXY8Y5
-	c/cYNr2oQwxsnbE8T7Qml9RKLMHGmL+o5wu+Bt0D1fvpUKeWe0+2qnxpPKKnOaiUlI90ka1e1Ipcx
-	yTNTwaaPiL93C7VBKX+kraCcWkxKjZJJ9pqyPIdJMEWJSxVrfyIW9CpgDLBN23odtzSBIjLlC1CrW
-	k/FgTFKVfvzCaKzHE+iqiDSat1VemuWzZhjROgNk/04kC15ocphsveLXPoVeF22c04DtlnFLnzE5q
-	z1E96Bs0uwILieMbKUHQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ehcTDka5A/V5zlOR9mTAQu8xdQduZZ3wWR0YaSAoP7o=; b=Z3sdS1BFJtOsHR
+	zkxZ26hC12oRm+rWtq72xAnngASZhFj6tJXfiJQ8q8gNcphwTlBNtViH+WK9UrJAk36OPRxhzItH7
+	Gi09QEb5a3OpmYKB1/DwAEFZqHbnW0FXbPKyN358wr7M5HIDdlZ9ZesgONMKU33FOrUyAOc303a1P
+	9hP6Z7pRiLGgK0zPcl5pBT3vZapljcR6OddnlCOGdaoIpwIBjAYR35vbAX82B2CBKpNCMoGMvggOl
+	pfZrBESU89m8L4RPYt9OjGZTq32QPRVrUAY72cPqxJe+n7Y76gCwJs4tgR+1zB/bGIn5eaMmjPEOn
+	xShs+4h+EnY3gWogLPLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWmpk-00CKcl-3J; Tue, 22 Mar 2022 22:18:32 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nWnxx-00CR6I-In; Tue, 22 Mar 2022 23:31:05 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWmpY-00CKbI-OM; Tue, 22 Mar 2022 22:18:22 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 2CA7C1F442A1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647987499;
- bh=eWWNvfS4c7Pbd117rSjqnHFnvgl9cIGdel1xA62As0Q=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=kseM87wJJgeZx4HEvMRKmYMgWYyE482y/DcFndDYyS6DVTfxdQaPbA5VtKghu2BaU
- +BcMo1FseK8EEKCf4J3oQKlOUI2H9n5wglS8+7IpxsDmmpTdFSx2Qucb5sodOi02oz
- 97YUND3jesIra3mnN5rEzQ5NyBO2J+htFc2Wzdq/DOUso1GmwUVDO6nQ5Ex4oOGIOO
- w1vrlNkI3VQk7JgotQcacWekzHV++gfxYfsDtNGtPt0BTAfe3Opbz7cXO5AKE9kTuL
- CtXnf5jEo9NwOyD+4Pr7DerSqFVtQNv/xNM+6RSuXF24j+BXAuz373ppq3qmRw5gYg
- DMdgayzVRZPDw==
-Date: Tue, 22 Mar 2022 18:18:14 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
- Hui Liu <hui.liu@mediatek.com>
-Subject: Re: [PATCH v4 09/22] arm64: dts: mt8192: Add PCIe node
-Message-ID: <20220322221814.pwrqtvzlvrmwvloo@notapiano>
-References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
- <20220318144534.17996-10-allen-kh.cheng@mediatek.com>
+ id 1nWnxt-00CR4u-H2
+ for linux-mediatek@lists.infradead.org; Tue, 22 Mar 2022 23:31:04 +0000
+X-UUID: 9ed809dcd35245408d801d84750bd4f3-20220322
+X-UUID: 9ed809dcd35245408d801d84750bd4f3-20220322
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 128261628; Tue, 22 Mar 2022 16:30:57 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Mar 2022 16:30:55 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 23 Mar 2022 07:30:41 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 23 Mar 2022 07:30:41 +0800
+From: <sean.wang@mediatek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
+ <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+ <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <abhishekpandit@google.com>, <michaelfsun@google.com>, <mcchou@chromium.org>, 
+ <shawnku@google.com>, <linux-bluetooth@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Yake
+ Yang" <yake.yang@mediatek.com>
+Subject: [PATCH] Bluetooth: mt7921s: Fix the incorrect pointer check
+Date: Wed, 23 Mar 2022 07:30:40 +0800
+Message-ID: <5d56b2a23e6e793c64ed98890329ce1beb010ce0.1647991506.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220318144534.17996-10-allen-kh.cheng@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220322_151820_948927_5471E48D 
-X-CRM114-Status: GOOD (  14.51  )
+X-CRM114-CacheID: sfid-20220322_163101_594898_693723A4 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,81 +73,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 18, 2022 at 10:45:21PM +0800, Allen-KH Cheng wrote:
-> Add PCIe node for mt8192 SoC.
-> =
+From: Sean Wang <sean.wang@mediatek.com>
 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Fix the incorrect pointer check on ven_data.
 
-Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+Fixes: f41b91fa1783 ("Bluetooth: mt7921s: Add .btmtk_get_codec_config_data")
+Co-developed-by: Yake Yang <yake.yang@mediatek.com>
+Signed-off-by: Yake Yang <yake.yang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/bluetooth/btmtksdio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> ---
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 38 ++++++++++++++++++++++++
->  1 file changed, 38 insertions(+)
-> =
-
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/d=
-ts/mediatek/mt8192.dtsi
-> index 82de1af3f6aa..3a7f93d8eeaa 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -884,6 +884,44 @@
->  			};
->  		};
->  =
-
-> +		pcie: pcie@11230000 {
-> +			compatible =3D "mediatek,mt8192-pcie";
-> +			device_type =3D "pci";
-> +			reg =3D <0 0x11230000 0 0x2000>;
-> +			reg-names =3D "pcie-mac";
-> +			#address-cells =3D <3>;
-> +			#size-cells =3D <2>;
-> +			clocks =3D <&infracfg CLK_INFRA_PCIE_TL_26M>,
-> +				 <&infracfg CLK_INFRA_PCIE_TL_96M>,
-> +				 <&infracfg CLK_INFRA_PCIE_TL_32K>,
-> +				 <&infracfg CLK_INFRA_PCIE_PERI_26M>,
-> +				 <&infracfg CLK_INFRA_PCIE_TOP_H_133M>,
-> +				 <&infracfg CLK_INFRA_PCIE_PL_P_250M>;
-> +			clock-names =3D "sys_ck0", "ahb_ck0", "aux_ck0",
-> +				      "obff_ck0", "axi_ck0", "pipe_ck0";
-> +			assigned-clocks =3D <&topckgen CLK_TOP_TL_SEL>;
-> +			assigned-clock-parents =3D <&topckgen CLK_TOP_MAINPLL_D6_D4>;
-> +			resets =3D <&infracfg_rst 2>,
-> +				 <&infracfg_rst 3>;
-> +			reset-names =3D "phy", "mac";
-> +			interrupts =3D <GIC_SPI 251 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			bus-range =3D <0x00 0xff>;
-> +			ranges =3D <0x82000000 0 0x12000000 0x0 0x12000000 0 0x0800000>,
-> +				 <0x81000000 0 0x12800000 0x0 0x12800000 0 0x0800000>;
-> +			#interrupt-cells =3D <1>;
-> +			interrupt-map-mask =3D <0 0 0 7>;
-> +			interrupt-map =3D <0 0 0 1 &pcie_intc0 0>,
-> +					<0 0 0 2 &pcie_intc0 1>,
-> +					<0 0 0 3 &pcie_intc0 2>,
-> +					<0 0 0 4 &pcie_intc0 3>;
-> +
-> +			pcie_intc0: interrupt-controller {
-> +				interrupt-controller;
-> +				#address-cells =3D <0>;
-> +				#interrupt-cells =3D <1>;
-> +			};
-> +		};
-> +
->  		nor_flash: spi@11234000 {
->  			compatible =3D "mediatek,mt8192-nor";
->  			reg =3D <0 0x11234000 0 0xe0>;
-> -- =
-
-> 2.18.0
-> =
-
-> =
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index f3dc5881fff7..b6d77e04240c 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -961,7 +961,7 @@ static int btmtksdio_get_codec_config_data(struct hci_dev *hdev,
+ 	}
+ 
+ 	*ven_data = kmalloc(sizeof(__u8), GFP_KERNEL);
+-	if (!ven_data) {
++	if (!*ven_data) {
+ 		err = -ENOMEM;
+ 		goto error;
+ 	}
+-- 
+2.25.1
 
 
 _______________________________________________
