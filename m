@@ -4,74 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA814C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 10:15:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAB87C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Mar 2022 10:31:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NqqkRrjxl8yNx43WojqFHKhV7Hm2QMicdOdRFEyEjSg=; b=m1bESnQr//UQs+
-	8C0LnzQGek49DYM65xqZ3cwGElq96a8b4OLYj1h25i0NNTJmHpe9fYOPgx6Ykxk4yHa/+Fpskizkn
-	8blzNixgX0mq5E/+bMnHj2CIPfzFi6OEB5EqtGAaZ4AJwwCpTpD03mFQ+uQbAS9v7UMPV0f8vrvK1
-	5CFwiFpejX7VxzignBGmkDj4fPI1TNuw1d1DCXEuhiQhZ0modVzhi6ARh6iPqCPws/gg9Xg0eRibC
-	Lc+N3ZfZoM5rxglcoBUvuu9V2KMUMLyArBABhYsE9l45c9ea9B79n40/bCRTjXwdtMtoq2tTL0Xy1
-	iFh9C/5aVBxY1n+kyUZQ==;
+	List-Owner; bh=Wq3MJmvOVj+qKFY+Zv5oA8+4SIQUd1/hkT5mS2F+foE=; b=3V1VXeUCXyzlgo
+	ibbcwAq9rmEv8rKs4O5wiEtgHYwLJDj+5RPOHUZO/CIHsFnv1pwzfhHH0qU/UDLBQmzCFVCpfPd6w
+	3Zz+OMBxqxMfjpxH/k9MsTK/S1QRfstn1SvIEC3h5ssBzHAc3Xj9sHj5qhU/eQq2+NRkZjZtytFx+
+	HmFegJ7ZCG4IVqRU4/edvwgAP54ZyGOvlBkBZFpJS5AgKT9/D9HSfeqoB2AcVvs1GhWwv/gyYHXy1
+	OvwcvMF1iPVQ6Z9tBPILp7GMqWHI4WP869N+a7Vnh3gfaccz7DtjMQVBoZQF/AiebTJiO8DnQDdQf
+	hQgUYN+5/kh5h0rUz1Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWbXU-00Aghq-Bk; Tue, 22 Mar 2022 10:14:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nWbnO-00AifJ-SQ; Tue, 22 Mar 2022 10:31:22 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWbXR-00AghO-TM; Tue, 22 Mar 2022 10:14:55 +0000
-X-UUID: 4f05dac6b35c4a90acf6e57938713b9f-20220322
-X-UUID: 4f05dac6b35c4a90acf6e57938713b9f-20220322
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 902142588; Tue, 22 Mar 2022 03:14:49 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Mar 2022 03:04:47 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Mar 2022 18:04:45 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 22 Mar 2022 18:04:45 +0800
-Message-ID: <e2065fe63ac275b863b8f4ebda0279ec4c830552.camel@mediatek.com>
-Subject: Re: [PATCH v14 6/6] soc: mediatek: mutex: add functions that
- operate registers by CMDQ
-From: CK Hu <ck.hu@mediatek.com>
-To: Moudy Ho <moudy.ho@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Jernej
- Skrabec" <jernej.skrabec@siol.net>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- Alexandre Courbot <acourbot@chromium.org>, <tfiga@chromium.org>,
- <drinkcat@chromium.org>, <pihsun@chromium.org>, <hsinyi@google.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, <randy.wu@mediatek.com>,
- <jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
- <river.cheng@mediatek.com>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 22 Mar 2022 18:04:45 +0800
-In-Reply-To: <20220317143926.15835-7-moudy.ho@mediatek.com>
-References: <20220317143926.15835-1-moudy.ho@mediatek.com>
- <20220317143926.15835-7-moudy.ho@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nWbnB-00Aicr-LK; Tue, 22 Mar 2022 10:31:12 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 1033B1F43122
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1647945067;
+ bh=wsuVdARlaeRl+D4+nBJjwWfODrGAZGldOBP9V39TNIU=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=mBWT5adqZ+p0KfBLO4NV3PK/6NkAUyxZl0PG1AM3d8aV5YDxPBm0AttaQlJudAKdK
+ 7FLb80e0w/hPFeD1ojdxJgvjZ5TMty8ta37TMXcKN4/SX/9n0WiYFFbnYcMHsduZG+
+ O/oMiKpGZ0LQ59JRlWkEYSfaJG2pYNoocVuiMOm7MCAO7btxRFYRByilCYyQNjFnqz
+ x3YCHm2NT8lzB1u0SLXzhYUply3LN4rQ/wxpHBplW4sfRp7ROYL33DOLFBT8LQh9/a
+ aC8+ZnpiBnG4Vv4+46i8NmcFrCyFDF3ZA2mov9GVFeuhqnBkYLFVE5dCWTa8wk6pUq
+ tufK8+7JiN97w==
+Message-ID: <555f4a78-dd7a-59f3-e1db-f040c97c61b4@collabora.com>
+Date: Tue, 22 Mar 2022 11:31:04 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: [PATCH v11 0/3] Add basic SoC support for mediatek mt8195
+Content-Language: en-US
+To: Tinghan Shen <tinghan.shen@mediatek.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@canonical.com>, Linus Walleij
+ <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Sean Wang <sean.wang@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, ryder.lee@kernel.org,
+ wenst@chromium.org, chunfeng.yun@mediatek.com
+References: <20220216113131.13145-1-tinghan.shen@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220216113131.13145-1-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220322_031453_963592_8E915D16 
-X-CRM114-Status: GOOD (  26.29  )
+X-CRM114-CacheID: sfid-20220322_033109_996707_24F35428 
+X-CRM114-Status: GOOD (  12.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,157 +71,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Moudy:
-
-On Thu, 2022-03-17 at 22:39 +0800, Moudy Ho wrote:
-> Due to HW limitations, MDP3 is necessary to enable MUTEX in each
-> frame
-> for SOF triggering and cooperate with CMDQ control to reduce the
-> amount
-> of interrupts generated(also, reduce frame latency).
-> 
-> In response to the above situation, a new interface
-> "mtk_mutex_enable_by_cmdq" has been added to achieve the purpose.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+Il 16/02/22 12:31, Tinghan Shen ha scritto:
+> This series adds basic SoC support for Mediatek's SoC MT8195.
 > ---
->  drivers/soc/mediatek/mtk-mutex.c       | 45
-> +++++++++++++++++++++++++-
->  include/linux/soc/mediatek/mtk-mutex.h |  2 ++
->  2 files changed, 46 insertions(+), 1 deletion(-)
+> Changes in v11:
+>    - rebase on 5.17-rc4
+
+..snip...
+
+Hello Matthias,
+
+this series introducing very basic support for this new SoC is definitely
+ready to be merged and well tested.
+
+Can you please pick it?
+
+P.S.: Patch 2/3 (pinctrl binding) was already picked by Linux Walleij,
+and it's already upstream.
+
+Thank you,
+Angelo
+
 > 
-> diff --git a/drivers/soc/mediatek/mtk-mutex.c
-> b/drivers/soc/mediatek/mtk-mutex.c
-> index c72e9f6ee4cc..32c87b8ed077 100644
-> --- a/drivers/soc/mediatek/mtk-mutex.c
-> +++ b/drivers/soc/mediatek/mtk-mutex.c
-> @@ -7,10 +7,14 @@
->  #include <linux/iopoll.h>
->  #include <linux/module.h>
->  #include <linux/of_device.h>
-> +#include <linux/of_address.h>
->  #include <linux/platform_device.h>
->  #include <linux/regmap.h>
->  #include <linux/soc/mediatek/mtk-mmsys.h>
->  #include <linux/soc/mediatek/mtk-mutex.h>
-> +#include <linux/soc/mediatek/mtk-cmdq.h>
-> +
-> +#define MTK_MUTEX_ENABLE			BIT(0)
+> Tinghan Shen (3):
+>    dt-bindings: arm: mediatek: Add mt8195 pericfg compatible
+>    dt-bindings: pinctrl: mt8195: Add mediatek,drive-strength-adv property
+>    arm64: dts: Add mediatek SoC mt8195 and evaluation board
+> 
+>   .../arm/mediatek/mediatek,pericfg.yaml        |    1 +
+>   .../bindings/pinctrl/pinctrl-mt8195.yaml      |   35 +
+>   arch/arm64/boot/dts/mediatek/Makefile         |    1 +
+>   arch/arm64/boot/dts/mediatek/mt8195-evb.dts   |  161 +++
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 1049 +++++++++++++++++
+>   5 files changed, 1247 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-evb.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> 
 
-If this is necessary, separate this to another patch and apply to
-mtk_mutex_enable() also.
-
->  
->  #define MT2701_MUTEX0_MOD0			0x2c
->  #define MT2701_MUTEX0_SOF0			0x30
-> @@ -180,6 +184,9 @@ struct mtk_mutex_ctx {
->  	void __iomem			*regs;
->  	struct mtk_mutex		mutex[10];
->  	const struct mtk_mutex_data	*data;
-> +	phys_addr_t			addr;
-> +	struct cmdq_client_reg		cmdq_reg;
-> +	bool				has_gce_client_reg;
->  };
->  
->  static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-> @@ -638,6 +645,29 @@ void mtk_mutex_enable(struct mtk_mutex *mutex)
->  }
->  EXPORT_SYMBOL_GPL(mtk_mutex_enable);
->  
-> +void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex, void *pkt)
-> +{
-> +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
-> mtk_mutex_ctx,
-> +						 mutex[mutex->id]);
-> +	struct cmdq_pkt *cmdq_pkt = (struct cmdq_pkt *)pkt;
-> +
-> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-> +
-> +	if (!mtx->has_gce_client_reg) {
-> +		dev_dbg(mtx->dev, "mediatek,gce-client-reg hasn't been
-> set in dts");
-
-dev_err()
-
-> +		return;
-> +	}
-> +
-> +	cmdq_pkt_write_mask(cmdq_pkt, mtx->cmdq_reg.subsys,
-> +			    mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
-+			    MTK_MUTEX_ENABLE, MTK_MUTEX_ENABLE);
-
-According to mtk_mutex_enable(),
-
-	cmdq_pkt_write(cmdq_pkt, mtx->cmdq_reg.subsys,
-		       mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
-		       1);
-
-> +#else
-> +	dev_dbg(mtx->dev, "Not support for enable MUTEX by CMDQ");
-
-dev_err()
-Regards,
-CK
-
-> +#endif
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_mutex_enable_by_cmdq);
-> +
->  void mtk_mutex_disable(struct mtk_mutex *mutex)
->  {
->  	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
-> mtk_mutex_ctx,
-> @@ -676,7 +706,7 @@ static int mtk_mutex_probe(struct platform_device
-> *pdev)
->  {
->  	struct device *dev = &pdev->dev;
->  	struct mtk_mutex_ctx *mtx;
-> -	struct resource *regs;
-> +	struct resource *regs, addr;
->  	int i;
->  
->  	mtx = devm_kzalloc(dev, sizeof(*mtx), GFP_KERNEL);
-> @@ -697,6 +727,19 @@ static int mtk_mutex_probe(struct
-> platform_device *pdev)
->  		}
->  	}
->  
-> +	if (of_address_to_resource(dev->of_node, 0, &addr) < 0)
-> +		mtx->addr = 0L;
-> +	else
-> +		mtx->addr = addr.start;
-> +
-> +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-> +	ret = cmdq_dev_get_client_reg(dev, &mtx->cmdq_reg, 0);
-> +	if (ret)
-> +		dev_dbg(dev, "No mediatek,gce-client-reg!\n");
-> +	else
-> +		mtx->has_gce_client_reg = true;
-> +#endif
-> +
->  	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->  	mtx->regs = devm_ioremap_resource(dev, regs);
->  	if (IS_ERR(mtx->regs)) {
-> diff --git a/include/linux/soc/mediatek/mtk-mutex.h
-> b/include/linux/soc/mediatek/mtk-mutex.h
-> index 200f4365c950..17eea55b6809 100644
-> --- a/include/linux/soc/mediatek/mtk-mutex.h
-> +++ b/include/linux/soc/mediatek/mtk-mutex.h
-> @@ -33,6 +33,8 @@ void mtk_mutex_set_mod(struct mtk_mutex *mutex,
->  void mtk_mutex_set_sof(struct mtk_mutex *mutex,
->  		       enum mtk_mutex_table_index idx);
->  void mtk_mutex_enable(struct mtk_mutex *mutex);
-> +void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex,
-> +			      void *pkt);
->  void mtk_mutex_disable(struct mtk_mutex *mutex);
->  void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
->  			   enum mtk_ddp_comp_id id);
 
 
 _______________________________________________
