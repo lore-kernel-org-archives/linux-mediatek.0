@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70372C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Mar 2022 11:49:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B20AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Mar 2022 11:54:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+g1t/0chugrhtLOdn8FCcCczQRcNIQWzM/tT4rpZY/g=; b=xxI4PtbWjvXmCP
-	t3z85bv78MvYNXdJfUIxGVbgYH4vVgFuBs6Q5yT+ttK7i8K5a+lsQ2lqMcdW+3kEvyqCZ3ZJOTeDv
-	vE3BG3Fo8L11wO2iHk3+X5ED79lXKN3lg9j/nwHeEM1KE3EoXla4XJLwr7b4ejKwH5qiJ1UD1Xkz3
-	wJ9oP8eQGjDktR6HnyZKMkzL6N/oow+H+n3QJ9Q6zSw/9jEcXCsiopEjcoEY9+rgMlUDCK298pOOy
-	cQFFMtxAQuO1tPROWS6Lt0Eo5/erryej+9EL8JOvrHJAU1IgpVeAKzlyffH0MF5cdjQNbI4cmiGDS
-	7Fxk2rCF5ox4/2+MwtHw==;
+	List-Owner; bh=jfl0Qq+Iw4Xtb/39mWDl/cKE1xLScJTXiTj6sCJ8FY4=; b=nA9leomJOgpb69
+	b115W0xUkn9dnhUYPefjNpmtj0sInNXUOSoPlrAabldK6VYwWZqErglM/ljYb2tHg/PMtrDydLSyC
+	lNldj6j0hRSQ7t9+agziE0o2cDj08GD4XLxMp41d11JjQHzQITq3GOPcMx+2tmYz50ii9ECIO0i+l
+	5egqfAplVV9HfXHvRCuqAFP8PsyFymA6Wd5srUMBXDbhmR7bpIDNjhs4emGNCtZJmfVN8+5n1Ieg7
+	YMGjYZEEkbPW59XqD1uFxYY27N4BxOhRb9dyi0IirBvUdLMj2g2qGuLyAB0rMrO7rSPPF9HmjnFKo
+	8yzYq6xtRb76BE5juSvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWzTx-00DVmX-2Q; Wed, 23 Mar 2022 11:48:53 +0000
+	id 1nWzZY-00DWa8-Qw; Wed, 23 Mar 2022 11:54:40 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWzTd-00DVj0-M5; Wed, 23 Mar 2022 11:48:37 +0000
-X-UUID: c5bcce45d09649a2a563b8bb10bd2e74-20220323
-X-UUID: c5bcce45d09649a2a563b8bb10bd2e74-20220323
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ id 1nWzZL-00DWWF-Ql; Wed, 23 Mar 2022 11:54:29 +0000
+X-UUID: 76c6583ba0b644afa1101c597f612571-20220323
+X-UUID: 76c6583ba0b644afa1101c597f612571-20220323
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2139902038; Wed, 23 Mar 2022 04:48:29 -0700
+ with ESMTP id 88770078; Wed, 23 Mar 2022 04:54:24 -0700
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Mar 2022 04:46:15 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Mar 2022 04:54:22 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Mar 2022 19:46:14 +0800
+ 15.0.1497.2; Wed, 23 Mar 2022 19:54:21 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 23 Mar 2022 19:46:14 +0800
-Message-ID: <eca60f45ab518a53b1d281c078f562b8bc610060.camel@mediatek.com>
-Subject: Re: [PATCH v3,2/4] drm/mediatek: Separate poweron/poweroff from
- enable/disable and define new funcs
+ Transport; Wed, 23 Mar 2022 19:54:20 +0800
+Message-ID: <53f433cc2de187096534d522dc19d301a1c0500f.camel@mediatek.com>
+Subject: Re: [PATCH v3,4/4] drm/mediatek: Add pull-down MIPI operation in
+ mtk_dsi_poweroff function
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
 To: xinlei.lee <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
  <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
@@ -49,18 +49,18 @@ To: xinlei.lee <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
 CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, <jitao.shi@mediatek.com>
-Date: Wed, 23 Mar 2022 19:46:13 +0800
-In-Reply-To: <4d022881d08ea1d4a222b3439510c6d6d26d7284.camel@mediatek.com>
+Date: Wed, 23 Mar 2022 19:54:20 +0800
+In-Reply-To: <55eba6e4285ee6e4edb436f339b88730cc2c651c.camel@mediatek.com>
 References: <1647503611-13144-1-git-send-email-xinlei.lee@mediatek.com>
- <1647503611-13144-3-git-send-email-xinlei.lee@mediatek.com>
- <390025b57d3345c34071231c68350e9311af64c9.camel@mediatek.com>
- <4d022881d08ea1d4a222b3439510c6d6d26d7284.camel@mediatek.com>
+ <1647503611-13144-5-git-send-email-xinlei.lee@mediatek.com>
+ <ebcf547ab6e4481e6c8e60db88eccf58fe7059ed.camel@mediatek.com>
+ <55eba6e4285ee6e4edb436f339b88730cc2c651c.camel@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220323_044833_734512_D0D11AE0 
-X-CRM114-Status: GOOD (  40.37  )
+X-CRM114-CacheID: sfid-20220323_045427_906803_3E6924E2 
+X-CRM114-Status: GOOD (  24.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,198 +77,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-03-22 at 17:23 +0800, xinlei.lee wrote:
-> On Thu, 2022-03-17 at 20:02 +0800, Rex-BC Chen wrote:
+On Tue, 2022-03-22 at 18:00 +0800, xinlei.lee wrote:
+> On Thu, 2022-03-17 at 20:20 +0800, Rex-BC Chen wrote:
 > > Hello Xinlei,
 > > 
 > > On Thu, 2022-03-17 at 15:53 +0800, xinlei.lee@mediatek.com wrote:
-> > > From: Jitao Shi <jitao.shi@mediatek.com>
+> > > From: Xinlei Lee <xinlei.lee@mediatek.com>
 > > > 
-> > > In order to match the changes of "Use the drm_panel_bridge API",
-> > > the poweron/poweroff of dsi is extracted from enable/disable and
-> > > defined as new funcs (pre_enable/post_disable).
+> > > In the dsi_enable function, mtk_dsi_rxtx_control is to
+> > > pull up the MIPI signal operation. Before dsi_disable,
+> > > MIPI should also be pulled down by writing a register instead of
+> > > disabling dsi.
 > > > 
-> > > Fixes: 2dd8075d2185 ("drm/mediatek: mtk_dsi: Use the
-> > > drm_panel_bridge
-> > > API")
-> > > 
+> > 
+> > What will happen if you do not pulled down the mipi before disable
+> > dsi?
+> > What's differnet for this two setting?
+> > 
 > > > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 > > > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
 > > > ---
-> > >  drivers/gpu/drm/mediatek/mtk_dsi.c | 45 +++++++++++++++++-------
-> > > --
-> > > --
-> > > --
-> > >  1 file changed, 26 insertions(+), 19 deletions(-)
+> > >  drivers/gpu/drm/mediatek/mtk_dsi.c | 2 ++
+> > >  1 file changed, 2 insertions(+)
 > > > 
 > > > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
 > > > b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > index 262c027d8c2f..e33caaca11a7 100644
+> > > index b509d59235e2..1c6a75a46b67 100644
 > > > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
 > > > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > @@ -679,16 +679,6 @@ static void mtk_dsi_poweroff(struct mtk_dsi
+> > > @@ -676,6 +676,8 @@ static void mtk_dsi_poweroff(struct mtk_dsi
 > > > *dsi)
-> > >  	if (--dsi->refcount != 0)
-> > >  		return;
-> > >  
-> > > -	/*
-> > > -	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
-> > > -	 * mtk_dsi_stop() should be called after
-> > > mtk_drm_crtc_atomic_disable(),
-> > > -	 * which needs irq for vblank, and mtk_dsi_stop() will disable
-> > > irq.
-> > > -	 * mtk_dsi_start() needs to be called in
-> > > mtk_output_dsi_enable(),
-> > > -	 * after dsi is fully set.
-> > > -	 */
-> > > -	mtk_dsi_stop(dsi);
-> > > -
-> > > -	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
 > > >  	mtk_dsi_reset_engine(dsi);
 > > >  	mtk_dsi_lane0_ulp_mode_enter(dsi);
 > > >  	mtk_dsi_clk_ulp_mode_enter(dsi);
-> > > @@ -703,17 +693,9 @@ static void mtk_dsi_poweroff(struct mtk_dsi
-> > > *dsi)
-> > >  
-> > >  static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
-> > >  {
-> > > -	int ret;
-> > > -
-> > >  	if (dsi->enabled)
-> > >  		return;
-> > >  
-> > > -	ret = mtk_dsi_poweron(dsi);
-> > > -	if (ret < 0) {
-> > > -		DRM_ERROR("failed to power on dsi\n");
-> > > -		return;
-> > > -	}
-> > > -
-> > >  	mtk_dsi_set_mode(dsi);
-> > >  	mtk_dsi_clk_hs_mode(dsi, 1);
-> > >  
-> > > @@ -727,7 +709,16 @@ static void mtk_output_dsi_disable(struct
-> > > mtk_dsi *dsi)
-> > >  	if (!dsi->enabled)
-> > >  		return;
-> > >  
-> > > -	mtk_dsi_poweroff(dsi);
-> > > +	/*
-> > > +	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
+> > > +	/* set the lane number as 0 */
+
+Hello Xinlei,
+
+I think you can write this comment more detailed, like
+"/* set the lane number as 0 to pull down mipi */"
+
+> > > +	writel(0, dsi->regs + DSI_TXRX_CTRL);
 > > 
-> > Why they are asymmetric?
-> > 
-> > > +	 * mtk_dsi_stop() should be called after
-> > > mtk_drm_crtc_atomic_disable(),
-> > > +	 * which needs irq for vblank, and mtk_dsi_stop() will disable
-> > > irq.
-> > > +	 * mtk_dsi_start() needs to be called in
-> > > mtk_output_dsi_enable(),
-> > > +	 * after dsi is fully set.
-> > > +	 */
-> > > +	mtk_dsi_stop(dsi);
-> > > +
-> > > +	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
-> > >  
-> > >  	dsi->enabled = false;
-> > >  }
-> > > @@ -765,10 +756,26 @@ static void mtk_dsi_bridge_enable(struct
-> > > drm_bridge *bridge)
-> > >  	mtk_output_dsi_enable(dsi);
-> > >  }
-> > >  
-> > > +static void mtk_dsi_bridge_pre_enable(struct drm_bridge *bridge)
-> > > +{
-> > > +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
-> > > +
-> > > +	mtk_dsi_poweron(dsi);
-> > 
-> > Should you handle the error of mtk_dsi_poweron?
-> > If you failed to mtk_dsi_bridge_pre_enable and do
-> > mtk_dsi_bridge_enable,
-> > what will happend?
-> > 
-> > > +}
-> > > +
-> > > +static void mtk_dsi_bridge_post_disable(struct drm_bridge
-> > > *bridge)
-> > > +{
-> > > +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
-> > > +
-> > > +	mtk_dsi_poweroff(dsi);
-> > 
-> > If you failed to mtk_dsi_bridge_disable and you do
-> > mtk_dsi_bridge_post_disable,
-> > what will happend?
-> > Do you need to handle this?
+> > So set lane num to 0 means pull down mipi?
 > > 
 > > BRs,
 > > Rex
 > > 
-> > > +}
-> > > +
-> > >  static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
-> > >  	.attach = mtk_dsi_bridge_attach,
-> > >  	.disable = mtk_dsi_bridge_disable,
-> > >  	.enable = mtk_dsi_bridge_enable,
-> > > +	.pre_enable = mtk_dsi_bridge_pre_enable,
-> > > +	.post_disable = mtk_dsi_bridge_post_disable,
-> > >  	.mode_set = mtk_dsi_bridge_mode_set,
-> > >  };
+> > >  
+> > >  	mtk_dsi_disable(dsi);
 > > >  
 > > 
 > > 
 > 
-> Hi Rex:
+> Hi rex:
 > 
-> Thanks for your review!
-> 
-> 1.Why they are asymmetric?
-> =>My understanding mtk_dsi_stop() and mtk_dsi_start() is to make dsi
-> switch from LP11 and HS mode.DSI has two working modes:
-> If it is cmd mode, the data sent is sent by LP11, and dsi_start is
-> just
-> a signal. In this mode, dsi_stop is not required after sending cmd.
-> If it is video mode, because the data needs to be sent in HS mode,
-> dsi_start is required to make dsi enter HS mode from LP11. After
-> suspend, drm will call dsi_disable, and call dsi_stop to make dsi
-> return from HS mode to LP11 state.
-> Therefore mtk_dsi_stop() and mtk_dsi_start() are asymmetric.
-> For example, in the dsi_host_transfer function, only dsi_stop has no
-> dsi_start operation.
-> 
-> 2.
-> Because the return type of pre_enable & post_disable in common code
-> is
-> void type. If there is an error, it will be processed in
-> poweron/poweroff, and the error message will be printed.
-> Do you mean that pre_enable & post_disable needs to accept the
-> poweron/poweroff error return value and then print the error log?
-> 
-> 3.
-> If pre_enable fails, there is only a problem with the dsi module, and
-> it does not affect the execution of other modules and enable funcs
-> under drm. 
-> Same goes for post_disable & disable.
-> 
-> Best Regrds!
-> xinlei
+> 1. 
+> If you disable dsi without pulling the mipi signal low, the value of
+> the register will still maintain the setting of the mipi signal being
+> pulled high. 
+> After resume, even if the mipi signal is not pulled high, it will
+> still
+> be in the high state.
 > 
 
-Hello Xinlei,
+I think you can describe this in commit message
 
-about failure for mtk_dsi_poweron(), it is all becuase of error setting
-for clock.
-If we do not set clock correctly and not enable DSI, after set DSI
-start, will it cause any issue? (maybe bus hang or something.)
-
-Because in original drivers, if mtk_dsi_poweron failed, the DSI will
-not start.
-
-IMO, it also needs some error message for mtk_dsi_bridge_pre_enable()
-and mtk_dsi_bridge_post_disable().
 
 BRs,
 Rex
+
+> 2.So set lane num to 0 means pull down mipi
+> => yes
+> 
+> Do you have any suggestions on the next version?
+> 
+> Best Regards!
+> xinlei
+> 
 
 
 _______________________________________________
