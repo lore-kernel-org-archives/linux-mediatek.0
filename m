@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA2CAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Mar 2022 07:06:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C843C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Mar 2022 07:06:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=L0j7jfJocu0h/FI1ybrMNEqX567unJ7SCEtXyu+l8HE=; b=NJo6vH7lXVHdSQ
-	E5YnDbyHwKCe8iQQKASiHzqlyYbNI+LEysVPTDnF6ySeyHhX1mwp6iK7BqDSt/iPAY1qt7JA3aZ9T
-	GugTjlt3+PZ3UIUABohDBkh0NoZbuwt2ciVMHTZk+6Lw9Hn9M3y9tYuR+6B18byqVj7zb06wcJ0A+
-	ni+16zQ/ajfjcDqOZyN4noEl4QRTlXnsXnW8OweuOoq+2zugsdOaIdHbX0ZXK9C1nCCCiYaIqxJFn
-	jaYg3qSpCxPb6xsl9xaM80uybzgQeLpSe2RL30vanPARqk5nVqz6h6aqA3O2d3e7Ra5kpvNyuUgr2
-	kW2C/hovjbIS6nuagk2A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nhecQe0/IfL93IvMTgSMuk3ncp3ay4GaygC6pT6JrTs=; b=bZ1fnDIOoR1nF8
+	ghALgtj+ThfA8RvGBlKdcVzRuQGZiehEqLwHphtDU1i7/L1z8wVyYQEsNN9KCU1SKkNJ6NQUxINaJ
+	7bExuRvpv4t86SL47QNr3raYxMehNtHtF/YE5jKZ/PxIBXY1qgK+eEUcJLjTznrJFeEDHN3ax5wPR
+	HvvsCa9F6CeCWskFbU0vZKn+kVX4tGCLbbw8fHPfetXBGBf/3wgcsnkTMTbzrbRus4xwk3Q+Gw/Tr
+	pHrjFeY/VWH4KNzcyucAcXq43tvTRxXjIjJHj8I/l24cJiHqLlTo4IkyiLFw0+3gIPpRebJWU/UoW
+	Hdzh7qZwZS41Ks+Hr5og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWv4a-00Cu9f-4T; Wed, 23 Mar 2022 07:06:24 +0000
+	id 1nWv4y-00CuIO-Lr; Wed, 23 Mar 2022 07:06:48 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWv4W-00Cu8Z-SV; Wed, 23 Mar 2022 07:06:22 +0000
-X-UUID: e460647b850740bfaec1fe345fd9b8ee-20220323
-X-UUID: e460647b850740bfaec1fe345fd9b8ee-20220323
+ id 1nWv4Y-00Cu8R-QQ; Wed, 23 Mar 2022 07:06:24 +0000
+X-UUID: ccd40d7503ab4ddcb9ae3d120a566d55-20220323
+X-UUID: ccd40d7503ab4ddcb9ae3d120a566d55-20220323
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jianjun.wang@mediatek.com>)
+ (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2101384147; Wed, 23 Mar 2022 00:06:16 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1455568049; Wed, 23 Mar 2022 00:06:16 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Mar 2022 23:56:14 -0700
+ 15.0.1497.2; Wed, 23 Mar 2022 00:05:23 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Mar 2022 14:56:13 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 23 Mar 2022 15:05:22 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 23 Mar 2022 14:56:11 +0800
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
- <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chen-Yu Tsai
- <wenst@chromium.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski
- <krzk@kernel.org>
-CC: Wei-Shun Chang <weishunc@google.com>, Jianjun Wang
- <jianjun.wang@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <rex-bc.chen@mediatek.com>, <randy.wu@mediatek.com>,
- <jieyy.yang@mediatek.com>, <chuanjia.liu@mediatek.com>,
- <qizhong.cheng@mediatek.com>, <jian.yang@mediatek.com>
-Subject: [PATCH v4 0/2] phy: mediatek: Add PCIe PHY driver
-Date: Wed, 23 Mar 2022 14:56:06 +0800
-Message-ID: <20220323065608.27426-1-jianjun.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ Transport; Wed, 23 Mar 2022 15:05:22 +0800
+Message-ID: <d2b36a358651e60b3d64efc6479a182d027066cb.camel@mediatek.com>
+Subject: Re: [PATCH V9 1/5] dt-bindings: display: mediatek: add aal binding
+ for MT8183
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>, <robh+dt@kernel.org>
+CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <jassisinghbrar@gmail.com>, <fparent@baylibre.com>,
+ <yongqiang.niu@mediatek.com>, <hsinyi@chromium.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 23 Mar 2022 15:05:22 +0800
+In-Reply-To: <e4c85b2d-8546-1740-9f83-d4cf985949d1@canonical.com>
+References: <20220317051831.7107-1-rex-bc.chen@mediatek.com>
+ <20220317051831.7107-2-rex-bc.chen@mediatek.com>
+ <e4c85b2d-8546-1740-9f83-d4cf985949d1@canonical.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220323_000620_935131_E2D91683 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20220323_000622_903144_77F28229 
+X-CRM114-Status: GOOD (  12.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,36 +80,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-These series patches add support for PCIe PHY driver on MediaTek chipsets.
+On Thu, 2022-03-17 at 08:20 +0100, Krzysztof Kozlowski wrote:
+> On 17/03/2022 06:18, Rex-BC Chen wrote:
+> > Add aal binding for MT8183.
+> > 
+> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/display/mediatek/mediatek,aal.yaml   | 5
+> > +++--
+> >  1 file changed, 3 insertions(+), 2 deletions(-)
+> > 
+> 
+> 
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+> 
+> 
+> Best regards,
+> Krzysztof
 
-Changes in v4:
-1. Fix no return when calling dev_err_probe.
+Hello Krzysztof,
 
-Changes in v3:
-1. Add introductions for structure members;
-2. Add SoC dependent data;
-3. Dynamically allocate efuse data;
-4. Check return value if it's an -EPROBE_DEFER.
+Thanks for your review.
 
-Changes in v2:
-1. Add specific compatible name;
-2. Read NVMEM data at probe time;
-3. Fix typos.
+Because this patch is not related to MT8186 display, I will drop this
+patch in this series and resend v10.
 
-Jianjun Wang (2):
-  dt-bindings: phy: mediatek: Add YAML schema for PCIe PHY
-  phy: mediatek: Add PCIe PHY driver
+I will send another series to add the disp_aal dt-binding for 8192 with
+this patch.
 
- .../bindings/phy/mediatek,pcie-phy.yaml       |  75 +++++
- drivers/phy/mediatek/Kconfig                  |  11 +
- drivers/phy/mediatek/Makefile                 |   1 +
- drivers/phy/mediatek/phy-mtk-pcie.c           | 272 ++++++++++++++++++
- 4 files changed, 359 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
- create mode 100644 drivers/phy/mediatek/phy-mtk-pcie.c
+I will mail to you in another series.
 
--- 
-2.18.0
+Thanks!
+
+BRs,
+Rex
 
 
 _______________________________________________
