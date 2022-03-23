@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C843C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Mar 2022 07:06:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6788DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Mar 2022 07:28:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nhecQe0/IfL93IvMTgSMuk3ncp3ay4GaygC6pT6JrTs=; b=bZ1fnDIOoR1nF8
-	ghALgtj+ThfA8RvGBlKdcVzRuQGZiehEqLwHphtDU1i7/L1z8wVyYQEsNN9KCU1SKkNJ6NQUxINaJ
-	7bExuRvpv4t86SL47QNr3raYxMehNtHtF/YE5jKZ/PxIBXY1qgK+eEUcJLjTznrJFeEDHN3ax5wPR
-	HvvsCa9F6CeCWskFbU0vZKn+kVX4tGCLbbw8fHPfetXBGBf/3wgcsnkTMTbzrbRus4xwk3Q+Gw/Tr
-	pHrjFeY/VWH4KNzcyucAcXq43tvTRxXjIjJHj8I/l24cJiHqLlTo4IkyiLFw0+3gIPpRebJWU/UoW
-	Hdzh7qZwZS41Ks+Hr5og==;
+	List-Owner; bh=4TzuaKfPSEfg5pLhvZbYHX91G1shFUlztIsraHC4DAY=; b=S/64YB1uvddjuk
+	WxmjBLY5AzRUER8/XcuvgkhGoyPPaZEjfi64tmrkUb3r+ylDZKkSH7s4FoDc1vc2RtoHo6hQU6tbf
+	f6HQMfueCdr/C1GWbYpKKeqFzTGbRLU448Sue6DsYS2BTj+R0RKGm0L2kpgY11iF3tO+VGaRc2/bI
+	DSz3UA6ZjaD1CCEOVA31gN0QbSnMefRdW9al+aDv0RjfeezTHgaXfqNCHgjLVY8Sd2AFjjsOwWgdE
+	3v6xmUdc9728XpBdz687sBI9cXWwrg3wXJRR8e+lllaJb7zO2G93Z6eWQ+lHgAZ2tEO6/Pf3CDXw7
+	LChkzWJy35Y7ZQV/ev9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWv4y-00CuIO-Lr; Wed, 23 Mar 2022 07:06:48 +0000
+	id 1nWvPO-00CzaX-TW; Wed, 23 Mar 2022 07:27:54 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWv4Y-00Cu8R-QQ; Wed, 23 Mar 2022 07:06:24 +0000
-X-UUID: ccd40d7503ab4ddcb9ae3d120a566d55-20220323
-X-UUID: ccd40d7503ab4ddcb9ae3d120a566d55-20220323
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
+ id 1nWvPM-00CzYm-AP; Wed, 23 Mar 2022 07:27:53 +0000
+X-UUID: 2abdf6cce87a45fdaada446204a555dd-20220323
+X-UUID: 2abdf6cce87a45fdaada446204a555dd-20220323
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <trevor.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1455568049; Wed, 23 Mar 2022 00:06:16 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Mar 2022 00:05:23 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 23 Mar 2022 15:05:22 +0800
+ with ESMTP id 1990736411; Wed, 23 Mar 2022 00:27:48 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Mar 2022 00:27:46 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 23 Mar 2022 15:27:39 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 23 Mar 2022 15:05:22 +0800
-Message-ID: <d2b36a358651e60b3d64efc6479a182d027066cb.camel@mediatek.com>
-Subject: Re: [PATCH V9 1/5] dt-bindings: display: mediatek: add aal binding
- for MT8183
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>, <robh+dt@kernel.org>
-CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <jassisinghbrar@gmail.com>, <fparent@baylibre.com>,
- <yongqiang.niu@mediatek.com>, <hsinyi@chromium.org>,
+ Transport; Wed, 23 Mar 2022 15:27:38 +0800
+Message-ID: <f7fa502776ce2d28553238fb10289f07de0a1d77.camel@mediatek.com>
+Subject: Re: [PATCH v3 3/6] ASoC: dt-bindings: mediatek: mt8195: merge
+ mt8195 machine yaml
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: Miles Chen <miles.chen@mediatek.com>
+CC: <aaronyu@google.com>, <alsa-devel@alsa-project.org>,
+ <angelogioacchino.delregno@collabora.com>, <broonie@kernel.org>,
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 23 Mar 2022 15:05:22 +0800
-In-Reply-To: <e4c85b2d-8546-1740-9f83-d4cf985949d1@canonical.com>
-References: <20220317051831.7107-1-rex-bc.chen@mediatek.com>
- <20220317051831.7107-2-rex-bc.chen@mediatek.com>
- <e4c85b2d-8546-1740-9f83-d4cf985949d1@canonical.com>
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <matthias.bgg@gmail.com>, <robh+dt@kernel.org>, <tiwai@suse.com>,
+ <tzungbi@google.com>, <yc.hung@mediatek.com>
+Date: Wed, 23 Mar 2022 15:27:39 +0800
+In-Reply-To: <20220321233045.22156-1-miles.chen@mediatek.com>
+References: <20220321072312.14972-4-trevor.wu@mediatek.com>
+ <20220321233045.22156-1-miles.chen@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220323_000622_903144_77F28229 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20220323_002752_372541_30203134 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,40 +76,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-03-17 at 08:20 +0100, Krzysztof Kozlowski wrote:
-> On 17/03/2022 06:18, Rex-BC Chen wrote:
-> > Add aal binding for MT8183.
-> > 
-> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/display/mediatek/mediatek,aal.yaml   | 5
-> > +++--
-> >  1 file changed, 3 insertions(+), 2 deletions(-)
-> > 
+On Tue, 2022-03-22 at 07:30 +0800, Miles Chen wrote:
+> Hi Trevor,
 > 
+> >  
+> > -title: Mediatek MT8195 with MT6359, RT1019 and RT5682 ASoC sound
+> > card driver
+> > +title: Mediatek MT8195 ASoC sound card driver
 > 
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+> s/Mediatek/MediaTek/
 > 
-> 
-> Best regards,
-> Krzysztof
+> Thanks,
+> Miles
 
-Hello Krzysztof,
+OK. I will update it in v4.
 
-Thanks for your review.
+Thanks,
+Trevor
 
-Because this patch is not related to MT8186 display, I will drop this
-patch in this series and resend v10.
-
-I will send another series to add the disp_aal dt-binding for 8192 with
-this patch.
-
-I will mail to you in another series.
-
-Thanks!
-
-BRs,
-Rex
+> >  
+> >  maintainers:
+> >    - Trevor Wu <trevor.wu@mediatek.com>
+> > @@ -14,7 +14,9 @@ description:
+> >  
+> >  properties:
+> >    compatible:
+> > -    const: mediatek,mt8195_mt6359_rt1019_rt5682
+> > +    enum:
+> > +      - mediatek,mt8195_mt6359_rt1019_rt5682
+> > +      - mediatek,mt8195_mt6359_rt1011_rt5682
+> >  
+> >    model:
+> >      $ref: /schemas/types.yaml#/definitions/string
 
 
 _______________________________________________
