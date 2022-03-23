@@ -4,61 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34B04C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Mar 2022 12:18:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCD76C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Mar 2022 13:10:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gR+bJnX0zRTvmiEr2QLymUlDJ//FSx5+zm16VJ/T5ic=; b=tH0PM+a9eetXgG
-	hm6sdQgTL5HtiT7/Bg3xDv4kzgPGS6zAp9BbTCHGNpNmsRXHfpNmbblRl/46AWxQQ5cGQid6COb0T
-	FzlJnEgERcXznoWKQlOhRweVEauS3ltC7ikDJcwa5I/sSdSShKbj2M1IxWE8/2Xz/RnYS5f0KZd6d
-	jy6l7Z3VqvD9sxBbTHbkaScoxLQuIr+F9bt/TF/6XJihuFnLfDWhfjTBpccUvKLuF1AoJthv0+rKF
-	8SSYOayEQkpoBNO9uX5mMad1vFsqm60YaENVvY2agOFF6uhzK51tu6813dNBkOxbWyBXyZN/XSwif
-	fCKZZENgfoYkymBXWMbQ==;
+	List-Owner; bh=ah0lTooMd6OqnPc6Y5WjTdm+0On5sEpRRUvN87OcNfU=; b=B6Nh+RGavfqsEo
+	kCSucwJPyDJ5379JkCq43i3+oK+hVw3ojYyrjMyXdYvQGJHG6oPtMB/wUgmDuy6Ivtht7r9oREex9
+	4LbaEmCArrF6zYOMhrRSqtbQHSQqD+LQld3mCO+IEOevxOv6jnyaalPG8Z5O3aGNpPg6bexIThI0/
+	8JNnNAE8DM1oRDHCf0j7HKe9G9yiU9XihsFwjEtTWNPSURPFGcr7eOyjBPixyvgBsdDSUq6WWtpnE
+	PZH971HrLroL7TrO682dX+GipCoj8dNSMtmGnPqbi74Wd+eTybb5TBPiCRCAi2EAAy+zt6+CxFtLc
+	hAK6gw9MrBHl1IZhqgIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWzwO-00DbN2-GJ; Wed, 23 Mar 2022 12:18:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nX0l5-00Dgws-Cv; Wed, 23 Mar 2022 13:10:39 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:191:4433::2]
+ helo=sipsolutions.net)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWzwD-00DbLm-H0; Wed, 23 Mar 2022 12:18:06 +0000
-X-UUID: fbf3e6a16f5c4808b8932fb6371c229d-20220323
-X-UUID: fbf3e6a16f5c4808b8932fb6371c229d-20220323
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 336592840; Wed, 23 Mar 2022 05:18:00 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Mar 2022 05:17:23 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Mar 2022 20:17:22 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 23 Mar 2022 20:17:22 +0800
-Message-ID: <be945651bcb531a14d6f264be346642d4438238b.camel@mediatek.com>
-Subject: Re: [PATCH v3, 0/3] Add mt8186 dsi compatoble & Convert 
- dsi_dtbinding to .yaml
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
- <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <jitao.shi@mediatek.com>, <allen-kh.cheng@mediatek.com>
-Date: Wed, 23 Mar 2022 20:17:21 +0800
-In-Reply-To: <1647408934-15775-1-git-send-email-xinlei.lee@mediatek.com>
-References: <1647408934-15775-1-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nX0l2-00DgvJ-O4
+ for linux-mediatek@lists.infradead.org; Wed, 23 Mar 2022 13:10:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=sipsolutions.net; s=mail; h=Content-Transfer-Encoding:MIME-Version:
+ Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+ :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+ Resent-Cc:Resent-Message-ID; bh=Z2yzTyOYASwEuQAelkSipCGrR3PaRyKe2/oJV4xXKLE=; 
+ t=1648041035; x=1649250635; b=Aq2LwJmCfQCg8qvKdqGKvhudCXA6H1JI7BAp6Byff54RwDD
+ FxvReVFFVDXzU+ccmRqauLlbV5NwbzU6JqhvCZsRQYO02K5h1Uft4SiHfRFHaytlI23Liw6XA9dTT
+ LlLQDReUMCXqMSanZ3zSMK9sGqSl8F4L9z1G1KwFMnWcZb8lagZ3YkgLVOBF+/Coxd3FJjTDfrZdn
+ 0fbvuRonGkTyI4SM9l+E+4ZJhlwTAnkje6kqffc7P6mRpuU2/Wyts56G0K0h35gR3b2INe5CRur98
+ YHxPf3LxmTQTWNtl005TMy9Rnc/s+WWSmLHkotX5ZhRrM077zTAN7QzjqXwk1UbQ==;
+Received: by sipsolutions.net with esmtpsa
+ (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+ (Exim 4.95) (envelope-from <johannes@sipsolutions.net>)
+ id 1nX0ku-00H5rF-Uj; Wed, 23 Mar 2022 14:10:29 +0100
+Message-ID: <98a39edef048fef625cdec32030d62699f89d9e8.camel@sipsolutions.net>
+Subject: Re: [PATCH] mac80211: adjust the replace_state of
+ ieee80211_find_chanctx()
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Date: Wed, 23 Mar 2022 14:10:28 +0100
+In-Reply-To: <40aabb3e10302f1d7da92b7a4eb46577d5ed8e05.1647641256.git.ryder.lee@mediatek.com>
+References: <40aabb3e10302f1d7da92b7a4eb46577d5ed8e05.1647641256.git.ryder.lee@mediatek.com>
+User-Agent: Evolution 3.42.4 (3.42.4-1.fc35) 
 MIME-Version: 1.0
-X-MTK: N
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220323_051805_578895_D7582D19 
-X-CRM114-Status: GOOD (  13.10  )
+X-CRM114-CacheID: sfid-20220323_061036_817082_B7FE9564 
+X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,44 +72,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-03-16 at 13:35 +0800, xinlei.lee@mediatek.com wrote:
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
-> 
-> Changes since v2:
-> 1. Added #address-cells, #size-cells two properties.
-> 2. Fix some formatting issues.
-> 
-> Changes since v1:
-> 1. Delete the mediatek,dsi.txt & Add the mediatek,dsi.yaml.
-> 2. Ignore the Move the getting bridge node function patch for V1.
-> 
-> Xinlei Lee (3):
->   dt-bindings: display: mediatek: dsi: Convert dsi_dtbinding to .yaml
->   dt-bindings: display: mediatek: dsi: Add compatible for MediaTek
->     MT8186
->   drm/mediatek: Add mt8186 dsi compatible to mtk_dsi.c
-> 
->  .../display/mediatek/mediatek,dsi.txt         | 62 ------------
->  .../display/mediatek/mediatek,dsi.yaml        | 97
-> +++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_dsi.c            |  8 ++
->  3 files changed, 105 insertions(+), 62 deletions(-)
->  delete mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
->  create mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
+On Sat, 2022-03-19 at 06:18 +0800, Ryder Lee wrote:
+> We observe that the condition of chanctx could not be back to
+> IEEE80211_CHANCTX_REPLACE_NONE occasionally while STA connection.
 
-Hello Xinlei,
+Not sure I parse this correctly, can you elaborate?
 
-I think you should cc devicetree@vger.kernel.org if you have binding
-patches.
-Please send next version with it.
+> In this case the state could be IEEE80211_CHANCTX_REPLACE_OTHER, which
+> fails the check and then creates another chanctx that leads to the next
+> round of chan_switch failure in cfg80211_check_combinations().
 
-Thanks.
+But if it's REPLACES_OTHER (note your typo), then it's not yet
+registered properly or anything.
 
-BRs,
-Rex
+> So, modify state to just rule out IEEE80211_CHANCTX_WILL_BE_REPLACED.
 
+Therefore, that really doesn't seem right.
+
+A chanctx with IEEE80211_CHANCTX_REPLACES_OTHER needs to get used via
+ieee80211_vif_use_reserved_switch().
+
+johannes
 
 _______________________________________________
 Linux-mediatek mailing list
