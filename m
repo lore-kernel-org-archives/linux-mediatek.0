@@ -4,62 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9097C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Mar 2022 16:55:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BD67C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Mar 2022 17:10:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mcktFyVyfkMallYSsXbxS6pnvlrGH5QDGALVxLMiU4U=; b=CkC5xeqyQOdx1+
-	VmUhuJAbBGYtQLQpApfytfMXxsRMfb5TFXZ73ClMzorpBPQ7H4UStx4xJYd4nDC7fvJB7ze4k72CA
-	tB6JHS2DxBvl44e9rJBaxG9w7mIApB+lkcha3LhUBnBrkS4s+qsvc48XiNIWyxkYYvbnoCoRsZjOk
-	6rl1+hpRmLH95XFEPplFsr8KU52raZP0UbpxgV9ObAE2kcwi4NdsEr5/4ciygbI7v5P6i6Ayaucla
-	tLrX2E/tfUMORAcOgauj+jb6Dk1PqLkmau3NLm6zlEvLx4OTmSI+d9+6f9b1eDF3dBR8x49FEgdQ3
-	viV2VjPRcPQRNxTAEr7A==;
+	List-Owner; bh=5FaEIShu0HZd44DzCqaf2oP0IbymxRrKYuI1TYAWF5w=; b=wVDKYVp59HX1aD
+	JOzNP2geOz0q5Qutb+61rLqzgAN3gHuCvZaNNRt+OqPckjlgLOM03YEs0WbRJIfgcXLDaK2S9+Qee
+	iAszZHwQXIrPL2W0cE3m3EYKVj1qx1giAfv4sD6I6fdtNInsfAcXWABAiFfriJKJ/bKhoxUmjwhr3
+	P3TVjMpwwmj9byRQc77hLznOqemQ5+z7jq0H4Nf1p2EaON3uOQvrlOFKJyl7PvstqmdJxwG6jCOji
+	ha6DNabh/PUokD5flAYFVzVolL1FmLNB9EVLvNQ50/RyfNCPHSdjuqF1XvhkmPEdnu5xV4uKfVtke
+	NWS69Ie0U/3LXryfeTww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nX4GS-00EJuJ-He; Wed, 23 Mar 2022 16:55:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nX4V4-00EN8B-6B; Wed, 23 Mar 2022 17:10:22 +0000
+Received: from mail-oi1-f178.google.com ([209.85.167.178])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nX4GP-00EJsJ-7b; Wed, 23 Mar 2022 16:55:15 +0000
-X-UUID: d5d5671a6682474bb12b215df79e6887-20220323
-X-UUID: d5d5671a6682474bb12b215df79e6887-20220323
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 790083513; Wed, 23 Mar 2022 09:55:07 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Mar 2022 09:45:05 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 24 Mar 2022 00:45:03 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 24 Mar 2022 00:45:02 +0800
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: <broonie@kernel.org>, <robh+dt@kernel.org>, <tzungbi@google.com>
-CC: <angelogioacchino.delregno@collabora.com>, <aaronyu@google.com>,
- <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>, <linmq006@gmail.com>,
- <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
- <jiaxin.yu@mediatek.com>
-Subject: [v6 2/4] ASoC: mediatek: mt8192: refactor for I2S3 DAI link of speaker
-Date: Thu, 24 Mar 2022 00:44:40 +0800
-Message-ID: <20220323164442.921-3-jiaxin.yu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220323164442.921-1-jiaxin.yu@mediatek.com>
-References: <20220323164442.921-1-jiaxin.yu@mediatek.com>
+ id 1nX4Ul-00EN4D-Jw; Wed, 23 Mar 2022 17:10:04 +0000
+Received: by mail-oi1-f178.google.com with SMTP id w127so2254437oig.10;
+ Wed, 23 Mar 2022 10:10:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=7hKrd5H7B7WvqIMdiaPvuwOv1aT0mWRSH/OSMprLgR4=;
+ b=FEc3vSHipyecaVgkYLmzAOb0H9EM4zzfUQBV/Pr8+/1fiJLyoO1uNrFIYRyd6x3Xwd
+ cSRpZFdK3thWwq96/on0quOjOeuN9DGuEprEEXvltJAmEdfIrcVg9hqbm1se0FR7lrMg
+ XaPqgWPuQumP7gKWIkHbOigeqma5hDTMKnk6ZZDIY8teyIkZdXLOe3sHUNbspJLhU22c
+ B4cMWffZAK6bINQWJ7F8YlbORoX/BHKP9zbEsNv3jCxb+0BiP2JDvk+BXxngnkBoOiAE
+ ShuGx4DpGcVP1+CEd+ofBalDziCS9tszieg5TeNFoSgzkc3/nrbAkB96vB2FzT0eiItn
+ 3Zlg==
+X-Gm-Message-State: AOAM533ngc1zFi2WLc9Y7uPfFwgKBM5CEGivKq+G9KNaguLwJrCSxpDf
+ cVxoU8xlG2+E9BgKVPaCNw==
+X-Google-Smtp-Source: ABdhPJx8jPlgF405kvPPYl2lYEG107noZH9leUHMGog8OncHx0ZtDujB9+uS/h2L5Tca9Pa2VoBzyg==
+X-Received: by 2002:a54:400c:0:b0:2ef:8951:a271 with SMTP id
+ x12-20020a54400c000000b002ef8951a271mr535618oie.267.1648055401409; 
+ Wed, 23 Mar 2022 10:10:01 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ 11-20020a05687013cb00b000dd9b5dd71csm184164oat.56.2022.03.23.10.09.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 23 Mar 2022 10:10:00 -0700 (PDT)
+Received: (nullmailer pid 94890 invoked by uid 1000);
+ Wed, 23 Mar 2022 17:09:59 -0000
+Date: Wed, 23 Mar 2022 12:09:59 -0500
+From: Rob Herring <robh@kernel.org>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: aaronyu@google.com, trevor.wu@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, robh+dt@kernel.org,
+ alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, broonie@kernel.org, tzungbi@google.com,
+ devicetree@vger.kernel.org, angelogioacchino.delregno@collabora.com,
+ matthias.bgg@gmail.com, julianbraha@gmail.com,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [v3 02/19] dt-bindings: mediatek: mt6358: add new compatible for
+ using mt6366
+Message-ID: <YjtUZ0gbt/KZ4WKH@robh.at.kernel.org>
+References: <20220313151023.21229-1-jiaxin.yu@mediatek.com>
+ <20220313151023.21229-3-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20220313151023.21229-3-jiaxin.yu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220323_095513_317536_2F7EC864 
-X-CRM114-Status: GOOD (  17.47  )
+X-CRM114-CacheID: sfid-20220323_101003_709676_32C479B3 
+X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,192 +88,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8192 platform will use rt1015 or rt105p codec, so through the
-snd_soc_of_get_dai_link_codecs() to complete the configuration
-of dai_link's codecs.
+On Sun, 13 Mar 2022 23:10:06 +0800, Jiaxin Yu wrote:
+> Add new compatible string "mediatek,mt6366-sound" for using mt6366.
+> 
+> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/sound/mt6358.txt | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
----
- .../mt8192/mt8192-mt6359-rt1015-rt5682.c      | 108 ++++++++++--------
- 1 file changed, 59 insertions(+), 49 deletions(-)
-
-diff --git a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
-index ee91569c0911..362bd6853e5e 100644
---- a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
-+++ b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
-@@ -604,17 +604,9 @@ SND_SOC_DAILINK_DEFS(i2s2,
- 		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
- 		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
- 
--SND_SOC_DAILINK_DEFS(i2s3_rt1015,
-+SND_SOC_DAILINK_DEFS(i2s3,
- 		     DAILINK_COMP_ARRAY(COMP_CPU("I2S3")),
--		     DAILINK_COMP_ARRAY(COMP_CODEC(RT1015_DEV0_NAME,
--						   RT1015_CODEC_DAI),
--					COMP_CODEC(RT1015_DEV1_NAME,
--						   RT1015_CODEC_DAI)),
--		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
--
--SND_SOC_DAILINK_DEFS(i2s3_rt1015p,
--		     DAILINK_COMP_ARRAY(COMP_CPU("I2S3")),
--		     DAILINK_COMP_ARRAY(COMP_CODEC("rt1015p", "HiFi")),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()),
- 		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
- 
- SND_SOC_DAILINK_DEFS(i2s5,
-@@ -929,6 +921,7 @@ static struct snd_soc_dai_link mt8192_mt6359_dai_links[] = {
- 		.dpcm_playback = 1,
- 		.ignore_suspend = 1,
- 		.be_hw_params_fixup = mt8192_i2s_hw_params_fixup,
-+		SND_SOC_DAILINK_REG(i2s3),
- 	},
- 	{
- 		.name = "I2S5",
-@@ -1100,55 +1093,64 @@ static struct snd_soc_card mt8192_mt6359_rt1015p_rt5682_card = {
- 	.num_dapm_routes = ARRAY_SIZE(mt8192_mt6359_rt1015p_rt5682_routes),
- };
- 
-+static int mt8192_mt6359_card_set_be_link(struct snd_soc_card *card,
-+					  struct snd_soc_dai_link *link,
-+					  struct device_node *node,
-+					  char *link_name)
-+{
-+	int ret;
-+
-+	if (node && strcmp(link->name, link_name) == 0) {
-+		ret = snd_soc_of_get_dai_link_codecs(card->dev, node, link);
-+		if (ret < 0) {
-+			dev_err_probe(card->dev, ret, "get dai link codecs fail\n");
-+			return ret;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- static int mt8192_mt6359_dev_probe(struct platform_device *pdev)
- {
- 	struct snd_soc_card *card;
--	struct device_node *platform_node, *hdmi_codec;
-+	struct device_node *platform_node, *hdmi_codec, *speaker_codec;
- 	int ret, i;
- 	struct snd_soc_dai_link *dai_link;
- 	struct mt8192_mt6359_priv *priv;
- 
--	platform_node = of_parse_phandle(pdev->dev.of_node,
--					 "mediatek,platform", 0);
--	if (!platform_node) {
--		dev_err(&pdev->dev, "Property 'platform' missing or invalid\n");
-+	card = (struct snd_soc_card *)of_device_get_match_data(&pdev->dev);
-+	if (!card)
- 		return -EINVAL;
-+	card->dev = &pdev->dev;
-+
-+	platform_node = of_parse_phandle(pdev->dev.of_node, "mediatek,platform", 0);
-+	if (!platform_node) {
-+		ret = -EINVAL;
-+		dev_err_probe(&pdev->dev, ret, "Property 'platform' missing or invalid\n");
-+		goto err_platform_node;
- 	}
- 
--	card = (struct snd_soc_card *)of_device_get_match_data(&pdev->dev);
--	if (!card) {
-+	hdmi_codec = of_parse_phandle(pdev->dev.of_node, "mediatek,hdmi-codec", 0);
-+	if (!hdmi_codec) {
- 		ret = -EINVAL;
--		goto put_platform_node;
-+		dev_err_probe(&pdev->dev, ret, "Property 'hdmi-codec' missing or invalid\n");
-+		goto err_hdmi_codec;
- 	}
--	card->dev = &pdev->dev;
- 
--	hdmi_codec = of_parse_phandle(pdev->dev.of_node,
--				      "mediatek,hdmi-codec", 0);
-+	speaker_codec = of_get_child_by_name(pdev->dev.of_node, "speaker-codec");
-+	if (!speaker_codec) {
-+		ret = -EINVAL;
-+		dev_err_probe(&pdev->dev, ret, "Property 'speaker_codec' missing or invalid\n");
-+		goto err_speaker_codec;
-+	}
- 
- 	for_each_card_prelinks(card, i, dai_link) {
--		if (strcmp(dai_link->name, "I2S3") == 0) {
--			if (card == &mt8192_mt6359_rt1015_rt5682_card) {
--				dai_link->ops = &mt8192_rt1015_i2s_ops;
--				dai_link->cpus = i2s3_rt1015_cpus;
--				dai_link->num_cpus =
--					ARRAY_SIZE(i2s3_rt1015_cpus);
--				dai_link->codecs = i2s3_rt1015_codecs;
--				dai_link->num_codecs =
--					ARRAY_SIZE(i2s3_rt1015_codecs);
--				dai_link->platforms = i2s3_rt1015_platforms;
--				dai_link->num_platforms =
--					ARRAY_SIZE(i2s3_rt1015_platforms);
--			} else if (card == &mt8192_mt6359_rt1015p_rt5682_card) {
--				dai_link->cpus = i2s3_rt1015p_cpus;
--				dai_link->num_cpus =
--					ARRAY_SIZE(i2s3_rt1015p_cpus);
--				dai_link->codecs = i2s3_rt1015p_codecs;
--				dai_link->num_codecs =
--					ARRAY_SIZE(i2s3_rt1015p_codecs);
--				dai_link->platforms = i2s3_rt1015p_platforms;
--				dai_link->num_platforms =
--					ARRAY_SIZE(i2s3_rt1015p_platforms);
--			}
-+		ret = mt8192_mt6359_card_set_be_link(card, dai_link, speaker_codec, "I2S3");
-+		if (ret) {
-+			dev_err_probe(&pdev->dev, ret, "%s set speaker_codec fail\n",
-+				      dai_link->name);
-+			goto err_probe;
- 		}
- 
- 		if (hdmi_codec && strcmp(dai_link->name, "TDM") == 0) {
-@@ -1156,6 +1158,9 @@ static int mt8192_mt6359_dev_probe(struct platform_device *pdev)
- 			dai_link->ignore = 0;
- 		}
- 
-+		if (strcmp(dai_link->codecs[0].dai_name, RT1015_CODEC_DAI) == 0)
-+			dai_link->ops = &mt8192_rt1015_i2s_ops;
-+
- 		if (!dai_link->platforms->name)
- 			dai_link->platforms->of_node = platform_node;
- 	}
-@@ -1163,22 +1168,27 @@ static int mt8192_mt6359_dev_probe(struct platform_device *pdev)
- 	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv) {
- 		ret = -ENOMEM;
--		goto put_hdmi_codec;
-+		goto err_probe;
- 	}
- 	snd_soc_card_set_drvdata(card, priv);
- 
- 	ret = mt8192_afe_gpio_init(&pdev->dev);
- 	if (ret) {
--		dev_err(&pdev->dev, "init gpio error %d\n", ret);
--		goto put_hdmi_codec;
-+		dev_err_probe(&pdev->dev, ret, "%s init gpio error\n", __func__);
-+		goto err_probe;
- 	}
- 
- 	ret = devm_snd_soc_register_card(&pdev->dev, card);
-+	if (ret)
-+		dev_err_probe(&pdev->dev, ret, "%s snd_soc_register_card fail\n", __func__);
- 
--put_hdmi_codec:
-+err_probe:
-+	of_node_put(speaker_codec);
-+err_speaker_codec:
- 	of_node_put(hdmi_codec);
--put_platform_node:
-+err_hdmi_codec:
- 	of_node_put(platform_node);
-+err_platform_node:
- 	return ret;
- }
- 
--- 
-2.18.0
-
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
