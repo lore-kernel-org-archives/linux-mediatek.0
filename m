@@ -4,59 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BCBAC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Mar 2022 10:31:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 874EFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Mar 2022 10:42:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pN5i02WJ64ZW/jbjeDoAiEqVWeqraOAlRCcvPFxqweg=; b=De+bDkzkpgbqIn
-	iZ40/Q4rsOTTSmfLWQQSfW8xQ837IZ6GhYUV12AVNm33AC+Y5lczOALBUcHkjJEuvFCoBOVhREcTr
-	pI7Z+rPFl/ykiRpkGpvDrSWQn2/+d5eqk0DE9JKTXqEZVThy/pvpdC/dNeV25913u3jtM97Qee2GH
-	rkGbsJIPCEagsn59IXbtdwqER8KktOscuruSzSQOgaU/MotWRkzh/TxeSIQubpnKLNtg5CxcBSAID
-	9P24am0EhZZRMnMl2AhSJrA9qVPedUToA0YCztbv8Of5JhT3QgU7gQ4goHu0harNAWH6FvTB3dCXB
-	vCQ3d4gTI70rtJGaIDEg==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BmmLnsuAlrZpOPVU+GsHENUp9TYldNRPmZPvLgoeBNU=; b=TXmWwrzpd9kxRi
+	am+h8rG8zaRWXir+A3xuvSNptx85kmdI345HaF8sLx+EY4MCF/vKeph2aJdnWk4Hd3vyc19906uM1
+	6fnBsDIRq2aV81WF01omFxmh7aNrO6FxzC9+td72MpbR7BtUdnh5KcWHfMI9QOZHT5cBIYz/Giyvd
+	5fhe8D69iGoV/v7zLJw6ECTtiARZ4lrDQRaOGWZCZjXRsMrKkE7g2Solj75GOLBFgkSNpduhPUz64
+	3VtPIkwYIDVc4t4Bx3u9pg1rg5rRAiHjjc0Q331HAy2PLMBCne/DVoow4/abGWJDybYr4q6X5Ioh7
+	wMY9vm1wlWEmJmN4gvpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWyHC-00DKMh-5B; Wed, 23 Mar 2022 10:31:38 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWyH7-00DKLm-E1; Wed, 23 Mar 2022 10:31:36 +0000
-X-UUID: e8958b5b1f794083978199f39ff629a8-20220323
-X-UUID: e8958b5b1f794083978199f39ff629a8-20220323
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 233098754; Wed, 23 Mar 2022 03:31:26 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Mar 2022 03:23:16 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Mar 2022 18:23:15 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 23 Mar 2022 18:23:15 +0800
-Message-ID: <314a9839609898933bf19a6d29b83807391845af.camel@mediatek.com>
-Subject: Re: [PATCH v2] soc: mediatek: mmsys: Add sw0_rst_offset for MT8192
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-CC: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "kernel@collabora.com" <kernel@collabora.com>
-Date: Wed, 23 Mar 2022 18:23:15 +0800
-In-Reply-To: <20220323091932.10648-1-angelogioacchino.delregno@collabora.com>
-References: <20220323091932.10648-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-MIME-Version: 1.0
-X-MTK: N
+	id 1nWyRM-00DMEF-5n; Wed, 23 Mar 2022 10:42:08 +0000
+Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nWyRI-00DMBl-DH
+ for linux-mediatek@lists.infradead.org; Wed, 23 Mar 2022 10:42:06 +0000
+Received: from smtpclient.apple (p5b3d2183.dip0.t-ipconnect.de [91.61.33.131])
+ by mail.holtmann.org (Postfix) with ESMTPSA id 9BA26CED32;
+ Wed, 23 Mar 2022 11:41:53 +0100 (CET)
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.80.82.1.1\))
+Subject: Re: [PATCH] Bluetooth: mt7921s: Fix the incorrect pointer check
+From: Marcel Holtmann <marcel@holtmann.org>
+In-Reply-To: <5d56b2a23e6e793c64ed98890329ce1beb010ce0.1647991506.git.objelf@gmail.com>
+Date: Wed, 23 Mar 2022 11:41:53 +0100
+Cc: Johan Hedberg <johan.hedberg@gmail.com>, Soul.Huang@mediatek.com,
+ YN.Chen@mediatek.com, Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com,
+ Deren.Wu@mediatek.com, km.lin@mediatek.com, robin.chiu@mediatek.com,
+ Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
+ ted.huang@mediatek.com, Eric.Liang@mediatek.com, Stella.Chang@mediatek.com,
+ Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com,
+ frankgor@google.com, abhishekpandit@google.com, michaelfsun@google.com,
+ mcchou@chromium.org, shawnku@google.com, linux-bluetooth@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Yake Yang <yake.yang@mediatek.com>
+Message-Id: <6F03EA00-35D0-4E43-A8BD-8A3618C87695@holtmann.org>
+References: <5d56b2a23e6e793c64ed98890329ce1beb010ce0.1647991506.git.objelf@gmail.com>
+To: Sean Wang <sean.wang@mediatek.com>
+X-Mailer: Apple Mail (2.3696.80.82.1.1)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220323_033133_489616_DEAE0D5D 
-X-CRM114-Status: GOOD (  17.36  )
+X-CRM114-CacheID: sfid-20220323_034204_645035_5F9498BF 
+X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,44 +67,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-03-23 at 17:19 +0800, AngeloGioacchino Del Regno wrote:
-> MT8192 has the same sw0 reset offset as MT8186: add the parameter
-> to be able to use mmsys as a reset controller for managing at
-> least the DSI reset line.
+Hi Sean,
+
+> Fix the incorrect pointer check on ven_data.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
+> Fixes: f41b91fa1783 ("Bluetooth: mt7921s: Add .btmtk_get_codec_config_data")
+> Co-developed-by: Yake Yang <yake.yang@mediatek.com>
+> Signed-off-by: Yake Yang <yake.yang@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
-> 
-> v2: Change the offset to 0x160 (as defined for MT8186). Thanks, Rex-
-> BC!
-> 
+> drivers/bluetooth/btmtksdio.c | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
 
-You are welcome!
+patch has been applied to bluetooth-next tree.
 
-Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Regards
 
->  drivers/soc/mediatek/mtk-mmsys.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.c
-> b/drivers/soc/mediatek/mtk-mmsys.c
-> index 4fc4c2c9ea20..f69521fabcce 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.c
-> +++ b/drivers/soc/mediatek/mtk-mmsys.c
-> @@ -70,6 +70,7 @@ static const struct mtk_mmsys_driver_data
-> mt8192_mmsys_driver_data = {
->  	.clk_driver = "clk-mt8192-mm",
->  	.routes = mmsys_mt8192_routing_table,
->  	.num_routes = ARRAY_SIZE(mmsys_mt8192_routing_table),
-> +	.sw0_rst_offset = MT8186_MMSYS_SW0_RST_B,
->  };
->  
->  static const struct mtk_mmsys_driver_data mt8365_mmsys_driver_data =
-> {
-> -- 
-> 2.35.1
-> 
+Marcel
 
 
 _______________________________________________
