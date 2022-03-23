@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2EC7C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Mar 2022 15:23:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18928C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Mar 2022 15:24:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MPIQE8B+aGip676QZPN8Nla/PuXbEbpjmOqR7e1BWpg=; b=J9sR/m790JioWj
-	LxCAT4gQvOORecc33LIjzzZ5XCp3HNkYPrsOAVp7ivQUzHkQV27lr93h9W+DO9rawGGKBb2CIAvlN
-	NRSxUk/5vVJMBqvu4EQOr+9wVyYpGR3kS6fljmtule//I/Fu9z2veiGMTSCKJGIUth5DmpJCKyHXD
-	LraerrgkdJEdPSVr1DtWcWUZWsyDJ2XxLPux3M/ej0a3qkgDExOXHWQgvzJjc5bA2D9bkwG3Ppe2A
-	95B2l76zPpuWAorpbFCUvSkW6UPdtH4dZ14P+aaITpS4+UGsOr9cI1K0xKMWPDuciOqSTOIiM8YOB
-	RX6eKnIb0kIpvTq9QuKA==;
+	List-Owner; bh=ZqO4cOZEU1CEiZWGVCGk/Tz594QT+suqIv6kcOnWrV8=; b=mQAAPnTtXJVW/F
+	aZ0OuIJqOkRDSe/DjXFf8i/g1Cw5vrVJ+luFPtWcoXC9XE5FiJPiyKAgDINUNxFP7ExEy8z1Q4qG/
+	lOWV5aiuezDkYgXxAX2CBt8siPH26MlM3HLYgTArULwj8AYcpWCk+E8Efxdax4nLX5hNVoB/9MSVl
+	nEN+C6P0za2ppE9h7VD4f3wydsPfMO71FprbTtWP0xyQrKx1vXw3vrk2iJjXr8NYRMLPzA1UKEXFc
+	PjECzSx5ubIbl8kbzDIk5J92lQTNdGqTK9bfNAZfeUPiSxp/i6nTFPED2of+YPQsuN2TJdAZlafVm
+	uWVRUhbdhTVpogfA7Vwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nX2px-00E4x3-IY; Wed, 23 Mar 2022 15:23:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nX2qM-00E59z-Qf; Wed, 23 Mar 2022 15:24:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nX2pO-00E4jW-6Y; Wed, 23 Mar 2022 15:23:15 +0000
-X-UUID: 8d0e4e6fbe9b42aca6bca4af67bc5772-20220323
-X-UUID: 8d0e4e6fbe9b42aca6bca4af67bc5772-20220323
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ id 1nX2pQ-00E4k6-B9; Wed, 23 Mar 2022 15:23:19 +0000
+X-UUID: 4b233885bba2430d8f1e5ec0c8ee771d-20220323
+X-UUID: 4b233885bba2430d8f1e5ec0c8ee771d-20220323
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <mark-pk.tsai@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 666822239; Wed, 23 Mar 2022 08:23:06 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 47443145; Wed, 23 Mar 2022 08:23:05 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Mar 2022 08:23:04 -0700
+ 15.0.1497.2; Wed, 23 Mar 2022 08:23:03 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 23 Mar 2022 23:23:03 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Mar 2022 23:23:01 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 23 Mar 2022 23:23:02 +0800
+ Frontend Transport; Wed, 23 Mar 2022 23:23:01 +0800
 From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 To: <rostedt@goodmis.org>, <mingo@redhat.com>
 CC: <matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <mark-pk.tsai@mediatek.com>, <yj.chiang@mediatek.com>
-Subject: [PATCH v3 2/2] tracing: make tracer_init_tracefs initcall asynchronous
-Date: Wed, 23 Mar 2022 23:22:57 +0800
-Message-ID: <20220323152257.7871-3-mark-pk.tsai@mediatek.com>
+Subject: [PATCH v3 1/2] tracing: Avoid adding tracer option before
+ update_tracer_options
+Date: Wed, 23 Mar 2022 23:22:56 +0800
+Message-ID: <20220323152257.7871-2-mark-pk.tsai@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220323152257.7871-1-mark-pk.tsai@mediatek.com>
 References: <20220323152257.7871-1-mark-pk.tsai@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220323_082314_291012_FB59BF47 
-X-CRM114-Status: GOOD (  15.55  )
+X-CRM114-CacheID: sfid-20220323_082316_471998_7BFB0CEB 
+X-CRM114-Status: GOOD (  12.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,96 +72,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Move trace_eval_init() to subsys_initcall to make it start
-earlier.
-And to avoid tracer_init_tracefs being blocked by
-trace_event_sem which trace_eval_init() hold [1],
-queue tracer_init_tracefs() to eval_map_wq to let
-the two works being executed sequentially.
+To prepare for support asynchronous tracer_init_tracefs initcall,
+avoid calling create_trace_option_files before __update_tracer_options.
+Otherwise, create_trace_option_files will show warning because
+some tracers in trace_types list are already in tr->topts.
 
-It can speed up the initialization of kernel as result
-of making tracer_init_tracefs asynchronous.
+For example, hwlat_tracer call register_tracer in late_initcall,
+and global_trace.dir is already created in tracing_init_dentry,
+hwlat_tracer will be put into tr->topts.
+Then if the __update_tracer_options is executed after hwlat_tracer
+registered, create_trace_option_files find that hwlat_tracer is
+already in tr->topts.
 
-On my arm64 platform, it reduce ~20ms of 125ms which total
-time do_initcalls spend.
-
-[1]: https://lore.kernel.org/r/68d7b3327052757d0cd6359a6c9015a85b437232.camel@pengutronix.de
+Link: https://lore.kernel.org/lkml/20220322133339.GA32582@xsang-OptiPlex-9020/
+Reported-by: kernel test robot <oliver.sang@intel.com>
 Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 ---
- kernel/trace/trace.c | 31 +++++++++++++++++++++----------
- 1 file changed, 21 insertions(+), 10 deletions(-)
+ kernel/trace/trace.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/kernel/trace/trace.c b/kernel/trace/trace.c
-index 85ec758c4455..2974ae056068 100644
+index eb44418574f9..85ec758c4455 100644
 --- a/kernel/trace/trace.c
 +++ b/kernel/trace/trace.c
-@@ -9571,6 +9571,7 @@ extern struct trace_eval_map *__stop_ftrace_eval_maps[];
- 
- static struct workqueue_struct *eval_map_wq __initdata;
- static struct work_struct eval_map_work __initdata;
-+static struct work_struct tracerfs_init_work __initdata;
- 
- static void __init eval_map_work_func(struct work_struct *work)
- {
-@@ -9596,6 +9597,8 @@ static int __init trace_eval_init(void)
- 	return 0;
+@@ -6317,12 +6317,18 @@ static void tracing_set_nop(struct trace_array *tr)
+ 	tr->current_trace = &nop_trace;
  }
  
-+subsys_initcall(trace_eval_init);
++static bool tracer_options_updated;
 +
- static int __init trace_eval_sync(void)
+ static void add_tracer_options(struct trace_array *tr, struct tracer *t)
  {
- 	/* Make sure the eval map updates are finished */
-@@ -9678,15 +9681,8 @@ static struct notifier_block trace_module_nb = {
- };
- #endif /* CONFIG_MODULES */
+ 	/* Only enable if the directory has been created already. */
+ 	if (!tr->dir)
+ 		return;
  
--static __init int tracer_init_tracefs(void)
-+static __init void tracer_init_tracefs_work_func(struct work_struct *work)
- {
--	int ret;
--
--	trace_access_lock_init();
--
--	ret = tracing_init_dentry();
--	if (ret)
--		return 0;
- 
- 	event_trace_init();
- 
-@@ -9708,8 +9704,6 @@ static __init int tracer_init_tracefs(void)
- 	trace_create_file("saved_tgids", TRACE_MODE_READ, NULL,
- 			NULL, &tracing_saved_tgids_fops);
- 
--	trace_eval_init();
--
- 	trace_create_eval_file(NULL);
- 
- #ifdef CONFIG_MODULES
-@@ -9724,6 +9718,23 @@ static __init int tracer_init_tracefs(void)
- 	create_trace_instances(NULL);
- 
- 	update_tracer_options(&global_trace);
-+}
++	/* Only create trace option files after update_tracer_options finish */
++	if (!tracer_options_updated)
++		return;
 +
-+static __init int tracer_init_tracefs(void)
-+{
-+	int ret;
-+
-+	trace_access_lock_init();
-+
-+	ret = tracing_init_dentry();
-+	if (ret)
-+		return 0;
-+
-+	INIT_WORK(&tracerfs_init_work, tracer_init_tracefs_work_func);
-+	if (!eval_map_wq)
-+		tracer_init_tracefs_work_func(&tracerfs_init_work);
-+	else
-+		queue_work(eval_map_wq, &tracerfs_init_work);
- 
- 	return 0;
+ 	create_trace_option_files(tr, t);
  }
+ 
+@@ -9133,6 +9139,7 @@ static void update_tracer_options(struct trace_array *tr)
+ {
+ 	mutex_lock(&trace_types_lock);
+ 	__update_tracer_options(tr);
++	tracer_options_updated = true;
+ 	mutex_unlock(&trace_types_lock);
+ }
+ 
 -- 
 2.18.0
 
