@@ -4,67 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BB7BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Mar 2022 12:59:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7569EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Mar 2022 13:26:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zqmukgixVaGlb9oVT/SQqCnyGggikaHLIVUOVLbbWpQ=; b=HVQAhFGjwlUcM/
-	3q0RvroOTEbQHt4qu71D2hi/53k+l/nCMM7PKAJnu5PaTgVzICMKQ6zmRxj6AFKDGwE7HM0kTCEKH
-	foglyD1PuJLbKg/Y6KYAACH9g+dX5DmMrp0OLF+ecFOKdfu0Pv9GqOtpKp3Yac3hsxbiFtzDUt85o
-	pKvPt/yVOBzLh9mK8bmkhKytRPBHcA/3NUpSfnlc8kU6/3P52DkpZ3pusX5qfH6DC0VsNgKanhYFq
-	138Oww/UG83RlpZgq+OVSCPY+iJHQ7aB9CEQI896bxQP7aZ+Z9ZrPvGESMLmD7ZSpDi7lHa7C9V/t
-	4ixNxSRrGvVt8KOEK7VQ==;
+	List-Owner; bh=R7g8ntlzN5osqkTB8p/p4jn+PkucZbXKwKI+eI4bzd4=; b=3f7aUmQtTXu0a9
+	IJuBYTe9w9fWHfLLyE7sTpX/Mtq+w+HugNq7KfjyPcV6FSRkchc264tN2Kz5Sm19EJdW7BnmIIAZn
+	BURttykY6UM7YPi9m09ZBFvaMVIMalfYh82DP6AEOpNDemm3hcPGcbYGua8JPc71YOok4C2xihC8h
+	AvxTVrzDKbe0K18Mcfr7uNsJMHsRE8qxdc0c+k1OBEXujLqX0iW7YTL/sPxW3oLSsmYJwVPLkh0st
+	s5Fk92EVPFy1S0xvs6RJeXWdYS3E4Ac7XG48aSl/r7sgDGMCxnX5fRUy6atIHCU7jK4inw0jmWBCm
+	S0+/MH5QLs73V/mCb2aQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nXN3M-00GfIj-OE; Thu, 24 Mar 2022 12:59:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nXNTh-00GhnP-Os; Thu, 24 Mar 2022 13:26:13 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nXN3B-00GfGg-4O; Thu, 24 Mar 2022 12:58:50 +0000
-X-UUID: 8ae9821d8a9e40ef9c6522d8180443a3-20220324
-X-UUID: 8ae9821d8a9e40ef9c6522d8180443a3-20220324
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <lecopzer.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1679438708; Thu, 24 Mar 2022 05:58:41 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Mar 2022 05:55:54 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Mar 2022 20:55:51 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 24 Mar 2022 20:55:51 +0800
-From: Lecopzer Chen <lecopzer.chen@mediatek.com>
-To: <pmladek@suse.com>
-CC: <acme@kernel.org>, <akpm@linux-foundation.org>,
- <alexander.shishkin@linux.intel.com>, <catalin.marinas@arm.com>,
- <davem@davemloft.net>, <jolsa@redhat.com>, <jthierry@redhat.com>,
- <keescook@chromium.org>, <kernelfans@gmail.com>,
- <lecopzer.chen@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-perf-users@vger.kernel.org>, <mark.rutland@arm.com>,
- <masahiroy@kernel.org>, <matthias.bgg@gmail.com>, <maz@kernel.org>,
- <mcgrof@kernel.org>, <mingo@redhat.com>, <namhyung@kernel.org>,
- <nixiaoming@huawei.com>, <peterz@infradead.org>,
- <sparclinux@vger.kernel.org>, <sumit.garg@linaro.org>, <wangqing@vivo.com>,
- <will@kernel.org>, <yj.chiang@mediatek.com>
-Subject: Re: [PATCH v2 4/5] kernel/watchdog: Adapt the watchdog_hld interface
- for async model
-Date: Thu, 24 Mar 2022 20:55:51 +0800
-Message-ID: <20220324125551.9044-1-lecopzer.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <Yji30cmiPzoINrd6@alley>
-References: <Yji30cmiPzoINrd6@alley>
+ id 1nXNTW-00Ghkz-6r; Thu, 24 Mar 2022 13:26:03 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 27E5E60F1E;
+ Thu, 24 Mar 2022 13:26:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B397C340EC;
+ Thu, 24 Mar 2022 13:26:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1648128360;
+ bh=fyIiU5RZ5vQvJ0AbYHjhGoBAWCrDkNOaT9PweDfIA54=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=Q5jVk0jR0N8AxYnAmlI/4hn9WXOJoqruiN3Lx4o5Q7LvZ7+QE7Os06E+7SSbr55jK
+ AjNuwfG++wDfE+/s3NDSLIJfCb+2ktBuloavqEAmw7YphDTda4uOxn/oUPRqlu3F7Y
+ orG4xR6LpBhXMERtPv8WWxtisu3krU/p0+bIGgbdXdFvuCJ+l8GR5tqTZPIiqs+ULD
+ +y7kI2iUuz8DojIZ7dmk7HgWETysRWE2svWhvxRZbDT8j9gytgcGh/0zCfZo7YUzm2
+ OIo0ksBhURzjt2b+H3GembODH1Q6MzPFgeBgAHPHiNXydBJoiKybaVS25qDAJ/AgyH
+ izJ/bVYB21G0w==
+Received: by mail-ej1-f44.google.com with SMTP id lr4so713181ejb.11;
+ Thu, 24 Mar 2022 06:26:00 -0700 (PDT)
+X-Gm-Message-State: AOAM533Qeqr9c7WwdWROJ/eIHaauuI0u1lYbc/EorZexrjDdlxCoF85R
+ eCAVOk42/PS+6crMt90fToQuIXxJzVywTjoI9w==
+X-Google-Smtp-Source: ABdhPJxMtishIXyQnHytEurL58PXSNq0mjIOLyhlOsXwq+vbDhHOyF+FHGCUAHZ5No9IqBKpjNCuQP5Pnh/dbKKnyGA=
+X-Received: by 2002:a17:906:79c4:b0:6cf:5489:da57 with SMTP id
+ m4-20020a17090679c400b006cf5489da57mr5757085ejo.48.1648128358773; Thu, 24 Mar
+ 2022 06:25:58 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220309134702.9942-1-jason-jh.lin@mediatek.com>
+ <CAL_Jsq+=hTKTjB8rR77_uQYKDWHzLyTdeU7zbixSCZCNrdmNvg@mail.gmail.com>
+In-Reply-To: <CAL_Jsq+=hTKTjB8rR77_uQYKDWHzLyTdeU7zbixSCZCNrdmNvg@mail.gmail.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 24 Mar 2022 21:25:44 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__kzL8YuGo-oKct4c_bL-Ch5rW8wBpkhOXkK+a10gNXVg@mail.gmail.com>
+Message-ID: <CAAOTY__kzL8YuGo-oKct4c_bL-Ch5rW8wBpkhOXkK+a10gNXVg@mail.gmail.com>
+Subject: Re: [PATCH v2 0/4] Fix MediaTek display dt-bindings issues
+To: Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220324_055849_192618_A6264564 
-X-CRM114-Status: GOOD (  50.15  )
+X-CRM114-CacheID: sfid-20220324_062602_376188_6056CC6E 
+X-CRM114-Status: GOOD (  18.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,200 +73,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: DTML <devicetree@vger.kernel.org>, David Airlie <airlied@linux.ie>,
+ singo.chang@mediatek.com, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Fabien Parent <fparent@baylibre.com>,
+ "moderated list:ARM/STM32 ARCHITECTURE"
+ <linux-stm32@st-md-mailman.stormreply.com>,
+ "roy-cw.yeh" <roy-cw.yeh@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ CK Hu <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Nancy Lin <nancy.lin@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ "jason-jh.lin" <jason-jh.lin@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Moudy Ho <moudy.ho@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> On Sat 2022-03-19 16:18:22, Lecopzer Chen wrote:
-> > > On Mon 2022-03-07 23:47:28, Lecopzer Chen wrote:
-> > > > When lockup_detector_init()->watchdog_nmi_probe(), PMU may be not ready
-> > > > yet. E.g. on arm64, PMU is not ready until
-> > > > device_initcall(armv8_pmu_driver_init).  And it is deeply integrated
-> > > > with the driver model and cpuhp. Hence it is hard to push this
-> > > > initialization before smp_init().
-> > > 
-> > > > --- a/kernel/watchdog.c
-> > > > +++ b/kernel/watchdog.c
-> > > > @@ -839,16 +843,70 @@ static void __init watchdog_sysctl_init(void)
-> > > >  #define watchdog_sysctl_init() do { } while (0)
-> > > >  #endif /* CONFIG_SYSCTL */
-> > > >  
-> > > > +static void lockup_detector_delay_init(struct work_struct *work);
-> > > > +bool lockup_detector_pending_init __initdata;
-> > > > +
-> > > > +struct wait_queue_head hld_detector_wait __initdata =
-> > > > +		__WAIT_QUEUE_HEAD_INITIALIZER(hld_detector_wait);
-> > > > +
-> > > > +static struct work_struct detector_work __initdata =
-> > > > +		__WORK_INITIALIZER(detector_work, lockup_detector_delay_init);
-> > > > +
-> > > > +static void __init lockup_detector_delay_init(struct work_struct *work)
-> > > > +{
-> > > > +	int ret;
-> > > > +
-> > > > +	wait_event(hld_detector_wait,
-> > > > +			lockup_detector_pending_init == false);
-> > > > +
-> > > > +	/*
-> > > > +	 * Here, we know the PMU should be ready, so set pending to true to
-> > > > +	 * inform watchdog_nmi_probe() that it shouldn't return -EBUSY again.
-> > > > +	 */
-> > > > +	lockup_detector_pending_init = true;
-> > > 
-> > > This does not make sense to me. We are here only when:
-> > > 
-> > >    1. lockup_detector_init() queued this work.
-> > > 
-> > >    2. Someone cleared @lockup_detector_pending_init and woke the
-> > >       worker via wait_queue. IT might be either PMU init code
-> > >       or the late lockup_detector_check().
-> > > 
-> > > watchdog_nmi_probe() might still return -EBUSY when PMU init failed.
-> > > 
-> > > If you wanted to try the delayed probe once again (3rd attempt) from
-> > > lockup_detector_check(), you would need to queue the work once again.
-> > > But you need to be sure that lockup_detector_check() was not called
-> > > yet. Otherwise, the 2nd work might wait forewer.
-> > > 
-> > > IMHO, it is not worth the complexity.
-> > 
-> > The original assumption is: nobody should use delayed probe after
-> > lockup_detector_check() (which has __init attribute).
-> 
-> Good point. It makes perfect sense.
-> 
-> But it was not mentioned anywhere. And the code did not work this way.
-> 
-> > 
-> > That is, everything including PMU and delayed probe of lock detector must
-> > finsh before do_initcalls() which means delayed probe can't support with
-> > external PMU module init.
-> > 
-> > Also,
-> >   1. lockup_detector_check is registered with late_initcall_sync(), so it'd
-> >      be called in the last order of do_initcalls()).
-> > 
-> >   2. watchdog_nmi_probe() and all the delayed relative functions and variables
-> >      have __init attribute, no one should ever use it after __init section
-> >      is released.
-> > 
-> > The only case is PMU probe function is also late_initcall_sync().
-> 
-> This is the case for PMU. The API for delayed init is generic a should
-> be safe even for other users.
-> 
-
-I think this can be fixed after the suggestion provied by you below.
-Set lockup_detector_pending_init=false at the end of lockup_detector_check().
-So nobody after lockup_detector_check() can ever queue another work.
-
-> 
-> > How about this one:
-> >   1. Wrap the wake_up code to reduce the complexity for user side.
-> > 
-> >   2. Remove wait queue.
-> >      Instead queue work when lockup_detector_init(), queue the delayed
-> >      probe work when arch PMU code finish probe.
-> > 
-> > and the flow turns to
-> > 
-> >   1. lockup_detector_init() get -EBUSY, set lockup_detector_pending_init=true
-> > 
-> >   2. PMU arch code init done, call lockup_detector_queue_work().
-> > 
-> >   3. lockup_detector_queue_work() queue the work only when
-> >      lockup_detector_pending_init=true which means nobody should call
-> >      this before lockup_detector_init().
-> > 
-> >   4. the work lockup_detector_delay_init() is doing without wait event.
-> >      if probe success, set lockup_detector_pending_init=false.
-> > 
-> >   5. at late_initcall_sync(), lockup_detector_check() call flush_work() first
-> >      to avoid previous lockup_detector_queue_work() is not scheduled.
-> >      And then test whether lockup_detector_pending_init is false, if it's
-> >      true, means we have pending init un-finished, than forcely queue work
-> >      again and flush_work to make sure the __init section won't be freed
-> >      before the work done.
-> 
-> Nice, I like it.
-> 
-> > This remove the complexity of wait event which we were disscussed.
-> > The draft of the diff code(diff with this series) shows below.
-> > 
-> > 
-> > diff --git a/arch/arm64/kernel/perf_event.c b/arch/arm64/kernel/perf_event.c
-> > index 77eaefee13ea..c776618fbfa8 100644
-> > --- a/arch/arm64/kernel/perf_event.c
-> > +++ b/arch/arm64/kernel/perf_event.c
-> > @@ -1388,9 +1388,7 @@ static int __init armv8_pmu_driver_init(void)
-> >  	else
-> >  		ret = arm_pmu_acpi_probe(armv8_pmuv3_pmu_init);
-> >  
-> > -	/* Inform watchdog core we are ready to probe hld by delayed init. */
-> > -	lockup_detector_pending_init = false;
-> > -	wake_up(&hld_detector_wait);
-> > +	lockup_detector_queue_work();
-> 
-> The name is strange. The fact that it uses workqueues is an
-> implementation detail. I would call it
-> retry_lockup_detector_init() so that it is more obvious what it does.
-
-Okay, I don't have a good taste in naming.
-I'll provide next version patches including this.
-
-
-> 
-> >  	return ret;
-> >  }
-> >  device_initcall(armv8_pmu_driver_init)
-> > --- a/kernel/watchdog.c
-> > +++ b/kernel/watchdog.c
-> > @@ -876,15 +865,27 @@ static void __init lockup_detector_delay_init(struct work_struct *work)
-> >  	lockup_detector_pending_init = false;
-> >  }
-> >  
-> > +/* Must call after lockup_detector_init() that we do need delayed probe */
-> > +void __init lockup_detector_queue_work(void)
-> > +{
-> > +	if (!lockup_detector_pending_init)
-> > +		return;
-> > +
-> > +	queue_work_on(__smp_processor_id(), system_wq, &detector_work);
-> > +}
-> > +
-> >  /* Ensure the check is called after the initialization of PMU driver */
-> >  static int __init lockup_detector_check(void)
-> >  {
-> > +	/* Make sure no work is pending. */
-> > +	flush_work(&detector_work);
-> > +
-> >  	if (!lockup_detector_pending_init)
-> >  		return 0;
-> >  
-> >  	pr_info("Delayed init checking failed, retry for once.\n");
-> > -	lockup_detector_pending_init = false;
-> > -	wake_up(&hld_detector_wait);
-> > +	lockup_detector_queue_work();
-> 
-> I would do here
-> 
-> 	lockup_detector_pending_init = false;
-> 
-> to make sure that lockup_detector_queue_work() will not longer
-> queue the work after the final flush.
-> 
-> Maybe, we could rename the variable to allow_lockup_detector_init_retry.
-
-Okay, I'm prepareing the next version patches, I'll include in it
-
-thanks a lot for all of the suggestion
-
-
-BRs,
-Lecopzer
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIFJvYjoKClJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+IOaWvCAyMDIy5bm0M+aciDIz
+5pelIOmAseS4iSDkuIvljYgxMDoxMOWvq+mBk++8mgo+Cj4gT24gV2VkLCBNYXIgOSwgMjAyMiBh
+dCA3OjQ3IEFNIGphc29uLWpoLmxpbiA8amFzb24tamgubGluQG1lZGlhdGVrLmNvbT4gd3JvdGU6
+Cj4gPgo+ID4gVGhlIHZkb3N5czAgc2VyaWVzIGNhcnJpZWQgYSBuaWNlIGR0LWJpbmRpbmdzIGNv
+bnZlcnNpb24gb2YgdGhlIG9sZAo+ID4gdHh0IGRvY3VtZW50YXRpb24gZm9yIHRoZSBlbnRpcmUg
+bWVkaWF0ZWstZHJtIGRyaXZlciwgYnV0IHNvbWUgb2YKPiA+IHRoZSBpc3N1ZXMgaW4gdGhlcmUg
+d2VyZW4ndCBzZWVuLgo+ID4KPiA+IFRoaXMgc2VyaWVzIGlzIGZpeGluZyBhbGwgb2YgdGhlIGlz
+c3VlcyBwb2ludGVkIG91dCBieSBhCj4gPiBgZHRfYmluZGluZ19jaGVja2AgcnVuLCBmb2xsb3dl
+ZCBieSBgZHRic19jaGVja2AuCj4gPgo+ID4gQ2hhbmdlIGluIHYyOgo+ID4gLSByZW1vdmUgbWVk
+aWF0ZWssZXRoZHIueWFtbCBmaWxlCj4gPiAtIGNoYW5nZSBpbmNsdWRlIGhlYWRlciBvZiBtZWRp
+YXRlayxvdmwtMmwueWFtbCBmcm9tIG10ODE3MyB0byBtdDgxODMKPiA+Cj4gPiBBbmdlbG9HaW9h
+Y2NoaW5vIERlbCBSZWdubyAoMyk6Cj4gPiAgIGR0LWJpbmRpbmdzOiBkaXNwbGF5OiBtZWRpYXRl
+aywgbXV0ZXg6IEZpeCBtZWRpYXRlaywgZ2NlLWV2ZW50cyB0eXBlCj4gPiAgIGR0LWJpbmRpbmdz
+OiBkaXNwbGF5OiBtZWRpYXRlaywgb3ZsOiBGaXggJ2lvbW11JyByZXF1aXJlZCBwcm9wZXJ0eQo+
+ID4gICAgIHR5cG8KPiA+ICAgZHQtYmluZGluZ3M6IGRpc3BsYXk6IG1lZGlhdGVrOiBGaXggZXhh
+bXBsZXMgb24gbmV3IGJpbmRpbmdzCj4gPgo+ID4gamFzb24tamgubGluICgxKToKPiA+ICAgUmV2
+ZXJ0ICJkdC1iaW5kaW5nczogZGlzcGxheTogbWVkaWF0ZWs6IGFkZCBldGhkciBkZWZpbml0aW9u
+IGZvcgo+ID4gICAgIG10ODE5NSIKPgo+IENhbiB0aGlzIHNlcmllcyBnZXQgYXBwbGllZCBzb29u
+PyBsaW51eC1uZXh0IGlzIHN0aWxsIGJyb2tlbi4KPgo+IElmIGl0IGhpdHMgTGludXMnIHRyZWUs
+IEkgd2lsbCBiZSBhcHBseWluZyB0aGVtLgoKSSd2ZSBhcHBsaWVkIHRoaXMgc2VyaWVzIHRvIG15
+IHRyZWUgWzFdLCBidXQgbm93IGlzIG1lcmdlIHdpbmRvdywgc28gSQpwbGFuIHRvIHNlbmQgdGhp
+cyBzZXJpZXMgdGhyb3VnaCBEYXZlJ3MgdHJlZSBhZnRlciA1LjE4LXJjMS4gV291bGQKdGhpcyBi
+ZSB0b28gbGF0ZSBmb3IgeW91PwoKWzFdIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9s
+aW51eC9rZXJuZWwvZ2l0L2NodW5rdWFuZy5odS9saW51eC5naXQvbG9nLz9oPW1lZGlhdGVrLWRy
+bS1maXhlcwoKUmVnYXJkcywKQ2h1bi1LdWFuZy4KCj4KPiBSb2IKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlz
+dApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
