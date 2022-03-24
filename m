@@ -4,74 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BEC1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Mar 2022 14:19:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A711C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Mar 2022 14:45:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=25RNeIIw/G3bez/vC9UE+XXUruQ/kfx4NbkgNbrqM6o=; b=fLJ7NGDgnfvuS7
-	RFPl5GUMbfRT2zCc57qV2+Ir6fc6tuGNjmQ8PxjybnlH/42qKcs+VZSqOkPDCo9KP8oXtK8KZknj3
-	08WAbxHeIwdHtyfuqk/B/J7/QZHo8hEiE054cGmJ2/qk+6PBz8qIfDYpwKdtASXU2u0kppIS7zPYC
-	WLsQIgEwQHswLlxzaDvbSJwD23aQE/8Piugz820Yo+a2wvXZ46SdQTwhFVnp+bbQXgE/gM8sytZC3
-	ql47tuwaAjLkL1ROdG2wEIyiyo6DjEgcHXiRBESJ6kvMNlYUboxwRucc06IpXzEHl9t2hB7rYcNDQ
-	woEztvL4SOnsjfdM82LQ==;
+	List-Owner; bh=yPtTTX4qeIftg7cIn5r5szyXdNsr2XA0ovnSbctFlBI=; b=3Ayi7MbdoCqlHa
+	OhL/g294xBhuMSF837migUfUoW+OxqduodxX67Rp1WuH7G4oO11ZUiaVpLl4OHBjD0zTx4QXqusv0
+	eGfSkrbzbFfWt81loixWf7dNyQt4eN1+JitVLVnhsegBIoxk4exdiYp99q4VBYYMbWJwDSRePLkuW
+	FIf79XpSDYo4g/zv1vhOAmArfunjLd4ky3Zk6VZjgABhvn/2M+kiE+2Yc/pNg+CebNFPGn2E0lRY9
+	HBZl5Jaj8CYTHHZTBYJUFH7RHN2eAVEX98I6SmJSek5HXt6NNEY0e81Z/50Vh0pfBSTKLQDcJamJF
+	viTxb9t/Cc3KFsLWXOYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nXOIg-00Gpbl-A8; Thu, 24 Mar 2022 14:18:54 +0000
-Received: from mail-oo1-f43.google.com ([209.85.161.43])
+	id 1nXOiR-00GxKk-OZ; Thu, 24 Mar 2022 14:45:31 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nXOHz-00GpIe-Uq; Thu, 24 Mar 2022 14:18:14 +0000
-Received: by mail-oo1-f43.google.com with SMTP id
- q1-20020a4a7d41000000b003211b63eb7bso794512ooe.6; 
- Thu, 24 Mar 2022 07:18:11 -0700 (PDT)
+ id 1nXOiF-00GxIm-5d; Thu, 24 Mar 2022 14:45:20 +0000
+Received: by mail-wm1-x335.google.com with SMTP id r64so2856293wmr.4;
+ Thu, 24 Mar 2022 07:45:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:content-language:to:cc
+ :references:from:subject:in-reply-to:content-transfer-encoding;
+ bh=M/f8y/26l32WvTxIaHNU9NsW+ax20B3YgWzAaAZO6Mo=;
+ b=UE4m2c67FnKibQK1QU98/UtSQNv3yQUQD3OZ4iuZTaCkDrnaL8cBSt4nB9yB/3YFet
+ 6LpI3mZBnPV/OBZrP3wleWoJLQbHlir64S7QeIjLF71/DtDLwDkNZgeRrVWTp9L89WJf
+ kMViLRyhKx4+1AYaqwLDHEPislGseQm/ZzqJA4MIdCA+ChCp2+gOnL7EQx4kXNsgubrd
+ z3AJWf+jaE+cqBOBSYb+ilBwqk3CHfRvoNDEeS+mTjENDFsjc6MMJEpkhjCTDl+CJn+x
+ diIue72mp0ZbSBNN4JNyEJa9pge17td2txR9bz6+Nhxoz4Yhc2RZvZ8GsjQjjEYdWIIP
+ GsUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=Jna4fyumBD0bsBuDM2E70JQUhEhnD+mfetOCaVsAbQk=;
- b=qbSnoHvUnfTezkeX1D+piNsPoJo0Tjdh+1ZNVfGq2u2VJ4DSnB4CwWIFzcAHOHLO87
- glL6rIlCfy3zHZepbKeGAv2E6Kc07FLlFFUFMyL0t4aEAxodDOMPkFpegMU0Q0GR6oJ+
- FA3hddW3W6McvHPvQVF5+0g+Tcn8PBdj4LTsruy3NxNyvYmUCjZUes7pNNrpRedNODpS
- vMRcMuOoJk6TxIP0QP+CR7ZLIFTzgLD5OkB0VM7zylAC1xhotNswMVBxJAeeJIWNd5bY
- Zy/sIreL/+oASGpiwxGf6sqGstbVnPB3CtKVbAM/7w0Ra62JP0YuI5o+ptWgNfp2ZClb
- KZqQ==
-X-Gm-Message-State: AOAM531c4yk4QfdPgph94M9FC1FuQ+Aj31/M/PTpClf5ZWDTyQMOg2D/
- ClYR8WKNyXmdE6XTnSEqeQ==
-X-Google-Smtp-Source: ABdhPJzJuf8Db7RwHK6W2v9lHlH2Uobl2lgItPUE3wBiHzc1/e/y0yGslIGw8IsCKFJahe0bJkm/iA==
-X-Received: by 2002:a4a:de52:0:b0:320:d6a0:cf7f with SMTP id
- z18-20020a4ade52000000b00320d6a0cf7fmr2025395oot.83.1648131490312; 
- Thu, 24 Mar 2022 07:18:10 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- x65-20020a9d20c7000000b005cdaeec68d5sm1349219ota.37.2022.03.24.07.18.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Mar 2022 07:18:09 -0700 (PDT)
-Received: (nullmailer pid 1995382 invoked by uid 1000);
- Thu, 24 Mar 2022 14:18:08 -0000
-From: Rob Herring <robh@kernel.org>
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- macpaul.lin@mediatek.com, linux-kernel@vger.kernel.org,
- srv_heupstream@mediatek.com, Jose Abreu <joabreu@synopsys.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- linux-mediatek@lists.infradead.org, Jakub Kicinski <kuba@kernel.org>,
- davem@davemloft.net, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20220324012112.7016-2-biao.huang@mediatek.com>
-References: <20220324012112.7016-1-biao.huang@mediatek.com>
- <20220324012112.7016-2-biao.huang@mediatek.com>
-Subject: Re: [PATCH net-next] dt-bindings: net: snps,
- dwmac: modify available values of PBL
-Date: Thu, 24 Mar 2022 09:18:08 -0500
-Message-Id: <1648131488.593520.1995381.nullmailer@robh.at.kernel.org>
+ h=x-gm-message-state:message-id:date:mime-version:user-agent
+ :content-language:to:cc:references:from:subject:in-reply-to
+ :content-transfer-encoding;
+ bh=M/f8y/26l32WvTxIaHNU9NsW+ax20B3YgWzAaAZO6Mo=;
+ b=OTUHmNLH6cyMVvSAabJ3sxwkbc3Gd9alzor2gD5LZId9jMVHs8o8bsG7i5UtHH+VM2
+ riFqdXc6b0EWSSwrebEWdqV+4JPOd34fwPdxc7Hqg175iQkBwrfLbqac2KBoKlTS/qhb
+ PnD2VNliTS/aPKT6S21hogkYnqZCOUUplc7ZUNGQqXg4xYkjJo77kH7MeH9q8c6YEsT8
+ RADNjQ4nVJRCWqEkdRCCHNGi/+TGo/eRNx0qorSIgp+V6Bwu3CcPxElMTQOVFy6PaSFG
+ KjM/MX+0cu1SrEnesm0sHmSXi2I8j0XqFbQ1J6bndQ1dL26xqAq+HvwJPZKBNrMr84gU
+ Mvbg==
+X-Gm-Message-State: AOAM533XQIxI/QdkT2wKBYU+2REbYdxDdB2XnXfurTYNAPjHgTLLqWOf
+ I2KaZnMme1vybG52C7JdVlY=
+X-Google-Smtp-Source: ABdhPJwtm+jCnY1o081n9jxBevzG/xtKrtYGckQi6oRARJ8rLE7tnoVwr7G3c/GIJj01lcGz5pqfHA==
+X-Received: by 2002:a7b:cd01:0:b0:38c:9142:2006 with SMTP id
+ f1-20020a7bcd01000000b0038c91422006mr14718045wmj.4.1648133117227; 
+ Thu, 24 Mar 2022 07:45:17 -0700 (PDT)
+Received: from [192.168.0.32] ([137.101.87.65])
+ by smtp.gmail.com with ESMTPSA id
+ f11-20020a7bcc0b000000b0037e0c362b6dsm2298003wmh.31.2022.03.24.07.45.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 24 Mar 2022 07:45:16 -0700 (PDT)
+Message-ID: <e4f414a6-2a18-1f46-d8c0-c070d63e5326@gmail.com>
+Date: Thu, 24 Mar 2022 15:45:15 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Content-Language: en-US
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
+ Hui Liu <hui.liu@mediatek.com>
+References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
+ <20220318144534.17996-8-allen-kh.cheng@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v4 07/22] arm64: dts: mt8192: Add audio-related nodes
+In-Reply-To: <20220318144534.17996-8-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220324_071812_046406_6203EE8E 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20220324_074519_283981_86926B98 
+X-CRM114-Status: GOOD (  15.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,177 +92,185 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 24 Mar 2022 09:21:12 +0800, Biao Huang wrote:
-> PBL can be any of the following values: 1, 2, 4, 8, 16 or 32
-> according to the datasheet, so modify available values of PBL in
-> snps,dwmac.yaml.
+
+
+On 18/03/2022 15:45, Allen-KH Cheng wrote:
+> Add audio-related nodes in audsys for mt8192 SoC.
+>   - Move audsys node in ascending order.
+>   - Increase the address range's length from 0x1000 to 0x2000.
 > 
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  Documentation/devicetree/bindings/net/snps,dwmac.yaml | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 134 ++++++++++++++++++++++-
+>   1 file changed, 128 insertions(+), 6 deletions(-)
 > 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> index 6bc36a4076f4..40cf6dacca3e 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> @@ -742,6 +742,134 @@
+>   			status = "disabled";
+>   		};
+>   
+> +		audsys: syscon@11210000 {
+> +			compatible = "mediatek,mt8192-audsys", "syscon";
+> +			reg = <0 0x11210000 0 0x2000>;
+> +			#clock-cells = <1>;
 
-Running 'make dtbs_check' with the schema in this patch gives the
-following warnings. Consider if they are expected or the schema is
-incorrect. These may not be new warnings.
+New line here please.
 
-Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-This will change in the future.
+> +			afe: mt8192-afe-pcm {
+> +				compatible = "mediatek,mt8192-audio";
+> +				interrupts = <GIC_SPI 202 IRQ_TYPE_LEVEL_HIGH 0>;
+> +				resets = <&watchdog 17>;
+> +				reset-names = "audiosys";
+> +				mediatek,apmixedsys = <&apmixedsys>;
+> +				mediatek,infracfg = <&infracfg>;
+> +				mediatek,topckgen = <&topckgen>;
+> +				power-domains = <&spm MT8192_POWER_DOMAIN_AUDIO>;
+> +				clocks = <&audsys CLK_AUD_AFE>,
 
-Full log is available here: https://patchwork.ozlabs.org/patch/1608860
+There are many more clocks then in the bindings, can please fix that.
 
+Regards,
+Matthias
 
-dwmac@9630000: $nodename:0: 'dwmac@9630000' does not match '^ethernet(@.*)?$'
-	arch/arm/boot/dts/stih407-b2120.dt.yaml
-	arch/arm/boot/dts/stih410-b2120.dt.yaml
-	arch/arm/boot/dts/stih410-b2260.dt.yaml
-	arch/arm/boot/dts/stih418-b2199.dt.yaml
-	arch/arm/boot/dts/stih418-b2264.dt.yaml
-
-eth@5c400000: $nodename:0: 'eth@5c400000' does not match '^ethernet(@.*)?$'
-	arch/arm/boot/dts/spear1310-evb.dt.yaml
-
-eth@5c400000: compatible: ['st,spear600-gmac'] does not contain items matching the given schema
-	arch/arm/boot/dts/spear1310-evb.dt.yaml
-
-eth@5c500000: $nodename:0: 'eth@5c500000' does not match '^ethernet(@.*)?$'
-	arch/arm/boot/dts/spear1310-evb.dt.yaml
-
-eth@5c500000: compatible: ['st,spear600-gmac'] does not contain items matching the given schema
-	arch/arm/boot/dts/spear1310-evb.dt.yaml
-
-eth@5c600000: $nodename:0: 'eth@5c600000' does not match '^ethernet(@.*)?$'
-	arch/arm/boot/dts/spear1310-evb.dt.yaml
-
-eth@5c600000: compatible: ['st,spear600-gmac'] does not contain items matching the given schema
-	arch/arm/boot/dts/spear1310-evb.dt.yaml
-
-eth@5c700000: $nodename:0: 'eth@5c700000' does not match '^ethernet(@.*)?$'
-	arch/arm/boot/dts/spear1310-evb.dt.yaml
-
-eth@5c700000: compatible: ['st,spear600-gmac'] does not contain items matching the given schema
-	arch/arm/boot/dts/spear1310-evb.dt.yaml
-
-eth@e0800000: $nodename:0: 'eth@e0800000' does not match '^ethernet(@.*)?$'
-	arch/arm/boot/dts/spear300-evb.dt.yaml
-	arch/arm/boot/dts/spear310-evb.dt.yaml
-	arch/arm/boot/dts/spear320-evb.dt.yaml
-	arch/arm/boot/dts/spear320-hmi.dt.yaml
-
-eth@e2000000: $nodename:0: 'eth@e2000000' does not match '^ethernet(@.*)?$'
-	arch/arm/boot/dts/spear1310-evb.dt.yaml
-	arch/arm/boot/dts/spear1340-evb.dt.yaml
-
-eth@e2000000: compatible: ['st,spear600-gmac'] does not contain items matching the given schema
-	arch/arm/boot/dts/spear1310-evb.dt.yaml
-	arch/arm/boot/dts/spear1340-evb.dt.yaml
-
-ethernet@c9410000: 'phy-mode' is a required property
-	arch/arm/boot/dts/meson6-atv1200.dt.yaml
-	arch/arm/boot/dts/meson8-minix-neo-x8.dt.yaml
-
-ethernet@e0800000: compatible: ['st,spear600-gmac'] does not contain items matching the given schema
-	arch/arm/boot/dts/spear600-evb.dt.yaml
-
-ethernet@f8010000: interrupt-names:1: 'eth_wake_irq' was expected
-	arch/arm/boot/dts/artpec6-devboard.dt.yaml
-
-ethernet@fe2a0000: clock-names: ['stmmaceth', 'mac_clk_rx', 'mac_clk_tx', 'clk_mac_refout', 'aclk_mac', 'pclk_mac', 'clk_mac_speed', 'ptp_ref', 'pclk_xpcs'] is too long
-	arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dt.yaml
-
-ethernet@fe2a0000: clocks: [[15, 386], [15, 389], [15, 389], [15, 184], [15, 180], [15, 181], [15, 389], [15, 185], [15, 172]] is too long
-	arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dt.yaml
-
-ethernet@ff800000: reset-names: ['stmmaceth', 'stmmaceth-ocp'] is too long
-	arch/arm64/boot/dts/altera/socfpga_stratix10_socdk.dt.yaml
-	arch/arm64/boot/dts/altera/socfpga_stratix10_socdk_nand.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_agilex_socdk.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_agilex_socdk_nand.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_n5x_socdk.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_mercury_aa1.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_nand.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_qspi.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_sdmmc.dt.yaml
-
-ethernet@ff800000: resets: [[6, 32], [6, 40]] is too long
-	arch/arm/boot/dts/socfpga_arria10_mercury_aa1.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_nand.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_qspi.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_sdmmc.dt.yaml
-
-ethernet@ff800000: resets: [[7, 32], [7, 40]] is too long
-	arch/arm64/boot/dts/altera/socfpga_stratix10_socdk.dt.yaml
-	arch/arm64/boot/dts/altera/socfpga_stratix10_socdk_nand.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_agilex_socdk.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_agilex_socdk_nand.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_n5x_socdk.dt.yaml
-
-ethernet@ff802000: reset-names: ['stmmaceth', 'stmmaceth-ocp'] is too long
-	arch/arm64/boot/dts/altera/socfpga_stratix10_socdk.dt.yaml
-	arch/arm64/boot/dts/altera/socfpga_stratix10_socdk_nand.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_agilex_socdk.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_agilex_socdk_nand.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_n5x_socdk.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_mercury_aa1.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_nand.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_qspi.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_sdmmc.dt.yaml
-
-ethernet@ff802000: resets: [[6, 33], [6, 41]] is too long
-	arch/arm/boot/dts/socfpga_arria10_mercury_aa1.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_nand.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_qspi.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_sdmmc.dt.yaml
-
-ethernet@ff802000: resets: [[7, 33], [7, 41]] is too long
-	arch/arm64/boot/dts/altera/socfpga_stratix10_socdk.dt.yaml
-	arch/arm64/boot/dts/altera/socfpga_stratix10_socdk_nand.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_agilex_socdk.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_agilex_socdk_nand.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_n5x_socdk.dt.yaml
-
-ethernet@ff804000: reset-names: ['stmmaceth', 'stmmaceth-ocp'] is too long
-	arch/arm64/boot/dts/altera/socfpga_stratix10_socdk.dt.yaml
-	arch/arm64/boot/dts/altera/socfpga_stratix10_socdk_nand.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_agilex_socdk.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_agilex_socdk_nand.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_n5x_socdk.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_mercury_aa1.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_nand.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_qspi.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_sdmmc.dt.yaml
-
-ethernet@ff804000: resets: [[6, 34], [6, 42]] is too long
-	arch/arm/boot/dts/socfpga_arria10_mercury_aa1.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_nand.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_qspi.dt.yaml
-	arch/arm/boot/dts/socfpga_arria10_socdk_sdmmc.dt.yaml
-
-ethernet@ff804000: resets: [[7, 34], [7, 42]] is too long
-	arch/arm64/boot/dts/altera/socfpga_stratix10_socdk.dt.yaml
-	arch/arm64/boot/dts/altera/socfpga_stratix10_socdk_nand.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_agilex_socdk.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_agilex_socdk_nand.dt.yaml
-	arch/arm64/boot/dts/intel/socfpga_n5x_socdk.dt.yaml
-
-eth@f0802000: $nodename:0: 'eth@f0802000' does not match '^ethernet(@.*)?$'
-	arch/arm/boot/dts/nuvoton-npcm730-gbs.dt.yaml
-	arch/arm/boot/dts/nuvoton-npcm730-gsj.dt.yaml
-	arch/arm/boot/dts/nuvoton-npcm730-kudo.dt.yaml
-	arch/arm/boot/dts/nuvoton-npcm750-evb.dt.yaml
-	arch/arm/boot/dts/nuvoton-npcm750-runbmc-olympus.dt.yaml
-
-eth@f0804000: $nodename:0: 'eth@f0804000' does not match '^ethernet(@.*)?$'
-	arch/arm/boot/dts/nuvoton-npcm750-evb.dt.yaml
-	arch/arm/boot/dts/nuvoton-npcm750-runbmc-olympus.dt.yaml
-
+> +					 <&audsys CLK_AUD_DAC>,
+> +					 <&audsys CLK_AUD_DAC_PREDIS>,
+> +					 <&audsys CLK_AUD_ADC>,
+> +					 <&audsys CLK_AUD_ADDA6_ADC>,
+> +					 <&audsys CLK_AUD_22M>,
+> +					 <&audsys CLK_AUD_24M>,
+> +					 <&audsys CLK_AUD_APLL_TUNER>,
+> +					 <&audsys CLK_AUD_APLL2_TUNER>,
+> +					 <&audsys CLK_AUD_TDM>,
+> +					 <&audsys CLK_AUD_TML>,
+> +					 <&audsys CLK_AUD_NLE>,
+> +					 <&audsys CLK_AUD_DAC_HIRES>,
+> +					 <&audsys CLK_AUD_ADC_HIRES>,
+> +					 <&audsys CLK_AUD_ADC_HIRES_TML>,
+> +					 <&audsys CLK_AUD_ADDA6_ADC_HIRES>,
+> +					 <&audsys CLK_AUD_3RD_DAC>,
+> +					 <&audsys CLK_AUD_3RD_DAC_PREDIS>,
+> +					 <&audsys CLK_AUD_3RD_DAC_TML>,
+> +					 <&audsys CLK_AUD_3RD_DAC_HIRES>,
+> +					 <&infracfg CLK_INFRA_AUDIO>,
+> +					 <&infracfg CLK_INFRA_AUDIO_26M_B>,
+> +					 <&topckgen CLK_TOP_AUDIO_SEL>,
+> +					 <&topckgen CLK_TOP_AUD_INTBUS_SEL>,
+> +					 <&topckgen CLK_TOP_MAINPLL_D4_D4>,
+> +					 <&topckgen CLK_TOP_AUD_1_SEL>,
+> +					 <&topckgen CLK_TOP_APLL1>,
+> +					 <&topckgen CLK_TOP_AUD_2_SEL>,
+> +					 <&topckgen CLK_TOP_APLL2>,
+> +					 <&topckgen CLK_TOP_AUD_ENGEN1_SEL>,
+> +					 <&topckgen CLK_TOP_APLL1_D4>,
+> +					 <&topckgen CLK_TOP_AUD_ENGEN2_SEL>,
+> +					 <&topckgen CLK_TOP_APLL2_D4>,
+> +					 <&topckgen CLK_TOP_APLL_I2S0_M_SEL>,
+> +					 <&topckgen CLK_TOP_APLL_I2S1_M_SEL>,
+> +					 <&topckgen CLK_TOP_APLL_I2S2_M_SEL>,
+> +					 <&topckgen CLK_TOP_APLL_I2S3_M_SEL>,
+> +					 <&topckgen CLK_TOP_APLL_I2S4_M_SEL>,
+> +					 <&topckgen CLK_TOP_APLL_I2S5_M_SEL>,
+> +					 <&topckgen CLK_TOP_APLL_I2S6_M_SEL>,
+> +					 <&topckgen CLK_TOP_APLL_I2S7_M_SEL>,
+> +					 <&topckgen CLK_TOP_APLL_I2S8_M_SEL>,
+> +					 <&topckgen CLK_TOP_APLL_I2S9_M_SEL>,
+> +					 <&topckgen CLK_TOP_APLL12_DIV0>,
+> +					 <&topckgen CLK_TOP_APLL12_DIV1>,
+> +					 <&topckgen CLK_TOP_APLL12_DIV2>,
+> +					 <&topckgen CLK_TOP_APLL12_DIV3>,
+> +					 <&topckgen CLK_TOP_APLL12_DIV4>,
+> +					 <&topckgen CLK_TOP_APLL12_DIVB>,
+> +					 <&topckgen CLK_TOP_APLL12_DIV5>,
+> +					 <&topckgen CLK_TOP_APLL12_DIV6>,
+> +					 <&topckgen CLK_TOP_APLL12_DIV7>,
+> +					 <&topckgen CLK_TOP_APLL12_DIV8>,
+> +					 <&topckgen CLK_TOP_APLL12_DIV9>,
+> +					 <&topckgen CLK_TOP_AUDIO_H_SEL>,
+> +					 <&clk26m>;
+> +				clock-names = "aud_afe_clk",
+> +					      "aud_dac_clk",
+> +					      "aud_dac_predis_clk",
+> +					      "aud_adc_clk",
+> +					      "aud_adda6_adc_clk",
+> +					      "aud_apll22m_clk",
+> +					      "aud_apll24m_clk",
+> +					      "aud_apll1_tuner_clk",
+> +					      "aud_apll2_tuner_clk",
+> +					      "aud_tdm_clk",
+> +					      "aud_tml_clk",
+> +					      "aud_nle",
+> +					      "aud_dac_hires_clk",
+> +					      "aud_adc_hires_clk",
+> +					      "aud_adc_hires_tml",
+> +					      "aud_adda6_adc_hires_clk",
+> +					      "aud_3rd_dac_clk",
+> +					      "aud_3rd_dac_predis_clk",
+> +					      "aud_3rd_dac_tml",
+> +					      "aud_3rd_dac_hires_clk",
+> +					      "aud_infra_clk",
+> +					      "aud_infra_26m_clk",
+> +					      "top_mux_audio",
+> +					      "top_mux_audio_int",
+> +					      "top_mainpll_d4_d4",
+> +					      "top_mux_aud_1",
+> +					      "top_apll1_ck",
+> +					      "top_mux_aud_2",
+> +					      "top_apll2_ck",
+> +					      "top_mux_aud_eng1",
+> +					      "top_apll1_d4",
+> +					      "top_mux_aud_eng2",
+> +					      "top_apll2_d4",
+> +					      "top_i2s0_m_sel",
+> +					      "top_i2s1_m_sel",
+> +					      "top_i2s2_m_sel",
+> +					      "top_i2s3_m_sel",
+> +					      "top_i2s4_m_sel",
+> +					      "top_i2s5_m_sel",
+> +					      "top_i2s6_m_sel",
+> +					      "top_i2s7_m_sel",
+> +					      "top_i2s8_m_sel",
+> +					      "top_i2s9_m_sel",
+> +					      "top_apll12_div0",
+> +					      "top_apll12_div1",
+> +					      "top_apll12_div2",
+> +					      "top_apll12_div3",
+> +					      "top_apll12_div4",
+> +					      "top_apll12_divb",
+> +					      "top_apll12_div5",
+> +					      "top_apll12_div6",
+> +					      "top_apll12_div7",
+> +					      "top_apll12_div8",
+> +					      "top_apll12_div9",
+> +					      "top_mux_audio_h",
+> +					      "top_clk26m_clk";
+> +			};
+> +		};
+> +
+>   		nor_flash: spi@11234000 {
+>   			compatible = "mediatek,mt8192-nor";
+>   			reg = <0 0x11234000 0 0xe0>;
+> @@ -757,12 +885,6 @@
+>   			status = "disable";
+>   		};
+>   
+> -		audsys: clock-controller@11210000 {
+> -			compatible = "mediatek,mt8192-audsys", "syscon";
+> -			reg = <0 0x11210000 0 0x1000>;
+> -			#clock-cells = <1>;
+> -		};
+> -
+>   		i2c3: i2c@11cb0000 {
+>   			compatible = "mediatek,mt8192-i2c";
+>   			reg = <0 0x11cb0000 0 0x1000>,
 
 _______________________________________________
 Linux-mediatek mailing list
