@@ -4,83 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A711C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Mar 2022 14:45:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FAA5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Mar 2022 15:27:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yPtTTX4qeIftg7cIn5r5szyXdNsr2XA0ovnSbctFlBI=; b=3Ayi7MbdoCqlHa
-	OhL/g294xBhuMSF837migUfUoW+OxqduodxX67Rp1WuH7G4oO11ZUiaVpLl4OHBjD0zTx4QXqusv0
-	eGfSkrbzbFfWt81loixWf7dNyQt4eN1+JitVLVnhsegBIoxk4exdiYp99q4VBYYMbWJwDSRePLkuW
-	FIf79XpSDYo4g/zv1vhOAmArfunjLd4ky3Zk6VZjgABhvn/2M+kiE+2Yc/pNg+CebNFPGn2E0lRY9
-	HBZl5Jaj8CYTHHZTBYJUFH7RHN2eAVEX98I6SmJSek5HXt6NNEY0e81Z/50Vh0pfBSTKLQDcJamJF
-	viTxb9t/Cc3KFsLWXOYg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5eaoO3XbrM6KziLtNIFBwev9JRv2ko0t0Ncdr25wPXo=; b=gFTVJIAkJfTasC
+	Pt/HKnOkLDRwsA75WNYLjmeCSs80TIOSH0rpR7OpUX40UDYzQi9ecWzVNaNEZsHnXgwZMyEs0C90b
+	b/jCPvwvk5T6WVhATjkpLeIxIo3FmeaYwdRkJp6F9BQxpPlp7/JCCsMVS132ZmbRHbeepQOL8rAyh
+	4TgFf9p5soqxW64+aSN3MbFKCqkZ02sNuxw6MZpd2Q4vpgmN160dN9Rw7jaWYx1cKDIEZvxDLYUkJ
+	dUJ3JL5euYww3cBVGqb3xcHv1aMhzC4+45knuCb+IEjvoMm9oLBd+9qxp3LEO8jqjX9afOdRfl9PX
+	8Dixi/ASciu60nvaftSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nXOiR-00GxKk-OZ; Thu, 24 Mar 2022 14:45:31 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1nXPMk-00H26A-3g; Thu, 24 Mar 2022 15:27:10 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nXOiF-00GxIm-5d; Thu, 24 Mar 2022 14:45:20 +0000
-Received: by mail-wm1-x335.google.com with SMTP id r64so2856293wmr.4;
- Thu, 24 Mar 2022 07:45:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:content-language:to:cc
- :references:from:subject:in-reply-to:content-transfer-encoding;
- bh=M/f8y/26l32WvTxIaHNU9NsW+ax20B3YgWzAaAZO6Mo=;
- b=UE4m2c67FnKibQK1QU98/UtSQNv3yQUQD3OZ4iuZTaCkDrnaL8cBSt4nB9yB/3YFet
- 6LpI3mZBnPV/OBZrP3wleWoJLQbHlir64S7QeIjLF71/DtDLwDkNZgeRrVWTp9L89WJf
- kMViLRyhKx4+1AYaqwLDHEPislGseQm/ZzqJA4MIdCA+ChCp2+gOnL7EQx4kXNsgubrd
- z3AJWf+jaE+cqBOBSYb+ilBwqk3CHfRvoNDEeS+mTjENDFsjc6MMJEpkhjCTDl+CJn+x
- diIue72mp0ZbSBNN4JNyEJa9pge17td2txR9bz6+Nhxoz4Yhc2RZvZ8GsjQjjEYdWIIP
- GsUg==
+ id 1nXPMf-00H24m-TS
+ for linux-mediatek@lists.infradead.org; Thu, 24 Mar 2022 15:27:08 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id n35so2932357wms.5
+ for <linux-mediatek@lists.infradead.org>; Thu, 24 Mar 2022 08:27:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=f+ay7tqudhjbGbdnObBg9rVW5P7BZjQ31rnVnGMAZWk=;
+ b=yoqOuL45S1UOIOGTlbIjvOP0bcxCkdJmgO8ybdxTGcfeYXEDM/kYQY5Z6U5IvTUlrA
+ teugwQjBm4bNPPo/5MKruClvWqHLscb3DjwlkqT2o8KXo2YvAG0f1lr6wGfUt2IVH/GI
+ LuMWm36r+7lU5phOt6LmbSOkARXaNetUPuFetaALFUzIeVHEe2XfAxuPP6W1+tOXLv1R
+ +4S5S29KOI8tD1M7ubPpTaVDFXTViYra3jR6/wt2Jl+gK4n/A6aq1GicM2o4Ef6lFni2
+ 67DImm+X4wY+/1BLE/ziAbPoBDrAfVPdB8yjTWNJt+E7LRg78xdK03pNl8d5o10QmszF
+ 06dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent
- :content-language:to:cc:references:from:subject:in-reply-to
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=M/f8y/26l32WvTxIaHNU9NsW+ax20B3YgWzAaAZO6Mo=;
- b=OTUHmNLH6cyMVvSAabJ3sxwkbc3Gd9alzor2gD5LZId9jMVHs8o8bsG7i5UtHH+VM2
- riFqdXc6b0EWSSwrebEWdqV+4JPOd34fwPdxc7Hqg175iQkBwrfLbqac2KBoKlTS/qhb
- PnD2VNliTS/aPKT6S21hogkYnqZCOUUplc7ZUNGQqXg4xYkjJo77kH7MeH9q8c6YEsT8
- RADNjQ4nVJRCWqEkdRCCHNGi/+TGo/eRNx0qorSIgp+V6Bwu3CcPxElMTQOVFy6PaSFG
- KjM/MX+0cu1SrEnesm0sHmSXi2I8j0XqFbQ1J6bndQ1dL26xqAq+HvwJPZKBNrMr84gU
- Mvbg==
-X-Gm-Message-State: AOAM533XQIxI/QdkT2wKBYU+2REbYdxDdB2XnXfurTYNAPjHgTLLqWOf
- I2KaZnMme1vybG52C7JdVlY=
-X-Google-Smtp-Source: ABdhPJwtm+jCnY1o081n9jxBevzG/xtKrtYGckQi6oRARJ8rLE7tnoVwr7G3c/GIJj01lcGz5pqfHA==
-X-Received: by 2002:a7b:cd01:0:b0:38c:9142:2006 with SMTP id
- f1-20020a7bcd01000000b0038c91422006mr14718045wmj.4.1648133117227; 
- Thu, 24 Mar 2022 07:45:17 -0700 (PDT)
-Received: from [192.168.0.32] ([137.101.87.65])
- by smtp.gmail.com with ESMTPSA id
- f11-20020a7bcc0b000000b0037e0c362b6dsm2298003wmh.31.2022.03.24.07.45.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 24 Mar 2022 07:45:16 -0700 (PDT)
-Message-ID: <e4f414a6-2a18-1f46-d8c0-c070d63e5326@gmail.com>
-Date: Thu, 24 Mar 2022 15:45:15 +0100
+ bh=f+ay7tqudhjbGbdnObBg9rVW5P7BZjQ31rnVnGMAZWk=;
+ b=DX5hZtsn+R71F5L1nRMLJAdIAo3Rce3PPxo8bdVdH2rRbC2RJWMAmyrwQJMZn7cJ3I
+ v1AHzn4owiVwRCu6Us/ScEGqZ3f0hcqioC2Dz0xQGuilnPzK8KFZtFWz88Hy5h7gnyOQ
+ q8J2sQj5Z2i5nQJuMDTvG6lz4OnsrXepVsCPWGICCcgDTcwMQLUkWADHNNynyNg/B61V
+ mYIlnjk3OJrKQlH8zsWWXSlM66RiuDs7U/HCC9xLUpHwhBUVaTCWarz1UC+QpY6QQGgF
+ 4/Hj48IcAtnnjx1Hq1lSSO4hwYOKtTE1aU5RUBX4Ib2ME5K+MK748cq29fe+xmHaCCHv
+ t5nA==
+X-Gm-Message-State: AOAM530E0oM1m1HNnvER3HdZJLduxWEqqOy6I3s8q31gzjtCJks80Hzm
+ rhsuUdbvUr77ebTYAN5iYinQhQ==
+X-Google-Smtp-Source: ABdhPJws87KVaVeOTw0TuPGtZNrXPQklwZMoptawtDOQ+Tbg5xeUk0cUlzKNYP316LQXkP4tCMCcwQ==
+X-Received: by 2002:a05:600c:ac5:b0:38c:9a51:3059 with SMTP id
+ c5-20020a05600c0ac500b0038c9a513059mr5382446wmr.2.1648135624059; 
+ Thu, 24 Mar 2022 08:27:04 -0700 (PDT)
+Received: from localhost.localdomain
+ (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+ by smtp.googlemail.com with ESMTPSA id
+ g17-20020a05600c4ed100b0038ca32d0f26sm2808104wmq.17.2022.03.24.08.27.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 24 Mar 2022 08:27:03 -0700 (PDT)
+From: Corentin Labbe <clabbe@baylibre.com>
+To: airlied@linux.ie, alexandre.torgue@foss.st.com, chunkuang.hu@kernel.org,
+ daniel@ffwll.ch, krzk+dt@kernel.org, matthias.bgg@gmail.com,
+ mcoquelin.stm32@gmail.com, p.zabel@pengutronix.de, robh+dt@kernel.org
+Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ Corentin Labbe <clabbe@baylibre.com>
+Subject: [PATCH] dt-bindings: display: mediatek: Add includes on examples
+Date: Thu, 24 Mar 2022 15:26:58 +0000
+Message-Id: <20220324152658.1132110-1-clabbe@baylibre.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
- Hui Liu <hui.liu@mediatek.com>
-References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
- <20220318144534.17996-8-allen-kh.cheng@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v4 07/22] arm64: dts: mt8192: Add audio-related nodes
-In-Reply-To: <20220318144534.17996-8-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220324_074519_283981_86926B98 
-X-CRM114-Status: GOOD (  15.84  )
+X-CRM114-CacheID: sfid-20220324_082705_981864_8391F7AE 
+X-CRM114-Status: UNSURE (   8.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,185 +90,264 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+make dt_binding_check fail on lot of mediatek bindings due to missing
+includes.
 
+Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+---
+2 files remains to be fixed, but their examples use some variable undefined, so I cannot do anything:
+- display/mediatek/mediatek,ethdr.yaml
+- display/mediatek/mediatek,merge.yaml
 
-On 18/03/2022 15:45, Allen-KH Cheng wrote:
-> Add audio-related nodes in audsys for mt8192 SoC.
->   - Move audsys node in ascending order.
->   - Increase the address range's length from 0x1000 to 0x2000.
-> 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 134 ++++++++++++++++++++++-
->   1 file changed, 128 insertions(+), 6 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index 6bc36a4076f4..40cf6dacca3e 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -742,6 +742,134 @@
->   			status = "disabled";
->   		};
->   
-> +		audsys: syscon@11210000 {
-> +			compatible = "mediatek,mt8192-audsys", "syscon";
-> +			reg = <0 0x11210000 0 0x2000>;
-> +			#clock-cells = <1>;
+ .../display/mediatek/mediatek,aal.yaml        |   4 +
+ .../display/mediatek/mediatek,ccorr.yaml      |   4 +
+ .../display/mediatek/mediatek,color.yaml      |   4 +
+ .../display/mediatek/mediatek,dither.yaml     |   4 +
+ .../display/mediatek/mediatek,dsc.yaml        |   4 +
+ .../display/mediatek/mediatek,gamma.yaml      |   4 +
+ .../display/mediatek/mediatek,mutex.yaml      |   4 +
+ .../display/mediatek/mediatek,od.yaml         |   1 +
+ .../display/mediatek/mediatek,ovl-2l.yaml     |   5 +
+ .../display/mediatek/mediatek,ovl.yaml        |   5 +
+ .../display/mediatek/mediatek,postmask.yaml   |   4 +
+ .../display/mediatek/mediatek,rdma.yaml       |   5 +
+ .../display/mediatek/mediatek,split.yaml      |   3 +
+ .../display/mediatek/mediatek,ufoe.yaml       |   3 +
+ .../display/mediatek/mediatek,wdma.yaml       |   5 +
+ 17 files changed, 59 insertions(+), 257 deletions(-)
 
-New line here please.
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+index 225f9dd726d2..63755d4d21d7 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+@@ -66,6 +66,10 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/gce/mt8173-gce.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/power/mt8173-power.h>
+ 
+     aal@14015000 {
+         compatible = "mediatek,mt8173-disp-aal";
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+index 6894b6999412..b32355b32dfa 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+@@ -65,6 +65,10 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/gce/mt8183-gce.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/power/mt8183-power.h>
+ 
+     ccorr0: ccorr@1400f000 {
+         compatible = "mediatek,mt8183-disp-ccorr";
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+index bc83155b3b4c..ffdef0b30de8 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+@@ -75,6 +75,10 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/gce/mt8173-gce.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/power/mt8173-power.h>
+ 
+     color0: color@14013000 {
+         compatible = "mediatek,mt8173-disp-color";
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+index 9d89297f5f1d..7ac58022a2ed 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+@@ -65,6 +65,10 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/gce/mt8183-gce.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/power/mt8183-power.h>
+ 
+     dither0: dither@14012000 {
+         compatible = "mediatek,mt8183-disp-dither";
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+index 1ec083eff824..1ab30b0efffe 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+@@ -60,6 +60,10 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/power/mt8195-power.h>
+ 
+     dsc0: disp_dsc_wrap@1c009000 {
+         compatible = "mediatek,mt8195-disp-dsc";
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+index 247baad147b3..4f8ba492dc0a 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+@@ -66,6 +66,10 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/gce/mt8173-gce.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/power/mt8173-power.h>
+ 
+     gamma@14016000 {
+         compatible = "mediatek,mt8173-disp-gamma";
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
+index 6eca525eced0..ad3a69d1254c 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
+@@ -71,6 +71,10 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/gce/mt8173-gce.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/power/mt8173-power.h>
+ 
+     mutex: mutex@14020000 {
+         compatible = "mediatek,mt8173-disp-mutex";
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
+index 7519db315217..1f92566ff5ed 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
+@@ -45,6 +45,7 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8173-clk.h>
+ 
+     od@14023000 {
+         compatible = "mediatek,mt8173-disp-od";
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
+index e3cef99d0f98..e810e152404a 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
+@@ -66,6 +66,11 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/gce/mt8183-gce.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/memory/mt8183-larb-port.h>
++    #include <dt-bindings/power/mt8183-power.h>
+ 
+     ovl_2l0: ovl@14009000 {
+         compatible = "mediatek,mt8183-disp-ovl-2l";
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+index 93d5c68a2dbd..14673f979edc 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+@@ -81,6 +81,11 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/gce/mt8173-gce.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/memory/mt8173-larb-port.h>
++    #include <dt-bindings/power/mt8173-power.h>
+ 
+     ovl0: ovl@1400c000 {
+         compatible = "mediatek,mt8173-disp-ovl";
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
+index 6ac1da2e8871..d0d45d1e4f15 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
+@@ -58,6 +58,10 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8192-clk.h>
++    #include <dt-bindings/gce/mt8192-gce.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/power/mt8192-power.h>
+ 
+     postmask0: postmask@1400d000 {
+         compatible = "mediatek,mt8192-disp-postmask";
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+index b56e22fbcd52..2265fef6a795 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+@@ -94,6 +94,11 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/gce/mt8173-gce.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/memory/mt8173-larb-port.h>
++    #include <dt-bindings/power/mt8173-power.h>
+ 
+     rdma0: rdma@1400e000 {
+         compatible = "mediatek,mt8173-disp-rdma";
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
+index 4f08e89c1067..83e6cb40ba7c 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
+@@ -49,6 +49,9 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/power/mt8173-power.h>
+ 
+     split0: split@14018000 {
+         compatible = "mediatek,mt8173-disp-split";
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
+index 6e8748529e73..69cddc2ee531 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
+@@ -51,6 +51,9 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/power/mt8173-power.h>
+ 
+     ufoe@1401a000 {
+         compatible = "mediatek,mt8173-disp-ufoe";
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
+index f9f00a518edf..60e9f890ebf1 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
+@@ -64,6 +64,11 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/gce/mt8173-gce.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/memory/mt8173-larb-port.h>
++    #include <dt-bindings/power/mt8173-power.h>
+ 
+     wdma0: wdma@14011000 {
+         compatible = "mediatek,mt8173-disp-wdma";
+-- 
+2.34.1
 
-> +			afe: mt8192-afe-pcm {
-> +				compatible = "mediatek,mt8192-audio";
-> +				interrupts = <GIC_SPI 202 IRQ_TYPE_LEVEL_HIGH 0>;
-> +				resets = <&watchdog 17>;
-> +				reset-names = "audiosys";
-> +				mediatek,apmixedsys = <&apmixedsys>;
-> +				mediatek,infracfg = <&infracfg>;
-> +				mediatek,topckgen = <&topckgen>;
-> +				power-domains = <&spm MT8192_POWER_DOMAIN_AUDIO>;
-> +				clocks = <&audsys CLK_AUD_AFE>,
-
-There are many more clocks then in the bindings, can please fix that.
-
-Regards,
-Matthias
-
-> +					 <&audsys CLK_AUD_DAC>,
-> +					 <&audsys CLK_AUD_DAC_PREDIS>,
-> +					 <&audsys CLK_AUD_ADC>,
-> +					 <&audsys CLK_AUD_ADDA6_ADC>,
-> +					 <&audsys CLK_AUD_22M>,
-> +					 <&audsys CLK_AUD_24M>,
-> +					 <&audsys CLK_AUD_APLL_TUNER>,
-> +					 <&audsys CLK_AUD_APLL2_TUNER>,
-> +					 <&audsys CLK_AUD_TDM>,
-> +					 <&audsys CLK_AUD_TML>,
-> +					 <&audsys CLK_AUD_NLE>,
-> +					 <&audsys CLK_AUD_DAC_HIRES>,
-> +					 <&audsys CLK_AUD_ADC_HIRES>,
-> +					 <&audsys CLK_AUD_ADC_HIRES_TML>,
-> +					 <&audsys CLK_AUD_ADDA6_ADC_HIRES>,
-> +					 <&audsys CLK_AUD_3RD_DAC>,
-> +					 <&audsys CLK_AUD_3RD_DAC_PREDIS>,
-> +					 <&audsys CLK_AUD_3RD_DAC_TML>,
-> +					 <&audsys CLK_AUD_3RD_DAC_HIRES>,
-> +					 <&infracfg CLK_INFRA_AUDIO>,
-> +					 <&infracfg CLK_INFRA_AUDIO_26M_B>,
-> +					 <&topckgen CLK_TOP_AUDIO_SEL>,
-> +					 <&topckgen CLK_TOP_AUD_INTBUS_SEL>,
-> +					 <&topckgen CLK_TOP_MAINPLL_D4_D4>,
-> +					 <&topckgen CLK_TOP_AUD_1_SEL>,
-> +					 <&topckgen CLK_TOP_APLL1>,
-> +					 <&topckgen CLK_TOP_AUD_2_SEL>,
-> +					 <&topckgen CLK_TOP_APLL2>,
-> +					 <&topckgen CLK_TOP_AUD_ENGEN1_SEL>,
-> +					 <&topckgen CLK_TOP_APLL1_D4>,
-> +					 <&topckgen CLK_TOP_AUD_ENGEN2_SEL>,
-> +					 <&topckgen CLK_TOP_APLL2_D4>,
-> +					 <&topckgen CLK_TOP_APLL_I2S0_M_SEL>,
-> +					 <&topckgen CLK_TOP_APLL_I2S1_M_SEL>,
-> +					 <&topckgen CLK_TOP_APLL_I2S2_M_SEL>,
-> +					 <&topckgen CLK_TOP_APLL_I2S3_M_SEL>,
-> +					 <&topckgen CLK_TOP_APLL_I2S4_M_SEL>,
-> +					 <&topckgen CLK_TOP_APLL_I2S5_M_SEL>,
-> +					 <&topckgen CLK_TOP_APLL_I2S6_M_SEL>,
-> +					 <&topckgen CLK_TOP_APLL_I2S7_M_SEL>,
-> +					 <&topckgen CLK_TOP_APLL_I2S8_M_SEL>,
-> +					 <&topckgen CLK_TOP_APLL_I2S9_M_SEL>,
-> +					 <&topckgen CLK_TOP_APLL12_DIV0>,
-> +					 <&topckgen CLK_TOP_APLL12_DIV1>,
-> +					 <&topckgen CLK_TOP_APLL12_DIV2>,
-> +					 <&topckgen CLK_TOP_APLL12_DIV3>,
-> +					 <&topckgen CLK_TOP_APLL12_DIV4>,
-> +					 <&topckgen CLK_TOP_APLL12_DIVB>,
-> +					 <&topckgen CLK_TOP_APLL12_DIV5>,
-> +					 <&topckgen CLK_TOP_APLL12_DIV6>,
-> +					 <&topckgen CLK_TOP_APLL12_DIV7>,
-> +					 <&topckgen CLK_TOP_APLL12_DIV8>,
-> +					 <&topckgen CLK_TOP_APLL12_DIV9>,
-> +					 <&topckgen CLK_TOP_AUDIO_H_SEL>,
-> +					 <&clk26m>;
-> +				clock-names = "aud_afe_clk",
-> +					      "aud_dac_clk",
-> +					      "aud_dac_predis_clk",
-> +					      "aud_adc_clk",
-> +					      "aud_adda6_adc_clk",
-> +					      "aud_apll22m_clk",
-> +					      "aud_apll24m_clk",
-> +					      "aud_apll1_tuner_clk",
-> +					      "aud_apll2_tuner_clk",
-> +					      "aud_tdm_clk",
-> +					      "aud_tml_clk",
-> +					      "aud_nle",
-> +					      "aud_dac_hires_clk",
-> +					      "aud_adc_hires_clk",
-> +					      "aud_adc_hires_tml",
-> +					      "aud_adda6_adc_hires_clk",
-> +					      "aud_3rd_dac_clk",
-> +					      "aud_3rd_dac_predis_clk",
-> +					      "aud_3rd_dac_tml",
-> +					      "aud_3rd_dac_hires_clk",
-> +					      "aud_infra_clk",
-> +					      "aud_infra_26m_clk",
-> +					      "top_mux_audio",
-> +					      "top_mux_audio_int",
-> +					      "top_mainpll_d4_d4",
-> +					      "top_mux_aud_1",
-> +					      "top_apll1_ck",
-> +					      "top_mux_aud_2",
-> +					      "top_apll2_ck",
-> +					      "top_mux_aud_eng1",
-> +					      "top_apll1_d4",
-> +					      "top_mux_aud_eng2",
-> +					      "top_apll2_d4",
-> +					      "top_i2s0_m_sel",
-> +					      "top_i2s1_m_sel",
-> +					      "top_i2s2_m_sel",
-> +					      "top_i2s3_m_sel",
-> +					      "top_i2s4_m_sel",
-> +					      "top_i2s5_m_sel",
-> +					      "top_i2s6_m_sel",
-> +					      "top_i2s7_m_sel",
-> +					      "top_i2s8_m_sel",
-> +					      "top_i2s9_m_sel",
-> +					      "top_apll12_div0",
-> +					      "top_apll12_div1",
-> +					      "top_apll12_div2",
-> +					      "top_apll12_div3",
-> +					      "top_apll12_div4",
-> +					      "top_apll12_divb",
-> +					      "top_apll12_div5",
-> +					      "top_apll12_div6",
-> +					      "top_apll12_div7",
-> +					      "top_apll12_div8",
-> +					      "top_apll12_div9",
-> +					      "top_mux_audio_h",
-> +					      "top_clk26m_clk";
-> +			};
-> +		};
-> +
->   		nor_flash: spi@11234000 {
->   			compatible = "mediatek,mt8192-nor";
->   			reg = <0 0x11234000 0 0xe0>;
-> @@ -757,12 +885,6 @@
->   			status = "disable";
->   		};
->   
-> -		audsys: clock-controller@11210000 {
-> -			compatible = "mediatek,mt8192-audsys", "syscon";
-> -			reg = <0 0x11210000 0 0x1000>;
-> -			#clock-cells = <1>;
-> -		};
-> -
->   		i2c3: i2c@11cb0000 {
->   			compatible = "mediatek,mt8192-i2c";
->   			reg = <0 0x11cb0000 0 0x1000>,
 
 _______________________________________________
 Linux-mediatek mailing list
