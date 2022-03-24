@@ -4,72 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76FDDC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Mar 2022 23:36:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97BAEC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Mar 2022 23:50:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=878ho8FQMvIrLBNwz7oU/JJoguNY4I3uQ6KNcS+t42U=; b=JXZsR0hIj3hxM8
-	dckV9qE5JrbtkFbvBqxgbt9PVUs9Jg39+f2urVLz2y1rIwBHmq78KkNdvtyJoyOgT7PYytXRjouK+
-	FEz+WZPT2sa80ACl03MQb3vyd7UZR3tCduMail/weOmnCsGehXH/wmD+WmFt3l1YCVxCCcB8qs3xg
-	GjE8sOKiUgmT4chgLxmkXC+jO2vXkoXtLAn5Ub+HYkSv2PzppfMzIJETI0X81e8k7Jv57Ag6V+4KY
-	dPH8MH7R49ebAe7IFYwPHbXSVBjm6PNV8843jJNsSXwK0rElKZtmbczaPWgCafjJVD9dEBTbCj70m
-	m0mu843HQPKUql0OV9cw==;
+	List-Owner; bh=6zdU6Pup90orzodnii2pfvWwiyo6yIYxYb3Eq3AbB44=; b=YLohtDIR3y1s12
+	FRLe4uv7hDKzyW4SCnQbCeLyUWUdtitp+t0cVYRWv/se/+3Y2PndRpTzjqiNuGw0y4sM1NNXT7dAL
+	MOlNdcbx10E++Spn4BdlHNGrXPV7Dcm1YIk2BxCHnbbWzqR2rjxaCyYVx4z1V/0HP6NxA7va2fsYr
+	T674/3uEP//tRV+d8WPFAU42mN1MeVIG/orDlHwNJp32ARke5ZmS8gaoW8WJAOwk24u9zGBfAH6pR
+	/rGjuQpjQoP6ZCdu3ikI5R0EfNB1FO7oafVJbowNm18xu8IomexctXWznbIcVq6qBXFgMy+f6xBQc
+	kuKsV3G7uEJqOCwLlErQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nXWzi-000ZRR-0p; Thu, 24 Mar 2022 23:35:54 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1nXXDU-000bSO-Sn; Thu, 24 Mar 2022 23:50:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nXWzf-000ZQj-FO
- for linux-mediatek@lists.infradead.org; Thu, 24 Mar 2022 23:35:52 +0000
-Received: by mail-ej1-x630.google.com with SMTP id lr4so3775869ejb.11
- for <linux-mediatek@lists.infradead.org>; Thu, 24 Mar 2022 16:35:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=0o8oWeOMAEkOTxmLuclyfRnkj3vNYhXxWM1g/i8YYyw=;
- b=PyGnV6IKjC3aOySkg5s9HM2x1RHndWLLDdlwrX01jNIlZJGsrt29r2qugLL1ky7b2X
- rjoJNJF90LPo9254rkevlAXVu0ghfHuHz71lZUnZzYsWYfTyQQKwIRMEMhxdQq+eCpeu
- sa9PF6/EDr92RxDq2nMD/uxEU7ZJdlAGiuRFg2L6eWL1/lgjPi7D69d9yV3PA1uc6q0C
- u3B2coYHb+0WnbqJd0iRw3p0Wrhu54LmW5mRyp5+oFH/9jbzd+k/MoMs0H8vMWOn4ogN
- 3lbUOnJ/Iw4+VHEgYHN0CnZo7lfFofhSxWwB76VvH4yMQEqieTF/pkzeNoHF3vw02o7B
- aOOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=0o8oWeOMAEkOTxmLuclyfRnkj3vNYhXxWM1g/i8YYyw=;
- b=jB3fSeHKQouNI5OkQqmSXmaRN2SbRkbzsbvtfYMQudtXKDtnNIrCrw006waBMH7czf
- 9ViOfe8p02RvSh0f1WwvUNwlf14BFF2e9X7g7ZkMmQGiT6jH+eYAeS1BRIM8S2zwaYV7
- 3UyuMc3OWMDx566Xa4yasxfW58J5Mkf56x0s54nOSZaqoKpE+vk4lrGul+lkL8HwPkjT
- NBv+8LoXPZDc3nN8PQ2VwvWNZCeSHSVWBHCvoCcUpfX1rlXjoITGBePX8zsr4hpmygY7
- jqGll52hfbOxMNNAYEZbvn5u3HRRXpvGrowJihdX4Jj/cC+sP0nS7uQ5sS7LfDB3kFu+
- 0bCA==
-X-Gm-Message-State: AOAM532mLH2Rx5capucsbCcFScBmE5x9uyMM1Pq6GJmjAox5ZXYOdJRD
- 3A/QAdTeZaMREy20hTOCDQDRMKQs8s8DWaoGZJ0=
-X-Google-Smtp-Source: ABdhPJx2XAfqjsmN2+Mv+7/Oc+pDkDeioXPkvZDamVrLp4s9Vxi3/kV4lBnANZ8B6DhawEFcxbUiePZblMhua3prnbE=
-X-Received: by 2002:a17:906:478b:b0:6db:8b6e:d5de with SMTP id
- cw11-20020a170906478b00b006db8b6ed5demr8825286ejc.161.1648164949096; Thu, 24
- Mar 2022 16:35:49 -0700 (PDT)
+ id 1nXXDH-000bPH-An; Thu, 24 Mar 2022 23:49:59 +0000
+X-UUID: e6080b5e212f49f38188c4565052c13f-20220324
+X-UUID: e6080b5e212f49f38188c4565052c13f-20220324
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1343338609; Thu, 24 Mar 2022 16:49:44 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Mar 2022 16:48:45 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 25 Mar 2022 07:48:43 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 25 Mar 2022 07:48:43 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <xinlei.lee@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <allen-kh.cheng@mediatek.com>, <devicetree@vger.kernel.org>,
+ <jitao.shi@mediatek.com>, <lee.jones@linaro.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-pwm@vger.kernel.org>,
+ <matthias.bgg@gmail.com>, <rex-bc.chen@mediatek.com>, <robh+dt@kernel.org>,
+ <thierry.reding@gmail.com>, <u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH v4,
+ 1/6] dt-bindings: pwm: Convert pwm-mtk-disp.txt to mediatek,
+ pwm-disp.yaml format
+Date: Fri, 25 Mar 2022 07:48:43 +0800
+Message-ID: <20220324234843.20641-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <1648101804-3584-2-git-send-email-xinlei.lee@mediatek.com>
+References: <1648101804-3584-2-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
-References: <1648163409-18338-1-git-send-email-chunkuang.hu@kernel.org>
-In-Reply-To: <1648163409-18338-1-git-send-email-chunkuang.hu@kernel.org>
-From: Dave Airlie <airlied@gmail.com>
-Date: Fri, 25 Mar 2022 09:35:37 +1000
-Message-ID: <CAPM=9ty5wwXvtU6W3yZ4Kgk5V3+ZiQFibSGhDXr+a7RxUpOAUA@mail.gmail.com>
-Subject: Re: [GIT PULL] mediatek drm fixes - 20220325
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
- dri-devel <dri-devel@lists.freedesktop.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- "jason-jh . lin" <jason-jh.lin@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220324_163551_542934_82A95E1F 
-X-CRM114-Status: UNSURE (   8.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220324_164955_395687_7A3FF3F3 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,21 +77,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 25 Mar 2022 at 09:09, Chun-Kuang Hu <chunkuang.hu@kernel.org> wrote:
->
-> Hi, Dave & Daniel:
->
-> This includes:
->
-> 1. Fix dt-binding issue.
->
+> Convert pwm-mtk-disp.txt to mediatek,pwm-disp.yaml format as suggested by maintainer
+> 
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> ---
+>  .../bindings/pwm/mediatek,pwm-disp.yaml       | 65 +++++++++++++++++++
+>  .../devicetree/bindings/pwm/pwm-mtk-disp.txt  | 44 -------------
+>  2 files changed, 65 insertions(+), 44 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
+> new file mode 100644
+> index 000000000000..f844695d605a
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
+> @@ -0,0 +1,65 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pwm/mediatek,pwm-disp.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek DISP_PWM Controller Device Tree Bindings
 
-This tree is based on a random drm-next tree, which I can't pull.
-Please base it on the latest drm-next tree.
+s/Mediatek/MediaTek/
 
-I tried cherry-pick these patches over and it failed badly on the last one.
-
-Dave.
+Thanks,
+Miles
+> +
+> +maintainers:
+> +  - Jitao Shi <jitao.shi@mediatek.com>
+> +  - Xinlei Lee <xinlei.lee@mediatek.com>
+> +
+> +allOf:
 
 _______________________________________________
 Linux-mediatek mailing list
