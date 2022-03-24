@@ -4,68 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFEF2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Mar 2022 21:20:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EC30C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Mar 2022 23:10:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UM1NPAIdtLjMWTEcL71wlMekDalVAHyzxDuDiM1BiNE=; b=gSk9okz7Ioi5pX
-	v/XZ+ld3PrnktckQkR9v4vDbHMKaRWsozwPo0jYCm6OtZ+pzJ1wK7FSNjnZV7ee7VGKX9V+5av6Wf
-	aRbzIQuZmY4ea0Cq9cShBaf250CeIHwE+iqk1R/IL3raaF4IoEHbfenM9VZsHjy2bDRnhml/kKWIK
-	L7NPYvYqEdOSzceVaDxQH6JX+ODHKPSLD2mFbA186/nq0svJuXS8+p8l/Pp16SJCl3CtKfQv6ulms
-	FrSABxaHZUz6lQffWmQzzM/wyvwqN+nqi4LkepzvG4zW1DsC3k5uCzzBay3RU5AQ9tdNMYl3RKk4c
-	Yt+9tHDGhlzcVEccjTdA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=BJ4V+/0YOarbnkYB2sNWFrqwXsH804Q1LtdWnWiML74=; b=pOgDaUivIsqcGc
+	oL3H9Dr/Ta4IU7qjl92wOnF+Q7VFo5LvFHi2kuBUfhYP0uBEd7Ozm2lbfzK7Elm7mTzKU50KNBYhC
+	XUUggvkruonNQPMQMAOz2AOKq+1owPZ/7JdA0j6fJTcC+t5EFTvbJzHWjtvZzzeG24oXgCp/XQ5aC
+	gU6Cxq2cuh5GFOpLpiliCM4+fxDM1Ds1ydeih/k8P7EuX7qNAecMuNW650P4pogr5Kmr/4Urzp9+K
+	EfzEK4Mh7WctIMs+OfOXUW6f1zgYzYFLDulyMm3o019z1bvoeTB7kuy0RUcNayEi9Hn8CYRY4kVkm
+	P7/VnjqZAKLtMT2A3CAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nXUsR-000Hvi-88; Thu, 24 Mar 2022 21:20:15 +0000
-Received: from mail-ot1-f54.google.com ([209.85.210.54])
+	id 1nXWae-000Wr3-7w; Thu, 24 Mar 2022 23:10:00 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nXUsE-000HtE-Oc; Thu, 24 Mar 2022 21:20:04 +0000
-Received: by mail-ot1-f54.google.com with SMTP id
- o20-20020a9d7194000000b005cb20cf4f1bso4195652otj.7; 
- Thu, 24 Mar 2022 14:20:02 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=nZWBFSxF5EcD/7zsReIxioOFi/XH9lIHO9AjBk+DuYQ=;
- b=pBlfwNXGBDvm3AM980CpXsSpHC7ceKvdBwOXHhfi6FrEHbrEGKugpwrRMSJFzEK7up
- U3XJg6xcH5uAL5sun0y0SfFdt3fIPjOGSkh1G8EhzmCJQeyO1GbbzK5QF2WY1PA0LssY
- Q7VVa6Qa7B9Si4uaDCL/fB9HZgyKBdAcOfpQD/1oCGKoJnIh5oGRC+yLnRh0lRMT1jdy
- Movt1a01v3H0HbYqQ0GYkEh2nIEF7M/O4jqWqna7U3mDhrFB1YDHL3eK4Bxp8ViCmYnr
- dRlbXGPjfomcIc84lCdiz95m3VlOfIfvrA99jiagvEaNAt5g0TN+m5WMenpyWx+v3I2P
- fGUg==
-X-Gm-Message-State: AOAM533dr9GBypxXGOibh+Wkw19L2dIcNxZrVFwEw0bLIcF3fYTyjSfE
- tBROzBAmOKP7D6jR4n/dPw==
-X-Google-Smtp-Source: ABdhPJyODYrocQIME0OAE9G5smC2auk9j+xSOw5TB2oty2nbpPQU2zFSF3ULc0wpM/GONsqTcT7sJw==
-X-Received: by 2002:a9d:7319:0:b0:5cd:121e:e11 with SMTP id
- e25-20020a9d7319000000b005cd121e0e11mr3043744otk.148.1648156801286; 
- Thu, 24 Mar 2022 14:20:01 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- t10-20020a056830224a00b005cd9db03fabsm1806726otd.78.2022.03.24.14.19.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Mar 2022 14:20:00 -0700 (PDT)
-Received: (nullmailer pid 2592144 invoked by uid 1000);
- Thu, 24 Mar 2022 21:19:59 -0000
-Date: Thu, 24 Mar 2022 16:19:59 -0500
-From: Rob Herring <robh@kernel.org>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: Re: [PATCH v2 0/4] Fix MediaTek display dt-bindings issues
-Message-ID: <Yjzgf10zAhrkpYde@robh.at.kernel.org>
-References: <20220309134702.9942-1-jason-jh.lin@mediatek.com>
- <CAL_Jsq+=hTKTjB8rR77_uQYKDWHzLyTdeU7zbixSCZCNrdmNvg@mail.gmail.com>
- <CAAOTY__kzL8YuGo-oKct4c_bL-Ch5rW8wBpkhOXkK+a10gNXVg@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAAOTY__kzL8YuGo-oKct4c_bL-Ch5rW8wBpkhOXkK+a10gNXVg@mail.gmail.com>
+ id 1nXWab-000Wqa-6O
+ for linux-mediatek@lists.infradead.org; Thu, 24 Mar 2022 23:09:58 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id BBCFA6162D;
+ Thu, 24 Mar 2022 23:09:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE958C340EC;
+ Thu, 24 Mar 2022 23:09:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1648163396;
+ bh=koL0yw/ZGPvfN2cElH8U7dgkhIxPULfTtIaPQ3OmoqQ=;
+ h=From:To:Cc:Subject:Date:From;
+ b=CTYeZLrYwcwEEFtZIY14kEBvBnhvexZTucDHpM/f8bl9nUVKPtDXa0K+BwRuwonhF
+ SKwxZ1SLUM9YzpmvfPHDNKhbK+3X0BcFKq8aRa2gBfajNJL9YgAkfZrIDv7Oj5rh2t
+ ZSFXmIRsRge/rSBYAnGPGKVMe78TjiYeDeuF4BrvX6tTQsr8lKKoBv+uEocwvxUVHO
+ vnK5/I1wijXnannR3MCvlUvfCixLd6gluaaqKYDJZfanyhJMQ4rmIXfmrCkGcU8LsE
+ Ss/WvbW8dfYgn0V3vH7W7gNGL6p/zNcpRVUeZMV2jgdUF1rkLhvyvjbPyM3I7J/GL/
+ Ra2lpp9fJleIA==
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: Rob Herring <robh@kernel.org>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [GIT PULL] mediatek drm fixes - 20220325
+Date: Fri, 25 Mar 2022 07:10:09 +0800
+Message-Id: <1648163409-18338-1-git-send-email-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220324_142002_831594_1E77380A 
-X-CRM114-Status: GOOD (  21.52  )
+X-CRM114-CacheID: sfid-20220324_160957_300965_81C4E625 
+X-CRM114-Status: UNSURE (   8.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,58 +67,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: David Airlie <airlied@linux.ie>, singo.chang@mediatek.com,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Fabien Parent <fparent@baylibre.com>,
- "moderated list:ARM/STM32 ARCHITECTURE"
- <linux-stm32@st-md-mailman.stormreply.com>,
- "roy-cw.yeh" <roy-cw.yeh@mediatek.com>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- DTML <devicetree@vger.kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- Nancy Lin <nancy.lin@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "jason-jh.lin" <jason-jh.lin@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Moudy Ho <moudy.ho@mediatek.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBNYXIgMjQsIDIwMjIgYXQgMDk6MjU6NDRQTSArMDgwMCwgQ2h1bi1LdWFuZyBIdSB3
-cm90ZToKPiBIaSwgUm9iOgo+IAo+IFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+IOaWvCAy
-MDIy5bm0M+aciDIz5pelIOmAseS4iSDkuIvljYgxMDoxMOWvq+mBk++8mgo+ID4KPiA+IE9uIFdl
-ZCwgTWFyIDksIDIwMjIgYXQgNzo0NyBBTSBqYXNvbi1qaC5saW4gPGphc29uLWpoLmxpbkBtZWRp
-YXRlay5jb20+IHdyb3RlOgo+ID4gPgo+ID4gPiBUaGUgdmRvc3lzMCBzZXJpZXMgY2FycmllZCBh
-IG5pY2UgZHQtYmluZGluZ3MgY29udmVyc2lvbiBvZiB0aGUgb2xkCj4gPiA+IHR4dCBkb2N1bWVu
-dGF0aW9uIGZvciB0aGUgZW50aXJlIG1lZGlhdGVrLWRybSBkcml2ZXIsIGJ1dCBzb21lIG9mCj4g
-PiA+IHRoZSBpc3N1ZXMgaW4gdGhlcmUgd2VyZW4ndCBzZWVuLgo+ID4gPgo+ID4gPiBUaGlzIHNl
-cmllcyBpcyBmaXhpbmcgYWxsIG9mIHRoZSBpc3N1ZXMgcG9pbnRlZCBvdXQgYnkgYQo+ID4gPiBg
-ZHRfYmluZGluZ19jaGVja2AgcnVuLCBmb2xsb3dlZCBieSBgZHRic19jaGVja2AuCj4gPiA+Cj4g
-PiA+IENoYW5nZSBpbiB2MjoKPiA+ID4gLSByZW1vdmUgbWVkaWF0ZWssZXRoZHIueWFtbCBmaWxl
-Cj4gPiA+IC0gY2hhbmdlIGluY2x1ZGUgaGVhZGVyIG9mIG1lZGlhdGVrLG92bC0ybC55YW1sIGZy
-b20gbXQ4MTczIHRvIG10ODE4Mwo+ID4gPgo+ID4gPiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdu
-byAoMyk6Cj4gPiA+ICAgZHQtYmluZGluZ3M6IGRpc3BsYXk6IG1lZGlhdGVrLCBtdXRleDogRml4
-IG1lZGlhdGVrLCBnY2UtZXZlbnRzIHR5cGUKPiA+ID4gICBkdC1iaW5kaW5nczogZGlzcGxheTog
-bWVkaWF0ZWssIG92bDogRml4ICdpb21tdScgcmVxdWlyZWQgcHJvcGVydHkKPiA+ID4gICAgIHR5
-cG8KPiA+ID4gICBkdC1iaW5kaW5nczogZGlzcGxheTogbWVkaWF0ZWs6IEZpeCBleGFtcGxlcyBv
-biBuZXcgYmluZGluZ3MKPiA+ID4KPiA+ID4gamFzb24tamgubGluICgxKToKPiA+ID4gICBSZXZl
-cnQgImR0LWJpbmRpbmdzOiBkaXNwbGF5OiBtZWRpYXRlazogYWRkIGV0aGRyIGRlZmluaXRpb24g
-Zm9yCj4gPiA+ICAgICBtdDgxOTUiCj4gPgo+ID4gQ2FuIHRoaXMgc2VyaWVzIGdldCBhcHBsaWVk
-IHNvb24/IGxpbnV4LW5leHQgaXMgc3RpbGwgYnJva2VuLgo+ID4KPiA+IElmIGl0IGhpdHMgTGlu
-dXMnIHRyZWUsIEkgd2lsbCBiZSBhcHBseWluZyB0aGVtLgo+IAo+IEkndmUgYXBwbGllZCB0aGlz
-IHNlcmllcyB0byBteSB0cmVlIFsxXSwgYnV0IG5vdyBpcyBtZXJnZSB3aW5kb3csIHNvIEkKPiBw
-bGFuIHRvIHNlbmQgdGhpcyBzZXJpZXMgdGhyb3VnaCBEYXZlJ3MgdHJlZSBhZnRlciA1LjE4LXJj
-MS4gV291bGQKPiB0aGlzIGJlIHRvbyBsYXRlIGZvciB5b3U/CgpZZXMsIHBlb3BsZSBiYXNlIHRo
-ZWlyIGRldmVsb3BtZW50IG9uIC1yYzEgYW5kIGl0IHdvdWxkIGJlIG5pY2UgdG8gaGF2ZSAKYSBm
-dW5jdGlvbmFsIHRyZWUuCgpUaGVyZSdzIG5vdCByZWFsbHkgYW55IG5lZWQgdG8gd2FpdCB0byBz
-ZW5kIGZpeGVzLgoKUm9iCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LW1lZGlhdGVrCg==
+Hi, Dave & Daniel:
+
+This includes:
+
+1. Fix dt-binding issue.
+
+Regards,
+Chun-Kuang.
+
+The following changes since commit 71941773e143369a73c9c4a3b62fbb60736a1182:
+
+  Add linux-next specific files for 20220310 (2022-03-10 20:04:36 +1100)
+
+are available in the git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-fixes-20220325
+
+for you to fetch changes up to 64884e592d71fd567fef7bdcb0736a5dae71ecb2:
+
+  dt-bindings: display: mediatek: Fix examples on new bindings (2022-03-12 17:32:33 +0800)
+
+----------------------------------------------------------------
+Mediatek DRM Fixes - 20220325
+
+1. Fix dt-binding issue.
+
+----------------------------------------------------------------
+AngeloGioacchino Del Regno (3):
+      dt-bindings: display: mediatek, mutex: Fix mediatek, gce-events type
+      dt-bindings: display: mediatek, ovl: Fix 'iommu' required property typo
+      dt-bindings: display: mediatek: Fix examples on new bindings
+
+jason-jh.lin (1):
+      Revert "dt-bindings: display: mediatek: add ethdr definition for mt8195"
+
+ .../bindings/display/mediatek/mediatek,aal.yaml    |  23 +++-
+ .../bindings/display/mediatek/mediatek,ccorr.yaml  |  23 +++-
+ .../bindings/display/mediatek/mediatek,color.yaml  |  23 +++-
+ .../bindings/display/mediatek/mediatek,dither.yaml |  23 +++-
+ .../bindings/display/mediatek/mediatek,dpi.yaml    |   3 +-
+ .../bindings/display/mediatek/mediatek,dsc.yaml    |  23 +++-
+ .../bindings/display/mediatek/mediatek,ethdr.yaml  | 147 ---------------------
+ .../bindings/display/mediatek/mediatek,gamma.yaml  |  23 +++-
+ .../bindings/display/mediatek/mediatek,merge.yaml  |  49 +++----
+ .../bindings/display/mediatek/mediatek,mutex.yaml  |  27 ++--
+ .../bindings/display/mediatek/mediatek,od.yaml     |  14 +-
+ .../bindings/display/mediatek/mediatek,ovl-2l.yaml |  26 ++--
+ .../bindings/display/mediatek/mediatek,ovl.yaml    |  28 ++--
+ .../display/mediatek/mediatek,postmask.yaml        |  23 +++-
+ .../bindings/display/mediatek/mediatek,rdma.yaml   |  28 ++--
+ .../bindings/display/mediatek/mediatek,split.yaml  |  17 ++-
+ .../bindings/display/mediatek/mediatek,ufoe.yaml   |  19 ++-
+ .../bindings/display/mediatek/mediatek,wdma.yaml   |  26 ++--
+ 18 files changed, 262 insertions(+), 283 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
