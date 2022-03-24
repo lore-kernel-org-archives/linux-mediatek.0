@@ -4,62 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D5F6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Mar 2022 06:12:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48270C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Mar 2022 06:45:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ok8ocTY7oJgzHgTRmtm/UdcMtTGKffi7TD4cZhTaxM8=; b=eaCDlch8rPXRXC
-	7wrkRWexN3C8kNkMb3yDVm91IW0fhweTZA8Ef5iUryOE5JHcGzTUrWGuKMxfySq77Xes3TChPQtbC
-	sY/jedOXOXd1CwNnj+foGhY4fCdVo0w/LzAZFd+99YTl2hsZIga6oBECSkRUZSU6m+9v1T9V0Tgnc
-	zh9BBpTEPf2IIybhjQi/bxwOL+TDjONQfHQSrF/+Dyj+GAP+teZf6S1dLPxNVnBxF7YBOSQbhzZXZ
-	XqQucdEaaAaCZYS16qvRP/IjX1kbuU1srFlFQQIBRtOMPSs/co1A0nBAbTsRvyHDroqspkUT0yUkr
-	pLfhRg4S6hFMbawZj7pQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=eKZ0x9yMGFoS0SpeCqnjulZhJ+JfzYYKxynDurfq2T4=; b=e6N7FZc/SkWegG
+	QPbGZBtoySkhBgi5M8v/P2gM9/kZATA7z7vr3mH1FHdAhWxPOCq6Jw2NvlVeGaO/3kI1+DXnXd8wC
+	4y9w4VDAGnCRzD45iCjVEjLQcQVdgAHWewIfS0gXESOFIxCEA9pdqtzm0ACo+RiHXBdAbZLM16pHw
+	fM1ZibFOKRzTTKYoam7gxdJTRkDHUfoK3MGksfWZKsXwBGSMKGuO9U/pKrr6c9eFBEUZl8D5GdxLC
+	Okb1UP1kCVQbNQE/stv36NlET3pbgOB+Z2ahgggY9w1yyH+I3tP4IN8cPZfhaqP76FbMaLbqC85Tm
+	yNMZhnByIGMnwLW/KhGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nXGhU-00Fm9x-1t; Thu, 24 Mar 2022 06:12:00 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nXHE2-00Froy-Ip; Thu, 24 Mar 2022 06:45:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nXGhE-00Fm6C-Oi; Thu, 24 Mar 2022 06:11:45 +0000
-X-UUID: 075757c44ee64c4aa3c3f1eb3a84173e-20220323
-X-UUID: 075757c44ee64c4aa3c3f1eb3a84173e-20220323
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <xinlei.lee@mediatek.com>)
+ id 1nXHDy-00Frnt-JJ; Thu, 24 Mar 2022 06:45:35 +0000
+X-UUID: 7a75878a59aa49d8aece1146762c0862-20220323
+X-UUID: 7a75878a59aa49d8aece1146762c0862-20220323
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <jiaxin.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1801371441; Wed, 23 Mar 2022 23:11:41 -0700
-Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Mar 2022 23:03:34 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS34N1.mediatek.inc
- (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 24 Mar 2022 14:03:32 +0800
-Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
- MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Thu, 24 Mar 2022 14:03:31 +0800
-From: <xinlei.lee@mediatek.com>
-To: <thierry.reding@gmail.com>, <u.kleine-koenig@pengutronix.de>,
- <lee.jones@linaro.org>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>,
- <linux-pwm@vger.kernel.org>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ with ESMTP id 1905944314; Wed, 23 Mar 2022 23:45:30 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Mar 2022 23:45:28 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 24 Mar 2022 14:45:13 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 24 Mar 2022 14:45:13 +0800
+From: Jiaxin Yu <jiaxin.yu@mediatek.com>
+To: <broonie@kernel.org>, <robh+dt@kernel.org>, <tzungbi@google.com>
+CC: <angelogioacchino.delregno@collabora.com>, <aaronyu@google.com>,
+ <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>, <linmq006@gmail.com>,
+ <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <jitao.shi@mediatek.com>, <rex-bc.chen@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, Xinlei Lee <xinlei.lee@mediatek.com>
-Subject: [PATCH v4,
- 2/6] dt-bindings: pwm: Remove compatible for MediaTek MT8167
-Date: Thu, 24 Mar 2022 14:03:20 +0800
-Message-ID: <1648101804-3584-3-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1648101804-3584-1-git-send-email-xinlei.lee@mediatek.com>
-References: <1648101804-3584-1-git-send-email-xinlei.lee@mediatek.com>
+ <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
+ <jiaxin.yu@mediatek.corp-partner.google.com>
+Subject: [v7 0/4] ASoC: mediatek: mt8192: support rt1015p_rt5682s
+Date: Thu, 24 Mar 2022 14:45:07 +0800
+Message-ID: <20220324064511.10665-1-jiaxin.yu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220323_231144_815452_DEC71049 
-X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-CacheID: sfid-20220323_234534_652600_04DDA7E7 
+X-CRM114-Status: UNSURE (   9.17  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,32 +74,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Xinlei Lee <xinlei.lee@mediatek.com>
+From: Jiaxin Yu <jiaxin.yu@mediatek.corp-partner.google.com>
 
-Remove dt-binding documentation of pwm for MediaTek MT8167 SoC.
-I did not find the compatiable corresponding to mt8167 
-in the latest version of the pwm-mtk-disp.c driver file.
-It may be disabled but not updated to the dt_binding file.
+The series reuses mt8192-mt6359-rt10150rt5682.c for supporting machine
+driver with rt1015p speaker amplifier and rt5682s headset codec.
 
-Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
----
- Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml | 3 ---
- 1 file changed, 3 deletions(-)
+Changes from v6:
+  - "speaker-codec" changes to "speaker-codecs" due to there may be two
+    speaker codec.
 
-diff --git a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-index f844695d605a..f18e8bbd13d2 100644
---- a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-+++ b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-@@ -20,9 +20,6 @@ properties:
-           - mediatek,mt2701-disp-pwm
-           - mediatek,mt6595-disp-pwm
-           - mediatek,mt8173-disp-pwm
--      - items:
--          - const: mediatek,mt8167-disp-pwm
--          - const: mediatek,mt8173-disp-pwm
- 
-   reg:
-     maxItems: 1
+Changes from v5:
+  - "mediatek,headset-codec" and "mediatek,speaker-codec" drop prefix
+    and move to properties from patternProperties.
+
+Changes form v4:
+  - split a large patch into three small patches for easy reviewing
+  - correct coding style
+
+Changes from v3:
+  - fix build error: too many arguments for format
+    [-Werror-format-extra-args]
+
+Changes from v2:
+  - fix build warnings such as "data argument not used by format string"
+
+Changes from v1:
+  - uses the snd_soc_of_get_dai_link_codecs to complete the
+  configuration of dai_link's codecs
+  - uses definitions to simplifies card name and compatible name
+
+Jiaxin Yu (4):
+  ASoC: dt-bindings: mt8192-mt6359: add new compatible and new
+    properties
+  ASoC: mediatek: mt8192: refactor for I2S3 DAI link of speaker
+  ASoC: mediatek: mt8192: refactor for I2S8/I2S9 DAI links of headset
+  ASoC: mediatek: mt8192: support rt1015p_rt5682s
+
+ .../sound/mt8192-mt6359-rt1015-rt5682.yaml    |  32 +++
+ sound/soc/mediatek/Kconfig                    |   1 +
+ .../mt8192/mt8192-mt6359-rt1015-rt5682.c      | 201 +++++++++++-------
+ 3 files changed, 156 insertions(+), 78 deletions(-)
+
 -- 
 2.18.0
 
