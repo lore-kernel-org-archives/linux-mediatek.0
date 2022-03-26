@@ -4,75 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88752C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Mar 2022 02:11:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25DDFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Mar 2022 02:28:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IY9SuqkDANSU9yije8yhpKziypujP5+gwDBXbFgmwy8=; b=rMdC5T+HJN6f4N
-	OlKDD3JOh/HfVkFrtb2IdqBHknRCZDzp3sFl2Knib2xhhUsZPP/1Ry/cDvYdf6M2YtiPDhP7KjgIA
-	imGpFptCJeL+zfu8IV6TJNPK3RJYiI/ApCKiWRUP0WxQQbIBuPkFKZrZ4DKlLFmqULcTzbf+v4Neo
-	ylyVmMJv0WnNryEFV7eThRf0m4SYU0ss4c++9Je/SJKYsFQ3UZjxU3iGDHaKIM1ucoBi/n33aoclu
-	KrkeyD4f6psMpdG13JT2wd3i8OGMC6nn5N67O9G8xOkiccWIXipZ5ztibLLl95lo61Tj4b+yd4dNg
-	lsuU2TcsKPq3R0Zx9pOQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EZC3HST3WfVuJiSDdlozLx0tqN/ienX4UudKc88pe5A=; b=O6UZdbb0n4kpcK
+	/OHmAPlvPobSAxv/K3gCBb725Tb3rS0NcOGEFCbBzhg4cPoLhAGe+ihMwq00R2nU0p+XdqSPmUSVi
+	08zDToc+YiveOZm+rEVRmPnIeYMYzNTwZsEBVty1lxD/JpCIhgxltqdwQdEy5a6ExNcKxArwWr4Sj
+	PYtOINieeTFsId8ekNVAYPxOm+2OAnI2WlOm1qS1+Zr8u0TZlcdF7BYHX+x3RQxfawAHk2jbEyx9V
+	6e4UibW9olk2n1Aw0K+uV88QJBVKKi/wnQDisb9BgW6WcbdO1J6U3GXuwBZgWmpJ/nT5aiwy7F65G
+	hr2Ta6UpfM8Zxz8uuOwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nXvtZ-003aBE-8M; Sat, 26 Mar 2022 02:11:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nXwAA-003bUw-KU; Sat, 26 Mar 2022 02:28:22 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nXvtV-003a9k-Cw; Sat, 26 Mar 2022 02:11:11 +0000
-X-UUID: 47d21670be1044aa828198cb9635f336-20220325
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=W2xTQmPAVzXTbHwDEam69zIieDYeXG0id3VErKpJOtM=; 
- b=XxQ5bPHqURTLDkIfCutoMJUzLfoUqxZ3N5QUZCBTvQFaI2XfXn6ifvkfBSDe0Dmcqz9vPti93HV7F2CXQaO7ZM8hpuo26iST5pdXctFAGtRNBPK+bNNLAYj4yNeJoR+hfXUF8Hj9ehT8qOoY7YhTKN60Vpm8YIM9k2mNc231IXo=;
-X-UUID: 47d21670be1044aa828198cb9635f336-20220325
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <irui.wang@mediatek.com>)
+ id 1nXw9x-003bSd-DO; Sat, 26 Mar 2022 02:28:12 +0000
+X-UUID: d1d7ef27fa604aa28dfc96340d5f4e94-20220325
+X-UUID: d1d7ef27fa604aa28dfc96340d5f4e94-20220325
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <jianjun.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1213187300; Fri, 25 Mar 2022 19:11:01 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 25 Mar 2022 19:00:58 -0700
+ with ESMTP id 2105362435; Fri, 25 Mar 2022 19:28:05 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 25 Mar 2022 19:28:04 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 26 Mar 2022 10:00:56 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Sat, 26 Mar 2022 10:28:02 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 26 Mar 2022 10:00:55 +0800
-Message-ID: <ab2b24eeb51048227ad7b2ac659617a7da5b2e45.camel@mediatek.com>
-Subject: Re: [PATCH v3, 03/10] dt-bindings: media: mtk-vcodec: Adds encoder
- cores dt-bindings for mt8195
-From: Irui Wang <irui.wang@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
- <tzungbi@chromium.org>, Alexandre Courbot <acourbot@chromium.org>, "Mauro
- Carvalho Chehab" <mchehab@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>,
- <angelogioacchino.delregno@collabora.com>, Yong Wu <yong.wu@mediatek.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Maoguang
- Meng" <maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>, 
- Yunfei Dong <yunfei.dong@mediatek.com>, Fritz Koenig <frkoenig@chromium.org>, 
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Sat, 26 Mar 2022 10:00:55 +0800
-In-Reply-To: <Yj4s0zcHxz3U3wlc@robh.at.kernel.org>
-References: <20220317082230.23622-1-irui.wang@mediatek.com>
- <20220317082230.23622-4-irui.wang@mediatek.com>
- <Yj4s0zcHxz3U3wlc@robh.at.kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Sat, 26 Mar 2022 10:28:01 +0800
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
+ <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chen-Yu Tsai
+ <wenst@chromium.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski
+ <krzk@kernel.org>
+CC: Wei-Shun Chang <weishunc@google.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <rex-bc.chen@mediatek.com>, <randy.wu@mediatek.com>,
+ <jieyy.yang@mediatek.com>, <chuanjia.liu@mediatek.com>,
+ <qizhong.cheng@mediatek.com>, <jian.yang@mediatek.com>
+Subject: [PATCH v5 0/2] phy: mediatek: Add PCIe PHY driver
+Date: Sat, 26 Mar 2022 10:27:26 +0800
+Message-ID: <20220326022728.2969-1-jianjun.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220325_191109_504767_842C2AFE 
-X-CRM114-Status: GOOD (  31.41  )
+X-CRM114-CacheID: sfid-20220325_192809_487142_B4B0D815 
+X-CRM114-Status: UNSURE (   9.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,277 +80,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Rob,
+These series patches add support for PCIe PHY driver on MediaTek chipsets.
 
-Thanks for your review and comments.
+Changes in v5:
+1. Fix typo in kerneldoc: "eFues" => "eFuse".
 
-On Fri, 2022-03-25 at 15:57 -0500, Rob Herring wrote:
-> On Thu, Mar 17, 2022 at 04:22:23PM +0800, Irui Wang wrote:
-> > Adds encoder cores dt-bindings for mt8195.
-> 
-> Why?
-mt8195 has two h264 encoder cores and we want to enable both of them.
-the original encoder bindings file is for single core which may can not
-handle it, so we new a core dt-bindings. We will think about it again
-about this dt-bindings.
-> 
-> > 
-> > Signed-off-by: Irui Wang <irui.wang@mediatek.com>
-> > ---
-> >  .../media/mediatek,vcodec-encoder-core.yaml   | 181
-> > ++++++++++++++++++
-> >  .../media/mediatek,vcodec-encoder.yaml        |   1 -
-> >  2 files changed, 181 insertions(+), 1 deletion(-)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-
-> > core.yaml
-> > 
-> > diff --git
-> > a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-
-> > core.yaml
-> > b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-
-> > core.yaml
-> > new file mode 100644
-> > index 000000000000..fcfb48900c76
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-
-> > encoder-core.yaml
-> > @@ -0,0 +1,181 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +
-> > +%YAML 1.2
-> > +---
-> > +$id: "
-> > http://devicetree.org/schemas/media/mediatek,vcodec-encoder-core.yaml#
-> > "
-> > +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-> > +
-> > +title: Mediatek Video Encoder Accelerator With Multi Core
-> > +
-> > +maintainers:
-> > +  - Irui Wang <irui.wang@mediatek.com>
-> > +
-> > +description: |
-> > +  Mediatek Video Encode is the video encode hardware present in
-> > Mediatek
-> > +  SoCs which supports high resolution encoding functionalities.
-> > Required
-> > +  parent and child device node.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    items:
-> > +      - enum:
-> > +          - mediatek,mt8195-vcodec-enc
-> > +
-> > +  mediatek,scp:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > +    description: |
-> > +      The node of system control processor (SCP), using
-> > +      the remoteproc & rpmsg framework.
-> > +
-> > +  mediatek,venc-multi-core:
-> > +    type: boolean
-> > +    description: |
-> > +      Indicates whether the encoder has multiple cores or not.
-> 
-> Isn't this implied by how many child nodes you have?
-It implies that we have child nodes, distinguish with single core,  
-> 
-> > +
-> > +  iommus:
-> > +    minItems: 1
-> > +    maxItems: 32
-> 
-> You really have up to 32 IOMMUs?
-Currently, totally 27 IOMMUs and used 9 of them.
-> 
-> > +    description: |
-> > +      List of the hardware port in respective IOMMU block for
-> > current Socs.
-> > +      Refer to bindings/iommu/mediatek,iommu.yaml.
-> > +
-> > +  dma-ranges:
-> > +    maxItems: 1
-> > +    description: |
-> > +      Describes the physical address space of IOMMU maps to
-> > memory.
-> > +
-> > +  "#address-cells":
-> > +    const: 2
-> > +
-> > +  "#size-cells":
-> > +    const: 2
-> > +
-> > +  ranges: true
-> > +
-> > +# Required child node:
-> > +patternProperties:
-> > +  "^venc-core@[0-9a-f]+$":
-> > +    type: object
-> > +    description: |
-> > +      The video encoder core device node which should be added as
-> > subnodes to
-> > +      the main venc node.
-> > +
-> > +    properties:
-> > +      compatible:
-> > +        items:
-> > +         - const: mediatek,mtk-venc-core
-> > +
-> > +      reg:
-> > +        maxItems: 1
-> > +
-> > +      mediatek,core-id:
-> > +        $ref: /schemas/types.yaml#/definitions/uint32
-> > +        description: |
-> > +          Current encoder core id.
-> 
-> What is this for and what does its value correspond to in the h/w.
-> We 
-> generally don't do made up indices in DT.
-It's for encoder core id, core@1a020000 must be core-0, core@1b020000
-must be core-1, we add this property in each child node, so we can get core-id in drivers. If it can't ref "uint32" types yaml, would you mind giving some more suggestions ?
-> 
-> > +
-> > +      iommus:
-> > +        minItems: 1
-> > +        maxItems: 32
-> > +        description: |
-> > +          List of the hardware port in respective IOMMU block for
-> > current Socs.
-> > +          Refer to bindings/iommu/mediatek,iommu.yaml.
-> > +
-> > +      interrupts:
-> > +        maxItems: 1
-> > +
-> > +      clocks:
-> > +        maxItems: 1
-> > +
-> > +      clock-names:
-> > +        maxItems: 1
-> > +
-> > +      power-domains:
-> > +        maxItems: 1
-> > +
-> > +    required:
-> > +      - compatible
-> > +      - reg
-> > +      - mediatek,core-id
-> > +      - iommus
-> > +      - interrupts
-> > +      - clocks
-> > +      - clock-names
-> > +      - assigned-clocks
-> > +      - assigned-clock-parents
-> > +      - power-domains
-> > +
-> > +    additionalProperties: false
-> > +
-> > +required:
-> > +  - compatible
-> > +  - mediatek,scp
-> > +  - iommus
-> > +  - dma-ranges
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +    #include <dt-bindings/memory/mt8195-memory-port.h>
-> > +    #include <dt-bindings/interrupt-controller/irq.h>
-> > +    #include <dt-bindings/clock/mt8195-clk.h>
-> > +    #include <dt-bindings/power/mt8195-power.h>
-> > +
-> > +    soc {
-> > +        #address-cells = <2>;
-> > +        #size-cells = <2>;
-> > +
-> > +        venc {
-> > +            compatible = "mediatek,mt8195-vcodec-enc";
-> > +            mediatek,scp = <&scp>;
-> > +            mediatek,venc-multi-core;
-> > +            iommus = <&iommu_vdo M4U_PORT_L19_VENC_RCPU>;
-> > +            #address-cells = <2>;
-> > +            #size-cells = <2>;
-> > +            ranges;
-> > +            dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
-> > +
-> > +            venc-core@1a020000 {
-> > +                compatible = "mediatek,mtk-venc-core";
-> > +                reg = <0 0x1a020000 0 0x10000>;
-> > +                mediatek,core-id = <0>;
-> > +                iommus = <&iommu_vdo M4U_PORT_L19_VENC_RCPU>,
-> > +                         <&iommu_vdo M4U_PORT_L19_VENC_REC>,
-> > +                         <&iommu_vdo M4U_PORT_L19_VENC_BSDMA>,
-> > +                         <&iommu_vdo M4U_PORT_L19_VENC_SV_COMV>,
-> > +                         <&iommu_vdo M4U_PORT_L19_VENC_RD_COMV>,
-> > +                         <&iommu_vdo M4U_PORT_L19_VENC_CUR_LUMA>,
-> > +                         <&iommu_vdo
-> > M4U_PORT_L19_VENC_CUR_CHROMA>,
-> > +                         <&iommu_vdo M4U_PORT_L19_VENC_REF_LUMA>,
-> > +                         <&iommu_vdo
-> > M4U_PORT_L19_VENC_REF_CHROMA>;
-> > +                interrupts = <GIC_SPI 341 IRQ_TYPE_LEVEL_HIGH 0>;
-> > +                clocks = <&vencsys CLK_VENC_VENC>;
-> > +                clock-names = "clk_venc";
-> > +                assigned-clocks = <&topckgen CLK_TOP_VENC>;
-> > +                assigned-clock-parents = <&topckgen
-> > CLK_TOP_UNIVPLL_D4>;
-> > +                power-domains = <&spm MT8195_POWER_DOMAIN_VENC>;
-> > +            };
-> > +
-> > +            venc-core@1b020000 {
-> > +                compatible = "mediatek,mtk-venc-core";
-> > +                reg = <0 0x1b020000 0 0x10000>;
-> > +                mediatek,core-id = <1>;
-> > +                iommus = <&iommu_vpp M4U_PORT_L20_VENC_RCPU>,
-> > +                         <&iommu_vpp M4U_PORT_L20_VENC_REC>,
-> > +                         <&iommu_vpp M4U_PORT_L20_VENC_BSDMA>,
-> > +                         <&iommu_vpp M4U_PORT_L20_VENC_SV_COMV>,
-> > +                         <&iommu_vpp M4U_PORT_L20_VENC_RD_COMV>,
-> > +                         <&iommu_vpp M4U_PORT_L20_VENC_CUR_LUMA>,
-> > +                         <&iommu_vpp
-> > M4U_PORT_L20_VENC_CUR_CHROMA>,
-> > +                         <&iommu_vpp M4U_PORT_L20_VENC_REF_LUMA>,
-> > +                         <&iommu_vpp
-> > M4U_PORT_L20_VENC_REF_CHROMA>;
-> > +                interrupts = <GIC_SPI 346 IRQ_TYPE_LEVEL_HIGH 0>;
-> > +                clocks = <&vencsys_core1 CLK_VENC_CORE1_VENC>;
-> > +                clock-names = "clk_venc_core1";
-> > +                assigned-clocks = <&topckgen CLK_TOP_VENC>;
-> > +                assigned-clock-parents = <&topckgen
-> > CLK_TOP_UNIVPLL_D4>;
-> > +                power-domains = <&spm
-> > MT8195_POWER_DOMAIN_VENC_CORE1>;
-> > +            };
-> > +        };
-> > +    };
-> > diff --git
-> > a/Documentation/devicetree/bindings/media/mediatek,vcodec-
-> > encoder.yaml
-> > b/Documentation/devicetree/bindings/media/mediatek,vcodec-
-> > encoder.yaml
-> > index e7b65a91c92c..0530a694bcbe 100644
-> > --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-
-> > encoder.yaml
-> > +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-
-> > encoder.yaml
-> > @@ -21,7 +21,6 @@ properties:
-> >        - mediatek,mt8173-vcodec-enc
-> >        - mediatek,mt8183-vcodec-enc
-> >        - mediatek,mt8192-vcodec-enc
-> > -      - mediatek,mt8195-vcodec-enc
-> >  
-> >    reg:
-> >      maxItems: 1
-> > -- 
-> > 2.18.0
-> > 
-> > 
-Thanks
-Best Regards
+Changes in v4:
+1. Fix no return when calling dev_err_probe.
+
+Changes in v3:
+1. Add introductions for structure members;
+2. Add SoC dependent data;
+3. Dynamically allocate efuse data;
+4. Check return value if it's an -EPROBE_DEFER.
+
+Changes in v2:
+1. Add specific compatible name;
+2. Read NVMEM data at probe time;
+3. Fix typos.
+
+Jianjun Wang (2):
+  dt-bindings: phy: mediatek: Add YAML schema for PCIe PHY
+  phy: mediatek: Add PCIe PHY driver
+
+ .../bindings/phy/mediatek,pcie-phy.yaml       |  75 +++++
+ drivers/phy/mediatek/Kconfig                  |  11 +
+ drivers/phy/mediatek/Makefile                 |   1 +
+ drivers/phy/mediatek/phy-mtk-pcie.c           | 272 ++++++++++++++++++
+ 4 files changed, 359 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
+ create mode 100644 drivers/phy/mediatek/phy-mtk-pcie.c
+
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
