@@ -4,74 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43B8EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Mar 2022 12:01:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1117C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Mar 2022 16:09:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lnId4QodownrZbOForKQ54kJr+mUfBj7Y7VHPuQJtaQ=; b=1lmrLr+NXr0iaa
-	9Bz0T1CF/p0POfs85mdWgi23pjxUAklIbC5989eUmDavRWQUWz8+Op0ZhrsDmzfzWAA4AeHFX88FD
-	Qn17NiKA9xZFsmr2oO87JWQEQdALlTGdpP8LHj9idfk7ghmKjgxk8UA+H1KnyBLDv/gih353A6Hmg
-	ThYy+Y0zSrAN4jv7IhrDxgAiuqDtT0Y460i0eHrVkwuKCN3+ipkDy4KhqEFEDAfCJlhsYPq+WZA28
-	ojQSs60gcvZfYHn6NftahipCvtaMAgI4wUnfPfHcFFe3UKb9s0uVrgPkQBL6ESlHxFSnM2oyTECr1
-	kBoyaqAtPrk52Yry8Smg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hxoqc6LjNJJXEboF+FXE+sEH2czWaqJobUKYw5G2z/w=; b=Y+n+q5OsGnIIYQ
+	+30m07NcQ0PGWClyuIq2yatZmnpSMjb9KMlsMLWzdUP0kFKoYb5ppQO7SgL0znM83wR5sE+R+DIhy
+	A/jl6/OpzU151sUtLH8ez3btWxomPV3uU/um3GgMjgHzmfZAyaWVm8Kcx+TwA/OHrJaYCinEwGqeH
+	aa8/I8Apcyverw/QJT9q1XrU+rIyS9QxOGJIg1OcO9AZH+jKi6cLLXNFWHUjxERjAiQYC2XVUDkAB
+	oMh0qJ9o+uTD16GV71wLWZwa/3EwVsQIjaWAVgu/x5uanT3/hDZXQoE419SkhLvhw31Z6BZJiAGEh
+	qmHdo/Y5LFBGzxowHj1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYRaP-005V72-6a; Sun, 27 Mar 2022 12:01:33 +0000
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+	id 1nYVRl-005iGG-38; Sun, 27 Mar 2022 16:08:53 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYRaD-005V4y-0W
- for linux-mediatek@lists.infradead.org; Sun, 27 Mar 2022 12:01:22 +0000
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-2e612af95e3so122330057b3.9
- for <linux-mediatek@lists.infradead.org>; Sun, 27 Mar 2022 05:01:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+JLBatQiTjNxucxb+AAO5n2LSgO+yRQ0dxeApnUF+sc=;
- b=BWL6eg5Qoeih5liyNKTxPU8t35qf9FMH6Hq7U68Y61Anl3fyA1H2eJKBbM+xexmlxF
- +aL7AzpTyJTEDG+vWVy9DTMPpBcG70TJLJhLOpgwLdeDjLwZCl+wjrjvnyE2ZWdXX0Rb
- upPC0UJywk2d4Zfb1EpDIFdq2unL30jj7pOUPgqNrW0QWcgMOiGgHN375QAi7VRBhXfX
- 2+kpnaDxPiUNhOjlubGPDH2RXCDtMlLFjbB+JfWFgo/q+5wz34B18XlXUDJbWYI3IrZ0
- Mxc0KY+9A/mCwEc9i2w81HkHj9EHIA79PIgXoKL2bqvYfI1Xae4uLOJD//so9x5OiKqX
- yGwQ==
+ id 1nYVRY-005iEp-Qg
+ for linux-mediatek@lists.infradead.org; Sun, 27 Mar 2022 16:08:42 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id t11so17040361wrm.5
+ for <linux-mediatek@lists.infradead.org>; Sun, 27 Mar 2022 09:08:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ov+7Ck42RvbgYnt5K8SkrxtXocNZedNN5M9fAzVeOxA=;
+ b=MxRx89uyTMlNU5ntlj7aSXIW5vG4yJvQ5UTnsMDhUYL7vtP1EKhgp8u/4WdzLwMuDL
+ iWaNb8uSukU1Zsvaf1SxzzqJmBIS3f2nKDvlHdcTyVMbkLOBPmJ/SKgeo6yxQeaIGlRj
+ ciofPkh/CyaVHAcwierKv4QWtKbAlVNNo584n5sFIc7b/eshu6V5i2m4JVPwwyVp6ono
+ aI7CTuk54iUYPSbNCSf5SckE/aEA8NASGwQmNookRjp0j0B4T9ABXR6lRanYb6dAP5GV
+ lgq7/X5JG9HVDl3c/Af9Pw+ZSXqk+cLmKizq/IF6ZFFzd7VmXzhjgWcnBtlGxdkM27Ga
+ yFiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=+JLBatQiTjNxucxb+AAO5n2LSgO+yRQ0dxeApnUF+sc=;
- b=17nnS5pvS83mhkxkHI2+a3xhRbCkFrzDhcD6CzhZRX+sAZRP9mwhyOxnmAUWF1W2+A
- a+uMm+56x/bsIS1SVqCjdn5PrCkku4/qDrLsXi/cXt1TuCH3HmN37J+FXehkGVnkiPb4
- mn4gYyyel1qghb1eeKxJ0sAxBHOEYWjxJRwUoWKiXs6yayWuZiDLFNn+XQgEYab3s5Xh
- hTAo6cSBlzlB4PKKoelIqjgLj+E/iUux57xp9dfgB7MfZPfL0Dh30Hovu9bnyztY7Lzo
- g1ZdnuJok7TxnF51Y3eYvztGPnqm8R/a6GEATyCTpQIHOOP3L2OHcWwYzNJTn8VHUryU
- S/+A==
-X-Gm-Message-State: AOAM531l/iGYVBz6R+vRvg+GxJmStoEZA43wajdu5zLsUvEKT8OMAtIj
- 8IVjoYAEAU0uVwT/vhwxkjXgnb1QiFZY26dxX3Ievw==
-X-Google-Smtp-Source: ABdhPJwSVZimEgxSRjV+BLp7lkLZBgy1/Qoke1+kB8RxAxMHiVCaNhApabi0eLeIBCfWUsAR91rj1IwV7cn/PgMj9zc=
-X-Received: by 2002:a0d:d68e:0:b0:2e5:9f48:a24a with SMTP id
- y136-20020a0dd68e000000b002e59f48a24amr20897888ywd.151.1648382478791; Sun, 27
- Mar 2022 05:01:18 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ov+7Ck42RvbgYnt5K8SkrxtXocNZedNN5M9fAzVeOxA=;
+ b=V3qqIDKJjKByzIlm/7WfXN6j/e4ApKXikj1YE+yr/ZzHSvJYZJG73cjpRkC8NUSn9r
+ pCdSJPmSWfdSImjOewNinlGi3gE+d5l21mFmV0S5cGphuIBFAqX0n5SdVoBntBt267X2
+ PO2/4Nj0nYSpjPrtoK1vd5/DPjqQ9FY7imcjcBCRBWQsYXlLKDdG3bYHDU06gz88/dot
+ bnUCIl2QcsVyjsLXZvSxWxaFPkS9D5HJHde6sWjvW/shatKDV/FLGOGHLk8OW9FY6Xpo
+ Zw+TBAhDrqB9UP2gMbgYlXFYGImOd8+c6umbPESh6YlBhNnOl9pRjRgbsLk6aGnTDlTM
+ a1YQ==
+X-Gm-Message-State: AOAM530xZfzz6S7dJ05i6PdUPr8+lRYksG0ZxugsGwuD++G2rGnxupNp
+ 4bTzjp3rwiQ35OabF/jJKhCHig==
+X-Google-Smtp-Source: ABdhPJwzeaGl81CkXL3nxPc7P7D9Xdw/+Q2JXGwaRyYkFlUNX56vEB3lxgaITvOaWZMekEn/bA0MaQ==
+X-Received: by 2002:a5d:5607:0:b0:203:fb6f:3c88 with SMTP id
+ l7-20020a5d5607000000b00203fb6f3c88mr18432363wrv.261.1648397318694; 
+ Sun, 27 Mar 2022 09:08:38 -0700 (PDT)
+Received: from localhost.localdomain ([88.160.162.107])
+ by smtp.gmail.com with ESMTPSA id
+ 6-20020a05600c020600b0038cbb21fb00sm9425883wmi.39.2022.03.27.09.08.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 27 Mar 2022 09:08:37 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Zhiyong Tao <zhiyong.tao@mediatek.com>
+Cc: Fabien Parent <fparent@baylibre.com>, linux-mediatek@lists.infradead.org,
+ linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] pinctrl: mediatek: mt8195: enable driver on mtk platforms
+Date: Sun, 27 Mar 2022 18:08:13 +0200
+Message-Id: <20220327160813.2978637-1-fparent@baylibre.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-References: <202203222145.UcCrXHfm-lkp@intel.com>
- <20220322130308.GA21877@65fc916127a5>
-In-Reply-To: <20220322130308.GA21877@65fc916127a5>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Sun, 27 Mar 2022 14:01:07 +0200
-Message-ID: <CACRpkdbiUDREqOe6C_AAnG7vpeMCgMvaOKknEXT2B0yUWKbyzQ@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: common-v1: fix semicolon.cocci warnings
-To: kernel test robot <lkp@intel.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- kbuild-all@lists.01.org, 
- linux-gpio@vger.kernel.org, Chen-Yu Tsai <wenst@chromium.org>, 
- Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220327_050121_101587_DED00A35 
-X-CRM114-Status: UNSURE (   6.87  )
+X-CRM114-CacheID: sfid-20220327_090840_873368_1F81CC0B 
+X-CRM114-Status: UNSURE (   7.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,26 +92,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 22, 2022 at 2:03 PM kernel test robot <lkp@intel.com> wrote:
+Set the pinctrl driver as built-in by default if
+ARM64 and ARCH_MEDIATEK are enabled.
 
-> From: kernel test robot <lkp@intel.com>
->
-> drivers/pinctrl/mediatek/pinctrl-mtk-common.c:171:2-3: Unneeded semicolon
->
->
->  Remove unneeded semicolon.
->
-> Generated by: scripts/coccinelle/misc/semicolon.cocci
->
-> Fixes: 156f721704b5 ("pinctrl: mediatek: common-v1: Commonize spec_ies_smt_set callback")
-> CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Reported-by: kernel test robot <lkp@intel.com>
-> Signed-off-by: kernel test robot <lkp@intel.com>
+Fixes: 6cf5e9ef362a ("pinctrl: add pinctrl driver on mt8195")
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+ drivers/pinctrl/mediatek/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-Patch applied.
+diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+index 66db4ac5d169..8b20109559b3 100644
+--- a/drivers/pinctrl/mediatek/Kconfig
++++ b/drivers/pinctrl/mediatek/Kconfig
+@@ -158,6 +158,7 @@ config PINCTRL_MT8195
+ 	bool "Mediatek MT8195 pin control"
+ 	depends on OF
+ 	depends on ARM64 || COMPILE_TEST
++	default ARM64 && ARCH_MEDIATEK
+ 	select PINCTRL_MTK_PARIS
+ 
+ config PINCTRL_MT8365
+-- 
+2.35.1
 
-Yours,
-Linus Walleij
 
 _______________________________________________
 Linux-mediatek mailing list
