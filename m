@@ -4,78 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1117C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Mar 2022 16:09:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77F99C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Mar 2022 16:59:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=hxoqc6LjNJJXEboF+FXE+sEH2czWaqJobUKYw5G2z/w=; b=Y+n+q5OsGnIIYQ
-	+30m07NcQ0PGWClyuIq2yatZmnpSMjb9KMlsMLWzdUP0kFKoYb5ppQO7SgL0znM83wR5sE+R+DIhy
-	A/jl6/OpzU151sUtLH8ez3btWxomPV3uU/um3GgMjgHzmfZAyaWVm8Kcx+TwA/OHrJaYCinEwGqeH
-	aa8/I8Apcyverw/QJT9q1XrU+rIyS9QxOGJIg1OcO9AZH+jKi6cLLXNFWHUjxERjAiQYC2XVUDkAB
-	oMh0qJ9o+uTD16GV71wLWZwa/3EwVsQIjaWAVgu/x5uanT3/hDZXQoE419SkhLvhw31Z6BZJiAGEh
-	qmHdo/Y5LFBGzxowHj1g==;
+	List-Owner; bh=T/A2od+/7NpDp4P5tBbhkG26Bl+AbtZYXPy1lIxm1uI=; b=UbYmZCAsfm49b9
+	fTxOXBtCaez+w3TfubP2zWnUTYSV2pp30mdhsvMR0sPUiHV/0yGE6XHqjk0WRKnYY7ywc+QV3AEKb
+	dZ9PheSMWpaSbtifr9RRvFw5xLADWR6KeNCygt3UANpaNES6fQQ1xZjyl7Prgn0fRRMTDQr4Qv/Tc
+	zAbzhClIJY7bnOLgKCGW/16P5Png3O4SFaIm8GeEr5qJX1xaHcZeL+YS0WCAcG8b5go1wal6Yjzot
+	WMeNdV5tBKXex8RQY7APDQF7fEzJ7A8nSJnO4sMzO9fwgaE9g0GLwTVlxEXX1bcMzXZKPEJMgzrUT
+	/OG2Vn+Mvlf07AuoQJZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYVRl-005iGG-38; Sun, 27 Mar 2022 16:08:53 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1nYWEk-005ks9-Jr; Sun, 27 Mar 2022 16:59:30 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYVRY-005iEp-Qg
- for linux-mediatek@lists.infradead.org; Sun, 27 Mar 2022 16:08:42 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id t11so17040361wrm.5
- for <linux-mediatek@lists.infradead.org>; Sun, 27 Mar 2022 09:08:39 -0700 (PDT)
+ id 1nYWEY-005krF-9R
+ for linux-mediatek@lists.infradead.org; Sun, 27 Mar 2022 16:59:20 +0000
+Received: by mail-wm1-x329.google.com with SMTP id
+ 123-20020a1c1981000000b0038b3616a71aso7182516wmz.4
+ for <linux-mediatek@lists.infradead.org>; Sun, 27 Mar 2022 09:59:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=ov+7Ck42RvbgYnt5K8SkrxtXocNZedNN5M9fAzVeOxA=;
- b=MxRx89uyTMlNU5ntlj7aSXIW5vG4yJvQ5UTnsMDhUYL7vtP1EKhgp8u/4WdzLwMuDL
- iWaNb8uSukU1Zsvaf1SxzzqJmBIS3f2nKDvlHdcTyVMbkLOBPmJ/SKgeo6yxQeaIGlRj
- ciofPkh/CyaVHAcwierKv4QWtKbAlVNNo584n5sFIc7b/eshu6V5i2m4JVPwwyVp6ono
- aI7CTuk54iUYPSbNCSf5SckE/aEA8NASGwQmNookRjp0j0B4T9ABXR6lRanYb6dAP5GV
- lgq7/X5JG9HVDl3c/Af9Pw+ZSXqk+cLmKizq/IF6ZFFzd7VmXzhjgWcnBtlGxdkM27Ga
- yFiw==
+ bh=l3UyXLPhfuWhTj2RPYL4FasSdvEckI9twBVwXQIlqIA=;
+ b=KDeuq11AKukzvYsj++BJG33YHL7Mer/+9ATFpj/efErMMrEfzHe8nrDx/dbWKUv/KA
+ +FJfTRWYdV32bxMxXCJ/USQkvIDSoVPS3ivQVRbUa4a0sjocq4aaCH4gbaJmlUnxmQea
+ noeL7SeF4EtNesEAfDRTzvffbihG3ujPt3bAoczI1gniY+W5FY9opripRtF9z7KuEv+K
+ VzrS3tfRSIJbwUk4uiu9It1z+/0HkwgmIavFalMpGsPbWMepnvY8xONk5WKNtegu3q6p
+ dECQBGyiSUEywhFVavuw9fdQq3/dbGz5Okvawno3LUtrDqKDIf0r9K60F6hhNfsOAOGX
+ CVCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=ov+7Ck42RvbgYnt5K8SkrxtXocNZedNN5M9fAzVeOxA=;
- b=V3qqIDKJjKByzIlm/7WfXN6j/e4ApKXikj1YE+yr/ZzHSvJYZJG73cjpRkC8NUSn9r
- pCdSJPmSWfdSImjOewNinlGi3gE+d5l21mFmV0S5cGphuIBFAqX0n5SdVoBntBt267X2
- PO2/4Nj0nYSpjPrtoK1vd5/DPjqQ9FY7imcjcBCRBWQsYXlLKDdG3bYHDU06gz88/dot
- bnUCIl2QcsVyjsLXZvSxWxaFPkS9D5HJHde6sWjvW/shatKDV/FLGOGHLk8OW9FY6Xpo
- Zw+TBAhDrqB9UP2gMbgYlXFYGImOd8+c6umbPESh6YlBhNnOl9pRjRgbsLk6aGnTDlTM
- a1YQ==
-X-Gm-Message-State: AOAM530xZfzz6S7dJ05i6PdUPr8+lRYksG0ZxugsGwuD++G2rGnxupNp
- 4bTzjp3rwiQ35OabF/jJKhCHig==
-X-Google-Smtp-Source: ABdhPJwzeaGl81CkXL3nxPc7P7D9Xdw/+Q2JXGwaRyYkFlUNX56vEB3lxgaITvOaWZMekEn/bA0MaQ==
-X-Received: by 2002:a5d:5607:0:b0:203:fb6f:3c88 with SMTP id
- l7-20020a5d5607000000b00203fb6f3c88mr18432363wrv.261.1648397318694; 
- Sun, 27 Mar 2022 09:08:38 -0700 (PDT)
-Received: from localhost.localdomain ([88.160.162.107])
- by smtp.gmail.com with ESMTPSA id
- 6-20020a05600c020600b0038cbb21fb00sm9425883wmi.39.2022.03.27.09.08.37
+ bh=l3UyXLPhfuWhTj2RPYL4FasSdvEckI9twBVwXQIlqIA=;
+ b=GgANg9O2d6rzOzSpJ2/AqwVIkyRbPQ7Z07jVzX/ghi/uAmT4KN7SWQKNc2fI3vjd71
+ CabQhD+LC0fEOjNebiBBiS/toEI29JhI+X7Q32cxYmvZmqrZ8jPsrFmIhWRzRdM6S/p0
+ 8anxisFk0hdPP1sh4ept5y2Wc0nR4OTGiQu2rM/0pv3GUvSZbuQ2AxRKT0NcKbk5MRuK
+ CI3fyXupJEGPDqKI4kEZdAZ5d6aUpJQVairLCt/7vS6h70AtF+2hEdIPv2BO3BxaQs6/
+ hpyebiOVF9R2VJI0j9MGFpJuERbBPQPK+TDcfn0niQqYii7667HwimIxzSjGAbR0ZyRP
+ Ud8w==
+X-Gm-Message-State: AOAM531CFksbHqTDu7BWEJt3MAna9lJCmQ1v/WosgcECIKYiIGjLJBHC
+ ikmFmjUBBMh+c2UzV/5ba9zOhg==
+X-Google-Smtp-Source: ABdhPJy6n5q9yBGyX9r7VhBqPUrEoQwv8FgKCvcnII7pPqBaX1v3Z9Y8oIPzwqP/c6t0x9Ss5N3XRw==
+X-Received: by 2002:a05:600c:ca:b0:38c:b426:3124 with SMTP id
+ u10-20020a05600c00ca00b0038cb4263124mr30231617wmm.59.1648400356750; 
+ Sun, 27 Mar 2022 09:59:16 -0700 (PDT)
+Received: from radium.lan ([88.160.162.107]) by smtp.gmail.com with ESMTPSA id
+ 2-20020a1c1902000000b00380d3873d6asm9979423wmz.43.2022.03.27.09.59.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Mar 2022 09:08:37 -0700 (PDT)
+ Sun, 27 Mar 2022 09:59:16 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
-To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Zhiyong Tao <zhiyong.tao@mediatek.com>
-Cc: Fabien Parent <fparent@baylibre.com>, linux-mediatek@lists.infradead.org,
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] pinctrl: mediatek: mt8195: enable driver on mtk platforms
-Date: Sun, 27 Mar 2022 18:08:13 +0200
-Message-Id: <20220327160813.2978637-1-fparent@baylibre.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Fabien Parent <fparent@baylibre.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH 0/4] Add support for MediaTek MT8195 demo board
+Date: Sun, 27 Mar 2022 18:58:33 +0200
+Message-Id: <20220327165837.3048639-1-fparent@baylibre.com>
 X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220327_090840_873368_1F81CC0B 
-X-CRM114-Status: UNSURE (   7.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220327_095918_381410_D173218C 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,27 +88,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set the pinctrl driver as built-in by default if
-ARM64 and ARCH_MEDIATEK are enabled.
+This patch serie adds basic support for the MediaTek MT8195
+demo board. For now the support is pretty basic and allow
+just to boot, use USB, and the SD card.
 
-Fixes: 6cf5e9ef362a ("pinctrl: add pinctrl driver on mt8195")
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
----
- drivers/pinctrl/mediatek/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+When more IO support will be added for MT8195, new changes
+will be pushed to the device-tree of the MT8195 demo board
+to support these IOs as well.
 
-diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-index 66db4ac5d169..8b20109559b3 100644
---- a/drivers/pinctrl/mediatek/Kconfig
-+++ b/drivers/pinctrl/mediatek/Kconfig
-@@ -158,6 +158,7 @@ config PINCTRL_MT8195
- 	bool "Mediatek MT8195 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
-+	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK_PARIS
- 
- config PINCTRL_MT8365
+This serie depends on the following patches:
+[0] https://patchwork.kernel.org/project/linux-mediatek/patch/1622011927-359-9-git-send-email-hsin-hsiung.wang@mediatek.com/
+[1] https://patchwork.kernel.org/project/linux-mediatek/patch/20220216113131.13145-4-tinghan.shen@mediatek.com/
+
+Fabien Parent (4):
+  dt-bindings: arm64: dts: mediatek: Add mt8195-demo board
+  arm64: dts: mediatek: Add device-tree for MT8195 Demo board
+  arm64: defconfig: enable MT6359 regulator driver
+  arm64: defconfig: enable some mt6360 PMIC drivers
+
+ .../devicetree/bindings/arm/mediatek.yaml     |   4 +
+ arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+ arch/arm64/boot/dts/mediatek/mt8195-demo.dts  | 539 ++++++++++++++++++
+ arch/arm64/configs/defconfig                  |   4 +
+ 4 files changed, 548 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+
 -- 
 2.35.1
 
