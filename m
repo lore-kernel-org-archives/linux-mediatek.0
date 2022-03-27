@@ -4,80 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EFDAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Mar 2022 20:04:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A07FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Mar 2022 22:41:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c0ylfl4xneRQ5e67O7mLDeMIpjR0gbAm2f1e8sU05rc=; b=PBVkPaI7K/EpMw
-	P39ytuqBEz++9FRrhVXGlRdpSZFkBhVv+Q6GO2h8HIm9B+VZRV2a5DebtirFUhgzcMcORIqHVDTK9
-	eLlsNAnzO6b1Gi+pMtwF3RxMcFVDzPMkXoe7HFwWJjnuo3qIXZvQbTN3CDWCN3lnHaSm0paVJ8HZc
-	y09LCIPB3tWPkc2plvK+EDqDRzTOpBVfi7epsasCxMpjnwXB/x+2/FOuLAmAim5RG3Yh/uTsxyClB
-	7cNrUS3ZpaXLe+oYpMcc0rDoV+TXkGFJJGmwxIiwGjw0zF6aZsSlb0Q3JLusj6NAdCflfSH6cMObz
-	6BzD4R1/FAhbOYQ6fVbA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=99/q/F2+NAur1C0sHYHBdfMYdOgBzbg3mFCUC7p5RMs=; b=RSGo9XiuJkks3p
+	p4RNSS6mNwqRR1CTFupPo5snIMHqbcv7lAZcWohtibSNtEBimPkBVl77R+xXA+ywZyyIu/yJaUdkL
+	lC8UWPm7RjjTi2MGuwaSy8gqgvAp295CIFfUfpXlsBTKx67IZXsXUYFetHe2h5kSWg034AmcbSTsD
+	KS7vYIcykz0SUymNWjQ2jgUF0AchRyX2snftoAMi4X+EgyOd3YDSGhygznho4uah+/e+dursM+4Fz
+	dK0feevKkRJF2kx9yqTwTLxAB8W0bowNLMqcCVmTAR50A9AnLwd+ZJrMSArocX5RYfH2w3+MLXUkX
+	JKte2tT//Dw9EMbHyTVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYZ7k-006AJT-57; Sun, 27 Mar 2022 20:04:28 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1nYbZI-006UsW-8e; Sun, 27 Mar 2022 22:41:04 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYZ7H-006A5o-KN
- for linux-mediatek@lists.infradead.org; Sun, 27 Mar 2022 20:04:02 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id
- i204-20020a1c3bd5000000b0038ce25c870dso47682wma.1
- for <linux-mediatek@lists.infradead.org>; Sun, 27 Mar 2022 13:03:59 -0700 (PDT)
+ id 1nYbZD-006Uo5-6i
+ for linux-mediatek@lists.infradead.org; Sun, 27 Mar 2022 22:41:01 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id u3so17926740wrg.3
+ for <linux-mediatek@lists.infradead.org>; Sun, 27 Mar 2022 15:40:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=LOpeigcZgHASXsFgMMBDoubFgh2CN2uJnv1/KTETRuA=;
- b=a9ttLlc8J+QluSbyoogIjxVh3kkfhmSV2iRD9KjvzmYA8cI5sArRfkAnuZ4Mgy8Fkl
- c8xd7HGGciOE9RzV8EUHcmFsGg8pA2SK/7cnOlISrQ4z/42cjb9ZyLN09lDBQ8qo2gLp
- Ul5451wsdPvpag7QK1qaBGq/dP/48bBu5RSAZYsBh3ZLZM53G/yswXFDcA4U3UzzOFor
- nrB+apUN9ahlGV7KzR6zQYlgl0UWMBugUF1UqV+OZvsZ8wCH36feCtLTXUyX69KCle3U
- dJHnCW2yqZsnvGEzrVJrB3ggrbE55AEyxzYOHv1lzhIHGipRFVKwAh9atRy9cNT8kcun
- SNBQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ttvVODLTTBaqB4olSje/RjnCtKXgr801DvSo2q2eG0E=;
+ b=eB8kNh0eru6ENTfiF7I8ZxfQgc65hjixuwm+WdOYEGiiS0ZIji4HliGcQvmy7m4n8l
+ JSAC/LEPtDftUix2szlYowNNLRzxAEmYcKmE213cQwfTsW1PyKem+SvaoiJB5SzevEHj
+ p490rhnT34xKU67nlAfaoCjFSXDvaPqM5rBft90+Eu+ruMv9Q784a55+HiMwMwbFxNbB
+ lT4loCIWa8dqjvVMXBtUDE5c0sQTygs6cL3VKja9gTSUg6wv1IB8ps16ju7dt/c9lD+T
+ 55tgtAsvXxmb/p7j7e87S8PlYmb5jf480aEWzV+FgM+LN5m5x8HFF4xalRltUHETkgRk
+ +ORA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=LOpeigcZgHASXsFgMMBDoubFgh2CN2uJnv1/KTETRuA=;
- b=mx+/sbKQedL940F/yMKRvOSCfT1xDqvK9+l7TSwDtr2tYmJUkdOUOFpdywWRmn0kx7
- Ee49/8oyBot2o9PGmtnznJ7MIuKYKuC8yXboVjHVBwsmqiPPQ9L5MO2E5FIJahdPw4Oq
- fi2AlqoSA2y6gzxQsclORUvnOjBaFahB4k+Vikljkfpo22PoHklnMFXNiM2L6zRurU1u
- POyhjjGC/mdyUUFNlroSMpA7iGdDo5BkKH1cI4eskO7aTue6IGJUQ7kr3o9sUmCJbYZm
- X7EanjAwFfsgwC8+dqZ3YqCyf6eplqqoLoFLxUNdjnpBTmOR7Pg5A4wJnPfmXbe68W58
- dxAg==
-X-Gm-Message-State: AOAM533QSWJ0J1uIkkVphn1LzcvvUd/PGi5Ly0jzKusCw0aY4uwtV4QA
- W2I0vfC+YUA40NXwuClaFkX0bg==
-X-Google-Smtp-Source: ABdhPJzj03dLfQxdM3Tk+fIS05qCASk4bGj0nPKTvbNPXGhQXceEm9qL53zGhQPGzaiUQRlvI+Tsbg==
-X-Received: by 2002:a05:600c:3547:b0:38c:ac1c:53e9 with SMTP id
- i7-20020a05600c354700b0038cac1c53e9mr21299240wmq.159.1648411438180; 
- Sun, 27 Mar 2022 13:03:58 -0700 (PDT)
-Received: from localhost.localdomain ([88.160.162.107])
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ttvVODLTTBaqB4olSje/RjnCtKXgr801DvSo2q2eG0E=;
+ b=5RoeZipfwYrWw1KXPJxrcUVZvxCkkmADJfsQH960ZRPpz0Q9O1TMp/KC6QmXcnV/xd
+ obA9rCCizhIhgKkhkFC2jUDRHQ44eenv6YjnUhZkFaWtPbYOjXzYGpEfnkbLVm2agScy
+ hLIS12jqh5rc41lbZnJVIVdkdzYDaGKCIjZZII9sx8XGqF/BY4dPBuSF93w7JVxRhnFf
+ whZFnUTnjusiUsbcAbBs0BFjg8XAHdyvt5P28Hu1NrmX591aF89y2YG2FTKg2cjkcCBt
+ 8n/NdZHGOGbf8phL5L7AQ3sO+c8lbhrlgxQOTSlAVEBxljkIwxRTdmt3fZbsaY1eX9r8
+ dk+Q==
+X-Gm-Message-State: AOAM531NjRLaWyJN99b/36bXIhcT5GhcEzPwAet9ntUrMUufKP8Yeuog
+ G86UZyII0xyj3dS0MogaWF0oAQ==
+X-Google-Smtp-Source: ABdhPJwJHwvmnudnZ78O/kb8n+VyIyx/4wcIM7aEIY4BUkHtQ+mFdwbAuOdLXigX6S01LsAJxrtNaw==
+X-Received: by 2002:adf:f94d:0:b0:1e5:5ca1:2b80 with SMTP id
+ q13-20020adff94d000000b001e55ca12b80mr19448508wrr.323.1648420856992; 
+ Sun, 27 Mar 2022 15:40:56 -0700 (PDT)
+Received: from localhost.localdomain
+ (2a02-8440-6341-357e-3074-96af-9642-0002.rev.sfr.net.
+ [2a02:8440:6341:357e:3074:96af:9642:2])
  by smtp.gmail.com with ESMTPSA id
- f14-20020a05600c154e00b0038d06cc21b2sm1354555wmg.35.2022.03.27.13.03.57
+ v5-20020adfe4c5000000b001edc1e5053esm10400867wrm.82.2022.03.27.15.40.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Mar 2022 13:03:57 -0700 (PDT)
-From: Fabien Parent <fparent@baylibre.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Cc: Fabien Parent <fparent@baylibre.com>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v2 2/4] arm64: dts: mediatek: Add device-tree for MT8195 Demo
- board
-Date: Sun, 27 Mar 2022 22:03:10 +0200
-Message-Id: <20220327200312.3090515-3-fparent@baylibre.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220327200312.3090515-1-fparent@baylibre.com>
-References: <20220327200312.3090515-1-fparent@baylibre.com>
+ Sun, 27 Mar 2022 15:40:56 -0700 (PDT)
+From: Guillaume Ranquet <granquet@baylibre.com>
+To: airlied@linux.ie, angelogioacchino.delregno@collabora.com,
+ chunfeng.yun@mediatek.com, chunkuang.hu@kernel.org, ck.hu@mediatek.com,
+ daniel@ffwll.ch, deller@gmx.de, jitao.shi@mediatek.com, kishon@ti.com,
+ krzk+dt@kernel.org, maarten.lankhorst@linux.intel.com,
+ matthias.bgg@gmail.com, mripard@kernel.org, p.zabel@pengutronix.de,
+ robh+dt@kernel.org, tzimmermann@suse.de, vkoul@kernel.org
+Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, markyacoub@google.com
+Subject: [PATCH 00/22] drm/mediatek: Add mt8195 DisplayPort driver
+Date: Mon, 28 Mar 2022 00:39:05 +0200
+Message-Id: <20220327223927.20848-1-granquet@baylibre.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220327_130359_718747_0F119517 
-X-CRM114-Status: GOOD (  16.91  )
+X-CRM114-CacheID: sfid-20220327_154059_344080_7F745457 
+X-CRM114-Status: GOOD (  22.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,511 +97,118 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add basic device-tree for the MT8195 Demo board. The
-Demo board is made by MediaTek and has a MT8195 SoC,
-associated with the MT6359 and MT6360 PMICs, and
-the MT7921 connectivity chip.
+this series is built around the DisplayPort driver. The dpi/dpintf
+driver and the added helper functions are required for the DisplayPort
+driver to work.
 
-The IOs available on that board are:
-* 1 USB Type-C connector with DP aux mode support
-* 1 USB Type-A connector
-* 1 full size HDMI RX and 1 full size HDMI TX connector
-* 1 uSD slot
-* 40 pins header
-* SPI interface header
-* 1 M.2 slot
-* 1 audio jack
-* 1 micro-USB port for serial debug
-* 2 connectors for DSI displays
-* 3 connectors for CSI cameras
-* 1 connector for a eDP panel
-* 1 MMC storage
+This v9 is not quite ready yet, as project constraints forces me to
+publish v9 this week, I'm sorry if it's not standard practice.
 
-This commit adds basic support in order to be able to boot.
+Moreover, it is still un-tested on a recent kernel.
+The integration kernel we are using is still based on 5.10... but we
+are actively working on bringing up a mt8195 integration branch on 5.17.
+The patches have been rebased on top of next-20220301 and have been
+tested to build sucessfully (no functional testing).
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
----
-v2:
- * remove empty i2c nodes
- * remove empty spi node
- * remove unused pcie pinctrls
- * fixup node nodes to not contains underscore
- * rename mt6360 pmic node
- * move mmc1 node right after mmc0 node
- * use generic node name for gpio-keys
- * uniformize pinctrl node names
+Changes from v8:
+- The DP-Phy now has its own dt-bindings and now shares a regmap using the
+  syscon facility with the DP driver.
+- hot plug detection has been removed from the Embedded Display Port.
+  patch and moved to the patch adding External Display Port support.
+- started working on better error handling for the mtk_dp driver.
+- rebased on linux-next.
+- removal of tvd pll clocks re-introduced by mistake.
+- various coding style fixes.
 
- arch/arm64/boot/dts/mediatek/Makefile        |   1 +
- arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 447 +++++++++++++++++++
- 2 files changed, 448 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+Things that are in my todolist for v10:
+- fixing the train_handler in the mtk_dp driver, as I haven't been able
+  to reproduce locally (hopefully migrating to running the tests on a
+  more recent kernel will help)
+- explaining the various sleep/delays introduced in the drivers
+- explaining some of the differences between mt8195 and "legacy"
+- retrieve CK/DE support from panel driver instead of hardcoding it into
+  the dpi driver.
+- better error handling/reporting in mtk_dp
+- look into re-implementing mtk_dp_aux_transfer() using drm_dp_dpcd_read and
+  drm_dp_dpcd_write as suggested by Rex.
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 5da29e7223e4..c7d4636a2cb7 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -38,5 +38,6 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-demo.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-new file mode 100644
-index 000000000000..d94b4e01159a
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-@@ -0,0 +1,447 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2022 BayLibre, SAS.
-+ * Author: Fabien Parent <fparent@baylibre.com>
-+ */
-+/dts-v1/;
-+
-+#include "mt8195.dtsi"
-+#include "mt6359.dtsi"
-+
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/pinctrl/mt8195-pinfunc.h>
-+#include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
-+
-+/ {
-+	model = "MediaTek MT8195 demo board";
-+	compatible = "mediatek,mt8195-demo", "mediatek,mt8195";
-+
-+	aliases {
-+		serial0 = &uart0;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial0:921600n8";
-+	};
-+
-+	memory@40000000 {
-+		device_type = "memory";
-+		reg = <0 0x40000000 0 0x80000000>;
-+	};
-+
-+	reserved-memory {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+
-+		/* 12 MiB reserved for OP-TEE (BL32)
-+		 * +-----------------------+ 0x43e0_0000
-+		 * |      SHMEM 2MiB       |
-+		 * +-----------------------+ 0x43c0_0000
-+		 * |        | TA_RAM  8MiB |
-+		 * + TZDRAM +--------------+ 0x4340_0000
-+		 * |        | TEE_RAM 2MiB |
-+		 * +-----------------------+ 0x4320_0000
-+		 */
-+		optee_reserved: optee@43200000 {
-+			no-map;
-+			reg = <0 0x43200000 0 0x00c00000>;
-+		};
-+
-+		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
-+		bl31_secmon_reserved: secmon@54600000 {
-+			no-map;
-+			reg = <0 0x54600000 0x0 0x30000>;
-+		};
-+	};
-+
-+	firmware {
-+		optee {
-+			compatible = "linaro,optee-tz";
-+			method = "smc";
-+		};
-+	};
-+
-+	gpio-keys {
-+		compatible = "gpio-keys";
-+		input-name = "gpio-keys";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&gpio_keys_pins>;
-+
-+		key-0 {
-+			gpios = <&pio 106 GPIO_ACTIVE_LOW>;
-+			label = "volume_up";
-+			linux,code = <KEY_VOLUMEUP>;
-+			wakeup-source;
-+			debounce-interval = <15>;
-+		};
-+	};
-+};
-+
-+&uart0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart0_pins>;
-+	status = "okay";
-+};
-+
-+&mmc0 {
-+	status = "okay";
-+	pinctrl-names = "default", "state_uhs";
-+	pinctrl-0 = <&mmc0_default_pins>;
-+	pinctrl-1 = <&mmc0_uhs_pins>;
-+	bus-width = <8>;
-+	max-frequency = <200000000>;
-+	cap-mmc-highspeed;
-+	mmc-hs200-1_8v;
-+	mmc-hs400-1_8v;
-+	cap-mmc-hw-reset;
-+	no-sdio;
-+	no-sd;
-+	hs400-ds-delay = <0x14c11>;
-+	vmmc-supply = <&mt6359_vemc_1_ldo_reg>;
-+	vqmmc-supply = <&mt6359_vufs_ldo_reg>;
-+	non-removable;
-+};
-+
-+&mmc1 {
-+	pinctrl-names = "default", "state_uhs";
-+	pinctrl-0 = <&mmc1_default_pins>;
-+	pinctrl-1 = <&mmc1_uhs_pins>;
-+	cd-gpios = <&pio 129 GPIO_ACTIVE_LOW>;
-+	bus-width = <4>;
-+	max-frequency = <200000000>;
-+	cap-sd-highspeed;
-+	sd-uhs-sdr50;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&mt6360_ldo5>;
-+	vqmmc-supply = <&mt6360_ldo3>;
-+	status = "okay";
-+};
-+
-+&pmic {
-+	interrupt-parent = <&pio>;
-+	interrupts = <222 IRQ_TYPE_LEVEL_HIGH>;
-+};
-+
-+&i2c6 {
-+	clock-frequency = <400000>;
-+	pinctrl-0 = <&i2c6_pins>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+
-+	mt6360: pmic@34 {
-+		compatible = "mediatek,mt6360";
-+		reg = <0x34>;
-+		interrupt-controller;
-+		interrupt-parent = <&pio>;
-+		interrupts = <101 IRQ_TYPE_EDGE_FALLING>;
-+		interrupt-names = "IRQB";
-+
-+		charger {
-+			compatible = "mediatek,mt6360-chg";
-+			richtek,vinovp-microvolt = <14500000>;
-+
-+			otg_vbus_regulator: usb-otg-vbus-regulator {
-+				regulator-compatible = "usb-otg-vbus";
-+				regulator-name = "usb-otg-vbus";
-+				regulator-min-microvolt = <4425000>;
-+				regulator-max-microvolt = <5825000>;
-+			};
-+		};
-+
-+		regulator {
-+			compatible = "mediatek,mt6360-regulator";
-+			LDO_VIN3-supply = <&mt6360_buck2>;
-+
-+			mt6360_buck1: buck1 {
-+				regulator-compatible = "BUCK1";
-+				regulator-name = "mt6360,buck1";
-+				regulator-min-microvolt = <300000>;
-+				regulator-max-microvolt = <1300000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP
-+							   MT6360_OPMODE_ULP>;
-+				regulator-always-on;
-+			};
-+
-+			mt6360_buck2: buck2 {
-+				regulator-compatible = "BUCK2";
-+				regulator-name = "mt6360,buck2";
-+				regulator-min-microvolt = <300000>;
-+				regulator-max-microvolt = <1300000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP
-+							   MT6360_OPMODE_ULP>;
-+				regulator-always-on;
-+			};
-+
-+			mt6360_ldo1: ldo1 {
-+				regulator-compatible = "LDO1";
-+				regulator-name = "mt6360,ldo1";
-+				regulator-min-microvolt = <1200000>;
-+				regulator-max-microvolt = <3600000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP>;
-+			};
-+
-+			mt6360_ldo2: ldo2 {
-+				regulator-compatible = "LDO2";
-+				regulator-name = "mt6360,ldo2";
-+				regulator-min-microvolt = <1200000>;
-+				regulator-max-microvolt = <3600000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP>;
-+			};
-+
-+			mt6360_ldo3: ldo3 {
-+				regulator-compatible = "LDO3";
-+				regulator-name = "mt6360,ldo3";
-+				regulator-min-microvolt = <1200000>;
-+				regulator-max-microvolt = <3600000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP>;
-+			};
-+
-+			mt6360_ldo5: ldo5 {
-+				regulator-compatible = "LDO5";
-+				regulator-name = "mt6360,ldo5";
-+				regulator-min-microvolt = <2700000>;
-+				regulator-max-microvolt = <3600000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP>;
-+			};
-+
-+			mt6360_ldo6: ldo6 {
-+				regulator-compatible = "LDO6";
-+				regulator-name = "mt6360,ldo6";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <2100000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP>;
-+			};
-+
-+			mt6360_ldo7: ldo7 {
-+				regulator-compatible = "LDO7";
-+				regulator-name = "mt6360,ldo7";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <2100000>;
-+				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+							   MT6360_OPMODE_LP>;
-+				regulator-always-on;
-+			};
-+		};
-+	};
-+};
-+
-+&mt6359_vgpu11_buck_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vsram_others_ldo_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vpu_buck_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vcore_buck_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vproc1_buck_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vproc2_buck_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vsram_md_ldo_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vbbck_ldo_reg {
-+	regulator-always-on;
-+};
-+
-+&mt6359_vrf12_ldo_reg {
-+	regulator-always-on;
-+};
-+
-+&xhci0 {
-+	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-+	vbus-supply = <&otg_vbus_regulator>;
-+	status = "okay";
-+};
-+
-+&xhci1 {
-+	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-+	status = "okay";
-+};
-+
-+&xhci2 {
-+	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-+	status = "okay";
-+};
-+
-+&xhci3 {
-+	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-+	status = "okay";
-+};
-+
-+&u3phy0 {
-+	status = "okay";
-+};
-+
-+&u3phy1 {
-+	status = "okay";
-+};
-+
-+&u3phy2 {
-+	status = "okay";
-+};
-+
-+&u3phy3 {
-+	status = "okay";
-+};
-+
-+&pio {
-+	mmc0_default_pins: mmc0-default-pins {
-+		pins-cmd-dat {
-+			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
-+				 <PINMUX_GPIO125__FUNC_MSDC0_DAT1>,
-+				 <PINMUX_GPIO124__FUNC_MSDC0_DAT2>,
-+				 <PINMUX_GPIO123__FUNC_MSDC0_DAT3>,
-+				 <PINMUX_GPIO119__FUNC_MSDC0_DAT4>,
-+				 <PINMUX_GPIO118__FUNC_MSDC0_DAT5>,
-+				 <PINMUX_GPIO117__FUNC_MSDC0_DAT6>,
-+				 <PINMUX_GPIO116__FUNC_MSDC0_DAT7>,
-+				 <PINMUX_GPIO121__FUNC_MSDC0_CMD>;
-+			input-enable;
-+			drive-strength = <MTK_DRIVE_6mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+
-+		pin-clk {
-+			pinmux = <PINMUX_GPIO122__FUNC_MSDC0_CLK>;
-+			drive-strength = <MTK_DRIVE_6mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		pin-rst {
-+			pinmux = <PINMUX_GPIO120__FUNC_MSDC0_RSTB>;
-+			drive-strength = <MTK_DRIVE_6mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+	};
-+
-+	mmc0_uhs_pins: mmc0-uhs-pins {
-+		pins-cmd-dat {
-+			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
-+				 <PINMUX_GPIO125__FUNC_MSDC0_DAT1>,
-+				 <PINMUX_GPIO124__FUNC_MSDC0_DAT2>,
-+				 <PINMUX_GPIO123__FUNC_MSDC0_DAT3>,
-+				 <PINMUX_GPIO119__FUNC_MSDC0_DAT4>,
-+				 <PINMUX_GPIO118__FUNC_MSDC0_DAT5>,
-+				 <PINMUX_GPIO117__FUNC_MSDC0_DAT6>,
-+				 <PINMUX_GPIO116__FUNC_MSDC0_DAT7>,
-+				 <PINMUX_GPIO121__FUNC_MSDC0_CMD>;
-+			input-enable;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+
-+		pin-clk {
-+			pinmux = <PINMUX_GPIO122__FUNC_MSDC0_CLK>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		pin-ds {
-+			pinmux = <PINMUX_GPIO127__FUNC_MSDC0_DSL>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		pins-rst {
-+			pinmux = <PINMUX_GPIO120__FUNC_MSDC0_RSTB>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+	};
-+
-+	mmc1_default_pins: mmc1-default-pins {
-+		pins-cmd-dat {
-+			pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
-+				 <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
-+				 <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
-+				 <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
-+				 <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
-+			input-enable;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+
-+		pins-clk {
-+			pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		pins-insert {
-+			pinmux = <PINMUX_GPIO129__FUNC_GPIO129>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	mmc1_uhs_pins: mmc1-uhs-pins {
-+		pins-cmd-dat {
-+			pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
-+				 <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
-+				 <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
-+				 <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
-+				 <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
-+			input-enable;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+
-+		pins-clk {
-+			pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+	};
-+
-+	i2c6_pins: i2c6-pins {
-+		pins {
-+			pinmux = <PINMUX_GPIO25__FUNC_SDA6>,
-+				 <PINMUX_GPIO26__FUNC_SCL6>;
-+			bias-pull-up;
-+			mediatek,rsel = <MTK_PULL_SET_RSEL_111>;
-+		};
-+	};
-+
-+	gpio_keys_pins: gpio-keys-pins {
-+		pins {
-+			pinmux = <PINMUX_GPIO106__FUNC_GPIO106>;
-+			input-enable;
-+		};
-+	};
-+
-+	uart0_pins: uart0-pins {
-+		pins {
-+			pinmux = <PINMUX_GPIO98__FUNC_UTXD0>,
-+				 <PINMUX_GPIO99__FUNC_URXD0>;
-+		};
-+	};
-+
-+	uart1_pins: uart1-pins {
-+		pins {
-+			pinmux = <PINMUX_GPIO102__FUNC_UTXD1>,
-+				 <PINMUX_GPIO103__FUNC_URXD1>;
-+		};
-+	};
-+};
+Older revisions:
+RFC - https://lore.kernel.org/linux-mediatek/20210816192523.1739365-1-msp@baylibre.com/
+v1  - https://lore.kernel.org/linux-mediatek/20210906193529.718845-1-msp@baylibre.com/
+v2  - https://lore.kernel.org/linux-mediatek/20210920084424.231825-1-msp@baylibre.com/
+v3  - https://lore.kernel.org/linux-mediatek/20211001094443.2770169-1-msp@baylibre.com/
+v4  - https://lore.kernel.org/linux-mediatek/20211011094624.3416029-1-msp@baylibre.com/
+v5  - https://lore.kernel.org/all/20211021092707.3562523-1-msp@baylibre.com/
+v6  - https://lore.kernel.org/linux-mediatek/20211110130623.20553-1-granquet@baylibre.com/
+v7  - https://lore.kernel.org/linux-mediatek/20211217150854.2081-1-granquet@baylibre.com/
+v8  - https://lore.kernel.org/linux-mediatek/20220218145437.18563-1-granquet@baylibre.com/
+
+Functional dependencies are:
+- Add Mediatek Soc DRM (vdosys0) support for mt8195
+  https://lore.kernel.org/all/20211026155911.17651-1-jason-jh.lin@mediatek.com/
+- Add MediaTek SoC DRM (vdosys1) support for mt8195
+  https://lore.kernel.org/all/20211029075203.17093-1-nancy.lin@mediatek.com/
+
+Guillaume Ranquet (15):
+  dt-bindings: mediatek,dp_phy: Add Display Port PHY binding
+  drm/edid: Convert cea_sad helper struct to kernelDoc
+  drm/edid: Add cea_sad helpers for freq/length
+  drm/mediatek: dpi: move dpi limits to SoC config
+  drm/mediatek: dpi: implement a CK/DE pol toggle in SoC config
+  drm/mediatek: dpi: implement a swap_input toggle in SoC config
+  drm/mediatek: dpi: move dimension mask to SoC config
+  drm/mediatek: dpi: move hvsize_mask to SoC config
+  drm/mediatek: dpi: move swap_shift to SoC config
+  drm/mediatek: dpi: move the yuv422_en_bit to SoC config
+  drm/mediatek: dpi: move the csc_enable bit to SoC config
+  drm/mediatek: dpi: Add dpintf support
+  drm/meditek: dpi: Add matrix_sel helper
+  drm/mediatek: Add mt8195 External DisplayPort support
+  drm/mediatek: DP audio support for mt8195
+
+Jitao Shi (2):
+  drm/mediatek: add hpd debounce
+  drm/mediatek: change the aux retries times when receiving AUX_DEFER
+
+Markus Schneider-Pargmann (5):
+  dt-bindings: mediatek,dpi: Add DP_INTF compatible
+  dt-bindings: mediatek,dp: Add Display Port binding
+  video/hdmi: Add audio_infoframe packing for DP
+  phy: phy-mtk-dp: Add driver for DP phy
+  drm/mediatek: Add mt8195 Embedded DisplayPort driver
+
+ .../display/mediatek/mediatek,dp.yaml         |   97 +
+ .../display/mediatek/mediatek,dpi.yaml        |   11 +-
+ .../bindings/phy/mediatek,dp-phy.yaml         |   43 +
+ MAINTAINERS                                   |    1 +
+ drivers/gpu/drm/drm_edid.c                    |   74 +
+ drivers/gpu/drm/mediatek/Kconfig              |    8 +
+ drivers/gpu/drm/mediatek/Makefile             |    2 +
+ drivers/gpu/drm/mediatek/mtk_dp.c             | 3204 +++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_dp_reg.h         |  568 +++
+ drivers/gpu/drm/mediatek/mtk_dpi.c            |  222 +-
+ drivers/gpu/drm/mediatek/mtk_dpi_regs.h       |   38 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |    8 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |    1 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |    6 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h        |    1 +
+ drivers/phy/mediatek/Kconfig                  |    8 +
+ drivers/phy/mediatek/Makefile                 |    1 +
+ drivers/phy/mediatek/phy-mtk-dp.c             |  202 ++
+ drivers/video/hdmi.c                          |   82 +-
+ include/drm/dp/drm_dp_helper.h                |    2 +
+ include/drm/drm_edid.h                        |   25 +-
+ include/linux/hdmi.h                          |    7 +-
+ include/linux/soc/mediatek/mtk-mmsys.h        |    3 +-
+ 23 files changed, 4541 insertions(+), 73 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,dp-phy.yaml
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_dp.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_dp_reg.h
+ create mode 100644 drivers/phy/mediatek/phy-mtk-dp.c
+
 -- 
-2.35.1
+2.34.1
 
 
 _______________________________________________
