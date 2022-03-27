@@ -4,74 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77F99C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Mar 2022 16:59:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FF79C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Mar 2022 16:59:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=T/A2od+/7NpDp4P5tBbhkG26Bl+AbtZYXPy1lIxm1uI=; b=UbYmZCAsfm49b9
-	fTxOXBtCaez+w3TfubP2zWnUTYSV2pp30mdhsvMR0sPUiHV/0yGE6XHqjk0WRKnYY7ywc+QV3AEKb
-	dZ9PheSMWpaSbtifr9RRvFw5xLADWR6KeNCygt3UANpaNES6fQQ1xZjyl7Prgn0fRRMTDQr4Qv/Tc
-	zAbzhClIJY7bnOLgKCGW/16P5Png3O4SFaIm8GeEr5qJX1xaHcZeL+YS0WCAcG8b5go1wal6Yjzot
-	WMeNdV5tBKXex8RQY7APDQF7fEzJ7A8nSJnO4sMzO9fwgaE9g0GLwTVlxEXX1bcMzXZKPEJMgzrUT
-	/OG2Vn+Mvlf07AuoQJZA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rWLIjYhXn+zOSB+WdNuB6pdQiq0ngtAXwBenpIi80B8=; b=A0uqH8lYqoU/yw
+	5me0/iw5uKW1TmPIEPAQEN0ulqQiMAYV3kQJVTi2TC/HbeuQGX/rAiEkhD2nHmBDPivCRTnunDs3C
+	XHHnFQ/2DteS+wNFoDBalBczrIO0FJsNYuN2DktgdgIlMadGlcm8Hr1pLE5a6WwRIu8/7nrb13HbH
+	ml+6OIG+YXCqMMxgIoLa4Oy/R1jiY4mHUDW8VsO4ICPOKOpBZxzx+iVmRjxP621H3pmcGZrLj/jRR
+	/pmGNFPYAAMeADRcef8ch8Ec6s/lqcbRY6AnjjvPPcAFAmPhrUE6YFlCz8ioi4QDLFVLYN/ATh7lF
+	MwJIFnHdw8XCXzsgIQKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYWEk-005ks9-Jr; Sun, 27 Mar 2022 16:59:30 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1nYWF1-005kyI-Ei; Sun, 27 Mar 2022 16:59:47 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYWEY-005krF-9R
- for linux-mediatek@lists.infradead.org; Sun, 27 Mar 2022 16:59:20 +0000
-Received: by mail-wm1-x329.google.com with SMTP id
- 123-20020a1c1981000000b0038b3616a71aso7182516wmz.4
- for <linux-mediatek@lists.infradead.org>; Sun, 27 Mar 2022 09:59:17 -0700 (PDT)
+ id 1nYWEn-005ksl-UO
+ for linux-mediatek@lists.infradead.org; Sun, 27 Mar 2022 16:59:35 +0000
+Received: by mail-wm1-x334.google.com with SMTP id
+ k124-20020a1ca182000000b0038c9cf6e2a6so7208386wme.0
+ for <linux-mediatek@lists.infradead.org>; Sun, 27 Mar 2022 09:59:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=l3UyXLPhfuWhTj2RPYL4FasSdvEckI9twBVwXQIlqIA=;
- b=KDeuq11AKukzvYsj++BJG33YHL7Mer/+9ATFpj/efErMMrEfzHe8nrDx/dbWKUv/KA
- +FJfTRWYdV32bxMxXCJ/USQkvIDSoVPS3ivQVRbUa4a0sjocq4aaCH4gbaJmlUnxmQea
- noeL7SeF4EtNesEAfDRTzvffbihG3ujPt3bAoczI1gniY+W5FY9opripRtF9z7KuEv+K
- VzrS3tfRSIJbwUk4uiu9It1z+/0HkwgmIavFalMpGsPbWMepnvY8xONk5WKNtegu3q6p
- dECQBGyiSUEywhFVavuw9fdQq3/dbGz5Okvawno3LUtrDqKDIf0r9K60F6hhNfsOAOGX
- CVCA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=GrkiYksIXcCr7YZZWEOvdXT2DA/jInP9u8Xo7/nCL0M=;
+ b=GTZ2XxQZHx/jRc8T3Lv8E/z/1GWp49b6uLzBucRMSL8INJw5DyBeUQhnVhdavWirNL
+ tmbW/itm/3LLUXpvwmVjZtWKBlaucszhH7zqf2ICmRqR+ZSLdu/uBqWj/+M5nzzzBn6U
+ nmt5JvEmbzXijPg3VkZYogg+nJGQKOML2CgpTCo5P3ARFH9+ptXLbkv9C2YmJZMXQ1iZ
+ 7n8JkRVZjiFQla+jJumiLaTgmNmDSEsF47JF+ICa995EBRgvQ9R2A/0MyLBRZsMqki48
+ sYxCPujMABUPs1bSP2dlqvfbClKwfe0fuPkhxyLkX0IXqK0iAzHHK8opy/CvaDSjhehd
+ i2GA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=l3UyXLPhfuWhTj2RPYL4FasSdvEckI9twBVwXQIlqIA=;
- b=GgANg9O2d6rzOzSpJ2/AqwVIkyRbPQ7Z07jVzX/ghi/uAmT4KN7SWQKNc2fI3vjd71
- CabQhD+LC0fEOjNebiBBiS/toEI29JhI+X7Q32cxYmvZmqrZ8jPsrFmIhWRzRdM6S/p0
- 8anxisFk0hdPP1sh4ept5y2Wc0nR4OTGiQu2rM/0pv3GUvSZbuQ2AxRKT0NcKbk5MRuK
- CI3fyXupJEGPDqKI4kEZdAZ5d6aUpJQVairLCt/7vS6h70AtF+2hEdIPv2BO3BxaQs6/
- hpyebiOVF9R2VJI0j9MGFpJuERbBPQPK+TDcfn0niQqYii7667HwimIxzSjGAbR0ZyRP
- Ud8w==
-X-Gm-Message-State: AOAM531CFksbHqTDu7BWEJt3MAna9lJCmQ1v/WosgcECIKYiIGjLJBHC
- ikmFmjUBBMh+c2UzV/5ba9zOhg==
-X-Google-Smtp-Source: ABdhPJy6n5q9yBGyX9r7VhBqPUrEoQwv8FgKCvcnII7pPqBaX1v3Z9Y8oIPzwqP/c6t0x9Ss5N3XRw==
-X-Received: by 2002:a05:600c:ca:b0:38c:b426:3124 with SMTP id
- u10-20020a05600c00ca00b0038cb4263124mr30231617wmm.59.1648400356750; 
- Sun, 27 Mar 2022 09:59:16 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=GrkiYksIXcCr7YZZWEOvdXT2DA/jInP9u8Xo7/nCL0M=;
+ b=fyGE95UYpCMlbeazUeIwZPkXaeTmC8sT0I+x7wi/+DBIe1hEWwYTDwhw7UaCUrXZil
+ lML8NdGAAf9V4ys+SoE7ZaI4PfnRkq/+T2jcewPsve5G4CCMhje2zWMZRyQRxPSYhnAa
+ OZ41L9WzZfgPvo8R425yDSYLLnYW+9diYogqVLdWXa29lQPCbbS5L8+KUyGGYofmDEg4
+ pUIfUl8IXczglLMlGvqsMGUBLv11ioDEcokgB2DMw2/06IETUDJBQOPmZ7nbRsyG/6VA
+ 9B4hZbzH2i9ogomlfqoMZXVLcjs6jk8ec1ZrojLolPtVcxRZrRWL9gOWXcdWrELl61SC
+ KO5g==
+X-Gm-Message-State: AOAM533WMZwE7SOV469sljOkGMmJUYJxgPzIJ5Ah7eZ12fYDW0xgy1P0
+ ix3Qmq32IXL6bS3+TknIgK1A8Q==
+X-Google-Smtp-Source: ABdhPJy/tdJJQlDuv4mW16c8o9cKE4bOlxZGTM69qH8mj9pl3CI+OQLQ5IbGpH33qgENVnCRDEzp4A==
+X-Received: by 2002:a7b:c77a:0:b0:38c:2c33:d8f1 with SMTP id
+ x26-20020a7bc77a000000b0038c2c33d8f1mr29485151wmk.115.1648400372558; 
+ Sun, 27 Mar 2022 09:59:32 -0700 (PDT)
 Received: from radium.lan ([88.160.162.107]) by smtp.gmail.com with ESMTPSA id
- 2-20020a1c1902000000b00380d3873d6asm9979423wmz.43.2022.03.27.09.59.15
+ 2-20020a1c1902000000b00380d3873d6asm9979423wmz.43.2022.03.27.09.59.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Mar 2022 09:59:16 -0700 (PDT)
+ Sun, 27 Mar 2022 09:59:32 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Fabien Parent <fparent@baylibre.com>, linux-arm-kernel@lists.infradead.org,
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>
+Cc: Fabien Parent <fparent@baylibre.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
-Subject: [PATCH 0/4] Add support for MediaTek MT8195 demo board
-Date: Sun, 27 Mar 2022 18:58:33 +0200
-Message-Id: <20220327165837.3048639-1-fparent@baylibre.com>
+Subject: [PATCH 1/4] dt-bindings: arm64: dts: mediatek: Add mt8195-demo board
+Date: Sun, 27 Mar 2022 18:58:34 +0200
+Message-Id: <20220327165837.3048639-2-fparent@baylibre.com>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220327165837.3048639-1-fparent@baylibre.com>
+References: <20220327165837.3048639-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220327_095918_381410_D173218C 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20220327_095933_987284_E24035A8 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,31 +94,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch serie adds basic support for the MediaTek MT8195
-demo board. For now the support is pretty basic and allow
-just to boot, use USB, and the SD card.
+Add bindings for the MediaTek mt8195-demo board.
 
-When more IO support will be added for MT8195, new changes
-will be pushed to the device-tree of the MT8195 demo board
-to support these IOs as well.
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-This serie depends on the following patches:
-[0] https://patchwork.kernel.org/project/linux-mediatek/patch/1622011927-359-9-git-send-email-hsin-hsiung.wang@mediatek.com/
-[1] https://patchwork.kernel.org/project/linux-mediatek/patch/20220216113131.13145-4-tinghan.shen@mediatek.com/
-
-Fabien Parent (4):
-  dt-bindings: arm64: dts: mediatek: Add mt8195-demo board
-  arm64: dts: mediatek: Add device-tree for MT8195 Demo board
-  arm64: defconfig: enable MT6359 regulator driver
-  arm64: defconfig: enable some mt6360 PMIC drivers
-
- .../devicetree/bindings/arm/mediatek.yaml     |   4 +
- arch/arm64/boot/dts/mediatek/Makefile         |   1 +
- arch/arm64/boot/dts/mediatek/mt8195-demo.dts  | 539 ++++++++++++++++++
- arch/arm64/configs/defconfig                  |   4 +
- 4 files changed, 548 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index ab0593c77321..1f68afb19d81 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -131,6 +131,10 @@ properties:
+           - enum:
+               - mediatek,mt8183-evb
+           - const: mediatek,mt8183
++      - items:
++          - enum:
++              - mediatek,mt8195-demo
++          - const: mediatek,mt8195
+       - items:
+           - enum:
+               - mediatek,mt8195-evb
 -- 
 2.35.1
 
