@@ -4,81 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8980FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Mar 2022 20:04:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EFDAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Mar 2022 20:04:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d/VG3i1eE/WDWnKbx/zUWhBIbyoB35dVvOOPCbFwaXY=; b=vxK6QV9uTL0gid
-	DoBOcqYN3BnW9G3NLv1Xo/3PG5eq4xu9zgTP4uegB66SpPUQr4n4Qak7rOOQr1cFoJWFn1ugSrTIl
-	xwiUvXoy2/Lf1sE9yw0JAzJ8I46rq4Tu2hSQ+lOp8+hWgHpkCJz75U1IZlGEIyENkq/Q86WNZeXec
-	7sJ/yqEeLDy7bSSDPRMfzN/s9T+EsiUrc6Jd25hoW08UT58OUX+8az/jlq1KwXBXlF1xZFYhZu7vT
-	ksFfZuITw5vFJFJOF/x+BfaQyXlBa4tnxYoy+zRv44RqliAP6Tew8DSMWSZctgF8nM/FI6wqT71vM
-	G2Ca6KA6J/W983Ga3c+w==;
+	List-Owner; bh=c0ylfl4xneRQ5e67O7mLDeMIpjR0gbAm2f1e8sU05rc=; b=PBVkPaI7K/EpMw
+	P39ytuqBEz++9FRrhVXGlRdpSZFkBhVv+Q6GO2h8HIm9B+VZRV2a5DebtirFUhgzcMcORIqHVDTK9
+	eLlsNAnzO6b1Gi+pMtwF3RxMcFVDzPMkXoe7HFwWJjnuo3qIXZvQbTN3CDWCN3lnHaSm0paVJ8HZc
+	y09LCIPB3tWPkc2plvK+EDqDRzTOpBVfi7epsasCxMpjnwXB/x+2/FOuLAmAim5RG3Yh/uTsxyClB
+	7cNrUS3ZpaXLe+oYpMcc0rDoV+TXkGFJJGmwxIiwGjw0zF6aZsSlb0Q3JLusj6NAdCflfSH6cMObz
+	6BzD4R1/FAhbOYQ6fVbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYZ7J-006A6b-4b; Sun, 27 Mar 2022 20:04:01 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1nYZ7k-006AJT-57; Sun, 27 Mar 2022 20:04:28 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYZ7E-006A4m-VX
- for linux-mediatek@lists.infradead.org; Sun, 27 Mar 2022 20:03:58 +0000
-Received: by mail-wr1-x431.google.com with SMTP id w4so17522163wrg.12
- for <linux-mediatek@lists.infradead.org>; Sun, 27 Mar 2022 13:03:56 -0700 (PDT)
+ id 1nYZ7H-006A5o-KN
+ for linux-mediatek@lists.infradead.org; Sun, 27 Mar 2022 20:04:02 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id
+ i204-20020a1c3bd5000000b0038ce25c870dso47682wma.1
+ for <linux-mediatek@lists.infradead.org>; Sun, 27 Mar 2022 13:03:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=1d28fyRINWBEv9rFNENNgciYP3HOQGFrcYEryHqhBZQ=;
- b=ETiMFcHrqDcGBEgPEp4gfZ1ft8E9q6y6ATkGzSVs9s/aB1O+Kvl9zW7Wp2Z1HI3v3R
- 5RjXenHnXi7ULhG35yU/RVt2Zy4ux6NoihY0JjBJnAM+UBINSKubsl1Jr26/v+I7GOjK
- cTCbd9sBP2U/mvbB+rcJUXPDXItFBclpPdkVuEhFbHxB4rVNX8+vSCkGFhmUjHf1g21N
- a7aoNTd3PA/TWCRNGxqoKU7hlKgp+gvW/fQ7pXdMLwt0cxc5l/OLqWb4kkX+KW1f+N8t
- EAxZGziLUfq3WyE13+L45h5OamBGDBcttq6VjvRPxR4h7EbMMuN/9XzlBTrD0egq2HpI
- aZ1Q==
+ bh=LOpeigcZgHASXsFgMMBDoubFgh2CN2uJnv1/KTETRuA=;
+ b=a9ttLlc8J+QluSbyoogIjxVh3kkfhmSV2iRD9KjvzmYA8cI5sArRfkAnuZ4Mgy8Fkl
+ c8xd7HGGciOE9RzV8EUHcmFsGg8pA2SK/7cnOlISrQ4z/42cjb9ZyLN09lDBQ8qo2gLp
+ Ul5451wsdPvpag7QK1qaBGq/dP/48bBu5RSAZYsBh3ZLZM53G/yswXFDcA4U3UzzOFor
+ nrB+apUN9ahlGV7KzR6zQYlgl0UWMBugUF1UqV+OZvsZ8wCH36feCtLTXUyX69KCle3U
+ dJHnCW2yqZsnvGEzrVJrB3ggrbE55AEyxzYOHv1lzhIHGipRFVKwAh9atRy9cNT8kcun
+ SNBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=1d28fyRINWBEv9rFNENNgciYP3HOQGFrcYEryHqhBZQ=;
- b=usJNUdtmu4Igi30OIuMaceFeYVQZJWxQE/6uNLp12n5t3oZWyvKDaBZHS61Iz0b9PK
- r6zqjzxPGr8hhcb4hutdefL4eH9zs8VpOtazV6tJjHBsrbarng50Nsr5Kdn3N/Dui5cx
- ezS+zdRJhSGG5+U3BXxZpfHn7ARR3qHDm7OCfQmq/nacog5XkwcASpA0haEgc5M3SjUt
- a5fmvNxZ9MMoKg/CBMNgcqJVRVEyPiEbmhZ3yXuKf/WUm5jGgG7kcQZAkIDvevgJ64xk
- vndkIoDvi83Cywm2bXbMXmS//Ud6+oCpVMYuxHGHcia8lYHcHSp/6ew9ds8Gl8mxw3sm
- 3RdA==
-X-Gm-Message-State: AOAM532q6e0hXJkTNu7ppZ5ygEQWET7zRzORi3YPqilWgSkDf2MEbKXU
- tSHTtsd73f+7wpy9XsTWOtTywg==
-X-Google-Smtp-Source: ABdhPJzePJDajCPuH03dlfT6LG4aetEiDC1h/QSd89XIhYxAFlPsxZjCF0AKG5u4+34RD+EcMX0Avg==
-X-Received: by 2002:adf:a482:0:b0:1e3:3e5f:496c with SMTP id
- g2-20020adfa482000000b001e33e5f496cmr18356033wrb.606.1648411435594; 
- Sun, 27 Mar 2022 13:03:55 -0700 (PDT)
+ bh=LOpeigcZgHASXsFgMMBDoubFgh2CN2uJnv1/KTETRuA=;
+ b=mx+/sbKQedL940F/yMKRvOSCfT1xDqvK9+l7TSwDtr2tYmJUkdOUOFpdywWRmn0kx7
+ Ee49/8oyBot2o9PGmtnznJ7MIuKYKuC8yXboVjHVBwsmqiPPQ9L5MO2E5FIJahdPw4Oq
+ fi2AlqoSA2y6gzxQsclORUvnOjBaFahB4k+Vikljkfpo22PoHklnMFXNiM2L6zRurU1u
+ POyhjjGC/mdyUUFNlroSMpA7iGdDo5BkKH1cI4eskO7aTue6IGJUQ7kr3o9sUmCJbYZm
+ X7EanjAwFfsgwC8+dqZ3YqCyf6eplqqoLoFLxUNdjnpBTmOR7Pg5A4wJnPfmXbe68W58
+ dxAg==
+X-Gm-Message-State: AOAM533QSWJ0J1uIkkVphn1LzcvvUd/PGi5Ly0jzKusCw0aY4uwtV4QA
+ W2I0vfC+YUA40NXwuClaFkX0bg==
+X-Google-Smtp-Source: ABdhPJzj03dLfQxdM3Tk+fIS05qCASk4bGj0nPKTvbNPXGhQXceEm9qL53zGhQPGzaiUQRlvI+Tsbg==
+X-Received: by 2002:a05:600c:3547:b0:38c:ac1c:53e9 with SMTP id
+ i7-20020a05600c354700b0038cac1c53e9mr21299240wmq.159.1648411438180; 
+ Sun, 27 Mar 2022 13:03:58 -0700 (PDT)
 Received: from localhost.localdomain ([88.160.162.107])
  by smtp.gmail.com with ESMTPSA id
- f14-20020a05600c154e00b0038d06cc21b2sm1354555wmg.35.2022.03.27.13.03.54
+ f14-20020a05600c154e00b0038d06cc21b2sm1354555wmg.35.2022.03.27.13.03.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Mar 2022 13:03:55 -0700 (PDT)
+ Sun, 27 Mar 2022 13:03:57 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>
-Cc: Fabien Parent <fparent@baylibre.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 1/4] dt-bindings: arm64: dts: mediatek: Add mt8195-demo
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
+Cc: Fabien Parent <fparent@baylibre.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2 2/4] arm64: dts: mediatek: Add device-tree for MT8195 Demo
  board
-Date: Sun, 27 Mar 2022 22:03:09 +0200
-Message-Id: <20220327200312.3090515-2-fparent@baylibre.com>
+Date: Sun, 27 Mar 2022 22:03:10 +0200
+Message-Id: <20220327200312.3090515-3-fparent@baylibre.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220327200312.3090515-1-fparent@baylibre.com>
 References: <20220327200312.3090515-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220327_130357_040738_DBE7D7FB 
-X-CRM114-Status: UNSURE (   9.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220327_130359_718747_0F119517 
+X-CRM114-Status: GOOD (  16.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,28 +94,509 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add bindings for the MediaTek mt8195-demo board.
+Add basic device-tree for the MT8195 Demo board. The
+Demo board is made by MediaTek and has a MT8195 SoC,
+associated with the MT6359 and MT6360 PMICs, and
+the MT7921 connectivity chip.
+
+The IOs available on that board are:
+* 1 USB Type-C connector with DP aux mode support
+* 1 USB Type-A connector
+* 1 full size HDMI RX and 1 full size HDMI TX connector
+* 1 uSD slot
+* 40 pins header
+* SPI interface header
+* 1 M.2 slot
+* 1 audio jack
+* 1 micro-USB port for serial debug
+* 2 connectors for DSI displays
+* 3 connectors for CSI cameras
+* 1 connector for a eDP panel
+* 1 MMC storage
+
+This commit adds basic support in order to be able to boot.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
 v2:
- * move compatible next to the MT8195-EVB compatible
+ * remove empty i2c nodes
+ * remove empty spi node
+ * remove unused pcie pinctrls
+ * fixup node nodes to not contains underscore
+ * rename mt6360 pmic node
+ * move mmc1 node right after mmc0 node
+ * use generic node name for gpio-keys
+ * uniformize pinctrl node names
 
- Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/mediatek/Makefile        |   1 +
+ arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 447 +++++++++++++++++++
+ 2 files changed, 448 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-demo.dts
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index ab0593c77321..024a45300da5 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -133,6 +133,7 @@ properties:
-           - const: mediatek,mt8183
-       - items:
-           - enum:
-+              - mediatek,mt8195-demo
-               - mediatek,mt8195-evb
-           - const: mediatek,mt8195
-       - description: Google Burnet (HP Chromebook x360 11MK G3 EE)
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index 5da29e7223e4..c7d4636a2cb7 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -38,5 +38,6 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-demo.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+new file mode 100644
+index 000000000000..d94b4e01159a
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+@@ -0,0 +1,447 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright (C) 2022 BayLibre, SAS.
++ * Author: Fabien Parent <fparent@baylibre.com>
++ */
++/dts-v1/;
++
++#include "mt8195.dtsi"
++#include "mt6359.dtsi"
++
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/input/input.h>
++#include <dt-bindings/pinctrl/mt8195-pinfunc.h>
++#include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
++
++/ {
++	model = "MediaTek MT8195 demo board";
++	compatible = "mediatek,mt8195-demo", "mediatek,mt8195";
++
++	aliases {
++		serial0 = &uart0;
++	};
++
++	chosen {
++		stdout-path = "serial0:921600n8";
++	};
++
++	memory@40000000 {
++		device_type = "memory";
++		reg = <0 0x40000000 0 0x80000000>;
++	};
++
++	reserved-memory {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++
++		/* 12 MiB reserved for OP-TEE (BL32)
++		 * +-----------------------+ 0x43e0_0000
++		 * |      SHMEM 2MiB       |
++		 * +-----------------------+ 0x43c0_0000
++		 * |        | TA_RAM  8MiB |
++		 * + TZDRAM +--------------+ 0x4340_0000
++		 * |        | TEE_RAM 2MiB |
++		 * +-----------------------+ 0x4320_0000
++		 */
++		optee_reserved: optee@43200000 {
++			no-map;
++			reg = <0 0x43200000 0 0x00c00000>;
++		};
++
++		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
++		bl31_secmon_reserved: secmon@54600000 {
++			no-map;
++			reg = <0 0x54600000 0x0 0x30000>;
++		};
++	};
++
++	firmware {
++		optee {
++			compatible = "linaro,optee-tz";
++			method = "smc";
++		};
++	};
++
++	gpio-keys {
++		compatible = "gpio-keys";
++		input-name = "gpio-keys";
++		pinctrl-names = "default";
++		pinctrl-0 = <&gpio_keys_pins>;
++
++		key-0 {
++			gpios = <&pio 106 GPIO_ACTIVE_LOW>;
++			label = "volume_up";
++			linux,code = <KEY_VOLUMEUP>;
++			wakeup-source;
++			debounce-interval = <15>;
++		};
++	};
++};
++
++&uart0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart0_pins>;
++	status = "okay";
++};
++
++&mmc0 {
++	status = "okay";
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc0_default_pins>;
++	pinctrl-1 = <&mmc0_uhs_pins>;
++	bus-width = <8>;
++	max-frequency = <200000000>;
++	cap-mmc-highspeed;
++	mmc-hs200-1_8v;
++	mmc-hs400-1_8v;
++	cap-mmc-hw-reset;
++	no-sdio;
++	no-sd;
++	hs400-ds-delay = <0x14c11>;
++	vmmc-supply = <&mt6359_vemc_1_ldo_reg>;
++	vqmmc-supply = <&mt6359_vufs_ldo_reg>;
++	non-removable;
++};
++
++&mmc1 {
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc1_default_pins>;
++	pinctrl-1 = <&mmc1_uhs_pins>;
++	cd-gpios = <&pio 129 GPIO_ACTIVE_LOW>;
++	bus-width = <4>;
++	max-frequency = <200000000>;
++	cap-sd-highspeed;
++	sd-uhs-sdr50;
++	sd-uhs-sdr104;
++	vmmc-supply = <&mt6360_ldo5>;
++	vqmmc-supply = <&mt6360_ldo3>;
++	status = "okay";
++};
++
++&pmic {
++	interrupt-parent = <&pio>;
++	interrupts = <222 IRQ_TYPE_LEVEL_HIGH>;
++};
++
++&i2c6 {
++	clock-frequency = <400000>;
++	pinctrl-0 = <&i2c6_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++
++	mt6360: pmic@34 {
++		compatible = "mediatek,mt6360";
++		reg = <0x34>;
++		interrupt-controller;
++		interrupt-parent = <&pio>;
++		interrupts = <101 IRQ_TYPE_EDGE_FALLING>;
++		interrupt-names = "IRQB";
++
++		charger {
++			compatible = "mediatek,mt6360-chg";
++			richtek,vinovp-microvolt = <14500000>;
++
++			otg_vbus_regulator: usb-otg-vbus-regulator {
++				regulator-compatible = "usb-otg-vbus";
++				regulator-name = "usb-otg-vbus";
++				regulator-min-microvolt = <4425000>;
++				regulator-max-microvolt = <5825000>;
++			};
++		};
++
++		regulator {
++			compatible = "mediatek,mt6360-regulator";
++			LDO_VIN3-supply = <&mt6360_buck2>;
++
++			mt6360_buck1: buck1 {
++				regulator-compatible = "BUCK1";
++				regulator-name = "mt6360,buck1";
++				regulator-min-microvolt = <300000>;
++				regulator-max-microvolt = <1300000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP
++							   MT6360_OPMODE_ULP>;
++				regulator-always-on;
++			};
++
++			mt6360_buck2: buck2 {
++				regulator-compatible = "BUCK2";
++				regulator-name = "mt6360,buck2";
++				regulator-min-microvolt = <300000>;
++				regulator-max-microvolt = <1300000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP
++							   MT6360_OPMODE_ULP>;
++				regulator-always-on;
++			};
++
++			mt6360_ldo1: ldo1 {
++				regulator-compatible = "LDO1";
++				regulator-name = "mt6360,ldo1";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++
++			mt6360_ldo2: ldo2 {
++				regulator-compatible = "LDO2";
++				regulator-name = "mt6360,ldo2";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++
++			mt6360_ldo3: ldo3 {
++				regulator-compatible = "LDO3";
++				regulator-name = "mt6360,ldo3";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++
++			mt6360_ldo5: ldo5 {
++				regulator-compatible = "LDO5";
++				regulator-name = "mt6360,ldo5";
++				regulator-min-microvolt = <2700000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++
++			mt6360_ldo6: ldo6 {
++				regulator-compatible = "LDO6";
++				regulator-name = "mt6360,ldo6";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <2100000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++
++			mt6360_ldo7: ldo7 {
++				regulator-compatible = "LDO7";
++				regulator-name = "mt6360,ldo7";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <2100000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++				regulator-always-on;
++			};
++		};
++	};
++};
++
++&mt6359_vgpu11_buck_reg {
++	regulator-always-on;
++};
++
++&mt6359_vsram_others_ldo_reg {
++	regulator-always-on;
++};
++
++&mt6359_vpu_buck_reg {
++	regulator-always-on;
++};
++
++&mt6359_vcore_buck_reg {
++	regulator-always-on;
++};
++
++&mt6359_vproc1_buck_reg {
++	regulator-always-on;
++};
++
++&mt6359_vproc2_buck_reg {
++	regulator-always-on;
++};
++
++&mt6359_vsram_md_ldo_reg {
++	regulator-always-on;
++};
++
++&mt6359_vbbck_ldo_reg {
++	regulator-always-on;
++};
++
++&mt6359_vrf12_ldo_reg {
++	regulator-always-on;
++};
++
++&xhci0 {
++	vusb33-supply = <&mt6359_vusb_ldo_reg>;
++	vbus-supply = <&otg_vbus_regulator>;
++	status = "okay";
++};
++
++&xhci1 {
++	vusb33-supply = <&mt6359_vusb_ldo_reg>;
++	status = "okay";
++};
++
++&xhci2 {
++	vusb33-supply = <&mt6359_vusb_ldo_reg>;
++	status = "okay";
++};
++
++&xhci3 {
++	vusb33-supply = <&mt6359_vusb_ldo_reg>;
++	status = "okay";
++};
++
++&u3phy0 {
++	status = "okay";
++};
++
++&u3phy1 {
++	status = "okay";
++};
++
++&u3phy2 {
++	status = "okay";
++};
++
++&u3phy3 {
++	status = "okay";
++};
++
++&pio {
++	mmc0_default_pins: mmc0-default-pins {
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
++				 <PINMUX_GPIO125__FUNC_MSDC0_DAT1>,
++				 <PINMUX_GPIO124__FUNC_MSDC0_DAT2>,
++				 <PINMUX_GPIO123__FUNC_MSDC0_DAT3>,
++				 <PINMUX_GPIO119__FUNC_MSDC0_DAT4>,
++				 <PINMUX_GPIO118__FUNC_MSDC0_DAT5>,
++				 <PINMUX_GPIO117__FUNC_MSDC0_DAT6>,
++				 <PINMUX_GPIO116__FUNC_MSDC0_DAT7>,
++				 <PINMUX_GPIO121__FUNC_MSDC0_CMD>;
++			input-enable;
++			drive-strength = <MTK_DRIVE_6mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++
++		pin-clk {
++			pinmux = <PINMUX_GPIO122__FUNC_MSDC0_CLK>;
++			drive-strength = <MTK_DRIVE_6mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pin-rst {
++			pinmux = <PINMUX_GPIO120__FUNC_MSDC0_RSTB>;
++			drive-strength = <MTK_DRIVE_6mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++	};
++
++	mmc0_uhs_pins: mmc0-uhs-pins {
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
++				 <PINMUX_GPIO125__FUNC_MSDC0_DAT1>,
++				 <PINMUX_GPIO124__FUNC_MSDC0_DAT2>,
++				 <PINMUX_GPIO123__FUNC_MSDC0_DAT3>,
++				 <PINMUX_GPIO119__FUNC_MSDC0_DAT4>,
++				 <PINMUX_GPIO118__FUNC_MSDC0_DAT5>,
++				 <PINMUX_GPIO117__FUNC_MSDC0_DAT6>,
++				 <PINMUX_GPIO116__FUNC_MSDC0_DAT7>,
++				 <PINMUX_GPIO121__FUNC_MSDC0_CMD>;
++			input-enable;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++
++		pin-clk {
++			pinmux = <PINMUX_GPIO122__FUNC_MSDC0_CLK>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pin-ds {
++			pinmux = <PINMUX_GPIO127__FUNC_MSDC0_DSL>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pins-rst {
++			pinmux = <PINMUX_GPIO120__FUNC_MSDC0_RSTB>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++	};
++
++	mmc1_default_pins: mmc1-default-pins {
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
++				 <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
++				 <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
++				 <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
++				 <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
++			input-enable;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++
++		pins-clk {
++			pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pins-insert {
++			pinmux = <PINMUX_GPIO129__FUNC_GPIO129>;
++			bias-pull-up;
++		};
++	};
++
++	mmc1_uhs_pins: mmc1-uhs-pins {
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
++				 <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
++				 <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
++				 <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
++				 <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
++			input-enable;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++
++		pins-clk {
++			pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++	};
++
++	i2c6_pins: i2c6-pins {
++		pins {
++			pinmux = <PINMUX_GPIO25__FUNC_SDA6>,
++				 <PINMUX_GPIO26__FUNC_SCL6>;
++			bias-pull-up;
++			mediatek,rsel = <MTK_PULL_SET_RSEL_111>;
++		};
++	};
++
++	gpio_keys_pins: gpio-keys-pins {
++		pins {
++			pinmux = <PINMUX_GPIO106__FUNC_GPIO106>;
++			input-enable;
++		};
++	};
++
++	uart0_pins: uart0-pins {
++		pins {
++			pinmux = <PINMUX_GPIO98__FUNC_UTXD0>,
++				 <PINMUX_GPIO99__FUNC_URXD0>;
++		};
++	};
++
++	uart1_pins: uart1-pins {
++		pins {
++			pinmux = <PINMUX_GPIO102__FUNC_UTXD1>,
++				 <PINMUX_GPIO103__FUNC_URXD1>;
++		};
++	};
++};
 -- 
 2.35.1
 
