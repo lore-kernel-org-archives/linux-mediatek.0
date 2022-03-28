@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB09FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Mar 2022 15:03:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BF09C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Mar 2022 16:33:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UNfc36KxNJ0id1nhnzHutxOd4DVMzbSWk97vJ8y8YJA=; b=ukryBfRT6G1qVv
-	qKD9AS64XzfY1piT0b+xG44ykD/LmjkmcFzufhuPffLV7rTmC0lIpgKWEN9Q5Cim+ei4r3PIbnf7B
-	BEHgmkfCu8eY0V8F31OKg/fwlz8pI+l1ilKmN72x6hC2oXZTp4NrtptJrdW/3avziNzq0zv7EuJeI
-	YOEq3KueYzCeaw/PLnKyBdGrKDWfyNPn/RhWMtIeRwC1t1Lt0UDWYrhtiTYkxcY+u/qEjJf2+vgCR
-	LtpjdvemOsNFoj3B7Iu449p2hkwM8ehcPDm4ixU5ZwSfy0ZvDXBWmfh5CHuHfKc/EONVRTkJmUfP5
-	6/mGhwvh+EsNFUTtFrgg==;
+	List-Owner; bh=gZj8k9Ygk5PsGCHM1dnd/cJ+pUJyMJizheBoHkyc394=; b=hHaaULUURyQu66
+	K5jMK5AncUEPQIqgNPMrqwJjj/rSb69CWBcAji8+1rA5V/6+k1lje5Tvq6D41DlsCAdqXmXNSCIlt
+	hTaIWWrZ6DWcYTVYiD+HVHd8MyZtnI3Mt4OY/GVhmxe9QqO9TrfsvbP5d7JyLA8p+1HizZ89EOzUw
+	3tdKHBFYDcNVDb2i1mz0BBZWwU/HbAJaglqs6irxTJExdWk8bxGIk16bB4y4kAvT+wjhwUKvzO171
+	bYunIvYtXw5gLjL1b3yzDvXGIQyaDPr2PyF84jQUcbAR4iCvfLMZIIqUUM7joEBvRoxHFzZ1DS+NX
+	/26WRa67Yu7QifdSpXtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYqtn-009CS9-Cm; Mon, 28 Mar 2022 15:03:15 +0000
-Received: from mail-wm1-f45.google.com ([209.85.128.45])
+	id 1nYsJ9-009Vqz-Dm; Mon, 28 Mar 2022 16:33:31 +0000
+Received: from mail-oi1-f171.google.com ([209.85.167.171])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYqtZ-009COw-IF; Mon, 28 Mar 2022 15:03:03 +0000
-Received: by mail-wm1-f45.google.com with SMTP id
- i131-20020a1c3b89000000b0038ce25c870dso284797wma.1; 
- Mon, 28 Mar 2022 08:03:01 -0700 (PDT)
+ id 1nYsIx-009Vnj-1T; Mon, 28 Mar 2022 16:33:20 +0000
+Received: by mail-oi1-f171.google.com with SMTP id q129so16176825oif.4;
+ Mon, 28 Mar 2022 09:33:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=ZrgiKCrxWRZyk32G1TmboPczQSoLsqVVgxz7YTO8i5k=;
- b=bnZ5fB6mWlU0qrYPlHQEa3w8hqGYGjA66ckmJbNCKXW6YgBnuo8aXwAhcPqbgL+Xya
- UlJDMnJ+u5Dl6WDjrfNWfavwC6/Jo7b/nBE2RnGb3UIw/WtuHBbGM08DzAEE+/vyMftS
- OJh9kfinr1A4cQ1UWQKtCZkbdyTYutnnxTouXZdHuIIA8GFbL6ZrPVrobefWS9ki3mJo
- YV447PiiU07yAjwSZIwtvyFfLCqLE1iBA7ow+dLz0ieHRmBAv15IXzvBZdj3rhTkDPrc
- Kch8jHTm2wziX1JsQ6wVhQU8F6TVOc9PasuXKe+7+dOT4qzNeB0CgtEoKVyjmLiNbXkC
- g9OQ==
-X-Gm-Message-State: AOAM5314vaTw2Dz3yJfh1YUDnutcqBLvUbV9Y/2SiNEO2FcDmYkH8Put
- NBN9haHVGYUgktcIhtIQSmJMwnq85BaEVg==
-X-Google-Smtp-Source: ABdhPJywupQH4SLAOIVaFYSgWXt+32QtCxN7pfRTFCK+LtCkmyy4u4ZTBg9yk9tY4OCAa0YsiEG1Lg==
-X-Received: by 2002:a1c:2744:0:b0:382:a9b7:1c8a with SMTP id
- n65-20020a1c2744000000b00382a9b71c8amr26485495wmn.187.1648479779943; 
- Mon, 28 Mar 2022 08:02:59 -0700 (PDT)
-Received: from [192.168.0.162] (xdsl-188-155-201-27.adslplus.ch.
- [188.155.201.27]) by smtp.googlemail.com with ESMTPSA id
- y7-20020a5d4ac7000000b00203e4c8bdf1sm12587975wrs.93.2022.03.28.08.02.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Mar 2022 08:02:59 -0700 (PDT)
-Message-ID: <e0ace708-3754-d7af-35ee-c73e7b15a443@kernel.org>
-Date: Mon, 28 Mar 2022 17:02:58 +0200
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=bIvjLAN1WghVKdHbiAwbpiS4KUlO9J5lK2uou4RVILk=;
+ b=wa2UaokmUWtPpfej6rW85dc/5pSFJI1kDiW3jwMZDcJyD9sV4aLvmI6utauUsElIU7
+ k749i5CwGy+iY7ifDAgtB3X6/q6GNC98F/DHn6tRbwEFKg4DKIb6rrTrtAIEq/HZd6p3
+ tW/kXjMHCaKH0mTXnqA+wXxYYcEw5hxltwMd9fNm6AylxM4nFJ6o6je7GGfOBgNHSvPV
+ iOZ1pSb3vf2PdUV0Jxp26URmaHjcYu5oU2lt9vzwKEmHlsbJ1czYDWhsHUEvOFQfTp9k
+ mAVWLWYgaqcNW/xvE0N0sMKmJ3dRCZSsHWF//D8LtG4MsZwLcD/fQzzsSdy0sYV+AlZ/
+ 8NKw==
+X-Gm-Message-State: AOAM5325HfTzHSpUyPBuWxEyKlU5xOwCK+Rz2fXTgXd1qsL2fPN1yjie
+ EIAMwkBLK1+XvSGuJczJnP3AqxCifQ==
+X-Google-Smtp-Source: ABdhPJwNVh5RZ1sp9MXlR5GlreRlGRTmHJKVh03oTfj9pol2juq4vLORJb84KwOjAAWD3ibi6+xCCg==
+X-Received: by 2002:a05:6808:1059:b0:2ed:b699:7f2e with SMTP id
+ c25-20020a056808105900b002edb6997f2emr909oih.240.1648485197630; 
+ Mon, 28 Mar 2022 09:33:17 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ t15-20020a056808158f00b002e331356c87sm7218218oiw.39.2022.03.28.09.33.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 28 Mar 2022 09:33:16 -0700 (PDT)
+Received: (nullmailer pid 2515489 invoked by uid 1000);
+ Mon, 28 Mar 2022 16:33:15 -0000
+Date: Mon, 28 Mar 2022 11:33:15 -0500
+From: Rob Herring <robh@kernel.org>
+To: Guillaume Ranquet <granquet@baylibre.com>
+Cc: airlied@linux.ie, angelogioacchino.delregno@collabora.com,
+ chunfeng.yun@mediatek.com, chunkuang.hu@kernel.org, ck.hu@mediatek.com,
+ daniel@ffwll.ch, deller@gmx.de, jitao.shi@mediatek.com, kishon@ti.com,
+ krzk+dt@kernel.org, maarten.lankhorst@linux.intel.com, matthias.bgg@gmail.com,
+ mripard@kernel.org, p.zabel@pengutronix.de, tzimmermann@suse.de,
+ vkoul@kernel.org, devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, markyacoub@google.com,
+ Markus Schneider-Pargmann <msp@baylibre.com>
+Subject: Re: [PATCH v9 02/22] dt-bindings: mediatek,dp: Add Display Port
+ binding
+Message-ID: <YkHjS9ToXqyliItf@robh.at.kernel.org>
+References: <20220327223927.20848-1-granquet@baylibre.com>
+ <20220327223927.20848-3-granquet@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v2 2/4] arm64: dts: mediatek: Add device-tree for MT8195
- Demo board
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Fabien Parent <fparent@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20220327200312.3090515-1-fparent@baylibre.com>
- <20220327200312.3090515-3-fparent@baylibre.com>
- <94d231cf-ce4c-22f5-b9af-41ae68f1e659@collabora.com>
- <20220328144107.ed4xwzuiezzixqrx@radium>
- <0b042c71-4d07-76a6-53bb-94bbd4bad6c0@collabora.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-In-Reply-To: <0b042c71-4d07-76a6-53bb-94bbd4bad6c0@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20220327223927.20848-3-granquet@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220328_080301_652114_19AAFD07 
-X-CRM114-Status: GOOD (  25.92  )
+X-CRM114-CacheID: sfid-20220328_093319_113600_B84BDA2F 
+X-CRM114-Status: GOOD (  17.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,123 +90,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28/03/2022 16:50, AngeloGioacchino Del Regno wrote:
-> Il 28/03/22 16:41, Fabien Parent ha scritto:
->> On Mon, Mar 28, 2022 at 03:47:09PM +0200, AngeloGioacchino Del Regno wrote:
->>> Il 27/03/22 22:03, Fabien Parent ha scritto:
->>>> Add basic device-tree for the MT8195 Demo board. The
->>>> Demo board is made by MediaTek and has a MT8195 SoC,
->>>> associated with the MT6359 and MT6360 PMICs, and
->>>> the MT7921 connectivity chip.
->>>>
->>>> The IOs available on that board are:
->>>> * 1 USB Type-C connector with DP aux mode support
->>>> * 1 USB Type-A connector
->>>> * 1 full size HDMI RX and 1 full size HDMI TX connector
->>>> * 1 uSD slot
->>>> * 40 pins header
->>>> * SPI interface header
->>>> * 1 M.2 slot
->>>> * 1 audio jack
->>>> * 1 micro-USB port for serial debug
->>>> * 2 connectors for DSI displays
->>>> * 3 connectors for CSI cameras
->>>> * 1 connector for a eDP panel
->>>> * 1 MMC storage
->>>>
->>>> This commit adds basic support in order to be able to boot.
->>>>
->>>> Signed-off-by: Fabien Parent <fparent@baylibre.com>
->>>> ---
->>>> v2:
->>>>    * remove empty i2c nodes
->>>>    * remove empty spi node
->>>>    * remove unused pcie pinctrls
->>>>    * fixup node nodes to not contains underscore
->>>>    * rename mt6360 pmic node
->>>>    * move mmc1 node right after mmc0 node
->>>>    * use generic node name for gpio-keys
->>>>    * uniformize pinctrl node names
->>>>
->>>>    arch/arm64/boot/dts/mediatek/Makefile        |   1 +
->>>>    arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 447 +++++++++++++++++++
->>>>    2 files changed, 448 insertions(+)
->>>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-demo.dts
->>>>
->>>
->>> ..snip..
->>>
->>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
->>>> new file mode 100644
->>>> index 000000000000..d94b4e01159a
->>>> --- /dev/null
->>>> +++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
->>>> @@ -0,0 +1,447 @@
->>>
->>> ..snip..
->>>
->>>> +
->>>> +	gpio-keys {
->>>> +		compatible = "gpio-keys";
->>>> +		input-name = "gpio-keys";
->>>> +		pinctrl-names = "default";
->>>> +		pinctrl-0 = <&gpio_keys_pins>;
->>>> +
->>>> +		key-0 {
->>>
->>> key-volup is more descriptive, can you please change that?
->>
->> Which review should I follow, yours or the one from Krzysztof? Because both reviews are contradictory
->>
+On Mon, Mar 28, 2022 at 12:39:07AM +0200, Guillaume Ranquet wrote:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
 > 
-> There are a lot of "vol-down", "vol-up" (etc) instances, lots of which are on
-> Qualcomm device-trees... so I guess this is just about personal preference...
+> This controller is present on several mediatek hardware. Currently
+> mt8195 and mt8395 have this controller without a functional difference,
+> so only one compatible field is added.
 > 
-> Honestly, before sending my review I forgot to check Krzysztof's one (sorry!!),
-> but I think that this kind of node names is highly subjective... at least, I am
-> not aware of any rule about having to use "generic" names.
-
-Node names should be generic, not descriptive. See Devicetree specification:
-"The name of a node should be somewhat generic, reflecting the function
-of the device and not its precise programming
- model. If appropriate, the name should be one of the following choices:
-...
-- keyboard
-
-- key
-
-- keys
-"
-
-I prefer key-0 but "volup-key" or "key-volup" could work too (but these
-are still specific, not generic).
-
-Using other DTS as examples is wrong, because most of submissions are
-wrong and almost half of my bindings and DTS reviews include that
-comment - generic node names. To be fair, most of my DTS contributions
-also contained specific node names till I learnt that rule...
-
-Anyway, it's not that important. :)
-
-Thanks for other changes in the DTS.
-
+> The controller can have two forms, as a normal display port and as an
+> embedded display port.
 > 
-> Check Documentation/devicetree/bindings/input/gpio-keys.yaml - in the example,
-> you can find "specific" node names, like:
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> ---
+>  .../display/mediatek/mediatek,dp.yaml         | 100 ++++++++++++++++++
+>  1 file changed, 100 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
 > 
->          up {
-> 
->              label = "GPIO Key UP";
-> 
-> In any case, as I said, it's my personal preference to have it named as something
-> like "key-volup" or "vol-up" or .. a name that is describing the key, but, as a
-> personal preference, it is nothing mandatory, not even from my side.
-> 
-> If anyone else has reasons to disagree, shrug, it's fine :))
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+> new file mode 100644
+> index 000000000000..802cc406c72b
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+> @@ -0,0 +1,100 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/display/mediatek/mediatek,dp.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek Display Port Controller
+> +
+> +maintainers:
+> +  - CK Hu <ck.hu@mediatek.com>
+> +  - Jitao shi <jitao.shi@mediatek.com>
+> +
+> +description: |
+> +  Device tree bindings for the Mediatek (embedded) Display Port controller
+> +  present on some Mediatek SoCs.
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: mediatek,mt8195-dp-tx
+> +      - const: syscon
 
+Add something to the above description to convince me this is a syscon. 
 
-Best regards,
-Krzysztof
+If you need a regmap, the driver can create one. 'syscon' is really only 
+needed if there's not a specific driver.
+
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
