@@ -4,83 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27C4FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Mar 2022 11:11:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED2E1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Mar 2022 11:11:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6rfF+UTkcU+/dshtH6LZ7s1HYBMfSPs4v/Mr9dtUyhM=; b=oSr1g04QO7DXpp
-	8JZfqD1OY7WpNU6ECXn8aVJmmo+pmkhA5WSmjwAHyKUQY+PI7iRc4M/lxxMuPWFT2nu9LLCLQ/nKa
-	oX1Pf7Y3FB7/IA9fxMPZSbEvPUOJqVEacrHJc/TjayhUNvEiyp2iJAov+c2Z2YMKDYp92geI4dqnV
-	bRshrEeOblrCCfHUm4EmHYdbWUr3QcrVON/aUnl4o22rg6RPJUHzaQ+EmB3LvdA1b/Hh3Hzdh0mid
-	CRIY8Ds+y9oDwA5JF0ROleByLYAQJoMfdMn69hLMp4gUayranH5Dny1OpE9z185jnTz5ZU+5LZgKI
-	8yV8+/jA6NObs4RhBlLA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=X9PkH0cr/HLBFAjh8DQxgTca8HrbDzDv20n0tAB2jdU=; b=FT5H9DK++NN4iR
+	MmauLNX+2yjaaXW81AUKbriOg5qrZbun/RmHo2LTtlXqkWWPcjWNNO2o6r6ijgL0zk8Z3VzDcorW+
+	gRIjmPL8UlGFxreXb1rPXUz7fJHhnYKOkLPQkvHyInUIMSQ6F55vL/ysdUeC/BFbGbyb3O66ZXfJk
+	tE/TzSTxepTNxshop/h4KmjjtFFNVvAD50JUIFwr4Pph5rd1mNZKH26THbcnffn5T1ZqQJjJakiHu
+	ih8AdJcgZ7Eb9OGHC9/d2sgVccd9ZiXqPnHUM7IbclsXLB0eCsWUov7VfXd9+hJ5/5TbXV4BtVU8K
+	RkNb/Ooqz0zpKM7jXoMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYnH8-008JGN-D9; Mon, 28 Mar 2022 11:11:06 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1nYnHK-008JKc-9Y; Mon, 28 Mar 2022 11:11:18 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYnGr-008J9i-4X; Mon, 28 Mar 2022 11:10:50 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id b19so19802930wrh.11;
- Mon, 28 Mar 2022 04:10:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=YO5Ybs7Z8BiVv4Kteu2ySFfAWcGUm1ja/kydyOFD7Lg=;
- b=CKEsQTLqEPzq7MUVFUaoxlvKXGwAhnE1F7Y+/DcQg0ZaGnS8BOvynke/Wy+JfmqqjZ
- zzzdxZvLMEEbqabznWzGTrzJBRVDaI63vAwHRpV+g6tORgc9QOW30PPsd9ANuHFaeIDz
- vfmKYz9p9i08+PDK5Mnp16ajjhLiTeoLW/CfRML9RWqSGG9dkYZ6+Y2eXuAkYaq9oj1F
- Tw45Fmb86AgV2C2EE76qszAWfB3KXH49uRpsfJhl4OgnI2+VHFbI+gwvjBFFsjZdBm+g
- BRxTV3W0PA7zGdLbk7rhdZg4cqlmYzzg7beFXVaaxnFikxYOGFUwAxjEBN/YAUGDInKv
- YDdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=YO5Ybs7Z8BiVv4Kteu2ySFfAWcGUm1ja/kydyOFD7Lg=;
- b=bEDwwmCes6EuYnuIXwddXY9Q23AI7Ba7U7iJjqRu4LxiPFcfIUep9JCxzpv3cqhJYL
- EgcufbgW3fj6INqk+b4NIqiwI9k7gLQQTaYqDGPpJLyM0z/Pbkhq5/G0yu4XtgjtNI0n
- uzj1a84KkRhCXzQp1P6FVPRouG6n3hQ9nOXPFs8+813AdoLvMmo8imnKoF3twPvpYEeO
- 2IsGNh61CS9pjY1oIh6tRJ2s8H+SZWBpHrh/TTpV/7zNQl5xTndT7Aog8+qgYJKEHxqc
- KtQVyeix5vWKwOQTjc/53c7bNWsZEBsHQNTYDqMLz3t/YFdjkwdD4qzjf1nDY0iZYbzz
- WV8w==
-X-Gm-Message-State: AOAM530/TDvxIQe285p86HFUsXPfrbeUVhr6wmHzu1tXdh5sBINc+F4s
- 1CZfCe4oP+3cYWdZKjXVJyk=
-X-Google-Smtp-Source: ABdhPJzaAxJbsNW/3r4U3icUncEmZem0++QDKaBkIhG8tcgajESrnxuVR3yF/nCbwWz4+TMjtqn6fQ==
-X-Received: by 2002:adf:d1e7:0:b0:205:8909:a67f with SMTP id
- g7-20020adfd1e7000000b002058909a67fmr22485894wrd.66.1648465847967; 
- Mon, 28 Mar 2022 04:10:47 -0700 (PDT)
-Received: from [192.168.0.32] ([137.101.87.65])
- by smtp.gmail.com with ESMTPSA id
- r13-20020adfbb0d000000b00203e0efdd3bsm12270763wrg.107.2022.03.28.04.10.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Mar 2022 04:10:46 -0700 (PDT)
-Message-ID: <51f8baea-6562-1d6b-c409-9c362f0b2fc5@gmail.com>
-Date: Mon, 28 Mar 2022 13:10:45 +0200
+ id 1nYnGx-008JCb-SQ; Mon, 28 Mar 2022 11:10:58 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 3A2661F4088D
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1648465853;
+ bh=deTkHQpKA18AAAHiDk9+8wmr9h/b1KiUBqAtpnciiDM=;
+ h=From:To:Cc:Subject:Date:From;
+ b=hXKySC9QHhKT7sSldZtyDiX1Op63uGr0fTT6MEXaGAN5SRqZ7LRaBPLaJ/NTBinOf
+ TgEVNXob5plGTIfNiJuLNw4D+slDko0wRiNEA1qgMejd2no2GR62QPm4fEbIfk3675
+ lqJmjYpASqlYHTNJ1YNwyw+CA1iUOEAPIlaoUXUN6UsVwNG1wfx3KjQIE9w1SF7a2Z
+ 5Op4c1R0bKX8C+wcWXJa1DhzRXNvy5lf1ACfzdXYogC2lTmhd5Tu/FcprurV3gD+9Z
+ KSFUdpEGCNo++YrLUqlBtTlI1Ri0MjVpP3vd/GJ7dsWyY39ze/UpSziCZApvdNmg/u
+ 0054dM3QeNuqg==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de, chunfeng.yun@mediatek.com, kishon@ti.com,
+ vkoul@kernel.org, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] phy: mediatek: phy-mtk-hdmi: Simplify with dev_err_probe()
+Date: Mon, 28 Mar 2022 13:10:46 +0200
+Message-Id: <20220328111046.210736-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v4 22/22] arm64: dts: mt8192: Add pwm node
-Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
- Hui Liu <hui.liu@mediatek.com>
-References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
- <20220318144534.17996-23-allen-kh.cheng@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220318144534.17996-23-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220328_041049_215308_D4CF9DDF 
-X-CRM114-Status: GOOD (  18.07  )
+X-CRM114-CacheID: sfid-20220328_041056_135856_3ABACE26 
+X-CRM114-Status: UNSURE (   9.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,52 +63,109 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Use the dev_err_probe() helper to simplify error handling during probe.
 
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/phy/mediatek/phy-mtk-hdmi.c | 50 +++++++++++------------------
+ 1 file changed, 19 insertions(+), 31 deletions(-)
 
-On 18/03/2022 15:45, Allen-KH Cheng wrote:
-> Add pwm node for mt8192 SoC.
-> 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 11 +++++++++++
->   1 file changed, 11 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index f0f0f067c023..ea98b2230f18 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -625,6 +625,17 @@
->   			status = "disabled";
->   		};
->   
-> +		pwm0: pwm@1100e000 {
-> +			compatible = "mediatek,mt8183-disp-pwm";
-> +			reg = <0 0x1100e000 0 0x1000>;
-> +			interrupts = <GIC_SPI 171 IRQ_TYPE_LEVEL_HIGH 0>;
+diff --git a/drivers/phy/mediatek/phy-mtk-hdmi.c b/drivers/phy/mediatek/phy-mtk-hdmi.c
+index 5fb4217fb8e0..d4bd419abc3c 100644
+--- a/drivers/phy/mediatek/phy-mtk-hdmi.c
++++ b/drivers/phy/mediatek/phy-mtk-hdmi.c
+@@ -120,20 +120,16 @@ static int mtk_hdmi_phy_probe(struct platform_device *pdev)
+ 		return PTR_ERR(hdmi_phy->regs);
+ 
+ 	ref_clk = devm_clk_get(dev, "pll_ref");
+-	if (IS_ERR(ref_clk)) {
+-		ret = PTR_ERR(ref_clk);
+-		dev_err(&pdev->dev, "Failed to get PLL reference clock: %d\n",
+-			ret);
+-		return ret;
+-	}
++	if (IS_ERR(ref_clk))
++		return dev_err_probe(dev, PTR_ERR(ref_clk),
++				     "Failed to get PLL reference clock\n");
++
+ 	ref_clk_name = __clk_get_name(ref_clk);
+ 
+ 	ret = of_property_read_string(dev->of_node, "clock-output-names",
+ 				      &clk_init.name);
+-	if (ret < 0) {
+-		dev_err(dev, "Failed to read clock-output-names: %d\n", ret);
+-		return ret;
+-	}
++	if (ret < 0)
++		return dev_err_probe(dev, ret, "Failed to read clock-output-names\n");
+ 
+ 	hdmi_phy->dev = dev;
+ 	hdmi_phy->conf =
+@@ -141,25 +137,19 @@ static int mtk_hdmi_phy_probe(struct platform_device *pdev)
+ 	mtk_hdmi_phy_clk_get_data(hdmi_phy, &clk_init);
+ 	hdmi_phy->pll_hw.init = &clk_init;
+ 	hdmi_phy->pll = devm_clk_register(dev, &hdmi_phy->pll_hw);
+-	if (IS_ERR(hdmi_phy->pll)) {
+-		ret = PTR_ERR(hdmi_phy->pll);
+-		dev_err(dev, "Failed to register PLL: %d\n", ret);
+-		return ret;
+-	}
++	if (IS_ERR(hdmi_phy->pll))
++		return dev_err_probe(dev, PTR_ERR(hdmi_phy->pll),
++				    "Failed to register PLL\n");
+ 
+ 	ret = of_property_read_u32(dev->of_node, "mediatek,ibias",
+ 				   &hdmi_phy->ibias);
+-	if (ret < 0) {
+-		dev_err(&pdev->dev, "Failed to get ibias: %d\n", ret);
+-		return ret;
+-	}
++	if (ret < 0)
++		return dev_err_probe(dev, ret, "Failed to get ibias\n");
+ 
+ 	ret = of_property_read_u32(dev->of_node, "mediatek,ibias_up",
+ 				   &hdmi_phy->ibias_up);
+-	if (ret < 0) {
+-		dev_err(&pdev->dev, "Failed to get ibias up: %d\n", ret);
+-		return ret;
+-	}
++	if (ret < 0)
++		return dev_err_probe(dev, ret, "Failed to get ibias_up\n");
+ 
+ 	dev_info(dev, "Using default TX DRV impedance: 4.2k/36\n");
+ 	hdmi_phy->drv_imp_clk = 0x30;
+@@ -168,17 +158,15 @@ static int mtk_hdmi_phy_probe(struct platform_device *pdev)
+ 	hdmi_phy->drv_imp_d0 = 0x30;
+ 
+ 	phy = devm_phy_create(dev, NULL, mtk_hdmi_phy_dev_get_ops(hdmi_phy));
+-	if (IS_ERR(phy)) {
+-		dev_err(dev, "Failed to create HDMI PHY\n");
+-		return PTR_ERR(phy);
+-	}
++	if (IS_ERR(phy))
++		return dev_err_probe(dev, PTR_ERR(phy), "Cannot create HDMI PHY\n");
++
+ 	phy_set_drvdata(phy, hdmi_phy);
+ 
+ 	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
+-	if (IS_ERR(phy_provider)) {
+-		dev_err(dev, "Failed to register HDMI PHY\n");
+-		return PTR_ERR(phy_provider);
+-	}
++	if (IS_ERR(phy_provider))
++		return dev_err_probe(dev, PTR_ERR(phy_provider),
++				     "Failed to register HDMI PHY\n");
+ 
+ 	if (hdmi_phy->conf->pll_default_off)
+ 		hdmi_phy->conf->hdmi_phy_disable_tmds(hdmi_phy);
+-- 
+2.35.1
 
-Binding description is missing interrupt property. Remeber that the DT should 
-describe the HW, so we need to update the binding description.
-I just wonder what the IRQ signals, as it is not used by the driver. Definitely 
-a good candidate to make the commit message more sound. So please add it there.
-
-Thanks!
-Matthias
-
-> +			#pwm-cells = <2>;
-> +			clocks = <&topckgen CLK_TOP_DISP_PWM_SEL>,
-> +				 <&infracfg CLK_INFRA_DISP_PWM>;
-> +			clock-names = "main", "mm";
-> +			status = "disabled";
-> +		};
-> +
->   		spi1: spi@11010000 {
->   			compatible = "mediatek,mt8192-spi",
->   				     "mediatek,mt6765-spi";
 
 _______________________________________________
 Linux-mediatek mailing list
