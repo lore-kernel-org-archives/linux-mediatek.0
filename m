@@ -4,60 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D01AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Mar 2022 14:50:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0A4AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Mar 2022 14:52:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7rH0ckB6tZU3cBKomUhUAA8DiTmNzVuIFhYjXuxPzz4=; b=JMcdJdUZVtWX0L
-	u4rdfH2UzWXs5qoJx9lAIuVmmn09hkMKy72r8UWRCp4D70nwTYuARHi2JxTAJtLfLKZzm1JXpFx1d
-	9Yy1fctbH6gVrP75EZQ0FqEO9Y7DQXwNlXYzG+tSC/5VvTJn0grQhlseIDAajLhpltIABkNxcbUdl
-	GnwEYNG/xA2uK7m8RZ3hpJmfo+pJPDe0LizvuD3/M6Es0Ogt+fCZDekVbEnT4GE4efbAK5nrQvfnf
-	d3QSKSlB4yVoPFbN/cpl0fHIPbbQb7pmJPLlKB3dLKPgGPCVFmDmjOAg/YaxA02MyblKPj6fppXJT
-	UehWAu8Zm88lusaUtaZw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=g8v6a11QPLnM8mTGk33J5juIws7YjlD/6AV2ff+xI04=; b=0IOWkfJmLxz3nN
+	NELULtPw+NYyLwQnlVssDUVW0ak84cVdu5Vh665eiu+quhd3L/ndAgfs5aju6NBMwK8Pff6ovnQsw
+	UuZBFJcHnvZclQAU1XtzM1hKu0gF0BG4DB8dsSje606EOjfjG/DRO9iIyPK61c1enqSPsjN+ChsYt
+	TQSv0I6QyLutVAWdDyAdOCNev3pH818k/qK+oBJtOnomBxNzL+wN5IwTdrITwkbRZMbaJoy3BOKVP
+	XYbJiQAMbZxE1/L4kdUG3WvrSxe77WmtRvMPjp/HPKx3IsTnJbWrjz44gehlZMqQIuC5zkaXLb1Jb
+	G9nzy6PdcxJgsOQgWMTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYqhJ-0099iA-5l; Mon, 28 Mar 2022 14:50:21 +0000
+	id 1nYqjV-009AJS-7R; Mon, 28 Mar 2022 14:52:37 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYqh5-0099ey-89; Mon, 28 Mar 2022 14:50:08 +0000
+ id 1nYqjH-009AEm-Nf; Mon, 28 Mar 2022 14:52:25 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 157AE1F404A0
+ (Authenticated sender: kholk11) with ESMTPSA id CF2831F40887
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1648479005;
- bh=rh1r1C45HfSaIbukyLwkQj2wc8+C93F7ZOfSvSOU2o4=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=Gm788Xsmn/QVrAO0hM+4de4tvTGjuuQWcofmlA/NObYcXRpCLczAB9EceIFF+RA+f
- 6YROwpBLFZrNKk2LvanhAbBgBOR4rFQ/fctRk4p2FQ4ZpVUj5ufjJJVhn6mIwDi456
- F0oRcUMx8s2PESeOjf06VwhO2LHllFHJpJj/B/CqrFEko2GOKnz/UmXpXCUZSAMbIU
- 7B7bB1v2H4/Rdq3FBOn8QQkyneNIh60bQYvExblMH840ebePsWjvmgEwHVRAGhVepu
- MLemwNev0VUqSuhOdykoq0wC0TU1muVwYWFICjzAcITBsShepSyR8TBnmO4d2P8hEG
- /LqBP7Tixh4dA==
-Message-ID: <0b042c71-4d07-76a6-53bb-94bbd4bad6c0@collabora.com>
-Date: Mon, 28 Mar 2022 16:50:02 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v2 2/4] arm64: dts: mediatek: Add device-tree for MT8195
- Demo board
-Content-Language: en-US
-To: Fabien Parent <fparent@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20220327200312.3090515-1-fparent@baylibre.com>
- <20220327200312.3090515-3-fparent@baylibre.com>
- <94d231cf-ce4c-22f5-b9af-41ae68f1e659@collabora.com>
- <20220328144107.ed4xwzuiezzixqrx@radium>
+ s=mail; t=1648479142;
+ bh=XMWA9qgWgkC/u71lI6wm/PuAiM5oal1tM//wU28I3+Q=;
+ h=From:To:Cc:Subject:Date:From;
+ b=KpxYfx5mPacmgWtvt0niX7ZGuHbYIYeRj0xTOMgZP7XUOchwKhPwRxny07to7LuBj
+ OJ9HizD4Ma3B8gwDFN+9W6uFPYL7qjVnfWl+BvvWvZ71uxSlsB1qTCFTtP7oNLmHt0
+ VO60a4vdL+8Tzth/2i8qMPikMX4EvoI1wuoIsKaU+uGJ5GZ6SpZp01QjQAg07TETb5
+ +2xfAt/nS2ciDJbTItTh6LFd1P+xmEahKdg5pFrj6iwE8nodPW0W/QA8WEJroO8oHn
+ NyOHs7sVRdDzrysFgIdJhWpuwT5RolACCr4aozGJN2gMfrtIntI3EHQ8WngSSSThs3
+ aVDTi9XfD5/GA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220328144107.ed4xwzuiezzixqrx@radium>
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de, chunfeng.yun@mediatek.com, kishon@ti.com,
+ vkoul@kernel.org, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2] phy: mediatek: phy-mtk-mipi-dsi: Simplify with
+ dev_err_probe()
+Date: Mon, 28 Mar 2022 16:52:17 +0200
+Message-Id: <20220328145217.228457-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220328_075007_514046_24FB64EE 
-X-CRM114-Status: GOOD (  18.20  )
+X-CRM114-CacheID: sfid-20220328_075223_923799_544A8422 
+X-CRM114-Status: GOOD (  10.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,108 +63,79 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/03/22 16:41, Fabien Parent ha scritto:
-> On Mon, Mar 28, 2022 at 03:47:09PM +0200, AngeloGioacchino Del Regno wrote:
->> Il 27/03/22 22:03, Fabien Parent ha scritto:
->>> Add basic device-tree for the MT8195 Demo board. The
->>> Demo board is made by MediaTek and has a MT8195 SoC,
->>> associated with the MT6359 and MT6360 PMICs, and
->>> the MT7921 connectivity chip.
->>>
->>> The IOs available on that board are:
->>> * 1 USB Type-C connector with DP aux mode support
->>> * 1 USB Type-A connector
->>> * 1 full size HDMI RX and 1 full size HDMI TX connector
->>> * 1 uSD slot
->>> * 40 pins header
->>> * SPI interface header
->>> * 1 M.2 slot
->>> * 1 audio jack
->>> * 1 micro-USB port for serial debug
->>> * 2 connectors for DSI displays
->>> * 3 connectors for CSI cameras
->>> * 1 connector for a eDP panel
->>> * 1 MMC storage
->>>
->>> This commit adds basic support in order to be able to boot.
->>>
->>> Signed-off-by: Fabien Parent <fparent@baylibre.com>
->>> ---
->>> v2:
->>>    * remove empty i2c nodes
->>>    * remove empty spi node
->>>    * remove unused pcie pinctrls
->>>    * fixup node nodes to not contains underscore
->>>    * rename mt6360 pmic node
->>>    * move mmc1 node right after mmc0 node
->>>    * use generic node name for gpio-keys
->>>    * uniformize pinctrl node names
->>>
->>>    arch/arm64/boot/dts/mediatek/Makefile        |   1 +
->>>    arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 447 +++++++++++++++++++
->>>    2 files changed, 448 insertions(+)
->>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-demo.dts
->>>
->>
->> ..snip..
->>
->>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
->>> new file mode 100644
->>> index 000000000000..d94b4e01159a
->>> --- /dev/null
->>> +++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
->>> @@ -0,0 +1,447 @@
->>
->> ..snip..
->>
->>> +
->>> +	gpio-keys {
->>> +		compatible = "gpio-keys";
->>> +		input-name = "gpio-keys";
->>> +		pinctrl-names = "default";
->>> +		pinctrl-0 = <&gpio_keys_pins>;
->>> +
->>> +		key-0 {
->>
->> key-volup is more descriptive, can you please change that?
-> 
-> Which review should I follow, yours or the one from Krzysztof? Because both reviews are contradictory
-> 
+Use the dev_err_probe() helper to simplify error handling during probe.
 
-There are a lot of "vol-down", "vol-up" (etc) instances, lots of which are on
-Qualcomm device-trees... so I guess this is just about personal preference...
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
 
-Honestly, before sending my review I forgot to check Krzysztof's one (sorry!!),
-but I think that this kind of node names is highly subjective... at least, I am
-not aware of any rule about having to use "generic" names.
+v2: Sorry, v1 was only partial as I have accidentally sent the
+    wrong patch file. Fixed for v2.
 
-Check Documentation/devicetree/bindings/input/gpio-keys.yaml - in the example,
-you can find "specific" node names, like:
+ drivers/phy/mediatek/phy-mtk-mipi-dsi.c | 29 +++++++++----------------
+ 1 file changed, 10 insertions(+), 19 deletions(-)
 
-         up {
+diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+index 67b005d5b9e3..28506932bd91 100644
+--- a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
++++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+@@ -154,11 +154,9 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
+ 		return PTR_ERR(mipi_tx->regs);
+ 
+ 	ref_clk = devm_clk_get(dev, NULL);
+-	if (IS_ERR(ref_clk)) {
+-		ret = PTR_ERR(ref_clk);
+-		dev_err(dev, "Failed to get reference clock: %d\n", ret);
+-		return ret;
+-	}
++	if (IS_ERR(ref_clk))
++		return dev_err_probe(dev, PTR_ERR(ref_clk),
++				     "Failed to get reference clock\n");
+ 
+ 	ret = of_property_read_u32(dev->of_node, "drive-strength-microamp",
+ 				   &mipi_tx->mipitx_drive);
+@@ -178,27 +176,20 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
+ 
+ 	ret = of_property_read_string(dev->of_node, "clock-output-names",
+ 				      &clk_init.name);
+-	if (ret < 0) {
+-		dev_err(dev, "Failed to read clock-output-names: %d\n", ret);
+-		return ret;
+-	}
++	if (ret < 0)
++		return dev_err_probe(dev, ret, "Failed to read clock-output-names\n");
+ 
+ 	clk_init.ops = mipi_tx->driver_data->mipi_tx_clk_ops;
+ 
+ 	mipi_tx->pll_hw.init = &clk_init;
+ 	mipi_tx->pll = devm_clk_register(dev, &mipi_tx->pll_hw);
+-	if (IS_ERR(mipi_tx->pll)) {
+-		ret = PTR_ERR(mipi_tx->pll);
+-		dev_err(dev, "Failed to register PLL: %d\n", ret);
+-		return ret;
+-	}
++	if (IS_ERR(mipi_tx->pll))
++		return dev_err_probe(dev, PTR_ERR(mipi_tx->pll), "Failed to register PLL\n");
+ 
+ 	phy = devm_phy_create(dev, NULL, &mtk_mipi_tx_ops);
+-	if (IS_ERR(phy)) {
+-		ret = PTR_ERR(phy);
+-		dev_err(dev, "Failed to create MIPI D-PHY: %d\n", ret);
+-		return ret;
+-	}
++	if (IS_ERR(phy))
++		return dev_err_probe(dev, PTR_ERR(phy), "Failed to create MIPI D-PHY\n");
++
+ 	phy_set_drvdata(phy, mipi_tx);
+ 
+ 	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
+-- 
+2.35.1
 
-             label = "GPIO Key UP";
-
-In any case, as I said, it's my personal preference to have it named as something
-like "key-volup" or "vol-up" or .. a name that is describing the key, but, as a
-personal preference, it is nothing mandatory, not even from my side.
-
-If anyone else has reasons to disagree, shrug, it's fine :))
-
->>
->>> +			gpios = <&pio 106 GPIO_ACTIVE_LOW>;
->>> +			label = "volume_up";
->>> +			linux,code = <KEY_VOLUMEUP>;
->>> +			wakeup-source;
->>> +			debounce-interval = <15>;
->>> +		};
->>> +	};
->>> +};
 
 _______________________________________________
 Linux-mediatek mailing list
