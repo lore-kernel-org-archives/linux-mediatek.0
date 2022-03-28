@@ -4,58 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B880C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Mar 2022 13:49:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB068C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Mar 2022 13:55:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wZF2JS6gTTO1kaRuk4XOzlO1RZNhoAP1jPztOmTX+Iw=; b=XtXza+/d+J3WBu
-	whMGwimVUhipG3C2ym+jco/NNHMV4F9VgBrMIUOx/mfUhAHyBqAHgpPLLVBmXr1RySZ3FaQwSAFy9
-	iTeVO5oD8dyjw7jl3ADGewGjKjyLEkyi2qounehoPRfm357UknT9rVFHm28jrcAgiUW1Nr+f2CEPD
-	iabHQOJs+heVkLG7gmFzeD217v6DZVYYnwhkOY2RtYCOu7fkLRMAAf0va/brducpw8bbPRQPqbg4M
-	m6w/Kxh0zsvHkGEcdcGcYB2WQELpXoXU8/umqWuYr34BxyyOpa3IuQQffAfGTGpm3ctDxRQiOjwRH
-	3Kj0CUMEzxz2jbC9axcw==;
+	List-Owner; bh=61tlb90QgnpErxHLoDSXLKET8NvId3v+lmkiCyXH9i4=; b=e+xbTPEgA2t68L
+	ZhrXp6BqP4PmM5lkokmm8vfNUedUkqCBl21l+GadDF+qfgE/e7O1j0bwJ5dbTj7DFTGRl1BQmM0mP
+	G0AbrmCGIfjE3qGTda9qji8s+SED4396Wp6qhCcO8ai2FEQTiCbC7wvsWAu63uwRf5iN3BI/eUGUd
+	tnTJ+VHMDP3BY2R5fQGwAZ1wrpwBap7iGdcza1R/88N1sGPslbW7NpaJah5LVhhKqRUnOHfhBPJ7z
+	Q5TVhFGCWEvCxWxTmKln+byzBVpka5qE0V/yRQER5zpeiM8fq/adaws5otVECmEft2DHe2UVMgw4o
+	n0sRJPh6Wf0Fmmy0VTgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYpk9-008u9w-8G; Mon, 28 Mar 2022 13:49:13 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nYpqV-008wq4-Hs; Mon, 28 Mar 2022 13:55:47 +0000
+Received: from mail-ot1-f47.google.com ([209.85.210.47])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYpiF-008tOs-Cn; Mon, 28 Mar 2022 13:47:17 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id A277A1F42914
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1648475233;
- bh=xm/p5RUG4xpEDHVeoyt/7MmfTaEkbWMuA9kH+M+Y73E=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=LVSwo0YoQOQ0czBBLU/3eTNmt7ceqqhFo/I8a8yOQDffYMSIG/ztREzP7rplHVTA+
- Xr9rdwb4WjYwkYG2xyaFTZ5LKO8GbclE5SiHinvAf2jQvYpg7DvIlIH+nZU5kmRYLV
- GPZGZ0M5mGOszMTIJ+bcGnRw5EMhIWIblyQsX3dPKWf5j/GXWBbityZjT6ZtGdPCL6
- FmJtZZ9dHLFgRY3Gwt6xWZOSIMggdAltUosjvkI2rOIlPE8LR74G9gRta06/Lz4N7H
- aCAdT51vB1LJ6VSsJG9OrlFIDmEVQgw4L4D+cj9308vzr6CTEahtUWlR/X73Bc+Oir
- Yd4a7vNe5h+3Q==
-Message-ID: <94d231cf-ce4c-22f5-b9af-41ae68f1e659@collabora.com>
-Date: Mon, 28 Mar 2022 15:47:09 +0200
+ id 1nYpj3-008tnU-Oc; Mon, 28 Mar 2022 13:48:11 +0000
+Received: by mail-ot1-f47.google.com with SMTP id
+ k25-20020a056830151900b005b25d8588dbso10697840otp.4; 
+ Mon, 28 Mar 2022 06:48:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=Q+/z8pUUWBfLzzFWh3TN26NfhrvM6nyqxbuLLyu+aLM=;
+ b=6mFPaR90nmuko7UPvGs4xjrDs1ljynQ6JKo/7+K/pHRRvtsBGMChJdqfSg1WczQWHv
+ xYe0KVfwcQ9AQpi+cBq7kUNAu97ByrhUhqETXD5pMvXepLYtGJ0CvNdZGYvOUG/FPDEn
+ XDwhZ9JKgRP74EIwKkVpTKPtq20my/SzCtTrDkx7k3drKYwiv/BNZw30v6jLZC4yMrAN
+ m7DgPd+6GcodLvBIq1txmZk9n2bM0DLkXS9yL3IFk4Khgt8PFHCdLY6B5X0Hb285ykp4
+ Y7Mp3sQ/b79LURZ5lr1vecXCoDbz9bt++IKRfQVqBd3T7+No7qPVeWNPb8qBYDYLsdkZ
+ UiDw==
+X-Gm-Message-State: AOAM533BXinyhCcXTU+3W0vnx59bCTsFtRwe9X/zNrnvyK9c9HhZwWsW
+ QPzYX/L8lTT8Xsce04nDQQ==
+X-Google-Smtp-Source: ABdhPJzFImlqCXW1K8qUgADwrPbF+W8G33anvBPZNSZSnbvRxRupoA5RTvOjiP0UzvVLR7VCWkaWhg==
+X-Received: by 2002:a9d:454c:0:b0:5b2:3757:9fc6 with SMTP id
+ p12-20020a9d454c000000b005b237579fc6mr10004371oti.314.1648475283257; 
+ Mon, 28 Mar 2022 06:48:03 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ u14-20020a4ad0ce000000b0032174de7c2csm6804223oor.8.2022.03.28.06.48.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 28 Mar 2022 06:48:02 -0700 (PDT)
+Received: (nullmailer pid 2248085 invoked by uid 1000);
+ Mon, 28 Mar 2022 13:48:01 -0000
+Date: Mon, 28 Mar 2022 08:48:01 -0500
+From: Rob Herring <robh@kernel.org>
+To: Irui Wang <irui.wang@mediatek.com>
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Tzung-Bi Shih <tzungbi@chromium.org>,
+ Alexandre Courbot <acourbot@chromium.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>,
+ angelogioacchino.delregno@collabora.com, Yong Wu <yong.wu@mediatek.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Maoguang Meng <maoguang.meng@mediatek.com>,
+ Longfei Wang <longfei.wang@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, Fritz Koenig <frkoenig@chromium.org>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v3, 03/10] dt-bindings: media: mtk-vcodec: Adds encoder
+ cores dt-bindings for mt8195
+Message-ID: <YkG8ka1xY2k+HWi1@robh.at.kernel.org>
+References: <20220317082230.23622-1-irui.wang@mediatek.com>
+ <20220317082230.23622-4-irui.wang@mediatek.com>
+ <Yj4s0zcHxz3U3wlc@robh.at.kernel.org>
+ <ab2b24eeb51048227ad7b2ac659617a7da5b2e45.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v2 2/4] arm64: dts: mediatek: Add device-tree for MT8195
- Demo board
-Content-Language: en-US
-To: Fabien Parent <fparent@baylibre.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20220327200312.3090515-1-fparent@baylibre.com>
- <20220327200312.3090515-3-fparent@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220327200312.3090515-3-fparent@baylibre.com>
+Content-Disposition: inline
+In-Reply-To: <ab2b24eeb51048227ad7b2ac659617a7da5b2e45.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220328_064715_674991_C8FBF1BC 
-X-CRM114-Status: GOOD (  21.69  )
+X-CRM114-CacheID: sfid-20220328_064805_898176_C5911EF4 
+X-CRM114-Status: GOOD (  33.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,146 +93,154 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/03/22 22:03, Fabien Parent ha scritto:
-> Add basic device-tree for the MT8195 Demo board. The
-> Demo board is made by MediaTek and has a MT8195 SoC,
-> associated with the MT6359 and MT6360 PMICs, and
-> the MT7921 connectivity chip.
+On Sat, Mar 26, 2022 at 10:00:55AM +0800, Irui Wang wrote:
+> Dear Rob,
 > 
-> The IOs available on that board are:
-> * 1 USB Type-C connector with DP aux mode support
-> * 1 USB Type-A connector
-> * 1 full size HDMI RX and 1 full size HDMI TX connector
-> * 1 uSD slot
-> * 40 pins header
-> * SPI interface header
-> * 1 M.2 slot
-> * 1 audio jack
-> * 1 micro-USB port for serial debug
-> * 2 connectors for DSI displays
-> * 3 connectors for CSI cameras
-> * 1 connector for a eDP panel
-> * 1 MMC storage
+> Thanks for your review and comments.
 > 
-> This commit adds basic support in order to be able to boot.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> ---
-> v2:
->   * remove empty i2c nodes
->   * remove empty spi node
->   * remove unused pcie pinctrls
->   * fixup node nodes to not contains underscore
->   * rename mt6360 pmic node
->   * move mmc1 node right after mmc0 node
->   * use generic node name for gpio-keys
->   * uniformize pinctrl node names
-> 
->   arch/arm64/boot/dts/mediatek/Makefile        |   1 +
->   arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 447 +++++++++++++++++++
->   2 files changed, 448 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> 
+> On Fri, 2022-03-25 at 15:57 -0500, Rob Herring wrote:
+> > On Thu, Mar 17, 2022 at 04:22:23PM +0800, Irui Wang wrote:
+> > > Adds encoder cores dt-bindings for mt8195.
+> > 
+> > Why?
+> mt8195 has two h264 encoder cores and we want to enable both of them.
+> the original encoder bindings file is for single core which may can not
+> handle it, so we new a core dt-bindings. We will think about it again
+> about this dt-bindings.
+> > 
+> > > 
+> > > Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+> > > ---
+> > >  .../media/mediatek,vcodec-encoder-core.yaml   | 181
+> > > ++++++++++++++++++
+> > >  .../media/mediatek,vcodec-encoder.yaml        |   1 -
+> > >  2 files changed, 181 insertions(+), 1 deletion(-)
+> > >  create mode 100644
+> > > Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-
+> > > core.yaml
+> > > 
+> > > diff --git
+> > > a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-
+> > > core.yaml
+> > > b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-
+> > > core.yaml
+> > > new file mode 100644
+> > > index 000000000000..fcfb48900c76
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-
+> > > encoder-core.yaml
+> > > @@ -0,0 +1,181 @@
+> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > > +
+> > > +%YAML 1.2
+> > > +---
+> > > +$id: "
+> > > http://devicetree.org/schemas/media/mediatek,vcodec-encoder-core.yaml#
+> > > "
+> > > +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
+> > > +
+> > > +title: Mediatek Video Encoder Accelerator With Multi Core
+> > > +
+> > > +maintainers:
+> > > +  - Irui Wang <irui.wang@mediatek.com>
+> > > +
+> > > +description: |
+> > > +  Mediatek Video Encode is the video encode hardware present in
+> > > Mediatek
+> > > +  SoCs which supports high resolution encoding functionalities.
+> > > Required
+> > > +  parent and child device node.
+> > > +
+> > > +properties:
+> > > +  compatible:
+> > > +    items:
+> > > +      - enum:
+> > > +          - mediatek,mt8195-vcodec-enc
+> > > +
+> > > +  mediatek,scp:
+> > > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > > +    description: |
+> > > +      The node of system control processor (SCP), using
+> > > +      the remoteproc & rpmsg framework.
+> > > +
+> > > +  mediatek,venc-multi-core:
+> > > +    type: boolean
+> > > +    description: |
+> > > +      Indicates whether the encoder has multiple cores or not.
+> > 
+> > Isn't this implied by how many child nodes you have?
+> It implies that we have child nodes, distinguish with single core,  
 
-..snip..
+Just check if you have a child node or not.
 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> new file mode 100644
-> index 000000000000..d94b4e01159a
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> @@ -0,0 +1,447 @@
 
-..snip..
+> > > +  iommus:
+> > > +    minItems: 1
+> > > +    maxItems: 32
+> > 
+> > You really have up to 32 IOMMUs?
+> Currently, totally 27 IOMMUs and used 9 of them.
+> > 
+> > > +    description: |
+> > > +      List of the hardware port in respective IOMMU block for
+> > > current Socs.
+> > > +      Refer to bindings/iommu/mediatek,iommu.yaml.
+> > > +
+> > > +  dma-ranges:
+> > > +    maxItems: 1
+> > > +    description: |
+> > > +      Describes the physical address space of IOMMU maps to
+> > > memory.
+> > > +
+> > > +  "#address-cells":
+> > > +    const: 2
+> > > +
+> > > +  "#size-cells":
+> > > +    const: 2
+> > > +
+> > > +  ranges: true
+> > > +
+> > > +# Required child node:
+> > > +patternProperties:
+> > > +  "^venc-core@[0-9a-f]+$":
+> > > +    type: object
+> > > +    description: |
+> > > +      The video encoder core device node which should be added as
+> > > subnodes to
+> > > +      the main venc node.
+> > > +
+> > > +    properties:
+> > > +      compatible:
+> > > +        items:
+> > > +         - const: mediatek,mtk-venc-core
+> > > +
+> > > +      reg:
+> > > +        maxItems: 1
+> > > +
+> > > +      mediatek,core-id:
+> > > +        $ref: /schemas/types.yaml#/definitions/uint32
+> > > +        description: |
+> > > +          Current encoder core id.
+> > 
+> > What is this for and what does its value correspond to in the h/w.
+> > We 
+> > generally don't do made up indices in DT.
+> It's for encoder core id, core@1a020000 must be core-0, core@1b020000
+> must be core-1, we add this property in each child node, so we can 
+> get core-id in drivers. If it can't ref "uint32" types yaml, would 
+> you mind giving some more suggestions ?
 
-> +
-> +	gpio-keys {
-> +		compatible = "gpio-keys";
-> +		input-name = "gpio-keys";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&gpio_keys_pins>;
-> +
-> +		key-0 {
+I still don't understand why it is needed. What is 'core-0'?
 
-key-volup is more descriptive, can you please change that?
+Is there some functional difference between the cores? If so, describe 
+that difference.
 
-> +			gpios = <&pio 106 GPIO_ACTIVE_LOW>;
-> +			label = "volume_up";
-> +			linux,code = <KEY_VOLUMEUP>;
-> +			wakeup-source;
-> +			debounce-interval = <15>;
-> +		};
-> +	};
-> +};
-> +
-
-..snip..
-
-> +
-> +&pmic {
-> +	interrupt-parent = <&pio>;
-> +	interrupts = <222 IRQ_TYPE_LEVEL_HIGH>;
-
-I would instead use interrupts-extended here:
-
-	interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
-
-> +};
-> +
-> +&i2c6 {
-> +	clock-frequency = <400000>;
-> +	pinctrl-0 = <&i2c6_pins>;
-> +	pinctrl-names = "default";
-> +	status = "okay";
-> +
-> +	mt6360: pmic@34 {
-> +		compatible = "mediatek,mt6360";
-> +		reg = <0x34>;
-> +		interrupt-controller;
-> +		interrupt-parent = <&pio>;
-> +		interrupts = <101 IRQ_TYPE_EDGE_FALLING>;
-
-Same here
-
-> +		interrupt-names = "IRQB";
-> +
-
-...snip...
-
-> +
-> +&pio {
-> +	mmc0_default_pins: mmc0-default-pins {
-> +		pins-cmd-dat {
-> +			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
-> +				 <PINMUX_GPIO125__FUNC_MSDC0_DAT1>,
-> +				 <PINMUX_GPIO124__FUNC_MSDC0_DAT2>,
-> +				 <PINMUX_GPIO123__FUNC_MSDC0_DAT3>,
-> +				 <PINMUX_GPIO119__FUNC_MSDC0_DAT4>,
-> +				 <PINMUX_GPIO118__FUNC_MSDC0_DAT5>,
-> +				 <PINMUX_GPIO117__FUNC_MSDC0_DAT6>,
-> +				 <PINMUX_GPIO116__FUNC_MSDC0_DAT7>,
-> +				 <PINMUX_GPIO121__FUNC_MSDC0_CMD>;
-> +			input-enable;
-> +			drive-strength = <MTK_DRIVE_6mA>;
-> +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-> +		};
-> +
-> +		pin-clk {
-
-This is supposed to be "pins-clk", not "pin-clk"... same for all the other
-instances of the "pin-".
-
-Before pushing patches upstream, please run dtbs_check, as these are all
-mistakes that will be pointed out by that.
-
-Regards,
-Angelo
-
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
