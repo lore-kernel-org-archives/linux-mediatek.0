@@ -4,66 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5C54C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Mar 2022 09:04:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39FDDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Mar 2022 09:10:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+ire4VAVYlaYIG6gcdGI6DdoZNCc9Wws/XI0IAAbIFw=; b=P05ArC0nkzA2Sq
-	nYWQUReefUioPeAPbNoq+IC/6vH76rcXxyH7uPRunsGVJHKu6R4qqL+qiJ7s0/jTWpZnxiQKFqtqw
-	uVSnq8No2DJT0rvUeXgDUoDN4xcHFCuMw2gBIrmxQk7QzwYWhSyq6iKS+Fu1oj/ZQr50C8AF6hGyr
-	XEHFbpZz0Z+FNT8cjwS7DG6xn4B166vJU9cbNDKY7ZZ1HN+jESwQAFx9R5vGkKM8LfUkxpoXA200g
-	I3qB+v0IApwqwG+WhCdeT9bFQxLhSVt5+XjUJmf4vRQ7Qs79ocU6ESnOnqzjdp+YNm4f98JccQBlp
-	13srSaXHjMdurgNXmk7A==;
+	List-Owner; bh=ZVPNI4yBUdpGqvXBlO1kkGMn9rn3e4h3eDvUIgwsQQM=; b=HJ0Qou2YyzhkTi
+	UHCEbGHyY1ek9wHz1RfZcVKr4H/sMmPDj6niJF6vFYpyW4Z0SSa7i/e0/zxslATg5vbG2KC1EeBbA
+	N6Nu/hA2aJyy2TgbSx5buNBEpGfd71U6paDa30njr6Y1O48Z29PymY+m+kRvmy4gGOjUJ47yg2Yqc
+	aYUanw/1VDu8lsBL/tklvZjsweok0mdIuSWDneFtduK5LqpRV0aLRhh7vQzXpB51N/LaX8f7iQw8f
+	kPpTqsX76eKM/oaUkuaQ2jogG9181jHMXzhEklGERUP6vAN14NbJz0kcSZlLYkQWCoeZWk9YRiQX5
+	+4YhK5ZhCIumZNnsRSuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYlIS-007xwg-4H; Mon, 28 Mar 2022 09:04:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nYlO9-007ys2-Cq; Mon, 28 Mar 2022 09:10:13 +0000
+Received: from mx07-00178001.pphosted.com ([185.132.182.106])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYlIO-007xw7-P6; Mon, 28 Mar 2022 09:04:18 +0000
-X-UUID: 7240214d226f4edc95997dbf3e13e525-20220328
-X-UUID: 7240214d226f4edc95997dbf3e13e525-20220328
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1965493219; Mon, 28 Mar 2022 02:04:13 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 28 Mar 2022 01:54:11 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 28 Mar 2022 16:54:09 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 28 Mar 2022 16:54:09 +0800
-Message-ID: <00cabba08cff881ea282fdf0ee097f6b35b2c76d.camel@mediatek.com>
-Subject: Re: [PATCH v9 13/22] drm/mediatek: dpi: move the yuv422_en_bit to
- SoC config
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Guillaume Ranquet <granquet@baylibre.com>, <airlied@linux.ie>,
- <angelogioacchino.delregno@collabora.com>, <chunfeng.yun@mediatek.com>,
- <chunkuang.hu@kernel.org>, <ck.hu@mediatek.com>, <daniel@ffwll.ch>,
- <deller@gmx.de>, <jitao.shi@mediatek.com>, <kishon@ti.com>,
- <krzk+dt@kernel.org>, <maarten.lankhorst@linux.intel.com>,
- <matthias.bgg@gmail.com>, <mripard@kernel.org>, <p.zabel@pengutronix.de>,
- <robh+dt@kernel.org>, <tzimmermann@suse.de>, <vkoul@kernel.org>
-CC: <devicetree@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-fbdev@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-phy@lists.infradead.org>, <markyacoub@google.com>
-Date: Mon, 28 Mar 2022 16:54:09 +0800
-In-Reply-To: <20220327223927.20848-14-granquet@baylibre.com>
-References: <20220327223927.20848-1-granquet@baylibre.com>
- <20220327223927.20848-14-granquet@baylibre.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nYlO4-007yqD-Bm; Mon, 28 Mar 2022 09:10:10 +0000
+Received: from pps.filterd (m0241204.ppops.net [127.0.0.1])
+ by mx07-00178001.pphosted.com (8.16.1.2/8.16.1.2) with ESMTP id 22S8I2C3021091;
+ Mon, 28 Mar 2022 11:09:43 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com;
+ h=message-id : date :
+ mime-version : subject : to : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=selector1;
+ bh=UolRXFi1I14ir1Ch6J57znz3cxW4eMqAUfWlUw0jpEY=;
+ b=7MVe3dwAcQqziXyBh5k8o7pmkTW9nAHwVg6W9SKKHKF/fYE32XBMAh4O8iLdArQbc2Tr
+ D35MdCrSz29mobpZ7ZeOPKZi8a0F77WSlAbGfeXye7kklohU/9KlO4autAVjf8Khb4Ab
+ v+ax5V/rRjsJBo8bNmwemEfMirLn866wlTz7sjcZIdh4oIZYg5O8Jdt4PQR2sDg00p7s
+ 2szD6jM+QBfKZB3ubAEFKNrHCF8MEZmfDpi3WJfaAcUVW0MTePC4gd9FLnb/Sr/POD+I
+ 6xKoPTMpuWrIsdY5LnCFuEZ02nzLIO+arSQExXojnAcwiNQez6+kIGpNn4VrB2ncZJSZ /Q== 
+Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
+ by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3f1u240a9k-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 28 Mar 2022 11:09:43 +0200
+Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
+ by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id D09C610002A;
+ Mon, 28 Mar 2022 11:09:40 +0200 (CEST)
+Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
+ by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 9F04221B51E;
+ Mon, 28 Mar 2022 11:09:40 +0200 (CEST)
+Received: from [10.201.21.201] (10.75.127.44) by SHFDAG1NODE1.st.com
+ (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.2308.20; Mon, 28 Mar
+ 2022 11:09:39 +0200
+Message-ID: <fef4e5dd-d843-ea37-7701-bcfac9d1c9b5@foss.st.com>
+Date: Mon, 28 Mar 2022 11:09:38 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [Linux-stm32] [RFC PATCH 1/1] ARM/arm64: categorize dts in arm
+ dir and fix dependency in arm64
+Content-Language: en-US
+To: Ansuel Smith <ansuelsmth@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-actions@lists.infradead.org>,
+ <linux-sunxi@lists.linux.dev>, <linux-omap@vger.kernel.org>,
+ <linux-amlogic@lists.infradead.org>, <linux-arm-kernel@axis.com>,
+ <linux-aspeed@lists.ozlabs.org>, <linux-rpi-kernel@lists.infradead.org>,
+ <chrome-platform@lists.linux.dev>, <linux-renesas-soc@vger.kernel.org>,
+ <linux-samsung-soc@vger.kernel.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>,
+ <kernel@dh-electronics.com>, <linux-mediatek@lists.infradead.org>,
+ <openbmc@lists.ozlabs.org>, <linux-tegra@vger.kernel.org>,
+ <linux-oxnas@groups.io>, <linux-arm-msm@vger.kernel.org>,
+ <linux-unisoc@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-realtek-soc@lists.infradead.org>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com>
+ <20220328000915.15041-2-ansuelsmth@gmail.com>
+From: Patrice CHOTARD <patrice.chotard@foss.st.com>
+In-Reply-To: <20220328000915.15041-2-ansuelsmth@gmail.com>
+X-Originating-IP: [10.75.127.44]
+X-ClientProxiedBy: SFHDAG2NODE2.st.com (10.75.127.5) To SHFDAG1NODE1.st.com
+ (10.75.129.69)
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.850,Hydra:6.0.425,FMLib:17.11.64.514
+ definitions=2022-03-28_03,2022-03-28_01,2022-02-23_01
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220328_020416_830104_DBBCE6E2 
-X-CRM114-Status: GOOD (  15.25  )
+X-CRM114-CacheID: sfid-20220328_021008_961145_6C3D69E2 
+X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,78 +104,161 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-03-28 at 00:39 +0200, Guillaume Ranquet wrote:
-> Add flexibility by moving the yuv422 en bit to SoC specific config
-> 
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dpi.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> index 6d4d8c6ec47d..40254cd9d168 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -132,6 +132,7 @@ struct mtk_dpi_conf {
->  	/* HSIZE and VSIZE mask (no shift) */
->  	u32 hvsize_mask;
->  	u32 channel_swap_shift;
-> +	u32 yuv422_en_bit;
->  	const struct mtk_dpi_yc_limit *limit;
->  };
->  
-> @@ -356,7 +357,8 @@ static void mtk_dpi_config_channel_swap(struct
-> mtk_dpi *dpi,
->  
->  static void mtk_dpi_config_yuv422_enable(struct mtk_dpi *dpi, bool
-> enable)
->  {
-> -	mtk_dpi_mask(dpi, DPI_CON, enable ? YUV422_EN : 0, YUV422_EN);
-> +	mtk_dpi_mask(dpi, DPI_CON, enable ? dpi->conf->yuv422_en_bit :
-> 0,
-> +		     dpi->conf->yuv422_en_bit);
->  }
->  
->  static void mtk_dpi_config_csc_enable(struct mtk_dpi *dpi, bool
-> enable)
-> @@ -824,6 +826,7 @@ static const struct mtk_dpi_conf mt8173_conf = {
->  	.dimension_mask = HPW_MASK,
->  	.hvsize_mask = HSIZE_MASK,
->  	.channel_swap_shift = CH_SWAP,
-> +	.yuv422_en_bit = YUV422_EN,
->  	.limit = &mtk_dpi_limit,
->  };
->  
-> @@ -839,6 +842,7 @@ static const struct mtk_dpi_conf mt2701_conf = {
->  	.dimension_mask = HPW_MASK,
->  	.hvsize_mask = HSIZE_MASK,
->  	.channel_swap_shift = CH_SWAP,
-> +	.yuv422_en_bit = YUV422_EN,
->  	.limit = &mtk_dpi_limit,
->  };
->  
-> @@ -853,6 +857,7 @@ static const struct mtk_dpi_conf mt8183_conf = {
->  	.dimension_mask = HPW_MASK,
->  	.hvsize_mask = HSIZE_MASK,
->  	.channel_swap_shift = CH_SWAP,
-> +	.yuv422_en_bit = YUV422_EN,
->  	.limit = &mtk_dpi_limit,
->  };
->  
-> @@ -867,6 +872,7 @@ static const struct mtk_dpi_conf mt8192_conf = {
->  	.dimension_mask = HPW_MASK,
->  	.hvsize_mask = HSIZE_MASK,
->  	.channel_swap_shift = CH_SWAP,
-> +	.yuv422_en_bit = YUV422_EN,
->  	.limit = &mtk_dpi_limit,
->  };
->  
+Hi Ansuel
 
-Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+On 3/28/22 02:09, Ansuel Smith wrote:
+> - Categorize every dts in arm directory in subdirectory
+> - Fix Makefile to address for the arm subdirectory
+> - Fix any arm64 dependency
+> 
+> Signed-off-by: Ansuel Smith <ansuelsmth@gmail.com>
 
+>  create mode 100644 arch/arm/boot/dts/st/Makefile
+>  rename arch/arm/boot/dts/{ => st}/spear1310-evb.dts (100%)
+>  rename arch/arm/boot/dts/{ => st}/spear1310.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st}/spear1340-evb.dts (100%)
+>  rename arch/arm/boot/dts/{ => st}/spear1340.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st}/spear13xx.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st}/spear300-evb.dts (100%)
+>  rename arch/arm/boot/dts/{ => st}/spear300.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st}/spear310-evb.dts (100%)
+>  rename arch/arm/boot/dts/{ => st}/spear310.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st}/spear320-evb.dts (100%)
+>  rename arch/arm/boot/dts/{ => st}/spear320-hmi.dts (100%)
+>  rename arch/arm/boot/dts/{ => st}/spear320.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st}/spear320s.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st}/spear3xx.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st}/spear600-evb.dts (100%)
+>  rename arch/arm/boot/dts/{ => st}/spear600.dtsi (100%)
+
+
+All SPEAr device tree should go into stm sub-directory, as this platform is a STMicroelectronics one
+as STi or STM32.
+
+Thanks
+
+Patrice
+
+>  create mode 100644 arch/arm/boot/dts/st_ericsson/Makefile
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ab8500.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ab8505.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-db8500.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-db8520.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-db9500.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-dbx5x0-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-dbx5x0.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-href-ab8500.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-href-family-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-href-stuib.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-href-tvk1281618-r2.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-href-tvk1281618-r3.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-href.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-href520-tvk.dts (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-hrefprev60-stuib.dts (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-hrefprev60-tvk.dts (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-hrefprev60.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-hrefv60plus-stuib.dts (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-hrefv60plus-tvk.dts (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-hrefv60plus.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-nomadik-nhk15.dts (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-nomadik-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-nomadik-s8815.dts (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-nomadik-stn8815.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-snowball.dts (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ux500-samsung-codina.dts (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ux500-samsung-gavini.dts (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ux500-samsung-golden.dts (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ux500-samsung-janice.dts (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ux500-samsung-kyle.dts (100%)
+>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ux500-samsung-skomer.dts (100%)
+>  create mode 100644 arch/arm/boot/dts/stm/Makefile
+>  create mode 120000 arch/arm/boot/dts/stm/armv7-m.dtsi
+>  rename arch/arm/boot/dts/{ => stm}/st-pincfg.h (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stih407-b2120.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stih407-clock.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stih407-family.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stih407-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stih407.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stih410-b2120.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stih410-b2260.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stih410-clock.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stih410-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stih410.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stih418-b2199.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stih418-b2264.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stih418-clock.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stih418.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stihxxx-b2120.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32429i-eval.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32746g-eval.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32f4-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32f429-disco.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32f429-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32f429.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32f469-disco.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32f469-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32f469.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32f7-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32f746-disco.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32f746-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32f746.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32f769-disco.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32f769-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32h7-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32h743.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32h743i-disco.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32h743i-eval.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32h750.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32h750i-art-pi.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp13-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp131.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp133.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp135.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp135f-dk.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp13xc.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp13xf.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp15-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp151.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp153.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp153c-dhcom-drc02.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-avenger96.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-dhcor-avenger96.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-dk1.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-icore-stm32mp1-ctouch2-of10.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-icore-stm32mp1-ctouch2.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-icore-stm32mp1-edimm2.2.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-icore-stm32mp1.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-iot-box.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-microgea-stm32mp1-microdev2.0-of7.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-microgea-stm32mp1-microdev2.0.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-microgea-stm32mp1.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-stinger96.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-stinger96.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-dhcom-pdk2.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-dhcom-picoitx.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-dk2.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-ed1.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-emsbc-argon.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-emstamp-argon.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-ev1.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-lxa-mc1.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-odyssey-som.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-odyssey.dts (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xc.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dhcom-drc02.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dhcom-pdk2.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dhcom-picoitx.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dhcom-som.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dhcor-avenger96.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dhcor-io1v8.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dhcor-som.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dkx.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-osd32.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xxaa-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xxab-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xxac-pinctrl.dtsi (100%)
+>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xxad-pinctrl.dtsi (100%)
 
 _______________________________________________
 Linux-mediatek mailing list
