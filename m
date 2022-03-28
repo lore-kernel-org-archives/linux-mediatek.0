@@ -4,90 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 128D1C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Mar 2022 09:20:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07359C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Mar 2022 09:35:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xvAaMumETw+VYqhS9f8Dczxn0TqvVRPh115XjI6JXg0=; b=sO58xNGYkUPvKC
-	Lwnvc5mliJ8ht/DZeY84mFOjb2HFNH1qZ9Nx6p/nMrktffjFx95u3RzmipAbXpsHJm+wVu8UeMiRY
-	bz13Q6FS4LogSO4foqOyXsZysTqkz5zJ6v+B1Eyhb6MqviAU2NjBewX8SoFllKGsG/Iy++KoX+Lot
-	QS8ZFw1121CdWFd3UurqZ/WcHlcMa6y1aNwJ9QTbmsN8F6QYNuTWq4in5L/igGiJvAfpD/G391ZE+
-	1dK4V9y0GAhNy3JI7p37mVUujbsNrM6zlYcnTkard1l1Jtp1qu9TyOzsYARVomErFggqpvdtSo6Bt
-	ExQpJfAEA/3Y5P5ZSggg==;
+	List-Owner; bh=VFL63+4R7IduZ245iKiMdOTod7N1cljEhpB1104JQCw=; b=VrMpSJi/wO/ejA
+	GtFAzhpuLPOR60wEVWBKmmKXhpxmOgtANe6VZCCO7OHxC3Q3djSpI9bO2eF+qV+nJAPoKFTZW0fL4
+	RYgO+MlDUfee2/PTk1twQz9M+wefeghLBsemMgx+bOr6qcSFu4mTFisWFzsprq6zDezP2I9oEtxkk
+	weqM4OhsiVIJHi91rsAlZEBi/s4sjdxDD553mp7FlWsNSvQRMq31/rWTa7pCrLeNJyoUaeouH5nEM
+	yup5sJHCusJ9z2rhRPt0Se60hV1FJyzUtZ/z1ZXbmMOslINo29JLFZwKNeTUCnxk1dkqtUCD+Xd+x
+	y+ghMBJwccf864D036xA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYlY4-0081ho-GZ; Mon, 28 Mar 2022 09:20:28 +0000
-Received: from mx07-00178001.pphosted.com ([185.132.182.106])
+	id 1nYlmC-0083Ij-L3; Mon, 28 Mar 2022 09:35:04 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYlXz-0081fi-Iz; Mon, 28 Mar 2022 09:20:25 +0000
-Received: from pps.filterd (m0241204.ppops.net [127.0.0.1])
- by mx07-00178001.pphosted.com (8.16.1.2/8.16.1.2) with ESMTP id 22S8FOlk021087;
- Mon, 28 Mar 2022 11:20:03 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com;
- h=message-id : date :
- mime-version : subject : from : to : references : in-reply-to :
- content-type : content-transfer-encoding; s=selector1;
- bh=QNqrDD64oegmAPAA7c6Kuvj4h/Mo4WJ2EudsRNthV8U=;
- b=oCE6dat5TQz7eCa51/SqzVDKh9IaU6RCkI5tLfvrJaB6+xkYae3WC2aW1iLZIyTEKpS3
- CCSpftC7+yt34expFb6wiGmu8X6oTQtHUotdm3ekypG7+EY0B90ygXHxnK1otXO1/maO
- Ls62vY3zD3i1rYNIJZe+cvNuMFH439ejbkQarZgY4Y/cFuJlRDe/ZV7DK61wbEdDUEob
- cxa7hQAlEp+effh6Pj0MqMZtugaYh4K3BJmNUP1jJzmhyVSi0AHjNPAYUQqKo5/Fu+qO
- 49ds7rPdKQwQZVOzKPm1f5azlOxH2lihq4Encg42tAIs16YBSuBhQU18acXCi8Ud202z HA== 
-Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
- by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3f1u240c3k-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 28 Mar 2022 11:20:03 +0200
-Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
- by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id A2B7610002A;
- Mon, 28 Mar 2022 11:20:02 +0200 (CEST)
-Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
- by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 5B41621BF69;
- Mon, 28 Mar 2022 11:20:02 +0200 (CEST)
-Received: from [10.201.21.201] (10.75.127.46) by SHFDAG1NODE1.st.com
- (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.2308.20; Mon, 28 Mar
- 2022 11:20:01 +0200
-Message-ID: <238c6d7b-a61c-d09e-9377-8f49dad40eeb@foss.st.com>
-Date: Mon, 28 Mar 2022 11:20:00 +0200
+ id 1nYlm9-0083Hq-T7; Mon, 28 Mar 2022 09:35:03 +0000
+X-UUID: fcd5b51544544a09aed7e9972347038a-20220328
+X-UUID: fcd5b51544544a09aed7e9972347038a-20220328
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 550129380; Mon, 28 Mar 2022 02:34:55 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 28 Mar 2022 02:34:53 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 28 Mar 2022 17:34:51 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 28 Mar 2022 17:34:51 +0800
+Message-ID: <9f14d6a0aa782a8f6c3e7044fe90d74b80d17ed0.camel@mediatek.com>
+Subject: Re: [PATCH v1, 1/1] drm/mediatek: fixup crtc event null pointer issue
+From: CK Hu <ck.hu@mediatek.com>
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>
+CC: <devicetree@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, David Airlie
+ <airlied@linux.ie>, Jassi Brar <jassisinghbrar@gmail.com>,
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Dennis YC
+ Hsieh" <dennis-yc.hsieh@mediatek.com>, Fabien Parent <fparent@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>, <linux-mediatek@lists.infradead.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>
+Date: Mon, 28 Mar 2022 17:34:51 +0800
+In-Reply-To: <20220314074239.28507-2-yongqiang.niu@mediatek.com>
+References: <20220314074239.28507-1-yongqiang.niu@mediatek.com>
+ <20220314074239.28507-2-yongqiang.niu@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [Linux-stm32] [RFC PATCH 1/1] ARM/arm64: categorize dts in arm
- dir and fix dependency in arm64
-Content-Language: en-US
-From: Patrice CHOTARD <patrice.chotard@foss.st.com>
-To: Ansuel Smith <ansuelsmth@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-actions@lists.infradead.org>,
- <linux-sunxi@lists.linux.dev>, <linux-omap@vger.kernel.org>,
- <linux-amlogic@lists.infradead.org>, <linux-arm-kernel@axis.com>,
- <linux-aspeed@lists.ozlabs.org>, <linux-rpi-kernel@lists.infradead.org>,
- <chrome-platform@lists.linux.dev>, <linux-renesas-soc@vger.kernel.org>,
- <linux-samsung-soc@vger.kernel.org>,
- <linux-stm32@st-md-mailman.stormreply.com>,
- <kernel@dh-electronics.com>, <linux-mediatek@lists.infradead.org>,
- <openbmc@lists.ozlabs.org>, <linux-tegra@vger.kernel.org>,
- <linux-oxnas@groups.io>, <linux-arm-msm@vger.kernel.org>,
- <linux-unisoc@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
- <linux-realtek-soc@lists.infradead.org>
-References: <20220328000915.15041-1-ansuelsmth@gmail.com>
- <20220328000915.15041-2-ansuelsmth@gmail.com>
- <fef4e5dd-d843-ea37-7701-bcfac9d1c9b5@foss.st.com>
-In-Reply-To: <fef4e5dd-d843-ea37-7701-bcfac9d1c9b5@foss.st.com>
-X-Originating-IP: [10.75.127.46]
-X-ClientProxiedBy: SFHDAG2NODE2.st.com (10.75.127.5) To SHFDAG1NODE1.st.com
- (10.75.129.69)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.850,Hydra:6.0.425,FMLib:17.11.64.514
- definitions=2022-03-28_03,2022-03-28_01,2022-02-23_01
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220328_022023_977403_DE8F8DB9 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20220328_023501_998568_F7D3D574 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,169 +78,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi, Yongqiang:
 
+On Mon, 2022-03-14 at 15:42 +0800, Yongqiang Niu wrote:
+> if crtc event is null pointer, do not send vblank event
 
-On 3/28/22 11:09, Patrice CHOTARD wrote:
-> Hi Ansuel
-> 
-> On 3/28/22 02:09, Ansuel Smith wrote:
->> - Categorize every dts in arm directory in subdirectory
->> - Fix Makefile to address for the arm subdirectory
->> - Fix any arm64 dependency
->>
->> Signed-off-by: Ansuel Smith <ansuelsmth@gmail.com>
-> 
->>  create mode 100644 arch/arm/boot/dts/st/Makefile
->>  rename arch/arm/boot/dts/{ => st}/spear1310-evb.dts (100%)
->>  rename arch/arm/boot/dts/{ => st}/spear1310.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st}/spear1340-evb.dts (100%)
->>  rename arch/arm/boot/dts/{ => st}/spear1340.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st}/spear13xx.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st}/spear300-evb.dts (100%)
->>  rename arch/arm/boot/dts/{ => st}/spear300.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st}/spear310-evb.dts (100%)
->>  rename arch/arm/boot/dts/{ => st}/spear310.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st}/spear320-evb.dts (100%)
->>  rename arch/arm/boot/dts/{ => st}/spear320-hmi.dts (100%)
->>  rename arch/arm/boot/dts/{ => st}/spear320.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st}/spear320s.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st}/spear3xx.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st}/spear600-evb.dts (100%)
->>  rename arch/arm/boot/dts/{ => st}/spear600.dtsi (100%)
-> 
-> 
-> All SPEAr device tree should go into stm sub-directory, as this platform is a STMicroelectronics one
-> as STi or STM32.
-
-Just got an internal discussion, all STMicroelectronics platform should go into "st" sub-directory, and not in "stm" as indicated in my previous e-mail. ;-)
-
-Patrice
+This is a bug-fix, so add a Fixes tag here.
 
 > 
-> Thanks
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
-> Patrice
-> 
->>  create mode 100644 arch/arm/boot/dts/st_ericsson/Makefile
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ab8500.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ab8505.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-db8500.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-db8520.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-db9500.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-dbx5x0-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-dbx5x0.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-href-ab8500.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-href-family-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-href-stuib.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-href-tvk1281618-r2.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-href-tvk1281618-r3.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-href.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-href520-tvk.dts (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-hrefprev60-stuib.dts (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-hrefprev60-tvk.dts (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-hrefprev60.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-hrefv60plus-stuib.dts (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-hrefv60plus-tvk.dts (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-hrefv60plus.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-nomadik-nhk15.dts (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-nomadik-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-nomadik-s8815.dts (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-nomadik-stn8815.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-snowball.dts (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ux500-samsung-codina.dts (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ux500-samsung-gavini.dts (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ux500-samsung-golden.dts (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ux500-samsung-janice.dts (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ux500-samsung-kyle.dts (100%)
->>  rename arch/arm/boot/dts/{ => st_ericsson}/ste-ux500-samsung-skomer.dts (100%)
->>  create mode 100644 arch/arm/boot/dts/stm/Makefile
->>  create mode 120000 arch/arm/boot/dts/stm/armv7-m.dtsi
->>  rename arch/arm/boot/dts/{ => stm}/st-pincfg.h (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stih407-b2120.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stih407-clock.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stih407-family.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stih407-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stih407.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stih410-b2120.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stih410-b2260.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stih410-clock.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stih410-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stih410.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stih418-b2199.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stih418-b2264.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stih418-clock.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stih418.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stihxxx-b2120.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32429i-eval.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32746g-eval.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32f4-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32f429-disco.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32f429-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32f429.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32f469-disco.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32f469-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32f469.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32f7-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32f746-disco.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32f746-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32f746.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32f769-disco.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32f769-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32h7-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32h743.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32h743i-disco.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32h743i-eval.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32h750.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32h750i-art-pi.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp13-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp131.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp133.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp135.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp135f-dk.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp13xc.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp13xf.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp15-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp151.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp153.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp153c-dhcom-drc02.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-avenger96.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-dhcor-avenger96.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-dk1.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-icore-stm32mp1-ctouch2-of10.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-icore-stm32mp1-ctouch2.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-icore-stm32mp1-edimm2.2.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-icore-stm32mp1.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-iot-box.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-microgea-stm32mp1-microdev2.0-of7.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-microgea-stm32mp1-microdev2.0.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-microgea-stm32mp1.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-stinger96.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157a-stinger96.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-dhcom-pdk2.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-dhcom-picoitx.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-dk2.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-ed1.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-emsbc-argon.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-emstamp-argon.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-ev1.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-lxa-mc1.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-odyssey-som.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp157c-odyssey.dts (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xc.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dhcom-drc02.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dhcom-pdk2.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dhcom-picoitx.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dhcom-som.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dhcor-avenger96.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dhcor-io1v8.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dhcor-som.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-dkx.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xx-osd32.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xxaa-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xxab-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xxac-pinctrl.dtsi (100%)
->>  rename arch/arm/boot/dts/{ => stm}/stm32mp15xxad-pinctrl.dtsi (100%)
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> index d661edf7e0fe..265fed446628 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -92,6 +92,9 @@ static void mtk_drm_crtc_finish_page_flip(struct
+> mtk_drm_crtc *mtk_crtc)
+>  	struct drm_crtc *crtc = &mtk_crtc->base;
+>  	unsigned long flags;
+>  
+> +	if (!mtk_crtc->event)
+> +		return;
+> +
+>  	spin_lock_irqsave(&crtc->dev->event_lock, flags);
+>  	drm_crtc_send_vblank_event(crtc, mtk_crtc->event);
+
+I think pending_needs_vblank is used to protect this situation. It
+seems that pending_needs_vblank should be protected by critical
+section.
+
+Regards,
+CK
+
+>  	drm_crtc_vblank_put(crtc);
+
 
 _______________________________________________
 Linux-mediatek mailing list
