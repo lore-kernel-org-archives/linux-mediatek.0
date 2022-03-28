@@ -4,60 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28752C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Mar 2022 13:58:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 506B8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Mar 2022 14:00:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2exsEgnJicVCfF2QRZAw5bU2EPU9fGMBedWV+QltbUI=; b=bkN9dmiDJ3lade
-	s98AZGPm3Iw+lTchgXeK1slCmCefjGviuZqMdINQEpJKgpwTdsp4B6JvFDhld3nXi3j7sOf/VnPmi
-	SnPFskvLvwIolLnWHawWa/O3osm5t9n89RIr+xCN0E2qsSx4qkWZAdI4kS9FVnmnS04+lbVJBZPQP
-	yatuxoM5E/tlpNmLTQ4XzUB0nneEYnuw3aT+14lbBUrob5pJUWi7k8mTn35M4kTVYVpmx265o7RDI
-	ck6fIXZxgSd/Dk0sZ1wEC6iQ3MwKIXJToJKM0R1Ahvq0fc8SlCrhJ/YYRIO2poHDQYe8teeaKi7xk
-	/6ex/X2O8DSH2sV4Ftlg==;
+	List-Owner; bh=zRkTwDb3CJnfdB8D+1yEczqaJM1tWxJ/TZ2RouEBsfM=; b=wU/+NZxAEzrCVs
+	fCtP3HBqfg3+Paw0coz2OW7h7wmcF1KCogtv9JJqIo5N/UjOyrHZAtjx7AV4mbZIt/RsnZsSUsqKm
+	yMdBBfrwamYYLZ+QqGKDgFAV1cVec3WfkzqCxm2e7J62Zf+cqs1qH/rLRjVuPi2Vykr/ygxlo72yr
+	NrKR8i9JHutR5+h+XBUY+Lh3XKcZ5scTtH1tdv2+YvveIZiup9ddmPMgeRASYXrxhv5TD+2hRBtvP
+	wPUUBKC0qaGorUdZ1p84o2rj1bUoGQ58GqXHmLyRIBuClc14aM2v56am6PzCOROy3rEbJhS0wa9Fi
+	T/GqMKB18sJrfVGWS3CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYptT-008yEQ-TY; Mon, 28 Mar 2022 13:58:51 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nYpvJ-008yzD-Ip; Mon, 28 Mar 2022 14:00:45 +0000
+Received: from mx1.tq-group.com ([93.104.207.81])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYppg-008wT7-Bv; Mon, 28 Mar 2022 13:54:57 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 856811F42AAD
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1648475695;
- bh=93dA8FqYNp/Lt0Zjhk8lbR0S/JZ+vwD2obtfNGwvT9k=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=KQMS29eMxg8jrJxNMnr1l3jR2gpWeys+qwiBVvwG9sKokh3/MdoMaow+vqOBWlLNl
- B8gaYSG5RrP3uRI6NW/7fOSDseJNzgYymCvrythI8PxI6Sh91JEnzBOhWDLtzgSUZc
- 9SJyLPFYulCwU+4cxVWr/j1zo+pWB61LilNV31K2ydtfj7rUZD/lc8mjWFYrbhDTl/
- rqWkXmci9gLpTG9e5ZcUUD4EI7jCMoz58/U1Moho+yuqdrecQDZSfeLrRI67cGW99c
- S2SawVjwMzea5rQeLqt8PQdO4jkfqy/zo3koFbfRyO9hDVbzTovLwfUEOMIYsSsF6Z
- EiDKJPsG0ibbA==
-Message-ID: <a2421f17-fa0f-bc8c-f55d-9526ed844998@collabora.com>
-Date: Mon, 28 Mar 2022 15:54:51 +0200
+ id 1nYpuj-008ylD-0U; Mon, 28 Mar 2022 14:00:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+ t=1648476009; x=1680012009;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=ayM215iKfS3RVxHHf6+6kiEWl9gC2cMSZOj/C1/hktk=;
+ b=U8/IvxCtevfYoGYrmAhmdvhsaSlpF29tUqtt73uDLA1mNqIdn9gAh5Px
+ LS3s2pIN8sFmOrO/atdnDsCnOk2QBkaCZTV5pGjo+XhXYYarAiIIzXbCI
+ KuAYCgpNsw2miPHYKSwBDdywOVa9743uWj5iGnEiCOVJIgtcJbuIArtuB
+ FiU0E0VJSlejFS+KsPWvPv6sxjL5m10MlkFYv8diGYs+wI7oYwi9BScOm
+ b1YQukNL5OvfmlbFPT95RwnRBykJWQqZ02S/dtSs24P6pyjcRpe4glG6y
+ b8YQyedffRPaJTs0VmLXut/QlvD30JS5tFylRtBCgwTcQfY5ZDcCWeQ0m A==;
+X-IronPort-AV: E=Sophos;i="5.90,217,1643670000"; d="scan'208";a="22935295"
+Received: from unknown (HELO tq-pgp-pr1.tq-net.de) ([192.168.6.15])
+ by mx1-pgp.tq-group.com with ESMTP; 28 Mar 2022 16:00:05 +0200
+Received: from mx1.tq-group.com ([192.168.6.7])
+ by tq-pgp-pr1.tq-net.de (PGP Universal service);
+ Mon, 28 Mar 2022 16:00:05 +0200
+X-PGP-Universal: processed;
+ by tq-pgp-pr1.tq-net.de on Mon, 28 Mar 2022 16:00:05 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+ t=1648476005; x=1680012005;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=ayM215iKfS3RVxHHf6+6kiEWl9gC2cMSZOj/C1/hktk=;
+ b=WuV252Nu+GZzN74VzCmlspBKd0dca8X2+xSzsUDOC+VBkSdAcRJKkpz9
+ V6ZhUvtyzJXo40EU/KoKsnsMA+udDgpFrmJjA0OOrI8Du6AE/IqQXvbD0
+ l7/oi3cIclt6kdqSsBk62dD3jTXzpYH4IITmDIWCq1j5VlQdR/7ht0rkB
+ UzXa+gf9sB2fMmE9Y4BJg30hxvVMBs2s+cV3pKJsYN741b+m12/z4LAVK
+ Ghd0BfGmPSMkfRYy9LlDPSTztxPRWJXf02LYJ3AALa7lqL+bNoPBea5QD
+ q3OLZ+wYdDSKr/JtyC5EC84xkLnc6lGkLWsLSzPCKdl/McKEhN7OLwWQj g==;
+X-IronPort-AV: E=Sophos;i="5.90,217,1643670000"; d="scan'208";a="22935294"
+Received: from vtuxmail01.tq-net.de ([10.115.0.20])
+ by mx1.tq-group.com with ESMTP; 28 Mar 2022 16:00:05 +0200
+Received: from steina-w.localnet (unknown [10.123.49.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
+ (No client certificate requested)
+ by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id 20160280065;
+ Mon, 28 Mar 2022 16:00:04 +0200 (CEST)
+From: Alexander Stein <alexander.stein@ew.tq-group.com>
+To: Jonathan =?ISO-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>
+Cc: Ansuel Smith <ansuelsmth@gmail.com>, linux-arm-kernel@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-omap@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com,
+ linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
+ chrome-platform@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ kernel@dh-electronics.com, linux-mediatek@lists.infradead.org,
+ openbmc@lists.ozlabs.org, linux-tegra@vger.kernel.org, linux-oxnas@groups.io,
+ linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org
+Subject: Re: (EXT) Re: [RFC PATCH 0/1] Categorize ARM dts directory
+Date: Mon, 28 Mar 2022 16:00:02 +0200
+Message-ID: <2100132.irdbgypaU6@steina-w>
+Organization: TQ-Systems GmbH
+In-Reply-To: <YkG2RPrtPaBNXb7a@latitude>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com>
+ <YkG2RPrtPaBNXb7a@latitude>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH] PCI: mediatek: Update entries to distinguish MediaTek
- PCIe controller
-Content-Language: en-US
-To: Jianjun Wang <jianjun.wang@mediatek.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring
- <robh@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-References: <20220326032708.3626-1-jianjun.wang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220326032708.3626-1-jianjun.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220328_065456_595615_DFFDBD8B 
-X-CRM114-Status: GOOD (  18.97  )
+X-CRM114-CacheID: sfid-20220328_070009_483059_2BDE5E40 
+X-CRM114-Status: GOOD (  19.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,60 +101,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/03/22 04:27, Jianjun Wang ha scritto:
-> Add model numbers in Kconfig and update driver name in
-> pcie-mediatek-gen3.c to distinguish the MediaTek PCIe controllers.
-> 
-> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> ---
->   drivers/pci/controller/Kconfig              | 11 +++++++----
->   drivers/pci/controller/pcie-mediatek-gen3.c | 12 ++++++------
->   2 files changed, 13 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
-> index 601f2531ee91..dd7a2caf8da9 100644
-> --- a/drivers/pci/controller/Kconfig
-> +++ b/drivers/pci/controller/Kconfig
-> @@ -237,8 +237,11 @@ config PCIE_MEDIATEK
->   	depends on OF
->   	depends on PCI_MSI_IRQ_DOMAIN
->   	help
-> -	  Say Y here if you want to enable PCIe controller support on
-> -	  MediaTek SoCs.
-> +	  Adds support for PCIe MAC controller for MediaTek SoCs.
-> +
-> +	  The following SoCs are supported for this PCIe controller:
-> +	  MT2701 and MT7623 with no MSI supported.
-> +	  MT2712, MT7622 and MT7629 support up to 32 MSI interrupt numbers.
->   
->   config PCIE_MEDIATEK_GEN3
->   	tristate "MediaTek Gen3 PCIe controller"
-> @@ -250,8 +253,8 @@ config PCIE_MEDIATEK_GEN3
->   	  and support up to 256 MSI interrupt numbers for
->   	  multi-function devices.
->   
-> -	  Say Y here if you want to enable Gen3 PCIe controller support on
-> -	  MediaTek SoCs.
-> +	  The following SoCs are supported for this PCIe controller:
-> +	  MT8192 and MT8195.
+Am Montag, 28. M=E4rz 2022, 15:21:08 CEST schrieb Jonathan Neusch=E4fer:
+> * PGP Signed by an unknown key
+> =
 
-I agree with the pcie-mediatek-gen3 naming change, it's good to differentiate,
-but I don't think that updating the Kconfig description is a good idea.
+> On Mon, Mar 28, 2022 at 02:09:14AM +0200, Ansuel Smith wrote:
+> > Hi,
+> > as the title say, the intention of this ""series"" is to finally
+> > categorize
+> > the ARM dts directory in subdirectory for each oem.
+> =
 
-Everyone can get the list of supported SoCs by reading the dt-bindings for these
-drivers, so it's unnecessary to make a list of SoCs in Kconfig... this is also
-to avoid updating these entries everytime support for a new chip is added to the
-gen3 (or the other) driver.
+> [...]
+> =
 
-If nobody opposes to my proposal - please drop that description change.
+> > [1] https://gist.github.com/Ansuel/47c49925ee7ef4b1dd035afc74679ab5
+> > [2] https://gist.github.com/Ansuel/19f61f1e583c49407ce35c10e770fbe0
+> =
 
-Regards,
-Angelo
+> Nice idea, thank you!
+> =
+
+> A few notes on categorization below.
+> [...]
+> >  create mode 100644 arch/arm/boot/dts/freescale/Makefile
+> =
+
+> Freescale has been part of NXP for a while, so it might make sense to
+> merge the freescale and nxp directories. I can't speak for
+> NXP-the-company, so that's just my view as a bystander.
+
+Please don't mix the names for arm and arm64. It's very confusing if the =
+
+vendor directory is named differently for each architecture.
+
+>[...]
+> >  create mode 120000 arch/arm/boot/dts/nxp/armv7-m.dtsi
+> =
+
+> armv7-m.dtsi is a bit confusing, because it contains a few devices at
+> fixed addresses, so it looks vendor-specific at a first glance into the
+> file. However, if it is actually as vendor-neutral as the name implies,
+> I think it should live dts/ directly, rather than in vendor
+> subdirectories.
+
+This seems to be some generic devices common for all ARMv7M CPUs used in =
+
+Cortex-M CPUs. It's also used by some stm32 .dtsi.
+
+Best regards,
+Alexander
+
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
