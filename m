@@ -4,85 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44E15C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 14:56:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0AACC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 15:09:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AYVkSV3RAC5h00AVmtYKTOz6w2by49mnRUxTxi1oYJw=; b=J68aKHX7f9ea7e
-	cAuVEROIUYXnN7V4F/SQXciK0sMQ5k5t8f2eztSN5QaaPCUc5hJatnWHzMEvVThZ82FkZbVHgdn6r
-	7M78VQsX9XEbYg5/enI94+Gya8Vnmv6NsRcAtfVRsOTos5crvhwlYKGEDOwh7mtrsxCO/B9uCgtA2
-	AK4/AiTlKHL9atokkDl/n/643+10yRryWHNpaDxglLgVTC0rbCmvpysDSy6YSf8QLz/W7pnSA12sk
-	9UBS00Pl8VpuHyInWAprV/qiWrKVo2fTUeAMbJlEXoctOslwROB0Wp+OIaALmn7DXOo2PTg63N8DB
-	QojAAAnJDgCO5DX8f7jg==;
+	List-Owner; bh=nABIzCmIRRRUSmKLaP8o/IBIlW0ksZgkOQ+jqbtQ91g=; b=wVHGJedma9vrli
+	4jwleZFMu9OvNCl4d7e3qAbSk2m0XxLTBmUoxGzFaXs0hkqlPrRd7ML+B7eGWPBMP1pL1O3oR4z6a
+	mifscMR1kYgCAQerpGmGrK6gr+wh+EDCINayaBtsJK+ABdnsZ9Hom4LOlzxHjPGvhUe6qEiwoDKEy
+	6WQThA9X9XRaz+u9TDBaOud9utPU0lSFyQEk9kNrRsZIQ02qGlBrd/Qt9BASI73gj+9k9MK+0BPgd
+	Xfv5oAqof+ucjzYMhj3IUhoKZr7LXVXJXr1VduuLRsyPumi44tHCd0aiIQVCLzaI67uRLl51efCbE
+	fOWo9i6uzEPM/5jQIbhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZDH5-00CYOe-Lg; Tue, 29 Mar 2022 14:56:47 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1nZDTV-00CahZ-4q; Tue, 29 Mar 2022 15:09:37 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZDH2-00CYNi-3R; Tue, 29 Mar 2022 14:56:46 +0000
-Received: by mail-wr1-x433.google.com with SMTP id a1so25210807wrh.10;
- Tue, 29 Mar 2022 07:56:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=R/qQDmqImOsdqxPn8kuDcCeLYVlLH8EffIXUnNSpyQM=;
- b=lJfjaVRzk35z2+VKzfty+4hdth58zBEjfWrgOS1uOVjbxTgywUo814hEGTppw9/b/D
- j+0HXCGxz3/bHOIYGUIwaFK3U20rT2bcJSnk97q4Ot7JYxcXtS3cHcBsAzck2Sw73D/u
- VkhCdFzujMt55oJrPy7/F9sffWjVL1z12Vg/5xRQtVhiflY0Yitfd6zDO9a9Qw9jY4AF
- awQFOxwl2wexF0hWRCSizYYgH596zgI49uZOIDAqQ/gOxFD8H9K80c539CKVZSWIBC17
- AH+2emkw7ecp4dV2QCdOtUfEy59LMsA/v0e/a2TT+axOCvDgb8DphsfwArx2MfgQXUpk
- i+mg==
+ id 1nZDSl-00CaGD-As
+ for linux-mediatek@lists.infradead.org; Tue, 29 Mar 2022 15:08:57 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id b13so14274813pfv.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 29 Mar 2022 08:08:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=IYBiB3u6pgGszqmXJWRnNvzAS97qt4GQexZ8YkymLeQ=;
+ b=OLc41CD7VhQmZwLRan5dplB/3HewcV8wG9FMkJl9THtcfjL5vmGIH9A10/FnRAcO8p
+ wUNQzWzyVkVZuAQxE8HN6wk4m8kjAp2SKXxYWX0RDsRVk0M17mVSRAT3ycydsxcmO4EX
+ lw4t5dtBGymqukkwUr3e6/hsteX1dd8zYl7Hlh/oeatvwO7v0DkQ016ouZUun8p71MfH
+ zZfcNX1u8XQcwUJ2s42t1ZT0N45/Hy/ugOeacurwfgEKGftLLAwrod2cOGYKSTL1fTgY
+ phPy0mFeLVDSCL76CG4eKPkqCvsLyGBMH0kNgHC5i1ybHjHFhNDh3mzh9ixAemSwuSOP
+ gBkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=R/qQDmqImOsdqxPn8kuDcCeLYVlLH8EffIXUnNSpyQM=;
- b=2EJcXH0KHU8ptDL9Oa4gm1pJ/x9eAAXN6nKNN+mliJLk5TwUV0HPB4moPVqCRmpt3j
- eWGJE1b10iqgqgq02Y6i7VgsmQtQ/w79YELRphULqIs0CLtvjbshiseqfVO1DMmRM2Aj
- mh+hHlkObbrfw1khQQxjAi9uA5ofMLI4I4/o6AiQT8WFlroseEDciWySOLKDSrbjIRnl
- uRMjcwunzwMGTu1Nwz6GfbOuCJfDZlclUVgM/dXMuyyVJsOv/GKkaxUMfphlu42RVbIn
- OvDGrVGJ/WeD5glqsYvNlgPu7xzAVuOXuH39s5cMrfQ7NpmyMhFD6CnjRCqQPezlEll8
- Gihw==
-X-Gm-Message-State: AOAM532/b/rHGevNxORw+3Mp7FhcU8fmCjZ1dCCARWv7yIcGD/2uir1e
- /kmbWvqUSwAGsfPU+/V+9rk=
-X-Google-Smtp-Source: ABdhPJyKGT67Vbh5PboaqGSuksq4cMFneOsrDjUNzk68xxXW3hnsa9Wf0OJuOlGS5HoN5wwIbu35ng==
-X-Received: by 2002:a05:6000:10ca:b0:205:9b86:7976 with SMTP id
- b10-20020a05600010ca00b002059b867976mr29258611wrx.542.1648565802446; 
- Tue, 29 Mar 2022 07:56:42 -0700 (PDT)
-Received: from [192.168.1.145] ([207.188.167.132])
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=IYBiB3u6pgGszqmXJWRnNvzAS97qt4GQexZ8YkymLeQ=;
+ b=YiWhBQ5IDJx3dnRiZdD8Q2ui9QD7heZRHsDKdnPKW9witlwS5z1/yaYq+5QDy4Enw8
+ jcUYP+cqrNUmxr8pOqyhHe3RJwdpiiNcoWEHh7sjfmanfxb97/WWIhBwcf63qw7I5fQq
+ XZANTsJqJJgDNWAjlsBKUwASfOh/TvN8vsFBOfd9HKsGbCVvAlNL6vBhoZTKzWSE5yM9
+ Qlx4Y955RXCPR1xeaRftajg0S/re/miZvXWpqfZ6WUd6Ur9ff5frbJSyWhxrFePnIq8f
+ mGrgM3YLDRz2F7fNh7arVS+VugQ303rYsztuTxVLZ7ZKIrHuDU0Ly7/vCerQbWhiw/wm
+ 7cRg==
+X-Gm-Message-State: AOAM531CwC0tp3QMsOBCN+ItbMDRnnVKPNVqNRo/fiUoVvhPttmLcpKp
+ MAQzet9ikq1yaDDVtfy1IvLtNA==
+X-Google-Smtp-Source: ABdhPJwMfMVbzAiD5UdmKQNww9aqdfrUiLy4V5t1ofj/8Dmu3KkG2VH7U7xVD64jJtvC3qlGk5i6ag==
+X-Received: by 2002:a05:6a02:283:b0:342:703e:1434 with SMTP id
+ bk3-20020a056a02028300b00342703e1434mr2336093pgb.74.1648566530096; 
+ Tue, 29 Mar 2022 08:08:50 -0700 (PDT)
+Received: from p14s (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
  by smtp.gmail.com with ESMTPSA id
- m3-20020a5d6243000000b001e33760776fsm15028121wrv.10.2022.03.29.07.56.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 29 Mar 2022 07:56:41 -0700 (PDT)
-Message-ID: <e06b7f3e-fbc7-63ab-c7b9-0c879cb10807@gmail.com>
-Date: Tue, 29 Mar 2022 16:56:40 +0200
+ l10-20020a056a00140a00b004c55d0dcbd1sm20516065pfu.120.2022.03.29.08.08.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 29 Mar 2022 08:08:48 -0700 (PDT)
+Date: Tue, 29 Mar 2022 09:08:46 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: bjorn.andersson@linaro.org, matthias.bgg@gmail.com, pihsun@chromium.org,
+ linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com
+Subject: Re: [PATCH] rpmsg: mtk_rpmsg: Fix circular locking dependency
+Message-ID: <20220329150846.GA3767550@p14s>
+References: <20220114144737.375621-1-angelogioacchino.delregno@collabora.com>
+ <20220217190349.GA477215@p14s>
+ <ad306275-cd38-e6ad-55cc-0f7c4bdfcecf@collabora.com>
+ <20220218180111.GA574087@p14s>
+ <ea0f7cdd-0fae-fb66-3171-f0870384e6aa@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v4 4/4] arm64: dts: Add Mediatek SoC MT8186 dts and
- evaluation board and Makefile
-Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Thomas Gleixner <tglx@linutronix.de>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>
-Cc: hsinyi@chromium.org, Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-watchdog@vger.kernel.org
-References: <20220311130732.22706-1-allen-kh.cheng@mediatek.com>
- <20220311130732.22706-5-allen-kh.cheng@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220311130732.22706-5-allen-kh.cheng@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <ea0f7cdd-0fae-fb66-3171-f0870384e6aa@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_075644_206339_B61AE034 
-X-CRM114-Status: GOOD (  22.08  )
+X-CRM114-CacheID: sfid-20220329_080851_441878_AD29EEB8 
+X-CRM114-Status: GOOD (  50.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,441 +90,171 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 11/03/2022 14:07, Allen-KH Cheng wrote:
-> From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+On Tue, Mar 29, 2022 at 12:55:33PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 18/02/22 19:01, Mathieu Poirier ha scritto:
+> > On Fri, Feb 18, 2022 at 10:16:51AM +0100, AngeloGioacchino Del Regno wrote:
+> > > Il 17/02/22 20:03, Mathieu Poirier ha scritto:
+> > > > Hi Angelo,
+> > > > 
+> > > > On Fri, Jan 14, 2022 at 03:47:37PM +0100, AngeloGioacchino Del Regno wrote:
+> > > > > During execution of the worker that's used to register rpmsg devices
+> > > > > we are safely locking the channels mutex but, when creating a new
+> > > > > endpoint for such devices, we are registering a IPI on the SCP, which
+> > > > > then makes the SCP to trigger an interrupt, lock its own mutex and in
+> > > > > turn register more subdevices.
+> > > > > This creates a circular locking dependency situation, as the mtk_rpmsg
+> > > > > channels_lock will then depend on the SCP IPI lock.
+> > > > > 
+> > > > > [   18.014514]  Possible unsafe locking scenario:
+> > > > > [   18.014515]        CPU0                    CPU1
+> > > > > [   18.014517]        ----                    ----
+> > > > > [   18.045467]   lock(&mtk_subdev->channels_lock);
+> > > > > [   18.045474]                                lock(&scp->ipi_desc[i].lock);
+> > > > 
+> > > > I spent well over an hour tracing through the meanders of the code to end up in
+> > > > scp_ipi_register() which, I think, leads to the above.  But from there I don't
+> > > > see how an IPI can come in and that tells me my assumption is wrong.
+> > > > 
+> > > > Can you give more details on the events that lead to the above?  I'm not saying
+> > > > there is no problem, I just need to understand it.
+> > > > 
+> > > 
+> > > Hi Mathieu,
+> > > 
+> > > I understand that following this flow without the assistance of the actual
+> > > hardware may be a little confusing, so, no worries.
+> > > 
+> > > drivers/remoteproc/mtk_scp.c - this driver manages the SCP (obviously, a
+> > > remote processor)
+> > > drivers/remoteproc/mtk_scp_ipi.c - public functions for kernel SCP IPC
+> > > 
+> > > Flow:
+> > > - MediaTek SCP gets probed
+> > > - RPMSG starts, we start probing "something", like google,cros-ec-rpmsg
+> > > - mtk_rpmsg: creates endpoint; IPI handler is registered here.
+> > > 
+> > >           ( more flow )
+> > > 
+> > > - mtk_rpmsg: mtk_rpmsg_ns_cb() -> mtk_rpmsg_create_device(), channel is
+> > >               added to the channels list, worker gets scheduled
+> > 
+> > To me the above is out of order.  The name space endpoint is registered as part
+> > of the remote processor start sequence.  From there an IPI with ns_ipi_id comes in
+> > and then cros_ec_rpmsg_probe() is called.  The above seems to imply the
+> > opposite.
+> > 
+> > > 
+> > > 
+> > > Now for the part that produces the real issue:
+> > > 
+> > > label_a:
+> > > 
+> > > *** RPMSG MUTEX LOCK ***
+> > 
+> > By this I take you mean the subdev->channels_lock mutex.
+> > 
+> > > - mtk_rpmsg: ## Go through multiple channels ##, call mtk_rpmsg_register_device()
+> > > 
+> > > - Registered device tries to communicate through RPMSG
+> > > - .send() or .trysend() (depending on the device) is called: send_ipi()
+> > >      *** SCP MUTEX LOCK ***
+> > 
+> > And this one is either scp->send_lock or scp->ipi_desc[i].lock.
+> > 
+> > >     - mtk_scp_ipi: Data written, ACK? ok -> return 0
+> > >      *** SCP MUTEX UNLOCK ***
+> > > 
+> > > - mtk_scp_ipi: **** INTERRUPT!!! **** New RPMSG NS available? -> create channel
+> > >            goto label_a;
+> > > 
+> > > *** RPMSG MUTEX UNLOCK ***
+> > > 
+> > > 
+> > > Pardon me for keeping some things in this flow implicit, but that was done to
+> > > simplify it as much as possible as to try to make you understand the situation.
+> > 
+> > I certainly appreciate the effort but the above does not provide me with a clear
+> > path that causes the lock to happen.  As I said in my last reply I don't doubt
+> > there is a lock contention but the provided information doesn't allow to
+> > understand how it happens.
+> > 
+> > All I am looking for is one scenario with all mutexes and functions calls
+> > involved.
+> > 
 > 
-> Add basic chip support for Mediatek MT8186.
+> Hello Mathieu,
+> I'm sorry for leaving this unresolved for a long time, had to work on other
+> things in the meanwhile.
+>
+
+I also had to move on and as such details related to this patch have mostly
+vanished from my memory.
+
+> I'm not sure what you need, can you please help me to give you the
+> issue background that you require?
 > 
-
-Thanks for your patch. I would love to wait a bit longer to see if we can get 
-the clock driver accepted. This way we could get rid of all the dummy clocks 
-defined in here.
-
-Please send a new version once the clock driver is accepeted by Stephen, or ping 
-this series in a few month.
-
-Thanks,
-Matthias
-
-> Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-> ---
->   arch/arm64/boot/dts/mediatek/Makefile       |   1 +
->   arch/arm64/boot/dts/mediatek/mt8186-evb.dts |  24 ++
->   arch/arm64/boot/dts/mediatek/mt8186.dtsi    | 356 ++++++++++++++++++++
->   3 files changed, 381 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-evb.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> In the meanwhile, here's full debugging info coming from the kmsg:
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index 8c1e18032f9f..d32fdcf9afc6 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -37,5 +37,6 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku32.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-evb.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-evb.dts b/arch/arm64/boot/dts/mediatek/mt8186-evb.dts
-> new file mode 100644
-> index 000000000000..eb23d1f19f87
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8186-evb.dts
-> @@ -0,0 +1,24 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (C) 2022 MediaTek Inc.
-> + */
-> +/dts-v1/;
-> +#include "mt8186.dtsi"
-> +
-> +/ {
-> +	model = "MediaTek MT8186 evaluation board";
-> +	compatible = "mediatek,mt8186-evb", "mediatek,mt8186";
-> +
-> +	aliases {
-> +		serial0 = &uart0;
-> +	};
-> +
-> +	chosen {
-> +		stdout-path = "serial0:921600n8";
-> +	};
-> +
-> +	memory {
-> +		device_type = "memory";
-> +		reg = <0 0x40000000 0 0x80000000>;
-> +	};
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> new file mode 100644
-> index 000000000000..aa45c75b18c7
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> @@ -0,0 +1,356 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (C) 2022 MediaTek Inc.
-> + * Author: Allen-KH Cheng <allenn-kh.cheng@mediatek.com>
-> + */
-> +/dts-v1/;
-> +
-> +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> +#include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/phy/phy.h>
-> +
-> +/ {
-> +	compatible = "mediatek,mt8186";
-> +	interrupt-parent = <&gic>;
-> +	#address-cells = <2>;
-> +	#size-cells = <2>;
-> +
-> +	clk13m: oscillator0 {
-> +		compatible = "fixed-clock";
-> +		#clock-cells = <0>;
-> +		clock-frequency = <13000000>;
-> +		clock-output-names = "clk13m";
-> +	};
-> +
-> +	clk26m: oscillator1 {
-> +		compatible = "fixed-clock";
-> +		#clock-cells = <0>;
-> +		clock-frequency = <26000000>;
-> +		clock-output-names = "clk26m";
-> +	};
-> +
-> +	clk32k: oscillator2 {
-> +		compatible = "fixed-clock";
-> +		#clock-cells = <0>;
-> +		clock-frequency = <32000>;
-> +		clock-output-names = "clk32k";
-> +	};
-> +
-> +	cpus {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		cpu0: cpu@000 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a55", "arm,armv8";
-> +			reg = <0x0000>;
-> +			enable-method = "psci";
-> +			clock-frequency = <2000000000>;
-> +			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
-> +			next-level-cache = <&l2_0>;
-> +		};
-> +
-> +		cpu1: cpu@100 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a55", "arm,armv8";
-> +			reg = <0x0100>;
-> +			enable-method = "psci";
-> +			clock-frequency = <2000000000>;
-> +			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
-> +			next-level-cache = <&l2_0>;
-> +		};
-> +
-> +		cpu2: cpu@200 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a55", "arm,armv8";
-> +			reg = <0x0200>;
-> +			enable-method = "psci";
-> +			clock-frequency = <2000000000>;
-> +			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
-> +			next-level-cache = <&l2_0>;
-> +		};
-> +
-> +		cpu3: cpu@300 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a55", "arm,armv8";
-> +			reg = <0x0300>;
-> +			enable-method = "psci";
-> +			clock-frequency = <2000000000>;
-> +			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
-> +			next-level-cache = <&l2_0>;
-> +		};
-> +
-> +		cpu4: cpu@400 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a55", "arm,armv8";
-> +			reg = <0x0400>;
-> +			enable-method = "psci";
-> +			clock-frequency = <2000000000>;
-> +			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
-> +			next-level-cache = <&l2_0>;
-> +		};
-> +
-> +		cpu5: cpu@500 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a55", "arm,armv8";
-> +			reg = <0x0500>;
-> +			enable-method = "psci";
-> +			clock-frequency = <2000000000>;
-> +			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
-> +			next-level-cache = <&l2_0>;
-> +		};
-> +
-> +		cpu6: cpu@600 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a75", "arm,armv8";
-> +			reg = <0x0600>;
-> +			enable-method = "psci";
-> +			clock-frequency = <2050000000>;
-> +			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
-> +			next-level-cache = <&l2_1>;
-> +		};
-> +
-> +		cpu7: cpu@700 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a75", "arm,armv8";
-> +			reg = <0x0700>;
-> +			enable-method = "psci";
-> +			clock-frequency = <2050000000>;
-> +			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
-> +			next-level-cache = <&l2_1>;
-> +		};
-> +
-> +		cpu-map {
-> +			cluster0 {
-> +				core0 {
-> +					cpu = <&cpu0>;
-> +				};
-> +
-> +				core1 {
-> +					cpu = <&cpu1>;
-> +				};
-> +
-> +				core2 {
-> +					cpu = <&cpu2>;
-> +				};
-> +
-> +				core3 {
-> +					cpu = <&cpu3>;
-> +				};
-> +
-> +				core4 {
-> +					cpu = <&cpu4>;
-> +				};
-> +
-> +				core5 {
-> +					cpu = <&cpu5>;
-> +				};
-> +			};
-> +
-> +			cluster1 {
-> +				core0 {
-> +					cpu = <&cpu6>;
-> +				};
-> +
-> +				core1 {
-> +					cpu = <&cpu7>;
-> +				};
-> +			};
-> +		};
-> +
-> +		idle-states {
-> +			entry-method = "arm,psci";
-> +
-> +			cpuoff_l: cpu-off-l {
-> +				compatible = "arm,idle-state";
-> +				arm,psci-suspend-param = <0x00010001>;
-> +				local-timer-stop;
-> +				entry-latency-us = <50>;
-> +				exit-latency-us = <100>;
-> +				min-residency-us = <1600>;
-> +			};
-> +
-> +			cpuoff_b: cpu-off-b {
-> +				compatible = "arm,idle-state";
-> +				arm,psci-suspend-param = <0x00010001>;
-> +				local-timer-stop;
-> +				entry-latency-us = <50>;
-> +				exit-latency-us = <100>;
-> +				min-residency-us = <1400>;
-> +			};
-> +
-> +			clusteroff_l: cluster-off-l {
-> +				compatible = "arm,idle-state";
-> +				arm,psci-suspend-param = <0x01010001>;
-> +				local-timer-stop;
-> +				entry-latency-us = <100>;
-> +				exit-latency-us = <250>;
-> +				min-residency-us = <2100>;
-> +			};
-> +
-> +			clusteroff_b: cluster-off-b {
-> +				compatible = "arm,idle-state";
-> +				arm,psci-suspend-param = <0x01010001>;
-> +				local-timer-stop;
-> +				entry-latency-us = <100>;
-> +				exit-latency-us = <250>;
-> +				min-residency-us = <1900>;
-> +			};
-> +		};
-> +
-> +		l2_0: l2-cache0 {
-> +			compatible = "cache";
-> +			next-level-cache = <&l3_0>;
-> +		};
-> +
-> +		l2_1: l2-cache1 {
-> +			compatible = "cache";
-> +			next-level-cache = <&l3_0>;
-> +		};
-> +
-> +		l3_0: l3-cache {
-> +			compatible = "cache";
-> +		};
-> +	};
-> +
-> +	psci {
-> +		compatible = "arm,psci-1.0";
-> +		method = "smc";
-> +	};
-> +
-> +	timer: timer {
-> +		compatible = "arm,armv8-timer";
-> +		interrupt-parent = <&gic>;
-> +		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
-> +		clock-frequency = <13000000>;
-> +	};
-> +
-> +	soc {
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +		compatible = "simple-bus";
-> +		ranges;
-> +
-> +		gic: interrupt-controller@c000000 {
-> +			compatible = "arm,gic-v3";
-> +			#interrupt-cells = <3>;
-> +			#address-cells = <2>;
-> +			#size-cells = <2>;
-> +			#redistributor-regions = <1>;
-> +			interrupt-parent = <&gic>;
-> +			interrupt-controller;
-> +			reg = <0 0x0c000000 0 0x40000>, // distributor
-> +			      <0 0x0c040000 0 0x200000>; // redistributor
-> +			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
-> +		};
-> +
-> +		watchdog: watchdog@10007000 {
-> +			compatible = "mediatek,mt8186-wdt",
-> +				     "mediatek,mt6589-wdt";
-> +			mediatek,disable-extrst;
-> +			reg = <0 0x10007000 0 0x1000>;
-> +			#reset-cells = <1>;
-> +		};
-> +
-> +		systimer: timer@10017000 {
-> +			compatible = "mediatek,mt8186-timer",
-> +				     "mediatek,mt6765-timer";
-> +			reg = <0 0x10017000 0 0x1000>;
-> +			interrupts = <GIC_SPI 207 IRQ_TYPE_LEVEL_HIGH>;
-> +			clocks = <&clk13m>;
-> +		};
-> +
-> +		uart0: serial@11002000 {
-> +			compatible = "mediatek,mt8186-uart",
-> +				     "mediatek,mt6577-uart";
-> +			reg = <0 0x11002000 0 0x1000>;
-> +			interrupts = <GIC_SPI 112 IRQ_TYPE_LEVEL_HIGH>;
-> +			clocks = <&clk26m>, <&clk26m>;
-> +			clock-names = "baud", "bus";
-> +		};
-> +
-> +		uart1: serial@11003000 {
-> +			compatible = "mediatek,mt8186-uart",
-> +				     "mediatek,mt6577-uart";
-> +			reg = <0 0x11003000 0 0x1000>;
-> +			interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>;
-> +			clocks = <&clk26m>, <&clk26m>;
-> +			clock-names = "baud", "bus";
-> +			status = "disabled";
-> +		};
-> +
-> +		uart2: serial@11018000 {
-> +			compatible = "mediatek,mt8186-uart",
-> +				     "mediatek,mt6577-uart";
-> +			reg = <0 0x11018000 0 0x1000>;
-> +			interrupts = <GIC_SPI 246 IRQ_TYPE_LEVEL_HIGH>;
-> +			clocks = <&clk26m>, <&clk26m>;
-> +			clock-names = "baud", "bus";
-> +			status = "disabled";
-> +		};
-> +
-> +		mmc0: mmc@11230000 {
-> +			compatible = "mediatek,mt8186-mmc",
-> +				     "mediatek,mt8183-mmc";
-> +			reg = <0 0x11230000 0 0x1000>,
-> +			      <0 0x11cd0000 0 0x1000>;
-> +			interrupts = <GIC_SPI 100 IRQ_TYPE_LEVEL_HIGH>;
-> +			clocks = <&clk26m>, <&clk26m>, <&clk26m>,
-> +				 <&clk26m>;
-> +			clock-names = "source", "hclk", "source_cg", "ahb_clk";
-> +			status = "disabled";
-> +		};
-> +
-> +		mmc1: mmc@11240000 {
-> +			compatible = "mediatek,mt8186-mmc",
-> +				     "mediatek,mt8183-mmc";
-> +			reg = <0 0x11240000 0 0x1000>,
-> +			      <0 0x11c90000 0 0x1000>;
-> +			interrupts = <GIC_SPI 101 IRQ_TYPE_LEVEL_HIGH>;
-> +			clocks = <&clk26m>, <&clk26m>, <&clk26m>;
-> +			clock-names = "source", "hclk", "source_cg";
-> +			status = "disabled";
-> +		};
-> +
-> +		u3phy0: t-phy@11c80000 {
-> +			compatible = "mediatek,mt8186-tphy",
-> +				     "mediatek,generic-tphy-v2";
-> +			#address-cells = <1>;
-> +			#size-cells = <1>;
-> +			ranges = <0x0 0x0 0x11c80000 0x1000>;
-> +
-> +			u2port1: usb2-phy1@0 {
-> +				reg = <0x0 0x700>;
-> +				clocks = <&clk26m>;
-> +				clock-names = "ref";
-> +				#phy-cells = <1>;
-> +			};
-> +
-> +			u3port1: usb3-phy1@700 {
-> +				reg = <0x700 0x900>;
-> +				clocks = <&clk26m>;
-> +				clock-names = "ref";
-> +				#phy-cells = <1>;
-> +			};
-> +		};
-> +
-> +		u3phy1: t-phy@11ca0000 {
-> +			compatible = "mediatek,mt8186-tphy",
-> +				     "mediatek,generic-tphy-v2";
-> +			#address-cells = <1>;
-> +			#size-cells = <1>;
-> +			ranges = <0x0 0x0 0x11ca0000 0x1000>;
-> +
-> +			u2port0: usb-phy@0 {
-> +				reg = <0x0 0x700>;
-> +				clocks = <&clk26m>;
-> +				clock-names = "ref";
-> +				#phy-cells = <1>;
-> +				mediatek,discth = <0x8>;
-> +			};
-> +		};
-> +	};
-> +};
+> https://paste.debian.net/1235967/
+
+I will review this pastebin along with the explanation you had provided earlier
+in this thread - maybe I'll get it this time... But that will take some time as
+I have 5 other patchsets to review before looking at this again.
+
+> 
+> Thanks,
+> Angelo
+> 
+> > Thanks,
+> > Mathieu
+> > 
+> > > 
+> > > Cheers,
+> > > Angelo
+> > > 
+> > > > Thanks,
+> > > > Mathieu
+> > > > 
+> > > > > [   18.228399]                                lock(&mtk_subdev->channels_lock);
+> > > > > [   18.228405]   lock(&scp->ipi_desc[i].lock);
+> > > > > [   18.264405]
+> > > > > 
+> > > > > To solve this, simply unlock the channels_lock mutex before calling
+> > > > > mtk_rpmsg_register_device() and relock it right after, as safety is
+> > > > > still ensured by the locking mechanism that happens right after
+> > > > > through SCP.
+> > > > > Notably, mtk_rpmsg_register_device() does not even require locking.
+> > > > > 
+> > > > > Fixes: 7017996951fd ("rpmsg: add rpmsg support for mt8183 SCP.")
+> > > > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > > > > ---
+> > > > >    drivers/rpmsg/mtk_rpmsg.c | 2 ++
+> > > > >    1 file changed, 2 insertions(+)
+> > > > > 
+> > > > > diff --git a/drivers/rpmsg/mtk_rpmsg.c b/drivers/rpmsg/mtk_rpmsg.c
+> > > > > index 5b4404b8be4c..d1213c33da20 100644
+> > > > > --- a/drivers/rpmsg/mtk_rpmsg.c
+> > > > > +++ b/drivers/rpmsg/mtk_rpmsg.c
+> > > > > @@ -234,7 +234,9 @@ static void mtk_register_device_work_function(struct work_struct *register_work)
+> > > > >    		if (info->registered)
+> > > > >    			continue;
+> > > > > +		mutex_unlock(&subdev->channels_lock);
+> > > > >    		ret = mtk_rpmsg_register_device(subdev, &info->info);
+> > > > > +		mutex_lock(&subdev->channels_lock);
+> > > > >    		if (ret) {
+> > > > >    			dev_err(&pdev->dev, "Can't create rpmsg_device\n");
+> > > > >    			continue;
+> > > > > -- 
+> > > > > 2.33.1
+> > > > > 
+> > > 
+> > > 
+> > > 
 
 _______________________________________________
 Linux-mediatek mailing list
