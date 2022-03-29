@@ -4,84 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7D3BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 08:51:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAC42C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 09:04:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lvruhvfSfb6aAUvRXjHuZ4dOBn9FjRgTc3Be3wlyiPg=; b=ke8vtxGh6wE0N6
-	RZEWM8bne7UAkvZcQTk+lk3rxpk6aJPQ31o+qHgVd9tpAF3pQ5iggcGhQEvfNHpqdFHvKNmS7Gp0i
-	EL7xun+gKRdDDk1H3QepznDbDzyc2obGjrQm2efDz+ODgaDVlPgxLhajPiRR+9CaBhCwCm9WFxryi
-	YaPHwBHRtuLbcpayN838z5vARQlcYKKHT6kDdQlRFi927X0jSan8eMldjJPOjduth4iMp0Ea1lRAC
-	aMmzh564DxduXWEHneCaxxdJsvFJ44IQGymTxPINydU25kTu1JyBHBW3kV+fbtTqhV0uwsC7cpmpx
-	/U0Mdr+2ChjaSUcMcqZA==;
+	List-Owner; bh=WuH6Spu7kEGtr318jkaJLdpPHAfXuy0fjdcjIccyY4Y=; b=jU5HpFvJT38s5V
+	eunLli1N4ANFGTyEgzfAAzcDjIyW77HVlPcptvf/zMw7MlOrQ7iLkjklOn8uxCtY1Q0ROCDBpG0/S
+	BBJru4l5BsshSodMIeXrkF6la1dl+U6VZQeLUMftW2s1CL6A9SDGUfq87rTHeg0EpCN4+3EdV1903
+	ATptKgPIoESp99WyHoMV59LK8YBOO2314ZeW3zUgGDXirardBH168hqOmXV5+Xa0Qy4eI0XDFxj9i
+	2zHF5/ORkA8Q8RCRbbG4MKc1OIs+BySc1lgee+v+SoQ18EPAa009jvVLJ4q9juIxFRlXLqq6XJwJ2
+	M9+icy3k2oP4A24Ns/jA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZ7Z2-00BVIM-BZ; Tue, 29 Mar 2022 08:50:56 +0000
-Received: from esa.microchip.iphmx.com ([68.232.153.233])
+	id 1nZ7mM-00BaGt-2I; Tue, 29 Mar 2022 09:04:42 +0000
+Received: from mail-qt1-f180.google.com ([209.85.160.180])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZ7Yx-00BVH1-Se; Tue, 29 Mar 2022 08:50:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1648543851; x=1680079851;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=0r3zs2np5g1OGyfR5AfBJmzryAoR1xJqsqcoDejQqWU=;
- b=SvzazobpV11jWeMgpXo0FTvE1SLSgCyZ7Xqqf+G+mtJGMfNJ9dbOCrDf
- ysi5EidKWkWJ49RAyHugcujFV5Kw0oT1phK7DlUFPa6sZN1D1b/yMAXmv
- RCdj/QsyqhI3Z1SjDcDYeAcyh/VPEi7+sI5OLoYwx9CjtHPiYDaJevD76
- 8I6jXHHTjFr79/zR8y4Bgh1Gy35vFCZqn2MULJmTFkyb95PUicosRdfrd
- ZDbhw2po6iiow2+V+HMacAd2XS96BryxDwBl6ib89n3nhoZYszcVOAd31
- VA5WMVXwoTHyfGGelRpyFs3vNbtaDve3Zad+K6r7cbpt8O6NzEkpqUN+Y A==;
-X-IronPort-AV: E=Sophos;i="5.90,219,1643698800"; d="scan'208";a="158497460"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 29 Mar 2022 01:50:48 -0700
-Received: from chn-vm-ex02.mchp-main.com (10.10.87.72) by
- chn-vm-ex02.mchp-main.com (10.10.87.72) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.17; Tue, 29 Mar 2022 01:50:48 -0700
-Received: from [10.159.245.112] (10.10.115.15) by chn-vm-ex02.mchp-main.com
- (10.10.85.144) with Microsoft SMTP Server id 15.1.2375.17 via Frontend
- Transport; Tue, 29 Mar 2022 01:50:41 -0700
-Message-ID: <4ff4f171-c5f8-87af-aad1-5e7686292288@microchip.com>
-Date: Tue, 29 Mar 2022 10:50:38 +0200
+ id 1nZ7m7-00BaCg-Hz; Tue, 29 Mar 2022 09:04:28 +0000
+Received: by mail-qt1-f180.google.com with SMTP id s11so14690288qtc.3;
+ Tue, 29 Mar 2022 02:04:25 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=7LLXUdiKn5zGolda6p6nU0L90Q8R5gkNG4kyWBHOgl4=;
+ b=BsF7CrPUdzvdH7Ree8xyv/TBfmCxCvupTjY5RwBLO8axctk3JQQB22+3KpcuShkqW+
+ rSHAzy45oA5yS1XrnhvqFzU5NsRNvgIX6sNqkM8oH+foNQ8Q3HUzRMIQvcfYuJq5EmCN
+ 0uDGD7aEhxqL5gzOgwh4e6Vf9zbQZXc9NCvHlH2c3ITwYLfEQAyQKefjBS3ZvXbGrA08
+ uBQJXxAKZRIRfGx69hj/KsX4kStN21KnYRUpYwD89iqQR7RRrpESUxpGAFs1mJzkBmFZ
+ Cw6ICcAUPq1DhUYDWozy6TN/5PVksIqpJ2abHuN3z1YgQwpkuKf8vZGegK17DVRetcxh
+ JGcA==
+X-Gm-Message-State: AOAM531u5x8Y+UxMSIDhwrP21IWmkqNVy1cppUnLd2D/zai621oMGruO
+ 6BMOlCioFYBDhXurxjUfDEFDf9L6KPq+WQ==
+X-Google-Smtp-Source: ABdhPJzKUfBS9wwA2t5bSkI/jv9jjVcTtZn8Vg1KiZuQELGccecb9rhGRR/JpWgC5ZLZnMkERWQiYQ==
+X-Received: by 2002:a05:622a:1d6:b0:2e2:db3:17c9 with SMTP id
+ t22-20020a05622a01d600b002e20db317c9mr26036686qtw.665.1648544664574; 
+ Tue, 29 Mar 2022 02:04:24 -0700 (PDT)
+Received: from mail-yw1-f179.google.com (mail-yw1-f179.google.com.
+ [209.85.128.179]) by smtp.gmail.com with ESMTPSA id
+ e20-20020ac84e54000000b002e06753cf70sm16162457qtw.6.2022.03.29.02.04.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 29 Mar 2022 02:04:24 -0700 (PDT)
+Received: by mail-yw1-f179.google.com with SMTP id
+ 00721157ae682-2e6ceb45174so136291607b3.8; 
+ Tue, 29 Mar 2022 02:04:23 -0700 (PDT)
+X-Received: by 2002:a81:24d6:0:b0:2e5:b253:f9fc with SMTP id
+ k205-20020a8124d6000000b002e5b253f9fcmr30366724ywk.438.1648544663596; Tue, 29
+ Mar 2022 02:04:23 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
-Content-Language: en-US
-To: Daniel Palmer <daniel@0x0f.com>, Ansuel Smith <ansuelsmth@gmail.com>,
- Claudiu Beznea <Claudiu.Beznea@microchip.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Santiago Esteban
- <Santiago.Esteban@microchip.com>, Cristian Birsan
- <Cristian.Birsan@microchip.com>
-CC: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, linux-arm-kernel
- <linux-arm-kernel@lists.infradead.org>, DTML <devicetree@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- <linux-actions@lists.infradead.org>, <linux-sunxi@lists.linux.dev>,
- <linux-omap@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
- <linux-arm-kernel@axis.com>, <linux-aspeed@lists.ozlabs.org>,
- <linux-rpi-kernel@lists.infradead.org>, <chrome-platform@lists.linux.dev>,
- <linux-renesas-soc@vger.kernel.org>, <linux-samsung-soc@vger.kernel.org>,
- <linux-stm32@st-md-mailman.stormreply.com>, <kernel@dh-electronics.com>,
- <linux-mediatek@lists.infradead.org>, <openbmc@lists.ozlabs.org>,
- <linux-tegra@vger.kernel.org>, <linux-oxnas@groups.io>,
- <linux-arm-msm@vger.kernel.org>, <linux-unisoc@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-realtek-soc@lists.infradead.org>
 References: <20220328000915.15041-1-ansuelsmth@gmail.com>
  <CAFr9PXkgrRe-=E=GhNnZ4w1x_FMb97-_RmX6ND1vEd74_TbZSw@mail.gmail.com>
-From: Nicolas Ferre <nicolas.ferre@microchip.com>
-Organization: microchip
-In-Reply-To: <CAFr9PXkgrRe-=E=GhNnZ4w1x_FMb97-_RmX6ND1vEd74_TbZSw@mail.gmail.com>
+ <YkK691VG6ON/6Ysn@atomide.com>
+In-Reply-To: <YkK691VG6ON/6Ysn@atomide.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Tue, 29 Mar 2022 11:04:11 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdXDDNTgBdJTa8+H1H5v1gAarp07xxWu_E1JL8mXS8HPMg@mail.gmail.com>
+Message-ID: <CAMuHMdXDDNTgBdJTa8+H1H5v1gAarp07xxWu_E1JL8mXS8HPMg@mail.gmail.com>
+Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
+To: Tony Lindgren <tony@atomide.com>
+Cc: Daniel Palmer <daniel@0x0f.com>, Ansuel Smith <ansuelsmth@gmail.com>, 
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ DTML <devicetree@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-actions@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+ "open list:TI ETHERNET SWITCH DRIVER (CPSW)" <linux-omap@vger.kernel.org>, 
+ "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>,
+ linux-arm-kernel@axis.com, linux-aspeed@lists.ozlabs.org, 
+ linux-rpi-kernel <linux-rpi-kernel@lists.infradead.org>,
+ chrome-platform@lists.linux.dev, 
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>, 
+ linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, 
+ linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com, 
+ linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, 
+ linux-tegra <linux-tegra@vger.kernel.org>, linux-oxnas@groups.io, 
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>, linux-unisoc@lists.infradead.org,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ linux-realtek-soc@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_015052_008233_4845F7E3 
-X-CRM114-Status: GOOD (  16.75  )
+X-CRM114-CacheID: sfid-20220329_020427_642372_B712A560 
+X-CRM114-Status: GOOD (  24.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,56 +98,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Ansuel, All,
+Hi Tony,
 
-On 28/03/2022 at 10:55, Daniel Palmer wrote:
-> Hi Ansuel
-> 
-> On Mon, 28 Mar 2022 at 09:09, Ansuel Smith <ansuelsmth@gmail.com> wrote:
->>
->> Hi,
->> as the title say, the intention of this ""series"" is to finally categorize
->> the ARM dts directory in subdirectory for each oem.
-> 
-> While I agree with this change and think it's for the good (browsing
-> the ARM dts directory at the moment is frustrating..) I think
-> buildroot and others need to be told about this as it'll potentially
-> break their kernel build scripting for ARM and probably messes up the
-> configs they have for existing boards.
+On Tue, Mar 29, 2022 at 10:03 AM Tony Lindgren <tony@atomide.com> wrote:
+> * Daniel Palmer <daniel@0x0f.com> [220328 08:53]:
+> > On Mon, 28 Mar 2022 at 09:09, Ansuel Smith <ansuelsmth@gmail.com> wrote:
+> > > as the title say, the intention of this ""series"" is to finally categorize
+> > > the ARM dts directory in subdirectory for each oem.
+> >
+> > While I agree with this change and think it's for the good (browsing
+> > the ARM dts directory at the moment is frustrating..) I think
+> > buildroot and others need to be told about this as it'll potentially
+> > break their kernel build scripting for ARM and probably messes up the
+> > configs they have for existing boards.
+>
+> Yeah.. And ideally this would be done in smaller steps as these will
+> conflict with all the other pending patches.
+>
+> For example, I have a pile of pending omap clock clean-up dts patches
+> posted and tested waiting for v5.19-rc1 to apply. I'd rather not start
+> redoing or fixing up the patches with sed :)
 
-This aspect mustn't be underestimated and I anticipate lots of issues 
-during a long time on this particular topic of "build systems".
+Git merge/rebase/cherry-pick should handle renames fine?
 
-Another aspect is CI and public or private testing farms we all have 
-running.
+Gr{oetje,eeting}s,
 
-These aspects always refrained me to change anything in the naming 
-scheme of our DT files, but if we go in this direction, we must really 
-be prepared and I'm still not convince it's worth it...
+                        Geert
 
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
 
-If this has to happen, I would also like to queue some file name changes 
-to do all modifications in one go in order to lower the annoyance level 
-of those who would need to adapt to those changes.
-
-BTW, is there a common scheme for dts/dtsi file naming? Is it more 
-enforced in one way or another for arm64 in a sense that I can take some 
-norm as an example?
-
-[..]
-
-Best regards,
-   Nicolas
-
-
-
--- 
-Nicolas Ferre
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
 _______________________________________________
 Linux-mediatek mailing list
