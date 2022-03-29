@@ -4,86 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C2C1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 13:10:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2CD7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 13:20:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:Cc:References:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gVi19Ews8tq4sdJb4FsUpY2X3LFuVsoa+91IsreMPc0=; b=deDOKpSJ6r4qXX
-	+Q5iNa5lb82eIuKfWjCrAFm/iLCnE5gMzzxzLruLHwlwyUPKmuZbzWyTGStL4JavaACXXTM0SCtEQ
-	Zo6bzaYEHwA4HsL7P9rnwq5og+qHibMZhDK5DTX3hD2ISnR19wgWn/eQU7VcyWSCRXFqJFyUHstia
-	Ljo9bn0MWMGnRpml5qSq/eJfvvIOvVNmHNk7yyopig1Z7HcPREdPNrRY9emnViigCJnuzU51wLKw0
-	AnCLP5ci/68OEw9Gwts3qNI7tVzL0pSv6KP06HF9PeC9Lrea2lkvXdukMWR0BbJNemjEXFvD486NC
-	MQjGcN1xpNufRAgW5uDA==;
+	List-Owner; bh=tcED1cYeQbWQfxRTGKyVkfEuYPVx9FzU4JtUlVLQjC0=; b=BMo2uZj5EybB90
+	7A3pUO1X6Hg/XByxSU9JJQaNnZVHF5/zlsRpl92aRvpYIDdUSS2wL+NPedhlF6/kcM5lTKx530du9
+	2oV+VCtx+Q9ZB473YKQ5heEKGLr711LJxL9Lje8GstRqQV9keVyv+we+cltnmMHJcauez3iRPH2eN
+	6FCkcJkbTvmWJOESgOWQve8ZoDp3CX3t5HRfPNKB34Bhae9o66J963yuDi4I07fHeH74UAdwt9b4w
+	eUR3igAXyAlIX0CyCA6TeFvvLnu7c0G11P/ia8p626xcothhKjZbajo9LV49iyGc6Hn8Geikzea9X
+	FumPklK5djkhr2r942Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZBbp-00CILu-0S; Tue, 29 Mar 2022 13:10:05 +0000
-Received: from mail-ot1-f49.google.com ([209.85.210.49])
+	id 1nZBmC-00CKd8-Hz; Tue, 29 Mar 2022 13:20:48 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZBbZ-00CII0-Ih; Tue, 29 Mar 2022 13:09:53 +0000
-Received: by mail-ot1-f49.google.com with SMTP id
- k18-20020a9d7012000000b005cdb11186f2so11461039otj.9; 
- Tue, 29 Mar 2022 06:09:48 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=pgmVS6Ri5wIx578wOnaD17/Gk0HO8xT8dcbeURwXcvM=;
- b=O9JYOC3lYMVhhOzJnjB+lxV+4hyt0GnJQWtDt+dqcdpmEAC706AzWZDaJKQ7z2Tpeq
- oTvpDSfcEjYCwkt4k+9ZYQAXIRQPaPcsDCegG9CEodjhhxJxvq2u8IM11fUsEHoY2Xqq
- m07Sqi4Hh18npXabHRE/GG+lOwZ3mAr1urmOY5aXdjtCJGlodKR/IVA6ebFH10leKUAh
- Nt8kMU9K+0ci/BluSLtxkdCFH4BQipABowyceCQUGslFkKCs/g6GEMVAv9NaRsSYUES3
- wiATbdKqW2kswudxAU8MGuNfjcGFFhS9IfhDPolemLbCi7poSr9q0xpc32sSBK0GQatH
- rC1g==
-X-Gm-Message-State: AOAM530+nNjuyW232EFG9AOtDCtEoNiDVwrGnFyZ4p0mD1kXsU4fHG7l
- SXYU/sIhOb1/ELc9sZ0vDw==
-X-Google-Smtp-Source: ABdhPJxz1vLRb+ULvjznOE3SueYbicXZjpLRanPIOSO+cxvPbO6krkNLY2qTn6KPl8CwI3JDJM2gsQ==
-X-Received: by 2002:a9d:5614:0:b0:5b2:5fe3:8f1c with SMTP id
- e20-20020a9d5614000000b005b25fe38f1cmr1052711oti.229.1648559387820; 
- Tue, 29 Mar 2022 06:09:47 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- li20-20020a056871421400b000deaa91898fsm6115814oab.40.2022.03.29.06.09.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Mar 2022 06:09:46 -0700 (PDT)
-Received: (nullmailer pid 482676 invoked by uid 1000);
- Tue, 29 Mar 2022 13:09:45 -0000
-Date: Tue, 29 Mar 2022 08:09:45 -0500
-From: Rob Herring <robh@kernel.org>
-To: Irui Wang <irui.wang@mediatek.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Tzung-Bi Shih <tzungbi@chromium.org>,
- Alexandre Courbot <acourbot@chromium.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>,
- angelogioacchino.delregno@collabora.com, Yong Wu <yong.wu@mediatek.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Maoguang Meng <maoguang.meng@mediatek.com>,
- Longfei Wang <longfei.wang@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, Fritz Koenig <frkoenig@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v3, 03/10] dt-bindings: media: mtk-vcodec: Adds encoder
- cores dt-bindings for mt8195
-Message-ID: <YkMFGbgYq5DhLjt8@robh.at.kernel.org>
-References: <20220317082230.23622-1-irui.wang@mediatek.com>
- <20220317082230.23622-4-irui.wang@mediatek.com>
- <Yj4s0zcHxz3U3wlc@robh.at.kernel.org>
- <ab2b24eeb51048227ad7b2ac659617a7da5b2e45.camel@mediatek.com>
- <YkG8ka1xY2k+HWi1@robh.at.kernel.org>
- <e41e909f85e3891edb6b66d7d5a810af103113c8.camel@mediatek.com>
+ id 1nZBlw-00CKWx-HN; Tue, 29 Mar 2022 13:20:34 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id A50A9B816FB;
+ Tue, 29 Mar 2022 13:20:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 079B3C2BBE4;
+ Tue, 29 Mar 2022 13:20:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1648560029;
+ bh=vcBGlG+sqaPt0UpTdoZ2lc9iEFALH1pzWeKYoBtVGc0=;
+ h=Date:Subject:To:References:Cc:From:In-Reply-To:From;
+ b=Lf6UdkMwpGMKF/bCzH0duecbGSrWXhu70CtFUq2mNv7IsC6370BCiPtfWXaI+yKF/
+ UQxjxo/5ELIHPpruCIzbUN34wBvgy5Fc7eS22PnhD5aL+YcFYfFaN/O+tr+ZmUM+S5
+ A/HxyRRfNmBU9vHwyfdDK7puvv8H+mPmsnx7QORDs2EqLL+mvW+oCz1joHCa6v9S30
+ zZSq7JcFWt8iEt24hFmi80tnq5vNy7tr3oSE2yE/htc0EfUX3gZEr+PbO1Xh/RhzQv
+ IsUb015h84Gz6Om/nGHx49iikUSPAbDyLFfT+LjbZl0E6DwqI3AOYIbHwd8W8xbJcf
+ NtJzDPqA8j7Dw==
+Message-ID: <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
+Date: Tue, 29 Mar 2022 15:20:18 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <e41e909f85e3891edb6b66d7d5a810af103113c8.camel@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
+Content-Language: en-US
+To: Ansuel Smith <ansuelsmth@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-omap@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com,
+ linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
+ chrome-platform@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ kernel@dh-electronics.com, linux-mediatek@lists.infradead.org,
+ openbmc@lists.ozlabs.org, linux-tegra@vger.kernel.org,
+ linux-oxnas@groups.io, linux-arm-msm@vger.kernel.org,
+ linux-unisoc@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-realtek-soc@lists.infradead.org
+References: <20220328000915.15041-1-ansuelsmth@gmail.com>
+Cc: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+In-Reply-To: <20220328000915.15041-1-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_060949_659897_9FCD31D8 
-X-CRM114-Status: GOOD (  30.14  )
+X-CRM114-CacheID: sfid-20220329_062032_891696_E13A23F9 
+X-CRM114-Status: GOOD (  38.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,74 +85,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 29, 2022 at 09:26:37AM +0800, Irui Wang wrote:
-> Dear Rob,
+On 28/03/2022 02:09, Ansuel Smith wrote:
+> Hi,
+> as the title say, the intention of this ""series"" is to finally categorize
+> the ARM dts directory in subdirectory for each oem.
 > 
-> Many thanks for your attention.
+> The main reason for this is that it became unpractical to handle 2600
+> dts files and try to even understand/edit/check the situation for a
+> specific target.
 > 
-> On Mon, 2022-03-28 at 08:48 -0500, Rob Herring wrote:
-> > On Sat, Mar 26, 2022 at 10:00:55AM +0800, Irui Wang wrote:
-> > > Dear Rob,
-> > > 
-> > > Thanks for your review and comments.
-> > > 
-> > > On Fri, 2022-03-25 at 15:57 -0500, Rob Herring wrote:
-> > > > On Thu, Mar 17, 2022 at 04:22:23PM +0800, Irui Wang wrote:
-> > > > > Adds encoder cores dt-bindings for mt8195.
-
-[...]
-
-> > > > > +      mediatek,core-id:
-> > > > > +        $ref: /schemas/types.yaml#/definitions/uint32
-> > > > > +        description: |
-> > > > > +          Current encoder core id.
-> > > > 
-> > > > What is this for and what does its value correspond to in the
-> > > > h/w.
-> > > > We 
-> > > > generally don't do made up indices in DT.
-> > > 
-> > > It's for encoder core id, core@1a020000 must be core-0, 
-> > > core@1b020000
-> > > must be core-1, we add this property in each child node, so we can 
-> > > get core-id in drivers. If it can't ref "uint32" types yaml, would 
-> > > you mind giving some more suggestions ?
-> > 
-> > I still don't understand why it is needed. What is 'core-0'?
-> > 
-> > Is there some functional difference between the cores? If so,
-> > describe 
-> > that difference.
-> > 
-> > Rob
+> In arm64 we already have this kind of separation and I honestly think
+> that this was never proposed for ARM due to the fact that there are
+> 2600+ files to sort and the fact that it will be a mess to merge this
+> entirely but IMHO with a little bit of effort we can finally solve this
+> problem and have a well organized directory just like arm64.
 > 
-> They are two different pieces of hardware, it's our encoder hardware
-> design. There are two encoder hardware cores inside MT8195, named core0
-> and core1(we can rename it, but core id should be declared),
-> for core0, its module base address is 0x1A02_0000, uses IOMMU
-> "vdo0_iommu" and power domain "POWER_DOMAIN_VENC",
-> for core1, its module base address is 0x1B02_0000, uses IOMMU
-> "vpp_iommu" and power domain "POWER_DOMAIN_VENC_CORE1".
-> So the two encoder cores have their own base, IRQ, clock, power, etc.
-> Each core can encode independently, moreover, they can work together
-> for higher performance. 
-> We will describe more details in YAML about it if it's OK for you.
+> Some prerequisite on how this work was done:
+> - This comes entirely from a python script created by me for the task.
+>   linked here [1]
+> - I had to manually categorize all the different arch in the makefile
+>   based on the oem. I searched every arch on the internet trying to
+>   understand the correct oem. I hope they are correct but I would love
+>   some comments about them.
+> - This current ""series"" is all squashed in one big commit to better
+>   receive comments for this. The final version ideally would have all
+>   changes in separate commits. The script can already do this, it's just
+>   commented.
+> 
+> Here is a list of some discoveries while doing all the sorting.
+> These are totally additional reason why we need this.
+> 
+> While creating the script I discovered some funny things:
+> - We have orphan dts! There are dts that are never compiled and are
+>   there just for reference. We would never have noticed this without this
+>   change and probably nobody noticed it. They are currently all listed
+>   in the python script.
+> - We have dtsi shared across different oem. My current solution for them
+>   is: NOT SORT THEM and leave them in the generic directory and create a
+>   link in each oem dts that points to these dtsi. This is to try in
+>   every way possible to skip any additional changes to the dts.
+>   Current dtsi that suffers from this are only 3. (listed in the script)
+> - arm64 dts and dtsi reference ARM dts. Obviously this change would cause
+>   broken include for these special dtsi. The script creates a dependency
+>   table of the entire arm64 directory and fix every broken dependency
+>   (hoping they all use a sane include logic... regex is used to parse
+>   all the different dependency)
+> 
+> So in short the script does the following steps:
+> 1. Enumerate all the action to do... (dts to move, scan dependency for
+>    the dts...)
+> 2. Generate the arm64 dependency
+> 3. Creates the Makefile
+> 4. Generate the Makefiles for the current oem
+> 5. Move all the related dts and dtsi for the current oem
+> 6. Check broken dependency and fix them by editing the dts and writing
+>    the correct include (or fix any symbolic link)
+> 
+> This is an output that describes all the things done by the script [2]
+> 
+> I really hope I didn't commit any logic mistake in the script but most
+> of the work should be done.
+> 
 
-All the resources you list are in the child nodes, so you don't need 0 
-and 1 numbering for those. 
++Cc Arnd and Olof,
 
-Looking at the driver patches, the only thing I see distinguishing 
-core numbers is this:
+Ansuel,
+Thanks for you patch. Please cc the SoC maintainers in such submissions.
+It seems that you got some quite nice discussion, but still the core
+folks are not Cced, so no one would be able to take your patch...
 
-"frame#0 uses core#0, frame#1 uses core#1, frame#2 uses core#0...,
+I am pretty sure we were discussing such split idea in the past and it
+did not get traction, but I cannot recall the exact discussion.
 
-Lock the device and enable the clock by used core, for sequence
-header encoding, it always uses core#0."
+To me the idea is good but will cause huge `git am` conflicts.
+Cherry-picks, backports and merges should nicely detect path renames,
+but git am (and b4 am) I think cannot.
 
-Is this a requirement in the h/w or just what the driver picked? IOW, 
-could frame#0 use core#1?
-
-Rob
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
