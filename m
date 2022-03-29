@@ -4,55 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E16FAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 06:37:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20BF1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 06:41:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xfiidjci5Bqo10omOm3fwYk+jf1ivHoEf8J81WvL/Rw=; b=D+4P8HD58OhtPc
-	dRUgPySRXUZOp5PMUFnihFQVx+TTMvOAoJN840Bxmem/a92IRCTtRg6Tf8C11p1QIwcXLfDvpxqVG
-	woIiRKVL7/EstKYZG7VjyyRZ+4ZnW5+qaf3U1KRyUcA4fkFfC132zmFKGx9Pj7NZC1FfUpF2UFQYp
-	MxKZOLzdM0nDI/EAx87LWRrpInjomUl/L1zrKd8XhXFdQKWlzZH+3HdFN3Cr6c3LC4RlWH1cf5mbL
-	suQs0Xs7384HEQkwGi3leaq0xad22LBAIxM5EraBEkTWKiXl9ZMoFNrNonasy7TBGYqx7QEDeqBvf
-	uexlZXFfEng8p/Dyg3BQ==;
+	List-Owner; bh=wOJTtU603HGVi+TKcd/f4MSIQYX0BaucL0JvE+TxkFk=; b=gQK8C6imi5fvP4
+	UIu4An3i1qXkUXl03GGnDYme6SYeYUMfwPcUiCttTDt7XeqQWVrlcJ1oDr0jm2sOVhXEsdMGORIwz
+	RHhm2TnUsw+1AwforDgnlexbBmt8qzZg+IFZg4fH4MvXk6+XD4D7iV3tapNsmToS5X8zLJTuhnaT7
+	TtXoiGr0CgNGw+KQtiBStDd+d7wNvnu/jnBr3HNwGAGF/oiEcbG8nJiBnGaOf2MNUdFW4fMMMPtm3
+	xMYlmYMp/LkKw2LJsVykZAXD9EALrDVJm+FfuG08ITMB9ZJJkFJGW06PxvAwLNIeh/2QbS2iDPZZy
+	ZXCvP6lU/PuGJZhmiWug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZ5Tt-00BDNO-1o; Tue, 29 Mar 2022 06:37:29 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZ5Tg-00BDL0-It; Tue, 29 Mar 2022 06:37:18 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2AF9223A;
- Mon, 28 Mar 2022 23:37:13 -0700 (PDT)
-Received: from [10.57.7.161] (unknown [10.57.7.161])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 829F13F718;
- Mon, 28 Mar 2022 23:37:10 -0700 (PDT)
-Message-ID: <8c4ae309-bc3a-2c16-d312-7ae7cc5b3c61@arm.com>
-Date: Tue, 29 Mar 2022 07:37:08 +0100
+	id 1nZ5XI-00BDsu-Tn; Tue, 29 Mar 2022 06:41:00 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nZ5XG-00BDsA-1t; Tue, 29 Mar 2022 06:40:59 +0000
+X-UUID: cd91d2eb9d364a338cecf49a88318565-20220328
+X-UUID: cd91d2eb9d364a338cecf49a88318565-20220328
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1930804403; Mon, 28 Mar 2022 23:40:56 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 28 Mar 2022 23:40:54 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 29 Mar 2022 14:40:52 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 29 Mar 2022 14:40:52 +0800
+Message-ID: <080f3031bc05039ec73803886b92ec5614647e95.camel@mediatek.com>
+Subject: Re: [PATCH v4 12/22] arm64: dts: mt8192: Add mmc device nodes
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, "Hui Liu"
+ <hui.liu@mediatek.com>
+Date: Tue, 29 Mar 2022 14:40:52 +0800
+In-Reply-To: <90324c6f-e3ef-5b18-8779-8a11ca67039b@gmail.com>
+References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
+ <20220318144534.17996-13-allen-kh.cheng@mediatek.com>
+ <90324c6f-e3ef-5b18-8779-8a11ca67039b@gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [RESEND][PATCH 7/8] thermal: cooling: Check Energy Model type in
- cpufreq_cooling and devfreq_cooling
-Content-Language: en-US
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Cc: linux-kernel@vger.kernel.org, dietmar.eggemann@arm.com,
- Pierre.Gondois@arm.com, ionela.voinescu@arm.com, rafael@kernel.org,
- daniel.lezcano@linaro.org, linux-pm@vger.kernel.org, mka@chromium.org,
- nm@ti.com, sboyd@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, cristian.marussi@arm.com,
- sudeep.holla@arm.com, matthias.bgg@gmail.com
-References: <20220321095729.20655-1-lukasz.luba@arm.com>
- <20220321095729.20655-8-lukasz.luba@arm.com>
- <20220328032729.mutbjailxbmylffs@vireshk-i7>
-From: Lukasz Luba <lukasz.luba@arm.com>
-In-Reply-To: <20220328032729.mutbjailxbmylffs@vireshk-i7>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220328_233716_729937_F98551E7 
-X-CRM114-Status: GOOD (  18.23  )
+X-CRM114-CacheID: sfid-20220328_234058_143229_3570F819 
+X-CRM114-Status: GOOD (  20.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,81 +71,103 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Matthias,
 
-
-On 3/28/22 04:27, Viresh Kumar wrote:
-> On 21-03-22, 09:57, Lukasz Luba wrote:
->> The Energy Model can now be artificial, which means the power values
->> are mathematically generated to leverage EAS while not expected to be on
->> an uniform scale with other devices providing power information. If this
->> EM type is in use, the thermal governor IPA should not be allowed to
->> operate, since the relation between cooling devices is not properly
->> defined. Thus, it might be possible that big GPU has lower power values
->> than a Little CPU. To mitigate a misbehaviour of the thermal control
->> algorithm, simply do not register the cooling device as IPA's power
->> actor.
->>
->> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
->> ---
->>   drivers/thermal/cpufreq_cooling.c | 2 +-
->>   drivers/thermal/devfreq_cooling.c | 8 +++++---
->>   2 files changed, 6 insertions(+), 4 deletions(-)
->>
->> diff --git a/drivers/thermal/cpufreq_cooling.c b/drivers/thermal/cpufreq_cooling.c
->> index 0bfb8eebd126..b8151d95a806 100644
->> --- a/drivers/thermal/cpufreq_cooling.c
->> +++ b/drivers/thermal/cpufreq_cooling.c
->> @@ -328,7 +328,7 @@ static inline bool em_is_sane(struct cpufreq_cooling_device *cpufreq_cdev,
->>   	struct cpufreq_policy *policy;
->>   	unsigned int nr_levels;
->>   
->> -	if (!em)
->> +	if (!em || em_is_artificial(em))
->>   		return false;
->>   
->>   	policy = cpufreq_cdev->policy;
->> diff --git a/drivers/thermal/devfreq_cooling.c b/drivers/thermal/devfreq_cooling.c
->> index 4310cb342a9f..b04dcbbf721a 100644
->> --- a/drivers/thermal/devfreq_cooling.c
->> +++ b/drivers/thermal/devfreq_cooling.c
->> @@ -358,6 +358,7 @@ of_devfreq_cooling_register_power(struct device_node *np, struct devfreq *df,
->>   	struct thermal_cooling_device *cdev;
->>   	struct device *dev = df->dev.parent;
->>   	struct devfreq_cooling_device *dfc;
->> +	struct em_perf_domain *em;
->>   	char *name;
->>   	int err, num_opps;
->>   
->> @@ -367,8 +368,9 @@ of_devfreq_cooling_register_power(struct device_node *np, struct devfreq *df,
->>   
->>   	dfc->devfreq = df;
->>   
->> -	dfc->em_pd = em_pd_get(dev);
->> -	if (dfc->em_pd) {
->> +	em = em_pd_get(dev);
->> +	if (em && !em_is_artificial(em)) {
->> +		dfc->em_pd = em;
->>   		devfreq_cooling_ops.get_requested_power =
->>   			devfreq_cooling_get_requested_power;
->>   		devfreq_cooling_ops.state2power = devfreq_cooling_state2power;
->> @@ -379,7 +381,7 @@ of_devfreq_cooling_register_power(struct device_node *np, struct devfreq *df,
->>   		num_opps = em_pd_nr_perf_states(dfc->em_pd);
->>   	} else {
->>   		/* Backward compatibility for drivers which do not use IPA */
->> -		dev_dbg(dev, "missing EM for cooling device\n");
->> +		dev_dbg(dev, "missing proper EM for cooling device\n");
->>   
->>   		num_opps = dev_pm_opp_get_opp_count(dev);
+On Thu, 2022-03-24 at 18:53 +0100, Matthias Brugger wrote:
 > 
-> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+> On 18/03/2022 15:45, Allen-KH Cheng wrote:
+> > Add mmc nodes for mt8192 SoC.
+> > 
+> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 34
+> > +++++++++++++++++++++---
+> >   1 file changed, 30 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > index 6220d6962f58..2648f2847993 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > @@ -1150,10 +1150,36 @@
+> >   			#clock-cells = <1>;
+> >   		};
+> >   
+> > -		msdc: clock-controller@11f60000 {
+> > -			compatible = "mediatek,mt8192-msdc";
+> > -			reg = <0 0x11f60000 0 0x1000>;
+> > -			#clock-cells = <1>;
+> 
+> We don't need the msdc_axi_wrap clock and that's why we delete the
+> node, 
+> correct? In that case we could only disable the node, as DTS should
+> describe the 
+> HW as it is. Please also add a line in the commit message explaining
+> that.
+> 
+> Regards,
+> Matthias
 > 
 
-Thank you Viresh for the ACK!
+Yes, in mt8192, mmc driver don't need msdc clock.
+
+I will disable msdc node and mention it in commit message in next
+version.
+
+Thanks,
+Allen
+
+> > +		mmc0: mmc@11f60000 {
+> > +			compatible = "mediatek,mt8192-mmc",
+> > "mediatek,mt8183-mmc";
+> > +			reg = <0 0x11f60000 0 0x1000>, <0 0x11f50000 0
+> > 0x1000>;
+> > +			interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH
+> > 0>;
+> > +			clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>,
+> > +				 <&msdc_top CLK_MSDC_TOP_H_MST_0P>,
+> > +				 <&msdc_top CLK_MSDC_TOP_SRC_0P>,
+> > +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
+> > +				 <&msdc_top CLK_MSDC_TOP_P_MSDC0>,
+> > +				 <&msdc_top CLK_MSDC_TOP_AXI>,
+> > +				 <&msdc_top
+> > CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
+> > +			clock-names = "source", "hclk", "source_cg",
+> > "sys_cg",
+> > +				      "pclk_cg", "axi_cg", "ahb_cg";
+> > +			status = "disabled";
+> > +		};
+> > +
+> > +		mmc1: mmc@11f70000 {
+> > +			compatible = "mediatek,mt8192-mmc",
+> > "mediatek,mt8183-mmc";
+> > +			reg = <0 0x11f70000 0 0x1000>, <0 0x11c70000 0
+> > 0x1000>;
+> > +			interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH
+> > 0>;
+> > +			clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>,
+> > +				 <&msdc_top CLK_MSDC_TOP_H_MST_1P>,
+> > +				 <&msdc_top CLK_MSDC_TOP_SRC_1P>,
+> > +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
+> > +				 <&msdc_top CLK_MSDC_TOP_P_MSDC1>,
+> > +				 <&msdc_top CLK_MSDC_TOP_AXI>,
+> > +				 <&msdc_top
+> > CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
+> > +			clock-names = "source", "hclk", "source_cg",
+> > "sys_cg",
+> > +				      "pclk_cg", "axi_cg", "ahb_cg";
+> > +			status = "disabled";
+> >   		};
+> >   
+> >   		mfgcfg: clock-controller@13fbf000 {
+
 
 _______________________________________________
 Linux-mediatek mailing list
