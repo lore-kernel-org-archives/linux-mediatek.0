@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01FF0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 11:47:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42E0BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 11:47:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eZQ1fyFj7fsQD1pMjceVN9xHwW8EQ17gTrJ/ENER9A4=; b=gliM69J458Cdqa
-	yw7PNpMZiWnqzAoHTr7HIIj+mFRyA6q06A+3tDprqlnUo0eBkq4dbZsnROrVMSmCz/+y8eQAzUF2Q
-	RiXsm7cC1IIT8HnuBUqLEtOHPl/jCLhyY/zyFgnMB8W8gNPEbUbgua1yT725GI1TiHwzLdUaaQ9Xh
-	HN57zO0PwCPQps+MuIrs77H0OAHS/aago52GuJgYAjoqDILF0c89r7Vhcl9FyD4c79Wl/YeCJweSr
-	Zu/tTV9JbQq5GCtaVwDpw2Xlj19kkCwBoN/XL+UGVhv8ZDtXjwEjUAurLVYj8Iar7Vk+oAjsePLyZ
-	3tG9E5VD5efswWtfbmrQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=L4EWeaFiTRIMubYjDPSWxsdJ6BSXJX3R7US349DDito=; b=SDtTB4mbVwWV98
+	jlHuLLxn0I15Jcc90V5xieylKYeHNWqqj1/jF3ZlD2DvmP2zIWs2nFvcRrNlxGDwZH/75GtkcNPqc
+	7IB4IxQJtJ87ZKNCvRODY1mFE+0sluq/tIldWUu4YS+iC/ZEf2k6ljNZaD1zkFbBs28Rw6jvb7o/B
+	TvYhVKqlabAxbnQmKptok2FMj5NdagQ8pkQOrN1vEuGIMCRHTHfhWIVGPzFhAMR2L8vQanyRz6K5W
+	svCFOBxGmBcW8MXqXF2KFI5lMIDY0KRRlZ+LY5oJY8lo2EK+nrEO4sP53nh7t7EN95zMMX8kpvT1a
+	coQtCnofRn2zCnT556MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZAJm-00C2w5-0Y; Tue, 29 Mar 2022 11:47:22 +0000
+	id 1nZAJn-00C2x3-HG; Tue, 29 Mar 2022 11:47:23 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZAIn-00C2Tg-B4; Tue, 29 Mar 2022 11:46:28 +0000
-X-UUID: 84ce1903fbea4240a53130f88eb4f1d4-20220329
-X-UUID: 84ce1903fbea4240a53130f88eb4f1d4-20220329
+ id 1nZAIn-00C2TM-3X; Tue, 29 Mar 2022 11:46:28 +0000
+X-UUID: b5fa5951efb14bdfb13041649a896c2a-20220329
+X-UUID: b5fa5951efb14bdfb13041649a896c2a-20220329
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <tinghan.shen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 649291784; Tue, 29 Mar 2022 04:46:14 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ with ESMTP id 2133853752; Tue, 29 Mar 2022 04:46:14 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 29 Mar 2022 04:46:13 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 29 Mar 2022 19:46:11 +0800
+ 15.0.1497.2; Tue, 29 Mar 2022 04:46:12 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 29 Mar 2022 19:46:11 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Tue, 29 Mar 2022 19:46:11 +0800
@@ -52,18 +52,15 @@ CC: <linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, <ryder.lee@kernel.org>,
  <wenst@chromium.org>, <chunfeng.yun@mediatek.com>, Tinghan Shen
  <tinghan.shen@mediatek.com>
-Subject: [PATCH v12 2/3] dt-bindings: mmc: mtk-sd: increase reg maxItems
-Date: Tue, 29 Mar 2022 19:45:39 +0800
-Message-ID: <20220329114540.17140-3-tinghan.shen@mediatek.com>
+Subject: [PATCH v12 0/3] Add basic SoC support for mediatek mt8195
+Date: Tue, 29 Mar 2022 19:45:37 +0800
+Message-ID: <20220329114540.17140-1-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.15.GIT
-In-Reply-To: <20220329114540.17140-1-tinghan.shen@mediatek.com>
-References: <20220329114540.17140-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_044621_451424_8A4A0F22 
-X-CRM114-Status: UNSURE (   9.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220329_044621_210997_549BBA66 
+X-CRM114-Status: GOOD (  15.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,28 +77,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add optional host top register base for the reg binding description.
+This series adds basic SoC support for Mediatek's SoC MT8195.
 
-Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 ---
- Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Changes in v12:
+  - update mtk-sd.yaml to extend reg property and fix yamllint error
+  - add xhci nodes and move xhci3 property (usb2-lpm-disable) to evb.dts
+Changes in v11:
+  - rebase on 5.17-rc4
+Changes in v10:
+  - clean CC list
+Changes in v9:
+  - remove duplicated cpus dt-bindings patch in v8
+Changes in v8:
+  - v7 mediatek,spi-mtk-nor.yaml patch is applied in branch for-5.17 at 
+    kernel/git/broonie/spi.git
+  - v7 pinctrl-mt8195.yaml patch is applied in branch for-next at 
+    kernel/git/linusw/linux-pinctrl.git
+  - add cortex-a78 compatible to cpus dt-bindings
+  - add mediatek,drive-strength-adv property to pinctrl dt-bindings
+  - fix evb dts
+    - remove i2c nodes with disabled status from dts
+    - fix pin properties not match pinctrl dt-bindings
+    - remove unnecessary u3port*
+  - fix dtsi
+    - fix node format
+    - reorder oscillator* nodes 
+    - fix node name of cpu idle nodes
+    - remove clock-frequency property in the timer node
+    - reorder clock and clock names in usb nodes
+Changes in v7:
+  - refine title of spi-nor dt-bindings patch
+  - refine commit message of pinctrl dt-bindings patch
+  - update pinctrl-mt8195.yaml
+    - change property pattern from 'pins' to '^pins'
+    - update examples with new property in descriptions
+    - add new example
+  - drop '_' from node names of pinctrl subnodes in mt8195-evb.dts
+Changes in v6:
+  - rebase on 5.16-rc1
+  - add new clock name to spi-nor dt-bindings
+  - add "pins" property in pinctrl dt-bindings
+  - fix fails of dtbs_checks
+    - remove "arm,armv8" not matched in yaml from cpu compatile
+    - fix node name of xhci
+    - remvoe xhci upstreaming wakeup properties
+    - remove xhci unused properties address-cells and size-cells
+    - fix node name of ufs-phy 
+    - fix node name of spi-nor
+    - fix node name and sub-nodes of pinctrl
+    - fix mmc compatible
+Changes in v5:
+  - enable basic nodes in mt8195-evb.dts
+  - remove dedicated clock nodes
+  - add mmc2 node
+  - fix interrupt number of pinctrl node
+  - update clock nodes to apply internal fixes
+  - add dt-bindings for perficfg node
 
-diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-index 7032f7adf3ca..6d41bcec900f 100644
---- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-+++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-@@ -40,7 +40,8 @@ properties:
-           - const: mediatek,mt8183-mmc
- 
-   reg:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 2
- 
-   clocks:
-     description:
+v4 thread:
+https://lore.kernel.org/all/20210922093303.23720-2-seiya.wang@mediatek.com/
+v3 thread:
+https://lore.kernel.org/all/20210601075350.31515-2-seiya.wang@mediatek.com/
+v2 thread:
+https://lore.kernel.org/all/20210319023427.16711-10-seiya.wang@mediatek.com/
+v1 thread:
+https://lore.kernel.org/all/20210316111443.3332-11-seiya.wang@mediatek.com/
+---
+
+Tinghan Shen (3):
+  dt-bindings: mmc: mtk-sd: fix yamllint error
+  dt-bindings: mmc: mtk-sd: increase reg maxItems
+  arm64: dts: Add mediatek SoC mt8195 and evaluation board
+
+ .../devicetree/bindings/mmc/mtk-sd.yaml       |    6 +-
+ arch/arm64/boot/dts/mediatek/Makefile         |    1 +
+ arch/arm64/boot/dts/mediatek/mt8195-evb.dts   |  173 +++
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 1045 +++++++++++++++++
+ 4 files changed, 1223 insertions(+), 2 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8195.dtsi
+
 -- 
 2.18.0
 
