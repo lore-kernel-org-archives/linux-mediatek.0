@@ -4,78 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89822C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 19:11:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC35AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 20:11:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E9O5I/wJjbPOUkC2i3pPoZK88Gn1ehHO4w7YMc4v8j8=; b=UhRkk6CjFezIGp
-	g4p6Szdj6jWKP3MCXjycCjiBrFFFYLeKH6UOipvRzleVLREmkhK0bx456n7AYHamA5QnCYwbqmC3v
-	31VlpCnKUmAP98pnHq3+g+kBQIiG0tBm4LRoQk6KIpcWBTvNmwIux+cdEAN0h9QgnaEMn+PxidtK1
-	x0h+P9hDcYrEMaU62B+8sSSqWMJdhllelIpiT8bhIr0XfjfLiBGJKzuoYLn9n+g6vQtKQNcQwndAW
-	u/PFl36Kwo8uhvFl3Ptsiu8+9klsBQlD5lD5FgzFsCiizG/yUXARIxvNNJPn6RWXkS8qWPdvHWbpR
-	ePgT+vYUGzcscu3/wpMA==;
+	List-Owner; bh=l9QI2U+SrG3ZPqqD9A2eNNYt88qbCIBlsjXJOctDAD4=; b=Zw7DZp7fEXLv3Q
+	wxPha8KdDFs9250l7M617LWtMzOsnT3zTnA6xvREhRdyMh+T3MsI+ykn7h7kdSIluK4pVOT4KGjF0
+	dbFVNy8tS1GfA56aguhi9OAuaeDICapERFlThmmBhDvFKiYJk6Aehd9CY87OPoshDrym2rTvfeJa6
+	d7Z1Z21gYC5qtchZQ2v7BASdYzfM7OxhOH2jVttk6OXsAZSAJFjbMGKfJFvHhhN/u7LyyOLV86LNt
+	zphFykpUFsxgUxDeLhFMYbhHs776MRpvreXgoikemAi/vo1b1ycaUbrqXgRKWrz4xIUbhkpXQoUw+
+	mL+PKA4FUQycfXgV51Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZHFQ-00DKUU-8S; Tue, 29 Mar 2022 19:11:20 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nZIBt-00DQEw-CI; Tue, 29 Mar 2022 20:11:45 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZHFC-00DKPy-EC; Tue, 29 Mar 2022 19:11:07 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 331AB61599;
- Tue, 29 Mar 2022 19:11:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 96D8CC34100;
- Tue, 29 Mar 2022 19:11:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1648581064;
- bh=Z9f2r56vngMSRkwrHGORVdFRCd3Ja+qoUjCgMo0+fMY=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=AOqfCUf7yLFwIfnj5brTUWDumtDXd+nH9QlX4rQ0iGE9+11qaGnEBp5dfHRHfjO32
- aBcnWaGdSBdUaIJbBTN+NVlcs29bfVJx9bZH/qD1VHGmFP37vRLWLy5sH9LyCgTrTC
- HVBcc1/XBxBl/En/IFGZxjAo/jvof8AQcq7muiF49yBOPh4ACv+UoTSYtAcvsrYLsv
- xw/IjhZznRIY/cA1ecbc9P7eyS4w+NLmU97gmiBuxSvJfmPOXLHi5r+zKoQPY9CQXl
- kAiQc+kfmQQyHFY3DHfYToyr/8CLrbSkEZwdHaRxioM8S+oVpOQIJ5NxD4qyimkzXm
- ocTtn0FJky02Q==
-Received: by mail-ed1-f51.google.com with SMTP id h1so21829380edj.1;
- Tue, 29 Mar 2022 12:11:04 -0700 (PDT)
-X-Gm-Message-State: AOAM530hrMPEtAHOP3v6J3xrOGGUEsUlJlLxsVWP3IZPf3imUIzl+REf
- v+BbCRCyFDGIVdRx104kSaAP8KgRpSiNE9x4Pw==
-X-Google-Smtp-Source: ABdhPJz2EcwfbpLLNfbPV4lpc6oRX1DfGgrw/zODvGbU5XGzz47/sV8C7BZQxzV2+8hYQITbC12p1Ms7BrmdH7NXLW4=
-X-Received: by 2002:a05:6402:2711:b0:419:5a50:75ef with SMTP id
- y17-20020a056402271100b004195a5075efmr6622477edd.280.1648581062773; Tue, 29
- Mar 2022 12:11:02 -0700 (PDT)
+ id 1nZIBh-00DQCB-LX; Tue, 29 Mar 2022 20:11:35 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id EBFE51F4411F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1648584690;
+ bh=3+u06kszAFsjGLV5kQ+MCKFOJ2X8S3uDlpfpQmxL90I=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=hzs3k3hRcp2Xgj8dg4wykt9DEvnOqLtFTAwiQn52KasZKnxABiJ8ZqHm80rFmN2zw
+ gk/Nu1NPhJe9wi4hwY4tXBGODvv1+vGcsKnse9BI/+tWrI04U0Q4nKNd0AOt3nCkxt
+ Nkj9UbN/BeHI/6eyXcsbIRyGq4iqzqGB6tLrUf8s65ZlshT0HbVlPYM25qmziUFctI
+ /jp9wRmW6oE0CtHkd4msDr56ZbZiKVIfSS4mpxLEcr/Yim05SBXzWoKJze20Mh1F0W
+ JLCE576lwdtq043wca8cr4hPBYVd0agH2iIflvtZU/6Wx35HJCs3CfvMmNFrCSqtr3
+ wA7zhvO7xl94g==
+Date: Tue, 29 Mar 2022 16:11:25 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
+ Hui Liu <hui.liu@mediatek.com>
+Subject: Re: [PATCH v4 03/22] arm64: dts: mt8192: Add gce node
+Message-ID: <20220329201125.7l47kl7rmf4hjyvc@notapiano>
+References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
+ <20220318144534.17996-4-allen-kh.cheng@mediatek.com>
+ <a4935385-e7a5-8650-914b-73c699d2f8ca@gmail.com>
 MIME-Version: 1.0
-References: <20220329114540.17140-1-tinghan.shen@mediatek.com>
- <20220329114540.17140-3-tinghan.shen@mediatek.com>
- <d720a5e9-d078-6c60-f55b-0506c4b4e1fa@collabora.com>
-In-Reply-To: <d720a5e9-d078-6c60-f55b-0506c4b4e1fa@collabora.com>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Tue, 29 Mar 2022 14:10:50 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqLrgW4GwSZ20x5Gsu-umjtw4x8k=uHeZk9T2+A3K6UT0Q@mail.gmail.com>
-Message-ID: <CAL_JsqLrgW4GwSZ20x5Gsu-umjtw4x8k=uHeZk9T2+A3K6UT0Q@mail.gmail.com>
-Subject: Re: [PATCH v12 2/3] dt-bindings: mmc: mtk-sd: increase reg maxItems
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Tinghan Shen <tinghan.shen@mediatek.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>, 
- Ulf Hansson <ulf.hansson@linaro.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Wenbin Mei <wenbin.mei@mediatek.com>,
- linux-mmc <linux-mmc@vger.kernel.org>, devicetree@vger.kernel.org, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
- Ryder Lee <ryder.lee@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>, 
- Chunfeng Yun <chunfeng.yun@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <a4935385-e7a5-8650-914b-73c699d2f8ca@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_121106_558933_6B859402 
-X-CRM114-Status: GOOD (  16.20  )
+X-CRM114-CacheID: sfid-20220329_131133_877876_80FCD76A 
+X-CRM114-Status: GOOD (  14.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,41 +69,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 29, 2022 at 7:43 AM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 29/03/22 13:45, Tinghan Shen ha scritto:
-> > Add optional host top register base for the reg binding description.
-> >
-> > Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
-> > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+On Wed, Mar 23, 2022 at 06:24:03PM +0100, Matthias Brugger wrote:
+> =
+
+> =
+
+> On 18/03/2022 15:45, Allen-KH Cheng wrote:
+> > Add gce node for mt8192 SoC.
+> > =
+
+> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> > Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 > > ---
-> >   Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 3 ++-
-> >   1 file changed, 2 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > index 7032f7adf3ca..6d41bcec900f 100644
-> > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > @@ -40,7 +40,8 @@ properties:
-> >             - const: mediatek,mt8183-mmc
-> >
-> >     reg:
-> > -    maxItems: 1
-> > +    minItems: 1
-> > +    maxItems: 2
->
-> it's just maxItems... adding minItems: 1 is not required.
+> >   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 10 ++++++++++
+> >   1 file changed, 10 insertions(+)
+> > =
 
-If 1 entry is still valid, then minItems is required. If not, then
-it's an ABI break.
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot=
+/dts/mediatek/mt8192.dtsi
+> > index 0f9f211ca986..9e1b563bebab 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > @@ -6,6 +6,7 @@
+> >   /dts-v1/;
+> >   #include <dt-bindings/clock/mt8192-clk.h>
+> > +#include <dt-bindings/gce/mt8192-gce.h>
+> >   #include <dt-bindings/interrupt-controller/arm-gic.h>
+> >   #include <dt-bindings/interrupt-controller/irq.h>
+> >   #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
+> > @@ -552,6 +553,15 @@
+> >   			#size-cells =3D <0>;
+> >   		};
+> > +		gce: mailbox@10228000 {
+> > +			compatible =3D "mediatek,mt8192-gce";
+> > +			reg =3D <0 0x10228000 0 0x4000>;
+> > +			interrupts =3D <GIC_SPI 203 IRQ_TYPE_LEVEL_HIGH 0>;
+> > +			#mbox-cells =3D <3>;
+> =
 
-Rob
+> #mbox-cells should be 2, right?
+
+It should indeed. The mboxes property in patch 21 should also have the third
+argument ("1") dropped.
+
+Thanks,
+N=EDcolas
 
 _______________________________________________
 Linux-mediatek mailing list
