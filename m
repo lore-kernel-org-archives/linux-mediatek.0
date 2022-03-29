@@ -4,86 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCC5AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 14:28:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82A2DC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 14:44:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CzaWRvmCNDfbNWucAb05HFkW7aZalGnvVeM7FrCH8NA=; b=M3Yjy+fpjnJela
-	OV5kBQYjQbE0Vyv9+zmVwfCAmroSQUUmVU8XTH/hQahN8ATyOgLQ/Jp8i6UQSKZPvLs3QYxbfmEjt
-	s47Wv1SE1JMN2t4hF7t5FKa7TmR7mUVcmKRqRfbD1OGesFnZfNnR9lOvspf++loMM7OFYWkYFp6Hf
-	z887/vTTNtYQO5UWpshpqClhjsD5L5W88Ezr9sSY3Sd5mNKO3OhVnX5nBnbkswILZBw1C7Hl3VVvC
-	MMHGYE8GKGYDDLd3w2kwtUoojRQ/BbMgVXJfHqiETJXhgKD80VvngWZfMw6ZvcC/ZlMDsMEeFHyit
-	YFImTw9YUVkxkzPVU0yg==;
+	List-Owner; bh=sqgv7yIBNNsJeAJrSv/GZVE5mKpT/DHNaAW4eqYsjYk=; b=jlwEAWq1t87W2J
+	OxvFhS80YgwUI1lOJxJfyw4nO7Y93rsx0d8W95LV/UnH5+8aBbIFrB6oEHl2HrhwaydxQPdA4Qdcb
+	QmPgxOxdUWu9FVH0LxJgFGLjG27nexnmY5Uw8qqbXrEI/N4Nc11gRks1C42ZTgz9AjqO0DNd6luq/
+	85aqxiujLK8PATz3hHh1mH6YTqPW/4BGOc+bpmN238m0yiONnmcknDhW+A4hQCm/5i4uJ2Sk3f1Fc
+	74VtfETaiZ41pg5Kql9QzEZub1NE7HUEetUBG6I0jVpX0brgRr0Q82p58LYZYCpvz9Wz5/rUGVhhS
+	YvK63t8qcdqkSzb9WC9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZCpE-00CUMh-UC; Tue, 29 Mar 2022 14:28:00 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1nZD4y-00CWlc-Pg; Tue, 29 Mar 2022 14:44:16 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZCp2-00CUJL-Br; Tue, 29 Mar 2022 14:27:49 +0000
-Received: by mail-wm1-x333.google.com with SMTP id h16so10442077wmd.0;
- Tue, 29 Mar 2022 07:27:46 -0700 (PDT)
+ id 1nZD4m-00CWiS-Eg; Tue, 29 Mar 2022 14:44:05 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id u16so25173796wru.4;
+ Tue, 29 Mar 2022 07:44:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=UkJOWRMCUbYGorBI9uSjtZM4DcqQkhNQvraKREd6DJc=;
- b=V1fRhBIzg9+s+zRnUxg0fUPZxucXslx9ozftXP1RpkHrH4Ef/J8W7paMsNPEPzNxWp
- /+Ns57oOWvMkb+7cVyvajnyIZ2+yq4WYSY+FWPo89ChQev2ybZaNvp7Hn/qmjA5CdEKM
- 73JvpoORSJ1tAfT4h1Yt1/pEtUUwyPm3yFV2bqjzBPkbPARl4U0g1qwDrdxAMHlfF1sJ
- SGrTJ1HowfJ8kmHppGztqy+CtZcl7iQKEd/VgkKew8vlAAVgS5hVKn1w1TmYwmiWcor5
- S42MkiEXSmEGlOXujsai4H4vmK3sMM1+Yx+59rNiHmIwoNyQtdcVWaG4DvPSBIZ6sflS
- 5lkQ==
+ h=message-id:date:mime-version:user-agent:content-language:to:cc
+ :references:from:subject:in-reply-to:content-transfer-encoding;
+ bh=f1hZOQmmNmyJ7U7nVAiaQQ0lwaiu4vRuIQsNB/VIsek=;
+ b=LFwUL3ZRs6RYhHzf2Bdq3dc2ZslNWBxkB1yhR+wEGS6JH1CAINYO8yj+nLkeMHE24p
+ P5+HJJ9yWBhuBXgX/vfmtySqT1FV/U6hp7W7fVDw/xJ6jwxk/ymbYXTVT92XWs/O9E/6
+ 4VMhn4h7OzWX2RHnlJoqHAlaRNFPgU0R/cWjA/iT6aFYEDbkImo4/pFTNs7KsML/jku8
+ ntEHwcuSkgx2jmUNHIsUhxwdHWu7KtNBW51dNBC/v6uAH43kyQmKk9tgQA7WSS3AuHRI
+ XQCrFbf2xcxV4JEHdrv7XDvtf4ESDi19uZAe4x4q2HQr2zgwlTFm8e1/vjvZY8wpc3dx
+ 1TGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
+ h=x-gm-message-state:message-id:date:mime-version:user-agent
+ :content-language:to:cc:references:from:subject:in-reply-to
  :content-transfer-encoding;
- bh=UkJOWRMCUbYGorBI9uSjtZM4DcqQkhNQvraKREd6DJc=;
- b=cdC+KJQrJbjV5F0m0wzThxcvQXLMrSlVKqmApNLPB+V/wYjv8svhU47b2lRhJI3Sr5
- KkOK1meXBpDEhk8c5PTEwvbCBxqxvfFJQjixKznUfly3P2oLoydd9EZZUUmmBC4j2N1f
- BS73sZruOibUVbhxGrhTTIsbayPFNYmiShGxFNARrtpHf4jFRqiMiF1Mfo+/o3pIavAp
- G8NErnkgYdATogF5FzuXS0DjieueHPHJEbQJk/hdHlX90abjrOzpnldWrawOfx3ppm2I
- WEypDwM4ukJp1v6NLMRKlyyCEBD5ehre5xHHlUMUUyOwW8+todfdsYozggfjXwMMOf4U
- Q4WA==
-X-Gm-Message-State: AOAM533TjTKBVTxcdLR1zj3ibilBZn33G5FLXCGdgsTkYBlT/RrlgYaL
- 0XodD+Naq+/2OMzQe6qgsQ0=
-X-Google-Smtp-Source: ABdhPJwX2KEy3tkZ1IjhynPidjlbcvxK0tdLnJQsJX0bhkANmcG0wKDngAHg7t+Pw1CwomTxSCE3nA==
-X-Received: by 2002:a05:600c:19cf:b0:38c:b1fd:1fc9 with SMTP id
- u15-20020a05600c19cf00b0038cb1fd1fc9mr7334595wmq.103.1648564065633; 
- Tue, 29 Mar 2022 07:27:45 -0700 (PDT)
+ bh=f1hZOQmmNmyJ7U7nVAiaQQ0lwaiu4vRuIQsNB/VIsek=;
+ b=mD2MpAqgmCuM13ix00qpGNCAsJ19CIIeqyaLI5KIMlspy4TLhNADJ/qhrKOo3pz8Cl
+ Cg59hOs/IW7iJ1UByMIJLvGvmfUtZklIqs6pVqI9m12qqBsJt2vso4ZnKKK7GbubhDTW
+ 5VCscchjSCv6mPCtb9THhOhdMv7Z3v8TcLsVcu1lbU5UFtuPwKwb7Q0yOBaMQDkJQmmv
+ YyNoCqoG6UjSHiknkSoSSOUHa+CXNWULV7qawca/Z22ZzNgOGNCUPTudKw6ev8QFqvp8
+ Y/1X39qkk438A/oie4t9zbwVTRVqfP04ELeP6lzulSZ46i0axOdakpG1cDNsWMzXBW7K
+ rGeA==
+X-Gm-Message-State: AOAM530Ca6mGZm7Ws9UYCbQDQsr09JfLuGz4j5orjDCfQ4aPXF1tY+e5
+ E0fNHZsUp3T1uv+v1DkkJuw=
+X-Google-Smtp-Source: ABdhPJzMwHCsnpQQtTp4CjjZBj9sm+ezIYCdnM4RPz8U92H0vmmgiVSarO5uo1zeXs7VamaIsqqIkw==
+X-Received: by 2002:adf:ec41:0:b0:1ed:beee:6f8f with SMTP id
+ w1-20020adfec41000000b001edbeee6f8fmr30629170wrn.110.1648565042644; 
+ Tue, 29 Mar 2022 07:44:02 -0700 (PDT)
 Received: from [192.168.1.145] ([207.188.167.132])
  by smtp.gmail.com with ESMTPSA id
- u8-20020a5d4348000000b00203dbfa4ff2sm14956641wrr.34.2022.03.29.07.27.44
+ 7-20020a05600c028700b0038cc9bfe6a4sm2288573wmk.37.2022.03.29.07.44.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 29 Mar 2022 07:27:45 -0700 (PDT)
-Message-ID: <32931f81-5615-8156-4c67-bb4260488185@gmail.com>
-Date: Tue, 29 Mar 2022 16:27:43 +0200
+ Tue, 29 Mar 2022 07:44:01 -0700 (PDT)
+Message-ID: <d3b8f78b-24b0-d0f1-f5cd-c3cb29ee25d7@gmail.com>
+Date: Tue, 29 Mar 2022 16:44:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [PATCH v12 2/3] dt-bindings: mmc: mtk-sd: increase reg maxItems
 Content-Language: en-US
-To: Tinghan Shen <tinghan.shen@mediatek.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Wenbin Mei <wenbin.mei@mediatek.com>
-Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, ryder.lee@kernel.org,
- wenst@chromium.org, chunfeng.yun@mediatek.com
-References: <20220329114540.17140-1-tinghan.shen@mediatek.com>
- <20220329114540.17140-3-tinghan.shen@mediatek.com>
+To: Zhiyong Tao <zhiyong.tao@mediatek.com>, lee.jones@linaro.org,
+ robh+dt@kernel.org, lgirdwood@gmail.com, broonie@kernel.org,
+ eddie.huang@mediatek.com, a.zummo@towertech.it,
+ alexandre.belloni@bootlin.com, fshao@chromium.org
+Cc: srv_heupstream@mediatek.com, hui.liu@mediatek.com,
+ hsin-hsiung.wang@mediatek.com, sean.wang@mediatek.com,
+ macpaul.lin@mediatek.com, wen.su@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20220329115824.13005-1-zhiyong.tao@mediatek.com>
+ <20220329115824.13005-2-zhiyong.tao@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220329114540.17140-3-tinghan.shen@mediatek.com>
+Subject: Re: [PATCH v1 1/1] pwrap: mediatek: fix wait time out issue
+In-Reply-To: <20220329115824.13005-2-zhiyong.tao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_072748_439464_0DD3F97A 
-X-CRM114-Status: GOOD (  16.67  )
+X-CRM114-CacheID: sfid-20220329_074404_532630_126A322A 
+X-CRM114-Status: GOOD (  19.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,40 +101,59 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 29/03/2022 13:45, Tinghan Shen wrote:
-> Add optional host top register base for the reg binding description.
+On 29/03/2022 13:58, Zhiyong Tao wrote:
+> From: "Zhiyong.Tao" <zhiyong.tao@mediatek.com>
 > 
+> add sleep delay before read "jiffies"
+> 
+> Signed-off-by: Zhiyong.Tao <zhiyong.tao@mediatek.com>
+> ---
+>   drivers/soc/mediatek/mtk-pmic-wrap.c | 8 ++++++--
+>   1 file changed, 6 insertions(+), 2 deletions(-)
+>   mode change 100644 => 100755 drivers/soc/mediatek/mtk-pmic-wrap.c
+> 
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> old mode 100644
+> new mode 100755
+> index 952bc554f443..ac7139a67e87
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -12,6 +12,7 @@
+>   #include <linux/platform_device.h>
+>   #include <linux/regmap.h>
+>   #include <linux/reset.h>
+> +#include <linux/delay.h>
+>   
+>   #define PWRAP_MT8135_BRIDGE_IORD_ARB_EN		0x4
+>   #define PWRAP_MT8135_BRIDGE_WACS3_EN		0x10
+> @@ -1197,10 +1198,13 @@ static int pwrap_wait_for_state(struct pmic_wrapper *wrp,
+>   	timeout = jiffies + usecs_to_jiffies(10000);
+>   
+>   	do {
+> -		if (time_after(jiffies, timeout))
+> -			return fp(wrp) ? 0 : -ETIMEDOUT;
+>   		if (fp(wrp))
+>   			return 0;
+> +
+> +		usleep_range(10, 11);
+> +
 
-Is this based a on a new version of the IP? Shall we make the second reg 
-mandatory for the new HW? If I remember correctly the reg needs to be restored 
-after power save event. So I suppose mmc won't work if that's not done. So 
-optional wouldn't be the right approach.
+You need to explain this change. Why is it needed, are you sure it does not 
+break other platforms etc.
 
-Can you please clarify if that's the case.
+I can guess why you need that patch here. In any case in the code you provide, 
+it would make sense to move the first if out of the do loop and only after this 
+wait 10 us before reading again. Right now the code does usleep only after every 
+other read.
 
-Thanks,
+Regards,
 Matthias
 
-> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> ---
->   Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> index 7032f7adf3ca..6d41bcec900f 100644
-> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> @@ -40,7 +40,8 @@ properties:
->             - const: mediatek,mt8183-mmc
+> +		if (time_after(jiffies, timeout))
+> +			return fp(wrp) ? 0 : -ETIMEDOUT;
+>   	} while (1);
+>   }
 >   
->     reg:
-> -    maxItems: 1
-> +    minItems: 1
-> +    maxItems: 2
->   
->     clocks:
->       description:
 
 _______________________________________________
 Linux-mediatek mailing list
