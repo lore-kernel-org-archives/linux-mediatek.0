@@ -4,58 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDF34C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 07:53:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B6F8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 07:56:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6dqAeyh76j3AZc6ABHSkGZz3XJnssPFL0rEv6nDlSY8=; b=LmiXAix1SmvNTc
-	PvVytiyCRdd6G1B58tinwFezJvn0YkfpjJEo1tBJOIf7v211JEGNpW2PBkzBo/gPbPOSyHmZVuJ5t
-	3O/f4B3CHzfau8Sd/UHMXOPOut9scpVNpgIlR6S3RVxnQbXns0NvOeUMuIhreRhcNFpb0eXPOOAXL
-	0ttkIehmZBqVtOGDmRLX6fBCyllgAgFPTv0RzuMSGhLW5sjpOVFvURx+8oPRJy76ZKhPryUhxmtOk
-	sbF37X2hqbzsjUTsbJ7bkxCvC8nG+F9PaZapExvuu5bfeQinZHNnc6Rj42Uv+2OBAdfFSKIWtBZ7F
-	uqlH5ExP1SvINo2+mh+A==;
+	List-Owner; bh=vgNCPn+Czft5XsldyjFNf7mAGdonjrD6d1W++KdSAWg=; b=Nw5d8zwMnpuQD/
+	JLGD0Ux3x4cnCmEg+ZxIuFjlBUhmYoVwO6+VYbgX2rwgZV3zCuicuUlewJMeoD/NyARNT0cf3dd0e
+	wRWrRSWNc0h3FKUw19n14jWxwEW9cSIvSUHBDItbhpsSHYkjauBOF613CZpsqAlyt0jyFLR++bX/w
+	FN9fEWs6zCsASxNZ603OPFq0IXGYZ9gC/hLaSQ2gLe7tiI8pVn6MYyGBFS8gzj/IWVyNpgzFxmgDK
+	RlENCEWVX2YrfRPichswAmsyggEoQYOeJY58QEV1jRC5e1keBTKrx0ramFoNA/E7G7yy24ffgXe39
+	pVk6uzRqYv4G2e5ytaRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZ6fh-00BOGT-33; Tue, 29 Mar 2022 07:53:45 +0000
-Received: from muru.com ([72.249.23.125])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZ6fT-00BOCz-3n; Tue, 29 Mar 2022 07:53:32 +0000
-Received: from localhost (localhost [127.0.0.1])
- by muru.com (Postfix) with ESMTPS id 727F580F9;
- Tue, 29 Mar 2022 07:51:24 +0000 (UTC)
-Date: Tue, 29 Mar 2022 10:53:27 +0300
-From: Tony Lindgren <tony@atomide.com>
-To: Daniel Palmer <daniel@0x0f.com>
-Cc: Ansuel Smith <ansuelsmth@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- DTML <devicetree@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-actions@lists.infradead.org, linux-sunxi@lists.linux.dev,
- linux-omap@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-arm-kernel@axis.com, linux-aspeed@lists.ozlabs.org,
- linux-rpi-kernel@lists.infradead.org,
- chrome-platform@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com,
- linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
- linux-tegra@vger.kernel.org, linux-oxnas@groups.io,
- linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org
-Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
-Message-ID: <YkK691VG6ON/6Ysn@atomide.com>
-References: <20220328000915.15041-1-ansuelsmth@gmail.com>
- <CAFr9PXkgrRe-=E=GhNnZ4w1x_FMb97-_RmX6ND1vEd74_TbZSw@mail.gmail.com>
+	id 1nZ6hm-00BOim-A6; Tue, 29 Mar 2022 07:55:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nZ6hj-00BOiI-Ek; Tue, 29 Mar 2022 07:55:53 +0000
+X-UUID: b7cffa761c174ba591e3307b24f44915-20220329
+X-UUID: b7cffa761c174ba591e3307b24f44915-20220329
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1887318357; Tue, 29 Mar 2022 00:55:45 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 29 Mar 2022 00:45:43 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 29 Mar 2022 15:45:41 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 29 Mar 2022 15:45:41 +0800
+Message-ID: <e4edbb8d599fe202aa89f4dea88e6addfbeb4e0d.camel@mediatek.com>
+Subject: Re: [PATCH v4 17/22] arm64: dts: mt8192: Add dpi node
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, "Hui Liu"
+ <hui.liu@mediatek.com>
+Date: Tue, 29 Mar 2022 15:45:41 +0800
+In-Reply-To: <019b1a59-7531-75cf-3b86-d2798ca9823a@gmail.com>
+References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
+ <20220318144534.17996-18-allen-kh.cheng@mediatek.com>
+ <019b1a59-7531-75cf-3b86-d2798ca9823a@gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAFr9PXkgrRe-=E=GhNnZ4w1x_FMb97-_RmX6ND1vEd74_TbZSw@mail.gmail.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_005331_237669_383133D7 
-X-CRM114-Status: GOOD (  18.53  )
+X-CRM114-CacheID: sfid-20220329_005551_537161_D13A42C6 
+X-CRM114-Status: GOOD (  16.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,41 +76,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Matthias,
 
-* Daniel Palmer <daniel@0x0f.com> [220328 08:53]:
-> Hi Ansuel
+On Fri, 2022-03-25 at 16:24 +0100, Matthias Brugger wrote:
 > 
-> On Mon, 28 Mar 2022 at 09:09, Ansuel Smith <ansuelsmth@gmail.com> wrote:
-> >
-> > Hi,
-> > as the title say, the intention of this ""series"" is to finally categorize
-> > the ARM dts directory in subdirectory for each oem.
+> On 18/03/2022 15:45, Allen-KH Cheng wrote:
+> > Add dpi node for mt8192 SoC.
+> > 
+> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 11 +++++++++++
+> >   1 file changed, 11 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > index 71ad3adeed51..a77d405dd508 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > @@ -1236,6 +1236,17 @@
+> >   			power-domains = <&spm
+> > MT8192_POWER_DOMAIN_DISP>;
+> >   		};
+> >   
+> > +		dpi0: dpi@14016000 {
+> > +			compatible = "mediatek,mt8192-dpi";
+> > +			reg = <0 0x14016000 0 0x1000>;
+> > +			interrupts = <GIC_SPI 270 IRQ_TYPE_LEVEL_HIGH
+> > 0>;
+> > +			clocks = <&mmsys CLK_MM_DPI_DPI0>,
+> > +				 <&mmsys CLK_MM_DISP_DPI0>,
+> > +				 <&apmixedsys CLK_APMIXED_TVDPLL>;
+> > +			clock-names = "pixel", "engine", "pll";
+> > +			status = "disabled";
 > 
-> While I agree with this change and think it's for the good (browsing
-> the ARM dts directory at the moment is frustrating..) I think
-> buildroot and others need to be told about this as it'll potentially
-> break their kernel build scripting for ARM and probably messes up the
-> configs they have for existing boards.
+> We are missing the output port node here.
+> 
+> Regards,
+> Matthias
+> 
 
-Yeah.. And ideally this would be done in smaller steps as these will
-conflict with all the other pending patches.
+We will add output port in mt8192-asurada.dtsi (inlude mt8192.dtsi) for
+board level.
 
-For example, I have a pile of pending omap clock clean-up dts patches
-posted and tested waiting for v5.19-rc1 to apply. I'd rather not start
-redoing or fixing up the patches with sed :)
+Do we need to add any futher information in binding?
 
-What I'd like to have see is that at some point when suitable we move
-one machine at a time with a script if possible.. Maybe the dtb files
-generated would need to remain in the current directory until all of
-the machine dts files are moved? That should help with the build
-scripting too probably :)
+Thanks,
+Allen
 
-In general I like the idea though and I think we should do it.
+> > +		};
+> > +
+> >   		iommu0: m4u@1401d000 {
+> >   			compatible = "mediatek,mt8192-m4u";
+> >   			reg = <0 0x1401d000 0 0x1000>;
 
-Regards,
-
-Tony
 
 _______________________________________________
 Linux-mediatek mailing list
