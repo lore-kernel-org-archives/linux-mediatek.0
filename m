@@ -4,63 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A28FC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 12:48:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C2C1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 13:10:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4kbr7CUlg2QlOAFILn79HrPMLCHdj1lZKNPf2m49LF4=; b=xRZmmW1uFw+0Gg
-	rFXkW24FNWQ7FG5z7VCDcUTV60eWSo9NkUCfsP8xe4SnrvvthFJT1kqXI1ttKyPJshFnj56PWv11L
-	Uup41IMjY6O5IN4IjCTEEWWbb4sovB6YF9s2x7J4levxIdglcohyhqR/7egOS5guILOaMWb90gv+y
-	9ZNlpzGX93cWv+tdjoUvfJqynQk+j0QjIRDdVY4+1s7o1bD4DwPCOUI6TMZ+x+d/4Y1FTpRrfT/56
-	1CL3pSsrK9ul0W7IsqI4LaeIg6hKMqfBi8+xVfIWDArnL/eUxfn5wZPeXAO00YJciwdVgk8QMq30x
-	6rgLWpt/IQtEPyyFiMtw==;
+	List-Owner; bh=gVi19Ews8tq4sdJb4FsUpY2X3LFuVsoa+91IsreMPc0=; b=deDOKpSJ6r4qXX
+	+Q5iNa5lb82eIuKfWjCrAFm/iLCnE5gMzzxzLruLHwlwyUPKmuZbzWyTGStL4JavaACXXTM0SCtEQ
+	Zo6bzaYEHwA4HsL7P9rnwq5og+qHibMZhDK5DTX3hD2ISnR19wgWn/eQU7VcyWSCRXFqJFyUHstia
+	Ljo9bn0MWMGnRpml5qSq/eJfvvIOvVNmHNk7yyopig1Z7HcPREdPNrRY9emnViigCJnuzU51wLKw0
+	AnCLP5ci/68OEw9Gwts3qNI7tVzL0pSv6KP06HF9PeC9Lrea2lkvXdukMWR0BbJNemjEXFvD486NC
+	MQjGcN1xpNufRAgW5uDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZBGZ-00CFiz-87; Tue, 29 Mar 2022 12:48:07 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nZBbp-00CILu-0S; Tue, 29 Mar 2022 13:10:05 +0000
+Received: from mail-ot1-f49.google.com ([209.85.210.49])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZBGM-00CFg2-MO; Tue, 29 Mar 2022 12:47:56 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id BCB281F43E07
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1648558073;
- bh=tJzMYOhX+6l/q9zZjN+QPrd8ljoj0rb7a1tgDfRrPbE=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=O8GNe3VfKg3pYdZ1I8sCYquUFd3JTXG47fVyk4/DELPOhaEyYXPaqqCMaQRum5ABL
- nLTj/0NFPa6rsIOqyIbVU0WBvKCO/ed/kSqGLCT5Dw33SMxA+BReycYTJqX4wEY7t/
- EZwqjhi2wfNLtxbPYZCew6QiDqDOIsfO/5vhk9ZQ6lGYiTKZ4pVNKuj9Y2ciqIJhuz
- t4FXcLiZ1QQmo9J0TC/B9hsLFIszOpTvq9ezpMZNaHUnoqeMiZCYw5EXZrF/IcchM9
- NCVD/dDFRANMa3ojLk4nDut1LDYowr0eIuTU+zLw3hNpbqvQCUChfDSTbU+7cWteW1
- 7gmzR+I7KPV6w==
-Message-ID: <97f2b11d-15c7-d28e-f7b5-e65f2f333580@collabora.com>
-Date: Tue, 29 Mar 2022 14:47:50 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v12 1/3] dt-bindings: mmc: mtk-sd: fix yamllint error
-Content-Language: en-US
-To: Tinghan Shen <tinghan.shen@mediatek.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Wenbin Mei <wenbin.mei@mediatek.com>
-Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
+ id 1nZBbZ-00CII0-Ih; Tue, 29 Mar 2022 13:09:53 +0000
+Received: by mail-ot1-f49.google.com with SMTP id
+ k18-20020a9d7012000000b005cdb11186f2so11461039otj.9; 
+ Tue, 29 Mar 2022 06:09:48 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=pgmVS6Ri5wIx578wOnaD17/Gk0HO8xT8dcbeURwXcvM=;
+ b=O9JYOC3lYMVhhOzJnjB+lxV+4hyt0GnJQWtDt+dqcdpmEAC706AzWZDaJKQ7z2Tpeq
+ oTvpDSfcEjYCwkt4k+9ZYQAXIRQPaPcsDCegG9CEodjhhxJxvq2u8IM11fUsEHoY2Xqq
+ m07Sqi4Hh18npXabHRE/GG+lOwZ3mAr1urmOY5aXdjtCJGlodKR/IVA6ebFH10leKUAh
+ Nt8kMU9K+0ci/BluSLtxkdCFH4BQipABowyceCQUGslFkKCs/g6GEMVAv9NaRsSYUES3
+ wiATbdKqW2kswudxAU8MGuNfjcGFFhS9IfhDPolemLbCi7poSr9q0xpc32sSBK0GQatH
+ rC1g==
+X-Gm-Message-State: AOAM530+nNjuyW232EFG9AOtDCtEoNiDVwrGnFyZ4p0mD1kXsU4fHG7l
+ SXYU/sIhOb1/ELc9sZ0vDw==
+X-Google-Smtp-Source: ABdhPJxz1vLRb+ULvjznOE3SueYbicXZjpLRanPIOSO+cxvPbO6krkNLY2qTn6KPl8CwI3JDJM2gsQ==
+X-Received: by 2002:a9d:5614:0:b0:5b2:5fe3:8f1c with SMTP id
+ e20-20020a9d5614000000b005b25fe38f1cmr1052711oti.229.1648559387820; 
+ Tue, 29 Mar 2022 06:09:47 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ li20-20020a056871421400b000deaa91898fsm6115814oab.40.2022.03.29.06.09.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 29 Mar 2022 06:09:46 -0700 (PDT)
+Received: (nullmailer pid 482676 invoked by uid 1000);
+ Tue, 29 Mar 2022 13:09:45 -0000
+Date: Tue, 29 Mar 2022 08:09:45 -0500
+From: Rob Herring <robh@kernel.org>
+To: Irui Wang <irui.wang@mediatek.com>
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Tzung-Bi Shih <tzungbi@chromium.org>,
+ Alexandre Courbot <acourbot@chromium.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>,
+ angelogioacchino.delregno@collabora.com, Yong Wu <yong.wu@mediatek.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Maoguang Meng <maoguang.meng@mediatek.com>,
+ Longfei Wang <longfei.wang@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, Fritz Koenig <frkoenig@chromium.org>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, ryder.lee@kernel.org,
- wenst@chromium.org, chunfeng.yun@mediatek.com
-References: <20220329114540.17140-1-tinghan.shen@mediatek.com>
- <20220329114540.17140-2-tinghan.shen@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220329114540.17140-2-tinghan.shen@mediatek.com>
+ srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v3, 03/10] dt-bindings: media: mtk-vcodec: Adds encoder
+ cores dt-bindings for mt8195
+Message-ID: <YkMFGbgYq5DhLjt8@robh.at.kernel.org>
+References: <20220317082230.23622-1-irui.wang@mediatek.com>
+ <20220317082230.23622-4-irui.wang@mediatek.com>
+ <Yj4s0zcHxz3U3wlc@robh.at.kernel.org>
+ <ab2b24eeb51048227ad7b2ac659617a7da5b2e45.camel@mediatek.com>
+ <YkG8ka1xY2k+HWi1@robh.at.kernel.org>
+ <e41e909f85e3891edb6b66d7d5a810af103113c8.camel@mediatek.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <e41e909f85e3891edb6b66d7d5a810af103113c8.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_054754_893806_624C5E6B 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20220329_060949_659897_9FCD31D8 
+X-CRM114-Status: GOOD (  30.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,33 +95,79 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/03/22 13:45, Tinghan Shen ha scritto:
-> Documentation/devicetree/bindings/mmc/mtk-sd.yaml
->    54:81     error    line too long (95 > 80 characters)  (line-length)
+On Tue, Mar 29, 2022 at 09:26:37AM +0800, Irui Wang wrote:
+> Dear Rob,
 > 
+> Many thanks for your attention.
+> 
+> On Mon, 2022-03-28 at 08:48 -0500, Rob Herring wrote:
+> > On Sat, Mar 26, 2022 at 10:00:55AM +0800, Irui Wang wrote:
+> > > Dear Rob,
+> > > 
+> > > Thanks for your review and comments.
+> > > 
+> > > On Fri, 2022-03-25 at 15:57 -0500, Rob Herring wrote:
+> > > > On Thu, Mar 17, 2022 at 04:22:23PM +0800, Irui Wang wrote:
+> > > > > Adds encoder cores dt-bindings for mt8195.
 
-I can't reproduce this error that you're getting... this commit is not
-necessary, as the .yamllint file in the kernel allows a maximum line-length
-of 110 characters.
+[...]
 
-rules:
-   line-length:
-     # 80 chars should be enough, but don't fail if a line is longer
-     max: 110
+> > > > > +      mediatek,core-id:
+> > > > > +        $ref: /schemas/types.yaml#/definitions/uint32
+> > > > > +        description: |
+> > > > > +          Current encoder core id.
+> > > > 
+> > > > What is this for and what does its value correspond to in the
+> > > > h/w.
+> > > > We 
+> > > > generally don't do made up indices in DT.
+> > > 
+> > > It's for encoder core id, core@1a020000 must be core-0, 
+> > > core@1b020000
+> > > must be core-1, we add this property in each child node, so we can 
+> > > get core-id in drivers. If it can't ref "uint32" types yaml, would 
+> > > you mind giving some more suggestions ?
+> > 
+> > I still don't understand why it is needed. What is 'core-0'?
+> > 
+> > Is there some functional difference between the cores? If so,
+> > describe 
+> > that difference.
+> > 
+> > Rob
+> 
+> They are two different pieces of hardware, it's our encoder hardware
+> design. There are two encoder hardware cores inside MT8195, named core0
+> and core1(we can rename it, but core id should be declared),
+> for core0, its module base address is 0x1A02_0000, uses IOMMU
+> "vdo0_iommu" and power domain "POWER_DOMAIN_VENC",
+> for core1, its module base address is 0x1B02_0000, uses IOMMU
+> "vpp_iommu" and power domain "POWER_DOMAIN_VENC_CORE1".
+> So the two encoder cores have their own base, IRQ, clock, power, etc.
+> Each core can encode independently, moreover, they can work together
+> for higher performance. 
+> We will describe more details in YAML about it if it's OK for you.
 
-https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/Documentation/devicetree/bindings/.yamllint?h=next-20220329
+All the resources you list are in the child nodes, so you don't need 0 
+and 1 numbering for those. 
 
-Please drop this commit.
+Looking at the driver patches, the only thing I see distinguishing 
+core numbers is this:
 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> ---
->   Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+"frame#0 uses core#0, frame#1 uses core#1, frame#2 uses core#0...,
+
+Lock the device and enable the clock by used core, for sequence
+header encoding, it always uses core#0."
+
+Is this a requirement in the h/w or just what the driver picked? IOW, 
+could frame#0 use core#1?
+
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
