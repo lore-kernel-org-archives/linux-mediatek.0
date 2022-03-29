@@ -4,70 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 374D3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 10:28:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2619C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 10:34:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hXaIN6GpvSDI23yHRDjW3hcc9dSCa52MEa3EtpPYgxU=; b=LKfzSxeP/+o/g1
-	AlsimOy8Wxh2jfIpr8jV+mlxYRt2g8jeZd5crrCsFdZXPgzvGLmeQji1vNmYKRbECF4cLP+hmWSN4
-	/mWSbvyKxeaRy06ykpVYrQj4ZTylqTO52zC2eaJliBTc3Jd8IK5rrfkfPvdyyHY7wHu5vSESACAEF
-	GskmwJHXd7t+gEgTBide+doXzJ0Tj+nsXjy0HCWPH169WrV71bVMd8OneJ4Plu6aqRPW1iXAeyQg8
-	QcyCX0xvh9WCs+Qpe3Rco3V1fd+d0LA5a/Pme3fFicyVhKKqEvyJptRq6RbmKBaWmokLIo4QArkHF
-	1KSKtwY6HJRz0UifeuuQ==;
+	List-Owner; bh=yqqM6CLkJ4uibfbPSd6t6F/d6GH1SeDvMmye3a13Mp0=; b=QrI2kagHWAlY6h
+	k2sZBCWeDW8LJtkvEa10Zh2t8koWfzfF1Ro7HxMRmC1EyCNwARe02FDCIxN9QSPe8tsWoH3de7e4v
+	y4Ux+MBFlSJ+ltYG+dfcg2FWl8bxUN73NGSLZuoxUaUnhTeMzO8olptw0ZfmehPN3Wk+dKO3PL4ET
+	6oOya2XDAp12qyjhr7Xdd4VQH+PO5RGT7ueA4uittzr6NQbuG4jZTM/3G7EwjHM24Y5HeY9HZe8PQ
+	GbfDnjVQCbQLUqbMvQ/4Z6JYVOkMJLSYQ2iQgaDHKwyUBCiDq0uiXqjRohrPnRMxX/NkDcy47uQFs
+	mNet9+ZiPXAQJNHDZdbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZ959-00BoyI-Na; Tue, 29 Mar 2022 10:28:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nZ9Az-00BpYS-Jb; Tue, 29 Mar 2022 10:34:13 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZ94x-00Box9-DH; Tue, 29 Mar 2022 10:28:02 +0000
-X-UUID: 6a6e854b51014f2091c03648844f3f68-20220329
-X-UUID: 6a6e854b51014f2091c03648844f3f68-20220329
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <tinghan.shen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1434869402; Tue, 29 Mar 2022 03:27:52 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 29 Mar 2022 03:17:49 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 29 Mar 2022 18:17:48 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 29 Mar 2022 18:17:47 +0800
-Message-ID: <7283dd6732ae8c188c6f12183a977fb980cc8617.camel@mediatek.com>
-Subject: Re: [PATCH v11 3/3] arm64: dts: Add mediatek SoC mt8195 and
- evaluation board
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski@canonical.com>, Linus Walleij
- <linus.walleij@linaro.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Bartosz Golaszewski
- <bgolaszewski@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, "Chaotian
- Jing" <chaotian.jing@mediatek.com>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-gpio@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, <ryder.lee@kernel.org>,
- <wenst@chromium.org>, <chunfeng.yun@mediatek.com>, Seiya Wang
- <seiya.wang@mediatek.com>
-Date: Tue, 29 Mar 2022 18:17:47 +0800
-In-Reply-To: <cf16ed58-6e75-cd9f-38ab-540d62ff03b5@gmail.com>
-References: <20220216113131.13145-1-tinghan.shen@mediatek.com>
- <20220216113131.13145-4-tinghan.shen@mediatek.com>
- <cf16ed58-6e75-cd9f-38ab-540d62ff03b5@gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nZ9An-00BpVG-QX; Tue, 29 Mar 2022 10:34:03 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 1F4E21F4107C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1648550038;
+ bh=kPA++nT55REBlchYsmQAKCVDO+2FGIFaT9+6SOaLk3s=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=gQj1CxjzhqGt0pUEPgcYIaxrs4EYIQarFlqUZ4Is689TDVOvVTj2gAMzgAzKp59O/
+ UZSgoLqUDCH4KZ6oohX7H/E9+vcCbAbtE62z5s7Fbqr3a5vnPh/uRdqltiEDUXwj8f
+ mOJW9uxFkxyydkosxFVmOk0KqnmlxG1kNjlXKsEIOiQW85PLIT2HA+1cN7ro0AvK9W
+ kDdzu++ORpOke56KdtkIm4P37NXpUyPYqp+2mzcBglbQEK4Pgfn3kpnnwmst+td8q2
+ TnPUyy/rnQEp1G1hh2kf2nlPK8qUgMUEoAg1VJOrZSqXqh3Hvp2JKawy8IR7DO55EM
+ O5Cs1E24l5h4A==
+Message-ID: <e9daf657-2a29-a4b1-158a-86f2a98a8900@collabora.com>
+Date: Tue, 29 Mar 2022 12:33:53 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v9 2/3] mmc: core: Add support for SDIO wakeup interrupt
+Content-Language: en-US
+To: Axe Yang <axe.yang@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, Chaotian Jing
+ <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Adrian Hunter <adrian.hunter@intel.com>
+Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Satya Tangirala <satyat@google.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach
+ <dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd <swboyd@chromium.org>,
+ Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>,
+ Tian Tao <tiantao6@hisilicon.com>, linux-mmc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20220329032913.8750-1-axe.yang@mediatek.com>
+ <20220329032913.8750-3-axe.yang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220329032913.8750-3-axe.yang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_032759_486527_B144D2BA 
-X-CRM114-Status: GOOD (  32.24  )
+X-CRM114-CacheID: sfid-20220329_033402_086280_6F4F736C 
+X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,201 +76,27 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
+Il 29/03/22 05:29, Axe Yang ha scritto:
+> If wakeup-source flag is set in host dts node, parse EAI information
+> from SDIO CCCR interrupt externsion segment for in-band wakeup. If
+> async interrupt is supported by SDIO card then enable it and set
+> enable_async_irq flag in sdio_cccr structure to 1. The parse flow is
+> implemented in sdio_read_cccr().
+> 
+> Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Axe Yang <axe.yang@mediatek.com>
 
-Thanks for your comment.
+Hello Axe,
+there was a mistake about my tag (my fault, sorry), can you please change it from
+Acked-by to Reviewed-by?
 
-On Mon, 2022-03-28 at 14:26 +0200, Matthias Brugger wrote:
-> 
-> On 16/02/2022 12:31, Tinghan Shen wrote:
-> > Add basic chip support for mediatek mt8195.
-> > 
-> > Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
-> > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/Makefile       |    1 +
-> >   arch/arm64/boot/dts/mediatek/mt8195-evb.dts |  161 +++
-> >   arch/arm64/boot/dts/mediatek/mt8195.dtsi    | 1049 +++++++++++++++++++
-> >   3 files changed, 1211 insertions(+)
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> > index 8c1e18032f9f..5da29e7223e4 100644
-> > --- a/arch/arm64/boot/dts/mediatek/Makefile
-> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> > @@ -38,4 +38,5 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-evb.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts b/arch/arm64/boot/dts/mediatek/mt8195-
-> > evb.dts
-> > new file mode 100644
-> > index 000000000000..51633d91d984
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-> > @@ -0,0 +1,161 @@
-> 
-> [...]
-> > +
-> > +&u2port0 {
-> > +	status = "okay";
-> > +};
-> > +
-> > +&u2port1 {
-> > +	status = "okay";
-> > +};
-> > +
-> > +&u3phy0 {
-> > +	status="okay";
-> > +};
-> > +
-> > +&u3phy1 {
-> > +	status="okay";
-> > +};
-> > +
-> 
-> So we enable phys for xhci but not the device. Are we missing anything to enable 
-> them on the EVB?
-
-after discussed with usb expert, we think that we're missing the xhci nodes.
-I'll add xhci nodes at next version.
-
-> 
-> > +&uart0 {
-> > +	pinctrl-names = "default";
-> > +	pinctrl-0 = <&uart0_pin>;
-> > +	status = "okay";
-> > +};
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > new file mode 100644
-> > index 000000000000..a363e82f6988
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > @@ -0,0 +1,1049 @@
-> 
-> [...]
-> > +
-> > +	clk32k: oscillator-32k {
-> > +		compatible = "fixed-clock";
-> > +		#clock-cells = <0>;
-> > +		clock-frequency = <32768>;
-> > +		clock-output-names = "clk32k";
-> 
-> I suppose the 32KHz oscillator is really present on the board also not used by 
-> any device (up to now?).
-
-Yes. 32KHz clock is still available on MT8195.
-Some modules can choose 32K as clock source depending on requirements.
-
-> 
-> [...]
-> > +
-> > +	soc {
-> > +		#address-cells = <2>;
-> > +		#size-cells = <2>;
-> > +		compatible = "simple-bus";
-> > +		ranges;
-> > +
-> 
-> [...]
-> > +
-> > +		pwrap: pwrap@10024000 {
-> > +			compatible = "mediatek,mt8195-pwrap", "syscon";
-> > +			reg = <0 0x10024000 0 0x1000>;
-> > +			reg-names = "pwrap";
-> > +			interrupts = <GIC_SPI 243 IRQ_TYPE_LEVEL_HIGH 0>;
-> > +			clocks = <&infracfg_ao CLK_INFRA_AO_PMIC_AP>,
-> > +				 <&infracfg_ao CLK_INFRA_AO_PMIC_TMR>;
-> > +			clock-names = "spi", "wrap";
-> 
-> Binding mandates resets but not present here. It also mandates two register 
-> regions, but only one is given here.
-
-After discussed with pwrap experts, the pwrap binding is out-of-date for mt8195.
-They will send a patch to fix pwrap binding.
-
-> 
-> > +			assigned-clocks = <&topckgen CLK_TOP_PWRAP_ULPOSC>;
-> > +			assigned-clock-parents = <&topckgen CLK_TOP_ULPOSC1_D10>;
-> > +		};
-> > +
-> > +		scp_adsp: clock-controller@10720000 {
-> > +			compatible = "mediatek,mt8195-scp_adsp";
-> > +			reg = <0 0x10720000 0 0x1000>;
-> > +			#clock-cells = <1>;
-> > +		};
-> > +
-> 
-> [...]
-> 
-> > +
-> > +		mmc0: mmc@11230000 {
-> > +			compatible = "mediatek,mt8195-mmc",
-> > +				     "mediatek,mt8183-mmc";
-> > +			reg = <0 0x11230000 0 0x10000>,
-> > +			      <0 0x11f50000 0 0x1000>;
-> 
-> Seems to be an oversight when adding support for mt8183-mmc support to the 
-> driver. The binding description is missing the optional host top register base. 
-> Chaotian can you please help to fix this in the binding description.
-
-Ok. I'll fix it at next version.
-
-> 
-> > +			interrupts = <GIC_SPI 131 IRQ_TYPE_LEVEL_HIGH 0>;
-> > +			clocks = <&topckgen CLK_TOP_MSDC50_0>,
-> > +				 <&infracfg_ao CLK_INFRA_AO_MSDC0>,
-> > +				 <&infracfg_ao CLK_INFRA_AO_MSDC0_SRC>;
-> > +			clock-names = "source", "hclk", "source_cg";
-> > +			status = "disabled";
-> > +		};
-> > +
-> 
-> [...]
-> > +
-> > +		xhci3: usb@112b0000 {
-> > +			compatible = "mediatek,mt8195-xhci",
-> > +				     "mediatek,mtk-xhci";
-> > +			reg = <0 0x112b0000 0 0x1000>,
-> > +			      <0 0x112b3e00 0 0x0100>;
-> > +			reg-names = "mac", "ippc";
-> > +			interrupts = <GIC_SPI 536 IRQ_TYPE_LEVEL_HIGH 0>;
-> > +			phys = <&u2port3 PHY_TYPE_USB2>;
-> > +			assigned-clocks = <&topckgen CLK_TOP_USB_TOP_3P>,
-> > +					  <&topckgen CLK_TOP_SSUSB_XHCI_3P>;
-> > +			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>,
-> > +						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-> > +			clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_3P_BUS>,
-> > +				 <&topckgen CLK_TOP_SSUSB_P3_REF>,
-> > +				 <&pericfg_ao CLK_PERI_AO_SSUSB_3P_XHCI>;
-> > +			clock-names = "sys_ck", "ref_ck", "xhci_ck";
-> > +			/* This controller is connected with a BT device.
-> > +			 * Disable usb2 lpm to prevent konwn issues.
-> > +			 */
-> > +			usb2-lpm-disable;
-> 
-> My understanding is, that this depends on the board and not the SoC. Which means 
-> usb2-lpm-disable should go into any board that has a BT device connected to the 
-> xhci device (I don't see any active xhci node in mt8195-evb so far).
-
-Ok. I'll move this property to evb board in a xhci node.
-
-Best regards,
-TingHan
-
-> 
-> Regards,
-> Matthias
-
+Thanks,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
