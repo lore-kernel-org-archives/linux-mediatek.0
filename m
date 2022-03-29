@@ -4,63 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0550AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 09:09:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16092C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Mar 2022 09:20:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AtOPl6K3tA685Ps5wpZ3TwWgNqEjr0ye4HxgB4kN630=; b=uF/iGTZE0CVnU0
-	+5/SYF1AjSOdGCCFLsFJf5rRCNp+V1Qtvf2ajwcAuEdg02GEsRVb88oDYU1yCrjatnkaN/4XeYV5M
-	Nmq6vCXj2CjKy7sh9arOVhkBZwYp3OGQzNP/YjvRV9OD/QNuwIF/avPaqa2Fu4akrO/RVuhhfTyoM
-	+XPrTFkGx8E35ZevLKOu1gVPeS9uBH/Ot/J2jHV27/yBAcc/+l4pfRM9RTM1epU3ITxbHrHnFzOm1
-	sP63V5zvHiAW5kYACgT42rIT35nzYYpVGC1VK86ogkViAaizfO/nAOPJnzDTx0/3/pzsrImcs8LTq
-	PqHn7lOibmMZRQlebvpA==;
+	List-Owner; bh=KqNWf/KrUv52PPUGQdrntcm715NypqEBDgLEr1LgdsQ=; b=I9aQKRUV/X+eNj
+	ud98sAsWpK2pi8JS5R8O+WtujHtGhH0FqwMgU/XXR8bFiBHZleKNNqO18xoEviNQTcekDBuex5i0h
+	chZjvh+5jGPWuLWnI9L+V7D/4Xkehe1n/oJ4xtUa+rxBAxAeb9MIoChUMgk9BKslBtJBL6GQ1oYMl
+	QMAUYGWdmib6Uqs6ZiJbRMMudXFCuW+a/22qr/ufP0CpDoxBl8+lrcw0kYiR5ogGMz5cmkz1bkBi3
+	VVcnE80z/ywnHG/eT73aAv+ah2b/OLBzFanibB0Yn+tGIb+lOHJ4QNGAxU2hh6cBE++EbmfrUYLKc
+	Nti2vX2pUqa9T7TF2uBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZ7rJ-00BbUG-WC; Tue, 29 Mar 2022 09:09:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nZ81N-00BeNs-8Z; Tue, 29 Mar 2022 09:20:13 +0000
+Received: from relay10.mail.gandi.net ([2001:4b98:dc4:8::230])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZ7r7-00BbPP-C6; Tue, 29 Mar 2022 09:09:39 +0000
-X-UUID: ded04740969142dab7d8eab3d2a6cfa2-20220329
-X-UUID: ded04740969142dab7d8eab3d2a6cfa2-20220329
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 733845492; Tue, 29 Mar 2022 02:09:26 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 29 Mar 2022 02:09:24 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 29 Mar 2022 17:09:23 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 29 Mar 2022 17:09:23 +0800
-Message-ID: <af19b42faf9a510578e48d6f497e7d2069327195.camel@mediatek.com>
-Subject: Re: [PATCH v4 16/22] arm64: dts: mt8192: Add vcodec lat and core nodes
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Chen-Yu Tsai" <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, Hui
- Liu <hui.liu@mediatek.com>
-Date: Tue, 29 Mar 2022 17:09:23 +0800
-In-Reply-To: <70350446-9e89-3c7b-d515-22cb2ed5a9ca@gmail.com>
-References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
- <20220318144534.17996-17-allen-kh.cheng@mediatek.com>
- <70350446-9e89-3c7b-d515-22cb2ed5a9ca@gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nZ80p-00BeBl-Tf; Tue, 29 Mar 2022 09:19:44 +0000
+Received: (Authenticated sender: alexandre.belloni@bootlin.com)
+ by mail.gandi.net (Postfix) with ESMTPSA id 17680240012;
+ Tue, 29 Mar 2022 09:19:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+ t=1648545573;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4OYEQcpxV5ZoCImFdldnCROqjeYEuOqk5lTqs4xQNOw=;
+ b=E0C2ytxPlV1W+Oe2MExHPN7L1HAoV5OikaBi/U7DewsMCqNtbPDqkZmi2EkEtqy1h9eSgE
+ iiefcHj+RmgZ+f+Nhg1dBvgQLIyFkVMlqvsI0mQLoe4LXrWKzoi2/xC4DJe0nxuepZkThU
+ FRyNwSRBCCVeRjb5oEYt0caD6HgzFm/e5R4zbhwmHQOWSB6a/GJnngaEUVODgCoYqdO+7g
+ DcfNnSRhpGEP/dmCe7VL2vFiRtpk1xrIevN5WpjBBTppF28IllsoBjw5Ux75BSFoUNa40U
+ iEy83TwJxTr5nOyIxsdHupHOzrfEzXzdR3N0Ts3ALvlLshPNCnGr1VoMVatfnA==
+Date: Tue, 29 Mar 2022 11:19:30 +0200
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
+To: Jonathan =?iso-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>
+Cc: Ansuel Smith <ansuelsmth@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-omap@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com,
+ linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
+ chrome-platform@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com,
+ linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
+ linux-tegra@vger.kernel.org, linux-oxnas@groups.io,
+ linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org
+Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
+Message-ID: <YkLPIgwClJAUc1Uf@piout.net>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com>
+ <YkG2RPrtPaBNXb7a@latitude>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <YkG2RPrtPaBNXb7a@latitude>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_020937_446410_ADD8F2AC 
-X-CRM114-Status: GOOD (  22.43  )
+X-CRM114-CacheID: sfid-20220329_021940_535640_D2942877 
+X-CRM114-Status: GOOD (  18.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,162 +77,91 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
+Hi,
 
-On Fri, 2022-03-25 at 16:22 +0100, Matthias Brugger wrote:
-> 
-> On 18/03/2022 15:45, Allen-KH Cheng wrote:
-> > Add vcodec lat and core nodes for mt8192 SoC.
-> > 
-> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 61
-> > ++++++++++++++++++++++++
-> >   1 file changed, 61 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> > index 63893779b193..71ad3adeed51 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> > @@ -1285,6 +1285,67 @@
-> >   			power-domains = <&spm
-> > MT8192_POWER_DOMAIN_ISP2>;
-> >   		};
-> >   
-> > +		vcodec_dec: vcodec-dec@16000000 {
-> > +			compatible = "mediatek,mt8192-vcodec-dec";
-> > +			reg = <0 0x16000000 0 0x1000>;	/* VDEC_SYS
-> > */
-> > +			mediatek,scp = <&scp>;
-> > +			iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
-> > +			#address-cells = <2>;
-> > +			#size-cells = <2>;
-> > +			ranges = <0 0 0 0x16000000 0 0x26000>;
-> > +
-> > +			vcodec_lat: vcodec-lat@10000 {
-> > +				compatible = "mediatek,mtk-vcodec-lat";
-> > +				reg = <0x0 0x10000 0 0x800>;		
-> > /* VDEC_MISC */
-> > +				interrupts = <GIC_SPI 426
-> > IRQ_TYPE_LEVEL_HIGH 0>;
-> > +				iommus = <&iommu0
-> > M4U_PORT_L5_VDEC_LAT0_VLD_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L5_VDEC_LAT0_VLD2_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L5_VDEC_LAT0_AVC_MV_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L5_VDEC_LAT0_PRED_RD_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L5_VDEC_LAT0_TILE_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L5_VDEC_LAT0_WDMA_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L5_VDEC_LAT0_RG_CTRL_DMA_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L5_VDEC_UFO_ENC_EXT>;
-> > +				clocks = <&topckgen CLK_TOP_VDEC_SEL>,
-> > +					 <&vdecsys_soc
-> > CLK_VDEC_SOC_VDEC>,
-> > +					 <&vdecsys_soc
-> > CLK_VDEC_SOC_LAT>,
-> > +					 <&vdecsys_soc
-> > CLK_VDEC_SOC_LARB1>,
-> > +					 <&topckgen
-> > CLK_TOP_MAINPLL_D4>;
-> > +				clock-names = "vdec-sel", "vdec-soc-
-> > vdec", "vdec-soc-lat",
-> > +					      "vdec-vdec", "vdec-top";
-> 
-> Clock names do not match binding description. We have superfluous
-> "vdec-" 
-> prefix. Same holds for mtk-vcodec-core. Anway I applied that patch as
-> the driver 
-> does not care about the clock name. In any case it would be good if
-> you could 
-> send a follow-up patch to fix the clock name.
-> 
-> Applied, thanks
-> 
+On 28/03/2022 15:21:08+0200, Jonathan Neusch=E4fer wrote:
+> On Mon, Mar 28, 2022 at 02:09:14AM +0200, Ansuel Smith wrote:
+> >  create mode 100644 arch/arm/boot/dts/freescale/Makefile
+> =
 
-Sorry, This is our mistake. those clk names should not append "vdec-"
-prefix from Rob's suggestion [1]. ('vdec-' is redundant)
+> Freescale has been part of NXP for a while, so it might make sense to
+> merge the freescale and nxp directories. I can't speak for
+> NXP-the-company, so that's just my view as a bystander.
+> =
 
-Please drop this patch in v5.18-next/dts64.  I will send the corrected
-version.
 
-I apologize any inconvenience caused.
+Maybe we should wait for the market consolidation to end so we can put
+all the files in a single subfolder?
 
-[1] https://lore.kernel.org/all/YYFCaHI%2FDASUz+Vu@robh.at.kernel.org/
+this would save us from all the bikeshedding ;)
 
-Thanks,
-Allen
+> >  create mode 100644 arch/arm/boot/dts/kirkwood/Makefile
+> =
 
-> > +				assigned-clocks = <&topckgen
-> > CLK_TOP_VDEC_SEL>;
-> > +				assigned-clock-parents = <&topckgen
-> > CLK_TOP_MAINPLL_D4>;
-> > +				power-domains = <&spm
-> > MT8192_POWER_DOMAIN_VDEC>;
-> > +			};
-> > +
-> > +			vcodec_core: vcodec-core@25000 {
-> > +				compatible = "mediatek,mtk-vcodec-
-> > core";
-> > +				reg = <0 0x25000 0 0x1000>;	/*
-> > VDEC_CORE_MISC */
-> > +				interrupts = <GIC_SPI 425
-> > IRQ_TYPE_LEVEL_HIGH 0>;
-> > +				iommus = <&iommu0
-> > M4U_PORT_L4_VDEC_MC_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L4_VDEC_UFO_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L4_VDEC_PP_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L4_VDEC_PRED_RD_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L4_VDEC_PRED_WR_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L4_VDEC_PPWRAP_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L4_VDEC_TILE_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L4_VDEC_VLD_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L4_VDEC_VLD2_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L4_VDEC_AVC_MV_EXT>,
-> > +					 <&iommu0
-> > M4U_PORT_L4_VDEC_RG_CTRL_DMA_EXT>;
-> > +				clocks = <&topckgen CLK_TOP_VDEC_SEL>,
-> > +					 <&vdecsys CLK_VDEC_VDEC>,
-> > +					 <&vdecsys CLK_VDEC_LAT>,
-> > +					 <&vdecsys CLK_VDEC_LARB1>,
-> > +					 <&topckgen
-> > CLK_TOP_MAINPLL_D4>;
-> > +				clock-names = "vdec-sel", "vdec-soc-
-> > vdec", "vdec-soc-lat",
-> > +					      "vdec-vdec", "vdec-top";
-> > +				assigned-clocks = <&topckgen
-> > CLK_TOP_VDEC_SEL>;
-> > +				assigned-clock-parents = <&topckgen
-> > CLK_TOP_MAINPLL_D4>;
-> > +				power-domains = <&spm
-> > MT8192_POWER_DOMAIN_VDEC2>;
-> > +			};
-> > +		};
-> > +
-> >   		larb5: larb@1600d000 {
-> >   			compatible = "mediatek,mt8192-smi-larb";
-> >   			reg = <0 0x1600d000 0 0x1000>;
+> The Kirkwood family should probably be sorted into Marvell.
+> =
 
+> >  create mode 100644 arch/arm/boot/dts/layerscape/Makefile
+> >  rename arch/arm/boot/dts/{ =3D> layerscape}/ls1021a-moxa-uc-8410a.dts =
+(100%)
+> >  rename arch/arm/boot/dts/{ =3D> layerscape}/ls1021a-qds.dts (100%)
+> >  rename arch/arm/boot/dts/{ =3D> layerscape}/ls1021a-tsn.dts (100%)
+> >  rename arch/arm/boot/dts/{ =3D> layerscape}/ls1021a-twr.dts (100%)
+> >  rename arch/arm/boot/dts/{ =3D> layerscape}/ls1021a.dtsi (100%)
+> =
+
+> The Layerscape family is part of Freescale/NXP.
+> =
+
+> >  create mode 120000 arch/arm/boot/dts/nxp/armv7-m.dtsi
+> =
+
+> armv7-m.dtsi is a bit confusing, because it contains a few devices at
+> fixed addresses, so it looks vendor-specific at a first glance into the
+> file. However, if it is actually as vendor-neutral as the name implies,
+> I think it should live dts/ directly, rather than in vendor
+> subdirectories.
+> =
+
+> >  rename arch/arm/boot/dts/{ =3D> nxp}/lpc18xx.dtsi (100%)
+> =
+
+> Here we have the NXP LPCxxxx family, which is AFAIK unrelated to the
+> i.MX family (and thus the bulk of the Freescale legacy).
+> =
+
+> >  create mode 100644 arch/arm/boot/dts/vybrid/Makefile
+> =
+
+> Vybrid is another chip family of NXP, with a good deal of Freescale
+> legacy in it as evidenced by the "fsl," prefix in the devicetrees.
+> =
+
+> =
+
+> =
+
+> Thanks,
+> Jonathan
+
+
+
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+
+-- =
+
+Alexandre Belloni, co-owner and COO, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
 _______________________________________________
 Linux-mediatek mailing list
