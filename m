@@ -4,79 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A6C2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Mar 2022 08:59:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A47DC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Mar 2022 09:46:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6h4Q05g0S14O/NvJiWmH++4LHEzBza3F/N/pVWj64OQ=; b=Dt/hrsA0FOhC2K
-	7s8sbWSl02eikcOQo0Fcg7E5X4Ik0lNPkG7F4R2L8/fmZW1l0WICRCwBFd/MQWK4Q0mdSkq9SrlPd
-	Y+C9qz6kn4EoKc0WFMhspijPIodOpcd6BcQugkzEFcrKPyOHrx2FqaueSVPOJaPar16fa6yUf3dbe
-	0lO+ew6pgJuFkI0xO018Iy1i4V7wVSov6TX+mBECWMK2Y8eKxZo2YBMnVIKDuQQZdqP+YlcvOAatU
-	MyIZn4ZJ6YTPyruRO0ml+i89v+LZiQGvS8gxTzYNXSC6KxxVdtpiXNM3ax9GW1vQlA0ApS6oy+d0r
-	XA8czsaW5LU4oU3uUoyw==;
+	List-Owner; bh=WnbO+e/SxEt8nr9VvrhhNea7ZAYAkUN/hs72mjRMcJ8=; b=j7sCzSb6uN9Lpd
+	N68XryQcGIa+9IhRuY1ZDTNh2/YvdCuvEvWl1m/mmnZN38a9HR7dJai8P21jFZ64ATJNCA2MQGBbL
+	u23NDY+Bm/ajPbBPT2sz47fD/IuulpLALQPvjIEvjiCOAVYUGWJmPsRWKZN1fnp25ahGvW0KzvNXU
+	jr7zSWj/az4UJxjP1w3nKhr6+Y36OM7dBIogDHNhmFoAfbzRyE6J8YavSSRLDfpYLh56SlIgGOAPb
+	iPpol6vYD8z9uNn23zIFpTothJBBXCa3iTGW3amrXQo2Fi6Yv9OxX7xhqoE+7eBi5i9kBTigmb9HY
+	UBMDXTGUwyNC6+3VJbYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZUAT-00Etne-VF; Wed, 30 Mar 2022 08:59:05 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nZUti-00F29E-Ha; Wed, 30 Mar 2022 09:45:50 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZUAQ-00EtmK-H9; Wed, 30 Mar 2022 08:59:04 +0000
-X-UUID: 4b0e356effa24d0db1de40b7e282da81-20220330
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=hqioKoXfa8VcxcppJx6WbPfWRXvzNx9weeUizk2qL6E=; 
- b=t0O6XrwtA/F5+bmgaw5IQ9fVPNoa9p3+ksS6+m/tn1wkdHA/4NScQDInDTD17J7zMP95Naq7ZqOT+LEC1umO3nUI4ofkRWgs7h+mBhA01edtGHgEuCT9Cx3SybQkAB8KN/PUQxUAHMD/nVu59EjDJbF46wbBa/QMGgmipCBsWGw=;
-X-UUID: 4b0e356effa24d0db1de40b7e282da81-20220330
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <irui.wang@mediatek.com>)
+ id 1nZUtf-00F27b-E4; Wed, 30 Mar 2022 09:45:48 +0000
+X-UUID: 7cb5ca1edfa44277a39bfb5f40926250-20220330
+X-UUID: 7cb5ca1edfa44277a39bfb5f40926250-20220330
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <tinghan.shen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 654511836; Wed, 30 Mar 2022 01:58:53 -0700
+ with ESMTP id 1152446838; Wed, 30 Mar 2022 02:45:43 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Mar 2022 01:48:51 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ 15.0.1497.2; Wed, 30 Mar 2022 02:45:42 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Mar 2022 16:48:49 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 30 Mar 2022 16:48:47 +0800
-Message-ID: <8e87e98a0b261dcdca9beb41bd1cd5030a4690ab.camel@mediatek.com>
-Subject: Re: [PATCH v3, 03/10] dt-bindings: media: mtk-vcodec: Adds encoder
- cores dt-bindings for mt8195
-From: Irui Wang <irui.wang@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
- <tzungbi@chromium.org>, Alexandre Courbot <acourbot@chromium.org>, "Mauro
- Carvalho Chehab" <mchehab@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>,
- <angelogioacchino.delregno@collabora.com>, Yong Wu <yong.wu@mediatek.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Maoguang
- Meng" <maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>, 
- Yunfei Dong <yunfei.dong@mediatek.com>, Fritz Koenig <frkoenig@chromium.org>, 
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ 15.0.1497.2; Wed, 30 Mar 2022 17:45:40 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 30 Mar 2022 17:45:40 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson
+ <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski@canonical.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Wenbin Mei
+ <wenbin.mei@mediatek.com>
+CC: <linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 30 Mar 2022 16:48:47 +0800
-In-Reply-To: <YkMFGbgYq5DhLjt8@robh.at.kernel.org>
-References: <20220317082230.23622-1-irui.wang@mediatek.com>
- <20220317082230.23622-4-irui.wang@mediatek.com>
- <Yj4s0zcHxz3U3wlc@robh.at.kernel.org>
- <ab2b24eeb51048227ad7b2ac659617a7da5b2e45.camel@mediatek.com>
- <YkG8ka1xY2k+HWi1@robh.at.kernel.org>
- <e41e909f85e3891edb6b66d7d5a810af103113c8.camel@mediatek.com>
- <YkMFGbgYq5DhLjt8@robh.at.kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, <ryder.lee@kernel.org>,
+ <wenst@chromium.org>, <chunfeng.yun@mediatek.com>, Tinghan Shen
+ <tinghan.shen@mediatek.com>
+Subject: [PATCH v13 1/2] dt-bindings: mmc: mtk-sd: increase reg items
+Date: Wed, 30 Mar 2022 17:45:31 +0800
+Message-ID: <20220330094532.21721-2-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.15.GIT
+In-Reply-To: <20220330094532.21721-1-tinghan.shen@mediatek.com>
+References: <20220330094532.21721-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220330_015902_600380_ABDB64F5 
-X-CRM114-Status: GOOD (  38.76  )
+X-CRM114-CacheID: sfid-20220330_024547_530084_734BA514 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,127 +79,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Rob,
+MediaTek has a new version of mmc IP since mt8183. Some IO registers
+are moved to top to improve hardware design and named as "host top
+registers".
 
-A sample encoder hardware block diagram attached.
-On Tue, 2022-03-29 at 08:09 -0500, Rob Herring wrote:
-> On Tue, Mar 29, 2022 at 09:26:37AM +0800, Irui Wang wrote:
-> > Dear Rob,
-> > 
-> > Many thanks for your attention.
-> > 
-> > On Mon, 2022-03-28 at 08:48 -0500, Rob Herring wrote:
-> > > On Sat, Mar 26, 2022 at 10:00:55AM +0800, Irui Wang wrote:
-> > > > Dear Rob,
-> > > > 
-> > > > Thanks for your review and comments.
-> > > > 
-> > > > On Fri, 2022-03-25 at 15:57 -0500, Rob Herring wrote:
-> > > > > On Thu, Mar 17, 2022 at 04:22:23PM +0800, Irui Wang wrote:
-> > > > > > Adds encoder cores dt-bindings for mt8195.
-> 
-> [...]
-> 
-> > > > > > +      mediatek,core-id:
-> > > > > > +        $ref: /schemas/types.yaml#/definitions/uint32
-> > > > > > +        description: |
-> > > > > > +          Current encoder core id.
-> > > > > 
-> > > > > What is this for and what does its value correspond to in the
-> > > > > h/w.
-> > > > > We 
-> > > > > generally don't do made up indices in DT.
-> > > > 
-> > > > It's for encoder core id, core@1a020000 must be core-0, 
-> > > > core@1b020000
-> > > > must be core-1, we add this property in each child node, so we
-> > > > can 
-> > > > get core-id in drivers. If it can't ref "uint32" types yaml,
-> > > > would 
-> > > > you mind giving some more suggestions ?
-> > > 
-> > > I still don't understand why it is needed. What is 'core-0'?
-> > > 
-> > > Is there some functional difference between the cores? If so,
-> > > describe 
-> > > that difference.
-> > > 
-> > > Rob
-> > 
-> > They are two different pieces of hardware, it's our encoder
-> > hardware
-> > design. There are two encoder hardware cores inside MT8195, named
-> > core0
-> > and core1(we can rename it, but core id should be declared),
-> > for core0, its module base address is 0x1A02_0000, uses IOMMU
-> > "vdo0_iommu" and power domain "POWER_DOMAIN_VENC",
-> > for core1, its module base address is 0x1B02_0000, uses IOMMU
-> > "vpp_iommu" and power domain "POWER_DOMAIN_VENC_CORE1".
-> > So the two encoder cores have their own base, IRQ, clock, power,
-> > etc.
-> > Each core can encode independently, moreover, they can work
-> > together
-> > for higher performance. 
-> > We will describe more details in YAML about it if it's OK for you.
-> 
-> All the resources you list are in the child nodes, so you don't need
-> 0 
-> and 1 numbering for those. 
-> 
-> Looking at the driver patches, the only thing I see distinguishing 
-> core numbers is this:
-> 
-> "frame#0 uses core#0, frame#1 uses core#1, frame#2 uses core#0...,
-> 
-> Lock the device and enable the clock by used core, for sequence
-> header encoding, it always uses core#0."
-> 
-> Is this a requirement in the h/w or just what the driver picked?
-> IOW, 
-> could frame#0 use core#1?
-No, it's a requirement in the h/w, driver trigger core start encoding
-is in order.
-About the encoder hardware block diagram, please check below:
---------------------------------------------------------------
-Input Buffer: 0     1     2     3     4     5     6
-              |     |     |     |     |     |     |
-              v     |     v     |     v     |     v
-          +-------+ | +-------+ | +-------+ | +-------+
-          | core0 | | | core0 | | | core0 | | | core0 |
-          +-------+ | +-------+ | +-------+ | +-------+
-              |     |     |     |     |     |     |
-              |     v     |     v     |     v     |
-              | +-------+ | +-------+ | +-------+ |
-              | | core1 | | | core1 | | | core1 | |
-              | +-------+ | +-------+ | +-------+ |
-              |     |     |     |     |     |     |
-              v     v     v     v     v     v     v    <parent>
---------------------------------------------------------------
-                        core || index                  <child>
-                             \/
-       +-----------------------------------------------+
-       |                  core0/core1                  |
-       |          enable/disable power/clk/irq         |
-       +-----------------------------------------------+
---------------------------------------------------------------
-As above , there are parent and child devices, child mean each venc
-core, the child device controls the information of each core
-independent which inlcude power/clk/irq.
-When start encoding, input buffer 0 will be encoded by core0, and input
-buffer 1 can be encoded by core1 even if buffer 0 has not been encoded
-done yet, after buffer 0 encoded done, buffer 2 will be encoded by
-core0, and buffer 1 encoded done by core1. These two encoder cores will
-encode each input in this overlapping manner.
+Add host top register in the reg binding description for mt8183 and
+successors.
 
-We need manage each child device in parent device by core-id property.
-And we also need record current encoding input buffer, encode done
-output buffers and which one core is in used through core-id, because
-the two cores are encoding at the same time under one parent driver.
-> 
-> Rob
+Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+---
+ Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
 
-Thanks
-Best Regards
+diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+index 297ada03e3de..2a2e9fa8c188 100644
+--- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
++++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+@@ -40,7 +40,10 @@ properties:
+           - const: mediatek,mt8183-mmc
+ 
+   reg:
+-    maxItems: 1
++    minItems: 1
++    items:
++      - description: base register (required).
++      - description: top base register (required for MT8183).
+ 
+   clocks:
+     description:
+@@ -168,6 +171,16 @@ required:
+   - vmmc-supply
+   - vqmmc-supply
+ 
++if:
++  properties:
++    compatible:
++      contains:
++        const: mediatek,mt8183-mmc
++then:
++  properties:
++    reg:
++      minItems: 2
++
+ unevaluatedProperties: false
+ 
+ examples:
+-- 
+2.18.0
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
