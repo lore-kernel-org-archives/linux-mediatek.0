@@ -4,74 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 124F6C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Mar 2022 14:16:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DFE1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Mar 2022 14:24:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c1XocZvVMNIYFJI6OFl8dxnbhcOkOxwh3QDZ6+s6UUs=; b=QelcqtL85E6PCD
-	GIJusoEzwPnbg/bin0Qq4dNTY19RGTBxsza4R0wR8FUu0NOxi3R1UhwWu4rKxfH87qpfHWJhIQlme
-	HNnkWbzomFoVTgm3q2m0zZnteM8n7ruRlrC1MHpsE4LV4oOw2exstJhu8QNisOngjpderQ0L/O24/
-	7bYx3WlJJwXEaZv51mWpQC6fwFfWvpY1d1kkqwc+Ep9TITRUejS5m7Tpp+LMEEeScuwKUJcoil3ai
-	DpNX1B2DCFRepJ84w+/VRiQjZeMweR5LsniIujxhIEye9gSjFGk1GsPeRBK7KUWF9ZkJWmlse/yfq
-	0rOrlfGddDGayC3kFzXQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r6U5R+biQoLlTBUXzGiL+MKPgSZE2CpCj8RYH2I/yUo=; b=YPcSsfvIgyXin9ZtdPl8xV5APR
+	PLJpmu/apSOYJA1TGEaY4qyH0bjVV7w06ZL7Yy9kCl3eAN3bW/0GuuWxPqRNok/u8ubLUVoioHkLP
+	L7Dm0QcqR9BYcsjOMS531acLXIS5vcRHE8kq2qh/11gPk1KU+U7YbVq3s5hh7T9CAjgMf53sykg5N
+	5Buq3yyaIntmD+r/9FU6Kuf/+rq+r9MSen7BHIS759Ej9rKh23J+iAi2ztU3AKDT2F1wc/v/GighI
+	dLdwB/bltLCHyc6Ugf1eSmJ5Zfsn38vuSIY7AOGA9ajCrloN6AutojKfi/SYEnrGOUmjwk1gpZmMw
+	vB4Vn3CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZZ7o-00GDZs-7F; Wed, 30 Mar 2022 14:16:40 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nZZFP-00GEbg-VE; Wed, 30 Mar 2022 14:24:31 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZZ7l-00GDZQ-QW; Wed, 30 Mar 2022 14:16:39 +0000
-X-UUID: 7f5fdc39a7144de6a99c7148d5d24410-20220330
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=iZmcRH9cF03UH2iuV6rU+U9ZpelvCuJdV7SiMV4qQjU=; 
- b=fDhoSSGaKNO38ZXYPtOYCXmONNhPYTA3jP57G8x+q4OviDmjAHm/uIdKGMBcEa7lzbGXFg0Wte6hOJy1n0lrTQE7zudrWdo5w/hsjB6gk+j84RtUx1g9Np9lxekHm4JFjMSVfWgEaHBcPswEa0gOnb7MkrRZLKFfdOGsJEpe5ss=;
-X-UUID: 7f5fdc39a7144de6a99c7148d5d24410-20220330
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 64476808; Wed, 30 Mar 2022 07:16:28 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Mar 2022 07:06:26 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 30 Mar 2022 22:06:25 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 30 Mar 2022 22:06:24 +0800
-Message-ID: <61e9fb59448837cfc8e3ec862b711294bcb68872.camel@mediatek.com>
+ id 1nZZFD-00GEYc-Sr; Wed, 30 Mar 2022 14:24:21 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 0A7DB61450;
+ Wed, 30 Mar 2022 14:24:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F97DC340EE;
+ Wed, 30 Mar 2022 14:24:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1648650258;
+ bh=8mGhUsP282BlInxzYzns/CDUIBuGHFUwBxqH317vbiI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=aQkJxwf6qzT0NoAl/UXsj4Hc+5tHiEnQ52giQEXLKNANq8yCfIyEpxPSrkZx5UlhX
+ kME5m6BljI6TEs5IcgxKa/AB7DOGHrCWPlahmcE8cUuW40U+zkdmI65Avc8jWV6Q7M
+ UBzP4RRsJlEF+dKKHEXwIfGnmAVhjRRfJTi9YJ8LSM4ZvHAV/BNoDumoK7SHaa8r6H
+ AFwSkLy+uUkmeU8HFYbTVWaPefLN1A65DhfqTJjQVuKghpq1Awj2I4yZvNhH/wiOIV
+ vMbzyqLs6Zc8BOB8iLN+CWMCsxD/2M3qpxVOocVXf3b8zkjb4gPvAzqxN3YU4ZJsUk
+ cyMELuCjDI3dg==
+Date: Wed, 30 Mar 2022 15:24:11 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>, 
+ robh+dt@kernel.org, tzungbi@google.com,
+ angelogioacchino.delregno@collabora.com, aaronyu@google.com,
+ matthias.bgg@gmail.com, trevor.wu@mediatek.com, linmq006@gmail.com,
+ alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Tzung-Bi Shih <tzungbi@kernel.org>
 Subject: Re: [v7 2/4] ASoC: mediatek: mt8192: refactor for I2S3 DAI link of
  speaker
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: Mark Brown <broonie@kernel.org>
-CC: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>,
- <robh+dt@kernel.org>, <tzungbi@google.com>,
- <angelogioacchino.delregno@collabora.com>, <aaronyu@google.com>,
- <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>, <linmq006@gmail.com>,
- <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Tzung-Bi Shih
- <tzungbi@kernel.org>
-Date: Wed, 30 Mar 2022 22:06:24 +0800
-In-Reply-To: <YkRNSoBKFvYYyZLu@sirena.org.uk>
+Message-ID: <YkRoC30JLDMeVi1B@sirena.org.uk>
 References: <20220324064511.10665-1-jiaxin.yu@mediatek.com>
  <20220324064511.10665-3-jiaxin.yu@mediatek.com>
  <20220329223002.uo7kiemopkh7ak4x@notapiano>
  <dee3fbb7c9f0c3e1f11143db1d6fc4381cab827f.camel@mediatek.com>
  <YkRNSoBKFvYYyZLu@sirena.org.uk>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ <61e9fb59448837cfc8e3ec862b711294bcb68872.camel@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <61e9fb59448837cfc8e3ec862b711294bcb68872.camel@mediatek.com>
+X-Cookie: Two is company, three is an orgy.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220330_071637_891677_E255A981 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20220330_072419_993506_32C8EBC5 
+X-CRM114-Status: GOOD (  19.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,36 +79,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7821589907122433927=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-03-30 at 13:30 +0100, Mark Brown wrote:
-> On Wed, Mar 30, 2022 at 10:33:06AM +0800, Jiaxin Yu wrote:
-> 
-> > "(Although I think this would technicallybreak the ABI?)"
-> > ==> I can't understand this question, could you help explain it in
-> > more
-> > detail.
-> 
-> Making a previously optional property required means that systems
-> that
-> previously worked may stop working unless they update their DT, DTs
-> may
-> be distributed separately to the kernel and perhaps even baked into
-> firmware or similar.
 
-Hi Mark,
+--===============7821589907122433927==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="GNUxLScWaSBFpiDm"
+Content-Disposition: inline
 
-Thank you for your detailed answer. I should keep the driver's behavior
-consistent with the description of dt-bindings. The "mediatek,hdmi-
-codec" needs to be set as the required property. Is my understanding
-right?
 
-Thanks,
-Jiaxin.Yu
+--GNUxLScWaSBFpiDm
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Wed, Mar 30, 2022 at 10:06:24PM +0800, Jiaxin Yu wrote:
+> On Wed, 2022-03-30 at 13:30 +0100, Mark Brown wrote:
+
+> > Making a previously optional property required means that systems
+> > that
+> > previously worked may stop working unless they update their DT, DTs
+> > may
+> > be distributed separately to the kernel and perhaps even baked into
+> > firmware or similar.
+
+> Thank you for your detailed answer. I should keep the driver's behavior
+> consistent with the description of dt-bindings. The "mediatek,hdmi-
+> codec" needs to be set as the required property. Is my understanding
+> right?
+
+The binding document and code should match so if one is changed the
+other needs to be changed too.
+
+In theory we should never change a previously optional property to
+required which would mean that the code should be updated to reflect the
+binding document, however sometimes the DT isn't actually used as a
+stable intereface by anything for a given property or device type so we
+can get away with changing things.
+
+--GNUxLScWaSBFpiDm
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmJEaAoACgkQJNaLcl1U
+h9AhxQf+PZuCmGnFAmuUHNlVpmiRjr++vB0m1T22WhLGrda5HR7LQ87SMHwwffi9
+xnkVrr30xgbSxZy7Sn5nfjPAo7EfnomIxlDu50xmlNM5nXoIchxDl83NiGRcHoWT
+RfiId1J9P5ztudpTLcVLbj+uN5rLunutEkcHBWBxKymDy8wLA0nIX9fsER8xk8Zo
+L40Yv45UohIvFclHx21U+eBGenN5kJKih02NQTvbcoy2Cjh/iMCWPprQLpjpY5s8
+s/8dnyUGWx9SUBPfJJdtecq3riFE8MbQQrRLi1P+CaOfIonzYv1L0yEe5+7kBQHR
+WZaz1EZs9fORae+t52imAuWFVCd0kQ==
+=UCGf
+-----END PGP SIGNATURE-----
+
+--GNUxLScWaSBFpiDm--
+
+
+--===============7821589907122433927==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============7821589907122433927==--
+
