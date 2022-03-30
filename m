@@ -4,73 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BFF9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Mar 2022 08:31:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A6C2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Mar 2022 08:59:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fMLx1j2/XHBLufwAMQ/abE32h9grGdPXi7towJyk9rw=; b=EghOVqWJUcYzTM
-	qv9ZR88Pl78v876dYGsv+klO3g9QQweXxnm//mx7Lzov7F+BrE55xziHzrO8SUDKHMGMMOMsYvQdV
-	ZlworfVUeNew7j9vtmt9WT7l3vFEXgJ/pZKyaNCYOF6UpocUTs3UG8nYyLbM3Qq0RlOGj8QWrqPkJ
-	oTXjuL+ewNn9VsKOtSKhvEGGAxOe98JVrJ1pRqMeQmFLVZp7k26wIvLfodFPBbIhzT0scWXeSPyKp
-	5aRYUj3/ztlEdohl6gSgTnR4QVbXbbOznVYyK0dBaZBeA1OOspDWyR3rjyQajsQFd9o6byIQe5K7S
-	yAtDYpS/xfkDWlqYucOA==;
+	List-Owner; bh=6h4Q05g0S14O/NvJiWmH++4LHEzBza3F/N/pVWj64OQ=; b=Dt/hrsA0FOhC2K
+	7s8sbWSl02eikcOQo0Fcg7E5X4Ik0lNPkG7F4R2L8/fmZW1l0WICRCwBFd/MQWK4Q0mdSkq9SrlPd
+	Y+C9qz6kn4EoKc0WFMhspijPIodOpcd6BcQugkzEFcrKPyOHrx2FqaueSVPOJaPar16fa6yUf3dbe
+	0lO+ew6pgJuFkI0xO018Iy1i4V7wVSov6TX+mBECWMK2Y8eKxZo2YBMnVIKDuQQZdqP+YlcvOAatU
+	MyIZn4ZJ6YTPyruRO0ml+i89v+LZiQGvS8gxTzYNXSC6KxxVdtpiXNM3ax9GW1vQlA0ApS6oy+d0r
+	XA8czsaW5LU4oU3uUoyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZTjj-00EqMY-5n; Wed, 30 Mar 2022 08:31:27 +0000
+	id 1nZUAT-00Etne-VF; Wed, 30 Mar 2022 08:59:05 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZTjS-00EqDo-Hm; Wed, 30 Mar 2022 08:31:12 +0000
-X-UUID: 0e7183a2697e457aadc73cc34a36c01c-20220330
+ id 1nZUAQ-00EtmK-H9; Wed, 30 Mar 2022 08:59:04 +0000
+X-UUID: 4b0e356effa24d0db1de40b7e282da81-20220330
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=2fGxG1WCALJTkrJrcRwJTvJBCFwiCwoFqjWOglBWo/o=; 
- b=ASjOaKHlmC3wn7tH4ude64uKnCUUwb9Bx9hvL/etJi5cC9PtCr1Ako3iiwlg/OZvzfP1Kv43NDpqDkpkhaQJykayikWS97MB/XvVOc0W7B6yH0kaw4QpSdS6MBj075p7pgL+SznSU2sOJvqAe7dBPfKUGgsXV6CSxOBt5z/8OXs=;
-X-UUID: 0e7183a2697e457aadc73cc34a36c01c-20220330
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <chaotian.jing@mediatek.com>)
+ bh=hqioKoXfa8VcxcppJx6WbPfWRXvzNx9weeUizk2qL6E=; 
+ b=t0O6XrwtA/F5+bmgaw5IQ9fVPNoa9p3+ksS6+m/tn1wkdHA/4NScQDInDTD17J7zMP95Naq7ZqOT+LEC1umO3nUI4ofkRWgs7h+mBhA01edtGHgEuCT9Cx3SybQkAB8KN/PUQxUAHMD/nVu59EjDJbF46wbBa/QMGgmipCBsWGw=;
+X-UUID: 4b0e356effa24d0db1de40b7e282da81-20220330
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <irui.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 91019291; Wed, 30 Mar 2022 01:31:02 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Mar 2022 01:31:00 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 30 Mar 2022 16:30:59 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ with ESMTP id 654511836; Wed, 30 Mar 2022 01:58:53 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Mar 2022 01:48:51 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Mar 2022 16:48:49 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 30 Mar 2022 16:30:58 +0800
-Message-ID: <6f5a47588dd0b9293c8bc6ba1fc6794ab57d6ac7.camel@mediatek.com>
-Subject: Re: [PATCH v9 3/3] mmc: mediatek: add support for SDIO eint wakup IRQ
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-To: Axe Yang <axe.yang@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Adrian Hunter <adrian.hunter@intel.com>
-CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
- <satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach
- <dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>, Andrew Jeffery
- <andrew@aj.id.au>, Stephen Boyd <swboyd@chromium.org>, Kiwoong Kim
- <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>, Tian Tao
- <tiantao6@hisilicon.com>, <angelogioacchino.delregno@collabora.com>,
- <linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ Transport; Wed, 30 Mar 2022 16:48:47 +0800
+Message-ID: <8e87e98a0b261dcdca9beb41bd1cd5030a4690ab.camel@mediatek.com>
+Subject: Re: [PATCH v3, 03/10] dt-bindings: media: mtk-vcodec: Adds encoder
+ cores dt-bindings for mt8195
+From: Irui Wang <irui.wang@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+CC: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
+ <tzungbi@chromium.org>, Alexandre Courbot <acourbot@chromium.org>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>,
+ <angelogioacchino.delregno@collabora.com>, Yong Wu <yong.wu@mediatek.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
+ <andrew-ct.chen@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Maoguang
+ Meng" <maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>, 
+ Yunfei Dong <yunfei.dong@mediatek.com>, Fritz Koenig <frkoenig@chromium.org>, 
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Yong Mao <yong.mao@mediatek.com>
-Date: Wed, 30 Mar 2022 16:30:58 +0800
-In-Reply-To: <20220329032913.8750-4-axe.yang@mediatek.com>
-References: <20220329032913.8750-1-axe.yang@mediatek.com>
- <20220329032913.8750-4-axe.yang@mediatek.com>
+ <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 30 Mar 2022 16:48:47 +0800
+In-Reply-To: <YkMFGbgYq5DhLjt8@robh.at.kernel.org>
+References: <20220317082230.23622-1-irui.wang@mediatek.com>
+ <20220317082230.23622-4-irui.wang@mediatek.com>
+ <Yj4s0zcHxz3U3wlc@robh.at.kernel.org>
+ <ab2b24eeb51048227ad7b2ac659617a7da5b2e45.camel@mediatek.com>
+ <YkG8ka1xY2k+HWi1@robh.at.kernel.org>
+ <e41e909f85e3891edb6b66d7d5a810af103113c8.camel@mediatek.com>
+ <YkMFGbgYq5DhLjt8@robh.at.kernel.org>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220330_013110_629376_FBF2AF7C 
-X-CRM114-Status: GOOD (  31.89  )
+X-CRM114-CacheID: sfid-20220330_015902_600380_ABDB64F5 
+X-CRM114-Status: GOOD (  38.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,256 +93,127 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-03-29 at 11:29 +0800, Axe Yang wrote:
-> Add support for eint IRQ when MSDC is used as an SDIO host. This
-> feature requires SDIO device support async IRQ function. With this
-> feature, SDIO host can be awakened by SDIO card in suspend state,
-> without additional pin.
+Dear Rob,
+
+A sample encoder hardware block diagram attached.
+On Tue, 2022-03-29 at 08:09 -0500, Rob Herring wrote:
+> On Tue, Mar 29, 2022 at 09:26:37AM +0800, Irui Wang wrote:
+> > Dear Rob,
+> > 
+> > Many thanks for your attention.
+> > 
+> > On Mon, 2022-03-28 at 08:48 -0500, Rob Herring wrote:
+> > > On Sat, Mar 26, 2022 at 10:00:55AM +0800, Irui Wang wrote:
+> > > > Dear Rob,
+> > > > 
+> > > > Thanks for your review and comments.
+> > > > 
+> > > > On Fri, 2022-03-25 at 15:57 -0500, Rob Herring wrote:
+> > > > > On Thu, Mar 17, 2022 at 04:22:23PM +0800, Irui Wang wrote:
+> > > > > > Adds encoder cores dt-bindings for mt8195.
 > 
-> MSDC driver will time-share the SDIO DAT1 pin. During suspend, MSDC
-> turn off clock and switch SDIO DAT1 pin to GPIO mode. And during
-> resume, switch GPIO function back to DAT1 mode then turn on clock.
+> [...]
 > 
-> Some device tree property should be added or modified in MSDC node
-> to support SDIO eint IRQ. Pinctrls "state_eint" is mandatory. Since
-> this feature depends on asynchronous interrupts, "wakeup-source",
-> "keep-power-in-suspend" and "cap-sdio-irq" flags are necessary, and
-> the interrupts list should be extended:
->         &mmcX {
-> 		...
-> 		interrupts-extended = <...>,
->                               	      <&pio xxx
-> IRQ_TYPE_LEVEL_LOW>;
->                 ...
->                 pinctrl-names = "default", "state_uhs", "state_eint";
->                 ...
->                 pinctrl-2 = <&mmc2_pins_eint>;
->                 ...
->                 cap-sdio-irq;
-> 		keep-power-in-suspend;
-> 		wakeup-source;
->                 ...
->         };
+> > > > > > +      mediatek,core-id:
+> > > > > > +        $ref: /schemas/types.yaml#/definitions/uint32
+> > > > > > +        description: |
+> > > > > > +          Current encoder core id.
+> > > > > 
+> > > > > What is this for and what does its value correspond to in the
+> > > > > h/w.
+> > > > > We 
+> > > > > generally don't do made up indices in DT.
+> > > > 
+> > > > It's for encoder core id, core@1a020000 must be core-0, 
+> > > > core@1b020000
+> > > > must be core-1, we add this property in each child node, so we
+> > > > can 
+> > > > get core-id in drivers. If it can't ref "uint32" types yaml,
+> > > > would 
+> > > > you mind giving some more suggestions ?
+> > > 
+> > > I still don't understand why it is needed. What is 'core-0'?
+> > > 
+> > > Is there some functional difference between the cores? If so,
+> > > describe 
+> > > that difference.
+> > > 
+> > > Rob
+> > 
+> > They are two different pieces of hardware, it's our encoder
+> > hardware
+> > design. There are two encoder hardware cores inside MT8195, named
+> > core0
+> > and core1(we can rename it, but core id should be declared),
+> > for core0, its module base address is 0x1A02_0000, uses IOMMU
+> > "vdo0_iommu" and power domain "POWER_DOMAIN_VENC",
+> > for core1, its module base address is 0x1B02_0000, uses IOMMU
+> > "vpp_iommu" and power domain "POWER_DOMAIN_VENC_CORE1".
+> > So the two encoder cores have their own base, IRQ, clock, power,
+> > etc.
+> > Each core can encode independently, moreover, they can work
+> > together
+> > for higher performance. 
+> > We will describe more details in YAML about it if it's OK for you.
 > 
-> Co-developed-by: Yong Mao <yong.mao@mediatek.com>
-> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-> Signed-off-by: Axe Yang <axe.yang@mediatek.com>
-  Acked-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> ---
->  drivers/mmc/host/mtk-sd.c | 94 +++++++++++++++++++++++++++++++++++
-> ----
->  1 file changed, 86 insertions(+), 8 deletions(-)
+> All the resources you list are in the child nodes, so you don't need
+> 0 
+> and 1 numbering for those. 
 > 
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 65037e1d7723..2905d7134243 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -1,6 +1,6 @@
->  // SPDX-License-Identifier: GPL-2.0-only
->  /*
-> - * Copyright (c) 2014-2015 MediaTek Inc.
-> + * Copyright (c) 2014-2015, 2022 MediaTek Inc.
->   * Author: Chaotian.Jing <chaotian.jing@mediatek.com>
->   */
->  
-> @@ -20,6 +20,7 @@
->  #include <linux/platform_device.h>
->  #include <linux/pm.h>
->  #include <linux/pm_runtime.h>
-> +#include <linux/pm_wakeirq.h>
->  #include <linux/regulator/consumer.h>
->  #include <linux/slab.h>
->  #include <linux/spinlock.h>
-> @@ -440,8 +441,11 @@ struct msdc_host {
->  	struct pinctrl *pinctrl;
->  	struct pinctrl_state *pins_default;
->  	struct pinctrl_state *pins_uhs;
-> +	struct pinctrl_state *pins_eint;
->  	struct delayed_work req_timeout;
->  	int irq;		/* host interrupt */
-> +	int eint_irq;		/* interrupt from sdio device for
-> waking up system */
-> +	int sdio_wake_irq_depth;
->  	struct reset_control *reset;
->  
->  	struct clk *src_clk;	/* msdc source clock */
-> @@ -465,6 +469,7 @@ struct msdc_host {
->  	bool hs400_tuning;	/* hs400 mode online tuning */
->  	bool internal_cd;	/* Use internal card-detect logic */
->  	bool cqhci;		/* support eMMC hw cmdq */
-> +	bool sdio_eint_ready;	/* Ready to support SDIO eint
-> interrupt */
->  	struct msdc_save_para save_para; /* used when gate HCLK */
->  	struct msdc_tune_para def_tune_para; /* default tune setting */
->  	struct msdc_tune_para saved_tune_para; /* tune result of
-> CMD21/CMD19 */
-> @@ -1527,10 +1532,12 @@ static void msdc_enable_sdio_irq(struct
-> mmc_host *mmc, int enb)
->  	__msdc_enable_sdio_irq(host, enb);
->  	spin_unlock_irqrestore(&host->lock, flags);
->  
-> -	if (enb)
-> -		pm_runtime_get_noresume(host->dev);
-> -	else
-> -		pm_runtime_put_noidle(host->dev);
-> +	if (mmc->card && !mmc_card_enable_async_irq(mmc->card)) {
-> +		if (enb)
-> +			pm_runtime_get_noresume(host->dev);
-> +		else
-> +			pm_runtime_put_noidle(host->dev);
-> +	}
->  }
->  
->  static irqreturn_t msdc_cmdq_irq(struct msdc_host *host, u32 intsts)
-> @@ -2631,6 +2638,18 @@ static int msdc_drv_probe(struct
-> platform_device *pdev)
->  		goto host_free;
->  	}
->  
-> +	/* Support for SDIO eint irq ? */
-> +	if (mmc->pm_caps & MMC_PM_WAKE_SDIO_IRQ) {
-> +		host->pins_eint = pinctrl_lookup_state(host->pinctrl,
-> "state_eint");
-> +		if (IS_ERR(host->pins_eint)) {
-> +			ret = dev_err_probe(&pdev->dev, PTR_ERR(host-
-> >pins_eint),
-> +					    "Cannot find pinctrl
-> eint!\n");
-> +			goto host_free;
-> +		}
-> +
-> +		host->sdio_eint_ready = true;
-> +	}
-> +
->  	msdc_of_property_parse(pdev, host);
->  
->  	host->dev = &pdev->dev;
-> @@ -2722,6 +2741,21 @@ static int msdc_drv_probe(struct
-> platform_device *pdev)
->  	if (ret)
->  		goto release;
->  
-> +	if (host->sdio_eint_ready) {
-> +		host->eint_irq = irq_of_parse_and_map(host->dev-
-> >of_node, 1);
-> +		ret = host->eint_irq ?
-> dev_pm_set_dedicated_wake_irq(host->dev, host->eint_irq) :
-> +		      -ENODEV;
-> +
-> +		if (ret) {
-> +			dev_err(host->dev, "Failed to register data1
-> eint irq!\n");
-> +			goto release;
-> +		}
-> +
-> +		dev_pm_disable_wake_irq(host->dev);
-> +		pinctrl_select_state(host->pinctrl, host->pins_uhs);
-> +	}
-> +
-> +	device_init_wakeup(host->dev, true);
->  	pm_runtime_set_active(host->dev);
->  	pm_runtime_set_autosuspend_delay(host->dev,
-> MTK_MMC_AUTOSUSPEND_DELAY);
->  	pm_runtime_use_autosuspend(host->dev);
-> @@ -2734,6 +2768,7 @@ static int msdc_drv_probe(struct
-> platform_device *pdev)
->  	return 0;
->  end:
->  	pm_runtime_disable(host->dev);
-> +	dev_pm_clear_wake_irq(host->dev);
->  release:
->  	platform_set_drvdata(pdev, NULL);
->  	msdc_deinit_hw(host);
-> @@ -2845,6 +2880,16 @@ static int __maybe_unused
-> msdc_runtime_suspend(struct device *dev)
->  	struct msdc_host *host = mmc_priv(mmc);
->  
->  	msdc_save_reg(host);
-> +
-> +	if (host->sdio_eint_ready) {
-> +		disable_irq(host->irq);
-> +		pinctrl_select_state(host->pinctrl, host->pins_eint);
-> +		if (host->sdio_wake_irq_depth == 0) {
-> +			dev_pm_enable_wake_irq(dev);
-> +			host->sdio_wake_irq_depth++;
-> +		}
-> +		sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-> +	}
->  	msdc_gate_clock(host);
->  	return 0;
->  }
-> @@ -2860,12 +2905,25 @@ static int __maybe_unused
-> msdc_runtime_resume(struct device *dev)
->  		return ret;
->  
->  	msdc_restore_reg(host);
-> +
-> +	if (host->sdio_eint_ready) {
-> +		if (host->sdio_wake_irq_depth > 0) {
-> +			dev_pm_disable_wake_irq(dev);
-> +			host->sdio_wake_irq_depth--;
-> +			sdr_set_bits(host->base + SDC_CFG,
-> SDC_CFG_SDIOIDE);
-> +		} else {
-> +			sdr_clr_bits(host->base + MSDC_INTEN,
-> MSDC_INTEN_SDIOIRQ);
-> +		}
-> +		pinctrl_select_state(host->pinctrl, host->pins_uhs);
-> +		enable_irq(host->irq);
-> +	}
->  	return 0;
->  }
->  
-> -static int __maybe_unused msdc_suspend(struct device *dev)
-> +static int __maybe_unused msdc_suspend_noirq(struct device *dev)
->  {
->  	struct mmc_host *mmc = dev_get_drvdata(dev);
-> +	struct msdc_host *host = mmc_priv(mmc);
->  	int ret;
->  
->  	if (mmc->caps2 & MMC_CAP2_CQE) {
-> @@ -2874,16 +2932,36 @@ static int __maybe_unused msdc_suspend(struct
-> device *dev)
->  			return ret;
->  	}
->  
-> +	if (host->sdio_eint_ready)
-> +		enable_irq_wake(host->eint_irq);
-> +
->  	return pm_runtime_force_suspend(dev);
->  }
->  
-> -static int __maybe_unused msdc_resume(struct device *dev)
-> +static int __maybe_unused msdc_resume_noirq(struct device *dev)
->  {
-> +	struct mmc_host *mmc = dev_get_drvdata(dev);
-> +	struct msdc_host *host = mmc_priv(mmc);
-> +
-> +	if (host->sdio_eint_ready) {
-> +		disable_irq_wake(host->eint_irq);
-> +
-> +		/*
-> +		 * In noirq resume stage, msdc_runtime_resume()
-> +		 * won't be called, so disalbe wake irq here
-> +		 * to block dedicated wake irq handler callback.
-> +		 */
-> +		if (likely(host->sdio_wake_irq_depth > 0)) {
-> +			dev_pm_disable_wake_irq(dev);
-> +			host->sdio_wake_irq_depth--;
-> +		}
-> +	}
-> +
->  	return pm_runtime_force_resume(dev);
->  }
->  
->  static const struct dev_pm_ops msdc_dev_pm_ops = {
-> -	SET_SYSTEM_SLEEP_PM_OPS(msdc_suspend, msdc_resume)
-> +	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(msdc_suspend_noirq,
-> msdc_resume_noirq)
->  	SET_RUNTIME_PM_OPS(msdc_runtime_suspend, msdc_runtime_resume,
-> NULL)
->  };
->  
+> Looking at the driver patches, the only thing I see distinguishing 
+> core numbers is this:
+> 
+> "frame#0 uses core#0, frame#1 uses core#1, frame#2 uses core#0...,
+> 
+> Lock the device and enable the clock by used core, for sequence
+> header encoding, it always uses core#0."
+> 
+> Is this a requirement in the h/w or just what the driver picked?
+> IOW, 
+> could frame#0 use core#1?
+No, it's a requirement in the h/w, driver trigger core start encoding
+is in order.
+About the encoder hardware block diagram, please check below:
+--------------------------------------------------------------
+Input Buffer: 0     1     2     3     4     5     6
+              |     |     |     |     |     |     |
+              v     |     v     |     v     |     v
+          +-------+ | +-------+ | +-------+ | +-------+
+          | core0 | | | core0 | | | core0 | | | core0 |
+          +-------+ | +-------+ | +-------+ | +-------+
+              |     |     |     |     |     |     |
+              |     v     |     v     |     v     |
+              | +-------+ | +-------+ | +-------+ |
+              | | core1 | | | core1 | | | core1 | |
+              | +-------+ | +-------+ | +-------+ |
+              |     |     |     |     |     |     |
+              v     v     v     v     v     v     v    <parent>
+--------------------------------------------------------------
+                        core || index                  <child>
+                             \/
+       +-----------------------------------------------+
+       |                  core0/core1                  |
+       |          enable/disable power/clk/irq         |
+       +-----------------------------------------------+
+--------------------------------------------------------------
+As above , there are parent and child devices, child mean each venc
+core, the child device controls the information of each core
+independent which inlcude power/clk/irq.
+When start encoding, input buffer 0 will be encoded by core0, and input
+buffer 1 can be encoded by core1 even if buffer 0 has not been encoded
+done yet, after buffer 0 encoded done, buffer 2 will be encoded by
+core0, and buffer 1 encoded done by core1. These two encoder cores will
+encode each input in this overlapping manner.
+
+We need manage each child device in parent device by core-id property.
+And we also need record current encoding input buffer, encode done
+output buffers and which one core is in used through core-id, because
+the two cores are encoding at the same time under one parent driver.
+> 
+> Rob
+
+Thanks
+Best Regards
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
