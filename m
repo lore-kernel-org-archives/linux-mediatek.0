@@ -4,68 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2206C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Mar 2022 05:23:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01E9EC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Mar 2022 07:21:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FEblHwFiSnWw4BuiCwch/t4PQmlULxCOH9rlZkuYCeE=; b=dVLhByWz/S+Viv
-	B6OVHFHtGFXDC5UENfWtQwNGJx2CbCBKo5WhJZhAVIZsq+MUxxsQX276wRpW38swFwFTqVcLMtc1Y
-	k3xHogQHzOcoz9Ik1BqKY54eTvWeotzSvf3ADvBMymFodrIv/l9+BYrzHabYWDjjLQbOXWOnTTXDu
-	gZD3Uxj7sSdRrnsaGzZ+fY/eIXh7b8caMg8rxhRiPGQZ7d1KBozVcWjMqjNgp0Hwrg11Zs6quDKdp
-	CYpY/L21k+OZZCuN2df4VfMPECGuoVHbRvVzm/1bDy+4KBe5UTQ74KZqayJ2+NninI0DU90orc2qa
-	selaQ0o6TGeVV2VnqCLg==;
+	List-Owner; bh=sc99MnwwqSQeCLplOEFQ5aPfy5Sej8K6W2oT4FH9RyI=; b=WCbz1fNGaBcq4H
+	c97upCNr0w5ZkG0SGS3A9KQjhBJo/xyyZkP5RHEJ1o2JuA0hd7D5OKLqW3fnWVfsP2ZJ1jJGjnZ3b
+	uEiBjpXiD/aaJhTSVM5LHHDfAZ2KpUWK0J7/MmwF6KAkjzedzm1SoONMHDOB0D/XT1w42sEHuAzL9
+	uFPzWwf6gM5WlXZAEKUBdbOqZRHhuDa9oUF4/Ex22skx+8JZSxuMzRVr+alXZ/tXZzSxdiSDr8bN9
+	CCxy/7zcw35+Xbdac107lWi60Sj5Jc44fl8laOo3cCd8YlW6nk1iAXM7LJzEDra4r7C8uz16a191v
+	v9A8AyIpsCp3y2w/rcDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZQnk-00EIfV-PJ; Wed, 30 Mar 2022 05:23:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nZSdx-00EYh8-Dl; Wed, 30 Mar 2022 07:21:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZQmd-00EI0F-Ly; Wed, 30 Mar 2022 05:22:17 +0000
-X-UUID: 5eb99a1faaf14d179bd0d03efb182068-20220329
-X-UUID: 5eb99a1faaf14d179bd0d03efb182068-20220329
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
+ id 1nZSdi-00EYbx-EY; Wed, 30 Mar 2022 07:21:13 +0000
+X-UUID: b7e7abd3e8794e888cb7c270001930d8-20220330
+X-UUID: b7e7abd3e8794e888cb7c270001930d8-20220330
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1820507464; Tue, 29 Mar 2022 22:22:12 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 29 Mar 2022 22:12:09 -0700
+ with ESMTP id 666390043; Wed, 30 Mar 2022 00:21:04 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Mar 2022 00:21:02 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 30 Mar 2022 13:12:02 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 30 Mar 2022 13:12:02 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <granquet@baylibre.com>
-CC: <airlied@linux.ie>, <angelogioacchino.delregno@collabora.com>,
- <chunfeng.yun@mediatek.com>, <chunkuang.hu@kernel.org>, <ck.hu@mediatek.com>, 
- <daniel@ffwll.ch>, <deller@gmx.de>, <devicetree@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, <jitao.shi@mediatek.com>, <kishon@ti.com>, 
- <krzk+dt@kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-fbdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
- <maarten.lankhorst@linux.intel.com>, <markyacoub@google.com>,
- <matthias.bgg@gmail.com>, <mripard@kernel.org>, <msp@baylibre.com>,
- <p.zabel@pengutronix.de>, <robh+dt@kernel.org>, <tzimmermann@suse.de>,
- <vkoul@kernel.org>
-Subject: Re: [PATCH v9 02/22] dt-bindings: mediatek,
- dp: Add Display Port binding
-Date: Wed, 30 Mar 2022 13:12:02 +0800
-Message-ID: <20220330051202.19594-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220327223927.20848-3-granquet@baylibre.com>
-References: <20220327223927.20848-3-granquet@baylibre.com>
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Mar 2022 15:21:00 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 30 Mar 2022 15:21:01 +0800
+Message-ID: <701a4568d50ca60747731f6ccb1d7d14882d11b7.camel@mediatek.com>
+Subject: Re: [PATCH v4 02/22] arm64: dts: mt8192: Add spmi node
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, "Hui Liu"
+ <hui.liu@mediatek.com>
+Date: Wed, 30 Mar 2022 15:21:00 +0800
+In-Reply-To: <8e482005-8f44-3502-3bca-0824f3e2dd7a@gmail.com>
+References: <20220318144534.17996-1-allen-kh.cheng@mediatek.com>
+ <20220318144534.17996-3-allen-kh.cheng@mediatek.com>
+ <8e482005-8f44-3502-3bca-0824f3e2dd7a@gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_222215_776964_B047C8E7 
-X-CRM114-Status: UNSURE (   7.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220330_002110_527266_4E488728 
+X-CRM114-Status: GOOD (  17.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,146 +71,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->This controller is present on several mediatek hardware. Currently
->mt8195 and mt8395 have this controller without a functional difference,
->so only one compatible field is added.
->
->The controller can have two forms, as a normal display port and as an
->embedded display port.
->
->Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
->Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
->---
-> .../display/mediatek/mediatek,dp.yaml         | 100 ++++++++++++++++++
-> 1 file changed, 100 insertions(+)
-> create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
->
->diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
->new file mode 100644
->index 000000000000..802cc406c72b
->--- /dev/null
->+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
->@@ -0,0 +1,100 @@
->+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->+%YAML 1.2
->+---
->+$id: http://devicetree.org/schemas/display/mediatek/mediatek,dp.yaml#
->+$schema: http://devicetree.org/meta-schemas/core.yaml#
->+
->+title: Mediatek Display Port Controller
-
-s/Mediatek/MediaTek/
-
->+
->+maintainers:
->+  - CK Hu <ck.hu@mediatek.com>
->+  - Jitao shi <jitao.shi@mediatek.com>
->+
->+description: |
->+  Device tree bindings for the Mediatek (embedded) Display Port controller
-
-s/Mediatek/MediaTek/
-
->+  present on some Mediatek SoCs.
-
-s/Mediatek/MediaTek/
-
->+
->+properties:
->+  compatible:
->+    items:
->+      - const: mediatek,mt8195-dp-tx
->+      - const: syscon
->+
->+  reg:
->+    maxItems: 1
->+
->+  interrupts:
->+    maxItems: 1
->+
->+  clocks:
->+    items:
->+      - description: faxi clock
->+
->+  clock-names:
->+    items:
->+      - const: faxi
->+
->+  phys:
->+    maxItems: 1
->+
->+  phy-names:
->+    items:
->+      - const: dp
->+
->+  power-domains:
->+    maxItems: 1
->+
->+  ports:
->+    $ref: /schemas/graph.yaml#/properties/ports
->+    properties:
->+      port@0:
->+        $ref: /schemas/graph.yaml#/properties/port
->+        description: Input endpoint of the controller, usually dp_intf
->+
->+      port@1:
->+        $ref: /schemas/graph.yaml#/properties/port
->+        description: Output endpoint of the controller
->+
->+    required:
->+      - port@0
->+
->+required:
->+  - compatible
->+  - reg
->+  - interrupts
->+  - ports
->+
->+additionalProperties: false
->+
->+examples:
->+  - |
->+    #include <dt-bindings/interrupt-controller/arm-gic.h>
->+    #include <dt-bindings/power/mt8195-power.h>
->+    edp_tx: edisplay-port-tx@1c500000 {
->+        compatible = "mediatek,mt8195-dp-tx","syscon";
->+        reg = <0 0x1c500000 0 0x8000>;
->+        interrupts = <GIC_SPI 676 IRQ_TYPE_LEVEL_HIGH 0>;
->+        power-domains = <&spm MT8195_POWER_DOMAIN_EPD_TX>;
->+        pinctrl-names = "default";
->+        pinctrl-0 = <&edp_pin>;
->+        phys = <&dp_phy>;
->+        phy-names = "dp";
->+
->+        ports {
->+            #address-cells = <1>;
->+            #size-cells = <0>;
->+
->+            port@0 {
->+                reg = <0>;
->+                edp_in: endpoint {
->+                    remote-endpoint = <&dp_intf0_out>;
->+                };
->+            };
->+            port@1 {
->+                reg = <1>;
->+                edp_out: endpoint {
->+                    remote-endpoint = <&panel_in>;
->+                };
->+            };
->+        };
->+    };
->-- 
->2.34.1
->
->
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgTWF0aGlhcywKCk9uIFdlZCwgMjAyMi0wMy0yMyBhdCAxODoxNiArMDEwMCwgTWF0dGhpYXMg
+QnJ1Z2dlciB3cm90ZToKPiAKPiBPbiAxOC8wMy8yMDIyIDE1OjQ1LCBBbGxlbi1LSCBDaGVuZyB3
+cm90ZToKPiA+IEFkZCBzcG1pIG5vZGUgZm9yIG10ODE5MiBTb0MuCj4gPiAKPiA+IFNpZ25lZC1v
+ZmYtYnk6IEFsbGVuLUtIIENoZW5nIDxhbGxlbi1raC5jaGVuZ0BtZWRpYXRlay5jb20+Cj4gPiBS
+ZXZpZXdlZC1ieTogTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEu
+Y29tPgo+ID4gUmV2aWV3ZWQtYnk6IEFuZ2Vsb0dpb2FjY2hpbm8gRGVsIFJlZ25vIDwKPiA+IGFu
+Z2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFib3JhLmNvbT4KPiA+IC0tLQo+ID4gICBhcmNo
+L2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE5Mi5kdHNpIHwgMTcgKysrKysrKysrKysrKysr
+KysKPiA+ICAgMSBmaWxlIGNoYW5nZWQsIDE3IGluc2VydGlvbnMoKykKPiA+IAo+ID4gZGlmZiAt
+LWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTkyLmR0c2kKPiA+IGIvYXJj
+aC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxOTIuZHRzaQo+ID4gaW5kZXggNzY0Mjg1OTk0
+NDRlLi4wZjlmMjExY2E5ODYgMTAwNjQ0Cj4gPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21l
+ZGlhdGVrL210ODE5Mi5kdHNpCj4gPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVr
+L210ODE5Mi5kdHNpCj4gPiBAQCAtNTM1LDYgKzUzNSwyMyBAQAo+ID4gICAJCQlhc3NpZ25lZC1j
+bG9jay1wYXJlbnRzID0gPCZ0b3Bja2dlbgo+ID4gQ0xLX1RPUF9PU0NfRDEwPjsKPiA+ICAgCQl9
+Owo+ID4gICAKPiA+ICsJCXNwbWk6IHNwbWlAMTAwMjcwMDAgewo+ID4gKwkJCWNvbXBhdGlibGUg
+PSAibWVkaWF0ZWssbXQ2ODczLXNwbWkiOwo+ID4gKwkJCXJlZyA9IDwwIDB4MTAwMjcwMDAgMCAw
+eDAwMGUwMD4sCj4gPiArCQkJICAgICAgPDAgMHgxMDAyOTAwMCAwIDB4MDAwMTAwPjsKPiA+ICsJ
+CQlyZWctbmFtZXMgPSAicG1pZiIsICJzcG1pbXN0IjsKPiA+ICsJCQljbG9ja3MgPSA8JmluZnJh
+Y2ZnIENMS19JTkZSQV9QTUlDX0FQPiwKPiA+ICsJCQkJIDwmaW5mcmFjZmcgQ0xLX0lORlJBX1BN
+SUNfVE1SPiwKPiA+ICsJCQkJIDwmdG9wY2tnZW4gQ0xLX1RPUF9TUE1JX01TVF9TRUw+Owo+ID4g
+KwkJCWNsb2NrLW5hbWVzID0gInBtaWZfc3lzX2NrIiwKPiA+ICsJCQkJICAgICAgInBtaWZfdG1y
+X2NrIiwKPiA+ICsJCQkJICAgICAgInNwbWltc3RfY2xrX211eCI7Cj4gPiArCQkJYXNzaWduZWQt
+Y2xvY2tzID0gPCZ0b3Bja2dlbgo+ID4gQ0xLX1RPUF9QV1JBUF9VTFBPU0NfU0VMPjsKPiA+ICsJ
+CQlhc3NpZ25lZC1jbG9jay1wYXJlbnRzID0gPCZ0b3Bja2dlbgo+ID4gQ0xLX1RPUF9PU0NfRDEw
+PjsKPiA+ICsJCQkjYWRkcmVzcy1jZWxscyA9IDwyPjsKPiA+ICsJCQkjc2l6ZS1jZWxscyA9IDww
+PjsKPiAKPiBXaGF0IGRvIHdlIG5lZWQgdGhlIGFkZHJlc3MtY2VsbHMgYW5kIHNpemUtY2VsbHMg
+Zm9yPwo+IAo+IFJlZ2FyZHMsCj4gTWF0dGhpYXMKPiAKCldlIHdpaWwgYWRkIHR3byByZWd1bGF0
+b3JzIGZvciBib2FyZCBsZXZlbCAobXQ4MTkyLWFzdXJhZGEuZHRzaSkuCgpBZHJlc3MtY2VsbHMg
+YW5kIHNpemUtY2VsbHMgYXJlIHVzZWQgdG8gZGVudGlmeSByZWd1bGF0b3IuCgomc3BtaSB7CiAg
+ICAgICAgZ3JwaWQgPSA8MTE+OwoKICAgICAgICBtdDYzMTVfNjogcG1pY0A2IHsKICAgICAgICAg
+ICAgICAgCmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ2MzE1LXJlZ3VsYXRvciI7CiAgICAgICAg
+ICAgICAgICByZWcgPSA8MHg2IDA+OwoKCQkuLi4uCiAgICAgICAgfTsKCiAgICAgICAgbXQ2MzE1
+Xzc6IHBtaWNANyB7CiAgICAgICAgICAgICAgIApjb21wYXRpYmxlID0gIm1lZGlhdGVrLG10NjMx
+NS1yZWd1bGF0b3IiOwogICAgICAgICAgICAgICAgcmVnID0gPDB4NyAwPjsKCgkJLi4uLgogICAg
+ICAgIH07Cn07CgpUaGFua3MsCkFsbGVuCgo+ID4gKwo+ID4gICAJCXNjcF9hZHNwOiBjbG9jay1j
+b250cm9sbGVyQDEwNzIwMDAwIHsKPiA+ICAgCQkJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgx
+OTItc2NwX2Fkc3AiOwo+ID4gICAJCQlyZWcgPSA8MCAweDEwNzIwMDAwIDAgMHgxMDAwPjsKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRp
+YXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
