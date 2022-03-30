@@ -4,59 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 959DBC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Mar 2022 12:00:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31397C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Mar 2022 12:10:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A1jQas3TXGf5q40h1b1ySLS674Rzzh/E1T6arTvl7ec=; b=13gMqKJNhgp7lC
-	uBO2UGbsCJqPOKznLcPKDtcZpretxY6/+KjL2Q6BTTfgtuel6PG7h8YNsWU3NnomqHqujZGVtCwc4
-	p9lJBU9hmVAOCC+QN/ommy4luvmO8GcjTEzePN4F1diDseyeq/lJpDu13CPuLsbaLxrfMZcqVTjVl
-	SYwKO0XxZzgeqF6PF7GfjGeixfwzK/f7a2drFnjfc5g6gyTWPMeXgxiBQFeGPmW9cqt1xeA1Bx/N/
-	+QZ4P6JLLyjxyMy8s/YVFq9UKVUtHHQ04YltbIWO+/UcDHEO25yVos8II2XUodneRCewhLy9ebls4
-	j2VaUBQhBa2P3kpJhCeg==;
+	List-Owner; bh=TSyawZIzuoDy5PmxjcaM0HZKsVKgzrA8e6a5JssMFIg=; b=sYDacCbHxQCtT9
+	xJdYGd+QxkRFMosmxbui/QQLj4NmTo9zYI9U56tFcIME70ixrXmxD1bYYCBd7aGPDkKhc1GxggHqO
+	dVTyGyhfnjHNg5rMAaTNyIjxQ3kqtMnDXXdmMvqo+JzX9W/ZbytIUx1JOTIljM6gdj9+89iVe14gs
+	QYIvaf1mzfXcEOmBRukNIfsp2/EopnuonP+zc6cB+l9zDyfwWRhGZ0MIucVZcLAJW2Es7sIYy8TLb
+	1hDKXHv5pq79LwCJnUIwj8ivrtggRSZ7o6Yyf4/4Dzp+2ZZBQWJhex0zsxpOfL3M+xRxX8MWomO9R
+	Rx/+Tw7OeJ3W8RXkl5uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZX07-00FVZ6-0W; Wed, 30 Mar 2022 12:00:35 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nZX9f-00FaAl-Ti; Wed, 30 Mar 2022 12:10:27 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZWoo-00FPmd-W0; Wed, 30 Mar 2022 11:48:58 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 6EB90616B2;
- Wed, 30 Mar 2022 11:48:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0EC0C36AEB;
- Wed, 30 Mar 2022 11:48:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1648640934;
- bh=l+m77C9idI4jM2I/cxdJVqKxviVUkNS+iBU28/SrWOs=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ZPwMU7xjijuFHiACJlD8MWVVFIcdofIUeza5P4owOrDvv8vaepHtM744HPZIcLoYU
- zYNuKNpNvAD4W7g3Ja2CGHDjGiJrQbn10P5mU1zilPYmqnENN7N2lAWgLSXgLo0FKI
- cxwuNp4uZbfBiw80IWS0d4S/DmqwtFsoTS2G2WwjgFF00aa9D07SQ0beXx84SGP4MM
- i+JpPnSXu1G08WtTpDc+iAFq410Nx7oM2gaIgoHgxeSUA5zpCqxMTKKt4kaGbuiDOA
- HW63fTzoCX9bLatOSRhgPXxpkpbg/ush+lDB0U3UeiBoFypmLB+SkVIjjb5xLUedXl
- 0zyk0UX5gF3EA==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.16 13/59] media: iommu/mediatek: Add device_link
- between the consumer and the larb devices
-Date: Wed, 30 Mar 2022 07:47:45 -0400
-Message-Id: <20220330114831.1670235-13-sashal@kernel.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220330114831.1670235-1-sashal@kernel.org>
-References: <20220330114831.1670235-1-sashal@kernel.org>
+ id 1nZWpd-00FQIm-Qo
+ for linux-mediatek@lists.infradead.org; Wed, 30 Mar 2022 11:49:47 +0000
+Received: by mail-wr1-x435.google.com with SMTP id u3so28935345wrg.3
+ for <linux-mediatek@lists.infradead.org>; Wed, 30 Mar 2022 04:49:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=Zz5V7y6zyX28uzHv7nbJNO/THNVqL6J0WR2WWuQ7SCY=;
+ b=ZUOogO2MuK6NJjubHjbfEz+haJ4Oh6ePGA6/+gd7oK40h63IMjwzaVvnJYUmTxImAs
+ MyvMzaw35CVlu+C1Qwxa9gZov8B7ynpIwE3Kahpcz6sN0ho/mSj65L6ftNnsKk0N0nfj
+ 4FD0bVTJb2fmEnKM40jG3JvPfGa1UEDFrVUzYozFy2JbNwdiOUCDqvoRUU5p/1MuvQtk
+ H1t8//3ATlKAdlXRm+jWADGLrIYnbjN2Vd+1QzD13qGQn0d2D1eJ8SeQBqJ9cpJE8m8y
+ rxQTaDbTj6arnFaptoXI1QxDOgI01CGVevoN+fRv/LEDGV5rgU6D1hGjCmYn3/CIg8i5
+ eoDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=Zz5V7y6zyX28uzHv7nbJNO/THNVqL6J0WR2WWuQ7SCY=;
+ b=0a3hZHKiGYRedF5euatR5FcLfLCAs2GUn4+j+lrSQqXbyusGunOE+Liw4VtSVw17AA
+ 74VX8K6n3WCStb1bEM5CMZQ4bde+fdYXDu0RD6V1bz4PQIE3shbrZ0jFRsSjTp+RpllD
+ rsfLVJUW/XBS2j3pSo8GP9mZ9D5WTrmkQha5thILUaNhZy3/5hgyLJEcJO+9Tyvn19jv
+ a6QrGQI/WkKxlplImJYtm9Ltcjp8TNdr7PeuBiHObL4fy/TGepNDPSTPnQzBdTsyIxez
+ nTOCdbKvaGgalaiOEyppo7vnD7zxkg1yxnS+Jfc+OzPY9TSjeJ3l0xviKGfAXZE1p5pc
+ Ty8g==
+X-Gm-Message-State: AOAM533uEc6H4jiaRzbmv7bOUfEsi5GVrxs9I2U6CHWaXiZ23V+Ry2LZ
+ BFZS5kq+7XIN+fPXtcjv/N6WEg==
+X-Google-Smtp-Source: ABdhPJxlxhSbqKiKCa9E9IGILcoh2/H6PVy3wwrQdQj0w9n8pdqxILCg+dwurPk7Vv6V2VCi3BDOrQ==
+X-Received: by 2002:adf:d1e5:0:b0:205:85f5:656c with SMTP id
+ g5-20020adfd1e5000000b0020585f5656cmr35738237wrd.65.1648640983633; 
+ Wed, 30 Mar 2022 04:49:43 -0700 (PDT)
+Received: from ?IPV6:2a01:e34:ed2f:f020:8f92:3217:a3c6:3ee8?
+ ([2a01:e34:ed2f:f020:8f92:3217:a3c6:3ee8])
+ by smtp.googlemail.com with ESMTPSA id
+ z5-20020a05600c0a0500b0037fa93193a8sm5539221wmp.44.2022.03.30.04.49.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 30 Mar 2022 04:49:43 -0700 (PDT)
+Message-ID: <98be733a-62b0-4cf6-ab27-992ea49da5b1@linaro.org>
+Date: Wed, 30 Mar 2022 13:49:41 +0200
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v4 1/4] dt-bindings: timer: Add compatible for Mediatek
+ MT8186
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: hsinyi@chromium.org, Thomas Gleixner <tglx@linutronix.de>,
+ Guenter Roeck <linux@roeck-us.net>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Wim Van Sebroeck <wim@linux-watchdog.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>
+References: <20220311130732.22706-1-allen-kh.cheng@mediatek.com>
+ <20220311130732.22706-2-allen-kh.cheng@mediatek.com>
+ <Yitv3IUpCzp1/eGX@robh.at.kernel.org>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <Yitv3IUpCzp1/eGX@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220330_044855_146468_2169DB71 
-X-CRM114-Status: GOOD (  23.78  )
+X-CRM114-CacheID: sfid-20220330_044945_963724_A5E55617 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,198 +98,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Joerg Roedel <jroedel@suse.de>,
- joro@8bytes.org, Tomasz Figa <tfiga@chromium.org>, matthias.bgg@gmail.com,
- iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yong Wu <yong.wu@mediatek.com>
-
-[ Upstream commit 635319a4a7444ca97124d781cd96deb277ff4d40 ]
-
-MediaTek IOMMU-SMI diagram is like below. all the consumer connect with
-smi-larb, then connect with smi-common.
-
-        M4U
-         |
-    smi-common
-         |
-  -------------
-  |         |    ...
-  |         |
-larb1     larb2
-  |         |
-vdec       venc
-
-When the consumer works, it should enable the smi-larb's power which
-also need enable the smi-common's power firstly.
-
-Thus, First of all, use the device link connect the consumer and the
-smi-larbs. then add device link between the smi-larb and smi-common.
-
-This patch adds device_link between the consumer and the larbs.
-
-When device_link_add, I add the flag DL_FLAG_STATELESS to avoid calling
-pm_runtime_xx to keep the original status of clocks. It can avoid two
-issues:
-1) Display HW show fastlogo abnormally reported in [1]. At the beggining,
-all the clocks are enabled before entering kernel, but the clocks for
-display HW(always in larb0) will be gated after clk_enable and clk_disable
-called from device_link_add(->pm_runtime_resume) and rpm_idle. The clock
-operation happened before display driver probe. At that time, the display
-HW will be abnormal.
-
-2) A deadlock issue reported in [2]. Use DL_FLAG_STATELESS to skip
-pm_runtime_xx to avoid the deadlock.
-
-Corresponding, DL_FLAG_AUTOREMOVE_CONSUMER can't be added, then
-device_link_removed should be added explicitly.
-
-Meanwhile, Currently we don't have a device connect with 2 larbs at the
-same time. Disallow this case, print the error log.
-
-[1] https://lore.kernel.org/linux-mediatek/1564213888.22908.4.camel@mhfsdcap03/
-[2] https://lore.kernel.org/patchwork/patch/1086569/
-
-Suggested-by: Tomasz Figa <tfiga@chromium.org>
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Tested-by: Frank Wunderlich <frank-w@public-files.de> # BPI-R2/MT7623
-Acked-by: Joerg Roedel <jroedel@suse.de>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/iommu/mtk_iommu.c    | 30 ++++++++++++++++++++++++++++++
- drivers/iommu/mtk_iommu_v1.c | 29 ++++++++++++++++++++++++++++-
- 2 files changed, 58 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 77ae20ff9b35..5971a1168666 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -562,22 +562,52 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
- {
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
- 	struct mtk_iommu_data *data;
-+	struct device_link *link;
-+	struct device *larbdev;
-+	unsigned int larbid, larbidx, i;
- 
- 	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
- 		return ERR_PTR(-ENODEV); /* Not a iommu client device */
- 
- 	data = dev_iommu_priv_get(dev);
- 
-+	/*
-+	 * Link the consumer device with the smi-larb device(supplier).
-+	 * The device that connects with each a larb is a independent HW.
-+	 * All the ports in each a device should be in the same larbs.
-+	 */
-+	larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
-+	for (i = 1; i < fwspec->num_ids; i++) {
-+		larbidx = MTK_M4U_TO_LARB(fwspec->ids[i]);
-+		if (larbid != larbidx) {
-+			dev_err(dev, "Can only use one larb. Fail@larb%d-%d.\n",
-+				larbid, larbidx);
-+			return ERR_PTR(-EINVAL);
-+		}
-+	}
-+	larbdev = data->larb_imu[larbid].dev;
-+	link = device_link_add(dev, larbdev,
-+			       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
-+	if (!link)
-+		dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
- 	return &data->iommu;
- }
- 
- static void mtk_iommu_release_device(struct device *dev)
- {
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-+	struct mtk_iommu_data *data;
-+	struct device *larbdev;
-+	unsigned int larbid;
- 
- 	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
- 		return;
- 
-+	data = dev_iommu_priv_get(dev);
-+	larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
-+	larbdev = data->larb_imu[larbid].dev;
-+	device_link_remove(dev, larbdev);
-+
- 	iommu_fwspec_free(dev);
- }
- 
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 68bf02f87cfd..bc7ee90b9373 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -423,7 +423,9 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
- 	struct of_phandle_args iommu_spec;
- 	struct mtk_iommu_data *data;
--	int err, idx = 0;
-+	int err, idx = 0, larbid, larbidx;
-+	struct device_link *link;
-+	struct device *larbdev;
- 
- 	/*
- 	 * In the deferred case, free the existed fwspec.
-@@ -453,6 +455,23 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
- 
- 	data = dev_iommu_priv_get(dev);
- 
-+	/* Link the consumer device with the smi-larb device(supplier) */
-+	larbid = mt2701_m4u_to_larb(fwspec->ids[0]);
-+	for (idx = 1; idx < fwspec->num_ids; idx++) {
-+		larbidx = mt2701_m4u_to_larb(fwspec->ids[idx]);
-+		if (larbid != larbidx) {
-+			dev_err(dev, "Can only use one larb. Fail@larb%d-%d.\n",
-+				larbid, larbidx);
-+			return ERR_PTR(-EINVAL);
-+		}
-+	}
-+
-+	larbdev = data->larb_imu[larbid].dev;
-+	link = device_link_add(dev, larbdev,
-+			       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
-+	if (!link)
-+		dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
-+
- 	return &data->iommu;
- }
- 
-@@ -473,10 +492,18 @@ static void mtk_iommu_probe_finalize(struct device *dev)
- static void mtk_iommu_release_device(struct device *dev)
- {
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-+	struct mtk_iommu_data *data;
-+	struct device *larbdev;
-+	unsigned int larbid;
- 
- 	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
- 		return;
- 
-+	data = dev_iommu_priv_get(dev);
-+	larbid = mt2701_m4u_to_larb(fwspec->ids[0]);
-+	larbdev = data->larb_imu[larbid].dev;
-+	device_link_remove(dev, larbdev);
-+
- 	iommu_fwspec_free(dev);
- }
- 
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gMTEvMDMvMjAyMiAxNjo1MCwgUm9iIEhlcnJpbmcgd3JvdGU6Cj4gT24gRnJpLCAxMSBNYXIg
+MjAyMiAyMTowNzoyOSArMDgwMCwgQWxsZW4tS0ggQ2hlbmcgd3JvdGU6Cj4+IEZyb206IEFsbGVu
+LUtIIENoZW5nIDxBbGxlbi1LSC5DaGVuZ0BtZWRpYXRlay5jb20+Cj4+Cj4+IFRoaXMgY29tbWl0
+IGFkZHMgZHQtYmluZGluZyBkb2N1bWVudGF0aW9uIG9mIHRpbWVyIGZvciBNZWRpYXRlayBNVDgx
+ODYgU29DCj4+IFBsYXRmb3JtLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBBbGxlbi1LSCBDaGVuZyA8
+QWxsZW4tS0guQ2hlbmdAbWVkaWF0ZWsuY29tPgo+PiAtLS0KPj4gICBEb2N1bWVudGF0aW9uL2Rl
+dmljZXRyZWUvYmluZGluZ3MvdGltZXIvbWVkaWF0ZWssbXRrLXRpbWVyLnR4dCB8IDEgKwo+PiAg
+IDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQo+Pgo+IAo+IEFja2VkLWJ5OiBSb2IgSGVy
+cmluZyA8cm9iaEBrZXJuZWwub3JnPgoKQXBwbGllZCwgdGhhbmtzCgotLSAKPGh0dHA6Ly93d3cu
+bGluYXJvLm9yZy8+IExpbmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0g
+U29DcwoKRm9sbG93IExpbmFybzogIDxodHRwOi8vd3d3LmZhY2Vib29rLmNvbS9wYWdlcy9MaW5h
+cm8+IEZhY2Vib29rIHwKPGh0dHA6Ly90d2l0dGVyLmNvbS8jIS9saW5hcm9vcmc+IFR3aXR0ZXIg
+fAo8aHR0cDovL3d3dy5saW5hcm8ub3JnL2xpbmFyby1ibG9nLz4gQmxvZwoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
+ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
