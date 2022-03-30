@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06EA0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Mar 2022 05:13:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EE6FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Mar 2022 05:13:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i4OwWN3IP88wc3puP5w8tWh26QgE9o5SdzPk9d5F5o4=; b=I7m3Fe5+3/4/a1
-	gQrrP7+XSMADg//wrlV/2T8KPg1X0AW88JC1SELJi76IfhtSlp2DIVC+VsEHfqzsEcm6uuqeVBo9l
-	+YUsqNA1816OFUxMGthvAN1S884YLNkDme0pIZ8PH0UEVGmwmfzDW4zU0UsGPQScRVKNa07kBFVG7
-	V9kzBJMMcj4z8N9g86V5QQyFGX4yrK/ICFiF0JRvQ/hdOf+Q6xd2qifjJbEsxNjVZoumXjFXnMxVS
-	V6JjbCRkmZAgvE6WVTrQqtffWoGk7USqqfF0BN6mV4s9slqoZ5EFBN/7xmzOd6XSxnUWtNRnCMcHt
-	5+O9vHR4uG6xcgNjuioA==;
+	List-Owner; bh=dfz1i4VC2mvG9KLh4y4F+YRfDWQ6zTRLsJd9KaTGu8k=; b=G0V4iO+e7aqVEj
+	fkijVVIcPyD5fXOxA0cm1ztUn3G8NLF0+eF/iFMEie3qCcnBTCnp708n2ss+bofd+T6aArVdj8uv0
+	o4C7EpxxKTL9X2gI8mZhxQ31XF1T5qkQqGMlMIfZ2t97WsWAlXMim15hTwG/E6FI2JWOEJMiL7ihF
+	V6oTdG0ijp3V8Pb5gqE8/NJSiL6DOBQI51RZTQYaYKcQJ0PwbrBfzapkpf6HVXYP2n632F0NYFfi1
+	P4R2gxuc/6RdZj0SyBdZSQywAfp61rjIB5eXE7jfDyVxY3CnbaK0yF+dW1mDiY5Ffya1WRpaAL04g
+	GDLnDKE4/cBMps/ctYuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZQdm-00EEyn-3p; Wed, 30 Mar 2022 05:13:06 +0000
+	id 1nZQe6-00EF4L-EO; Wed, 30 Mar 2022 05:13:26 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZQdh-00EExF-Rj; Wed, 30 Mar 2022 05:13:04 +0000
-X-UUID: 7d0b3bf71e114cf48dbc0d600caf40e3-20220329
-X-UUID: 7d0b3bf71e114cf48dbc0d600caf40e3-20220329
+ id 1nZQdj-00EExE-MC; Wed, 30 Mar 2022 05:13:05 +0000
+X-UUID: 714d1c6de51d44a0ab86329b4d530516-20220329
+X-UUID: 714d1c6de51d44a0ab86329b4d530516-20220329
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 353334105; Tue, 29 Mar 2022 22:12:21 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 29 Mar 2022 22:12:19 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Mar 2022 13:12:17 +0800
+ with ESMTP id 1612614371; Tue, 29 Mar 2022 22:11:42 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 29 Mar 2022 22:11:40 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 30 Mar 2022 13:11:38 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 30 Mar 2022 13:12:17 +0800
+ Frontend Transport; Wed, 30 Mar 2022 13:11:38 +0800
 From: Miles Chen <miles.chen@mediatek.com>
 To: <granquet@baylibre.com>
 CC: <airlied@linux.ie>, <angelogioacchino.delregno@collabora.com>,
@@ -49,21 +49,21 @@ CC: <airlied@linux.ie>, <angelogioacchino.delregno@collabora.com>,
  <linux-fbdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
  <maarten.lankhorst@linux.intel.com>, <markyacoub@google.com>,
- <matthias.bgg@gmail.com>, <mripard@kernel.org>, <p.zabel@pengutronix.de>,
- <robh+dt@kernel.org>, <tzimmermann@suse.de>, <vkoul@kernel.org>
-Subject: Re: [PATCH v9 03/22] dt-bindings: mediatek,
- dp_phy: Add Display Port PHY binding
-Date: Wed, 30 Mar 2022 13:12:17 +0800
-Message-ID: <20220330051217.19789-1-miles.chen@mediatek.com>
+ <matthias.bgg@gmail.com>, <mripard@kernel.org>, <msp@baylibre.com>,
+ <p.zabel@pengutronix.de>, <robh+dt@kernel.org>, <robh@kernel.org>,
+ <tzimmermann@suse.de>, <vkoul@kernel.org>
+Subject: Re: [PATCH v9 01/22] dt-bindings: mediatek,
+ dpi: Add DP_INTF compatible
+Date: Wed, 30 Mar 2022 13:11:38 +0800
+Message-ID: <20220330051138.19264-1-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220327223927.20848-4-granquet@baylibre.com>
-References: <20220327223927.20848-4-granquet@baylibre.com>
+In-Reply-To: <20220327223927.20848-2-granquet@baylibre.com>
+References: <20220327223927.20848-2-granquet@baylibre.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_221301_912887_FC84BE6D 
-X-CRM114-Status: UNSURE (   7.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220329_221303_739453_09920A8F 
+X-CRM114-Status: GOOD (  13.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,69 +80,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->This phy controller is embedded in the Display Port Controller on mt8195 SoCs.
+Hi Guillaume,
+
+>DP_INTF is similar to DPI but does not have the exact same feature set
+>or register layouts.
 >
+>DP_INTF is the sink of the display pipeline that is connected to the
+>DisplayPort controller and encoder unit. It takes the same clocks as
+>DPI.
+>
+>Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
 >Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+>Reviewed-by: Rob Herring <robh@kernel.org>
 >---
-> .../bindings/phy/mediatek,dp-phy.yaml         | 43 +++++++++++++++++++
-> 1 file changed, 43 insertions(+)
-> create mode 100644 Documentation/devicetree/bindings/phy/mediatek,dp-phy.yaml
+> .../bindings/display/mediatek/mediatek,dpi.yaml       | 11 ++++++-----
+> 1 file changed, 6 insertions(+), 5 deletions(-)
 >
->diff --git a/Documentation/devicetree/bindings/phy/mediatek,dp-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,dp-phy.yaml
->new file mode 100644
->index 000000000000..1f5ffca4e140
->--- /dev/null
->+++ b/Documentation/devicetree/bindings/phy/mediatek,dp-phy.yaml
->@@ -0,0 +1,43 @@
->+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->+# Copyright (c) 2022 MediaTek
->+%YAML 1.2
->+---
->+$id: http://devicetree.org/schemas/phy/mediatek,dp-phy.yaml#
->+$schema: http://devicetree.org/meta-schemas/core.yaml#
->+
->+title: MediaTek Display Port PHY
->+
->+maintainers:
->+  - CK Hu <ck.hu@mediatek.com>
->+  - Jitao shi <jitao.shi@mediatek.com>
->+
->+description: |
->+  Device tree bindings for the Mediatek (embedded) Display Port PHY
+>diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+>index dd2896a40ff0..2dba80ad3b18 100644
+>--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+>+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+>@@ -4,16 +4,16 @@
+> $id: http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
+> $schema: http://devicetree.org/meta-schemas/core.yaml#
+> 
+>-title: mediatek DPI Controller Device Tree Bindings
+>+title: mediatek DPI/DP_INTF Controller
+         ^^^^^^^^
+Would you mind changing this 'mediatek' to 'MediaTek'?
+
+> 
+> maintainers:
+>   - CK Hu <ck.hu@mediatek.com>
+>   - Jitao shi <jitao.shi@mediatek.com>
+> 
+> description: |
+>-  The Mediatek DPI function block is a sink of the display subsystem and
+>
 
 s/Mediatek/MediaTek/
 
->+  present on some Mediatek SoCs.
+Could you replace all 'Mediatek' with 'MediaTek' of this series, please?
+We have set up a chcker inside our organization to capture this case,
+hopefully we will see less 'Mediatek' in the future.
+
+>-  provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422 pixel data on a parallel
+>-  output bus.
+>+  The Mediatek DPI and DP_INTF function blocks are a sink of the display
 
 s/Mediatek/MediaTek/
 
->+
->+properties:
->+  compatible:
->+    enum:
->+      - mediatek,mt8195-dp-phy
->+
->+  mediatek,dp-syscon:
->+    $ref: /schemas/types.yaml#/definitions/phandle
->+    description: Phandle to the Display Port node.
->+
->+  "#phy-cells":
->+    const: 0
->+
->+required:
->+  - compatible
->+  - mediatek,dp-syscon
->+  - "#phy-cells"
->+
->+additionalProperties: false
->+
->+examples:
->+  - |
->+    dp_phy: dp-phy {
->+      compatible = "mediatek,mt8195-dp-phy";
->+      mediatek,dp-syscon = <&dp_tx>;
->+      #phy-cells = <0>;
->+    };
+thanks,
+Miles
+
+>+  subsystem and provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422 pixel data on a
+>+  parallel output bus.
+> 
+> properties:
+>   compatible:
+>@@ -23,6 +23,7 @@ properties:
+>       - mediatek,mt8173-dpi
+>       - mediatek,mt8183-dpi
+>       - mediatek,mt8192-dpi
+>+      - mediatek,mt8195-dpintf
+> 
+>   reg:
+>     maxItems: 1
+>@@ -54,7 +55,7 @@ properties:
+>     $ref: /schemas/graph.yaml#/properties/port
+>     description:
+>       Output port node. This port should be connected to the input port of an
+>-      attached HDMI or LVDS encoder chip.
+>+      attached HDMI, LVDS or DisplayPort encoder chip.
+> 
+> required:
+>   - compatible
 >-- 
 >2.34.1
 >
