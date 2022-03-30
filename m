@@ -4,64 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E43DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Mar 2022 11:57:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A338C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Mar 2022 11:58:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XOK6nwzZNF35UAdxwzX7kb34YXfg2XD7LuIBrVPbnE8=; b=YDw3AXdSch5frB
-	gc2h4//QyRC3szZ0GomeZ7Kkov2wS9zU5WnekW/L3hlRwHpyC7Xzx5Nvpg7khnqH5c5hps3zrQ45r
-	hvT0XmQac8gXlOjGkVWOLHeR/Us5oxM1UrOLrt+sqvnKIkx5ClUt14lxjRpEPejClZVCF3FkhgO2z
-	KqAD2ttl/9cPb0PLxDtjo37NQ8ScXHZD4SCmhoWgJPBRxELDoK8Gvxca79WXj65keIruL/DxJlRtT
-	pNhbl7eUKXIdeTj3+tInqpABzLVATjVyoz/lC/mBDLQMrh1qLtXm2t2SO6Ww9VetbgpKwLDRX3luS
-	Qb0HEIwEP4z8i3TX5rng==;
+	List-Owner; bh=r3JttQTXX1TsEmRng9H/gO/D6XVALCMUPbglkrEvN3A=; b=HoZuJSoWJ6IgkM
+	fdLei8kgcM3DBFVIHvYLWyNFaH5RUOEBx2OP6v/b38iokaOfbyPamrsYRtmd7GgAbPGy4hjkHZPLG
+	XsJ4n3bVeaSKOWztJ/VHcR9TPh5xfg7i30XltUu16IAP2/okwQNvH+xl4sRZCP/dg1DecN1sQna7A
+	aLlXoBq78fsOp/5XfhVLbDAOGN5yACuvS+VoiZN7hHUIGAq/HImDYyOuBgkn9iSPmLAW9YRPLy09y
+	tpBfD3IeO5ilAfnr2xJ1bN0YrqZSLzi7XuhkTbvhzyVn2JgxBmSdtVwgh1Nx27w4Gq9RJOZRgoWa+
+	Tf0Sl/b5s5v26McGrk1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZWxE-00FU2H-2J; Wed, 30 Mar 2022 11:57:36 +0000
+	id 1nZWy2-00FUVn-V6; Wed, 30 Mar 2022 11:58:26 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZWoM-00FPSl-NT; Wed, 30 Mar 2022 11:48:28 +0000
+ id 1nZWol-00FPju-HI; Wed, 30 Mar 2022 11:48:54 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id E080861637;
- Wed, 30 Mar 2022 11:48:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2FD1C34112;
- Wed, 30 Mar 2022 11:48:23 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id DDD6C61656;
+ Wed, 30 Mar 2022 11:48:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6BE3C36AE2;
+ Wed, 30 Mar 2022 11:48:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1648640905;
- bh=CdMizYcg0vqRMBZy3nZIQsY6pEwDwVuUydNu+uhIk38=;
+ s=k20201202; t=1648640930;
+ bh=or7vMsAJ5qPVBHGYQ8AZJOSb3BRjqMrEX/v6pBzhP1A=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=hxx23rJVV3pAQMX36J9gEjQqNIY2BS7XRvHlsJCvjgWmhEunErpOxX979TXFCFdOK
- wkK+GQVSZCjLlP/ffm0wvStIxm1AUpZUjCwtwGFNEsA3X5Q+3G3LZChLls5d9E1LMf
- K4XxoZP1jOUeqJaeYk0wn/naNR/+qyKWT0JZRbKyoIDGQAnrPG4+XD/l2lmA4+Q/C3
- LlQyXEGhlP9XqmLdGHEGVggNIRyoFQnSMHBhgEmP2nkHR8U8BSqZPL7RMbUvPU9+N3
- A8t0G9yeBC5PX87x4FGy+qokDiaYxnGIzx4MlcBFsvOJ1WX+YcdtwO53c+9oprCNQ3
- VKt7VkUqBuZtw==
+ b=jS/AzIAt8uZVMw/JSjOYzrxQIk074ZtSYTVr1qHd2g06qb1vdRenqbdSHofy3zahD
+ DK0ly6txaxNd/6ymfu+f4QVMm9t8BeydDEY3td8VVGjJSwu6U1M8sMCB5Ju8y0eO3A
+ TF3msroFpTLLgVniJUjP4h6W2Mx0r8VGgEF7uLElXDIZQJh/DnIvbF3E3AXzDavEfE
+ Ah/3O2m52PEcsloOgVbPfjMf/ywpZsCF+uGN8wJ0kgpfJ2yxvqDi5yUlkPZAat3Lnl
+ rEzKvjiYwUBtlP/ANJhuedQKu+inVVx5Hl8y/TWEq8mbEqhHqZFaThZaY+6S0yBmCB
+ Ui1EnrPQsTYuQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Miaoqian Lin <linmq006@gmail.com>, Tzung-Bi Shih <tzungbi@kernel.org>,
- Mark Brown <broonie@kernel.org>, Sasha Levin <sashal@kernel.org>,
- lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com,
- matthias.bgg@gmail.com, alsa-devel@alsa-project.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.17 63/66] ASoC: mediatek: Fix error handling in
- mt8183_da7219_max98357_dev_probe
-Date: Wed, 30 Mar 2022 07:46:42 -0400
-Message-Id: <20220330114646.1669334-63-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.16 11/59] media: iommu/mediatek-v1: Free the existed
+ fwspec if the master dev already has
+Date: Wed, 30 Mar 2022 07:47:43 -0400
+Message-Id: <20220330114831.1670235-11-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220330114646.1669334-1-sashal@kernel.org>
-References: <20220330114646.1669334-1-sashal@kernel.org>
+In-Reply-To: <20220330114831.1670235-1-sashal@kernel.org>
+References: <20220330114831.1670235-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220330_044826_887490_69F606BD 
-X-CRM114-Status: GOOD (  14.21  )
+X-CRM114-CacheID: sfid-20220330_044851_744224_C32CE673 
+X-CRM114-Status: GOOD (  16.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,87 +68,85 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Sasha Levin <sashal@kernel.org>, Joerg Roedel <jroedel@suse.de>,
+ joro@8bytes.org, matthias.bgg@gmail.com, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Miaoqian Lin <linmq006@gmail.com>
+From: Yong Wu <yong.wu@mediatek.com>
 
-[ Upstream commit 28a265a1ee11febeec5ea73a804f30dcec3181ca ]
+[ Upstream commit 822a2ed8c606caf6a11b1a180b8e46292bd77d71 ]
 
-The device_node pointer is returned by of_parse_phandle()  with refcount
-incremented. We should use of_node_put() on it when done.
+When the iommu master device enters of_iommu_xlate, the ops may be
+NULL(iommu dev is defered), then it will initialize the fwspec here:
 
-This function only calls of_node_put() in the regular path.
-And it will cause refcount leak in error paths.
-Fix this by calling of_node_put() in error handling too.
+[<c0c9c5bc>] (dev_iommu_fwspec_set) from [<c06bda80>]
+(iommu_fwspec_init+0xbc/0xd4)
+[<c06bd9c4>] (iommu_fwspec_init) from [<c06c0db4>]
+(of_iommu_xlate+0x7c/0x12c)
+[<c06c0d38>] (of_iommu_xlate) from [<c06c10e8>]
+(of_iommu_configure+0x144/0x1e8)
 
-Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
-Reviewed-by: Tzung-Bi Shih <tzungbi@kernel.org>
-Link: https://lore.kernel.org/r/20220316014059.19292-1-linmq006@gmail.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
+BUT the mtk_iommu_v1.c only supports arm32, the probing flow still is a bit
+weird. We always expect create the fwspec internally. otherwise it will
+enter here and return fail.
+
+static int mtk_iommu_create_mapping(struct device *dev,
+				    struct of_phandle_args *args)
+{
+        ...
+	if (!fwspec) {
+	        ....
+	} else if (dev_iommu_fwspec_get(dev)->ops != &mtk_iommu_ops) {
+                >>>>>>>>>>Enter here. return fail.<<<<<<<<<<<<
+		return -EINVAL;
+	}
+	...
+}
+
+Thus, Free the existed fwspec if the master device already has fwspec.
+
+This issue is reported at:
+https://lore.kernel.org/linux-mediatek/trinity-7d9ebdc9-4849-4d93-bfb5-429dcb4ee449-1626253158870@3c-app-gmx-bs01/
+
+Reported-by: Frank Wunderlich <frank-w@public-files.de>
+Tested-by: Frank Wunderlich <frank-w@public-files.de> # BPI-R2/MT7623
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Acked-by: Joerg Roedel <jroedel@suse.de>
+Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- .../mediatek/mt8183/mt8183-da7219-max98357.c  | 23 +++++++++++++------
- 1 file changed, 16 insertions(+), 7 deletions(-)
+ drivers/iommu/mtk_iommu_v1.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
-index 718505c75418..f090dee0c7a4 100644
---- a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
-@@ -695,8 +695,11 @@ static int mt8183_da7219_max98357_dev_probe(struct platform_device *pdev)
- 	}
+diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+index be22fcf988ce..1467ba1e4417 100644
+--- a/drivers/iommu/mtk_iommu_v1.c
++++ b/drivers/iommu/mtk_iommu_v1.c
+@@ -425,6 +425,15 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
+ 	struct mtk_iommu_data *data;
+ 	int err, idx = 0;
  
- 	card = (struct snd_soc_card *)of_device_get_match_data(&pdev->dev);
--	if (!card)
--		return -EINVAL;
-+	if (!card) {
-+		ret = -EINVAL;
-+		goto put_platform_node;
++	/*
++	 * In the deferred case, free the existed fwspec.
++	 * Always initialize the fwspec internally.
++	 */
++	if (fwspec) {
++		iommu_fwspec_free(dev);
++		fwspec = dev_iommu_fwspec_get(dev);
 +	}
 +
- 	card->dev = &pdev->dev;
- 
- 	hdmi_codec = of_parse_phandle(pdev->dev.of_node,
-@@ -761,12 +764,15 @@ static int mt8183_da7219_max98357_dev_probe(struct platform_device *pdev)
- 	if (!mt8183_da7219_max98357_headset_dev.dlc.of_node) {
- 		dev_err(&pdev->dev,
- 			"Property 'mediatek,headset-codec' missing/invalid\n");
--		return -EINVAL;
-+		ret = -EINVAL;
-+		goto put_hdmi_codec;
- 	}
- 
- 	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
--	if (!priv)
--		return -ENOMEM;
-+	if (!priv) {
-+		ret = -ENOMEM;
-+		goto put_hdmi_codec;
-+	}
- 
- 	snd_soc_card_set_drvdata(card, priv);
- 
-@@ -775,13 +781,16 @@ static int mt8183_da7219_max98357_dev_probe(struct platform_device *pdev)
- 		ret = PTR_ERR(pinctrl);
- 		dev_err(&pdev->dev, "%s failed to select default state %d\n",
- 			__func__, ret);
--		return ret;
-+		goto put_hdmi_codec;
- 	}
- 
- 	ret = devm_snd_soc_register_card(&pdev->dev, card);
- 
--	of_node_put(platform_node);
-+
-+put_hdmi_codec:
- 	of_node_put(hdmi_codec);
-+put_platform_node:
-+	of_node_put(platform_node);
- 	return ret;
- }
- 
+ 	while (!of_parse_phandle_with_args(dev->of_node, "iommus",
+ 					   "#iommu-cells",
+ 					   idx, &iommu_spec)) {
 -- 
 2.34.1
 
