@@ -4,88 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FD7CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 21:20:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 058E4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 22:43:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EL5ZQW9/5s2bmXx1P7cVcoc4Y9SNPORdUBEt/ugndj0=; b=vX6jcC0rnaUA9u
-	s5BJqHcQrQs3oX9T8sIrwzmUgYVxK0y0GDktIMyVGhBDw24T3SZnsYP67BRVJc5G9phSd51WAtNwm
-	TnqBW+486Wh1GkLSHTllqpEDNbKlfVNq6wOpKzUzV8Nswz3O9KCizn9vw2Xo64cbNBJvd5ENK0/AE
-	dXX5hdvIaV4sgiqLBeIfntDwN4T5E8iWR3w5B99UIeXSur2XIeT/RQNPF7jNVlKqjY0/P6rXgwBHO
-	Y86drGVkkhDRlRucHfKmrSUYV6tiopA6WfpUJKJk9JQUsDJT9h1MeVstBzIeu9K4AM4EkEeIEpMT8
-	v8X8K3t/viV0KeTERYXw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/0KFb01pIqypz702z53d/Urp7xd11nKjiX/3LoeP6Vw=; b=QEOKBVg4lUQvAr
+	X81nbn+2ntblzeS26780vryDjNqqjtnKJWqtoyi+st60dRm2+tmg2vFDY+/9xdiKqiQpjocfkNZyw
+	QkWsQDrzZ0kH15xbYrgI0xsTgXzeOhpBwJFmenp9yHQ/qkkJj0Mho4owSI36/vAqupLEZRUFhodIm
+	7XzZVaDbfTvYWscU0RwLQaieK1GM8wJ9o9c+0PS18yY9c1iY1aQ7xZFXu/+tTWRmoWrr5Y+xjsFzy
+	m7yJhwLUTzfWBkISNXw6+RQEu9q2ORjz0sFUtci/J2ck5KWAezRQ+UkLWnpdyxgwzGJgqP4rRkSfN
+	yY3oeYbmx5uoN5bRkS0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1na2Cx-003hRb-SC; Thu, 31 Mar 2022 21:19:55 +0000
-Received: from mail-ot1-f43.google.com ([209.85.210.43])
+	id 1na3VK-003sWt-Te; Thu, 31 Mar 2022 22:42:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1na2Ck-003hNt-Le; Thu, 31 Mar 2022 21:19:44 +0000
-Received: by mail-ot1-f43.google.com with SMTP id
- w17-20020a056830111100b005b22c584b93so761801otq.11; 
- Thu, 31 Mar 2022 14:19:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Fm9j31QnqpewsYtYm5Zm4wpxz1kydRGT8NHr0rzkZyA=;
- b=GuIRX5kX5lu+lhFTtg9qs35uMz9qT33hytWKab8qkHYPiteMNlLLrJHEKOG2TuIj4o
- bHy3IogybISwrptSx1E+ycxpWmbpF19JweUy+UpIMZJoyUkvlGm643ZvZB8rA+eRccXb
- RhB0WbzI5cQizzn/t0HRlPG13PRxYRmxJZDGYsewNXZd3JnqvH/7CqPv3sJOioDlvjY9
- 5v9rfu4K2CVRAgww4+h321y+Podg2UP3fyIP64F13BAT4htSIEe+F51H4JUmxAfKuWkS
- vU5gU+bEKUyR9Xu286efeNHyc6C+0BCxlt8NoHeu6ZUTBgj3ceDvQqKyep5ErjRk2y1l
- huew==
-X-Gm-Message-State: AOAM5335PApwXUqc1oM5xQno56f2I6HXveXcAhpba9RqJ6t38HuzTmH9
- HrAkuIu1X145Vnlz7UyB1Fc1Bbj5/Q==
-X-Google-Smtp-Source: ABdhPJw397a5OlH1Ki1AhiF2YtXSsu6dIfoUVKBLabv0jHczHCK4LuX47bWk2u/CovcpFMxoDFhDMg==
-X-Received: by 2002:a9d:69:0:b0:5c9:3456:f02f with SMTP id
- 96-20020a9d0069000000b005c93456f02fmr6544088ota.25.1648761580467; 
- Thu, 31 Mar 2022 14:19:40 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- h83-20020aca3a56000000b002ece47dce52sm248016oia.26.2022.03.31.14.19.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 31 Mar 2022 14:19:40 -0700 (PDT)
-Received: (nullmailer pid 1517924 invoked by uid 1000);
- Thu, 31 Mar 2022 21:19:38 -0000
-Date: Thu, 31 Mar 2022 16:19:38 -0500
-From: Rob Herring <robh@kernel.org>
-To: Moudy Ho <moudy.ho@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Jernej Skrabec <jernej.skrabec@siol.net>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>,
- tfiga@chromium.org, 
- drinkcat@chromium.org, pihsun@chromium.org, hsinyi@google.com, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Maoguang Meng <maoguang.meng@mediatek.com>,
- daoyuan huang <daoyuan.huang@mediatek.com>, 
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, menghui.lin@mediatek.com,
- sj.huang@mediatek.com, 
- allen-kh.cheng@mediatek.com, randy.wu@mediatek.com, jason-jh.lin@mediatek.com, 
- roy-cw.yeh@mediatek.com, river.cheng@mediatek.com, 
- srv_heupstream@mediatek.com, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v12 1/3] dt-binding: mt8183: add Mediatek MDP3 dt-bindings
-Message-ID: <YkYa6vyucOrwPNcX@robh.at.kernel.org>
-References: <20220317145605.25782-1-moudy.ho@mediatek.com>
- <20220317145605.25782-2-moudy.ho@mediatek.com>
+ id 1na3VG-003sW3-MH
+ for linux-mediatek@lists.infradead.org; Thu, 31 Mar 2022 22:42:58 +0000
+X-UUID: 3e13114cd5ac4df9b232f32f4d388a4e-20220331
+X-UUID: 3e13114cd5ac4df9b232f32f4d388a4e-20220331
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2118273884; Thu, 31 Mar 2022 15:42:43 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 31 Mar 2022 15:32:40 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 1 Apr 2022 06:32:25 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 1 Apr 2022 06:32:25 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
+ <jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
+ <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+ <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>,
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] mt76: mt7921: Add hotspot mode support
+Date: Fri, 1 Apr 2022 06:32:24 +0800
+Message-ID: <734908dd741b85b7cc3855f23596cc5884c335e4.1648765636.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220317145605.25782-2-moudy.ho@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_141942_740950_E282BE58 
-X-CRM114-Status: GOOD (  35.77  )
+X-CRM114-CacheID: sfid-20220331_154254_779035_45F55273 
+X-CRM114-Status: GOOD (  18.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,311 +77,278 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 17, 2022 at 10:56:03PM +0800, Moudy Ho wrote:
-> This patch adds DT binding documents for Media Data Path 3 (MDP3)
-> a unit in multimedia system combined with several components and
-> used for scaling and color format convert.
-> 
-> It can create multiple paths with different functions by assigning
-> different components, a simple diagram is as follows:
-> 
->   +------------+          +------------+
->   |    RDMA    |          |   ISP[*1]  |
->   +---+--+--+--+          +-----+--+---+
->       A  B  C                   2  1
->       v  v  v                   v  v
->       |  |  |                   |  |
->       |  |  +---------+         |  |
->       |  |            |         |  |
->       |  +-------+    |         |  |
->       |          |    |         |  |
->       |  +-------+----+---------+  |
->       |  |       |    |            |
->       |  |       |    +---------+  |
->       v  v       |              |  |
->       A  2       |              |  |
->     ********     |              |  |
->   **        **   |              |  |
->  *   PQ[*2]   *  |              |  |
->   **        **   |              |  |
->     ********     |              |  |
->       |  |       |              |  |
->       v  v       |              v  v
->       A  2       |              C  1
->   +---+--+---+   |        +-----+--+--+
->   |    RSZ   |   |        |    RSZ    |
->   +---+------+   |        +-----+--+--+
->       D          |              3  4
->       v          |              v  v
->       |          |              |  |
->       |  +-------+              |  |
->       |  |                      |  |
->       |  |  +-------------------+  |
->       |  |  |                      |
->       v  v  v                      v
->       D  B  3                      4
->   +---+--+--+--+         +---------+--+
->   |    WROT    |         |    WDMA    |
->   +------------+         +------------+
+From: Sean Wang <sean.wang@mediatek.com>
 
-Sure seems like you should be using the OF graph binding to describe 
-these connections unless all the sub-blocks and their connections are 
-fixed across different SoCs.
+add hostspot mode support to mt7921 that can work for mt7921[e,s,u]
+with the common code.
 
-> 
-> [*1] Direct-link path for camera input
-> [*2] A series of picture quality adjustment
->      engines, composed of AAL, CCORR, TDSHP
->      and COLOR
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> ---
->  .../bindings/media/mediatek,mdp3-rdma.yaml    | 214 ++++++++++++++++++
->  .../bindings/media/mediatek,mdp3-rsz.yaml     |  54 +++++
->  .../bindings/media/mediatek,mdp3-wrot.yaml    |  57 +++++
->  .../bindings/soc/mediatek/mediatek,ccorr.yaml |  47 ++++
->  .../bindings/soc/mediatek/mediatek,wdma.yaml  |  58 +++++
->  5 files changed, 430 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
->  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
->  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> new file mode 100644
-> index 000000000000..3bf59c3f521f
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> @@ -0,0 +1,214 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/mediatek,mdp3-rdma.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek Read Direct Memory Access
-> +
-> +maintainers:
-> +  - Matthias Brugger <matthias.bgg@gmail.com>
-> +
-> +description: |
-> +  Mediatek Read Direct Memory Access(RDMA) component used to do read DMA.
-> +  It contains one line buffer to store the sufficient pixel data, and
-> +  must be siblings to the central MMSYS_CONFIG node.
-> +  For a description of the MMSYS_CONFIG binding, see
-> +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> +  for details.
-> +  The 1st RDMA is also used to be a controller node in Media Data Path 3(MDP3)
-> +  that containing MMSYS, MUTEX, GCE and SCP settings.
-> +
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      - items:
-> +          # MDP3 controller node
-> +          - const: mediatek,mt8183-mdp3
-> +          - const: mediatek,mt8183-mdp3-rdma
+Tested-by: Deren Wu <deren.wu@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7921/init.c  | 11 ++-
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   |  9 +++
+ .../net/wireless/mediatek/mt76/mt7921/main.c  | 46 +++++++++++
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 79 ++++++++++++++++++-
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  4 +
+ 5 files changed, 147 insertions(+), 2 deletions(-)
 
-This does not make sense as a compatible entry. The first string should 
-be more specific than the 2nd string. The controller node is a different 
-instance of the RDMA block or some s/w designation? Looks like the 
-latter to me...
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 91fc41922d95..f9e1255bd9c7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -11,6 +11,10 @@ static const struct ieee80211_iface_limit if_limits[] = {
+ 	{
+ 		.max = MT7921_MAX_INTERFACES,
+ 		.types = BIT(NL80211_IFTYPE_STATION)
++	},
++	{
++		.max = 1,
++		.types = BIT(NL80211_IFTYPE_AP)
+ 	}
+ };
+ 
+@@ -64,7 +68,8 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
+ 	wiphy->iface_combinations = if_comb;
+ 	wiphy->flags &= ~(WIPHY_FLAG_IBSS_RSN | WIPHY_FLAG_4ADDR_AP |
+ 			  WIPHY_FLAG_4ADDR_STATION);
+-	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION);
++	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION) |
++				 BIT(NL80211_IFTYPE_AP);
+ 	wiphy->n_iface_combinations = ARRAY_SIZE(if_comb);
+ 	wiphy->max_scan_ie_len = MT76_CONNAC_SCAN_IE_LEN;
+ 	wiphy->max_scan_ssids = 4;
+@@ -80,6 +85,10 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
+ 	wiphy->features |= NL80211_FEATURE_SCHED_SCAN_RANDOM_MAC_ADDR |
+ 			   NL80211_FEATURE_SCAN_RANDOM_MAC_ADDR;
+ 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_SET_SCAN_DWELL);
++	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_BEACON_RATE_LEGACY);
++	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_BEACON_RATE_HT);
++	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_BEACON_RATE_VHT);
++	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_BEACON_RATE_HE);
+ 
+ 	ieee80211_hw_set(hw, SINGLE_SCAN_ON_ALL_BANDS);
+ 	ieee80211_hw_set(hw, HAS_RATE_CONTROL);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index f34070ca7bbe..368e54c53ddd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -1361,12 +1361,21 @@ mt7921_vif_connect_iter(void *priv, u8 *mac,
+ {
+ 	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
+ 	struct mt7921_dev *dev = mvif->phy->dev;
++	struct ieee80211_hw *hw = mt76_hw(dev);
+ 
+ 	if (vif->type == NL80211_IFTYPE_STATION)
+ 		ieee80211_disconnect(vif, true);
+ 
+ 	mt76_connac_mcu_uni_add_dev(&dev->mphy, vif, &mvif->sta.wcid, true);
+ 	mt7921_mcu_set_tx(dev, vif);
++
++	if (vif->type == NL80211_IFTYPE_AP) {
++		mt76_connac_mcu_uni_add_bss(dev->phy.mt76, vif, &mvif->sta.wcid,
++					    true);
++		mt7921_mcu_sta_update(dev, NULL, vif, true,
++				      MT76_STA_INFO_STATE_NONE);
++		mt7921_mcu_uni_add_beacon_offload(dev, hw, vif, true);
++	}
+ }
+ 
+ /* system error recovery */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index ae86705faec2..52b7e3684189 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -53,6 +53,7 @@ mt7921_init_he_caps(struct mt7921_phy *phy, enum nl80211_band band,
+ 
+ 		switch (i) {
+ 		case NL80211_IFTYPE_STATION:
++		case NL80211_IFTYPE_AP:
+ 			break;
+ 		default:
+ 			continue;
+@@ -86,6 +87,23 @@ mt7921_init_he_caps(struct mt7921_phy *phy, enum nl80211_band band,
+ 			IEEE80211_HE_PHY_CAP2_UL_MU_PARTIAL_MU_MIMO;
+ 
+ 		switch (i) {
++		case NL80211_IFTYPE_AP:
++			he_cap_elem->mac_cap_info[2] |=
++				IEEE80211_HE_MAC_CAP2_BSR;
++			he_cap_elem->mac_cap_info[4] |=
++				IEEE80211_HE_MAC_CAP4_BQR;
++			he_cap_elem->mac_cap_info[5] |=
++				IEEE80211_HE_MAC_CAP5_OM_CTRL_UL_MU_DATA_DIS_RX;
++			he_cap_elem->phy_cap_info[3] |=
++				IEEE80211_HE_PHY_CAP3_DCM_MAX_CONST_TX_QPSK |
++				IEEE80211_HE_PHY_CAP3_DCM_MAX_CONST_RX_QPSK;
++			he_cap_elem->phy_cap_info[6] |=
++				IEEE80211_HE_PHY_CAP6_PARTIAL_BW_EXT_RANGE |
++				IEEE80211_HE_PHY_CAP6_PPE_THRESHOLD_PRESENT;
++			he_cap_elem->phy_cap_info[9] |=
++				IEEE80211_HE_PHY_CAP9_TX_1024_QAM_LESS_THAN_242_TONE_RU |
++				IEEE80211_HE_PHY_CAP9_RX_1024_QAM_LESS_THAN_242_TONE_RU;
++			break;
+ 		case NL80211_IFTYPE_STATION:
+ 			he_cap_elem->mac_cap_info[1] |=
+ 				IEEE80211_HE_MAC_CAP1_TF_MAC_PAD_DUR_16US;
+@@ -634,6 +652,21 @@ static void mt7921_bss_info_changed(struct ieee80211_hw *hw,
+ 		}
+ 	}
+ 
++	if (changed & BSS_CHANGED_BEACON_ENABLED && info->enable_beacon) {
++		struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
++
++		mt76_connac_mcu_uni_add_bss(phy->mt76, vif, &mvif->sta.wcid,
++					    true);
++		mt7921_mcu_sta_update(dev, NULL, vif, true,
++				      MT76_STA_INFO_STATE_NONE);
++	}
++
++	if (changed & (BSS_CHANGED_BEACON |
++		       BSS_CHANGED_BEACON_ENABLED)) {
++		mt7921_mcu_uni_add_beacon_offload(dev, hw, vif,
++						  info->enable_beacon);
++	}
++
+ 	/* ensure that enable txcmd_mode after bss_info */
+ 	if (changed & (BSS_CHANGED_QOS | BSS_CHANGED_BEACON_ENABLED))
+ 		mt7921_mcu_set_tx(dev, vif);
+@@ -1394,6 +1427,18 @@ static int mt7921_set_sar_specs(struct ieee80211_hw *hw,
+ 	return err;
+ }
+ 
++static void
++mt7921_channel_switch_beacon(struct ieee80211_hw *hw,
++			     struct ieee80211_vif *vif,
++			     struct cfg80211_chan_def *chandef)
++{
++	struct mt7921_dev *dev = mt7921_hw_dev(hw);
++
++	mt7921_mutex_acquire(dev);
++	mt7921_mcu_uni_add_beacon_offload(dev, hw, vif, true);
++	mt7921_mutex_release(dev);
++}
++
+ const struct ieee80211_ops mt7921_ops = {
+ 	.tx = mt7921_tx,
+ 	.start = mt7921_start,
+@@ -1412,6 +1457,7 @@ const struct ieee80211_ops mt7921_ops = {
+ 	.set_rts_threshold = mt7921_set_rts_threshold,
+ 	.wake_tx_queue = mt76_wake_tx_queue,
+ 	.release_buffered_frames = mt76_release_buffered_frames,
++	.channel_switch_beacon = mt7921_channel_switch_beacon,
+ 	.get_txpower = mt76_get_txpower,
+ 	.get_stats = mt7921_get_stats,
+ 	.get_et_sset_count = mt7921_get_et_sset_count,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index da2be050ed7c..1ecbbe4fa498 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -248,7 +248,8 @@ mt7921_mcu_connection_loss_iter(void *priv, u8 *mac,
+ 	if (mvif->idx != event->bss_idx)
+ 		return;
+ 
+-	if (!(vif->driver_flags & IEEE80211_VIF_BEACON_FILTER))
++	if (!(vif->driver_flags & IEEE80211_VIF_BEACON_FILTER) ||
++	    vif->type != NL80211_IFTYPE_STATION)
+ 		return;
+ 
+ 	ieee80211_connection_loss(vif);
+@@ -1166,3 +1167,79 @@ int mt7921_mcu_set_sniffer(struct mt7921_dev *dev, struct ieee80211_vif *vif,
+ 	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD(SNIFFER), &req, sizeof(req),
+ 				 true);
+ }
++
++int
++mt7921_mcu_uni_add_beacon_offload(struct mt7921_dev *dev,
++				  struct ieee80211_hw *hw,
++				  struct ieee80211_vif *vif,
++				  bool enable)
++{
++	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
++	struct mt76_wcid *wcid = &dev->mt76.global_wcid;
++	struct ieee80211_mutable_offsets offs;
++	struct {
++		struct req_hdr {
++			u8 bss_idx;
++			u8 pad[3];
++		} __packed hdr;
++		struct bcn_content_tlv {
++			__le16 tag;
++			__le16 len;
++			__le16 tim_ie_pos;
++			__le16 csa_ie_pos;
++			__le16 bcc_ie_pos;
++			/* 0: disable beacon offload
++			 * 1: enable beacon offload
++			 * 2: update probe respond offload
++			 */
++			u8 enable;
++			/* 0: legacy format (TXD + payload)
++			 * 1: only cap field IE
++			 */
++			u8 type;
++			__le16 pkt_len;
++			u8 pkt[512];
++		} __packed beacon_tlv;
++	} req = {
++		.hdr = {
++			.bss_idx = mvif->mt76.idx,
++		},
++		.beacon_tlv = {
++			.tag = cpu_to_le16(UNI_BSS_INFO_BCN_CONTENT),
++			.len = cpu_to_le16(sizeof(struct bcn_content_tlv)),
++			.enable = enable,
++		},
++	};
++	struct sk_buff *skb;
++
++	if (!enable)
++		goto out;
++
++	skb = ieee80211_beacon_get_template(mt76_hw(dev), vif, &offs);
++	if (!skb)
++		return -EINVAL;
++
++	if (skb->len > 512 - MT_TXD_SIZE) {
++		dev_err(dev->mt76.dev, "beacon size limit exceed\n");
++		dev_kfree_skb(skb);
++		return -EINVAL;
++	}
++
++	mt7921_mac_write_txwi(dev, (__le32 *)(req.beacon_tlv.pkt), skb,
++			      wcid, NULL, 0, true);
++	memcpy(req.beacon_tlv.pkt + MT_TXD_SIZE, skb->data, skb->len);
++	req.beacon_tlv.pkt_len = cpu_to_le16(MT_TXD_SIZE + skb->len);
++	req.beacon_tlv.tim_ie_pos = cpu_to_le16(MT_TXD_SIZE + offs.tim_offset);
++
++	if (offs.cntdwn_counter_offs[0]) {
++		u16 csa_offs;
++
++		csa_offs = MT_TXD_SIZE + offs.cntdwn_counter_offs[0] - 4;
++		req.beacon_tlv.csa_ie_pos = cpu_to_le16(csa_offs);
++	}
++	dev_kfree_skb(skb);
++
++out:
++	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD(BSS_INFO_UPDATE),
++				 &req, sizeof(req), true);
++}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+index eae223a31000..adbdb2e22934 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+@@ -469,4 +469,8 @@ int mt7921u_wfsys_reset(struct mt7921_dev *dev);
+ int mt7921u_dma_init(struct mt7921_dev *dev, bool resume);
+ int mt7921u_init_reset(struct mt7921_dev *dev);
+ int mt7921u_mac_reset(struct mt7921_dev *dev);
++int mt7921_mcu_uni_add_beacon_offload(struct mt7921_dev *dev,
++				      struct ieee80211_hw *hw,
++				      struct ieee80211_vif *vif,
++				      bool enable);
+ #endif
+-- 
+2.25.1
 
-
-> +      - items:
-> +          # normal RDMA conponent
-> +          - const: mediatek,mt8183-mdp3-rdma
-> +
-> +  mediatek,scp:
-> +    description: |
-> +      The node of system control processor (SCP), using
-> +      the remoteproc & rpmsg framework.
-> +    $ref: '/schemas/types.yaml#/definitions/phandle'
-> +    maxItems: 1
-> +
-> +  mediatek,mdp3-comps:
-> +    description: |
-> +      MDP subsystem which has direct-link from Image Signal Processor(ISP).
-> +      When using the camera, the DMA of ISP PASS (DIP) module will directly
-> +      trigger MDP3 without other control (such as V4L2 M2M) to create
-> +      corresponding HW path.
-> +      The MDP3 controller must set up a series of registers at the beginning of
-> +      path creation which covering MMSYS, IMGSYS, and MDP3's components,
-> +      so that data flow can pass through MDP3.
-> +      The entire path is briefly described as follows
-> +      ISP --+
-> +            |
-> +            +-> DIP --+
-> +      ................|..............................................
-> +      (MDP3)          +->IMGI -+-> DL1 ->  RSZ -+-> PATH1 -> WROT
-> +                               |            ^   |
-> +                               |            |   |
-> +                               +-> DL2 -----+   +-> PATH2 -> WDMA
-> +                               |
-> +                               +---------------------------> EXTO
-> +    $ref: '/schemas/types.yaml#/definitions/string-array'
-> +    items:
-> +      enum:
-> +        # MDP direct-link input path selection, create a
-> +        # component for path connectedness of HW pipe control
-> +        - mediatek,mt8183-mdp3-dl1
-> +        - mediatek,mt8183-mdp3-dl2
-> +        # MDP direct-link output path selection, create a
-> +        # component for path connectedness of HW pipe control
-> +        - mediatek,mt8183-mdp3-path1
-> +        - mediatek,mt8183-mdp3-path2
-> +        # Input DMA of ISP PASS2 (DIP) module for raw image input
-> +        - mediatek,mt8183-mdp3-imgi
-> +        # Output DMA of ISP PASS2 (DIP) module for YUV image output
-> +        - mediatek,mt8183-mdp3-exto
-> +
-> +  reg:
-> +    items:
-> +      - description: basic RDMA HW address
-> +      - description: MDP direct-link 1st and 2nd input
-> +      - description: MDP direct-link 1st output
-> +      - description: MDP direct-link 2nd output
-> +      - description: ISP input and output
-> +
-> +  mediatek,gce-client-reg:
-> +    $ref: '/schemas/types.yaml#/definitions/phandle-array'
-> +    minItems: 1
-> +    items:
-> +      - description: GCE client for RDMA
-> +      - description: GCE client for dl1 and dl2
-> +      - description: GCE client for path1
-> +      - description: GCE client for path2
-> +      - description: GCE client for imgi and exto
-> +    description: |
-> +      The register of client driver can be configured by gce with
-> +      4 arguments defined in this property, such as phandle of gce, subsys id,
-> +      register offset and size. Each GCE subsys id is mapping to a client
-> +      defined in the header include/dt-bindings/gce/<chip>-gce.h.
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    items:
-> +      - description: RDMA clock
-> +      - description: RSZ clock
-> +      - description: direck-link TX clock in MDP side
-> +      - description: direck-link RX clock in MDP side
-> +      - description: direck-link TX clock in ISP side
-> +      - description: direck-link RX clock in ISP side
-> +
-> +  iommus:
-> +    maxItems: 1
-> +
-> +  mediatek,mmsys:
-> +    description: The node of mux(multiplexer) controller for HW connections.
-> +    $ref: '/schemas/types.yaml#/definitions/phandle'
-> +
-> +  mediatek,mm-mutex:
-> +    description: |
-> +      Mediatek mutex, namely MUTEX, is used to send the triggers signals called
-> +      Start Of Frame(SOF) / End Of Frame(EOF) to each sub-modules on the data path.
-> +      In some SoC, such as mt2701, MUTEX could be a hardware mutex which protects
-> +      the shadow register.
-> +    $ref: '/schemas/types.yaml#/definitions/phandle'
-> +
-> +  mediatek,mailbox-gce:
-> +    description: |
-> +      The node of global command engine (GCE), used to read/write
-> +      registers with critical time limitation.
-> +    $ref: '/schemas/types.yaml#/definitions/phandle'
-> +
-> +  mboxes:
-> +    items:
-> +      - description: used for 1st data pipe from RDMA
-> +      - description: used for 2nd data pipe from RDMA
-> +      - description: used for 3rd data pipe from Direct-Link
-> +      - description: used for 4th data pipe from Direct-Link
-> +
-> +  gce-subsys:
-
-Vendor prefix needed.
-
-> +    description: |
-> +      sub-system id corresponding to the global command engine (GCE)
-> +      register address.
-> +    $ref: '/schemas/types.yaml#/definitions/phandle-array'
-> +
-> +if:
-> +  properties:
-> +    compatible:
-> +      contains:
-> +        const: mediatek,mt8183-mdp3
-> +
-> +then:
-> +  required:
-> +    - mediatek,scp
-> +    - mediatek,mmsys
-> +    - mediatek,mm-mutex
-> +    - mediatek,mailbox-gce
-
-Note that if there's only 1 instance of these blocks, you can just find 
-them by compatible and don't need a property.
-
-> +    - mboxes
-> +    - gce-subsys
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - mediatek,gce-client-reg
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mt8183-clk.h>
-> +    #include <dt-bindings/gce/mt8183-gce.h>
-> +    #include <dt-bindings/power/mt8183-power.h>
-> +    #include <dt-bindings/memory/mt8183-larb-port.h>
-> +
-> +    mdp3_rdma0: mdp3_rdma0@14001000 {
-> +      compatible = "mediatek,mt8183-mdp3",
-> +                   "mediatek,mt8183-mdp3-rdma";
-> +      mediatek,scp = <&scp>;
-> +      mediatek,mdp3-comps = "mediatek,mt8183-mdp3-dl1",
-> +                            "mediatek,mt8183-mdp3-dl2",
-> +                            "mediatek,mt8183-mdp3-path1",
-> +                            "mediatek,mt8183-mdp3-path2",
-> +                            "mediatek,mt8183-mdp3-imgi",
-> +                            "mediatek,mt8183-mdp3-exto";
-> +      reg = <0x14001000 0x1000>,
-> +            <0x14000000 0x1000>,
-> +            <0x14005000 0x1000>,
-> +            <0x14006000 0x1000>,
-> +            <0x15020000 0x1000>;
-> +      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>,
-> +                                <&gce SUBSYS_1400XXXX 0 0x1000>,
-> +                                <&gce SUBSYS_1400XXXX 0x5000 0x1000>,
-> +                                <&gce SUBSYS_1400XXXX 0x6000 0x1000>,
-> +                                <&gce SUBSYS_1502XXXX 0 0x1000>;
-> +      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-> +      clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-> +               <&mmsys CLK_MM_MDP_RSZ1>,
-> +               <&mmsys CLK_MM_MDP_DL_TXCK>,
-> +               <&mmsys CLK_MM_MDP_DL_RX>,
-> +               <&mmsys CLK_MM_IPU_DL_TXCK>,
-> +               <&mmsys CLK_MM_IPU_DL_RX>;
-> +      iommus = <&iommu>;
-> +      mediatek,mmsys = <&mmsys>;
-> +      mediatek,mm-mutex = <&mutex>;
-> +      mediatek,mailbox-gce = <&gce>;
-> +      mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST>,
-> +               <&gce 21 CMDQ_THR_PRIO_LOWEST>,
-> +               <&gce 22 CMDQ_THR_PRIO_LOWEST>,
-> +               <&gce 23 CMDQ_THR_PRIO_LOWEST>;
-> +      gce-subsys = <&gce 0x14000000 SUBSYS_1400XXXX>,
-> +                   <&gce 0x14010000 SUBSYS_1401XXXX>,
-> +                   <&gce 0x14020000 SUBSYS_1402XXXX>,
-> +                   <&gce 0x15020000 SUBSYS_1502XXXX>;
-> +    };
 
 _______________________________________________
 Linux-mediatek mailing list
