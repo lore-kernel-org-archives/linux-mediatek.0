@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41601C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 11:59:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFB00C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 11:59:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5Q+JKT1NO0q10aZydFrdt8gpqloXfHETRIwtgITZKjw=; b=GgY9xp8hl5mzQK
-	Vf4ROlr8XkQANX0WT1BnSp0sJp9h8ClP7PWsjxWoprwo5777d1mRV3NSX52nckaKk1Es1EaI42zAr
-	pCCZSk8U0UDA2+18nhq2/nQxTHtNGt5EvlkR5V7KQ5zPFSENpuJqgykxF9cHO1f+7K9o8wUUzXU8S
-	CUidBSEqUCG9uQlEd2Ts0IAu+iNGJswnLBrq8HG8R1fso8LX4Bkq96aZOPaSWRo+RY99eOdmuFJP2
-	vnnRVGX4qvfMM3JH+r7ACm51bNo/JHZcYLn/jrWlK7Vb1SSdW8ATMmUGj9mMdq44D5jGOw8ogtmGV
-	EDo2wUyOZGbQYqBoi1LA==;
+	List-Owner; bh=T7RoSYtjvaWwSxwt6KarFuVZocKuKkQ7X6s/BIMtW6U=; b=Z1M71DGuQh1NX5
+	WMDZE8U3TxhtuUCXujRAcJuB+Y4VRZKH2ekLAAJJQHo+tWdmFkPBu/bo8PxrkeWmoYgXy5sZB+bd1
+	cr5ZXKE95vNvFsLRyIRWYFBL78gEP4n0ZHyNVvokVeY34YZOG3ZlGIUU8mkFurGeBhsa5f/v4Ofqy
+	1WdvZqbpuKUhBYd4WKV64sn9AXfi4KdOO1cWdRT1xUhMmvDiMesa7OtXt9ppsD78xTRPfJRPGUcDd
+	N5ihVQ5mk9a5epfRwbGIqUIPHA6aAQXx+TLelDGoeykpBNcrhDxV8+cX8FM6JxmJexSOkDgjrZ+kk
+	v4VPK9JB4dGqk3OpDBqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZtSe-0026V8-Cz; Thu, 31 Mar 2022 11:59:32 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nZtSw-0026f7-07; Thu, 31 Mar 2022 11:59:50 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZtSI-0026If-OX; Thu, 31 Mar 2022 11:59:12 +0000
-X-UUID: 1b3f28ed03194c9ba3f428a70a2de777-20220331
-X-UUID: 1b3f28ed03194c9ba3f428a70a2de777-20220331
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ id 1nZtSU-0026PI-EC; Thu, 31 Mar 2022 11:59:24 +0000
+X-UUID: ecd1c7f469694211b40e331740ca3fab-20220331
+X-UUID: ecd1c7f469694211b40e331740ca3fab-20220331
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <xinlei.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1446829129; Thu, 31 Mar 2022 04:59:04 -0700
+ with ESMTP id 1774179284; Thu, 31 Mar 2022 04:59:20 -0700
 Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 31 Mar 2022 04:59:02 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 31 Mar 2022 04:59:18 -0700
 Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS34N1.mediatek.inc
  (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 31 Mar 2022 19:58:59 +0800
+ Thu, 31 Mar 2022 19:59:15 +0800
 Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
  MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Thu, 31 Mar 2022 19:58:51 +0800
+ 15.0.1497.2 via Frontend Transport; Thu, 31 Mar 2022 19:59:08 +0800
 From: <xinlei.lee@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
  <daniel@ffwll.ch>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
@@ -48,20 +48,17 @@ CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <rex-bc.chen@mediatek.com>, <jitao.shi@mediatek.com>, Xinlei Lee
  <xinlei.lee@mediatek.com>
-Subject: [PATCH v2,
- 1/2] dt-bindings: display: mediatek: dpi: Add compatible for MediaTek
- MT8186
-Date: Thu, 31 Mar 2022 19:58:36 +0800
-Message-ID: <1648727917-3099-2-git-send-email-xinlei.lee@mediatek.com>
+Subject: [PATCH v2,2/2] drm/mediatek: Add mt8186 dpi compatible to mtk_dpi.c
+Date: Thu, 31 Mar 2022 19:58:37 +0800
+Message-ID: <1648727917-3099-3-git-send-email-xinlei.lee@mediatek.com>
 X-Mailer: git-send-email 2.6.4
 In-Reply-To: <1648727917-3099-1-git-send-email-xinlei.lee@mediatek.com>
 References: <1648727917-3099-1-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_045910_834732_96DB1A8E 
-X-CRM114-Status: UNSURE (   7.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220331_045922_523911_C2BEC244 
+X-CRM114-Status: GOOD (  10.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,25 +77,42 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Xinlei Lee <xinlei.lee@mediatek.com>
 
-Add dt-binding documentation of dpi for MediaTek MT8186 SoC.
+Add the compatible because use different .data in mt8186.
 
 Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml       | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-index dd2896a40ff0..a73044c50b5f 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-@@ -22,6 +22,7 @@ properties:
-       - mediatek,mt7623-dpi
-       - mediatek,mt8173-dpi
-       - mediatek,mt8183-dpi
-+      - mediatek,mt8186-dpi
-       - mediatek,mt8192-dpi
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 4554e2de1430..6fac146cf1fb 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -823,6 +823,14 @@ static const struct mtk_dpi_conf mt8192_conf = {
+ 	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
+ };
  
-   reg:
++static const struct mtk_dpi_conf mt8186_conf = {
++	.cal_factor =  mt8183_calculate_factor,
++	.reg_h_fre_con = 0xe0,
++	.max_clock_khz = 150000,
++	.output_fmts = mt8183_output_fmts,
++	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
++};
++
+ static int mtk_dpi_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -945,6 +953,9 @@ static const struct of_device_id mtk_dpi_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8192-dpi",
+ 	  .data = &mt8192_conf,
+ 	},
++	{ .compatible = "mediatek,mt8186-dpi",
++	  .data = &mt8186_conf,
++	},
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(of, mtk_dpi_of_ids);
 -- 
 2.18.0
 
