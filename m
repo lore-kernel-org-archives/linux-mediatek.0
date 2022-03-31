@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A037C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 12:02:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0042C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 12:08:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mi+BuuGKy8rKYD6M3PLz1W9srqwGM4QMCHMldOwciKg=; b=ABHrxEfqucxD2h
-	WvFFuiqwFeCPSGyCT97RAAFAYEXeLoQwMApxVVqlxuLuXjRglmAzDWVO980qJb3LRth80DuTMGhWm
-	8hp9poum5yv1GEUvtdo362Hqpa2eAZgKIATw0t3Hw4CH+TrihqGSlCNLE6NhZTD6eCOUi4cPuvuhw
-	3kUQ71xbseejP2WQAgEaToN/wxgWiMcJcu1/Oddya+CPn/oRsQDc+BOMrL7c/vh1WlUcW57weUvWj
-	onfD1impZkcUPplxSeE49dBKTThzIG+59XJwObuavvJtd4kBkCSkPDAK75o4Ml8uLIrjcEDjZQ71o
-	Zng8qnassXEUR7jHL8HQ==;
+	List-Owner; bh=H9QMhP7RuJ2vD98LLNWsEKcc2ULPtmnhBoh1bvFxOtQ=; b=mDixTFw2tcGnOX
+	Wsps0AkhWTevrNuxfcwhKWWeU5rVWHQ/pObl4M+2wCEyOI9OhCPqGfSZgoLRv4YqOWDwjZL/qFPfz
+	QSIJUFWuHfyARe1rhfLzufTXiTdiUHDVFquNWsm3kEhFOs44+CeE/879T5co0y4aqa/6u8acpHpnF
+	PBqkPSG6AJeCL1Pa0KL5lXw/fKAHC5fDSoAfFbYxP6RjTvdhxofnvKcui4A9gSSb+yVEPnzsgGPCR
+	4GA8jQ2L3yCe3XZAHvOddZXi1bsS4FMVPXZwoX4pzYGuAGtS77au5oCdO0SZ5X9w9SPWDlUBG0hBP
+	VeLcm6BJnqu2IGntIg4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZtVV-0027kB-O5; Thu, 31 Mar 2022 12:02:29 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1nZtb7-0029Hi-4I; Thu, 31 Mar 2022 12:08:17 +0000
+Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZtVI-0027ed-FO; Thu, 31 Mar 2022 12:02:17 +0000
-Received: by mail-wr1-x430.google.com with SMTP id i4so14642843wrb.5;
- Thu, 31 Mar 2022 05:02:13 -0700 (PDT)
+ id 1nZtau-0029Dl-E7; Thu, 31 Mar 2022 12:08:05 +0000
+Received: by mail-oi1-x22b.google.com with SMTP id e4so25002345oif.2;
+ Thu, 31 Mar 2022 05:08:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=A4Zjm/xBLp9YxmFT/DNtR5IxUCWdPvGVNi6dsCwjlvs=;
- b=hs1mRpoxuE6ZpUUnB6ufTgWOqqKRMlwZk7UDkYvnKGNfNaFa5kiy2kivZyhLrqXN+M
- iLOmA6pRfoJPDsUf+L9H95Xeuta15xztQkd5PxNID2AvHYeyyMv1+wwW3Ki/AdU6rWcQ
- orKBN+Jv70ZNVgEoCHvXATcpAbHpggbrtJmj4ZxX8Uk8YqJ76WlPyDodhGFbgTsFMUf+
- ozqSH5sd2hMaFTclgBsW8y9A4uYFYLZ9qSM0do8pJlrCcowHx1LDo1925nd/cFiTuWci
- x+pIBkfqWBSnFCPCAZCoT3ZYwCOhLWBoo3Xe/de4TTJUj/gFHDuXfWK9B9qn+53yL7FZ
- Nt6w==
+ bh=GzekprHvhU9HqCe2Q2SnOEP07QMEYok2g4o+xh2TZn4=;
+ b=XWnMOZa96XHZi26Qv90uHAyVOPG1F9C3ajBPJi/wzZD0+zyoc2Pj0h8l5HjrUoaBJt
+ lrLglpe9ZQ/WLQtJoJ/stUfGSkjHc7u4eJUD7JigH97q2Pp2krOHghCpdL08qVdXsdYF
+ 7cZMd7pVTVxeBFBpDp3RHSH8y5qIVEG50Hr2I6dQNlAo8aflehlBUZ5yQrseQBgnCBNJ
+ ouR+PjilooHqXhbDwxJCdupK+7fCGVvEe5vnZguMucBjlQoVF0/8ZG5sFD1dehI5Lr0t
+ P1btM+6KIKaXYx53LYtTU7nMbVIkgeI/YufNTt/a+AMjhpuEkqmHVfic9Y5pFE/gPvlu
+ q71g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=A4Zjm/xBLp9YxmFT/DNtR5IxUCWdPvGVNi6dsCwjlvs=;
- b=kPOm84zBe0lM3gZl/MCTQwAZqBcDDc652eqpGf+H2Oy2WVVHFMG5SbZvPV2LMNmTsQ
- BlkKyz1Ue8NF25+dTvsFUYSclPGXQYeutMZOGOSDq72ME0EDfJbhxRrnpsaUNOJv3MAH
- QE6IPKp2nP1HSQmoYYWrKrYQ44/ZVuvA5YIjZIBXeytj+OGjse1POVnJKehaZL3Nfcoe
- 8cI4pUxiMU56fQZ6wOl97bG+3KeIpXjA2drL+0jMwXC/w4ouScpH8EDGCmUVsI67kdke
- 1SI5uUk5Xpk1HPUMOpiFO05RkVLHk9yo4If3T4gwjmaD+8lqJvpktQxBemt+CQgKoJ5J
- q7Ww==
-X-Gm-Message-State: AOAM533+Vcze/zGJYRMvBvlVvZ367Uyqirj2R34ThaO9oQKrpIRGJkMa
- Y5zcaBPz6RhZR0c7BKgcnIg=
-X-Google-Smtp-Source: ABdhPJy1pwWwEsM0zqdfSBXpyPAD0/x0pcEIXNpZNqEniEbmMNwfmK6IiIHr/hlxLOMYZdRzHxD8rw==
-X-Received: by 2002:a05:6000:1:b0:205:e7cd:2a5 with SMTP id
- h1-20020a056000000100b00205e7cd02a5mr2498122wrx.485.1648728132726; 
- Thu, 31 Mar 2022 05:02:12 -0700 (PDT)
+ bh=GzekprHvhU9HqCe2Q2SnOEP07QMEYok2g4o+xh2TZn4=;
+ b=3tSI2zjVHqW8GO2SMxGXFe+4zjqrXrtnDK6PsN3k+E/H5Ty5nwVPf/vQEbLRHW6k41
+ Bl2HnH/fEz0TGqK/erGcbIHuDG1KylrL/2VHjTEPElStI40c4SnwBBQdyGA2sBmLtKkb
+ XNnS8MZ6k0nhQ4+qZHrMFgMz5LAenSw5PU/BK+rwTyylV7pl5hmZfB4i04IL/5tVqCbR
+ A7+EU3L4kwvqou8ZhieRxt7VaB4XvJh0gLW1c3MkDfbqSoV5LZzZsxUkyhjNe4n5w/8X
+ KSAWsfDZvGDud6BmV2z0VeqsEC30kWhceBuUAPhrUm8I85EPBrb4QD0aWjNsVM/qfadm
+ PRPw==
+X-Gm-Message-State: AOAM530tHuc9AAABxhqTxwJOthoT00ZMEcfQb6GP+iAx1DT64bycp3DD
+ nNN4HgyaaFhkhrutAyj+/J0=
+X-Google-Smtp-Source: ABdhPJwqbyLW/OnZh9P63G9u0hNBlNmj4xyBFk34d0it8CaipwI8ohODOz//5NdFBPTZgUaZH3JvaQ==
+X-Received: by 2002:a05:6808:13c9:b0:2f9:2cf0:932a with SMTP id
+ d9-20020a05680813c900b002f92cf0932amr2436272oiw.39.1648728481068; 
+ Thu, 31 Mar 2022 05:08:01 -0700 (PDT)
 Received: from [192.168.1.145] ([207.188.167.132])
  by smtp.gmail.com with ESMTPSA id
- w8-20020a1cf608000000b0038c8fdc93d6sm6881237wmc.28.2022.03.31.05.02.10
+ c19-20020a9d7853000000b005cdbc0f02ccsm10578954otm.68.2022.03.31.05.07.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 31 Mar 2022 05:02:12 -0700 (PDT)
-Message-ID: <4cd1c5fa-0982-0355-d5b6-7025b82174a4@gmail.com>
-Date: Thu, 31 Mar 2022 14:02:09 +0200
+ Thu, 31 Mar 2022 05:08:00 -0700 (PDT)
+Message-ID: <1483ffb9-ef39-0974-10f8-37b7a7a40225@gmail.com>
+Date: Thu, 31 Mar 2022 14:07:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [PATCH v5 2/4] arm64: dts: mt8192: Add mmc device nodes
+Subject: Re: [PATCH v5 3/4] arm64: dts: mt8192: Add H264 venc device node
 Content-Language: en-US
 To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
  Rob Herring <robh+dt@kernel.org>,
@@ -75,12 +75,12 @@ Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
  Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
  Hui Liu <hui.liu@mediatek.com>
 References: <20220330133816.30806-1-allen-kh.cheng@mediatek.com>
- <20220330133816.30806-3-allen-kh.cheng@mediatek.com>
+ <20220330133816.30806-4-allen-kh.cheng@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220330133816.30806-3-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220330133816.30806-4-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_050216_564954_354D1378 
-X-CRM114-Status: GOOD (  15.65  )
+X-CRM114-CacheID: sfid-20220331_050804_521686_99341B7A 
+X-CRM114-Status: GOOD (  15.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,65 +100,55 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 30/03/2022 15:38, Allen-KH Cheng wrote:
-> Add mmc nodes for mt8192 SoC.
+> Adds H264 venc node for mt8192 SoC.
 > 
 > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-You forgot to disable the msdc clock node, which I understood we agreed on in in 
-v4. I would consider this change as an substantial one, so in this case please 
-delete the reviewed-by tags.
+I told you in v4 that I'll apply it, but it's not in the repo. It seemed I 
+accidentely dropped that one, so I apply it again now. If you realize something 
+like this in the future don't hesitate to tell me :)
 
-Regards,
-Matthias
+Thanks!
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 32 ++++++++++++++++++++++++
->   1 file changed, 32 insertions(+)
+>   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 23 +++++++++++++++++++++++
+>   1 file changed, 23 insertions(+)
 > 
 > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index 69e8d1934d53..c1057878e2c6 100644
+> index c1057878e2c6..3d61238fb102 100644
 > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
 > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -991,6 +991,38 @@
->   			#clock-cells = <1>;
+> @@ -1166,6 +1166,29 @@
+>   			power-domains = <&spm MT8192_POWER_DOMAIN_VENC>;
 >   		};
 >   
-> +		mmc0: mmc@11f60000 {
-> +			compatible = "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
-> +			reg = <0 0x11f60000 0 0x1000>, <0 0x11f50000 0 0x1000>;
-> +			interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>,
-> +				 <&msdc_top CLK_MSDC_TOP_H_MST_0P>,
-> +				 <&msdc_top CLK_MSDC_TOP_SRC_0P>,
-> +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
-> +				 <&msdc_top CLK_MSDC_TOP_P_MSDC0>,
-> +				 <&msdc_top CLK_MSDC_TOP_AXI>,
-> +				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
-> +			clock-names = "source", "hclk", "source_cg", "sys_cg",
-> +				      "pclk_cg", "axi_cg", "ahb_cg";
-> +			status = "disabled";
+> +		vcodec_enc: vcodec@17020000 {
+> +			compatible = "mediatek,mt8192-vcodec-enc";
+> +			reg = <0 0x17020000 0 0x2000>;
+> +			iommus = <&iommu0 M4U_PORT_L7_VENC_RCPU>,
+> +				 <&iommu0 M4U_PORT_L7_VENC_REC>,
+> +				 <&iommu0 M4U_PORT_L7_VENC_BSDMA>,
+> +				 <&iommu0 M4U_PORT_L7_VENC_SV_COMV>,
+> +				 <&iommu0 M4U_PORT_L7_VENC_RD_COMV>,
+> +				 <&iommu0 M4U_PORT_L7_VENC_CUR_LUMA>,
+> +				 <&iommu0 M4U_PORT_L7_VENC_CUR_CHROMA>,
+> +				 <&iommu0 M4U_PORT_L7_VENC_REF_LUMA>,
+> +				 <&iommu0 M4U_PORT_L7_VENC_REF_CHROMA>,
+> +				 <&iommu0 M4U_PORT_L7_VENC_SUB_R_LUMA>,
+> +				 <&iommu0 M4U_PORT_L7_VENC_SUB_W_LUMA>;
+> +			interrupts = <GIC_SPI 309 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			mediatek,scp = <&scp>;
+> +			power-domains = <&spm MT8192_POWER_DOMAIN_VENC>;
+> +			clocks = <&vencsys CLK_VENC_SET1_VENC>;
+> +			clock-names = "venc-set1";
+> +			assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>;
+> +			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
 > +		};
 > +
-> +		mmc1: mmc@11f70000 {
-> +			compatible = "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
-> +			reg = <0 0x11f70000 0 0x1000>, <0 0x11c70000 0 0x1000>;
-> +			interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>,
-> +				 <&msdc_top CLK_MSDC_TOP_H_MST_1P>,
-> +				 <&msdc_top CLK_MSDC_TOP_SRC_1P>,
-> +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
-> +				 <&msdc_top CLK_MSDC_TOP_P_MSDC1>,
-> +				 <&msdc_top CLK_MSDC_TOP_AXI>,
-> +				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
-> +			clock-names = "source", "hclk", "source_cg", "sys_cg",
-> +				      "pclk_cg", "axi_cg", "ahb_cg";
-> +			status = "disabled";
-> +		};
-> +
->   		mfgcfg: clock-controller@13fbf000 {
->   			compatible = "mediatek,mt8192-mfgcfg";
->   			reg = <0 0x13fbf000 0 0x1000>;
+>   		camsys: clock-controller@1a000000 {
+>   			compatible = "mediatek,mt8192-camsys";
+>   			reg = <0 0x1a000000 0 0x1000>;
 
 _______________________________________________
 Linux-mediatek mailing list
