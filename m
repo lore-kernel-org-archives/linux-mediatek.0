@@ -4,61 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70D5AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 01:50:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AC71C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 02:53:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xBCkujc1VUgXGhfgQ2T2R2RGKm/w1zQInsFm/tGxyG0=; b=xY9jq+Lx9N86Ri
-	w6evX61A2Ul3K6hNDMQGC+RcioP04oNAqSkfL0V4+ffwb43mCr7d9IoJY5h6nWnu3xQ4N95HACVCx
-	PaZ8fzVnY3+uzCqfLZOslxtAqUW6f5+2jbt4gh2oF2FAljZGYYCwsPlx7gr8z9gfNutkVp40RZA7J
-	C+Gf/M2D+0oN4YXB96WEariRl3XWG3ZvKSgJlEbbQ3+8SKcfg3rp2fzCnSJVEkDWJjSU5Z3HVmMPe
-	2FXzVMQ1OMUwXxUtO7MR7N0w52bdzx/qV/xPA+flCkTZc9A/UV5dhEFFpJyEN7YY58dhRF4TBDEm+
-	Fh/5m/B+XFR4TpI5xpYA==;
+	List-Owner; bh=KBAZCMhSmJZbUokFj5zZylwnitwZyvwZEjxX7CqX+L0=; b=WO9jQdy3M5EG9A
+	b0/WLVWkDtm/0XbMTz007RO5nLgtco4iplOZei47BC+dj7fSVRpp1goZPSiGm37Tubr8jig5Z0V8E
+	oFrb8npYDRMtr4oSonxO0WNtebQloxG6EV71O9tyvAwMZVmEOKO6tRINEy6acTitdzu28Ihny0EeP
+	WarZPezZnKi2zkiCxBpstD1RMbIvPR1F0uMZ6W4dKkyR9l8ClV4sR8CBtTxJjskVvyn89/CnPXCtH
+	ObXMafxoUt+pcI0MfJjpqrtdKN45LY0dZxwX8mixJfk5hgqmMhfY+U1ILgXuVbu7ACjdVmxUVjhno
+	zfwovTfmlRRBwCGK3JFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZjxM-000G8q-L0; Thu, 31 Mar 2022 01:50:36 +0000
+	id 1nZkva-000NyD-C9; Thu, 31 Mar 2022 02:52:50 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZjxH-000G8B-L2; Thu, 31 Mar 2022 01:50:35 +0000
-X-UUID: 4afe4b97511243899bd4910d8ac39068-20220330
-X-UUID: 4afe4b97511243899bd4910d8ac39068-20220330
+ id 1nZku9-000NXx-93; Thu, 31 Mar 2022 02:51:22 +0000
+X-UUID: be36aca0c2644291bc7b8f4fd80d85d2-20220330
+X-UUID: be36aca0c2644291bc7b8f4fd80d85d2-20220330
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jason-jh.lin@mediatek.com>)
+ (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 114880875; Wed, 30 Mar 2022 18:50:24 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 1164454409; Wed, 30 Mar 2022 19:51:16 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Mar 2022 18:44:33 -0700
+ 15.0.1497.2; Wed, 30 Mar 2022 19:48:49 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 31 Mar 2022 09:44:30 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 31 Mar 2022 10:48:47 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 31 Mar 2022 09:44:30 +0800
-Message-ID: <524f93ebeaa9c2ad74b0f5dbb2703afa4c8e0bac.camel@mediatek.com>
-Subject: Re: [PATCH v16 5/8] soc: mediatek: add mtk-mutex support for mt8195
- vdosys0
-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, Rob Herring <robh+dt@kernel.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>
-Date: Thu, 31 Mar 2022 09:44:30 +0800
-In-Reply-To: <72e5b8ed21a796f6f756b0ee42b363c158f18cd3.camel@mediatek.com>
-References: <20220307032859.3275-1-jason-jh.lin@mediatek.com>
- <20220307032859.3275-6-jason-jh.lin@mediatek.com>
- <72e5b8ed21a796f6f756b0ee42b363c158f18cd3.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Thu, 31 Mar 2022 10:48:45 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
+ Verkuil" <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
+ <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+ <frkoenig@chromium.org>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Daniel Vetter <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, 
+ Irui Wang <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v8,
+ 12/17] media: mediatek: vcodec: record capture queue format type
+Date: Thu, 31 Mar 2022 10:47:56 +0800
+Message-ID: <20220331024801.29229-13-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220331024801.29229-1-yunfei.dong@mediatek.com>
+References: <20220331024801.29229-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220330_185031_723217_1AAE4AA9 
-X-CRM114-Status: GOOD (  23.29  )
+X-CRM114-CacheID: sfid-20220330_195121_347873_170445D4 
+X-CRM114-Status: GOOD (  13.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,102 +80,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- singo.chang@mediatek.com, Alexandre Torgue <alexandre.torgue@foss.st.com>,
- roy-cw.yeh@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
- Fabien Parent <fparent@baylibre.com>, moudy.ho@mediatek.com,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- hsinyi@chromium.org, nancy.lin@mediatek.com,
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi CK,
+The capture queue format type may be differ depending on platform: for
+stateless decoder drivers, we need to calculate the capture buffer size
+according to the capture queue format type in SCP.
 
-Thanks for the reviews.
+As a preparation for introducing drivers for stateless decoding, save the
+current capture queue type on a per vcodec context basis.
 
-On Fri, 2022-03-18 at 15:21 +0800, CK Hu wrote:
-> Hi, Jason:
-> 
-> On Mon, 2022-03-07 at 11:28 +0800, jason-jh.lin wrote:
-> > Add mtk-mutex support for mt8195 vdosys0.
-> > 
-> > Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> > Acked-by: AngeloGioacchino Del Regno <
-> > angelogioacchino.delregno@collabora.com>
-> > ---
-> >  drivers/soc/mediatek/mtk-mutex.c | 103
-> > ++++++++++++++++++++++++++++++-
-> >  1 file changed, 100 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/soc/mediatek/mtk-mutex.c
-> > b/drivers/soc/mediatek/mtk-mutex.c
-> > index aaf8fc1abb43..1c7ffcdadcea 100644
-> > --- a/drivers/soc/mediatek/mtk-mutex.c
-> > +++ b/drivers/soc/mediatek/mtk-mutex.c
-> > @@ -17,6 +17,9 @@
-> >  #define MT8183_MUTEX0_MOD0			0x30
-> >  #define MT8183_MUTEX0_SOF0			0x2c
-> >  
-> > +#define MT8195_DISP_MUTEX0_MOD0			0x30
-> > +#define MT8195_DISP_MUTEX0_SOF			0x2c
-> > +
-> >  #define DISP_REG_MUTEX_EN(n)			(0x20 + 0x20 *
-> > (n))
-> >  #define DISP_REG_MUTEX(n)			(0x24 + 0x20 * (n))
-> >  #define DISP_REG_MUTEX_RST(n)			(0x28 + 0x20 *
-> > (n))
-> > @@ -96,6 +99,36 @@
-> >  #define MT8173_MUTEX_MOD_DISP_PWM1		24
-> >  #define MT8173_MUTEX_MOD_DISP_OD		25
-> >  
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 2 ++
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h | 2 ++
+ 2 files changed, 4 insertions(+)
 
-[snip]
-
-> > > +#define MT8195_MUTEX_MOD_DISP_VPP_MERGE		20
-> > > +#define MT8195_MUTEX_MOD_DISP_DP_INTF0		21
-> > > +#define MT8195_MUTEX_MOD_DISP_VPP1_DL_RELAY0	22
-> > > 
-> > > Useless, remove.
-> > > 
-> > > > +#define MT8195_MUTEX_MOD_DISP_VPP1_DL_RELAY1	23
-> > > 
-> > > Ditto.
-> > > 
-> > > Regards,
-> > > CK
-> > 
-> > Although these definitions are not used, they represent the
-> > functionality provided by this register.
-> > 
-> > I think we can show that we have these capabilities by defining
-> them.
-> > 
-> > Can we keep these definitions?
-> 
-> OK, but add some information that we could know how to use it. What's
-> these DL_RELAY and when should we add these to mutex?
-> 
-> Regards,
-> CK
-
-DL_RELAY is used for the cross mmsys mux settings.
-We won't use these setting currently, so I think
-I just remove these useless define.
-
-Thanks.
-
-Regards,
-Jason-JH.Lin
-
-
-[snip]
-
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+index 0d9007339faf..3859e4c651c6 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+@@ -475,6 +475,8 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
+ 			}
+ 			ctx->state = MTK_STATE_INIT;
+ 		}
++	} else {
++		ctx->capture_fourcc = fmt->fourcc;
+ 	}
+ 
+ 	/*
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+index 75a1c6df6594..c047f421843b 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+@@ -274,6 +274,7 @@ struct vdec_pic_info {
+  *		     to be used with encoder and stateful decoder.
+  * @is_flushing: set to true if flushing is in progress.
+  * @current_codec: current set input codec, in V4L2 pixel format
++ * @capture_fourcc: capture queue type in V4L2 pixel format
+  *
+  * @colorspace: enum v4l2_colorspace; supplemental to pixelformat
+  * @ycbcr_enc: enum v4l2_ycbcr_encoding, Y'CbCr encoding
+@@ -321,6 +322,7 @@ struct mtk_vcodec_ctx {
+ 	bool is_flushing;
+ 
+ 	u32 current_codec;
++	u32 capture_fourcc;
+ 
+ 	enum v4l2_colorspace colorspace;
+ 	enum v4l2_ycbcr_encoding ycbcr_enc;
 -- 
-Jason-JH Lin <jason-jh.lin@mediatek.com>
+2.18.0
 
 
 _______________________________________________
