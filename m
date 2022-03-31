@@ -4,56 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F4B2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 18:33:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45B0AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 18:33:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yVLYlgmB2PYUy5aS0uMqHXUdlQVFhrt/PDm1G831dyQ=; b=Jaz2o0/gf4WOqa
-	tmKVv3poEJKU/HHWoNrXmKM08zoAyaRkYDNW5TEc2xY61vNUU+o3ZqNh+4JG4qWZogYeB9f/tgmva
-	RKVEi14bGqEpmTO9yaKX8Rx1C9jp3+st8zB4ViQtoklAxnteGBoJkG0FSzP+w/1gC/7K3T7PrpzeM
-	vTGovBunvzjJ7p+ZByrufSWiH2QZUhTEi1POevaZfn8GLOjW92Irhe1osni8pqie5x0wlqDUv0XKY
-	CuTWt2WYketsMoH52orco/Qe8/8UAJYgo7jq+IxQPrUdlq5WaglU8Z3VEMrQ5+K5/MfFuKTrXSQFK
-	nqJKIlu1Q1DddOt/Wzzg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3zOEf0uXIUhgakiCrbx2O8eOhrtI4YM+7AKL4qRN568=; b=BZOvZwEWZTPKkv
+	nwlim/iu97ki6Zb5NibY6mrDtkrC7nTqyq/LO+PQvOVVJ3LG5n1hL/iMdUEQEy9o2y9NV/AwXnPkP
+	liZA54l0RVRSHXZD0akyCQpDJG7AgTzB4IImAHgxd9nCoBJW60ii3ICqyzDJoKnR9YpGlJzGQeJiU
+	UaX/uJMONMjyuv1ODreDBWdqSzuGHV2m4eseUsD8+2W4hUydqvTXMxammOrc9sZL5ygHvgUAajPYt
+	dDDeI6He4nAMnnKZm2XMFMTxpyGjXUVZKW2q4AHTTeelj97Obp2uVxfb9M1ZvULUQtcROlnVnqSSB
+	kjyU7aTDKUExBrHcIN3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZzc7-003DV5-Rw; Thu, 31 Mar 2022 18:33:43 +0000
+	id 1nZzcH-003DXz-IV; Thu, 31 Mar 2022 18:33:53 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZzc5-003DTw-05; Thu, 31 Mar 2022 18:33:42 +0000
-X-UUID: 19dc525966d5419688113ce2daee23d6-20220331
-X-UUID: 19dc525966d5419688113ce2daee23d6-20220331
+ id 1nZzc5-003DUC-ES; Thu, 31 Mar 2022 18:33:43 +0000
+X-UUID: 52143ea88c9240d888036a7b3f2f2d77-20220331
+X-UUID: 52143ea88c9240d888036a7b3f2f2d77-20220331
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1557332496; Thu, 31 Mar 2022 11:33:37 -0700
+ with ESMTP id 9801756; Thu, 31 Mar 2022 11:33:37 -0700
 Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Thu, 31 Mar 2022 11:23:46 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
  (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 1 Apr 2022 02:23:33 +0800
+ Fri, 1 Apr 2022 02:23:32 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 1 Apr 2022 02:23:33 +0800
+ Frontend Transport; Fri, 1 Apr 2022 02:23:32 +0800
 From: jason-jh.lin <jason-jh.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v17 5/7] drm/mediatek: add DSC support for mediatek-drm
-Date: Fri, 1 Apr 2022 02:23:29 +0800
-Message-ID: <20220331182331.27205-6-jason-jh.lin@mediatek.com>
+Subject: [PATCH v17 0/7] Add Mediatek Soc DRM (vdosys0) support for mt8195
+Date: Fri, 1 Apr 2022 02:23:24 +0800
+Message-ID: <20220331182331.27205-1-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220331182331.27205-1-jason-jh.lin@mediatek.com>
-References: <20220331182331.27205-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_113341_080379_5BDF8BA3 
-X-CRM114-Status: GOOD (  13.73  )
+X-CRM114-CacheID: sfid-20220331_113341_527480_D572019E 
+X-CRM114-Status: GOOD (  20.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,119 +79,132 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-DSC is designed for real-time systems with real-time compression,
-transmission, decompression and display.
-The DSC standard is a specification of the algorithms used for
-compressing and decompressing image display streams, including
-the specification of the syntax and semantics of the compressed
-video bit stream.
+Change in v17:
+- change compatible name from 2 vdosys to 1 mmsys
+- add get driver data by clk name function to get corresponding
+  driver data for mt8195 vdosys0
+- add all routing table setting for mt8195 vdosys0
+- remove useless mutex define
 
-Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 47 +++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  1 +
- 2 files changed, 48 insertions(+)
+Change in v16:
+- rebase on linu-next tag: 'next-20220303'
+- rebase on series: 'Fix MediaTek display dt-bindings issues'
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index f543d3eb9439..b3d26a05741f 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -40,6 +40,12 @@
- #define DITHER_LSB_ERR_SHIFT_G(x)		(((x) & 0x7) << 12)
- #define DITHER_ADD_LSHIFT_G(x)			(((x) & 0x7) << 4)
- 
-+#define DISP_REG_DSC_CON			0x0000
-+#define DSC_EN					BIT(0)
-+#define DSC_DUAL_INOUT				BIT(2)
-+#define DSC_BYPASS				BIT(4)
-+#define DSC_UFOE_SEL				BIT(16)
-+
- #define DISP_REG_OD_EN				0x0000
- #define DISP_REG_OD_CFG				0x0020
- #define OD_RELAYMODE				BIT(0)
-@@ -181,6 +187,36 @@ static void mtk_dither_set(struct device *dev, unsigned int bpc,
- 			      DISP_DITHERING, cmdq_pkt);
- }
- 
-+static void mtk_dsc_config(struct device *dev, unsigned int w,
-+			   unsigned int h, unsigned int vrefresh,
-+			   unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	/* dsc bypass mode */
-+	mtk_ddp_write_mask(cmdq_pkt, DSC_BYPASS, &priv->cmdq_reg, priv->regs,
-+			   DISP_REG_DSC_CON, DSC_BYPASS);
-+	mtk_ddp_write_mask(cmdq_pkt, DSC_UFOE_SEL, &priv->cmdq_reg, priv->regs,
-+			   DISP_REG_DSC_CON, DSC_UFOE_SEL);
-+	mtk_ddp_write_mask(cmdq_pkt, DSC_DUAL_INOUT, &priv->cmdq_reg, priv->regs,
-+			   DISP_REG_DSC_CON, DSC_DUAL_INOUT);
-+}
-+
-+static void mtk_dsc_start(struct device *dev)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	/* write with mask to reserve the value set in mtk_dsc_config */
-+	mtk_ddp_write_mask(NULL, DSC_EN, &priv->cmdq_reg, priv->regs, DISP_REG_DSC_CON, DSC_EN);
-+}
-+
-+static void mtk_dsc_stop(struct device *dev)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	writel_relaxed(0x0, priv->regs + DISP_REG_DSC_CON);
-+}
-+
- static void mtk_od_config(struct device *dev, unsigned int w,
- 			  unsigned int h, unsigned int vrefresh,
- 			  unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-@@ -270,6 +306,14 @@ static const struct mtk_ddp_comp_funcs ddp_dpi = {
- 	.stop = mtk_dpi_stop,
- };
- 
-+static const struct mtk_ddp_comp_funcs ddp_dsc = {
-+	.clk_enable = mtk_ddp_clk_enable,
-+	.clk_disable = mtk_ddp_clk_disable,
-+	.config = mtk_dsc_config,
-+	.start = mtk_dsc_start,
-+	.stop = mtk_dsc_stop,
-+};
-+
- static const struct mtk_ddp_comp_funcs ddp_dsi = {
- 	.start = mtk_dsi_ddp_start,
- 	.stop = mtk_dsi_ddp_stop,
-@@ -339,6 +383,7 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
- 	[MTK_DISP_CCORR] = "ccorr",
- 	[MTK_DISP_COLOR] = "color",
- 	[MTK_DISP_DITHER] = "dither",
-+	[MTK_DISP_DSC] = "dsc",
- 	[MTK_DISP_GAMMA] = "gamma",
- 	[MTK_DISP_MUTEX] = "mutex",
- 	[MTK_DISP_OD] = "od",
-@@ -369,6 +414,8 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_DITHER0]		= { MTK_DISP_DITHER,	0, &ddp_dither },
- 	[DDP_COMPONENT_DPI0]		= { MTK_DPI,		0, &ddp_dpi },
- 	[DDP_COMPONENT_DPI1]		= { MTK_DPI,		1, &ddp_dpi },
-+	[DDP_COMPONENT_DSC0]		= { MTK_DISP_DSC,	0, &ddp_dsc },
-+	[DDP_COMPONENT_DSC1]		= { MTK_DISP_DSC,	1, &ddp_dsc },
- 	[DDP_COMPONENT_DSI0]		= { MTK_DSI,		0, &ddp_dsi },
- 	[DDP_COMPONENT_DSI1]		= { MTK_DSI,		1, &ddp_dsi },
- 	[DDP_COMPONENT_DSI2]		= { MTK_DSI,		2, &ddp_dsi },
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index ad267bb8fc9b..763725fe72b3 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -23,6 +23,7 @@ enum mtk_ddp_comp_type {
- 	MTK_DISP_CCORR,
- 	MTK_DISP_COLOR,
- 	MTK_DISP_DITHER,
-+	MTK_DISP_DSC,
- 	MTK_DISP_GAMMA,
- 	MTK_DISP_MUTEX,
- 	MTK_DISP_OD,
+Change in v15:
+- remove mt8195-mmsys.h comment for mux settings
+- define the mask macro to replace using value as mask
+  to fix zero mask problem
+- add EOF setting comment for MUTEX sof register
+
+Change in v14:
+- rebase on mediatek-drm-next-5.17
+- rebase on "Add mmsys and mutex support for MDP" series
+- rebase on "media: mediatek: support mdp3 on mt8183 platform" series
+
+Change in v13:
+- remove dts patch
+- rebase on kernel-5.16-rc1
+- rebase on mediatek-drm-next
+
+Change in v12:
+- add clock-names property to merge yaml
+- using BIT(nr) macro to define the settings of mmsys routing table
+- fix clk_get and clk_prepare_enable error handling issue
+
+Change in v11:
+- rebase on kernel-5.15-rc1
+- change mbox label to gce0 for dts node of vdosys0
+- change ovl compatibale to mt8192 to set smi_id_en=true in driver data
+- move common module from display folder to common folder,
+  such as AAL, COCLOR, CCORR and MUTEX
+
+Change in v10:
+- rebase on "drm/mediatek: add support for mediatek SOC MT8192" series
+- rebase on "soc: mediatek: mmsys: add mt8192 mmsys support" series
+- fix some typo and "mediatek" start with capital in every dt-bindings
+- move mutex yaml from dfisplay folder to soc folder
+- separate merge additional propoerties to an individual dt-bindings patch
+
+Change in v9:
+- separate power and gce properties of mmsys into another dt-binding patch
+- rebase on "Separate aal module" series
+- keep mtk_ddp_clk_enable/disable in the same place
+- change mtk_dsc_start config register to mtk_drm_ddp_write_mask
+- remove the 0 setting of merge fifo config function
+- add CCORR driver data for mt8195
+
+Change in v8:
+- add DP_INTF0 mux into mmsys routing table
+- add DP_INTF0 mutex mod and enum into add/remove comp function
+- remove bypass DSC enum in mtk_ddp_comp_init
+
+Change in v7:
+- add dt=binding of mmsys and disp path into this series
+- separate th modidfication of alphabetic order, remove unused define and
+  rename the define of register offset to individual patch
+- add comment for MERGE ultra and preultra setting
+
+Change in v6:
+- adjust alphabetic order for mediatek-drm
+- move the patch that add mt8195 support for mediatek-drm as
+  the lastest patch
+- add MERGE define for const varriable 
+
+Change in v5:
+- add power-domain property into vdosys0 and vdosys1 dts node.
+- add MT8195 prifix and remove unused VDO1 define in mt8195-mmsys.h
+
+Change in v4:
+- extract dt-binding patches to another patch series
+- squash DSC module into mtk_drm_ddp_comp.c
+- add coment and simplify MERGE config function
+
+Change in v3:
+- change mmsys and display dt-bindings document from txt to yaml
+- add MERGE additional description in display dt-bindings document
+- fix mboxes-cells number of vdosys0 node in dts
+- drop mutex eof convert define
+- remove pm_runtime apis in DSC and MERGE
+- change DSC and MERGE enum to alphabetic order
+
+Change in v2:
+- add DSC yaml file
+- add mt8195 drm driver porting parts in to one patch
+- remove useless define, variable, structure member and function
+- simplify DSC and MERGE file and switch threre order
+
+jason-jh.lin (7):
+  dt-bindings: arm: mediatek: mmsys: add power and gce properties
+  dt-bindings: arm: mediatek: mmsys: add mt8195 SoC binding
+  soc: mediatek: add mtk-mmsys support for mt8195 vdosys0
+  soc: mediatek: add mtk-mutex support for mt8195 vdosys0
+  drm/mediatek: add DSC support for mediatek-drm
+  drm/mediatek: add MERGE support for mediatek-drm
+  drm/mediatek: add mediatek-drm of vdosys0 support for mt8195
+
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml |  35 ++
+ drivers/gpu/drm/mediatek/Makefile             |   1 +
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   8 +
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c     | 246 ++++++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c      |   6 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |  65 ++-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |   2 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  90 ++++-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   3 +
+ drivers/soc/mediatek/mt8167-mmsys.h           |   2 +-
+ drivers/soc/mediatek/mt8183-mmsys.h           |   2 +-
+ drivers/soc/mediatek/mt8186-mmsys.h           |   4 +-
+ drivers/soc/mediatek/mt8192-mmsys.h           |   4 +-
+ drivers/soc/mediatek/mt8195-mmsys.h           | 370 ++++++++++++++++++
+ drivers/soc/mediatek/mt8365-mmsys.h           |   4 +-
+ drivers/soc/mediatek/mtk-mmsys.c              |  62 +++
+ drivers/soc/mediatek/mtk-mmsys.h              |   1 +
+ drivers/soc/mediatek/mtk-mutex.c              |  95 ++++-
+ include/linux/soc/mediatek/mtk-mmsys.h        |  13 +-
+ 19 files changed, 992 insertions(+), 21 deletions(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
+ create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+
 -- 
 2.18.0
 
