@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06BAAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 14:11:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05AF9C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 14:21:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=McR0+7huQOJEI8vf4lDqqIvCW7P7RCIN1cXUCzP4AgU=; b=IeZeNBdcUJOzzq
-	fUPsToz/zU1dTwhQVo1x/TNnUbONlIGUruIzUh3xkFX/t9zIq7jRuIttxzeDqAJrOOBceyETSbdlf
-	3/8kvbctAbpztV+nPvjDRlnWBuc8UgrXrxq1xG2XTFlA2sgENpETfexMWhTJe6lGO8aBUy8qHodSq
-	7aB+JKloIUNkJJ3zkyO7xYoyQ0dLLzg7F+lC0giCGoybTMoZLZePFD2U70cYxLo+SRnnCl0yj08QV
-	l04URStwuYqUBkRPLcDS7d8Ka0+BI7v1xq+fyIqfb8yeXGy0DQQ+Zd31fCNGdFfgdGN5o70tmo2ja
-	OZnvhZ04fH6qbKoK3ytQ==;
+	List-Owner; bh=67lGzjegQI3WSqGrWqBGEibML3OOWa1Lxto4i0jw+1A=; b=DzR5Z7numm3Ny4
+	brhh6McwA8S8b+BUbRZO5WZx75t9faGLC6D+lGw5MHmPo6tkNJtBr4AIUdOa/90CWBfQnK7dv3NqE
+	7A8jLD6tQfE9LhrZiiTW1HgBI+jm+7ERziTx97Qi/GPguLkoFYeohb7jMWhmxyiOPCNyLh/Vylr6b
+	xg7B4/cCPpp/sQCo3JxWV0uim6Dhc8w64qGDf/74U1HCvlMAwQKXyUnl7V307BSfbA6fLZdz/albn
+	NFlc8H5ssKv1BZCosyA2U2T9PoK2V77idDegzW9VIp/Coot4egvQx90hIQl5tBl2PoX+Kuj/h8bf8
+	ac+nABf357v+Qu/i+QXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZvW9-002W1p-14; Thu, 31 Mar 2022 14:11:17 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1nZvfR-002ZJe-9q; Thu, 31 Mar 2022 14:20:53 +0000
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZvUY-002VIU-Gp; Thu, 31 Mar 2022 14:09:41 +0000
-Received: by mail-wm1-x332.google.com with SMTP id
- c190-20020a1c35c7000000b0038e37907b5bso1828754wma.0; 
- Thu, 31 Mar 2022 07:09:37 -0700 (PDT)
+ id 1nZveQ-002Yy6-SW; Thu, 31 Mar 2022 14:19:52 +0000
+Received: by mail-ot1-x332.google.com with SMTP id
+ k25-20020a056830151900b005b25d8588dbso17234296otp.4; 
+ Thu, 31 Mar 2022 07:19:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:content-language:to:cc
- :references:from:subject:in-reply-to:content-transfer-encoding;
- bh=u5RKTCIhVT0UdLD5a9lBWqntnPr7pNgupr5inV4aYmo=;
- b=Ro4qjQTYngAIqa+KiR2jjeeqVbD7TQOphkTqAOd+zRTPfvi/q+DLy38lEFB9e/nctR
- r9C2zey8bGqfLiHcRW7nudtjsB3uqDnkfVwY4GCxL0hyhF2DUSO2dZ7J8Y9hVZ8ireHf
- vcm6KXCJPWnBVOzzcw0LaLO0gA4h9C4yzHZiGjjNnQyoTn0z3xpsQ4BpJ168c5kkz052
- LeHIMkk2tbZb0TretJ7hOKmyvl7hFwzGQs86zp5FhMo6h7HPnIRSgA+EEE0DJ8D3PxCE
- NhzyXk7ZeMi8LIDj84km1R83duFUydosQIamaHC/PBSv9tuCG2qOs+qHC1G4+ap+UG0R
- FoMQ==
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=Vm/tLIcwztm/cAKbFq5hHS63stt8moqDI9vFQVEX30w=;
+ b=BacBToiK8uRJiYP8U49LBgQIIk48GIXBiDcFFbQX70JKSoZiVymsFSN84pgd2xGBUP
+ I3hhs4i+5uCE3p+wCmcL+oJk+n/mLbzzymDDLXeIVLVU+o2pcWQHSsuE6Sq9TjyeaMi5
+ FLt3FFJzp10/llYMGVcgIMsbUBKhefUl1PY3LUzM1rINwwg7Gb87cTpfA59pkFiW0Q6s
+ K/SE5gAjNWlrL532/Ng+WvWcZ8dRsL+35hHVQ/sJ/gslQbFz26rIB+54RaRBuUqIMDLi
+ VFTX/NBB5Wr0Y14Nl8nVs8bjFssMJrX2GRNq+yjFLZWwUq22gvirxt4jtWFCe/RTCTkX
+ d0Vg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent
- :content-language:to:cc:references:from:subject:in-reply-to
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=u5RKTCIhVT0UdLD5a9lBWqntnPr7pNgupr5inV4aYmo=;
- b=YDkfYzgD7WUlWdER+NIO3s85ZrYVUNKeKmOaW24nS28/lsaHbhX7NbAiKdrzYS0uls
- yDfHV1lia79SRTaGVI26hfez7FPt3HIRYj8H83JjoEpKN7BQ4exxmFgsyi2XAWApB/nP
- P7Y+fhEYPvUskEMbgwmyZ61znNtlkW25vyV2QWvaF4Ho8/2FBh9R8kRm/rs2ckv4AQgK
- Zxd7smX9u33upPnXR31fprLybOJ7ElwxOaeWY791Djfql4fob85zymIMnLeKoSjps91o
- DWTtUgcP2b1NcT8UzcdK7BUaAJx1Wr8j2O6MnRm79ZVStwPgoKQOjL7N4CJIs3uwPmXr
- Klkg==
-X-Gm-Message-State: AOAM532yx0BTsyzqqsvE3i8D7T9x/Nzh5d7cIw79lXAkJlCbe1VoY6Fj
- MNvncJWSHwSA2+h2wskjzbY=
-X-Google-Smtp-Source: ABdhPJzLW7IbufpTDK9sgCBrOuZXAxLCMbpjDk5nnxZ5Ix8pSN5DFz1+MRhK5/qsv/pHBDz4RHy+2A==
-X-Received: by 2002:a7b:c925:0:b0:38c:82d7:868d with SMTP id
- h5-20020a7bc925000000b0038c82d7868dmr4701164wml.100.1648735776562; 
- Thu, 31 Mar 2022 07:09:36 -0700 (PDT)
+ bh=Vm/tLIcwztm/cAKbFq5hHS63stt8moqDI9vFQVEX30w=;
+ b=5pt33JV7OAQKtFcXycCvjKhfuPHz/7BZmh7uZxnJ7vfY7W4I9ki+mI2yZsZxZ9kJ2d
+ h+eZyIAHRffsIKsJU2vw5tNgCJNq1QKxAGamDGCUGFpfDNrISq5IGNN+Mjqvpnzj90Ku
+ ZDNl05nT7biN2VtPBsWUWbQoNMYcjzHy8HIQ3ZO+1kfeyCOtVsvFbCKTf5Qc3wrPuWJx
+ 6xuixONucX2NJOZFiUqpTtJdEWHCzLzaTw+ARJt5zT5+lWlPqw6jUVOkjTvDghGEjxPY
+ bcXzMFXRpIR63tp5qpH/hzPOvapqZvIiq+uPmRU/D4kxusk03FoqF+ZdqierkNfX2mC6
+ NqAg==
+X-Gm-Message-State: AOAM530NNY1FBRrSrL5A5A85lDkn5btrwVHZVDjhmTRYowxzRXLgXulE
+ 9kD7kFRh2gbUnOgshM7Evuk=
+X-Google-Smtp-Source: ABdhPJxvaMnWlIqOGNm++kxUq/OI22tXvuvCi7hITtxpHtFZJ3FqhnurnjI95U9h2jczQz9rtAONIQ==
+X-Received: by 2002:a05:6830:2b0d:b0:5cd:aca2:f3f2 with SMTP id
+ l13-20020a0568302b0d00b005cdaca2f3f2mr5709703otv.212.1648736388863; 
+ Thu, 31 Mar 2022 07:19:48 -0700 (PDT)
 Received: from [192.168.1.145] ([207.188.167.132])
  by smtp.gmail.com with ESMTPSA id
- v15-20020a056000144f00b002057eac999fsm20704386wrx.76.2022.03.31.07.09.35
+ x25-20020a056830409900b005af164235b4sm11919171ott.2.2022.03.31.07.19.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 31 Mar 2022 07:09:35 -0700 (PDT)
-Message-ID: <4452dd35-d4f4-66be-807b-7277cfd9a57b@gmail.com>
-Date: Thu, 31 Mar 2022 16:09:34 +0200
+ Thu, 31 Mar 2022 07:19:47 -0700 (PDT)
+Message-ID: <68f66e54-e5e4-28ff-96a9-d4eaffc08c82@gmail.com>
+Date: Thu, 31 Mar 2022 16:19:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
+Subject: Re: [PATCH v5 2/4] arm64: dts: mt8192: Add mmc device nodes
 Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
@@ -75,13 +76,14 @@ Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
  Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
  Hui Liu <hui.liu@mediatek.com>
 References: <20220330133816.30806-1-allen-kh.cheng@mediatek.com>
- <20220330133816.30806-5-allen-kh.cheng@mediatek.com>
+ <20220330133816.30806-3-allen-kh.cheng@mediatek.com>
+ <4cd1c5fa-0982-0355-d5b6-7025b82174a4@gmail.com>
+ <ccd28405c8f2c420354f3355fc9d4ef1dd7ea35d.camel@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v5 4/4] arm64: dts: mt8192: Add vcodec lat and core nodes
-In-Reply-To: <20220330133816.30806-5-allen-kh.cheng@mediatek.com>
+In-Reply-To: <ccd28405c8f2c420354f3355fc9d4ef1dd7ea35d.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_070938_670863_9280A90E 
-X-CRM114-Status: GOOD (  17.75  )
+X-CRM114-CacheID: sfid-20220331_071951_001752_69872EAD 
+X-CRM114-Status: GOOD (  17.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,107 +102,98 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 30/03/2022 15:38, Allen-KH Cheng wrote:
-> Add vcodec lat and core nodes for mt8192 SoC.
+On 31/03/2022 14:48, allen-kh.cheng wrote:
+> Hi Matthias,
 > 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Please drop reviewed-by as of comments below.
-
-> ---
->   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 60 ++++++++++++++++++++++++
->   1 file changed, 60 insertions(+)
+> On Thu, 2022-03-31 at 14:02 +0200, Matthias Brugger wrote:
+>>
+>> On 30/03/2022 15:38, Allen-KH Cheng wrote:
+>>> Add mmc nodes for mt8192 SoC.
+>>>
+>>> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+>>> Reviewed-by: AngeloGioacchino Del Regno <
+>>> angelogioacchino.delregno@collabora.com>
+>>
+>> You forgot to disable the msdc clock node, which I understood we
+>> agreed on in in
+>> v4. I would consider this change as an substantial one, so in this
+>> case please
+>> delete the reviewed-by tags.
+>>
+>> Regards,
+>> Matthias
+>>
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index 3d61238fb102..0b2b52a8f5ed 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -1115,6 +1115,66 @@
->   			power-domains = <&spm MT8192_POWER_DOMAIN_ISP2>;
->   		};
->   
-> +		vcodec_dec: vcodec-dec@16000000 {
-> +			compatible = "mediatek,mt8192-vcodec-dec";
-> +			reg = <0 0x16000000 0 0x1000>;	/* VDEC_SYS */
-> +			mediatek,scp = <&scp>;
-> +			iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
-> +			dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
+> Is it ok I send a new patch for this instead of a series?
 
-Change that was not part of the changelog. Please mention any change you make to 
-the patch in the change log.
+Yes sure.
 
-> +			#address-cells = <2>;
-> +			#size-cells = <2>;
-
-Binding description says address-cells and size-cells should be of value 1.
-
-
-> +			ranges = <0 0 0 0x16000000 0 0x26000>;
-> +
-> +			vcodec_lat: vcodec-lat@10000 {
-> +				compatible = "mediatek,mtk-vcodec-lat";
-> +				reg = <0x0 0x10000 0 0x800>;		/* VDEC_MISC */
-
-I suppose we would need to fix the reg value here then. Also IMHO the comment 
-can be deleted.
-
-> +				interrupts = <GIC_SPI 426 IRQ_TYPE_LEVEL_HIGH 0>;
-> +				iommus = <&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD_EXT>,
-> +					 <&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD2_EXT>,
-> +					 <&iommu0 M4U_PORT_L5_VDEC_LAT0_AVC_MV_EXT>,
-> +					 <&iommu0 M4U_PORT_L5_VDEC_LAT0_PRED_RD_EXT>,
-> +					 <&iommu0 M4U_PORT_L5_VDEC_LAT0_TILE_EXT>,
-> +					 <&iommu0 M4U_PORT_L5_VDEC_LAT0_WDMA_EXT>,
-> +					 <&iommu0 M4U_PORT_L5_VDEC_LAT0_RG_CTRL_DMA_EXT>,
-> +					 <&iommu0 M4U_PORT_L5_VDEC_UFO_ENC_EXT>;
-> +				clocks = <&topckgen CLK_TOP_VDEC_SEL>,
-> +					 <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
-> +					 <&vdecsys_soc CLK_VDEC_SOC_LAT>,
-> +					 <&vdecsys_soc CLK_VDEC_SOC_LARB1>,
-> +					 <&topckgen CLK_TOP_MAINPLL_D4>;
-> +				clock-names = "sel", "soc-vdec", "soc-lat", "vdec", "top";
-> +				assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
-> +				assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4>;
-> +				power-domains = <&spm MT8192_POWER_DOMAIN_VDEC>;
-> +			};
-> +
-> +			vcodec_core: vcodec-core@25000 {
-> +				compatible = "mediatek,mtk-vcodec-core";
-> +				reg = <0 0x25000 0 0x1000>;	/* VDEC_CORE_MISC */
-
-same here.
-
-Regards,
 Matthias
 
-> +				interrupts = <GIC_SPI 425 IRQ_TYPE_LEVEL_HIGH 0>;
-> +				iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>,
-> +					 <&iommu0 M4U_PORT_L4_VDEC_UFO_EXT>,
-> +					 <&iommu0 M4U_PORT_L4_VDEC_PP_EXT>,
-> +					 <&iommu0 M4U_PORT_L4_VDEC_PRED_RD_EXT>,
-> +					 <&iommu0 M4U_PORT_L4_VDEC_PRED_WR_EXT>,
-> +					 <&iommu0 M4U_PORT_L4_VDEC_PPWRAP_EXT>,
-> +					 <&iommu0 M4U_PORT_L4_VDEC_TILE_EXT>,
-> +					 <&iommu0 M4U_PORT_L4_VDEC_VLD_EXT>,
-> +					 <&iommu0 M4U_PORT_L4_VDEC_VLD2_EXT>,
-> +					 <&iommu0 M4U_PORT_L4_VDEC_AVC_MV_EXT>,
-> +					 <&iommu0 M4U_PORT_L4_VDEC_RG_CTRL_DMA_EXT>;
-> +				clocks = <&topckgen CLK_TOP_VDEC_SEL>,
-> +					 <&vdecsys CLK_VDEC_VDEC>,
-> +					 <&vdecsys CLK_VDEC_LAT>,
-> +					 <&vdecsys CLK_VDEC_LARB1>,
-> +					 <&topckgen CLK_TOP_MAINPLL_D4>;
-> +				clock-names = "sel", "soc-vdec", "soc-lat", "vdec", "top";
-> +				assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
-> +				assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4>;
-> +				power-domains = <&spm MT8192_POWER_DOMAIN_VDEC2>;
-> +			};
-> +		};
-> +
->   		larb5: larb@1600d000 {
->   			compatible = "mediatek,mt8192-smi-larb";
->   			reg = <0 0x1600d000 0 0x1000>;
+> 
+> Best regards,
+> Allen
+> 
+>>> ---
+>>>    arch/arm64/boot/dts/mediatek/mt8192.dtsi | 32
+>>> ++++++++++++++++++++++++
+>>>    1 file changed, 32 insertions(+)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+>>> b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+>>> index 69e8d1934d53..c1057878e2c6 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+>>> @@ -991,6 +991,38 @@
+>>>    			#clock-cells = <1>;
+>>>    		};
+>>>    
+>>> +		mmc0: mmc@11f60000 {
+>>> +			compatible = "mediatek,mt8192-mmc",
+>>> "mediatek,mt8183-mmc";
+>>> +			reg = <0 0x11f60000 0 0x1000>, <0 0x11f50000 0
+>>> 0x1000>;
+>>> +			interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH
+>>> 0>;
+>>> +			clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>,
+>>> +				 <&msdc_top CLK_MSDC_TOP_H_MST_0P>,
+>>> +				 <&msdc_top CLK_MSDC_TOP_SRC_0P>,
+>>> +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
+>>> +				 <&msdc_top CLK_MSDC_TOP_P_MSDC0>,
+>>> +				 <&msdc_top CLK_MSDC_TOP_AXI>,
+>>> +				 <&msdc_top
+>>> CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
+>>> +			clock-names = "source", "hclk", "source_cg",
+>>> "sys_cg",
+>>> +				      "pclk_cg", "axi_cg", "ahb_cg";
+>>> +			status = "disabled";
+>>> +		};
+>>> +
+>>> +		mmc1: mmc@11f70000 {
+>>> +			compatible = "mediatek,mt8192-mmc",
+>>> "mediatek,mt8183-mmc";
+>>> +			reg = <0 0x11f70000 0 0x1000>, <0 0x11c70000 0
+>>> 0x1000>;
+>>> +			interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH
+>>> 0>;
+>>> +			clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>,
+>>> +				 <&msdc_top CLK_MSDC_TOP_H_MST_1P>,
+>>> +				 <&msdc_top CLK_MSDC_TOP_SRC_1P>,
+>>> +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
+>>> +				 <&msdc_top CLK_MSDC_TOP_P_MSDC1>,
+>>> +				 <&msdc_top CLK_MSDC_TOP_AXI>,
+>>> +				 <&msdc_top
+>>> CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
+>>> +			clock-names = "source", "hclk", "source_cg",
+>>> "sys_cg",
+>>> +				      "pclk_cg", "axi_cg", "ahb_cg";
+>>> +			status = "disabled";
+>>> +		};
+>>> +
+>>>    		mfgcfg: clock-controller@13fbf000 {
+>>>    			compatible = "mediatek,mt8192-mfgcfg";
+>>>    			reg = <0 0x13fbf000 0 0x1000>;
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
