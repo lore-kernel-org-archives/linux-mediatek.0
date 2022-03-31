@@ -4,58 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67FB2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 18:34:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C392C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 19:38:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xjSTYWSEU1QJlCGKDn1T8pUWCgsxR31xSDC6VnH+wNg=; b=e0hpKtKGMndny/
-	wOjBynH3MIvzTLKPQOnhkebySU20Hw0Edt4X6BQ80sXK4FDtRotLHoJMxY8l8KyxZp4t1RLAMTN9/
-	tLY78f9z8sH90rsHF9M44YJ+jfzkSgchGap6Pjzhi0QhH5C5PP3TlNc1M/sJKId/koXe+Ef6ZdFmM
-	CWCiyAUjhFI6iPwC7HCCV9N568GhXbSTJDqCGpM80ksb9lg1zeQR1l3yXTW1vAyfXLXaBTXS2i0+V
-	e+70nm1LuAG+v01Pj3Gf9Ea4vsJtbZ5+0TEUkAf1ZmTbJWqcDS3cPqKe9x13jVLqKR/q1B6Umu8oM
-	/4GyG/yyxCorooBQDo4g==;
+	List-Owner; bh=Jg07iMAnFd7HYVzXUdBIOam24yhsN2ofwm6ez2xKQG8=; b=UQCxssl7FPJMcj
+	qkYa8NgquTdcW28DRZfQ/lqNbXWB3t9xvvmSeX6HYO9pR0Ld3JMNQhn1Qf8prDn7xuQlxmG/AkH0P
+	Wf8kjqVTAu8Wxrg5Pml4mpNiKbc0orS5ZZ/NBZAWMIdxxNfTeue+Knjb2lm7sDEjVA6KFyI3Y+hVD
+	fVkW/UVrm2Tbf0NuDfn/dIn5zIdmJk4BClRimqf+YrfPXsxWw5Z99XmDV/a2mfSRfVGcwrUSEbMnb
+	gS6HifvsGYI+FRbxBSS2QW0hGJMhbWORgYRVBa8M0zuIP/wj/xlV3uCEu9qCvrDKGh83FDUoBBYHq
+	uqhfLZcWjuOtnEI1MEKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZzcT-003Dcf-0Z; Thu, 31 Mar 2022 18:34:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1na0cL-003RMe-Vj; Thu, 31 Mar 2022 19:38:01 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZzc6-003DTw-Ls; Thu, 31 Mar 2022 18:33:45 +0000
-X-UUID: b3dbb0747f8f4fb78e94081d582529c5-20220331
-X-UUID: b3dbb0747f8f4fb78e94081d582529c5-20220331
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jason-jh.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1144961481; Thu, 31 Mar 2022 11:33:37 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 31 Mar 2022 11:23:34 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 1 Apr 2022 02:23:33 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 1 Apr 2022 02:23:32 +0800
-From: jason-jh.lin <jason-jh.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v17 3/7] soc: mediatek: add mtk-mmsys support for mt8195
- vdosys0
-Date: Fri, 1 Apr 2022 02:23:27 +0800
-Message-ID: <20220331182331.27205-4-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220331182331.27205-1-jason-jh.lin@mediatek.com>
-References: <20220331182331.27205-1-jason-jh.lin@mediatek.com>
+ id 1na0c5-003RAw-SX; Thu, 31 Mar 2022 19:37:48 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nicolas) with ESMTPSA id B24EA1F4724C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1648755462;
+ bh=I1NV/FqMIg1TwxGn1zzJ4HMiOapNHncuGBbSoCDFeG4=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=g8NEE8ifGEKkPJ0Frxvbsfm4Te7+QxImekdoGu2Xl+Tn8jLiOBhBvQsQrsFg3XqPR
+ o60seeCQ6NCmp0nfbcsYJf2AiSw4yItX9Bs4lWJXeC7fxbwwGTKmf9qxzoyJFiZ2M9
+ 0O8DitUvnP4tqmQ19AaXGKXPt28w3laZc4PMasWJ3sqYAw3d/haefwk68YKnFAhzQi
+ SMct/WWX7gJ8tfBktXYTs0Y4U5PDehlRI/UfXzu18KY1pGQP0v4BOckl1x08f0IHCJ
+ d+wKsaYzlYCwe9CXYZ3aFBtfDHQq9kvULLXZBP9ZEBmrMyqIPGKEejev+8UisGGWTe
+ RzkvC+l0wpcOw==
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Heiko Stuebner <heiko@sntech.de>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: kernel@collabora.com, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 05/23] media: h264: Use v4l2_h264_reference for reflist
+Date: Thu, 31 Mar 2022 15:37:07 -0400
+Message-Id: <20220331193726.289559-6-nicolas.dufresne@collabora.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220331193726.289559-1-nicolas.dufresne@collabora.com>
+References: <20220331193726.289559-1-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_113342_752735_3234CDA2 
-X-CRM114-Status: GOOD (  16.84  )
+X-CRM114-CacheID: sfid-20220331_123746_243717_0E6C5F21 
+X-CRM114-Status: GOOD (  17.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,751 +69,474 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, David Airlie <airlied@linux.ie>,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>, singo.chang@mediatek.com,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, roy-cw.yeh@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Fabien Parent <fparent@baylibre.com>, moudy.ho@mediatek.com,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- hsinyi@chromium.org, CK
- Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- nancy.lin@mediatek.com, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. Add mt8195 mmsys compatible for vdosys0.
-2. Add mt8195 routing table settings and fix build fail.
-3. Add clock name, clock driver name and routing table into the driver data
-   of mt8195 vdosys0.
-4. Add get match data by clock name function and clock platform labels
-   to identify which mmsys node is corresponding to vdosys0.
+In preparation for adding field decoding support, convert the byte arrays
+for reflist into array of struct v4l2_h264_reference. That struct will
+allow us to mark which field of the reference picture is being referenced.
 
-Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |   2 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   6 +-
- drivers/soc/mediatek/mt8167-mmsys.h         |   2 +-
- drivers/soc/mediatek/mt8183-mmsys.h         |   2 +-
- drivers/soc/mediatek/mt8186-mmsys.h         |   4 +-
- drivers/soc/mediatek/mt8192-mmsys.h         |   4 +-
- drivers/soc/mediatek/mt8195-mmsys.h         | 370 ++++++++++++++++++++
- drivers/soc/mediatek/mt8365-mmsys.h         |   4 +-
- drivers/soc/mediatek/mtk-mmsys.c            |  62 ++++
- drivers/soc/mediatek/mtk-mmsys.h            |   1 +
- drivers/soc/mediatek/mtk-mutex.c            |   8 +-
- include/linux/soc/mediatek/mtk-mmsys.h      |  13 +-
- 12 files changed, 461 insertions(+), 17 deletions(-)
- create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+ .../mediatek/vcodec/vdec/vdec_h264_req_if.c   | 17 +++-
+ drivers/media/v4l2-core/v4l2-h264.c           | 33 ++++---
+ .../staging/media/hantro/hantro_g1_h264_dec.c | 38 +++----
+ drivers/staging/media/hantro/hantro_hw.h      |  6 +-
+ .../media/hantro/rockchip_vpu2_hw_h264_dec.c  | 98 +++++++++----------
+ drivers/staging/media/rkvdec/rkvdec-h264.c    | 12 +--
+ include/media/v4l2-h264.h                     | 19 ++--
+ 7 files changed, 116 insertions(+), 107 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 2e99aee13dfe..f543d3eb9439 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -366,7 +366,7 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_CCORR]		= { MTK_DISP_CCORR,	0, &ddp_ccorr },
- 	[DDP_COMPONENT_COLOR0]		= { MTK_DISP_COLOR,	0, &ddp_color },
- 	[DDP_COMPONENT_COLOR1]		= { MTK_DISP_COLOR,	1, &ddp_color },
--	[DDP_COMPONENT_DITHER]		= { MTK_DISP_DITHER,	0, &ddp_dither },
-+	[DDP_COMPONENT_DITHER0]		= { MTK_DISP_DITHER,	0, &ddp_dither },
- 	[DDP_COMPONENT_DPI0]		= { MTK_DPI,		0, &ddp_dpi },
- 	[DDP_COMPONENT_DPI1]		= { MTK_DPI,		1, &ddp_dpi },
- 	[DDP_COMPONENT_DSI0]		= { MTK_DSI,		0, &ddp_dsi },
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 247c6ff277ef..6a0a167320f0 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -116,7 +116,7 @@ static enum mtk_ddp_comp_id mt8167_mtk_ddp_main[] = {
- 	DDP_COMPONENT_CCORR,
- 	DDP_COMPONENT_AAL0,
- 	DDP_COMPONENT_GAMMA,
--	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_DITHER0,
- 	DDP_COMPONENT_RDMA0,
- 	DDP_COMPONENT_DSI0,
- };
-@@ -148,7 +148,7 @@ static const enum mtk_ddp_comp_id mt8183_mtk_ddp_main[] = {
- 	DDP_COMPONENT_CCORR,
- 	DDP_COMPONENT_AAL0,
- 	DDP_COMPONENT_GAMMA,
--	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_DITHER0,
- 	DDP_COMPONENT_DSI0,
- };
- 
-@@ -167,7 +167,7 @@ static const enum mtk_ddp_comp_id mt8192_mtk_ddp_main[] = {
- 	DDP_COMPONENT_AAL0,
- 	DDP_COMPONENT_GAMMA,
- 	DDP_COMPONENT_POSTMASK0,
--	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_DITHER0,
- 	DDP_COMPONENT_DSI0,
- };
- 
-diff --git a/drivers/soc/mediatek/mt8167-mmsys.h b/drivers/soc/mediatek/mt8167-mmsys.h
-index 2772ef5e3934..f7a35b3656bb 100644
---- a/drivers/soc/mediatek/mt8167-mmsys.h
-+++ b/drivers/soc/mediatek/mt8167-mmsys.h
-@@ -18,7 +18,7 @@ static const struct mtk_mmsys_routes mt8167_mmsys_routing_table[] = {
- 		DDP_COMPONENT_OVL0, DDP_COMPONENT_COLOR0,
- 		MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN, OVL0_MOUT_EN_COLOR0,
- 	}, {
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_RDMA0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_RDMA0,
- 		MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_RDMA0
- 	}, {
- 		DDP_COMPONENT_OVL0, DDP_COMPONENT_COLOR0,
-diff --git a/drivers/soc/mediatek/mt8183-mmsys.h b/drivers/soc/mediatek/mt8183-mmsys.h
-index 0c021f4b76d2..ff6be1703469 100644
---- a/drivers/soc/mediatek/mt8183-mmsys.h
-+++ b/drivers/soc/mediatek/mt8183-mmsys.h
-@@ -41,7 +41,7 @@ static const struct mtk_mmsys_routes mmsys_mt8183_routing_table[] = {
- 		MT8183_DISP_OVL1_2L_MOUT_EN, MT8183_OVL1_2L_MOUT_EN_RDMA1,
- 		MT8183_OVL1_2L_MOUT_EN_RDMA1
- 	}, {
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8183_DISP_DITHER0_MOUT_EN, MT8183_DITHER0_MOUT_IN_DSI0,
- 		MT8183_DITHER0_MOUT_IN_DSI0
- 	}, {
-diff --git a/drivers/soc/mediatek/mt8186-mmsys.h b/drivers/soc/mediatek/mt8186-mmsys.h
-index c72ccf86ea28..eb1ad9c37a9c 100644
---- a/drivers/soc/mediatek/mt8186-mmsys.h
-+++ b/drivers/soc/mediatek/mt8186-mmsys.h
-@@ -76,12 +76,12 @@ static const struct mtk_mmsys_routes mmsys_mt8186_routing_table[] = {
- 		MT8186_RDMA0_SOUT_TO_COLOR0
- 	},
- 	{
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8186_DISP_DITHER0_MOUT_EN, MT8186_DITHER0_MOUT_EN_MASK,
- 		MT8186_DITHER0_MOUT_TO_DSI0,
- 	},
- 	{
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8186_DISP_DSI0_SEL_IN, MT8186_DSI0_SEL_IN_MASK,
- 		MT8186_DSI0_FROM_DITHER0
- 	},
-diff --git a/drivers/soc/mediatek/mt8192-mmsys.h b/drivers/soc/mediatek/mt8192-mmsys.h
-index 6aae0b12b6ff..a016d80b4bc1 100644
---- a/drivers/soc/mediatek/mt8192-mmsys.h
-+++ b/drivers/soc/mediatek/mt8192-mmsys.h
-@@ -40,7 +40,7 @@ static const struct mtk_mmsys_routes mmsys_mt8192_routing_table[] = {
- 		MT8192_DISP_OVL2_2L_MOUT_EN, MT8192_OVL2_2L_MOUT_EN_RDMA4,
- 		MT8192_OVL2_2L_MOUT_EN_RDMA4
- 	}, {
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8192_DISP_DITHER0_MOUT_EN, MT8192_DITHER0_MOUT_IN_DSI0,
- 		MT8192_DITHER0_MOUT_IN_DSI0
- 	}, {
-@@ -52,7 +52,7 @@ static const struct mtk_mmsys_routes mmsys_mt8192_routing_table[] = {
- 		MT8192_DISP_AAL0_SEL_IN, MT8192_AAL0_SEL_IN_CCORR0,
- 		MT8192_AAL0_SEL_IN_CCORR0
- 	}, {
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8192_DISP_DSI0_SEL_IN, MT8192_DSI0_SEL_IN_DITHER0,
- 		MT8192_DSI0_SEL_IN_DITHER0
- 	}, {
-diff --git a/drivers/soc/mediatek/mt8195-mmsys.h b/drivers/soc/mediatek/mt8195-mmsys.h
-new file mode 100644
-index 000000000000..abfe94a30248
---- /dev/null
-+++ b/drivers/soc/mediatek/mt8195-mmsys.h
-@@ -0,0 +1,370 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+
-+#ifndef __SOC_MEDIATEK_MT8195_MMSYS_H
-+#define __SOC_MEDIATEK_MT8195_MMSYS_H
-+
-+#define MT8195_VDO0_OVL_MOUT_EN					0xf14
-+#define MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0			BIT(0)
-+#define MT8195_MOUT_DISP_OVL0_TO_DISP_WDMA0			BIT(1)
-+#define MT8195_MOUT_DISP_OVL0_TO_DISP_OVL1			BIT(2)
-+#define MT8195_MOUT_DISP_OVL1_TO_DISP_RDMA1			BIT(4)
-+#define MT8195_MOUT_DISP_OVL1_TO_DISP_WDMA1			BIT(5)
-+#define MT8195_MOUT_DISP_OVL1_TO_DISP_OVL0			BIT(6)
-+
-+#define MT8195_VDO0_SEL_IN					0xf34
-+#define MT8195_SEL_IN_VPP_MERGE_FROM_MASK			GENMASK(1, 0)
-+#define MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT		(0 << 0)
-+#define MT8195_SEL_IN_VPP_MERGE_FROM_DISP_DITHER1		(1 << 0)
-+#define MT8195_SEL_IN_VPP_MERGE_FROM_VDO1_VIRTUAL0		(2 << 0)
-+#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_MASK			GENMASK(4, 4)
-+#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0		(0 << 4)
-+#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE		(1 << 4)
-+#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_MASK			GENMASK(5, 5)
-+#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_DISP_DITHER1		(0 << 5)
-+#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_VPP_MERGE		(1 << 5)
-+#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_MASK			GENMASK(8, 8)
-+#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_VPP_MERGE		(0 << 8)
-+#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_DSC_WRAP1_OUT		(1 << 8)
-+#define MT8195_SEL_IN_SINB_VIRTUAL0_FROM_MASK			GENMASK(9, 9)
-+#define MT8195_SEL_IN_SINB_VIRTUAL0_FROM_DSC_WRAP0_OUT		(0 << 9)
-+#define MT8195_SEL_IN_DP_INTF0_FROM_MASK			GENMASK(13, 12)
-+#define MT8195_SEL_IN_DP_INTF0_FROM_DSC_WRAP1_OUT		(0 << 0)
-+#define MT8195_SEL_IN_DP_INTF0_FROM_VPP_MERGE			(1 << 12)
-+#define MT8195_SEL_IN_DP_INTF0_FROM_VDO1_VIRTUAL0		(2 << 12)
-+#define MT8195_SEL_IN_DSI0_FROM_MASK				GENMASK(16, 16)
-+#define MT8195_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT			(0 << 16)
-+#define MT8195_SEL_IN_DSI0_FROM_DISP_DITHER0			(1 << 16)
-+#define MT8195_SEL_IN_DSI1_FROM_MASK				GENMASK(17, 17)
-+#define MT8195_SEL_IN_DSI1_FROM_DSC_WRAP1_OUT			(0 << 17)
-+#define MT8195_SEL_IN_DSI1_FROM_VPP_MERGE			(1 << 17)
-+#define MT8195_SEL_IN_DISP_WDMA1_FROM_MASK			GENMASK(20, 20)
-+#define MT8195_SEL_IN_DISP_WDMA1_FROM_DISP_OVL1			(0 << 20)
-+#define MT8195_SEL_IN_DISP_WDMA1_FROM_VPP_MERGE			(1 << 20)
-+#define MT8195_SEL_IN_DSC_WRAP1_FROM_MASK			GENMASK(21, 21)
-+#define MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN		(0 << 21)
-+#define MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DISP_DITHER1		(1 << 21)
-+#define MT8195_SEL_IN_DISP_WDMA0_FROM_MASK			GENMASK(22, 22)
-+#define MT8195_SEL_IN_DISP_WDMA0_FROM_DISP_OVL0			(0 << 22)
-+
-+#define MT8195_VDO0_SEL_OUT					0xf38
-+#define MT8195_SOUT_DISP_DITHER0_TO_MASK			BIT(0)
-+#define MT8195_SOUT_DISP_DITHER0_TO_DSC_WRAP0_IN		(0 << 0)
-+#define MT8195_SOUT_DISP_DITHER0_TO_DSI0			(1 << 0)
-+#define MT8195_SOUT_DISP_DITHER1_TO_MASK			GENMASK(2, 1)
-+#define MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_IN		(0 << 1)
-+#define MT8195_SOUT_DISP_DITHER1_TO_VPP_MERGE			(1 << 1)
-+#define MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_OUT		(2 << 1)
-+#define MT8195_SOUT_VDO1_VIRTUAL0_TO_MASK			GENMASK(4, 4)
-+#define MT8195_SOUT_VDO1_VIRTUAL0_TO_VPP_MERGE			(0 << 4)
-+#define MT8195_SOUT_VDO1_VIRTUAL0_TO_DP_INTF0			(1 << 4)
-+#define MT8195_SOUT_VPP_MERGE_TO_MASK				GENMASK(10, 8)
-+#define MT8195_SOUT_VPP_MERGE_TO_DSI1				(0 << 8)
-+#define MT8195_SOUT_VPP_MERGE_TO_DP_INTF0			(1 << 8)
-+#define MT8195_SOUT_VPP_MERGE_TO_SINA_VIRTUAL0			(2 << 8)
-+#define MT8195_SOUT_VPP_MERGE_TO_DISP_WDMA1			(3 << 8)
-+#define MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP0_IN			(4 << 8)
-+#define MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP1_IN_MASK		GENMASK(11, 11)
-+#define MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP1_IN			(0 << 11)
-+#define MT8195_SOUT_DSC_WRAP0_OUT_TO_MASK			GENMASK(13, 12)
-+#define MT8195_SOUT_DSC_WRAP0_OUT_TO_DSI0			(0 << 12)
-+#define MT8195_SOUT_DSC_WRAP0_OUT_TO_SINB_VIRTUAL0		(1 << 12)
-+#define MT8195_SOUT_DSC_WRAP0_OUT_TO_VPP_MERGE			(2 << 12)
-+#define MT8195_SOUT_DSC_WRAP1_OUT_TO_MASK			GENMASK(17, 16)
-+#define MT8195_SOUT_DSC_WRAP1_OUT_TO_DSI1			(0 << 16)
-+#define MT8195_SOUT_DSC_WRAP1_OUT_TO_DP_INTF0			(1 << 16)
-+#define MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0		(2 << 16)
-+#define MT8195_SOUT_DSC_WRAP1_OUT_TO_VPP_MERGE			(3 << 16)
-+
-+static const struct mtk_mmsys_routes mmsys_mt8195_routing_table[] = {
-+	{
-+		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
-+		MT8195_VDO0_OVL_MOUT_EN, MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0,
-+		MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0
-+	}, {
-+		DDP_COMPONENT_OVL0, DDP_COMPONENT_WDMA0,
-+		MT8195_VDO0_OVL_MOUT_EN, MT8195_MOUT_DISP_OVL0_TO_DISP_WDMA0,
-+		MT8195_MOUT_DISP_OVL0_TO_DISP_WDMA0
-+	}, {
-+		DDP_COMPONENT_OVL0, DDP_COMPONENT_OVL1,
-+		MT8195_VDO0_OVL_MOUT_EN, MT8195_MOUT_DISP_OVL0_TO_DISP_OVL1,
-+		MT8195_MOUT_DISP_OVL0_TO_DISP_OVL1
-+	}, {
-+		DDP_COMPONENT_OVL1, DDP_COMPONENT_RDMA1,
-+		MT8195_VDO0_OVL_MOUT_EN, MT8195_MOUT_DISP_OVL1_TO_DISP_RDMA1,
-+		MT8195_MOUT_DISP_OVL1_TO_DISP_RDMA1
-+	}, {
-+		DDP_COMPONENT_OVL1, DDP_COMPONENT_WDMA1,
-+		MT8195_VDO0_OVL_MOUT_EN, MT8195_MOUT_DISP_OVL1_TO_DISP_WDMA1,
-+		MT8195_MOUT_DISP_OVL1_TO_DISP_WDMA1
-+	}, {
-+		DDP_COMPONENT_OVL1, DDP_COMPONENT_OVL0,
-+		MT8195_VDO0_OVL_MOUT_EN, MT8195_MOUT_DISP_OVL1_TO_DISP_OVL0,
-+		MT8195_MOUT_DISP_OVL1_TO_DISP_OVL0
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_MERGE0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_VPP_MERGE_FROM_MASK,
-+		MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT
-+	}, {
-+		DDP_COMPONENT_DITHER1, DDP_COMPONENT_MERGE0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_VPP_MERGE_FROM_MASK,
-+		MT8195_SEL_IN_VPP_MERGE_FROM_DISP_DITHER1
-+	}, {
-+		DDP_COMPONENT_MERGE5, DDP_COMPONENT_MERGE0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_VPP_MERGE_FROM_MASK,
-+		MT8195_SEL_IN_VPP_MERGE_FROM_VDO1_VIRTUAL0
-+	}, {
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSC0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP0_IN_FROM_MASK,
-+		MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DSC0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP0_IN_FROM_MASK,
-+		MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE
-+	}, {
-+		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DSC1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_IN_FROM_MASK,
-+		MT8195_SEL_IN_DSC_WRAP1_IN_FROM_DISP_DITHER1
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DSC1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_IN_FROM_MASK,
-+		MT8195_SEL_IN_DSC_WRAP1_IN_FROM_VPP_MERGE
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DP_INTF1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_SINA_VIRTUAL0_FROM_MASK,
-+		MT8195_SEL_IN_SINA_VIRTUAL0_FROM_VPP_MERGE
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DPI0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_SINA_VIRTUAL0_FROM_MASK,
-+		MT8195_SEL_IN_SINA_VIRTUAL0_FROM_VPP_MERGE
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DPI1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_SINA_VIRTUAL0_FROM_MASK,
-+		MT8195_SEL_IN_SINA_VIRTUAL0_FROM_VPP_MERGE
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_DP_INTF1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_SINA_VIRTUAL0_FROM_MASK,
-+		MT8195_SEL_IN_SINA_VIRTUAL0_FROM_DSC_WRAP1_OUT
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_DPI0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_SINA_VIRTUAL0_FROM_MASK,
-+		MT8195_SEL_IN_SINA_VIRTUAL0_FROM_DSC_WRAP1_OUT
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_DPI1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_SINA_VIRTUAL0_FROM_MASK,
-+		MT8195_SEL_IN_SINA_VIRTUAL0_FROM_DSC_WRAP1_OUT
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_DP_INTF1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_SINB_VIRTUAL0_FROM_MASK,
-+		MT8195_SEL_IN_SINB_VIRTUAL0_FROM_DSC_WRAP0_OUT
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_DPI0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_SINB_VIRTUAL0_FROM_MASK,
-+		MT8195_SEL_IN_SINB_VIRTUAL0_FROM_DSC_WRAP0_OUT
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_DPI1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_SINB_VIRTUAL0_FROM_MASK,
-+		MT8195_SEL_IN_SINB_VIRTUAL0_FROM_DSC_WRAP0_OUT
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_DP_INTF0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DP_INTF0_FROM_MASK,
-+		MT8195_SEL_IN_DP_INTF0_FROM_DSC_WRAP1_OUT
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DP_INTF0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DP_INTF0_FROM_MASK,
-+		MT8195_SEL_IN_DP_INTF0_FROM_VPP_MERGE
-+	}, {
-+		DDP_COMPONENT_MERGE5, DDP_COMPONENT_DP_INTF0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DP_INTF0_FROM_MASK,
-+		MT8195_SEL_IN_DP_INTF0_FROM_VDO1_VIRTUAL0
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_DSI0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSI0_FROM_MASK,
-+		MT8195_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT
-+	}, {
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSI0_FROM_MASK,
-+		MT8195_SEL_IN_DSI0_FROM_DISP_DITHER0
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_DSI1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSI1_FROM_MASK,
-+		MT8195_SEL_IN_DSI1_FROM_DSC_WRAP1_OUT
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DSI1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSI1_FROM_MASK,
-+		MT8195_SEL_IN_DSI1_FROM_VPP_MERGE
-+	}, {
-+		DDP_COMPONENT_OVL1, DDP_COMPONENT_WDMA1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DISP_WDMA1_FROM_MASK,
-+		MT8195_SEL_IN_DISP_WDMA1_FROM_DISP_OVL1
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_WDMA1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DISP_WDMA1_FROM_MASK,
-+		MT8195_SEL_IN_DISP_WDMA1_FROM_VPP_MERGE
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_DSI1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
-+		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_DP_INTF0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
-+		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_DP_INTF1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
-+		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_DPI0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
-+		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_DPI1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
-+		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_MERGE0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
-+		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN
-+	}, {
-+		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DSI1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
-+		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DISP_DITHER1
-+	}, {
-+		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DP_INTF0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
-+		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DISP_DITHER1
-+	}, {
-+		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DPI0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
-+		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DISP_DITHER1
-+	}, {
-+		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DPI1,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
-+		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DISP_DITHER1
-+	}, {
-+		DDP_COMPONENT_OVL0, DDP_COMPONENT_WDMA0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DISP_WDMA0_FROM_MASK,
-+		MT8195_SEL_IN_DISP_WDMA0_FROM_DISP_OVL0
-+	}, {
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSC0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER0_TO_MASK,
-+		MT8195_SOUT_DISP_DITHER0_TO_DSC_WRAP0_IN
-+	}, {
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER0_TO_MASK,
-+		MT8195_SOUT_DISP_DITHER0_TO_DSI0
-+	}, {
-+		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DSC1,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER1_TO_MASK,
-+		MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_IN
-+	}, {
-+		DDP_COMPONENT_DITHER1, DDP_COMPONENT_MERGE0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER1_TO_MASK,
-+		MT8195_SOUT_DISP_DITHER1_TO_VPP_MERGE
-+	}, {
-+		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DSI1,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER1_TO_MASK,
-+		MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_OUT
-+	}, {
-+		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DP_INTF0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER1_TO_MASK,
-+		MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_OUT
-+	}, {
-+		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DP_INTF1,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER1_TO_MASK,
-+		MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_OUT
-+	}, {
-+		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DPI0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER1_TO_MASK,
-+		MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_OUT
-+	}, {
-+		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DPI1,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER1_TO_MASK,
-+		MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_OUT
-+	}, {
-+		DDP_COMPONENT_MERGE5, DDP_COMPONENT_MERGE0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VDO1_VIRTUAL0_TO_MASK,
-+		MT8195_SOUT_VDO1_VIRTUAL0_TO_VPP_MERGE
-+	}, {
-+		DDP_COMPONENT_MERGE5, DDP_COMPONENT_DP_INTF0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VDO1_VIRTUAL0_TO_MASK,
-+		MT8195_SOUT_VDO1_VIRTUAL0_TO_DP_INTF0
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DSI1,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_MASK,
-+		MT8195_SOUT_VPP_MERGE_TO_DSI1
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DP_INTF0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_MASK,
-+		MT8195_SOUT_VPP_MERGE_TO_DP_INTF0
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DP_INTF1,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_MASK,
-+		MT8195_SOUT_VPP_MERGE_TO_SINA_VIRTUAL0
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DPI0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_MASK,
-+		MT8195_SOUT_VPP_MERGE_TO_SINA_VIRTUAL0
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DPI1,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_MASK,
-+		MT8195_SOUT_VPP_MERGE_TO_SINA_VIRTUAL0
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_WDMA1,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_MASK,
-+		MT8195_SOUT_VPP_MERGE_TO_DISP_WDMA1
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DSC0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_MASK,
-+		MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP0_IN
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DSC1,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP1_IN_MASK,
-+		MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP1_IN
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_DSI0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP0_OUT_TO_MASK,
-+		MT8195_SOUT_DSC_WRAP0_OUT_TO_DSI0
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_DP_INTF1,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP0_OUT_TO_MASK,
-+		MT8195_SOUT_DSC_WRAP0_OUT_TO_SINB_VIRTUAL0
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_DPI0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP0_OUT_TO_MASK,
-+		MT8195_SOUT_DSC_WRAP0_OUT_TO_SINB_VIRTUAL0
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_DPI1,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP0_OUT_TO_MASK,
-+		MT8195_SOUT_DSC_WRAP0_OUT_TO_SINB_VIRTUAL0
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_MERGE0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP0_OUT_TO_MASK,
-+		MT8195_SOUT_DSC_WRAP0_OUT_TO_VPP_MERGE
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_DSI1,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP1_OUT_TO_MASK,
-+		MT8195_SOUT_DSC_WRAP1_OUT_TO_DSI1
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_DP_INTF0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP1_OUT_TO_MASK,
-+		MT8195_SOUT_DSC_WRAP1_OUT_TO_DP_INTF0
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_DP_INTF1,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP1_OUT_TO_MASK,
-+		MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_DPI0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP1_OUT_TO_MASK,
-+		MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_DPI1,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP1_OUT_TO_MASK,
-+		MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0
-+	}, {
-+		DDP_COMPONENT_DSC1, DDP_COMPONENT_MERGE0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP1_OUT_TO_MASK,
-+		MT8195_SOUT_DSC_WRAP1_OUT_TO_VPP_MERGE
-+	}
-+};
-+
-+#endif /* __SOC_MEDIATEK_MT8195_MMSYS_H */
-diff --git a/drivers/soc/mediatek/mt8365-mmsys.h b/drivers/soc/mediatek/mt8365-mmsys.h
-index 690e3fe2dee0..24129a6c25f8 100644
---- a/drivers/soc/mediatek/mt8365-mmsys.h
-+++ b/drivers/soc/mediatek/mt8365-mmsys.h
-@@ -41,12 +41,12 @@ static const struct mtk_mmsys_routes mt8365_mmsys_routing_table[] = {
- 		MT8365_DISP_COLOR_SEL_IN_COLOR0,MT8365_DISP_COLOR_SEL_IN_COLOR0
- 	},
- 	{
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8365_DISP_REG_CONFIG_DISP_DITHER0_MOUT_EN,
- 		MT8365_DITHER_MOUT_EN_DSI0, MT8365_DITHER_MOUT_EN_DSI0
- 	},
- 	{
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8365_DISP_REG_CONFIG_DISP_DSI0_SEL_IN,
- 		MT8365_DSI0_SEL_IN_DITHER, MT8365_DSI0_SEL_IN_DITHER
- 	},
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index 4fc4c2c9ea20..b2fa239c5f5f 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -4,6 +4,8 @@
-  * Author: James Liao <jamesjj.liao@mediatek.com>
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c
+index 43542de11e9c..72c599e05a47 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c
+@@ -442,9 +442,16 @@ static void update_dpb(const struct v4l2_ctrl_h264_decode_params *dec_param,
+ /*
+  * The firmware expects unused reflist entries to have the value 0x20.
   */
+-static void fixup_ref_list(u8 *ref_list, size_t num_valid)
++static void get_ref_list(u8 *ref_list, struct v4l2_h264_reflist_builder *b)
+ {
+-	memset(&ref_list[num_valid], 0x20, 32 - num_valid);
++	u32 i;
++
++	/* FIXME mark the reference parity */
++	for (i = 0; i < b->num_valid; i++)
++		ref_list[i] = b->index;
++
++	for (; i < 32; i++)
++		ref_list[i] = 0x20;
+ }
  
-+#include <linux/clk.h>
-+#include <linux/clk-provider.h>
- #include <linux/delay.h>
- #include <linux/device.h>
- #include <linux/io.h>
-@@ -17,6 +19,7 @@
- #include "mt8183-mmsys.h"
- #include "mt8186-mmsys.h"
- #include "mt8192-mmsys.h"
-+#include "mt8195-mmsys.h"
- #include "mt8365-mmsys.h"
+ static void get_vdec_decode_parameters(struct vdec_h264_slice_inst *inst)
+@@ -478,9 +485,9 @@ static void get_vdec_decode_parameters(struct vdec_h264_slice_inst *inst)
+ 	v4l2_h264_build_p_ref_list(&reflist_builder, p0_reflist);
+ 	v4l2_h264_build_b_ref_lists(&reflist_builder, b0_reflist, b1_reflist);
+ 	/* Adapt the built lists to the firmware's expectations */
+-	fixup_ref_list(p0_reflist, reflist_builder.num_valid);
+-	fixup_ref_list(b0_reflist, reflist_builder.num_valid);
+-	fixup_ref_list(b1_reflist, reflist_builder.num_valid);
++	get_ref_list(p0_reflist, reflist_builder);
++	get_ref_list(b0_reflist, reflist_builder);
++	get_ref_list(b1_reflist, reflist_builder);
  
- static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
-@@ -72,12 +75,24 @@ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
- 	.num_routes = ARRAY_SIZE(mmsys_mt8192_routing_table),
- };
+ 	memcpy(&inst->vsi_ctx.h264_slice_params, slice_param,
+ 	       sizeof(inst->vsi_ctx.h264_slice_params));
+diff --git a/drivers/media/v4l2-core/v4l2-h264.c b/drivers/media/v4l2-core/v4l2-h264.c
+index ac47519a9fbe..afbfcf78efe4 100644
+--- a/drivers/media/v4l2-core/v4l2-h264.c
++++ b/drivers/media/v4l2-core/v4l2-h264.c
+@@ -75,12 +75,12 @@ v4l2_h264_init_reflist_builder(struct v4l2_h264_reflist_builder *b,
+ 			pic_order_count = dpb[i].top_field_order_cnt;
  
-+static const struct mtk_mmsys_driver_data mt8195_vdosys0_driver_data = {
-+	.clk_name = "cfg_vdo0",
-+	.clk_driver = "clk-mt8195-vdo0",
-+	.routes = mmsys_mt8195_routing_table,
-+	.num_routes = ARRAY_SIZE(mmsys_mt8195_routing_table),
-+};
-+
- static const struct mtk_mmsys_driver_data mt8365_mmsys_driver_data = {
- 	.clk_driver = "clk-mt8365-mm",
- 	.routes = mt8365_mmsys_routing_table,
- 	.num_routes = ARRAY_SIZE(mt8365_mmsys_routing_table),
- };
- 
-+static const struct of_device_id mtk_clk_platform_labels[] = {
-+	{ .compatible = "mediatek,mt8195-mmsys",
-+	  .data = (void *)"clk-mt8195"},
-+};
-+
- struct mtk_mmsys {
- 	void __iomem *regs;
- 	const struct mtk_mmsys_driver_data *data;
-@@ -85,6 +100,45 @@ struct mtk_mmsys {
- 	struct reset_controller_dev rcdev;
- };
- 
-+static int mtk_mmsys_get_match_data_by_clk_name(const struct mtk_mmsys_driver_data **data,
-+						struct device *dev)
-+{
-+	int i;
-+	struct clk *clk;
-+	const char *clk_name;
-+	const struct of_device_id *of_id = of_match_node(mtk_clk_platform_labels,
-+							 dev->of_node);
-+	const struct mtk_mmsys_driver_data *drvdata[] = {
-+		&mt8195_vdosys0_driver_data,
-+	};
-+
-+	if (!of_id || !of_id->data) {
-+		dev_err(dev, "Can't find match clk platform labels\n");
-+		return -EINVAL;
-+	}
-+
-+	clk = devm_clk_get(dev, NULL);
-+	if (IS_ERR(clk)) {
-+		dev_err(dev, "failed to get mmsys clk\n");
-+		return PTR_ERR(clk);
-+	}
-+
-+	clk_name = __clk_get_name(clk);
-+	if (!clk_name) {
-+		dev_err(dev, "invalid mmsys clk name\n");
-+		return -EINVAL;
-+	}
-+
-+	for (i = 0; i < ARRAY_SIZE(drvdata); i++)
-+		if (strncmp(drvdata[i]->clk_name, clk_name, strlen(clk_name)) == 0 &&
-+		    strncmp(drvdata[i]->clk_driver, of_id->data, strlen(of_id->data)) == 0) {
-+			*data = drvdata[i];
-+			return 0;
-+		}
-+
-+	return -EINVAL;
-+}
-+
- void mtk_mmsys_ddp_connect(struct device *dev,
- 			   enum mtk_ddp_comp_id cur,
- 			   enum mtk_ddp_comp_id next)
-@@ -206,6 +260,11 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+ 		b->refs[i].pic_order_count = pic_order_count;
+-		b->unordered_reflist[b->num_valid] = i;
++		b->unordered_reflist[b->num_valid].index = i;
+ 		b->num_valid++;
  	}
  
- 	mmsys->data = of_device_get_match_data(&pdev->dev);
-+	if (!mmsys->data && mtk_mmsys_get_match_data_by_clk_name(&mmsys->data, dev) < 0) {
-+		dev_err(dev, "Couldn't get match driver data\n");
-+		return -EINVAL;
-+	}
-+
- 	platform_set_drvdata(pdev, mmsys);
+ 	for (i = b->num_valid; i < ARRAY_SIZE(b->unordered_reflist); i++)
+-		b->unordered_reflist[i] = i;
++		b->unordered_reflist[i].index = i;
+ }
+ EXPORT_SYMBOL_GPL(v4l2_h264_init_reflist_builder);
  
- 	clks = platform_device_register_data(&pdev->dev, mmsys->data->clk_driver,
-@@ -260,6 +319,9 @@ static const struct of_device_id of_match_mtk_mmsys[] = {
- 		.compatible = "mediatek,mt8192-mmsys",
- 		.data = &mt8192_mmsys_driver_data,
- 	},
-+	{
-+		.compatible = "mediatek,mt8195-mmsys",
-+	},
- 	{
- 		.compatible = "mediatek,mt8365-mmsys",
- 		.data = &mt8365_mmsys_driver_data,
-diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
-index 77f37f8c715b..b119af6646bf 100644
---- a/drivers/soc/mediatek/mtk-mmsys.h
-+++ b/drivers/soc/mediatek/mtk-mmsys.h
-@@ -87,6 +87,7 @@ struct mtk_mmsys_routes {
+@@ -90,8 +90,8 @@ static int v4l2_h264_p_ref_list_cmp(const void *ptra, const void *ptrb,
+ 	const struct v4l2_h264_reflist_builder *builder = data;
+ 	u8 idxa, idxb;
+ 
+-	idxa = *((u8 *)ptra);
+-	idxb = *((u8 *)ptrb);
++	idxa = ((struct v4l2_h264_reference *)ptra)->index;
++	idxb = ((struct v4l2_h264_reference *)ptrb)->index;
+ 
+ 	if (WARN_ON(idxa >= V4L2_H264_NUM_DPB_ENTRIES ||
+ 		    idxb >= V4L2_H264_NUM_DPB_ENTRIES))
+@@ -125,8 +125,8 @@ static int v4l2_h264_b0_ref_list_cmp(const void *ptra, const void *ptrb,
+ 	s32 poca, pocb;
+ 	u8 idxa, idxb;
+ 
+-	idxa = *((u8 *)ptra);
+-	idxb = *((u8 *)ptrb);
++	idxa = ((struct v4l2_h264_reference *)ptra)->index;
++	idxb = ((struct v4l2_h264_reference *)ptrb)->index;
+ 
+ 	if (WARN_ON(idxa >= V4L2_H264_NUM_DPB_ENTRIES ||
+ 		    idxb >= V4L2_H264_NUM_DPB_ENTRIES))
+@@ -170,8 +170,8 @@ static int v4l2_h264_b1_ref_list_cmp(const void *ptra, const void *ptrb,
+ 	s32 poca, pocb;
+ 	u8 idxa, idxb;
+ 
+-	idxa = *((u8 *)ptra);
+-	idxb = *((u8 *)ptrb);
++	idxa = ((struct v4l2_h264_reference *)ptra)->index;
++	idxb = ((struct v4l2_h264_reference *)ptrb)->index;
+ 
+ 	if (WARN_ON(idxa >= V4L2_H264_NUM_DPB_ENTRIES ||
+ 		    idxb >= V4L2_H264_NUM_DPB_ENTRIES))
+@@ -212,8 +212,8 @@ static int v4l2_h264_b1_ref_list_cmp(const void *ptra, const void *ptrb,
+  * v4l2_h264_build_p_ref_list() - Build the P reference list
+  *
+  * @builder: reference list builder context
+- * @reflist: 16-bytes array used to store the P reference list. Each entry
+- *	     is an index in the DPB
++ * @reflist: 16 sized array used to store the P reference list. Each entry
++ *	     is a v4l2_h264_reference structure
+  *
+  * This functions builds the P reference lists. This procedure is describe in
+  * section '8.2.4 Decoding process for reference picture lists construction'
+@@ -222,7 +222,7 @@ static int v4l2_h264_b1_ref_list_cmp(const void *ptra, const void *ptrb,
+  */
+ void
+ v4l2_h264_build_p_ref_list(const struct v4l2_h264_reflist_builder *builder,
+-			   u8 *reflist)
++			   struct v4l2_h264_reference *reflist)
+ {
+ 	memcpy(reflist, builder->unordered_reflist,
+ 	       sizeof(builder->unordered_reflist[0]) * builder->num_valid);
+@@ -235,10 +235,10 @@ EXPORT_SYMBOL_GPL(v4l2_h264_build_p_ref_list);
+  * v4l2_h264_build_b_ref_lists() - Build the B0/B1 reference lists
+  *
+  * @builder: reference list builder context
+- * @b0_reflist: 16-bytes array used to store the B0 reference list. Each entry
+- *		is an index in the DPB
+- * @b1_reflist: 16-bytes array used to store the B1 reference list. Each entry
+- *		is an index in the DPB
++ * @b0_reflist: 16 sized array used to store the B0 reference list. Each entry
++ *		is a v4l2_h264_reference structure
++ * @b1_reflist: 16 sized array used to store the B1 reference list. Each entry
++ *		is a v4l2_h264_reference structure
+  *
+  * This functions builds the B0/B1 reference lists. This procedure is described
+  * in section '8.2.4 Decoding process for reference picture lists construction'
+@@ -247,7 +247,8 @@ EXPORT_SYMBOL_GPL(v4l2_h264_build_p_ref_list);
+  */
+ void
+ v4l2_h264_build_b_ref_lists(const struct v4l2_h264_reflist_builder *builder,
+-			    u8 *b0_reflist, u8 *b1_reflist)
++			    struct v4l2_h264_reference *b0_reflist,
++			    struct v4l2_h264_reference *b1_reflist)
+ {
+ 	memcpy(b0_reflist, builder->unordered_reflist,
+ 	       sizeof(builder->unordered_reflist[0]) * builder->num_valid);
+diff --git a/drivers/staging/media/hantro/hantro_g1_h264_dec.c b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+index f49dbfb8a843..9de7f05eff2a 100644
+--- a/drivers/staging/media/hantro/hantro_g1_h264_dec.c
++++ b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+@@ -126,7 +126,7 @@ static void set_params(struct hantro_ctx *ctx, struct vb2_v4l2_buffer *src_buf)
+ 
+ static void set_ref(struct hantro_ctx *ctx)
+ {
+-	const u8 *b0_reflist, *b1_reflist, *p_reflist;
++	const struct v4l2_h264_reference *b0_reflist, *b1_reflist, *p_reflist;
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	int reg_num;
+ 	u32 reg;
+@@ -157,12 +157,12 @@ static void set_ref(struct hantro_ctx *ctx)
+ 	 */
+ 	reg_num = 0;
+ 	for (i = 0; i < 15; i += 3) {
+-		reg = G1_REG_BD_REF_PIC_BINIT_RLIST_F0(b0_reflist[i]) |
+-		      G1_REG_BD_REF_PIC_BINIT_RLIST_F1(b0_reflist[i + 1]) |
+-		      G1_REG_BD_REF_PIC_BINIT_RLIST_F2(b0_reflist[i + 2]) |
+-		      G1_REG_BD_REF_PIC_BINIT_RLIST_B0(b1_reflist[i]) |
+-		      G1_REG_BD_REF_PIC_BINIT_RLIST_B1(b1_reflist[i + 1]) |
+-		      G1_REG_BD_REF_PIC_BINIT_RLIST_B2(b1_reflist[i + 2]);
++		reg = G1_REG_BD_REF_PIC_BINIT_RLIST_F0(b0_reflist[i].index) |
++		      G1_REG_BD_REF_PIC_BINIT_RLIST_F1(b0_reflist[i + 1].index) |
++		      G1_REG_BD_REF_PIC_BINIT_RLIST_F2(b0_reflist[i + 2].index) |
++		      G1_REG_BD_REF_PIC_BINIT_RLIST_B0(b1_reflist[i].index) |
++		      G1_REG_BD_REF_PIC_BINIT_RLIST_B1(b1_reflist[i + 1].index) |
++		      G1_REG_BD_REF_PIC_BINIT_RLIST_B2(b1_reflist[i + 2].index);
+ 		vdpu_write_relaxed(vpu, reg, G1_REG_BD_REF_PIC(reg_num++));
+ 	}
+ 
+@@ -171,12 +171,12 @@ static void set_ref(struct hantro_ctx *ctx)
+ 	 * of forward and backward reference picture lists and first 4 entries
+ 	 * of P forward picture list.
+ 	 */
+-	reg = G1_REG_BD_P_REF_PIC_BINIT_RLIST_F15(b0_reflist[15]) |
+-	      G1_REG_BD_P_REF_PIC_BINIT_RLIST_B15(b1_reflist[15]) |
+-	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F0(p_reflist[0]) |
+-	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F1(p_reflist[1]) |
+-	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F2(p_reflist[2]) |
+-	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F3(p_reflist[3]);
++	reg = G1_REG_BD_P_REF_PIC_BINIT_RLIST_F15(b0_reflist[15].index) |
++	      G1_REG_BD_P_REF_PIC_BINIT_RLIST_B15(b1_reflist[15].index) |
++	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F0(p_reflist[0].index) |
++	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F1(p_reflist[1].index) |
++	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F2(p_reflist[2].index) |
++	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F3(p_reflist[3].index);
+ 	vdpu_write_relaxed(vpu, reg, G1_REG_BD_P_REF_PIC);
+ 
+ 	/*
+@@ -185,12 +185,12 @@ static void set_ref(struct hantro_ctx *ctx)
+ 	 */
+ 	reg_num = 0;
+ 	for (i = 4; i < HANTRO_H264_DPB_SIZE; i += 6) {
+-		reg = G1_REG_FWD_PIC_PINIT_RLIST_F0(p_reflist[i]) |
+-		      G1_REG_FWD_PIC_PINIT_RLIST_F1(p_reflist[i + 1]) |
+-		      G1_REG_FWD_PIC_PINIT_RLIST_F2(p_reflist[i + 2]) |
+-		      G1_REG_FWD_PIC_PINIT_RLIST_F3(p_reflist[i + 3]) |
+-		      G1_REG_FWD_PIC_PINIT_RLIST_F4(p_reflist[i + 4]) |
+-		      G1_REG_FWD_PIC_PINIT_RLIST_F5(p_reflist[i + 5]);
++		reg = G1_REG_FWD_PIC_PINIT_RLIST_F0(p_reflist[i].index) |
++		      G1_REG_FWD_PIC_PINIT_RLIST_F1(p_reflist[i + 1].index) |
++		      G1_REG_FWD_PIC_PINIT_RLIST_F2(p_reflist[i + 2].index) |
++		      G1_REG_FWD_PIC_PINIT_RLIST_F3(p_reflist[i + 3].index) |
++		      G1_REG_FWD_PIC_PINIT_RLIST_F4(p_reflist[i + 4].index) |
++		      G1_REG_FWD_PIC_PINIT_RLIST_F5(p_reflist[i + 5].index);
+ 		vdpu_write_relaxed(vpu, reg, G1_REG_FWD_PIC(reg_num++));
+ 	}
+ 
+diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+index ed018e293ba0..2bc6b8f088f5 100644
+--- a/drivers/staging/media/hantro/hantro_hw.h
++++ b/drivers/staging/media/hantro/hantro_hw.h
+@@ -69,9 +69,9 @@ struct hantro_h264_dec_ctrls {
+  * @b1:		B1 reflist
+  */
+ struct hantro_h264_dec_reflists {
+-	u8 p[HANTRO_H264_DPB_SIZE];
+-	u8 b0[HANTRO_H264_DPB_SIZE];
+-	u8 b1[HANTRO_H264_DPB_SIZE];
++	struct v4l2_h264_reference p[HANTRO_H264_DPB_SIZE];
++	struct v4l2_h264_reference b0[HANTRO_H264_DPB_SIZE];
++	struct v4l2_h264_reference b1[HANTRO_H264_DPB_SIZE];
  };
  
- struct mtk_mmsys_driver_data {
-+	const char *clk_name;
- 	const char *clk_driver;
- 	const struct mtk_mmsys_routes *routes;
- 	const unsigned int num_routes;
-diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-index aaf8fc1abb43..d9790140cfa9 100644
---- a/drivers/soc/mediatek/mtk-mutex.c
-+++ b/drivers/soc/mediatek/mtk-mutex.c
-@@ -200,7 +200,7 @@ static const unsigned int mt8167_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8167_MUTEX_MOD_DISP_AAL,
- 	[DDP_COMPONENT_CCORR] = MT8167_MUTEX_MOD_DISP_CCORR,
- 	[DDP_COMPONENT_COLOR0] = MT8167_MUTEX_MOD_DISP_COLOR,
--	[DDP_COMPONENT_DITHER] = MT8167_MUTEX_MOD_DISP_DITHER,
-+	[DDP_COMPONENT_DITHER0] = MT8167_MUTEX_MOD_DISP_DITHER,
- 	[DDP_COMPONENT_GAMMA] = MT8167_MUTEX_MOD_DISP_GAMMA,
- 	[DDP_COMPONENT_OVL0] = MT8167_MUTEX_MOD_DISP_OVL0,
- 	[DDP_COMPONENT_OVL1] = MT8167_MUTEX_MOD_DISP_OVL1,
-@@ -233,7 +233,7 @@ static const unsigned int mt8183_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8183_MUTEX_MOD_DISP_AAL0,
- 	[DDP_COMPONENT_CCORR] = MT8183_MUTEX_MOD_DISP_CCORR0,
- 	[DDP_COMPONENT_COLOR0] = MT8183_MUTEX_MOD_DISP_COLOR0,
--	[DDP_COMPONENT_DITHER] = MT8183_MUTEX_MOD_DISP_DITHER0,
-+	[DDP_COMPONENT_DITHER0] = MT8183_MUTEX_MOD_DISP_DITHER0,
- 	[DDP_COMPONENT_GAMMA] = MT8183_MUTEX_MOD_DISP_GAMMA0,
- 	[DDP_COMPONENT_OVL0] = MT8183_MUTEX_MOD_DISP_OVL0,
- 	[DDP_COMPONENT_OVL_2L0] = MT8183_MUTEX_MOD_DISP_OVL0_2L,
-@@ -247,7 +247,7 @@ static const unsigned int mt8186_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8186_MUTEX_MOD_DISP_AAL0,
- 	[DDP_COMPONENT_CCORR] = MT8186_MUTEX_MOD_DISP_CCORR0,
- 	[DDP_COMPONENT_COLOR0] = MT8186_MUTEX_MOD_DISP_COLOR0,
--	[DDP_COMPONENT_DITHER] = MT8186_MUTEX_MOD_DISP_DITHER0,
-+	[DDP_COMPONENT_DITHER0] = MT8186_MUTEX_MOD_DISP_DITHER0,
- 	[DDP_COMPONENT_GAMMA] = MT8186_MUTEX_MOD_DISP_GAMMA0,
- 	[DDP_COMPONENT_OVL0] = MT8186_MUTEX_MOD_DISP_OVL0,
- 	[DDP_COMPONENT_OVL_2L0] = MT8186_MUTEX_MOD_DISP_OVL0_2L,
-@@ -260,7 +260,7 @@ static const unsigned int mt8192_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8192_MUTEX_MOD_DISP_AAL0,
- 	[DDP_COMPONENT_CCORR] = MT8192_MUTEX_MOD_DISP_CCORR0,
- 	[DDP_COMPONENT_COLOR0] = MT8192_MUTEX_MOD_DISP_COLOR0,
--	[DDP_COMPONENT_DITHER] = MT8192_MUTEX_MOD_DISP_DITHER0,
-+	[DDP_COMPONENT_DITHER0] = MT8192_MUTEX_MOD_DISP_DITHER0,
- 	[DDP_COMPONENT_GAMMA] = MT8192_MUTEX_MOD_DISP_GAMMA0,
- 	[DDP_COMPONENT_POSTMASK0] = MT8192_MUTEX_MOD_DISP_POSTMASK0,
- 	[DDP_COMPONENT_OVL0] = MT8192_MUTEX_MOD_DISP_OVL0,
-diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
-index 4bba275e235a..fb719fd1281c 100644
---- a/include/linux/soc/mediatek/mtk-mmsys.h
-+++ b/include/linux/soc/mediatek/mtk-mmsys.h
-@@ -16,14 +16,25 @@ enum mtk_ddp_comp_id {
- 	DDP_COMPONENT_CCORR,
- 	DDP_COMPONENT_COLOR0,
- 	DDP_COMPONENT_COLOR1,
--	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_DITHER0,
-+	DDP_COMPONENT_DITHER1,
-+	DDP_COMPONENT_DP_INTF0,
-+	DDP_COMPONENT_DP_INTF1,
- 	DDP_COMPONENT_DPI0,
- 	DDP_COMPONENT_DPI1,
-+	DDP_COMPONENT_DSC0,
-+	DDP_COMPONENT_DSC1,
- 	DDP_COMPONENT_DSI0,
- 	DDP_COMPONENT_DSI1,
- 	DDP_COMPONENT_DSI2,
- 	DDP_COMPONENT_DSI3,
- 	DDP_COMPONENT_GAMMA,
-+	DDP_COMPONENT_MERGE0,
-+	DDP_COMPONENT_MERGE1,
-+	DDP_COMPONENT_MERGE2,
-+	DDP_COMPONENT_MERGE3,
-+	DDP_COMPONENT_MERGE4,
-+	DDP_COMPONENT_MERGE5,
- 	DDP_COMPONENT_OD0,
- 	DDP_COMPONENT_OD1,
- 	DDP_COMPONENT_OVL0,
+ /**
+diff --git a/drivers/staging/media/hantro/rockchip_vpu2_hw_h264_dec.c b/drivers/staging/media/hantro/rockchip_vpu2_hw_h264_dec.c
+index 64a6330475eb..46c1a83bcc4e 100644
+--- a/drivers/staging/media/hantro/rockchip_vpu2_hw_h264_dec.c
++++ b/drivers/staging/media/hantro/rockchip_vpu2_hw_h264_dec.c
+@@ -298,7 +298,7 @@ static void set_params(struct hantro_ctx *ctx, struct vb2_v4l2_buffer *src_buf)
+ 
+ static void set_ref(struct hantro_ctx *ctx)
+ {
+-	const u8 *b0_reflist, *b1_reflist, *p_reflist;
++	const struct v4l2_h264_reference *b0_reflist, *b1_reflist, *p_reflist;
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	u32 reg;
+ 	int i;
+@@ -307,20 +307,20 @@ static void set_ref(struct hantro_ctx *ctx)
+ 	b1_reflist = ctx->h264_dec.reflists.b1;
+ 	p_reflist = ctx->h264_dec.reflists.p;
+ 
+-	reg = VDPU_REG_PINIT_RLIST_F9(p_reflist[9]) |
+-	      VDPU_REG_PINIT_RLIST_F8(p_reflist[8]) |
+-	      VDPU_REG_PINIT_RLIST_F7(p_reflist[7]) |
+-	      VDPU_REG_PINIT_RLIST_F6(p_reflist[6]) |
+-	      VDPU_REG_PINIT_RLIST_F5(p_reflist[5]) |
+-	      VDPU_REG_PINIT_RLIST_F4(p_reflist[4]);
++	reg = VDPU_REG_PINIT_RLIST_F9(p_reflist[9].index) |
++	      VDPU_REG_PINIT_RLIST_F8(p_reflist[8].index) |
++	      VDPU_REG_PINIT_RLIST_F7(p_reflist[7].index) |
++	      VDPU_REG_PINIT_RLIST_F6(p_reflist[6].index) |
++	      VDPU_REG_PINIT_RLIST_F5(p_reflist[5].index) |
++	      VDPU_REG_PINIT_RLIST_F4(p_reflist[4].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(74));
+ 
+-	reg = VDPU_REG_PINIT_RLIST_F15(p_reflist[15]) |
+-	      VDPU_REG_PINIT_RLIST_F14(p_reflist[14]) |
+-	      VDPU_REG_PINIT_RLIST_F13(p_reflist[13]) |
+-	      VDPU_REG_PINIT_RLIST_F12(p_reflist[12]) |
+-	      VDPU_REG_PINIT_RLIST_F11(p_reflist[11]) |
+-	      VDPU_REG_PINIT_RLIST_F10(p_reflist[10]);
++	reg = VDPU_REG_PINIT_RLIST_F15(p_reflist[15].index) |
++	      VDPU_REG_PINIT_RLIST_F14(p_reflist[14].index) |
++	      VDPU_REG_PINIT_RLIST_F13(p_reflist[13].index) |
++	      VDPU_REG_PINIT_RLIST_F12(p_reflist[12].index) |
++	      VDPU_REG_PINIT_RLIST_F11(p_reflist[11].index) |
++	      VDPU_REG_PINIT_RLIST_F10(p_reflist[10].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(75));
+ 
+ 	reg = VDPU_REG_REFER1_NBR(hantro_h264_get_ref_nbr(ctx, 1)) |
+@@ -355,54 +355,54 @@ static void set_ref(struct hantro_ctx *ctx)
+ 	      VDPU_REG_REFER14_NBR(hantro_h264_get_ref_nbr(ctx, 14));
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(83));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_F5(b0_reflist[5]) |
+-	      VDPU_REG_BINIT_RLIST_F4(b0_reflist[4]) |
+-	      VDPU_REG_BINIT_RLIST_F3(b0_reflist[3]) |
+-	      VDPU_REG_BINIT_RLIST_F2(b0_reflist[2]) |
+-	      VDPU_REG_BINIT_RLIST_F1(b0_reflist[1]) |
+-	      VDPU_REG_BINIT_RLIST_F0(b0_reflist[0]);
++	reg = VDPU_REG_BINIT_RLIST_F5(b0_reflist[5].index) |
++	      VDPU_REG_BINIT_RLIST_F4(b0_reflist[4].index) |
++	      VDPU_REG_BINIT_RLIST_F3(b0_reflist[3].index) |
++	      VDPU_REG_BINIT_RLIST_F2(b0_reflist[2].index) |
++	      VDPU_REG_BINIT_RLIST_F1(b0_reflist[1].index) |
++	      VDPU_REG_BINIT_RLIST_F0(b0_reflist[0].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(100));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_F11(b0_reflist[11]) |
+-	      VDPU_REG_BINIT_RLIST_F10(b0_reflist[10]) |
+-	      VDPU_REG_BINIT_RLIST_F9(b0_reflist[9]) |
+-	      VDPU_REG_BINIT_RLIST_F8(b0_reflist[8]) |
+-	      VDPU_REG_BINIT_RLIST_F7(b0_reflist[7]) |
+-	      VDPU_REG_BINIT_RLIST_F6(b0_reflist[6]);
++	reg = VDPU_REG_BINIT_RLIST_F11(b0_reflist[11].index) |
++	      VDPU_REG_BINIT_RLIST_F10(b0_reflist[10].index) |
++	      VDPU_REG_BINIT_RLIST_F9(b0_reflist[9].index) |
++	      VDPU_REG_BINIT_RLIST_F8(b0_reflist[8].index) |
++	      VDPU_REG_BINIT_RLIST_F7(b0_reflist[7].index) |
++	      VDPU_REG_BINIT_RLIST_F6(b0_reflist[6].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(101));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_F15(b0_reflist[15]) |
+-	      VDPU_REG_BINIT_RLIST_F14(b0_reflist[14]) |
+-	      VDPU_REG_BINIT_RLIST_F13(b0_reflist[13]) |
+-	      VDPU_REG_BINIT_RLIST_F12(b0_reflist[12]);
++	reg = VDPU_REG_BINIT_RLIST_F15(b0_reflist[15].index) |
++	      VDPU_REG_BINIT_RLIST_F14(b0_reflist[14].index) |
++	      VDPU_REG_BINIT_RLIST_F13(b0_reflist[13].index) |
++	      VDPU_REG_BINIT_RLIST_F12(b0_reflist[12].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(102));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_B5(b1_reflist[5]) |
+-	      VDPU_REG_BINIT_RLIST_B4(b1_reflist[4]) |
+-	      VDPU_REG_BINIT_RLIST_B3(b1_reflist[3]) |
+-	      VDPU_REG_BINIT_RLIST_B2(b1_reflist[2]) |
+-	      VDPU_REG_BINIT_RLIST_B1(b1_reflist[1]) |
+-	      VDPU_REG_BINIT_RLIST_B0(b1_reflist[0]);
++	reg = VDPU_REG_BINIT_RLIST_B5(b1_reflist[5].index) |
++	      VDPU_REG_BINIT_RLIST_B4(b1_reflist[4].index) |
++	      VDPU_REG_BINIT_RLIST_B3(b1_reflist[3].index) |
++	      VDPU_REG_BINIT_RLIST_B2(b1_reflist[2].index) |
++	      VDPU_REG_BINIT_RLIST_B1(b1_reflist[1].index) |
++	      VDPU_REG_BINIT_RLIST_B0(b1_reflist[0].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(103));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_B11(b1_reflist[11]) |
+-	      VDPU_REG_BINIT_RLIST_B10(b1_reflist[10]) |
+-	      VDPU_REG_BINIT_RLIST_B9(b1_reflist[9]) |
+-	      VDPU_REG_BINIT_RLIST_B8(b1_reflist[8]) |
+-	      VDPU_REG_BINIT_RLIST_B7(b1_reflist[7]) |
+-	      VDPU_REG_BINIT_RLIST_B6(b1_reflist[6]);
++	reg = VDPU_REG_BINIT_RLIST_B11(b1_reflist[11].index) |
++	      VDPU_REG_BINIT_RLIST_B10(b1_reflist[10].index) |
++	      VDPU_REG_BINIT_RLIST_B9(b1_reflist[9].index) |
++	      VDPU_REG_BINIT_RLIST_B8(b1_reflist[8].index) |
++	      VDPU_REG_BINIT_RLIST_B7(b1_reflist[7].index) |
++	      VDPU_REG_BINIT_RLIST_B6(b1_reflist[6].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(104));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_B15(b1_reflist[15]) |
+-	      VDPU_REG_BINIT_RLIST_B14(b1_reflist[14]) |
+-	      VDPU_REG_BINIT_RLIST_B13(b1_reflist[13]) |
+-	      VDPU_REG_BINIT_RLIST_B12(b1_reflist[12]);
++	reg = VDPU_REG_BINIT_RLIST_B15(b1_reflist[15].index) |
++	      VDPU_REG_BINIT_RLIST_B14(b1_reflist[14].index) |
++	      VDPU_REG_BINIT_RLIST_B13(b1_reflist[13].index) |
++	      VDPU_REG_BINIT_RLIST_B12(b1_reflist[12].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(105));
+ 
+-	reg = VDPU_REG_PINIT_RLIST_F3(p_reflist[3]) |
+-	      VDPU_REG_PINIT_RLIST_F2(p_reflist[2]) |
+-	      VDPU_REG_PINIT_RLIST_F1(p_reflist[1]) |
+-	      VDPU_REG_PINIT_RLIST_F0(p_reflist[0]);
++	reg = VDPU_REG_PINIT_RLIST_F3(p_reflist[3].index) |
++	      VDPU_REG_PINIT_RLIST_F2(p_reflist[2].index) |
++	      VDPU_REG_PINIT_RLIST_F1(p_reflist[1].index) |
++	      VDPU_REG_PINIT_RLIST_F0(p_reflist[0].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(106));
+ 
+ 	reg = VDPU_REG_REFER_LTERM_E(ctx->h264_dec.dpb_longterm);
+diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+index 951e19231da2..3c7f3d87fab4 100644
+--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
++++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+@@ -100,9 +100,9 @@ struct rkvdec_h264_priv_tbl {
+ #define RKVDEC_H264_DPB_SIZE 16
+ 
+ struct rkvdec_h264_reflists {
+-	u8 p[RKVDEC_H264_DPB_SIZE];
+-	u8 b0[RKVDEC_H264_DPB_SIZE];
+-	u8 b1[RKVDEC_H264_DPB_SIZE];
++	struct v4l2_h264_reference p[RKVDEC_H264_DPB_SIZE];
++	struct v4l2_h264_reference b0[RKVDEC_H264_DPB_SIZE];
++	struct v4l2_h264_reference b1[RKVDEC_H264_DPB_SIZE];
+ 	u8 num_valid;
+ };
+ 
+@@ -767,13 +767,13 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
+ 
+ 			switch (j) {
+ 			case 0:
+-				idx = h264_ctx->reflists.p[i];
++				idx = h264_ctx->reflists.p[i].index;
+ 				break;
+ 			case 1:
+-				idx = h264_ctx->reflists.b0[i];
++				idx = h264_ctx->reflists.b0[i].index;
+ 				break;
+ 			case 2:
+-				idx = h264_ctx->reflists.b1[i];
++				idx = h264_ctx->reflists.b1[i].index;
+ 				break;
+ 			}
+ 
+diff --git a/include/media/v4l2-h264.h b/include/media/v4l2-h264.h
+index 4b1c71c935e0..ef9a894e3c32 100644
+--- a/include/media/v4l2-h264.h
++++ b/include/media/v4l2-h264.h
+@@ -37,7 +37,7 @@ struct v4l2_h264_reflist_builder {
+ 		u16 longterm : 1;
+ 	} refs[V4L2_H264_NUM_DPB_ENTRIES];
+ 	s32 cur_pic_order_count;
+-	u8 unordered_reflist[V4L2_H264_NUM_DPB_ENTRIES];
++	struct v4l2_h264_reference unordered_reflist[V4L2_H264_NUM_DPB_ENTRIES];
+ 	u8 num_valid;
+ };
+ 
+@@ -51,10 +51,10 @@ v4l2_h264_init_reflist_builder(struct v4l2_h264_reflist_builder *b,
+  * v4l2_h264_build_b_ref_lists() - Build the B0/B1 reference lists
+  *
+  * @builder: reference list builder context
+- * @b0_reflist: 16-bytes array used to store the B0 reference list. Each entry
+- *		is an index in the DPB
+- * @b1_reflist: 16-bytes array used to store the B1 reference list. Each entry
+- *		is an index in the DPB
++ * @b0_reflist: 16 sized array used to store the B0 reference list. Each entry
++ *		is a v4l2_h264_reference structure
++ * @b1_reflist: 16 sized array used to store the B1 reference list. Each entry
++ *		is a v4l2_h264_reference structure
+  *
+  * This functions builds the B0/B1 reference lists. This procedure is described
+  * in section '8.2.4 Decoding process for reference picture lists construction'
+@@ -63,14 +63,15 @@ v4l2_h264_init_reflist_builder(struct v4l2_h264_reflist_builder *b,
+  */
+ void
+ v4l2_h264_build_b_ref_lists(const struct v4l2_h264_reflist_builder *builder,
+-			    u8 *b0_reflist, u8 *b1_reflist);
++			    struct v4l2_h264_reference *b0_reflist,
++			    struct v4l2_h264_reference *b1_reflist);
+ 
+ /**
+  * v4l2_h264_build_p_ref_list() - Build the P reference list
+  *
+  * @builder: reference list builder context
+- * @reflist: 16-bytes array used to store the P reference list. Each entry
+- *	     is an index in the DPB
++ * @reflist: 16 sized array used to store the P reference list. Each entry
++ *	     is a v4l2_h264_reference structure
+  *
+  * This functions builds the P reference lists. This procedure is describe in
+  * section '8.2.4 Decoding process for reference picture lists construction'
+@@ -79,6 +80,6 @@ v4l2_h264_build_b_ref_lists(const struct v4l2_h264_reflist_builder *builder,
+  */
+ void
+ v4l2_h264_build_p_ref_list(const struct v4l2_h264_reflist_builder *builder,
+-			   u8 *reflist);
++			   struct v4l2_h264_reference *reflist);
+ 
+ #endif /* _MEDIA_V4L2_H264_H */
 -- 
-2.18.0
+2.34.1
 
 
 _______________________________________________
