@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A8B0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 08:04:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09C9DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 08:04:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=De0qt9u7j+69F6ltvBFBspli+LykH9m3IH2ApiWuR10=; b=BxOb9HZ2p7G0qb
-	OmkmB5O1ruYtkWjkHmQB156oprNSGgNAaKr3h5Xps8bahCSxnWjzQFBih5xo5RojoO4FF8t0r1L8P
-	nj0QRCRAx+A6n8krsNEP4XQ5oBNPtHBeLHx2EVbSfVCLzpE5WS9NEwqyFrj6Lkkq1/NU41wduXMH7
-	pnRBQNKoraA7WvQQe/QMl8aiAGCemLwP2hlPnoe27b/8c5i6xrDIwBr/4BstZzizC1Vc/xAc3HLQu
-	FTei29DjdxT3nj5FojXESLk4Hg1TMX7M30nhFx1u0uVYs9RGv7WigohMtLgzgWm/zJ77FyLk84Ltm
-	2hC6X0PGYG5LnOQIguiA==;
+	List-Owner; bh=UWCFKGal8zypwg3yHBUHvOQ+FvZ8cnS/5/gw4UR0m2Y=; b=PzBV/DjuzFZ7aF
+	IH4LIdUTclQxmjZRjC1QJocTdGssqGjqQWEzDNp3tpxZto+bfRrD0tWm1sh1m81ZQMcEb1wgAWJml
+	ymHu3lpkubtsEpFUIYI7e002SSER8PE618nSCUzGEIM7f+B0+0i8r0Ceg7phCZ379lb2WdlHBat3w
+	tf3Y8sozP+9/eMKqPzH4DU81WHiCXmFpEPAtDDCvmXHryOJ8UbuWkrk3iXn4HByossYHd2ODGsVGa
+	MrKu6RA+wWX9FgGD8bV6cjaSZ2D+wflvlVZqslEX7x6y+yJ2Oii28So5+mcowdvPwOI7lI8HuFSX1
+	29h61PqssYrZzgshA7Fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZpmh-001BiN-CW; Thu, 31 Mar 2022 08:03:59 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1nZpmz-001Bpd-8p; Thu, 31 Mar 2022 08:04:17 +0000
+Received: from mga06.intel.com ([134.134.136.31])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZpmd-001BgL-5c; Thu, 31 Mar 2022 08:03:57 +0000
+ id 1nZpmj-001Bia-MU; Thu, 31 Mar 2022 08:04:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1648713835; x=1680249835;
+ t=1648713841; x=1680249841;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=hsAJrheBoayi+K8mxNtCKJECO7Ufn3EWs6stfrLZWoE=;
- b=XSn/E4nm0sNXnqg/eNslkFh/tBVghIRw173SE51XOM/gVUImLuP3d2tT
- wwOdr1n/9hJoNTVmZ502HwrLjeHpAFZJ7fuWZej3RqaFcfKq3zLMffbEc
- x5A/vQUL2agn5j6ibSqipkVLNwY314VnNaWu4m1LfRNYu5s5l+ltWJyR2
- PVW6Kdamby1eCnDYEJXpQZfOnsrWSNXdvt8E06UKOT+sfr2/SQSPqSoNs
- jCQdD/WJYdmWNLJzFng04ZYoOi8DivCa2Z/LfWmqXgzZcF38eS565Iw0b
- MBfi/k+Vv+/2Rs99JdKXwFabsyq70sMeGOteBl6JFG90u+Ka+awibVOF5 A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10302"; a="346189940"
-X-IronPort-AV: E=Sophos;i="5.90,224,1643702400"; d="scan'208";a="346189940"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Mar 2022 01:03:52 -0700
+ bh=bjr1qnwKFtSkCQi1HHRbtbqOK7kbxqliYYn5OAhPEe4=;
+ b=MAkpeZ4GQ8iClznx5j9IiwDmltF8LWl319HoXiJWVm4cG5UUAWOO2O++
+ lRVVkgjpaf+TbUfgDSkBF2ipogtqiVQUw+CzsqZBXB8EAmZALvoTDr3G6
+ Vfs0bSrSAeWAqj/NYAYeN/KBfl+spQ0CpECRCQUsuhTwoSE2VpEiwkfE7
+ 0zNPRs4TssATVwhTw+07IZni3zYMwptMcCQ4R1NeVhoqdNNEiCpjgN6dH
+ 39yn8Ip3NAOXYBTWg0gU+TnJZmURWJZ5sz1TsuBsaGWwqNVc71Uu2Tj97
+ bQKPN5ERJx20QxedsL2z6CjGzHqdPEBPG20DIohxfb5VIMI3+tH7mOf8S w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10302"; a="320445078"
+X-IronPort-AV: E=Sophos;i="5.90,224,1643702400"; d="scan'208";a="320445078"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Mar 2022 01:03:57 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,224,1643702400"; d="scan'208";a="520319736"
+X-IronPort-AV: E=Sophos;i="5.90,224,1643702400"; d="scan'208";a="640029355"
 Received: from lkp-server02.sh.intel.com (HELO 3231c491b0e2) ([10.239.97.151])
- by orsmga002.jf.intel.com with ESMTP; 31 Mar 2022 01:03:45 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 31 Mar 2022 01:03:50 -0700
 Received: from kbuild by 3231c491b0e2 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nZpmS-00004g-Pi;
+ (envelope-from <lkp@intel.com>) id 1nZpmS-00004e-PB;
  Thu, 31 Mar 2022 08:03:44 +0000
-Date: Thu, 31 Mar 2022 16:02:59 +0800
+Date: Thu, 31 Mar 2022 16:02:54 +0800
 From: kernel test robot <lkp@intel.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>,
  Alexandre Courbot <acourbot@chromium.org>,
@@ -71,15 +71,15 @@ Cc: kbuild-all@lists.01.org, linux-media@vger.kernel.org,
  Steve Cho <stevecho@chromium.org>, linux-arm-kernel@lists.infradead.org
 Subject: Re: [PATCH v8, 16/17] media: mediatek: vcodec: support stateless VP9
  decoding
-Message-ID: <202203311506.19PAVLDA-lkp@intel.com>
+Message-ID: <202203311502.2PkiHB0v-lkp@intel.com>
 References: <20220331024801.29229-17-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20220331024801.29229-17-yunfei.dong@mediatek.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_010355_269072_37B1BA2F 
-X-CRM114-Status: GOOD (  18.94  )
+X-CRM114-CacheID: sfid-20220331_010401_853670_DB026437 
+X-CRM114-Status: GOOD (  18.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,8 +109,8 @@ https://git-scm.com/docs/git-format-patch]
 
 url:    https://github.com/intel-lab-lkp/linux/commits/Yunfei-Dong/media-mediatek-vcodec-Add-vdec-enable-disable-hardware-helpers/20220331-114806
 base:   git://linuxtv.org/media_tree.git master
-config: parisc-buildonly-randconfig-r002-20220331 (https://download.01.org/0day-ci/archive/20220331/202203311506.19PAVLDA-lkp@intel.com/config)
-compiler: hppa-linux-gcc (GCC) 11.2.0
+config: powerpc-allmodconfig (https://download.01.org/0day-ci/archive/20220331/202203311502.2PkiHB0v-lkp@intel.com/config)
+compiler: powerpc-linux-gcc (GCC) 11.2.0
 reproduce (this is a W=1 build):
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
@@ -120,7 +120,7 @@ reproduce (this is a W=1 build):
         git checkout 7b396103061b487d6e9bc84be29de59e7eccc4c6
         # save the config file to linux build tree
         mkdir build_dir
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=parisc SHELL=/bin/bash drivers/media/platform/mediatek/vcodec/
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=powerpc SHELL=/bin/bash drivers/media/
 
 If you fix the issue, kindly add following tag as appropriate
 Reported-by: kernel test robot <lkp@intel.com>
@@ -141,56 +141,44 @@ All error/warnings (new ones prefixed by >>):
    drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c:1257:22: warning: unused variable 'l' [-Wunused-variable]
     1257 |         int i, j, k, l, m;
          |                      ^
-   In file included from include/linux/kernel.h:29,
-                    from include/linux/cpumask.h:10,
-                    from include/linux/mm_types_task.h:14,
-                    from include/linux/mm_types.h:5,
-                    from include/linux/buildid.h:5,
-                    from include/linux/module.h:14,
-                    from drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c:7:
+   In file included from drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c:12:
    drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c: In function 'vdec_vp9_slice_lat_decode':
->> include/linux/kern_levels.h:5:25: warning: format '%llx' expects argument of type 'long long unsigned int', but argument 5 has type 'dma_addr_t' {aka 'unsigned int'} [-Wformat=]
-       5 | #define KERN_SOH        "\001"          /* ASCII Start Of Header */
-         |                         ^~~~~~
-   include/linux/printk.h:418:25: note: in definition of macro 'printk_index_wrap'
-     418 |                 _p_func(_fmt, ##__VA_ARGS__);                           \
-         |                         ^~~~
-   include/linux/printk.h:132:17: note: in expansion of macro 'printk'
-     132 |                 printk(fmt, ##__VA_ARGS__);             \
-         |                 ^~~~~~
-   include/linux/printk.h:576:9: note: in expansion of macro 'no_printk'
-     576 |         no_printk(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)
-         |         ^~~~~~~~~
-   include/linux/kern_levels.h:15:25: note: in expansion of macro 'KERN_SOH'
-      15 | #define KERN_DEBUG      KERN_SOH "7"    /* debug-level messages */
-         |                         ^~~~~~~~
-   include/linux/printk.h:576:19: note: in expansion of macro 'KERN_DEBUG'
-     576 |         no_printk(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)
-         |                   ^~~~~~~~~~
+>> drivers/media/platform/mediatek/vcodec/vdec/../mtk_vcodec_util.h:29:21: warning: format '%llx' expects argument of type 'long long unsigned int', but argument 6 has type 'dma_addr_t' {aka 'unsigned int'} [-Wformat=]
+      29 | #define pr_fmt(fmt) "%s(),%d: " fmt, __func__, __LINE__
+         |                     ^~~~~~~~~~~
+   include/linux/dynamic_debug.h:134:29: note: in expansion of macro 'pr_fmt'
+     134 |                 func(&id, ##__VA_ARGS__);               \
+         |                             ^~~~~~~~~~~
+   include/linux/dynamic_debug.h:152:9: note: in expansion of macro '__dynamic_func_call'
+     152 |         __dynamic_func_call(__UNIQUE_ID(ddebug), fmt, func, ##__VA_ARGS__)
+         |         ^~~~~~~~~~~~~~~~~~~
+   include/linux/dynamic_debug.h:162:9: note: in expansion of macro '_dynamic_func_call'
+     162 |         _dynamic_func_call(fmt, __dynamic_pr_debug,             \
+         |         ^~~~~~~~~~~~~~~~~~
+   include/linux/printk.h:570:9: note: in expansion of macro 'dynamic_pr_debug'
+     570 |         dynamic_pr_debug(fmt, ##__VA_ARGS__)
+         |         ^~~~~~~~~~~~~~~~
    drivers/media/platform/mediatek/vcodec/vdec/../mtk_vcodec_util.h:45:9: note: in expansion of macro 'pr_debug'
       45 |         pr_debug("[MTK_VCODEC][%d]: " fmt "\n",                 \
          |         ^~~~~~~~
    drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c:1981:9: note: in expansion of macro 'mtk_vcodec_debug'
     1981 |         mtk_vcodec_debug(instance, "lat dma 1 0x%llx 0x%llx\n",
          |         ^~~~~~~~~~~~~~~~
-   include/linux/kern_levels.h:5:25: warning: format '%llx' expects argument of type 'long long unsigned int', but argument 6 has type 'dma_addr_t' {aka 'unsigned int'} [-Wformat=]
-       5 | #define KERN_SOH        "\001"          /* ASCII Start Of Header */
-         |                         ^~~~~~
-   include/linux/printk.h:418:25: note: in definition of macro 'printk_index_wrap'
-     418 |                 _p_func(_fmt, ##__VA_ARGS__);                           \
-         |                         ^~~~
-   include/linux/printk.h:132:17: note: in expansion of macro 'printk'
-     132 |                 printk(fmt, ##__VA_ARGS__);             \
-         |                 ^~~~~~
-   include/linux/printk.h:576:9: note: in expansion of macro 'no_printk'
-     576 |         no_printk(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)
-         |         ^~~~~~~~~
-   include/linux/kern_levels.h:15:25: note: in expansion of macro 'KERN_SOH'
-      15 | #define KERN_DEBUG      KERN_SOH "7"    /* debug-level messages */
-         |                         ^~~~~~~~
-   include/linux/printk.h:576:19: note: in expansion of macro 'KERN_DEBUG'
-     576 |         no_printk(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)
-         |                   ^~~~~~~~~~
+   drivers/media/platform/mediatek/vcodec/vdec/../mtk_vcodec_util.h:29:21: warning: format '%llx' expects argument of type 'long long unsigned int', but argument 7 has type 'dma_addr_t' {aka 'unsigned int'} [-Wformat=]
+      29 | #define pr_fmt(fmt) "%s(),%d: " fmt, __func__, __LINE__
+         |                     ^~~~~~~~~~~
+   include/linux/dynamic_debug.h:134:29: note: in expansion of macro 'pr_fmt'
+     134 |                 func(&id, ##__VA_ARGS__);               \
+         |                             ^~~~~~~~~~~
+   include/linux/dynamic_debug.h:152:9: note: in expansion of macro '__dynamic_func_call'
+     152 |         __dynamic_func_call(__UNIQUE_ID(ddebug), fmt, func, ##__VA_ARGS__)
+         |         ^~~~~~~~~~~~~~~~~~~
+   include/linux/dynamic_debug.h:162:9: note: in expansion of macro '_dynamic_func_call'
+     162 |         _dynamic_func_call(fmt, __dynamic_pr_debug,             \
+         |         ^~~~~~~~~~~~~~~~~~
+   include/linux/printk.h:570:9: note: in expansion of macro 'dynamic_pr_debug'
+     570 |         dynamic_pr_debug(fmt, ##__VA_ARGS__)
+         |         ^~~~~~~~~~~~~~~~
    drivers/media/platform/mediatek/vcodec/vdec/../mtk_vcodec_util.h:45:9: note: in expansion of macro 'pr_debug'
       45 |         pr_debug("[MTK_VCODEC][%d]: " fmt "\n",                 \
          |         ^~~~~~~~
@@ -198,24 +186,21 @@ All error/warnings (new ones prefixed by >>):
     1981 |         mtk_vcodec_debug(instance, "lat dma 1 0x%llx 0x%llx\n",
          |         ^~~~~~~~~~~~~~~~
    drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c: In function 'vdec_vp9_slice_core_decode':
->> include/linux/kern_levels.h:5:25: warning: format '%llx' expects argument of type 'long long unsigned int', but argument 5 has type 'dma_addr_t' {aka 'unsigned int'} [-Wformat=]
-       5 | #define KERN_SOH        "\001"          /* ASCII Start Of Header */
-         |                         ^~~~~~
-   include/linux/printk.h:418:25: note: in definition of macro 'printk_index_wrap'
-     418 |                 _p_func(_fmt, ##__VA_ARGS__);                           \
-         |                         ^~~~
-   include/linux/printk.h:132:17: note: in expansion of macro 'printk'
-     132 |                 printk(fmt, ##__VA_ARGS__);             \
-         |                 ^~~~~~
-   include/linux/printk.h:576:9: note: in expansion of macro 'no_printk'
-     576 |         no_printk(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)
-         |         ^~~~~~~~~
-   include/linux/kern_levels.h:15:25: note: in expansion of macro 'KERN_SOH'
-      15 | #define KERN_DEBUG      KERN_SOH "7"    /* debug-level messages */
-         |                         ^~~~~~~~
-   include/linux/printk.h:576:19: note: in expansion of macro 'KERN_DEBUG'
-     576 |         no_printk(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)
-         |                   ^~~~~~~~~~
+>> drivers/media/platform/mediatek/vcodec/vdec/../mtk_vcodec_util.h:29:21: warning: format '%llx' expects argument of type 'long long unsigned int', but argument 6 has type 'dma_addr_t' {aka 'unsigned int'} [-Wformat=]
+      29 | #define pr_fmt(fmt) "%s(),%d: " fmt, __func__, __LINE__
+         |                     ^~~~~~~~~~~
+   include/linux/dynamic_debug.h:134:29: note: in expansion of macro 'pr_fmt'
+     134 |                 func(&id, ##__VA_ARGS__);               \
+         |                             ^~~~~~~~~~~
+   include/linux/dynamic_debug.h:152:9: note: in expansion of macro '__dynamic_func_call'
+     152 |         __dynamic_func_call(__UNIQUE_ID(ddebug), fmt, func, ##__VA_ARGS__)
+         |         ^~~~~~~~~~~~~~~~~~~
+   include/linux/dynamic_debug.h:162:9: note: in expansion of macro '_dynamic_func_call'
+     162 |         _dynamic_func_call(fmt, __dynamic_pr_debug,             \
+         |         ^~~~~~~~~~~~~~~~~~
+   include/linux/printk.h:570:9: note: in expansion of macro 'dynamic_pr_debug'
+     570 |         dynamic_pr_debug(fmt, ##__VA_ARGS__)
+         |         ^~~~~~~~~~~~~~~~
    drivers/media/platform/mediatek/vcodec/vdec/../mtk_vcodec_util.h:45:9: note: in expansion of macro 'pr_debug'
       45 |         pr_debug("[MTK_VCODEC][%d]: " fmt "\n",                 \
          |         ^~~~~~~~
