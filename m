@@ -4,52 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2710C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 07:58:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA527C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 07:59:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=K8H7J0OVetCepYmOt91n33mtbHirNHAw9y7TORZgnOo=; b=5Agn4OSaiFStsq
-	XlpVxDcIrJb3qfCBmewbteULQaEW+xnzcNHEzOHgN0vDJehyDQtPz85QB5j5fciRFfE2q9XUf6yDF
-	sXaHnPJyStLWzYC6th8IJREGBEFg3j7ZK0A/HMmZvr02eXu6VDxQzoWGcJhVxPEXOvPycJhfsrkdy
-	i0dBI6DKIoz7GFKE05tnv5l861rba5An61QWN4hi354wrVvlHoKDh4SAMHGwqoP2/SI+XA5Q7zodY
-	2XOsfZWWWDpJIPj8pFLi13pzJ5G3RWhA/v6sZ9vEVjzNm245Cu4roiq9V97vwBhdK1aSDudIgseb5
-	JQKKNUtofBlsBLE6GVVw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=n/rw10HdSDFXlP6xaiwmN9deffYhGm0f1H4LeGNHRbo=; b=b3cxtQJQRMtIXV
+	N7zD6BN7TRamDO+KArgyphxYavwNVHU2ARwen+Fvn4GseVY4Sfa21FpgTKS9sB0EBsAE86kkocLJd
+	eO2nhMgVpYWX9SJefAdfvm0VHYWftuIoSEu/+m6+DqzQaKEJONdHa1YibrOoHbnpPXPGkrJe+AunG
+	0FX/HTvrvdlJnLBrAlFhXRHSUn55/S/hmdb+C/+01nW896ovDFnpoS5G2KVjeh5BUC9oYWQa7cEwf
+	FBXuOGnUSgFn+Sy59uMnRTkpSuh4DzdQJfNaf6xQ3I/voIDGIo1CKstdUYfoTyk3nlvKRYjEd/KMH
+	fX+D5NigqAXahqdrOrag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZphW-001AIh-T5; Thu, 31 Mar 2022 07:58:38 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nZpi1-001ATN-Sp; Thu, 31 Mar 2022 07:59:09 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZphK-001AGB-U0; Thu, 31 Mar 2022 07:58:28 +0000
+ id 1nZphL-001AGH-Ju; Thu, 31 Mar 2022 07:58:30 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 119661F463AE
+ (Authenticated sender: kholk11) with ESMTPSA id 97F091F463B2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1648713502;
- bh=q+KkXh4Pi0KibB5c7kl1SmkyDO/TsKJGH9MCkwBZDHU=;
- h=From:To:Cc:Subject:Date:From;
- b=GMvRcREW1cy7oMzB9xtXztHtyYLyMopePT1upmpmVdQUDsKoWudWaIdGFyDAN1dps
- NUcctXekdvSAi2VJf7bc5ElGnw2PneAE1o7ESKBIEIoXvdEeTQj6jiFoozKShnAxHw
- tmpYfL2vSdSxvyoNJlT8fje7gyXC3VJWqdtxPAKC6+vlY8d1PbSkEOH2TeWPSzaMSD
- zUGrJCuYgZHS91v6KDZhv2Lln88+fwyKAVR4HgQQ2Yl6n341xcOlYMpUNK0RtljRNF
- JZHpbvIIKYQyqGFr7GH923Ta0H73SCYH7Wo4kkFY+5QWaN7SD95UuXsA5P1kNcUlii
- gnu3ptbYxkzHw==
+ s=mail; t=1648713504;
+ bh=bsvmRE+wqqh9TXXo7ZPObERdtNVFfcdK+ZOSlKfJ9jA=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=DWvTCqTdDWtQTNrH0p+UCgHL6kqIII8WyL5J74ksghMi3DhwDIjPzYPqefDGgu2FJ
+ 0qqnYUossltngy97be+kWJ0DxR8q2ap5JLdB52rSJCBpL1zueIimVs9pa1U3u/ZNaw
+ VshZl9F3blj/kCT0A88G+jeae2/fjPC305t+ap+bihc4SKIdvLUvXxt0GZ7Veb7RFQ
+ Kh0rFMgZWEem0pvbBmQUz5wlmeAU93DQhX55aGzafYOhzwv2lU4vrWKoGwHm5kZNBV
+ ClvzzhEV6pDUPVjS/Oc57KVjB+lt2jl0ixX55benTKVWKj3dOmPe2tJtihOebCjc3X
+ cVApGRXjWs0tA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, nfraprado@collabora.com,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 0/3] MediaTek PMIC Wrap improvements and cleanups
-Date: Thu, 31 Mar 2022 09:58:14 +0200
-Message-Id: <20220331075817.7122-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 3/3] soc: mediatek: pwrap: Move and check return value of
+ platform_get_irq()
+Date: Thu, 31 Mar 2022 09:58:17 +0200
+Message-Id: <20220331075817.7122-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220331075817.7122-1-angelogioacchino.delregno@collabora.com>
+References: <20220331075817.7122-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_005827_200193_02A1B7C5 
-X-CRM114-Status: UNSURE (   9.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220331_005827_809066_377B7CFC 
+X-CRM114-Status: GOOD (  14.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,36 +68,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series is meant to improve the mtk-pmic-wrap driver;
-that's done by removing the custom pwrap_wait_for_state() function
-and correctly using the readx_poll_timeout macro instead, which is
-doing exactly the same as the former.
+Move the call to platform_get_irq() earlier in the probe function
+and check for its return value: if no interrupt is specified, it
+wouldn't make sense to try to call devm_request_irq() so, in that
+case, we can simply return early.
 
-As also shown in a patch [1] by Zhiyong Tao (MediaTek), performing
-a tight loop is not desired: because of the operation timing in the
-SPMI PMICs on these platforms, it makes more sense to wait for some
-microseconds before trying to read again, reducing CPU busy time
-around these state waits. For this purpose, a ~10uS delay was chosen.
+Moving the platform_get_irq() call also makes it possible to use
+one less goto, as clocks aren't required at that stage.
 
-While at it, I also took the occasion to tidy up this driver a
-little by optimizing its probe() function.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-[1]: https://patchwork.kernel.org/project/linux-mediatek/patch/20220329115824.13005-2-zhiyong.tao@mediatek.com/
-
-Changes in v2:
- - Fixed a critical typo in patch 1/3. Thanks Nicolas!
-
-AngeloGioacchino Del Regno (3):
-  soc: mediatek: pwrap: Use readx_poll_timeout() instead of custom
-    function
-  soc: mediatek: pwrap: Switch to
-    devm_platform_ioremap_resource_byname()
-  soc: mediatek: pwrap: Move and check return value of
-    platform_get_irq()
-
- drivers/soc/mediatek/mtk-pmic-wrap.c | 73 +++++++++++++++-------------
- 1 file changed, 39 insertions(+), 34 deletions(-)
-
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index 852514366f1f..332cbcabc299 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -2204,6 +2204,10 @@ static int pwrap_probe(struct platform_device *pdev)
+ 	if (!wrp)
+ 		return -ENOMEM;
+ 
++	irq = platform_get_irq(pdev, 0);
++	if (irq < 0)
++		return irq;
++
+ 	platform_set_drvdata(pdev, wrp);
+ 
+ 	wrp->master = of_device_get_match_data(&pdev->dev);
+@@ -2316,7 +2320,6 @@ static int pwrap_probe(struct platform_device *pdev)
+ 	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_INT1_EN))
+ 		pwrap_writel(wrp, wrp->master->int1_en_all, PWRAP_INT1_EN);
+ 
+-	irq = platform_get_irq(pdev, 0);
+ 	ret = devm_request_irq(wrp->dev, irq, pwrap_interrupt,
+ 			       IRQF_TRIGGER_HIGH,
+ 			       "mt-pmic-pwrap", wrp);
 -- 
 2.35.1
 
