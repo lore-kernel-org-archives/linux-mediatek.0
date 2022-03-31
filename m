@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C420C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 12:48:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC23DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Mar 2022 12:48:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3xH5yXLgHhV2sboyg0V6VIRDfducpQ1JKpxXlga3aus=; b=Y1XLRk/ozKUJGB
-	9cZqIj6KHlWxNXbA1YP55YoM96XPHOt6BKU7aqdqfnBzVGVeMjgR6kmUNe2YSlfleQlF36RQGR+X+
-	NXUpbKV2ukarKWaKoFpgd+aY6/JWGM7+zf2Y5PTawT0wnWu0spcpHisvBoeobzSkyo3c9eAFJ2FiQ
-	Vw9WRXu49OO3I37Qe/xjBMjvaIx36+vCGfg4rMKQlynG/+F1ojrvNHqw0slDKJDTj1IQr0gN6LbVu
-	pNbmEpoz6ytGBfhnnTyhLTiN3QUfWodKqhSA/LJ7PYUyK/vGjSjV7EIN/wWif1A8cwUqd4I+F+sYu
-	+K2JL7pBeNM9345ALCmw==;
+	List-Owner; bh=0wJ5iiCEQaa1AX9QvDiljKgjoUYcjGkavt6ManLSo5Q=; b=jKhg2oJJcuW7hv
+	C27mB8MOwHQ3i+ZDOToDZBuFtGi3DQFN49D4Cd7Pi00+6x8Rwp5B2x5IyxrGBnXXXNxVVHm7JT2Kr
+	0XEaOj9c0O4vwRnp6seBTC7a1ObDV2h+5Hy9bjE2cT8WYjMyxEpNdcBRKEp1KMwyJqh8T9KBPf3zv
+	Rh1RSNYE+pH2/2gNNV0a0ZM3FSZ1tbFvAaqhEE/plDGKCRgokJ5srbviyhnSnfJTLaMChmgec8pyq
+	wqas9COm2MIOHOsQpG8b/G+L1YEywlHsehGHqBZ410E1uztggwEXf+w+P7SX7+wlXJcdpROYOwRn/
+	bNZ/TwpVG5BVc0feJ1Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZuEH-002HEn-Mj; Thu, 31 Mar 2022 12:48:45 +0000
+	id 1nZuEK-002HFz-3C; Thu, 31 Mar 2022 12:48:48 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZuDt-002H75-KD; Thu, 31 Mar 2022 12:48:23 +0000
-X-UUID: b9f94505003c4d969f9a6f3e9cf415b8-20220331
-X-UUID: b9f94505003c4d969f9a6f3e9cf415b8-20220331
+ id 1nZuDw-002H7u-Ht; Thu, 31 Mar 2022 12:48:26 +0000
+X-UUID: fca16ec350974432be82d18419f055aa-20220331
+X-UUID: fca16ec350974432be82d18419f055aa-20220331
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <xinlei.lee@mediatek.com>)
+ (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1190991435; Thu, 31 Mar 2022 05:48:19 -0700
-Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 31 Mar 2022 05:48:17 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS34N1.mediatek.inc
- (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 31 Mar 2022 20:48:14 +0800
-Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
- MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Thu, 31 Mar 2022 20:48:07 +0800
-From: <xinlei.lee@mediatek.com>
-To: <thierry.reding@gmail.com>, <u.kleine-koenig@pengutronix.de>,
- <lee.jones@linaro.org>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
-CC: <linux-pwm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <rex-bc.chen@mediatek.com>, <jitao.shi@mediatek.com>, Xinlei Lee
- <xinlei.lee@mediatek.com>
-Subject: [PATCH v5, 1/4] dt-bindings: pwm: Convert pwm-mtk-disp.txt to mediatek,
- pwm-disp.yaml format
-Date: Thu, 31 Mar 2022 20:47:50 +0800
-Message-ID: <1648730873-18505-2-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1648730873-18505-1-git-send-email-xinlei.lee@mediatek.com>
-References: <1648730873-18505-1-git-send-email-xinlei.lee@mediatek.com>
+ with ESMTP id 1998971507; Thu, 31 Mar 2022 05:48:21 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 31 Mar 2022 05:48:19 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 31 Mar 2022 20:48:18 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 31 Mar 2022 20:48:17 +0800
+Message-ID: <ccd28405c8f2c420354f3355fc9d4ef1dd7ea35d.camel@mediatek.com>
+Subject: Re: [PATCH v5 2/4] arm64: dts: mt8192: Add mmc device nodes
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, "Hui Liu"
+ <hui.liu@mediatek.com>
+Date: Thu, 31 Mar 2022 20:48:17 +0800
+In-Reply-To: <4cd1c5fa-0982-0355-d5b6-7025b82174a4@gmail.com>
+References: <20220330133816.30806-1-allen-kh.cheng@mediatek.com>
+ <20220330133816.30806-3-allen-kh.cheng@mediatek.com>
+ <4cd1c5fa-0982-0355-d5b6-7025b82174a4@gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_054821_727698_60F6E6F3 
-X-CRM114-Status: GOOD (  15.60  )
+X-CRM114-CacheID: sfid-20220331_054824_695763_CDAE8F74 
+X-CRM114-Status: GOOD (  20.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,144 +76,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Xinlei Lee <xinlei.lee@mediatek.com>
+Hi Matthias,
 
-Convert pwm-mtk-disp.txt to mediatek,pwm-disp.yaml format as suggested by maintainer
+On Thu, 2022-03-31 at 14:02 +0200, Matthias Brugger wrote:
+> 
+> On 30/03/2022 15:38, Allen-KH Cheng wrote:
+> > Add mmc nodes for mt8192 SoC.
+> > 
+> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> 
+> You forgot to disable the msdc clock node, which I understood we
+> agreed on in in 
+> v4. I would consider this change as an substantial one, so in this
+> case please 
+> delete the reviewed-by tags.
+> 
+> Regards,
+> Matthias
+> 
 
-Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
----
- .../bindings/pwm/mediatek,pwm-disp.yaml       | 66 +++++++++++++++++++
- .../devicetree/bindings/pwm/pwm-mtk-disp.txt  | 45 -------------
- 2 files changed, 66 insertions(+), 45 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
- delete mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+Is it ok I send a new patch for this instead of a series?
 
-diff --git a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-new file mode 100644
-index 000000000000..36f877f819fa
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-@@ -0,0 +1,66 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pwm/mediatek,pwm-disp.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek DISP_PWM Controller Device Tree Bindings
-+
-+maintainers:
-+  - Jitao Shi <jitao.shi@mediatek.com>
-+  - Xinlei Lee <xinlei.lee@mediatek.com>
-+
-+allOf:
-+  - $ref: pwm.yaml#
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - enum:
-+          - mediatek,mt2701-disp-pwm
-+          - mediatek,mt6595-disp-pwm
-+          - mediatek,mt8173-disp-pwm
-+          - mediatek,mt8183-disp-pwm
-+      - items:
-+          - const: mediatek,mt8167-disp-pwm
-+          - const: mediatek,mt8173-disp-pwm
-+
-+  reg:
-+    maxItems: 1
-+
-+  "#pwm-cells":
-+    const: 2
-+
-+  clocks:
-+    items:
-+      - description: Main Clock
-+      - description: Mm Clock
-+
-+  clock-names:
-+    items:
-+      - const: main
-+      - const: mm
-+
-+required:
-+  - compatible
-+  - reg
-+  - "#pwm-cells"
-+  - clocks
-+  - clock-names
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/mt8173-clk.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+
-+    pwm0: pwm@1401e000 {
-+        compatible = "mediatek,mt8173-disp-pwm";
-+        reg = <0x1401e000 0x1000>;
-+        #pwm-cells = <2>;
-+        clocks = <&mmsys CLK_MM_DISP_PWM026M>,
-+                 <&mmsys CLK_MM_DISP_PWM0MM>;
-+        clock-names = "main", "mm";
-+    };
-diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-deleted file mode 100644
-index 691e58b6c223..000000000000
---- a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-+++ /dev/null
-@@ -1,45 +0,0 @@
--MediaTek display PWM controller
--
--Required properties:
-- - compatible: should be "mediatek,<name>-disp-pwm":
--   - "mediatek,mt2701-disp-pwm": found on mt2701 SoC.
--   - "mediatek,mt6595-disp-pwm": found on mt6595 SoC.
--   - "mediatek,mt8167-disp-pwm", "mediatek,mt8173-disp-pwm": found on mt8167 SoC.
--   - "mediatek,mt8173-disp-pwm": found on mt8173 SoC.
--   - "mediatek,mt8183-disp-pwm": found on mt8183 SoC.$
-- - reg: physical base address and length of the controller's registers.
-- - #pwm-cells: must be 2. See pwm.yaml in this directory for a description of
--   the cell format.
-- - clocks: phandle and clock specifier of the PWM reference clock.
-- - clock-names: must contain the following:
--   - "main": clock used to generate PWM signals.
--   - "mm": sync signals from the modules of mmsys.
-- - pinctrl-names: Must contain a "default" entry.
-- - pinctrl-0: One property must exist for each entry in pinctrl-names.
--   See pinctrl/pinctrl-bindings.txt for details of the property values.
--
--Example:
--	pwm0: pwm@1401e000 {
--		compatible = "mediatek,mt8173-disp-pwm",
--			     "mediatek,mt6595-disp-pwm";
--		reg = <0 0x1401e000 0 0x1000>;
--		#pwm-cells = <2>;
--		clocks = <&mmsys CLK_MM_DISP_PWM026M>,
--			 <&mmsys CLK_MM_DISP_PWM0MM>;
--		clock-names = "main", "mm";
--		pinctrl-names = "default";
--		pinctrl-0 = <&disp_pwm0_pins>;
--	};
--
--	backlight_lcd: backlight_lcd {
--		compatible = "pwm-backlight";
--		pwms = <&pwm0 0 1000000>;
--		brightness-levels = <
--			  0  16  32  48  64  80  96 112
--			128 144 160 176 192 208 224 240
--			255
--		>;
--		default-brightness-level = <9>;
--		power-supply = <&mt6397_vio18_reg>;
--		enable-gpios = <&pio 95 GPIO_ACTIVE_HIGH>;
--	};
--- 
-2.18.0
+Best regards,
+Allen
+
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 32
+> > ++++++++++++++++++++++++
+> >   1 file changed, 32 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > index 69e8d1934d53..c1057878e2c6 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > @@ -991,6 +991,38 @@
+> >   			#clock-cells = <1>;
+> >   		};
+> >   
+> > +		mmc0: mmc@11f60000 {
+> > +			compatible = "mediatek,mt8192-mmc",
+> > "mediatek,mt8183-mmc";
+> > +			reg = <0 0x11f60000 0 0x1000>, <0 0x11f50000 0
+> > 0x1000>;
+> > +			interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH
+> > 0>;
+> > +			clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>,
+> > +				 <&msdc_top CLK_MSDC_TOP_H_MST_0P>,
+> > +				 <&msdc_top CLK_MSDC_TOP_SRC_0P>,
+> > +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
+> > +				 <&msdc_top CLK_MSDC_TOP_P_MSDC0>,
+> > +				 <&msdc_top CLK_MSDC_TOP_AXI>,
+> > +				 <&msdc_top
+> > CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
+> > +			clock-names = "source", "hclk", "source_cg",
+> > "sys_cg",
+> > +				      "pclk_cg", "axi_cg", "ahb_cg";
+> > +			status = "disabled";
+> > +		};
+> > +
+> > +		mmc1: mmc@11f70000 {
+> > +			compatible = "mediatek,mt8192-mmc",
+> > "mediatek,mt8183-mmc";
+> > +			reg = <0 0x11f70000 0 0x1000>, <0 0x11c70000 0
+> > 0x1000>;
+> > +			interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH
+> > 0>;
+> > +			clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>,
+> > +				 <&msdc_top CLK_MSDC_TOP_H_MST_1P>,
+> > +				 <&msdc_top CLK_MSDC_TOP_SRC_1P>,
+> > +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
+> > +				 <&msdc_top CLK_MSDC_TOP_P_MSDC1>,
+> > +				 <&msdc_top CLK_MSDC_TOP_AXI>,
+> > +				 <&msdc_top
+> > CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
+> > +			clock-names = "source", "hclk", "source_cg",
+> > "sys_cg",
+> > +				      "pclk_cg", "axi_cg", "ahb_cg";
+> > +			status = "disabled";
+> > +		};
+> > +
+> >   		mfgcfg: clock-controller@13fbf000 {
+> >   			compatible = "mediatek,mt8192-mfgcfg";
+> >   			reg = <0 0x13fbf000 0 0x1000>;
 
 
 _______________________________________________
