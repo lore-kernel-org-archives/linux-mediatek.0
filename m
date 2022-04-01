@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D294CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 02:18:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4C46C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 02:29:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8MX3YeOB2K9jdcI6NUyoP9Z7+Ss+Bi95pzDze6awq3g=; b=k7e13GaUrqiua+
-	EYhZP4LzvbedWTpIs1C74XXSERBxWM2ATNSvoS1jL1enD2EGwqqVt2XOTnmC+VhXPGZY0mrAV3EVT
-	loGzRFNI+FnLfiOWhkcyb413zxFtsOJB94RFRr2GEnEs/zyOrKtqT9TyVfGYotf9pmxXl7GU3ENBx
-	MYQcGlAuN3XnjJ1HAKmPdYzlY/PBF6mYyWQMrVvhtBzwrZ4e8yJKl70pp4FWcmCWVjuyLqTCqkAa/
-	vUACXyqTo8kDmv0RbUADt0CdMIpDDXrlIOvE5YtIxpyenrprVEWkxSg93RM6ON5jc+kxAgLPbjMXP
-	exFDbyAGG7JJ+7wmFE9Q==;
+	List-Owner; bh=k+ra22t7+xyZQb3eSrabS9kNxSDmwAbvDGsFm94AyXw=; b=s01IOpq6nIE/w5
+	obUfqkMhb3A2GRSDuq4tn3wIPzzHS0JbihaZl+M44HJlVnosv/RUwcR5HUHtvmGseGqYSjV2pLCwJ
+	iF+jDE+KhvzOb4b56UHAKDLCQe1ObJ3povZuSgVAMekX9cqo0zguI2m7YKSjXN6fYcscJ6yOVpIgd
+	lojygKLI8NQp0n0P0eogyfVCXKIjL3JX+M4rECAP9C+8ElKtSOHwPZFRBzcrmOMWD4uSaQiARXOJm
+	fzpART8WGOpKL2zizGabV5fk9DH+WsdXiR/yyoNk+3lBB9Ahcep6A6XlISN000jKDRc6p5tnYtRlz
+	7oiIs+5KgjaltdeMsmxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1na6rz-004FpI-67; Fri, 01 Apr 2022 02:18:35 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1na72s-004H76-OT; Fri, 01 Apr 2022 02:29:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1na6rm-004Fme-P9; Fri, 01 Apr 2022 02:18:24 +0000
-X-UUID: f0f6e3ae685e42edb0f2d77874d0dc72-20220331
-X-UUID: f0f6e3ae685e42edb0f2d77874d0dc72-20220331
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1na72d-004H4C-6Z; Fri, 01 Apr 2022 02:29:36 +0000
+X-UUID: 31548df345314de5ba42aad420db764b-20220331
+X-UUID: 31548df345314de5ba42aad420db764b-20220331
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <tinghan.shen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 114760172; Thu, 31 Mar 2022 19:18:11 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 328396154; Thu, 31 Mar 2022 19:29:26 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 31 Mar 2022 19:18:10 -0700
+ 15.0.1497.2; Thu, 31 Mar 2022 19:19:23 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 1 Apr 2022 10:18:08 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 1 Apr 2022 10:19:22 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 1 Apr 2022 10:18:08 +0800
-Message-ID: <53cb53b8614aa39e0785b99f46b708ad201c3dd8.camel@mediatek.com>
-Subject: Re: [PATCH v13 1/2] dt-bindings: mmc: mtk-sd: increase reg items
+ Transport; Fri, 1 Apr 2022 10:19:22 +0800
+Message-ID: <dbfe7ce524747ed3c3a7ccb8f370ca67cbb12361.camel@mediatek.com>
+Subject: Re: [PATCH v13 2/2] arm64: dts: Add mediatek SoC mt8195 and
+ evaluation board
 From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Chaotian Jing
  <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>, "Rob
  Herring" <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski@canonical.com>, AngeloGioacchino Del Regno
+ <krzysztof.kozlowski@canonical.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
  <angelogioacchino.delregno@collabora.com>, Wenbin Mei
  <wenbin.mei@mediatek.com>
 CC: <linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, <ryder.lee@kernel.org>,
- <wenst@chromium.org>, <chunfeng.yun@mediatek.com>
-Date: Fri, 1 Apr 2022 10:18:08 +0800
-In-Reply-To: <aebbb5c8-1d27-5e66-e18a-e2b647bc8cb4@gmail.com>
+ <wenst@chromium.org>, Seiya Wang <seiya.wang@mediatek.com>
+Date: Fri, 1 Apr 2022 10:19:22 +0800
+In-Reply-To: <58f498a19f6c7be85823b2e2d5955272e78f0176.camel@mediatek.com>
 References: <20220330094532.21721-1-tinghan.shen@mediatek.com>
- <20220330094532.21721-2-tinghan.shen@mediatek.com>
- <aebbb5c8-1d27-5e66-e18a-e2b647bc8cb4@gmail.com>
+ <20220330094532.21721-3-tinghan.shen@mediatek.com>
+ <58f498a19f6c7be85823b2e2d5955272e78f0176.camel@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_191822_870706_FE03D83E 
-X-CRM114-Status: GOOD (  20.90  )
+X-CRM114-CacheID: sfid-20220331_192935_273840_B55590A5 
+X-CRM114-Status: GOOD (  20.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,80 +82,229 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
-
-On Thu, 2022-03-31 at 12:54 +0200, Matthias Brugger wrote:
-> 
-> On 30/03/2022 11:45, Tinghan Shen wrote:
-> > MediaTek has a new version of mmc IP since mt8183. Some IO registers
-> > are moved to top to improve hardware design and named as "host top
-> > registers".
+On Thu, 2022-03-31 at 15:29 +0800, Chunfeng Yun wrote:
+> On Wed, 2022-03-30 at 17:45 +0800, Tinghan Shen wrote:
+> > Add basic chip support for mediatek mt8195.
 > > 
-> > Add host top register in the reg binding description for mt8183 and
-> > successors.
-> > 
-> > Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+> > Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
 > > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
 > > ---
-> >   Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 15 ++++++++++++++-
-> >   1 file changed, 14 insertions(+), 1 deletion(-)
+> >  arch/arm64/boot/dts/mediatek/Makefile       |    1 +
+> >  arch/arm64/boot/dts/mediatek/mt8195-evb.dts |  173 +++
+> >  arch/arm64/boot/dts/mediatek/mt8195.dtsi    | 1045
+> > +++++++++++++++++++
+> >  3 files changed, 1219 insertions(+)
+> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-evb.dts
+> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8195.dtsi
 > > 
-> > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > index 297ada03e3de..2a2e9fa8c188 100644
-> > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > @@ -40,7 +40,10 @@ properties:
-> >             - const: mediatek,mt8183-mmc
-> >   
-> >     reg:
-> > -    maxItems: 1
-> > +    minItems: 1
+> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile
+> > b/arch/arm64/boot/dts/mediatek/Makefile
+> > index 8c1e18032f9f..5da29e7223e4 100644
+> > --- a/arch/arm64/boot/dts/mediatek/Makefile
+> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> > @@ -38,4 +38,5 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-
+> > sku0.dtb
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
+> > +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-evb.dtb
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
+> > b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
+> > new file mode 100644
+> > index 000000000000..76b5aaad7263
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
+> > @@ -0,0 +1,173 @@
+> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> > +/*
+> > + * Copyright (C) 2021 MediaTek Inc.
+> > + * Author: Seiya Wang <seiya.wang@mediatek.com>
+> > + */
+> > +/dts-v1/;
+> > +#include "mt8195.dtsi"
+> > +
+> > +/ {
+> > +	model = "MediaTek MT8195 evaluation board";
+> > +	compatible = "mediatek,mt8195-evb", "mediatek,mt8195";
+> > +
+> > +	aliases {
+> > +		serial0 = &uart0;
+> > +	};
+> > +
+> > +	chosen {
+> > +		stdout-path = "serial0:921600n8";
+> > +	};
+> > +
+> > +	memory@40000000 {
+> > +		device_type = "memory";
+> > +		reg = <0 0x40000000 0 0x80000000>;
+> > +	};
+> > +};
+> > +
+> > +&auxadc {
+> > +	status = "okay";
+> > +};
+> > +
+> > +&i2c0 {
+> > +	pinctrl-names = "default";
+> > +	pinctrl-0 = <&i2c0_pin>;
+> > +	clock-frequency = <100000>;
+> > +	status = "okay";
+> > +};
+> > +
+> > +&i2c1 {
+> > +	pinctrl-names = "default";
+> > +	pinctrl-0 = <&i2c1_pin>;
+> > +	clock-frequency = <400000>;
+> > +	status = "okay";
+> > +};
+> > +
+> > +&i2c4 {
+> > +	pinctrl-names = "default";
+> > +	pinctrl-0 = <&i2c4_pin>;
+> > +	clock-frequency = <400000>;
+> > +	status = "okay";
+> > +};
+> > +
+> > +&i2c6 {
+> > +	pinctrl-names = "default";
+> > +	pinctrl-0 = <&i2c6_pin>;
+> > +	clock-frequency = <400000>;
+> > +	status = "okay";
+> > +};
+> > +
+> > +&nor_flash {
+> > +	status = "okay";
+> > +	pinctrl-names = "default";
+> > +	pinctrl-0 = <&nor_pins_default>;
+> > +
+> > +	flash@0 {
+> > +		compatible = "jedec,spi-nor";
+> > +		reg = <0>;
+> > +		spi-max-frequency = <50000000>;
+> > +	};
+> > +};
+> > +
+> > +&pio {
+> > +	i2c0_pin: i2c0-pins {
+> > +		pins {
+> > +			pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
+> > +				 <PINMUX_GPIO9__FUNC_SCL0>;
+> > +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+> > +			mediatek,drive-strength-adv = <0>;
+> > +			drive-strength = <6>;
+> > +		};
+> > +	};
+> > +
+> > +	i2c1_pin: i2c1-pins {
+> > +		pins {
+> > +			pinmux = <PINMUX_GPIO10__FUNC_SDA1>,
+> > +				 <PINMUX_GPIO11__FUNC_SCL1>;
+> > +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+> > +			mediatek,drive-strength-adv = <0>;
+> > +			drive-strength = <6>;
+> > +		};
+> > +	};
+> > +
+> > +	i2c4_pin: i2c4-pins {
+> > +		pins {
+> > +			pinmux = <PINMUX_GPIO16__FUNC_SDA4>,
+> > +				 <PINMUX_GPIO17__FUNC_SCL4>;
+> > +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+> > +			mediatek,drive-strength-adv = <7>;
+> > +		};
+> > +	};
+> > +
+> > +	i2c6_pin: i2c6-pins {
+> > +		pins {
+> > +			pinmux = <PINMUX_GPIO25__FUNC_SDA6>,
+> > +				 <PINMUX_GPIO26__FUNC_SCL6>;
+> > +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+> > +		};
+> > +	};
+> > +
+> > +	i2c7_pin: i2c7-pins {
+> > +		pins {
+> > +			pinmux = <PINMUX_GPIO27__FUNC_SCL7>,
+> > +				 <PINMUX_GPIO28__FUNC_SDA7>;
+> > +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+> > +		};
+> > +	};
+> > +
+> > +	nor_pins_default: nor-pins {
+> > +		pins0 {
+> > +			pinmux = <PINMUX_GPIO142__FUNC_SPINOR_IO0>,
+> > +				 <PINMUX_GPIO141__FUNC_SPINOR_CK>,
+> > +				 <PINMUX_GPIO143__FUNC_SPINOR_IO1>;
+> > +			bias-pull-down;
+> > +		};
+> > +
+> > +		pins1 {
+> > +			pinmux = <PINMUX_GPIO140__FUNC_SPINOR_CS>,
+> > +				 <PINMUX_GPIO130__FUNC_SPINOR_IO2>,
+> > +				 <PINMUX_GPIO131__FUNC_SPINOR_IO3>;
+> > +			bias-pull-up;
+> > +		};
+> > +	};
+> > +
+> > +	uart0_pin: uart0-pins {
+> > +		pins {
+> > +			pinmux = <PINMUX_GPIO98__FUNC_UTXD0>,
+> > +				 <PINMUX_GPIO99__FUNC_URXD0>;
+> > +		};
+> > +	};
+> > +};
+> > +
+> > +&u3phy0 {
+> > +	status="okay";
+> > +};
+> > +
+> > +&u3phy1 {
+> > +	status="okay";
+> > +};
 > 
->  From my understanding adding minItems is correct, but you need to add also 
-> maxItems: 2 as there can't be more then two register entries.
-> 
-> Regards,
-> Matthias
-> 
+> Seems forget to enable &phy2/3? due to xhci2/3 are enabled below
 
-After add "maxItems: 2", I get following message when doing dt_binding_check.
-from this message, it looks like that maxItems is not necessary.
-
-/proj/mtk15399/2cros/src/third_party/kernel/v5.10/Documentation/devicetree/bindings/mmc/mtk-sd.yaml: 
-properties:reg: {'minItems': 1, 'maxItems': 2, 'items': [{'description': 'base register
-(required).'}, {'description': 'top base register (required for MT8183).'}]} should not be valid
-under {'required': ['maxItems']}
-        hint: "maxItems" is not needed with an "items" list
-        from schema $id: http://devicetree.org/meta-schemas/items.yaml#
-  SCHEMA  Documentation/devicetree/bindings/processed-schema.json
+Ok, I'll add them at next version.
+Thank you.
 
 Best regards,
 Tinghan
 
-> > +    items:
-> > +      - description: base register (required).
-> > +      - description: top base register (required for MT8183).
-> >   
-> >     clocks:
-> >       description:
-> > @@ -168,6 +171,16 @@ required:
-> >     - vmmc-supply
-> >     - vqmmc-supply
-> >   
-> > +if:
-> > +  properties:
-> > +    compatible:
-> > +      contains:
-> > +        const: mediatek,mt8183-mmc
-> > +then:
-> > +  properties:
-> > +    reg:
-> > +      minItems: 2
+> 
 > > +
-> >   unevaluatedProperties: false
-> >   
-> >   examples:
+> > +&uart0 {
+> > +	pinctrl-names = "default";
+> > +	pinctrl-0 = <&uart0_pin>;
+> > +	status = "okay";
+> > +};
+> > +
+> > +&xhci0 {
+> > +	status = "okay";
+> > +};
+> > +
+> > +&xhci1 {
+> > +	status = "okay";
+> > +};
+> > +
+> > +&xhci2 {
+> > +	status = "okay";
+> > +};
+> > +
+> > +&xhci3 {
+> > +	/* This controller is connected with a BT device.
+> > +	 * Disable usb2 lpm to prevent known issues.
+> > +	 */
+> > +	usb2-lpm-disable;
+> > +	status = "okay";
+> > +};
+> > 
+> 
+> [skip]
+> 
 
 
 _______________________________________________
