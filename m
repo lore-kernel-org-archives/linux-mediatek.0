@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E094C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 13:26:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3D06C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 13:32:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qlAevtOZIBxYZkBnJhdjzn7/RBPR4I51G+Vh4MUs9ug=; b=DI759jWNWYq76d
-	1gTEZdr2dWnekjkySMUQ2Zd1bMa4uGMOPMXQtglyGjpk4zM/5uzkzGCjoKZ356ur1CzWsbEpRMj6W
-	5dHRz1Q73yWeR2jOAh/9kqCOcBlFWIYOc38pPjwMcbNvHjZX0rRZXsIZYlcDdLPMuBXYEuq9lLg7h
-	Qm5d0u14PV79vf28fk5AhiJPEFx0007MbXLuqnjRNdOaLUlP2sUD+OI1WLjGENjCzMlQ7amrAvPKs
-	M4g7kH6wBQExJHq5kO0eoTgnNh9Ynw9/zbQC6xQRXcUOX25ZnKKoewS8LgL/OSxkOix2WbY3k6jG/
-	fnP6Z6Vmnpaz6bHtTKxg==;
+	List-Owner; bh=gDCLWcWb1aU5M0eNkqueJ3L2acI2EeJ59lj7oU9Bj+o=; b=wAldMB8UUi+CKk
+	KYP50oN81T10yKcX6Rect8dMFI0VFIKrRDhf/yWvNWBOkGsoroAr87NbJ9GXHTvgxaU2mLA/mcht3
+	5DmMbbYt6w+uEFz9YaWiCeuzuTTDiBekPiQ3IXBQaMqvFExUEaweN5RSlLoAsXt5iLk1sgQ/k6oZk
+	SPSdvt7JaEMChJqGaqFxH7jIxiymbxc5syB8gw/bLQQqOv6ic7HF5zFV8tZ+Y9wURUcwq5scSMewO
+	eizV/gRmHZcYUIvBSsDVJR1GFSJZi269mIFELqS566GrpQV0EEmCA4LC3f5MmiVW+EuAU1OwyBJWL
+	2/tIGqkUgSurXoySr2yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1naHIU-005n89-3J; Fri, 01 Apr 2022 13:26:38 +0000
+	id 1naHOW-005ntO-95; Fri, 01 Apr 2022 13:32:52 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1naHIH-005n3Y-Gd; Fri, 01 Apr 2022 13:26:28 +0000
-X-UUID: cd4e434f10ed41e0b404dce7065f0a63-20220401
-X-UUID: cd4e434f10ed41e0b404dce7065f0a63-20220401
+ id 1naHOL-005nr6-UA; Fri, 01 Apr 2022 13:32:43 +0000
+X-UUID: 80e69b096cf24d5db61c962048c33f7c-20220401
+X-UUID: 80e69b096cf24d5db61c962048c33f7c-20220401
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jia-wei.chang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 377335760; Fri, 01 Apr 2022 06:26:18 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 1 Apr 2022 06:26:16 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 1 Apr 2022 21:26:00 +0800
+ with ESMTP id 1379957114; Fri, 01 Apr 2022 06:32:35 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 1 Apr 2022 06:32:34 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 1 Apr 2022 21:32:32 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 1 Apr 2022 21:26:00 +0800
-Message-ID: <de1751bb13fb14b591fbe046ff274530ad62162e.camel@mediatek.com>
-Subject: Re: [PATCH 1/4] dt-bindings: cpufreq: mediatek: transform
- cpufreq-mediatek into yaml
+ Transport; Fri, 1 Apr 2022 21:32:32 +0800
+Message-ID: <14bfabd88ecbe8cc4ec359f8249f180128a6572e.camel@mediatek.com>
+Subject: Re: [PATCH 2/4] dt-bindings: cpufreq: mediatek: add mt8186 cpufreq
+ dt-bindings
 From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 To: Krzysztof Kozlowski <krzk@kernel.org>, "Rafael J . Wysocki"
  <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>, Rob Herring
@@ -54,19 +54,19 @@ CC: <linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <Allen-yy.Lin@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>,
  Jia-Wei Chang <jia-wei.chang@mediatek.corp-partner.google.com>
-Date: Fri, 1 Apr 2022 21:26:00 +0800
-In-Reply-To: <96a823a2-f3b6-9fb7-c9d6-f1315f6056fd@kernel.org>
+Date: Fri, 1 Apr 2022 21:32:32 +0800
+In-Reply-To: <18c791ce-059a-87a5-eaf4-057f8e232fe7@kernel.org>
 References: <20220307122151.11666-1-jia-wei.chang@mediatek.com>
- <20220307122151.11666-2-jia-wei.chang@mediatek.com>
- <ee98d248-b2cd-e975-84df-448917a79287@canonical.com>
- <2cf526d400c011b5172ba4fc2c3f03b4a4f371dc.camel@mediatek.com>
- <96a823a2-f3b6-9fb7-c9d6-f1315f6056fd@kernel.org>
+ <20220307122151.11666-3-jia-wei.chang@mediatek.com>
+ <d5c5e3f7-7f50-6c57-f82a-41d5494ea514@canonical.com>
+ <c150e9ed7faa4c06f55f7d7623655b65c8575121.camel@mediatek.com>
+ <18c791ce-059a-87a5-eaf4-057f8e232fe7@kernel.org>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220401_062625_583963_0D0B6542 
-X-CRM114-Status: GOOD (  35.77  )
+X-CRM114-CacheID: sfid-20220401_063242_022152_6601739A 
+X-CRM114-Status: GOOD (  18.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,134 +83,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-03-24 at 11:33 +0100, Krzysztof Kozlowski wrote:
-> On 24/03/2022 10:38, Jia-Wei Chang wrote:
+On Thu, 2022-03-24 at 11:35 +0100, Krzysztof Kozlowski wrote:
+> On 24/03/2022 10:42, Jia-Wei Chang wrote:
+> > On Mon, 2022-03-07 at 19:59 +0100, Krzysztof Kozlowski wrote:
+> > > On 07/03/2022 13:21, Tim Chang wrote:
+> > > > 1. add cci property.
+> > > > 2. add example of MT8186.
 > > > 
-> > > > 
-> > > > diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-
-> > > > mediatek.yaml
-> > > > b/Documentation/devicetree/bindings/cpufreq/cpufreq-
-> > > > mediatek.yaml
-> > > > new file mode 100644
-> > > > index 000000000000..584946eb3790
-> > > > --- /dev/null
-> > > > +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-
-> > > > mediatek.yaml
-> > > > @@ -0,0 +1,131 @@
-> > > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > > > +%YAML 1.2
-> > > > +---
-> > > > +$id: 
-> > > > 
-https://urldefense.com/v3/__http://devicetree.org/schemas/cpufreq/cpufreq-mediatek.yaml*__;Iw!!CTRNKA9wMg0ARbw!xbKG4TgD0MRpMLyGJVBZEGpZFrNOclrcxOCx_APKo5Nmg8nF2x5PcBdE0unvL2NdpChkMA$
-> > > >  
-> > > > +$schema: 
-> > > > 
-https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!xbKG4TgD0MRpMLyGJVBZEGpZFrNOclrcxOCx_APKo5Nmg8nF2x5PcBdE0unvL2O8T_oxCQ$
-> > > >  
-> > > > +
-> > > > +title: Mediatek CPUFREQ driver Device Tree Bindings
-> > > 
-> > > Please remove "driver Device Tree Bindings" because the title
-> > > should
-> > > describe the hardware. Therefore it could be something like
-> > > "Mediatek
-> > > SoC CPU frequency and voltage scaling".
+> > > One logical change at a time. Are these related? Why entirely new
+> > > example just for "cci" node? Maybe this should be part of
+> > > existing
+> > > example?
 > > 
-> > Thanks for your suggestion of title.
-> > Or should I use the origin title "Binding for MediaTek's CPUFreq
-> > driver"?
+> > Yes, the cci property is required in some SoC, e.g. mt8183 and
+> > mt8186,
+> > because cpu and cci share the same power supplies.
 > 
-> Mediatek CPUFREQ
-> or
-> Mediatek CPU frequency scaling
+> I asked why this cannot be part of existing example.
 
-Ok, I will choose one of it.
-
-> 
-> > 
-> > > 
-> > > How is it related to cpufreq-mediatek-hw.yaml? The names/title
-> > > look
-> > > unfortunately too similar.
-> > 
-> > No, mediatek-cpufreq is performing in kernel driver rather than on
-> > hardware.
-> > On the other hand, mediatek-cpufreq-hw is performing on hardware.
-> > That's why "hw" is present in its name.
-> 
-> Unfortunately, I do not get it. The bindings are only about hardware,
-> so
-> how bindings could be about CPU frequency scaling not in hardware?
-
-Sorry, let me correct my statements.
-
-For mediatek-cpufreq here, the required hardware are clock and
-regulator which have to be under control of mediatek-cpufreq. That's
-the reason why it needs bindings.
-
-mediatek-cpufreq scales up and down voltage and frequency via kernel
-framework of clock and regulator, however, mediatek-cpufreq-hw delegate
-the voltage and frequency control to a hardware agent instead.
+I misunderstood that.
+I will update the complete example in the next version.
 
 > 
-> > 
-> > > 
-> > > In general this does not look like proper bindings (see also
-> > > below
-> > > lack
-> > > of compatible). Bindings describe the hardware, so what is
-> > > exactly
-> > > the
-> > > hardware here?
-> > 
-> > Except for SoC, there's no requirement of hardware binding for
-> > mediatek-cpufreq.
-> > mediatek-cpufreq recognizes the compatible of Mediatek SoC while
-> > probing.
+> > I will update the commit message and add an example of mt8186 to
+> > present usage of cci.
 > 
-> What is the hardware here? If there is no requirement for bindings
-> for
-> mediate-cpufreq, why do we have this patch here?
+> You added the example here, didn't you?
 
-Sorry, that's my mistake.
-Clock and regulator are required hardware for mediatek-cpufreq.
+Yes, I did add it here.
 
-> 
-> > 
-> > > 
-> > > > +
-> > > > +maintainers:
-> > > > +  - Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> > > > +
-> > > > +description: |
-> > > > +  CPUFREQ is used for scaling clock frequency of CPUs.
-> > > > +  The module cooperates with CCI DEVFREQ to manage frequency
-> > > > for
-> > > > some Mediatek
-> > > > +  SoCs.
-> > > > +
-> > > > +properties:
-> > > 
-> > > How is this schema going to be applied? I don't see here select
-> > > neither
-> > > compatible.
-> > 
-> > As mentioned above, only compatible of SoC is required for
-> > mediatek-
-> > cpufreq.
-> 
-> It does not answer my questions. How the schema is going to be
-> applied?
-
-Currently, we do use compatible of SoC to probe mediatek-cpufreq.
-
-If the better way is using clock and regulator opp, do you have a
-suggestion to approach that?
-I mean I can't find a good example from other vendors trying to do that
-way. Or maybe I miss something?
-
-> 
 > 
 > Best regards,
 > Krzysztof
