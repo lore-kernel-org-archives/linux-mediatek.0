@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FE36C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 14:56:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D79CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 14:57:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=41LlBvUVit5rQl+Ui6F1JO9GaUkbiLgUSAYvL3my9+k=; b=SomeCK403XFLDw
-	1WZbzm65kZVmi9343jvwd/ja3g6CV53ZIQvEiQlXEhvlimw3CvxjEh4shnJR4JuuQJkD5EXwRuh8z
-	U8JSnTvTeVO53JLrp1Gjv2FMVFZ22s5ySXvuUuKkL7MOixz79HHjmrGksHzllacFDRNywzlQe1KiD
-	nfstVFE9Y0xqNyEnGPYseURXxkn/W4rFM1yZjb6lvdp+lW+WYjB2B9g4iabBvf/OYb4kzZQcFMIkz
-	6roBDmRb4lssQE/NOfuldjkeG2BHyt0JqTbdQIUOofd4iW/vR7icB7ChaFGS2jxi9tEeJPEYtQv0c
-	OcJKeIU4VbP1iJ7q6UNg==;
+	List-Owner; bh=u4ouC/X7ljVgL9F0v4ICP187XD/FAmMAQnTONrRN5xU=; b=LTB8sXrmsq+b8d
+	CQ7Y9H+BBrLprOSIPBMe4t3Mvwqg9sRnjQ59WgFQQdw6lo+Pu0eulacNs3FsweKb6a8NgPTjJfkJD
+	Ki/uxvOMyNbCNg0J+NZiGqHhFY8BEYMP/ckGMGaba1gC9DS02gUXanyNksf7dG02SD+2zFt+yuG1W
+	lv5TjZNOP8e2i6BZ9Mf2k9iT3/sSyc1q/yvPMNriA0OcegESrV0ZUv3NM8zSM1pVixaso0twCigMs
+	d/MKYnnMKA5n1zl0UbX77E/owoMVDfigBxQ9Ew75QsrSvF1MVr8MLq4XQwg3Pyuq2AGt8obfEXOU1
+	BHzWHJkukMGZWzEdmN9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1naIhK-006H6m-QE; Fri, 01 Apr 2022 14:56:22 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1naIid-006Hh6-B1; Fri, 01 Apr 2022 14:57:43 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1naIVK-006AMk-O0; Fri, 01 Apr 2022 14:44:01 +0000
+ id 1naIX5-006BNT-R5; Fri, 01 Apr 2022 14:45:49 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 465D460AC9;
- Fri,  1 Apr 2022 14:43:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5AC80C34112;
- Fri,  1 Apr 2022 14:43:56 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 09CA760AC0;
+ Fri,  1 Apr 2022 14:45:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28D79C34111;
+ Fri,  1 Apr 2022 14:45:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1648824237;
- bh=5SOjOQu++aaei18q5/nxEsl1dvMapYKvR0+id35pwL4=;
+ s=k20201202; t=1648824346;
+ bh=RvMz8G3pMTRTqH3gewLEPnmop1MnUia/sfzUzTQ1qhw=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ZlCGCs1/OktvkGqhMLlxR27e9HsUqFFowQAkpJKzVzM3PmHByLpydrwPy6ktEgK+U
- 4O9nqQRqukv8Nb1BojmaTEkDWECTrM/hRa1zpLCuIE4GHK7h6yrCEnUT7KAtH+420V
- YU9Nhe8qk6L0UU5DUW2azs+k0GHGXLUxcAW4iMJZGZC32FJ9usZ36jfokLOpnc5D5S
- G0m5jQr4Ve7ZIcuQnEaASAfHWVU0E86RYneQiJ4S3OielVqyNI51dFrShPHoqTQe/Y
- qsrX+nDKOchz0GbRGQeeaW5yTEy1y0vMDZ52l2lNbMTJszf9396ATnhYD7aRXBVOO2
- oaHVlC+NThdNQ==
+ b=PeeELXe9/zJDJlr70W/E6Yxkotkj8PQ8uTjupOObVyZyqWwvolVMm2OGkuKF/xKcC
+ +I/tNFpyY/twNoWzP62apial3+Kh3VBFKdK0DWVdyirwZahFoBC0IkM40EFLxEDx82
+ 9AJDaewwR8MosVUjnJFCi1aOslbMnhTC0gvNw/gCVUkL3JL0ll0LjseubxY5fXu1Ik
+ sO4XT8kvj6t2YyYBaeVLgG8lhOXrgr+y9uXSdQgtwiEoD5UH+mXNGLfWWlDX3khYxm
+ 6ZR4fq9Jn0qCF1nbu/pqwC+4bqvT3mpCKfbqSwEgfiVIoM/ZnqXnqNWgl24GOMpRIp
+ ULqseheXj/aRw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -49,18 +49,18 @@ Cc: Robin Murphy <robin.murphy@arm.com>, Yunfei Wang <yf.wang@mediatek.com>,
  Sasha Levin <sashal@kernel.org>, joro@8bytes.org, will@kernel.org,
  matthias.bgg@gmail.com, iommu@lists.linux-foundation.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 45/65] iommu/iova: Improve 32-bit free space
+Subject: [PATCH AUTOSEL 5.4 27/37] iommu/iova: Improve 32-bit free space
  estimate
-Date: Fri,  1 Apr 2022 10:41:46 -0400
-Message-Id: <20220401144206.1953700-45-sashal@kernel.org>
+Date: Fri,  1 Apr 2022 10:44:36 -0400
+Message-Id: <20220401144446.1954694-27-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220401144206.1953700-1-sashal@kernel.org>
-References: <20220401144206.1953700-1-sashal@kernel.org>
+In-Reply-To: <20220401144446.1954694-1-sashal@kernel.org>
+References: <20220401144446.1954694-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220401_074359_016113_59DD881E 
+X-CRM114-CacheID: sfid-20220401_074547_990012_4E3B51E4 
 X-CRM114-Status: GOOD (  16.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -109,7 +109,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/iommu/iova.c b/drivers/iommu/iova.c
-index 1164d1a42cbc..4600e97acb26 100644
+index 906582a21124..628a586be695 100644
 --- a/drivers/iommu/iova.c
 +++ b/drivers/iommu/iova.c
 @@ -138,10 +138,11 @@ __cached_rbnode_delete_update(struct iova_domain *iovad, struct iova *free)
