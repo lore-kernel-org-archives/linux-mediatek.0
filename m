@@ -4,56 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5222CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 14:52:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A038FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 14:55:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sNkS2Kh05F5qWHX8aQWleKBjDLO8QKoGUBlLkd7jTm8=; b=WdIHBl4q+8usXB
-	1oNXwm+vfGE+H5yDhLxWWLuSv8dQqRlOJ3VRB4E8QVQEar4rWNCoM3O2O7mOOeUkqHnfrhESNf1xa
-	+JtDCfMA+vIVrfxOjNUF2gTosZOQxjJNcptKVIWcIUVV4CasAfkVKCqgHKjotyt1iTHVYZU97+otg
-	S5cVn5AooDJfQ9rMV/OODUB7SGWjCFZJ7VegXvt7S8A7KoPyKrUqY3Yg7kyY621ydcfrINhIH3EvH
-	fRkpXs9Tra+acgf73gsKsHYoZK4fTHqb+IdRd4hpw7Lq8BXaEKkzV73LifIq+l/Pw74gJAraMWRWI
-	8DLWdqGXcWh1Vko7oeHw==;
+	List-Owner; bh=uaM7SuVOb73zS3hWV0B/YkDvHdJeUp47wjUuaE/V30I=; b=3gZlF3LUY62OkD
+	Wo9xIbl5U6Rn6fdpGoRcu76L/bBSGQjq9k+bcl8Vs9ysBZjqG2nBqDSlxoVU6j3YOYG3PC0kVBK41
+	fHbEAyd2iSl79mMRiXBnqKKv1hQBp/TdRMvO9+K2CFmr+Ifk9wMNFNNIzB5niJUWtfuYxvinTELSE
+	O7JKYtkoLq4E1uPwSxXzgkvRc4AH8UVc650LRkW965NkrKbhM2YUUJV2FJv/HpGuvKH5Awifc1iZc
+	qAZ5atawIozXP/8iqjHH57fVEgAwAmAJ3OcUUKGNNMKiZAIfDy3uOqv3vM2E/26IrjANc/XIxsupG
+	ORWTYNV46dZEyCZzdTog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1naIdY-006FGC-Sk; Fri, 01 Apr 2022 14:52:28 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1naIgI-006Gcw-MX; Fri, 01 Apr 2022 14:55:18 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1naIUG-0069qS-2g; Fri, 01 Apr 2022 14:42:53 +0000
+ id 1naIVB-006AHa-80; Fri, 01 Apr 2022 14:43:50 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 8832D60AC9;
- Fri,  1 Apr 2022 14:42:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 557CCC2BBE4;
- Fri,  1 Apr 2022 14:42:49 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id D76DBB8240F;
+ Fri,  1 Apr 2022 14:43:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C1351C340EE;
+ Fri,  1 Apr 2022 14:43:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1648824171;
- bh=ZPRDkc1kCRCDXeYCrIOvP8qDwUgvwNontCric9MwptY=;
+ s=k20201202; t=1648824226;
+ bh=LSzVRn0NDfhPSMCSW4F1VVYlmUgrs7tEe750gpeqMOs=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=rTc6XQ592P3lHp/blbOoZrNokVpDW6at27UKrTAvuWEDas6Ovao1LyTzAM+5XlDEG
- qllNFKUYJnsG8zynLhsP37gNd/0dQ73E57AJ9tqrDBl4ypH4/+DG7hYD7+52+ruQ0U
- DCfVeq214KkOXaP/oAuNPDNWEJzrPgq3EUQJgl32aaWTQbGfAs0la0homnfRcG1cK5
- Ef/XPmCA0p8mLqRpQp9E6uqL5zFpgFuIAuB6f46cbxXFB42NOvSrqe9cMviBzSTorv
- TNHxsJbD3i1f64AAsQrzpx64/fc1IKeykkGOWiVk8PK2nXi5DpjebKCM8xNHUCaY23
- kroz4+qaEyuEQ==
+ b=ddy5brxVmk4E0iIcdxzLkArG1ZV86eSiO+DiNgmfspO6qP2o2jfAczO7LUEKED+QZ
+ UQadmcfgaW39i5s+uI05duO/bMvn+4bvzTuMYSWAMBeR/LwX9jncx/ahIIyI697LTr
+ cNTUmOIVFG8kwzSnhDNpkCkffEpLrcWEuMaV+MdryXi6sEUxx2nrKv0HnFCRMpbl90
+ xkVu+3prTsv7xSchz7Ar+GHeBZ26mBxUqRDONzo2ONU84m7G+MBBOq3iGoshbYLpio
+ Jiy90UIBxAb/6D55Gw0GvTMBMbBU+4C9NPwm8o9DsLTA0oZE/eilCVBsM41ElQ/Tkl
+ xZz+o2pXhuPHg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+Cc: Yang Li <yang.lee@linux.alibaba.com>,
+ Abaci Robot <abaci@linux.alibaba.com>, Felix Fietkau <nbd@nbd.name>,
  Sasha Levin <sashal@kernel.org>, lorenzo.bianconi83@gmail.com,
  ryder.lee@mediatek.com, kvalo@kernel.org, davem@davemloft.net,
  kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 15/65] mt76: dma: initialize skip_unmap in
- mt76_dma_rx_fill
-Date: Fri,  1 Apr 2022 10:41:16 -0400
-Message-Id: <20220401144206.1953700-15-sashal@kernel.org>
+ xing.song@mediatek.com, linux-wireless@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.10 38/65] mt76: mt7615: Fix assigning negative
+ values to unsigned variable
+Date: Fri,  1 Apr 2022 10:41:39 -0400
+Message-Id: <20220401144206.1953700-38-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220401144206.1953700-1-sashal@kernel.org>
 References: <20220401144206.1953700-1-sashal@kernel.org>
@@ -61,8 +63,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220401_074252_234802_7BCC52F3 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20220401_074349_470220_A6614393 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,87 +81,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
+From: Yang Li <yang.lee@linux.alibaba.com>
 
-[ Upstream commit 577298ec55dfc8b9aece54520f0258c3f93a6573 ]
+[ Upstream commit 9273ffcc9a11942bd586bb42584337ef3962b692 ]
 
-Even if it is only a false-positive since skip_buf0/skip_buf1 are only
-used in mt76_dma_tx_cleanup_idx routine, initialize skip_unmap in
-mt76_dma_rx_fill in order to fix the following UBSAN report:
+Smatch reports the following:
+drivers/net/wireless/mediatek/mt76/mt7615/mac.c:1865
+mt7615_mac_adjust_sensitivity() warn: assigning (-110) to unsigned
+variable 'def_th'
+drivers/net/wireless/mediatek/mt76/mt7615/mac.c:1865
+mt7615_mac_adjust_sensitivity() warn: assigning (-98) to unsigned
+variable 'def_th'
 
-[   13.924906] UBSAN: invalid-load in linux-5.15.0/drivers/net/wireless/mediatek/mt76/dma.c:162:13
-[   13.924909] load of value 225 is not a valid value for type '_Bool'
-[   13.924912] CPU: 9 PID: 672 Comm: systemd-udevd Not tainted 5.15.0-18-generic #18-Ubuntu
-[   13.924914] Hardware name: LENOVO 21A0000CMX/21A0000CMX, BIOS R1MET43W (1.13 ) 11/05/2021
-[   13.924915] Call Trace:
-[   13.924917]  <TASK>
-[   13.924920]  show_stack+0x52/0x58
-[   13.924925]  dump_stack_lvl+0x4a/0x5f
-[   13.924931]  dump_stack+0x10/0x12
-[   13.924932]  ubsan_epilogue+0x9/0x45
-[   13.924934]  __ubsan_handle_load_invalid_value.cold+0x44/0x49
-[   13.924935]  ? __iommu_dma_map+0x84/0xf0
-[   13.924939]  mt76_dma_add_buf.constprop.0.cold+0x23/0x85 [mt76]
-[   13.924949]  mt76_dma_rx_fill.isra.0+0x102/0x1f0 [mt76]
-[   13.924954]  mt76_dma_init+0xc9/0x150 [mt76]
-[   13.924959]  ? mt7921_dma_enable+0x110/0x110 [mt7921e]
-[   13.924966]  mt7921_dma_init+0x1e3/0x260 [mt7921e]
-[   13.924970]  mt7921_register_device+0x29d/0x510 [mt7921e]
-[   13.924975]  mt7921_pci_probe.part.0+0x17f/0x1b0 [mt7921e]
-[   13.924980]  mt7921_pci_probe+0x43/0x60 [mt7921e]
-[   13.924984]  local_pci_probe+0x4b/0x90
-[   13.924987]  pci_device_probe+0x115/0x1f0
-[   13.924989]  really_probe+0x21e/0x420
-[   13.924992]  __driver_probe_device+0x115/0x190
-[   13.924994]  driver_probe_device+0x23/0xc0
-[   13.924996]  __driver_attach+0xbd/0x1d0
-[   13.924998]  ? __device_attach_driver+0x110/0x110
-[   13.924999]  bus_for_each_dev+0x7e/0xc0
-[   13.925001]  driver_attach+0x1e/0x20
-[   13.925003]  bus_add_driver+0x135/0x200
-[   13.925005]  driver_register+0x95/0xf0
-[   13.925008]  ? 0xffffffffc0766000
-[   13.925010]  __pci_register_driver+0x68/0x70
-[   13.925011]  mt7921_pci_driver_init+0x23/0x1000 [mt7921e]
-[   13.925015]  do_one_initcall+0x48/0x1d0
-[   13.925019]  ? kmem_cache_alloc_trace+0x19e/0x2e0
-[   13.925022]  do_init_module+0x62/0x280
-[   13.925025]  load_module+0xac9/0xbb0
-[   13.925027]  __do_sys_finit_module+0xbf/0x120
-[   13.925029]  __x64_sys_finit_module+0x18/0x20
-[   13.925030]  do_syscall_64+0x5c/0xc0
-[   13.925033]  ? do_syscall_64+0x69/0xc0
-[   13.925034]  ? sysvec_reschedule_ipi+0x78/0xe0
-[   13.925036]  ? asm_sysvec_reschedule_ipi+0xa/0x20
-[   13.925039]  entry_SYSCALL_64_after_hwframe+0x44/0xae
-[   13.925040] RIP: 0033:0x7fbf2b90f94d
-[   13.925045] RSP: 002b:00007ffe2ec7e5d8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
-[   13.925047] RAX: ffffffffffffffda RBX: 000056106b0634e0 RCX: 00007fbf2b90f94d
-[   13.925048] RDX: 0000000000000000 RSI: 00007fbf2baa3441 RDI: 0000000000000013
-[   13.925049] RBP: 0000000000020000 R08: 0000000000000000 R09: 0000000000000002
-[   13.925050] R10: 0000000000000013 R11: 0000000000000246 R12: 00007fbf2baa3441
-[   13.925051] R13: 000056106b062620 R14: 000056106b0610c0 R15: 000056106b0640d0
-[   13.925053]  </TASK>
-
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/dma.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
-index 0fdfead45c77..f01b455783b2 100644
---- a/drivers/net/wireless/mediatek/mt76/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/dma.c
-@@ -455,6 +455,7 @@ mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_queue *q)
- 
- 		qbuf.addr = addr + offset;
- 		qbuf.len = len - offset;
-+		qbuf.skip_unmap = false;
- 		mt76_dma_add_buf(dev, q, &qbuf, 1, 0, buf, NULL);
- 		frames++;
- 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index 424be103093c..1465a92ea3fc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -1626,7 +1626,7 @@ mt7615_mac_adjust_sensitivity(struct mt7615_phy *phy,
+ 	struct mt7615_dev *dev = phy->dev;
+ 	int false_cca = ofdm ? phy->false_cca_ofdm : phy->false_cca_cck;
+ 	bool ext_phy = phy != &dev->phy;
+-	u16 def_th = ofdm ? -98 : -110;
++	s16 def_th = ofdm ? -98 : -110;
+ 	bool update = false;
+ 	s8 *sensitivity;
+ 	int signal;
 -- 
 2.34.1
 
