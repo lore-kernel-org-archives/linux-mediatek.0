@@ -4,56 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A8E2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 14:28:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA2ADC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 14:31:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3tbDDjbmwyF6xIeyM0rlXF1Vv2SfM2oj1b4sbSdn6A8=; b=4+WXhtjaCnzCvU
-	pBNWqjWkItWPaGW34lNVd3RVWXWAYF8Py2IALZeQlpgsqXj4POkahWMtnkrDRqv+MtmLot0tejg3o
-	rqDj1nfMRYpmrfz1LrrJubHqhC33nlIOzcLEzbNPtV6Ou1QmghpSrHBtYm7G7Nv0y2yooNfxKwHV2
-	4l6z8YZTgO7gNFQpj+pwMAid/pMUe1rByYtafnrvl56yqPWRUli7pKIGuN95yrN0+D6nPHx+/lSDb
-	SxLd6GmE4R8Um5iljFWQA5wmzNZiAzO6D8YAK9N63G+BD7m5XwCTOBiXS2FQqM3jrjlet4o7FGcLn
-	f9ojw0R2g5Yp+kdb1NsQ==;
+	List-Owner; bh=QzvjdIy0E+Ze3Xd8trQRgcbOOXSJKFj5eLoWw4hWivw=; b=benJ61QNfJSQa0
+	AZOoqfTq3q3ktYlHZgjHIUtexByJVdqYJ2C9Tt66Gjnp3LyK81510UFhhDNqYXuEhrTphF4/BvNcT
+	1ttn/EvjXvOdUxK940YesfI7n4IXll2/kVCWmX2OdpXx/tiS1ikpfuR5T+YOhxRxyahhI6rlgzwZW
+	OPgS+czbtEEOLiPhZaIAyydPnFcXc4//R87FWca20nJYKyiOxH8vcerCck430pxUEhbR0fTdoqR/r
+	bTm1r+elsz+C+zTDtIV8ipA8JXP9gUan4ZQZgtHGUHYdWKfXKsDLwh+jHYSadBdirouvknuA/NfNA
+	r9+k7N0cNGEOSecU6ghA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1naIG5-0060x3-0S; Fri, 01 Apr 2022 14:28:13 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1naIJ7-00637E-Vj; Fri, 01 Apr 2022 14:31:22 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1naIFg-0060le-CX; Fri, 01 Apr 2022 14:27:49 +0000
+ id 1naIIa-0062hU-TO; Fri, 01 Apr 2022 14:30:50 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id EAC5461C4A;
- Fri,  1 Apr 2022 14:27:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F33DC36AE3;
- Fri,  1 Apr 2022 14:27:45 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 7414E61CE5;
+ Fri,  1 Apr 2022 14:30:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 019E6C3410F;
+ Fri,  1 Apr 2022 14:30:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1648823267;
- bh=nePXrd2R6vPDHfJ8vTeYHQw5/uDWxUay3JyHpbzmBfA=;
+ s=k20201202; t=1648823448;
+ bh=4pNhQa0sAbj2ObUnqaTHkHGBTg6kk02q1BYPIjcapIc=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=OwP8X3KA3oOXSpWyKO7icOrvbKeVunbbHBX9V4vaffyMqu+L5cT1G6QKbVZ3kiWI4
- ND13pwtsdJlDBgtNgaPG3kZH7MZxC44vIBU3UuQKWvUgPzaUdkXHa5JgxsPVlDNKZ6
- x/4R6IuTvHkjDenIQFl7IQZor8MRZw43NoSCkED3dpvbL51pgTo5ZPJVCEunFeXVus
- OZRgs5sFJKsngq3QwdhmTgsQcrRYac37vN1zNlgb8S5FPmvSVFZkDkeAWMKACpRkH+
- aPVbstwYtKrNYpt4LOEp8cLaHnelugjYMJVUF3xxt9biro4ohV5wJJfdOU6XGKhqvT
- sSB3bhWTiUh7A==
+ b=PDYzzPhxQzkCgOMBGX6gvOu2VdCJ0w7HGMco+WraYyk1a6E8dwrskMRmKm4olal53
+ R6+AazOfAMYubudkhWxHIGcb6MpNuzPV/Uxm5jcAqoaLxyn5LQBGqFEgtb9n7pnxv9
+ p3gX2G4P79EY/pcRkDBxF0Me+BiZSyWH12iTTP0GedRBKN3bfHQ6EZ6/GLvCODQhX7
+ ayUa/NGDigUb7bZpZBSZeFzm8z+L9m3ZEoevut4UrGqbL3ZbVJNXtafvQxcA6P8jgS
+ xmkNPfEJRGefT2x8Phi3BqriYfxqEjIKZ7fjGTQ+kI9MsA6sed3VtAZEb9eADRsVOj
+ 066ukQQNZ5qNA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- Sasha Levin <sashal@kernel.org>, lorenzo.bianconi83@gmail.com,
- ryder.lee@mediatek.com, kvalo@kernel.org, davem@davemloft.net,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+Cc: Johan Almbladh <johan.almbladh@anyfinetworks.com>,
+ Felix Fietkau <nbd@nbd.name>, Sasha Levin <sashal@kernel.org>,
+ lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com, kvalo@kernel.org,
+ davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, Bo.Jiao@mediatek.com, sujuan.chen@mediatek.com,
+ shayne.chen@mediatek.com, greearb@candelatech.com,
  linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.17 040/149] mt76: dma: initialize skip_unmap in
- mt76_dma_rx_fill
-Date: Fri,  1 Apr 2022 10:23:47 -0400
-Message-Id: <20220401142536.1948161-40-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.17 099/149] mt76: mt7915: fix injected MPDU
+ transmission to not use HW A-MSDU
+Date: Fri,  1 Apr 2022 10:24:46 -0400
+Message-Id: <20220401142536.1948161-99-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220401142536.1948161-1-sashal@kernel.org>
 References: <20220401142536.1948161-1-sashal@kernel.org>
@@ -61,8 +63,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220401_072748_522586_276DE119 
-X-CRM114-Status: GOOD (  11.18  )
+X-CRM114-CacheID: sfid-20220401_073049_057954_B8432193 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,87 +81,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
+From: Johan Almbladh <johan.almbladh@anyfinetworks.com>
 
-[ Upstream commit 577298ec55dfc8b9aece54520f0258c3f93a6573 ]
+[ Upstream commit 28225a6ef80ebf46c46e5fbd5b1ee231a0b2b5b7 ]
 
-Even if it is only a false-positive since skip_buf0/skip_buf1 are only
-used in mt76_dma_tx_cleanup_idx routine, initialize skip_unmap in
-mt76_dma_rx_fill in order to fix the following UBSAN report:
+Before, the hardware would be allowed to transmit injected 802.11 MPDUs
+as A-MSDU. This resulted in corrupted frames being transmitted. Now,
+injected MPDUs are transmitted as-is, without A-MSDU.
 
-[   13.924906] UBSAN: invalid-load in linux-5.15.0/drivers/net/wireless/mediatek/mt76/dma.c:162:13
-[   13.924909] load of value 225 is not a valid value for type '_Bool'
-[   13.924912] CPU: 9 PID: 672 Comm: systemd-udevd Not tainted 5.15.0-18-generic #18-Ubuntu
-[   13.924914] Hardware name: LENOVO 21A0000CMX/21A0000CMX, BIOS R1MET43W (1.13 ) 11/05/2021
-[   13.924915] Call Trace:
-[   13.924917]  <TASK>
-[   13.924920]  show_stack+0x52/0x58
-[   13.924925]  dump_stack_lvl+0x4a/0x5f
-[   13.924931]  dump_stack+0x10/0x12
-[   13.924932]  ubsan_epilogue+0x9/0x45
-[   13.924934]  __ubsan_handle_load_invalid_value.cold+0x44/0x49
-[   13.924935]  ? __iommu_dma_map+0x84/0xf0
-[   13.924939]  mt76_dma_add_buf.constprop.0.cold+0x23/0x85 [mt76]
-[   13.924949]  mt76_dma_rx_fill.isra.0+0x102/0x1f0 [mt76]
-[   13.924954]  mt76_dma_init+0xc9/0x150 [mt76]
-[   13.924959]  ? mt7921_dma_enable+0x110/0x110 [mt7921e]
-[   13.924966]  mt7921_dma_init+0x1e3/0x260 [mt7921e]
-[   13.924970]  mt7921_register_device+0x29d/0x510 [mt7921e]
-[   13.924975]  mt7921_pci_probe.part.0+0x17f/0x1b0 [mt7921e]
-[   13.924980]  mt7921_pci_probe+0x43/0x60 [mt7921e]
-[   13.924984]  local_pci_probe+0x4b/0x90
-[   13.924987]  pci_device_probe+0x115/0x1f0
-[   13.924989]  really_probe+0x21e/0x420
-[   13.924992]  __driver_probe_device+0x115/0x190
-[   13.924994]  driver_probe_device+0x23/0xc0
-[   13.924996]  __driver_attach+0xbd/0x1d0
-[   13.924998]  ? __device_attach_driver+0x110/0x110
-[   13.924999]  bus_for_each_dev+0x7e/0xc0
-[   13.925001]  driver_attach+0x1e/0x20
-[   13.925003]  bus_add_driver+0x135/0x200
-[   13.925005]  driver_register+0x95/0xf0
-[   13.925008]  ? 0xffffffffc0766000
-[   13.925010]  __pci_register_driver+0x68/0x70
-[   13.925011]  mt7921_pci_driver_init+0x23/0x1000 [mt7921e]
-[   13.925015]  do_one_initcall+0x48/0x1d0
-[   13.925019]  ? kmem_cache_alloc_trace+0x19e/0x2e0
-[   13.925022]  do_init_module+0x62/0x280
-[   13.925025]  load_module+0xac9/0xbb0
-[   13.925027]  __do_sys_finit_module+0xbf/0x120
-[   13.925029]  __x64_sys_finit_module+0x18/0x20
-[   13.925030]  do_syscall_64+0x5c/0xc0
-[   13.925033]  ? do_syscall_64+0x69/0xc0
-[   13.925034]  ? sysvec_reschedule_ipi+0x78/0xe0
-[   13.925036]  ? asm_sysvec_reschedule_ipi+0xa/0x20
-[   13.925039]  entry_SYSCALL_64_after_hwframe+0x44/0xae
-[   13.925040] RIP: 0033:0x7fbf2b90f94d
-[   13.925045] RSP: 002b:00007ffe2ec7e5d8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
-[   13.925047] RAX: ffffffffffffffda RBX: 000056106b0634e0 RCX: 00007fbf2b90f94d
-[   13.925048] RDX: 0000000000000000 RSI: 00007fbf2baa3441 RDI: 0000000000000013
-[   13.925049] RBP: 0000000000020000 R08: 0000000000000000 R09: 0000000000000002
-[   13.925050] R10: 0000000000000013 R11: 0000000000000246 R12: 00007fbf2baa3441
-[   13.925051] R13: 000056106b062620 R14: 000056106b0610c0 R15: 000056106b0640d0
-[   13.925053]  </TASK>
+The fix was verified with frame injection on MT7915 hardware, both with
+and without the injected frame being encrypted.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+If the hardware cannot do A-MSDU aggregation on MPDUs, this problem
+would also be present in the TX path where mac80211 does the 802.11
+encapsulation. However, I have not observed any such problem when
+disabling IEEE80211_HW_SUPPORTS_TX_ENCAP_OFFLOAD to force that mode.
+Therefore this fix is isolated to injected frames only.
+
+The same A-MSDU logic is also present in the mt7921 driver, so it is
+likely that this fix should be applied there too. I do not have access
+to mt7921 hardware so I have not been able to test that.
+
+Signed-off-by: Johan Almbladh <johan.almbladh@anyfinetworks.com>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/dma.c | 1 +
+ drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
-index 3a9af8931c35..3d644925a4e0 100644
---- a/drivers/net/wireless/mediatek/mt76/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/dma.c
-@@ -465,6 +465,7 @@ mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_queue *q)
- 
- 		qbuf.addr = addr + offset;
- 		qbuf.len = len - offset;
-+		qbuf.skip_unmap = false;
- 		mt76_dma_add_buf(dev, q, &qbuf, 1, 0, buf, NULL);
- 		frames++;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 48f115502282..31a792b62e1b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -1080,6 +1080,7 @@ mt7915_mac_write_txwi_80211(struct mt7915_dev *dev, __le32 *txwi,
+ 		val = MT_TXD3_SN_VALID |
+ 		      FIELD_PREP(MT_TXD3_SEQ, IEEE80211_SEQ_TO_SN(seqno));
+ 		txwi[3] |= cpu_to_le32(val);
++		txwi[7] &= ~cpu_to_le32(MT_TXD7_HW_AMSDU);
  	}
+ 
+ 	val = FIELD_PREP(MT_TXD7_TYPE, fc_type) |
 -- 
 2.34.1
 
