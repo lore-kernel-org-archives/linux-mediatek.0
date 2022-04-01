@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D37FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 14:51:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5222CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 14:52:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ONdlL9OrE7I/juoVXnXk4oLCdgOc1fygIKkoww5v/Rg=; b=o1Bmw+xEYc2erD
-	Ky0vIuHoawGf0lM0jnsIyhl49vBUYisCwaHutGOJSTYR6YmkZEK8lzho8y1BfsPWBhmdd88KDP3N8
-	123qugDT5qcaM8nm7IA6QvK75CW32AUTOy1BtR9UW9RpMrgezL8Ts/haTAoAHnWHWyvF8doQokeM3
-	dwvtf8NkB8xIWBUDXi0Jl3AKBfwiHP+7dgTz61Za+7qwkKbZTQ/3dnflaw72SKvXxBaP5Bx45pRx0
-	E/AtE1QeTtdYkQWxJPO0neEPUNaid3LMg8m9r9AbGj+F2/Sbc9qIgBwGARmvjeSkPoNQi9LqJBfaH
-	qFOrXJjVMKx0xz0/uFQA==;
+	List-Owner; bh=sNkS2Kh05F5qWHX8aQWleKBjDLO8QKoGUBlLkd7jTm8=; b=WdIHBl4q+8usXB
+	1oNXwm+vfGE+H5yDhLxWWLuSv8dQqRlOJ3VRB4E8QVQEar4rWNCoM3O2O7mOOeUkqHnfrhESNf1xa
+	+JtDCfMA+vIVrfxOjNUF2gTosZOQxjJNcptKVIWcIUVV4CasAfkVKCqgHKjotyt1iTHVYZU97+otg
+	S5cVn5AooDJfQ9rMV/OODUB7SGWjCFZJ7VegXvt7S8A7KoPyKrUqY3Yg7kyY621ydcfrINhIH3EvH
+	fRkpXs9Tra+acgf73gsKsHYoZK4fTHqb+IdRd4hpw7Lq8BXaEKkzV73LifIq+l/Pw74gJAraMWRWI
+	8DLWdqGXcWh1Vko7oeHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1naIcj-006Ek8-9n; Fri, 01 Apr 2022 14:51:37 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1naIdY-006FGC-Sk; Fri, 01 Apr 2022 14:52:28 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1naITB-0069Hs-Uw; Fri, 01 Apr 2022 14:41:48 +0000
+ id 1naIUG-0069qS-2g; Fri, 01 Apr 2022 14:42:53 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 90C7FB824D8;
- Fri,  1 Apr 2022 14:41:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8BF00C340F2;
- Fri,  1 Apr 2022 14:41:41 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 8832D60AC9;
+ Fri,  1 Apr 2022 14:42:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 557CCC2BBE4;
+ Fri,  1 Apr 2022 14:42:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1648824103;
- bh=E82SV7e6t4GyW9rakvNFtqwmoOj2puq32T+bfxLiQxM=;
+ s=k20201202; t=1648824171;
+ bh=ZPRDkc1kCRCDXeYCrIOvP8qDwUgvwNontCric9MwptY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=OvAS1AUpfMcN8KGEI4TgxTw2/09RgD0nZbo67TEoAde4EdWv56WCu3+fgsiSgBKJn
- 7dcJQAIuYFczyapXpWifrX8S5qMrMGl/k8DY7fkJuGEtR6s57Nj+C87pLdARX5mxUb
- N76Lg4TxaRql8eUoJTs5zIrq+UyIWU7ZsI6okd54nYyqO4gPGECvQSNABtepQHU+1o
- sljaS5VFkI2ogpvHkaLEcyTTI0uG7w5JaBuvjttRQdVScmWr+dx9DsvBYqCKwbk35/
- 9HjwZfuCUZcHOph0uUMgUMna23jGu3xxTCTeyDsDVNX3XmoiAK7YeItfabWVN6dBsB
- exTWiQ3HaaOpg==
+ b=rTc6XQ592P3lHp/blbOoZrNokVpDW6at27UKrTAvuWEDas6Ovao1LyTzAM+5XlDEG
+ qllNFKUYJnsG8zynLhsP37gNd/0dQ73E57AJ9tqrDBl4ypH4/+DG7hYD7+52+ruQ0U
+ DCfVeq214KkOXaP/oAuNPDNWEJzrPgq3EUQJgl32aaWTQbGfAs0la0homnfRcG1cK5
+ Ef/XPmCA0p8mLqRpQp9E6uqL5zFpgFuIAuB6f46cbxXFB42NOvSrqe9cMviBzSTorv
+ TNHxsJbD3i1f64AAsQrzpx64/fc1IKeykkGOWiVk8PK2nXi5DpjebKCM8xNHUCaY23
+ kroz4+qaEyuEQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Deren Wu <deren.wu@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Sean Wang <sean.wang@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
  Sasha Levin <sashal@kernel.org>, lorenzo.bianconi83@gmail.com,
  ryder.lee@mediatek.com, kvalo@kernel.org, davem@davemloft.net,
  kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
  linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 88/98] mt76: fix monitor mode crash with sdio
- driver
-Date: Fri,  1 Apr 2022 10:37:32 -0400
-Message-Id: <20220401143742.1952163-88-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.10 15/65] mt76: dma: initialize skip_unmap in
+ mt76_dma_rx_fill
+Date: Fri,  1 Apr 2022 10:41:16 -0400
+Message-Id: <20220401144206.1953700-15-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220401143742.1952163-1-sashal@kernel.org>
-References: <20220401143742.1952163-1-sashal@kernel.org>
+In-Reply-To: <20220401144206.1953700-1-sashal@kernel.org>
+References: <20220401144206.1953700-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220401_074146_226785_AE8AF311 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20220401_074252_234802_7BCC52F3 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,53 +79,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+From: Lorenzo Bianconi <lorenzo@kernel.org>
 
-[ Upstream commit 123bc712b1de0805f9d683687e17b1ec2aba0b68 ]
+[ Upstream commit 577298ec55dfc8b9aece54520f0258c3f93a6573 ]
 
-mt7921s driver may receive frames with fragment buffers. If there is a
-CTS packet received in monitor mode, the payload is 10 bytes only and
-need 6 bytes header padding after RXD buffer. However, only RXD in the
-first linear buffer, if we pull buffer size RXD-size+6 bytes with
-skb_pull(), that would trigger "BUG_ON(skb->len < skb->data_len)" in
-__skb_pull().
+Even if it is only a false-positive since skip_buf0/skip_buf1 are only
+used in mt76_dma_tx_cleanup_idx routine, initialize skip_unmap in
+mt76_dma_rx_fill in order to fix the following UBSAN report:
 
-To avoid the nonlinear buffer issue, enlarge the RXD size from 128 to
-256 to make sure all MCU operation in linear buffer.
-
-[   52.007562] kernel BUG at include/linux/skbuff.h:2313!
-[   52.007578] Internal error: Oops - BUG: 0 [#1] PREEMPT SMP
-[   52.007987] pc : skb_pull+0x48/0x4c
-[   52.008015] lr : mt7921_queue_rx_skb+0x494/0x890 [mt7921_common]
-[   52.008361] Call trace:
-[   52.008377]  skb_pull+0x48/0x4c
-[   52.008400]  mt76s_net_worker+0x134/0x1b0 [mt76_sdio 35339a92c6eb7d4bbcc806a1d22f56365565135c]
-[   52.008431]  __mt76_worker_fn+0xe8/0x170 [mt76 ef716597d11a77150bc07e3fdd68eeb0f9b56917]
-[   52.008449]  kthread+0x148/0x3ac
-[   52.008466]  ret_from_fork+0x10/0x30
+[   13.924906] UBSAN: invalid-load in linux-5.15.0/drivers/net/wireless/mediatek/mt76/dma.c:162:13
+[   13.924909] load of value 225 is not a valid value for type '_Bool'
+[   13.924912] CPU: 9 PID: 672 Comm: systemd-udevd Not tainted 5.15.0-18-generic #18-Ubuntu
+[   13.924914] Hardware name: LENOVO 21A0000CMX/21A0000CMX, BIOS R1MET43W (1.13 ) 11/05/2021
+[   13.924915] Call Trace:
+[   13.924917]  <TASK>
+[   13.924920]  show_stack+0x52/0x58
+[   13.924925]  dump_stack_lvl+0x4a/0x5f
+[   13.924931]  dump_stack+0x10/0x12
+[   13.924932]  ubsan_epilogue+0x9/0x45
+[   13.924934]  __ubsan_handle_load_invalid_value.cold+0x44/0x49
+[   13.924935]  ? __iommu_dma_map+0x84/0xf0
+[   13.924939]  mt76_dma_add_buf.constprop.0.cold+0x23/0x85 [mt76]
+[   13.924949]  mt76_dma_rx_fill.isra.0+0x102/0x1f0 [mt76]
+[   13.924954]  mt76_dma_init+0xc9/0x150 [mt76]
+[   13.924959]  ? mt7921_dma_enable+0x110/0x110 [mt7921e]
+[   13.924966]  mt7921_dma_init+0x1e3/0x260 [mt7921e]
+[   13.924970]  mt7921_register_device+0x29d/0x510 [mt7921e]
+[   13.924975]  mt7921_pci_probe.part.0+0x17f/0x1b0 [mt7921e]
+[   13.924980]  mt7921_pci_probe+0x43/0x60 [mt7921e]
+[   13.924984]  local_pci_probe+0x4b/0x90
+[   13.924987]  pci_device_probe+0x115/0x1f0
+[   13.924989]  really_probe+0x21e/0x420
+[   13.924992]  __driver_probe_device+0x115/0x190
+[   13.924994]  driver_probe_device+0x23/0xc0
+[   13.924996]  __driver_attach+0xbd/0x1d0
+[   13.924998]  ? __device_attach_driver+0x110/0x110
+[   13.924999]  bus_for_each_dev+0x7e/0xc0
+[   13.925001]  driver_attach+0x1e/0x20
+[   13.925003]  bus_add_driver+0x135/0x200
+[   13.925005]  driver_register+0x95/0xf0
+[   13.925008]  ? 0xffffffffc0766000
+[   13.925010]  __pci_register_driver+0x68/0x70
+[   13.925011]  mt7921_pci_driver_init+0x23/0x1000 [mt7921e]
+[   13.925015]  do_one_initcall+0x48/0x1d0
+[   13.925019]  ? kmem_cache_alloc_trace+0x19e/0x2e0
+[   13.925022]  do_init_module+0x62/0x280
+[   13.925025]  load_module+0xac9/0xbb0
+[   13.925027]  __do_sys_finit_module+0xbf/0x120
+[   13.925029]  __x64_sys_finit_module+0x18/0x20
+[   13.925030]  do_syscall_64+0x5c/0xc0
+[   13.925033]  ? do_syscall_64+0x69/0xc0
+[   13.925034]  ? sysvec_reschedule_ipi+0x78/0xe0
+[   13.925036]  ? asm_sysvec_reschedule_ipi+0xa/0x20
+[   13.925039]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   13.925040] RIP: 0033:0x7fbf2b90f94d
+[   13.925045] RSP: 002b:00007ffe2ec7e5d8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[   13.925047] RAX: ffffffffffffffda RBX: 000056106b0634e0 RCX: 00007fbf2b90f94d
+[   13.925048] RDX: 0000000000000000 RSI: 00007fbf2baa3441 RDI: 0000000000000013
+[   13.925049] RBP: 0000000000020000 R08: 0000000000000000 R09: 0000000000000002
+[   13.925050] R10: 0000000000000013 R11: 0000000000000246 R12: 00007fbf2baa3441
+[   13.925051] R13: 000056106b062620 R14: 000056106b0610c0 R15: 000056106b0640d0
+[   13.925053]  </TASK>
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/dma.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 4d01fd85283d..6e4d69715927 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -19,7 +19,7 @@
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
+index 0fdfead45c77..f01b455783b2 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -455,6 +455,7 @@ mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_queue *q)
  
- #define MT_MCU_RING_SIZE	32
- #define MT_RX_BUF_SIZE		2048
--#define MT_SKB_HEAD_LEN		128
-+#define MT_SKB_HEAD_LEN		256
- 
- #define MT_MAX_NON_AQL_PKT	16
- #define MT_TXQ_FREE_THR		32
+ 		qbuf.addr = addr + offset;
+ 		qbuf.len = len - offset;
++		qbuf.skip_unmap = false;
+ 		mt76_dma_add_buf(dev, q, &qbuf, 1, 0, buf, NULL);
+ 		frames++;
+ 	}
 -- 
 2.34.1
 
