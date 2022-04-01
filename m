@@ -4,84 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A95CAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 09:35:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4EAAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 12:06:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EZfkm1SofgNe55/uVM7unscdjA51tliZHc/CCQ3FkaM=; b=iSS4hjLDtBUtX8
-	Sw83Plixz2qwlD3mtTYokfeJ41bJ2Ed27vgI6eJJOPOTHd2fp0hgFydlweMfsOGuIukYrGRz8oD8l
-	s+skOWveQsGx9N0uPUAbt8K1877bN6dX9l1k8E9oPd7UwI3a2Pb3furI/sSB0JthlrXCN5qwEV/we
-	7J/lTd3q0yzD/DkV/iAMczZIG3SvcIi2YGA2ej4WVbgxkUPJnpF0zLyMkISkEpXP9oL+5Upnf3ztE
-	6sxorlwuflRyqiJXcUNOPjRSlqa94M18psHm1MHp0QAUw5cUyUSt3U21IXAATrkTo9Lc7IBp4oR+M
-	DbB/VfZ7A2FQCAD7Vpzg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=V0E7rTPa/AuKXEJXnWVOXIieUMQ2eTDz7jQkEhqUTxw=; b=vXBkQN1Qug6qw0
+	1U/v/BD5mgOAp5BvwI9I3Rq0oFeGOhF6CmJnHQaG1/8rrnPpUmhE6c1/IYw0PhRMDi3qUJ0ooLimE
+	PUZNKNfQHbE1khZk+dw9xOBK5b1EnkomdCNpC9HuYjHMlOC0eBBXQAD40FR89z1ObISrpSbreTxYv
+	yH9BpQ84YQJPB0NqDO4VTZr2kW0ee7g1kF6SnHVboElPytO9OnhjIAGxUZHHexOAfL7y8fPgbj3GY
+	Vb3XaQ+uxf7bxLCTF/OgT5IqP1N4jtdMrITtAzbLkOINkCfnuTGz9bEBLRqqetOWlTK2l8qAopguM
+	c48biSVqCwyCQijORE+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1naDge-0053gb-2S; Fri, 01 Apr 2022 09:35:20 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+	id 1naG3C-005a37-Hi; Fri, 01 Apr 2022 12:06:46 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1naDgb-0053fc-PZ
- for linux-mediatek@lists.infradead.org; Fri, 01 Apr 2022 09:35:19 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id q5so3098446ljb.11
- for <linux-mediatek@lists.infradead.org>; Fri, 01 Apr 2022 02:35:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/4FSuKnccX1iFN0uwomkiOn5u1Xbdrve2qg2JRoojKE=;
- b=VogYOcScEozGo2HMiWfqxuG6WYR1q4RB22WpLk5JKZJ7C7863bdDZMoez1zh52xN3E
- tQRCs5L9iLeEb3iV/aDNvioJiF6J1FXPf/1x+Jyf0ZnUG8mzmEooJR7j+y5YldogbuP+
- 5ezZ26ojecVxEvsIhBKIacbEiCW3aRA9iQwLnC0eJIRp9QpLT3gCIlLWTVPWekSneKDD
- gETW8elTB+iNq/ztsFTbH9BsNjgxNo1YX7KDi+JnJHg6QgCVPbLGDuQJi9sf2ve2FCoA
- TVnlbcWW+EXB4ILmmm8EcrghRQ2R5G/sodiSOxtoOtAHy5iED1RwUgHk4B4qiR9ViDYB
- 1gFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/4FSuKnccX1iFN0uwomkiOn5u1Xbdrve2qg2JRoojKE=;
- b=1pRipK0tuhnLZEiNCqlpSI+YbQjWLkHLaX+vysbtqssHtJQ8FH1NmPnQ4vF3CoDCW9
- ah8H3V8SNx7TJ0ihDpKVLUHwArKSF0AV3t5t6UCsrMcX6XR8ipiht5UZ3/FdLQ7KbKJi
- mLw8vt77gjVUpgqKnGnoGWA6BKf3wY1ANvV7r+4gsxgzzu7mpUTsi1XHNI+sZqHeiNQ7
- jI279ow6TDZCrPdwy/wysxh8jpOyrcKwq/jRzK8Z5CgmNF2HZIgArJP4T8Bo7F2GYoTF
- zx2ie4RVShELWu9BoPjaPWkEYxYhxBtAYbJvt0rgmC7zeypq/jlp9MFxRVdAemKZ2qC6
- JgAA==
-X-Gm-Message-State: AOAM530GMkFhEe2CLGzTxZoKFRwQnt8mpogFU72AY3xwPfr5OOaLWB/m
- 7uYue5DtgdwQJoYdySanL8PVrGi37G/prMc8KnrIPg==
-X-Google-Smtp-Source: ABdhPJz6psO/sjbUT/j1r3XjHcZRBUCIC5sFVlTg1I2riC4zd4S5suzIVESlXB2FKEJIV3qX81Z8ZtW69b0xCIMwSA8=
-X-Received: by 2002:a2e:8189:0:b0:249:7d3a:ceb0 with SMTP id
- e9-20020a2e8189000000b002497d3aceb0mr12136101ljg.367.1648805715996; Fri, 01
- Apr 2022 02:35:15 -0700 (PDT)
+ id 1naFy5-005SMj-Ga; Fri, 01 Apr 2022 12:01:31 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 25F001F47727
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1648814485;
+ bh=Ok/bhlIM0JcCZb8uUTTHlofIc9Z9EPno2A7+s/1bFDQ=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Op+QHp0iloqxyfa1Cn2Yeh2TK3ot9GItyD/jtb9wXfbHh6TG9FzkV+O8+OZ5DQTZq
+ Oy0Hoc8kqi9O5Ae7jG9rgk1jZc0gDRBbk5Sn3qdA6T9xiCX0l8/r7YVqDKEIKO/UZv
+ uvbKBvyBeD/89q7D/MTrbCUWb67jqrO9Ke2/JKIv249eaMxiAiWKEy/6Iprb7ZHMs1
+ dX4c7CNBQWYw3G4LKZ8E+MPNhQSawbr62f3lKNXbr3HkAbkQBj8fx11VFJhVVJOj/F
+ Ff0WbpdoAQlb2R74FVVxi0I2MMlA6HS6/MlgFarMM5Y2llMWESHuBBX7mDhGqI4svA
+ DU9Z/X0uCEerg==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: qii.wang@mediatek.com
+Cc: matthias.bgg@gmail.com, linux-i2c@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, wsa@kernel.org, nfraprado@collabora.com,
+ kernel@collabora.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] i2c: mediatek: Optimize master_xfer() and avoid circular
+ locking
+Date: Fri,  1 Apr 2022 14:01:20 +0200
+Message-Id: <20220401120120.7498-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-References: <20220329032913.8750-1-axe.yang@mediatek.com>
- <20220329032913.8750-2-axe.yang@mediatek.com>
- <CAPDyKFqoTN1pF-L6qCHxpdMCmPtHP0aHHaDURN2QJsN3v+wZBw@mail.gmail.com>
-In-Reply-To: <CAPDyKFqoTN1pF-L6qCHxpdMCmPtHP0aHHaDURN2QJsN3v+wZBw@mail.gmail.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Fri, 1 Apr 2022 11:34:39 +0200
-Message-ID: <CAPDyKFo_PYc9ofWuXeaE86oK6FqOAnHsH-ZSG58MfNq8nEOVOw@mail.gmail.com>
-Subject: Re: [PATCH v9 1/3] dt-bindings: mmc: mtk-sd: extend interrupts and
- pinctrls properties
-To: Axe Yang <axe.yang@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Adrian Hunter <adrian.hunter@intel.com>, 
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Satya Tangirala <satyat@google.com>, 
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
- Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach <dev@lynxeye.de>, 
- Eric Biggers <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, 
- Stephen Boyd <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>,
- Yue Hu <huyue2@yulong.com>, 
- Tian Tao <tiantao6@hisilicon.com>, angelogioacchino.delregno@collabora.com, 
- linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220401_023517_852230_F1261DBF 
-X-CRM114-Status: GOOD (  20.49  )
+X-CRM114-CacheID: sfid-20220401_050129_884961_A1D3065C 
+X-CRM114-Status: GOOD (  14.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,48 +68,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 1 Apr 2022 at 11:22, Ulf Hansson <ulf.hansson@linaro.org> wrote:
->
-> On Tue, 29 Mar 2022 at 05:29, Axe Yang <axe.yang@mediatek.com> wrote:
-> >
-> > Extend interrupts and pinctrls for SDIO wakeup interrupt feature.
-> > This feature allow SDIO devices alarm asynchronous interrupt to host
-> > even when host stop providing clock to SDIO card. An extra wakeup
-> > interrupt and pinctrl states for SDIO DAT1 pin state switching are
-> > required in this scenario.
-> >
-> > Signed-off-by: Axe Yang <axe.yang@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/mmc/mtk-sd.yaml         | 17 ++++++++++++++++-
-> >  1 file changed, 16 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > index 297ada03e3de..3872a6ce2867 100644
-> > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > @@ -69,12 +69,22 @@ properties:
-> >        - const: ahb_cg
-> >
-> >    interrupts:
-> > -    maxItems: 1
-> > +    description:
-> > +      Should at least contain MSDC GIC interrupt. To support SDIO in-band wakeup, an extended
-> > +      interrupt is required and be configured as wakeup source irq.
->
-> If I understand correctly, the extended interrupt (a GPIO irq) may not
-> necessarily share the same interrupt parent as the primary device
-> interrupt.
->
-> Perhaps it's then better to extend this with "interrupts-extended"
-> instead. See Documentation/devicetree/bindings/interrupt-controller/interrupts.txt.
+Especially (but not only) during probe, it may happen that multiple
+devices are communicating via i2c (or multiple i2c busses) and
+sometimes while others are probing asynchronously.
+For example, a Cr50 TPM may be filling entropy (or userspace may be
+reading random data) while the rt5682 (i2c) codec driver reads/sets
+some registers, like while getting/setting a clock's rate, which
+happens both during probe and during system operation.
 
-One more thing, looks like using the "interrupt-names" property would
-be good to use too. To easier distinguish the different irqs.
+In this driver, the mtk_i2c_transfer() function (which is the i2c
+.master_xfer() callback) was granularly managing the clocks by
+performing a clk_bulk_prepare_enable() to start them and its inverse.
+This is not only creating possible circular locking dependencies in
+the some cases (like former explaination), but it's also suboptimal,
+as clk_core prepare/unprepare operations are using mutex locking,
+which creates a bit of unwanted overhead (for example, i2c trackpads
+will call master_xfer() every few milliseconds!).
 
-[...]
+With this commit, we avoid both the circular locking and additional
+overhead by changing how we handle the clocks in this driver:
+- Prepare the clocks during probe (and PM resume)
+- Enable/disable clocks in mtk_i2c_transfer()
+- Unprepare the clocks only for driver removal (and PM suspend)
 
-Kind regards
-Uffe
+For the sake of providing a full explaination: during probe, the
+clocks are not only prepared but also enabled, as this is needed
+for somehardware initialization but, after that, we are disabling
+but not unpreparing them, leaving an expected state for the
+aforementioned clock handling strategy.
+
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+
+This patch was successfully tested on various chromebooks with
+different MediaTek SoCs.
+All chromebooks are using a Cr50 TPM, trackpad and/or touchscreen
+over i2c. Some of them are using a i2c audio codec as well.
+
+ drivers/i2c/busses/i2c-mt65xx.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index f651d3e124d6..bdecb78bfc26 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -1177,7 +1177,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+ 	int left_num = num;
+ 	struct mtk_i2c *i2c = i2c_get_adapdata(adap);
+ 
+-	ret = clk_bulk_prepare_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
++	ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+ 	if (ret)
+ 		return ret;
+ 
+@@ -1231,7 +1231,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+ 	ret = num;
+ 
+ err_exit:
+-	clk_bulk_disable_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
++	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+ 	return ret;
+ }
+ 
+@@ -1412,7 +1412,7 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 	mtk_i2c_init_hw(i2c);
+-	clk_bulk_disable_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
++	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+ 
+ 	ret = devm_request_irq(&pdev->dev, irq, mtk_i2c_irq,
+ 			       IRQF_NO_SUSPEND | IRQF_TRIGGER_NONE,
+@@ -1439,6 +1439,8 @@ static int mtk_i2c_remove(struct platform_device *pdev)
+ 
+ 	i2c_del_adapter(&i2c->adap);
+ 
++	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
++
+ 	return 0;
+ }
+ 
+@@ -1448,6 +1450,7 @@ static int mtk_i2c_suspend_noirq(struct device *dev)
+ 	struct mtk_i2c *i2c = dev_get_drvdata(dev);
+ 
+ 	i2c_mark_adapter_suspended(&i2c->adap);
++	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
+ 
+ 	return 0;
+ }
+@@ -1465,7 +1468,7 @@ static int mtk_i2c_resume_noirq(struct device *dev)
+ 
+ 	mtk_i2c_init_hw(i2c);
+ 
+-	clk_bulk_disable_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
++	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+ 
+ 	i2c_mark_adapter_resumed(&i2c->adap);
+ 
+-- 
+2.35.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
