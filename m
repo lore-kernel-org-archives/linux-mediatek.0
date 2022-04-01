@@ -4,58 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A038FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 14:55:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FE36C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 14:56:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uaM7SuVOb73zS3hWV0B/YkDvHdJeUp47wjUuaE/V30I=; b=3gZlF3LUY62OkD
-	Wo9xIbl5U6Rn6fdpGoRcu76L/bBSGQjq9k+bcl8Vs9ysBZjqG2nBqDSlxoVU6j3YOYG3PC0kVBK41
-	fHbEAyd2iSl79mMRiXBnqKKv1hQBp/TdRMvO9+K2CFmr+Ifk9wMNFNNIzB5niJUWtfuYxvinTELSE
-	O7JKYtkoLq4E1uPwSxXzgkvRc4AH8UVc650LRkW965NkrKbhM2YUUJV2FJv/HpGuvKH5Awifc1iZc
-	qAZ5atawIozXP/8iqjHH57fVEgAwAmAJ3OcUUKGNNMKiZAIfDy3uOqv3vM2E/26IrjANc/XIxsupG
-	ORWTYNV46dZEyCZzdTog==;
+	List-Owner; bh=41LlBvUVit5rQl+Ui6F1JO9GaUkbiLgUSAYvL3my9+k=; b=SomeCK403XFLDw
+	1WZbzm65kZVmi9343jvwd/ja3g6CV53ZIQvEiQlXEhvlimw3CvxjEh4shnJR4JuuQJkD5EXwRuh8z
+	U8JSnTvTeVO53JLrp1Gjv2FMVFZ22s5ySXvuUuKkL7MOixz79HHjmrGksHzllacFDRNywzlQe1KiD
+	nfstVFE9Y0xqNyEnGPYseURXxkn/W4rFM1yZjb6lvdp+lW+WYjB2B9g4iabBvf/OYb4kzZQcFMIkz
+	6roBDmRb4lssQE/NOfuldjkeG2BHyt0JqTbdQIUOofd4iW/vR7icB7ChaFGS2jxi9tEeJPEYtQv0c
+	OcJKeIU4VbP1iJ7q6UNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1naIgI-006Gcw-MX; Fri, 01 Apr 2022 14:55:18 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1naIhK-006H6m-QE; Fri, 01 Apr 2022 14:56:22 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1naIVB-006AHa-80; Fri, 01 Apr 2022 14:43:50 +0000
+ id 1naIVK-006AMk-O0; Fri, 01 Apr 2022 14:44:01 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id D76DBB8240F;
- Fri,  1 Apr 2022 14:43:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C1351C340EE;
- Fri,  1 Apr 2022 14:43:44 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 465D460AC9;
+ Fri,  1 Apr 2022 14:43:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5AC80C34112;
+ Fri,  1 Apr 2022 14:43:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1648824226;
- bh=LSzVRn0NDfhPSMCSW4F1VVYlmUgrs7tEe750gpeqMOs=;
+ s=k20201202; t=1648824237;
+ bh=5SOjOQu++aaei18q5/nxEsl1dvMapYKvR0+id35pwL4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ddy5brxVmk4E0iIcdxzLkArG1ZV86eSiO+DiNgmfspO6qP2o2jfAczO7LUEKED+QZ
- UQadmcfgaW39i5s+uI05duO/bMvn+4bvzTuMYSWAMBeR/LwX9jncx/ahIIyI697LTr
- cNTUmOIVFG8kwzSnhDNpkCkffEpLrcWEuMaV+MdryXi6sEUxx2nrKv0HnFCRMpbl90
- xkVu+3prTsv7xSchz7Ar+GHeBZ26mBxUqRDONzo2ONU84m7G+MBBOq3iGoshbYLpio
- Jiy90UIBxAb/6D55Gw0GvTMBMbBU+4C9NPwm8o9DsLTA0oZE/eilCVBsM41ElQ/Tkl
- xZz+o2pXhuPHg==
+ b=ZlCGCs1/OktvkGqhMLlxR27e9HsUqFFowQAkpJKzVzM3PmHByLpydrwPy6ktEgK+U
+ 4O9nqQRqukv8Nb1BojmaTEkDWECTrM/hRa1zpLCuIE4GHK7h6yrCEnUT7KAtH+420V
+ YU9Nhe8qk6L0UU5DUW2azs+k0GHGXLUxcAW4iMJZGZC32FJ9usZ36jfokLOpnc5D5S
+ G0m5jQr4Ve7ZIcuQnEaASAfHWVU0E86RYneQiJ4S3OielVqyNI51dFrShPHoqTQe/Y
+ qsrX+nDKOchz0GbRGQeeaW5yTEy1y0vMDZ52l2lNbMTJszf9396ATnhYD7aRXBVOO2
+ oaHVlC+NThdNQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Yang Li <yang.lee@linux.alibaba.com>,
- Abaci Robot <abaci@linux.alibaba.com>, Felix Fietkau <nbd@nbd.name>,
- Sasha Levin <sashal@kernel.org>, lorenzo.bianconi83@gmail.com,
- ryder.lee@mediatek.com, kvalo@kernel.org, davem@davemloft.net,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- xing.song@mediatek.com, linux-wireless@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 38/65] mt76: mt7615: Fix assigning negative
- values to unsigned variable
-Date: Fri,  1 Apr 2022 10:41:39 -0400
-Message-Id: <20220401144206.1953700-38-sashal@kernel.org>
+Cc: Robin Murphy <robin.murphy@arm.com>, Yunfei Wang <yf.wang@mediatek.com>,
+ Miles Chen <miles.chen@mediatek.com>, Joerg Roedel <jroedel@suse.de>,
+ Sasha Levin <sashal@kernel.org>, joro@8bytes.org, will@kernel.org,
+ matthias.bgg@gmail.com, iommu@lists.linux-foundation.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.10 45/65] iommu/iova: Improve 32-bit free space
+ estimate
+Date: Fri,  1 Apr 2022 10:41:46 -0400
+Message-Id: <20220401144206.1953700-45-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220401144206.1953700-1-sashal@kernel.org>
 References: <20220401144206.1953700-1-sashal@kernel.org>
@@ -63,8 +60,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220401_074349_470220_A6614393 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20220401_074359_016113_59DD881E 
+X-CRM114-Status: GOOD (  16.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,39 +78,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yang Li <yang.lee@linux.alibaba.com>
+From: Robin Murphy <robin.murphy@arm.com>
 
-[ Upstream commit 9273ffcc9a11942bd586bb42584337ef3962b692 ]
+[ Upstream commit 5b61343b50590fb04a3f6be2cdc4868091757262 ]
 
-Smatch reports the following:
-drivers/net/wireless/mediatek/mt76/mt7615/mac.c:1865
-mt7615_mac_adjust_sensitivity() warn: assigning (-110) to unsigned
-variable 'def_th'
-drivers/net/wireless/mediatek/mt76/mt7615/mac.c:1865
-mt7615_mac_adjust_sensitivity() warn: assigning (-98) to unsigned
-variable 'def_th'
+For various reasons based on the allocator behaviour and typical
+use-cases at the time, when the max32_alloc_size optimisation was
+introduced it seemed reasonable to couple the reset of the tracked
+size to the update of cached32_node upon freeing a relevant IOVA.
+However, since subsequent optimisations focused on helping genuine
+32-bit devices make best use of even more limited address spaces, it
+is now a lot more likely for cached32_node to be anywhere in a "full"
+32-bit address space, and as such more likely for space to become
+available from IOVAs below that node being freed.
 
-Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+At this point, the short-cut in __cached_rbnode_delete_update() really
+doesn't hold up any more, and we need to fix the logic to reliably
+provide the expected behaviour. We still want cached32_node to only move
+upwards, but we should reset the allocation size if *any* 32-bit space
+has become available.
+
+Reported-by: Yunfei Wang <yf.wang@mediatek.com>
+Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+Reviewed-by: Miles Chen <miles.chen@mediatek.com>
+Link: https://lore.kernel.org/r/033815732d83ca73b13c11485ac39336f15c3b40.1646318408.git.robin.murphy@arm.com
+Signed-off-by: Joerg Roedel <jroedel@suse.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/iommu/iova.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index 424be103093c..1465a92ea3fc 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -1626,7 +1626,7 @@ mt7615_mac_adjust_sensitivity(struct mt7615_phy *phy,
- 	struct mt7615_dev *dev = phy->dev;
- 	int false_cca = ofdm ? phy->false_cca_ofdm : phy->false_cca_cck;
- 	bool ext_phy = phy != &dev->phy;
--	u16 def_th = ofdm ? -98 : -110;
-+	s16 def_th = ofdm ? -98 : -110;
- 	bool update = false;
- 	s8 *sensitivity;
- 	int signal;
+diff --git a/drivers/iommu/iova.c b/drivers/iommu/iova.c
+index 1164d1a42cbc..4600e97acb26 100644
+--- a/drivers/iommu/iova.c
++++ b/drivers/iommu/iova.c
+@@ -138,10 +138,11 @@ __cached_rbnode_delete_update(struct iova_domain *iovad, struct iova *free)
+ 	cached_iova = rb_entry(iovad->cached32_node, struct iova, node);
+ 	if (free == cached_iova ||
+ 	    (free->pfn_hi < iovad->dma_32bit_pfn &&
+-	     free->pfn_lo >= cached_iova->pfn_lo)) {
++	     free->pfn_lo >= cached_iova->pfn_lo))
+ 		iovad->cached32_node = rb_next(&free->node);
++
++	if (free->pfn_lo < iovad->dma_32bit_pfn)
+ 		iovad->max32_alloc_size = iovad->dma_32bit_pfn;
+-	}
+ 
+ 	cached_iova = rb_entry(iovad->cached_node, struct iova, node);
+ 	if (free->pfn_lo >= cached_iova->pfn_lo)
 -- 
 2.34.1
 
