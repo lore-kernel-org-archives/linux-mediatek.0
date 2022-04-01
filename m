@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40A64C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 14:49:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56C28C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 14:49:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KwfLSecLmgh/bKXVGk0D4tuMSK25vCR5WPTdgaGxeZY=; b=XY/2cSSuPVlZAG
-	zC3OF/TGUI61+kkz99fRVBnQ1fgOmkAYj6Vqf4EZPxoElRiz/cG5DCzAWUCvWI/+tZItQZ9vcFz78
-	TpINfxSUJRct0EBlMxPci2IVKzMY0uFrYCYj7UCnoudKeDn8VYnA3u/31uZOWkZUXKjg7uvIXKUHz
-	FzuFrpMpHf+NnwLj2nidTenOaWzZSjEzQS7oKWBJ6GiLlNgay357ygFPsWNzRV/R3lm+Uj0k2hI/S
-	ZS957TUL+dnuSF/LMvKYokQSF64io5N2EsxAiVkNkjJlkrkonuo0hWPUTIcFkJtAFP0rvfvxGp4kH
-	haoFurqWT4QrlkmEM+uA==;
+	List-Owner; bh=IZFSdYh+UxLfk2YuoKK1GD8ePhKqmS/TTHWDww7jUUo=; b=k3hRqrY0wYjAFO
+	ko9JAwKjodO/vfzcoZSuiN2FsITxWyTdg5kDV4qpqzfacG1UvzRPKHFppogyhz3FoHg1Y9I3cMOpS
+	GdpHOcx/FdFW35XhnZTN93EgvMSnN3TkxmNkRGGy/b+XakqipGBEE6OS44ZFnDbp0TYBo0U4XfbXU
+	rfWglSea15VZdfzlsDlq4otZwRIBYXkWBLxLuT5KEoOkeX+dRM5POwCMAaX9toQzWO2OmCLo4CMYY
+	jfCMs0eTVuqcmv1HMWQuUMvTqFKKEquo8kkscsXJRmdUh7l497pAnNpnnD9NX7XJ42zF6W2t9houM
+	eTn3HnnYHGVpUQ26jE8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1naIaC-006DGW-JM; Fri, 01 Apr 2022 14:49:00 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1naIb2-006Dk4-7R; Fri, 01 Apr 2022 14:49:52 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1naIRz-0068hP-VB; Fri, 01 Apr 2022 14:40:33 +0000
+ id 1naISF-0068qA-TH; Fri, 01 Apr 2022 14:40:49 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 7B9DCB8240E;
- Fri,  1 Apr 2022 14:40:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DD15C2BBE4;
- Fri,  1 Apr 2022 14:40:27 +0000 (UTC)
+ by sin.source.kernel.org (Postfix) with ESMTPS id 116DBCE2590;
+ Fri,  1 Apr 2022 14:40:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 11B30C2BBE4;
+ Fri,  1 Apr 2022 14:40:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1648824029;
- bh=9Wc3k6gE6jmVeDTnq2FcMaJX6Ctbq58Pzce8ZBN2X+c=;
+ s=k20201202; t=1648824043;
+ bh=A+UDM1TEHilalJ8beCCwgyHiDJnZ7mGbfMSUawaUWNA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=HBi+scHJlORbjdv5JIfJwlokRmWF/VVoBT+JgjB+MadOsxqd1Mli4e+XMpHyZRM/9
- SWiPcWBhe5MBsBu6kOq8yKUjA9ddTY+nyz04JLcWWXdLiJFeoHFWeSX/nBAYybKe4C
- Lnzsu7iuNLjCtbZrc/wsqN1pmeUihiA9I2hYUKUI0L6pxtOWuXDSgrwOfZcX+VIwoS
- l4PUFWwgwMkq6+dB2d1gyDNrAnOKsxqaiBS4jqeCc7bNh6XXmhgjxr81hMVIEo/PIY
- lFtYAPumZbiZfPlzxlB0QzNYG/x59dSaUAA9JCl5vHpC7UVZBDBp+LtM9Hg2Er3Mqc
- XD0OXYMRUXI6A==
+ b=Voj/MDdiQUWoBU2uoAZmbhQ12+8JBtQ2N7VZ9c3UpkBKJHoY3Z8blPq5580GMMjWV
+ X7JgAIpmfiX3mlE8uMfnTpr2+wczv2ABlLMJZkNI/s6JmEd4bKPmP/BLqq6whbhDk4
+ jSTEz9vHWdnMnYlxtFrqyV77R6CPPcqYDADdvgjZaVazxJg/su7HBjf5EmmTll37i+
+ LQtDqH9pLYRIe192gi5n2ewsy89Ceem8SwN6zElc52va2CQtUY7vk8Yl68xJTrVoIl
+ Jh9pFyGa77LFDOjA8tsm7CWQX5GNphMF/p6E0gS/gYh2Jy5Y5cQ3qZTlhgGva6EdDb
+ h6nlZawDMxbTQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Johan Almbladh <johan.almbladh@anyfinetworks.com>,
- Felix Fietkau <nbd@nbd.name>, Sasha Levin <sashal@kernel.org>,
- lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com, kvalo@kernel.org,
- davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, Bo.Jiao@mediatek.com, shayne.chen@mediatek.com,
- greearb@candelatech.com, linux-wireless@vger.kernel.org,
+Cc: Yang Li <yang.lee@linux.alibaba.com>,
+ Abaci Robot <abaci@linux.alibaba.com>, Felix Fietkau <nbd@nbd.name>,
+ Sasha Levin <sashal@kernel.org>, lorenzo.bianconi83@gmail.com,
+ ryder.lee@mediatek.com, kvalo@kernel.org, davem@davemloft.net,
+ kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+ xing.song@mediatek.com, linux-wireless@vger.kernel.org,
  netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 58/98] mt76: mt7915: fix injected MPDU
- transmission to not use HW A-MSDU
-Date: Fri,  1 Apr 2022 10:37:02 -0400
-Message-Id: <20220401143742.1952163-58-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 61/98] mt76: mt7615: Fix assigning negative
+ values to unsigned variable
+Date: Fri,  1 Apr 2022 10:37:05 -0400
+Message-Id: <20220401143742.1952163-61-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220401143742.1952163-1-sashal@kernel.org>
 References: <20220401143742.1952163-1-sashal@kernel.org>
@@ -63,8 +63,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220401_074032_183108_CA177354 
-X-CRM114-Status: GOOD (  13.42  )
+X-CRM114-CacheID: sfid-20220401_074048_188137_52B979F3 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,46 +81,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Johan Almbladh <johan.almbladh@anyfinetworks.com>
+From: Yang Li <yang.lee@linux.alibaba.com>
 
-[ Upstream commit 28225a6ef80ebf46c46e5fbd5b1ee231a0b2b5b7 ]
+[ Upstream commit 9273ffcc9a11942bd586bb42584337ef3962b692 ]
 
-Before, the hardware would be allowed to transmit injected 802.11 MPDUs
-as A-MSDU. This resulted in corrupted frames being transmitted. Now,
-injected MPDUs are transmitted as-is, without A-MSDU.
+Smatch reports the following:
+drivers/net/wireless/mediatek/mt76/mt7615/mac.c:1865
+mt7615_mac_adjust_sensitivity() warn: assigning (-110) to unsigned
+variable 'def_th'
+drivers/net/wireless/mediatek/mt76/mt7615/mac.c:1865
+mt7615_mac_adjust_sensitivity() warn: assigning (-98) to unsigned
+variable 'def_th'
 
-The fix was verified with frame injection on MT7915 hardware, both with
-and without the injected frame being encrypted.
-
-If the hardware cannot do A-MSDU aggregation on MPDUs, this problem
-would also be present in the TX path where mac80211 does the 802.11
-encapsulation. However, I have not observed any such problem when
-disabling IEEE80211_HW_SUPPORTS_TX_ENCAP_OFFLOAD to force that mode.
-Therefore this fix is isolated to injected frames only.
-
-The same A-MSDU logic is also present in the mt7921 driver, so it is
-likely that this fix should be applied there too. I do not have access
-to mt7921 hardware so I have not been able to test that.
-
-Signed-off-by: Johan Almbladh <johan.almbladh@anyfinetworks.com>
+Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index ff613d705611..7691292526e0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -899,6 +899,7 @@ mt7915_mac_write_txwi_80211(struct mt7915_dev *dev, __le32 *txwi,
- 		val = MT_TXD3_SN_VALID |
- 		      FIELD_PREP(MT_TXD3_SEQ, IEEE80211_SEQ_TO_SN(seqno));
- 		txwi[3] |= cpu_to_le32(val);
-+		txwi[7] &= ~cpu_to_le32(MT_TXD7_HW_AMSDU);
- 	}
- 
- 	val = FIELD_PREP(MT_TXD7_TYPE, fc_type) |
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index f2704149834a..1f0507692174 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -1732,7 +1732,7 @@ mt7615_mac_adjust_sensitivity(struct mt7615_phy *phy,
+ 	struct mt7615_dev *dev = phy->dev;
+ 	int false_cca = ofdm ? phy->false_cca_ofdm : phy->false_cca_cck;
+ 	bool ext_phy = phy != &dev->phy;
+-	u16 def_th = ofdm ? -98 : -110;
++	s16 def_th = ofdm ? -98 : -110;
+ 	bool update = false;
+ 	s8 *sensitivity;
+ 	int signal;
 -- 
 2.34.1
 
