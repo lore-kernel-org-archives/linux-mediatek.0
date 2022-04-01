@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9568BC43217
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 14:34:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43889C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Apr 2022 14:36:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SdEIbzH8keYt9Q6a3FDTXcFJwHLOQelAKgy922IXK5Y=; b=Dg3I/VbaLo1Axq
-	ARSkTp0Uc2K4K0A2dX3JzpGGfcDx+DGsDCR3sEyBA/N7T0mBsQyluy4ekyXtoSkDfx6jr+AyVWCRA
-	FIYq72CUGiQdijbxR09O6SC7Cq3oLd4Pl/AW8SE7RNIotcuTyLeCpGhIOE+nSaHik+HNyWOWKF4c2
-	Q3MFKO8oxB0KvNPT6QAHvpZEY0eq5yVmmuNsWTfg4m3TMuMQKHnH1kPbw7Sd0dvqFiJFc1ktHZ1QP
-	Z/z9pjYMZ2phYx1TO0KlBV9Uvnvt/Y/HuvQO02lBnht11yQZUFYzfs+u/8jGLudp2vzFv32nt7xXG
-	LU106IcUz/vXbay1758w==;
+	List-Owner; bh=Vmn+24Eoiovv1CNR15Yy7N7DcZQZI3xsCAdSTXFXpNs=; b=aowrY3Wl9795s6
+	vIt0zSXcsoL0Z3QCev1M5CuAAkp0yhuIZ9mUZxtbtC5g0gp0HsYTjPSZp9Jstyg06wPQWbXLY1ZKC
+	mR6SxbHfWwkgScdaZcgAIeWrnCeqM8klxoB6ySE8oYk9p1rKuaYGsJOBO1VvvBuUwcwYKu/MsoQ9H
+	Fob2eFMYD6o0OK9xHohgwOObzjkS+54iYB8jsMb9wwldQeFwzEG9w8dy4FtLw/N6ptIuJuDX0y0lA
+	mZVnge8f+8FjwzkLGRa4MNcRfg/ktoPDnRJPiI7atdkGMEdmhJ3aSaRsXDD4Rjm2g0wG9CO0WDaQ6
+	5MGnBV25yGbxXLSyD/lQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1naIMY-0065Y3-3N; Fri, 01 Apr 2022 14:34:54 +0000
+	id 1naIO4-0066bv-4X; Fri, 01 Apr 2022 14:36:28 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1naIKC-0063ox-RB; Fri, 01 Apr 2022 14:32:30 +0000
+ id 1naILw-00657d-NJ; Fri, 01 Apr 2022 14:34:18 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 52DB061AFD;
- Fri,  1 Apr 2022 14:32:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A165BC340F2;
- Fri,  1 Apr 2022 14:32:25 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 5B3A860AAF;
+ Fri,  1 Apr 2022 14:34:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 450DEC36AE2;
+ Fri,  1 Apr 2022 14:34:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1648823547;
- bh=JUu1VZ2ZtuYvOXHjQxlxjlIy0uC2WzX5rrlXEFGLhO8=;
+ s=k20201202; t=1648823655;
+ bh=jxBC/NZl6SdyvjGxkAjx5Hzor1wxP2AEE/3/XiHN6gw=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=H9Huu3i440CBVCRZDrYQJD6BDvrcRwdTOK6AAYWtiTHPiisgj2oiv7uvtDfqKgGDq
- bxXnHa4Yr/QkqTijbrgfpxWCE1eXutCl94JH8F119ED8dUoj1SW1gE9JBJz2hYeaNz
- OHejhSzYbQ5xbiq7BvVXSvhPJkEjqSgLICkdnyTFpxFbt1Aq8o9y/nvjTZZozfsWAu
- BzCeSHQShF7Z/uq9fVnI1BDv3C9kC9e1JyJZJCcSlztrGDYvEP7QWy9NFp/cRWGXnb
- B+r52/iW2bF++q9Ty2rs5AVghnjTqMTUhnbqQYoUm45O9pYl6U4MQEXOB4Y38zmR0f
- c+JE+0QjLpRPQ==
+ b=ub813pWdbvjV7h8WF8PbWh6HJGaeQHeyTltPT/t4YBYKg12QyXdJc6cOjWo20/ofg
+ GW5/8enmlCKQftS91Y1Zy5XtKcowcdgoFM6u3Gb6N9vTMkSZYxLzT2LH//IZcuwkPk
+ ANeE5kOH0xbHd1mS+/jV3Jr9SoRF2WPDCJPEyfsNmsh43OQYZNfhFK6sCKPQLVxHQy
+ 2yqFfxVEVXZ/+rfL4iqjBc2PTM/BQUkrqHBh6UNsVyEnK6hLIfIVNcoBKl+bsM0nGX
+ aah2r9OurI0LKptnyp+CJz3pMnbCRKo78ffQyMWVM8w6kFKKUIo5F7omYchl51qLy/
+ YNEkY03RAykww==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Deren Wu <deren.wu@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Sean Wang <sean.wang@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+Cc: Ben Greear <greearb@candelatech.com>, Felix Fietkau <nbd@nbd.name>,
  Sasha Levin <sashal@kernel.org>, lorenzo.bianconi83@gmail.com,
  ryder.lee@mediatek.com, kvalo@kernel.org, davem@davemloft.net,
  kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.17 138/149] mt76: fix monitor mode crash with sdio
- driver
-Date: Fri,  1 Apr 2022 10:25:25 -0400
-Message-Id: <20220401142536.1948161-138-sashal@kernel.org>
+ sean.wang@mediatek.com, johannes.berg@intel.com, deren.wu@mediatek.com,
+ YN.Chen@mediatek.com, linux-wireless@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.16 029/109] mt76: mt7921: fix crash when startup
+ fails.
+Date: Fri,  1 Apr 2022 10:31:36 -0400
+Message-Id: <20220401143256.1950537-29-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220401142536.1948161-1-sashal@kernel.org>
-References: <20220401142536.1948161-1-sashal@kernel.org>
+In-Reply-To: <20220401143256.1950537-1-sashal@kernel.org>
+References: <20220401143256.1950537-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220401_073228_953211_A011E56B 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20220401_073416_880159_5A1F6341 
+X-CRM114-Status: GOOD (  12.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,53 +81,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+From: Ben Greear <greearb@candelatech.com>
 
-[ Upstream commit 123bc712b1de0805f9d683687e17b1ec2aba0b68 ]
+[ Upstream commit 827e7799c61b978fbc2cc9dac66cb62401b2b3f0 ]
 
-mt7921s driver may receive frames with fragment buffers. If there is a
-CTS packet received in monitor mode, the payload is 10 bytes only and
-need 6 bytes header padding after RXD buffer. However, only RXD in the
-first linear buffer, if we pull buffer size RXD-size+6 bytes with
-skb_pull(), that would trigger "BUG_ON(skb->len < skb->data_len)" in
-__skb_pull().
+If the nic fails to start, it is possible that the
+reset_work has already been scheduled.  Ensure the
+work item is canceled so we do not have use-after-free
+crash in case cleanup is called before the work item
+is executed.
 
-To avoid the nonlinear buffer issue, enlarge the RXD size from 128 to
-256 to make sure all MCU operation in linear buffer.
+This fixes crash on my x86_64 apu2 when mt7921k radio
+fails to work.  Radio still fails, but OS does not
+crash.
 
-[   52.007562] kernel BUG at include/linux/skbuff.h:2313!
-[   52.007578] Internal error: Oops - BUG: 0 [#1] PREEMPT SMP
-[   52.007987] pc : skb_pull+0x48/0x4c
-[   52.008015] lr : mt7921_queue_rx_skb+0x494/0x890 [mt7921_common]
-[   52.008361] Call trace:
-[   52.008377]  skb_pull+0x48/0x4c
-[   52.008400]  mt76s_net_worker+0x134/0x1b0 [mt76_sdio 35339a92c6eb7d4bbcc806a1d22f56365565135c]
-[   52.008431]  __mt76_worker_fn+0xe8/0x170 [mt76 ef716597d11a77150bc07e3fdd68eeb0f9b56917]
-[   52.008449]  kthread+0x148/0x3ac
-[   52.008466]  ret_from_fork+0x10/0x30
-
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+Signed-off-by: Ben Greear <greearb@candelatech.com>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 404c3d1a70d6..368a5c6455b1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -19,7 +19,7 @@
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 8c55562c1a8d..b3bd090a13f4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -260,6 +260,7 @@ static void mt7921_stop(struct ieee80211_hw *hw)
  
- #define MT_MCU_RING_SIZE	32
- #define MT_RX_BUF_SIZE		2048
--#define MT_SKB_HEAD_LEN		128
-+#define MT_SKB_HEAD_LEN		256
+ 	cancel_delayed_work_sync(&dev->pm.ps_work);
+ 	cancel_work_sync(&dev->pm.wake_work);
++	cancel_work_sync(&dev->reset_work);
+ 	mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
  
- #define MT_MAX_NON_AQL_PKT	16
- #define MT_TXQ_FREE_THR		32
+ 	mt7921_mutex_acquire(dev);
 -- 
 2.34.1
 
