@@ -4,74 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60E23C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Apr 2022 11:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55D7DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Apr 2022 16:04:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CM/D1qCFYr+BclECU5DtRgaCjwqqjN15yN22UK4QSVY=; b=nlL7ozL4F0/e3b
-	KlGUrm9p9DFnbK3xUwhjD2cqXs+80nqkRCELl304z9VfJ+bKq7OH4x4zEucnnDjBSeGYD5lK+FtFv
-	PTFh9vQ48jl6lHpt+VrcnCs1nVDYnLqwlL7vbrEuJ7ooC3nAnqaKpgZg0WKSJ+F0rVsEkwRB5Qiu4
-	oFWXwOZg2nHYiO+6JpcGF6I9PAEelhwOr+9CDQ9aWoTG7bY1ZKi1cm3Wg7/vHZCpGCJa+QQsLMH+6
-	O4rNonzQaonhzxrw2gybVJHS1QVGRwYlHS+HivxpmtPKiYsjYWP3CyQDaYeKbcy94pfAxtQUbweHK
-	VeB9MXpp3GxIR868v/PQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=n/LBKmUhj14TbFv+tF67XzWHVsVFghOjYL6pB/M1tbI=; b=jz/RboFrWGbHp9
+	qjenON1+jEkJV0JuK/8UlXiMZqII8+9EqfrLiSXWVVQhDrFIfflgmVQTfzQhF8JQxy03TH6bFLq2K
+	LtsriYUqPRXAcRUcnT2xuA4Xo3vqTV+gW5u/YXHewQysJHv93TeM8HoZQLedRp01v8HRp+IQN6i2L
+	+L7/6kexEvZw7PXTaeWB7Q9kntFBpGpts8Fc0Uf7thpbKx6kEnZAWXVIiOFUv9ZD1LQabXSOwbfmE
+	XzuD2gIcIzpxTkd4bkGDKQs1hsj//WCiSydS0Oh6T3d+1svK58x8nCmXv1MhHkPJznGo/N/7Qxnqp
+	nnhYkBVGz27gsU84pSmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nabys-008bmC-BH; Sat, 02 Apr 2022 11:31:46 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nagEP-009XCQ-CS; Sat, 02 Apr 2022 16:04:05 +0000
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nabyh-008bj5-Bb; Sat, 02 Apr 2022 11:31:36 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 570CFB8072F;
- Sat,  2 Apr 2022 11:31:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 22C65C340EC;
- Sat,  2 Apr 2022 11:31:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1648899092;
- bh=hHiaN9oQ8ExvCLuAqHVX8GhGvr0JDcc8KoNUT7YzQeQ=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=XKuIRDL43MpBpxr/RptIaKZKJR6EGeGWNkYtaNMCtIGwGXVqzA5i57XwxM54tVZ2N
- SjEfIUs8wDBMf81/FJiWI633TR1Bqh5IbwxY44eD1obDH5wSpDPvoGug1iLEbJ9zl9
- dF1SrQrFYf4IhpClRUs2MejERVXmb/nr9GW+YaBI2kfjIx6xNg5XE/DEuHkTwCKDZb
- O2itFS38dngcTS/XWun70RifGDQFMBuryMyU/DyVxwpJ040NeR7+L9eAfaXo8lFnrU
- 4E+xDrArOnbh4T5cLQkNUSgcuoNZyvBWF1OM+aRt90V9CuznkyCNGqjf2JwyKD3IEg
- jiimG0s8JPYjw==
-Message-ID: <ac0e3336-f9eb-def9-68ea-ab49e2c467a1@kernel.org>
-Date: Sat, 2 Apr 2022 13:31:22 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH 1/3] dt-bindings: devfreq: mediatek: add mtk cci devfreq
- dt-bindings
-Content-Language: en-US
-To: Jia-Wei Chang <jia-wei.chang@mediatek.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>,
+ id 1nagE5-009X92-Qf; Sat, 02 Apr 2022 16:03:47 +0000
+Received: by mail-pf1-x435.google.com with SMTP id w7so5157759pfu.11;
+ Sat, 02 Apr 2022 09:03:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=mnneJ6Ho0S+IA/D1ZV6cBxZg4vItd7oSWatM2pfG5Pg=;
+ b=W5xsRbbpSLi9p1T6Laus3rnc5bGfdBkLjIkZ/QY9875Zszcx8AxGQn7R+lEbw4aQd9
+ cmTn4S2OM9wUBWaZCSqB+MRLmKhXcO4Nc0YbGUFBTF9xVdsBhuGy1Q7YOz/+XgdNrqm/
+ OmyFJ+YeNVw6W3EzgIlGFTKlEqwA0LCLm0GpVMfl6bzOfEAGx+J4t6plSWsfWNEpEkoP
+ RhRRTsMcq553SQXzqBCf47WxBS1EsjEcVFICBzyOEpNfoM5tAnRg4wvEndLo8WaOFVy1
+ o7WnqkHR73KTuHJ8dUmaktGxFwmxCbIv4yG/y+N9bPJ7BJ3hfqZhTtlwxUcbGJMFVtg/
+ bBtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=mnneJ6Ho0S+IA/D1ZV6cBxZg4vItd7oSWatM2pfG5Pg=;
+ b=TcxYKLYbExama7h31D2Nps0zD6AmFNXlxfeK9Y2orcWczQSWWECPJWx6Y5F1wGeNBk
+ BlajEEj/Z+S4LrtDowHaWKaezdoXbX9qpcml1BRzKhOBP92jNU39oRQgU1BnnuAjr998
+ jj1YBUPa7598s+P6tBvG/d5ykPvyFICnOt80jLRjXBgEpYa0BNZq1vsveKvI9LF4l28y
+ VgdJDwFBiOGAdb/r7qngp01T58FOJT1MamaQ9puaYSalSlnSpo3t5BkllmH27mC/t4X9
+ qX1xXQWwO5L4Ndi/tYfPSVqVgLcajS7opIebrBWq4fvtAg/1+sxhZ6BRkEKST4zWUPt2
+ xCyg==
+X-Gm-Message-State: AOAM530CC6NACk1Nes9W1ulKG4Ufcj6NlUJOXdNcKKwiBkHZuf70NAo9
+ 0jY7nBMrzydG5o8aIMbIX7Lm0qjp4bwxA7Eygy4=
+X-Google-Smtp-Source: ABdhPJwQSFddjPPGwDTDrCrAyDtU8UoQsvWTSrQlSFtt+quKPSBuORiJM8uSNZHpJoKZHQF/gH0ZCQ==
+X-Received: by 2002:a05:6a00:ac1:b0:4f1:29e4:b3a1 with SMTP id
+ c1-20020a056a000ac100b004f129e4b3a1mr49940986pfl.63.1648915420250; 
+ Sat, 02 Apr 2022 09:03:40 -0700 (PDT)
+Received: from guoguo-omen.lan ([222.201.153.219])
+ by smtp.gmail.com with ESMTPSA id
+ p3-20020a056a000b4300b004faee36ea56sm6733974pfo.155.2022.04.02.09.03.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 02 Apr 2022 09:03:39 -0700 (PDT)
+From: Chuanhong Guo <gch981213@gmail.com>
+To: linux-mtd@lists.infradead.org
+Cc: Chuanhong Guo <gch981213@gmail.com>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, fan.chen@mediatek.com, louis.yu@mediatek.com,
- roger.lu@mediatek.com, Allen-yy.Lin@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com, hsinyi@google.com,
- Jia-Wei Chang <jia-wei.chang@mediatek.corp-partner.google.com>
-References: <20220307122513.11822-1-jia-wei.chang@mediatek.com>
- <20220307122513.11822-2-jia-wei.chang@mediatek.com>
- <bf418e08-2e32-5e61-abd8-abb0d8f5c080@canonical.com>
- <13482b1b4244df5c0c0a4d6a60cdb2a7ba88500a.camel@mediatek.com>
- <aa34eccf-ef08-4a8f-7a6c-7fbd05bd54b6@kernel.org>
- <126e0905c2eb9f22a0be46dd7aa8ac891622346d.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-In-Reply-To: <126e0905c2eb9f22a0be46dd7aa8ac891622346d.camel@mediatek.com>
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Pratyush Yadav <p.yadav@ti.com>, Paul Cercueil <paul@crapouillou.net>,
+ Yu Kuai <yukuai3@huawei.com>, Cai Huoqing <cai.huoqing@linux.dev>,
+ RogerCC Lin <rogercc.lin@mediatek.com>,
+ Boris Brezillon <bbrezillon@kernel.org>,
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+ linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support), 
+ linux-kernel@vger.kernel.org (open list)
+Subject: [PATCH] mtd: rawnand: fix ecc parameters for mt7622
+Date: Sun,  3 Apr 2022 00:03:13 +0800
+Message-Id: <20220402160315.919094-1-gch981213@gmail.com>
+X-Mailer: git-send-email 2.35.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220402_043135_596978_A9316190 
-X-CRM114-Status: GOOD (  15.96  )
+X-CRM114-CacheID: sfid-20220402_090345_905864_D99F4F43 
+X-CRM114-Status: GOOD (  15.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,45 +96,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 01/04/2022 15:39, Jia-Wei Chang wrote:
->>>>
->>>>> +
->>>>> +  operating-points-v2:
->>>>> +    description:
->>>>> +      For details, please refer to
->>>>> +      Documentation/devicetree/bindings/opp/opp-v2.yaml
->>>>> +
->>>>> +  opp-table: true
->>>>
->>>> Same comments as your CPU freq bindings apply.
->>>
->>> mtk-cci-devfreq is a new driver and its arch is same as mediatek-
->>> cpufreq so that the properties of mtk-cci are refer to mediatek-
->>> cpufreq 
->>> bindings.
->>> operating-point-v2 is used to determine the voltage and frequency
->>> of
->>> dvfs which is further utilized by mtk-cci-devfreq.
->>
->> "operating-point-v2" is understood, but the same as in cpufreq
->> bindings,
->> I am questioning why do you have "opp-table: true". It's a bit
->> confusing, so maybe I miss something?
-> 
-> Yes, you're correct.
-> "opp-table: true" should be removed.
-> I messed it up.
+According to the datasheet, mt7622 only has 5 ECC capabilities instead
+of 7, and the decoding error register is arranged  as follows:
++------+---------+---------+---------+---------+
+| Bits |  19:15  |  14:10  |   9:5   |   4:0   |
++------+---------+---------+---------+---------+
+| Name | ERRNUM3 | ERRNUM2 | ERRNUM1 | ERRNUM0 |
++------+---------+---------+---------+---------+
+This means err_mask should be 0x1f instead of 0x3f and the number of
+bits shifted in mtk_ecc_get_stats should be 5 instead of 8.
 
-No, I think I was wrong. The opp-table pretty frequently is embedded in
-the the device node itself. The operating-points-v2 references it.
+This commit introduces err_shift for the difference in this register
+and fix other existing parameters.
 
-You don't use it in the example, but it might be a valid usage, so it
-can stay. Sorry for the confusion, it passed some time since I looked at
-OPP bindings.
+Public MT7622 reference manual can be found on [0] and the info this
+commit is based on is from page 656 and page 660.
 
+[0]: https://wiki.banana-pi.org/Banana_Pi_BPI-R64#Documents
 
-Best regards,
-Krzysztof
+Fixes: 98dea8d71931 ("mtd: nand: mtk: Support MT7622 NAND flash controller.")
+Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
+---
+ drivers/mtd/nand/raw/mtk_ecc.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/mtd/nand/raw/mtk_ecc.c b/drivers/mtd/nand/raw/mtk_ecc.c
+index e7df3dac705e..49ab3448b9b1 100644
+--- a/drivers/mtd/nand/raw/mtk_ecc.c
++++ b/drivers/mtd/nand/raw/mtk_ecc.c
+@@ -43,6 +43,7 @@
+ 
+ struct mtk_ecc_caps {
+ 	u32 err_mask;
++	u32 err_shift;
+ 	const u8 *ecc_strength;
+ 	const u32 *ecc_regs;
+ 	u8 num_ecc_strength;
+@@ -76,7 +77,7 @@ static const u8 ecc_strength_mt2712[] = {
+ };
+ 
+ static const u8 ecc_strength_mt7622[] = {
+-	4, 6, 8, 10, 12, 14, 16
++	4, 6, 8, 10, 12
+ };
+ 
+ enum mtk_ecc_regs {
+@@ -221,7 +222,7 @@ void mtk_ecc_get_stats(struct mtk_ecc *ecc, struct mtk_ecc_stats *stats,
+ 	for (i = 0; i < sectors; i++) {
+ 		offset = (i >> 2) << 2;
+ 		err = readl(ecc->regs + ECC_DECENUM0 + offset);
+-		err = err >> ((i % 4) * 8);
++		err = err >> ((i % 4) * ecc->caps->err_shift);
+ 		err &= ecc->caps->err_mask;
+ 		if (err == ecc->caps->err_mask) {
+ 			/* uncorrectable errors */
+@@ -449,6 +450,7 @@ EXPORT_SYMBOL(mtk_ecc_get_parity_bits);
+ 
+ static const struct mtk_ecc_caps mtk_ecc_caps_mt2701 = {
+ 	.err_mask = 0x3f,
++	.err_shift = 8,
+ 	.ecc_strength = ecc_strength_mt2701,
+ 	.ecc_regs = mt2701_ecc_regs,
+ 	.num_ecc_strength = 20,
+@@ -459,6 +461,7 @@ static const struct mtk_ecc_caps mtk_ecc_caps_mt2701 = {
+ 
+ static const struct mtk_ecc_caps mtk_ecc_caps_mt2712 = {
+ 	.err_mask = 0x7f,
++	.err_shift = 8,
+ 	.ecc_strength = ecc_strength_mt2712,
+ 	.ecc_regs = mt2712_ecc_regs,
+ 	.num_ecc_strength = 23,
+@@ -468,10 +471,11 @@ static const struct mtk_ecc_caps mtk_ecc_caps_mt2712 = {
+ };
+ 
+ static const struct mtk_ecc_caps mtk_ecc_caps_mt7622 = {
+-	.err_mask = 0x3f,
++	.err_mask = 0x1f,
++	.err_shift = 5,
+ 	.ecc_strength = ecc_strength_mt7622,
+ 	.ecc_regs = mt7622_ecc_regs,
+-	.num_ecc_strength = 7,
++	.num_ecc_strength = 5,
+ 	.ecc_mode_shift = 4,
+ 	.parity_bits = 13,
+ 	.pg_irq_sel = 0,
+-- 
+2.35.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
