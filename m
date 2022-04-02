@@ -4,82 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55D7DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Apr 2022 16:04:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB4EBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Apr 2022 16:21:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=n/LBKmUhj14TbFv+tF67XzWHVsVFghOjYL6pB/M1tbI=; b=jz/RboFrWGbHp9
-	qjenON1+jEkJV0JuK/8UlXiMZqII8+9EqfrLiSXWVVQhDrFIfflgmVQTfzQhF8JQxy03TH6bFLq2K
-	LtsriYUqPRXAcRUcnT2xuA4Xo3vqTV+gW5u/YXHewQysJHv93TeM8HoZQLedRp01v8HRp+IQN6i2L
-	+L7/6kexEvZw7PXTaeWB7Q9kntFBpGpts8Fc0Uf7thpbKx6kEnZAWXVIiOFUv9ZD1LQabXSOwbfmE
-	XzuD2gIcIzpxTkd4bkGDKQs1hsj//WCiSydS0Oh6T3d+1svK58x8nCmXv1MhHkPJznGo/N/7Qxnqp
-	nnhYkBVGz27gsU84pSmg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=okkqeEeNl7pLQVQp0h8M0N70n1jAVdUggWtvPbNKAcA=; b=Js/6rRfPGGltWy
+	SleDEl4qiJNdfarH+VZ8abCqmako5rHKpg+rFEbAFQRrvaQ5DR67DS+jvIw5QjzTYJ+2LSicDomzW
+	c7iRIBcburPRVmxBskubAYv+HddPb2IQnvyhxRC3qXcsgSuh45JXdEPFDZ7yL/w5/rUZjTBQ0IYV/
+	gY+m3zoSmxzU+QYsk2f+03vEFMY9wKkWyjBcJAbz8MfXK0+ot3F8s+30mtU6GH69D67uIJLEEy2oU
+	/bTFm/CQswJnL83ntQr8GpNkzXRpqZUvzudZdVPNElByDw9XuxGThgy6NSLFEXdahp2Q8oi0z/xTd
+	D26k+sBEdscuVIoEWZNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nagEP-009XCQ-CS; Sat, 02 Apr 2022 16:04:05 +0000
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+	id 1nagV5-009aRK-AS; Sat, 02 Apr 2022 16:21:19 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nagE5-009X92-Qf; Sat, 02 Apr 2022 16:03:47 +0000
-Received: by mail-pf1-x435.google.com with SMTP id w7so5157759pfu.11;
- Sat, 02 Apr 2022 09:03:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=mnneJ6Ho0S+IA/D1ZV6cBxZg4vItd7oSWatM2pfG5Pg=;
- b=W5xsRbbpSLi9p1T6Laus3rnc5bGfdBkLjIkZ/QY9875Zszcx8AxGQn7R+lEbw4aQd9
- cmTn4S2OM9wUBWaZCSqB+MRLmKhXcO4Nc0YbGUFBTF9xVdsBhuGy1Q7YOz/+XgdNrqm/
- OmyFJ+YeNVw6W3EzgIlGFTKlEqwA0LCLm0GpVMfl6bzOfEAGx+J4t6plSWsfWNEpEkoP
- RhRRTsMcq553SQXzqBCf47WxBS1EsjEcVFICBzyOEpNfoM5tAnRg4wvEndLo8WaOFVy1
- o7WnqkHR73KTuHJ8dUmaktGxFwmxCbIv4yG/y+N9bPJ7BJ3hfqZhTtlwxUcbGJMFVtg/
- bBtQ==
+ id 1nagUu-009aHm-P2
+ for linux-mediatek@lists.infradead.org; Sat, 02 Apr 2022 16:21:10 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id bg10so11765631ejb.4
+ for <linux-mediatek@lists.infradead.org>; Sat, 02 Apr 2022 09:21:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=mnGt6W+Yxzjo9+/+HIyfnhtyS1WFSMtagQnoizbL1R0=;
+ b=GJwZFGWMfHIBnC1wfxgc9r7rpLndt29L5PyMvPW1IFf+DRW2csbfA1olTD5scsM+SR
+ dR20QG4DtEqIoAKSZfVB4YCPysxcGzrePbMs9EpqU5RRbYmg2hVdja0oIjKH7Q8YA18B
+ Ah0LQQJJP56KZFtnNdO0nkaND7gz4n3Mrn3XDBRcfjc6LgMtUZpv/rrn7xdnr6upoqWK
+ G9QU/IDTJ3hwr48aPieGhLZ5ynK6xU/mXHC7pPFzx/3dhQEriL12ADhztEptk8Aaf7iP
+ 0DeOfCQPgiZCPa29SoIWawVINwv3wuyypuV7fOLFHGwxOoLf4teOF0IXwcxqANHymCg8
+ nkwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=mnneJ6Ho0S+IA/D1ZV6cBxZg4vItd7oSWatM2pfG5Pg=;
- b=TcxYKLYbExama7h31D2Nps0zD6AmFNXlxfeK9Y2orcWczQSWWECPJWx6Y5F1wGeNBk
- BlajEEj/Z+S4LrtDowHaWKaezdoXbX9qpcml1BRzKhOBP92jNU39oRQgU1BnnuAjr998
- jj1YBUPa7598s+P6tBvG/d5ykPvyFICnOt80jLRjXBgEpYa0BNZq1vsveKvI9LF4l28y
- VgdJDwFBiOGAdb/r7qngp01T58FOJT1MamaQ9puaYSalSlnSpo3t5BkllmH27mC/t4X9
- qX1xXQWwO5L4Ndi/tYfPSVqVgLcajS7opIebrBWq4fvtAg/1+sxhZ6BRkEKST4zWUPt2
- xCyg==
-X-Gm-Message-State: AOAM530CC6NACk1Nes9W1ulKG4Ufcj6NlUJOXdNcKKwiBkHZuf70NAo9
- 0jY7nBMrzydG5o8aIMbIX7Lm0qjp4bwxA7Eygy4=
-X-Google-Smtp-Source: ABdhPJwQSFddjPPGwDTDrCrAyDtU8UoQsvWTSrQlSFtt+quKPSBuORiJM8uSNZHpJoKZHQF/gH0ZCQ==
-X-Received: by 2002:a05:6a00:ac1:b0:4f1:29e4:b3a1 with SMTP id
- c1-20020a056a000ac100b004f129e4b3a1mr49940986pfl.63.1648915420250; 
- Sat, 02 Apr 2022 09:03:40 -0700 (PDT)
-Received: from guoguo-omen.lan ([222.201.153.219])
- by smtp.gmail.com with ESMTPSA id
- p3-20020a056a000b4300b004faee36ea56sm6733974pfo.155.2022.04.02.09.03.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 02 Apr 2022 09:03:39 -0700 (PDT)
-From: Chuanhong Guo <gch981213@gmail.com>
-To: linux-mtd@lists.infradead.org
-Cc: Chuanhong Guo <gch981213@gmail.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Pratyush Yadav <p.yadav@ti.com>, Paul Cercueil <paul@crapouillou.net>,
- Yu Kuai <yukuai3@huawei.com>, Cai Huoqing <cai.huoqing@linux.dev>,
- RogerCC Lin <rogercc.lin@mediatek.com>,
- Boris Brezillon <bbrezillon@kernel.org>,
- linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
- linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support), 
- linux-kernel@vger.kernel.org (open list)
-Subject: [PATCH] mtd: rawnand: fix ecc parameters for mt7622
-Date: Sun,  3 Apr 2022 00:03:13 +0800
-Message-Id: <20220402160315.919094-1-gch981213@gmail.com>
-X-Mailer: git-send-email 2.35.1
+ bh=mnGt6W+Yxzjo9+/+HIyfnhtyS1WFSMtagQnoizbL1R0=;
+ b=h90JGB8MFkUOcARtQ2Ywmws8kOeN0tvi8LZSLNMPPsXWYNWi29hwyop5PxcLsAzKqn
+ EKpEjHtd3Av8h6TGBIMvaJbRnFPjdRBq9lE/eSC57wuGXhY2bD6JRf7ufxutQjGGsMmy
+ KqpXMoucPPQnroqnzQyQZXP37PMcM/1Vbi9nnaKOQICUDlGoF73E9fUiVyJQUweE+SWD
+ b4o5KVBQrEqN3B2Vb87jG4ivB2QXvYEoBEkg4APZ0gp+LkLQi+4kuB7Jax816ctBBJwX
+ M3sOZoCTuKKmr4k2Dp3sIU3M/JzPeAiGkf1bLx8bKta3CvLLET21gUD/ME2mqdt/AEm+
+ b0gw==
+X-Gm-Message-State: AOAM530aJk7Gg3O5FUEqae/Pc8PK5iDxkiby2lG8MCeh9KhncUjdhbOe
+ 5R2XpPiuDTHt9f930A5Nlouy5w==
+X-Google-Smtp-Source: ABdhPJwr6iufJ5ANsNQoEWLNc+tMOFQ/Hxw54wk/gFKN6u6OnQXSWTkJJ9vsUMAaFPtBFxpnVzSNBw==
+X-Received: by 2002:a17:907:9718:b0:6e0:6faa:3aa with SMTP id
+ jg24-20020a170907971800b006e06faa03aamr4338206ejc.307.1648916464849; 
+ Sat, 02 Apr 2022 09:21:04 -0700 (PDT)
+Received: from [192.168.0.171] (xdsl-188-155-201-27.adslplus.ch.
+ [188.155.201.27]) by smtp.gmail.com with ESMTPSA id
+ e11-20020a50becb000000b0041b64129200sm2709359edk.50.2022.04.02.09.21.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 02 Apr 2022 09:21:04 -0700 (PDT)
+Message-ID: <7d66c6ce-80d9-3a09-b34c-7ae5a7763465@linaro.org>
+Date: Sat, 2 Apr 2022 18:21:03 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v13 1/2] dt-bindings: mmc: mtk-sd: increase reg items
+Content-Language: en-US
+To: Tinghan Shen <tinghan.shen@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Wenbin Mei <wenbin.mei@mediatek.com>
+Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, ryder.lee@kernel.org,
+ wenst@chromium.org, chunfeng.yun@mediatek.com
+References: <20220330094532.21721-1-tinghan.shen@mediatek.com>
+ <20220330094532.21721-2-tinghan.shen@mediatek.com>
+ <aebbb5c8-1d27-5e66-e18a-e2b647bc8cb4@gmail.com>
+ <53cb53b8614aa39e0785b99f46b708ad201c3dd8.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <53cb53b8614aa39e0785b99f46b708ad201c3dd8.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220402_090345_905864_D99F4F43 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20220402_092108_883936_5DE0D49E 
+X-CRM114-Status: GOOD (  16.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,93 +104,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-According to the datasheet, mt7622 only has 5 ECC capabilities instead
-of 7, and the decoding error register is arranged  as follows:
-+------+---------+---------+---------+---------+
-| Bits |  19:15  |  14:10  |   9:5   |   4:0   |
-+------+---------+---------+---------+---------+
-| Name | ERRNUM3 | ERRNUM2 | ERRNUM1 | ERRNUM0 |
-+------+---------+---------+---------+---------+
-This means err_mask should be 0x1f instead of 0x3f and the number of
-bits shifted in mtk_ecc_get_stats should be 5 instead of 8.
+On 01/04/2022 04:18, Tinghan Shen wrote:
+> Hi Matthias,
+> 
+> On Thu, 2022-03-31 at 12:54 +0200, Matthias Brugger wrote:
+>>
+>> On 30/03/2022 11:45, Tinghan Shen wrote:
+>>> MediaTek has a new version of mmc IP since mt8183. Some IO registers
+>>> are moved to top to improve hardware design and named as "host top
+>>> registers".
+>>>
+>>> Add host top register in the reg binding description for mt8183 and
+>>> successors.
+>>>
+>>> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+>>> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+>>> ---
+>>>   Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 15 ++++++++++++++-
+>>>   1 file changed, 14 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>> b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>> index 297ada03e3de..2a2e9fa8c188 100644
+>>> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>> @@ -40,7 +40,10 @@ properties:
+>>>             - const: mediatek,mt8183-mmc
+>>>   
+>>>     reg:
+>>> -    maxItems: 1
+>>> +    minItems: 1
+>>
+>>  From my understanding adding minItems is correct, but you need to add also 
+>> maxItems: 2 as there can't be more then two register entries.
+>>
+>> Regards,
+>> Matthias
+>>
+> 
+> After add "maxItems: 2", I get following message when doing dt_binding_check.
+> from this message, it looks like that maxItems is not necessary.
 
-This commit introduces err_shift for the difference in this register
-and fix other existing parameters.
 
-Public MT7622 reference manual can be found on [0] and the info this
-commit is based on is from page 656 and page 660.
+That's correct, you don't need them because "items" defines it.
 
-[0]: https://wiki.banana-pi.org/Banana_Pi_BPI-R64#Documents
 
-Fixes: 98dea8d71931 ("mtd: nand: mtk: Support MT7622 NAND flash controller.")
-Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
----
- drivers/mtd/nand/raw/mtk_ecc.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/mtd/nand/raw/mtk_ecc.c b/drivers/mtd/nand/raw/mtk_ecc.c
-index e7df3dac705e..49ab3448b9b1 100644
---- a/drivers/mtd/nand/raw/mtk_ecc.c
-+++ b/drivers/mtd/nand/raw/mtk_ecc.c
-@@ -43,6 +43,7 @@
- 
- struct mtk_ecc_caps {
- 	u32 err_mask;
-+	u32 err_shift;
- 	const u8 *ecc_strength;
- 	const u32 *ecc_regs;
- 	u8 num_ecc_strength;
-@@ -76,7 +77,7 @@ static const u8 ecc_strength_mt2712[] = {
- };
- 
- static const u8 ecc_strength_mt7622[] = {
--	4, 6, 8, 10, 12, 14, 16
-+	4, 6, 8, 10, 12
- };
- 
- enum mtk_ecc_regs {
-@@ -221,7 +222,7 @@ void mtk_ecc_get_stats(struct mtk_ecc *ecc, struct mtk_ecc_stats *stats,
- 	for (i = 0; i < sectors; i++) {
- 		offset = (i >> 2) << 2;
- 		err = readl(ecc->regs + ECC_DECENUM0 + offset);
--		err = err >> ((i % 4) * 8);
-+		err = err >> ((i % 4) * ecc->caps->err_shift);
- 		err &= ecc->caps->err_mask;
- 		if (err == ecc->caps->err_mask) {
- 			/* uncorrectable errors */
-@@ -449,6 +450,7 @@ EXPORT_SYMBOL(mtk_ecc_get_parity_bits);
- 
- static const struct mtk_ecc_caps mtk_ecc_caps_mt2701 = {
- 	.err_mask = 0x3f,
-+	.err_shift = 8,
- 	.ecc_strength = ecc_strength_mt2701,
- 	.ecc_regs = mt2701_ecc_regs,
- 	.num_ecc_strength = 20,
-@@ -459,6 +461,7 @@ static const struct mtk_ecc_caps mtk_ecc_caps_mt2701 = {
- 
- static const struct mtk_ecc_caps mtk_ecc_caps_mt2712 = {
- 	.err_mask = 0x7f,
-+	.err_shift = 8,
- 	.ecc_strength = ecc_strength_mt2712,
- 	.ecc_regs = mt2712_ecc_regs,
- 	.num_ecc_strength = 23,
-@@ -468,10 +471,11 @@ static const struct mtk_ecc_caps mtk_ecc_caps_mt2712 = {
- };
- 
- static const struct mtk_ecc_caps mtk_ecc_caps_mt7622 = {
--	.err_mask = 0x3f,
-+	.err_mask = 0x1f,
-+	.err_shift = 5,
- 	.ecc_strength = ecc_strength_mt7622,
- 	.ecc_regs = mt7622_ecc_regs,
--	.num_ecc_strength = 7,
-+	.num_ecc_strength = 5,
- 	.ecc_mode_shift = 4,
- 	.parity_bits = 13,
- 	.pg_irq_sel = 0,
--- 
-2.35.1
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
