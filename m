@@ -4,91 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59CF4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Apr 2022 13:23:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2A7BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Apr 2022 13:28:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FMWeWvholZ/nH6eaXWULfvc8lESOjIxMq2nnydL+Yp8=; b=JveXDSoB4ncU/7
-	KMNFY1/GCW80bY5E7ChySgg/ydYXBZlB+RjR+ZaCyDTldeBfLefxUJpeFCnZhTvcdPxhr0Xipe4WG
-	DqHrN3JgiTrsANekLNNtSnjeWOZvTdYfTbrH2t4+2XIU9Jvv3+jxl5h5w5ccg6YQVlTMG60ftEBCE
-	c4RXOhuhZSKFc1SpNlOAKHUMP2Mr1NMr33uIjCI7xFm3zXruTc8Fh/oRsFuq+rZQnExaw/tTQ1M/9
-	nPzaZpqDghewjyjMGal/Cx6tli9aSepNpBpow+Tvshs7wrDEHHkmjyy/qES2XteKQnkkzwtJZ5e/h
-	ssQjGw2G5oFxwrs/c+mA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kZQAYIvZX7br8rLl1guDGC4ZmsYFuMXaPkedIF0Yikk=; b=nbRMFzdja8AeIe
+	fdaY0qYKfM3Cl/DWdjNCYP1IMuoMZPjZk+qzfVRysQdLPAq4etzrvksi0I7xz0QPcxIqqj0xxfgWh
+	pvPh8Ef8muZnlyLrQIH3vFVw856divxtjgm3nywT4eN2kW0QOPhVtViHMJq4Re7nnxXbdpy3xDi2u
+	jHAjy2pCofkzNMq/ZJi0SZ+r+lxymYtlM1zQ8zqw5YteTqGCr2kDCxECTVzfd8kKJN48qAMQCtGjb
+	i7mcuUtkLPDlp+llzP52cox/PMJGCvr0Gsb2Q2GiJ/8wVrJidc3NtVzN3avo2uIESmxRDMG5dIcqU
+	/Qw3Idsx/fWkk3oA9fjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbMfp-00F5Bv-QI; Mon, 04 Apr 2022 13:23:13 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1nbMkt-00F6o3-NA; Mon, 04 Apr 2022 13:28:27 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbMc4-00F3Pu-VF; Mon, 04 Apr 2022 13:19:22 +0000
-Received: by mail-pf1-x436.google.com with SMTP id h24so4605431pfo.6;
- Mon, 04 Apr 2022 06:19:17 -0700 (PDT)
+ id 1nbMiW-00F63E-FC; Mon, 04 Apr 2022 13:26:01 +0000
+Received: by mail-pl1-x636.google.com with SMTP id n9so3455845plc.4;
+ Mon, 04 Apr 2022 06:26:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=tS+NAQ+2D7agIki50tkRPL+/ag2LxAizn5hQjD0npls=;
- b=PET9hD0TOOlxzcMYMOfT1jjstVzlrGrI95uhZTqi8ziGnO+Kvzo8GzeLdfN9KuJXb5
- dEsJUm8Ddlf7AwD3XMS/Xr8vEud0/HcAkCM0vpQqVUIo8JjWdELmuNe66OFwFOZYoQjD
- 7GozIrPEnrDgYaGmcuESoUq0X2y19O4CebzlfArPMfAixrP6qVfjH1ahPxV5u78/OZUQ
- LXgDU3mxfbtjB0Rbo89eQDw/bsgR9ZE2pOXv96OiS5d2B8UFWtP156ujm7OwzrM5GT+b
- w/fHjp/86V7nVlbqjbBrRuQvdbxRVNf3ERNvNnvZf1XyiKXXL0bQ29RgW/qP0Lbej6Uh
- Oayg==
+ h=from:to:cc:subject:date:message-id;
+ bh=FlBsVFEKh4j3VAt6LeTKFsoKsuruo0DcZ5wQSPKgGVo=;
+ b=gZxNZUcVpHlb+PC0mU029qi8y3yaBV33LkmOZB+zCVqsXIYEND5s0ftLAFjpG+DSvG
+ 3fre2ImlaHs0IToAEnvx8Ge+DDk9/z+wpD4ZGw38SCtRfsEbEO4pjAklfsQgrWcCtlq+
+ /NChUBrxhCdkVoxZCR6VfOXHeSigso1sRZ7Fc/pZ1khBXeg8xEX1EpjsMh7+AVabZYn2
+ 8yv09bnMza+Qfv1P1GRodT8QGwJ1rbgkjTpmC0siV2jwaa8Rslz2GWkomEftev/V7mHa
+ ewRE3nXenMD+InkvCKfXlyVm/K04usRxrRtQbfpqdnt9H2c9hJBLDrzbLpkOlOI6OBTZ
+ IbFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=tS+NAQ+2D7agIki50tkRPL+/ag2LxAizn5hQjD0npls=;
- b=joKmJXLqy3lRQ0HUVn6p+4k+lmGob75VPUt7A3zUQs5LnUqj79/4q7hBYK39a32Sol
- l0EcvWmwyJMJ9VSkJzAtdXXb7dcdjuBhxnAriEkj/DH7gGNAyuici83GaL0c6pbXChk9
- t1sWcR2ewIEoyXaTNC4We/938TWwpGfZzhspmY+De8RDU/73Yh63eOHkyZ4WgrDMn5cJ
- a2XHy/UVfl57x4TuuRmWprp0TCp6GxiLP5JEOpa2nJSgB/djzIXMcVpuuzya/xPPKr6C
- IDhFE8UxO/gJIkix66YEfBmXeQQfUwhHyCpbQ5RNFYwhUmV3824THFUDqJqPXnJzzK2a
- lUYA==
-X-Gm-Message-State: AOAM530tXFW+KvhsDGs0fJTUeT2jcPZ1Lm4L6zhoqIyL/jcnBt1H9vJv
- UuMHPSMOWkPeHtAD4gWoidI=
-X-Google-Smtp-Source: ABdhPJzLAMviS73DnsYXW0jI9f5cwwNFWa83DUwdZUIbuOqsebhBjg6JkDgNrUtBEulaxOE4IIAkYw==
-X-Received: by 2002:a05:6a00:182a:b0:4fd:dee2:6371 with SMTP id
- y42-20020a056a00182a00b004fddee26371mr12945796pfa.8.1649078357014; 
- Mon, 04 Apr 2022 06:19:17 -0700 (PDT)
-Received: from guoguo-omen.lan ([2401:c080:1400:4da2:b701:47d5:9291:4cf9])
- by smtp.gmail.com with ESMTPSA id
- q13-20020a056a00088d00b004e1bea9c582sm12475705pfj.43.2022.04.04.06.19.09
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=FlBsVFEKh4j3VAt6LeTKFsoKsuruo0DcZ5wQSPKgGVo=;
+ b=DTTHfXCY7/UaLP8sayerf2F3oivyvEg5Vl8bJ+HdyANDz94qhYfjA8yoE3K8NTsA4B
+ FoWjVZMCPGK7rvBtpZq8xAm8qB+Qkd2NY8ossJCV6DoEJQq6cK9mRU0/aId0pJufZ5hY
+ D8IIVq8sGvZ19bcNFI30tC4rnpg6ohq6YgyDM5gaJmsgOwbzmLyFChYrJ2NWTqust+KF
+ EowutUeG3oY9C463J/B9iJPBWzQoUld+AW/AOJh1bUqQAZX32OdhSnFixrmJx6H+7M6V
+ 0qQnbB32w/tPcjVkrp+DsMXpHV1dlfVvEAPswUj7207rLCTiarXbhLuwoFeM2Kzrka/L
+ U9Hw==
+X-Gm-Message-State: AOAM530fh+fec242KPJmSdyXmFhd9QVojzFR7zSm93dYGt6ncTAUE3+a
+ 3oV4IgBDq2hvoMnrjJ/LGn8=
+X-Google-Smtp-Source: ABdhPJx3+zSJdu5DehSeyrC7q6wpVT/4HVSBzcFwjxsrzsTyJC0b4HFVuDHkH2ecj14ojRx2BF95tA==
+X-Received: by 2002:a17:903:2285:b0:154:c94:c5b7 with SMTP id
+ b5-20020a170903228500b001540c94c5b7mr22253plh.64.1649078759509; 
+ Mon, 04 Apr 2022 06:25:59 -0700 (PDT)
+Received: from localhost.localdomain ([159.226.95.43])
+ by smtp.googlemail.com with ESMTPSA id
+ j3-20020a056a00234300b004faabba358fsm12617039pfj.14.2022.04.04.06.25.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 Apr 2022 06:19:16 -0700 (PDT)
-From: Chuanhong Guo <gch981213@gmail.com>
-To: linux-spi@vger.kernel.org
-Cc: Chuanhong Guo <gch981213@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Mon, 04 Apr 2022 06:25:59 -0700 (PDT)
+From: Miaoqian Lin <linmq006@gmail.com>
+To: Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Alessandro Zummo <a.zummo@towertech.it>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Roger Quadros <rogerq@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Cai Huoqing <cai.huoqing@linux.dev>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Colin Ian King <colin.king@intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Paul Cercueil <paul@crapouillou.net>, Pratyush Yadav <p.yadav@ti.com>,
- Yu Kuai <yukuai3@huawei.com>,
- devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE
- BINDINGS), 
- linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
- linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support), 
- linux-kernel@vger.kernel.org (open list),
- linux-mtd@lists.infradead.org (open list:NAND FLASH SUBSYSTEM)
-Subject: [PATCH v3 5/5] arm64: dts: mediatek: add mtk-snfi for mt7622
-Date: Mon,  4 Apr 2022 21:18:18 +0800
-Message-Id: <20220404131818.1817794-6-gch981213@gmail.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220404131818.1817794-1-gch981213@gmail.com>
-References: <20220404131818.1817794-1-gch981213@gmail.com>
-MIME-Version: 1.0
+ Tianping Fang <tianping.fang@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-rtc@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: linmq006@gmail.com
+Subject: [PATCH] rtc: mt6397: Fix potential NULL dereference in mtk_rtc_probe
+Date: Mon,  4 Apr 2022 13:25:53 +0000
+Message-Id: <20220404132553.28064-1-linmq006@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220404_061921_026590_F92E5361 
-X-CRM114-Status: GOOD (  10.54  )
+X-CRM114-CacheID: sfid-20220404_062600_547966_9DEDC91E 
+X-CRM114-Status: GOOD (  11.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,48 +83,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds a device-tree node for the MTK SPI-NAND Flash Interface
-for MT7622 device tree.
+platform_get_resource() may return NULL, add proper check to
+avoid potential NULL dereferencing.
 
-Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
+Fixes: fc2979118f3f ("rtc: mediatek: Add MT6397 RTC driver")
+Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
 ---
-Changes since v1:
-  1. use the newly introduced nand-ecc-engine instead
-  2. reword commit message
-Change since v2: None
- arch/arm64/boot/dts/mediatek/mt7622.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ drivers/rtc/rtc-mt6397.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-index 6f8cb3ad1e84..4b8f7dc1ec23 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-@@ -545,6 +545,18 @@ nandc: nfi@1100d000 {
- 		status = "disabled";
- 	};
+diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+index 80dc479a6ff0..07c6679366e0 100644
+--- a/drivers/rtc/rtc-mt6397.c
++++ b/drivers/rtc/rtc-mt6397.c
+@@ -269,6 +269,9 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
  
-+	snfi: spi@1100d000 {
-+		compatible = "mediatek,mt7622-snand";
-+		reg = <0 0x1100d000 0 0x1000>;
-+		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&pericfg CLK_PERI_NFI_PD>, <&pericfg CLK_PERI_SNFI_PD>;
-+		clock-names = "nfi_clk", "pad_clk";
-+		nand-ecc-engine = <&bch>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		status = "disabled";
-+	};
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	if (!res)
++		return -EINVAL;
 +
- 	bch: ecc@1100e000 {
- 		compatible = "mediatek,mt7622-ecc";
- 		reg = <0 0x1100e000 0 0x1000>;
+ 	rtc->addr_base = res->start;
+ 
+ 	rtc->data = of_device_get_match_data(&pdev->dev);
 -- 
-2.35.1
+2.17.1
 
 
 _______________________________________________
