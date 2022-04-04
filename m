@@ -4,51 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F860C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Apr 2022 08:10:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FC73C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Apr 2022 08:43:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=npXMQHoZLizxRC0FZ6kaFPIWa4Ln5bNScy68efengp0=; b=vzFhOiaE7aB6dP
-	XAnE5pJ+iE9LJX8gmj++U9uSZTAKa3slTyAphFsAtWI9EX7K+SuQStD9EGx+4/Y14CHOJkDVCRMze
-	1nCDirjnlRGOtbygbnltxBsWPe6XbOXDBjwz5q1KAolfz1rkZqCCrvanhCbjQS+zGQDHG3ukYsKO1
-	rIH0U+Bu+bK3f+pqdSXFeBejut02UKXKmrk9e9NmUIL5NVh2mEKO7j95IsIu3LK2vVmrLcZ59lxe2
-	wd1U1gd7I3YdoBmkZleasdYajZyORkq6tBhEAUIhRTADIhlx/vDsFc7dIyAo1ZrYgmcWwnXU5JJ6t
-	o56Fx5pkUUaYm+oflTBw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XKlTqq7mm7zhasz9W1dcwf5lrICEInnCseoC63nDcas=; b=vgmNfZeZH1Llr3
+	7opoyQX0eiK7Kp41Q91BCo8vJUwmYixSGqo7pdwzcbnW2K8CmkSBb+kjb3gZ3Ov/otMnh8oy/s7s4
+	iNP7pshAVdQnEIM7+u+1Vt9m2vmMgy/yfQtTr4rNODYfZA5Qp1eAbdR7cZsS/i8LgUOuvO8D+sNtN
+	Bdm1l7xq7llg2X9/ZUzLin1w//jT1E3U1Dl6FNW+53ZdlXWP3MxzZUxar6NUTLB+cKsiTs62jqP1h
+	IdgV9ojYvJhf3QigAzxzGd3YHXor8wxPxPsFzcypE9iDVIs47icxV4088ItYhb4Lq1EYxtbHum0hn
+	RpOir7ddBHdeJE6yyRCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbHnL-00Dm4x-Ie; Mon, 04 Apr 2022 08:10:39 +0000
-Received: from mail.coredeal.pl ([51.75.73.133])
+	id 1nbIJ7-00DtVN-AF; Mon, 04 Apr 2022 08:43:29 +0000
+Received: from relay4-d.mail.gandi.net ([2001:4b98:dc4:8::224])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbHnJ-00Dm4I-Ea
- for linux-mediatek@lists.infradead.org; Mon, 04 Apr 2022 08:10:38 +0000
-Received: by mail.coredeal.pl (Postfix, from userid 1002)
- id 1C9F9A2D3C; Mon,  4 Apr 2022 08:10:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=coredeal.pl; s=mail;
- t=1649059836; bh=9KGuIG62LgzC9aYmjKxzocuYLRCVghXg6v9Q1q2LHec=;
- h=Date:From:To:Subject:From;
- b=fKGp7Hr6b5KxQ/TvJ29Z81XC93JsQjrINDEMovg9/7MgpiXm+8HYIKz6gEvydIzvU
- Zi4Nb+k/B5n87CD3T7JPpMwZ3D3709ORfM0VhhTX8lY8qnb6fV2K6S1IweI8u3vT5q
- gc3LeQfL7MenaUIaXCfF8RdE4M9Mby9o9jpe+s46wO1KNRpe/xGbXu4LC/huW3jkOF
- ejBfmMtjJbkDJnbiOER4hd6bbGoPYv5kdbSCn2tgAh7ZEJLqfVcizUk3B++rumTuMa
- J5IInZAgAn7NGE6dX1w/duFmQc+kUpP8H4g27T40HWjEAXhC6KbZVmQgC21cM0RWZO
- QAI797EhBQXEQ==
-Received: by mail.coredeal.pl for <linux-mediatek@lists.infradead.org>;
- Mon,  4 Apr 2022 08:10:30 GMT
-Message-ID: <20220404064500-0.1.2c.c8ld.0.d3spxalnkr@coredeal.pl>
-Date: Mon,  4 Apr 2022 08:10:30 GMT
-From: "Krzysztof Maj" <krzysztof.maj@coredeal.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: Biznesowy angielski
-X-Mailer: mail.coredeal.pl
+ id 1nbIIv-00DtRE-1E; Mon, 04 Apr 2022 08:43:19 +0000
+Received: (Authenticated sender: miquel.raynal@bootlin.com)
+ by mail.gandi.net (Postfix) with ESMTPSA id E743FE0006;
+ Mon,  4 Apr 2022 08:43:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+ t=1649061791;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=M0NzH/HJyQRA7JlgyykSLC9DM46fl6l8PCLhNaZ3vcc=;
+ b=jZF818wUKjfz+K5hrYSg9ySnJtZQ8Xb/TfxgsB5Ttp0WLRiuRbcYGsHsItXtbJo6GsKF17
+ Jkv8p14dEwBqiDWt68Er5GrsTqWB7TC5VFyeCXnLB/b3WMkN4aaJqFOslm79BPhVpLStfO
+ 2slDUf1LV+puUm0QLb7p49oXL3RfxGeskvZ2zjV/TnCd06HdVngpflTbJzU7e51SnPLqGM
+ oRukwRc3FPTzH9B9xkYt2u9ftnxCTocwVzp/6rY4m0hH0AyDgzfImGyd9oRuk9s5/UkTMb
+ /r4LVFZ/Lh5USgOUMXFHkhOfo68ebzBCdf5W0FP01SHJ5gVUJUURACAhseJ62A==
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Chuanhong Guo <gch981213@gmail.com>,
+	linux-mtd@lists.infradead.org
+Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Pratyush Yadav <p.yadav@ti.com>, Paul Cercueil <paul@crapouillou.net>,
+ Yu Kuai <yukuai3@huawei.com>, Cai Huoqing <cai.huoqing@linux.dev>,
+ RogerCC Lin <rogercc.lin@mediatek.com>,
+ Boris Brezillon <bbrezillon@kernel.org>,
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+ linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support), 
+ linux-kernel@vger.kernel.org (open list)
+Subject: Re: [PATCH] mtd: rawnand: fix ecc parameters for mt7622
+Date: Mon,  4 Apr 2022 10:43:06 +0200
+Message-Id: <20220404084306.1055176-1-miquel.raynal@bootlin.com>
+X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20220402160315.919094-1-gch981213@gmail.com>
+References: 
 MIME-Version: 1.0
+X-linux-mtd-patch-notification: thanks
+X-linux-mtd-patch-commit: b'9fe4e0d3cbfe90152137963cc024ecb63db6e8e6'
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220404_011037_673366_97C6042F 
-X-CRM114-Status: UNSURE (   1.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220404_014317_246827_65FF47B8 
+X-CRM114-Status: GOOD (  10.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,26 +76,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LCAKCmN6eSByb3p3YcW8YWxpIFBhxYRzdHdvIHJvenfDs2oga3dhbGlmaWth
-Y2ppIGrEmXp5a293eWNoIHN3b2ljaCBwcmFjb3duaWvDs3c/CgpPcHJhY293YWxpxZtteSBrdXJz
-eSBqxJl6eWtvd2UgZGxhIHLDs8W8bnljaCBicmFuxbwsIHcga3TDs3J5Y2gga29uY2VudHJ1amVt
-eSBzacSZIG5hIHBvZG5pZXNpZW5pdSBwb3ppb211IHPFgm93bmljdHdhIGkgamFrb8WbY2kga29t
-dW5pa2Fjamkgd3lrb3J6eXN0dWrEhWMgYXV0b3Jza8SFIG1ldG9kxJksIHN0d29yem9uxIUgc3Bl
-Y2phbG5pZSBkbGEgd3ltYWdhasSFY2VnbyBiaXpuZXN1LiAKCk5pZXN0YW5kYXJkb3d5IGt1cnMg
-b24tbGluZSwgZG9wYXNvd2FueSBkbyBwcm9maWx1IGZpcm15IGkgb2JzemFyw7N3IMWbd2lhZGN6
-b255Y2ggdXPFgnVnLCB3IHN6eWJraW0gY3phc2llIHByenluaWVzaWUgZWZla3R5LCBrdMOzcmUg
-endpxJlrc3rEhSBrb21mb3J0IGkgamFrb8WbxIcgcHJhY3ksIHJvendpamFqxIVjIG1vxbxsaXdv
-xZtjaSBiaXpuZXNvd2UuIAoKWmRhbG5lIHN6a29sZW5pZSBqxJl6eWtvd2UgdG8gbS5pbi4gemFq
-xJljaWEgeiBuYXRpdmUgc3BlYWtlcmFtaSwga3TDs3JlIHcgc3p5YmtpbSBjemFzaWUgbmF1Y3rE
-hSBwcmFjb3duaWvDs3cgcm96bWF3aWHEhyB6YSBwb21vY8SFIGphc25lZ28gaSB6d2nEmXrFgmVn
-byBqxJl6eWthIEJ1c2luZXNzIEVuZ2xpc2guCgpDenkgbcOzZ8WCYnltIHByemVkc3Rhd2nEhyB3
-acSZY2VqIHN6Y3plZ8OzxYLDs3cgaSBvcG93aWVkemllxIcgamFrIGR6aWHFgmFteT8gCgoKUG96
-ZHJhd2lhbQpLcnp5c3p0b2YgTWFqCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Sat, 2022-04-02 at 16:03:13 UTC, Chuanhong Guo wrote:
+> According to the datasheet, mt7622 only has 5 ECC capabilities instead
+> of 7, and the decoding error register is arranged  as follows:
+> +------+---------+---------+---------+---------+
+> | Bits |  19:15  |  14:10  |   9:5   |   4:0   |
+> +------+---------+---------+---------+---------+
+> | Name | ERRNUM3 | ERRNUM2 | ERRNUM1 | ERRNUM0 |
+> +------+---------+---------+---------+---------+
+> This means err_mask should be 0x1f instead of 0x3f and the number of
+> bits shifted in mtk_ecc_get_stats should be 5 instead of 8.
+> 
+> This commit introduces err_shift for the difference in this register
+> and fix other existing parameters.
+> 
+> Public MT7622 reference manual can be found on [0] and the info this
+> commit is based on is from page 656 and page 660.
+> 
+> [0]: https://wiki.banana-pi.org/Banana_Pi_BPI-R64#Documents
+> 
+> Fixes: 98dea8d71931 ("mtd: nand: mtk: Support MT7622 NAND flash controller.")
+> Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
+
+Applied to https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git mtd/fixes, thanks.
+
+Miquel
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
