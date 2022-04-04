@@ -4,57 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A63A6C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Apr 2022 16:03:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7D86C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Apr 2022 16:04:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xHhBNOq4JaGeqp6rWOA64hGufJ4JrReV77+8PgTwKiQ=; b=PqwSyV6Unh26pk
-	iMFcBz24OmUPICsvqe9gKGPFczTtDEyFc3OD7TS3Npal3VSFGXzgSsZOcTK7W3QM9ODMSFhvuBeri
-	SpltwEtukRtBOeLWSAwGVl2HnO/1D3926X3Eoo8gu8owvicCQPEB83lwfdG2J9bMknkNDhX4xGl0r
-	yaEOOGfKjLBfJP9/clhuvtTnkIzzfcJj2lVgrj8mn9IQ0hPynRSPuJvcorKG5as0Vr2ACc/7RMPFT
-	XBG+FH/n3/VkIQDGS/3aRUplnzKIGWP9E3ElwufKMqusc/nQIzwRvl+7GADVdVWxN4g2oB9MIkCUu
-	OMjMOiIQ+ZVz6Av5CLwQ==;
+	List-Owner; bh=9Cl8HlFuyr0hABco9QEQWCbXYIhH5klUmBvn8Xv5IHc=; b=XvparLGwgScXWM
+	RhMvA8YhqEBVrni4UAal6B+Ncnvxs3PkNaf7rzLnl1vGLyLP5fYFZ4HvToTRkgYEm1h7akg0XrAT8
+	CMYw4yJ5YmxzN0HW7xTw611iel5xJrmM8seO1glTBBEOq/PGG7IKbuRDOlSjX8T5Wx8BLeoEzFhVy
+	KYb0si/kbSQdoDf/YvfhPjTSMQqmg+xL3e/vXBdBV1A9gwH90wEyiHDv0EFwDj/v/1NtwRRjT+atK
+	Gme4bvOBTUGqEAHWgM9DdM2kNu7eCXnw9MzhY/tmlKLJIvW59/F+TlwBociduLRJGKTJlKEqFl97S
+	CAOJBoL/L0ioXVEY+5rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbPBC-00Fh4A-Ms; Mon, 04 Apr 2022 16:03:46 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbP9p-00FgGL-OV; Mon, 04 Apr 2022 16:02:23 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id E45601F44731
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649088140;
- bh=gXcTJN1wEbSuuha2o6PaxF2kCOHsWvsU4lW7wKZ/EhY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=mIc5+GBU1VqyZ/IpAbIWiWDuHKZXEFZoZH2h/calTdrlh563WgQ6khtwNaWt4HrJ5
- noocOP+D1uVlFkkZ/D2ku2pgiYZEyJSO17BBcdEeSQ+7bzH3bP9zGCsWxQTqM/qufj
- BB1mNE37AKrgLb6lpHhrp75cl2xgQKAeO1cD9/1gamlzIMiMiJj818OwgMLCP1MnWp
- A+xfDaqUhaL+B5fwWXjYL7x2RAiOB4zNIWMi8kzvayptQzVj3MfH6YHdCpXwFkgUMh
- KmfUCMLMLzzr7aFN3qFlsFVSgdRP61LmmLplFSIN8Yghg33HV6eR/XSGDwADdMgU5O
- jIA1eAZdKHhxw==
-Date: Mon, 4 Apr 2022 12:02:14 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel@collabora.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v1 0/4] dt-bindings: pinctrl: mt8192: Add missing
- wrapping node and properties
-Message-ID: <20220404160214.w6wypnq3b6hfriub@notapiano>
-References: <20220315211936.442708-1-nfraprado@collabora.com>
+	id 1nbPBn-00FhNe-24; Mon, 04 Apr 2022 16:04:23 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nbP9u-00FgKF-4t; Mon, 04 Apr 2022 16:02:28 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 44BFFD6E;
+ Mon,  4 Apr 2022 09:02:25 -0700 (PDT)
+Received: from localhost (ionvoi01-desktop.cambridge.arm.com [10.1.196.65])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DED9D3F73B;
+ Mon,  4 Apr 2022 09:02:24 -0700 (PDT)
+Date: Mon, 4 Apr 2022 17:02:23 +0100
+From: Ionela Voinescu <ionela.voinescu@arm.com>
+To: Lukasz Luba <lukasz.luba@arm.com>
+Cc: linux-kernel@vger.kernel.org, dietmar.eggemann@arm.com,
+ Pierre.Gondois@arm.com, viresh.kumar@linaro.org, rafael@kernel.org,
+ daniel.lezcano@linaro.org, linux-pm@vger.kernel.org,
+ mka@chromium.org, nm@ti.com, sboyd@kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, cristian.marussi@arm.com,
+ sudeep.holla@arm.com, matthias.bgg@gmail.com
+Subject: Re: [RESEND][PATCH 5/8] PM: EM: Remove old debugfs files and print
+ all 'flags'
+Message-ID: <YksWj8GhZWUimF74@arm.com>
+References: <20220321095729.20655-1-lukasz.luba@arm.com>
+ <20220321095729.20655-6-lukasz.luba@arm.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220315211936.442708-1-nfraprado@collabora.com>
+In-Reply-To: <20220321095729.20655-6-lukasz.luba@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220404_090221_976365_F575275F 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20220404_090226_366186_1B91D570 
+X-CRM114-Status: GOOD (  20.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,56 +62,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
+Hi Lukasz,
 
-If you could please also pick this series through your tree that would be g=
-reat
-:).
+IMO the debugfs files were fine as they were:
+ - They offered information on units and inefficiencies without having
+   to dig into the code to see which bit is for which flag.
+ - I believe the artificial EM power values fit under bogoWatts as unit,
+   so that part would still be correct.
 
-This would preemptively fix warnings for my mt8192-asurada.dtsi series [1].
+On the other hand, your new file offers more information: we'd be able
+to see in debugfs whether we're dealing with an artificial EM, despite
+needing a bit more looking over the code to understand the output.
 
-[1] https://lore.kernel.org/all/20220316151327.564214-1-nfraprado@collabora=
-.com/
+I don't have a strong opinion and the code looks fine, so:
 
-Thanks,
-N=EDcolas
+Reviewed-by: Ionela Voinescu <ionela.voinescu@arm.com>
 
-On Tue, Mar 15, 2022 at 05:19:32PM -0400, N=EDcolas F. R. A. Prado wrote:
-> =
 
-> This series adds the wrapping node for pinmux nodes that was missing in
-> the mt8192-pinctrl dt-binding as well as a couple other missing
-> properties.
-> =
-
-> =
-
-> N=EDcolas F. R. A. Prado (4):
->   dt-bindings: pinctrl: mt8192: Add wrapping node for pin configurations
->   dt-bindings: pinctrl: mt8192: Add mediatek,drive-strength-adv property
->   dt-bindings: pinctrl: mt8192: Add mediatek,pull-up-adv property
->   dt-bindings: pinctrl: mt8192: Add gpio-line-names property
-> =
-
->  .../bindings/pinctrl/pinctrl-mt8192.yaml      | 155 +++++++++++-------
->  1 file changed, 98 insertions(+), 57 deletions(-)
-> =
-
-> -- =
-
-> 2.35.1
-> =
-
-> =
-
-> -- =
-
-> To unsubscribe, send mail to kernel-unsubscribe@lists.collabora.co.uk.
+On Monday 21 Mar 2022 at 09:57:26 (+0000), Lukasz Luba wrote:
+> The Energy Model gets more bits used in 'flags'. Avoid adding another
+> debugfs file just to print what is the status of a new flag. Simply
+> remove old debugfs files and add one generic which prints all flags
+> as a hex value.
+> 
+> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
+> ---
+>  kernel/power/energy_model.c | 24 +++++-------------------
+>  1 file changed, 5 insertions(+), 19 deletions(-)
+> 
+> diff --git a/kernel/power/energy_model.c b/kernel/power/energy_model.c
+> index babefc72085d..092513575e4e 100644
+> --- a/kernel/power/energy_model.c
+> +++ b/kernel/power/energy_model.c
+> @@ -54,28 +54,15 @@ static int em_debug_cpus_show(struct seq_file *s, void *unused)
+>  }
+>  DEFINE_SHOW_ATTRIBUTE(em_debug_cpus);
+>  
+> -static int em_debug_units_show(struct seq_file *s, void *unused)
+> +static int em_debug_flags_show(struct seq_file *s, void *unused)
+>  {
+>  	struct em_perf_domain *pd = s->private;
+> -	char *units = (pd->flags & EM_PERF_DOMAIN_MILLIWATTS) ?
+> -		"milliWatts" : "bogoWatts";
+>  
+> -	seq_printf(s, "%s\n", units);
+> +	seq_printf(s, "%#lx\n", pd->flags);
+>  
+>  	return 0;
+>  }
+> -DEFINE_SHOW_ATTRIBUTE(em_debug_units);
+> -
+> -static int em_debug_skip_inefficiencies_show(struct seq_file *s, void *unused)
+> -{
+> -	struct em_perf_domain *pd = s->private;
+> -	int enabled = (pd->flags & EM_PERF_DOMAIN_SKIP_INEFFICIENCIES) ? 1 : 0;
+> -
+> -	seq_printf(s, "%d\n", enabled);
+> -
+> -	return 0;
+> -}
+> -DEFINE_SHOW_ATTRIBUTE(em_debug_skip_inefficiencies);
+> +DEFINE_SHOW_ATTRIBUTE(em_debug_flags);
+>  
+>  static void em_debug_create_pd(struct device *dev)
+>  {
+> @@ -89,9 +76,8 @@ static void em_debug_create_pd(struct device *dev)
+>  		debugfs_create_file("cpus", 0444, d, dev->em_pd->cpus,
+>  				    &em_debug_cpus_fops);
+>  
+> -	debugfs_create_file("units", 0444, d, dev->em_pd, &em_debug_units_fops);
+> -	debugfs_create_file("skip-inefficiencies", 0444, d, dev->em_pd,
+> -			    &em_debug_skip_inefficiencies_fops);
+> +	debugfs_create_file("flags", 0444, d, dev->em_pd,
+> +			    &em_debug_flags_fops);
+>  
+>  	/* Create a sub-directory for each performance state */
+>  	for (i = 0; i < dev->em_pd->nr_perf_states; i++)
+> -- 
+> 2.17.1
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
