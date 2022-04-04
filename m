@@ -4,54 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C559BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Apr 2022 16:31:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D24EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Apr 2022 17:04:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9BxPDweyR5gqNmSdQ1XQrgx41cgNOsQkubQJiQ7XSHk=; b=mS1wKsyd2GzBqe
-	qTg8yJi71XDbw/Do2NcCa3XtvTQ/rFvhCf4BA4EWnUpmcUhDNX/LeqZmPb1biRSxhI6JJ+xzXhEx4
-	/2MECXtAexms5/hG+yxLrGlf4PxbCSRMSiz67DfuvloJJ7QFBFn0XasRmN70RcRGGfLv454glUAw1
-	fU68TlR8foJPuVMqtRRNLN/UVZR2OqxziRU5O1dSu/VuYLX5hmeuE7tBj6i5n1hJD2OSQe6TY3TKg
-	tL2iOuoQa5wSSbFRl5Fs5v8k7PU+xpf59EbHR8AF1avqYNpLXsc9jIx6JEteErdFRK1+NWbYwTJnF
-	vke3uaG3mihiYc7Nrj3Q==;
+	List-Owner; bh=o9b1Ba7naA9lRaacnaBha9LwEJ7/eb+XJmPaTmKyefM=; b=XvpavaiiMgbu7n
+	EnjLaf6miVm7CdgFmqZrVn6irUBoebkS6xGGEG3IE8gEsOPzM7BmCLWxR1ecmEgq3qXcCXbFXZLde
+	kwHPptBuA25tj7OwCI54k1XxTmblXVG66T6UjAfVQHW/r+mN+QheRl/OWvYVU6kw11gDZLVANRI7l
+	Fp86N7H7UB2lSEMkiAbvgWQqmCvn07gu7RTnh0guxrU+7UnJyKAhyXQONUCTGD7p+FDs2O0f8BsRR
+	RIU4MEs4rPzmVltMgwozaxGoD+yKTcYERdAW0garkXW+IqR2ktQyTzLkXjB36/DzgRGj5nTINMPTk
+	gLBcVtVS1igCONTnRdCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbPbr-00FoXx-QY; Mon, 04 Apr 2022 16:31:19 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbPbg-00FoWy-Tj; Mon, 04 Apr 2022 16:31:10 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 520B3D6E;
- Mon,  4 Apr 2022 09:31:07 -0700 (PDT)
-Received: from [10.57.8.9] (unknown [10.57.8.9])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 65D843F73B;
- Mon,  4 Apr 2022 09:31:04 -0700 (PDT)
-Message-ID: <74a2f038-50dd-91e5-227d-a1c633a87184@arm.com>
-Date: Mon, 4 Apr 2022 17:31:02 +0100
+	id 1nbQ7t-00FtoQ-H3; Mon, 04 Apr 2022 17:04:25 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nbQ5a-00Fskz-61; Mon, 04 Apr 2022 17:02:04 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id F1D4260DC5;
+ Mon,  4 Apr 2022 17:02:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 51705C34110;
+ Mon,  4 Apr 2022 17:02:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1649091720;
+ bh=04frVOBorwVRLC9iR0TJrmOXUmgPLE7sifjv285UBqY=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=u4wKiB3cMuSr8X85DCWSAFYjooVhda9cApTtmkp7tZRxtQTB+pgUau+XD8HAdu9co
+ oxThbzXsle2iXHmd+iemZT0F0XHev26IPwYM4iI1hbroEUz17L+D8nm6vD0/CoCNIY
+ J/21dCexLvUqK0WwftAOMKgJpGSwNk7nglnDRs06SRyKGXGlM3OTFjNFbnDAlA2Q/g
+ WxrStf87q5tvCOcufEqKt9tTU4ATyPF2w4MTGfNeZBT5Ju1Na5o1C+nSOI4ojUtpe9
+ Z1fpj/klB5G7TabOuiLNZF9qS0Hw4zFloxHqr5WmL1IjlaRcg2esfmHuVUGF94Rzuq
+ tCqb83VI/qWcQ==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ 2AAA7E85B8C; Mon,  4 Apr 2022 17:02:00 +0000 (UTC)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [RESEND][PATCH 5/8] PM: EM: Remove old debugfs files and print
- all 'flags'
-Content-Language: en-US
-To: Ionela Voinescu <ionela.voinescu@arm.com>
-Cc: linux-kernel@vger.kernel.org, dietmar.eggemann@arm.com,
- Pierre.Gondois@arm.com, viresh.kumar@linaro.org, rafael@kernel.org,
- daniel.lezcano@linaro.org, linux-pm@vger.kernel.org, mka@chromium.org,
- nm@ti.com, sboyd@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, cristian.marussi@arm.com,
- sudeep.holla@arm.com, matthias.bgg@gmail.com
-References: <20220321095729.20655-1-lukasz.luba@arm.com>
- <20220321095729.20655-6-lukasz.luba@arm.com> <YksWj8GhZWUimF74@arm.com>
-From: Lukasz Luba <lukasz.luba@arm.com>
-In-Reply-To: <YksWj8GhZWUimF74@arm.com>
+Subject: Re: [PATCH 0/4] mfd/pwm: dt-bindings: google,
+ cros-ec: include generic pwm schema
+From: patchwork-bot+chrome-platform@kernel.org
+Message-Id: <164909172016.14329.4245687704208123308.git-patchwork-notify@kernel.org>
+Date: Mon, 04 Apr 2022 17:02:00 +0000
+References: <20220214081916.162014-1-krzysztof.kozlowski@canonical.com>
+In-Reply-To: <20220214081916.162014-1-krzysztof.kozlowski@canonical.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Cc: lee.jones@linaro.org, robh+dt@kernel.org, bleung@chromium.org,
+ groeck@chromium.org, thierry.reding@gmail.com,
+ u.kleine-koenig@pengutronix.de, matthias.bgg@gmail.com, agross@kernel.org,
+ bjorn.andersson@linaro.org, heiko@sntech.de, dianders@chromium.org,
+ devicetree@vger.kernel.org, chrome-platform@lists.linux.dev,
+ linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220404_093109_054903_B50AABCE 
-X-CRM114-Status: GOOD (  17.40  )
+X-CRM114-CacheID: sfid-20220404_100202_314669_F2E92530 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,46 +76,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ionela,
+Hello:
 
-Thank you for reviewing these patches.
+This series was applied to chrome-platform/linux.git (for-kernelci)
+by Heiko Stuebner <heiko@sntech.de>:
 
-On 4/4/22 17:02, Ionela Voinescu wrote:
-> Hi Lukasz,
+On Mon, 14 Feb 2022 09:19:12 +0100 you wrote:
+> Hi,
 > 
-> IMO the debugfs files were fine as they were:
->   - They offered information on units and inefficiencies without having
->     to dig into the code to see which bit is for which flag.
->   - I believe the artificial EM power values fit under bogoWatts as unit,
->     so that part would still be correct.
+> DTS patches are independent. Not tested, but I really hope no downstream kernel
+> depends on pwm node naming... If it does, please change it to compatible. :)
 > 
-> On the other hand, your new file offers more information: we'd be able
-> to see in debugfs whether we're dealing with an artificial EM, despite
-> needing a bit more looking over the code to understand the output.
-
-I have consolidated them, so we would support more features in the flag
-automatically when there will be a need.
-
-In Android kernel we don't have unfortunately the debugfs compiled-in,
-so this information is still only for kernel testing with some Linux
-distro.
-
-I have been thinking to switch into sysfs interface, so we could
-have it in Android as well. This patch change adding a generic 'flags'
-which would be more 'stable' (which is a requirement for sysfs contract)
-is also a closer step into that direction. But that is for longer
-discussion and not for this $subject.
-
+> Best regards,
+> Krzysztof
 > 
-> I don't have a strong opinion and the code looks fine, so:
-> 
-> Reviewed-by: Ionela Voinescu <ionela.voinescu@arm.com>
-> 
+> [...]
+
+Here is the summary with links:
+  - [1/4] dt-bindings: pwm: google,cros-ec: include generic pwm schema
+    https://git.kernel.org/chrome-platform/c/6b94ee669e8a
+  - [2/4] arm64: dts: mt8183: align Google CROS EC PWM node name with dtschema
+    (no matching commit)
+  - [3/4] arm64: dts: qcom: align Google CROS EC PWM node name with dtschema
+    https://git.kernel.org/chrome-platform/c/1e49defb8636
+  - [4/4] arm64: dts: rk3399: align Google CROS EC PWM node name with dtschema
+    https://git.kernel.org/chrome-platform/c/a0024f55eb5b
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
 _______________________________________________
