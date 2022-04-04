@@ -4,86 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C664C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Apr 2022 16:02:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3B60C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Apr 2022 04:02:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RM5lsHMaDJXhpk55pqmPqN5cYku2VDnoRCs1VxFFN60=; b=Dfqcrx0PIR48+Q
-	w/LZRqBlD4HQx0nXOSWsnKgRFOPTiT6YbEeZig2JPyTue+dkttaVEMpEe7cg/g66AplVa84/vr54x
-	68uO8p4rgD3b0qT3uw2eaWuxFVKqmsXF9yPAP5jTUfN50toMHDCs97qUH9BZOh8Fi4qpe8X2Nbsnu
-	8eFQsraMN0PAn/d7G0VHEdcV6vkLWy8SxFX0HHW6TMrHJwirox/Rxp14DMoVtUhrAjzkjRWFbrXSg
-	A0v4nehWl0ZG+8xC1AGZAOKAd0LOQGdw5Zw7sbq3FAUrzNohenj2u4JQ7X3tCq2+Kg0s9MQeQYU6/
-	ccLv1d7Brz/95+R3QBLg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ulGV27tj0EiKYB4X+OmZf34+4tOJQJWPHWZ9acmV104=; b=qaMtW2wRGyuwMu
+	rjOUJlrva7ntfhFFucS2PkR5kHwANG4y9OM4pGKVy5nTBoXXAkINb5pIue5a4uMSXYnBmpiFSh1Tl
+	QccFEJ2cEZxQO4/KBUrBOuiUwje9pvRr3AVrE0gYdJJBDAjY6F0yFlawb4GJPRks3kgJsyjSEDUbH
+	t9wD8T3wqvWlNxFe7trTiI5soYSyzD6XWXF+7e5M62HcYGXNwPALoVdFCPx+chG8cWp5i8r+GixyO
+	v8pHv9qp61wVOkJXvF3OXvNFGV5LHjVj5k0WJHfOKtTa51TDhwUHxa2SUDNukfJvlAkpVYWoqB20l
+	jSuQFFewtdoxaVrmojIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nb2fu-00Bnym-6m; Sun, 03 Apr 2022 16:01:58 +0000
-Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31])
+	id 1nbDv6-00Cwmb-Ko; Mon, 04 Apr 2022 04:02:24 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nb2fi-00BnvB-K4; Sun, 03 Apr 2022 16:01:47 +0000
-Received: by mail-io1-xd31.google.com with SMTP id g21so8530411iom.13;
- Sun, 03 Apr 2022 09:01:44 -0700 (PDT)
+ id 1nbDuv-00Cwj3-8y; Mon, 04 Apr 2022 04:02:14 +0000
+Received: by mail-pf1-x430.google.com with SMTP id p8so7798692pfh.8;
+ Sun, 03 Apr 2022 21:02:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/KVd5HFtfdl/4YhzYTy1ARrs2qcreXKLJ20n7fqioxY=;
- b=Lc3foFpYddqhED8+lp1gUshprjqka20POXoZ1Fqvhx5Nuf5x+ISBeP4wT+FG5RetpP
- +LiHFJYLTcUeyRHXZoK/Fnxf4SzeKxG9hEvyNFvIlVHa/NDu8yAs+jOx/p8dbbPURno/
- I+zZ9pyY9vPwheJIa8DuATLYb9+Pygcx3vyKwPrDZr6FmrT6YMBiZSVRpI37m+BVSgim
- 2QVaVx8PfrTW106nE4HAcyQNbop5Jbvu75mx2fPV48jft1UOsbVwYDhs36WntKG1fROW
- 0rhTSnw6KvbXpCIiZ6jbVmx6cd6y8kIzTlo+g66AjvKmslg+BngMJb+PDr7NZJrrHdqI
- +Znw==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=gApwyK6UJMIHFi8j3HHI6lVYvVDscNhbn/b45ZD8vYw=;
+ b=PpAMX76Z/yH5s5E86XWDfdb0tshq5E8aUG6vKlOuwz+RxiadMZC6gwVk8hp/IvSKdy
+ pWDbVcIvhaAzCuy6MyDBJG2dxgKFmd2PUF157wQmlFwd1dygPQr7kpgfjuJPSZpZeV8W
+ KJ8XB6IA9wYH8pFUDUrggUJW7xHL4Z3Jfto/zT/xPYv3oFpJgBXB6AOYoiNplFnNBxhi
+ QjnpR9G8KK2BCcUi5zT0OooJ64wrDp1LHF79wrS/9T9wiMGZ5Lrpbk8fcfgAtt+rvBGB
+ f/JIRwKjXsgZbcHHbbAEl/MMqr5KGQN35kxhWJzqNfO2wjz9Wqyu3wTfB+BG6AbwBbg9
+ CU7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/KVd5HFtfdl/4YhzYTy1ARrs2qcreXKLJ20n7fqioxY=;
- b=o/bY99UYXiy9JKyt7oqefPknLGIOlzLsgL6iQTgNMlZ87Yljio1b0ICpPmKaiPxC/O
- 3dFHVeJPakeLGho9jr+/nJp4Nwe+pCcBrDqXVEQkrGxlo7LMy2xeRjnolHMrl57c/XLo
- bXdpd5xLliPcHHP1Ds7xFnj2yQthXPMUTA6QvV29fscbJ0J4cf0i6jJ+kGisEFi5R8R2
- vYwo3rdFL41ggocYfLPlbLPPjUH8YyZNMqs57F/PzLarXp/lPBLKdooiQMoOMMWUEhMS
- d6PvPPQZo2dApX1Kc5uWXWpZQDM1OjJe7aED4MW8bP33cFvmRslc4YvvwNp4fecAR5QP
- 3vQA==
-X-Gm-Message-State: AOAM531MHSkH2VazdWkP3NQzX90YCpyPtXZIRNsUQvknYAlo6D1ymHKZ
- YaMDdZvRvrIDU+5KTN4Pn2eee14OKv2gAvV7mDU=
-X-Google-Smtp-Source: ABdhPJwtM9rC5frTbOPfqFXajh8HCuXZAkrqVls+IUjlbS6KZoNTleMbBV69uFF+7VRl3sGXuqvc9T4HYSnSDMPqcSY=
-X-Received: by 2002:a5e:9302:0:b0:648:c246:291 with SMTP id
- k2-20020a5e9302000000b00648c2460291mr3654500iom.88.1649001703873; Sun, 03 Apr
- 2022 09:01:43 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220403131154.1267887-1-gch981213@gmail.com>
- <20220403131154.1267887-4-gch981213@gmail.com>
- <817dda10-39db-adfc-376d-a3d5e037937e@linaro.org>
- <CAJsYDVKYsz7c2yVe7TmPu_7kvBDXTih4+cceLsay2YJm21YntA@mail.gmail.com>
- <06ef6b4b-c8e8-549b-54be-9eecf59a7757@linaro.org>
-In-Reply-To: <06ef6b4b-c8e8-549b-54be-9eecf59a7757@linaro.org>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=gApwyK6UJMIHFi8j3HHI6lVYvVDscNhbn/b45ZD8vYw=;
+ b=Nh9+/BomIWaQ8v5Un/4fBGTi4aqJ3eWaXnEvwlZBgFj+z/OSgCpYJXuFzHAoDUr2ub
+ 57Po597FJwY53rkaoV4PqEjdpsWe3Rb2rsLVMVTM/Rw0TAij6mjNWEbzR0nLFjHd0m3f
+ pnEiPPRE1l/zpLNMc7q5AlEnLxsYvVDhIIFvKspmm4MMwG61Z8wPj5sLaCRVHqyVqs1m
+ J81pE4Gh2xMewGs8penejvRMeV3OydBadU5uW83kyJfq2wUJHoB5sDm6xOrAm0TT8efm
+ GjxlDVTrkCxcnuHbgNiyT11JD/SvaXEcxCcmVXZRmp/K3zrRvXYDoMbvws/y2n0deCNm
+ 3+CA==
+X-Gm-Message-State: AOAM531jO8avKsfLIYfL1aRihi/YMyOKERTCa8SLnesTcgGh0LrNq63P
+ iTLvsp1ThztE4c5pBWXuaMQ=
+X-Google-Smtp-Source: ABdhPJzYjDiKmixeywLrVGsyvmxU0FRdWO7nMbcfY2jZXT0DudGOSkM6UFaGrSEgSvmTt6mXFmBOzQ==
+X-Received: by 2002:aa7:88c2:0:b0:4fa:ba98:4f6f with SMTP id
+ k2-20020aa788c2000000b004faba984f6fmr22013214pff.41.1649044928130; 
+ Sun, 03 Apr 2022 21:02:08 -0700 (PDT)
+Received: from guoguo-omen.lan ([2401:c080:1400:4da2:b701:47d5:9291:4cf9])
+ by smtp.gmail.com with ESMTPSA id
+ j70-20020a638b49000000b003985b5ddaa1sm8756191pge.49.2022.04.03.21.02.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 03 Apr 2022 21:02:07 -0700 (PDT)
 From: Chuanhong Guo <gch981213@gmail.com>
-Date: Mon, 4 Apr 2022 00:01:32 +0800
-Message-ID: <CAJsYDVK9UB=71Yj2t9Rc658W66Lf=uK6eLn5S+Y8Rj3skz4g+w@mail.gmail.com>
-Subject: Re: [PATCH 3/4] dt-bindings: spi: add binding doc for spi-mtk-snfi
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Richard Weinberger <richard@nod.at>,
- Vignesh Raghavendra <vigneshr@ti.com>, Roger Quadros <rogerq@kernel.org>, 
+To: linux-spi@vger.kernel.org
+Cc: Chuanhong Guo <gch981213@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Roger Quadros <rogerq@kernel.org>,
  Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Cai Huoqing <cai.huoqing@linux.dev>, 
- Florian Fainelli <f.fainelli@gmail.com>, Colin Ian King <colin.king@intel.com>,
+ Cai Huoqing <cai.huoqing@linux.dev>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Colin Ian King <colin.king@intel.com>,
  Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Paul Cercueil <paul@crapouillou.net>, 
- Pratyush Yadav <p.yadav@ti.com>, Yu Kuai <yukuai3@huawei.com>, 
- "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>, 
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- open list <linux-kernel@vger.kernel.org>, 
- "open list:NAND FLASH SUBSYSTEM" <linux-mtd@lists.infradead.org>
+ Paul Cercueil <paul@crapouillou.net>, Pratyush Yadav <p.yadav@ti.com>,
+ Yu Kuai <yukuai3@huawei.com>,
+ devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE
+ BINDINGS), 
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+ linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support), 
+ linux-kernel@vger.kernel.org (open list),
+ linux-mtd@lists.infradead.org (open list:NAND FLASH SUBSYSTEM)
+Subject: [PATCH v2 0/5] spi: add support for Mediatek SPI-NAND controller
+Date: Mon,  4 Apr 2022 12:01:48 +0800
+Message-Id: <20220404040153.1509966-1-gch981213@gmail.com>
+X-Mailer: git-send-email 2.35.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220403_090146_697533_86963448 
-X-CRM114-Status: GOOD (  15.51  )
+X-CRM114-CacheID: sfid-20220403_210213_375672_B302DF8C 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,37 +103,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi!
+Mediatek has an extended version of their NAND Flash Interface which
+has a SPI-NAND mode. In this mode, the controller can perform 1-bit
+spi-mem ops for up-to 0xa0 bytes and typical SPI-NAND single, dual
+and quad IO page cache ops with 2-byte address. Additionally, the
+page cache ops can be performed with ECC and auto data formatting
+using the ECC engine of the controller.
 
-On Sun, Apr 3, 2022 at 11:49 PM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
-> [...]
-> >>> +
-> >>> +  ecc-engine:
-> >>
-> >> The nand-chip.yaml defines a nand-ecc-engine, so how about using that
-> >> one? I know mtk-nand.txt uses ecc-engine, but for new schema better to
-> >> use properties from existing YAML.
-> >
-> > The ecc-engine code is shared between mtk_nand.c and this driver, and
-> > the property name is defined in the shared part. I left it as-is so that
-> > existing dt for mtk_nand doesn't break.
->
-> This can be easily fixed with:
->         np = of_parse_phandle(of_node, "nand-ecc-engine", 0);
->         if (!np) {
->                 /* Backwards compatible */
->                 np = of_parse_phandle(of_node, "ecc-engine", 0);
->         }
->
-> I would like to avoid having one property in generic NAND schema and
-> keep adding something slightly different everywhere else.
+This patchset implements support of this mode as a separated SPI-MEM
+driver with piplined ECC engine.
 
-OK. I'll add a commit for this in the next version.
+Changes since v1:
+ add a blank line between properties in dt binding doc
+ rename ecc-engine to nand-ecc-engine for the generic properties
+ fix warnings/errors from the CI
+
+Chuanhong Guo (5):
+  mtd: nand: make mtk_ecc.c a separated module
+  spi: add driver for MTK SPI NAND Flash Interface
+  mtd: nand: mtk-ecc: also parse nand-ecc-engine if available
+  dt-bindings: spi: add binding doc for spi-mtk-snfi
+  arm64: dts: mediatek: add mtk-snfi for mt7622
+
+ .../bindings/spi/mediatek,spi-mtk-snfi.yaml   |   88 ++
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi      |   12 +
+ drivers/mtd/nand/Kconfig                      |    7 +
+ drivers/mtd/nand/Makefile                     |    1 +
+ drivers/mtd/nand/{raw/mtk_ecc.c => ecc-mtk.c} |    8 +-
+ drivers/mtd/nand/raw/Kconfig                  |    1 +
+ drivers/mtd/nand/raw/Makefile                 |    2 +-
+ drivers/mtd/nand/raw/mtk_nand.c               |    2 +-
+ drivers/spi/Kconfig                           |   10 +
+ drivers/spi/Makefile                          |    1 +
+ drivers/spi/spi-mtk-snfi.c                    | 1351 +++++++++++++++++
+ .../linux/mtd/nand-ecc-mtk.h                  |    0
+ 12 files changed, 1478 insertions(+), 5 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
+ rename drivers/mtd/nand/{raw/mtk_ecc.c => ecc-mtk.c} (98%)
+ create mode 100644 drivers/spi/spi-mtk-snfi.c
+ rename drivers/mtd/nand/raw/mtk_ecc.h => include/linux/mtd/nand-ecc-mtk.h (100%)
 
 -- 
-Regards,
-Chuanhong Guo
+2.35.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
