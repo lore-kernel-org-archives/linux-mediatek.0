@@ -4,68 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5270DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Apr 2022 14:41:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12DF2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Apr 2022 14:49:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hrz7Iv7u9JWijDjAFEaU1tsefi3GxpFLgGPjgjVL9bg=; b=egSC74DVfs/YTE
-	6XQwT5rK/TT0z35LTzsHKSwuwVvsNKGalKUbEl72vNWEXZgwRJ0P9vP5GmjdQoJRzvIGgwhEq1Riq
-	q0DbE0nPZz7kzNzUmLedAfUHxXAWT/Haj1hK3ohCdztzHQO0a1juaJBWnFWz1Mfcv+JSybwmW1rdp
-	Zs2d5iQGJclr7hVRuxz4tg9bVLTs9dbgj2sHaHm4ku1Rv+0ymIW3TccTlHyXm04zHyZEM1BU70tDy
-	1iKp5mu2dSBfBFhzxBh5hHFdPnMoqYkYxg+fL2xWT4l6wz+VShDSDdPgzT0OlE4xCSYFW485AbAoj
-	/5vMDa/eRN9VY9pWT65w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DuxWq9MnQjRYhN1ICJuJsSEdAkuR1jv/lTelobEI/lo=; b=RMGN+VPIEoOfie
+	aVZuxvxGviteS1uTIlXpiXo6MvxWj6CbQStp7styqaYTaLAtVM6p6EVRXXI1feLK6tn/eUXKq9ALY
+	F1asvEa93Td4tSByUo7nElL4Odc4Dar7JKsF04L5vVbaRP9vcahaDaeLqJy1WlfkzvQ+1Eo2LfMiW
+	eLv6XOQF3ZQ2qDw7jCSozKqVhMxYhSW09OrTZ3wnZaSV9lv321ZamNzc3mN5r/OdqOTFoP8ubQ+Wq
+	PZkG0ISo0JRBFBb+TE2zzqgD7FIkfv4h/QOL+BjFebv4U7ggZf/6W/LnPYJtbE/9YD2UsuP7fN3Cj
+	T0lPWgiwMAtF0voGz6ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbNtf-00FOS9-FI; Mon, 04 Apr 2022 14:41:35 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1nbO17-00FQLq-DE; Mon, 04 Apr 2022 14:49:17 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbNtT-00FOON-FJ; Mon, 04 Apr 2022 14:41:25 +0000
-Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
- by smtp-out2.suse.de (Postfix) with ESMTP id 8A4D11F381;
- Mon,  4 Apr 2022 14:41:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
- t=1649083274; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=c1hUy9Z7t/TX9ZMrDfSqRcc30TzPK6DZa4A2U57uryQ=;
- b=lb4vB1fhyBQGU3jebbX7RlDvjfDoGQEjomdeljJ0NfL0i9i42/cLNXiwdAyoDd+PKSUho8
- gVfhBn9AMJMX6oAspaWNbNARQ59DJUbV+2pv/Nm2+Wd6yshafJFamigARCIieUqQvdx6BA
- YKoS6VZzAyPqvvErJKMiyy/LRfVzeNg=
-Received: from suse.cz (pathway.suse.cz [10.100.12.24])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by relay2.suse.de (Postfix) with ESMTPS id 07258A3B82;
- Mon,  4 Apr 2022 14:41:14 +0000 (UTC)
-Date: Mon, 4 Apr 2022 16:41:13 +0200
-From: Petr Mladek <pmladek@suse.com>
-To: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, acme@kernel.org,
- akpm@linux-foundation.org, alexander.shishkin@linux.intel.com,
- catalin.marinas@arm.com, davem@davemloft.net, jolsa@redhat.com,
- jthierry@redhat.com, keescook@chromium.org, kernelfans@gmail.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-perf-users@vger.kernel.org, mark.rutland@arm.com,
- masahiroy@kernel.org, matthias.bgg@gmail.com, maz@kernel.org,
- mcgrof@kernel.org, mingo@redhat.com, namhyung@kernel.org,
- nixiaoming@huawei.com, peterz@infradead.org,
- sparclinux@vger.kernel.org, sumit.garg@linaro.org,
- wangqing@vivo.com, will@kernel.org, yj.chiang@mediatek.com
-Subject: Re: [PATCH v3 4/5] kernel/watchdog: Adapt the watchdog_hld interface
- for async model
-Message-ID: <20220404144113.GB26840@pathway.suse.cz>
-References: <20220324141405.10835-1-lecopzer.chen@mediatek.com>
- <20220324141405.10835-5-lecopzer.chen@mediatek.com>
+ id 1nbO0w-00FQHz-Gl; Mon, 04 Apr 2022 14:49:08 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 2DE141F44AAF
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1649083743;
+ bh=gqGXxJTgo2QFByPlVeChgiuVrlRNuS1ZqugUAimLnDE=;
+ h=From:To:Cc:Subject:Date:From;
+ b=jcyi3ieeRTjx/TdSizLK3y7evsfkq7a7xC3FvBhuFTx2x+b7kVS446Fprm0R/mAoU
+ zN37Pr2DLQw/YLDqdp9zQuPItVJVXNxLiK+OGeN5zw9sRSww8pSiL6pk6AnoA/2TtS
+ XwBlOD8E0NmBHlUnZn2djZfHFu1cywvz+AG0uDauu0yd5Ov+qp04WUiGYdvdPUB3+e
+ 5B/EtU1UW1YPHhIbN11kRC1gJp4gWaoIbL5weuuwD1wGsePQNMkrzpRh26+Vvo8V6y
+ 6NXbUfvLmlVI6uGudg7raD0STAbijI4jgg2oAwomRywa3sXrYub1barMRAAot6jNN+
+ sgAzvMHjOiU8Q==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: ryder.lee@mediatek.com
+Cc: jianjun.wang@mediatek.com, lorenzo.pieralisi@arm.com, robh@kernel.org,
+ kw@linux.com, bhelgaas@google.com, p.zabel@pengutronix.de,
+ matthias.bgg@gmail.com, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+ nfraprado@collabora.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] PCI: mediatek-gen3: Assert resets to ensure expected init
+ state
+Date: Mon,  4 Apr 2022 16:48:58 +0200
+Message-Id: <20220404144858.92390-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220324141405.10835-5-lecopzer.chen@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220404_074123_719746_1AA9EB00 
-X-CRM114-Status: GOOD (  38.31  )
+X-CRM114-CacheID: sfid-20220404_074906_804933_F4B1FDB9 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,182 +70,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu 2022-03-24 22:14:04, Lecopzer Chen wrote:
-> When lockup_detector_init()->watchdog_nmi_probe(), PMU may be not ready
-> yet. E.g. on arm64, PMU is not ready until
-> device_initcall(armv8_pmu_driver_init).  And it is deeply integrated
-> with the driver model and cpuhp. Hence it is hard to push this
-> initialization before smp_init().
-> 
-> But it is easy to take an opposite approach and try to initialize
-> the watchdog once again later.
-> The delayed probe is called using workqueues. It need to allocate
-> memory and must be proceed in a normal context.
-> The delayed probe is queued only when the early one returns -EBUSY.
-> It is the return code returned when PMU is not ready yet.
-> 
-> Provide an API - retry_lockup_detector_init() for anyone who needs
-> to delayed init lockup detector.
-> 
-> The original assumption is: nobody should use delayed probe after
-> lockup_detector_check() which has __init attribute.
-> That is, anyone uses this API must call between lockup_detector_init()
-> and lockup_detector_check(), and the caller must have __init attribute
-> 
-> Co-developed-by: Pingfan Liu <kernelfans@gmail.com>
-> Signed-off-by: Pingfan Liu <kernelfans@gmail.com>
-> Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
-> Suggested-by: Petr Mladek <pmladek@suse.com>
-> ---
->  include/linux/nmi.h |  3 ++
->  kernel/watchdog.c   | 69 +++++++++++++++++++++++++++++++++++++++++++--
->  2 files changed, 70 insertions(+), 2 deletions(-)
-> 
-> diff --git a/include/linux/nmi.h b/include/linux/nmi.h
-> index b7bcd63c36b4..1d84c9a8b460 100644
-> --- a/include/linux/nmi.h
-> +++ b/include/linux/nmi.h
-> @@ -118,6 +118,9 @@ static inline int hardlockup_detector_perf_init(void) { return 0; }
->  
->  void watchdog_nmi_stop(void);
->  void watchdog_nmi_start(void);
-> +
-> +extern bool allow_lockup_detector_init_retry;
-> +void retry_lockup_detector_init(void);
->  int watchdog_nmi_probe(void);
->  void watchdog_nmi_enable(unsigned int cpu);
->  void watchdog_nmi_disable(unsigned int cpu);
-> diff --git a/kernel/watchdog.c b/kernel/watchdog.c
-> index b71d434cf648..308ba29f8f0f 100644
-> --- a/kernel/watchdog.c
-> +++ b/kernel/watchdog.c
-> @@ -103,7 +103,13 @@ void __weak watchdog_nmi_disable(unsigned int cpu)
->  	hardlockup_detector_perf_disable();
->  }
->  
-> -/* Return 0, if a NMI watchdog is available. Error code otherwise */
-> +/*
-> + * Arch specific API.
-> + *
-> + * Return 0 when NMI watchdog is available, negative value otherwise.
-> + * The error code -EBUSY is special. It means that a deferred probe
-> + * might succeed later.
-> + */
->  int __weak __init watchdog_nmi_probe(void)
->  {
->  	return hardlockup_detector_perf_init();
-> @@ -839,16 +845,75 @@ static void __init watchdog_sysctl_init(void)
->  #define watchdog_sysctl_init() do { } while (0)
->  #endif /* CONFIG_SYSCTL */
->  
-> +static void lockup_detector_delay_init(struct work_struct *work);
-> +bool allow_lockup_detector_init_retry __initdata;
-> +
-> +static struct work_struct detector_work __initdata =
-> +		__WORK_INITIALIZER(detector_work, lockup_detector_delay_init);
-> +
-> +static void __init lockup_detector_delay_init(struct work_struct *work)
-> +{
-> +	int ret;
-> +
-> +	ret = watchdog_nmi_probe();
-> +	if (ret) {
-> +		pr_info("Delayed init of the lockup detector failed: %d\n", ret);
-> +		pr_info("Perf NMI watchdog permanently disabled\n");
-> +		return;
-> +	}
-> +
-> +	nmi_watchdog_available = true;
-> +	lockup_detector_setup();
+The controller may have been left out of reset by the bootloader,
+in which case, before the powerup sequence, the controller will be
+found preconfigured with values that were set before booting the
+kernel: this produces a controller failure, with the result of
+a failure during the mtk_pcie_startup_port() sequence as the PCIe
+link never gets up.
 
-The name of the variable "allow_lockup_detector_init_retry" is
-slightly confusing in this context. I suggest to add a comment:
+To ensure that we get a clean start in an expected state, assert
+both the PHY and MAC resets before executing the controller
+power-up sequence.
 
-	/* Retry is not needed any longer. */
-> +	allow_lockup_detector_init_retry = false;
+Fixes: d3bf75b579b9 ("PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/pci/controller/pcie-mediatek-gen3.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index f7048ea4c020..dccdfce12b1c 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -838,6 +838,14 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
+ 	if (err)
+ 		return err;
+ 
++	/*
++	 * The controller may have been left out of reset by the bootloader
++	 * so make sure that we get a clean start by asserting resets here.
++	 */
++	reset_control_assert(pcie->phy_reset);
++	reset_control_assert(pcie->mac_reset);
++	usleep_range(10, 20);
++
+ 	/* Don't touch the hardware registers before power up */
+ 	err = mtk_pcie_power_up(pcie);
+ 	if (err)
+-- 
+2.35.1
 
-> +}
-> +
-> +/*
-> + * retry_lockup_detector_init - retry init lockup detector if possible.
-> + *
-> + * Only take effect when allow_lockup_detector_init_retry is true, which
-> + * means it must call between lockup_detector_init() and lockup_detector_check().
-> + * Be aware that caller must have __init attribute, relative functions
-> + * will be freed after kernel initialization.
-> + */
-> +void __init retry_lockup_detector_init(void)
-> +{
-> +	if (!allow_lockup_detector_init_retry)
-> +		return;
-> +
-> +	queue_work_on(__smp_processor_id(), system_wq, &detector_work);
-> +}
-> +
-> +/* Ensure the check is called after the initialization of driver */
-> +static int __init lockup_detector_check(void)
-> +{
-> +	/* Make sure no work is pending. */
-> +	flush_work(&detector_work);
-
-This is racy. We should first disable
-"allow_lockup_detector_init_retry" to make sure
-that retry_lockup_detector_init() will not queue
-the work any longer.
-
-> +	if (!allow_lockup_detector_init_retry)
-> +		return 0;
-> +
-> +	allow_lockup_detector_init_retry = false;
-> +	pr_info("Delayed init checking failed, please check your driver.\n");
-
-This prints that the init failed without checking the state
-of the watchdog. I guess that it works but it is far from
-obvious and any further change might break it.
-
-Is the message really needed?
-Does it help?
-What exact driver needs checking?
-
-IMHO, it just makes the code more complicated and
-it is not worth it.
-
-I suggest to keep it simple:
-
-/*
- * Ensure the check is called after the initialization of driver
- * and before removing init code.
- */
-static int __init lockup_detector_check(void)
-{
-	allow_lockup_detector_init_retry = false;
-	flush_work(&detector_work);
-
-	return 0;
-}
-
-or if you really want that message then I would do:
-
-/*
- * Ensure the check is called after the initialization of driver
- * and before removing init code.
- */
-static int __init lockup_detector_check(void)
-{
-	bool delayed_init_allowed = allow_lockup_detector_init_retry;
-
-	allow_lockup_detector_init_retry = false;
-	flush_work(&detector_work);
-
-	if (delayed_init_allowed && !nmi_watchdog_available)
-		pr_info("Delayed init failed. Please, check your driver.\n");
-
-	return 0;
-}
-
-Best Regards,
-Petr
 
 _______________________________________________
 Linux-mediatek mailing list
