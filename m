@@ -4,58 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2C3DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 20:26:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9152AC43217
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 20:45:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=axC4nPxnLzRLP97O7V8IGfy139roMlb1KoXm7R28lT4=; b=KbW17ut+KSb/2e
-	jBX63uRoMMpZ+c/BhjPvOozt7I02XtCMxVaKSX0NL3eg5qytkGoiV0viwWEzFpjlD2Z5FZ1x8Kd7j
-	osTdTBjO6oP2NDs2NBvdglS37yHkeVQRvMYqlA5DWFZOuT2k75+WhWWuSOu9xVdsvAk3oo1k9JwOP
-	2f67jKiV5g/G9/+OUEg0KWqmkZ8bZMv2Bk3fKabzAVrk9HWViYr7X5AbodQgrH7b/6dUEtL+efRRG
-	uu14RD3Iq3f7N3THiFXdtNsmvD8t12t/KVDHsvLIqxRSVcf5uMtH+oiXpCBEkmHB1/t4BLUhW0b3D
-	vWd1zGn+AOdqBUxvB6Wg==;
+	List-Owner; bh=ir2MD9+tMQT0FB56BYpm36KpP2nD/9lQzDYvV/BJy+8=; b=Le9xZhG1/Ff4f8
+	gZcbTWG5UNZ5AFvbVz6sVkWETLv5AbwJnV13ymsRkS00/MudqTwBKdlViJJKF16CBQfi/5lqd1mQq
+	TK42WyyOUhkd3dKT/FgHnQwJgTXpka5+w/dCF4frB6L44sQrWCXIZagtV7vDSCvAZsAuCf0ci5yzS
+	Ebcm1fc8VXFpOL93AsyDZDEgoWVa95K0gEog7bH7kQ06HMe6ThPaWDqxzdJ80WzUnrW5lpnzxIhCA
+	Nwtcd9hD5zLOG+DGTFhD/Jar+ijBUFy//P3nfSsEqM8dDqk+9xLy1Hlb0mcebUdjICh9WUptFIk6w
+	sjyAxIUPdqk/MI/CAfIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbpkR-002afP-6E; Tue, 05 Apr 2022 20:25:55 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1nbq2y-002d2h-5P; Tue, 05 Apr 2022 20:45:04 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbpk5-002aTs-H5; Tue, 05 Apr 2022 20:25:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
- Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=bBi7tWNtD6G+/435dOrH2y7Mzq/gxksOqSy3vNrpvQI=; b=Ja1I9dg1F7w/IUbasQjK2Q5hxP
- xkyqgPccVTRPwUPC8hP5gsFtenI+uRvTQXzSOaU5A4zMWicEDOFx7L9CDBczV1cKwKQ5vTh8TIHaz
- /40lN3tHLv/vCoR7dFL/WosLRA0C/ZCNOl2QF75ImlKlnIb813OqaPgKZS3rm3IQAUJA=;
-Received: from p200300daa70ef200456864e8b8d10029.dip0.t-ipconnect.de
- ([2003:da:a70e:f200:4568:64e8:b8d1:29] helo=Maecks.lan)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1nbpJa-00035V-SK; Tue, 05 Apr 2022 21:58:10 +0200
-From: Felix Fietkau <nbd@nbd.name>
-To: netdev@vger.kernel.org, John Crispin <john@phrozen.org>,
- Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v2 14/14] net: ethernet: mtk_eth_soc: support creating mac
- address based offload entries
-Date: Tue,  5 Apr 2022 21:57:55 +0200
-Message-Id: <20220405195755.10817-15-nbd@nbd.name>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220405195755.10817-1-nbd@nbd.name>
-References: <20220405195755.10817-1-nbd@nbd.name>
+ id 1nbq2m-002cxk-04; Tue, 05 Apr 2022 20:44:54 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nicolas) with ESMTPSA id 0C8071F4480B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1649191489;
+ bh=/4x2dOVmlW5X3SMWtdjUn/oKHye1Q/xNZ6Y9N4e0NSw=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=Xmm0t+cgocv3IS/j0VcDnBLz+QifOxbtn4lixay51yEGNHxYIfdj3MKHye/T4jYBX
+ UD1ogaW4x/oD5yU7KN6ABNUO7ZCPTYYuLGWxpB7SI9+42PqqbQ+uYiT9Yq09sURyh+
+ OglDRu+3MbToFilinIBoKNyJdN01qi0CZB11xyz12mOGXq7C9+Xce/lCPErvSP8eOD
+ 8ltLV0b6ARXus8vGhk0ZTMSrAQsfSamyei1rKoZTI8LP96tPnsz8Ez9OU7bFlesNH7
+ EILkJdHMNHJsYNik1kaNFohvu2xAg8ukkDMd5vE4IWIaHjljm+XHmGLX/VfKEP/TaG
+ 0cDlqQmf+diXQ==
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Heiko Stuebner <heiko@sntech.de>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH v3 05/24] media: h264: Use v4l2_h264_reference for reflist
+Date: Tue,  5 Apr 2022 16:44:06 -0400
+Message-Id: <20220405204426.259074-6-nicolas.dufresne@collabora.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220405204426.259074-1-nicolas.dufresne@collabora.com>
+References: <20220405204426.259074-1-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_132533_932835_2291037B 
-X-CRM114-Status: GOOD (  24.63  )
+X-CRM114-CacheID: sfid-20220405_134452_350027_5FDA3A95 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,567 +74,470 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This will be used to implement a limited form of bridge offloading.
-Since the hardware does not support flow table entries with just source
-and destination MAC address, the driver has to emulate it.
+In preparation for adding field decoding support, convert the byte arrays
+for reflist into array of struct v4l2_h264_reference. That struct will
+allow us to mark which field of the reference picture is being referenced.
 
-The hardware automatically creates entries entries for incoming flows, even
-when they are bridged instead of routed, and reports when packets for these
-flows have reached the minimum PPS rate for offloading.
-
-After this happens, we look up the L2 flow offload entry based on the MAC
-header and fill in the output routing information in the flow table.
-The dynamically created per-flow entries are automatically removed when
-either the hardware flowtable entry expires, is replaced, or if the offload
-rule they belong to is removed
-
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 ---
- drivers/net/ethernet/mediatek/mtk_ppe.c       | 241 ++++++++++++++++--
- drivers/net/ethernet/mediatek/mtk_ppe.h       |  44 +++-
- .../net/ethernet/mediatek/mtk_ppe_offload.c   |  60 ++++-
- 3 files changed, 299 insertions(+), 46 deletions(-)
+ .../mediatek/vcodec/vdec/vdec_h264_req_if.c   | 17 +++-
+ drivers/media/v4l2-core/v4l2-h264.c           | 33 ++++---
+ .../staging/media/hantro/hantro_g1_h264_dec.c | 38 +++----
+ drivers/staging/media/hantro/hantro_hw.h      |  6 +-
+ .../media/hantro/rockchip_vpu2_hw_h264_dec.c  | 98 +++++++++----------
+ drivers/staging/media/rkvdec/rkvdec-h264.c    | 12 +--
+ include/media/v4l2-h264.h                     | 19 ++--
+ 7 files changed, 116 insertions(+), 107 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
-index aa0d190db65d..282a1f34a88a 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-@@ -6,12 +6,22 @@
- #include <linux/iopoll.h>
- #include <linux/etherdevice.h>
- #include <linux/platform_device.h>
-+#include <linux/if_ether.h>
-+#include <linux/if_vlan.h>
-+#include <net/dsa.h>
- #include "mtk_eth_soc.h"
- #include "mtk_ppe.h"
- #include "mtk_ppe_regs.h"
- 
- static DEFINE_SPINLOCK(ppe_lock);
- 
-+static const struct rhashtable_params mtk_flow_l2_ht_params = {
-+	.head_offset = offsetof(struct mtk_flow_entry, l2_node),
-+	.key_offset = offsetof(struct mtk_flow_entry, data.bridge),
-+	.key_len = offsetof(struct mtk_foe_bridge, key_end),
-+	.automatic_shrinking = true,
-+};
-+
- static void ppe_w32(struct mtk_ppe *ppe, u32 reg, u32 val)
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c
+index 43542de11e9c..72c599e05a47 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c
+@@ -442,9 +442,16 @@ static void update_dpb(const struct v4l2_ctrl_h264_decode_params *dec_param,
+ /*
+  * The firmware expects unused reflist entries to have the value 0x20.
+  */
+-static void fixup_ref_list(u8 *ref_list, size_t num_valid)
++static void get_ref_list(u8 *ref_list, struct v4l2_h264_reflist_builder *b)
  {
- 	writel(val, ppe->base + reg);
-@@ -123,6 +133,9 @@ mtk_foe_entry_l2(struct mtk_foe_entry *entry)
- {
- 	int type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, entry->ib1);
- 
-+	if (type == MTK_PPE_PKT_TYPE_BRIDGE)
-+		return &entry->bridge.l2;
+-	memset(&ref_list[num_valid], 0x20, 32 - num_valid);
++	u32 i;
 +
- 	if (type >= MTK_PPE_PKT_TYPE_IPV4_DSLITE)
- 		return &entry->ipv6.l2;
- 
-@@ -134,6 +147,9 @@ mtk_foe_entry_ib2(struct mtk_foe_entry *entry)
- {
- 	int type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, entry->ib1);
- 
-+	if (type == MTK_PPE_PKT_TYPE_BRIDGE)
-+		return &entry->bridge.ib2;
++	/* FIXME mark the reference parity */
++	for (i = 0; i < b->num_valid; i++)
++		ref_list[i] = b->index;
 +
- 	if (type >= MTK_PPE_PKT_TYPE_IPV4_DSLITE)
- 		return &entry->ipv6.ib2;
- 
-@@ -168,7 +184,12 @@ int mtk_foe_entry_prepare(struct mtk_foe_entry *entry, int type, int l4proto,
- 	if (type == MTK_PPE_PKT_TYPE_IPV6_ROUTE_3T)
- 		entry->ipv6.ports = ports_pad;
- 
--	if (type >= MTK_PPE_PKT_TYPE_IPV4_DSLITE) {
-+	if (type == MTK_PPE_PKT_TYPE_BRIDGE) {
-+		ether_addr_copy(entry->bridge.src_mac, src_mac);
-+		ether_addr_copy(entry->bridge.dest_mac, dest_mac);
-+		entry->bridge.ib2 = val;
-+		l2 = &entry->bridge.l2;
-+	} else if (type >= MTK_PPE_PKT_TYPE_IPV4_DSLITE) {
- 		entry->ipv6.ib2 = val;
- 		l2 = &entry->ipv6.l2;
- 	} else {
-@@ -371,6 +392,84 @@ mtk_flow_entry_match(struct mtk_flow_entry *entry, struct mtk_foe_entry *data)
- 	return !memcmp(&entry->data.data, &data->data, len - 4);
++	for (; i < 32; i++)
++		ref_list[i] = 0x20;
  }
  
-+static void
-+__mtk_foe_entry_clear(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
-+{
-+	struct hlist_head *head;
-+	struct hlist_node *tmp;
-+
-+	if (entry->type == MTK_FLOW_TYPE_L2) {
-+		rhashtable_remove_fast(&ppe->l2_flows, &entry->l2_node,
-+				       mtk_flow_l2_ht_params);
-+
-+		head = &entry->l2_flows;
-+		hlist_for_each_entry_safe(entry, tmp, head, l2_data.list)
-+			__mtk_foe_entry_clear(ppe, entry);
-+		return;
-+	}
-+
-+	hlist_del_init(&entry->list);
-+	if (entry->hash != 0xffff) {
-+		ppe->foe_table[entry->hash].ib1 &= ~MTK_FOE_IB1_STATE;
-+		ppe->foe_table[entry->hash].ib1 |= FIELD_PREP(MTK_FOE_IB1_STATE,
-+							      MTK_FOE_STATE_BIND);
-+		dma_wmb();
-+	}
-+	entry->hash = 0xffff;
-+
-+	if (entry->type != MTK_FLOW_TYPE_L2_SUBFLOW)
-+		return;
-+
-+	hlist_del_init(&entry->l2_data.list);
-+	kfree(entry);
-+}
-+
-+static int __mtk_foe_entry_idle_time(struct mtk_ppe *ppe, u32 ib1)
-+{
-+	u16 timestamp;
-+	u16 now;
-+
-+	now = mtk_eth_timestamp(ppe->eth) & MTK_FOE_IB1_BIND_TIMESTAMP;
-+	timestamp = ib1 & MTK_FOE_IB1_BIND_TIMESTAMP;
-+
-+	if (timestamp > now)
-+		return MTK_FOE_IB1_BIND_TIMESTAMP + 1 - timestamp + now;
-+	else
-+		return now - timestamp;
-+}
-+
-+static void
-+mtk_flow_entry_update_l2(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
-+{
-+	struct mtk_flow_entry *cur;
-+	struct mtk_foe_entry *hwe;
-+	struct hlist_node *tmp;
-+	int idle;
-+
-+	idle = __mtk_foe_entry_idle_time(ppe, entry->data.ib1);
-+	hlist_for_each_entry_safe(cur, tmp, &entry->l2_flows, l2_data.list) {
-+		int cur_idle;
-+		u32 ib1;
-+
-+		hwe = &ppe->foe_table[cur->hash];
-+		ib1 = READ_ONCE(hwe->ib1);
-+
-+		if (FIELD_GET(MTK_FOE_IB1_STATE, ib1) != MTK_FOE_STATE_BIND) {
-+			cur->hash = 0xffff;
-+			__mtk_foe_entry_clear(ppe, cur);
-+			continue;
-+		}
-+
-+		cur_idle = __mtk_foe_entry_idle_time(ppe, ib1);
-+		if (cur_idle >= idle)
-+			continue;
-+
-+		idle = cur_idle;
-+		entry->data.ib1 &= ~MTK_FOE_IB1_BIND_TIMESTAMP;
-+		entry->data.ib1 |= hwe->ib1 & MTK_FOE_IB1_BIND_TIMESTAMP;
-+	}
-+}
-+
- static void
- mtk_flow_entry_update(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- {
-@@ -378,6 +477,12 @@ mtk_flow_entry_update(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- 	struct mtk_foe_entry foe;
+ static void get_vdec_decode_parameters(struct vdec_h264_slice_inst *inst)
+@@ -478,9 +485,9 @@ static void get_vdec_decode_parameters(struct vdec_h264_slice_inst *inst)
+ 	v4l2_h264_build_p_ref_list(&reflist_builder, p0_reflist);
+ 	v4l2_h264_build_b_ref_lists(&reflist_builder, b0_reflist, b1_reflist);
+ 	/* Adapt the built lists to the firmware's expectations */
+-	fixup_ref_list(p0_reflist, reflist_builder.num_valid);
+-	fixup_ref_list(b0_reflist, reflist_builder.num_valid);
+-	fixup_ref_list(b1_reflist, reflist_builder.num_valid);
++	get_ref_list(p0_reflist, reflist_builder);
++	get_ref_list(b0_reflist, reflist_builder);
++	get_ref_list(b1_reflist, reflist_builder);
  
- 	spin_lock_bh(&ppe_lock);
-+
-+	if (entry->type == MTK_FLOW_TYPE_L2) {
-+		mtk_flow_entry_update_l2(ppe, entry);
-+		goto out;
-+	}
-+
- 	if (entry->hash == 0xffff)
- 		goto out;
+ 	memcpy(&inst->vsi_ctx.h264_slice_params, slice_param,
+ 	       sizeof(inst->vsi_ctx.h264_slice_params));
+diff --git a/drivers/media/v4l2-core/v4l2-h264.c b/drivers/media/v4l2-core/v4l2-h264.c
+index ac47519a9fbe..afbfcf78efe4 100644
+--- a/drivers/media/v4l2-core/v4l2-h264.c
++++ b/drivers/media/v4l2-core/v4l2-h264.c
+@@ -75,12 +75,12 @@ v4l2_h264_init_reflist_builder(struct v4l2_h264_reflist_builder *b,
+ 			pic_order_count = dpb[i].top_field_order_cnt;
  
-@@ -419,21 +524,28 @@ __mtk_foe_entry_commit(struct mtk_ppe *ppe, struct mtk_foe_entry *entry,
- void mtk_foe_entry_clear(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- {
- 	spin_lock_bh(&ppe_lock);
--	hlist_del_init(&entry->list);
--	if (entry->hash != 0xffff) {
--		ppe->foe_table[entry->hash].ib1 &= ~MTK_FOE_IB1_STATE;
--		ppe->foe_table[entry->hash].ib1 |= FIELD_PREP(MTK_FOE_IB1_STATE,
--							      MTK_FOE_STATE_BIND);
--		dma_wmb();
--	}
--	entry->hash = 0xffff;
-+	__mtk_foe_entry_clear(ppe, entry);
- 	spin_unlock_bh(&ppe_lock);
- }
- 
-+static int
-+mtk_foe_entry_commit_l2(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
-+{
-+	entry->type = MTK_FLOW_TYPE_L2;
-+
-+	return rhashtable_insert_fast(&ppe->l2_flows, &entry->l2_node,
-+				      mtk_flow_l2_ht_params);
-+}
-+
- int mtk_foe_entry_commit(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- {
--	u32 hash = mtk_ppe_hash_entry(&entry->data);
-+	int type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, entry->data.ib1);
-+	u32 hash;
-+
-+	if (type == MTK_PPE_PKT_TYPE_BRIDGE)
-+		return mtk_foe_entry_commit_l2(ppe, entry);
- 
-+	hash = mtk_ppe_hash_entry(&entry->data);
- 	entry->hash = 0xffff;
- 	spin_lock_bh(&ppe_lock);
- 	hlist_add_head(&entry->list, &ppe->foe_flow[hash / 2]);
-@@ -442,18 +554,72 @@ int mtk_foe_entry_commit(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- 	return 0;
- }
- 
-+static void
-+mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
-+			     u16 hash)
-+{
-+	struct mtk_flow_entry *flow_info;
-+	struct mtk_foe_entry foe, *hwe;
-+	struct mtk_foe_mac_info *l2;
-+	u32 ib1_mask = MTK_FOE_IB1_PACKET_TYPE | MTK_FOE_IB1_UDP;
-+	int type;
-+
-+	flow_info = kzalloc(offsetof(struct mtk_flow_entry, l2_data.end),
-+			    GFP_ATOMIC);
-+	if (!flow_info)
-+		return;
-+
-+	flow_info->l2_data.base_flow = entry;
-+	flow_info->type = MTK_FLOW_TYPE_L2_SUBFLOW;
-+	flow_info->hash = hash;
-+	hlist_add_head(&flow_info->list, &ppe->foe_flow[hash / 2]);
-+	hlist_add_head(&flow_info->l2_data.list, &entry->l2_flows);
-+
-+	hwe = &ppe->foe_table[hash];
-+	memcpy(&foe, hwe, sizeof(foe));
-+	foe.ib1 &= ib1_mask;
-+	foe.ib1 |= entry->data.ib1 & ~ib1_mask;
-+
-+	l2 = mtk_foe_entry_l2(&foe);
-+	memcpy(l2, &entry->data.bridge.l2, sizeof(*l2));
-+
-+	type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, foe.ib1);
-+	if (type == MTK_PPE_PKT_TYPE_IPV4_HNAPT)
-+		memcpy(&foe.ipv4.new, &foe.ipv4.orig, sizeof(foe.ipv4.new));
-+	else if (type >= MTK_PPE_PKT_TYPE_IPV6_ROUTE_3T && l2->etype == ETH_P_IP)
-+		l2->etype = ETH_P_IPV6;
-+
-+	*mtk_foe_entry_ib2(&foe) = entry->data.bridge.ib2;
-+
-+	__mtk_foe_entry_commit(ppe, &foe, hash);
-+}
-+
- void __mtk_ppe_check_skb(struct mtk_ppe *ppe, struct sk_buff *skb, u16 hash)
- {
- 	struct hlist_head *head = &ppe->foe_flow[hash / 2];
--	struct mtk_flow_entry *entry;
- 	struct mtk_foe_entry *hwe = &ppe->foe_table[hash];
-+	struct mtk_flow_entry *entry;
-+	struct mtk_foe_bridge key = {};
-+	struct ethhdr *eh;
- 	bool found = false;
--
--	if (hlist_empty(head))
--		return;
-+	u8 *tag;
- 
- 	spin_lock_bh(&ppe_lock);
-+
-+	if (FIELD_GET(MTK_FOE_IB1_STATE, hwe->ib1) == MTK_FOE_STATE_BIND)
-+		goto out;
-+
- 	hlist_for_each_entry(entry, head, list) {
-+		if (entry->type == MTK_FLOW_TYPE_L2_SUBFLOW) {
-+			if (unlikely(FIELD_GET(MTK_FOE_IB1_STATE, hwe->ib1) ==
-+				     MTK_FOE_STATE_BIND))
-+				continue;
-+
-+			entry->hash = 0xffff;
-+			__mtk_foe_entry_clear(ppe, entry);
-+			continue;
-+		}
-+
- 		if (found || !mtk_flow_entry_match(entry, hwe)) {
- 			if (entry->hash != 0xffff)
- 				entry->hash = 0xffff;
-@@ -464,21 +630,50 @@ void __mtk_ppe_check_skb(struct mtk_ppe *ppe, struct sk_buff *skb, u16 hash)
- 		__mtk_foe_entry_commit(ppe, &entry->data, hash);
- 		found = true;
+ 		b->refs[i].pic_order_count = pic_order_count;
+-		b->unordered_reflist[b->num_valid] = i;
++		b->unordered_reflist[b->num_valid].index = i;
+ 		b->num_valid++;
  	}
-+
-+	if (found)
-+		goto out;
-+
-+	eh = eth_hdr(skb);
-+	ether_addr_copy(key.dest_mac, eh->h_dest);
-+	ether_addr_copy(key.src_mac, eh->h_source);
-+	tag = skb->data - 2;
-+	key.vlan = 0;
-+	switch (skb->protocol) {
-+#if IS_ENABLED(CONFIG_NET_DSA)
-+	case htons(ETH_P_XDSA):
-+		if (!netdev_uses_dsa(skb->dev) ||
-+		    skb->dev->dsa_ptr->tag_ops->proto != DSA_TAG_PROTO_MTK)
-+			goto out;
-+
-+		tag += 4;
-+		if (get_unaligned_be16(tag) != ETH_P_8021Q)
-+			break;
-+
-+		fallthrough;
-+#endif
-+	case htons(ETH_P_8021Q):
-+		key.vlan = get_unaligned_be16(tag + 2) & VLAN_VID_MASK;
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	entry = rhashtable_lookup_fast(&ppe->l2_flows, &key, mtk_flow_l2_ht_params);
-+	if (!entry)
-+		goto out;
-+
-+	mtk_foe_entry_commit_subflow(ppe, entry, hash);
-+
-+out:
- 	spin_unlock_bh(&ppe_lock);
- }
  
- int mtk_foe_entry_idle_time(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
+ 	for (i = b->num_valid; i < ARRAY_SIZE(b->unordered_reflist); i++)
+-		b->unordered_reflist[i] = i;
++		b->unordered_reflist[i].index = i;
+ }
+ EXPORT_SYMBOL_GPL(v4l2_h264_init_reflist_builder);
+ 
+@@ -90,8 +90,8 @@ static int v4l2_h264_p_ref_list_cmp(const void *ptra, const void *ptrb,
+ 	const struct v4l2_h264_reflist_builder *builder = data;
+ 	u8 idxa, idxb;
+ 
+-	idxa = *((u8 *)ptra);
+-	idxb = *((u8 *)ptrb);
++	idxa = ((struct v4l2_h264_reference *)ptra)->index;
++	idxb = ((struct v4l2_h264_reference *)ptrb)->index;
+ 
+ 	if (WARN_ON(idxa >= V4L2_H264_NUM_DPB_ENTRIES ||
+ 		    idxb >= V4L2_H264_NUM_DPB_ENTRIES))
+@@ -125,8 +125,8 @@ static int v4l2_h264_b0_ref_list_cmp(const void *ptra, const void *ptrb,
+ 	s32 poca, pocb;
+ 	u8 idxa, idxb;
+ 
+-	idxa = *((u8 *)ptra);
+-	idxb = *((u8 *)ptrb);
++	idxa = ((struct v4l2_h264_reference *)ptra)->index;
++	idxb = ((struct v4l2_h264_reference *)ptrb)->index;
+ 
+ 	if (WARN_ON(idxa >= V4L2_H264_NUM_DPB_ENTRIES ||
+ 		    idxb >= V4L2_H264_NUM_DPB_ENTRIES))
+@@ -170,8 +170,8 @@ static int v4l2_h264_b1_ref_list_cmp(const void *ptra, const void *ptrb,
+ 	s32 poca, pocb;
+ 	u8 idxa, idxb;
+ 
+-	idxa = *((u8 *)ptra);
+-	idxb = *((u8 *)ptrb);
++	idxa = ((struct v4l2_h264_reference *)ptra)->index;
++	idxb = ((struct v4l2_h264_reference *)ptrb)->index;
+ 
+ 	if (WARN_ON(idxa >= V4L2_H264_NUM_DPB_ENTRIES ||
+ 		    idxb >= V4L2_H264_NUM_DPB_ENTRIES))
+@@ -212,8 +212,8 @@ static int v4l2_h264_b1_ref_list_cmp(const void *ptra, const void *ptrb,
+  * v4l2_h264_build_p_ref_list() - Build the P reference list
+  *
+  * @builder: reference list builder context
+- * @reflist: 16-bytes array used to store the P reference list. Each entry
+- *	     is an index in the DPB
++ * @reflist: 16 sized array used to store the P reference list. Each entry
++ *	     is a v4l2_h264_reference structure
+  *
+  * This functions builds the P reference lists. This procedure is describe in
+  * section '8.2.4 Decoding process for reference picture lists construction'
+@@ -222,7 +222,7 @@ static int v4l2_h264_b1_ref_list_cmp(const void *ptra, const void *ptrb,
+  */
+ void
+ v4l2_h264_build_p_ref_list(const struct v4l2_h264_reflist_builder *builder,
+-			   u8 *reflist)
++			   struct v4l2_h264_reference *reflist)
  {
--	u16 now = mtk_eth_timestamp(ppe->eth) & MTK_FOE_IB1_BIND_TIMESTAMP;
--	u16 timestamp;
--
- 	mtk_flow_entry_update(ppe, entry);
--	timestamp = entry->data.ib1 & MTK_FOE_IB1_BIND_TIMESTAMP;
+ 	memcpy(reflist, builder->unordered_reflist,
+ 	       sizeof(builder->unordered_reflist[0]) * builder->num_valid);
+@@ -235,10 +235,10 @@ EXPORT_SYMBOL_GPL(v4l2_h264_build_p_ref_list);
+  * v4l2_h264_build_b_ref_lists() - Build the B0/B1 reference lists
+  *
+  * @builder: reference list builder context
+- * @b0_reflist: 16-bytes array used to store the B0 reference list. Each entry
+- *		is an index in the DPB
+- * @b1_reflist: 16-bytes array used to store the B1 reference list. Each entry
+- *		is an index in the DPB
++ * @b0_reflist: 16 sized array used to store the B0 reference list. Each entry
++ *		is a v4l2_h264_reference structure
++ * @b1_reflist: 16 sized array used to store the B1 reference list. Each entry
++ *		is a v4l2_h264_reference structure
+  *
+  * This functions builds the B0/B1 reference lists. This procedure is described
+  * in section '8.2.4 Decoding process for reference picture lists construction'
+@@ -247,7 +247,8 @@ EXPORT_SYMBOL_GPL(v4l2_h264_build_p_ref_list);
+  */
+ void
+ v4l2_h264_build_b_ref_lists(const struct v4l2_h264_reflist_builder *builder,
+-			    u8 *b0_reflist, u8 *b1_reflist)
++			    struct v4l2_h264_reference *b0_reflist,
++			    struct v4l2_h264_reference *b1_reflist)
+ {
+ 	memcpy(b0_reflist, builder->unordered_reflist,
+ 	       sizeof(builder->unordered_reflist[0]) * builder->num_valid);
+diff --git a/drivers/staging/media/hantro/hantro_g1_h264_dec.c b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+index f49dbfb8a843..9de7f05eff2a 100644
+--- a/drivers/staging/media/hantro/hantro_g1_h264_dec.c
++++ b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+@@ -126,7 +126,7 @@ static void set_params(struct hantro_ctx *ctx, struct vb2_v4l2_buffer *src_buf)
  
--	if (timestamp > now)
--		return MTK_FOE_IB1_BIND_TIMESTAMP + 1 - timestamp + now;
--	else
--		return now - timestamp;
-+	return __mtk_foe_entry_idle_time(ppe, entry->data.ib1);
- }
- 
- struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth, void __iomem *base,
-@@ -492,6 +687,8 @@ struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth, void __iomem *base,
- 	if (!ppe)
- 		return NULL;
- 
-+	rhashtable_init(&ppe->l2_flows, &mtk_flow_l2_ht_params);
-+
- 	/* need to allocate a separate device, since it PPE DMA access is
- 	 * not coherent.
+ static void set_ref(struct hantro_ctx *ctx)
+ {
+-	const u8 *b0_reflist, *b1_reflist, *p_reflist;
++	const struct v4l2_h264_reference *b0_reflist, *b1_reflist, *p_reflist;
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	int reg_num;
+ 	u32 reg;
+@@ -157,12 +157,12 @@ static void set_ref(struct hantro_ctx *ctx)
  	 */
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
-index 217b44bed8b6..1f5cf1c9a947 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.h
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
-@@ -6,6 +6,7 @@
- 
- #include <linux/kernel.h>
- #include <linux/bitfield.h>
-+#include <linux/rhashtable.h>
- 
- #define MTK_ETH_PPE_BASE		0xc00
- 
-@@ -84,19 +85,16 @@ struct mtk_foe_mac_info {
- 	u16 src_mac_lo;
- };
- 
-+/* software-only entry type */
- struct mtk_foe_bridge {
--	u32 dest_mac_hi;
--
--	u16 src_mac_lo;
--	u16 dest_mac_lo;
-+	u8 dest_mac[ETH_ALEN];
-+	u8 src_mac[ETH_ALEN];
-+	u16 vlan;
- 
--	u32 src_mac_hi;
-+	struct {} key_end;
- 
- 	u32 ib2;
- 
--	u32 _rsv[5];
--
--	u32 udf_tsid;
- 	struct mtk_foe_mac_info l2;
- };
- 
-@@ -235,13 +233,33 @@ enum {
- 	MTK_PPE_CPU_REASON_INVALID			= 0x1f,
- };
- 
-+enum {
-+	MTK_FLOW_TYPE_L4,
-+	MTK_FLOW_TYPE_L2,
-+	MTK_FLOW_TYPE_L2_SUBFLOW,
-+};
-+
- struct mtk_flow_entry {
-+	union {
-+		struct hlist_node list;
-+		struct {
-+			struct rhash_head l2_node;
-+			struct hlist_head l2_flows;
-+		};
-+	};
-+	u8 type;
-+	s8 wed_index;
-+	u16 hash;
-+	union {
-+		struct mtk_foe_entry data;
-+		struct {
-+			struct mtk_flow_entry *base_flow;
-+			struct hlist_node list;
-+			struct {} end;
-+		} l2_data;
-+	};
- 	struct rhash_head node;
--	struct hlist_node list;
- 	unsigned long cookie;
--	struct mtk_foe_entry data;
--	u16 hash;
--	s8 wed_index;
- };
- 
- struct mtk_ppe {
-@@ -256,6 +274,8 @@ struct mtk_ppe {
- 	u16 foe_check_time[MTK_PPE_ENTRIES];
- 	struct hlist_head foe_flow[MTK_PPE_ENTRIES / 2];
- 
-+	struct rhashtable l2_flows;
-+
- 	void *acct_table;
- };
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-index 378685fe92b6..1fe31058b0f2 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-@@ -31,6 +31,8 @@ struct mtk_flow_data {
- 	__be16 src_port;
- 	__be16 dst_port;
- 
-+	u16 vlan_in;
-+
- 	struct {
- 		u16 id;
- 		__be16 proto;
-@@ -257,9 +259,45 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f)
- 		return -EOPNOTSUPP;
+ 	reg_num = 0;
+ 	for (i = 0; i < 15; i += 3) {
+-		reg = G1_REG_BD_REF_PIC_BINIT_RLIST_F0(b0_reflist[i]) |
+-		      G1_REG_BD_REF_PIC_BINIT_RLIST_F1(b0_reflist[i + 1]) |
+-		      G1_REG_BD_REF_PIC_BINIT_RLIST_F2(b0_reflist[i + 2]) |
+-		      G1_REG_BD_REF_PIC_BINIT_RLIST_B0(b1_reflist[i]) |
+-		      G1_REG_BD_REF_PIC_BINIT_RLIST_B1(b1_reflist[i + 1]) |
+-		      G1_REG_BD_REF_PIC_BINIT_RLIST_B2(b1_reflist[i + 2]);
++		reg = G1_REG_BD_REF_PIC_BINIT_RLIST_F0(b0_reflist[i].index) |
++		      G1_REG_BD_REF_PIC_BINIT_RLIST_F1(b0_reflist[i + 1].index) |
++		      G1_REG_BD_REF_PIC_BINIT_RLIST_F2(b0_reflist[i + 2].index) |
++		      G1_REG_BD_REF_PIC_BINIT_RLIST_B0(b1_reflist[i].index) |
++		      G1_REG_BD_REF_PIC_BINIT_RLIST_B1(b1_reflist[i + 1].index) |
++		      G1_REG_BD_REF_PIC_BINIT_RLIST_B2(b1_reflist[i + 2].index);
+ 		vdpu_write_relaxed(vpu, reg, G1_REG_BD_REF_PIC(reg_num++));
  	}
  
-+	switch (addr_type) {
-+	case 0:
-+		offload_type = MTK_PPE_PKT_TYPE_BRIDGE;
-+		if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ETH_ADDRS)) {
-+			struct flow_match_eth_addrs match;
-+
-+			flow_rule_match_eth_addrs(rule, &match);
-+			memcpy(data.eth.h_dest, match.key->dst, ETH_ALEN);
-+			memcpy(data.eth.h_source, match.key->src, ETH_ALEN);
-+		} else {
-+			return -EOPNOTSUPP;
-+		}
-+
-+		if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_VLAN)) {
-+			struct flow_match_vlan match;
-+
-+			flow_rule_match_vlan(rule, &match);
-+
-+			if (match.key->vlan_tpid != cpu_to_be16(ETH_P_8021Q))
-+				return -EOPNOTSUPP;
-+
-+			data.vlan_in = match.key->vlan_id;
-+		}
-+		break;
-+	case FLOW_DISSECTOR_KEY_IPV4_ADDRS:
-+		offload_type = MTK_PPE_PKT_TYPE_IPV4_HNAPT;
-+		break;
-+	case FLOW_DISSECTOR_KEY_IPV6_ADDRS:
-+		offload_type = MTK_PPE_PKT_TYPE_IPV6_ROUTE_5T;
-+		break;
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+
- 	flow_action_for_each(i, act, &rule->action) {
- 		switch (act->id) {
- 		case FLOW_ACTION_MANGLE:
-+			if (offload_type == MTK_PPE_PKT_TYPE_BRIDGE)
-+				return -EOPNOTSUPP;
- 			if (act->mangle.htype == FLOW_ACT_MANGLE_HDR_TYPE_ETH)
- 				mtk_flow_offload_mangle_eth(act, &data.eth);
- 			break;
-@@ -291,17 +329,6 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f)
- 		}
+@@ -171,12 +171,12 @@ static void set_ref(struct hantro_ctx *ctx)
+ 	 * of forward and backward reference picture lists and first 4 entries
+ 	 * of P forward picture list.
+ 	 */
+-	reg = G1_REG_BD_P_REF_PIC_BINIT_RLIST_F15(b0_reflist[15]) |
+-	      G1_REG_BD_P_REF_PIC_BINIT_RLIST_B15(b1_reflist[15]) |
+-	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F0(p_reflist[0]) |
+-	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F1(p_reflist[1]) |
+-	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F2(p_reflist[2]) |
+-	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F3(p_reflist[3]);
++	reg = G1_REG_BD_P_REF_PIC_BINIT_RLIST_F15(b0_reflist[15].index) |
++	      G1_REG_BD_P_REF_PIC_BINIT_RLIST_B15(b1_reflist[15].index) |
++	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F0(p_reflist[0].index) |
++	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F1(p_reflist[1].index) |
++	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F2(p_reflist[2].index) |
++	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F3(p_reflist[3].index);
+ 	vdpu_write_relaxed(vpu, reg, G1_REG_BD_P_REF_PIC);
+ 
+ 	/*
+@@ -185,12 +185,12 @@ static void set_ref(struct hantro_ctx *ctx)
+ 	 */
+ 	reg_num = 0;
+ 	for (i = 4; i < HANTRO_H264_DPB_SIZE; i += 6) {
+-		reg = G1_REG_FWD_PIC_PINIT_RLIST_F0(p_reflist[i]) |
+-		      G1_REG_FWD_PIC_PINIT_RLIST_F1(p_reflist[i + 1]) |
+-		      G1_REG_FWD_PIC_PINIT_RLIST_F2(p_reflist[i + 2]) |
+-		      G1_REG_FWD_PIC_PINIT_RLIST_F3(p_reflist[i + 3]) |
+-		      G1_REG_FWD_PIC_PINIT_RLIST_F4(p_reflist[i + 4]) |
+-		      G1_REG_FWD_PIC_PINIT_RLIST_F5(p_reflist[i + 5]);
++		reg = G1_REG_FWD_PIC_PINIT_RLIST_F0(p_reflist[i].index) |
++		      G1_REG_FWD_PIC_PINIT_RLIST_F1(p_reflist[i + 1].index) |
++		      G1_REG_FWD_PIC_PINIT_RLIST_F2(p_reflist[i + 2].index) |
++		      G1_REG_FWD_PIC_PINIT_RLIST_F3(p_reflist[i + 3].index) |
++		      G1_REG_FWD_PIC_PINIT_RLIST_F4(p_reflist[i + 4].index) |
++		      G1_REG_FWD_PIC_PINIT_RLIST_F5(p_reflist[i + 5].index);
+ 		vdpu_write_relaxed(vpu, reg, G1_REG_FWD_PIC(reg_num++));
  	}
  
--	switch (addr_type) {
--	case FLOW_DISSECTOR_KEY_IPV4_ADDRS:
--		offload_type = MTK_PPE_PKT_TYPE_IPV4_HNAPT;
--		break;
--	case FLOW_DISSECTOR_KEY_IPV6_ADDRS:
--		offload_type = MTK_PPE_PKT_TYPE_IPV6_ROUTE_5T;
--		break;
--	default:
--		return -EOPNOTSUPP;
--	}
--
- 	if (!is_valid_ether_addr(data.eth.h_source) ||
- 	    !is_valid_ether_addr(data.eth.h_dest))
- 		return -EINVAL;
-@@ -315,10 +342,13 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f)
- 	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_PORTS)) {
- 		struct flow_match_ports ports;
+diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+index ed018e293ba0..2bc6b8f088f5 100644
+--- a/drivers/staging/media/hantro/hantro_hw.h
++++ b/drivers/staging/media/hantro/hantro_hw.h
+@@ -69,9 +69,9 @@ struct hantro_h264_dec_ctrls {
+  * @b1:		B1 reflist
+  */
+ struct hantro_h264_dec_reflists {
+-	u8 p[HANTRO_H264_DPB_SIZE];
+-	u8 b0[HANTRO_H264_DPB_SIZE];
+-	u8 b1[HANTRO_H264_DPB_SIZE];
++	struct v4l2_h264_reference p[HANTRO_H264_DPB_SIZE];
++	struct v4l2_h264_reference b0[HANTRO_H264_DPB_SIZE];
++	struct v4l2_h264_reference b1[HANTRO_H264_DPB_SIZE];
+ };
  
-+		if (offload_type == MTK_PPE_PKT_TYPE_BRIDGE)
-+			return -EOPNOTSUPP;
-+
- 		flow_rule_match_ports(rule, &ports);
- 		data.src_port = ports.key->src;
- 		data.dst_port = ports.key->dst;
--	} else {
-+	} else if (offload_type != MTK_PPE_PKT_TYPE_BRIDGE) {
- 		return -EOPNOTSUPP;
- 	}
+ /**
+diff --git a/drivers/staging/media/hantro/rockchip_vpu2_hw_h264_dec.c b/drivers/staging/media/hantro/rockchip_vpu2_hw_h264_dec.c
+index 64a6330475eb..46c1a83bcc4e 100644
+--- a/drivers/staging/media/hantro/rockchip_vpu2_hw_h264_dec.c
++++ b/drivers/staging/media/hantro/rockchip_vpu2_hw_h264_dec.c
+@@ -298,7 +298,7 @@ static void set_params(struct hantro_ctx *ctx, struct vb2_v4l2_buffer *src_buf)
  
-@@ -348,6 +378,9 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f)
- 		if (act->id != FLOW_ACTION_MANGLE)
- 			continue;
+ static void set_ref(struct hantro_ctx *ctx)
+ {
+-	const u8 *b0_reflist, *b1_reflist, *p_reflist;
++	const struct v4l2_h264_reference *b0_reflist, *b1_reflist, *p_reflist;
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	u32 reg;
+ 	int i;
+@@ -307,20 +307,20 @@ static void set_ref(struct hantro_ctx *ctx)
+ 	b1_reflist = ctx->h264_dec.reflists.b1;
+ 	p_reflist = ctx->h264_dec.reflists.p;
  
-+		if (offload_type == MTK_PPE_PKT_TYPE_BRIDGE)
-+			return -EOPNOTSUPP;
-+
- 		switch (act->mangle.htype) {
- 		case FLOW_ACT_MANGLE_HDR_TYPE_TCP:
- 		case FLOW_ACT_MANGLE_HDR_TYPE_UDP:
-@@ -373,6 +406,9 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f)
- 			return err;
- 	}
+-	reg = VDPU_REG_PINIT_RLIST_F9(p_reflist[9]) |
+-	      VDPU_REG_PINIT_RLIST_F8(p_reflist[8]) |
+-	      VDPU_REG_PINIT_RLIST_F7(p_reflist[7]) |
+-	      VDPU_REG_PINIT_RLIST_F6(p_reflist[6]) |
+-	      VDPU_REG_PINIT_RLIST_F5(p_reflist[5]) |
+-	      VDPU_REG_PINIT_RLIST_F4(p_reflist[4]);
++	reg = VDPU_REG_PINIT_RLIST_F9(p_reflist[9].index) |
++	      VDPU_REG_PINIT_RLIST_F8(p_reflist[8].index) |
++	      VDPU_REG_PINIT_RLIST_F7(p_reflist[7].index) |
++	      VDPU_REG_PINIT_RLIST_F6(p_reflist[6].index) |
++	      VDPU_REG_PINIT_RLIST_F5(p_reflist[5].index) |
++	      VDPU_REG_PINIT_RLIST_F4(p_reflist[4].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(74));
  
-+	if (offload_type == MTK_PPE_PKT_TYPE_BRIDGE)
-+		foe.bridge.vlan = data.vlan_in;
-+
- 	if (data.vlan.num == 1) {
- 		if (data.vlan.proto != htons(ETH_P_8021Q))
- 			return -EOPNOTSUPP;
+-	reg = VDPU_REG_PINIT_RLIST_F15(p_reflist[15]) |
+-	      VDPU_REG_PINIT_RLIST_F14(p_reflist[14]) |
+-	      VDPU_REG_PINIT_RLIST_F13(p_reflist[13]) |
+-	      VDPU_REG_PINIT_RLIST_F12(p_reflist[12]) |
+-	      VDPU_REG_PINIT_RLIST_F11(p_reflist[11]) |
+-	      VDPU_REG_PINIT_RLIST_F10(p_reflist[10]);
++	reg = VDPU_REG_PINIT_RLIST_F15(p_reflist[15].index) |
++	      VDPU_REG_PINIT_RLIST_F14(p_reflist[14].index) |
++	      VDPU_REG_PINIT_RLIST_F13(p_reflist[13].index) |
++	      VDPU_REG_PINIT_RLIST_F12(p_reflist[12].index) |
++	      VDPU_REG_PINIT_RLIST_F11(p_reflist[11].index) |
++	      VDPU_REG_PINIT_RLIST_F10(p_reflist[10].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(75));
+ 
+ 	reg = VDPU_REG_REFER1_NBR(hantro_h264_get_ref_nbr(ctx, 1)) |
+@@ -355,54 +355,54 @@ static void set_ref(struct hantro_ctx *ctx)
+ 	      VDPU_REG_REFER14_NBR(hantro_h264_get_ref_nbr(ctx, 14));
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(83));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_F5(b0_reflist[5]) |
+-	      VDPU_REG_BINIT_RLIST_F4(b0_reflist[4]) |
+-	      VDPU_REG_BINIT_RLIST_F3(b0_reflist[3]) |
+-	      VDPU_REG_BINIT_RLIST_F2(b0_reflist[2]) |
+-	      VDPU_REG_BINIT_RLIST_F1(b0_reflist[1]) |
+-	      VDPU_REG_BINIT_RLIST_F0(b0_reflist[0]);
++	reg = VDPU_REG_BINIT_RLIST_F5(b0_reflist[5].index) |
++	      VDPU_REG_BINIT_RLIST_F4(b0_reflist[4].index) |
++	      VDPU_REG_BINIT_RLIST_F3(b0_reflist[3].index) |
++	      VDPU_REG_BINIT_RLIST_F2(b0_reflist[2].index) |
++	      VDPU_REG_BINIT_RLIST_F1(b0_reflist[1].index) |
++	      VDPU_REG_BINIT_RLIST_F0(b0_reflist[0].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(100));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_F11(b0_reflist[11]) |
+-	      VDPU_REG_BINIT_RLIST_F10(b0_reflist[10]) |
+-	      VDPU_REG_BINIT_RLIST_F9(b0_reflist[9]) |
+-	      VDPU_REG_BINIT_RLIST_F8(b0_reflist[8]) |
+-	      VDPU_REG_BINIT_RLIST_F7(b0_reflist[7]) |
+-	      VDPU_REG_BINIT_RLIST_F6(b0_reflist[6]);
++	reg = VDPU_REG_BINIT_RLIST_F11(b0_reflist[11].index) |
++	      VDPU_REG_BINIT_RLIST_F10(b0_reflist[10].index) |
++	      VDPU_REG_BINIT_RLIST_F9(b0_reflist[9].index) |
++	      VDPU_REG_BINIT_RLIST_F8(b0_reflist[8].index) |
++	      VDPU_REG_BINIT_RLIST_F7(b0_reflist[7].index) |
++	      VDPU_REG_BINIT_RLIST_F6(b0_reflist[6].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(101));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_F15(b0_reflist[15]) |
+-	      VDPU_REG_BINIT_RLIST_F14(b0_reflist[14]) |
+-	      VDPU_REG_BINIT_RLIST_F13(b0_reflist[13]) |
+-	      VDPU_REG_BINIT_RLIST_F12(b0_reflist[12]);
++	reg = VDPU_REG_BINIT_RLIST_F15(b0_reflist[15].index) |
++	      VDPU_REG_BINIT_RLIST_F14(b0_reflist[14].index) |
++	      VDPU_REG_BINIT_RLIST_F13(b0_reflist[13].index) |
++	      VDPU_REG_BINIT_RLIST_F12(b0_reflist[12].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(102));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_B5(b1_reflist[5]) |
+-	      VDPU_REG_BINIT_RLIST_B4(b1_reflist[4]) |
+-	      VDPU_REG_BINIT_RLIST_B3(b1_reflist[3]) |
+-	      VDPU_REG_BINIT_RLIST_B2(b1_reflist[2]) |
+-	      VDPU_REG_BINIT_RLIST_B1(b1_reflist[1]) |
+-	      VDPU_REG_BINIT_RLIST_B0(b1_reflist[0]);
++	reg = VDPU_REG_BINIT_RLIST_B5(b1_reflist[5].index) |
++	      VDPU_REG_BINIT_RLIST_B4(b1_reflist[4].index) |
++	      VDPU_REG_BINIT_RLIST_B3(b1_reflist[3].index) |
++	      VDPU_REG_BINIT_RLIST_B2(b1_reflist[2].index) |
++	      VDPU_REG_BINIT_RLIST_B1(b1_reflist[1].index) |
++	      VDPU_REG_BINIT_RLIST_B0(b1_reflist[0].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(103));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_B11(b1_reflist[11]) |
+-	      VDPU_REG_BINIT_RLIST_B10(b1_reflist[10]) |
+-	      VDPU_REG_BINIT_RLIST_B9(b1_reflist[9]) |
+-	      VDPU_REG_BINIT_RLIST_B8(b1_reflist[8]) |
+-	      VDPU_REG_BINIT_RLIST_B7(b1_reflist[7]) |
+-	      VDPU_REG_BINIT_RLIST_B6(b1_reflist[6]);
++	reg = VDPU_REG_BINIT_RLIST_B11(b1_reflist[11].index) |
++	      VDPU_REG_BINIT_RLIST_B10(b1_reflist[10].index) |
++	      VDPU_REG_BINIT_RLIST_B9(b1_reflist[9].index) |
++	      VDPU_REG_BINIT_RLIST_B8(b1_reflist[8].index) |
++	      VDPU_REG_BINIT_RLIST_B7(b1_reflist[7].index) |
++	      VDPU_REG_BINIT_RLIST_B6(b1_reflist[6].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(104));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_B15(b1_reflist[15]) |
+-	      VDPU_REG_BINIT_RLIST_B14(b1_reflist[14]) |
+-	      VDPU_REG_BINIT_RLIST_B13(b1_reflist[13]) |
+-	      VDPU_REG_BINIT_RLIST_B12(b1_reflist[12]);
++	reg = VDPU_REG_BINIT_RLIST_B15(b1_reflist[15].index) |
++	      VDPU_REG_BINIT_RLIST_B14(b1_reflist[14].index) |
++	      VDPU_REG_BINIT_RLIST_B13(b1_reflist[13].index) |
++	      VDPU_REG_BINIT_RLIST_B12(b1_reflist[12].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(105));
+ 
+-	reg = VDPU_REG_PINIT_RLIST_F3(p_reflist[3]) |
+-	      VDPU_REG_PINIT_RLIST_F2(p_reflist[2]) |
+-	      VDPU_REG_PINIT_RLIST_F1(p_reflist[1]) |
+-	      VDPU_REG_PINIT_RLIST_F0(p_reflist[0]);
++	reg = VDPU_REG_PINIT_RLIST_F3(p_reflist[3].index) |
++	      VDPU_REG_PINIT_RLIST_F2(p_reflist[2].index) |
++	      VDPU_REG_PINIT_RLIST_F1(p_reflist[1].index) |
++	      VDPU_REG_PINIT_RLIST_F0(p_reflist[0].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(106));
+ 
+ 	reg = VDPU_REG_REFER_LTERM_E(ctx->h264_dec.dpb_longterm);
+diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+index 951e19231da2..3c7f3d87fab4 100644
+--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
++++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+@@ -100,9 +100,9 @@ struct rkvdec_h264_priv_tbl {
+ #define RKVDEC_H264_DPB_SIZE 16
+ 
+ struct rkvdec_h264_reflists {
+-	u8 p[RKVDEC_H264_DPB_SIZE];
+-	u8 b0[RKVDEC_H264_DPB_SIZE];
+-	u8 b1[RKVDEC_H264_DPB_SIZE];
++	struct v4l2_h264_reference p[RKVDEC_H264_DPB_SIZE];
++	struct v4l2_h264_reference b0[RKVDEC_H264_DPB_SIZE];
++	struct v4l2_h264_reference b1[RKVDEC_H264_DPB_SIZE];
+ 	u8 num_valid;
+ };
+ 
+@@ -767,13 +767,13 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
+ 
+ 			switch (j) {
+ 			case 0:
+-				idx = h264_ctx->reflists.p[i];
++				idx = h264_ctx->reflists.p[i].index;
+ 				break;
+ 			case 1:
+-				idx = h264_ctx->reflists.b0[i];
++				idx = h264_ctx->reflists.b0[i].index;
+ 				break;
+ 			case 2:
+-				idx = h264_ctx->reflists.b1[i];
++				idx = h264_ctx->reflists.b1[i].index;
+ 				break;
+ 			}
+ 
+diff --git a/include/media/v4l2-h264.h b/include/media/v4l2-h264.h
+index 4b1c71c935e0..ef9a894e3c32 100644
+--- a/include/media/v4l2-h264.h
++++ b/include/media/v4l2-h264.h
+@@ -37,7 +37,7 @@ struct v4l2_h264_reflist_builder {
+ 		u16 longterm : 1;
+ 	} refs[V4L2_H264_NUM_DPB_ENTRIES];
+ 	s32 cur_pic_order_count;
+-	u8 unordered_reflist[V4L2_H264_NUM_DPB_ENTRIES];
++	struct v4l2_h264_reference unordered_reflist[V4L2_H264_NUM_DPB_ENTRIES];
+ 	u8 num_valid;
+ };
+ 
+@@ -51,10 +51,10 @@ v4l2_h264_init_reflist_builder(struct v4l2_h264_reflist_builder *b,
+  * v4l2_h264_build_b_ref_lists() - Build the B0/B1 reference lists
+  *
+  * @builder: reference list builder context
+- * @b0_reflist: 16-bytes array used to store the B0 reference list. Each entry
+- *		is an index in the DPB
+- * @b1_reflist: 16-bytes array used to store the B1 reference list. Each entry
+- *		is an index in the DPB
++ * @b0_reflist: 16 sized array used to store the B0 reference list. Each entry
++ *		is a v4l2_h264_reference structure
++ * @b1_reflist: 16 sized array used to store the B1 reference list. Each entry
++ *		is a v4l2_h264_reference structure
+  *
+  * This functions builds the B0/B1 reference lists. This procedure is described
+  * in section '8.2.4 Decoding process for reference picture lists construction'
+@@ -63,14 +63,15 @@ v4l2_h264_init_reflist_builder(struct v4l2_h264_reflist_builder *b,
+  */
+ void
+ v4l2_h264_build_b_ref_lists(const struct v4l2_h264_reflist_builder *builder,
+-			    u8 *b0_reflist, u8 *b1_reflist);
++			    struct v4l2_h264_reference *b0_reflist,
++			    struct v4l2_h264_reference *b1_reflist);
+ 
+ /**
+  * v4l2_h264_build_p_ref_list() - Build the P reference list
+  *
+  * @builder: reference list builder context
+- * @reflist: 16-bytes array used to store the P reference list. Each entry
+- *	     is an index in the DPB
++ * @reflist: 16 sized array used to store the P reference list. Each entry
++ *	     is a v4l2_h264_reference structure
+  *
+  * This functions builds the P reference lists. This procedure is describe in
+  * section '8.2.4 Decoding process for reference picture lists construction'
+@@ -79,6 +80,6 @@ v4l2_h264_build_b_ref_lists(const struct v4l2_h264_reflist_builder *builder,
+  */
+ void
+ v4l2_h264_build_p_ref_list(const struct v4l2_h264_reflist_builder *builder,
+-			   u8 *reflist);
++			   struct v4l2_h264_reference *reflist);
+ 
+ #endif /* _MEDIA_V4L2_H264_H */
 -- 
-2.35.1
+2.34.1
 
 
 _______________________________________________
