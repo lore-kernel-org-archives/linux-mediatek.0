@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B540C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 19:58:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04947C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 19:58:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p9BbLx5XNoNJbLAGcha5LzlyTlTn/rzH4zlvaBRvVs0=; b=OnfDYuhq/IZULV
-	wyrNp3Xeq2b6hJO4JDF/Yau8Qr6sdhsgJpXY0/FTygBbfi5zfHMYYe12qjDMrSROhF5ddOblI2LOO
-	ariTwM0ilNXijUN9G8KvWCX93GFEouet/GvLLsajb8zHLHU+fKcvTy/s24F52rVvnvBuel0/6Ay8o
-	YVOcUhs0uY2mb+ZSHJTLcwo9LgSCXGYdHcX1KsnVnJqVDlunl546u/LxOpxYM8qot0iqsq8d5Ga4o
-	cTYPPVF9m7D46ZIxK7TtA1uIGp6Ud7wkI03TuIrJsjjaRNSnyVTZP7qIevSJE0nbUWqc37dQmIe7+
-	N5r7OmAhWQBeNfslu20w==;
+	List-Owner; bh=T+hxTQQTGqrnHf+7NdmOQmI3+7dcE8VEDUJcKhbYFHE=; b=ksLyvQeYimPJFU
+	/8muUHKR07XaRfk/YZ+h4PfnatPHHo1p9dKIfM9LVPBlS5x1OcMpiFuKE5qrY3URBMAhMttIS53+4
+	E1tl0mt2JP/HjumSdg5z+EjJrMe+aE7wDvKwBy410F7XAdlhPL9RW0OkAR4XZrluexRTIFr4B2/Jp
+	GecOlTpY6kfSSuvphEkEjZSVefij0mXhBOhZE0t2ogbxkFFZtg8afj0JnLdP/4E7rCW0a8KXVLu10
+	6WhX31Kd+6HHGRjlKbgLIejwZ9CJFm103aScDm/Tkb2VJxhHj03dPlxhsmnQiMSOvt1ORm32P12Ht
+	CGjaSgSZS6AYeUigXaEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbpJz-002Sko-5O; Tue, 05 Apr 2022 19:58:35 +0000
+	id 1nbpKB-002SsC-4s; Tue, 05 Apr 2022 19:58:47 +0000
 Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbpJX-002SZ4-Kv; Tue, 05 Apr 2022 19:58:09 +0000
+ id 1nbpJd-002SaZ-C3; Tue, 05 Apr 2022 19:58:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
  s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
  Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=byXalcNrcZ9OxVnER9PUK6RuQsMPfgTlKVdB9QDIgQw=; b=UEuDYqYkdpAUACrl2VWpp6oB/w
- Y9XmRGiibiiJ+ghXrcm30PFTnNuNqkuK3Qd23TnY5MZKvl7fWb1Fq6Aeu2Kh6tSUZgR65t/w0jGkL
- CfSzvpQOcuqGfQBRwJVgG4hK1Cm9umnjKrgCTHBBrC/OroSAwbwVstHg0yA1J3sIzhH0=;
+ bh=YY6foXzBPkeKgwXFtBBUDugou4a7a9Ouq6nJmtz/VTE=; b=HJX9KH3+gWEKbHXeU2u6OfEqLE
+ sIY/1dU9ZKoUO9DdUg9FaLMEjlven46KBL0eQMSxoY0sszKgi3vvdiWWiG0pB6RQjYtkUKHsVWkOY
+ 2nngF51Dr+gE15aqMVzo66OKUnJh4nuksWQz9SwZGodmGvy6AQyYhGNRWstQfMHC8gAc=;
 Received: from p200300daa70ef200456864e8b8d10029.dip0.t-ipconnect.de
  ([2003:da:a70e:f200:4568:64e8:b8d1:29] helo=Maecks.lan)
  by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1nbpJV-00035V-Sv; Tue, 05 Apr 2022 21:58:05 +0200
+ id 1nbpJR-00035V-B8; Tue, 05 Apr 2022 21:58:01 +0200
 From: Felix Fietkau <nbd@nbd.name>
 To: netdev@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2 08/14] arm64: dts: mediatek: mt7622: introduce nodes for
- Wireless Ethernet Dispatch
-Date: Tue,  5 Apr 2022 21:57:49 +0200
-Message-Id: <20220405195755.10817-9-nbd@nbd.name>
+Subject: [PATCH v2 04/14] dt-bindings: arm: mediatek: document WED binding for
+ MT7622
+Date: Tue,  5 Apr 2022 21:57:45 +0200
+Message-Id: <20220405195755.10817-5-nbd@nbd.name>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220405195755.10817-1-nbd@nbd.name>
 References: <20220405195755.10817-1-nbd@nbd.name>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_125807_898965_879C3CE3 
-X-CRM114-Status: UNSURE (   9.02  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220405_125813_609723_F1FA973F 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,67 +73,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce wed0 and wed1 nodes in order to enable offloading forwarding
-between ethernet and wireless devices on the mt7622 chipset.
+From: Lorenzo Bianconi <lorenzo@kernel.org>
 
+Document the binding for the Wireless Ethernet Dispatch core on the MT7622
+SoC, which is used for Ethernet->WLAN offloading
+Add related info in mediatek-net bindings.
+
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 ---
- arch/arm64/boot/dts/mediatek/mt7622.dtsi | 28 ++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+ .../arm/mediatek/mediatek,mt7622-wed.yaml     | 50 +++++++++++++++++++
+ .../devicetree/bindings/net/mediatek-net.txt  |  2 +
+ 2 files changed, 52 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-wed.yaml
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-index a2257ec6d256..47d223e28f8d 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-@@ -901,6 +901,11 @@ sata_port: sata-phy@1a243000 {
- 		};
- 	};
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-wed.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-wed.yaml
+new file mode 100644
+index 000000000000..787d6673f952
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-wed.yaml
+@@ -0,0 +1,50 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: "http://devicetree.org/schemas/arm/mediatek/mediatek,mt7622-wed.yaml#"
++$schema: "http://devicetree.org/meta-schemas/core.yaml#"
++
++title: MediaTek Wireless Ethernet Dispatch Controller for MT7622
++
++maintainers:
++  - Lorenzo Bianconi <lorenzo@kernel.org>
++  - Felix Fietkau <nbd@nbd.name>
++
++description:
++  The mediatek wireless ethernet dispatch controller can be configured to
++  intercept and handle access to the WLAN DMA queues and PCIe interrupts
++  and implement hardware flow offloading from ethernet to WLAN.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt7622-wed
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    soc {
++      #address-cells = <2>;
++      #size-cells = <2>;
++      wed0: wed@1020a000 {
++        compatible = "mediatek,mt7622-wed","syscon";
++        reg = <0 0x1020a000 0 0x1000>;
++        interrupts = <GIC_SPI 214 IRQ_TYPE_LEVEL_LOW>;
++      };
++    };
+diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
+index 13cb12ee4ed6..1c8dc44bbb52 100644
+--- a/Documentation/devicetree/bindings/net/mediatek-net.txt
++++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
+@@ -46,6 +46,8 @@ Optional properties:
+ - mediatek,cci-control: phandle to the cache coherent interconnect node
+ - mediatek,hifsys: phandle to the mediatek hifsys controller used to provide
+ 	various clocks and reset to the system.
++- mediatek,wed: a list of phandles to wireless ethernet dispatch nodes for
++	MT7622 SoC.
  
-+	hifsys: syscon@1af00000 {
-+		compatible = "mediatek,mt7622-hifsys", "syscon";
-+		reg = <0 0x1af00000 0 0x70>;
-+	};
-+
- 	ethsys: syscon@1b000000 {
- 		compatible = "mediatek,mt7622-ethsys",
- 			     "syscon";
-@@ -919,6 +924,26 @@ hsdma: dma-controller@1b007000 {
- 		#dma-cells = <1>;
- 	};
+ * Ethernet MAC node
  
-+	pcie_mirror: pcie-mirror@10000400 {
-+		compatible = "mediatek,mt7622-pcie-mirror",
-+			     "syscon";
-+		reg = <0 0x10000400 0 0x10>;
-+	};
-+
-+	wed0: wed@1020a000 {
-+		compatible = "mediatek,mt7622-wed",
-+			     "syscon";
-+		reg = <0 0x1020a000 0 0x1000>;
-+		interrupts = <GIC_SPI 214 IRQ_TYPE_LEVEL_LOW>;
-+	};
-+
-+	wed1: wed@1020b000 {
-+		compatible = "mediatek,mt7622-wed",
-+			     "syscon";
-+		reg = <0 0x1020b000 0 0x1000>;
-+		interrupts = <GIC_SPI 215 IRQ_TYPE_LEVEL_LOW>;
-+	};
-+
- 	eth: ethernet@1b100000 {
- 		compatible = "mediatek,mt7622-eth",
- 			     "mediatek,mt2701-eth",
-@@ -946,6 +971,9 @@ eth: ethernet@1b100000 {
- 		mediatek,ethsys = <&ethsys>;
- 		mediatek,sgmiisys = <&sgmiisys>;
- 		mediatek,cci-control = <&cci_control2>;
-+		mediatek,wed = <&wed0>, <&wed1>;
-+		mediatek,pcie-mirror = <&pcie_mirror>;
-+		mediatek,hifsys = <&hifsys>;
- 		dma-coherent;
- 		#address-cells = <1>;
- 		#size-cells = <0>;
 -- 
 2.35.1
 
