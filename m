@@ -4,73 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CF27C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 17:16:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C18ABC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 19:58:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m0L+JEIvOnElP75gZnJtS9baOALmYOuw3TIIyFbUl1Q=; b=jjLUM71QE9jJRV
-	z3RIvktNiWuae00s/bT0yzvSNLEx42V8wmOo50rlREv8/JV5K7VJvIhd0KHvbrdXwpjOjsM+O4OfU
-	mSSesfDd97YT2NEEuvkhqNW7QsfO0Cp9PGo36bKXF6DWrpMHfSCaVKHB1nfVIwW1Wi93E2QJzgcxP
-	kLCKLGHzNlUtZ2v3dcBWEfHqrXe95xQdzn16p/XWRQV7lQ+1I0WEwLUbfn1t/0GQkfTv1f8rnjMC0
-	1Szeq3HVMTi9LBWJYJZPX5sbg7dOfbpsypW6SNtblnhuaQuNhmFVKIjIcPYbfjAyVXlSkI3N6ucsi
-	5H9b/nYu1YzQ1WAI83PA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8zhyCc7anxdHB4moas+fMSNt/C7fyyOFLCRCIG5hRwE=; b=P5KOpe7OHcrOGI
+	Vk1etoHUfg02guDn/OBL7gHysY3vYVIaKeGELpUFwDdNpmH3OWbxrzcjpOyFswjK7yoqkBAxbx8Bf
+	znnmhoaPwGq9DfTAnxWeILyIGXWNYwkN9dUiFFXzXtOxKMASIeDtJ4IpVUGZPmnWqeIpjxnhtvOuI
+	d47zUnnX/T5EXZynofi4x6E0zEwDJhh/LrYfjUM2dVDztmvW6KmezSJq6uYZ9yYtZz+SA5DiMbuHP
+	DFD6eamIzmm5D0r1u6JTf0lmCuSBu5PWAJKsbFf/7J6F0jGyv0nxdw3zKm1LHhHvs0uV0vwtIkHJT
+	vMH/jdbi7k3lMYYWRhpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbmmz-0023wk-RX; Tue, 05 Apr 2022 17:16:21 +0000
-Received: from sender4-op-o18.zoho.com ([136.143.188.18])
+	id 1nbpJe-002Saz-AC; Tue, 05 Apr 2022 19:58:14 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbmmk-0023uE-Uo; Tue, 05 Apr 2022 17:16:11 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1649178945; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=VY+0yKVKo/OVl+of7lhiC+NmERw/mO0QIL7d/4Zt2BK2DvDHJe7p+FYSZU3ej7pPRyCuFkYQodsZwHnCI9+bDNxwX6ymxq8d2/QH2AiqgeWo721jljL1AS/mnCSF93Ovl7njzvvGJE/8nPx2+CC5dv5YPbayD+LBEOc4kDhEH7U=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1649178945;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To;
- bh=IGWowlI8r+WgRZZc7My5D0pUljhMLj42f7CltFmHSBg=; 
- b=IdFBMiNpx3O18xSKZrid62+fV4c3LjwQ0U5dbZNvNfinfrS7/JVi5247bRbVOWBFRMEJiwUeCx6wk3pzHbgYwYkhdYAco8Bl+gggK3j9lZ90igApJOd55kFN68d/l64iucbBTvPDLVxNw/1oB/WW11qtZRNczpsySkwuvQczSNQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=arinc9.com;
- spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
- dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1649178945; 
- s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
- h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
- bh=IGWowlI8r+WgRZZc7My5D0pUljhMLj42f7CltFmHSBg=;
- b=MMUud1Fbn3lFWPmI1IjLMb9yr4uoLp/IjkTbnW4xngwQb5ukVWKyYDRd7ForX3lU
- eqqJTnUHQSunNNAPWg/AhRaRNXIuO13j9Kn+KjJHPo0ShvP3vajIfrUphFmiIEMh6Hz
- hGrk6GwnArH72BXcmPELd+uzA/l0c3659orphwOI=
-Received: from [10.10.10.3] (85.117.236.245 [85.117.236.245]) by
- mx.zohomail.com with SMTPS id 1649178943002319.0872332652002;
- Tue, 5 Apr 2022 10:15:43 -0700 (PDT)
-Message-ID: <991f49fd-354b-6d07-6925-f79ca7f09838@arinc9.com>
-Date: Tue, 5 Apr 2022 20:15:36 +0300
+ id 1nbpJR-002SXM-O8; Tue, 05 Apr 2022 19:58:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject
+ :Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:Content-Description:
+ Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+ In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=6RThTrIjSD+KgHY57687QYQ6+eGEGiDbgQLuvpHLE3Y=; b=XKn3t7838gXXFeW0mLX4zKO3Po
+ AEXPN995zU/JbTfakjHb6CLcJIV/4khPlfy2iXE4FiOwWxyY+pZ76eR0+uiFGgvWTDMl+0EP3JD/x
+ hNS3GK5UPqOQmFXXmEwwz0D7EQuVhejooE3cKYwQjcJAttwIyl9BGmGR07BCKoV3F1QY=;
+Received: from p200300daa70ef200456864e8b8d10029.dip0.t-ipconnect.de
+ ([2003:da:a70e:f200:4568:64e8:b8d1:29] helo=Maecks.lan)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1nbpJO-00035V-E2; Tue, 05 Apr 2022 21:57:58 +0200
+From: Felix Fietkau <nbd@nbd.name>
+To: netdev@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 00/14] MediaTek SoC flow offload improvements + wireless
+ support
+Date: Tue,  5 Apr 2022 21:57:41 +0200
+Message-Id: <20220405195755.10817-1-nbd@nbd.name>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH] net: ethernet: mtk_eth_soc: add label support for GMACs
-Content-Language: en-US
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
- Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, =?UTF-8?Q?Ren=c3=a9_van_Dorst?=
- <opensource@vdorst.com>
-References: <20220404114000.3549-1-arinc.unal@arinc9.com>
- <Ykri9tOtUDmXzHkG@lunn.ch>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <Ykri9tOtUDmXzHkG@lunn.ch>
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_101607_097257_8418A6F7 
-X-CRM114-Status: GOOD (  17.89  )
+X-CRM114-CacheID: sfid-20220405_125801_985385_B3A8BEEC 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,39 +63,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMDQvMDQvMjAyMiAxNToyMiwgQW5kcmV3IEx1bm4gd3JvdGU6Cj4gT24gTW9uLCBBcHIgMDQs
-IDIwMjIgYXQgMDI6NDA6MDBQTSArMDMwMCwgQXLEsW7DpyDDnE5BTCB3cm90ZToKPj4gRnJvbTog
-UmVuw6kgdmFuIERvcnN0IDxvcGVuc291cmNlQHZkb3JzdC5jb20+Cj4+Cj4+IEFkZCBsYWJlbCBz
-dXBwb3J0IGZvciBHTUFDcy4gVGhlIG5ldHdvcmsgaW50ZXJmYWNlIG9mIHRoZSBHTUFDIHdpbGwg
-aGF2ZQo+PiB0aGUgc3RyaW5nIG9mIHRoZSBsYWJlbCBwcm9wZXJ0eSBkZWZpbmVkIG9uIHRoZSBk
-ZXZpY2V0cmVlIGFzIGl0cyBuYW1lLgo+IAo+IFNvcnJ5LCBidXQgbm8uIFRoaXMgaGFzIGJlZW4g
-ZGlzY3Vzc2VkIGEgZmV3IHRpbWVzLCB5b3UgbmVlZCBzb21ldGhpbmcKPiBpbiB1c2VyIHNwYWNl
-LCB1ZGV2IG9yIHN5c3RlbWQgZXRjIHRvIHNldCBpbnRlcmZhY2UgbmFtZXMuCj4gCj4gUGxlYXNl
-IGxvb2sgYmFjayBpbiB0aGUgYXJjaGl2ZSBhdCBwcmV2aW91cyBkaXNjdXNzaW9ucy4KClRoYW5r
-cyBmb3IgdGhlIGhlYWRzIHVwIEFuZHJldywgSSBmb3VuZCB5b3VyIHF1b3RlIGZyb20gCmh0dHBz
-Oi8vbG9yZS5rZXJuZWwub3JnL2FsbC9ZZGh3ZmElMkZFQ3FURTNyTHhAbHVubi5jaC86Cgo+IEkg
-YWdyZWUgd2l0aCBSdXNzZWxsIGhlcmUuIEkgZG91YnQgdGhpcyBpcyBnb2luZyB0byBiZSBhY2Nl
-cHRlZC4KPiAKPiBEU0EgaXMgc3BlY2lhbCBiZWNhdXNlIERTQSBpcyB2ZXJ5IG9sZCwgbXVjaCBv
-bGRlciB0aGFuIERULCBhbmQgbWF5YmUKPiBvbGRlciB0aGFuIHVkZXYuIFRoZSBvbGQgRFNBIHBs
-YXRmb3JtIGRyaXZlcnMgaGFkIGEgbWVjaGFuaXNtIHRvCj4gc3VwcGx5IHRoZSBpbnRlcmZhY2Ug
-bmFtZSB0byB0aGUgRFNBIGNvcmUuIFdoZW4gd2UgYWRkZWQgYSBEVCBiaW5kaW5nCj4gdG8gRFNB
-IHdlIGtlcHQgdGhhdCBtZWNoYW5pc20sIHNpbmNlIHRoYXQgbWVjaGFuaXNtIGhhZCBiZWVuIHVz
-ZWQgZm9yCj4gYSBsb25nIHRpbWUuCj4gCj4gRXZlbiBpZiB5b3UgY291bGQgc2hvdyB0aGVyZSB3
-YXMgYSBnZW5lcmljIG9sZCBtZWNoYW5pc20sIGZyb20gYmVmb3JlCj4gdGhlIGRheXMgb2YgRFQs
-IHRoYXQgYWxsb3dlZCBpbnRlcmZhY2UgbmFtZXMgdG8gYmUgc2V0IGZyb20gcGxhdGZvcm0KPiBk
-cml2ZXJzLCBpIGRvdWJ0IGl0IHdvdWxkIGJlIGFjY2VwdGVkIGJlY2F1c2UgdGhlcmUgaXMgbm8g
-Y29udGludWl0eSwKPiB3aGljaCBEU0EgaGFzLgoKT24gTVQ3NjIxIFNvQywgd2UgY2FuIG11eCBh
-IHN3aXRjaCBwaHkgb2YgTVQ3NTMwIChtdXN0IGJlIHBoeTAgb3IgNCkgdG8gCnRoZSBTb0MncyBn
-bWFjMS4gU28gYSBVVFAgcG9ydCBjb25uZWN0ZWQgdG8gdGhhdCBwaHkgYmVjb21lcyBkaXJlY3Rs
-eSAKY29ubmVjdGVkIHRvIHRoZSBTb0MncyBnbWFjMS4gQmVjYXVzZSBvZiB0aGF0LCBJIHdhbnRl
-ZCB0byBiZSBhYmxlIHRvIApnaXZlIHRoZSBnbWFjJ3MgbmV0ZGV2IGludGVyZmFjZSBhIG5hbWUg
-ZnJvbSBEVCBsaWtlIERTQS4gSG93ZXZlciwgdGhlIApxdW90ZSBhYm92ZSBtYWtlcyBzZW5zZSB3
-aHkgbm90IHRvIGRvIHNvLgoKVGhhbmtzLgpBcsSxbsOnCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGlu
-dXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+This series contains the following improvements to mediatek ethernet flow
+offload support:
+
+- support dma-coherent on ethernet to improve performance
+- add ipv6 offload support
+- rework hardware flow table entry handling to improve dealing with hash
+  collisions and competing flows
+- support creating offload entries from user space
+- support creating offload entries with just source/destination mac address,
+  vlan and output device information
+- add driver changes for supporting the Wireless Ethernet Dispatch core,
+  which can be used to offload flows from ethernet to MT7915 PCIe WLAN
+  devices
+
+Changes in v2:
+- add missing dt-bindings patches
+
+David Bentham (1):
+  net: ethernet: mtk_eth_soc: add ipv6 flow offload support
+
+Felix Fietkau (10):
+  net: ethernet: mtk_eth_soc: add support for coherent DMA
+  arm64: dts: mediatek: mt7622: add support for coherent DMA
+  net: ethernet: mtk_eth_soc: add support for Wireless Ethernet Dispatch
+    (WED)
+  net: ethernet: mtk_eth_soc: implement flow offloading to WED devices
+  arm64: dts: mediatek: mt7622: introduce nodes for Wireless Ethernet
+    Dispatch
+  net: ethernet: mtk_eth_soc: support TC_SETUP_BLOCK for PPE offload
+  net: ethernet: mtk_eth_soc: allocate struct mtk_ppe separately
+  net: ethernet: mtk_eth_soc: rework hardware flow table management
+  net: ethernet: mtk_eth_soc: remove bridge flow offload type entry
+    support
+  net: ethernet: mtk_eth_soc: support creating mac address based offload
+    entries
+
+Lorenzo Bianconi (3):
+  dt-bindings: net: mediatek: add optional properties for the SoC
+    ethernet core
+  dt-bindings: arm: mediatek: document WED binding for MT7622
+  dt-bindings: arm: mediatek: document the pcie mirror node on MT7622
+
+ .../mediatek/mediatek,mt7622-pcie-mirror.yaml |  42 +
+ .../arm/mediatek/mediatek,mt7622-wed.yaml     |  50 +
+ .../devicetree/bindings/net/mediatek-net.txt  |  10 +
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi      |  32 +-
+ drivers/net/ethernet/mediatek/Kconfig         |   4 +
+ drivers/net/ethernet/mediatek/Makefile        |   5 +
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 131 ++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h   |  14 +-
+ drivers/net/ethernet/mediatek/mtk_ppe.c       | 368 +++++++-
+ drivers/net/ethernet/mediatek/mtk_ppe.h       |  89 +-
+ .../net/ethernet/mediatek/mtk_ppe_debugfs.c   |   1 -
+ .../net/ethernet/mediatek/mtk_ppe_offload.c   | 189 +++-
+ drivers/net/ethernet/mediatek/mtk_wed.c       | 875 ++++++++++++++++++
+ drivers/net/ethernet/mediatek/mtk_wed.h       | 135 +++
+ .../net/ethernet/mediatek/mtk_wed_debugfs.c   | 175 ++++
+ drivers/net/ethernet/mediatek/mtk_wed_ops.c   |   8 +
+ drivers/net/ethernet/mediatek/mtk_wed_regs.h  | 251 +++++
+ include/linux/netdevice.h                     |   7 +
+ include/linux/soc/mediatek/mtk_wed.h          | 131 +++
+ net/core/dev.c                                |   4 +
+ 20 files changed, 2396 insertions(+), 125 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pcie-mirror.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-wed.yaml
+ create mode 100644 drivers/net/ethernet/mediatek/mtk_wed.c
+ create mode 100644 drivers/net/ethernet/mediatek/mtk_wed.h
+ create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
+ create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_ops.c
+ create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_regs.h
+ create mode 100644 include/linux/soc/mediatek/mtk_wed.h
+
+-- 
+2.35.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
