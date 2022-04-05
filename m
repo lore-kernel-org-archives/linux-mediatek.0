@@ -4,54 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C18ABC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 19:58:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98C3AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 19:58:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8zhyCc7anxdHB4moas+fMSNt/C7fyyOFLCRCIG5hRwE=; b=P5KOpe7OHcrOGI
-	Vk1etoHUfg02guDn/OBL7gHysY3vYVIaKeGELpUFwDdNpmH3OWbxrzcjpOyFswjK7yoqkBAxbx8Bf
-	znnmhoaPwGq9DfTAnxWeILyIGXWNYwkN9dUiFFXzXtOxKMASIeDtJ4IpVUGZPmnWqeIpjxnhtvOuI
-	d47zUnnX/T5EXZynofi4x6E0zEwDJhh/LrYfjUM2dVDztmvW6KmezSJq6uYZ9yYtZz+SA5DiMbuHP
-	DFD6eamIzmm5D0r1u6JTf0lmCuSBu5PWAJKsbFf/7J6F0jGyv0nxdw3zKm1LHhHvs0uV0vwtIkHJT
-	vMH/jdbi7k3lMYYWRhpw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lLiJLMrYap4t1M38iHxuRFbU2UAOuZyRRXTTqo7Jz1I=; b=V0p7+jiDRJEowa
+	E6PvTRxn4tIbsrgzZx8vL0sJnoMP9Ahmv10PO7/o2RhZQgcJi52IJ5tus5c+bilAqg1zQldWxN6dT
+	RPqIS/9+r8R/gPW3649fUmvQIPA6zCl9INOzJq8+bWSC8b3iY42vQ2xaCin/ZkyBFlRF6iabm8B+2
+	yoa40HAd/GB7h7arDwBo2JjVse/Kcqtk1bR81lm848uGJJFtxbCzH88DLOt7yLzqx6PXtkT1P2ULd
+	M+LJFB78OgMMPlm5EB/1G8jGpPK0g9hSN2sZ7C7ddetF1KLhn41vl5Rbi92T8EJX99D0DYv4WQB1m
+	GQJL9T1u+CADnpdjNhnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbpJe-002Saz-AC; Tue, 05 Apr 2022 19:58:14 +0000
+	id 1nbpJo-002Sfg-Bu; Tue, 05 Apr 2022 19:58:24 +0000
 Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbpJR-002SXM-O8; Tue, 05 Apr 2022 19:58:03 +0000
+ id 1nbpJS-002SXU-Ek; Tue, 05 Apr 2022 19:58:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject
- :Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:Content-Description:
- Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
- In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
+ Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=6RThTrIjSD+KgHY57687QYQ6+eGEGiDbgQLuvpHLE3Y=; b=XKn3t7838gXXFeW0mLX4zKO3Po
- AEXPN995zU/JbTfakjHb6CLcJIV/4khPlfy2iXE4FiOwWxyY+pZ76eR0+uiFGgvWTDMl+0EP3JD/x
- hNS3GK5UPqOQmFXXmEwwz0D7EQuVhejooE3cKYwQjcJAttwIyl9BGmGR07BCKoV3F1QY=;
+ bh=TFVjDpMBzikmsOPbftDhPL/vuxdtl+pABOZRs13meDI=; b=on2i/12safI584EKtjB+2mXflF
+ RCUdyDig4wDPF1t5RxfXOvodcEQHARZFV9YAvk4Tf2Jgid1N9zL6YFukmjNl5u2qaSNnlvXx+w4Xs
+ YLpsVKUhteCxx3RgspyKDIxRkl32bHTYJFe1gtT0ALVifAXNhChYe0iWa6EPOvfMbFv0=;
 Received: from p200300daa70ef200456864e8b8d10029.dip0.t-ipconnect.de
  ([2003:da:a70e:f200:4568:64e8:b8d1:29] helo=Maecks.lan)
  by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1nbpJO-00035V-E2; Tue, 05 Apr 2022 21:57:58 +0200
+ id 1nbpJQ-00035V-HQ; Tue, 05 Apr 2022 21:58:00 +0200
 From: Felix Fietkau <nbd@nbd.name>
-To: netdev@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 00/14] MediaTek SoC flow offload improvements + wireless
- support
-Date: Tue,  5 Apr 2022 21:57:41 +0200
-Message-Id: <20220405195755.10817-1-nbd@nbd.name>
+To: netdev@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v2 03/14] arm64: dts: mediatek: mt7622: add support for
+ coherent DMA
+Date: Tue,  5 Apr 2022 21:57:44 +0200
+Message-Id: <20220405195755.10817-4-nbd@nbd.name>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220405195755.10817-1-nbd@nbd.name>
+References: <20220405195755.10817-1-nbd@nbd.name>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_125801_985385_B3A8BEEC 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20220405_125802_681570_32237E7F 
+X-CRM114-Status: GOOD (  10.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,78 +71,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series contains the following improvements to mediatek ethernet flow
-offload support:
+It improves performance by eliminating the need for a cache flush on rx and tx
 
-- support dma-coherent on ethernet to improve performance
-- add ipv6 offload support
-- rework hardware flow table entry handling to improve dealing with hash
-  collisions and competing flows
-- support creating offload entries from user space
-- support creating offload entries with just source/destination mac address,
-  vlan and output device information
-- add driver changes for supporting the Wireless Ethernet Dispatch core,
-  which can be used to offload flows from ethernet to MT7915 PCIe WLAN
-  devices
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+---
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Changes in v2:
-- add missing dt-bindings patches
-
-David Bentham (1):
-  net: ethernet: mtk_eth_soc: add ipv6 flow offload support
-
-Felix Fietkau (10):
-  net: ethernet: mtk_eth_soc: add support for coherent DMA
-  arm64: dts: mediatek: mt7622: add support for coherent DMA
-  net: ethernet: mtk_eth_soc: add support for Wireless Ethernet Dispatch
-    (WED)
-  net: ethernet: mtk_eth_soc: implement flow offloading to WED devices
-  arm64: dts: mediatek: mt7622: introduce nodes for Wireless Ethernet
-    Dispatch
-  net: ethernet: mtk_eth_soc: support TC_SETUP_BLOCK for PPE offload
-  net: ethernet: mtk_eth_soc: allocate struct mtk_ppe separately
-  net: ethernet: mtk_eth_soc: rework hardware flow table management
-  net: ethernet: mtk_eth_soc: remove bridge flow offload type entry
-    support
-  net: ethernet: mtk_eth_soc: support creating mac address based offload
-    entries
-
-Lorenzo Bianconi (3):
-  dt-bindings: net: mediatek: add optional properties for the SoC
-    ethernet core
-  dt-bindings: arm: mediatek: document WED binding for MT7622
-  dt-bindings: arm: mediatek: document the pcie mirror node on MT7622
-
- .../mediatek/mediatek,mt7622-pcie-mirror.yaml |  42 +
- .../arm/mediatek/mediatek,mt7622-wed.yaml     |  50 +
- .../devicetree/bindings/net/mediatek-net.txt  |  10 +
- arch/arm64/boot/dts/mediatek/mt7622.dtsi      |  32 +-
- drivers/net/ethernet/mediatek/Kconfig         |   4 +
- drivers/net/ethernet/mediatek/Makefile        |   5 +
- drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 131 ++-
- drivers/net/ethernet/mediatek/mtk_eth_soc.h   |  14 +-
- drivers/net/ethernet/mediatek/mtk_ppe.c       | 368 +++++++-
- drivers/net/ethernet/mediatek/mtk_ppe.h       |  89 +-
- .../net/ethernet/mediatek/mtk_ppe_debugfs.c   |   1 -
- .../net/ethernet/mediatek/mtk_ppe_offload.c   | 189 +++-
- drivers/net/ethernet/mediatek/mtk_wed.c       | 875 ++++++++++++++++++
- drivers/net/ethernet/mediatek/mtk_wed.h       | 135 +++
- .../net/ethernet/mediatek/mtk_wed_debugfs.c   | 175 ++++
- drivers/net/ethernet/mediatek/mtk_wed_ops.c   |   8 +
- drivers/net/ethernet/mediatek/mtk_wed_regs.h  | 251 +++++
- include/linux/netdevice.h                     |   7 +
- include/linux/soc/mediatek/mtk_wed.h          | 131 +++
- net/core/dev.c                                |   4 +
- 20 files changed, 2396 insertions(+), 125 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-pcie-mirror.yaml
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-wed.yaml
- create mode 100644 drivers/net/ethernet/mediatek/mtk_wed.c
- create mode 100644 drivers/net/ethernet/mediatek/mtk_wed.h
- create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
- create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_ops.c
- create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_regs.h
- create mode 100644 include/linux/soc/mediatek/mtk_wed.h
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+index 6f8cb3ad1e84..a2257ec6d256 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+@@ -357,7 +357,7 @@ cci_control1: slave-if@4000 {
+ 		};
+ 
+ 		cci_control2: slave-if@5000 {
+-			compatible = "arm,cci-400-ctrl-if";
++			compatible = "arm,cci-400-ctrl-if", "syscon";
+ 			interface-type = "ace";
+ 			reg = <0x5000 0x1000>;
+ 		};
+@@ -945,6 +945,8 @@ eth: ethernet@1b100000 {
+ 		power-domains = <&scpsys MT7622_POWER_DOMAIN_ETHSYS>;
+ 		mediatek,ethsys = <&ethsys>;
+ 		mediatek,sgmiisys = <&sgmiisys>;
++		mediatek,cci-control = <&cci_control2>;
++		dma-coherent;
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+ 		status = "disabled";
 -- 
 2.35.1
 
