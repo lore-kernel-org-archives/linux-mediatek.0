@@ -4,68 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6CDFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 15:19:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC098C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 15:52:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vMaSwoebEzppJdHdK6Rc5e4O1HQz7mEhBwBy41IcRVc=; b=w6pMyzhfw9CY4U
-	sQukhsgUAN9+jbUlRK5T5Nx7fkXj1Qby1S8uau2c6dBylRPfoOGb+eK8Bnaa2P17CnZkdUmsxXwAO
-	tQ6jl7NZtF8ZFM906JF43RMEdU0gujBio3r8JMpUhLrBhVwfAvupqBOjwhRp76wDikS5hZPP7pfRS
-	x9lRWIIJjst54AOovM/HOvj2IbtRVuv+lLEcCGXw2odiLE3E+es4nbKyWrCswn5LELkT8fhxgFy6x
-	MYs0sjygKOt8zG3WRTQbhGORHBHSRTxzzV0E4N+Mewi5lfptGs8ANPBBjvrSfuaeUjQ5K+tjQZ8ei
-	yRTxf67w9iWFTObyp1zA==;
+	List-Owner; bh=kXqoeQlMEQXUVCH9pvJy3Autwcx16L7wjmZg+j467bA=; b=fvY9QO8XpObHdq
+	ihRhLNYMnwsCHIfE8h5MBsvwhEBfh13xAFAxX0wSthVrtsfTdXNMWCr4lIHhxih6vqkim271sZw2M
+	ke7BVWrxEmKhi0uq1Sx0+G30bBBxwep6Nw7+dzg6WcOQq+Ne15go7kEkQvnMSGA5By9reCXMCpvGW
+	oEvlfRDlQEA3kruKm0QlT1NqE4Pvk/pl9QStFBIwOdKmGqlBb8gq5Yu5Sfks7c+vyoGlrdz3YKEqf
+	S9cmb1lTiuiq2gV9HLPLEEz+j+R1m3cmHp1vkBqnvesXXXAF6OSgL6VvTl2ROZ5XkMgJ6E69LP0am
+	djTgCPNfOER2+QjuhlBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbkyD-001fTN-Et; Tue, 05 Apr 2022 15:19:49 +0000
-Received: from smtp-out1.suse.de ([195.135.220.28])
+	id 1nblTu-001maj-59; Tue, 05 Apr 2022 15:52:34 +0000
+Received: from mail-oa1-f54.google.com ([209.85.160.54])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbky0-001fN8-P3; Tue, 05 Apr 2022 15:19:38 +0000
-Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
- by smtp-out1.suse.de (Postfix) with ESMTP id EDAF6210DE;
- Tue,  5 Apr 2022 15:19:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
- t=1649171971; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=AUaCL0W4jHwKamsmD5VqBN+3A3UfQ6aVKoMK0LhECXY=;
- b=a4sG92MVGf37CQeLB+XZVjYv2GHIwuzBOfLNOrkSLltR8rVJAMiL70GClf7Ilj5pI58Ug+
- r5J4lVPcvWThTyiJH0rb9jdVD1/cT6W4UlE+3rv+qg8vTg7+udhg1Jf+hxs6Q0tU3+5bx+
- kfxmTkkuL0P3NjRxrXZ57wrS9n8o60k=
-Received: from suse.cz (unknown [10.100.224.162])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by relay2.suse.de (Postfix) with ESMTPS id DE2A6A3B82;
- Tue,  5 Apr 2022 15:19:30 +0000 (UTC)
-Date: Tue, 5 Apr 2022 17:19:28 +0200
-From: Petr Mladek <pmladek@suse.com>
-To: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Cc: acme@kernel.org, akpm@linux-foundation.org,
- alexander.shishkin@linux.intel.com, catalin.marinas@arm.com,
- davem@davemloft.net, jolsa@redhat.com, jthierry@redhat.com,
- keescook@chromium.org, kernelfans@gmail.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- linux-perf-users@vger.kernel.org, mark.rutland@arm.com,
- masahiroy@kernel.org, matthias.bgg@gmail.com, maz@kernel.org,
- mcgrof@kernel.org, mingo@redhat.com, namhyung@kernel.org,
- nixiaoming@huawei.com, peterz@infradead.org,
- sparclinux@vger.kernel.org, sumit.garg@linaro.org,
- wangqing@vivo.com, will@kernel.org, yj.chiang@mediatek.com
-Subject: Re: [PATCH v3 4/5] kernel/watchdog: Adapt the watchdog_hld interface
- for async model
-Message-ID: <YkxeAM+SwYHAnJE1@alley>
-References: <20220404144113.GB26840@pathway.suse.cz>
- <20220405133503.4487-1-lecopzer.chen@mediatek.com>
+ id 1nblTj-001mYt-Ll; Tue, 05 Apr 2022 15:52:24 +0000
+Received: by mail-oa1-f54.google.com with SMTP id
+ 586e51a60fabf-de3eda6b5dso14906574fac.0; 
+ Tue, 05 Apr 2022 08:52:21 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=73sr+mzCEmuVDVSdm+EpGuiiOfdHmYopaGe2xWN1rOQ=;
+ b=bfIBH3O08HsXuM3OdD5uW4ahG7T8DoMZyp+Y+9UwF6njeMfo3ymbEwSoXa/oXKXbGy
+ aZCpn1ScCwr/ejiHXi/mQQXuHh49qSZOShEIkYBKYxWo/bIIgsNIhUpzaXWGNEMma0kf
+ hKebPm7VElS1mbKY0+pb8HHJMh6O/BCaVMK4314HrNgEtmdtNliXKVhFc3ggP3nXtdot
+ jtJK1oWudBLCwR5QLadQ6ulifTEK2am4A6EIV+UWAjqRg/McpqRjl5SOwZ4D9hMWKxiz
+ jfSttzaTo47iPkbTj7iGUP3Rcwl0IY6JQgA23vMQi9GZg38eR0lOFJOpfLNTYqiCy6q+
+ NBlw==
+X-Gm-Message-State: AOAM532mWtTeFJz6dA/OtYXMJKjgItfWLtaTp1LUDy2QBtUIFhBOc3pz
+ hG9bVZ8NGowPrafDszJoyw==
+X-Google-Smtp-Source: ABdhPJxNSzVmokJVTPd1XNB16cHa14S7IaMy1MJZPXDKNndI7oIgOU3kFQsdma7sT8pY4vAAcBr/KA==
+X-Received: by 2002:a05:6870:f149:b0:dd:f3b0:986d with SMTP id
+ l9-20020a056870f14900b000ddf3b0986dmr1904739oac.148.1649173940623; 
+ Tue, 05 Apr 2022 08:52:20 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ 2-20020a056870124200b000dd9ac0d61esm5524206oao.24.2022.04.05.08.52.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 05 Apr 2022 08:52:19 -0700 (PDT)
+Received: (nullmailer pid 3284623 invoked by uid 1000);
+ Tue, 05 Apr 2022 15:52:17 -0000
+Date: Tue, 5 Apr 2022 10:52:17 -0500
+From: Rob Herring <robh@kernel.org>
+To: Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Chuanhong Guo <gch981213@gmail.com>, linux-spi@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ Vignesh Raghavendra <vigneshr@ti.com>, Richard Weinberger <richard@nod.at>,
+ Pratyush Yadav <p.yadav@ti.com>, linux-arm-kernel@lists.infradead.org,
+ Cai Huoqing <cai.huoqing@linux.dev>, Roger Quadros <rogerq@kernel.org>,
+ Yu Kuai <yukuai3@huawei.com>, linux-mediatek@lists.infradead.org,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>, devicetree@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org,
+ Paul Cercueil <paul@crapouillou.net>, Florian Fainelli <f.fainelli@gmail.com>,
+ Colin Ian King <colin.king@intel.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-mtd@lists.infradead.org
+Subject: Re: [PATCH v3 4/5] dt-bindings: spi: add binding doc for spi-mtk-snfi
+Message-ID: <YkxlsU+P33ip2oWH@robh.at.kernel.org>
+References: <20220404131818.1817794-1-gch981213@gmail.com>
+ <20220404131818.1817794-5-gch981213@gmail.com>
+ <1649088538.050456.1436949.nullmailer@robh.at.kernel.org>
+ <CAJsYDVLaXAoL=TcPun6rckcA_cdUS-zFy_7M6uCpfzX+jbQEag@mail.gmail.com>
+ <20220405092024.25d97c33@xps13>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220405133503.4487-1-lecopzer.chen@mediatek.com>
+In-Reply-To: <20220405092024.25d97c33@xps13>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_081937_030446_C37B64A6 
-X-CRM114-Status: GOOD (  40.72  )
+X-CRM114-CacheID: sfid-20220405_085223_748851_EBFF41D5 
+X-CRM114-Status: GOOD (  20.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,164 +95,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue 2022-04-05 21:35:03, Lecopzer Chen wrote:
-> > On Thu 2022-03-24 22:14:04, Lecopzer Chen wrote:
-> > > When lockup_detector_init()->watchdog_nmi_probe(), PMU may be not ready
-> > > yet. E.g. on arm64, PMU is not ready until
-> > > device_initcall(armv8_pmu_driver_init).  And it is deeply integrated
-> > > with the driver model and cpuhp. Hence it is hard to push this
-> > > initialization before smp_init().
-> > > 
-> > > But it is easy to take an opposite approach and try to initialize
-> > > the watchdog once again later.
-> > > The delayed probe is called using workqueues. It need to allocate
-> > > memory and must be proceed in a normal context.
-> > > The delayed probe is queued only when the early one returns -EBUSY.
-> > > It is the return code returned when PMU is not ready yet.
-> > > 
-> > > Provide an API - retry_lockup_detector_init() for anyone who needs
-> > > to delayed init lockup detector.
-> > > 
-> > > The original assumption is: nobody should use delayed probe after
-> > > lockup_detector_check() which has __init attribute.
-> > > That is, anyone uses this API must call between lockup_detector_init()
-> > > and lockup_detector_check(), and the caller must have __init attribute
-> > > 
-> > > --- a/kernel/watchdog.c
-> > > +++ b/kernel/watchdog.c
-> > > +}
-> > > +
-> > > +/*
-> > > + * retry_lockup_detector_init - retry init lockup detector if possible.
-> > > + *
-> > > + * Only take effect when allow_lockup_detector_init_retry is true, which
-> > > + * means it must call between lockup_detector_init() and lockup_detector_check().
-> > > + * Be aware that caller must have __init attribute, relative functions
-> > > + * will be freed after kernel initialization.
-> > > + */
-> > > +void __init retry_lockup_detector_init(void)
-> > > +{
-> > > +	if (!allow_lockup_detector_init_retry)
-> > > +		return;
-> > > +
-> > > +	queue_work_on(__smp_processor_id(), system_wq, &detector_work);
-> > > +}
-> > > +
-> > > +/* Ensure the check is called after the initialization of driver */
-> > > +static int __init lockup_detector_check(void)
-> > > +{
-> > > +	/* Make sure no work is pending. */
-> > > +	flush_work(&detector_work);
+On Tue, Apr 05, 2022 at 09:20:24AM +0200, Miquel Raynal wrote:
+> Hello,
+> 
+> gch981213@gmail.com wrote on Tue, 5 Apr 2022 10:55:51 +0800:
+> 
+> > Hi Rob!
 > > 
-> > This is racy. We should first disable
-> > "allow_lockup_detector_init_retry" to make sure
-> > that retry_lockup_detector_init() will not queue
-> > the work any longer.
+> > On Tue, Apr 5, 2022 at 12:09 AM Rob Herring <robh@kernel.org> wrote:
+> > > [...]
+> > > My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+> > > on your patch (DT_CHECKER_FLAGS is new in v5.13):
+> > >
+> > > yamllint warnings/errors:
+> > >
+> > > dtschema/dtc warnings/errors:
+> > > /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.example.dt.yaml: spi@1100d000: 'ecc-engine' is a required property
+> > >         From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
+> > > Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.example.dt.yaml:0:0: /example-0/soc/spi@1100d000/flash@0: failed to match any schema with compatible: ['spi-nand']  
+> > 
+> > I ran the tests myself and it's only complaining about the ecc-engine name:
+> > 
+> > /home/user/src/kernels/linux/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.example.dtb:
+> > spi@1100d000: 'ecc-engine' is a required property
+> > From schema: /home/user/src/kernels/linux/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
+> > 
+> > It says nothing about the spi-nand part.
+
+Did you use 'DT_CHECKER_FLAGS=-m' as it says above?
+
+> > I'd like to keep the flash@0 node in the example to demonstrate the
+> > nand-ecc-engine usage. What should I do?
 > 
-> But disable before flush_work will make the 
->     lockup_detector_delay_init() ->
->     watchdog_nmi_probe ->
->     +	if (!allow_lockup_detector_init_retry)
->     +		return -EBUSY;
+> You can try including spi-nand.yaml (like you do with
+> spi-controller.yaml). You should no longer need to define
+> nand-ecc-engine then as it is already described there?
 
-I see. It is exactly the reason why I suggest to remove the
-optimization and keep the code simple.
+Including spi-nand.yaml is wrong. If that just landed, then this may 
+have run before the base moved to v5.18-rc1.
 
-> how about:
-> ...
-> static bool __init delayed_init_allowed = true;
-> ...
-> /*
->  * retry_lockup_detector_init - retry init lockup detector if possible.
->  *
->  * Only take effect when allow_lockup_detector_init_retry is true, which
->  * means it must call between lockup_detector_init() and lockup_detector_check().
->  * Be aware that caller must have __init attribute, relative functions
->  * will be freed after kernel initialization.
->  */
-> void __init retry_lockup_detector_init(void)
-> {
-> 	if (!allow_lockup_detector_init_retry || !delayed_init_allowed)
-> 		return;
-> 
-> 	/* 
-> 	 * we shouldn't queue any delayed init work twice to avoid
-> 	 * any unwanted racy.
-> 	 */
-> 	delayed_init_allowed = false;
-
-Grrr, this is so complicated and confusing. It might be because of
-badly selected variable names or comments. But I think that it is
-simply a bad approach.
-
-OK, you suggest two variables. If I get it correctly:
-
-    + The variable "delayed_init_allowed"
-     tries to prevent the race in lockup_detector_check().
-
-     It will make sure that the work could not be queued after
-     flush_work() finishes.
-
-     Is this obvious from the comment?
-     Is this obvious from the variable name?
-
-     I am sorry. But it is not obvious to me. I understand it only
-     because I see it together in this mail. It will be pretty
-     hard to get it from the code when I see it one year later.
-
-
-   + The variable "allow_lockup_detector_init_retry" has an unclear
-     meaning. It might mean:
-
-	+ watchdog_nmi_probe() ended with -EBUSY in
-	  lockup_detector_init() and we can try the delayed init.
-
-	+ but it also means that watchdog_nmi_probe() succeeded in
-	  lockup_detector_delay_init() and there is no need to
-	  try the delayed init any longer.
-
-       Is this obvious from the variable name?
-       Is it explained anywhere?
-       Is it easy to understand?
-
-       No, from my POV. It is really bad idea to have a single
-       variable with so many meanings.
-
-
-And this is my problem with this approach. There was one variable with
-unclear meanting. And you are trying to fix it by two variables
-with unclear meaning.
-
-> 	queue_work_on(__smp_processor_id(), system_wq, &detector_work);
-> }
-> 
-> 
-> /*
->  * Ensure the check is called after the initialization of driver
->  * and before removing init code.
->  */
-> static int __init lockup_detector_check(void)
-> {
-> 	delayed_init_allowed = false;
-> 	flush_work(&detector_work);
-> 	allow_lockup_detector_init_retry = false;
-> 
-> 	return 0;
-> }
-
-No, please keep it simple. Just have one variable that will say
-whether we are allowed to queue the work:
-
-  + It will be allowed when watchdog_nmi_probe() ended
-    with -EBUSY in lockup_detector_init()
-
-  + It will not longer be allowed when watchdog_nmi_probe()
-    succeeded or when lockup_detector_check() flushes
-    the pending works.
-
-
-Best Regards,
-Petr
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
