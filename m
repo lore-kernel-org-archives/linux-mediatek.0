@@ -4,58 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F9CFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 09:34:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58CF9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 10:53:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FqXdpE6bOxhkTPBITHnceSdAS88WgiCwt2mUbEZRzAc=; b=HBybjBNX66xDIi
-	udL9rKPQCIDbWIR5kXlUWNTRGMQOiz5u6KBvI/cKE/TSvZwltThvASQNFeeB228w15UAGclY1LEXD
-	Crj62kII7F4HZSEIjXhyxhZLSHZLXmu5WCH5xsuJojUBSN1BpnAmt4RJ6EueYZzITMFPnb6S0xz2C
-	9/xxW/xxr1WTtu+6BiFXoE+nk2e6L8rVslJXUTZYXXKE8wvhAQzqJTo7Hv+40TmrrRSWww0bl4Dh0
-	iNRYQTYjWmTxa3spz94SEomdOsTae6QbHuSRExR35nNOVgm0NpobVLm93zp5wpBJ9VMwhQWyZwtle
-	Vh8V45JxcR2XStGVK6qA==;
+	List-Owner; bh=Ma57n2hovuMmpnMhw/nFuVFkbBpXdvxcVgqxJRuLZRI=; b=wGK+sLJRssT4fD
+	nZwLoOF52VufMygtohBZ0f85p8dD9SUokFtC1ke09wn0k795pNbgXNtzmuMVhN1LpFxo7oTUVpGlI
+	7EZczTepqfz8Q+h4jP80N8LXrvxmxUrC2T4hUSitNlde9xivTgNArR1LdHj4Zoj+XLMgYNTApvUBF
+	K57xZH26bB1X6qg0j/9M1s/ZPAbJn8gAoFkkiqYx4KQL34YYCxRBPzXCgOvRtubehfufPNejR6dGB
+	HYRrZCvIjKe+X2FXl72FGi6pYdzec4oonHoJcAXB+mXGbupIuZmoZ9CZmxPybjRiQaHY5fpQjKMoy
+	oZQ4Tr+NINGHG3n+i9eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbfZf-000RaU-0H; Tue, 05 Apr 2022 09:34:07 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nbgoQ-000iDQ-Vg; Tue, 05 Apr 2022 10:53:27 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbfYB-000QVr-1h; Tue, 05 Apr 2022 09:32:36 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 94DFE616D5;
- Tue,  5 Apr 2022 09:32:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 735BBC385A3;
- Tue,  5 Apr 2022 09:32:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1649151154;
- bh=cg99cbuB8hB++j+fhgEa4ZdrqC7Cu38pehUZLH1w4KY=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=IIgjUBS99lYPqvwHgyFLa1h4B+7F7O2C9jIzDXHtBh4yXjL/VM5gyaqNRq/qVMVce
- i6tJBXscdBWey2Qx0IHyiShR+AkNqxnxyrUSfgVC/JL69cuW1Er4dd+IP/QV2TAFJB
- 5N6HGtShxQqUbmLMshbvgbmhA8NnZK6O+W3oz+XRPr++uL07hQoTwk53wTXuEkQP4R
- MkssquhUvVngM0wKXwsdAx0jQmvbuojxswkDIgZhOh46AkmfHITAb6TLu8SzVA9M8v
- 5/NLbwjd8FdUqQaDNY7uOhbyytzZJLBA/+DhcN7rYRzuC27tdUnGKwRlxRQ+frUPcM
- kWO7h/NlW9i4Q==
-From: Mark Brown <broonie@kernel.org>
-To: leilk.liu@mediatek.com
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, robh+dt@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org,
- matthias.bgg@gmail.com
-In-Reply-To: <20220401071616.8874-1-leilk.liu@mediatek.com>
-References: <20220401071616.8874-1-leilk.liu@mediatek.com>
-Subject: Re: [PATCH V7 0/3] spi: mediatek: add single/quad mode support
-Message-Id: <164915115220.276894.6481675196400953567.b4-ty@kernel.org>
-Date: Tue, 05 Apr 2022 10:32:32 +0100
+ id 1nbgoE-000iAH-FN; Tue, 05 Apr 2022 10:53:15 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id C6CB91F447BD
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1649155990;
+ bh=vbpJujH4YJwR8KBxqqHpYpR3xjSW2I3+dKENzMhmXpo=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=bQgisYcudgfxXVLV96zJHCYHmmfrOLvV61ygGV9/Id5oj1HIMKiMolrGD7QiXlr2I
+ 1JbjfvjB7eFW0kt2Zz3zuF08/KywQlzbF56SqgyfmuwVaA+UAJ4tCbzzyR2uSUsaKv
+ pv+2iDrUpBwgxBo1xxrmf5ZkRjRiEWaD2VQiAhH6EMEI6s6SJHMyKLXoL8SZl9P+W3
+ BPbwDERjNXU2OjAVBoraV3ETk8Elk4b2oUz3x32Bcr6i6ynrdKtlklxAw+8w6qZPkC
+ H4vMOt585NWWGN5hqp7q7XZI4h0PzKBxYwggt5UDYVHGLvutWdHDrU+CWygNlRydB7
+ HvpY8alUliJiw==
+Message-ID: <c67bd1e5-19c9-55b3-5b79-e2e6ca0257f5@collabora.com>
+Date: Tue, 5 Apr 2022 12:53:07 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v5 2/3] thermal: mediatek: Add LVTS drivers for SoC
+ theraml zones
+Content-Language: en-US
+To: Ben Tseng <ben.tseng@mediatek.com>, Fan Chen <fan.chen@mediatek.com>,
+ Zhang Rui <rui.zhang@intel.com>, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ linux-pm@vger.kernel.org, srv_heupstream@mediatek.com
+Cc: Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+ Mark Rutland <mark.rutland@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, hsinyi@chromium.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Michael Kao <michael.kao@mediatek.com>,
+ Yu-Chia Chang <ethan.chang@mediatek.com>
+References: <20210617114707.10618-1-ben.tseng@mediatek.com>
+ <20210617114707.10618-3-ben.tseng@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20210617114707.10618-3-ben.tseng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_023235_160901_46F2C63A 
-X-CRM114-Status: GOOD (  13.53  )
+X-CRM114-CacheID: sfid-20220405_035314_766617_D7DCAAD5 
+X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,54 +74,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 1 Apr 2022 15:16:13 +0800, Leilk Liu wrote:
-> This series of patches are based on spi for-next, and provide 3 patches to support MT7986.
+Il 17/06/21 13:47, Ben Tseng ha scritto:
+> From: Michael Kao <michael.kao@mediatek.com>
 > 
-> V7:
-> 1. add Reviewed-by: Rob Herring
+> Add a LVTS (Low voltage thermal sensor) driver to report junction
+> temperatures in Mediatek SoC and register the maximum temperature
+> of sensors and each sensor as a thermal zone.
 > 
-> V6:
->  1. remove SPI_CFG3_IPM_PIN_MODE_OFFSET.
->  2. add Reviewed-by: AngeloGioacchino Del Regno
-> 
-> [...]
+> Signed-off-by: Yu-Chia Chang <ethan.chang@mediatek.com>
+> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+> Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
 
-Applied to
+Hello Ben,
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+are you still interested in upstreaming this driver?
 
-Thanks!
+Having thermal sensors is pretty much important to avoid damaging
+the hardware, and MT8195 is being actively upstreamed right now.
+Reading thermals is a must.
 
-[1/3] spi: mediatek: add spi memory support for ipm design
-      commit: 9f763fd20da7d892ffaedac0c58d821922f8a674
-[2/3] dt-bindings: spi: support hclk
-      (no commit info)
-[3/3] spi: mediatek: support hclk
-      commit: a740f4e684c020ea57a8a198a9322d739f7ab6d5
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Regards,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
