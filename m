@@ -4,69 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85DDEC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 07:31:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99A57C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 09:31:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XnfCUAA+2fNqM+jIyBD0enkmPQzxjLHPb7jXgtFuxI4=; b=3tergKeBQ7/yVi
-	6VG9cJkWOCxTYd2DlDy4jcM604MvgMxuHPxeHQVThAMOeRiys8yptnAK9wwcOMy9g+w08fDXNu9tq
-	ySwfSbiEiGehNzmSSRQPRFMbV1S7ioJ8cfDUNVNGSSWVb6xF1k9ogzPcm+MO8fAj0tjAHnNovhczs
-	R/tM62kpZ60XTR7Nl7PiBDr2BhiK6OlyZKkL32IPu5B2j9tqC98mx9jYZmovpzluc4K3aJotHjLTT
-	/e759cM6uCaXSBOs8qL2bReC1hOh4MM8vpg/rZKFT+gdc6JZ4JybDW1bg0lDjSyZ3SFCqZHv8y+e1
-	zEdMJmuT8PSayEkTAclg==;
+	List-Owner; bh=EmOkfgvkIbgCWxJVcss1myJ5u2Xc0dK9d6r8CiWdF2k=; b=LmtcHyEhWNmZxl
+	FDKev9/sJQrWjc/8u5ZrAKqoUgfSYKSoSJo6QXItsEHLmqYj4DtzvqFfzWLLBOySOSgSnF084+zn6
+	RgrP34q1KMtqE3wPKHlEUmkUUonFXfSzSMOKGTKzrBEnrqnT2Sce+AxPdyVChOP7OUCdtwgrtZN5c
+	6wR1t/wj81ueKWKdozEUGUdybx3WA3KGTFUMhE1/mUCt25O/gDvHerJmj0iOHhQBEscf7M3DrMGY/
+	Ehh6nOo02bfNoNiFaR0SICVgGCrinNjPWTWGzTSAVFtWaU0O6tvc4za4rBq3Uk0vtgCpCNja+0/hj
+	BZofDG991k91DjmeIlXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbdf2-00HYLb-66; Tue, 05 Apr 2022 07:31:32 +0000
-Received: from relay1-d.mail.gandi.net ([217.70.183.193])
+	id 1nbfX1-000Pue-Lg; Tue, 05 Apr 2022 09:31:23 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbdUV-00HT7Q-Pk; Tue, 05 Apr 2022 07:20:42 +0000
-Received: (Authenticated sender: miquel.raynal@bootlin.com)
- by mail.gandi.net (Postfix) with ESMTPSA id D202024000C;
- Tue,  5 Apr 2022 07:20:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
- t=1649143234;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zpvfYdyA2PB7667ZTFEYC37nx0xbGndnvQLkh+GtoUc=;
- b=h7hY9Jo6S5R/X/FMHAFNGYaEyyD9HrfcpGcmAW5frfsecCC8u0xeUQQZ7JJb45pOrHonQB
- 5BUPWLjFDMmnXKq8WFiKDZ403XDFDD3uIdBDZGdjYfUK2vA9d+Kl12efhuNWtX6uUBeAD1
- ZagFg9uip+bqYD9yNMQuWKLcKDvGVechHM2qXYq5Z7w0TZ7+vA4RMnPoIGlT4x8B7KblfB
- V24FmKwjDy+xZkws3pak/3FMAGk01NGyF9vPRPS4j6lir8BcHO7X57ZJqSo0K/d1ua1lm8
- udxlvKJRsxYPs3EMlnJ/PgeLM42VMwMEJGAUGncNYDAaN0Gxb83tniqf8XtcTg==
-Date: Tue, 5 Apr 2022 09:20:24 +0200
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Chuanhong Guo <gch981213@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- linux-spi@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>, Vignesh Raghavendra
- <vigneshr@ti.com>, Richard Weinberger <richard@nod.at>, Pratyush Yadav
- <p.yadav@ti.com>, linux-arm-kernel@lists.infradead.org, Cai Huoqing
- <cai.huoqing@linux.dev>, Roger Quadros <rogerq@kernel.org>, Yu Kuai
- <yukuai3@huawei.com>, linux-mediatek@lists.infradead.org, Thomas
- Bogendoerfer <tsbogend@alpha.franken.de>, devicetree@vger.kernel.org, Mark
- Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, Paul Cercueil
- <paul@crapouillou.net>, Florian Fainelli <f.fainelli@gmail.com>, Colin Ian
- King <colin.king@intel.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-mtd@lists.infradead.org
-Subject: Re: [PATCH v3 4/5] dt-bindings: spi: add binding doc for spi-mtk-snfi
-Message-ID: <20220405092024.25d97c33@xps13>
-In-Reply-To: <CAJsYDVLaXAoL=TcPun6rckcA_cdUS-zFy_7M6uCpfzX+jbQEag@mail.gmail.com>
-References: <20220404131818.1817794-1-gch981213@gmail.com>
- <20220404131818.1817794-5-gch981213@gmail.com>
- <1649088538.050456.1436949.nullmailer@robh.at.kernel.org>
- <CAJsYDVLaXAoL=TcPun6rckcA_cdUS-zFy_7M6uCpfzX+jbQEag@mail.gmail.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 3.17.7 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+ id 1nbfWn-000Pnh-Ao; Tue, 05 Apr 2022 09:31:11 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 619ACB81C6E;
+ Tue,  5 Apr 2022 09:31:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81404C385A2;
+ Tue,  5 Apr 2022 09:31:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1649151066;
+ bh=YypSHEp1rOHcihtmVFUWRUSVBqn1rhBtj2pQDDhyoOI=;
+ h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+ b=OQgUIMa2+Jl5ZN/tEN/rPzkKmhEaurR5d+v0K2yZR31kmlkdJkgvJ1UiBhBzt5RSM
+ ydqLwdVnexufAh7HFSeU/S0f2WHs6PYKrJOB1GpykjS42ntFc3btzZzVpLYEU8V481
+ 5xnHiBquaMN7puc//Amlvcf2iRbUseZUCom+xKF66Nm87x/vy11Phosp0dENqtVdkG
+ WkgGsQd1vJpfhYNB0H0g8IcYzxPeMSwSGV1XxmNF3AtxqaHR9nCMjA6iQ+TduCEobD
+ z/Dt03CLIwASXP+0esQU+i1N9gdzwE5cTKsr/P7p7sOhaxmLVUNB7FtbmJC7ECnRTw
+ yeHets5eAbOyw==
+From: Mark Brown <broonie@kernel.org>
+To: tiwai@suse.com, trevor.wu@mediatek.com, robh+dt@kernel.org,
+ matthias.bgg@gmail.com
+Cc: aaronyu@google.com, tzungbi@google.com, linux-mediatek@lists.infradead.org,
+ yc.hung@mediatek.com, angelogioacchino.delregno@collabora.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ alsa-devel@alsa-project.org, miles.chen@mediatek.com,
+ devicetree@vger.kernel.org
+In-Reply-To: <20220324053851.27350-1-trevor.wu@mediatek.com>
+References: <20220324053851.27350-1-trevor.wu@mediatek.com>
+Subject: Re: [PATCH v4 0/6] ASoC: mediatek: Add support for MT8195 sound card
+ with max98390 and rt5682
+Message-Id: <164915106325.276574.14625118005435337786.b4-ty@kernel.org>
+Date: Tue, 05 Apr 2022 10:31:03 +0100
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_002040_378732_A07C7D17 
-X-CRM114-Status: GOOD (  14.05  )
+X-CRM114-CacheID: sfid-20220405_023109_557009_19B9C820 
+X-CRM114-Status: GOOD (  16.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,38 +70,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8sCgpnY2g5ODEyMTNAZ21haWwuY29tIHdyb3RlIG9uIFR1ZSwgNSBBcHIgMjAyMiAxMDo1
-NTo1MSArMDgwMDoKCj4gSGkgUm9iIQo+IAo+IE9uIFR1ZSwgQXByIDUsIDIwMjIgYXQgMTI6MDkg
-QU0gUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4gd3JvdGU6Cj4gPiBbLi4uXQo+ID4gTXkg
-Ym90IGZvdW5kIGVycm9ycyBydW5uaW5nICdtYWtlIERUX0NIRUNLRVJfRkxBR1M9LW0gZHRfYmlu
-ZGluZ19jaGVjaycKPiA+IG9uIHlvdXIgcGF0Y2ggKERUX0NIRUNLRVJfRkxBR1MgaXMgbmV3IGlu
-IHY1LjEzKToKPiA+Cj4gPiB5YW1sbGludCB3YXJuaW5ncy9lcnJvcnM6Cj4gPgo+ID4gZHRzY2hl
-bWEvZHRjIHdhcm5pbmdzL2Vycm9yczoKPiA+IC9idWlsZHMvcm9iaGVycmluZy9saW51eC1kdC1y
-ZXZpZXcvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3NwaS9tZWRpYXRlayxzcGkt
-bXRrLXNuZmkuZXhhbXBsZS5kdC55YW1sOiBzcGlAMTEwMGQwMDA6ICdlY2MtZW5naW5lJyBpcyBh
-IHJlcXVpcmVkIHByb3BlcnR5Cj4gPiAgICAgICAgIEZyb20gc2NoZW1hOiAvYnVpbGRzL3JvYmhl
-cnJpbmcvbGludXgtZHQtcmV2aWV3L0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9z
-cGkvbWVkaWF0ZWssc3BpLW10ay1zbmZpLnlhbWwKPiA+IERvY3VtZW50YXRpb24vZGV2aWNldHJl
-ZS9iaW5kaW5ncy9zcGkvbWVkaWF0ZWssc3BpLW10ay1zbmZpLmV4YW1wbGUuZHQueWFtbDowOjA6
-IC9leGFtcGxlLTAvc29jL3NwaUAxMTAwZDAwMC9mbGFzaEAwOiBmYWlsZWQgdG8gbWF0Y2ggYW55
-IHNjaGVtYSB3aXRoIGNvbXBhdGlibGU6IFsnc3BpLW5hbmQnXSAgCj4gCj4gSSByYW4gdGhlIHRl
-c3RzIG15c2VsZiBhbmQgaXQncyBvbmx5IGNvbXBsYWluaW5nIGFib3V0IHRoZSBlY2MtZW5naW5l
-IG5hbWU6Cj4gCj4gL2hvbWUvdXNlci9zcmMva2VybmVscy9saW51eC9Eb2N1bWVudGF0aW9uL2Rl
-dmljZXRyZWUvYmluZGluZ3Mvc3BpL21lZGlhdGVrLHNwaS1tdGstc25maS5leGFtcGxlLmR0YjoK
-PiBzcGlAMTEwMGQwMDA6ICdlY2MtZW5naW5lJyBpcyBhIHJlcXVpcmVkIHByb3BlcnR5Cj4gRnJv
-bSBzY2hlbWE6IC9ob21lL3VzZXIvc3JjL2tlcm5lbHMvbGludXgvRG9jdW1lbnRhdGlvbi9kZXZp
-Y2V0cmVlL2JpbmRpbmdzL3NwaS9tZWRpYXRlayxzcGktbXRrLXNuZmkueWFtbAo+IAo+IEl0IHNh
-eXMgbm90aGluZyBhYm91dCB0aGUgc3BpLW5hbmQgcGFydC4KPiBJJ2QgbGlrZSB0byBrZWVwIHRo
-ZSBmbGFzaEAwIG5vZGUgaW4gdGhlIGV4YW1wbGUgdG8gZGVtb25zdHJhdGUgdGhlCj4gbmFuZC1l
-Y2MtZW5naW5lIHVzYWdlLiBXaGF0IHNob3VsZCBJIGRvPwoKWW91IGNhbiB0cnkgaW5jbHVkaW5n
-IHNwaS1uYW5kLnlhbWwgKGxpa2UgeW91IGRvIHdpdGgKc3BpLWNvbnRyb2xsZXIueWFtbCkuIFlv
-dSBzaG91bGQgbm8gbG9uZ2VyIG5lZWQgdG8gZGVmaW5lCm5hbmQtZWNjLWVuZ2luZSB0aGVuIGFz
-IGl0IGlzIGFscmVhZHkgZGVzY3JpYmVkIHRoZXJlPwoKVGhhbmtzLApNaXF1w6hsCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBt
-YWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Thu, 24 Mar 2022 13:38:45 +0800, Trevor Wu wrote:
+> This series of patches adds support for mt8195 board with mt6359, max98390
+> and rt5682.
+> 
+> To prevent from copy-paste components, mt8195 machine drivers and
+> dt-bindings are merged in the patch.
+> 
+> Patches are based on broonie tree "for-next" branch.
+> 
+> [...]
+
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/6] ASoC: mediatek: mt8195: revise mt8195-mt6359-rt1019-rt5682.c
+      commit: 4dbc714fe07641e7a07731f82152448ef09f3002
+[2/6] ASoC: mediatek: mt8195: merge machine driver
+      commit: 094e30efa444a118a535cb67ec000bbee9f8d150
+[3/6] ASoC: dt-bindings: mediatek: mt8195: merge mt8195 machine yaml
+      commit: dc16399078aea4c98f17aa99f0cdea9d5ac9c4a9
+[4/6] ASoC: mediatek: mt8195: rename card controls
+      commit: 3a0323c26c6720447fd5eff6495c1aea514b77d5
+[5/6] ASoC: mediatek: mt8195: add machine support for max98390 and rt5682
+      commit: 86a6b9c9dffff1bd653d582cfc5138da75e5f7b0
+[6/6] ASoC: dt-bindings: mediatek: mt8195: support mt8195-mt6359-max98390-rt5682
+      commit: cae34da5323b6ce4d0dc365d1b971f838dcff318
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
