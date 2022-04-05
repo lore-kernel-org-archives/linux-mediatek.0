@@ -4,61 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99A57C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 09:31:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B111CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 09:32:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EmOkfgvkIbgCWxJVcss1myJ5u2Xc0dK9d6r8CiWdF2k=; b=LmtcHyEhWNmZxl
-	FDKev9/sJQrWjc/8u5ZrAKqoUgfSYKSoSJo6QXItsEHLmqYj4DtzvqFfzWLLBOySOSgSnF084+zn6
-	RgrP34q1KMtqE3wPKHlEUmkUUonFXfSzSMOKGTKzrBEnrqnT2Sce+AxPdyVChOP7OUCdtwgrtZN5c
-	6wR1t/wj81ueKWKdozEUGUdybx3WA3KGTFUMhE1/mUCt25O/gDvHerJmj0iOHhQBEscf7M3DrMGY/
-	Ehh6nOo02bfNoNiFaR0SICVgGCrinNjPWTWGzTSAVFtWaU0O6tvc4za4rBq3Uk0vtgCpCNja+0/hj
-	BZofDG991k91DjmeIlXQ==;
+	List-Owner; bh=Nzw7kDdOYkcGLn+F58bXTzUEN1UTkKEbYMmcCtW0HFg=; b=hvXd5TfVj2sq41
+	Y7jh0ZYpoZlWX7rw8u6o960EzD5E4SaBJZjtjsHXvQJoV2cWblQ6bMue2cFb0//qzuygDIFEcJbdg
+	yNhTlgNDq3JpWob4K1RYBgJbhj9MSLvwd63q/0nDH+GOKvTQdY2QP//ODrlcIdw0EONQHEkZ/M9I9
+	iStgPjRF+invNeFs+iBeDp/fLXRzY/Dw1QrU+P8xFz4dpUYIz6y2oSUXIBNcmXyITN9N8zXwScKoM
+	8mMLOWqLqAA5tGwXRohcctBT9HuBcYXsSP717hP0NkFz74HV3k5X0ssRpDmDE3zx/LisAyOBO/SdW
+	+XFGk20cKoWqYZV7w/jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbfX1-000Pue-Lg; Tue, 05 Apr 2022 09:31:23 +0000
+	id 1nbfY5-000QQk-BZ; Tue, 05 Apr 2022 09:32:29 +0000
 Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbfWn-000Pnh-Ao; Tue, 05 Apr 2022 09:31:11 +0000
+ id 1nbfXj-000QEE-6B; Tue, 05 Apr 2022 09:32:08 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 619ACB81C6E;
- Tue,  5 Apr 2022 09:31:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81404C385A2;
- Tue,  5 Apr 2022 09:31:03 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id C840EB81CC0;
+ Tue,  5 Apr 2022 09:32:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E008C385C4;
+ Tue,  5 Apr 2022 09:32:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1649151066;
- bh=YypSHEp1rOHcihtmVFUWRUSVBqn1rhBtj2pQDDhyoOI=;
+ s=k20201202; t=1649151124;
+ bh=GjmC2BEcN0KsKZ7ydEfVFphIGpjCxpDNSpkEEa64urQ=;
  h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=OQgUIMa2+Jl5ZN/tEN/rPzkKmhEaurR5d+v0K2yZR31kmlkdJkgvJ1UiBhBzt5RSM
- ydqLwdVnexufAh7HFSeU/S0f2WHs6PYKrJOB1GpykjS42ntFc3btzZzVpLYEU8V481
- 5xnHiBquaMN7puc//Amlvcf2iRbUseZUCom+xKF66Nm87x/vy11Phosp0dENqtVdkG
- WkgGsQd1vJpfhYNB0H0g8IcYzxPeMSwSGV1XxmNF3AtxqaHR9nCMjA6iQ+TduCEobD
- z/Dt03CLIwASXP+0esQU+i1N9gdzwE5cTKsr/P7p7sOhaxmLVUNB7FtbmJC7ECnRTw
- yeHets5eAbOyw==
+ b=nNsuW0ERMiz7rPDxZB8Z1DW5F1ZljqyZDRU3LuRnGbPOfIjyDWGqnYMItXQrFk3oQ
+ SL7CUi6P1TQa/VNvIB+wYnsmV8bWHLOT382axLRhlgKaj7kAE7tUxO/34zp8/J7fnF
+ IQEWaMWdTIzBMBA8Ttg03eIbBiuqeij0gayJgsogN8eqH8nXGDeEyPQax3fWtqec11
+ RMK7Qx4jJ/hxsIqqJTC2EFIMx+QPHbQmoFBr54tLn0OZNBWoqwX0azrqZ/sYX4FgD5
+ Zi1xC6asCUFRNOQq5ddKU66DrzQD3IIq8LA7UcbI3KF566PecFxrJyzcVuKfPq8dyh
+ +NX9iwxMFKwZg==
 From: Mark Brown <broonie@kernel.org>
-To: tiwai@suse.com, trevor.wu@mediatek.com, robh+dt@kernel.org,
- matthias.bgg@gmail.com
-Cc: aaronyu@google.com, tzungbi@google.com, linux-mediatek@lists.infradead.org,
- yc.hung@mediatek.com, angelogioacchino.delregno@collabora.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- alsa-devel@alsa-project.org, miles.chen@mediatek.com,
- devicetree@vger.kernel.org
-In-Reply-To: <20220324053851.27350-1-trevor.wu@mediatek.com>
-References: <20220324053851.27350-1-trevor.wu@mediatek.com>
-Subject: Re: [PATCH v4 0/6] ASoC: mediatek: Add support for MT8195 sound card
- with max98390 and rt5682
-Message-Id: <164915106325.276574.14625118005435337786.b4-ty@kernel.org>
-Date: Tue, 05 Apr 2022 10:31:03 +0100
+To: robh+dt@kernel.org, johnson.wang@mediatek.com
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20220317030402.24894-1-johnson.wang@mediatek.com>
+References: <20220317030402.24894-1-johnson.wang@mediatek.com>
+Subject: Re: [PATCH v2 0/2] Add support for MediaTek PMIC MT6366
+Message-Id: <164915112290.276837.17651997512675348293.b4-ty@kernel.org>
+Date: Tue, 05 Apr 2022 10:32:02 +0100
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_023109_557009_19B9C820 
-X-CRM114-Status: GOOD (  16.04  )
+X-CRM114-CacheID: sfid-20220405_023207_397497_666FEAC9 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,35 +71,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 24 Mar 2022 13:38:45 +0800, Trevor Wu wrote:
-> This series of patches adds support for mt8195 board with mt6359, max98390
-> and rt5682.
+On Thu, 17 Mar 2022 11:04:00 +0800, Johnson Wang wrote:
+> This patchset adds support for MediaTek PMIC MT6366.
+> MT6366 is the primary PMIC for MT8186 and probably other SOCs.
 > 
-> To prevent from copy-paste components, mt8195 machine drivers and
-> dt-bindings are merged in the patch.
-> 
-> Patches are based on broonie tree "for-next" branch.
+> Changes in v2:
+> - rebase on Linux 5.17-rc8
+> - change subject line
 > 
 > [...]
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
 
 Thanks!
 
-[1/6] ASoC: mediatek: mt8195: revise mt8195-mt6359-rt1019-rt5682.c
-      commit: 4dbc714fe07641e7a07731f82152448ef09f3002
-[2/6] ASoC: mediatek: mt8195: merge machine driver
-      commit: 094e30efa444a118a535cb67ec000bbee9f8d150
-[3/6] ASoC: dt-bindings: mediatek: mt8195: merge mt8195 machine yaml
-      commit: dc16399078aea4c98f17aa99f0cdea9d5ac9c4a9
-[4/6] ASoC: mediatek: mt8195: rename card controls
-      commit: 3a0323c26c6720447fd5eff6495c1aea514b77d5
-[5/6] ASoC: mediatek: mt8195: add machine support for max98390 and rt5682
-      commit: 86a6b9c9dffff1bd653d582cfc5138da75e5f7b0
-[6/6] ASoC: dt-bindings: mediatek: mt8195: support mt8195-mt6359-max98390-rt5682
-      commit: cae34da5323b6ce4d0dc365d1b971f838dcff318
+[1/2] regulator: mt6366: Add support for MT6366 regulator
+      commit: d077002c9d07dc6f64d07a362202a1e1081b2f6c
+[2/2] dt-bindings: regulator: Add BUCK and LDO document for MT6358 and MT6366
+      commit: 417dfad7e4f0501853e05a46742a4e47075f034c
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
