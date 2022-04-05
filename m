@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC098C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 15:52:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 466F4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Apr 2022 16:08:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kXqoeQlMEQXUVCH9pvJy3Autwcx16L7wjmZg+j467bA=; b=fvY9QO8XpObHdq
-	ihRhLNYMnwsCHIfE8h5MBsvwhEBfh13xAFAxX0wSthVrtsfTdXNMWCr4lIHhxih6vqkim271sZw2M
-	ke7BVWrxEmKhi0uq1Sx0+G30bBBxwep6Nw7+dzg6WcOQq+Ne15go7kEkQvnMSGA5By9reCXMCpvGW
-	oEvlfRDlQEA3kruKm0QlT1NqE4Pvk/pl9QStFBIwOdKmGqlBb8gq5Yu5Sfks7c+vyoGlrdz3YKEqf
-	S9cmb1lTiuiq2gV9HLPLEEz+j+R1m3cmHp1vkBqnvesXXXAF6OSgL6VvTl2ROZ5XkMgJ6E69LP0am
-	djTgCPNfOER2+QjuhlBA==;
+	List-Owner; bh=dk5jg8NTmCV4p0/SLA8WqcxRpyBmClrNOfMPHuzVznM=; b=x7uRCF4UROvG80
+	OCWH61mt119i3aixitzRsuyEC85NDvBbmH9tu220Z80+BWeZadL/AxE/2TiBloWdN/gVUm4MYxtgh
+	ownlFZrK28v+EkQWqsu0anx2CCUyB5G5QxPgAVgs8aAPa0OKtgeWww50wXuumPKfUEvrqSZXkP2UD
+	KzXrczXwhLWbd0rpb2DCLwIKLpysJhWCNhe+DgejuPS/ohG47NOgh1jSX2Hajuyt15qUBf9SjQvnF
+	JfONBOegG3VrsWnEknGGeO905uzWEoqV2KcHpswDhWGMeOe4fzWjvaxZWMhG8Q638GKFeqsqy5eQ5
+	IpAxHYvPI0R2oWoZG7UA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nblTu-001maj-59; Tue, 05 Apr 2022 15:52:34 +0000
-Received: from mail-oa1-f54.google.com ([209.85.160.54])
+	id 1nbljW-001pm9-8l; Tue, 05 Apr 2022 16:08:42 +0000
+Received: from mail-il1-x132.google.com ([2607:f8b0:4864:20::132])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nblTj-001mYt-Ll; Tue, 05 Apr 2022 15:52:24 +0000
-Received: by mail-oa1-f54.google.com with SMTP id
- 586e51a60fabf-de3eda6b5dso14906574fac.0; 
- Tue, 05 Apr 2022 08:52:21 -0700 (PDT)
+ id 1nbljH-001ph8-BL; Tue, 05 Apr 2022 16:08:28 +0000
+Received: by mail-il1-x132.google.com with SMTP id x9so9550751ilc.3;
+ Tue, 05 Apr 2022 09:08:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=hW77YXphKvERuG5H+iUJ9uDZUjTyhWglFK1sbd/bTfk=;
+ b=fUC31B96e41c6xmeoqpvrYUa+mUJ1GYiAW7u8dnTGZSOQ7OWqfyoSDvmCBT+eQyqiM
+ UNdcfy7aDYv4YEBK6yTK4m94iqB4mpunTxsY35VKeoiyjYBvjZlArvV/DuQ1TafofBsN
+ B8jnMYbhZHuAtG0EsMlbVVyM5/HNlK6BRp6Hl4XkThnT78hLnj3HpF4llnx3+OYAEU5U
+ x3+rpPlMUisFFcYPr6dB1CgV3FqngwVsHqBKUAIg5DreEgngpLsbr+alvkf5CRYW+Tcu
+ pxzT1+QZCWMKPsEZ8VNqb0XAtv+y2b5SWNMcGsIME24NejuAZ2pboYge6GEjQcCKTQBQ
+ O4Ug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=73sr+mzCEmuVDVSdm+EpGuiiOfdHmYopaGe2xWN1rOQ=;
- b=bfIBH3O08HsXuM3OdD5uW4ahG7T8DoMZyp+Y+9UwF6njeMfo3ymbEwSoXa/oXKXbGy
- aZCpn1ScCwr/ejiHXi/mQQXuHh49qSZOShEIkYBKYxWo/bIIgsNIhUpzaXWGNEMma0kf
- hKebPm7VElS1mbKY0+pb8HHJMh6O/BCaVMK4314HrNgEtmdtNliXKVhFc3ggP3nXtdot
- jtJK1oWudBLCwR5QLadQ6ulifTEK2am4A6EIV+UWAjqRg/McpqRjl5SOwZ4D9hMWKxiz
- jfSttzaTo47iPkbTj7iGUP3Rcwl0IY6JQgA23vMQi9GZg38eR0lOFJOpfLNTYqiCy6q+
- NBlw==
-X-Gm-Message-State: AOAM532mWtTeFJz6dA/OtYXMJKjgItfWLtaTp1LUDy2QBtUIFhBOc3pz
- hG9bVZ8NGowPrafDszJoyw==
-X-Google-Smtp-Source: ABdhPJxNSzVmokJVTPd1XNB16cHa14S7IaMy1MJZPXDKNndI7oIgOU3kFQsdma7sT8pY4vAAcBr/KA==
-X-Received: by 2002:a05:6870:f149:b0:dd:f3b0:986d with SMTP id
- l9-20020a056870f14900b000ddf3b0986dmr1904739oac.148.1649173940623; 
- Tue, 05 Apr 2022 08:52:20 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- 2-20020a056870124200b000dd9ac0d61esm5524206oao.24.2022.04.05.08.52.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Apr 2022 08:52:19 -0700 (PDT)
-Received: (nullmailer pid 3284623 invoked by uid 1000);
- Tue, 05 Apr 2022 15:52:17 -0000
-Date: Tue, 5 Apr 2022 10:52:17 -0500
-From: Rob Herring <robh@kernel.org>
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Chuanhong Guo <gch981213@gmail.com>, linux-spi@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Vignesh Raghavendra <vigneshr@ti.com>, Richard Weinberger <richard@nod.at>,
- Pratyush Yadav <p.yadav@ti.com>, linux-arm-kernel@lists.infradead.org,
- Cai Huoqing <cai.huoqing@linux.dev>, Roger Quadros <rogerq@kernel.org>,
- Yu Kuai <yukuai3@huawei.com>, linux-mediatek@lists.infradead.org,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>, devicetree@vger.kernel.org,
- Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org,
- Paul Cercueil <paul@crapouillou.net>, Florian Fainelli <f.fainelli@gmail.com>,
- Colin Ian King <colin.king@intel.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-mtd@lists.infradead.org
-Subject: Re: [PATCH v3 4/5] dt-bindings: spi: add binding doc for spi-mtk-snfi
-Message-ID: <YkxlsU+P33ip2oWH@robh.at.kernel.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=hW77YXphKvERuG5H+iUJ9uDZUjTyhWglFK1sbd/bTfk=;
+ b=s/sSwTlCGW5ZW+SKUxWNwsP1ddR5c92axFVatNL3uVbIfSVzh5+EHgZswdACXgfBfS
+ fVuR3xr+y7ArUmSxqxxNgA+vuNWO2/DVRYZ79n/qipr8ydUrQXJgxhfIpCp1blSBz5Q8
+ aBBBRASlaXh3curNnjQoCS7RhgcYKMOA7gpx29KVu3wa67EqMSNzELVHaOE5BBgHhm67
+ WXqhBvIbp5toy4PIuywa0+7mfJGSTPS+SwU7oi4vCE5O/f1XrkXWiqxsCvJADM8BUebh
+ Xxp635rijkX/dP8Xro5iPNOqwj8o5ahyeJEaIqb3fr4DfCQILGXjI1EEeX1Miiv4CAIN
+ oEig==
+X-Gm-Message-State: AOAM5333728Gf+Jt9lRE6TwY+HKDjzRzdEHg/HQQbSuo4ioY5+GqLOxY
+ taT+XhQoyGEYC7O+NFJ2jCz3zSp/fv7QEmihXqGLb8y5LtMa6prRz0E=
+X-Google-Smtp-Source: ABdhPJz0ff0WGn+zTKCeGfDo2EgfINMJ8I4npVJmeR2s6MXHr0OMaXaR8zU6qWKRN7KTFA46Gm77KGlaYFiEhbvOSdU=
+X-Received: by 2002:a92:7f11:0:b0:2ca:50f9:63d6 with SMTP id
+ a17-20020a927f11000000b002ca50f963d6mr2222344ild.150.1649174906221; Tue, 05
+ Apr 2022 09:08:26 -0700 (PDT)
+MIME-Version: 1.0
 References: <20220404131818.1817794-1-gch981213@gmail.com>
  <20220404131818.1817794-5-gch981213@gmail.com>
  <1649088538.050456.1436949.nullmailer@robh.at.kernel.org>
  <CAJsYDVLaXAoL=TcPun6rckcA_cdUS-zFy_7M6uCpfzX+jbQEag@mail.gmail.com>
- <20220405092024.25d97c33@xps13>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220405092024.25d97c33@xps13>
+ <20220405092024.25d97c33@xps13> <YkxlsU+P33ip2oWH@robh.at.kernel.org>
+In-Reply-To: <YkxlsU+P33ip2oWH@robh.at.kernel.org>
+From: Chuanhong Guo <gch981213@gmail.com>
+Date: Wed, 6 Apr 2022 00:08:15 +0800
+Message-ID: <CAJsYDVL_-dkxRsU24NmWA4KuHTVSJwjbr_9kcVcLao=LYSz+Jw@mail.gmail.com>
+Subject: Re: [PATCH v3 4/5] dt-bindings: spi: add binding doc for spi-mtk-snfi
+To: Rob Herring <robh@kernel.org>
+Cc: Miquel Raynal <miquel.raynal@bootlin.com>, linux-spi@vger.kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>, 
+ Vignesh Raghavendra <vigneshr@ti.com>, Richard Weinberger <richard@nod.at>,
+ Pratyush Yadav <p.yadav@ti.com>, 
+ linux-arm-kernel@lists.infradead.org, Cai Huoqing <cai.huoqing@linux.dev>, 
+ Roger Quadros <rogerq@kernel.org>, Yu Kuai <yukuai3@huawei.com>, 
+ linux-mediatek@lists.infradead.org, 
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>, devicetree@vger.kernel.org, 
+ Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, 
+ Paul Cercueil <paul@crapouillou.net>, Florian Fainelli <f.fainelli@gmail.com>, 
+ Colin Ian King <colin.king@intel.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-mtd@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_085223_748851_EBFF41D5 
-X-CRM114-Status: GOOD (  20.60  )
+X-CRM114-CacheID: sfid-20220405_090827_427705_DE2FA510 
+X-CRM114-Status: GOOD (  13.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,46 +96,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 05, 2022 at 09:20:24AM +0200, Miquel Raynal wrote:
-> Hello,
-> 
-> gch981213@gmail.com wrote on Tue, 5 Apr 2022 10:55:51 +0800:
-> 
-> > Hi Rob!
-> > 
-> > On Tue, Apr 5, 2022 at 12:09 AM Rob Herring <robh@kernel.org> wrote:
-> > > [...]
-> > > My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-> > > on your patch (DT_CHECKER_FLAGS is new in v5.13):
-> > >
-> > > yamllint warnings/errors:
-> > >
-> > > dtschema/dtc warnings/errors:
-> > > /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.example.dt.yaml: spi@1100d000: 'ecc-engine' is a required property
-> > >         From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
-> > > Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.example.dt.yaml:0:0: /example-0/soc/spi@1100d000/flash@0: failed to match any schema with compatible: ['spi-nand']  
-> > 
-> > I ran the tests myself and it's only complaining about the ecc-engine name:
-> > 
-> > /home/user/src/kernels/linux/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.example.dtb:
-> > spi@1100d000: 'ecc-engine' is a required property
-> > From schema: /home/user/src/kernels/linux/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
-> > 
-> > It says nothing about the spi-nand part.
+Hi!
 
-Did you use 'DT_CHECKER_FLAGS=-m' as it says above?
+On Tue, Apr 5, 2022 at 11:52 PM Rob Herring <robh@kernel.org> wrote:
+> > You can try including spi-nand.yaml (like you do with
+> > spi-controller.yaml). You should no longer need to define
+> > nand-ecc-engine then as it is already described there?
+>
+> Including spi-nand.yaml is wrong. If that just landed, then this may
+> have run before the base moved to v5.18-rc1.
 
-> > I'd like to keep the flash@0 node in the example to demonstrate the
-> > nand-ecc-engine usage. What should I do?
-> 
-> You can try including spi-nand.yaml (like you do with
-> spi-controller.yaml). You should no longer need to define
-> nand-ecc-engine then as it is already described there?
+spi-nand.yaml is in v5.18 only and I'm able to reproduce the
+spi-nand complaint by cherry-picking the commit to v5.17 and
+running the check.
+This means I don't need to do anything with the spi-nand error
+then.
+Thanks for the hint.
 
-Including spi-nand.yaml is wrong. If that just landed, then this may 
-have run before the base moved to v5.18-rc1.
-
-Rob
+-- 
+Regards,
+Chuanhong Guo
 
 _______________________________________________
 Linux-mediatek mailing list
