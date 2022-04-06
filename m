@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52E50C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 10:52:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A09D2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 10:52:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
-	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KKba6u+M2u/iTJAdlFHINkIfG8C0AzRcpUa1Bg9IT1k=; b=GVh4opx0O8JNw/
-	tOBHPjfi3n6mXOBf2ib+U7D9JfTlCn/vpv/P90NbK9BZ39zbut6oGuD0ywZcWeVgG5drw17aO8MB1
-	J4lXLtTvUarQcDH52lWihAtY8LCFrbU8R6EQ2OxnxjT41TW1k2ieOiuVvnxRVn2ZTYdqehiDLgdt7
-	Aevh0um/tBVNIFyldGdSYfVkucOC+Ke4oPf0SKviWO+8C513U+BlgQvycLpj1L8sm4nMYOCVFT2++
-	SugXJWxVA1Djcw0ZoSN+BaaLsxinbGxgUo4xS+gYVU3oJAvCMyEXzQRMRw4r+cXdXkV0/6/+ss5t1
-	of06ETlOb2N75rGop0Fg==;
+	List-Owner; bh=5Jsv4omvkji9Uoz+6v3QIyqrwm0A56LrHCPWZ2gN8Qs=; b=FmyotUulKocplv
+	AgXVukRpRtGycPWz2Tfz5k/GzA17AClOdBnin7RL75myuTNI7hB+NZXt/+jsqN0NUNIu5SDjJU1Y6
+	h+P8fnBhz8DrdCEwzLm6YgpZIBxUKWeQs2M9BUDEK6R1cHf7hOOVXXuMP/Q+dL3SdzfPvGkXadPOR
+	WFv3wPq9mQOXSWQk4WhFa360xVGy6YSTsv4D7O/X5Y6ncwpK+7uJdp4zFR5Gf0OSqPD8KKhNCU0en
+	lE+2IaEMtGZVU/6AD80onsSgJA+I8drtYZSNsM1wLLRCOSF5R+agX5vvbcgZYiT51f/XJBsCuwCu1
+	IsMMhR3ajct2nvgAVF9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nc3HG-005YnB-99; Wed, 06 Apr 2022 10:52:42 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1nc3HL-005Ypm-6G; Wed, 06 Apr 2022 10:52:47 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nc3E3-005WmS-5g; Wed, 06 Apr 2022 10:49:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
- Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
- In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=LSE4+WFeGf7PGQeTytBwueYWyTZauU6HV41QFDYj2F8=; b=NPjU1zRBOeaWgOYujCqwLJN5wm
- kAKk2DnrHJo66OfdP4t7IhYQb56ii6OAFNJ5lfric9/zmKmfMSkX0cTz11NcU5xVp2DcF4moCcSwa
- Y6I6s+OtWtNmPEm/4UfMVmVAwduI94V3gh5s9HBD//XeDKrNZRF+jXU48xsgAJXOj5aWOXZ7K75mX
- 6ddkjsgA5zr11cXEBqhRS/kcwy4x9ZlN5rbT+K1JwXWqNfH08ECsXsSJ5l8qVcwU/fFOAlKnGDUhX
- vu9MZ0Gq/9b46rANw9rUXjXBnx8mOkWC+3BaM9k+gWmoE0IDm++GsV/hjd2f8eZNdT2vIK2A1mr1A
- vURebxdw==;
-Received: from e0022681537dd.dyn.armlinux.org.uk
- ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:59998 helo=rmk-PC.armlinux.org.uk)
- by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <rmk@armlinux.org.uk>)
- id 1nc3Dy-0002at-R5; Wed, 06 Apr 2022 11:49:18 +0100
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
- (envelope-from <rmk@rmk-PC.armlinux.org.uk>)
- id 1nc3Dx-004hqW-TZ; Wed, 06 Apr 2022 11:49:17 +0100
-In-Reply-To: <Yk1iHCy4fqvxsvu0@shell.armlinux.org.uk>
-References: <Yk1iHCy4fqvxsvu0@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>
-Cc: Marek Beh__n <kabel@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next 9/9] net: dsa: mt7530: mark as non-legacy
+ id 1nc3Ek-005XGY-WF; Wed, 06 Apr 2022 10:50:08 +0000
+X-UUID: 2eafadfe573a4014aea9ebe49ee38133-20220406
+X-UUID: 2eafadfe573a4014aea9ebe49ee38133-20220406
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 882004864; Wed, 06 Apr 2022 03:50:03 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 6 Apr 2022 03:50:01 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 6 Apr 2022 18:49:59 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 6 Apr 2022 18:49:59 +0800
+Message-ID: <42e890bef5927f2c4854c146f9bab2f974b64a48.camel@mediatek.com>
+Subject: Re: [PATCH 1/3] dt-bindings: display: mediatek: Correct disp_aal
+ binding for MT8183
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ <chunkuang.hu@kernel.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>
+CC: <matthias.bgg@gmail.com>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+ <yongqiang.niu@mediatek.com>, <jason-jh.lin@mediatek.com>,
+ <nancy.lin@mediatek.com>, <allen-kh.cheng@mediatek.com>,
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 6 Apr 2022 18:49:59 +0800
+In-Reply-To: <19a1af29-19a7-a546-b565-a2cc973a7f28@collabora.com>
+References: <20220406094654.29722-1-rex-bc.chen@mediatek.com>
+ <20220406094654.29722-2-rex-bc.chen@mediatek.com>
+ <19a1af29-19a7-a546-b565-a2cc973a7f28@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-Message-Id: <E1nc3Dx-004hqW-TZ@rmk-PC.armlinux.org.uk>
-Date: Wed, 06 Apr 2022 11:49:17 +0100
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_034923_268502_946011BE 
-X-CRM114-Status: GOOD (  10.92  )
+X-CRM114-CacheID: sfid-20220406_035007_160523_07711DAE 
+X-CRM114-Status: GOOD (  17.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,34 +80,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mt7530 driver does not make use of the speed, duplex, pause or
-advertisement in its phylink_mac_config() implementation, so it can be
-marked as a non-legacy driver.
+On Wed, 2022-04-06 at 12:38 +0200, AngeloGioacchino Del Regno wrote:
+> Il 06/04/22 11:46, Rex-BC Chen ha scritto:
+> > The driver data of MT8183 and MT8173 are different.
+> > The value of has_gamma for MT8173 is true while the value of MT8183
+> > is
+> > false. Therefore, the compatible of disp_aal for MT8183 is not
+> > suitable
+> > for the compatible for MT8173.
+> > 
+> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> 
+> Hello!
+> Yes, I definitely agree with this change, it makes no sense to have
+> both
+> 8173 and 8183 compatibles for 8183 (and similar).
+> 
+> Though, please, add a note in this commit message advertising that
+> the
+> mistake was only in the yaml binding, as the driver doesn't require
+> any
+> functional changes, so that things are clear for people with less
+> expertise
+> on MediaTek platforms.
+> 
+> After that:
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- drivers/net/dsa/mt7530.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+Hello Angelo,
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 0ee2cb7e5664..c4ea73d996e8 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2897,6 +2897,12 @@ static void mt753x_phylink_get_caps(struct dsa_switch *ds, int port,
- 	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
- 				   MAC_10 | MAC_100 | MAC_1000FD;
- 
-+	/* This driver does not make use of the speed, duplex, pause or the
-+	 * advertisement in its mac_config, so it is safe to mark this driver
-+	 * as non-legacy.
-+	 */
-+	config->legacy_pre_march2020 = false;
-+
- 	priv->info->mac_port_get_caps(ds, port, config);
- }
- 
--- 
-2.30.2
+Thanks for your review.
+I will add them to the commit message in next version.
+
+BRs,
+Rex
 
 
 _______________________________________________
