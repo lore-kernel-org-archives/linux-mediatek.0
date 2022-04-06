@@ -4,71 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C58F0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 05:58:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09DC7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 06:44:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WV8OmaqENCETa99MowSr+nKl5z6eomjgzB2O4t5GGHM=; b=xHrfaOI0K8qZZo
-	rRwoEuOuqgA+MLi7r7msUHuL8jQBMz5uOG4IWGgLObMmDUMD40rH28u26zlV00/fXt1Mx7gOb1Zdd
-	sMHkYhEodZ0MWISFmbHJcxd5Np1tEYBuHRoKpPoGJFshnIdUGHCItV1XAZ9WkpUYiF6wd9aYnL1MC
-	YyGobCpqJYPPKcEi+7Nuh6CtYPs+0PIJwVD+GGHHLQO6nFBg09pSdjD/fqJPfVvah1ipW5PGDUqFW
-	J0XOmbnje9jyvm0Lt3KIL7r2o38mUbvdMXTjMNIKMcxEJS/CZApCTu7c6vSBN/H56KyGEu18BhC/J
-	retx+nVfg+J30QZfgmDg==;
+	List-Owner; bh=YoDVz9I9TNFMbh2BO5XPxLLH1GG6vO6B6nLdFrKYfsQ=; b=J1IA34vZMx+WwO
+	N7hLob3NEmmXFKqbSnAaCrDyxbFb/HvXi8HWB1cZJ3HwQJoZHkLSO9766MaQ//+uxcVDY19bEeN5G
+	egL2DQ/EgmDQZhfAwWV+jrMZJcoGN/k1lVnOd6nWsstTMrgjIGlItLDcNzcfTwSgmGn04P2k4l2YU
+	wCyJBMj8aVBXPCXLcyieMKGDojwPrIZuaz4H5+JkpbcRLS3e9WgYUckV28/4Sqd/5/jsJcNW0aJzw
+	LJHCH8UDdNFXOzMGAMHR6rheHx9imG+bLFNE3Ux8QvD8XIKRvXRFeLM74b/XS4uApGG6Iitrl7teg
+	8mF4CRuy1WAaaCu2c4ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbyg1-003tcF-P3; Wed, 06 Apr 2022 05:57:57 +0000
+	id 1nbzOv-004EZg-7y; Wed, 06 Apr 2022 06:44:21 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbyfw-003taR-VF; Wed, 06 Apr 2022 05:57:55 +0000
-X-UUID: 58ca815a7dfc40e59acbddb603c1f8e1-20220405
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=HlR6iuPaf3B52NF+Ji89TsEgizK77o9giYcbI3NVHDw=; 
- b=Fk+zjvp7xP+PwcFZzF1y30St6Mk0aJBKs1Yg8gxZVC6hwcyTyCrWKaDhNZSXaX52IoHqgV60doxmhF3edgXSeRB4WlyAOLlFO/BDOHNQd6Se441aaRB/j8sNvOBmBCCyIPVRy8yiKz9tDpvb5AyvrNA0HyUqzURREe4i+B+/vT4=;
-X-UUID: 58ca815a7dfc40e59acbddb603c1f8e1-20220405
+ id 1nbzLf-004CsJ-PQ; Wed, 06 Apr 2022 06:41:02 +0000
+X-UUID: 76496a6053a749a98aa5143669e04e09-20220405
+X-UUID: 76496a6053a749a98aa5143669e04e09-20220405
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jianjun.wang@mediatek.com>)
+ (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1474052324; Tue, 05 Apr 2022 22:57:39 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 5 Apr 2022 22:47:37 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 6 Apr 2022 13:47:35 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ with ESMTP id 265922934; Tue, 05 Apr 2022 23:40:50 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 5 Apr 2022 23:38:53 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 6 Apr 2022 14:38:40 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 6 Apr 2022 13:47:34 +0800
-Message-ID: <06c9f2f8236f8dab6b27da9db0332b4ca45a1039.camel@mediatek.com>
-Subject: Re: [PATCH v5 0/2] phy: mediatek: Add PCIe PHY driver
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
- <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Chen-Yu
- Tsai" <wenst@chromium.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski
- <krzk@kernel.org>
-CC: Wei-Shun Chang <weishunc@google.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <rex-bc.chen@mediatek.com>,
- <randy.wu@mediatek.com>, <jieyy.yang@mediatek.com>,
- <chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
- <jian.yang@mediatek.com>
-Date: Wed, 6 Apr 2022 13:47:34 +0800
-In-Reply-To: <20220326022728.2969-1-jianjun.wang@mediatek.com>
-References: <20220326022728.2969-1-jianjun.wang@mediatek.com>
+ Transport; Wed, 6 Apr 2022 14:38:40 +0800
+Message-ID: <4940e2e4ecb5f9f6857dc960ea5dbe43c551df77.camel@mediatek.com>
+Subject: Re: [PATCH v2,1/2] dt-bindings: display: mediatek: dpi: Add
+ compatible for MediaTek MT8186
+From: CK Hu <ck.hu@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, <xinlei.lee@mediatek.com>,
+ <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+ <daniel@ffwll.ch>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, <jitao.shi@mediatek.com>
+Date: Wed, 6 Apr 2022 14:38:40 +0800
+In-Reply-To: <e0d5a344c8ec1f92357bd9d5b8782dded862c549.camel@mediatek.com>
+References: <1648727917-3099-1-git-send-email-xinlei.lee@mediatek.com>
+ <1648727917-3099-2-git-send-email-xinlei.lee@mediatek.com>
+ <e0d5a344c8ec1f92357bd9d5b8782dded862c549.camel@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_225753_053668_E0CA8565 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20220405_234059_873346_D989FDBE 
+X-CRM114-Status: GOOD (  17.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,47 +77,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Maintainers,
+Hi,
 
-Is there anything I can do to get these patches merged?
+On Fri, 2022-04-01 at 09:38 +0800, Rex-BC Chen wrote:
+> On Thu, 2022-03-31 at 19:58 +0800, xinlei.lee@mediatek.com wrote:
+> > From: Xinlei Lee <xinlei.lee@mediatek.com>
+> > 
+> > Add dt-binding documentation of dpi for MediaTek MT8186 SoC.
+> > 
+> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml       |
+> > 1
+> > +
+> >  1 file changed, 1 insertion(+)
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.y
+> > am
+> > l
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.y
+> > am
+> > l
+> > index dd2896a40ff0..a73044c50b5f 100644
+> > ---
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.y
+> > am
+> > l
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.y
+> > am
+> > l
+> > @@ -22,6 +22,7 @@ properties:
+> >        - mediatek,mt7623-dpi
+> >        - mediatek,mt8173-dpi
+> >        - mediatek,mt8183-dpi
+> > +      - mediatek,mt8186-dpi
+> >        - mediatek,mt8192-dpi
+> >  
+> >    reg:
+> 
+> Hello Xinlei,
+> 
+> From the dts we use, the dpi node needs other properties for MT8186.
+> Please send another patch and add these properties to binding.
+> 
+> assigned-clocks = <&topckgen CLK_TOP_DPI>;
+> assigned-clock-parents = <&topckgen CLK_TOP_TVDPLL_D2>;
 
-Thanks.
+According to [1], the assigned-clocks is initial value. Without this
+initial value, I think driver would set this clock again, wouldn't it?
 
-On Sat, 2022-03-26 at 10:27 +0800, Jianjun Wang wrote:
-> These series patches add support for PCIe PHY driver on MediaTek
-> chipsets.
+[1] 
+https://www.kernel.org/doc/Documentation/devicetree/bindings/clock/clock-bindings.txt
+
+Regards,
+CK
+
 > 
-> Changes in v5:
-> 1. Fix typo in kerneldoc: "eFues" => "eFuse".
+> Thanks
 > 
-> Changes in v4:
-> 1. Fix no return when calling dev_err_probe.
+> BRs,
+> Rex
 > 
-> Changes in v3:
-> 1. Add introductions for structure members;
-> 2. Add SoC dependent data;
-> 3. Dynamically allocate efuse data;
-> 4. Check return value if it's an -EPROBE_DEFER.
 > 
-> Changes in v2:
-> 1. Add specific compatible name;
-> 2. Read NVMEM data at probe time;
-> 3. Fix typos.
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
 > 
-> Jianjun Wang (2):
->   dt-bindings: phy: mediatek: Add YAML schema for PCIe PHY
->   phy: mediatek: Add PCIe PHY driver
-> 
->  .../bindings/phy/mediatek,pcie-phy.yaml       |  75 +++++
->  drivers/phy/mediatek/Kconfig                  |  11 +
->  drivers/phy/mediatek/Makefile                 |   1 +
->  drivers/phy/mediatek/phy-mtk-pcie.c           | 272
-> ++++++++++++++++++
->  4 files changed, 359 insertions(+)
->  create mode 100644
-> Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
->  create mode 100644 drivers/phy/mediatek/phy-mtk-pcie.c
-> 
+https://urldefense.com/v3/__http://lists.infradead.org/mailman/listinfo/linux-mediatek__;!!CTRNKA9wMg0ARbw!wtF15QZZTCzWfRpxNLjZ1VQQ54i40D8STuOo0h18dtz3es-ksLfYQGTEFlb7lg$
+>  
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
