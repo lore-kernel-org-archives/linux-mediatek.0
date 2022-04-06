@@ -4,75 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4039C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 10:54:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57F11C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 11:02:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y63ta8epEMK0xlL0bsxScicdwLkB/9k/Jsi/k5Ox9vc=; b=JGwqGMpd3KP1Zg
-	hiqUannhzoQa2hvfRiTjtNpc6cXTdSwsL3MearH7PHy4tqLrS11UF5xHPjUhsOVEXpDJ5NcLMcy5/
-	mVZVg6rj8ho3EP3sNx9q3K/IZAOl14PtOrqExiq1N5cmg9/C/PH7ZYkDzVQW4dRUd2TGzt4yY9boO
-	TdAe2gp9wiCqDiAzi0R8eM32w8ytRA0ZWPLRoBe5u47hkRU08Vjajg7E+hUYs66uY3SwZTkYRXr7q
-	598yDmixr7H0ciTw+twb7joInCbPjfAT8C+pDJM6OfEm1lw+Zdgb2pj02LI+WRhIhyiVcMYGpMhAy
-	6eocMZTn9CqkomJ5oHyw==;
+	List-Owner; bh=EH2xdrJ8jhwVoCzK3Jz1WG+Ix6L6ggPYu5tC2jbpHtU=; b=Y9KlVMbti6hvz5
+	vB2HAVkb6gqVxejGhUSvX6BRKXHR6kJTf/uabO2YGUha3nHObVWOSVj1OX/M4YVx2R2POCmqBBgfm
+	vSgIydZ1e/M03R0+T9jMXlrN4in0eB8D76L/6A4E8ReG1jZX79JUdQ0GUuvwk21iO9bXby+DmEwXy
+	1RcdCoIoehvtpYiNsPD7AivbqPcb2YiLi3H8yzsUBQ6k2PMqX2Hn8wJDc/9vUpsTQdG2RQ57fTJWg
+	JIbZ7RAqyGA/xgYzXziy3UcHBfEP3o7g3kbZe1RMPIAtloWR42TA6Pw/4Kfo0GS6ERv4w3BHsRl8Q
+	4bzLL1ev0GQcMno4HrXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nc3Iy-005Zlb-Hc; Wed, 06 Apr 2022 10:54:28 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nc3QV-005dLH-00; Wed, 06 Apr 2022 11:02:15 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nc3GF-005YCM-Oi; Wed, 06 Apr 2022 10:51:41 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 5357A1F40EEA
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649242298;
- bh=au3kCGpBvELGj1O6aCEDgSZw3PDmNnTwCgo2ZapgbJY=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=k8lcVf8I9OjzL+Yob0GKMFrCpB3OMWOSdFSJ1vEdCc/3LPY7XhF7g1KGHrHyO7+Je
- akVMl7CsoT5V5aCZINzeQhUH3RmtO9hQyQdMsksPUFuULZiaZVd7i/CI08Yx0999Qc
- uKMhT0MPfHPsCxFNq3wbodLtSinV4mCnKSe+cwWmSz1Bi9RAIMl5ZoguOabgGmDeoM
- W2tiM8+ihWlLanFyMB1oKFA3yGBon14UGi/jwC7d12ikEczIYrXo8dHHsAA2tPDWtP
- zpSLlIDK0j0/ObDa8X5bXKRqjWkuXUbN+HivTzFDsR7F2AgbuzmpX2TksYqkyRS0Na
- bv7dX0vBwdH1Q==
-Message-ID: <0e6d110d-0637-2be8-cab0-9d936668fa7b@collabora.com>
-Date: Wed, 6 Apr 2022 12:51:34 +0200
+ id 1nc3PY-005cwX-3J; Wed, 06 Apr 2022 11:01:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:Subject:
+ From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:Reply-To:Content-ID
+ :Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:
+ Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe
+ :List-Post:List-Owner:List-Archive;
+ bh=dcCn6+XhT4ZAObTnqeDa3+6jzJY/nPJWbAVScaaz0bE=; b=kQqBANK8BkSsr7+yPmY+Z09efb
+ 0NOveqsRX9wrNdCFVXF3J7Kr26T56o2BgYYrrD0jeoekQZkIe0TDN+4d99hR04yYGpj7/adwmWZcy
+ dYUrxYIc73Kk/I1LEnAkxfk4ldascCUl2i3HfC4tKXcdMyWi9snsBXDlpl06K6FF4cJ4=;
+Received: from p200300daa70ef200456864e8b8d10029.dip0.t-ipconnect.de
+ ([2003:da:a70e:f200:4568:64e8:b8d1:29] helo=nf.local)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1nc3PP-0001v5-AM; Wed, 06 Apr 2022 13:01:07 +0200
+Message-ID: <318163cb-c771-c7eb-73ba-35c66f7d0e68@nbd.name>
+Date: Wed, 6 Apr 2022 13:01:06 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH 3/3] dt-bindings: display: mediatek: Correct disp_aal
- binding for MT8192
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.7.0
 Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>
-Cc: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "airlied@linux.ie" <airlied@linux.ie>,
- =?UTF-8?B?WW9uZ3FpYW5nIE5pdSAo54mb5rC45by6KQ==?=
- <yongqiang.niu@mediatek.com>, =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?=
- <Jason-JH.Lin@mediatek.com>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?=
- <Nancy.Lin@mediatek.com>, =?UTF-8?B?QWxsZW4tS0ggQ2hlbmcgKOeoi+WGoOWLsyk=?=
- <Allen-KH.Cheng@mediatek.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-References: <20220406094654.29722-1-rex-bc.chen@mediatek.com>
- <20220406094654.29722-4-rex-bc.chen@mediatek.com>
- <2449070b-d7e1-122f-abe6-4148855a9aba@collabora.com>
- <4ed2dc24d600fa73b91bb411391c98a5bf4f8d8b.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <4ed2dc24d600fa73b91bb411391c98a5bf4f8d8b.camel@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ netdev@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220405195755.10817-1-nbd@nbd.name>
+ <20220405195755.10817-6-nbd@nbd.name>
+ <4bafe244-6a3d-d0ec-59d3-3f3f00e71caf@linaro.org>
+From: Felix Fietkau <nbd@nbd.name>
+Subject: Re: [PATCH v2 05/14] dt-bindings: arm: mediatek: document the pcie
+ mirror node on MT7622
+In-Reply-To: <4bafe244-6a3d-d0ec-59d3-3f3f00e71caf@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_035140_037217_E8922390 
-X-CRM114-Status: GOOD (  11.96  )
+X-CRM114-CacheID: sfid-20220406_040116_365217_707DDAD3 
+X-CRM114-Status: GOOD (  17.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,46 +78,41 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/04/22 12:48, Rex-BC Chen ha scritto:
-> On Wed, 2022-04-06 at 18:40 +0800, AngeloGioacchino Del Regno wrote:
->> Il 06/04/22 11:46, Rex-BC Chen ha scritto:
->>> The driver data for MT8192 is the same with MT8183. Therefore, we
->>> correct it.
->>>
->>> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
->>
->> Reviewed-by: AngeloGioacchino Del Regno <
->> angelogioacchino.delregno@collabora.com>
->>
->> ...though, from what I know, you should also move MT8195 down there!
-> 
-> Hello Angelo,
-> 
-> Thanks for your review.
-> But for MT8195, disp_aal is using the same compatible with MT8173.
-> 
->  From the MT8195 project DTS is using:
-> 
-> aal0: disp_aal@1c005000 {
-> 	compatible = "mediatek,mt8195-disp-aal",
-> 		     "mediatek,mt8173-disp-aal";
-> 	reg = <0 0x1c005000 0 0x1000>;
-> 	interrupts = <GIC_SPI 641 IRQ_TYPE_LEVEL_HIGH 0>;
-> 	power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-> 	clocks = <&vdosys0 CLK_VDO0_DISP_AAL0>;
-> 	mediatek,gce-client-reg =
-> 		 <&gce0 SUBSYS_1c00XXXX 0x5000 0x1000>;
-> };
-> 
-> BRs,
-> Rex
-> 
 
-I'm sorry Rex, I've just realized - I was confusing this one with the
-8195 gamma binding instead!
+On 06.04.22 10:20, Krzysztof Kozlowski wrote:
+> On 05/04/2022 21:57, Felix Fietkau wrote:
+>> From: Lorenzo Bianconi <lorenzo@kernel.org>
+>> 
+>> This patch adds the pcie mirror document bindings for MT7622 SoC.
+>> The feature is used for intercepting PCIe MMIO access for the WED core
+>> Add related info in mediatek-net bindings.
+>> 
+>> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+>> Signed-off-by: Felix Fietkau <nbd@nbd.name>
+>> ---
+>>  .../mediatek/mediatek,mt7622-pcie-mirror.yaml | 42 +++++++++++++++++++
+> 
+> Eh, I wanted to ask to not put it inside arm/, but judging by your usage
+> - you did not create drivers for both of these (WED and PCIe mirror).
+> 
+> You only need them to expose address spaces via syscon.
+> 
+> This actually looks hacky. Either WED and PCIe mirror are part of
+> network driver, then add the address spaces via "reg". If they are not,
+> but instead they are separate blocks, why you don't have drivers for them?
+The code that uses the WED block is built into the Ethernet driver, but 
+not all SoCs that use this ethernet core have it. Also, there are two 
+WED blocks, and I'm not sure if future SoCs might have a different 
+number of them at some point.
+The WED code also needs to access registers of the ethernet MAC.
+One reason for having a separate device is this:
+As long as WED is not in use, ethernet supports coherent DMA for 
+increased performance. When the first wireless device attaches to WED, 
+IO coherency gets disabled and the ethernet DMA rings are cleaned up and 
+allocated again, this time with the struct device of WED (which doesn't 
+have the dma-coherent property).
 
-Cheers,
-Angelo
+- Felix
 
 _______________________________________________
 Linux-mediatek mailing list
