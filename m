@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 254A8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 10:01:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C22AAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 10:01:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=YCbOiiNRQfpp8gxbJpRkJ8teRs7wSJ4MCJ8pr/aeQNM=; b=c0GhC1jALWt+jm
-	pr318wwxM1N6n+yWWqxOeMgsrx5HiCkIZeH2LFx4UxaYa3ra6jSeJnhWr036RjaH2FIBQB23ajLJQ
-	yFY8K+GWaoAPevNNRC/CCIMzwDslEnYxsJYY+kCx08OYOcUE9wwdaMBg/rfp+mvJ8lWAx9An0IdSF
-	pkGmH0FAqiUKm3wneCf2tQxGCm7fRSTzDW3itn7CUZsG0mrD+/DqGfDDsT/XuuafIsgjQ3QCCizoW
-	48gUK1njgpWT61ePoPuJ2ZkAVA2aFAS9s6tthxAjgvxrjYOif+UzzQgzx1I5mQYPJptHapmd8K+h6
-	Hu4Mrlxbh523EAxUqTvQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bGM44FL7mvKBWfyxCbdTkws1I1Nfu2YWx/Yt9Y0H+1Q=; b=Bmu3zoKVGYnZSb
+	jQmUkgsiWCQ1I/RPKeAaDr36+TRLCeUCF75gQDg2Jmt4vhgxLint9nYqj2+b44mqgFVr+qgJwUH0y
+	st2CHqKZg5T84lmJdMm9BoJV0EjNjbhy7OlBzkkpXPPH4eFSms1Y8TxlpGNWt+uMEQOcxFoxk7FsE
+	gOuDCPVsiVrU+ZcvCCFWg8RmZNGmt1dCN3KvCLpV0d+gll80bU9d9myuBtBORDvZVpHb3WUFmr9qO
+	uY06H3EZqpRP8oqR8S8/xwj0UBJdnHFg9gr3Ezy4lLuxh9Igjj5Z5t4d10YDfLvJRvaBtzc0gggyh
+	oz53ZTLNfVh/M0er7h7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nc2TQ-005CNp-7K; Wed, 06 Apr 2022 10:01:12 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1nc2Ta-005CU2-FG; Wed, 06 Apr 2022 10:01:22 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nc2IB-0057PT-DR; Wed, 06 Apr 2022 09:49:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
- Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=HAZAkxGQ/zOdZiDQf8oSglIAyCEr2REmP3A7bnFL5Lw=; b=sO7m6/msfb1eq0aFrkmsU+sEzt
- eKwlIuQhzyzSjVUe9pFqfastnzDv2E9xwjD6RITJvC7ywINEjTfpQM7VXifEbgwJeDSVFRrQXH4wA
- J5yHvS8ON7R4zuJ3g8ZgJeFBNiJrmVHArv7ns3C3OTUpwIZoHFgyxUBCtBEcEPTIoRmm/+DGqKC4f
- EQw1SgrlGIgnNqwW+glElXiUY/GdNv8kiJ467YrBAWLSTv6LLVQQt/cidU1cFZiBEZdI0B3uVQBhz
- rh+Ix+ICyqU9UBSOF7zOrUaGy97b/hx8kYKLuDQNXrqonGfX3yI3t6n60w58uQVxKY/w+YqOVfDJI
- nrkqCFZw==;
-Received: from shell.armlinux.org.uk
- ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:58144)
- by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <linux@armlinux.org.uk>)
- id 1nc2Hv-0002T9-Hc; Wed, 06 Apr 2022 10:49:19 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
- (envelope-from <linux@shell.armlinux.org.uk>)
- id 1nc2Hs-00052x-6g; Wed, 06 Apr 2022 10:49:16 +0100
-Date: Wed, 6 Apr 2022 10:49:16 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
- Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next 0/9] net: dsa: mt7530: updates for phylink changes
-Message-ID: <Yk1iHCy4fqvxsvu0@shell.armlinux.org.uk>
+ id 1nc2KD-0058Pn-0O; Wed, 06 Apr 2022 09:51:45 +0000
+X-UUID: 83a8f5c52028480686ffa29703de3c81-20220406
+X-UUID: 83a8f5c52028480686ffa29703de3c81-20220406
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1959602401; Wed, 06 Apr 2022 02:51:39 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 6 Apr 2022 02:46:57 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 6 Apr 2022 17:46:55 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 6 Apr 2022 17:46:55 +0800
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>
+CC: <matthias.bgg@gmail.com>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+ <yongqiang.niu@mediatek.com>, <jason-jh.lin@mediatek.com>,
+ <nancy.lin@mediatek.com>, <allen-kh.cheng@mediatek.com>,
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: [PATCH 1/3] dt-bindings: display: mediatek: Correct disp_aal binding
+ for MT8183
+Date: Wed, 6 Apr 2022 17:46:52 +0800
+Message-ID: <20220406094654.29722-2-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220406094654.29722-1-rex-bc.chen@mediatek.com>
+References: <20220406094654.29722-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_024935_573024_DB04E071 
-X-CRM114-Status: GOOD (  14.75  )
+X-CRM114-CacheID: sfid-20220406_025141_201616_FEA05B1A 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,56 +78,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+The driver data of MT8183 and MT8173 are different.
+The value of has_gamma for MT8173 is true while the value of MT8183 is
+false. Therefore, the compatible of disp_aal for MT8183 is not suitable
+for the compatible for MT8173.
 
-This revised series is a partial conversion of the mt7530 DSA driver to
-the modern phylink infrastructure. This driver has some exceptional
-cases which prevent - at the moment - its full conversion (particularly
-with the Autoneg bit) to using phylink_generic_validate().
+Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+---
+ .../devicetree/bindings/display/mediatek/mediatek,aal.yaml  | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Patch 1 fixes the incorrect test highlighted in the first RFC series.
-
-Patch 2 fixes the incorrect assumption that RGMII is unable to support
-1000BASE-X.
-
-Patch 3 populates the supported_interfaces for each port
-
-Patch 4 removes the interface checks that become unnecessary as a result
-of patch 3.
-
-Patch 5 removes use of phylink_helper_basex_speed() which is no longer
-required by phylink.
-
-Patch 6 becomes possible after patch 5, only indicating the ethtool
-modes that can be supported with a particular interface mode - this
-involves removing some modes and adding others as per phylink
-documentation.
-
-Patch 7 switches the driver to use phylink_get_linkmodes(), which moves
-the driver as close as we can to phylink_generic_validate() due to the
-Autoneg bit issue mentioned above.
-
-Patch 8 converts the driver to the phylink pcs support, removing a bunch
-of driver private indirected methods. We include TRGMII as a PCS even
-though strictly TRGMII does not have a PCS. This is convenient to allow
-the change in patch 9 to be made.
-
-Patch 9 moves the special autoneg handling to the PCS validate method,
-which means we can convert the MAC side to the generic validator.
-
-Patch 10 marks the driver as non-legacy.
-
-The series was posted on 23 February, and a ping sent on 3 March, but
-no feedback has been received. The previous posting also received no
-feedback on the actual patches either.
-
- drivers/net/dsa/mt7530.c | 330 +++++++++++++++++++++--------------------------
- drivers/net/dsa/mt7530.h |  26 ++--
- 2 files changed, 159 insertions(+), 197 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+index cb4a2f39ff88..f118075e4a89 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+@@ -21,12 +21,12 @@ description: |
+ properties:
+   compatible:
+     oneOf:
+-      - items:
+-          - const: mediatek,mt8173-disp-aal
++      - enum:
++          - mediatek,mt8173-disp-aal
++          - mediatek,mt8183-disp-aal
+       - items:
+           - enum:
+               - mediatek,mt2712-disp-aal
+-              - mediatek,mt8183-disp-aal
+               - mediatek,mt8192-disp-aal
+               - mediatek,mt8195-disp-aal
+           - const: mediatek,mt8173-disp-aal
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
