@@ -4,72 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 002AFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 08:52:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A933C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 08:58:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=emBPFx/M8wUf6E3JjlqimA02U1QO705Y/+v4mI9vU5E=; b=Bkt0kwJWHbgGgY
-	gf2Amo+pMMLnzAMyhPGSlwqR8oUd2IV2DnDm4y7srlN+EE3o0/smip7gfhhmO4WkvhSJalCVLvjKK
-	PNY4kTemUQieVSaWvqd2xfBQVNO9tXBmP0feMKeo5vqSDljYIWNGGttZLCkafjUOP+QodZeyfMmy0
-	A4Q34BQ6VCo7l/cimnI3R3seSisLCmqKdRRFIcHoMfgigdx75MefrUk+lSTBqsjSpYiDteoe6GPF2
-	ajb3iMur+b0PtKA1ABo3qrq3tkxI8hCkxAR+rOF341vYqdaQ5E9HQ+SQClowKOt4Kxklk3RFQkr8l
-	9emWjYpT+RiOjh/CRlGg==;
+	List-Owner; bh=S3fNquaBS9yteqH79iAu0bJI9/F0uYMgQ+/7OxtjsXY=; b=XL9nvV81MzoUvU
+	rzuFre3WVqa2We3X0DHT3JwCCdiRmeR/UIqqCajnwsIqRRUVCNRM5R5eMLiFD/f4NDKLnsk9EtaPK
+	goUpWgRAfCRJ3DLUBk9nJ0JZG0vejC/k5tTqZLai3sMqxi6M9AedQz4ZM6MrmgQGE10ZfFxz+AkK+
+	9jif5YZe3YFLQskbVYZpO+dMJgdbH15Q3eiZLiPATWqmdXBhv3V23TQXIiSPDtzw0Z8hfmM0pH0zb
+	8+hMmkLDxRBYUARSXaluiE18+fs7rn7uD/aXAchj9+50AkRlKyfq9wbHFkQ65zVLVgfSIShsXG3U5
+	hP5PY5ikIB0MI8hYMK6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nc1Oz-004pW3-VB; Wed, 06 Apr 2022 08:52:33 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nc1UK-004s4C-10; Wed, 06 Apr 2022 08:58:04 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nc1Ou-004pUm-UY; Wed, 06 Apr 2022 08:52:32 +0000
-X-UUID: a1d7fb92f3fd4724b96cc15c66b623ae-20220406
-X-UUID: a1d7fb92f3fd4724b96cc15c66b623ae-20220406
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jia-wei.chang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 362904035; Wed, 06 Apr 2022 01:52:21 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 6 Apr 2022 01:42:19 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 6 Apr 2022 16:42:18 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 6 Apr 2022 16:42:18 +0800
-Message-ID: <d44ab059acdb92dc3e6b84f2ffb27964ecd97c84.camel@mediatek.com>
-Subject: Re: [PATCH 1/4] dt-bindings: cpufreq: mediatek: transform
- cpufreq-mediatek into yaml
-From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, "Krzysztof
- Kozlowski" <krzk@kernel.org>, "Rafael J . Wysocki" <rafael@kernel.org>,
- Viresh Kumar <viresh.kumar@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-CC: <linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <fan.chen@mediatek.com>,
- <louis.yu@mediatek.com>, <roger.lu@mediatek.com>,
- <Allen-yy.Lin@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>,
- Jia-Wei Chang <jia-wei.chang@mediatek.corp-partner.google.com>
-Date: Wed, 6 Apr 2022 16:42:17 +0800
-In-Reply-To: <56c5870e-bc41-39be-6b53-785396d8812b@linaro.org>
-References: <20220307122151.11666-1-jia-wei.chang@mediatek.com>
- <20220307122151.11666-2-jia-wei.chang@mediatek.com>
- <ee98d248-b2cd-e975-84df-448917a79287@canonical.com>
- <2cf526d400c011b5172ba4fc2c3f03b4a4f371dc.camel@mediatek.com>
- <96a823a2-f3b6-9fb7-c9d6-f1315f6056fd@kernel.org>
- <de1751bb13fb14b591fbe046ff274530ad62162e.camel@mediatek.com>
- <56c5870e-bc41-39be-6b53-785396d8812b@linaro.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nc1Th-004rdb-G3
+ for linux-mediatek@lists.infradead.org; Wed, 06 Apr 2022 08:57:27 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id k23so2857933ejd.3
+ for <linux-mediatek@lists.infradead.org>; Wed, 06 Apr 2022 01:57:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=7oGdqe4edvqr+iYfJInFHVmb7+U6NUbqblozp3XrpQg=;
+ b=i+U889ubHp/vqD39N9mGHzSBxDkleyQwz/NKD0dqRtQCXOhQn3Be6msm33/4hP8WDQ
+ z//23cjvUb+fkkceiSyT7T08AqIo5FDX3UurpydepsVA13l5Tghgh949AbE1vo/0vpMS
+ MunVwbnQlqlray9rykp3K4cZu09MwZYvYgxR7ZLSaXY0RdRxmlrb94cBBclWn8AZLD+I
+ GklRqWwbXTQebvLfyShnONpxJdDb4dEZplwAwS55peWNy77EAcMiCpeHmX5qK+U30fnQ
+ MkpxHFM8PcP5yg0wFjXJWB4ONKi+TXcIZ6EE3CVbb9yyWs+LFbKmQMKadXfJWkgtGIiH
+ 2QNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=7oGdqe4edvqr+iYfJInFHVmb7+U6NUbqblozp3XrpQg=;
+ b=xxOin2pgCr3S9ls0YRVPgb+ZB3QrH7BsS2EPwn/7iSf+zUXLOVK9TP3jclpbTixtL2
+ 6gvyBI9qeohXOaT6ZDhiCGxKDh6IW4UMS8xBFqa5+aMwgD1G3oiXn9mHEW5TijzbQ/g9
+ QBdOI9jMX9umOntoHm85xWDorgzz19Pa8VCW3+Wj6GPQxGKZzQcfNTS0/NTjKxuo4CxT
+ Xf9RxOHkNSmxp3Th9jlI6RmtJLxArxWTplk36/jYqKQhkm0f4gHr26xOCDnlXgm70U0m
+ HLMJCijf3JGI30xzuHgunmeCui46NHGEtYYFlfJqKiReSXEBHvtF+Sv60VV9SiQXtkH3
+ UNHQ==
+X-Gm-Message-State: AOAM532qjvlb+Qhyil1DT12ncbJC2+Kw1nRypVwsvoreM6KSh7cIFK5Y
+ N5eNVMmBeTRnXpb4ALgkGLWLWg==
+X-Google-Smtp-Source: ABdhPJw2YtGOMiUak58GFk63SIktW16kDe4il6YrYPXGz8jzb5j689+r7WfODo7WQ8xkLk7+CqqeKg==
+X-Received: by 2002:a17:906:698a:b0:6ce:b983:babf with SMTP id
+ i10-20020a170906698a00b006ceb983babfmr7573228ejr.553.1649235442532; 
+ Wed, 06 Apr 2022 01:57:22 -0700 (PDT)
+Received: from [192.168.0.183] (xdsl-188-155-201-27.adslplus.ch.
+ [188.155.201.27]) by smtp.gmail.com with ESMTPSA id
+ c4-20020a170906340400b006d077e850b5sm6331152ejb.23.2022.04.06.01.57.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 06 Apr 2022 01:57:22 -0700 (PDT)
+Message-ID: <750c1f9e-6a53-16d5-390e-f9f81fa23afd@linaro.org>
+Date: Wed, 6 Apr 2022 10:57:21 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v2 04/14] dt-bindings: arm: mediatek: document WED binding
+ for MT7622
+Content-Language: en-US
+To: Felix Fietkau <nbd@nbd.name>, Arnd Bergmann <arnd@arndb.de>
+Cc: Networking <netdev@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ DTML <devicetree@vger.kernel.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+References: <20220405195755.10817-1-nbd@nbd.name>
+ <20220405195755.10817-5-nbd@nbd.name>
+ <d0bffa9a-0ea6-0f59-06b2-7eef3c746de1@linaro.org>
+ <e3ea7381-87e3-99e1-2277-80835ec42f15@nbd.name>
+ <CAK8P3a1A6QYajv_HTw79HjiJ8CN6YPeKXc_X3ZFD83pdOqVTkQ@mail.gmail.com>
+ <08883cf4-27b9-30bf-bd27-9391b763417c@nbd.name>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <08883cf4-27b9-30bf-bd27-9391b763417c@nbd.name>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_015229_044746_736FC850 
-X-CRM114-Status: GOOD (  51.70  )
+X-CRM114-CacheID: sfid-20220406_015725_588575_DDE1ECC5 
+X-CRM114-Status: GOOD (  19.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,186 +105,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-04-01 at 18:32 +0200, Krzysztof Kozlowski wrote:
-> On 01/04/2022 15:26, Jia-Wei Chang wrote:
-> > On Thu, 2022-03-24 at 11:33 +0100, Krzysztof Kozlowski wrote:
-> > > On 24/03/2022 10:38, Jia-Wei Chang wrote:
-> > > > > 
-> > > > > > 
-> > > > > > diff --git
-> > > > > > a/Documentation/devicetree/bindings/cpufreq/cpufreq-
-> > > > > > mediatek.yaml
-> > > > > > b/Documentation/devicetree/bindings/cpufreq/cpufreq-
-> > > > > > mediatek.yaml
-> > > > > > new file mode 100644
-> > > > > > index 000000000000..584946eb3790
-> > > > > > --- /dev/null
-> > > > > > +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-
-> > > > > > mediatek.yaml
-> > > > > > @@ -0,0 +1,131 @@
-> > > > > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > > > > > +%YAML 1.2
-> > > > > > +---
-> > > > > > +$id: 
-> > > > > > 
-> > 
-> > 
-https://urldefense.com/v3/__http://devicetree.org/schemas/cpufreq/cpufreq-mediatek.yaml*__;Iw!!CTRNKA9wMg0ARbw!xbKG4TgD0MRpMLyGJVBZEGpZFrNOclrcxOCx_APKo5Nmg8nF2x5PcBdE0unvL2NdpChkMA$
-> > > > > >  
-> > > > > > +$schema: 
-> > > > > > 
-> > 
-> > 
-https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!xbKG4TgD0MRpMLyGJVBZEGpZFrNOclrcxOCx_APKo5Nmg8nF2x5PcBdE0unvL2O8T_oxCQ$
-> > > > > >  
-> > > > > > +
-> > > > > > +title: Mediatek CPUFREQ driver Device Tree Bindings
-> > > > > 
-> > > > > Please remove "driver Device Tree Bindings" because the title
-> > > > > should
-> > > > > describe the hardware. Therefore it could be something like
-> > > > > "Mediatek
-> > > > > SoC CPU frequency and voltage scaling".
-> > > > 
-> > > > Thanks for your suggestion of title.
-> > > > Or should I use the origin title "Binding for MediaTek's
-> > > > CPUFreq
-> > > > driver"?
-> > > 
-> > > Mediatek CPUFREQ
-> > > or
-> > > Mediatek CPU frequency scaling
-> > 
-> > Ok, I will choose one of it.
-> > 
-> > > 
-> > > > 
-> > > > > 
-> > > > > How is it related to cpufreq-mediatek-hw.yaml? The
-> > > > > names/title
-> > > > > look
-> > > > > unfortunately too similar.
-> > > > 
-> > > > No, mediatek-cpufreq is performing in kernel driver rather than
-> > > > on
-> > > > hardware.
-> > > > On the other hand, mediatek-cpufreq-hw is performing on
-> > > > hardware.
-> > > > That's why "hw" is present in its name.
-> > > 
-> > > Unfortunately, I do not get it. The bindings are only about
-> > > hardware,
-> > > so
-> > > how bindings could be about CPU frequency scaling not in
-> > > hardware?
-> > 
-> > Sorry, let me correct my statements.
-> > 
-> > For mediatek-cpufreq here, the required hardware are clock and
-> > regulator which have to be under control of mediatek-cpufreq.
-> > That's
-> > the reason why it needs bindings.
-> > 
-> > mediatek-cpufreq scales up and down voltage and frequency via
-> > kernel
-> > framework of clock and regulator, however, mediatek-cpufreq-hw
-> > delegate
-> > the voltage and frequency control to a hardware agent instead.
-> 
-> OK, that makes sense, thanks for explanation.
-> 
-> > 
-> > > 
-> > > > 
-> > > > > 
-> > > > > In general this does not look like proper bindings (see also
-> > > > > below
-> > > > > lack
-> > > > > of compatible). Bindings describe the hardware, so what is
-> > > > > exactly
-> > > > > the
-> > > > > hardware here?
-> > > > 
-> > > > Except for SoC, there's no requirement of hardware binding for
-> > > > mediatek-cpufreq.
-> > > > mediatek-cpufreq recognizes the compatible of Mediatek SoC
-> > > > while
-> > > > probing.
-> > > 
-> > > What is the hardware here? If there is no requirement for
-> > > bindings
-> > > for
-> > > mediate-cpufreq, why do we have this patch here?
-> > 
-> > Sorry, that's my mistake.
-> > Clock and regulator are required hardware for mediatek-cpufreq.
-> > 
-> > > 
-> > > > 
-> > > > > 
-> > > > > > +
-> > > > > > +maintainers:
-> > > > > > +  - Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> > > > > > +
-> > > > > > +description: |
-> > > > > > +  CPUFREQ is used for scaling clock frequency of CPUs.
-> > > > > > +  The module cooperates with CCI DEVFREQ to manage
-> > > > > > frequency
-> > > > > > for
-> > > > > > some Mediatek
-> > > > > > +  SoCs.
-> > > > > > +
-> > > > > > +properties:
-> > > > > 
-> > > > > How is this schema going to be applied? I don't see here
-> > > > > select
-> > > > > neither
-> > > > > compatible.
-> > > > 
-> > > > As mentioned above, only compatible of SoC is required for
-> > > > mediatek-
-> > > > cpufreq.
-> > > 
-> > > It does not answer my questions. How the schema is going to be
-> > > applied?
-> > 
-> > Currently, we do use compatible of SoC to probe mediatek-cpufreq.
-> 
-> Probing and binding to compatible is correct, but there is no
-> compatible
-> here, so the schema is a no-op. Does nothing.
+On 06/04/2022 10:32, Felix Fietkau wrote:
+> On 06.04.22 10:29, Arnd Bergmann wrote:
+>> On Wed, Apr 6, 2022 at 10:18 AM Felix Fietkau <nbd@nbd.name>
+>> wrote:
+>>> On 06.04.22 10:09, Krzysztof Kozlowski wrote:
+>>>> On 05/04/2022 21:57, Felix Fietkau wrote:
+>>>>> From: Lorenzo Bianconi <lorenzo@kernel.org>
+>>>>> 
+>>>>> Document the binding for the Wireless Ethernet Dispatch core
+>>>>> on the MT7622 SoC, which is used for Ethernet->WLAN
+>>>>> offloading Add related info in mediatek-net bindings.
+>>>>> 
+>>>>> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org> 
+>>>>> Signed-off-by: Felix Fietkau <nbd@nbd.name>
+>>>> 
+>>>> Thank you for your patch. There is something to
+>>>> discuss/improve.
+>>>> 
+>>>>> --- .../arm/mediatek/mediatek,mt7622-wed.yaml     | 50
+>>>>> +++++++++++++++++++ 
+>>>>> .../devicetree/bindings/net/mediatek-net.txt  |  2 + 2 files
+>>>>> changed, 52 insertions(+) create mode 100644
+>>>>> Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-wed.yaml
+>>>>
+>>>>
+>>>>> 
+Don't store drivers in arm directory. See:
+>>>> https://lore.kernel.org/linux-devicetree/YkJa1oLSEP8R4U6y@robh.at.kernel.org/
+>>>>
+>>>>
+>>>> 
+Isn't this a network offload engine? If yes, then probably it should be
+>>>> in "net/".
+>>> It's not a network offload engine by itself. It's a SoC component
+>>> that connects to the offload engine and controls a MTK PCIe WLAN
+>>> device, intercepting interrupts and DMA rings in order to be able
+>>> to inject packets coming in from the offload engine. Do you think
+>>> it still belongs in net, or maybe in soc instead?
+>> 
+>> I think it belongs into drivers/net/. Presumably this has some kind
+>> of user interface to configure which packets are forwarded? I would
+>> not want to maintain that in a SoC driver as this clearly needs to
+>> communicate with both of the normal network devices in some form.
+> The WLAN driver attaches to WED in order to deal with the intercepted
+>  DMA rings, but other than that, WED itself has no user
+> configuration. Offload is controlled by the PPE code in the ethernet
+> driver (which is already upstream), and WED simply provides a
+> destination port for PPE, which allows packets to flow to the
+> wireless device.
 
-Correct. I will update it in the next version.
+Thanks for clarification. I still wonder about the missing drivers as I
+responded to your second bindings:
+https://lore.kernel.org/all/20220405195755.10817-1-nbd@nbd.name/T/#m6d108c644f0c05cd12c05e56abe2ef75760c6cef
 
-> 
-> > If the better way is using clock and regulator opp, do you have a
-> > suggestion to approach that?
-> > I mean I can't find a good example from other vendors trying to do
-> > that
-> > way. Or maybe I miss something?
-> 
-> One other way (proper) is to use cpufreq-dt and existing bindings. I
-> understand that maybe you need some specific bindings here, but I
-> fail
-> to see how they would work. IOW, you don't have the compatible, no
-> select, so nothing can use these bindings. Also bindings do not refer
-> to
-> any specific hardware, like SoC model.
-> 
-> It's good that you try to convert existing bindings to DT schema, but
-> with that they should be probably fixed/updated to match proper
-> bindings.
+Both of these compatibles - WED and PCIe - are not actually used. Now
+everything is done inside your Ethernet driver which pokes WED and
+PCIe-mirror address space via regmap/syscon.
 
-I got it. I will add compatible information to property of bindings and
-dts example here as well.
+Separate bindings might have sense if WED/PCIe mirror were ever
+converted to real drivers.
 
-Should I split the overall change of yaml into two patches? One for
-conversion of bindings and the other for the rest of change.
-
-> 
-> Best regards,
-> Krzysztof
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
