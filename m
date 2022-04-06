@@ -4,54 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE32CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 15:30:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA9AEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 15:39:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=XHwjGk66HhZ0+SDY3+ncAm0xUFbosSi2POOttFGIO6I=; b=tuIXUDR1Kedda6
-	ifSNEviQarRqolO3yrgyne9/9iXELASa1wWn+daw7Nl/O6v9oik828mKW0rsoW4QXOUGDuXVfoh51
-	YdH+SqNGmUYKiqgvMogZf/vlGW/olD3pFPXBt8eySJFVLENG8tOMdUjpdTMN559HMvmbvAIKmb+Cw
-	Gb+XbiCMfKO2XQcX9qCr3Aa77k8F0TjceAj+k9I9Yfi1XxaRGBj+QVr4OEshoFcAvGNRstwvf+gUn
-	ijMpsb7iYHwxZjtAzjKSK4faALDypK3rDWo2bApyMhNnNJMEl41nmc28ils/nRhZKATq9X9fkGUdO
-	Y+FuZysghUgcErDpkEPw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bL3j7VA3zqJOeAbdaEuNAnRZBPr8E8s5FLxWY9Jvt0Q=; b=IefMl5GMFztigJ
+	8rPbRL4OFn9Si2N30Bih8XkcT2zLP1J354axv10ytnrjNvbcwp9KEp5wjxF1CZRVKS82WM080UQKN
+	IY8tlcIZoHIl/Up4Wr4xSEz81eYsazsa77yQt3/mHWs7NUBxKYIYay2CHQISnVeA8IbRrTVzkDuiS
+	I4owxsfBiREqCt19F2dtRNB/XFZMKcCxXh97pKjHurxsJ856oOcwsZ/YU/CfCz0AnVv9Rb7i/yP5G
+	BV2K7pKItyZaOh4KnQOd+bOU2lmvcp3XPmcUFypMWEyYGpiIunuXD/kPMMFZo63MlhsYD3Lk1tYv1
+	KzdOI/OkorI6gbVIGbuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nc7bb-006phA-Lt; Wed, 06 Apr 2022 15:29:59 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nc7kT-006tFq-Jz; Wed, 06 Apr 2022 15:39:09 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nc7bP-006pdc-JI; Wed, 06 Apr 2022 15:29:49 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 85B8A1F4136D
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649258984;
- bh=1NhAchyfhmSmpQJUfImxIt/WQmIDi6gHQsa7Fft+Rks=;
- h=From:To:Cc:Subject:Date:From;
- b=OQDpeJ1CvB/HRIMKBLggLHHm4RAqWhHYwby3rUsfvR/bfVO5vAKJnmfn+oetuspeA
- 440NJiHS1nRDY07b8iuW/cgnQ86eDw/Ep1UI7RrYdICUUUbnsUbD5O9bf2+fmI+q5u
- 1MeOw3e4oce3zdG5Q8JpghmoV2KJ52Mmn7EzvBeNK6kGFB2lfDVqG8wyP+ny1F+qXv
- fTi264g+xqUm+bT+LBUSkuGpshloy4JN3SfdmWV2yJKNYPDiTZDMDpctL5WU1/OVc4
- nJEerUftYKTv3EKDQBivUgtjHy3JS1J6Q9r0/WcAWVX9KK2EJteMRcYhLSHSttOQV3
- Qp6xHefrUW6aw==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: robh+dt@kernel.org
-Cc: krzk+dt@kernel.org, matthias.bgg@gmail.com, qii.wang@mediatek.com,
- wsa@kernel.org, kewei.xu@mediatek.com,
- angelogioacchino.delregno@collabora.com, hsinyi@chromium.org,
- linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] dt-bindings: i2c: convert i2c-mt65xx to json-schema
-Date: Wed,  6 Apr 2022 17:29:40 +0200
-Message-Id: <20220406152940.140224-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
+ id 1nc7kB-006t6W-2P; Wed, 06 Apr 2022 15:38:52 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id A03AFB824B8;
+ Wed,  6 Apr 2022 15:38:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 649ADC385AB;
+ Wed,  6 Apr 2022 15:38:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1649259527;
+ bh=j/cHGt1Adp/5ckJatmOAtFz8YwOh1uG9kyL0/rqOdAI=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=ZxMGCv64eYBNc1avTLYsfD8OTSDZAzQlny1jcKpgW7cpaNUn7n2lzRAB8KA+0J+lc
+ blAso325sUH2hSDdGMBvrLnlq7sBAn7rt+3e0nMPFHgiaqm3WW7oDk8r6r0EjD/33C
+ 3zJFZhJkYKMkbll+HRI/2m9zRNN7EtPN7AGtPU93fqfe75x7mw7W9LpfxSs0yNy968
+ c3gGMTbxAhAO8iPe+QiMSfuQiT/dcs7TPgHbp29GUwEK7hdb12Zraumk5vV7L3JElu
+ /kqCfIhCb3N2mHJnynG8r5EIciy+D8KcqFnwwcCTHtxXDyo3TtxOG/OZ8g9SvONgYu
+ KHxSDu2GKbKkg==
+Received: by mail-pg1-f169.google.com with SMTP id 66so2494806pga.12;
+ Wed, 06 Apr 2022 08:38:47 -0700 (PDT)
+X-Gm-Message-State: AOAM532iFU52KEse7fX7rOtPoO7XHuB1/HvLHG206LtFvuiYB5nF6tNb
+ NuC2zWUS1ogwGjWGrnDypPgMdqA3Afa3hSRoLag=
+X-Google-Smtp-Source: ABdhPJx6nrBYoOc7Poen+QC3GhpAJV8qLRa+XzbVgFrkIodhg2moVi8VEmGesevH2qrojOojIBiXA0F7l3qLHy9jsCo=
+X-Received: by 2002:a05:6a00:1501:b0:4fb:2d19:b6a8 with SMTP id
+ q1-20020a056a00150100b004fb2d19b6a8mr9579739pfu.21.1649259526810; Wed, 06 Apr
+ 2022 08:38:46 -0700 (PDT)
 MIME-Version: 1.0
+References: <20220326022728.2969-1-jianjun.wang@mediatek.com>
+ <06c9f2f8236f8dab6b27da9db0332b4ca45a1039.camel@mediatek.com>
+In-Reply-To: <06c9f2f8236f8dab6b27da9db0332b4ca45a1039.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Date: Wed, 6 Apr 2022 17:38:35 +0200
+X-Gmail-Original-Message-ID: <CAJKOXPfWH-XSogkWVy0Q5LcHSk9SXinR7AA_Odo-oTc32y1Ykg@mail.gmail.com>
+Message-ID: <CAJKOXPfWH-XSogkWVy0Q5LcHSk9SXinR7AA_Odo-oTc32y1Ykg@mail.gmail.com>
+Subject: Re: [PATCH v5 0/2] phy: mediatek: Add PCIe PHY driver
+To: Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, 
+ Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Wei-Shun Chang <weishunc@google.com>, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, 
+ devicetree@vger.kernel.org, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ rex-bc.chen@mediatek.com, 
+ randy.wu@mediatek.com, jieyy.yang@mediatek.com, chuanjia.liu@mediatek.com, 
+ qizhong.cheng@mediatek.com, jian.yang@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_082947_935924_F3D76F0A 
-X-CRM114-Status: GOOD (  19.38  )
+X-CRM114-CacheID: sfid-20220406_083851_314233_8C872243 
+X-CRM114-Status: GOOD (  10.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,216 +90,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert I2C binding for MediaTek SoCs to Devicetree schema.
+On Wed, 6 Apr 2022 at 07:47, Jianjun Wang <jianjun.wang@mediatek.com> wrote:
+>
+> Hello Maintainers,
+>
+> Is there anything I can do to get these patches merged?
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../devicetree/bindings/i2c/i2c-mt65xx.txt    |  53 --------
- .../devicetree/bindings/i2c/i2c-mt65xx.yaml   | 118 ++++++++++++++++++
- MAINTAINERS                                   |   2 +-
- 3 files changed, 119 insertions(+), 54 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
- create mode 100644 Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
+Patience. :) You posted a patch during the merge window which finished
+three days ago, so basically one can assume you ping folks after three
+days. Three days is too fast for pinging. :(
 
-diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
-deleted file mode 100644
-index 026985b8f61a..000000000000
---- a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
-+++ /dev/null
-@@ -1,53 +0,0 @@
--* MediaTek's I2C controller
--
--The MediaTek's I2C controller is used to interface with I2C devices.
--
--Required properties:
--  - compatible: value should be either of the following.
--      "mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for MediaTek MT2701
--      "mediatek,mt2712-i2c": for MediaTek MT2712
--      "mediatek,mt6577-i2c": for MediaTek MT6577
--      "mediatek,mt6589-i2c": for MediaTek MT6589
--      "mediatek,mt6797-i2c", "mediatek,mt6577-i2c": for MediaTek MT6797
--      "mediatek,mt7622-i2c": for MediaTek MT7622
--      "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for MediaTek MT7623
--      "mediatek,mt7629-i2c", "mediatek,mt2712-i2c": for MediaTek MT7629
--      "mediatek,mt8168-i2c": for MediaTek MT8168
--      "mediatek,mt8173-i2c": for MediaTek MT8173
--      "mediatek,mt8183-i2c": for MediaTek MT8183
--      "mediatek,mt8186-i2c": for MediaTek MT8186
--      "mediatek,mt8192-i2c": for MediaTek MT8192
--      "mediatek,mt8195-i2c", "mediatek,mt8192-i2c": for MediaTek MT8195
--      "mediatek,mt8516-i2c", "mediatek,mt2712-i2c": for MediaTek MT8516
--  - reg: physical base address of the controller and dma base, length of memory
--    mapped region.
--  - interrupts: interrupt number to the cpu.
--  - clock-div: the fixed value for frequency divider of clock source in i2c
--    module. Each IC may be different.
--  - clocks: clock name from clock manager
--  - clock-names: Must include "main" and "dma", "arb" is for multi-master that
--    one bus has more than two i2c controllers, if enable have-pmic need include
--    "pmic" extra.
--
--Optional properties:
--  - clock-frequency: Frequency in Hz of the bus when transfer, the default value
--    is 100000.
--  - mediatek,have-pmic: platform can control i2c form special pmic side.
--    Only mt6589 and mt8135 support this feature.
--  - mediatek,use-push-pull: IO config use push-pull mode.
--  - vbus-supply: phandle to the regulator that provides power to SCL/SDA.
--
--Example:
--
--	i2c0: i2c@1100d000 {
--			compatible = "mediatek,mt6577-i2c";
--			reg = <0x1100d000 0x70>,
--			      <0x11000300 0x80>;
--			interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
--			clock-frequency = <400000>;
--			mediatek,have-pmic;
--			clock-div = <16>;
--			clocks = <&i2c0_ck>, <&ap_dma_ck>;
--			clock-names = "main", "dma";
--	};
--
-diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
-new file mode 100644
-index 000000000000..889064f24a8c
---- /dev/null
-+++ b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
-@@ -0,0 +1,118 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/i2c/i2c-mt65xx.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek I2C controller
-+
-+description:
-+  This driver interfaces with the native I2C controller present in
-+  various MediaTek SoCs.
-+
-+allOf:
-+  - $ref: /schemas/i2c/i2c-controller.yaml#
-+
-+maintainers:
-+  - Qii Wang <qii.wang@mediatek.com>
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - const: mediatek,mt2712-i2c
-+      - const: mediatek,mt6577-i2c
-+      - const: mediatek,mt6589-i2c
-+      - const: mediatek,mt7622-i2c
-+      - const: mediatek,mt8168-i2c
-+      - const: mediatek,mt8173-i2c
-+      - const: mediatek,mt8183-i2c
-+      - const: mediatek,mt8186-i2c
-+      - const: mediatek,mt8192-i2c
-+      - items:
-+          - enum:
-+              - mediatek,mt7629-i2c
-+              - mediatek,mt8516-i2c
-+          - const: mediatek,mt2712-i2c
-+      - items:
-+          - enum:
-+              - mediatek,mt2701-i2c
-+              - mediatek,mt6797-i2c
-+              - mediatek,mt7623-i2c
-+          - const: mediatek,mt6577-i2c
-+      - items:
-+          - enum:
-+              - mediatek,mt8195-i2c
-+          - const: mediatek,mt8192-i2c
-+
-+  reg:
-+    items:
-+      - description: Physical base address
-+      - description: DMA base address
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    minItems: 1
-+    items:
-+      - description: Main clock for I2C bus
-+      - description: Clock for I2C via DMA
-+      - description: Bus arbitrator clock
-+      - description: Clock for I2C from PMIC
-+
-+  clock-names:
-+    minItems: 1
-+    items:
-+      - const: main
-+      - const: dma
-+      - const: arb
-+      - const: pmic
-+
-+  clock-div:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description: Frequency divider of clock source in I2C module
-+
-+  clock-frequency:
-+    default: 100000
-+    description:
-+      SCL frequency to use (in Hz). If omitted, 100kHz is used.
-+
-+  mediatek,have-pmic:
-+    description: Platform controls I2C from PMIC side
-+    type: boolean
-+
-+  mediatek,use-push-pull:
-+    description: Use push-pull mode I/O config
-+    type: boolean
-+
-+  vbus-supply:
-+    description: Phandle to the regulator providing power to SCL/SDA
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - clock-names
-+  - clock-div
-+  - interrupts
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+
-+    i2c0: i2c@1100d000 {
-+      compatible = "mediatek,mt6577-i2c";
-+      reg = <0x1100d000 0x70>, <0x11000300 0x80>;
-+      interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
-+      clocks = <&i2c0_ck>, <&ap_dma_ck>;
-+      clock-names = "main", "dma";
-+      clock-div = <16>;
-+      clock-frequency = <400000>;
-+      mediatek,have-pmic;
-+
-+      #address-cells = <1>;
-+      #size-cells = <0>;
-+    };
-diff --git a/MAINTAINERS b/MAINTAINERS
-index ee0b5a70aff1..28a17d4c8d12 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -12361,7 +12361,7 @@ MEDIATEK I2C CONTROLLER DRIVER
- M:	Qii Wang <qii.wang@mediatek.com>
- L:	linux-i2c@vger.kernel.org
- S:	Maintained
--F:	Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
-+F:	Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
- F:	drivers/i2c/busses/i2c-mt65xx.c
- 
- MEDIATEK IOMMU DRIVER
--- 
-2.35.1
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
