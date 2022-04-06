@@ -4,70 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D08FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 10:49:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F76CC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 10:49:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
-	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XLXBH0P/b8kia3nP1+0QYtkuv9rICRLt/7bwkNtvcw8=; b=wCpFBcb36bB7+g
-	mesIxcH+mZ9pOg/hz+zE+SF5kskScPbVFowCIMkXgSBdC9JJGDrjNGRXviM39SsChQbDseCoxRfvO
-	I1muITaI8Udk145BiMRM8kh2heFUuvasmkzq2UIBem1m/Dt7yCouzFCmB686qs7rV3YM5P4Pb57AB
-	EhskAKLVgA8orZAYipAgN/BtgosOPc1O2JEjKqkzVc/Qapdy5lVes3525RXZlgAWz5TESThPmd64c
-	CMLr2Y6c0t54yovUeCroa5KRMIfsDi7etEI/1R+wD6LElP5iK8SPJOKfnYng3gplDjvsp4fWzVLb6
-	UWK1GBVT0geUKYEMd9eQ==;
+	List-Owner; bh=EUGEuUdTRY4v+M9bqYUv5ORc5l7nTx08MJxlggMgCOM=; b=U1R9ZbgXzfEdp6
+	BlT1zNbSzlLiKbARNHhKTqjm/LCd33f/fbHmEvdJ9w4KJev5rnZXIVaUwLOsyVDGItWN22hN9ioaI
+	FtDzmyAJsAXgOJG1zpxAB+zVkPEaf57jVxH5+Uis7ZAPJEAfqq+TU7e6b1t09PvnQq7Id4pmjVyRK
+	Oq6GV3Z5toVX6vGbS/RTw4gvrhhbW5/+/NUsKehSc/ujQ/lGSDa1Xhifrm4FtWuAKin0+ZgHnuEgh
+	dXxIvFEF215wRFWhv8DlmXGaVXXhMXclwvvOzbxV3YSa1iRWyLM6+hHCPjUwHRHzngslk+5NMomSg
+	bob2vaftx+T8m527ZhcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nc3EJ-005Wwb-5a; Wed, 06 Apr 2022 10:49:39 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1nc3EK-005Wxs-DV; Wed, 06 Apr 2022 10:49:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nc3Df-005WZY-AV; Wed, 06 Apr 2022 10:49:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
- Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
- In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=hPowbiNe7fYtc4BFafJO2XKd5g9tq2vC8uyyOQwHWoc=; b=TjoSiodNcNiscq25YxQuweQOJc
- Uqjq25g1sWxAefZ6E5AoB1+sGcHocebedBlD4iWkcjLJm2jKs5ggdy4Af+zL6r5IVILdhGaWeKHSP
- S3B0hrfiSVKa4u/6NQzfO01WMCmbxkOe5HLbCE7HZ3pjCAeGH8aZEyFlipnSjNYKLyMtdaxco8uUb
- r1sn3DCEE4+1vEy9qBEm8X3cPlz2/+Pp1CUmaHFoMPgua1Bglpq41nPlRj6aGXTc5mdkxXZqdWZ/u
- L6eJA89v/sl3HTvcNz8nKghdwTQCm2dq/HOBH7ws4IavNPRILhi6U4IMh2q0VSLUXpd3Y/I8/kKd6
- KKy7jbUA==;
-Received: from e0022681537dd.dyn.armlinux.org.uk
- ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:59986 helo=rmk-PC.armlinux.org.uk)
- by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <rmk@armlinux.org.uk>)
- id 1nc3DZ-0002Zi-9S; Wed, 06 Apr 2022 11:48:53 +0100
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
- (envelope-from <rmk@rmk-PC.armlinux.org.uk>)
- id 1nc3DY-004hq1-9H; Wed, 06 Apr 2022 11:48:52 +0100
-In-Reply-To: <Yk1iHCy4fqvxsvu0@shell.armlinux.org.uk>
-References: <Yk1iHCy4fqvxsvu0@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>
-Cc: Marek Beh__n <kabel@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next 4/9] net: dsa: mt7530: drop use of
- phylink_helper_basex_speed()
+ id 1nc3Df-005WZh-BG; Wed, 06 Apr 2022 10:49:01 +0000
+X-UUID: 443dcb887a2347d1a39b862e29391f80-20220406
+X-UUID: 443dcb887a2347d1a39b862e29391f80-20220406
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1067332888; Wed, 06 Apr 2022 03:48:54 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 6 Apr 2022 03:48:47 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 6 Apr 2022 18:48:44 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 6 Apr 2022 18:48:45 +0800
+Message-ID: <4ed2dc24d600fa73b91bb411391c98a5bf4f8d8b.camel@mediatek.com>
+Subject: Re: [PATCH 3/3] dt-bindings: display: mediatek: Correct disp_aal
+ binding for MT8192
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "robh+dt@kernel.org"
+ <robh+dt@kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>
+CC: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, "airlied@linux.ie"
+ <airlied@linux.ie>, Yongqiang Niu
+ =?UTF-8?Q?=28=E7=89=9B=E6=B0=B8=E5=BC=BA=29?= <yongqiang.niu@mediatek.com>,
+ Jason-JH Lin =?UTF-8?Q?=28=E6=9E=97=E7=9D=BF=E7=A5=A5=29?=
+ <Jason-JH.Lin@mediatek.com>, Nancy Lin
+ =?UTF-8?Q?=28=E6=9E=97=E6=AC=A3=E8=9E=A2=29?= <Nancy.Lin@mediatek.com>,
+ Allen-KH Cheng =?UTF-8?Q?=28=E7=A8=8B=E5=86=A0=E5=8B=B3=29?=
+ <Allen-KH.Cheng@mediatek.com>, "dri-devel@lists.freedesktop.org"
+ <dri-devel@lists.freedesktop.org>, "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>, "devicetree@vger.kernel.org"
+ <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 6 Apr 2022 18:48:45 +0800
+In-Reply-To: <2449070b-d7e1-122f-abe6-4148855a9aba@collabora.com>
+References: <20220406094654.29722-1-rex-bc.chen@mediatek.com>
+ <20220406094654.29722-4-rex-bc.chen@mediatek.com>
+ <2449070b-d7e1-122f-abe6-4148855a9aba@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-Message-Id: <E1nc3DY-004hq1-9H@rmk-PC.armlinux.org.uk>
-Date: Wed, 06 Apr 2022 11:48:52 +0100
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_034859_428982_8AC894C6 
-X-CRM114-Status: UNSURE (   9.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220406_034859_427226_90FDA722 
+X-CRM114-Status: GOOD (  10.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,33 +88,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now that we have a better method to select SFP interface modes, we
-no longer need to use phylink_helper_basex_speed() in a driver's
-validation function.
+On Wed, 2022-04-06 at 18:40 +0800, AngeloGioacchino Del Regno wrote:
+> Il 06/04/22 11:46, Rex-BC Chen ha scritto:
+> > The driver data for MT8192 is the same with MT8183. Therefore, we
+> > correct it.
+> > 
+> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> 
+> ...though, from what I know, you should also move MT8195 down there!
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- drivers/net/dsa/mt7530.c | 5 -----
- 1 file changed, 5 deletions(-)
+Hello Angelo,
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 60264836da49..868d1af646f7 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2947,11 +2947,6 @@ mt753x_phylink_validate(struct dsa_switch *ds, int port,
- 
- 	linkmode_and(supported, supported, mask);
- 	linkmode_and(state->advertising, state->advertising, mask);
--
--	/* We can only operate at 2500BaseX or 1000BaseX.  If requested
--	 * to advertise both, only report advertising at 2500BaseX.
--	 */
--	phylink_helper_basex_speed(state);
- }
- 
- static int
--- 
-2.30.2
+Thanks for your review.
+But for MT8195, disp_aal is using the same compatible with MT8173.
+
+From the MT8195 project DTS is using:
+
+aal0: disp_aal@1c005000 {
+	compatible = "mediatek,mt8195-disp-aal",
+		     "mediatek,mt8173-disp-aal";
+	reg = <0 0x1c005000 0 0x1000>;
+	interrupts = <GIC_SPI 641 IRQ_TYPE_LEVEL_HIGH 0>;
+	power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
+	clocks = <&vdosys0 CLK_VDO0_DISP_AAL0>;
+	mediatek,gce-client-reg =
+		 <&gce0 SUBSYS_1c00XXXX 0x5000 0x1000>;
+};
+
+BRs,
+Rex
 
 
 _______________________________________________
