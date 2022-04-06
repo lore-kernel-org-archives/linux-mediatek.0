@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D369C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 13:30:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90673C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 13:51:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=11AVXNs18iTWK5ciKPaoGqB90ifEKO/QkpJR7wrkt/s=; b=5DIZIbFQM546+z
-	n4y2YRdq5BZO6Q3UCc8YY0N6RYvi36WRncRGUaDyrTec1APvsHd3fkwEmwz5sEh+yZ2dB0ACxzfvr
-	bb7aqIuzrCh9/K9Ok1ms8LVOPWllADt16OB8d+G6RQ4j91R+7AosSZf0oWUMSy9EPeQpcBfpMykxZ
-	q74Dc15ralnZMtuZ9k0FHsmz1Ao7TTnrcYYVgT/bQRq/i3XuynV+IKQ29OhcJ9c38ztgNoo7R3sZF
-	Mh0Jof78rnXQEsD5yfG8F0pAMZNJzcn2UaxQAbY9MNMUEKtB0xRSA/tAk7ZkWg6Yxc0/6P3uxDIyv
-	Y2uDVoacEiXE9oR8QDeQ==;
+	List-Owner; bh=th3Ff9rw/4J/1xlsNzOkk10/Cexx1PhUThbwHP4BbWQ=; b=p+Uzx3LjA13lrX
+	EX7DD745YwDb78IZe/Zki2htIdJIjKzjFuhTX+VgzoaI3UTpNh+hRNWlqUC0xobSE+wYHw8c/gWWS
+	qkCkF5zJ0cbK1dJ5qNCqJd43UVv7oMXJ+FeF7vJAI+HFuaZFD4zckWGlW3Au7Fu8UQ/sL9SD0f+NP
+	cWxu3IjqkzlAXn1XMGq9CKOdFDKIUNEBbmcuV4QU4Nq05lil6XkONEXhi1MPaMja311x+r7BMXHw9
+	+7SLYm0JbcI/tsSFqPckzrxbdvGxjQp/nYfnPwTMxZP4Xf6nW04SoaUTG1fZexUgYXk//eKHbvY2C
+	koZRxtCtkuL9avb+EkAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nc5k3-006IRG-DM; Wed, 06 Apr 2022 13:30:35 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nc64U-006NHu-KT; Wed, 06 Apr 2022 13:51:42 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nc5jm-006IJK-Nz; Wed, 06 Apr 2022 13:30:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 43FC0615E3;
- Wed,  6 Apr 2022 13:30:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id A5F86C385A1;
- Wed,  6 Apr 2022 13:30:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1649251817;
- bh=1BqbXUrKDjAoRePm+i3fyyTSIHWxt+faLr5ErT+OoBM=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=QoR+vUCOt+B8lIR8ZQNA3i9WN9y8yQX1lhRpCSgdgtR6Ba1IgH3zGK+wadzWwkZds
- lX1PhMlZl559xyp6FQ/5HkEDqIWmqjv0irCsHre/2BrtbBlJadrcSFiHAfR44yBUpL
- gy5MWClZk/0rxCM9tyOOn6jU9x/cOrLIRhnFPrQ3c5pC8O8Vd3WAj0HWOYMLV+xqVm
- C54smL74OI29p2tlRfxweVmCLzH+PXiKC+14wvRLSKQIqbyq/fF35r8BcCe6vAsZfb
- 6twKnd3HhAYaWycY2KuRT9b3k+/+yy1fj0yR0a/tIokWZlWFi+U0Tla3ygvuF6Uxrr
- 1Ig0kUxJQ9iWw==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
- (localhost.localdomain [127.0.0.1])
- by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
- 8850EE85BCB; Wed,  6 Apr 2022 13:30:17 +0000 (UTC)
+ id 1nc64R-006NH2-Pr; Wed, 06 Apr 2022 13:51:41 +0000
+X-UUID: 5d2812ac25aa438c87b705889e2e2ca6-20220406
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=JtwAlvrr65cRqRSOu7ZRWXY1SNZZVYVR37d1eofpjuM=; 
+ b=OjuhmbWISNzuW6pHkNnAQ9ebHobrOe6XhLTNiFWmRdtJr2cQE/FSRAWkzH7WaeIAHgwCmp4yE0326XfUZIdoJoT25ZhqiJz7mopRNO67fAE1r7BaOBLCzANaBpwLZgC3OLO7LB8J193Yul65KDAh1cwcJZaulvemV52ksEh1Tsc=;
+X-UUID: 5d2812ac25aa438c87b705889e2e2ca6-20220406
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <xinlei.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1512337847; Wed, 06 Apr 2022 06:51:25 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 6 Apr 2022 06:44:24 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 6 Apr 2022 21:44:16 +0800
+Received: from mszsdhlt06 (10.16.6.206) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 6 Apr 2022 21:44:15 +0800
+Message-ID: <3b4499162fe184a8158f5bd42baae3d16e188f33.camel@mediatek.com>
+Subject: Re: [PATCH v2,2/2] drm/mediatek: Add mt8186 dpi compatible to
+ mtk_dpi.c
+From: xinlei.lee <xinlei.lee@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+ <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, <jitao.shi@mediatek.com>
+Date: Wed, 6 Apr 2022 21:44:43 +0800
+In-Reply-To: <8e3db8a1285e43dcd397eee444b15957074106ab.camel@mediatek.com>
+References: <1648727917-3099-1-git-send-email-xinlei.lee@mediatek.com>
+ <1648727917-3099-3-git-send-email-xinlei.lee@mediatek.com>
+ <8e3db8a1285e43dcd397eee444b15957074106ab.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Subject: Re: [PATCH v2 00/14] MediaTek SoC flow offload improvements + wireless
- support
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <164925181755.19554.1627872315624407424.git-patchwork-notify@kernel.org>
-Date: Wed, 06 Apr 2022 13:30:17 +0000
-References: <20220405195755.10817-1-nbd@nbd.name>
-In-Reply-To: <20220405195755.10817-1-nbd@nbd.name>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: netdev@vger.kernel.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_063018_905245_962433D6 
-X-CRM114-Status: GOOD (  13.93  )
+X-CRM114-CacheID: sfid-20220406_065139_891717_8FF70ABF 
+X-CRM114-Status: GOOD (  19.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,65 +82,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net-next.git (master)
-by David S. Miller <davem@davemloft.net>:
-
-On Tue,  5 Apr 2022 21:57:41 +0200 you wrote:
-> This series contains the following improvements to mediatek ethernet flow
-> offload support:
+On Wed, 2022-04-06 at 15:13 +0800, Rex-BC Chen wrote:
+> On Thu, 2022-03-31 at 19:58 +0800, xinlei.lee@mediatek.com wrote:
+> > From: Xinlei Lee <xinlei.lee@mediatek.com>
+> > 
+> > Add the compatible because use different .data in mt8186.
+> > 
+> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_dpi.c | 11 +++++++++++
+> >  1 file changed, 11 insertions(+)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > index 4554e2de1430..6fac146cf1fb 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > @@ -823,6 +823,14 @@ static const struct mtk_dpi_conf mt8192_conf =
+> > {
+> >  	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
+> >  };
+> >  
+> > +static const struct mtk_dpi_conf mt8186_conf = {
+> > +	.cal_factor =  mt8183_calculate_factor,
+> > +	.reg_h_fre_con = 0xe0,
+> > +	.max_clock_khz = 150000,
+> > +	.output_fmts = mt8183_output_fmts,
+> > +	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
+> > +};
+> > +
 > 
-> - support dma-coherent on ethernet to improve performance
-> - add ipv6 offload support
-> - rework hardware flow table entry handling to improve dealing with hash
->   collisions and competing flows
-> - support creating offload entries from user space
-> - support creating offload entries with just source/destination mac address,
->   vlan and output device information
-> - add driver changes for supporting the Wireless Ethernet Dispatch core,
->   which can be used to offload flows from ethernet to MT7915 PCIe WLAN
->   devices
+> Hello Xinlei,
 > 
-> [...]
+> Could you move 8186 between 8183 and 8192?
+> 
+> >  static int mtk_dpi_probe(struct platform_device *pdev)
+> >  {
+> >  	struct device *dev = &pdev->dev;
+> > @@ -945,6 +953,9 @@ static const struct of_device_id
+> > mtk_dpi_of_ids[]
+> > = {
+> >  	{ .compatible = "mediatek,mt8192-dpi",
+> >  	  .data = &mt8192_conf,
+> >  	},
+> > +	{ .compatible = "mediatek,mt8186-dpi",
+> > +	  .data = &mt8186_conf,
+> > +	},
+> 
+> ditto
+> 
+> BRs,
+> Rex
+> >  	{ },
+> >  };
+> >  MODULE_DEVICE_TABLE(of, mtk_dpi_of_ids);
+> 
+> 
 
-Here is the summary with links:
-  - [v2,01/14] dt-bindings: net: mediatek: add optional properties for the SoC ethernet core
-    https://git.kernel.org/netdev/net-next/c/1dafd0d60703
-  - [v2,02/14] net: ethernet: mtk_eth_soc: add support for coherent DMA
-    https://git.kernel.org/netdev/net-next/c/d776a57e4a28
-  - [v2,03/14] arm64: dts: mediatek: mt7622: add support for coherent DMA
-    https://git.kernel.org/netdev/net-next/c/3abd063019b6
-  - [v2,04/14] dt-bindings: arm: mediatek: document WED binding for MT7622
-    https://git.kernel.org/netdev/net-next/c/55c1c4e945fa
-  - [v2,05/14] dt-bindings: arm: mediatek: document the pcie mirror node on MT7622
-    https://git.kernel.org/netdev/net-next/c/f14ac41b785f
-  - [v2,06/14] net: ethernet: mtk_eth_soc: add support for Wireless Ethernet Dispatch (WED)
-    https://git.kernel.org/netdev/net-next/c/804775dfc288
-  - [v2,07/14] net: ethernet: mtk_eth_soc: implement flow offloading to WED devices
-    https://git.kernel.org/netdev/net-next/c/a333215e10cb
-  - [v2,08/14] arm64: dts: mediatek: mt7622: introduce nodes for Wireless Ethernet Dispatch
-    https://git.kernel.org/netdev/net-next/c/e9b65ecb7c30
-  - [v2,09/14] net: ethernet: mtk_eth_soc: add ipv6 flow offload support
-    https://git.kernel.org/netdev/net-next/c/817b2fdf1667
-  - [v2,10/14] net: ethernet: mtk_eth_soc: support TC_SETUP_BLOCK for PPE offload
-    https://git.kernel.org/netdev/net-next/c/bb14c19122b7
-  - [v2,11/14] net: ethernet: mtk_eth_soc: allocate struct mtk_ppe separately
-    https://git.kernel.org/netdev/net-next/c/1ccc723b5829
-  - [v2,12/14] net: ethernet: mtk_eth_soc: rework hardware flow table management
-    https://git.kernel.org/netdev/net-next/c/c4f033d9e03e
-  - [v2,13/14] net: ethernet: mtk_eth_soc: remove bridge flow offload type entry support
-    https://git.kernel.org/netdev/net-next/c/8ff25d377445
-  - [v2,14/14] net: ethernet: mtk_eth_soc: support creating mac address based offload entries
-    https://git.kernel.org/netdev/net-next/c/33fc42de3327
+Hi Rex:
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+Thanks for your review.
+I will put it between 8183 & 8192 in the next version.
+In addition, I will add two properties assigned-clocks & assigned-
+clock-parents to dtbing.
 
-
-
+Best Regards!
+xinlei
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
