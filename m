@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 664C6C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 10:51:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F812C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 10:52:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
 	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9dWg8lp6gHi4Wel6xGo9/fqzdtqZOngQsJ05CmqHIT4=; b=RJd3Yby27CcPiW
-	1TioFsri7Ri0YfP5LmVVzZFAtUm16D5U933NiAHolGoprGDzArnVRzy/2qPNbAg/S0mPL4yGljAo5
-	/7Aw9vkgHL1Ydj2Nfq84YHEnsKB9pRcdjCikOoVbYbEebhqUxMFQCDhym61JqFr8YfO9SWsEPmNzT
-	2kqf0pdv+1vgLvYsCS8h6y7Jf5HunawnLaXMcLAFiqJhCBH+Uke0fDyEE3R22RDOjc63rbgM+/jUm
-	Qcr6cDs0ovblomJmBmm+nMi+NJr2E9xf8QzhK9U1+ZTsKm2fprDioboL84Rkup7JoHr3A4eEsTINv
-	6VaObxeRFZYwKPmVMAEA==;
+	List-Owner; bh=iWYJ+DIkFre1dBcbmXAx6gKD0ecNkLvyLbnqHnOcDgw=; b=Hjf1oUgNbd+/Ak
+	vWXNSFg0G9VSVt7T/+Hp2ZL0HNgpLHZgfJCRLw7yNnUF1+FlCp2zF6oVLC2w5c1msUwRAF193dRdf
+	X9RGvado6KpFZKGrmYpibb0ZZLVLSjaOgAs6r+BTZzg8rg1r/ziPzoQe6aqu7zl2q1+GisDZWks3N
+	+ua4rRcZI/IUGBxJ+gRmB/6TlRPPwMAIGA5+Be5YVazFZ3KH7XBuDa5fQqFr1cn+/NfV6Vgr/qyXY
+	cyl0YuyBLvNcnS0Ez4tQmqsSlKAHPulZK62eHdphB/a0R8mBZP79sBh1mXU6x+eWvFfmR7/ULrjVf
+	d1sPO0e30gLizoW99XQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nc3G1-005Y3u-5z; Wed, 06 Apr 2022 10:51:25 +0000
+	id 1nc3Gm-005YXp-RJ; Wed, 06 Apr 2022 10:52:12 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nc3Dx-005Wis-7E; Wed, 06 Apr 2022 10:49:19 +0000
+ id 1nc3Dz-005WkO-Mg; Wed, 06 Apr 2022 10:49:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
  Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
  In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
  Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
  List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=zaB7WxGnzeXGYFHqkswmIGdATo25fzgmTMdOkmSuQOU=; b=oazkCoZuqVmseLYu8PZXxmoqBg
- vc8lay3tChH7LB+AJRg98YklAO6wiY8S9Fs6xEJOus9dMf/h6a7sH5Sm+fdlSF9HqsmcEvJVfue+E
- DSS4P2gDt517viytIhGdlec865uwjIjLaBVlekqyVVulI3FDuv5+1Aptv+4XH449ygm1MhhnbHZUk
- hBIzeDMpuAvLuBJnOv0aAuJcg5cEcsWSlKGwCQqFQd4z/ZRhv0Od+5NBbZcf4ebzTzD+6balx2WJw
- b1mbtTVSeSZ411v+kagoHwxN3vrvdpq4nCIdN3yO9/H/1s2UxFsEDy5m23U/Y3NNZzp389yZlFSVd
- 41NNoPOA==;
+ bh=+a4fwjnG0mK/1hXwUeMKLWWq+XvqfcUv25TStPRE/lg=; b=TlrK736k+k+OGXNZKUDDHNKytX
+ jyhIpVgbUPx+XlRAs5BSj5ZPx+8ZDQmSG1iDsE+GkfQko1rtpLw/ENLQln0kWIXoDDTPQyoIGOZNX
+ IJYQooZrDqt4zzZ45se2Bx041hyeT7vDngCMTwi1rp/7C8cujfqC8Ksvk7fP19HqUQCiiIJQ+y5TU
+ 1iU+F7k4FGezT0NF9xf0yi8KxcXGdI51OuwG8eiSRvbT8JCTmgjB8aqWQnwLnCGS/SmNyY6fcuKYy
+ Id8dfimavyz9iY85X9g821bLNzjJmbkrsbvyFaxoNzMlqbKfjM8z7sSgMrOgYVozYjtX/x0juKog1
+ Bd8ZTX5A==;
 Received: from e0022681537dd.dyn.armlinux.org.uk
- ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:59992 helo=rmk-PC.armlinux.org.uk)
+ ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:59994 helo=rmk-PC.armlinux.org.uk)
  by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
  (envelope-from <rmk@armlinux.org.uk>)
- id 1nc3Do-0002aR-JL; Wed, 06 Apr 2022 11:49:08 +0100
+ id 1nc3Dt-0002af-NG; Wed, 06 Apr 2022 11:49:13 +0100
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
  (envelope-from <rmk@rmk-PC.armlinux.org.uk>)
- id 1nc3Dn-004hqK-L7; Wed, 06 Apr 2022 11:49:07 +0100
+ id 1nc3Ds-004hqQ-Pa; Wed, 06 Apr 2022 11:49:12 +0100
 In-Reply-To: <Yk1iHCy4fqvxsvu0@shell.armlinux.org.uk>
 References: <Yk1iHCy4fqvxsvu0@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -58,15 +58,15 @@ Cc: Marek Beh__n <kabel@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
  Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
  netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next 7/9] net: dsa: mt7530: partially convert to
- phylink_pcs
+Subject: [PATCH net-next 8/9] net: dsa: mt7530: move autoneg handling to PCS
+ validation
 MIME-Version: 1.0
 Content-Disposition: inline
-Message-Id: <E1nc3Dn-004hqK-L7@rmk-PC.armlinux.org.uk>
-Date: Wed, 06 Apr 2022 11:49:07 +0100
+Message-Id: <E1nc3Ds-004hqQ-Pa@rmk-PC.armlinux.org.uk>
+Date: Wed, 06 Apr 2022 11:49:12 +0100
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_034917_457928_D4DD2829 
-X-CRM114-Status: GOOD (  25.10  )
+X-CRM114-CacheID: sfid-20220406_034919_805497_B53F9D5F 
+X-CRM114-Status: GOOD (  13.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,385 +83,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Partially convert the mt7530 driver to use phylink's PCS support. This
-is a partial implementation as we don't move anything into the
-pcs_config method yet - this driver supports SGMII or 1000BASE-X
-without in-band.
+Move the autoneg bit handling to the PCS validation, which allows us to
+get rid of mt753x_phylink_validate() and rely on the default
+phylink_generic_validate() implementation for the MAC side.
 
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
- drivers/net/dsa/mt7530.c | 144 +++++++++++++++++++++++----------------
- drivers/net/dsa/mt7530.h |  21 +++---
- 2 files changed, 95 insertions(+), 70 deletions(-)
+ drivers/net/dsa/mt7530.c | 28 ++++++++++------------------
+ 1 file changed, 10 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index aa7f21683a07..1c0d931973e5 100644
+index 1c0d931973e5..0ee2cb7e5664 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -24,6 +24,11 @@
- 
- #include "mt7530.h"
- 
-+static struct mt753x_pcs *pcs_to_mt753x_pcs(struct phylink_pcs *pcs)
-+{
-+	return container_of(pcs, struct mt753x_pcs, pcs);
-+}
-+
- /* String, offset, and register size in bytes if different from 4 bytes */
- static const struct mt7530_mib_desc mt7530_mib[] = {
- 	MIB_DESC(1, 0x00, "TxDrop"),
-@@ -2521,12 +2526,11 @@ static int mt7531_rgmii_setup(struct mt7530_priv *priv, u32 port,
- 	return 0;
+@@ -2900,25 +2900,16 @@ static void mt753x_phylink_get_caps(struct dsa_switch *ds, int port,
+ 	priv->info->mac_port_get_caps(ds, port, config);
  }
  
 -static void
--mt7531_sgmii_link_up_force(struct dsa_switch *ds, int port,
--			   unsigned int mode, phy_interface_t interface,
--			   int speed, int duplex)
-+static void mt7531_pcs_link_up(struct phylink_pcs *pcs, unsigned int mode,
-+			       phy_interface_t interface, int speed, int duplex)
+-mt753x_phylink_validate(struct dsa_switch *ds, int port,
+-			unsigned long *supported,
+-			struct phylink_link_state *state)
++static int mt753x_pcs_validate(struct phylink_pcs *pcs,
++			       unsigned long *supported,
++			       const struct phylink_link_state *state)
  {
--	struct mt7530_priv *priv = ds->priv;
-+	struct mt7530_priv *priv = pcs_to_mt753x_pcs(pcs)->priv;
-+	int port = pcs_to_mt753x_pcs(pcs)->port;
- 	unsigned int val;
- 
- 	/* For adjusting speed and duplex of SGMII force mode. */
-@@ -2552,6 +2556,9 @@ mt7531_sgmii_link_up_force(struct dsa_switch *ds, int port,
- 
- 	/* MT7531 SGMII 1G force mode can only work in full duplex mode,
- 	 * no matter MT7531_SGMII_FORCE_HALF_DUPLEX is set or not.
-+	 *
-+	 * The speed check is unnecessary as the MAC capabilities apply
-+	 * this restriction. --rmk
- 	 */
- 	if ((speed == SPEED_10 || speed == SPEED_100) &&
- 	    duplex != DUPLEX_FULL)
-@@ -2627,9 +2634,10 @@ static int mt7531_sgmii_setup_mode_an(struct mt7530_priv *priv, int port,
- 	return 0;
- }
- 
--static void mt7531_sgmii_restart_an(struct dsa_switch *ds, int port)
-+static void mt7531_pcs_an_restart(struct phylink_pcs *pcs)
- {
--	struct mt7530_priv *priv = ds->priv;
-+	struct mt7530_priv *priv = pcs_to_mt753x_pcs(pcs)->priv;
-+	int port = pcs_to_mt753x_pcs(pcs)->port;
- 	u32 val;
- 
- 	/* Only restart AN when AN is enabled */
-@@ -2686,6 +2694,24 @@ mt753x_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 	return priv->info->mac_port_config(ds, port, mode, state->interface);
- }
- 
-+static struct phylink_pcs *
-+mt753x_phylink_mac_select_pcs(struct dsa_switch *ds, int port,
-+			      phy_interface_t interface)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+
-+	switch (interface) {
-+	case PHY_INTERFACE_MODE_TRGMII:
-+	case PHY_INTERFACE_MODE_SGMII:
-+	case PHY_INTERFACE_MODE_1000BASEX:
-+	case PHY_INTERFACE_MODE_2500BASEX:
-+		return &priv->pcs[port].pcs;
-+
-+	default:
-+		return NULL;
-+	}
-+}
-+
- static void
- mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 			  const struct phylink_link_state *state)
-@@ -2747,17 +2773,6 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 		mt7530_write(priv, MT7530_PMCR_P(port), mcr_new);
- }
- 
--static void
--mt753x_phylink_mac_an_restart(struct dsa_switch *ds, int port)
--{
--	struct mt7530_priv *priv = ds->priv;
+-	__ETHTOOL_DECLARE_LINK_MODE_MASK(mask) = { 0, };
+-	u32 caps;
 -
--	if (!priv->info->mac_pcs_an_restart)
--		return;
+-	caps = dsa_to_port(ds, port)->pl_config.mac_capabilities;
 -
--	priv->info->mac_pcs_an_restart(ds, port);
--}
+-	phylink_set_port_modes(mask);
+-	phylink_get_linkmodes(mask, state->interface, caps);
++	/* Autonegotiation is not supported in TRGMII nor 802.3z modes */
++	if (state->interface == PHY_INTERFACE_MODE_TRGMII ||
++	    phy_interface_mode_is_8023z(state->interface))
++		phylink_clear(supported, Autoneg);
+ 
+-	if (state->interface != PHY_INTERFACE_MODE_TRGMII &&
+-	    !phy_interface_mode_is_8023z(state->interface))
+-		phylink_set(mask, Autoneg);
 -
- static void mt753x_phylink_mac_link_down(struct dsa_switch *ds, int port,
- 					 unsigned int mode,
- 					 phy_interface_t interface)
-@@ -2767,16 +2782,13 @@ static void mt753x_phylink_mac_link_down(struct dsa_switch *ds, int port,
- 	mt7530_clear(priv, MT7530_PMCR_P(port), PMCR_LINK_SETTINGS_MASK);
- }
- 
--static void mt753x_mac_pcs_link_up(struct dsa_switch *ds, int port,
--				   unsigned int mode, phy_interface_t interface,
--				   int speed, int duplex)
-+static void mt753x_phylink_pcs_link_up(struct phylink_pcs *pcs,
-+				       unsigned int mode,
-+				       phy_interface_t interface,
-+				       int speed, int duplex)
- {
--	struct mt7530_priv *priv = ds->priv;
--
--	if (!priv->info->mac_pcs_link_up)
--		return;
--
--	priv->info->mac_pcs_link_up(ds, port, mode, interface, speed, duplex);
-+	if (pcs->ops->pcs_link_up)
-+		pcs->ops->pcs_link_up(pcs, mode, interface, speed, duplex);
- }
- 
- static void mt753x_phylink_mac_link_up(struct dsa_switch *ds, int port,
-@@ -2789,8 +2801,6 @@ static void mt753x_phylink_mac_link_up(struct dsa_switch *ds, int port,
- 	struct mt7530_priv *priv = ds->priv;
- 	u32 mcr;
- 
--	mt753x_mac_pcs_link_up(ds, port, mode, interface, speed, duplex);
--
- 	mcr = PMCR_RX_EN | PMCR_TX_EN | PMCR_FORCE_LNK;
- 
- 	/* MT753x MAC works in 1G full duplex mode for all up-clocked
-@@ -2870,6 +2880,8 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
- 		return ret;
- 	mt7530_write(priv, MT7530_PMCR_P(port),
- 		     PMCR_CPU_PORT_SETTING(priv->id));
-+	mt753x_phylink_pcs_link_up(&priv->pcs[port].pcs, MLO_AN_FIXED,
-+				   interface, speed, DUPLEX_FULL);
- 	mt753x_phylink_mac_link_up(ds, port, MLO_AN_FIXED, interface, NULL,
- 				   speed, DUPLEX_FULL, true, true);
- 
-@@ -2909,16 +2921,13 @@ mt753x_phylink_validate(struct dsa_switch *ds, int port,
- 	linkmode_and(state->advertising, state->advertising, mask);
- }
- 
--static int
--mt7530_phylink_mac_link_state(struct dsa_switch *ds, int port,
--			      struct phylink_link_state *state)
-+static void mt7530_pcs_get_state(struct phylink_pcs *pcs,
-+				 struct phylink_link_state *state)
- {
--	struct mt7530_priv *priv = ds->priv;
-+	struct mt7530_priv *priv = pcs_to_mt753x_pcs(pcs)->priv;
-+	int port = pcs_to_mt753x_pcs(pcs)->port;
- 	u32 pmsr;
- 
--	if (port < 0 || port >= MT7530_NUM_PORTS)
--		return -EINVAL;
--
- 	pmsr = mt7530_read(priv, MT7530_PMSR_P(port));
- 
- 	state->link = (pmsr & PMSR_LINK);
-@@ -2945,8 +2954,6 @@ mt7530_phylink_mac_link_state(struct dsa_switch *ds, int port,
- 		state->pause |= MLO_PAUSE_RX;
- 	if (pmsr & PMSR_TX_FC)
- 		state->pause |= MLO_PAUSE_TX;
--
--	return 1;
- }
- 
- static int
-@@ -2988,32 +2995,49 @@ mt7531_sgmii_pcs_get_state_an(struct mt7530_priv *priv, int port,
- 	return 0;
- }
- 
--static int
--mt7531_phylink_mac_link_state(struct dsa_switch *ds, int port,
--			      struct phylink_link_state *state)
-+static void mt7531_pcs_get_state(struct phylink_pcs *pcs,
-+				 struct phylink_link_state *state)
- {
--	struct mt7530_priv *priv = ds->priv;
-+	struct mt7530_priv *priv = pcs_to_mt753x_pcs(pcs)->priv;
-+	int port = pcs_to_mt753x_pcs(pcs)->port;
- 
- 	if (state->interface == PHY_INTERFACE_MODE_SGMII)
--		return mt7531_sgmii_pcs_get_state_an(priv, port, state);
--
--	return -EOPNOTSUPP;
-+		mt7531_sgmii_pcs_get_state_an(priv, port, state);
-+	else
-+		state->link = false;
- }
- 
--static int
--mt753x_phylink_mac_link_state(struct dsa_switch *ds, int port,
--			      struct phylink_link_state *state)
-+static int mt753x_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
-+			     phy_interface_t interface,
-+			     const unsigned long *advertising,
-+			     bool permit_pause_to_mac)
- {
--	struct mt7530_priv *priv = ds->priv;
+-	linkmode_and(supported, supported, mask);
+-	linkmode_and(state->advertising, state->advertising, mask);
 +	return 0;
-+}
- 
--	return priv->info->mac_port_get_state(ds, port, state);
-+static void mt7530_pcs_an_restart(struct phylink_pcs *pcs)
-+{
  }
  
-+static const struct phylink_pcs_ops mt7530_pcs_ops = {
-+	.pcs_get_state = mt7530_pcs_get_state,
-+	.pcs_config = mt753x_pcs_config,
-+	.pcs_an_restart = mt7530_pcs_an_restart,
-+};
-+
-+static const struct phylink_pcs_ops mt7531_pcs_ops = {
-+	.pcs_get_state = mt7531_pcs_get_state,
-+	.pcs_config = mt753x_pcs_config,
-+	.pcs_an_restart = mt7531_pcs_an_restart,
-+	.pcs_link_up = mt7531_pcs_link_up,
-+};
-+
- static int
- mt753x_setup(struct dsa_switch *ds)
- {
- 	struct mt7530_priv *priv = ds->priv;
- 	int ret = priv->info->sw_setup(ds);
-+	int i;
- 
- 	if (ret)
- 		return ret;
-@@ -3026,6 +3050,13 @@ mt753x_setup(struct dsa_switch *ds)
- 	if (ret && priv->irq)
- 		mt7530_free_irq_common(priv);
- 
-+	/* Initialise the PCS devices */
-+	for (i = 0; i < priv->ds->num_ports; i++) {
-+		priv->pcs[i].pcs.ops = priv->info->pcs_ops;
-+		priv->pcs[i].priv = priv;
-+		priv->pcs[i].port = i;
-+	}
-+
- 	return ret;
+ static void mt7530_pcs_get_state(struct phylink_pcs *pcs,
+@@ -3020,12 +3011,14 @@ static void mt7530_pcs_an_restart(struct phylink_pcs *pcs)
  }
  
-@@ -3087,9 +3118,8 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
+ static const struct phylink_pcs_ops mt7530_pcs_ops = {
++	.pcs_validate = mt753x_pcs_validate,
+ 	.pcs_get_state = mt7530_pcs_get_state,
+ 	.pcs_config = mt753x_pcs_config,
+ 	.pcs_an_restart = mt7530_pcs_an_restart,
+ };
+ 
+ static const struct phylink_pcs_ops mt7531_pcs_ops = {
++	.pcs_validate = mt753x_pcs_validate,
+ 	.pcs_get_state = mt7531_pcs_get_state,
+ 	.pcs_config = mt753x_pcs_config,
+ 	.pcs_an_restart = mt7531_pcs_an_restart,
+@@ -3117,7 +3110,6 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
+ 	.port_mirror_add	= mt753x_port_mirror_add,
  	.port_mirror_del	= mt753x_port_mirror_del,
  	.phylink_get_caps	= mt753x_phylink_get_caps,
- 	.phylink_validate	= mt753x_phylink_validate,
--	.phylink_mac_link_state	= mt753x_phylink_mac_link_state,
-+	.phylink_mac_select_pcs	= mt753x_phylink_mac_select_pcs,
+-	.phylink_validate	= mt753x_phylink_validate,
+ 	.phylink_mac_select_pcs	= mt753x_phylink_mac_select_pcs,
  	.phylink_mac_config	= mt753x_phylink_mac_config,
--	.phylink_mac_an_restart	= mt753x_phylink_mac_an_restart,
  	.phylink_mac_link_down	= mt753x_phylink_mac_link_down,
- 	.phylink_mac_link_up	= mt753x_phylink_mac_link_up,
- 	.get_mac_eee		= mt753x_get_mac_eee,
-@@ -3099,36 +3129,34 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
- static const struct mt753x_info mt753x_table[] = {
- 	[ID_MT7621] = {
- 		.id = ID_MT7621,
-+		.pcs_ops = &mt7530_pcs_ops,
- 		.sw_setup = mt7530_setup,
- 		.phy_read = mt7530_phy_read,
- 		.phy_write = mt7530_phy_write,
- 		.pad_setup = mt7530_pad_clk_setup,
- 		.mac_port_get_caps = mt7530_mac_port_get_caps,
--		.mac_port_get_state = mt7530_phylink_mac_link_state,
- 		.mac_port_config = mt7530_mac_config,
- 	},
- 	[ID_MT7530] = {
- 		.id = ID_MT7530,
-+		.pcs_ops = &mt7530_pcs_ops,
- 		.sw_setup = mt7530_setup,
- 		.phy_read = mt7530_phy_read,
- 		.phy_write = mt7530_phy_write,
- 		.pad_setup = mt7530_pad_clk_setup,
- 		.mac_port_get_caps = mt7530_mac_port_get_caps,
--		.mac_port_get_state = mt7530_phylink_mac_link_state,
- 		.mac_port_config = mt7530_mac_config,
- 	},
- 	[ID_MT7531] = {
- 		.id = ID_MT7531,
-+		.pcs_ops = &mt7531_pcs_ops,
- 		.sw_setup = mt7531_setup,
- 		.phy_read = mt7531_ind_phy_read,
- 		.phy_write = mt7531_ind_phy_write,
- 		.pad_setup = mt7531_pad_setup,
- 		.cpu_port_config = mt7531_cpu_port_config,
- 		.mac_port_get_caps = mt7531_mac_port_get_caps,
--		.mac_port_get_state = mt7531_phylink_mac_link_state,
- 		.mac_port_config = mt7531_mac_config,
--		.mac_pcs_an_restart = mt7531_sgmii_restart_an,
--		.mac_pcs_link_up = mt7531_sgmii_link_up_force,
- 	},
- };
- 
-@@ -3186,7 +3214,7 @@ mt7530_probe(struct mdio_device *mdiodev)
- 	if (!priv->info->sw_setup || !priv->info->pad_setup ||
- 	    !priv->info->phy_read || !priv->info->phy_write ||
- 	    !priv->info->mac_port_get_caps ||
--	    !priv->info->mac_port_get_state || !priv->info->mac_port_config)
-+	    !priv->info->mac_port_config)
- 		return -EINVAL;
- 
- 	priv->id = priv->info->id;
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 73cfd29fbb17..71e36b69b96d 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -741,6 +741,12 @@ static const char *p5_intf_modes(unsigned int p5_interface)
- 
- struct mt7530_priv;
- 
-+struct mt753x_pcs {
-+	struct phylink_pcs pcs;
-+	struct mt7530_priv *priv;
-+	int port;
-+};
-+
- /* struct mt753x_info -	This is the main data structure for holding the specific
-  *			part for each supported device
-  * @sw_setup:		Holding the handler to a device initialization
-@@ -752,18 +758,14 @@ struct mt7530_priv;
-  *			port
-  * @mac_port_validate:	Holding the way to set addition validate type for a
-  *			certan MAC port
-- * @mac_port_get_state: Holding the way getting the MAC/PCS state for a certain
-- *			MAC port
-  * @mac_port_config:	Holding the way setting up the PHY attribute to a
-  *			certain MAC port
-- * @mac_pcs_an_restart	Holding the way restarting PCS autonegotiation for a
-- *			certain MAC port
-- * @mac_pcs_link_up:	Holding the way setting up the PHY attribute to the pcs
-- *			of the certain MAC port
-  */
- struct mt753x_info {
- 	enum mt753x_id id;
- 
-+	const struct phylink_pcs_ops *pcs_ops;
-+
- 	int (*sw_setup)(struct dsa_switch *ds);
- 	int (*phy_read)(struct mt7530_priv *priv, int port, int regnum);
- 	int (*phy_write)(struct mt7530_priv *priv, int port, int regnum, u16 val);
-@@ -774,15 +776,9 @@ struct mt753x_info {
- 	void (*mac_port_validate)(struct dsa_switch *ds, int port,
- 				  phy_interface_t interface,
- 				  unsigned long *supported);
--	int (*mac_port_get_state)(struct dsa_switch *ds, int port,
--				  struct phylink_link_state *state);
- 	int (*mac_port_config)(struct dsa_switch *ds, int port,
- 			       unsigned int mode,
- 			       phy_interface_t interface);
--	void (*mac_pcs_an_restart)(struct dsa_switch *ds, int port);
--	void (*mac_pcs_link_up)(struct dsa_switch *ds, int port,
--				unsigned int mode, phy_interface_t interface,
--				int speed, int duplex);
- };
- 
- /* struct mt7530_priv -	This is the main data structure for holding the state
-@@ -824,6 +820,7 @@ struct mt7530_priv {
- 	u8			mirror_tx;
- 
- 	struct mt7530_port	ports[MT7530_NUM_PORTS];
-+	struct mt753x_pcs	pcs[MT7530_NUM_PORTS];
- 	/* protect among processes for registers access*/
- 	struct mutex reg_mutex;
- 	int irq;
 -- 
 2.30.2
 
