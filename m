@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 627B0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 22:35:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2309FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 23:24:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pYUcmmq4KJMo0uJcxC11oQbD8oWHVxXePR5vq00cdWs=; b=qWVieVhOgxc7+g
-	wl+u1Lxt3OAjlbQhskBKmrh5Dmh0lEDdugeSz5SXm5VAyhLnRGrjPIdvf2gtm3Z/BhjglsU0fiKY6
-	gQjJsiKRxEPc8YtDCDhGu0C/Vku12k7V7K0C20uZBGl90LTWX+jxWA4X3T3oAFADKrC6iu2scy0kd
-	7DzzRVGoc2iXW1ZvBwvLlEs76cp99qscxD5tYPPuZ80r2eENTVlzvbhblGhjFEUqgIE3ad2SSpggZ
-	7Pbc4ZqC+w2oJS3R/BaP+JCh5H9I6hO7QlNukOFtRre/YZ443b/AypWPqfF7ScxC/Ha1xx50ehJpS
-	mxSmHMRK9PNU2bS5lr4A==;
+	List-Owner; bh=cf+ljJRlEQZQ9c7P45iA740s6chs3Gr1XJVj7uTEBI4=; b=d8K4djs0BL5jgA
+	CaLXoAmBUUzr9Xr7CdDOu+8Pi4owaHhjZU+xuR+Av5d+vCPckYjmf5RMsmIOri+7/w/zC37Vz0A4T
+	y/t+rFFYr2hOf2SlLiArxV/1QwhayI9HrsY13+PnZJzkyETjqWX1mCcainrtxSYbtmEPDbm9n39Wa
+	cKI457OOdbsPxzbxPOqpWI1Ewsz42pL7+FDku2xANSAxQCsWjV6gZ52qnqmFdm9suhi7AmYanIb/H
+	5kgrXwLWeJAOPBhfaNlJI+doDnW1Bt05r1jSrl1e42baWiOGJmVoVMtGORBeL7/LQ5PNWkeOclvtY
+	vGNt6wRF6K3ML2K2r4EQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncEFf-0089A2-Eg; Wed, 06 Apr 2022 22:35:47 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1ncF0e-008DgL-7l; Wed, 06 Apr 2022 23:24:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncEFU-00898m-Ez; Wed, 06 Apr 2022 22:35:38 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id CDF7CB825D3;
- Wed,  6 Apr 2022 22:35:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B8E5C385A3;
- Wed,  6 Apr 2022 22:35:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1649284533;
- bh=WtvLwqpqfTA6i1bljoO86kqfUjW/XBPRM3YdjFro7PA=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=lNvF2AoNmk1xXKVRvbDaaK+p+djtgyQNYLbZJWSuSkk9YSx1S2sklWDIBQh/5bjey
- xJQMHE7148QlIcJ7b5YSGvsFoj93HMeb907dHsO8vYd8je6DBlbTJfyII9O2jGaa9E
- b+bZyn25ClzpIS9klY6OraOKJbbrpy0GwsJNpMNozpO1VlvcmYrs0DdXcXv6IqrKyi
- 1dbh1xvRJ4zqYwngRRRQuu5ewhFRBLl+23lb44GYbWCksebVsKCSX0yhOcov9815P6
- Y0FL9zyy2SBYooeG0cdsR+2VyqPsDkQamxclj1C7nrF8G28LGjlMn1JaI5dToVHBTF
- x0v/qH0jkR0Wg==
-Date: Thu, 7 Apr 2022 00:35:26 +0200
-From: Marek =?UTF-8?B?QmVow7pu?= <kabel@kernel.org>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang
- <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Andrew Lunn
- <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, Florian
- Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 0/9] net: dsa: mt7530: updates for phylink changes
-Message-ID: <20220407003526.7d4c2ebb@thinkpad>
-In-Reply-To: <Yk1iHCy4fqvxsvu0@shell.armlinux.org.uk>
-References: <Yk1iHCy4fqvxsvu0@shell.armlinux.org.uk>
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+ id 1ncF0T-008De6-HX; Wed, 06 Apr 2022 23:24:11 +0000
+X-UUID: 0cb8c940ec9a46158ae938c5654ac20a-20220406
+X-UUID: 0cb8c940ec9a46158ae938c5654ac20a-20220406
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1170621737; Wed, 06 Apr 2022 16:24:03 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 6 Apr 2022 16:24:02 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 7 Apr 2022 07:24:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 7 Apr 2022 07:24:00 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <angelogioacchino.delregno@collabora.com>
+CC: <devicetree@vger.kernel.org>, <hsinyi@chromium.org>,
+ <kewei.xu@mediatek.com>, <krzk+dt@kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-i2c@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <matthias.bgg@gmail.com>, <qii.wang@mediatek.com>, <robh+dt@kernel.org>,
+ <wsa@kernel.org>
+Subject: Re: [PATCH] dt-bindings: i2c: convert i2c-mt65xx to json-schema
+Date: Thu, 7 Apr 2022 07:24:00 +0800
+Message-ID: <20220406232400.2788-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220406152940.140224-1-angelogioacchino.delregno@collabora.com>
+References: <20220406152940.140224-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_153536_834608_2E9B5215 
-X-CRM114-Status: GOOD (  22.86  )
+X-CRM114-CacheID: sfid-20220406_162409_623776_B119293A 
+X-CRM114-Status: GOOD (  16.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,48 +70,189 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCA2IEFwciAyMDIyIDEwOjQ5OjE2ICswMTAwCiJSdXNzZWxsIEtpbmcgKE9yYWNsZSki
-IDxsaW51eEBhcm1saW51eC5vcmcudWs+IHdyb3RlOgoKPiBIaSwKPiAKPiBUaGlzIHJldmlzZWQg
-c2VyaWVzIGlzIGEgcGFydGlhbCBjb252ZXJzaW9uIG9mIHRoZSBtdDc1MzAgRFNBIGRyaXZlciB0
-bwo+IHRoZSBtb2Rlcm4gcGh5bGluayBpbmZyYXN0cnVjdHVyZS4gVGhpcyBkcml2ZXIgaGFzIHNv
-bWUgZXhjZXB0aW9uYWwKPiBjYXNlcyB3aGljaCBwcmV2ZW50IC0gYXQgdGhlIG1vbWVudCAtIGl0
-cyBmdWxsIGNvbnZlcnNpb24gKHBhcnRpY3VsYXJseQo+IHdpdGggdGhlIEF1dG9uZWcgYml0KSB0
-byB1c2luZyBwaHlsaW5rX2dlbmVyaWNfdmFsaWRhdGUoKS4KPiAKPiBQYXRjaCAxIGZpeGVzIHRo
-ZSBpbmNvcnJlY3QgdGVzdCBoaWdobGlnaHRlZCBpbiB0aGUgZmlyc3QgUkZDIHNlcmllcy4KPiAK
-PiBQYXRjaCAyIGZpeGVzIHRoZSBpbmNvcnJlY3QgYXNzdW1wdGlvbiB0aGF0IFJHTUlJIGlzIHVu
-YWJsZSB0byBzdXBwb3J0Cj4gMTAwMEJBU0UtWC4KPiAKPiBQYXRjaCAzIHBvcHVsYXRlcyB0aGUg
-c3VwcG9ydGVkX2ludGVyZmFjZXMgZm9yIGVhY2ggcG9ydAo+IAo+IFBhdGNoIDQgcmVtb3ZlcyB0
-aGUgaW50ZXJmYWNlIGNoZWNrcyB0aGF0IGJlY29tZSB1bm5lY2Vzc2FyeSBhcyBhIHJlc3VsdAo+
-IG9mIHBhdGNoIDMuCj4gCj4gUGF0Y2ggNSByZW1vdmVzIHVzZSBvZiBwaHlsaW5rX2hlbHBlcl9i
-YXNleF9zcGVlZCgpIHdoaWNoIGlzIG5vIGxvbmdlcgo+IHJlcXVpcmVkIGJ5IHBoeWxpbmsuCj4g
-Cj4gUGF0Y2ggNiBiZWNvbWVzIHBvc3NpYmxlIGFmdGVyIHBhdGNoIDUsIG9ubHkgaW5kaWNhdGlu
-ZyB0aGUgZXRodG9vbAo+IG1vZGVzIHRoYXQgY2FuIGJlIHN1cHBvcnRlZCB3aXRoIGEgcGFydGlj
-dWxhciBpbnRlcmZhY2UgbW9kZSAtIHRoaXMKPiBpbnZvbHZlcyByZW1vdmluZyBzb21lIG1vZGVz
-IGFuZCBhZGRpbmcgb3RoZXJzIGFzIHBlciBwaHlsaW5rCj4gZG9jdW1lbnRhdGlvbi4KPiAKPiBQ
-YXRjaCA3IHN3aXRjaGVzIHRoZSBkcml2ZXIgdG8gdXNlIHBoeWxpbmtfZ2V0X2xpbmttb2Rlcygp
-LCB3aGljaCBtb3Zlcwo+IHRoZSBkcml2ZXIgYXMgY2xvc2UgYXMgd2UgY2FuIHRvIHBoeWxpbmtf
-Z2VuZXJpY192YWxpZGF0ZSgpIGR1ZSB0byB0aGUKPiBBdXRvbmVnIGJpdCBpc3N1ZSBtZW50aW9u
-ZWQgYWJvdmUuCj4gCj4gUGF0Y2ggOCBjb252ZXJ0cyB0aGUgZHJpdmVyIHRvIHRoZSBwaHlsaW5r
-IHBjcyBzdXBwb3J0LCByZW1vdmluZyBhIGJ1bmNoCj4gb2YgZHJpdmVyIHByaXZhdGUgaW5kaXJl
-Y3RlZCBtZXRob2RzLiBXZSBpbmNsdWRlIFRSR01JSSBhcyBhIFBDUyBldmVuCj4gdGhvdWdoIHN0
-cmljdGx5IFRSR01JSSBkb2VzIG5vdCBoYXZlIGEgUENTLiBUaGlzIGlzIGNvbnZlbmllbnQgdG8g
-YWxsb3cKPiB0aGUgY2hhbmdlIGluIHBhdGNoIDkgdG8gYmUgbWFkZS4KPiAKPiBQYXRjaCA5IG1v
-dmVzIHRoZSBzcGVjaWFsIGF1dG9uZWcgaGFuZGxpbmcgdG8gdGhlIFBDUyB2YWxpZGF0ZSBtZXRo
-b2QsCj4gd2hpY2ggbWVhbnMgd2UgY2FuIGNvbnZlcnQgdGhlIE1BQyBzaWRlIHRvIHRoZSBnZW5l
-cmljIHZhbGlkYXRvci4KPiAKPiBQYXRjaCAxMCBtYXJrcyB0aGUgZHJpdmVyIGFzIG5vbi1sZWdh
-Y3kuCj4gCj4gVGhlIHNlcmllcyB3YXMgcG9zdGVkIG9uIDIzIEZlYnJ1YXJ5LCBhbmQgYSBwaW5n
-IHNlbnQgb24gMyBNYXJjaCwgYnV0Cj4gbm8gZmVlZGJhY2sgaGFzIGJlZW4gcmVjZWl2ZWQuIFRo
-ZSBwcmV2aW91cyBwb3N0aW5nIGFsc28gcmVjZWl2ZWQgbm8KPiBmZWVkYmFjayBvbiB0aGUgYWN0
-dWFsIHBhdGNoZXMgZWl0aGVyLgo+IAo+ICBkcml2ZXJzL25ldC9kc2EvbXQ3NTMwLmMgfCAzMzAg
-KysrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAgZHJpdmVy
-cy9uZXQvZHNhL210NzUzMC5oIHwgIDI2ICsrLS0KPiAgMiBmaWxlcyBjaGFuZ2VkLCAxNTkgaW5z
-ZXJ0aW9ucygrKSwgMTk3IGRlbGV0aW9ucygtKQo+IAoKVGVzdGVkLWJ5OiBNYXJlayBCZWjDum4g
-PGthYmVsQGtlcm5lbC5vcmc+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LW1lZGlhdGVrCg==
+Hi AngeloGioacchino,
+
+> Convert I2C binding for MediaTek SoCs to Devicetree schema.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../devicetree/bindings/i2c/i2c-mt65xx.txt    |  53 --------
+>  .../devicetree/bindings/i2c/i2c-mt65xx.yaml   | 118 ++++++++++++++++++
+>  MAINTAINERS                                   |   2 +-
+>  3 files changed, 119 insertions(+), 54 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
+>  create mode 100644 Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
+> deleted file mode 100644
+> index 026985b8f61a..000000000000
+> --- a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
+> +++ /dev/null
+> @@ -1,53 +0,0 @@
+> -* MediaTek's I2C controller
+> -
+> -The MediaTek's I2C controller is used to interface with I2C devices.
+> -
+> -Required properties:
+> -  - compatible: value should be either of the following.
+> -      "mediatek,mt2701-i2c", "mediatek,mt6577-i2c": for MediaTek MT2701
+> -      "mediatek,mt2712-i2c": for MediaTek MT2712
+> -      "mediatek,mt6577-i2c": for MediaTek MT6577
+> -      "mediatek,mt6589-i2c": for MediaTek MT6589
+> -      "mediatek,mt6797-i2c", "mediatek,mt6577-i2c": for MediaTek MT6797
+> -      "mediatek,mt7622-i2c": for MediaTek MT7622
+> -      "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for MediaTek MT7623
+> -      "mediatek,mt7629-i2c", "mediatek,mt2712-i2c": for MediaTek MT7629
+> -      "mediatek,mt8168-i2c": for MediaTek MT8168
+> -      "mediatek,mt8173-i2c": for MediaTek MT8173
+> -      "mediatek,mt8183-i2c": for MediaTek MT8183
+> -      "mediatek,mt8186-i2c": for MediaTek MT8186
+> -      "mediatek,mt8192-i2c": for MediaTek MT8192
+> -      "mediatek,mt8195-i2c", "mediatek,mt8192-i2c": for MediaTek MT8195
+> -      "mediatek,mt8516-i2c", "mediatek,mt2712-i2c": for MediaTek MT8516
+> -  - reg: physical base address of the controller and dma base, length of memory
+> -    mapped region.
+> -  - interrupts: interrupt number to the cpu.
+> -  - clock-div: the fixed value for frequency divider of clock source in i2c
+> -    module. Each IC may be different.
+> -  - clocks: clock name from clock manager
+>-  - clock-names: Must include "main" and "dma", "arb" is for multi-master that
+>-    one bus has more than two i2c controllers, if enable have-pmic need include
+>-    "pmic" extra.
+
+snip
+
+>+properties:
+>+  compatible:
+>+    oneOf:
+>+      - const: mediatek,mt2712-i2c
+>+      - const: mediatek,mt6577-i2c
+>+      - const: mediatek,mt6589-i2c
+>+      - const: mediatek,mt7622-i2c
+>+      - const: mediatek,mt8168-i2c
+>+      - const: mediatek,mt8173-i2c
+>+      - const: mediatek,mt8183-i2c
+>+      - const: mediatek,mt8186-i2c
+>+      - const: mediatek,mt8192-i2c
+>+      - items:
+>+          - enum:
+>+              - mediatek,mt7629-i2c
+>+              - mediatek,mt8516-i2c
+>+          - const: mediatek,mt2712-i2c
+>+      - items:
+>+          - enum:
+>+              - mediatek,mt2701-i2c
+>+              - mediatek,mt6797-i2c
+>+              - mediatek,mt7623-i2c
+>+          - const: mediatek,mt6577-i2c
+>+      - items:
+>+          - enum:
+>+              - mediatek,mt8195-i2c
+>+          - const: mediatek,mt8192-i2c
+>+
+>+  reg:
+>+    items:
+>+      - description: Physical base address
+>+      - description: DMA base address
+>+
+>+  interrupts:
+>+    maxItems: 1
+>+
+>+  clocks:
+>+    minItems: 1
+>+    items:
+>+      - description: Main clock for I2C bus
+>+      - description: Clock for I2C via DMA
+>+      - description: Bus arbitrator clock
+>+      - description: Clock for I2C from PMIC
+>+
+>+  clock-names:
+>+    minItems: 1
+>+    items:
+>+      - const: main
+>+      - const: dma
+>+      - const: arb
+>+      - const: pmic
+
+I read "clock-names: Must include "main" and "dma"" from i2c-mt65xx.txt.
+Does it means that we should have at least 2 clock-names (minItems: 2)?
+
+Thanks,
+Miles
+
+>+
+>+  clock-div:
+>+    $ref: /schemas/types.yaml#/definitions/uint32
+>+    description: Frequency divider of clock source in I2C module
+>+
+>+  clock-frequency:
+>+    default: 100000
+>+    description:
+>+      SCL frequency to use (in Hz). If omitted, 100kHz is used.
+>+
+>+  mediatek,have-pmic:
+>+    description: Platform controls I2C from PMIC side
+>+    type: boolean
+>+
+>+  mediatek,use-push-pull:
+>+    description: Use push-pull mode I/O config
+>+    type: boolean
+>+
+>+  vbus-supply:
+>+    description: Phandle to the regulator providing power to SCL/SDA
+>+
+>+required:
+>+  - compatible
+>+  - reg
+>+  - clocks
+>+  - clock-names
+>+  - clock-div
+>+  - interrupts
+>+
+>+unevaluatedProperties: false
+>+
+>+examples:
+>+  - |
+>+    #include <dt-bindings/interrupt-controller/arm-gic.h>
+>+    #include <dt-bindings/interrupt-controller/irq.h>
+>+
+>+    i2c0: i2c@1100d000 {
+>+      compatible = "mediatek,mt6577-i2c";
+>+      reg = <0x1100d000 0x70>, <0x11000300 0x80>;
+>+      interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
+>+      clocks = <&i2c0_ck>, <&ap_dma_ck>;
+>+      clock-names = "main", "dma";
+>+      clock-div = <16>;
+>+      clock-frequency = <400000>;
+>+      mediatek,have-pmic;
+>+
+>+      #address-cells = <1>;
+>+      #size-cells = <0>;
+>+    };
+>diff --git a/MAINTAINERS b/MAINTAINERS
+>index ee0b5a70aff1..28a17d4c8d12 100644
+>--- a/MAINTAINERS
+>+++ b/MAINTAINERS
+>@@ -12361,7 +12361,7 @@ MEDIATEK I2C CONTROLLER DRIVER
+> M:	Qii Wang <qii.wang@mediatek.com>
+> L:	linux-i2c@vger.kernel.org
+> S:	Maintained
+>-F:	Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
+>+F:	Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
+> F:	drivers/i2c/busses/i2c-mt65xx.c
+> 
+> MEDIATEK IOMMU DRIVER
+>-- 
+>2.35.1
+>
+>
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
