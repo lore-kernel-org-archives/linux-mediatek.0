@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A09D2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 10:52:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB59BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 10:54:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
+	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5Jsv4omvkji9Uoz+6v3QIyqrwm0A56LrHCPWZ2gN8Qs=; b=FmyotUulKocplv
-	AgXVukRpRtGycPWz2Tfz5k/GzA17AClOdBnin7RL75myuTNI7hB+NZXt/+jsqN0NUNIu5SDjJU1Y6
-	h+P8fnBhz8DrdCEwzLm6YgpZIBxUKWeQs2M9BUDEK6R1cHf7hOOVXXuMP/Q+dL3SdzfPvGkXadPOR
-	WFv3wPq9mQOXSWQk4WhFa360xVGy6YSTsv4D7O/X5Y6ncwpK+7uJdp4zFR5Gf0OSqPD8KKhNCU0en
-	lE+2IaEMtGZVU/6AD80onsSgJA+I8drtYZSNsM1wLLRCOSF5R+agX5vvbcgZYiT51f/XJBsCuwCu1
-	IsMMhR3ajct2nvgAVF9A==;
+	List-Owner; bh=zkGXe+PE9hIpFrAz6hElERG9iU1yyGK3fO4luIkx4yg=; b=ydHfDf6gxcfTbL
+	sKDRfFN1pAWHYJnCzqp0sPaGsfP6dK3JyPQeNnjYxAp+rhr/HMFCC3w+X/91DINBt0snAjGwRjssv
+	pViSaIFRDViGmn800IlXvyrOE+UsQzE6GStPHYDYR67fqXQWFce2VaNn/GF2UKndf7r021tYAxfIx
+	/2HpHGONgnC7Zb8fB78od53dosU1IZJQHp+N2zzZ6w9uMJX6fsFKYj18AkSlnrVWr3hjH9MM76uQI
+	Y47Scnm/M7HiuEGmZz0T2UAaLn/rbz1UoOLWi1uk+eVy89tN7+Ru+/jYYR7r3YUOnBveMjmn3p24Z
+	AKcbaqS8tWBlBAiNJgWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nc3HL-005Ypm-6G; Wed, 06 Apr 2022 10:52:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nc3IR-005ZRx-Cs; Wed, 06 Apr 2022 10:53:55 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nc3Ek-005XGY-WF; Wed, 06 Apr 2022 10:50:08 +0000
-X-UUID: 2eafadfe573a4014aea9ebe49ee38133-20220406
-X-UUID: 2eafadfe573a4014aea9ebe49ee38133-20220406
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 882004864; Wed, 06 Apr 2022 03:50:03 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 6 Apr 2022 03:50:01 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 6 Apr 2022 18:49:59 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 6 Apr 2022 18:49:59 +0800
-Message-ID: <42e890bef5927f2c4854c146f9bab2f974b64a48.camel@mediatek.com>
-Subject: Re: [PATCH 1/3] dt-bindings: display: mediatek: Correct disp_aal
- binding for MT8183
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- <chunkuang.hu@kernel.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>
-CC: <matthias.bgg@gmail.com>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
- <yongqiang.niu@mediatek.com>, <jason-jh.lin@mediatek.com>,
- <nancy.lin@mediatek.com>, <allen-kh.cheng@mediatek.com>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 6 Apr 2022 18:49:59 +0800
-In-Reply-To: <19a1af29-19a7-a546-b565-a2cc973a7f28@collabora.com>
-References: <20220406094654.29722-1-rex-bc.chen@mediatek.com>
- <20220406094654.29722-2-rex-bc.chen@mediatek.com>
- <19a1af29-19a7-a546-b565-a2cc973a7f28@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nc3FQ-005WTB-SL; Wed, 06 Apr 2022 10:50:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
+ Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
+ In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=nkQnlSkGVlHWJHHvGkGYpD1QVqaP/kEBKctr3Hx+sNI=; b=arVupQ/OYBbfMrwp78KsDwMDSR
+ T3c966/emWqyqr5qNHfoYCGzdZZVkRr22ybJ7i3gkwKRzCS3KqrkEnakJtpsz8F3+oyeRNs2dh9Bi
+ tCLijgRKtNEw8G3yu7EU1qXf3CNVbsn8ttHndnU2iECJTViDEVLexA7GfzSYX+fgS03oTgwOIimv2
+ YhTtNvEuMMWg1M0TYCp1sgHOhOrjr/y0F4VN8BTjceom+QaXxP0TnJz3a8mgjebNfSKcr87QLOysp
+ UF8p6rY1GmtKgzwfkP+fAJrpZdMoiKQPjPw+DmENDrNROj1dcNHACtITEDNpra4x5OOhLcE1na86h
+ vw/WsT+A==;
+Received: from e0022681537dd.dyn.armlinux.org.uk
+ ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:59980 helo=rmk-PC.armlinux.org.uk)
+ by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <rmk@armlinux.org.uk>)
+ id 1nc3DJ-0002Yz-RR; Wed, 06 Apr 2022 11:48:37 +0100
+Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
+ (envelope-from <rmk@rmk-PC.armlinux.org.uk>)
+ id 1nc3DI-004hpj-UU; Wed, 06 Apr 2022 11:48:36 +0100
+In-Reply-To: <Yk1iHCy4fqvxsvu0@shell.armlinux.org.uk>
+References: <Yk1iHCy4fqvxsvu0@shell.armlinux.org.uk>
+From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+To: Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>
+Cc: Marek Beh__n <kabel@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next 1/9] net: dsa: mt7530: 1G can also support 1000BASE-X
+ link mode
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+Message-Id: <E1nc3DI-004hpj-UU@rmk-PC.armlinux.org.uk>
+Date: Wed, 06 Apr 2022 11:48:36 +0100
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_035007_160523_07711DAE 
-X-CRM114-Status: GOOD (  17.40  )
+X-CRM114-CacheID: sfid-20220406_035048_939584_4EB68114 
+X-CRM114-Status: GOOD (  11.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,41 +83,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-04-06 at 12:38 +0200, AngeloGioacchino Del Regno wrote:
-> Il 06/04/22 11:46, Rex-BC Chen ha scritto:
-> > The driver data of MT8183 and MT8173 are different.
-> > The value of has_gamma for MT8173 is true while the value of MT8183
-> > is
-> > false. Therefore, the compatible of disp_aal for MT8183 is not
-> > suitable
-> > for the compatible for MT8173.
-> > 
-> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> 
-> Hello!
-> Yes, I definitely agree with this change, it makes no sense to have
-> both
-> 8173 and 8183 compatibles for 8183 (and similar).
-> 
-> Though, please, add a note in this commit message advertising that
-> the
-> mistake was only in the yaml binding, as the driver doesn't require
-> any
-> functional changes, so that things are clear for people with less
-> expertise
-> on MediaTek platforms.
-> 
-> After that:
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
+When using an external PHY connected using RGMII to mt7531 port 5, the
+PHY can be used to used support 1000BASE-X connections. Moreover, if
+1000BASE-T is supported, then we should allow 1000BASE-X as well, since
+which are supported is a property of the PHY.
 
-Hello Angelo,
+Therefore, it makes no sense to exclude this from the linkmodes when
+1000BASE-T is supported.
 
-Thanks for your review.
-I will add them to the commit message in next version.
+Fixes: c288575f7810 ("net: dsa: mt7530: Add the support of MT7531 switch")
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+---
+ drivers/net/dsa/mt7530.c | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
 
-BRs,
-Rex
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 19f0035d4410..20cadee13361 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2539,13 +2539,8 @@ static void mt7531_sgmii_validate(struct mt7530_priv *priv, int port,
+ 	/* Port5 supports ethier RGMII or SGMII.
+ 	 * Port6 supports SGMII only.
+ 	 */
+-	switch (port) {
+-	case 5:
+-		if (mt7531_is_rgmii_port(priv, port))
+-			break;
+-		fallthrough;
+-	case 6:
+-		phylink_set(supported, 1000baseX_Full);
++	if (port == 6 ||
++	    (port == 5 && !mt7531_is_rgmii_port(priv, port))) {
+ 		phylink_set(supported, 2500baseX_Full);
+ 		phylink_set(supported, 2500baseT_Full);
+ 	}
+@@ -2913,8 +2908,6 @@ static void
+ mt7530_mac_port_validate(struct dsa_switch *ds, int port,
+ 			 unsigned long *supported)
+ {
+-	if (port == 5)
+-		phylink_set(supported, 1000baseX_Full);
+ }
+ 
+ static void mt7531_mac_port_validate(struct dsa_switch *ds, int port,
+@@ -2951,8 +2944,10 @@ mt753x_phylink_validate(struct dsa_switch *ds, int port,
+ 	}
+ 
+ 	/* This switch only supports 1G full-duplex. */
+-	if (state->interface != PHY_INTERFACE_MODE_MII)
++	if (state->interface != PHY_INTERFACE_MODE_MII) {
+ 		phylink_set(mask, 1000baseT_Full);
++		phylink_set(mask, 1000baseX_Full);
++	}
+ 
+ 	priv->info->mac_port_validate(ds, port, mask);
+ 
+-- 
+2.30.2
 
 
 _______________________________________________
