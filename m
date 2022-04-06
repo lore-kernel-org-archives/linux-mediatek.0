@@ -4,63 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02E5DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 10:43:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A12D8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 10:49:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
+	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l8d5seBMyY95438jYm7/pgrNYa5zZG9vuGCSTi9i9F4=; b=p9fMRzhbEhLeeC
-	CP0wxRAB2oZQ/ou0t42Y0kbgXm7r+3excVy9VEmrOEyVio2+7quRZhtaM1Z+azTSXMrcz6CqyULk2
-	xi1B9D4ilP/FpfZN8w35N4nwq08jPPuDzrl9HQnPwfbPX+MdHO9/oVpKMxqMzDHZNi+HBCNgv9tpz
-	WPO538d2UcmW/45yi4m+FeCO/SApdHPay4lJbhwFsiXxiEcca0gFXRWcr0wERFURNnPEvwt3L3Bb/
-	3VHUK9XSMcub1Kjz+8+xbGRkvPfNM9LpAnd6NNdp2S1B+ax4vnRBftBpGoFs6MrJmMrr/0CrL/0cd
-	g7L7gsCCZVYJdAV68l8w==;
+	List-Owner; bh=rGQVWL6Gz86E7l7wR5P+Deo/116YCJNYD2/fQGyBZag=; b=1xhGEIthH0JDrF
+	DVDSspS5tNXQ/UelQ7U7Lh5hAGB+Tqpww7uuoqpRCcrZBEbmwbHmAWsU05LUR0DCXonCOTUDS5YQm
+	BixqKM1wM6b8dZTipKaVlTbOIuYpyp3nDyz9fs/tqsLgnB2Kbnw7SRk6Mn6wHF1s7rBX9Or325KtG
+	RADO2mEyzcxxOsEiGiHNxmV5h4yjrlyCs1fWhZGpcsJrtJW9mqM4votkbPfyKZeNJUhzvZ+z/gwpt
+	KWVkgoNd57SoLUQqqgBNbXmvrnNlepp5Uo+j+KOwPEnJrO3VNyb8TWsf1bbFbQam06dilCJ6ROq9Z
+	/XgjBfnniQkfri6NbZjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nc38C-005U5C-0X; Wed, 06 Apr 2022 10:43:20 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nc3Ds-005Wgu-8A; Wed, 06 Apr 2022 10:49:12 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nc355-005ScC-7n; Wed, 06 Apr 2022 10:40:09 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 2C0281F40636
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649241606;
- bh=7x+nafxlBp5slkvgaNHZ+WTlE5AOPwQOWURWpk9wYds=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=WvM4AxJT5v8G2rRw2CopA5DESuuTsABtYXNNfCttxpuRH+ot2RvsHNdm7pF8jFyq0
- SaIi66hQEifySViIVm2zfQjRbV6nG2VuxtRhTZsXu6DMVLxGyYvUmpChMS985pUaEx
- OXTHxqHJOKQ1BZWRwur5ThF4Bc0FXNb6xSbXMtDTjZnUB7mSl+KxUCork3hCZ/8ZcS
- BIhkE6NnMpZKlqBYEsdYVdL92IRpIc+5/nvpzJKbh6twDjDeI0k/iSRXzLlfq7mT8a
- CJ5vFAbWlvxyDuui7dFiisEDmelHKSIVQH1z0V47tTRATOaopLFUdk1976fNevc8yH
- pcMAfA/mwu+vQ==
-Message-ID: <2449070b-d7e1-122f-abe6-4148855a9aba@collabora.com>
-Date: Wed, 6 Apr 2022 12:40:02 +0200
+ id 1nc3DW-005WUg-Jq; Wed, 06 Apr 2022 10:48:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
+ Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
+ In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=0iZDBwJODqFadHCfRWwr5Q22BQy93msRuIdplxb8Y5w=; b=z7G9hKgw97jEnVAjvYZEMkorry
+ yNQwo0f4VTGHekHrdB95ReuIsJqbWRkm9Oyiiuh8KnH7yV3tfleirUOheAFphUBJYxYk0wTgfmm0N
+ DlLWNh/sGzbli61JnGZuIqnR7Uh8yjFT7d7yzaEPOYn+wicIcJDImztmTlUyDmU+Dc5I+ppM9nKuL
+ 3r58Htt9MmT3cqkJr3OYmEvyzVm+ckpBDreNp075gukG9WOaAzltYjKcqkd6XTzJ9agGpqS19Xavv
+ s12179FV8kCYNdgqN7x8zlKFsnsPrWojjQSEyvd0JETb609bDqP+cA/CtPwcgobPU/8Z8bLOEDv56
+ MHIfxEtQ==;
+Received: from e0022681537dd.dyn.armlinux.org.uk
+ ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:59982 helo=rmk-PC.armlinux.org.uk)
+ by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <rmk@armlinux.org.uk>)
+ id 1nc3DO-0002ZA-VK; Wed, 06 Apr 2022 11:48:42 +0100
+Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
+ (envelope-from <rmk@rmk-PC.armlinux.org.uk>)
+ id 1nc3DO-004hpp-23; Wed, 06 Apr 2022 11:48:42 +0100
+In-Reply-To: <Yk1iHCy4fqvxsvu0@shell.armlinux.org.uk>
+References: <Yk1iHCy4fqvxsvu0@shell.armlinux.org.uk>
+From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+To: Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>
+Cc: Marek Beh__n <kabel@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next 2/9] net: dsa: mt7530: populate supported_interfaces
+ and mac_capabilities
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH 3/3] dt-bindings: display: mediatek: Correct disp_aal
- binding for MT8192
-Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
- robh+dt@kernel.org, krzk+dt@kernel.org
-Cc: matthias.bgg@gmail.com, p.zabel@pengutronix.de, airlied@linux.ie,
- yongqiang.niu@mediatek.com, jason-jh.lin@mediatek.com,
- nancy.lin@mediatek.com, allen-kh.cheng@mediatek.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220406094654.29722-1-rex-bc.chen@mediatek.com>
- <20220406094654.29722-4-rex-bc.chen@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220406094654.29722-4-rex-bc.chen@mediatek.com>
+Content-Disposition: inline
+Message-Id: <E1nc3DO-004hpp-23@rmk-PC.armlinux.org.uk>
+Date: Wed, 06 Apr 2022 11:48:42 +0100
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_034007_475755_0CA0690D 
-X-CRM114-Status: UNSURE (   7.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220406_034850_834102_277F03DE 
+X-CRM114-Status: GOOD (  14.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,20 +78,173 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/04/22 11:46, Rex-BC Chen ha scritto:
-> The driver data for MT8192 is the same with MT8183. Therefore, we
-> correct it.
-> 
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Populate the supported interfaces and MAC capabilities for mt7530,
+mt7531 and mt7621 DSA switches. Filling this in will enable phylink
+to pre-check the PHY interface mode against the the supported
+interfaces bitmap prior to calling the validate function, and will
+eventually allow us to convert to using the generic validation.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+---
+ drivers/net/dsa/mt7530.c | 74 ++++++++++++++++++++++++++++++++++++++++
+ drivers/net/dsa/mt7530.h |  2 ++
+ 2 files changed, 76 insertions(+)
 
-...though, from what I know, you should also move MT8195 down there!
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 20cadee13361..954d738c75f2 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2389,6 +2389,32 @@ mt7531_setup(struct dsa_switch *ds)
+ 	return 0;
+ }
+ 
++static void mt7530_mac_port_get_caps(struct dsa_switch *ds, int port,
++				     struct phylink_config *config)
++{
++	switch (port) {
++	case 0 ... 4: /* Internal phy */
++		__set_bit(PHY_INTERFACE_MODE_GMII,
++			  config->supported_interfaces);
++		break;
++
++	case 5: /* 2nd cpu port with phy of port 0 or 4 / external phy */
++		phy_interface_set_rgmii(config->supported_interfaces);
++		__set_bit(PHY_INTERFACE_MODE_MII,
++			  config->supported_interfaces);
++		__set_bit(PHY_INTERFACE_MODE_GMII,
++			  config->supported_interfaces);
++		break;
++
++	case 6: /* 1st cpu port */
++		__set_bit(PHY_INTERFACE_MODE_RGMII,
++			  config->supported_interfaces);
++		__set_bit(PHY_INTERFACE_MODE_TRGMII,
++			  config->supported_interfaces);
++		break;
++	}
++}
++
+ static bool
+ mt7530_phy_mode_supported(struct dsa_switch *ds, int port,
+ 			  const struct phylink_link_state *state)
+@@ -2425,6 +2451,37 @@ static bool mt7531_is_rgmii_port(struct mt7530_priv *priv, u32 port)
+ 	return (port == 5) && (priv->p5_intf_sel != P5_INTF_SEL_GMAC5_SGMII);
+ }
+ 
++static void mt7531_mac_port_get_caps(struct dsa_switch *ds, int port,
++				     struct phylink_config *config)
++{
++	struct mt7530_priv *priv = ds->priv;
++
++	switch (port) {
++	case 0 ... 4: /* Internal phy */
++		__set_bit(PHY_INTERFACE_MODE_GMII,
++			  config->supported_interfaces);
++		break;
++
++	case 5: /* 2nd cpu port supports either rgmii or sgmii/8023z */
++		if (mt7531_is_rgmii_port(priv, port)) {
++			phy_interface_set_rgmii(config->supported_interfaces);
++			break;
++		}
++		fallthrough;
++
++	case 6: /* 1st cpu port supports sgmii/8023z only */
++		__set_bit(PHY_INTERFACE_MODE_SGMII,
++			  config->supported_interfaces);
++		__set_bit(PHY_INTERFACE_MODE_1000BASEX,
++			  config->supported_interfaces);
++		__set_bit(PHY_INTERFACE_MODE_2500BASEX,
++			  config->supported_interfaces);
++
++		config->mac_capabilities |= MAC_2500FD;
++		break;
++	}
++}
++
+ static bool
+ mt7531_phy_mode_supported(struct dsa_switch *ds, int port,
+ 			  const struct phylink_link_state *state)
+@@ -2904,6 +2961,18 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
+ 	return 0;
+ }
+ 
++static void mt753x_phylink_get_caps(struct dsa_switch *ds, int port,
++				    struct phylink_config *config)
++{
++	struct mt7530_priv *priv = ds->priv;
++
++	/* This switch only supports full-duplex at 1Gbps */
++	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
++				   MAC_10 | MAC_100 | MAC_1000FD;
++
++	priv->info->mac_port_get_caps(ds, port, config);
++}
++
+ static void
+ mt7530_mac_port_validate(struct dsa_switch *ds, int port,
+ 			 unsigned long *supported)
+@@ -3139,6 +3208,7 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
+ 	.port_vlan_del		= mt7530_port_vlan_del,
+ 	.port_mirror_add	= mt753x_port_mirror_add,
+ 	.port_mirror_del	= mt753x_port_mirror_del,
++	.phylink_get_caps	= mt753x_phylink_get_caps,
+ 	.phylink_validate	= mt753x_phylink_validate,
+ 	.phylink_mac_link_state	= mt753x_phylink_mac_link_state,
+ 	.phylink_mac_config	= mt753x_phylink_mac_config,
+@@ -3156,6 +3226,7 @@ static const struct mt753x_info mt753x_table[] = {
+ 		.phy_read = mt7530_phy_read,
+ 		.phy_write = mt7530_phy_write,
+ 		.pad_setup = mt7530_pad_clk_setup,
++		.mac_port_get_caps = mt7530_mac_port_get_caps,
+ 		.phy_mode_supported = mt7530_phy_mode_supported,
+ 		.mac_port_validate = mt7530_mac_port_validate,
+ 		.mac_port_get_state = mt7530_phylink_mac_link_state,
+@@ -3167,6 +3238,7 @@ static const struct mt753x_info mt753x_table[] = {
+ 		.phy_read = mt7530_phy_read,
+ 		.phy_write = mt7530_phy_write,
+ 		.pad_setup = mt7530_pad_clk_setup,
++		.mac_port_get_caps = mt7530_mac_port_get_caps,
+ 		.phy_mode_supported = mt7530_phy_mode_supported,
+ 		.mac_port_validate = mt7530_mac_port_validate,
+ 		.mac_port_get_state = mt7530_phylink_mac_link_state,
+@@ -3179,6 +3251,7 @@ static const struct mt753x_info mt753x_table[] = {
+ 		.phy_write = mt7531_ind_phy_write,
+ 		.pad_setup = mt7531_pad_setup,
+ 		.cpu_port_config = mt7531_cpu_port_config,
++		.mac_port_get_caps = mt7531_mac_port_get_caps,
+ 		.phy_mode_supported = mt7531_phy_mode_supported,
+ 		.mac_port_validate = mt7531_mac_port_validate,
+ 		.mac_port_get_state = mt7531_phylink_mac_link_state,
+@@ -3241,6 +3314,7 @@ mt7530_probe(struct mdio_device *mdiodev)
+ 	 */
+ 	if (!priv->info->sw_setup || !priv->info->pad_setup ||
+ 	    !priv->info->phy_read || !priv->info->phy_write ||
++	    !priv->info->mac_port_get_caps ||
+ 	    !priv->info->phy_mode_supported ||
+ 	    !priv->info->mac_port_validate ||
+ 	    !priv->info->mac_port_get_state || !priv->info->mac_port_config)
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 91508e2feef9..e285b68ba354 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -769,6 +769,8 @@ struct mt753x_info {
+ 	int (*phy_write)(struct mt7530_priv *priv, int port, int regnum, u16 val);
+ 	int (*pad_setup)(struct dsa_switch *ds, phy_interface_t interface);
+ 	int (*cpu_port_config)(struct dsa_switch *ds, int port);
++	void (*mac_port_get_caps)(struct dsa_switch *ds, int port,
++				  struct phylink_config *config);
+ 	bool (*phy_mode_supported)(struct dsa_switch *ds, int port,
+ 				   const struct phylink_link_state *state);
+ 	void (*mac_port_validate)(struct dsa_switch *ds, int port,
+-- 
+2.30.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
