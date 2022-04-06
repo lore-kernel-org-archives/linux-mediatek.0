@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19D23C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 10:30:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26F28C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 10:30:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c7fNdqMq0qd8UiVOaeh6lL9WwOGXsgp1TpAuQTXcpcs=; b=C98Y/PMaLNq+5u
-	oWrpV7cGcf6EoOrk/cCgIYNn3Ux+n7NpTqL8HmUtt7zAmvIOELC3T/FrQ2WhSpXOgDO5m857yIptk
-	rrDm53ZWKR1bEGfY9moCPCOMpDBKE05tDDGZDzWqb6wGvviQ5vwI7zTfBR8+M+HIGAPtp0uEETaUn
-	W/ofLqzzGYJtNcpOYZkYtluR046I8ER0th/TxY18v+R9SdSMA1bnG8ap/1C+ny4n8Bei2mTduJ8Kj
-	1hxpoNE8zQStCOcAHEb64mxgTD69sjgnVXX2RmH6M3IeyzyYtY3xylcrW2wbJbPw779RW0xb9rBjL
-	YIJgETXSlg0MIUk66PxQ==;
+	List-Owner; bh=G7cm4xBV82Qso6lR7HgDfQQcbigPPCezuhtq7ZelAUo=; b=tdxqSMacGyEI0c
+	43gy5Awx5twhCkobcZIecS1ZCsO1Hem06Pr2ut2+pOvc/zF/2G6n8Jw1upLaqw59breOZVNgDlw9q
+	SF+l+/3JxYOXUIPyBUx9hSPXN0Ii19HFMMTiQONnMZZCxRxlt2c1XOzw8G/A4XYVPYNHnOS323QL5
+	Qwg2KP8rGhARVMswl9v+9HmTU5lthINCepxnPdTliWHb2LqccFIyiBeiT8doAqJ41W6FVCV7doEss
+	gmpggAs7SJmSeAQUTeUS2JlZRnX9LBr2bvesUMMrYmfGdEKPjYkQW/7HjUUt/ISvWN5O+dpUx+4wU
+	WVon4K+jsjrxvlwoBB0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nc2vN-005O9U-0m; Wed, 06 Apr 2022 10:30:05 +0000
+	id 1nc2vQ-005OBO-2F; Wed, 06 Apr 2022 10:30:08 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nc2XX-005EMF-IS; Wed, 06 Apr 2022 10:05:29 +0000
-X-UUID: 96d96f5ad89e4c1a8f6e5fe9b4a6fa45-20220406
-X-UUID: 96d96f5ad89e4c1a8f6e5fe9b4a6fa45-20220406
+ id 1nc2XX-005EMe-Ig; Wed, 06 Apr 2022 10:05:30 +0000
+X-UUID: 547e4674ff2b46708c8ed9b58f713e40-20220406
+X-UUID: 547e4674ff2b46708c8ed9b58f713e40-20220406
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <jiaxin.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1554918104; Wed, 06 Apr 2022 03:05:21 -0700
+ with ESMTP id 998861405; Wed, 06 Apr 2022 03:05:21 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 6 Apr 2022 03:05:19 -0700
+ 15.0.1497.2; Wed, 6 Apr 2022 03:05:20 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 6 Apr 2022 18:05:18 +0800
+ 15.2.792.15; Wed, 6 Apr 2022 18:05:19 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 6 Apr 2022 18:05:17 +0800
+ Transport; Wed, 6 Apr 2022 18:05:18 +0800
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
 To: <broonie@kernel.org>, <robh+dt@kernel.org>, <nfraprado@collabora.com>,
  <tzungbi@google.com>
@@ -49,20 +49,18 @@ CC: <angelogioacchino.delregno@collabora.com>, <aaronyu@google.com>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
- <jiaxin.yu@mediatek.com>, Rob Herring <robh@kernel.org>
-Subject: [v9 1/4] ASoC: dt-bindings: mt8192-mt6359: add new compatible and new
- properties
-Date: Wed, 6 Apr 2022 18:05:11 +0800
-Message-ID: <20220406100514.11269-2-jiaxin.yu@mediatek.com>
+ <jiaxin.yu@mediatek.com>
+Subject: [v9 2/4] ASoC: mediatek: mt8192: refactor for I2S3 DAI link of speaker
+Date: Wed, 6 Apr 2022 18:05:12 +0800
+Message-ID: <20220406100514.11269-3-jiaxin.yu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220406100514.11269-1-jiaxin.yu@mediatek.com>
 References: <20220406100514.11269-1-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_030527_667424_C9E9AD9E 
-X-CRM114-Status: UNSURE (   7.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220406_030527_689728_BEE2247C 
+X-CRM114-Status: GOOD (  16.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,79 +77,187 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. Adds new compatible string "mt8192_mt6359_rt1015p_rt5682s" for machines
-with rt1015p and rt5682s.
-2. Adds new property "headset-codec" for getting headset codec.
-3. Adds new property "speaker-codecs" for getting speaker codecs.
+MT8192 platform will use rt1015 or rt1015p codec, so through the
+snd_soc_of_get_dai_link_codecs() to complete the configuration
+of dai_link's codecs.
 
 Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- .../sound/mt8192-mt6359-rt1015-rt5682.yaml    | 32 +++++++++++++++++++
- 1 file changed, 32 insertions(+)
+ .../mt8192/mt8192-mt6359-rt1015-rt5682.c      | 108 +++++++++---------
+ 1 file changed, 57 insertions(+), 51 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
-index 5a5b765b859a..4fa179909c62 100644
---- a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
-+++ b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
-@@ -18,6 +18,7 @@ properties:
-     enum:
-       - mediatek,mt8192_mt6359_rt1015_rt5682
-       - mediatek,mt8192_mt6359_rt1015p_rt5682
-+      - mediatek,mt8192_mt6359_rt1015p_rt5682s
+diff --git a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
+index ee91569c0911..15711448d259 100644
+--- a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
++++ b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
+@@ -604,17 +604,9 @@ SND_SOC_DAILINK_DEFS(i2s2,
+ 		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
+ 		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
  
-   mediatek,platform:
-     $ref: "/schemas/types.yaml#/definitions/phandle"
-@@ -27,11 +28,33 @@ properties:
-     $ref: "/schemas/types.yaml#/definitions/phandle"
-     description: The phandle of HDMI codec.
+-SND_SOC_DAILINK_DEFS(i2s3_rt1015,
++SND_SOC_DAILINK_DEFS(i2s3,
+ 		     DAILINK_COMP_ARRAY(COMP_CPU("I2S3")),
+-		     DAILINK_COMP_ARRAY(COMP_CODEC(RT1015_DEV0_NAME,
+-						   RT1015_CODEC_DAI),
+-					COMP_CODEC(RT1015_DEV1_NAME,
+-						   RT1015_CODEC_DAI)),
+-		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
+-
+-SND_SOC_DAILINK_DEFS(i2s3_rt1015p,
+-		     DAILINK_COMP_ARRAY(COMP_CPU("I2S3")),
+-		     DAILINK_COMP_ARRAY(COMP_CODEC("rt1015p", "HiFi")),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()),
+ 		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
  
-+  headset-codec:
-+    type: object
-+    properties:
-+      sound-dai:
-+        $ref: /schemas/types.yaml#/definitions/phandle
-+    required:
-+      - sound-dai
+ SND_SOC_DAILINK_DEFS(i2s5,
+@@ -929,6 +921,7 @@ static struct snd_soc_dai_link mt8192_mt6359_dai_links[] = {
+ 		.dpcm_playback = 1,
+ 		.ignore_suspend = 1,
+ 		.be_hw_params_fixup = mt8192_i2s_hw_params_fixup,
++		SND_SOC_DAILINK_REG(i2s3),
+ 	},
+ 	{
+ 		.name = "I2S5",
+@@ -1100,55 +1093,61 @@ static struct snd_soc_card mt8192_mt6359_rt1015p_rt5682_card = {
+ 	.num_dapm_routes = ARRAY_SIZE(mt8192_mt6359_rt1015p_rt5682_routes),
+ };
+ 
++static int mt8192_mt6359_card_set_be_link(struct snd_soc_card *card,
++					  struct snd_soc_dai_link *link,
++					  struct device_node *node,
++					  char *link_name)
++{
++	int ret;
 +
-+  speaker-codecs:
-+    type: object
-+    properties:
-+      sound-dai:
-+        minItems: 1
-+        maxItems: 2
-+        items:
-+          maxItems: 1
-+        $ref: /schemas/types.yaml#/definitions/phandle-array
-+    required:
-+      - sound-dai
++	if (node && strcmp(link->name, link_name) == 0) {
++		ret = snd_soc_of_get_dai_link_codecs(card->dev, node, link);
++		if (ret < 0) {
++			dev_err_probe(card->dev, ret, "get dai link codecs fail\n");
++			return ret;
++		}
++	}
 +
- additionalProperties: false
- 
- required:
-   - compatible
-   - mediatek,platform
-+  - headset-codec
-+  - speaker-codecs
- 
- examples:
-   - |
-@@ -44,6 +67,15 @@ examples:
-                         "aud_clk_mosi_on";
-         pinctrl-0 = <&aud_clk_mosi_off>;
-         pinctrl-1 = <&aud_clk_mosi_on>;
++	return 0;
++}
 +
-+        headset-codec {
-+            sound-dai = <&rt5682>;
-+        };
-+
-+        speaker-codecs {
-+            sound-dai = <&rt1015_l>,
-+                        <&rt1015_r>;
-+        };
-     };
+ static int mt8192_mt6359_dev_probe(struct platform_device *pdev)
+ {
+ 	struct snd_soc_card *card;
+-	struct device_node *platform_node, *hdmi_codec;
++	struct device_node *platform_node, *hdmi_codec, *speaker_codec;
+ 	int ret, i;
+ 	struct snd_soc_dai_link *dai_link;
+ 	struct mt8192_mt6359_priv *priv;
  
- ...
+-	platform_node = of_parse_phandle(pdev->dev.of_node,
+-					 "mediatek,platform", 0);
+-	if (!platform_node) {
+-		dev_err(&pdev->dev, "Property 'platform' missing or invalid\n");
++	card = (struct snd_soc_card *)of_device_get_match_data(&pdev->dev);
++	if (!card)
+ 		return -EINVAL;
+-	}
++	card->dev = &pdev->dev;
+ 
+-	card = (struct snd_soc_card *)of_device_get_match_data(&pdev->dev);
+-	if (!card) {
++	hdmi_codec = of_parse_phandle(pdev->dev.of_node, "mediatek,hdmi-codec", 0);
++	if (!hdmi_codec)
++		dev_dbg(&pdev->dev, "The machine has no hdmi-codec\n");
++
++	platform_node = of_parse_phandle(pdev->dev.of_node, "mediatek,platform", 0);
++	if (!platform_node) {
+ 		ret = -EINVAL;
+-		goto put_platform_node;
++		dev_err_probe(&pdev->dev, ret, "Property 'platform' missing or invalid\n");
++		goto err_platform_node;
+ 	}
+-	card->dev = &pdev->dev;
+ 
+-	hdmi_codec = of_parse_phandle(pdev->dev.of_node,
+-				      "mediatek,hdmi-codec", 0);
++	speaker_codec = of_get_child_by_name(pdev->dev.of_node, "speaker-codecs");
++	if (!speaker_codec) {
++		ret = -EINVAL;
++		dev_err_probe(&pdev->dev, ret, "Property 'speaker-codecs' missing or invalid\n");
++		goto err_speaker_codec;
++	}
+ 
+ 	for_each_card_prelinks(card, i, dai_link) {
+-		if (strcmp(dai_link->name, "I2S3") == 0) {
+-			if (card == &mt8192_mt6359_rt1015_rt5682_card) {
+-				dai_link->ops = &mt8192_rt1015_i2s_ops;
+-				dai_link->cpus = i2s3_rt1015_cpus;
+-				dai_link->num_cpus =
+-					ARRAY_SIZE(i2s3_rt1015_cpus);
+-				dai_link->codecs = i2s3_rt1015_codecs;
+-				dai_link->num_codecs =
+-					ARRAY_SIZE(i2s3_rt1015_codecs);
+-				dai_link->platforms = i2s3_rt1015_platforms;
+-				dai_link->num_platforms =
+-					ARRAY_SIZE(i2s3_rt1015_platforms);
+-			} else if (card == &mt8192_mt6359_rt1015p_rt5682_card) {
+-				dai_link->cpus = i2s3_rt1015p_cpus;
+-				dai_link->num_cpus =
+-					ARRAY_SIZE(i2s3_rt1015p_cpus);
+-				dai_link->codecs = i2s3_rt1015p_codecs;
+-				dai_link->num_codecs =
+-					ARRAY_SIZE(i2s3_rt1015p_codecs);
+-				dai_link->platforms = i2s3_rt1015p_platforms;
+-				dai_link->num_platforms =
+-					ARRAY_SIZE(i2s3_rt1015p_platforms);
+-			}
++		ret = mt8192_mt6359_card_set_be_link(card, dai_link, speaker_codec, "I2S3");
++		if (ret) {
++			dev_err_probe(&pdev->dev, ret, "%s set speaker_codec fail\n",
++				      dai_link->name);
++			goto err_probe;
+ 		}
+ 
+ 		if (hdmi_codec && strcmp(dai_link->name, "TDM") == 0) {
+@@ -1156,6 +1155,9 @@ static int mt8192_mt6359_dev_probe(struct platform_device *pdev)
+ 			dai_link->ignore = 0;
+ 		}
+ 
++		if (strcmp(dai_link->codecs[0].dai_name, RT1015_CODEC_DAI) == 0)
++			dai_link->ops = &mt8192_rt1015_i2s_ops;
++
+ 		if (!dai_link->platforms->name)
+ 			dai_link->platforms->of_node = platform_node;
+ 	}
+@@ -1163,22 +1165,26 @@ static int mt8192_mt6359_dev_probe(struct platform_device *pdev)
+ 	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
+ 	if (!priv) {
+ 		ret = -ENOMEM;
+-		goto put_hdmi_codec;
++		goto err_probe;
+ 	}
+ 	snd_soc_card_set_drvdata(card, priv);
+ 
+ 	ret = mt8192_afe_gpio_init(&pdev->dev);
+ 	if (ret) {
+-		dev_err(&pdev->dev, "init gpio error %d\n", ret);
+-		goto put_hdmi_codec;
++		dev_err_probe(&pdev->dev, ret, "%s init gpio error\n", __func__);
++		goto err_probe;
+ 	}
+ 
+ 	ret = devm_snd_soc_register_card(&pdev->dev, card);
++	if (ret)
++		dev_err_probe(&pdev->dev, ret, "%s snd_soc_register_card fail\n", __func__);
+ 
+-put_hdmi_codec:
+-	of_node_put(hdmi_codec);
+-put_platform_node:
++err_probe:
++	of_node_put(speaker_codec);
++err_speaker_codec:
+ 	of_node_put(platform_node);
++err_platform_node:
++	of_node_put(hdmi_codec);
+ 	return ret;
+ }
+ 
 -- 
 2.25.1
 
