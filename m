@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3520FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 14:35:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BB02C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Apr 2022 14:35:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gtPl/P6LaA39wDsprJHsP4rSUbsWb1ExiuMDZxxlZDc=; b=kejzhcm8A2ndCC
-	3X5yK/gtV1vuj+cUeLq9kqaWCr6eSsXlhuQmNsVIXgdWlJDlunyIbmM3+2tgh9Eydz5rfHIU4xI+3
-	LeZXz7m7JSC7tNDXYFtoZdp+L2g8nRD3ZEEANfkPoHAATyRbKmznh5Qorh7MnmajoCvGWN6xZukdB
-	IFIP/NfKihGrZvpnQxspMKJyzN/iLqrhh50+weXTK+7pViqldsYWea6wViQzFhtPpuzsnCFKMd2CP
-	9G5NOD7Qw7JGhTVK3bNm4m/NLhRAQaRFE7Uj6Q7Fm6hgDUXqfxp8uukn9Fp7qcbUBzIRBx7Uh+6Zo
-	sAtNya0QgC+X1lHrPHYw==;
+	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
+	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6miidC5VA8HQXh9WKQTtch48KjCAyivdAeRQVYCEaJc=; b=XxNSa3Yca4qQb1
+	5quKGq8irYkr1p3nloM1+rofydAf+IoSsJ2C5v0oZ9zCQ6VgTGGDiHPy6EcxzAfom50wbUClEEMhM
+	6HsjpVy91iY2TDXZDA6xlXV2D4xAXbvtqZWG24L/YjsW6C63Y1IxtW/OscjX4vkXH4Lpk8Q5Vs2iw
+	V1V+/kGfXDwn3RSJMlJ6LVW4jS+/4Do5JPGdywvPM+0FfOj5Wvlh46/nQtTyb3XfDXgzscqgP2GPP
+	57cqTHoGkFrjsU36RK05jPHc0xGGBlHonAV15d6HTxB1Wxe3x7dvqGK0oR7giYfQaNrh+uPPbraWk
+	Vx3f6D7ML9ZaZCHvcu7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nc6kO-006Xd0-Qk; Wed, 06 Apr 2022 14:35:00 +0000
+	id 1nc6l1-006XxB-NB; Wed, 06 Apr 2022 14:35:39 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nc6k7-006XUY-7C; Wed, 06 Apr 2022 14:34:44 +0000
+ id 1nc6kW-006XgK-3B; Wed, 06 Apr 2022 14:35:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
- Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=zzkoDaINZ+gLK8TuKhSiIzaVc1cKAzjQiu56MMZAxVY=; b=UdEw+O+evcTtk7HiR6VaoTzLVY
- 3/hleNnCkSftbhyDgikJuJdN241DKmca5s4HkEoXpp+nL1AnxmzJJLIjxvShTbNQsDhicT1RT6QlX
- bUcNOjKE7e/9FP/Ju8lY4pEoSBlQR57m7/nqtfRITeYDsxj1EOAin17e1uQQZ5oGBTlT2p3o8YFCm
- oz+miU0+7E4pCofLXMI+k7X2GPHAInH2CDhoH2+7pAsksw0BAUgsoFkWJlzB/orNtHhwJ+1VW6uHN
- TuA0ZWjqIfd0ttFCITM5Vw4DidL1GMWCCD+i0UPU61oJN5XEg/D81eRtSrFTBuFQIHi56nwcye+hz
- mxSx3Fbw==;
-Received: from shell.armlinux.org.uk
- ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:58148)
+ d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
+ Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
+ In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=DUAo+mqYnAUG+mILjNagVGzTyTx2txWqKx2hHt8JQgQ=; b=DcrJHcfWXhL/+trcV52rNWOE0C
+ /NWlUwoJQUt/2aeM3SmW2Da1KIlyDKHOdwmtupE9Hxioj+aVJFiS1/R+mH2NSTmA0nmyNfbm55yrO
+ ZC8hhYUccRia7O0Xx0wVuo76lJbCwqa96zot/DYdaNB3A1HJGKaTSRelmdvciftbbj/ky7lPVR7fP
+ JjL/kMn5dwKh/bekfVUg3zX6C4f+LfEj/yRiyOuHlEAUDMpk4WO3ED0SYLyzBojRMjKIG+0LO8RsA
+ 9rKmCNXOPTJ4gZQpbN0brtqh3TQN9x0UHB9kY7crAkQ5w4OtswbhvYoFU9oOpY7Uhiyi7r/oGiGyN
+ /MMXtPHA==;
+Received: from e0022681537dd.dyn.armlinux.org.uk
+ ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:60662 helo=rmk-PC.armlinux.org.uk)
  by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <linux@armlinux.org.uk>)
- id 1nc6jw-0002tc-K8; Wed, 06 Apr 2022 15:34:32 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
- (envelope-from <linux@shell.armlinux.org.uk>)
- id 1nc6js-0005Dm-H3; Wed, 06 Apr 2022 15:34:28 +0100
-Date: Wed, 6 Apr 2022 15:34:28 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+ (envelope-from <rmk@armlinux.org.uk>)
+ id 1nc6kO-0002tt-Fs; Wed, 06 Apr 2022 15:35:00 +0100
+Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
+ (envelope-from <rmk@rmk-PC.armlinux.org.uk>)
+ id 1nc6kN-004ijV-JN; Wed, 06 Apr 2022 15:34:59 +0100
+In-Reply-To: <Yk2k9D40QojsRhoo@shell.armlinux.org.uk>
+References: <Yk2k9D40QojsRhoo@shell.armlinux.org.uk>
+From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
 To: Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
-Cc: "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>,
- Jakub Kicinski <kuba@kernel.org>, John Crispin <john@phrozen.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH RFC 00/12] mtk_eth_soc phylink updates
-Message-ID: <Yk2k9D40QojsRhoo@shell.armlinux.org.uk>
+Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH RFC net-next 01/12] net: mtk_eth_soc: remove unused mac->mode
 MIME-Version: 1.0
 Content-Disposition: inline
+Message-Id: <E1nc6kN-004ijV-JN@rmk-PC.armlinux.org.uk>
+Date: Wed, 06 Apr 2022 15:34:59 +0100
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_073443_304429_391C8E0F 
-X-CRM114-Status: GOOD (  15.85  )
+X-CRM114-CacheID: sfid-20220406_073508_161969_4C3FA509 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,51 +79,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+mac->mode is only ever written to in one location, and is thus
+superflous. Remove it.
 
-This series ultimately updates mtk_eth_soc to use phylink_pcs, with some
-fixes along the way.
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 1 -
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 1 -
+ 2 files changed, 2 deletions(-)
 
-Previous attempts to update this driver (which is now marked as legacy)
-have failed due to lack of testing. I am hoping that this time will be
-different; Marek can test RGMII modes, but not SGMII. So all that we
-know is that this patch series probably doesn't break RGMII.
-
-1) remove unused mac_mode and sgmii flags members from structures.
-2) remove unnecessary interpretation of speed when configuring 1000
-   and 2500 Base-X
-3) move configuration of SGMII duplex setting from mac_config() to
-   link_up()
-4) only pass in interface mode to mtk_sgmii_setup_mode_force()
-5) move decision about which mtk_sgmii_setup_mode_*() function to call
-   into mtk_sgmii.c
-6) add a fixme comment for RGMII explaning why the call to
-   mtk_gmac0_rgmii_adjust() is completely wrong - this needs to be
-   addressed by someone who has the hardware and can test an appropriate
-   fix. This fixme means that the driver still can't become non-legacy.
-7) move gmac setup from mac_config() to mac_finish() - this preserves
-   the order that we write to the hardware when we eventually convert to
-   phylink_pcs()
-8) move configuration of syscfg0 in SGMII/802.3z mode to mac_finish()
-   for the same reasons as (7).
-9) convert mtk_sgmii.c code structure and the mtk_sgmii structure to
-   suit conversion to phylink_pcs
-10) finally convert to phylink_pcs
-
-It would be nice to get these changes fully tested, but past experience
-has shown that for this driver, that's unfortunately very unlikely. So,
-I propose that the merging plan for this is that if there are no
-comments after three weeks to a month, I'll send this for inclusion in
-net-next.
-
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 103 +++++++++-------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  40 +++----
- drivers/net/ethernet/mediatek/mtk_sgmii.c   | 174 ++++++++++++++++------------
- 3 files changed, 185 insertions(+), 132 deletions(-)
-
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index f02d07ec5ccb..e491d43f049a 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -2968,7 +2968,6 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+ 
+ 	/* mac config is not set */
+ 	mac->interface = PHY_INTERFACE_MODE_NA;
+-	mac->mode = MLO_AN_PHY;
+ 	mac->speed = SPEED_UNKNOWN;
+ 
+ 	mac->phylink_config.dev = &eth->netdev[id]->dev;
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index c9d42be314b5..2b690f8a5391 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -989,7 +989,6 @@ struct mtk_eth {
+ struct mtk_mac {
+ 	int				id;
+ 	phy_interface_t			interface;
+-	unsigned int			mode;
+ 	int				speed;
+ 	struct device_node		*of_node;
+ 	struct phylink			*phylink;
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+2.30.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
