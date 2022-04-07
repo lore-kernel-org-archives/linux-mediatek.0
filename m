@@ -4,57 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B42A8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 11:37:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4740DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 11:45:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JPiJO2aVlybrPnFZUcvlt8RQNz2rCU/AcBcglUoSoyQ=; b=keR9Kq6yyIGorg
-	be4ZPitcb4zUemGXWsUNbYdXGPwOyBmSfJv9Lp+3k6PNj2mhoRBGN7jLs+LD8Fk/Jp+AaNYWiOwKH
-	NQzNty4mRGJcaYvNntjueQ/tW2GZ7SuAl5F3hBrHCjkPcM0t5L/7/UwdyaOM5xE1ojz4tGZfRCeqV
-	m2Z7ahoEf/LLPc+be1GzRrPIOKd/24AfD0aez/IVJ53v/Eafgw8No2fTfeGkpWphzD8RvswbKUmfL
-	s/cSWxhUri1Zr7Dt34aS1vzlULalJCJPxEKP5Yig2cUPSjtzLlNvV7L/TO+AVfz3tjcZWBPBYYkti
-	uHGXe0bT/tgfZ7mOQirQ==;
+	List-Owner; bh=ZbqsqGbGQe2eOttw28JG9K2ik5HU1KvetDM4tXkqBR4=; b=W3TcKhGfunRnCd
+	RHsqyBVZ9j9ylWDlCzhIJehxkaUsgURJoAZ2dBL5TiSGOGMON50SzXTOwIh9mzqijGd2vHkQ8rXHC
+	IvFNptHW1ymm+e2Y5abaELEvGcUNJJu2Y8EJnFZJEA9zNZjPNtH9+SqbRDaTRKf2qZWbIs3uN24+k
+	3yxfrdxzTmCqOwX21adSPKOGI6EpySdBwqhaVkHd3cHPUlH5Q0M0lYzpHE7/b8PAyxVCfFtI+kyNA
+	9eeEDm/flzaIHmqAGPKb0TESCX5QADw7h/eiyFEXMnJSGTXIKDT/uPLJ8b0yIUZPiOokQ/dT8WcJu
+	riotp2OWqODUI9zC7GtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncQS0-00BZYA-0Q; Thu, 07 Apr 2022 11:37:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ncQZK-00BbKa-IB; Thu, 07 Apr 2022 11:44:54 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncQRv-00BZWy-EB; Thu, 07 Apr 2022 11:37:16 +0000
-X-UUID: 2da674db7501424e98d1674719577b14-20220407
-X-UUID: 2da674db7501424e98d1674719577b14-20220407
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2118351152; Thu, 07 Apr 2022 04:37:08 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 7 Apr 2022 04:37:06 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 7 Apr 2022 19:37:05 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 7 Apr 2022 19:37:05 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Chen-Yu Tsai" <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, Hui
- Liu <hui.liu@mediatek.com>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Subject: [PATCH v2 0/1] mt8192: Add mmc device nodes
-Date: Thu, 7 Apr 2022 19:37:02 +0800
-Message-ID: <20220407113703.26423-1-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1ncQZ3-00BbBs-Mc; Thu, 07 Apr 2022 11:44:39 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 4637D1F4580C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1649331873;
+ bh=3xNDbtKo/QwtU2kZMPDobaM+xLfIkUASVQWxYMAggfM=;
+ h=From:To:Cc:Subject:Date:From;
+ b=c67OREi0ihF2CjgVqwyotdZpUpPe20ZzIqQsIyoxbQ8qLtO+JfUTzTX4ExhioHjo+
+ VgxYPuYwyMH+csxqHP98+dzexkx0H1f2w4DkPnQc4ci+W27bfS/AmHQymnHXE4FfE5
+ nzhCMRyt0BC7YofwSYQNwU2ejzFP3zJ/3CTeokQTP6DhKug3pkJ+D+nNbSvVZa7u4g
+ DOVyR33WP5Tkt45CYl2cXSAqe/6lf4pcJwrGqO7rtn8yGEidb8z67xBhGeP35OKMSY
+ tPcLrdSQ+tcmMARLykKLJwT8oFzDPS2F456ucfq6xPvmT7uAdkMz+90pThPKe+PcDy
+ h2mSbc1SNg89g==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: broonie@kernel.org
+Cc: matthias.bgg@gmail.com, linux-spi@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, nfraprado@collabora.com,
+ kernel@collabora.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 0/8] MediaTek SPI controller cleanups and documentation
+Date: Thu,  7 Apr 2022 13:44:20 +0200
+Message-Id: <20220407114428.167091-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_043715_522215_8FBC0EDA 
-X-CRM114-Status: UNSURE (   8.32  )
+X-CRM114-CacheID: sfid-20220407_044437_989052_712AC642 
+X-CRM114-Status: UNSURE (   6.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,32 +68,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Take mmc device patch from series 20220330133816.30806-1-allen-kh.cheng@mediatek.com/
-This series are based on matthias.bgg/linux.git, v5.18-next/dts64
+This series performs some cleanups to the spi-mt65xx driver, removing
+all gotos, simplifying the probe function and adding kerneldoc to the
+driver structures.
 
-In mt8192 SoC.
-mmc driver would directly read/write register(11f60000) to control clock configure.
-Alos there is no other module using msdc: clock-controller.
-In order to not cause duplicate unit-address warning, I remove the clock-controller
-entirely.
+Changes in v2:
+- Rebased over next-20220407 for new spimem commits
 
-changes since v1:
-- remove msdc clock node
+AngeloGioacchino Del Regno (8):
+  spi: mt65xx: Simplify probe function with devm_spi_alloc_master
+  spi: mt65xx: Switch to device_get_match_data()
+  spi: mt65xx: Add and use pointer to struct device in mtk_spi_probe()
+  spi: mt65xx: Move clock parent setting to remove clock disable gotos
+  spi: mt65xx: Move pm_runtime_enable() call to remove all gotos
+  spi: mt65xx: Simplify probe function with dev_err_probe()
+  spi: mt65xx: Add kerneldoc for driver structures
+  spi: mt65xx: Fix definitions indentation
 
-Changes history of mmc:
-- mmc: diable the msdc clock node, drop reviewed-by tags.
-- mmc: reserve msdc node
-- mmc: reorder clocks as specified in the dt-bindings
-- mmc: use single line for reg
-
-Allen-KH Cheng (1):
-  arm64: dts: mt8192: Add mmc device nodes
-
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 34 +++++++++++++++++++++---
- 1 file changed, 30 insertions(+), 4 deletions(-)
+ drivers/spi/spi-mt65xx.c | 368 ++++++++++++++++++---------------------
+ 1 file changed, 171 insertions(+), 197 deletions(-)
 
 -- 
-2.18.0
+2.35.1
 
 
 _______________________________________________
