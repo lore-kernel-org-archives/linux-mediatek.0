@@ -4,79 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89E19C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 20:35:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEBA0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 21:24:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DZPcN7pXOOOVbqcHKkwXkkN1izYaSljOt4XC8q/dXTg=; b=jhxMnwOHdC3ukU
-	rQSJF4i008aB29l4cXAXxHuHUV/MLZcC7xtoPxAIrWJ2aA83nhEdk4rLNZtdspnqwQNaPPWYeD5fD
-	sywJi4VFl4sNmrGPFPr9nZfIF2RSv8tFgloEZkCazHh0XAKE2g0TS1Ml1+tT1ALiUcOZ3p/73AZHk
-	a8az4nze+sabePFC6PHAGB+IOkSQoxH3u45SgSzc8NsPTLKLGyRh0aOWc1CFbW+KYwT3vpKZAcD2U
-	6z/we6hR2lfyIodCi61xLIanSihtcvLhvcbXc85axhetytv6YQ3pGeAJ4/JU+B3ipsS5t1gTvGzz8
-	PiSl4NOrYL+9NkuTRz+g==;
+	List-Owner; bh=KdqX9wKUnTMxndJJImcDLT5UB0XjOn6sx5810u7iHkI=; b=JyhVXLElWuHFKt
+	eACfjw/8LJl4xgbAutqOH4jMHeqqLte3hpDMwzQuVw+xnbybaxXzXFQYzfJk3P+Vb5YsJUktaFpyN
+	QxMAqN+PIUQ1sOAW5AA7SCsLy/9S0z/IFULQ7XycBiQ2MfE852Dax+srXmVX1XNS1ifk7+wlpYHQi
+	m/1rZqwtXQFhdtpbmSb0B+vlpSV8gZxFzxgZxOHme4iDhyD0kq048OhTixPALugR9wOyXThkyqy2y
+	0NlMXtw/iC8n3wgrDvvMgg7REEA5nRQ18asIJFOX9bfAzu2iCvwk4DYzXbTVUTp8KQuvDIoe6lDHQ
+	Xq+j9Mrr7mAm0McfDHQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncYqS-00Dvo9-C7; Thu, 07 Apr 2022 20:35:08 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1ncZcO-00E7Q2-IR; Thu, 07 Apr 2022 21:24:40 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncYpX-00DvOz-9b
- for linux-mediatek@lists.infradead.org; Thu, 07 Apr 2022 20:34:15 +0000
-Received: by mail-ej1-x633.google.com with SMTP id bq8so13226909ejb.10
- for <linux-mediatek@lists.infradead.org>; Thu, 07 Apr 2022 13:34:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=lgadCIuDHSONda5a8AlBMiHSHORPXO/YIVbS7AR7TQA=;
- b=HJcyO+iyzMqE/sQyRjthCVW+qXowVaN11+BZizM5k1G161UQb2N9kNPsp7GKv6z+zo
- CWHEYiTS1J5yuneRxmPcMImj6LTHI3O4XD5500mf93f9iofku7I3jOFqQFvk/pY7KsE7
- iSrnxlwj22PC9mHQtg4bmj1wQszLTcPWQnwqH04EQeLVJu96yveMmTal53PCAYWhxk0j
- GCUl1IuKda4n0K7ksYu7wy7xxLhFmyGapDNwVxM0UfyCnlrTWTALpG3vSc8RD0lhAZGO
- 89DeWEHs0PCYfK1Ozss6ps4moEu7BPtdZtBd+AyPRD064enE7bwxNMy3urL/mbFZp9oD
- cMgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=lgadCIuDHSONda5a8AlBMiHSHORPXO/YIVbS7AR7TQA=;
- b=l37K6Fe1bappZsP1APtjIiG1QItqHp/onHmFINvG7d7cSuU6W8EQMbl4reklLs1ocs
- FBUyABxd1FhaQRc3JpiX9L3V3DJWvK9w2d9kpH38he5bIhXlsClW8dQ9sWUbuhWIhvP7
- VhD4Z9KjLisCjGeizFLMLv/7VfwSZmgvz1BYBZTcpSLhiMr/7GEC+X1nZwG4cJk9DMPm
- TyEO8d8PTbenX85hqrREvz5jDzKii7cF5+Jv74nio8Eu9K5UQBAvSl2IhtVuk0+wSux2
- mnPfSGyCgNiXRfewtKHxh1gQGEsbJc2lu4LuWsyyVtD/DxeQXM+yVAoqxWtIE3JiQJpo
- 3xBA==
-X-Gm-Message-State: AOAM530rX7Kx3/XetzNB1dAF7YvOT7lPjLzL9vm4R3zqDtaEKGPO6V4l
- xjL5HYXsgR7LHhYUFMZ49Tr9Qw==
-X-Google-Smtp-Source: ABdhPJwg2fPFcOmOxRETaOJJDkf4GoOxHDtuoVYZsGbXoaBOj8r/RXDTmCiJ+hztxHnvqqxDzS2f5Q==
-X-Received: by 2002:a17:907:7ba6:b0:6df:ee7d:10f2 with SMTP id
- ne38-20020a1709077ba600b006dfee7d10f2mr15400650ejc.98.1649363648703; 
- Thu, 07 Apr 2022 13:34:08 -0700 (PDT)
-Received: from localhost.localdomain (xdsl-188-155-201-27.adslplus.ch.
- [188.155.201.27]) by smtp.gmail.com with ESMTPSA id
- p13-20020a50d88d000000b0041cd1a083f7sm6134799edj.1.2022.04.07.13.34.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Apr 2022 13:34:07 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 2/2] arm64: dts: mediatek: align thermal zone node names with
- dtschema
-Date: Thu,  7 Apr 2022 22:34:02 +0200
-Message-Id: <20220407203402.33356-2-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220407203402.33356-1-krzysztof.kozlowski@linaro.org>
-References: <20220407203402.33356-1-krzysztof.kozlowski@linaro.org>
+ id 1ncZcD-00E7Nn-07; Thu, 07 Apr 2022 21:24:30 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 9D6F51F46A45
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1649366665;
+ bh=ZM2JW5hpiHTPcC5mYT0UabIz9BN1FEYm0emgVb8w8vQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=LiryOxC+H+6BonxWrZ4+pNbcRKz86e6YgydNpcl43YPOLnyxpjUYiuoJfDqPbWNjP
+ za8u8bpPBJ2SUcPe72Vh0zPerv8izJOtPuyw7OH62o+US/bHtLN2nWjGExklAJZa0O
+ bn45EReCe/JewyiEtM9fqb8GTOeZuirZ3BEyzoZbSnk0Dw9ET+f7p7neAGzBslUxZu
+ LiuamJvfs1iYdtbMoc+KagPnr+mPm1qTutqlk/ISg5k1/QqMJTQDK/yJekAndw4APh
+ Ct6w5Zg6lWpsHRJalImfqOHkw9c3inpZsON6kjdmQHIRTNg2i7lOizfBqNpYmJRIUg
+ Fl8PimTFnVqvA==
+Date: Thu, 7 Apr 2022 17:24:20 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: broonie@kernel.org, robh+dt@kernel.org, tzungbi@google.com,
+ angelogioacchino.delregno@collabora.com, aaronyu@google.com,
+ matthias.bgg@gmail.com, trevor.wu@mediatek.com, linmq006@gmail.com,
+ alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [v9 2/4] ASoC: mediatek: mt8192: refactor for I2S3 DAI link of
+ speaker
+Message-ID: <20220407212420.tncc576jo5iwaqk7@notapiano>
+References: <20220406100514.11269-1-jiaxin.yu@mediatek.com>
+ <20220406100514.11269-3-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220406100514.11269-3-jiaxin.yu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_133411_385162_450E22FB 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20220407_142429_210382_0150D108 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,51 +68,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Align the name of thermal zone node to dtschema to fix warnings like:
+Hi Jiaxin,
 
-  arch/arm64/boot/dts/mediatek/mt8173-elm.dt.yaml:
-    thermal-zones: 'cpu_thermal' does not match any of the regexes: '^[a-zA-Z][a-zA-Z0-9\\-]{1,12}-thermal$', 'pinctrl-[0-9]+'
+On Wed, Apr 06, 2022 at 06:05:12PM +0800, Jiaxin Yu wrote:
+> MT8192 platform will use rt1015 or rt1015p codec, so through the
+> snd_soc_of_get_dai_link_codecs() to complete the configuration
+> of dai_link's codecs.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 2 +-
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Suggestion for the commit message:
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index acb775ca682e..9811f92faa56 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -273,7 +273,7 @@ cpum_ck: oscillator2 {
- 	};
- 
- 	thermal-zones {
--		cpu_thermal: cpu_thermal {
-+		cpu_thermal: cpu-thermal {
- 			polling-delay-passive = <1000>; /* milliseconds */
- 			polling-delay = <1000>; /* milliseconds */
- 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 3129e7783902..151877fa6bfd 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -823,7 +823,7 @@ thermal: thermal@1100b000 {
- 		};
- 
- 		thermal_zones: thermal-zones {
--			cpu_thermal: cpu_thermal {
-+			cpu_thermal: cpu-thermal {
- 				polling-delay-passive = <100>;
- 				polling-delay = <500>;
- 				thermal-sensors = <&thermal 0>;
--- 
-2.32.0
+As part of the refactoring to allow the same machine driver to be used for =
+the
+rt1015(p) and rt5682(s) codecs on the MT8192 platform, parse the rt1015(p)
+codecs from the speaker-codecs property in the devicetree and wire them to =
+the
+I2S3 backend, instead of hardcoding the links and selecting through the
+compatible.
 
+> =
+
+> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+
+Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+Tested-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+
+- Tested on mt8192-asurada-spherion (rt1015p and rt5682). All audio paths s=
+till
+  work as previous to this refactor. And it's still possible to omit
+  mediatek,hdmi-codec.
+
+Thanks,
+N=EDcolas
 
 _______________________________________________
 Linux-mediatek mailing list
