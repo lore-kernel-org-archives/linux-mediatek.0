@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C824C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 08:03:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2554BC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 08:04:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2/BwAWpwCTmAWN6P3HXBEafVho1ttxCbAep6Fsu1LJE=; b=K+2qEbww0NmZdk
-	ywTXH60ae9K6HuU3BfbR/evhrP3DLa0DGFFDr+UAh6/k6pb9zt7PFc40jRWgFWPMA1xMkKE6jQuhN
-	BgjncHtR4fMr5eggT1cTvVd24pWKVIkvOOG0FNaAvdQ8gKCsTllvsf4DuQ9IbvIYtxGgxsLVEjTff
-	+tsaiqaMlx8gWXtiSWeTm0e1xSQq/JWUBYYxBCrm6MOar9CZDY++cgT8LZKCpcHoOucGFUZQ2uuSb
-	azMs97z5PeW9BocmmZwhJWEs7SOizYKlZAW+hc46d14C4aSXFllGKps9DOrNKiV+22vrv1S6PhN4k
-	JLIroGyp54CxDxLBEEmw==;
+	List-Owner; bh=FB6FIBXAyIZGKG2CVquJyGe1q2ATV4oKw9g1N/ZlGAM=; b=GJ/RXA/IV4mYY4
+	TiDi4dvtFF4LryOOpwhiT1C6eYMd6YZXDU3vp4T5zQfqQ0Np0ZWWCrONGYKtn8N0q0uZCxRRWn0I9
+	p0/oGL5XYTTM7SWF95+PP6yARrKQiLVsCQr1KJxEWfciPGJ9001ITuUH0EHZaooW2RYrmcXzFnYSk
+	IXHshxcoJbNCaMWxASMhgrZcwNqgwSmr1+KAaI2dcyOHmLfLN0w6hEx7qVfdoh4n7qwV348//Nlpv
+	GRi/HXWgCjkeXIinYDWBfGpBviSX7fsSgEVreW0i+AzXCnOCKGYOJ+bUfwZwyEKGYHv51X6g9wqd7
+	9tUPneuHpOn29h290gRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncN6l-00ADRU-Oi; Thu, 07 Apr 2022 08:03:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ncN7i-00ADy0-Mw; Thu, 07 Apr 2022 08:04:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncN2I-00AAu4-36; Thu, 07 Apr 2022 07:58:35 +0000
-X-UUID: e00e1502de7443cda957d69922f16bd3-20220407
-X-UUID: e00e1502de7443cda957d69922f16bd3-20220407
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1ncN2b-00AB4E-Ap; Thu, 07 Apr 2022 07:58:55 +0000
+X-UUID: 20167cdf4bb045aea52f0a6a3bea4e3d-20220407
+X-UUID: 20167cdf4bb045aea52f0a6a3bea4e3d-20220407
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1184599636; Thu, 07 Apr 2022 00:58:30 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 352516207; Thu, 07 Apr 2022 00:58:42 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 7 Apr 2022 00:58:29 -0700
+ 15.0.1497.2; Thu, 7 Apr 2022 00:58:40 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 7 Apr 2022 15:58:26 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 7 Apr 2022 15:58:38 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 7 Apr 2022 15:58:25 +0800
+ Transport; Thu, 7 Apr 2022 15:58:36 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -54,17 +54,18 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v6 04/34] iommu/mediatek: Add list_del in mtk_iommu_remove
-Date: Thu, 7 Apr 2022 15:56:56 +0800
-Message-ID: <20220407075726.17771-5-yong.wu@mediatek.com>
+Subject: [PATCH v6 05/34] iommu/mediatek: Remove clk_disable in
+ mtk_iommu_remove
+Date: Thu, 7 Apr 2022 15:56:57 +0800
+Message-ID: <20220407075726.17771-6-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220407075726.17771-1-yong.wu@mediatek.com>
 References: <20220407075726.17771-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_005834_195876_1A69A658 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20220407_005853_564730_0F685263 
+X-CRM114-Status: GOOD (  11.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,33 +82,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Lack the list_del in the mtk_iommu_remove, and remove
-bus_set_iommu(*, NULL) since there may be several iommu HWs.
-we can not bus_set_iommu null when one iommu driver unbind.
+After the commit b34ea31fe013 ("iommu/mediatek: Always enable the clk on
+resume"), the iommu clock is controlled by the runtime callback.
+thus remove the clk control in the mtk_iommu_remove.
 
-This could be a fix for mt2712 which support 2 M4U HW and list them.
+Otherwise, it will warning like:
 
-Fixes: 7c3a2ec02806 ("iommu/mediatek: Merge 2 M4U HWs into one iommu domain")
+echo 14018000.iommu > /sys/bus/platform/drivers/mtk-iommu/unbind
+
+[   51.413044] ------------[ cut here ]------------
+[   51.413648] vpp0_smi_iommu already disabled
+[   51.414233] WARNING: CPU: 2 PID: 157 at */v5.15-rc1/kernel/mediatek/
+                          drivers/clk/clk.c:952 clk_core_disable+0xb0/0xb8
+[   51.417174] Hardware name: MT8195V/C(ENG) (DT)
+[   51.418635] pc : clk_core_disable+0xb0/0xb8
+[   51.419177] lr : clk_core_disable+0xb0/0xb8
+...
+[   51.429375] Call trace:
+[   51.429694]  clk_core_disable+0xb0/0xb8
+[   51.430193]  clk_core_disable_lock+0x24/0x40
+[   51.430745]  clk_disable+0x20/0x30
+[   51.431189]  mtk_iommu_remove+0x58/0x118
+[   51.431705]  platform_remove+0x28/0x60
+[   51.432197]  device_release_driver_internal+0x110/0x1f0
+[   51.432873]  device_driver_detach+0x18/0x28
+[   51.433418]  unbind_store+0xd4/0x108
+[   51.433886]  drv_attr_store+0x24/0x38
+[   51.434363]  sysfs_kf_write+0x40/0x58
+[   51.434843]  kernfs_fop_write_iter+0x164/0x1e0
+
+Fixes: b34ea31fe013 ("iommu/mediatek: Always enable the clk on resume")
+Reported-by: Hsin-Yi Wang <hsinyi@chromium.org>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/iommu/mtk_iommu.c | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 95c82b8bcc35..e4b4ebbcb73f 100644
+index e4b4ebbcb73f..81b8db450eac 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -955,8 +955,7 @@ static int mtk_iommu_remove(struct platform_device *pdev)
- 	iommu_device_sysfs_remove(&data->iommu);
- 	iommu_device_unregister(&data->iommu);
+@@ -957,7 +957,6 @@ static int mtk_iommu_remove(struct platform_device *pdev)
  
--	if (iommu_present(&platform_bus_type))
--		bus_set_iommu(&platform_bus_type, NULL);
-+	list_del(&data->list);
+ 	list_del(&data->list);
  
- 	clk_disable_unprepare(data->bclk);
+-	clk_disable_unprepare(data->bclk);
  	device_link_remove(data->smicomm_dev, &pdev->dev);
+ 	pm_runtime_disable(&pdev->dev);
+ 	devm_free_irq(&pdev->dev, data->irq, data);
 -- 
 2.18.0
 
