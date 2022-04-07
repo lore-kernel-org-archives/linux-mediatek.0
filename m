@@ -4,61 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57357C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 18:43:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75592C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 20:34:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wJSiseqOQ1lBCW7flfdbhD6lck9F2rMhPOQ7IV29zbM=; b=0GBbykwcwCc7wL
-	SGwtRo31AM0KrDL5jI3kr/TswObgvdhNfQOtLUvoIxVbemK6SdkUxGh4NbrUgIAeKiqbvi627JshH
-	JYniJdNNaoJGZ3G5Hmdi2rVaAz+ibsR2PvpXF7P3sMmK3hh+vt8IQYGGb+LGgdfkv3KNaMBIPK+9x
-	r0jIKPOpqEHchmJojr266gU0HmIe1mX8V5R+Klh/FcmiUCusujwMsR+XQVSi+c4KXGES0JVTdblow
-	wPH9T9cctcwx4tUWRTmv3A6DqpMn2w4tSxjflmzWFRgkSJUGOpNl10CZO+UDgOGRjyMOFxxyhyl29
-	ogSMDxNxQZYWm8wrpqkg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=a9AlBPeJgfHCUstEBvtnnn5nMWn+dE+m3tosXNjPQ5U=; b=qSl5y9sM5ZEJ6Z
+	BZUVUEvKrQq6Uih879znW3wblpdqvkSO9Te7VQE4mkYywXXQORyqo35FBdETOEhATONpEmDj/XqcA
+	cSdKPNhWHGycXBiVpI84+KWruTJ/jn/fwIGyqOH97FMUMU1pPZrAOFsjVzos0WDC/CyAr4ijMI+4t
+	XSAFVuBxuF8q2as6Dvq2eFqPZMAOeUSUukMeZbvyA69VGWCn5kQRiPfE//ySmtmm+FnYXdAgGlVyZ
+	YnQqHWvkE5IaLgeIgvsbFFNyVAuxfnyuw1AQfAzy2ep0vKRWb2PrZhXUiEIVzfdUyVtueCgjjBife
+	CWGJ7Par4VCkKLHMmxzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncX5r-00DZ90-0N; Thu, 07 Apr 2022 18:42:55 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1ncYq1-00DvcF-U5; Thu, 07 Apr 2022 20:34:41 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncX5g-00DZ7l-Gy; Thu, 07 Apr 2022 18:42:46 +0000
-Received: from local
- by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.94.2) (envelope-from <daniel@makrotopia.org>)
- id 1ncX4w-0001rM-SW; Thu, 07 Apr 2022 20:41:59 +0200
-Date: Thu, 7 Apr 2022 19:41:54 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Chuanhong Guo <gch981213@gmail.com>
-Cc: linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Roger Quadros <rogerq@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Cai Huoqing <cai.huoqing@linux.dev>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Colin Ian King <colin.king@intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Paul Cercueil <paul@crapouillou.net>,
- Pratyush Yadav <p.yadav@ti.com>, Yu Kuai <yukuai3@huawei.com>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- open list <linux-kernel@vger.kernel.org>,
- "open list:NAND FLASH SUBSYSTEM" <linux-mtd@lists.infradead.org>
-Subject: Re: [PATCH v4 0/5] spi: add support for Mediatek SPI-NAND controller
-Message-ID: <Yk8wctUzF7eWYOZD@makrotopia.org>
-References: <20220407150652.21885-1-gch981213@gmail.com>
+ id 1ncYpV-00DvOb-Vn
+ for linux-mediatek@lists.infradead.org; Thu, 07 Apr 2022 20:34:14 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id qh7so13179223ejb.11
+ for <linux-mediatek@lists.infradead.org>; Thu, 07 Apr 2022 13:34:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=w4demkHQ8Fg0Aca60O/7JU7pagAyPbUQlML8jEugCG4=;
+ b=faF6ayajtjqODf8i8x4Ee4sgq1q3Fe8w5GIBNd6EUxYhTh8lRr3ScB1O2+f/eFZVB7
+ WBZuT4ZezncXpe3w3YfCgXtmZ9ME1HUKZCh7SMj18BdBBLX61EI2U6s/TlRJ2XnOnROK
+ CBSmDDp2XF77fg+vfg4nylz11gURLu/w9p9t9U7ins3Z5+XVdzzfmyQi/UDZohlf/hSl
+ 6zfP7PMuZ7D/yis5OyxXt6AirCAXefP5nyXCPBWGl367EWAh1GzSdImNZbK4X1i7HBSa
+ voE2I93cGhnsbCRAHteqmmHiYjHWMuzbqRTyegl56f5fMmWddGdye9mBnm7QBXCU5N8b
+ IShw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=w4demkHQ8Fg0Aca60O/7JU7pagAyPbUQlML8jEugCG4=;
+ b=Gaztt08vXxitmjfXOG+/4EW9eBVmhUU9gYHeysPifb7bc0367CAi4xFhJiNH9r0Pta
+ EoIHX2N+lfiei8BvWJ0JZRlZIdW+zd0zh3LCigD4mHjpSlyjDoWamiTQloCTKswqRUeJ
+ HdI/SGU3ZlKm7FYw8+RxFNwoT9AOUaTAmRymbOVY2E5ymYsy7/83zVXhv9Xh/8NvPkEm
+ jr8ghHvRiCW6XdxxhZEJuswC8Ck2SwJ/UgnMlaF2PIP5omt84+6IPeaOEAAjh1pRCOJQ
+ PQhDa4qB6HFbJ26/RdXlAqXdAKfaQEvGsQ9kY1jXXr8svpWN++tlE9NarTcwEe3emcti
+ psNg==
+X-Gm-Message-State: AOAM531jrikio1Lg5vKphLvQKCejBtuPJJvMOd1JSo7+FGVcII9DzGdM
+ LOVh4WWu2NTStoEcQY3FMeECAA==
+X-Google-Smtp-Source: ABdhPJxEDGr4Jf8tpwen4hc/gkUEJCBUHaMs6G9kK5gOiZYqgWgJpng5I7H46vgQYhy+G8VXg0Ns5g==
+X-Received: by 2002:a17:906:1ec3:b0:6cf:d118:59e2 with SMTP id
+ m3-20020a1709061ec300b006cfd11859e2mr15195488ejj.767.1649363647213; 
+ Thu, 07 Apr 2022 13:34:07 -0700 (PDT)
+Received: from localhost.localdomain (xdsl-188-155-201-27.adslplus.ch.
+ [188.155.201.27]) by smtp.gmail.com with ESMTPSA id
+ p13-20020a50d88d000000b0041cd1a083f7sm6134799edj.1.2022.04.07.13.34.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 Apr 2022 13:34:06 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 1/2] arm64: dts: mediatek: align operating-points table name
+ with dtschema
+Date: Thu,  7 Apr 2022 22:34:01 +0200
+Message-Id: <20220407203402.33356-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220407150652.21885-1-gch981213@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_114244_585635_6B546CE7 
-X-CRM114-Status: GOOD (  18.74  )
+X-CRM114-CacheID: sfid-20220407_133410_062839_8DDDDBCC 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,69 +91,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 07, 2022 at 11:06:47PM +0800, Chuanhong Guo wrote:
-> Mediatek has an extended version of their NAND Flash Interface which
-> has a SPI-NAND mode. In this mode, the controller can perform 1-bit
-> spi-mem ops for up-to 0xa0 bytes and typical SPI-NAND single, dual
-> and quad IO page cache ops with 2-byte address. Additionally, the
-> page cache ops can be performed with ECC and auto data formatting
-> using the ECC engine of the controller.
-> 
-> This patchset implements support of this mode as a separated SPI-MEM
-> driver with piplined ECC engine.
-              ^^^^^^^^
-missing 'e':  pipelined
+Align the name of operating-points node to dtschema to fix warnings like:
 
-For the whole series:
-Tested-by: Daniel Golle <daniel@makrotopia.org>
+  arch/arm64/boot/dts/mediatek/mt8173-elm.dt.yaml:
+    opp_table0: $nodename:0: 'opp_table0' does not match '^opp-table(-[a-z0-9]+)?$'
 
-> 
-> Changes since v1:
->  add a blank line between properties in dt binding doc
->  rename ecc-engine to nand-ecc-engine for the generic properties
->  fix warnings/errors from the CI
-> 
-> Changes since v2:
->  use streamed DMA api to avoid an extra memory copy during read
->  make ECC engine config a per-nand context
->  take user-requested ECC strength into account
-> 
-> Change since v3:
->  fix a missed ecc-engine rename in doc from v1
-> 
-> Chuanhong Guo (5):
->   mtd: nand: make mtk_ecc.c a separated module
->   spi: add driver for MTK SPI NAND Flash Interface
->   mtd: nand: mtk-ecc: also parse nand-ecc-engine if available
->   dt-bindings: spi: add binding doc for spi-mtk-snfi
->   arm64: dts: mediatek: add mtk-snfi for mt7622
-> 
->  .../bindings/spi/mediatek,spi-mtk-snfi.yaml   |   88 +
->  arch/arm64/boot/dts/mediatek/mt7622.dtsi      |   12 +
->  drivers/mtd/nand/Kconfig                      |    7 +
->  drivers/mtd/nand/Makefile                     |    1 +
->  drivers/mtd/nand/{raw/mtk_ecc.c => ecc-mtk.c} |    8 +-
->  drivers/mtd/nand/raw/Kconfig                  |    1 +
->  drivers/mtd/nand/raw/Makefile                 |    2 +-
->  drivers/mtd/nand/raw/mtk_nand.c               |    2 +-
->  drivers/spi/Kconfig                           |   10 +
->  drivers/spi/Makefile                          |    1 +
->  drivers/spi/spi-mtk-snfi.c                    | 1442 +++++++++++++++++
->  .../linux/mtd/nand-ecc-mtk.h                  |    0
->  12 files changed, 1569 insertions(+), 5 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
->  rename drivers/mtd/nand/{raw/mtk_ecc.c => ecc-mtk.c} (98%)
->  create mode 100644 drivers/spi/spi-mtk-snfi.c
->  rename drivers/mtd/nand/raw/mtk_ecc.h => include/linux/mtd/nand-ecc-mtk.h (100%)
-> 
-> -- 
-> 2.35.1
-> 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 4 ++--
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi  | 4 ++--
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi  | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+index a27b7628c5f7..16905596316d 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+@@ -19,7 +19,7 @@ / {
+ 	#address-cells = <2>;
+ 	#size-cells = <2>;
+ 
+-	cluster0_opp: opp_table0 {
++	cluster0_opp: opp-table-0 {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 		opp00 {
+@@ -36,7 +36,7 @@ opp02 {
+ 		};
+ 	};
+ 
+-	cluster1_opp: opp_table1 {
++	cluster1_opp: opp-table-1 {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 		opp00 {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 2b7d331a4588..acb775ca682e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -57,7 +57,7 @@ aliases {
+ 		serial3 = &uart3;
+ 	};
+ 
+-	cluster0_opp: opp_table0 {
++	cluster0_opp: opp-table-0 {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 		opp-507000000 {
+@@ -94,7 +94,7 @@ opp-1703000000 {
+ 		};
+ 	};
+ 
+-	cluster1_opp: opp_table1 {
++	cluster1_opp: opp-table-1 {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 		opp-507000000 {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 4b08691ed39e..3129e7783902 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -197,7 +197,7 @@ CLUSTER_SLEEP1: cluster-sleep-1 {
+ 		};
+ 	};
+ 
+-	gpu_opp_table: opp_table0 {
++	gpu_opp_table: opp-table-0 {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 
+-- 
+2.32.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
