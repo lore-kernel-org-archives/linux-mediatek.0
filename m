@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E20EC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 09:02:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6607C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 09:03:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mM8IctqA660RVyCKOgrYdpHA7+J9PHiKpMPvDtEHsg0=; b=EZQ1OzAofPgzO1
-	ljvSAzn1fHkWFb34uOnW8E4dPwb51bZzQXKM9oXZLHYBePMt8Y317GVDcrBINBmw2Ne0Da4ZW59Oq
-	dQaJ1PsPcom+YMCwmcbFuW3SzrlUckuFy/2CYszQZ4cRC7slm7acgEQqApFkxayuXEqOGdDE6uPqC
-	vVjwSRjKDAqtrt6vOs7zOOo9+si54d1g4/Scnpy/27O9lwx1f+UCEXKVPCx8gXueLn5bjek2VT0TA
-	t7cy84XXFeg5YDiJ8DctWxEMe2aPtNgPrue9yEeM7y1nS57OrquhcmirDQGTQS4X/hDBIUSabvZ6/
-	Mti47t8kSp6IP8zQ51PA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=skcQfppz3ExmIYpAsPqoSDuU5aZtNaB/dsxOTTS01jI=; b=JdgyggJtkR5jKh
+	7EbvzYu2rEmdD9l2NPf0Ux5aJ067uvuBFk53iX0dge/BLgr0EOOlrZY4ZPB3A6q8KnEKdU/G+eOTg
+	TrAmiyaPFKmE+/GBMgInYQlzfyCankEJkDQP/AXp21L2rg6JzodAdLyueaFcvRN8+Cer+LGO2Sg1D
+	eIesqd6L/s9vV8ooTB+du3JsbQZKa7Rx9DKBO3A4O/hgshX/qD0S/KIemnf4ioNpJfA/9u2qfS4ne
+	Peu3cYT72StQP4Die1eI9NNNvHUmTeJ/pBe0rUoKr4aaABif25dGEqpmR+fam38YMvwbAMn5fi63r
+	EIq6xtIvEQ0HqBet2w3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncO1a-00Af6p-Im; Thu, 07 Apr 2022 09:01:54 +0000
+	id 1ncO2Y-00AfeB-PJ; Thu, 07 Apr 2022 09:02:54 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncNcn-00ATIo-UV; Thu, 07 Apr 2022 08:36:19 +0000
-X-UUID: 5b9e95a32fda4205b3c7f3b12e2564d8-20220407
-X-UUID: 5b9e95a32fda4205b3c7f3b12e2564d8-20220407
+ id 1ncNeF-00ATz0-HG; Thu, 07 Apr 2022 08:37:48 +0000
+X-UUID: ec89ff9c20434dd0932df4f4d52564d8-20220407
+X-UUID: ec89ff9c20434dd0932df4f4d52564d8-20220407
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1769197681; Thu, 07 Apr 2022 01:36:10 -0700
+ with ESMTP id 1282309772; Thu, 07 Apr 2022 01:37:44 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 7 Apr 2022 01:32:38 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 7 Apr 2022 01:33:00 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 7 Apr 2022 16:32:36 +0800
+ 15.2.792.15; Thu, 7 Apr 2022 16:32:58 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 7 Apr 2022 16:32:35 +0800
+ Transport; Thu, 7 Apr 2022 16:32:57 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -54,16 +54,17 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v3 0/2] MT8186 IOMMU SUPPORT
-Date: Thu, 7 Apr 2022 16:32:28 +0800
-Message-ID: <20220407083230.18041-1-yong.wu@mediatek.com>
+Subject: [PATCH v3 2/2] iommu/mediatek: Add mt8186 iommu support
+Date: Thu, 7 Apr 2022 16:32:30 +0800
+Message-ID: <20220407083230.18041-3-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220407083230.18041-1-yong.wu@mediatek.com>
+References: <20220407083230.18041-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_013618_005120_422399BA 
-X-CRM114-Status: UNSURE (   9.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220407_013747_611788_C1F2C0C0 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,31 +81,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patchset adds mt8186 iommu support.
+Add mt8186 iommu supports.
 
-Change note:
-v3: Rebase on v5.18-rc1 and mt8195 iommu v6:
-    https://lore.kernel.org/linux-iommu/20220407075726.17771-1-yong.wu@mediatek.com/
+Signed-off-by: Anan Sun <anan.sun@mediatek.com>
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
+ drivers/iommu/mtk_iommu.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-v2: https://lore.kernel.org/linux-iommu/20220223072402.17518-1-yong.wu@mediatek.com/
-    a)Base on v5.17-rc1 and mt8195 iommu v5.    
-    b)Add a comment "mm: m4u" in the code for readable.
-
-v1: https://lore.kernel.org/linux-mediatek/20220125093244.18230-1-yong.wu@mediatek.com/
-
-Yong Wu (2):
-  dt-bindings: mediatek: mt8186: Add binding for MM iommu
-  iommu/mediatek: Add mt8186 iommu support
-
- .../bindings/iommu/mediatek,iommu.yaml        |   4 +
- drivers/iommu/mtk_iommu.c                     |  17 ++
- .../dt-bindings/memory/mt8186-memory-port.h   | 217 ++++++++++++++++++
- 3 files changed, 238 insertions(+)
- create mode 100644 include/dt-bindings/memory/mt8186-memory-port.h
-
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 22c95ed78b3c..8d2b6dc89177 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -160,6 +160,7 @@ enum mtk_iommu_plat {
+ 	M4U_MT8167,
+ 	M4U_MT8173,
+ 	M4U_MT8183,
++	M4U_MT8186,
+ 	M4U_MT8192,
+ 	M4U_MT8195,
+ };
+@@ -1429,6 +1430,21 @@ static const struct mtk_iommu_plat_data mt8183_data = {
+ 	.larbid_remap = {{0}, {4}, {5}, {6}, {7}, {2}, {3}, {1}},
+ };
+ 
++static const struct mtk_iommu_plat_data mt8186_data_mm = {
++	.m4u_plat       = M4U_MT8186,
++	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN |
++			  WR_THROT_EN | IOVA_34_EN | NOT_STD_AXI_MODE |
++			  MTK_IOMMU_TYPE_MM,
++	.larbid_remap   = {{0}, {1, MTK_INVALID_LARBID, 8}, {4}, {7}, {2}, {9, 11, 19, 20},
++			   {MTK_INVALID_LARBID, 14, 16},
++			   {MTK_INVALID_LARBID, 13, MTK_INVALID_LARBID, 17}},
++	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
++	.banks_num      = 1,
++	.banks_enable   = {true},
++	.iova_region    = mt8192_multi_dom,
++	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
++};
++
+ static const struct mtk_iommu_plat_data mt8192_data = {
+ 	.m4u_plat       = M4U_MT8192,
+ 	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN |
+@@ -1498,6 +1514,7 @@ static const struct of_device_id mtk_iommu_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8167-m4u", .data = &mt8167_data},
+ 	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
+ 	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
++	{ .compatible = "mediatek,mt8186-iommu-mm",    .data = &mt8186_data_mm}, /* mm: m4u */
+ 	{ .compatible = "mediatek,mt8192-m4u", .data = &mt8192_data},
+ 	{ .compatible = "mediatek,mt8195-iommu-infra", .data = &mt8195_data_infra},
+ 	{ .compatible = "mediatek,mt8195-iommu-vdo",   .data = &mt8195_data_vdo},
 -- 
 2.18.0
-
 
 
 _______________________________________________
