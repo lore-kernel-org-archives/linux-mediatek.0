@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 541D7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 08:18:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 833D1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 08:19:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ejLUNKxXWOLa8ECusDNXXYrXdVNC5fi00L3v9YboAFE=; b=nNBNE68F2RmHXR
-	1ao5E6OZfEN6wsenbWrF5OsM0RQaAY7PrD4J9esDyFewhQJkQF9dB5kv+L6DF5t65Gn7ldWC9MIN4
-	l4oYYIjr86qhEB2mC92WyPE7asOZaf0uqV952ZCweJwC9B/2SIN979OEilsGfa9xmUmkZDvfHK1EZ
-	pDzghgF4pRvK6LBr72BI4zp89i6Lu9l+w2kVeH5mRcS4gHpuUFgtBM7BalF736fqZ/RnrZr4+cZPw
-	SgoZheGfxfvhwlmbrEz1iqipi64cyvykXcWHIUEJn+eVqsjZM6t9jkAhw46YzvJt0UbGnfUlLKDPb
-	fcTsIj+sZGPmO+v9htRQ==;
+	List-Owner; bh=fR9HIrVyp6KxjEiQX83adVHqGIRKpwAQ8MSK3SJi7pg=; b=ThSDRyzZrULMPN
+	eLN61dXilGVB+uRB4LJXXJIOQ7DYqyOolgMoUCuvWgUcEXRYYH2B4a4iCUmt7szBmONazQTulO1an
+	Vhp+vZ2H/aNoekC9w7a0en+qjTEhylgIL7RtQudFgNr54V9MqOsMEqo6fp91epf345YYuxVS9DSzB
+	Kz2dhf1KWq8PqDYPPqbbIZfqJf/z4N4vjt85JLJoOOiGNzaX0YMQxjCVHXMfY2Wvw6p+gIyvmJ5rd
+	thC1xNU3j6FTJ7U2JZPKyQsvmz0iePgTtKHHZr8gRrWm3FqUxYd/Z6SN/u6sAJqrgQdHhHE2TuNt2
+	SG62b5DMsO/iS6VNQKow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncNLw-00AKLo-On; Thu, 07 Apr 2022 08:18:52 +0000
+	id 1ncNM0-00AKO9-Nb; Thu, 07 Apr 2022 08:18:56 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncNBY-00AFaF-Ik; Thu, 07 Apr 2022 08:08:09 +0000
-X-UUID: edcaf08e8b6843cda6dbead1571933ee-20220407
-X-UUID: edcaf08e8b6843cda6dbead1571933ee-20220407
+ id 1ncNBY-00AFal-Tz; Thu, 07 Apr 2022 08:08:10 +0000
+X-UUID: 0df7fecc3d084bca8c885a02cc906fb9-20220407
+X-UUID: 0df7fecc3d084bca8c885a02cc906fb9-20220407
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 253163683; Thu, 07 Apr 2022 01:07:57 -0700
+ with ESMTP id 1050183145; Thu, 07 Apr 2022 01:07:57 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 7 Apr 2022 00:59:41 -0700
+ 15.0.1497.2; Thu, 7 Apr 2022 00:59:01 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 7 Apr 2022 15:59:39 +0800
+ Thu, 7 Apr 2022 15:58:59 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 7 Apr 2022 15:59:37 +0800
+ Transport; Thu, 7 Apr 2022 15:58:57 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -54,17 +54,18 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v6 12/34] iommu/mediatek: Remove the granule in the tlb flush
-Date: Thu, 7 Apr 2022 15:57:04 +0800
-Message-ID: <20220407075726.17771-13-yong.wu@mediatek.com>
+Subject: [PATCH v6 07/34] iommu/mediatek: Add mutex for data in the
+ mtk_iommu_domain
+Date: Thu, 7 Apr 2022 15:56:59 +0800
+Message-ID: <20220407075726.17771-8-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220407075726.17771-1-yong.wu@mediatek.com>
 References: <20220407075726.17771-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_010808_639924_A2B1837B 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20220407_010809_015796_FC6DB56F 
+X-CRM114-Status: GOOD (  16.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,46 +82,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek IOMMU doesn't care about granule when tlb flushing.
-Remove this variable.
+Same with the previous patch, add a mutex for the "data" in the
+mtk_iommu_domain. Just improve the safety for multi devices
+enter attach_device at the same time. We don't get the real issue
+for this.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ drivers/iommu/mtk_iommu.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index e7008a20ec74..1f3fe3276aa0 100644
+index 3413cc98e57e..ecdce5d3e8cf 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -219,7 +219,6 @@ static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
+@@ -128,6 +128,8 @@ struct mtk_iommu_domain {
+ 
+ 	struct mtk_iommu_data		*data;
+ 	struct iommu_domain		domain;
++
++	struct mutex			mutex; /* Protect "data" in this structure */
+ };
+ 
+ static const struct iommu_ops mtk_iommu_ops;
+@@ -434,6 +436,7 @@ static struct iommu_domain *mtk_iommu_domain_alloc(unsigned type)
+ 	dom = kzalloc(sizeof(*dom), GFP_KERNEL);
+ 	if (!dom)
+ 		return NULL;
++	mutex_init(&dom->mutex);
+ 
+ 	return &dom->domain;
  }
+@@ -455,14 +458,19 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ 	if (domid < 0)
+ 		return domid;
  
- static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
--					   size_t granule,
- 					   struct mtk_iommu_data *data)
- {
- 	struct list_head *head = data->hw_list;
-@@ -541,8 +540,7 @@ static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
- 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
- 	size_t length = gather->end - gather->start + 1;
++	mutex_lock(&dom->mutex);
+ 	if (!dom->data) {
+ 		/* Data is in the frstdata in sharing pgtable case. */
+ 		frstdata = mtk_iommu_get_m4u_data();
  
--	mtk_iommu_tlb_flush_range_sync(gather->start, length, gather->pgsize,
--				       dom->data);
-+	mtk_iommu_tlb_flush_range_sync(gather->start, length, dom->data);
- }
+-		if (mtk_iommu_domain_finalise(dom, frstdata, domid))
++		ret = mtk_iommu_domain_finalise(dom, frstdata, domid);
++		if (ret) {
++			mutex_unlock(&dom->mutex);
+ 			return -ENODEV;
++		}
+ 		dom->data = data;
+ 	}
++	mutex_unlock(&dom->mutex);
  
- static void mtk_iommu_sync_map(struct iommu_domain *domain, unsigned long iova,
-@@ -550,7 +548,7 @@ static void mtk_iommu_sync_map(struct iommu_domain *domain, unsigned long iova,
- {
- 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
- 
--	mtk_iommu_tlb_flush_range_sync(iova, size, size, dom->data);
-+	mtk_iommu_tlb_flush_range_sync(iova, size, dom->data);
- }
- 
- static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
+ 	mutex_lock(&data->mutex);
+ 	if (!data->m4u_dom) { /* Initialize the M4U HW */
 -- 
 2.18.0
 
