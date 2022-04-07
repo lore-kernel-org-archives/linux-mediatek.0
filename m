@@ -4,77 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BF74C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 14:21:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF08BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 14:28:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5syVT5/fsryWBSyXJaffy++lhj/umvd+eCti/WD4s/Q=; b=x5MZ+nFnhR59EQ
-	FZ1KBJ2E+WuI27o+PRvQ4ueM7BoQsusOkKQy8fk4IMkOgzGqWHcgM2OaMx6L6von5NIe1L537a1Eq
-	9M4NhtxEbE2D2rf+qzIl869wu4G1gGuwOYlTb6UO65e9xrEnueqHe7KRvSvQJ8wIe0yetWxe6gJr+
-	k6j1bkdEAgRwB5Wm7H974SrArkqcWW4YH1w3z70qcdXxTlhIKo3Ju0IuuhmpUe+s4gEvZ8p9YDXrU
-	0hJkS199baOkcUCWq5boeD4tnvtYHYvD7ySVe9UvoqxX462zXg47XYtW/ArLM4+YiZTIT5trsP/Fd
-	u0NwIqvsDlydW07d106Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Gu8xMqw8MOSsfyc9THr1+FZpnxc3lIdmEAI8jYwExZ0=; b=Il9+wvB7hfHFg5
+	xAq1RTs6YAKErg0HRfsm9soOdkCFiAXWZyWhzwWUmnDtixY88YOBKxjy2rwZUTGFSKMRjuIwbgnhs
+	rjH2t3FFtQdbtuzDpSXrESc7CWVvZh1Yf/ANqATcGgNRdx4W3mtPiXdeS7FHrMNwzS/o2/Oj0TefF
+	FSQufhvW59/xobzIbl3XQmxSIZe5bvLKAakGaMmVElrCzFfyEHDOJQd0r7V2hTD/Hzf0APg5dvZY2
+	wodkqgxEncnZX+zEtq8Bs4hcYj3NbxH2EeiiMjJfPPoiIXAxZA+32ZtVsBukI/TEAan6Xn0TUbEEd
+	Jco5/Xhww67FzQQYXWAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncT1E-00CKia-Dk; Thu, 07 Apr 2022 14:21:52 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1ncT7G-00CMcO-Q5; Thu, 07 Apr 2022 14:28:06 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncT1C-00CKhB-Aa
- for linux-mediatek@lists.infradead.org; Thu, 07 Apr 2022 14:21:51 +0000
-Received: by mail-ed1-x530.google.com with SMTP id f18so6605503edc.5
- for <linux-mediatek@lists.infradead.org>; Thu, 07 Apr 2022 07:21:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=3az0dsHhRbjAtvjLKgQFw2T2bUmh6TKysA+m1P0pGGU=;
- b=e+pjZBZ9Ab1nOqK9IYrgBwN04kNJAEfZChRyW+f/KTw428JVlN4vE3rBXrzyr6rvMu
- bf8trEZ0L+m94fGQBRWz+lx7RobDaVaGsJQMzdDsVS4NHM/+APAgsfNPWnLE3lpMQUaI
- 6bd4C2NQfhABAM2tYlCdomWNIAmKSuxiMNBOAw48qKQh1DgO4BaZQqVZHpLEhpkIolJU
- imu0OrGekQiJIpOV5rHBT+3b4yOxPkoVN61TpGMAQQYpGZd+4QyvZiBDzmRKRTwwPmcq
- q02v+sb4n6rXuVCWfZiidtXzRb6OLCdPGXgRJcbzoIfrJTSNQ1hbE2+KQEMEWfeMJknW
- +XOw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=3az0dsHhRbjAtvjLKgQFw2T2bUmh6TKysA+m1P0pGGU=;
- b=0i/7rxfLRai0sSTgfCpi/amaS5DJe6HtKEYdCSKwZTbRuxWvu+q7JHskB+tJQoRjs1
- 9Xy1UqMZ6VEJg9S7GEg+jR6Ao6Bkn7MjT5K8Qad8j+y2g9dKOoktxTlisc3I3ZCnbaip
- JPXIIYBCBO4uUbtK+r0Sq8WOOwkVAU3dtygslLtD4hbnsWjwkLW7lit/WqMLnFEcnSOT
- f8c+9QVhhpqK4Qh7yfWm8LmIELb8SmZUlTxOHHcZzuH4wZRgWPIH+nwQJRUbGDCJ3CBP
- MfCFuSr4ObSDKkiSSsoZU2DtoKATbCSfakZaYBnewkuLW2j9+T/jOZqUjBUYz+Uv9of6
- AGLQ==
-X-Gm-Message-State: AOAM533KeqQp3YDxQAju8+hTR96G7o8AUgVrJ0lXQRZgrSDx7PGjAuci
- obwfoXqUSMvFclZgmGCL6TVYz1QykecZElh4
-X-Google-Smtp-Source: ABdhPJxJ+Ro2BmvGVRNloYDOX+r7PLvVDALhZHY4o7bDgmr9/dXcIP9WmdJvA86P3pUy91cdIl4leg==
-X-Received: by 2002:a50:e79b:0:b0:41c:dd2c:3e19 with SMTP id
- b27-20020a50e79b000000b0041cdd2c3e19mr14497675edn.291.1649341306706; 
- Thu, 07 Apr 2022 07:21:46 -0700 (PDT)
-Received: from localhost.localdomain (xdsl-188-155-201-27.adslplus.ch.
- [188.155.201.27]) by smtp.gmail.com with ESMTPSA id
- q15-20020a1709060e4f00b006cdf4535cf2sm7667869eji.67.2022.04.07.07.21.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Apr 2022 07:21:46 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH] arm64: dts: mt8183-kukui: align SPI NOR node name with
- dtschema
-Date: Thu,  7 Apr 2022 16:21:43 +0200
-Message-Id: <20220407142143.293740-1-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.32.0
+ id 1ncT73-00CMWW-Dj; Thu, 07 Apr 2022 14:27:54 +0000
+Received: from local
+ by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+ (Exim 4.94.2) (envelope-from <daniel@makrotopia.org>)
+ id 1ncT6r-0000NC-PG; Thu, 07 Apr 2022 16:27:41 +0200
+Date: Thu, 7 Apr 2022 15:27:35 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ Linux-ALSA <alsa-devel@alsa-project.org>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+ cujomalainey@google.com, Kevin Hilman <khilman@baylibre.com>,
+ Takashi Iwai <tiwai@suse.com>,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ tzungbi@google.com, linux-mediatek@lists.infradead.org,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Chen-Yu Tsai <wenst@chromium.org>,
+ Daniel Baluta <daniel.baluta@nxp.com>, linux-kernel@vger.kernel.org,
+ sound-open-firmware@alsa-project.org
+Subject: Re: [PATCH v7 0/1] firmware: mtk: add adsp ipc protocol for SOF
+Message-ID: <Yk701wLNKQs1DEVx@makrotopia.org>
+References: <20220407130338.28939-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220407130338.28939-1-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_072150_424858_6DD0F391 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20220407_072753_513839_4C5A3B6C 
+X-CRM114-Status: GOOD (  16.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,29 +70,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The node names should be generic and SPI NOR dtschema expects "flash".
+On Thu, Apr 07, 2022 at 09:03:37PM +0800, Allen-KH Cheng wrote:
+> This patch provides mediatek adsp ipc support for SOF.
+> ADSP IPC protocol offers (send/recv) interfaces using
+> mediatek-mailbox APIs.
+> 
+> This patch was tested and confirmed to with SOF fw on MT8195
+> cherry board.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+... confirmed to **work** with ...
+is probably what you meant to write here.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index 0f9480f91261..8d5bf73a9099 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -849,7 +849,7 @@ &spi1 {
- 	mediatek,pad-select = <0>;
- 	status = "okay";
- 
--	w25q64dw: spi-flash@0 {
-+	w25q64dw: flash@0 {
- 		compatible = "winbond,w25q64dw", "jedec,spi-nor";
- 		reg = <0>;
- 		spi-max-frequency = <25000000>;
--- 
-2.32.0
 
+> 
+> Based on matthias.bgg/linux.git, v5.18-next/soc
+> changes since v6:
+> - rebase to matthias.bgg/linux.git, v5.18-next/soc
+> - Prefer "GPL" over "GPL v2" for MODULE_LICENSE
+> 
+> changes since v5:
+> - fix WARNING: modpost: missing MODULE_LICENSE() in drivers/mailbox
+>   /mtk-adsp-mailbox.o. Add MODULE_LICENSE in the last line.
+> - Due to WARNING: Missing or malformed SPDX-License-Identifier tag
+>   in line 1 in checkpatch, we don't remove SPDX-License in line 1.
+> 
+> changes since v4:
+> - add error message for wrong mbox chan
+> 
+> changes since v3:
+> - rebase on v5.16-rc8
+> - update reviewers
+> 
+> changes since v2:
+> - add out tag for two memory free phases
+> 
+> changes since v1:
+> - add comments for mtk_adsp_ipc_send and mtk_adsp_ipc_recv
+> - remove useless MODULE_LICENSE
+> - change label name to out_free
+> 
+> 
+> Allen-KH Cheng (1):
+>   firmware: mediatek: add adsp ipc protocol interface
+> 
+>  drivers/firmware/Kconfig                      |   1 +
+>  drivers/firmware/Makefile                     |   1 +
+>  drivers/firmware/mediatek/Kconfig             |   9 +
+>  drivers/firmware/mediatek/Makefile            |   2 +
+>  drivers/firmware/mediatek/mtk-adsp-ipc.c      | 161 ++++++++++++++++++
+>  .../linux/firmware/mediatek/mtk-adsp-ipc.h    |  65 +++++++
+>  6 files changed, 239 insertions(+)
+>  create mode 100644 drivers/firmware/mediatek/Kconfig
+>  create mode 100644 drivers/firmware/mediatek/Makefile
+>  create mode 100644 drivers/firmware/mediatek/mtk-adsp-ipc.c
+>  create mode 100644 include/linux/firmware/mediatek/mtk-adsp-ipc.h
+> 
+> -- 
+> 2.18.0
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
