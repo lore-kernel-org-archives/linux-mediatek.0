@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFDADC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 08:26:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82E13C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 08:27:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GBEFbY729N5YzxvUOCx61oUKEuSkuGfi4kaD8J9Ji90=; b=jCfu/jfmAPn0US
-	xDgR2JO1UOAP97tT0fYW1ptPrx6ZMayOopCkPP6zE8Z+25VBaRSMp13V0CdWyUmxcZjlSiWiDk0Bp
-	SxwkfSE2sxTbXRSGuSSWb/uKnAxIJHIeqUlhkYn4UphzGwyqeF6HpP9SXj688IB9HZsUcng2GZdXZ
-	aL9duD2fdfJfxovjyNC+qScll1FC07jAIrABNAnqoYc4ynqd0bzrDvTIp5NyAg5HAei7H6kLTA89V
-	u1fu7iakNbc1lv7u8E4D1l00A05pKwZNrJUE2odwCmoaLWgdMazp2gNGWWBioOtdsgKQX5FGzN+IO
-	yd/oiWG8ooXCHAK6XFIQ==;
+	List-Owner; bh=B4ODwtxd1HOPqTa/scyneq/ECaWBDUaPyKv42+wHwQc=; b=X5ksC0vXsOLk01
+	iQin6rC1goPlo6v6+rhpWbOtSnwFotf7V3KeKDGeQpCXd1+hg9Ktq/UT1g11l/UBUMMHG1BAnxRt0
+	BjOEfxpPObXI7uGdrw3dQKc4nPqgUq5h7tsXtYUEED7ccldpqx1RqqK7JBP+TspzGUbOnLh+IpVzs
+	oBHAXzvC7HTUX+IQrqWD4B7nGMcxFYTQooLIFa0GreLwp719BbgOmewq88MixclBpZPCihtYXI/Uz
+	HiFbPQ2iymZJabJiufcD7BeDxvTatZU41Jr7MPTvzYmDa3pU8E8ZH6W9c1Ba59XmOpN6kS5vrVXu7
+	frINwjUE4fauKGd8a/+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncNSx-00ANss-Fj; Thu, 07 Apr 2022 08:26:07 +0000
+	id 1ncNTu-00AOOh-WC; Thu, 07 Apr 2022 08:27:07 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncNCj-00AGAK-W0; Thu, 07 Apr 2022 08:09:23 +0000
-X-UUID: 38215ad74fe24acca5f6d2584b72a039-20220407
-X-UUID: 38215ad74fe24acca5f6d2584b72a039-20220407
+ id 1ncNCk-00AG9h-FU; Thu, 07 Apr 2022 08:09:23 +0000
+X-UUID: eccfce92d9e24a679caa60599bd7ae9b-20220407
+X-UUID: eccfce92d9e24a679caa60599bd7ae9b-20220407
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 724993098; Thu, 07 Apr 2022 01:09:17 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 576559721; Thu, 07 Apr 2022 01:09:17 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 7 Apr 2022 01:01:25 -0700
+ 15.0.1497.2; Thu, 7 Apr 2022 00:59:49 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 7 Apr 2022 16:01:23 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 7 Apr 2022 15:59:48 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 7 Apr 2022 16:01:21 +0800
+ Transport; Thu, 7 Apr 2022 15:59:46 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -54,17 +54,18 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v6 26/34] iommu/mediatek: Remove mtk_iommu.h
-Date: Thu, 7 Apr 2022 15:57:18 +0800
-Message-ID: <20220407075726.17771-27-yong.wu@mediatek.com>
+Subject: [PATCH v6 13/34] iommu/mediatek: Always enable output PA over 32bits
+ in isr
+Date: Thu, 7 Apr 2022 15:57:05 +0800
+Message-ID: <20220407075726.17771-14-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220407075726.17771-1-yong.wu@mediatek.com>
 References: <20220407075726.17771-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_010922_074151_951D0A89 
-X-CRM114-Status: GOOD (  14.61  )
+X-CRM114-CacheID: sfid-20220407_010922_561405_39296F77 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,134 +82,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently there is a suspend structure in the header file. It's no need
-to keep a header file only for this. Move these into the c file and rm
-this header file.
+Currently the output PA[32:33] is contained by the flag IOVA_34.
+This is not right. the iova_34 has no relation with pa[32:33], the 32bits
+iova still could map to pa[32:33]. Move it out from the flag.
+
+No need fix tag since currently only mt8192 use the calulation and it
+always has this IOVA_34 flag.
+
+Prepare for the IOMMU that still use IOVA 32bits but its dram size may be
+over 4GB.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c    | 14 +++++++++++++-
- drivers/iommu/mtk_iommu.h    | 32 --------------------------------
- drivers/iommu/mtk_iommu_v1.c | 11 ++++++++---
- 3 files changed, 21 insertions(+), 36 deletions(-)
- delete mode 100644 drivers/iommu/mtk_iommu.h
+ drivers/iommu/mtk_iommu.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index ab3b1aedfdc3..d46eb745492f 100644
+index 1f3fe3276aa0..d59f6857a9df 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -14,6 +14,7 @@
- #include <linux/io.h>
- #include <linux/iommu.h>
- #include <linux/iopoll.h>
-+#include <linux/io-pgtable.h>
- #include <linux/list.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
-@@ -30,7 +31,7 @@
- #include <asm/barrier.h>
- #include <soc/mediatek/smi.h>
+@@ -283,11 +283,11 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
+ 	write = fault_iova & F_MMU_FAULT_VA_WRITE_BIT;
+ 	if (MTK_IOMMU_HAS_FLAG(data->plat_data, IOVA_34_EN)) {
+ 		va34_32 = FIELD_GET(F_MMU_INVAL_VA_34_32_MASK, fault_iova);
+-		pa34_32 = FIELD_GET(F_MMU_INVAL_PA_34_32_MASK, fault_iova);
+ 		fault_iova = fault_iova & F_MMU_INVAL_VA_31_12_MASK;
+ 		fault_iova |= (u64)va34_32 << 32;
+-		fault_pa |= (u64)pa34_32 << 32;
+ 	}
++	pa34_32 = FIELD_GET(F_MMU_INVAL_PA_34_32_MASK, fault_iova);
++	fault_pa |= (u64)pa34_32 << 32;
  
--#include "mtk_iommu.h"
-+#include <dt-bindings/memory/mtk-memory-port.h>
- 
- #define REG_MMU_PT_BASE_ADDR			0x000
- #define MMU_PT_ADDR_MASK			GENMASK(31, 7)
-@@ -166,6 +167,17 @@ struct mtk_iommu_iova_region {
- 	unsigned long long	size;
- };
- 
-+struct mtk_iommu_suspend_reg {
-+	u32			misc_ctrl;
-+	u32			dcm_dis;
-+	u32			ctrl_reg;
-+	u32			int_control0;
-+	u32			int_main_control;
-+	u32			ivrp_paddr;
-+	u32			vld_pa_rng;
-+	u32			wr_len_ctrl;
-+};
-+
- struct mtk_iommu_plat_data {
- 	enum mtk_iommu_plat	m4u_plat;
- 	u32			flags;
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-deleted file mode 100644
-index 305243e18aa9..000000000000
---- a/drivers/iommu/mtk_iommu.h
-+++ /dev/null
-@@ -1,32 +0,0 @@
--/* SPDX-License-Identifier: GPL-2.0-only */
--/*
-- * Copyright (c) 2015-2016 MediaTek Inc.
-- * Author: Honghui Zhang <honghui.zhang@mediatek.com>
-- */
--
--#ifndef _MTK_IOMMU_H_
--#define _MTK_IOMMU_H_
--
--#include <linux/device.h>
--#include <linux/io.h>
--#include <linux/io-pgtable.h>
--#include <linux/iommu.h>
--#include <linux/spinlock.h>
--#include <soc/mediatek/smi.h>
--#include <dt-bindings/memory/mtk-memory-port.h>
--
--struct mtk_iommu_suspend_reg {
--	union {
--		u32			standard_axi_mode;/* v1 */
--		u32			misc_ctrl;/* v2 */
--	};
--	u32				dcm_dis;
--	u32				ctrl_reg;
--	u32				int_control0;
--	u32				int_main_control;
--	u32				ivrp_paddr;
--	u32				vld_pa_rng;
--	u32				wr_len_ctrl;
--};
--
--#endif
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 6d1c09c91e1f..3d1f0897d1cc 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -7,7 +7,6 @@
-  *
-  * Based on driver/iommu/mtk_iommu.c
-  */
--#include <linux/memblock.h>
- #include <linux/bug.h>
- #include <linux/clk.h>
- #include <linux/component.h>
-@@ -28,10 +27,9 @@
- #include <linux/spinlock.h>
- #include <asm/barrier.h>
- #include <asm/dma-iommu.h>
--#include <linux/init.h>
-+#include <dt-bindings/memory/mtk-memory-port.h>
- #include <dt-bindings/memory/mt2701-larb-port.h>
- #include <soc/mediatek/smi.h>
--#include "mtk_iommu.h"
- 
- #define REG_MMU_PT_BASE_ADDR			0x000
- 
-@@ -87,6 +85,13 @@
-  */
- #define M2701_IOMMU_PGT_SIZE			SZ_4M
- 
-+struct mtk_iommu_suspend_reg {
-+	u32			standard_axi_mode;
-+	u32			dcm_dis;
-+	u32			ctrl_reg;
-+	u32			int_control0;
-+};
-+
- struct mtk_iommu_data {
- 	void __iomem			*base;
- 	int				irq;
+ 	fault_port = F_MMU_INT_ID_PORT_ID(regval);
+ 	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_SUB_COMM)) {
 -- 
 2.18.0
 
