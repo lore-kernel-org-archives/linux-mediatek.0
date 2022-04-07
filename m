@@ -4,71 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAD65C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 07:42:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33757C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 08:00:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p+ImQjEp3uxMnJ06//veofoeIUWLe4XOE0Xosn2SIvE=; b=trayE6OMvShLQo
-	jNO+i0CUWNXJvbfiqnq+bd2vPlMXUGwwjfu6LuWuUta0Otp5wtpK4vqQt+wxEUwU9v1+ZHrULNOdN
-	+TRmi+NHTBVuO8Sf+bvndGWGMRqJ1R6ezhRrw+2NnFBJvPiLpnj3lhHqvUV7l9htqWr65FtG2Yt5K
-	2KF7BkRHwbtogpy+AMmQg+w3beFqPdXbKlwPDQ45zInILCtwT8/kT3RB8NNIqLBa4voRWuQrhX2yy
-	GPDVMSLSIzYzWpe8ycaNd8N5jWP8wu2GHmCo9Z2eGVZSYQSm7OKQtRIV9RXUtDiXMiTf7DAqTf+x5
-	rgul/wD+k4OLFR+Vtc2A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kbOyUHbklCnvLOullBQE0uNRxpMQyvvEwo0NoN4zxuM=; b=W1uc0Mx5sh+L9B
+	pbrx5QSoTYhNj042c6WnK4fGL+W/MfTVDhiozl2qNjwnHqGcmQeQ6aWPjxRvr66suy3ec+tD6bEYU
+	g3EeMYAb3fNHKtzMNHIEqR9mdZ3Q/Wqffar6ZyGQ7YOtteYW9yH7nsCt2AGeuaQoKoJd/lh625yly
+	+qnOmkf7CEUcRZbtEPus26otMeP7/HDgUy0GZw5w8MVNrRAjXPdCxCITwBvr7qluStknzmXNeANei
+	7Yg1wRN+FtUFX5SrNev9Sjc1+BJkTWwM8dDUP4M7iGd8nUYhWCaPON4abNOJCrVoitHH8VPH8FM6m
+	6zg8nrLpeptuspV1ysag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncMn7-00A3w1-JL; Thu, 07 Apr 2022 07:42:53 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1ncN43-00ABuJ-QZ; Thu, 07 Apr 2022 08:00:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncMmu-00A3qZ-01
- for linux-mediatek@lists.infradead.org; Thu, 07 Apr 2022 07:42:41 +0000
-Received: by mail-pf1-x433.google.com with SMTP id s2so4726804pfh.6
- for <linux-mediatek@lists.infradead.org>; Thu, 07 Apr 2022 00:42:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=mmGJug9XSvLc9UYs1snhVqbU1zFE1jKfOiCb4bT1Xyg=;
- b=TJToiuxAPxO5gLD+PPdeYwNbEDsymoriISgGQMYm42U8IwVbKx0WrqMGHSbilyJb3S
- Sqx8moZPwNEVW7CPcU5qbbHcrA0xQOqYjV89Wyq8q5k7yhUR3jNKvMsf49IBMStV1adY
- 0tLWB2SF/fBoQg0g7VDy3KaG1MXvzAqSBVaH8MvY5KPrr2+sxqZRxeE6HWkmfg13mQd7
- P/B0GqanU/0MUAx2Btjd8XvipjUR9DBmUrexqTgtO3+JkCR2ICJAgzqepmSKESe4zv2d
- 3AkbJCIC7jZ6k2H/o4TIb3Iz/UOACOY2Sbl/8Qn2z/e8iLCQYt4s85+wfUXPT89oZftL
- 2htg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=mmGJug9XSvLc9UYs1snhVqbU1zFE1jKfOiCb4bT1Xyg=;
- b=D45/DiJwQybuhkzqYk93klj6swjkeUnYjr58X30IugdmCgsUnE9nIz69izpOhdRjQu
- 41p3HuQDPfgeZc+k0Nt3674mc9/kAbuZzw4PU+vRZbUrwl3hVo47kUzoKRpatnWGax8V
- Abeyayn3nm8Zz0kSsEbCESPE0ONf/0IAoe1bLnXGnDu65U7PSanavmvLqLGxpysCMxI0
- ei4GwKzIolbYU4JLIAJRzXVudJQuf8khvnSWqu8lW11qGgehhFz7CJZpM33PMWAV6tqX
- Oasg8bL2HsycnwKG6RpoXiClvJ9oBR5dPnVlfhhw7e3ZcpNsATNKf69gLu1QulUQHt0G
- cg5Q==
-X-Gm-Message-State: AOAM5321oM5QLdYJwU+Uoh6QgN1hbIS9F/0OaEyZVXqX4j3GWLLkaj0R
- shPl9A0gEOOKg5yl388BELlAtXruzYVXid43zqVm+Q==
-X-Google-Smtp-Source: ABdhPJzL4k8cNQVWa4KDJhE14ZI813y48fsqof0zEaw00HIk2pdqyRAXsd/G22FnKYSuMAjQx3qQezRJ+iq5Yv+hb1A=
-X-Received: by 2002:a05:6a00:995:b0:4fb:607d:444c with SMTP id
- u21-20020a056a00099500b004fb607d444cmr12738497pfg.69.1649317355656; Thu, 07
- Apr 2022 00:42:35 -0700 (PDT)
+ id 1ncN1c-00AAWi-9q; Thu, 07 Apr 2022 07:57:54 +0000
+X-UUID: dfb44b0626fa48118e1f18aea0913e3f-20220407
+X-UUID: dfb44b0626fa48118e1f18aea0913e3f-20220407
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 809742721; Thu, 07 Apr 2022 00:57:42 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 7 Apr 2022 00:57:40 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 7 Apr 2022 15:57:38 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 7 Apr 2022 15:57:35 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
+CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@canonical.com>, Tomasz Figa <tfiga@chromium.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, <yong.wu@mediatek.com>,
+ <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
+ <xueqi.zhang@mediatek.com>, <yen-chang.chen@mediatek.com>, "AngeloGioacchino
+ Del Regno" <angelogioacchino.delregno@collabora.com>,
+ <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
+ <chengci.xu@mediatek.com>
+Subject: [PATCH v6 00/34] MT8195 IOMMU SUPPORT
+Date: Thu, 7 Apr 2022 15:56:52 +0800
+Message-ID: <20220407075726.17771-1-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <CAHUa44GDg7hAAFsmeOOkeqi8_1P1Q6jATRdnV9b6S-DhpEEQrA@mail.gmail.com>
- <20220406144028.4203-1-phil.chang@mediatek.com>
-In-Reply-To: <20220406144028.4203-1-phil.chang@mediatek.com>
-From: Jens Wiklander <jens.wiklander@linaro.org>
-Date: Thu, 7 Apr 2022 09:42:24 +0200
-Message-ID: <CAHUa44GDp=GSP5D=eCowZv09Ws_j44Y7mc=dY3eFAf0uLQBsRA@mail.gmail.com>
-Subject: Re: Re: [PATCH v4] tee: make tee_shm_register_kernel_buf vmalloc
- supported
-To: Phil Chang <Phil.Chang@mediatek.com>
-Cc: sumit.garg@linaro.org, matthias.bgg@gmail.com, 
- op-tee@lists.trustedfirmware.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_004240_100275_8DF87350 
-X-CRM114-Status: GOOD (  26.66  )
+X-CRM114-CacheID: sfid-20220407_005752_406220_311A337F 
+X-CRM114-Status: GOOD (  17.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,114 +79,139 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Phil,
+This patchset adds MT8195 iommu support.
 
-On Wed, Apr 6, 2022 at 4:40 PM Phil Chang <phil.chang@mediatek.com> wrote:
->
-> > On Fri, Feb 25, 2022 at 4:20 PM Phil Chang <phil.chang@mediatek.com>
-> > wrote:
-> >>
-> >> In some low-memory devices, it's hard to aquire large-orders pages,
-> >> this patch allowed user using scatter pages to register shm.
-> >>
-> >> Signed-off-by: Phil Chang <phil.chang@mediatek.com>
-> >> Reviewed-by: Sumit Garg <sumit.garg@linaro.org>
-> >> ---
-> >>  drivers/tee/optee/call.c |  2 +-
-> >>  drivers/tee/tee_shm.c    | 35 +++++++++++++++++++++++++----------
-> >>  2 files changed, 26 insertions(+), 11 deletions(-)
-> >
-> > Looks good to me. Unfortunately this is too late for the coming merge
-> > window, so it's going to be the one after that. Meanwhile it will be
-> > in linux-next.
-> >
-> > Thanks,
-> > Jens
->
->  Hi Jens
->    thanks for your review, did I push again wile merge window open ?
->    Or just wait ?
+MT8195 have 3 IOMMU HWs. 2 IOMMU HW is for multimedia, and 1 IOMMU HW is
+for infra-master, like PCIe/USB.
 
-Just wait. You should be able to see it in linux-next for now.
+About the 2 MM IOMMU HW, something like this:
 
-Cheers,
-Jens
+        IOMMU(VDO)          IOMMU(VPP)
+           |                   |
+      SMI_COMMON(VDO)      SMI_COMMON(VPP)
+      ---------------     ----------------
+      |      |   ...      |      |     ...
+    larb0 larb2  ...    larb1 larb3    ...
 
->
->  Thanks
->
-> >>
-> >> diff --git a/drivers/tee/optee/call.c b/drivers/tee/optee/call.c
-> >> index bd49ec934060..2082e632adff 100644
-> >> --- a/drivers/tee/optee/call.c
-> >> +++ b/drivers/tee/optee/call.c
-> >> @@ -362,7 +362,7 @@ int optee_check_mem_type(unsigned long start,
-> >> size_t num_pages)
-> >>          * Allow kernel address to register with OP-TEE as kernel
-> >>          * pages are configured as normal memory only.
-> >>          */
-> >> -       if (virt_addr_valid(start))
-> >> +       if (virt_addr_valid(start) || is_vmalloc_addr((void *)start))
-> >>                 return 0;
-> >>
-> >>         mmap_read_lock(mm);
-> >> diff --git a/drivers/tee/tee_shm.c b/drivers/tee/tee_shm.c
-> >> index f31e29e8f1ca..836872467dc6 100644
-> >> --- a/drivers/tee/tee_shm.c
-> >> +++ b/drivers/tee/tee_shm.c
-> >> @@ -23,21 +23,36 @@ static void shm_put_kernel_pages(struct page
-> >> **pages, size_t page_count)
-> >>  static int shm_get_kernel_pages(unsigned long start, size_t
-> >>  page_count,
-> >>                                 struct page **pages)
-> >>  {
-> >> -       struct kvec *kiov;
-> >>         size_t n;
-> >>         int rc;
-> >>
-> >> -       kiov = kcalloc(page_count, sizeof(*kiov), GFP_KERNEL);
-> >> -       if (!kiov)
-> >> -               return -ENOMEM;
-> >> +       if (is_vmalloc_addr((void *)start)) {
-> >> +               struct page *page;
-> >>
-> >> -       for (n = 0; n < page_count; n++) {
-> >> -               kiov[n].iov_base = (void *)(start + n * PAGE_SIZE);
-> >> -               kiov[n].iov_len = PAGE_SIZE;
-> >> -       }
-> >> +               for (n = 0; n < page_count; n++) {
-> >> +                       page = vmalloc_to_page((void *)(start +
-> >> PAGE_SIZE * n));
-> >> +                       if (!page)
-> >> +                               return -ENOMEM;
-> >> +
-> >> +                       get_page(page);
-> >> +                       pages[n] = page;
-> >> +               }
-> >> +               rc = page_count;
-> >> +       } else {
-> >> +               struct kvec *kiov;
-> >> +
-> >> +               kiov = kcalloc(page_count, sizeof(*kiov), GFP_KERNEL);
-> >> +               if (!kiov)
-> >> +                       return -ENOMEM;
-> >>
-> >> -       rc = get_kernel_pages(kiov, page_count, 0, pages);
-> >> -       kfree(kiov);
-> >> +               for (n = 0; n < page_count; n++) {
-> >> +                       kiov[n].iov_base = (void *)(start + n *
-> >> PAGE_SIZE);
-> >> +                       kiov[n].iov_len = PAGE_SIZE;
-> >> +               }
-> >> +
-> >> +               rc = get_kernel_pages(kiov, page_count, 0, pages);
-> >> +               kfree(kiov);
-> >> +       }
-> >>
-> >>         return rc;
-> >>  }
-> >> --
-> >> 2.25.1
+these two MM IOMMU HW share a pgtable.
+
+About the INFRA IOMMU, it don't have larbs, the master connects the iommu
+directly. It use a independent pgtable.
+
+Also, mt8195 IOMMU bank supports. Normally the IOMMU register size only
+is 0x1000. In this IOMMU HW, the register size is 5 * 0x1000. each 0x1000
+is a bank. the banks' register look like this:
+     ----------------------------------------
+     |bank0  | bank1 | bank2 | bank3 | bank4|
+     ----------------------------------------
+     |global |
+     |control|         null
+     |regs   |
+     -----------------------------------------
+     |bank   |bank   |bank   |bank   |bank   |
+     |regs   |regs   |regs   |regs   |regs   |
+     |       |       |       |       |       |
+     -----------------------------------------
+All the banks share some global control registers, and each bank have its
+special bank registers, like pgtable base register, tlb operation registers,
+the fault status registers.
+ 
+In mt8195, we enable this bank feature for infra iommu, We put PCIe in bank0
+and USB in bank4. they have independent pgtable.
+
+Change note:
+v6: Rebase on v5.18-rc1.
+
+v5: https://lore.kernel.org/linux-iommu/20220217113453.13658-1-yong.wu@mediatek.com
+   1) Base on next-20220216
+   2) Remove a patch for kmalloc for protect buffer. keep the kzalloc for it.
+   3) minor fix from AngeloGioacchino, like rename the error label name
+   (data_unlock to err_unlock).
+   Note, keep the TODO for component compare_of[26/34].
+
+v4: https://lore.kernel.org/linux-iommu/20220125085634.17972-1-yong.wu@mediatek.com/
+   1) Base on v5.16-rc1
+   2) Base on tlb logic 2 patchset, some patches in v3 has already gone
+   through that patchset.
+   3) Due to the unreadable union for v1/v2(comment in 26/33 of v3), I
+   separate mtk_iommu_data for v1 and v2 totally, then remove mtk_iommu.h.
+   please see patch[26/35][27/35].
+   4) add two mutex for the internal data. patch[6/35][7/35].
+   5) add a new flag PM_CLK_AO.
+
+v3: https://lore.kernel.org/linux-mediatek/20210923115840.17813-1-yong.wu@mediatek.com/
+    1) base on v5.15-rc1
+    2) Adjust devlink with smi-common, not use the property(sub-sommon).
+    3) Adjust tlb_flush_all flow,
+       a) Fix tlb_flush_all only is supported in bank0.
+       b) add tlb-flush-all in the resume callback.
+       c) remove the pm status checking in tlb-flush-all.
+       The reason are showed in the commit message.
+    4) Allow IOMMU_DOMAIN_UNMANAGED since PCIe VFIO use that.
+    5) Fix a clk warning and a null abort when unbind the iommu driver.
+
+v2: https://lore.kernel.org/linux-mediatek/20210813065324.29220-1-yong.wu@mediatek.com/
+    1) Base on v5.14-rc1.
+    2) Fix build fail for arm32.
+    3) Fix dt-binding issue from Rob.
+    4) Fix the bank issue when tlb flush. v1 always use bank->base.
+    5) adjust devlink with smi-common since the node may be smi-sub-common.
+    6) other changes: like reword some commit message(removing many
+       "This patch..."); seperate serveral patches.
+
+v1: https://lore.kernel.org/linux-mediatek/20210630023504.18177-1-yong.wu@mediatek.com/
+    Base on v5.13-rc1
+
+Yong Wu (34):
+  dt-bindings: mediatek: mt8195: Add binding for MM IOMMU
+  dt-bindings: mediatek: mt8195: Add binding for infra IOMMU
+  iommu/mediatek: Fix 2 HW sharing pgtable issue
+  iommu/mediatek: Add list_del in mtk_iommu_remove
+  iommu/mediatek: Remove clk_disable in mtk_iommu_remove
+  iommu/mediatek: Add mutex for m4u_group and m4u_dom in data
+  iommu/mediatek: Add mutex for data in the mtk_iommu_domain
+  iommu/mediatek: Adapt sharing and non-sharing pgtable case
+  iommu/mediatek: Add 12G~16G support for multi domains
+  iommu/mediatek: Add a flag DCM_DISABLE
+  iommu/mediatek: Add a flag NON_STD_AXI
+  iommu/mediatek: Remove the granule in the tlb flush
+  iommu/mediatek: Always enable output PA over 32bits in isr
+  iommu/mediatek: Add SUB_COMMON_3BITS flag
+  iommu/mediatek: Add IOMMU_TYPE flag
+  iommu/mediatek: Contain MM IOMMU flow with the MM TYPE
+  iommu/mediatek: Adjust device link when it is sub-common
+  iommu/mediatek: Allow IOMMU_DOMAIN_UNMANAGED for PCIe VFIO
+  iommu/mediatek: Add a PM_CLK_AO flag for infra iommu
+  iommu/mediatek: Add infra iommu support
+  iommu/mediatek: Add PCIe support
+  iommu/mediatek: Add mt8195 support
+  iommu/mediatek: Only adjust code about register base
+  iommu/mediatek: Just move code position in hw_init
+  iommu/mediatek: Separate mtk_iommu_data for v1 and v2
+  iommu/mediatek: Remove mtk_iommu.h
+  iommu/mediatek-v1: Just rename mtk_iommu to mtk_iommu_v1
+  iommu/mediatek: Add mtk_iommu_bank_data structure
+  iommu/mediatek: Initialise bank HW for each a bank
+  iommu/mediatek: Change the domid to iova_region_id
+  iommu/mediatek: Get the proper bankid for multi banks
+  iommu/mediatek: Initialise/Remove for multi bank dev
+  iommu/mediatek: Backup/restore regsiters for multi banks
+  iommu/mediatek: mt8195: Enable multi banks for infra iommu
+
+ .../bindings/iommu/mediatek,iommu.yaml        |  20 +-
+ drivers/iommu/mtk_iommu.c                     | 955 +++++++++++++-----
+ drivers/iommu/mtk_iommu.h                     | 101 --
+ drivers/iommu/mtk_iommu_v1.c                  | 235 +++--
+ .../dt-bindings/memory/mt8195-memory-port.h   | 408 ++++++++
+ include/dt-bindings/memory/mtk-memory-port.h  |   2 +
+ 6 files changed, 1244 insertions(+), 477 deletions(-)
+ delete mode 100644 drivers/iommu/mtk_iommu.h
+ create mode 100644 include/dt-bindings/memory/mt8195-memory-port.h
+
+-- 
+2.18.0
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
