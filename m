@@ -4,65 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F929C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 09:34:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E82EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 09:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZxeXoytxktmz9xKn8jxHV6EYntmTfezOVFrfCt241Pw=; b=0qp0U9S+5bLxtQ
-	KXYIzulbWKt7WeosyvQc0JyC166XxgR6PyUU4K8oyKCQ3hVPm38C6CSIF32U6n9IEMNEfTVZ8sQfw
-	SjnDRZrejS9Pqe+g7jIIyG47RkxHjNpPZP08zyGLigb9e2ExhjEZsGDld5MOnmx4oc9MZnLlFqfXX
-	t4td3vkQ5QeehFOoeCv59gTUxmhH6Xi80e3PhnNzL0lOZRERJMBVtQnG9UdzNogok9P5LMkDHEx8k
-	9eXrYnI+yolEh0VxVECSya8kU0wD9DgulzqLybGWS6LCIpGZVPEJa19ItW4FLTe9TroaANGlRQDFt
-	n5VasPKmfXn34u54CYEQ==;
+	List-Owner; bh=rXDC9WpA4ysUzjC3WWt4hmQ/L42rrtlgNTBeqNMbKBE=; b=n3zGut/Myr1etZ
+	JwQXpY3xgO+m3hI2NUSI8C+YOVXFUD8wNurhvfrUSIfXlEl9q7cc3kQV4izRzGPFCVXVtIjwaZdBO
+	MJ/ZjK0j4HHrHas/30cANCMAL4KBALxag+pAq2vj5itNaup/ug05TppNlUIh56WvNIX8CmdghLc+T
+	uLLZdgTWAQuN4PAt/O9tN2NehIfkWQZdHsI8rYtXgqkBi89h9XCHC3mLVKEYNLvPeGd//ApoZbOJ0
+	0DksWPtxEysF3Cr08aUC8XataJoVRfh9zNsxqHR4wkCHcXzfI1XZYqZ3qjl3EkxsY6+TeB0q6MqeS
+	WnROPqMkz2T+eFi+2iew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncOXI-00AthJ-Fu; Thu, 07 Apr 2022 09:34:40 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1ncOkA-00Aztb-SY; Thu, 07 Apr 2022 09:47:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncOEL-00Aki9-1g; Thu, 07 Apr 2022 09:15:10 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id B54001F45D10
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649322901;
- bh=Vp8spYIhwo7N7JRZAF9B+aIKQJcypmlmdcxKZySVhHI=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=AluF5CwDx5CVbLKCQNTxPZUwsgNwazRh3dLrh3ErmlnI5jUJO2lRktx0PXSKBwGj0
- iZ9YnX5mCb4RdgIKes22gC895MUKXXaZZ5Ng1ZRGkrdyNXzkdpWayDjDo+EvQr/2UA
- LJUbZLFi5ZZRdiu9m9pIRe90Lh6bYs6AyJxElSVws5zJQayRS4MgBkIOvCDESV1sHC
- ti2qdF6tCCF1HNYAHLdeo3IiEQvI5YvKbZmNMJW0ydEyfdl+fKvOLK0SjJas7bUwhu
- +pjv85M6V3pA9HDckFLg53Srld34H7MG6VbEq2saEv//PTXD5ofFMHK+gm+9hijD8f
- iBKU29Mo9Kk6w==
-Message-ID: <88182c78-de18-bf9a-994b-95d720d90917@collabora.com>
-Date: Thu, 7 Apr 2022 11:14:58 +0200
+ id 1ncOLv-00Aohp-ID; Thu, 07 Apr 2022 09:22:57 +0000
+X-UUID: 91217a6353d74205a800549aa1cc2611-20220407
+X-UUID: 91217a6353d74205a800549aa1cc2611-20220407
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 95877515; Thu, 07 Apr 2022 02:22:45 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 7 Apr 2022 02:12:43 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 7 Apr 2022 17:12:41 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 7 Apr 2022 17:12:41 +0800
+Message-ID: <580959b0877d84923ac6298d56d904d4132dab86.camel@mediatek.com>
+Subject: Re: [PATCH 1/1] arm64: dts: mt8192: Add mmc device nodes
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, "Hui Liu"
+ <hui.liu@mediatek.com>
+Date: Thu, 7 Apr 2022 17:12:41 +0800
+In-Reply-To: <329bed03-770d-106c-29b4-eb1d6037bf65@collabora.com>
+References: <20220401053052.2160-1-allen-kh.cheng@mediatek.com>
+ <20220401053052.2160-2-allen-kh.cheng@mediatek.com>
+ <329bed03-770d-106c-29b4-eb1d6037bf65@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v3 2/2] iommu/mediatek: Add mt8186 iommu support
-Content-Language: en-US
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Will Deacon <will@kernel.org>
-Cc: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
- <krzk@kernel.org>, Tomasz Figa <tfiga@chromium.org>,
- linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org,
- Hsin-Yi Wang <hsinyi@chromium.org>, youlin.pei@mediatek.com,
- anan.sun@mediatek.com, xueqi.zhang@mediatek.com,
- yen-chang.chen@mediatek.com, mingyuan.ma@mediatek.com, yf.wang@mediatek.com,
- libo.kang@mediatek.com, chengci.xu@mediatek.com
-References: <20220407083230.18041-1-yong.wu@mediatek.com>
- <20220407083230.18041-3-yong.wu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220407083230.18041-3-yong.wu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_021505_296938_655DDFE3 
-X-CRM114-Status: UNSURE (   7.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220407_022255_682832_B0B359D6 
+X-CRM114-Status: GOOD (  17.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,19 +71,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/04/22 10:32, Yong Wu ha scritto:
-> Add mt8186 iommu supports.
+Hi Angelo,
+On Mon, 2022-04-04 at 14:36 +0200, AngeloGioacchino Del Regno wrote:
+> Il 01/04/22 07:30, Allen-KH Cheng ha scritto:
+> > Add mmc nodes for mt8192 SoC.
+> > 
+> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 33
+> > ++++++++++++++++++++++++
+> >   1 file changed, 33 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > index a6da7b04b9d4..23eb92057cb9 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > @@ -989,6 +989,39 @@
+> >   			compatible = "mediatek,mt8192-msdc";
+> >   			reg = <0 0x11f60000 0 0x1000>;
+> >   			#clock-cells = <1>;
+> > +			status = "disabled";
+> > +		};
+> > +
 > 
-> Signed-off-by: Anan Sun <anan.sun@mediatek.com>
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Hello!
+> Please explain the reason (in the commit message) why you're
+> disabling the
+> mediatek,mt8192-msdc node, which was enabled before this change.
+> 
+> Also, introducing the mtk-sd controller at the same address as the
+> mt8192-msdc
+> clock controller will produce a warning...
+> 
+> Thanks,
+> Angelo
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In mt8192.
+mmc driver would directly  write/read register(11f60000) to control
+clock configure.
+
+Alos there is no other module using msdc: clock-controller.
+
+I would remove the clock-controller entirely and explain in commit
+description.
+
+Thanks,
+Allen
+
 
 
 _______________________________________________
