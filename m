@@ -4,57 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95969C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 03:14:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80163C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 04:36:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=J4netYrOn/ML1A9DtPx/biXVEJXgdxU11TRa3E5Kdv8=; b=knjLpluwsfIE1O
-	X23DUp3Ejl6XX6br4sJwLs7uA6MkUVJia4XRBTOWheWakDqHfboHzwHPADfXy8Qz7lxsIQxZJefNp
-	lojo4DMfEQhrlmXmh3d+95RNF3pFu4CcwCBEMRw/DbNYN7baPCtTPf7KZPQHXVEYy2OFZbU/LAkyK
-	Xc9bnAf2lq6VyUqhSu0EFZfy2B4Xg2s/bV+ZMYSD+LiiIMJBUXfqoWSuphzxhkcZ5PGYwo3k9nFM1
-	oIk+zr4Tpo+Y6+87IsF3u28eKIYplLWAGX1d+6xRxB167ix+hkwXFOEavJYVoyiboDoGL3Q+40Q9I
-	BtWo+EKbISbASx1NzGOA==;
+	List-Owner; bh=AdbThC6UYA7te+6XA3Enf9qJIg3kkpE1/MlMGM3bZ64=; b=J0+k4SimrqiSEI
+	NhEkoC4d8DLcaYRbRpUNzvWRcvmTjvuoDxlGH9/3EDLSwdkvCDgRPVsNHMd8dpGdz809iQM6LHqiL
+	K4XM8IZAEjXFkd1T0AoK5GfLkypWARMgIKX1IHlh0hRegJ0GqeVkN3W04cEIQATANhSXqUeRB/hFX
+	CbwErHSp46l79Qi+szDqXxYW8+FaozcGaJEu9lYJ+92FNoTq70bO2nHrLJm92TM6bDunW6QtBRDjR
+	lsPBYO1y7G4LLYTssQn1SGTC7nof+cozAIZLCzXKSLroIECkpoDJk1Wrwe5nGXwgaABiwg8OpiaZw
+	5Py2ZQM4OeEZj0qsKjLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncIbN-0090zM-BF; Thu, 07 Apr 2022 03:14:29 +0000
+	id 1ncJsT-009M3F-Rg; Thu, 07 Apr 2022 04:36:13 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncIbI-0090wi-9H; Thu, 07 Apr 2022 03:14:26 +0000
-X-UUID: f9ddf72cec7e441caeaf8377e1f14d67-20220406
-X-UUID: f9ddf72cec7e441caeaf8377e1f14d67-20220406
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jason-jh.lin@mediatek.com>)
+ id 1ncJA0-009Ciz-TW; Thu, 07 Apr 2022 03:50:19 +0000
+X-UUID: 34ea3f803228423a90cca3b28ca87591-20220406
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=+NYe7dscBpsdauizQk1b3zrz0HXT8zPnE/52TQmYc3o=; 
+ b=uoNUvTAYJ1kBTQpD0lQN6pZwJwGWgg3vaTSiYtXvrR8Jugy4+Z8YwYhRZez2zG7MefMy4kLJFe6+s5aL6r3zKTLAc+98Pjywco/SRaajg6ESmzZ0bGueObrZGX3ma3VivlRtkNM3YVx9OVICt9iwl1UMqIJvV8OnCKUZwcbwacw=;
+X-UUID: 34ea3f803228423a90cca3b28ca87591-20220406
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <xinlei.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2006332804; Wed, 06 Apr 2022 20:14:20 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 6 Apr 2022 20:04:17 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 7 Apr 2022 11:04:11 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 7 Apr 2022 11:04:11 +0800
-From: jason-jh.lin <jason-jh.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [RESEND v17 6/7] drm/mediatek: add MERGE support for mediatek-drm
-Date: Thu, 7 Apr 2022 11:04:08 +0800
-Message-ID: <20220407030409.9664-7-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220407030409.9664-1-jason-jh.lin@mediatek.com>
-References: <20220407030409.9664-1-jason-jh.lin@mediatek.com>
+ with ESMTP id 761470637; Wed, 06 Apr 2022 20:50:09 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 6 Apr 2022 20:50:08 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 7 Apr 2022 11:50:06 +0800
+Received: from mszsdhlt06 (10.16.6.206) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 7 Apr 2022 11:50:04 +0800
+Message-ID: <bdeeb164ad0144eafa6af2dc4ad1b6f7ce2a08e3.camel@mediatek.com>
+Subject: Re: [PATCH v3,2/4] drm/mediatek: Separate poweron/poweroff from
+ enable/disable and define new funcs
+From: xinlei.lee <xinlei.lee@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+ <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <matthias.bgg@gmail.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, <jitao.shi@mediatek.com>
+Date: Thu, 7 Apr 2022 11:50:32 +0800
+In-Reply-To: <eca60f45ab518a53b1d281c078f562b8bc610060.camel@mediatek.com>
+References: <1647503611-13144-1-git-send-email-xinlei.lee@mediatek.com>
+ <1647503611-13144-3-git-send-email-xinlei.lee@mediatek.com>
+ <390025b57d3345c34071231c68350e9311af64c9.camel@mediatek.com>
+ <4d022881d08ea1d4a222b3439510c6d6d26d7284.camel@mediatek.com>
+ <eca60f45ab518a53b1d281c078f562b8bc610060.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_201424_419032_D5D082B1 
-X-CRM114-Status: GOOD (  26.42  )
+X-CRM114-CacheID: sfid-20220406_205017_042888_9DE4086E 
+X-CRM114-Status: GOOD (  45.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,429 +79,233 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: David Airlie <airlied@linux.ie>, singo.chang@mediatek.com,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, postmaster@vger.kernel.org,
- Fabien Parent <fparent@baylibre.com>, John
- 'Warthog9' Hawley <warthog9@eaglescrag.net>,
- linux-stm32@st-md-mailman.stormreply.com, roy-cw.yeh@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com, CK
- Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- devicetree@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>,
- nancy.lin@mediatek.com, linux-mediatek@lists.infradead.org,
- hsinyi@chromium.org, linux-arm-kernel@lists.infradead.org,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>, linux-kernel@vger.kernel.org,
- moudy.ho@mediatek.com, Maxime Coquelin <mcoquelin.stm32@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MERGE engine file:
-MERGE module is used to merge two slice-per-line inputs
-into one side-by-side output.
+On Wed, 2022-03-23 at 19:46 +0800, Rex-BC Chen wrote:
+> On Tue, 2022-03-22 at 17:23 +0800, xinlei.lee wrote:
+> > On Thu, 2022-03-17 at 20:02 +0800, Rex-BC Chen wrote:
+> > > Hello Xinlei,
+> > > 
+> > > On Thu, 2022-03-17 at 15:53 +0800, xinlei.lee@mediatek.com wrote:
+> > > > From: Jitao Shi <jitao.shi@mediatek.com>
+> > > > 
+> > > > In order to match the changes of "Use the drm_panel_bridge
+> > > > API",
+> > > > the poweron/poweroff of dsi is extracted from enable/disable
+> > > > and
+> > > > defined as new funcs (pre_enable/post_disable).
+> > > > 
+> > > > Fixes: 2dd8075d2185 ("drm/mediatek: mtk_dsi: Use the
+> > > > drm_panel_bridge
+> > > > API")
+> > > > 
+> > > > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> > > > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> > > > ---
+> > > >  drivers/gpu/drm/mediatek/mtk_dsi.c | 45 +++++++++++++++++-----
+> > > > --
+> > > > --
+> > > > --
+> > > > --
+> > > >  1 file changed, 26 insertions(+), 19 deletions(-)
+> > > > 
+> > > > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > > > b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > > > index 262c027d8c2f..e33caaca11a7 100644
+> > > > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > > > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > > > @@ -679,16 +679,6 @@ static void mtk_dsi_poweroff(struct
+> > > > mtk_dsi
+> > > > *dsi)
+> > > >  	if (--dsi->refcount != 0)
+> > > >  		return;
+> > > >  
+> > > > -	/*
+> > > > -	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric,
+> > > > since
+> > > > -	 * mtk_dsi_stop() should be called after
+> > > > mtk_drm_crtc_atomic_disable(),
+> > > > -	 * which needs irq for vblank, and mtk_dsi_stop() will
+> > > > disable
+> > > > irq.
+> > > > -	 * mtk_dsi_start() needs to be called in
+> > > > mtk_output_dsi_enable(),
+> > > > -	 * after dsi is fully set.
+> > > > -	 */
+> > > > -	mtk_dsi_stop(dsi);
+> > > > -
+> > > > -	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
+> > > >  	mtk_dsi_reset_engine(dsi);
+> > > >  	mtk_dsi_lane0_ulp_mode_enter(dsi);
+> > > >  	mtk_dsi_clk_ulp_mode_enter(dsi);
+> > > > @@ -703,17 +693,9 @@ static void mtk_dsi_poweroff(struct
+> > > > mtk_dsi
+> > > > *dsi)
+> > > >  
+> > > >  static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
+> > > >  {
+> > > > -	int ret;
+> > > > -
+> > > >  	if (dsi->enabled)
+> > > >  		return;
+> > > >  
+> > > > -	ret = mtk_dsi_poweron(dsi);
+> > > > -	if (ret < 0) {
+> > > > -		DRM_ERROR("failed to power on dsi\n");
+> > > > -		return;
+> > > > -	}
+> > > > -
+> > > >  	mtk_dsi_set_mode(dsi);
+> > > >  	mtk_dsi_clk_hs_mode(dsi, 1);
+> > > >  
+> > > > @@ -727,7 +709,16 @@ static void mtk_output_dsi_disable(struct
+> > > > mtk_dsi *dsi)
+> > > >  	if (!dsi->enabled)
+> > > >  		return;
+> > > >  
+> > > > -	mtk_dsi_poweroff(dsi);
+> > > > +	/*
+> > > > +	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric,
+> > > > since
+> > > 
+> > > Why they are asymmetric?
+> > > 
+> > > > +	 * mtk_dsi_stop() should be called after
+> > > > mtk_drm_crtc_atomic_disable(),
+> > > > +	 * which needs irq for vblank, and mtk_dsi_stop() will
+> > > > disable
+> > > > irq.
+> > > > +	 * mtk_dsi_start() needs to be called in
+> > > > mtk_output_dsi_enable(),
+> > > > +	 * after dsi is fully set.
+> > > > +	 */
+> > > > +	mtk_dsi_stop(dsi);
+> > > > +
+> > > > +	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
+> > > >  
+> > > >  	dsi->enabled = false;
+> > > >  }
+> > > > @@ -765,10 +756,26 @@ static void mtk_dsi_bridge_enable(struct
+> > > > drm_bridge *bridge)
+> > > >  	mtk_output_dsi_enable(dsi);
+> > > >  }
+> > > >  
+> > > > +static void mtk_dsi_bridge_pre_enable(struct drm_bridge
+> > > > *bridge)
+> > > > +{
+> > > > +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
+> > > > +
+> > > > +	mtk_dsi_poweron(dsi);
+> > > 
+> > > Should you handle the error of mtk_dsi_poweron?
+> > > If you failed to mtk_dsi_bridge_pre_enable and do
+> > > mtk_dsi_bridge_enable,
+> > > what will happend?
+> > > 
+> > > > +}
+> > > > +
+> > > > +static void mtk_dsi_bridge_post_disable(struct drm_bridge
+> > > > *bridge)
+> > > > +{
+> > > > +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
+> > > > +
+> > > > +	mtk_dsi_poweroff(dsi);
+> > > 
+> > > If you failed to mtk_dsi_bridge_disable and you do
+> > > mtk_dsi_bridge_post_disable,
+> > > what will happend?
+> > > Do you need to handle this?
+> > > 
+> > > BRs,
+> > > Rex
+> > > 
+> > > > +}
+> > > > +
+> > > >  static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
+> > > >  	.attach = mtk_dsi_bridge_attach,
+> > > >  	.disable = mtk_dsi_bridge_disable,
+> > > >  	.enable = mtk_dsi_bridge_enable,
+> > > > +	.pre_enable = mtk_dsi_bridge_pre_enable,
+> > > > +	.post_disable = mtk_dsi_bridge_post_disable,
+> > > >  	.mode_set = mtk_dsi_bridge_mode_set,
+> > > >  };
+> > > >  
+> > > 
+> > > 
+> > 
+> > Hi Rex:
+> > 
+> > Thanks for your review!
+> > 
+> > 1.Why they are asymmetric?
+> > =>My understanding mtk_dsi_stop() and mtk_dsi_start() is to make
+> > dsi
+> > switch from LP11 and HS mode.DSI has two working modes:
+> > If it is cmd mode, the data sent is sent by LP11, and dsi_start is
+> > just
+> > a signal. In this mode, dsi_stop is not required after sending cmd.
+> > If it is video mode, because the data needs to be sent in HS mode,
+> > dsi_start is required to make dsi enter HS mode from LP11. After
+> > suspend, drm will call dsi_disable, and call dsi_stop to make dsi
+> > return from HS mode to LP11 state.
+> > Therefore mtk_dsi_stop() and mtk_dsi_start() are asymmetric.
+> > For example, in the dsi_host_transfer function, only dsi_stop has
+> > no
+> > dsi_start operation.
+> > 
+> > 2.
+> > Because the return type of pre_enable & post_disable in common code
+> > is
+> > void type. If there is an error, it will be processed in
+> > poweron/poweroff, and the error message will be printed.
+> > Do you mean that pre_enable & post_disable needs to accept the
+> > poweron/poweroff error return value and then print the error log?
+> > 
+> > 3.
+> > If pre_enable fails, there is only a problem with the dsi module,
+> > and
+> > it does not affect the execution of other modules and enable funcs
+> > under drm. 
+> > Same goes for post_disable & disable.
+> > 
+> > Best Regrds!
+> > xinlei
+> > 
+> 
+> Hello Xinlei,
+> 
+> about failure for mtk_dsi_poweron(), it is all becuase of error
+> setting
+> for clock.
+> If we do not set clock correctly and not enable DSI, after set DSI
+> start, will it cause any issue? (maybe bus hang or something.)
+> 
+> Because in original drivers, if mtk_dsi_poweron failed, the DSI will
+> not start.
+> 
+> IMO, it also needs some error message for mtk_dsi_bridge_pre_enable()
+> and mtk_dsi_bridge_post_disable().
+> 
+> BRs,
+> Rex
+> 
 
-Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
----
- drivers/gpu/drm/mediatek/Makefile           |   1 +
- drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   8 +
- drivers/gpu/drm/mediatek/mtk_disp_merge.c   | 246 ++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  16 ++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   4 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   1 +
- 7 files changed, 276 insertions(+), 1 deletion(-)
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
+Hi Rex:
 
-diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
-index 29098d7c8307..a38e88e82d12 100644
---- a/drivers/gpu/drm/mediatek/Makefile
-+++ b/drivers/gpu/drm/mediatek/Makefile
-@@ -4,6 +4,7 @@ mediatek-drm-y := mtk_disp_aal.o \
- 		  mtk_disp_ccorr.o \
- 		  mtk_disp_color.o \
- 		  mtk_disp_gamma.o \
-+		  mtk_disp_merge.o \
- 		  mtk_disp_ovl.o \
- 		  mtk_disp_rdma.o \
- 		  mtk_drm_crtc.o \
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index 86c3068894b1..a33b13fe2b6e 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -55,6 +55,14 @@ void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state);
- void mtk_gamma_start(struct device *dev);
- void mtk_gamma_stop(struct device *dev);
- 
-+int mtk_merge_clk_enable(struct device *dev);
-+void mtk_merge_clk_disable(struct device *dev);
-+void mtk_merge_config(struct device *dev, unsigned int width,
-+		      unsigned int height, unsigned int vrefresh,
-+		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
-+void mtk_merge_start(struct device *dev);
-+void mtk_merge_stop(struct device *dev);
-+
- void mtk_ovl_bgclr_in_on(struct device *dev);
- void mtk_ovl_bgclr_in_off(struct device *dev);
- void mtk_ovl_bypass_shadow(struct device *dev);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-new file mode 100644
-index 000000000000..45face638153
---- /dev/null
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-@@ -0,0 +1,246 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2021 MediaTek Inc.
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/component.h>
-+#include <linux/of_device.h>
-+#include <linux/of_irq.h>
-+#include <linux/platform_device.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
-+
-+#include "mtk_drm_ddp_comp.h"
-+#include "mtk_drm_drv.h"
-+#include "mtk_disp_drv.h"
-+
-+#define DISP_REG_MERGE_CTRL		0x000
-+#define MERGE_EN				1
-+#define DISP_REG_MERGE_CFG_0		0x010
-+#define DISP_REG_MERGE_CFG_4		0x020
-+#define DISP_REG_MERGE_CFG_10		0x038
-+/* no swap */
-+#define SWAP_MODE				0
-+#define FLD_SWAP_MODE				GENMASK(4, 0)
-+#define DISP_REG_MERGE_CFG_12		0x040
-+#define CFG_10_10_1PI_2PO_BUF_MODE		6
-+#define CFG_10_10_2PI_2PO_BUF_MODE		8
-+#define FLD_CFG_MERGE_MODE			GENMASK(4, 0)
-+#define DISP_REG_MERGE_CFG_24		0x070
-+#define DISP_REG_MERGE_CFG_25		0x074
-+#define DISP_REG_MERGE_CFG_36		0x0a0
-+#define ULTRA_EN				BIT(0)
-+#define PREULTRA_EN				BIT(4)
-+#define DISP_REG_MERGE_CFG_37		0x0a4
-+/* 0: Off, 1: SRAM0, 2: SRAM1, 3: SRAM0 + SRAM1 */
-+#define BUFFER_MODE				3
-+#define FLD_BUFFER_MODE				GENMASK(1, 0)
-+/*
-+ * For the ultra and preultra settings, 6us ~ 9us is experience value
-+ * and the maximum frequency of mmsys clock is 594MHz.
-+ */
-+#define DISP_REG_MERGE_CFG_40		0x0b0
-+/* 6 us, 594M pixel/sec */
-+#define ULTRA_TH_LOW				(6 * 594)
-+/* 8 us, 594M pixel/sec */
-+#define ULTRA_TH_HIGH				(8 * 594)
-+#define FLD_ULTRA_TH_LOW			GENMASK(15, 0)
-+#define FLD_ULTRA_TH_HIGH			GENMASK(31, 16)
-+#define DISP_REG_MERGE_CFG_41		0x0b4
-+/* 8 us, 594M pixel/sec */
-+#define PREULTRA_TH_LOW				(8 * 594)
-+/* 9 us, 594M pixel/sec */
-+#define PREULTRA_TH_HIGH			(9 * 594)
-+#define FLD_PREULTRA_TH_LOW			GENMASK(15, 0)
-+#define FLD_PREULTRA_TH_HIGH			GENMASK(31, 16)
-+
-+struct mtk_disp_merge {
-+	void __iomem			*regs;
-+	struct clk			*clk;
-+	struct clk			*async_clk;
-+	struct cmdq_client_reg		cmdq_reg;
-+	bool				fifo_en;
-+};
-+
-+void mtk_merge_start(struct device *dev)
-+{
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
-+
-+	writel(MERGE_EN, priv->regs + DISP_REG_MERGE_CTRL);
-+}
-+
-+void mtk_merge_stop(struct device *dev)
-+{
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
-+
-+	writel(0x0, priv->regs + DISP_REG_MERGE_CTRL);
-+}
-+
-+static void mtk_merge_fifo_setting(struct mtk_disp_merge *priv,
-+				   struct cmdq_pkt *cmdq_pkt)
-+{
-+	mtk_ddp_write(cmdq_pkt, ULTRA_EN | PREULTRA_EN,
-+		      &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_36);
-+
-+	mtk_ddp_write_mask(cmdq_pkt, BUFFER_MODE,
-+			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_37,
-+			   FLD_BUFFER_MODE);
-+
-+	mtk_ddp_write_mask(cmdq_pkt, ULTRA_TH_LOW | ULTRA_TH_HIGH << 16,
-+			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_40,
-+			   FLD_ULTRA_TH_LOW | FLD_ULTRA_TH_HIGH);
-+
-+	mtk_ddp_write_mask(cmdq_pkt, PREULTRA_TH_LOW | PREULTRA_TH_HIGH << 16,
-+			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_41,
-+			   FLD_PREULTRA_TH_LOW | FLD_PREULTRA_TH_HIGH);
-+}
-+
-+void mtk_merge_config(struct device *dev, unsigned int w,
-+		      unsigned int h, unsigned int vrefresh,
-+		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
-+	unsigned int mode = CFG_10_10_1PI_2PO_BUF_MODE;
-+
-+	if (!h || !w) {
-+		dev_err(dev, "%s: input width(%d) or height(%d) is invalid\n", __func__, w, h);
-+		return;
-+	}
-+
-+	if (priv->fifo_en) {
-+		mtk_merge_fifo_setting(priv, cmdq_pkt);
-+		mode = CFG_10_10_2PI_2PO_BUF_MODE;
-+	}
-+
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_0);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_4);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_24);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_25);
-+	mtk_ddp_write_mask(cmdq_pkt, SWAP_MODE, &priv->cmdq_reg, priv->regs,
-+			   DISP_REG_MERGE_CFG_10, FLD_SWAP_MODE);
-+	mtk_ddp_write_mask(cmdq_pkt, mode, &priv->cmdq_reg, priv->regs,
-+			   DISP_REG_MERGE_CFG_12, FLD_CFG_MERGE_MODE);
-+}
-+
-+int mtk_merge_clk_enable(struct device *dev)
-+{
-+	int ret = 0;
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
-+
-+	ret = clk_prepare_enable(priv->clk);
-+	if (ret) {
-+		dev_err(dev, "merge clk prepare enable failed\n");
-+		return ret;
-+	}
-+
-+	ret = clk_prepare_enable(priv->async_clk);
-+	if (ret) {
-+		/* should clean up the state of priv->clk */
-+		clk_disable_unprepare(priv->clk);
-+
-+		dev_err(dev, "async clk prepare enable failed\n");
-+		return ret;
-+	}
-+
-+	return ret;
-+}
-+
-+void mtk_merge_clk_disable(struct device *dev)
-+{
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
-+
-+	clk_disable_unprepare(priv->async_clk);
-+	clk_disable_unprepare(priv->clk);
-+}
-+
-+static int mtk_disp_merge_bind(struct device *dev, struct device *master,
-+			       void *data)
-+{
-+	return 0;
-+}
-+
-+static void mtk_disp_merge_unbind(struct device *dev, struct device *master,
-+				  void *data)
-+{
-+}
-+
-+static const struct component_ops mtk_disp_merge_component_ops = {
-+	.bind	= mtk_disp_merge_bind,
-+	.unbind = mtk_disp_merge_unbind,
-+};
-+
-+static int mtk_disp_merge_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct resource *res;
-+	struct mtk_disp_merge *priv;
-+	int ret;
-+
-+	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	priv->regs = devm_ioremap_resource(dev, res);
-+	if (IS_ERR(priv->regs)) {
-+		dev_err(dev, "failed to ioremap merge\n");
-+		return PTR_ERR(priv->regs);
-+	}
-+
-+	priv->clk = devm_clk_get(dev, NULL);
-+	if (IS_ERR(priv->clk)) {
-+		dev_err(dev, "failed to get merge clk\n");
-+		return PTR_ERR(priv->clk);
-+	}
-+
-+	priv->async_clk = devm_clk_get_optional(dev, "merge_async");
-+	if (IS_ERR(priv->async_clk)) {
-+		dev_err(dev, "failed to get merge async clock\n");
-+		return PTR_ERR(priv->async_clk);
-+	}
-+
-+#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-+	ret = cmdq_dev_get_client_reg(dev, &priv->cmdq_reg, 0);
-+	if (ret)
-+		dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
-+#endif
-+
-+	priv->fifo_en = of_property_read_bool(dev->of_node,
-+					      "mediatek,merge-fifo-en");
-+
-+	platform_set_drvdata(pdev, priv);
-+
-+	ret = component_add(dev, &mtk_disp_merge_component_ops);
-+	if (ret != 0)
-+		dev_err(dev, "Failed to add component: %d\n", ret);
-+
-+	return ret;
-+}
-+
-+static int mtk_disp_merge_remove(struct platform_device *pdev)
-+{
-+	component_del(&pdev->dev, &mtk_disp_merge_component_ops);
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id mtk_disp_merge_driver_dt_match[] = {
-+	{ .compatible = "mediatek,mt8195-disp-merge", },
-+	{},
-+};
-+
-+MODULE_DEVICE_TABLE(of, mtk_disp_merge_driver_dt_match);
-+
-+struct platform_driver mtk_disp_merge_driver = {
-+	.probe = mtk_disp_merge_probe,
-+	.remove = mtk_disp_merge_remove,
-+	.driver = {
-+		.name = "mediatek-disp-merge",
-+		.owner = THIS_MODULE,
-+		.of_match_table = mtk_disp_merge_driver_dt_match,
-+	},
-+};
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index b3d26a05741f..95722de4986b 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -328,6 +328,14 @@ static const struct mtk_ddp_comp_funcs ddp_gamma = {
- 	.stop = mtk_gamma_stop,
- };
- 
-+static const struct mtk_ddp_comp_funcs ddp_merge = {
-+	.clk_enable = mtk_merge_clk_enable,
-+	.clk_disable = mtk_merge_clk_disable,
-+	.start = mtk_merge_start,
-+	.stop = mtk_merge_stop,
-+	.config = mtk_merge_config,
-+};
-+
- static const struct mtk_ddp_comp_funcs ddp_od = {
- 	.clk_enable = mtk_ddp_clk_enable,
- 	.clk_disable = mtk_ddp_clk_disable,
-@@ -385,6 +393,7 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
- 	[MTK_DISP_DITHER] = "dither",
- 	[MTK_DISP_DSC] = "dsc",
- 	[MTK_DISP_GAMMA] = "gamma",
-+	[MTK_DISP_MERGE] = "merge",
- 	[MTK_DISP_MUTEX] = "mutex",
- 	[MTK_DISP_OD] = "od",
- 	[MTK_DISP_OVL] = "ovl",
-@@ -421,6 +430,12 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_DSI2]		= { MTK_DSI,		2, &ddp_dsi },
- 	[DDP_COMPONENT_DSI3]		= { MTK_DSI,		3, &ddp_dsi },
- 	[DDP_COMPONENT_GAMMA]		= { MTK_DISP_GAMMA,	0, &ddp_gamma },
-+	[DDP_COMPONENT_MERGE0]		= { MTK_DISP_MERGE,	0, &ddp_merge },
-+	[DDP_COMPONENT_MERGE1]		= { MTK_DISP_MERGE,	1, &ddp_merge },
-+	[DDP_COMPONENT_MERGE2]		= { MTK_DISP_MERGE,	2, &ddp_merge },
-+	[DDP_COMPONENT_MERGE3]		= { MTK_DISP_MERGE,	3, &ddp_merge },
-+	[DDP_COMPONENT_MERGE4]		= { MTK_DISP_MERGE,	4, &ddp_merge },
-+	[DDP_COMPONENT_MERGE5]		= { MTK_DISP_MERGE,	5, &ddp_merge },
- 	[DDP_COMPONENT_OD0]		= { MTK_DISP_OD,	0, &ddp_od },
- 	[DDP_COMPONENT_OD1]		= { MTK_DISP_OD,	1, &ddp_od },
- 	[DDP_COMPONENT_OVL0]		= { MTK_DISP_OVL,	0, &ddp_ovl },
-@@ -523,6 +538,7 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
- 	    type == MTK_DISP_CCORR ||
- 	    type == MTK_DISP_COLOR ||
- 	    type == MTK_DISP_GAMMA ||
-+	    type == MTK_DISP_MERGE ||
- 	    type == MTK_DISP_OVL ||
- 	    type == MTK_DISP_OVL_2L ||
- 	    type == MTK_DISP_PWM ||
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index 763725fe72b3..09ac9496547d 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -25,6 +25,7 @@ enum mtk_ddp_comp_type {
- 	MTK_DISP_DITHER,
- 	MTK_DISP_DSC,
- 	MTK_DISP_GAMMA,
-+	MTK_DISP_MERGE,
- 	MTK_DISP_MUTEX,
- 	MTK_DISP_OD,
- 	MTK_DISP_OVL,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 6a0a167320f0..230b8aee12b2 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -597,7 +597,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 		private->comp_node[comp_id] = of_node_get(node);
- 
- 		/*
--		 * Currently only the AAL, CCORR, COLOR, GAMMA, OVL, RDMA, DSI, and DPI
-+		 * Currently only the AAL, CCORR, COLOR, GAMMA, MERGE, OVL, RDMA, DSI, and DPI
- 		 * blocks have separate component platform drivers and initialize their own
- 		 * DDP component structure. The others are initialized here.
- 		 */
-@@ -605,6 +605,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 		    comp_type == MTK_DISP_CCORR ||
- 		    comp_type == MTK_DISP_COLOR ||
- 		    comp_type == MTK_DISP_GAMMA ||
-+		    comp_type == MTK_DISP_MERGE ||
- 		    comp_type == MTK_DISP_OVL ||
- 		    comp_type == MTK_DISP_OVL_2L ||
- 		    comp_type == MTK_DISP_RDMA ||
-@@ -703,6 +704,7 @@ static struct platform_driver * const mtk_drm_drivers[] = {
- 	&mtk_disp_ccorr_driver,
- 	&mtk_disp_color_driver,
- 	&mtk_disp_gamma_driver,
-+	&mtk_disp_merge_driver,
- 	&mtk_disp_ovl_driver,
- 	&mtk_disp_rdma_driver,
- 	&mtk_dpi_driver,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index 3e7d1e6fbe01..a58cebd01d35 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -50,6 +50,7 @@ extern struct platform_driver mtk_disp_aal_driver;
- extern struct platform_driver mtk_disp_ccorr_driver;
- extern struct platform_driver mtk_disp_color_driver;
- extern struct platform_driver mtk_disp_gamma_driver;
-+extern struct platform_driver mtk_disp_merge_driver;
- extern struct platform_driver mtk_disp_ovl_driver;
- extern struct platform_driver mtk_disp_rdma_driver;
- extern struct platform_driver mtk_dpi_driver;
--- 
-2.18.0
+Thanks for your review.
+In the original dsi_poweron, if (++dsi->refcount != 1) is used to
+determine whether poweron has been repeatedly run.
+The poweron failure to execute DSI Start you mentioned may indeed lead
+to Bus hang in extreme cases, so I will add a poweron-like judgment
+mechanism before the next version of enable.
+And will add some error message for mtk_dsi_bridge_pre_enable() and
+mtk_dsi_bridge_post_disable().
 
-
+Best Regards!
+xinlei
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
