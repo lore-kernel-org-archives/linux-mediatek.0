@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2E73C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 08:01:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C824C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 08:03:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CWUctN4ZCYPd0dud0H2WrrimEXIURCk8Hd2Z7E6xpz0=; b=ILrgJLXbmdl9eF
-	lQdFDQjmmgAMugBW5CSYabU9suHofexkD91JdpRj/6ldJd61e2axzyoG9f1zYmTCHarLabCLxRMsW
-	VPa64KwkTzXH70KwAZFo1BNHtJc1GYzPvNMWUM769y0d69B1cV55QtgrYeTvh5t+9ajlRTuBoJfvH
-	LuKjieYoqDRCctY/8OgOhhMxST/XhuaHQcQOvXbg66uFCJSfdWYgT4wSyyVV7AVe1ew+AAqJBCAox
-	a2CLxtZLXKx11yzXagD20H0LN9Mj9Ujx/5fkQ6x1ZFswCJNwk65h2qznLZnf7Gl4zTaoVmV5BTzYy
-	9Ef8oDb/RZrldiR8SK8g==;
+	List-Owner; bh=2/BwAWpwCTmAWN6P3HXBEafVho1ttxCbAep6Fsu1LJE=; b=K+2qEbww0NmZdk
+	ywTXH60ae9K6HuU3BfbR/evhrP3DLa0DGFFDr+UAh6/k6pb9zt7PFc40jRWgFWPMA1xMkKE6jQuhN
+	BgjncHtR4fMr5eggT1cTvVd24pWKVIkvOOG0FNaAvdQ8gKCsTllvsf4DuQ9IbvIYtxGgxsLVEjTff
+	+tsaiqaMlx8gWXtiSWeTm0e1xSQq/JWUBYYxBCrm6MOar9CZDY++cgT8LZKCpcHoOucGFUZQ2uuSb
+	azMs97z5PeW9BocmmZwhJWEs7SOizYKlZAW+hc46d14C4aSXFllGKps9DOrNKiV+22vrv1S6PhN4k
+	JLIroGyp54CxDxLBEEmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncN4v-00ACOi-TW; Thu, 07 Apr 2022 08:01:17 +0000
+	id 1ncN6l-00ADRU-Oi; Thu, 07 Apr 2022 08:03:11 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncN26-00AAlR-P0; Thu, 07 Apr 2022 07:58:24 +0000
-X-UUID: c93f34210f3a4af7acdd3a2232069026-20220407
-X-UUID: c93f34210f3a4af7acdd3a2232069026-20220407
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1ncN2I-00AAu4-36; Thu, 07 Apr 2022 07:58:35 +0000
+X-UUID: e00e1502de7443cda957d69922f16bd3-20220407
+X-UUID: e00e1502de7443cda957d69922f16bd3-20220407
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 306417618; Thu, 07 Apr 2022 00:58:13 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 7 Apr 2022 00:58:11 -0700
+ with ESMTP id 1184599636; Thu, 07 Apr 2022 00:58:30 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 7 Apr 2022 00:58:29 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 7 Apr 2022 15:58:09 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 7 Apr 2022 15:58:26 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 7 Apr 2022 15:58:07 +0800
+ Transport; Thu, 7 Apr 2022 15:58:25 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -54,18 +54,17 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v6 02/34] dt-bindings: mediatek: mt8195: Add binding for infra
- IOMMU
-Date: Thu, 7 Apr 2022 15:56:54 +0800
-Message-ID: <20220407075726.17771-3-yong.wu@mediatek.com>
+Subject: [PATCH v6 04/34] iommu/mediatek: Add list_del in mtk_iommu_remove
+Date: Thu, 7 Apr 2022 15:56:56 +0800
+Message-ID: <20220407075726.17771-5-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220407075726.17771-1-yong.wu@mediatek.com>
 References: <20220407075726.17771-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_005822_892173_2EBB8AAE 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20220407_005834_195876_1A69A658 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,102 +81,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mt8195, we have a new IOMMU that is for INFRA IOMMU. its masters
-mainly are PCIe and USB. Different with MM IOMMU, all these masters
-connect with IOMMU directly, there is no mediatek,larbs property for
-infra IOMMU.
+Lack the list_del in the mtk_iommu_remove, and remove
+bus_set_iommu(*, NULL) since there may be several iommu HWs.
+we can not bus_set_iommu null when one iommu driver unbind.
 
-Another thing is about PCIe ports. currently the function
-"of_iommu_configure_dev_id" only support the id number is 1, But our
-PCIe have two ports, one is for reading and the other is for writing.
-see more about the PCIe patch in this patchset. Thus, I only list
-the reading id here and add the other id in our driver.
+This could be a fix for mt2712 which support 2 M4U HW and list them.
 
+Fixes: 7c3a2ec02806 ("iommu/mediatek: Merge 2 M4U HWs into one iommu domain")
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../bindings/iommu/mediatek,iommu.yaml         | 13 ++++++++++++-
- .../dt-bindings/memory/mt8195-memory-port.h    | 18 ++++++++++++++++++
- include/dt-bindings/memory/mtk-memory-port.h   |  2 ++
- 3 files changed, 32 insertions(+), 1 deletion(-)
+ drivers/iommu/mtk_iommu.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-index 2223408e91a9..eed59ec00e78 100644
---- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-@@ -79,6 +79,7 @@ properties:
-           - mediatek,mt8192-m4u  # generation two
-           - mediatek,mt8195-iommu-vdo        # generation two
-           - mediatek,mt8195-iommu-vpp        # generation two
-+          - mediatek,mt8195-iommu-infra      # generation two
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 95c82b8bcc35..e4b4ebbcb73f 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -955,8 +955,7 @@ static int mtk_iommu_remove(struct platform_device *pdev)
+ 	iommu_device_sysfs_remove(&data->iommu);
+ 	iommu_device_unregister(&data->iommu);
  
-       - description: mt7623 generation one
-         items:
-@@ -131,7 +132,6 @@ required:
-   - compatible
-   - reg
-   - interrupts
--  - mediatek,larbs
-   - '#iommu-cells'
+-	if (iommu_present(&platform_bus_type))
+-		bus_set_iommu(&platform_bus_type, NULL);
++	list_del(&data->list);
  
- allOf:
-@@ -163,6 +163,17 @@ allOf:
-       required:
-         - power-domains
- 
-+  - if: # The IOMMUs don't have larbs.
-+      not:
-+        properties:
-+          compatible:
-+            contains:
-+              const: mediatek,mt8195-iommu-infra
-+
-+    then:
-+      required:
-+        - mediatek,larbs
-+
- additionalProperties: false
- 
- examples:
-diff --git a/include/dt-bindings/memory/mt8195-memory-port.h b/include/dt-bindings/memory/mt8195-memory-port.h
-index c10e8b61f1e8..70ba9f498eeb 100644
---- a/include/dt-bindings/memory/mt8195-memory-port.h
-+++ b/include/dt-bindings/memory/mt8195-memory-port.h
-@@ -387,4 +387,22 @@
- #define M4U_PORT_L28_CAM_DRZS4NO_R1		MTK_M4U_ID(28, 5)
- #define M4U_PORT_L28_CAM_TNCSO_R1		MTK_M4U_ID(28, 6)
- 
-+/* Infra iommu ports */
-+/* PCIe1: read: BIT16; write BIT17. */
-+#define IOMMU_PORT_INFRA_PCIE1			MTK_IFAIOMMU_PERI_ID(16)
-+/* PCIe0: read: BIT18; write BIT19. */
-+#define IOMMU_PORT_INFRA_PCIE0			MTK_IFAIOMMU_PERI_ID(18)
-+#define IOMMU_PORT_INFRA_SSUSB_P3_R		MTK_IFAIOMMU_PERI_ID(20)
-+#define IOMMU_PORT_INFRA_SSUSB_P3_W		MTK_IFAIOMMU_PERI_ID(21)
-+#define IOMMU_PORT_INFRA_SSUSB_P2_R		MTK_IFAIOMMU_PERI_ID(22)
-+#define IOMMU_PORT_INFRA_SSUSB_P2_W		MTK_IFAIOMMU_PERI_ID(23)
-+#define IOMMU_PORT_INFRA_SSUSB_P1_1_R		MTK_IFAIOMMU_PERI_ID(24)
-+#define IOMMU_PORT_INFRA_SSUSB_P1_1_W		MTK_IFAIOMMU_PERI_ID(25)
-+#define IOMMU_PORT_INFRA_SSUSB_P1_0_R		MTK_IFAIOMMU_PERI_ID(26)
-+#define IOMMU_PORT_INFRA_SSUSB_P1_0_W		MTK_IFAIOMMU_PERI_ID(27)
-+#define IOMMU_PORT_INFRA_SSUSB2_R		MTK_IFAIOMMU_PERI_ID(28)
-+#define IOMMU_PORT_INFRA_SSUSB2_W		MTK_IFAIOMMU_PERI_ID(29)
-+#define IOMMU_PORT_INFRA_SSUSB_R		MTK_IFAIOMMU_PERI_ID(30)
-+#define IOMMU_PORT_INFRA_SSUSB_W		MTK_IFAIOMMU_PERI_ID(31)
-+
- #endif
-diff --git a/include/dt-bindings/memory/mtk-memory-port.h b/include/dt-bindings/memory/mtk-memory-port.h
-index 7d64103209af..2f68a0511a25 100644
---- a/include/dt-bindings/memory/mtk-memory-port.h
-+++ b/include/dt-bindings/memory/mtk-memory-port.h
-@@ -12,4 +12,6 @@
- #define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0x1f)
- #define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
- 
-+#define MTK_IFAIOMMU_PERI_ID(port)	MTK_M4U_ID(0, port)
-+
- #endif
+ 	clk_disable_unprepare(data->bclk);
+ 	device_link_remove(data->smicomm_dev, &pdev->dev);
 -- 
 2.18.0
 
