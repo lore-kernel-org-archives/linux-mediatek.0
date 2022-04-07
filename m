@@ -4,67 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCCB0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 09:03:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE8ABC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 09:06:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=72HdRKLryg3dk1cTNZsRsY4dHHwcgUbCwnMo+vJ3WU8=; b=O1v+tSXxnbSYCO
-	Kq8uw5E/hrpZ6KoMZ2uqq6/4KlA0d4C6XSjozA2Z/96YwJ37TvCAkes79l7jKod3ZBgTTWtkrjbFL
-	y3S/cBETPtD+pgBVDVlFqmJKlPUOIHYGsyyHqkaUEjZrkOcFdvxonk8BqvHQ9d0T5MxjPNOGCSECd
-	Ta34uo3Ba+qliRGWRy6vNVIf+U5mAuh5nbUNY/tx5A/G+3O/0/BmlBc5LR2+KqyjbvO0b7S9wEPch
-	7BwSUcK5yjm85hOsX7rL6mmYjoS+n1Xm/Jy/1exJE4luQxvehh+OMEU67YSYcZZ+qa/BTeuxKDSFq
-	dUBHssQ4adlxn1ua8txA==;
+	List-Owner; bh=OV5frMInhScoBd1qO8Ti5Rx7E45SVmwzriY7i58svQA=; b=xwp/ZjxQsmoNxg
+	Nr/BJ5ASspnNqPJ5xHhTPtMSf91Ahmdbx8p9+8YJ5utVEuiKdeEpSTssdVKKku8oZzp95hyWVYpvR
+	4aExWrEKA8LpqkgqmsS03yrUp2PCCPB/omuexBMAxfrN0ns1J+ABqgIQ9D/t84+8KMX54Bn0Yg5CI
+	wrUBLdeboRuEsvpzte95Jq7OxNHd2RpaNQIkbLGSzkvEp0f9Cd+KWkTQZf0nr0xGmicLjgzf48/vk
+	2yV0LcW+3twMPGsO6XPyCx8SPatAlk8ZkR4JBSslEVK3HPltvk/x5A6XbneXkE16qNlCBxbM6fxUa
+	W91gK0VSdXGQeXijffxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncO3O-00Ag4E-KE; Thu, 07 Apr 2022 09:03:46 +0000
+	id 1ncO6A-00AhEk-7k; Thu, 07 Apr 2022 09:06:38 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncNhc-00AVVR-UB; Thu, 07 Apr 2022 08:41:19 +0000
-X-UUID: ed7c94a7dfea4e0f806a6fbfce5aa62e-20220407
-X-UUID: ed7c94a7dfea4e0f806a6fbfce5aa62e-20220407
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
+ id 1ncNjy-00AWet-6p; Thu, 07 Apr 2022 08:43:43 +0000
+X-UUID: 949243d68fb9492a925cc068f862d7d5-20220407
+X-UUID: 949243d68fb9492a925cc068f862d7d5-20220407
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2116891805; Thu, 07 Apr 2022 01:41:08 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 568347240; Thu, 07 Apr 2022 01:43:40 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 7 Apr 2022 01:32:52 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 7 Apr 2022 16:32:50 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Thu, 7 Apr 2022 01:43:38 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 7 Apr 2022 16:43:37 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 7 Apr 2022 16:32:48 +0800
-From: Yong Wu <yong.wu@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
-CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
- <krzk@kernel.org>, Tomasz Figa <tfiga@chromium.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>, <yong.wu@mediatek.com>,
- <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
- <xueqi.zhang@mediatek.com>, <yen-chang.chen@mediatek.com>, "AngeloGioacchino
- Del Regno" <angelogioacchino.delregno@collabora.com>,
- <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
- <chengci.xu@mediatek.com>
-Subject: [PATCH v3 1/2] dt-bindings: mediatek: mt8186: Add binding for MM iommu
-Date: Thu, 7 Apr 2022 16:32:29 +0800
-Message-ID: <20220407083230.18041-2-yong.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220407083230.18041-1-yong.wu@mediatek.com>
-References: <20220407083230.18041-1-yong.wu@mediatek.com>
+ Transport; Thu, 7 Apr 2022 16:43:37 +0800
+Message-ID: <4cc43ee8c2b9e3f9eb42a4a762ab637138df6a89.camel@mediatek.com>
+Subject: Re: [PATCH 3/3] dt-bindings: display: mediatek: Correct disp_aal
+ binding for MT8192
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "robh+dt@kernel.org"
+ <robh+dt@kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>
+CC: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, "airlied@linux.ie"
+ <airlied@linux.ie>, Yongqiang Niu
+ =?UTF-8?Q?=28=E7=89=9B=E6=B0=B8=E5=BC=BA=29?= <yongqiang.niu@mediatek.com>,
+ Jason-JH Lin =?UTF-8?Q?=28=E6=9E=97=E7=9D=BF=E7=A5=A5=29?=
+ <Jason-JH.Lin@mediatek.com>, Nancy Lin
+ =?UTF-8?Q?=28=E6=9E=97=E6=AC=A3=E8=9E=A2=29?= <Nancy.Lin@mediatek.com>,
+ Allen-KH Cheng =?UTF-8?Q?=28=E7=A8=8B=E5=86=A0=E5=8B=B3=29?=
+ <Allen-KH.Cheng@mediatek.com>, "dri-devel@lists.freedesktop.org"
+ <dri-devel@lists.freedesktop.org>, "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>, "devicetree@vger.kernel.org"
+ <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 7 Apr 2022 16:43:37 +0800
+In-Reply-To: <2449070b-d7e1-122f-abe6-4148855a9aba@collabora.com>
+References: <20220406094654.29722-1-rex-bc.chen@mediatek.com>
+ <20220406094654.29722-4-rex-bc.chen@mediatek.com>
+ <2449070b-d7e1-122f-abe6-4148855a9aba@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_014117_022597_CAE61C6D 
-X-CRM114-Status: GOOD (  15.34  )
+X-CRM114-CacheID: sfid-20220407_014342_322006_EAF8E750 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,279 +88,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8186 iommu binding. "-mm" means the iommu is for Multimedia.
+On Wed, 2022-04-06 at 18:40 +0800, AngeloGioacchino Del Regno wrote:
+> Il 06/04/22 11:46, Rex-BC Chen ha scritto:
+> > The driver data for MT8192 is the same with MT8183. Therefore, we
+> > correct it.
+> > 
+> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> 
+> ...though, from what I know, you should also move MT8195 down there!
 
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- .../bindings/iommu/mediatek,iommu.yaml        |   4 +
- .../dt-bindings/memory/mt8186-memory-port.h   | 217 ++++++++++++++++++
- 2 files changed, 221 insertions(+)
- create mode 100644 include/dt-bindings/memory/mt8186-memory-port.h
+Hello Angelo,
 
-diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-index eed59ec00e78..91a3629a8e6e 100644
---- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-@@ -76,6 +76,7 @@ properties:
-           - mediatek,mt8167-m4u  # generation two
-           - mediatek,mt8173-m4u  # generation two
-           - mediatek,mt8183-m4u  # generation two
-+          - mediatek,mt8186-iommu-mm         # generation two
-           - mediatek,mt8192-m4u  # generation two
-           - mediatek,mt8195-iommu-vdo        # generation two
-           - mediatek,mt8195-iommu-vpp        # generation two
-@@ -122,6 +123,7 @@ properties:
-       dt-binding/memory/mt8167-larb-port.h for mt8167,
-       dt-binding/memory/mt8173-larb-port.h for mt8173,
-       dt-binding/memory/mt8183-larb-port.h for mt8183,
-+      dt-binding/memory/mt8186-memory-port.h for mt8186,
-       dt-binding/memory/mt8192-larb-port.h for mt8192.
-       dt-binding/memory/mt8195-memory-port.h for mt8195.
- 
-@@ -143,6 +145,7 @@ allOf:
-               - mediatek,mt2701-m4u
-               - mediatek,mt2712-m4u
-               - mediatek,mt8173-m4u
-+              - mediatek,mt8186-iommu-mm
-               - mediatek,mt8192-m4u
-               - mediatek,mt8195-iommu-vdo
-               - mediatek,mt8195-iommu-vpp
-@@ -155,6 +158,7 @@ allOf:
-       properties:
-         compatible:
-           enum:
-+            - mediatek,mt8186-iommu-mm
-             - mediatek,mt8192-m4u
-             - mediatek,mt8195-iommu-vdo
-             - mediatek,mt8195-iommu-vpp
-diff --git a/include/dt-bindings/memory/mt8186-memory-port.h b/include/dt-bindings/memory/mt8186-memory-port.h
-new file mode 100644
-index 000000000000..2bc6e4433048
---- /dev/null
-+++ b/include/dt-bindings/memory/mt8186-memory-port.h
-@@ -0,0 +1,217 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2022 MediaTek Inc.
-+ *
-+ * Author: Anan Sun <anan.sun@mediatek.com>
-+ * Author: Yong Wu <yong.wu@mediatek.com>
-+ */
-+#ifndef _DT_BINDINGS_MEMORY_MT8186_LARB_PORT_H_
-+#define _DT_BINDINGS_MEMORY_MT8186_LARB_PORT_H_
-+
-+#include <dt-bindings/memory/mtk-memory-port.h>
-+
-+/*
-+ * MM IOMMU supports 16GB dma address. We separate it to four ranges:
-+ * 0 ~ 4G; 4G ~ 8G; 8G ~ 12G; 12G ~ 16G, we could adjust these masters
-+ * locate in anyone region. BUT:
-+ * a) Make sure all the ports inside a larb are in one range.
-+ * b) The iova of any master can NOT cross the 4G/8G/12G boundary.
-+ *
-+ * This is the suggested mapping in this SoC:
-+ *
-+ * modules    dma-address-region	larbs-ports
-+ * disp         0 ~ 4G                  larb0/1/2
-+ * vcodec      4G ~ 8G                  larb4/7
-+ * cam/mdp     8G ~ 12G                 the other larbs.
-+ * N/A         12G ~ 16G
-+ * CCU0   0x24000_0000 ~ 0x243ff_ffff   larb13: port 9/10
-+ * CCU1   0x24400_0000 ~ 0x247ff_ffff   larb14: port 4/5
-+ */
-+
-+/* MM IOMMU ports */
-+/* LARB 0 -- MMSYS */
-+#define IOMMU_PORT_L0_DISP_POSTMASK0	MTK_M4U_ID(0, 0)
-+#define IOMMU_PORT_L0_REVERSED		MTK_M4U_ID(0, 1)
-+#define IOMMU_PORT_L0_OVL_RDMA0		MTK_M4U_ID(0, 2)
-+#define IOMMU_PORT_L0_DISP_FAKE0	MTK_M4U_ID(0, 3)
-+
-+/* LARB 1 -- MMSYS */
-+#define IOMMU_PORT_L1_DISP_RDMA1	MTK_M4U_ID(1, 0)
-+#define IOMMU_PORT_L1_OVL_2L_RDMA0	MTK_M4U_ID(1, 1)
-+#define IOMMU_PORT_L1_DISP_RDMA0	MTK_M4U_ID(1, 2)
-+#define IOMMU_PORT_L1_DISP_WDMA0	MTK_M4U_ID(1, 3)
-+#define IOMMU_PORT_L1_DISP_FAKE1	MTK_M4U_ID(1, 4)
-+
-+/* LARB 2 -- MMSYS */
-+#define IOMMU_PORT_L2_MDP_RDMA0		MTK_M4U_ID(2, 0)
-+#define IOMMU_PORT_L2_MDP_RDMA1		MTK_M4U_ID(2, 1)
-+#define IOMMU_PORT_L2_MDP_WROT0		MTK_M4U_ID(2, 2)
-+#define IOMMU_PORT_L2_MDP_WROT1		MTK_M4U_ID(2, 3)
-+#define IOMMU_PORT_L2_DISP_FAKE0	MTK_M4U_ID(2, 4)
-+
-+/* LARB 4 -- VDEC */
-+#define IOMMU_PORT_L4_HW_VDEC_MC_EXT		MTK_M4U_ID(4, 0)
-+#define IOMMU_PORT_L4_HW_VDEC_UFO_EXT		MTK_M4U_ID(4, 1)
-+#define IOMMU_PORT_L4_HW_VDEC_PP_EXT		MTK_M4U_ID(4, 2)
-+#define IOMMU_PORT_L4_HW_VDEC_PRED_RD_EXT	MTK_M4U_ID(4, 3)
-+#define IOMMU_PORT_L4_HW_VDEC_PRED_WR_EXT	MTK_M4U_ID(4, 4)
-+#define IOMMU_PORT_L4_HW_VDEC_PPWRAP_EXT	MTK_M4U_ID(4, 5)
-+#define IOMMU_PORT_L4_HW_VDEC_TILE_EXT		MTK_M4U_ID(4, 6)
-+#define IOMMU_PORT_L4_HW_VDEC_VLD_EXT		MTK_M4U_ID(4, 7)
-+#define IOMMU_PORT_L4_HW_VDEC_VLD2_EXT		MTK_M4U_ID(4, 8)
-+#define IOMMU_PORT_L4_HW_VDEC_AVC_MV_EXT	MTK_M4U_ID(4, 9)
-+#define IOMMU_PORT_L4_HW_VDEC_UFO_ENC_EXT	MTK_M4U_ID(4, 10)
-+#define IOMMU_PORT_L4_HW_VDEC_RG_CTRL_DMA_EXT	MTK_M4U_ID(4, 11)
-+#define IOMMU_PORT_L4_HW_MINI_MDP_R0_EXT	MTK_M4U_ID(4, 12)
-+#define IOMMU_PORT_L4_HW_MINI_MDP_W0_EXT	MTK_M4U_ID(4, 13)
-+
-+/* LARB 7 -- VENC */
-+#define IOMMU_PORT_L7_VENC_RCPU		MTK_M4U_ID(7, 0)
-+#define IOMMU_PORT_L7_VENC_REC		MTK_M4U_ID(7, 1)
-+#define IOMMU_PORT_L7_VENC_BSDMA	MTK_M4U_ID(7, 2)
-+#define IOMMU_PORT_L7_VENC_SV_COMV	MTK_M4U_ID(7, 3)
-+#define IOMMU_PORT_L7_VENC_RD_COMV	MTK_M4U_ID(7, 4)
-+#define IOMMU_PORT_L7_VENC_CUR_LUMA	MTK_M4U_ID(7, 5)
-+#define IOMMU_PORT_L7_VENC_CUR_CHROMA	MTK_M4U_ID(7, 6)
-+#define IOMMU_PORT_L7_VENC_REF_LUMA	MTK_M4U_ID(7, 7)
-+#define IOMMU_PORT_L7_VENC_REF_CHROMA	MTK_M4U_ID(7, 8)
-+#define IOMMU_PORT_L7_JPGENC_Y_RDMA	MTK_M4U_ID(7, 9)
-+#define IOMMU_PORT_L7_JPGENC_C_RDMA	MTK_M4U_ID(7, 10)
-+#define IOMMU_PORT_L7_JPGENC_Q_TABLE	MTK_M4U_ID(7, 11)
-+#define IOMMU_PORT_L7_JPGENC_BSDMA	MTK_M4U_ID(7, 12)
-+
-+/* LARB 8 -- WPE */
-+#define IOMMU_PORT_L8_WPE_RDMA_0	MTK_M4U_ID(8, 0)
-+#define IOMMU_PORT_L8_WPE_RDMA_1	MTK_M4U_ID(8, 1)
-+#define IOMMU_PORT_L8_WPE_WDMA_0	MTK_M4U_ID(8, 2)
-+
-+/* LARB 9 -- IMG-1 */
-+#define IOMMU_PORT_L9_IMG_IMGI_D1	MTK_M4U_ID(9, 0)
-+#define IOMMU_PORT_L9_IMG_IMGBI_D1	MTK_M4U_ID(9, 1)
-+#define IOMMU_PORT_L9_IMG_DMGI_D1	MTK_M4U_ID(9, 2)
-+#define IOMMU_PORT_L9_IMG_DEPI_D1	MTK_M4U_ID(9, 3)
-+#define IOMMU_PORT_L9_IMG_LCE_D1	MTK_M4U_ID(9, 4)
-+#define IOMMU_PORT_L9_IMG_SMTI_D1	MTK_M4U_ID(9, 5)
-+#define IOMMU_PORT_L9_IMG_SMTO_D2	MTK_M4U_ID(9, 6)
-+#define IOMMU_PORT_L9_IMG_SMTO_D1	MTK_M4U_ID(9, 7)
-+#define IOMMU_PORT_L9_IMG_CRZO_D1	MTK_M4U_ID(9, 8)
-+#define IOMMU_PORT_L9_IMG_IMG3O_D1	MTK_M4U_ID(9, 9)
-+#define IOMMU_PORT_L9_IMG_VIPI_D1	MTK_M4U_ID(9, 10)
-+#define IOMMU_PORT_L9_IMG_SMTI_D5	MTK_M4U_ID(9, 11)
-+#define IOMMU_PORT_L9_IMG_TIMGO_D1	MTK_M4U_ID(9, 12)
-+#define IOMMU_PORT_L9_IMG_UFBC_W0	MTK_M4U_ID(9, 13)
-+#define IOMMU_PORT_L9_IMG_UFBC_R0	MTK_M4U_ID(9, 14)
-+#define IOMMU_PORT_L9_IMG_WPE_RDMA1	MTK_M4U_ID(9, 15)
-+#define IOMMU_PORT_L9_IMG_WPE_RDMA0	MTK_M4U_ID(9, 16)
-+#define IOMMU_PORT_L9_IMG_WPE_WDMA	MTK_M4U_ID(9, 17)
-+#define IOMMU_PORT_L9_IMG_MFB_RDMA0	MTK_M4U_ID(9, 18)
-+#define IOMMU_PORT_L9_IMG_MFB_RDMA1	MTK_M4U_ID(9, 19)
-+#define IOMMU_PORT_L9_IMG_MFB_RDMA2	MTK_M4U_ID(9, 20)
-+#define IOMMU_PORT_L9_IMG_MFB_RDMA3	MTK_M4U_ID(9, 21)
-+#define IOMMU_PORT_L9_IMG_MFB_RDMA4	MTK_M4U_ID(9, 22)
-+#define IOMMU_PORT_L9_IMG_MFB_RDMA5	MTK_M4U_ID(9, 23)
-+#define IOMMU_PORT_L9_IMG_MFB_WDMA0	MTK_M4U_ID(9, 24)
-+#define IOMMU_PORT_L9_IMG_MFB_WDMA1	MTK_M4U_ID(9, 25)
-+#define IOMMU_PORT_L9_IMG_RESERVE6	MTK_M4U_ID(9, 26)
-+#define IOMMU_PORT_L9_IMG_RESERVE7	MTK_M4U_ID(9, 27)
-+#define IOMMU_PORT_L9_IMG_RESERVE8	MTK_M4U_ID(9, 28)
-+
-+/* LARB 11 -- IMG-2 */
-+#define IOMMU_PORT_L11_IMG_IMGI_D1	MTK_M4U_ID(11, 0)
-+#define IOMMU_PORT_L11_IMG_IMGBI_D1	MTK_M4U_ID(11, 1)
-+#define IOMMU_PORT_L11_IMG_DMGI_D1	MTK_M4U_ID(11, 2)
-+#define IOMMU_PORT_L11_IMG_DEPI_D1	MTK_M4U_ID(11, 3)
-+#define IOMMU_PORT_L11_IMG_LCE_D1	MTK_M4U_ID(11, 4)
-+#define IOMMU_PORT_L11_IMG_SMTI_D1	MTK_M4U_ID(11, 5)
-+#define IOMMU_PORT_L11_IMG_SMTO_D2	MTK_M4U_ID(11, 6)
-+#define IOMMU_PORT_L11_IMG_SMTO_D1	MTK_M4U_ID(11, 7)
-+#define IOMMU_PORT_L11_IMG_CRZO_D1	MTK_M4U_ID(11, 8)
-+#define IOMMU_PORT_L11_IMG_IMG3O_D1	MTK_M4U_ID(11, 9)
-+#define IOMMU_PORT_L11_IMG_VIPI_D1	MTK_M4U_ID(11, 10)
-+#define IOMMU_PORT_L11_IMG_SMTI_D5	MTK_M4U_ID(11, 11)
-+#define IOMMU_PORT_L11_IMG_TIMGO_D1	MTK_M4U_ID(11, 12)
-+#define IOMMU_PORT_L11_IMG_UFBC_W0	MTK_M4U_ID(11, 13)
-+#define IOMMU_PORT_L11_IMG_UFBC_R0	MTK_M4U_ID(11, 14)
-+#define IOMMU_PORT_L11_IMG_WPE_RDMA1	MTK_M4U_ID(11, 15)
-+#define IOMMU_PORT_L11_IMG_WPE_RDMA0	MTK_M4U_ID(11, 16)
-+#define IOMMU_PORT_L11_IMG_WPE_WDMA	MTK_M4U_ID(11, 17)
-+#define IOMMU_PORT_L11_IMG_MFB_RDMA0	MTK_M4U_ID(11, 18)
-+#define IOMMU_PORT_L11_IMG_MFB_RDMA1	MTK_M4U_ID(11, 19)
-+#define IOMMU_PORT_L11_IMG_MFB_RDMA2	MTK_M4U_ID(11, 20)
-+#define IOMMU_PORT_L11_IMG_MFB_RDMA3	MTK_M4U_ID(11, 21)
-+#define IOMMU_PORT_L11_IMG_MFB_RDMA4	MTK_M4U_ID(11, 22)
-+#define IOMMU_PORT_L11_IMG_MFB_RDMA5	MTK_M4U_ID(11, 23)
-+#define IOMMU_PORT_L11_IMG_MFB_WDMA0	MTK_M4U_ID(11, 24)
-+#define IOMMU_PORT_L11_IMG_MFB_WDMA1	MTK_M4U_ID(11, 25)
-+#define IOMMU_PORT_L11_IMG_RESERVE6	MTK_M4U_ID(11, 26)
-+#define IOMMU_PORT_L11_IMG_RESERVE7	MTK_M4U_ID(11, 27)
-+#define IOMMU_PORT_L11_IMG_RESERVE8	MTK_M4U_ID(11, 28)
-+
-+/* LARB 13 -- CAM */
-+#define IOMMU_PORT_L13_CAM_MRAWI	MTK_M4U_ID(13, 0)
-+#define IOMMU_PORT_L13_CAM_MRAWO_0	MTK_M4U_ID(13, 1)
-+#define IOMMU_PORT_L13_CAM_MRAWO_1	MTK_M4U_ID(13, 2)
-+#define IOMMU_PORT_L13_CAM_CAMSV_4	MTK_M4U_ID(13, 6)
-+#define IOMMU_PORT_L13_CAM_CAMSV_5	MTK_M4U_ID(13, 7)
-+#define IOMMU_PORT_L13_CAM_CAMSV_6	MTK_M4U_ID(13, 8)
-+#define IOMMU_PORT_L13_CAM_CCUI		MTK_M4U_ID(13, 9)
-+#define IOMMU_PORT_L13_CAM_CCUO		MTK_M4U_ID(13, 10)
-+#define IOMMU_PORT_L13_CAM_FAKE		MTK_M4U_ID(13, 11)
-+
-+/* LARB 14 -- CAM */
-+#define IOMMU_PORT_L14_CAM_CCUI		MTK_M4U_ID(14, 4)
-+#define IOMMU_PORT_L14_CAM_CCUO		MTK_M4U_ID(14, 5)
-+
-+/* LARB 16 -- RAW-A */
-+#define IOMMU_PORT_L16_CAM_IMGO_R1_A	MTK_M4U_ID(16, 0)
-+#define IOMMU_PORT_L16_CAM_RRZO_R1_A	MTK_M4U_ID(16, 1)
-+#define IOMMU_PORT_L16_CAM_CQI_R1_A	MTK_M4U_ID(16, 2)
-+#define IOMMU_PORT_L16_CAM_BPCI_R1_A	MTK_M4U_ID(16, 3)
-+#define IOMMU_PORT_L16_CAM_YUVO_R1_A	MTK_M4U_ID(16, 4)
-+#define IOMMU_PORT_L16_CAM_UFDI_R2_A	MTK_M4U_ID(16, 5)
-+#define IOMMU_PORT_L16_CAM_RAWI_R2_A	MTK_M4U_ID(16, 6)
-+#define IOMMU_PORT_L16_CAM_RAWI_R3_A	MTK_M4U_ID(16, 7)
-+#define IOMMU_PORT_L16_CAM_AAO_R1_A	MTK_M4U_ID(16, 8)
-+#define IOMMU_PORT_L16_CAM_AFO_R1_A	MTK_M4U_ID(16, 9)
-+#define IOMMU_PORT_L16_CAM_FLKO_R1_A	MTK_M4U_ID(16, 10)
-+#define IOMMU_PORT_L16_CAM_LCESO_R1_A	MTK_M4U_ID(16, 11)
-+#define IOMMU_PORT_L16_CAM_CRZO_R1_A	MTK_M4U_ID(16, 12)
-+#define IOMMU_PORT_L16_CAM_LTMSO_R1_A	MTK_M4U_ID(16, 13)
-+#define IOMMU_PORT_L16_CAM_RSSO_R1_A	MTK_M4U_ID(16, 14)
-+#define IOMMU_PORT_L16_CAM_AAHO_R1_A	MTK_M4U_ID(16, 15)
-+#define IOMMU_PORT_L16_CAM_LSCI_R1_A	MTK_M4U_ID(16, 16)
-+
-+/* LARB 17 -- RAW-B */
-+#define IOMMU_PORT_L17_CAM_IMGO_R1_B	MTK_M4U_ID(17, 0)
-+#define IOMMU_PORT_L17_CAM_RRZO_R1_B	MTK_M4U_ID(17, 1)
-+#define IOMMU_PORT_L17_CAM_CQI_R1_B	MTK_M4U_ID(17, 2)
-+#define IOMMU_PORT_L17_CAM_BPCI_R1_B	MTK_M4U_ID(17, 3)
-+#define IOMMU_PORT_L17_CAM_YUVO_R1_B	MTK_M4U_ID(17, 4)
-+#define IOMMU_PORT_L17_CAM_UFDI_R2_B	MTK_M4U_ID(17, 5)
-+#define IOMMU_PORT_L17_CAM_RAWI_R2_B	MTK_M4U_ID(17, 6)
-+#define IOMMU_PORT_L17_CAM_RAWI_R3_B	MTK_M4U_ID(17, 7)
-+#define IOMMU_PORT_L17_CAM_AAO_R1_B	MTK_M4U_ID(17, 8)
-+#define IOMMU_PORT_L17_CAM_AFO_R1_B	MTK_M4U_ID(17, 9)
-+#define IOMMU_PORT_L17_CAM_FLKO_R1_B	MTK_M4U_ID(17, 10)
-+#define IOMMU_PORT_L17_CAM_LCESO_R1_B	MTK_M4U_ID(17, 11)
-+#define IOMMU_PORT_L17_CAM_CRZO_R1_B	MTK_M4U_ID(17, 12)
-+#define IOMMU_PORT_L17_CAM_LTMSO_R1_B	MTK_M4U_ID(17, 13)
-+#define IOMMU_PORT_L17_CAM_RSSO_R1_B	MTK_M4U_ID(17, 14)
-+#define IOMMU_PORT_L17_CAM_AAHO_R1_B	MTK_M4U_ID(17, 15)
-+#define IOMMU_PORT_L17_CAM_LSCI_R1_B	MTK_M4U_ID(17, 16)
-+
-+/* LARB 19 -- IPE */
-+#define IOMMU_PORT_L19_IPE_DVS_RDMA	MTK_M4U_ID(19, 0)
-+#define IOMMU_PORT_L19_IPE_DVS_WDMA	MTK_M4U_ID(19, 1)
-+#define IOMMU_PORT_L19_IPE_DVP_RDMA	MTK_M4U_ID(19, 2)
-+#define IOMMU_PORT_L19_IPE_DVP_WDMA	MTK_M4U_ID(19, 3)
-+
-+/* LARB 20 -- IPE */
-+#define IOMMU_PORT_L20_IPE_FDVT_RDA	MTK_M4U_ID(20, 0)
-+#define IOMMU_PORT_L20_IPE_FDVT_RDB	MTK_M4U_ID(20, 1)
-+#define IOMMU_PORT_L20_IPE_FDVT_WRA	MTK_M4U_ID(20, 2)
-+#define IOMMU_PORT_L20_IPE_FDVT_WRB	MTK_M4U_ID(20, 3)
-+#define IOMMU_PORT_L20_IPE_RSC_RDMA0	MTK_M4U_ID(20, 4)
-+#define IOMMU_PORT_L20_IPE_RSC_WDMA	MTK_M4U_ID(20, 5)
-+
-+#endif
--- 
-2.18.0
+We have some misunderstanding for disp_aal of MT8195.
+The MT8195 has independent disp_gamma which is seperated from disp_aal
+since MT8173.
+Therefore, for MT8195, the disp_aal should be the same with MT8183.
+I have checked this with Jason-JH Lin who is drm owner of MT8195.
+
+I will update disp_aal binding in next version.
+
+BRs,
+Rex
 
 
 _______________________________________________
