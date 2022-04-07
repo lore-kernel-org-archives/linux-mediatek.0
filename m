@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 083CDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 08:17:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 541D7C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Apr 2022 08:18:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X/IOWi8AuPrsO1znQGwVd+DLvtxCdTCupB2BidiB/9g=; b=BxPm4EjLptgS4P
-	nvDl0drjgh3ay9kpSmgyiCP4f0/WsE6AuiQfcToNPBVkahmBWuXhtH39sugT8BPgNAPyvTOBkoHX7
-	otNqsL4+Dw4ilOS63WDky1PLHTiROUGqEAibYPZzIMr5mtMnZbE8uVoAfpv3vukw2poF454halxmG
-	SjhltijnxaavQSbUBIoe3rE1twNkgoGVeeDpYYCdt0EmJTtSwev9o+laqgyn7Lu5WgLK/Xn2ipLes
-	EDq3ZXBqNk4GBkTFIEyh9dS+LiI9KdImNSUvQUPumkIrIqM6nE9ov1fh+nD502sINV1m5BIk0Ny3n
-	yukXI/65ug454+D3WEnA==;
+	List-Owner; bh=ejLUNKxXWOLa8ECusDNXXYrXdVNC5fi00L3v9YboAFE=; b=nNBNE68F2RmHXR
+	1ao5E6OZfEN6wsenbWrF5OsM0RQaAY7PrD4J9esDyFewhQJkQF9dB5kv+L6DF5t65Gn7ldWC9MIN4
+	l4oYYIjr86qhEB2mC92WyPE7asOZaf0uqV952ZCweJwC9B/2SIN979OEilsGfa9xmUmkZDvfHK1EZ
+	pDzghgF4pRvK6LBr72BI4zp89i6Lu9l+w2kVeH5mRcS4gHpuUFgtBM7BalF736fqZ/RnrZr4+cZPw
+	SgoZheGfxfvhwlmbrEz1iqipi64cyvykXcWHIUEJn+eVqsjZM6t9jkAhw46YzvJt0UbGnfUlLKDPb
+	fcTsIj+sZGPmO+v9htRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncNKk-00AJiM-HO; Thu, 07 Apr 2022 08:17:38 +0000
+	id 1ncNLw-00AKLo-On; Thu, 07 Apr 2022 08:18:52 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncNBX-00AFal-9L; Thu, 07 Apr 2022 08:08:08 +0000
-X-UUID: 6da5cc2487314f69842cbea62419169c-20220407
-X-UUID: 6da5cc2487314f69842cbea62419169c-20220407
+ id 1ncNBY-00AFaF-Ik; Thu, 07 Apr 2022 08:08:09 +0000
+X-UUID: edcaf08e8b6843cda6dbead1571933ee-20220407
+X-UUID: edcaf08e8b6843cda6dbead1571933ee-20220407
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 239709096; Thu, 07 Apr 2022 01:07:57 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 253163683; Thu, 07 Apr 2022 01:07:57 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 7 Apr 2022 01:01:10 -0700
+ 15.0.1497.2; Thu, 7 Apr 2022 00:59:41 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 7 Apr 2022 16:01:08 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 7 Apr 2022 15:59:39 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 7 Apr 2022 16:01:07 +0800
+ Transport; Thu, 7 Apr 2022 15:59:37 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -54,17 +54,17 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v6 24/34] iommu/mediatek: Just move code position in hw_init
-Date: Thu, 7 Apr 2022 15:57:16 +0800
-Message-ID: <20220407075726.17771-25-yong.wu@mediatek.com>
+Subject: [PATCH v6 12/34] iommu/mediatek: Remove the granule in the tlb flush
+Date: Thu, 7 Apr 2022 15:57:04 +0800
+Message-ID: <20220407075726.17771-13-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220407075726.17771-1-yong.wu@mediatek.com>
 References: <20220407075726.17771-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_010807_380088_FCD6156C 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20220407_010808_639924_A2B1837B 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,83 +81,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-No functional change too, prepare for mt8195 IOMMU support bank functions.
-Some global control settings are in bank0 while the other banks have
-their bank independent setting. Here only move the global control
-settings and the independent registers together.
+The MediaTek IOMMU doesn't care about granule when tlb flushing.
+Remove this variable.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c | 48 +++++++++++++++++++--------------------
- 1 file changed, 24 insertions(+), 24 deletions(-)
+ drivers/iommu/mtk_iommu.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index cb99c1d01f28..6b238ad55cbe 100644
+index e7008a20ec74..1f3fe3276aa0 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -803,30 +803,6 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
- 	}
- 	writel_relaxed(regval, data->base + REG_MMU_CTRL_REG);
+@@ -219,7 +219,6 @@ static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
+ }
  
--	regval = F_L2_MULIT_HIT_EN |
--		F_TABLE_WALK_FAULT_INT_EN |
--		F_PREETCH_FIFO_OVERFLOW_INT_EN |
--		F_MISS_FIFO_OVERFLOW_INT_EN |
--		F_PREFETCH_FIFO_ERR_INT_EN |
--		F_MISS_FIFO_ERR_INT_EN;
--	writel_relaxed(regval, data->base + REG_MMU_INT_CONTROL0);
--
--	regval = F_INT_TRANSLATION_FAULT |
--		F_INT_MAIN_MULTI_HIT_FAULT |
--		F_INT_INVALID_PA_FAULT |
--		F_INT_ENTRY_REPLACEMENT_FAULT |
--		F_INT_TLB_MISS_FAULT |
--		F_INT_MISS_TRANSACTION_FIFO_FAULT |
--		F_INT_PRETETCH_TRANSATION_FIFO_FAULT;
--	writel_relaxed(regval, data->base + REG_MMU_INT_MAIN_CONTROL);
--
--	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_LEGACY_IVRP_PADDR))
--		regval = (data->protect_base >> 1) | (data->enable_4GB << 31);
--	else
--		regval = lower_32_bits(data->protect_base) |
--			 upper_32_bits(data->protect_base);
--	writel_relaxed(regval, data->base + REG_MMU_IVRP_PADDR);
--
- 	if (data->enable_4GB &&
- 	    MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_VLD_PA_RNG)) {
- 		/*
-@@ -860,6 +836,30 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
- 	}
- 	writel_relaxed(regval, data->base + REG_MMU_MISC_CTRL);
+ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+-					   size_t granule,
+ 					   struct mtk_iommu_data *data)
+ {
+ 	struct list_head *head = data->hw_list;
+@@ -541,8 +540,7 @@ static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+ 	size_t length = gather->end - gather->start + 1;
  
-+	regval = F_L2_MULIT_HIT_EN |
-+		F_TABLE_WALK_FAULT_INT_EN |
-+		F_PREETCH_FIFO_OVERFLOW_INT_EN |
-+		F_MISS_FIFO_OVERFLOW_INT_EN |
-+		F_PREFETCH_FIFO_ERR_INT_EN |
-+		F_MISS_FIFO_ERR_INT_EN;
-+	writel_relaxed(regval, data->base + REG_MMU_INT_CONTROL0);
-+
-+	regval = F_INT_TRANSLATION_FAULT |
-+		F_INT_MAIN_MULTI_HIT_FAULT |
-+		F_INT_INVALID_PA_FAULT |
-+		F_INT_ENTRY_REPLACEMENT_FAULT |
-+		F_INT_TLB_MISS_FAULT |
-+		F_INT_MISS_TRANSACTION_FIFO_FAULT |
-+		F_INT_PRETETCH_TRANSATION_FIFO_FAULT;
-+	writel_relaxed(regval, data->base + REG_MMU_INT_MAIN_CONTROL);
-+
-+	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_LEGACY_IVRP_PADDR))
-+		regval = (data->protect_base >> 1) | (data->enable_4GB << 31);
-+	else
-+		regval = lower_32_bits(data->protect_base) |
-+			 upper_32_bits(data->protect_base);
-+	writel_relaxed(regval, data->base + REG_MMU_IVRP_PADDR);
-+
- 	if (devm_request_irq(data->dev, data->irq, mtk_iommu_isr, 0,
- 			     dev_name(data->dev), (void *)data)) {
- 		writel_relaxed(0, data->base + REG_MMU_PT_BASE_ADDR);
+-	mtk_iommu_tlb_flush_range_sync(gather->start, length, gather->pgsize,
+-				       dom->data);
++	mtk_iommu_tlb_flush_range_sync(gather->start, length, dom->data);
+ }
+ 
+ static void mtk_iommu_sync_map(struct iommu_domain *domain, unsigned long iova,
+@@ -550,7 +548,7 @@ static void mtk_iommu_sync_map(struct iommu_domain *domain, unsigned long iova,
+ {
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+ 
+-	mtk_iommu_tlb_flush_range_sync(iova, size, size, dom->data);
++	mtk_iommu_tlb_flush_range_sync(iova, size, dom->data);
+ }
+ 
+ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
 -- 
 2.18.0
 
