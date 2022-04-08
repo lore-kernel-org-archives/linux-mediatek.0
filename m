@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EAADC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 14:48:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D43DFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 14:48:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pavo8KRLnxkACOkuVLuwptlTiQ1v+W7MVAh96y3r3ew=; b=wn4OCMSGzgN/5C
-	SEYL4O9eJOHZjCKGRJrZrQm0Po1B21Am6CuO/Z7iDASgNFS3vaGMlh+URtku3EeEirgTn8VOxI/ko
-	NczZ4HbY+kwXHhpf5ltmNZLkoPYaWB0R8oTvTuhOLtKcmU+XK+VIE77gTl+5ZZnEVIA0S4/owm3hh
-	ORqVrJVPTwEF5qKOuYVv8+rBPuqNGlA7WbowU8zoGaKYaqbEXvG4yB+NpeLSX47hmTXGOKudVCe7e
-	hF3Ctz4/9TcKAb/AwpRzgh2DCpJNu0ABFDzgQ//ZPyEu/riyAv5AmVGddnii4JS59Cgv1MYd2M1zN
-	bI+wm5ugJMhcg6viGCHg==;
+	List-Owner; bh=RRavO71NumIEVmERPkScJK9IC76xG86aN8j/Px/puNc=; b=VFMQfZErtEDpCD
+	/U2eXuecLApAi1jfXz4aX+WFt8rg4BQFhVsYEExnrWKF/pF6AC8UezECaSN+yl1o6cGnWJhAy5dKk
+	dzSwR2lwBudhwlc7vOJp9T7bkXPdMaEq3VLvXZQe5i6w2CZi1Tke7ZocS2a50iS7AM8exYosb1iqS
+	T/d9TQWPKR5ffQxWo/K9x5Gu1oIWISn40VIijg7mbJFo9OuSJ+fT6ibLAifMC49uJmwUtez4dvN5e
+	PSMVwyykgyvF0lE6+5wh4uXeDf8gSyyhBY5kzvQf5B8SM5/TxkO5UXcBbAxnoTRv6tE5r9EKB8UOF
+	FPxCFDzONCz+DXUuYgSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncpu8-00040b-NI; Fri, 08 Apr 2022 14:48:04 +0000
+	id 1ncpuP-0004At-TE; Fri, 08 Apr 2022 14:48:21 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncptK-0003Zd-Q8; Fri, 08 Apr 2022 14:47:16 +0000
+ id 1ncptM-0003b5-Ph; Fri, 08 Apr 2022 14:47:18 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 0A6D161E87;
- Fri,  8 Apr 2022 14:47:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37655C385A8;
- Fri,  8 Apr 2022 14:47:10 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 5BBFF61E80;
+ Fri,  8 Apr 2022 14:47:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83655C385A3;
+ Fri,  8 Apr 2022 14:47:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1649429233;
- bh=6UAy6vwa9qNgF6GIFreKzgcGTOebGNa25UsFFF9iOHw=;
+ s=k20201202; t=1649429236;
+ bh=uFnBK08Qb+sRg8CpeU7lutMdHslM9UrQV5P3vlPmCTo=;
  h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=GNsF6pDXrgnU84AB89bG6z8gC2Cqfueje8sDfg6VZIHVELT3aZpBrW83/h+TzNRU1
- +HOib9Djh1UWy1FXxcf5vlKMCBr0Y984nAVX2Zid9VcnGjvf9jXakgXlFBjP/HbUPC
- 6rbsYHQj+Qg1I9ZpcSMPbhB4o7+GFfUqAQxFwof0Yn++oNdsESMKYhEPsCpEiIRaOs
- Nf4VcYQBlrYkKneakat1KYW2nRSLACsX5fR6i7Ll6PcQlQAcJEQg4XHcDvUntKAp4Y
- TmIJd349vXbssjDOJfkK6OVy05oRsf9kfkafxCi9CDcY/aaj7Dv30U4B/PSjlVSP7G
- rsGHas/pYKhKA==
+ b=SR14bS9XZdZlWBPdwJk2dhc0y7mJ3szTSdJQBHqgk7Dzg2tKGWt7uvap5xdqLKfbW
+ vUrsxRBZge/RaZlppUwlKeylWmzUoBV1vw7+vjMR4jZucZNy/qCvaLK8vpYgpKjoUU
+ Xf3KkLTFwji71kNfzl2Eirl4xanWmsxRmMZAjhFm75lB43/+w8u+hZ91Z4f6vYhkvK
+ k4xsG7An4L/Ot7YhrlvX7wjJyq/GOEndRnvUspEO36JGWOzRFsUg1hcBqrCvQ5ROwK
+ lPnFop0aQZQfP+FnltShJ05o8Eq5Oa29RoJYPd+KZI+hTWJUGTvFsDu4cTKeuTSptd
+ YerGw4ef56s1Q==
 From: Mark Brown <broonie@kernel.org>
-To: tzungbi@google.com, robh+dt@kernel.org, jiaxin.yu@mediatek.com,
- nfraprado@collabora.com
-Cc: trevor.wu@mediatek.com, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, aaronyu@google.com, matthias.bgg@gmail.com,
- alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linmq006@gmail.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- angelogioacchino.delregno@collabora.com
-In-Reply-To: <20220408060552.26607-1-jiaxin.yu@mediatek.com>
-References: <20220408060552.26607-1-jiaxin.yu@mediatek.com>
-Subject: Re: [v10 0/4] ASoC: mediatek: mt8192: support rt1015p_rt5682s
-Message-Id: <164942922994.1424253.17635473999849755848.b4-ty@kernel.org>
-Date: Fri, 08 Apr 2022 15:47:09 +0100
+To: lgirdwood@gmail.com, perex@perex.cz, cgel.zte@gmail.com
+Cc: trevor.wu@mediatek.com, tzungbi@google.com,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ zealci@zte.com.cn, matthias.bgg@gmail.com, tiwai@suse.com,
+ alsa-devel@alsa-project.org, lv.ruyi@zte.com.cn,
+ linux-mediatek@lists.infradead.org, angelogioacchino.delregno@collabora.com
+In-Reply-To: <20220408100309.2495462-1-lv.ruyi@zte.com.cn>
+References: <20220408100309.2495462-1-lv.ruyi@zte.com.cn>
+Subject: Re: [PATCH] ASoC: mediatek: mt8195: Make sure of_device_id table are
+ NULL terminated
+Message-Id: <164942923326.1424253.13615107780674647897.b4-ty@kernel.org>
+Date: Fri, 08 Apr 2022 15:47:13 +0100
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_074714_943126_9A2A68C4 
-X-CRM114-Status: GOOD (  14.38  )
+X-CRM114-CacheID: sfid-20220408_074716_908468_384B5C48 
+X-CRM114-Status: GOOD (  12.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,15 +74,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 8 Apr 2022 14:05:48 +0800, Jiaxin Yu wrote:
-> The series reuses mt8192-mt6359-rt1015-rt5682.c for supporting machine
-> driver with rt1015p speaker amplifier and rt5682s headset codec.
+On Fri, 8 Apr 2022 10:03:09 +0000, cgel.zte@gmail.com wrote:
+> From: Lv Ruyi <lv.ruyi@zte.com.cn>
 > 
-> Changes from v9:
->   - Modify the commit messages to make them more clear.
+> Fix the following coccicheck review:
+> ./sound/soc/mediatek/mt8195/mt8195-mt6359.c:1657:1-2:
+> mt8195_mt6359_dt_match is not NULL terminated at line 1657
 > 
-> Changes from v8:
->   - fix typos.
 > 
 > [...]
 
@@ -93,14 +90,8 @@ Applied to
 
 Thanks!
 
-[1/4] ASoC: dt-bindings: mt8192-mt6359: add new compatible and new properties
-      commit: 1efe7eca170d344c5101c69ac51df6982de764e4
-[2/4] ASoC: mediatek: mt8192: refactor for I2S3 DAI link of speaker
-      commit: e1e408e60e856b99782b26308a9dc3937b1ba8bf
-[3/4] ASoC: mediatek: mt8192: refactor for I2S8/I2S9 DAI links of headset
-      commit: f8910fb4985a00c0a1e6932dc5bda6181c549b76
-[4/4] ASoC: mediatek: mt8192: support rt1015p_rt5682s
-      commit: 7a80167b08f52e7b5eaa18a9d515efdcff9085fc
+[1/1] ASoC: mediatek: mt8195: Make sure of_device_id table are NULL terminated
+      commit: a2c11c5b68f49b36be9ad4a60165bfbeca5cbb1d
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
