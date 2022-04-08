@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D013EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 12:54:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E353FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 12:56:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MMv8orezYYJiIoL8q/reTGh7n70MevdJxz+at1FxjTU=; b=p03brkJOLfWgK4
-	mbDJxT9s9F5FyHeC/+waG8TCcxsVPhimLvPmcvxeOHvCfE8OBgj+kny3nk3gwoOxRLXDL+sQhTe8x
-	FAL70oh2Ijz2VMa3sxZeL8jb7d4kbfLi7dG871hsiflk9UVVgtCcPXHzulLJMs9rukGxzRjeSmQkA
-	TUy7SRCrr+4mnsEprPZ2ue/cOCC3jEDBGBMI2u2+IMsKNaPY61kHSLf72xHqpJ5/Ihl2PLMojTJZl
-	qbzh+wOtIkihCSb5uDVpsdiuVqpvay5bxRHP+ONO5b7GoQ0zyaOYXjpBpMzmU/cT0JVFgw1GX3RQL
-	i33E85z9Fkoqwz2arucg==;
+	List-Owner; bh=d2RtKVrLLLuNLpC96az88GWFtsH5ccovfGSOvpCzNFM=; b=Jo2oDjZ+RGpMRj
+	MBr0aIfRouiv4kzL1ha8d+m2bZ1nlgtOEGfzdAHc/U3thrX8nu6RVHY1Xb8CSxmAOFy7arK56zNsO
+	bjfMR6VedOsM6PhfUKvUkpGdOySUW4x4gXDL3uC29J1NLboX/57vkvgvP3vbBxmt86nY8pfLEqo5I
+	RlZ1mBrzdTPSlyAluKbS4SBdSkjD7GqwHjUBXGEMRh8b/Ko3vrS2fUb93YI9OXcDIyqBd4VJQ1QH6
+	Ra+xlpoaoDcS9yi3Iuf58HTEWKknZhx5zIaP7MkILHJanY6C4Ns+wkkdAS8AHTO4xL8GT+d3VQ8Mw
+	ZcIYC0kbP7DifN5pjupQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nco8W-00HBJb-16; Fri, 08 Apr 2022 12:54:48 +0000
+	id 1ncoAV-00HCB7-Ix; Fri, 08 Apr 2022 12:56:51 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncnU6-00Gtqk-6G; Fri, 08 Apr 2022 12:13:03 +0000
-X-UUID: 6c0c680fb0774f4399841aa949f32155-20220408
-X-UUID: 6c0c680fb0774f4399841aa949f32155-20220408
+ id 1ncnU7-00Gtqx-Lm; Fri, 08 Apr 2022 12:13:05 +0000
+X-UUID: ed20630ce28446a69793ab340df4ec8c-20220408
+X-UUID: ed20630ce28446a69793ab340df4ec8c-20220408
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1759633905; Fri, 08 Apr 2022 05:12:59 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1683963485; Fri, 08 Apr 2022 05:12:59 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 8 Apr 2022 05:02:59 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 8 Apr 2022 20:02:58 +0800
+ 15.0.1497.2; Fri, 8 Apr 2022 05:03:17 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 8 Apr 2022 20:03:14 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 8 Apr 2022 20:02:56 +0800
+ Transport; Fri, 8 Apr 2022 20:03:13 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
@@ -57,17 +57,19 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v9, 10/17] media: mediatek: vcodec: disable vp8 4K capability
-Date: Fri, 8 Apr 2022 20:02:33 +0800
-Message-ID: <20220408120240.29571-11-yunfei.dong@mediatek.com>
+Subject: [PATCH v9,
+ 17/17] media: mediatek: vcodec: prevent kernel crash when rmmod
+ mtk-vcodec-dec.ko
+Date: Fri, 8 Apr 2022 20:02:40 +0800
+Message-ID: <20220408120240.29571-18-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220408120240.29571-1-yunfei.dong@mediatek.com>
 References: <20220408120240.29571-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_051302_324193_B61AE097 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20220408_051303_746689_3319D35C 
+X-CRM114-Status: GOOD (  12.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,27 +86,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For vp8 not support 4K, need to disable it.
+If the driver support subdev mode, the parameter "dev->pm.dev" will be
+NULL in mtk_vcodec_dec_remove. Kernel will crash when try to rmmod
+mtk-vcodec-dec.ko.
+
+[ 4380.702726] pc : do_raw_spin_trylock+0x4/0x80
+[ 4380.707075] lr : _raw_spin_lock_irq+0x90/0x14c
+[ 4380.711509] sp : ffff80000819bc10
+[ 4380.714811] x29: ffff80000819bc10 x28: ffff3600c03e4000 x27: 0000000000000000
+[ 4380.721934] x26: 0000000000000000 x25: 0000000000000000 x24: 0000000000000000
+[ 4380.729057] x23: ffff3600c0f34930 x22: ffffd5e923549000 x21: 0000000000000220
+[ 4380.736179] x20: 0000000000000208 x19: ffffd5e9213e8ebc x18: 0000000000000020
+[ 4380.743298] x17: 0000002000000000 x16: ffffd5e9213e8e90 x15: 696c346f65646976
+[ 4380.750420] x14: 0000000000000000 x13: 0000000000000001 x12: 0000000000000040
+[ 4380.757542] x11: 0000000000000000 x10: 0000000000000000 x9 : 0000000000000000
+[ 4380.764664] x8 : 0000000000000000 x7 : ffff3600c7273ae8 x6 : ffffd5e9213e8ebc
+[ 4380.771786] x5 : 0000000000000000 x4 : 0000000000000001 x3 : 0000000000000000
+[ 4380.778908] x2 : 0000000000000000 x1 : ffff3600c03e4000 x0 : 0000000000000208
+[ 4380.786031] Call trace:
+[ 4380.788465]  do_raw_spin_trylock+0x4/0x80
+[ 4380.792462]  __pm_runtime_disable+0x2c/0x1b0
+[ 4380.796723]  mtk_vcodec_dec_remove+0x5c/0xa0 [mtk_vcodec_dec]
+[ 4380.802466]  platform_remove+0x2c/0x60
+[ 4380.806204]  __device_release_driver+0x194/0x250
+[ 4380.810810]  driver_detach+0xc8/0x15c
+[ 4380.814462]  bus_remove_driver+0x5c/0xb0
+[ 4380.818375]  driver_unregister+0x34/0x64
+[ 4380.822288]  platform_driver_unregister+0x18/0x24
+[ 4380.826979]  mtk_vcodec_dec_driver_exit+0x1c/0x888 [mtk_vcodec_dec]
+[ 4380.833240]  __arm64_sys_delete_module+0x190/0x224
+[ 4380.838020]  invoke_syscall+0x48/0x114
+[ 4380.841760]  el0_svc_common.constprop.0+0x60/0x11c
+[ 4380.846540]  do_el0_svc+0x28/0x90
+[ 4380.849844]  el0_svc+0x4c/0x100
+[ 4380.852975]  el0t_64_sync_handler+0xec/0xf0
+[ 4380.857148]  el0t_64_sync+0x190/0x194
+[ 4380.860801] Code: 94431515 17ffffca d503201f d503245f (b9400004)
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 3 ++-
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-index 1fb49a779c5d..dab6acb3158c 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-@@ -446,7 +446,8 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
- 	if (fmt == NULL)
- 		return -EINVAL;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+index a84df6596aaa..5da4572c5b14 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+@@ -482,7 +482,8 @@ static int mtk_vcodec_dec_remove(struct platform_device *pdev)
+ 		video_unregister_device(dev->vfd_dec);
  
--	if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED)) {
-+	if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED) &&
-+	    fmt->fourcc != V4L2_PIX_FMT_VP8_FRAME) {
- 		mtk_v4l2_debug(3, "4K is enabled");
- 		ctx->max_width = VCODEC_DEC_4K_CODED_WIDTH;
- 		ctx->max_height = VCODEC_DEC_4K_CODED_HEIGHT;
+ 	v4l2_device_unregister(&dev->v4l2_dev);
+-	pm_runtime_disable(dev->pm.dev);
++	if (!dev->vdec_pdata->is_subdev_supported)
++		pm_runtime_disable(dev->pm.dev);
+ 	mtk_vcodec_fw_release(dev->fw_handler);
+ 	return 0;
+ }
 -- 
 2.18.0
 
