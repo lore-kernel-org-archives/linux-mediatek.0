@@ -4,76 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB554C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 07:50:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 473CFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 08:04:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dUzr231fAXjb5c9q58DUfo7yA/+ZO44swb8GD4bf3/s=; b=EmKksOW3xpyOfg
-	/jSZIPQtqjrdxl8yiDYMwpkaE/7ZvgWgXwFiTh3KRrfVPCgb1tqy52OPCK/vThovq16x0/s568MA+
-	jNPiUr9Y+Qim70MA2ESFkcoVZop/ZGjrMdG0MAqxQ3jmTSTAFHL5jOrBW8QH3qVAlm6cXbjDhwcHN
-	Xe8QpeZ4kbvyweugwpzRtYXXiXeHShPT4KzglVPctDbxAHPnWHyKlb/Q4yX9gl5nE1gkR/odDUoS4
-	8AZ/2nyZdyw5GnYAGJWlHi/b0+j+ClrCHL3H+n1/i4JFQIJeQ/G7mBaFqGpXpmfVDs014mjCCvvW7
-	192GqQ5yJYpYpDnxeojw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1fG0K8itlz8dtFDjsud76SzJ9YgThuQJXmGTHeAQVHo=; b=M8lL75DypHMu2S
+	8pwcgCQfbB+UeJmpsvVRklJiCzH5v88z7pWkEwdJ25KLKJhG8mG3kjjgCVcMPu//JmD3sdDjN8vxO
+	dOPJF1D/aLdJfjsnnqBBNQGOwimRnTPHO0/NOELSh5r70FAqkL6ttYM20kSYTOi5tSXtxgRCuaFkg
+	Uc9yeJUpPW99vtcltx6ksJd+Fi8kzh2ldwjUVAoQrgNXe1P0g4GIewg075kI6EabwXoXAB0J7q40F
+	NC8Qgi7OgaAEmAuIFlxJOaBp+LVGTL2Zmqc4DZaYZ0h6TC8PWOKcsKG+unZrkFO1sZhAjj6QFjCVh
+	O3v01Z8CcsABCLZmp1Uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncjO7-00Fd7j-2W; Fri, 08 Apr 2022 07:50:35 +0000
-Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b])
+	id 1ncjbI-00FhtV-5K; Fri, 08 Apr 2022 08:04:12 +0000
+Received: from www.zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncjNv-00Fd4O-7L; Fri, 08 Apr 2022 07:50:24 +0000
-Received: by mail-qk1-x72b.google.com with SMTP id v13so4181465qkv.3;
- Fri, 08 Apr 2022 00:50:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gd03FWWEZ6z3R9zHdDhplmx+tKByFE9yM+qWp1XkieA=;
- b=GSCMFVnVaT8jJ12K90kWhi04C6d7kzAY9GLudaNvYwE1aM3WniSwE1EDlSIDYmXNcS
- ZoskDnyt3oQ5cAYCeF2S04eLs3rPOCoRhu9JBt9sUaSEjVpc5tuHd1ujmf5O49UFC7JX
- 0gjbhcWIZOP2mzeshdWpef7I2g5vOMS9fT/+N+9SBLJuv7SKLAd3y0crQl/DKb4n2aF1
- pIujdgV/QwGfUY/OzDEsNFv8V6xe0L/k1y/ouzPodjVnx8HbDqJ6hLss0MHdvuc2r4pb
- BDP9O88Sz3kXLSluV7pm13h4ni2njDLD6wsg4D+ggcP3oMhRbVnX8LLCI2qIyPMddecN
- 7jsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gd03FWWEZ6z3R9zHdDhplmx+tKByFE9yM+qWp1XkieA=;
- b=shu5i860uQmfJjnXPq0/pe4xIkOWB+x3DNy9MtCM6eLibiN6noEQdzyLBcADvhXcmS
- avKbf7o9nPlWtuz3C0WbO/jZzUkzyGSipGKA1y9SWi3QsfCruRfgt62jNFkoAIKuftuJ
- cjGEOUjThqa7jdyS81LqXT41UuS/elHJehpMMzCD4m8w+WxiKporU3zC8+F7KxSaT5rv
- 8k0BxPrQfkfNTD008Pfhm4U9DEYdLjQsukDaN6v6kgGww4vx6HEG4es9Kigy8ZiVDwTb
- hzjesDmHaxqw9Q4harStMQmz+x8GvFfUa/C94cDE4f4Rg/3ZndlA/Mcb+IIzfzcw6Fep
- QvEg==
-X-Gm-Message-State: AOAM532fqwj7jyQ5WPNpSceh170VGGXGnCnUSsszjmB+DhHKe03mbVTH
- gLnENePtuTkMNqKxLwSDKrgrFckdip3RtXvXbyc=
-X-Google-Smtp-Source: ABdhPJyVf/N0dZeSbLVCmVj1wUMk/MGaGOBT/OOoQXowI5Wkqped1Hq4ptNsGPdoDFZWsarHlb93LyG4RVHhq4yF5HY=
-X-Received: by 2002:a37:8d44:0:b0:69a:224a:dc27 with SMTP id
- p65-20020a378d44000000b0069a224adc27mr2598220qkd.563.1649404220992; Fri, 08
- Apr 2022 00:50:20 -0700 (PDT)
+ id 1ncjYA-00FgFO-RK
+ for linux-mediatek@lists.infradead.org; Fri, 08 Apr 2022 08:01:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple; d=sang-engineering.com; h=
+ from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding; s=k1; bh=C7ZjX1Ay6A/plBz2rUUu8D4qiQF
+ xw0oR7oGq/pKxKlk=; b=ogqZkcL+bbHbO7CIyhql+OroIyHhLelivbaaveHiJrM
+ 0TqEqV+Z8yyjphNMQTQoC6rubhkjUmvyu6siOoWt6IsGl58UxSu8pEajUJ/yPzx2
+ 4B+I7r/Y7vesIl8/YqcJcSf9KAYRS4uw9RfTnn/e6PWrZhbWxltQU1NDMXA0ia2o
+ =
+Received: (qmail 3517144 invoked from network); 8 Apr 2022 10:00:48 +0200
+Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted,
+ authenticated); 8 Apr 2022 10:00:48 +0200
+X-UD-Smtp-Session: l3s3148p1@v+kX/h/cTKQgAQnoAEvdAHNhR6IfKwZI
+From: Wolfram Sang <wsa+renesas@sang-engineering.com>
+To: linux-mmc@vger.kernel.org
+Cc: linux-renesas-soc@vger.kernel.org,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ ath10k@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com,
+ brcm80211-dev-list.pdl@broadcom.com, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-wireless@vger.kernel.org,
+ netdev@vger.kernel.org, SHA-cyfmac-dev-list@infineon.com
+Subject: [PATCH 0/3] mmc: improve API to make clear {h|s}w_reset is for cards
+Date: Fri,  8 Apr 2022 10:00:41 +0200
+Message-Id: <20220408080045.6497-1-wsa+renesas@sang-engineering.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-References: <20220407143328.295762-1-krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220407143328.295762-1-krzysztof.kozlowski@linaro.org>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Fri, 8 Apr 2022 09:50:10 +0200
-Message-ID: <CAMhs-H8Z=Q3vm6psjp4iqu7z4N4eUKokeJ8VM+_wCscypP1TLQ@mail.gmail.com>
-Subject: Re: [PATCH] MIPS: dts: align SPI NOR node name with dtschema
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Florian Fainelli <f.fainelli@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
- bcm-kernel-feedback-list@broadcom.com, 
- "open list:MIPS" <linux-mips@vger.kernel.org>, 
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>, 
- linux-arm-kernel@lists.infradead.org, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_005023_326722_A771FE99 
-X-CRM114-Status: GOOD (  10.35  )
+X-CRM114-CacheID: sfid-20220408_010059_960054_F58B0631 
+X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,21 +71,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 7, 2022 at 4:33 PM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
->
-> The node names should be generic and SPI NOR dtschema expects "flash".
->
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+As discussed in 2020 [1], Ulf and I agreed that it would be easier to
+understand the {h|s}w_reset mechanisms if it was clear that they are for
+cards. This series implements that by changing the parameter to mmc_card
+where apropriate. Also, the callback into host drivers has been renamed
+to 'card_hw_reset' to make it obvious what exactly the driver is
+expected to reset.
 
->  arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts         | 2 +-
->  arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts         | 2 +-
->  6 files changed, 6 insertions(+), 6 deletions(-)
+I tested it with my Renesas boards, so far no regressions. Buildbots are
+currently checking the series.
 
-Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+This series is based on mmc/next as of yesterday. A branch is here:
 
-Thanks,
-    Sergio Paracuellos
+git://git.kernel.org/pub/scm/linux/kernel/git/wsa/linux.git renesas/mmc/reset-api-v2
+
+Looking forward to comments. Happy hacking,
+
+   Wolfram
+
+[1] https://lore.kernel.org/all/20200916090121.2350-1-wsa+renesas@sang-engineering.com/
+
+Wolfram Sang (3):
+  mmc: core: improve API to make clear mmc_hw_reset is for cards
+  mmc: core: improve API to make clear that mmc_sw_reset is for cards
+  mmc: improve API to make clear hw_reset callback is for cards
+
+ drivers/mmc/core/block.c                             |  2 +-
+ drivers/mmc/core/core.c                              | 12 +++++++-----
+ drivers/mmc/core/mmc.c                               |  4 ++--
+ drivers/mmc/core/mmc_test.c                          |  3 +--
+ drivers/mmc/host/bcm2835.c                           |  2 +-
+ drivers/mmc/host/dw_mmc.c                            |  2 +-
+ drivers/mmc/host/meson-mx-sdhc-mmc.c                 |  2 +-
+ drivers/mmc/host/mtk-sd.c                            |  2 +-
+ drivers/mmc/host/sdhci.c                             |  2 +-
+ drivers/mmc/host/sunxi-mmc.c                         |  2 +-
+ drivers/mmc/host/uniphier-sd.c                       |  2 +-
+ drivers/net/wireless/ath/ath10k/sdio.c               |  2 +-
+ .../net/wireless/broadcom/brcm80211/brcmfmac/sdio.c  |  2 +-
+ drivers/net/wireless/marvell/mwifiex/sdio.c          |  2 +-
+ drivers/net/wireless/ti/wlcore/sdio.c                |  2 +-
+ include/linux/mmc/core.h                             |  4 ++--
+ include/linux/mmc/host.h                             |  2 +-
+ 17 files changed, 25 insertions(+), 24 deletions(-)
+
+-- 
+2.30.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
