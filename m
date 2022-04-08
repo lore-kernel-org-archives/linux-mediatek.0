@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11D3CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 19:08:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30D1AC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 20:29:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZM8wxv3aFwB5pwfckJoqVD6JTXgl1yrtFnUHZ8VFTBk=; b=0tfv2gyfjjNqMc
-	WRFOoX03QvmaOXhlR9OCxsCbJLuK/B+bHIHGo2uesJYLDtqVOV2YJyMGOKkgG2wkj4qJJ63m+Cfru
-	mAx6FIBi5UddRfs7Ki/LudX6MoudEmna4vZpLq5iXpMswWZaKVUk/+zbqaGsoS+rlXR4L8omYsPbW
-	n4Hslv7/4/SyxVKTk1BEgI5eoyRqvI/A/HIHoU6NjLWHKWRfRWzJln7Y6jawtUSvQO0Ay0wyBdMjR
-	cKZYZ6YzzVysMcI+IEK96/wjYAm+bCRj/U62tOPO6EFTzqsYKfD2NujnRfRl/HIhZvSP6S/CLMW/5
-	ROi0wo3GriBmRwAyK+9A==;
+	List-Owner; bh=YpB/mbEWXA4eHn2IHQCMCKMGZxqDq5lSGC4u5Ls1EaE=; b=FVM1f8KHGnDd9b
+	n8eSkO6GiN13Eaogp63cq5Kuk2cFvnhZP2kg2QB49HhRZj7hj97myPgRE1lez7rn+p0axSK3auZX1
+	0GpC91WGnQy3MxB97CC23hJnSwXd9tGgt7isxHYQX6VL9GFlU7i1Xl/ZyDBdi9j4C3B5wLawpa/PE
+	LBBdtanch9Vc8e4k/9rLfk8RBN88d8psuKbdnSAW2U42bycLZdXLdtlnUYCEWaMdAs7l59Dc2IA3A
+	deS8HfFvHvrrzLyRd3SZt4i6f+W9uAbJLVhmsc1z7I/Hr5erPAqQ7kGQ/i+whvP64nbjk11PWCCxA
+	13TIGmF4qEyf/gxWj1XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nctxu-0012hT-D9; Fri, 08 Apr 2022 19:08:14 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1ncvEV-001C05-50; Fri, 08 Apr 2022 20:29:27 +0000
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nctxr-0012fo-5m; Fri, 08 Apr 2022 19:08:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1649444891; x=1680980891;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=AWYekLkV9Dk0OIItlmpZ6xPEjkw9ZzDl/PwK+X2pq44=;
- b=DYK3V870QdRPqJWlF81PD/jqNkBI5zp+crmAHryYLBol4gIFNnEpQqdj
- prpKypetBwkn76o5f1ElUkb5jtRalXTUiHT/wv0ekFDkM4yIu4UGymlRC
- ZCFu7Aui0+1qCnTxBZUnEufZ+ZRY3i0Rh3qANt1i1VK3igIuvpVcMF7no
- ckXdguN3EM3ap/CyGCWlG33rdxLjXfhVDKWAt+4jTi1mzNbZzw3tZn1iQ
- 2QRVSS0qvbB7bnyiv3ABm1qie5yoRRsDZzm1og6xxpdUqzEXx5/blmV0S
- fNWEklhK2Jr0eRl64F6twKtayOCAtR4NSzxCyeHttF3fdT1OQdzoVNRVm w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10311"; a="249196266"
-X-IronPort-AV: E=Sophos;i="5.90,245,1643702400"; d="scan'208";a="249196266"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2022 12:08:09 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,245,1643702400"; d="scan'208";a="659594181"
-Received: from lkp-server02.sh.intel.com (HELO 7e80bc2a00a0) ([10.239.97.151])
- by orsmga004.jf.intel.com with ESMTP; 08 Apr 2022 12:08:04 -0700
-Received: from kbuild by 7e80bc2a00a0 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nctxj-0000Yk-DD;
- Fri, 08 Apr 2022 19:08:03 +0000
-Date: Sat, 9 Apr 2022 03:07:35 +0800
-From: kernel test robot <lkp@intel.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil <hverkuil@xs4all.nl>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-Cc: kbuild-all@lists.01.org, linux-media@vger.kernel.org,
- Irui Wang <irui.wang@mediatek.com>, George Sun <george.sun@mediatek.com>,
- Steve Cho <stevecho@chromium.org>, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, dri-devel <dri-devel@lists.freedesktop.org>,
- Xiaoyong Lu <xiaoyong.lu@mediatek.com>, linux-mediatek@lists.infradead.org,
- Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v9, 16/17] media: mediatek: vcodec: support stateless VP9
- decoding
-Message-ID: <202204090240.SZpTTylK-lkp@intel.com>
-References: <20220408120240.29571-17-yunfei.dong@mediatek.com>
+ id 1ncvEH-001BxJ-Nh
+ for linux-mediatek@lists.infradead.org; Fri, 08 Apr 2022 20:29:16 +0000
+Received: by mail-pj1-x102b.google.com with SMTP id 2so9664070pjw.2
+ for <linux-mediatek@lists.infradead.org>; Fri, 08 Apr 2022 13:29:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:in-reply-to:references:date:message-id
+ :mime-version; bh=HD9KWxYgHovL4d+swYpmuaTcGaPIaYm36t/rSV4RSvg=;
+ b=Q0KeoqDnCa8t9t7sVZPbYG3qKLWKWSwjPdVPsqLNyYAIkNInfvFrnib1WBJF0cFwPV
+ cS88dBGtsAWScifpLSaO+kVpUGO8xGswNZgPNdhGOFmClE5dE1T/mSRm+cmRZvX03LET
+ vP9besdhVUGIMppcb/yOkqKHoE8YUfnOTbgL48zbFm+MKrKJlL59Z62zG0lP5qZKbd8C
+ P8ZQUoDvx7UGRpcUIa7VokvDC02Y2wGLGOTj7/BGPLKFLWg/j4a4j3DqqtljU//u7sps
+ iKvkuYkzerCCmTAseaxt4wrz8EffCcexE6DaU0McLwY4AdgJaXXMFUzw3XUhZEHLN3IZ
+ sYwQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
+ :message-id:mime-version;
+ bh=HD9KWxYgHovL4d+swYpmuaTcGaPIaYm36t/rSV4RSvg=;
+ b=5mAFE4O/3T/vJTP4kpzzUZhSy1dH5oD2AZtW/Gmw1DJCFOPK44FfAzX9kv0zWt8eMn
+ NkoxEwE/1dlxz+7Tgf499L3OfqGTC5ro9k1U+nGv9GhClOc4pvU4QJq9KPaOfjKa55gk
+ //0h1UOBsYPQy9KPus9okkpeSIgaqEI8FqhduJB2i/+3AMP8LxmvPPNPbgqgmbwvINz0
+ tmSgVF6MxFgU3RKcQwEG5qIIQZfx7iNhs1AnG+Sa8qmq+nMNlLuxNwWddambnTqTe9vy
+ vB6jDbS1g5GwqmNSUWwpXbWddRekT2T/rJqTLCXOXxJvpo9ORWgwY7+cCNu61slQxPBz
+ Chzg==
+X-Gm-Message-State: AOAM530SlaCG6MOvBhoZU7iCR3WxjNdn7oZhbHNpMzBG4tyGlfYb9BOy
+ c4++Lyl7CB4jpR8ChyzLe/XKwA==
+X-Google-Smtp-Source: ABdhPJz1t8RKOgx1OockyWLTtqK9N64BneuYukw0ht7tEOMRQDgSerOayaO2vT0LBXJsp4/C/ABSyw==
+X-Received: by 2002:a17:90b:4f8e:b0:1c7:3652:21bc with SMTP id
+ qe14-20020a17090b4f8e00b001c7365221bcmr23626082pjb.38.1649449751645; 
+ Fri, 08 Apr 2022 13:29:11 -0700 (PDT)
+Received: from localhost (c-71-197-186-152.hsd1.wa.comcast.net.
+ [71.197.186.152]) by smtp.gmail.com with ESMTPSA id
+ x8-20020aa784c8000000b0050577c51d38sm3849034pfn.20.2022.04.08.13.29.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 08 Apr 2022 13:29:11 -0700 (PDT)
+From: Kevin Hilman <khilman@baylibre.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
+ viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org
+Cc: matthias.bgg@gmail.com, jia-wei.chang@mediatek.com,
+ roger.lu@mediatek.com, hsinyi@google.com, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, "Andrew-sh.Cheng"
+ <andrew-sh.cheng@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>
+Subject: Re: [PATCH V2 07/15] cpufreq: mediatek: Add opp notification for
+ SVS support
+In-Reply-To: <20220408045908.21671-8-rex-bc.chen@mediatek.com>
+References: <20220408045908.21671-1-rex-bc.chen@mediatek.com>
+ <20220408045908.21671-8-rex-bc.chen@mediatek.com>
+Date: Fri, 08 Apr 2022 13:29:10 -0700
+Message-ID: <7hsfqn5nft.fsf@baylibre.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220408120240.29571-17-yunfei.dong@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_120811_338446_2D3C0644 
-X-CRM114-Status: GOOD (  15.66  )
+X-CRM114-CacheID: sfid-20220408_132913_999533_773E1C53 
+X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,115 +96,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yunfei,
+Rex-BC Chen <rex-bc.chen@mediatek.com> writes:
 
-Thank you for the patch! Perhaps something to improve:
+> From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+>
+> The Smart Voltage Scaling (SVS) is a hardware which calculates suitable
+> SVS bank voltages to OPP voltage table.
+>
+> When the SVS is enabled, cpufreq should listen to opp notification and do
+> proper actions when receiving events of disable and voltage adjustment.
 
-[auto build test WARNING on media-tree/master]
-[also build test WARNING on v5.18-rc1 next-20220408]
-[cannot apply to remoteproc/rproc-next drm-tip/drm-tip]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
+So listenting for OPP notifications should be done only when SVS is enabled...
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Yunfei-Dong/media-mediatek-vcodec-Add-vdec-enable-disable-hardware-helpers/20220408-210244
-base:   git://linuxtv.org/media_tree.git master
-config: powerpc-allmodconfig (https://download.01.org/0day-ci/archive/20220409/202204090240.SZpTTylK-lkp@intel.com/config)
-compiler: powerpc-linux-gcc (GCC) 11.2.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/251c7c77f6690881357df39867a32a03eb7db3b7
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Yunfei-Dong/media-mediatek-vcodec-Add-vdec-enable-disable-hardware-helpers/20220408-210244
-        git checkout 251c7c77f6690881357df39867a32a03eb7db3b7
-        # save the config file to linux build tree
-        mkdir build_dir
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=powerpc SHELL=/bin/bash drivers/media/
+[...]
 
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
+>  static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+>  {
+>  	struct device *cpu_dev;
+> @@ -392,6 +455,17 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+>  	info->intermediate_voltage = dev_pm_opp_get_voltage(opp);
+>  	dev_pm_opp_put(opp);
+>  
+> +	info->opp_cpu = cpu;
+> +	info->opp_nb.notifier_call = mtk_cpufreq_opp_notifier;
+> +	ret = dev_pm_opp_register_notifier(cpu_dev, &info->opp_nb);
 
-All warnings (new ones prefixed by >>):
+...but here youlisten to OPP notifications unconditionally.  Seems there
+should be a check whether SVS is enabled before deciding to register.
 
-   In file included from drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c:12:
-   drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c: In function 'vdec_vp9_slice_lat_decode':
->> drivers/media/platform/mediatek/vcodec/vdec/../mtk_vcodec_util.h:29:21: warning: format '%lx' expects argument of type 'long unsigned int', but argument 6 has type 'dma_addr_t' {aka 'unsigned int'} [-Wformat=]
-      29 | #define pr_fmt(fmt) "%s(),%d: " fmt, __func__, __LINE__
-         |                     ^~~~~~~~~~~
-   include/linux/dynamic_debug.h:134:29: note: in expansion of macro 'pr_fmt'
-     134 |                 func(&id, ##__VA_ARGS__);               \
-         |                             ^~~~~~~~~~~
-   include/linux/dynamic_debug.h:152:9: note: in expansion of macro '__dynamic_func_call'
-     152 |         __dynamic_func_call(__UNIQUE_ID(ddebug), fmt, func, ##__VA_ARGS__)
-         |         ^~~~~~~~~~~~~~~~~~~
-   include/linux/dynamic_debug.h:162:9: note: in expansion of macro '_dynamic_func_call'
-     162 |         _dynamic_func_call(fmt, __dynamic_pr_debug,             \
-         |         ^~~~~~~~~~~~~~~~~~
-   include/linux/printk.h:570:9: note: in expansion of macro 'dynamic_pr_debug'
-     570 |         dynamic_pr_debug(fmt, ##__VA_ARGS__)
-         |         ^~~~~~~~~~~~~~~~
-   drivers/media/platform/mediatek/vcodec/vdec/../mtk_vcodec_util.h:45:9: note: in expansion of macro 'pr_debug'
-      45 |         pr_debug("[MTK_VCODEC][%d]: " fmt "\n",                 \
-         |         ^~~~~~~~
-   drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c:1938:9: note: in expansion of macro 'mtk_vcodec_debug'
-    1938 |         mtk_vcodec_debug(instance, "lat dma addr: 0x%lx 0x%lx\n",
-         |         ^~~~~~~~~~~~~~~~
-   drivers/media/platform/mediatek/vcodec/vdec/../mtk_vcodec_util.h:29:21: warning: format '%lx' expects argument of type 'long unsigned int', but argument 7 has type 'dma_addr_t' {aka 'unsigned int'} [-Wformat=]
-      29 | #define pr_fmt(fmt) "%s(),%d: " fmt, __func__, __LINE__
-         |                     ^~~~~~~~~~~
-   include/linux/dynamic_debug.h:134:29: note: in expansion of macro 'pr_fmt'
-     134 |                 func(&id, ##__VA_ARGS__);               \
-         |                             ^~~~~~~~~~~
-   include/linux/dynamic_debug.h:152:9: note: in expansion of macro '__dynamic_func_call'
-     152 |         __dynamic_func_call(__UNIQUE_ID(ddebug), fmt, func, ##__VA_ARGS__)
-         |         ^~~~~~~~~~~~~~~~~~~
-   include/linux/dynamic_debug.h:162:9: note: in expansion of macro '_dynamic_func_call'
-     162 |         _dynamic_func_call(fmt, __dynamic_pr_debug,             \
-         |         ^~~~~~~~~~~~~~~~~~
-   include/linux/printk.h:570:9: note: in expansion of macro 'dynamic_pr_debug'
-     570 |         dynamic_pr_debug(fmt, ##__VA_ARGS__)
-         |         ^~~~~~~~~~~~~~~~
-   drivers/media/platform/mediatek/vcodec/vdec/../mtk_vcodec_util.h:45:9: note: in expansion of macro 'pr_debug'
-      45 |         pr_debug("[MTK_VCODEC][%d]: " fmt "\n",                 \
-         |         ^~~~~~~~
-   drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c:1938:9: note: in expansion of macro 'mtk_vcodec_debug'
-    1938 |         mtk_vcodec_debug(instance, "lat dma addr: 0x%lx 0x%lx\n",
-         |         ^~~~~~~~~~~~~~~~
-   drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c: In function 'vdec_vp9_slice_core_decode':
->> drivers/media/platform/mediatek/vcodec/vdec/../mtk_vcodec_util.h:29:21: warning: format '%lx' expects argument of type 'long unsigned int', but argument 6 has type 'dma_addr_t' {aka 'unsigned int'} [-Wformat=]
-      29 | #define pr_fmt(fmt) "%s(),%d: " fmt, __func__, __LINE__
-         |                     ^~~~~~~~~~~
-   include/linux/dynamic_debug.h:134:29: note: in expansion of macro 'pr_fmt'
-     134 |                 func(&id, ##__VA_ARGS__);               \
-         |                             ^~~~~~~~~~~
-   include/linux/dynamic_debug.h:152:9: note: in expansion of macro '__dynamic_func_call'
-     152 |         __dynamic_func_call(__UNIQUE_ID(ddebug), fmt, func, ##__VA_ARGS__)
-         |         ^~~~~~~~~~~~~~~~~~~
-   include/linux/dynamic_debug.h:162:9: note: in expansion of macro '_dynamic_func_call'
-     162 |         _dynamic_func_call(fmt, __dynamic_pr_debug,             \
-         |         ^~~~~~~~~~~~~~~~~~
-   include/linux/printk.h:570:9: note: in expansion of macro 'dynamic_pr_debug'
-     570 |         dynamic_pr_debug(fmt, ##__VA_ARGS__)
-         |         ^~~~~~~~~~~~~~~~
-   drivers/media/platform/mediatek/vcodec/vdec/../mtk_vcodec_util.h:45:9: note: in expansion of macro 'pr_debug'
-      45 |         pr_debug("[MTK_VCODEC][%d]: " fmt "\n",                 \
-         |         ^~~~~~~~
-   drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c:2007:9: note: in expansion of macro 'mtk_vcodec_debug'
-    2007 |         mtk_vcodec_debug(instance, "core dma_addr_end 0x%lx\n", pfc->vsi.trans.dma_addr_end);
-         |         ^~~~~~~~~~~~~~~~
-
-
-vim +29 drivers/media/platform/mediatek/vcodec/vdec/../mtk_vcodec_util.h
-
-4e855a6efa5470 drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h Tiffany Lin      2016-05-03  27  
-71c789760ff9ba drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h Dafna Hirschfeld 2021-11-17  28  #undef pr_fmt
-71c789760ff9ba drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h Dafna Hirschfeld 2021-11-17 @29  #define pr_fmt(fmt) "%s(),%d: " fmt, __func__, __LINE__
-4e855a6efa5470 drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h Tiffany Lin      2016-05-03  30  
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+Kevin
 
 _______________________________________________
 Linux-mediatek mailing list
