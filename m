@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05CA5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 12:43:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44216C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 12:47:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Eu7o0uZlhYXCIFlZ7vzgi+oQky0YVnj6PLvfnxd4Axs=; b=TdXRFNzXDiKElR
-	EyPLb5gFsbP6cbas47mlmDFB1uG0JVQ9hSYw8gen+qXci+xAtvhrn3GtyKOdXU7cOiSfGQmuj+PzG
-	JOsZ0D2dAvGXjvgdRC3ydN2VNjJKBUadyeHEuY7zqhBTAcQ15jBkG3wfd14wy4jALF/2gAakhCxkr
-	8t5IR8qZRJx8xZbMnh/IZoY8Cxm/DDSZ2TuZ3tInjxfCI34mwbYfLbXWhPRooVJvwOwJdae8VtYFO
-	544rvDwzs7MGRqkh46Awi/IvpiJBDdqET7pw9tM2h/vp80uR/ZukiseDq8rEQcIVNVJnuJ1uSUlKR
-	y4KIHSVZLVsQaSH3rB6A==;
+	List-Owner; bh=s1HHv3+vLAHBL/GvhAD70+4Bje6LO3YdS7jUuD0FqwY=; b=BLCRnHl8nSar3A
+	zImUZnlAnzE6fJ3yGtMPErYmufnZbPv1hdtTZvklrrYEKZDJSkA/gFGsBp5Q9RHTfvoqPe+73FGRi
+	gnleNDaiM5ruVQzsz3n4A8f0JrQhCYT+mFHYnLgC2gPHyWHnzbhswGWxJhKSCk3E0Yy8vgrJnDCUc
+	klS/PMWnCE97QgJqUxl3MXX71EUCk1KAfyo087bYTotbWHhf9xrwdFu258wKOuzIkD8F7LOUtPALW
+	dPCWn5hmmBKcq1JC5acCxUd9gr//1Yd77PURfWXMYK9eaAOgUafgbnBDohjc9vNH3eJqKapM/ha60
+	Pv65xnp9QsxusMvjmbPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncnxq-00H6C2-K8; Fri, 08 Apr 2022 12:43:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nco0u-00H7eB-7H; Fri, 08 Apr 2022 12:46:56 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncnKQ-00Gprd-8P; Fri, 08 Apr 2022 12:03:09 +0000
-X-UUID: 1d84ea0e4acc44bba52257866775b122-20220408
-X-UUID: 1d84ea0e4acc44bba52257866775b122-20220408
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1ncnTI-00Gtag-KS; Fri, 08 Apr 2022 12:12:14 +0000
+X-UUID: 8e0e000ba46b427a87766bfef626fcab-20220408
+X-UUID: 8e0e000ba46b427a87766bfef626fcab-20220408
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2053948462; Fri, 08 Apr 2022 05:02:57 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 8 Apr 2022 05:02:55 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 8 Apr 2022 20:02:53 +0800
+ with ESMTP id 1020695013; Fri, 08 Apr 2022 05:12:06 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 8 Apr 2022 05:02:58 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 8 Apr 2022 20:02:56 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 8 Apr 2022 20:02:52 +0800
+ Transport; Fri, 8 Apr 2022 20:02:55 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
@@ -58,19 +57,17 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v9,
- 07/17] media: mediatek: vcodec: Refactor supported vdec formats and
- framesizes
-Date: Fri, 8 Apr 2022 20:02:30 +0800
-Message-ID: <20220408120240.29571-8-yunfei.dong@mediatek.com>
+Subject: [PATCH v9, 09/17] media: mediatek: vcodec: Add format to support MT21C
+Date: Fri, 8 Apr 2022 20:02:32 +0800
+Message-ID: <20220408120240.29571-10-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220408120240.29571-1-yunfei.dong@mediatek.com>
 References: <20220408120240.29571-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_050302_359864_2A8A0F24 
-X-CRM114-Status: GOOD (  17.85  )
+X-CRM114-CacheID: sfid-20220408_051212_704964_D8DC49B2 
+X-CRM114-Status: GOOD (  13.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,191 +84,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Supported output and capture format types for mt8192 are different
-with mt8183. Redefine parameters to store them.
+Needs to use mediatek compressed mode for mt8192 decoder.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../media/platform/mediatek/vcodec/mtk_vcodec_dec.c |  8 ++++----
- .../mediatek/vcodec/mtk_vcodec_dec_stateful.c       | 13 ++++++++-----
- .../mediatek/vcodec/mtk_vcodec_dec_stateless.c      | 13 +++++++------
- .../media/platform/mediatek/vcodec/mtk_vcodec_drv.h | 13 +++++++++++--
- 4 files changed, 30 insertions(+), 17 deletions(-)
+ .../platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c    | 7 ++++++-
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h    | 1 +
+ 2 files changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-index c1c3f439d7d1..1fb49a779c5d 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-@@ -26,7 +26,7 @@ mtk_vdec_find_format(struct v4l2_format *f,
- 	const struct mtk_video_fmt *fmt;
- 	unsigned int k;
- 
--	for (k = 0; k < dec_pdata->num_formats; k++) {
-+	for (k = 0; k < *dec_pdata->num_formats; k++) {
- 		fmt = &dec_pdata->vdec_formats[k];
- 		if (fmt->fourcc == f->fmt.pix_mp.pixelformat)
- 			return fmt;
-@@ -531,7 +531,7 @@ static int vidioc_enum_framesizes(struct file *file, void *priv,
- 	if (fsize->index != 0)
- 		return -EINVAL;
- 
--	for (i = 0; i < dec_pdata->num_framesizes; ++i) {
-+	for (i = 0; i < *dec_pdata->num_framesizes; ++i) {
- 		if (fsize->pixel_format != dec_pdata->vdec_framesizes[i].fourcc)
- 			continue;
- 
-@@ -563,7 +563,7 @@ static int vidioc_enum_fmt(struct v4l2_fmtdesc *f, void *priv,
- 	const struct mtk_video_fmt *fmt;
- 	int i, j = 0;
- 
--	for (i = 0; i < dec_pdata->num_formats; i++) {
-+	for (i = 0; i < *dec_pdata->num_formats; i++) {
- 		if (output_queue &&
- 		    dec_pdata->vdec_formats[i].type != MTK_FMT_DEC)
- 			continue;
-@@ -576,7 +576,7 @@ static int vidioc_enum_fmt(struct v4l2_fmtdesc *f, void *priv,
- 		++j;
- 	}
- 
--	if (i == dec_pdata->num_formats)
-+	if (i == *dec_pdata->num_formats)
- 		return -EINVAL;
- 
- 	fmt = &dec_pdata->vdec_formats[i];
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
-index e7fd39180123..9c7e6145cebb 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
-@@ -37,7 +37,9 @@ static const struct mtk_video_fmt mtk_video_formats[] = {
- 	},
- };
- 
--#define NUM_FORMATS ARRAY_SIZE(mtk_video_formats)
-+static const unsigned int num_supported_formats =
-+	ARRAY_SIZE(mtk_video_formats);
-+
- #define DEFAULT_OUT_FMT_IDX 0
- #define DEFAULT_CAP_FMT_IDX 3
- 
-@@ -59,7 +61,8 @@ static const struct mtk_codec_framesizes mtk_vdec_framesizes[] = {
- 	},
- };
- 
--#define NUM_SUPPORTED_FRAMESIZE ARRAY_SIZE(mtk_vdec_framesizes)
-+static const unsigned int num_supported_framesize =
-+	ARRAY_SIZE(mtk_vdec_framesizes);
- 
- /*
-  * This function tries to clean all display buffers, the buffers will return
-@@ -230,7 +233,7 @@ static void mtk_vdec_update_fmt(struct mtk_vcodec_ctx *ctx,
- 	unsigned int k;
- 
- 	dst_q_data = &ctx->q_data[MTK_Q_DATA_DST];
--	for (k = 0; k < NUM_FORMATS; k++) {
-+	for (k = 0; k < num_supported_formats; k++) {
- 		fmt = &mtk_video_formats[k];
- 		if (fmt->fourcc == pixelformat) {
- 			mtk_v4l2_debug(1, "Update cap fourcc(%d -> %d)",
-@@ -612,11 +615,11 @@ const struct mtk_vcodec_dec_pdata mtk_vdec_8173_pdata = {
- 	.ctrls_setup = mtk_vcodec_dec_ctrls_setup,
- 	.vdec_vb2_ops = &mtk_vdec_frame_vb2_ops,
- 	.vdec_formats = mtk_video_formats,
--	.num_formats = NUM_FORMATS,
-+	.num_formats = &num_supported_formats,
- 	.default_out_fmt = &mtk_video_formats[DEFAULT_OUT_FMT_IDX],
- 	.default_cap_fmt = &mtk_video_formats[DEFAULT_CAP_FMT_IDX],
- 	.vdec_framesizes = mtk_vdec_framesizes,
--	.num_framesizes = NUM_SUPPORTED_FRAMESIZE,
-+	.num_framesizes = &num_supported_framesize,
- 	.worker = mtk_vdec_worker,
- 	.flush_decoder = mtk_vdec_flush_decoder,
- 	.is_subdev_supported = false,
 diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
-index c61df1f51185..0034b2ee9259 100644
+index 5101322f4fe9..d5c69f94d28e 100644
 --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
 +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
-@@ -94,7 +94,8 @@ static const struct mtk_video_fmt mtk_video_formats[] = {
- 	},
- };
+@@ -81,7 +81,7 @@ static const struct mtk_stateless_control mtk_stateless_controls[] = {
  
--#define NUM_FORMATS ARRAY_SIZE(mtk_video_formats)
-+static const unsigned int num_supported_formats = ARRAY_SIZE(mtk_video_formats);
-+
- #define DEFAULT_OUT_FMT_IDX    0
- #define DEFAULT_CAP_FMT_IDX    1
+ #define NUM_CTRLS ARRAY_SIZE(mtk_stateless_controls)
  
-@@ -106,7 +107,7 @@ static const struct mtk_codec_framesizes mtk_vdec_framesizes[] = {
- 	},
- };
+-static struct mtk_video_fmt mtk_video_formats[2];
++static struct mtk_video_fmt mtk_video_formats[3];
+ static struct mtk_codec_framesizes mtk_vdec_framesizes[1];
  
--#define NUM_SUPPORTED_FRAMESIZE ARRAY_SIZE(mtk_vdec_framesizes)
-+static const unsigned int num_supported_framesize = ARRAY_SIZE(mtk_vdec_framesizes);
- 
- static void mtk_vdec_stateless_cap_to_disp(struct mtk_vcodec_ctx *ctx, int error,
- 					   struct media_request *src_buf_req)
-@@ -362,11 +363,11 @@ const struct mtk_vcodec_dec_pdata mtk_vdec_8183_pdata = {
- 	.ctrls_setup = mtk_vcodec_dec_ctrls_setup,
- 	.vdec_vb2_ops = &mtk_vdec_request_vb2_ops,
- 	.vdec_formats = mtk_video_formats,
--	.num_formats = NUM_FORMATS,
-+	.num_formats = &num_supported_formats,
- 	.default_out_fmt = &mtk_video_formats[DEFAULT_OUT_FMT_IDX],
- 	.default_cap_fmt = &mtk_video_formats[DEFAULT_CAP_FMT_IDX],
- 	.vdec_framesizes = mtk_vdec_framesizes,
--	.num_framesizes = NUM_SUPPORTED_FRAMESIZE,
-+	.num_framesizes = &num_supported_framesize,
- 	.uses_stateless_api = true,
- 	.worker = mtk_vdec_worker,
- 	.flush_decoder = mtk_vdec_flush_decoder,
-@@ -382,11 +383,11 @@ const struct mtk_vcodec_dec_pdata mtk_lat_sig_core_pdata = {
- 	.ctrls_setup = mtk_vcodec_dec_ctrls_setup,
- 	.vdec_vb2_ops = &mtk_vdec_request_vb2_ops,
- 	.vdec_formats = mtk_video_formats,
--	.num_formats = NUM_FORMATS,
-+	.num_formats = &num_supported_formats,
- 	.default_out_fmt = &mtk_video_formats[DEFAULT_OUT_FMT_IDX],
- 	.default_cap_fmt = &mtk_video_formats[DEFAULT_CAP_FMT_IDX],
- 	.vdec_framesizes = mtk_vdec_framesizes,
--	.num_framesizes = NUM_SUPPORTED_FRAMESIZE,
-+	.num_framesizes = &num_supported_framesize,
- 	.uses_stateless_api = true,
- 	.worker = mtk_vdec_worker,
- 	.flush_decoder = mtk_vdec_flush_decoder,
+ static struct mtk_video_fmt default_out_format;
+@@ -331,6 +331,7 @@ static void mtk_vcodec_add_formats(unsigned int fourcc,
+ 		num_framesizes++;
+ 		break;
+ 	case V4L2_PIX_FMT_MM21:
++	case V4L2_PIX_FMT_MT21C:
+ 		mtk_video_formats[count_formats].fourcc = fourcc;
+ 		mtk_video_formats[count_formats].type = MTK_FMT_FRAME;
+ 		mtk_video_formats[count_formats].num_planes = 2;
+@@ -356,6 +357,10 @@ static void mtk_vcodec_get_supported_formats(struct mtk_vcodec_ctx *ctx)
+ 		mtk_vcodec_add_formats(V4L2_PIX_FMT_MM21, ctx);
+ 		cap_format_count++;
+ 	}
++	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MT21C) {
++		mtk_vcodec_add_formats(V4L2_PIX_FMT_MT21C, ctx);
++		cap_format_count++;
++	}
+ 	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_H264_SLICE) {
+ 		mtk_vcodec_add_formats(V4L2_PIX_FMT_H264_SLICE, ctx);
+ 		out_format_count++;
 diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-index c06463142182..d74a9e0e74fe 100644
+index d74a9e0e74fe..75a1c6df6594 100644
 --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
 +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-@@ -344,6 +344,15 @@ enum mtk_vdec_hw_arch {
- 	MTK_VDEC_LAT_SINGLE_CORE,
+@@ -350,6 +350,7 @@ enum mtk_vdec_hw_arch {
+  */
+ enum mtk_vdec_format_types {
+ 	MTK_VDEC_FORMAT_MM21 = 0x20,
++	MTK_VDEC_FORMAT_MT21C = 0x40,
+ 	MTK_VDEC_FORMAT_H264_SLICE = 0x100,
  };
- 
-+/*
-+ * struct mtk_vdec_format_types - Structure used to get supported
-+ *		  format types according to decoder capability
-+ */
-+enum mtk_vdec_format_types {
-+	MTK_VDEC_FORMAT_MM21 = 0x20,
-+	MTK_VDEC_FORMAT_H264_SLICE = 0x100,
-+};
-+
- /**
-  * struct mtk_vcodec_dec_pdata - compatible data for each IC
-  * @init_vdec_params: init vdec params
-@@ -380,12 +389,12 @@ struct mtk_vcodec_dec_pdata {
- 	struct vb2_ops *vdec_vb2_ops;
- 
- 	const struct mtk_video_fmt *vdec_formats;
--	const int num_formats;
-+	const int *num_formats;
- 	const struct mtk_video_fmt *default_out_fmt;
- 	const struct mtk_video_fmt *default_cap_fmt;
- 
- 	const struct mtk_codec_framesizes *vdec_framesizes;
--	const int num_framesizes;
-+	const int *num_framesizes;
- 
- 	enum mtk_vdec_hw_arch hw_arch;
  
 -- 
 2.18.0
