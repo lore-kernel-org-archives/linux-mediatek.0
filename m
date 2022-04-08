@@ -4,63 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15EB9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 01:40:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 363DAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 01:43:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rOZ8TRLdFJjPB85ZqsW9qamFuta1Z8JHKtKkoWqS8/E=; b=0nexNsopfsJYhc
-	uZBoL8KaWWGt6lWWg9Yeh0gvpbHlHpDxLxNUc7g8JE+8XY4sLHbRwV/HS+zTdeVkqRaPvuofSMtAk
-	9qAeqmuTcf4roiMKqyFcGc/T2p+hg5caWOJODtf2FXJ/1GSrZ+kvOltwJfgJ3SyotYAFGxQfMlLny
-	asbKutxByrG12jr4ymtIIgYXdDFZzlFFxhGGzuKFNq86c6mNNAYMYjTGkbAKGpNWylXWj2e92SJO2
-	suzu/0yb86nARnfUgiQMXYuCA6iYcuZHMYFJiIlGgXjYSA0y/4BaI/pN2Dt+H+VRCgYTtrf7HnMcs
-	yOOXr2H/1frX5uarvkvw==;
+	List-Owner; bh=NP80H6huKgIe1lYVQJS2kvjg4QagdJqo4OPHSIt9W4M=; b=wzlxTMk0H8Wlaj
+	YIsBKGBqEibhBeNxdwLRb62yAtVnQCt8Zjax1f9ECL93Rbnyr9tmYghNGUahCl/KmqNDeTa18U6v+
+	K2WEQzDtZoLsZtHnIc0anTA8nJX1JlcwrfidHa3/j+gEKMYhX4KVwSNRoBzPtqJtPnShpW4SX7jbN
+	aV/FsWnxPJ2Tq7y7p9vXP+jFr2dvPz9Qyl4aDTyhW5+MSv95WXMmKKX7KcxacNp2qpmCgB1sqtgIz
+	d6jKlxSC7Gwaww9Lq4py5ZDtJRoj636bHfhEJ1T9iIkeyAY7dAO4dBEUphS7WNWnMBiZr/dNd3+ZN
+	5TaPlPeux4qGn/MQuG3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncdcI-00EZ54-3S; Fri, 08 Apr 2022 01:40:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ncdf5-00EZdq-AM; Fri, 08 Apr 2022 01:43:43 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncdcF-00EZ47-MI; Fri, 08 Apr 2022 01:40:49 +0000
-X-UUID: 76f1c0aca9fa42688989d26b668a2d52-20220407
-X-UUID: 76f1c0aca9fa42688989d26b668a2d52-20220407
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1375037194; Thu, 07 Apr 2022 18:40:43 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 7 Apr 2022 18:36:18 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 8 Apr 2022 09:36:17 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 8 Apr 2022 09:36:17 +0800
-Message-ID: <6afe7366ceffb77674d34c48f84aa85b1c088bc3.camel@mediatek.com>
+ id 1ncdet-00EZZg-Vg; Fri, 08 Apr 2022 01:43:33 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 313121F42799
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1649382210;
+ bh=Kgjk0PMTnxKr4o7yne9XJVv+nnOoS8+3S6jBLjJ/RhY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=TgTfyumEKjt0cCM/ZqjoWMw4qAfPE810ZDss67mhG4U3BZwSRIPPbZeYBpHzpsonD
+ SBrX0+vXz4qsGEHj9UsJKH5bl+f/YQs8/7jx3DB84uQHk7lWPmkEa+8WCA7QrtbhNN
+ z4a4n7r77ZC3DR+u2DpHDsHRjSzJS17WAJu1AdRFxdjXrgQuzRaRXyNIKC2KfDaOkr
+ uq1nujFa8JTATay3Tdr64cYzm/9ytAWEyACWIiEW2DNnocsX2shBRjfUghTUwwHClX
+ u1K+BvaU0iQRkNz6D3PCrWcPHtRaP5gaweQniGubIE4kJ2x6VBKT02tn2btTEFF9+4
+ pt5+O3BKOX3PQ==
+Date: Thu, 7 Apr 2022 21:43:23 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, jitao.shi@mediatek.com,
+ rex-bc.chen@mediatek.com, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com,
+ linux-arm-kernel@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Subject: Re: [PATCH] drm/mediatek: dpi: Use mt8183 output formats for mt8192
-From: CK Hu <ck.hu@mediatek.com>
-To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, <jitao.shi@mediatek.com>,
- <rex-bc.chen@mediatek.com>
-CC: David Airlie <airlied@linux.ie>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, <kernel@collabora.com>,
- <linux-arm-kernel@lists.infradead.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>
-Date: Fri, 8 Apr 2022 09:36:17 +0800
-In-Reply-To: <20220408011907.672120-1-nfraprado@collabora.com>
+Message-ID: <20220408014323.k5imykh7btbqc4c2@notapiano>
 References: <20220408011907.672120-1-nfraprado@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ <6afe7366ceffb77674d34c48f84aa85b1c088bc3.camel@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <6afe7366ceffb77674d34c48f84aa85b1c088bc3.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_184047_779443_8DE53ECE 
-X-CRM114-Status: GOOD (  19.31  )
+X-CRM114-CacheID: sfid-20220407_184332_188651_7D2FAB57 
+X-CRM114-Status: GOOD (  22.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,36 +68,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEppdGFvICYgUmV4OgoKUGxlYXNlIGhlbHAgdG8gY29tbWVudCBvbiB0aGlzIHBhdGNoLgoK
-T24gVGh1LCAyMDIyLTA0LTA3IGF0IDIxOjE5IC0wNDAwLCBOw61jb2xhcyBGLiBSLiBBLiBQcmFk
-byB3cm90ZToKPiBUaGUgY29uZmlndXJhdGlvbiBmb3IgbXQ4MTkyIHdhcyBpbmNvcnJlY3RseSB1
-c2luZyB0aGUgb3V0cHV0IGZvcm1hdHMKPiBmcm9tIG10ODE3My4gU2luY2UgdGhlIG91dHB1dCBm
-b3JtYXRzIGZvciBtdDgxOTIgYXJlIGluc3RlYWQgdGhlIHNhbWUKPiBvbmVzIGFzIGZvciBtdDgx
-ODMsIHdoaWNoIHJlcXVpcmUgdHdvIGJ1cyBzYW1wbGVzIHBlciBwaXhlbCwgdGhlCj4gcGl4ZWxj
-bG9jayBhbmQgRERSIGVkZ2Ugc2V0dGluZyB3ZXJlIG1pc2NvbmZpZ3VyZWQuIFRoaXMgbWFkZQo+
-IGV4dGVybmFsCj4gZGlzcGxheXMgdW5hYmxlIHRvIHNob3cgdGhlIGltYWdlLgo+IAo+IEZpeCB0
-aGUgaXNzdWUgYnkgY29ycmVjdGluZyB0aGUgb3V0cHV0IGZvcm1hdCBmb3IgbXQ4MTkyIHRvIGJl
-IHRoZQo+IHNhbWUKPiBhcyBmb3IgbXQ4MTgzLCBmaXhpbmcgdGhlIHVzYWdlIG9mIGV4dGVybmFs
-IGRpc3BsYXlzIGZvciBtdDgxOTIuCj4gCj4gU2lnbmVkLW9mZi1ieTogTsOtY29sYXMgRi4gUi4g
-QS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tPgo+IAo+IC0tLQo+IAo+ICBkcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jIHwgNCArKy0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAy
-IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMKPiBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHBpLmMKPiBpbmRleCA0NTU0ZTJkZTE0MzAuLmU2MWNkNjdiOTc4ZiAxMDA2NDQKPiAtLS0g
-YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCj4gKysrIGIvZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kcGkuYwo+IEBAIC04MTksOCArODE5LDggQEAgc3RhdGljIGNvbnN0
-IHN0cnVjdCBtdGtfZHBpX2NvbmYgbXQ4MTkyX2NvbmYgPSB7Cj4gIAkuY2FsX2ZhY3RvciA9IG10
-ODE4M19jYWxjdWxhdGVfZmFjdG9yLAo+ICAJLnJlZ19oX2ZyZV9jb24gPSAweGUwLAo+ICAJLm1h
-eF9jbG9ja19raHogPSAxNTAwMDAsCj4gLQkub3V0cHV0X2ZtdHMgPSBtdDgxNzNfb3V0cHV0X2Zt
-dHMsCj4gLQkubnVtX291dHB1dF9mbXRzID0gQVJSQVlfU0laRShtdDgxNzNfb3V0cHV0X2ZtdHMp
-LAo+ICsJLm91dHB1dF9mbXRzID0gbXQ4MTgzX291dHB1dF9mbXRzLAo+ICsJLm51bV9vdXRwdXRf
-Zm10cyA9IEFSUkFZX1NJWkUobXQ4MTgzX291dHB1dF9mbXRzKSwKPiAgfTsKPiAgCj4gIHN0YXRp
-YyBpbnQgbXRrX2RwaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVr
-IG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Fri, Apr 08, 2022 at 09:36:17AM +0800, CK Hu wrote:
+> Hi, Jitao & Rex:
+> =
+
+> Please help to comment on this patch.
+
+Hi Chuang,
+
+I already sent a v2 of this patch [1] because I forgot to add the Fixes tag.
+Sorry for the noise.
+
+Thanks,
+N=EDcolas
+
+[1] https://lore.kernel.org/all/20220408013950.674477-1-nfraprado@collabora=
+.com/
+
+> =
+
+> On Thu, 2022-04-07 at 21:19 -0400, N=EDcolas F. R. A. Prado wrote:
+> > The configuration for mt8192 was incorrectly using the output formats
+> > from mt8173. Since the output formats for mt8192 are instead the same
+> > ones as for mt8183, which require two bus samples per pixel, the
+> > pixelclock and DDR edge setting were misconfigured. This made
+> > external
+> > displays unable to show the image.
+> > =
+
+> > Fix the issue by correcting the output format for mt8192 to be the
+> > same
+> > as for mt8183, fixing the usage of external displays for mt8192.
+> > =
+
+> > Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+> > =
+
+> > ---
+> > =
+
+> >  drivers/gpu/drm/mediatek/mtk_dpi.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > =
+
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > index 4554e2de1430..e61cd67b978f 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > @@ -819,8 +819,8 @@ static const struct mtk_dpi_conf mt8192_conf =3D {
+> >  	.cal_factor =3D mt8183_calculate_factor,
+> >  	.reg_h_fre_con =3D 0xe0,
+> >  	.max_clock_khz =3D 150000,
+> > -	.output_fmts =3D mt8173_output_fmts,
+> > -	.num_output_fmts =3D ARRAY_SIZE(mt8173_output_fmts),
+> > +	.output_fmts =3D mt8183_output_fmts,
+> > +	.num_output_fmts =3D ARRAY_SIZE(mt8183_output_fmts),
+> >  };
+> >  =
+
+> >  static int mtk_dpi_probe(struct platform_device *pdev)
+> =
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
