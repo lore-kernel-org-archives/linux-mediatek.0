@@ -4,72 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B56FEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 08:06:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01537C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 08:12:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XhxdWIjJGziOoAf1ajdfpPLOS2M9NxjFKFiTmvgfUXk=; b=40mFbsNc96RQNi
-	VKE+ZsKqg3bmTwIAQRKCh4Bow2szfN2l8CBdcPtkkxVgkCQfawvikkMt1QGnlokxWwhA5+6OnVqLL
-	Ucq0d3CESVI0aytYMY4G+BIXPHYz/2xlhc/BUIG2e0bu9UeZ0AxuJ3C9n409VXOaapmEDAGgv23ke
-	a2a52zOEgFz7eixFkIvz7qGAOlwTVEHdyYhSZijlKWMj5u4XFpgquC9TpYuabJmHpzmksC2iIoVmQ
-	dFxbRm+mhUDV1DPhTPt4IqKrZkgy7V+CxefA+/sSiOb80D9WP4rHqq+54LDQLTqI3nYUUm0lPgNI6
-	kvnM/DolS/3iQiK8sWeg==;
+	List-Owner; bh=+qjlbl2WUiqxANT3dCdCfH0fzBveAVkguQhejoSB8QE=; b=NwZHJ6vGSNPB3Q
+	lWv/4OccNt30rIy9tZZ0sdAq7421FIty31AwDJH52KF4mNk2qsBoZMnFu0QmACiEaLr5bc6qlFwGA
+	V+qarZYJccqPMGOaOfKFzupsJcYTh2T1sLc3Tk/437vhRrcVLaLefG83C844TDRYBkhZra2ReMi3Z
+	ISqPvxzxFmpPcTFJb/bCgY/bHbPbARjZ2dcFCtt7nA9L4XMGpN/HCuI025RkwKszY8oP8JeP8HUud
+	xSkOMTbYhzPx1fc9G4GMtdm5wmMvkK53/qkJpZ0oEHGbELLJeD7KC/qNeFCxnaKs7joiQHwLFOb1S
+	1Zm5g9+0eKHzA7fJ2sKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncjdF-00Fir6-Nu; Fri, 08 Apr 2022 08:06:13 +0000
-Received: from www.zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
+	id 1ncjjQ-00Flh1-94; Fri, 08 Apr 2022 08:12:36 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncjYH-00FgMg-6G
- for linux-mediatek@lists.infradead.org; Fri, 08 Apr 2022 08:01:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple; d=sang-engineering.com; h=
- from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding; s=k1; bh=mOfgmV/e3cCSYC
- aIKTCEwxMAPTR5lG8qNDffE6Lj87U=; b=VzN7g8L5eQHC0vYCq0CEOODz9n6gan
- wl+63LJWuBEuHPN/gE7kR6Ba6lJ7jdt4K9Fatazif7HSG1TY7xQtb3yKMIUQfub7
- RD1gi/ylRe6b3uE+YK17oLn60S04EnS/drPy76V1sxtlCU67PU2R3bI70bRVQoX6
- EQ421K7HYT91Y=
-Received: (qmail 3517300 invoked from network); 8 Apr 2022 10:00:52 +0200
-Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted,
- authenticated); 8 Apr 2022 10:00:52 +0200
-X-UD-Smtp-Session: l3s3148p1@dPRG/h/cUqQgAQnoAEvdAHNhR6IfKwZI
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-To: linux-mmc@vger.kernel.org
-Cc: linux-renesas-soc@vger.kernel.org,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>,
- bcm-kernel-feedback-list@broadcom.com,
- Nicolas Saenz Julienne <nsaenz@kernel.org>,
- Jaehoon Chung <jh80.chung@samsung.com>,
- Neil Armstrong <narmstrong@baylibre.com>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Adrian Hunter <adrian.hunter@intel.com>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>, linux-kernel@vger.kernel.org,
- linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-sunxi@lists.linux.dev
-Subject: [PATCH 3/3] mmc: improve API to make clear hw_reset callback is for
- cards
-Date: Fri,  8 Apr 2022 10:00:44 +0200
-Message-Id: <20220408080045.6497-4-wsa+renesas@sang-engineering.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220408080045.6497-1-wsa+renesas@sang-engineering.com>
-References: <20220408080045.6497-1-wsa+renesas@sang-engineering.com>
+ id 1ncjh2-00Fkc9-Vh
+ for linux-mediatek@lists.infradead.org; Fri, 08 Apr 2022 08:10:11 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id n6so15655524ejc.13
+ for <linux-mediatek@lists.infradead.org>; Fri, 08 Apr 2022 01:10:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=16qq4T8W7Wb3W3I0GFoxZjqEJT94+MYc2RlGkdbX2ac=;
+ b=DHUn3OoULpXK+mm9ySoqW5WNBlp+pqhHBqMvxhOBi/v95ukvoDz09bDR+K4ILGQPxW
+ KZra/kNcINrwhQ2t+V3PgKTeZqSs5Z+BXx7BSUsqw/p5/p7AhIhRdWUDjLk44f5JRiy1
+ roa+7FL5knMpJNMxTxNhVK3kovdvgEmQ115DQjQmmrKoARK3kWCTzUmEQ/2+NByzAtg5
+ XD6m7Wgp99VyLQoorf8GoYIo6DNYMwdAZCJAGMcBGWeXpd9kiKLu2WPIt5yN85m+JlAf
+ l/D0BXr604LNNDLQcUA4EcfuSImnq0/txS+smMOdRfajZN0K3EnUgVCQ9MJOgWAuZpAH
+ ri6A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=16qq4T8W7Wb3W3I0GFoxZjqEJT94+MYc2RlGkdbX2ac=;
+ b=4sWUGs+dUMK7Bt1mz5laeCVCQ9rw1+G0r+wA6EnU+KrcmuPvZytkcUMrQ2b4ZGqki5
+ 3xVhJsaO4RUzA/gJCW8UuoE82aXWVya+6oWG5211QoxanCg+GDCLq83xFWW0gLeq1VtI
+ XHjU5RTYvDavKARxlXUHhmfHosvDuuKghOBchMVIDSzMyhJJZemu7YCg/qUhvpDeWC+t
+ 9mohnEGFw6t3HJ2jUOZG4eR5yxJy9lTO3NCwRftcK+wfIHPOdHCjMvF8RU+EGz0YVSa4
+ fH2tOVobXZR5EKqlQmvtrzm2E8rooE5CKBA5vqFT2Fnc+pSQ2edb/WFoAUX61LOxZBbL
+ 7thg==
+X-Gm-Message-State: AOAM5307w7YkhGglf6QGtrSsn52y0hqDlMd/oaleXLOM8014o77/q5Ne
+ x49QBSeWVobSkTnGjhip4AHDzw==
+X-Google-Smtp-Source: ABdhPJyd+7LeacyRv4S4s8A5mEZaNzMiHeOn8GceZ6A7SUV88bQI8PoI45QiWp3fyzkIiAh8+Qduvg==
+X-Received: by 2002:a17:906:acf:b0:6e7:681e:b4b6 with SMTP id
+ z15-20020a1709060acf00b006e7681eb4b6mr17535515ejf.61.1649405403553; 
+ Fri, 08 Apr 2022 01:10:03 -0700 (PDT)
+Received: from [192.168.0.187] (xdsl-188-155-201-27.adslplus.ch.
+ [188.155.201.27]) by smtp.gmail.com with ESMTPSA id
+ u6-20020a17090626c600b006e74ef7f092sm6549148ejc.176.2022.04.08.01.10.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 08 Apr 2022 01:10:03 -0700 (PDT)
+Message-ID: <a171f33c-cda1-8602-ac67-93076b676578@linaro.org>
+Date: Fri, 8 Apr 2022 10:10:02 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH V2 01/15] dt-bindings: cpufreq: mediatek: Add MediaTek CCI
+ property
+Content-Language: en-US
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
+ viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org
+Cc: matthias.bgg@gmail.com, jia-wei.chang@mediatek.com,
+ roger.lu@mediatek.com, hsinyi@google.com, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220408045908.21671-1-rex-bc.chen@mediatek.com>
+ <20220408045908.21671-2-rex-bc.chen@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220408045908.21671-2-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_010105_577516_64B293D8 
-X-CRM114-Status: GOOD (  17.48  )
+X-CRM114-CacheID: sfid-20220408_011009_065265_F7548E44 
+X-CRM114-Status: GOOD (  16.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,171 +98,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To make it unambiguous that the hw_reset callback is for cards and not
-for controllers, we add 'card' to the callback name and convert all
-users in one go. We keep the argument as mmc_host, though, because the
-callback is used very early when mmc_card is not yet populated.
+On 08/04/2022 06:58, Rex-BC Chen wrote:
+> From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> 
+> MediaTek Cache Coherent Interconnect (CCI) uses software devfreq module
+> for scaling clock frequency and adjust voltage.
+> The phandle could be linked between CPU and MediaTek CCI for some
+> MediaTek SoCs, like MT8183 and MT8186.
+> Therefore, we add this property in cpufreq-mediatek.txt.
+> 
+> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> ---
+>  .../devicetree/bindings/cpufreq/cpufreq-mediatek.txt          | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+> index b8233ec91d3d..d1b3d430c25c 100644
+> --- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+> +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+> @@ -20,6 +20,10 @@ Optional properties:
+>  	       Vsram to fit SoC specific needs. When absent, the voltage scaling
+>  	       flow is handled by hardware, hence no software "voltage tracking" is
+>  	       needed.
+> +- cci: MediaTek Cache Coherent Interconnect uses software devfreq module for scaling
+> +       clock frequency and adjust voltage.
 
-Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
----
+You need to describe the type. I am a bit confused whether this is a cci
+(so cci-control-port property?) or an interconnect (so interconnect
+property)... It does not look like a generic property, so you need
+vendor prefix.
 
-Ulf: I really think the callback rename makes sense here to make it
-obvious for driver authors that the card should be reset. Because we got
-it wrong and at least bcm2835 has it also wrong, maybe meson as well.
+> +       For details, please refer to
+> +       Documentation/devicetree/bindings/devfreq/mtk-cci.yaml
 
- drivers/mmc/core/core.c              | 4 ++--
- drivers/mmc/core/mmc.c               | 4 ++--
- drivers/mmc/host/bcm2835.c           | 2 +-
- drivers/mmc/host/dw_mmc.c            | 2 +-
- drivers/mmc/host/meson-mx-sdhc-mmc.c | 2 +-
- drivers/mmc/host/mtk-sd.c            | 2 +-
- drivers/mmc/host/sdhci.c             | 2 +-
- drivers/mmc/host/sunxi-mmc.c         | 2 +-
- drivers/mmc/host/uniphier-sd.c       | 2 +-
- include/linux/mmc/host.h             | 2 +-
- 10 files changed, 12 insertions(+), 12 deletions(-)
+Such file does not exist.
 
-diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
-index 57c64c0583ac..8cc2b746414b 100644
---- a/drivers/mmc/core/core.c
-+++ b/drivers/mmc/core/core.c
-@@ -1991,9 +1991,9 @@ static void mmc_hw_reset_for_init(struct mmc_host *host)
- {
- 	mmc_pwrseq_reset(host);
- 
--	if (!(host->caps & MMC_CAP_HW_RESET) || !host->ops->hw_reset)
-+	if (!(host->caps & MMC_CAP_HW_RESET) || !host->ops->card_hw_reset)
- 		return;
--	host->ops->hw_reset(host);
-+	host->ops->card_hw_reset(host);
- }
- 
- /**
-diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-index 1f22f1d2e9b8..9ab915b5737a 100644
---- a/drivers/mmc/core/mmc.c
-+++ b/drivers/mmc/core/mmc.c
-@@ -2238,11 +2238,11 @@ static int _mmc_hw_reset(struct mmc_host *host)
- 	 */
- 	_mmc_flush_cache(host);
- 
--	if ((host->caps & MMC_CAP_HW_RESET) && host->ops->hw_reset &&
-+	if ((host->caps & MMC_CAP_HW_RESET) && host->ops->card_hw_reset &&
- 	     mmc_can_reset(card)) {
- 		/* If the card accept RST_n signal, send it. */
- 		mmc_set_clock(host, host->f_init);
--		host->ops->hw_reset(host);
-+		host->ops->card_hw_reset(host);
- 		/* Set initial state and call mmc_set_ios */
- 		mmc_set_initial_state(host);
- 	} else {
-diff --git a/drivers/mmc/host/bcm2835.c b/drivers/mmc/host/bcm2835.c
-index 463b707d9e99..641ab4f42125 100644
---- a/drivers/mmc/host/bcm2835.c
-+++ b/drivers/mmc/host/bcm2835.c
-@@ -1259,7 +1259,7 @@ static void bcm2835_set_ios(struct mmc_host *mmc, struct mmc_ios *ios)
- static const struct mmc_host_ops bcm2835_ops = {
- 	.request = bcm2835_request,
- 	.set_ios = bcm2835_set_ios,
--	.hw_reset = bcm2835_reset,
-+	.card_hw_reset = bcm2835_reset,
- };
- 
- static int bcm2835_add_host(struct bcm2835_host *host)
-diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-index 06dc56cbada8..581614196a84 100644
---- a/drivers/mmc/host/dw_mmc.c
-+++ b/drivers/mmc/host/dw_mmc.c
-@@ -1812,7 +1812,7 @@ static const struct mmc_host_ops dw_mci_ops = {
- 	.set_ios		= dw_mci_set_ios,
- 	.get_ro			= dw_mci_get_ro,
- 	.get_cd			= dw_mci_get_cd,
--	.hw_reset               = dw_mci_hw_reset,
-+	.card_hw_reset          = dw_mci_hw_reset,
- 	.enable_sdio_irq	= dw_mci_enable_sdio_irq,
- 	.ack_sdio_irq		= dw_mci_ack_sdio_irq,
- 	.execute_tuning		= dw_mci_execute_tuning,
-diff --git a/drivers/mmc/host/meson-mx-sdhc-mmc.c b/drivers/mmc/host/meson-mx-sdhc-mmc.c
-index 28aa78aa08f3..e92e63cb5641 100644
---- a/drivers/mmc/host/meson-mx-sdhc-mmc.c
-+++ b/drivers/mmc/host/meson-mx-sdhc-mmc.c
-@@ -511,7 +511,7 @@ static int meson_mx_sdhc_execute_tuning(struct mmc_host *mmc, u32 opcode)
- }
- 
- static const struct mmc_host_ops meson_mx_sdhc_ops = {
--	.hw_reset			= meson_mx_sdhc_hw_reset,
-+	.card_hw_reset			= meson_mx_sdhc_hw_reset,
- 	.request			= meson_mx_sdhc_request,
- 	.set_ios			= meson_mx_sdhc_set_ios,
- 	.card_busy			= meson_mx_sdhc_card_busy,
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index e61b0b98065a..195dc897188b 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -2458,7 +2458,7 @@ static const struct mmc_host_ops mt_msdc_ops = {
- 	.execute_tuning = msdc_execute_tuning,
- 	.prepare_hs400_tuning = msdc_prepare_hs400_tuning,
- 	.execute_hs400_tuning = msdc_execute_hs400_tuning,
--	.hw_reset = msdc_hw_reset,
-+	.card_hw_reset = msdc_hw_reset,
- };
- 
- static const struct cqhci_host_ops msdc_cmdq_ops = {
-diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
-index 07c6da1f2f0f..22152029e14c 100644
---- a/drivers/mmc/host/sdhci.c
-+++ b/drivers/mmc/host/sdhci.c
-@@ -2999,7 +2999,7 @@ static const struct mmc_host_ops sdhci_ops = {
- 	.set_ios	= sdhci_set_ios,
- 	.get_cd		= sdhci_get_cd,
- 	.get_ro		= sdhci_get_ro,
--	.hw_reset	= sdhci_hw_reset,
-+	.card_hw_reset	= sdhci_hw_reset,
- 	.enable_sdio_irq = sdhci_enable_sdio_irq,
- 	.ack_sdio_irq    = sdhci_ack_sdio_irq,
- 	.start_signal_voltage_switch	= sdhci_start_signal_voltage_switch,
-diff --git a/drivers/mmc/host/sunxi-mmc.c b/drivers/mmc/host/sunxi-mmc.c
-index c62afd212692..0e8fbf4957d8 100644
---- a/drivers/mmc/host/sunxi-mmc.c
-+++ b/drivers/mmc/host/sunxi-mmc.c
-@@ -1115,7 +1115,7 @@ static const struct mmc_host_ops sunxi_mmc_ops = {
- 	.get_cd		 = mmc_gpio_get_cd,
- 	.enable_sdio_irq = sunxi_mmc_enable_sdio_irq,
- 	.start_signal_voltage_switch = sunxi_mmc_volt_switch,
--	.hw_reset	 = sunxi_mmc_hw_reset,
-+	.card_hw_reset	 = sunxi_mmc_hw_reset,
- 	.card_busy	 = sunxi_mmc_card_busy,
- };
- 
-diff --git a/drivers/mmc/host/uniphier-sd.c b/drivers/mmc/host/uniphier-sd.c
-index ccbf9885a52b..3a8defdcca77 100644
---- a/drivers/mmc/host/uniphier-sd.c
-+++ b/drivers/mmc/host/uniphier-sd.c
-@@ -597,7 +597,7 @@ static int uniphier_sd_probe(struct platform_device *pdev)
- 			ret = PTR_ERR(priv->rst_hw);
- 			goto free_host;
- 		}
--		host->ops.hw_reset = uniphier_sd_hw_reset;
-+		host->ops.card_hw_reset = uniphier_sd_hw_reset;
- 	}
- 
- 	if (host->mmc->caps & MMC_CAP_UHS) {
-diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
-index 7afb57cab00b..c193c50ccd78 100644
---- a/include/linux/mmc/host.h
-+++ b/include/linux/mmc/host.h
-@@ -181,7 +181,7 @@ struct mmc_host_ops {
- 					 unsigned int max_dtr, int host_drv,
- 					 int card_drv, int *drv_type);
- 	/* Reset the eMMC card via RST_n */
--	void	(*hw_reset)(struct mmc_host *host);
-+	void	(*card_hw_reset)(struct mmc_host *host);
- 	void	(*card_event)(struct mmc_host *host);
- 
- 	/*
--- 
-2.30.2
 
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
