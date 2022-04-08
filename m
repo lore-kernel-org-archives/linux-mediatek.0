@@ -4,70 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB214C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 07:10:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20B1DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 07:15:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:Cc:References:Message-Id
-	:Date:Subject:Mime-Version:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aKAykwoHkSO1NXrwfkTDdsSBlAzNZ/vl5ZCPD3ktEz8=; b=mhnmL7EhYya5Fh
-	mpuUnTIlqgwq+wtE3DsxDvKCaeihXOuEBAztQz/RPU9/VjQ+q1pIiNNu3xnzgntAC23jmB2yb+lIE
-	kxwmAcRc3uuA/+KBKtdkkHPsXWJc2VOvowMHPMinR13sJmfKXur0TQKb4yzX26U12nt4mX+X8LcXK
-	LWmERI6TIZwge7W9YRRuawODV2MfeWZLjUd++PDtvNXiRlwWKKOxVF9QGbu6c8fuVwxso+ijdsEV3
-	6m6Onw0leSW5f9cccCA2iXksdqpT6JZJfLtRoVPkzi2RhoNOl+F0H1PbvTQlwPMFn8OmFZYvrH8xj
-	xvENSOhP/NJKzluki5Eg==;
+	List-Owner; bh=tUFomvnnUpoBReQfiiQUHW+BI549gNaOmIYh7cDyhE4=; b=dqvJdObC3DjoaV
+	ZhsWqpluUPPCIFjWySucpLLd3DUImacdvQnd+J+a2tokfkftpLGp1biknE/Cwl29lZ4+HSxwuN9E5
+	LyJmIETtbc7bM67DOUoIG5i5P6s5axBA61/8yMpz8lfmhBxRONQFSFKFVgG8IBH/9oqqvKoSYSEqr
+	yO7KJUiaNAgVC9Ys1uogHcqLLtFJ83vu9phPfJuBEXyJk6hAEa6wljSQsNxJzKWlbS6u+ozSOjtNo
+	d7pz0aWm/RLbpl0zyj7tFjxoJOMpgYPNmuNshGmpfYy33YPvu1fU4XbNecvopwoP2nzlLjT2K3IMB
+	CKnHqOhRy3ku/Zzelk9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncilJ-00FQFU-M4; Fri, 08 Apr 2022 07:10:29 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1nciqE-00FS9a-TA; Fri, 08 Apr 2022 07:15:34 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncil5-00FQB9-7B; Fri, 08 Apr 2022 07:10:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1649401800; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=MmiAXIAKk19pYhrM4Aik2YO5yTmZ1UPPK6sKjaV1qtG638cf4uDWPIS3M9jo8MkEcBY+LKqoNjbfP9XzV/nza1kdeWvfi4kLgB4DPTxJhHumOIEdIBEeCwRYuaA6INYhFb1v0hvHjo+TowSGzsf70OlU/K/2qbrDPImMc9F+B9Y=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1649401800;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To;
- bh=eg9fa4mgvSov9adJT7QuT/g9DxpZmotsvTIi0D2NY64=; 
- b=Wxv4dadT6rIS6uIqF9YsJFoHEZvwe8Qhmx30iX5MOwgiEBHXizQFINIJwFcnSk0ggKGEMMXyJ4Eue262LFbP/PMTdsZsiUbY0qZNA81gxviolKbTzwlTFKuxKwXcSi7rJY3LaCH7wjeEpUnJAmgbtkNELAPHh28WzRyouov/nUM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=arinc9.com;
- spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
- dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1649401800; 
- s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
- h=Content-Type:Content-Transfer-Encoding:From:From:Mime-Version:Subject:Subject:Date:Date:Message-Id:Message-Id:References:Cc:Cc:In-Reply-To:To:To:Reply-To;
- bh=eg9fa4mgvSov9adJT7QuT/g9DxpZmotsvTIi0D2NY64=;
- b=aEvyzih9cImRpRa+B7JZwXqnjhk5sXPYln1IGy9nzpbOLadJNq0GK0B/lx996zsV
- ft/sKqbsEt/n8WR4cVJmHSXUNynpMQcOOpOPxfF52dH9OqJ0kCi132ivBnEHubUumux
- tS1lE8S1XdjQ9bfVqFHj3Z43QWkmODhhIalkVJho=
-Received: from [10.10.9.3] (85.117.236.245 [85.117.236.245]) by mx.zohomail.com
- with SMTPS id 1649401797701217.1237282746249;
- Fri, 8 Apr 2022 00:09:57 -0700 (PDT)
-From: =?utf-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-Mime-Version: 1.0 (1.0)
-Subject: Re: [PATCH] MIPS: dts: align SPI NOR node name with dtschema
-Date: Fri, 8 Apr 2022 10:09:45 +0300
-Message-Id: <DD1B5C64-D5F2-4AA7-8420-92E06B51D6B9@arinc9.com>
-References: <20220407143328.295762-1-krzysztof.kozlowski@linaro.org>
-Cc: Florian Fainelli <f.fainelli@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- bcm-kernel-feedback-list@broadcom.com, linux-mips@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20220407143328.295762-1-krzysztof.kozlowski@linaro.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-X-Mailer: iPhone Mail (17H35)
-X-ZohoMailClient: External
+ id 1ncipz-00FS3z-Cz; Fri, 08 Apr 2022 07:15:20 +0000
+Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
+ by smtp-out2.suse.de (Postfix) with ESMTP id 97DFF1F861;
+ Fri,  8 Apr 2022 07:15:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
+ t=1649402115; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Rx92wkjSz2UMxpAC/s3Qf3G07LKMpAhWUOPb7IxbfxE=;
+ b=sgoo/tkmEGtjdOw29m3gYXRlFaRWSv2KheW+5rlQ9DicrG4IGLawTFFuv6ajTINSF1SXt6
+ jJDZrLOT5zQ8YXf0gGzeHihOkzfRQbpj3HAWWQZdA0tiIi50U190Sem3b47dMtUPE6/SU3
+ zKjw4VaJKSq4UJleQ+PUY154Co+d4ck=
+Received: from suse.cz (unknown [10.100.216.66])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by relay2.suse.de (Postfix) with ESMTPS id 362F6A3B82;
+ Fri,  8 Apr 2022 07:15:15 +0000 (UTC)
+Date: Fri, 8 Apr 2022 09:15:14 +0200
+From: Petr Mladek <pmladek@suse.com>
+To: Saravana Kannan <saravanak@google.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chunlei.wang@mediatek.com,
+ john.ogness@linutronix.de, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ rostedt@goodmis.org, senozhatsky@chromium.org, kernel-team@android.com
+Subject: Re: [PATCH v2] printk: ringbuffer: Improve prb_next_seq() performance
+Message-ID: <Yk/hAubbZeV43ejA@alley>
+References: <YXlddJxLh77DKfIO@alley>
+ <20220408004821.4010969-1-saravanak@google.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220408004821.4010969-1-saravanak@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_001015_341472_1FAE4277 
-X-CRM114-Status: UNSURE (   6.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220408_001519_637758_B502FDAB 
+X-CRM114-Status: GOOD (  25.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,17 +68,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-PiBPbiA3IEFwciAyMDIyLCBhdCAxNzozMywgS3J6eXN6dG9mIEtvemxvd3NraSA8a3J6eXN6dG9m
-Lmtvemxvd3NraUBsaW5hcm8ub3JnPiB3cm90ZToKPiAKPiDvu79UaGUgbm9kZSBuYW1lcyBzaG91
-bGQgYmUgZ2VuZXJpYyBhbmQgU1BJIE5PUiBkdHNjaGVtYSBleHBlY3RzICJmbGFzaCIuCj4gCj4g
-U2lnbmVkLW9mZi1ieTogS3J6eXN6dG9mIEtvemxvd3NraSA8a3J6eXN6dG9mLmtvemxvd3NraUBs
-aW5hcm8ub3JnPgoKRm9yIHJhbGluayBtdDc2MjE6CgpBY2tlZC1ieTogQXLEsW7DpyDDnE5BTCA8
-YXJpbmMudW5hbEBhcmluYzkuY29tPgoKVGhhbmtzLgpBcsSxbsOnCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxp
-c3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Thu 2022-04-07 17:48:21, Saravana Kannan wrote:
+> 
+> > Petr Mladek <pmladek@suse.com> wrote:
+> > 
+> > prb_next_seq() always iterates from the first known sequence number.
+> > In the worst case, it might loop 8k times for 256kB buffer,
+> > 15k times for 512kB buffer, and 64k times for 2MB buffer.
+> > 
+> > It was reported that pooling and reading using syslog interface
+> > might occupy 50% of CPU.
+> > 
+> > Speedup the search by storing @id of the last finalized descriptor.
+> > 
+> > The loop is still needed because the @id is stored and read in the best
+> > effort way. An atomic variable is used to keep the @id consistent.
+> > But the stores and reads are not serialized against each other.
+> > The descriptor could get reused in the meantime. The related sequence
+> > number will be used only when it is still valid.
+> > 
+> > An invalid value should be read _only_ when there is a flood of messages
+> > and the ringbuffer is rapidly reused. The performance is the least
+> > problem in this case.
+> > 
+> > --- a/kernel/printk/printk_ringbuffer.h
+> > +++ b/kernel/printk/printk_ringbuffer.h
+> > @@ -75,6 +75,7 @@ struct prb_desc_ring {
+> >  	struct printk_info	*infos;
+> >  	atomic_long_t		head_id;
+> >  	atomic_long_t		tail_id;
+> > +	atomic_long_t		last_finalized_id;
+> >  };
+> 
+> 
+> I really know nothing about this code, but while looking around
+> kernel/printk/ I noticed kernel/printk/printk.c has these lines in
+> log_buf_vmcoreinfo_setup().
+> 
+> 	VMCOREINFO_STRUCT_SIZE(prb_desc_ring);
+> 	VMCOREINFO_OFFSET(prb_desc_ring, count_bits);
+> 	VMCOREINFO_OFFSET(prb_desc_ring, descs);
+> 	VMCOREINFO_OFFSET(prb_desc_ring, infos);
+> 	VMCOREINFO_OFFSET(prb_desc_ring, head_id);
+> 	VMCOREINFO_OFFSET(prb_desc_ring, tail_id);
+> 
+> Would this header file change also require a change to that location?
+> Something like
+> 
+> 	VMCOREINFO_OFFSET(prb_desc_ring, head_id);
+> 	VMCOREINFO_OFFSET(prb_desc_ring, tail_id);
+> +	VMCOREINFO_OFFSET(prb_desc_ring, last_finalized_id);
+
+It is actually not needed. VMCOREINFO_*() macros define some data
+that are used by the "crash" tool when reading crashdumps. The field
+"last_finalized_id" is used only at runtime. It is not needed
+for reading the log in the crashdump.
+
+Anyway, thanks for the question. It is great to know that there are
+more people checking our changes.
+
+Best Regards,
+Petr
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
