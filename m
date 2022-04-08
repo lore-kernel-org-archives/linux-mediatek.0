@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44216C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 12:47:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21BCDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 12:47:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s1HHv3+vLAHBL/GvhAD70+4Bje6LO3YdS7jUuD0FqwY=; b=BLCRnHl8nSar3A
-	zImUZnlAnzE6fJ3yGtMPErYmufnZbPv1hdtTZvklrrYEKZDJSkA/gFGsBp5Q9RHTfvoqPe+73FGRi
-	gnleNDaiM5ruVQzsz3n4A8f0JrQhCYT+mFHYnLgC2gPHyWHnzbhswGWxJhKSCk3E0Yy8vgrJnDCUc
-	klS/PMWnCE97QgJqUxl3MXX71EUCk1KAfyo087bYTotbWHhf9xrwdFu258wKOuzIkD8F7LOUtPALW
-	dPCWn5hmmBKcq1JC5acCxUd9gr//1Yd77PURfWXMYK9eaAOgUafgbnBDohjc9vNH3eJqKapM/ha60
-	Pv65xnp9QsxusMvjmbPQ==;
+	List-Owner; bh=KBAZCMhSmJZbUokFj5zZylwnitwZyvwZEjxX7CqX+L0=; b=qvVvhqH9qixpYj
+	1gDGc52b+oF4R0Yp5XU4XQLORqNm9Ngfnx0N/n7hPxuafdIMH0RnqgsbvmiqRKO6qvqhWs6N49ZhH
+	CZqRFSKl4+5HLo+kk4jUL5VDbvGua1SUq5cgTQI4HbyfgTXlkkIW0U7oupp38jAOnpCgl6pl4BBE2
+	dkP+xI5j08KdX5kOIRV/ReIUoYZeGsADcAmOYKJKMajQZLLFfvRGNtJi+ysR5TObU3g1gTDCQcQoo
+	VTlCh2cGwDqrnH1b3PigifrtWMzAXaZJzTQfVb7NYjOeoKERj1myYXJe5Cig1z1tMn/ubhgBtB4Aw
+	1VH30uqqtutj8HmihIOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nco0u-00H7eB-7H; Fri, 08 Apr 2022 12:46:56 +0000
+	id 1nco1Q-00H7tT-6l; Fri, 08 Apr 2022 12:47:28 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncnTI-00Gtag-KS; Fri, 08 Apr 2022 12:12:14 +0000
-X-UUID: 8e0e000ba46b427a87766bfef626fcab-20220408
-X-UUID: 8e0e000ba46b427a87766bfef626fcab-20220408
+ id 1ncnTH-00Gtag-1o; Fri, 08 Apr 2022 12:12:12 +0000
+X-UUID: ebf88d7da8fc486aa56cb58402108006-20220408
+X-UUID: ebf88d7da8fc486aa56cb58402108006-20220408
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1020695013; Fri, 08 Apr 2022 05:12:06 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 969108170; Fri, 08 Apr 2022 05:12:06 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 8 Apr 2022 05:02:58 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 8 Apr 2022 20:02:56 +0800
+ 15.0.1497.2; Fri, 8 Apr 2022 05:03:14 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 8 Apr 2022 20:03:07 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 8 Apr 2022 20:02:55 +0800
+ Transport; Fri, 8 Apr 2022 20:03:05 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
@@ -57,17 +58,18 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v9, 09/17] media: mediatek: vcodec: Add format to support MT21C
-Date: Fri, 8 Apr 2022 20:02:32 +0800
-Message-ID: <20220408120240.29571-10-yunfei.dong@mediatek.com>
+Subject: [PATCH v9,
+ 12/17] media: mediatek: vcodec: record capture queue format type
+Date: Fri, 8 Apr 2022 20:02:35 +0800
+Message-ID: <20220408120240.29571-13-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220408120240.29571-1-yunfei.dong@mediatek.com>
 References: <20220408120240.29571-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_051212_704964_D8DC49B2 
-X-CRM114-Status: GOOD (  13.78  )
+X-CRM114-CacheID: sfid-20220408_051211_160118_7B0E7A7F 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,59 +86,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Needs to use mediatek compressed mode for mt8192 decoder.
+The capture queue format type may be differ depending on platform: for
+stateless decoder drivers, we need to calculate the capture buffer size
+according to the capture queue format type in SCP.
+
+As a preparation for introducing drivers for stateless decoding, save the
+current capture queue type on a per vcodec context basis.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c    | 7 ++++++-
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h    | 1 +
- 2 files changed, 7 insertions(+), 1 deletion(-)
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 2 ++
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h | 2 ++
+ 2 files changed, 4 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
-index 5101322f4fe9..d5c69f94d28e 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
-@@ -81,7 +81,7 @@ static const struct mtk_stateless_control mtk_stateless_controls[] = {
- 
- #define NUM_CTRLS ARRAY_SIZE(mtk_stateless_controls)
- 
--static struct mtk_video_fmt mtk_video_formats[2];
-+static struct mtk_video_fmt mtk_video_formats[3];
- static struct mtk_codec_framesizes mtk_vdec_framesizes[1];
- 
- static struct mtk_video_fmt default_out_format;
-@@ -331,6 +331,7 @@ static void mtk_vcodec_add_formats(unsigned int fourcc,
- 		num_framesizes++;
- 		break;
- 	case V4L2_PIX_FMT_MM21:
-+	case V4L2_PIX_FMT_MT21C:
- 		mtk_video_formats[count_formats].fourcc = fourcc;
- 		mtk_video_formats[count_formats].type = MTK_FMT_FRAME;
- 		mtk_video_formats[count_formats].num_planes = 2;
-@@ -356,6 +357,10 @@ static void mtk_vcodec_get_supported_formats(struct mtk_vcodec_ctx *ctx)
- 		mtk_vcodec_add_formats(V4L2_PIX_FMT_MM21, ctx);
- 		cap_format_count++;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+index 0d9007339faf..3859e4c651c6 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+@@ -475,6 +475,8 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
+ 			}
+ 			ctx->state = MTK_STATE_INIT;
+ 		}
++	} else {
++		ctx->capture_fourcc = fmt->fourcc;
  	}
-+	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MT21C) {
-+		mtk_vcodec_add_formats(V4L2_PIX_FMT_MT21C, ctx);
-+		cap_format_count++;
-+	}
- 	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_H264_SLICE) {
- 		mtk_vcodec_add_formats(V4L2_PIX_FMT_H264_SLICE, ctx);
- 		out_format_count++;
+ 
+ 	/*
 diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-index d74a9e0e74fe..75a1c6df6594 100644
+index 75a1c6df6594..c047f421843b 100644
 --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
 +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-@@ -350,6 +350,7 @@ enum mtk_vdec_hw_arch {
-  */
- enum mtk_vdec_format_types {
- 	MTK_VDEC_FORMAT_MM21 = 0x20,
-+	MTK_VDEC_FORMAT_MT21C = 0x40,
- 	MTK_VDEC_FORMAT_H264_SLICE = 0x100,
- };
+@@ -274,6 +274,7 @@ struct vdec_pic_info {
+  *		     to be used with encoder and stateful decoder.
+  * @is_flushing: set to true if flushing is in progress.
+  * @current_codec: current set input codec, in V4L2 pixel format
++ * @capture_fourcc: capture queue type in V4L2 pixel format
+  *
+  * @colorspace: enum v4l2_colorspace; supplemental to pixelformat
+  * @ycbcr_enc: enum v4l2_ycbcr_encoding, Y'CbCr encoding
+@@ -321,6 +322,7 @@ struct mtk_vcodec_ctx {
+ 	bool is_flushing;
  
+ 	u32 current_codec;
++	u32 capture_fourcc;
+ 
+ 	enum v4l2_colorspace colorspace;
+ 	enum v4l2_ycbcr_encoding ycbcr_enc;
 -- 
 2.18.0
 
