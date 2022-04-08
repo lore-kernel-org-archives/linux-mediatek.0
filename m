@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01537C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 08:12:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35F7EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 08:18:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+qjlbl2WUiqxANT3dCdCfH0fzBveAVkguQhejoSB8QE=; b=NwZHJ6vGSNPB3Q
-	lWv/4OccNt30rIy9tZZ0sdAq7421FIty31AwDJH52KF4mNk2qsBoZMnFu0QmACiEaLr5bc6qlFwGA
-	V+qarZYJccqPMGOaOfKFzupsJcYTh2T1sLc3Tk/437vhRrcVLaLefG83C844TDRYBkhZra2ReMi3Z
-	ISqPvxzxFmpPcTFJb/bCgY/bHbPbARjZ2dcFCtt7nA9L4XMGpN/HCuI025RkwKszY8oP8JeP8HUud
-	xSkOMTbYhzPx1fc9G4GMtdm5wmMvkK53/qkJpZ0oEHGbELLJeD7KC/qNeFCxnaKs7joiQHwLFOb1S
-	1Zm5g9+0eKHzA7fJ2sKw==;
+	List-Owner; bh=d6m8IpCP+VU3/Vs8C1320OIlxTfCUl2Ps9GP5t3KXbc=; b=bZTXP0+RhQvj5d
+	9ZRfgcRIq7lgep+maVrqsOL57/muarXQelY12v1y/izHZZvx1HrjbQkpVKmdweDGk7vE7n8pJ17bT
+	pGEe7wz6OHtA+9oBXEEtjhadgbFPsxxMYQ5T67tuOByrRGN1VlOXxJ4QnwK5JLgAVswZKKCJYCLsb
+	8V8CS7MRv09ik1FYyqSePWI5P25UuBovg4oApx7n6ZOy3UeDjmVJHw4NqaP3B4Fc1/OCmlbRJACMJ
+	a9U1M/dCZkYJf/kA2aadCyCUHeoeUSgBQEU1mOs1L6IBPLqInMM6bZaJohw5A3yKgH87Igc5XnjRW
+	uJK52hsiNXJrYEUhzswA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncjjQ-00Flh1-94; Fri, 08 Apr 2022 08:12:36 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1ncjog-00Fo8C-Ca; Fri, 08 Apr 2022 08:18:02 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncjh2-00Fkc9-Vh
- for linux-mediatek@lists.infradead.org; Fri, 08 Apr 2022 08:10:11 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id n6so15655524ejc.13
- for <linux-mediatek@lists.infradead.org>; Fri, 08 Apr 2022 01:10:04 -0700 (PDT)
+ id 1ncjoE-00FntB-4E
+ for linux-mediatek@lists.infradead.org; Fri, 08 Apr 2022 08:17:37 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id b15so9193980edn.4
+ for <linux-mediatek@lists.infradead.org>; Fri, 08 Apr 2022 01:17:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=16qq4T8W7Wb3W3I0GFoxZjqEJT94+MYc2RlGkdbX2ac=;
- b=DHUn3OoULpXK+mm9ySoqW5WNBlp+pqhHBqMvxhOBi/v95ukvoDz09bDR+K4ILGQPxW
- KZra/kNcINrwhQ2t+V3PgKTeZqSs5Z+BXx7BSUsqw/p5/p7AhIhRdWUDjLk44f5JRiy1
- roa+7FL5knMpJNMxTxNhVK3kovdvgEmQ115DQjQmmrKoARK3kWCTzUmEQ/2+NByzAtg5
- XD6m7Wgp99VyLQoorf8GoYIo6DNYMwdAZCJAGMcBGWeXpd9kiKLu2WPIt5yN85m+JlAf
- l/D0BXr604LNNDLQcUA4EcfuSImnq0/txS+smMOdRfajZN0K3EnUgVCQ9MJOgWAuZpAH
- ri6A==
+ bh=yuQFl788i69gkuHZnfVhALt8fZsIexOSaYwO7DsFL54=;
+ b=gx8vkxt3S763Ala7vzwT1kODYsT4g6h9F/zXUPb23Kp7SxBqah2MLv/qepESsLFEk6
+ I0ssg1XGAfLpTdDwbWD4XOyGCf1OaXP7MTUwFge2EkjWfCqDuI9cbnBKQghpKTSNb+FZ
+ qQiXqB5C+6GD7/kuW52bYq8t0iaiLUOwEH2Gy5BwrGYXzXXkp7NTwGQcZ2MpnvUUOoRE
+ 8UllVY1p3GkIjUo9lvPFKOrk+3+oTIFWk3jYgmGy2leoAdfs+MGwaRimWw+KYJ0Gamjn
+ j+cp3u90dmMQdHjdkVO7f2J+JL8VKRUppRdrEM545wEFGS7/HXzUyxt2c1TjJNQuTQQ1
+ yHtA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=16qq4T8W7Wb3W3I0GFoxZjqEJT94+MYc2RlGkdbX2ac=;
- b=4sWUGs+dUMK7Bt1mz5laeCVCQ9rw1+G0r+wA6EnU+KrcmuPvZytkcUMrQ2b4ZGqki5
- 3xVhJsaO4RUzA/gJCW8UuoE82aXWVya+6oWG5211QoxanCg+GDCLq83xFWW0gLeq1VtI
- XHjU5RTYvDavKARxlXUHhmfHosvDuuKghOBchMVIDSzMyhJJZemu7YCg/qUhvpDeWC+t
- 9mohnEGFw6t3HJ2jUOZG4eR5yxJy9lTO3NCwRftcK+wfIHPOdHCjMvF8RU+EGz0YVSa4
- fH2tOVobXZR5EKqlQmvtrzm2E8rooE5CKBA5vqFT2Fnc+pSQ2edb/WFoAUX61LOxZBbL
- 7thg==
-X-Gm-Message-State: AOAM5307w7YkhGglf6QGtrSsn52y0hqDlMd/oaleXLOM8014o77/q5Ne
- x49QBSeWVobSkTnGjhip4AHDzw==
-X-Google-Smtp-Source: ABdhPJyd+7LeacyRv4S4s8A5mEZaNzMiHeOn8GceZ6A7SUV88bQI8PoI45QiWp3fyzkIiAh8+Qduvg==
-X-Received: by 2002:a17:906:acf:b0:6e7:681e:b4b6 with SMTP id
- z15-20020a1709060acf00b006e7681eb4b6mr17535515ejf.61.1649405403553; 
- Fri, 08 Apr 2022 01:10:03 -0700 (PDT)
+ bh=yuQFl788i69gkuHZnfVhALt8fZsIexOSaYwO7DsFL54=;
+ b=XnvD74WVB6HfPCkWLWDlaQLKDMHmimloILDVsEHMpXxlOzLIbziRsg+jdnvZ02UMEP
+ qu7TWreq1c5yCq5uqk7d1AGi7N2JxCS5pJwDM2Ve2I/U3eT9UNNCzNuqNJSP4eqsKFWW
+ /pSbJ3Ghz3YnUn1dk4kerCYc0RSb+qJqIuy86hsB2gRfyLPV6kNePt9xbEx3LbCvMmBE
+ h6VtKwLRo1R/OSSL0eeE8HuPpuFFJJYdN1ANasaWCmdCidRvNUK7udLMVJPtHzfOtUnu
+ dRCf2AgIcmhubwfo+0GPbX6Su5YArIqFPMGcSpofHu/9aCPL9Oo5o7b00LSWjcKm9zu/
+ KDUg==
+X-Gm-Message-State: AOAM532rFfmVfthCvV4Qu+z6sddzReOWrw6aNqpNOfVlS1QAmcbv7Kpp
+ jJcysKp2YBcjg9UrQMZexy/N5w==
+X-Google-Smtp-Source: ABdhPJx+VdDdTFo570Fvyfw4GeKW7zvLGZVHe5kAq6tSIeQZxQjNGhr1a2UD5tZKmhXqwhMA9rkmDA==
+X-Received: by 2002:aa7:d287:0:b0:41d:79:73ca with SMTP id
+ w7-20020aa7d287000000b0041d007973camr8932500edq.142.1649405848011; 
+ Fri, 08 Apr 2022 01:17:28 -0700 (PDT)
 Received: from [192.168.0.187] (xdsl-188-155-201-27.adslplus.ch.
  [188.155.201.27]) by smtp.gmail.com with ESMTPSA id
- u6-20020a17090626c600b006e74ef7f092sm6549148ejc.176.2022.04.08.01.10.02
+ h26-20020a170906111a00b006e778bd4fc8sm6167691eja.38.2022.04.08.01.17.26
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 08 Apr 2022 01:10:03 -0700 (PDT)
-Message-ID: <a171f33c-cda1-8602-ac67-93076b676578@linaro.org>
-Date: Fri, 8 Apr 2022 10:10:02 +0200
+ Fri, 08 Apr 2022 01:17:27 -0700 (PDT)
+Message-ID: <855d7daa-45d1-d6d8-32bd-51778cf58392@linaro.org>
+Date: Fri, 8 Apr 2022 10:17:26 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.7.0
-Subject: Re: [PATCH V2 01/15] dt-bindings: cpufreq: mediatek: Add MediaTek CCI
- property
+Subject: Re: [PATCH v2 1/2] dt-bindings: devfreq: mediatek: Add mtk cci
+ devfreq dt-bindings
 Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
- viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org
-Cc: matthias.bgg@gmail.com, jia-wei.chang@mediatek.com,
- roger.lu@mediatek.com, hsinyi@google.com, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+To: Johnson Wang <johnson.wang@mediatek.com>, cw00.choi@samsung.com,
+ krzk+dt@kernel.org, robh+dt@kernel.org, kyungmin.park@samsung.com
+Cc: khilman@kernel.org, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220408045908.21671-1-rex-bc.chen@mediatek.com>
- <20220408045908.21671-2-rex-bc.chen@mediatek.com>
+ jia-wei.chang@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220408052150.22536-1-johnson.wang@mediatek.com>
+ <20220408052150.22536-2-johnson.wang@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220408045908.21671-2-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220408052150.22536-2-johnson.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_011009_065265_F7548E44 
-X-CRM114-Status: GOOD (  16.33  )
+X-CRM114-CacheID: sfid-20220408_011734_259386_D6D31F77 
+X-CRM114-Status: GOOD (  18.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,42 +97,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08/04/2022 06:58, Rex-BC Chen wrote:
-> From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+On 08/04/2022 07:21, Johnson Wang wrote:
+> Add devicetree binding of mtk cci devfreq on MediaTek SoC.
 > 
-> MediaTek Cache Coherent Interconnect (CCI) uses software devfreq module
-> for scaling clock frequency and adjust voltage.
-> The phandle could be linked between CPU and MediaTek CCI for some
-> MediaTek SoCs, like MT8183 and MT8186.
-> Therefore, we add this property in cpufreq-mediatek.txt.
-> 
+
+Thank you for your patch. There is something to discuss/improve.
+
+> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
 > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 > ---
->  .../devicetree/bindings/cpufreq/cpufreq-mediatek.txt          | 4 ++++
->  1 file changed, 4 insertions(+)
+>  .../devicetree/bindings/devfreq/mtk-cci.yaml  | 72 +++++++++++++++++++
+>  1 file changed, 72 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/devfreq/mtk-cci.yaml
+
+Filename with vendor prefix, so something like:
+
+mediatek,cci.yaml
+
+Also please put it in the "interconnect" directory.
+
 > 
-> diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
-> index b8233ec91d3d..d1b3d430c25c 100644
-> --- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
-> +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
-> @@ -20,6 +20,10 @@ Optional properties:
->  	       Vsram to fit SoC specific needs. When absent, the voltage scaling
->  	       flow is handled by hardware, hence no software "voltage tracking" is
->  	       needed.
-> +- cci: MediaTek Cache Coherent Interconnect uses software devfreq module for scaling
-> +       clock frequency and adjust voltage.
+> diff --git a/Documentation/devicetree/bindings/devfreq/mtk-cci.yaml b/Documentation/devicetree/bindings/devfreq/mtk-cci.yaml
+> new file mode 100644
+> index 000000000000..ef4ea951025c
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/devfreq/mtk-cci.yaml
+> @@ -0,0 +1,72 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/devfreq/mtk-cci.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Cache Coherent Interconnect (CCI) frequency and voltage scaling
+> +
+> +maintainers:
+> +  - Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> +
+> +description: |
+> +  MediaTek Cache Coherent Interconnect (CCI) uses the software devfreq module
 
-You need to describe the type. I am a bit confused whether this is a cci
-(so cci-control-port property?) or an interconnect (so interconnect
-property)... It does not look like a generic property, so you need
-vendor prefix.
+Do not reference software implementation (devfreq).
 
-> +       For details, please refer to
-> +       Documentation/devicetree/bindings/devfreq/mtk-cci.yaml
+> +  to scale the clock frequency and adjust the voltage. MediaTek CCI shares
+> +  the same power supplies with CPU, so the scheduling involves with CPUfreq.
 
-Such file does not exist.
+The same - cpufreq.
 
+Instead, focus on the hardware, what do you describe here?
+
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt8183-cci
+> +      - mediatek,mt8186-cci
+> +
+> +  clocks:
+> +    items:
+> +      - description:
+> +          The multiplexer for clock input of CPU cluster.
+> +      - description:
+> +          A parent of "cpu" clock which is used as an intermediate clock source
+> +          when the original CPU is under transition and not stable yet.
+> +
+> +  clock-names:
+> +    items:
+> +      - const: cci
+> +      - const: intermediate
+> +
+> +  operating-points-v2:
+> +    description:
+> +      For details, please refer to
+> +      Documentation/devicetree/bindings/opp/opp-v2.yaml
+
+No need for description. Just "operating-points-v2: true".
+
+"opp-table:true" could stay. My previous comment about its removal was a
+wrong advice, because opp-table is used for a table being a children of
+this device node.
 
 Best regards,
 Krzysztof
