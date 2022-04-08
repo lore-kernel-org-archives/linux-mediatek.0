@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 565F4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 12:54:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D013EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 12:54:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rQIqKvIqFBWsDR4y9dD+YR+F5ktvZhsPL/RUFW7f1JU=; b=TlScfVygYsWomu
-	UmBnTtaQuOhlk+bGKxFAwzh6mqt9Nfl+HpHaeJ1ppjMgNbIhu1vvOmkf7NvV5t+WBBK5CdVaumQV4
-	vSpyp0lszb8Zwtj1k50DoCU/SW3hCdc+RyR7tHFkjscqnoY0OtQBqhiasOCxgfQRKD5d4TqPr9NCG
-	EJEF+QnI7r03AR7O8vSnQNG3oV2oGJwDjkaH1CSU8LEEpTc2mQTMr9Ht6Gdl4BmxTjIj37cvQM9sd
-	OibrpN3hp+MfQ6+U0OtIROoUcxE4Sv6V39HMHmXnPKs169w/C06D0aPFVab3dCj8yDu/9Ua1VYuO/
-	wdk8QfyBJZOMKiXzT88A==;
+	List-Owner; bh=MMv8orezYYJiIoL8q/reTGh7n70MevdJxz+at1FxjTU=; b=p03brkJOLfWgK4
+	mbDJxT9s9F5FyHeC/+waG8TCcxsVPhimLvPmcvxeOHvCfE8OBgj+kny3nk3gwoOxRLXDL+sQhTe8x
+	FAL70oh2Ijz2VMa3sxZeL8jb7d4kbfLi7dG871hsiflk9UVVgtCcPXHzulLJMs9rukGxzRjeSmQkA
+	TUy7SRCrr+4mnsEprPZ2ue/cOCC3jEDBGBMI2u2+IMsKNaPY61kHSLf72xHqpJ5/Ihl2PLMojTJZl
+	qbzh+wOtIkihCSb5uDVpsdiuVqpvay5bxRHP+ONO5b7GoQ0zyaOYXjpBpMzmU/cT0JVFgw1GX3RQL
+	i33E85z9Fkoqwz2arucg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nco8T-00HBIV-Gj; Fri, 08 Apr 2022 12:54:45 +0000
+	id 1nco8W-00HBJb-16; Fri, 08 Apr 2022 12:54:48 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncnU6-00Gtqx-6E; Fri, 08 Apr 2022 12:13:03 +0000
-X-UUID: e187cb378fd2496394ffb1371084f8f8-20220408
-X-UUID: e187cb378fd2496394ffb1371084f8f8-20220408
+ id 1ncnU6-00Gtqk-6G; Fri, 08 Apr 2022 12:13:03 +0000
+X-UUID: 6c0c680fb0774f4399841aa949f32155-20220408
+X-UUID: 6c0c680fb0774f4399841aa949f32155-20220408
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 671389604; Fri, 08 Apr 2022 05:12:59 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 1759633905; Fri, 08 Apr 2022 05:12:59 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 8 Apr 2022 05:03:07 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 8 Apr 2022 20:03:05 +0800
+ 15.0.1497.2; Fri, 8 Apr 2022 05:02:59 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 8 Apr 2022 20:02:58 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 8 Apr 2022 20:02:58 +0800
+ Transport; Fri, 8 Apr 2022 20:02:56 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
@@ -57,17 +57,17 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v9, 11/17] media: mediatek: vcodec: Fix v4l2-compliance fail
-Date: Fri, 8 Apr 2022 20:02:34 +0800
-Message-ID: <20220408120240.29571-12-yunfei.dong@mediatek.com>
+Subject: [PATCH v9, 10/17] media: mediatek: vcodec: disable vp8 4K capability
+Date: Fri, 8 Apr 2022 20:02:33 +0800
+Message-ID: <20220408120240.29571-11-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220408120240.29571-1-yunfei.dong@mediatek.com>
 References: <20220408120240.29571-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_051302_311266_57465021 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20220408_051302_324193_B61AE097 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,34 +84,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Need to use default pic info when get pic info fail.
+For vp8 not support 4K, need to disable it.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: Steve Cho <stevecho@chromium.org>
 ---
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-index dab6acb3158c..0d9007339faf 100644
+index 1fb49a779c5d..dab6acb3158c 100644
 --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
 +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-@@ -485,11 +485,14 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
- 		ctx->picinfo.pic_w = pix_mp->width;
- 		ctx->picinfo.pic_h = pix_mp->height;
+@@ -446,7 +446,8 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
+ 	if (fmt == NULL)
+ 		return -EINVAL;
  
-+		/*
-+		 * If get pic info fail, need to use the default pic info params, or
-+		 * v4l2-compliance will fail
-+		 */
- 		ret = vdec_if_get_param(ctx, GET_PARAM_PIC_INFO, &ctx->picinfo);
- 		if (ret) {
- 			mtk_v4l2_err("[%d]Error!! Get GET_PARAM_PICTURE_INFO Fail",
- 				     ctx->id);
--			return -EINVAL;
- 		}
- 
- 		ctx->last_decoded_picinfo = ctx->picinfo;
+-	if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED)) {
++	if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED) &&
++	    fmt->fourcc != V4L2_PIX_FMT_VP8_FRAME) {
+ 		mtk_v4l2_debug(3, "4K is enabled");
+ 		ctx->max_width = VCODEC_DEC_4K_CODED_WIDTH;
+ 		ctx->max_height = VCODEC_DEC_4K_CODED_HEIGHT;
 -- 
 2.18.0
 
