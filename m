@@ -4,59 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86326C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 11:52:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C243C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 12:40:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aoFFxs8BkoEad1LvbCp6J5af2uJihpaXLP7ZExLxt0o=; b=0GeORFEaSQp5Fk
-	EAJdh7O7qcEspdM9w/EyHP8WOVC5//HoronYTCxxRrjLr0t/nqhwGUIJIst5ZDjmyTkhUTR4HmlQE
-	Y6WZuJGt7sK3c2z+Y1npk6rLMGTHZAH1378vShmsizI/+xf+uH0U9l2CCrfVZoCWwhyfEA5bEY+/d
-	10vJNp7cVbspoNDFimlW/Bi0cmcSuPWZACMFz44sqbw0rXe4rKxYHKsM7ZtghOIAhcpk3m9tqksjT
-	s4pnuxEGTehYe0w9n1G5DQVavxwhh23hpvkjoX3NAaA43NIM4lYnPFbU5ytMJKgEyMXZaSsn98mea
-	AI+OpLqc/l8d7ZHE7LEg==;
+	List-Owner; bh=A65ngTBPYmehXmz0bsM1CwYWOVZqkblWeyv7zVhW6/k=; b=dVumxhfnhAGNoM
+	knSs0VJLl9Mx0YP/YKn1ugGPHnW+a6Gb4aFL7QWufWCVsCuimH9BKMO+aHTpWW1MAjYatT7lWaUtX
+	KQj966QfHt4TXbuh0Z4t6FXOmONDbwUcvVPlzVJn8B89HHAhatwq99y9iqSOMvufjOQh+j/Wx+Oot
+	ZFB1q3ronjviRcS0TDUEqyn24GPKIvsudScyvDWE9b8xVBazuQn0HXek1qddcEcbLqCG1AUjlUoQr
+	8p4hXrD5UUvrEoXUC03TLo7+UDCdksvE6zO8J5+2RKnNb5WYjBG+b0xTihZ5S40f65fAgSckfrKP+
+	FcIoJM02Zvg89QkU3fNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncn9m-00GlMj-Si; Fri, 08 Apr 2022 11:52:02 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1ncnuj-00H4og-AD; Fri, 08 Apr 2022 12:40:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncn9a-00GlIn-45; Fri, 08 Apr 2022 11:51:52 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 9D3E51F46F37
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649418706;
- bh=KtaScPcryeGL4YO+TROmabwM6wlLQsjfQXBw+PYHmfc=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=QCegWv3XIxeXvrTldnlY815OlT5zriWKUeupvOczZb1bDGA3cpKvuqkuTS8PBeS74
- 3/wC92JYMgDLC46HjGwXvzpyLXcRiawkzcSQj7DFSy0OIqXTJ1OFYoaKodebVU7pKr
- UlVrSLQmKtGqzrqFhSfa3yOjImEuJF9iQt4ZrcxQj6pDU+WVglD9csBHVf5zLUWCTp
- 4TC24h8lLZZj9RyaH2UIhtKvVQnY4IUVALFiDE2zZqx7AjGvZGdWAARZAcO5HgTpNi
- R9OcU0fCktBrpG/UD05xAkVKX/6DM9ccgnpOItqm3ftIrXpX0G3UL/3+VsuE5UJXbn
- AHi3nCn/kVkkg==
-Message-ID: <7dde78c6-efc6-cc67-19ac-28f8640c2c8c@collabora.com>
-Date: Fri, 8 Apr 2022 13:51:43 +0200
+ id 1ncnKK-00GpsE-7x; Fri, 08 Apr 2022 12:03:02 +0000
+X-UUID: a816fc05c39641f5bdf1005b6dcb7212-20220408
+X-UUID: a816fc05c39641f5bdf1005b6dcb7212-20220408
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yunfei.dong@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1820330428; Fri, 08 Apr 2022 05:02:48 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 8 Apr 2022 05:02:46 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 8 Apr 2022 20:02:44 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 8 Apr 2022 20:02:43 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
+ Verkuil" <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
+ <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+ <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
+ <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
+ Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v9,
+ 01/17] media: mediatek: vcodec: Add vdec enable/disable hardware
+ helpers
+Date: Fri, 8 Apr 2022 20:02:24 +0800
+Message-ID: <20220408120240.29571-2-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220408120240.29571-1-yunfei.dong@mediatek.com>
+References: <20220408120240.29571-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v2 2/2] PM / devfreq: mediatek: Introduce MediaTek CCI
- devfreq driver
-Content-Language: en-US
-To: Johnson Wang <johnson.wang@mediatek.com>, cw00.choi@samsung.com,
- krzk+dt@kernel.org, robh+dt@kernel.org, kyungmin.park@samsung.com
-Cc: khilman@kernel.org, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- jia-wei.chang@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220408052150.22536-1-johnson.wang@mediatek.com>
- <20220408052150.22536-3-johnson.wang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220408052150.22536-3-johnson.wang@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_045150_559010_C0C477BF 
-X-CRM114-Status: GOOD (  30.82  )
+X-CRM114-CacheID: sfid-20220408_050256_358994_FBFD0454 
+X-CRM114-Status: GOOD (  19.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,197 +81,351 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/04/22 07:21, Johnson Wang ha scritto:
-> We introduce a devfreq driver for the MediaTek Cache Coherent Interconnect
-> (CCI) used by some MediaTek SoCs.
-> 
-> In this driver, we use the passive devfreq driver to get target frequencies
-> and adjust voltages accordingly. In MT8183 and MT8186, the MediaTek CCI
-> is supplied by the same regulators with the little core CPUs.
-> 
-> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
-> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> ---
-> This patch depends on "devfreq-testing"[1].
-> [1]https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/log/?h=devfreq-testing
-> ---
->   drivers/devfreq/Kconfig           |  10 +
->   drivers/devfreq/Makefile          |   1 +
->   drivers/devfreq/mtk-cci-devfreq.c | 479 ++++++++++++++++++++++++++++++
->   3 files changed, 490 insertions(+)
->   create mode 100644 drivers/devfreq/mtk-cci-devfreq.c
-> 
-> diff --git a/drivers/devfreq/Kconfig b/drivers/devfreq/Kconfig
-> index 87eb2b837e68..d985597f343f 100644
-> --- a/drivers/devfreq/Kconfig
-> +++ b/drivers/devfreq/Kconfig
-> @@ -120,6 +120,16 @@ config ARM_TEGRA_DEVFREQ
->   	  It reads ACTMON counters of memory controllers and adjusts the
->   	  operating frequencies and voltages with OPP support.
->   
-> +config ARM_MEDIATEK_CCI_DEVFREQ
-> +	tristate "MEDIATEK CCI DEVFREQ Driver"
-> +	depends on ARM_MEDIATEK_CPUFREQ
-> +	select DEVFREQ_GOV_PASSIVE
-> +	help
-> +	  This adds a devfreq driver for MediaTek Cache Coherent Interconnect
-> +	  which is shared the same regulators with the cpu cluster. It can track
-> +	  buck voltages and update a proper CCI frequency. Use the notification
-> +	  to get the regulator status.
-> +
->   config ARM_RK3399_DMC_DEVFREQ
->   	tristate "ARM RK3399 DMC DEVFREQ Driver"
->   	depends on (ARCH_ROCKCHIP && HAVE_ARM_SMCCC) || \
-> diff --git a/drivers/devfreq/Makefile b/drivers/devfreq/Makefile
-> index 0b6be92a25d9..bf40d04928d0 100644
-> --- a/drivers/devfreq/Makefile
-> +++ b/drivers/devfreq/Makefile
-> @@ -11,6 +11,7 @@ obj-$(CONFIG_DEVFREQ_GOV_PASSIVE)	+= governor_passive.o
->   obj-$(CONFIG_ARM_EXYNOS_BUS_DEVFREQ)	+= exynos-bus.o
->   obj-$(CONFIG_ARM_IMX_BUS_DEVFREQ)	+= imx-bus.o
->   obj-$(CONFIG_ARM_IMX8M_DDRC_DEVFREQ)	+= imx8m-ddrc.o
-> +obj-$(CONFIG_ARM_MEDIATEK_CCI_DEVFREQ)	+= mtk-cci-devfreq.o
->   obj-$(CONFIG_ARM_RK3399_DMC_DEVFREQ)	+= rk3399_dmc.o
->   obj-$(CONFIG_ARM_SUN8I_A33_MBUS_DEVFREQ)	+= sun8i-a33-mbus.o
->   obj-$(CONFIG_ARM_TEGRA_DEVFREQ)		+= tegra30-devfreq.o
-> diff --git a/drivers/devfreq/mtk-cci-devfreq.c b/drivers/devfreq/mtk-cci-devfreq.c
-> new file mode 100644
-> index 000000000000..53a28e2c88bd
-> --- /dev/null
-> +++ b/drivers/devfreq/mtk-cci-devfreq.c
-> @@ -0,0 +1,479 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (C) 2022 MediaTek Inc.
-> + */
-> +
-> +#include <linux/clk.h>
-> +#include <linux/devfreq.h>
-> +#include <linux/minmax.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/of_device.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/pm_opp.h>
-> +#include <linux/regulator/consumer.h>
-> +
-> +struct mtk_ccifreq_platform_data {
-> +	int min_volt_shift;
-> +	int max_volt_shift;
-> +	int proc_max_volt;
-> +	int sram_min_volt;
-> +	int sram_max_volt;
-> +};
-> +
-> +struct mtk_ccifreq_drv {
-> +	struct device *cci_dev;
-> +	struct devfreq *devfreq;
-> +	struct regulator *proc_reg;
-> +	struct regulator *sram_reg;
-> +	struct clk *cci_clk;
-> +	struct clk *inter_clk;
-> +	int inter_voltage;
-> +	int old_voltage;
-> +	unsigned long old_freq;
-> +	bool need_voltage_tracking;
-> +	/* Avoid race condition for regulators between notify and policy */
-> +	struct mutex reg_lock;
-> +	struct notifier_block opp_nb;
-> +	const struct mtk_ccifreq_platform_data *soc_data;
-> +};
-> +
-> +static int mtk_ccifreq_voltage_tracking(struct mtk_ccifreq_drv *drv,
-> +					int new_voltage)
-> +{
-> +	const struct mtk_ccifreq_platform_data *soc_data = drv->soc_data;
-> +	struct device *dev = drv->cci_dev;
-> +	struct regulator *proc_reg = drv->proc_reg;
-> +	struct regulator *sram_reg = drv->sram_reg;
-> +	int old_voltage, old_vsram, new_vsram, vsram, voltage, ret;
-> +
-> +	old_voltage = regulator_get_voltage(proc_reg);
-> +	if (old_voltage < 0) {
-> +		dev_err(dev, "invalid vproc value: %d\n", old_voltage);
-> +		return old_voltage;
-> +	}
-> +
-> +	old_vsram = regulator_get_voltage(sram_reg);
-> +	if (old_vsram < 0) {
-> +		dev_err(dev, "invalid vsram value: %d\n", old_vsram);
-> +		return old_vsram;
-> +	}
-> +
-> +	new_vsram = clamp(new_voltage + soc_data->min_volt_shift,
-> +			  soc_data->sram_min_volt, soc_data->sram_max_volt);
-> +
-> +	do {
-> +		if (old_voltage <= new_voltage) {
-> +			vsram = clamp(old_voltage + soc_data->max_volt_shift,
-> +				      soc_data->sram_min_volt, new_vsram);
-> +			ret = regulator_set_voltage(sram_reg, vsram,
-> +						    soc_data->sram_max_volt);
-> +			if (ret)
-> +				return ret;
-> +
-> +			if (vsram == soc_data->sram_max_volt ||
-> +			    new_vsram == soc_data->sram_min_volt)
-> +				voltage = new_voltage;
-> +			else
-> +				voltage = vsram - soc_data->min_volt_shift;
-> +
-> +			ret = regulator_set_voltage(proc_reg, voltage,
-> +						    soc_data->proc_max_volt);
-> +			if (ret) {
-> +				regulator_set_voltage(sram_reg, old_vsram,
-> +						      soc_data->sram_max_volt);
-> +				return ret;
-> +			}
-> +		} else if (old_voltage > new_voltage) {
-> +			voltage = max(new_voltage,
-> +				      old_vsram - soc_data->max_volt_shift);
-> +			ret = regulator_set_voltage(proc_reg, voltage,
-> +						    soc_data->proc_max_volt);
-> +			if (ret)
-> +				return ret;
-> +
-> +			if (voltage == new_voltage)
-> +				vsram = new_vsram;
-> +			else
-> +				vsram = max(new_vsram,
-> +					    voltage + soc_data->min_volt_shift);
-> +
-> +			ret = regulator_set_voltage(sram_reg, vsram,
-> +						    soc_data->sram_max_volt);
-> +			if (ret) {
-> +				regulator_set_voltage(proc_reg, old_voltage,
-> +						      soc_data->proc_max_volt);
-> +				return ret;
-> +			}
-> +		}
-> +
-> +		old_voltage = voltage;
-> +		old_vsram = vsram;
-> +	} while (voltage != new_voltage || vsram != new_vsram);
+Lock, power and clock are highly coupled operations. Adds vdec
+enable/disable hardware helpers and uses them.
 
-Hello Johnson,
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: Tzung-Bi Shih<tzungbi@google.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../mediatek/vcodec/mtk_vcodec_dec_drv.c      |   5 -
+ .../mediatek/vcodec/mtk_vcodec_dec_pm.c       | 166 +++++++++++-------
+ .../mediatek/vcodec/mtk_vcodec_dec_pm.h       |   6 +-
+ .../platform/mediatek/vcodec/vdec_drv_if.c    |  20 +--
+ .../platform/mediatek/vcodec/vdec_msg_queue.c |   2 +
+ 5 files changed, 116 insertions(+), 83 deletions(-)
 
-are you extremely sure that there will *always* be a way out of this while loop?
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+index df7b25e9cbc8..a84df6596aaa 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+@@ -193,9 +193,6 @@ static int fops_vcodec_open(struct file *file)
+ 	mtk_vcodec_dec_set_default_params(ctx);
+ 
+ 	if (v4l2_fh_is_singular(&ctx->fh)) {
+-		ret = mtk_vcodec_dec_pw_on(dev, MTK_VDEC_LAT0);
+-		if (ret < 0)
+-			goto err_load_fw;
+ 		/*
+ 		 * Does nothing if firmware was already loaded.
+ 		 */
+@@ -252,8 +249,6 @@ static int fops_vcodec_release(struct file *file)
+ 	v4l2_m2m_ctx_release(ctx->m2m_ctx);
+ 	mtk_vcodec_dec_release(ctx);
+ 
+-	if (v4l2_fh_is_singular(&ctx->fh))
+-		mtk_vcodec_dec_pw_off(dev, MTK_VDEC_LAT0);
+ 	v4l2_fh_del(&ctx->fh);
+ 	v4l2_fh_exit(&ctx->fh);
+ 	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
+index 7e0c2644bf7b..0fb7e5ba635b 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
+@@ -57,74 +57,31 @@ int mtk_vcodec_init_dec_clk(struct platform_device *pdev, struct mtk_vcodec_pm *
+ }
+ EXPORT_SYMBOL_GPL(mtk_vcodec_init_dec_clk);
+ 
+-int mtk_vcodec_dec_pw_on(struct mtk_vcodec_dev *vdec_dev, int hw_idx)
++static int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
+ {
+-	struct mtk_vdec_hw_dev *subdev_dev;
+-	struct mtk_vcodec_pm *pm;
+ 	int ret;
+ 
+-	if (vdec_dev->vdec_pdata->is_subdev_supported) {
+-		subdev_dev = mtk_vcodec_get_hw_dev(vdec_dev, hw_idx);
+-		if (!subdev_dev) {
+-			mtk_v4l2_err("Failed to get hw dev\n");
+-			return -EINVAL;
+-		}
+-		pm = &subdev_dev->pm;
+-	} else {
+-		pm = &vdec_dev->pm;
+-	}
+-
+ 	ret = pm_runtime_resume_and_get(pm->dev);
+ 	if (ret)
+ 		mtk_v4l2_err("pm_runtime_resume_and_get fail %d", ret);
+ 
+ 	return ret;
+ }
+-EXPORT_SYMBOL_GPL(mtk_vcodec_dec_pw_on);
+ 
+-void mtk_vcodec_dec_pw_off(struct mtk_vcodec_dev *vdec_dev, int hw_idx)
++static void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm)
+ {
+-	struct mtk_vdec_hw_dev *subdev_dev;
+-	struct mtk_vcodec_pm *pm;
+ 	int ret;
+ 
+-	if (vdec_dev->vdec_pdata->is_subdev_supported) {
+-		subdev_dev = mtk_vcodec_get_hw_dev(vdec_dev, hw_idx);
+-		if (!subdev_dev) {
+-			mtk_v4l2_err("Failed to get hw dev\n");
+-			return;
+-		}
+-		pm = &subdev_dev->pm;
+-	} else {
+-		pm = &vdec_dev->pm;
+-	}
+-
+ 	ret = pm_runtime_put_sync(pm->dev);
+ 	if (ret)
+ 		mtk_v4l2_err("pm_runtime_put_sync fail %d", ret);
+ }
+-EXPORT_SYMBOL_GPL(mtk_vcodec_dec_pw_off);
+ 
+-void mtk_vcodec_dec_clock_on(struct mtk_vcodec_dev *vdec_dev, int hw_idx)
++static void mtk_vcodec_dec_clock_on(struct mtk_vcodec_pm *pm)
+ {
+-	struct mtk_vdec_hw_dev *subdev_dev;
+-	struct mtk_vcodec_pm *pm;
+ 	struct mtk_vcodec_clk *dec_clk;
+ 	int ret, i;
+ 
+-	if (vdec_dev->vdec_pdata->is_subdev_supported) {
+-		subdev_dev = mtk_vcodec_get_hw_dev(vdec_dev, hw_idx);
+-		if (!subdev_dev) {
+-			mtk_v4l2_err("Failed to get hw dev\n");
+-			return;
+-		}
+-		pm = &subdev_dev->pm;
+-		enable_irq(subdev_dev->dec_irq);
+-	} else {
+-		pm = &vdec_dev->pm;
+-		enable_irq(vdec_dev->dec_irq);
+-	}
+-
+ 	dec_clk = &pm->vdec_clk;
+ 	for (i = 0; i < dec_clk->clk_num; i++) {
+ 		ret = clk_prepare_enable(dec_clk->clk_info[i].vcodec_clk);
+@@ -140,30 +97,119 @@ void mtk_vcodec_dec_clock_on(struct mtk_vcodec_dev *vdec_dev, int hw_idx)
+ 	for (i -= 1; i >= 0; i--)
+ 		clk_disable_unprepare(dec_clk->clk_info[i].vcodec_clk);
+ }
+-EXPORT_SYMBOL_GPL(mtk_vcodec_dec_clock_on);
+ 
+-void mtk_vcodec_dec_clock_off(struct mtk_vcodec_dev *vdec_dev, int hw_idx)
++static void mtk_vcodec_dec_clock_off(struct mtk_vcodec_pm *pm)
+ {
+-	struct mtk_vdec_hw_dev *subdev_dev;
+-	struct mtk_vcodec_pm *pm;
+ 	struct mtk_vcodec_clk *dec_clk;
+ 	int i;
+ 
++	dec_clk = &pm->vdec_clk;
++	for (i = dec_clk->clk_num - 1; i >= 0; i--)
++		clk_disable_unprepare(dec_clk->clk_info[i].vcodec_clk);
++}
++
++static void mtk_vcodec_dec_enable_irq(struct mtk_vcodec_dev *vdec_dev, int hw_idx)
++{
++	struct mtk_vdec_hw_dev *subdev_dev;
++
++	if (!test_bit(hw_idx, vdec_dev->subdev_bitmap))
++		return;
++
+ 	if (vdec_dev->vdec_pdata->is_subdev_supported) {
+ 		subdev_dev = mtk_vcodec_get_hw_dev(vdec_dev, hw_idx);
+-		if (!subdev_dev) {
++		if (subdev_dev)
++			enable_irq(subdev_dev->dec_irq);
++		else
++			mtk_v4l2_err("Failed to get hw dev\n");
++	} else {
++		enable_irq(vdec_dev->dec_irq);
++	}
++}
++
++static void mtk_vcodec_dec_disable_irq(struct mtk_vcodec_dev *vdec_dev, int hw_idx)
++{
++	struct mtk_vdec_hw_dev *subdev_dev;
++
++	if (!test_bit(hw_idx, vdec_dev->subdev_bitmap))
++		return;
++
++	if (vdec_dev->vdec_pdata->is_subdev_supported) {
++		subdev_dev = mtk_vcodec_get_hw_dev(vdec_dev, hw_idx);
++		if (subdev_dev)
++			disable_irq(subdev_dev->dec_irq);
++		else
+ 			mtk_v4l2_err("Failed to get hw dev\n");
+-			return;
+-		}
+-		pm = &subdev_dev->pm;
+-		disable_irq(subdev_dev->dec_irq);
+ 	} else {
+-		pm = &vdec_dev->pm;
+ 		disable_irq(vdec_dev->dec_irq);
+ 	}
++}
+ 
+-	dec_clk = &pm->vdec_clk;
+-	for (i = dec_clk->clk_num - 1; i >= 0; i--)
+-		clk_disable_unprepare(dec_clk->clk_info[i].vcodec_clk);
++static struct mtk_vcodec_pm *mtk_vcodec_dec_get_pm(struct mtk_vcodec_dev *vdec_dev,
++						   int hw_idx)
++{
++	struct mtk_vdec_hw_dev *subdev_dev;
++
++	if (!test_bit(hw_idx, vdec_dev->subdev_bitmap))
++		return NULL;
++
++	if (vdec_dev->vdec_pdata->is_subdev_supported) {
++		subdev_dev = mtk_vcodec_get_hw_dev(vdec_dev, hw_idx);
++		if (subdev_dev)
++			return &subdev_dev->pm;
++
++		mtk_v4l2_err("Failed to get hw dev\n");
++		return NULL;
++	}
++
++	return &vdec_dev->pm;
++}
++
++static void mtk_vcodec_dec_child_dev_on(struct mtk_vcodec_dev *vdec_dev,
++					int hw_idx)
++{
++	struct mtk_vcodec_pm *pm;
++
++	pm = mtk_vcodec_dec_get_pm(vdec_dev, hw_idx);
++	if (pm) {
++		mtk_vcodec_dec_pw_on(pm);
++		mtk_vcodec_dec_clock_on(pm);
++	}
++}
++
++static void mtk_vcodec_dec_child_dev_off(struct mtk_vcodec_dev *vdec_dev,
++					 int hw_idx)
++{
++	struct mtk_vcodec_pm *pm;
++
++	pm = mtk_vcodec_dec_get_pm(vdec_dev, hw_idx);
++	if (pm) {
++		mtk_vcodec_dec_clock_off(pm);
++		mtk_vcodec_dec_pw_off(pm);
++	}
++}
++
++void mtk_vcodec_dec_enable_hardware(struct mtk_vcodec_ctx *ctx, int hw_idx)
++{
++	mutex_lock(&ctx->dev->dec_mutex[hw_idx]);
++
++	if (IS_VDEC_LAT_ARCH(ctx->dev->vdec_pdata->hw_arch) &&
++	    hw_idx == MTK_VDEC_CORE)
++		mtk_vcodec_dec_child_dev_on(ctx->dev, MTK_VDEC_LAT0);
++	mtk_vcodec_dec_child_dev_on(ctx->dev, hw_idx);
++
++	mtk_vcodec_dec_enable_irq(ctx->dev, hw_idx);
++}
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_enable_hardware);
++
++void mtk_vcodec_dec_disable_hardware(struct mtk_vcodec_ctx *ctx, int hw_idx)
++{
++	mtk_vcodec_dec_disable_irq(ctx->dev, hw_idx);
++
++	mtk_vcodec_dec_child_dev_off(ctx->dev, hw_idx);
++	if (IS_VDEC_LAT_ARCH(ctx->dev->vdec_pdata->hw_arch) &&
++	    hw_idx == MTK_VDEC_CORE)
++		mtk_vcodec_dec_child_dev_off(ctx->dev, MTK_VDEC_LAT0);
++
++	mutex_unlock(&ctx->dev->dec_mutex[hw_idx]);
+ }
+-EXPORT_SYMBOL_GPL(mtk_vcodec_dec_clock_off);
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_disable_hardware);
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.h
+index 3cc721bbfaf6..dbcf3cabe6f3 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.h
+@@ -11,9 +11,7 @@
+ 
+ int mtk_vcodec_init_dec_clk(struct platform_device *pdev, struct mtk_vcodec_pm *pm);
+ 
+-int mtk_vcodec_dec_pw_on(struct mtk_vcodec_dev *vdec_dev, int hw_idx);
+-void mtk_vcodec_dec_pw_off(struct mtk_vcodec_dev *vdec_dev, int hw_idx);
+-void mtk_vcodec_dec_clock_on(struct mtk_vcodec_dev *vdec_dev, int hw_idx);
+-void mtk_vcodec_dec_clock_off(struct mtk_vcodec_dev *vdec_dev, int hw_idx);
++void mtk_vcodec_dec_enable_hardware(struct mtk_vcodec_ctx *ctx, int hw_idx);
++void mtk_vcodec_dec_disable_hardware(struct mtk_vcodec_ctx *ctx, int hw_idx);
+ 
+ #endif /* _MTK_VCODEC_DEC_PM_H_ */
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec_drv_if.c b/drivers/media/platform/mediatek/vcodec/vdec_drv_if.c
+index 05a5b240e906..c93dd0ea3537 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec_drv_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec_drv_if.c
+@@ -38,11 +38,9 @@ int vdec_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
+ 		return -EINVAL;
+ 	}
+ 
+-	mtk_vdec_lock(ctx);
+-	mtk_vcodec_dec_clock_on(ctx->dev, ctx->hw_id);
++	mtk_vcodec_dec_enable_hardware(ctx, ctx->hw_id);
+ 	ret = ctx->dec_if->init(ctx);
+-	mtk_vcodec_dec_clock_off(ctx->dev, ctx->hw_id);
+-	mtk_vdec_unlock(ctx);
++	mtk_vcodec_dec_disable_hardware(ctx, ctx->hw_id);
+ 
+ 	return ret;
+ }
+@@ -70,15 +68,11 @@ int vdec_if_decode(struct mtk_vcodec_ctx *ctx, struct mtk_vcodec_mem *bs,
+ 	if (!ctx->drv_handle)
+ 		return -EIO;
+ 
+-	mtk_vdec_lock(ctx);
+-
++	mtk_vcodec_dec_enable_hardware(ctx, ctx->hw_id);
+ 	mtk_vcodec_set_curr_ctx(ctx->dev, ctx, ctx->hw_id);
+-	mtk_vcodec_dec_clock_on(ctx->dev, ctx->hw_id);
+ 	ret = ctx->dec_if->decode(ctx->drv_handle, bs, fb, res_chg);
+-	mtk_vcodec_dec_clock_off(ctx->dev, ctx->hw_id);
+ 	mtk_vcodec_set_curr_ctx(ctx->dev, NULL, ctx->hw_id);
+-
+-	mtk_vdec_unlock(ctx);
++	mtk_vcodec_dec_disable_hardware(ctx, ctx->hw_id);
+ 
+ 	return ret;
+ }
+@@ -103,11 +97,9 @@ void vdec_if_deinit(struct mtk_vcodec_ctx *ctx)
+ 	if (!ctx->drv_handle)
+ 		return;
+ 
+-	mtk_vdec_lock(ctx);
+-	mtk_vcodec_dec_clock_on(ctx->dev, ctx->hw_id);
++	mtk_vcodec_dec_enable_hardware(ctx, ctx->hw_id);
+ 	ctx->dec_if->deinit(ctx->drv_handle);
+-	mtk_vcodec_dec_clock_off(ctx->dev, ctx->hw_id);
+-	mtk_vdec_unlock(ctx);
++	mtk_vcodec_dec_disable_hardware(ctx, ctx->hw_id);
+ 
+ 	ctx->drv_handle = NULL;
+ }
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
+index 4b062a8128b4..ae500980ad45 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
+@@ -212,11 +212,13 @@ static void vdec_msg_queue_core_work(struct work_struct *work)
+ 		return;
+ 
+ 	ctx = lat_buf->ctx;
++	mtk_vcodec_dec_enable_hardware(ctx, MTK_VDEC_CORE);
+ 	mtk_vcodec_set_curr_ctx(dev, ctx, MTK_VDEC_CORE);
+ 
+ 	lat_buf->core_decode(lat_buf);
+ 
+ 	mtk_vcodec_set_curr_ctx(dev, NULL, MTK_VDEC_CORE);
++	mtk_vcodec_dec_disable_hardware(ctx, MTK_VDEC_CORE);
+ 	vdec_msg_queue_qbuf(&ctx->msg_queue.lat_ctx, lat_buf);
+ 
+ 	if (!list_empty(&ctx->msg_queue.lat_ctx.ready_queue)) {
+-- 
+2.18.0
 
-For safety purposes, I would set an iteration limit in order to avoid getting
-an infinite loop here.
-Probably, something like twice or thrice the expected number of iterations will
-also be fine.
-
-P.S.: Krzysztof's review also contains exactly all the rest of what I would
-       also say here (thanks!).
-
-Regards,
-Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
