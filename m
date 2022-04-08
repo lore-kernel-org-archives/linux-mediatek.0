@@ -4,75 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E3D5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 00:48:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EAA0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 01:19:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:From:Subject:References:
-	Mime-Version:Message-Id:In-Reply-To:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=SxLruhZdR+K/v/UEsiW187IUXN7Wf0sXdhcXKZi3lJU=; b=bnrLINBqh4FyQu29FgQO7AOZi5
-	4/MS5NWtrXATg4H0mOgNkkuARKCEONfPRM2854luZzaHTc6l7Jcf1pLO2u3ssASFB95CwPl7pcfJC
-	XkjOMTKAbyLS10JdnY7552RV021IzXNq7eBGmlPGcOdyJtl4ku9+kRHD+l4vFSN8wR93oBbJiLWXL
-	N2Ek/UTlsdrHzmYHlPaoeGl/xOdgI6ysiKHdHIaLHVCReVsgYkS6MEe657p2T1sHdn3KSnd8lpQ17
-	gsZKhcfshD8+crfVccHtA3ozqKDU74Buk+oKQsG13U4dfZ+MLFC/7tJrDG9++OGWEy7wwzpgC2P06
-	9Iy+Rphg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/pSvn7xfTFuJPqDZ8pcENtYqaPaVYERC7kSGnUHOhZg=; b=T4e5TEpxHsju/b
+	zoo1yZXxQxZ4/l223myN6tRccgQ7z8meb8ZAAb1u1woeqIc/maD7yO4X3T76lu9VmhDaBKzUKxvNk
+	F8tOhGoGuSr0gCiAWzLm0c9YRr30OPqwabosFRlMmqxZyDjtrSTAdw0QOarGtPMfwforuPzFjfs+o
+	6rcejudcQABaDdmka7loR0MH5+brjigjXShWAG/9iHMGXd6nyGUdxaWrwQYG6os6jxxIxLbLe9t14
+	mugXJ7/CBAfhVupVCZawya4VzJSsa4i+8P5e7TweQYrrlkIxNh95wQHGFnyGKwUhOoQmEBDC458XO
+	4tKc+WVnhJLVbWOgiOtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nccnq-00ESZB-L1; Fri, 08 Apr 2022 00:48:42 +0000
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
+	id 1ncdHb-00EWJX-Mz; Fri, 08 Apr 2022 01:19:27 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nccne-00ESWK-NG
- for linux-mediatek@lists.infradead.org; Fri, 08 Apr 2022 00:48:32 +0000
-Received: by mail-yb1-xb4a.google.com with SMTP id
- a18-20020a25bad2000000b0063360821ea7so5467592ybk.15
- for <linux-mediatek@lists.infradead.org>; Thu, 07 Apr 2022 17:48:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=ithdVlozh5jFC5LDPPJEaLYRLxUsUDLKrVaBbck8woI=;
- b=omXiV0brS6SC4fAsszjr3vh7SFO8aEPobqoxOFDY5gSXD4t7YUUrTf7kvD2voWFdGR
- 0zfKeLrkPKhiVG1D/WWtxb29Iv343o7BnI/AvfEqwHDPJmrMzF1O3Vnpao8P0/fXyCgx
- nY3TY7bOcVwFNQFpshyTnzdQgZOwX7Q1RBQCrzsncOpPhEbEyqD2cFwzhTN4wfmDFPs5
- MekcHDrPOPryJQWDeii7ymb0dhrvpcoLFAtJ70AuD4FM5oNiUWAjY4U2/aOY8j1hxnrv
- 2Ha/emP+PaKxv0PdcVrgerBl0AxigiyEeU0+NcNeFRn8UX2MwLAuPhkTGPDKgIXxlgUI
- 6olQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=ithdVlozh5jFC5LDPPJEaLYRLxUsUDLKrVaBbck8woI=;
- b=Iw6ihYMBTj6ROIt1XEUzYvGle8WPm+8Hk4XyUwPdTAbZMUHa7kOw/ptK/jVCBtov+j
- Zw2iy3bb7AA15CRv+R0+9UHgMefInGpNhW7Z89kwBkrMSJcoZ5p/8RdZUiavTbk+6rWv
- hBdCYIakBJ4MouqMc2iqj/s5P2eEbTsiEIdwatV0jxkdLcYKJNHoRBhOTZ0PwJg70Wpm
- IjGPQDf2VtIurMmOoJ+Pdq7Es8vyLNFRcHTYfQYpzf+UUHbCLYDUKVtRCasE6xVzeOZh
- G3J1rFfbdI6+TNjDhYaHNQUxeezCyIdtl3DsRgMkKVl4WqYYmSNUA77Ix94gvkfKleTR
- yonw==
-X-Gm-Message-State: AOAM532U9RHaxaSMwP6oN3Jeu4aTl4SIuf41jo8u4FPMcNROd4CHwIrC
- eTmI5CuXJ5/j5XjTo9+pig8no0bWfvB39cw=
-X-Google-Smtp-Source: ABdhPJxZfTDhCmiUWxemMxtmOYKdXt8UIDGz1EMPXmcT+4UwQKXx3DIeNZNwfDy6tGznTHCK1StYatP5YLU97sQ=
-X-Received: from saravanak.san.corp.google.com
- ([2620:15c:2d:3:b203:eb20:896d:ef2f])
- (user=saravanak job=sendgmr) by 2002:a05:6902:1d1:b0:636:fa07:4b9a with SMTP
- id u17-20020a05690201d100b00636fa074b9amr12044080ybh.590.1649378905528; Thu,
- 07 Apr 2022 17:48:25 -0700 (PDT)
-Date: Thu,  7 Apr 2022 17:48:21 -0700
-In-Reply-To: <YXlddJxLh77DKfIO@alley>
-Message-Id: <20220408004821.4010969-1-saravanak@google.com>
-Mime-Version: 1.0
-References: <YXlddJxLh77DKfIO@alley>
-X-Mailer: git-send-email 2.35.1.1178.g4f1659d476-goog
-Subject: Re: [PATCH v2] printk: ringbuffer: Improve prb_next_seq() performance
-From: Saravana Kannan <saravanak@google.com>
-To: pmladek@suse.com, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chunlei.wang@mediatek.com, john.ogness@linutronix.de, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, rostedt@goodmis.org, 
- senozhatsky@chromium.org, kernel-team@android.com
+ id 1ncdHQ-00EWGR-9J; Fri, 08 Apr 2022 01:19:17 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 8FD2F1F46B10
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1649380752;
+ bh=DRF0VVql1NDF1AFBXdreQkrM736cxZe8TLofRJp+rIE=;
+ h=From:To:Cc:Subject:Date:From;
+ b=CzKotq9B/GtJeR8NyobQE7fpb4jsG3di7QvNmI8YKfpttbMaevDT9Uf0OdhsDS3Wq
+ kW0OUMPFd8j73Nlc3Lx7iohdfUWUeC1u6t+C0BUkKMEfMlejJb/BOwbGK3j4oiaQzl
+ zV1wC6Be1FGMR6a/4BlZpDjMns3t8ZmMr6qU8M/9H3+myE196Vsk92YjgRydOUwQhB
+ F1h6D4bzcLn4Cau+hHx5IL9LmniCCecJfT4lHOneb0gonTu8akKH5rN3Lxdb82jKcK
+ rYHceKabJgfRjDlxubAvqcymueNkYSqbcd2MEn7p1ifNkTqfkboJOVEsqsCUZcY+/0
+ Qj2e/jOnJFqkA==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
+ <nfraprado@collabora.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com, =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
+ <nfraprado@collabora.com>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH] drm/mediatek: dpi: Use mt8183 output formats for mt8192
+Date: Thu,  7 Apr 2022 21:19:07 -0400
+Message-Id: <20220408011907.672120-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.35.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_174830_799370_C8B8474C 
-X-CRM114-Status: GOOD (  33.54  )
+X-CRM114-CacheID: sfid-20220407_181916_571245_603C3622 
+X-CRM114-Status: GOOD (  12.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,181 +65,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-> Petr Mladek <pmladek@suse.com> wrote:
-> 
-> prb_next_seq() always iterates from the first known sequence number.
-> In the worst case, it might loop 8k times for 256kB buffer,
-> 15k times for 512kB buffer, and 64k times for 2MB buffer.
-> 
-> It was reported that pooling and reading using syslog interface
-> might occupy 50% of CPU.
-> 
-> Speedup the search by storing @id of the last finalized descriptor.
-> 
-> The loop is still needed because the @id is stored and read in the best
-> effort way. An atomic variable is used to keep the @id consistent.
-> But the stores and reads are not serialized against each other.
-> The descriptor could get reused in the meantime. The related sequence
-> number will be used only when it is still valid.
-> 
-> An invalid value should be read _only_ when there is a flood of messages
-> and the ringbuffer is rapidly reused. The performance is the least
-> problem in this case.
-> 
-> Reported-by: Chunlei Wang <chunlei.wang@mediatek.com>
-> Signed-off-by: Petr Mladek <pmladek@suse.com>
-> ---
-> Changes against v1:
-> 
->   + Read @seq by the last finalized @id directly in prb_next_seq() (John)
-> 
->  kernel/printk/printk_ringbuffer.c | 49 ++++++++++++++++++++++++++++---
->  kernel/printk/printk_ringbuffer.h |  2 ++
->  2 files changed, 47 insertions(+), 4 deletions(-)
-> 
-> diff --git a/kernel/printk/printk_ringbuffer.c b/kernel/printk/printk_ringbuffer.c
-> index 8a7b7362c0dd..24f47fbefbb5 100644
-> --- a/kernel/printk/printk_ringbuffer.c
-> +++ b/kernel/printk/printk_ringbuffer.c
-> @@ -474,8 +474,10 @@ static enum desc_state desc_read(struct prb_desc_ring *desc_ring,
->  	 * state has been re-checked. A memcpy() for all of @desc
->  	 * cannot be used because of the atomic_t @state_var field.
->  	 */
-> -	memcpy(&desc_out->text_blk_lpos, &desc->text_blk_lpos,
-> -	       sizeof(desc_out->text_blk_lpos)); /* LMM(desc_read:C) */
-> +	if (desc_out) {
-> +		memcpy(&desc_out->text_blk_lpos, &desc->text_blk_lpos,
-> +		       sizeof(desc_out->text_blk_lpos)); /* LMM(desc_read:C) */
-> +	}
->  	if (seq_out)
->  		*seq_out = info->seq; /* also part of desc_read:C */
->  	if (caller_id_out)
-> @@ -1449,6 +1451,9 @@ static void desc_make_final(struct prb_desc_ring *desc_ring, unsigned long id)
->  
->  	atomic_long_cmpxchg_relaxed(&d->state_var, prev_state_val,
->  			DESC_SV(id, desc_finalized)); /* LMM(desc_make_final:A) */
-> +
-> +	/* Best effort to remember the last finalized @id. */
-> +	atomic_long_set(&desc_ring->last_finalized_id, id);
->  }
->  
->  /**
-> @@ -1657,7 +1662,12 @@ void prb_commit(struct prb_reserved_entry *e)
->   */
->  void prb_final_commit(struct prb_reserved_entry *e)
->  {
-> +	struct prb_desc_ring *desc_ring = &e->rb->desc_ring;
-> +
->  	_prb_commit(e, desc_finalized);
-> +
-> +	/* Best effort to remember the last finalized @id. */
-> +	atomic_long_set(&desc_ring->last_finalized_id, e->id);
->  }
->  
->  /*
-> @@ -2005,9 +2015,39 @@ u64 prb_first_valid_seq(struct printk_ringbuffer *rb)
->   */
->  u64 prb_next_seq(struct printk_ringbuffer *rb)
->  {
-> -	u64 seq = 0;
-> +	struct prb_desc_ring *desc_ring = &rb->desc_ring;
-> +	enum desc_state d_state;
-> +	unsigned long id;
-> +	u64 seq;
-> +
-> +	/* Check if the cached @id still points to a valid @seq. */
-> +	id = atomic_long_read(&desc_ring->last_finalized_id);
-> +	d_state = desc_read(desc_ring, id, NULL, &seq, NULL);
->  
-> -	/* Search forward from the oldest descriptor. */
-> +	if (d_state == desc_finalized || d_state == desc_reusable) {
-> +		/*
-> +		 * Begin searching after the last finalized record.
-> +		 *
-> +		 * On 0, the search must begin at 0 because of hack#2
-> +		 * of the bootstrapping phase it is not known if a
-> +		 * record at index 0 exists.
-> +		 */
-> +		if (seq != 0)
-> +			seq++;
-> +	} else {
-> +		/*
-> +		 * The information about the last finalized sequence number
-> +		 * has gone. It should happen only when there is a flood of
-> +		 * new messages and the ringbuffer is rapidly recycled.
-> +		 * Give up and start from the beginning.
-> +		 */
-> +		seq = 0;
-> +	}
-> +
-> +	/*
-> +	 * The information about the last finalized @seq might be inaccurate.
-> +	 * Search forward to find the current one.
-> +	 */
->  	while (_prb_read_valid(rb, &seq, NULL, NULL))
->  		seq++;
->  
-> @@ -2044,6 +2084,7 @@ void prb_init(struct printk_ringbuffer *rb,
->  	rb->desc_ring.infos = infos;
->  	atomic_long_set(&rb->desc_ring.head_id, DESC0_ID(descbits));
->  	atomic_long_set(&rb->desc_ring.tail_id, DESC0_ID(descbits));
-> +	atomic_long_set(&rb->desc_ring.last_finalized_id, DESC0_ID(descbits));
->  
->  	rb->text_data_ring.size_bits = textbits;
->  	rb->text_data_ring.data = text_buf;
-> diff --git a/kernel/printk/printk_ringbuffer.h b/kernel/printk/printk_ringbuffer.h
-> index 73cc80e01cef..18cd25e489b8 100644
-> --- a/kernel/printk/printk_ringbuffer.h
-> +++ b/kernel/printk/printk_ringbuffer.h
-> @@ -75,6 +75,7 @@ struct prb_desc_ring {
->  	struct printk_info	*infos;
->  	atomic_long_t		head_id;
->  	atomic_long_t		tail_id;
-> +	atomic_long_t		last_finalized_id;
->  };
-
-
-I really know nothing about this code, but while looking around
-kernel/printk/ I noticed kernel/printk/printk.c has these lines in
-log_buf_vmcoreinfo_setup().
-
-	VMCOREINFO_STRUCT_SIZE(prb_desc_ring);
-	VMCOREINFO_OFFSET(prb_desc_ring, count_bits);
-	VMCOREINFO_OFFSET(prb_desc_ring, descs);
-	VMCOREINFO_OFFSET(prb_desc_ring, infos);
-	VMCOREINFO_OFFSET(prb_desc_ring, head_id);
-	VMCOREINFO_OFFSET(prb_desc_ring, tail_id);
-
-Would this header file change also require a change to that location?
-Something like
-
-	VMCOREINFO_OFFSET(prb_desc_ring, head_id);
-	VMCOREINFO_OFFSET(prb_desc_ring, tail_id);
-+	VMCOREINFO_OFFSET(prb_desc_ring, last_finalized_id);
-
--Saravana
-
->  
->  /*
-> @@ -258,6 +259,7 @@ static struct printk_ringbuffer name = {							\
->  		.infos		= &_##name##_infos[0],						\
->  		.head_id	= ATOMIC_INIT(DESC0_ID(descbits)),				\
->  		.tail_id	= ATOMIC_INIT(DESC0_ID(descbits)),				\
-> +		.last_finalized_id = ATOMIC_INIT(DESC0_ID(descbits)),				\
->  	},											\
->  	.text_data_ring = {									\
->  		.size_bits	= (avgtextbits) + (descbits),					\
-> -- 
-> 2.26.2
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+VGhlIGNvbmZpZ3VyYXRpb24gZm9yIG10ODE5MiB3YXMgaW5jb3JyZWN0bHkgdXNpbmcgdGhlIG91
+dHB1dCBmb3JtYXRzCmZyb20gbXQ4MTczLiBTaW5jZSB0aGUgb3V0cHV0IGZvcm1hdHMgZm9yIG10
+ODE5MiBhcmUgaW5zdGVhZCB0aGUgc2FtZQpvbmVzIGFzIGZvciBtdDgxODMsIHdoaWNoIHJlcXVp
+cmUgdHdvIGJ1cyBzYW1wbGVzIHBlciBwaXhlbCwgdGhlCnBpeGVsY2xvY2sgYW5kIEREUiBlZGdl
+IHNldHRpbmcgd2VyZSBtaXNjb25maWd1cmVkLiBUaGlzIG1hZGUgZXh0ZXJuYWwKZGlzcGxheXMg
+dW5hYmxlIHRvIHNob3cgdGhlIGltYWdlLgoKRml4IHRoZSBpc3N1ZSBieSBjb3JyZWN0aW5nIHRo
+ZSBvdXRwdXQgZm9ybWF0IGZvciBtdDgxOTIgdG8gYmUgdGhlIHNhbWUKYXMgZm9yIG10ODE4Mywg
+Zml4aW5nIHRoZSB1c2FnZSBvZiBleHRlcm5hbCBkaXNwbGF5cyBmb3IgbXQ4MTkyLgoKU2lnbmVk
+LW9mZi1ieTogTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29t
+PgoKLS0tCgogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYyB8IDQgKystLQogMSBm
+aWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jIGIvZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcGkuYwppbmRleCA0NTU0ZTJkZTE0MzAuLmU2MWNkNjdiOTc4ZiAxMDA2NDQK
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYworKysgYi9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCkBAIC04MTksOCArODE5LDggQEAgc3RhdGljIGNvbnN0
+IHN0cnVjdCBtdGtfZHBpX2NvbmYgbXQ4MTkyX2NvbmYgPSB7CiAJLmNhbF9mYWN0b3IgPSBtdDgx
+ODNfY2FsY3VsYXRlX2ZhY3RvciwKIAkucmVnX2hfZnJlX2NvbiA9IDB4ZTAsCiAJLm1heF9jbG9j
+a19raHogPSAxNTAwMDAsCi0JLm91dHB1dF9mbXRzID0gbXQ4MTczX291dHB1dF9mbXRzLAotCS5u
+dW1fb3V0cHV0X2ZtdHMgPSBBUlJBWV9TSVpFKG10ODE3M19vdXRwdXRfZm10cyksCisJLm91dHB1
+dF9mbXRzID0gbXQ4MTgzX291dHB1dF9mbXRzLAorCS5udW1fb3V0cHV0X2ZtdHMgPSBBUlJBWV9T
+SVpFKG10ODE4M19vdXRwdXRfZm10cyksCiB9OwogCiBzdGF0aWMgaW50IG10a19kcGlfcHJvYmUo
+c3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKLS0gCjIuMzUuMQoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcg
+bGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
