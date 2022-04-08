@@ -4,66 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B7E8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 11:21:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A0D4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 11:49:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fv3WiMWv6bp0yBkFOBXEH+4jG6SajvPLaXn9Ipfal3E=; b=R5pSyafP8iF+c7
-	KoKWPkmnD+vtmNzaAhAuQjvHT0SuggTVEtpjlB5Vda2zSBojG3orKBaZCslZiAFhHvh/4RD5oH2F+
-	SXbHJsy50mTsvLcX+Gu3TVq6hou5AOzWrGqwb5dJhHojQjRk+BTScYdzcrOKsselxCAcjDXjp2hfJ
-	vp53u1iXSjKORmNEAHFWsvZZfh2NUo/jyTsKtCG7jU6F1s3xwD6oDf5ObfLh1GAR8xgu5UPDLB4iY
-	aQO6AJZHkLMsJRFZC/Y47q5C6WQwP1Go8zd7PuTANNWX/xUI9q5ANg8y6XinZTfS25mWrgVzqKWlN
-	9dO0D2IE6Z1pHYu2xWmQ==;
+	List-Owner; bh=X2O3C8PXqjnzW6FSRxsNRpX7r8JTGZ+TzO8l9qtyrnE=; b=yoQE36cWvIL1Ln
+	3PRp8vRbsx7XdIYCjWwhhiYfww0ytxvAeHEZG3kiQMm3lZGQoBlzaoarOEDFG7ypM2l9AHSdhYB2a
+	k0AmRrI0sAwB4m4nvzPztaf0ZC5XWqOhqEO8jW01BjSHRSfa8eUZlKlsLtypFjtvEHpp0j3WWU/Tp
+	HoKGi1GkRPIm0Pdy5OKEt1AgwMDD8xYqz5YPt7zpWCjnTb/bR4yoRljn3A1pJpGqt6C/3wztXjAZ3
+	obEnGENkZtcAHgUnDuHCUEQAFff3bYfChh5+fo2LwLcMeqg8ArGHixAkOx3PswHjDlPTVJJrXOnh9
+	M71FOS66kbie2j9WiPBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncmgW-00GXfu-4B; Fri, 08 Apr 2022 11:21:48 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ncn7B-00Gkfn-57; Fri, 08 Apr 2022 11:49:21 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncmgT-00GXeh-48; Fri, 08 Apr 2022 11:21:46 +0000
-X-UUID: 7744f04d37e34cf8b6535683ac96176a-20220408
-X-UUID: 7744f04d37e34cf8b6535683ac96176a-20220408
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1546825399; Fri, 08 Apr 2022 04:21:40 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 8 Apr 2022 04:11:38 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 8 Apr 2022 19:11:37 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 8 Apr 2022 19:11:37 +0800
-Message-ID: <2ffb9949e47726d7c714666dc7755ed586720709.camel@mediatek.com>
-Subject: Re: [PATCH v7 0/1] firmware: mtk: add adsp ipc protocol for SOF
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Daniel Golle <daniel@makrotopia.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown
- <broonie@kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <devicetree@vger.kernel.org>, Linux-ALSA <alsa-devel@alsa-project.org>, "Kai
- Vehmanen" <kai.vehmanen@linux.intel.com>, <cujomalainey@google.com>, "Kevin
- Hilman" <khilman@baylibre.com>, Takashi Iwai <tiwai@suse.com>, "Pierre-Louis
- Bossart" <pierre-louis.bossart@linux.intel.com>, Liam Girdwood
- <lgirdwood@gmail.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <tzungbi@google.com>, <linux-mediatek@lists.infradead.org>, Ranjani Sridharan
- <ranjani.sridharan@linux.intel.com>, Chen-Yu Tsai <wenst@chromium.org>,
- Daniel Baluta <daniel.baluta@nxp.com>, <linux-kernel@vger.kernel.org>,
- <sound-open-firmware@alsa-project.org>
-Date: Fri, 8 Apr 2022 19:11:37 +0800
-In-Reply-To: <Yk701wLNKQs1DEVx@makrotopia.org>
-References: <20220407130338.28939-1-allen-kh.cheng@mediatek.com>
- <Yk701wLNKQs1DEVx@makrotopia.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1ncn6w-00GkZc-8u
+ for linux-mediatek@lists.infradead.org; Fri, 08 Apr 2022 11:49:07 +0000
+Received: by mail-ed1-x529.google.com with SMTP id x24so4783990edl.2
+ for <linux-mediatek@lists.infradead.org>; Fri, 08 Apr 2022 04:49:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=he3gdObBOBoinobd6bETaG2orN7yh1mXFF6rOA4GggQ=;
+ b=igbEum0h0bneYqp5ZVIe0c5/1vrQ8x3yXTwOQUhN7ejBCzqIjtSNqheea8HI9IA+ir
+ 5kxQ9j7xw4bALYjvc3IBxdahLmf2fjsOu76cSDshPwgLul0h0dOiUL6Tjhd1oZnnKUfP
+ TwNn0dICJHXo44ixZj7h5/GyKe1TwRYUOxC8cUP8EPzh/IU+sjMBkYlyj+OTaPmo+0eP
+ EF5nm02LnOvVJu08CDR1lGSBn70cfah1rM8JqWihYZppDCNQ+hPS9jHPkVVseEFszO49
+ lOX5NhIkE04pAoRtUlQLBStMVVULzaSIcetB3l1xg0hho8kjIZhXmJ9DPzQT1Hhbtn86
+ bfiw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=he3gdObBOBoinobd6bETaG2orN7yh1mXFF6rOA4GggQ=;
+ b=yoLFAwbMRummMh03yPHO2O9vywPyqmqUtNQg+n0F1nwsipiGfnDH1CrGSag3V/LVwo
+ TJIEIANl96Kr+ldPCCU3kSICYu6aTlriwLYm5o2F4M8oQWP5x62YARMJg/tH0BbCFOS9
+ 9L1L3FaQ7dXwfWyQdYLn70zFwYWVLdkbTFcKE//dkJyRX49CwwSCKwqqyToclp9Hycjf
+ sjLpeyULJnZt7x14DpBe8TXFkHolQ5pLP5jn6LiksIm6r8UfgVF9gGFwqqbCoNfeFMGA
+ Qgz9GLj0BUr6xrX5Hwqq1yaf7DeJgsvIdo6zIUER5uanDAeUCbJKBjVYlc0A0ODSsJ4V
+ 2zlA==
+X-Gm-Message-State: AOAM530WDaNvVWBDrdmot714QzfynG6dATWmFLJFB16pyssXcuxDjJRl
+ bLmHW+30J/whvR1OqaceYMz18w==
+X-Google-Smtp-Source: ABdhPJxdwi31EfPDB0YNNE36knwLNszHrlfTbQLlYH+xudC85hES0Ah3kL8bq7rqTOWxg1QWmV1wpQ==
+X-Received: by 2002:a05:6402:202a:b0:41c:d9b0:e519 with SMTP id
+ ay10-20020a056402202a00b0041cd9b0e519mr18716253edb.361.1649418542587; 
+ Fri, 08 Apr 2022 04:49:02 -0700 (PDT)
+Received: from [192.168.0.188] (xdsl-188-155-201-27.adslplus.ch.
+ [188.155.201.27]) by smtp.gmail.com with ESMTPSA id
+ k26-20020a056402049a00b004197b0867e0sm10349194edv.42.2022.04.08.04.49.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 08 Apr 2022 04:49:02 -0700 (PDT)
+Message-ID: <0ef8f2c3-fd16-041b-3304-b167a2a36ff9@linaro.org>
+Date: Fri, 8 Apr 2022 13:49:00 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH V2 01/15] dt-bindings: cpufreq: mediatek: Add MediaTek CCI
+ property
+Content-Language: en-US
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
+ viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org
+Cc: matthias.bgg@gmail.com, jia-wei.chang@mediatek.com,
+ roger.lu@mediatek.com, hsinyi@google.com, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220408045908.21671-1-rex-bc.chen@mediatek.com>
+ <20220408045908.21671-2-rex-bc.chen@mediatek.com>
+ <a171f33c-cda1-8602-ac67-93076b676578@linaro.org>
+ <8d466903d42dbc823f4d0a245378d983ab904435.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <8d466903d42dbc823f4d0a245378d983ab904435.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_042145_202810_20A48527 
-X-CRM114-Status: GOOD (  24.47  )
+X-CRM114-CacheID: sfid-20220408_044906_400655_B0DD73F0 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,82 +100,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
-
-On Thu, 2022-04-07 at 15:27 +0100, Daniel Golle wrote:
-> On Thu, Apr 07, 2022 at 09:03:37PM +0800, Allen-KH Cheng wrote:
-> > This patch provides mediatek adsp ipc support for SOF.
-> > ADSP IPC protocol offers (send/recv) interfaces using
-> > mediatek-mailbox APIs.
-> > 
-> > This patch was tested and confirmed to with SOF fw on MT8195
-> > cherry board.
+On 08/04/2022 12:24, Rex-BC Chen wrote:
+>>
+>> You need to describe the type. I am a bit confused whether this is a
+>> cci
+>> (so cci-control-port property?) or an interconnect (so interconnect
+>> property)... It does not look like a generic property, so you need
+>> vendor prefix.
 > 
-> ... confirmed to **work** with ...
-> is probably what you meant to write here.
+> Hello Krzysztof,
 > 
+> Thanks for your review.
 > 
+> Yes, this cci is not arm's cci (cci-control-port property), and it's
+> mediatek's cci. I will revise this name to "mtk-cci" in next version.
 
-Yes, thanks for your reminder. 
+Vendor is "mediatek" and comma comes after it. See devicetree spec
+paragraph 2.3.1.
 
-It appears that for some reason I forgot to add this part.
+> 
+>>
+>>> +       For details, please refer to
+>>> +       Documentation/devicetree/bindings/devfreq/mtk-cci.yaml
+>>
+>> Such file does not exist.
+> 
+> This mediatek cci is still upstreaming in this patch:
+> message-id:20220408052150.22536-2-johnson.wang@mediatek.com
+> 
+> Do you have suggestion that I should put this reference?
 
-We had tested ADSP IPC protocol with SOF in
-github.com/thesofproject/sof/tree/mt8195/v0.4.
+> Or I just remove it and describe the mediatek cci in detail?
 
-The other mailbox control is patchwork.kernel.org/patch/12728222/
+It's ok, but you need to keep path/filename updated.
 
-Thanks,
-Allen
 
-> > 
-> > Based on matthias.bgg/linux.git, v5.18-next/soc
-> > changes since v6:
-> > - rebase to matthias.bgg/linux.git, v5.18-next/soc
-> > - Prefer "GPL" over "GPL v2" for MODULE_LICENSE
-> > 
-> > changes since v5:
-> > - fix WARNING: modpost: missing MODULE_LICENSE() in drivers/mailbox
-> >   /mtk-adsp-mailbox.o. Add MODULE_LICENSE in the last line.
-> > - Due to WARNING: Missing or malformed SPDX-License-Identifier tag
-> >   in line 1 in checkpatch, we don't remove SPDX-License in line 1.
-> > 
-> > changes since v4:
-> > - add error message for wrong mbox chan
-> > 
-> > changes since v3:
-> > - rebase on v5.16-rc8
-> > - update reviewers
-> > 
-> > changes since v2:
-> > - add out tag for two memory free phases
-> > 
-> > changes since v1:
-> > - add comments for mtk_adsp_ipc_send and mtk_adsp_ipc_recv
-> > - remove useless MODULE_LICENSE
-> > - change label name to out_free
-> > 
-> > 
-> > Allen-KH Cheng (1):
-> >   firmware: mediatek: add adsp ipc protocol interface
-> > 
-> >  drivers/firmware/Kconfig                      |   1 +
-> >  drivers/firmware/Makefile                     |   1 +
-> >  drivers/firmware/mediatek/Kconfig             |   9 +
-> >  drivers/firmware/mediatek/Makefile            |   2 +
-> >  drivers/firmware/mediatek/mtk-adsp-ipc.c      | 161
-> > ++++++++++++++++++
-> >  .../linux/firmware/mediatek/mtk-adsp-ipc.h    |  65 +++++++
-> >  6 files changed, 239 insertions(+)
-> >  create mode 100644 drivers/firmware/mediatek/Kconfig
-> >  create mode 100644 drivers/firmware/mediatek/Makefile
-> >  create mode 100644 drivers/firmware/mediatek/mtk-adsp-ipc.c
-> >  create mode 100644 include/linux/firmware/mediatek/mtk-adsp-ipc.h
-> > 
-> > -- 
-> > 2.18.0
-> > 
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
