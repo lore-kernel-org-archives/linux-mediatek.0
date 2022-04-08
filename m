@@ -4,60 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8459CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 10:02:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78917C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 10:03:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=64+TLOygXfbHV1udU5NVxAKKW7PTAzpN8m5sdQIDIIE=; b=x3k2TveAgaAhJC
-	I6yfpQjbWVu1Wrs/ZiCkriUg7zK0bkwW+ZRdxVJo+snoc85E8lDJvfLIqoOurWsHFX/xD4UTFk0MY
-	6L2A3OavRfhfWpInOicdsdQ73ei/+vl/tQQfgjkSjaLAmAdIwa0xbQTPG938TcY3EJp33tLtJ7oKY
-	Eg9uwlwiWg8dCY2Zm0hocGe3FKxZJe3mbpt5xpEyoak4J/lhI4m1ONt9bUJps+ySiMO8DFXzgIlzU
-	aKQvp7G+9e2z5dq2ZX5b16299y8UBNsZ54hQC2TU4EJPCgSeDljLTl67H6/sIbOdTCIcK7LQ5F5UZ
-	uaxCpEYNMmjC4KDcaZEg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2+mpRvqm50m8bJJuINp2cWOKh1ESP7g/w6BKH1lQmlM=; b=1FS6297/1t2kET
+	GE9jcC3Hc3LmLzySjY3d2RXZhlcAYxysZDtLniTw6zDTQ3Baj2dBUlLXEZQwgDqhOcDKBqhSxuuzv
+	b0TX9XcpXjXBQzT+HcVqZ7LofnpMGaYF+gv92M3kfL9Zx4CVnH6E3Y3hUT4mskW7Hs19x4ffq0bK6
+	q9dvqQXBMqPcPiG8rtR+jc7Aq8tZI7frxrokLp9dk2WZOKz0O9MNSt/OpAU8XZT9KBltHsd0+XjiF
+	cX1h/vYBA2SJanCXxeBaI7uEx/t5D+ozopd9z+m7+zMDvKnhUxqLV6AcASIpAh4wWsy0I4L87teGN
+	1m+hIVCMg9yjkOrArqIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nclRd-00GEzC-U5; Fri, 08 Apr 2022 10:02:21 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nclSq-00GFhq-Hi; Fri, 08 Apr 2022 10:03:36 +0000
+Received: from mail-qv1-xf2d.google.com ([2607:f8b0:4864:20::f2d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nclQs-00GEX1-Bu; Fri, 08 Apr 2022 10:01:35 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 711501F46D05
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649412093;
- bh=7NGSuo4Sc3q7d+xEOL+gCuZe8DYDWsEbLcdLWfuCj9I=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=JxcO36VmnJPCLOLcyirJ48rdA8J1Gy93FP8p7ew06GuDciO5pj3p+5yjfd/VgFyNf
- fB3zwg1o7CBqPqDV11/Jg3p2t0pqRD7WHS3NXe3476+ti6gJmpNqDXnDP8gcDi8xx+
- Nw/H5hhpQJnE6qKWQmWRCFuGxvVvc8IqB4H8K6y3KaxEeZh0sxet79Ye2cVJ79E6Cq
- HSSp6JCE8ML4aA0vKpze42X1qA1mHjF4LT2byKPpog94zHIypR2JiPYgvDy28RfKwP
- 1WSEJB60U5gJRYxl8wPdrrpWJwRsjxiIxHS/VcJqFk++49D3SVnxhlefn9hEJfPwt2
- GFxXISHXBDiZQ==
-Message-ID: <118239ae-e1c9-2f72-4a4f-26a5523755bb@collabora.com>
-Date: Fri, 8 Apr 2022 12:01:30 +0200
+ id 1nclSa-00GFau-48; Fri, 08 Apr 2022 10:03:21 +0000
+Received: by mail-qv1-xf2d.google.com with SMTP id f3so7069743qvz.10;
+ Fri, 08 Apr 2022 03:03:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=JpqWb+qabLme++eyAmbSMoF69YNe99IcopaKHvnYnE8=;
+ b=o1UGymQOBCjDdm5i0afuF4mfy7UgESaASrEg+kHv98rKvf2kjfs+KLgyy67VV1mSF/
+ TW3edcjv3JT293ZlEsNVZgP0MplS+xLZLyUtF5jxOmE1zr+siFaLmEXjl7AUw2IliXkF
+ z5FEh0vmlu3QfcRNNe7tVcTzcWkk1FOcteC8cvXuPZbNYxdpqKy8Rer2q30XPevLMxQn
+ 7hBXhC2Y5kTk98vwDs9E842kKJrhCEERlH5rjFV8oNTPfbYnkMcM1LbaiXZ49JVV3RhX
+ vRj5WIUXlcgZk6u+e00dyv5GGYih2AOX1ktcDT59USWYDn1pcANUcA9QijkSUhkRb32d
+ ltMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=JpqWb+qabLme++eyAmbSMoF69YNe99IcopaKHvnYnE8=;
+ b=hVvGPI67IZu7aASGUUaCXdfLN75UD8AytAOIb6e26jQz7w+1Rl66hCkpcNwFc04nPH
+ 3D8Lsn/RQog2gB5BPzzSeIIL9P9VpZfPj/YDL/plXwdhm27bOvKIcQVd7cry6kMZOoVq
+ jOZ74Xjuvd7XP7YULgKUdCfrkNGabPdRREj6DNp1cu+dTktrqBicvSC7g95UtZa6GJsD
+ VheBJEYHkJO2U9jvYCa/ospF6eLxQPx3vF+G36SspiVMpGtiKhYoYsTlJRYFXUVy7SvB
+ 1XdawuN33IvnvqeI1NEmLJ9UKjLWXyke7Y9RoP91I5nli1+jUf90jMCQvAlTd3M3ZmaM
+ lHTg==
+X-Gm-Message-State: AOAM532jiUybY6CrRZlW2j2ihKn04Q1ij+vpAEidtSml7L57Qo+eXgfF
+ cCzk6PQwembhJJlcvcDX3g0=
+X-Google-Smtp-Source: ABdhPJwmwY5DgTWhekwLTVj5UPKZKwOWKCsva1KAAGSWO7vxkZYgMV8T2DFwn5GOULQY015v2y5Uvw==
+X-Received: by 2002:ad4:5de4:0:b0:443:5d80:e379 with SMTP id
+ jn4-20020ad45de4000000b004435d80e379mr14863077qvb.37.1649412198101; 
+ Fri, 08 Apr 2022 03:03:18 -0700 (PDT)
+Received: from localhost.localdomain ([193.203.214.57])
+ by smtp.gmail.com with ESMTPSA id
+ e13-20020ac85dcd000000b002eb9458498esm17174364qtx.95.2022.04.08.03.03.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 08 Apr 2022 03:03:17 -0700 (PDT)
+From: cgel.zte@gmail.com
+X-Google-Original-From: lv.ruyi@zte.com.cn
+To: lgirdwood@gmail.com,
+	broonie@kernel.org,
+	perex@perex.cz
+Cc: tiwai@suse.com, matthias.bgg@gmail.com, trevor.wu@mediatek.com,
+ tzungbi@google.com, angelogioacchino.delregno@collabora.com,
+ alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Lv Ruyi <lv.ruyi@zte.com.cn>, Zeal Robot <zealci@zte.com.cn>
+Subject: [PATCH] ASoC: mediatek: mt8195: Make sure of_device_id table are NULL
+ terminated
+Date: Fri,  8 Apr 2022 10:03:09 +0000
+Message-Id: <20220408100309.2495462-1-lv.ruyi@zte.com.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [v10 4/4] ASoC: mediatek: mt8192: support rt1015p_rt5682s
-Content-Language: en-US
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>, broonie@kernel.org,
- robh+dt@kernel.org, nfraprado@collabora.com, tzungbi@google.com
-Cc: aaronyu@google.com, matthias.bgg@gmail.com, trevor.wu@mediatek.com,
- linmq006@gmail.com, alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Tzung-Bi Shih <tzungbi@kernel.org>
-References: <20220408060552.26607-1-jiaxin.yu@mediatek.com>
- <20220408060552.26607-5-jiaxin.yu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220408060552.26607-5-jiaxin.yu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_030134_575661_36126D88 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20220408_030320_206347_D011518E 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,28 +89,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SWwgMDgvMDQvMjIgMDg6MDUsIEppYXhpbiBZdSBoYSBzY3JpdHRvOgo+IEFkZCBzdXBwb3J0IGZv
-ciB1c2luZyB0aGUgcnQ1NjgycyBjb2RlYyB0b2dldGhlciB3aXRoIHJ0MTAxNXAgb24KPiBtdDgx
-OTItbXQ2MzU5IG1hY2hpbmVzLiBBbGwgY29uZmlndXJhdGlvbnMgYXJlIHNoYXJlZCB3aXRoIHRo
-ZSBydDU2ODIKPiBjb2RlYyB2YXJpYW50LCBzbyBzaW1wbHkgc2VsZWN0IHRoZSBTTkRfU09DX1JU
-NTY4MlMgY29uZmlnIHRvIGVuc3VyZSB0aGUKPiBjb2RlYyBpcyBwcmVzZW50IGFuZCBzZXQgdGhl
-IGNvcnJlY3QgY2FyZCBuYW1lLiBUaGUgY29kZWMgd2lsbCBiZSBsaW5rZWQKPiB0byBieSBwb2lu
-dGluZyB0byBpdCBpbiB0aGUgaGVhZHNldC1jb2RlYyBwcm9wZXJ0eSBpbiB0aGUgZGV2aWNldHJl
-ZS4KPiAKPiBXaGlsZSBhdCBpdCwgYWxzbyBjcmVhdGUgbWFjcm9zIGZvciB0aGUgbmFtZXMgb2Yg
-dGhlIGRpZmZlcmVudCBjb2RlYwo+IHZhcmlhbnRzIHN1cHBvcnRlZCBieSB0aGlzIGRyaXZlciwg
-YXMgd2VsbCBhcyByZW5hbWUgb2NjdXJyZW5jZXMgb2YKPiBydDEwMTVwX3J0NTY4MiB0byBydDEw
-MTVwX3J0NTY4MngsIHNpbmNlIHRoZXkgYXJlIHNoYXJlZCBiZXR3ZWVuIHJ0NTY4Mgo+IGFuZCBy
-dDU2ODJzLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEppYXhpbiBZdSA8amlheGluLnl1QG1lZGlhdGVr
-LmNvbT4KPiBSZXZpZXdlZC1ieTogVHp1bmctQmkgU2hpaCA8dHp1bmdiaUBrZXJuZWwub3JnPgo+
-IFJldmlld2VkLWJ5OiBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyA8bmZyYXByYWRvQGNvbGxhYm9y
-YS5jb20+Cj4gVGVzdGVkLWJ5OiBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyA8bmZyYXByYWRvQGNv
-bGxhYm9yYS5jb20+CgoKUmV2aWV3ZWQtYnk6IEFuZ2Vsb0dpb2FjY2hpbm8gRGVsIFJlZ25vIDxh
-bmdlbG9naW9hY2NoaW5vLmRlbHJlZ25vQGNvbGxhYm9yYS5jb20+CgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxp
-c3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+From: Lv Ruyi <lv.ruyi@zte.com.cn>
+
+Fix the following coccicheck review:
+./sound/soc/mediatek/mt8195/mt8195-mt6359.c:1657:1-2:
+mt8195_mt6359_dt_match is not NULL terminated at line 1657
+
+Fixes: 86a6b9c9dfff ("ASoC: mediatek: mt8195: add machine support for max98390 and rt5682")
+Reported-by: Zeal Robot <zealci@zte.com.cn>
+Signed-off-by: Lv Ruyi <lv.ruyi@zte.com.cn>
+---
+ sound/soc/mediatek/mt8195/mt8195-mt6359.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359.c b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
+index bc8c30b33969..262a54e590e8 100644
+--- a/sound/soc/mediatek/mt8195/mt8195-mt6359.c
++++ b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
+@@ -1655,6 +1655,7 @@ static const struct of_device_id mt8195_mt6359_dt_match[] = {
+ 		.compatible = "mediatek,mt8195_mt6359_max98390_rt5682",
+ 		.data = &mt8195_mt6359_max98390_rt5682_card,
+ 	},
++	{},
+ };
+ #endif
+ 
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
