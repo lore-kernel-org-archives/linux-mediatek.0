@@ -4,59 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D7ECC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 13:44:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA77FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 14:31:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JSfNUwVz/FMyFQaQkq7R+9KWhZDVM2n6sjrVNqL6/YU=; b=K5fm/c/zc+4j0P
-	bRUFbYC31cJ/NXGneM7XmlpjfTS0fOWz+vKW1p9cruS+GipjtJQKsFghMCgx8yHR2eLiAVeyjRhb8
-	q+4I6/XID5tKrs3lGQfTzFaqcwbbEwsUubUpGFV9WAcAhNAWo2U4s35YgYurz3hDzmabzgbFqdIaP
-	1poWvKOP2UvDRCzR84l4MSFF8fbXVxbF9+3U7bRWu6w1DNo2wtxqVBt17c/SbDhJZuunjL4BZaPkJ
-	ci1XQ6lPFMnwGOwcO4Db7o557RaZ4KtDpb/iUXHQN6yRPEryF56HVDLjImudKqPUhD02ojot4eToZ
-	KtnFgKNxa91P4SNORMPA==;
+	List-Owner; bh=/x3evjXoOG/ee6gGMHYRdXaWDqG0qPRnDB+BxG6POeA=; b=Ty7Hsos6IEM7eS
+	BERSgNcLhPn6wkYUrtsNFpagxo0HJrjWX/GS+4DP+7WyJ4Oz9wBHFoHEXWGCEz/tqO7Ov6wd7QjMp
+	EEKKUWKv9Woh20StwFpMCgVYBVv77DuJv64AeXEM1Ineh7/0VUgCYZXuZ5Jwi3eYmxGq9GLNRSCfV
+	a5mHXD6+mEVXCQIfnbVYsuQVBEXmK9I9J9zuHlyquZXkGYV4ZCSCtp4/YORGPRhIaRJxLXtebOMOK
+	TEBlpH9shigwrBc2CpNnQXKhUiKltcjQF7OOoDghu72QNovs1oki5zbItrA0Xs5uYs4l5kVJx1LE5
+	kQsyq7CU+Eqz49qvCnEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncou9-00HST4-Dx; Fri, 08 Apr 2022 13:44:01 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nconc-00HOmQ-JF; Fri, 08 Apr 2022 13:37:18 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 537431F47188
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649425035;
- bh=Oofbdw+DqrbQDCnknn+6kDsqU6P4e3dcJAg3gndJN9Q=;
- h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
- b=W22+8vnwBDWrzaF/WLy1PPevdxj9XGdow2NL4TsRviA2vGMD7rvxeFZ5I7/1DwxhB
- 3pXABJDAIr1lQMDYhUEHOb8ME1wQOZGwyprmTlCTze/UUNeQFEr7xlKeeGbF+ZXgP7
- +amN+o/dLOLK1dbC3XIdE9S3XSoTv0h9eR2MFy7H5vD9X5J2z0t1/8HSVVY7lgrbYg
- otp9zER/Ivs9C4qYcMg6t9MqEn52vORP2hWGxjy2WnlQj9lCRlWBLANKNvUxconRci
- e7TlfQyl5Pq//4LMjDdmP0zX4zlk8wm2etSTKYlhcQun4c090Ux4ccKlXhAwdkE53w
- 0D+NxRns4X9RQ==
-Message-ID: <88fac11e-e8a2-743f-41af-7b7e9e0fdfd3@collabora.com>
-Date: Fri, 8 Apr 2022 15:37:11 +0200
+	id 1ncpdf-00Hahc-Lj; Fri, 08 Apr 2022 14:31:03 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1ncpdU-00HafC-S5; Fri, 08 Apr 2022 14:30:54 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id AF470113E;
+ Fri,  8 Apr 2022 07:30:51 -0700 (PDT)
+Received: from e123427-lin.arm.com (unknown [10.57.11.200])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 9A5843F73B;
+ Fri,  8 Apr 2022 07:30:48 -0700 (PDT)
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+To: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Rob Herring <robh@kernel.org>, linux-kernel@vger.kernel.org,
+ Chuanjia Liu <chuanjia.liu@mediatek.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>, linux-pci@vger.kernel.org,
+ Miaoqian Lin <linmq006@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+ Ryder Lee <ryder.lee@mediatek.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH] PCI: mediatek: Fix refcount leak in
+ mtk_pcie_subsys_powerup
+Date: Fri,  8 Apr 2022 15:30:48 +0100
+Message-Id: <164942823614.23463.14514504733320823500.b4-ty@arm.com>
+X-Mailer: git-send-email 2.31.0
+In-Reply-To: <20220309091953.5630-1-linmq006@gmail.com>
+References: <20220309091953.5630-1-linmq006@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH V2 15/15] cpufreq: mediatek: Use device print to show logs
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
- viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org
-Cc: matthias.bgg@gmail.com, jia-wei.chang@mediatek.com,
- roger.lu@mediatek.com, hsinyi@google.com, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220408045908.21671-1-rex-bc.chen@mediatek.com>
- <20220408045908.21671-16-rex-bc.chen@mediatek.com>
-Content-Language: en-US
-In-Reply-To: <20220408045908.21671-16-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_063716_833214_A53203FA 
-X-CRM114-Status: UNSURE (   4.80  )
+X-CRM114-CacheID: sfid-20220408_073052_988990_2045645E 
+X-CRM114-Status: UNSURE (   7.22  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -69,20 +63,25 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/04/22 06:59, Rex-BC Chen ha scritto:
-> Replace pr_* with dev_* to show logs.
+On Wed, 9 Mar 2022 09:19:52 +0000, Miaoqian Lin wrote:
+> The of_find_compatible_node() function returns a node pointer with
+> refcount incremented, We should use of_node_put() on it when done
+> Add the missing of_node_put() to release the refcount.
 > 
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> 
 
-That's very appreciated.
+Applied to pci/mediatek, thanks!
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+[1/1] PCI: mediatek: Fix refcount leak in mtk_pcie_subsys_powerup
+      https://git.kernel.org/lpieralisi/pci/c/214e0d8fe4
 
+Thanks,
+Lorenzo
 
 _______________________________________________
 Linux-mediatek mailing list
