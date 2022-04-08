@@ -4,60 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA2B3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 08:19:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0930FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 08:21:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W+dhxsKb7u4hYIKW5Zq2sCH2edqwgEPqJaCaV8Pni3o=; b=OgfFamq7E3QZ3Q
-	9MKUfIayNJ2XitDFrczTgFlfDTzoacyqi425cyRNwNYndcL5guOFrIajOg2AbwamPxwFvNG2VidQl
-	V0bKRWuyuxfIAznecPbP4Sz/jvo96PrRCA2CKOOq/HqiNG284f8mJFq0YG37Uk/09omOtzCyWfZVk
-	DEolTgfuCj0IccbPDvy/EIAh/Bv5R+ocwd2eX9f5bl2LyNc/I/7swHclrvUsL5bUseSicK0nULSYc
-	iPKL8/TevgkclVWgTQO2z1wKnfgc8zto5FMFJ1f1/Uw+Vr9yxOKX1Zt9aZWj7ThBhbv3XkM7gCsNL
-	M3z4WYRU56e9FmIj3GaA==;
+	List-Owner; bh=l8Uayhr8lOFdH/MR/kHHRYA8LwRv8uJ4Y2Kipq1y5NM=; b=vkqEMtWDt+UJVf
+	4hPt5j/tmWWsz364WrwtudMYI4TcNAfqQhm8rF37IP5p5SPMuvMr6Gtzbxhhy8OyfdrRzuKDqGgMy
+	lk4xBCU14mGb5w3Vaj3sUAJ/hnVVXACon40SOXaIATtbiN5/AMJ9dRNdZRWyZe1DvBPMrCpSvvDZN
+	eEW3l/RRGgZ+x7jc4roB3qi2bYYKZAvEyofGI2C2sj9f4nmXp4FZo2o3HkG0w+8j9smT58d54MRtV
+	n8gd28yP57fumFjWJC+NUanUoQqq267QGtZtAU/TbLqdA06bQZRu6Y4xC6LObjqsF7ndc2iYqU3+C
+	68ZDTc7qX720bABMcOZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncjqI-00Fou2-6W; Fri, 08 Apr 2022 08:19:42 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1ncjsN-00Fppg-Fb; Fri, 08 Apr 2022 08:21:51 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncjpm-00Fobd-0P; Fri, 08 Apr 2022 08:19:11 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 3CE601F46C62
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649405942;
- bh=n3PZ5EP+atv7EGkUpF8rFTDvYYK90dAfeWT4ALjfgCk=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=AGaSlQ5GwsYXwaRRFXeblbG7SziGG7emykikpIAfxEU0y7PwcVwq+u6+VC78eN7ac
- dvw4nM8YN/wlDXzinoeJexXRkswap/l5Ls4ByFmjq/HeK24G2a+ei3E/QPHNlU+kb0
- FACQyoSJTpUN6/Qwc7zjRsdxlPDWzX/WDlEMy/6m4XewBkGSzAmTCCLqrY3gX6T3hj
- I96FsuASNPhaQ76uG7hfT1gtyOnHu5KrRh3XnPIl3aQoVUBLlIbyAfSs8KB68bB0ZK
- EkXH2Wm3jvEvoVccIPRgGHjU+2jhsf2pcMh5mSC8js3K5Of3XDs8yFPmkJJr5iHzGr
- Z0TDgO0kfr0gA==
-Message-ID: <ba1d3b7b-9bcf-9c45-c487-91da767b83f5@collabora.com>
-Date: Fri, 8 Apr 2022 10:18:59 +0200
+ id 1ncjs5-00FpiV-Fc
+ for linux-mediatek@lists.infradead.org; Fri, 08 Apr 2022 08:21:34 +0000
+Received: by mail-ej1-x635.google.com with SMTP id qh7so15708709ejb.11
+ for <linux-mediatek@lists.infradead.org>; Fri, 08 Apr 2022 01:21:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=xeGOI+hxBRRDCw8I69VJZGllvVRkuKM+GL1fDWIHwuE=;
+ b=NMOd190nGhnmVD60Zvn3Etf8Z3SwRZPaQ5AoYH685WmUKlO2nsX2vBdXYbwKFp7kBt
+ TnwPNJCpPNbyvcZ8DgooR2RwHXwCIGH0jjrpplV+2dXG3+5EG6COoOUKwCvaqtwHRVU8
+ 5xYd4miMtAlzUCEVLxlb4c/wJIWGq7lTjOHae6o30zQR9HKPnF7ZQrFe0hA1TgmU6Rv2
+ nOSLc7T/jA4pEN6xIGT5KSKrYgffDkt+jyl+GTUg6QTufXdaFDkUauaazQh4JzPc2j9e
+ 1bd5Q4SMrlmFLquHIC/yu5wBpDHT4DjZp+ga2ugrHX21UlOv//t8rtAqWIWSrOD1nkFg
+ 31iw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=xeGOI+hxBRRDCw8I69VJZGllvVRkuKM+GL1fDWIHwuE=;
+ b=HlbE4GM/mTBsF5bkY52o+2j3N1qL3tD71Ci7wlvFWbhKAL8R0Mxr9Mzdst4haxb9pq
+ ka0VCJBn5DvgI9PP2gfZBbx0QVcxl6ShX8+a7KDfd4K46H/zfn1Frr/PK5r9Q8O5493/
+ DjWPKzKJA3j1S7N9UiT2usdxoWDRhsYM2u++DQ6JUYQX///RFykB1nn2lvQBmk5VLsi0
+ LI9N5ts6agCIPzhGIXkE1qMofaWUTi4DvGp3XXW/4aoJmslbMZMl+Tq9wa5O/4IiRIx/
+ CmUjV1OeeIm0lvQKiE9C78fTrjACC1+Psypk28wcSqm5cZ/59IHnpuB0BNfkG0buTUnM
+ lC4A==
+X-Gm-Message-State: AOAM5336NLoRuF/5d8qxN0C7neh+pni1asFQWUnPiCfhBWYFcuXM8OLQ
+ vMyno0+FofW0Lt/Xd9KWZG78lA==
+X-Google-Smtp-Source: ABdhPJyECBMXetuRDQC9zHM+ji1UA36sURAIRNcwnY01yfNVSOdRrknMnly6epCHA8osgRfsPfiH+Q==
+X-Received: by 2002:a17:906:2f97:b0:6ce:3ef6:94be with SMTP id
+ w23-20020a1709062f9700b006ce3ef694bemr17650508eji.136.1649406091573; 
+ Fri, 08 Apr 2022 01:21:31 -0700 (PDT)
+Received: from [192.168.0.187] (xdsl-188-155-201-27.adslplus.ch.
+ [188.155.201.27]) by smtp.gmail.com with ESMTPSA id
+ ke11-20020a17090798eb00b006e7fbf53398sm4764031ejc.129.2022.04.08.01.21.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 08 Apr 2022 01:21:31 -0700 (PDT)
+Message-ID: <76d58182-2f56-32b2-42e9-2ecbdd09ba3d@linaro.org>
+Date: Fri, 8 Apr 2022 10:21:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.7.0
-Subject: Re: [PATCH v2] drm/mediatek: dpi: Use mt8183 output formats for mt8192
+Subject: Re: [PATCH v2 2/2] PM / devfreq: mediatek: Introduce MediaTek CCI
+ devfreq driver
 Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: kernel@collabora.com, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, Jitao Shi <jitao.shi@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Rex-BC Chen <rex-bc.chen@mediatek.com>, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20220408013950.674477-1-nfraprado@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220408013950.674477-1-nfraprado@collabora.com>
+To: Johnson Wang <johnson.wang@mediatek.com>, cw00.choi@samsung.com,
+ krzk+dt@kernel.org, robh+dt@kernel.org, kyungmin.park@samsung.com
+Cc: khilman@kernel.org, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ jia-wei.chang@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220408052150.22536-1-johnson.wang@mediatek.com>
+ <20220408052150.22536-3-johnson.wang@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220408052150.22536-3-johnson.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_011910_285585_5AA4E519 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20220408_012133_549778_51D4E892 
+X-CRM114-Status: GOOD (  19.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,25 +92,115 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SWwgMDgvMDQvMjIgMDM6MzksIE7DrWNvbGFzIEYuIFIuIEEuIFByYWRvIGhhIHNjcml0dG86Cj4g
-VGhlIGNvbmZpZ3VyYXRpb24gZm9yIG10ODE5MiB3YXMgaW5jb3JyZWN0bHkgdXNpbmcgdGhlIG91
-dHB1dCBmb3JtYXRzCj4gZnJvbSBtdDgxNzMuIFNpbmNlIHRoZSBvdXRwdXQgZm9ybWF0cyBmb3Ig
-bXQ4MTkyIGFyZSBpbnN0ZWFkIHRoZSBzYW1lCj4gb25lcyBhcyBmb3IgbXQ4MTgzLCB3aGljaCBy
-ZXF1aXJlIHR3byBidXMgc2FtcGxlcyBwZXIgcGl4ZWwsIHRoZQo+IHBpeGVsY2xvY2sgYW5kIERE
-UiBlZGdlIHNldHRpbmcgd2VyZSBtaXNjb25maWd1cmVkLiBUaGlzIG1hZGUgZXh0ZXJuYWwKPiBk
-aXNwbGF5cyB1bmFibGUgdG8gc2hvdyB0aGUgaW1hZ2UuCj4gCj4gRml4IHRoZSBpc3N1ZSBieSBj
-b3JyZWN0aW5nIHRoZSBvdXRwdXQgZm9ybWF0IGZvciBtdDgxOTIgdG8gYmUgdGhlIHNhbWUKPiBh
-cyBmb3IgbXQ4MTgzLCBmaXhpbmcgdGhlIHVzYWdlIG9mIGV4dGVybmFsIGRpc3BsYXlzIGZvciBt
-dDgxOTIuCj4gCj4gRml4ZXM6IGJlNjNmNmU4NjAxZiAoImRybS9tZWRpYXRlazogZHBpOiBBZGQg
-b3V0cHV0IGJ1cyBmb3JtYXRzIHRvIGRyaXZlciBkYXRhIikKPiBTaWduZWQtb2ZmLWJ5OiBOw61j
-b2xhcyBGLiBSLiBBLiBQcmFkbyA8bmZyYXByYWRvQGNvbGxhYm9yYS5jb20+Cj4gCgpMb3ZlbHkh
-CgpSZXZpZXdlZC1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPGFuZ2Vsb2dpb2FjY2hp
-bm8uZGVscmVnbm9AY29sbGFib3JhLmNvbT4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRp
-YXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On 08/04/2022 07:21, Johnson Wang wrote:
+> We introduce a devfreq driver for the MediaTek Cache Coherent Interconnect
+> (CCI) used by some MediaTek SoCs.
+> 
+(...)
+
+> index 87eb2b837e68..d985597f343f 100644
+> --- a/drivers/devfreq/Kconfig
+> +++ b/drivers/devfreq/Kconfig
+> @@ -120,6 +120,16 @@ config ARM_TEGRA_DEVFREQ
+>  	  It reads ACTMON counters of memory controllers and adjusts the
+>  	  operating frequencies and voltages with OPP support.
+>  
+> +config ARM_MEDIATEK_CCI_DEVFREQ
+> +	tristate "MEDIATEK CCI DEVFREQ Driver"
+> +	depends on ARM_MEDIATEK_CPUFREQ
+
+|| COMPILE_TEST? And check if it test compiles.
+
+(...)
+
+> +
+> +static int mtk_ccifreq_remove(struct platform_device *pdev)
+> +{
+> +	struct device *cci_dev = &pdev->dev;
+
+s/cci_dev/dev/
+Everywhere.
+
+> +	struct mtk_ccifreq_drv *drv;
+> +
+> +	drv = platform_get_drvdata(pdev);
+> +
+> +	dev_pm_opp_unregister_notifier(cci_dev, &drv->opp_nb);
+> +	dev_pm_opp_of_remove_table(cci_dev);
+> +	clk_disable_unprepare(drv->inter_clk);
+> +	clk_disable_unprepare(drv->cci_clk);
+> +	regulator_disable(drv->proc_reg);
+> +	if (!IS_ERR(drv->sram_reg))
+> +		regulator_disable(drv->sram_reg);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct mtk_ccifreq_platform_data mt8183_platform_data = {
+> +	.min_volt_shift = 100000,
+> +	.max_volt_shift = 200000,
+> +	.proc_max_volt = 1150000,
+> +	.sram_min_volt = 0,
+> +	.sram_max_volt = 1150000,
+> +};
+> +
+> +static const struct mtk_ccifreq_platform_data mt8186_platform_data = {
+> +	.min_volt_shift = 100000,
+> +	.max_volt_shift = 250000,
+> +	.proc_max_volt = 1118750,
+> +	.sram_min_volt = 850000,
+> +	.sram_max_volt = 1118750,
+> +};
+> +
+> +static const struct of_device_id mtk_ccifreq_machines[] = {
+> +	{ .compatible = "mediatek,mt8183-cci", .data = &mt8183_platform_data },
+> +	{ .compatible = "mediatek,mt8186-cci", .data = &mt8186_platform_data },
+> +	{ },
+> +};
+> +MODULE_DEVICE_TABLE(of, mtk_ccifreq_machines);
+> +
+> +static struct platform_driver mtk_ccifreq_platdrv = {
+> +	.probe	= mtk_ccifreq_probe,
+> +	.remove	= mtk_ccifreq_remove,
+> +	.driver = {
+> +		.name = "mtk-ccifreq",
+> +		.of_match_table = of_match_ptr(mtk_ccifreq_machines),
+
+You use of_match_ptr() so is it possible to build it without OF? If so,
+then mtk_ccifreq_machines needs maybe_unused.
+
+> +	},
+> +};
+> +
+> +static int __init mtk_ccifreq_platdrv_init(void)
+> +{
+> +	return platform_driver_register(&mtk_ccifreq_platdrv);
+> +}
+> +module_init(mtk_ccifreq_platdrv_init)
+> +
+> +static void __exit mtk_ccifreq_platdrv_exit(void)
+> +{
+> +	platform_driver_unregister(&mtk_ccifreq_platdrv);
+> +}
+> +module_exit(mtk_ccifreq_platdrv_exit)
+
+Why not module_platform_driver()?
+
+> +
+> +MODULE_DESCRIPTION("MediaTek CCI devfreq driver");
+> +MODULE_AUTHOR("Jia-Wei Chang <jia-wei.chang@mediatek.com>");
+> +MODULE_LICENSE("GPL v2");
+
+
+Best regards,
+Krzysztof
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
