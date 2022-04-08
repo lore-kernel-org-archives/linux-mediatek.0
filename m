@@ -4,72 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD868C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 03:22:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC23DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 03:43:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5kCTRrSS46j2peeyAmt8fXzY6hx0N+1av0nKfvZYKWM=; b=GAM6exYpU8T9ln
-	rK3tfMbdQGplyrg7g0hkJe8LGKtETzQWX2Dyoyh6Kw8jXN2z4or4KX7GKgkxSRcAIaRfN6DKSfTxc
-	37zbTi4grPjMXYG9jGoQUvtI7t45c5VQwZoI3lI70H7GDJRajUBh+B+s2nb3GSp8GnqNzr1SvDidD
-	iufM4qoQ0ORrcIT479Luu78hYubjMy5lT7LBjYmdOZxGiyVqVdOPypHjXPdGLpkzn4M+v+m6E1HAJ
-	FyibhRmFgm58aK4lkAgs8LnVkd5GAXaUMfJ4Z6r/V8/WBILm8SSH8ei6IIjwzWuAYfjY+XM8/QbZ+
-	gUVhm9xYrLM1yvCAo+nw==;
+	List-Owner; bh=LMLCMNlY36T6bEuE1bVZoEn7GD9JjDaLQuRkHesBjfk=; b=UEeY45ZBaPeKXO
+	DpdHLt+aJAbGsyl5R2St3Fe+UhtkDOMWplPhSs9T1P6vOPuzBwvP8g6H3ReZhtqf0cb0Lz3/EZZ8O
+	NBq6i49vUX0bXLtRA65IxlUGUv8e5wfW0binhHreieAjbUx5jP69+aS0VXJXaoMYFeUkEd06pk77z
+	NLdtl1D+U9TiHKmFG5ULQQoW7rVeaYRPhUigRQt9RpPMnm045th/v9EG0O6K+WZlol5wD7UQZGyOa
+	gynqQd/6syoDPvnd0lpZS0Jn6550v35V8WwXxJo1JsL0ZdQ9NsQ4lOo9PUYR6BG7qF3Ts47kSVtWr
+	Tp3o/yKp5VeCu6jIJkXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncfCo-00ElVk-Am; Fri, 08 Apr 2022 03:22:38 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ncfWl-00EnxZ-J1; Fri, 08 Apr 2022 03:43:15 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncfCk-00ElV0-Sc; Fri, 08 Apr 2022 03:22:36 +0000
-X-UUID: c8b86ecb39b64c30bcaad42edb0f4bb2-20220407
-X-UUID: c8b86ecb39b64c30bcaad42edb0f4bb2-20220407
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
+ id 1ncfWi-00Enwq-CH; Fri, 08 Apr 2022 03:43:14 +0000
+X-UUID: e64b9d6b794a4cafaae73a6688a2aef7-20220407
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=fyrgDu4KJBRYe+c7EVDwp71r+G+hMvx/GovXpom3Tr0=; 
+ b=I52hXUW0VwmDQn2Fe3KeqZkGRT14GWPWo+7Obpfn2DqZulqLDxyLnWB4+xhx5wca8i+2mkyhYTuoiSNuenp0JnKraLs4WKryFeBqay8OGWGgqDwmi+oPTcjyPfMzY9mN9VjSGYwfF21z9deZP28lzW+8WIXFvoPyIR35t4YRVGY=;
+X-UUID: e64b9d6b794a4cafaae73a6688a2aef7-20220407
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <jiaxin.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 590347565; Thu, 07 Apr 2022 20:22:27 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 7 Apr 2022 20:14:35 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 8 Apr 2022 11:14:33 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ with ESMTP id 810213637; Thu, 07 Apr 2022 20:43:05 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 7 Apr 2022 20:43:04 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 8 Apr 2022 11:43:02 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 8 Apr 2022 11:14:33 +0800
-Message-ID: <ec790d2324f1bd53c4a53b58ad29040725d580f5.camel@mediatek.com>
-Subject: Re: [PATCH 1/4] dt-bindings: cpufreq: mediatek: transform
- cpufreq-mediatek into yaml
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Jia-Wei Chang
- <jia-wei.chang@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, "Rafael
- J . Wysocki" <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>,
- "Rob Herring" <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark
- Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: <linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <fan.chen@mediatek.com>,
- <louis.yu@mediatek.com>, <roger.lu@mediatek.com>,
- <Allen-yy.Lin@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>,
- Jia-Wei Chang <jia-wei.chang@mediatek.corp-partner.google.com>
-Date: Fri, 8 Apr 2022 11:14:33 +0800
-In-Reply-To: <56c5870e-bc41-39be-6b53-785396d8812b@linaro.org>
-References: <20220307122151.11666-1-jia-wei.chang@mediatek.com>
- <20220307122151.11666-2-jia-wei.chang@mediatek.com>
- <ee98d248-b2cd-e975-84df-448917a79287@canonical.com>
- <2cf526d400c011b5172ba4fc2c3f03b4a4f371dc.camel@mediatek.com>
- <96a823a2-f3b6-9fb7-c9d6-f1315f6056fd@kernel.org>
- <de1751bb13fb14b591fbe046ff274530ad62162e.camel@mediatek.com>
- <56c5870e-bc41-39be-6b53-785396d8812b@linaro.org>
+ Transport; Fri, 8 Apr 2022 11:43:01 +0800
+Message-ID: <505ab354843d9360887e8052a3dbf6712317c6fd.camel@mediatek.com>
+Subject: Re: [v9 2/4] ASoC: mediatek: mt8192: refactor for I2S3 DAI link of
+ speaker
+From: Jiaxin Yu <jiaxin.yu@mediatek.com>
+To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
+CC: <broonie@kernel.org>, <robh+dt@kernel.org>, <tzungbi@google.com>,
+ <angelogioacchino.delregno@collabora.com>, <aaronyu@google.com>,
+ <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>, <linmq006@gmail.com>,
+ <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Fri, 8 Apr 2022 11:43:01 +0800
+In-Reply-To: <20220407212420.tncc576jo5iwaqk7@notapiano>
+References: <20220406100514.11269-1-jiaxin.yu@mediatek.com>
+ <20220406100514.11269-3-jiaxin.yu@mediatek.com>
+ <20220407212420.tncc576jo5iwaqk7@notapiano>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_202234_968304_26CC0906 
-X-CRM114-Status: GOOD (  52.35  )
+X-CRM114-CacheID: sfid-20220407_204312_463542_AF38CA63 
+X-CRM114-Status: GOOD (  16.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,204 +79,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-04-01 at 18:32 +0200, Krzysztof Kozlowski wrote:
-> On 01/04/2022 15:26, Jia-Wei Chang wrote:
-> > On Thu, 2022-03-24 at 11:33 +0100, Krzysztof Kozlowski wrote:
-> > > On 24/03/2022 10:38, Jia-Wei Chang wrote:
-> > > > > 
-> > > > > > 
-> > > > > > diff --git
-> > > > > > a/Documentation/devicetree/bindings/cpufreq/cpufreq-
-> > > > > > mediatek.yaml
-> > > > > > b/Documentation/devicetree/bindings/cpufreq/cpufreq-
-> > > > > > mediatek.yaml
-> > > > > > new file mode 100644
-> > > > > > index 000000000000..584946eb3790
-> > > > > > --- /dev/null
-> > > > > > +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-
-> > > > > > mediatek.yaml
-> > > > > > @@ -0,0 +1,131 @@
-> > > > > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > > > > > +%YAML 1.2
-> > > > > > +---
-> > > > > > +$id: 
-> > > > > > 
-> > 
-> > 
-https://urldefense.com/v3/__http://devicetree.org/schemas/cpufreq/cpufreq-mediatek.yaml*__;Iw!!CTRNKA9wMg0ARbw!xbKG4TgD0MRpMLyGJVBZEGpZFrNOclrcxOCx_APKo5Nmg8nF2x5PcBdE0unvL2NdpChkMA$
-> > > > > >  
-> > > > > > +$schema: 
-> > > > > > 
-> > 
-> > 
-https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!xbKG4TgD0MRpMLyGJVBZEGpZFrNOclrcxOCx_APKo5Nmg8nF2x5PcBdE0unvL2O8T_oxCQ$
-> > > > > >  
-> > > > > > +
-> > > > > > +title: Mediatek CPUFREQ driver Device Tree Bindings
-> > > > > 
-> > > > > Please remove "driver Device Tree Bindings" because the title
-> > > > > should
-> > > > > describe the hardware. Therefore it could be something like
-> > > > > "Mediatek
-> > > > > SoC CPU frequency and voltage scaling".
-> > > > 
-> > > > Thanks for your suggestion of title.
-> > > > Or should I use the origin title "Binding for MediaTek's
-> > > > CPUFreq
-> > > > driver"?
-> > > 
-> > > Mediatek CPUFREQ
-> > > or
-> > > Mediatek CPU frequency scaling
-> > 
-> > Ok, I will choose one of it.
-> > 
-> > > 
-> > > > 
-> > > > > 
-> > > > > How is it related to cpufreq-mediatek-hw.yaml? The
-> > > > > names/title
-> > > > > look
-> > > > > unfortunately too similar.
-> > > > 
-> > > > No, mediatek-cpufreq is performing in kernel driver rather than
-> > > > on
-> > > > hardware.
-> > > > On the other hand, mediatek-cpufreq-hw is performing on
-> > > > hardware.
-> > > > That's why "hw" is present in its name.
-> > > 
-> > > Unfortunately, I do not get it. The bindings are only about
-> > > hardware,
-> > > so
-> > > how bindings could be about CPU frequency scaling not in
-> > > hardware?
-> > 
-> > Sorry, let me correct my statements.
-> > 
-> > For mediatek-cpufreq here, the required hardware are clock and
-> > regulator which have to be under control of mediatek-cpufreq.
-> > That's
-> > the reason why it needs bindings.
-> > 
-> > mediatek-cpufreq scales up and down voltage and frequency via
-> > kernel
-> > framework of clock and regulator, however, mediatek-cpufreq-hw
-> > delegate
-> > the voltage and frequency control to a hardware agent instead.
-> 
-> OK, that makes sense, thanks for explanation.
-> 
-> > 
-> > > 
-> > > > 
-> > > > > 
-> > > > > In general this does not look like proper bindings (see also
-> > > > > below
-> > > > > lack
-> > > > > of compatible). Bindings describe the hardware, so what is
-> > > > > exactly
-> > > > > the
-> > > > > hardware here?
-> > > > 
-> > > > Except for SoC, there's no requirement of hardware binding for
-> > > > mediatek-cpufreq.
-> > > > mediatek-cpufreq recognizes the compatible of Mediatek SoC
-> > > > while
-> > > > probing.
-> > > 
-> > > What is the hardware here? If there is no requirement for
-> > > bindings
-> > > for
-> > > mediate-cpufreq, why do we have this patch here?
-> > 
-> > Sorry, that's my mistake.
-> > Clock and regulator are required hardware for mediatek-cpufreq.
-> > 
-> > > 
-> > > > 
-> > > > > 
-> > > > > > +
-> > > > > > +maintainers:
-> > > > > > +  - Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> > > > > > +
-> > > > > > +description: |
-> > > > > > +  CPUFREQ is used for scaling clock frequency of CPUs.
-> > > > > > +  The module cooperates with CCI DEVFREQ to manage
-> > > > > > frequency
-> > > > > > for
-> > > > > > some Mediatek
-> > > > > > +  SoCs.
-> > > > > > +
-> > > > > > +properties:
-> > > > > 
-> > > > > How is this schema going to be applied? I don't see here
-> > > > > select
-> > > > > neither
-> > > > > compatible.
-> > > > 
-> > > > As mentioned above, only compatible of SoC is required for
-> > > > mediatek-
-> > > > cpufreq.
-> > > 
-> > > It does not answer my questions. How the schema is going to be
-> > > applied?
-> > 
-> > Currently, we do use compatible of SoC to probe mediatek-cpufreq.
-> 
-> Probing and binding to compatible is correct, but there is no
-> compatible
-> here, so the schema is a no-op. Does nothing.
-> 
-> > If the better way is using clock and regulator opp, do you have a
-> > suggestion to approach that?
-> > I mean I can't find a good example from other vendors trying to do
-> > that
-> > way. Or maybe I miss something?
-> 
-> One other way (proper) is to use cpufreq-dt and existing bindings. I
-> understand that maybe you need some specific bindings here, but I
-> fail
-> to see how they would work. IOW, you don't have the compatible, no
-> select, so nothing can use these bindings. Also bindings do not refer
-> to
-> any specific hardware, like SoC model.
-> 
-> It's good that you try to convert existing bindings to DT schema, but
-> with that they should be probably fixed/updated to match proper
-> bindings.
-> 
-> Best regards,
-> Krzysztof
-> 
-
-Hello Krzysztof,
-
-Thanks for your suggestion.
-I have discussed with Jia-wei internally.
-We want to push next version because we finish to prepare the driver
-parts.
-
-For binding part, we want to cancel the transformation to yaml first
-and only add the mediatek cci property for cpufreq series in next
-version.
-
-I will help Jia-wei to push next version.
-If you have any suggestion, we can discuss in the next version (v2) of
-this series.
-
-Thanks for your big support!
-
-BRs,
-Rex
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gVGh1LCAyMDIyLTA0LTA3IGF0IDE3OjI0IC0wNDAwLCBOw61jb2xhcyBGLiBSLiBBLiBQcmFk
+byB3cm90ZToNCj4gSGkgSmlheGluLA0KPiANCj4gT24gV2VkLCBBcHIgMDYsIDIwMjIgYXQgMDY6
+MDU6MTJQTSArMDgwMCwgSmlheGluIFl1IHdyb3RlOg0KPiA+IE1UODE5MiBwbGF0Zm9ybSB3aWxs
+IHVzZSBydDEwMTUgb3IgcnQxMDE1cCBjb2RlYywgc28gdGhyb3VnaCB0aGUNCj4gPiBzbmRfc29j
+X29mX2dldF9kYWlfbGlua19jb2RlY3MoKSB0byBjb21wbGV0ZSB0aGUgY29uZmlndXJhdGlvbg0K
+PiA+IG9mIGRhaV9saW5rJ3MgY29kZWNzLg0KPiANCj4gU3VnZ2VzdGlvbiBmb3IgdGhlIGNvbW1p
+dCBtZXNzYWdlOg0KPiANCj4gQXMgcGFydCBvZiB0aGUgcmVmYWN0b3JpbmcgdG8gYWxsb3cgdGhl
+IHNhbWUgbWFjaGluZSBkcml2ZXIgdG8gYmUNCj4gdXNlZCBmb3IgdGhlDQo+IHJ0MTAxNShwKSBh
+bmQgcnQ1NjgyKHMpIGNvZGVjcyBvbiB0aGUgTVQ4MTkyIHBsYXRmb3JtLCBwYXJzZSB0aGUNCj4g
+cnQxMDE1KHApDQo+IGNvZGVjcyBmcm9tIHRoZSBzcGVha2VyLWNvZGVjcyBwcm9wZXJ0eSBpbiB0
+aGUgZGV2aWNldHJlZSBhbmQgd2lyZQ0KPiB0aGVtIHRvIHRoZQ0KPiBJMlMzIGJhY2tlbmQsIGlu
+c3RlYWQgb2YgaGFyZGNvZGluZyB0aGUgbGlua3MgYW5kIHNlbGVjdGluZyB0aHJvdWdoDQo+IHRo
+ZQ0KPiBjb21wYXRpYmxlLg0KPiANCkhpIE7DrWNvbGFzLA0KDQpJIHdpbGwgdXBkYXRlIHRoZSBj
+b21taXQgbWVzc2FnZSBhY2NvcmRpbmcgdG8gdGhlIHJ1bGUgb2Ygb25lIHJvdyBwZXINCjc1IGNv
+bHVtbnMuIEkgd2lsbCBhbHNvIHJlZmVyIHRvIHlvdXIgc3VnZ2VzdGlvbnMgdG8gbW9kaWZ5IHRo
+ZSByZXN0IG9mDQp0aGUgc2VyaWVzLiBUaGFua3MgZm9yIHlvdXIgcmV2aWV3Lg0KDQpKaWF4aW4u
+WXUNClRoYW5rcy4NCg0KPiA+IA0KPiA+IFNpZ25lZC1vZmYtYnk6IEppYXhpbiBZdSA8amlheGlu
+Lnl1QG1lZGlhdGVrLmNvbT4NCj4gDQo+IFJldmlld2VkLWJ5OiBOw61jb2xhcyBGLiBSLiBBLiBQ
+cmFkbyA8bmZyYXByYWRvQGNvbGxhYm9yYS5jb20+DQo+IFRlc3RlZC1ieTogTsOtY29sYXMgRi4g
+Ui4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tPg0KPiANCj4gLSBUZXN0ZWQgb24g
+bXQ4MTkyLWFzdXJhZGEtc3BoZXJpb24gKHJ0MTAxNXAgYW5kIHJ0NTY4MikuIEFsbCBhdWRpbw0K
+PiBwYXRocyBzdGlsbA0KPiAgIHdvcmsgYXMgcHJldmlvdXMgdG8gdGhpcyByZWZhY3Rvci4gQW5k
+IGl0J3Mgc3RpbGwgcG9zc2libGUgdG8gb21pdA0KPiAgIG1lZGlhdGVrLGhkbWktY29kZWMuDQo+
+IA0KPiBUaGFua3MsDQo+IE7DrWNvbGFzDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0
+ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
