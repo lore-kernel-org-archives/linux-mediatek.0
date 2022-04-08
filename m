@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E20CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 21:08:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A92BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Apr 2022 21:11:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
 	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RR9FaDPqkpeKGuLaEOXh8qZrZXR4cDD1UdEUmaCQWaQ=; b=kE9lwlsrOvJozh
-	KViqXh0DKTTHarUZ+x9guQrEEZr/7bAcATT4SjEpnIQe8mQv7tzI7apssEbrbW/nrczVOY0qvyqiA
-	Nk4hiMQq5bpT7G4NNTJH+nVqIIaHTXrZpPTN6JZKDJUx9kbZNCgFjbWSJ6CkaC3nqpIboP7k5GMmT
-	D9Zzb/IaotHPHUca/gBU/PJdSfO7C7pPLQ7KVXmgcPEIkr6V/MahyS3Qys6C0HM0ivWanawqYMe3S
-	mDwJhbcBdqVyYzicDzsEh0EU5F/QPj9EfYLuNNsgGf8aiqQMMHJP7lSmnDK1ZreWZDf5hwjymA1Wo
-	+VzioUKjTDmaZb7+cZBg==;
+	List-Owner; bh=h9IS9FkoVtIWTrVvBK0mOhsj76oidMVqDPmZqhZdS1w=; b=N8oDAQ2EiipoWC
+	LZfjPyoELzyLalRXfbaQqk0FRMK/N1Er5rx6VP9V7XE8raWtXXGjXi/tmVdCDs4/VAnVKVj0XcXtr
+	MuG7oB2J99FJlYQtEiQrgV5q0jZsZer2Itng6qo7EdVTWP2MKLliHlfc5AD+a/Jw9iMeypo2LxpHf
+	be2PYj5bonKBHFpiRCFJj0Q69pbL5Mj/upWDKSuUT329s27CQV/ufeaXagEOY4p6j05XoMtU4+rFm
+	aL2Hc/cGnqW6/fIjNK3gOkT0gjDpOdjkqZiikxp7+K24JgIsjCEEFet7TUQONqffcTEuIlsswcXhC
+	JXUJO56pi1s6CnbwU+hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncvqU-001G6o-Ic; Fri, 08 Apr 2022 21:08:42 +0000
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+	id 1ncvsi-001GYH-Kw; Fri, 08 Apr 2022 21:11:00 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncvqQ-001G5v-LB
- for linux-mediatek@lists.infradead.org; Fri, 08 Apr 2022 21:08:40 +0000
-Received: by mail-pg1-x534.google.com with SMTP id s21so4263184pgv.13
- for <linux-mediatek@lists.infradead.org>; Fri, 08 Apr 2022 14:08:37 -0700 (PDT)
+ id 1ncvsX-001GV6-WA
+ for linux-mediatek@lists.infradead.org; Fri, 08 Apr 2022 21:10:51 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id s2so9452482pfh.6
+ for <linux-mediatek@lists.infradead.org>; Fri, 08 Apr 2022 14:10:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:in-reply-to:references:date:message-id
- :mime-version; bh=HoLWT/EythxVH1YT+vEjLN2TXDPwfF5xPPqMajsg97o=;
- b=6DqRW4gK+PKLqJfJdAd0TGTO95Ya7KDB3mBZJjKMlL0nxZLtgxfpl+75BDL9PpUtD/
- D8sxCCmecY9A1jNHsGn59jfaYAYVcw0MXiJZsMdhW9Hgaj2eegEWYZqhsHZZ8RViFFh8
- g/mUJ5pRz/mDzFZbqiAMFiy2sA1QwSdm7uJ+N0EWGsnS9ZjEVfmjTnqFmuhMnW10Edv7
- uODRBJwh1af7cUiTZDMOJnhCYENwjfab4lz7/KYYJOcswfmpJxqrQ5/bp0tB9mIV7ZMt
- Kceie9MXCbkN4vkioRj3xK49n2u3J7v+iyzNlDM+Hsx6W8Dz7u6YcGhollnP1Te9u94x
- iUtQ==
+ :mime-version; bh=NGL7uIJYy64vRyv+WyTds0iR2sbu1H6xVYp+rBwYsq0=;
+ b=0goe0SNyqeqNy9wKzBOTFC+7DmniXqC3vl6B6Ja5dbVTVTC/BZKzxTot9QUgRHj3YF
+ TX9uws+8EDjls/VkPD49zygJEFl3fLPDh7wOGrUaQQ8Yi9manuILnBLXpKiJbDtK6wkd
+ GBiXXLaiaTeyvR6B0bEboiCWp+bmK6fpIW/N2D87y5kKLuBdCDygGdepx6sOGFnlnlPU
+ f25f1FkaVYI5MTYGDfi/LHNLH7gGp3EbDDCmm+zhZ3uyTsz7D43liONM+N5RJmkiJYTt
+ 63QBbMSvZi3/thOx0tR9I1AIZtqdN8wPSiaDxF/GgO4azda9Ys9eZDXwB5bc14UwGZJd
+ PrcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
  :message-id:mime-version;
- bh=HoLWT/EythxVH1YT+vEjLN2TXDPwfF5xPPqMajsg97o=;
- b=UiONVccpPDZD+44GcxExIRV3wORVgq+AXBb2HsGszRsvTvD6GBXd42qKS8oQmsyD9l
- 9QmjgXkXUJJJP1AcIES5mTo0Nds2O9OmxECMKrowgNXjggpx1udv6AzRJtMYXexk7ZLE
- j7ttjSspBAnyyrSp5JeY/6wZFULa+koJW0x2OzkRcQ08PxGM2ypAEyxM+7uNgGRbnWuR
- lGDIFcdzRmrwY+psRftab5RVoq3710f42n6QsDZdNaoYtO/LAiO/4I6bu8DIL64VPTAR
- 4EurmdcrJIIZzzpU8xNw0ImM+9lvt5x+dVZmyrs6+Cu/mqOyV8U8fwpQggHPIW7R2A6Q
- VG+A==
-X-Gm-Message-State: AOAM531MZcM/6DoYdP0SD4ySMcPFOHV1ndUBmZcHz31ysX/dUB5UFwEo
- J3oQJ/avlJ4z7xoJe2q49ThlmQ==
-X-Google-Smtp-Source: ABdhPJyvhkTmr6m8xOSTjNCBilnTlNxx+TZTy+ro007JGG5u+GpijdOFdlxjLZjwIoz7WZTYTZhnOg==
-X-Received: by 2002:a63:c015:0:b0:385:fe06:eb86 with SMTP id
- h21-20020a63c015000000b00385fe06eb86mr16908387pgg.132.1649452117075; 
- Fri, 08 Apr 2022 14:08:37 -0700 (PDT)
+ bh=NGL7uIJYy64vRyv+WyTds0iR2sbu1H6xVYp+rBwYsq0=;
+ b=F0N2YtZZs2ATcQ12MeeL3B8QpxCrRpyW3LDIFEKFmq7eSHEtZRCFD0MyMuFMxfYFNW
+ iBC+/aWYwEe5TYqYgdNXeqGpvu9YIBdYd+Ss1HqYZIi9fJ6nTqEqYjJJS6eNCVKuEa4L
+ 6l2wDa2l1aoUCDk8VtSKe4+doFUgW0jAkkFrRSLcYmImgGnjLksjEW8rfTiPDPPXOWsN
+ UMNa4k2v7ayW8o+tuJOfA7GSpXeNdStN1jfaEieezka1Gl8/2DD/p12Wa+Qw0gz0DYvT
+ JiZbK/TqIJ+ddvxP54u05MLF8DM/I42INd/JbaM+CO3MJgogWqpeJ4dGlUMiTKELoVXY
+ rAew==
+X-Gm-Message-State: AOAM531sN9jBOftyDp7ZIJNP+Jd1IDEpi4RdaFUpHAcDpjWDzG+L7UK/
+ sEWfP7xZk7mKaWzWwPDWDMkJlQ==
+X-Google-Smtp-Source: ABdhPJw5mutMPEroFwzVQlx6BF6zMMQsdO7eg6KiAaxV8KEQBMyUxgjwuUVnLSqBovjUXQR6fpGbkw==
+X-Received: by 2002:a63:4f0d:0:b0:399:5115:ff48 with SMTP id
+ d13-20020a634f0d000000b003995115ff48mr17296204pgb.235.1649452247397; 
+ Fri, 08 Apr 2022 14:10:47 -0700 (PDT)
 Received: from localhost (c-71-197-186-152.hsd1.wa.comcast.net.
  [71.197.186.152]) by smtp.gmail.com with ESMTPSA id
- s10-20020a63924a000000b00399571b2f99sm12120792pgn.57.2022.04.08.14.08.36
+ v4-20020a17090a00c400b001cb4f242c92sm2330393pjd.26.2022.04.08.14.10.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Apr 2022 14:08:36 -0700 (PDT)
+ Fri, 08 Apr 2022 14:10:47 -0700 (PDT)
 From: Kevin Hilman <khilman@baylibre.com>
 To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
  viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org
@@ -66,18 +66,18 @@ Cc: matthias.bgg@gmail.com, jia-wei.chang@mediatek.com,
  roger.lu@mediatek.com, hsinyi@google.com, linux-pm@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH V2 11/15] cpufreq: mediatek: Update logic of
- voltage_tracking()
-In-Reply-To: <20220408045908.21671-12-rex-bc.chen@mediatek.com>
+ Project_Global_Chrome_Upstream_Group@mediatek.com, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: Re: [PATCH V2 14/15] cpufreq: mediatek: Add support for MT8186
+In-Reply-To: <20220408045908.21671-15-rex-bc.chen@mediatek.com>
 References: <20220408045908.21671-1-rex-bc.chen@mediatek.com>
- <20220408045908.21671-12-rex-bc.chen@mediatek.com>
-Date: Fri, 08 Apr 2022 14:08:36 -0700
-Message-ID: <7hczhr5lm3.fsf@baylibre.com>
+ <20220408045908.21671-15-rex-bc.chen@mediatek.com>
+Date: Fri, 08 Apr 2022 14:10:46 -0700
+Message-ID: <7h8rsf5lih.fsf@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_140838_727971_6758C117 
-X-CRM114-Status: UNSURE (   7.31  )
+X-CRM114-CacheID: sfid-20220408_141050_060573_2C2417A3 
+X-CRM114-Status: UNSURE (   7.21  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,18 +99,14 @@ Rex-BC Chen <rex-bc.chen@mediatek.com> writes:
 
 > From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 >
-> - Remove VOLT_TOL because CCI may share the same sram and vproc
->   regulators with CPU. Therefore, set the max voltage in
->   regulator_set_voltage() to the proc{sram}_max_volt.
+> The platform data of MT8186 is different from previous MediaTek SoCs,
+> so we add a new compatible and platform data for it.
+>
+> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 
-This could you a bit more detailed explanation.  Why does VOLT_TOL get
-in the way when regulators are shared between CPU & CCI?
-
-> - Move comparison of new and old voltages to
->   mtk_cpufreq_voltage_tracking().
-
-Why?  And how is this related to the above change?  Seems to me that it
-belongs in a separate patch.
+There's no upstream DT for MT8186, so I"m curious how this was
+tested/valiated with upstream?
 
 Kevin
 
