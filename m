@@ -4,82 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CD56C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Apr 2022 13:21:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E46E3C433FE
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Apr 2022 13:23:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DWMXffDP7jdE5nTEj05r12CdSSBXcFU0SXpr7xuRqAw=; b=Tf9jyCuPt//pge
-	v2mc5VyqtCfanSGrte2cHXAZdeTjwROhzhpkkV/oCTtyb/jPEz2/Xzv3TLmBeR0faMLWwn/hkikcR
-	Hg/I3+4IDTokaoEbC4Ucevm4LY1bFZZj6eRd49zEbXdKr9uAKzhTdsRJyhidRyu8W0j4UHX/Acu4C
-	FSpl9CRasv245kfDP910WK7RjopBltvAc5uNueQVAQrR8Uzx80ZFcn6O3zJYOCI1Yqr/He2tqzT3n
-	X8mkQHj/4Jnw6w00NEugSnDKjhQuPeX3mKFcwF1+xvHs2nzUes9T2rKilHIVoWgMe45K4dpVIoRtk
-	Maz4WuXsGNgQKqbl4iSw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=klEmhOFipyQRC0aCKhx3ZktF3QSLU9Ifql4doKbBehs=; b=zOrbkIw0oFXpZz
+	8uuKdRV2nG8MRNrkjlCAwJPXHSHJCaml3sKOCds895/WTNqu6WmfUqaYMbbF3JwXokCO92YVjU3Do
+	byEr3z2LEXKbeOzM8OuCFhaG1Q/Vh/YXj2wTBJFlFtOqaI/Aq24tzFL1fnj538H986Pjxsi4OiIcO
+	JtzAoT9D4HwF6hj/hdaSLFZKugPXfdizU0hWWIcqSH9NYqWby9LNWroy0AVBCYThR5pjMkH0Hyabj
+	cJEiSzwOg17PpT6sJuPfV5pzCFiXiUvun87kb1jOzakvQGmpmg/cG89k0LMEs4WyOH7rGgiXKNA8/
+	NdewdF3Slr77kkhDYnIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndB1i-003AQO-FX; Sat, 09 Apr 2022 13:21:18 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1ndB4B-003B0D-Ix; Sat, 09 Apr 2022 13:23:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndB1f-003AOu-5n; Sat, 09 Apr 2022 13:21:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1649510475; x=1681046475;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=vfC+nRqScmWArguoYMf/e1ASOBmxDV4xlBHdGwcPDiE=;
- b=a9XPVcVONht4wVWl7jCAmf4lfn5xW/fHV7c3iEUxznwrVTGzRjVKYPTS
- ALBqqjasgpN5u4X3pO/uVz5DhngKdIIRPVdnDDo1NPYvNLmRy23lgOQSI
- mloi40jiMLtkxllFRbIG4lhKC4vSiMznfgulQtKTM7TrZ/iCgh2TAJPTF
- cLF0oKl5zDEU6k/VcfmOM+Axi7YZZ15YZUKByYdKhfNTYZEoGAAwRaR4m
- /3mI/GXx6G0BAk8jMLrhni11wax9ueIc9Qn7/JXxUGws0K3XT+Y3At4uf
- 1Cem0nNamrqF6f5EdxCKyCEIsHUkduZDqXaDPGjO9mGxI1UGa0ZVdw8Ex w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10311"; a="261981490"
-X-IronPort-AV: E=Sophos;i="5.90,247,1643702400"; d="scan'208";a="261981490"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2022 06:21:10 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,247,1643702400"; d="scan'208";a="622153364"
-Received: from lkp-server02.sh.intel.com (HELO d3fc50ef50de) ([10.239.97.151])
- by fmsmga004.fm.intel.com with ESMTP; 09 Apr 2022 06:21:04 -0700
-Received: from kbuild by d3fc50ef50de with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1ndB1T-00002H-Ef;
- Sat, 09 Apr 2022 13:21:03 +0000
-Date: Sat, 9 Apr 2022 21:19:59 +0800
-From: kernel test robot <lkp@intel.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil <hverkuil@xs4all.nl>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-Cc: kbuild-all@lists.01.org, linux-media@vger.kernel.org,
- Irui Wang <irui.wang@mediatek.com>, George Sun <george.sun@mediatek.com>,
- Steve Cho <stevecho@chromium.org>, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, dri-devel <dri-devel@lists.freedesktop.org>,
- Xiaoyong Lu <xiaoyong.lu@mediatek.com>, linux-mediatek@lists.infradead.org,
- Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v9, 16/17] media: mediatek: vcodec: support stateless VP9
- decoding
-Message-ID: <202204092137.3RrpN4Hr-lkp@intel.com>
-References: <20220408120240.29571-17-yunfei.dong@mediatek.com>
+ id 1ndB3z-003Aun-Oc; Sat, 09 Apr 2022 13:23:41 +0000
+X-UUID: ee60ab69551c4252bae94df511798ab2-20220409
+X-UUID: ee60ab69551c4252bae94df511798ab2-20220409
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chun-jie.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 376713332; Sat, 09 Apr 2022 06:23:29 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 9 Apr 2022 06:23:27 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Sat, 9 Apr 2022 21:23:26 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sat, 9 Apr 2022 21:23:25 +0800
+From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
+ <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
+ <robh+dt@kernel.org>
+CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v5 00/15] MediaTek MT8186 clock support
+Date: Sat, 9 Apr 2022 21:22:36 +0800
+Message-ID: <20220409132251.31725-1-chun-jie.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220408120240.29571-17-yunfei.dong@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220409_062115_254156_D3FBF443 
-X-CRM114-Status: GOOD (  14.55  )
+X-CRM114-CacheID: sfid-20220409_062339_861704_36C06917 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,50 +73,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yunfei,
+this patch series is based on v5.18-rc1.
 
-Thank you for the patch! Yet something to improve:
+changes since v4:
+- change "Acked-by" to "Reviewed-by"
+- rebase to 5.18-rc1
 
-[auto build test ERROR on media-tree/master]
-[also build test ERROR on v5.18-rc1 next-20220408]
-[cannot apply to remoteproc/rproc-next drm-tip/drm-tip]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
+changes since v3:
+- re-order linux and internal driver header
+- remove redundant lock in mcusys muxes
+- add more description for mcusys clock driver
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Yunfei-Dong/media-mediatek-vcodec-Add-vdec-enable-disable-hardware-helpers/20220408-210244
-base:   git://linuxtv.org/media_tree.git master
-config: arm64-randconfig-r015-20220408 (https://download.01.org/0day-ci/archive/20220409/202204092137.3RrpN4Hr-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 11.2.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/251c7c77f6690881357df39867a32a03eb7db3b7
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Yunfei-Dong/media-mediatek-vcodec-Add-vdec-enable-disable-hardware-helpers/20220408-210244
-        git checkout 251c7c77f6690881357df39867a32a03eb7db3b7
-        # save the config file to linux build tree
-        mkdir build_dir
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=arm64 SHELL=/bin/bash
+changes since v2:
+- add '|' to preserve the formatting in binding document
+- change 'Mediatek'to 'MediaTek'
 
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
+changes since v1:
+- combine dt-binding documents as a single patch
+- remove redundant example in binding document
+- change to dual license in binding document
+- add more clock error handle based on interface provided in [1]
+[1]https://patchwork.kernel.org/project/linux-mediatek/list/?series=612171
 
-All errors (new ones prefixed by >>):
+Chun-Jie Chen (15):
+  dt-bindings: ARM: MediaTek: Add new document bindings of MT8186 clock
+  clk: mediatek: Add MT8186 mcusys clock support
+  clk: mediatek: Add MT8186 topckgen clock support
+  clk: mediatek: Add MT8186 infrastructure clock support
+  clk: mediatek: Add MT8186 apmixedsys clock support
+  clk: mediatek: Add MT8186 imp i2c wrapper clock support
+  clk: mediatek: Add MT8186 mfgsys clock support
+  clk: mediatek: Add MT8186 mmsys clock support
+  clk: mediatek: Add MT8186 wpesys clock support
+  clk: mediatek: Add MT8186 imgsys clock support
+  clk: mediatek: Add MT8186 vdecsys clock support
+  clk: mediatek: Add MT8186 vencsys clock support
+  clk: mediatek: Add MT8186 camsys clock support
+  clk: mediatek: Add MT8186 mdpsys clock support
+  clk: mediatek: Add MT8186 ipesys clock support
 
-   aarch64-linux-ld: drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.o: in function `vdec_vp9_slice_update_prob.isra.0':
->> vdec_vp9_req_lat_if.c:(.text+0x2654): undefined reference to `v4l2_vp9_adapt_noncoef_probs'
-   vdec_vp9_req_lat_if.c:(.text+0x2654): relocation truncated to fit: R_AARCH64_CALL26 against undefined symbol `v4l2_vp9_adapt_noncoef_probs'
->> aarch64-linux-ld: vdec_vp9_req_lat_if.c:(.text+0x26c0): undefined reference to `v4l2_vp9_adapt_coef_probs'
-   vdec_vp9_req_lat_if.c:(.text+0x26c0): relocation truncated to fit: R_AARCH64_CALL26 against undefined symbol `v4l2_vp9_adapt_coef_probs'
-   aarch64-linux-ld: vdec_vp9_req_lat_if.c:(.text+0x26d8): undefined reference to `v4l2_vp9_adapt_coef_probs'
-   vdec_vp9_req_lat_if.c:(.text+0x26d8): relocation truncated to fit: R_AARCH64_CALL26 against undefined symbol `v4l2_vp9_adapt_coef_probs'
-   aarch64-linux-ld: vdec_vp9_req_lat_if.c:(.text+0x26f0): undefined reference to `v4l2_vp9_adapt_coef_probs'
-   vdec_vp9_req_lat_if.c:(.text+0x26f0): relocation truncated to fit: R_AARCH64_CALL26 against undefined symbol `v4l2_vp9_adapt_coef_probs'
+ .../arm/mediatek/mediatek,mt8186-clock.yaml   |  56 ++
+ .../mediatek/mediatek,mt8186-sys-clock.yaml   |  54 ++
+ drivers/clk/mediatek/Kconfig                  |   8 +
+ drivers/clk/mediatek/Makefile                 |   5 +
+ drivers/clk/mediatek/clk-mt8186-apmixedsys.c  | 133 +++
+ drivers/clk/mediatek/clk-mt8186-cam.c         |  90 ++
+ drivers/clk/mediatek/clk-mt8186-img.c         |  68 ++
+ .../clk/mediatek/clk-mt8186-imp_iic_wrap.c    |  67 ++
+ drivers/clk/mediatek/clk-mt8186-infra_ao.c    | 216 +++++
+ drivers/clk/mediatek/clk-mt8186-ipe.c         |  55 ++
+ drivers/clk/mediatek/clk-mt8186-mcu.c         | 108 +++
+ drivers/clk/mediatek/clk-mt8186-mdp.c         |  80 ++
+ drivers/clk/mediatek/clk-mt8186-mfg.c         |  48 ++
+ drivers/clk/mediatek/clk-mt8186-mm.c          | 111 +++
+ drivers/clk/mediatek/clk-mt8186-topckgen.c    | 780 ++++++++++++++++++
+ drivers/clk/mediatek/clk-mt8186-vdec.c        |  88 ++
+ drivers/clk/mediatek/clk-mt8186-venc.c        |  51 ++
+ drivers/clk/mediatek/clk-mt8186-wpe.c         |  51 ++
+ include/dt-bindings/clock/mt8186-clk.h        | 445 ++++++++++
+ 19 files changed, 2514 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-clock.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-sys-clock.yaml
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-apmixedsys.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-cam.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-img.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-imp_iic_wrap.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-infra_ao.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-ipe.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-mcu.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-mdp.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-mfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-mm.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-topckgen.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-vdec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-venc.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-wpe.c
+ create mode 100644 include/dt-bindings/clock/mt8186-clk.h
 
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
