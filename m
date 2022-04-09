@@ -4,76 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CE33C433FE
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Apr 2022 09:14:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A86CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Apr 2022 09:22:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=w66TpRCaTiNSUoNShwAWvhZodtVmnm2xdbGXXgntR2s=; b=YtRy9jgQr2WacX
-	j2RAqIX3j8M4YGcFNdp4f82XtwRwcUb3oZcXHyVM1BwNXPEbfMBI3AT7CR7euH3YQyqk+0LUvmDtI
-	NWYii7+lmiJZuqPHxhRnkMs5IBhBLkK8hoTnshFOkZFHGN+Pvi+PkMUkXrI3MEbCh3KKjm6wfZ3Xr
-	t9cQHn/YZh/9jIW4SHUJWG7uqG3harOnlcf/lMAsV1Z4ggzfk02Wm92AK8c3wAH9BAj7lD5PBHacL
-	utvAKAj4vGc3hlDQcYiLKdQ2qey8a7VdDDKas4D23F0SmFWzomS7O/gtdSdxdhDeoQuwKtdSDZtb8
-	2XyDCYwvFID8EI9N/QXw==;
+	List-Owner; bh=O6U/KUzSRd91vhhIa0mbYrbt0nJaagtjLJkDQpu1bZg=; b=KE3Kky6rlOhriP
+	/KC4fdrBrXHMGTmtAjISyQpYDma++3WzbMvGDT0kIze6x9MOQYm/bI1yQ5+pyiG+YOensKSlPYhc/
+	lDJtF0jwonL+xzTADPO/ZLTEOayf2VYeymj8W06jcKL8HEwENrlPwU84W/8voKbEOagVwT/5a6AO7
+	2vDs2nOnTrTNwgHSUp8SjayLqAZvM1Dw/J93EUfwOUlGf1hXgwWOVq+wOUAbfy1rUi0RUlxg788No
+	vi/MzgpK/cRjkMQQM4gH1fNI1/vIF9Sw7RZKolSqoi+IqQyMFbe10S3qyyv5WW+KtoUeQw1qlaGMo
+	3EGe3Mlc3Y3uu4UsDtZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nd7Ap-002f96-69; Sat, 09 Apr 2022 09:14:27 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1nd7IW-002h8Q-KB; Sat, 09 Apr 2022 09:22:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nd7AT-002f0f-Qq; Sat, 09 Apr 2022 09:14:14 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id
- h23-20020a17090a051700b001c9c1dd3acbso11862656pjh.3; 
- Sat, 09 Apr 2022 02:14:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2jZAJ+JA6yywC1V20DY87yMWwfDYQMlsgax/CHNuUKA=;
- b=gHRySIv4B/vBxWneeIYEr4hwAFt8BhQtlbEwvvhzsrjOA2EHXSVI+oX5jmtCEHMvr/
- 7wmRXtEcEd4uxqBCJ4oniLy30jBvcGr4/jk5D0dpv4tA2h05qmryi4LHcnoVOh+Hm00e
- MMGCYU1llGTM/sL4l7Yf5zkAwC+XcjOrXYofrAtFPMTfSTbeedSQe9hsrTcbl934Vqdf
- CLlGbZGTMNtNedGh7jT6YTmW32RmWV24WdDGnK/Nkg7uV6EP+KxzE1zVByScZfcnR/mn
- eVRBBpsoBkHYH2AeqctzfkwGBiNhu7H3ryLTx+jG5tZ5uH2ZnovJZZ7JH3SX+btz9ZWj
- pQ0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2jZAJ+JA6yywC1V20DY87yMWwfDYQMlsgax/CHNuUKA=;
- b=VhBNWw4/4h8j8ijgbP/RHOvB6pkHgJmWiSbz0ALVeAMaOimSq9ExjFavLVurqj3Ncq
- /u0+SUaZU2mhiFHNxsucyko7mKoWfT7LMxL0740eC+Y8HCQyHBrpPiuPEzD2MZZXbNQe
- UAdaM4Of33YjnPekP0lHlbd7UKXtpdUyt6TA9r6j4wZGvlEeKbiVODzVEFp+ytDfyhuP
- e4kTI9lcHa6/E1DGCJF0x1kR6NMcDJsdGDX3JeUMNQkb0bv/FOUgyPz89xn6tDudYsRp
- o7hFkK8fyvA8pCscHfgSaUyfZqekpKPxZ00PqRLFc0ois/7vFlBYBxxtUr0d2lMSyM2m
- N0pw==
-X-Gm-Message-State: AOAM531QmkudMLlNLkGMybQYI5zJCXNBQMxh3fj39NpoYF4bL62xS+xf
- t3avwB2qxrVxrJLi99V0xmUqMPU4hhcVUdRQPI4=
-X-Google-Smtp-Source: ABdhPJwsbGx59samwR5vAj7S1DaqVuphUrywehVqnAhIN2MSzYcqKZuf12+M9uRcXBc+FRTGnuu73w==
-X-Received: by 2002:a17:90a:c70f:b0:1bf:3e2d:6cfa with SMTP id
- o15-20020a17090ac70f00b001bf3e2d6cfamr26424465pjt.70.1649495645034; 
- Sat, 09 Apr 2022 02:14:05 -0700 (PDT)
-Received: from guoguo-omen.lan ([2401:c080:1400:4da2:b701:47d5:9291:4cf9])
- by smtp.gmail.com with ESMTPSA id
- g6-20020a056a001a0600b004f7bd56cc08sm28351657pfv.123.2022.04.09.02.14.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 09 Apr 2022 02:14:04 -0700 (PDT)
-From: Chuanhong Guo <gch981213@gmail.com>
-To: linux-arm-kernel@lists.infradead.org
-Cc: Chuanhong Guo <gch981213@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Russell King <linux@armlinux.org.uk>, Ryder Lee <ryder.lee@mediatek.com>,
- linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support), 
- linux-kernel@vger.kernel.org (open list)
-Subject: [PATCH] arm: mediatek: select arch timer for mt7629
-Date: Sat,  9 Apr 2022 17:13:47 +0800
-Message-Id: <20220409091347.2473449-1-gch981213@gmail.com>
-X-Mailer: git-send-email 2.35.1
+ id 1nd7IL-002h5m-2v; Sat, 09 Apr 2022 09:22:14 +0000
+X-UUID: c2d3a2a05abc49df823496780691fdeb-20220409
+X-UUID: c2d3a2a05abc49df823496780691fdeb-20220409
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <xinlei.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 864034868; Sat, 09 Apr 2022 02:22:06 -0700
+Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 9 Apr 2022 02:12:03 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS34N1.mediatek.inc
+ (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sat, 9 Apr 2022 17:11:59 +0800
+Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
+ MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Sat, 9 Apr 2022 17:11:58 +0800
+From: <xinlei.lee@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+ <daniel@ffwll.ch>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <rex-bc.chen@mediatek.com>,
+ <jitao.shi@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Xinlei Lee
+ <xinlei.lee@mediatek.com>
+Subject: [PATCH v4,
+ 0/3] Add mt8186 dsi compatoble & Convert dsi_dtbinding to .yaml
+Date: Sat, 9 Apr 2022 17:11:51 +0800
+Message-ID: <1649495514-25746-1-git-send-email-xinlei.lee@mediatek.com>
+X-Mailer: git-send-email 2.6.4
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220409_021413_640407_826760A0 
-X-CRM114-Status: UNSURE (   8.78  )
+X-CRM114-CacheID: sfid-20220409_022213_164372_8DDF92C6 
+X-CRM114-Status: UNSURE (   7.17  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,31 +75,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This chip has an armv7 arch timer according to the dts. Select it in
-Kconfig to enforce the support for it.
-Otherwise the system time is just completely wrong if user forget to
-enable ARM_ARCH_TIMER in kernel config.
+From: Xinlei Lee <xinlei.lee@mediatek.com>
 
-Fixes: a43379dddf1b ("arm: mediatek: add MT7629 smp bring up code")
-Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
----
- arch/arm/mach-mediatek/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+Changes since v3:
+1. Add dsi port property.
+2. Fix some formatting.
 
-diff --git a/arch/arm/mach-mediatek/Kconfig b/arch/arm/mach-mediatek/Kconfig
-index 9e0f592d87d8..35a3430c7942 100644
---- a/arch/arm/mach-mediatek/Kconfig
-+++ b/arch/arm/mach-mediatek/Kconfig
-@@ -30,6 +30,7 @@ config MACH_MT7623
- config MACH_MT7629
- 	bool "MediaTek MT7629 SoCs support"
- 	default ARCH_MEDIATEK
-+	select HAVE_ARM_ARCH_TIMER
- 
- config MACH_MT8127
- 	bool "MediaTek MT8127 SoCs support"
+Changes since v2:
+1. Added #address-cells, #size-cells two properties.
+2. Fix some formatting issues.
+
+Changes since v1:
+1. Delete the mediatek,dsi.txt & Add the mediatek,dsi.yaml.
+2. Ignore the Move the getting bridge node function patch for V1.
+
+Xinlei Lee (3):
+  dt-bindings: display: mediatek: dsi: Convert dsi_dtbinding to .yaml
+  dt-bindings: display: mediatek: dsi: Add compatible for MediaTek
+    MT8186
+  drm/mediatek: Add mt8186 dsi compatible to mtk_dsi.c
+
+ .../display/mediatek/mediatek,dsi.txt         |  62 ---------
+ .../display/mediatek/mediatek,dsi.yaml        | 119 ++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_dsi.c            |   8 ++
+ 3 files changed, 127 insertions(+), 62 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
+
 -- 
-2.35.1
+2.18.0
 
 
 _______________________________________________
