@@ -4,63 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0BBFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Apr 2022 10:08:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD6C3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Apr 2022 11:00:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y+3yId9acgKYO4h6j0pPIBsFCfpTxv03RvAMPd9B2xY=; b=4QoRc/7zdar293
-	nwVbK5djg6sI5wK49piEcFbAQcfWfVj3RryK/v9FNSnFHaxBEKIpi1YAEuDNXTDjZqD9inD9Wf8K0
-	qs0xjRIRWgiTb6dkxRbu4YTR9m+eOQR+tQh1vrq4Gg7mEyLJu6CFbRca2AgyiQlDe4slil/4QGmXk
-	RaUO7/inAeH3ykvgEXToWZdNgTcwwhr+gUPiol26xmUppDOLKNFcrt3heRy0q0dhHmg54Kk7MGpOq
-	rn+Lhx4demmMlOLWMuBlxtJ9szmP6NLz8qF5yEAyeIjkGC+pDjM8nTdpev20DxEhoKjyjEigd6q+z
-	BDKT3lyNPC6PdGBagsCQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7mLTTG8I/GRRL30lKm7F/oOuQ8/qgQ6jupE/8M4ZNPA=; b=Dju/Mc/uKEQzUO
+	LuGWeq8p11uIx1sFpmO7X34UE265BbJT8W1eYxF1R7lfMhj0+66zApMjBNPmJe3yMB4kmlmXfQqMl
+	KtpiVcvCrKIt4cAHfYFUoCprnXdirN+3TaPRGWm/9iIaaPbpUCAGqe/HJ0OU0GRpTdt5PbrNp49gw
+	wq8qmk+NH/w0mUjpnqSCoYFsema6ClW6Rl67ul6EwyYfTsNGK0PNgzv2NldS+NXtmeovvXYPPwH9+
+	9ClWVcCE3pYGAMLj508C8rSJbqaceC2KVYm2XuZ7adEO++vZfwPHuWVdEpkT1He6ABQr6Lfuj+eg3
+	zO8VX97ofM+ngNy6z0zA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nd81M-002lbr-Kd; Sat, 09 Apr 2022 10:08:44 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nd8pT-002sdg-Sb; Sat, 09 Apr 2022 11:00:31 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nd81E-002lWW-TU; Sat, 09 Apr 2022 10:08:38 +0000
-X-UUID: 0e5fa98332e440a68f503b56ec64e294-20220409
-X-UUID: 0e5fa98332e440a68f503b56ec64e294-20220409
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <xinlei.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1156279390; Sat, 09 Apr 2022 03:08:29 -0700
-Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 9 Apr 2022 03:08:27 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS34N1.mediatek.inc
- (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 9 Apr 2022 18:08:25 +0800
-Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
- MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Sat, 9 Apr 2022 18:08:24 +0800
-From: <xinlei.lee@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
- <daniel@ffwll.ch>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>,
- <rex-bc.chen@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <jitao.shi@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Xinlei Lee
- <xinlei.lee@mediatek.com>
-Subject: [PATCH v3,
- 1/2] dt-bindings: display: mediatek: dpi: Add compatible for MediaTek
- MT8186
-Date: Sat, 9 Apr 2022 18:08:19 +0800
-Message-ID: <1649498900-8412-2-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1649498900-8412-1-git-send-email-xinlei.lee@mediatek.com>
-References: <1649498900-8412-1-git-send-email-xinlei.lee@mediatek.com>
+ id 1nd8pJ-002sZi-LI; Sat, 09 Apr 2022 11:00:23 +0000
+Received: from canpemm500007.china.huawei.com (unknown [172.30.72.55])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4KbBtL3LfMzgYN2;
+ Sat,  9 Apr 2022 18:58:18 +0800 (CST)
+Received: from localhost (10.174.179.215) by canpemm500007.china.huawei.com
+ (7.192.104.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Sat, 9 Apr
+ 2022 19:00:05 +0800
+From: YueHaibing <yuehaibing@huawei.com>
+To: <sean.wang@kernel.org>, <linus.walleij@linaro.org>,
+ <matthias.bgg@gmail.com>, <light.hsieh@mediatek.com>
+CC: <linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ YueHaibing <yuehaibing@huawei.com>
+Subject: [PATCH -next] pinctrl: mediatek: moore: Fix build error
+Date: Sat, 9 Apr 2022 18:59:58 +0800
+Message-ID: <20220409105958.37412-1-yuehaibing@huawei.com>
+X-Mailer: git-send-email 2.10.2.windows.1
 MIME-Version: 1.0
-X-MTK: N
+X-Originating-IP: [10.174.179.215]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ canpemm500007.china.huawei.com (7.192.104.62)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220409_030837_028390_76EE004D 
-X-CRM114-Status: UNSURE (   6.81  )
+X-CRM114-CacheID: sfid-20220409_040021_914921_F72D38EB 
+X-CRM114-Status: UNSURE (   6.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,31 +66,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Xinlei Lee <xinlei.lee@mediatek.com>
+If EINT_MTK is m and PINCTRL_MTK_V2 is y, build fails:
 
-Add dt-binding documentation of dpi for MediaTek MT8186 SoC.
+drivers/pinctrl/mediatek/pinctrl-moore.o: In function `mtk_gpio_set_config':
+pinctrl-moore.c:(.text+0xa6c): undefined reference to `mtk_eint_set_debounce'
+drivers/pinctrl/mediatek/pinctrl-moore.o: In function `mtk_gpio_to_irq':
+pinctrl-moore.c:(.text+0xacc): undefined reference to `mtk_eint_find_irq'
 
-Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
+Select EINT_MTK for PINCTRL_MTK_V2 to fix this.
+
+Fixes: 8174a8512e3e ("pinctrl: mediatek: make MediaTek pinctrl v2 driver ready for buidling loadable module")
+Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml       | 1 +
+ drivers/pinctrl/mediatek/Kconfig | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-index 843f89d6053f..77ee1b923991 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-@@ -22,6 +22,7 @@ properties:
-       - mediatek,mt7623-dpi
-       - mediatek,mt8173-dpi
-       - mediatek,mt8183-dpi
-+      - mediatek,mt8186-dpi
-       - mediatek,mt8192-dpi
+diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+index 8dca1ef04965..40accd110c3d 100644
+--- a/drivers/pinctrl/mediatek/Kconfig
++++ b/drivers/pinctrl/mediatek/Kconfig
+@@ -30,6 +30,7 @@ config PINCTRL_MTK_MOORE
+ 	select GENERIC_PINMUX_FUNCTIONS
+ 	select GPIOLIB
+ 	select OF_GPIO
++	select EINT_MTK
+ 	select PINCTRL_MTK_V2
  
-   reg:
+ config PINCTRL_MTK_PARIS
 -- 
-2.18.0
+2.17.1
 
 
 _______________________________________________
