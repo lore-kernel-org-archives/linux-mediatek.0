@@ -4,61 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22C5BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Apr 2022 09:13:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CE33C433FE
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Apr 2022 09:14:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/L7neu08DE3hUm9kEVzIrQd8fOQfYGi6WtqP1MEeRjk=; b=NSHWY/xArN8Rns
-	n6iA5vdCRz++MY5NEFYqvPOiYUFaWKZlKy9iqaTXmXCHR0NRVql3M/eVLkSnnQ4g0M21UJ/lj90aC
-	gWDhzLaTLiW4fVkI3tGDy5t44W4cqQxVBr+vHkHB6SWiMBjWbB1iJfDxbi5dUM87ycCNMEROWj++3
-	QPvtGIUiCloiQQEI9gZV/AYpU90hgHJgFvu/ShvIugXYxLEYv7HjgX9SXutlfNNge19NuKNFX8ANm
-	ynjAwtWRJBT1MXAA9pyJHJnd7z6wLYsJ2dX3jbuvqzY77+KhkEhgLbZJr13AFbemn7C8EUG0bJXDe
-	QNkEXPuIIbeBzakNyEXg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=w66TpRCaTiNSUoNShwAWvhZodtVmnm2xdbGXXgntR2s=; b=YtRy9jgQr2WacX
+	j2RAqIX3j8M4YGcFNdp4f82XtwRwcUb3oZcXHyVM1BwNXPEbfMBI3AT7CR7euH3YQyqk+0LUvmDtI
+	NWYii7+lmiJZuqPHxhRnkMs5IBhBLkK8hoTnshFOkZFHGN+Pvi+PkMUkXrI3MEbCh3KKjm6wfZ3Xr
+	t9cQHn/YZh/9jIW4SHUJWG7uqG3harOnlcf/lMAsV1Z4ggzfk02Wm92AK8c3wAH9BAj7lD5PBHacL
+	utvAKAj4vGc3hlDQcYiLKdQ2qey8a7VdDDKas4D23F0SmFWzomS7O/gtdSdxdhDeoQuwKtdSDZtb8
+	2XyDCYwvFID8EI9N/QXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nd79R-002eYy-6R; Sat, 09 Apr 2022 09:13:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nd7Ap-002f96-69; Sat, 09 Apr 2022 09:14:27 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nd78v-002eHb-1r; Sat, 09 Apr 2022 09:12:30 +0000
-X-UUID: 5c1011aac8064eb0be7f6dc44f6dd940-20220409
-X-UUID: 5c1011aac8064eb0be7f6dc44f6dd940-20220409
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <xinlei.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 348304930; Sat, 09 Apr 2022 02:12:20 -0700
-Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 9 Apr 2022 02:12:18 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS34N1.mediatek.inc
- (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 9 Apr 2022 17:12:15 +0800
-Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
- MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Sat, 9 Apr 2022 17:12:14 +0800
-From: <xinlei.lee@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
- <daniel@ffwll.ch>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <rex-bc.chen@mediatek.com>,
- <jitao.shi@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Xinlei Lee
- <xinlei.lee@mediatek.com>
-Subject: [PATCH v4,3/3] drm/mediatek: Add mt8186 dsi compatible to mtk_dsi.c
-Date: Sat, 9 Apr 2022 17:11:54 +0800
-Message-ID: <1649495514-25746-4-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1649495514-25746-1-git-send-email-xinlei.lee@mediatek.com>
-References: <1649495514-25746-1-git-send-email-xinlei.lee@mediatek.com>
+ id 1nd7AT-002f0f-Qq; Sat, 09 Apr 2022 09:14:14 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id
+ h23-20020a17090a051700b001c9c1dd3acbso11862656pjh.3; 
+ Sat, 09 Apr 2022 02:14:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=2jZAJ+JA6yywC1V20DY87yMWwfDYQMlsgax/CHNuUKA=;
+ b=gHRySIv4B/vBxWneeIYEr4hwAFt8BhQtlbEwvvhzsrjOA2EHXSVI+oX5jmtCEHMvr/
+ 7wmRXtEcEd4uxqBCJ4oniLy30jBvcGr4/jk5D0dpv4tA2h05qmryi4LHcnoVOh+Hm00e
+ MMGCYU1llGTM/sL4l7Yf5zkAwC+XcjOrXYofrAtFPMTfSTbeedSQe9hsrTcbl934Vqdf
+ CLlGbZGTMNtNedGh7jT6YTmW32RmWV24WdDGnK/Nkg7uV6EP+KxzE1zVByScZfcnR/mn
+ eVRBBpsoBkHYH2AeqctzfkwGBiNhu7H3ryLTx+jG5tZ5uH2ZnovJZZ7JH3SX+btz9ZWj
+ pQ0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=2jZAJ+JA6yywC1V20DY87yMWwfDYQMlsgax/CHNuUKA=;
+ b=VhBNWw4/4h8j8ijgbP/RHOvB6pkHgJmWiSbz0ALVeAMaOimSq9ExjFavLVurqj3Ncq
+ /u0+SUaZU2mhiFHNxsucyko7mKoWfT7LMxL0740eC+Y8HCQyHBrpPiuPEzD2MZZXbNQe
+ UAdaM4Of33YjnPekP0lHlbd7UKXtpdUyt6TA9r6j4wZGvlEeKbiVODzVEFp+ytDfyhuP
+ e4kTI9lcHa6/E1DGCJF0x1kR6NMcDJsdGDX3JeUMNQkb0bv/FOUgyPz89xn6tDudYsRp
+ o7hFkK8fyvA8pCscHfgSaUyfZqekpKPxZ00PqRLFc0ois/7vFlBYBxxtUr0d2lMSyM2m
+ N0pw==
+X-Gm-Message-State: AOAM531QmkudMLlNLkGMybQYI5zJCXNBQMxh3fj39NpoYF4bL62xS+xf
+ t3avwB2qxrVxrJLi99V0xmUqMPU4hhcVUdRQPI4=
+X-Google-Smtp-Source: ABdhPJwsbGx59samwR5vAj7S1DaqVuphUrywehVqnAhIN2MSzYcqKZuf12+M9uRcXBc+FRTGnuu73w==
+X-Received: by 2002:a17:90a:c70f:b0:1bf:3e2d:6cfa with SMTP id
+ o15-20020a17090ac70f00b001bf3e2d6cfamr26424465pjt.70.1649495645034; 
+ Sat, 09 Apr 2022 02:14:05 -0700 (PDT)
+Received: from guoguo-omen.lan ([2401:c080:1400:4da2:b701:47d5:9291:4cf9])
+ by smtp.gmail.com with ESMTPSA id
+ g6-20020a056a001a0600b004f7bd56cc08sm28351657pfv.123.2022.04.09.02.14.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 09 Apr 2022 02:14:04 -0700 (PDT)
+From: Chuanhong Guo <gch981213@gmail.com>
+To: linux-arm-kernel@lists.infradead.org
+Cc: Chuanhong Guo <gch981213@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, Ryder Lee <ryder.lee@mediatek.com>,
+ linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support), 
+ linux-kernel@vger.kernel.org (open list)
+Subject: [PATCH] arm: mediatek: select arch timer for mt7629
+Date: Sat,  9 Apr 2022 17:13:47 +0800
+Message-Id: <20220409091347.2473449-1-gch981213@gmail.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220409_021229_131132_F821799F 
-X-CRM114-Status: UNSURE (   8.24  )
+X-CRM114-CacheID: sfid-20220409_021413_640407_826760A0 
+X-CRM114-Status: UNSURE (   8.78  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,45 +91,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Xinlei Lee <xinlei.lee@mediatek.com>
+This chip has an armv7 arch timer according to the dts. Select it in
+Kconfig to enforce the support for it.
+Otherwise the system time is just completely wrong if user forget to
+enable ARM_ARCH_TIMER in kernel config.
 
-Add the compatible because use different cmdq addresses in mt8186.
-
-Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Fixes: a43379dddf1b ("arm: mediatek: add MT7629 smp bring up code")
+Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ arch/arm/mach-mediatek/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index ccb0511b9cd5..b13fd0317e96 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -1155,6 +1155,12 @@ static const struct mtk_dsi_driver_data mt8183_dsi_driver_data = {
- 	.has_size_ctl = true,
- };
+diff --git a/arch/arm/mach-mediatek/Kconfig b/arch/arm/mach-mediatek/Kconfig
+index 9e0f592d87d8..35a3430c7942 100644
+--- a/arch/arm/mach-mediatek/Kconfig
++++ b/arch/arm/mach-mediatek/Kconfig
+@@ -30,6 +30,7 @@ config MACH_MT7623
+ config MACH_MT7629
+ 	bool "MediaTek MT7629 SoCs support"
+ 	default ARCH_MEDIATEK
++	select HAVE_ARM_ARCH_TIMER
  
-+static const struct mtk_dsi_driver_data mt8186_dsi_driver_data = {
-+	.reg_cmdq_off = 0xd00,
-+	.has_shadow_ctl = true,
-+	.has_size_ctl = true,
-+};
-+
- static const struct of_device_id mtk_dsi_of_match[] = {
- 	{ .compatible = "mediatek,mt2701-dsi",
- 	  .data = &mt2701_dsi_driver_data },
-@@ -1162,6 +1168,8 @@ static const struct of_device_id mtk_dsi_of_match[] = {
- 	  .data = &mt8173_dsi_driver_data },
- 	{ .compatible = "mediatek,mt8183-dsi",
- 	  .data = &mt8183_dsi_driver_data },
-+	{ .compatible = "mediatek,mt8186-dsi",
-+	  .data = &mt8186_dsi_driver_data },
- 	{ },
- };
- MODULE_DEVICE_TABLE(of, mtk_dsi_of_match);
+ config MACH_MT8127
+ 	bool "MediaTek MT8127 SoCs support"
 -- 
-2.18.0
+2.35.1
 
 
 _______________________________________________
