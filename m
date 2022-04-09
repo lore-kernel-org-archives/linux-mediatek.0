@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9E28C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Apr 2022 13:25:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A2F5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Apr 2022 13:26:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2rX/B2N0DQZUSfXguXx/yuOSxSDwAO/mWVw+tkCe46Q=; b=QkU8CJN3CdvVHt
-	fnycjqS+KCx+2InvEWG8YZDh9EajlSeck5FAoAJWP31KFL1lEsxONAKXA9ZD1klnDxtStbHolDBWy
-	qKSTyj0SN5iKy1YqqPgxuRvqDvgr4zIMJtbnD/0sdSL4P04OvFI51XCsZ4clxoYTroLOh8tnEUlt5
-	+c8fYg+x5uTwo81vzsJ0ivPANeNv1YvzLuTEYqu26ZUzN1pu+5mU9QKKNRE+XRkwB5KpQ5Sfo46Oh
-	fOmvoSpH1K13N35dywciXV1aFkRrwHa+SSPrb7zXgQI5dR3tnI7drXtKd8ReYYpLTljwLlQHIkKDy
-	mjWNWYm5ymozmFGGHkzA==;
+	List-Owner; bh=zuL3zzlJCuilgYflb1Ympytc1jgMrakN1k8DiQn2d30=; b=aJS59D97E2AZAT
+	rhVBycSEtATlw/EJnPgvgWfhDmEoj4NQugcE+tMF4oNAzyxqOfRe0k/WqdeNPl2kGjGShkKn7v0WR
+	oO0LIdeOzJ9XU2fLTOMIML38MisF4H7cSUuuygISnCCYURz8EKP3ggKG0kQQxEP4JEQz0RonOeCgN
+	n2SHvGJZYnZTQZuX38EzhLRX/eFtjWe2v+xdc2dcqH/6Y4/c1LKLq1oOpjunPY6oVl0upkO09Nm0p
+	foXqx3po31vn2ETYm4pOUJD53tBsXSHvboKrJBkYj/rKP+DwyI+2ail01nC6fVX+dAiljFP/ZgpHn
+	cofOMBd4RkUHKkke9PyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndB5q-003C6T-2X; Sat, 09 Apr 2022 13:25:34 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ndB6C-003CKM-Tj; Sat, 09 Apr 2022 13:25:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndB48-003Ayy-3m; Sat, 09 Apr 2022 13:23:49 +0000
-X-UUID: 900bc30d28144538a9ae2d2fe7862c28-20220409
-X-UUID: 900bc30d28144538a9ae2d2fe7862c28-20220409
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ id 1ndB4A-003Azr-AC; Sat, 09 Apr 2022 13:23:51 +0000
+X-UUID: 67fccb6b84264d368c907bf7fe1b2e85-20220409
+X-UUID: 67fccb6b84264d368c907bf7fe1b2e85-20220409
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <chun-jie.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1025758653; Sat, 09 Apr 2022 06:23:44 -0700
+ with ESMTP id 1171016423; Sat, 09 Apr 2022 06:23:46 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 9 Apr 2022 06:23:42 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 9 Apr 2022 06:23:44 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Sat, 9 Apr 2022 21:23:40 +0800
+ Sat, 9 Apr 2022 21:23:43 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 9 Apr 2022 21:23:40 +0800
+ Frontend Transport; Sat, 9 Apr 2022 21:23:43 +0800
 From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
  <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
@@ -49,18 +49,17 @@ CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chun-Jie Chen
  <chun-jie.chen@mediatek.com>
-Subject: [PATCH v5 06/15] clk: mediatek: Add MT8186 imp i2c wrapper clock
- support
-Date: Sat, 9 Apr 2022 21:22:42 +0800
-Message-ID: <20220409132251.31725-7-chun-jie.chen@mediatek.com>
+Subject: [PATCH v5 07/15] clk: mediatek: Add MT8186 mfgsys clock support
+Date: Sat, 9 Apr 2022 21:22:43 +0800
+Message-ID: <20220409132251.31725-8-chun-jie.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220409132251.31725-1-chun-jie.chen@mediatek.com>
 References: <20220409132251.31725-1-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220409_062348_208483_328E4639 
-X-CRM114-Status: GOOD (  14.94  )
+X-CRM114-CacheID: sfid-20220409_062350_407615_F40FFDAE 
+X-CRM114-Status: GOOD (  15.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,37 +76,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8186 imp i2c wrapper clock controllers which provide clock gate
-control in i2c IP blocks.
+Add MT8186 mfg clock controller which provides clock gate
+control for GPU.
 
 Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/clk/mediatek/Makefile                 |  2 +-
- .../clk/mediatek/clk-mt8186-imp_iic_wrap.c    | 67 +++++++++++++++++++
- 2 files changed, 68 insertions(+), 1 deletion(-)
- create mode 100644 drivers/clk/mediatek/clk-mt8186-imp_iic_wrap.c
+ drivers/clk/mediatek/Makefile         |  3 +-
+ drivers/clk/mediatek/clk-mt8186-mfg.c | 48 +++++++++++++++++++++++++++
+ 2 files changed, 50 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8186-mfg.c
 
 diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 54ef957389ef..3510e8a0ecac 100644
+index 3510e8a0ecac..86e4f4d61688 100644
 --- a/drivers/clk/mediatek/Makefile
 +++ b/drivers/clk/mediatek/Makefile
-@@ -72,7 +72,7 @@ obj-$(CONFIG_COMMON_CLK_MT8183_MMSYS) += clk-mt8183-mm.o
+@@ -72,7 +72,8 @@ obj-$(CONFIG_COMMON_CLK_MT8183_MMSYS) += clk-mt8183-mm.o
  obj-$(CONFIG_COMMON_CLK_MT8183_VDECSYS) += clk-mt8183-vdec.o
  obj-$(CONFIG_COMMON_CLK_MT8183_VENCSYS) += clk-mt8183-venc.o
  obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt8186-infra_ao.o \
--				   clk-mt8186-apmixedsys.o
-+				   clk-mt8186-apmixedsys.o clk-mt8186-imp_iic_wrap.o
+-				   clk-mt8186-apmixedsys.o clk-mt8186-imp_iic_wrap.o
++				   clk-mt8186-apmixedsys.o clk-mt8186-imp_iic_wrap.o \
++				   clk-mt8186-mfg.o
  obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
  obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
  obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8186-imp_iic_wrap.c b/drivers/clk/mediatek/clk-mt8186-imp_iic_wrap.c
+diff --git a/drivers/clk/mediatek/clk-mt8186-mfg.c b/drivers/clk/mediatek/clk-mt8186-mfg.c
 new file mode 100644
-index 000000000000..47f2e480a05e
+index 000000000000..f1f92216f894
 --- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8186-imp_iic_wrap.c
-@@ -0,0 +1,67 @@
++++ b/drivers/clk/mediatek/clk-mt8186-mfg.c
+@@ -0,0 +1,48 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +//
 +// Copyright (c) 2022 MediaTek Inc.
@@ -120,61 +120,42 @@ index 000000000000..47f2e480a05e
 +#include "clk-gate.h"
 +#include "clk-mtk.h"
 +
-+static const struct mtk_gate_regs imp_iic_wrap_cg_regs = {
-+	.set_ofs = 0xe08,
-+	.clr_ofs = 0xe04,
-+	.sta_ofs = 0xe00,
++static const struct mtk_gate_regs mfg_cg_regs = {
++	.set_ofs = 0x4,
++	.clr_ofs = 0x8,
++	.sta_ofs = 0x0,
 +};
 +
-+#define GATE_IMP_IIC_WRAP(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &imp_iic_wrap_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++#define GATE_MFG(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &mfg_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
 +
-+static const struct mtk_gate imp_iic_wrap_clks[] = {
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C0,
-+		"imp_iic_wrap_ap_clock_i2c0", "infra_ao_i2c_ap", 0),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C1,
-+		"imp_iic_wrap_ap_clock_i2c1", "infra_ao_i2c_ap", 1),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C2,
-+		"imp_iic_wrap_ap_clock_i2c2", "infra_ao_i2c_ap", 2),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C3,
-+		"imp_iic_wrap_ap_clock_i2c3", "infra_ao_i2c_ap", 3),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C4,
-+		"imp_iic_wrap_ap_clock_i2c4", "infra_ao_i2c_ap", 4),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C5,
-+		"imp_iic_wrap_ap_clock_i2c5", "infra_ao_i2c_ap", 5),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C6,
-+		"imp_iic_wrap_ap_clock_i2c6", "infra_ao_i2c_ap", 6),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C7,
-+		"imp_iic_wrap_ap_clock_i2c7", "infra_ao_i2c_ap", 7),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C8,
-+		"imp_iic_wrap_ap_clock_i2c8", "infra_ao_i2c_ap", 8),
-+	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_AP_CLOCK_I2C9,
-+		"imp_iic_wrap_ap_clock_i2c9", "infra_ao_i2c_ap", 9),
++static const struct mtk_gate mfg_clks[] = {
++	GATE_MFG(CLK_MFG_BG3D, "mfg_bg3d", "top_mfg", 0),
 +};
 +
-+static const struct mtk_clk_desc imp_iic_wrap_desc = {
-+	.clks = imp_iic_wrap_clks,
-+	.num_clks = ARRAY_SIZE(imp_iic_wrap_clks),
++static const struct mtk_clk_desc mfg_desc = {
++	.clks = mfg_clks,
++	.num_clks = ARRAY_SIZE(mfg_clks),
 +};
 +
-+static const struct of_device_id of_match_clk_mt8186_imp_iic_wrap[] = {
++static const struct of_device_id of_match_clk_mt8186_mfg[] = {
 +	{
-+		.compatible = "mediatek,mt8186-imp_iic_wrap",
-+		.data = &imp_iic_wrap_desc,
++		.compatible = "mediatek,mt8186-mfgsys",
++		.data = &mfg_desc,
 +	}, {
 +		/* sentinel */
 +	}
 +};
 +
-+static struct platform_driver clk_mt8186_imp_iic_wrap_drv = {
++static struct platform_driver clk_mt8186_mfg_drv = {
 +	.probe = mtk_clk_simple_probe,
 +	.remove = mtk_clk_simple_remove,
 +	.driver = {
-+		.name = "clk-mt8186-imp_iic_wrap",
-+		.of_match_table = of_match_clk_mt8186_imp_iic_wrap,
++		.name = "clk-mt8186-mfg",
++		.of_match_table = of_match_clk_mt8186_mfg,
 +	},
 +};
-+builtin_platform_driver(clk_mt8186_imp_iic_wrap_drv);
++builtin_platform_driver(clk_mt8186_mfg_drv);
 -- 
 2.18.0
 
