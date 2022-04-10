@@ -4,64 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B13AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Apr 2022 13:45:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E860BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Apr 2022 20:32:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=hVamVknxgIT3Um32WE8aMEdRNZdI1eFwN1NJImy80ak=; b=WajVPdxjjdZwGD
-	ZUDBO+ywe0o7jykuqvJqGllIj1T0jp2KDPlvuGZCsWasJV3crd4S1vWyOGRI16P5XETz7EmxY0+YG
-	IkP8L+59f97QZF0oxsT0nNoRCcJwegwhb7wfsPF3vi9Nw//XP3sxIIiWe233ybVzzr+H1vVTxF8E1
-	6trMHnfwVjJs2s0A4Ijf0EHXxG77jyenTT8mnV4Oreh/FxeqAsAhKGi6YTng+Y1i7PGelEU2m472/
-	Sd+YMUNrezvfqpXuS5QkhWXMDR0EeBhN05641crqrRvN7WgfdZe5rU3PPg9S2DoklnVZurLePIBvB
-	Xw6V1m2+y9c3E9IjaNIg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/OdfYxw8x079rKPz8izfvdoY9a2vurustwtIpeloGqM=; b=hnm364PSOgY6UP
+	2gEwwTGBPdpdVFitcWQbFRewiTHURxacWHM472Ro/u69hMmPlmxjjjtURiJ4HtR8qYMFw/hAePwZv
+	6ulGTTlWMygIYS8AvGJs3tLAFQx6hwI5NdGf93rVxSa5g9d5z2lHbB5jpds5LJXb8Yb+J+wV+5BKl
+	5HbyvaKSQ1WH6W9wC9QLiuM8lwehLkUtEcCNn1q1uOYyS5eV/vYSX4kt6Z4qLk09P2sjEfZSfa2jp
+	IvSZviZg5OQYQ2xGAV9dDb6I4H8l0cIRcKqunjPW5g+Nlg7kARdXICURPk7BMZ+16dpQl6WoqYBQJ
+	vv+eNaBoY6u/snwSAytA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndBOj-003HwP-7D; Sat, 09 Apr 2022 13:45:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ndeEZ-005RSi-H7; Sun, 10 Apr 2022 20:32:31 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndBOh-003HvD-AU
- for linux-mediatek@lists.infradead.org; Sat, 09 Apr 2022 13:45:04 +0000
-X-UUID: a08b457ac65f4360806156ad81602592-20220409
-X-UUID: a08b457ac65f4360806156ad81602592-20220409
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <deren.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1365785634; Sat, 09 Apr 2022 06:44:57 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 9 Apr 2022 06:44:56 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 9 Apr 2022 21:44:42 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 9 Apr 2022 21:44:41 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
- YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
- Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
- KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
- <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
- <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
- Chen" <shayne.chen@mediatek.com>, linux-wireless
- <linux-wireless@vger.kernel.org>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH] mt76: fix antenna config missing in 6G cap
-Date: Sat, 9 Apr 2022 21:44:07 +0800
-Message-ID: <357763fe0b112838d500422a27b114b4281adb9a.1649511465.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1ndeEK-005RNG-Aa; Sun, 10 Apr 2022 20:32:17 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1649622729; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=GEQjRguIJZYHBHb1etQ4PriBmnya+eD7hSHE4mtsUSoj/AC+g2WgUYB5vmChbmJO1KqjiPZ4xmNQJeZJMULWDNHAltgSKTkfne3bsqXTK/MbZn1529kND4GcEblYIQtzh9nShoDHI4qIb6Dkix3s/P9Hog8HvauakmhgKBm8ywk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1649622729;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To;
+ bh=XK2YqT7nlytvRR0jjgieJSJ0MKgXSnwQ6QlocLMC3Yg=; 
+ b=agFnNEWp7AeMpce2wS6R5M0CSwLzTeimeR5JIRInnIXlwZBuf/KDI/1H+m0RD3C3O/G6JUxm0w7Sainl14DEK9KggZ7zuOqBy+WfvkAoNVgP8R3zpgZO+oYNxYRkXVYfGJ02x5wsQKmN7McrZNdbpAApXdyTvSyLs9yKG+K7Xzg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=arinc9.com;
+ spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+ dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1649622729; 
+ s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+ h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
+ bh=XK2YqT7nlytvRR0jjgieJSJ0MKgXSnwQ6QlocLMC3Yg=;
+ b=JfnbIWgD67HPe2UUlSbDAHUl6AiTVDLpixgd+RjFuozcX6EWtN/0NtCeA7ymmRQG
+ 7tKd/M/kLdFsVkE9360EffYBZvG6pfgYFIdcQIT2jk9CcegJ+7aOxLj6IKU753oLEoG
+ jlGTKSZw8AnKxjHvVFvQBVV9umWWJ4MC2dzolCm8=
+Received: from arinc9-PC.localdomain (85.117.236.245 [85.117.236.245]) by
+ mx.zohomail.com with SMTPS id 1649622727528283.822930182718;
+ Sun, 10 Apr 2022 13:32:07 -0700 (PDT)
+From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mips@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+Subject: [PATCH 2/3] mips: dts: mt7621: mux phy4 to gmac1 for GB-PC1
+Date: Sun, 10 Apr 2022 23:31:37 +0300
+Message-Id: <20220410203138.22513-2-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220410203138.22513-1-arinc.unal@arinc9.com>
+References: <20220410203138.22513-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
-X-MTK: N
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220409_064503_410930_6CAF66A4 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20220410_133216_456960_045F809B 
+X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,49 +78,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
-
-To make sure we have the proper antenna config in 6g cap,
-move IEEE80211_VHT_CAP_[T/R]X_ANTENNA_PATTERN to stream init.
-
-Fixes: f1103fa6b3492 ("mt76: add TX/RX antenna pattern capabilities")
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mac80211.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index 026ab1e16d45..2dd3ebd1863f 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -248,6 +248,8 @@ static void mt76_init_stream_cap(struct mt76_phy *phy,
- 		vht_cap->cap |= IEEE80211_VHT_CAP_TXSTBC;
- 	else
- 		vht_cap->cap &= ~IEEE80211_VHT_CAP_TXSTBC;
-+	vht_cap->cap |= IEEE80211_VHT_CAP_TX_ANTENNA_PATTERN |
-+			IEEE80211_VHT_CAP_RX_ANTENNA_PATTERN;
- 
- 	for (i = 0; i < 8; i++) {
- 		if (i < nstream)
-@@ -323,8 +325,6 @@ mt76_init_sband(struct mt76_phy *phy, struct mt76_sband *msband,
- 	vht_cap->cap |= IEEE80211_VHT_CAP_RXLDPC |
- 			IEEE80211_VHT_CAP_RXSTBC_1 |
- 			IEEE80211_VHT_CAP_SHORT_GI_80 |
--			IEEE80211_VHT_CAP_RX_ANTENNA_PATTERN |
--			IEEE80211_VHT_CAP_TX_ANTENNA_PATTERN |
- 			(3 << IEEE80211_VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_SHIFT);
- 
- 	return 0;
--- 
-2.18.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+TXV4IHRoZSBNVDc1MzAgc3dpdGNoJ3MgcGh5NCB0byB0aGUgU29DJ3MgZ21hYzEgb24gdGhlIEdC
+LVBDMSBkZXZpY2V0cmVlLgpUaGlzIGFjaGlldmVzIDIgR2JwcyB0b3RhbCBiYW5kd2lkdGggdG8g
+dGhlIENQVSB1c2luZyB0aGUgc2Vjb25kIFJHTUlJLgoKU2lnbmVkLW9mZi1ieTogQXLEsW7DpyDD
+nE5BTCA8YXJpbmMudW5hbEBhcmluYzkuY29tPgotLS0KIC4uLi9ib290L2R0cy9yYWxpbmsvbXQ3
+NjIxLWdudWJlZS1nYi1wYzEuZHRzICAgfCAxOCArKysrKysrKysrLS0tLS0tLS0KIDEgZmlsZSBj
+aGFuZ2VkLCAxMCBpbnNlcnRpb25zKCspLCA4IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2Fy
+Y2gvbWlwcy9ib290L2R0cy9yYWxpbmsvbXQ3NjIxLWdudWJlZS1nYi1wYzEuZHRzIGIvYXJjaC9t
+aXBzL2Jvb3QvZHRzL3JhbGluay9tdDc2MjEtZ251YmVlLWdiLXBjMS5kdHMKaW5kZXggNTg5MmJj
+ZjcxNTk1Li43NWYzYjA0MjU0ODcgMTAwNjQ0Ci0tLSBhL2FyY2gvbWlwcy9ib290L2R0cy9yYWxp
+bmsvbXQ3NjIxLWdudWJlZS1nYi1wYzEuZHRzCisrKyBiL2FyY2gvbWlwcy9ib290L2R0cy9yYWxp
+bmsvbXQ3NjIxLWdudWJlZS1nYi1wYzEuZHRzCkBAIC0xMDMsMTQgKzEwMywyMSBAQCAmcGluY3Ry
+bCB7CiAKIAlzdGF0ZV9kZWZhdWx0OiBzdGF0ZS1kZWZhdWx0IHsKIAkJZ3Bpby1waW5tdXggewot
+CQkJZ3JvdXBzID0gInJnbWlpMiIsICJ1YXJ0MyIsICJ3ZHQiOworCQkJZ3JvdXBzID0gInVhcnQz
+IiwgIndkdCI7CiAJCQlmdW5jdGlvbiA9ICJncGlvIjsKIAkJfTsKIAl9OwogfTsKIAotJmV0aGVy
+bmV0IHsKLQlwaW5jdHJsLTAgPSA8Jm1kaW9fcGlucz4sIDwmcmdtaWkxX3BpbnM+OworJmdtYWMx
+IHsKKwlzdGF0dXMgPSAib2theSI7CisJcGh5LWhhbmRsZSA9IDwmZXRocGh5ND47Cit9OworCism
+bWRpbyB7CisJZXRocGh5NDogZXRoZXJuZXQtcGh5QDQgeworCQlyZWcgPSA8ND47CisJfTsKIH07
+CiAKICZzd2l0Y2gwIHsKQEAgLTExOSwxMCArMTI2LDUgQEAgcG9ydEAwIHsKIAkJCXN0YXR1cyA9
+ICJva2F5IjsKIAkJCWxhYmVsID0gImV0aGJsYWNrIjsKIAkJfTsKLQotCQlwb3J0QDQgewotCQkJ
+c3RhdHVzID0gIm9rYXkiOwotCQkJbGFiZWwgPSAiZXRoYmx1ZSI7Ci0JCX07CiAJfTsKIH07Ci0t
+IAoyLjI1LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LW1lZGlhdGVrCg==
