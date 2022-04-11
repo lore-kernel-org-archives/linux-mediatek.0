@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D11EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 07:18:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC86CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 07:19:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GhscptkY+y0Kr7ik2TO9FkW/vTvqUzE++A3aknj/swY=; b=eztG4Q0XbkPo5+
-	TbfBd71wTTe8JJzt824gBaXlQwNYssYLH75Fc+jqA4AUqGBFQYxFndipX7lLJqCLv3VibMMHBkAjl
-	IA2n0mAVXD5SGu8BzdF88M8ca0zQ1F7zMlCHjRdWG1dXUFyPo/MwTn7Nzw8igMWItvPAQXF8nKKcB
-	upBJhtT7lle7E0hW0LcxUQU5Z6cZXxh57hvA+OISKwFZdC9oDhTetHL8SGUzo+wzlIepNvy8pg4xA
-	cm/ZgGnCCxARRYo30gulNBbOst269gKhpzvvjxzBRmBvtHCsyuP2IDdxaa9kOO1URv9GB4cQDCCCl
-	d3TE1ZhsV0aWNVYu78NA==;
+	List-Owner; bh=68roncnbL3qddrg/5bXOUP705uZ4xvg4iFqDbz888Rs=; b=TGNe06RkZXAMQt
+	XpywcQlGeVOC4XKqCcmQZdqMnc0JuLNBdY9SsSnHy77kB40IIIPjq/ZKMqoFBAHWu4E3GNCm3UG8w
+	4gYOzmjhtvipfFATBpqzVNgiKCFaxl96QOU96VxysUap5yDT446eKpQ0OfsLVOs7I5EUzuc34uJfp
+	obS6AEOidIYnx7MhVRMGuyDD3AjJPaEdJ8xk+Bq0+f6jjOl25AvUH9vOhs7zoFlDovuhdtcqIjSmM
+	xUMdCUP47Z2YbiZU+4xU0jZylYgh2AIS8dwfiMoSLvNTYgHPSJdV407qpv8WM4qQfQL+0+CFuKSiu
+	0ny8XXzGc6SMB0k6DhXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndoJO-00797z-Hs; Mon, 11 Apr 2022 07:18:10 +0000
-Received: from relay8-d.mail.gandi.net ([2001:4b98:dc4:8::228])
+	id 1ndoKb-0079k8-0j; Mon, 11 Apr 2022 07:19:25 +0000
+Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndoJD-00793c-9H; Mon, 11 Apr 2022 07:18:00 +0000
-Received: (Authenticated sender: miquel.raynal@bootlin.com)
- by mail.gandi.net (Postfix) with ESMTPSA id EA8DA1BF209;
- Mon, 11 Apr 2022 07:17:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
- t=1649661475;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=D9HxmNH+wJTJwEE9weq82YmxGUP8sTv4/gZsbkYd/po=;
- b=eUK4j613W9p5rbtFtbqoBW6fzrINyPazW0/xq15eOENxAZ4v3OJTIAr9VdbwjG2g1U8Vfw
- WkzEuOPFR/+96ne8arHo7UNOsm7ki1S0qPNSTbme1/8q2KfrPCCs3Q1nPs9AfY5kWZpcZE
- AAovSUS5TJR93Nem25GRQs3t8luz9hHNOvJDASk4ga/6z4QFMILWxUqQKzds30J7SH/PGx
- 4q5wWE4MhaYCQGCJ6XtDZGaVxO5ataCd4Lcq94+80Gr5Rq9UsBGU/uAiZNDsPPwf4cqGd5
- ioUrOAZq6oQRqrmZQi2Qves+YU7YlrnA491bo7cU1sJd32fDlSkU7StW1wQbSw==
-Date: Mon, 11 Apr 2022 09:17:49 +0200
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Chuanhong Guo <gch981213@gmail.com>
-Cc: Mark Brown <broonie@kernel.org>, linux-spi@vger.kernel.org, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Richard Weinberger <richard@nod.at>,
- Vignesh Raghavendra <vigneshr@ti.com>, Roger Quadros <rogerq@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Cai Huoqing
- <cai.huoqing@linux.dev>, Florian Fainelli <f.fainelli@gmail.com>, Colin Ian
- King <colin.king@intel.com>, Wolfram Sang
- <wsa+renesas@sang-engineering.com>, Paul Cercueil <paul@crapouillou.net>,
- Pratyush Yadav <p.yadav@ti.com>, Yu Kuai <yukuai3@huawei.com>, "open
- list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, open list
- <linux-kernel@vger.kernel.org>, "open list:NAND FLASH SUBSYSTEM"
- <linux-mtd@lists.infradead.org>
-Subject: Re: [PATCH v4 1/5] mtd: nand: make mtk_ecc.c a separated module
-Message-ID: <20220411091749.63e0aad9@xps13>
-In-Reply-To: <CAJsYDV+SkL0yCroidGz4yzKbdj5Yx37a0DW9RLftKsceSFGnnw@mail.gmail.com>
-References: <20220407150652.21885-1-gch981213@gmail.com>
- <20220407150652.21885-2-gch981213@gmail.com>
- <20220408083214.1473e88a@xps13> <YlAqSQ5w3y39aOy+@sirena.org.uk>
- <CAJsYDV+SkL0yCroidGz4yzKbdj5Yx37a0DW9RLftKsceSFGnnw@mail.gmail.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 3.17.7 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+ id 1ndoKP-0079ei-8y; Mon, 11 Apr 2022 07:19:14 +0000
+Received: by mail-qt1-x831.google.com with SMTP id j21so15717245qta.0;
+ Mon, 11 Apr 2022 00:19:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=uvgV1BY+rIPRMf+tZuNXq+JhBBxIhG+vco4o8o6aSBw=;
+ b=mWOtVNkFDzMdiNlXsUeyEC2ncDj4Ap7ulhZdoJRfh3ABVy6LbMdz2sEJLbKkWnS48l
+ oauHFy/UxsrKpQk4vd6soiizLr14hjnR+ApN1mmQST0tOFNi8+0Kx435q30Y4KBEkizT
+ LWfvSG0/Qq537aV9QFOSz5A+LjuimqF1Hu95cCB/B9y6Xad2KNXnsrJBci6FRQqhXhWt
+ 2Qj1Y9PK+PVOidciSGQlIeuNDF09dvUi1yBWB3L106+13u3I3rAzNcX0qF9ewme1Pepe
+ 9/MYacEHNNXoe03+vMPWENFdOz6lIEx03hITkzOeYfM/O+bNrZRwCqDV5MWvV3hDoW3G
+ J28A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=uvgV1BY+rIPRMf+tZuNXq+JhBBxIhG+vco4o8o6aSBw=;
+ b=ZMX+w9pBS5LD9KWv9hHeEPeRAp09tZrDKplgfOGZzKzrEUfM0BfLty4KuAyw0lMZo3
+ 0hxMs3rF8FsYCEouIMgi9ibYCie3cINSZSUiggx81M1YNSf69060wPricVuEqyVKeeQq
+ 9TIioQQoc5kKN1uHofaV1WtfkevDza9FTkwerT9tRLIVUaX+hSFEIeViU3z8UGmef5aW
+ Qdml2Oe+3fz+Xf39hyujYjnHjWnCGy39a9J9PHWWxRffy3sXZPp84dVGil046de3YpNn
+ 8ylGsqASetU6nMgsPCuASe5yIXDwNTrEAMAHFeXZbXUQ9CzCNeura1iBrRyuAtUz3QnU
+ HnWw==
+X-Gm-Message-State: AOAM530UlE8EujVIpAXqW/5Lx7IWYOQT2aIZq310RFrjL0C5G6ZynnZb
+ 8ZeHvT73eLaEJxq5bjWu1AvMmOjaXFhD9wnXQP8=
+X-Google-Smtp-Source: ABdhPJySdwKqOUwuJc4UxhKp3iYsvAFTJ6rHdh1IeEv+ZV+V9wOJqdT5lSwvct1LEYKzySv1xmuLv5MNkexC7ELCjgY=
+X-Received: by 2002:ac8:7c46:0:b0:2e1:d6c2:2b15 with SMTP id
+ o6-20020ac87c46000000b002e1d6c22b15mr24649120qtv.405.1649661551017; Mon, 11
+ Apr 2022 00:19:11 -0700 (PDT)
 MIME-Version: 1.0
+References: <20220410203138.22513-1-arinc.unal@arinc9.com>
+In-Reply-To: <20220410203138.22513-1-arinc.unal@arinc9.com>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Mon, 11 Apr 2022 09:19:00 +0200
+Message-ID: <CAMhs-H8kho3wySRzkdnauJwcscUVLjcnQiKbOOw52amxmWtH0A@mail.gmail.com>
+Subject: Re: [PATCH 1/3] mips: dts: mt7621: add mdio label to mdio-bus
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ "open list:MIPS" <linux-mips@vger.kernel.org>, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220411_001759_528300_E28EC8E2 
-X-CRM114-Status: GOOD (  14.84  )
+X-CRM114-CacheID: sfid-20220411_001913_369194_BE0D24EE 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,20 +88,16 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgTWFyaywKCmdjaDk4MTIxM0BnbWFpbC5jb20gd3JvdGUgb24gU2F0LCA5IEFwciAyMDIyIDE5
-OjA4OjU3ICswODAwOgoKPiBIaSBNYXJrIQo+IAo+IE9uIEZyaSwgQXByIDgsIDIwMjIgYXQgODoy
-OCBQTSBNYXJrIEJyb3duIDxicm9vbmllQGtlcm5lbC5vcmc+IHdyb3RlOgo+ID4KPiA+IE9uIEZy
-aSwgQXByIDA4LCAyMDIyIGF0IDA4OjMyOjE0QU0gKzAyMDAsIE1pcXVlbCBSYXluYWwgd3JvdGU6
-Cj4gPiAgCj4gPiA+IE90aGVyd2lzZSBvbiB0aGUgTVREIHNpZGUgdGhlIHNlcmllcyBsb29rcyBn
-b29kIChiZXNpZGVzIHRoZSB0d28KPiA+ID4gY29tbWVudHMgeW91IGFscmVhZHkgcmVjZWl2ZWQp
-LiAgCj4gPgo+ID4gV2hhdCdzIHRoZSBwbGFuIGZvciBtZXJnaW5nIHRoZW4/ICAKPiAKPiBJIGp1
-c3QgdGVzdGVkIHRoaXMgZHJpdmVyIG9uIGEgZGlmZmVyZW50IGNoaXAgYW5kIGZvdW5kIG91dCBp
-dCdzIGJ1Z2d5Cj4gdGhlcmUuIEknbSBzdGlsbCBkZWJ1Z2dpbmcuCj4gUGxlYXNlIHdhaXQgZm9y
-IHY1IG9mIHRoaXMgc2VyaWVzLiBTb3JyeS4KCldlIG5lZWQgdG8gbWVyZ2UgdGhpcyBzZXJpZXMg
-aW4gYW4gaW1tdXRhYmxlIGJyYW5jaC4gUGVyaGFwcyBhcyB0aGUgYmlnCiJwYXJ0IiBpcyB0aGUg
-U1BJIGNvbnRyb2xsZXIgZHJpdmVyLCBpdCBzaG91bGQgcHJlZmVyYWJseSBnbyB0aHJvdWdoCnNw
-aSwgYnV0IEknbSBmaW5lIGVpdGhlciB3YXlzLCBsZXQgbWUga25vdyB3aGF0IHlvdSBwcmVmZXIu
-CgpUaGFua3MsCk1pcXXDqGwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtbWVkaWF0ZWsK
+T24gU3VuLCBBcHIgMTAsIDIwMjIgYXQgMTA6MzIgUE0gQXLEsW7DpyDDnE5BTCA8YXJpbmMudW5h
+bEBhcmluYzkuY29tPiB3cm90ZToKPgo+IEFkZCBtZGlvIGxhYmVsIHRvIHRoZSBtZGlvLWJ1cyBu
+b2RlIHRvIGVhc2lseSByZWZlciB0byBpdC4KPgo+IFVzZSB0aGUgbmV3bHkgY3JlYXRlZCBsYWJl
+bCBvbiB0aGUgR0ItUEMyIGRldmljZXRyZWUuCj4KPiBTaWduZWQtb2ZmLWJ5OiBBcsSxbsOnIMOc
+TkFMIDxhcmluYy51bmFsQGFyaW5jOS5jb20+Cj4gLS0tCj4gIC4uLi9ib290L2R0cy9yYWxpbmsv
+bXQ3NjIxLWdudWJlZS1nYi1wYzIuZHRzICAgfCAxOCArKysrKysrKy0tLS0tLS0tLS0KPiAgYXJj
+aC9taXBzL2Jvb3QvZHRzL3JhbGluay9tdDc2MjEuZHRzaSAgICAgICAgICB8ICAyICstCj4gIDIg
+ZmlsZXMgY2hhbmdlZCwgOSBpbnNlcnRpb25zKCspLCAxMSBkZWxldGlvbnMoLSkKClJldmlld2Vk
+LWJ5OiBTZXJnaW8gUGFyYWN1ZWxsb3MgPHNlcmdpby5wYXJhY3VlbGxvc0BnbWFpbC5jb20+CgpU
+aGFua3MsCiAgICBTZXJnaW8gUGFyYWN1ZWxsb3MKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1t
+ZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
