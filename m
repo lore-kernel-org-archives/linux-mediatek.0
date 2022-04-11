@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92303C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 08:11:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0D92C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 08:12:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nR7v7rkolfHES7nW4yR5joGd4vXIkTOSDiJXeQABntk=; b=n2VuLwU3KJjNM/
-	FRJGYzmqUyTYkmIEJKjVnm8yM4hKxFocJJIChGSmqMhLxNy8xvfr0B7s29SEWVDL+qkaKvqY01vtk
-	aYOT+u6ANJNrXqDSK9ltdDQzlQVduK6h6UgYI/xVtEvPcy8Jv1ULpXKDpuYuG7qGM1d276XM2yAJv
-	oJT8aDVl6MWbGp7wj/y3mWNksSuegJuWGddhzGun/6b3ZaqvmGy5usvYo6NQNrH6pWMUcZCnBYRnK
-	fd81XQLA7Y6mu7V7lFzkm2uY8LiJBdEprqc7tAuH++fNtvUJcpZssTRj2H2LKe7jc9tx0DPfqJ9HZ
-	RaiEyUybmyEF06MBoXAQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=uiBKHqmIQGf3jKE5X12Di+RIZKbd1HHzQ9eTLOup1T4=; b=c4Xa5YECG9+iJs
+	yS4x+kqlgza0kGo3Y6wCVMOTRVfoFP5NCXOAQXCS4BYUiwG1lVcUScsuH3XLtCrgzoW+/8XezTmKD
+	cxvSuk5RzzWpxblGMQ2hMjZHuYkEfjxQzYa9zYFmMgks3i92UNXqNZwwdG2BQIwJCqp3zjTg+o87i
+	vdr0laoGitVDANnDfGjaEyK/upmUGBV95aCcUGpiSMVCNBFuD/4ojEVBFjCfb+ffnI2NBj1VVpmli
+	ciIjXYVosDHnYvD+A08WbmBUnwFtW6D2xa5Bg2uPyqOltUC4G7H6TgQCI8RceVK8qQaMp4mvogCkM
+	RqS+qZ8le52lozVf2LQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndp9G-007SiO-L6; Mon, 11 Apr 2022 08:11:46 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1ndp9Q-007Slh-8y; Mon, 11 Apr 2022 08:11:56 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndp94-007ScD-8Z; Mon, 11 Apr 2022 08:11:35 +0000
-Received: from pendragon.ideasonboard.com
- (cpc89244-aztw30-2-0-cust3082.18-1.cable.virginm.net [86.31.172.11])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9F06F596;
- Mon, 11 Apr 2022 10:11:28 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1649664688;
- bh=MLYkgbpD54iW6+0JAiuvwZl8Q20HOOXZR9m9Prv7njw=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=ce7Bg1cdNzrLNOY6mAtdqI87+BAgT7n8mBUFY0XyebE2eW45SUhW8XDpVvj4tN3a4
- 3ef+02Z4PslMY6wGlvA2hVC7ePDBbiC7o1d2cw2EGLIwSuowcvwKxFd7AomrjMMdU3
- 9yK4dmUoLp+IQ9WJUdmdLA2kUQFb4GTuYAEyqgc0=
-MIME-Version: 1.0
-In-Reply-To: <20220411080120.26008-2-Ping-lei.Lin@mediatek.com>
-References: <20220411080120.26008-1-Ping-lei.Lin@mediatek.com>
- <20220411080120.26008-2-Ping-lei.Lin@mediatek.com>
-Subject: Re: [PATCH v2 1/2] media: usb: uvc: Add H265 pixel format
-From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Arnd Bergmann <arnd@arndb.de>,
- Ricardo Ribalda <ribalda@chromium.org>, Ming Qian <ming.qian@nxp.com>,
- Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- ping-lei.lin@mediatek.com, lecopzer.chen@mediatek.com, max.yan@mediatek.com,
- sherlock.chang@mediatek.com, tm.wu@mediatek.com,
+ id 1ndp96-007Se7-Ex; Mon, 11 Apr 2022 08:11:37 +0000
+X-UUID: 7297a1bd8e2947aaa46829392e256ce4-20220411
+X-UUID: 7297a1bd8e2947aaa46829392e256ce4-20220411
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ping-lei.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 200753200; Mon, 11 Apr 2022 01:11:31 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 11 Apr 2022 01:01:30 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 11 Apr 2022 16:01:28 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 11 Apr 2022 16:01:28 +0800
+From: James_Lin <Ping-lei.Lin@mediatek.com>
+To: <linux-kernel@vger.kernel.org>
+CC: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, "Mauro Carvalho
+ Chehab" <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "Hans Verkuil" <hverkuil-cisco@xs4all.nl>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>, Arnd Bergmann <arnd@arndb.de>, "Ricardo
+ Ribalda" <ribalda@chromium.org>, Ming Qian <ming.qian@nxp.com>, "Andrzej
+ Pietrasiewicz" <andrzej.p@collabora.com>, Sakari Ailus
+ <sakari.ailus@linux.intel.com>, <linux-media@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <ping-lei.lin@mediatek.com>, <lecopzer.chen@mediatek.com>,
+ <max.yan@mediatek.com>, <sherlock.chang@mediatek.com>, <tm.wu@mediatek.com>,
  James_Lin <Ping-lei.Lin@mediatek.com>
-To: James_Lin <Ping-lei.Lin@mediatek.com>, linux-kernel@vger.kernel.org
-Date: Mon, 11 Apr 2022 09:11:25 +0100
-Message-ID: <164966468564.22830.10326597921182135832@Monstersaurus>
-User-Agent: alot/0.10
+Subject: [PATCH v2 0/2] media: Add H265 pixel format
+Date: Mon, 11 Apr 2022 16:01:18 +0800
+Message-ID: <20220411080120.26008-1-Ping-lei.Lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220411_011134_489146_BE65EE51 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20220411_011136_528633_979BF3BF 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,55 +77,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting James_Lin (2022-04-11 09:01:19)
-> Add H265 pixel format.
-> So driver can recognize external camera devices 
-> whom use h265 to describe High Efficiency Video Coding method.
-> 
-> Signed-off-by: James_Lin <Ping-lei.Lin@mediatek.com>
-> ---
->  drivers/media/usb/uvc/uvc_driver.c | 5 +++++
->  drivers/media/usb/uvc/uvcvideo.h   | 3 +++
->  2 files changed, 8 insertions(+)
-> 
-> diff --git a/drivers/media/usb/uvc/uvc_driver.c b/drivers/media/usb/uvc/uvc_driver.c
-> index dda0f0aa78b8..ebb807c33e57 100644
-> --- a/drivers/media/usb/uvc/uvc_driver.c
-> +++ b/drivers/media/usb/uvc/uvc_driver.c
-> @@ -154,6 +154,11 @@ static struct uvc_format_desc uvc_fmts[] = {
->                 .guid           = UVC_GUID_FORMAT_H264,
->                 .fcc            = V4L2_PIX_FMT_H264,
->         },
-> +       {
-> +               .name           = "H.265",
-> +               .guid           = UVC_GUID_FORMAT_H265,
-> +               .fcc            = V4L2_PIX_FMT_H265,
+Hi All,
 
-This is not yet defined I believe, so this patch needs to be 2/2 in this
-series - with your following patch first so that they can both compile
-independently.
+This patch series aims to add H265 pixel format (aka hevc).
+High Efficiency Video Coding (HEVC), also known as H.265 and MPEG-H Part 2.
+They describe the same video encoding method.
+So for handling their behavior is the same.
+However, when external camera device describes this encoding method, 
+some use hevc, some use h265.
+There is no uniform specification to describe this encoding method.
+So if an external camera device use h265 to describe this encoding method,
+driver will not recognize it.
+Therefore, this patch series aims to add H265 pixel format 
+to avoid this situation
 
-> +       },
->         {
->                 .name           = "Greyscale 8 L/R (Y8I)",
->                 .guid           = UVC_GUID_FORMAT_Y8I,
-> diff --git a/drivers/media/usb/uvc/uvcvideo.h b/drivers/media/usb/uvc/uvcvideo.h
-> index 143230b3275b..41f4d8c33f2a 100644
-> --- a/drivers/media/usb/uvc/uvcvideo.h
-> +++ b/drivers/media/usb/uvc/uvcvideo.h
-> @@ -139,6 +139,9 @@
->  #define UVC_GUID_FORMAT_H264 \
->         { 'H',  '2',  '6',  '4', 0x00, 0x00, 0x10, 0x00, \
->          0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71}
-> +#define UVC_GUID_FORMAT_H265 \
-> +       { 'H',  '2',  '6',  '5', 0x00, 0x00, 0x10, 0x00, \
-> +        0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71}
->  #define UVC_GUID_FORMAT_Y8I \
->         { 'Y',  '8',  'I',  ' ', 0x00, 0x00, 0x10, 0x00, \
->          0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71}
-> -- 
-> 2.18.0
->
+James_Lin (2):
+  media: usb: uvc: Add H265 pixel format
+  media: v4l: Add H265 pixel format 
+
+ .../userspace-api/media/v4l/pixfmt-compressed.rst      | 10 ++++++++++
+ drivers/media/usb/uvc/uvc_driver.c                     |  5 +++++
+ drivers/media/usb/uvc/uvcvideo.h                       |  3 +++
+ drivers/media/v4l2-core/v4l2-ioctl.c                   |  1 +
+ include/uapi/linux/videodev2.h                         |  1 +
+ 5 files changed, 20 insertions(+)
+
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
