@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FD86C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 10:51:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23276C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 10:57:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hCvYSt1KDinfxk7rARAHF7Sne1//ytPzSxJeJm0m75A=; b=ioyvGqL0RvYSg8
-	vOV6QMak7xhO1AAY8hOp+JefWSqj+i796+u7Qn5VWgaJsu4xaT0VvRHR8CobEE+sP43TZUHgATm1h
-	VS0VKPvCppX/IZWcvaRwXT8Y6z66+C9NwsszXBcc4Y3dmTyjFyEc5c5vbRBPIDeDC4n4HVC5FLYsX
-	YER2qj8JhQ7az9Z5VCZVFq6wpOITxexIoZJBzVYdbBTUyPfBQnshtO3bF7YhfeItNP+3DJ6qlULep
-	bZf1uMwbJJwE3tFsLfsSg6SOT6nTbdNs/I3KxQULoMT6RpNg8MBEsh8uXcg1PJtKiAyVQxqUgypcA
-	tH/VeIvdqzRz+Ddgp37g==;
+	List-Owner; bh=Lsg3cGH4xyPMmWpji4YGsAVCLflddF8SbE22FFQNzzs=; b=x/6mQ4u/HVj8po
+	s1OZy3oxpX4dhkyqP7UEzi0yQBCB+Syngne924F3DtdgWP13ouE/AB7VSaf4ECbk7EUVbcOPO/E+p
+	BUAteYu1rD+W0f4eo7VKxgD+VnHyqW/wpkNhW9n00CvaW3HfpGPLtjAKzfhR4KP1OSQAr8t5C+q+O
+	FHgfJ+i4HVKQPLjM7IsJObUtKDpZnbtCw095HmOX+C4GvtfZwLV3UvZTJEdM3YjnEabssgR5OaLNF
+	rolJlgxJ/QTgrtdlwNAVLmYRr98RT0HnGOd7YYr87ZPfxkXTaNJjykeKfDqEzr2sOcAOB3YfxwuEB
+	yyuByJJbKELoaRmWSdUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndrdp-008VRd-14; Mon, 11 Apr 2022 10:51:29 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1ndrjo-008Y7L-3G; Mon, 11 Apr 2022 10:57:40 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndrd7-008V5Q-Sd; Mon, 11 Apr 2022 10:50:47 +0000
+ id 1ndrjQ-008Xx0-6i; Mon, 11 Apr 2022 10:57:18 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 98479B81212;
- Mon, 11 Apr 2022 10:50:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A02B4C385A4;
- Mon, 11 Apr 2022 10:50:40 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 8A5AEB811A6;
+ Mon, 11 Apr 2022 10:57:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B779CC385A5;
+ Mon, 11 Apr 2022 10:57:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1649674241;
- bh=1IMcTxu81IxoqmzEjcmyl7feWQexXcHs/UwdYnBHOFM=;
+ s=k20201202; t=1649674633;
+ bh=ZNQVA/M8Q2O7+k/ddbWMeIkFCGFecU+Sa8c0sLoBaAE=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Cqgl2mpL76yJtKhrdpaYDXcA+jGcG01yXz0QdbQPK8HB2ktpjlOk+ogNXZGvBn7qP
- JgHv1ryfvV96ezP4U16OQ+auY2DgiTL2MZaBqwEKMAT6mOx0+yNDsDqfqRoDFGqCWQ
- zKXAGTxG8gt9S55xeKWrlveNI+4XskxU8nLZ8i4Tb3oM6r1iywFxGav7rfVgq2P3/3
- dCEWX2GyzHNCx0ib5sjyACW3MJ7bvrLFyMeo4jqcZ8iwIyEYi/zCeLMA+2nPDw2RzH
- 4K01hJLSCvLq68YiZ0rU5fomUj0tPwbQmpXotjm9EtDR+JnIuvcdqzLrXqFMHaLhLf
- K7TM+6V4jM3EQ==
-Date: Mon, 11 Apr 2022 16:20:37 +0530
+ b=nXOHAhexHw0CA4I5ggGKFryk6/ao7dG4ZLiHhZUGsjLOFPH65nQsFhtsWlaZQ9N1q
+ WuRSVdS/MFeGJzAyO1gbqOHKaImysX/uZBwN8rrMAWbIlDaJRDzBjOmLhlsRoJfjYH
+ Lf7gB3Ml4gny8dsYqavXcd3AlCBwQkdxTSNr7YeyS8ZtFj39FW34sp22W8nwUxT/eE
+ 1erogll5b/M96OwKYByOPn+bqPhaDC5y+N0hYWS6ySXfE82+7UB7CPRpf0YXgcnsZP
+ e3/qMQgvUvtS5KrP7k/OVmd/WklzWehUoUbu/S7cWgTMiQYTbnf6MaXQdCQZVuDJ8x
+ NL/hFlcPUgLaw==
+Date: Mon, 11 Apr 2022 16:27:09 +0530
 From: Vinod Koul <vkoul@kernel.org>
-To: cgel.zte@gmail.com
-Cc: sean.wang@mediatek.com, matthias.bgg@gmail.com,
+To: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+Cc: Sean Wang <sean.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Minghao Chi <chi.minghao@zte.com.cn>, Zeal Robot <zealci@zte.com.cn>
-Subject: Re: [PATCH] drivers: dma: using pm_runtime_resume_and_get instead of
- pm_runtime_get_sync
-Message-ID: <YlQH/WjgLgD5uVsP@matsya>
-References: <20220411013504.2517012-1-chi.minghao@zte.com.cn>
+ Prabhakar <prabhakar.csengg@gmail.com>
+Subject: Re: [PATCH v3 0/3] dmaengine: Use platform_get_irq*() variants to
+ fetch IRQ's
+Message-ID: <YlQJhSH8YCcqJ+A2@matsya>
+References: <20220404155557.27316-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220411013504.2517012-1-chi.minghao@zte.com.cn>
+In-Reply-To: <20220404155557.27316-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220411_035046_116165_30B260B9 
-X-CRM114-Status: GOOD (  17.20  )
+X-CRM114-CacheID: sfid-20220411_035716_431494_E7A8AFAC 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,44 +75,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11-04-22, 01:35, cgel.zte@gmail.com wrote:
-> From: Minghao Chi <chi.minghao@zte.com.cn>
-
-subsystem tag is wrong, pls see gitlog to find the appropriate one
-
+On 04-04-22, 16:55, Lad Prabhakar wrote:
+> Hi All,
 > 
-> Using pm_runtime_resume_and_get is more appropriate
-> for simplifing code
-
-Can you explain why it is appropriate?
-
+> This patch series aims to drop using platform_get_resource() for IRQ types
+> in preparation for removal of static setup of IRQ resource from DT core
+> code.
 > 
-> Reported-by: Zeal Robot <zealci@zte.com.cn>
-> Signed-off-by: Minghao Chi <chi.minghao@zte.com.cn>
-> ---
->  drivers/dma/mediatek/mtk-uart-apdma.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
-> index 375e7e647df6..64bad5681447 100644
-> --- a/drivers/dma/mediatek/mtk-uart-apdma.c
-> +++ b/drivers/dma/mediatek/mtk-uart-apdma.c
-> @@ -274,11 +274,9 @@ static int mtk_uart_apdma_alloc_chan_resources(struct dma_chan *chan)
->  	unsigned int status;
->  	int ret;
->  
-> -	ret = pm_runtime_get_sync(mtkd->ddev.dev);
-> -	if (ret < 0) {
-> -		pm_runtime_put_noidle(chan->device->dev);
-> +	ret = pm_runtime_resume_and_get(mtkd->ddev.dev);
-> +	if (ret < 0)
->  		return ret;
-> -	}
->  
->  	mtk_uart_apdma_write(c, VFF_ADDR, 0);
->  	mtk_uart_apdma_write(c, VFF_THRE, 0);
-> -- 
-> 2.25.1
+> Dropping usage of platform_get_resource() was agreed based on
+> the discussion [0].
+
+Applied, thanks
 
 -- 
 ~Vinod
