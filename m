@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50C6BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 01:42:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E845C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 01:51:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RCnYxm3xRBZHA7RAuBQwiXkSOoTGm+q3G1rEbZ8wDwc=; b=dvMNyNYsudnGYg
-	B3An04bRilmycc7NKVEseGT0pbvjg98Ke62VZdJFCQhwsOrGN1xFGveoG0o+szeHZNsL+PB9OoGGp
-	vOT+AqDbLwGm+X252nk6ig95Z2AMqK1o9K3h5B27vc6M76Ls4pUnyGRp61FEnu+yncXgH3I31zA6B
-	JFxUnNza32vlB5OLKy9DWZIY2PVG07zFJfX54OrUBAjAuwDDqzMQ1ZmkZ9o+xVmEzvgRNn3viglsr
-	ua/Cl4dtD/yP5ZNHgc24Sbf/Ghtl4rHwXLdW4VogYG6yUL85GIgcJBQYG9OewX5Vpg29Gw5oPB/6u
-	uQDd0zABCNDWL/Ou5HCQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/uPahTIDt1UzwuCRttVpCred5skdDD6utw/JpM35eLY=; b=36oCwrcpwcX/eL
+	IGtW8HUAjT2Qwc5tWTd4n/FB+22M0p1hnaZzh6Qr9gq+AWlJ3FtWRoiua9UeNpa6qnkZFtFnKAXHM
+	Pjyx/dMmVcnohdWNCY/gRD8ylbzzUOdJsWRI4rIbC0G94oZVFq/3JHF+Be5zoYaE8eOyBUSvrHp8X
+	r3kpVRkrMCbXGXWNhoPlCFcKqmjG2gYIHyAe1tgIJ9FYCLf5k6+QfDuyLiB0octbjwlVk4x3P6J/X
+	OQBs6Hvbn29HWhKaTPSeVyR8xdRCYsuZTaoQ+49LMRQowHQqXuFvto898xhpaSGxqTn3UFsS/CWeT
+	uriD8p8E8KMx2CtzPgEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndj4F-0067CH-27; Mon, 11 Apr 2022 01:42:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ndjDY-00686X-8M; Mon, 11 Apr 2022 01:51:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndj42-0067Ax-Uj; Mon, 11 Apr 2022 01:42:01 +0000
-X-UUID: e14cc05e5ceb4f97b4ddd2478746cfb1-20220410
-X-UUID: e14cc05e5ceb4f97b4ddd2478746cfb1-20220410
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1ndjDN-00683O-Ie; Mon, 11 Apr 2022 01:51:38 +0000
+X-UUID: a7b07ec48eb14cb3a2f5818b43218a52-20220410
+X-UUID: a7b07ec48eb14cb3a2f5818b43218a52-20220410
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <zhiyong.tao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 602856915; Sun, 10 Apr 2022 18:41:50 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 10 Apr 2022 18:41:29 -0700
+ with ESMTP id 2058534417; Sun, 10 Apr 2022 18:51:30 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 10 Apr 2022 18:41:27 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 11 Apr 2022 09:41:27 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 11 Apr 2022 09:41:26 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 11 Apr 2022 09:41:26 +0800
+ Transport; Mon, 11 Apr 2022 09:41:22 +0800
 From: Zhiyong Tao <zhiyong.tao@mediatek.com>
 To: <lee.jones@linaro.org>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>,
  <lgirdwood@gmail.com>, <broonie@kernel.org>, <eddie.huang@mediatek.com>,
@@ -52,18 +52,15 @@ CC: <srv_heupstream@mediatek.com>, <hui.liu@mediatek.com>,
  <linux-rtc@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v1 1/1] dt-bindings: pwrap: mediatek: fix pwrap document for
- mt8195
-Date: Mon, 11 Apr 2022 09:41:21 +0800
-Message-ID: <20220411014121.15015-2-zhiyong.tao@mediatek.com>
+Subject: [PATCH v1 0/1] Mediatek PMIC patch 
+Date: Mon, 11 Apr 2022 09:41:20 +0800
+Message-ID: <20220411014121.15015-1-zhiyong.tao@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220411014121.15015-1-zhiyong.tao@mediatek.com>
-References: <20220411014121.15015-1-zhiyong.tao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220410_184159_014396_9E0A29F6 
-X-CRM114-Status: UNSURE (   9.69  )
+X-CRM114-CacheID: sfid-20220410_185137_655986_585017C5 
+X-CRM114-Status: UNSURE (   6.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,47 +78,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Zhiyong.Tao" <zhiyong.tao@mediatek.com>
+This patch fix pwrap document for mt8195.
 
-fix pwrap document description for mt8195
+Zhiyong.Tao (1):
+  dt-bindings: pwrap: mediatek: fix pwrap document for mt8195
 
-Signed-off-by: Zhiyong.Tao <zhiyong.tao@mediatek.com>
----
  .../devicetree/bindings/soc/mediatek/pwrap.txt         | 10 +++++-----
  1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-index d74a7a5ae9f2..601647717ceb 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-+++ b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-@@ -30,20 +30,20 @@ Required properties in pwrap device node.
- 	"mediatek,mt8195-pwrap" for MT8195 SoCs
- 	"mediatek,mt8516-pwrap" for MT8516 SoCs
- - interrupts: IRQ for pwrap in SOC
--- reg-names: Must include the following entries:
-+- reg-names: Must include "pwrap", "pwrap-bridge" is optinal.
-   "pwrap": Main registers base
-   "pwrap-bridge": bridge base (IP Pairing)
- - reg: Must contain an entry for each entry in reg-names.
--- reset-names: Must include the following entries:
--  "pwrap"
--  "pwrap-bridge" (IP Pairing)
--- resets: Must contain an entry for each entry in reset-names.
- - clock-names: Must include the following entries:
-   "spi": SPI bus clock
-   "wrap": Main module clock
- - clocks: Must contain an entry for each entry in clock-names.
- 
- Optional properities:
-+- reset-names: Some SoCs include the following entries:
-+  "pwrap"
-+  "pwrap-bridge" (IP Pairing)
-+- resets: Must contain an entry for each entry in reset-names.
- - pmic: Using either MediaTek PMIC MFD as the child device of pwrap
-   See the following for child node definitions:
-   Documentation/devicetree/bindings/mfd/mt6397.txt
--- 
+--
 2.18.0
+
 
 
 _______________________________________________
