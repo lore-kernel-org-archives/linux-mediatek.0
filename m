@@ -4,68 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54426C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 08:25:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 165AAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 08:39:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zKy8mPlu2Y2p1xOMP0SSN5dsmpANfA9q3LP4u4Lku1E=; b=nXp3qM3wTIqp83
-	DevqdjSRF9cZwvNhWAV02C+Ut+Zg4RZ4n0/RZ+O+PWYgRYkk+HtxaAqKEFuS8VZ44A51PG8mpF34Y
-	kKEhRYXSKvwJKUdUPN5s/OJ4FJEGJ5xhkbFChU9ZlPnd52/ibZBz1rgoaSNDs8eqmb1wBx46M95gl
-	Zu8HyuKHlHwXus6Y/y7W4NEkLY4PBLPYroivb6P0UoqDTPrWnuGo9hOmv2CNler8uiyLLj/SW5Ek5
-	fxKRdeM5dVBdNJuZIrqhwkpgbtsi1Ba1/24fzf0akJfPg2m3BpGMcJ9fdUrozKvuiWZFn8+sVWh+x
-	F88DwA5+T1ImxAoboWOQ==;
+	List-Owner; bh=bNbHBPqG7NWz4dxZ5A8VMCLIdwSJAq4+hLMe4QpIbmE=; b=igg6ozFgg+7kiu
+	Fix+aXg8hb1dKm161BQmoxPxrAQp6iIhIwATtLP4kk8XKz01hQhn1aAC+60mL54RLEYfmU7UfJpJN
+	Up942v7yf2MNAnfL26UphmPmW1RwAS3fygbYF6C77D07qmkNF8GWuRztnWk9e+z2u8gaEXMPZxN21
+	XljZAVAkjDI15zSEZVpZI2o9ajFfpxkcokR82jIsKqTmUvhq1v3NS/84oLdRcfY54lTogt+ca8yfz
+	91np5f1XDEsEXJJwUACHcsrzUYkXzpAkq5h9ueSJeYwGIz9OBNmGOIRwCu5asUKaHoJ/gjHDbi0MT
+	JII32yjce2FUUt7edmyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndpMo-007XOU-KE; Mon, 11 Apr 2022 08:25:46 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1ndpa9-007b0s-Mv; Mon, 11 Apr 2022 08:39:33 +0000
+Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndpMd-007XLD-Gi; Mon, 11 Apr 2022 08:25:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=BH0V5BuY+C2+XfEgTERLqY5IXkmzyKHqnUaFyGgmdJo=; b=tw1f/+4ssbSvW7lizJk7k/1po1
- M3oGKMDDdUPfO6ToKh6CS985sWPWMRd11zb4cKpH2eJPqkXywWiHqFC0Oe+4cUwIDhe1uIa9zVvm5
- wcI2Wv1IxuYNOWrp1pLCX9mkAda9V4qo8Scro1xH6K9BnHoKAstkgoHUIlzJHzBwfB2GCGJ4mMHHG
- +VnGJmTxQ00rRKKZhAnW1uG31ZLYD9lHbpDtQOTMFQu0hu0U8dPdOBshSqJZ4LaVRBJCvMi3OzkCx
- tit34E1Z50cLT0Zj1TIPAJmI5QL8/Tl6N7DVKAwQgSxJVIXVD9UTiQYhjdYLUVKmute3e71Fa34Uy
- WXoHMYOQ==;
-Received: from j217100.upc-j.chello.nl ([24.132.217.100]
- helo=noisy.programming.kicks-ass.net)
- by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndpMX-00C9P8-QB; Mon, 11 Apr 2022 08:25:29 +0000
-Received: from hirez.programming.kicks-ass.net
- (hirez.programming.kicks-ass.net [192.168.1.225])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by noisy.programming.kicks-ass.net (Postfix) with ESMTPS id 304CF3002AE;
- Mon, 11 Apr 2022 10:25:26 +0200 (CEST)
-Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
- id C8CEF30F35129; Mon, 11 Apr 2022 10:25:26 +0200 (CEST)
-Date: Mon, 11 Apr 2022 10:25:26 +0200
-From: Peter Zijlstra <peterz@infradead.org>
-To: Kuyo Chang <kuyo.chang@mediatek.com>
-Cc: Ingo Molnar <mingo@redhat.com>, Juri Lelli <juri.lelli@redhat.com>,
- Vincent Guittot <vincent.guittot@linaro.org>,
- Dietmar Eggemann <dietmar.eggemann@arm.com>,
- Steven Rostedt <rostedt@goodmis.org>,
- Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
- Daniel Bristot de Oliveira <bristot@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+ id 1ndpa7-007azD-2j
+ for linux-mediatek@lists.infradead.org; Mon, 11 Apr 2022 08:39:32 +0000
+Received: by mail-yb1-xb2d.google.com with SMTP id l14so26204527ybe.4
+ for <linux-mediatek@lists.infradead.org>; Mon, 11 Apr 2022 01:39:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=y9nJm17K/yud/Vja2i5nosF7JRnfY8vZ/WHIXKk9f6w=;
+ b=QjG37G9hcBCKyJJPEueSmvuJ4kGecn9OdjK0F5aKlzodqMICJs2bJyRMuIEvtpWfm+
+ ag/mGQx9OIiQQyEuximvaMdligXWgRdG5meye0AsQrnWqQawlmRca/NLtkeGps3VBRPE
+ GqLxLxzz3gVd9K6ZGkM7mTTmwbbSX4AZVV+qAcYFfCyS+ELU4TzhKefl5HAJx/YnzJzP
+ 13NhTf9YXB62ISsZ13uuOxJgrMOJELQ2JCV4gs78L+IAA5r8g9462BhMZaK2DjVjRhqo
+ ZSThhlkvMyq4FzQagerPBLr/RFk13GuscmRf4UjWsjCnXtBZhux2YsTskn46fugduT4D
+ gMFA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=y9nJm17K/yud/Vja2i5nosF7JRnfY8vZ/WHIXKk9f6w=;
+ b=d3WcWcrLqjpJ91MLcJ8syJG3QBbKlJJREF8mCoVc1q7lDROX795raujo0OFRAt2b9N
+ YgQIKQvfmO5dDLnTVvHrRthiG9znS6l1zKvtbPm2UfUpd3JMONTNEkQT8M0njbQElTZN
+ cs5BGqJdiKzwAWU+RNan07bQeOl6BiZLG8hYUdoI7anVzYjdL0/xTue53nMzErmi2TAM
+ B333X7X7c9LoDdF00HRTmQCMyM4SRguEBvSUdenaJ6IDPDdNyt7UhUZnGqA9CFdJ4dDP
+ T8hFAczOkykoZA3Zo74LBtAAfF3Akj6BZ5EIqvkRuh/a/Vn0UUe1DhEVML13H13XXnAy
+ 17MA==
+X-Gm-Message-State: AOAM532UdRAepVNIqW/ecsd9xs6xpgh+IJwOi7g1HFdWpBuAsxl+xrbL
+ c7G976VWlEEIuVXs6IHxQ57SVf2eLCuYEjm/hGNbkQUCX7GBAg==
+X-Google-Smtp-Source: ABdhPJxQukCB3C2RSIxVqw7saiBSI8LGmbDPS1ymWQyy9ZS8UYDHorULHehzgaFixVzrNwBrVJ4LCY/l/CbBTmcGgpo=
+X-Received: by 2002:a25:d80a:0:b0:641:38dd:2f4c with SMTP id
+ p10-20020a25d80a000000b0064138dd2f4cmr4717123ybg.225.1649666367294; Mon, 11
+ Apr 2022 01:39:27 -0700 (PDT)
+MIME-Version: 1.0
+References: <20220411061702.22978-1-kuyo.chang@mediatek.com>
+In-Reply-To: <20220411061702.22978-1-kuyo.chang@mediatek.com>
+From: Vincent Guittot <vincent.guittot@linaro.org>
+Date: Mon, 11 Apr 2022 10:39:16 +0200
+Message-ID: <CAKfTPtAyhc-tAWXmXcHstmiBSMjj5GENizX__KRDab28NRum1A@mail.gmail.com>
 Subject: Re: [PATCH 1/1] sched/pelt: Refine the enqueue_load_avg calculate
  method
-Message-ID: <YlPl9jq5sipeY5nF@hirez.programming.kicks-ass.net>
-References: <20220411061702.22978-1-kuyo.chang@mediatek.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220411061702.22978-1-kuyo.chang@mediatek.com>
+To: Kuyo Chang <kuyo.chang@mediatek.com>
+Cc: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>, 
+ Juri Lelli <juri.lelli@redhat.com>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
+ Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>,
+ Mel Gorman <mgorman@suse.de>, 
+ Daniel Bristot de Oliveira <bristot@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, wsd_upstream@mediatek.com, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20220411_013931_216117_62E507F1 
+X-CRM114-Status: GOOD (  24.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,17 +89,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 11, 2022 at 02:16:56PM +0800, Kuyo Chang wrote:
+On Mon, 11 Apr 2022 at 08:17, Kuyo Chang <kuyo.chang@mediatek.com> wrote:
+>
 > From: kuyo chang <kuyo.chang@mediatek.com>
-> 
+>
 > I meet the warning message at cfs_rq_is_decayed at below code.
-> 
+>
 > SCHED_WARN_ON(cfs_rq->avg.load_avg ||
-> 		    cfs_rq->avg.util_avg ||
-> 		    cfs_rq->avg.runnable_avg)
-> 
+>                     cfs_rq->avg.util_avg ||
+>                     cfs_rq->avg.runnable_avg)
+>
 > Following is the calltrace.
-> 
+>
 > Call trace:
 > __update_blocked_fair
 > update_blocked_averages
@@ -103,7 +111,7 @@ On Mon, Apr 11, 2022 at 02:16:56PM +0800, Kuyo Chang wrote:
 > pipe_read
 > vfs_read
 > ksys_read
-> 
+>
 > After code analyzing and some debug messages, I found it exits a corner
 > case at attach_entity_load_avg which will cause load_sum is zero and
 > load_avg is not.
@@ -112,34 +120,40 @@ On Mon, Apr 11, 2022 at 02:16:56PM +0800, Kuyo Chang wrote:
 > By the calculating for se->avg.load_sum as following will become zero
 > as following.
 > se->avg.load_sum =
-> 	div_u64(se->avg.load_avg * se->avg.load_sum, se_weight(se));
+>         div_u64(se->avg.load_avg * se->avg.load_sum, se_weight(se));
 > se->avg.load_sum = 1*47742/88761 = 0.
-> 
+
+The root problem is there, se->avg.load_sum must not be null if
+se->avg.load_avg is not null because the correct relation between _avg
+and _sum is:
+
+load_avg = weight * load_sum / divider.
+
+so the fix should be attach_entity_load_avg() and probably the below is enough
+
+se->avg.load_sum = div_u64(se->avg.load_avg * se->avg.load_sum,
+se_weight(se)) + 1;
+
+>
 > After enqueue_load_avg code as below.
 > cfs_rq->avg.load_avg += se->avg.load_avg;
 > cfs_rq->avg.load_sum += se_weight(se) * se->avg.load_sum;
-> 
+>
 > Then the load_sum for cfs_rq will be 1 while the load_sum for cfs_rq is 0.
 > So it will hit the warning message.
-> 
+>
 > After all, I refer the following commit patch to do the similar thing at
 > enqueue_load_avg.
 > sched/pelt: Relax the sync of load_sum with load_avg
-
-  2d02fa8cc21a ("sched/pelt: Relax the sync of load_sum with load_avg")
-
-> 
+>
 > After long time testing, the kernel warning was gone and the system runs
 > as well as before.
-> 
-
-Could probably do with a Fixes: tag too
-
+>
 > Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
 > ---
 >  kernel/sched/fair.c | 6 ++++--
 >  1 file changed, 4 insertions(+), 2 deletions(-)
-> 
+>
 > diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
 > index d4bd299d67ab..30d8b6dba249 100644
 > --- a/kernel/sched/fair.c
@@ -148,167 +162,18 @@ Could probably do with a Fixes: tag too
 >  static inline void
 >  enqueue_load_avg(struct cfs_rq *cfs_rq, struct sched_entity *se)
 >  {
-> -	cfs_rq->avg.load_avg += se->avg.load_avg;
-> -	cfs_rq->avg.load_sum += se_weight(se) * se->avg.load_sum;
-> +	add_positive(&cfs_rq->avg.load_avg, se->avg.load_avg);
-> +	add_positive(&cfs_rq->avg.load_sum, se_weight(se) * se->avg.load_sum);
-> +	cfs_rq->avg.load_sum = max_t(u32, cfs_rq->avg.load_sum,
-> +					  cfs_rq->avg.load_avg * PELT_MIN_DIVIDER);
+> -       cfs_rq->avg.load_avg += se->avg.load_avg;
+> -       cfs_rq->avg.load_sum += se_weight(se) * se->avg.load_sum;
+> +       add_positive(&cfs_rq->avg.load_avg, se->avg.load_avg);
+> +       add_positive(&cfs_rq->avg.load_sum, se_weight(se) * se->avg.load_sum);
+> +       cfs_rq->avg.load_sum = max_t(u32, cfs_rq->avg.load_sum,
+> +                                         cfs_rq->avg.load_avg * PELT_MIN_DIVIDER);
 >  }
-
-Yes,. that looks right. Looking at this again though, I wonder if we
-should perhaps clean is all up a bit.
-
-Does something like the below on top make sense?
-
-
----
---- a/kernel/sched/fair.c
-+++ b/kernel/sched/fair.c
-@@ -3071,23 +3071,37 @@ account_entity_dequeue(struct cfs_rq *cf
- } while (0)
- 
- #ifdef CONFIG_SMP
-+
-+/*
-+ * Because of rounding, se->util_sum might ends up being +1 more than
-+ * cfs->util_sum. Although this is not a problem by itself, detaching
-+ * a lot of tasks with the rounding problem between 2 updates of
-+ * util_avg (~1ms) can make cfs->util_sum becoming null whereas
-+ * cfs_util_avg is not.
-+ *
-+ * Check that util_sum is still above its lower bound for the new
-+ * util_avg. Given that period_contrib might have moved since the last
-+ * sync, we are only sure that util_sum must be above or equal to
-+ *    util_avg * minimum possible divider
-+ */
-+#define __update_sa(sa, name, delta_avg, delta_sum) do {	\
-+	add_positive(&(sa)->name##_avg, delta_avg);		\
-+	add_positive(&(sa)->name##_sum, delta_sum);		\
-+	(sa)->name##_sum = max_t(typeof((sa)->name##_sum),	\
-+			       (sa)->name##_sum,		\
-+			       (sa)->name##_avg * PELT_MIN_DIVIDER); \
-+} while (0)
-+
- static inline void
- enqueue_load_avg(struct cfs_rq *cfs_rq, struct sched_entity *se)
- {
--	add_positive(&cfs_rq->avg.load_avg, se->avg.load_avg);
--	add_positive(&cfs_rq->avg.load_sum, se_weight(se) * se->avg.load_sum);
--	cfs_rq->avg.load_sum = max_t(u32, cfs_rq->avg.load_sum,
--					  cfs_rq->avg.load_avg * PELT_MIN_DIVIDER);
-+	__update_sa(&cfs_rq->avg, load, se->avg.load_avg, se->avg.load_sum);
- }
- 
- static inline void
- dequeue_load_avg(struct cfs_rq *cfs_rq, struct sched_entity *se)
- {
--	sub_positive(&cfs_rq->avg.load_avg, se->avg.load_avg);
--	sub_positive(&cfs_rq->avg.load_sum, se_weight(se) * se->avg.load_sum);
--	/* See update_cfs_rq_load_avg() */
--	cfs_rq->avg.load_sum = max_t(u32, cfs_rq->avg.load_sum,
--					  cfs_rq->avg.load_avg * PELT_MIN_DIVIDER);
-+	__update_sa(&cfs_rq->avg, load, -se->avg.load_avg, -se->avg.load_sum);
- }
- #else
- static inline void
-@@ -3529,12 +3543,7 @@ update_tg_cfs_util(struct cfs_rq *cfs_rq
- 	se->avg.util_sum = new_sum;
- 
- 	/* Update parent cfs_rq utilization */
--	add_positive(&cfs_rq->avg.util_avg, delta_avg);
--	add_positive(&cfs_rq->avg.util_sum, delta_sum);
--
--	/* See update_cfs_rq_load_avg() */
--	cfs_rq->avg.util_sum = max_t(u32, cfs_rq->avg.util_sum,
--					  cfs_rq->avg.util_avg * PELT_MIN_DIVIDER);
-+	__update_sa(&cfs_rq->avg, util, delta_avg, delta_sum);
- }
- 
- static inline void
-@@ -3560,11 +3569,7 @@ update_tg_cfs_runnable(struct cfs_rq *cf
- 	se->avg.runnable_sum = new_sum;
- 
- 	/* Update parent cfs_rq runnable */
--	add_positive(&cfs_rq->avg.runnable_avg, delta_avg);
--	add_positive(&cfs_rq->avg.runnable_sum, delta_sum);
--	/* See update_cfs_rq_load_avg() */
--	cfs_rq->avg.runnable_sum = max_t(u32, cfs_rq->avg.runnable_sum,
--					      cfs_rq->avg.runnable_avg * PELT_MIN_DIVIDER);
-+	__update_sa(&cfs_rq->avg, runnable, delta_avg, delta_sum);
- }
- 
- static inline void
-@@ -3628,11 +3633,7 @@ update_tg_cfs_load(struct cfs_rq *cfs_rq
- 
- 	se->avg.load_sum = runnable_sum;
- 	se->avg.load_avg = load_avg;
--	add_positive(&cfs_rq->avg.load_avg, delta_avg);
--	add_positive(&cfs_rq->avg.load_sum, delta_sum);
--	/* See update_cfs_rq_load_avg() */
--	cfs_rq->avg.load_sum = max_t(u32, cfs_rq->avg.load_sum,
--					  cfs_rq->avg.load_avg * PELT_MIN_DIVIDER);
-+	__update_sa(&cfs_rq->avg, load, delta_avg, delta_sum);
- }
- 
- static inline void add_tg_cfs_propagate(struct cfs_rq *cfs_rq, long runnable_sum)
-@@ -3747,33 +3748,13 @@ update_cfs_rq_load_avg(u64 now, struct c
- 		raw_spin_unlock(&cfs_rq->removed.lock);
- 
- 		r = removed_load;
--		sub_positive(&sa->load_avg, r);
--		sub_positive(&sa->load_sum, r * divider);
--		/* See sa->util_sum below */
--		sa->load_sum = max_t(u32, sa->load_sum, sa->load_avg * PELT_MIN_DIVIDER);
-+		__update_sa(sa, load, r, r*divider);
- 
- 		r = removed_util;
--		sub_positive(&sa->util_avg, r);
--		sub_positive(&sa->util_sum, r * divider);
--		/*
--		 * Because of rounding, se->util_sum might ends up being +1 more than
--		 * cfs->util_sum. Although this is not a problem by itself, detaching
--		 * a lot of tasks with the rounding problem between 2 updates of
--		 * util_avg (~1ms) can make cfs->util_sum becoming null whereas
--		 * cfs_util_avg is not.
--		 * Check that util_sum is still above its lower bound for the new
--		 * util_avg. Given that period_contrib might have moved since the last
--		 * sync, we are only sure that util_sum must be above or equal to
--		 *    util_avg * minimum possible divider
--		 */
--		sa->util_sum = max_t(u32, sa->util_sum, sa->util_avg * PELT_MIN_DIVIDER);
-+		__update_sa(sa, util, r, r*divider);
- 
- 		r = removed_runnable;
--		sub_positive(&sa->runnable_avg, r);
--		sub_positive(&sa->runnable_sum, r * divider);
--		/* See sa->util_sum above */
--		sa->runnable_sum = max_t(u32, sa->runnable_sum,
--					      sa->runnable_avg * PELT_MIN_DIVIDER);
-+		__update_sa(sa, runnable, r, r*divider);
- 
- 		/*
- 		 * removed_runnable is the unweighted version of removed_load so we
-@@ -3861,17 +3842,8 @@ static void attach_entity_load_avg(struc
- static void detach_entity_load_avg(struct cfs_rq *cfs_rq, struct sched_entity *se)
- {
- 	dequeue_load_avg(cfs_rq, se);
--	sub_positive(&cfs_rq->avg.util_avg, se->avg.util_avg);
--	sub_positive(&cfs_rq->avg.util_sum, se->avg.util_sum);
--	/* See update_cfs_rq_load_avg() */
--	cfs_rq->avg.util_sum = max_t(u32, cfs_rq->avg.util_sum,
--					  cfs_rq->avg.util_avg * PELT_MIN_DIVIDER);
--
--	sub_positive(&cfs_rq->avg.runnable_avg, se->avg.runnable_avg);
--	sub_positive(&cfs_rq->avg.runnable_sum, se->avg.runnable_sum);
--	/* See update_cfs_rq_load_avg() */
--	cfs_rq->avg.runnable_sum = max_t(u32, cfs_rq->avg.runnable_sum,
--					      cfs_rq->avg.runnable_avg * PELT_MIN_DIVIDER);
-+	__update_sa(&cfs_rq->avg, util, se->avg.util_avg, se->avg.util_sum);
-+	__update_sa(&cfs_rq->avg, runnable, se->avg.runnable_avg, se->avg.runnable_sum);
- 
- 	add_tg_cfs_propagate(cfs_rq, -se->avg.load_sum);
- 
+>
+>  static inline void
+> --
+> 2.18.0
+>
 
 _______________________________________________
 Linux-mediatek mailing list
