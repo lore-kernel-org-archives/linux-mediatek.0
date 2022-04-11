@@ -4,54 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0CC8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 13:21:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 250E0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 13:30:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ab9Z2Y4wU2X+tAuEUpASUyBrwzueEYtOLkXIu738s6k=; b=pl+12tE6DJam9T
-	eTnsgVSfVyyGDWTlPT8V57zmOp7Hfme1wwfIzzf18aojJwqtfhOOtrgS49l2NF0lTT/C98tsn/yMt
-	I4QG+vnM+INuIxFkg05HcpyT32vaQa8mHS0QX7JZyX4Eet08VuuTnxt3ll1dd3XH/TuqEsWWA9JsX
-	4X6rvE1O6ASOSZy9DD0cEx8xrJSO1zwOOsw0qAavK3MvqHl0rIQPp78eyEiMKG7gn5zVltwcv/zaW
-	jGk1Qrje2DkrTvd3cDMy2xvZhywLTMsGsmpFuUr+b4nLnvBQIIO2HHtHxbWpEGBjIeZODRqXYhSoO
-	VwhFtreKf+dceu83RrPw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/NU8OypqVZWbDq3LN3K/TRKjJTK+Vb+/xX2ssPq6Xf8=; b=p8vfbs9nr8tJN0
+	R6wlziN4MqqzSaA9ULA6r6VWYVf0RL1Nbsyb2OYfbFHZGW8vDPfE3Drie208S2/4TFSluWYtd4v+A
+	c8/JEKKsE/uxK43Cladc8nbolN4Nzp1wHXrSHspuzZICNI95mG8OIs7JnuFZ8gJun0FD6EHJ4UJZB
+	sFpyUIGieur65kkI97zPtxKoG4FmYruW5doQLoBE7+2oI2W0ZCk17NiODSUk5M4uVUJI3KEXYf9Hg
+	R0qQKeJTWHpl+QGyuWc6qxhz+K9cFfkIYgthKI9XnXlbJWkn/SOVuLQwOevv+ZvF2FcCQcd/N9jsv
+	x0fbNw11Rg0eX3SOiBOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndtzA-0097sT-2S; Mon, 11 Apr 2022 13:21:40 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1ndu7z-009AXJ-Qv; Mon, 11 Apr 2022 13:30:47 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndtyu-0097lE-EL; Mon, 11 Apr 2022 13:21:26 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id AA1D01F43EE0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649683282;
- bh=2XhjOAxBOcasYg+yweGriOPt9i9ytqipWQNUM8ynUvs=;
- h=From:To:Cc:Subject:Date:From;
- b=GlHY/c+UwUUnZic1hLXNOsUXuJA7JdhWK31rInpVFJM7ADsSviC67DbQh/KeHNaNu
- 04t0wWurRsxs+2JQKNd7i14Q4sd4/uHkz3zJDavOOz4Syu/ZJNXtxmIEY/ZWMlJFho
- /v6ZSEMXjXaJ9f9j4DzFyJ7ma2hvTrw8WwCCcrZkpBTnheUvTnSmUiEAWAKZcUaoO4
- /4v+p19Rrq/ymrpCOB/TcVhjEoJRPS0Ab46NJJWzP4L260hXYpUWho5k8OztDZijD0
- Hwutt+gMqvqWurwlMKub8zVji6VZGmZqXtHAj69Kf9zZj0hnAxxcRtET80mtOvTjNd
- QzflcQIQFOzFw==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: qii.wang@mediatek.com
-Cc: matthias.bgg@gmail.com, linux-i2c@vger.kernel.org,
+ id 1ndu7n-009ATp-4N; Mon, 11 Apr 2022 13:30:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=nWobsV/+KPeCMvMr9OiCUDsatbyuU3uq3Cjnj3cPUVU=; b=VYHOOaB6u7ojLHmk9jy8mqibh6
+ 2iOxiaMB9Bdk6ac9eYbKkbcEkzbsDkfDi0l3CzV+OWPZwTDQL4DQnlHQAWvafWnaI7dsFHIWGUGSA
+ H6nPuA8JBp7qg9KJcqMwXyP2B5SuynGn1zgbMCAW3f/Le3mdILUs9rIZKrnwtZgqy3ByiR+Ty+Y0w
+ n/I/pAV1LBd0/NotBa3SXCzB63S5Qap/ZnpLMcXPQo65cO/Pif70tRfxfT0gq5ZBIV4nNR0sVveyJ
+ AMGvj8yuIBoSlNofyfqtqdy747Ck58OUm2rsv3x54yTpTIY1wJIko1Tjxql9T4bwtm3o9hpPmMQHC
+ vE3P5jrA==;
+Received: from shell.armlinux.org.uk
+ ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:58212)
+ by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1ndu7c-0000aU-HX; Mon, 11 Apr 2022 14:30:24 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1ndu7X-0001Rm-TU; Mon, 11 Apr 2022 14:30:19 +0100
+Date: Mon, 11 Apr 2022 14:30:19 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
+Cc: "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>,
+ Jakub Kicinski <kuba@kernel.org>, John Crispin <john@phrozen.org>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, wsa@kernel.org, nfraprado@collabora.com,
- kernel@collabora.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2] i2c: mediatek: Optimize master_xfer() and avoid circular
- locking
-Date: Mon, 11 Apr 2022 15:21:07 +0200
-Message-Id: <20220411132107.136369-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
+ Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+ Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH RFC 00/12] mtk_eth_soc phylink updates
+Message-ID: <YlQta3Qu1aM4De9n@shell.armlinux.org.uk>
+References: <Yk2k9D40QojsRhoo@shell.armlinux.org.uk>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <Yk2k9D40QojsRhoo@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220411_062124_684232_2A2577E9 
-X-CRM114-Status: GOOD (  14.79  )
+X-CRM114-CacheID: sfid-20220411_063035_216161_DED44D9B 
+X-CRM114-Status: GOOD (  25.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,75 +74,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RXNwZWNpYWxseSAoYnV0IG5vdCBvbmx5KSBkdXJpbmcgcHJvYmUsIGl0IG1heSBoYXBwZW4gdGhh
-dCBtdWx0aXBsZQpkZXZpY2VzIGFyZSBjb21tdW5pY2F0aW5nIHZpYSBpMmMgKG9yIG11bHRpcGxl
-IGkyYyBidXNzZXMpIGFuZApzb21ldGltZXMgd2hpbGUgb3RoZXJzIGFyZSBwcm9iaW5nIGFzeW5j
-aHJvbm91c2x5LgpGb3IgZXhhbXBsZSwgYSBDcjUwIFRQTSBtYXkgYmUgZmlsbGluZyBlbnRyb3B5
-IChvciB1c2Vyc3BhY2UgbWF5IGJlCnJlYWRpbmcgcmFuZG9tIGRhdGEpIHdoaWxlIHRoZSBydDU2
-ODIgKGkyYykgY29kZWMgZHJpdmVyIHJlYWRzL3NldHMKc29tZSByZWdpc3RlcnMsIGxpa2Ugd2hp
-bGUgZ2V0dGluZy9zZXR0aW5nIGEgY2xvY2sncyByYXRlLCB3aGljaApoYXBwZW5zIGJvdGggZHVy
-aW5nIHByb2JlIGFuZCBkdXJpbmcgc3lzdGVtIG9wZXJhdGlvbi4KCkluIHRoaXMgZHJpdmVyLCB0
-aGUgbXRrX2kyY190cmFuc2ZlcigpIGZ1bmN0aW9uICh3aGljaCBpcyB0aGUgaTJjCi5tYXN0ZXJf
-eGZlcigpIGNhbGxiYWNrKSB3YXMgZ3JhbnVsYXJseSBtYW5hZ2luZyB0aGUgY2xvY2tzIGJ5CnBl
-cmZvcm1pbmcgYSBjbGtfYnVsa19wcmVwYXJlX2VuYWJsZSgpIHRvIHN0YXJ0IHRoZW0gYW5kIGl0
-cyBpbnZlcnNlLgpUaGlzIGlzIG5vdCBvbmx5IGNyZWF0aW5nIHBvc3NpYmxlIGNpcmN1bGFyIGxv
-Y2tpbmcgZGVwZW5kZW5jaWVzIGluCnRoZSBzb21lIGNhc2VzIChsaWtlIGZvcm1lciBleHBsYW5h
-dGlvbiksIGJ1dCBpdCdzIGFsc28gc3Vib3B0aW1hbCwKYXMgY2xrX2NvcmUgcHJlcGFyZS91bnBy
-ZXBhcmUgb3BlcmF0aW9ucyBhcmUgdXNpbmcgbXV0ZXggbG9ja2luZywKd2hpY2ggY3JlYXRlcyBh
-IGJpdCBvZiB1bndhbnRlZCBvdmVyaGVhZCAoZm9yIGV4YW1wbGUsIGkyYyB0cmFja3BhZHMKd2ls
-bCBjYWxsIG1hc3Rlcl94ZmVyKCkgZXZlcnkgZmV3IG1pbGxpc2Vjb25kcyEpLgoKV2l0aCB0aGlz
-IGNvbW1pdCwgd2UgYXZvaWQgYm90aCB0aGUgY2lyY3VsYXIgbG9ja2luZyBhbmQgYWRkaXRpb25h
-bApvdmVyaGVhZCBieSBjaGFuZ2luZyBob3cgd2UgaGFuZGxlIHRoZSBjbG9ja3MgaW4gdGhpcyBk
-cml2ZXI6Ci0gUHJlcGFyZSB0aGUgY2xvY2tzIGR1cmluZyBwcm9iZSAoYW5kIFBNIHJlc3VtZSkK
-LSBFbmFibGUvZGlzYWJsZSBjbG9ja3MgaW4gbXRrX2kyY190cmFuc2ZlcigpCi0gVW5wcmVwYXJl
-IHRoZSBjbG9ja3Mgb25seSBmb3IgZHJpdmVyIHJlbW92YWwgKGFuZCBQTSBzdXNwZW5kKQoKRm9y
-IHRoZSBzYWtlIG9mIHByb3ZpZGluZyBhIGZ1bGwgZXhwbGFuYXRpb246IGR1cmluZyBwcm9iZSwg
-dGhlCmNsb2NrcyBhcmUgbm90IG9ubHkgcHJlcGFyZWQgYnV0IGFsc28gZW5hYmxlZCwgYXMgdGhp
-cyBpcyBuZWVkZWQKZm9yIHNvbWUgaGFyZHdhcmUgaW5pdGlhbGl6YXRpb24gYnV0LCBhZnRlciB0
-aGF0LCB3ZSBhcmUgZGlzYWJsaW5nCmJ1dCBub3QgdW5wcmVwYXJpbmcgdGhlbSwgbGVhdmluZyBh
-biBleHBlY3RlZCBzdGF0ZSBmb3IgdGhlCmFmb3JlbWVudGlvbmVkIGNsb2NrIGhhbmRsaW5nIHN0
-cmF0ZWd5LgoKU2lnbmVkLW9mZi1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPGFuZ2Vs
-b2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFib3JhLmNvbT4KVGVzdGVkLWJ5OiBOw61jb2xhcyBG
-LiBSLiBBLiBQcmFkbyA8bmZyYXByYWRvQGNvbGxhYm9yYS5jb20+Ci0tLQoKdjI6IEZpeGVkIHR5
-cG9zIGluIGNvbW1pdCBkZXNjcmlwdGlvbgoKIGRyaXZlcnMvaTJjL2J1c3Nlcy9pMmMtbXQ2NXh4
-LmMgfCAxMSArKysrKysrLS0tLQogMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKSwgNCBk
-ZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2kyYy9idXNzZXMvaTJjLW10NjV4eC5j
-IGIvZHJpdmVycy9pMmMvYnVzc2VzL2kyYy1tdDY1eHguYwppbmRleCBmNjUxZDNlMTI0ZDYuLmJk
-ZWNiNzhiZmMyNiAxMDA2NDQKLS0tIGEvZHJpdmVycy9pMmMvYnVzc2VzL2kyYy1tdDY1eHguYwor
-KysgYi9kcml2ZXJzL2kyYy9idXNzZXMvaTJjLW10NjV4eC5jCkBAIC0xMTc3LDcgKzExNzcsNyBA
-QCBzdGF0aWMgaW50IG10a19pMmNfdHJhbnNmZXIoc3RydWN0IGkyY19hZGFwdGVyICphZGFwLAog
-CWludCBsZWZ0X251bSA9IG51bTsKIAlzdHJ1Y3QgbXRrX2kyYyAqaTJjID0gaTJjX2dldF9hZGFw
-ZGF0YShhZGFwKTsKIAotCXJldCA9IGNsa19idWxrX3ByZXBhcmVfZW5hYmxlKEkyQ19NVDY1WFhf
-Q0xLX01BWCwgaTJjLT5jbG9ja3MpOworCXJldCA9IGNsa19idWxrX2VuYWJsZShJMkNfTVQ2NVhY
-X0NMS19NQVgsIGkyYy0+Y2xvY2tzKTsKIAlpZiAocmV0KQogCQlyZXR1cm4gcmV0OwogCkBAIC0x
-MjMxLDcgKzEyMzEsNyBAQCBzdGF0aWMgaW50IG10a19pMmNfdHJhbnNmZXIoc3RydWN0IGkyY19h
-ZGFwdGVyICphZGFwLAogCXJldCA9IG51bTsKIAogZXJyX2V4aXQ6Ci0JY2xrX2J1bGtfZGlzYWJs
-ZV91bnByZXBhcmUoSTJDX01UNjVYWF9DTEtfTUFYLCBpMmMtPmNsb2Nrcyk7CisJY2xrX2J1bGtf
-ZGlzYWJsZShJMkNfTVQ2NVhYX0NMS19NQVgsIGkyYy0+Y2xvY2tzKTsKIAlyZXR1cm4gcmV0Owog
-fQogCkBAIC0xNDEyLDcgKzE0MTIsNyBAQCBzdGF0aWMgaW50IG10a19pMmNfcHJvYmUoc3RydWN0
-IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAkJcmV0dXJuIHJldDsKIAl9CiAJbXRrX2kyY19pbml0
-X2h3KGkyYyk7Ci0JY2xrX2J1bGtfZGlzYWJsZV91bnByZXBhcmUoSTJDX01UNjVYWF9DTEtfTUFY
-LCBpMmMtPmNsb2Nrcyk7CisJY2xrX2J1bGtfZGlzYWJsZShJMkNfTVQ2NVhYX0NMS19NQVgsIGky
-Yy0+Y2xvY2tzKTsKIAogCXJldCA9IGRldm1fcmVxdWVzdF9pcnEoJnBkZXYtPmRldiwgaXJxLCBt
-dGtfaTJjX2lycSwKIAkJCSAgICAgICBJUlFGX05PX1NVU1BFTkQgfCBJUlFGX1RSSUdHRVJfTk9O
-RSwKQEAgLTE0MzksNiArMTQzOSw4IEBAIHN0YXRpYyBpbnQgbXRrX2kyY19yZW1vdmUoc3RydWN0
-IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAogCWkyY19kZWxfYWRhcHRlcigmaTJjLT5hZGFwKTsK
-IAorCWNsa19idWxrX3VucHJlcGFyZShJMkNfTVQ2NVhYX0NMS19NQVgsIGkyYy0+Y2xvY2tzKTsK
-KwogCXJldHVybiAwOwogfQogCkBAIC0xNDQ4LDYgKzE0NTAsNyBAQCBzdGF0aWMgaW50IG10a19p
-MmNfc3VzcGVuZF9ub2lycShzdHJ1Y3QgZGV2aWNlICpkZXYpCiAJc3RydWN0IG10a19pMmMgKmky
-YyA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwogCiAJaTJjX21hcmtfYWRhcHRlcl9zdXNwZW5kZWQo
-JmkyYy0+YWRhcCk7CisJY2xrX2J1bGtfdW5wcmVwYXJlKEkyQ19NVDY1WFhfQ0xLX01BWCwgaTJj
-LT5jbG9ja3MpOwogCiAJcmV0dXJuIDA7CiB9CkBAIC0xNDY1LDcgKzE0NjgsNyBAQCBzdGF0aWMg
-aW50IG10a19pMmNfcmVzdW1lX25vaXJxKHN0cnVjdCBkZXZpY2UgKmRldikKIAogCW10a19pMmNf
-aW5pdF9odyhpMmMpOwogCi0JY2xrX2J1bGtfZGlzYWJsZV91bnByZXBhcmUoSTJDX01UNjVYWF9D
-TEtfTUFYLCBpMmMtPmNsb2Nrcyk7CisJY2xrX2J1bGtfZGlzYWJsZShJMkNfTVQ2NVhYX0NMS19N
-QVgsIGkyYy0+Y2xvY2tzKTsKIAogCWkyY19tYXJrX2FkYXB0ZXJfcmVzdW1lZCgmaTJjLT5hZGFw
-KTsKIAotLSAKMi4zNS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1tZWRpYXRlawo=
+A gentle reminder to those who either worked on or who look after
+this driver to test this series and report back please.
+
+Thanks.
+
+On Wed, Apr 06, 2022 at 03:34:28PM +0100, Russell King (Oracle) wrote:
+> Hi,
+> 
+> This series ultimately updates mtk_eth_soc to use phylink_pcs, with some
+> fixes along the way.
+> 
+> Previous attempts to update this driver (which is now marked as legacy)
+> have failed due to lack of testing. I am hoping that this time will be
+> different; Marek can test RGMII modes, but not SGMII. So all that we
+> know is that this patch series probably doesn't break RGMII.
+> 
+> 1) remove unused mac_mode and sgmii flags members from structures.
+> 2) remove unnecessary interpretation of speed when configuring 1000
+>    and 2500 Base-X
+> 3) move configuration of SGMII duplex setting from mac_config() to
+>    link_up()
+> 4) only pass in interface mode to mtk_sgmii_setup_mode_force()
+> 5) move decision about which mtk_sgmii_setup_mode_*() function to call
+>    into mtk_sgmii.c
+> 6) add a fixme comment for RGMII explaning why the call to
+>    mtk_gmac0_rgmii_adjust() is completely wrong - this needs to be
+>    addressed by someone who has the hardware and can test an appropriate
+>    fix. This fixme means that the driver still can't become non-legacy.
+> 7) move gmac setup from mac_config() to mac_finish() - this preserves
+>    the order that we write to the hardware when we eventually convert to
+>    phylink_pcs()
+> 8) move configuration of syscfg0 in SGMII/802.3z mode to mac_finish()
+>    for the same reasons as (7).
+> 9) convert mtk_sgmii.c code structure and the mtk_sgmii structure to
+>    suit conversion to phylink_pcs
+> 10) finally convert to phylink_pcs
+> 
+> It would be nice to get these changes fully tested, but past experience
+> has shown that for this driver, that's unfortunately very unlikely. So,
+> I propose that the merging plan for this is that if there are no
+> comments after three weeks to a month, I'll send this for inclusion in
+> net-next.
+> 
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 103 +++++++++-------
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.h |  40 +++----
+>  drivers/net/ethernet/mediatek/mtk_sgmii.c   | 174 ++++++++++++++++------------
+>  3 files changed, 185 insertions(+), 132 deletions(-)
+> 
+> -- 
+> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+> FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+> 
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
