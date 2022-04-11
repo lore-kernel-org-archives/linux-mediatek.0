@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA722C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 11:32:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BACD8C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 11:33:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iRlVzvxTghUWpKagHrZgQuOjvLOqO75evAd2w4TagQw=; b=awiBpViHiNRcuh
-	bgPSGcrb6rEWlH3vtj9yjf6Pg2lDmAL+CNYn5zChTPkOewCyYkoBsTOZzEJCnxwrNp+C/T2JsvpGD
-	p/EIkbU2i5CsCBVoZTcvg5bdZtb9vcZqzX3AQ8iO2MmIYRGQSph5msnKU1Pu3vuAY7Z90qLoOaoMH
-	hoQcqosU5uBcireQkhxfUXYkKZ3argV41j2WwePFCLmB0Z6jOJUoyWebYBBPbASUFbJOB3zvW4I75
-	rJ5D9/j33CnadliMkirVA9m/GpJ+dM3IwGZuZqraDvanQJznsidRT849QenGFp1wwvwa2WLBOk1/k
-	wTFPU4mc1Ue2ULAkP0+w==;
+	List-Owner; bh=43F1ZTLPiqe+cv2qbDm4+FaV5NDuRvFzDPa+xH6mSGw=; b=eiqT4kegjwHC3r
+	31xy5FeMvvaTe7Vx4Rs5eEvuWGJDBVfota6daUfV/fdFEyI/L7EtQwCTforUqEBTgaWTGMuRDgZV8
+	BWYAqe/cYYfLyDd2kNiWMA0HJ56tdanx3s/DIk45wbCaj9QziUsYnsDzuffzPYSpH4yGJ7+nLqcJj
+	zgLCBRQE+Hiv6G7JeTztHtdLfaheZUYms/XIMDR/lr26g8INsHSZxnF1BlppdmVijRFcV6kmYJeru
+	d39BsGPf0mTuA0PHAs83b0uZ9ao+/hiXZl1sHgm03y1nHUsMz5pXXGxhc6YLlXQ+IaslcNmU37X5N
+	fQpPvio+44Fzg5SPMsQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndsH4-008iEq-FV; Mon, 11 Apr 2022 11:32:02 +0000
+	id 1ndsIV-008ivH-QH; Mon, 11 Apr 2022 11:33:31 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndsGs-008i9h-3s; Mon, 11 Apr 2022 11:31:51 +0000
-X-UUID: 7143476bac044491b73267219f614777-20220411
-X-UUID: 7143476bac044491b73267219f614777-20220411
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ id 1ndsII-008iqb-2G; Mon, 11 Apr 2022 11:33:19 +0000
+X-UUID: 3982c1262b724b1ca888535626603fd7-20220411
+X-UUID: 3982c1262b724b1ca888535626603fd7-20220411
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2014252881; Mon, 11 Apr 2022 04:31:38 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ with ESMTP id 1327956062; Mon, 11 Apr 2022 04:33:14 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Apr 2022 04:31:36 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 11 Apr 2022 19:31:29 +0800
+ 15.0.1497.2; Mon, 11 Apr 2022 04:33:12 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 11 Apr 2022 19:33:11 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 11 Apr 2022 19:31:29 +0800
-Message-ID: <61fc07988fb1bf11e090fe52e1b773f6f4fda537.camel@mediatek.com>
-Subject: Re: [PATCH V2 07/15] cpufreq: mediatek: Add opp notification for
- SVS support
+ Transport; Mon, 11 Apr 2022 19:33:11 +0800
+Message-ID: <0fad4560d167ed7f063e3e597b772bd440791b43.camel@mediatek.com>
+Subject: Re: [PATCH V2 06/15] cpufreq: mediatek: Record previous target
+ vproc value
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- <rafael@kernel.org>, <viresh.kumar@linaro.org>, <robh+dt@kernel.org>,
- <krzk+dt@kernel.org>
-CC: <matthias.bgg@gmail.com>, <jia-wei.chang@mediatek.com>,
+To: Viresh Kumar <viresh.kumar@linaro.org>
+CC: <rafael@kernel.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>,
+ <matthias.bgg@gmail.com>, <jia-wei.chang@mediatek.com>,
  <roger.lu@mediatek.com>, <hsinyi@google.com>, <linux-pm@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Andrew-sh.Cheng
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, "Andrew-sh . Cheng"
  <andrew-sh.cheng@mediatek.com>
-Date: Mon, 11 Apr 2022 19:31:29 +0800
-In-Reply-To: <d9f514b6-1116-30d3-274f-11e04a2dc8e9@collabora.com>
+Date: Mon, 11 Apr 2022 19:33:10 +0800
+In-Reply-To: <20220411032654.5tqqivmstqkojfj5@vireshk-i7>
 References: <20220408045908.21671-1-rex-bc.chen@mediatek.com>
- <20220408045908.21671-8-rex-bc.chen@mediatek.com>
- <d9f514b6-1116-30d3-274f-11e04a2dc8e9@collabora.com>
+ <20220408045908.21671-7-rex-bc.chen@mediatek.com>
+ <20220411032654.5tqqivmstqkojfj5@vireshk-i7>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220411_043150_215044_2AB40DA3 
-X-CRM114-Status: GOOD (  22.32  )
+X-CRM114-CacheID: sfid-20220411_043318_165672_09FA58A7 
+X-CRM114-Status: GOOD (  27.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,81 +79,120 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-04-08 at 15:36 +0200, AngeloGioacchino Del Regno wrote:
-> Il 08/04/22 06:59, Rex-BC Chen ha scritto:
-> > From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+On Mon, 2022-04-11 at 08:56 +0530, Viresh Kumar wrote:
+> On 08-04-22, 12:58, Rex-BC Chen wrote:
+> > From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 > > 
-> > The Smart Voltage Scaling (SVS) is a hardware which calculates
-> > suitable
-> > SVS bank voltages to OPP voltage table.
-> > 
-> > When the SVS is enabled, cpufreq should listen to opp notification
-> > and do
-> > proper actions when receiving events of disable and voltage
-> > adjustment.
+> > We found the buck voltage may not be exactly the same with what we
+> > set
+> > because CPU may share the same buck with other module.
+> > Therefore, we need to record the previous desired value instead of
+> > reading
+> > it from regulators.
 > > 
 > > Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 > > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 > > ---
-> >   drivers/cpufreq/mediatek-cpufreq.c | 90
-> > +++++++++++++++++++++++++++---
-> >   1 file changed, 82 insertions(+), 8 deletions(-)
+> >  drivers/cpufreq/mediatek-cpufreq.c | 31 +++++++++++++++++++-------
+> > ----
+> >  1 file changed, 20 insertions(+), 11 deletions(-)
 > > 
 > > diff --git a/drivers/cpufreq/mediatek-cpufreq.c
 > > b/drivers/cpufreq/mediatek-cpufreq.c
-> > index 472f4de29e5f..1369da62780a 100644
+> > index dc4a87e68940..472f4de29e5f 100644
 > > --- a/drivers/cpufreq/mediatek-cpufreq.c
 > > +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> > @@ -40,6 +40,7 @@ struct mtk_cpu_dvfs_info {
+> >  	struct list_head list_head;
+> >  	int intermediate_voltage;
+> >  	bool need_voltage_tracking;
+> > +	int old_vproc;
 > 
-> ..snip..
-> 
-> > +
-> >   static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info,
-> > int cpu)
-> >   {
-> >   	struct device *cpu_dev;
-> > @@ -392,6 +455,17 @@ static int mtk_cpu_dvfs_info_init(struct
-> > mtk_cpu_dvfs_info *info, int cpu)
-> >   	info->intermediate_voltage = dev_pm_opp_get_voltage(opp);
-> >   	dev_pm_opp_put(opp);
-> >   
-> > +	info->opp_cpu = cpu;
-> > +	info->opp_nb.notifier_call = mtk_cpufreq_opp_notifier;
-> > +	ret = dev_pm_opp_register_notifier(cpu_dev, &info->opp_nb);
-> 
-> You are registering this notifier, but never unregistering it.
-> Please unregister it in error conditions and also upon runtime
-> removal of the
-> mediatek-cpufreq module.
-> 
-> -> dev_pm_opp_unregister_notifier()
-> 
-> Regards,
-> Angelo
+> I like prev_vproc better somehow, but it is up to you to name it :)
 
-Hello Angelo,
+Hello Viresh,
 
 Thanks for your review.
-I will add this inside mtk_cpu_dvfs_info_release() in next version.
+I will modify this as prev_vproc in next version.
+
+> 
+> >  };
+> >  
+> >  static LIST_HEAD(dvfs_info_list);
+> > @@ -190,11 +191,17 @@ static int
+> > mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
+> >  
+> >  static int mtk_cpufreq_set_voltage(struct mtk_cpu_dvfs_info *info,
+> > int vproc)
+> >  {
+> > +	int ret;
+> > +
+> >  	if (info->need_voltage_tracking)
+> > -		return mtk_cpufreq_voltage_tracking(info, vproc);
+> > +		ret = mtk_cpufreq_voltage_tracking(info, vproc);
+> >  	else
+> > -		return regulator_set_voltage(info->proc_reg, vproc,
+> > -					     vproc + VOLT_TOL);
+> > +		ret = regulator_set_voltage(info->proc_reg, vproc,
+> > +					    MAX_VOLT_LIMIT);
+> > +	if (!ret)
+> > +		info->old_vproc = vproc;
+> > +
+> > +	return ret;
+> >  }
+> >  
+> >  static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+> > @@ -211,15 +218,7 @@ static int mtk_cpufreq_set_target(struct
+> > cpufreq_policy *policy,
+> >  
+> >  	inter_vproc = info->intermediate_voltage;
+> >  
+> > -	old_freq_hz = clk_get_rate(cpu_clk);
+> > -	old_vproc = regulator_get_voltage(info->proc_reg);
+> > -	if (old_vproc < 0) {
+> > -		pr_err("%s: invalid Vproc value: %d\n", __func__,
+> > old_vproc);
+> > -		return old_vproc;
+> > -	}
+> > -
+> 
+> Why did you move it down from here? I think it was fine to error out
+> early if voltage isn't available.
+
+I will move them to original position in next version.
+
+Thanks!
 
 BRs,
 Rex
 
 > 
-> > +	if (ret) {
-> > +		dev_warn(cpu_dev, "cpu%d: failed to register opp
-> > notifier\n", cpu);
-> > +		goto out_disable_inter_clock;
+> >  	freq_hz = freq_table[index].frequency * 1000;
+> > -
+> >  	opp = dev_pm_opp_find_freq_ceil(cpu_dev, &freq_hz);
+> >  	if (IS_ERR(opp)) {
+> >  		pr_err("cpu%d: failed to find OPP for %ld\n",
+> > @@ -229,6 +228,16 @@ static int mtk_cpufreq_set_target(struct
+> > cpufreq_policy *policy,
+> >  	vproc = dev_pm_opp_get_voltage(opp);
+> >  	dev_pm_opp_put(opp);
+> >  
+> > +	old_freq_hz = clk_get_rate(cpu_clk);
+> > +	old_vproc = info->old_vproc;
+> > +	if (old_vproc == 0)
+> > +		old_vproc = regulator_get_voltage(info->proc_reg);
+> > +	if (old_vproc < 0) {
+> > +		dev_err(cpu_dev, "%s: invalid Vproc value: %d\n",
+> > +			__func__, old_vproc);
+> > +		return old_vproc;
 > > +	}
 > > +
-> > +	mutex_init(&info->reg_lock);
-> > +	info->opp_freq = clk_get_rate(info->cpu_clk);
-> > +
-> >   	/*
-> >   	 * If SRAM regulator is present, software "voltage tracking" is
-> > needed
-> >   	 * for this CPU power domain.
+> >  	/*
+> >  	 * If the new voltage or the intermediate voltage is higher
+> > than the
+> >  	 * current voltage, scale up voltage first.
+> > -- 
+> > 2.18.0
 > 
 > 
 
