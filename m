@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25987C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 11:20:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09293C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 11:21:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rGgCpw3yLbGR2PvjILSklqamm4/u6DH96UWhScUoC04=; b=tL2YW04xlsoEFy
-	sjzv6dVTi+GZmxAzQf5gQQEJmzjwpfMuH5Fbpldz+EOOpZYtL9kwtFR3dpiKYJd7+294GJgLM1hdT
-	KPXNx9V0JpnQLt4bqP5tcGGdfS6sUd9hiPF7IPO9+1D2jj7+NgiEVDwtDoaIe2nIzFvufOmUstrvQ
-	h7/KfzB/lEh4MytknP4sMmW3h6nDF0fUqZDqaMV9Tq1t43G+E1BK9fkxjl263pHkzCQZt6pu9IG8b
-	UmMdtj0fMtfsokEaEIOz3vnTVM/VeYuAN1CV3yI49wjpHT6s466H13H0s2RW667dCL0QBsXlcBrjI
-	ePZmXm8sdfa2OQwn7JSA==;
+	List-Owner; bh=tGHe5KVossrihs7S0u7+t4t4cKWE79QDKcoQSqL2qok=; b=JltUkvgixaUdl7
+	9EhKINurJDWtDDkDUV/bQanc/lX9Fhs+p4g7S0FN7348UIoOJaw85R4CKbMkGIYdba1b+VEzMqnqz
+	b3+tzlerS9A8LEmcwLbkNvurTuRXZ/8SJAT5BhA17lmH3cBIsggs+WTTU27HInrZ2VCW2/pYePHu1
+	uSUGE9sJJAiM4kQU9c2j7XT2yy1c//KW967v3024ScfDyRAChvmP+HZHVE1YhvuBBZA/lkepE/z1m
+	vp6C4Ix8O8/2ILPDTr3R+xP3ZuJNISnne/b+BDHOmxKQkSMxMpDcdFiwmSYfmIIPBmXdPhHnp1lYd
+	1vgV0j1lGEvIqHEFxf5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nds5u-008cug-Hz; Mon, 11 Apr 2022 11:20:30 +0000
+	id 1nds6K-008dA9-9H; Mon, 11 Apr 2022 11:20:56 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nds5L-008cZm-PK; Mon, 11 Apr 2022 11:19:57 +0000
-X-UUID: 15046bf2216642b798aaa4457d52807d-20220411
-X-UUID: 15046bf2216642b798aaa4457d52807d-20220411
+ id 1nds5L-008cak-PI; Mon, 11 Apr 2022 11:19:58 +0000
+X-UUID: a58651e643cc48ab9c211acee15cdd93-20220411
+X-UUID: a58651e643cc48ab9c211acee15cdd93-20220411
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 23273460; Mon, 11 Apr 2022 04:19:49 -0700
+ with ESMTP id 1276037476; Mon, 11 Apr 2022 04:19:49 -0700
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Apr 2022 04:18:26 -0700
+ 15.0.1497.2; Mon, 11 Apr 2022 04:09:46 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Apr 2022 19:18:25 +0800
+ 15.0.1497.2; Mon, 11 Apr 2022 19:09:45 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 11 Apr 2022 19:18:25 +0800
-Message-ID: <371c9a96e80faa26719e00b694e45d176105b6dc.camel@mediatek.com>
-Subject: Re: [PATCH V2 08/15] cpufreq: mediatek: Move voltage limits to
- platform data
+ Transport; Mon, 11 Apr 2022 19:09:44 +0800
+Message-ID: <5c6dc5ed28c64f62b66e7b68b54c342b63e42d42.camel@mediatek.com>
+Subject: Re: [PATCH V2 15/15] cpufreq: mediatek: Use device print to show logs
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- <rafael@kernel.org>, <viresh.kumar@linaro.org>, <robh+dt@kernel.org>,
- <krzk+dt@kernel.org>
-CC: <matthias.bgg@gmail.com>, <jia-wei.chang@mediatek.com>,
+To: Viresh Kumar <viresh.kumar@linaro.org>
+CC: <rafael@kernel.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>,
+ <matthias.bgg@gmail.com>, <jia-wei.chang@mediatek.com>,
  <roger.lu@mediatek.com>, <hsinyi@google.com>, <linux-pm@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 11 Apr 2022 19:18:25 +0800
-In-Reply-To: <3dade32c-4b46-351a-b3f9-d1fec16b603c@collabora.com>
+Date: Mon, 11 Apr 2022 19:09:44 +0800
+In-Reply-To: <20220411032922.yj4p42is5ky6bgau@vireshk-i7>
 References: <20220408045908.21671-1-rex-bc.chen@mediatek.com>
- <20220408045908.21671-9-rex-bc.chen@mediatek.com>
- <3dade32c-4b46-351a-b3f9-d1fec16b603c@collabora.com>
+ <20220408045908.21671-16-rex-bc.chen@mediatek.com>
+ <20220411032922.yj4p42is5ky6bgau@vireshk-i7>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220411_041955_851854_0A7BB0AD 
-X-CRM114-Status: GOOD (  21.34  )
+X-CRM114-CacheID: sfid-20220411_041955_855846_EC029C35 
+X-CRM114-Status: GOOD (  13.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,60 +76,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-04-08 at 15:36 +0200, AngeloGioacchino Del Regno wrote:
-> Il 08/04/22 06:59, Rex-BC Chen ha scritto:
-> > From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+On Mon, 2022-04-11 at 08:59 +0530, Viresh Kumar wrote:
+> On 08-04-22, 12:59, Rex-BC Chen wrote:
+> > Replace pr_* with dev_* to show logs.
 > > 
-> > Voltages and shifts are defined as macros originally.
-> > There are different requirements of these values for each MediaTek
-> > SoCs.
-> > Therefore, we add the platform data and move these values into it.
-> > 
-> > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 > > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 > > ---
-> >   drivers/cpufreq/mediatek-cpufreq.c | 90 ++++++++++++++++++++-----
-> > -----
-> >   1 file changed, 61 insertions(+), 29 deletions(-)
-> > 
-> > diff --git a/drivers/cpufreq/mediatek-cpufreq.c
-> > b/drivers/cpufreq/mediatek-cpufreq.c
-> > index 1369da62780a..0be5609ee82e 100644
-> > --- a/drivers/cpufreq/mediatek-cpufreq.c
-> > +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> >  drivers/cpufreq/mediatek-cpufreq.c | 41 +++++++++++++++++---------
+> > ----
+> >  1 file changed, 23 insertions(+), 18 deletions(-)
 > 
-> ..snip..
+> One should always arrange the patches in this form:
 > 
-> > @@ -625,20 +649,27 @@ static struct platform_driver
-> > mtk_cpufreq_platdrv = {
-> >   	.probe		= mtk_cpufreq_probe,
-> >   };
-> >   
-> > +static const struct mtk_cpufreq_platform_data mtk_platform_data =
-> > {
+> - Fix bugs first (since they need to be applied first and need to go
+>   to stable kernels too).
 > 
-> I would prefer if you name this after the oldest SoC that is
-> supported in this
-> driver, or after the IP version.
+> - Trivial fixes next, like this one which you chose to be present at
+>   15/15. I would have applied this one right away, if it wasn't he
+>   last one, because of which we have conflicts now.
 > 
-> Example: if the oldest one is mt7622, then this should be
-> mt7622_platform_data;
->           if newer SoCs have got a different cpu frequency control
-> IP, then we
->           should have here something like
->           mtk_v1_platform_data, mtk_v1_3_platform_data.
+> - Non-trivial patches later, so reviews on them don't affect other
+>   patches.
 > 
-> Please note that I didn't check release dates, so my reference to
-> mt7622 is
-> purely casual.
-> 
-> Regards,
-> Angelo
+Hello Viresh,
 
-Hello Angelo,
-
-Thanks for your review.
-I will rename it as mt2701_platform_data.
+Thanks for your review and suggestions.
+I will put this patch to first in next version.
 
 BRs,
 Rex
