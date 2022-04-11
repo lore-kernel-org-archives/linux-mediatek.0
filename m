@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43F97C4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 07:49:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7650C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 07:49:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YD6hxIK3dbcHb9DPmGXS0krqvSbzcAuwCd6cvGsrOUI=; b=uwgQuFPKNvmZis
-	gnXk9PTEQ9fAR+OozlciAEzGWi8Xd0o1dWP9aOoqWxwWTYLxMH3imBzVW7IBWqTeRY8mKERLDi0fC
-	wZtg+y1XNADHMkwT7srzno+WyvYmmBCpuDwZRIJmm7fovedqE2nPIsdYmr5J/oS1DHyQEtlec7Xod
-	9vYB8t+E6Q114UUVPqeCHR+GzPghBc4ZryicUGCcgaMslflP8yTyiI3Y1piqiMtgIAgyxDMYo89i9
-	CBsZYTKw00f05aeBjtZRLBnMKvxKLkZo3MUtyne3aDtl8ETCjIiDJEmWt57yrkNJ9VzXtYpxES21C
-	/bRGnA8rXlF/JoBLA82w==;
+	List-Owner; bh=ufBvr2Ae0HH7cdZlKyVzKpzESQGlFW422ePa3eqQfxU=; b=11s+75zSMmSOZq
+	lDeSiQeMksHI3flx7H1auMssTsNO8yu8x7o/wf42O+aVrofupbzO+tn98q7sNe2yM7ENWiBmGL/oP
+	/+mOWLkBAlZOfjAjdE6SloS3c43k//uBbYHS5lr4XB680GWKLlVJxH2Af2JXgKvwQWl/cMv7BauPu
+	RoRHVIDFGtqvbyrf1uSnHW8wHW6m8/B91gxLrlZHvhdv7c9INfAwMYjZG7NrFDGhVQd3dxXQn0I5N
+	9AKz4Li4vkE0xrd08IBbcTP7C9RwSYl2AAEJZfbRh/bV76hbTw29Q5m36Fq2av8m1qUp9whPrIVrW
+	qZz6mKadRmjoaFJ8U3nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndonp-007Muo-J8; Mon, 11 Apr 2022 07:49:37 +0000
+	id 1ndoo3-007N2B-2X; Mon, 11 Apr 2022 07:49:51 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndonn-007MtW-5A; Mon, 11 Apr 2022 07:49:36 +0000
-X-UUID: 7e8cc774c1554f3688c112a899c63bce-20220411
-X-UUID: 7e8cc774c1554f3688c112a899c63bce-20220411
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1ndonn-007Mtk-Oa; Mon, 11 Apr 2022 07:49:36 +0000
+X-UUID: f14c17d3bc1d4ed39e01d871621b0dfa-20220411
+X-UUID: f14c17d3bc1d4ed39e01d871621b0dfa-20220411
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <moudy.ho@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 262761504; Mon, 11 Apr 2022 00:49:31 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 83158306; Mon, 11 Apr 2022 00:49:30 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Mon, 11 Apr 2022 00:49:29 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 11 Apr 2022 15:49:27 +0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 11 Apr 2022 15:49:27 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Mon, 11 Apr 2022 15:49:27 +0800
@@ -58,18 +58,18 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
  <roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
  <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v15 3/6] dt-bindings: soc: mediatek: move out common module
- from display folder
-Date: Mon, 11 Apr 2022 15:49:22 +0800
-Message-ID: <20220411074925.25539-4-moudy.ho@mediatek.com>
+Subject: [PATCH v15 5/6] dts: arm64: mt8183: add GCE client property for
+ Mediatek MUTEX
+Date: Mon, 11 Apr 2022 15:49:24 +0800
+Message-ID: <20220411074925.25539-6-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220411074925.25539-1-moudy.ho@mediatek.com>
 References: <20220411074925.25539-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220411_004935_229070_6479F8E7 
-X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-CacheID: sfid-20220411_004935_825166_A4760F50 
+X-CRM114-Status: UNSURE (   9.19  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,33 +87,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to share the same hardware information with MDP3,
-change the MUTEX dt-binding to the path "soc/mediatek".
+In order to allow modules with latency requirements such as MDP3
+to set registers through CMDQ, add the relevant dts property.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
-Acked-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 ---
- .../bindings/{display => soc}/mediatek/mediatek,mutex.yaml      | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
- rename Documentation/devicetree/bindings/{display => soc}/mediatek/mediatek,mutex.yaml (97%)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-similarity index 97%
-rename from Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
-rename to Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-index 00e6a1041a9b..40598243c84d 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-@@ -1,7 +1,7 @@
- # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
- %YAML 1.2
- ---
--$id: http://devicetree.org/schemas/display/mediatek/mediatek,mutex.yaml#
-+$id: http://devicetree.org/schemas/soc/mediatek/mediatek,mutex.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 4b08691ed39e..fc6ac2a46324 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1514,6 +1514,7 @@
+ 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+ 			mediatek,gce-events = <CMDQ_EVENT_MUTEX_STREAM_DONE0>,
+ 					      <CMDQ_EVENT_MUTEX_STREAM_DONE1>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x6000 0x1000>;
+ 		};
  
- title: Mediatek mutex
+ 		larb0: larb@14017000 {
 -- 
 2.18.0
 
