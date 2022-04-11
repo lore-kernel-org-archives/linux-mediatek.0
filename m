@@ -4,63 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46631C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 12:01:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 491A0C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 12:06:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eZjs0jE2pGoglATc0rQ0hAFulLoimXS0F+G39y9cgb0=; b=LOVddqh0M+mqWq
-	Vwrmy64l7sE3oFnep8Z4OTkntSeMUg1R1FQZrZ1zglrw42OwMt/+UrCTa87UMN8xmTZB4qhzHASbY
-	tHiAtEyisIzlKbi6ByFxHAXgI9lu1saw5FUd3u/ilZ08iWEC7KC1yCmXVyGTrq+WA15TQFRo46Whs
-	74ynpK0MN2PMIOxAABfXclBcXSN1r/ShfS7/1mHSG1fOlsQ6w6Jy1a9tdPZUJ3hqweD05ePG+E74f
-	+2xAH0zfUedUJZmIuizZbruza7od6wcFCRuBDpXdSsMfIyRBfKyHEYl2B1A3pot7bAxfOZdIazV3A
-	GEedKCSXPIYGUxYZABRg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bba8CFBLEzCVMycdqjuHz4JLgs7oLSvh+sjFZ0ftRrs=; b=Qus+9BQ6XAl+oi
+	JV84CxDWmUd+RFqEP3vEhllL+q+BWxbzFj+VDN+nTVV1WCX4o60uOEFazAuI6qX89cTB6trOqMGlT
+	yRQSik5johotGCweiuSHcfvXfkvRUYx/Lud+hHUY9kRnegkd8XkfZ5knOy7UGV+0cs8Zq5VbCnLPz
+	7NtuHcTnHvyeLxhLtqTWV6+bqtP5kPUcAZy1RIE3benQanDOxIYdt4b/0xHj4OApOJHj7BqidEKEG
+	Vbv8RZNK6nDbzmN3g2upB8vMd3lGqb2sEVC2MUIFUaYHmvQ7RXweNBaUnROG1m8+wauQtwswp54Dj
+	pjanaMB1fedcM6oW1dCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndsjx-008plB-7m; Mon, 11 Apr 2022 12:01:53 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ndsoX-008rpO-S0; Mon, 11 Apr 2022 12:06:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndsjV-008pXv-6t; Mon, 11 Apr 2022 12:01:26 +0000
-X-UUID: a2e7f0c888784938a8edce935b028afc-20220411
-X-UUID: a2e7f0c888784938a8edce935b028afc-20220411
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
+ id 1ndsnr-008rXp-Ly; Mon, 11 Apr 2022 12:06:01 +0000
+X-UUID: df7f9e1adb9f494c98095150c982e24b-20220411
+X-UUID: df7f9e1adb9f494c98095150c982e24b-20220411
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1128842304; Mon, 11 Apr 2022 05:01:22 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 239232337; Mon, 11 Apr 2022 05:05:49 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Apr 2022 04:51:19 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 11 Apr 2022 19:51:18 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ 15.0.1497.2; Mon, 11 Apr 2022 05:05:47 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 11 Apr 2022 20:05:46 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 11 Apr 2022 19:51:18 +0800
-Message-ID: <f4c5177fe99cc62b78083d3e8192d97065b2dad2.camel@mediatek.com>
-Subject: Re: [PATCH V2 13/15] cpufreq: mediatek: Link CCI device to CPU
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Kevin Hilman <khilman@baylibre.com>, <rafael@kernel.org>,
- <viresh.kumar@linaro.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>
-CC: <matthias.bgg@gmail.com>, <jia-wei.chang@mediatek.com>,
- <roger.lu@mediatek.com>, <hsinyi@google.com>, <linux-pm@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 11 Apr 2022 19:51:18 +0800
-In-Reply-To: <7hfsmn5m9f.fsf@baylibre.com>
-References: <20220408045908.21671-1-rex-bc.chen@mediatek.com>
- <20220408045908.21671-14-rex-bc.chen@mediatek.com>
- <7hfsmn5m9f.fsf@baylibre.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Mon, 11 Apr 2022 20:05:45 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: <linux-firmware@kernel.org>
+CC: <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
+ <tinghan.shen@mediatek.com>, <Yunfei.Dong@mediatek.com>,
+ <irui.wang@mediatek.com>, <srv_heupstream@mediatek.com>
+Subject: pull request: linux-firmware: Create Mediatek MT8192 SCP firmware 
+Date: Mon, 11 Apr 2022 20:05:44 +0800
+Message-ID: <20220411120545.20066-1-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220411_050125_278129_B007CD5A 
-X-CRM114-Status: GOOD (  24.04  )
+X-CRM114-CacheID: sfid-20220411_050555_769804_97E3D57E 
+X-CRM114-Status: UNSURE (   7.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,70 +72,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-04-08 at 13:54 -0700, Kevin Hilman wrote:
-> Rex-BC Chen <rex-bc.chen@mediatek.com> writes:
-> 
-> > From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> > 
-> > In some MediaTek SoCs, like MT8183, CPU and CCI share the same
-> > power
-> > supplies. Cpufreq needs to check if CCI devfreq exists and wait
-> > until
-> > CCI devfreq ready before scaling frequency.
-> > 
-> > - Add is_ccifreq_ready() to link CCI device to CPI, and CPU will
-> > start
-> >   DVFS when CCI is ready.
-> > - Add platform data for MT8183.
-> > 
-> > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> 
-> The checks here are not enough, and will lead to unexpected behavior.
-> IIUC, before doing DVFS, you're checking:
-> 
-> 1) if the "cci" DT node is present and
-> 2) if the driver for that device is bound
-> 
-> If both those conditions are not met, you don't actually fail, you
-> just
-> silently do nothing in ->set_target().  As Angelo pointed out also,
-> this
-> is not a good idea, and will be rather confusing to users.
-> 
-> The same thing would happen if the cci DT node was present, but the
-> CCI
-> devfreq driver was disabled.  Silent failure would also be quite
-> unexpected behavior.  Similarily, if the cci DT node is not present
-> at
-> all (like it is in current upstream DT), this CPUfreq driver will
-> silently do nothing.  Not good.
-> 
-> So, this patch needs to handle several scenarios:
-> 
-> 1) CCI DT node not present
-> 
-> In this case, the driver should still operate normally.  With no CCI
-> node, or driver there's no conflict.
-> 
-> 2) CCI DT present/enabled but not yet bound
-> 
-> In this case, you could return -EAGAIN as suggested by Angelo, or
-> maybe
-> better, it should do a deferred probe.
-> 
-> 3) CCI DT present, but driver disabled
-> 
-> This case is similar to (1), this driver should continue to work.
-> 
-> Kevin
+The following changes since commit 681281e49fb6778831370e5d94e6e1d97f0752d6:
 
-Hello Kevin,
+  amdgpu: update PSP 13.0.8 firmware (2022-03-18 07:35:54 -0400)
 
-Thanks for your review.
-I will review these three situations and do some modification.
+are available in the Git repository at:
 
-BRs,
-Rex
+  https://github.com/yunfeidongmediatek/linux_fw_scp_8192 v1
+
+for you to fetch changes up to ae8dfb4a5d4c6028ee1fca04b374b0e03ec35360:
+
+  mediatek: Add mt8192 SCP firmware (2022-04-11 20:00:24 +0800)
+
+----------------------------------------------------------------
+Yunfei Dong (1):
+      mediatek: Add mt8192 SCP firmware
+
+ WHENCE                  |   3 +++
+ mediatek/mt8192/scp.img | Bin 0 -> 309436 bytes
+ 2 files changed, 3 insertions(+)
+ create mode 100644 mediatek/mt8192/scp.img
+
 
 
 _______________________________________________
