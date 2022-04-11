@@ -4,68 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6BA3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 11:23:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B25F5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 11:30:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q9G12avI+BiBmtZXVLbXAzVy6rW+1nYL90uT/vE5wjg=; b=kSLj0W9TGjIJWp
-	PKluocVLzHD2lRdX2NWB+GRZFgsR9PEMtW+L+8+fBjgIkEauL77Xm9xhp9a9bYAX5C50jiwqi2DKQ
-	wxs5iEul9B7YW4bYeYa67+lCtITFciUDdqshOyzs26BSfx8mMyI+26sgRcCEtzyJFinz3UncZKBZG
-	J9UIg9WcGWkdMD2g7smm2pxt01VEX+vnktSuKjjyA/wsNOo20wrCNQlsvBJsD5//XHgV8518yc683
-	5YCMrrqP1ok8U8M8wimGlt8uw/ZEj3oGmnxU4MlhLQ5WIT2IkdsTiUOgOeT/C9gtfuFWyQNfY6xzd
-	5CLUzq/gFYh9QbM2lgpg==;
+	List-Owner; bh=3N1qjy+JerSS19p37qtttyVq7aTBYuNQTU5Hizv8YjI=; b=pGPljDz86jXA/5
+	peVaqn6lP3/wnWkvhdRJ01mHhp4vKxgKVYT+C3Peg4FLGtwI8hrtQw1+KQ8rat2WUSZawNK4jeeqQ
+	BoKaJJrUKxS8P19x7RV4H2DeU6sbYvVr9xa8Co1g9Au/A9U/Br8zW7R2K1agUVEdNbmBAHZoLw0wV
+	cCn3u8x168YmV9Z0Ziz8o0mQSlpIHYf6k7z+HlPxF0LBDiBnJq1CI7271hhxUsGD+wA+WouA1RshL
+	Tv97exV8Nbo0z6Yosm2EArsvP1oGnYYRC8W6xpL5hzDq+Aiow3EtS0ALRvqeH9AsYoGz9RPaWPB1Q
+	O6xvBs+LPPtdQAuvCGSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nds8i-008edu-I4; Mon, 11 Apr 2022 11:23:24 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1ndsFH-008hZ4-DQ; Mon, 11 Apr 2022 11:30:11 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nds6t-008dW0-Ik; Mon, 11 Apr 2022 11:21:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1649676063; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=FYR1ljHw9ZleGd6VEvYY5zwbU+JgG4fLt3a2rwmS4wVlnaOl9s2j1HOI0SSXKQ6A+OyZBAnGhe45k+byVXyfC7zH/i5thZnjMfpPDWFCS8CNw2OnTGcSIxnfoViN50bdVrne8aP5+oFxupsAqFo8Nzw8RWZDQAN4fbGYrYKoUA4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1649676063;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To;
- bh=s4xzLoNpe1+7AuZ01StDxH9nnUVROAsjJ2iNHkOD0DU=; 
- b=oKfNTWkk4QyWgfmc4PKiKA3Ynqjmax8qhZTvK266DXBSy5f9LujDG9UsRwnksOB2161zsbCsxfkxMrQmnJdZvPNzA8jWjJABhEE7Nl6NT8s8zhVHq2RzjW4VI0kQPVFijdOjNZeFz4VNwCGnSyMMy3AMbS9xSk6MpSYTvC1OIjE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=arinc9.com;
- spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
- dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1649676063; 
- s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
- h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
- bh=s4xzLoNpe1+7AuZ01StDxH9nnUVROAsjJ2iNHkOD0DU=;
- b=WJF6fzUvoRQgTBFtax5JnWNJsc7hJbZ3dZX2/HeUGB1SfRYXJUt+x5VouQMl1Tg/
- i7FEnf0Vxfc9+FuiZ4ErEWtDeeFH8Pbcz9D/24Yc+a1rchkZ2anAcB8TWHT/wV2QhPZ
- +FVt1FY1D+gfUfvVwmckgEKi2aZiHE4yO5oZapjs=
-Received: from arinc9-PC.localdomain (85.117.236.245 [85.117.236.245]) by
- mx.zohomail.com with SMTPS id 1649676061982713.5477889360059;
- Mon, 11 Apr 2022 04:21:01 -0700 (PDT)
-From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mips@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-Subject: [PATCH v2 2/3] mips: dts: ralink: mt7621: mux phy4 to gmac1 for GB-PC1
-Date: Mon, 11 Apr 2022 14:20:48 +0300
-Message-Id: <20220411112049.18001-2-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220411112049.18001-1-arinc.unal@arinc9.com>
-References: <20220411112049.18001-1-arinc.unal@arinc9.com>
+ id 1ndsEm-008hM7-8x; Mon, 11 Apr 2022 11:29:41 +0000
+X-UUID: 76bb4422e1654ddea7544f79f0fe6f68-20220411
+X-UUID: 76bb4422e1654ddea7544f79f0fe6f68-20220411
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 300111046; Mon, 11 Apr 2022 04:29:36 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 11 Apr 2022 04:29:35 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 11 Apr 2022 19:29:33 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 11 Apr 2022 19:29:33 +0800
+Message-ID: <3b7bf25a3da6c8f780c87784c1f796bf1e464238.camel@mediatek.com>
+Subject: Re: [PATCH V2 07/15] cpufreq: mediatek: Add opp notification for
+ SVS support
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Kevin Hilman <khilman@baylibre.com>, <rafael@kernel.org>,
+ <viresh.kumar@linaro.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>
+CC: <matthias.bgg@gmail.com>, <jia-wei.chang@mediatek.com>,
+ <roger.lu@mediatek.com>, <hsinyi@google.com>, <linux-pm@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Andrew-sh.Cheng
+ <andrew-sh.cheng@mediatek.com>
+Date: Mon, 11 Apr 2022 19:29:33 +0800
+In-Reply-To: <7hsfqn5nft.fsf@baylibre.com>
+References: <20220408045908.21671-1-rex-bc.chen@mediatek.com>
+ <20220408045908.21671-8-rex-bc.chen@mediatek.com>
+ <7hsfqn5nft.fsf@baylibre.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-X-ZohoMailClient: External
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220411_042131_718746_C21B9199 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20220411_042940_399013_07B432D4 
+X-CRM114-Status: GOOD (  16.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,34 +73,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-TXV4IHRoZSBNVDc1MzAgc3dpdGNoJ3MgcGh5NCB0byB0aGUgU29DJ3MgZ21hYzEgb24gdGhlIEdC
-LVBDMSBkZXZpY2V0cmVlLgpUaGlzIGFjaGlldmVzIDIgR2JwcyB0b3RhbCBiYW5kd2lkdGggdG8g
-dGhlIENQVSB1c2luZyB0aGUgc2Vjb25kIFJHTUlJLgoKU2lnbmVkLW9mZi1ieTogQXLEsW7DpyDD
-nE5BTCA8YXJpbmMudW5hbEBhcmluYzkuY29tPgpSZXZpZXdlZC1ieTogU2VyZ2lvIFBhcmFjdWVs
-bG9zIDxzZXJnaW8ucGFyYWN1ZWxsb3NAZ21haWwuY29tPgotLS0KdjI6IGFkZCAicmFsaW5rOiIg
-dG8gdGhlIGNvbW1pdCBzdW1tYXJ5CgotLS0KIC4uLi9ib290L2R0cy9yYWxpbmsvbXQ3NjIxLWdu
-dWJlZS1nYi1wYzEuZHRzICAgfCAxOCArKysrKysrKysrLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2Vk
-LCAxMCBpbnNlcnRpb25zKCspLCA4IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2FyY2gvbWlw
-cy9ib290L2R0cy9yYWxpbmsvbXQ3NjIxLWdudWJlZS1nYi1wYzEuZHRzIGIvYXJjaC9taXBzL2Jv
-b3QvZHRzL3JhbGluay9tdDc2MjEtZ251YmVlLWdiLXBjMS5kdHMKaW5kZXggNTg5MmJjZjcxNTk1
-Li43NWYzYjA0MjU0ODcgMTAwNjQ0Ci0tLSBhL2FyY2gvbWlwcy9ib290L2R0cy9yYWxpbmsvbXQ3
-NjIxLWdudWJlZS1nYi1wYzEuZHRzCisrKyBiL2FyY2gvbWlwcy9ib290L2R0cy9yYWxpbmsvbXQ3
-NjIxLWdudWJlZS1nYi1wYzEuZHRzCkBAIC0xMDMsMTQgKzEwMywyMSBAQCAmcGluY3RybCB7CiAK
-IAlzdGF0ZV9kZWZhdWx0OiBzdGF0ZS1kZWZhdWx0IHsKIAkJZ3Bpby1waW5tdXggewotCQkJZ3Jv
-dXBzID0gInJnbWlpMiIsICJ1YXJ0MyIsICJ3ZHQiOworCQkJZ3JvdXBzID0gInVhcnQzIiwgIndk
-dCI7CiAJCQlmdW5jdGlvbiA9ICJncGlvIjsKIAkJfTsKIAl9OwogfTsKIAotJmV0aGVybmV0IHsK
-LQlwaW5jdHJsLTAgPSA8Jm1kaW9fcGlucz4sIDwmcmdtaWkxX3BpbnM+OworJmdtYWMxIHsKKwlz
-dGF0dXMgPSAib2theSI7CisJcGh5LWhhbmRsZSA9IDwmZXRocGh5ND47Cit9OworCismbWRpbyB7
-CisJZXRocGh5NDogZXRoZXJuZXQtcGh5QDQgeworCQlyZWcgPSA8ND47CisJfTsKIH07CiAKICZz
-d2l0Y2gwIHsKQEAgLTExOSwxMCArMTI2LDUgQEAgcG9ydEAwIHsKIAkJCXN0YXR1cyA9ICJva2F5
-IjsKIAkJCWxhYmVsID0gImV0aGJsYWNrIjsKIAkJfTsKLQotCQlwb3J0QDQgewotCQkJc3RhdHVz
-ID0gIm9rYXkiOwotCQkJbGFiZWwgPSAiZXRoYmx1ZSI7Ci0JCX07CiAJfTsKIH07Ci0tIAoyLjI1
-LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlh
-dGVrCg==
+On Fri, 2022-04-08 at 13:29 -0700, Kevin Hilman wrote:
+> Rex-BC Chen <rex-bc.chen@mediatek.com> writes:
+> 
+> > From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+> > 
+> > The Smart Voltage Scaling (SVS) is a hardware which calculates
+> > suitable
+> > SVS bank voltages to OPP voltage table.
+> > 
+> > When the SVS is enabled, cpufreq should listen to opp notification
+> > and do
+> > proper actions when receiving events of disable and voltage
+> > adjustment.
+> 
+> So listenting for OPP notifications should be done only when SVS is
+> enabled...
+> 
+
+Hello Kevin,
+
+Thanks for your review.
+Yes, the OPP notification is only called from MediaTek SVS.
+
+> [...]
+> 
+> >  static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info,
+> > int cpu)
+> >  {
+> >  	struct device *cpu_dev;
+> > @@ -392,6 +455,17 @@ static int mtk_cpu_dvfs_info_init(struct
+> > mtk_cpu_dvfs_info *info, int cpu)
+> >  	info->intermediate_voltage = dev_pm_opp_get_voltage(opp);
+> >  	dev_pm_opp_put(opp);
+> >  
+> > +	info->opp_cpu = cpu;
+> > +	info->opp_nb.notifier_call = mtk_cpufreq_opp_notifier;
+> > +	ret = dev_pm_opp_register_notifier(cpu_dev, &info->opp_nb);
+> 
+> ...but here youlisten to OPP notifications unconditionally.  Seems
+> there
+> should be a check whether SVS is enabled before deciding to register.
+> 
+> Kevin
+
+Do you think it's ok that we wrap it with the SVS Kconfig define?
+like
+#ifdef CONFIG_MTK_SVS
+mtk_cpufreq_opp_notifier()
+...
+dev_pm_opp_register_notifier()
+#endif
+
+SVS series:
+message-id:20220221063939.14969-4-roger.lu@mediatek.com
+
+BRs,
+Rex
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
