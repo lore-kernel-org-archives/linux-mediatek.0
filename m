@@ -4,81 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E10CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 15:57:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09F5BC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Apr 2022 17:24:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qkRTs3jKBhMQFH/MOxFNeY1aj1COjvJIPLLiYA1AIMU=; b=eDadywEXfwd0fj
-	76lPBwu8gf3TBYtJ2RZ93tdB8GR8Cd7RGL0GixFldPAK9X6PwLn4A275Xn5dO4hlNNT7wFhW+8uPS
-	TiJcUPxugmktplar9nxC01IfuzmrKYQM4Exm4YpifAzia7xNNaSBjarsRVdISorB3twJOwu79oxZF
-	aRaiiRg72AvVqrc+c48zBnnb9Qae8fM7sIjiOWgd2SznwMyzLkr2dYGZc7zI6Lb2M1ls3uInImKfg
-	bPUvWMtnDAywH3xMxq2SmyWkBvQCtmmafc/FDAEs4EfRtCLIfGPeoMHgvuvq91EZB2NPn9f3ZPqPs
-	ssxZhLFX1PcwJgafqW8g==;
+	List-Owner; bh=smRcC66zTXm7/lx5azDdR1nunGGhxcxfl/HBpZCuu58=; b=x1eoJOe7Pr7amS
+	E5z2pANPb/oAIq8koD6ONsb0kqDaSK6eDNn6sN5sv/ruCRqmHv77sR02nzvYAUt9ApqRt8bhIg6nX
+	gesF/QSGb+XMPK6ucq4MQFcxkL+423k2VjSNQv6nWyduVu4q+HZ3gM5OmASQZ4WDWWAXW4SdV66hD
+	La+Nk8RcwXVQw6OHiUZQ0a4AORpFllqlto4GwssNEdRmEDEhfEB1NnWj7qe2lvO8dzwDMziLA1IBL
+	zF7Ah9WY8K7nm24hoSsx02goEFTAuS7W8LLd//PKkNx7kjMT8hYvot21eH5ldHHnFKeH5fw1djCml
+	Nl0UDTSdUfNAcjV0Pezg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndwQB-009h21-QV; Mon, 11 Apr 2022 15:57:43 +0000
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+	id 1ndxmL-009ryh-PQ; Mon, 11 Apr 2022 17:24:41 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndwQ8-009h0W-LF
- for linux-mediatek@lists.infradead.org; Mon, 11 Apr 2022 15:57:42 +0000
-Received: by mail-pj1-x1031.google.com with SMTP id
- s14-20020a17090a880e00b001caaf6d3dd1so18796697pjn.3
- for <linux-mediatek@lists.infradead.org>; Mon, 11 Apr 2022 08:57:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=M8asM4iauMxrRszdV5+UB7ZDNGbKG8oI3XcEYrRlcUM=;
- b=V3QeCRIKh6yR+JHRKKOiWBsnYjDNWQqGpBEBdBva/1vuS5c4lpeqZkNVXm+dsm2J5Y
- WyVRu5cT4+Zcj0Xpotdq0vALjKzJLUB0t/kqjDr2Ae8bQIG4nKxnmjWZC8W1wRuvJlp6
- oMPQCPRhVfSVOWdkGF9zepYZKS9v8FNL1ezXaFdt1t4Zkq1ujFxYy52xBIO/+pjiJMzf
- EF4QVX0aN8Z1GzzzaGRrQdhlRwcKDygofwwYQmKY8coYITtpx84w5U4wv0p6aPaKickA
- M+E2KONc68+VWlWIyVqj57kB5XgPxNS4P5Zzkk85E/hFWb0qd/XodC2gEHts3evpY25g
- GHXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=M8asM4iauMxrRszdV5+UB7ZDNGbKG8oI3XcEYrRlcUM=;
- b=B6s0g9E5YUNjI8BSP4L1kcElTVK+jTthBTJfLWIh4idGBsla9gO+OUuOUSp6X/H+/b
- Tt8OR8VeWGAzrYG5aM+ibkZ+9SbopafGWBleuhbqc3WSyozGKUEQRX3seGeU1NpN/eP8
- QZRU1D9W9Ppk7xhgyaXGm4y/C2cbUSlCI99zisPn00mH1ra7em2IqHTIFqxyJAdEEoQy
- 0aEFxJYC3ys6H9pbFzl+V54rlzLXSMBUykvReDE8RIhOpRFpI7ynM3o5K7QNBRLwjqlG
- zayr+5T3q6HBuKMhHcLJ3+wOmN7LFZWsoF4rpKCDo6AgFxEUxiBmp5Sr1vWQhI/JKoXM
- +BOQ==
-X-Gm-Message-State: AOAM531vGJBFtge5IQ8S09GTxMZj4bCJEfqJ7WnDquRXo7CA9+ZeCzh9
- WT1AeIwQ3nlEApyHPauoB9tR0g==
-X-Google-Smtp-Source: ABdhPJzkfNotZYxrom9Q8GRNC2WrpZWQZzmw3QbYTpL/ZYTRwsqnTZtW0D9O/LkzlRdOeN5aIRzM2Q==
-X-Received: by 2002:a17:902:bf07:b0:158:24d9:3946 with SMTP id
- bi7-20020a170902bf0700b0015824d93946mr16147253plb.28.1649692658069; 
- Mon, 11 Apr 2022 08:57:38 -0700 (PDT)
-Received: from p14s (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
- by smtp.gmail.com with ESMTPSA id
- e5-20020aa78c45000000b005058ab75ee9sm11666353pfd.199.2022.04.11.08.57.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Apr 2022 08:57:36 -0700 (PDT)
-Date: Mon, 11 Apr 2022 09:57:34 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Bjorn Andersson <bjorn.andersson@linaro.org>,
+ id 1ndxm9-009ruO-Du; Mon, 11 Apr 2022 17:24:31 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 1F31661755;
+ Mon, 11 Apr 2022 17:24:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3AF6C385A4;
+ Mon, 11 Apr 2022 17:24:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1649697853;
+ bh=5TsoD2KB4qgZvsvSKTKSMDHat49KB49G9h0SnwNGm+I=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=cKWNOUgUP/YiI+pD5FAAZHFGBdRgf/6ZGWo2Dx4XmJbORxoFQbgAn6OPtlpM8AYO5
+ gfVB5p1uGlWJb1Pr9UYb37MnAJXrJYhoL3spWMDZib8pPnoQmKwQtAe0hubOekeL1n
+ znP4QJuaFTw4DLJwCoSrITUJeIifc9Z4rwFoaYDEdFQbueDVxbOi9QXH+VWMZpj7nI
+ rk+gGbH3MLs8c2kevf/f8MOHfZhri4XZw8+VvEUlZHFNqex4d0vmMqvvcu/Z+kOa1X
+ +cbWWw0dC0dbcFUUw52q7sYjpiAlgrpJzxsYCJthf2V8EYufGe77fy2WqjH21z3uDD
+ /1Vj11nOKqhFA==
+Date: Mon, 11 Apr 2022 22:54:09 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Chen-Yu Tsai <wenst@chromium.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v6] remoteproc: mediatek: Fix side effect of mt8195 sram
- power on
-Message-ID: <20220411155734.GA323343@p14s>
-References: <20220321060340.10975-1-tinghan.shen@mediatek.com>
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Wei-Shun Chang <weishunc@google.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ rex-bc.chen@mediatek.com, randy.wu@mediatek.com,
+ jieyy.yang@mediatek.com, chuanjia.liu@mediatek.com,
+ qizhong.cheng@mediatek.com, jian.yang@mediatek.com
+Subject: Re: [PATCH v5 2/2] phy: mediatek: Add PCIe PHY driver
+Message-ID: <YlRkOU/w8X57SAIj@matsya>
+References: <20220326022728.2969-1-jianjun.wang@mediatek.com>
+ <20220326022728.2969-3-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220321060340.10975-1-tinghan.shen@mediatek.com>
+In-Reply-To: <20220326022728.2969-3-jianjun.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220411_085740_740511_76C893CF 
-X-CRM114-Status: GOOD (  29.05  )
+X-CRM114-CacheID: sfid-20220411_102429_571865_67FD6E25 
+X-CRM114-Status: GOOD (  37.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,189 +82,342 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 21, 2022 at 02:03:40PM +0800, Tinghan Shen wrote:
-> The definition of L1TCM_SRAM_PDN bits on mt8195 is different to mt8192.
+On 26-03-22, 10:27, Jianjun Wang wrote:
+> Add PCIe GEN3 PHY driver support on MediaTek chipsets.
 > 
-> L1TCM_SRAM_PDN bits[3:0] control the power of mt8195 L1TCM SRAM.
-> 
-> L1TCM_SRAM_PDN bits[7:4] control the access path to EMI for SCP.
-> These bits have to be powered on to allow EMI access for SCP.
-> 
-> Bits[7:4] also affect audio DSP because audio DSP and SCP are
-> placed on the same hardware bus. If SCP cannot access EMI, audio DSP is
-> blocked too.
-> 
-> L1TCM_SRAM_PDN bits[31:8] are not used.
-> 
-> This fix removes modification of bits[7:4] when power on/off mt8195 SCP
-> L1TCM. It's because the modification introduces a short period of time
-> blocking audio DSP to access EMI. This was not a problem until we have
-> to load both SCP module and audio DSP module. audio DSP needs to access
-> EMI because it has source/data on DRAM. Audio DSP will have unexpected
-> behavior when it accesses EMI and the SCP driver blocks the EMI path at
-> the same time.
-> 
-> Fixes: 79111df414fc ("remoteproc: mediatek: Support mt8195 scp")
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> ---
+>  drivers/phy/mediatek/Kconfig        |  11 ++
+>  drivers/phy/mediatek/Makefile       |   1 +
+>  drivers/phy/mediatek/phy-mtk-pcie.c | 272 ++++++++++++++++++++++++++++
+>  3 files changed, 284 insertions(+)
+>  create mode 100644 drivers/phy/mediatek/phy-mtk-pcie.c
 > 
-> ---
-> v6: fix build error
-> v5: rebased on rproc-next
-> v4: add Fixes and Reviewed-by tags
-> v3: fix build error
-> v2: apply comments about macro definition and function calls
-> ---
->  drivers/remoteproc/mtk_common.h |  2 +
->  drivers/remoteproc/mtk_scp.c    | 69 +++++++++++++++++++++++++--------
->  2 files changed, 54 insertions(+), 17 deletions(-)
->
-
-Applied.
-
-Thanks,
-Mathieu
-
-> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-> index 71ce4977cb0b..ea6fa1100a00 100644
-> --- a/drivers/remoteproc/mtk_common.h
-> +++ b/drivers/remoteproc/mtk_common.h
-> @@ -54,6 +54,8 @@
->  #define MT8192_CORE0_WDT_IRQ		0x10030
->  #define MT8192_CORE0_WDT_CFG		0x10034
->  
-> +#define MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS		GENMASK(7, 4)
+> diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
+> index 55f8e6c048ab..387ed1b3f2cc 100644
+> --- a/drivers/phy/mediatek/Kconfig
+> +++ b/drivers/phy/mediatek/Kconfig
+> @@ -55,3 +55,14 @@ config PHY_MTK_MIPI_DSI
+>  	select GENERIC_PHY
+>  	help
+>  	  Support MIPI DSI for Mediatek SoCs.
 > +
->  #define SCP_FW_VER_LEN			32
->  #define SCP_SHARE_BUFFER_SIZE		288
+> +config PHY_MTK_PCIE
+> +	tristate "MediaTek PCIe-PHY Driver"
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on OF
+> +	select GENERIC_PHY
+> +	help
+> +	  Say 'Y' here to add support for MediaTek PCIe PHY driver.
+> +	  This driver create the basic PHY instance and provides initialize
+> +	  callback for PCIe GEN3 port, it supports software efuse
+> +	  initialization.
+> diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
+> index ace660fbed3a..788c13147f63 100644
+> --- a/drivers/phy/mediatek/Makefile
+> +++ b/drivers/phy/mediatek/Makefile
+> @@ -6,6 +6,7 @@
+>  obj-$(CONFIG_PHY_MTK_TPHY)		+= phy-mtk-tphy.o
+>  obj-$(CONFIG_PHY_MTK_UFS)		+= phy-mtk-ufs.o
+>  obj-$(CONFIG_PHY_MTK_XSPHY)		+= phy-mtk-xsphy.o
+> +obj-$(CONFIG_PHY_MTK_PCIE)		+= phy-mtk-pcie.o
 >  
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index 38609153bf64..ee6c4009586e 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -365,22 +365,22 @@ static int mt8183_scp_before_load(struct mtk_scp *scp)
->  	return 0;
->  }
->  
-> -static void mt8192_power_on_sram(void __iomem *addr)
-> +static void scp_sram_power_on(void __iomem *addr, u32 reserved_mask)
->  {
->  	int i;
->  
->  	for (i = 31; i >= 0; i--)
-> -		writel(GENMASK(i, 0), addr);
-> +		writel(GENMASK(i, 0) & ~reserved_mask, addr);
->  	writel(0, addr);
->  }
->  
-> -static void mt8192_power_off_sram(void __iomem *addr)
-> +static void scp_sram_power_off(void __iomem *addr, u32 reserved_mask)
->  {
->  	int i;
->  
->  	writel(0, addr);
->  	for (i = 0; i < 32; i++)
-> -		writel(GENMASK(i, 0), addr);
-> +		writel(GENMASK(i, 0) & ~reserved_mask, addr);
->  }
->  
->  static int mt8186_scp_before_load(struct mtk_scp *scp)
-> @@ -393,7 +393,7 @@ static int mt8186_scp_before_load(struct mtk_scp *scp)
->  	writel(0x0, scp->reg_base + MT8183_SCP_CLK_DIV_SEL);
->  
->  	/* Turn on the power of SCP's SRAM before using it. Enable 1 block per time*/
-> -	mt8192_power_on_sram(scp->reg_base + MT8183_SCP_SRAM_PDN);
-> +	scp_sram_power_on(scp->reg_base + MT8183_SCP_SRAM_PDN, 0);
->  
->  	/* Initialize TCM before loading FW. */
->  	writel(0x0, scp->reg_base + MT8183_SCP_L1_SRAM_PD);
-> @@ -412,11 +412,32 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
->  	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
->  
->  	/* enable SRAM clock */
-> -	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_0);
-> -	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_1);
-> -	mt8192_power_on_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_2);
-> -	mt8192_power_on_sram(scp->reg_base + MT8192_L1TCM_SRAM_PDN);
-> -	mt8192_power_on_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
+>  phy-mtk-hdmi-drv-y			:= phy-mtk-hdmi.o
+>  phy-mtk-hdmi-drv-y			+= phy-mtk-hdmi-mt2701.o
+> diff --git a/drivers/phy/mediatek/phy-mtk-pcie.c b/drivers/phy/mediatek/phy-mtk-pcie.c
+> new file mode 100644
+> index 000000000000..d288655b6cff
+> --- /dev/null
+> +++ b/drivers/phy/mediatek/phy-mtk-pcie.c
+> @@ -0,0 +1,272 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2022 MediaTek Inc.
+> + * Author: Jianjun Wang <jianjun.wang@mediatek.com>
+> + */
 > +
-> +	/* enable MPU for all memory regions */
-> +	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
+> +#include <linux/bits.h>
+> +#include <linux/compiler_types.h>
+
+Why do you need this header
+
+> +#include <linux/module.h>
+> +#include <linux/nvmem-consumer.h>
+> +#include <linux/of_device.h>
+> +#include <linux/phy/phy.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/slab.h>
+> +
+> +#include "phy-mtk-io.h"
+> +
+> +#define PEXTP_ANA_GLB_00_REG		0x9000
+> +#define PEXTP_ANA_LN0_TRX_REG		0xa000
+> +#define PEXTP_ANA_TX_OFFSET		0x04
+> +#define PEXTP_ANA_RX_OFFSET		0x3c
+> +#define PEXTP_ANA_LANE_OFFSET		0x100
+> +
+> +/* PEXTP_GLB_00_REG[28:24] Internal Resistor Selection of TX Bias Current */
+> +#define EFUSE_GLB_INTR_SEL		GENMASK(28, 24)
+> +#define EFUSE_GLB_INTR_VAL(x)		((0x1f & (x)) << 24)
+
+There are nice macros in bitfield.h which you can use to set/get value
+
+> +
+> +/* PEXTP_ANA_LN_RX_REG[3:0] RX impedance selection */
+> +#define EFUSE_LN_RX_SEL			GENMASK(3, 0)
+> +#define EFUSE_LN_RX_VAL(x)		(0xf & (x))
+> +
+> +/* PEXTP_ANA_LN_TX_REG[5:2] TX PMOS impedance selection */
+> +#define EFUSE_LN_TX_PMOS_SEL		GENMASK(5, 2)
+> +#define EFUSE_LN_TX_PMOS_VAL(x)		((0xf & (x)) << 2)
+> +
+> +/* PEXTP_ANA_LN_TX_REG[11:8] TX NMOS impedance selection */
+> +#define EFUSE_LN_TX_NMOS_SEL		GENMASK(11, 8)
+> +#define EFUSE_LN_TX_NMOS_VAL(x)		((0xf & (x)) << 8)
+> +
+> +/**
+> + * struct mtk_pcie_lane_efuse - eFuse data for each lane
+> + * @tx_pmos: TX PMOS impedance selection data
+> + * @tx_nmos: TX NMOS impedance selection data
+> + * @rx_data: RX impedance selection data
+> + * @lane_efuse_supported: software eFuse data is supported for this lane
+> + */
+> +struct mtk_pcie_lane_efuse {
+> +	u32 tx_pmos;
+> +	u32 tx_nmos;
+> +	u32 rx_data;
+> +	bool lane_efuse_supported;
+> +};
+> +
+> +/**
+> + * struct mtk_pcie_phy_data - phy data for each SoC
+> + * @num_lanes: supported lane numbers
+> + * @sw_efuse_supported: support software to load eFuse data
+> + */
+> +struct mtk_pcie_phy_data {
+> +	int num_lanes;
+> +	bool sw_efuse_supported;
+> +};
+> +
+> +/**
+> + * struct mtk_pcie_phy - PCIe phy driver main structure
+> + * @dev: pointer to device
+> + * @phy: pointer to generic phy
+> + * @sif_base: IO mapped register base address of system interface
+> + * @data: pointer to SoC dependent data
+> + * @sw_efuse_en: software eFuse enable status
+> + * @efuse_glb_intr: internal resistor selection of TX bias current data
+> + * @efuse: pointer to eFuse data for each lane
+> + */
+> +struct mtk_pcie_phy {
+> +	struct device *dev;
+> +	struct phy *phy;
+> +	void __iomem *sif_base;
+> +	const struct mtk_pcie_phy_data *data;
+> +
+> +	bool sw_efuse_en;
+> +	u32 efuse_glb_intr;
+> +	struct mtk_pcie_lane_efuse *efuse;
+> +};
+> +
+> +static void mtk_pcie_efuse_set_lane(struct mtk_pcie_phy *pcie_phy,
+> +				    unsigned int lane)
+> +{
+> +	struct mtk_pcie_lane_efuse *data = &pcie_phy->efuse[lane];
+> +	void __iomem *addr;
+> +
+> +	if (!data->lane_efuse_supported)
+> +		return;
+> +
+> +	addr = pcie_phy->sif_base + PEXTP_ANA_LN0_TRX_REG +
+> +	       lane * PEXTP_ANA_LANE_OFFSET;
+> +
+> +	mtk_phy_update_bits(addr + PEXTP_ANA_TX_OFFSET, EFUSE_LN_TX_PMOS_SEL,
+> +			    EFUSE_LN_TX_PMOS_VAL(data->tx_pmos));
+> +
+> +	mtk_phy_update_bits(addr + PEXTP_ANA_TX_OFFSET, EFUSE_LN_TX_NMOS_SEL,
+> +			    EFUSE_LN_TX_NMOS_VAL(data->tx_nmos));
+> +
+> +	mtk_phy_update_bits(addr + PEXTP_ANA_RX_OFFSET, EFUSE_LN_RX_SEL,
+> +			    EFUSE_LN_RX_VAL(data->rx_data));
+> +}
+> +
+> +/**
+> + * mtk_pcie_phy_init() - Initialize the phy
+> + * @phy: the phy to be initialized
+> + *
+> + * Initialize the phy by setting the efuse data.
+> + * The hardware settings will be reset during suspend, it should be
+> + * reinitialized when the consumer calls phy_init() again on resume.
+> + */
+> +static int mtk_pcie_phy_init(struct phy *phy)
+> +{
+> +	struct mtk_pcie_phy *pcie_phy = phy_get_drvdata(phy);
+> +	int i;
+> +
+> +	if (!pcie_phy->sw_efuse_en)
+> +		return 0;
+> +
+> +	/* Set global data */
+> +	mtk_phy_update_bits(pcie_phy->sif_base + PEXTP_ANA_GLB_00_REG,
+> +			    EFUSE_GLB_INTR_SEL,
+> +			    EFUSE_GLB_INTR_VAL(pcie_phy->efuse_glb_intr));
+> +
+> +	for (i = 0; i < pcie_phy->data->num_lanes; i++)
+> +		mtk_pcie_efuse_set_lane(pcie_phy, i);
 > +
 > +	return 0;
 > +}
 > +
-> +static int mt8195_scp_before_load(struct mtk_scp *scp)
+> +static const struct phy_ops mtk_pcie_phy_ops = {
+> +	.init	= mtk_pcie_phy_init,
+
+Only init for this phy? no power up/down either??
+
+
+> +	.owner	= THIS_MODULE,
+> +};
+> +
+> +static int mtk_pcie_efuse_read_for_lane(struct mtk_pcie_phy *pcie_phy,
+> +					unsigned int lane)
 > +{
-> +	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
-> +	writel(0xff, scp->reg_base + MT8192_SCP2SPM_IPC_CLR);
+> +	struct mtk_pcie_lane_efuse *efuse = &pcie_phy->efuse[lane];
+> +	struct device *dev = pcie_phy->dev;
+> +	char efuse_id[16];
+> +	int ret;
 > +
-> +	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
+> +	snprintf(efuse_id, sizeof(efuse_id), "tx_ln%d_pmos", lane);
+> +	ret = nvmem_cell_read_variable_le_u32(dev, efuse_id, &efuse->tx_pmos);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to read %s\n", efuse_id);
 > +
-> +	/* enable SRAM clock */
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-> +	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
-> +			  MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
-> +	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
->  
->  	/* enable MPU for all memory regions */
->  	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
-> @@ -572,11 +593,25 @@ static void mt8183_scp_stop(struct mtk_scp *scp)
->  static void mt8192_scp_stop(struct mtk_scp *scp)
->  {
->  	/* Disable SRAM clock */
-> -	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_0);
-> -	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_1);
-> -	mt8192_power_off_sram(scp->reg_base + MT8192_L2TCM_SRAM_PD_2);
-> -	mt8192_power_off_sram(scp->reg_base + MT8192_L1TCM_SRAM_PDN);
-> -	mt8192_power_off_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
+> +	snprintf(efuse_id, sizeof(efuse_id), "tx_ln%d_nmos", lane);
+> +	ret = nvmem_cell_read_variable_le_u32(dev, efuse_id, &efuse->tx_nmos);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to read %s\n", efuse_id);
 > +
-> +	/* Disable SCP watchdog */
-> +	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
+> +	snprintf(efuse_id, sizeof(efuse_id), "rx_ln%d", lane);
+> +	ret = nvmem_cell_read_variable_le_u32(dev, efuse_id, &efuse->rx_data);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to read %s\n", efuse_id);
+> +
+> +	if (!(efuse->tx_pmos || efuse->tx_nmos || efuse->rx_data))
+> +		return dev_err_probe(dev, -EINVAL,
+> +				     "No eFuse data found for lane%d, but dts enable it\n",
+> +				     lane);
+> +
+> +	efuse->lane_efuse_supported = true;
+> +
+> +	return 0;
 > +}
 > +
-> +static void mt8195_scp_stop(struct mtk_scp *scp)
+> +static int mtk_pcie_read_efuse(struct mtk_pcie_phy *pcie_phy)
 > +{
-> +	/* Disable SRAM clock */
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-> +	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
-> +			   MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
-> +	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
->  
->  	/* Disable SCP watchdog */
->  	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
-> @@ -922,11 +957,11 @@ static const struct mtk_scp_of_data mt8192_of_data = {
->  
->  static const struct mtk_scp_of_data mt8195_of_data = {
->  	.scp_clk_get = mt8195_scp_clk_get,
-> -	.scp_before_load = mt8192_scp_before_load,
-> +	.scp_before_load = mt8195_scp_before_load,
->  	.scp_irq_handler = mt8192_scp_irq_handler,
->  	.scp_reset_assert = mt8192_scp_reset_assert,
->  	.scp_reset_deassert = mt8192_scp_reset_deassert,
-> -	.scp_stop = mt8192_scp_stop,
-> +	.scp_stop = mt8195_scp_stop,
->  	.scp_da_to_va = mt8192_scp_da_to_va,
->  	.host_to_scp_reg = MT8192_GIPC_IN_SET,
->  	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
+> +	struct device *dev = pcie_phy->dev;
+> +	bool nvmem_enabled;
+> +	int ret, i;
+> +
+> +	/* nvmem data is optional */
+> +	nvmem_enabled = device_property_read_bool(dev, "nvmem-cells");
+> +	if (!nvmem_enabled)
+> +		return 0;
+> +
+> +	ret = nvmem_cell_read_variable_le_u32(dev, "glb_intr",
+> +					      &pcie_phy->efuse_glb_intr);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to read glb_intr\n");
+> +
+> +	pcie_phy->sw_efuse_en = true;
+> +
+> +	pcie_phy->efuse = devm_kzalloc(dev, pcie_phy->data->num_lanes *
+> +				       sizeof(*pcie_phy->efuse), GFP_KERNEL);
+> +	if (!pcie_phy->efuse)
+> +		return -ENOMEM;
+> +
+> +	for (i = 0; i < pcie_phy->data->num_lanes; i++) {
+> +		ret = mtk_pcie_efuse_read_for_lane(pcie_phy, i);
+> +		if (ret)
+> +			return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_pcie_phy_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct phy_provider *provider;
+> +	struct mtk_pcie_phy *pcie_phy;
+> +	int ret;
+> +
+> +	pcie_phy = devm_kzalloc(dev, sizeof(*pcie_phy), GFP_KERNEL);
+> +	if (!pcie_phy)
+> +		return -ENOMEM;
+> +
+> +	pcie_phy->sif_base = devm_platform_ioremap_resource_byname(pdev, "sif");
+> +	if (IS_ERR(pcie_phy->sif_base))
+> +		return dev_err_probe(dev, PTR_ERR(pcie_phy->sif_base),
+> +				     "Failed to map phy-sif base\n");
+> +
+> +	pcie_phy->phy = devm_phy_create(dev, dev->of_node, &mtk_pcie_phy_ops);
+> +	if (IS_ERR(pcie_phy->phy))
+> +		return dev_err_probe(dev, PTR_ERR(pcie_phy->phy),
+> +				     "Failed to create PCIe phy\n");
+> +
+> +	pcie_phy->dev = dev;
+> +	pcie_phy->data = of_device_get_match_data(dev);
+> +	if (!pcie_phy->data)
+> +		return dev_err_probe(dev, -EINVAL, "Failed to get phy data\n");
+> +
+> +	if (pcie_phy->data->sw_efuse_supported) {
+> +		/*
+> +		 * Failed to read the efuse data is not a fatal problem,
+> +		 * ignore the failure and keep going.
+> +		 */
+> +		ret = mtk_pcie_read_efuse(pcie_phy);
+> +		if (ret == -EPROBE_DEFER)
+> +			return ret;
+> +	}
+> +
+> +	phy_set_drvdata(pcie_phy->phy, pcie_phy);
+> +
+> +	provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
+> +	if (IS_ERR(provider))
+> +		return dev_err_probe(dev, PTR_ERR(provider),
+> +				     "PCIe phy probe failed\n");
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct mtk_pcie_phy_data mt8195_data = {
+> +	.num_lanes = 2,
+> +	.sw_efuse_supported = true,
+> +};
+> +
+> +static const struct of_device_id mtk_pcie_phy_of_match[] = {
+> +	{ .compatible = "mediatek,mt8195-pcie-phy", .data = &mt8195_data },
+> +	{ },
+> +};
+> +MODULE_DEVICE_TABLE(of, mtk_pcie_phy_of_match);
+> +
+> +static struct platform_driver mtk_pcie_phy_driver = {
+> +	.probe	= mtk_pcie_phy_probe,
+> +	.driver	= {
+> +		.name = "mtk-pcie-phy",
+> +		.of_match_table = mtk_pcie_phy_of_match,
+> +	},
+> +};
+> +module_platform_driver(mtk_pcie_phy_driver);
+> +
+> +MODULE_DESCRIPTION("MediaTek PCIe PHY driver");
+> +MODULE_AUTHOR("Jianjun Wang <jianjun.wang@mediatek.com>");
+> +MODULE_LICENSE("GPL v2");
 > -- 
 > 2.18.0
-> 
+
+-- 
+~Vinod
 
 _______________________________________________
 Linux-mediatek mailing list
