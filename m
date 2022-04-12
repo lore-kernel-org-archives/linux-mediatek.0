@@ -4,66 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE530C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 09:35:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63D3DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 09:37:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZbSZIUHBa6CzFH9quFfgb/8v5rp2T5W8hmOMCW7rhBg=; b=lt/CQ7Tb3RdoTk
-	ZwyZZoI+L/R8S1kZx0VchHZpm8KXRzIcAwBMKAnphofQzoDgR12p1HPMmhmiN83BWJaLuh4g7Xks8
-	/wSrEgOiK+acx/42xd2jHKMCb86q5ONzIG8otZG14sNzTfEvmmkLlPZR10hsMEf6RBUh7jZQ4hcjw
-	fDgyTl0Emv0/5A9PzUKSJP+8bFhMIQ44u07Gk15VESmFUxKbtKuCphNn+Kp86L/KVv7NVkZuQGjXC
-	n+xvjtLdh4oPIbr6tQEiz3x83u1jTJRZsIecRTL5RUVq3J3fd5v96eZiFtEW3d+GARhWZY7SGmIYJ
-	mVc6N1eYmC0FSuY8aWqg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:
+	MIME-Version:In-Reply-To:References:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=u6TXeI8tIUT8bjaLj2yITsRHzv0VxvVmb6H0Awa0eng=; b=JMOYp2HVBsqswGN94mrpv3Wc8s
+	PHseMIgtc/iaXIzSmXmRWYGgporACX6Pr/j883XsB8I1OPen/X+I3yIou0+vSFB3WUSVIVWy0XjrU
+	+BxWixdahoHAXwF/MpEuoTL4V9TRJo/nVubTCcLgx+xg25SSQ4OJ0nCjoXMaI65m1W9eJrQCvExqp
+	0+Alspz7uHYlUKiiTUxmIxqlFMCkJM4+AdR4PXUHkDdIUrVuwBlW+nOVOVLHNmVWyTEfJcJ1PWMAj
+	/3AxXWqYDioa+2/9whadtzONRITl7PmGMRsewQ5KfIEUh69/NW1Vv9oaJ8eZHJ7TQjl3IoHkkq4Wp
+	DyTvNfAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neCvp-00CxTY-IP; Tue, 12 Apr 2022 09:35:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1neCxq-00CyRE-Tv; Tue, 12 Apr 2022 09:37:34 +0000
+Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neCvl-00CxQg-Ro; Tue, 12 Apr 2022 09:35:27 +0000
-X-UUID: 6fb49a3f03a34423837af576fe3c294b-20220412
-X-UUID: 6fb49a3f03a34423837af576fe3c294b-20220412
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <kuyo.chang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 348016588; Tue, 12 Apr 2022 02:35:16 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 12 Apr 2022 02:28:11 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 12 Apr 2022 17:28:10 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 12 Apr 2022 17:28:10 +0800
-Message-ID: <354ea7554096b0745d4f947685add33c8c8d2d62.camel@mediatek.com>
-Subject: Re: [PATCH 1/1] sched/pelt: Refine the enqueue_load_avg calculate
- method
-From: Kuyo Chang <kuyo.chang@mediatek.com>
-To: Vincent Guittot <vincent.guittot@linaro.org>
-CC: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
- Juri Lelli <juri.lelli@redhat.com>, Dietmar Eggemann
- <dietmar.eggemann@arm.com>, Steven Rostedt <rostedt@goodmis.org>, "Ben
- Segall" <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, "Daniel Bristot
- de Oliveira" <bristot@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- <wsd_upstream@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Date: Tue, 12 Apr 2022 17:28:10 +0800
-In-Reply-To: <20220412085845.GA14088@vingu-book>
-References: <20220411061702.22978-1-kuyo.chang@mediatek.com>
- <CAKfTPtAyhc-tAWXmXcHstmiBSMjj5GENizX__KRDab28NRum1A@mail.gmail.com>
- <5a90b20570ecacf457f68da7a106d3b2f8c2269e.camel@mediatek.com>
- <20220412085845.GA14088@vingu-book>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1neCxc-00CyJJ-VV
+ for linux-mediatek@lists.infradead.org; Tue, 12 Apr 2022 09:37:23 +0000
+Received: by mail-oi1-x22c.google.com with SMTP id 12so18415974oix.12
+ for <linux-mediatek@lists.infradead.org>; Tue, 12 Apr 2022 02:37:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:user-agent:references:in-reply-to:mime-version:date:message-id
+ :subject:to:cc;
+ bh=evIZsLOQJjFi37tCwIrJkfpZ9gIHXQ0UW8l5PUtfRtM=;
+ b=4QAERHFJ8BTZGtY7E+DkrtJGJSnzxgQgHwbOYAwlxzZXnKMY9dp3NVgOGA1Cbx3AW0
+ FxY2zgabemqQKkM8yYWIKTkzeKaFcP40xAgE+1dbimqQ4CldI7+o8TQ8dE1kodW+jrQU
+ gYXrQIuo73uA51I8IaOWcFPhvw+t8g/pF4/eUcwWtHBUvZuNigXM/QZvceMRt4bz7R/Q
+ iRCQbyMV95o4pipHij2S0MaVqvssVGHgSj8Xz769fQj6HFHoNaTjIpDoiR+7ZrOU9ACV
+ kY13mSlQ12q7mCyqJQTWIMCVaZV8qk0mntRPEqqEkgTpq9DAW883/q4t7wQjC3Wogopk
+ 7VLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:user-agent:references:in-reply-to
+ :mime-version:date:message-id:subject:to:cc;
+ bh=evIZsLOQJjFi37tCwIrJkfpZ9gIHXQ0UW8l5PUtfRtM=;
+ b=C6K+WdrY45nlVFToJsggEfB8S2V8peNwCobU5wVS9eszlG3l5VsBFhNxea0b738m/B
+ qdeS7hjzVCl0xkMVwWC7n21IfAJtyw5WMhMLMi1CLLX/jgO5ngznGXy/I8U8U7zmwQjy
+ /ackyk+96deZSe06OYmL0tb/Kd6KWL/ivDE+RpyO54T6pCR7MZJv8c8VSA1a9csXXpvL
+ /PLsmKMHsvFHgxgIHIAGXN/kgFGNLE7TO6/Tpnmo5Hv5RCqMepFs90xgrNRI0zLQ5xGf
+ eh+c3rFW4HLTjXeqH3QuiTlEcRK8LvAldy9Jdopjlh9zLg7nEiFV0XIMjwqlmzHHua5a
+ GulQ==
+X-Gm-Message-State: AOAM530solAJu434f9HeFxDlDrFTdlED0/9g71xp/WCiiAUA0f+EadWl
+ tWl4MtsxIZ5hbshMQ+UZB/jMHH7RbbYBnjbclpagyw==
+X-Google-Smtp-Source: ABdhPJw50fakNZZtGphBh/3iA9VZT9nYrxLt56LrY9rUXQ7AMr4P93Xi3Vwjdes2KLA+ubvrsqu9MdqkL/hZl7jIqcA=
+X-Received: by 2002:a05:6808:1804:b0:2f9:65eb:c40b with SMTP id
+ bh4-20020a056808180400b002f965ebc40bmr1343724oib.78.1649756239335; Tue, 12
+ Apr 2022 02:37:19 -0700 (PDT)
+Received: from 753933720722 named unknown by gmailapi.google.com with
+ HTTPREST; Tue, 12 Apr 2022 02:37:18 -0700
+From: Guillaume Ranquet <granquet@baylibre.com>
+User-Agent: meli 0.7.2
+References: <20220327223927.20848-1-granquet@baylibre.com>
+ <20220327223927.20848-17-granquet@baylibre.com>
+ <736a7f6710f1ea31eff4abcc3d9c3ff79a1f0ddb.camel@mediatek.com>
+In-Reply-To: <736a7f6710f1ea31eff4abcc3d9c3ff79a1f0ddb.camel@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Date: Tue, 12 Apr 2022 02:37:18 -0700
+Message-ID: <CABnWg9vfMJTbOTK-khgaj7RReLVSKJ3DCmJbDvgKMf+tUBwoSA@mail.gmail.com>
+Subject: Re: [PATCH v9 16/22] drm/meditek: dpi: Add matrix_sel helper
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, vkoul@kernel.org, airlied@linux.ie,
+ angelogioacchino.delregno@collabora.com, chunfeng.yun@mediatek.com, 
+ chunkuang.hu@kernel.org, ck.hu@mediatek.com, daniel@ffwll.ch, deller@gmx.de, 
+ jitao.shi@mediatek.com, kishon@ti.com, krzk+dt@kernel.org, 
+ maarten.lankhorst@linux.intel.com, matthias.bgg@gmail.com, mripard@kernel.org, 
+ p.zabel@pengutronix.de, robh+dt@kernel.org, tzimmermann@suse.de
+Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-phy@lists.infradead.org, markyacoub@google.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220412_023525_942390_41AD9F0A 
-X-CRM114-Status: GOOD (  39.91  )
+X-CRM114-CacheID: sfid-20220412_023721_094344_19448E25 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,107 +92,97 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAyMDIyLTA0LTEyIGF0IDEwOjU4ICswMjAwLCBWaW5jZW50IEd1aXR0b3Qgd3JvdGU6
-Cj4gTGUgbWFyZGkgMTIgYXZyaWwgMjAyMiDDoCAxMDo1MToyMyAoKzA4MDApLCBLdXlvIENoYW5n
-IGEgw6ljcml0IDoKPiA+IE9uIE1vbiwgMjAyMi0wNC0xMSBhdCAxMDozOSArMDIwMCwgVmluY2Vu
-dCBHdWl0dG90IHdyb3RlOgo+ID4gPiBPbiBNb24sIDExIEFwciAyMDIyIGF0IDA4OjE3LCBLdXlv
-IENoYW5nIDxrdXlvLmNoYW5nQG1lZGlhdGVrLmNvbQo+ID4gPiA+Cj4gPiA+IHdyb3RlOgo+ID4g
-PiA+IAo+ID4gPiA+IEZyb206IGt1eW8gY2hhbmcgPGt1eW8uY2hhbmdAbWVkaWF0ZWsuY29tPgo+
-ID4gPiA+IAo+ID4gPiA+IEkgbWVldCB0aGUgd2FybmluZyBtZXNzYWdlIGF0IGNmc19ycV9pc19k
-ZWNheWVkIGF0IGJlbG93IGNvZGUuCj4gPiA+ID4gCj4gPiA+ID4gU0NIRURfV0FSTl9PTihjZnNf
-cnEtPmF2Zy5sb2FkX2F2ZyB8fAo+ID4gPiA+ICAgICAgICAgICAgICAgICAgICAgY2ZzX3JxLT5h
-dmcudXRpbF9hdmcgfHwKPiA+ID4gPiAgICAgICAgICAgICAgICAgICAgIGNmc19ycS0+YXZnLnJ1
-bm5hYmxlX2F2ZykKPiA+ID4gPiAKPiA+ID4gPiBGb2xsb3dpbmcgaXMgdGhlIGNhbGx0cmFjZS4K
-PiA+ID4gPiAKPiA+ID4gPiBDYWxsIHRyYWNlOgo+ID4gPiA+IF9fdXBkYXRlX2Jsb2NrZWRfZmFp
-cgo+ID4gPiA+IHVwZGF0ZV9ibG9ja2VkX2F2ZXJhZ2VzCj4gPiA+ID4gbmV3aWRsZV9iYWxhbmNl
-Cj4gPiA+ID4gcGlja19uZXh0X3Rhc2tfZmFpcgo+ID4gPiA+IF9fc2NoZWR1bGUKPiA+ID4gPiBz
-Y2hlZHVsZQo+ID4gPiA+IHBpcGVfcmVhZAo+ID4gPiA+IHZmc19yZWFkCj4gPiA+ID4ga3N5c19y
-ZWFkCj4gPiA+ID4gCj4gPiA+ID4gQWZ0ZXIgY29kZSBhbmFseXppbmcgYW5kIHNvbWUgZGVidWcg
-bWVzc2FnZXMsIEkgZm91bmQgaXQgZXhpdHMKPiA+ID4gPiBhCj4gPiA+ID4gY29ybmVyCj4gPiA+
-ID4gY2FzZSBhdCBhdHRhY2hfZW50aXR5X2xvYWRfYXZnIHdoaWNoIHdpbGwgY2F1c2UgbG9hZF9z
-dW0gaXMKPiA+ID4gPiB6ZXJvCj4gPiA+ID4gYW5kCj4gPiA+ID4gbG9hZF9hdmcgaXMgbm90Lgo+
-ID4gPiA+IENvbnNpZGVyIHNlX3dlaWdodCBpcyA4ODc2MSBhY2NvcmRpbmcgYnkgc2NoZWRfcHJp
-b190b193ZWlnaHQKPiA+ID4gPiB0YWJsZS4KPiA+ID4gPiBBbmQgYXNzdW1lIHRoZSBnZXRfcGVs
-dF9kaXZpZGVyKCkgaXMgNDc3NDIsIHNlLT5hdmcubG9hZF9hdmcgaXMKPiA+ID4gPiAxLgo+ID4g
-PiA+IEJ5IHRoZSBjYWxjdWxhdGluZyBmb3Igc2UtPmF2Zy5sb2FkX3N1bSBhcyBmb2xsb3dpbmcg
-d2lsbAo+ID4gPiA+IGJlY29tZQo+ID4gPiA+IHplcm8KPiA+ID4gPiBhcyBmb2xsb3dpbmcuCj4g
-PiA+ID4gc2UtPmF2Zy5sb2FkX3N1bSA9Cj4gPiA+ID4gICAgICAgICBkaXZfdTY0KHNlLT5hdmcu
-bG9hZF9hdmcgKiBzZS0+YXZnLmxvYWRfc3VtLAo+ID4gPiA+IHNlX3dlaWdodChzZSkpOwo+ID4g
-PiA+IHNlLT5hdmcubG9hZF9zdW0gPSAxKjQ3NzQyLzg4NzYxID0gMC4KPiA+ID4gCj4gPiA+IFRo
-ZSByb290IHByb2JsZW0gaXMgdGhlcmUsIHNlLT5hdmcubG9hZF9zdW0gbXVzdCBub3QgYmUgbnVs
-bCBpZgo+ID4gPiBzZS0+YXZnLmxvYWRfYXZnIGlzIG5vdCBudWxsIGJlY2F1c2UgdGhlIGNvcnJl
-Y3QgcmVsYXRpb24gYmV0d2Vlbgo+ID4gPiBfYXZnCj4gPiA+IGFuZCBfc3VtIGlzOgo+ID4gPiAK
-PiA+ID4gbG9hZF9hdmcgPSB3ZWlnaHQgKiBsb2FkX3N1bSAvIGRpdmlkZXIuCj4gPiA+IAo+ID4g
-PiBzbyB0aGUgZml4IHNob3VsZCBiZSBhdHRhY2hfZW50aXR5X2xvYWRfYXZnKCkgYW5kIHByb2Jh
-Ymx5IHRoZQo+ID4gPiBiZWxvdwo+ID4gPiBpcyBlbm91Z2gKPiA+ID4gCj4gPiA+IHNlLT5hdmcu
-bG9hZF9zdW0gPSBkaXZfdTY0KHNlLT5hdmcubG9hZF9hdmcgKiBzZS0+YXZnLmxvYWRfc3VtLAo+
-ID4gPiBzZV93ZWlnaHQoc2UpKSArIDE7Cj4gPiAKPiA+IFRoYW5rcyBmb3IgeW91ciBraW5kbHkg
-c3VnZ2VzdGlvbi4KPiA+ICsxIHdvdWxkIG1ha2UgdGhlIGNhbGN1YXRpb24gZm9yIGxvYWRfc3Vt
-IG1heSBiZSBvdmVyZXN0aW1hdGU/Cj4gPiBIb3cgYWJvdXQgdGhlIGJlbG93IGNvZGUgbWFrZSBz
-ZW5zZSBmb3IgZml4IHRoZSBjb3JuZXIgY2FzZT8KPiA+IAo+ID4gLS0tIAo+ID4gLS0tIGEva2Vy
-bmVsL3NjaGVkL2ZhaXIuYwo+ID4gKysrIGIva2VybmVsL3NjaGVkL2ZhaXIuYwo+ID4gQEAgLTM4
-MzIsNyArMzgzMiw4IEBAIHN0YXRpYyB2b2lkIGF0dGFjaF9lbnRpdHlfbG9hZF9hdmcoc3RydWN0
-Cj4gPiBjZnNfcnEKPiA+ICpjZnNfcnEsIHN0cnVjdCBzY2hlZF9lbnRpdHkgKnMKPiA+ICAJc2Ut
-PmF2Zy5sb2FkX3N1bSA9IGRpdmlkZXI7Cj4gPiAgCWlmIChzZV93ZWlnaHQoc2UpKSB7Cj4gPiAg
-CQlzZS0+YXZnLmxvYWRfc3VtID0KPiA+IC0JCQlkaXZfdTY0KHNlLT5hdmcubG9hZF9hdmcgKiBz
-ZS0+YXZnLmxvYWRfc3VtLAo+ID4gc2Vfd2VpZ2h0KHNlKSk7Cj4gPiArCQkJKHNlLT5hdmcubG9h
-ZF9hdmcgKiBzZS0+YXZnLmxvYWRfc3VtID4KPiA+IHNlX3dlaWdodChzZSkpID8KPiA+ICsJCQlk
-aXZfdTY0KHNlLT5hdmcubG9hZF9hdmcgKiBzZS0+YXZnLmxvYWRfc3VtLAo+ID4gc2Vfd2VpZ2h0
-KHNlKSkgOiAxOwo+ID4gIAl9Cj4gPiAgCj4gPiAgCWVucXVldWVfbG9hZF9hdmcoY2ZzX3JxLCBz
-ZSk7Cj4gPiAtLSAKPiA+IDIuMTguMAo+IAo+IEluIHRoaXMgY2FzZSwgdGhlIGJlbG93IGlzIGVh
-c2llciB0byByZWFkCj4gCj4gZGlmZiAtLWdpdCBhL2tlcm5lbC9zY2hlZC9mYWlyLmMgYi9rZXJu
-ZWwvc2NoZWQvZmFpci5jCj4gaW5kZXggMTY1OGE5NDI4ZDk2Li4yYzY4NTQ3NGRiMjMgMTAwNjQ0
-Cj4gLS0tIGEva2VybmVsL3NjaGVkL2ZhaXIuYwo+ICsrKyBiL2tlcm5lbC9zY2hlZC9mYWlyLmMK
-PiBAQCAtMzgzNiwxMCArMzgzNiwxMiBAQCBzdGF0aWMgdm9pZCBhdHRhY2hfZW50aXR5X2xvYWRf
-YXZnKHN0cnVjdAo+IGNmc19ycSAqY2ZzX3JxLCBzdHJ1Y3Qgc2NoZWRfZW50aXR5ICpzCj4gCj4g
-ICAgICAgICBzZS0+YXZnLnJ1bm5hYmxlX3N1bSA9IHNlLT5hdmcucnVubmFibGVfYXZnICogZGl2
-aWRlcjsKPiAKPiAtICAgICAgIHNlLT5hdmcubG9hZF9zdW0gPSBkaXZpZGVyOwo+IC0gICAgICAg
-aWYgKHNlX3dlaWdodChzZSkpIHsKPiArICAgICAgIHNlLT5hdmcubG9hZF9zdW0gPSBzZS0+YXZn
-LmxvYWRfYXZnICogZGl2aWRlcjsKPiArICAgICAgIGlmIChzZV93ZWlnaHQoc2UpIDwgc2UtPmF2
-Zy5sb2FkX3N1bSkgewo+ICAgICAgICAgICAgICAgICBzZS0+YXZnLmxvYWRfc3VtID0KPiAtICAg
-ICAgICAgICAgICAgICAgICAgICBkaXZfdTY0KHNlLT5hdmcubG9hZF9hdmcgKiBzZS0+YXZnLmxv
-YWRfc3VtLAo+IHNlX3dlaWdodChzZSkpOwo+ICsgICAgICAgICAgICAgICAgICAgICAgIGRpdl91
-NjQoc2UtPmF2Zy5sb2FkX3N1bSwgc2Vfd2VpZ2h0KHNlKSk7Cj4gKyAgICAgICB9IGVsc2Ugewo+
-ICsgICAgICAgICAgICAgICBzZS0+YXZnLmxvYWRfc3VtID0gMTsKPiAgICAgICAgIH0KPiAKPiAg
-ICAgICAgIGVucXVldWVfbG9hZF9hdmcoY2ZzX3JxLCBzZSk7CgpJdCByZWFsbHkgZWFzaWVyIHRv
-IHJlYWQuClRoYW5rcyBmb3IgeW91ciBraW5kbHkgc3VnZ2VzdGlvbi4KCgo+IAo+IAo+ID4gCj4g
-PiAKPiA+ID4gPiAKPiA+ID4gPiBBZnRlciBlbnF1ZXVlX2xvYWRfYXZnIGNvZGUgYXMgYmVsb3cu
-Cj4gPiA+ID4gY2ZzX3JxLT5hdmcubG9hZF9hdmcgKz0gc2UtPmF2Zy5sb2FkX2F2ZzsKPiA+ID4g
-PiBjZnNfcnEtPmF2Zy5sb2FkX3N1bSArPSBzZV93ZWlnaHQoc2UpICogc2UtPmF2Zy5sb2FkX3N1
-bTsKPiA+ID4gPiAKPiA+ID4gPiBUaGVuIHRoZSBsb2FkX3N1bSBmb3IgY2ZzX3JxIHdpbGwgYmUg
-MSB3aGlsZSB0aGUgbG9hZF9zdW0gZm9yCj4gPiA+ID4gY2ZzX3JxIGlzIDAuCj4gPiA+ID4gU28g
-aXQgd2lsbCBoaXQgdGhlIHdhcm5pbmcgbWVzc2FnZS4KPiA+ID4gPiAKPiA+ID4gPiBBZnRlciBh
-bGwsIEkgcmVmZXIgdGhlIGZvbGxvd2luZyBjb21taXQgcGF0Y2ggdG8gZG8gdGhlIHNpbWlsYXIK
-PiA+ID4gPiB0aGluZyBhdAo+ID4gPiA+IGVucXVldWVfbG9hZF9hdmcuCj4gPiA+ID4gc2NoZWQv
-cGVsdDogUmVsYXggdGhlIHN5bmMgb2YgbG9hZF9zdW0gd2l0aCBsb2FkX2F2Zwo+ID4gPiA+IAo+
-ID4gPiA+IEFmdGVyIGxvbmcgdGltZSB0ZXN0aW5nLCB0aGUga2VybmVsIHdhcm5pbmcgd2FzIGdv
-bmUgYW5kIHRoZQo+ID4gPiA+IHN5c3RlbQo+ID4gPiA+IHJ1bnMKPiA+ID4gPiBhcyB3ZWxsIGFz
-IGJlZm9yZS4KPiA+ID4gPiAKPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBrdXlvIGNoYW5nIDxrdXlv
-LmNoYW5nQG1lZGlhdGVrLmNvbT4KPiA+ID4gPiAtLS0KPiA+ID4gPiAga2VybmVsL3NjaGVkL2Zh
-aXIuYyB8IDYgKysrKy0tCj4gPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyks
-IDIgZGVsZXRpb25zKC0pCj4gPiA+ID4gCj4gPiA+ID4gZGlmZiAtLWdpdCBhL2tlcm5lbC9zY2hl
-ZC9mYWlyLmMgYi9rZXJuZWwvc2NoZWQvZmFpci5jCj4gPiA+ID4gaW5kZXggZDRiZDI5OWQ2N2Fi
-Li4zMGQ4YjZkYmEyNDkgMTAwNjQ0Cj4gPiA+ID4gLS0tIGEva2VybmVsL3NjaGVkL2ZhaXIuYwo+
-ID4gPiA+ICsrKyBiL2tlcm5lbC9zY2hlZC9mYWlyLmMKPiA+ID4gPiBAQCAtMzA3NCw4ICszMDc0
-LDEwIEBAIGFjY291bnRfZW50aXR5X2RlcXVldWUoc3RydWN0IGNmc19ycQo+ID4gPiA+ICpjZnNf
-cnEsIHN0cnVjdCBzY2hlZF9lbnRpdHkgKnNlKQo+ID4gPiA+ICBzdGF0aWMgaW5saW5lIHZvaWQK
-PiA+ID4gPiAgZW5xdWV1ZV9sb2FkX2F2ZyhzdHJ1Y3QgY2ZzX3JxICpjZnNfcnEsIHN0cnVjdCBz
-Y2hlZF9lbnRpdHkKPiA+ID4gPiAqc2UpCj4gPiA+ID4gIHsKPiA+ID4gPiAtICAgICAgIGNmc19y
-cS0+YXZnLmxvYWRfYXZnICs9IHNlLT5hdmcubG9hZF9hdmc7Cj4gPiA+ID4gLSAgICAgICBjZnNf
-cnEtPmF2Zy5sb2FkX3N1bSArPSBzZV93ZWlnaHQoc2UpICogc2UtCj4gPiA+ID4gPmF2Zy5sb2Fk
-X3N1bTsKPiA+ID4gPiArICAgICAgIGFkZF9wb3NpdGl2ZSgmY2ZzX3JxLT5hdmcubG9hZF9hdmcs
-IHNlLT5hdmcubG9hZF9hdmcpOwo+ID4gPiA+ICsgICAgICAgYWRkX3Bvc2l0aXZlKCZjZnNfcnEt
-PmF2Zy5sb2FkX3N1bSwgc2Vfd2VpZ2h0KHNlKSAqIHNlLQo+ID4gPiA+ID4gYXZnLmxvYWRfc3Vt
-KTsKPiA+ID4gPiAKPiA+ID4gPiArICAgICAgIGNmc19ycS0+YXZnLmxvYWRfc3VtID0gbWF4X3Qo
-dTMyLCBjZnNfcnEtPmF2Zy5sb2FkX3N1bSwKPiA+ID4gPiArICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBjZnNfcnEtPmF2Zy5sb2FkX2F2Zwo+ID4gPiA+ICoKPiA+ID4g
-PiBQRUxUX01JTl9ESVZJREVSKTsKPiA+ID4gPiAgfQo+ID4gPiA+IAo+ID4gPiA+ICBzdGF0aWMg
-aW5saW5lIHZvaWQKPiA+ID4gPiAtLQo+ID4gPiA+IDIuMTguMAo+ID4gPiA+IAoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1h
-aWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Mon, 28 Mar 2022 10:49, Rex-BC Chen <rex-bc.chen@mediatek.com> wrote:
+>On Mon, 2022-03-28 at 00:39 +0200, Guillaume Ranquet wrote:
+>> Add a mtk_dpi_matrix_sel() helper to update the DPI_MATRIX_SET
+>> register depending on the color format.
+>>
+>> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+>> ---
+>>  drivers/gpu/drm/mediatek/mtk_dpi.c | 21 +++++++++++++++++++++
+>>  1 file changed, 21 insertions(+)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
+>> b/drivers/gpu/drm/mediatek/mtk_dpi.c
+>> index 8198d3cf23ac..82f97c687652 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+>> @@ -385,6 +385,25 @@ static void mtk_dpi_config_disable_edge(struct
+>> mtk_dpi *dpi)
+>>  		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0,
+>> EDGE_SEL_EN);
+>>  }
+>>
+>> +static void mtk_dpi_matrix_sel(struct mtk_dpi *dpi, enum
+>> mtk_dpi_out_color_format format)
+>> +{
+>> +	u32 matrix_sel = 0;
+>> +
+>> +	switch (format) {
+>> +	case MTK_DPI_COLOR_FORMAT_YCBCR_422:
+>> +	case MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL:
+>> +	case MTK_DPI_COLOR_FORMAT_YCBCR_444:
+>> +	case MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL:
+>> +	case MTK_DPI_COLOR_FORMAT_XV_YCC:
+>> +		if (dpi->mode.hdisplay <= 720)
+>> +			matrix_sel = 0x2;
+>> +		break;
+>> +	default:
+>> +		break;
+>> +	}
+>> +	mtk_dpi_mask(dpi, DPI_MATRIX_SET, matrix_sel,
+>> INT_MATRIX_SEL_MASK);
+>> +}
+>> +
+>>  static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+>>  					enum mtk_dpi_out_color_format
+>> format)
+>>  {
+>> @@ -392,6 +411,7 @@ static void mtk_dpi_config_color_format(struct
+>> mtk_dpi *dpi,
+>>  	    (format == MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL)) {
+>>  		mtk_dpi_config_yuv422_enable(dpi, false);
+>>  		mtk_dpi_config_csc_enable(dpi, true);
+>> +		mtk_dpi_matrix_sel(dpi, format);
+>>  		if (dpi->conf->swap_input_support)
+>>  			mtk_dpi_config_swap_input(dpi, false);
+>>  		mtk_dpi_config_channel_swap(dpi,
+>> MTK_DPI_OUT_CHANNEL_SWAP_BGR);
+>> @@ -399,6 +419,7 @@ static void mtk_dpi_config_color_format(struct
+>> mtk_dpi *dpi,
+>>  		   (format == MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL)) {
+>>  		mtk_dpi_config_yuv422_enable(dpi, true);
+>>  		mtk_dpi_config_csc_enable(dpi, true);
+>> +		mtk_dpi_matrix_sel(dpi, format);
+>>  		if (dpi->conf->swap_input_support)
+>>  			mtk_dpi_config_swap_input(dpi, true);
+>>  		mtk_dpi_config_channel_swap(dpi,
+>> MTK_DPI_OUT_CHANNEL_SWAP_RGB);
+>
+>Hello Guillaume,
+>
+>Thanks for your patch.
+>I have one question:
+>Do this setting affect the dpi for previous SoCs?
+>(8183, 8192, or 8186)
+>If we can confirm the original register setting for this offset in
+>8183/8192/8186, I think we can clarify this question.
+>
+
+I've checked in the datasheet I have (8365/8385) that this register
+and setting exists.
+So yes, it will affect other platforms.
+
+>BRs,
+>Rex
+>
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
