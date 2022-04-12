@@ -4,68 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1EE8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 10:37:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AD20C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 10:39:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SGzZvN/EJiq1KoK6Hw7Kdxws2+JK/38H7DK5C26sF+4=; b=BbI4ccVaU4mjos
-	Zu0fOYdnJZpnwp45+OODxySMgNpuMlHtlhjT03i7ohubRTZQ3GU1qwo2coSnBxTW14K+7I0r28GQ6
-	O8Y+ABsl4FMSEe0BDuBTGg8Vmkww++biz5+Gr22MwiDkyMLXd+zaWFbJ8+Mi/aU6gtBrJ9I+abEA2
-	gSmMZE8pDI7V3wuGdxzXdzcxzgWn4plBKLYQs9blasxEw3PnjbzvX5kjDCwpd3VW+qFMCoOuUg8U9
-	XRZgQvjlYs+PodwDacyh3gFZvUn7TEr0L0YMFQUY6+TSP8u+SOZZVRZoCwuiZ7v2Cc/Uvo7ViJgQR
-	cKC3oHETfqf1oPZbj2VA==;
+	List-Owner; bh=qbmuupR1+qenWOb97ukRoqiLmGK6fV19G2E6e3gusZ4=; b=K3dma9Hr5mv44x
+	qVrMBi19fmWXVBUGu8eoDIiPyuGvIcM/g6o1qp2KZoH+zIWEQbUAGoHqGgPM5S9H1ROCbOKvho9lQ
+	rM18MzJ3Ud5veIManEMGmKV6N1Vk1EnlC9AOxbnL4Jez86P/X0icY+XZkZMyrepMhVGs+2Bi1xocz
+	fwoWzDfryQx31GscoBAL0HUPBsQI20uOV6lU9N/pX4fHzNa4OgG68fnXoOh4j8XchyYGSCWp/Kwqh
+	MLVbVJWydRRDcFfSIdObIOixWCodSk4chBr/EMMm8Tjn20KeA3AE2GcZ98LmaA2Kb1IQ5f6guIhsl
+	H8yqxqqsbUW3Q/LnWsjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neDti-00DLP9-8H; Tue, 12 Apr 2022 10:37:22 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1neDvc-00DM1q-LU; Tue, 12 Apr 2022 10:39:20 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neDtR-00DLJU-D5; Tue, 12 Apr 2022 10:37:07 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id D173BB81CA1;
- Tue, 12 Apr 2022 10:37:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F0CB0C385A9;
- Tue, 12 Apr 2022 10:36:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1649759822;
- bh=aW4x6amHzum00rDQPT0FUG+ggRroUKbynU3+mFAMVMs=;
- h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
- b=qA+nHcZTf76+eD7wAm4dguMty2X7Md0r/KunP1VnoFC53/YPOSJyFrJRjRb1C6Os/
- i77YGzYijefmhXDTFLslXAKRS7T2NiScf7dO4p60+AswhP8uWewlnKa/Up6uG3pNq+
- dnOGUKfms80yp8RYw5UlMXDllY8DOMX7hUiEW6kESVrVdaJNe61vTUNQubYMBQ9H5+
- a9+jCxp3Pa7OqtWH+p8q87XlwbsgDcoN+RiYFKb/SeB4wqrph9EZl15pKyxMalpeND
- BaS9myYIVHQQfIzqcrUIWj3I1U3qRBz2Qi4XFNlbIRp3hOIYZkm+qEsoLy6gpgDpGV
- IYMdLHZ7etrSA==
-From: Kalle Valo <kvalo@kernel.org>
-To: Thorsten Leemhuis <regressions@leemhuis.info>
-Cc: Philippe Schenker <dev@pschenker.ch>, linux-wireless@vger.kernel.org,
- Felix Fietkau <nbd@nbd.name>, "David S. Miller" <davem@davemloft.net>,
- Deren Wu <deren.wu@mediatek.com>, Jakub Kicinski <kuba@kernel.org>,
- Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, YN Chen <YN.Chen@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- "regressions\@lists.linux.dev" <regressions@lists.linux.dev>
-Subject: Re: [PATCH] Revert "mt76: mt7921: enable aspm by default"
-References: <20220412090415.17541-1-dev@pschenker.ch>
- <87y20aod5d.fsf@kernel.org>
- <7aa0bbd0-5498-ba74-ad6d-6dacbade8a3d@leemhuis.info>
-Date: Tue, 12 Apr 2022 13:36:52 +0300
-In-Reply-To: <7aa0bbd0-5498-ba74-ad6d-6dacbade8a3d@leemhuis.info> (Thorsten
- Leemhuis's message of "Tue, 12 Apr 2022 11:55:13 +0200")
-Message-ID: <87o816oaez.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+ id 1neDvY-00DLz6-9s; Tue, 12 Apr 2022 10:39:18 +0000
+X-UUID: 457ff418b4b54d10b693147aaace7b37-20220412
+X-UUID: 457ff418b4b54d10b693147aaace7b37-20220412
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 433772173; Tue, 12 Apr 2022 03:39:07 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 12 Apr 2022 03:31:17 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 12 Apr 2022 18:31:15 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 12 Apr 2022 18:31:15 +0800
+From: jason-jh.lin <jason-jh.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Chun-Kuang
+ Hu" <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v18 02/10] dt-bindings: arm: mediatek: mmsys: add mt8195 SoC
+ binding
+Date: Tue, 12 Apr 2022 18:31:06 +0800
+Message-ID: <20220412103114.19922-3-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220412103114.19922-1-jason-jh.lin@mediatek.com>
+References: <20220412103114.19922-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220412_033705_778986_4B58D26C 
-X-CRM114-Status: GOOD (  19.51  )
+X-CRM114-CacheID: sfid-20220412_033916_359542_C242424E 
+X-CRM114-Status: UNSURE (   9.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,59 +69,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: David Airlie <airlied@linux.ie>, singo.chang@mediatek.com,
+ dri-devel@lists.freedesktop.org, Fabien Parent <fparent@baylibre.com>,
+ linux-stm32@st-md-mailman.stormreply.com, roy-cw.yeh@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, Rex-BC
+ Chen <rex-bc.chen@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ devicetree@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>,
+ CK Hu <ck.hu@mediatek.com>, nancy.lin@mediatek.com,
+ linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
+ linux-arm-kernel@lists.infradead.org,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>, linux-kernel@vger.kernel.org,
+ moudy.ho@mediatek.com, Maxime Coquelin <mcoquelin.stm32@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thorsten Leemhuis <regressions@leemhuis.info> writes:
+In the SoC before, such as mt8173, it has 2 pipelines binding to one
+mmsys with the same clock driver and the same power domain.
 
-> On 12.04.22 11:37, Kalle Valo wrote:
->> Philippe Schenker <dev@pschenker.ch> writes:
->> 
->>> This reverts commit bf3747ae2e25dda6a9e6c464a717c66118c588c8.
->>>
->>> This commit introduces a regression on some systems where the kernel is
->>> crashing in different locations after a reboot was issued.
->>>
->>> This issue was bisected on a Thinkpad P14s Gen2 (AMD) with latest firmware.
->>>
->>> Link:
->>> https://lore.kernel.org/linux-wireless/5077a953487275837e81bdf1808ded00b9676f9f.camel@pschenker.ch/
->>> Signed-off-by: Philippe Schenker <dev@pschenker.ch>
->> 
->> Can I take this to wireless tree? Felix, ack?
->> 
->> I'll also add:
->> 
->> Fixes: bf3747ae2e25 ("mt76: mt7921: enable aspm by default")
->
-> Sorry, stupid questions from the regression tracker: wouldn't this cause
-> a regression for users of kernel versions post-bf3747ae2e25, as the
-> power consumption is likely to increase for them? Without having dug
-> into the backstory much: would disabling ASPM for this particular
-> machine using a quirk be the better approach? Or are we assuming a lot
-> of machines are affected?
->
-> Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
->
-> P.S.: As the Linux kernel's regression tracker I'm getting a lot of
-> reports on my table. I can only look briefly into most of them and lack
-> knowledge about most of the areas they concern. I thus unfortunately
-> will sometimes get things wrong or miss something important. I hope
-> that's not the case here; if you think it is, don't hesitate to tell me
-> in a public reply, it's in everyone's interest to set the public record
-> straight.
+In mt8195, there are 4 pipelines binding to 4 different mmsys, such as
+vdosys0, vdosys1, vppsys0 and vppsys1.
+Each mmsys uses different clock drivers and different power domain.
 
-BTW, maybe you could add that boilerplace text after P.S. into the
-signature (ie. under "-- " line)? That way your mails would more
-readable and make it more clear that you didn't write the boilerplate
-text specifically for this mail.
+Since each mmsys has its own mmio base address, they could be identified
+by their different address during probe time.
 
+Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml         | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 6c2c3edcd443..6ad023eec193 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -31,6 +31,7 @@ properties:
+               - mediatek,mt8183-mmsys
+               - mediatek,mt8186-mmsys
+               - mediatek,mt8192-mmsys
++              - mediatek,mt8195-mmsys
+               - mediatek,mt8365-mmsys
+           - const: syscon
+       - items:
 -- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+2.18.0
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
 _______________________________________________
 Linux-mediatek mailing list
