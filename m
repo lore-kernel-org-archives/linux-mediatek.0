@@ -4,64 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C6D5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 02:54:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 084A8C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 06:33:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=woH57ATew0o2hnavDfc3ZXXymYn+XsdFmIZM85O6alQ=; b=qLLGmQOOeoIJIQ
-	oxL18bReiIPhX23bQ04ZmZEzBSTQRa2WVNefZ3PCJHodvn9o5Ll5rcmhaIuJl4XtcWOG5IPDYItd5
-	tF7EsYTjLqwgrJK3KlNzsPqlM9SFR49LoBp2EKhSbiaOGm8laYtS9cenR4A9lBmPviIInXDjMzCfg
-	JUsf6PX/fZf71JSMq/xJzsxiYb+D8S8LEC13efatwoGGJOI3WIAZk9kXt8nFqmDIc4u9elz8U9A3k
-	6pxxn2LHUQ2GSZRBq+CEpku0rUL2F9q37KDlABP/HUi5gQ+wfaS5HDMJbqgJ0rnXi+m6klVlq65/O
-	dtFQlDLryAT6ZRStSnVg==;
+	List-Owner; bh=EaQlERWudJzPzE0fsSYtZFQzem3bi5jaNZfZQfbIgBU=; b=KIsUbqALm7wb7r
+	/7gpYdXRb8Hp02ZWC6dDxgkDfDi3Ip9mc7MKutqT+7vwmTbWUR6RXelME9QhneSYUdTi9BKwPDYNQ
+	IOg1ZqEXJLhPh1dyMtW3kedbWvp/5NdsQzoxeO0D4FYXb9fqers0hkmQjYiO5eM314as6b6Lo2fXq
+	CbIT+SySzOMHis0mPP56gFf9Qxwkv0gUb3jTevVy/RH3wykrcrx6yRry1do1fxCeDEq8pe4EcVDNz
+	ARZF03+NvbHFL8VTYCugApGie9uniASlmsYL/o8/Cfb/udmkJct2CNmTRaMwV9BhfIykpyFu78W7T
+	4o/QNsLLSsNgeqqQA3qQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ne6fV-00BLpY-6o; Tue, 12 Apr 2022 02:54:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1neA5g-00BscV-S7; Tue, 12 Apr 2022 06:33:28 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ne6em-00BLUQ-Rj; Tue, 12 Apr 2022 02:53:30 +0000
-X-UUID: 9c1f5693010040b6b6e5a63709ca0a10-20220411
-X-UUID: 9c1f5693010040b6b6e5a63709ca0a10-20220411
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <kuyo.chang@mediatek.com>)
+ id 1neA5W-00BsWo-CZ; Tue, 12 Apr 2022 06:33:19 +0000
+X-UUID: 560e3a0bc37942b9b49ef323370648d1-20220411
+X-UUID: 560e3a0bc37942b9b49ef323370648d1-20220411
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1842209354; Mon, 11 Apr 2022 19:53:19 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Apr 2022 19:51:25 -0700
+ with ESMTP id 1927428920; Mon, 11 Apr 2022 23:33:06 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 11 Apr 2022 23:33:04 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 12 Apr 2022 10:51:23 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 12 Apr 2022 14:33:02 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 12 Apr 2022 10:51:23 +0800
-Message-ID: <5a90b20570ecacf457f68da7a106d3b2f8c2269e.camel@mediatek.com>
-Subject: Re: [PATCH 1/1] sched/pelt: Refine the enqueue_load_avg calculate
- method
-From: Kuyo Chang <kuyo.chang@mediatek.com>
-To: Vincent Guittot <vincent.guittot@linaro.org>
-CC: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
- Juri Lelli <juri.lelli@redhat.com>, Dietmar Eggemann
- <dietmar.eggemann@arm.com>, Steven Rostedt <rostedt@goodmis.org>, "Ben
- Segall" <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, "Daniel Bristot
- de Oliveira" <bristot@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- <wsd_upstream@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Date: Tue, 12 Apr 2022 10:51:23 +0800
-In-Reply-To: <CAKfTPtAyhc-tAWXmXcHstmiBSMjj5GENizX__KRDab28NRum1A@mail.gmail.com>
-References: <20220411061702.22978-1-kuyo.chang@mediatek.com>
- <CAKfTPtAyhc-tAWXmXcHstmiBSMjj5GENizX__KRDab28NRum1A@mail.gmail.com>
+ Transport; Tue, 12 Apr 2022 14:33:02 +0800
+Message-ID: <d08e121848788fee9898e1898ee756b10c99fa08.camel@mediatek.com>
+Subject: Re: [RESEND v17 3/7] soc: mediatek: add mtk-mmsys support for
+ mt8195 vdosys0
+From: CK Hu <ck.hu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jason-JH Lin <jason-jh.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>
+CC: David Airlie <airlied@linux.ie>, <singo.chang@mediatek.com>, "Alexandre
+ Torgue" <alexandre.torgue@foss.st.com>, <postmaster@vger.kernel.org>, "Fabien
+ Parent" <fparent@baylibre.com>, John 'Warthog9' Hawley
+ <warthog9@eaglescrag.net>, <linux-stm32@st-md-mailman.stormreply.com>,
+ <roy-cw.yeh@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Philipp Zabel
+ <p.zabel@pengutronix.de>, <devicetree@vger.kernel.org>, Daniel Vetter
+ <daniel@ffwll.ch>, <nancy.lin@mediatek.com>,
+ <linux-mediatek@lists.infradead.org>, <hsinyi@chromium.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <moudy.ho@mediatek.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>
+Date: Tue, 12 Apr 2022 14:33:02 +0800
+In-Reply-To: <a48df6bb-6be8-6cb9-51d0-9044e706e834@collabora.com>
+References: <20220407030409.9664-1-jason-jh.lin@mediatek.com>
+ <20220407030409.9664-4-jason-jh.lin@mediatek.com>
+ <67b3e42d6a094108f724ed9b8c73f5cd6b2ce219.camel@mediatek.com>
+ <d8711b8e4d233240eda73db54a625e88b9b3970b.camel@mediatek.com>
+ <1f1692b6d14280fed40e53f464145ed70b67135f.camel@mediatek.com>
+ <a48df6bb-6be8-6cb9-51d0-9044e706e834@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220411_195328_969627_DEDE2A01 
-X-CRM114-Status: GOOD (  32.78  )
+X-CRM114-CacheID: sfid-20220411_233318_459188_56CCE22F 
+X-CRM114-Status: GOOD (  47.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,131 +89,139 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-04-11 at 10:39 +0200, Vincent Guittot wrote:
-> On Mon, 11 Apr 2022 at 08:17, Kuyo Chang <kuyo.chang@mediatek.com>
-> wrote:
-> > 
-> > From: kuyo chang <kuyo.chang@mediatek.com>
-> > 
-> > I meet the warning message at cfs_rq_is_decayed at below code.
-> > 
-> > SCHED_WARN_ON(cfs_rq->avg.load_avg ||
-> >                     cfs_rq->avg.util_avg ||
-> >                     cfs_rq->avg.runnable_avg)
-> > 
-> > Following is the calltrace.
-> > 
-> > Call trace:
-> > __update_blocked_fair
-> > update_blocked_averages
-> > newidle_balance
-> > pick_next_task_fair
-> > __schedule
-> > schedule
-> > pipe_read
-> > vfs_read
-> > ksys_read
-> > 
-> > After code analyzing and some debug messages, I found it exits a
-> > corner
-> > case at attach_entity_load_avg which will cause load_sum is zero
-> > and
-> > load_avg is not.
-> > Consider se_weight is 88761 according by sched_prio_to_weight
-> > table.
-> > And assume the get_pelt_divider() is 47742, se->avg.load_avg is 1.
-> > By the calculating for se->avg.load_sum as following will become
-> > zero
-> > as following.
-> > se->avg.load_sum =
-> >         div_u64(se->avg.load_avg * se->avg.load_sum,
-> > se_weight(se));
-> > se->avg.load_sum = 1*47742/88761 = 0.
-> 
-> The root problem is there, se->avg.load_sum must not be null if
-> se->avg.load_avg is not null because the correct relation between
-> _avg
-> and _sum is:
-> 
-> load_avg = weight * load_sum / divider.
-> 
-> so the fix should be attach_entity_load_avg() and probably the below
-> is enough
-> 
-> se->avg.load_sum = div_u64(se->avg.load_avg * se->avg.load_sum,
-> se_weight(se)) + 1;
+Hi, Angelo:
 
-Thanks for your kindly suggestion.
-+1 would make the calcuation for load_sum may be overestimate?
-How about the below code make sense for fix the corner case?
+On Fri, 2022-04-08 at 10:49 +0200, AngeloGioacchino Del Regno wrote:
+> Il 08/04/22 03:28, CK Hu ha scritto:
+> > Hi, Jason:
+> > 
+> > On Thu, 2022-04-07 at 14:27 +0800, Jason-JH Lin wrote:
+> > > Hi CK,
+> > > 
+> > > Thanks for the reviews.
+> > > 
+> > > On Thu, 2022-04-07 at 13:45 +0800, CK Hu wrote:
+> > > > Hi, Jason:
+> > > > 
+> > > > On Thu, 2022-04-07 at 11:04 +0800, jason-jh.lin wrote:
+> > > > > 1. Add mt8195 mmsys compatible for vdosys0.
+> > > > > 2. Add mt8195 routing table settings and fix build fail.
+> > > > > 3. Add clock name, clock driver name and routing table into
+> > > > > the
+> > > > > driver data
+> > > > >     of mt8195 vdosys0.
+> > > > > 4. Add get match data by clock name function and clock
+> > > > > platform
+> > > > > labels
+> > > > >     to identify which mmsys node is corresponding to vdosys0.
+> > > > > 
+> > > > > Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+> > > > > ---
+> > > > >   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |   2 +-
+> > > > >   drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   6 +-
+> > > > >   drivers/soc/mediatek/mt8167-mmsys.h         |   2 +-
+> > > > >   drivers/soc/mediatek/mt8183-mmsys.h         |   2 +-
+> > > > >   drivers/soc/mediatek/mt8186-mmsys.h         |   4 +-
+> > > > >   drivers/soc/mediatek/mt8192-mmsys.h         |   4 +-
+> > > > >   drivers/soc/mediatek/mt8195-mmsys.h         | 370
+> > > > > ++++++++++++++++++++
+> > > > >   drivers/soc/mediatek/mt8365-mmsys.h         |   4 +-
+> > > > >   drivers/soc/mediatek/mtk-mmsys.c            |  62 ++++
+> > > > >   drivers/soc/mediatek/mtk-mmsys.h            |   1 +
+> > > > >   drivers/soc/mediatek/mtk-mutex.c            |   8 +-
+> > > > >   include/linux/soc/mediatek/mtk-mmsys.h      |  13 +-
+> > > > >   12 files changed, 461 insertions(+), 17 deletions(-)
+> > > > >   create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+> > > > > 
+> > > > 
+> > > > [snip]
+> > > > 
+> > > > > diff --git a/drivers/soc/mediatek/mtk-mmsys.c
+> > > > > b/drivers/soc/mediatek/mtk-mmsys.c
+> > > > > index 4fc4c2c9ea20..b2fa239c5f5f 100644
+> > > > > --- a/drivers/soc/mediatek/mtk-mmsys.c
+> > > > > +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> > > > > @@ -4,6 +4,8 @@
+> > > > >    * Author: James Liao <jamesjj.liao@mediatek.com>
+> > > > >    */
+> > > > >   
+> 
+> ..snip..
+> 
+> > > 
+> > > I think there might be another chip that needs to get driver data
+> > > by
+> > > clk_name .
+> > > So I use "clk-mt8195" in clk_driver to identify the corresponding
+> > > platform whose clk_name of mmsys is also "cfg_vod0".
+> > 
+> > We usually don't care the future because the future may not happen.
+> > If
+> 
+> Hello CK,
+> 
+> I'm sorry, but I really have to disagree here.
+> Sure, the future may not happen, but from what I can see, MediaTek's
+> commitment
+> on upstreaming their SoCs is continuative and they care about the
+> future.
+> 
+> Let's also not forget that these drivers are not on a downstream
+> tree, where
+> you don't care about the past or the future, but on upstream, where
+> you:
+> - Definitely care about the past
+> - Should care about the future, if you want to avoid commit noise and
+>    making big changes to your drivers everytime, which would slow
+> down
+>    your upstreaming due to reviewers having to put 3x efforts on each
+>    iteration.
+> 
+> And let's also not forget that this being upstream means that these
+> drivers
+> may (or may not) be extended even by passionate community developers,
+> for
+> which, having such mechanisms there for other SoCs that MediaTek
+> didn't try
+> to upstream yet can only be good - and when these are engineered with
+> a
+> certain flexibility, while keeping the codebase solid, that can only
+> be good.
+> 
+> Besides, if I've misunderstood your "don't care the future"
+> statement,
+> pretend that I've never replied.
 
---- 
---- a/kernel/sched/fair.c
-+++ b/kernel/sched/fair.c
-@@ -3832,7 +3832,8 @@ static void attach_entity_load_avg(struct cfs_rq
-*cfs_rq, struct sched_entity *s
- 	se->avg.load_sum = divider;
- 	if (se_weight(se)) {
- 		se->avg.load_sum =
--			div_u64(se->avg.load_avg * se->avg.load_sum,
-se_weight(se));
-+			(se->avg.load_avg * se->avg.load_sum >
-se_weight(se)) ?
-+			div_u64(se->avg.load_avg * se->avg.load_sum,
-se_weight(se)) : 1;
- 	}
- 
- 	enqueue_load_avg(cfs_rq, se);
--- 
-2.18.0
+OK, let's break this patch into two patches. The first is to support
+mt8195 only with clock name identification. The second patch is to
+identify SoC. In this series, we just need the first patch, so move the
+second patch to the series of another SoC with multiple mmsys device.
+Maybe another SoC with multiple mmsys device has new property which
+could be used to identify SoC, so we have no information about what is
+the better implementation of second patch. I do really care the future,
+but I have no information about the future. Please public any hidden
+information so we could have better decision.
 
+Regards,
+CK
 
+> 
+> 
+> > it's sure that would happen, I think clk_driver is not a good
+> > choice.
+> > For now, the clk_driver name is different for each SoC, but it
+> > could be
+> > the same for each SoC because only one clock driver would be
+> > compiled.
+> > I think "compatible" would be different for each SoC.
 > > 
-> > After enqueue_load_avg code as below.
-> > cfs_rq->avg.load_avg += se->avg.load_avg;
-> > cfs_rq->avg.load_sum += se_weight(se) * se->avg.load_sum;
-> > 
-> > Then the load_sum for cfs_rq will be 1 while the load_sum for
-> > cfs_rq is 0.
-> > So it will hit the warning message.
-> > 
-> > After all, I refer the following commit patch to do the similar
-> > thing at
-> > enqueue_load_avg.
-> > sched/pelt: Relax the sync of load_sum with load_avg
-> > 
-> > After long time testing, the kernel warning was gone and the system
-> > runs
-> > as well as before.
-> > 
-> > Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
-> > ---
-> >  kernel/sched/fair.c | 6 ++++--
-> >  1 file changed, 4 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
-> > index d4bd299d67ab..30d8b6dba249 100644
-> > --- a/kernel/sched/fair.c
-> > +++ b/kernel/sched/fair.c
-> > @@ -3074,8 +3074,10 @@ account_entity_dequeue(struct cfs_rq
-> > *cfs_rq, struct sched_entity *se)
-> >  static inline void
-> >  enqueue_load_avg(struct cfs_rq *cfs_rq, struct sched_entity *se)
-> >  {
-> > -       cfs_rq->avg.load_avg += se->avg.load_avg;
-> > -       cfs_rq->avg.load_sum += se_weight(se) * se->avg.load_sum;
-> > +       add_positive(&cfs_rq->avg.load_avg, se->avg.load_avg);
-> > +       add_positive(&cfs_rq->avg.load_sum, se_weight(se) * se-
-> > >avg.load_sum);
-> > +       cfs_rq->avg.load_sum = max_t(u32, cfs_rq->avg.load_sum,
-> > +                                         cfs_rq->avg.load_avg *
-> > PELT_MIN_DIVIDER);
-> >  }
-> > 
-> >  static inline void
-> > --
-> > 2.18.0
-> > 
+> 
+> ...but I agree on that one (and I gave my own review and suggestions
+> on
+> how to improve that situation).
+> 
+> Regards,
+> Angelo
 
 
 _______________________________________________
