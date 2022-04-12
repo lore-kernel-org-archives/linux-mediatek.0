@@ -4,58 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D853BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 16:18:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A769C43217
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 17:04:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mhhSy4rx+juzfZnxZO1u05TOHCqraKR2QGa8y/gCDRw=; b=2JQioY8khvRU5k
-	ata+0IC5ZpyTheUOFuWBZc39otdODxh7NbRQem1y349k++/RkthpMNFhd3sJcLdxnWuHig0TrtSot
-	YWyCLelSD4ytzUiNFLFn83tylp6/j+gjCJy8Ct7pP8PiGG4dGETfWQmB0cDC4VT9mQmEqXNZjiN/a
-	bHKOXNdWCzBk+5/W+BWHJiHXLnQh94XZWiYEyJ8ut1MgUlgDJaRiHOJ3lysOLv8cl3DA5xOuOSmKb
-	HB+MPDo+3ZYKLj8imtgvWnHH8MzJc034aK5R501CNu1Rk83ytmay5g3Bn9VlMJLSEFtwzuS4c0mXH
-	A3Y7B53/8/saG2bNVqEQ==;
+	List-Owner; bh=np6tR9xKU5Sdq2MSHr/PIryGaUMnNOYgpBKVpcgiusA=; b=sKOeI4JjnLHej8
+	ClJ8aA+pPs6jSovV9xnB3eKXHkQVqbR93qkIRZZlnUDXTFi2N9qnPT0jQsY7FDye5Qr06X6l82ghb
+	qnyLUehZwHA0AWKD5BWffCNWk4ZQYUwUIUHvfmBbyqnxFdqdBKLv4/XRsojStaIQaQOJQaVn/XbWT
+	o/TXhWXq6zBq85/ebEdtZyrQXbWPeJxFelqR7lY6RNWTMzR0xg2qzKB7ZyPK5lG5/wJPVi0Qrkecr
+	KkZY5NAUvF6gAyr2k4ISm8SqQ6Ew+H5a17DP2O8J8Le4E2meNcd4+Ue2t7zVGhu0mkoEdm2n7WLue
+	hF9fznYzk1Az9B9z2Kyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neJDS-00F4lX-Is; Tue, 12 Apr 2022 16:18:06 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1neJwK-00FAHM-VN; Tue, 12 Apr 2022 17:04:28 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neJDG-00F4iN-Ej; Tue, 12 Apr 2022 16:17:55 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id CB88F1F44415
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649780272;
- bh=HG4zMAQTMsRTHk1kQ+DW7QY45qxSF73vy5Es63Yx/Hs=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=Ie3NRjpwbAQ6cKLOUQoYITA6lfCLeBMXZqyKTetVNOwu1eFOnlDIS0Hyl1ms1j+hU
- CWOJDqVXrI5AdKOkIllkSsrz7hrLwsPJnS9Lo7jPIeMg7Haa0JyzweD+PRe0JVHK04
- ZdlRENGtXaYzDJkDtrAOgzDh2HuOBspLV5vsR5KvgvMnDPjBV9GuGDNfdc8Zg1ayuo
- FtTuW85jObOrIekLzn62cGHsY6Dn2+F5biP5AN/aBfvU/5q1WAtgooD7FRil6SaE+d
- +9sTEHPcko2Bzusdvyvz0qWsvXuJOVIe/j909WNAbo4d2EucJ2a9qTbxxjgbf35+8g
- Gdk3RqTWV2VbA==
-Message-ID: <084cce2b-5c50-1d14-70f8-a313d61b901d@collabora.com>
-Date: Tue, 12 Apr 2022 18:17:48 +0200
+ id 1neJw9-00FAEv-Aq
+ for linux-mediatek@lists.infradead.org; Tue, 12 Apr 2022 17:04:18 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id
+ md20-20020a17090b23d400b001cb70ef790dso3550354pjb.5
+ for <linux-mediatek@lists.infradead.org>; Tue, 12 Apr 2022 10:04:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=svCJiNYCVSTSADFJuSISCpOI75wKzQz4JEvN3pdJrsM=;
+ b=I0pM3O+HVyaN+WR40sxZKPBujfPiS3TYbtroP2cR9D3EyonmrVjWLo+lFmCjjMF/C9
+ cKC95ZxJ5Wrj7D8YYDHGFUDvGV5CqSfJIeyJZp4xia9AH0fNss/9hGUjx3Dc5k/kk+NI
+ SK55KI1P+NrSthu6nAnBYzB/AAGQORsGEG9JNxBoBlmcVXq8WOOypF/3nfo1RTjKbfAK
+ 3wkiCRIRYK/PBpuqmNWFGd3fnVzQpOgfZYmS3EiJjdqvm+ZOuX4X+FXha0FXLcH2RAYv
+ wEPfq51y/pCgvHdYlIvMzU1RG15mFEFWbDIbpcC1v792nKvKq9up0JlbsebYKLsxNu3N
+ N77w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=svCJiNYCVSTSADFJuSISCpOI75wKzQz4JEvN3pdJrsM=;
+ b=5aRZZ8CPuMU8s622AWSIG6AMAt/+j9WiwPxg7gTFY4KPGnNZ1Q8PTZ7G11ciyEqyj8
+ RmGW5E72jjxbx5wy+BX3H83HaedcDq1RWvP1/alSueWFu5JAq3WdAkBhjJz7ZuECbbj+
+ pMvlfBK0A8mpWUI3V7lVKRaiURezqPa2TBDLD6+V7IVyd+x9NdUNiy8VBu//BROnH+iy
+ jC/J6XT1d6Wo9+zfiQBYLmOdjHRvt2u+GL7mhBiNtEZqWyW2Fu0o6H+kx91ylUXSBlhI
+ qBBVLBAMGBxZBoRHs55asqcqn7bWQ7sdqHwiclm7UvjlzVfY47QvAtyzNwCS3ZoGXG1f
+ PQFg==
+X-Gm-Message-State: AOAM533DrpA/FO8RTBpRqzEBQJqHB2kuA7NjJtexnEjEa9suwvxA1DVa
+ XCXaCBm3dTe8UF5Dwf3m49Tnjg==
+X-Google-Smtp-Source: ABdhPJxED4y9fHEAFYCWz2UyU0Yj+9pcsOz0knbV4/SXxH9hKezQCW0Zl7/FRRX8+OwqcltokcmuJw==
+X-Received: by 2002:a17:90b:19d0:b0:1cb:7ef1:d915 with SMTP id
+ nm16-20020a17090b19d000b001cb7ef1d915mr6130873pjb.16.1649783053717; 
+ Tue, 12 Apr 2022 10:04:13 -0700 (PDT)
+Received: from p14s (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
+ by smtp.gmail.com with ESMTPSA id
+ k92-20020a17090a4ce500b001ca69b5c034sm49060pjh.46.2022.04.12.10.04.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 12 Apr 2022 10:04:12 -0700 (PDT)
+Date: Tue, 12 Apr 2022 11:04:10 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
+ linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] remoteproc: mtk_scp: Fix a potential double free
+Message-ID: <20220412170410.GA465495@p14s>
+References: <1d15023b4afb94591435c48482fe1276411b9a07.1648981531.git.christophe.jaillet@wanadoo.fr>
+ <34c30f7c-70e2-dc95-a664-9379f91f5aed@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH] spi: spi-mtk-nor: initialize spi controller after resume
-Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Ikjoon Jang <ikjn@chromium.org>
-Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220412115743.22641-1-allen-kh.cheng@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220412115743.22641-1-allen-kh.cheng@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <34c30f7c-70e2-dc95-a664-9379f91f5aed@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220412_091754_667767_4B3637FF 
-X-CRM114-Status: UNSURE (   8.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220412_100417_403387_B92BA055 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,33 +90,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/04/22 13:57, Allen-KH Cheng ha scritto:
-> After system resumes, the registers of nor controller are
-> initialized with default values. The nor controller will
-> not function properly.
+On Mon, Apr 11, 2022 at 10:55:52AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 09/04/22 08:27, Christophe JAILLET ha scritto:
+> > 'scp->rproc' is allocated using devm_rproc_alloc(), so there is no need
+> > to free it explicitly in the remove function.
+> > 
+> > Fixes: c1407ac1099a ("remoteproc: mtk_scp: Use devm variant of rproc_alloc()")
+> > Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 > 
-> To handle both issues above, we add mtk_nor_init() in
-> mtk_nor_resume after pm_runtime_force_resume().
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Applied.
+
+Thanks,
+Mathieu
+
 > 
-> Fixes: 3bfd9103c7af ("spi: spi-mtk-nor: Add power management support")
 > 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-
-That's just one issue, not two, so... "To handle both issues [etc]" should become
-something like:
-"Solve this issue by reinitializing the registers right after resuming the
-controller"
-
-After fixing the commit description,
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
 
 _______________________________________________
 Linux-mediatek mailing list
