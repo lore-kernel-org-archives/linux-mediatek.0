@@ -4,64 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29FC9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 09:18:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0F26C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 09:24:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2JAtmilWF8y5lnpu9tXiM3fXSJLsmGbIJxBfvacApS8=; b=zE29N/2V83NDPf
-	jOpkcvSOaIg+Yw9maYnGiWAyUNXgUQfB1yyJ6/oCRzk5G747KsHcZE12Pf+5ccHZcbKIWcAv+TOt3
-	r2t13aknaepyQ/w2SQj6Em1EIli0aw9pW7/u4zzlC231wjNhsdVFwJj6xPYB7WZhq0tIdXGOdXQYe
-	9D/7UHyBfcBYjQwb5WhO/Zz21dPLWNZRnSxlFImYK1whZtVpRcE292kqYOsnPlrSD6GkJgwjbz61Y
-	YMuZP9ahobhxaztyvcjCVHgc2+oaftHre0XMFiRaUj0gRNoeSLSZbpCNhuo6FuDWZXv1rOUU/CwGq
-	q7RujW+/irtpjJD0NXHA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ruTpysXJdomNPrpVEL2rUQHhXGfxGXIX4t1nw/YOQ9Q=; b=psnCCoI6MoRFX6
+	2UURl8SszNDqCQ2K6PIzpOWOoCjGwRCHMiO7xYlOHffH4FP1vzWJpIDpTZILRkQeUEL7dKvoQIUWB
+	muOVEq0EGHGnhGRk9IeUZkvxX+Qyc1JmsTKA8/yDLoQByM9vXvTdUQnlSXQyuQCKyeu9Z3QbgxFVu
+	ZzfS1mgQNMof8ItwhUXBZhScYDXh5FOHcXuEWcojFWB/+la/4dUXVvA8Z377ZMrXPbzab5tOK79QR
+	ak/IZZ0PRntfy1yl6bqTt4KEpPvSWIDROkqZ9xU7dfZAkfU2C8JoDVAW9p0Fq0N1WwMZidu/G7hQy
+	ZD6pMy4iFQRPXDNZiUog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neCfG-00CrWI-Rs; Tue, 12 Apr 2022 09:18:22 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1neClY-00CtvC-5w; Tue, 12 Apr 2022 09:24:52 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neCfC-00CrTA-Lc; Tue, 12 Apr 2022 09:18:21 +0000
-X-UUID: 17152713a44e434dbb1125860ffbf380-20220412
-X-UUID: 17152713a44e434dbb1125860ffbf380-20220412
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 166172924; Tue, 12 Apr 2022 02:18:12 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 12 Apr 2022 02:17:19 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 12 Apr 2022 17:17:18 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 12 Apr 2022 17:17:18 +0800
-Message-ID: <0500c72cd1fd8e0c374dbd85dffc6ead4dad2467.camel@mediatek.com>
-Subject: Re: [PATCH v4, 1/3] dt-bindings: display: mediatek: dsi: Convert
- dsi_dtbinding to .yaml
-From: CK Hu <ck.hu@mediatek.com>
-To: <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
- <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
-CC: <devicetree@vger.kernel.org>, <jitao.shi@mediatek.com>,
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-mediatek@lists.infradead.org>, <rex-bc.chen@mediatek.com>,
- <linux-arm-kernel@lists.infradead.org>
-Date: Tue, 12 Apr 2022 17:17:17 +0800
-In-Reply-To: <1649495514-25746-2-git-send-email-xinlei.lee@mediatek.com>
-References: <1649495514-25746-1-git-send-email-xinlei.lee@mediatek.com>
- <1649495514-25746-2-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1neClW-00CtsM-4n
+ for linux-mediatek@lists.infradead.org; Tue, 12 Apr 2022 09:24:51 +0000
+Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 23C8pDOL001710; 
+ Tue, 12 Apr 2022 09:24:39 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
+ bh=bZczMsPUVaZKDGozOlc39OaGJ85C1zfhyMzLxmGnZVw=;
+ b=fFLAZOWavQv+ITL901IhChdKPDo3Fd8nasNZqLloVKIGQVFUuqFvxQZ7PDdlIEWJxKH9
+ wyIl8xkFnlt60LEoDaEi27TbH1M7zJuBgUgI8mTIq3082NDiFLu0Dl0OUOjNUDrBygjH
+ P24TiTMjahzwIOTGrzUH7g99MX5lwOLRbXFB7XmuZsjzL6rEHSQKjb7k0GrfKtJVzg9c
+ DigkTemF84VmjJFD5bh/GC31GqOidNu2lf3UOtGGE1grB/lRxjry4xhcROXse19P6JrK
+ Qj1NfedZmoVo9AhjItSJn9c7I20ZzzdNHzk0Mw22iDEwTqdpX6MXSrYPJcY7PpuEPGLt 1A== 
+Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
+ by mx0b-00069f02.pphosted.com with ESMTP id 3fb0x2e7fs-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 12 Apr 2022 09:24:39 +0000
+Received: from pps.filterd
+ (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.16.1.2/8.16.1.2)
+ with SMTP id 23C9FhHf018555; Tue, 12 Apr 2022 09:24:38 GMT
+Received: from nam11-bn8-obe.outbound.protection.outlook.com
+ (mail-bn8nam11lp2168.outbound.protection.outlook.com [104.47.58.168])
+ by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com with ESMTP id
+ 3fb0k2ppwg-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 12 Apr 2022 09:24:37 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=LMjln9EpyUVM3NRtdZRzLzIU3iwIZH8unwsFyZamgSgVkiOXrLzOfVBZCtZVBJ7TNBoeGIT/uc3i2/xBTegN9If20Jkqn0NikweA9C1GuTUZ+C/+UWw9wX1cvxJ1fNTpu+SHrGHFOHTBzSD3Hxulc9Ui49dA0HprWQEvx41gDI0i//PaxpToZ8a+EJWoirXbNFgtyICR3bZXq36qmjqIadjxbK0DS4ly+VZd0gp2vSC1VUQ/vKEXyt/bseB6LG8UQ/1BrG/8kFzY6yKSB6vWrUSue25TOUqVorVbVLoCzxp4AUu0JNL2nuAiwM8CdNBrj9gAxFaIi8jLOxnqHctZ2Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=bZczMsPUVaZKDGozOlc39OaGJ85C1zfhyMzLxmGnZVw=;
+ b=fcJgFnWMcIgq10fNSRlOi3I+ZWL8wQhXQykaD7/YE+xUe2C4ypcIUhmNkaF8iuBxD9sl5iaosqRmPrPM3z/rij9JnDPT7hJgq3IRydpEsyXowzP+kjts7qvV748J6kKiLfxrHd7m38qvhoLck4hNfPvKJecxKa0wdwanYYI0DorwhDDybziM5EX9O0qVvAIfAHcOWlcTpMNSPYdJ0FDAGcrqe8kjZtMKzoT8WAvsmdj4GaR3FBSWSZdC/77Nh1z4w5Sk+yEPiaqZ+4Ey4t1SYtrR54X38yt3DukPNMmt2h9rIPjgJEdaGUdFXpeEOmwvYfR6VY+RtA/f1i9wQUy5mA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=bZczMsPUVaZKDGozOlc39OaGJ85C1zfhyMzLxmGnZVw=;
+ b=rddhujK4+YPVui53gRNUvpFhS8tJyly1qae2Nsd4lHYhFl34JfZw8G1h95Pkumqgdwi1ssRKTw7504VSObeO1AzZqJKnva8BovmEEqr7efPDgOVa542kU6IZaWZowxZoUACp49sHgfXm3OCxOTJWOm0wCaT7Ipdivoo3zi9TbF4=
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by DS7PR10MB5391.namprd10.prod.outlook.com
+ (2603:10b6:5:3ac::8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5144.29; Tue, 12 Apr
+ 2022 09:24:35 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::b5d5:7b39:ca2d:1b87]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::b5d5:7b39:ca2d:1b87%5]) with mapi id 15.20.5144.022; Tue, 12 Apr 2022
+ 09:24:35 +0000
+Date: Tue, 12 Apr 2022 12:24:19 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Felix Fietkau <nbd@nbd.name>
+Cc: John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: [PATCH net-next] net: ethernet: mtk_eth_soc: use after free in
+ __mtk_ppe_check_skb()
+Message-ID: <20220412092419.GA3865@kili>
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ClientProxiedBy: ZR0P278CA0111.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:20::8) To MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28)
 MIME-Version: 1.0
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: b497568f-ae15-430b-92e0-08da1c664295
+X-MS-TrafficTypeDiagnostic: DS7PR10MB5391:EE_
+X-Microsoft-Antispam-PRVS: <DS7PR10MB5391F60879C578EAE46D29568EED9@DS7PR10MB5391.namprd10.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 5X/2L2ewtnilhnKz0WJ8QTr0uq3OtyVoPkL0ieVRLvqpO8YGdjxNQGMeMoaZ7/zQhn9qcZ1NMZjRL+aOQC4Gprs4riikwVq7eDlIZ0oU14OWfye7SzCe4S//bDkLxiLLh0bFLplX+IX4ZxOxOadam9it5mfDuitsX5igB9xVYLZKDSsEoCLERDJdn05zb7LedJeAWzQXEfcwOAFIKtOEXxH6rpnd2BkL72cAR5N8jiunLskdHv0G16oxwi9EVuMqmkdHC96ipCxOSxgsQeyBQ9zyVnwAGaEoISj0DkIdarIrj7J/cx7CxJixOT9XQZxjdWnDO6tz3G+g+zIilCnupBLpKEiYXhlUs3gB89t58nGOpfp0mR9UOGpmOW1pKXXZs6imHDH/sKPG/K9riuWHuaNWKHEooUEKBN8r23oSlssAGN3uy8WNnBPvmq+OYdOGL8eDljzrmIevNGItOuVw+oK6/4Chjquqp0EqKV8o2M7xyR6lo1Ub4qLtjIPjlVAvvo/Ed35FhhHEiNXKdECiI4P/VMu12jKXoqPbiJPrHqcNnbW2XTPoPxxP7SyMrLvxV+FK+kCGTqChWgx4DMdOS+aS3Gue5Fw7gC2cetSWkkQfAU/aBe5YfNSqIGiyLmO5Qybr/m8tRH8rIpM6PLHNx3qr0f5JowlN1SoVSGFVxMMtEHL2OShgZe/s0mPjXzu5b5qlJ4mpg99WxccxiZ50gw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(7916004)(366004)(6486002)(508600001)(6666004)(66556008)(4326008)(66476007)(66946007)(26005)(186003)(6506007)(52116002)(33656002)(8676002)(83380400001)(6916009)(54906003)(316002)(1076003)(86362001)(33716001)(8936002)(9686003)(6512007)(44832011)(7416002)(38350700002)(38100700002)(2906002)(5660300002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?nYKhyfXF6nqxezN6kIRFxl6a1/WDTEVzULGmUk+DbJGtsIJ0agRhgVAPrE1O?=
+ =?us-ascii?Q?mYCc1BJjO3SQwGIALKVtWNGcCm5g7dNHl/wImRs7FSP0d8WbvXJMB4atsWPl?=
+ =?us-ascii?Q?M8+q7xq+RtI62I/YFKzO0QC5TFfFdMMLj/Lwg9RrtZztIswE/tN+SQXbddw5?=
+ =?us-ascii?Q?Q4sXamOz88TWuDTEz3HrpcBnPHxHPQ86OeJDMZKRdtPuhVKGTgExIBYqrvHH?=
+ =?us-ascii?Q?iZF1NfH+7Ugi142mZDKyE6fGdy5Q0S8mEyhVsH9gcyWLs5DifwQ3rsX3uAGh?=
+ =?us-ascii?Q?ZHY8AM//a6A5VSbSqMsU46LwtA+wQaJiF2BgA7ofVF9D6TzUC1uBNH4jqAPB?=
+ =?us-ascii?Q?I8Bv8adnEh0Rjph2SNcSdwysTLvdjmXMRT5W0BllrWGWZV1SeSy3TzPRuvi1?=
+ =?us-ascii?Q?B3saaq1yUFdRV/OyRt9FsZRMZYD+8tLJGT2bnUfUY+7ff8bBawDSeseoi7ks?=
+ =?us-ascii?Q?eBEy1CfM+GWBtA932RNkn9PCv4wfgb5EOcmgM3PtPH0uKnatF/nFdBA7TbWO?=
+ =?us-ascii?Q?o0rXViUlQ8gQRGyknn9NIGSAqtKUAKOt+6L86lcbwrXZxeXKU9+xpXiG3nDC?=
+ =?us-ascii?Q?V1z9LCMiyVJapY+G3zKtz1WLEYQ4ZC/yN7PocCMiIY8V4uO9jsnDMVZMsP4t?=
+ =?us-ascii?Q?PTymyiqqAADLyUP1Sig7qMe/14GngsYIe+PSNAYq55dbPJMFBKk+bErtOHrh?=
+ =?us-ascii?Q?q73dg8iBIhsf7unkvQZat/9BkcQetKAPQ6YhcZJILpZzLmjue2mxFpi4/C4i?=
+ =?us-ascii?Q?CQ3GCH5SE/7NblRmyN6/dT2wBhseIlp97xpxc5pUpjeNRmVssoZCZ3QB2qg2?=
+ =?us-ascii?Q?xZFZmnSSqfKgFTq4JzGO311gsOXovua7TfbFocq1EQm06zcR9+Rm/GXRHlUT?=
+ =?us-ascii?Q?VV2kFofwqonRzKHmJ0I0i4lmrUHAS541ZuR0ZdcIfDb4Zz0Cpl4cU41Qz9yU?=
+ =?us-ascii?Q?0KrKyVt3B/CbYBSrLrPG/n0xju2rPdztT2Y+xbKsTuFvrk+0397pytj7JPQm?=
+ =?us-ascii?Q?BlDVtx2DNdLTQeRrCfjTzErYA+k8QinPS1lNyQFcO9zgMFqitKP1R+Yh7Nj+?=
+ =?us-ascii?Q?opALz6c3m+mPzlACMdBrY7K0uOMQgbKuay4AY0U0loGnLu5W7O07B+KjfPcZ?=
+ =?us-ascii?Q?8E0qK0nadOOguGHZACs3CwXLPeRVPY/c+LCQXlfntqSsUkS4lPdAtayBzAOg?=
+ =?us-ascii?Q?7Huzz1D+pJ1+n6aGx1vB8tvqaHo8gCQRIPUTGtEBy8+jaIy3bUFrCCG9HSRs?=
+ =?us-ascii?Q?4r3AZjFNnSfzBhLX7nRM92tmdf5buFFJ+q84K8w41GLMlxWIsgmETggVwh1j?=
+ =?us-ascii?Q?M/4QSIckcTKZf4RQ0B3o7Q8cyilfrZrXyzWOALQRhGsERfuoK77wjSw9olgj?=
+ =?us-ascii?Q?1HKyil7cbQm2/r67WcPZk9BjgrYFCBSGB/FbXQn8UOHm/YK16RWV+85IW0qK?=
+ =?us-ascii?Q?WW66onBRhrrs3J/2c6zt+XPS1xUAy+nJyeauEX2d+lk3UxqY65sOOUZV6dGP?=
+ =?us-ascii?Q?MiV0gN7quesGFKoB4aReVOvVb4VetXo+oVK2n4AGl35shxK9AWAZXHcZI3o6?=
+ =?us-ascii?Q?8YoiZQx91z1wQibU8WiXkPFNdZOHnhIHgR8NmRIwhFSO8T2oIzJQRNMX+eBj?=
+ =?us-ascii?Q?N/PVSJKKJCrMlzyjSDgJv/ujz2phdKyU5VepP7VYvAf4+xESOTrXQ01rgjNq?=
+ =?us-ascii?Q?kGmPISt4GSrwqo2bVvnXIdn/0gl9WGGCO7HYT9LKFnLJgO0+F+g/jrbPMmuf?=
+ =?us-ascii?Q?ea2UDPNzdDO0BB7XkUVO+Dz8Y3iGxGM=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b497568f-ae15-430b-92e0-08da1c664295
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Apr 2022 09:24:35.6780 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: j4FanePZjIdd7bG8FfnET1Yb2+xKdx2+fZByBCcg9QQwAEdH3nGUI5fnAEzfo0fZlyMEI6wcu4AnL5LzDqydwjuGuvtlKsgXbW0fElHkJwk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR10MB5391
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.425, 18.0.858
+ definitions=2022-04-12_03:2022-04-11,
+ 2022-04-12 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ malwarescore=0
+ mlxscore=0 phishscore=0 suspectscore=0 spamscore=0 adultscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2202240000 definitions=main-2204120043
+X-Proofpoint-ORIG-GUID: VZW6iJ5VZ1LKimDHPQ8jCM5IDJ5i68vd
+X-Proofpoint-GUID: VZW6iJ5VZ1LKimDHPQ8jCM5IDJ5i68vd
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220412_021818_745490_9ED19E49 
-X-CRM114-Status: GOOD (  24.16  )
+X-CRM114-CacheID: sfid-20220412_022450_347515_7E165627 
+X-CRM114-Status: GOOD (  15.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,244 +177,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Xinlei:
+The __mtk_foe_entry_clear() function frees "entry" so we have to use
+the _safe() version of hlist_for_each_entry() to prevent a use after
+free.
 
-On Sat, 2022-04-09 at 17:11 +0800, xinlei.lee@mediatek.com wrote:
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
-> 
-> Convert mediatek,dsi.txt to mediatek,dsi.yaml format
-> 
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> ---
->  .../display/mediatek/mediatek,dsi.txt         |  62 ---------
->  .../display/mediatek/mediatek,dsi.yaml        | 118
-> ++++++++++++++++++
->  2 files changed, 118 insertions(+), 62 deletions(-)
->  delete mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
->  create mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
-> 
-> diff --git
-> a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
-> b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
-> deleted file mode 100644
-> index 36b01458f45c..000000000000
-> ---
-> a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
-> +++ /dev/null
-> @@ -1,62 +0,0 @@
-> -Mediatek DSI Device
-> -===================
-> -
-> -The Mediatek DSI function block is a sink of the display subsystem
-> and can
-> -drive up to 4-lane MIPI DSI output. Two DSIs can be synchronized for
-> dual-
-> -channel output.
-> -
-> -Required properties:
-> -- compatible: "mediatek,<chip>-dsi"
-> -- the supported chips are mt2701, mt7623, mt8167, mt8173 and mt8183.
-> -- reg: Physical base address and length of the controller's
-> registers
-> -- interrupts: The interrupt signal from the function block.
-> -- clocks: device clocks
-> -  See Documentation/devicetree/bindings/clock/clock-bindings.txt for
-> details.
-> -- clock-names: must contain "engine", "digital", and "hs"
-> -- phys: phandle link to the MIPI D-PHY controller.
-> -- phy-names: must contain "dphy"
-> -- port: Output port node with endpoint definitions as described in
-> -  Documentation/devicetree/bindings/graph.txt. This port should be
-> connected
-> -  to the input port of an attached DSI panel or DSI-to-eDP encoder
-> chip.
-> -
-> -Optional properties:
-> -- resets: list of phandle + reset specifier pair, as described in
-> [1].
-> -
-> -[1] Documentation/devicetree/bindings/reset/reset.txt
-> -
-> -MIPI TX Configuration Module
-> -============================
-> -
-> -See phy/mediatek,dsi-phy.yaml
-> -
-> -Example:
-> -
-> -mipi_tx0: mipi-dphy@10215000 {
-> -	compatible = "mediatek,mt8173-mipi-tx";
-> -	reg = <0 0x10215000 0 0x1000>;
-> -	clocks = <&clk26m>;
-> -	clock-output-names = "mipi_tx0_pll";
-> -	#clock-cells = <0>;
-> -	#phy-cells = <0>;
-> -	drive-strength-microamp = <4600>;
-> -	nvmem-cells= <&mipi_tx_calibration>;
-> -	nvmem-cell-names = "calibration-data";
-> -};
-> -
-> -dsi0: dsi@1401b000 {
-> -	compatible = "mediatek,mt8173-dsi";
-> -	reg = <0 0x1401b000 0 0x1000>;
-> -	interrupts = <GIC_SPI 192 IRQ_TYPE_LEVEL_LOW>;
-> -	clocks = <&mmsys MM_DSI0_ENGINE>, <&mmsys MM_DSI0_DIGITAL>,
-> -		 <&mipi_tx0>;
-> -	clock-names = "engine", "digital", "hs";
-> -	resets = <&mmsys MT8173_MMSYS_SW0_RST_B_DISP_DSI0>;
-> -	phys = <&mipi_tx0>;
-> -	phy-names = "dphy";
-> -
-> -	port {
-> -		dsi0_out: endpoint {
-> -			remote-endpoint = <&panel_in>;
-> -		};
-> -	};
-> -};
-> diff --git
-> a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yam
-> l
-> b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yam
-> l
-> new file mode 100644
-> index 000000000000..431bb981394f
-> --- /dev/null
-> +++
-> b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yam
-> l
-> @@ -0,0 +1,118 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: 
-> https://urldefense.com/v3/__http://devicetree.org/schemas/display/mediatek/mediatek,dsi.yaml*__;Iw!!CTRNKA9wMg0ARbw!1nUf3PGHra5nGo845exNyAn1KxdDMSV2ISukRJ6hQejfVta1JOIVoNEZ5BleoA$
->  
-> +$schema: 
-> https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!1nUf3PGHra5nGo845exNyAn1KxdDMSV2ISukRJ6hQejfVta1JOIVoNHzl2rp1Q$
->  
-> +
-> +title: MediaTek DSI Controller Device Tree Bindings
-> +
-> +maintainers:
-> +  - CK Hu <ck.hu@mediatek.com>
+Fixes: 33fc42de3327 ("net: ethernet: mtk_eth_soc: support creating mac address based offload entries")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+---
+ drivers/net/ethernet/mediatek/mtk_ppe.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Replace 'CK Hu' with MediaTek DRM driver maintainer:
-
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>
-	Philipp Zabel <p.zabel@pengutronix.de>
-
-> +  - Jitao Shi <jitao.shi@mediatek.com>
-> +  - Xinlei Lee <xinlei.lee@mediatek.com>
-> +
-> +description: |
-> +  The MediaTek DSI function block is a sink of the display subsystem
-> and can
-> +  drive up to 4-lane MIPI DSI output. Two DSIs can be synchronized
-> for dual-
-> +  channel output.
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt2701-dsi
-> +      - mediatek,mt7623-dsi
-> +      - mediatek,mt8167-dsi
-> +      - mediatek,mt8173-dsi
-> +      - mediatek,mt8183-dsi
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    items:
-> +      - description: Engine Clock
-> +      - description: Digital Clock
-> +      - description: HS Clock
-> +
-> +  clock-names:
-> +    items:
-> +      - const: engine
-> +      - const: digital
-> +      - const: hs
-> +
-> +  resets:
-> +    maxItems: 1
-> +
-> +  phys:
-> +    maxItems: 1
-> +
-> +  phy-names:
-> +    items:
-> +      - const: dphy
-> +
-> +  port:
-> +    $ref: /schemas/graph.yaml#/properties/port
-> +    description:
-> +      Output port node. This port should be connected to the input
-> +      port of an attached DSI panel or DSI-to-eDP encoder chip.
-> +
-> +
-> +  "#address-cells":
-> +    const: 2
-> +
-> +  "#size-cells":
-> +    const: 2
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - power-domains
-> +  - clocks
-> +  - clock-names
-> +  - phys
-> +  - phy-names
-> +  - port
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mt8183-clk.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/power/mt8183-power.h>
-> +    #include <dt-bindings/phy/phy.h>
-> +    #include <dt-bindings/reset/mt8183-resets.h>
-> +
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        dsi0: dsi@14014000 {
-> +            compatible = "mediatek,mt8183-dsi";
-> +            reg = <0 0x14014000 0 0x1000>;
-> +            interrupts = <GIC_SPI 236 IRQ_TYPE_LEVEL_LOW>;
-> +            power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-> +            clocks = <&mmsys CLK_MM_DSI0_MM>,
-> +                <&mmsys CLK_MM_DSI0_IF>,
-> +                <&mipi_tx0>;
-> +            clock-names = "engine", "digital", "hs";
-> +            resets = <&mmsys MT8183_MMSYS_SW0_RST_B_DISP_DSI0>;
-> +            phys = <&mipi_tx0>;
-> +            phy-names = "dphy";
-> +            port {
-> +                dsi0_out: endpoint {
-> +                    remote-endpoint = <&panel_in>;
-> +                };
-> +            };
-> +        };
-> +    };
-> +
-> +...
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+index 282a1f34a88a..683f89f8e3b2 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+@@ -600,6 +600,7 @@ void __mtk_ppe_check_skb(struct mtk_ppe *ppe, struct sk_buff *skb, u16 hash)
+ 	struct mtk_foe_entry *hwe = &ppe->foe_table[hash];
+ 	struct mtk_flow_entry *entry;
+ 	struct mtk_foe_bridge key = {};
++	struct hlist_node *n;
+ 	struct ethhdr *eh;
+ 	bool found = false;
+ 	u8 *tag;
+@@ -609,7 +610,7 @@ void __mtk_ppe_check_skb(struct mtk_ppe *ppe, struct sk_buff *skb, u16 hash)
+ 	if (FIELD_GET(MTK_FOE_IB1_STATE, hwe->ib1) == MTK_FOE_STATE_BIND)
+ 		goto out;
+ 
+-	hlist_for_each_entry(entry, head, list) {
++	hlist_for_each_entry_safe(entry, n, head, list) {
+ 		if (entry->type == MTK_FLOW_TYPE_L2_SUBFLOW) {
+ 			if (unlikely(FIELD_GET(MTK_FOE_IB1_STATE, hwe->ib1) ==
+ 				     MTK_FOE_STATE_BIND))
+-- 
+2.20.1
 
 
 _______________________________________________
