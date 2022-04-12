@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC43FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 15:06:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88065C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 15:21:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=axx77S8OShG6F2io68DEPpkbKok/1e6DWEgOdTL0g7E=; b=bflhNqUf98bYvq
-	USm0IdQ8dCBhmbB5kwTm6bAQfQnD6n731+LRk5bVHirbh6PV9aWjXX0NNvc8g2qyeZY35eB87RoHS
-	l5UAKPe+cEj1thiS0Fw9LlqKUqWug5N3IXBs1kpGvmOSDu5uY3vmSyUrBgHK8PXIwjysX2b2Lmk5U
-	s6B9sABo9VGuoyFOhy6LgbDf3Lb+GduQlgwyb+D7B+Fwc7hC8X9XzoVGj7bn/3XphBGTD5DHZJyaq
-	ZVE0z2/Mld9zfLyOJxphZ5TiB9BPq9Zn5Gb0XMJr+9qli4ChIfJYX2UAqHVcRNqCdvJWFBP/ccdbv
-	LKDRQRSHqcT44hc+N0AQ==;
+	List-Owner; bh=kkkWtpFWnpKAS3FPP2gnITBzImhbyH+/3AUNlr929co=; b=uu2dr9yq47FZUr
+	QGy1snonndkRysTd7CaFR0l+IY/yk3NkitDE9wE+SVE09ApLEU5a4ws/4KRLLJjOCLchKohajgIcF
+	bBhsSez4K6vuCBYE7twJ8VVnqOEOrWemnSNjgoJonDtYbayLnLPVOJLzobsw76Q5DMvmy3gUg5qHX
+	od5zu9AZs4jSY0e2rKXVWYZikkaV7KfwAP+3VvGBeF6zo9yYOMzW3olFwhc677eanHVV5gEejcDB2
+	bKex2AfJEb5Mojg9ulRlqxZDGJm08+dzCnhqxoEGKKinV3qpsuVDvvLOUJv8mgkVtosrbUAsi7dM0
+	uu5bN7jJ1mWCqxg4rr+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neI6P-00ErdY-A2; Tue, 12 Apr 2022 15:06:45 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1neIKL-00EtI0-88; Tue, 12 Apr 2022 15:21:09 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neI6D-00Eraw-Qp; Tue, 12 Apr 2022 15:06:35 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id l7so32495958ejn.2;
- Tue, 12 Apr 2022 08:06:27 -0700 (PDT)
+ id 1neIKA-00EtE4-0c; Tue, 12 Apr 2022 15:20:59 +0000
+Received: by mail-ej1-x634.google.com with SMTP id k23so38004191ejd.3;
+ Tue, 12 Apr 2022 08:20:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:subject:from:to:cc:date:in-reply-to:references
  :content-transfer-encoding:user-agent:mime-version;
- bh=On6x4n5aVEZBUYriyh4Itpr/oxnyB3oIsnuoMQ6fdAo=;
- b=DXB30EkRvzrBh6ZH6ZmHCtoT7jsazmOtDBN7ieFDUsPgAgzUrDKXpDQhxEfAEwGJ8C
- BQCXHKHPy2//FojkJMa2AlscVJJoKWuR6Da0D1DfjZkCNPhlAGPjvut2Adw6W9afHRVH
- E+nIO4J30jZENSGFuVZkTNY6HhCtEq961/VlsyWpgRfM/Ys8Vdje1HPojgtdZoBRCY/I
- bQmSlZzUyAdU8fXoRYMnlsB9/99ghL7WCgAD8345Fnj2U3Khy8br1GliikH88YXsmmBx
- WtBxsQ0lQHUngUYa410+pD05iHX9gPT1Z/HFHXJUjGdCbs0Bue4yQSZmRvaw3bfzYxUC
- 8k1w==
+ bh=C8gQ8j7J3mbrIsGT3wWEzstlM9ttuL2uLWVEJNDgDtU=;
+ b=U+2B4AySb2AJW2WsQk97IM5PVdMqEYljSRFy82erPIMX3QrfKI1O2HFcCjEcuQ8H/i
+ i8lN7V9XWj2OKtHv4eIgfaAgZfDovMHl/774b/2Ola9SGfoFp1tUiocmVoga7QFRhjbR
+ 49FyBgx3iiTGIw7tFkEHTRIkwTupDKn6t21lqk5FmXY9KB4H7KYSSQmttFCva51eXf3m
+ kIJt8ws/nZZt1W7AcMbDfVuhjRxUNBl31tjbogvESZqynC0A4xUDVp+bpho9EOfsGqXw
+ Awe6lgA/EYGMpeOB8NZJphejEtaCp3BETVMKyadcxAJfEAhOETHLMYOZiKJ/HnjZz9Op
+ R3+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
  :references:content-transfer-encoding:user-agent:mime-version;
- bh=On6x4n5aVEZBUYriyh4Itpr/oxnyB3oIsnuoMQ6fdAo=;
- b=LBIN/Neky2WsJVBfyOHLCm3nw4LMTGxED8CFiqArCM/KPHdyis6/4lD5wZy0chalGq
- etfN9YADnoQg4qyImZ95GOXTpTdrwzF5UnM0pIBnEGtTbB/Ce4BCUb1MZRUPRb8EOQ+u
- P/DL7NIYNa9/eyuiFJNYaO2zwOqxLLERFv5YE7BgtUKAEqucVi/R0goecsdgoscxBswp
- GDrS3t+soNXAvOll5NaS9P+TjECTmvmRfgb6HYINT+cmKLdDZ9ccDTJKHgGSeoAizoL4
- HluyUEWa6pSvnAmFBSV4PtZfwbhURUvFtsoNmn7+avnSJJ4Bvd1GZk7w3SRTHLBAMpUp
- HESA==
-X-Gm-Message-State: AOAM530lizprE8yL8E7uLLK1KtjrUh823LI2aWT4+C5UHE29daHhP6Om
- LRsDeCC9WL5A3d/MpX4oUEo=
-X-Google-Smtp-Source: ABdhPJzR7mWeT6i+zXp188jOFrfIe5psN5Vd6PinMp5BKJfDAGiN3tkP1HiUL2tp5T6YSB1pyfYMYA==
-X-Received: by 2002:a17:906:7948:b0:6da:64ed:178e with SMTP id
- l8-20020a170906794800b006da64ed178emr36400111ejo.523.1649775985927; 
- Tue, 12 Apr 2022 08:06:25 -0700 (PDT)
+ bh=C8gQ8j7J3mbrIsGT3wWEzstlM9ttuL2uLWVEJNDgDtU=;
+ b=DY66Z/lEIHOTSRI/SSADFqCXsC3OSRxdLeA/ephSV2CrdIhYII5qinBziybIjHVaFH
+ KYULHDlysZY74IXB3VyykBlcLb0/cKIC4SC2gyPN7zUsZYXzXZKTNGkkztC3VAf6ARpf
+ +rsyUMhp4Q3Zprpd8RAvVdciVQnL6yECvYO08UKyTBhvSyXFf+C0ncoBLoPOpxmEsEFO
+ t5BKJXpALi/CKUfXzGWzDvcr8glgsERn0JFdqCF47XcRvftPZRAtnsOV9HJm8O495CcQ
+ mib2EUpkfUus9QpJ77AB480J/ZxB0Cd/h+gyfNggAKoZC0uzQUAuJOduqbxGrY6x/tv5
+ j2Mw==
+X-Gm-Message-State: AOAM53388QDx3Jd3Uu/SnuxnY3PwBz9HgX0XhsDv0jx04CjhSIu7u9mK
+ 2w8jIan2n9JbV74lc6ovj0U=
+X-Google-Smtp-Source: ABdhPJwmGQFhT5G6UCBt8KCHHVo0d5nomeF39Wy+JutCNEqwasMWoIS/uWxoC4C3MwExrMbUxxUWAA==
+X-Received: by 2002:a17:906:7947:b0:6da:892f:2503 with SMTP id
+ l7-20020a170906794700b006da892f2503mr34135770ejo.710.1649776855747; 
+ Tue, 12 Apr 2022 08:20:55 -0700 (PDT)
 Received: from [192.168.3.2] (p5dd1ed70.dip0.t-ipconnect.de. [93.209.237.112])
  by smtp.googlemail.com with ESMTPSA id
- r16-20020a056402019000b00418ed60c332sm16811031edv.65.2022.04.12.08.06.24
+ c4-20020a170906170400b006e87c7b8ffasm3676306eje.32.2022.04.12.08.20.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Apr 2022 08:06:24 -0700 (PDT)
-Message-ID: <781bfe33efb1e44d22f71e6711da7d15be9d3ab4.camel@gmail.com>
+ Tue, 12 Apr 2022 08:20:55 -0700 (PDT)
+Message-ID: <7550da4043ae45ffd58399f1ee696238a5689f25.camel@gmail.com>
 Subject: Re: [PATCH 1/1] scsi: ufs: remove redundant HPB unmap
 From: Bean Huo <huobean@gmail.com>
 To: Po-Wen Kao <powen.kao@mediatek.com>, Alim Akhtar
@@ -71,14 +71,15 @@ Cc: wsd_upstream@mediatek.com, peter.wang@mediatek.com,
  chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,  yohan.joung@sk.com,
  jason.li@sk.com, linux-scsi@vger.kernel.org,  linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org
-Date: Tue, 12 Apr 2022 17:06:23 +0200
-In-Reply-To: <20220412073131.10644-1-powen.kao@mediatek.com>
+Date: Tue, 12 Apr 2022 17:20:54 +0200
+In-Reply-To: <781bfe33efb1e44d22f71e6711da7d15be9d3ab4.camel@gmail.com>
 References: <20220412073131.10644-1-powen.kao@mediatek.com>
+ <781bfe33efb1e44d22f71e6711da7d15be9d3ab4.camel@gmail.com>
 User-Agent: Evolution 3.44.0-1 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220412_080633_898259_002A9B75 
-X-CRM114-Status: GOOD (  26.32  )
+X-CRM114-CacheID: sfid-20220412_082058_122247_AFB9F81E 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,131 +91,170 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAyMDIyLTA0LTEyIGF0IDE1OjMxICswODAwLCBQby1XZW4gS2FvIHdyb3RlOgo+IFNp
-bmNlIHRoZSBIUEIgbWFwcGluZyBpcyBhbHJlYWR5IHJlc2V0IGluIHVmc2hwYl9pbml0IGJ5IHNl
-dHRpbmcKPiBmbGFnIFFVRVJZX0ZMQUdfSUROX0hQQl9SRVNFVCwgdGhlcmUgaXMgbm8gbmVlZCBk
-b2luZyBzbyBhZ2FpbiBpbgo+IHVmc2hwYl9ocGJfbHVfcHJlcGFyZWQuCj4gCj4gVGhpcyB3b3Vs
-ZCBhbHNvIHJlc29sdmUgdGhlIGlzc3VlIHdoZXJlIEhQQiBXUlRJRSBCVUZGRVIgaXMgaXNzdWVk
-Cj4gYmVmb3JlIFVBQyBiZWluZyBjbGVhcmVkLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFBvLVdlbiBL
-YW8gPHBvd2VuLmthb0BtZWRpYXRlay5jb20+Cj4gLS0tCj4gwqBkcml2ZXJzL3Njc2kvdWZzL3Vm
-c2hwYi5jIHwgNyAtLS0tLS0tCj4gwqAxIGZpbGUgY2hhbmdlZCwgNyBkZWxldGlvbnMoLSkKPiAK
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zY3NpL3Vmcy91ZnNocGIuYyBiL2RyaXZlcnMvc2NzaS91
-ZnMvdWZzaHBiLmMKPiBpbmRleCBhODZkMGNjNTBkZTIuLjVjMDlkNDRjNGJkNSAxMDA2NDQKPiAt
-LS0gYS9kcml2ZXJzL3Njc2kvdWZzL3Vmc2hwYi5jCj4gKysrIGIvZHJpdmVycy9zY3NpL3Vmcy91
-ZnNocGIuYwo+IEBAIC05MzQsMTEgKzkzNCw2IEBAIHN0YXRpYyBpbnQgdWZzaHBiX2lzc3VlX3Vt
-YXBfc2luZ2xlX3JlcShzdHJ1Y3QKPiB1ZnNocGJfbHUgKmhwYiwKPiDCoMKgwqDCoMKgwqDCoMKg
-cmV0dXJuIHVmc2hwYl9pc3N1ZV91bWFwX3JlcShocGIsIHJnbiwgdHJ1ZSk7Cj4gwqB9Cj4gwqAK
-PiAtc3RhdGljIGludCB1ZnNocGJfaXNzdWVfdW1hcF9hbGxfcmVxKHN0cnVjdCB1ZnNocGJfbHUg
-KmhwYikKPiAtewo+IC3CoMKgwqDCoMKgwqDCoHJldHVybiB1ZnNocGJfaXNzdWVfdW1hcF9yZXEo
-aHBiLCBOVUxMLCBmYWxzZSk7Cj4gLX0KPiAtCj4gwqBzdGF0aWMgdm9pZCBfX3Vmc2hwYl9ldmlj
-dF9yZWdpb24oc3RydWN0IHVmc2hwYl9sdSAqaHBiLAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgc3RydWN0IHVmc2hwYl9y
-ZWdpb24gKnJnbikKPiDCoHsKPiBAQCAtMjQ1OSw4ICsyNDU0LDYgQEAgc3RhdGljIHZvaWQgdWZz
-aHBiX2hwYl9sdV9wcmVwYXJlZChzdHJ1Y3QKPiB1ZnNfaGJhICpoYmEpCj4gwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdWZzaHBiX3NldF9zdGF0ZShocGIs
-IEhQQl9QUkVTRU5UKTsKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqBpZiAoKGhwYi0+bHVfcGlubmVkX2VuZCAtIGhwYi0KPiA+bHVfcGlubmVkX3N0YXJ0
-KSA+IDApCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoHF1ZXVlX3dvcmsodWZzaHBiX3dxLCAmaHBiLQo+ID5tYXBfd29yayk7
-Cj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBpZiAoIWhw
-Yi0+aXNfaGNtKQo+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoHVmc2hwYl9pc3N1ZV91bWFwX2FsbF9yZXEoaHBiKTsKPiDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoH0gZWxzZSB7Cj4gwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgZGV2X2VycihoYmEtPmRldiwgImRlc3Ryb3kg
-SFBCIGx1ICVkXG4iLCBocGItCj4gPmx1bik7Cj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgdWZzaHBiX2Rlc3Ryb3lfbHUoaGJhLCBzZGV2KTsKCgpIaSBQ
-by1XZW4sClllcywgaXQgaXMgcmVkdW5kYW50IGluIHRoaXMgZmxvdywgYnV0IGl0IGlzIG5lZWRl
-ZCBpbiB0aGUgcmVzZXQgZmxvdywKSSBidWlsdCB0aGlzIGNsZWFudXAgcGF0Y2gsIGJ1dCBkb24n
-dCBrbm93IGlmIGl0IGNhbiBmaXggdGhlIGlzc3VlCndoZXJlIEhQQiBXUlRJRSBCVUZGRVIgaXMg
-aXNzdWVkIGJlZm9yZSBVQUMgYmVpbmcgY2xlYXJlZC4gd291bGQgeW91CnRlc3Qgb24geW91ciBw
-bGF0Zm9ybT8gSSB3aWxsIHZlcmlmeSBpdCBvbiBvdXIgVUZTIGxhdGVyLgoKCgpTdWJqZWN0OiBb
-UEFUQ0hdIHNjc2k6IHVmc2hwYjogVUZTSFBCIGNsZWFudXAKClJlbW92ZSByZWR1bmRhbnQgdWZz
-aHBiX3Jlc2V0KiwgYW5kIG1lcmdlIGludG8gYSBzaW5nbGUgaGVscGVyCnVmc2hicF9zdGF0ZV90
-b2dnbGUoKS4KCkRlbGV0ZSB0aGUgcmVkdW5kYW50IEluYWN0aXZhdGlvbiBjb2RlIG9mIGFsbCBI
-UEIgUmVnaW9ucyBpbiB0aGUgY29sZApib290IHN0YWdlLCBhbmQgYWRkIGluYWN0aXZhdGluZyBh
-bGwgSFBCIFJlZ2lvbnMgd2hlbiB0aGUgSFBQIHN0YXR1cwpjaGFuZ2VzIGZyb20gSFBCX1JFU0VU
-IHRvIEhCUF9QUkVTRU5ULgoKU2lnbmVkLW9mZi1ieTogQmVhbiBIdW8gPGJlYW5odW9AbWljcm9u
-LmNvbT4KLS0tCiBkcml2ZXJzL3Njc2kvdWZzL3Vmc2hjZC5jIHwgIDQgKystLQogZHJpdmVycy9z
-Y3NpL3Vmcy91ZnNocGIuYyB8IDM4ICsrKysrKysrKysrKystLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tCiBkcml2ZXJzL3Njc2kvdWZzL3Vmc2hwYi5oIHwgIDYgKystLS0tCiAzIGZpbGVzIGNoYW5n
-ZWQsIDE3IGluc2VydGlvbnMoKyksIDMxIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvc2NzaS91ZnMvdWZzaGNkLmMgYi9kcml2ZXJzL3Njc2kvdWZzL3Vmc2hjZC5jCmluZGV4IDA4
-OTlkNWI4Y2RhZC4uZDhiNTlkMDE3Y2U0IDEwMDY0NAotLS0gYS9kcml2ZXJzL3Njc2kvdWZzL3Vm
-c2hjZC5jCisrKyBiL2RyaXZlcnMvc2NzaS91ZnMvdWZzaGNkLmMKQEAgLTcyMjMsNyArNzIyMyw3
-IEBAIHN0YXRpYyBpbnQgdWZzaGNkX2hvc3RfcmVzZXRfYW5kX3Jlc3RvcmUoc3RydWN0CnVmc19o
-YmEgKmhiYSkKIAkgKiBTdG9wIHRoZSBob3N0IGNvbnRyb2xsZXIgYW5kIGNvbXBsZXRlIHRoZSBy
-ZXF1ZXN0cwogCSAqIGNsZWFyZWQgYnkgaC93CiAJICovCi0JdWZzaHBiX3Jlc2V0X2hvc3QoaGJh
-KTsKKwl1ZnNocGJfc3RhdGVfdG9nZ2xlKGhiYSwgSFBCX1JFU0VUKTsKIAl1ZnNoY2RfaGJhX3N0
-b3AoaGJhKTsKIAloYmEtPnNpbGVuY2VfZXJyX2xvZ3MgPSB0cnVlOwogCXVmc2hjZF9jb21wbGV0
-ZV9yZXF1ZXN0cyhoYmEpOwpAQCAtODE4NCw3ICs4MTg0LDcgQEAgc3RhdGljIGludCB1ZnNoY2Rf
-cHJvYmVfaGJhKHN0cnVjdCB1ZnNfaGJhICpoYmEsCmJvb2wgaW5pdF9kZXZfcGFyYW1zKQogCS8q
-IEVuYWJsZSBBdXRvLUhpYmVybmF0ZSBpZiBjb25maWd1cmVkICovCiAJdWZzaGNkX2F1dG9faGli
-ZXJuOF9lbmFibGUoaGJhKTsKIAotCXVmc2hwYl9yZXNldChoYmEpOworCXVmc2hwYl9zdGF0ZV90
-b2dnbGUoaGJhLCBIUEJfUFJFU0VOVCk7CiBvdXQ6CiAJc3Bpbl9sb2NrX2lycXNhdmUoaGJhLT5o
-b3N0LT5ob3N0X2xvY2ssIGZsYWdzKTsKIAlpZiAocmV0KQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9z
-Y3NpL3Vmcy91ZnNocGIuYyBiL2RyaXZlcnMvc2NzaS91ZnMvdWZzaHBiLmMKaW5kZXggM2NhNzQ1
-YWQ2MTZjLi40ZWQxNTYwMzE0MTMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc2NzaS91ZnMvdWZzaHBi
-LmMKKysrIGIvZHJpdmVycy9zY3NpL3Vmcy91ZnNocGIuYwpAQCAtMjI3OCwzOSArMjI3OCwyOSBA
-QCBzdGF0aWMgYm9vbCB1ZnNocGJfY2hlY2tfaHBiX3Jlc2V0X3F1ZXJ5KHN0cnVjdAp1ZnNfaGJh
-ICpoYmEpCiAJcmV0dXJuIGZsYWdfcmVzOwogfQogCi12b2lkIHVmc2hwYl9yZXNldChzdHJ1Y3Qg
-dWZzX2hiYSAqaGJhKQordm9pZCB1ZnNocGJfc3RhdGVfdG9nZ2xlKHN0cnVjdCB1ZnNfaGJhICpo
-YmEsIGVudW0gVUZTSFBCX1NUQVRFIHN0YXRlKQogewogCXN0cnVjdCB1ZnNocGJfbHUgKmhwYjsK
-IAlzdHJ1Y3Qgc2NzaV9kZXZpY2UgKnNkZXY7CiAKIAlzaG9zdF9mb3JfZWFjaF9kZXZpY2Uoc2Rl
-diwgaGJhLT5ob3N0KSB7CiAJCWhwYiA9IHVmc2hwYl9nZXRfaHBiX2RhdGEoc2Rldik7Ci0JCWlm
-ICghaHBiKQotCQkJY29udGludWU7CiAKLQkJaWYgKHVmc2hwYl9nZXRfc3RhdGUoaHBiKSAhPSBI
-UEJfUkVTRVQpCisJCWlmICghaHBiIHx8IHVmc2hwYl9nZXRfc3RhdGUoaHBiKSAhPSBzdGF0ZSkK
-IAkJCWNvbnRpbnVlOwogCi0JCXVmc2hwYl9zZXRfc3RhdGUoaHBiLCBIUEJfUFJFU0VOVCk7Ci0J
-fQotfQotCi12b2lkIHVmc2hwYl9yZXNldF9ob3N0KHN0cnVjdCB1ZnNfaGJhICpoYmEpCi17Ci0J
-c3RydWN0IHVmc2hwYl9sdSAqaHBiOwotCXN0cnVjdCBzY3NpX2RldmljZSAqc2RldjsKLQotCXNo
-b3N0X2Zvcl9lYWNoX2RldmljZShzZGV2LCBoYmEtPmhvc3QpIHsKLQkJaHBiID0gdWZzaHBiX2dl
-dF9ocGJfZGF0YShzZGV2KTsKLQkJaWYgKCFocGIpCi0JCQljb250aW51ZTsKLQotCQlpZiAodWZz
-aHBiX2dldF9zdGF0ZShocGIpICE9IEhQQl9QUkVTRU5UKQotCQkJY29udGludWU7Ci0JCXVmc2hw
-Yl9zZXRfc3RhdGUoaHBiLCBIUEJfUkVTRVQpOwotCQl1ZnNocGJfY2FuY2VsX2pvYnMoaHBiKTsK
-LQkJdWZzaHBiX2Rpc2NhcmRfcnNwX2xpc3RzKGhwYik7CisJCXVmc2hwYl9zZXRfc3RhdGUoaHBi
-LCBzdGF0ZSk7CisJCWlmIChzdGF0ZSA9PSBIUEJfUkVTRVQpIHsKKwkJCXVmc2hwYl9jYW5jZWxf
-am9icyhocGIpOworCQkJdWZzaHBiX2Rpc2NhcmRfcnNwX2xpc3RzKGhwYik7CisJCX0KIAl9CisJ
-LyoKKwkgKiBJbmFjdGl2YXRpbmcgYWxsIEhQQiBSZWdpb24gaW4gZGV2aWNlIHNpZGUgaW4gY2Fz
-ZSBIUEIKc3RhdGUgY2hhbmdlZAorCSAqIGZyb20gSFBCX1JFU0VUIHRvIEhQQl9QUkVTRU5UCisJ
-ICovCisJaWYgKCFocGItPmlzX2hjbSAmJiBzdGF0ZSA9PSBIUEJfUFJFU0VOVCkKKwkJdWZzaHBi
-X2lzc3VlX3VtYXBfYWxsX3JlcShocGIpOwogfQogCiB2b2lkIHVmc2hwYl9zdXNwZW5kKHN0cnVj
-dCB1ZnNfaGJhICpoYmEpCkBAIC0yNDU2LDggKzI0NDYsNiBAQCBzdGF0aWMgdm9pZCB1ZnNocGJf
-aHBiX2x1X3ByZXBhcmVkKHN0cnVjdCB1ZnNfaGJhCipoYmEpCiAJCQl1ZnNocGJfc2V0X3N0YXRl
-KGhwYiwgSFBCX1BSRVNFTlQpOwogCQkJaWYgKChocGItPmx1X3Bpbm5lZF9lbmQgLSBocGItCj5s
-dV9waW5uZWRfc3RhcnQpID4gMCkKIAkJCQlxdWV1ZV93b3JrKHVmc2hwYl93cSwgJmhwYi0+bWFw
-X3dvcmspOwotCQkJaWYgKCFocGItPmlzX2hjbSkKLQkJCQl1ZnNocGJfaXNzdWVfdW1hcF9hbGxf
-cmVxKGhwYik7CiAJCX0gZWxzZSB7CiAJCQlkZXZfZXJyKGhiYS0+ZGV2LCAiZGVzdHJveSBIUEIg
-bHUgJWRcbiIsIGhwYi0KPmx1bik7CiAJCQl1ZnNocGJfZGVzdHJveV9sdShoYmEsIHNkZXYpOwpk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9zY3NpL3Vmcy91ZnNocGIuaCBiL2RyaXZlcnMvc2NzaS91ZnMv
-dWZzaHBiLmgKaW5kZXggYjQ3NWRiZDc4OTg4Li5hMTMwZjBiMTZjM2UgMTAwNjQ0Ci0tLSBhL2Ry
-aXZlcnMvc2NzaS91ZnMvdWZzaHBiLmgKKysrIGIvZHJpdmVycy9zY3NpL3Vmcy91ZnNocGIuaApA
-QCAtMjg4LDggKzI4OCw3IEBAIHN0YXRpYyBpbnQgdWZzaHBiX3ByZXAoc3RydWN0IHVmc19oYmEg
-KmhiYSwgc3RydWN0CnVmc2hjZF9scmIgKmxyYnApIHsgcmV0dXJuIDA7CiBzdGF0aWMgdm9pZCB1
-ZnNocGJfcnNwX3VwaXUoc3RydWN0IHVmc19oYmEgKmhiYSwgc3RydWN0IHVmc2hjZF9scmIKKmxy
-YnApIHt9CiBzdGF0aWMgdm9pZCB1ZnNocGJfcmVzdW1lKHN0cnVjdCB1ZnNfaGJhICpoYmEpIHt9
-CiBzdGF0aWMgdm9pZCB1ZnNocGJfc3VzcGVuZChzdHJ1Y3QgdWZzX2hiYSAqaGJhKSB7fQotc3Rh
-dGljIHZvaWQgdWZzaHBiX3Jlc2V0KHN0cnVjdCB1ZnNfaGJhICpoYmEpIHt9Ci1zdGF0aWMgdm9p
-ZCB1ZnNocGJfcmVzZXRfaG9zdChzdHJ1Y3QgdWZzX2hiYSAqaGJhKSB7fQorc3RhdGljIHZvaWQg
-dWZzaHBiX3N0YXRlX3RvZ2dsZShzdHJ1Y3QgdWZzX2hiYSAqaGJhLCBlbnVtIFVGU0hQQl9TVEFU
-RQpzdGF0ZSkge30KIHN0YXRpYyB2b2lkIHVmc2hwYl9pbml0KHN0cnVjdCB1ZnNfaGJhICpoYmEp
-IHt9CiBzdGF0aWMgdm9pZCB1ZnNocGJfaW5pdF9ocGJfbHUoc3RydWN0IHVmc19oYmEgKmhiYSwg
-c3RydWN0IHNjc2lfZGV2aWNlCipzZGV2KSB7fQogc3RhdGljIHZvaWQgdWZzaHBiX2Rlc3Ryb3lf
-bHUoc3RydWN0IHVmc19oYmEgKmhiYSwgc3RydWN0IHNjc2lfZGV2aWNlCipzZGV2KSB7fQpAQCAt
-MzAzLDggKzMwMiw3IEBAIGludCB1ZnNocGJfcHJlcChzdHJ1Y3QgdWZzX2hiYSAqaGJhLCBzdHJ1
-Y3QKdWZzaGNkX2xyYiAqbHJicCk7CiB2b2lkIHVmc2hwYl9yc3BfdXBpdShzdHJ1Y3QgdWZzX2hi
-YSAqaGJhLCBzdHJ1Y3QgdWZzaGNkX2xyYiAqbHJicCk7CiB2b2lkIHVmc2hwYl9yZXN1bWUoc3Ry
-dWN0IHVmc19oYmEgKmhiYSk7CiB2b2lkIHVmc2hwYl9zdXNwZW5kKHN0cnVjdCB1ZnNfaGJhICpo
-YmEpOwotdm9pZCB1ZnNocGJfcmVzZXQoc3RydWN0IHVmc19oYmEgKmhiYSk7Ci12b2lkIHVmc2hw
-Yl9yZXNldF9ob3N0KHN0cnVjdCB1ZnNfaGJhICpoYmEpOwordm9pZCB1ZnNocGJfc3RhdGVfdG9n
-Z2xlKHN0cnVjdCB1ZnNfaGJhICpoYmEsIGVudW0gVUZTSFBCX1NUQVRFCnN0YXRlKTsKIHZvaWQg
-dWZzaHBiX2luaXQoc3RydWN0IHVmc19oYmEgKmhiYSk7CiB2b2lkIHVmc2hwYl9pbml0X2hwYl9s
-dShzdHJ1Y3QgdWZzX2hiYSAqaGJhLCBzdHJ1Y3Qgc2NzaV9kZXZpY2UKKnNkZXYpOwogdm9pZCB1
-ZnNocGJfZGVzdHJveV9sdShzdHJ1Y3QgdWZzX2hiYSAqaGJhLCBzdHJ1Y3Qgc2NzaV9kZXZpY2Ug
-KnNkZXYpOwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1t
-ZWRpYXRlawo=
+Hi, Po-Wen,
+Previous email did not properly append the patch, this one is better
+for your review and test.
+
+
+
+
+From: Bean Huo <beanhuo@micron.com>
+Date: Tue, 12 Apr 2022 16:56:34 +0200
+Subject: [PATCH] scsi: ufshpb: UFSHPB cleanup
+
+Remove redundant ufshpb_reset*, and merge into a single helper
+ufshbp_state_toggle().
+
+Delete the redundant Inactivation code of all HPB Regions in the cold
+boot stage,
+and add inactivating all HPB Regions when the HPP status changes from
+HPB_RESET
+to HBP_PRESENT.
+
+Signed-off-by: Bean Huo <beanhuo@micron.com>
+---
+ drivers/scsi/ufs/ufshcd.c |  4 ++--
+ drivers/scsi/ufs/ufshpb.c | 38 +++++++++++++-------------------------
+ drivers/scsi/ufs/ufshpb.h |  6 ++----
+ 3 files changed, 17 insertions(+), 31 deletions(-)
+
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 0899d5b8cdad..d8b59d017ce4 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -7223,7 +7223,7 @@ static int ufshcd_host_reset_and_restore(struct
+ufs_hba *hba)
+ 	 * Stop the host controller and complete the requests
+ 	 * cleared by h/w
+ 	 */
+-	ufshpb_reset_host(hba);
++	ufshpb_state_toggle(hba, HPB_RESET);
+ 	ufshcd_hba_stop(hba);
+ 	hba->silence_err_logs = true;
+ 	ufshcd_complete_requests(hba);
+@@ -8184,7 +8184,7 @@ static int ufshcd_probe_hba(struct ufs_hba *hba,
+bool init_dev_params)
+ 	/* Enable Auto-Hibernate if configured */
+ 	ufshcd_auto_hibern8_enable(hba);
+ 
+-	ufshpb_reset(hba);
++	ufshpb_state_toggle(hba, HPB_PRESENT);
+ out:
+ 	spin_lock_irqsave(hba->host->host_lock, flags);
+ 	if (ret)
+diff --git a/drivers/scsi/ufs/ufshpb.c b/drivers/scsi/ufs/ufshpb.c
+index 3ca745ad616c..4ed156031413 100644
+--- a/drivers/scsi/ufs/ufshpb.c
++++ b/drivers/scsi/ufs/ufshpb.c
+@@ -2278,39 +2278,29 @@ static bool ufshpb_check_hpb_reset_query(struct
+ufs_hba *hba)
+ 	return flag_res;
+ }
+ 
+-void ufshpb_reset(struct ufs_hba *hba)
++void ufshpb_state_toggle(struct ufs_hba *hba, enum UFSHPB_STATE state)
+ {
+ 	struct ufshpb_lu *hpb;
+ 	struct scsi_device *sdev;
+ 
+ 	shost_for_each_device(sdev, hba->host) {
+ 		hpb = ufshpb_get_hpb_data(sdev);
+-		if (!hpb)
+-			continue;
+ 
+-		if (ufshpb_get_state(hpb) != HPB_RESET)
++		if (!hpb || ufshpb_get_state(hpb) != state)
+ 			continue;
+ 
+-		ufshpb_set_state(hpb, HPB_PRESENT);
+-	}
+-}
+-
+-void ufshpb_reset_host(struct ufs_hba *hba)
+-{
+-	struct ufshpb_lu *hpb;
+-	struct scsi_device *sdev;
+-
+-	shost_for_each_device(sdev, hba->host) {
+-		hpb = ufshpb_get_hpb_data(sdev);
+-		if (!hpb)
+-			continue;
+-
+-		if (ufshpb_get_state(hpb) != HPB_PRESENT)
+-			continue;
+-		ufshpb_set_state(hpb, HPB_RESET);
+-		ufshpb_cancel_jobs(hpb);
+-		ufshpb_discard_rsp_lists(hpb);
++		ufshpb_set_state(hpb, state);
++		if (state == HPB_RESET) {
++			ufshpb_cancel_jobs(hpb);
++			ufshpb_discard_rsp_lists(hpb);
++		}
+ 	}
++	/*
++	 * Inactivating all HPB Region in device side in case HPB
+state changed
++	 * from HPB_RESET to HPB_PRESENT
++	 */
++	if (!hpb->is_hcm && state == HPB_PRESENT)
++		ufshpb_issue_umap_all_req(hpb);
+ }
+ 
+ void ufshpb_suspend(struct ufs_hba *hba)
+@@ -2456,8 +2446,6 @@ static void ufshpb_hpb_lu_prepared(struct ufs_hba
+*hba)
+ 			ufshpb_set_state(hpb, HPB_PRESENT);
+ 			if ((hpb->lu_pinned_end - hpb-
+>lu_pinned_start) > 0)
+ 				queue_work(ufshpb_wq, &hpb->map_work);
+-			if (!hpb->is_hcm)
+-				ufshpb_issue_umap_all_req(hpb);
+ 		} else {
+ 			dev_err(hba->dev, "destroy HPB lu %d\n", hpb-
+>lun);
+ 			ufshpb_destroy_lu(hba, sdev);
+diff --git a/drivers/scsi/ufs/ufshpb.h b/drivers/scsi/ufs/ufshpb.h
+index b475dbd78988..a130f0b16c3e 100644
+--- a/drivers/scsi/ufs/ufshpb.h
++++ b/drivers/scsi/ufs/ufshpb.h
+@@ -288,8 +288,7 @@ static int ufshpb_prep(struct ufs_hba *hba, struct
+ufshcd_lrb *lrbp) { return 0;
+ static void ufshpb_rsp_upiu(struct ufs_hba *hba, struct ufshcd_lrb
+*lrbp) {}
+ static void ufshpb_resume(struct ufs_hba *hba) {}
+ static void ufshpb_suspend(struct ufs_hba *hba) {}
+-static void ufshpb_reset(struct ufs_hba *hba) {}
+-static void ufshpb_reset_host(struct ufs_hba *hba) {}
++static void ufshpb_state_toggle(struct ufs_hba *hba, enum UFSHPB_STATE
+state) {}
+ static void ufshpb_init(struct ufs_hba *hba) {}
+ static void ufshpb_init_hpb_lu(struct ufs_hba *hba, struct scsi_device
+*sdev) {}
+ static void ufshpb_destroy_lu(struct ufs_hba *hba, struct scsi_device
+*sdev) {}
+@@ -303,8 +302,7 @@ int ufshpb_prep(struct ufs_hba *hba, struct
+ufshcd_lrb *lrbp);
+ void ufshpb_rsp_upiu(struct ufs_hba *hba, struct ufshcd_lrb *lrbp);
+ void ufshpb_resume(struct ufs_hba *hba);
+ void ufshpb_suspend(struct ufs_hba *hba);
+-void ufshpb_reset(struct ufs_hba *hba);
+-void ufshpb_reset_host(struct ufs_hba *hba);
++void ufshpb_state_toggle(struct ufs_hba *hba, enum UFSHPB_STATE
+state);
+ void ufshpb_init(struct ufs_hba *hba);
+ void ufshpb_init_hpb_lu(struct ufs_hba *hba, struct scsi_device
+*sdev);
+ void ufshpb_destroy_lu(struct ufs_hba *hba, struct scsi_device *sdev);
+-- 
+2.34.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
