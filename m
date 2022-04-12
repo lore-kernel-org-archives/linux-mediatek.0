@@ -4,61 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F2CFC4167D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 07:49:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B73CEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 07:52:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iswkgx69EK1pDsIVYvjFaVuV21SCELacy0oYrpsavRg=; b=EMpVcC+UutBSfS
-	w79Z3xFl0U6XbLPr7lbtyQciD3R2KeTPC7LcKj7A3LYfIN9WLDAFsZ/lWOtUB9r+a2Vz53NcExRMg
-	5E89Q6LohXtKL1/ZBPVcCGG4xUPBcWqBOp4x0h/LnP3b8fKPwwlW8XZeKBwtqBl87sLw3kKsk0a9I
-	URiYifcqDLE4B2SECkT+FwjTm6I++w24b5EuhueADlo+Rv1vW9LdUUUfISKv1LlgAiYNd00e7042q
-	oH+YwmaNqRtqxgDsfZOe5wCPhjP0i8MwuwbLu+/AmwUt3rmRePilsJBG9N34qR1F1lQRkMy7IO34/
-	C+otz+c8+kdjt4Vrq8uw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=IRuAe4h5B443ume+hVVcOQSvaJjK3NXohrJ0HonDBH0=; b=WavXkezBGCWfvN
+	d7PTqR92/ubBkyU+utu+emIPhAusXkY+VZrqKRcbluFvcd/gtSugFEIOGrOBgb6ah6lxhG/WZUV4t
+	nf9dfTC62XAWccaVk1qs04WhYYQqFhPQg1MObzdlNB6jPdyxY/kmw/OjqiQO6N69sIIA3FMJjUy2O
+	C/iSjKXAicfZs0+gg+npKKOsbZ2Wn5bSsSifGOaNfOARuxYMDiVlkXzYs0oM2sJI4h/fo6DNDxO6b
+	DU4BIjy1ZYiKPknlyyiFcl1kAKflnYR+jejMx7o/0dnOVF9VZTlx4WQKx6EcWCoaxto3jZA1RISAw
+	NNo/IdCbzQVZe8qakb3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neBHX-00CJzD-Cl; Tue, 12 Apr 2022 07:49:47 +0000
+	id 1neBK0-00CLB4-TI; Tue, 12 Apr 2022 07:52:21 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neBA2-00CFoX-Ed; Tue, 12 Apr 2022 07:42:03 +0000
-X-UUID: 6188c5471cd448f2a76c06fd1933f551-20220412
-X-UUID: 6188c5471cd448f2a76c06fd1933f551-20220412
+ id 1neBA4-00CFpG-PV; Tue, 12 Apr 2022 07:42:06 +0000
+X-UUID: 0b0faff654954c84b437aedac63be3bf-20220412
+X-UUID: 0b0faff654954c84b437aedac63be3bf-20220412
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
+ (envelope-from <powen.kao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1033174327; Tue, 12 Apr 2022 00:41:59 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1349546756; Tue, 12 Apr 2022 00:41:59 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 12 Apr 2022 00:39:34 -0700
+ 15.0.1497.2; Tue, 12 Apr 2022 00:35:38 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 12 Apr 2022 15:39:30 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 12 Apr 2022 15:39:30 +0800
-Message-ID: <152363cfcfe240f9249fb08f06442d2ab9286900.camel@mediatek.com>
-Subject: Re: [PATCH v4,4/4] drm/mediatek: Add pull-down MIPI operation in
- mtk_dsi_poweroff function
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
- <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <matthias.bgg@gmail.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 12 Apr 2022 15:35:37 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 12 Apr 2022 15:35:37 +0800
+From: Po-Wen Kao <powen.kao@mediatek.com>
+To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>, 
+ "James E.J. Bottomley" <jejb@linux.ibm.com>, "Martin K. Petersen"
+ <martin.petersen@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
+ <stanley.chu@mediatek.com>, <powen.kao@mediatek.com>,
+ <alice.chao@mediatek.com>, <chun-hung.wu@mediatek.com>,
+ <cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
+ <jiajie.hao@mediatek.com>, <huobean@gmail.com>, <yohan.joung@sk.com>,
+ <jason.li@sk.com>, <linux-scsi@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <jitao.shi@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 12 Apr 2022 15:39:30 +0800
-In-Reply-To: <1649644308-8455-5-git-send-email-xinlei.lee@mediatek.com>
-References: <1649644308-8455-1-git-send-email-xinlei.lee@mediatek.com>
- <1649644308-8455-5-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 1/1] scsi: ufs: remove redundant HPB unmap
+Date: Tue, 12 Apr 2022 15:31:28 +0800
+Message-ID: <20220412073131.10644-1-powen.kao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220412_004202_526990_C988297B 
-X-CRM114-Status: GOOD (  18.19  )
+X-CRM114-CacheID: sfid-20220412_004204_866296_A7E9715F 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,43 +78,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-04-11 at 10:31 +0800, xinlei.lee@mediatek.com wrote:
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
-> 
-> In the dsi_enable function, mtk_dsi_rxtx_control is to
-> pull up the MIPI signal operation. Before dsi_disable,
-> MIPI should also be pulled down by writing a register 
-> instead of disabling dsi.
-> 
-> If disable dsi without pulling the mipi signal low, the value of
-> the register will still maintain the setting of the mipi signal being
-> pulled high.
-> After resume, even if the mipi signal is not pulled high, it will
-> still
-> be in the high state.
-> 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index 9ad6f08c8bfe..e35343357f90 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -676,6 +676,8 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
->  	mtk_dsi_reset_engine(dsi);
->  	mtk_dsi_lane0_ulp_mode_enter(dsi);
->  	mtk_dsi_clk_ulp_mode_enter(dsi);
-> +	/* set the lane number as 0 to pull down mipi */
-> +	writel(0, dsi->regs + DSI_TXRX_CTRL);
->  
->  	mtk_dsi_disable(dsi);
->  
+Since the HPB mapping is already reset in ufshpb_init by setting
+flag QUERY_FLAG_IDN_HPB_RESET, there is no need doing so again in
+ufshpb_hpb_lu_prepared.
 
-Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+This would also resolve the issue where HPB WRTIE BUFFER is issued
+before UAC being cleared.
+
+Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
+---
+ drivers/scsi/ufs/ufshpb.c | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/drivers/scsi/ufs/ufshpb.c b/drivers/scsi/ufs/ufshpb.c
+index a86d0cc50de2..5c09d44c4bd5 100644
+--- a/drivers/scsi/ufs/ufshpb.c
++++ b/drivers/scsi/ufs/ufshpb.c
+@@ -934,11 +934,6 @@ static int ufshpb_issue_umap_single_req(struct ufshpb_lu *hpb,
+ 	return ufshpb_issue_umap_req(hpb, rgn, true);
+ }
+ 
+-static int ufshpb_issue_umap_all_req(struct ufshpb_lu *hpb)
+-{
+-	return ufshpb_issue_umap_req(hpb, NULL, false);
+-}
+-
+ static void __ufshpb_evict_region(struct ufshpb_lu *hpb,
+ 				 struct ufshpb_region *rgn)
+ {
+@@ -2459,8 +2454,6 @@ static void ufshpb_hpb_lu_prepared(struct ufs_hba *hba)
+ 			ufshpb_set_state(hpb, HPB_PRESENT);
+ 			if ((hpb->lu_pinned_end - hpb->lu_pinned_start) > 0)
+ 				queue_work(ufshpb_wq, &hpb->map_work);
+-			if (!hpb->is_hcm)
+-				ufshpb_issue_umap_all_req(hpb);
+ 		} else {
+ 			dev_err(hba->dev, "destroy HPB lu %d\n", hpb->lun);
+ 			ufshpb_destroy_lu(hba, sdev);
+-- 
+2.18.0
 
 
 _______________________________________________
