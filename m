@@ -4,8 +4,8 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28740C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 09:11:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3201CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 09:12:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,60 +13,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:In-Reply-To:References:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=EXzEwlIeLkON2EBOtWa3MD+W4GmourXuJ9E6dlzSV98=; b=LWrS583I/Nxl3ylYvO1kNQskV9
-	m1Zl+qFJg8t0KpWjZjLU02vOrytkBf3yOsPKQqDIJva1n2/uZG04WCaAsahHgxlg06ZR54QVtrmPE
-	W2FZOuS89SpEtmmJHnmHvXzSn8vJxImSuZJqVvIWepbLVYyp/dd26zHGB0pc9iFZFcsvFIF0ERpq4
-	22fgDEiCjFPFddPCqgo2Glz9C23lVRvm5Kn6HQIf43HzEvYmU2c23fuozAKBZPPZlgJdm8oIfuKz/
-	9IK7hkFSQsy2fkYpbek3G0iM1WM1CqdtAbRdU3WXloVNGx9A/8qQQsECecATURGgkvIpkMFK8iMAX
-	qk7m53XQ==;
+	bh=GegKy3U1iM7WKI7TBuJYnFWulY3r5Otp4NGKf9kz3fE=; b=QC4j8pp2i426r70fRgcVMmKLNJ
+	OvJVUyzBQti99X4jn1wv7VI8FOAbCzP5BDPyek5b+2Lux/qPV2MF6tdnZaKcyo7IO7DdrJBss1jy+
+	gxwH6P3loiYn0vsj8v2Qqzzg9ijePL4VWzbm2pzWPVzXlNBFLV0x9smHgjNTX1NqseWqcTmRKmXyY
+	+Y6NJPdz29cXV9rsvI6oEs8rIauVzrV6V7BNnIz3cLw+0qndW+5ndZzJGAi1FJqu9vS+3TOspNqXK
+	BOmq2D1Oa5bjIFCHz7HrGirk2gyNBX0q4Ah472dKVCdI0kAXvFURF7zNckSJVvbc4c/+df8NLBbEl
+	PH7zcGug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neCYB-00CoN0-0i; Tue, 12 Apr 2022 09:11:03 +0000
-Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
+	id 1neCZh-00CpEm-0K; Tue, 12 Apr 2022 09:12:37 +0000
+Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neCY6-00CoKG-6v
- for linux-mediatek@lists.infradead.org; Tue, 12 Apr 2022 09:11:01 +0000
-Received: by mail-oi1-x22f.google.com with SMTP id 12so18362440oix.12
- for <linux-mediatek@lists.infradead.org>; Tue, 12 Apr 2022 02:10:57 -0700 (PDT)
+ id 1neCZN-00Cp35-Om
+ for linux-mediatek@lists.infradead.org; Tue, 12 Apr 2022 09:12:21 +0000
+Received: by mail-oa1-x29.google.com with SMTP id
+ 586e51a60fabf-df22f50e0cso20163947fac.3
+ for <linux-mediatek@lists.infradead.org>; Tue, 12 Apr 2022 02:12:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:user-agent:references:in-reply-to:mime-version:date:message-id
  :subject:to:cc;
- bh=j2d9wMZ4Dn70FczQLj2pbuSIpYNajn+KjBgUPeahz9Y=;
- b=d755dZcyw/9BFIYn9owbsElgR43HZUII7AXXDY9tgTYi25X+lHEpWnybc6V10B24OF
- jw/gXtzNLOpJm4uxhAttWKWyfMGC3Z2CSY+fY7o7n2eWXqXzhL9FvCO9ACzTeo70vHMC
- /Php1/74zEKlV5WcAULJMdgq3V11wZdSRDdei59ZTV0QNjWeNngX1P8Oq3nhgHWgMVDh
- mHh7xBqp/cgasJY7SK5ZNVQRty2yjwfnZPKSCGN0gWpJ9hEVZHzHLEbua1NV5Zgc2kxl
- juU1Z7MWstxc2gPgXIDheBqNoGWXTxWU9JKU84IYmPeBpFb3G71Bw7pF1+rMFlw7dEAq
- k8Kw==
+ bh=D37fpu9MYMGrVM4sHogQhQQf9RiEPpYgXDKjNghtvEc=;
+ b=PJWwOM5gbJeRumlTztAxPWMSrtF8tKhqiVbN1FyLXxomE8pQ8m9aRKCVnwJbJ1T4Gx
+ hyGbtG3DXtXIgyvXRhntDRSwRqX3eaAmqUoA4OX1+mR9GM/wxzrB3foS/ToVi5I1fSBP
+ RGSL9EiNHKLHZfgLeAfowDz/TgsNPFT96RdDOjd5blB7A5WnCk6a4AwWGIX3uJktHWp9
+ oDtPrbFZuZj4359knqmh0mTjUINynCbZk9A92hIB0RZ1HDiVrnwDQWYm4KjERtJ8XB6X
+ Yl7BSZ/4fa1eVX9CP+cdf5BN9nfpLXAJTkxvPA7GDP0GoKlCcr1Q6JQ7DuEjZnjPuPUl
+ BQRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:user-agent:references:in-reply-to
  :mime-version:date:message-id:subject:to:cc;
- bh=j2d9wMZ4Dn70FczQLj2pbuSIpYNajn+KjBgUPeahz9Y=;
- b=Q2jRPfsHXCNHZATFTjC0WuB/A3ntWO2DGciKhEoWuEBFaSCmVxHmOX6ucz3VJAXbZu
- 7TjMR0z0NMuYsgXQssa3Yt1Ohug/nLBwtXITQiqWTpD4t3NQAq5BxL9oqu9cbtQkccEp
- i0DlckSkN19GQrvvZ2usqDhpBWRppllIBBjHfNfBM8l2DunXSLBugWHXBRk2NcADMuOd
- z9jfV6GGx3qwTlkFr18O7l/iFxOp9Tv1Su6TuNhqvvkj4Eelt0tfvuHu25ADm7lZcZr6
- EBA5BduDAhtFTPyCqdB3Y46zv5M0Aw+sgiZqGZK++O9JMBUdDvJ/273hDR0plGeuh9pc
- YkxQ==
-X-Gm-Message-State: AOAM531ifUZpVUjDt0tqGrgOylco5FvWRORZw8olSZGJT1qV8b8MKPPY
- EhQBOgw+KCTF0Hl1Og2flZHKEueapfNIcRPlBBskZw==
-X-Google-Smtp-Source: ABdhPJym0wUH56xDasZZcT8vh3C+x/PVUlFJ7UG6Mj8R3MXY3by/qXsmyvnSEZT+6tIIruxfg75z3l91ME8OPr9nDHA=
-X-Received: by 2002:a05:6808:159d:b0:2da:3946:ab3d with SMTP id
- t29-20020a056808159d00b002da3946ab3dmr1272829oiw.248.1649754657107; Tue, 12
- Apr 2022 02:10:57 -0700 (PDT)
+ bh=D37fpu9MYMGrVM4sHogQhQQf9RiEPpYgXDKjNghtvEc=;
+ b=shajZ1QcJjHjmK5QOMCMzHCE09WLKzhPmQktdzBS/X+qB4+kQjwnUGI2XizneEPNDW
+ kCgMs3pzthtjbfmloSvq5lOpQeh/p34zZEzCzVDPM9adhy2i0DvcMLh8wxJGSasstTRO
+ EVOXAbFAS4uu08bYOJ/mLFbKDKXQtvG39B3zY+BDYLvJabkTHAL9QELUsSZGK6IRNauA
+ 92mFjpzpbwc/ZlPKBA2pfT+ETv7kPTcfmYsin7BBwoX7z5kFZUbi5J4AQK2rPXvm05rG
+ +aaUZBfqFGeuLO47KX9Qvz4fSE0iOkRhcCnMQldSN/OOUQb2iSs2i3rRhCOBePKVbki2
+ 3avQ==
+X-Gm-Message-State: AOAM532Z/f8Z9ESw34NcODLX01e4K06vmrTIlwzDI09/6rslKDFOcIEb
+ YvDAn8UhlBiyvGynb5Oo+lIdSNXo375h8pfX6muuow==
+X-Google-Smtp-Source: ABdhPJygxqmgs1C51eoxJmvwDXwGHKS/2sSPlL+b26E+6Tl1+WKvDOY/onHe+ZyNWJjLgLOirlY+CCLTpGtYWtuFalc=
+X-Received: by 2002:a05:6870:d191:b0:dd:a91e:82dc with SMTP id
+ a17-20020a056870d19100b000dda91e82dcmr1564506oac.248.1649754736694; Tue, 12
+ Apr 2022 02:12:16 -0700 (PDT)
 Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Tue, 12 Apr 2022 02:10:56 -0700
+ HTTPREST; Tue, 12 Apr 2022 02:12:16 -0700
 From: Guillaume Ranquet <granquet@baylibre.com>
 User-Agent: meli 0.7.2
 References: <20220327223927.20848-1-granquet@baylibre.com>
  <20220327223927.20848-16-granquet@baylibre.com>
- <032e690ba56f646a12d68c5fcb8de35f74ce9b25.camel@mediatek.com>
-In-Reply-To: <032e690ba56f646a12d68c5fcb8de35f74ce9b25.camel@mediatek.com>
+ <b308f2b37f6e9768fb3b5d85b906a3961ca8419a.camel@mediatek.com>
+In-Reply-To: <b308f2b37f6e9768fb3b5d85b906a3961ca8419a.camel@mediatek.com>
 MIME-Version: 1.0
-Date: Tue, 12 Apr 2022 02:10:56 -0700
-Message-ID: <CABnWg9shORfLvk3sNQL4-dZyYAEZzwUmbgPm7pX8E1mdRpaDTw@mail.gmail.com>
+Date: Tue, 12 Apr 2022 02:12:15 -0700
+Message-ID: <CABnWg9sQFd8_ZyXCwQjgjRKAMEiKv_6anG77Pc6jyv0fAh62vQ@mail.gmail.com>
 Subject: Re: [PATCH v9 15/22] drm/mediatek: dpi: Add dpintf support
 To: Rex-BC Chen <rex-bc.chen@mediatek.com>, vkoul@kernel.org, airlied@linux.ie,
  angelogioacchino.delregno@collabora.com, chunfeng.yun@mediatek.com, 
@@ -80,8 +81,8 @@ Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
  linux-phy@lists.infradead.org, markyacoub@google.com, 
  Markus Schneider-Pargmann <msp@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220412_021058_310313_0A697986 
-X-CRM114-Status: GOOD (  29.52  )
+X-CRM114-CacheID: sfid-20220412_021217_910554_0673BB8C 
+X-CRM114-Status: GOOD (  24.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,11 +99,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 28 Mar 2022 10:38, Rex-BC Chen <rex-bc.chen@mediatek.com> wrote:
->Hello Guillaume,
->
->Thanks for your patch, but I have some questions for this patch:
->
+On Tue, 29 Mar 2022 05:16, Rex-BC Chen <rex-bc.chen@mediatek.com> wrote:
 >On Mon, 2022-03-28 at 00:39 +0200, Guillaume Ranquet wrote:
 >> dpintf is the displayport interface hardware unit. This unit is
 >> similar
@@ -215,19 +212,6 @@ On Mon, 28 Mar 2022 10:38, Rex-BC Chen <rex-bc.chen@mediatek.com> wrote:
 >>  	mtk_dpi_sw_reset(dpi, false);
 >>
 >> +	mtk_dpi_enable(dpi);
->
->Why do we need to add mtk_dpi_enable() here?
->Will this change the power on sequence?
->
-
-I have been told that this is to avoid artifacts on screen, the
-mtk_dpi_enable() is done
-in mtk_dpi_set_display_mode() instead of mtk_dpi_power_on();
-
-I will try to convey that explanation in a separate patch for v10
-
->BRs,
->Rex
 >> +
 >>  	return 0;
 >>  }
@@ -497,6 +481,20 @@ I will try to convey that explanation in a separate patch for v10
 >> -		    comp_type == MTK_DSI) {
 >> +		    comp_type == MTK_DPI ||
 >> +		    comp_type == MTK_DP_INTF) {
+>
+>Hello Guillaume,
+>
+>Is this modification correct?
+>MTK_DPI appears twice and MTK_DSI is removed.
+>
+This is not correct, I've messed up my rebase it seems.
+
+Thx for your review.
+
+>
+>BRs,
+>Rex
+>
 >>  			dev_info(dev, "Adding component match for
 >> %pOF\n",
 >>  				 node);
