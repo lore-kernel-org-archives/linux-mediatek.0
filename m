@@ -4,85 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2C65C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 10:06:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42053C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Apr 2022 10:10:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:
-	MIME-Version:In-Reply-To:References:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=DHYBgvLJKayLURmC7+db1uzD+0cYTN7ai3I+lbs27WY=; b=OAIWpLQ96buy7M9cHQPpMnZeAa
-	N3IUd0FRqKq2KrSeoKc+4CYgrBK1sOA+rvspuKtobg9vxEzUZSjLlQeqJWlRafQAtDXMgNVUCTQRc
-	NvNVo6KJeK8OgfAFSmDTJYkRIsHgeL1wD7U8885iVxWqKQonZd7c2eMVf17IBgvLMlu/nLK3LBdJa
-	lzRCY9rrdghWiQnO9HB7hKF1n6h9LhGChE6Lmq4ifiwV2lqCXOhAsAu2cGPU4WD+NbYWEdDzsCA6M
-	H0gcvr/BA52bwsmBf2Z+QskFGSIDEKpTUPrqmdCkt2rm2U+58Uvm3c187Ey1CZbJeMgll2MWlvdJY
-	Rhnj8MKA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZimSog7D0ZfmCjeUueAiEplB0q5A2Ur83IB1cnBFoyE=; b=z3s/SHDV9n5eLk
+	/tv5vkX0gmeiQYvrexL4QsD5UEEy+KRKOsYd2fXMJxKQSLNv+KVfJNSmtX63UZm8JRrpgtnxwFWuI
+	oiiF6FhLX7Z+3D7sCVdeHfw85tFYVo56PVOngOpB0zaXEAuDNBx+XLgf4FqAfmSncXNp9sej0TMnf
+	ObRZya5pRJ4RlJBkI54bQ7MrexMZbSRKChvKB+wUEAwTs/o882ciKplFtiMiU6Fr4txJsKmYUUEFI
+	DxsFdCcFRgBF9XZkM3Bw1bIc3KdeKawOyuBNA/0XOPTVA+1Q9jWDJdnsOy9q2M2R7iG8bhzAZI+IB
+	6+uJ30I2iO5FZiqfSpUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neDPa-00D9cq-Ex; Tue, 12 Apr 2022 10:06:14 +0000
-Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
+	id 1neDU4-00DBnn-P9; Tue, 12 Apr 2022 10:10:52 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neDPX-00D9aE-1q
- for linux-mediatek@lists.infradead.org; Tue, 12 Apr 2022 10:06:12 +0000
-Received: by mail-oa1-x34.google.com with SMTP id
- 586e51a60fabf-deb9295679so20255120fac.6
- for <linux-mediatek@lists.infradead.org>; Tue, 12 Apr 2022 03:06:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:user-agent:references:in-reply-to:mime-version:date:message-id
- :subject:to:cc;
- bh=tZvbGpFjILGpekjAvGDF0y9dQ6Kd+gBt4gVMWfKJuAk=;
- b=Xo8+YSn3qT7Jhf9u4FuGYXY6Bov1PRuEhL0/Es2kDk9T156ExPENxfB+L80w1q/WN8
- AY7X2X8pBC+egX5EAP7hbmLqVYYquyMaM+9TMa0V8rrwt4eOMwpnKS1rXrmKnJYddRKl
- WXqMioKIAM/xFynvUhz/5U8QrlcdzmdQycq7DES/Sco99BT/85Gs/jV5R1n5nlmInzkN
- Xusklq+2enfKbeU1Z/uYCXgSMZElx/lRCPsCgmbehOhUkX+zIy72zJ9+1JEhZnnHiF0b
- 7lrsXEthfoBv0c5BqbSXLUfcVprx8t79rP5dVaUdlBdoIR+brcAYyZc6c3+7XT7Jw7uM
- vcvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:user-agent:references:in-reply-to
- :mime-version:date:message-id:subject:to:cc;
- bh=tZvbGpFjILGpekjAvGDF0y9dQ6Kd+gBt4gVMWfKJuAk=;
- b=D+xcGqOfY3psIj2vrSW7yt4HBmgAH0UlrUMkC5Sq8+cqJ/DmDMsG+ky16rCIXRxA3C
- DEok15yJxhHWEmKbW4OdSRFziJm/3YYGMIfP+2DJjwW6e2D56djiYHeoxZc3m1X2sY9J
- 8ZaDjejrztQpt4H6HnUFFRCxnAavueaQptpa12oO7r0A8XeIATkeUxoD6ZnF3orh/lrV
- xPGqWtItH8qXoUy25p00hzHpAtdgTNr8JTtG8lRWMyUwM5ao9gYR78QMuRqH2sEYWK5A
- fSUL/SUESMiutGDWf1Ppz096zSAagTCmnWdMdQvQKHMg/S+A20jZuiJuHkykzRXAun7r
- v56A==
-X-Gm-Message-State: AOAM532QPhVtU278JznIucz9BscB00ms7H34kFMcpLTjRJmagw65p1pa
- oEnqT9wU5hFpyhf/7ILNRvqgCz96+GCfskMMDhRsOQ==
-X-Google-Smtp-Source: ABdhPJw3WX7NFQkxU4ADRLrRdzB/pHuRSdo1xjaZj5zggo6wW/RSRVmkJtH7xxbo7eDcNYsrg++TE2K0RicigcNQMoo=
-X-Received: by 2002:a05:6870:f21a:b0:dd:9bec:caf8 with SMTP id
- t26-20020a056870f21a00b000dd9beccaf8mr1670792oao.78.1649757969594; Tue, 12
- Apr 2022 03:06:09 -0700 (PDT)
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Tue, 12 Apr 2022 03:06:08 -0700
-From: Guillaume Ranquet <granquet@baylibre.com>
-User-Agent: meli 0.7.2
-References: <20220327223927.20848-1-granquet@baylibre.com>
- <20220327223927.20848-4-granquet@baylibre.com>
- <YkOPB5W7uXkOc72/@robh.at.kernel.org>
-In-Reply-To: <YkOPB5W7uXkOc72/@robh.at.kernel.org>
+ id 1neDTU-00DBYM-G2; Tue, 12 Apr 2022 10:10:18 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 45ED4618A8;
+ Tue, 12 Apr 2022 10:10:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id A4B4DC385A6;
+ Tue, 12 Apr 2022 10:10:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1649758213;
+ bh=awEmwceAHMTLgt++0w0XhcTYw0uJdVpEoFT4/OGcWQQ=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=TSiTHX7SCa8uLekV+0ttDc29QQHz1LE7THUnhnOSsY5Y8R1DEJuS2Wb54rw4tjdrX
+ GRyxc11+pUQ3N5Yjx21JWDmBrhmBUWh5DegGV4rJy9PXfZG8A5Cx9wZLmvc4T+eR1Y
+ egfMvA5GoLCne/PGMdOGgKi6bogcEeWZM5JtlI87WRqhBej5brXhszYTwd6jUuEkg6
+ fsLjflGG/G7yeLMzIXRuXqKII1MoNinRTX/PnV2HT7HgCAquTP/OypPJabb2QNt89n
+ OsAUORhhfago/aIHsBMht9jBvtTaDENzl7zw9qLN8zr9zrW/A9xdtrrZqRbE/2meJY
+ 8kjawORzVeRtg==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ 831F4E85D15; Tue, 12 Apr 2022 10:10:13 +0000 (UTC)
 MIME-Version: 1.0
-Date: Tue, 12 Apr 2022 03:06:08 -0700
-Message-ID: <CABnWg9tvh31wibtTO2nETfJ9XtST0Ejjea0_2q1Hd5GRs9DN4Q@mail.gmail.com>
-Subject: Re: [PATCH v9 03/22] dt-bindings: mediatek,dp_phy: Add Display Port
- PHY binding
-To: Rob Herring <robh@kernel.org>
-Cc: airlied@linux.ie, angelogioacchino.delregno@collabora.com, 
- chunfeng.yun@mediatek.com, chunkuang.hu@kernel.org, ck.hu@mediatek.com, 
- daniel@ffwll.ch, deller@gmx.de, jitao.shi@mediatek.com, kishon@ti.com, 
- krzk+dt@kernel.org, maarten.lankhorst@linux.intel.com, matthias.bgg@gmail.com, 
- mripard@kernel.org, p.zabel@pengutronix.de, tzimmermann@suse.de, 
- vkoul@kernel.org, devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
- linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-phy@lists.infradead.org, markyacoub@google.com
+Subject: Re: [PATCH net-next v2 0/9] net: dsa: mt7530: updates for phylink
+ changes
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <164975821353.21132.17881540288519221118.git-patchwork-notify@kernel.org>
+Date: Tue, 12 Apr 2022 10:10:13 +0000
+References: <YlP4vGKVrlIJUUHK@shell.armlinux.org.uk>
+In-Reply-To: <YlP4vGKVrlIJUUHK@shell.armlinux.org.uk>
+To: Russell King (Oracle) <linux@armlinux.org.uk>
+Cc: Landen.Chao@mediatek.com, dqfext@gmail.com, sean.wang@mediatek.com,
+ andrew@lunn.ch, vivien.didelot@gmail.com, f.fainelli@gmail.com,
+ kabel@kernel.org, olteanv@gmail.com, davem@davemloft.net, kuba@kernel.org,
+ matthias.bgg@gmail.com, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220412_030611_165960_E1EB526E 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20220412_031016_624140_B67C89A1 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,84 +78,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 30 Mar 2022 00:58, Rob Herring <robh@kernel.org> wrote:
->On Mon, Mar 28, 2022 at 12:39:08AM +0200, Guillaume Ranquet wrote:
->> This phy controller is embedded in the Display Port Controller on mt8195 SoCs.
->
->Sorry, but I think you need to go back to what you had in v8. While yes,
->the phy and controller IP often do change independently, this h/w looks
->pretty interwined.
+Hello:
 
-Understood, I'll revert back to v8.
+This series was applied to netdev/net-next.git (master)
+by Paolo Abeni <pabeni@redhat.com>:
 
->
->You could make the controller a phy provider to itself if you wanted.
+On Mon, 11 Apr 2022 10:45:32 +0100 you wrote:
+> Hi,
+> 
+> This revised series is a partial conversion of the mt7530 DSA driver to
+> the modern phylink infrastructure. This driver has some exceptional
+> cases which prevent - at the moment - its full conversion (particularly
+> with the Autoneg bit) to using phylink_generic_validate().
+> 
+> [...]
 
-Not sure I follow, could you point me to an example?
+Here is the summary with links:
+  - [net-next,v2,1/9] net: dsa: mt7530: 1G can also support 1000BASE-X link mode
+    https://git.kernel.org/netdev/net-next/c/66f862563ed6
+  - [net-next,v2,2/9] net: dsa: mt7530: populate supported_interfaces and mac_capabilities
+    https://git.kernel.org/netdev/net-next/c/59c2215f3604
+  - [net-next,v2,3/9] net: dsa: mt7530: remove interface checks
+    https://git.kernel.org/netdev/net-next/c/26f6d8810282
+  - [net-next,v2,4/9] net: dsa: mt7530: drop use of phylink_helper_basex_speed()
+    https://git.kernel.org/netdev/net-next/c/fd301137e6b3
+  - [net-next,v2,5/9] net: dsa: mt7530: only indicate linkmodes that can be supported
+    https://git.kernel.org/netdev/net-next/c/7c04c8489115
+  - [net-next,v2,6/9] net: dsa: mt7530: switch to use phylink_get_linkmodes()
+    https://git.kernel.org/netdev/net-next/c/6789d6d76e81
+  - [net-next,v2,7/9] net: dsa: mt7530: partially convert to phylink_pcs
+    https://git.kernel.org/netdev/net-next/c/cbd1f243bc41
+  - [net-next,v2,8/9] net: dsa: mt7530: move autoneg handling to PCS validation
+    https://git.kernel.org/netdev/net-next/c/9d0df207c002
+  - [net-next,v2,9/9] net: dsa: mt7530: mark as non-legacy
+    https://git.kernel.org/netdev/net-next/c/7b972512ec0e
 
-Thx,
-Guillaume.
->
->>
->> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
->> ---
->>  .../bindings/phy/mediatek,dp-phy.yaml         | 43 +++++++++++++++++++
->>  1 file changed, 43 insertions(+)
->>  create mode 100644 Documentation/devicetree/bindings/phy/mediatek,dp-phy.yaml
->>
->> diff --git a/Documentation/devicetree/bindings/phy/mediatek,dp-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,dp-phy.yaml
->> new file mode 100644
->> index 000000000000..1f5ffca4e140
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/phy/mediatek,dp-phy.yaml
->> @@ -0,0 +1,43 @@
->> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->> +# Copyright (c) 2022 MediaTek
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/phy/mediatek,dp-phy.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: MediaTek Display Port PHY
->> +
->> +maintainers:
->> +  - CK Hu <ck.hu@mediatek.com>
->> +  - Jitao shi <jitao.shi@mediatek.com>
->> +
->> +description: |
->> +  Device tree bindings for the Mediatek (embedded) Display Port PHY
->> +  present on some Mediatek SoCs.
->> +
->> +properties:
->> +  compatible:
->> +    enum:
->> +      - mediatek,mt8195-dp-phy
->> +
->> +  mediatek,dp-syscon:
->> +    $ref: /schemas/types.yaml#/definitions/phandle
->> +    description: Phandle to the Display Port node.
->> +
->> +  "#phy-cells":
->> +    const: 0
->> +
->> +required:
->> +  - compatible
->> +  - mediatek,dp-syscon
->> +  - "#phy-cells"
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  - |
->> +    dp_phy: dp-phy {
->> +      compatible = "mediatek,mt8195-dp-phy";
->> +      mediatek,dp-syscon = <&dp_tx>;
->> +      #phy-cells = <0>;
->> +    };
->> --
->> 2.34.1
->>
->>
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
