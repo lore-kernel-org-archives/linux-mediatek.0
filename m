@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A21E0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 23:01:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9076EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 23:02:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ty7oNhTyANGm/T20Io2RTIOd8MheLR5mjQONYBUb9qY=; b=36KmFSa2AnO0B6
-	YN/l9AD0aDKqkiSi/18OjaMuKMZGfJuq/ErD/vWqEZcpll1YXaLFu9NPryoiCfX52sKsB7zd8d9Yf
-	lB1TFxLPhLoAt51hUFnl/6u3qt9oOdtqnvUpL8o7hNzspIS7PA6RM4Jy41zQmfFXBHkmOeOk6DtL3
-	jLq919E6rCa1oDi7Oj4W2SAN0LMm5H+SwIgZ2lq3opbRYnbJDp/xpwVQGn+q0qBYQluIf6j/jI9RG
-	eoeCKu5Fvym51I+Ml9grkIXKrW3tEHrGyqdol1fvGjkTfHHW1rHtzVeBc4ybiDfXic0y7wcxORyVv
-	fdh9B8/RwnUqtV4VQulw==;
+	List-Owner; bh=zHzsL4tJOlIi/RVFzFLIdhs+9cAcXiRFPhyXkfVa5MM=; b=CToKKSLJjw3WQK
+	tow/I0LOu15lMYcmvZ0S+vbxyTmEnYNBYuQcExyHydthuQNZYE0l53iU37uA04+A4X2iMvj5Yo4+J
+	sa+bYHSycHEtOE6mr8xf1Q1XG3c60LGFWNfzZM6+zH2AK52lbYvuPzcNP/1atnY2p5Hz6XoI8pxgJ
+	btH8ZzK5FdmYQg7brEqDZ2c3ZwCjyAEcyii0hE4REnKw5ECKuWDe4T3izLEQ1bv3Wbvk1qxvDT06w
+	7ZNCidgdJXoyhlcrnYxy60weFcmN9MLsoo3WfasDW5JXDDh/WimoLCYDXzG2vn/224WZ3tIIf+hbc
+	r9lnhmI/iQvo8bORww1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nelzf-0031ds-Nm; Wed, 13 Apr 2022 23:01:47 +0000
-Received: from mail-oa1-f41.google.com ([209.85.160.41])
+	id 1nem0Z-0031t5-M3; Wed, 13 Apr 2022 23:02:43 +0000
+Received: from mail-oa1-f42.google.com ([209.85.160.42])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nelzd-0031cx-F3; Wed, 13 Apr 2022 23:01:46 +0000
-Received: by mail-oa1-f41.google.com with SMTP id
- 586e51a60fabf-d6ca46da48so3554640fac.12; 
- Wed, 13 Apr 2022 16:01:44 -0700 (PDT)
+ id 1nem0N-0031o2-A1; Wed, 13 Apr 2022 23:02:32 +0000
+Received: by mail-oa1-f42.google.com with SMTP id
+ 586e51a60fabf-dacc470e03so3591768fac.5; 
+ Wed, 13 Apr 2022 16:02:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=txH7G85u82ckvXFFVybqBGeBeoY60AwwcMxav7vAPMs=;
- b=CT7ACxIlnxHAD1Dt5qe1QuoAaDMfaXhYrkYlY+UtiQ9aj0vrZMjm2k+M9glyBCEmai
- LrC8TKeMIfponB5FExz93Bvzx916lTSH91sRVTVng2m2WPZDdyo+xaSMTB+ctjZwvANN
- x68UEaaH29Tl1j+t3rka7YNfK6MlJLCcsvMAsad9Tp5zwhI1vTqlNDe7NU4Ixq974CLd
- bH4P1Jq2aG2wqjMA+UOt7H1xnbCvXC3Zk7kvpssrUI3Yqj6m991jDUzAIsk0yVu0O7Et
- Iehso7oflYTFfaTuxZhFQoQXq2/fFHHzM3MgqkuFDzWkgUUDuWbYFj4WwR1T0M+4caOF
- 4Mow==
-X-Gm-Message-State: AOAM532YkGwRMU8K89OjLrKT5vUV6yZN7V7tzNEK6aAAbVQWYDVjYSyH
- ifEynx0kXlx+HiRHBEKljQ==
-X-Google-Smtp-Source: ABdhPJz9YP5GQ32GssbCde5VKdgMKN/vXesquw2yfGhEokJ/UvibxuTxcDC4NAxtUYPVmqpjiv0C1Q==
-X-Received: by 2002:a05:6870:d112:b0:e2:e609:f94c with SMTP id
- e18-20020a056870d11200b000e2e609f94cmr474150oac.126.1649890904328; 
- Wed, 13 Apr 2022 16:01:44 -0700 (PDT)
+ bh=YGabHpljtiGxZkQuZz7c7j1W08I1Hvt5N3od6t4IJJo=;
+ b=JpE8ac5/6/GILKy1eC1WKroc8pt6JSla3lVF3vDv7kRqDW+44dgj5/nJoO+IPJG6G5
+ EVDD7nRGlQTTgM2FgbG73PYYShpdy06a2Mg1bOhnGnAnttImczn3FTRSsJDSEcyw7otY
+ nx2jjbOyKgLoS6DnDvlQq3yPhtoPMJ60iawbPc/e6PS9yP3Mcx3M9cyEmnIkLhfrARYH
+ U8jamJWI5u7zEO8AJLP1GuQE3/UgU9lkQH81hLq0OicY26jniinXQt9ArCQfOiqE8K6F
+ XTxfoPahpfZfOPtq1peKrszVvsPUb6GG3vcp9tDy0Z6HGY7VwGXg5Ypna4a8WynS14lG
+ FozA==
+X-Gm-Message-State: AOAM533Kws5GsO35MCnpMnwiPMeHhdG427GxdFpRVXjGVe9F00g+skmD
+ C/liIUetRJj21ExaaZTR5Q==
+X-Google-Smtp-Source: ABdhPJwINphfy50/Q8dN2oFmoDIYgUuh67h7+uBixXRlKaqQgwaNIyYXpCeE6RDA7FisUjBBzeJDPw==
+X-Received: by 2002:a05:6870:40c9:b0:e2:d1bb:f4e1 with SMTP id
+ l9-20020a05687040c900b000e2d1bbf4e1mr185356oal.243.1649890950111; 
+ Wed, 13 Apr 2022 16:02:30 -0700 (PDT)
 Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
  [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- 71-20020a9d084d000000b005e969b3f0b1sm146825oty.67.2022.04.13.16.01.43
+ x24-20020a056870a79800b000e2e53716fbsm173721oao.31.2022.04.13.16.02.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 Apr 2022 16:01:44 -0700 (PDT)
-Received: (nullmailer pid 4099653 invoked by uid 1000);
- Wed, 13 Apr 2022 23:01:43 -0000
-Date: Wed, 13 Apr 2022 18:01:43 -0500
+ Wed, 13 Apr 2022 16:02:29 -0700 (PDT)
+Received: (nullmailer pid 4100836 invoked by uid 1000);
+ Wed, 13 Apr 2022 23:02:28 -0000
+Date: Wed, 13 Apr 2022 18:02:28 -0500
 From: Rob Herring <robh@kernel.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Zhiyong Tao <zhiyong.tao@mediatek.com>, linux-kernel@vger.kernel.org,
- ryder.lee@kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com,
- wenst@chromium.org, linux-mediatek@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Johnson Wang <johnson.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, chunfeng.yun@mediatek.com,
- Henry Chen <henryc.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH v14 1/2] dt-bindings: pwrap: mediatek: Update pwrap
- document for mt8195
-Message-ID: <YldWV4nLkXNVobXr@robh.at.kernel.org>
-References: <20220411022724.11005-1-tinghan.shen@mediatek.com>
- <20220411022724.11005-2-tinghan.shen@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: matthias.bgg@gmail.com, yongqiang.niu@mediatek.com,
+ allen-kh.cheng@mediatek.com, linux-kernel@vger.kernel.org, krzk+dt@kernel.org,
+ airlied@linux.ie, devicetree@vger.kernel.org, nancy.lin@mediatek.com,
+ robh+dt@kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, chunkuang.hu@kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, p.zabel@pengutronix.de,
+ jason-jh.lin@mediatek.com, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH V2 1/3] dt-bindings: display: mediatek: Update disp_aal
+ binding for MT8183
+Message-ID: <YldWhNA6SwNBGXa8@robh.at.kernel.org>
+References: <20220411035843.19847-1-rex-bc.chen@mediatek.com>
+ <20220411035843.19847-2-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220411022724.11005-2-tinghan.shen@mediatek.com>
+In-Reply-To: <20220411035843.19847-2-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_160145_561773_91B619C7 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220413_160231_394380_0C393565 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,16 +88,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 11 Apr 2022 10:27:23 +0800, Tinghan Shen wrote:
-> From: "Zhiyong.Tao" <zhiyong.tao@mediatek.com>
+On Mon, 11 Apr 2022 11:58:41 +0800, Rex-BC Chen wrote:
+> The driver data of MT8183 and MT8173 are different.
 > 
-> Update pwrap document description for mt8195
+> For MT8173, the gamma module is inside disp_aal. When we need to adjust
+> gamma value, we need to use "has_gamma" to control gamma function
+> inside disp_aal to adjust the gamma value.
 > 
-> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> For successors like MT8183, disp_gamma is separated from disp_aal. We
+> just need to control disp_gamma directly and don't need to control gamma
+> function inside disp_aal.
+> 
+> With this modification, the driver doesn't require any functional changes.
+> We only update the dt-binding and DTS node to make it clear.
+> 
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../devicetree/bindings/soc/mediatek/pwrap.txt         | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
+>  .../devicetree/bindings/display/mediatek/mediatek,aal.yaml  | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
 
 Acked-by: Rob Herring <robh@kernel.org>
