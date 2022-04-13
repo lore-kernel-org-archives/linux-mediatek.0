@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F033C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 04:05:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E52CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 04:06:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vexmQUpw3LhCQlbWfi8TsRQ85qwtjT3bo4ZnSlbs65M=; b=gI+zQThcBINcTT
-	fK7PnO9pHN3OqVExvffa7IyrJhvvwt8U08iaIjje3XAfvbo1lp+RcX7gs019cRfcXYrYsU3o0m9Ch
-	9n4c+SlmyEWQWQUF1uoUvTuMBbYB390oWJxRlFtlZ5HVykOS1WpzIEKg4fasM9wOqd2Mj/qpCKPM0
-	mEdxMdqRTxPzFRI8FMwBh9m1pv2O80xP+BYxn9nqsGHIiQKlK2iuOWrSzkT7AxbXP0JWjtmcx9c01
-	ArHXl3L9wI0VhbDVRu2ympyX/TT4ffwnUlHrm+MW4/DbUGUj+3lneifDCy0fcGnaaRBikhzkrtLFF
-	8c59ahpoIoD+3Nc22FEg==;
+	List-Owner; bh=IRi9Fql6+1ckuafJSvQOvEN4cQKPEf3dQCc7VO6aeKU=; b=BLdIht/IpzvjBD
+	dBIvxuOTpQKRtO2O7MNgUj8YocieQGTtRq1k7bBfxBR/gjd836PAAuJcY0AnLm+YErldC0IS64egw
+	kq7ImXmhPpAfzX17SRVVEiv5UZg8PUqyhpAC4Xgkt1fTAbICbU6AD8BwXKrEjvcVOcexbTuKuSQCc
+	l0ouB9XhGAAXHg+zwt0/WHj5vMtzsWwejaGljg7PgvD3mhwPSGScn1c6twRsbN+Q2p5pfU1t1NPAb
+	Seq1W4x7l/LNLTLFZhSjqkhbSlZisWe/qdzBVroJioHERe4A/WcwyeBqT+At6yOkcFJCWQcxsWTNs
+	CuQ5Gv87Acr1NSVzDLmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neUFw-00GgiO-V4; Wed, 13 Apr 2022 04:05:24 +0000
+	id 1neUGP-00GgyN-52; Wed, 13 Apr 2022 04:05:53 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neUF6-00GgJG-O1; Wed, 13 Apr 2022 04:04:34 +0000
-X-UUID: b8b9df22ea614795ab847d99ee22934d-20220412
-X-UUID: b8b9df22ea614795ab847d99ee22934d-20220412
+ id 1neUF6-00GgJk-WF; Wed, 13 Apr 2022 04:04:34 +0000
+X-UUID: a92fba34fcf04be59734da6acbeb4ed3-20220412
+X-UUID: a92fba34fcf04be59734da6acbeb4ed3-20220412
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 567402884; Tue, 12 Apr 2022 21:04:28 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 573916501; Tue, 12 Apr 2022 21:04:28 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 12 Apr 2022 20:54:31 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 13 Apr 2022 11:54:16 +0800
+ 15.0.1497.2; Tue, 12 Apr 2022 20:54:26 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 13 Apr 2022 11:54:24 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 13 Apr 2022 11:54:15 +0800
+ Transport; Wed, 13 Apr 2022 11:54:23 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
@@ -58,17 +59,17 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
 Subject: [PATCH v4,
- 2/7] media: mediatek: vcodec: Add to support lat soc hardware
-Date: Wed, 13 Apr 2022 11:54:05 +0800
-Message-ID: <20220413035410.29568-3-yunfei.dong@mediatek.com>
+ 7/7] media: mediatek: vcodec: Add to support H264 inner racing mode
+Date: Wed, 13 Apr 2022 11:54:10 +0800
+Message-ID: <20220413035410.29568-8-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220413035410.29568-1-yunfei.dong@mediatek.com>
 References: <20220413035410.29568-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220412_210432_808675_026C949A 
-X-CRM114-Status: GOOD (  17.40  )
+X-CRM114-CacheID: sfid-20220412_210433_065976_C89109A2 
+X-CRM114-Status: GOOD (  20.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,105 +86,179 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add lat soc compatible and to support lat soc power/clk helper.
+In order to reduce decoder latency, enable H264 inner racing mode.
+
+Send lat trans buffer information to core when trigger lat to work,
+need not to wait until lat decode done.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../platform/mediatek/vcodec/mtk_vcodec_dec_hw.c | 12 +++++++++---
- .../platform/mediatek/vcodec/mtk_vcodec_dec_hw.h |  2 ++
- .../platform/mediatek/vcodec/mtk_vcodec_dec_pm.c | 16 ++++++++++++++++
- .../platform/mediatek/vcodec/mtk_vcodec_drv.h    |  1 +
- 4 files changed, 28 insertions(+), 3 deletions(-)
+ .../mediatek/vcodec/mtk_vcodec_dec_drv.c      |  4 +++
+ .../mediatek/vcodec/mtk_vcodec_dec_pm.c       | 34 +++++++++++++++++++
+ .../platform/mediatek/vcodec/mtk_vcodec_drv.h | 10 ++++++
+ .../vcodec/vdec/vdec_h264_req_multi_if.c      | 25 +++++++++++---
+ 4 files changed, 68 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-index 14bed2bd4283..376db0e433d7 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-@@ -28,6 +28,10 @@ static const struct of_device_id mtk_vdec_hw_match[] = {
- 		.compatible = "mediatek,mtk-vcodec-core",
- 		.data = (void *)MTK_VDEC_CORE,
- 	},
-+	{
-+		.compatible = "mediatek,mtk-vcodec-lat-soc",
-+		.data = (void *)MTK_VDEC_LAT_SOC,
-+	},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_vdec_hw_match);
-@@ -166,9 +170,11 @@ static int mtk_vdec_hw_probe(struct platform_device *pdev)
- 	subdev_dev->reg_base[VDEC_HW_SYS] = main_dev->reg_base[VDEC_HW_SYS];
- 	set_bit(subdev_dev->hw_idx, main_dev->subdev_bitmap);
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+index b9b99770c5cb..456cf33bc74f 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+@@ -388,6 +388,10 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		}
+ 	}
  
--	ret = mtk_vdec_hw_init_irq(subdev_dev);
--	if (ret)
--		goto err;
-+	if (IS_SUPPORT_VDEC_HW_IRQ(hw_idx)) {
-+		ret = mtk_vdec_hw_init_irq(subdev_dev);
-+		if (ret)
-+			goto err;
-+	}
- 
- 	subdev_dev->reg_base[VDEC_HW_MISC] =
- 		devm_platform_ioremap_resource(pdev, 0);
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
-index a63e4b1b81c3..b8938c6c3e72 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
-@@ -17,6 +17,8 @@
- #define VDEC_IRQ_CLR 0x10
- #define VDEC_IRQ_CFG_REG 0xa4
- 
-+#define IS_SUPPORT_VDEC_HW_IRQ(hw_idx) (hw_idx != MTK_VDEC_LAT_SOC)
++	atomic_set(&dev->dec_active_cnt, 0);
++	memset(dev->vdec_racing_info, 0, sizeof(dev->vdec_racing_info));
++	mutex_init(&dev->dec_racing_info_mutex);
 +
- /**
-  * enum mtk_vdec_hw_reg_idx - subdev hardware register base index
-  * @VDEC_HW_SYS : vdec soc register index
+ 	ret = video_register_device(vfd_dec, VFL_TYPE_VIDEO, -1);
+ 	if (ret) {
+ 		mtk_v4l2_err("Failed to register video device");
 diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
-index 0fb7e5ba635b..d69faa463d04 100644
+index d69faa463d04..4305e4eb9900 100644
 --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
 +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
-@@ -174,6 +174,14 @@ static void mtk_vcodec_dec_child_dev_on(struct mtk_vcodec_dev *vdec_dev,
- 		mtk_vcodec_dec_pw_on(pm);
- 		mtk_vcodec_dec_clock_on(pm);
+@@ -144,6 +144,34 @@ static void mtk_vcodec_dec_disable_irq(struct mtk_vcodec_dev *vdec_dev, int hw_i
  	}
-+
-+	if (hw_idx == MTK_VDEC_LAT0) {
-+		pm = mtk_vcodec_dec_get_pm(vdec_dev, MTK_VDEC_LAT_SOC);
-+		if (pm) {
-+			mtk_vcodec_dec_pw_on(pm);
-+			mtk_vcodec_dec_clock_on(pm);
-+		}
-+	}
  }
  
- static void mtk_vcodec_dec_child_dev_off(struct mtk_vcodec_dev *vdec_dev,
-@@ -186,6 +194,14 @@ static void mtk_vcodec_dec_child_dev_off(struct mtk_vcodec_dev *vdec_dev,
- 		mtk_vcodec_dec_clock_off(pm);
- 		mtk_vcodec_dec_pw_off(pm);
- 	}
++static void mtk_vcodec_load_racing_info(struct mtk_vcodec_ctx *ctx)
++{
++	void __iomem *vdec_racing_addr;
++	int j;
 +
-+	if (hw_idx == MTK_VDEC_LAT0) {
-+		pm = mtk_vcodec_dec_get_pm(vdec_dev, MTK_VDEC_LAT_SOC);
-+		if (pm) {
-+			mtk_vcodec_dec_clock_off(pm);
-+			mtk_vcodec_dec_pw_off(pm);
-+		}
++	mutex_lock(&ctx->dev->dec_racing_info_mutex);
++	if (atomic_inc_return(&ctx->dev->dec_active_cnt) == 1) {
++		vdec_racing_addr = ctx->dev->reg_base[VDEC_MISC] + 0x100;
++		for (j = 0; j < 132; j++)
++			writel(ctx->dev->vdec_racing_info[j], vdec_racing_addr + j * 4);
 +	}
- }
++	mutex_unlock(&ctx->dev->dec_racing_info_mutex);
++}
++
++static void mtk_vcodec_record_racing_info(struct mtk_vcodec_ctx *ctx)
++{
++	void __iomem *vdec_racing_addr;
++	int j;
++
++	mutex_lock(&ctx->dev->dec_racing_info_mutex);
++	if (atomic_dec_and_test(&ctx->dev->dec_active_cnt)) {
++		vdec_racing_addr = ctx->dev->reg_base[VDEC_MISC] + 0x100;
++		for (j = 0; j < 132; j++)
++			ctx->dev->vdec_racing_info[j] = readl(vdec_racing_addr + j * 4);
++	}
++	mutex_unlock(&ctx->dev->dec_racing_info_mutex);
++}
++
+ static struct mtk_vcodec_pm *mtk_vcodec_dec_get_pm(struct mtk_vcodec_dev *vdec_dev,
+ 						   int hw_idx)
+ {
+@@ -214,11 +242,17 @@ void mtk_vcodec_dec_enable_hardware(struct mtk_vcodec_ctx *ctx, int hw_idx)
+ 	mtk_vcodec_dec_child_dev_on(ctx->dev, hw_idx);
  
- void mtk_vcodec_dec_enable_hardware(struct mtk_vcodec_ctx *ctx, int hw_idx)
+ 	mtk_vcodec_dec_enable_irq(ctx->dev, hw_idx);
++
++	if (IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
++		mtk_vcodec_load_racing_info(ctx);
+ }
+ EXPORT_SYMBOL_GPL(mtk_vcodec_dec_enable_hardware);
+ 
+ void mtk_vcodec_dec_disable_hardware(struct mtk_vcodec_ctx *ctx, int hw_idx)
+ {
++	if (IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
++		mtk_vcodec_record_racing_info(ctx);
++
+ 	mtk_vcodec_dec_disable_irq(ctx->dev, hw_idx);
+ 
+ 	mtk_vcodec_dec_child_dev_off(ctx->dev, hw_idx);
 diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-index a29041a0b7e0..0e3db8ccb398 100644
+index 0e3db8ccb398..677f47b34172 100644
 --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
 +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-@@ -104,6 +104,7 @@ enum mtk_vdec_hw_id {
- 	MTK_VDEC_CORE,
- 	MTK_VDEC_LAT0,
- 	MTK_VDEC_LAT1,
-+	MTK_VDEC_LAT_SOC,
- 	MTK_VDEC_HW_MAX,
+@@ -28,6 +28,7 @@
+ #define MTK_V4L2_BENCHMARK	0
+ #define WAIT_INTR_TIMEOUT_MS	1000
+ #define IS_VDEC_LAT_ARCH(hw_arch) ((hw_arch) >= MTK_VDEC_LAT_SINGLE_CORE)
++#define IS_VDEC_INNER_RACING(capability) (capability & MTK_VCODEC_INNER_RACING)
+ 
+ /*
+  * enum mtk_hw_reg_idx - MTK hw register base index
+@@ -357,6 +358,7 @@ enum mtk_vdec_format_types {
+ 	MTK_VDEC_FORMAT_H264_SLICE = 0x100,
+ 	MTK_VDEC_FORMAT_VP8_FRAME = 0x200,
+ 	MTK_VDEC_FORMAT_VP9_FRAME = 0x400,
++	MTK_VCODEC_INNER_RACING = 0x20000,
  };
  
+ /**
+@@ -478,6 +480,10 @@ struct mtk_vcodec_enc_pdata {
+  * @subdev_dev: subdev hardware device
+  * @subdev_prob_done: check whether all used hw device is prob done
+  * @subdev_bitmap: used to record hardware is ready or not
++ *
++ * @dec_active_cnt: used to mark whether need to record register value
++ * @vdec_racing_info: record register value
++ * @dec_racing_info_mutex: mutex lock used for inner racing mode
+  */
+ struct mtk_vcodec_dev {
+ 	struct v4l2_device v4l2_dev;
+@@ -523,6 +529,10 @@ struct mtk_vcodec_dev {
+ 	void *subdev_dev[MTK_VDEC_HW_MAX];
+ 	int (*subdev_prob_done)(struct mtk_vcodec_dev *vdec_dev);
+ 	DECLARE_BITMAP(subdev_bitmap, MTK_VDEC_HW_MAX);
++
++	atomic_t dec_active_cnt;
++	u32 vdec_racing_info[132];
++	struct mutex dec_racing_info_mutex;
+ };
+ 
+ static inline struct mtk_vcodec_ctx *fh_to_ctx(struct v4l2_fh *fh)
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
+index e199620b076d..c386655ea14c 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
+@@ -626,6 +626,18 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 		goto err_free_fb_out;
+ 	}
+ 
++	share_info->trans_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
++		inst->vsi->wdma_end_addr_offset;
++	share_info->trans_start = inst->ctx->msg_queue.wdma_wptr_addr;
++	share_info->nal_info = inst->vsi->dec.nal_info;
++
++	if (IS_VDEC_INNER_RACING(inst->ctx->dev->dec_capability)) {
++		memcpy_fromio(&share_info->h264_slice_params,
++			      &inst->vsi->h264_slice_params,
++			      sizeof(share_info->h264_slice_params));
++		vdec_msg_queue_qbuf(&inst->ctx->dev->msg_queue_core_ctx, lat_buf);
++	}
++
+ 	/* wait decoder done interrupt */
+ 	timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
+ 					       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_LAT0);
+@@ -639,14 +651,17 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 
+ 	share_info->trans_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
+ 		inst->vsi->wdma_end_addr_offset;
+-	share_info->trans_start = inst->ctx->msg_queue.wdma_wptr_addr;
+-	share_info->nal_info = inst->vsi->dec.nal_info;
+ 	vdec_msg_queue_update_ube_wptr(&lat_buf->ctx->msg_queue,
+ 				       share_info->trans_end);
+ 
+-	memcpy_fromio(&share_info->h264_slice_params, &inst->vsi->h264_slice_params,
+-		      sizeof(share_info->h264_slice_params));
+-	vdec_msg_queue_qbuf(&inst->ctx->dev->msg_queue_core_ctx, lat_buf);
++	if (!IS_VDEC_INNER_RACING(inst->ctx->dev->dec_capability)) {
++		memcpy_fromio(&share_info->h264_slice_params,
++			      &inst->vsi->h264_slice_params,
++			      sizeof(share_info->h264_slice_params));
++		vdec_msg_queue_qbuf(&inst->ctx->dev->msg_queue_core_ctx, lat_buf);
++	}
++	mtk_vcodec_debug(inst, "dec num: %d lat crc: 0x%x 0x%x 0x%x", inst->slice_dec_num,
++			 inst->vsi->dec.crc[0], inst->vsi->dec.crc[1], inst->vsi->dec.crc[2]);
+ 
+ 	inst->slice_dec_num++;
+ 	return 0;
 -- 
 2.18.0
 
