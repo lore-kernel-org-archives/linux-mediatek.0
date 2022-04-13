@@ -4,68 +4,160 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 197B6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 05:45:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4A1FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 06:10:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8HtwOgBNEntPdAhMSb04pNnv1Oe+xBWX5n+F4CkP/NE=; b=G+QoksDPMem5P6
-	tZl4tyayyieOYm2g3+eY9av0aku2Bj4p2obTXGo5aodDNpbsMdLoLqgmi/J0iaBVPRtdz8igZnwAc
-	b6b2PS3brkWz3Hng3vMZW/Cs14LGFfrxMV+pPN4BnRU3ItEUMSmoG1CeEaKBU2gVvPpUZ7FLo/tU5
-	xFzPm/crX0QyKRaDmBj8zYckHrk4m5TZeuR37TOA2AMwOdD7Z3zq2wChtLZnIRfoK/9y+0BvSrLLK
-	vJ1t8Pq9pWDvTaAPJ28xo6PEBApxiSuvku76xnSHV/1Y3+WzOteFjeVMK5zANUdLTn2IUz3UVajwU
-	e7unRKscVe1gJ8n1nhzw==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=wHtDtbhU0gVOQJIXtyJj/y00d825hzdNuzZeOZ6GHIQ=; b=KlmWhKV0STSQEP
+	W9zXPYXEl0RVeP0wVVI3ODPFG9GQFStHt/cL9QnYtL+Vp2W5e0Ua0+s1PibxgSjLT+2tSVcL8isD4
+	TOwc15aeo8zjnYRF640NTRYdBpJ5K6MddtfFCdesC0HVBlUkzDAyfcSIt5SUjPcxZcy3Dmiw2AoGs
+	+o4VgQSUY1vTjzS1dUGHBSpuNmE9vMHEbH73epKfrO7+2Q3Y6lKcLvpQDZEvbeVMhnAmVG2g2bcTw
+	YLFUz7CUWLNbUgwR2pq+uE2mdNwsDN89WqDE5yzUTpRbfPlbEsdKERbeNY1zXY3vGONrDOFSsvFMm
+	iroSr5+BYLsLTWUuNxFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neVoV-00GtLe-CW; Wed, 13 Apr 2022 05:45:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1neWCV-00H1MT-MA; Wed, 13 Apr 2022 06:09:59 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neVoE-00GtDM-GL; Wed, 13 Apr 2022 05:44:57 +0000
-X-UUID: 7a45adcf2f584cacaa88a1d46275fac3-20220412
-X-UUID: 7a45adcf2f584cacaa88a1d46275fac3-20220412
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 292619034; Tue, 12 Apr 2022 22:44:46 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 12 Apr 2022 22:44:44 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 13 Apr 2022 13:44:35 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 13 Apr 2022 13:44:33 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
- <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
- Verkuil" <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
- <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
- <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
- <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
- Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH] media: mediatek: vcodec: add vp9 decoder driver for mt8186
-Date: Wed, 13 Apr 2022 13:44:31 +0800
-Message-ID: <20220413054431.29917-1-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ id 1neWAi-00H0WO-8q; Wed, 13 Apr 2022 06:08:10 +0000
+Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 23D0V14h028018; 
+ Wed, 13 Apr 2022 06:07:53 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : content-type : in-reply-to : mime-version;
+ s=corp-2021-07-09; bh=w+DI7uEwEGc2bLXgswB/AKGIvX+bf8l6AhbKH6m2jIc=;
+ b=Hv+VkLD5kB+T6r3qLgp62u3yNST2eXXQHCcDT8fty2hJbKgMMvBc2HSb9jz4CFEcf/bJ
+ OjVhhLQ26tba0ALrvGghFlsoJDPouRR5e5/sn8FEWX/s4ZOQDtzRUSP7D+c88bPOc07U
+ hD2x3dsQnQdMEN+2Ak2Qex6E39pOc3psBL2RrB65nxDK5DxvV9tjslS1oCcXioARAF0i
+ fw/aVMkh1mAeTM3L3O4/1EoMrlEDyC3HmBC01odwY2HudN+zOdUGN8NKMF2aTwayu5xt
+ e1Y0iu6dkUyPxNHoEHqbSyBpmLJGVMhreOT9TnTc+B9u+3G4Mzsvul9ZTnFJkRy3sJHU OQ== 
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
+ by mx0b-00069f02.pphosted.com with ESMTP id 3fb21a0j4t-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 13 Apr 2022 06:07:53 +0000
+Received: from pps.filterd
+ (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.16.1.2/8.16.1.2)
+ with SMTP id 23D5vZqd026317; Wed, 13 Apr 2022 06:07:51 GMT
+Received: from nam04-dm6-obe.outbound.protection.outlook.com
+ (mail-dm6nam08lp2044.outbound.protection.outlook.com [104.47.73.44])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com with ESMTP id
+ 3fb0k3nbbk-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 13 Apr 2022 06:07:51 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=EsO9LxjwxOfEIKfJ87JMNaWKHEunM6yJdRDrVp3amMsj8BaANXBOAeRDa70hcvN+Gor0BNn+3LK0XrtfIIcaRzSZYqRWOagbLT6UR0dBkuKVYK5zO0p560/HAN1OQGHj9gZwYCXfzCjTl+PnFZwOKVY8hY+6/yUDXttoRGpOzYNdle1l1vq+6+5pv+wusW+E5ZXfs0fGnXTmGIzEU9VBGywb+e3lRrNL7DRvz+CsTTZDix7RuLoMVlYwZYCZrtFKebEmuVvuqhsbwgChGUEf2u3zht2IF2WEVqwWTGdTy+i8X/p0Lp71eHiSbXgo53Vdm9GxJ6A2evMmL/tvSmTtvA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=w+DI7uEwEGc2bLXgswB/AKGIvX+bf8l6AhbKH6m2jIc=;
+ b=byYUNyuQvz5+gFCIdneg7YWKIElJwz9Yi4pwK+DimLsfK34EbszVx/IZ8ppEupRkbx6cXYRdAnClPneZof8OHJpdQ+SkbgFEV2FER0hpFs+h6AUInEgICusP5A7QMzQKs5qgFmM3fNW+HTR6wHQBtbTlub0rwvWUegM3p0ICfFd14Eals3bQuMvG0kkAsZwMFDvbPWTDwi3ley+eDtuEgZ9FS0tREAr8aH87kx+QZqgKTYRS5JsTL/Jyob4kYpnahTuxHcAfP8U6XIzLj7DmWupbqnRSX3Z/g5LeOzQ4QC1PsQkJt0QC5kOTrfNGc7sRid+bLDpux57slAH0WXR3ng==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=w+DI7uEwEGc2bLXgswB/AKGIvX+bf8l6AhbKH6m2jIc=;
+ b=i+/7UUrQ2qFoqPcCnKNFdwPC7xNKqq0FkEY7j6Rc/FMsxKlhrVmKbfqIuau/0HoPxvyqV6q77BuGdRfEkfm4P6DnmfN5nEiacYV8HKqwTC/YX3Zf+JnvOpHg41+akPTD8xHYSSvMmfyppq+ZQsctu4o1p6Fo/X3eOSuClb9/G1s=
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by DM5PR10MB1307.namprd10.prod.outlook.com
+ (2603:10b6:3:e::9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5144.29; Wed, 13 Apr
+ 2022 06:07:49 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::b5d5:7b39:ca2d:1b87]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::b5d5:7b39:ca2d:1b87%5]) with mapi id 15.20.5144.022; Wed, 13 Apr 2022
+ 06:07:49 +0000
+Date: Wed, 13 Apr 2022 09:07:09 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: kbuild@lists.01.org, "jason-jh.lin" <jason-jh.lin@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v18 03/10] soc: mediatek: add mtk-mmsys support for
+ mt8195 vdosys0
+Message-ID: <202204130935.urqkcDrG-lkp@intel.com>
+Content-Disposition: inline
+In-Reply-To: <20220412103114.19922-4-jason-jh.lin@mediatek.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-ClientProxiedBy: JN2P275CA0018.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:3::30)
+ To MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28)
 MIME-Version: 1.0
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 376242b4-f78a-4bd2-86f1-08da1d13ef3d
+X-MS-TrafficTypeDiagnostic: DM5PR10MB1307:EE_
+X-Microsoft-Antispam-PRVS: <DM5PR10MB13076DF6E0AC673A721C9E0A8EEC9@DM5PR10MB1307.namprd10.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: IN2T12573WtA5xcZyrFvd+aN813XP5Tf5BpxV82rn2ADCYMlWaeuG+N12EX+HbD1r4kpirMNcFU+ZdgxXbERb/+fUArEAvfdCo45MJZkqKvwvvOPrlEArtLNIhZRNNdXXmnKQk3WDAJgwVhjSv7cKgt04s57z1vuVhkkUgdItbn8APp3h2EjL0T5RcCXvUO0bGDoVHxfDzPLkOopEeZZxCDD923wNzDUSi2tOL2CMrtWTiMVkdbGvyHujBLzuJ8otCorMBYekAd3mFJh0X0bwxGDVef9bZ+zVu4xaAhfg17XspIqZKpOiGoLZwkwM114XA5vsOLOhj6ycG+ywpQYAiuPj0UnXDlfnK90Wq5ivWUd/DuJz3kScU48vyT1EyOjVhFk5Qddxvxo/kJDt7EBVuRbfh82KKMMgL2MCFXuGHlrDWg2cJhK2o9jEXCZFSjYQSpW9NZK/tRZ9zXYDa7iYqDFoBAkgarl4qY3zfdSVadT/f3YJSKWS7QzhwIFGdpIQ5aBe//DQTLYghoaNuhu8MGbReaQoGadNKf5Vv/kdRTFLXH6aLBQ4aeGolqytdagSwgdRWdJFfeLn56nxpaZQTFLjRZiNeqSb2UwZ8Nx9KFkTDw6BExvGRF9RMtx4W//QKBTWDPXkgxl+8BtrTMqdnHl6Sec6+npbrGzqsCjYHRTAJWsv3ok3gqzQ9aYepuJq6Hoq23nq5XtNKeh78UD+AZdbRoGZah7kPY/yTVAt3jincgMoNBRA+H8F/Xht7AK+CSjI88xnWNdBpMHC2vMqVzc7AzkfTwISmWIKR6o898gmvuCgbz3ZHIyYcvNlURbaLA7im32MJjSAtLV7/rH4w==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(366004)(8936002)(7416002)(966005)(36756003)(86362001)(6486002)(6506007)(9686003)(316002)(110136005)(508600001)(5660300002)(2906002)(4326008)(8676002)(66476007)(66556008)(66946007)(54906003)(26005)(44832011)(83380400001)(186003)(6512007)(6666004)(52116002)(1076003)(38350700002)(38100700002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Gy9LGP52TwLJsLxDU6Jptp2lTuUn9VaCb0ZZHDMnQCqEXv5dQoc3hvuXmEG7?=
+ =?us-ascii?Q?1yfnt+2iEXnfI6Mwv45d7hd/KLcqsRiav59E3gBoeSKkYw6HR++WyImQ1g4Z?=
+ =?us-ascii?Q?Cqr4bnIeSwbMrpMXjo/jU7a3e7BYOe29cs7MAsMOZ2bXeuTLinjpW7+bo1UG?=
+ =?us-ascii?Q?vg3XvgJJtXnFQTwL7zUGxyGLDoAmKJ79oa1caGVgb37UCkCb0wIV9YYddA77?=
+ =?us-ascii?Q?XFF8q7xFWzm6JHtBEy8pGG4ZIf6SoIpuKfr2h3THP+OV6y+GoE7p8Gh8Bnv/?=
+ =?us-ascii?Q?QeUKSezgWAsjORm92YF+KAVHiW1opUZAKA+8A4/Jl7fQfi0z+/N3Fdr8cwb4?=
+ =?us-ascii?Q?qWBjPKxTPHrJfIGfzWQnsw8FQX0WcjMKC9UQkARFXPfxMbQZZPYmXpaTeVwu?=
+ =?us-ascii?Q?PQg9t8zNc+0F0su8NZWC2ai+MTW38N3taltGK3TDzvIDyL8GjWsGnlgIyLb8?=
+ =?us-ascii?Q?VqIHHEBrCRy5bK/Z6SMipPKlAjeo24DxOjqT6FkgZLK13Tn/dtjkZo4ViFcl?=
+ =?us-ascii?Q?lV3tPyUgXnfLSCllsV27qrJq7NRqzKREDwSy8lEx5RoTyX+GAkNyIiZkjzJT?=
+ =?us-ascii?Q?CdRU8GxgXTXKkCMXUgNCZe22RpL7OYogWOY4eGV0aV9dZ8Hwxh+UFoWHYr4j?=
+ =?us-ascii?Q?1LSQk+Jp/5d5vYRUvexEmWB/t/GCGE9dfQyCToUr0QgdoJCdxMBgpWh1dzKF?=
+ =?us-ascii?Q?xRLU1Lm3zPDAEbL7r0osqDV5nwixti641wmj6OD/ioWVFRaOabhroNUhyXDO?=
+ =?us-ascii?Q?CYnv4adozve1mblGW6VozBJ1sHa4Z0fJsVc5I+a0ntj9c5BsW2vLr5IQscUF?=
+ =?us-ascii?Q?emS7kUQQ/UJlbS1frxYe5oU3rkXlhD9wj82BeeJP1Z+JwM/7usI6sIgv9x1b?=
+ =?us-ascii?Q?Bu0abbjP/0kag5ejN+ftNMqykWk8tnVg/kM+e/9FP5kJdymduHYzSOIqVUKu?=
+ =?us-ascii?Q?SZQvsl7zGIrk6b0Xebv2S4WCt2xEAoXqSRpAckXYElwm0LO6XAwtKqwQqeKV?=
+ =?us-ascii?Q?8e6BXpAYjlmJexvjIt5BY0jkA2Xl5Bs2rb7jwJqx06wYML3UNiDI+Zolrdyt?=
+ =?us-ascii?Q?rbIq4UmLxB9wOyuH5RhhojpHT9ZRJ7iEl9okbvY2cjJDJAFeGNJF9lYb+FoP?=
+ =?us-ascii?Q?UnExeYlHsDKwlaPSUrQv7xzCBRaPtYOFLwldJLyrhBO3AhxLCo35sgpXcRPr?=
+ =?us-ascii?Q?3wyKmbHt0rIPtjHq3vYkZ3cCwU4C3Rd2s1tUKI0IimDtFn8+58GtGhpWmzZ2?=
+ =?us-ascii?Q?ACqe//z4C3koIAmIvp/r5K+pq01YMDxtu+/QM5gSAFC5IQqO5xZ53B1CSt+q?=
+ =?us-ascii?Q?BsJWmBPD2P6Mkgfwm0QfaxtAC0X07OGia64C4op8SSQjpmbvF8KWObjWdja1?=
+ =?us-ascii?Q?R9V4jHeJeN4zkJEoFlw/fdqS0utOEYxY04sU7CN+uiX685tKeeDpl7UH0Oxa?=
+ =?us-ascii?Q?FBzH+2UuHVq9dv0jYNnlKCF+r3gu4ujbbQds8VCsw4Ko98EkqISgIQ28MWDm?=
+ =?us-ascii?Q?rkhtY3T7JUaG7SlslBAosCTBllmwWUPs9jf52fOs2ogpf06y1b8+uDMExNOd?=
+ =?us-ascii?Q?Rpjxo/OaBEDbFoq8GQ5UWedoEkYsgNrZE1coMBtjVYPbbdyVUrlqvs+hq7x/?=
+ =?us-ascii?Q?dcskUdsH/xIX/uqTr/9ocTN/SwlT/4dvdb19gcpKug6AENyhRbDAQa+nblZq?=
+ =?us-ascii?Q?0yj7CVC+40W6Jwd4GaOgHUrecqvUJn7XXZUXeMHCaqgpB/N0PK+Je5Mr6kOb?=
+ =?us-ascii?Q?EfEDCxnfdgoWOxkbCSQt4biYqvi52u8=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 376242b4-f78a-4bd2-86f1-08da1d13ef3d
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Apr 2022 06:07:48.6248 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: gQpEuGxpRiydap34OVVjWl5grjDW423JpFcZEbv+lG5cw1J/vjbnCZKKdOj0ShqbBHmJzCiYsAXBZAPqTBZMknZGlrXwmxHMQ2CpVraUkNM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR10MB1307
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.486, 18.0.858
+ definitions=2022-04-12_06:2022-04-11,
+ 2022-04-12 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ malwarescore=0 bulkscore=0
+ suspectscore=0 mlxlogscore=999 mlxscore=0 spamscore=0 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2202240000
+ definitions=main-2204130035
+X-Proofpoint-GUID: Wp2xNDFvzh-2M8sqeH-A1pMzTIqNx68Q
+X-Proofpoint-ORIG-GUID: Wp2xNDFvzh-2M8sqeH-A1pMzTIqNx68Q
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220412_224454_577153_B6A9E93B 
-X-CRM114-Status: GOOD (  20.80  )
+X-CRM114-CacheID: sfid-20220412_230808_371118_CD8ACC8D 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,313 +169,118 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, moudy.ho@mediatek.com, kbuild-all@lists.01.org,
+ lkp@intel.com, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ David Airlie <airlied@linux.ie>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ singo.chang@mediatek.com, roy-cw.yeh@mediatek.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Fabien Parent <fparent@baylibre.com>, nancy.lin@mediatek.com,
+ linux-mediatek@lists.infradead.org, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ hsinyi@chromium.org, Rex-BC Chen <rex-bc.chen@mediatek.com>,
+ linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yunfei Dong <yunfei.dong@mediatek.corp-partner.google.com>
+Hi "jason-jh.lin",
 
-Add vp9 single core decode driver to support mt8186.
+url:    https://github.com/intel-lab-lkp/linux/commits/jason-jh-lin/Add-Mediatek-Soc-DRM-vdosys0-support-for-mt8195/20220412-183359
+base:   git://anongit.freedesktop.org/drm/drm drm-next
+config: arc-randconfig-m031-20220411 (https://download.01.org/0day-ci/archive/20220413/202204130935.urqkcDrG-lkp@intel.com/config)
+compiler: arc-elf-gcc (GCC) 11.2.0
 
-Signed-off-by: Mingjia Zhang <mingjia.zhang@mediatek.com>
-Signed-off-by: Xiaoyong Lu <xiaoyong.lu@mediatek.com>
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
-This patch depends on "support mt8195 decoder"[1]
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
+Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
 
-[1] https://patchwork.kernel.org/project/linux-mediatek/cover/20220413035410.29568-1-yunfei.dong@mediatek.com/
----
- .../vcodec/vdec/vdec_vp9_req_lat_if.c         | 197 +++++++++++++++++-
- .../platform/mediatek/vcodec/vdec_drv_if.c    |   2 +-
- 2 files changed, 195 insertions(+), 4 deletions(-)
+smatch warnings:
+drivers/soc/mediatek/mtk-mmsys.c:315 mtk_mmsys_probe() warn: passing zero to 'PTR_ERR'
 
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-index 4b20d6e09809..8373b7ea3d44 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-@@ -439,6 +439,8 @@ struct vdec_vp9_slice_ref {
-  * @init_vsi:		vsi used for initialized VP9 instance
-  * @vsi:		vsi used for decoding/flush ...
-  * @core_vsi:		vsi used for Core stage
-+ *
-+ * @sc_pfc:		per frame context single core
-  * @counts_map:	used map to counts_helper
-  * @counts_helper:	counts table according to newest kernel spec
-  */
-@@ -487,6 +489,7 @@ struct vdec_vp9_slice_instance {
- 	};
- 	struct vdec_vp9_slice_vsi *core_vsi;
- 
-+	struct vdec_vp9_slice_pfc sc_pfc;
- 	struct vdec_vp9_slice_counts_map counts_map;
- 	struct v4l2_vp9_frame_symbol_counts counts_helper;
- };
-@@ -692,6 +695,25 @@ static int vdec_vp9_slice_tile_offset(int idx, int mi_num, int tile_log2)
- 	return offset < mi_num ? offset : mi_num;
- }
- 
-+static
-+int vdec_vp9_slice_setup_single_from_src_to_dst(struct vdec_vp9_slice_instance *instance)
-+{
-+	struct vb2_v4l2_buffer *src;
-+	struct vb2_v4l2_buffer *dst;
-+
-+	src = v4l2_m2m_next_src_buf(instance->ctx->m2m_ctx);
-+	if (!src)
-+		return -EINVAL;
-+
-+	dst = v4l2_m2m_next_dst_buf(instance->ctx->m2m_ctx);
-+	if (!dst)
-+		return -EINVAL;
-+
-+	v4l2_m2m_buf_copy_metadata(src, dst, true);
-+
-+	return 0;
-+}
-+
- static int vdec_vp9_slice_setup_lat_from_src_buf(struct vdec_vp9_slice_instance *instance,
- 						 struct vdec_lat_buf *lat_buf)
- {
-@@ -1568,6 +1590,33 @@ static int vdec_vp9_slice_update_prob(struct vdec_vp9_slice_instance *instance,
- 	return 0;
- }
- 
-+static int vdec_vp9_slice_update_single(struct vdec_vp9_slice_instance *instance,
-+				        struct vdec_vp9_slice_pfc *pfc)
-+{
-+	struct vdec_vp9_slice_vsi *vsi;
-+
-+	vsi = &pfc->vsi;
-+	memcpy(&pfc->state[0], &vsi->state, sizeof(vsi->state));
-+
-+	mtk_vcodec_debug(instance, "Frame %u Y_CRC %08x %08x %08x %08x\n",
-+			 pfc->seq,
-+			 vsi->state.crc[0], vsi->state.crc[1],
-+			 vsi->state.crc[2], vsi->state.crc[3]);
-+	mtk_vcodec_debug(instance, "Frame %u C_CRC %08x %08x %08x %08x\n",
-+			 pfc->seq,
-+			 vsi->state.crc[4], vsi->state.crc[5],
-+			 vsi->state.crc[6], vsi->state.crc[7]);
-+
-+	vdec_vp9_slice_update_prob(instance, vsi);
-+
-+	instance->width = vsi->frame.uh.frame_width;
-+	instance->height = vsi->frame.uh.frame_height;
-+	instance->frame_type = vsi->frame.uh.frame_type;
-+	instance->show_frame = vsi->frame.uh.show_frame;
-+
-+	return 0;
-+}
-+
- static int vdec_vp9_slice_update_lat(struct vdec_vp9_slice_instance *instance,
- 				     struct vdec_lat_buf *lat_buf,
- 				     struct vdec_vp9_slice_pfc *pfc)
-@@ -1691,6 +1740,40 @@ static int vdec_vp9_slice_setup_core_buffer(struct vdec_vp9_slice_instance *inst
- 	return 0;
- }
- 
-+static void vdec_vp9_slice_setup_single_buffer(struct vdec_vp9_slice_instance *instance,
-+					       struct vdec_vp9_slice_pfc *pfc,
-+					       struct vdec_vp9_slice_vsi *vsi,
-+					       struct mtk_vcodec_mem *bs,
-+					       struct vdec_fb *fb)
-+{
-+	int i;
-+
-+	vsi->bs.buf.dma_addr = bs->dma_addr;
-+	vsi->bs.buf.size = bs->size;
-+	vsi->bs.frame.dma_addr = bs->dma_addr;
-+	vsi->bs.frame.size = bs->size;
-+
-+	for (i = 0; i < 2; i++) {
-+		vsi->mv[i].dma_addr = instance->mv[i].dma_addr;
-+		vsi->mv[i].size = instance->mv[i].size;
-+	}
-+	for (i = 0; i < 2; i++) {
-+		vsi->seg[i].dma_addr = instance->seg[i].dma_addr;
-+		vsi->seg[i].size = instance->seg[i].size;
-+	}
-+	vsi->tile.dma_addr = instance->tile.dma_addr;
-+	vsi->tile.size = instance->tile.size;
-+	vsi->prob.dma_addr = instance->prob.dma_addr;
-+	vsi->prob.size = instance->prob.size;
-+	vsi->counts.dma_addr = instance->counts.dma_addr;
-+	vsi->counts.size = instance->counts.size;
-+
-+	vsi->row_info.buf = 0;
-+	vsi->row_info.size = 0;
-+
-+	vdec_vp9_slice_setup_core_buffer(instance, pfc, vsi, fb, NULL);
-+}
-+
- static int vdec_vp9_slice_setup_core(struct vdec_vp9_slice_instance *instance,
- 				     struct vdec_fb *fb,
- 				     struct vdec_lat_buf *lat_buf,
-@@ -1717,6 +1800,43 @@ static int vdec_vp9_slice_setup_core(struct vdec_vp9_slice_instance *instance,
- 	return ret;
- }
- 
-+static int vdec_vp9_slice_setup_single(struct vdec_vp9_slice_instance *instance,
-+				       struct mtk_vcodec_mem *bs,
-+				       struct vdec_fb *fb,
-+				       struct vdec_vp9_slice_pfc *pfc)
-+{
-+	struct vdec_vp9_slice_vsi *vsi = &pfc->vsi;
-+	int ret;
-+
-+	ret = vdec_vp9_slice_setup_single_from_src_to_dst(instance);
-+	if (ret)
-+		goto err;
-+
-+	ret = vdec_vp9_slice_setup_pfc(instance, pfc);
-+	if (ret)
-+		goto err;
-+
-+	ret = vdec_vp9_slice_alloc_working_buffer(instance, vsi);
-+	if (ret)
-+		goto err;
-+
-+	vdec_vp9_slice_setup_single_buffer(instance, pfc, vsi, bs, fb);
-+	vdec_vp9_slice_setup_seg_buffer(instance, vsi, &instance->seg[0]);
-+
-+	ret = vdec_vp9_slice_setup_prob_buffer(instance, vsi);
-+	if (ret)
-+		goto err;
-+
-+	ret = vdec_vp9_slice_setup_tile_buffer(instance, vsi, bs);
-+	if (ret)
-+		goto err;
-+
-+	return 0;
-+
-+err:
-+	return ret;
-+}
-+
- static int vdec_vp9_slice_update_core(struct vdec_vp9_slice_instance *instance,
- 				      struct vdec_lat_buf *lat_buf,
- 				      struct vdec_vp9_slice_pfc *pfc)
-@@ -1814,8 +1934,8 @@ static int vdec_vp9_slice_flush(void *h_vdec, struct mtk_vcodec_mem *bs,
- 	struct vdec_vp9_slice_instance *instance = h_vdec;
- 
- 	mtk_vcodec_debug(instance, "flush ...\n");
--
--	vdec_msg_queue_wait_lat_buf_full(&instance->ctx->msg_queue);
-+	if (instance->ctx->dev->vdec_pdata->hw_arch != MTK_VDEC_PURE_SINGLE_CORE)
-+		vdec_msg_queue_wait_lat_buf_full(&instance->ctx->msg_queue);
- 	return vpu_dec_reset(&instance->vpu);
- }
- 
-@@ -1868,6 +1988,63 @@ static int vdec_vp9_slice_get_param(void *h_vdec, enum vdec_get_param_type type,
- 	return 0;
- }
- 
-+static int vdec_vp9_slice_single_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
-+				        struct vdec_fb *fb, bool *res_chg)
-+{
-+	struct vdec_vp9_slice_instance *instance = h_vdec;
-+	struct vdec_vp9_slice_pfc *pfc = &(instance->sc_pfc);
-+	struct vdec_vp9_slice_vsi *vsi;
-+	struct mtk_vcodec_ctx *ctx;
-+	int ret;
-+
-+	if (!instance || !instance->ctx)
-+		return -EINVAL;
-+	ctx = instance->ctx;
-+
-+	/* bs NULL means flush decoder */
-+	if (!bs)
-+		return vdec_vp9_slice_flush(h_vdec, bs, fb, res_chg);
-+
-+	fb = ctx->dev->vdec_pdata->get_cap_buffer(ctx);
-+	if (!fb)
-+		return -EBUSY;
-+
-+	vsi = &pfc->vsi;
-+
-+	ret = vdec_vp9_slice_setup_single(instance, bs, fb, pfc);
-+	if (ret) {
-+		mtk_vcodec_err(instance, "Failed to setup VP9 single ret %d\n", ret);
-+		return ret;
-+	}
-+	vdec_vp9_slice_vsi_to_remote(vsi, instance->vsi);
-+
-+	ret = vpu_dec_start(&instance->vpu, 0, 0);
-+	if (ret) {
-+		mtk_vcodec_err(instance, "Failed to dec VP9 ret %d\n", ret);
-+		return ret;
-+	}
-+
-+	ret = mtk_vcodec_wait_for_done_ctx(ctx,	MTK_INST_IRQ_RECEIVED,
-+					   WAIT_INTR_TIMEOUT_MS, MTK_VDEC_CORE);
-+	/* update remote vsi if decode timeout */
-+	if (ret) {
-+		mtk_vcodec_err(instance, "VP9 decode timeout %d\n", ret);
-+		writel(1, &instance->vsi->state.timeout);
-+	}
-+
-+	vpu_dec_end(&instance->vpu);
-+
-+	vdec_vp9_slice_vsi_from_remote(vsi, instance->vsi, 0);
-+	ret = vdec_vp9_slice_update_single(instance, pfc);
-+	if (ret) {
-+		mtk_vcodec_err(instance, "VP9 decode error: %d\n", ret);
-+		return ret;
-+	}
-+
-+	instance->ctx->decoded_frame_cnt++;
-+	return 0;
-+}
-+
- static int vdec_vp9_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 				     struct vdec_fb *fb, bool *res_chg)
- {
-@@ -1947,6 +2124,20 @@ static int vdec_vp9_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 	return 0;
- }
- 
-+static int vdec_vp9_slice_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
-+				 struct vdec_fb *fb, bool *res_chg)
-+{
-+	struct vdec_vp9_slice_instance *instance = h_vdec;
-+	int ret;
-+
-+	if (instance->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_PURE_SINGLE_CORE)
-+		ret = vdec_vp9_slice_single_decode(h_vdec, bs, fb, res_chg);
-+	else
-+		ret = vdec_vp9_slice_lat_decode(h_vdec, bs, fb, res_chg);
-+
-+	return ret;
-+}
-+
- static int vdec_vp9_slice_core_decode(struct vdec_lat_buf *lat_buf)
- {
- 	struct vdec_vp9_slice_instance *instance;
-@@ -2025,7 +2216,7 @@ static int vdec_vp9_slice_core_decode(struct vdec_lat_buf *lat_buf)
- 
- const struct vdec_common_if vdec_vp9_slice_lat_if = {
- 	.init		= vdec_vp9_slice_init,
--	.decode		= vdec_vp9_slice_lat_decode,
-+	.decode		= vdec_vp9_slice_decode,
- 	.get_param	= vdec_vp9_slice_get_param,
- 	.deinit		= vdec_vp9_slice_deinit,
- };
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec_drv_if.c b/drivers/media/platform/mediatek/vcodec/vdec_drv_if.c
-index 27b4b35039cf..f3807f03d880 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec_drv_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/vdec_drv_if.c
-@@ -47,7 +47,7 @@ int vdec_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
- 		break;
- 	case V4L2_PIX_FMT_VP9_FRAME:
- 		ctx->dec_if = &vdec_vp9_slice_lat_if;
--		ctx->hw_id = MTK_VDEC_LAT0;
-+		ctx->hw_id = IS_VDEC_LAT_ARCH(hw_arch) ? MTK_VDEC_LAT0 : MTK_VDEC_CORE;
- 		break;
- 	default:
- 		return -EINVAL;
+vim +/PTR_ERR +315 drivers/soc/mediatek/mtk-mmsys.c
+
+13032709e23285 Matthias Brugger       2020-03-25  281  static int mtk_mmsys_probe(struct platform_device *pdev)
+13032709e23285 Matthias Brugger       2020-03-25  282  {
+2c758e301ed95a Enric Balletbo i Serra 2020-03-25  283  	struct device *dev = &pdev->dev;
+13032709e23285 Matthias Brugger       2020-03-25  284  	struct platform_device *clks;
+667c769246b01c Enric Balletbo i Serra 2020-03-25  285  	struct platform_device *drm;
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  286  	const struct mtk_mmsys_match_data *match_data;
+ce15e7faa2fc54 CK Hu                  2021-03-17  287  	struct mtk_mmsys *mmsys;
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  288  	struct resource *res;
+2c758e301ed95a Enric Balletbo i Serra 2020-03-25  289  	int ret;
+2c758e301ed95a Enric Balletbo i Serra 2020-03-25  290  
+ce15e7faa2fc54 CK Hu                  2021-03-17  291  	mmsys = devm_kzalloc(dev, sizeof(*mmsys), GFP_KERNEL);
+ce15e7faa2fc54 CK Hu                  2021-03-17  292  	if (!mmsys)
+ce15e7faa2fc54 CK Hu                  2021-03-17  293  		return -ENOMEM;
+ce15e7faa2fc54 CK Hu                  2021-03-17  294  
+ce15e7faa2fc54 CK Hu                  2021-03-17  295  	mmsys->regs = devm_platform_ioremap_resource(pdev, 0);
+ce15e7faa2fc54 CK Hu                  2021-03-17  296  	if (IS_ERR(mmsys->regs)) {
+ce15e7faa2fc54 CK Hu                  2021-03-17  297  		ret = PTR_ERR(mmsys->regs);
+cc6576029aedc7 Enric Balletbo i Serra 2020-10-06  298  		dev_err(dev, "Failed to ioremap mmsys registers: %d\n", ret);
+2c758e301ed95a Enric Balletbo i Serra 2020-03-25  299  		return ret;
+2c758e301ed95a Enric Balletbo i Serra 2020-03-25  300  	}
+2c758e301ed95a Enric Balletbo i Serra 2020-03-25  301  
+f27ef2856343e2 Enric Balletbo i Serra 2021-09-30  302  	spin_lock_init(&mmsys->lock);
+f27ef2856343e2 Enric Balletbo i Serra 2021-09-30  303  
+f27ef2856343e2 Enric Balletbo i Serra 2021-09-30  304  	mmsys->rcdev.owner = THIS_MODULE;
+f27ef2856343e2 Enric Balletbo i Serra 2021-09-30  305  	mmsys->rcdev.nr_resets = 32;
+f27ef2856343e2 Enric Balletbo i Serra 2021-09-30  306  	mmsys->rcdev.ops = &mtk_mmsys_reset_ops;
+f27ef2856343e2 Enric Balletbo i Serra 2021-09-30  307  	mmsys->rcdev.of_node = pdev->dev.of_node;
+f27ef2856343e2 Enric Balletbo i Serra 2021-09-30  308  	ret = devm_reset_controller_register(&pdev->dev, &mmsys->rcdev);
+f27ef2856343e2 Enric Balletbo i Serra 2021-09-30  309  	if (ret) {
+f27ef2856343e2 Enric Balletbo i Serra 2021-09-30  310  		dev_err(&pdev->dev, "Couldn't register mmsys reset controller: %d\n", ret);
+f27ef2856343e2 Enric Balletbo i Serra 2021-09-30  311  		return ret;
+f27ef2856343e2 Enric Balletbo i Serra 2021-09-30  312  	}
+f27ef2856343e2 Enric Balletbo i Serra 2021-09-30  313  
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  314  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+8cfc54a36d3e79 jason-jh.lin           2022-04-12 @315  	if (PTR_ERR(res)) {
+
+You probably meant IS_ERR() instead of PTR_ERR().  But actually
+platform_get_resource() does not return error pointers, it returns
+NULL so the correct check is:
+
+	if (!res) {
+
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  316  		dev_err(dev, "Couldn't get mmsys resource\n");
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  317  		return -EINVAL;
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  318  	}
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  319  	mmsys->io_start = res->start;
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  320  
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  321  	match_data = of_device_get_match_data(dev);
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  322  	if (match_data->num_drv_data > 1) {
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  323  		/* This SoC has multiple mmsys channels */
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  324  		ret = mtk_mmsys_find_match_drvdata(mmsys, match_data);
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  325  		if (ret < 0) {
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  326  			dev_err(dev, "Couldn't get match driver data\n");
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  327  			return ret;
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  328  		}
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  329  		mmsys->data = match_data->drv_data[ret];
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  330  	} else {
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  331  		dev_dbg(dev, "Using single mmsys channel\n");
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  332  		mmsys->data = match_data->drv_data[0];
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  333  	}
+8cfc54a36d3e79 jason-jh.lin           2022-04-12  334  
+ce15e7faa2fc54 CK Hu                  2021-03-17  335  	platform_set_drvdata(pdev, mmsys);
+13032709e23285 Matthias Brugger       2020-03-25  336  
+ce15e7faa2fc54 CK Hu                  2021-03-17  337  	clks = platform_device_register_data(&pdev->dev, mmsys->data->clk_driver,
+13032709e23285 Matthias Brugger       2020-03-25  338  					     PLATFORM_DEVID_AUTO, NULL, 0);
+13032709e23285 Matthias Brugger       2020-03-25  339  	if (IS_ERR(clks))
+13032709e23285 Matthias Brugger       2020-03-25  340  		return PTR_ERR(clks);
+13032709e23285 Matthias Brugger       2020-03-25  341  
+667c769246b01c Enric Balletbo i Serra 2020-03-25  342  	drm = platform_device_register_data(&pdev->dev, "mediatek-drm",
+667c769246b01c Enric Balletbo i Serra 2020-03-25  343  					    PLATFORM_DEVID_AUTO, NULL, 0);
+ff34e17cf9bce8 Wei Yongjun            2020-05-06  344  	if (IS_ERR(drm)) {
+ff34e17cf9bce8 Wei Yongjun            2020-05-06  345  		platform_device_unregister(clks);
+667c769246b01c Enric Balletbo i Serra 2020-03-25  346  		return PTR_ERR(drm);
+ff34e17cf9bce8 Wei Yongjun            2020-05-06  347  	}
+667c769246b01c Enric Balletbo i Serra 2020-03-25  348  
+13032709e23285 Matthias Brugger       2020-03-25  349  	return 0;
+13032709e23285 Matthias Brugger       2020-03-25  350  }
+
 -- 
-2.18.0
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
 
 _______________________________________________
