@@ -4,73 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BB54C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 08:29:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FD05C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 08:30:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XCJzvPhH6ZWvzHkD+aSj/KVUH+OjgKcipE6IL4vDPjA=; b=BBPo51xQbmmSkw
-	NNWD2N+m0u1JTx/q4p8UCjAKRamoUj7JCfRghfr6+rprf1vF0HeZX5Ds9ioZ9OzpKsmXy7xQ8o9+9
-	Wdph7x+VVITuRRdu6KQTtPmUQNLHS8Od2o8VoIsFBQEX5TKMSooX9t+kCXldhvnDPz7hN1SVP/O+l
-	im4Mq1Yd095+hNW8+2jRkDKQmsq9dSXtwwVGW9UeRFMoNRpL4RLlfazFkfXtVtbKZpVnwgN9uSWNp
-	u8kayjfRA2jJHJfiERQZoEuB14KtzavAQrweyYDjEW2LWnmoYFlfx0GVnCt5vVp8dxYOPB4pF4MxW
-	ywihE8Q7NctWC+qLTGOw==;
+	List-Owner; bh=NE/sBRglAHMUQfj7vHlZ3QXvp6DIKS/9N2FIhh9chbE=; b=pWZBNCYRw/pdUw
+	BNo/+JSarcvYdp8l97mFpX9F7QozGi+JA0tiXrZ6MTC6wO01vo6oYSQmbGonfUUuWyQD6rAYdtHE/
+	nA7zwKTuX7XL2iIgwepjQbPRt80iVJpye5x4zxqnNOKFymXNkMCG+aGggmg5N96yYq2aK/NksOjN6
+	RlXa7YvAimpCBR0vxa1rn6nNHAelI82wt2HXQD+RUHWRe2UYO2MX7vPhKM+qCrk2jedUt0LgvjfrE
+	Y3TiXrts6Jm48c8ClADowYThswARCLdN43haCsS3j64+ak0xHYsHPHorHR+ShY0kBmLFyyThCwxyz
+	DQuR7pKVR01pAiNuvdLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neYNd-00048m-Fg; Wed, 13 Apr 2022 08:29:37 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1neYOH-0004Tk-Ah; Wed, 13 Apr 2022 08:30:17 +0000
+Received: from relay.hostedemail.com ([64.99.140.28])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neYNL-0003zx-Hf; Wed, 13 Apr 2022 08:29:20 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id C38091F41E9D
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649838558;
- bh=OtAyAB8ObWWanJblSH4ivqyVXv79rEk7RZLtnWdU+Bk=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=nDW8GDYMJ7XrpWSY8JcPYQlmkgpEhzMClksZYYDmP3L7vAxpBoW2LN4iriX+3k1HL
- waZwxTKrfaZg6NpFIgZ8jlT37nEHWYkfpw9whCwCv7j8/vmQLgbQuYf3M2alDyTK2E
- U3Z7YNUSGm3vSGfgYLq43oSFp+jWCcd5FGVarIGxQ3KIOaAZ9Nf8nWYpQ7QfpI1gxW
- w3fM4VOMjlsnmhHCxNrYXOHFh8S0yK0VyjAgma+ymT2IcaQu5OqLnrm0yOpNtqXUsi
- DqGlLA5MLLzSzBz/zgty1D2eD/QpmLXBgdR+oznJpgzc/z8ykvso+I43F0wIkCpLjF
- jwknIZcmMjFTg==
-Message-ID: <bdc0830b-ed0e-94e3-aa67-de61f6318d7d@collabora.com>
-Date: Wed, 13 Apr 2022 10:29:14 +0200
+ id 1neYO3-0004L2-D6; Wed, 13 Apr 2022 08:30:04 +0000
+Received: from omf12.hostedemail.com (a10.router.float.18 [10.200.18.1])
+ by unirelay13.hostedemail.com (Postfix) with ESMTP id E6D7960B0F;
+ Wed, 13 Apr 2022 08:29:57 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by
+ omf12.hostedemail.com (Postfix) with ESMTPA id D72BC1D; 
+ Wed, 13 Apr 2022 08:29:54 +0000 (UTC)
+Message-ID: <d0ed8518dfb93e6f2bbbaf4aac3436dd20369c00.camel@perches.com>
+Subject: Re: [PATCH 08/14] MAINTAINERS: add Ralink pinctrl driver
+From: Joe Perches <joe@perches.com>
+To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, Sergio
+ Paracuellos <sergio.paracuellos@gmail.com>, Luiz Angelo Daros de Luca
+ <luizluca@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Thomas
+ Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger
+ <matthias.bgg@gmail.com>
+Cc: erkin.bozoglu@xeront.com, linux-gpio@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-mips@vger.kernel.org
+Date: Wed, 13 Apr 2022 01:29:53 -0700
+In-Reply-To: <20220413060729.27639-9-arinc.unal@arinc9.com>
+References: <20220413060729.27639-1-arinc.unal@arinc9.com>
+ <20220413060729.27639-9-arinc.unal@arinc9.com>
+User-Agent: Evolution 3.40.4-1ubuntu2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v14 5/6] dts: arm64: mt8183: add GCE client property for
- Mediatek MUTEX
-Content-Language: en-US
-To: Moudy Ho <moudy.ho@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Jernej Skrabec <jernej.skrabec@siol.net>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>, Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>,
- tfiga@chromium.org, drinkcat@chromium.org, pihsun@chromium.org,
- hsinyi@google.com, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- daoyuan huang <daoyuan.huang@mediatek.com>,
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, allen-kh.cheng@mediatek.com,
- xiandong.wang@mediatek.com, randy.wu@mediatek.com,
- jason-jh.lin@mediatek.com, roy-cw.yeh@mediatek.com,
- river.cheng@mediatek.com, srv_heupstream@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220411072403.24016-1-moudy.ho@mediatek.com>
- <20220411072403.24016-6-moudy.ho@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220411072403.24016-6-moudy.ho@mediatek.com>
+X-Stat-Signature: zhuoxxoync4pzqz7sdbq39i3jeft38mk
+X-Rspamd-Server: rspamout01
+X-Rspamd-Queue-Id: D72BC1D
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Session-ID: U2FsdGVkX18hGnWBYKAheXpW4IDdjP9YcLGcKeoboe4=
+X-HE-Tag: 1649838594-350832
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_012919_762502_A0EDDD0D 
-X-CRM114-Status: UNSURE (   6.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220413_013003_540186_F51F56B6 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,22 +69,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/04/22 09:24, Moudy Ho ha scritto:
-> In order to allow modules with latency requirements such as MDP3
-> to set registers through CMDQ, add the relevant dts property.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gV2VkLCAyMDIyLTA0LTEzIGF0IDA5OjA3ICswMzAwLCBBcsSxbsOnIMOcTkFMIHdyb3RlOgo+
+IEFkZCBhIG5ldyBzZWN0aW9uIGZvciB0aGUgUmFsaW5rIHBpbmN0cmwgZHJpdmVyIGFuZCBhZGQg
+bWUgYW5kIFNlcmdpbyBhcwo+IHRoZSBtYWludGFpbmVycy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBB
+csSxbsOnIMOcTkFMIDxhcmluYy51bmFsQGFyaW5jOS5jb20+CgpJdCdzIHVudXN1YWwgZm9yIGEg
+bGFzdCBuYW1lIHRvIGJlIGNvbXBsZXRlbHkgY2FwaXRhbGl6ZWQuCgo+IGRpZmYgLS1naXQgYS9N
+QUlOVEFJTkVSUyBiL01BSU5UQUlORVJTCltdCj4gQEAgLTE2NTAyLDYgKzE2NTAyLDEzIEBAIEw6
+CWxpbnV4LW1pcHNAdmdlci5rZXJuZWwub3JnCj4gIFM6CU1haW50YWluZWQKPiAgRjoJYXJjaC9t
+aXBzL2Jvb3QvZHRzL3JhbGluay9tdDc2MjEqCj4gIAo+ICtSQUxJTksgUElOQ1RSTCBEUklWRVIK
+PiArTToJQXLEsW7DpyDDnE5BTCA8YXJpbmMudW5hbEBhcmluYzkuY29tPgo+ICtNOglTZXJnaW8g
+UGFyYWN1ZWxsb3MgPHNlcmdpby5wYXJhY3VlbGxvc0BnbWFpbC5jb20+Cj4gK0w6CWxpbnV4LW1p
+cHNAdmdlci5rZXJuZWwub3JnCj4gK1M6CU1haW50YWluZWQKPiArRjoJZHJpdmVycy9waW5jdHJs
+L3JhbGluay8qCgpUeXBpY2FsbHkgdGhpcyBpcyBqdXN0IHRoZSBkaXJlY3RvcnkuCgpGOglkcml2
+ZXJzL3BpbmN0cmwvcmFsaW5rLwoKYXMgdGhpcyBjb3ZlcnMgYW55IGZpbGUgaW4gdGhlIGRpcmVj
+dG9yeSBhcyB3ZWxsIGFzCmFueSBwb3NzaWJsZSBzdWJkaXJlY3RvcmllcyBhbmQgZmlsZXMuCgpV
+c2luZwoKRjoJZHJpdmVycy9waW5jdHJsL3JhbGluay8qCgpleGNsdWRlcyBhbnkgcG9zc2libGUg
+c3ViZGlyZWN0b3JpZXMgYW5kIGZpbGVzIHdpdGhpbiB0aG9zZQpwb3NzaWJsZSBzdWJkaXJlY3Rv
+cmllcy4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1t
+ZWRpYXRlawo=
