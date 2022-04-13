@@ -4,84 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBF08C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 12:44:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C55DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 12:48:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z8tYZXtfMI++iB0ukdGFshItTJJqkljBIZV+n17Tlpo=; b=zdSY8wX3PGY8Tc
-	76TBjnNcfBgRdeOHX9HLDCnCL5VHPttPk4oRlD2WMZ4/Ap2LJMJYV4aReRimydanVby7qM3+QOJ+S
-	LcA/nW0BZ6jOU0ZsyzObp+JpSYSLXK3tqubNOjSxlu15v9vIQcphZYMOy7RIBlPsC6bxWTzvkueus
-	IpuYPhz9rx0YsQf8d19Uim+0PKsUXOHC79jWQ5IbXtleTc+38lzMGJJ6NRcGSKII0grn9xFajoEo2
-	oDdFrlUtS/ZrZHdue+JgeL+oEXvhYtkA6Txd7G7K4ktg+C+Rexa/27lWuaoLt4Cj3xN2wnxXYF6ge
-	dZV6mqaeHnnjieg/Sh1A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LzxsQC82UM4hipBZD0k65qUyAQp+h4Gkll6GRa/GneQ=; b=32p0yLCLeJNVWQqZiBFiSekhSp
+	Ye0Zc9my3wOLkXfRgYP4meOWEhpGJ5eJcZ6vVlUduYUhMXIArNY0OKlH+DZexUhuAPNvAy5gbTm1o
+	sj2c0xorscXArhTu/dCh8L0oOg3mSpbN/SZjWXn/iF3zXS4tUvRIqE8ZAkYqMY1RYy3+BEPCFgXHw
+	Z0cjK8JZdXjaBGDhq3S5LqhEZX8/J81BJp0nQUiwD03UoUOPUGJnTqfgKqZXOFpbnrGo1sPisvnmW
+	RemSYen633h9JErg1RREPsdQNfpBS0M+jcciidx6rM5xwXTGUijqNzNkhVtU2Ljt/yiN/dv+79wDK
+	Gc3cDQGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1necLl-0012oL-5a; Wed, 13 Apr 2022 12:43:57 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1necPk-0013ye-DP; Wed, 13 Apr 2022 12:48:04 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1necLW-0012hH-O2; Wed, 13 Apr 2022 12:43:43 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id l7so3717744ejn.2;
- Wed, 13 Apr 2022 05:43:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :content-transfer-encoding:user-agent:mime-version;
- bh=ftC/R4apSkNj0SBqqxvCqMvFLEojqjXxdMp+rh20DA0=;
- b=g6n6tIhHD0mQsqnftSq0RvbOPkokjzp0OX6uB573Dl4Hg33fSlWFnA34EiK23DLgNh
- eoIYQl8pXTIYUWza3XQk9sgkNkTOak01u7xQM9EFXMBIS52VtmXtfwCB+Yt1FuB3q6f8
- y933dRXKqEq2ryGE6q/m3daCSQsXwBzOxC7DFBy+/2AiutsS6XB9B0L6mfwgGg6Yq204
- 2U/sKAEgZobJxZkGlKO+D7Yqr3QNICiikmNIs58QDVMHzZyq948MgiQHO+hl854Sb1Xj
- nISEr9b+v8O049yvizRVjSfLhzmVr4GJneyqFOueBrrP+/f0xoz/E+KAcIGh6iDbfVMh
- S7rQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:content-transfer-encoding:user-agent:mime-version;
- bh=ftC/R4apSkNj0SBqqxvCqMvFLEojqjXxdMp+rh20DA0=;
- b=xrNwQVxoBtt7rvQozgvSW0K4HGQdZ6qTGcLqTi+uow7K1ZqOf8RwLznHz6hA5N4/0F
- Rx/PmKf7s7tiqwefpt+AZdql+BEnJPexzgPzUU3hNxwUkJY8cYo7B8LpImUxyIc4n8j4
- WZWmH/SByWTnBg8/5yWBxg4cSAKiBKtgM7U2qNOG13RNDBxEZP4ec6ZdAiwMXphbIYbV
- DMScCbj4re5wWe7riWHOggVz5r0M1qxzotg1GJCtZdOnCKyxSbjxnjzc2X89dDbCNAW+
- 31uCFY7H8m24eviszmiVEdAp9dWsZipa3FJuZ/KR/jHXXAl4kyDXzG4VbbwIvrIIbgWA
- eGtQ==
-X-Gm-Message-State: AOAM532QFfa0SFYn9mnne1rzCEsnhk/2PgcyEdZQ9uHAbrXmxRvUskE1
- f86u6T0SpX8eNz0NBoLT+wo=
-X-Google-Smtp-Source: ABdhPJxBLUBKYgS4v35da4ZjoDNoq81t0xJsPUkR7RcqehVi1bx196PUdi7GyD8EFLWwPQaAnzglvg==
-X-Received: by 2002:a17:907:3e0d:b0:6e8:cccd:de80 with SMTP id
- hp13-20020a1709073e0d00b006e8cccdde80mr1951964ejc.162.1649853819459; 
- Wed, 13 Apr 2022 05:43:39 -0700 (PDT)
-Received: from [192.168.3.2] (p5dd1ed70.dip0.t-ipconnect.de. [93.209.237.112])
- by smtp.googlemail.com with ESMTPSA id
- z22-20020a1709063ad600b006e8867caa5dsm4098621ejd.72.2022.04.13.05.43.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 Apr 2022 05:43:39 -0700 (PDT)
-Message-ID: <d67b8969c8d2097377d9dbb414481f11958a9c9f.camel@gmail.com>
-Subject: Re: [PATCH 1/1] scsi: ufs: remove redundant HPB unmap
-From: Bean Huo <huobean@gmail.com>
-To: Peter Wang <peter.wang@mediatek.com>, Po-Wen Kao
- <powen.kao@mediatek.com>,  Alim Akhtar <alim.akhtar@samsung.com>, Avri
- Altman <avri.altman@wdc.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,  Matthias Brugger
- <matthias.bgg@gmail.com>
-Cc: wsd_upstream@mediatek.com, stanley.chu@mediatek.com, 
- alice.chao@mediatek.com, chun-hung.wu@mediatek.com, cc.chou@mediatek.com, 
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, yohan.joung@sk.com, 
- jason.li@sk.com, linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Wed, 13 Apr 2022 14:43:38 +0200
-In-Reply-To: <7e979863-21e5-ba63-862a-8ba6a63a8ae4@mediatek.com>
-References: <20220412073131.10644-1-powen.kao@mediatek.com>
- <781bfe33efb1e44d22f71e6711da7d15be9d3ab4.camel@gmail.com>
- <7550da4043ae45ffd58399f1ee696238a5689f25.camel@gmail.com>
- <7e979863-21e5-ba63-862a-8ba6a63a8ae4@mediatek.com>
-User-Agent: Evolution 3.44.0-1 
+ id 1necPU-0013t9-UO; Wed, 13 Apr 2022 12:47:50 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by sin.source.kernel.org (Postfix) with ESMTPS id 2AF55CE20C8;
+ Wed, 13 Apr 2022 12:47:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0E59C385A4;
+ Wed, 13 Apr 2022 12:47:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1649854064;
+ bh=yxfL3ywdnIr/K38Xc28ibqWKM75z90Wz9zeFMmPk3kw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Z95JqEkfPGNdJWzbSpi3NXHM6dkFnLeZOUW5DykdRGN3491oeVNXbLa88V3MqBtnl
+ 66bDr/V/cepeXRamQiy1NjNBq95axE1bsc7yjdbXz7PlfoVl/P4JKs8yECTGf5huLS
+ Rrh8DgajTZV2Qn2NGKE+zJdP57edr0z9L0taeKgzCE+Fy90fshg46gQg76BnUgSV/4
+ CazjpgUbk4Zcv2lGr0J/jr9TBsI46NRLLaLhoIIJ23kTHrRcZxL7P4G/0NQDrnHmiT
+ 892jbMg/Ob8a6Mr9tRZhWjlc8GT9ZtbpCDzXYhM48X4kVD0bjP/FLUDlYEebUV0GNO
+ eNm4KgPCGBAEg==
+Date: Wed, 13 Apr 2022 13:47:38 +0100
+From: Mark Brown <broonie@kernel.org>
+To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>
+Cc: ikjn@chromium.org, matthias.bgg@gmail.com,
+ linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-spi@vger.kernel.org
+Subject: Re: [PATCH] spi: spi-mtk-nor: initialize spi controller after resume
+Message-ID: <YlbGaq/o888LNXGk@sirena.org.uk>
+References: <20220412115743.22641-1-allen-kh.cheng@mediatek.com>
+ <164979303551.449574.9303978009033918270.b4-ty@kernel.org>
+ <aba056b08ed834edca7811ea00b957df748703a6.camel@mediatek.com>
 MIME-Version: 1.0
+In-Reply-To: <aba056b08ed834edca7811ea00b957df748703a6.camel@mediatek.com>
+X-Cookie: The horror... the horror!
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_054342_816903_6CE7B260 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20220413_054749_191385_F6FF08A1 
+X-CRM114-Status: GOOD (  13.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,48 +71,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0073409311657046617=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Peter,
+
+--===============0073409311657046617==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="M26jxRTuGK/Rcnx4"
+Content-Disposition: inline
 
 
-On Wed, 2022-04-13 at 11:53 +0800, Peter Wang wrote:
-> Hi Bean,
-> 
-> How about if reset flow not clear hpb mapping?
+--M26jxRTuGK/Rcnx4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-UFS will go through normal read, because regions are not active in the
-device. The responses mabye different among different vendors. for
-example, UFS device will raise a response to host to update the region
-(in case of host mode) or inactivate it in case of device mode.
+On Wed, Apr 13, 2022 at 11:33:47AM +0800, allen-kh.cheng wrote:
 
-The best way is that inactivate the active regions in the host side in
-the case the regions are not active in the device.
+> Sorry, There is one issue I want to correct in commit message.
 
-> 
-> After device is reset by RST_N pin, if the hpb mapping table still
-> exist?
+> "To handle both issues [etc]" should become something like:
+> "Solve this issue by reinitializing the registers right after resuming
+> the controller"
 
-no, the regions in the device will be inactivated.
+> Do you mind help me modify commit message? or I can send a new PATCH to
+> correst this.
 
-> 
-> BTW, Host seem not clear region mapping table in reset flow.
-> 
+Sorry, there's a merge commit after the patch so I can't easily rebase
+(which I don't generally do anyway) - it'll just have to stay the way it
+is.  Not the end of the world even if it is unfortunate.
 
-Yes, you are right. There will be a performance impact. I will look at
-it, then back to you.
+--M26jxRTuGK/Rcnx4
+Content-Type: application/pgp-signature; name="signature.asc"
 
-By the way, there is one issue in my patch, ignore that patch.
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmJWxmkACgkQJNaLcl1U
+h9CIYQf/besmgKeiisuhVRwPw3ZkHtB6qPamIdugavjaLLEaWWPkcwZpJXGH7RxA
+xZnwy3/y6DVpBoFdYO6BMJ5LDsbAHAGwlxXWXhJVnec0y0KbMyAa31sTYgjpa4lP
+KXcFT93FVRiklaJDtvuhi9EB8fz6tQBtrs/43Bd+sYyCVkZ/iqWIi+n4fnn0koSW
+ETiOv73yw4pIm/UH3LdDrOZrngK+xZ9hCaODdZN2d5ziTy1KFr2MzpVKDPIMDS1R
+4Zms4iEI+MInwIwhwY/V2Bg9zF7XZVy9j/YD7kLhp/QM2/J+oDK3mx5xza1GQNEL
+iIMgjvz7vZgFtZoT88Qw9HQ0rdPaxQ==
+=0F9p
+-----END PGP SIGNATURE-----
+
+--M26jxRTuGK/Rcnx4--
 
 
-Kind regards,
-Bean
-
+--===============0073409311657046617==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============0073409311657046617==--
+
