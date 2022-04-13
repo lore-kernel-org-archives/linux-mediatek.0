@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 169E6C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 02:37:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06CA5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 02:43:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mjthanzp8uwdHSGzYj6ivsWc8aEoloyF9EoO9wnN3LU=; b=4Qo2AEPhWXTN92
-	OekllbVInvqquypCcFC6WLjQ8s8g9RZA9SPRZ2KH7d9arCQOGkifXXDhtaeHA+WDg0BiYtufNp5BT
-	RmqirWiFR+vDQKKewyU72+NXfekXmf2AXUMchceG/GH50Qhu70ted3Q12nEsum+XK1jbqSPsOeTP5
-	QtcAApG4G2gNUOtYaqQZZK5YBE22QKc3F//0l1ARschrYHRyFKcMkK7U/RkjsaA7Rp8Lxu4oEKul1
-	rMmx2m8kJ1ZP/634cm2w8swWXUOy5rkcf97MaEfDrUOanmswzR1OHJQy2iY+h+hjC2tNaBu5o03Ec
-	aA/ty0Kgu1vg6zJGyKpw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hA9egOSwDjsOQ353eMAYdRn7UVXk6wUYpb1OI+Si4n4=; b=BjFMFbJiOMcoFz
+	XGKgO7rrmyZDhD5KoV5z/NefUYAdy4GbmJ6inQY4SkS3By+zy05qFL5OMqcsHcAIrcXrDn0MN6kmu
+	ulr8lqziITzLnsvjAX081spEHjjirQgWG5NwUDlSLYYw/oD0wCGluLxZZJjIdjBiJ5amZ5Xcj2Cm2
+	SiJzlyVXpnaU8fPljHWf/nrbKdMLWFliwIGtfHi/ADNJBGfZK+rsCEGu4ZWPyGnywIpwLHnniql92
+	YlcJpOsO4iIRnwOA9dwrrbMYtcf6RjfsZ0VeqXJ2ppsk0xyYV78GEaN1EsOQ7qtPiymd1a9D+ML38
+	fWXRNj9XZd1Xau3/Kp1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neStE-00GP6x-15; Wed, 13 Apr 2022 02:37:52 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1neSyT-00GQYw-0R; Wed, 13 Apr 2022 02:43:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neSsz-00GOxm-Kg; Wed, 13 Apr 2022 02:37:39 +0000
-X-UUID: 0d86cb8424cd40f7a5d8d28755ec2c6e-20220412
-X-UUID: 0d86cb8424cd40f7a5d8d28755ec2c6e-20220412
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ id 1neSyD-00GQUR-73; Wed, 13 Apr 2022 02:43:02 +0000
+X-UUID: 57fdc9e271de435cad3ca9872f3a603a-20220412
+X-UUID: 57fdc9e271de435cad3ca9872f3a603a-20220412
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 860321502; Tue, 12 Apr 2022 19:37:28 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 12 Apr 2022 19:37:26 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 13 Apr 2022 10:37:24 +0800
+ with ESMTP id 1307933712; Tue, 12 Apr 2022 19:42:58 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 12 Apr 2022 19:37:29 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 13 Apr 2022 10:37:27 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 13 Apr 2022 10:37:21 +0800
+ Transport; Wed, 13 Apr 2022 10:37:24 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
@@ -57,15 +57,19 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2, 0/3] add h264 decoder driver for mt8186
-Date: Wed, 13 Apr 2022 10:37:17 +0800
-Message-ID: <20220413023720.29297-1-yunfei.dong@mediatek.com>
+Subject: [PATCH v2,
+ 1/3] dt-bindings: media: mediatek: vcodec: Adds decoder dt-bindings
+ for mt8186
+Date: Wed, 13 Apr 2022 10:37:18 +0800
+Message-ID: <20220413023720.29297-2-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220413023720.29297-1-yunfei.dong@mediatek.com>
+References: <20220413023720.29297-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220412_193737_706807_252029B9 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20220412_194301_286799_A4334375 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,34 +86,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Firstly, add mt8186 compatible and private data, then add document for
-compatible "mediatek,mt8186-vcodec-dec". For mt8186 is single core
-architecture, need to add new interface for h264 hardware decoder.
+Adds decoder dt-bindings for mt8186.
 
-Patche 1 add mt8186 compatible and private data.
-Patche 2 add mt8186 compatible document.
-Patche 3 add h264 single core driver.
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
 ---
-This patch depends on "support for MT8192 decoder"[1]
+ .../bindings/media/mediatek,vcodec-subdev-decoder.yaml        | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-[1]  https://patchwork.kernel.org/project/linux-mediatek/cover/20220408120240.29571-1-yunfei.dong@mediatek.com/
----
-changed with v1:
-- rebase driver to the latest media_stage.
----
-Yunfei Dong (3):
-  dt-bindings: media: mediatek: vcodec: Adds decoder dt-bindings for
-    mt8186
-  media: mediatek: vcodec: Support MT8186
-  media: mediatek: vcodec: add h264 decoder driver for mt8186
-
- .../media/mediatek,vcodec-subdev-decoder.yaml |   4 +-
- .../platform/mediatek/vcodec/mtk_vcodec_dec.h |   1 +
- .../mediatek/vcodec/mtk_vcodec_dec_drv.c      |   4 +
- .../vcodec/mtk_vcodec_dec_stateless.c         |  19 ++
- .../vcodec/vdec/vdec_h264_req_multi_if.c      | 177 +++++++++++++++++-
- 5 files changed, 203 insertions(+), 2 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+index d587fc3e39fb..6415c9f29130 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+@@ -47,7 +47,9 @@ description: |
+ 
+ properties:
+   compatible:
+-    const: mediatek,mt8192-vcodec-dec
++    enum:
++      - mediatek,mt8192-vcodec-dec
++      - mediatek,mt8186-vcodec-dec
+ 
+   reg:
+     maxItems: 1
 -- 
 2.18.0
 
