@@ -4,62 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94338C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 09:12:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EE4BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 10:26:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1fmON+l93wZEQKrxfAEZHsAAtn5mnVj3nGwk+c8QeQc=; b=D9tADOAmPtrWhe
-	cRdd8RImNjC7AHUvYXvC+SmgbgxXjpuAGjNVREfyKicAU8GJcqYZmdx44ZzRPuDPQg+Zv8wS7xwbX
-	Kiq2/ZoNK2LNv5OhpRbMJ9Lrp2N7Lmh1Ho2OuxuesNuNBm7rZLm64yxiK2w9PB8T1VO4PRSu7n15E
-	A8BFOE1XhBq6C231kJsh6rzOyU3XmgUYHa9o35giFN+T2KrGpq/XL8fQH/aGQ0640nYeRw05HofiW
-	5o6qBM1/iTyxHB1mpHu91j9+vt5R4F/pClKE2GZheGzJvyfzdx2z5KaQICvL9Cs3Jgo/PIoi6GzrW
-	eZ7w9Ptq/8F+E0j4DQgA==;
+	List-Owner; bh=miHyLHzBXTzsVaKzk94FgYjqfinLCCHsXumcSgqXDcM=; b=dWxLABIv5KC0Wd
+	+1BEqAg5TM/wiBXcI22JQQxPFu8DlJr7VFi8IpXpjEKh8bFJ6v2P5Hh6NYfPUmbugiQTezNualny/
+	vSAHgZtHNqNXbJEm6pMybZD7Xp5G2IvoncxGwkaEG6juDK0AxVj5cfs7t3yuMhB/NzT28VF5p6Pi7
+	BH9okE+N35BqKDeJp9aDnsvmLyYzesH9eDDeh0sY3Pzr22hOK5TmDY8ggOoeUOWRasls8yv+Pbga5
+	IcZ2LzjofW8nkTDXHBDrWXjyHvC1PY9j2ZL/+gGaSyly8nw8tMQK8W42aYJXyMYvrL6iIaZLxZRki
+	94zV23wfOXnq7a20feFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neZ2s-000FxO-No; Wed, 13 Apr 2022 09:12:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1neaCv-000Xls-WB; Wed, 13 Apr 2022 10:26:42 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neZ2h-000FtJ-BJ; Wed, 13 Apr 2022 09:12:04 +0000
-X-UUID: 260690b3b10946e396f3655bee3ecb89-20220413
-X-UUID: 260690b3b10946e396f3655bee3ecb89-20220413
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1858028856; Wed, 13 Apr 2022 02:11:51 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 13 Apr 2022 02:04:53 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 13 Apr 2022 17:04:40 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 13 Apr 2022 17:04:40 +0800
-Message-ID: <720c5ede369357fb40152588c441614456b0f96f.camel@mediatek.com>
-Subject: Re: [PATCH v4, 4/4] drm/mediatek: Add pull-down MIPI operation in
- mtk_dsi_poweroff function
-From: CK Hu <ck.hu@mediatek.com>
-To: <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
- <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <matthias.bgg@gmail.com>, <rex-bc.chen@mediatek.com>
-CC: <jitao.shi@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
-Date: Wed, 13 Apr 2022 17:04:40 +0800
-In-Reply-To: <1649644308-8455-5-git-send-email-xinlei.lee@mediatek.com>
-References: <1649644308-8455-1-git-send-email-xinlei.lee@mediatek.com>
- <1649644308-8455-5-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1neaCQ-000XZf-C9; Wed, 13 Apr 2022 10:26:12 +0000
+Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
+ by smtp-out1.suse.de (Postfix) with ESMTP id 8F579210EE;
+ Wed, 13 Apr 2022 10:26:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
+ t=1649845563; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=s1N2lMruCjm6zkDvjHsuYQUbe0JXiQfxmPa3xQRoZKQ=;
+ b=cBqsQtTA1B3e7l9GpKK0OU0KN43HmzKhGT6UDD2JOIyPEZH+MYJA5O6Ui5I3i280By7PHC
+ RqPCmtoKepRvvqW+TxbEQNlhtuglbZQA1Twmsk3Jk6bdIt+02t1PokApX+j3kWumJ8EGVR
+ pufAdbuu4Ru+N7UBd8i2KvmJmpq9awY=
+Received: from suse.cz (unknown [10.100.216.66])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by relay2.suse.de (Postfix) with ESMTPS id 49199A3B8A;
+ Wed, 13 Apr 2022 10:26:00 +0000 (UTC)
+Date: Wed, 13 Apr 2022 12:25:57 +0200
+From: Petr Mladek <pmladek@suse.com>
+To: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Cc: acme@kernel.org, akpm@linux-foundation.org,
+ alexander.shishkin@linux.intel.com, catalin.marinas@arm.com,
+ davem@davemloft.net, jolsa@redhat.com, jthierry@redhat.com,
+ keescook@chromium.org, kernelfans@gmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ linux-perf-users@vger.kernel.org, mark.rutland@arm.com,
+ masahiroy@kernel.org, matthias.bgg@gmail.com, maz@kernel.org,
+ mcgrof@kernel.org, mingo@redhat.com, namhyung@kernel.org,
+ nixiaoming@huawei.com, peterz@infradead.org,
+ sparclinux@vger.kernel.org, sumit.garg@linaro.org,
+ wangqing@vivo.com, will@kernel.org, yj.chiang@mediatek.com
+Subject: Re: [PATCH v3 5/5] arm64: Enable perf events based hard lockup
+ detector
+Message-ID: <YlalNStoYOWqAHkP@alley>
+References: <YkxT9plntP0VeMl4@alley>
+ <20220407165949.1903-1-lecopzer.chen@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20220407165949.1903-1-lecopzer.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_021203_417142_487F135B 
-X-CRM114-Status: GOOD (  17.48  )
+X-CRM114-CacheID: sfid-20220413_032610_754453_71A9C733 
+X-CRM114-Status: GOOD (  63.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,52 +82,238 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Xinlei:
-
-On Mon, 2022-04-11 at 10:31 +0800, xinlei.lee@mediatek.com wrote:
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
+On Fri 2022-04-08 00:59:49, Lecopzer Chen wrote:
 > 
-> In the dsi_enable function, mtk_dsi_rxtx_control is to
-> pull up the MIPI signal operation. Before dsi_disable,
-> MIPI should also be pulled down by writing a register 
-> instead of disabling dsi.
+> > On Tue 2022-04-05 20:53:04, Lecopzer Chen wrote:
+> > >  
+> > > > On Thu 2022-03-24 22:14:05, Lecopzer Chen wrote:
+> > > > > With the recent feature added to enable perf events to use pseudo NMIs
+> > > > > as interrupts on platforms which support GICv3 or later, its now been
+> > > > > possible to enable hard lockup detector (or NMI watchdog) on arm64
+> > > > > platforms. So enable corresponding support.
+> > > > > 
+> > > > > One thing to note here is that normally lockup detector is initialized
+> > > > > just after the early initcalls but PMU on arm64 comes up much later as
+> > > > > device_initcall(). To cope with that, overriding watchdog_nmi_probe() to
+> > > > > let the watchdog framework know PMU not ready, and inform the framework
+> > > > > to re-initialize lockup detection once PMU has been initialized.
+> > > > > 
+> > > > > [1]: http://lore.kernel.org/linux-arm-kernel/1610712101-14929-1-git-send-email-sumit.garg@linaro.org
+> > > > > 
+> > > > > --- /dev/null
+> > > > > +++ b/arch/arm64/kernel/watchdog_hld.c
+> > > > > @@ -0,0 +1,37 @@
+> > > > > +// SPDX-License-Identifier: GPL-2.0
+> > > > > +#include <linux/nmi.h>
+> > > > > +#include <linux/cpufreq.h>
+> > > > > +#include <linux/perf/arm_pmu.h>
+> > > > > +
+> > > > > +/*
+> > > > > + * Safe maximum CPU frequency in case a particular platform doesn't implement
+> > > > > + * cpufreq driver. Although, architecture doesn't put any restrictions on
+> > > > > + * maximum frequency but 5 GHz seems to be safe maximum given the available
+> > > > > + * Arm CPUs in the market which are clocked much less than 5 GHz. On the other
+> > > > > + * hand, we can't make it much higher as it would lead to a large hard-lockup
+> > > > > + * detection timeout on parts which are running slower (eg. 1GHz on
+> > > > > + * Developerbox) and doesn't possess a cpufreq driver.
+> > > > > + */
+> > > > > +#define SAFE_MAX_CPU_FREQ	5000000000UL // 5 GHz
+> > > > > +u64 hw_nmi_get_sample_period(int watchdog_thresh)
+> > > > > +{
+> > > > > +	unsigned int cpu = smp_processor_id();
+> > > > > +	unsigned long max_cpu_freq;
+> > > > > +
+> > > > > +	max_cpu_freq = cpufreq_get_hw_max_freq(cpu) * 1000UL;
+> > > > > +	if (!max_cpu_freq)
+> > > > > +		max_cpu_freq = SAFE_MAX_CPU_FREQ;
+> > > > > +
+> > > > > +	return (u64)max_cpu_freq * watchdog_thresh;
+> > > > > +}
+> > > > 
+> > > > This change is not mentioned in the commit message.
+> > > > Please, put it into a separate patch.
+> > > 
+> > > 
+> > > Actully, This cames from
+> > > [1]: http://lore.kernel.org/linux-arm-kernel/1610712101-14929-1-git-send-email-sumit.garg@linaro.org
+> > > And I didn't touch the commit message from the origin patch.
+> > > But of course, I could imporve it with proper description if
+> > > anyone thinks it's not good enough.
+> > 
+> > I see.
+> > 
+> > > Would you mean put this function hw_nmi_get_sample_period() in patch
+> > > 6th?
+> > > In the view of "arm64 uses delayed init with all the functionality it need to set up",
+> > > IMO, this make sense for me to put into a single patch.
+> > 
+> > Or you could split it in two patches and add
+> > hw_nmi_get_sample_period() in the earlier patch.
+> > 
+> > 
+> > > But if you still think this should put into a separate patch, I'll do it:)
+> > 
+> > It is always better to split the changes whenever possible. It makes
+> > the review easier. And it also helps to find the real culprit of
+> > a regression using bisection.
 > 
-> If disable dsi without pulling the mipi signal low, the value of
-> the register will still maintain the setting of the mipi signal being
-> pulled high.
-> After resume, even if the mipi signal is not pulled high, it will
-> still
-> be in the high state.
-
-After add Fixes tag for [1], then
-
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
-[1] 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/gpu/drm/mediatek/mtk_dsi.c?h=v5.18-rc2&id=2e54c14e310f655bb0915413e8e4a3da67c78a66
-
+> Okay, I'll split this part into another change, thanks.
 > 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 2 ++
->  1 file changed, 2 insertions(+)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index 9ad6f08c8bfe..e35343357f90 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -676,6 +676,8 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
->  	mtk_dsi_reset_engine(dsi);
->  	mtk_dsi_lane0_ulp_mode_enter(dsi);
->  	mtk_dsi_clk_ulp_mode_enter(dsi);
-> +	/* set the lane number as 0 to pull down mipi */
-> +	writel(0, dsi->regs + DSI_TXRX_CTRL);
+> > > > > +int __init watchdog_nmi_probe(void)
+> > > > > +{
+> > > > > +	if (!allow_lockup_detector_init_retry)
+> > > > > +		return -EBUSY;
+> > > > 
+> > > > How do you know that you should return -EBUSY
+> > > > when retry in not enabled?
+> > > > 
+> > > > I guess that it is an optimization to make it fast
+> > > > during the first call. But the logic is far from
+> > > > obvious.
+> > > > 
+> > > 
+> > > Yes, you can see this as an optimization, because arm64 PMU is not ready
+> > > during lockup_detector_init(), so the watchdog_nmi_probe() must fail.
+> > >
+> > > Thus we only want to do watchdog_nmi_probe() in delayed init,
+> > > so if not in the state (allow_lockup_detector_init_retry=true), just tell
+> > > 
+> > > if it's unclear
+> > 
+> > Yes, it is far from obvious.
+> > 
+> > > maybe a brief comment can be add like this:
+> > > 
+> > > +	/* arm64 is only able to initialize lockup detecor during delayed init */
+> > > +	if (!allow_lockup_detector_init_retry)
+> > > +		return -EBUSY;
+> > 
+> > No, please, remove this optimization. It just makes problems:
+> > 
+> >    + it requires a comment here because the logic is far from obvious.
+> > 
+> >    + it is the reason why we need another variable to avoid the race in
+> >      lockup_detector_check(), see the discussion about the 4th patch.
+> 
+> After some days studying, if I remove this if-condition which means the
+> following hardlockup_detector_perf_init() needs to return -EBUSY.
+> However, the default return value that if pmu is not ready is -ENOENT.
+
+I see.
+
+> The call path for hardlockup_detector_perf_init() is really complicated,
+> 
+> I have some approach about this:
+>   1. abstract second variable with Kconfig.
+>     a. Add a ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT
+>        (the naming is a little bit long, may have better naming)
+>        in "lib/Kconfig.debug" if ARCH knew they do need delayed init for
+>        lockup detector.
+> 
+>        + select ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT if HAVE_HARDLOCKUP_DETECTOR_PERF
+> 
+>     b. and the watchdog_nmi_probe would look like.
+> 
+>     +int __init watchdog_nmi_probe(void)
+>     +{
+>     +	int ret;
+>     +
+>     + /* comment here... */
+>     +	if (!arm_pmu_irq_is_nmi())
+>     +		return -ENODEV;
+>     +
+>     +	ret = hardlockup_detector_perf_init();
+>     +	if (ret &&
+>     +		  IS_ENABLED(ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT))
+>     +		return -EBUSY;
+>     +
+>     + return ret;
+>     +}
+> 
+>     and than we can have only one variable (allow_lockup_detector_init_retry)
+>     in 4th patch.
+> 
 >  
->  	mtk_dsi_disable(dsi);
->  
+>   2. base on ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT, change
+>      inside hardlockup_detector_perf_init().
+> 
+> int __init hardlockup_detector_perf_init(void)
+> {
+> 	int ret = hardlockup_detector_event_create();
+> 
+> 	if (ret) {
+> 		pr_info("Perf NMI watchdog permanently disabled\n");
+> +
+> +		/* comment here... */
+> +		if (IS_ENABLED(ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT))
+> +			ret = -EBUSY;
+> 	} else {
+> 		perf_event_release_kernel(this_cpu_read(watchdog_ev));
+> 		this_cpu_write(watchdog_ev, NULL);
+> 	}
+> 	return ret;
+> }
+> 
+>   3. Don't add any other config, try to find a proper location
+>      to return -EBUSY in hardlockup_detector_event_create().
+>      IMHO, this may involve the PMU subsys and should be
+>      the hardest approach.
 
+Honestly, everything looks a bit ugly and complicated to me.
+
+OKAY, is the return value actually important?
+
+What about just introducing the API that will allow to try to
+initialize the hardlockup detector later:
+
+/*
+ * Retry hardlockup detector init. It is useful when it requires some
+ * functionality that has to be initialized later on a particular
+ * platform.
+ */
+void __init retry_lockup_detector_init(void)
+{
+	/* Must be called before late init calls. */
+	if (!allow_lockup_detector_init_retry)
+		return 0;
+
+	queue_work_on(__smp_processor_id(), system_wq, &detector_work);
+}
+
+/*
+ * Ensure that optional delayed hardlockup init is proceed before
+ * the init code and memory is freed.
+ */
+static int __init lockup_detector_check(void)
+{
+	/* Prevent any later retry. */
+	allow_lockup_detector_init_retry = false;
+
+	/* Make sure no work is pending. */
+	flush_work(&detector_work);
+}
+late_initcall_sync(lockup_detector_check);
+
+You could leave lockup_detector_init() as it is. It does not really
+matter what was the exact error value returned by watchdog_nmi_probe().
+
+Then you could call retry_lockup_detector_init() in
+armv8_pmu_driver_init() and be done with it.
+
+It will be universal API that might be used on any architecture
+for any reason. If nobody calls retry_lockup_detector_init()
+then nohing will happen and the code will work as before.
+
+It might make sense to provide the API only on architectures that
+really need it. We could hide it under
+
+   ARCH_NEED_DELAYED_HARDLOCKUP_DETECTOR_INIT
+
+, similar to ARCH_NEEDS_CPU_IDLE_COUPLE.
+
+Best Regards,
+Petr
 
 _______________________________________________
 Linux-mediatek mailing list
