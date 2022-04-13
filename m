@@ -4,88 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52796C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 15:27:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B94D4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 15:29:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wvoacC4IXd7bKfGi5lmtz0PsBEkN5/lVA9z7SXIJhB8=; b=NRopiWXTE0huHG
-	l7cCF2Zq49TqcVJL6Pez6BO3D7dgARPSDfkwkSXYIcEJF9FnE5pL/WgQUPCPQ+0w0mL900+H//7YR
-	zXWOZx05FFfVYF7ezItRlRa3WloX1c4U9XgqdbFml8OG2L13H2lTo8m+P2fzlFlQxeZAMyjhykl9v
-	u5A7ccJV7yk+JbBR7bLXy4tDLedhUeR4qSVWDlV99UNIIyrGoH2EcK1FeU+1/Rc5KMRF+yDKiOJ5o
-	02bTx5XqNLk84ByjihvRK51YkRC68XPgxTJalJfXET9faj417i1qYytehUkvv+cCQALlDAVZnRnqP
-	uG8BT50VC7CAo4hopX2w==;
+	List-Owner; bh=oB2x32+8qgozGa7FJVuJY5206p10e/Zosu4ni5zQKc4=; b=qewNlAqXlVefHl
+	ghtfZDtdUJ7tx61gPyzE08bVaSQpLc0v7ri760Y6LtB4R/dNHk6acImExrZ1aXClu+l9qhMXDK8bg
+	v91aVGGhdDxTUoZrCcFComvWkdzYticW1ZK+J6ueVZ2yplQCWQKro8IjtHYGl+A5GvoSgeef8gQlp
+	DcpA+t/iCjdF83XeustHUIujFKVoj8uBGrxofFf3jKAtxIemRTVKdeucyw6DdRP/IbdnH/PbMixG/
+	LCRpwd++4/YEPcrw7l9jVzc7Y1nCuz7UjUwNkEENhsPcN8oUAuN58BfZt4qq/OMDz+79blY+0qInJ
+	fqY/8pXYWKyAxf31n/5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neeuH-001aYR-Uc; Wed, 13 Apr 2022 15:27:45 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1neevr-001av4-WA; Wed, 13 Apr 2022 15:29:24 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neeuG-001aXP-5h
- for linux-mediatek@lists.infradead.org; Wed, 13 Apr 2022 15:27:45 +0000
-Received: by mail-ed1-x529.google.com with SMTP id z99so2835362ede.5
- for <linux-mediatek@lists.infradead.org>; Wed, 13 Apr 2022 08:27:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=FTu8nhpVPh5fCRzBhXpfj9kU4anJdDZdibBzSiYag/s=;
- b=kQ3skXsasLue6DVfv5y0FVEuxEDxG29Y1+8D8hwBIbSTT92Og5I/A8u7aa66H86CJh
- CTIQSnSYgU4/qo9oWpjORiObR3Was1RTWBru1doFnE8zXrEMb/qKPP8eTbTHhElU0GLe
- 1vvO2N+LYhMuf/VG3LHuzlUdwGL5VElXRSg6dqIEoTlptbpYL5cnHeND+lmFVatTOhI9
- bYi6Pj/EZeidXIZV3QsK6lvx1Q0PMO8pNrA5/dXuPU2Y0OKbfG+MribaoA8zWd/q6eie
- xpLB37J7pD536qO/VO+N9y84bf8yf/YSD8hbxMCZq+Pta05qyjpnFF64F/rQv2rB+NSk
- JryQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=FTu8nhpVPh5fCRzBhXpfj9kU4anJdDZdibBzSiYag/s=;
- b=06Z1ItPAZDsHtP5XqfENWjAHqZoakpPZzbuQ7CGVcQgLGuDTbbEzzo4yl668fxty5n
- aynEyPYNnJuHvLyfNC950Tm7q+P+LOzWKMv3FVWqtCNdC103sDnp164+GPztuD1ulLO8
- nMvddQvbQS8X6NVJ31wDUQIQKQJq2P6YEZuIiKMWd9HGUu+0mYXYCZVPaH5C5lq62Ek6
- o7qCccFPVQPDEu+j5ejkox/ANFck+yTiXvmsGY8hmyD9abl1lIeF2VsIroU3vcdeBTdU
- UpnfrkLaP5kwyRT5C/SNUQDZFphc45K+6nCYYySt6qKWbyuTm7AFFUPmObXezUN1TkXx
- 8rdw==
-X-Gm-Message-State: AOAM531i++ik5VPT7Sh0ehDNyiac5MaoPkhh7vpo+EdeygK6saWxtb1z
- 4YRShLmWGxep5+aW+3acinfU0A==
-X-Google-Smtp-Source: ABdhPJxLBhlLRJV5EZ81MU7GCxLdWOBxTjQoEXFFGHWBBg0qfHICCPTgJ254wpt2+5hAPHYiEZitKw==
-X-Received: by 2002:a05:6402:27d0:b0:419:5184:58ae with SMTP id
- c16-20020a05640227d000b00419518458aemr45052546ede.314.1649863659774; 
- Wed, 13 Apr 2022 08:27:39 -0700 (PDT)
-Received: from [192.168.0.205] (xdsl-188-155-201-27.adslplus.ch.
- [188.155.201.27]) by smtp.gmail.com with ESMTPSA id
- r3-20020aa7cb83000000b0041b573e2654sm1300328edt.94.2022.04.13.08.27.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 13 Apr 2022 08:27:39 -0700 (PDT)
-Message-ID: <b415523c-34e3-28a1-bcce-4682e7c67e77@linaro.org>
-Date: Wed, 13 Apr 2022 17:27:38 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH 09/14] mips: dts: ralink: mt7621: use the new compatible
- string for MT7621 pinctrl
-Content-Language: en-US
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Luiz Angelo Daros de Luca <luizluca@gmail.com>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: erkin.bozoglu@xeront.com, linux-gpio@vger.kernel.org,
+ id 1neevg-001aqs-58; Wed, 13 Apr 2022 15:29:14 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 623F81F45A37
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1649863748;
+ bh=QkuxM+5pnkSA1ICUnAKMrVwzy8WneSmBDiuAOn1jeUg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=j2P2ES0QUqCA8NlI18oTrBam5MoFphrsbmf+R5RvhI4PZA6bUx1dA6fGxfrwf+jOv
+ 7381/YQjBg9oODeEmpBqpo9q515hMr/XGKo2aveT750cxgtfyPMEBXSE1nr2GV/uEf
+ biVW+X12b/5t8N9cKppfWxYGJnZpY17RQG/3uH3pGgbnCa2a3vsP/ksctA4/cfq8G8
+ FK4ewWzrI3bBmVFtZ1feT7weYHHjXrIiGjAc2oBUN+ZNCvB3mIpNunPylDCmUZ2Hw+
+ DTEGJnzrwU9Fb83K950oZ+Ry4cx4N9g5si4BKW1FG9PKa5kB3Wy8znVjkp5PXuVHgM
+ EiNWtT0Xd7AVg==
+Date: Wed, 13 Apr 2022 11:29:03 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mips@vger.kernel.org
-References: <20220413060729.27639-1-arinc.unal@arinc9.com>
- <20220413060729.27639-10-arinc.unal@arinc9.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220413060729.27639-10-arinc.unal@arinc9.com>
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
+ Hui Liu <hui.liu@mediatek.com>
+Subject: Re: [PATCH 1/1] arm64: dts: mt8192: Add vcodec lat and core nodes
+Message-ID: <20220413152903.3pk3ed5a5lgtiyf4@notapiano>
+References: <20220408104124.31395-1-allen-kh.cheng@mediatek.com>
+ <20220408104124.31395-2-allen-kh.cheng@mediatek.com>
+ <20220412230819.vnbdv6wpsg73eqzi@notapiano>
+ <649d747ceddc7fbd3f226f4448874665231ae744.camel@mediatek.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <649d747ceddc7fbd3f226f4448874665231ae744.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_082744_271032_54D9D5F9 
-X-CRM114-Status: GOOD (  14.46  )
+X-CRM114-CacheID: sfid-20220413_082912_580084_D08D44B4 
+X-CRM114-Status: GOOD (  22.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,30 +70,199 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMTMvMDQvMjAyMiAwODowNywgQXLEsW7DpyDDnE5BTCB3cm90ZToKPiBVc2UgdGhlIG5ldyBj
-b21wYXRpYmxlIHN0cmluZyAicmFsaW5rLG10NzYyMS1waW5jdHJsIiBmb3IgdGhlIFJhbGluayBN
-VDc2MjEKPiBwaW5jdHJsIHN1YmRyaXZlciBvbiBtdDc2MjEuZHRzaS4KPiAKPiBTaWduZWQtb2Zm
-LWJ5OiBBcsSxbsOnIMOcTkFMIDxhcmluYy51bmFsQGFyaW5jOS5jb20+Cj4gLS0tCj4gIGFyY2gv
-bWlwcy9ib290L2R0cy9yYWxpbmsvbXQ3NjIxLmR0c2kgfCAyICstCj4gIDEgZmlsZSBjaGFuZ2Vk
-LCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9hcmNoL21p
-cHMvYm9vdC9kdHMvcmFsaW5rL210NzYyMS5kdHNpIGIvYXJjaC9taXBzL2Jvb3QvZHRzL3JhbGlu
-ay9tdDc2MjEuZHRzaQo+IGluZGV4IDMyMjI2ODQ5MTVhYy4uZWUyZWM3OGM4OTUyIDEwMDY0NAo+
-IC0tLSBhL2FyY2gvbWlwcy9ib290L2R0cy9yYWxpbmsvbXQ3NjIxLmR0c2kKPiArKysgYi9hcmNo
-L21pcHMvYm9vdC9kdHMvcmFsaW5rL210NzYyMS5kdHNpCj4gQEAgLTE1MSw3ICsxNTEsNyBAQCBz
-cGkwOiBzcGlAYjAwIHsKPiAgCX07Cj4gIAo+ICAJcGluY3RybDogcGluY3RybCB7Cj4gLQkJY29t
-cGF0aWJsZSA9ICJyYWxpbmsscnQyODgwLXBpbm11eCI7Cj4gKwkJY29tcGF0aWJsZSA9ICJyYWxp
-bmssbXQ3NjIxLXBpbmN0cmwiOwoKVGhlIGNoYW5nZSBpcyBub24tYmlzZWN0YWJsZSBhbmQgY2F1
-c2VzIGlzc3VlcyBhbGwgb3RoZXIgdXNlcnMgb2YgRFQKKG90aGVyIHByb2plY3RzLCBzeXN0ZW1z
-IGV0YykuIFRoaXMgaXMgZGlzY291cmFnZWQgaW4gZ2VuZXJhbCwgc28geW91CnNob3VsZCBkZXNj
-cmliZSBpdC4gVGhlIGNvbW1pdCBtc2cgbGFja3MgYW5zd2VyIHRvIHRoZSBtYWluIHF1ZXN0aW9u
-OgpXaHk/IFlvdSBmb2N1c2VkIG9ubHkgb24gd2hhdCB5b3UgYXJlIGRvaW5nLCBidXQgd2h5IHlv
-dSBhcmUgZG9pbmcgaXMKYWN0dWFsbHkgbW9yZSBpbXBvcnRhbnQgZm9yIHN1Y2ggY2hhbmdlLgoK
-QmVzdCByZWdhcmRzLApLcnp5c3p0b2YKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRl
-a0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Wed, Apr 13, 2022 at 03:21:29PM +0800, allen-kh.cheng wrote:
+> Hi N=EDcolas,
+> =
+
+> On Tue, 2022-04-12 at 19:08 -0400, N=EDcolas F. R. A. Prado wrote:
+> > Hi Allen,
+> > =
+
+> > On Fri, Apr 08, 2022 at 06:41:24PM +0800, Allen-KH Cheng wrote:
+> > > Add vcodec lat and core nodes for mt8192 SoC.
+> > > =
+
+> > > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> > > Reviewed-by: AngeloGioacchino Del Regno <
+> > > angelogioacchino.delregno@collabora.com>
+> > > ---
+> > >  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 60
+> > > ++++++++++++++++++++++++
+> > >  1 file changed, 60 insertions(+)
+> > > =
+
+> > > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > > b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > > index 18a58239d6f1..c7f4b2fbb315 100644
+> > > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > > @@ -1120,6 +1120,66 @@
+> > >  			power-domains =3D <&spm
+> > > MT8192_POWER_DOMAIN_ISP2>;
+> > >  		};
+> > >  =
+
+> > > +		vcodec_dec: vcodec-dec@16000000 {
+> > > +			compatible =3D "mediatek,mt8192-vcodec-dec";
+> > > +			reg =3D <0 0x16000000 0 0x1000>;
+> > > +			mediatek,scp =3D <&scp>;
+> > > +			iommus =3D <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
+> > > +			dma-ranges =3D <0x1 0x0 0x0 0x40000000 0x0
+> > > 0xfff00000>;
+> > > +			#address-cells =3D <2>;
+> > > +			#size-cells =3D <2>;
+> > =
+
+> > The dt-binding says address-cells and size-cells should be 1. Then
+> > most of the
+> > extra 0s can be dropped from ranges and the children's regs.
+> > =
+
+> > Other than that,
+> > =
+
+> > Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+> > =
+
+> > Thanks,
+> > N=EDcolas
+> > =
+
+> =
+
+> I have checked the description in mediatek,vcodec-subdev-decoder.yaml
+> =
+
+> address-cells and size-cells are two after the below commit is merged.
+> =
+
+> media: mediatek,vcodec: Fix addressing cell sizes
+> linux/kernel/git/next/linux-next.git
+> commit/id=3Da50e431bbc6fc5768ed26be5fab5b149b7b8b1fe
+
+Hi Allen,
+
+yes, you're right. I missed that commit, sorry. This patch is perfectly fine
+as it is then.
+
+Thanks,
+N=EDcolas
+
+> =
+
+> Correct me if I got this wrong.
+> =
+
+> Thanks,
+> Allen
+> =
+
+> > > +			ranges =3D <0 0 0 0x16000000 0 0x26000>;
+> > > +
+> > > +			vcodec_lat: vcodec-lat@10000 {
+> > > +				compatible =3D "mediatek,mtk-vcodec-lat";
+> > > +				reg =3D <0x0 0x10000 0 0x800>;
+> > > +				interrupts =3D <GIC_SPI 426
+> > > IRQ_TYPE_LEVEL_HIGH 0>;
+> > > +				iommus =3D <&iommu0
+> > > M4U_PORT_L5_VDEC_LAT0_VLD_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L5_VDEC_LAT0_VLD2_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L5_VDEC_LAT0_AVC_MV_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L5_VDEC_LAT0_PRED_RD_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L5_VDEC_LAT0_TILE_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L5_VDEC_LAT0_WDMA_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L5_VDEC_LAT0_RG_CTRL_DMA_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L5_VDEC_UFO_ENC_EXT>;
+> > > +				clocks =3D <&topckgen CLK_TOP_VDEC_SEL>,
+> > > +					 <&vdecsys_soc
+> > > CLK_VDEC_SOC_VDEC>,
+> > > +					 <&vdecsys_soc
+> > > CLK_VDEC_SOC_LAT>,
+> > > +					 <&vdecsys_soc
+> > > CLK_VDEC_SOC_LARB1>,
+> > > +					 <&topckgen
+> > > CLK_TOP_MAINPLL_D4>;
+> > > +				clock-names =3D "sel", "soc-vdec", "soc-
+> > > lat", "vdec", "top";
+> > > +				assigned-clocks =3D <&topckgen
+> > > CLK_TOP_VDEC_SEL>;
+> > > +				assigned-clock-parents =3D <&topckgen
+> > > CLK_TOP_MAINPLL_D4>;
+> > > +				power-domains =3D <&spm
+> > > MT8192_POWER_DOMAIN_VDEC>;
+> > > +			};
+> > > +
+> > > +			vcodec_core: vcodec-core@25000 {
+> > > +				compatible =3D "mediatek,mtk-vcodec-
+> > > core";
+> > > +				reg =3D <0 0x25000 0 0x1000>;
+> > > +				interrupts =3D <GIC_SPI 425
+> > > IRQ_TYPE_LEVEL_HIGH 0>;
+> > > +				iommus =3D <&iommu0
+> > > M4U_PORT_L4_VDEC_MC_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L4_VDEC_UFO_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L4_VDEC_PP_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L4_VDEC_PRED_RD_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L4_VDEC_PRED_WR_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L4_VDEC_PPWRAP_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L4_VDEC_TILE_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L4_VDEC_VLD_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L4_VDEC_VLD2_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L4_VDEC_AVC_MV_EXT>,
+> > > +					 <&iommu0
+> > > M4U_PORT_L4_VDEC_RG_CTRL_DMA_EXT>;
+> > > +				clocks =3D <&topckgen CLK_TOP_VDEC_SEL>,
+> > > +					 <&vdecsys CLK_VDEC_VDEC>,
+> > > +					 <&vdecsys CLK_VDEC_LAT>,
+> > > +					 <&vdecsys CLK_VDEC_LARB1>,
+> > > +					 <&topckgen
+> > > CLK_TOP_MAINPLL_D4>;
+> > > +				clock-names =3D "sel", "soc-vdec", "soc-
+> > > lat", "vdec", "top";
+> > > +				assigned-clocks =3D <&topckgen
+> > > CLK_TOP_VDEC_SEL>;
+> > > +				assigned-clock-parents =3D <&topckgen
+> > > CLK_TOP_MAINPLL_D4>;
+> > > +				power-domains =3D <&spm
+> > > MT8192_POWER_DOMAIN_VDEC2>;
+> > > +			};
+> > > +		};
+> > > +
+> > >  		larb5: larb@1600d000 {
+> > >  			compatible =3D "mediatek,mt8192-smi-larb";
+> > >  			reg =3D <0 0x1600d000 0 0x1000>;
+> > > -- =
+
+> > > 2.18.0
+> > > =
+
+> > > =
+
+> =
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
