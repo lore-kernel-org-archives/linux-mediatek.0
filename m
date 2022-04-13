@@ -4,86 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2EB7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 20:55:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C2F3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 21:20:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G34VK3eA0n2fJLdOFB3dPCeL9EVZbJq1/neNwnoatnw=; b=lnEWjy34uQds8m
-	tIRT9PAFx79ba5InQ120kz2wlPyvGaL4UygWY+HxM8qjLuIiaNepjdr8TEYjacB3ohtgXu6zX9GQP
-	asDGZGq9PbI/tUxf+5TPzJVIcOxFhK0L/lFIalevah50h7KuSKiT/CRrXax/T2Sdie+i+qlqT2Vod
-	Xv309Q3WFwADuzlVgkBS3DFTkG9x92FQgmEVo2y3gDSUbKDcrNaLzR1LN3mZFU1svUOQwP623kkta
-	ycu6uKCCVotNQy6yY/hAYf7p6eVzOnXsWZe9sHQt8v06dUKZJXEx6KejHBtN/TPBdsBMzm3YCttrG
-	CHHpiZfDozS2aTrag4Jg==;
+	List-Owner; bh=3eYjxXNa2j4DWkwLnd3jFaOrAHZUuH/ipI3Vo/KffBM=; b=IgELnZN+Ax712f
+	qpse0N9io3ShNwY70pcpitaMBlRGLBRcD2H1nPRMrVSxQUP9c5R14oTwJkK+YTDW7LvakNjDMwdbB
+	BnOFyVBNukvI5XXcFFZSEP93oaf5K3FBTwWwQcUWGqA14KNfypN3kYhHas+NsdK8hgtVIr4nGqmdX
+	YrMPVcv6j+KCcq77XxHWvTzoQYF0dMcM8Ju0J2pHk/0AnzxpP9idhLVp5MKTkyAF1s9xzGVsfPp5N
+	0yabkuSagSZd+2bFXcBQGPs7+1lc9LPsBzHh9V2zohfoJEUC7KrrwGd/AAC9cMYt74JY4+HOngG0v
+	MU9sGa8Rc5f0bsrGceoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nek0o-002gKx-LC; Wed, 13 Apr 2022 20:54:50 +0000
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+	id 1nekPt-002ikI-Hq; Wed, 13 Apr 2022 21:20:45 +0000
+Received: from mail-oi1-f182.google.com ([209.85.167.182])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nek0e-002gHo-5n; Wed, 13 Apr 2022 20:54:41 +0000
-Received: by mail-pj1-x1031.google.com with SMTP id
- md20-20020a17090b23d400b001cb70ef790dso7349167pjb.5; 
- Wed, 13 Apr 2022 13:54:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=Z8n2FKlH4PPLZudd5wmQXBKFzCBNjhBZWi9v/kIPikk=;
- b=SapZ8FRGWZ38OHiXjH2V0nZ1xZ+fof7DG0rpw+atdv7R6rTyBDgBymXUCrK00dZoqS
- UHt7b3BsHtsPUvAV6WzBP18RF7n2S8Yd5L85WtoATnLc9tk4XuBC9GNzARrQdgxLzTYQ
- 5br+Ik1swXuR2oVyTa8oXHNgHpjlQCBsC5N5KRMMLLTQ/3tBpI+SK6+UtoaPE/2BmC1z
- JwLOIjv6BWN9FzDqcV6QJuA1NpPyKuwKlEuDNH1eq3IKKGR0e1gHPKSt3mVQk5NGOdsQ
- AqvIETui/UCK2K5epA8zLO20vOQbAmyctvQYlxv4Vbl9/iqS1cB8U9kNHRwQ4ocfr05v
- 1GOg==
+ id 1nekPq-002ijd-Jp; Wed, 13 Apr 2022 21:20:44 +0000
+Received: by mail-oi1-f182.google.com with SMTP id b188so3395451oia.13;
+ Wed, 13 Apr 2022 14:20:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=Z8n2FKlH4PPLZudd5wmQXBKFzCBNjhBZWi9v/kIPikk=;
- b=knvAPEizn9Zx/xOkUa6+qUfsU3MNKPxNrLWwSJUxRCNqr6dCDMjJFdsWwyf/9YmbY2
- Vr1PTgW+kLBp0YomTvZgnnCH2mTufjGW56VMbbtBscx2Ftj1TkRfxInPYbYZderaOQRq
- 5RARjB80I00kMYoxhl0V9Pjd3JvaLIvgMtW7gbAlTvbpvOzhA9Dtm9GGOoFhhMi9iCO9
- akpChOkh9d/CjcI5wdCM05tFdluAPLd8hKveOeW8E7HP+TqBtAArGGerNbCLb1ArWyOP
- f5tHMN8FX5vmZ3kCtZMTttBo/cer3iuUVosb09jGVtfrseegN4kqxd7XzdEvYAIKH4rY
- D9ug==
-X-Gm-Message-State: AOAM530O/gxPNGhSuf1NgRxPIbosqCrKNaNQzePtyV8gSabM+kQYbARl
- y9QMLuA4P5QdfLNsWh8J8SY=
-X-Google-Smtp-Source: ABdhPJz9zFqadNRA+ndtin3mKhcwMF1jk+93aKdbtcYAcws109E/nP5a7ElcKU6Bf/j8DS2xCdRhlw==
-X-Received: by 2002:a17:902:8644:b0:153:9f01:2090 with SMTP id
- y4-20020a170902864400b001539f012090mr43303158plt.101.1649883277874; 
- Wed, 13 Apr 2022 13:54:37 -0700 (PDT)
-Received: from [172.30.1.44] ([14.32.163.5]) by smtp.gmail.com with ESMTPSA id
- l4-20020a056a0016c400b004f79504ef9csm43549529pfc.3.2022.04.13.13.54.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 13 Apr 2022 13:54:37 -0700 (PDT)
-Message-ID: <924e2208-d939-0243-9780-ae1b8cbd2c49@gmail.com>
-Date: Thu, 14 Apr 2022 05:54:31 +0900
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=BNnhzbT7x5Fwfm2D+LNQD+lbH1XqfFIidCgzY9zOuGk=;
+ b=X+jfzbe0sRAQc8uYJql83u724wXES3oiOq+aPYa7fbbaYuLivY/AKA6kuolZAvf+mf
+ 75vTyhoNMWvlB4t9naGG6c6b55q12nmmHgBJ/C33ZYik3jP4woyXQ/XgaxID01pP90Sm
+ Ks2XkSiS+M6FYus4gr45WPjDbjIt+SsR4Sz2DZORytkqTm7olPAoxoDJ670J68Y/q0Ad
+ Y6pEfZubOZrqP+Su/r45cpZj6O9g9I/Z8g9Xd58bs8VhkA1Q/SGxlqXR16n9K5I2YRV7
+ Jx9e0KTNBM1eLa2CJF2+nsBKpZ/eLi0KxiesurXGYe7bYfWmXcuCPY4FNkqzfhvMvuFk
+ 32Aw==
+X-Gm-Message-State: AOAM530QYPPSEvP2Z1oitZOWvzYS+3Y13Nm5+kjvnTgsQEZ+mF/SIHa9
+ MeOqgyULsjEOBvZp7mGhyg==
+X-Google-Smtp-Source: ABdhPJzOAUPoYvywkyjx8QaQOVnaIDTerWLm9Yg9DWHDGQeYUOO9E66kaHrhsX05kwA+rd6RTOa7QQ==
+X-Received: by 2002:a05:6808:118f:b0:2d4:13f1:8504 with SMTP id
+ j15-20020a056808118f00b002d413f18504mr332417oil.90.1649884840198; 
+ Wed, 13 Apr 2022 14:20:40 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ bx16-20020a0568081b1000b002f7966564b4sm59862oib.43.2022.04.13.14.20.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 Apr 2022 14:20:39 -0700 (PDT)
+Received: (nullmailer pid 3947483 invoked by uid 1000);
+ Wed, 13 Apr 2022 21:20:38 -0000
+Date: Wed, 13 Apr 2022 16:20:38 -0500
+From: Rob Herring <robh@kernel.org>
+To: xinlei.lee@mediatek.com
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
+ daniel@ffwll.ch, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ rex-bc.chen@mediatek.com, jitao.shi@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v4,1/3] dt-bindings: display: mediatek: dsi: Convert
+ dsi_dtbinding to .yaml
+Message-ID: <Ylc+ph5OFzQ/YR3k@robh.at.kernel.org>
+References: <1649495514-25746-1-git-send-email-xinlei.lee@mediatek.com>
+ <1649495514-25746-2-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v2 1/2] dt-bindings: devfreq: mediatek: Add mtk cci
- devfreq dt-bindings
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Johnson Wang <johnson.wang@mediatek.com>, cw00.choi@samsung.com,
- krzk+dt@kernel.org, robh+dt@kernel.org, kyungmin.park@samsung.com
-Cc: khilman@kernel.org, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- jia-wei.chang@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220408052150.22536-1-johnson.wang@mediatek.com>
- <20220408052150.22536-2-johnson.wang@mediatek.com>
- <855d7daa-45d1-d6d8-32bd-51778cf58392@linaro.org>
- <fe7d2b878c18a42ff36ebd9911ecb562fe29c953.camel@mediatek.com>
- <39152c86-ca11-2792-6b25-ae55ffb47b09@linaro.org>
-From: Chanwoo Choi <cwchoi00@gmail.com>
-In-Reply-To: <39152c86-ca11-2792-6b25-ae55ffb47b09@linaro.org>
+Content-Disposition: inline
+In-Reply-To: <1649495514-25746-2-git-send-email-xinlei.lee@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_135440_284757_E5D30830 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20220413_142042_695343_1D411BA7 
+X-CRM114-Status: GOOD (  17.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,39 +81,162 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 22. 4. 12. 18:17, Krzysztof Kozlowski wrote:
-> On 11/04/2022 14:10, Johnson Wang wrote:
->>> Also please put it in the "interconnect" directory.
->>>
->>
->> I don't really know about "interconnect".
->> However, it looks like a Linux framework about data transfer and "NoC".
->>
->> While this cci driver is more like a power managment which is
->> responsible for adjusting voltages and frequencies.
->> In my opinion, "devfreq" should be more suitable.
->>
->> Please correct me if my understanding is wrong.
+On Sat, Apr 09, 2022 at 05:11:52PM +0800, xinlei.lee@mediatek.com wrote:
+> From: Xinlei Lee <xinlei.lee@mediatek.com>
 > 
-> devfreq is a Linux mechanism, not a real device/hardware. We try to put
-> the bindings in directories/subsystems matching the hardware, therefore
-> devfreq is not appropriate.
+> Convert mediatek,dsi.txt to mediatek,dsi.yaml format
 > 
-> Whether interconnect - or other subsystem - is appropriate, I am not
-> sure. To me this looks exactly like bus bandwidth management and you
-> even use "interconnect" in several places. So interconnect matches.
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> ---
+>  .../display/mediatek/mediatek,dsi.txt         |  62 ---------
+>  .../display/mediatek/mediatek,dsi.yaml        | 118 ++++++++++++++++++
+>  2 files changed, 118 insertions(+), 62 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
 
-I think that 'Documentation/devicetree/bindings/arm/mediatek' is proper.
 
--- 
-Best Regards,
-Samsung Electronics
-Chanwoo Choi
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
+> new file mode 100644
+> index 000000000000..431bb981394f
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
+> @@ -0,0 +1,118 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/display/mediatek/mediatek,dsi.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek DSI Controller Device Tree Bindings
+> +
+> +maintainers:
+> +  - CK Hu <ck.hu@mediatek.com>
+> +  - Jitao Shi <jitao.shi@mediatek.com>
+> +  - Xinlei Lee <xinlei.lee@mediatek.com>
+> +
+> +description: |
+> +  The MediaTek DSI function block is a sink of the display subsystem and can
+> +  drive up to 4-lane MIPI DSI output. Two DSIs can be synchronized for dual-
+> +  channel output.
+
+allOf:
+  - $ref: /schemas/display/dsi-controller.yaml#
+
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt2701-dsi
+> +      - mediatek,mt7623-dsi
+> +      - mediatek,mt8167-dsi
+> +      - mediatek,mt8173-dsi
+> +      - mediatek,mt8183-dsi
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: Engine Clock
+> +      - description: Digital Clock
+> +      - description: HS Clock
+> +
+> +  clock-names:
+> +    items:
+> +      - const: engine
+> +      - const: digital
+> +      - const: hs
+> +
+> +  resets:
+> +    maxItems: 1
+> +
+> +  phys:
+> +    maxItems: 1
+> +
+> +  phy-names:
+> +    items:
+> +      - const: dphy
+> +
+> +  port:
+> +    $ref: /schemas/graph.yaml#/properties/port
+> +    description:
+> +      Output port node. This port should be connected to the input
+> +      port of an attached DSI panel or DSI-to-eDP encoder chip.
+> +
+> +
+> +  "#address-cells":
+> +    const: 2
+> +
+> +  "#size-cells":
+> +    const: 2
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - power-domains
+> +  - clocks
+> +  - clock-names
+> +  - phys
+> +  - phy-names
+> +  - port
+> +
+> +additionalProperties: false
+
+with the above,
+
+unevaluatedProperties: false
+
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt8183-clk.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/power/mt8183-power.h>
+> +    #include <dt-bindings/phy/phy.h>
+> +    #include <dt-bindings/reset/mt8183-resets.h>
+> +
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        dsi0: dsi@14014000 {
+> +            compatible = "mediatek,mt8183-dsi";
+> +            reg = <0 0x14014000 0 0x1000>;
+> +            interrupts = <GIC_SPI 236 IRQ_TYPE_LEVEL_LOW>;
+> +            power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+> +            clocks = <&mmsys CLK_MM_DSI0_MM>,
+> +                <&mmsys CLK_MM_DSI0_IF>,
+> +                <&mipi_tx0>;
+> +            clock-names = "engine", "digital", "hs";
+> +            resets = <&mmsys MT8183_MMSYS_SW0_RST_B_DISP_DSI0>;
+> +            phys = <&mipi_tx0>;
+> +            phy-names = "dphy";
+> +            port {
+> +                dsi0_out: endpoint {
+> +                    remote-endpoint = <&panel_in>;
+> +                };
+> +            };
+> +        };
+> +    };
+> +
+> +...
+> -- 
+> 2.18.0
+> 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
