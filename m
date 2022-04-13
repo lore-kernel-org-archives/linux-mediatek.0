@@ -4,60 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FD05C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 08:30:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0DCAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 08:42:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NE/sBRglAHMUQfj7vHlZ3QXvp6DIKS/9N2FIhh9chbE=; b=pWZBNCYRw/pdUw
-	BNo/+JSarcvYdp8l97mFpX9F7QozGi+JA0tiXrZ6MTC6wO01vo6oYSQmbGonfUUuWyQD6rAYdtHE/
-	nA7zwKTuX7XL2iIgwepjQbPRt80iVJpye5x4zxqnNOKFymXNkMCG+aGggmg5N96yYq2aK/NksOjN6
-	RlXa7YvAimpCBR0vxa1rn6nNHAelI82wt2HXQD+RUHWRe2UYO2MX7vPhKM+qCrk2jedUt0LgvjfrE
-	Y3TiXrts6Jm48c8ClADowYThswARCLdN43haCsS3j64+ak0xHYsHPHorHR+ShY0kBmLFyyThCwxyz
-	DQuR7pKVR01pAiNuvdLw==;
+	List-Owner; bh=EImR1u9GGAn8Foo947R3lHI6K5AR3aImgfqfPaeHTxc=; b=gdVsl4ZhlDxjMF
+	Ucelz15hG3xcQQmi74l1bfgXIZM/VeoKQmc5nR6zH2Go7LUV06XVNLZ+3XfibbU/qp6TqiMeg+4Fm
+	PJluYnaRakWZ9wwiPo0ohh/NaZXCr217ivgoNh60ysAk8bBwjfkGZ065hORmjFsBUWE2iyKnkn+cM
+	i76ExM9h3n0YfVycqCVwFgAdNg6ixFhr5/tOcffgR18F/42yGAO/AYpwKjiz++QvRVRaEzrPpTQd7
+	CHbkSRo+EQTROdIWWUdYf3UDwuU1VjT09ML6QztVj82u/HysM3yYzSrhVvcYkxfa7mWpIjfyc+Mhu
+	ioNZawP/6nd28fXJV2FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neYOH-0004Tk-Ah; Wed, 13 Apr 2022 08:30:17 +0000
-Received: from relay.hostedemail.com ([64.99.140.28])
+	id 1neYZh-0008PX-Rh; Wed, 13 Apr 2022 08:42:05 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neYO3-0004L2-D6; Wed, 13 Apr 2022 08:30:04 +0000
-Received: from omf12.hostedemail.com (a10.router.float.18 [10.200.18.1])
- by unirelay13.hostedemail.com (Postfix) with ESMTP id E6D7960B0F;
- Wed, 13 Apr 2022 08:29:57 +0000 (UTC)
-Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by
- omf12.hostedemail.com (Postfix) with ESMTPA id D72BC1D; 
- Wed, 13 Apr 2022 08:29:54 +0000 (UTC)
-Message-ID: <d0ed8518dfb93e6f2bbbaf4aac3436dd20369c00.camel@perches.com>
-Subject: Re: [PATCH 08/14] MAINTAINERS: add Ralink pinctrl driver
-From: Joe Perches <joe@perches.com>
-To: =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, Sergio
- Paracuellos <sergio.paracuellos@gmail.com>, Luiz Angelo Daros de Luca
- <luizluca@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Thomas
- Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger
- <matthias.bgg@gmail.com>
-Cc: erkin.bozoglu@xeront.com, linux-gpio@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-mips@vger.kernel.org
-Date: Wed, 13 Apr 2022 01:29:53 -0700
-In-Reply-To: <20220413060729.27639-9-arinc.unal@arinc9.com>
-References: <20220413060729.27639-1-arinc.unal@arinc9.com>
- <20220413060729.27639-9-arinc.unal@arinc9.com>
-User-Agent: Evolution 3.40.4-1ubuntu2 
+ id 1neYZH-0008B7-Ik; Wed, 13 Apr 2022 08:41:42 +0000
+X-UUID: f0c2fbbe74284be2a014febd23d3b4ff-20220413
+X-UUID: f0c2fbbe74284be2a014febd23d3b4ff-20220413
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 373274467; Wed, 13 Apr 2022 01:41:32 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 13 Apr 2022 01:31:43 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 13 Apr 2022 16:31:42 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 13 Apr 2022 16:31:42 +0800
+Message-ID: <fb3d631cd1e86ee12dff5ee3bc1b82b12cb2cb10.camel@mediatek.com>
+Subject: Re: [PATCH v4, 3/4] drm/mediatek: keep dsi as LP00 before dcs cmds
+ transfer
+From: CK Hu <ck.hu@mediatek.com>
+To: <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
+ <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <matthias.bgg@gmail.com>, <rex-bc.chen@mediatek.com>
+CC: <jitao.shi@mediatek.com>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
+Date: Wed, 13 Apr 2022 16:31:42 +0800
+In-Reply-To: <1649644308-8455-4-git-send-email-xinlei.lee@mediatek.com>
+References: <1649644308-8455-1-git-send-email-xinlei.lee@mediatek.com>
+ <1649644308-8455-4-git-send-email-xinlei.lee@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-X-Stat-Signature: zhuoxxoync4pzqz7sdbq39i3jeft38mk
-X-Rspamd-Server: rspamout01
-X-Rspamd-Queue-Id: D72BC1D
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Session-ID: U2FsdGVkX18hGnWBYKAheXpW4IDdjP9YcLGcKeoboe4=
-X-HE-Tag: 1649838594-350832
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_013003_540186_F51F56B6 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20220413_014139_656283_1925E88B 
+X-CRM114-Status: GOOD (  21.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,28 +71,125 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyMDIyLTA0LTEzIGF0IDA5OjA3ICswMzAwLCBBcsSxbsOnIMOcTkFMIHdyb3RlOgo+
-IEFkZCBhIG5ldyBzZWN0aW9uIGZvciB0aGUgUmFsaW5rIHBpbmN0cmwgZHJpdmVyIGFuZCBhZGQg
-bWUgYW5kIFNlcmdpbyBhcwo+IHRoZSBtYWludGFpbmVycy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBB
-csSxbsOnIMOcTkFMIDxhcmluYy51bmFsQGFyaW5jOS5jb20+CgpJdCdzIHVudXN1YWwgZm9yIGEg
-bGFzdCBuYW1lIHRvIGJlIGNvbXBsZXRlbHkgY2FwaXRhbGl6ZWQuCgo+IGRpZmYgLS1naXQgYS9N
-QUlOVEFJTkVSUyBiL01BSU5UQUlORVJTCltdCj4gQEAgLTE2NTAyLDYgKzE2NTAyLDEzIEBAIEw6
-CWxpbnV4LW1pcHNAdmdlci5rZXJuZWwub3JnCj4gIFM6CU1haW50YWluZWQKPiAgRjoJYXJjaC9t
-aXBzL2Jvb3QvZHRzL3JhbGluay9tdDc2MjEqCj4gIAo+ICtSQUxJTksgUElOQ1RSTCBEUklWRVIK
-PiArTToJQXLEsW7DpyDDnE5BTCA8YXJpbmMudW5hbEBhcmluYzkuY29tPgo+ICtNOglTZXJnaW8g
-UGFyYWN1ZWxsb3MgPHNlcmdpby5wYXJhY3VlbGxvc0BnbWFpbC5jb20+Cj4gK0w6CWxpbnV4LW1p
-cHNAdmdlci5rZXJuZWwub3JnCj4gK1M6CU1haW50YWluZWQKPiArRjoJZHJpdmVycy9waW5jdHJs
-L3JhbGluay8qCgpUeXBpY2FsbHkgdGhpcyBpcyBqdXN0IHRoZSBkaXJlY3RvcnkuCgpGOglkcml2
-ZXJzL3BpbmN0cmwvcmFsaW5rLwoKYXMgdGhpcyBjb3ZlcnMgYW55IGZpbGUgaW4gdGhlIGRpcmVj
-dG9yeSBhcyB3ZWxsIGFzCmFueSBwb3NzaWJsZSBzdWJkaXJlY3RvcmllcyBhbmQgZmlsZXMuCgpV
-c2luZwoKRjoJZHJpdmVycy9waW5jdHJsL3JhbGluay8qCgpleGNsdWRlcyBhbnkgcG9zc2libGUg
-c3ViZGlyZWN0b3JpZXMgYW5kIGZpbGVzIHdpdGhpbiB0aG9zZQpwb3NzaWJsZSBzdWJkaXJlY3Rv
-cmllcy4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1t
-ZWRpYXRlawo=
+Hi, Xinlei:
+
+On Mon, 2022-04-11 at 10:31 +0800, xinlei.lee@mediatek.com wrote:
+> From: Jitao Shi <jitao.shi@mediatek.com>
+> 
+> To comply with the panel sequence, hold the mipi signal to LP00
+> before the dcs cmds transmission,
+> and pull the mipi signal high from LP00 to LP11 until the start of
+> the dcs cmds transmission.
+> The normal panel timing is :
+> (1) pp1800 DC pull up
+> (2) avdd & avee AC pull high
+> (3) lcm_reset pull high -> pull low -> pull high
+> (4) Pull MIPI signal high (LP11) -> initial code -> send video
+> data(HS mode)
+> The power-off sequence is reversed.
+> If dsi is not in cmd mode, then dsi will pull the mipi signal high in
+> the mtk_output_dsi_enable function.
+> 
+> Fixes: 2dd8075d2185 ("drm/mediatek: mtk_dsi: Use the drm_panel_bridge
+> API")
+> 
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 28 +++++++++++++++++++++-------
+>  1 file changed, 21 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index cf76c53a1af6..9ad6f08c8bfe 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -203,6 +203,7 @@ struct mtk_dsi {
+>  	struct mtk_phy_timing phy_timing;
+>  	int refcount;
+>  	bool enabled;
+> +	bool lanes_ready;
+>  	u32 irq_data;
+>  	wait_queue_head_t irq_wait_queue;
+>  	const struct mtk_dsi_driver_data *driver_data;
+> @@ -654,13 +655,6 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+>  	mtk_dsi_config_vdo_timing(dsi);
+>  	mtk_dsi_set_interrupt_enable(dsi);
+>  
+> -	mtk_dsi_rxtx_control(dsi);
+> -	usleep_range(30, 100);
+> -	mtk_dsi_reset_dphy(dsi);
+> -	mtk_dsi_clk_ulp_mode_leave(dsi);
+> -	mtk_dsi_lane0_ulp_mode_leave(dsi);
+> -	mtk_dsi_clk_hs_mode(dsi, 0);
+> -
+>  	return 0;
+>  err_disable_engine_clk:
+>  	clk_disable_unprepare(dsi->engine_clk);
+> @@ -689,6 +683,23 @@ static void mtk_dsi_poweroff(struct mtk_dsi
+> *dsi)
+>  	clk_disable_unprepare(dsi->digital_clk);
+>  
+>  	phy_power_off(dsi->phy);
+> +
+> +	dsi->lanes_ready = false;
+> +}
+> +
+> +static void mtk_dsi_lane_ready(struct mtk_dsi *dsi)
+> +{
+> +	if (!dsi->lanes_ready) {
+> +		dsi->lanes_ready = true;
+> +		mtk_dsi_rxtx_control(dsi);
+> +		usleep_range(30, 100);
+> +		mtk_dsi_reset_dphy(dsi);
+> +		mtk_dsi_clk_ulp_mode_leave(dsi);
+> +		mtk_dsi_lane0_ulp_mode_leave(dsi);
+> +		mtk_dsi_clk_hs_mode(dsi, 0);
+> +		msleep(20);
+> +	} else
+> +		DRM_DEBUG("The dsi_lane is ready\n");
+>  }
+>  
+>  static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
+> @@ -696,6 +707,7 @@ static void mtk_output_dsi_enable(struct mtk_dsi
+> *dsi)
+>  	if (dsi->enabled)
+>  		return;
+>  
+> +	mtk_dsi_lane_ready(dsi);
+>  	mtk_dsi_set_mode(dsi);
+>  	mtk_dsi_clk_hs_mode(dsi, 1);
+>  
+> @@ -1001,6 +1013,8 @@ static ssize_t mtk_dsi_host_transfer(struct
+> mipi_dsi_host *host,
+>  	if (MTK_DSI_HOST_IS_READ(msg->type))
+>  		irq_flag |= LPRX_RD_RDY_INT_FLAG;
+>  
+> +	mtk_dsi_lane_ready(dsi);
+
+In [1], YT has move mtk_dsi_lane_ready() before panel prepare for dsi-
+>panel case. Now you move mtk_dsi_lane_ready() after panel prepare,
+this may break dsi->panel case. Please provide a solution for both
+case.
+
+[1] 
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/gpu/drm/mediatek/mtk_dsi.c?h=v5.18-rc2&id=0707632b5bacc490f58dfbad741d586c06595ff3
+
+Regards,
+CK
+
+> +
+>  	ret = mtk_dsi_host_send_cmd(dsi, msg, irq_flag);
+>  	if (ret)
+>  		goto restore_dsi_mode;
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
