@@ -4,62 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0DCAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 08:42:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03A5FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 08:42:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EImR1u9GGAn8Foo947R3lHI6K5AR3aImgfqfPaeHTxc=; b=gdVsl4ZhlDxjMF
-	Ucelz15hG3xcQQmi74l1bfgXIZM/VeoKQmc5nR6zH2Go7LUV06XVNLZ+3XfibbU/qp6TqiMeg+4Fm
-	PJluYnaRakWZ9wwiPo0ohh/NaZXCr217ivgoNh60ysAk8bBwjfkGZ065hORmjFsBUWE2iyKnkn+cM
-	i76ExM9h3n0YfVycqCVwFgAdNg6ixFhr5/tOcffgR18F/42yGAO/AYpwKjiz++QvRVRaEzrPpTQd7
-	CHbkSRo+EQTROdIWWUdYf3UDwuU1VjT09ML6QztVj82u/HysM3yYzSrhVvcYkxfa7mWpIjfyc+Mhu
-	ioNZawP/6nd28fXJV2FQ==;
+	List-Owner; bh=u70ReAPKTeH+dCooJ61t1VlBiNKFmjCPUtNklvFU12s=; b=PxlVGz/sRWmRS3
+	MhYwKZ+tiDYPQVOMHSgDaeeZAqld8SwBBGzTx6ImKkKoW8Ff078QPyOgIqOzpd4K4bEZWtzBOcbhq
+	LTF/zdotugG0IHRhFulnWTem4/VDSY3/IDNaNpQFtVrERZf0d4IEtuMGVBB2pbcxBkJMVaEEBfsc+
+	O7HKnOWPARapqS79ySzs5l8rGAWTyRFA3ZpolHSnceFHedZQHvQj4LUZZOPX4snbrsXvWI8DtATnq
+	dbvMZ7UTPqS+iGdC/Q+adEhW2O89OIhezgkQbl9KSvRLs0No6EwqJ03Bsw5oZSqcsQy6XLjldNDRB
+	SC0UWOkubQKCD2PdNlQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neYZh-0008PX-Rh; Wed, 13 Apr 2022 08:42:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1neYZx-0008XS-Lu; Wed, 13 Apr 2022 08:42:21 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neYZH-0008B7-Ik; Wed, 13 Apr 2022 08:41:42 +0000
-X-UUID: f0c2fbbe74284be2a014febd23d3b4ff-20220413
-X-UUID: f0c2fbbe74284be2a014febd23d3b4ff-20220413
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 373274467; Wed, 13 Apr 2022 01:41:32 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 13 Apr 2022 01:31:43 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 13 Apr 2022 16:31:42 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 13 Apr 2022 16:31:42 +0800
-Message-ID: <fb3d631cd1e86ee12dff5ee3bc1b82b12cb2cb10.camel@mediatek.com>
-Subject: Re: [PATCH v4, 3/4] drm/mediatek: keep dsi as LP00 before dcs cmds
- transfer
-From: CK Hu <ck.hu@mediatek.com>
-To: <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
- <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <matthias.bgg@gmail.com>, <rex-bc.chen@mediatek.com>
-CC: <jitao.shi@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
-Date: Wed, 13 Apr 2022 16:31:42 +0800
-In-Reply-To: <1649644308-8455-4-git-send-email-xinlei.lee@mediatek.com>
-References: <1649644308-8455-1-git-send-email-xinlei.lee@mediatek.com>
- <1649644308-8455-4-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1neYZI-0008C1-4t; Wed, 13 Apr 2022 08:41:44 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 11E7A1F44B82
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1649839298;
+ bh=VsMFErl3fUbkDNBlhEDMtj7UhHKnA4rACzxxHNzfR78=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=cQZJI2NNJoEH98QbZdpA+szsNPyPCK+1jHsBugIIHcC62oajQU3IIw9NZt6a7e/+f
+ ePLipA+Q3P3XFtCacGvu8z/oWU2SDiE2VTBp7MAtyaVduZgcumYwCs4MB2MK1/solf
+ VrTvBIm3b8Nu3Go2kLV82hgUVmp4I2ag5xnb5iPJO38D/TgHCzZSGwXYeVic75Rjtk
+ pSXyW/0ktVhsjJpHpyCz6T0I6bD11mw6VqeA2cxcY4gnMDPNl0Jj30jNxgoFUDccuU
+ +WRlMMeY8axwd8TYRH+aPXYDuK12r6E/rUaF6jOF8aqfiByz3n7c4ZBw83Ft48AchM
+ 1djzws6N1zZoA==
+Message-ID: <858afddd-c008-8a6c-c3c1-e1883e710c5e@collabora.com>
+Date: Wed, 13 Apr 2022 10:41:34 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v14 6/6] soc: mediatek: mutex: add functions that operate
+ registers by CMDQ
+Content-Language: en-US
+To: Moudy Ho <moudy.ho@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Jernej Skrabec <jernej.skrabec@siol.net>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>, Rob Landley <rob@landley.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>,
+ tfiga@chromium.org, drinkcat@chromium.org, pihsun@chromium.org,
+ hsinyi@google.com, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ daoyuan huang <daoyuan.huang@mediatek.com>,
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, allen-kh.cheng@mediatek.com,
+ xiandong.wang@mediatek.com, randy.wu@mediatek.com,
+ jason-jh.lin@mediatek.com, roy-cw.yeh@mediatek.com,
+ river.cheng@mediatek.com, srv_heupstream@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220411072403.24016-1-moudy.ho@mediatek.com>
+ <20220411072403.24016-7-moudy.ho@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220411072403.24016-7-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_014139_656283_1925E88B 
-X-CRM114-Status: GOOD (  21.01  )
+X-CRM114-CacheID: sfid-20220413_014140_506578_FCEE4C20 
+X-CRM114-Status: GOOD (  25.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,123 +81,110 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Xinlei:
-
-On Mon, 2022-04-11 at 10:31 +0800, xinlei.lee@mediatek.com wrote:
-> From: Jitao Shi <jitao.shi@mediatek.com>
+Il 11/04/22 09:24, Moudy Ho ha scritto:
+> Due to HW limitations, MDP3 is necessary to enable MUTEX in each frame
+> for SOF triggering and cooperate with CMDQ control to reduce the amount
+> of interrupts generated(also, reduce frame latency).
 > 
-> To comply with the panel sequence, hold the mipi signal to LP00
-> before the dcs cmds transmission,
-> and pull the mipi signal high from LP00 to LP11 until the start of
-> the dcs cmds transmission.
-> The normal panel timing is :
-> (1) pp1800 DC pull up
-> (2) avdd & avee AC pull high
-> (3) lcm_reset pull high -> pull low -> pull high
-> (4) Pull MIPI signal high (LP11) -> initial code -> send video
-> data(HS mode)
-> The power-off sequence is reversed.
-> If dsi is not in cmd mode, then dsi will pull the mipi signal high in
-> the mtk_output_dsi_enable function.
+> In response to the above situation, a new interface
+> "mtk_mutex_enable_by_cmdq" has been added to achieve the purpose.
 > 
-> Fixes: 2dd8075d2185 ("drm/mediatek: mtk_dsi: Use the drm_panel_bridge
-> API")
-> 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 28 +++++++++++++++++++++-------
->  1 file changed, 21 insertions(+), 7 deletions(-)
+>   drivers/soc/mediatek/mtk-mutex.c       | 42 +++++++++++++++++++++++++-
+>   include/linux/soc/mediatek/mtk-mutex.h |  2 ++
+>   2 files changed, 43 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index cf76c53a1af6..9ad6f08c8bfe 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -203,6 +203,7 @@ struct mtk_dsi {
->  	struct mtk_phy_timing phy_timing;
->  	int refcount;
->  	bool enabled;
-> +	bool lanes_ready;
->  	u32 irq_data;
->  	wait_queue_head_t irq_wait_queue;
->  	const struct mtk_dsi_driver_data *driver_data;
-> @@ -654,13 +655,6 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
->  	mtk_dsi_config_vdo_timing(dsi);
->  	mtk_dsi_set_interrupt_enable(dsi);
->  
-> -	mtk_dsi_rxtx_control(dsi);
-> -	usleep_range(30, 100);
-> -	mtk_dsi_reset_dphy(dsi);
-> -	mtk_dsi_clk_ulp_mode_leave(dsi);
-> -	mtk_dsi_lane0_ulp_mode_leave(dsi);
-> -	mtk_dsi_clk_hs_mode(dsi, 0);
-> -
->  	return 0;
->  err_disable_engine_clk:
->  	clk_disable_unprepare(dsi->engine_clk);
-> @@ -689,6 +683,23 @@ static void mtk_dsi_poweroff(struct mtk_dsi
-> *dsi)
->  	clk_disable_unprepare(dsi->digital_clk);
->  
->  	phy_power_off(dsi->phy);
-> +
-> +	dsi->lanes_ready = false;
-> +}
-> +
-> +static void mtk_dsi_lane_ready(struct mtk_dsi *dsi)
+> diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+> index fc9ba2749946..1811beaf399d 100644
+> --- a/drivers/soc/mediatek/mtk-mutex.c
+> +++ b/drivers/soc/mediatek/mtk-mutex.c
+> @@ -7,10 +7,12 @@
+>   #include <linux/iopoll.h>
+>   #include <linux/module.h>
+>   #include <linux/of_device.h>
+> +#include <linux/of_address.h>
+>   #include <linux/platform_device.h>
+>   #include <linux/regmap.h>
+>   #include <linux/soc/mediatek/mtk-mmsys.h>
+>   #include <linux/soc/mediatek/mtk-mutex.h>
+> +#include <linux/soc/mediatek/mtk-cmdq.h>
+>   
+>   #define MT2701_MUTEX0_MOD0			0x2c
+>   #define MT2701_MUTEX0_SOF0			0x30
+> @@ -176,6 +178,9 @@ struct mtk_mutex_ctx {
+>   	void __iomem			*regs;
+>   	struct mtk_mutex		mutex[10];
+>   	const struct mtk_mutex_data	*data;
+> +	phys_addr_t			addr;
+> +	struct cmdq_client_reg		cmdq_reg;
+> +	bool				has_gce_client_reg;
+>   };
+>   
+>   static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+> @@ -618,6 +623,28 @@ void mtk_mutex_enable(struct mtk_mutex *mutex)
+>   }
+>   EXPORT_SYMBOL_GPL(mtk_mutex_enable);
+>   
+> +void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex, void *pkt)
 > +{
-> +	if (!dsi->lanes_ready) {
-> +		dsi->lanes_ready = true;
-> +		mtk_dsi_rxtx_control(dsi);
-> +		usleep_range(30, 100);
-> +		mtk_dsi_reset_dphy(dsi);
-> +		mtk_dsi_clk_ulp_mode_leave(dsi);
-> +		mtk_dsi_lane0_ulp_mode_leave(dsi);
-> +		mtk_dsi_clk_hs_mode(dsi, 0);
-> +		msleep(20);
-> +	} else
-> +		DRM_DEBUG("The dsi_lane is ready\n");
->  }
->  
->  static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
-> @@ -696,6 +707,7 @@ static void mtk_output_dsi_enable(struct mtk_dsi
-> *dsi)
->  	if (dsi->enabled)
->  		return;
->  
-> +	mtk_dsi_lane_ready(dsi);
->  	mtk_dsi_set_mode(dsi);
->  	mtk_dsi_clk_hs_mode(dsi, 1);
->  
-> @@ -1001,6 +1013,8 @@ static ssize_t mtk_dsi_host_transfer(struct
-> mipi_dsi_host *host,
->  	if (MTK_DSI_HOST_IS_READ(msg->type))
->  		irq_flag |= LPRX_RD_RDY_INT_FLAG;
->  
-> +	mtk_dsi_lane_ready(dsi);
-
-In [1], YT has move mtk_dsi_lane_ready() before panel prepare for dsi-
->panel case. Now you move mtk_dsi_lane_ready() after panel prepare,
-this may break dsi->panel case. Please provide a solution for both
-case.
-
-[1] 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/gpu/drm/mediatek/mtk_dsi.c?h=v5.18-rc2&id=0707632b5bacc490f58dfbad741d586c06595ff3
-
-Regards,
-CK
-
+> +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
+> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+> +						 mutex[mutex->id]);
+> +	struct cmdq_pkt *cmdq_pkt = (struct cmdq_pkt *)pkt;
 > +
->  	ret = mtk_dsi_host_send_cmd(dsi, msg, irq_flag);
->  	if (ret)
->  		goto restore_dsi_mode;
+> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+> +
+> +	if (!mtx->has_gce_client_reg) {
+> +		dev_dbg(mtx->dev, "mediatek,gce-client-reg hasn't been set in dts");
+> +		return;
 
+Is this really supposed to happen?
+
+Reiterating: when the gce-client-reg is not set, this function should either never
+be called from the principle, or it should actually fail.
+If a driver relies on mtk_mutex_enable_by_cmdq() and does *not* fall back to
+register write from cpu, then no change will occur at all, leading to a random
+breakage with no apparent reason.
+
+This means that - for safety - this function should return -EINVAL when it gets
+called while no gce client reg is declared.
+Of course, this would also mean that the dev_dbg() should be a dev_err(), and
+that efforts should be done to avoid triggering this error by adding fallbacks
+in the drivers that will call this.
+
+Another option would be to keep this function void, keep the print a dev_dbg(),
+but automatically fallback to mtk_mutex_enable(), so that here:
+
+if (!mtx->has_gce_client_reg) {
+	dev_dbg(mtx->dev,
+		"No GCE client register found: falling back to cpu write.\n");
+	mtk_mutex_enable(mutex);
+	return;
+}
+
+...you're free to choose whichever of the two options, but this has to be fixed
+to remove this fragility.
+
+> +	}
+> +
+> +	cmdq_pkt_write(cmdq_pkt, mtx->cmdq_reg.subsys,
+> +		       mtx->addr + DISP_REG_MUTEX_EN(mutex->id), 1);
+> +#else
+> +	dev_err(mtx->dev, "Not support for enable MUTEX by CMDQ");
+
+...obviously, if mtk_cmdq not reachable, instead of simply letting drivers break,
+you should, also here, fall back to the less performant and very suboptimal (for
+the specific case of mdp3 and some others) mtk_mutex_enable().
+
+
+Thanks,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
