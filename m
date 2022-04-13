@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDE39C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 04:05:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F033C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Apr 2022 04:05:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=evhQkEJbaZ55iSzjisIEAPPO763boOfu6UFr+ci9Zq0=; b=UN3U76R4IzhVKa
-	3NENMjgpSiigfpfLvX8sMDi4sgXbp+3t4URuq8sm2/k7PBgD/ZZNtp0zzfbKEsrQtrT9l/jYvh82I
-	pT+HFiVWQNy1nEtQCpvZK2EJLjLx1siz+0LbJkJOE/MoMcOHPss6v+ZoVriAMIMN+umyFGZ9ykJff
-	q/cGZBROALu6dFdj+uqc2PFbYMb8LqdxBanLc08YvkeQAeaUlvrGxKGpmVjwN9kiqRhVqAi8ekROM
-	B84m4f/thKCS09oSM8KiFMsT2ncDJyqKVoJbwpBMTzo1ILpbof30IpvdQdR8h4exmsG8VtaDhyKzQ
-	xywU19P1k5HJTQAz6XPA==;
+	List-Owner; bh=vexmQUpw3LhCQlbWfi8TsRQ85qwtjT3bo4ZnSlbs65M=; b=gI+zQThcBINcTT
+	fK7PnO9pHN3OqVExvffa7IyrJhvvwt8U08iaIjje3XAfvbo1lp+RcX7gs019cRfcXYrYsU3o0m9Ch
+	9n4c+SlmyEWQWQUF1uoUvTuMBbYB390oWJxRlFtlZ5HVykOS1WpzIEKg4fasM9wOqd2Mj/qpCKPM0
+	mEdxMdqRTxPzFRI8FMwBh9m1pv2O80xP+BYxn9nqsGHIiQKlK2iuOWrSzkT7AxbXP0JWjtmcx9c01
+	ArHXl3L9wI0VhbDVRu2ympyX/TT4ffwnUlHrm+MW4/DbUGUj+3lneifDCy0fcGnaaRBikhzkrtLFF
+	8c59ahpoIoD+3Nc22FEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neUFj-00GgaO-9a; Wed, 13 Apr 2022 04:05:11 +0000
+	id 1neUFw-00GgiO-V4; Wed, 13 Apr 2022 04:05:24 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neUF5-00GgJk-37; Wed, 13 Apr 2022 04:04:32 +0000
-X-UUID: 46a5caa9fd29493cbbe48939c74d528a-20220412
-X-UUID: 46a5caa9fd29493cbbe48939c74d528a-20220412
+ id 1neUF6-00GgJG-O1; Wed, 13 Apr 2022 04:04:34 +0000
+X-UUID: b8b9df22ea614795ab847d99ee22934d-20220412
+X-UUID: b8b9df22ea614795ab847d99ee22934d-20220412
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1425090495; Tue, 12 Apr 2022 21:04:28 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ with ESMTP id 567402884; Tue, 12 Apr 2022 21:04:28 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 12 Apr 2022 20:54:30 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 13 Apr 2022 11:54:23 +0800
+ 15.0.1497.2; Tue, 12 Apr 2022 20:54:31 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 13 Apr 2022 11:54:16 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 13 Apr 2022 11:54:21 +0800
+ Transport; Wed, 13 Apr 2022 11:54:15 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
@@ -58,18 +58,17 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
 Subject: [PATCH v4,
- 6/7] media: mediatek: vcodec: prevent kernel crash when scp ipi
- timeout
-Date: Wed, 13 Apr 2022 11:54:09 +0800
-Message-ID: <20220413035410.29568-7-yunfei.dong@mediatek.com>
+ 2/7] media: mediatek: vcodec: Add to support lat soc hardware
+Date: Wed, 13 Apr 2022 11:54:05 +0800
+Message-ID: <20220413035410.29568-3-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220413035410.29568-1-yunfei.dong@mediatek.com>
 References: <20220413035410.29568-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220412_210431_149286_A20A84FB 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20220412_210432_808675_026C949A 
+X-CRM114-Status: GOOD (  17.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,72 +85,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When SCP timeout during playing video, kernel crashes with following
-message. It's caused by accessing NULL pointer in vpu_dec_ipi_handler.
-This patch doesn't solve the root cause of NULL pointer, but merely
-prevent kernel crashed when encounter the NULL pointer.
+Add lat soc compatible and to support lat soc power/clk helper.
 
-After applied this patch, kernel keeps alive, only the video player turns
-to green screen.
-
-[67242.065474] pc : vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec]
-[67242.065485] [MTK_V4L2] level=0 fops_vcodec_open(),334:
-18000000.vcodec_dec decoder [135]
-[67242.065523] lr : scp_ipi_handler+0x11c/0x244 [mtk_scp]
-[67242.065540] sp : ffffffbb4207fb10
-[67242.065557] x29: ffffffbb4207fb30 x28: ffffffd00a1d5000
-[67242.065592] x27: 1ffffffa0143aa24 x26: 0000000000000000
-[67242.065625] x25: dfffffd000000000 x24: ffffffd0168bfdb0
-[67242.065659] x23: 1ffffff76840ff74 x22: ffffffbb41fa8a88
-[67242.065692] x21: ffffffbb4207fb9c x20: ffffffbb4207fba0
-[67242.065725] x19: ffffffbb4207fb98 x18: 0000000000000000
-[67242.065758] x17: 0000000000000000 x16: ffffffd042022094
-[67242.065791] x15: 1ffffff77ed4b71a x14: 1ffffff77ed4b719
-[67242.065824] x13: 0000000000000000 x12: 0000000000000000
-[67242.065857] x11: 0000000000000000 x10: dfffffd000000001
-[67242.065890] x9 : 0000000000000000 x8 : 0000000000000002
-[67242.065923] x7 : 0000000000000000 x6 : 000000000000003f
-[67242.065956] x5 : 0000000000000040 x4 : ffffffffffffffe0
-[67242.065989] x3 : ffffffd043b841b8 x2 : 0000000000000000
-[67242.066021] x1 : 0000000000000010 x0 : 0000000000000010
-[67242.066055] Call trace:
-[67242.066092]  vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec
-12220d230d83a7426fc38c56b3e7bc6066955bae]
-[67242.066119]  scp_ipi_handler+0x11c/0x244 [mtk_scp
-8fb69c2ef141dd3192518b952b65aba35627b8bf]
-[67242.066145]  mt8192_scp_irq_handler+0x70/0x128 [mtk_scp
-8fb69c2ef141dd3192518b952b65aba35627b8bf]
-[67242.066172]  scp_irq_handler+0xa0/0x114 [mtk_scp
-8fb69c2ef141dd3192518b952b65aba35627b8bf]
-[67242.066200]  irq_thread_fn+0x84/0xf8
-[67242.066220]  irq_thread+0x170/0x1ec
-[67242.066242]  kthread+0x2f8/0x3b8
-[67242.066264]  ret_from_fork+0x10/0x30
-[67242.066292] Code: 38f96908 35003628 91004340 d343fc08 (38f96908)
-
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: Macpaul Lin <macpaul.lin@mediatek.com>
 ---
- drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ .../platform/mediatek/vcodec/mtk_vcodec_dec_hw.c | 12 +++++++++---
+ .../platform/mediatek/vcodec/mtk_vcodec_dec_hw.h |  2 ++
+ .../platform/mediatek/vcodec/mtk_vcodec_dec_pm.c | 16 ++++++++++++++++
+ .../platform/mediatek/vcodec/mtk_vcodec_drv.h    |  1 +
+ 4 files changed, 28 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-index 35f4d5583084..1041dd663e76 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-@@ -91,6 +91,11 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
- 	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
- 					(unsigned long)msg->ap_inst_addr;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+index 14bed2bd4283..376db0e433d7 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+@@ -28,6 +28,10 @@ static const struct of_device_id mtk_vdec_hw_match[] = {
+ 		.compatible = "mediatek,mtk-vcodec-core",
+ 		.data = (void *)MTK_VDEC_CORE,
+ 	},
++	{
++		.compatible = "mediatek,mtk-vcodec-lat-soc",
++		.data = (void *)MTK_VDEC_LAT_SOC,
++	},
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mtk_vdec_hw_match);
+@@ -166,9 +170,11 @@ static int mtk_vdec_hw_probe(struct platform_device *pdev)
+ 	subdev_dev->reg_base[VDEC_HW_SYS] = main_dev->reg_base[VDEC_HW_SYS];
+ 	set_bit(subdev_dev->hw_idx, main_dev->subdev_bitmap);
  
-+	if (!vpu) {
-+		mtk_v4l2_err("ap_inst_addr is NULL");
-+		return;
+-	ret = mtk_vdec_hw_init_irq(subdev_dev);
+-	if (ret)
+-		goto err;
++	if (IS_SUPPORT_VDEC_HW_IRQ(hw_idx)) {
++		ret = mtk_vdec_hw_init_irq(subdev_dev);
++		if (ret)
++			goto err;
 +	}
-+
- 	mtk_vcodec_debug(vpu, "+ id=%X", msg->msg_id);
  
- 	vpu->failure = msg->status;
+ 	subdev_dev->reg_base[VDEC_HW_MISC] =
+ 		devm_platform_ioremap_resource(pdev, 0);
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
+index a63e4b1b81c3..b8938c6c3e72 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
+@@ -17,6 +17,8 @@
+ #define VDEC_IRQ_CLR 0x10
+ #define VDEC_IRQ_CFG_REG 0xa4
+ 
++#define IS_SUPPORT_VDEC_HW_IRQ(hw_idx) (hw_idx != MTK_VDEC_LAT_SOC)
++
+ /**
+  * enum mtk_vdec_hw_reg_idx - subdev hardware register base index
+  * @VDEC_HW_SYS : vdec soc register index
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
+index 0fb7e5ba635b..d69faa463d04 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
+@@ -174,6 +174,14 @@ static void mtk_vcodec_dec_child_dev_on(struct mtk_vcodec_dev *vdec_dev,
+ 		mtk_vcodec_dec_pw_on(pm);
+ 		mtk_vcodec_dec_clock_on(pm);
+ 	}
++
++	if (hw_idx == MTK_VDEC_LAT0) {
++		pm = mtk_vcodec_dec_get_pm(vdec_dev, MTK_VDEC_LAT_SOC);
++		if (pm) {
++			mtk_vcodec_dec_pw_on(pm);
++			mtk_vcodec_dec_clock_on(pm);
++		}
++	}
+ }
+ 
+ static void mtk_vcodec_dec_child_dev_off(struct mtk_vcodec_dev *vdec_dev,
+@@ -186,6 +194,14 @@ static void mtk_vcodec_dec_child_dev_off(struct mtk_vcodec_dev *vdec_dev,
+ 		mtk_vcodec_dec_clock_off(pm);
+ 		mtk_vcodec_dec_pw_off(pm);
+ 	}
++
++	if (hw_idx == MTK_VDEC_LAT0) {
++		pm = mtk_vcodec_dec_get_pm(vdec_dev, MTK_VDEC_LAT_SOC);
++		if (pm) {
++			mtk_vcodec_dec_clock_off(pm);
++			mtk_vcodec_dec_pw_off(pm);
++		}
++	}
+ }
+ 
+ void mtk_vcodec_dec_enable_hardware(struct mtk_vcodec_ctx *ctx, int hw_idx)
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+index a29041a0b7e0..0e3db8ccb398 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+@@ -104,6 +104,7 @@ enum mtk_vdec_hw_id {
+ 	MTK_VDEC_CORE,
+ 	MTK_VDEC_LAT0,
+ 	MTK_VDEC_LAT1,
++	MTK_VDEC_LAT_SOC,
+ 	MTK_VDEC_HW_MAX,
+ };
+ 
 -- 
 2.18.0
 
