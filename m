@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF2B3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 11:30:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9257C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 11:51:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0TmWTI6c47JBMtZ0egvl7vOvQdvKnnrGu+ljt8YLxgI=; b=U51syle3OBGx0c
-	NlrprUcNYEIA9rDplHfSKhaU47ZedeTQlMO9SmRJwyVahL4x7t2XgX3ND6S/Pzbb/7wDyrq/jRFzB
-	pQrrNVd4W987VGwE84Rf7ssr0+MJQJF3LBxr1jFQFa2+2LdzPmv+/1fnRz73V4tsOPtwZrwxy2t+t
-	9KOho+58EWsbw+0CDOkmwvosb4a0UQfF+Z5h2nlyD1lFlJOYSe0F1E6MvTnnwWCLiC96aE0J2aKQ2
-	/4s3sNBAKrWufmQml0GeJF7I1OWCNMP1uhCvGo1CU20ZwQ7HeoqHlbKxvOYHd44ZLIx5LKQcEOODe
-	4Ct8dHtGdah+fJ7fkjvw==;
+	List-Owner; bh=sYlxzd1LqmLsJHgLIiYhfOYP4iCCcGg1pGErmQwHe2Y=; b=TqwoEXNX+GKqBk
+	VP4yH4qpS0YFUv/rrkec0M6sAmOW5krH9MdQilxYkNQb8IITgPV/n9X/cEepBrl205aSVBj8gUlaq
+	pgJt2JgM+jfA3BqQqOL0NLgIzFVyY1QRynO0M/qzmQGU9/Kf5SmZlh8bAJkYgi1ZglkAHby9KaZLn
+	nQ/1hqqjP9YEXSdPOoPSzQSNnGOmpgSHOziiG6NgpbzVQZFNZ3O03BxcVujyHzg5ecWluAEfnrszf
+	xw+B1Pvltkm8ZW4tanI/jYSUVxL4W/aRqP0npFCp5NDNkiUyTyqQIbF3oYz/IE40BQH3s1PnmfJw+
+	bBSozrUdHUhGYytG3HCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nexgO-005Hs0-Jy; Thu, 14 Apr 2022 11:30:40 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ney0V-005KXs-EC; Thu, 14 Apr 2022 11:51:27 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nexgL-005HqF-Mp; Thu, 14 Apr 2022 11:30:39 +0000
-X-UUID: 0645922bc4424e7a9feec6ee0740c34e-20220414
-X-UUID: 0645922bc4424e7a9feec6ee0740c34e-20220414
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 459399611; Thu, 14 Apr 2022 04:30:29 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Apr 2022 04:30:27 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 14 Apr 2022 19:30:20 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 14 Apr 2022 19:30:20 +0800
-Message-ID: <4374e31115bbcbd783003cd5c648163a1f4ff0d1.camel@mediatek.com>
-Subject: Re: [PATCH V2 11/15] cpufreq: mediatek: Update logic of
- voltage_tracking()
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Kevin Hilman <khilman@baylibre.com>, <rafael@kernel.org>,
- <viresh.kumar@linaro.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>
-CC: <matthias.bgg@gmail.com>, <jia-wei.chang@mediatek.com>,
- <roger.lu@mediatek.com>, <hsinyi@google.com>, <linux-pm@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 14 Apr 2022 19:30:20 +0800
-In-Reply-To: <7hczhr5lm3.fsf@baylibre.com>
-References: <20220408045908.21671-1-rex-bc.chen@mediatek.com>
- <20220408045908.21671-12-rex-bc.chen@mediatek.com>
- <7hczhr5lm3.fsf@baylibre.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1ney0J-005KTE-Kd; Thu, 14 Apr 2022 11:51:17 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 1EEEC1F47996
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1649937067;
+ bh=FQo3+DfDK/439bMdjsIJSbbQW7m+3RsLgRDDfki4H+U=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=YtZBD7RNl720F69+xtlmXyfdDxjpi1ksA1V3yHN1HBA6AEH5w+VeB7DI9ibavjKHp
+ ZjGwaDwxN6p4gy8x8MbJRnoAamqkn+diH9XzFHyDYHLNqyUhI5IkEXRuv1V9yIzUDU
+ AYKcVdlaGGJYKVZd0ruW3n8o5eHJ/KA0XifmgbWE0Zi+B8mz0QSBmBpFmHyQTnPCGV
+ qiWeXeq4ZGX5n+lMeRiDzj4II7gDE09xt+ks3FgMSN1jDl1LJ5P3bgAvEVMRBgwHdA
+ 5FFEZ0UDm6uyqdjercTqlpjz0C2WX369JjI3QCtFbS/aax9x7MO9bYwmNdz+pG65OE
+ re3ANfGXiXIIA==
+Message-ID: <ee2f0819-8c9e-4160-c4ae-fb4ad0da3f3b@collabora.com>
+Date: Thu, 14 Apr 2022 13:51:04 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v6 1/2] dt-bindings: Add DT schema for Arm Mali Valhall GPU
+Content-Language: en-US
+To: Nick Fan <Nick.Fan@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, alyssa.rosenzweig@collabora.com,
+ Daniel Vetter <daniel@ffwll.ch>, wenst@chromium.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20220414025023.11516-1-Nick.Fan@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220414025023.11516-1-Nick.Fan@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_043037_774653_F9919D80 
-X-CRM114-Status: GOOD (  15.66  )
+X-CRM114-CacheID: sfid-20220414_045115_835324_EE27C2C2 
+X-CRM114-Status: UNSURE (   8.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,51 +70,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-04-08 at 14:08 -0700, Kevin Hilman wrote:
-> Rex-BC Chen <rex-bc.chen@mediatek.com> writes:
+Il 14/04/22 04:50, Nick Fan ha scritto:
+> Add devicetree schema for Arm Mali Valhall GPU
 > 
-> > From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> > 
-> > - Remove VOLT_TOL because CCI may share the same sram and vproc
-> >   regulators with CPU. Therefore, set the max voltage in
-> >   regulator_set_voltage() to the proc{sram}_max_volt.
+> Define a compatible string for the Mali Valhall GPU
+> for MediaTek's SoC platform.
 > 
-> This could you a bit more detailed explanation.  Why does VOLT_TOL
-> get
-> in the way when regulators are shared between CPU & CCI?
+> Signed-off-by: Nick Fan <Nick.Fan@mediatek.com>
 
-Hello Kevin,
+Hello Nick,
+Unfortunately, this binding is completely wrong.
 
-Here we use 'sram_min_volt' and 'sram_max_volt' to determine the
-voltage boundary of sram regulator.
-And use (sram_min_volt - min_volt_shift) and 'proc_max_volt' to
-determine the voltage boundary of vproc regulator.
-We use them as platform data to replace VOLT_TOL (voltage tolerance)
-when determing the voltage boundary and invoking regulator_set_voltage.
+First of all, there's no arm,mali-valhall driver upstream - this will be managed
+by panfrost later, yes, but right now there's no support.
+Then, you're also setting opp-microvolt in a way that will never (or, at least,
+not anytime soon) be supported by the upstream driver, as it manages only one
+supply for devfreq scaling.
 
-I will add this to commit message in next version.
+Besides, please don't push bindings that have no upstream driver, especially if
+these are for downstream drivers requiring proprietary components, while a
+completely open source implementation is in the works.
 
-> 
-> > - Move comparison of new and old voltages to
-> >   mtk_cpufreq_voltage_tracking().
-> 
-> Why?  And how is this related to the above change?  Seems to me that
-> it
-> belongs in a separate patch.
-> 
-> Kevin
-
-I think there are some mistake for this.
-I will remove this commit message in next version.
-
-BRs,
-Rex
-
+Regards,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
