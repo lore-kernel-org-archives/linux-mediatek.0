@@ -4,62 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31B2CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 09:13:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EE2CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 09:23:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dJj2JOu2SQPDV5OIYVOd7nYZeCEXS8eaRwNyDFp7kZY=; b=ZhmvUeAasl8ic/
-	iIBu//R+cAqTFU1LlV3k5IYb8mIOlu9YLycDAvqyogxKz54yGHMuc1nTcXkF3zMhisRZsXLkxZe+x
-	/QZEbKfgT4U+Pk/TX7HhTJQ2lupXIOEQm1PwYpfQM2ZrEleYCGgS7+qnsgg1uvJmdqFJ5B5vMV5IY
-	uXA854Dvl/WftFr1KYvSQfgPaXmdCDnzwRCdUAv1ZU8T9Vy0s72hbxihFhAZyGTpmhOX98uyEfICr
-	NeFIDjJ19FYQINHcAmr1XfJa1eLNzcg3leVtMjOXfzckb8oHfqsFSGKScNfBr+iVgGPJF4t+S0Xta
-	z6DC1gTTM9lM9nsqzUXA==;
+	List-Owner; bh=f06rh3IYot/zVqV01NMfH3KFw+79gW9W+IBc1KDjSig=; b=l4Hk0ZW51/BVZJ
+	HhcUYiDs3KlwoSbMrWv919PnDl8SuGpzeG/7GaUS4SKWABLNgHcgWWIpsVWOLjCxJgOtqNt1wh8+M
+	GT6UnJLysBDV6zhEtVsUjGApHkRlofCZpL/scJ4P7q6Fjc6rAnsBGExKTkw0FOhXggVBeWnFQJKFH
+	yZoPxti9y3BkK9RRqZokxhuEXyF6+2BJ432wCNgrc522IvCxkHkp2P2CbLmzQErChpAlurZeRiNVw
+	7HsbetimADbd+XFsCTblcPGdjyMh7Jv2HwykC0xRJZsXZiyTRyXecMHK0Q7GvwfMd7iAmlRgoaBTD
+	e9Fqaohvj6ltHenAxgug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nevX4-004o4k-Dk; Thu, 14 Apr 2022 09:12:54 +0000
+	id 1nevgv-004rjW-28; Thu, 14 Apr 2022 09:23:05 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nevWt-004nxf-Qg; Thu, 14 Apr 2022 09:12:47 +0000
-X-UUID: 138cfb52afe0451c8ece174d06f8d1c3-20220414
-X-UUID: 138cfb52afe0451c8ece174d06f8d1c3-20220414
+ id 1nevgq-004rhp-Li; Thu, 14 Apr 2022 09:23:02 +0000
+X-UUID: ac44775cee034bd48da5c1e2d3a27ecd-20220414
+X-UUID: ac44775cee034bd48da5c1e2d3a27ecd-20220414
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <kuyo.chang@mediatek.com>)
+ (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1970520035; Thu, 14 Apr 2022 02:12:34 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Apr 2022 02:02:32 -0700
+ with ESMTP id 898927241; Thu, 14 Apr 2022 02:22:57 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 14 Apr 2022 02:19:43 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 14 Apr 2022 17:02:31 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 14 Apr 2022 17:19:41 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 14 Apr 2022 17:02:30 +0800
-From: Kuyo Chang <kuyo.chang@mediatek.com>
-To: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
- Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
- <vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
- Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, "Mel
- Gorman" <mgorman@suse.de>, Daniel Bristot de Oliveira <bristot@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-CC: <wsd_upstream@mediatek.com>, kuyo chang <kuyo.chang@mediatek.com>, "Ingo
- Molnar" <mingo@kernel.org>, <linux-kernel@vger.kernel.org>,
+ Frontend Transport; Thu, 14 Apr 2022 17:19:41 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, Randy Dunlap <rdunlap@infradead.org>
+CC: Miles Chen <miles.chen@mediatek.com>, Takashi Iwai <tiwai@suse.de>,
+ <alsa-devel@alsa-project.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 1/1] [PATCH v3]sched/pelt: Fix the attach_entity_load_avg
- calculate method
-Date: Thu, 14 Apr 2022 17:02:20 +0800
-Message-ID: <20220414090229.342-1-kuyo.chang@mediatek.com>
+Subject: [PATCH -next V2] sound/oss/dmasound: fix 'dmasound_setup' defined but
+ not used
+Date: Thu, 14 Apr 2022 17:19:38 +0800
+Message-ID: <20220414091940.2216-1-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_021243_912047_6757B084 
-X-CRM114-Status: GOOD (  14.21  )
+X-CRM114-CacheID: sfid-20220414_022300_768932_AD337EFE 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,90 +71,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: kuyo chang <kuyo.chang@mediatek.com>
+We observed: 'dmasound_setup' defined but not used error with
+COMPILER=gcc ARCH=m68k DEFCONFIG=allmodconfig build.
 
-I meet the warning message at cfs_rq_is_decayed at below code.
+Fix it by adding __maybe_unused to dmasound_setup.
 
-SCHED_WARN_ON(cfs_rq->avg.load_avg ||
-		    cfs_rq->avg.util_avg ||
-		    cfs_rq->avg.runnable_avg)
+Error(s):
+sound/oss/dmasound/dmasound_core.c:1431:12: error: 'dmasound_setup' defined but not used [-Werror=unused-function]
 
-Following is the calltrace.
+Fixes: 9dd7c46346ca ("sound/oss/dmasound: fix build when drivers are mixed =y/=m")
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+Cc: Takashi Iwai <tiwai@suse.com>
 
-Call trace:
-__update_blocked_fair
-update_blocked_averages
-newidle_balance
-pick_next_task_fair
-__schedule
-schedule
-pipe_read
-vfs_read
-ksys_read
-
-After code analyzing and some debug messages, I found it exits a corner
-case at attach_entity_load_avg which will cause load_sum is null but
-load_avg is not.
-Consider se_weight is 88761 according by sched_prio_to_weight table.
-And assume the get_pelt_divider() is 47742, se->avg.load_avg is 1.
-By the calculating for se->avg.load_sum as following will become zero
-as following.
-se->avg.load_sum =
-	div_u64(se->avg.load_avg * se->avg.load_sum, se_weight(se));
-se->avg.load_sum = 1*47742/88761 = 0.
-
-After enqueue_load_avg code as below.
-cfs_rq->avg.load_avg += se->avg.load_avg;
-cfs_rq->avg.load_sum += se_weight(se) * se->avg.load_sum;
-
-Then the load_sum for cfs_rq will be 1 while the load_sum for cfs_rq is 0.
-So it will hit the warning message.
-
-In order to fix the corner case, make sure the se->load_avg|sum is correct
-before enqueue_load_avg.
-
-After long time testing, the kernel warning was gone and the system runs
-as well as before.
-
-Fixes: f207934fb79d ("sched/fair: Align PELT windows between cfs_rq and its se")
-Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
 ---
 
- v1->v2:
- (1)Thanks for suggestion from Peter Zijlstra & Vincent Guittot.
- (2)By suggestion from Vincent Guittot,
- rework the se->load_sum calculation method for fix the corner case,
- make sure the se->load_avg|sum is correct before enqueue_load_avg.
- (3)Rework changlog.
+Change sinve v1:
+ add fixes tag
+ use __maybe_unused
 
- v2->v3:
- (1)Rename Subject. 
- (1)Add fix tag.
+---
+ sound/oss/dmasound/dmasound_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-
- kernel/sched/fair.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
-
-diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
-index d4bd299d67ab..159274482c4e 100644
---- a/kernel/sched/fair.c
-+++ b/kernel/sched/fair.c
-@@ -3829,10 +3829,12 @@ static void attach_entity_load_avg(struct cfs_rq *cfs_rq, struct sched_entity *s
+diff --git a/sound/oss/dmasound/dmasound_core.c b/sound/oss/dmasound/dmasound_core.c
+index 9c48f3a9e3d1..164335d3c200 100644
+--- a/sound/oss/dmasound/dmasound_core.c
++++ b/sound/oss/dmasound/dmasound_core.c
+@@ -1428,7 +1428,7 @@ void dmasound_deinit(void)
+ 		unregister_sound_dsp(sq_unit);
+ }
  
- 	se->avg.runnable_sum = se->avg.runnable_avg * divider;
+-static int dmasound_setup(char *str)
++static int __maybe_unused dmasound_setup(char *str)
+ {
+ 	int ints[6], size;
  
--	se->avg.load_sum = divider;
--	if (se_weight(se)) {
-+	se->avg.load_sum = se->avg.load_avg * divider;
-+	if (se_weight(se) < se->avg.load_sum) {
- 		se->avg.load_sum =
--			div_u64(se->avg.load_avg * se->avg.load_sum, se_weight(se));
-+			div_u64(se->avg.load_sum, se_weight(se));
-+	} else {
-+		se->avg.load_sum = 1;
- 	}
- 
- 	enqueue_load_avg(cfs_rq, se);
 -- 
 2.18.0
 
