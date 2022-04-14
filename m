@@ -4,58 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00FB2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 21:19:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCBD8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 21:48:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:
+	In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6SLz1lMM+5wnPImhugYkbLFq3vnsax4u4YYyLA0GRzk=; b=ITby+5oTGLUnj1
-	gV0/8ztjepchFPGJtOg/HG+eGAuDeAS0Fu904oFsf0WHekS8nLweyP8c1YySDAb2LpC2DhiKY9yeR
-	kTHdvI5PC/DStFlSVfs5/ozYAS7wWJRz3CoSWzDLGD81ouTZuCtfILBlhI6W4xt8I0GC4mj2VlQ+w
-	gOO9Z4hYxXUfaxQoi4+9gGA6nqzr13skqyWa3WwNpSQn2StDDrO+4HIzkb5n9xN0SFGlptzQBun/r
-	5De4y+sFxd6ore/toCks6kerdl5p1PZLLxVogfPrD8JP0tvFJWU0E0IugmsnZsuSBcuAhbFeDiLJD
-	i2xxPBUF5xVwFunHZKZg==;
+	References:List-Owner; bh=7kmwqcLq35QBbmRqqv30crfcCkEQQOzz6PwWzEL6Os8=; b=LGt
+	kLLwyzH6Iah12Zb/kmjeDSq5HUV9o/bhv9K7AXkod8TGQ03fjyrttgEWQ0UNWcQEJdCnKflCmggFL
+	kRR8ZHqBSSqHHiglJF1AMb1EEQ8t0hxty+LTWQKn2BmizREQOBA4ear1eeRuxNGPSMo6u3JrOoZn9
+	nww2VwxB7DWM76G/qU2pOCOIlna9GvNipOiKPLc04n7BcPWUNzuslx9Px7U9BWc8Y4TO7WsKtGZ/b
+	pADYePJuwyUxvKxJpXRP7R7LlLT4ddJGi0lAuC1fYcXAWt/hRmf04jlyT0LIuB4/Wtw9pwzAIbO8V
+	BYCtIlhBHZCjy/EuMw2ZmIIIb0oqq/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nf6s0-007KvM-NN; Thu, 14 Apr 2022 21:19:16 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nf7KN-007ON4-A1; Thu, 14 Apr 2022 21:48:35 +0000
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nf6rp-007KrA-AZ; Thu, 14 Apr 2022 21:19:07 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 154A21F47CE5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649971140;
- bh=2xKknOtDpSR8eQDaiaIyagDa3TimNCOxCV05QM9h4w4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=GGsh8woUuFVu9AByGubOp4z01sVpeiC5ATFwD3L5+80wsbyGo9tpii4Btn190Ebzv
- 2GPkMFbNnHvjbsYOMSOKEG2n4Fm4Tc86Y1u0kvXPRuLGcyd6SUg/k8fGngKGJJEc81
- y/GE3JTd6QrkuZRVLX/RjMCmR9H9pf9HuxY1VDb9BaXMUDzUavxbXp7Pc58Yj1sz/Y
- x3UK4OJ/HFXulBdjHewAJfPJiJSrXIiWWrUGZ+tcX7o+7eSzBJ356XO4K7aCVjwwd6
- YljzroGf/EjaE/QxQt3cXTEtU5wP2vlXYGoOuvdpG1owipTanYuqW4zl27y9aQfEkZ
- YmpQOIxAeEA9w==
-Date: Thu, 14 Apr 2022 17:18:55 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
- Hui Liu <hui.liu@mediatek.com>
-Subject: Re: [PATCH v2 1/1] arm64: dts: mt8192: Add mmc device nodes
-Message-ID: <20220414211855.5crksjgvar3ugayq@notapiano>
-References: <20220407113703.26423-1-allen-kh.cheng@mediatek.com>
- <20220407113703.26423-2-allen-kh.cheng@mediatek.com>
+ id 1nf7KI-007OLn-Pt
+ for linux-mediatek@lists.infradead.org; Thu, 14 Apr 2022 21:48:33 +0000
+Received: by mail-pl1-x629.google.com with SMTP id s14so5776799plk.8
+ for <linux-mediatek@lists.infradead.org>; Thu, 14 Apr 2022 14:48:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:in-reply-to:date:message-id:mime-version;
+ bh=waPudPlVhHtHMA9moxAZ6Byzf/Q9LiHGndFwnvJTw84=;
+ b=sq26syXLy4lhHszxXm4VE59PlRWIiN0fJq/WC5AsgDkzVY+FMzC6W8M4G+c9XhxJ7M
+ RPa8qQV3RjWQEkANg49pLuYOPJbqHWpDom/qBhXcNiTU2x/EUP7vMzD8EaTfWnWQopXg
+ 6RzI1HzBPjwsvZa5bVcRJlJkLO3FFHQYq5GbP/A+l8WjhxU64qfiE5ATq+qhBzIoJa+p
+ 5piiW3jrqQXYxkj6b2iWx54liMxXtnSnkXoh5h0JG+ag9jvbyNIOEYFHQ2xS5N2VzCEQ
+ m0x0W90S9aYJ86OUJVnVBt19ASYxD+EqdjdzGQfCt2UusLeecEGN9+WyVUK2leOCsIpM
+ wlJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:date:message-id
+ :mime-version;
+ bh=waPudPlVhHtHMA9moxAZ6Byzf/Q9LiHGndFwnvJTw84=;
+ b=doukQAJhJ6dtuDyNo5Ch1XA4xBYewZFDW3LkbpKx9Q58Cenb0EvoQEqNiOK5E3/+w1
+ uPGaW2SBsIAc/MoyiLZp4UNKnyFgSRi43SVpbc57l/+iBSEtVBxKWF9NJB8Feajnavar
+ ji+YV1EV1vkFOVpN4nJZjwcGgowDMYcKA9b6hGkeveZ96B4mHBQ3hWMF9JVvcHqk6yyV
+ gviSJL/0U5zO4Igq8SS2fVFX9p1Y2l3YEGpgitDXGOgIBgyGYE/3WWmzn+f/zOdlzyop
+ NsNdPcEts2E2h7KGvADhLcAsQa2X+sEDmiLJsoDKnIJSImTa5K1NSoSnJy+jhDXchTNz
+ WAGA==
+X-Gm-Message-State: AOAM53032K+JWj3YpSi+fZplKkLJg9Y0lRL2q6GDxP/JGOuQF1AbT67U
+ NT+rQwwd1z61YrQqGWXXFuT74A==
+X-Google-Smtp-Source: ABdhPJzrSS547mp4Ducl8jVLogQ25Z5tF6TpXhzlX/3f9wSauuf4/iNhSVnZHTPi6dTUidziqtR1IA==
+X-Received: by 2002:a17:90b:4c45:b0:1cd:4fa3:6ee4 with SMTP id
+ np5-20020a17090b4c4500b001cd4fa36ee4mr663031pjb.96.1649972908766; 
+ Thu, 14 Apr 2022 14:48:28 -0700 (PDT)
+Received: from localhost (c-71-197-186-152.hsd1.wa.comcast.net.
+ [71.197.186.152]) by smtp.gmail.com with ESMTPSA id
+ k4-20020a17090a3e8400b001cd37f6c0b7sm2717486pjc.46.2022.04.14.14.48.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 14 Apr 2022 14:48:28 -0700 (PDT)
+From: Kevin Hilman <khilman@baylibre.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
+ viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org
+Cc: matthias.bgg@gmail.com, jia-wei.chang@mediatek.com,
+ roger.lu@mediatek.com, hsinyi@google.com, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH V2 13/15] cpufreq: mediatek: Link CCI device to CPU
+In-Reply-To: <12c630946ce9d7b8c80143615496238759323981.camel@mediatek.com>
+Date: Thu, 14 Apr 2022 14:48:27 -0700
+Message-ID: <7hbkx3fiac.fsf@baylibre.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220407113703.26423-2-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_141905_538018_F259F231 
-X-CRM114-Status: GOOD (  15.73  )
+X-CRM114-CacheID: sfid-20220414_144831_071328_42DCA5CC 
+X-CRM114-Status: GOOD (  25.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,84 +86,115 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 07, 2022 at 07:37:03PM +0800, Allen-KH Cheng wrote:
-> In mt8192 SoC, mmc driver dose not use the MSDC module to control
-> clock. It will read/write register to enable/disable clock. Also
-> there is no other device of mt8192 using MSDC controller.
-> =
+Rex-BC Chen <rex-bc.chen@mediatek.com> writes:
 
-> We add mmc nodes for mt8192 SoC and remove the clock-controller in
-> dts for avoid a duplicate unit-address(11f60000) warning.
-> =
+> On Wed, 2022-04-13 at 14:41 -0700, Kevin Hilman wrote:
+>> Rex-BC Chen <rex-bc.chen@mediatek.com> writes:
+>> 
+>> [...]
+>> 
+>> > From the Chanwoo's devfreq passive govonor series, it's impossible
+>> > to
+>> > let cci devreq probed done before cpufreq because the passive
+>> > govonor
+>> > will search for cpufreq node and use it.
+>> > 
+>> > Ref: function: cpufreq_passive_register_notifier()
+>> > 
+>> > 
+> https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/commit/?h=devfreq-testing&id=b670978ddc43eb0c60735c3af6e4a370603ab673__;!!CTRNKA9wMg0ARbw!z58Lc1p9REo88oHn-NkxroN_fBd0TsHYmhscNZwnWwT71ecRkTeqZ6vFl5l7HpkTdM6t$
+>> >  
+>> 
+>> Well this is a problem, because CCI depends on CPUfreq, but CPUfreq
+>> depends on CCI, so one of them has to load and then wait for the
+>> other.
+>> 
+>> > After I discuss with Angelo and Jia-wei, we think we are keeping
+>> > the
+>> > function in target_index and if the cci is not ready we will use
+>> > the
+>> > voltage which is set by bootloader to prevent high freqeuncy low
+>> > voltage crash. And then we can keep seting the target frequency.
+>> > 
+>> 
+>>  > We assume the setting of bootloader is correct and we can do this.
+>> 
+>> I'm still not crazy about this because you're lying to the CPUfreq
+>> framework.  It's requesting one OPP, but you're not setting that,
+>> you're
+>> just keeping the bootloader frequency.
+>> 
+>> In my earlier reply, I gave two other options for handling this.
+>> 
+>> 1) set a (temporary) constraint on the voltage regulator so that it
+>> cannot change.
+>> 
+>> or more clean, IMO:
+>> 
+>> 2) set a CPUfreq policy that restricts available OPPs to ones that
+>> will
+>> not break CCI.
+>> 
+>> Either of these solutions allow you to load the CPUfreq driver early,
+>> and then wait for the CCI driver to be ready before removing the
+>> restrictions.
+>
+> Hello Kevin,
+>
+> I think I do not describe this clearly.
+> The proposal is:
+>
+> In cpufreq probe:
+> we record the voltage value which is set by bootloader.
+>
+> In mtk_cpufreq_set_target():
+> We do NOT directly return 0.
+> Instead, we will find the voltage of target cpufreq and use the value
+> max(booting voltage, target cpufreq voltage)
+>
+> mtk_cpufreq_set_target() {
+> 	/* NOT return 0 if !is_ccifreq_ready */
+> 	....
+> 	vproc = get voltage of target cpufreq from opp.
+>
+> 	if (ccifreq_supported && !is_ccifreq_ready)
+> 		vproc = max(vproc, vproc_on_boot)
+>
+> 	//setting voltage and target frequency
+> 	....
+> }
 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+You explained this well, but it's still not an appropriate solution IMO,
+because you're still not setting the target that is requested by the
+CPUfreq core.
 
-Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+The job of ->set_target() is to set the frequency *requested by CPUfreq
+core*.  If you cannot do that, you should return failure.  What you posted
+in the original patch and what you're proposing here is to ignore the
+frequency passed to ->set_target() and do something else.  In the
+orignal patch, you propose do to nothing.  Now, you're ignoring the 
+target passed in and setting something else.  In both cases, the CPUfreq
+core things you have successfuly set the frequency requested, but you
+have not.  This means there's a mismatch between what the CPUfreq core &
+governer things the frequency is and what is actually set.  *This* is
+the part that I think is wrong.
 
-> ---
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 34 +++++++++++++++++++++---
->  1 file changed, 30 insertions(+), 4 deletions(-)
-> =
+Instead, the proper way of restricting available frequencies is to use
+governors or policies.  This ensures that the core & governors are
+aligned with what the platform driver actually does.
 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/d=
-ts/mediatek/mt8192.dtsi
-> index a6da7b04b9d4..18a58239d6f1 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -985,10 +985,36 @@
->  			#clock-cells =3D <1>;
->  		};
->  =
+As I proposed earlier, I think a clean solution to this problem is to
+create a temporary policy at probe time that restricts the available
+OPPs based on what the current CCI freq/voltage are.  Once CCI driver is
+loaded and working, this policy can be removed.
 
-> -		msdc: clock-controller@11f60000 {
-> -			compatible =3D "mediatek,mt8192-msdc";
-> -			reg =3D <0 0x11f60000 0 0x1000>;
-> -			#clock-cells =3D <1>;
-> +		mmc0: mmc@11f60000 {
-> +			compatible =3D "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
-> +			reg =3D <0 0x11f60000 0 0x1000>, <0 0x11f50000 0 0x1000>;
-> +			interrupts =3D <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			clocks =3D <&topckgen CLK_TOP_MSDC50_0_SEL>,
-> +				 <&msdc_top CLK_MSDC_TOP_H_MST_0P>,
-> +				 <&msdc_top CLK_MSDC_TOP_SRC_0P>,
-> +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
-> +				 <&msdc_top CLK_MSDC_TOP_P_MSDC0>,
-> +				 <&msdc_top CLK_MSDC_TOP_AXI>,
-> +				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
-> +			clock-names =3D "source", "hclk", "source_cg", "sys_cg",
-> +				      "pclk_cg", "axi_cg", "ahb_cg";
-> +			status =3D "disabled";
-> +		};
-> +
-> +		mmc1: mmc@11f70000 {
-> +			compatible =3D "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
-> +			reg =3D <0 0x11f70000 0 0x1000>, <0 0x11c70000 0 0x1000>;
-> +			interrupts =3D <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			clocks =3D <&topckgen CLK_TOP_MSDC30_1_SEL>,
-> +				 <&msdc_top CLK_MSDC_TOP_H_MST_1P>,
-> +				 <&msdc_top CLK_MSDC_TOP_SRC_1P>,
-> +				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
-> +				 <&msdc_top CLK_MSDC_TOP_P_MSDC1>,
-> +				 <&msdc_top CLK_MSDC_TOP_AXI>,
-> +				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
-> +			clock-names =3D "source", "hclk", "source_cg", "sys_cg",
-> +				      "pclk_cg", "axi_cg", "ahb_cg";
-> +			status =3D "disabled";
->  		};
->  =
+Kevin
 
->  		mfgcfg: clock-controller@13fbf000 {
-> -- =
-
-> 2.18.0
-> =
-
-> =
 
 
 _______________________________________________
