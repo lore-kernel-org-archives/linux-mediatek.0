@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E180DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 17:44:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44920C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 17:44:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8YFRFYao1ZqGl33q5cc1LPwGGffTWdF4pm871enaVv8=; b=o5LTvTJzlcNQlQ
-	gNNP/QQZvsmE23vmzSAdsDF1Sqd7g4xljPIhTJkCfqZwcobrXuYOkWJBN3gVK8HqHB0D+p08LzsuG
-	YW1Y6wt+Ss4yqNlDnz/I3q8POOUSX1oQbww2X3XGiYbVDegZGS28xGc0w4IfPYzFPAHmGOyI54PCX
-	cM4SeqPfZc+NqXuHIkWaVBN24KQVBcs9vVqOVUo3nyycXwmmo5cmgFJgy4x4e3I/vZ7zBDh5ovek+
-	Lz9aQQjvNmk3N/kGo3kINM75i1g5bLU0NXMFIWEsv7gQOx03ZXOP09JUrBP28wySA0gM2/epBS/G0
-	Ywc1hLhNKqF62By80ILg==;
+	List-Owner; bh=I326urpAECcClQima271V5VPQCINgrj//4Iy7PiHedc=; b=x2GmRr000hYF08
+	qAQecr+utPppT8GSdEfeMjesBsx6saxPGuxJbvdetlmKPWvoyT2jaar+5xEisLjw4PZHCB2B1+0DU
+	K4QNDUITTQ7uwovIBGlCWucQnxhhZyIng8aI+85CyX4PzW1fhSbIyPyNkY3eWKSgrRoOaEYFcF1py
+	0cijaz4F8M+Jdw+goy96B9hn/T9zcIRVTGhN0sc5tWGeqGFhP8ZB+o++NW/7baEqpGA2VIOaYnV6e
+	00g0lnURubnuQkL8w0HdhHT1GNwiFkH289W146jbmD0k4w999h6be8y3kBlK3rbLr9kdCS2vurGnt
+	qgFiwbaWDRJCLFY9GB9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nf3Vh-006fgw-9v; Thu, 14 Apr 2022 17:44:01 +0000
+	id 1nf3WD-006fzL-8Q; Thu, 14 Apr 2022 17:44:33 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nf3S8-006dfg-GS; Thu, 14 Apr 2022 17:40:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1649958013; cv=none; 
+ id 1nf3SE-006dh2-4z; Thu, 14 Apr 2022 17:40:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1649958017; cv=none; 
  d=zohomail.com; s=zohoarc; 
- b=SxT+YysqHldEASIpwf+tgvOGcVdWDRXovqqKgD0hLrA7ET3Oszn2HcnWPrDDe36kh6ikPi1NC7YXD9lS70UP0mXHRAUkjyhiU6wzX/3nVgJVsxo6UMrSUGxdbZcwTqfebE1IgPu0OHiKfwsf/ScaxLbzD+FwrgmjIK9nTyB8jBs=
+ b=U+BOK0yxGmhzsUrcSNrdl8S9x/AIthHTs84EHPilgjRUcemeuyVKL7l72czvLAiCnREv3BbNI+s3Q3nvNdKzYymN84kzxCTK2TTFHXtTVQejHUZYjS+ETbCwIhmA6NQO8apoY09E733FzkjXx94LtMB+t9IUVJ2kMnLzpjlsNy0=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1649958013;
+ s=zohoarc; t=1649958017;
  h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To;
- bh=NG1xjMeRvySQG6QrVBIRKQOBl6ROVJFrGcd25yzx2/k=; 
- b=AH52jsCC0XdOv8tm5kgTUdB3ZP1WbXMQZFDpd8o1pyZgks4dLwctGI8R3kcpbD0kx6V9a6Vla2wVVxqU+deD8Q/D9gfGLfX23V/GYfmak/Notx65PyBhivvGApxKEheHts3cY/ThNBOg0eLYfmidKti9wzhhQhoLSvOTCz2oYI4=
+ bh=MB5zzWcylEqjeE5qy26s0JEc3WbeD8CfHOfbrOz2uqg=; 
+ b=LaUhHkZaOcKqsul/1EEsbvJi12DxU9iy+qBpGaCMCe7gLHE/WB4zWyXaQhj6pFnMMaDeuEkARslw9gqn7576DiNogzZhoKxU/XJerJ5anx3/CAqzspiYEtJaWnpxJmpfzgOMnR9Vmjl5hzuQUheZoa28hXxwEWaZTsGITxssbEw=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
  dkim=pass  header.i=arinc9.com;
  spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
  dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1649958013; 
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1649958017; 
  s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
  h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
- bh=NG1xjMeRvySQG6QrVBIRKQOBl6ROVJFrGcd25yzx2/k=;
- b=JrskM3nhTEfYpOqLfbJH0NzrxUmKDl2KP50GspS53tmUJE8rLQkZabkOwgyycfyc
- khDvq4C7yyETDQtvOOrEYkIynQJ5R0ivD4lDbfA4/R8ib9z1YG1vdINhkVD1edFvZfr
- SXGmjBQT46aVmQEYbcR8V6OCjnIG6NXTr0NHy0XM=
+ bh=MB5zzWcylEqjeE5qy26s0JEc3WbeD8CfHOfbrOz2uqg=;
+ b=YgK/x8W5mq8eWD0Eieec2lIx0O75cEFl+70SeV2AFXeIKp85fPGtf36M4GGLnjIK
+ Grv805/J9goufe4gdKXvynUSsOK6p/nHKNvqabbMqnAC99nvl0EfKvPFbk261pxX97p
+ fYJ4XKqRIqtIBO1CH82DBM7WscUHh+nTHSGeDUts=
 Received: from arinc9-PC.localdomain (85.117.236.245 [85.117.236.245]) by
- mx.zohomail.com with SMTPS id 1649958012254748.8245005807139;
- Thu, 14 Apr 2022 10:40:12 -0700 (PDT)
+ mx.zohomail.com with SMTPS id 164995801641693.13202580357915;
+ Thu, 14 Apr 2022 10:40:16 -0700 (PDT)
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
  Luiz Angelo Daros de Luca <luizluca@gmail.com>,
@@ -58,18 +58,18 @@ Cc: erkin.bozoglu@xeront.com,
  linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org
-Subject: [PATCH v2 08/14] MAINTAINERS: add Ralink pinctrl driver
-Date: Thu, 14 Apr 2022 20:39:10 +0300
-Message-Id: <20220414173916.5552-9-arinc.unal@arinc9.com>
+Subject: [PATCH v2 09/14] mips: dts: ralink: mt7621: use the new compatible
+ string for MT7621 pinctrl
+Date: Thu, 14 Apr 2022 20:39:11 +0300
+Message-Id: <20220414173916.5552-10-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220414173916.5552-1-arinc.unal@arinc9.com>
 References: <20220414173916.5552-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_104020_638864_A2BABF0E 
-X-CRM114-Status: UNSURE (   9.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220414_104026_296041_325FCE0D 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,21 +86,21 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-QWRkIGEgbmV3IHNlY3Rpb24gZm9yIHRoZSBSYWxpbmsgcGluY3RybCBkcml2ZXIgYW5kIGFkZCBt
-ZSBhbmQgU2VyZ2lvIGFzCnRoZSBtYWludGFpbmVycy4KClNpZ25lZC1vZmYtYnk6IEFyxLFuw6cg
-w5xOQUwgPGFyaW5jLnVuYWxAYXJpbmM5LmNvbT4KUmV2aWV3ZWQtYnk6IFNlcmdpbyBQYXJhY3Vl
-bGxvcyA8c2VyZ2lvLnBhcmFjdWVsbG9zQGdtYWlsLmNvbT4KLS0tCiBNQUlOVEFJTkVSUyB8IDcg
-KysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL01B
-SU5UQUlORVJTIGIvTUFJTlRBSU5FUlMKaW5kZXggZmQ3NjhkNDNlMDQ4Li4yN2JmZWNhYTAwYWUg
-MTAwNjQ0Ci0tLSBhL01BSU5UQUlORVJTCisrKyBiL01BSU5UQUlORVJTCkBAIC0xNjUwMiw2ICsx
-NjUwMiwxMyBAQCBMOglsaW51eC1taXBzQHZnZXIua2VybmVsLm9yZwogUzoJTWFpbnRhaW5lZAog
-RjoJYXJjaC9taXBzL2Jvb3QvZHRzL3JhbGluay9tdDc2MjEqCiAKK1JBTElOSyBQSU5DVFJMIERS
-SVZFUgorTToJQXLEsW7DpyDDnE5BTCA8YXJpbmMudW5hbEBhcmluYzkuY29tPgorTToJU2VyZ2lv
-IFBhcmFjdWVsbG9zIDxzZXJnaW8ucGFyYWN1ZWxsb3NAZ21haWwuY29tPgorTDoJbGludXgtbWlw
-c0B2Z2VyLmtlcm5lbC5vcmcKK1M6CU1haW50YWluZWQKK0Y6CWRyaXZlcnMvcGluY3RybC9yYWxp
-bmsvCisKIFJBTElOSyBSVDJYMDAgV0lSRUxFU1MgTEFOIERSSVZFUgogTToJU3RhbmlzbGF3IEdy
-dXN6a2EgPHN0Zl94bEB3cC5wbD4KIE06CUhlbG11dCBTY2hhYSA8aGVsbXV0LnNjaGFhQGdvb2ds
-ZW1haWwuY29tPgotLSAKMi4yNS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVr
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1tZWRpYXRlawo=
+VXNlIHRoZSBuZXcgY29tcGF0aWJsZSBzdHJpbmcgInJhbGluayxtdDc2MjEtcGluY3RybCIgZm9y
+IHRoZSBSYWxpbmsgTVQ3NjIxCnBpbmN0cmwgc3ViZHJpdmVyIG9uIG10NzYyMS5kdHNpLgoKRWFj
+aCBzdWJkcml2ZXIgbmVlZHMgdG8gaGF2ZSBhIGRpZmZlcmVudCBjb21wYXRpYmxlIHN0cmluZy4g
+V2UgZG9uJ3Qgd2FudAp0aGUgc2FtZSBjb21wYXRpYmxlIHN0cmluZyB0byBtYXRjaCBhIGRpZmZl
+cmVudCBzdWJkcml2ZXIncyBwaW5tdXggZGF0YSBhcwppdCdzIG5vdCBmb3Igb3VyIFNvQy4KClNp
+Z25lZC1vZmYtYnk6IEFyxLFuw6cgw5xOQUwgPGFyaW5jLnVuYWxAYXJpbmM5LmNvbT4KLS0tCiBh
+cmNoL21pcHMvYm9vdC9kdHMvcmFsaW5rL210NzYyMS5kdHNpIHwgMiArLQogMSBmaWxlIGNoYW5n
+ZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEvYXJjaC9taXBz
+L2Jvb3QvZHRzL3JhbGluay9tdDc2MjEuZHRzaSBiL2FyY2gvbWlwcy9ib290L2R0cy9yYWxpbmsv
+bXQ3NjIxLmR0c2kKaW5kZXggMzIyMjY4NDkxNWFjLi5lZTJlYzc4Yzg5NTIgMTAwNjQ0Ci0tLSBh
+L2FyY2gvbWlwcy9ib290L2R0cy9yYWxpbmsvbXQ3NjIxLmR0c2kKKysrIGIvYXJjaC9taXBzL2Jv
+b3QvZHRzL3JhbGluay9tdDc2MjEuZHRzaQpAQCAtMTUxLDcgKzE1MSw3IEBAIHNwaTA6IHNwaUBi
+MDAgewogCX07CiAKIAlwaW5jdHJsOiBwaW5jdHJsIHsKLQkJY29tcGF0aWJsZSA9ICJyYWxpbmss
+cnQyODgwLXBpbm11eCI7CisJCWNvbXBhdGlibGUgPSAicmFsaW5rLG10NzYyMS1waW5jdHJsIjsK
+IAogCQlpMmNfcGluczogaTJjMC1waW5zIHsKIAkJCXBpbm11eCB7Ci0tIAoyLjI1LjEKCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRl
+ayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
