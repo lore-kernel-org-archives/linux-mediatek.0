@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95640C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 06:14:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DFA0C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 06:29:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QR0757OkeDHE5EW8NdHOnUxS3+Gwfv9pQlK1PBzeDcI=; b=qAT9arKbDxmd2z
-	BL7zo1twihbB3OHNWxZ+yV2ALFI+ap8hUA3x0Fq7J8SAk6jbARRXMHetiAo+3KX6iEY6UPfH1xMnv
-	sdtMAKrSAGiz88HtOvjf8XL8fO7Z68QOuxlL/24U4JBgt6mOqWljne9HZOeknbOE1Ar/ztVS1HU6l
-	cYEG+BiM3y6lE4s+AcPVhEuFWa7+Pt9+ENX55j+SToSRz4/4zSXzmu+a0i6Uc39Je7gK+RgSS8wU9
-	ng47fMwZnT9+wgptVuNTRosg1GpwOtoxu4LvQv63hJ1Tx3AAmUvfXOfs6uRjafhAD//++u2H0OAyk
-	b1sPwq+IVGYSjg40NtSw==;
+	List-Owner; bh=T3seWeYZHuhG+AYU1MmZ98vUUqRkXwnwuKEoG2ZTa88=; b=0rkmin0UUGjWOi
+	48bxDbhd+6RWS8OwT4FR9jiJ5NJ778adi6RlHtSu9H74ob/A2/rJ/HSWdNKOD/GWrqaVaiXdcL+x2
+	fw4bTMmCaBo0JiDWKa7083/Whb85s1irRZ/24yrryyLz/9735J5q3LB5ZKzB9uF3nVM15+G3dtwcJ
+	Rhc/XfK1g8gEEabsR2jmujnZfUYx8jt8XD6NVI/4uypEmPM0jEH32eJKsup4QzNe/YHePageR/enE
+	5/JqIY/dvkVARCtsTbCru7/bT1PY+XVmIAx0BSZH3Oa9pOJIWwA1ZxWtmNQ53RmSAT5F4m+b7e0P3
+	sLRTdK0L/+HxZ6rAqKAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neskD-0041r3-HX; Thu, 14 Apr 2022 06:14:17 +0000
+	id 1neszD-0046K4-NL; Thu, 14 Apr 2022 06:29:47 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nesk0-0041pV-8H; Thu, 14 Apr 2022 06:14:07 +0000
-X-UUID: 07599b4370cd4e8a99f71174e565da11-20220413
-X-UUID: 07599b4370cd4e8a99f71174e565da11-20220413
+ id 1neszA-0046Ir-Go; Thu, 14 Apr 2022 06:29:46 +0000
+X-UUID: 5a903ec18b4b43bbb02dcf6bce3aa85a-20220413
+X-UUID: 5a903ec18b4b43bbb02dcf6bce3aa85a-20220413
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jia-wei.chang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 997179433; Wed, 13 Apr 2022 23:13:58 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 13 Apr 2022 23:09:20 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 14 Apr 2022 14:09:18 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ with ESMTP id 1122127486; Wed, 13 Apr 2022 23:29:34 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 13 Apr 2022 23:25:42 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 14 Apr 2022 14:25:35 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 14 Apr 2022 14:09:18 +0800
-Message-ID: <9e211d22cb8ca16cdecbf9ea9438f02b107919e2.camel@mediatek.com>
+ Transport; Thu, 14 Apr 2022 14:25:35 +0800
+Message-ID: <5fa51ff6aab0d54e4edd8fc6fed00d4718ceb9dc.camel@mediatek.com>
 Subject: Re: [PATCH 2/2] soc: mediatek: svs: add support for mt8186
 From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-To: Kevin Hilman <khilman@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rob
+ Herring" <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Roger Lu
- <roger.lu@mediatek.com>
+ <roger.lu@mediatek.com>, Kevin Hilman <khilman@kernel.org>
 CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>
-Date: Thu, 14 Apr 2022 14:09:18 +0800
-In-Reply-To: <7h1qy152p5.fsf@baylibre.com>
+Date: Thu, 14 Apr 2022 14:25:35 +0800
+In-Reply-To: <138aad1c-63d7-371a-ff41-4fd7022d365d@collabora.com>
 References: <20220412112127.21570-1-jia-wei.chang@mediatek.com>
  <20220412112127.21570-3-jia-wei.chang@mediatek.com>
- <7h1qy152p5.fsf@baylibre.com>
+ <138aad1c-63d7-371a-ff41-4fd7022d365d@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_231404_338520_F7A608D3 
-X-CRM114-Status: GOOD (  44.44  )
+X-CRM114-CacheID: sfid-20220413_232944_586525_52413E00 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,9 +77,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-04-12 at 15:58 -0700, Kevin Hilman wrote:
-> Tim Chang <jia-wei.chang@mediatek.com> writes:
-> 
+On Tue, 2022-04-12 at 17:30 +0200, AngeloGioacchino Del Regno wrote:
+> Il 12/04/22 13:21, Tim Chang ha scritto:
 > > From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 > > 
 > > MT8186 svs has a number of banks which used as optimization of opp
@@ -90,586 +89,20 @@ On Tue, 2022-04-12 at 15:58 -0700, Kevin Hilman wrote:
 > > 
 > > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 > 
-> Theres' no upstream DTS for MT8186, so it's impossible for others to
-> test this.  Similar to my comments on other patches, could you please
-> explain how this was tested, and on what platforms.  If you have an
-> integration branch someplace that includes DTS, that would be very
-> helpful for reviewers to see the platform DTS that's used.
+> For the code only, as I am unable to test:
 > 
 
-Hi Kevin,
+Hi AngeloGioacchino,
 
-1. Since the first beginning version of MT8186 dts is under review [1],
-so I can NOT update svs content in dts unless the first beginning
-version is accepted.  And I will update it once the first beginning dts
-is accpeted.
-
-2. MT8186 svs was tested on MT8186 chromebook prototype and comparing
-the register results between chromebook prototype's and MediaTek
-internal evaluation by feeding the same input e-fuse data.
-
-Here's the svs content in mt8186.dtsi on chromebook prototype.
-/ {
-	soc {
-		/* ... */
-+		svs: svs@1100b000 {
-+			compatible = "mediatek,mt8186-svs";
-+			reg = <0 0x1100b000 0 0x1000>;
-+			interrupts = <GIC_SPI 142 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&infracfg_ao CLK_INFRA_AO_THERM>;
-+			clock-names = "main";
-+			nvmem-cells = <&svs_calibration>, <&lvts_e_data1>;
-+			nvmem-cell-names = "svs-calibration-data", "t-
-calibration-data";
-+			resets = <&infracfg_rst 1>;
-+			reset-names = "svs_rst";
-+		};
-		/* ... */
-		efuse: efuse@11cb0000 {
-			/* ... */
-+			svs_calibration: calib {
-+				reg = <0x550 0x50>;
-+			};
-			/* ... */
-		};
-		/* ... */
-	};
-};
-
-[1]: 
-https://lore.kernel.org/all/e06b7f3e-fbc7-63ab-c7b9-0c879cb10807@gmail.com/
-
-> Most of the changes here seem to be conditional on the MT8186 bank
-> data,
-> but there also appears to be changes that are common, and will affect
-> other SoCs.  Has this been tested with MT8183 to be sure these
-> changes
-> don't break it?
-> 
-
-Yes, I use Roger Lu's svs v22 [2] as the codebase and compare the
-results between with MT8186 svs series or without it on the MT8183
-chromebook as well.  The comparison result is approved by Roger.
-
-[2]: Message ID: 20220221063939.14969-1-roger.lu@mediatek.com
-
-> Other than that, the code looks OK, but it would really good to see
-> the
-> platform DTS that's used to enable this on MT8183 and MT8186.
-> 
-
-The svs content of MT8186 is given above.
-I will update it once the first beginning dts is accpeted.
+I provided the svs content in mt8186.dtsi on chromebook prototype as an
+example in previous response.  You can refer to it for urgent usage.
+I will update it in my series in the future version.
 
 Thanks.
 
-> Thanks,
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
 > 
-> Kevin
-> 
-> 
-> > ---
-> >  drivers/soc/mediatek/mtk-svs.c | 349
-> > ++++++++++++++++++++++++++++++++-
-> >  1 file changed, 342 insertions(+), 7 deletions(-)
-> > 
-> > diff --git a/drivers/soc/mediatek/mtk-svs.c
-> > b/drivers/soc/mediatek/mtk-svs.c
-> > index 83af7ac8cafb..a44176125871 100644
-> > --- a/drivers/soc/mediatek/mtk-svs.c
-> > +++ b/drivers/soc/mediatek/mtk-svs.c
-> > @@ -356,6 +356,7 @@ struct svs_platform_data {
-> >   * @dcbdet: svs efuse data
-> >   * @dcmdet: svs efuse data
-> >   * @turn_pt: 2-line turn point tells which opp_volt calculated by
-> > high/low bank
-> > + * @vbin_turn_pt: voltage bin turn point helps to know which
-> > svsb_volt should be overridden
-> >   * @type: bank type to represent it is 2-line (high/low) bank or
-> > 1-line bank
-> >   *
-> >   * Svs bank will generate suitalbe voltages by below general math
-> > equation
-> > @@ -419,6 +420,7 @@ struct svs_bank {
-> >  	u32 dcbdet;
-> >  	u32 dcmdet;
-> >  	u32 turn_pt;
-> > +	u32 vbin_turn_pt;
-> >  	u32 type;
-> >  };
-> >  
-> > @@ -694,11 +696,12 @@ static int svs_status_debug_show(struct
-> > seq_file *m, void *v)
-> >  
-> >  	ret = thermal_zone_get_temp(svsb->tzd, &tzone_temp);
-> >  	if (ret)
-> > -		seq_printf(m, "%s: temperature ignore, turn_pt = %u\n",
-> > -			   svsb->name, svsb->turn_pt);
-> > +		seq_printf(m, "%s: temperature ignore, vbin_turn_pt =
-> > %u, turn_pt = %u\n",
-> > +			   svsb->name, svsb->vbin_turn_pt, svsb-
-> > >turn_pt);
-> >  	else
-> > -		seq_printf(m, "%s: temperature = %d, turn_pt = %u\n",
-> > -			   svsb->name, tzone_temp, svsb->turn_pt);
-> > +		seq_printf(m, "%s: temperature = %d, vbin_turn_pt = %u,
-> > turn_pt = %u\n",
-> > +			   svsb->name, tzone_temp, svsb->vbin_turn_pt,
-> > +			   svsb->turn_pt);
-> >  
-> >  	for (i = 0; i < svsb->opp_count; i++) {
-> >  		opp = dev_pm_opp_find_freq_exact(svsb->opp_dev,
-> > @@ -891,9 +894,11 @@ static void svs_get_bank_volts_v3(struct
-> > svs_platform *svsp)
-> >  		opp_stop = svsb->opp_count;
-> >  	}
-> >  
-> > -	for (i = opp_start; i < opp_stop; i++)
-> > +	for (i = opp_start; i < opp_stop; i++) {
-> >  		if (svsb->volt_flags & SVSB_REMOVE_DVTFIXED_VOLT)
-> >  			svsb->volt[i] -= svsb->dvt_fixed;
-> > +		svsb->volt[i] += svsb->volt_od;
-> > +	}
-> >  }
-> >  
-> >  static void svs_set_bank_freq_pct_v3(struct svs_platform *svsp)
-> > @@ -984,6 +989,10 @@ static void svs_get_bank_volts_v2(struct
-> > svs_platform *svsp)
-> >  	struct svs_bank *svsb = svsp->pbank;
-> >  	u32 temp, i;
-> >  
-> > +	if (svsb->phase == SVSB_PHASE_MON &&
-> > +	    svsb->volt_flags & SVSB_MON_VOLT_IGNORE)
-> > +		return;
-> > +
-> >  	temp = svs_readl_relaxed(svsp, VOP74);
-> >  	svsb->volt[14] = (temp >> 24) & GENMASK(7, 0);
-> >  	svsb->volt[12] = (temp >> 16) & GENMASK(7, 0);
-> > @@ -1009,8 +1018,34 @@ static void svs_get_bank_volts_v2(struct
-> > svs_platform *svsp)
-> >  				     svsb->volt[14],
-> >  				     svsb->freq_pct[15]);
-> >  
-> > -	for (i = 0; i < svsb->opp_count; i++)
-> > +	for (i = 0; i < svsb->opp_count; i++) {
-> > +		if (svsb->volt_flags & SVSB_REMOVE_DVTFIXED_VOLT)
-> > +			svsb->volt[i] -= svsb->dvt_fixed;
-> >  		svsb->volt[i] += svsb->volt_od;
-> > +	}
-> > +
-> > +	/* For voltage bin support */
-> > +	if (svsb->opp_dfreq[0] > svsb->freq_base) {
-> > +		svsb->volt[0] = svs_opp_volt_to_bank_volt(svsb-
-> > >opp_dvolt[0],
-> > +							  svsb-
-> > >volt_step,
-> > +							  svsb-
-> > >volt_base);
-> > +
-> > +		/* Find voltage bin turn point */
-> > +		for (i = 0; i < svsb->opp_count; i++) {
-> > +			if (svsb->opp_dfreq[i] <= svsb->freq_base) {
-> > +				svsb->vbin_turn_pt = i;
-> > +				break;
-> > +			}
-> > +		}
-> > +
-> > +		/* Override svs bank voltages */
-> > +		for (i = 1; i < svsb->vbin_turn_pt; i++)
-> > +			svsb->volt[i] =	interpolate(svsb-
-> > >freq_pct[0],
-> > +						    svsb-
-> > >freq_pct[svsb->vbin_turn_pt],
-> > +						    svsb->volt[0],
-> > +						    svsb->volt[svsb-
-> > >vbin_turn_pt],
-> > +						    svsb->freq_pct[i]);
-> > +	}
-> >  }
-> >  
-> >  static void svs_set_bank_freq_pct_v2(struct svs_platform *svsp)
-> > @@ -1564,7 +1599,12 @@ static int svs_bank_resource_setup(struct
-> > svs_platform *svsp)
-> >  			svsb->name = "SVSB_CPU_LITTLE";
-> >  			break;
-> >  		case SVSB_CPU_BIG:
-> > -			svsb->name = "SVSB_CPU_BIG";
-> > +			if (svsb->type == SVSB_HIGH)
-> > +				svsb->name = "SVSB_CPU_BIG_HIGH";
-> > +			else if (svsb->type == SVSB_LOW)
-> > +				svsb->name = "SVSB_CPU_BIG_LOW";
-> > +			else
-> > +				svsb->name = "SVSB_CPU_BIG";
-> >  			break;
-> >  		case SVSB_CCI:
-> >  			svsb->name = "SVSB_CCI";
-> > @@ -1726,6 +1766,102 @@ static bool svs_mt8192_efuse_parsing(struct
-> > svs_platform *svsp)
-> >  	return true;
-> >  }
-> >  
-> > +static bool svs_mt8186_efuse_parsing(struct svs_platform *svsp)
-> > +{
-> > +	struct svs_bank *svsb;
-> > +	struct nvmem_cell *cell;
-> > +	u32 idx, i, golden_temp;
-> > +
-> > +	for (i = 0; i < svsp->efuse_max; i++)
-> > +		if (svsp->efuse[i])
-> > +			dev_info(svsp->dev, "M_HW_RES%d: 0x%08x\n",
-> > +				 i, svsp->efuse[i]);
-> > +
-> > +	if (!svsp->efuse[0]) {
-> > +		dev_notice(svsp->dev, "svs_efuse[0] = 0x0?\n");
-> > +		return false;
-> > +	}
-> > +
-> > +	/* Svs efuse parsing */
-> > +	for (idx = 0; idx < svsp->bank_max; idx++) {
-> > +		svsb = &svsp->banks[idx];
-> > +
-> > +		switch (svsb->sw_id) {
-> > +		case SVSB_CPU_BIG:
-> > +			if (svsb->type == SVSB_HIGH) {
-> > +				svsb->mdes = (svsp->efuse[2] >> 24) &
-> > GENMASK(7, 0);
-> > +				svsb->bdes = (svsp->efuse[2] >> 16) &
-> > GENMASK(7, 0);
-> > +				svsb->mtdes = svsp->efuse[2] &
-> > GENMASK(7, 0);
-> > +				svsb->dcmdet = (svsp->efuse[13] >> 8) &
-> > GENMASK(7, 0);
-> > +				svsb->dcbdet = svsp->efuse[13] &
-> > GENMASK(7, 0);
-> > +			} else if (svsb->type == SVSB_LOW) {
-> > +				svsb->mdes = (svsp->efuse[3] >> 24) &
-> > GENMASK(7, 0);
-> > +				svsb->bdes = (svsp->efuse[3] >> 16) &
-> > GENMASK(7, 0);
-> > +				svsb->mtdes = svsp->efuse[3] &
-> > GENMASK(7, 0);
-> > +				svsb->dcmdet = (svsp->efuse[14] >> 24)
-> > & GENMASK(7, 0);
-> > +				svsb->dcbdet = (svsp->efuse[14] >> 16)
-> > & GENMASK(7, 0);
-> > +			}
-> > +			break;
-> > +		case SVSB_CPU_LITTLE:
-> > +			svsb->mdes = (svsp->efuse[4] >> 24) &
-> > GENMASK(7, 0);
-> > +			svsb->bdes = (svsp->efuse[4] >> 16) &
-> > GENMASK(7, 0);
-> > +			svsb->mtdes = svsp->efuse[4] & GENMASK(7, 0);
-> > +			svsb->dcmdet = (svsp->efuse[14] >> 8) &
-> > GENMASK(7, 0);
-> > +			svsb->dcbdet = svsp->efuse[14] & GENMASK(7, 0);
-> > +			break;
-> > +		case SVSB_CCI:
-> > +			svsb->mdes = (svsp->efuse[5] >> 24) &
-> > GENMASK(7, 0);
-> > +			svsb->bdes = (svsp->efuse[5] >> 16) &
-> > GENMASK(7, 0);
-> > +			svsb->mtdes = svsp->efuse[5] & GENMASK(7, 0);
-> > +			svsb->dcmdet = (svsp->efuse[15] >> 24) &
-> > GENMASK(7, 0);
-> > +			svsb->dcbdet = (svsp->efuse[15] >> 16) &
-> > GENMASK(7, 0);
-> > +			break;
-> > +		case SVSB_GPU:
-> > +			svsb->mdes = (svsp->efuse[6] >> 24) &
-> > GENMASK(7, 0);
-> > +			svsb->bdes = (svsp->efuse[6] >> 16) &
-> > GENMASK(7, 0);
-> > +			svsb->mtdes = svsp->efuse[6] & GENMASK(7, 0);
-> > +			svsb->dcmdet = (svsp->efuse[15] >> 8) &
-> > GENMASK(7, 0);
-> > +			svsb->dcbdet = svsp->efuse[15] & GENMASK(7, 0);
-> > +			break;
-> > +		default:
-> > +			dev_err(svsb->dev, "unknown sw_id: %u\n", svsb-
-> > >sw_id);
-> > +			return false;
-> > +		}
-> > +
-> > +		svsb->vmax += svsb->dvt_fixed;
-> > +	}
-> > +
-> > +	/* Thermal efuse parsing */
-> > +	cell = nvmem_cell_get(svsp->dev, "t-calibration-data");
-> > +	if (IS_ERR_OR_NULL(cell)) {
-> > +		dev_err(svsp->dev, "no thermal cell, no mon mode\n");
-> > +		return false;
-> > +	}
-> > +
-> > +	svsp->tefuse = nvmem_cell_read(cell, &svsp->tefuse_max);
-> > +	if (IS_ERR(svsp->tefuse)) {
-> > +		dev_err(svsp->dev, "cannot read thermal efuse: %ld\n",
-> > +			PTR_ERR(svsp->tefuse));
-> > +		nvmem_cell_put(cell);
-> > +		return false;
-> > +	}
-> > +
-> > +	svsp->tefuse_max /= sizeof(u32);
-> > +	nvmem_cell_put(cell);
-> > +
-> > +	golden_temp = (svsp->tefuse[0] >> 24) & GENMASK(7, 0);
-> > +	if (!golden_temp)
-> > +		golden_temp = 50;
-> > +
-> > +	for (idx = 0; idx < svsp->bank_max; idx++) {
-> > +		svsb = &svsp->banks[idx];
-> > +		svsb->mts = 409;
-> > +		svsb->bts = (((500 * golden_temp + 204650) / 1000) -
-> > 25) * 4;
-> > +	}
-> > +
-> > +	return true;
-> > +}
-> > +
-> >  static bool svs_mt8183_efuse_parsing(struct svs_platform *svsp)
-> >  {
-> >  	struct svs_bank *svsb;
-> > @@ -2041,6 +2177,49 @@ static int svs_mt8192_platform_probe(struct
-> > svs_platform *svsp)
-> >  	return 0;
-> >  }
-> >  
-> > +static int svs_mt8186_platform_probe(struct svs_platform *svsp)
-> > +{
-> > +	struct device *dev;
-> > +	struct svs_bank *svsb;
-> > +	u32 idx;
-> > +
-> > +	svsp->rst = devm_reset_control_get_optional(svsp->dev,
-> > "svs_rst");
-> > +	if (IS_ERR(svsp->rst)) {
-> > +		dev_err_probe(svsp->dev, PTR_ERR(svsp->rst),
-> > +			      "cannot get svs reset control\n");
-> > +		return PTR_ERR(svsp->rst);
-> > +	}
-> > +
-> > +	dev = svs_add_device_link(svsp, "lvts");
-> > +	if (IS_ERR(dev))
-> > +		return PTR_ERR(dev);
-> > +
-> > +	for (idx = 0; idx < svsp->bank_max; idx++) {
-> > +		svsb = &svsp->banks[idx];
-> > +
-> > +		switch (svsb->sw_id) {
-> > +		case SVSB_CPU_LITTLE:
-> > +		case SVSB_CPU_BIG:
-> > +			svsb->opp_dev = get_cpu_device(svsb->cpu_id);
-> > +			break;
-> > +		case SVSB_CCI:
-> > +			svsb->opp_dev = svs_add_device_link(svsp,
-> > "cci");
-> > +			break;
-> > +		case SVSB_GPU:
-> > +			svsb->opp_dev = svs_add_device_link(svsp,
-> > "mali");
-> > +			break;
-> > +		default:
-> > +			dev_err(svsb->dev, "unknown sw_id: %u\n", svsb-
-> > >sw_id);
-> > +			return -EINVAL;
-> > +		}
-> > +
-> > +		if (IS_ERR(svsb->opp_dev))
-> > +			return PTR_ERR(svsb->opp_dev);
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> >  static int svs_mt8183_platform_probe(struct svs_platform *svsp)
-> >  {
-> >  	struct device *dev;
-> > @@ -2135,6 +2314,149 @@ static struct svs_bank svs_mt8192_banks[] =
-> > {
-> >  	},
-> >  };
-> >  
-> > +static struct svs_bank svs_mt8186_banks[] = {
-> > +	{
-> > +		.sw_id			= SVSB_CPU_BIG,
-> > +		.type			= SVSB_LOW,
-> > +		.set_freq_pct		= svs_set_bank_freq_pct_v3,
-> > +		.get_volts		= svs_get_bank_volts_v3,
-> > +		.cpu_id			= 6,
-> > +		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT,
-> > +		.mode_support		= SVSB_MODE_INIT02,
-> > +		.opp_count		= MAX_OPP_ENTRIES,
-> > +		.freq_base		= 1670000000,
-> > +		.turn_freq_base		= 1670000000,
-> > +		.volt_step		= 6250,
-> > +		.volt_base		= 400000,
-> > +		.volt_od		= 4,
-> > +		.vmax			= 0x59,
-> > +		.vmin			= 0x20,
-> > +		.age_config		= 0x1,
-> > +		.dc_config		= 0x1,
-> > +		.dvt_fixed		= 0x3,
-> > +		.vco			= 0x10,
-> > +		.chk_shift		= 0x87,
-> > +		.core_sel		= 0x0fff0100,
-> > +		.int_st			= BIT(0),
-> > +		.ctl0			= 0x00540003,
-> > +	},
-> > +	{
-> > +		.sw_id			= SVSB_CPU_BIG,
-> > +		.type			= SVSB_HIGH,
-> > +		.set_freq_pct		= svs_set_bank_freq_pct_v3,
-> > +		.get_volts		= svs_get_bank_volts_v3,
-> > +		.cpu_id			= 6,
-> > +		.tzone_name		= "cpu_big0",
-> > +		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT |
-> > +					  SVSB_MON_VOLT_IGNORE,
-> > +		.mode_support		= SVSB_MODE_INIT02 |
-> > SVSB_MODE_MON,
-> > +		.opp_count		= MAX_OPP_ENTRIES,
-> > +		.freq_base		= 2050000000,
-> > +		.turn_freq_base		= 1670000000,
-> > +		.volt_step		= 6250,
-> > +		.volt_base		= 400000,
-> > +		.volt_od		= 4,
-> > +		.vmax			= 0x73,
-> > +		.vmin			= 0x20,
-> > +		.age_config		= 0x1,
-> > +		.dc_config		= 0x1,
-> > +		.dvt_fixed		= 0x6,
-> > +		.vco			= 0x10,
-> > +		.chk_shift		= 0x87,
-> > +		.core_sel		= 0x0fff0101,
-> > +		.int_st			= BIT(1),
-> > +		.ctl0			= 0x00540003,
-> > +		.tzone_htemp		= 85000,
-> > +		.tzone_htemp_voffset	= 8,
-> > +		.tzone_ltemp		= 25000,
-> > +		.tzone_ltemp_voffset	= 8,
-> > +	},
-> > +	{
-> > +		.sw_id			= SVSB_CPU_LITTLE,
-> > +		.set_freq_pct		= svs_set_bank_freq_pct_v2,
-> > +		.get_volts		= svs_get_bank_volts_v2,
-> > +		.cpu_id			= 0,
-> > +		.tzone_name		= "cpu_zone0",
-> > +		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT |
-> > +					  SVSB_MON_VOLT_IGNORE,
-> > +		.mode_support		= SVSB_MODE_INIT02 |
-> > SVSB_MODE_MON,
-> > +		.opp_count		= MAX_OPP_ENTRIES,
-> > +		.freq_base		= 2000000000,
-> > +		.volt_step		= 6250,
-> > +		.volt_base		= 400000,
-> > +		.volt_od		= 3,
-> > +		.vmax			= 0x65,
-> > +		.vmin			= 0x20,
-> > +		.age_config		= 0x1,
-> > +		.dc_config		= 0x1,
-> > +		.dvt_fixed		= 0x6,
-> > +		.vco			= 0x10,
-> > +		.chk_shift		= 0x87,
-> > +		.core_sel		= 0x0fff0102,
-> > +		.int_st			= BIT(2),
-> > +		.ctl0			= 0x3210000f,
-> > +		.tzone_htemp		= 85000,
-> > +		.tzone_htemp_voffset	= 8,
-> > +		.tzone_ltemp		= 25000,
-> > +		.tzone_ltemp_voffset	= 8,
-> > +	},
-> > +	{
-> > +		.sw_id			= SVSB_CCI,
-> > +		.set_freq_pct		= svs_set_bank_freq_pct_v2,
-> > +		.get_volts		= svs_get_bank_volts_v2,
-> > +		.tzone_name		= "cpu_zone0",
-> > +		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT |
-> > +					  SVSB_MON_VOLT_IGNORE,
-> > +		.mode_support		= SVSB_MODE_INIT02 |
-> > SVSB_MODE_MON,
-> > +		.opp_count		= MAX_OPP_ENTRIES,
-> > +		.freq_base		= 1400000000,
-> > +		.volt_step		= 6250,
-> > +		.volt_base		= 400000,
-> > +		.volt_od		= 3,
-> > +		.vmax			= 0x65,
-> > +		.vmin			= 0x20,
-> > +		.age_config		= 0x1,
-> > +		.dc_config		= 0x1,
-> > +		.dvt_fixed		= 0x6,
-> > +		.vco			= 0x10,
-> > +		.chk_shift		= 0x87,
-> > +		.core_sel		= 0x0fff0103,
-> > +		.int_st			= BIT(3),
-> > +		.ctl0			= 0x3210000f,
-> > +		.tzone_htemp		= 85000,
-> > +		.tzone_htemp_voffset	= 8,
-> > +		.tzone_ltemp		= 25000,
-> > +		.tzone_ltemp_voffset	= 8,
-> > +	},
-> > +	{
-> > +		.sw_id			= SVSB_GPU,
-> > +		.set_freq_pct		= svs_set_bank_freq_pct_v2,
-> > +		.get_volts		= svs_get_bank_volts_v2,
-> > +		.tzone_name		= "mfg",
-> > +		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT |
-> > +					  SVSB_MON_VOLT_IGNORE,
-> > +		.mode_support		= SVSB_MODE_INIT02 |
-> > SVSB_MODE_MON,
-> > +		.opp_count		= MAX_OPP_ENTRIES,
-> > +		.freq_base		= 850000000,
-> > +		.volt_step		= 6250,
-> > +		.volt_base		= 400000,
-> > +		.vmax			= 0x58,
-> > +		.vmin			= 0x20,
-> > +		.age_config		= 0x555555,
-> > +		.dc_config		= 0x1,
-> > +		.dvt_fixed		= 0x4,
-> > +		.vco			= 0x10,
-> > +		.chk_shift		= 0x87,
-> > +		.core_sel		= 0x0fff0104,
-> > +		.int_st			= BIT(4),
-> > +		.ctl0			= 0x00100003,
-> > +		.tzone_htemp		= 85000,
-> > +		.tzone_htemp_voffset	= 8,
-> > +		.tzone_ltemp		= 25000,
-> > +		.tzone_ltemp_voffset	= 7,
-> > +	},
-> > +};
-> > +
-> >  static struct svs_bank svs_mt8183_banks[] = {
-> >  	{
-> >  		.sw_id			= SVSB_CPU_LITTLE,
-> > @@ -2249,6 +2571,16 @@ static const struct svs_platform_data
-> > svs_mt8192_platform_data = {
-> >  	.bank_max = ARRAY_SIZE(svs_mt8192_banks),
-> >  };
-> >  
-> > +static const struct svs_platform_data svs_mt8186_platform_data = {
-> > +	.name = "mt8186-svs",
-> > +	.banks = svs_mt8186_banks,
-> > +	.efuse_parsing = svs_mt8186_efuse_parsing,
-> > +	.probe = svs_mt8186_platform_probe,
-> > +	.irqflags = IRQF_TRIGGER_HIGH,
-> > +	.regs = svs_regs_v2,
-> > +	.bank_max = ARRAY_SIZE(svs_mt8186_banks),
-> > +};
-> > +
-> >  static const struct svs_platform_data svs_mt8183_platform_data = {
-> >  	.name = "mt8183-svs",
-> >  	.banks = svs_mt8183_banks,
-> > @@ -2263,6 +2595,9 @@ static const struct of_device_id
-> > svs_of_match[] = {
-> >  	{
-> >  		.compatible = "mediatek,mt8192-svs",
-> >  		.data = &svs_mt8192_platform_data,
-> > +	}, {
-> > +		.compatible = "mediatek,mt8186-svs",
-> > +		.data = &svs_mt8186_platform_data,
-> >  	}, {
-> >  		.compatible = "mediatek,mt8183-svs",
-> >  		.data = &svs_mt8183_platform_data,
-> > -- 
-> > 2.18.0
 
 
 _______________________________________________
