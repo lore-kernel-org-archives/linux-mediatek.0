@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9307C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 08:19:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D061C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 08:23:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XKGQwXkBbDuMWmQFvdPoti14RD38H3vksx6HDpVNvTM=; b=rduir0TwM7by/i
-	7DroPeUvqGkXI++v4ADfizWW2Z06Jbm4cm5ezEcgayaSu30s9AdTxemh9Ge6sTvio0d76FwPrydXc
-	NpvXd818xyueX/SVDBIHTf27ihLbbecxkyMt0FKrXS9OKPoIune8RjILzXhSBZB0tmY2evWy/bWY+
-	Osbosb3Od/ktbrYhs01FwVrQj6QzqgvINav6BA55xwmHB0KUUwOof+vGK672uiAKXY6h0EXVZ27Ve
-	dlFa4aGAzUWO4pTTBjFxYf0nPTRN4eEa2pUVKf2eWPJPQnAht9AwdftGyFsGEPhRrp7jpNjBR87Q2
-	zeXbqJz9d9nEAuB5YDZA==;
+	List-Owner; bh=GpA/AFhg9cWb6e6DatsH5lQCRSreYPVCSCUwPh+lUzs=; b=ZIx+RyAIp634aK
+	9mJB7e9ZedibzmdEcOUFe2hSwTjCZtvo6ZDAmrj6AIc/FosJn49u2efjWtI+zlBFcWbPGw37+bFEJ
+	Ll38xThKUcxcbyR0/E/ijmsg/Dirt7Zq596++K18RZXIeZut43LwuU0WXo97HkT5CVNfICcBUulRZ
+	lWLAm87C5hWlQrgxau0K5X5yS8kkeY/Er1wktarZEolitQnyBamLyN3fW/wkIU5GBpRUvSHlF7/vq
+	3/h4h6m52jXlH0H3LP20uhfqU9i2qMsL1h/OCkXaLRsJpCcUpfJgsNRWcMoCI7KMLczAYRj9PCFAT
+	BsuHpIS9RKowFnEEzcgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neugx-004Vnf-M4; Thu, 14 Apr 2022 08:19:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1neukv-004XBa-0l; Thu, 14 Apr 2022 08:23:09 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neugs-004VlL-9S; Thu, 14 Apr 2022 08:19:01 +0000
-X-UUID: 24fb27dda5254e9fbe72a28ec6aff1c2-20220414
-X-UUID: 24fb27dda5254e9fbe72a28ec6aff1c2-20220414
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 9026641; Thu, 14 Apr 2022 01:18:56 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Apr 2022 01:18:54 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 14 Apr 2022 16:18:46 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 14 Apr 2022 16:18:46 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <alice.chao@mediatek.com>
-CC: <Chaotian.Jing@mediatek.com>, <Chun-hung.Wu@mediatek.com>,
- <Lin.Gui@mediatek.com>, <Powen.Kao@mediatek.com>, <Qilin.Tan@mediatek.com>,
- <Yanxu.Wei@mediatek.com>, <cc.chou@mediatek.com>, <jejb@linux.ibm.com>,
- <jiajie.hao@mediatek.com>, <jonathan.hsu@mediatek.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-scsi@vger.kernel.org>,
- <martin.petersen@oracle.com>, <matthias.bgg@gmail.com>,
- <miles.chen@mediatek.com>, <peter.wang@mediatek.com>,
- <stanley.chu@mediatek.com>, <wsd_upstream@mediatek.com>
-Subject: Re: [PATCH v2 1/1] scsi: Fix racing between dev init and dev reset
-Date: Thu, 14 Apr 2022 16:18:46 +0800
-Message-ID: <20220414081846.31356-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <7ad2e7fc39ce0d2b145f651d530d157c67c04f29.camel@mediatek.com>
-References: <7ad2e7fc39ce0d2b145f651d530d157c67c04f29.camel@mediatek.com>
-MIME-Version: 1.0
-X-MTK: N
+ id 1neuki-004X5L-Jp; Thu, 14 Apr 2022 08:22:59 +0000
+Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
+ by smtp-out1.suse.de (Postfix) with ESMTP id 2B04D21618;
+ Thu, 14 Apr 2022 08:22:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1649924566; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Kf3xjl8BrBTKoBEu0VHViWW2bRtYjZmKOwW94FdVGl4=;
+ b=YG04xhPZFFb6cki2AIm2z59dtlpDfhUKNVmJZtW3TMVbAurFZlh7k/LujsHpphCNYOR+d0
+ j+9hNXH1GiyjpKs8t3BsCMRdhECCsr59rrOEz4wIXxj/a2Qpx/pDaOybpm3f3pUbFr64SI
+ qJSBcbuH59IlmhRXdkONArlcBtG1kLk=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1649924566;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Kf3xjl8BrBTKoBEu0VHViWW2bRtYjZmKOwW94FdVGl4=;
+ b=hQ+/dbdyVTyV5bsMi5SqXnDGhNLfy8rUlq/T63z59AN+DRZnTAn5jIziZf77zHq+Y6l+ey
+ RG/kw661SaWR5uCg==
+Received: from alsa1.suse.de (alsa1.suse.de [10.160.4.42])
+ by relay2.suse.de (Postfix) with ESMTP id 163CDA3B87;
+ Thu, 14 Apr 2022 08:22:46 +0000 (UTC)
+Date: Thu, 14 Apr 2022 10:22:46 +0200
+Message-ID: <s5hzgko3wh5.wl-tiwai@suse.de>
+From: Takashi Iwai <tiwai@suse.de>
+To: Miles Chen <miles.chen@mediatek.com>
+Cc: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, <alsa-devel@alsa-project.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Randy Dunlap <rdunlap@infradead.org>
+Subject: Re: [PATCH -next] sound/oss/dmasound: fix 'dmasound_setup' defined
+ but not used
+In-Reply-To: <20220414081119.30851-1-miles.chen@mediatek.com>
+References: <20220414081119.30851-1-miles.chen@mediatek.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI/1.14.6 (Maruoka)
+ FLIM/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL/10.8 Emacs/25.3
+ (x86_64-suse-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI 1.14.6 - "Maruoka")
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_011858_379705_D5299CCA 
-X-CRM114-Status: GOOD (  28.45  )
+X-CRM114-CacheID: sfid-20220414_012256_856745_26D0ED99 
+X-CRM114-Status: GOOD (  17.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,115 +76,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQWxpY2UsIAoKPkhpIE1pbGVzLAo+Cj5PbiBXZWQsIDIwMjItMDMtMDkgYXQgMDc6MjMgKzA4
-MDAsIE1pbGVzIENoZW4gd3JvdGU6Cj4+IEhpIEFsaWNlLAo+PiAKPj4gVGhhbmtzIGZvciB5b3Vy
-IHBhdGNoLiBJIGhhdmUgc29tZSBxdWVzdGlvbnMuCj4+IAo+PiA+IERldmljZSByZXNldCB0aHJl
-YWQgdXNlcyBrb2JqZWN0X3VldmVudF9lbnYoKSB0byBnZXQga29iai5wYXJlbnQKPj4gPiBhZnRl
-ciBzY3NpX2V2dF9lbWl0KCksIGFuZCBpdCByYWNlcyB3aXRoIGRldmljZSBpbml0IHRocmVhZCB3
-aGljaAo+PiA+IGNhbGxzIGRldmljZV9hZGQoKSB0byBjcmVhdGUga29iai5wYXJlbnQgYmVmb3Jl
-Cj4+ID4ga29iamVjdF91ZXZlbnRfZW52KCkuCj4+ID4gCj4+ID4gRGV2aWNlIHJlc2V0IGNhbGwg
-dHJhY2U6Cj4+ID4gZmlsbF9rb2JqX3BhdGgKPj4gPiBrb2JqZWN0X2dldF9wYXRoCj4+ID4ga29i
-amVjdF91ZXZlbnRfZW52Cj4+ID4gc2NzaV9ldnRfZW1pdAkJCTwtIGFkZCB3YWl0X2V2ZW50KCkK
-Pj4gPiBzY3NpX2V2dF90aHJlYWQKPj4gPiAKPj4gPiBEZXZpY2UgaW5pdCBjYWxsIHRyYWNlOgo+
-PiA+IGZpbGxfa29ial9wYXRoCj4+ID4ga29iamVjdF9nZXRfcGF0aAo+PiA+IGtvYmplY3RfdWV2
-ZW50X2Vudgo+PiA+IGRldmljZV9hZGQJCQkJPC0gY3JlYXRlIGtvYmoucGFyZW50Cj4+ID4gc2Nz
-aV90YXJnZXRfYWRkCj4+ID4gc2NzaV9zeXNmc19hZGRfc2Rldgo+PiA+IHNjc2lfYWRkX2x1bgo+
-PiA+IHNjc2lfcHJvYmVfYW5kX2FkZF9sdW4KPj4gCj4+IFRoZXNlIGFyZSBiYWNrdHJhY2VzLCBh
-bmQgdGhlIHRoaW5ncyBhYm92ZSBsb29rcyBsaWtlIHlvdXIgc29sdXRpb24sCj4+IG5vdAo+PiB0
-aGUgcHJvYmxlbS4KPj4gSXQncyBiZXR0ZXIgdG8gZGVzY3JpYmUgdGhlIHByb2JsZW0gZmlyc3Qg
-YW5kIHNvbHV0aW9uIGxhdGVyOgo+PiAKPj4gRGV2aWNlIGluaXQgY2FsbDogICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICBEZXZpY2UgcmVzZXQgY2FsbDogICAKPj4gc2NzaV9wcm9iZV9hbmRf
-YWRkX2x1bigpICAgICAgICAgICAgICAgICAgICAgICBzY3NpX2V2dF90aHJlYWQoKQo+PiAgIHNj
-c2lfYWRkX2x1bigpCj4+ICAgICBzY3NpX3N5c2ZzX2FkZF9zZGV2KCkgICAgICAgICAgICAgICAg
-ICAgICAgICBzY3NpX2V2dF9lbWl0KCkKPj4gICAgICAgc2NzaV90YXJnZXRfYWRkKCkgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAga29iamVjdF91ZXZlbnRfZW52Cj4+ICgpIAo+PiAgICAgICAg
-IGRldmljZV9hZGQoKSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtvYmplY3RfZ2V0
-X3BhdGgKPj4gKCkgLy8gc29tZXRoaW5nIHdyb25nPwo+PiAJICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICBmaWxsX2tvYmpfcGF0aCgpCj4+IAkgIGdldF9kZXZp
-Y2VfcGFyZW50KCkgLy8gSSBzZWUgYSBnZXQsIG5vdCBjcmVhdGUgcGFyZW50IGtvYmosCj4+IGNv
-dWxkIHlvdSBzaG93IG1lIHRoYXQgcG9pbnQ/Cj4+IAkgIGtvYmplY3RfdWV2ZW50KCkKPj4gICAg
-ICAgICAgICAga29iamVjdF91ZXZlbnRfZW52KCkKPj4gICAgICAgICAgICAgICBrb2JqZWN0X2dl
-dF9wYXRoKCkKPj4gICAgICAgICAgICAgICAgIGZpbGxfa29ial9wYXRoKCkKPj4gCj4KPkRldmlj
-ZSBpbml0IGNhbGw6CSAgIERldmljZSByZXNldCBjYWxsOgo+c2NzaV9wcm9iZV9hbmRfYWRkX2x1
-bigpICAgc2NzaV9ldnRfdGhyZWFkKCkKPiAgc2NzaV9hZGRfbHVuKCkJICAgIHNjc2lfZXZ0X2Vt
-aXQoKQo+ICAgc2NzaV9zeXNmc19hZGRfc2RldigpICAgICBrb2JqZWN0X3VldmVudF9lbnYoKSAv
-L2dldCBrb2JqLnBhcmVudAo+ICAgIHNjc2lfdGFyZ2V0X2FkZCgpCSAgICAgIGtvYmplY3RfZ2V0
-X3BhdGgoKSAvL2dldCB3cm9uZwo+a29iai5wYXJlbnQgICAgIGRldmljZV9hZGQoKSAvLyBhZGQg
-a29iai5wYXJlbnQgIGZpbGxfa29ial9wYXRoKCkKPiAgICAgIGtvYmplY3RfdWV2ZW50X2Vudigp
-Cj4gICAgICAga29iamVjdF9nZXRfcGF0aCgpCj4gICAgICAgIGZpbGxfa29ial9wYXRoKCkKPkFi
-b3ZlIGJhY2t0cmFjZSBkZXNjcmliZXMgdGhlIHByb2JsZW0sIGRldmljZSByZXNldCB0aHJlYWQg
-d2lsbCBnZXQKPndyb25nIGtvYmoucGFyZW50IHdoZW4gZGV2aWNlIGluaXQgdGhyZWFkIGRpZG7i
-gJl0IGFkZCBrb2JqLnBhcmVudCB5ZXQuCgpUaGFua3MgZm9yIHNoYXJpbmcgdGhlIGVycm9yIGxv
-ZywgSSB0aGluayBpdCBpcyBjbGVhcmVyIHRoaXMgd2F5OgoKRGV2aWNlIGluaXQgY2FsbDoJICAg
-ICAgICAgICBEZXZpY2UgcmVzZXQgY2FsbDoKc2NzaV9wcm9iZV9hbmRfYWRkX2x1bigpICAgICAg
-ICAgICAgICBzY3NpX2V2dF90aHJlYWQoKQogIHNjc2lfYWRkX2x1bigpCSAgICAgICAgICAgICAg
-ICBzY3NpX2V2dF9lbWl0KCkKICAgc2NzaV9zeXNmc19hZGRfc2RldigpICAgICAgICAgICAgICAg
-ICAga29iamVjdF91ZXZlbnRfZW52KCkgLy9nZXQga29iai5wYXJlbnQKICAgIHNjc2lfdGFyZ2V0
-X2FkZCgpCSAgICAgICAgICAgICAgICAgICAga29iamVjdF9nZXRfcGF0aCgpCiAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsZW4gPSBnZXRfa29ial9wYXRoX2xl
-bmd0aCAoKSAvLyBsZW49MSBiZWNhdXNlIHBhcmVudCBpcyBub3QgY3JlYXRlIHlldCAgICAgCiAg
-ICBkZXZpY2VfYWRkKCkgLy8gYWRkIGtvYmoucGFyZW50ICAgICAgICAgICAgICAgCiAgICAgIGtv
-YmplY3RfdWV2ZW50X2VudigpICAgICAgICAgICAgICAgICAKICAgICAgIGtvYmplY3RfZ2V0X3Bh
-dGgoKSAgICAgICAgICAgICAgICAgICAgIHBhdGggPSBremFsbG9jKCkKICAgICAgICBmaWxsX2tv
-YmpfcGF0aCgpCSAgICAgICAgICAgICAgZmlsbF9rb2JqX3BhdGgoKSAvLyAtLWxlbmd0aDsgbGVu
-Z3RoIC09IGN1ciBpcyBhIG5lZ2F0aXZlIHZhbHVlCgkgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgbWVtY3B5KHBhdGggKyBsZW5ndGgsIGtvYmplY3RfbmFtZShwYXJlbnQp
-LCBjdXIpOyAvLyBzbGFiIE9PQiEKCk5vdyBJIHVuZGVyc3Rvb2QgdGhpcyBzbGFiIE9PQiBpc3N1
-ZSwgcGxlYXNlIGFkZCB0aGUga2FzYW4gbG9nIGFuZCB0aGUKYW5hbHlzaXMgdG8gdGhlIGNvbW1p
-dCBtZXNzYWdlIHNvIHRoZSBtYWludGFpbmVycyBjYW4gc2VlIGl0IGFuZCBoZWxwLgoKPgo+PiA+
-IAo+PiA+IFRoZXNlIHR3byBqb2JzIGFyZSBzY2hlZHVsZWQgYXN5bmNocm9ub3VzbHksIHdlIGNh
-bid0IGd1YXJhbnRlZWQKPj4gPiB0aGF0Cj4+ID4ga29iai5wYXJlbnQgd2lsbCBiZSBjcmVhdGVk
-IGluIGRldmljZSBpbml0IHRocmVhZCBiZWZvcmUgZGV2aWNlCj4+ID4gcmVzZXQKPj4gPiB0aHJl
-YWQgY2FsbHMga29ial9nZXRfcGF0aCgpLgo+PiAKPj4gV2hhdCBoYXBwZW5zIGlmIGRldmljZSBy
-ZXNldCB0aHJlYWQgY2FsbHMga29ial9nZXRfcGF0aCgpIGJlZm9yZQo+PiBrb2JqLnBhcmVudCdz
-Cj4+IGNyZWF0aW9uPyBhIGNyYXNoIG9yIHNvbWV0aGluZz8KPj4gCj4KPkl0IHdpbGwgY2F1c2Ug
-c2xhYi1vdXQtb2YtYm91bmRzIGluIGtvYmplY3RfZ2V0X3BhdGggYW5kIGtlcm5lbCBwYW5pYwo+
-dGhhbiBjcmFzaC4KCk9rYXksIHBsZWFzZSBhZGQgdGhlIEtBU0FOIHNsYWItb3V0LW9mLWJvdW5k
-cyBlcnJvciBpbiB0aGUgY29tbWl0IG1lc3NhZ2UuCgpUaGFua3MsCk1pbGVzCj4KPj4gPiAKPj4g
-PiBUbyByZXNvbHZlIHRoZSByYWNpbmcgaXNzdWUgYmV0d2VlbiBkZXZpY2UgaW5pdCB0aHJlYWQg
-YW5kIGRldmljZQo+PiA+IHJlc2V0IHRocmVhZCwgd2UgdXNlIHdhaXRfZXZlbnQoKSBpbiBzY3Np
-X2V2dF9lbWl0KCkgdG8gd2FpdCBmb3IKPj4gPiBkZXZpY2VfYWRkKCkgdG8gY29tcGxldGUgdGhl
-IGNyZWF0aW9uIG9mIGtvYmoucGFyZW50Lgo+PiA+IAo+PiA+IFNpZ25lZC1vZmYtYnk6IEFsaWNl
-IENoYW8gPGFsaWNlLmNoYW9AbWVkaWF0ZWsuY29tPgo+PiAKPj4gV2hlbiB3ZSBzZW5kIHBhdGNo
-IE4rMSwgd2UgaGF2ZSB0byBwdXQgdGhlIGNoYW5nZSBsb2cgYmV0d2VlbiBwYXRjaAo+PiB2MSB0
-byB2Tgo+PiB1bmRlciBhICItLS0iLCBzbyBvdGhlcnMgY2FuIHVuZGVyc3RhbmQgdGhlIGNoYW5n
-ZXMgYmV0d2VlbiBwYXRjaCBOCj4+IGFuZCBOKzEuCj4+IGUuZy4sCj4+IAo+PiAtLS0KPj4gCj4+
-IENoYW5nZSBzaW5jZSB2MQo+PiAtIHJlbW92ZSBDaGFuZ2UtSWQKPj4gCj4+ID4gLS0tCj4+ID4g
-IGRyaXZlcnMvc2NzaS9zY3NpX2xpYi5jICB8IDEgKwo+PiA+ICBkcml2ZXJzL3Njc2kvc2NzaV9z
-Y2FuLmMgfCAxICsKPj4gPiAgMiBmaWxlcyBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKPj4gPiAK
-Pj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zY3NpL3Njc2lfbGliLmMgYi9kcml2ZXJzL3Njc2kv
-c2NzaV9saWIuYwo+PiA+IGluZGV4IDBhNzBhYTc2M2E5Ni4uYWJmOWE3MWVkNzdjIDEwMDY0NAo+
-PiA+IC0tLSBhL2RyaXZlcnMvc2NzaS9zY3NpX2xpYi5jCj4+ID4gKysrIGIvZHJpdmVycy9zY3Np
-L3Njc2lfbGliLmMKPj4gPiBAQCAtMjQ2MSw2ICsyNDYxLDcgQEAgc3RhdGljIHZvaWQgc2NzaV9l
-dnRfZW1pdChzdHJ1Y3Qgc2NzaV9kZXZpY2UKPj4gPiAqc2Rldiwgc3RydWN0IHNjc2lfZXZlbnQg
-KmV2dCkKPj4gPiAgCQlicmVhazsKPj4gPiAgCWNhc2UgU0RFVl9FVlRfUE9XRVJfT05fUkVTRVRf
-T0NDVVJSRUQ6Cj4+ID4gIAkJZW52cFtpZHgrK10gPSAiU0RFVl9VQT1QT1dFUl9PTl9SRVNFVF9P
-Q0NVUlJFRCI7Cj4+ID4gKwkJd2FpdF9ldmVudChzZGV2LT5ob3N0LT5ob3N0X3dhaXQsIHNkZXYt
-Cj4+ID4gPnNkZXZfZ2VuZGV2LmtvYmoucGFyZW50ICE9IE5VTEwpOwo+PiA+ICAJCWJyZWFrOwo+
-PiA+ICAJZGVmYXVsdDoKPj4gPiAgCQkvKiBkbyBub3RoaW5nICovCj4+ID4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvc2NzaS9zY3NpX3NjYW4uYyBiL2RyaXZlcnMvc2NzaS9zY3NpX3NjYW4uYwo+PiA+
-IGluZGV4IGY0ZTZjNjhhYzk5ZS4uNDMxZjIyOWFjNDM1IDEwMDY0NAo+PiA+IC0tLSBhL2RyaXZl
-cnMvc2NzaS9zY3NpX3NjYW4uYwo+PiA+ICsrKyBiL2RyaXZlcnMvc2NzaS9zY3NpX3NjYW4uYwo+
-PiA+IEBAIC0xOTA0LDYgKzE5MDQsNyBAQCBzdGF0aWMgdm9pZCBkb19zY3NpX3NjYW5faG9zdChz
-dHJ1Y3QKPj4gPiBTY3NpX0hvc3QgKnNob3N0KQo+PiA+ICAJfSBlbHNlIHsKPj4gPiAgCQlzY3Np
-X3NjYW5faG9zdF9zZWxlY3RlZChzaG9zdCwgU0NBTl9XSUxEX0NBUkQsCj4+ID4gU0NBTl9XSUxE
-X0NBUkQsCj4+ID4gIAkJCQlTQ0FOX1dJTERfQ0FSRCwgMCk7Cj4+ID4gKwkJd2FrZV91cCgmc2hv
-c3QtPmhvc3Rfd2FpdCk7Cj4+IAo+PiBkb19zY3NpX3NjYW5faG9zdCgpIGlzIG5vdCBpbiB0aGUg
-Y2FsbCB0cmFjZSBhYm92ZSwgY291bGQgeW91IHNob3cKPj4gdGhlIHJlbGF0aW9uc2hpcAo+PiBv
-ZiBkb19zY3NpX3NjYW5faG9zdCBpbiB0aGUgY2FsbCBmbG93Pwo+PiAKPgo+dWZzaGNkX2FzeW5j
-X3NjYW4oKQo+c2NzaV9zY2FuX2hvc3QoKQo+ZG9fc2NzaV9zY2FuX2hvc3QoKSAgPDwgaGVyZQo+
-c2NzaV9zY2FuX2hvc3Rfc2VsZWN0ZWQoKQo+IF9fc2NzaV9zY2FuX3RhcmdldCgpCj5zY3NpX3By
-b2JlX2FuZF9hZGRfbHVuKCkKPnNjc2lfc3lzZnNfYWRkX3NkZXYoKQo+ZGV2aWNlX2FkZCgpCj5r
-b2JqZWN0X3VldmVudF9lbnYoKQo+a29iamVjdF9nZXRfcGF0aCgpCj5maWxsX2tvYmpfcGF0aCgp
-Cj4KPkFmdGVyIHdlIGFkZCB3YWtlX3VwIGhlcmUsIHdlIGNhbiBlbnN1cmUgdGhhdCBkZXZpY2Ug
-cmVzZXQgdGhyZWFkIHdpbGwKPmdldCBrb2JqZWN0IGFmdGVyIGRldmljZSBpbml0IHRocmVhZCBm
-aW5pc2hlcyBhZGRpbmcgcGFyZW50Lgo+Cj4+IHRoYW5rcywKPj4gTWlsZXMKPj4gCj4+ID4gIAl9
-Cj4+ID4gIH0KPgo+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LW1lZGlhdGVrCg==
+On Thu, 14 Apr 2022 10:11:18 +0200,
+Miles Chen wrote:
+> 
+> We observed: 'dmasound_setup' defined but not used error with
+> COMPILER=gcc ARCH=m68k DEFCONFIG=allmodconfig build.
+> 
+> __setup() does not work if MODULE is defined.
+> Fix it by warpping dmasound_setup with #ifndef MODULES.
+> 
+> Error(s):
+> sound/oss/dmasound/dmasound_core.c:1431:12: error: 'dmasound_setup' defined but not used [-Werror=unused-function]
+> 
+> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+
+This must be a side-effect of the recent fix 9dd7c46346ca
+("sound/oss/dmasound: fix build when drivers are mixed =y/=m").
+Adding Randy to Cc.
+
+IMO, a less uglier way would be to add __maybe_unused to that
+function.  But it's a matter of taste.
+
+
+thanks,
+
+Takashi
+
+> ---
+>  sound/oss/dmasound/dmasound_core.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/sound/oss/dmasound/dmasound_core.c b/sound/oss/dmasound/dmasound_core.c
+> index 9c48f3a9e3d1..a1b3e71beadf 100644
+> --- a/sound/oss/dmasound/dmasound_core.c
+> +++ b/sound/oss/dmasound/dmasound_core.c
+> @@ -1428,6 +1428,7 @@ void dmasound_deinit(void)
+>  		unregister_sound_dsp(sq_unit);
+>  }
+>  
+> +#ifndef MODULE
+>  static int dmasound_setup(char *str)
+>  {
+>  	int ints[6], size;
+> @@ -1470,6 +1471,7 @@ static int dmasound_setup(char *str)
+>  }
+>  
+>  __setup("dmasound=", dmasound_setup);
+> +#endif
+>  
+>      /*
+>       *  Conversion tables
+> -- 
+> 2.18.0
+> 
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
