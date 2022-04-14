@@ -4,55 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 530D1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 12:52:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4804CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 14:44:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WzNNg+XAlCKJX4YYEycwCmYx+7A1dh8Yz5fPPLyLPlw=; b=J2JEh8IrO4V8xV
-	ZwWllA7lGEHDn2UcmCNd/VdwJ2E/nITpMTxcySZFzLfaQ+iWmz+3Ixv+zrbKTPFqj/Wn5Y087zJqx
-	vwu0uW5o9L0sAUv6QKcfXL2vah4UXfd8Dw5T7qJilbhABtRg3aJALGyHpN9G9t1ay63KGJo6Q2hYI
-	LjUgdkq2C0v5qdQJMxgpzedDTpQGsgrRr5/fDQYwBsYlbG1IQ/7n86ID//6k3F0xzFJqBBtvIZOLv
-	LduL+Xi+NLOOj6TOLhCnN3cAg8rJgIJ12/YsCpPNC3JR+KqYoVbhLBLauKSy/ZSum1lAj987eUt5p
-	LZ/YrZKigPfTMy3dyZeA==;
+	List-Owner; bh=apB6i5Tm1OQNiZMcKG91/1tN5v35jUZRY43u5ZooxOk=; b=ts8fHQRlHt2SiN
+	+XNNO6RZd2gYSEckRC36H2kU64ka2BP+giuA95HitMNyYU46p4TS+TCKYMTsMLzxfKHISP9ZzDwI1
+	ZlsIC/Yuml4BtP/GH05eCYu+NVwWhmufwyClxp/fyoYuo8FkOjIS9qrL6lqL57iyJ4PpU3xApRp6D
+	9h6VjEKqFYrqjv+OKrQN4Pc2CN8obnmZgeNA/e4BAxFGO5cz+joclJGwHrfBBU+UISUE/P2Aa7LUz
+	vBhkYt4F8OAkeQT7zzbTukq5yJbdHCWwX3wW1Y3675NZKAoT1o8e+C/crTAQgebGLY7xk/yK4lYYT
+	SSAoL/LNfAtf+BfnadAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neyxd-005evy-Rp; Thu, 14 Apr 2022 12:52:33 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neysn-005cKt-DV; Thu, 14 Apr 2022 12:47:35 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0F6D3139F;
- Thu, 14 Apr 2022 05:47:30 -0700 (PDT)
-Received: from [10.1.32.20] (e122027.cambridge.arm.com [10.1.32.20])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D2D2A3F70D;
- Thu, 14 Apr 2022 05:47:27 -0700 (PDT)
-Message-ID: <b6509465-b7c7-0e66-071a-be85793cce58@arm.com>
-Date: Thu, 14 Apr 2022 13:47:25 +0100
+	id 1nf0iG-0064CW-Tg; Thu, 14 Apr 2022 14:44:48 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nf0i7-00649v-Sl; Thu, 14 Apr 2022 14:44:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=07JiligZE/4GH4BaZTL7wgTjvBdZxthvgQyY/4H+jtA=; b=U5KNuPPiSY3gWFaMAmgvDiJiAo
+ UMct/Awrtq9CTXyRMreCQBa8XsfWjAViM9oQ5WRjsrKK1gSm/S7wwnIvZ2aOIMwlj+6zSmlSd7gP8
+ Hi32LDtaXzc/h1ze8wtPbK0QGVw7ayKN1KEAJiqChfc1bH45pavDVa2vjvrQJAX0zbvArVLN+cPJj
+ 12+E4JK6ufHMGW19AZsmeyen0JppChZKQdDn7+YyacoUsXUZvuUu9g0E/0a0LEcih89GQQcVYP12/
+ UeMWDA1T3Sxl8k42r4j3bB7Ig9oChiT83U8Zm2+pGIEyK7+SFuI8OEbjxAQu3ZtSodB6Qu4YxxrZH
+ OjhDvt/g==;
+Received: from j217100.upc-j.chello.nl ([24.132.217.100]
+ helo=noisy.programming.kicks-ass.net)
+ by desiato.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nf0i0-0052Va-5V; Thu, 14 Apr 2022 14:44:32 +0000
+Received: from hirez.programming.kicks-ass.net
+ (hirez.programming.kicks-ass.net [192.168.1.225])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by noisy.programming.kicks-ass.net (Postfix) with ESMTPS id 750A730080F;
+ Thu, 14 Apr 2022 16:44:29 +0200 (CEST)
+Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
+ id 346482B388774; Thu, 14 Apr 2022 16:44:29 +0200 (CEST)
+Date: Thu, 14 Apr 2022 16:44:29 +0200
+From: Peter Zijlstra <peterz@infradead.org>
+To: Kuyo Chang <kuyo.chang@mediatek.com>
+Cc: Ingo Molnar <mingo@redhat.com>, Juri Lelli <juri.lelli@redhat.com>,
+ Vincent Guittot <vincent.guittot@linaro.org>,
+ Dietmar Eggemann <dietmar.eggemann@arm.com>,
+ Steven Rostedt <rostedt@goodmis.org>,
+ Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
+ Daniel Bristot de Oliveira <bristot@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ wsd_upstream@mediatek.com, Ingo Molnar <mingo@kernel.org>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/1] [PATCH v3]sched/pelt: Fix the attach_entity_load_avg
+ calculate method
+Message-ID: <YlgzTS+laNNvMukT@hirez.programming.kicks-ass.net>
+References: <20220414090229.342-1-kuyo.chang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v6 1/2] dt-bindings: Add DT schema for Arm Mali Valhall GPU
-Content-Language: en-GB
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Nick Fan <Nick.Fan@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-mediatek@lists.infradead.org, alyssa.rosenzweig@collabora.com,
- wenst@chromium.org, linux-arm-kernel@lists.infradead.org
-References: <20220414025023.11516-1-Nick.Fan@mediatek.com>
- <ee2f0819-8c9e-4160-c4ae-fb4ad0da3f3b@collabora.com>
-From: Steven Price <steven.price@arm.com>
-In-Reply-To: <ee2f0819-8c9e-4160-c4ae-fb4ad0da3f3b@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_054733_558292_01055E33 
-X-CRM114-Status: GOOD (  17.95  )
+Content-Disposition: inline
+In-Reply-To: <20220414090229.342-1-kuyo.chang@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,57 +83,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/04/2022 12:51, AngeloGioacchino Del Regno wrote:
-> Il 14/04/22 04:50, Nick Fan ha scritto:
->> Add devicetree schema for Arm Mali Valhall GPU
->>
->> Define a compatible string for the Mali Valhall GPU
->> for MediaTek's SoC platform.
->>
->> Signed-off-by: Nick Fan <Nick.Fan@mediatek.com>
-> 
-> Hello Nick,
-> Unfortunately, this binding is completely wrong.
 
-I think that's unfair, although there is room for improvement.
+I've taken the liberty of carrying over the tags from v2 and reworked
+the Changelog a little.
 
-> First of all, there's no arm,mali-valhall driver upstream - this will be
-> managed
-> by panfrost later, yes, but right now there's no support.
+---
+Subject: sched/pelt: Fix attach_entity_load_avg() corner case
+From: kuyo chang <kuyo.chang@mediatek.com>
+Date: Thu, 14 Apr 2022 17:02:20 +0800
 
-We need a binding agreed upon before support can be added.
+From: kuyo chang <kuyo.chang@mediatek.com>
 
-> Then, you're also setting opp-microvolt in a way that will never (or, at
-> least,
-> not anytime soon) be supported by the upstream driver, as it manages
-> only one
-> supply for devfreq scaling.
+The warning in cfs_rq_is_decayed() triggered:
 
-The mt8183 binding (already in tree) is very similar. The binding also
-should be describing the hardware not what the driver supports. There
-are indeed limitations in Panfrost for supporting multiple supplies, but
-that's something that needs improving in the driver not a reason to
-block a (presumably correct) description of the hardware. I can't
-comments on whether the specifics of the mt8192 are correct.
+    SCHED_WARN_ON(cfs_rq->avg.load_avg ||
+		  cfs_rq->avg.util_avg ||
+		  cfs_rq->avg.runnable_avg)
 
-> Besides, please don't push bindings that have no upstream driver,
-> especially if
-> these are for downstream drivers requiring proprietary components, while a
-> completely open source implementation is in the works.
+There exists a corner case in attach_entity_load_avg() which will
+cause load_sum to be zero while load_avg will not be.
 
-More constructively, Alyssa has already posted a patch (as part of the
-series adding driver support) which would extend the existing Bifrost
-bindings to (pre-CSF) Valhall:
+Consider se_weight is 88761 as per the sched_prio_to_weight[] table.
+Further assume the get_pelt_divider() is 47742, this gives:
+se->avg.load_avg is 1.
 
-https://lore.kernel.org/dri-devel/20220211202728.6146-2-alyssa.rosenzweig@collabora.com/
+However, calculating load_sum results in 0:
 
-I'm not sure I see the point of having a separate binding document for
-Valhall considering the (pre-CSF) hardware is the same from the kernel
-perspective.
+  se->avg.load_sum = div_u64(se->avg.load_avg * se->avg.load_sum, se_weight(se));
+  se->avg.load_sum = 1*47742/88761 = 0.
 
-Thanks,
+Then enqueue_load_avg() adds this to the cfs_rq totals:
 
-Steve
+  cfs_rq->avg.load_avg += se->avg.load_avg;
+  cfs_rq->avg.load_sum += se_weight(se) * se->avg.load_sum;
+
+Resulting in load_avg being 1 with load_sum is 0, which will trigger
+the WARN.
+
+Fixes: f207934fb79d ("sched/fair: Align PELT windows between cfs_rq and its se")
+Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+[peterz: massage changelog]
+Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+Reviewed-by: Vincent Guittot <vincent.guittot@linaro.org>
+Tested-by: Dietmar Eggemann <dietmar.eggemann@arm.com>
+Link: https://lkml.kernel.org/r/20220414090229.342-1-kuyo.chang@mediatek.com
+---
+ kernel/sched/fair.c |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+--- a/kernel/sched/fair.c
++++ b/kernel/sched/fair.c
+@@ -3829,11 +3829,11 @@ static void attach_entity_load_avg(struc
+ 
+ 	se->avg.runnable_sum = se->avg.runnable_avg * divider;
+ 
+-	se->avg.load_sum = divider;
+-	if (se_weight(se)) {
+-		se->avg.load_sum =
+-			div_u64(se->avg.load_avg * se->avg.load_sum, se_weight(se));
+-	}
++	se->avg.load_sum = se->avg.load_avg * divider;
++	if (se_weight(se) < se->avg.load_sum)
++		se->avg.load_sum = div_u64(se->avg.load_sum, se_weight(se));
++	else
++		se->avg.load_sum = 1;
+ 
+ 	enqueue_load_avg(cfs_rq, se);
+ 	cfs_rq->avg.util_avg += se->avg.util_avg;
 
 _______________________________________________
 Linux-mediatek mailing list
