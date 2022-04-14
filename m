@@ -4,92 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A39A9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 09:58:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AE20C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 11:04:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=R7n17FhiTD9nIlsNgfYQNWKSWk+13vuGVZZf34QD500=; b=gLnPSMbRaOWbbQ
-	e+x1RV4FJ2xVHTNoHP+vTNBQU3GKd31Qt4174910/Sf5WFk4J8Wvw+9LPlxaqhAJTHnNjB9uZywdh
-	C/SWzx9HcxFNzHJAglZevO4kYwb7X5/uHkrGFLyVytDr7yXPZjDERQmuJUgXWyI0Eycjq0qzEaA3w
-	GBDwu/Tlf7c08IS+HZ8suv8Ew6AyVsBK2u2yzUCbs0nptFfD9tYrq17ZFgNsr4QFYM8cno62ySXrR
-	cMduIA4oI5DjHV5DadhXty+huGUZ6vI2FGFXbbxq0QdHQuhdlfOq6QrTfQQT3D99VCny4tRlj7YG5
-	M0jZNtp6TcMmliVNus6Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iinCnqNpTlojv7cQMQJ8YqV3yoB969HFAIOCzE2ZdFA=; b=j0ZKNo0eFli0qL
+	wgeuVRUIQlN44YBPFu3QbNakJ2z8rPz0ox/DW6VPLH5vZff0FFpjGZ5wywmrzSO0zeQOJtylOeTe/
+	aLqokb6rugr+g/PhbKORS7yo0O5J9+K7biF9ctsi0vyCeWkQOU6gqf0oOdEQGduNskShSx+eUu9g5
+	shc+Kr7dgjzZUFUKeUAto6vSSLHFF0kPNAls4ulQWpwxkCqJKQSAnsbZqaxjzeH3yAYkZ6Gk37M7W
+	K/OneJjbVUtl76F9r9DN4+3kVvezAis1aG/ZhKNiX/q6XKiL8xr0Yg9ynLijOCLvXkty+67tTncId
+	udVuWfjFTimz4LhOrCXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1newEf-004zut-Bg; Thu, 14 Apr 2022 09:57:57 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1nexGf-005EuY-2T; Thu, 14 Apr 2022 11:04:05 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1newBt-004yJ5-Sm; Thu, 14 Apr 2022 09:55:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
- :MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
- Content-Description:In-Reply-To:References;
- bh=qz4eoGCjwqiVTIGhSK37UOjVOVCpyvZrQ4WRtbzGJcY=; b=IgfvKo4LKq04joEXIakfL/33tZ
- /oHC44RXNJTHqMR4lnI6mU/+krly5kPi+SMPImQSAizJaTHbbp8Oia3nSIJZjnlAJMZBO+BoDbYk3
- k2JLdHbB15hdkmr825U1HwR4Us3/MS5uPDPQIs4SyzKRMBs7nhvOuAMm6aJ0ULYPaNhiZwaZ1VWfc
- 5acF3FK0aVjHjt1FdCa4sNKcZZR902GA0HXDWTVo7G6iwI2c4ksKAO0Ud7Htd2OFBYFJsVT2bkYZg
- Q12Qn+J615uDYMDHSSzdIL+K0G9fJD5aQK8I8wL02wM8m0km1IkVTmGMKRt+7QmtomgGNLJ8bKsa2
- YON97ZtA==;
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
- by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1newBZ-004yp9-GE; Thu, 14 Apr 2022 09:55:02 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id p18so5337194wru.5;
- Thu, 14 Apr 2022 02:54:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=qz4eoGCjwqiVTIGhSK37UOjVOVCpyvZrQ4WRtbzGJcY=;
- b=o6Q2r7jKuN5KwGswZCLVojX54AFIYdM8E7FrOjUvQcnVhxqQaEAlspQV217XzhSoAv
- HD0LmIr8jJ2vFXbfZwCw2TPEHTwaaL4g+qu7J4ZEC0nGohy2w2QiiYlPq1SoyfDNhbVw
- Jr8PQ88O8YL6MDLMXDXARCdmw4Id3hifEtFjffLRP7opy6qBf83OePZLNAFo1V/j/j9p
- M8SbmFrrA3oFhfoRsrHLZaEJjLstgP49/4bGHjOqMNBt8wBXBfChyvkUyhUWZzrLEZTq
- tfY1JfDmZWzim41tkAtdj05+o4/hu2EdCVtbQo0tROIKgQDo2/nUJxuN5C/cUoThnV/Y
- 07rQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=qz4eoGCjwqiVTIGhSK37UOjVOVCpyvZrQ4WRtbzGJcY=;
- b=0DV7Ui0YJLhED7uf482DrqXB+Oc48sZZN8AyNAwTCvgo30G3uZcDbbGZnXn78O4Jpj
- b9hR99/sugbnuMwsQk5R71PxJqRSVH1fZNM816mmN9Ui37Nr7n3f5cro9VLpA9F+OeSz
- DdG3UPtoTNuNk0sxd/ej4HiwwPx71CoYPf/qxx6X2zFYBweKAAwiG8rNbXW3Q/ejjS0i
- lBWrfg5OO/WtflOVirKF52QkzhXiH4zt5x4TzQnD5VdyzCBMU37iWuM92QuetQgimseV
- 35kGoPN2rvdi9eqZLFy7FUoz6/GwUZSKrrZP4w4113u1BSxUxsMHKJQPFndFHZj+qPbg
- mLcA==
-X-Gm-Message-State: AOAM5309mb0C9WEyq4MVfQJUITJe5JNTzp1krN0709ew2YsPucauhzly
- Z4850VjLjBleLf78aWpxJkQ=
-X-Google-Smtp-Source: ABdhPJyJpElLXIDRtcHN0en+en7f4nKd00rYFyVmnDPQ66HEr4AxsmGykL5nNAhtm9fVYQ9i1B0T5g==
-X-Received: by 2002:a5d:47cc:0:b0:204:1c9d:2157 with SMTP id
- o12-20020a5d47cc000000b002041c9d2157mr1421460wrc.294.1649930079091; 
- Thu, 14 Apr 2022 02:54:39 -0700 (PDT)
-Received: from localhost (cpc154979-craw9-2-0-cust193.16-3.cable.virginm.net.
- [80.193.200.194]) by smtp.gmail.com with ESMTPSA id
- d14-20020a056000186e00b0020405198faasm1633727wri.52.2022.04.14.02.54.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Apr 2022 02:54:38 -0700 (PDT)
-From: Colin Ian King <colin.i.king@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
- "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] mt76: mt7921: make read-only array ppet16_ppet8_ru3_ru0
- static const
-Date: Thu, 14 Apr 2022 10:54:38 +0100
-Message-Id: <20220414095438.294980-1-colin.i.king@gmail.com>
-X-Mailer: git-send-email 2.35.1
+ id 1nexGS-005EsO-VT; Thu, 14 Apr 2022 11:03:55 +0000
+X-UUID: 2eb7e3eddbac4d329276ebae0096dfa7-20220414
+X-UUID: 2eb7e3eddbac4d329276ebae0096dfa7-20220414
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 442846658; Thu, 14 Apr 2022 04:03:42 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 14 Apr 2022 03:53:40 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 14 Apr 2022 18:53:39 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 14 Apr 2022 18:53:39 +0800
+Message-ID: <be86691b529dd691203fbb5b35f8572e7e9119a8.camel@mediatek.com>
+Subject: Re: [PATCH V2 10/15] cpufreq: mediatek: Make sram regulator optional
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Kevin Hilman <khilman@baylibre.com>, <rafael@kernel.org>,
+ <viresh.kumar@linaro.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>
+CC: <matthias.bgg@gmail.com>, <jia-wei.chang@mediatek.com>,
+ <roger.lu@mediatek.com>, <hsinyi@google.com>, <linux-pm@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 14 Apr 2022 18:53:39 +0800
+In-Reply-To: <7ho81b5n9v.fsf@baylibre.com>
+References: <20220408045908.21671-1-rex-bc.chen@mediatek.com>
+ <20220408045908.21671-11-rex-bc.chen@mediatek.com>
+ <7ho81b5n9v.fsf@baylibre.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_105445_970578_5E349C08 
-X-CRM114-Status: GOOD (  10.76  )
+X-CRM114-CacheID: sfid-20220414_040353_050513_D36DE582 
+X-CRM114-Status: GOOD (  21.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,29 +77,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Don't populate the read-only array ppet16_ppet8_ru3_ru0 on the stack but
-instead make it static const. Also makes the object code a little smaller.
+On Fri, 2022-04-08 at 13:32 -0700, Kevin Hilman wrote:
+> Rex-BC Chen <rex-bc.chen@mediatek.com> writes:
+> 
+> > From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> > 
+> > For some MediaTek SoCs, like MT8186, it's possible that the sram
+> > regulator
+> > is shared between CPU and CCI.
+> > 
+> > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> 
+> nit: missing your sign-off.
+> 
+> > ---
+> >  drivers/cpufreq/mediatek-cpufreq.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/cpufreq/mediatek-cpufreq.c
+> > b/drivers/cpufreq/mediatek-cpufreq.c
+> > index 9e9bce0ff235..8f688d47e64b 100644
+> > --- a/drivers/cpufreq/mediatek-cpufreq.c
+> > +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> > @@ -435,7 +435,7 @@ static int mtk_cpu_dvfs_info_init(struct
+> > mtk_cpu_dvfs_info *info, int cpu)
+> >  	}
+> >  
+> >  	/* Both presence and absence of sram regulator are valid cases.
+> > */
+> > -	info->sram_reg = regulator_get_exclusive(cpu_dev, "sram");
+> > +	info->sram_reg = regulator_get_optional(cpu_dev, "sram");
+> 
+> The changelog says that this regulator may be shared with CCI, so I
+> understand it's no longer exclusive.  But here you make it optional,
+> which should be explained in the changelog.  If it's not actually
+> optional, then it should just be normal "get".
+> 
+> Kevin
 
-Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hello Kevin,
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index fdaf2451bc1d..d400a3297b0c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -12,7 +12,7 @@ static void
- mt7921_gen_ppe_thresh(u8 *he_ppet, int nss)
- {
- 	u8 i, ppet_bits, ppet_size, ru_bit_mask = 0x7; /* HE80 */
--	u8 ppet16_ppet8_ru3_ru0[] = {0x1c, 0xc7, 0x71};
-+	static const u8 ppet16_ppet8_ru3_ru0[] = {0x1c, 0xc7, 0x71};
- 
- 	he_ppet[0] = FIELD_PREP(IEEE80211_PPE_THRES_NSS_MASK, nss - 1) |
- 		     FIELD_PREP(IEEE80211_PPE_THRES_RU_INDEX_BITMASK_MASK,
--- 
-2.35.1
+Since cpufreq and cci devfreq might share the same sram regulator in
+MediaTek SoC, it is no longer exclusive as you mentioned.
+
+The reason to use regulator_get_optional is we hope regulator framework
+can return error for error handling rather than a dummy handler from
+regulator_get api.
+
+I will add this to commit message in next version.
+
+Thanks.
+
+BRs,
+Rex
 
 
 _______________________________________________
