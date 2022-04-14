@@ -4,68 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9878EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 15:32:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9C16C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 16:18:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OQCGwpEPGBhUSNnVpaHZw4+C3Oj0OUZ77L+XbNNuyy0=; b=m32BFB1D92UEni
-	MMDV1ZJCfwo0Rh8amhq90+uKZyLb5qTPC+RfOGPmm7eLEnxECNbOpGhPiYtImKBMoSvUPZGxF1EXe
-	CasGAMePLfV5K83LqFJqrGQ/dZtBHTHTuyH+Q7dHF9/mDOVigkWe+WPPnW1rF44mA1dIpLtieAZx4
-	crBHC3i1x5uS3mt2tUwb1onAV1x61ibx0CNOAVcWC2EK8fdB4rKMI3WJPkgNV5bbSYBNFMXgJOJFG
-	bfioKBN+03RS9YG4VHYyG1iBovxKBK08UtA+SZxAu2/+px6EBgZpW9gHPPKwde4pg1CfUstz8h8Cc
-	2D9FObIfkBeoo3M9uChg==;
+	List-Owner; bh=Kj096UzypWdufbVQDWBau/euPSGzhZDxtFpxC5rVKtA=; b=XEUaDLOktO+j0+
+	JUCgdTSDDasc3WjHlxnkLMgTZdNXD6qEU3eSTqnpRHEFE5+MJFMqplCAVPvb9uagOF/IELsQAXCbQ
+	KO77XpaOh7ntoOLDfppLbN4qnyPZQLoOTmXSVSr5LTy8vOZHcAQ8d4qjg6288rD0ewsgWH8pH2Jc3
+	pVKpiDSLrBuAmMnwP+z5Idzg64TJDnW69zGcFYo7Z4X/eg4A3LdumBVqxVa09ZIzhDhYSBJFqktxj
+	DJiJYscMxqYwxrabDEVNxswNvOUzI+rv3rpahmtojDwmbvQKU6o+bnFrcQMEW5yo3k+W0HbKC0GAl
+	pdnmtSY0ghNnYlFLVWHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nf1SQ-006FMU-M7; Thu, 14 Apr 2022 15:32:30 +0000
-Received: from mga12.intel.com ([192.55.52.136])
+	id 1nf2AQ-006PLv-R5; Thu, 14 Apr 2022 16:17:58 +0000
+Received: from mail-ot1-f52.google.com ([209.85.210.52])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nf1SN-006FJL-JY; Thu, 14 Apr 2022 15:32:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1649950347; x=1681486347;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=GWVpvaE0Wgi4ximav1D+j4xQUb5aXMCEWIKwKCiRekw=;
- b=awkSr/x/YMSHIKipBe8h5F8rnD76SqnevxqH0kHDoBkiLNGqC94lexdU
- MjSqV8oUhrhppCcvIMeAO5qstd8A/Sqabx5WBVLux35myEnK4Nlb9cPNd
- B4z4Hxu2h3VWeeK2wNQ7JXeBhBlYwro+y0WCTk/Hw/KguVLfE1s+qWUnA
- sO216Gsh13vIKxq53XnYrUm3lctA9XyYOXI0ksXFNUeaOv/uNJIVJzPg8
- sQ7E4d+uxtEkL93JnUWHMnFMfCDwB8/elQbo0essrUCmqQi0lUrIz8XPN
- QWw42yeUnsjMH9nIwsHxafFUZOummyYsMiQ+NNs+M7Rqfk1ksXkv2JBl4 Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10317"; a="242889294"
-X-IronPort-AV: E=Sophos;i="5.90,260,1643702400"; d="scan'208";a="242889294"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Apr 2022 08:32:21 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,260,1643702400"; d="scan'208";a="552728132"
-Received: from lkp-server01.sh.intel.com (HELO 3abc53900bec) ([10.239.97.150])
- by orsmga007.jf.intel.com with ESMTP; 14 Apr 2022 08:32:15 -0700
-Received: from kbuild by 3abc53900bec with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nf1SA-00014v-Sw;
- Thu, 14 Apr 2022 15:32:14 +0000
-Date: Thu, 14 Apr 2022 23:31:34 +0800
-From: kernel test robot <lkp@intel.com>
-To: "jason-jh.lin" <jason-jh.lin@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v18 07/10] drm/mediatek: add mediatek-drm of vdosys0
- support for mt8195
-Message-ID: <202204142333.qXgcGMI1-lkp@intel.com>
-References: <20220412103114.19922-8-jason-jh.lin@mediatek.com>
+ id 1nf2A0-006PAr-UM; Thu, 14 Apr 2022 16:17:35 +0000
+Received: by mail-ot1-f52.google.com with SMTP id
+ g16-20020a9d6b10000000b00601ded2a06fso646139otp.6; 
+ Thu, 14 Apr 2022 09:17:31 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=+dYyu7y5UVTMexCQcf0EtUHGOdwuv57lNmgQ07q4u5Y=;
+ b=s+MBFxAR1PYGj1+3n2vm0UIKA7nfFOmW3vU3U1k2Ac1LGtOSgzyRuGkZxdNQL6nItd
+ 44GseUhsNXxc25RrmJpAIA56hEiAO4AXI1WJ96eMz98ErPcXdZhJ+VviYgd/skschZR7
+ 0pCCiaZ4CNUqKGPTv4+4utNdIieC8LPNu+WxUqeaakbM4copPALDIu8V1MI9SMfVjc8V
+ 8w9IYa8uMpPHG0ZIQdcO2D3IYtcCZnuYfQ2sKYpf0ClE+G6lfJEPHjCEoefXxK8CqIvn
+ /ziIhdvXJz1Z6UBQr863AevBiJ55L4Fd8JEP/HifMM4dPqqBjepdUyvt9/DxsHkVBfXI
+ Am/A==
+X-Gm-Message-State: AOAM532M7/M19Y336mfJLs9jF0BNJD/fh7mj8SO7axypAAklY1QZEUfs
+ 0bUt50RmzeTVnNVHs+gv8w==
+X-Google-Smtp-Source: ABdhPJzm1hyipOam0Bbm1/ZIUN7HVSh8anI4Sp0p0Vi30YCcZ20K4EDM6Ws/WU/LJosQ8gdb9KAMKQ==
+X-Received: by 2002:a9d:75cc:0:b0:5cd:9f3a:6ee6 with SMTP id
+ c12-20020a9d75cc000000b005cd9f3a6ee6mr1186806otl.10.1649953050470; 
+ Thu, 14 Apr 2022 09:17:30 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ t6-20020a056870f20600b000e2a451bcaesm874137oao.17.2022.04.14.09.17.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 14 Apr 2022 09:17:30 -0700 (PDT)
+Received: (nullmailer pid 2164706 invoked by uid 1000);
+ Thu, 14 Apr 2022 16:17:29 -0000
+Date: Thu, 14 Apr 2022 11:17:29 -0500
+From: Rob Herring <robh@kernel.org>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Luiz Angelo Daros de Luca <luizluca@gmail.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, erkin.bozoglu@xeront.com,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org
+Subject: Re: [PATCH 10/14] dt-bindings: pinctrl: rt2880: fix binding name,
+ pin groups and functions
+Message-ID: <YlhJGerakzbsXwnv@robh.at.kernel.org>
+References: <20220413060729.27639-1-arinc.unal@arinc9.com>
+ <20220413060729.27639-11-arinc.unal@arinc9.com>
+ <ba7cd13f-d216-0ac6-97e1-6c13f1e15f38@linaro.org>
+ <550b20f2-098e-0f25-ad9f-3ff523879cb7@arinc9.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220412103114.19922-8-jason-jh.lin@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <550b20f2-098e-0f25-ad9f-3ff523879cb7@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_083227_749896_1564B3CD 
-X-CRM114-Status: GOOD (  13.38  )
+X-CRM114-CacheID: sfid-20220414_091733_023853_EFEF9B7D 
+X-CRM114-Status: GOOD (  28.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,202 +89,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, moudy.ho@mediatek.com, kbuild-all@lists.01.org,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, David Airlie <airlied@linux.ie>,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>, singo.chang@mediatek.com,
- llvm@lists.linux.dev, roy-cw.yeh@mediatek.com, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Fabien Parent <fparent@baylibre.com>, nancy.lin@mediatek.com,
- linux-mediatek@lists.infradead.org, Yongqiang Niu <yongqiang.niu@mediatek.com>,
- hsinyi@chromium.org, Rex-BC Chen <rex-bc.chen@mediatek.com>,
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi "jason-jh.lin",
-
-Thank you for the patch! Perhaps something to improve:
-
-[auto build test WARNING on drm/drm-next]
-[also build test WARNING on robh/for-next krzk/for-next linus/master v5.18-rc2 next-20220414]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/jason-jh-lin/Add-Mediatek-Soc-DRM-vdosys0-support-for-mt8195/20220412-183359
-base:   git://anongit.freedesktop.org/drm/drm drm-next
-config: arm64-buildonly-randconfig-r001-20220413 (https://download.01.org/0day-ci/archive/20220414/202204142333.qXgcGMI1-lkp@intel.com/config)
-compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project 6b7e6ea489f6dd45a9b0da9ac20871560917b9b0)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # install arm64 cross compiling tool for clang build
-        # apt-get install binutils-aarch64-linux-gnu
-        # https://github.com/intel-lab-lkp/linux/commit/7c175317aa80bbc885609a730214448147a46b47
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review jason-jh-lin/Add-Mediatek-Soc-DRM-vdosys0-support-for-mt8195/20220412-183359
-        git checkout 7c175317aa80bbc885609a730214448147a46b47
-        # save the config file to linux build tree
-        mkdir build_dir
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash drivers/gpu/drm/mediatek/
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
-
-All warnings (new ones prefixed by >>):
-
-   drivers/gpu/drm/mediatek/mtk_drm_drv.c:707:15: warning: cast to smaller integer type 'enum mtk_ddp_comp_type' from 'const void *' [-Wvoid-pointer-to-enum-cast]
-                   comp_type = (enum mtk_ddp_comp_type)of_id->data;
-                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> drivers/gpu/drm/mediatek/mtk_drm_drv.c:203:42: warning: unused variable 'mt2701_mmsys_match_data' [-Wunused-const-variable]
-   static const struct mtk_mmsys_match_data mt2701_mmsys_match_data = {
-                                            ^
->> drivers/gpu/drm/mediatek/mtk_drm_drv.c:218:42: warning: unused variable 'mt7623_mmsys_match_data' [-Wunused-const-variable]
-   static const struct mtk_mmsys_match_data mt7623_mmsys_match_data = {
-                                            ^
->> drivers/gpu/drm/mediatek/mtk_drm_drv.c:234:42: warning: unused variable 'mt2712_mmsys_match_data' [-Wunused-const-variable]
-   static const struct mtk_mmsys_match_data mt2712_mmsys_match_data = {
-                                            ^
->> drivers/gpu/drm/mediatek/mtk_drm_drv.c:246:42: warning: unused variable 'mt8167_mmsys_match_data' [-Wunused-const-variable]
-   static const struct mtk_mmsys_match_data mt8167_mmsys_match_data = {
-                                            ^
->> drivers/gpu/drm/mediatek/mtk_drm_drv.c:260:42: warning: unused variable 'mt8173_mmsys_match_data' [-Wunused-const-variable]
-   static const struct mtk_mmsys_match_data mt8173_mmsys_match_data = {
-                                            ^
->> drivers/gpu/drm/mediatek/mtk_drm_drv.c:274:42: warning: unused variable 'mt8183_mmsys_match_data' [-Wunused-const-variable]
-   static const struct mtk_mmsys_match_data mt8183_mmsys_match_data = {
-                                            ^
->> drivers/gpu/drm/mediatek/mtk_drm_drv.c:288:42: warning: unused variable 'mt8192_mmsys_match_data' [-Wunused-const-variable]
-   static const struct mtk_mmsys_match_data mt8192_mmsys_match_data = {
-                                            ^
->> drivers/gpu/drm/mediatek/mtk_drm_drv.c:305:42: warning: unused variable 'mt8195_mmsys_match_data' [-Wunused-const-variable]
-   static const struct mtk_mmsys_match_data mt8195_mmsys_match_data = {
-                                            ^
-   9 warnings generated.
-
-
-vim +/mt2701_mmsys_match_data +203 drivers/gpu/drm/mediatek/mtk_drm_drv.c
-
-   202	
- > 203	static const struct mtk_mmsys_match_data mt2701_mmsys_match_data = {
-   204		.num_drv_data = 1,
-   205		.drv_data = {
-   206			&mt2701_mmsys_driver_data,
-   207		},
-   208	};
-   209	
-   210	static const struct mtk_mmsys_driver_data mt7623_mmsys_driver_data = {
-   211		.main_path = mt7623_mtk_ddp_main,
-   212		.main_len = ARRAY_SIZE(mt7623_mtk_ddp_main),
-   213		.ext_path = mt7623_mtk_ddp_ext,
-   214		.ext_len = ARRAY_SIZE(mt7623_mtk_ddp_ext),
-   215		.shadow_register = true,
-   216	};
-   217	
- > 218	static const struct mtk_mmsys_match_data mt7623_mmsys_match_data = {
-   219		.num_drv_data = 1,
-   220		.drv_data = {
-   221			&mt7623_mmsys_driver_data,
-   222		},
-   223	};
-   224	
-   225	static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
-   226		.main_path = mt2712_mtk_ddp_main,
-   227		.main_len = ARRAY_SIZE(mt2712_mtk_ddp_main),
-   228		.ext_path = mt2712_mtk_ddp_ext,
-   229		.ext_len = ARRAY_SIZE(mt2712_mtk_ddp_ext),
-   230		.third_path = mt2712_mtk_ddp_third,
-   231		.third_len = ARRAY_SIZE(mt2712_mtk_ddp_third),
-   232	};
-   233	
- > 234	static const struct mtk_mmsys_match_data mt2712_mmsys_match_data = {
-   235		.num_drv_data = 1,
-   236		.drv_data = {
-   237			&mt2712_mmsys_driver_data,
-   238		},
-   239	};
-   240	
-   241	static const struct mtk_mmsys_driver_data mt8167_mmsys_driver_data = {
-   242		.main_path = mt8167_mtk_ddp_main,
-   243		.main_len = ARRAY_SIZE(mt8167_mtk_ddp_main),
-   244	};
-   245	
- > 246	static const struct mtk_mmsys_match_data mt8167_mmsys_match_data = {
-   247		.num_drv_data = 1,
-   248		.drv_data = {
-   249			&mt8167_mmsys_driver_data,
-   250		},
-   251	};
-   252	
-   253	static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
-   254		.main_path = mt8173_mtk_ddp_main,
-   255		.main_len = ARRAY_SIZE(mt8173_mtk_ddp_main),
-   256		.ext_path = mt8173_mtk_ddp_ext,
-   257		.ext_len = ARRAY_SIZE(mt8173_mtk_ddp_ext),
-   258	};
-   259	
- > 260	static const struct mtk_mmsys_match_data mt8173_mmsys_match_data = {
-   261		.num_drv_data = 1,
-   262		.drv_data = {
-   263			&mt8173_mmsys_driver_data,
-   264		},
-   265	};
-   266	
-   267	static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
-   268		.main_path = mt8183_mtk_ddp_main,
-   269		.main_len = ARRAY_SIZE(mt8183_mtk_ddp_main),
-   270		.ext_path = mt8183_mtk_ddp_ext,
-   271		.ext_len = ARRAY_SIZE(mt8183_mtk_ddp_ext),
-   272	};
-   273	
- > 274	static const struct mtk_mmsys_match_data mt8183_mmsys_match_data = {
-   275		.num_drv_data = 1,
-   276		.drv_data = {
-   277			&mt8183_mmsys_driver_data,
-   278		},
-   279	};
-   280	
-   281	static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
-   282		.main_path = mt8192_mtk_ddp_main,
-   283		.main_len = ARRAY_SIZE(mt8192_mtk_ddp_main),
-   284		.ext_path = mt8192_mtk_ddp_ext,
-   285		.ext_len = ARRAY_SIZE(mt8192_mtk_ddp_ext),
-   286	};
-   287	
- > 288	static const struct mtk_mmsys_match_data mt8192_mmsys_match_data = {
-   289		.num_drv_data = 1,
-   290		.drv_data = {
-   291			&mt8192_mmsys_driver_data,
-   292		},
-   293	};
-   294	
-   295	static const struct mtk_mmsys_driver_data mt8195_vdosys0_driver_data = {
-   296		.io_start = 0x1c01a000,
-   297		.main_path = mt8195_mtk_ddp_main,
-   298		.main_len = ARRAY_SIZE(mt8195_mtk_ddp_main),
-   299	};
-   300	
-   301	static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
-   302		.io_start = 0x1c100000,
-   303	};
-   304	
- > 305	static const struct mtk_mmsys_match_data mt8195_mmsys_match_data = {
-   306		.num_drv_data = 1,
-   307		.drv_data = {
-   308			&mt8195_vdosys0_driver_data,
-   309			&mt8195_vdosys1_driver_data,
-   310		},
-   311	};
-   312	
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gVGh1LCBBcHIgMTQsIDIwMjIgYXQgMTE6MzQ6MzFBTSArMDMwMCwgQXLEsW7DpyDDnE5BTCB3
+cm90ZToKPiBPbiAxMy8wNC8yMDIyIDE4OjI1LCBLcnp5c3p0b2YgS296bG93c2tpIHdyb3RlOgo+
+ID4gT24gMTMvMDQvMjAyMiAwODowNywgQXLEsW7DpyDDnE5BTCB3cm90ZToKPiA+ID4gQ2hhbmdl
+IGJpbmRpbmcgbmFtZSBmcm9tIHJhbGluayxydDI4ODAtcGlubXV4IHRvIHJhbGluayxydDI4ODAt
+cGluY3RybC4KPiA+ID4gVGhpcyBpcyB0aGUgYmluZGluZyBmb3IgdGhlIFJhbGluayBSVDI4ODAg
+cGluY3RybCBzdWJkcml2ZXIuCj4gPiAKPiA+IFdoYXQgSSBkb24ndCBzZWUgaGVyZSBpcyB3aHkg
+eW91IGFyZSBkb2luZyB0aGlzLiBwaW5tdXgvcGluY3RybCBoYXZlIHRoZQo+ID4gc2FtZSBtZWFu
+aW5nLCBJIGd1ZXNzPwo+IAo+IFdoYXQgSSB1bmRlcnN0YW5kIGlzIHBpbm11eCBpcyByYXRoZXIg
+YSBzcGVjaWZpYyB0ZXJtIGZvciB0aGUgbXV4aW5nIG9mIHBpbnMKPiBvciBwaW4gZ3JvdXBzLiBQ
+aW5jdHJsIGlzIHdoYXQgd2UgcHJlZmVyIGhlcmUgc2luY2UgdGhlIHRlcm0gaXMgbW9yZQo+IGlu
+Y2x1c2l2ZSBvZiB3aGF0IHRoZSBzdWJkcml2ZXIgZG9lczogY29udHJvbGxpbmcgcGlucy4gQW55
+IG1lZGlhdGVrCj4gZHJpdmVyL3N1YmRyaXZlciBpcyBjYWxsZWQgcGluY3RybCBzbyBJJ20gbm90
+IGRvaW5nIHNvbWV0aGluZyB1bmNvbW1vbi4KClRoZSBjb3JyZWN0IG5hbWUgaXMgcmVhbGx5IHdo
+YXRldmVyIHRoZSBoL3cgYmxvY2sgaXMgY2FsbGVkLCBub3QgCndoYXRldmVyIHdlJ3ZlIGNvbWUg
+dXAgd2l0aCBmb3Igc29tZSBjbGFzcyBvZiBkZXZpY2VzLgoKPiAKPiA+IAo+ID4gPiAKPiA+ID4g
+Q3VycmVudCBwaW4gZ3JvdXAgYW5kIGZ1bmN0aW9uIGJpbmRpbmdzIGFyZSBmb3IgTVQ3NjIxLiBQ
+dXQgYmluZGluZ3MgZm9yCj4gPiA+IFJUMjg4MCBpbnN0ZWFkLgo+ID4gPiAKPiA+ID4gU2lnbmVk
+LW9mZi1ieTogQXLEsW7DpyDDnE5BTCA8YXJpbmMudW5hbEBhcmluYzkuY29tPgo+ID4gPiAtLS0K
+PiA+ID4gICAuLi5waW5tdXgueWFtbCA9PiByYWxpbmsscnQyODgwLXBpbmN0cmwueWFtbH0gfCAy
+NCArKysrKysrKystLS0tLS0tLS0tCj4gPiA+ICAgMSBmaWxlIGNoYW5nZWQsIDEyIGluc2VydGlv
+bnMoKyksIDEyIGRlbGV0aW9ucygtKQo+ID4gPiAgIHJlbmFtZSBEb2N1bWVudGF0aW9uL2Rldmlj
+ZXRyZWUvYmluZGluZ3MvcGluY3RybC97cmFsaW5rLHJ0Mjg4MC1waW5tdXgueWFtbCA9PiByYWxp
+bmsscnQyODgwLXBpbmN0cmwueWFtbH0gKDU2JSkKPiA+ID4gCj4gPiA+IGRpZmYgLS1naXQgYS9E
+b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGluY3RybC9yYWxpbmsscnQyODgwLXBp
+bm11eC55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BpbmN0cmwvcmFs
+aW5rLHJ0Mjg4MC1waW5jdHJsLnlhbWwKPiA+ID4gc2ltaWxhcml0eSBpbmRleCA1NiUKPiA+ID4g
+cmVuYW1lIGZyb20gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BpbmN0cmwvcmFs
+aW5rLHJ0Mjg4MC1waW5tdXgueWFtbAo+ID4gPiByZW5hbWUgdG8gRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL3BpbmN0cmwvcmFsaW5rLHJ0Mjg4MC1waW5jdHJsLnlhbWwKPiA+ID4g
+aW5kZXggOWRlOGIwYzA3NWUyLi5jNjU3YmJmOWZkZGEgMTAwNjQ0Cj4gPiA+IC0tLSBhL0RvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9waW5jdHJsL3JhbGluayxydDI4ODAtcGlubXV4
+LnlhbWwKPiA+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BpbmN0
+cmwvcmFsaW5rLHJ0Mjg4MC1waW5jdHJsLnlhbWwKPiA+ID4gQEAgLTEsMjEgKzEsMjMgQEAKPiA+
+ID4gICAjIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wLW9ubHkgT1IgQlNELTItQ2xh
+dXNlCj4gPiA+ICAgJVlBTUwgMS4yCj4gPiA+ICAgLS0tCj4gPiA+IC0kaWQ6IGh0dHA6Ly9kZXZp
+Y2V0cmVlLm9yZy9zY2hlbWFzL3BpbmN0cmwvcmFsaW5rLHJ0Mjg4MC1waW5tdXgueWFtbCMKPiA+
+ID4gKyRpZDogaHR0cDovL2RldmljZXRyZWUub3JnL3NjaGVtYXMvcGluY3RybC9yYWxpbmsscnQy
+ODgwLXBpbmN0cmwueWFtbCMKPiA+ID4gICAkc2NoZW1hOiBodHRwOi8vZGV2aWNldHJlZS5vcmcv
+bWV0YS1zY2hlbWFzL2NvcmUueWFtbCMKPiA+ID4gLXRpdGxlOiBSYWxpbmsgcnQyODgwIHBpbm11
+eCBjb250cm9sbGVyCj4gPiA+ICt0aXRsZTogUmFsaW5rIFJUMjg4MCBQaW4gQ29udHJvbGxlcgo+
+ID4gPiAgIG1haW50YWluZXJzOgo+ID4gPiArICAtIEFyxLFuw6cgw5xOQUwgPGFyaW5jLnVuYWxA
+YXJpbmM5LmNvbT4KPiA+IAo+ID4gTWVudGlvbiB0aGlzIGluIGNvbW1pdCBtc2cuCj4gCj4gV2ls
+bCBkby4KPiAKPiA+IAo+ID4gPiAgICAgLSBTZXJnaW8gUGFyYWN1ZWxsb3MgPHNlcmdpby5wYXJh
+Y3VlbGxvc0BnbWFpbC5jb20+Cj4gPiA+ICAgZGVzY3JpcHRpb246Cj4gPiA+IC0gIFRoZSBydDI4
+ODAgcGlubXV4IGNhbiBvbmx5IHNldCB0aGUgbXV4aW5nIG9mIHBpbiBncm91cHMuIE11eGluZyBp
+bmRpdml1YWwgcGlucwo+ID4gPiArICBSYWxpbmsgUlQyODgwIHBpbiBjb250cm9sbGVyIGZvciBS
+VDI4ODAgU29DLgo+ID4gPiArICBUaGUgcGluIGNvbnRyb2xsZXIgY2FuIG9ubHkgc2V0IHRoZSBt
+dXhpbmcgb2YgcGluIGdyb3Vwcy4gTXV4aW5nIGluZGl2aXVhbCBwaW5zCj4gPiA+ICAgICBpcyBu
+b3Qgc3VwcG9ydGVkLiBUaGVyZSBpcyBubyBwaW5jb25mIHN1cHBvcnQuCj4gPiA+ICAgcHJvcGVy
+dGllczoKPiA+ID4gICAgIGNvbXBhdGlibGU6Cj4gPiA+IC0gICAgY29uc3Q6IHJhbGluayxydDI4
+ODAtcGlubXV4Cj4gPiA+ICsgICAgY29uc3Q6IHJhbGluayxydDI4ODAtcGluY3RybAo+ID4gCj4g
+PiB5b3UgbmVlZCB0byBkZXByZWNhdGUgb2xkIHByb3BlcnR5IGFuZCBhZGQgYSBuZXcgb25lLgo+
+IAo+IERvIHdlIHJlYWxseSBoYXZlIHRvPyBUaGF0IHByb3BlcnR5IG5hbWUgd2FzIGluYWNjdXJh
+dGUgZnJvbSB0aGUgc3RhcnQuIEkKPiBkb24ndCBzZWUgYSByZWFzb24gdG8ga2VlcCBpdCBiZWlu
+ZyByZWZlcnJlZCB0byBvbiB0aGUgYmluZGluZy4KCkl0J3MgYW4gQUJJLiBUaGVyZSBhcmUgZXhj
+ZXB0aW9ucywgYnV0IHlvdSd2ZSBnb3QgdG8gc3BlbGwgb3V0IHRoZSAKcmVhc29uaW5nIGluIHRo
+ZSBjb21taXQgbWVzc2FnZS4KClJlYWxseSwgd2hvIGNhcmVzLiBJdCdzIGp1c3QgYSB1bmlxdWUg
+aWRlbnRpZmllci4gVW5sZXNzIHlvdSBhbHNvIGhhZCBhIApoL3cgYmxvY2sgY2FsbGVkICdwaW5t
+dXgnIGluIGFkZGl0aW9uIHRvIGEgJ3BpbmN0cmwnIGJsb2NrIGl0IGRvZXNuJ3QgCm1hdHRlci4g
+V2UgY291bGQgdXNlIGp1c3QgR1VJRHMgaW5zdGVhZC4KClJvYgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0
+CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
