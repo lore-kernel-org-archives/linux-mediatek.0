@@ -4,74 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39029C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 07:13:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86FAEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 07:38:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mEnTNtDAmQfw5NS+PbVxM1hwpcGS9Ur0OA2unBiNNSU=; b=o2ulHp1HRoIJca
-	wvreQ+VUgpF5MOg+ZR0dzLlHPPTMAFUu7Il0At/JxLBMsxlJdmDZ4vKAXDHpLNDSJVezyu1hSJCYW
-	8a5hPMR9+AdMVSFUqWKpUuD9YfKEeBCbyAr992XkEQfDTHT5OLC10GUcDbj2ZU8g5OUuEtXB4Lwo8
-	MmKvBAhSEdagnhCZKR40uEX1w7NgJTwjS/gEGump4Vby+ha8I9ISHE2AyyEjwovpjeigSmf5CNx6Q
-	HuH3BFTq8m6gFgjFPPSqtk1aHzH7+TqlzQh7IRZjqbLf1U4vM4vhhol4gIw6pXXNFh5vZKk9tKNOF
-	+u2CzelVMG6+UxbbikxQ==;
+	List-Owner; bh=5vYBO+2ajTjnbyZdAYPEhs0wtXCKiYyKJXRVhpY2fTE=; b=JAkeh9Ju4C7eSC
+	xQ6rHEiyo478MNTPaKRUpUXmut+2kUv8uJk8pq1RW/P4D0ADQxJm+lzqwCm/6SXIz6Hh4Jv2CBFPc
+	Akay9/cZJLGf5sA+H8EUz6zupflaUsm3vTL9P0v3dCj0ug7GxKoxy1SDO91AVkLpZqWZwAMn7U8g5
+	qlkDTPC68WwFYiEq8VuReD5RxUtoi8Om2UvdJVymqzYbP/zMMcQUgNiuaka75gmU74Ri4PHfi6DcY
+	JVhM43CYTXuE1ccQTIP9hfn6oJ7U7Gn3BFQXwbNBYYQJvFWVKPpOpmhEue+btCIvMXevz8tELmBjj
+	v6PnVr5HougEBW0zP8vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1netfi-004Hsr-B3; Thu, 14 Apr 2022 07:13:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1neu3J-004NoK-5p; Thu, 14 Apr 2022 07:38:05 +0000
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1netfA-004HgG-CV; Thu, 14 Apr 2022 07:13:10 +0000
-X-UUID: bed249e5b2a749b5926166a15e6f025b-20220414
-X-UUID: bed249e5b2a749b5926166a15e6f025b-20220414
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <moudy.ho@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1141263140; Thu, 14 Apr 2022 00:13:03 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Apr 2022 00:11:21 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 14 Apr 2022 15:11:08 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 14 Apr 2022 15:11:08 +0800
-Message-ID: <7370b3451cde16b332f8ba3fcf7ff9f5e45d9b00.camel@mediatek.com>
-Subject: Re: [PATCH v14 6/6] soc: mediatek: mutex: add functions that
- operate registers by CMDQ
-From: moudy.ho <moudy.ho@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, Jernej Skrabec <jernej.skrabec@siol.net>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- Alexandre Courbot <acourbot@chromium.org>, <tfiga@chromium.org>,
- <drinkcat@chromium.org>, <pihsun@chromium.org>, <hsinyi@google.com>,
- "Benjamin Gaignard" <benjamin.gaignard@collabora.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
- <randy.wu@mediatek.com>, <jason-jh.lin@mediatek.com>,
- <roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
- <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 14 Apr 2022 15:11:08 +0800
-In-Reply-To: <858afddd-c008-8a6c-c3c1-e1883e710c5e@collabora.com>
-References: <20220411072403.24016-1-moudy.ho@mediatek.com>
- <20220411072403.24016-7-moudy.ho@mediatek.com>
- <858afddd-c008-8a6c-c3c1-e1883e710c5e@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1neu36-004Nky-Tv
+ for linux-mediatek@lists.infradead.org; Thu, 14 Apr 2022 07:37:54 +0000
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-2ef4a241cc5so39666397b3.2
+ for <linux-mediatek@lists.infradead.org>; Thu, 14 Apr 2022 00:37:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=2sEUdWYrr9ayBEuVJWBpv3UkoWU5IV5/Hq3UQC9Oqks=;
+ b=naA6NBKsG/T3OEnLS6yYkSg1tHF33i6JVoono0ACrn6usn2OHiD89Z4512zT+q5uYO
+ EfBWUetaEUbaQqO1vf55u8yAFl0zh1EKDUvnQK2y6xabfZpFANEg0RX7xxEBgiM7loYz
+ CBdJc1lnpUaPIRWKhzKRxaMWkt9XKDT9rxNHOweP5XXjMy6p2CaK8cJA3tFFuG9uE9Wb
+ zizY2pJ8bAJPcwylMUXjy53zsGBisz+BmC2rYeFwdmgNUhOE5w+EEt3dNj81uAVGcH0a
+ /0DNj8H4wNtaPt7lyr4b+k1+B7lzy+CIfTeKvXmJ/JMc5lZjbaZAjI5OXG+wJYsRs3o9
+ ubNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=2sEUdWYrr9ayBEuVJWBpv3UkoWU5IV5/Hq3UQC9Oqks=;
+ b=WTX81/q0E580Da5rF3eMdgSAzIfrJR5PX39jthU7W5hF4PfbqV8Lzo1/FrLAsVCxvX
+ hka0unUz0nMiV5V0udK3ZHug9tXy3ovKNaS7OSx4nZdcWK3+1iFXt7cfhxdrPh0tpvmC
+ VAB4wWPpsUv5GS5rMtoceITmrDS6zo/y/Dj3uhk5wuUvwortIqi38IMmABrasvZhvv0H
+ Hu8RltYRxfzS8B0AvjHB1231S32l2qJPDZiK+vW48m3r8UV2erGrgsQtU8+yxeHO6NeW
+ uMHRWLKoSQvc3+TZsbWlURWqSpmsSdV6EOcpTsTm/VuP+S96hfCIkIQ73q4grm4WLNL8
+ aVuQ==
+X-Gm-Message-State: AOAM531eUtrqesPtvVTmLyqMabLQbDbq3/rZ3ciBAZDGEF7T1LnuCG3g
+ gqLrOp5GDFjUlUdoPK1rXEHakQqqAZnFidJhX0jdDA==
+X-Google-Smtp-Source: ABdhPJyFMz2V/+P0cegLwco6lv2a7DNKoC8L3DEBpqC8kwi8ZXyMTVyJgIH1+lySoP+mMQHK7rKlEQsbjyOY/ITTS84=
+X-Received: by 2002:a81:db52:0:b0:2e6:b428:f541 with SMTP id
+ b18-20020a81db52000000b002e6b428f541mr1032097ywn.359.1649921870910; Thu, 14
+ Apr 2022 00:37:50 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220414015940.9537-1-kuyo.chang@mediatek.com>
+In-Reply-To: <20220414015940.9537-1-kuyo.chang@mediatek.com>
+From: Vincent Guittot <vincent.guittot@linaro.org>
+Date: Thu, 14 Apr 2022 09:37:39 +0200
+Message-ID: <CAKfTPtBn-9WWcA3=e0etbq_6cP5O6TXNqZ1B5=2SPe-yaC+PxQ@mail.gmail.com>
+Subject: Re: [PATCH 1/1] [PATCH v2]sched/pelt: Refine the enqueue_load_avg
+ calculate method
+To: Kuyo Chang <kuyo.chang@mediatek.com>
+Cc: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>, 
+ Juri Lelli <juri.lelli@redhat.com>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
+ Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>,
+ Mel Gorman <mgorman@suse.de>, 
+ Daniel Bristot de Oliveira <bristot@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, wsd_upstream@mediatek.com, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_001308_505581_9A408F7D 
-X-CRM114-Status: GOOD (  35.64  )
+X-CRM114-CacheID: sfid-20220414_003753_008922_81AEB9B0 
+X-CRM114-Status: GOOD (  23.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,138 +90,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-04-13 at 10:41 +0200, AngeloGioacchino Del Regno wrote:
-> Il 11/04/22 09:24, Moudy Ho ha scritto:
-> > Due to HW limitations, MDP3 is necessary to enable MUTEX in each
-> > frame
-> > for SOF triggering and cooperate with CMDQ control to reduce the
-> > amount
-> > of interrupts generated(also, reduce frame latency).
-> > 
-> > In response to the above situation, a new interface
-> > "mtk_mutex_enable_by_cmdq" has been added to achieve the purpose.
-> > 
-> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> > ---
-> >   drivers/soc/mediatek/mtk-mutex.c       | 42
-> > +++++++++++++++++++++++++-
-> >   include/linux/soc/mediatek/mtk-mutex.h |  2 ++
-> >   2 files changed, 43 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/soc/mediatek/mtk-mutex.c
-> > b/drivers/soc/mediatek/mtk-mutex.c
-> > index fc9ba2749946..1811beaf399d 100644
-> > --- a/drivers/soc/mediatek/mtk-mutex.c
-> > +++ b/drivers/soc/mediatek/mtk-mutex.c
-> > @@ -7,10 +7,12 @@
-> >   #include <linux/iopoll.h>
-> >   #include <linux/module.h>
-> >   #include <linux/of_device.h>
-> > +#include <linux/of_address.h>
-> >   #include <linux/platform_device.h>
-> >   #include <linux/regmap.h>
-> >   #include <linux/soc/mediatek/mtk-mmsys.h>
-> >   #include <linux/soc/mediatek/mtk-mutex.h>
-> > +#include <linux/soc/mediatek/mtk-cmdq.h>
-> >   
-> >   #define MT2701_MUTEX0_MOD0			0x2c
-> >   #define MT2701_MUTEX0_SOF0			0x30
-> > @@ -176,6 +178,9 @@ struct mtk_mutex_ctx {
-> >   	void __iomem			*regs;
-> >   	struct mtk_mutex		mutex[10];
-> >   	const struct mtk_mutex_data	*data;
-> > +	phys_addr_t			addr;
-> > +	struct cmdq_client_reg		cmdq_reg;
-> > +	bool				has_gce_client_reg;
-> >   };
-> >   
-> >   static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX]
-> > = {
-> > @@ -618,6 +623,28 @@ void mtk_mutex_enable(struct mtk_mutex *mutex)
-> >   }
-> >   EXPORT_SYMBOL_GPL(mtk_mutex_enable);
-> >   
-> > +void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex, void *pkt)
-> > +{
-> > +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-> > +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
-> > mtk_mutex_ctx,
-> > +						 mutex[mutex->id]);
-> > +	struct cmdq_pkt *cmdq_pkt = (struct cmdq_pkt *)pkt;
-> > +
-> > +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-> > +
-> > +	if (!mtx->has_gce_client_reg) {
-> > +		dev_dbg(mtx->dev, "mediatek,gce-client-reg hasn't been
-> > set in dts");
-> > +		return;
-> 
-> Is this really supposed to happen?
-> 
-> Reiterating: when the gce-client-reg is not set, this function should
-> either never
-> be called from the principle, or it should actually fail.
-> If a driver relies on mtk_mutex_enable_by_cmdq() and does *not* fall
-> back to
-> register write from cpu, then no change will occur at all, leading to
-> a random
-> breakage with no apparent reason.
-> 
-> This means that - for safety - this function should return -EINVAL
-> when it gets
-> called while no gce client reg is declared.
-> Of course, this would also mean that the dev_dbg() should be a
-> dev_err(), and
-> that efforts should be done to avoid triggering this error by adding
-> fallbacks
-> in the drivers that will call this.
-> 
-> Another option would be to keep this function void, keep the print a
-> dev_dbg(),
-> but automatically fallback to mtk_mutex_enable(), so that here:
-> 
-> if (!mtx->has_gce_client_reg) {
-> 	dev_dbg(mtx->dev,
-> 		"No GCE client register found: falling back to cpu
-> write.\n");
-> 	mtk_mutex_enable(mutex);
-> 	return;
-> }
-> 
-> ...you're free to choose whichever of the two options, but this has
-> to be fixed
-> to remove this fragility.
-> 
-> > +	}
-> > +
-> > +	cmdq_pkt_write(cmdq_pkt, mtx->cmdq_reg.subsys,
-> > +		       mtx->addr + DISP_REG_MUTEX_EN(mutex->id), 1);
-> > +#else
-> > +	dev_err(mtx->dev, "Not support for enable MUTEX by CMDQ");
-> 
-> ...obviously, if mtk_cmdq not reachable, instead of simply letting
-> drivers break,
-> you should, also here, fall back to the less performant and very
-> suboptimal (for
-> the specific case of mdp3 and some others) mtk_mutex_enable().
-> 
-> 
-> Thanks,
-> Angelo
+On Thu, 14 Apr 2022 at 03:59, Kuyo Chang <kuyo.chang@mediatek.com> wrote:
+>
+> From: kuyo chang <kuyo.chang@mediatek.com>
+>
+> I meet the warning message at cfs_rq_is_decayed at below code.
+>
+> SCHED_WARN_ON(cfs_rq->avg.load_avg ||
+>                     cfs_rq->avg.util_avg ||
+>                     cfs_rq->avg.runnable_avg)
+>
+> Following is the calltrace.
+>
+> Call trace:
+> __update_blocked_fair
+> update_blocked_averages
+> newidle_balance
+> pick_next_task_fair
+> __schedule
+> schedule
+> pipe_read
+> vfs_read
+> ksys_read
+>
+> After code analyzing and some debug messages, I found it exits a corner
+> case at attach_entity_load_avg which will cause load_sum is null but
+> load_avg is not.
+> Consider se_weight is 88761 according by sched_prio_to_weight table.
+> And assume the get_pelt_divider() is 47742, se->avg.load_avg is 1.
+> By the calculating for se->avg.load_sum as following will become zero
+> as following.
+> se->avg.load_sum =
+>         div_u64(se->avg.load_avg * se->avg.load_sum, se_weight(se));
+> se->avg.load_sum = 1*47742/88761 = 0.
+>
+> After enqueue_load_avg code as below.
+> cfs_rq->avg.load_avg += se->avg.load_avg;
+> cfs_rq->avg.load_sum += se_weight(se) * se->avg.load_sum;
+>
+> Then the load_sum for cfs_rq will be 1 while the load_sum for cfs_rq is 0.
+> So it will hit the warning message.
+>
+> In order to fix the corner case, make sure the se->load_avg|sum is correct
+> before enqueue_load_avg.
+>
+> After long time testing, the kernel warning was gone and the system runs
+> as well as before.
 
-Hi Angelo,
+This needs a fix tag:
+Fixes: f207934fb79d ("sched/fair: Align PELT windows between cfs_rq and its se")
 
-Thanks for your review.
-Considering that the CPU writing flow already exists, the new CMDQ
-method should be simplified to avoid confusion.
-I will use the second method to directly return the function and print
-an error message.
-Users (currently only MDP3 needs to use CMDQ because it is single-mode
-totally) should pay attention to this function.
+>
+> Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
 
-Thanks,
-Moudy
+Reviewed-by: Vincent Guittot <vincent.guittot@linaro.org>
 
+> ---
+>
+> v1->v2:
+>
+> (1)Thanks for suggestion from Peter Zijlstra & Vincent Guittot.
+> (2)By suggestion from Vincent Guittot,
+> rework the se->load_sum calculation method for fix the corner case,
+> make sure the se->load_avg|sum is correct before enqueue_load_avg.
+> (3)Rework changlog.
+>
+>  kernel/sched/fair.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+>
+> diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
+> index d4bd299d67ab..159274482c4e 100644
+> --- a/kernel/sched/fair.c
+> +++ b/kernel/sched/fair.c
+> @@ -3829,10 +3829,12 @@ static void attach_entity_load_avg(struct cfs_rq *cfs_rq, struct sched_entity *s
+>
+>         se->avg.runnable_sum = se->avg.runnable_avg * divider;
+>
+> -       se->avg.load_sum = divider;
+> -       if (se_weight(se)) {
+> +       se->avg.load_sum = se->avg.load_avg * divider;
+> +       if (se_weight(se) < se->avg.load_sum) {
+>                 se->avg.load_sum =
+> -                       div_u64(se->avg.load_avg * se->avg.load_sum, se_weight(se));
+> +                       div_u64(se->avg.load_sum, se_weight(se));
+> +       } else {
+> +               se->avg.load_sum = 1;
+>         }
+>
+>         enqueue_load_avg(cfs_rq, se);
+> --
+> 2.18.0
+>
 
 _______________________________________________
 Linux-mediatek mailing list
