@@ -4,63 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFC01C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 12:27:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 530D1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Apr 2022 12:52:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nFb3UwrZnv1JhxIpP+Ww7OUj0FElr311zyNAH8hzC3o=; b=Hhkiqqj4y3xd3l
-	wH79wUC9OgdUev1rZH163QPpJFDFxWN2y/PSgXwXlPmgzJWh7eQuGbLtPm4wTx1G/eD5e7pnX/Kyf
-	qnJOebVW59dfgtf23wzGiYXld6IJPKgOUpQkFe8m7IUT10JEL30t3WrBbOfoAVmj2B7dVMVRgzW0F
-	wWj1fVDKXtxp9WJVywfeRuAHblz35BYVAOmx8WSNUn8F8pyeTGcQ2Qoz1yaZ1jSf3DiAeE22y59Vn
-	ysLkGaVhcvcFDQ0pS9thXRFdlrthYTNPT/1kKDoYNAFTS/JdgC3SE7TZg2LkSENdLWDTCaMFQBTsb
-	nNvAGrpIEV5Bv2lybe8g==;
+	List-Owner; bh=WzNNg+XAlCKJX4YYEycwCmYx+7A1dh8Yz5fPPLyLPlw=; b=J2JEh8IrO4V8xV
+	ZwWllA7lGEHDn2UcmCNd/VdwJ2E/nITpMTxcySZFzLfaQ+iWmz+3Ixv+zrbKTPFqj/Wn5Y087zJqx
+	vwu0uW5o9L0sAUv6QKcfXL2vah4UXfd8Dw5T7qJilbhABtRg3aJALGyHpN9G9t1ay63KGJo6Q2hYI
+	LjUgdkq2C0v5qdQJMxgpzedDTpQGsgrRr5/fDQYwBsYlbG1IQ/7n86ID//6k3F0xzFJqBBtvIZOLv
+	LduL+Xi+NLOOj6TOLhCnN3cAg8rJgIJ12/YsCpPNC3JR+KqYoVbhLBLauKSy/ZSum1lAj987eUt5p
+	LZ/YrZKigPfTMy3dyZeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neyZh-005WxR-Ie; Thu, 14 Apr 2022 12:27:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neyZb-005WwG-M7; Thu, 14 Apr 2022 12:27:47 +0000
-X-UUID: aa5b57c272594de6845107ef51bd7e0e-20220414
-X-UUID: aa5b57c272594de6845107ef51bd7e0e-20220414
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1835029423; Thu, 14 Apr 2022 05:27:35 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Apr 2022 05:21:45 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 14 Apr 2022 20:21:43 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 14 Apr 2022 20:21:43 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Ohad Ben-Cohen <ohad@wizery.com>, Bjorn Andersson
- <bjorn.andersson@linaro.org>, Mathieu Poirier <mathieu.poirier@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
- <linux-remoteproc@vger.kernel.org>, Allen-KH Cheng
- <allen-kh.cheng@mediatek.com>
-Subject: [PATCH v2 2/2] remoteproc: mediatek: allow reading firmware-name from
- DT
-Date: Thu, 14 Apr 2022 20:21:40 +0800
-Message-ID: <20220414122140.6114-3-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220414122140.6114-1-allen-kh.cheng@mediatek.com>
-References: <20220414122140.6114-1-allen-kh.cheng@mediatek.com>
+	id 1neyxd-005evy-Rp; Thu, 14 Apr 2022 12:52:33 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1neysn-005cKt-DV; Thu, 14 Apr 2022 12:47:35 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0F6D3139F;
+ Thu, 14 Apr 2022 05:47:30 -0700 (PDT)
+Received: from [10.1.32.20] (e122027.cambridge.arm.com [10.1.32.20])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D2D2A3F70D;
+ Thu, 14 Apr 2022 05:47:27 -0700 (PDT)
+Message-ID: <b6509465-b7c7-0e66-071a-be85793cce58@arm.com>
+Date: Thu, 14 Apr 2022 13:47:25 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v6 1/2] dt-bindings: Add DT schema for Arm Mali Valhall GPU
+Content-Language: en-GB
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Nick Fan <Nick.Fan@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, alyssa.rosenzweig@collabora.com,
+ wenst@chromium.org, linux-arm-kernel@lists.infradead.org
+References: <20220414025023.11516-1-Nick.Fan@mediatek.com>
+ <ee2f0819-8c9e-4160-c4ae-fb4ad0da3f3b@collabora.com>
+From: Steven Price <steven.price@arm.com>
+In-Reply-To: <ee2f0819-8c9e-4160-c4ae-fb4ad0da3f3b@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_052743_750848_EFA287E9 
-X-CRM114-Status: GOOD (  13.98  )
+X-CRM114-CacheID: sfid-20220414_054733_558292_01055E33 
+X-CRM114-Status: GOOD (  17.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,42 +69,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The SCP firmware blob differs between platforms and SoCs. We add
-support in the SCP driver for reading the path of firmware file from
-DT in order to allow these files to live in a generic file system
-(or linux-firmware).
+On 14/04/2022 12:51, AngeloGioacchino Del Regno wrote:
+> Il 14/04/22 04:50, Nick Fan ha scritto:
+>> Add devicetree schema for Arm Mali Valhall GPU
+>>
+>> Define a compatible string for the Mali Valhall GPU
+>> for MediaTek's SoC platform.
+>>
+>> Signed-off-by: Nick Fan <Nick.Fan@mediatek.com>
+> 
+> Hello Nick,
+> Unfortunately, this binding is completely wrong.
 
-The firmware-name property is optional and the code falls back to the
-old filename if the property isn't present.
+I think that's unfair, although there is room for improvement.
 
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
----
- drivers/remoteproc/mtk_scp.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+> First of all, there's no arm,mali-valhall driver upstream - this will be
+> managed
+> by panfrost later, yes, but right now there's no support.
 
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index ee6c4009586e..82813d74e829 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -809,9 +809,14 @@ static int scp_probe(struct platform_device *pdev)
- 	struct mtk_scp *scp;
- 	struct rproc *rproc;
- 	struct resource *res;
--	char *fw_name = "scp.img";
-+	const char *fw_name = "scp.img";
- 	int ret, i;
- 
-+	ret = of_property_read_string(pdev->dev.of_node, "firmware-name",
-+				      &fw_name);
-+	if (ret < 0 && ret != -EINVAL)
-+		return ret;
-+
- 	rproc = devm_rproc_alloc(dev, np->name, &scp_ops, fw_name, sizeof(*scp));
- 	if (!rproc)
- 		return dev_err_probe(dev, -ENOMEM, "unable to allocate remoteproc\n");
--- 
-2.18.0
+We need a binding agreed upon before support can be added.
 
+> Then, you're also setting opp-microvolt in a way that will never (or, at
+> least,
+> not anytime soon) be supported by the upstream driver, as it manages
+> only one
+> supply for devfreq scaling.
+
+The mt8183 binding (already in tree) is very similar. The binding also
+should be describing the hardware not what the driver supports. There
+are indeed limitations in Panfrost for supporting multiple supplies, but
+that's something that needs improving in the driver not a reason to
+block a (presumably correct) description of the hardware. I can't
+comments on whether the specifics of the mt8192 are correct.
+
+> Besides, please don't push bindings that have no upstream driver,
+> especially if
+> these are for downstream drivers requiring proprietary components, while a
+> completely open source implementation is in the works.
+
+More constructively, Alyssa has already posted a patch (as part of the
+series adding driver support) which would extend the existing Bifrost
+bindings to (pre-CSF) Valhall:
+
+https://lore.kernel.org/dri-devel/20220211202728.6146-2-alyssa.rosenzweig@collabora.com/
+
+I'm not sure I see the point of having a separate binding document for
+Valhall considering the (pre-CSF) hardware is the same from the kernel
+perspective.
+
+Thanks,
+
+Steve
 
 _______________________________________________
 Linux-mediatek mailing list
