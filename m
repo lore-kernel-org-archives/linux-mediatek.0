@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86624C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 08:50:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E2A0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 10:19:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KZST/Taxxo0s+Wb2hemQ7aExcHtIb8wEIoaO/x/WG+w=; b=j1A0zFAZSGNWdv
-	+6NgpODmyMKaUrBvz7z2PGc2vEETv02QOonbYqbhsSejx9LD75GQr0N3YM52zpeseNdywQfpiZLhC
-	lTXik9KYRp3ph4OP6piQawcIpsJGh2hYg1c/H8HYFnoQoDIaGlmSgPURuuNyBoFjX4FBSg5NhOGv7
-	CAg7quVkqfxqkAdYsvIWZaxOE28bSY0T+hu5ixi3sqcr/gBRWQcl2HdGcOgoXf8ydpU9RPhBX1yHT
-	XIVGiRhjOuqVECEzAqx9C9rd2hmVPW9aqwds+ykOp5AFVfGf0oZGYMj9KQhG/PRk8OEOuDJLvZ9o5
-	u45lF/YomjxI++lpiAEw==;
+	List-Owner; bh=B39b7bBk7I4TYM2oC/OaTp/T77Czsr3En1nCiAmaALc=; b=c/d4dQ3zWvrbtO
+	AdnruS5dnVKRVy+8tsZ8vMe+vClgXTpAufF+HUKEp8FlOsD4TkiKZhQHCyepjJ699FDO4kSdpTIns
+	B07enj503Ab1HMzbaYcwKvQ0EjueIUhzM4batmBYEvAvWHZyD9oeBlkS6Dz4ZVTjuzyKzKvhZtsxo
+	q14eapaJdBqYrwH2vcPpgbrRWpT2WJITyUz6/Ej+oHgxWVbmW94W/crUVRSLlrTfKFQhMkU6lrnQQ
+	QDvnPDBi/IwjdYJTBMg8VmWU9psEqoHkaG1BoGBilhK0lCQt2xJRR2YR5K++VHqEhP1nUUTIBclA5
+	qy+2k0DqHN5d0XQgiCBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nfHef-009P48-0g; Fri, 15 Apr 2022 08:50:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nfJ2j-009b6b-PD; Fri, 15 Apr 2022 10:19:09 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nfHdx-009OpV-H5; Fri, 15 Apr 2022 08:49:31 +0000
-X-UUID: 74b2735117534efcaada70e4b3ec03be-20220415
-X-UUID: 74b2735117534efcaada70e4b3ec03be-20220415
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jason-jh.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 974544683; Fri, 15 Apr 2022 01:49:23 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 15 Apr 2022 01:39:21 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 15 Apr 2022 16:39:14 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 15 Apr 2022 16:39:14 +0800
-From: jason-jh.lin <jason-jh.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Chun-Kuang
- Hu" <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>
-CC: CK Hu <ck.hu@mediatek.com>, "jason-jh . lin" <jason-jh.lin@mediatek.com>, 
- Nancy Lin <nancy.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v19 09/10] drm/mediatek: add postfix 0 to DDP_COMPONENT_DITHER
- for mt8195 vdosys0
-Date: Fri, 15 Apr 2022 16:39:10 +0800
-Message-ID: <20220415083911.5186-10-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220415083911.5186-1-jason-jh.lin@mediatek.com>
-References: <20220415083911.5186-1-jason-jh.lin@mediatek.com>
+ id 1nfJ2R-009awc-OR; Fri, 15 Apr 2022 10:18:53 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 1DA451F42643
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1650017926;
+ bh=3nskTfZWuZt2VYfDTgr6VDBD1IupgXRqxVExf8eBPqo=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=oWz+8ZzASpEwN75z0H5uTPpshi0t04pw3CFLlWv3acCqEWSpUSoH7nX85QJ4TqtRM
+ PzcmmKGeHS61PhbSXOASlYe5hww5Bi5We9/cBVcKomj3w3u4KTGLt1RMZoNG63lxKl
+ +e1hY8vl9k11L0lCKQ2HyfQ3lufxPGQvnL/lCGTIwq41qjxZM7uwbObthIF3gr7Sab
+ mlQmyaiGM4dPvttuniDtFW0QSGSTiECAiRMGA0qVbJd+8mqF/J/Ys3SK5dMt6LpUd1
+ TOsvvEWwjJcYF2ni97/d/01YrjCZSKa/NXLEL4uqZodTqNHBJnWwjS8yX2/EXKKKML
+ SuX82+wPvJBEA==
+Message-ID: <3a905d21-26a7-654f-4ab7-7ad1fa1376c6@collabora.com>
+Date: Fri, 15 Apr 2022 12:18:43 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v19 03/10] soc: mediatek: add mtk-mmsys support for mt8195
+ vdosys0
+Content-Language: en-US
+To: "jason-jh.lin" <jason-jh.lin@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: CK Hu <ck.hu@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220415083911.5186-1-jason-jh.lin@mediatek.com>
+ <20220415083911.5186-4-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220415083911.5186-4-jason-jh.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220415_014929_614292_26806BC3 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20220415_031851_954443_56017A42 
+X-CRM114-Status: GOOD (  17.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,79 +71,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Because mt8195 vdosys0 has 2 DITHER components,
-so the postfix 0 need to be added to DDP_COMPONENT_DITHER.
+Il 15/04/22 10:39, jason-jh.lin ha scritto:
+> 1. Add mt8195 mmsys compatible for 2 vdosys.
+> 2. Add io_start into each driver data of mt8195 vdosys.
+> 3. Add get match data function to identify mmsys by io_start.
+> 4. Add mt8195 routing table settings of vdosys0.
+> 
+> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
 
-Then DITHER enum will become:
-DDP_COMPONENT_DITHER0 and DDP_COMPONENT_DITHER1.
+Unless anyone wants this commit to be split in two, one for the match data
+and one for the mt8195 addition, it looks almost good to me, apart one small
+change that has to be done, check below:
 
-Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 2 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 8 ++++----
- 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index f683e768d61b..95722de4986b 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -420,7 +420,7 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_CCORR]		= { MTK_DISP_CCORR,	0, &ddp_ccorr },
- 	[DDP_COMPONENT_COLOR0]		= { MTK_DISP_COLOR,	0, &ddp_color },
- 	[DDP_COMPONENT_COLOR1]		= { MTK_DISP_COLOR,	1, &ddp_color },
--	[DDP_COMPONENT_DITHER]		= { MTK_DISP_DITHER,	0, &ddp_dither },
-+	[DDP_COMPONENT_DITHER0]		= { MTK_DISP_DITHER,	0, &ddp_dither },
- 	[DDP_COMPONENT_DPI0]		= { MTK_DPI,		0, &ddp_dpi },
- 	[DDP_COMPONENT_DPI1]		= { MTK_DPI,		1, &ddp_dpi },
- 	[DDP_COMPONENT_DSC0]		= { MTK_DISP_DSC,	0, &ddp_dsc },
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index a3d01940d4c6..f7c4fa10a235 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -118,7 +118,7 @@ static enum mtk_ddp_comp_id mt8167_mtk_ddp_main[] = {
- 	DDP_COMPONENT_CCORR,
- 	DDP_COMPONENT_AAL0,
- 	DDP_COMPONENT_GAMMA,
--	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_DITHER0,
- 	DDP_COMPONENT_RDMA0,
- 	DDP_COMPONENT_DSI0,
- };
-@@ -150,7 +150,7 @@ static const enum mtk_ddp_comp_id mt8183_mtk_ddp_main[] = {
- 	DDP_COMPONENT_CCORR,
- 	DDP_COMPONENT_AAL0,
- 	DDP_COMPONENT_GAMMA,
--	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_DITHER0,
- 	DDP_COMPONENT_DSI0,
- };
- 
-@@ -169,7 +169,7 @@ static const enum mtk_ddp_comp_id mt8192_mtk_ddp_main[] = {
- 	DDP_COMPONENT_AAL0,
- 	DDP_COMPONENT_GAMMA,
- 	DDP_COMPONENT_POSTMASK0,
--	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_DITHER0,
- 	DDP_COMPONENT_DSI0,
- };
- 
-@@ -186,7 +186,7 @@ static const enum mtk_ddp_comp_id mt8195_mtk_ddp_main[] = {
- 	DDP_COMPONENT_CCORR,
- 	DDP_COMPONENT_AAL0,
- 	DDP_COMPONENT_GAMMA,
--	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_DITHER0,
- 	DDP_COMPONENT_DSC0,
- 	DDP_COMPONENT_MERGE0,
- 	DDP_COMPONENT_DP_INTF0,
--- 
-2.18.0
+> --- >   drivers/soc/mediatek/mt8195-mmsys.h    | 370 +++++++++++++++++++++++++
+>   drivers/soc/mediatek/mtk-mmsys.c       | 152 +++++++++-
+>   drivers/soc/mediatek/mtk-mmsys.h       |   6 +
+>   include/linux/soc/mediatek/mtk-mmsys.h |  11 +
+>   4 files changed, 528 insertions(+), 11 deletions(-)
+>   create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+> 
 
+..snip..
+
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
+> index 77f37f8c715b..21cf300ba864 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.h
+> +++ b/drivers/soc/mediatek/mtk-mmsys.h
+> @@ -87,12 +87,18 @@ struct mtk_mmsys_routes {
+>   };
+>   
+>   struct mtk_mmsys_driver_data {
+> +	const u32 io_start;
+
+I agree with you that this iostart is in 32bits boundaries, and that this will
+practically never change... and I was in doubt whether this would be acceptable
+or not, because of saving some memory.
+
+Even though I would really love to have the savings, in order to avoid having any
+"surprises" in the future (any future breakage for "reasons"), we shall comply
+with the kernel types, so, this has to be...
+
+	const resource_size_t io_start;
+
+...and this is the same for both this file and mtk_drm_drv.h, which you modify in
+patch 07/10.
+
+After fixing that:
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+
+Cheers,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
