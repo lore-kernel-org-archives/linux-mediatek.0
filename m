@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15151C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 02:28:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A15C1C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 02:30:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DlSerauLBPO5cCwPW7W5xehK2u7+gNpPih4O3vdr/04=; b=PjccumtSyTAiso
-	3Q2wC4z26vVUEg4YoGJH5k0rn4OygcVm5aslhMnmS2omiuRNVhlGiwNTTuSmLXHdCHbi6SwCx7GTN
-	dAl0s9T9kPucGyqGTzLOU2UMr/3pVWr9EkoxakyuI0ig1gchZtd2MGc5QrFcBagq7VuI/R14NA1YK
-	5/phTFliM8Jq7JLRW1CIYCxXoONuMueroDJXAdQXGVI+HyXHT96uRYSHMADub01Kqda2tE+CHz3Jc
-	jKB5gR10QIT4An5OIzKeuEN6yr/pM4r5UcxQqw/UWRHYiZNsFlk8LQAo9UTAH9T9r7SVLw/UcQeYC
-	R0cDDZU9V3TnnB2l0shA==;
+	List-Owner; bh=QUWyIngLdCuhjuNjynaXLKMzNmqo6wNmnvWykJXaX+8=; b=dySci4XnapACNM
+	LV1vcrXH7dBvGW/cq62pnBjF+qoEmw+QTpqyP2t1di9okHF9Ux1y8De8A+gMlCPF6jtnA8NVdbmeC
+	cfxFj3B1JhfI5+Ot09cUloe5SAgrnt+QURZqPiLd0l6Ua+nPLdb7kzidfylruJaEYVabQJ+PIMfOS
+	Zbm797DmgLqtEoKOti8yWQnsuiI9AMALo1Q+3qeUuNHTbm1k9Vsxwwm8tvtFLEs4BYHQPEi2WAxYl
+	3tAJHm4XPcCFJ6d/zU5Jj58BPLGBT6fqdupljef9FFhyo/fTF5MO0F6Km/YZehxig1k3zPGsWmzvJ
+	yZWpV+uIDCE7cNKC4Q4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nfBgz-0087Oy-6B; Fri, 15 Apr 2022 02:28:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nfBjE-0087wl-75; Fri, 15 Apr 2022 02:30:32 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nfBgj-0087KS-Gd; Fri, 15 Apr 2022 02:27:59 +0000
-X-UUID: f8c91bbd9ff54540a6783bd5e9b3e085-20220414
+ id 1nfBjA-0087vm-O8; Fri, 15 Apr 2022 02:30:30 +0000
+X-UUID: 7e24ef0662ad4502a0bfec10c6bdfe1c-20220414
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=vf2H6VZ182YiINjGCXVF6weW8Fyk0UPWYeqCXKGSJwc=; 
- b=pFU69XQ3XAX0K4VWFOJFRvERLOof38UQDrBM6lLpOIV0SyIhp4gAuabLcrKHKSZ+ekkDdui92j8MU7IqRryqHSutAcD0ehFxOIczIgzQsh1EMIuzs+gvRuhXzLkswCj9V6UYgkTcsKwsAqzWXC5QwanwSF8YUJvdV66KLWbMzII=;
-X-UUID: f8c91bbd9ff54540a6783bd5e9b3e085-20220414
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=P1R87J0gDSOcY1wKiD3i3dDjSfpfLvXmKQ/L8tvV76w=; 
+ b=buf8m7S8ptX9K4HMVbH8skD6w4hUGgwUGlMqC5z9zQhTUmIAuqTLmbRc8bgz5wUShlxW8n0JSZmDSvwMjrYGe3yDdrrOwbMfafUoMR8ljXSCNqBfD42AyNH4uGeo0ZQSPndHDGmmst9aIf4yddjd+89KeRt6RRIvuoSrD0mp5YM=;
+X-UUID: 7e24ef0662ad4502a0bfec10c6bdfe1c-20220414
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <xinlei.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1236431534; Thu, 14 Apr 2022 19:27:52 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 1386780856; Thu, 14 Apr 2022 19:30:24 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Apr 2022 19:22:50 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 15 Apr 2022 10:22:48 +0800
-Received: from mszsdhlt06 (10.16.6.206) by mtkcas10.mediatek.inc
+ 15.0.1497.2; Thu, 14 Apr 2022 19:30:23 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 15 Apr 2022 10:30:21 +0800
+Received: from mszsdhlt06 (10.16.6.206) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 15 Apr 2022 10:22:48 +0800
-Message-ID: <8ad4a21dd1fa039478d5fcacdcc6e3f8e6af787c.camel@mediatek.com>
-Subject: Re: [PATCH v4, 1/4] drm/mediatek: Adjust the timing of mipi signal
- from LP00 to LP11
+ Transport; Fri, 15 Apr 2022 10:30:21 +0800
+Message-ID: <be9807025772b68416c38800616d52d8bd06d746.camel@mediatek.com>
+Subject: Re: [PATCH v4, 2/4] drm/mediatek: Separate poweron/poweroff from
+ enable/disable and define new funcs
 From: xinlei.lee <xinlei.lee@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>, <chunkuang.hu@kernel.org>,
  <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
@@ -55,17 +56,17 @@ CC: <jitao.shi@mediatek.com>, <linux-kernel@vger.kernel.org>,
  <dri-devel@lists.freedesktop.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
-Date: Fri, 15 Apr 2022 10:23:20 +0800
-In-Reply-To: <12c7587db24f0f72e8f7d30c294c7b3eac241a83.camel@mediatek.com>
+Date: Fri, 15 Apr 2022 10:30:53 +0800
+In-Reply-To: <b1edb995f5dba2f8e313192a79cfc0972b7c832f.camel@mediatek.com>
 References: <1649644308-8455-1-git-send-email-xinlei.lee@mediatek.com>
- <1649644308-8455-2-git-send-email-xinlei.lee@mediatek.com>
- <12c7587db24f0f72e8f7d30c294c7b3eac241a83.camel@mediatek.com>
+ <1649644308-8455-3-git-send-email-xinlei.lee@mediatek.com>
+ <b1edb995f5dba2f8e313192a79cfc0972b7c832f.camel@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_192757_753044_00166A79 
-X-CRM114-Status: GOOD (  20.61  )
+X-CRM114-CacheID: sfid-20220414_193028_825550_67CD6905 
+X-CRM114-Status: GOOD (  26.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,28 +83,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-04-13 at 09:59 +0800, CK Hu wrote:
+On Wed, 2022-04-13 at 15:31 +0800, CK Hu wrote:
 > Hi, Xinlei:
 > 
 > On Mon, 2022-04-11 at 10:31 +0800, xinlei.lee@mediatek.com wrote:
 > > From: Jitao Shi <jitao.shi@mediatek.com>
 > > 
-> > Old sequence:
-> > 1. Pull the MIPI signal high
-> > 2. Delay & Dsi_reset
-> > 3. Set the dsi timing register
-> > 4. dsi clk & lanes leave ulp mode and enter hs mode
-> > 
-> > The sequence after patching is:
-> > 1. Set the dsi timing register
-> > 2. Pull the MIPI signal high
-> > 3. Delay & Dsi_reset
-> > 4. dsi clk & lanes leave ulp mode and enter hs mode
-> 
-> You just describe WHAT this patch do, but WHY this patch do? Does
-> this
-> patch reorder sequence to follow any spec?
-> 
+> > In order to match the changes of "Use the drm_panel_bridge API",
+> > the poweron/poweroff of dsi is extracted from enable/disable and
+> > defined as new funcs (pre_enable/post_disable).
 > > 
 > > Fixes: 2dd8075d2185 ("drm/mediatek: mtk_dsi: Use the
 > > drm_panel_bridge
@@ -112,53 +100,137 @@ On Wed, 2022-04-13 at 09:59 +0800, CK Hu wrote:
 > > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 > > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
 > > ---
-> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 6 +++---
-> >  1 file changed, 3 insertions(+), 3 deletions(-)
+> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 51 +++++++++++++++++++-------
+> > --
+> > --
+> >  1 file changed, 32 insertions(+), 19 deletions(-)
 > > 
 > > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
 > > b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > index ccb0511b9cd5..262c027d8c2f 100644
+> > index 262c027d8c2f..cf76c53a1af6 100644
 > > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
 > > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > @@ -649,14 +649,14 @@ static int mtk_dsi_poweron(struct mtk_dsi
+> > @@ -679,16 +679,6 @@ static void mtk_dsi_poweroff(struct mtk_dsi
 > > *dsi)
+> >  	if (--dsi->refcount != 0)
+> >  		return;
+> >  
+> > -	/*
+> > -	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
+> > -	 * mtk_dsi_stop() should be called after
+> > mtk_drm_crtc_atomic_disable(),
+> > -	 * which needs irq for vblank, and mtk_dsi_stop() will disable
+> > irq.
+> > -	 * mtk_dsi_start() needs to be called in
+> > mtk_output_dsi_enable(),
+> > -	 * after dsi is fully set.
+> > -	 */
+> > -	mtk_dsi_stop(dsi);
+> > -
+> > -	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
 > >  	mtk_dsi_reset_engine(dsi);
-> >  	mtk_dsi_phy_timconfig(dsi);
+> >  	mtk_dsi_lane0_ulp_mode_enter(dsi);
+> >  	mtk_dsi_clk_ulp_mode_enter(dsi);
+> > @@ -703,17 +693,9 @@ static void mtk_dsi_poweroff(struct mtk_dsi
+> > *dsi)
 > >  
-> > -	mtk_dsi_rxtx_control(dsi);
-> > -	usleep_range(30, 100);
-> > -	mtk_dsi_reset_dphy(dsi);
-> >  	mtk_dsi_ps_control_vact(dsi);
-> >  	mtk_dsi_set_vm_cmd(dsi);
-> >  	mtk_dsi_config_vdo_timing(dsi);
-> >  	mtk_dsi_set_interrupt_enable(dsi);
+> >  static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
+> >  {
+> > -	int ret;
+> > -
+> >  	if (dsi->enabled)
+> >  		return;
 > >  
-> > +	mtk_dsi_rxtx_control(dsi);
-> > +	usleep_range(30, 100);
-> > +	mtk_dsi_reset_dphy(dsi);
+> > -	ret = mtk_dsi_poweron(dsi);
+> > -	if (ret < 0) {
+> > -		DRM_ERROR("failed to power on dsi\n");
+> > -		return;
+> > -	}
+> > -
+> >  	mtk_dsi_set_mode(dsi);
+> >  	mtk_dsi_clk_hs_mode(dsi, 1);
+> >  
+> > @@ -727,7 +709,16 @@ static void mtk_output_dsi_disable(struct
+> > mtk_dsi *dsi)
+> >  	if (!dsi->enabled)
+> >  		return;
+> >  
+> > -	mtk_dsi_poweroff(dsi);
+> > +	/*
+> > +	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
+> > +	 * mtk_dsi_stop() should be called after
+> > mtk_drm_crtc_atomic_disable(),
+> > +	 * which needs irq for vblank, and mtk_dsi_stop() will disable
+> > irq.
+> > +	 * mtk_dsi_start() needs to be called in
+> > mtk_output_dsi_enable(),
+> > +	 * after dsi is fully set.
+> > +	 */
+> > +	mtk_dsi_stop(dsi);
+> > +
+> > +	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
+> >  
+> >  	dsi->enabled = false;
+> >  }
+> > @@ -762,13 +753,35 @@ static void mtk_dsi_bridge_enable(struct
+> > drm_bridge *bridge)
+> >  {
+> >  	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
+> >  
+> > +	if (dsi->refcount == 0)
+> > +		return;
+> > +
+> >  	mtk_output_dsi_enable(dsi);
+> >  }
+> >  
+> > +static void mtk_dsi_bridge_pre_enable(struct drm_bridge *bridge)
+> > +{
+> > +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
+> > +	int ret;
+> > +
+> > +	ret = mtk_dsi_poweron(dsi);
+> > +	if (ret < 0)
+> > +		DRM_ERROR("failed to power on dsi\n");
+> > +}
+> > +
+> > +static void mtk_dsi_bridge_post_disable(struct drm_bridge *bridge)
+> > +{
+> > +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
+> > +
+> > +	mtk_dsi_poweroff(dsi);
+> > +}
+> > +
+> >  static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
+> >  	.attach = mtk_dsi_bridge_attach,
+> >  	.disable = mtk_dsi_bridge_disable,
+> >  	.enable = mtk_dsi_bridge_enable,
+> > +	.pre_enable = mtk_dsi_bridge_pre_enable,
 > 
-> The original sequence is done by patch [1] not the patch in the Fixes
-> tag. So modify the Fixes tag.
+> The flow looks good to me, but according to [1], pre_enable is
+> deprecated. Use atomic_pre_enable instead.
 > 
 > [1] 
 > 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/gpu/drm/mediatek/mtk_dsi.c?h=v5.18-rc2&id=75374fc2c152ef42c45c6bf716743d5f5bb6d24d
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/drm/drm_bridge.h?h=v5.18-rc2#n235
+> 
+> 
+> > +	.post_disable = mtk_dsi_bridge_post_disable,
+> 
+> Ditto.
 > 
 > Regards,
 > CK
 > 
-> >  	mtk_dsi_clk_ulp_mode_leave(dsi);
-> >  	mtk_dsi_lane0_ulp_mode_leave(dsi);
-> >  	mtk_dsi_clk_hs_mode(dsi, 0);
+> >  	.mode_set = mtk_dsi_bridge_mode_set,
+> >  };
+> >  
 > 
 > 
 
 Hi CK:
 
-Thanks for your review!
-This modification does not violate the spec. The main purpose is to
-move 2, 3, 4 of the new sequece to the lane_ready function.
-I will modify this Fixes tag in the next version.
+Thanks for your suggestion.
+I will revise it in the next version.
 
 Best Regards!
 xinlei
