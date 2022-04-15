@@ -4,60 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2DE5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 02:31:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D42A7C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 03:56:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G5K4BIuUoO1E+TYBV2WYXseV8JQX5UZpA6OPxTEzpw0=; b=Zrtg9xA9UiUDbS
-	/3+ShR7DAzMRFQLZa/GydK7WlceAJXsaO2Llb4HLsPusTj8NFR58eh/l86wCbMqFb+wiAnKHPaOYu
-	Xh22kLEzs+b25LcOH7FbLhO72RC+oVudVCLrpY5Da/Gw6YparNEsHjK/Ee8MY0btoXceXN2CBudkt
-	VuJ7JWlLg/6BcE4d672Mn7sLEWUNRNk7yge2EhXH4T3kBZMeQ3fsi0zuH6rT2aA/2FrhQSHwlh2pK
-	jZa8WDdeuCEUe9yigY92rH9POlJ0YmbeOzQ0uB/UwvZefnD9mRnifXpPHtCBf3CaESr95bWGyF1Me
-	XbKmU+9gCI5f6XYU4BlQ==;
+	List-Owner; bh=HpfKISV4vE6O03aFMTcBqHQOHJx5CclclzUfXMeOTho=; b=JhVT6Z7178cZNJ
+	rR8Mlxm73VJ/qYIFDIJnLw4/ax5n9vHBrVPQI7jbw80wr2hQAK9o1wsFUYeDS4Cld6iNnk/AL1Meg
+	zClBIK9P+Qa2mhXM4KKO6+i/eyQTDBYvkTwAO/AMox9mxLHYwY7sZveAFjtmYsr40K6f/TlRQ9yOU
+	+7P3lu7BjC5aPdu3KfZr7OKo2Gp0Qj6SCVgZA6aITTnxZAGVA2m3dIiaXkd8SXS0NbiaDR1xbSWfx
+	AEJ3PXUiqdCVpIuuBo/vIOIpCi7oRSdTUbb9HbALX432wYSoSAEcKxCq5Xh4HS9TjxWpe+jpWClWf
+	pKT17vb327l5ewYqIHXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nfBkS-0088QU-4g; Fri, 15 Apr 2022 02:31:48 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nfD4e-008Iii-DX; Fri, 15 Apr 2022 03:56:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nfBkO-0088PC-At; Fri, 15 Apr 2022 02:31:46 +0000
-X-UUID: fc0464ef7c464932980f5807066657c2-20220414
-X-UUID: fc0464ef7c464932980f5807066657c2-20220414
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
+ id 1nfD4b-008Igj-Gx; Fri, 15 Apr 2022 03:56:43 +0000
+X-UUID: 949fecfb80f24622b40628c5e528547e-20220414
+X-UUID: 949fecfb80f24622b40628c5e528547e-20220414
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <kuyo.chang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1735831355; Thu, 14 Apr 2022 19:31:34 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Apr 2022 19:31:32 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 15 Apr 2022 10:31:18 +0800
+ with ESMTP id 1169131056; Thu, 14 Apr 2022 20:56:31 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 14 Apr 2022 20:56:29 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 15 Apr 2022 11:56:28 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 15 Apr 2022 10:31:18 +0800
-Message-ID: <3fc36d6b803ff3e1bef601839aaca3f4f03e62ad.camel@mediatek.com>
-Subject: Re: [PATCH V2 13/15] cpufreq: mediatek: Link CCI device to CPU
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Kevin Hilman <khilman@baylibre.com>, <rafael@kernel.org>,
- <viresh.kumar@linaro.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>
-CC: <matthias.bgg@gmail.com>, <jia-wei.chang@mediatek.com>,
- <roger.lu@mediatek.com>, <hsinyi@google.com>, <linux-pm@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 15 Apr 2022 10:31:18 +0800
-In-Reply-To: <7hbkx3fiac.fsf@baylibre.com>
-References: <7hbkx3fiac.fsf@baylibre.com>
+ Transport; Fri, 15 Apr 2022 11:56:27 +0800
+Message-ID: <231503cb93caabb5fc0e1027423e971560493075.camel@mediatek.com>
+Subject: Re: [PATCH 1/1] [PATCH v3]sched/pelt: Fix the
+ attach_entity_load_avg calculate method
+From: Kuyo Chang <kuyo.chang@mediatek.com>
+To: Peter Zijlstra <peterz@infradead.org>
+CC: Ingo Molnar <mingo@redhat.com>, Juri Lelli <juri.lelli@redhat.com>,
+ Vincent Guittot <vincent.guittot@linaro.org>, Dietmar Eggemann
+ <dietmar.eggemann@arm.com>, Steven Rostedt <rostedt@goodmis.org>, "Ben
+ Segall" <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, "Daniel Bristot
+ de Oliveira" <bristot@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ <wsd_upstream@mediatek.com>, Ingo Molnar <mingo@kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Date: Fri, 15 Apr 2022 11:56:27 +0800
+In-Reply-To: <YlgzTS+laNNvMukT@hirez.programming.kicks-ass.net>
+References: <20220414090229.342-1-kuyo.chang@mediatek.com>
+ <YlgzTS+laNNvMukT@hirez.programming.kicks-ass.net>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_193144_398401_7FD676D6 
-X-CRM114-Status: GOOD (  49.64  )
+X-CRM114-CacheID: sfid-20220414_205641_593449_A176C340 
+X-CRM114-Status: GOOD (  21.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,208 +79,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-04-14 at 14:48 -0700, Kevin Hilman wrote:
-> Rex-BC Chen <rex-bc.chen@mediatek.com> writes:
+On Thu, 2022-04-14 at 16:44 +0200, Peter Zijlstra wrote:
+> I've taken the liberty of carrying over the tags from v2 and reworked
+> the Changelog a little.
+
+Thank you for all your assistance.
+
+> ---
+> Subject: sched/pelt: Fix attach_entity_load_avg() corner case
+> From: kuyo chang <kuyo.chang@mediatek.com>
+> Date: Thu, 14 Apr 2022 17:02:20 +0800
 > 
-> > On Wed, 2022-04-13 at 14:41 -0700, Kevin Hilman wrote:
-> > > Rex-BC Chen <rex-bc.chen@mediatek.com> writes:
-> > > 
-> > > [...]
-> > > 
-> > > > From the Chanwoo's devfreq passive govonor series, it's
-> > > > impossible
-> > > > to
-> > > > let cci devreq probed done before cpufreq because the passive
-> > > > govonor
-> > > > will search for cpufreq node and use it.
-> > > > 
-> > > > Ref: function: cpufreq_passive_register_notifier()
-> > > > 
-> > > > 
-> > 
-> > 
-https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/commit/?h=devfreq-testing&id=b670978ddc43eb0c60735c3af6e4a370603ab673__;!!CTRNKA9wMg0ARbw!z58Lc1p9REo88oHn-NkxroN_fBd0TsHYmhscNZwnWwT71ecRkTeqZ6vFl5l7HpkTdM6t$
-> > > >  
-> > > 
-> > > Well this is a problem, because CCI depends on CPUfreq, but
-> > > CPUfreq
-> > > depends on CCI, so one of them has to load and then wait for the
-> > > other.
-> > > 
-> > > > After I discuss with Angelo and Jia-wei, we think we are
-> > > > keeping
-> > > > the
-> > > > function in target_index and if the cci is not ready we will
-> > > > use
-> > > > the
-> > > > voltage which is set by bootloader to prevent high freqeuncy
-> > > > low
-> > > > voltage crash. And then we can keep seting the target
-> > > > frequency.
-> > > > 
-> > > 
-> > >  > We assume the setting of bootloader is correct and we can do
-> > > this.
-> > > 
-> > > I'm still not crazy about this because you're lying to the
-> > > CPUfreq
-> > > framework.  It's requesting one OPP, but you're not setting that,
-> > > you're
-> > > just keeping the bootloader frequency.
-> > > 
-> > > In my earlier reply, I gave two other options for handling this.
-> > > 
-> > > 1) set a (temporary) constraint on the voltage regulator so that
-> > > it
-> > > cannot change.
-> > > 
-> > > or more clean, IMO:
-> > > 
-> > > 2) set a CPUfreq policy that restricts available OPPs to ones
-> > > that
-> > > will
-> > > not break CCI.
-> > > 
-> > > Either of these solutions allow you to load the CPUfreq driver
-> > > early,
-> > > and then wait for the CCI driver to be ready before removing the
-> > > restrictions.
-> > 
-> > Hello Kevin,
-> > 
-> > I think I do not describe this clearly.
-> > The proposal is:
-> > 
-> > In cpufreq probe:
-> > we record the voltage value which is set by bootloader.
-> > 
-> > In mtk_cpufreq_set_target():
-> > We do NOT directly return 0.
-> > Instead, we will find the voltage of target cpufreq and use the
-> > value
-> > max(booting voltage, target cpufreq voltage)
-> > 
-> > mtk_cpufreq_set_target() {
-> > 	/* NOT return 0 if !is_ccifreq_ready */
-> > 	....
-> > 	vproc = get voltage of target cpufreq from opp.
-> > 
-> > 	if (ccifreq_supported && !is_ccifreq_ready)
-> > 		vproc = max(vproc, vproc_on_boot)
-> > 
-> > 	//setting voltage and target frequency
-> > 	....
-> > }
+> From: kuyo chang <kuyo.chang@mediatek.com>
 > 
-> You explained this well, but it's still not an appropriate solution
-> IMO,
-> because you're still not setting the target that is requested by the
-> CPUfreq core.
+> The warning in cfs_rq_is_decayed() triggered:
 > 
-> The job of ->set_target() is to set the frequency *requested by
-> CPUfreq
-> core*.  If you cannot do that, you should return failure.  What you
-> posted
-> in the original patch and what you're proposing here is to ignore the
-> frequency passed to ->set_target() and do something else.  In the
-> orignal patch, you propose do to nothing.  Now, you're ignoring the 
-> target passed in and setting something else.  In both cases, the
-> CPUfreq
-> core things you have successfuly set the frequency requested, but you
-> have not.  This means there's a mismatch between what the CPUfreq
-> core &
-> governer things the frequency is and what is actually set.  *This* is
-> the part that I think is wrong.
+>     SCHED_WARN_ON(cfs_rq->avg.load_avg ||
+> 		  cfs_rq->avg.util_avg ||
+> 		  cfs_rq->avg.runnable_avg)
 > 
-> Instead, the proper way of restricting available frequencies is to
-> use
-> governors or policies.  This ensures that the core & governors are
-> aligned with what the platform driver actually does.
+> There exists a corner case in attach_entity_load_avg() which will
+> cause load_sum to be zero while load_avg will not be.
 > 
-> As I proposed earlier, I think a clean solution to this problem is to
-> create a temporary policy at probe time that restricts the available
-> OPPs based on what the current CCI freq/voltage are.  Once CCI driver
-> is
-> loaded and working, this policy can be removed.
+> Consider se_weight is 88761 as per the sched_prio_to_weight[] table.
+> Further assume the get_pelt_divider() is 47742, this gives:
+> se->avg.load_avg is 1.
 > 
-> Kevin
+> However, calculating load_sum results in 0:
 > 
+>   se->avg.load_sum = div_u64(se->avg.load_avg * se->avg.load_sum,
+> se_weight(se));
+>   se->avg.load_sum = 1*47742/88761 = 0.
 > 
-
-Hello Kevin,
-
-In new proposal, we DO set the cpufreq passed by cpufreq core.
-We just not set the corresponding voltage of target frequency which
-is lookedup from opp table.
-Actually, because of the shared regulator, corresponding voltage is
-not always set.
-
-I take this for example:
-----------
-Assumption:
-- The opp table and voltage in this example are just a example,
-  and it is not for any actual SoCs.
-- We just use one regulator instead of two. (like proc and sram)
-- cpufreq and mediatek cci devfreq share the same regulator_0.
-
-OPP table for cpufreq:
-target freq => min reguired voltage
-2.0GHz => 1.0V
-1.8GHZ => 0.9V
-1.5GHz => 0.6V
-
-OPP table for mediatek cci devfreq:
-target freq => min reguired voltage
-1.4GHz => 1.2V
-1.0GHz => 0.8V
-
-1. For normal case:
-   (regulator_0 is already registered by cpufreq and cci)
-   - When the cpufreq want to adjust to 1.5GHz, from the opp table the
-     voltage sholud be 0.6V.
-   - When the cci want to adjust to 1.4GHz, from the opp table the
-     voltage sholud be 1.2V.
-   - cpufreq driver use the regulator_set_voltage() to set the
-     voltage, but the function will use 1.2V(ref:[1])
-
-2. For our new proposed solution:
-   (regulator_0 is registered by cpufreq but is not registered by cci)
-   - Assume the freqs when booting to kernel are:
-     1.8GHz for cpufreq (min 0.9V) and 1.0GHz for cci (min 0.8V).
-     The voltage when booting to kernel(voltage_on_boot) should be 0.9V
-	 to let cpufreq and cci work correctly.
-   - When cpufreq want to set target freq to 1.5GHz the voltage from
-     opp table is 0.6V and we compare this voltage with
-voltage_on_boot(0.9V).
-	 We will choose the max voltage 0.9V to prevent crash issue.
-	 (This is original covered by regulator_set_voltage()
-	  if regulator_0 is registered by both cci and cpufre.)
-	- When the voltage is choosed, we will set the cpufreq to
-1.5GHz while
-	  the voltage is safe for both cpufreq and cci.
-----------
-
-In summary, we think it's a proper solution to cover the situation
-when cci is not probed.
-
-I think there is something to improve:
-We can choose to lookup cci opp table using cci freq to determine
-the voltage instead of voltage_on_boot.
-But IMO, it's not neccessary to register cci opp table inside cpufreq
-driver just for the short period.
-
-Because I finish to prepare other patches and I think we also can
-take a look at other patches which are including some cleanup, I will
-send next version today.
-If there is any concern and question, we can discuss in next version.
-
-Thanks for your big support!
-
-[1]:
-https://elixir.bootlin.com/linux/latest/source/drivers/regulator/core.c#L4022
-
-BRs,
-Rex
+> Then enqueue_load_avg() adds this to the cfs_rq totals:
+> 
+>   cfs_rq->avg.load_avg += se->avg.load_avg;
+>   cfs_rq->avg.load_sum += se_weight(se) * se->avg.load_sum;
+> 
+> Resulting in load_avg being 1 with load_sum is 0, which will trigger
+> the WARN.
+> 
+> Fixes: f207934fb79d ("sched/fair: Align PELT windows between cfs_rq
+> and its se")
+> Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+> [peterz: massage changelog]
+> Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+> Reviewed-by: Vincent Guittot <vincent.guittot@linaro.org>
+> Tested-by: Dietmar Eggemann <dietmar.eggemann@arm.com>
+> Link: 
+> https://urldefense.com/v3/__https://lkml.kernel.org/r/20220414090229.342-1-kuyo.chang@mediatek.com__;!!CTRNKA9wMg0ARbw!35Im02xxIuUZdLYpPng37Yk7oVNJVJ1tfbu4XRzlq-6VhH3K29Por0gJCFlslT_CMgA$
+>  
+> ---
+>  kernel/sched/fair.c |   10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+> 
+> --- a/kernel/sched/fair.c
+> +++ b/kernel/sched/fair.c
+> @@ -3829,11 +3829,11 @@ static void attach_entity_load_avg(struc
+>  
+>  	se->avg.runnable_sum = se->avg.runnable_avg * divider;
+>  
+> -	se->avg.load_sum = divider;
+> -	if (se_weight(se)) {
+> -		se->avg.load_sum =
+> -			div_u64(se->avg.load_avg * se->avg.load_sum,
+> se_weight(se));
+> -	}
+> +	se->avg.load_sum = se->avg.load_avg * divider;
+> +	if (se_weight(se) < se->avg.load_sum)
+> +		se->avg.load_sum = div_u64(se->avg.load_sum,
+> se_weight(se));
+> +	else
+> +		se->avg.load_sum = 1;
+>  
+>  	enqueue_load_avg(cfs_rq, se);
+>  	cfs_rq->avg.util_avg += se->avg.util_avg;
 
 
 _______________________________________________
