@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AA9DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 11:16:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F76AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 12:24:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+m5PdUeRqQKUDfBWlDWwSWdiX8PCyAh7LVg6eB31yvs=; b=sUdNP9NfEEASBq
-	Iq8DDIi6maXlhDNCa6VpwerdsPJsYpWVq+RAES7ciVV21axsouoIlBrgL26M/lsvCYY8cgQIpS0Ky
-	r6nN/g4jBN/mPtBbOepqNpvbee9jq/v5C4/8+i9vU37TuVKxtdKIXpcyoAPi4Phps7Zgkuh3tiZfF
-	lr1o+MV/wj4ADRvJj93aaU/IyrQJFOEn0mxuCXpq0kuPL6PextEMLt635XjlDeg2Mke4QZyyM7O4l
-	i7qOX/zpbBZQFNGp/5XpOczL5IF6oo3H2NiTxJivrZ1+wBaavDiWNvfbvDS/Nwq9vxSWP2Hu9Sdy7
-	8R05pbKCXiGq8Wz06G3Q==;
+	List-Owner; bh=9gM8dKuiNJKxg3+4cRR+HmbWWzfMQLkIo7pTNPcOF1Y=; b=4gnlln/LPk8vF4
+	sc7vtQZ/RAGZ7PAujHKM5bO6piAbL2bahFYhaUjgvoybVigQfn/woJI5wYUIbvkJgk2RYg0hWkHGT
+	9fbDgO+nzAAqss7jUlFI3QV4oRh+N6ymqZKkzAnh7mEF9lnjwBpNPalugsZra+ytI8CkDQQCfd0BQ
+	G+CLJakjgWFrvuXvQTSnGt4QbeZ20cpCvNuI2bLGsPhBtm4IqwlM6lqtQlEHiEVZyrZ/sVOuzbUDE
+	y6/0l6W0otNvSHig0g11Km7mqr+ta9JwgORe7xkqaC3/7O0/gQPJf6Serx288ual5sf2JPr1kDN7n
+	likOX2I6eDCQhaLmCheg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nfJvx-009mOs-0i; Fri, 15 Apr 2022 11:16:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nfKzv-009wNB-UI; Fri, 15 Apr 2022 12:24:23 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nfJvs-009mNi-NT
- for linux-mediatek@lists.infradead.org; Fri, 15 Apr 2022 11:16:12 +0000
-X-UUID: 044a055c0b144edfb0a6297b0bad0c52-20220415
-X-UUID: 044a055c0b144edfb0a6297b0bad0c52-20220415
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <shayne.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 824122600; Fri, 15 Apr 2022 04:16:03 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 15 Apr 2022 04:16:01 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 15 Apr 2022 19:15:47 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 15 Apr 2022 19:15:47 +0800
-Message-ID: <9188cd3d7463cb8fc65c741bd07de817d0e60f6f.camel@mediatek.com>
-Subject: Re: [PATCH v2] mt76: mt7915: add debugfs knob for RF registers
- read/write
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
- <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
- <evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Peter Chiu <chui-hao.chiu@mediatek.com>
-Date: Fri, 15 Apr 2022 19:15:47 +0800
-In-Reply-To: <c8662170-bf59-06df-a78c-8fb24303f274@nbd.name>
-References: <20220415061444.30720-1-shayne.chen@mediatek.com>
- <c8662170-bf59-06df-a78c-8fb24303f274@nbd.name>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nfKza-009wGG-DW; Fri, 15 Apr 2022 12:24:04 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 6F5351F47DF9
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1650025438;
+ bh=itV/ofv5GyzWPNIsHn2aKs68BsnJtivzIu7E9FMxVkg=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=hS8T92QRj2ggd/DPuao7ldfTgyBmYM4szDtaIMpOvwBXIMLD4NSfsnu7JAaw8OWQ0
+ zSHP0Orzg55sZJN5oxnpvq4rpUg0sU3P0Yb3I7AUAk0kovzrUs3wrQhov7Uy7M4XC4
+ R59eGpZIjCl6DCfiM6WbNGchejxUeVY6AOyWES/T7InveyfmTzotg8TygYFaMhd41p
+ q32uWPZVm9xA2Vpdrqb8EU9Qg/CKNsIPkroo4PLt8Xa3eSu6bpfza+VpzWNBM8O467
+ LUTOsZTxCtjXXKSBD2WPrB3dwrjE2/gXpbX9lvHmch44HK6uShmdgemsA1rQGOjd1f
+ CwAWuc0ND5Zsg==
+Message-ID: <2cd548f4-be64-6762-d326-40ff91d35d52@collabora.com>
+Date: Fri, 15 Apr 2022 14:23:54 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH V3 15/15] arm64: dts: mediatek: Add mediatek, cci property
+ for MT8183 cpufreq
+Content-Language: en-US
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
+ viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org,
+ matthias.bgg@gmail.com
+Cc: jia-wei.chang@mediatek.com, roger.lu@mediatek.com, hsinyi@google.com,
+ khilman@baylibre.com, linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220415055916.28350-1-rex-bc.chen@mediatek.com>
+ <20220415055916.28350-16-rex-bc.chen@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220415055916.28350-16-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220415_041608_794325_BF3969D3 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20220415_052402_690914_60D85534 
+X-CRM114-Status: UNSURE (   5.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,36 +71,18 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-04-15 at 10:26 +0200, Felix Fietkau wrote:
-> On 15.04.22 08:14, Shayne Chen wrote:
-> > Add RF registers read/write support for debugging RF issues, which
-> > should be processed by mcu commands.
-> > 
-> > Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
-> > Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-> > Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Il 15/04/22 07:59, Rex-BC Chen ha scritto:
+> Add mediatek,cci property to support MediaTek CCI feature.
 > 
-> What's the required width of rf_sel and rf_ofs? Would both fit
-> together 
-> in a single u32? If so, you could just use the generic regidx
-> debugfs 
-> file for both and simply add a rf_regval debugfs file.
-> 
-> - Felix
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 
-Hi Felix,
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-FW use the WF sel (antenna 0-3) and offset to locate rf registers.
-I'll send an update patch to merge them in the generic regidx with
-wf sel [31:28] and offset [27:0].
-
-Thanks,
-Shayne
 
 
 _______________________________________________
