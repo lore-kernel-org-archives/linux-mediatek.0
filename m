@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A60B5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 06:02:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 397A6C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 06:02:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=flTLyDnekRIZgxvav0sWBUd/YhB+CeuNe8BDRxexxJU=; b=LVAhMjhgSdqV3s
-	tyZTDW/4UOQD+DzdFbYGrH1T8uA7dPfGfqia22Z0bQypIl6/T8q23mERyHcn9CIs6f9hK+xeZJcbZ
-	dJY25jwIcRxTxQ2hLSb6F9AAeu95vWIfuF6fPTyez2+GmuRkosPrtsVIyeN7Gwv8CbyXTHNUwGK3y
-	40PHbSsoHXBibR1f/1AlnzZGzr5dTKnLd6YGR2rbRzCUR65ULbt0QBtwMRPequFhP4lROamQR5Pkb
-	LRpFSfscRXPyWONLr/3mg7VkuNdCEUsK1b50810bb09RQ+pwUppS6UbrmFcbWhZoENdAEqNuxnyl/
-	WnmbjvJjh6OKuiOlxYAQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6LIBq774n96eVxdlvC8+mU8PUZ0X1Yo9UT0ZJHOcZGc=; b=BdJ9C2ps4NC8ZI
+	dT4A7uZc+Amyt1mLKRs3Iwl0lZZH7S2gQyMKVIwRvPQ8oAoAnirVwTgGlCBvxB7eECIwSCkc1kJ1h
+	FGQfzvM3cUuWJRmn+OhnZeSlKQYKuwpG0L7jXqlLZimMnZySZUL35+ucrdUD/WTQD3P8vxlKV3vIE
+	LfLsnI0AThpaqIMfQW7blGn5W6VjmkNrlN4ySDOVy7Gw0Zws8AMrxYsd+hGlhP0DpeL1RiUMuyT0m
+	Z9RQ+8K4WwUlOdA6w9W0b3wH9yeSsGjcjh1/7Mg8ykw99ZtVxS60l3WvDB3lNGzqInKhTJAmjSPZV
+	zfKSPY/m+xsZ8OmbrRdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nfF24-008peR-JW; Fri, 15 Apr 2022 06:02:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nfF25-008pfF-PA; Fri, 15 Apr 2022 06:02:13 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nfEzS-008nsm-9x; Fri, 15 Apr 2022 05:59:32 +0000
-X-UUID: 3413b1399ff94f25b87e5719bbf76842-20220414
-X-UUID: 3413b1399ff94f25b87e5719bbf76842-20220414
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1nfEzS-008nta-Mn; Fri, 15 Apr 2022 05:59:33 +0000
+X-UUID: 6ed733f950694ddaa1f539c5872f7138-20220414
+X-UUID: 6ed733f950694ddaa1f539c5872f7138-20220414
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1270953301; Thu, 14 Apr 2022 22:59:21 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Apr 2022 22:59:19 -0700
+ with ESMTP id 369706219; Thu, 14 Apr 2022 22:59:22 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 14 Apr 2022 22:59:20 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 15 Apr 2022 13:59:18 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 15 Apr 2022 13:59:19 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Fri, 15 Apr 2022 13:59:18 +0800
@@ -47,18 +48,19 @@ CC: <jia-wei.chang@mediatek.com>, <roger.lu@mediatek.com>,
  <angelogioacchino.delregno@collabora.com>, <linux-pm@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>
-Subject: [PATCH V3 00/15] cpufreq: mediatek: Cleanup and support MT8183 and
- MT8186
-Date: Fri, 15 Apr 2022 13:59:01 +0800
-Message-ID: <20220415055916.28350-1-rex-bc.chen@mediatek.com>
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Andrew-sh.Cheng
+ <andrew-sh.cheng@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>
+Subject: [PATCH V3 05/15] cpufreq: mediatek: Add opp notification support
+Date: Fri, 15 Apr 2022 13:59:06 +0800
+Message-ID: <20220415055916.28350-6-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220415055916.28350-1-rex-bc.chen@mediatek.com>
+References: <20220415055916.28350-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_225930_395770_E515F880 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20220414_225930_844924_13315930 
+X-CRM114-Status: GOOD (  17.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,69 +77,189 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Cpufreq is a DVFS driver used for power saving to scale the clock frequency
-and supply the voltage for CPUs. This series do some cleanup for MediaTek
-cpufreq drivers and add support for MediaTek SVS[2] and MediaTek CCI
-devfreq[3] which are supported in MT8183 and MT8186.
+From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
 
-Changes for V3:
-1. Rebased to linux-next-20220414.
-2. Drop accepted patches.
-3. Drop "cpufreq: mediatek: Use maximum voltage in init stage" because we
-   make sure the voltage we set is safe for both mediatek cci and cpufreq.
-4. Rename cci property to mediatek,cci.
-5. Adjust order of cleanup patches.
-6. Add new patches for cleanup, handle infinite loop and MT8183 dts.
-7. Revise drivers from reviewers' suggestion.
-8. Revise commit message of some patches to avoid confusion and misunderstand.
-9. Revise "cpufreq: mediatek: Link CCI device to CPU".
-   We do not return successful to pretend we set the target frequency done
-   when cci is not ready. Instead, we find and set a safe voltage so that we
-   can set the target cpufrequency.
+From this opp notifier, cpufreq should listen to opp notification and do
+proper actions when receiving events of disable and voltage adjustment.
 
-Changes for V2:
-1. Drop the modification of transforming cpufreq-mediatek into yaml and
-   only add the MediaTek CCI property for MediaTek cpufreq.
-2. Split the original patches into several patches.
+One of the user for this opp notifier is MediaTek SVS.
+The MediaTek Smart Voltage Scaling (SVS) is a hardware which calculates
+suitable SVS bank voltages to OPP voltage table.
 
-Reference series:
-[1]: V1 of this series is present by Jia-Wei Chang.
-     message-id:20220307122151.11666-1-jia-wei.chang@mediatek.com
+Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+---
+ drivers/cpufreq/mediatek-cpufreq.c | 93 +++++++++++++++++++++++++++---
+ 1 file changed, 85 insertions(+), 8 deletions(-)
 
-[2]: The MediaTek CCI devfreq driver is introduced in another series.
-     message-id:20220408052150.22536-1-johnson.wang@mediatek.com
-
-[3]: The MediaTek SVS driver is introduced in another series.
-     message-id:20220221063939.14969-1-roger.lu@mediatek.com
-
-Andrew-sh.Cheng (1):
-  cpufreq: mediatek: Add opp notification support
-
-Jia-Wei Chang (8):
-  dt-bindings: cpufreq: mediatek: Add MediaTek CCI property
-  cpufreq: mediatek: Record previous target vproc value
-  cpufreq: mediatek: Move voltage limits to platform data
-  cpufreq: mediatek: Add .get function
-  cpufreq: mediatek: Make sram regulator optional
-  cpufreq: mediatek: Refine mtk_cpufreq_voltage_tracking()
-  cpufreq: mediatek: Link CCI device to CPU
-  cpufreq: mediatek: Add support for MT8186
-
-Rex-BC Chen (6):
-  cpufreq: mediatek: Use device print to show logs
-  cpufreq: mediatek: Replace old_* with pre_*
-  cpufreq: mediatek: Add counter to prevent infinite loop when tracking voltage
-  arm64: dts: mediatek: Add opp table and clock property for MT8183 cpufreq
-  arm64: dts: mediatek: Add MediaTek CCI node for MT8183
-  arm64: dts: mediatek: Add mediatek,cci property for MT8183 cpufreq
-
- .../bindings/cpufreq/cpufreq-mediatek.txt     |   5 +
- arch/arm64/boot/dts/mediatek/mt8183-evb.dts   |  36 ++
- .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |   4 +
- arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 285 ++++++++++
- drivers/cpufreq/mediatek-cpufreq.c            | 497 ++++++++++++------
- 5 files changed, 664 insertions(+), 163 deletions(-)
-
+diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+index fa8b193bf27b..221f249f8d21 100644
+--- a/drivers/cpufreq/mediatek-cpufreq.c
++++ b/drivers/cpufreq/mediatek-cpufreq.c
+@@ -41,6 +41,11 @@ struct mtk_cpu_dvfs_info {
+ 	int intermediate_voltage;
+ 	bool need_voltage_tracking;
+ 	int pre_vproc;
++	/* Avoid race condition for regulators between notify and policy */
++	struct mutex reg_lock;
++	struct notifier_block opp_nb;
++	int opp_cpu;
++	unsigned long opp_freq;
+ };
+ 
+ static LIST_HEAD(dvfs_info_list);
+@@ -220,6 +225,9 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+ 	inter_vproc = info->intermediate_voltage;
+ 
+ 	pre_freq_hz = clk_get_rate(cpu_clk);
++
++	mutex_lock(&info->reg_lock);
++
+ 	pre_vproc = info->pre_vproc;
+ 	if (pre_vproc <= 0)
+ 		pre_vproc = regulator_get_voltage(info->proc_reg);
+@@ -250,7 +258,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+ 			dev_err(cpu_dev,
+ 				"cpu%d: failed to scale up voltage!\n", policy->cpu);
+ 			mtk_cpufreq_set_voltage(info, pre_vproc);
+-			return ret;
++			goto out;
+ 		}
+ 	}
+ 
+@@ -260,8 +268,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+ 		dev_err(cpu_dev,
+ 			"cpu%d: failed to re-parent cpu clock!\n", policy->cpu);
+ 		mtk_cpufreq_set_voltage(info, pre_vproc);
+-		WARN_ON(1);
+-		return ret;
++		goto out;
+ 	}
+ 
+ 	/* Set the original PLL to target rate. */
+@@ -271,7 +278,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+ 			"cpu%d: failed to scale cpu clock rate!\n", policy->cpu);
+ 		clk_set_parent(cpu_clk, armpll);
+ 		mtk_cpufreq_set_voltage(info, pre_vproc);
+-		return ret;
++		goto out;
+ 	}
+ 
+ 	/* Set parent of CPU clock back to the original PLL. */
+@@ -280,8 +287,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+ 		dev_err(cpu_dev,
+ 			"cpu%d: failed to re-parent cpu clock!\n", policy->cpu);
+ 		mtk_cpufreq_set_voltage(info, inter_vproc);
+-		WARN_ON(1);
+-		return ret;
++		goto out;
+ 	}
+ 
+ 	/*
+@@ -296,15 +302,72 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+ 			clk_set_parent(cpu_clk, info->inter_clk);
+ 			clk_set_rate(armpll, pre_freq_hz);
+ 			clk_set_parent(cpu_clk, armpll);
+-			return ret;
++			goto out;
+ 		}
+ 	}
+ 
+-	return 0;
++	info->opp_freq = freq_hz;
++
++out:
++	mutex_unlock(&info->reg_lock);
++
++	return ret;
+ }
+ 
+ #define DYNAMIC_POWER "dynamic-power-coefficient"
+ 
++static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
++				    unsigned long event, void *data)
++{
++	struct dev_pm_opp *opp = data;
++	struct dev_pm_opp *new_opp;
++	struct mtk_cpu_dvfs_info *info;
++	unsigned long freq, volt;
++	struct cpufreq_policy *policy;
++	int ret = 0;
++
++	info = container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
++
++	if (event == OPP_EVENT_ADJUST_VOLTAGE) {
++		freq = dev_pm_opp_get_freq(opp);
++
++		mutex_lock(&info->reg_lock);
++		if (info->opp_freq == freq) {
++			volt = dev_pm_opp_get_voltage(opp);
++			ret = mtk_cpufreq_set_voltage(info, volt);
++			if (ret)
++				dev_err(info->cpu_dev,
++					"failed to scale voltage: %d\n", ret);
++		}
++		mutex_unlock(&info->reg_lock);
++	} else if (event == OPP_EVENT_DISABLE) {
++		freq = dev_pm_opp_get_freq(opp);
++
++		/* case of current opp item is disabled */
++		if (info->opp_freq == freq) {
++			freq = 1;
++			new_opp = dev_pm_opp_find_freq_ceil(info->cpu_dev,
++							    &freq);
++			if (IS_ERR(new_opp)) {
++				dev_err(info->cpu_dev,
++					"all opp items are disabled\n");
++				ret = PTR_ERR(new_opp);
++				return notifier_from_errno(ret);
++			}
++
++			dev_pm_opp_put(new_opp);
++			policy = cpufreq_cpu_get(info->opp_cpu);
++			if (policy) {
++				cpufreq_driver_target(policy, freq / 1000,
++						      CPUFREQ_RELATION_L);
++				cpufreq_cpu_put(policy);
++			}
++		}
++	}
++
++	return notifier_from_errno(ret);
++}
++
+ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+ {
+ 	struct device *cpu_dev;
+@@ -393,6 +456,17 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+ 	info->intermediate_voltage = dev_pm_opp_get_voltage(opp);
+ 	dev_pm_opp_put(opp);
+ 
++	info->opp_cpu = cpu;
++	info->opp_nb.notifier_call = mtk_cpufreq_opp_notifier;
++	ret = dev_pm_opp_register_notifier(cpu_dev, &info->opp_nb);
++	if (ret) {
++		dev_err(cpu_dev, "cpu%d: failed to register opp notifier\n", cpu);
++		goto out_disable_inter_clock;
++	}
++
++	mutex_init(&info->reg_lock);
++	info->opp_freq = clk_get_rate(info->cpu_clk);
++
+ 	/*
+ 	 * If SRAM regulator is present, software "voltage tracking" is needed
+ 	 * for this CPU power domain.
+@@ -448,6 +522,9 @@ static void mtk_cpu_dvfs_info_release(struct mtk_cpu_dvfs_info *info)
+ 	}
+ 
+ 	dev_pm_opp_of_cpumask_remove_table(&info->cpus);
++
++	if (!IS_ERR_OR_NULL(info->cpu_dev))
++		dev_pm_opp_unregister_notifier(info->cpu_dev, &info->opp_nb);
+ }
+ 
+ static int mtk_cpufreq_init(struct cpufreq_policy *policy)
 -- 
 2.18.0
 
