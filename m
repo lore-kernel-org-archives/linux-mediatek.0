@@ -4,69 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A15C1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 02:30:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2DE5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 02:31:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QUWyIngLdCuhjuNjynaXLKMzNmqo6wNmnvWykJXaX+8=; b=dySci4XnapACNM
-	LV1vcrXH7dBvGW/cq62pnBjF+qoEmw+QTpqyP2t1di9okHF9Ux1y8De8A+gMlCPF6jtnA8NVdbmeC
-	cfxFj3B1JhfI5+Ot09cUloe5SAgrnt+QURZqPiLd0l6Ua+nPLdb7kzidfylruJaEYVabQJ+PIMfOS
-	Zbm797DmgLqtEoKOti8yWQnsuiI9AMALo1Q+3qeUuNHTbm1k9Vsxwwm8tvtFLEs4BYHQPEi2WAxYl
-	3tAJHm4XPcCFJ6d/zU5Jj58BPLGBT6fqdupljef9FFhyo/fTF5MO0F6Km/YZehxig1k3zPGsWmzvJ
-	yZWpV+uIDCE7cNKC4Q4w==;
+	List-Owner; bh=G5K4BIuUoO1E+TYBV2WYXseV8JQX5UZpA6OPxTEzpw0=; b=Zrtg9xA9UiUDbS
+	/3+ShR7DAzMRFQLZa/GydK7WlceAJXsaO2Llb4HLsPusTj8NFR58eh/l86wCbMqFb+wiAnKHPaOYu
+	Xh22kLEzs+b25LcOH7FbLhO72RC+oVudVCLrpY5Da/Gw6YparNEsHjK/Ee8MY0btoXceXN2CBudkt
+	VuJ7JWlLg/6BcE4d672Mn7sLEWUNRNk7yge2EhXH4T3kBZMeQ3fsi0zuH6rT2aA/2FrhQSHwlh2pK
+	jZa8WDdeuCEUe9yigY92rH9POlJ0YmbeOzQ0uB/UwvZefnD9mRnifXpPHtCBf3CaESr95bWGyF1Me
+	XbKmU+9gCI5f6XYU4BlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nfBjE-0087wl-75; Fri, 15 Apr 2022 02:30:32 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nfBkS-0088QU-4g; Fri, 15 Apr 2022 02:31:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nfBjA-0087vm-O8; Fri, 15 Apr 2022 02:30:30 +0000
-X-UUID: 7e24ef0662ad4502a0bfec10c6bdfe1c-20220414
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=P1R87J0gDSOcY1wKiD3i3dDjSfpfLvXmKQ/L8tvV76w=; 
- b=buf8m7S8ptX9K4HMVbH8skD6w4hUGgwUGlMqC5z9zQhTUmIAuqTLmbRc8bgz5wUShlxW8n0JSZmDSvwMjrYGe3yDdrrOwbMfafUoMR8ljXSCNqBfD42AyNH4uGeo0ZQSPndHDGmmst9aIf4yddjd+89KeRt6RRIvuoSrD0mp5YM=;
-X-UUID: 7e24ef0662ad4502a0bfec10c6bdfe1c-20220414
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <xinlei.lee@mediatek.com>)
+ id 1nfBkO-0088PC-At; Fri, 15 Apr 2022 02:31:46 +0000
+X-UUID: fc0464ef7c464932980f5807066657c2-20220414
+X-UUID: fc0464ef7c464932980f5807066657c2-20220414
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1386780856; Thu, 14 Apr 2022 19:30:24 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Apr 2022 19:30:23 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 15 Apr 2022 10:30:21 +0800
-Received: from mszsdhlt06 (10.16.6.206) by mtkcas11.mediatek.inc
+ with ESMTP id 1735831355; Thu, 14 Apr 2022 19:31:34 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 14 Apr 2022 19:31:32 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 15 Apr 2022 10:31:18 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 15 Apr 2022 10:30:21 +0800
-Message-ID: <be9807025772b68416c38800616d52d8bd06d746.camel@mediatek.com>
-Subject: Re: [PATCH v4, 2/4] drm/mediatek: Separate poweron/poweroff from
- enable/disable and define new funcs
-From: xinlei.lee <xinlei.lee@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, <chunkuang.hu@kernel.org>,
- <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <matthias.bgg@gmail.com>, <rex-bc.chen@mediatek.com>
-CC: <jitao.shi@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
-Date: Fri, 15 Apr 2022 10:30:53 +0800
-In-Reply-To: <b1edb995f5dba2f8e313192a79cfc0972b7c832f.camel@mediatek.com>
-References: <1649644308-8455-1-git-send-email-xinlei.lee@mediatek.com>
- <1649644308-8455-3-git-send-email-xinlei.lee@mediatek.com>
- <b1edb995f5dba2f8e313192a79cfc0972b7c832f.camel@mediatek.com>
+ Transport; Fri, 15 Apr 2022 10:31:18 +0800
+Message-ID: <3fc36d6b803ff3e1bef601839aaca3f4f03e62ad.camel@mediatek.com>
+Subject: Re: [PATCH V2 13/15] cpufreq: mediatek: Link CCI device to CPU
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Kevin Hilman <khilman@baylibre.com>, <rafael@kernel.org>,
+ <viresh.kumar@linaro.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>
+CC: <matthias.bgg@gmail.com>, <jia-wei.chang@mediatek.com>,
+ <roger.lu@mediatek.com>, <hsinyi@google.com>, <linux-pm@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Fri, 15 Apr 2022 10:31:18 +0800
+In-Reply-To: <7hbkx3fiac.fsf@baylibre.com>
+References: <7hbkx3fiac.fsf@baylibre.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_193028_825550_67CD6905 
-X-CRM114-Status: GOOD (  26.07  )
+X-CRM114-CacheID: sfid-20220414_193144_398401_7FD676D6 
+X-CRM114-Status: GOOD (  49.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,157 +74,210 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-04-13 at 15:31 +0800, CK Hu wrote:
-> Hi, Xinlei:
+On Thu, 2022-04-14 at 14:48 -0700, Kevin Hilman wrote:
+> Rex-BC Chen <rex-bc.chen@mediatek.com> writes:
 > 
-> On Mon, 2022-04-11 at 10:31 +0800, xinlei.lee@mediatek.com wrote:
-> > From: Jitao Shi <jitao.shi@mediatek.com>
+> > On Wed, 2022-04-13 at 14:41 -0700, Kevin Hilman wrote:
+> > > Rex-BC Chen <rex-bc.chen@mediatek.com> writes:
+> > > 
+> > > [...]
+> > > 
+> > > > From the Chanwoo's devfreq passive govonor series, it's
+> > > > impossible
+> > > > to
+> > > > let cci devreq probed done before cpufreq because the passive
+> > > > govonor
+> > > > will search for cpufreq node and use it.
+> > > > 
+> > > > Ref: function: cpufreq_passive_register_notifier()
+> > > > 
+> > > > 
 > > 
-> > In order to match the changes of "Use the drm_panel_bridge API",
-> > the poweron/poweroff of dsi is extracted from enable/disable and
-> > defined as new funcs (pre_enable/post_disable).
 > > 
-> > Fixes: 2dd8075d2185 ("drm/mediatek: mtk_dsi: Use the
-> > drm_panel_bridge
-> > API")
+https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/commit/?h=devfreq-testing&id=b670978ddc43eb0c60735c3af6e4a370603ab673__;!!CTRNKA9wMg0ARbw!z58Lc1p9REo88oHn-NkxroN_fBd0TsHYmhscNZwnWwT71ecRkTeqZ6vFl5l7HpkTdM6t$
+> > > >  
+> > > 
+> > > Well this is a problem, because CCI depends on CPUfreq, but
+> > > CPUfreq
+> > > depends on CCI, so one of them has to load and then wait for the
+> > > other.
+> > > 
+> > > > After I discuss with Angelo and Jia-wei, we think we are
+> > > > keeping
+> > > > the
+> > > > function in target_index and if the cci is not ready we will
+> > > > use
+> > > > the
+> > > > voltage which is set by bootloader to prevent high freqeuncy
+> > > > low
+> > > > voltage crash. And then we can keep seting the target
+> > > > frequency.
+> > > > 
+> > > 
+> > >  > We assume the setting of bootloader is correct and we can do
+> > > this.
+> > > 
+> > > I'm still not crazy about this because you're lying to the
+> > > CPUfreq
+> > > framework.  It's requesting one OPP, but you're not setting that,
+> > > you're
+> > > just keeping the bootloader frequency.
+> > > 
+> > > In my earlier reply, I gave two other options for handling this.
+> > > 
+> > > 1) set a (temporary) constraint on the voltage regulator so that
+> > > it
+> > > cannot change.
+> > > 
+> > > or more clean, IMO:
+> > > 
+> > > 2) set a CPUfreq policy that restricts available OPPs to ones
+> > > that
+> > > will
+> > > not break CCI.
+> > > 
+> > > Either of these solutions allow you to load the CPUfreq driver
+> > > early,
+> > > and then wait for the CCI driver to be ready before removing the
+> > > restrictions.
 > > 
-> > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 51 +++++++++++++++++++-------
-> > --
-> > --
-> >  1 file changed, 32 insertions(+), 19 deletions(-)
+> > Hello Kevin,
 > > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > index 262c027d8c2f..cf76c53a1af6 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > @@ -679,16 +679,6 @@ static void mtk_dsi_poweroff(struct mtk_dsi
-> > *dsi)
-> >  	if (--dsi->refcount != 0)
-> >  		return;
-> >  
-> > -	/*
-> > -	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
-> > -	 * mtk_dsi_stop() should be called after
-> > mtk_drm_crtc_atomic_disable(),
-> > -	 * which needs irq for vblank, and mtk_dsi_stop() will disable
-> > irq.
-> > -	 * mtk_dsi_start() needs to be called in
-> > mtk_output_dsi_enable(),
-> > -	 * after dsi is fully set.
-> > -	 */
-> > -	mtk_dsi_stop(dsi);
-> > -
-> > -	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
-> >  	mtk_dsi_reset_engine(dsi);
-> >  	mtk_dsi_lane0_ulp_mode_enter(dsi);
-> >  	mtk_dsi_clk_ulp_mode_enter(dsi);
-> > @@ -703,17 +693,9 @@ static void mtk_dsi_poweroff(struct mtk_dsi
-> > *dsi)
-> >  
-> >  static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
-> >  {
-> > -	int ret;
-> > -
-> >  	if (dsi->enabled)
-> >  		return;
-> >  
-> > -	ret = mtk_dsi_poweron(dsi);
-> > -	if (ret < 0) {
-> > -		DRM_ERROR("failed to power on dsi\n");
-> > -		return;
-> > -	}
-> > -
-> >  	mtk_dsi_set_mode(dsi);
-> >  	mtk_dsi_clk_hs_mode(dsi, 1);
-> >  
-> > @@ -727,7 +709,16 @@ static void mtk_output_dsi_disable(struct
-> > mtk_dsi *dsi)
-> >  	if (!dsi->enabled)
-> >  		return;
-> >  
-> > -	mtk_dsi_poweroff(dsi);
-> > +	/*
-> > +	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
-> > +	 * mtk_dsi_stop() should be called after
-> > mtk_drm_crtc_atomic_disable(),
-> > +	 * which needs irq for vblank, and mtk_dsi_stop() will disable
-> > irq.
-> > +	 * mtk_dsi_start() needs to be called in
-> > mtk_output_dsi_enable(),
-> > +	 * after dsi is fully set.
-> > +	 */
-> > +	mtk_dsi_stop(dsi);
-> > +
-> > +	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
-> >  
-> >  	dsi->enabled = false;
-> >  }
-> > @@ -762,13 +753,35 @@ static void mtk_dsi_bridge_enable(struct
-> > drm_bridge *bridge)
-> >  {
-> >  	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
-> >  
-> > +	if (dsi->refcount == 0)
-> > +		return;
-> > +
-> >  	mtk_output_dsi_enable(dsi);
-> >  }
-> >  
-> > +static void mtk_dsi_bridge_pre_enable(struct drm_bridge *bridge)
-> > +{
-> > +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
-> > +	int ret;
-> > +
-> > +	ret = mtk_dsi_poweron(dsi);
-> > +	if (ret < 0)
-> > +		DRM_ERROR("failed to power on dsi\n");
-> > +}
-> > +
-> > +static void mtk_dsi_bridge_post_disable(struct drm_bridge *bridge)
-> > +{
-> > +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
-> > +
-> > +	mtk_dsi_poweroff(dsi);
-> > +}
-> > +
-> >  static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
-> >  	.attach = mtk_dsi_bridge_attach,
-> >  	.disable = mtk_dsi_bridge_disable,
-> >  	.enable = mtk_dsi_bridge_enable,
-> > +	.pre_enable = mtk_dsi_bridge_pre_enable,
+> > I think I do not describe this clearly.
+> > The proposal is:
+> > 
+> > In cpufreq probe:
+> > we record the voltage value which is set by bootloader.
+> > 
+> > In mtk_cpufreq_set_target():
+> > We do NOT directly return 0.
+> > Instead, we will find the voltage of target cpufreq and use the
+> > value
+> > max(booting voltage, target cpufreq voltage)
+> > 
+> > mtk_cpufreq_set_target() {
+> > 	/* NOT return 0 if !is_ccifreq_ready */
+> > 	....
+> > 	vproc = get voltage of target cpufreq from opp.
+> > 
+> > 	if (ccifreq_supported && !is_ccifreq_ready)
+> > 		vproc = max(vproc, vproc_on_boot)
+> > 
+> > 	//setting voltage and target frequency
+> > 	....
+> > }
 > 
-> The flow looks good to me, but according to [1], pre_enable is
-> deprecated. Use atomic_pre_enable instead.
+> You explained this well, but it's still not an appropriate solution
+> IMO,
+> because you're still not setting the target that is requested by the
+> CPUfreq core.
 > 
-> [1] 
+> The job of ->set_target() is to set the frequency *requested by
+> CPUfreq
+> core*.  If you cannot do that, you should return failure.  What you
+> posted
+> in the original patch and what you're proposing here is to ignore the
+> frequency passed to ->set_target() and do something else.  In the
+> orignal patch, you propose do to nothing.  Now, you're ignoring the 
+> target passed in and setting something else.  In both cases, the
+> CPUfreq
+> core things you have successfuly set the frequency requested, but you
+> have not.  This means there's a mismatch between what the CPUfreq
+> core &
+> governer things the frequency is and what is actually set.  *This* is
+> the part that I think is wrong.
 > 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/drm/drm_bridge.h?h=v5.18-rc2#n235
+> Instead, the proper way of restricting available frequencies is to
+> use
+> governors or policies.  This ensures that the core & governors are
+> aligned with what the platform driver actually does.
 > 
+> As I proposed earlier, I think a clean solution to this problem is to
+> create a temporary policy at probe time that restricts the available
+> OPPs based on what the current CCI freq/voltage are.  Once CCI driver
+> is
+> loaded and working, this policy can be removed.
 > 
-> > +	.post_disable = mtk_dsi_bridge_post_disable,
-> 
-> Ditto.
-> 
-> Regards,
-> CK
-> 
-> >  	.mode_set = mtk_dsi_bridge_mode_set,
-> >  };
-> >  
+> Kevin
 > 
 > 
 
-Hi CK:
+Hello Kevin,
 
-Thanks for your suggestion.
-I will revise it in the next version.
+In new proposal, we DO set the cpufreq passed by cpufreq core.
+We just not set the corresponding voltage of target frequency which
+is lookedup from opp table.
+Actually, because of the shared regulator, corresponding voltage is
+not always set.
 
-Best Regards!
-xinlei
+I take this for example:
+----------
+Assumption:
+- The opp table and voltage in this example are just a example,
+  and it is not for any actual SoCs.
+- We just use one regulator instead of two. (like proc and sram)
+- cpufreq and mediatek cci devfreq share the same regulator_0.
+
+OPP table for cpufreq:
+target freq => min reguired voltage
+2.0GHz => 1.0V
+1.8GHZ => 0.9V
+1.5GHz => 0.6V
+
+OPP table for mediatek cci devfreq:
+target freq => min reguired voltage
+1.4GHz => 1.2V
+1.0GHz => 0.8V
+
+1. For normal case:
+   (regulator_0 is already registered by cpufreq and cci)
+   - When the cpufreq want to adjust to 1.5GHz, from the opp table the
+     voltage sholud be 0.6V.
+   - When the cci want to adjust to 1.4GHz, from the opp table the
+     voltage sholud be 1.2V.
+   - cpufreq driver use the regulator_set_voltage() to set the
+     voltage, but the function will use 1.2V(ref:[1])
+
+2. For our new proposed solution:
+   (regulator_0 is registered by cpufreq but is not registered by cci)
+   - Assume the freqs when booting to kernel are:
+     1.8GHz for cpufreq (min 0.9V) and 1.0GHz for cci (min 0.8V).
+     The voltage when booting to kernel(voltage_on_boot) should be 0.9V
+	 to let cpufreq and cci work correctly.
+   - When cpufreq want to set target freq to 1.5GHz the voltage from
+     opp table is 0.6V and we compare this voltage with
+voltage_on_boot(0.9V).
+	 We will choose the max voltage 0.9V to prevent crash issue.
+	 (This is original covered by regulator_set_voltage()
+	  if regulator_0 is registered by both cci and cpufre.)
+	- When the voltage is choosed, we will set the cpufreq to
+1.5GHz while
+	  the voltage is safe for both cpufreq and cci.
+----------
+
+In summary, we think it's a proper solution to cover the situation
+when cci is not probed.
+
+I think there is something to improve:
+We can choose to lookup cci opp table using cci freq to determine
+the voltage instead of voltage_on_boot.
+But IMO, it's not neccessary to register cci opp table inside cpufreq
+driver just for the short period.
+
+Because I finish to prepare other patches and I think we also can
+take a look at other patches which are including some cleanup, I will
+send next version today.
+If there is any concern and question, we can discuss in next version.
+
+Thanks for your big support!
+
+[1]:
+https://elixir.bootlin.com/linux/latest/source/drivers/regulator/core.c#L4022
+
+BRs,
+Rex
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
