@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA162C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 06:02:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02E63C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 06:03:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HxHW06I4DqH0DPq0BgbnfeQUwG9Z34lecavdGqAe7FM=; b=V0WJ8g9ODgJB/2
-	AzfTiCY8t5N10hl9puWeHLRpp8twUPvx5pDz6L8bxZ8hyHpbPiHoKX3KHHirJvcHt2DbGa7Sr5o3J
-	69yMOk6oP7a81V2de77xgvpqwvPfDo5vsnr9ea2Evkc7FXbI4Q9lx3MPHbZtpy6GG9TlB3M6uI+1r
-	zIifgPYfCEomb2Qdl9inn1/KG7ASbh5KzkNWEgQphrtiYjt3Naysxen+zes/b020wgkCRUIbhyo+5
-	7eDvJuktw6o5dhi7xxxhpo5Qdqvxf1BRzzgUanN2SC/+GtaxPME/Dd2JQ7TwDNSsHimIT7xzXA51i
-	7hFC4/lb07TFA5ud+lTg==;
+	List-Owner; bh=W/M9UFnH7Wc4f/wyXQjNCA1Nh5GAhYL/gtAG+P0RHn0=; b=yGGDqoclWWcKpC
+	ReKIIY+yPIlk83ZgM76r9uj4uxryCdUWhlIHQfeSIgDmGlr20UtBrDuNjJksp3TuAxPznlQf2KuvD
+	th7P/g02dpdokWD4q5QcbdFqUel8pnwlvDuG4atKngCoyRQrnxUbLCssC7ov9iUdGc81NuoRDRtsV
+	wKfi+xqjjoFrX9Ej6YC82c5XnPWrGiSkIo+D0kM6swqzxsed+7rYwWMi4xdchpZu/kSR/fwQ85vvJ
+	6/gQn/LAMx/j4n6obC2Q+c91/9M9allN8CWtN/q+fy1KK7dJ7uB22ADgnLcmIBn2+Zcagl4VJVgt4
+	8ComeE6O2HsCW9eNYiiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nfF2V-008pwV-CP; Fri, 15 Apr 2022 06:02:39 +0000
+	id 1nfF3J-008qRf-UC; Fri, 15 Apr 2022 06:03:29 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nfEzS-008nuT-O0; Fri, 15 Apr 2022 05:59:34 +0000
-X-UUID: 58a0ec6cff3c4800949f9a96cc6eab61-20220414
-X-UUID: 58a0ec6cff3c4800949f9a96cc6eab61-20220414
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1nfEzV-008nta-7k; Fri, 15 Apr 2022 05:59:35 +0000
+X-UUID: 041ff69d801f489d94b1954d0850c12b-20220414
+X-UUID: 041ff69d801f489d94b1954d0850c12b-20220414
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1497870662; Thu, 14 Apr 2022 22:59:22 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 1307391344; Thu, 14 Apr 2022 22:59:24 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Thu, 14 Apr 2022 22:59:21 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 15 Apr 2022 13:59:20 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 15 Apr 2022 13:59:20 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 15 Apr 2022 13:59:19 +0800
+ Frontend Transport; Fri, 15 Apr 2022 13:59:20 +0800
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
 To: <rafael@kernel.org>, <viresh.kumar@linaro.org>, <robh+dt@kernel.org>,
  <krzk+dt@kernel.org>, <matthias.bgg@gmail.com>
@@ -49,18 +48,21 @@ CC: <jia-wei.chang@mediatek.com>, <roger.lu@mediatek.com>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>
-Subject: [PATCH V3 11/15] cpufreq: mediatek: Link CCI device to CPU
-Date: Fri, 15 Apr 2022 13:59:12 +0800
-Message-ID: <20220415055916.28350-12-rex-bc.chen@mediatek.com>
+ <rex-bc.chen@mediatek.com>, "Andrew-sh . Cheng"
+ <andrew-sh.cheng@mediatek.com>
+Subject: [PATCH V3 14/15] arm64: dts: mediatek: Add MediaTek CCI node for
+ MT8183
+Date: Fri, 15 Apr 2022 13:59:15 +0800
+Message-ID: <20220415055916.28350-15-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220415055916.28350-1-rex-bc.chen@mediatek.com>
 References: <20220415055916.28350-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_225930_908210_0BC03549 
-X-CRM114-Status: GOOD (  21.28  )
+X-CRM114-CacheID: sfid-20220414_225933_338495_16B2515E 
+X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,188 +79,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+Add MediaTek CCI devfreq node for MT8183.
 
-In some MediaTek SoCs, like MT8183, CPU and CCI share the same power
-supplies. Cpufreq needs to check if CCI devfreq exists and wait until
-CCI devfreq ready before scaling frequency.
-
-Before CCI devfreq is ready, we record the voltage when booting to
-kernel and use the max(cpu target voltage, booting voltage) to
-prevent cpufreq adjust to the lower voltage which will cause the CCI
-crash because of high frequency and low voltage.
-
-- Add is_ccifreq_ready() to link CCI device to CPI, and CPU will start
-  DVFS when CCI is ready.
-- Add platform data for MT8183.
-
-Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 ---
- drivers/cpufreq/mediatek-cpufreq.c | 80 +++++++++++++++++++++++++++++-
- 1 file changed, 79 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts    | 4 ++++
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi       | 7 +++++++
+ 3 files changed, 15 insertions(+)
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index d4c00237e862..dd3f739fede1 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -22,6 +22,7 @@ struct mtk_cpufreq_platform_data {
- 	int proc_max_volt;
- 	int sram_min_volt;
- 	int sram_max_volt;
-+	bool ccifreq_supported;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+index 8953dbf84f3e..7ac9864db9de 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+@@ -412,6 +412,10 @@
+ 
  };
  
- /*
-@@ -38,6 +39,7 @@ struct mtk_cpufreq_platform_data {
- struct mtk_cpu_dvfs_info {
- 	struct cpumask cpus;
- 	struct device *cpu_dev;
-+	struct device *cci_dev;
- 	struct regulator *proc_reg;
- 	struct regulator *sram_reg;
- 	struct clk *cpu_clk;
-@@ -45,6 +47,7 @@ struct mtk_cpu_dvfs_info {
- 	struct list_head list_head;
- 	int intermediate_voltage;
- 	bool need_voltage_tracking;
-+	int vproc_on_boot;
- 	int pre_vproc;
- 	/* Avoid race condition for regulators between notify and policy */
- 	struct mutex reg_lock;
-@@ -52,6 +55,7 @@ struct mtk_cpu_dvfs_info {
- 	int opp_cpu;
- 	unsigned long opp_freq;
- 	const struct mtk_cpufreq_platform_data *soc_data;
-+	bool ccifreq_bound;
- };
- 
- static struct platform_device *cpufreq_pdev;
-@@ -188,6 +192,28 @@ static int mtk_cpufreq_set_voltage(struct mtk_cpu_dvfs_info *info, int vproc)
- 	return ret;
- }
- 
-+static bool is_ccifreq_ready(struct mtk_cpu_dvfs_info *info)
-+{
-+	struct device_link *sup_link;
-+
-+	if (info->ccifreq_bound)
-+		return true;
-+
-+	sup_link = device_link_add(info->cpu_dev, info->cci_dev,
-+				   DL_FLAG_AUTOREMOVE_CONSUMER);
-+	if (!sup_link) {
-+		dev_err(info->cpu_dev, "cpu%d: sup_link is NULL\n", info->opp_cpu);
-+		return false;
-+	}
-+
-+	if (sup_link->supplier->links.status != DL_DEV_DRIVER_BOUND)
-+		return false;
-+
-+	info->ccifreq_bound = true;
-+
-+	return true;
-+}
-+
- static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 				  unsigned int index)
- {
-@@ -225,6 +251,14 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 	vproc = dev_pm_opp_get_voltage(opp);
- 	dev_pm_opp_put(opp);
- 
-+	/*
-+	 * If MediaTek cci is supported but is not ready, we will use the value
-+	 * of max(target cpu voltage, booting voltage) to prevent high freqeuncy
-+	 * low voltage crash.
-+	 */
-+	if (info->soc_data->ccifreq_supported && !is_ccifreq_ready(info))
-+		vproc = max(vproc, info->vproc_on_boot);
-+
- 	/*
- 	 * If the new voltage or the intermediate voltage is higher than the
- 	 * current voltage, scale up voltage first.
-@@ -346,6 +380,23 @@ static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
- 	return notifier_from_errno(ret);
- }
- 
-+static struct device *of_get_cci(struct device *cpu_dev)
-+{
-+	struct device_node *np;
-+	struct platform_device *pdev;
-+
-+	np = of_parse_phandle(cpu_dev->of_node, "mediatek,cci", 0);
-+	if (IS_ERR_OR_NULL(np))
-+		return NULL;
-+
-+	pdev = of_find_device_by_node(np);
-+	of_node_put(np);
-+	if (IS_ERR_OR_NULL(pdev))
-+		return NULL;
-+
-+	return &pdev->dev;
-+}
-+
- static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- {
- 	struct device *cpu_dev;
-@@ -360,6 +411,16 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 	}
- 	info->cpu_dev = cpu_dev;
- 
-+	info->ccifreq_bound = false;
-+	if (info->soc_data->ccifreq_supported) {
-+		info->cci_dev = of_get_cci(info->cpu_dev);
-+		if (IS_ERR_OR_NULL(info->cci_dev)) {
-+			ret = PTR_ERR(info->cci_dev);
-+			dev_err(cpu_dev, "cpu%d: failed to get cci device\n", cpu);
-+			return -ENODEV;
-+		}
-+	}
-+
- 	info->cpu_clk = clk_get(cpu_dev, "cpu");
- 	if (IS_ERR(info->cpu_clk)) {
- 		ret = PTR_ERR(info->cpu_clk);
-@@ -423,6 +484,13 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 	if (ret)
- 		goto out_disable_mux_clock;
- 
-+	info->vproc_on_boot = regulator_get_voltage(info->proc_reg);
-+	if (info->vproc_on_boot < 0) {
-+		dev_err(info->cpu_dev,
-+			"invalid Vproc value: %d\n", info->vproc_on_boot);
-+		goto out_disable_inter_clock;
-+	}
-+
- 	/* Search a safe voltage for intermediate frequency. */
- 	rate = clk_get_rate(info->inter_clk);
- 	opp = dev_pm_opp_find_freq_ceil(cpu_dev, &rate);
-@@ -623,6 +691,16 @@ static const struct mtk_cpufreq_platform_data mt2701_platform_data = {
- 	.proc_max_volt = 1150000,
- 	.sram_min_volt = 0,
- 	.sram_max_volt = 1150000,
-+	.ccifreq_supported = false,
++&cci {
++	proc-supply = <&mt6358_vproc12_reg>;
 +};
 +
-+static const struct mtk_cpufreq_platform_data mt8183_platform_data = {
-+	.min_volt_shift = 100000,
-+	.max_volt_shift = 200000,
-+	.proc_max_volt = 1150000,
-+	.sram_min_volt = 0,
-+	.sram_max_volt = 1150000,
-+	.ccifreq_supported = true,
+ &cpu0 {
+ 	proc-supply = <&mt6358_vproc12_reg>;
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index 0f9480f91261..4786a32ee975 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -230,6 +230,10 @@
+ 	status = "okay";
  };
  
- /* List of machines supported by this driver */
-@@ -635,7 +713,7 @@ static const struct of_device_id mtk_cpufreq_machines[] __initconst = {
- 	{ .compatible = "mediatek,mt817x", .data = &mt2701_platform_data },
- 	{ .compatible = "mediatek,mt8173", .data = &mt2701_platform_data },
- 	{ .compatible = "mediatek,mt8176", .data = &mt2701_platform_data },
--	{ .compatible = "mediatek,mt8183", .data = &mt2701_platform_data },
-+	{ .compatible = "mediatek,mt8183", .data = &mt8183_platform_data },
- 	{ .compatible = "mediatek,mt8365", .data = &mt2701_platform_data },
- 	{ .compatible = "mediatek,mt8516", .data = &mt2701_platform_data },
- 	{ }
++&cci {
++	proc-supply = <&mt6358_vproc12_reg>;
++};
++
+ &cpu0 {
+ 	proc-supply = <&mt6358_vproc12_reg>;
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 4ae3305d16d2..334728413582 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -280,6 +280,13 @@
+ 		};
+ 	};
+ 
++	cci: cci {
++		compatible = "mediatek,mt8183-cci";
++		clocks = <&apmixedsys CLK_APMIXED_CCIPLL>;
++		clock-names = "cci_clock";
++		operating-points-v2 = <&cci_opp>;
++	};
++
+ 	cpus {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
 -- 
 2.18.0
 
