@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E531C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 05:53:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 154E8C43217
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Apr 2022 05:59:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jN8u99g92UBFl8yvXDso8wbvHFcnl0Mq6FzZG0BL6oE=; b=T4wCvb9DzI1G9g
-	pAy1uOMWnRdcPZl2mMu8VjUHpNsF8zA1aPK3lR0nLJ2ufl2lW8dl1M0dZdgUde6S48FbhNTq0wDzV
-	SPudP2oo+Agrj/8fM62amiZvdTZZFsv04MtX8ATzg68vMBgwnZoiWuqaUh860ML3k2M87efeP53K6
-	EhB08B9yuxXuVpV1h6SmA2YC3kJps6s7ZUtKIf0w0EvKfuZvZOAQrk5KC24wWN+aEISCTZzFwIJo6
-	KKL4MkSAM2PnfudUdkx3WFCtIKZl+oTgn4IcL23IDBKUuASR0uQTDqfQHlATRf9S+ZECtTe7xRv5I
-	+xA0iwoQEgCgOZMvjLYA==;
+	List-Owner; bh=K21YXfbaEoVUS+NvDuby6Z9lRuIGSDhsfoF5vR/yHkM=; b=QFIddOD8sQp2Ef
+	qP0FCR/ZYMOsqPNl2w0C/PP9O64jzozVK+zSMIwAnmE4DCskIYI/z8HQDGEvlB7OkI7KLBv1vU2yu
+	wh4aQxTgYNHwzGocIBPPE8ASawBlb8kZ80r3jlrg4wIUrUtMBi/ECpeHEbobQy023Ox89ICcus5QP
+	hZgc3Q+o74MT58GtC3in2R5M3IWspnB34omcV5W3fy3cwwcYDSOL7Y006Ea8C8yEVjziZAMnzH0j/
+	zFOELHWibi3C5giM6Hg6ivJ8UTNo5DfWp24dnqX2xQk0ZAOem0dgDWpvOuIWoshXQPTj5OnuutFiX
+	sDx/s98lQEkt1P2jp3QA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nfEt7-008mZ3-OD; Fri, 15 Apr 2022 05:52:57 +0000
+	id 1nfEzd-008o2D-LF; Fri, 15 Apr 2022 05:59:41 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nfEss-008mRE-SY; Fri, 15 Apr 2022 05:52:44 +0000
-X-UUID: 0b90cfe2540f4910930a727d49bdf43b-20220414
-X-UUID: 0b90cfe2540f4910930a727d49bdf43b-20220414
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
+ id 1nfEzN-008nsm-NG; Fri, 15 Apr 2022 05:59:27 +0000
+X-UUID: 75693da6292c433e929936f084010667-20220414
+X-UUID: 75693da6292c433e929936f084010667-20220414
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1911301171; Thu, 14 Apr 2022 22:52:37 -0700
+ with ESMTP id 1120313867; Thu, 14 Apr 2022 22:59:21 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Apr 2022 22:52:35 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 14 Apr 2022 22:59:19 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 15 Apr 2022 13:52:33 +0800
+ Fri, 15 Apr 2022 13:59:18 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 15 Apr 2022 13:52:33 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <alice.chao@mediatek.com>
-CC: <cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
- <chun-hung.wu@mediatek.com>, <jejb@linux.ibm.com>, <jiajie.hao@mediatek.com>, 
- <lin.gui@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <matthias.bgg@gmail.com>, <peter.wang@mediatek.com>,
- <powen.kao@mediatek.com>, <qilin.tan@mediatek.com>,
- <stanley.chu@mediatek.com>, <wsd_upstream@mediatek.com>,
- <yanxu.wei@mediatek.com>
-Subject: Re: [PATCH v3 1/1] scsi: Fix racing between dev init and dev reset
-Date: Fri, 15 Apr 2022 13:52:33 +0800
-Message-ID: <20220415055233.29264-1-miles.chen@mediatek.com>
+ Frontend Transport; Fri, 15 Apr 2022 13:59:18 +0800
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <rafael@kernel.org>, <viresh.kumar@linaro.org>, <robh+dt@kernel.org>,
+ <krzk+dt@kernel.org>, <matthias.bgg@gmail.com>
+CC: <jia-wei.chang@mediatek.com>, <roger.lu@mediatek.com>,
+ <hsinyi@google.com>, <khilman@baylibre.com>,
+ <angelogioacchino.delregno@collabora.com>, <linux-pm@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: [PATCH V3 01/15] dt-bindings: cpufreq: mediatek: Add MediaTek CCI
+ property
+Date: Fri, 15 Apr 2022 13:59:02 +0800
+Message-ID: <20220415055916.28350-2-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220415040446.26451-2-alice.chao@mediatek.com>
-References: <20220415040446.26451-2-alice.chao@mediatek.com>
+In-Reply-To: <20220415055916.28350-1-rex-bc.chen@mediatek.com>
+References: <20220415055916.28350-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_225242_979967_80B680BE 
-X-CRM114-Status: GOOD (  20.73  )
+X-CRM114-CacheID: sfid-20220414_225925_830014_5059FB57 
+X-CRM114-Status: UNSURE (   9.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,99 +74,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQWxpY2UsCgo+IERldmljZSByZXNldCB0aHJlYWQgdXNlcyBrb2JqZWN0X3VldmVudF9lbnYo
-KSB0byBnZXQga29iai5wYXJlbnQsIGFuZCBpdAo+IGFjZXMgd2l0aCBkZXZpY2UgaW5pdCB0aHJl
-YWQgd2hpY2ggY2FsbHMgZGV2aWNlX2FkZCgpIHRvIGFkZCBrb2JqLnBhcmVudAoKImFjZXMiIG1h
-eSBiZSAicmFjZXMiPwoKPiBiZWZvcmUga29iamVjdF91ZXZlbnRfZW52KCkuCj4gCj4gRGV2aWNl
-IGluaXQgY2FsbDogICAgICAgICAgIERldmljZSByZXNldCBjYWxsOgo+ICBzY3NpX3Byb2JlX2Fu
-ZF9hZGRfbHVuKCkgICAgc2NzaV9ldnRfdGhyZWFkKCkKPiAgIHNjc2lfYWRkX2x1bigpICAgICAg
-ICAgICAgIHNjc2lfZXZ0X2VtaXQoKQo+ICAgIHNjc2lfc3lzZnNfYWRkX3NkZXYoKSAgICAgIGtv
-YmplY3RfdWV2ZW50X2VudigpIC8vZ2V0IGtvYmoucGFyZW50Cj4gICAgIHNjc2lfdGFyZ2V0X2Fk
-ZCgpICAgICAgICAgICBrb2JqZWN0X2dldF9wYXRoKCkKPiAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICBsZW4gPSBnZXRfa29ial9wYXRoX2xlbmd0aCAoKSAvLyBsZW49MSBiZWNhdXNl
-IHBhcmVudCBoYXNuJ3QgY3JlYXRlZCB5ZXQKPiAgICAgZGV2aWNlX2FkZCgpIC8vIGFkZCBrb2Jq
-LnBhcmVudAo+ICAgICAgIGtvYmplY3RfdWV2ZW50X2VudigpCj4gICAgICAgIGtvYmplY3RfZ2V0
-X3BhdGgoKSAgICAgICAgIHBhdGggPSBremFsbG9jKCkKPiAgICAgICAgIGZpbGxfa29ial9wYXRo
-KCkgICAgICAgICAgIGZpbGxfa29ial9wYXRoKCkgLy8gLS1sZW5ndGg7IGxlbmd0aCAtPSBjdXIg
-aXMgYSBuZWdhdGl2ZSB2YWx1ZQo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IG1lbWNweShwYXRoICsgbGVuZ3RoLCBrb2JqZWN0X25hbWUocGFyZW50KSwgY3VyKTsgLy8gc2xh
-YiBPT0IhCj4gCj4gQWJvdmUgYmFja3RyYWNlIGRlc2NyaWJlcyB0aGUgcHJvYmxlbSwgZGV2aWNl
-IHJlc2V0IHRocmVhZCB3aWxsIGdldCB3cm9uZwo+IGtvYmoucGFyZW50IHdoZW4gZGV2aWNlIGlu
-aXQgdGhyZWFkIGRpZG7igJl0IGFkZCBrb2JqLnBhcmVudCB5ZXQuIFdoZW4gdGhpcwo+IHJhY2lu
-ZyBoYXBwZW5lZCwgaXQgdHJpZ2dlcnMgdGhlIGEgS0FTQU4gZHVtcCBvbiB0aGUgZmluYWwgaXRl
-cmF0aW9uOgo+IAo+IEJVRzogS0FTQU46IHNsYWItb3V0LW9mLWJvdW5kcyBpbiBrb2JqZWN0X2dl
-dF9wYXRoKzB4ZjgvMHgxYjgKPiBXcml0ZSBvZiBzaXplIDExIGF0IGFkZHIgZmZmZmZmODBkNmJi
-OTRmNSBieSB0YXNrIGt3b3JrZXIvMzoxLzU4Cj4gPHNuaXA+Cj4gQ2FsbCB0cmFjZToKPiAgX19r
-YXNhbl9yZXBvcnQrMHgxMjQvMHgxYzgKPiAga2FzYW5fcmVwb3J0KzB4NTQvMHg4NAo+ICBrYXNh
-bl9jaGVja19yYW5nZSsweDIwMC8weDIwOAo+ICBtZW1jcHkrMHhiOC8weGYwCj4gIGtvYmplY3Rf
-Z2V0X3BhdGgrMHhmOC8weDFiOAo+ICBrb2JqZWN0X3VldmVudF9lbnYrMHgyMjgvMHhhODgKPiAg
-c2NzaV9ldnRfdGhyZWFkKzB4MmQwLzB4NWIwCj4gIHByb2Nlc3Nfb25lX3dvcmsrMHg1NzAvMHhm
-OTQKPiAgd29ya2VyX3RocmVhZCsweDdjYy8weGY4MAo+ICBrdGhyZWFkKzB4MmM0LzB4Mzg4Cj4g
-Cj4gVGhlc2UgdHdvIGpvYnMgYXJlIHNjaGVkdWxlZCBhc3luY2hyb25vdXNseSwgd2UgY2FuJ3Qg
-Z3VhcmFudGVlZCB0aGF0Cj4ga29iai5wYXJlbnQgd2lsbCBiZSBjcmVhdGVkIGluIGRldmljZSBp
-bml0IHRocmVhZCBiZWZvcmUgZGV2aWNlIHJlc2V0Cj4gdGhyZWFkIGNhbGxzIGtvYmplY3RfZ2V0
-X3BhdGgoKS4KPiAKPiBUbyByZXNvbHZlIHRoZSByYWNpbmcgaXNzdWUgYmV0d2VlbiBkZXZpY2Ug
-aW5pdCB0aHJlYWQgYW5kIGRldmljZSByZXNldAo+IHRocmVhZCwgd2UgdXNlIHdhaXRfZXZlbnQo
-KSBpbiBzY3NpX2V2dF9lbWl0KCkgdG8gd2FpdCBmb3IgZGV2aWNlX2FkZCgpCj4gdG8gY29tcGxl
-dGUgdGhlIGNyZWF0aW9uIG9mIGtvYmoucGFyZW50Lgo+IAo+IERldmljZSBpbml0IGNhbGw6ICAg
-ICAgICAgICAgICAgIERldmljZSByZXNldCBjYWxsOgo+IHVmc2hjZF9hc3luY19zY2FuKCkgICAg
-ICAgICAgICAgIHNjc2lfZXZ0X3RocmVhZCgpCj4gIHNjc2lfc2Nhbl9ob3N0KCkgICAgICAgICAg
-ICAgICAgIHNjc2lfZXZ0X2VtaXQoKSA8LSBhZGQgd2FpdF9ldmVudCgpCj4gICBkb19zY3NpX3Nj
-YW5faG9zdCgpIDwtIGFkZCB3YWtlX3VwKCkKPiAgICBzY3NpX3NjYW5faG9zdF9zZWxlY3RlZCgp
-Cj4gICAgIHNjc2lfc2Nhbl9jaGFubmVsKCkKPiAgICAgIHNjc2lfcHJvYmVfYW5kX2FkZF9sdW4o
-KQo+ICAgICAgIHNjc2lfdGFyZ2V0X2FkZCgpCj4gICAgICAgIGRldmljZV9hZGQoKSAvLyBhZGQg
-a29iai5wYXJlbnQKPiAgICAgICAgIGtvYmplY3RfdWV2ZW50X2VudigpCj4gICAgICAgICAga29i
-amVjdF9nZXRfcGF0aCgpCj4gICAgICAgICAgIGZpbGxfa29ial9wYXRoKCkKPiAgIGRvX3NjYW5f
-YXN5bmMoKSA8LSB3YWtlX3VwKCkgICAgIGtvYmplY3RfdWV2ZW50X2VudigpIC8vIGFkZCBrb2Jq
-LnBhcmVudAoKVGhlcmUgaXMgbm8gZG9fc2Nhbl9hc3luYygpIGNoYW5nZXMgaW4gdGhpcyBwYXRj
-aC4gSXQgdGhpcyBhIHR5cG8/CkZyb20gdGhlIHBhdGNoLCB0aGUgZmxvdyBsb29rcyBsaWtlOgoK
-RGV2aWNlIGluaXQgY2FsbCAgICAgICAgICAgICAgICAgICAgICAgIERldmljZSByZXNldCBjYWxs
-Ogpkb19zY3NpX3NjYW5faG9zdCgpICAgICAgICAgICAgICAgICAgICAgc2NzaV9ldnRfdGhyZWFk
-KCkKIHNjc2lfc2Nhbl9ob3N0X3NlbGVjdGVkKCkgICAgICAgICAgICAgICBzY3NpX2V2dF9lbWl0
-KCkgPC0gYWRkIHdhaXRfZXZlbnQoKQogIHNjc2lfc2Nhbl9jaGFubmVsKCkKICAgc2NzaV9wcm9i
-ZV9hbmRfYWRkX2x1bigpCiAgICBzY3NpX3RhcmdldF9hZGQoKQogICAgIGRldmljZV9hZGQoKSAv
-LyBhZGQga29iai5wYXJlbnQKICAgICAga29iamVjdF91ZXZlbnRfZW52KCkKICAgICAgIGtvYmpl
-Y3RfZ2V0X3BhdGgoKQogICAgICAgIGZpbGxfa29ial9wYXRoKCkKIC8vY2FsbCB3YWtlX3VwKCkg
-YWZ0ZXIgc2NzaV9zY2FuX2hvc3Rfc2VsZWN0ZWQgaXMgZG9uZQogICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAga29iamVjdF91ZXZlbnRfZW52KCkKICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICBrb2JqZWN0X2dldF9wYXRoKCkgLy8gZ2V0IHZhbGlk
-IGtvYmoucGFyZW50CgkJCQkJIC4uLgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgZmlsbF9rb2JqX3BhdGgoKQoKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICBrb2JqZWN0X2dldF9wYXRoKCkgLy8gZ2V0IHZhbGlkIGtvYmoucGFyZW50Cj4gICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZpbGxfa29ial9wYXRoKCkKPiAKPiBB
-ZnRlciB3ZSBhZGQgd2FrZV91cCBhdCBkb19zY3NpX3NjYW5faG9zdCgpIGluIGRldmljZSBpbml0
-IHRocmVhZCwgd2UgY2FuCj4gZW5zdXJlIHRoYXQgZGV2aWNlIHJlc2V0IHRocmVhZCB3aWxsIGdl
-dCBrb2JqZWN0IGFmdGVyIGRldmljZSBpbml0IHRocmVhZAo+IGZpbmlzaGVzIGFkZGluZyBwYXJl
-bnQuCj4gCj4gU2lnbmVkLW9mZi1ieTogQWxpY2UgQ2hhbyA8YWxpY2UuY2hhb0BtZWRpYXRlay5j
-b20+Cj4gCj4gLS0tCj4gCj4gQ2hhbmdlIHNpbmNlIHYyCj4gLUNoYW5nZSBjb21taXQ6IERlc2Ny
-aWJlcyB0aGUgcHJlYmxlbSBmaXJzdCBhbmQgdGhlbiB0aGUgc29sdXRpb24uCj4gLUFkZCBjb21t
-aXQ6IEFkZCBLQVNBTiBlcnJvciBsb2cuCgpQbGVhc2Uga2VlcCBhbGwgY2hhbmdlIGhpc3Rvcnku
-CgplLmcuLAoKU2VlIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xrbWwvMjAyMjAzMjYwMjI3Mjgu
-Mjk2OS0xLWppYW5qdW4ud2FuZ0BtZWRpYXRlay5jb20vCmFzIGFuIGV4YW1wbGUKCgpUaGFua3Ms
-Ck1pbGVzCgo+IAo+IC0tLQo+ICBkcml2ZXJzL3Njc2kvc2NzaV9saWIuYyAgfCAxICsKPiAgZHJp
-dmVycy9zY3NpL3Njc2lfc2Nhbi5jIHwgMSArCj4gIDIgZmlsZXMgY2hhbmdlZCwgMiBpbnNlcnRp
-b25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc2NzaS9zY3NpX2xpYi5jIGIvZHJpdmVy
-cy9zY3NpL3Njc2lfbGliLmMKPiBpbmRleCAwYTcwYWE3NjNhOTYuLmFiZjlhNzFlZDc3YyAxMDA2
-NDQKPiAtLS0gYS9kcml2ZXJzL3Njc2kvc2NzaV9saWIuYwo+ICsrKyBiL2RyaXZlcnMvc2NzaS9z
-Y3NpX2xpYi5jCj4gQEAgLTI0NjEsNiArMjQ2MSw3IEBAIHN0YXRpYyB2b2lkIHNjc2lfZXZ0X2Vt
-aXQoc3RydWN0IHNjc2lfZGV2aWNlICpzZGV2LCBzdHJ1Y3Qgc2NzaV9ldmVudCAqZXZ0KQo+ICAJ
-CWJyZWFrOwo+ICAJY2FzZSBTREVWX0VWVF9QT1dFUl9PTl9SRVNFVF9PQ0NVUlJFRDoKPiAgCQll
-bnZwW2lkeCsrXSA9ICJTREVWX1VBPVBPV0VSX09OX1JFU0VUX09DQ1VSUkVEIjsKPiArCQl3YWl0
-X2V2ZW50KHNkZXYtPmhvc3QtPmhvc3Rfd2FpdCwgc2Rldi0+c2Rldl9nZW5kZXYua29iai5wYXJl
-bnQgIT0gTlVMTCk7Cj4gIAkJYnJlYWs7Cj4gIAlkZWZhdWx0Ogo+ICAJCS8qIGRvIG5vdGhpbmcg
-Ki8KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zY3NpL3Njc2lfc2Nhbi5jIGIvZHJpdmVycy9zY3Np
-L3Njc2lfc2Nhbi5jCj4gaW5kZXggZjRlNmM2OGFjOTllLi40MzFmMjI5YWM0MzUgMTAwNjQ0Cj4g
-LS0tIGEvZHJpdmVycy9zY3NpL3Njc2lfc2Nhbi5jCj4gKysrIGIvZHJpdmVycy9zY3NpL3Njc2lf
-c2Nhbi5jCj4gQEAgLTE5MDQsNiArMTkwNCw3IEBAIHN0YXRpYyB2b2lkIGRvX3Njc2lfc2Nhbl9o
-b3N0KHN0cnVjdCBTY3NpX0hvc3QgKnNob3N0KQo+ICAJfSBlbHNlIHsKPiAgCQlzY3NpX3NjYW5f
-aG9zdF9zZWxlY3RlZChzaG9zdCwgU0NBTl9XSUxEX0NBUkQsIFNDQU5fV0lMRF9DQVJELAo+ICAJ
-CQkJU0NBTl9XSUxEX0NBUkQsIDApOwo+ICsJCXdha2VfdXAoJnNob3N0LT5ob3N0X3dhaXQpOwo+
-ICAJfQo+ICB9Cj4gIAo+IC0tIAo+IDIuMTguMAo+IAo+IAoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Ckxp
-bnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+
+MediaTek Cache Coherent Interconnect (CCI) uses software devfreq module
+to scale the clock frequency and adjust the voltage.
+The phandle could be linked between CPU and MediaTek CCI for some
+MediaTek SoCs, like MT8183 and MT8186.
+Therefore, we add this property in cpufreq-mediatek.txt.
+
+Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+---
+ .../devicetree/bindings/cpufreq/cpufreq-mediatek.txt         | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+index b8233ec91d3d..5b1558f220ac 100644
+--- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
++++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+@@ -20,6 +20,11 @@ Optional properties:
+ 	       Vsram to fit SoC specific needs. When absent, the voltage scaling
+ 	       flow is handled by hardware, hence no software "voltage tracking" is
+ 	       needed.
++- mediatek,cci:
++	MediaTek Cache Coherent Interconnect (CCI) uses the software devfreq module to
++	scale the clock frequency and adjust the voltage.
++	For details, please refer to
++	Documentation/devicetree/bindings/arm/mediatek/mediatek,cci.yaml
+ - #cooling-cells:
+ 	For details, please refer to
+ 	Documentation/devicetree/bindings/thermal/thermal-cooling-devices.yaml
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
