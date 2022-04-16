@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E32F6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Apr 2022 02:20:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50046C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Apr 2022 02:20:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=hHcD4839CeQd8dg6a8o0QBepWfuUGl9pepAbj1fp5Es=; b=DOPrbJc4pGcxwe
-	HHTM1CIBlOKqTuMtPq8QBY4yITgEWOxdn/YgTdD4zAHgFVfDp6IRPwlIAAuiMo5ImBy35r7s31BcB
-	qBibBJVZwNUmnCx5CzbIXA1HxC269XKL/oAN8kaZQ7WjKjvH1/mCf4dtf9X/qZxip8Y2yzYveEB4T
-	FutqC4GYD5EnzO0UKBnbVLdkQ2A7JrcCzWek7mbiMdpMDn3LydjgA0ZmqUZxTpX7Pd/dgv6oRMoth
-	QgVMV2qLSmmUnv9HL8AFqBIlufzjqALG4vZdMwSBJOUZs4ROHxZGJZ+P1jm3XWBDt5GV1vsvBvkge
-	WHFGIpyWvXaCFm1RPdCw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Jzjdb0dFRiJUs8tDyEh4gCqyfEl112KLIlqBhEanH6E=; b=uwiAYqMtbmEFXa
+	i/3X9HsFz8eXPDz7dGpyNYRsWwBreCHB5MTtZ2BRd3gsHo2hEONiY2iLvYJ55knFN4730Li5MrmaL
+	qjg9PNaezCL0eHjtu3GTdxqVgvY5QmcKv08WIDO53jgdnGd9HzNfcD8mizeh0DmtJOIc1Z43EUyJU
+	yJBpBIb22113ZuDQsh71nrYWex+UYzxG9sRWz/lkmwQkiwwV8TiRpCi/3UqOM9AEz12gC4Fd7pRqC
+	+eXqJXKJJnCJ7xR9PVHocYxfpj8TViTIyKtBJfBJ+azC6LHysmiUqPnx6sKdQwWzifhj9y/st+E8U
+	mZLVvFsy7zrsD9Pb//5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nfY2Z-00C0ii-8F; Sat, 16 Apr 2022 02:19:59 +0000
+	id 1nfY2a-00C0ju-Uk; Sat, 16 Apr 2022 02:20:01 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nfY0p-00BzpU-13; Sat, 16 Apr 2022 02:18:13 +0000
-X-UUID: e51a96dd67cb4694a6ed5795f74882bd-20220415
-X-UUID: e51a96dd67cb4694a6ed5795f74882bd-20220415
+ id 1nfY0p-00Bzor-Nj; Sat, 16 Apr 2022 02:18:13 +0000
+X-UUID: 5c2d8bdc7cd7405bbbfcbe48369007d9-20220415
+X-UUID: 5c2d8bdc7cd7405bbbfcbe48369007d9-20220415
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1712171077; Fri, 15 Apr 2022 19:18:02 -0700
+ with ESMTP id 207537452; Fri, 15 Apr 2022 19:18:02 -0700
 Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 15 Apr 2022 19:08:00 -0700
+ 15.0.1497.2; Fri, 15 Apr 2022 19:08:01 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
  (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 16 Apr 2022 10:07:53 +0800
+ Sat, 16 Apr 2022 10:07:54 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 16 Apr 2022 10:07:52 +0800
+ Frontend Transport; Sat, 16 Apr 2022 10:07:54 +0800
 From: Nancy.Lin <nancy.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
@@ -53,15 +53,18 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
  <dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
  <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v17 00/21] Add MediaTek SoC DRM (vdosys1) support for mt8195
-Date: Sat, 16 Apr 2022 10:07:28 +0800
-Message-ID: <20220416020749.29010-1-nancy.lin@mediatek.com>
+Subject: [PATCH v17 10/21] drm/mediatek: add display merge advance config API
+ for MT8195
+Date: Sat, 16 Apr 2022 10:07:38 +0800
+Message-ID: <20220416020749.29010-11-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220416020749.29010-1-nancy.lin@mediatek.com>
+References: <20220416020749.29010-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220415_191811_088426_1408C797 
-X-CRM114-Status: GOOD (  18.14  )
+X-CRM114-CacheID: sfid-20220415_191811_795807_CD32F7A7 
+X-CRM114-Status: GOOD (  16.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,181 +81,127 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The hardware path of vdosys1 with DPTx output need to go through by several modules, such as, OVL_ADAPTOR and MERGE.
-
-Add DRM and these modules support by the patches below:
-
-Changes in v17:
-- fix reviewer comment in v16
-  - separate ovl adaptor comp in mtk-mmsys and mtk-mutex
-  - separate mmsys config API
-  - move mdp_rdma binding yaml
-- fix ovl adaptor pm runtime get sync timing issue
-- rebase to vdosys0 series v19 (ref [5])
-- rebase to [7] for modify vblank register change
-
-Changes in v16:
-- fix reviewer comment in v 15
-  - fix mtk_drm_ddp_comp.c alignment
-  - fix vdosys0 mmsys num before adding vdosys1 patch
-
-Changes in v15:
-- fix ethdr uppercase hex number in dts
-
-Changes in v14:
-- remove MTK_MMSYS 64 bit dependency
-- add ethdr.yaml back and fix dt_schema check fail
-
-Resend v13
-- add related maintainer in maillist
-
-Changes in v13:
-- fix reviewer comment in v12
-  - fix rdma dt-binding format
-  - fix dts node naming
-- fix 32 bit build error
-  - modify 64bit dependency for mtk-mmsys
-- rebase to vdosys0 series v16. (ref [5])
-
-Changes in v12:
-- fix reviewer comment in v11
-  - modify mbox index
-  - refine dma dev for ovl_adaptor sub driver
-
-Changes in v11:
-- remove ethdr vblank spin lock
-- refine ovl_adaptor print message
-
-Changes in v10:
-- refine ethdr reset control using devm_reset_control_array_get_optional_exclusive
-- fix ovl_adaptor mtk_ovl_adaptor_clk_enable error handle issue
-
-Changes in v9:
-- rebase on kernel-5.16-rc1
-- rebase on vdosys0 series v13. (ref [5])
-- fix ovl_adaptor sub driver is brought up unintentionally
-- fix clang build test fail- duplicate ethdr/mdp_rdma init_module/cleanup_module symbol issue 
-
-Changes in v8:
-- separate merge async reset to new patch.
-- separate drm ovl_adaptor sub driver to new patch.
-- fix reviewer comment in v7.
-
-Changes in v7:
-- rebase on vdosys0 series v12 (ref[5])
-- add dma description in ethdr binding document.
-- refine vdosys1 bit definition of mmsys routing table.
-- separate merge modification into 3 pathces.
-- separate mutex modification into 2 patches.
-- add plane color coding for mdp_rdma csc.
-- move mdp_rdma pm control to ovl_adaptor.
-- fix reviewer comment in v6.
-
-Changes in v6:
-- rebase on kernel-5.15-rc1.
-- change mbox label to gce0 for dts node of vdosys1.
-- modify mmsys reset num for mt8195.
-- rebase on vdosys0 series v10. (ref [5])
-- use drm to bring up ovl_adaptor driver.
-- move drm iommu/mutex check from kms init to drm bind.
-- modify rdma binding doc location. (Documentation/devicetree/bindings/arm/)
-- modify for reviewer's comment in v5.
-
-Changes in v5:
-- add mmsys reset controller reference.
-
-Changes in v4:
-- use merge common driver for merge1~4.
-- refine ovl_adaptor rdma driver.
-- use ovl_adaptor ddp_comp function instead of ethdr.
-- modify for reviewer's comment in v3.
-
-Changes in v3:
-- modify for reviewer's comment in v2.
-- add vdosys1 2 pixels align limit.
-- add mixer odd offset support.
-
-Changes in v2:
-- Merge PSEUDO_OVL and ETHDR into one DRM component.
-- Add mmsys config API for vdosys1 hardware setting.
-- Add mmsys reset control using linux reset framework.
+Add merge new advance config API. The original merge API is
+mtk_ddp_comp_funcs function prototype. The API interface parameters
+cannot be modified, so add a new config API for extension. This is
+the preparation for ovl_adaptor merge control.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  3 ++
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c | 52 ++++++++++++++++++++---
+ 2 files changed, 48 insertions(+), 7 deletions(-)
 
-This series are based on the following patch:
-[1] arm64: dts: Add mediatek SoC mt8195 and evaluation board
-    20220112114724.1953-4-tinghan.shen@mediatek.com
-[2] arm64: dts: mt8195: add IOMMU and smi nodes
-    20210615173233.26682-15-tinghan.shen@mediatek.com
-[3] arm64: dts: mt8195: add gce node
-    20220126090109.32143-1-jason-jh.lin@mediatek.com
-[4] [v2] arm64: dts: mt8195: add display node for vdosys0
-    20220225021535.2655-1-jason-jh.lin@mediatek.com
-[5] Add MediaTek SoC DRM (vdosys0) support for mt8195 - v19 series
-    20220415083911.5186-2-jason-jh.lin@mediatek.com
-[6] dt-bindings: mediatek: mt8195: Add binding for MM IOMMU
-    20220217113453.13658-2-yong.wu@mediatek.com
-[7] [V2] drm/mediatek: Add vblank register/unregister callback functions
-    20220321072320.15019-1-rex-bc.chen@mediatek.com
-
-Nancy.Lin (21):
-  dt-bindings: mediatek: add vdosys1 RDMA definition for mt8195
-  dt-bindings: reset: mt8195: add vdosys1 reset control bit
-  dt-bindings: mediatek: add ethdr definition for mt8195
-  soc: mediatek: add mtk-mmsys support for mt8195 vdosys1
-  soc: mediatek: add mtk-mmsys config API for mt8195 vdosys1
-  soc: mediatek: add cmdq support of mtk-mmsys config API for mt8195
-    vdosys1
-  soc: mediatek: mmsys: modify reset controller for MT8195 vdosys1
-  soc: mediatek: add mtk-mutex support for mt8195 vdosys1
-  drm/mediatek: add display MDP RDMA support for MT8195
-  drm/mediatek: add display merge advance config API for MT8195
-  drm/mediatek: add display merge start/stop API for cmdq support
-  drm/mediatek: add display merge mute/unmute support for MT8195
-  drm/mediatek: add display merge async reset control
-  drm/mediatek: add ETHDR support for MT8195
-  drm/mediatek: add mediatek-drm plane color encoding info
-  drm/mediatek: add ovl_adaptor support for MT8195
-  drm/mediatek: add dma dev get function
-  drm/mediatek: modify mediatek-drm for mt8195 multi mmsys support
-  drm/mediatek: add drm ovl_adaptor sub driver for MT8195
-  drm/mediatek: add mediatek-drm of vdosys1 support for MT8195
-  arm64: dts: mt8195: add display node for vdosys1
-
- .../display/mediatek/mediatek,ethdr.yaml      | 158 ++++++
- .../display/mediatek/mediatek,mdp-rdma.yaml   |  86 +++
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 225 +++++++-
- drivers/gpu/drm/mediatek/Makefile             |   5 +-
- drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  38 ++
- drivers/gpu/drm/mediatek/mtk_disp_merge.c     |  89 ++-
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 514 ++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c       |  96 ++--
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h       |   6 +-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   | 125 +++--
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |  58 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 351 ++++++++----
- drivers/gpu/drm/mediatek/mtk_drm_drv.h        |  25 +-
- drivers/gpu/drm/mediatek/mtk_drm_plane.c      |   1 +
- drivers/gpu/drm/mediatek/mtk_drm_plane.h      |   1 +
- drivers/gpu/drm/mediatek/mtk_ethdr.c          | 368 +++++++++++++
- drivers/gpu/drm/mediatek/mtk_ethdr.h          |  26 +
- drivers/gpu/drm/mediatek/mtk_mdp_rdma.c       | 315 +++++++++++
- drivers/gpu/drm/mediatek/mtk_mdp_rdma.h       |  20 +
- drivers/soc/mediatek/mt8195-mmsys.h           | 143 +++++
- drivers/soc/mediatek/mtk-mmsys.c              | 106 +++-
- drivers/soc/mediatek/mtk-mmsys.h              |   1 +
- drivers/soc/mediatek/mtk-mutex.c              |  37 ++
- include/dt-bindings/reset/mt8195-resets.h     |  12 +
- include/linux/soc/mediatek/mtk-mmsys.h        |  25 +
- 25 files changed, 2614 insertions(+), 217 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_ethdr.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_ethdr.h
- create mode 100644 drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_mdp_rdma.h
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index bb91518cdc93..53aa988dde3b 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -63,6 +63,9 @@ void mtk_merge_config(struct device *dev, unsigned int width,
+ 		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+ void mtk_merge_start(struct device *dev);
+ void mtk_merge_stop(struct device *dev);
++void mtk_merge_advance_config(struct device *dev, unsigned int l_w, unsigned int r_w,
++			      unsigned int h, unsigned int vrefresh, unsigned int bpc,
++			      struct cmdq_pkt *cmdq_pkt);
+ 
+ void mtk_ovl_bgclr_in_on(struct device *dev);
+ void mtk_ovl_bgclr_in_off(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+index 45face638153..40da0555416d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+@@ -17,6 +17,7 @@
+ #define DISP_REG_MERGE_CTRL		0x000
+ #define MERGE_EN				1
+ #define DISP_REG_MERGE_CFG_0		0x010
++#define DISP_REG_MERGE_CFG_1		0x014
+ #define DISP_REG_MERGE_CFG_4		0x020
+ #define DISP_REG_MERGE_CFG_10		0x038
+ /* no swap */
+@@ -25,9 +26,12 @@
+ #define DISP_REG_MERGE_CFG_12		0x040
+ #define CFG_10_10_1PI_2PO_BUF_MODE		6
+ #define CFG_10_10_2PI_2PO_BUF_MODE		8
++#define CFG_11_10_1PI_2PO_MERGE			18
+ #define FLD_CFG_MERGE_MODE			GENMASK(4, 0)
+ #define DISP_REG_MERGE_CFG_24		0x070
+ #define DISP_REG_MERGE_CFG_25		0x074
++#define DISP_REG_MERGE_CFG_26		0x078
++#define DISP_REG_MERGE_CFG_27		0x07c
+ #define DISP_REG_MERGE_CFG_36		0x0a0
+ #define ULTRA_EN				BIT(0)
+ #define PREULTRA_EN				BIT(4)
+@@ -98,12 +102,19 @@ static void mtk_merge_fifo_setting(struct mtk_disp_merge *priv,
+ void mtk_merge_config(struct device *dev, unsigned int w,
+ 		      unsigned int h, unsigned int vrefresh,
+ 		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
++{
++	mtk_merge_advance_config(dev, w, 0, h, vrefresh, bpc, cmdq_pkt);
++}
++
++void mtk_merge_advance_config(struct device *dev, unsigned int l_w, unsigned int r_w,
++			      unsigned int h, unsigned int vrefresh, unsigned int bpc,
++			      struct cmdq_pkt *cmdq_pkt)
+ {
+ 	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
+ 	unsigned int mode = CFG_10_10_1PI_2PO_BUF_MODE;
+ 
+-	if (!h || !w) {
+-		dev_err(dev, "%s: input width(%d) or height(%d) is invalid\n", __func__, w, h);
++	if (!h || !l_w) {
++		dev_err(dev, "%s: input width(%d) or height(%d) is invalid\n", __func__, l_w, h);
+ 		return;
+ 	}
+ 
+@@ -112,14 +123,41 @@ void mtk_merge_config(struct device *dev, unsigned int w,
+ 		mode = CFG_10_10_2PI_2PO_BUF_MODE;
+ 	}
+ 
+-	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
++	if (r_w)
++		mode = CFG_11_10_1PI_2PO_MERGE;
++
++	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
+ 		      DISP_REG_MERGE_CFG_0);
+-	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
++	mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MERGE_CFG_1);
++	mtk_ddp_write(cmdq_pkt, h << 16 | (l_w + r_w), &priv->cmdq_reg, priv->regs,
+ 		      DISP_REG_MERGE_CFG_4);
+-	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
++	/*
++	 * DISP_REG_MERGE_CFG_24 is merge SRAM0 w/h
++	 * DISP_REG_MERGE_CFG_25 is merge SRAM1 w/h.
++	 * If r_w > 0, the merge is in merge mode (input0 and input1 merge together),
++	 * the input0 goes to SRAM0, and input1 goes to SRAM1.
++	 * If r_w = 0, the merge is in buffer mode, the input goes through SRAM0 and
++	 * then to SRAM1. Both SRAM0 and SRAM1 are set to the same size.
++	 */
++	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
+ 		      DISP_REG_MERGE_CFG_24);
+-	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
+-		      DISP_REG_MERGE_CFG_25);
++	if (r_w)
++		mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv->regs,
++			      DISP_REG_MERGE_CFG_25);
++	else
++		mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
++			      DISP_REG_MERGE_CFG_25);
++
++	/*
++	 * DISP_REG_MERGE_CFG_26 and DISP_REG_MERGE_CFG_27 is only used in LR merge.
++	 * Only take effect when the merge is setting to merge mode.
++	 */
++	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MERGE_CFG_26);
++	mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MERGE_CFG_27);
++
+ 	mtk_ddp_write_mask(cmdq_pkt, SWAP_MODE, &priv->cmdq_reg, priv->regs,
+ 			   DISP_REG_MERGE_CFG_10, FLD_SWAP_MODE);
+ 	mtk_ddp_write_mask(cmdq_pkt, mode, &priv->cmdq_reg, priv->regs,
 -- 
 2.18.0
 
