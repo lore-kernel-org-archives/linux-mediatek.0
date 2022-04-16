@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97B82C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Apr 2022 02:21:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 373A3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Apr 2022 02:22:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4+kCgI2ZAnV9jVfuY/JD8qQr7RuR3cXMKYL3iGyTET8=; b=YKYXjTfP0nyByy
-	f1DVgQLvbFY7smjTR52s/po6ZIFnfKQL2dXrkXlk46TykC97gxqBSdU+cBF7hC2C18oNjjfNXr6ww
-	n05raMKb9bBfGxPDz5EdGo/IQk+NqC/50KTgM4bM1s1iT6EzcE39dZcYfMDL2tBViwZhkvzMwplQq
-	YwVlORG+0y40qWdeo4etuuVyrXribbt7CLr9dsAn+7TZMse54WZZPrEiBxPkHHEMLaOVTUnvFKN5b
-	VJV6aa1DIMhK0Ym9n1yQsCZNkA3CVcdQShtDghYZV6nz0N9Y0fQOMA72axffO2ezQPAVVyTMItRZj
-	DUP8Ir7/1hKo+bU01EBw==;
+	List-Owner; bh=GkMveTjPi3qlnw7zm+jQsVde4sJ8Ghmd2np5dqs43rQ=; b=eliYks+k2iEwI2
+	mtkxwwzxllY3e0tfUq2S3sKQkinK5450xGNYyTQCo6tZp+bBWyhcDtns3U+u7iqiiiLJwhpLjGxoc
+	iW1wlhelgazuXWukG4eXp0tmcUvBpz2TJ5qy7wNUKF8Q7ddRLjKOayfJss3whF3k7Jn8HZ9z70UIg
+	N1KbJ0hyyrnRNXVQ0BIelXIfcKWd6XCAtj61I7CJwSKPN33ca0JmKoOldTuooUb5rB9EEcGTMS99I
+	J/dSV6Qh0TU8y2giJTv5C5cSlX9tNwWqU8nzCrJQ6FYheyIGofxUd6hq7K0lV0/g3RNyfil+YAxCa
+	0U46mLdWPfVUMMjQIJ/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nfY4A-00C1jK-5l; Sat, 16 Apr 2022 02:21:38 +0000
+	id 1nfY52-00C2Dy-NW; Sat, 16 Apr 2022 02:22:32 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nfY0s-00BzrC-S5; Sat, 16 Apr 2022 02:18:16 +0000
-X-UUID: 928c6cdffb3b47ecb815c2ee7894a5c3-20220415
-X-UUID: 928c6cdffb3b47ecb815c2ee7894a5c3-20220415
+ id 1nfY0t-00BzqS-An; Sat, 16 Apr 2022 02:18:17 +0000
+X-UUID: 893c611b26dd47149605877584db29aa-20220415
+X-UUID: 893c611b26dd47149605877584db29aa-20220415
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1761494360; Fri, 15 Apr 2022 19:18:05 -0700
+ with ESMTP id 214118526; Fri, 15 Apr 2022 19:18:05 -0700
 Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 15 Apr 2022 19:08:02 -0700
+ 15.0.1497.2; Fri, 15 Apr 2022 19:08:01 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
  (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 16 Apr 2022 10:07:54 +0800
+ Sat, 16 Apr 2022 10:07:53 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 16 Apr 2022 10:07:54 +0800
+ Frontend Transport; Sat, 16 Apr 2022 10:07:53 +0800
 From: Nancy.Lin <nancy.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
@@ -53,18 +53,18 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
  <dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
  <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v17 11/21] drm/mediatek: add display merge start/stop API for
- cmdq support
-Date: Sat, 16 Apr 2022 10:07:39 +0800
-Message-ID: <20220416020749.29010-12-nancy.lin@mediatek.com>
+Subject: [PATCH v17 01/21] dt-bindings: mediatek: add vdosys1 RDMA definition
+ for mt8195
+Date: Sat, 16 Apr 2022 10:07:29 +0800
+Message-ID: <20220416020749.29010-2-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220416020749.29010-1-nancy.lin@mediatek.com>
 References: <20220416020749.29010-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220415_191814_934978_F4F5C478 
-X-CRM114-Status: GOOD (  11.69  )
+X-CRM114-CacheID: sfid-20220415_191815_425378_4D0C3AC4 
+X-CRM114-Status: GOOD (  14.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,71 +81,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add merge start/stop API for cmdq support. The ovl_adaptor merges
-are configured with each drm plane update. Need to enable/disable
-merge with cmdq making sure all the settings taken effect in the
-same vblank.
+Add vdosys1 RDMA definition.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  2 ++
- drivers/gpu/drm/mediatek/mtk_disp_merge.c | 20 +++++++++++++++++---
- 2 files changed, 19 insertions(+), 3 deletions(-)
+ .../display/mediatek/mediatek,mdp-rdma.yaml   | 86 +++++++++++++++++++
+ 1 file changed, 86 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index 53aa988dde3b..43a412525b75 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -66,6 +66,8 @@ void mtk_merge_stop(struct device *dev);
- void mtk_merge_advance_config(struct device *dev, unsigned int l_w, unsigned int r_w,
- 			      unsigned int h, unsigned int vrefresh, unsigned int bpc,
- 			      struct cmdq_pkt *cmdq_pkt);
-+void mtk_merge_start_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt);
-+void mtk_merge_stop_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt);
- 
- void mtk_ovl_bgclr_in_on(struct device *dev);
- void mtk_ovl_bgclr_in_off(struct device *dev);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-index 40da0555416d..c0d9b43b2a66 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-@@ -67,17 +67,31 @@ struct mtk_disp_merge {
- };
- 
- void mtk_merge_start(struct device *dev)
-+{
-+	mtk_merge_start_cmdq(dev, NULL);
-+}
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
+new file mode 100644
+index 000000000000..6ab773569462
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
+@@ -0,0 +1,86 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mdp-rdma.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+void mtk_merge_stop(struct device *dev)
- {
- 	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
- 
--	writel(MERGE_EN, priv->regs + DISP_REG_MERGE_CTRL);
-+	mtk_merge_stop_cmdq(dev, NULL);
- }
- 
--void mtk_merge_stop(struct device *dev)
-+void mtk_merge_start_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++title: Mediatek MDP RDMA
 +
-+	mtk_ddp_write(cmdq_pkt, 1, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CTRL);
-+}
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
 +
-+void mtk_merge_stop_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt)
- {
- 	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
- 
--	writel(0x0, priv->regs + DISP_REG_MERGE_CTRL);
-+	mtk_ddp_write(cmdq_pkt, 0, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CTRL);
- }
- 
- static void mtk_merge_fifo_setting(struct mtk_disp_merge *priv,
++description: |
++  The mediatek MDP RDMA stands for Read Direct Memory Access.
++  It provides real time data to the back-end panel driver, such as DSI,
++  DPI and DP_INTF.
++  It contains one line buffer to store the sufficient pixel data.
++  RDMA device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml for details.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt8195-vdo1-rdma
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++
++  clocks:
++    items:
++      - description: RDMA Clock
++
++  iommus:
++    description:
++      This property should point to the respective IOMMU block with master port as argument,
++      see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
++
++  mediatek,gce-client-reg:
++    description:
++      The register of display function block to be set by gce. There are 4 arguments,
++      such as gce node, subsys id, offset and register size. The subsys id that is
++      mapping to the register of display function blocks is defined in the gce header
++      include/include/dt-bindings/gce/<chip>-gce.h of each chips.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - power-domains
++  - clocks
++  - iommus
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/power/mt8195-power.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++    #include <dt-bindings/memory/mt8195-memory-port.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        vdo1_rdma0: mdp-rdma@1c104000 {
++            compatible = "mediatek,mt8195-vdo1-rdma";
++            reg = <0 0x1c104000 0 0x1000>;
++            interrupts = <GIC_SPI 495 IRQ_TYPE_LEVEL_HIGH 0>;
++            clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
++            power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
++            iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA0>;
++            mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0x4000 0x1000>;
++        };
++    };
 -- 
 2.18.0
 
