@@ -4,87 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FE9DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Apr 2022 06:17:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95320C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Apr 2022 08:04:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1cF4iexXPs4luZFvyIIVq/v7Z1ZBqqGF0Nh9MUBEqvM=; b=baC7brtK9kIlak
-	TlcUJHNLrsHgrfButWjJUJ3awVvVw/8Z9qxgYVcWFAbWbWYFvZupQn4zSoPR/nPHXFHlrBkQeqcZO
-	GZ7zhRV4E5vAI+wvMYHEG0OkvVHxxY4L41ehDMuPGscDY8m7IicQvCM4dk7qrtirCmckw8mlTrtWH
-	tpmQoxLOpBQapArjC+Vi7j6ITIcZS1DJ457qbGEADPvno6Cru9Zza5MSGQNCulD1G0yJlabPieysM
-	pZZ4q4qKmPjHqhYBnOi4fUKkVZGn9kUNn2o7oDBJdEcvtqMKmwXUhbLyBqUYP8YSyGfYu94Tux+Wn
-	E4BKVqLGI+wcEilr+6/w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=RE0UHLpgETVpIcmTIb9i47s0LKJdf7Q+/YT7eBnaC48=; b=AZLXF8mgF1ctUM
+	82WUsEqiqWIpwBeZGrjakIeBzaFTGZzqHzs6ftrsMPUc8KbQ0XoOv1I1H/XL3B2PjHFcWb1Ahu2k6
+	KyJtXNiB2flI+0UhOBwRgjwLcsu92Tx8synq3zvspVyZlwkRI2lxPiuEOoFaVRlFVbrVHBkhckSBj
+	CJ3aImwIzfrRrSGHzb7QT+vC1pauUS8aRBJoZgHZG0EZ7F/tlgo1mvdI4+gZ0qYZeUJleXi87ML5f
+	wHqMgnN9Q4ivw4jXgYgze9BIHOWz/8bXSHdubgRB5G2uJle7zd3zcyYV/yOPQdBPCsg7O97AgeYxN
+	9ZjsiP6Xoym6iyXk8fdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngKh0-00Fkxt-LG; Mon, 18 Apr 2022 06:16:58 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1ngMMd-00FvaG-3w; Mon, 18 Apr 2022 08:04:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngKgx-00Fkwg-Nf
- for linux-mediatek@lists.infradead.org; Mon, 18 Apr 2022 06:16:57 +0000
-Received: by mail-ed1-x532.google.com with SMTP id c6so16464628edn.8
- for <linux-mediatek@lists.infradead.org>; Sun, 17 Apr 2022 23:16:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=R0p9SyM2Gw6ezgsQBgHwJlt6cnUQdSZIr2Akmm0cjIc=;
- b=Bur8D9FzAagdjm0aTmG8lxdbZQSBX+S1iB2gHK6R/tkzttSR9FtCfwBNjrIvsxJkS5
- bZdSK7WCvDEnspxJx4B0zK+YQidIQh0FdRHVycq3xBIYuelw2lrcYBA9pVFOclpqNA7Q
- o6rr6cGN0F8093vbW3/OHtdLHM81o5SRn4cKE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=R0p9SyM2Gw6ezgsQBgHwJlt6cnUQdSZIr2Akmm0cjIc=;
- b=GOP28dwyHPtoyKze/l4X3BiB2iRB9Veh/c6f3xQMC8aIQYH27tqf4C4TSI2eVsBX9Z
- 3wBYMQTexyeisHAPSziPdmO2L3kg+hlxAVE9Cv6ZrelO2sLeh8UCtx5d03gHV+TFnump
- 3Qg9X9wSIL9WEjIyIIj+hPJUTTHap0sJnQ+m6w7LBvILH7S+//M9u4gVbMZDME0FwidQ
- /OgKaMSTAu8haylRWAX+Z/8twoEnUXhz5o+mnhwsObcwMc09RbnsaGaRTgCySy8cxjct
- kJ3oVdtIoLmv7K/LUXhUv90wGRXZg2BWhP4X8RQrQRDk9Srjp59+vqdslUHXl24lgmDB
- pTSw==
-X-Gm-Message-State: AOAM5332CuEmyp2LlToFHW1IWnTwTlOQ9M5CRHUNB4hWI4PRbmuYi8Mx
- iYapgT8AbqRfHkWpcWY5x36ag+evoe+IaaZW
-X-Google-Smtp-Source: ABdhPJx8JOFqEVUVIg9Y+LdIZ4Z3hTtQ4jHBwzntDHEVDrCBK+kaRPIxPQoPRu8gZfKp1hLRNFwz9w==
-X-Received: by 2002:aa7:d394:0:b0:41d:799e:e5ed with SMTP id
- x20-20020aa7d394000000b0041d799ee5edmr10768509edq.347.1650262610523; 
- Sun, 17 Apr 2022 23:16:50 -0700 (PDT)
-Received: from mail-wm1-f42.google.com (mail-wm1-f42.google.com.
- [209.85.128.42]) by smtp.gmail.com with ESMTPSA id
- bm7-20020a0564020b0700b004230dd33015sm4151851edb.57.2022.04.17.23.16.47
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 17 Apr 2022 23:16:47 -0700 (PDT)
-Received: by mail-wm1-f42.google.com with SMTP id
- n126-20020a1c2784000000b0038e8af3e788so8283686wmn.1
- for <linux-mediatek@lists.infradead.org>; Sun, 17 Apr 2022 23:16:47 -0700 (PDT)
-X-Received: by 2002:a7b:cbc1:0:b0:38e:7c42:fe38 with SMTP id
- n1-20020a7bcbc1000000b0038e7c42fe38mr14247667wmi.51.1650262606781; Sun, 17
- Apr 2022 23:16:46 -0700 (PDT)
+ id 1ngMMP-00FvRg-3d
+ for linux-mediatek@lists.infradead.org; Mon, 18 Apr 2022 08:03:50 +0000
+X-UUID: 83b4d10d01d3499691f7d0318d1aed8a-20220418
+X-UUID: 83b4d10d01d3499691f7d0318d1aed8a-20220418
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <shayne.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1360006425; Mon, 18 Apr 2022 01:03:39 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 18 Apr 2022 01:03:37 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 18 Apr 2022 16:03:36 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 18 Apr 2022 16:03:35 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+ <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+ <evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>, 
+ Peter Chiu <chui-hao.chiu@mediatek.com>
+Subject: [PATCH v3] mt76: mt7915: add debugfs knob for RF registers read/write
+Date: Mon, 18 Apr 2022 16:03:30 +0800
+Message-ID: <20220418080330.1249-1-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20220414025023.11516-1-Nick.Fan@mediatek.com>
- <20220414025023.11516-2-Nick.Fan@mediatek.com>
-In-Reply-To: <20220414025023.11516-2-Nick.Fan@mediatek.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Mon, 18 Apr 2022 14:16:10 +0800
-X-Gmail-Original-Message-ID: <CAC=S1ni=pHPDAJUV2b=qWm-O26fS37wQjuL014eKoE491K6wGQ@mail.gmail.com>
-Message-ID: <CAC=S1ni=pHPDAJUV2b=qWm-O26fS37wQjuL014eKoE491K6wGQ@mail.gmail.com>
-Subject: Re: [PATCH v6 2/2] arm64: dts: mt8192: Add node for the Mali GPU
-To: Nick Fan <Nick.Fan@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
- DRI Development <dri-devel@lists.freedesktop.org>, 
- linux-kernel <linux-kernel@vger.kernel.org>, srv_heupstream@mediatek.com, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, devicetree@vger.kernel.org, 
- wenst@chromium.org, alyssa.rosenzweig@collabora.com, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220417_231655_796478_0711A1E1 
-X-CRM114-Status: UNSURE (   8.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220418_010349_216907_4C9B1FB8 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,13 +72,126 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 14, 2022 at 10:53 AM Nick Fan <Nick.Fan@mediatek.com> wrote:
->
-> Add a basic GPU node for mt8192.
->
-> Signed-off-by: Nick Fan <Nick.Fan@mediatek.com>
+Add RF registers read/write support for debugging RF issues, which
+should be processed by mcu commands.
+The index of rf registers use the generic regidx, and are combined
+with two parts: WF selection [31:28] and offset [27:0].
 
-Reviewed-by: Fei Shao <fshao@chromium.org>
+Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+---
+v2: add dev_kfree_skb()
+v3: - remove rf_regidx to use generic regidx
+    - update commit message
+---
+ .../wireless/mediatek/mt76/mt7915/debugfs.c   | 32 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 29 +++++++++++++++++
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  1 +
+ 3 files changed, 62 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+index dece0a6e..77bbeeed 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+@@ -867,6 +867,36 @@ mt7915_twt_stats(struct seq_file *s, void *data)
+ 	return 0;
+ }
+ 
++/* The index of RF registers use the generic regidx, combined with two parts:
++ * WF selection [31:28] and offset [27:0].
++ */
++static int
++mt7915_rf_regval_get(void *data, u64 *val)
++{
++	struct mt7915_dev *dev = data;
++	u32 regval;
++	int ret;
++
++	ret = mt7915_mcu_rf_regval(dev, dev->mt76.debugfs_reg, &regval, false);
++	if (ret)
++		return ret;
++
++	*val = le32_to_cpu(regval);
++
++	return 0;
++}
++
++static int
++mt7915_rf_regval_set(void *data, u64 val)
++{
++	struct mt7915_dev *dev = data;
++
++	return mt7915_mcu_rf_regval(dev, dev->mt76.debugfs_reg, (u32 *)&val, true);
++}
++
++DEFINE_DEBUGFS_ATTRIBUTE(fops_rf_regval, mt7915_rf_regval_get,
++			 mt7915_rf_regval_set, "0x%08llx\n");
++
+ int mt7915_init_debugfs(struct mt7915_phy *phy)
+ {
+ 	struct mt7915_dev *dev = phy->dev;
+@@ -898,6 +928,8 @@ int mt7915_init_debugfs(struct mt7915_phy *phy)
+ 	debugfs_create_devm_seqfile(dev->mt76.dev, "twt_stats", dir,
+ 				    mt7915_twt_stats);
+ 	debugfs_create_file("ser_trigger", 0200, dir, dev, &fops_ser_trigger);
++	debugfs_create_file("rf_regval", 0600, dir, dev, &fops_rf_regval);
++
+ 	if (!dev->dbdc_support || phy->band_idx) {
+ 		debugfs_create_u32("dfs_hw_pattern", 0400, dir,
+ 				   &dev->hw_pattern);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index ec93a924..c1ff3b40 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -3677,3 +3677,32 @@ int mt7915_mcu_twt_agrt_update(struct mt7915_dev *dev,
+ 	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(TWT_AGRT_UPDATE),
+ 				 &req, sizeof(req), true);
+ }
++
++int mt7915_mcu_rf_regval(struct mt7915_dev *dev, u32 regidx, u32 *val, bool set)
++{
++	struct {
++		__le32 idx;
++		__le32 ofs;
++		__le32 data;
++	} __packed req = {
++		.idx = cpu_to_le32(u32_get_bits(regidx, GENMASK(31, 28))),
++		.ofs = cpu_to_le32(u32_get_bits(regidx, GENMASK(27, 0))),
++		.data = set ? cpu_to_le32(*val) : 0,
++	};
++	struct sk_buff *skb;
++	int ret;
++
++	if (set)
++		return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(RF_REG_ACCESS),
++					 &req, sizeof(req), false);
++
++	ret = mt76_mcu_send_and_get_msg(&dev->mt76, MCU_EXT_QUERY(RF_REG_ACCESS),
++					&req, sizeof(req), true, &skb);
++	if (ret)
++		return ret;
++
++	*val = le32_to_cpu(*(__le32 *)(skb->data + 8));
++	dev_kfree_skb(skb);
++
++	return 0;
++}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index ca129e5e..c695c740 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -507,6 +507,7 @@ int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif *vif,
+ 			   struct ieee80211_sta *sta, struct rate_info *rate);
+ int mt7915_mcu_rdd_background_enable(struct mt7915_phy *phy,
+ 				     struct cfg80211_chan_def *chandef);
++int mt7915_mcu_rf_regval(struct mt7915_dev *dev, u32 regidx, u32 *val, bool set);
+ int mt7915_mcu_wa_cmd(struct mt7915_dev *dev, int cmd, u32 a1, u32 a2, u32 a3);
+ int mt7915_mcu_fw_log_2_host(struct mt7915_dev *dev, u8 type, u8 ctrl);
+ int mt7915_mcu_fw_dbg_ctrl(struct mt7915_dev *dev, u32 module, u8 level);
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
