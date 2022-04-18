@@ -4,64 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5353C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Apr 2022 04:04:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FE9DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Apr 2022 06:17:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Is22IVobaMhTr/i1ToHVpAw2EQYVrXeN/hdBfyin7V8=; b=IpajUaIkHtRBL/
-	hhh6Jn5fyrSy+jzchY6OulxA7KyOcJkHd9zQ6CYi5BytEhRModMvDwfxr/+EJxgCR5GnV4S9WabN5
-	T0X3J7jNuPa0tNG1kHmTU/QITE3UVbGyiyvYJyb6yjvuLbz2WzMLqkZFmObCV184XGcDpPuYL0mdn
-	6hMw5gMTzsmcImVDEQayTb9taPIX7PuVyGaRfBGEZ5C704P2Fj2zHiN3kL5/7z0kVdGz11aACUX8r
-	H7/y4vvqMXVzleGxd/f1n+QwcrY3WI6Wg3oaJuEt+yueyEqmzg3tEodPSW5kPsyKmYXONoY6eH0/0
-	Xe16nyUSp/hrjumFCcwg==;
+	List-Owner; bh=1cF4iexXPs4luZFvyIIVq/v7Z1ZBqqGF0Nh9MUBEqvM=; b=baC7brtK9kIlak
+	TlcUJHNLrsHgrfButWjJUJ3awVvVw/8Z9qxgYVcWFAbWbWYFvZupQn4zSoPR/nPHXFHlrBkQeqcZO
+	GZ7zhRV4E5vAI+wvMYHEG0OkvVHxxY4L41ehDMuPGscDY8m7IicQvCM4dk7qrtirCmckw8mlTrtWH
+	tpmQoxLOpBQapArjC+Vi7j6ITIcZS1DJ457qbGEADPvno6Cru9Zza5MSGQNCulD1G0yJlabPieysM
+	pZZ4q4qKmPjHqhYBnOi4fUKkVZGn9kUNn2o7oDBJdEcvtqMKmwXUhbLyBqUYP8YSyGfYu94Tux+Wn
+	E4BKVqLGI+wcEilr+6/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngIcn-00FUnh-1N; Mon, 18 Apr 2022 04:04:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ngKh0-00Fkxt-LG; Mon, 18 Apr 2022 06:16:58 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngIcZ-00FUju-FZ; Mon, 18 Apr 2022 04:04:18 +0000
-X-UUID: 237dc4c9c9a84cf2acba8e50c660a58e-20220417
-X-UUID: 237dc4c9c9a84cf2acba8e50c660a58e-20220417
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jason-jh.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 556383771; Sun, 17 Apr 2022 21:04:12 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 17 Apr 2022 20:58:06 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 18 Apr 2022 11:57:59 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 18 Apr 2022 11:57:59 +0800
-Message-ID: <8ac63b04e66de3b1fb1a1ef4547982a345e24ed0.camel@mediatek.com>
-Subject: Re: [PATCH v19 10/10] soc: mediatek: remove DDP_DOMPONENT_DITHER enum
-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rob
- Herring" <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>
-CC: CK Hu <ck.hu@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, "Singo
- Chang" <singo.chang@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 18 Apr 2022 11:57:59 +0800
-In-Reply-To: <387ede3f-20be-cb84-f343-f68c75eaf5fd@collabora.com>
-References: <20220415083911.5186-1-jason-jh.lin@mediatek.com>
- <20220415083911.5186-11-jason-jh.lin@mediatek.com>
- <387ede3f-20be-cb84-f343-f68c75eaf5fd@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1ngKgx-00Fkwg-Nf
+ for linux-mediatek@lists.infradead.org; Mon, 18 Apr 2022 06:16:57 +0000
+Received: by mail-ed1-x532.google.com with SMTP id c6so16464628edn.8
+ for <linux-mediatek@lists.infradead.org>; Sun, 17 Apr 2022 23:16:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=R0p9SyM2Gw6ezgsQBgHwJlt6cnUQdSZIr2Akmm0cjIc=;
+ b=Bur8D9FzAagdjm0aTmG8lxdbZQSBX+S1iB2gHK6R/tkzttSR9FtCfwBNjrIvsxJkS5
+ bZdSK7WCvDEnspxJx4B0zK+YQidIQh0FdRHVycq3xBIYuelw2lrcYBA9pVFOclpqNA7Q
+ o6rr6cGN0F8093vbW3/OHtdLHM81o5SRn4cKE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=R0p9SyM2Gw6ezgsQBgHwJlt6cnUQdSZIr2Akmm0cjIc=;
+ b=GOP28dwyHPtoyKze/l4X3BiB2iRB9Veh/c6f3xQMC8aIQYH27tqf4C4TSI2eVsBX9Z
+ 3wBYMQTexyeisHAPSziPdmO2L3kg+hlxAVE9Cv6ZrelO2sLeh8UCtx5d03gHV+TFnump
+ 3Qg9X9wSIL9WEjIyIIj+hPJUTTHap0sJnQ+m6w7LBvILH7S+//M9u4gVbMZDME0FwidQ
+ /OgKaMSTAu8haylRWAX+Z/8twoEnUXhz5o+mnhwsObcwMc09RbnsaGaRTgCySy8cxjct
+ kJ3oVdtIoLmv7K/LUXhUv90wGRXZg2BWhP4X8RQrQRDk9Srjp59+vqdslUHXl24lgmDB
+ pTSw==
+X-Gm-Message-State: AOAM5332CuEmyp2LlToFHW1IWnTwTlOQ9M5CRHUNB4hWI4PRbmuYi8Mx
+ iYapgT8AbqRfHkWpcWY5x36ag+evoe+IaaZW
+X-Google-Smtp-Source: ABdhPJx8JOFqEVUVIg9Y+LdIZ4Z3hTtQ4jHBwzntDHEVDrCBK+kaRPIxPQoPRu8gZfKp1hLRNFwz9w==
+X-Received: by 2002:aa7:d394:0:b0:41d:799e:e5ed with SMTP id
+ x20-20020aa7d394000000b0041d799ee5edmr10768509edq.347.1650262610523; 
+ Sun, 17 Apr 2022 23:16:50 -0700 (PDT)
+Received: from mail-wm1-f42.google.com (mail-wm1-f42.google.com.
+ [209.85.128.42]) by smtp.gmail.com with ESMTPSA id
+ bm7-20020a0564020b0700b004230dd33015sm4151851edb.57.2022.04.17.23.16.47
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 17 Apr 2022 23:16:47 -0700 (PDT)
+Received: by mail-wm1-f42.google.com with SMTP id
+ n126-20020a1c2784000000b0038e8af3e788so8283686wmn.1
+ for <linux-mediatek@lists.infradead.org>; Sun, 17 Apr 2022 23:16:47 -0700 (PDT)
+X-Received: by 2002:a7b:cbc1:0:b0:38e:7c42:fe38 with SMTP id
+ n1-20020a7bcbc1000000b0038e7c42fe38mr14247667wmi.51.1650262606781; Sun, 17
+ Apr 2022 23:16:46 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220414025023.11516-1-Nick.Fan@mediatek.com>
+ <20220414025023.11516-2-Nick.Fan@mediatek.com>
+In-Reply-To: <20220414025023.11516-2-Nick.Fan@mediatek.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Mon, 18 Apr 2022 14:16:10 +0800
+X-Gmail-Original-Message-ID: <CAC=S1ni=pHPDAJUV2b=qWm-O26fS37wQjuL014eKoE491K6wGQ@mail.gmail.com>
+Message-ID: <CAC=S1ni=pHPDAJUV2b=qWm-O26fS37wQjuL014eKoE491K6wGQ@mail.gmail.com>
+Subject: Re: [PATCH v6 2/2] arm64: dts: mt8192: Add node for the Mali GPU
+To: Nick Fan <Nick.Fan@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
+ DRI Development <dri-devel@lists.freedesktop.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>, srv_heupstream@mediatek.com, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, devicetree@vger.kernel.org, 
+ wenst@chromium.org, alyssa.rosenzweig@collabora.com, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220417_210415_549431_FD9EA8F7 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20220417_231655_796478_0711A1E1 
+X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,40 +101,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+On Thu, Apr 14, 2022 at 10:53 AM Nick Fan <Nick.Fan@mediatek.com> wrote:
+>
+> Add a basic GPU node for mt8192.
+>
+> Signed-off-by: Nick Fan <Nick.Fan@mediatek.com>
 
-Thanks for the reviews.
-
-On Fri, 2022-04-15 at 12:32 +0200, AngeloGioacchino Del Regno wrote:
-> Il 15/04/22 10:39, jason-jh.lin ha scritto:
-> > After mmsys and drm change DITHER enum to DDP_COMPONENT_DITHER0,
-> > mmsys header can remove the useless DDP_COMPONENT_DITHER enum.
-> > 
-> > Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> 
-> Can you please fix the commit title with:
-> soc: mediatek: remove DDP_DOMPONENT_DITHER from enum
-> 
-> that "from" is important, as you're not removing *an enum*, but *from
-> an enum*.
-> 
-Yes, I agree with you.
-I'll fix it in the next version.
-Thanks.
-
-Regards,
-Jason-JH.Lin
-
-> After that:
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> 
-> Thanks!
-> Angelo
--- 
-Jason-JH Lin <jason-jh.lin@mediatek.com>
-
+Reviewed-by: Fei Shao <fshao@chromium.org>
 
 _______________________________________________
 Linux-mediatek mailing list
