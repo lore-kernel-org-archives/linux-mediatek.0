@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67B08C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Apr 2022 13:24:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A192C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Apr 2022 13:25:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jyWX08emCqR9Vv4SObZMwXV5e6i2h8nhMcKZ8twqFak=; b=P4hnwEIOq7RHKH
-	ad+3zcvaGkbREgwC5g8UOwGRX67wMyyK5q/6bccv+E8Y0y58TAql41gMbEQjwkLEWP0PWIhmQS0LP
-	5VDtGO1XjFL3JJyYAa4RnFXwo/Y3nv8A9YmFOAWuvAOhtwqW14mJ4DX5SGxvmCuBZp8KrnNCgLZqK
-	Lm9uMjTQwkX47RTIhLe9YVPSuMmXhEgQ9TbYkYuKOnkQ0jd4mo4eEoIfMjOH7cM1oZ/uUIYQ8UGO8
-	jNbRr/hO64OnY3BrV97jDmKSfM3uAar5BFQv1rg84HJvdpnTFBvc0bjK2OwHLOsFqG1TnQYJbiexj
-	NDmughxkPQF3M+yuVwbg==;
+	List-Owner; bh=sqUEUqegqOjgrbneuLO5B76l+/bU6bKb4fdsOHmw3cA=; b=OxKR+TTXoQFeLN
+	Rt0HtXieHvUb4+W8Ak1l8gHt+KTS+ngqZ+8fCyA/yddRRZNcn/o8IKOgOF61CDXoemaNujWjbwgnd
+	lyjnSIT6KkS2bkaZBYVRrCccOOyO/Uboa79fgThqXyI/U6wOD1DTaRcB1AYuJ7mmTJZDQhYnsvk+A
+	VufHqynD/XcJ8X7cJXWan4ZX883QCdamTDIoqnoUHSTL/IphjQM1U5DrjEoqVG95h86vd4mbn0PXg
+	B2t7FJCBxrFz9kJeb7B8Cb+v5aS0lW50VPoLiwwjG5OqR7sRuwdl7Uxp1Z3GVXorkfDPiCDbkv3aB
+	QPVDhB+GvdINp1l+UEfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngRN2-00H1CJ-3z; Mon, 18 Apr 2022 13:24:48 +0000
+	id 1ngRNM-00H1OV-2O; Mon, 18 Apr 2022 13:25:08 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngRL0-00Gzsc-1Z; Mon, 18 Apr 2022 13:22:44 +0000
-X-UUID: fc4d2cc93c7c4585a412a09658f67d71-20220418
-X-UUID: fc4d2cc93c7c4585a412a09658f67d71-20220418
+ id 1ngRL1-00GztH-PD; Mon, 18 Apr 2022 13:22:45 +0000
+X-UUID: 6523fdd17a514906a5aec604eda8ce2c-20220418
+X-UUID: 6523fdd17a514906a5aec604eda8ce2c-20220418
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 506775675; Mon, 18 Apr 2022 06:22:38 -0700
+ with ESMTP id 992986736; Mon, 18 Apr 2022 06:22:38 -0700
 Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 Apr 2022 06:22:36 -0700
+ 15.0.1497.2; Mon, 18 Apr 2022 06:22:37 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
  (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 18 Apr 2022 21:22:22 +0800
+ Mon, 18 Apr 2022 21:22:24 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 18 Apr 2022 21:22:22 +0800
+ Frontend Transport; Mon, 18 Apr 2022 21:22:24 +0800
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
 To: <mturquette@baylibre.com>, <sboyd@kernel.org>
 CC: <matthias.bgg@gmail.com>, <p.zabel@pengutronix.de>,
@@ -49,17 +49,18 @@ CC: <matthias.bgg@gmail.com>, <p.zabel@pengutronix.de>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
  <rex-bc.chen@mediatek.com>
-Subject: [PATCH 2/7] clk: mediatek: reset: Rename reset function
-Date: Mon, 18 Apr 2022 21:21:49 +0800
-Message-ID: <20220418132154.7401-3-rex-bc.chen@mediatek.com>
+Subject: [PATCH 6/7] clk: mediatek: reset: Add support for unregister reset
+ controller
+Date: Mon, 18 Apr 2022 21:21:53 +0800
+Message-ID: <20220418132154.7401-7-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220418132154.7401-1-rex-bc.chen@mediatek.com>
 References: <20220418132154.7401-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220418_062242_181096_5A6E5E73 
-X-CRM114-Status: GOOD (  16.66  )
+X-CRM114-CacheID: sfid-20220418_062243_968050_D70A3042 
+X-CRM114-Status: GOOD (  10.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,423 +77,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are two version for clock reset register control of MediaTek SoCs.
-Since MT8183, the version 2 is adopted.
-
-To make the driver more readable,
-- Rename them to v2 for MT8183 and v1 for previous SoCs.
-- Adjust the fuinction order in reset.c.
+Add a function to unregister reset controller.
 
 Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mt2701-eth.c |  2 +-
- drivers/clk/mediatek/clk-mt2701-g3d.c |  2 +-
- drivers/clk/mediatek/clk-mt2701-hif.c |  2 +-
- drivers/clk/mediatek/clk-mt2701.c     |  4 +-
- drivers/clk/mediatek/clk-mt2712.c     |  4 +-
- drivers/clk/mediatek/clk-mt7622-eth.c |  2 +-
- drivers/clk/mediatek/clk-mt7622-hif.c |  4 +-
- drivers/clk/mediatek/clk-mt7622.c     |  4 +-
- drivers/clk/mediatek/clk-mt7629-eth.c |  2 +-
- drivers/clk/mediatek/clk-mt7629-hif.c |  4 +-
- drivers/clk/mediatek/clk-mt8135.c     |  4 +-
- drivers/clk/mediatek/clk-mt8173.c     |  4 +-
- drivers/clk/mediatek/clk-mt8183.c     |  2 +-
- drivers/clk/mediatek/clk-mtk.h        |  8 +--
- drivers/clk/mediatek/reset.c          | 76 ++++++++++++++-------------
- 15 files changed, 64 insertions(+), 60 deletions(-)
+ drivers/clk/mediatek/reset.c | 10 ++++++++++
+ drivers/clk/mediatek/reset.h |  2 ++
+ 2 files changed, 12 insertions(+)
 
-diff --git a/drivers/clk/mediatek/clk-mt2701-eth.c b/drivers/clk/mediatek/clk-mt2701-eth.c
-index 100ff6ca609e..f3e56a988177 100644
---- a/drivers/clk/mediatek/clk-mt2701-eth.c
-+++ b/drivers/clk/mediatek/clk-mt2701-eth.c
-@@ -58,7 +58,7 @@ static int clk_mt2701_eth_probe(struct platform_device *pdev)
- 			"could not register clock provider: %s: %d\n",
- 			pdev->name, r);
- 
--	mtk_register_reset_controller(node, 1, 0x34);
-+	mtk_register_reset_controller_v1(node, 1, 0x34);
- 
- 	return r;
- }
-diff --git a/drivers/clk/mediatek/clk-mt2701-g3d.c b/drivers/clk/mediatek/clk-mt2701-g3d.c
-index 1328c112a38f..5a41d4607e77 100644
---- a/drivers/clk/mediatek/clk-mt2701-g3d.c
-+++ b/drivers/clk/mediatek/clk-mt2701-g3d.c
-@@ -52,7 +52,7 @@ static int clk_mt2701_g3dsys_init(struct platform_device *pdev)
- 			"could not register clock provider: %s: %d\n",
- 			pdev->name, r);
- 
--	mtk_register_reset_controller(node, 1, 0xc);
-+	mtk_register_reset_controller_v1(node, 1, 0xc);
- 
- 	return r;
- }
-diff --git a/drivers/clk/mediatek/clk-mt2701-hif.c b/drivers/clk/mediatek/clk-mt2701-hif.c
-index 61444881c539..426a54cb077b 100644
---- a/drivers/clk/mediatek/clk-mt2701-hif.c
-+++ b/drivers/clk/mediatek/clk-mt2701-hif.c
-@@ -57,7 +57,7 @@ static int clk_mt2701_hif_probe(struct platform_device *pdev)
- 		return r;
- 	}
- 
--	mtk_register_reset_controller(node, 1, 0x34);
-+	mtk_register_reset_controller_v1(node, 1, 0x34);
- 
- 	return 0;
- }
-diff --git a/drivers/clk/mediatek/clk-mt2701.c b/drivers/clk/mediatek/clk-mt2701.c
-index 1eb3e4563c3f..0e103d6735bb 100644
---- a/drivers/clk/mediatek/clk-mt2701.c
-+++ b/drivers/clk/mediatek/clk-mt2701.c
-@@ -785,7 +785,7 @@ static int mtk_infrasys_init(struct platform_device *pdev)
- 	if (r)
- 		return r;
- 
--	mtk_register_reset_controller(node, 2, 0x30);
-+	mtk_register_reset_controller_v1(node, 2, 0x30);
- 
- 	return 0;
- }
-@@ -908,7 +908,7 @@ static int mtk_pericfg_init(struct platform_device *pdev)
- 	if (r)
- 		return r;
- 
--	mtk_register_reset_controller(node, 2, 0x0);
-+	mtk_register_reset_controller_v1(node, 2, 0x0);
- 
- 	return 0;
- }
-diff --git a/drivers/clk/mediatek/clk-mt2712.c b/drivers/clk/mediatek/clk-mt2712.c
-index ff72b9ab945b..e80fc89a5a07 100644
---- a/drivers/clk/mediatek/clk-mt2712.c
-+++ b/drivers/clk/mediatek/clk-mt2712.c
-@@ -1361,7 +1361,7 @@ static int clk_mt2712_infra_probe(struct platform_device *pdev)
- 		pr_err("%s(): could not register clock provider: %d\n",
- 			__func__, r);
- 
--	mtk_register_reset_controller(node, 2, 0x30);
-+	mtk_register_reset_controller_v1(node, 2, 0x30);
- 
- 	return r;
- }
-@@ -1383,7 +1383,7 @@ static int clk_mt2712_peri_probe(struct platform_device *pdev)
- 		pr_err("%s(): could not register clock provider: %d\n",
- 			__func__, r);
- 
--	mtk_register_reset_controller(node, 2, 0);
-+	mtk_register_reset_controller_v1(node, 2, 0);
- 
- 	return r;
- }
-diff --git a/drivers/clk/mediatek/clk-mt7622-eth.c b/drivers/clk/mediatek/clk-mt7622-eth.c
-index c9947dc7ba5a..13f346643e26 100644
---- a/drivers/clk/mediatek/clk-mt7622-eth.c
-+++ b/drivers/clk/mediatek/clk-mt7622-eth.c
-@@ -82,7 +82,7 @@ static int clk_mt7622_ethsys_init(struct platform_device *pdev)
- 			"could not register clock provider: %s: %d\n",
- 			pdev->name, r);
- 
--	mtk_register_reset_controller(node, 1, 0x34);
-+	mtk_register_reset_controller_v1(node, 1, 0x34);
- 
- 	return r;
- }
-diff --git a/drivers/clk/mediatek/clk-mt7622-hif.c b/drivers/clk/mediatek/clk-mt7622-hif.c
-index 628be0c9f888..32855bb489a2 100644
---- a/drivers/clk/mediatek/clk-mt7622-hif.c
-+++ b/drivers/clk/mediatek/clk-mt7622-hif.c
-@@ -93,7 +93,7 @@ static int clk_mt7622_ssusbsys_init(struct platform_device *pdev)
- 			"could not register clock provider: %s: %d\n",
- 			pdev->name, r);
- 
--	mtk_register_reset_controller(node, 1, 0x34);
-+	mtk_register_reset_controller_v1(node, 1, 0x34);
- 
- 	return r;
- }
-@@ -115,7 +115,7 @@ static int clk_mt7622_pciesys_init(struct platform_device *pdev)
- 			"could not register clock provider: %s: %d\n",
- 			pdev->name, r);
- 
--	mtk_register_reset_controller(node, 1, 0x34);
-+	mtk_register_reset_controller_v1(node, 1, 0x34);
- 
- 	return r;
- }
-diff --git a/drivers/clk/mediatek/clk-mt7622.c b/drivers/clk/mediatek/clk-mt7622.c
-index 0e1fb30a1e98..953e81049957 100644
---- a/drivers/clk/mediatek/clk-mt7622.c
-+++ b/drivers/clk/mediatek/clk-mt7622.c
-@@ -663,7 +663,7 @@ static int mtk_infrasys_init(struct platform_device *pdev)
- 	if (r)
- 		return r;
- 
--	mtk_register_reset_controller(node, 1, 0x30);
-+	mtk_register_reset_controller_v1(node, 1, 0x30);
- 
- 	return 0;
- }
-@@ -714,7 +714,7 @@ static int mtk_pericfg_init(struct platform_device *pdev)
- 
- 	clk_prepare_enable(clk_data->clks[CLK_PERI_UART0_PD]);
- 
--	mtk_register_reset_controller(node, 2, 0x0);
-+	mtk_register_reset_controller_v1(node, 2, 0x0);
- 
- 	return 0;
- }
-diff --git a/drivers/clk/mediatek/clk-mt7629-eth.c b/drivers/clk/mediatek/clk-mt7629-eth.c
-index 88279d0ea1a7..e47b66c67079 100644
---- a/drivers/clk/mediatek/clk-mt7629-eth.c
-+++ b/drivers/clk/mediatek/clk-mt7629-eth.c
-@@ -92,7 +92,7 @@ static int clk_mt7629_ethsys_init(struct platform_device *pdev)
- 			"could not register clock provider: %s: %d\n",
- 			pdev->name, r);
- 
--	mtk_register_reset_controller(node, 1, 0x34);
-+	mtk_register_reset_controller_v1(node, 1, 0x34);
- 
- 	return r;
- }
-diff --git a/drivers/clk/mediatek/clk-mt7629-hif.c b/drivers/clk/mediatek/clk-mt7629-hif.c
-index 5c5b37207afb..72f261f12e92 100644
---- a/drivers/clk/mediatek/clk-mt7629-hif.c
-+++ b/drivers/clk/mediatek/clk-mt7629-hif.c
-@@ -88,7 +88,7 @@ static int clk_mt7629_ssusbsys_init(struct platform_device *pdev)
- 			"could not register clock provider: %s: %d\n",
- 			pdev->name, r);
- 
--	mtk_register_reset_controller(node, 1, 0x34);
-+	mtk_register_reset_controller_v1(node, 1, 0x34);
- 
- 	return r;
- }
-@@ -110,7 +110,7 @@ static int clk_mt7629_pciesys_init(struct platform_device *pdev)
- 			"could not register clock provider: %s: %d\n",
- 			pdev->name, r);
- 
--	mtk_register_reset_controller(node, 1, 0x34);
-+	mtk_register_reset_controller_v1(node, 1, 0x34);
- 
- 	return r;
- }
-diff --git a/drivers/clk/mediatek/clk-mt8135.c b/drivers/clk/mediatek/clk-mt8135.c
-index 09ad272d51f1..d649e817b320 100644
---- a/drivers/clk/mediatek/clk-mt8135.c
-+++ b/drivers/clk/mediatek/clk-mt8135.c
-@@ -559,7 +559,7 @@ static void __init mtk_infrasys_init(struct device_node *node)
- 		pr_err("%s(): could not register clock provider: %d\n",
- 			__func__, r);
- 
--	mtk_register_reset_controller(node, 2, 0x30);
-+	mtk_register_reset_controller_v1(node, 2, 0x30);
- }
- CLK_OF_DECLARE(mtk_infrasys, "mediatek,mt8135-infracfg", mtk_infrasys_init);
- 
-@@ -587,7 +587,7 @@ static void __init mtk_pericfg_init(struct device_node *node)
- 		pr_err("%s(): could not register clock provider: %d\n",
- 			__func__, r);
- 
--	mtk_register_reset_controller(node, 2, 0);
-+	mtk_register_reset_controller_v1(node, 2, 0);
- }
- CLK_OF_DECLARE(mtk_pericfg, "mediatek,mt8135-pericfg", mtk_pericfg_init);
- 
-diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
-index 46b7655feeaa..11becf2f7a9f 100644
---- a/drivers/clk/mediatek/clk-mt8173.c
-+++ b/drivers/clk/mediatek/clk-mt8173.c
-@@ -882,7 +882,7 @@ static void __init mtk_infrasys_init(struct device_node *node)
- 		pr_err("%s(): could not register clock provider: %d\n",
- 			__func__, r);
- 
--	mtk_register_reset_controller(node, 2, 0x30);
-+	mtk_register_reset_controller_v1(node, 2, 0x30);
- }
- CLK_OF_DECLARE(mtk_infrasys, "mediatek,mt8173-infracfg", mtk_infrasys_init);
- 
-@@ -910,7 +910,7 @@ static void __init mtk_pericfg_init(struct device_node *node)
- 		pr_err("%s(): could not register clock provider: %d\n",
- 			__func__, r);
- 
--	mtk_register_reset_controller(node, 2, 0);
-+	mtk_register_reset_controller_v1(node, 2, 0);
- }
- CLK_OF_DECLARE(mtk_pericfg, "mediatek,mt8173-pericfg", mtk_pericfg_init);
- 
-diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
-index 68496554dd3d..ac76328c423d 100644
---- a/drivers/clk/mediatek/clk-mt8183.c
-+++ b/drivers/clk/mediatek/clk-mt8183.c
-@@ -1239,7 +1239,7 @@ static int clk_mt8183_infra_probe(struct platform_device *pdev)
- 		return r;
- 	}
- 
--	mtk_register_reset_controller_set_clr(node, 4, INFRA_RST0_SET_OFFSET);
-+	mtk_register_reset_controller_v2(node, 4, INFRA_RST0_SET_OFFSET);
- 
- 	return r;
- }
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index bf6565aa7319..601db24a342b 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -190,11 +190,11 @@ void mtk_free_clk_data(struct clk_onecell_data *clk_data);
- struct clk *mtk_clk_register_ref2usb_tx(const char *name,
- 			const char *parent_name, void __iomem *reg);
- 
--void mtk_register_reset_controller(struct device_node *np,
--			unsigned int num_regs, int regofs);
-+void mtk_register_reset_controller_v1(struct device_node *np,
-+				      unsigned int num_regs, int regofs);
- 
--void mtk_register_reset_controller_set_clr(struct device_node *np,
--	unsigned int num_regs, int regofs);
-+void mtk_register_reset_controller_v2(struct device_node *np,
-+				      unsigned int num_regs, int regofs);
- 
- struct mtk_clk_desc {
- 	const struct mtk_gate *clks;
 diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
-index 834d26e9bdfd..b1012b0c44d0 100644
+index 709ae54efc18..19f7ac0f8145 100644
 --- a/drivers/clk/mediatek/reset.c
 +++ b/drivers/clk/mediatek/reset.c
-@@ -19,75 +19,79 @@ struct mtk_reset {
- 	struct reset_controller_dev rcdev;
- };
- 
--static int mtk_reset_assert_set_clr(struct reset_controller_dev *rcdev,
--	unsigned long id)
-+static int mtk_reset_assert_v1(struct reset_controller_dev *rcdev,
-+			       unsigned long id)
- {
- 	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
--	unsigned int reg = data->regofs + ((id / 32) << 4);
- 
--	return regmap_write(data->regmap, reg, BIT(id % 32));
-+	return regmap_update_bits(data->regmap,
-+				  data->regofs + ((id / 32) << 2),
-+				  BIT(id % 32), ~0);
+@@ -138,4 +138,14 @@ int mtk_clk_register_rst_ctrl(struct device_node *np,
+ 	return 0;
  }
  
--static int mtk_reset_deassert_set_clr(struct reset_controller_dev *rcdev,
--	unsigned long id)
-+static int mtk_reset_deassert_v1(struct reset_controller_dev *rcdev,
-+				 unsigned long id)
- {
- 	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
--	unsigned int reg = data->regofs + ((id / 32) << 4) + 0x4;
- 
--	return regmap_write(data->regmap, reg, BIT(id % 32));
-+	return regmap_update_bits(data->regmap,
-+				  data->regofs + ((id / 32) << 2),
-+				  BIT(id % 32), 0);
- }
- 
--static int mtk_reset_assert(struct reset_controller_dev *rcdev,
--			      unsigned long id)
-+static int mtk_reset_assert_v2(struct reset_controller_dev *rcdev,
-+			       unsigned long id)
- {
- 	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
- 
--	return regmap_update_bits(data->regmap, data->regofs + ((id / 32) << 2),
--			BIT(id % 32), ~0);
-+	return regmap_write(data->regmap,
-+			    data->regofs + ((id / 32) << 4),
-+			    BIT(id % 32));
- }
- 
--static int mtk_reset_deassert(struct reset_controller_dev *rcdev,
--				unsigned long id)
-+static int mtk_reset_deassert_v2(struct reset_controller_dev *rcdev,
-+				 unsigned long id)
- {
- 	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
- 
--	return regmap_update_bits(data->regmap, data->regofs + ((id / 32) << 2),
--			BIT(id % 32), 0);
-+	return regmap_write(data->regmap,
-+			    data->regofs + ((id / 32) << 4) + 0x4,
-+			    BIT(id % 32));
- }
- 
--static int mtk_reset(struct reset_controller_dev *rcdev,
--			      unsigned long id)
-+static int mtk_reset_v1(struct reset_controller_dev *rcdev,
-+			unsigned long id)
- {
- 	int ret;
- 
--	ret = mtk_reset_assert(rcdev, id);
-+	ret = mtk_reset_assert_v1(rcdev, id);
- 	if (ret)
- 		return ret;
- 
--	return mtk_reset_deassert(rcdev, id);
-+	return mtk_reset_deassert_v1(rcdev, id);
- }
- 
--static int mtk_reset_set_clr(struct reset_controller_dev *rcdev,
--	unsigned long id)
-+static int mtk_reset_v2(struct reset_controller_dev *rcdev,
-+			unsigned long id)
- {
- 	int ret;
- 
--	ret = mtk_reset_assert_set_clr(rcdev, id);
-+	ret = mtk_reset_assert_v2(rcdev, id);
- 	if (ret)
- 		return ret;
--	return mtk_reset_deassert_set_clr(rcdev, id);
-+	return mtk_reset_deassert_v2(rcdev, id);
- }
- 
--static const struct reset_control_ops mtk_reset_ops = {
--	.assert = mtk_reset_assert,
--	.deassert = mtk_reset_deassert,
--	.reset = mtk_reset,
-+static const struct reset_control_ops mtk_reset_ops_v1 = {
-+	.assert = mtk_reset_assert_v1,
-+	.deassert = mtk_reset_deassert_v1,
-+	.reset = mtk_reset_v1,
- };
- 
--static const struct reset_control_ops mtk_reset_ops_set_clr = {
--	.assert = mtk_reset_assert_set_clr,
--	.deassert = mtk_reset_deassert_set_clr,
--	.reset = mtk_reset_set_clr,
-+static const struct reset_control_ops mtk_reset_ops_v2 = {
-+	.assert = mtk_reset_assert_v2,
-+	.deassert = mtk_reset_deassert_v2,
-+	.reset = mtk_reset_v2,
- };
- 
- static void mtk_register_reset_controller_common(struct device_node *np,
-@@ -123,18 +127,18 @@ static void mtk_register_reset_controller_common(struct device_node *np,
- 	}
- }
- 
--void mtk_register_reset_controller(struct device_node *np,
-+void mtk_register_reset_controller_v1(struct device_node *np,
- 	unsigned int num_regs, int regofs)
- {
- 	mtk_register_reset_controller_common(np, num_regs, regofs,
--		&mtk_reset_ops);
-+					     &mtk_reset_ops_v1);
- }
- 
--void mtk_register_reset_controller_set_clr(struct device_node *np,
-+void mtk_register_reset_controller_v2(struct device_node *np,
- 	unsigned int num_regs, int regofs)
- {
- 	mtk_register_reset_controller_common(np, num_regs, regofs,
--		&mtk_reset_ops_set_clr);
-+					     &mtk_reset_ops_v2);
- }
- 
++int mtk_clk_unregister_rst_ctrl(struct mtk_clk_rst_data *clk_rst)
++{
++	if (!clk_rst)
++		return -EINVAL;
++
++	reset_controller_unregister(&clk_rst->rcdev);
++
++	return 0;
++}
++
  MODULE_LICENSE("GPL");
+diff --git a/drivers/clk/mediatek/reset.h b/drivers/clk/mediatek/reset.h
+index 851a29c92440..86a785630bb6 100644
+--- a/drivers/clk/mediatek/reset.h
++++ b/drivers/clk/mediatek/reset.h
+@@ -27,4 +27,6 @@ struct mtk_clk_rst_data {
+ int mtk_clk_register_rst_ctrl(struct device_node *np,
+ 			      struct mtk_clk_rst_data *clk_rst);
+ 
++int mtk_clk_unregister_rst_ctrl(struct mtk_clk_rst_data *clk_rst);
++
+ #endif /* __DRV_CLK_MTK_RESET_H */
 -- 
 2.18.0
 
