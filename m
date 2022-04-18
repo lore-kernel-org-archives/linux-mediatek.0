@@ -4,63 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C489C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Apr 2022 09:10:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06ED0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Apr 2022 11:47:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=YTjZJp6CXbaBhsE3+wOzn6f233XWmcYrBLjKm2kr1NY=; b=hxVYHPiFd9sYnT
-	Ky/UPYETJP5wvJg3cH3jjzoKvhT4uagkFPangDzTntUCXSR1fcHFwbWfe2PxYz7cyHUpCHXPFMWe2
-	3+h6eyRIni+PZKrwsxXBRq+7frZjad8TGmNqElCqUDlNAdLjFm86oN3lZIHqmiit12DmzWVF8WuAY
-	WGvDh4kTDifJNBhRCn1xhJ0mSmcAiP2c1T3OhbJoUb3dQ5klDxhi1r6rot8HV8gElJqAHiBJhb0jU
-	KnRTkD7tqly1ToEjIDGL202Zmt2zddR2IWFgR1N0j+BrEjw5BaGJb7/EfTDDMDMeSYSwC40JyOiH/
-	FmJBzqBljhk9+rUFMwAA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hF5DI1Ap8pc0jlcLM3Y4GFWl2SI/lCdpmBhgX6LUmWU=; b=f5rltTQF3UqQL4
+	kw7N591xSLIoTd7bMtEv47IrG6SJow+Fkn+e9WKmdcGzOr9ncWMmYupF/Uwb/HpLj14iixmLUCePo
+	xw09lzKEIxRv/Rj2oJlEyCOhp90HN1KVEriOkVtiijsZAsW2c8ulpCG1GFXYzomdgILlpVxONcjyG
+	bvsv/l8KQ6lXUmfM3ey1Wwb4VfIonRZnwklS6Tu2nvt0hgHDWDJeLqMhUy3wgQvQRWjAiI2rWYGGL
+	nFmHe5b1G5SfGD7ew2in8J4iE8qXKzDrLzNSuksEZYZASEwdbXqmjPOlwu2nGUy/+R4hLdrs9MpsX
+	V7S2eghH+Y4RX8gk/unA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngNOK-00G9Aw-7Q; Mon, 18 Apr 2022 09:09:52 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ngPqT-00GWu9-6S; Mon, 18 Apr 2022 11:47:05 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngNO9-00G98f-6D; Mon, 18 Apr 2022 09:09:42 +0000
-X-UUID: 7bc1ccf937b8483880e890cb3fab8bd7-20220418
-X-UUID: 7bc1ccf937b8483880e890cb3fab8bd7-20220418
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ping-lei.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1592098218; Mon, 18 Apr 2022 02:09:35 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 Apr 2022 02:07:37 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 Apr 2022 17:07:30 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 18 Apr 2022 17:07:29 +0800
-From: James_Lin <Ping-lei.Lin@mediatek.com>
-To: <linux-kernel@vger.kernel.org>
-CC: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, "Mauro Carvalho
- Chehab" <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- "Hans Verkuil" <hverkuil-cisco@xs4all.nl>, Ezequiel Garcia
- <ezequiel@vanguardiasur.com.ar>, Arnd Bergmann <arnd@arndb.de>, "Ricardo
- Ribalda" <ribalda@chromium.org>, Sergey Senozhatsky
- <senozhatsky@chromium.org>, Alexandre Courbot <acourbot@chromium.org>,
- "Sakari Ailus" <sakari.ailus@linux.intel.com>, <linux-media@vger.kernel.org>, 
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <ping-lei.lin@mediatek.com>, <sherlock.chang@mediatek.com>,
- <lecopzer.chen@mediatek.com>, <max.yan@mediatek.com>, <tm.wu@mediatek.com>,
- James_Lin <Ping-lei.Lin@mediatek.com>
-Subject: [PATCH v3] media: usb: uvc: Add UVC_GUID_FORMAT_H265
-Date: Mon, 18 Apr 2022 17:06:52 +0800
-Message-ID: <20220418090652.3156-1-Ping-lei.Lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1ngPqD-00GWmB-R2
+ for linux-mediatek@lists.infradead.org; Mon, 18 Apr 2022 11:46:51 +0000
+Received: by mail-ed1-x531.google.com with SMTP id t25so17168690edt.9
+ for <linux-mediatek@lists.infradead.org>; Mon, 18 Apr 2022 04:46:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=+cw4FNIPaljad3e8DVkQCepUmXxjBo/m/1jzgFfcs8U=;
+ b=EMcu0tCDeljFb7yHhoncmFDGX2SNBoNZN7shP4Vbct870LIS3zdaHeLX47ou4Q+5D9
+ dZYybx1/z7lfr+84/yT46CL0XbfDr0nSxKz6+vCHyIkyZCrn6zfEgtJ+x98m1m8v0PTG
+ 2TgpWiJex5byMDJ6mi53I5qkeuPWAQnBT4PxO7Rohb8x3nlcVJL08dz+kXpL++Nl4RBv
+ 5fPp0twwX/XxBTU1wbXFwyCQGxfxf6PaqWgB2ChGMpLe2o42PTgXTrqS3Vvcip0zbOXm
+ uGRIKClvBlJGV52N3TULTQfRzrTbSqgGgXPF5rg9GTw1NVnQ8BU2teLRbn2vOPdR6fsQ
+ Z9UA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=+cw4FNIPaljad3e8DVkQCepUmXxjBo/m/1jzgFfcs8U=;
+ b=Xz9GaY1S9G+WAzmpKWz2s/N3mtCOeRaiQWgbjN4Y0UzIJ5/LKV81tEzCIzufQJ/ZlZ
+ tFEAAntRCnHBW6G78KBLN3/2XXrhXGQOzy9+wZGXylyWg8eZsB27Hiz0F9Fx4CZT/s9Y
+ dOlNYgmUsjuP3VLN2hTzi1H9BM8glmtymW5Aab2rTwWwmQaa0LHUl0wpfVx3+72gHwoq
+ RVXT2xpkOvnbxH15x7BeKBaLfFnH2qZMy30AHipGtyF3ZH4y5PJoI3X0EADqfu4G6Tyi
+ g2CNZbkZe9Wn8SXoiPFLXr+p9B+JVD7OcBh4j84QFEP7Apsy+hR9JMi3UYmE/j3ObKOo
+ IRjA==
+X-Gm-Message-State: AOAM530sPG9aSZA1txo0Lrj2mP2ygHB8BDUTj9pQCyU1U4BvbJMPJjYy
+ kV5cAzRnBCj+NnTgXXjVmW7mSw==
+X-Google-Smtp-Source: ABdhPJywPDma12a05kBaxZILSMPLyMoVhakudsXTChLuj+deflBnxYq4hwWmM8t0rSpj543MZo2mCQ==
+X-Received: by 2002:a05:6402:2056:b0:41d:70c3:2904 with SMTP id
+ bc22-20020a056402205600b0041d70c32904mr11725923edb.397.1650282406266; 
+ Mon, 18 Apr 2022 04:46:46 -0700 (PDT)
+Received: from [192.168.0.217] (xdsl-188-155-176-92.adslplus.ch.
+ [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
+ p2-20020a056402154200b0042323822e15sm4345412edx.74.2022.04.18.04.46.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 18 Apr 2022 04:46:45 -0700 (PDT)
+Message-ID: <df46a147-c4c7-c0bc-e195-d47344413b29@linaro.org>
+Date: Mon, 18 Apr 2022 13:46:44 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH 2/2] arm64: dts: mediatek: mt8195: add UFS HCI node
+Content-Language: en-US
+To: Fabien Parent <fparent@baylibre.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220415165939.1861470-1-fparent@baylibre.com>
+ <20220415165939.1861470-2-fparent@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220415165939.1861470-2-fparent@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220418_020941_264802_7A5CF1AF 
-X-CRM114-Status: GOOD (  13.98  )
+X-CRM114-CacheID: sfid-20220418_044649_910311_6B7DCEE5 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,57 +95,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch aims to add UVC_GUID_FORMAT_H265
-High Efficiency Video Coding (HEVC), also known as H.265 and MPEG-H Part 2.
-They describe the same video encoding method.
-So for handling their behavior is the same.
-However, when external camera device describes this encoding method, 
-some use hevc, some use h265.
-There is no uniform specification to describe this encoding method.
-So if an external camera device use h265 to describe this encoding method,
-driver will not recognize it.
-Therefore, this patch is to enable driver to read HEVC/H265 
-and convert it to V4L2_PIX_FMT_HEVC.
+On 15/04/2022 18:59, Fabien Parent wrote:
+> Add the node for the UFS HCI controller for the MediaTek MT8195 SoC.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 24 ++++++++++++++++++++++++
+>  1 file changed, 24 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index b57e620c2c72..2255e19cc3b2 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -619,6 +619,30 @@ mmc2: mmc@11250000 {
+>  			status = "disabled";
+>  		};
+>  
+> +		ufshci: ufshci@11270000 {
 
-Signed-off-by: James_Lin <Ping-lei.Lin@mediatek.com>
----
- drivers/media/usb/uvc/uvc_driver.c | 5 +++++
- drivers/media/usb/uvc/uvcvideo.h   | 3 +++
- 2 files changed, 8 insertions(+)
+Generic node name, so just "ufs".
 
-diff --git a/drivers/media/usb/uvc/uvc_driver.c b/drivers/media/usb/uvc/uvc_driver.c
-index dda0f0aa78b8..e437e9f95890 100644
---- a/drivers/media/usb/uvc/uvc_driver.c
-+++ b/drivers/media/usb/uvc/uvc_driver.c
-@@ -154,6 +154,11 @@ static struct uvc_format_desc uvc_fmts[] = {
- 		.guid		= UVC_GUID_FORMAT_H264,
- 		.fcc		= V4L2_PIX_FMT_H264,
- 	},
-+	{
-+		.name		= "H.265",
-+		.guid		= UVC_GUID_FORMAT_H265,
-+		.fcc		= V4L2_PIX_FMT_HEVC,
-+	},
- 	{
- 		.name		= "Greyscale 8 L/R (Y8I)",
- 		.guid		= UVC_GUID_FORMAT_Y8I,
-diff --git a/drivers/media/usb/uvc/uvcvideo.h b/drivers/media/usb/uvc/uvcvideo.h
-index 143230b3275b..41f4d8c33f2a 100644
---- a/drivers/media/usb/uvc/uvcvideo.h
-+++ b/drivers/media/usb/uvc/uvcvideo.h
-@@ -139,6 +139,9 @@
- #define UVC_GUID_FORMAT_H264 \
- 	{ 'H',  '2',  '6',  '4', 0x00, 0x00, 0x10, 0x00, \
- 	 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71}
-+#define UVC_GUID_FORMAT_H265 \
-+	{ 'H',  '2',  '6',  '5', 0x00, 0x00, 0x10, 0x00, \
-+	 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71}
- #define UVC_GUID_FORMAT_Y8I \
- 	{ 'Y',  '8',  'I',  ' ', 0x00, 0x00, 0x10, 0x00, \
- 	 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71}
--- 
-2.18.0
 
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
