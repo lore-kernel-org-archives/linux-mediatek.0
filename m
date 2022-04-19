@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 697ABC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 12:59:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF529C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 13:02:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SM24Jjld+pNp4p0Zpyy/kTKdVS4XCktGpb72TySKtkE=; b=g9SepQcuYt3bw9
-	1t8nD+YWLHvOvZq9pabWOuFGHBIfA0bLr0lkKsWk5H0yrLQ9rAPoBhJuH//RohVg/08JkW5+CCeLw
-	ggV3IMyil3IJo9Ai51gk+XpvcgfuqiX4wPLsgjhDLA1/fFrrFHU71gVGuSTeOnbCP8705ugUCy0gW
-	4ko60VZNBXLnc+t/iLR0Hi8NqE1PL0SdsfqOez9xbKFLx+LlioHpf6dp1NhEx8vn4N5u25gDNn1SY
-	gPaUxD/83SpVZ+WlzsmUPhObnYCbIoXfIqtUnT9zkieUOM5rO1QpIChxLd8oV3ueu6hOtKGdQqY9y
-	BtLPgrIVAasB5yUIiAtw==;
+	List-Owner; bh=20Tas5GOMFm5j7Vy6wo8j3W5tppdj+LZZNN4a4V1uKE=; b=Xoz+CQEb0rZf3v
+	Y76/2Vh5uFGZQcPbYqVObkk6McfOW3F5iOdXkGQME/nPZTM2OyFAh5bcCnN5NaMuMMKY7EmaFpzRB
+	zmafNngFk9h062yjNdmwNgvBFyHqKa66ftnljwqymWLux9iDjewxC1ZPxB4K95HCSsDAF5KyjeEOM
+	nsJJyzXSXdtJKxsRODNl7XbZzSeRp+Cx7k5v8Gn2hPZM24FXR3Vux35LqUzfz7tkgK/9qkeAbrQqi
+	803jRmWXuwjeud9dFOX6CvQmV7dgzleGtK30MMh7x1ji5k8FZ07UHvLszsoxWep32aNK9+2Sg+nRv
+	L0E3GtDhLjNXYlHPWWSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngnRs-003fXG-KG; Tue, 19 Apr 2022 12:59:16 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1ngnUb-003ggQ-Sm; Tue, 19 Apr 2022 13:02:05 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngmLa-003FS7-La
- for linux-mediatek@lists.infradead.org; Tue, 19 Apr 2022 11:48:44 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 62AFEB81808
- for <linux-mediatek@lists.infradead.org>; Tue, 19 Apr 2022 11:48:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2AAAAC385A5
- for <linux-mediatek@lists.infradead.org>; Tue, 19 Apr 2022 11:48:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1650368919;
- bh=JCgMiwyD52Mfee1pO8eoHv8GHzhEnFXjizjVzOtSsxA=;
- h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
- b=TqINAChhZ7wi6fBGA+9pDD8w2vbni+85039Pnd3TxFjZSu1q30q+guJ0MT3hIcwZ2
- pcPguPhrO6WmkL024XmA8T/+SU4yT2aOKVlZtW+/NVucZdezx2waHofWKCNi/Dh1aH
- ZnPSGGwKNqyVLFGJJq7fE+fQbuD352g8EMafw+IpRsspSWqolLk1RUzQ3rVj7kF2Xd
- CYHmI0l/+2X8+y8iWQNMAc3+skJdsrPIhcLCfPgJrLsRdGlOPnohGOUZMzyU7sMZgd
- DofSxA/OpPw/CH4jPd26C8C/S42fPoBFuguy5Knpvz0ltC3dVM7XNMC/FGPoWxPudK
- uqwFJpKX6wSiQ==
-Received: by mail-io1-f53.google.com with SMTP id p21so17264841ioj.4
- for <linux-mediatek@lists.infradead.org>; Tue, 19 Apr 2022 04:48:39 -0700 (PDT)
-X-Gm-Message-State: AOAM533Pacc9/DE42dDUwZ7lLBok0cf5XRo7fLNTTYDYX9Lgg4pb+05R
- u1o9inoM00lhGRo4dPrTS5gh1ruwqCGtdojNFZ0=
-X-Google-Smtp-Source: ABdhPJzuYOxUEZRVrD/jtl+UDqJFtOunqtwPeJ91XckRk2H4XnuZJUi8XlLNq9Ql3EoVGm6A8oyVg3Uz5km3drehUYU=
-X-Received: by 2002:a05:6602:15c6:b0:611:591d:1d9a with SMTP id
- f6-20020a05660215c600b00611591d1d9amr6332958iow.177.1650368918339; Tue, 19
- Apr 2022 04:48:38 -0700 (PDT)
+ id 1ngmMk-003FoG-Bo; Tue, 19 Apr 2022 11:49:57 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 0A8C71F42295
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1650368991;
+ bh=Pi7GPCmSvHdvR1Ecs53jheIVCw4lXdkX58W3D+whacM=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=ac5VlRksWcTJyr755h6mA9syvqZNifNIe88McjmaqzoZuT+dnL7nPx4We/fmgK9lL
+ 1KnGmgolPgLqN8VFxqsgd8Q0xXQ8td7NJUP5JxKkXg5F+2Zbf8bnzWBXYG1hwJZaqQ
+ HUOsdCFS7klx/ip9rUV7IRxygaCBFeaT94rJpmi0JavW6ufQ67WPN0RNkqwLQonDv0
+ maETNGQHZRySuiOjgNbpeE0xeujfaZIZDMphlddPQHikUDzdXOtmVQ6yB5H3abJVX3
+ CwGOdW0PPgvxkdbv64IdxEz+KElMTKXO1/ac7hCPY/Z+gk00E6QMNJX078nBLQONN3
+ 19A2DAiX/Np6g==
+Message-ID: <aa952c27-0ea3-19ac-3fee-eff48b920985@collabora.com>
+Date: Tue, 19 Apr 2022 13:49:49 +0200
 MIME-Version: 1.0
-References: <b6e1b4b7b5f894cf77a60768e445218805fbb681.camel@mediatek.com>
-In-Reply-To: <b6e1b4b7b5f894cf77a60768e445218805fbb681.camel@mediatek.com>
-From: Josh Boyer <jwboyer@kernel.org>
-Date: Tue, 19 Apr 2022 07:48:27 -0400
-X-Gmail-Original-Message-ID: <CA+5PVA55rfq0pgGXCHgt0AhyS=yRYU_nLoM3kif7qejVnbJRGw@mail.gmail.com>
-Message-ID: <CA+5PVA55rfq0pgGXCHgt0AhyS=yRYU_nLoM3kif7qejVnbJRGw@mail.gmail.com>
-Subject: Re: pull request: linux-firmware: Create Mediatek MT8195 SCP firmware
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Linux Firmware <linux-firmware@kernel.org>, 
- linux-mediatek <linux-mediatek@lists.infradead.org>, rongchang@google.com, 
- Yunfei Dong <yunfei.dong@mediatek.com>, Shawn Ku <shawnku@google.com>,
- stevecho@google.com, Project_Global_Chrome_Upstream_Group@mediatek.com, 
- srv_heupstream@mediatek.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v2 1/2] dt-bindings: remoteproc: mediatek: add
+ firmware-name property
+Content-Language: en-US
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Ohad Ben-Cohen <ohad@wizery.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-remoteproc@vger.kernel.org
+References: <20220414122140.6114-1-allen-kh.cheng@mediatek.com>
+ <20220414122140.6114-2-allen-kh.cheng@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220414122140.6114-2-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_044842_906104_6B5CF2BB 
-X-CRM114-Status: GOOD (  18.14  )
+X-CRM114-CacheID: sfid-20220419_044954_805245_06361137 
+X-CRM114-Status: UNSURE (   7.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,49 +73,20 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 14, 2022 at 2:48 AM Tinghan Shen <tinghan.shen@mediatek.com> wrote:
->
-> Hi,
->
-> Add new SCP firmware for MediaTek MT8195.
-> Thank you!
->
->
-> Regards,
-> TingHan
->
-> ---
-> The following changes since commit 8a2d811764e7fcc9e2862549f91487770b70563b:
->
->   rtl_bt: Add firmware and config files for RTL8852C (2022-04-13 07:10:23 -0400)
->
-> are available in the Git repository at:
->
->   https://github.com/tinghan-shen/linux_fw_scp v14454.8.0
+Il 14/04/22 14:21, Allen-KH Cheng ha scritto:
+> The SCP needs firmware which differs between other platforms and SoCs.
+> Add a new property "firmware-name" to allow the DT to specify the
+> platform/board specific path to this firmware file.
+> 
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 
-Pulled and pushed out.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-josh
-
->
-> for you to fetch changes up to 10612bd12e4778069aff50caad9431002f92e374:
->
->   mediatek: Add mt8195 SCP firmware (2022-04-14 14:03:33 +0800)
->
-> ----------------------------------------------------------------
-> Tinghan Shen (1):
->       mediatek: Add mt8195 SCP firmware
->
->  WHENCE                  |   2 ++
->  mediatek/mt8195/scp.img | Bin 0 -> 429668 bytes
->  2 files changed, 2 insertions(+)
->  create mode 100644 mediatek/mt8195/scp.img
->
 
 _______________________________________________
 Linux-mediatek mailing list
