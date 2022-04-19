@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AAABC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 09:53:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE872C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 09:53:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/7Q2IPopXXqzwvwpWPviEnFOODeqXsJEK3SOQD/Srz0=; b=SMuME0g/weUtkX
-	UjIA2rNHZ8CbgrSl+iCVYb/uw69KRCd99Ltz26/7oaLvMb+/RFDj9j8HZZ0KWYfuUYaac/wrQ+h3G
-	Yh0k/CY5OlmIXy+rth3GJ4q92ZOmx58RmXnYFbz+JZ2s8RemBl7AP/QDxds5VS1WPWorRHqMyxULD
-	cRcsMYPMSJ94aDoS3OrntbTHT4jqtueiLXkKzsZMvYAo9jkRvieRSWhQJ4rc2A95DjGcwmfh90hxy
-	KzMhFZqeKf4xoXNPVBNX13ERMnmKYSRTm2R/b6IoNTJfbYx6Bmbs1rz3dspk9RnqyikhrVV+yNFl/
-	9EsC9DHTIHUn90K5FsGw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LfxwB0qohcZV6T1iQGG6Dg9B4Df5wSHCAR72MzaGXzE=; b=ek6eX2fAvEsHHx
+	gBJEWupCmXZP+WXwvLVTITodgSlKMmhQfLm2g0izCGXWMicbbxfYsJHriQnLoRzfg/WHMj4AdCp+S
+	ut0zGCHS2M3ox0YqGH/UpNmfcr2It1UyCqfB5Z+JaQcBOtQQ2u1X0yDSSsE4cAx8/QT4jETcgLuJM
+	7I+NgqBHthAr6FVPnE0sDSu2dSfpeL1yjQG0FL8LDuRvfCMrnYzAMoENchL8BaEJpNMFORPe4m7Mf
+	TEAlb4gEJsMGvyrQPqAYTBIKNhXRjfHounnZXGrE0CpDC6N5tFLjF9dOl8i3eubJrdAHv8ZL2zMHq
+	FG6rXiWhYM/XoZNrqFzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngkXp-002dL9-1f; Tue, 19 Apr 2022 09:53:13 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ngkY9-002dYy-1W; Tue, 19 Apr 2022 09:53:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngkWc-002coH-2O; Tue, 19 Apr 2022 09:51:59 +0000
-X-UUID: 9c0497e096b341f99a797181cf51bc08-20220419
-X-UUID: 9c0497e096b341f99a797181cf51bc08-20220419
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1ngkWd-002co6-Jh; Tue, 19 Apr 2022 09:52:01 +0000
+X-UUID: 01ca13771d5747cd8c47391ef13bf1a1-20220419
+X-UUID: 01ca13771d5747cd8c47391ef13bf1a1-20220419
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1548793887; Tue, 19 Apr 2022 02:51:54 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 19 Apr 2022 02:41:51 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 19 Apr 2022 17:41:46 +0800
+ with ESMTP id 1359681048; Tue, 19 Apr 2022 02:51:54 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 19 Apr 2022 02:41:52 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 19 Apr 2022 17:41:45 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 19 Apr 2022 17:41:46 +0800
+ Frontend Transport; Tue, 19 Apr 2022 17:41:44 +0800
 From: jason-jh.lin <jason-jh.lin@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
  <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
@@ -49,19 +48,17 @@ CC: CK Hu <ck.hu@mediatek.com>, Jason-JH Lin <jason-jh.lin@mediatek.com>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
  <linux-arm-kernel@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v20 6/8] soc: mediatek: add DDP_DOMPONENT_DITHER0 enum for
- mt8195 vdosys0
-Date: Tue, 19 Apr 2022 17:41:41 +0800
-Message-ID: <20220419094143.9561-7-jason-jh.lin@mediatek.com>
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, jason-jhlin
+ <jason-jh.lin@mediatek.corp-partner.google.com>
+Subject: [PATCH v20 0/8] Add Mediatek Soc DRM (vdosys0) support for mt8195
+Date: Tue, 19 Apr 2022 17:41:35 +0800
+Message-ID: <20220419094143.9561-1-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220419094143.9561-1-jason-jh.lin@mediatek.com>
-References: <20220419094143.9561-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_025158_159635_FA7FE4FB 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20220419_025159_712743_32020098 
+X-CRM114-Status: GOOD (  21.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,209 +75,150 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mmsys routing table of mt8195 vdosys0 has 2 DITHER components,
-so mmsys need to add DDP_COMPONENT_DITHER1 and change all usages of
-DITHER enum form DDP_COMPONENT_DITHER to DDP_COMPONENT_DITHER0.
+From: jason-jhlin <jason-jh.lin@mediatek.corp-partner.google.com>
 
-But its header need to keep DDP_COMPONENT_DITHER enum
-until drm/mediatek also changed it.
+Change in v20:
+- split binding patch to another series 'MediaTek MT8195 display binding':
+  https://patchwork.ozlabs.org/project/devicetree-bindings/list/?series=295669
+- fix io_start type from u32 to resource_size_t
+- fix some commit message for DITHER enum
 
-Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mt8167-mmsys.h    |  2 +-
- drivers/soc/mediatek/mt8183-mmsys.h    |  2 +-
- drivers/soc/mediatek/mt8186-mmsys.h    |  4 ++--
- drivers/soc/mediatek/mt8192-mmsys.h    |  4 ++--
- drivers/soc/mediatek/mt8195-mmsys.h    |  8 ++++----
- drivers/soc/mediatek/mt8365-mmsys.h    |  4 ++--
- drivers/soc/mediatek/mtk-mutex.c       | 10 +++++-----
- include/linux/soc/mediatek/mtk-mmsys.h |  1 +
- 8 files changed, 18 insertions(+), 17 deletions(-)
+Change in v19:
+- fix checking condition for the return vaule of platform resource
+- drm/mediatek fix build waning for [-Wunused-const-variable]
 
-diff --git a/drivers/soc/mediatek/mt8167-mmsys.h b/drivers/soc/mediatek/mt8167-mmsys.h
-index 2772ef5e3934..f7a35b3656bb 100644
---- a/drivers/soc/mediatek/mt8167-mmsys.h
-+++ b/drivers/soc/mediatek/mt8167-mmsys.h
-@@ -18,7 +18,7 @@ static const struct mtk_mmsys_routes mt8167_mmsys_routing_table[] = {
- 		DDP_COMPONENT_OVL0, DDP_COMPONENT_COLOR0,
- 		MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN, OVL0_MOUT_EN_COLOR0,
- 	}, {
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_RDMA0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_RDMA0,
- 		MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_RDMA0
- 	}, {
- 		DDP_COMPONENT_OVL0, DDP_COMPONENT_COLOR0,
-diff --git a/drivers/soc/mediatek/mt8183-mmsys.h b/drivers/soc/mediatek/mt8183-mmsys.h
-index 0c021f4b76d2..ff6be1703469 100644
---- a/drivers/soc/mediatek/mt8183-mmsys.h
-+++ b/drivers/soc/mediatek/mt8183-mmsys.h
-@@ -41,7 +41,7 @@ static const struct mtk_mmsys_routes mmsys_mt8183_routing_table[] = {
- 		MT8183_DISP_OVL1_2L_MOUT_EN, MT8183_OVL1_2L_MOUT_EN_RDMA1,
- 		MT8183_OVL1_2L_MOUT_EN_RDMA1
- 	}, {
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8183_DISP_DITHER0_MOUT_EN, MT8183_DITHER0_MOUT_IN_DSI0,
- 		MT8183_DITHER0_MOUT_IN_DSI0
- 	}, {
-diff --git a/drivers/soc/mediatek/mt8186-mmsys.h b/drivers/soc/mediatek/mt8186-mmsys.h
-index c72ccf86ea28..eb1ad9c37a9c 100644
---- a/drivers/soc/mediatek/mt8186-mmsys.h
-+++ b/drivers/soc/mediatek/mt8186-mmsys.h
-@@ -76,12 +76,12 @@ static const struct mtk_mmsys_routes mmsys_mt8186_routing_table[] = {
- 		MT8186_RDMA0_SOUT_TO_COLOR0
- 	},
- 	{
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8186_DISP_DITHER0_MOUT_EN, MT8186_DITHER0_MOUT_EN_MASK,
- 		MT8186_DITHER0_MOUT_TO_DSI0,
- 	},
- 	{
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8186_DISP_DSI0_SEL_IN, MT8186_DSI0_SEL_IN_MASK,
- 		MT8186_DSI0_FROM_DITHER0
- 	},
-diff --git a/drivers/soc/mediatek/mt8192-mmsys.h b/drivers/soc/mediatek/mt8192-mmsys.h
-index 6aae0b12b6ff..a016d80b4bc1 100644
---- a/drivers/soc/mediatek/mt8192-mmsys.h
-+++ b/drivers/soc/mediatek/mt8192-mmsys.h
-@@ -40,7 +40,7 @@ static const struct mtk_mmsys_routes mmsys_mt8192_routing_table[] = {
- 		MT8192_DISP_OVL2_2L_MOUT_EN, MT8192_OVL2_2L_MOUT_EN_RDMA4,
- 		MT8192_OVL2_2L_MOUT_EN_RDMA4
- 	}, {
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8192_DISP_DITHER0_MOUT_EN, MT8192_DITHER0_MOUT_IN_DSI0,
- 		MT8192_DITHER0_MOUT_IN_DSI0
- 	}, {
-@@ -52,7 +52,7 @@ static const struct mtk_mmsys_routes mmsys_mt8192_routing_table[] = {
- 		MT8192_DISP_AAL0_SEL_IN, MT8192_AAL0_SEL_IN_CCORR0,
- 		MT8192_AAL0_SEL_IN_CCORR0
- 	}, {
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8192_DISP_DSI0_SEL_IN, MT8192_DSI0_SEL_IN_DITHER0,
- 		MT8192_DSI0_SEL_IN_DITHER0
- 	}, {
-diff --git a/drivers/soc/mediatek/mt8195-mmsys.h b/drivers/soc/mediatek/mt8195-mmsys.h
-index 13ab0ab64396..abfe94a30248 100644
---- a/drivers/soc/mediatek/mt8195-mmsys.h
-+++ b/drivers/soc/mediatek/mt8195-mmsys.h
-@@ -113,7 +113,7 @@ static const struct mtk_mmsys_routes mmsys_mt8195_routing_table[] = {
- 		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_VPP_MERGE_FROM_MASK,
- 		MT8195_SEL_IN_VPP_MERGE_FROM_VDO1_VIRTUAL0
- 	}, {
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSC0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSC0,
- 		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP0_IN_FROM_MASK,
- 		MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0
- 	}, {
-@@ -181,7 +181,7 @@ static const struct mtk_mmsys_routes mmsys_mt8195_routing_table[] = {
- 		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSI0_FROM_MASK,
- 		MT8195_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT
- 	}, {
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSI0_FROM_MASK,
- 		MT8195_SEL_IN_DSI0_FROM_DISP_DITHER0
- 	}, {
-@@ -245,11 +245,11 @@ static const struct mtk_mmsys_routes mmsys_mt8195_routing_table[] = {
- 		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DISP_WDMA0_FROM_MASK,
- 		MT8195_SEL_IN_DISP_WDMA0_FROM_DISP_OVL0
- 	}, {
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSC0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSC0,
- 		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER0_TO_MASK,
- 		MT8195_SOUT_DISP_DITHER0_TO_DSC_WRAP0_IN
- 	}, {
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER0_TO_MASK,
- 		MT8195_SOUT_DISP_DITHER0_TO_DSI0
- 	}, {
-diff --git a/drivers/soc/mediatek/mt8365-mmsys.h b/drivers/soc/mediatek/mt8365-mmsys.h
-index 690e3fe2dee0..24129a6c25f8 100644
---- a/drivers/soc/mediatek/mt8365-mmsys.h
-+++ b/drivers/soc/mediatek/mt8365-mmsys.h
-@@ -41,12 +41,12 @@ static const struct mtk_mmsys_routes mt8365_mmsys_routing_table[] = {
- 		MT8365_DISP_COLOR_SEL_IN_COLOR0,MT8365_DISP_COLOR_SEL_IN_COLOR0
- 	},
- 	{
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8365_DISP_REG_CONFIG_DISP_DITHER0_MOUT_EN,
- 		MT8365_DITHER_MOUT_EN_DSI0, MT8365_DITHER_MOUT_EN_DSI0
- 	},
- 	{
--		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
- 		MT8365_DISP_REG_CONFIG_DISP_DSI0_SEL_IN,
- 		MT8365_DSI0_SEL_IN_DITHER, MT8365_DSI0_SEL_IN_DITHER
- 	},
-diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-index 729ee88035ed..9184684baf1d 100644
---- a/drivers/soc/mediatek/mtk-mutex.c
-+++ b/drivers/soc/mediatek/mtk-mutex.c
-@@ -232,7 +232,7 @@ static const unsigned int mt8167_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8167_MUTEX_MOD_DISP_AAL,
- 	[DDP_COMPONENT_CCORR] = MT8167_MUTEX_MOD_DISP_CCORR,
- 	[DDP_COMPONENT_COLOR0] = MT8167_MUTEX_MOD_DISP_COLOR,
--	[DDP_COMPONENT_DITHER] = MT8167_MUTEX_MOD_DISP_DITHER,
-+	[DDP_COMPONENT_DITHER0] = MT8167_MUTEX_MOD_DISP_DITHER,
- 	[DDP_COMPONENT_GAMMA] = MT8167_MUTEX_MOD_DISP_GAMMA,
- 	[DDP_COMPONENT_OVL0] = MT8167_MUTEX_MOD_DISP_OVL0,
- 	[DDP_COMPONENT_OVL1] = MT8167_MUTEX_MOD_DISP_OVL1,
-@@ -265,7 +265,7 @@ static const unsigned int mt8183_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8183_MUTEX_MOD_DISP_AAL0,
- 	[DDP_COMPONENT_CCORR] = MT8183_MUTEX_MOD_DISP_CCORR0,
- 	[DDP_COMPONENT_COLOR0] = MT8183_MUTEX_MOD_DISP_COLOR0,
--	[DDP_COMPONENT_DITHER] = MT8183_MUTEX_MOD_DISP_DITHER0,
-+	[DDP_COMPONENT_DITHER0] = MT8183_MUTEX_MOD_DISP_DITHER0,
- 	[DDP_COMPONENT_GAMMA] = MT8183_MUTEX_MOD_DISP_GAMMA0,
- 	[DDP_COMPONENT_OVL0] = MT8183_MUTEX_MOD_DISP_OVL0,
- 	[DDP_COMPONENT_OVL_2L0] = MT8183_MUTEX_MOD_DISP_OVL0_2L,
-@@ -279,7 +279,7 @@ static const unsigned int mt8186_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8186_MUTEX_MOD_DISP_AAL0,
- 	[DDP_COMPONENT_CCORR] = MT8186_MUTEX_MOD_DISP_CCORR0,
- 	[DDP_COMPONENT_COLOR0] = MT8186_MUTEX_MOD_DISP_COLOR0,
--	[DDP_COMPONENT_DITHER] = MT8186_MUTEX_MOD_DISP_DITHER0,
-+	[DDP_COMPONENT_DITHER0] = MT8186_MUTEX_MOD_DISP_DITHER0,
- 	[DDP_COMPONENT_GAMMA] = MT8186_MUTEX_MOD_DISP_GAMMA0,
- 	[DDP_COMPONENT_OVL0] = MT8186_MUTEX_MOD_DISP_OVL0,
- 	[DDP_COMPONENT_OVL_2L0] = MT8186_MUTEX_MOD_DISP_OVL0_2L,
-@@ -292,7 +292,7 @@ static const unsigned int mt8192_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8192_MUTEX_MOD_DISP_AAL0,
- 	[DDP_COMPONENT_CCORR] = MT8192_MUTEX_MOD_DISP_CCORR0,
- 	[DDP_COMPONENT_COLOR0] = MT8192_MUTEX_MOD_DISP_COLOR0,
--	[DDP_COMPONENT_DITHER] = MT8192_MUTEX_MOD_DISP_DITHER0,
-+	[DDP_COMPONENT_DITHER0] = MT8192_MUTEX_MOD_DISP_DITHER0,
- 	[DDP_COMPONENT_GAMMA] = MT8192_MUTEX_MOD_DISP_GAMMA0,
- 	[DDP_COMPONENT_POSTMASK0] = MT8192_MUTEX_MOD_DISP_POSTMASK0,
- 	[DDP_COMPONENT_OVL0] = MT8192_MUTEX_MOD_DISP_OVL0,
-@@ -310,7 +310,7 @@ static const unsigned int mt8195_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_CCORR] = MT8195_MUTEX_MOD_DISP_CCORR0,
- 	[DDP_COMPONENT_AAL0] = MT8195_MUTEX_MOD_DISP_AAL0,
- 	[DDP_COMPONENT_GAMMA] = MT8195_MUTEX_MOD_DISP_GAMMA0,
--	[DDP_COMPONENT_DITHER] = MT8195_MUTEX_MOD_DISP_DITHER0,
-+	[DDP_COMPONENT_DITHER0] = MT8195_MUTEX_MOD_DISP_DITHER0,
- 	[DDP_COMPONENT_MERGE0] = MT8195_MUTEX_MOD_DISP_VPP_MERGE,
- 	[DDP_COMPONENT_DSC0] = MT8195_MUTEX_MOD_DISP_DSC_WRAP0_CORE0,
- 	[DDP_COMPONENT_DSI0] = MT8195_MUTEX_MOD_DISP_DSI0,
-diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
-index cff5c9adbf46..59117d970daf 100644
---- a/include/linux/soc/mediatek/mtk-mmsys.h
-+++ b/include/linux/soc/mediatek/mtk-mmsys.h
-@@ -17,6 +17,7 @@ enum mtk_ddp_comp_id {
- 	DDP_COMPONENT_COLOR0,
- 	DDP_COMPONENT_COLOR1,
- 	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_DITHER0 = DDP_COMPONENT_DITHER,
- 	DDP_COMPONENT_DITHER1,
- 	DDP_COMPONENT_DP_INTF0,
- 	DDP_COMPONENT_DP_INTF1,
+Change in v18:
+- change get driver data by io_start and wrap mmsys driver data into
+  mmsys match data structure to support identifying multi mmsys driver
+  data with the same compatible name
+- change DDP_COMPONENT_DITHER to DDP_CONPONENT_DITHER0
+
+Change in v17:
+- change compatible name from 2 vdosys to 1 mmsys
+- add get driver data by clk name function to get corresponding
+  driver data for mt8195 vdosys0
+- add all routing table setting for mt8195 vdosys0
+- remove useless mutex define
+
+Change in v16:
+- rebase on linu-next tag: 'next-20220303'
+- rebase on series: 'Fix MediaTek display dt-bindings issues'
+
+Change in v15:
+- remove mt8195-mmsys.h comment for mux settings
+- define the mask macro to replace using value as mask
+  to fix zero mask problem
+- add EOF setting comment for MUTEX sof register
+
+Change in v14:
+- rebase on mediatek-drm-next-5.17
+- rebase on "Add mmsys and mutex support for MDP" series
+- rebase on "media: mediatek: support mdp3 on mt8183 platform" series
+
+Change in v13:
+- remove dts patch
+- rebase on kernel-5.16-rc1
+- rebase on mediatek-drm-next
+
+Change in v12:
+- add clock-names property to merge yaml
+- using BIT(nr) macro to define the settings of mmsys routing table
+- fix clk_get and clk_prepare_enable error handling issue
+
+Change in v11:
+- rebase on kernel-5.15-rc1
+- change mbox label to gce0 for dts node of vdosys0
+- change ovl compatibale to mt8192 to set smi_id_en=true in driver data
+- move common module from display folder to common folder,
+  such as AAL, COCLOR, CCORR and MUTEX
+
+Change in v10:
+- rebase on "drm/mediatek: add support for mediatek SOC MT8192" series
+- rebase on "soc: mediatek: mmsys: add mt8192 mmsys support" series
+- fix some typo and "mediatek" start with capital in every dt-bindings
+- move mutex yaml from dfisplay folder to soc folder
+- separate merge additional propoerties to an individual dt-bindings patch
+
+Change in v9:
+- separate power and gce properties of mmsys into another dt-binding patch
+- rebase on "Separate aal module" series
+- keep mtk_ddp_clk_enable/disable in the same place
+- change mtk_dsc_start config register to mtk_drm_ddp_write_mask
+- remove the 0 setting of merge fifo config function
+- add CCORR driver data for mt8195
+
+Change in v8:
+- add DP_INTF0 mux into mmsys routing table
+- add DP_INTF0 mutex mod and enum into add/remove comp function
+- remove bypass DSC enum in mtk_ddp_comp_init
+
+Change in v7:
+- add dt=binding of mmsys and disp path into this series
+- separate th modidfication of alphabetic order, remove unused define and
+  rename the define of register offset to individual patch
+- add comment for MERGE ultra and preultra setting
+
+Change in v6:
+- adjust alphabetic order for mediatek-drm
+- move the patch that add mt8195 support for mediatek-drm as
+  the lastest patch
+- add MERGE define for const varriable 
+
+Change in v5:
+- add power-domain property into vdosys0 and vdosys1 dts node.
+- add MT8195 prifix and remove unused VDO1 define in mt8195-mmsys.h
+
+Change in v4:
+- extract dt-binding patches to another patch series
+- squash DSC module into mtk_drm_ddp_comp.c
+- add coment and simplify MERGE config function
+
+Change in v3:
+- change mmsys and display dt-bindings document from txt to yaml
+- add MERGE additional description in display dt-bindings document
+- fix mboxes-cells number of vdosys0 node in dts
+- drop mutex eof convert define
+- remove pm_runtime apis in DSC and MERGE
+- change DSC and MERGE enum to alphabetic order
+
+Change in v2:
+- add DSC yaml file
+- add mt8195 drm driver porting parts in to one patch
+- remove useless define, variable, structure member and function
+- simplify DSC and MERGE file and switch threre order
+
+jason-jh.lin (8):
+  soc: mediatek: add mtk-mmsys support for mt8195 vdosys0
+  soc: mediatek: add mtk-mutex support for mt8195 vdosys0
+  drm/mediatek: add DSC support for mediatek-drm
+  drm/mediatek: add MERGE support for mediatek-drm
+  drm/mediatek: add mediatek-drm of vdosys0 support for mt8195
+  soc: mediatek: add DDP_DOMPONENT_DITHER0 enum for mt8195 vdosys0
+  drm/mediatek: add suffix 0 to DDP_COMPONENT_DITHER for mt8195 vdosys0
+  soc: mediatek: remove DDP_DOMPONENT_DITHER from enum
+
+ drivers/gpu/drm/mediatek/Makefile           |   1 +
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   8 +
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c   | 246 +++++++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |   6 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  65 +++-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   2 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 151 +++++++-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   7 +
+ drivers/soc/mediatek/mt8167-mmsys.h         |   2 +-
+ drivers/soc/mediatek/mt8183-mmsys.h         |   2 +-
+ drivers/soc/mediatek/mt8186-mmsys.h         |   4 +-
+ drivers/soc/mediatek/mt8192-mmsys.h         |   4 +-
+ drivers/soc/mediatek/mt8195-mmsys.h         | 370 ++++++++++++++++++++
+ drivers/soc/mediatek/mt8365-mmsys.h         |   4 +-
+ drivers/soc/mediatek/mtk-mmsys.c            | 152 +++++++-
+ drivers/soc/mediatek/mtk-mmsys.h            |   6 +
+ drivers/soc/mediatek/mtk-mutex.c            |  95 ++++-
+ include/linux/soc/mediatek/mtk-mmsys.h      |  13 +-
+ 18 files changed, 1098 insertions(+), 40 deletions(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
+ create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+
 -- 
 2.18.0
 
