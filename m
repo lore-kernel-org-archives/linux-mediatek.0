@@ -4,86 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACF55C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 15:33:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41AB8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 15:37:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y2DaOD0bIsKnPOwkA86Ekysq0n/nG+XnJXTCzJ2nm7k=; b=bNobE9gQljw0Ae
-	N+RjABFj0k9wScDkWmN7gt80dtvNB66ADE1DERpiTufsGNnKYJX7u7eWfex1Vta2jBwWtlGCRtWan
-	xeqvACJFIdT9urfjXjlsGHpN4Jjtds4i1o4FuOemIM7/zEwYcLF8QdPbNoVD3BS6f7cM8nASwaPHY
-	el3hRfunRDgkjE5FeR3eSOhqIkV7jpHvOCXkg+i6IvF2MUnDzYk7aNFcEsC7RkqGC0ppuNIo6c0i0
-	9oeDYsMpQL60bu4r60Z3r1SE+hPjy53yYEL4d0JQa0ZfZjmMza2W5AGhRjDcyQwfauareheF7ZFFM
-	30Erk2uxjhJvYa1E8XRA==;
+	List-Owner; bh=f3enr6v8PB66wS+OXT79ri8xmzaHEJSgGx+8cUe7aTs=; b=dfTyQ+E8U3BpXC
+	FcV7e5K4K0IqDmmaTtBxaN0FaRSJSD+rbbzmzCkD+cHG1BTcDT5k2AUmp2CEzZUHOljeXGVNnWarV
+	qbZlyMh0z0tXyquCsH/vIHKSzrYdDZXIg3yDfH18C3vjFaZcB+btbCgOsy4zoV4YkoQ3A7bf88CKX
+	T4msoub6AxRKLS8A5g9mSB0zcgfLbB1oczKb15nM/JOsp9WOkhnd2nz0p11EEYLmvqNW1FO6xuHej
+	47DQqkNfm07aD8dLZO0/d7EbDtQnHyFu6Ul02JRJTxtIABcnLkSqpVutTGt5VksaDeLLaSotZzNC5
+	tDZ3U5jNs85Go815YIjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngpr1-004grR-Jb; Tue, 19 Apr 2022 15:33:23 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1ngpue-004iXV-CR; Tue, 19 Apr 2022 15:37:08 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngpJP-004Sns-FC; Tue, 19 Apr 2022 14:58:45 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id
- 123-20020a1c1981000000b0038b3616a71aso1671453wmz.4; 
- Tue, 19 Apr 2022 07:58:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=7ghNXW0NodixkgL8T98CLlpDZH/0jSgrfBNvM5ej23s=;
- b=hlZSGMyqcDPTQx6RmtGj1koskcBFnvovRkA/NkQQc1kdKfUCK/xvxNwK2/QMga//vt
- gvgPCxHQlSAHj+yHIujC+BRmhj1gLP7ekLjV7ZD7NrecJ3BdrZHOw6YBvn/B6cItuKKf
- MdBYEq0rFmbIYogIZIjdsOO2THvp40Dfj3qsPVPkMBNI2i35smPdCI7UEoXt/JwhcW9Q
- gx7Jeu3EnBQWxS746ict9bmJuk74OzwMEBkyzbwQJSY3huu8lXCtxwI5vk9YhVDeGMl8
- YXCw7i4742XSHTgAlzm+90dybKw5PvgRAAqbic2G3krhErrfckVz+/ESYOyynHb2tL31
- 7WQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=7ghNXW0NodixkgL8T98CLlpDZH/0jSgrfBNvM5ej23s=;
- b=DZ0adDG/73yjeJIvYOPMSOyXwtzZzXSUDUgSsVFI4lQj01x6P4IwDCoBr3ljDAZf5q
- m0F4HFUISUJ9bP1bmk66UujVPeyYSMogqlBSUEkcShfmkI+fLpq/9t2sh3qNFa7OFeew
- gsQDbHB7+AU1RMQkJ7pbmACc42fFj/8BJEICYjOn5rAtV6OobIxYaqD9a3xo9fuMywMV
- HmiOcg/IP48MLP67vp2rgkqNzwwxQmQdYaUA4zhyQ02JUvjdVooahMyWTzSDZmAvC3Ki
- aUl0EiOG+n0DcZKOiA5d2QLyXPtG+mMyOtvIm93WzsgNQqKSXd67tOLbR1jtbvzJJwSg
- rwNQ==
-X-Gm-Message-State: AOAM5302QwY45NUhwExjLKu0g2l2VL080ngnKM1heI9Gr5Lskt3jPj1S
- Z+IZG9ZLja7+XV6Fvyi6sKE=
-X-Google-Smtp-Source: ABdhPJybiVLTSTP7L0aETG6uMJhUECVA5p62Vy3/QCjle5pk3JlVskw99zgtPeLU158U++lWgJMu7w==
-X-Received: by 2002:a05:600c:3785:b0:38e:bca8:f0c1 with SMTP id
- o5-20020a05600c378500b0038ebca8f0c1mr19958744wmr.56.1650380314825; 
- Tue, 19 Apr 2022 07:58:34 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
- by smtp.gmail.com with ESMTPSA id
- p3-20020a5d59a3000000b0020a9132d1fbsm6605119wrr.37.2022.04.19.07.58.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 Apr 2022 07:58:34 -0700 (PDT)
-Message-ID: <83a7f222-f62c-fa47-9370-f9b709c3110e@gmail.com>
-Date: Tue, 19 Apr 2022 16:54:30 +0200
+ id 1ngpSt-004Wis-2c; Tue, 19 Apr 2022 15:08:28 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id AC9801F4267B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1650380899;
+ bh=wE87yBeheg5nImXJNHE8hDnX7SEP4mrWfxluB9Rr99Q=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=iAOE9Sv0da11Nw5ZlOwrnD+04YO8d9pRVEOtAeTuuCzELSb0e7r/+3sVXylYRdLNQ
+ 2YbLQXFNhKthcsABt5iOFOH1mk+ZXJZAwIjWnWJs41gl6KEW2zt11XwvpnCSeqSdb4
+ lz7nKBrFFdFl5zTztschsp8IA7iYk+v7jynLoRJYRdDxiDbMbXoK+u7MqAux3e4T1p
+ VpAEml7dKCrm4ljeWeXPvYHHZq/cE/Mqo3kxN5m4EXoFNbSmB8soa7F+L76TUbdpEW
+ 6/PyKOYJq4yZVcSd4tK9Npksy0IzurV1FRNS0ibppcHt6wvZXZQ7eUOHQbv+fFAMka
+ lb1JTfaq6WZ4Q==
+Message-ID: <3591fcc1-d34a-b40a-4e78-edcf9d2ddf08@collabora.com>
+Date: Tue, 19 Apr 2022 17:08:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH 1/5] dt-bindings: arm: mediatek: mmsys: add power and gce
- properties
+ Thunderbird/91.7.0
+Subject: Re: [RFC PATCH 0/7] clk: mediatek: Move to struct clk_hw provider APIs
 Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de
-Cc: airlied@linux.ie, angelogioacchino.delregno@collabora.com,
- jason-jh.lin@mediatek.com, nancy.lin@mediatek.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220419033237.23405-1-rex-bc.chen@mediatek.com>
- <20220419033237.23405-2-rex-bc.chen@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220419033237.23405-2-rex-bc.chen@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Miles Chen <miles.chen@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220419081246.2546159-1-wenst@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220419081246.2546159-1-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_075839_543427_AD36DCAF 
-X-CRM114-Status: GOOD (  20.20  )
+X-CRM114-CacheID: sfid-20220419_080827_271970_7A2AC2CC 
+X-CRM114-Status: GOOD (  15.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,82 +72,50 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 19/04/2022 05:32, Rex-BC Chen wrote:
-> From: "jason-jh.lin" <jason-jh.lin@mediatek.com>
+Il 19/04/22 10:12, Chen-Yu Tsai ha scritto:
+> Hi everyone,
 > 
-> Power:
-> 1. Add description for power-domains property.
+> This is part 2 of my proposed MediaTek clk driver cleanup work [1].
 > 
-> GCE:
-> 1. Add description for mboxes property.
-> 2. Add description for mediatek,gce-client-reg property.
+
+..snip..
+
 > 
-> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
-Applied, thanks.
-
-Matthias
-
-> ---
->   .../bindings/arm/mediatek/mediatek,mmsys.yaml | 31 +++++++++++++++++++
->   1 file changed, 31 insertions(+)
+> The next phase of the cleanup/improvement shall be to introduce some
+> variant of `struct clk_parent_data` to describe clk relationships
+> efficiently.
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> index b31d90dc9eb4..6c2c3edcd443 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> @@ -41,6 +41,30 @@ properties:
->     reg:
->       maxItems: 1
->   
-> +  power-domains:
-> +    description:
-> +      A phandle and PM domain specifier as defined by bindings
-> +      of the power controller specified by phandle. See
-> +      Documentation/devicetree/bindings/power/power-domain.yaml for details.
-> +
-> +  mboxes:
-> +    description:
-> +      Using mailbox to communicate with GCE, it should have this
-> +      property and list of phandle, mailbox specifiers. See
-> +      Documentation/devicetree/bindings/mailbox/mtk-gce.txt for details.
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +
-> +  mediatek,gce-client-reg:
-> +    description:
-> +      The register of client driver can be configured by gce with 4 arguments
-> +      defined in this property, such as phandle of gce, subsys id,
-> +      register offset and size.
-> +      Each subsys id is mapping to a base address of display function blocks
-> +      register which is defined in the gce header
-> +      include/dt-bindings/gce/<chip>-gce.h.
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    maxItems: 1
-> +
->     "#clock-cells":
->       const: 1
->   
-> @@ -56,9 +80,16 @@ additionalProperties: false
->   
->   examples:
->     - |
-> +    #include <dt-bindings/power/mt8173-power.h>
-> +    #include <dt-bindings/gce/mt8173-gce.h>
-> +
->       mmsys: syscon@14000000 {
->           compatible = "mediatek,mt8173-mmsys", "syscon";
->           reg = <0x14000000 0x1000>;
-> +        power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
->           #clock-cells = <1>;
->           #reset-cells = <1>;
-> +        mboxes = <&gce 0 CMDQ_THR_PRIO_HIGHEST>,
-> +                 <&gce 1 CMDQ_THR_PRIO_HIGHEST>;
-> +        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
->       };
+> Please have a look.
+> 
+
+Hello Chen-Yu,
+
+I am grateful to see this series, as the MediaTek clock drivers are getting
+a bit old, despite new platforms being implemented practically as we speak.
+
+With this, you surely get that I completely agree with the proposed cleanup
+and modernization of the entire MediaTek clocks infrastructure, but I think
+that introducing a `struct clk_parent_data` for these drivers is, at this
+point, a must, that not only fully justifies these patches, but also "makes
+the point" - as the effect of that would be a performance improvement as we
+would *at least* avoid lots of clk_cpy_name() in case of parent_hws, or in
+case or parent_data where no .fw_name is provided (which would be the case
+for most of the clocks).
+
+That said, my advice would be to add that conversion to declaring clocks
+with .hw.init.parent_data and/or .hw.init.parent_hws to this series as to
+really make it complete.
+
+Of course, if you have concerns about old platforms that you cannot test,
+or for which this kind of conversion would require a huge amount of effort,
+then I would go for converting as many as possible as a first step and then
+leave the others for later.
+
+I would envision MT8183, 8186, 8192, 8195 to be a good amount of first
+candidates for this great effort.
+
+Cheers,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
