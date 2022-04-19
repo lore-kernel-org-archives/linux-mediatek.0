@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D73CBC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 14:04:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2142C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 14:06:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oxM7UbUxrmMra7fFUnP337cy5f47aoEZrwWygG/gn6w=; b=eplB7LefJ9X94z
-	ELydNxh0XF0pLoy5xW8AxoI4ZqGgPoyUObeAitVbqIO+10FJ4lDXTqiRVnt0kFOHxO2ABi+xDmuaJ
-	OG7CFCWG8ECQDgbXzrkr2GfC0y+XAuL41js6uz6jLGKJfVCmBSa9utS3qFM1TCyOKnrDfBYk0aXNU
-	L+DyquwG6L6j2j7HMd6Y4OxzPXm3JOPTCtmj65jPJ3+evmHj9vyyhm4Othz5+La2fdDHeF49/GnCc
-	ib7iSqKZQLnJQHrqOA95Zx0Uws6KSwimU3y9wLhU6aZZicUAWUKuuGQ3KLLMJLXU/Q1kryK+f8Y0d
-	tzywenNR0iP+3DiGui9A==;
+	List-Owner; bh=BL80PvkVMelq0P2ssncxe8d7ZB5AY3wZtTG7fQPQf70=; b=QZKBBQ120c/6AA
+	xDuCYySZiYokyz65EBtvFWZl5PFlA7x3UiUizK8t28ByCmW0lbKzjLuQpgkfOpYFiiBNckiAJicAq
+	DCcw6HyryGqdi+4dY/0otGytkz7/aYdR9uZjKIC0fsFwCSv/uszItk9aRSnVNWEB+1TYF6rDhgLLa
+	Q24nFODSkp3ST/KltwH5XZ+rxIvnIOcFb24k950voSU8CM/myiYs6mCfZxCXClty4PjRv2Oha57qw
+	lrvlNw7NqWUdVhcvGHsG6VUOLZXf9io+1eqrMfCHgugZWuIbEhwUnsRV7HbwvoyhKiryz1J0Kj9tt
+	+9vmZ6+GxE6zTeL6dHUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngoSw-0046wA-JX; Tue, 19 Apr 2022 14:04:26 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1ngoUd-0047bq-D2; Tue, 19 Apr 2022 14:06:11 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngo1R-003tsK-0v; Tue, 19 Apr 2022 13:36:05 +0000
+ id 1ngo1R-003tsW-7N; Tue, 19 Apr 2022 13:36:07 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 9B74A1F4187E
+ (Authenticated sender: kholk11) with ESMTPSA id 04A051F4189B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
  s=mail; t=1650375358;
- bh=vk7NPyGDSW72/CR4xSo5sVXXJXssU0zofQEVBf5A+AY=;
+ bh=CLJk3c9oJ2tisq5+0Tred5vvArQwwllO49JGhi/m3Sc=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=f01zmwqY3k7nWQyNOvc1+vVhsQbIghHhQj08MOKnUG9yApdtM80a/S5sNnJ0R44J3
- 1wGK04tXRdIGUxF4iP5LWyLxYDs3UnvymibKmO9Gb8w19iwwlHHRcJhhPe13K5Ms+h
- rolUkI+krrLLzIyJ3CIg0ANPH2T8b7Rr/I12FqVI5A2f3xcCDrEn/hakRtcYdSe1ZS
- Nbcs6OYtydQCKTGxtiYFr2xPwNFyLDzw1jfkn9EEr2BoS6RMwebpVVZwyXkSHlKq9H
- OOc/QN3TegPbz8UBMJ7RXlNU135+hWlKHkTGQtfMhKLwTvb06vhN16wfRxGBEFBDoh
- wKKHUroB6FRsw==
-Message-ID: <0c43ed35-db14-9578-16ff-f4c15347929e@collabora.com>
-Date: Tue, 19 Apr 2022 15:35:53 +0200
+ b=e3vTQeFNEXXBsciJkPie7VuCezMNfw/AJ+iFMyOV2osU2gRMKb3YXHi7YV0XqzV1+
+ nVf7ocCj96E0VysaDA/xQVg6h4415Ut8uiKevzlPhGlYzjjQnmRl6ZJcWgkffPzXI6
+ BY/2hJReqN4qT6sAp8SflPrGAB3a7h4mEdTjeSokqshfKRqCEA9iUb76/mwLbe2coF
+ e8nq0w4siVmhC0MiHWU6RpkRDft9bpKKoCRp6YmSaZbmzt+seUpio3HNu2kWEuVsek
+ RfImnL28rFCk7szFsk21Fr3CREhjSdNG0SHlUoVMfVGiGgg+/Civ1BrFttyPovrns2
+ 8CLBxs0gyF3Lw==
+Message-ID: <d821a326-7586-62eb-aba3-1df4d0ad20a5@collabora.com>
+Date: Tue, 19 Apr 2022 15:35:54 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.7.0
-Subject: Re: [PATCH v16 6/6] soc: mediatek: mutex: add functions that operate
- registers by CMDQ
+Subject: Re: [PATCH v16 5/6] dts: arm64: mt8183: add GCE client property for
+ Mediatek MUTEX
 Content-Language: en-US
 To: Moudy Ho <moudy.ho@mediatek.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
@@ -62,12 +62,12 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
  river.cheng@mediatek.com, srv_heupstream@mediatek.com,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20220418083018.1907-1-moudy.ho@mediatek.com>
- <20220418083018.1907-7-moudy.ho@mediatek.com>
+ <20220418083018.1907-6-moudy.ho@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220418083018.1907-7-moudy.ho@mediatek.com>
+In-Reply-To: <20220418083018.1907-6-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_063601_388584_5ED0A79C 
-X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-CacheID: sfid-20220419_063601_542958_3E5FAF7D 
+X-CRM114-Status: UNSURE (   7.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,12 +86,8 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 18/04/22 10:30, Moudy Ho ha scritto:
-> Due to HW limitations, MDP3 is necessary to enable MUTEX in each frame
-> for SOF triggering and cooperate with CMDQ control to reduce the amount
-> of interrupts generated(also, reduce frame latency).
-> 
-> In response to the above situation, a new interface
-> "mtk_mutex_enable_by_cmdq" has been added to achieve the purpose.
+> In order to allow modules with latency requirements such as MDP3
+> to set registers through CMDQ, add the relevant dts property.
 > 
 > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 
