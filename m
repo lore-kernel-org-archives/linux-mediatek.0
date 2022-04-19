@@ -4,79 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18631C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 18:14:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15774C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 18:17:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LrK8M259oqlPsFnZTOpuGuVSLQODStO79xfpDSkbFn8=; b=JQwFfZmp31bkyw
-	Zaal3a2KG6aHQdXz0V7jJ19N1fFlGB6HJXGK3IBLQwyOJLa2XbrTh4rmUOqM/8Gu0/hX+XAdd8blN
-	CdGXl+Pc7k13k/UjomTEdiiLXPfbV+QgxrPJilhb+Goh5IhoXOfld31FEgQtX9Czgaqtp1PYfiPmO
-	o0d47PDUlyS3XAIK5BHDoBlpnnmrQQvmj3NQzbOcAxm1L1FkVkfj49nXU7tU8LmdejDUzXtdUVMdH
-	9cKlvcgPdzQLKXn22RnNiXjQpOXfIgnVEnR/aihpja4XDwRZIl+OlFaNMXGIBHK290IuMjF973GtO
-	lmiPEjvU3obgQSWczjUA==;
+	List-Owner; bh=U3qNMBeXQgxNV3LRczcffEuyuDJVMtUOMUBHnKSMFLw=; b=0CQ4p0DnPxDPhP
+	YBTizZR39dNuVsfC1WiDB7mdKKvi1+Gfgn6+RI1XrKoxmCdULriUswUr5e1hAIJTuxX0Pedmlv80R
+	ZXgVgzOrQUkKkqneYRupEQeilCKMv/+ZhU7o0zFKlWMTA860grbyoY5nGq5ZQ0iJjrCCGhcfFPbhU
+	i+rJwEjg9K9k80j+m7y+O4KEtkeoBvNHf2aNkXOD1rYbUwIaeN+1L1UbnVsKdSw5S578QcpjGELU/
+	apDORRG9zOcEbaIUJaWVP5CGfADFIm4ohN5F7/MvUxAT7f6PfF3D2OrIkjFB82WJqY2jJR7/npm42
+	tUe2mDGysHqXhu8wGLig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngsMu-005Yh8-FQ; Tue, 19 Apr 2022 18:14:28 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1ngsQ0-005aT8-9y; Tue, 19 Apr 2022 18:17:40 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngsLE-005XbG-TM; Tue, 19 Apr 2022 18:12:47 +0000
-Received: by mail-ej1-x631.google.com with SMTP id ks6so34636351ejb.1;
- Tue, 19 Apr 2022 11:12:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=T8WZXYOCLzRkmpLF9jgUFJORJhr+qxoHhiRi9zpd0ak=;
- b=KKC135UwYK8aFfg6KnPB2uae0AGzdqsE2qCEZfPPQkakgr3W9ZpC0gS7cAyPJCSZgu
- iAfkP/W64GRzTOJAbKKbTWbUcfQg4azyTFIdj4PCl9eqHuIeCIdcXiT1u4Wu/CRNwqHC
- 8rglGa0q4v0eHNhHItJ5efTBi2aCewf9I4HhHG1S12AMZg06omh4WmT7kuQKBy0CUgZn
- 8lp3foWbTEMGMBert1cn+XCAaMlUAn4titeD1M6GCN6cdnq5ImqOJBuSCg6U/H1xxlTi
- n3G2TCkSTLgrz+JMDOJBbW7tz1GL8rLePx22kNZiiQdN4Ahov2irzEFvoSRbULcuDydX
- 0s/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=T8WZXYOCLzRkmpLF9jgUFJORJhr+qxoHhiRi9zpd0ak=;
- b=uktdVC4DxTacfHglbvdui9Ou2gkr5REYDHca51dl2axpFYN88SaSjkQSqAckirbW8f
- lNT42hlqnKkk5iPsl457i8FQFY5Qa868WEFgKzgOa1kRb/f7N1N8BELu99KvXtwKYJOs
- ODPaqBvDHZXgDw6C17C/vMQkn1uUX2KckW4Tqt70W4XZmH9LEA+BrAswAzBZZkALmCqO
- xPeuJLHOqYIOa/hApfSrxBsZU8U/69Btm1R7E0WmS1XqjAzvOmBaIMzj5mrxwFLpWunv
- WvP23vltS137GA/sFYXysVqQ/XsQ/FcmnFJeazRAfEfRdlK1rF015gJAM6XJko4nO+Ae
- GUyA==
-X-Gm-Message-State: AOAM530kUNA4dyySgSsADCXXEyK/z4bEhCMGlURjNUDMVT9uVkXu+ViQ
- sqNXmi3q7ch4hXCNfZAKBDQ=
-X-Google-Smtp-Source: ABdhPJySoL89++QqvT+oP9zBi5KoJWlUpMj4I7Bj+2B8C2b9jxLYAeVHWiypffHVq3yANRc52Hhwgw==
-X-Received: by 2002:a17:906:c1d6:b0:6d6:e0a3:bbc7 with SMTP id
- bw22-20020a170906c1d600b006d6e0a3bbc7mr14665249ejb.484.1650391961210; 
- Tue, 19 Apr 2022 11:12:41 -0700 (PDT)
-Received: from localhost.localdomain ([212.102.35.230])
- by smtp.gmail.com with ESMTPSA id
- b20-20020a1709063f9400b006e12836e07fsm5930614ejj.154.2022.04.19.11.12.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Apr 2022 11:12:40 -0700 (PDT)
-From: Yassine Oudjana <yassine.oudjana@gmail.com>
-X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Sam Shih <sam.shih@mediatek.com>, Stephen Boyd <sboyd@kernel.org>,
- Ryder Lee <ryder.lee@kernel.org>,
- Yassine Oudjana <y.oudjana@protonmail.com>, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH 3/3] dt-bindings: arm: mediatek: infracfg: Convert to DT schema
-Date: Tue, 19 Apr 2022 22:09:39 +0400
-Message-Id: <20220419180938.19397-4-y.oudjana@protonmail.com>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20220419180938.19397-1-y.oudjana@protonmail.com>
-References: <20220419180938.19397-1-y.oudjana@protonmail.com>
+ id 1ngsLm-005XzU-FW; Tue, 19 Apr 2022 18:13:26 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id CC1EBB818E0;
+ Tue, 19 Apr 2022 18:13:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91C8DC385A5;
+ Tue, 19 Apr 2022 18:13:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1650391995;
+ bh=4Wxgi3OSyAND3xCtQ83fZNlx1WUMKKBOUaA3R2KTe98=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=s9fW6b29BzI12KWuwkG5z6J2PjXXbzrS2w8iRCmLOMlp05XDkwbrLiH0ATw91VXQ0
+ Q5/sQe1fJz8KuFTYZzT4+cVZZRNcL47C6dypIzGpoRESdclm2DMGEMBOiuukXLeQ3F
+ UzrKl/Y0hHB4zG5xyJMq2KwNZYXO4PuPSxBpctJA1X4vkrhQUiEzGZkSDS3m2xBrkv
+ Kz/C5hO0xlSzN0b935xgvS9Kiwgi+PT3Hym563CnDmcEv8YJg4XiCUy2RLop+pKk1Q
+ 2u9Py4rsHDOIZmVXafdAq5Ge0G+S6yOFaEfQlX90uWNSS2oH1pwJNVuTdJebb3tuqZ
+ /gGyF244kUDRQ==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Borislav Petkov <bp@suse.de>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ Sasha Levin <sashal@kernel.org>, lorenzo@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, christophe.jaillet@wanadoo.fr,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.15 11/27] mt76: Fix undefined behavior due to shift
+ overflowing the constant
+Date: Tue, 19 Apr 2022 14:12:26 -0400
+Message-Id: <20220419181242.485308-11-sashal@kernel.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220419181242.485308-1-sashal@kernel.org>
+References: <20220419181242.485308-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_111245_042994_9CE0956B 
-X-CRM114-Status: GOOD (  16.72  )
+X-CRM114-CacheID: sfid-20220419_111318_726631_170642AB 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,166 +77,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yassine Oudjana <y.oudjana@protonmail.com>
-
-Convert infracfg bindings to DT schema format. Not all drivers
-currently implement resets, so #reset-cells is made a required
-property only for those that do. Using power-controller in the
-example node name makes #power-domain-cells required causing
-a dt_binding_check error. To solve this, the node is renamed to
-syscon@10001000.
-
-Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
----
- .../arm/mediatek/mediatek,infracfg.txt        | 42 ----------
- .../arm/mediatek/mediatek,infracfg.yaml       | 79 +++++++++++++++++++
- 2 files changed, 79 insertions(+), 42 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-deleted file mode 100644
-index f66bd720571d..000000000000
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-+++ /dev/null
-@@ -1,42 +0,0 @@
--Mediatek infracfg controller
--============================
--
--The Mediatek infracfg controller provides various clocks and reset
--outputs to the system.
--
--Required Properties:
--
--- compatible: Should be one of:
--	- "mediatek,mt2701-infracfg", "syscon"
--	- "mediatek,mt2712-infracfg", "syscon"
--	- "mediatek,mt6765-infracfg", "syscon"
--	- "mediatek,mt6779-infracfg_ao", "syscon"
--	- "mediatek,mt6797-infracfg", "syscon"
--	- "mediatek,mt7622-infracfg", "syscon"
--	- "mediatek,mt7623-infracfg", "mediatek,mt2701-infracfg", "syscon"
--	- "mediatek,mt7629-infracfg", "syscon"
--	- "mediatek,mt7986-infracfg", "syscon"
--	- "mediatek,mt8135-infracfg", "syscon"
--	- "mediatek,mt8167-infracfg", "syscon"
--	- "mediatek,mt8173-infracfg", "syscon"
--	- "mediatek,mt8183-infracfg", "syscon"
--	- "mediatek,mt8516-infracfg", "syscon"
--- #clock-cells: Must be 1
--- #reset-cells: Must be 1
--
--The infracfg controller uses the common clk binding from
--Documentation/devicetree/bindings/clock/clock-bindings.txt
--The available clocks are defined in dt-bindings/clock/mt*-clk.h.
--Also it uses the common reset controller binding from
--Documentation/devicetree/bindings/reset/reset.txt.
--The available reset outputs are defined in
--dt-bindings/reset/mt*-resets.h
--
--Example:
--
--infracfg: power-controller@10001000 {
--	compatible = "mediatek,mt8173-infracfg", "syscon";
--	reg = <0 0x10001000 0 0x1000>;
--	#clock-cells = <1>;
--	#reset-cells = <1>;
--};
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-new file mode 100644
-index 000000000000..4f43fe9f103e
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-@@ -0,0 +1,79 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: "http://devicetree.org/schemas/arm/mediatek/mediatek,infracfg.yaml#"
-+$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-+
-+title: MediaTek Infrastructure System Configuration Controller
-+
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+
-+description:
-+  The Mediatek infracfg controller provides various clocks and reset outputs
-+  to the system.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+          - enum:
-+              - mediatek,mt2701-infracfg
-+              - mediatek,mt2712-infracfg
-+              - mediatek,mt6765-infracfg
-+              - mediatek,mt6779-infracfg_ao
-+              - mediatek,mt6797-infracfg
-+              - mediatek,mt7622-infracfg
-+              - mediatek,mt7629-infracfg
-+              - mediatek,mt7986-infracfg
-+              - mediatek,mt8135-infracfg
-+              - mediatek,mt8167-infracfg
-+              - mediatek,mt8173-infracfg
-+              - mediatek,mt8183-infracfg
-+              - mediatek,mt8516-infracfg
-+          - const: syscon
-+      - items:
-+          - const: mediatek,mt7623-infracfg
-+          - const: mediatek,mt2701-infracfg
-+          - const: syscon
-+
-+  reg:
-+    maxItems: 1
-+
-+  '#clock-cells':
-+    const: 1
-+
-+  '#reset-cells':
-+    const: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - '#clock-cells'
-+
-+if:
-+  properties:
-+    compatible:
-+      contains:
-+        enum:
-+          - mediatek,mt2701-infracfg
-+          - mediatek,mt2712-infracfg
-+          - mediatek,mt7622-infracfg
-+          - mediatek,mt7986-infracfg
-+          - mediatek,mt8135-infracfg
-+          - mediatek,mt8173-infracfg
-+          - mediatek,mt8183-infracfg
-+then:
-+  required:
-+    - '#reset-cells'
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    infracfg: syscon@10001000 {
-+        compatible = "mediatek,mt8173-infracfg", "syscon";
-+        reg = <0x10001000 0x1000>;
-+        #clock-cells = <1>;
-+        #reset-cells = <1>;
-+    };
--- 
-2.35.3
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+RnJvbTogQm9yaXNsYXYgUGV0a292IDxicEBzdXNlLmRlPgoKWyBVcHN0cmVhbSBjb21taXQgZGJj
+MmIxNzY0NzM0ODU3ZDY4NDI1NDY4ZmZhODQ4NmU5N2FiODlkZiBdCgpGaXg6CgogIGRyaXZlcnMv
+bmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3NngyL3BjaS5jOiBJbiBmdW5jdGlvbiDigJht
+dDc2eDJlX3Byb2Jl4oCZOgogIC4vLi9pbmNsdWRlL2xpbnV4L2NvbXBpbGVyX3R5cGVzLmg6MzUy
+OjM4OiBlcnJvcjogY2FsbCB0byDigJhfX2NvbXBpbGV0aW1lX2Fzc2VydF85NDbigJkgXAoJZGVj
+bGFyZWQgd2l0aCBhdHRyaWJ1dGUgZXJyb3I6IEZJRUxEX1BSRVA6IG1hc2sgaXMgbm90IGNvbnN0
+YW50CiAgICBfY29tcGlsZXRpbWVfYXNzZXJ0KGNvbmRpdGlvbiwgbXNnLCBfX2NvbXBpbGV0aW1l
+X2Fzc2VydF8sIF9fQ09VTlRFUl9fKQoKU2VlIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3IvWWt3
+UTYlMkJ0SUg4R1FwdWN0QHpuLnRuaWMgZm9yIHRoZSBnb3J5CmRldGFpbHMgYXMgdG8gd2h5IGl0
+IHRyaWdnZXJzIHdpdGggb2xkZXIgZ2NjcyBvbmx5LgoKU2lnbmVkLW9mZi1ieTogQm9yaXNsYXYg
+UGV0a292IDxicEBzdXNlLmRlPgpDYzogRmVsaXggRmlldGthdSA8bmJkQG5iZC5uYW1lPgpDYzog
+TG9yZW56byBCaWFuY29uaSA8bG9yZW56by5iaWFuY29uaTgzQGdtYWlsLmNvbT4KQ2M6IFJ5ZGVy
+IExlZSA8cnlkZXIubGVlQG1lZGlhdGVrLmNvbT4KQ2M6IFNoYXluZSBDaGVuIDxzaGF5bmUuY2hl
+bkBtZWRpYXRlay5jb20+CkNjOiBTZWFuIFdhbmcgPHNlYW4ud2FuZ0BtZWRpYXRlay5jb20+CkNj
+OiBLYWxsZSBWYWxvIDxrdmFsb0BrZXJuZWwub3JnPgpDYzogIkRhdmlkIFMuIE1pbGxlciIgPGRh
+dmVtQGRhdmVtbG9mdC5uZXQ+CkNjOiBKYWt1YiBLaWNpbnNraSA8a3ViYUBrZXJuZWwub3JnPgpD
+YzogbGludXgtd2lyZWxlc3NAdmdlci5rZXJuZWwub3JnCkNjOiBuZXRkZXZAdmdlci5rZXJuZWwu
+b3JnClNpZ25lZC1vZmYtYnk6IEthbGxlIFZhbG8gPGt2YWxvQGtlcm5lbC5vcmc+Ckxpbms6IGh0
+dHBzOi8vbG9yZS5rZXJuZWwub3JnL3IvMjAyMjA0MDUxNTE1MTcuMjk3NTMtOS1icEBhbGllbjgu
+ZGUKU2lnbmVkLW9mZi1ieTogU2FzaGEgTGV2aW4gPHNhc2hhbEBrZXJuZWwub3JnPgotLS0KIGRy
+aXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3NngyL3BjaS5jIHwgMiArLQogMSBm
+aWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc2eDIvcGNpLmMgYi9kcml2ZXJz
+L25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzZ4Mi9wY2kuYwppbmRleCBhZGYyODhlNTBl
+MjEuLjVjZDAzNzlkODZkZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0
+ZWsvbXQ3Ni9tdDc2eDIvcGNpLmMKKysrIGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsv
+bXQ3Ni9tdDc2eDIvcGNpLmMKQEAgLTgwLDcgKzgwLDcgQEAgbXQ3NngyZV9wcm9iZShzdHJ1Y3Qg
+cGNpX2RldiAqcGRldiwgY29uc3Qgc3RydWN0IHBjaV9kZXZpY2VfaWQgKmlkKQogCW10NzZfcm13
+X2ZpZWxkKGRldiwgMHgxNWExMCwgMHgxZiA8PCAxNiwgMHg5KTsKIAogCS8qIFJHX1NTVVNCX0cx
+X0NEUl9CSUNfTFRSID0gMHhmICovCi0JbXQ3Nl9ybXdfZmllbGQoZGV2LCAweDE1YTBjLCAweGYg
+PDwgMjgsIDB4Zik7CisJbXQ3Nl9ybXdfZmllbGQoZGV2LCAweDE1YTBjLCAweGZVIDw8IDI4LCAw
+eGYpOwogCiAJLyogUkdfU1NVU0JfQ0RSX0JSX1BFMUQgPSAweDMgKi8KIAltdDc2X3Jtd19maWVs
+ZChkZXYsIDB4MTVjNTgsIDB4MyA8PCA2LCAweDMpOwotLSAKMi4zNS4xCgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
+ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
