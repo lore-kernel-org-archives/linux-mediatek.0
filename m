@@ -4,79 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F7A1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 01:59:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94C70C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 02:56:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gDpsQVvyghTzNaVPnniyiXzmA0liI+LY+Mrx8Qmyews=; b=4sgs8Esl3lsqIw
-	P1skZfxftevMH7LrTXqT3HgbAcyzv2fNGl46ozD0lC2TKyquJBVfWJ3d7tEbH1Q8r6XMrh74Gzbsf
-	MJKK9634rwqlgDMoBMDwIS3InFaRCqH/qBR2kr6ENV+5EbYvbjr4t76nuEtkC9+lkyZcGq3eTQ0CP
-	XK3F6RS9o3npyB2/iIq4Uc7t3BlDRdDl5ejxp/kwwqwc1vbNeOWw4yVre2SupuHz4gN5qz+eOGx3m
-	9JBo96zdvpR5M6odyhbqKoEmD14ScgAnXgl3uu6ndU6TMenmwWrMElPj6qle0CvrfjXQwXvURQkN0
-	OpHe0zEoQB/+VbmeRTJA==;
+	List-Owner; bh=ytsSiNouttporTTe+jwPZFGJTU1zH7HYFPXNYZhzsVg=; b=m96sTpajnh31pJ
+	Cn6ZLkEnGtddhmZbErUkQjHrG4qACYNYgnJQFK0xc0hcytcvxLIGqBnWqEHQP0RxbVG1rXyIG2gk3
+	bV2ZWQBjulAZ/rbiuXtMb3HHCnZSReej/9HfuwTPGp3JGBu17L2kTpS0lWoOyY64MyUe2Y43BZVYd
+	6AR6l/ABOvab9jeaLq/qZlcUcG3W9iHcya0cdp1CIX7JYAmQoF6tCWrrIX6iSKv+t5z8FYCBWaLbQ
+	p5wMRm+P+mv3pK8TSasn8feu59OwbjIJuPsqOf1gNnDHZ9CuB5xoEq/6qismLOs7ZcvoEh0FxdCjV
+	ItSoSj+KydsTMxUboGXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngd8n-0016Fz-Gb; Tue, 19 Apr 2022 01:58:53 +0000
-Received: from mail-qv1-xf32.google.com ([2607:f8b0:4864:20::f32])
+	id 1nge2D-001D45-Nc; Tue, 19 Apr 2022 02:56:09 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngd8c-0016Cp-8l; Tue, 19 Apr 2022 01:58:43 +0000
-Received: by mail-qv1-xf32.google.com with SMTP id y19so12164167qvk.5;
- Mon, 18 Apr 2022 18:58:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=WNU/TphCFnbVlBp1Z5GLi2lvQvgI9Sbk164GKyVPu8E=;
- b=hDaaH9Aj1f5M/81SYEwYOiK6gb2rb/RJ5UI25cuoR+XXx9AxrAW6gRCLn4XoPuw2vp
- MKeweM5OEOgh5mme7ASmV2f9nuogyfaCcbfGINPok9hAwddtEsxQQl8pahynBep7WiO0
- djDB87thbWxH7rUbQ9cvSzOXNMpMUllB1TOpzHJm/XWx6Bth+SMLyclxItqQ8C7bcFl2
- 4mscroyzSj/MTHwfdxiRnRCdkWq6amSwmscjayA+ZnpL0oCNHGTyGpwwyrDlZK/C24uN
- YZEWbZgDMM0aWPYeFpujosa/VVMo++DDWogwSmgauK5dusjsyt5dTyS0aP84gbQJpWCX
- T4Dg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=WNU/TphCFnbVlBp1Z5GLi2lvQvgI9Sbk164GKyVPu8E=;
- b=NMvlm4I1OXoEcQwZaktTFt4rHtGolgBD2bDCKS4r0Xrrkvhd2z8rHUusrXYfyT9/a7
- ChbZP6BmaGfKpnrHsLmYj9kAoHn+23XtthEO0zvhKjEgllka0DGjPv7R+qvUujMZMAYf
- TE2WvyWQ+UzdyKC87PtR+LCmHRQS3o3Vt2M0XbzSnJY5M9LcB5+mhXeSTS8cqBBByApT
- jPGdyXr1gDH8oFtzEbaIkkYfD/opBrz3fhOgUIoMpfigcT+c2P12huot/qIUC+ysjZye
- A3xhuLhFW1NoRTHpkf1DU4LelVX9nb0t7tUL9m1PjYo5IWa9DWK3DraRL5PMNonlCrIo
- HANQ==
-X-Gm-Message-State: AOAM532fm0yl+oHW+EoonIxvmxBSr0fPTmCZ9QSnRcl8KAIsi3T/xMfT
- PWD3UOUv/QFI8DsLfEfYMIg=
-X-Google-Smtp-Source: ABdhPJwM2wWDgSXWxNeAPoGVjU8YN2SYfC/GsxDdiLjs1L6aTlJIWp5um2jAKuULyWgE6dXx0SQd2A==
-X-Received: by 2002:a0c:a98a:0:b0:443:e880:501a with SMTP id
- a10-20020a0ca98a000000b00443e880501amr10190878qvb.73.1650333520662; 
- Mon, 18 Apr 2022 18:58:40 -0700 (PDT)
-Received: from localhost.localdomain ([193.203.214.57])
- by smtp.gmail.com with ESMTPSA id
- g9-20020ac85d49000000b002f1fbe305e7sm3281002qtx.80.2022.04.18.18.58.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Apr 2022 18:58:40 -0700 (PDT)
-From: cgel.zte@gmail.com
-X-Google-Original-From: lv.ruyi@zte.com.cn
-To: nbd@nbd.name,
-	john@phrozen.org,
-	sean.wang@mediatek.com
-Cc: Mark-MC.Lee@mediatek.com, davem@davemloft.net, kuba@kernel.org,
- pabeni@redhat.com, matthias.bgg@gmail.com, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Lv Ruyi <lv.ruyi@zte.com.cn>,
- Zeal Robot <zealci@zte.com.cn>
-Subject: [PATCH] net: ethernet: mtk_eth_soc: fix error check return value of
- debugfs_create_dir()
-Date: Tue, 19 Apr 2022 01:58:32 +0000
-Message-Id: <20220419015832.2562366-1-lv.ruyi@zte.com.cn>
-X-Mailer: git-send-email 2.25.1
+ id 1nge2B-001D3D-Ar; Tue, 19 Apr 2022 02:56:08 +0000
+X-UUID: 417d1faea1e94c3c9356f65d49ff3359-20220418
+X-UUID: 417d1faea1e94c3c9356f65d49ff3359-20220418
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 179706463; Mon, 18 Apr 2022 19:56:02 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 18 Apr 2022 19:56:01 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 19 Apr 2022 10:55:59 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 19 Apr 2022 10:55:59 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ "Chen-Yu Tsai" <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, Hui
+ Liu <hui.liu@mediatek.com>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Subject: [PATCH 0/2] arm64: dts: mt8192: Add audio-related nodes
+Date: Tue, 19 Apr 2022 10:55:55 +0800
+Message-ID: <20220419025557.22262-1-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220418_185842_350457_96059405 
-X-CRM114-Status: GOOD (  11.09  )
+X-CRM114-CacheID: sfid-20220418_195607_412879_50537559 
+X-CRM114-Status: UNSURE (   7.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,33 +72,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lv Ruyi <lv.ruyi@zte.com.cn>
+Take audio-related nodes patch from series 20220330133816.30806-1-allen-kh.cheng@mediatek.com/
+This patch is based on matthias.bgg/linux.git, v5.18-next/dts64
 
-If an error occurs, debugfs_create_file() will return ERR_PTR(-ERROR),
-so use IS_ERR() to check it.
+We add another PATCH for updating clocks and clock-names in the bindings.
 
-Fixes: 804775dfc288 ("net: ethernet: mtk_eth_soc: add support for Wireless Ethernet Dispatch (WED)")
-Reported-by: Zeal Robot <zealci@zte.com.cn>
-Signed-off-by: Lv Ruyi <lv.ruyi@zte.com.cn>
----
- drivers/net/ethernet/mediatek/mtk_wed_debugfs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Allen-KH Cheng (1):
+  arm64: dts: mt8192: Add audio-related nodes
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c b/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
-index a81d3fd1a439..0c284c18a8d7 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
-@@ -165,7 +165,7 @@ void mtk_wed_hw_add_debugfs(struct mtk_wed_hw *hw)
- 
- 	snprintf(hw->dirname, sizeof(hw->dirname), "wed%d", hw->index);
- 	dir = debugfs_create_dir(hw->dirname, NULL);
--	if (!dir)
-+	if (IS_ERR(dir))
- 		return;
- 
- 	hw->debugfs_dir = dir;
+Jiaxin Yu (1):
+  ASoC: dt-bindings: mediatek: mt8192: complete clocks and clock-names
+
+ .../bindings/sound/mt8192-afe-pcm.yaml        | 165 +++++++++++++++++-
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi      | 135 +++++++++++++-
+ 2 files changed, 286 insertions(+), 14 deletions(-)
+
 -- 
-2.25.1
+2.18.0
 
 
 _______________________________________________
