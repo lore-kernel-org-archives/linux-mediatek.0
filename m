@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDAAAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 14:07:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 079A8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 14:08:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5eIVmBaJo+M/6q0JV7qaMKiQDWXiBpB30eT6wpjGDHQ=; b=bEml6uTXuqmJMz
-	I2P0H/n+JUK6PHqFstEGWPGG05f6laNfEdXLHk05wriDce5ro6T55+PmSeP+GsVpljpnmHb+QFoZs
-	bpL3+sKpYa+CjfMOrcOWChaxjWWJJkGLJJsFI5FiybD2uoQr+eDcgLUAdLoVMI4Byn274pXo0K4RC
-	606r72cY68BB5J+eyZ1/CtGRlOfHfYiiafYzrjOY6ujKCuzgX0+aK50bB5GAeOo8rd2BlpDxlwFx5
-	sGcqxNOj+k7dFblTzqzyNHsQ2fNWdsMPOuDYGw13YnSXGb0guWRRDhwpk2XlzN6lDIrJnkTvP8g4R
-	mBh1XiXxMKXAPzyRXbcQ==;
+	List-Owner; bh=3skn6+NLpYC/Tq/oSWRs3f/Tjr7EGB0rgpVmcmEdgcc=; b=FLrrUYKxCUUqlh
+	N5i4FvwX2J0aaWcKdzmoFBK5IPnnIaEbwmHSlvO/LJGh/XGQcvzbwzNblqv0/1E1T2Pn/LTkMX6a1
+	K1OFC3nQ/sI4UJoPg5EEn6uRkpsjZrc8od5gsqNN9Z3UFFBK67gnbjolggSi8NhbhbtrLJlbCq9Wc
+	Ah8HQBhZ8UzgInkN+uGewNapGQtClr3URClNCSNPcM9Bd2eh5rJnb5ZXGWfyQWmVpE29R8B8dS04M
+	tEX6cBXIk/57ldFfYpr22EJGlgbfevRQgz3HTypFtnnPNr32thUroEMFyDgro7JoDMpknBVVs22vk
+	bh0OPIi81GTD4dmL/cCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngoVT-0047wO-9f; Tue, 19 Apr 2022 14:07:03 +0000
+	id 1ngoWV-0048SE-6G; Tue, 19 Apr 2022 14:08:07 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngo1T-003tuq-Ph; Tue, 19 Apr 2022 13:36:08 +0000
+ id 1ngo1c-003twE-PJ; Tue, 19 Apr 2022 13:36:14 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id E9FB11F41949
+ (Authenticated sender: kholk11) with ESMTPSA id 497021F4196E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1650375362;
- bh=kFgZwklCLt9uY71SZ4MBle/pcGaF0o432ETt0n7h+nI=;
+ s=mail; t=1650375365;
+ bh=l0PW7e+6W+aaMzk2U8nvs+mNTAlvq/0lMKfGCn5v1qo=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=HrjI+cYon1IK45n0Q9IlZPHlV6AwtIBuPD57SgOHXdsyyJPJiFd0TSX9TqUOQcIWz
- 1zgGk74CovGY743Fbb9PvdeenkW8d+bMcm4nowOlcFcNS2Sa7xp4q8udvEvwlf2/uQ
- LPAzwT5fE/Fol/Aio4OeRypMBm0RD6Gs74UgdH76mc80UKgRPugXRoPQlOV69MK0IC
- aVWredpPlLLvPCdWAVKCH1UjM6XMKkTrhnV0BShopwbY2rZlLIEk1qj9KsN6fFPR1O
- 33FAJ59c4qdDEPDshl4glCt8NclTnXClnM4Jwfo5dRpGNxTrGxqeNuHuJKmCmWtEe4
- /0cv53df3hLGg==
-Message-ID: <6bd8dff2-1ed6-de6a-4759-5b2035ae7df5@collabora.com>
-Date: Tue, 19 Apr 2022 15:35:59 +0200
+ b=lN4vsatvsaxNRST52TP7FxX+njdf8wsKm1XU7qdEqyhqhvJKCdPhSqsDATugOCz3Z
+ iQO4acUTT/i1lcBQx1+3gkwnBStD3gP1xRfD4/VfjWjiZqYVMcamKk9/BDuQ2W8WqA
+ eiAmym8AGy1rffeU01ZOZcpcMzZv8AMLm1TnBPDSo6kH5Qn1rh8pC6gROrlx7ksm4E
+ vNbVWqC6064eoSOGweSFBsmP+9x3p7r3U73Jvl0fni4GWGe2kpGy2/PAAP/mPJZ4mh
+ NZBq74/gHzc6evdgfQXDfFT09qnfTta7Qq/6km31D3Qof7JjQomWe0aFLPjg1VnFqi
+ OFW1tr+6lp4wQ==
+Message-ID: <3448a113-3ea3-08bb-950a-16c2ac6eec75@collabora.com>
+Date: Tue, 19 Apr 2022 15:36:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.7.0
-Subject: Re: [PATCH v16 2/6] soc: mediatek: mutex: add 8183 MUTEX MOD settings
- for MDP
+Subject: Re: [PATCH v16 1/6] soc: mediatek: mutex: add common interface for
+ modules setting
 Content-Language: en-US
 To: Moudy Ho <moudy.ho@mediatek.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
@@ -62,12 +62,12 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
  river.cheng@mediatek.com, srv_heupstream@mediatek.com,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20220418083018.1907-1-moudy.ho@mediatek.com>
- <20220418083018.1907-3-moudy.ho@mediatek.com>
+ <20220418083018.1907-2-moudy.ho@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220418083018.1907-3-moudy.ho@mediatek.com>
+In-Reply-To: <20220418083018.1907-2-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_063604_111210_44E2BEB9 
-X-CRM114-Status: UNSURE (   8.39  )
+X-CRM114-CacheID: sfid-20220419_063613_003008_67DD6743 
+X-CRM114-Status: UNSURE (   8.66  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,9 +86,15 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 18/04/22 10:30, Moudy Ho ha scritto:
-> For the purpose of module independence, related settings should be moved
-> from MDP to the corresponding driver.
-> This patch adds 8183 MUTEX MOD settings for MDP.
+> In order to allow multiple modules to operate MUTEX hardware through
+> a common interfrace, a flexible index "mtk_mutex_table_index" needs to
+> be added to replace original component ID so that like DDP and MDP
+> can add their own MUTEX table settings independently.
+> 
+> In addition, 4 generic interface "mtk_mutex_set_mod", "mtk_mutex_set_sof",
+> "mtk_mutex_clear_mod" and "mtk_mutex_clear_sof" have been added, which is
+> expected to replace the "mtk_mutex_add_comp" and "mtk_mutex_remove_comp"
+> pair originally dedicated to DDP in the future.
 > 
 > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 
