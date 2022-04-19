@@ -4,87 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDA18C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 10:12:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C3EDC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 10:48:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ze+4ICEsGG4mqyzMuCgA0nMOZ8NopSYXieatetHi4L8=; b=U8ycscKasoiYm7
-	EQp0aPE51aY+y5Ri+HjTbEjHwYVIcchNRMVyRtJERu8Oh7N9/JeFdUKkqAS9ZP6dBEkALiA6DxpEK
-	MKYlj2r6fSIwBaVwox56nvpiIc1s8HjvvdITQVXV97AvwkebGEG/8KllXRljVBU5TDCZ8uI5hIv5d
-	EcGf9EVWu1OxFsW3IvIDYLLpeI1mI/Fr/tTad9A38HxMf/LB3gyhT6BuexL6F4ahPmJwfiaoo/Z6M
-	qy+iibe2y54via7iXRd6E7VIqzicN3vXQZvbhuC4XGYA0LIM3JCfGaGgDrrgE6wGIycX5DTD4JP3u
-	lTCtgwx0D74kIUywF9nQ==;
+	List-Owner; bh=odCn37t5bxX1MyaLCbYnta8X8BSUGFdGKoMzzu4Ipzs=; b=kA2N138RkXF0F8
+	OVvQPbK/+I6ikxfMGbJh1w4TVuUGEYdYaTZecN8dvsDX5NOc9glH3+iglB7foQ8/HiWxok3CjI/bU
+	zl/u14AqluYMT3q13srWNlDfsa75lMWloFxJx2Bx228j5HVXo7bDcr6D9TGq2bLIw8fsph2vVCUuL
+	cfrZY/FezXo4Mq+CXSRnjPciBlIjq+dVNqoJhf0aYSZXW9WxTYwSJTIKWk4yuvUXQbvoEoaaTAk9O
+	mCmaZsztlvdi6BQXxzlKwSNvO+B2eDl9jz9mSDVBu51yvk+/Y9Wvt6zeiuk8I5lYHLV0PSBmhOAXw
+	ztzEEBA7sw8AWgOMilMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngkql-002jWU-0v; Tue, 19 Apr 2022 10:12:47 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1nglPU-002tr2-4c; Tue, 19 Apr 2022 10:48:40 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngkqW-002jPe-U1
- for linux-mediatek@lists.infradead.org; Tue, 19 Apr 2022 10:12:34 +0000
-Received: by mail-ed1-x534.google.com with SMTP id v15so20546387edb.12
- for <linux-mediatek@lists.infradead.org>; Tue, 19 Apr 2022 03:12:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=4fzcJSI4oOEyvvnWtTfDgElotLoa5ZRCyODN9ZoDFYc=;
- b=FG2yAAJmlE+e+JJGNL8YIpRAVvDoS5XUHDS3v5TQv4Rpdhr16E7ZVqU+GzX9yQIA5n
- pIRsy6MUX6vZEcwe6QA/1RygGMWK/8PGY4obKR2gvNl7DVSevzthr7FEvcW7q6eXcRU9
- PCjLA5tc+sjbgh0aUwnz5mwZo3UogarS7z0U/sJzjW/xvuwqkrIUuvTOfoXKSJDjERCo
- lunMI6LAuEplt2QvPPEVMlK8UWAZ18wZ/S+ev0mJrX1ghAL2P1AFKl0LwUipaJOe6UeH
- rWCDV6QIV+QMDi6Xc1D4FuHVhDcVhlCQCHDYYKK6DyRC6kfmErIsA5/Twx4TRir4NeF6
- YY5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=4fzcJSI4oOEyvvnWtTfDgElotLoa5ZRCyODN9ZoDFYc=;
- b=cMrLO9UyzuzX8+k8QkoyDP5gJCeL4fsEvzpiu2deKthrfQzJA8JhtFsWixQKQDoQNF
- gAzlEyh/K/2VBFjOv8YnYW8Txz9tri/su1M5v4udGkCm2EWrMjwkix5mv9MAp3AGGBLp
- VGKK/XbqsN9YuKxUh9FBNiDPbdDhL65Mp4cA4IjhpxMk6Kk7lVPz5dOGcW/xIUri4pCw
- D2Yh9W0tYF9medj2nxffHHmMVIc/qxaJGteIuCYkp+FnvR01+/7+vVMuwmO1wtRyrnOy
- AtuR0DyfVmjTuB9eiTDAe2j3yytuXIfK8dz4K+Q0X+KB0MAsRplS1Y8OdHNon2a1/zjk
- hVtw==
-X-Gm-Message-State: AOAM533sT66eIGipgxj/roTxTk2GzhQ8EadcoAPnyRGN0YELCQKxgEQJ
- lSoNjwpSs/VXlrM0Rakx7tlXQw==
-X-Google-Smtp-Source: ABdhPJwHU6aPLpAzrjz5Zh03plssXITh4QZGe1lmzwZykI8LaTdTDd22ZXc7Gpd2lL1bn4JHn4Wiug==
-X-Received: by 2002:aa7:d049:0:b0:41d:8c82:1a61 with SMTP id
- n9-20020aa7d049000000b0041d8c821a61mr16354944edo.323.1650363151285; 
- Tue, 19 Apr 2022 03:12:31 -0700 (PDT)
-Received: from localhost.localdomain (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- v21-20020a1709064e9500b006e8973a14d0sm5581177eju.174.2022.04.19.03.12.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Apr 2022 03:12:30 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Stanley Chu <stanley.chu@mediatek.com>,
- Alim Akhtar <alim.akhtar@samsung.com>, Andy Gross <agross@kernel.org>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Jan Kotas <jank@cadence.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Wei Xu <xuwei5@hisilicon.com>,
- Li Wei <liwei213@huawei.com>, Avri Altman <avri.altman@wdc.com>,
- devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Vignesh Raghavendra <vigneshr@ti.com>, linux-arm-msm@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-scsi@vger.kernel.org,
- Bjorn Andersson <bjorn.andersson@linaro.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: (subset) [PATCH v3 09/12] arm64: dts: hisilicon: align
- 'freq-table-hz' with dtschema in UFS
-Date: Tue, 19 Apr 2022 12:12:26 +0200
-Message-Id: <165036314214.180327.9388318751451146287.b4-ty@linaro.org>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220306111125.116455-10-krzysztof.kozlowski@canonical.com>
-References: <20220306111125.116455-1-krzysztof.kozlowski@canonical.com>
- <20220306111125.116455-10-krzysztof.kozlowski@canonical.com>
+ id 1nglNc-002sgI-Ak; Tue, 19 Apr 2022 10:46:46 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 8D1601F416DA
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1650365200;
+ bh=miYHRwrSfiYZQBPctYUYWsQLZRG1eJ5lKnyCAoRZDKU=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=VbzXgqYfkge78XHuAUROvfBmnV6GgopU5H+v2XI/sGzcG4DomOxUVKrETu2o1NdW1
+ EjLpIFj+42X3tCYm1tPkA6nXS6N61SJh0aMuSnz0mqGQnbAWKRxoIOZg/YxWyrHqZd
+ AbQX56pIxFefA9TcPFA8rP25yJAA8Nyo2PxieWhyi46/PJd6Mnts/macCkkyOyKxz8
+ o0GKW7Ou/2Dju0g5ExIbXa9/y9n0/1m2jtAjzpIckw9RcEXVrhvYy4B3qQcBeZ94CS
+ jaEVOZTOdXLBNVyI69I3Vp6oiMbU6QE4neFW+EqHHqT1K5NI0L1nsyFmAYWStuG+cQ
+ 4/mzWt5krFI4w==
+Message-ID: <20eaaba7-19cb-8f1d-ecf4-bfac14d50f67@collabora.com>
+Date: Tue, 19 Apr 2022 12:46:37 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH 4/7] clk: mediatek: reset: Add reset.h
+Content-Language: en-US
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, mturquette@baylibre.com,
+ sboyd@kernel.org
+Cc: matthias.bgg@gmail.com, p.zabel@pengutronix.de,
+ chun-jie.chen@mediatek.com, wenst@chromium.org, yong.liang@mediatek.com,
+ runyang.chen@mediatek.com, linux-kernel@vger.kernel.org,
+ allen-kh.cheng@mediatek.com, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220418132154.7401-1-rex-bc.chen@mediatek.com>
+ <20220418132154.7401-5-rex-bc.chen@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220418132154.7401-5-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_031233_002692_D1E73777 
-X-CRM114-Status: UNSURE (   7.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220419_034644_813690_33D77792 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,25 +69,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 6 Mar 2022 12:11:22 +0100, Krzysztof Kozlowski wrote:
-> The DT schema expects 'freq-table-hz' property to be an uint32-matrix,
-> which is also easier to read.
+Il 18/04/22 15:21, Rex-BC Chen ha scritto:
+> Add a new file "reset.h" to place some definitions for clock reset.
 > 
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> ---
+>   drivers/clk/mediatek/clk-mtk.h | 10 +---------
+>   drivers/clk/mediatek/reset.h   | 20 ++++++++++++++++++++
+>   2 files changed, 21 insertions(+), 9 deletions(-)
+>   create mode 100644 drivers/clk/mediatek/reset.h
 > 
+> diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+> index dafdf30fe94e..dfb0549ceb6c 100644
+> --- a/drivers/clk/mediatek/clk-mtk.h
+> +++ b/drivers/clk/mediatek/clk-mtk.h
+> @@ -12,6 +12,7 @@
+>   #include <linux/kernel.h>
+>   #include <linux/spinlock.h>
+>   #include <linux/types.h>
+> +#include <reset.h>
 
-Applied, thanks!
+This should be
 
-[09/12] arm64: dts: hisilicon: align 'freq-table-hz' with dtschema in UFS
-        commit: 65b96377bf9130617ced41f317f3ec387d3e0dc3
+#include "reset.h"
 
-Best regards,
--- 
-Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+...since the header is in the same directory.
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
