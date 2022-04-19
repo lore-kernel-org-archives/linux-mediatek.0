@@ -4,73 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B6EDC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 08:13:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A79C3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 08:13:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3I3CKU+FGBcFanOOZ/PJmX7mEY1QLWCQy4jjVX0c0kM=; b=1laxMrRlzkHrZi
-	ftyo0zlLqHsoFqwmvVxPSrtHEsSDC/z2DDEAWfpkBBq5nV9bgQsE9p/SZAHQLiMos0tyi7QJ+z2ep
-	CABDnleV1ANuHkaVEQsuanIUyxjEqTkiggZv6yhDVsLDTdRb7M1EYKbTpzDjpypBXGpzJQaRAWL8r
-	qmL8sFj+uXGhht1uj3EvZ7P9ImFKTOK6BQ5vmpFv3d/G/EvrG2bmXOLiiDRnVtWuEJ2yVfP6ZPywt
-	+oG/+b9ue9WFYl0UzzQJplp9KvRxxY9NaXQRATnDn/mHHmxxYcz/QY9w/NLQLFVLDOcCLHeBDaK7z
-	7guljSPNcxrj8jg7nPwA==;
+	List-Owner; bh=Hz+MfvieIxgbreyyTyPlxQCYtfJ4JrFj7pvv4lrMe0c=; b=FlQS+Yz94kY/74
+	SafJPwS7DQwmfDP2g+QVrxcNNfCNf+X6FTAfkO4FhsthOnKX0B9JhP2uMNrIlzk5J8VZsOVvRUwdx
+	hCTQ0tcQlEfQaMf29QdmEnLsmgprijdqRNUaEgo+08LgI8vp6bKhCqtIYpySnXtaesV+iKOOu1D34
+	y55XgzaW3Y5LH6lbMkKjb7mCsTPY8lhaBBPP25YeTsckjyot15wUkeLP3sKdmaV8mGBqlhUK2vXj4
+	V3Z4JNORvT00VF1mRG0mf6g46vNBOq7COwSg2Hkdxc3lQy6JKEg5XCIt8fM6bAAgqaZhamJz4XB43
+	JJ+Tq7LH41OB0DLD4NiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngiza-002DtI-33; Tue, 19 Apr 2022 08:13:46 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1ngizc-002Duf-9N; Tue, 19 Apr 2022 08:13:48 +0000
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngizD-002Dl2-O1
- for linux-mediatek@bombadil.infradead.org; Tue, 19 Apr 2022 08:13:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
- :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=ymcXL9mZkOXE1tvy2X8sRlDYOjiY7V/45QxE3N+k/bg=; b=ZBad2QtZ5u3AiVt4zP3RGZXlKH
- ZLHXa50Xh1v0lrEFOTfy0WOAphc66K+MCAnQL4yRwMIBgziDItFLs+gW152vu+bOIEh/rooikuBpj
- mbGSo1P8o3OT3GPNZ/9APLEz9PbAWW8wFwjg0BI87/o4OSSaEL4tKAKR2q7kYq6EIzrx5V42gw3h8
- LD1FzMSwgqPid1U5QXMPM2OyMzxJ3nYdZvghmdRlXnNeP6JNTr0ePr+tSLb4hwN6uZpLG6BLTMu2c
- sI+Od1kdDtu5hu0G2Ks+KRIpehR90UDJ2sFI9t/HEKmSCsFai6fIkCbi8C63E4Z3VqIMTmU5KpUQ7
- 6bnim7QA==;
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
- by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngiz9-006l8q-Cr
- for linux-mediatek@lists.infradead.org; Tue, 19 Apr 2022 08:13:21 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id s17so3851809plg.9
- for <linux-mediatek@lists.infradead.org>; Tue, 19 Apr 2022 01:13:16 -0700 (PDT)
+ id 1ngiz5-002Dgl-Q4
+ for linux-mediatek@lists.infradead.org; Tue, 19 Apr 2022 08:13:24 +0000
+Received: by mail-pf1-x42c.google.com with SMTP id j17so7869711pfi.9
+ for <linux-mediatek@lists.infradead.org>; Tue, 19 Apr 2022 01:13:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ymcXL9mZkOXE1tvy2X8sRlDYOjiY7V/45QxE3N+k/bg=;
- b=d2lwlqxOipd23SNVAohwHf+gxo5amqNUclnUkRETxFfTTn1ZTq3HvQws+brlFkt85c
- Hfof9ZusLxWdVXKJ3l1Gg3TZenarfIXBwbKaK3la2n/LByuTNRdooFo/cte6FrHY39Eq
- 9ncMqc58sVmkJwKE9Skxnh51bHyEICko8Uspo=
+ bh=aL1HiuRk5yYFz4xYpqYuYGNrqygVF3ZLXtA2aUqysL4=;
+ b=LEXJrHEJYkHQYt3+NUC0A2RYl/pLHmHf8+SR4yudcy7lD64IgbmhmJrEGIl/XlRzy4
+ rFiaOBuVKdRUMLaZQ8MqVHwLjmsChzcrM5Fxza/aAWSZTJBU0uwdjPJiieKpuVt3zPQA
+ jnvnNF57z7vm+bjvNPtYai0snAFLFOleiWlmU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ymcXL9mZkOXE1tvy2X8sRlDYOjiY7V/45QxE3N+k/bg=;
- b=0kir3e6/4YRJJ4YilZ/HZCZ425EwohPPq7SUOD6PsoBcIG1PwQ5GleYqc9D4Bbc+ji
- hMdB8hZy++VHJphXQrCLh/ox9qgzJg/VQmBkMyBs5+HnVfBHHmOcy1kfzNH85QAM86X6
- eoB+Q4x9kLXJ9nscKhOYvOG7EpfxnFZX7Rp4kTHa3ouMVa8G66ImeTiJOe7lyHd0IBKY
- pbH3xAeg/dIQ3udJjtfZBolXYmv+KDeyjPssKv0HL6Miu47jnPfb52NTutVf3AJMfR07
- ZSmMY2i6emS5UYGNPj5+ub+LbvojZiCHftueq8BFdDaXMB1WsrxQLbCC6cek0oCUGkLn
- 6mug==
-X-Gm-Message-State: AOAM532jGV+zFTUPDp92SAwiFZIES8WeHO5k+sq3c5wy7qG36jGMZ60f
- kXLIhHsQL0mn/pUqh6sHkEbU+g==
-X-Google-Smtp-Source: ABdhPJyPJGvPpTMNIeDwzlbJl89ma0IN1rYEVyRw7X+rYVNTUlAWEMm81vh00KrOJ1Q0dNCJ5surTw==
-X-Received: by 2002:a17:902:eb8c:b0:158:4cc9:6998 with SMTP id
- q12-20020a170902eb8c00b001584cc96998mr14826627plg.35.1650355995603; 
- Tue, 19 Apr 2022 01:13:15 -0700 (PDT)
+ bh=aL1HiuRk5yYFz4xYpqYuYGNrqygVF3ZLXtA2aUqysL4=;
+ b=ESimjanjGe3o3VJFpoZVrVl/SWuak1O/WG9Xq5+1pQX3dG1M9fwLXg5YRAmYP4VWzM
+ UwlQOzaudWEF7wJ+xPngqVyNne3fOUhlj9nAxAhCCbuGfNbw1fyBpj9MZO34zmfJlwh/
+ e7XKix8Bx3n2JJzgbA1OEEdd41ltrx0Gk773Altu21i1Wav7eHQzpUSHJaGVlzvUvvMY
+ jPgJYhgB0gAIvMCKqQ6cPrUYNV1qZNSaVewj3mhHuc9FmDiyZe8R1BqaMp90O8+9aA/n
+ ukWu2ArZ4QzdpCMB5QOLcziRREiuvijufGnuthZWLXt0LDwyAWvrtyPYLyWlVisguaFa
+ N7ig==
+X-Gm-Message-State: AOAM532SKsTEh7LPlG0CdHEsRnluTKdlHXG1DK+ZlyfOXoJobtG3M+rg
+ ZwJMc/qsNvgenmTTDrWYuK06vQ==
+X-Google-Smtp-Source: ABdhPJyIGDt6kZVVNhC1txAP0UdKWo807bFxbSvGZaHWUDQrzAwZFAQAwc4BPI5rullX3UT27dxnFA==
+X-Received: by 2002:a63:3841:0:b0:399:26da:29af with SMTP id
+ h1-20020a633841000000b0039926da29afmr13364353pgn.489.1650355986330; 
+ Tue, 19 Apr 2022 01:13:06 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com
  ([2401:fa00:1:10:33f6:f1e6:3e21:a253])
  by smtp.gmail.com with ESMTPSA id
- n13-20020a654ccd000000b0039db6f73e9dsm15767448pgt.28.2022.04.19.01.13.13
+ n13-20020a654ccd000000b0039db6f73e9dsm15767448pgt.28.2022.04.19.01.13.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Apr 2022 01:13:15 -0700 (PDT)
+ Tue, 19 Apr 2022 01:13:06 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Michael Turquette <mturquette@baylibre.com>,
  Stephen Boyd <sboyd@kernel.org>,
@@ -81,16 +67,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [RFC PATCH 7/7] clk: mediatek: mt8173: Switch to clk_hw provider APIs
-Date: Tue, 19 Apr 2022 16:12:46 +0800
-Message-Id: <20220419081246.2546159-8-wenst@chromium.org>
+Subject: [RFC PATCH 3/7] clk: mediatek: Convert mtk_{alloc,
+ free}_clk_data to struct clk_hw
+Date: Tue, 19 Apr 2022 16:12:42 +0800
+Message-Id: <20220419081246.2546159-4-wenst@chromium.org>
 X-Mailer: git-send-email 2.36.0.rc0.470.gd361397f0d-goog
 In-Reply-To: <20220419081246.2546159-1-wenst@chromium.org>
 References: <20220419081246.2546159-1-wenst@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_091319_826209_7324D76A 
-X-CRM114-Status: GOOD (  14.27  )
+X-CRM114-CacheID: sfid-20220419_011315_961043_CA2F0C67 
+X-CRM114-Status: GOOD (  17.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,43 +98,91 @@ As part of the effort to improve the MediaTek clk drivers, the next step
 is to switch from the old 'struct clk' clk prodivder APIs to the new
 'struct clk_hw' ones.
 
-The MT8173 clk driver has one clk that is registered directly with the
-clk provider APIs, instead of going through the MediaTek clk library.
+Instead of adding new APIs to the MediaTek clk driver library mirroring
+the existing ones, moving all drivers to the new APIs, and then removing
+the old ones, just migrate everything at the same time. This involves
+replacing 'struct clk' with 'struct clk_hw', and 'struct clk_onecell_data'
+with 'struct clk_hw_onecell_data', and fixing up all usages.
 
-Switch this instance to use the clk_hw provider API.
+For now, the clk_register() and co. usage is retained, with __clk_get_hw()
+and (struct clk_hw *)->clk used to bridge the difference between the APIs.
+These will be replaced in subsequent patches.
+
+Fix up mtk_{alloc,free}_clk_data to use 'struct clk_hw' by hand. Fix up
+all other affected call sites with coccinelle scripts in the next patch.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/clk-mt8173.c | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+ drivers/clk/mediatek/clk-mtk.c | 23 ++++++-----------------
+ drivers/clk/mediatek/clk-mtk.h |  4 ++--
+ 2 files changed, 8 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
-index 68d3a9749316..d34b248c42ca 100644
---- a/drivers/clk/mediatek/clk-mt8173.c
-+++ b/drivers/clk/mediatek/clk-mt8173.c
-@@ -994,7 +994,6 @@ static void __init mtk_apmixedsys_init(struct device_node *node)
- 	struct clk_hw_onecell_data *clk_data;
- 	void __iomem *base;
- 	struct clk_hw *hw;
--	struct clk *clk;
- 	int r, i;
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index 52bacce5dadd..554c6a128460 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -18,40 +18,29 @@
+ #include "clk-mtk.h"
+ #include "clk-gate.h"
  
- 	base = of_iomap(node, 0);
-@@ -1023,10 +1022,10 @@ static void __init mtk_apmixedsys_init(struct device_node *node)
- 		clk_data->hws[cku->id] = hw;
- 	}
+-struct clk_onecell_data *mtk_alloc_clk_data(unsigned int clk_num)
++struct clk_hw_onecell_data *mtk_alloc_clk_data(unsigned int clk_num)
+ {
+ 	int i;
+ 	struct clk_onecell_data *clk_data;
  
--	clk = clk_register_divider(NULL, "hdmi_ref", "tvdpll_594m", 0,
--				   base + 0x40, 16, 3, CLK_DIVIDER_POWER_OF_TWO,
--				   NULL);
--	clk_data->hws[CLK_APMIXED_HDMI_REF] = __clk_get_hw(clk);
-+	hw = clk_hw_register_divider(NULL, "hdmi_ref", "tvdpll_594m", 0,
-+				     base + 0x40, 16, 3, CLK_DIVIDER_POWER_OF_TWO,
-+				     NULL);
-+	clk_data->hws[CLK_APMIXED_HDMI_REF] = hw;
+-	clk_data = kzalloc(sizeof(*clk_data), GFP_KERNEL);
++	clk_data = kzalloc(struct_size(clk_data, hws, clk_num), GFP_KERNEL);
+ 	if (!clk_data)
+ 		return NULL;
  
- 	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
- 	if (r)
+-	clk_data->clks = kcalloc(clk_num, sizeof(*clk_data->clks), GFP_KERNEL);
+-	if (!clk_data->clks)
+-		goto err_out;
+-
+-	clk_data->clk_num = clk_num;
++	clk_data->num = clk_num;
+ 
+ 	for (i = 0; i < clk_num; i++)
+-		clk_data->clks[i] = ERR_PTR(-ENOENT);
++		clk_data->hws[i] = ERR_PTR(-ENOENT);
+ 
+ 	return clk_data;
+-err_out:
+-	kfree(clk_data);
+-
+-	return NULL;
+ }
+ EXPORT_SYMBOL_GPL(mtk_alloc_clk_data);
+ 
+-void mtk_free_clk_data(struct clk_onecell_data *clk_data)
++void mtk_free_clk_data(struct clk_hw_onecell_data *clk_data)
+ {
+-	if (!clk_data)
+-		return;
+-
+-	kfree(clk_data->clks);
+ 	kfree(clk_data);
+ }
++EXPORT_SYMBOL_GPL(mtk_free_clk_data);
+ 
+ int mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks, int num,
+ 				struct clk_onecell_data *clk_data)
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index 9577084790dc..787fdeb1bd93 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -181,8 +181,8 @@ int mtk_clk_register_dividers(const struct mtk_clk_divider *mcds, int num,
+ void mtk_clk_unregister_dividers(const struct mtk_clk_divider *mcds, int num,
+ 				 struct clk_onecell_data *clk_data);
+ 
+-struct clk_onecell_data *mtk_alloc_clk_data(unsigned int clk_num);
+-void mtk_free_clk_data(struct clk_onecell_data *clk_data);
++struct clk_hw_onecell_data *mtk_alloc_clk_data(unsigned int clk_num);
++void mtk_free_clk_data(struct clk_hw_onecell_data *clk_data);
+ 
+ struct clk *mtk_clk_register_ref2usb_tx(const char *name,
+ 			const char *parent_name, void __iomem *reg);
 -- 
 2.36.0.rc0.470.gd361397f0d-goog
 
