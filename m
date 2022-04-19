@@ -4,68 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE5D4C43217
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 18:28:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD920C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 18:30:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i3m+jB1cMJOCgkHYOmpVEsmvyyOBA1ZnzlsndhtAfdw=; b=PtN1psNv2QHyAl
-	9LY+0vx38219yiq48fpF03CLgDlqVOXSEaZDbgzprFNclB4BGCb1unJX10h4IeN3CSoA3ql2JySLD
-	mry9HqGU/D26k2YqnxQgIu8HUqezs+Ld3ia/6m/mzB20Rs1knS86U1fSFYSTNIeSM0yIMf4yg4hJL
-	+RF3o+F67vCHwU/6j8pQm8NgJQmbzgvSRwsxSaG4rj7aOV/cCslx3hsXdUZNu8HAoT7BlHXTsO0Ay
-	GJJf5+csrTaI4ux3PXu4tHKm0BSSGJzCOJBsyw0T9F2A4Z8H+0WVqD8o5DVj9ITCnVlW01ioypjyD
-	/Yqj0NYfFXjUpUJiqKSQ==;
+	List-Owner; bh=PDlH3jkZUoxzbQi+svK+aybe+VvO82oELUvPN4DbGOU=; b=glP1J74yam82JX
+	WtDVZJPX85RalFNSlmGGVRM7iixadV89h1Ux1gkO1QFwsDOMu9w1j73CFnBSIAjHeYg7gNTqUMJVT
+	I1YAzd9UCZ1PfKuLSGvTeGflORM6p/wcvNMC28jHt6OkWhIT01SKc4afe1I4jgN3wH+v5KUZqz0ED
+	RyXIBZuqUb5FlvB3uHLBOBhLCNcjfy4XnM3dhzAyiVmvkZxUWsNAr01XMLbOGZa2TKZOmJD4txeQf
+	U4V/q/G0J1Cr8nmOlA3Jh9QXpM54P+z4sD8MBiR9hizNzwQWRiDWJvXXXEFv4iP+gzrBdpWjhMRVP
+	qlIfvJXfydo89ygdPmOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngsa6-005fjC-Ti; Tue, 19 Apr 2022 18:28:06 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ngscL-005ggS-AM; Tue, 19 Apr 2022 18:30:25 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngsO6-005ZPy-C2; Tue, 19 Apr 2022 18:15:47 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id ABF856149D;
- Tue, 19 Apr 2022 18:15:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93B2BC385A7;
- Tue, 19 Apr 2022 18:15:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1650392141;
- bh=IcmxqFD2X9nhz3AXQeNNFZ8G21v+9P1J/I/J4ImEWk8=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=oayH0Ua0wJgFN3FOUwQ+VYHKtsID0fDFlD07l6P8qr2tlGnVB9Qa9p/4DCYlh7Kn0
- M4pEg9bOIFAv7LQeCIEOt6xXpX9iV0zUpghOL8+ynQ4dSWXeAcFfwpqpRFgkOZo1z5
- hiqyZWw3Nf/vpeD8e+7KL/zXePM7osJ5YgiXOTAFJdWYW761/31GcnJYM0YS+R2eMz
- PAjBAj48JlNYTyO2UeNi7XqBJmFFLD1ZaGdXGy4WBXryJoMIX/wTIqO7FCpVgXHrb3
- +uk/XjQuTUUWddGQ++TuLi4dlA7nocvmBYNIgiW2rvNqDShbXgx6+PjI1WF4HvX+aY
- BAwFzwnWJMAdg==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Borislav Petkov <bp@suse.de>, Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- Sasha Levin <sashal@kernel.org>, lorenzo@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 4.19 07/12] mt76: Fix undefined behavior due to shift
- overflowing the constant
-Date: Tue, 19 Apr 2022 14:15:20 -0400
-Message-Id: <20220419181525.486166-7-sashal@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220419181525.486166-1-sashal@kernel.org>
-References: <20220419181525.486166-1-sashal@kernel.org>
+ id 1ngsP2-005Zut-0y
+ for linux-mediatek@lists.infradead.org; Tue, 19 Apr 2022 18:16:43 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id
+ i24-20020a17090adc1800b001cd5529465aso2665258pjv.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 19 Apr 2022 11:16:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:in-reply-to:references:date:message-id
+ :mime-version; bh=AjgDpPskVV4R4Ry4hrbWpc/9hMmAwQ0eTwMouf2MnOU=;
+ b=bMihXYjxDYd70FBAdkcUWSX+XlWzIAfBgJnYw0igXRFV+04YT4oMj+OjOTM2ojX4W9
+ GYMwFCZU1Xdt5BZHTbv+NmWWboVjFsrVaTtRXcXquMXtE2er7IqkVjMBBOBs6ZFROx1K
+ cN5J3DB05qfDIzqnwP5O1+1DPUaGJQV6AyBLoyiOLvRbNcSQS3QiiYDnqLdgWGiDUCUS
+ W5r14jEvv37KT53Roabxlk4ixJo7v1FMya2s0VY9D1HEtwlz3DsNCHsPx7u9jekYBzVs
+ hZwkblG+Dl9GnFGir7Sr1y2O6tI5+nKUgBTdUrkm20VgY0lwgfwLyq59kXH5GSoVK05+
+ ItnQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
+ :message-id:mime-version;
+ bh=AjgDpPskVV4R4Ry4hrbWpc/9hMmAwQ0eTwMouf2MnOU=;
+ b=q+9Uy9hZvc02cOavHzvkHfQ+BoigfamjSkkTzsmxe4aimAb28e3vnwPFL3t6pCpKVR
+ K7nGrxtPdg2hnPaHbE+oqU++8jaCMh/+EuiDoRWXTO+86el4K8QeLEFdPHcW9AoDwWfJ
+ nxkS03+4lubHNW/ndI/fXzQUFJFdmCZR6t4o/AI72bXZ8pA6ZgFBD44PxQ7PKYT26l3h
+ 7iJAZouJUbGd0y04OClgJb+3Sz23+i80GyQ6OUIM859Y9STpfkTNehVErq6LOiS/dGnB
+ tLFpR6BE6qUz1Eef8+2Cwf2+4DITQTyMEwDfkYkJ+y9YCE3CRXmpBKbUssSVmEV7RiAt
+ BD+w==
+X-Gm-Message-State: AOAM532ATWv0busv0Lw6T4MDFDcQ5PoiO08osTeitz5eaLVl82JKpJ8i
+ bgsLXp72t1vFeNG0W9lHKTLfeQ==
+X-Google-Smtp-Source: ABdhPJzob3GzCfSoCXKRmPqceM7UO6pOMBdQF/W+KIIoJ8hpD8bUMg3PD/l5kz2paua0Q592Ix7PwA==
+X-Received: by 2002:a17:902:bb94:b0:157:2ce:fac1 with SMTP id
+ m20-20020a170902bb9400b0015702cefac1mr16955546pls.25.1650392196359; 
+ Tue, 19 Apr 2022 11:16:36 -0700 (PDT)
+Received: from localhost (c-71-197-186-152.hsd1.wa.comcast.net.
+ [71.197.186.152]) by smtp.gmail.com with ESMTPSA id
+ g12-20020a056a001a0c00b004e1307b249csm18036219pfv.69.2022.04.19.11.16.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 19 Apr 2022 11:16:35 -0700 (PDT)
+From: Kevin Hilman <khilman@baylibre.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
+ viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org
+Cc: matthias.bgg@gmail.com, jia-wei.chang@mediatek.com,
+ roger.lu@mediatek.com, hsinyi@google.com, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH V2 13/15] cpufreq: mediatek: Link CCI device to CPU
+In-Reply-To: <3fc36d6b803ff3e1bef601839aaca3f4f03e62ad.camel@mediatek.com>
+References: <7hbkx3fiac.fsf@baylibre.com>
+ <3fc36d6b803ff3e1bef601839aaca3f4f03e62ad.camel@mediatek.com>
+Date: Tue, 19 Apr 2022 11:16:35 -0700
+Message-ID: <7hwnfldjlo.fsf@baylibre.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_111542_550962_E90BD86E 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20220419_111640_242489_4129CA4E 
+X-CRM114-Status: GOOD (  23.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,44 +89,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogQm9yaXNsYXYgUGV0a292IDxicEBzdXNlLmRlPgoKWyBVcHN0cmVhbSBjb21taXQgZGJj
-MmIxNzY0NzM0ODU3ZDY4NDI1NDY4ZmZhODQ4NmU5N2FiODlkZiBdCgpGaXg6CgogIGRyaXZlcnMv
-bmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3NngyL3BjaS5jOiBJbiBmdW5jdGlvbiDigJht
-dDc2eDJlX3Byb2Jl4oCZOgogIC4vLi9pbmNsdWRlL2xpbnV4L2NvbXBpbGVyX3R5cGVzLmg6MzUy
-OjM4OiBlcnJvcjogY2FsbCB0byDigJhfX2NvbXBpbGV0aW1lX2Fzc2VydF85NDbigJkgXAoJZGVj
-bGFyZWQgd2l0aCBhdHRyaWJ1dGUgZXJyb3I6IEZJRUxEX1BSRVA6IG1hc2sgaXMgbm90IGNvbnN0
-YW50CiAgICBfY29tcGlsZXRpbWVfYXNzZXJ0KGNvbmRpdGlvbiwgbXNnLCBfX2NvbXBpbGV0aW1l
-X2Fzc2VydF8sIF9fQ09VTlRFUl9fKQoKU2VlIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3IvWWt3
-UTYlMkJ0SUg4R1FwdWN0QHpuLnRuaWMgZm9yIHRoZSBnb3J5CmRldGFpbHMgYXMgdG8gd2h5IGl0
-IHRyaWdnZXJzIHdpdGggb2xkZXIgZ2NjcyBvbmx5LgoKU2lnbmVkLW9mZi1ieTogQm9yaXNsYXYg
-UGV0a292IDxicEBzdXNlLmRlPgpDYzogRmVsaXggRmlldGthdSA8bmJkQG5iZC5uYW1lPgpDYzog
-TG9yZW56byBCaWFuY29uaSA8bG9yZW56by5iaWFuY29uaTgzQGdtYWlsLmNvbT4KQ2M6IFJ5ZGVy
-IExlZSA8cnlkZXIubGVlQG1lZGlhdGVrLmNvbT4KQ2M6IFNoYXluZSBDaGVuIDxzaGF5bmUuY2hl
-bkBtZWRpYXRlay5jb20+CkNjOiBTZWFuIFdhbmcgPHNlYW4ud2FuZ0BtZWRpYXRlay5jb20+CkNj
-OiBLYWxsZSBWYWxvIDxrdmFsb0BrZXJuZWwub3JnPgpDYzogIkRhdmlkIFMuIE1pbGxlciIgPGRh
-dmVtQGRhdmVtbG9mdC5uZXQ+CkNjOiBKYWt1YiBLaWNpbnNraSA8a3ViYUBrZXJuZWwub3JnPgpD
-YzogbGludXgtd2lyZWxlc3NAdmdlci5rZXJuZWwub3JnCkNjOiBuZXRkZXZAdmdlci5rZXJuZWwu
-b3JnClNpZ25lZC1vZmYtYnk6IEthbGxlIFZhbG8gPGt2YWxvQGtlcm5lbC5vcmc+Ckxpbms6IGh0
-dHBzOi8vbG9yZS5rZXJuZWwub3JnL3IvMjAyMjA0MDUxNTE1MTcuMjk3NTMtOS1icEBhbGllbjgu
-ZGUKU2lnbmVkLW9mZi1ieTogU2FzaGEgTGV2aW4gPHNhc2hhbEBrZXJuZWwub3JnPgotLS0KIGRy
-aXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3NngyX3BjaS5jIHwgMiArLQogMSBm
-aWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc2eDJfcGNpLmMgYi9kcml2ZXJz
-L25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzZ4Ml9wY2kuYwppbmRleCAyNmNmZGEyNGNl
-MDguLmUyNjk0N2Y4OTI5OSAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0
-ZWsvbXQ3Ni9tdDc2eDJfcGNpLmMKKysrIGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsv
-bXQ3Ni9tdDc2eDJfcGNpLmMKQEAgLTczLDcgKzczLDcgQEAgbXQ3NnBjaV9wcm9iZShzdHJ1Y3Qg
-cGNpX2RldiAqcGRldiwgY29uc3Qgc3RydWN0IHBjaV9kZXZpY2VfaWQgKmlkKQogCW10NzZfcm13
-X2ZpZWxkKGRldiwgMHgxNWExMCwgMHgxZiA8PCAxNiwgMHg5KTsKIAogCS8qIFJHX1NTVVNCX0cx
-X0NEUl9CSUNfTFRSID0gMHhmICovCi0JbXQ3Nl9ybXdfZmllbGQoZGV2LCAweDE1YTBjLCAweGYg
-PDwgMjgsIDB4Zik7CisJbXQ3Nl9ybXdfZmllbGQoZGV2LCAweDE1YTBjLCAweGZVIDw8IDI4LCAw
-eGYpOwogCiAJLyogUkdfU1NVU0JfQ0RSX0JSX1BFMUQgPSAweDMgKi8KIAltdDc2X3Jtd19maWVs
-ZChkZXYsIDB4MTVjNTgsIDB4MyA8PCA2LCAweDMpOwotLSAKMi4zNS4xCgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
-ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Rex-BC Chen <rex-bc.chen@mediatek.com> writes:
+
+> On Thu, 2022-04-14 at 14:48 -0700, Kevin Hilman wrote:
+
+[...]
+
+>> 
+>> You explained this well, but it's still not an appropriate solution
+>> IMO,
+>> because you're still not setting the target that is requested by the
+>> CPUfreq core.
+>> 
+>> The job of ->set_target() is to set the frequency *requested by
+>> CPUfreq
+>> core*.  If you cannot do that, you should return failure.  What you
+>> posted
+>> in the original patch and what you're proposing here is to ignore the
+>> frequency passed to ->set_target() and do something else.  In the
+>> orignal patch, you propose do to nothing.  Now, you're ignoring the 
+>> target passed in and setting something else.  In both cases, the
+>> CPUfreq
+>> core things you have successfuly set the frequency requested, but you
+>> have not.  This means there's a mismatch between what the CPUfreq
+>> core &
+>> governer things the frequency is and what is actually set.  *This* is
+>> the part that I think is wrong.
+>> 
+>> Instead, the proper way of restricting available frequencies is to
+>> use
+>> governors or policies.  This ensures that the core & governors are
+>> aligned with what the platform driver actually does.
+>> 
+>> As I proposed earlier, I think a clean solution to this problem is to
+>> create a temporary policy at probe time that restricts the available
+>> OPPs based on what the current CCI freq/voltage are.  Once CCI driver
+>> is
+>> loaded and working, this policy can be removed.
+>> 
+>> Kevin
+>> 
+>> 
+>
+> Hello Kevin,
+>
+> In new proposal, we DO set the cpufreq passed by cpufreq core.
+> We just not set the corresponding voltage of target frequency which
+> is lookedup from opp table.
+
+OK, this makes more sense.  I thought you were ignoring frequency change
+also.
+
+[...]
+
+> In summary, we think it's a proper solution to cover the situation
+> when cci is not probed.
+
+Yes, this is OK with me.
+
+> I think there is something to improve:
+> We can choose to lookup cci opp table using cci freq to determine
+> the voltage instead of voltage_on_boot.
+> But IMO, it's not neccessary to register cci opp table inside cpufreq
+> driver just for the short period.
+
+I agree.
+
+> Because I finish to prepare other patches and I think we also can
+> take a look at other patches which are including some cleanup, I will
+> send next version today.
+> If there is any concern and question, we can discuss in next version.
+
+OK, I'll have a closer look at the new version.
+
+Kevin
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
