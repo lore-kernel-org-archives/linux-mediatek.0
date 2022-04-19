@@ -4,66 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18B43C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 01:54:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F7A1C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 01:59:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d8d+Os9Hxq6TJ0DDqkZVG8qU3smZJoUQUuOMe0pRtUs=; b=vynsWKqsKmcdvZ
-	vZKjaeWwy1Tbmi8uTNW0GNaacWsl/u++aknlK1Yn1csZ5jmjE996lD0WevmaaB9CeYKEphOx0Lju/
-	jjhFy4ewA1/w+OXiig3uV8M5bmCt57m95Kc2s2SLGfuQNLrxj1T9XnHn+kChXcH7Qn4QzOIqf0RNv
-	T2Nc3qoSZyux8lG76JxiJMEPL0NHTMeqYAlCkV9ak3VGduF+Q0iG6WVKSXDcmppX+qdn/5PB/BQC6
-	jdTccgBlfYP04qS9dt9gwL6dJa7hzoxYoDU/tNWBfwTk329A2p2hO6jpUVtIX54DWXrG7pr/whprY
-	fdIko2arxzPCtB2rVvwg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gDpsQVvyghTzNaVPnniyiXzmA0liI+LY+Mrx8Qmyews=; b=4sgs8Esl3lsqIw
+	P1skZfxftevMH7LrTXqT3HgbAcyzv2fNGl46ozD0lC2TKyquJBVfWJ3d7tEbH1Q8r6XMrh74Gzbsf
+	MJKK9634rwqlgDMoBMDwIS3InFaRCqH/qBR2kr6ENV+5EbYvbjr4t76nuEtkC9+lkyZcGq3eTQ0CP
+	XK3F6RS9o3npyB2/iIq4Uc7t3BlDRdDl5ejxp/kwwqwc1vbNeOWw4yVre2SupuHz4gN5qz+eOGx3m
+	9JBo96zdvpR5M6odyhbqKoEmD14ScgAnXgl3uu6ndU6TMenmwWrMElPj6qle0CvrfjXQwXvURQkN0
+	OpHe0zEoQB/+VbmeRTJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngd4S-0015bJ-Bm; Tue, 19 Apr 2022 01:54:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ngd8n-0016Fz-Gb; Tue, 19 Apr 2022 01:58:53 +0000
+Received: from mail-qv1-xf32.google.com ([2607:f8b0:4864:20::f32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngd4N-0015Yi-Lf; Tue, 19 Apr 2022 01:54:21 +0000
-X-UUID: 9a0f719e98a949e29c429b29ab2a82b2-20220418
-X-UUID: 9a0f719e98a949e29c429b29ab2a82b2-20220418
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jason-jh.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 48838511; Mon, 18 Apr 2022 18:54:01 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 Apr 2022 18:53:59 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 19 Apr 2022 09:53:46 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 19 Apr 2022 09:53:46 +0800
-Message-ID: <b518577296cb24749c6b76a6209c7e95b84e8ac0.camel@mediatek.com>
-Subject: Re: [PATCH v18 02/10] dt-bindings: arm: mediatek: mmsys: add mt8195
- SoC binding
-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: Rex-BC Chen =?UTF-8?Q?=28=E9=99=B3=E6=9F=8F=E8=BE=B0=29?=
- <Rex-BC.Chen@mediatek.com>, "devicetree@vger.kernel.org"
- <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>
-Date: Tue, 19 Apr 2022 09:53:46 +0800
-In-Reply-To: <ff8a2ede-1489-0412-2425-3191f9fd9026@kernel.org>
-References: <20220412103114.19922-1-jason-jh.lin@mediatek.com>
- <20220412103114.19922-3-jason-jh.lin@mediatek.com>
- <69dd1710a7f1c1715e079ece159fc527c7fecb4c.camel@mediatek.com>
- <ff8a2ede-1489-0412-2425-3191f9fd9026@kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1ngd8c-0016Cp-8l; Tue, 19 Apr 2022 01:58:43 +0000
+Received: by mail-qv1-xf32.google.com with SMTP id y19so12164167qvk.5;
+ Mon, 18 Apr 2022 18:58:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=WNU/TphCFnbVlBp1Z5GLi2lvQvgI9Sbk164GKyVPu8E=;
+ b=hDaaH9Aj1f5M/81SYEwYOiK6gb2rb/RJ5UI25cuoR+XXx9AxrAW6gRCLn4XoPuw2vp
+ MKeweM5OEOgh5mme7ASmV2f9nuogyfaCcbfGINPok9hAwddtEsxQQl8pahynBep7WiO0
+ djDB87thbWxH7rUbQ9cvSzOXNMpMUllB1TOpzHJm/XWx6Bth+SMLyclxItqQ8C7bcFl2
+ 4mscroyzSj/MTHwfdxiRnRCdkWq6amSwmscjayA+ZnpL0oCNHGTyGpwwyrDlZK/C24uN
+ YZEWbZgDMM0aWPYeFpujosa/VVMo++DDWogwSmgauK5dusjsyt5dTyS0aP84gbQJpWCX
+ T4Dg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=WNU/TphCFnbVlBp1Z5GLi2lvQvgI9Sbk164GKyVPu8E=;
+ b=NMvlm4I1OXoEcQwZaktTFt4rHtGolgBD2bDCKS4r0Xrrkvhd2z8rHUusrXYfyT9/a7
+ ChbZP6BmaGfKpnrHsLmYj9kAoHn+23XtthEO0zvhKjEgllka0DGjPv7R+qvUujMZMAYf
+ TE2WvyWQ+UzdyKC87PtR+LCmHRQS3o3Vt2M0XbzSnJY5M9LcB5+mhXeSTS8cqBBByApT
+ jPGdyXr1gDH8oFtzEbaIkkYfD/opBrz3fhOgUIoMpfigcT+c2P12huot/qIUC+ysjZye
+ A3xhuLhFW1NoRTHpkf1DU4LelVX9nb0t7tUL9m1PjYo5IWa9DWK3DraRL5PMNonlCrIo
+ HANQ==
+X-Gm-Message-State: AOAM532fm0yl+oHW+EoonIxvmxBSr0fPTmCZ9QSnRcl8KAIsi3T/xMfT
+ PWD3UOUv/QFI8DsLfEfYMIg=
+X-Google-Smtp-Source: ABdhPJwM2wWDgSXWxNeAPoGVjU8YN2SYfC/GsxDdiLjs1L6aTlJIWp5um2jAKuULyWgE6dXx0SQd2A==
+X-Received: by 2002:a0c:a98a:0:b0:443:e880:501a with SMTP id
+ a10-20020a0ca98a000000b00443e880501amr10190878qvb.73.1650333520662; 
+ Mon, 18 Apr 2022 18:58:40 -0700 (PDT)
+Received: from localhost.localdomain ([193.203.214.57])
+ by smtp.gmail.com with ESMTPSA id
+ g9-20020ac85d49000000b002f1fbe305e7sm3281002qtx.80.2022.04.18.18.58.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 18 Apr 2022 18:58:40 -0700 (PDT)
+From: cgel.zte@gmail.com
+X-Google-Original-From: lv.ruyi@zte.com.cn
+To: nbd@nbd.name,
+	john@phrozen.org,
+	sean.wang@mediatek.com
+Cc: Mark-MC.Lee@mediatek.com, davem@davemloft.net, kuba@kernel.org,
+ pabeni@redhat.com, matthias.bgg@gmail.com, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Lv Ruyi <lv.ruyi@zte.com.cn>,
+ Zeal Robot <zealci@zte.com.cn>
+Subject: [PATCH] net: ethernet: mtk_eth_soc: fix error check return value of
+ debugfs_create_dir()
+Date: Tue, 19 Apr 2022 01:58:32 +0000
+Message-Id: <20220419015832.2562366-1-lv.ruyi@zte.com.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220418_185419_737242_D0BC07ED 
-X-CRM114-Status: GOOD (  19.97  )
+X-CRM114-CacheID: sfid-20220418_185842_350457_96059405 
+X-CRM114-Status: GOOD (  11.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,52 +93,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+From: Lv Ruyi <lv.ruyi@zte.com.cn>
 
-Really appreciate your helpful information.
-I hope we can figure out with IT soon.
+If an error occurs, debugfs_create_file() will return ERR_PTR(-ERROR),
+so use IS_ERR() to check it.
 
-Thank you very much!
+Fixes: 804775dfc288 ("net: ethernet: mtk_eth_soc: add support for Wireless Ethernet Dispatch (WED)")
+Reported-by: Zeal Robot <zealci@zte.com.cn>
+Signed-off-by: Lv Ruyi <lv.ruyi@zte.com.cn>
+---
+ drivers/net/ethernet/mediatek/mtk_wed_debugfs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Regards,
-Jason-JH.Lin
-
-On Mon, 2022-04-18 at 19:03 +0200, Krzysztof Kozlowski wrote:
-> On 14/04/2022 05:11, Jason-JH Lin wrote:
-> > Hello Rob, Krzysztof,
-> > 
-> > I found the dt-binding patches in this series never appeared in
-> > devicetree-bindings patchwork and trigger the dt-binding check bot.
-> > 
-> > Do you know the reason for this?
-> > Could you help me with this and let me know what should I do to
-> > solve
-> > this problem?
-> 
-> Hi,
-> 
-> All your emails end up regularly in my Gmail spam folder, similarly
-> to
-> emails from some other Mediatek people (e.g. Rex-BC Chen), so maybe
-> that's the cause?
-> 
-> Why they end up in spam? I don't know, but it would be nice if you
-> could
-> work on this with your IT department. I know that corporate
-> environments
-> are tricky to change, but there is not much else to do. Google flags
-> your emails always as spam.
-> 
-> You can see in the headers two DMARC failures:
-> dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE)
-> header.from=mediatek.com
-> 
-> Spamming 27 recipients is maybe another reason...
-> 
-> Best regards,
-> Krzysztof
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c b/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
+index a81d3fd1a439..0c284c18a8d7 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
+@@ -165,7 +165,7 @@ void mtk_wed_hw_add_debugfs(struct mtk_wed_hw *hw)
+ 
+ 	snprintf(hw->dirname, sizeof(hw->dirname), "wed%d", hw->index);
+ 	dir = debugfs_create_dir(hw->dirname, NULL);
+-	if (!dir)
++	if (IS_ERR(dir))
+ 		return;
+ 
+ 	hw->debugfs_dir = dir;
 -- 
-Jason-JH Lin <jason-jh.lin@mediatek.com>
+2.25.1
 
 
 _______________________________________________
