@@ -4,72 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26C91C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 13:22:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21EFDC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 13:29:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FEcpXvr1li+88UB/raAWcrI2bZJ/xrgPqgzk2IePr1k=; b=jVStkb9D0xXmXR
-	qBaXAwiwHXSyNS2J2IcYrc1ymDuUJa0zqGWXssW9CBhsaJl+6YsEyTKbl01mb1WT6xaYmuA0klC3r
-	tf1EpTypJviVNtQ2d2idwTTronXfLzeFXQfhw9iMRCh4ps4aA93EZTEgUH3tyqMytOXaet7GcdDAM
-	X882Z8NfMvqqQJn0UgD9239+W5RiCLyEXXs6rc3sRtpWUbzaLxW0tFPgzDACxItT98SKVxyPO9rsp
-	ZzWw86x47Zw1/3QDL3qj5hxWcuTaLBGbeJBz8XaKMrtdXymMebxtwMzTI+XeOGYnlLwp8DpC4wSpJ
-	8MYB0XrmhelqAcN7DEAg==;
+	List-Owner; bh=OPu4YReSK4rdQFZzbZYDy+ybenV0z1ET7gJ7/c7tf3I=; b=UKzQpxARFAG1Sp
+	8iBMBrSmOncfHueDyJ9W3iIMfISz3DKrCvEmv6CdL1Zhi8YJfru1ZrjU1/ZBzQgpgcMwHlLua9O56
+	3teLyWddSuw1AiumPV1P/cpkG1wE+nxbTAey68HCe7yMTJp8FT412qJpVFK9H/m0vzukgNQiSeNyr
+	tokxKe4UrYpWOHrproURuaGgdDSfcWdalw2dAr12Ejw/h4LbYs8NsXsNvuIdpNCzeu31h3cPppYwT
+	9SUbCMhidnzIi8DJSLcsAANj2RVLT/cdBP8ZVHSFYb8d9WTDnmbMsp8UIgRIkx7m6jM/xxJrX95Gw
+	mur9WOcVaJf+JflZXSAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngnoQ-003o5t-7Y; Tue, 19 Apr 2022 13:22:34 +0000
-Received: from mail-oa1-f43.google.com ([209.85.160.43])
+	id 1ngnuW-003qVd-GC; Tue, 19 Apr 2022 13:28:52 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngmjJ-003NpU-Ka; Tue, 19 Apr 2022 12:13:15 +0000
-Received: by mail-oa1-f43.google.com with SMTP id
- 586e51a60fabf-e2a00f2cc8so17217248fac.4; 
- Tue, 19 Apr 2022 05:12:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=0569YfmtjdqJ+2hyukw09AFuvfwmKEbwEGbKGweOpvI=;
- b=juiFUtpA03aVDEOxZYNZ7loBBwFP0vce/2yM5vsGQQ+izk9zbGb3reobBhm7gruISV
- bJRBT2MTwqL/tNhjeoHp1Jo6Y5ZN0WTQqhzemdj5WsoVgwh51OWtIQwRC+uky5qJdTWp
- SthcmyAJAkOBebE+9vEDOHwUEKBQtpBWEtS8RuGgQf4GgCkD0uABKTpIAsJgYnN8xw2v
- H//WKsjC+tlV0OkgG9lR/yJBinLtJ3srdWUwaK+NUCRf0l66id7K7Wj/0+dndzZIxuMo
- MWBwRdfnkJG4slXntRTkF/OQ0fochOee5H5aX4yolvWUV9jbdzGEHAg19pfxC9rYAoWK
- ZUSA==
-X-Gm-Message-State: AOAM530netVrRaefcI86iA9M7aOkG7/B/m15gJG80jd4NF7APDK9hGHe
- Mmo/ml3x2iCnr4F6MRd9qQ==
-X-Google-Smtp-Source: ABdhPJx8LiBK0K4XkLwgCXtqriBYjWmQ7YGCbPJHV61zXAKBySQssJNDd/Khvosb+uQCNv6rnPT75g==
-X-Received: by 2002:a05:6870:9611:b0:df:200f:a6dd with SMTP id
- d17-20020a056870961100b000df200fa6ddmr6047417oaq.299.1650370366071; 
- Tue, 19 Apr 2022 05:12:46 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- g25-20020a544f99000000b002da70c710b8sm5082428oiy.54.2022.04.19.05.12.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Apr 2022 05:12:45 -0700 (PDT)
-Received: (nullmailer pid 1977866 invoked by uid 1000);
- Tue, 19 Apr 2022 12:12:43 -0000
-From: Rob Herring <robh@kernel.org>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Cc: krzysztof.kozlowski+dt@linaro.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, nancy.lin@mediatek.com,
- angelogioacchino.delregno@collabora.com, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, airlied@linux.ie, devicetree@vger.kernel.org,
- dri-devel@lists.freedesktop.org, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, jason-jh.lin@mediatek.com, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org, robh+dt@kernel.org
-In-Reply-To: <20220419033237.23405-4-rex-bc.chen@mediatek.com>
-References: <20220419033237.23405-1-rex-bc.chen@mediatek.com>
- <20220419033237.23405-4-rex-bc.chen@mediatek.com>
-Subject: Re: [PATCH 3/5] dt-bindings: mediatek: add vdosys1 RDMA definition
- for mt8195
-Date: Tue, 19 Apr 2022 07:12:43 -0500
-Message-Id: <1650370363.539386.1977865.nullmailer@robh.at.kernel.org>
+ id 1ngmni-003Plo-Qf; Tue, 19 Apr 2022 12:17:49 +0000
+Received: from pendragon.ideasonboard.com (85-76-11-253-nat.elisa-mobile.fi
+ [85.76.11.253])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id BA2F025B;
+ Tue, 19 Apr 2022 14:17:41 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1650370662;
+ bh=P4gIXFtrwQDyN+C6uar+ovwXk6cY3/kQnY32ADsmRFs=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=nblueKlxS7o0DUw7O83Z6nlkNHVGWJx3nEW/tkbsh8zQS7Optx6iFbxnCGdlW17/s
+ FaISR5gqVn8baPQaPnAoBPQ3WcRoMx6u2U6QKG1VqtJSi97c+TGFqnBBlR1+3b7Sey
+ Ym2OK+uF5V3EpFy5szf/7evp7dUwZLrCVOh8zYB4=
+Date: Tue, 19 Apr 2022 15:17:38 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Ricardo Ribalda <ribalda@chromium.org>
+Cc: James_Lin <Ping-lei.Lin@mediatek.com>, linux-kernel@vger.kernel.org,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Arnd Bergmann <arnd@arndb.de>,
+ Sergey Senozhatsky <senozhatsky@chromium.org>,
+ Alexandre Courbot <acourbot@chromium.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, sherlock.chang@mediatek.com,
+ lecopzer.chen@mediatek.com, max.yan@mediatek.com, tm.wu@mediatek.com
+Subject: Re: [PATCH v3] media: usb: uvc: Add UVC_GUID_FORMAT_H265
+Message-ID: <Yl6oYlv+t63+5dVP@pendragon.ideasonboard.com>
+References: <20220418090652.3156-1-Ping-lei.Lin@mediatek.com>
+ <CANiDSCvLb785H7qyAzSfTSBRpO2eM-oJFF5SgVHXdL1O-GusLA@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CANiDSCvLb785H7qyAzSfTSBRpO2eM-oJFF5SgVHXdL1O-GusLA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_051313_720922_DD3154BA 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20220419_051747_061794_47BD5ECB 
+X-CRM114-Status: GOOD (  25.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,56 +71,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 19 Apr 2022 11:32:35 +0800, Rex-BC Chen wrote:
-> From: "Nancy.Lin" <nancy.lin@mediatek.com>
+Hello,
+
+On Tue, Apr 19, 2022 at 01:46:15PM +0200, Ricardo Ribalda wrote:
+> On Mon, 18 Apr 2022 at 11:07, James_Lin <Ping-lei.Lin@mediatek.com> wrote:
+> >
+> > This patch aims to add UVC_GUID_FORMAT_H265
+> > High Efficiency Video Coding (HEVC), also known as H.265 and MPEG-H Part 2.
+> > They describe the same video encoding method.
+> > So for handling their behavior is the same.
+> > However, when external camera device describes this encoding method,
+> > some use hevc, some use h265.
+> > There is no uniform specification to describe this encoding method.
+> > So if an external camera device use h265 to describe this encoding method,
+> > driver will not recognize it.
+> > Therefore, this patch is to enable driver to read HEVC/H265
+> > and convert it to V4L2_PIX_FMT_HEVC.
+> >
+> > Signed-off-by: James_Lin <Ping-lei.Lin@mediatek.com>
 > 
-> Add vdosys1 RDMA definition.
+> Reviewed-by: Ricardo Ribalda <ribalda@chromium.org>
+> > ---
+> >  drivers/media/usb/uvc/uvc_driver.c | 5 +++++
+> >  drivers/media/usb/uvc/uvcvideo.h   | 3 +++
+> >  2 files changed, 8 insertions(+)
+> >
+> > diff --git a/drivers/media/usb/uvc/uvc_driver.c b/drivers/media/usb/uvc/uvc_driver.c
+> > index dda0f0aa78b8..e437e9f95890 100644
+> > --- a/drivers/media/usb/uvc/uvc_driver.c
+> > +++ b/drivers/media/usb/uvc/uvc_driver.c
+> > @@ -154,6 +154,11 @@ static struct uvc_format_desc uvc_fmts[] = {
+> >                 .guid           = UVC_GUID_FORMAT_H264,
+> >                 .fcc            = V4L2_PIX_FMT_H264,
+> >         },
 > 
-> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../display/mediatek/mediatek,mdp-rdma.yaml   | 86 +++++++++++++++++++
->  1 file changed, 86 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
-> 
+> Maybe I would add a comment here saying that some cameras represent
+> hevc as h265.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+I wish there would be a 4CC and GUID standard with a centralized
+registry...
 
-yamllint warnings/errors:
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-dtschema/dtc warnings/errors:
-./Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml: $id: relative path/filename doesn't match actual path or filename
-	expected: http://devicetree.org/schemas/display/mediatek/mediatek,mdp-rdma.yaml#
-Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.example.dts:27:18: fatal error: dt-bindings/memory/mt8195-memory-port.h: No such file or directory
-   27 |         #include <dt-bindings/memory/mt8195-memory-port.h>
-      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-compilation terminated.
-make[1]: *** [scripts/Makefile.lib:364: Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.example.dtb] Error 1
-make[1]: *** Waiting for unfinished jobs....
-make: *** [Makefile:1401: dt_binding_check] Error 2
+> > +       {
+> > +               .name           = "H.265",
+> > +               .guid           = UVC_GUID_FORMAT_H265,
+> > +               .fcc            = V4L2_PIX_FMT_HEVC,
+> > +       },
+> >         {
+> >                 .name           = "Greyscale 8 L/R (Y8I)",
+> >                 .guid           = UVC_GUID_FORMAT_Y8I,
+> > diff --git a/drivers/media/usb/uvc/uvcvideo.h b/drivers/media/usb/uvc/uvcvideo.h
+> > index 143230b3275b..41f4d8c33f2a 100644
+> > --- a/drivers/media/usb/uvc/uvcvideo.h
+> > +++ b/drivers/media/usb/uvc/uvcvideo.h
+> > @@ -139,6 +139,9 @@
+> >  #define UVC_GUID_FORMAT_H264 \
+> >         { 'H',  '2',  '6',  '4', 0x00, 0x00, 0x10, 0x00, \
+> >          0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71}
+> > +#define UVC_GUID_FORMAT_H265 \
+> > +       { 'H',  '2',  '6',  '5', 0x00, 0x00, 0x10, 0x00, \
+> > +        0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71}
+> >  #define UVC_GUID_FORMAT_Y8I \
+> >         { 'Y',  '8',  'I',  ' ', 0x00, 0x00, 0x10, 0x00, \
+> >          0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71}
 
-doc reference errors (make refcheckdocs):
+-- 
+Regards,
 
-See https://patchwork.ozlabs.org/patch/
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+Laurent Pinchart
 
 _______________________________________________
 Linux-mediatek mailing list
