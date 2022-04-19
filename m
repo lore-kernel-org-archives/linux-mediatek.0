@@ -4,71 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCBC8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 05:57:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44B6BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 06:34:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9yY+QimW7iHPJdFMyS8MHA5bA9Ht3M7QqHNAT5VHafI=; b=fu/yboRU2HeZY+
-	vo4WqBK+Z0V2ubHMbbRnwCS+925ss4XBDR8fnZjWS03RhQTPFyEO0I0zWcAOhL80DmlNgueBZP17F
-	vnEc6hHhLaw472iSGDUIvqSkTNYkyvV+DOu2GzgaXD7LiK6JEYCiio8+P1mLnPMSgIz02CTwn47J+
-	ty7AtXzG9J8xwcyyanbYlOSTI++jDBDD4eMB3nzGLScY+Mn285yT4c34hQmH3DZIB33vwrP6hJiWb
-	YR7Ta45WFEkWfEspwmU3fN8oAZlWjRX2HMzutGzivt7d4z3yP+MSvAB+xbaKthYsW3qxTEXM34dzC
-	N+EPsIB9pxkyhocmtCpg==;
+	List-Owner; bh=ZzJYz6IScslN53xL8je5kX/alkIbEdrGcKworTCHmcw=; b=xaRIM31+Te61Hr
+	7pzzmnh0TkHf/0RIHqbKNf9eYeql+9yBsN+8k17GQKOGt7cf6xj6c6xYv/fv8GvTYXCWqWEkCUSwi
+	lEyRF3db90v52m6VJp16xhJqjMjXxWEDXKYBTMT0WgYcJISKh58iMXHa6Q0xEhkXk1AyxSVRWCayf
+	f+Uq9JuNx6T16ZedfnXf0wkPco7o/XShNK1ltvoIK83mp81dvxQ7uWL/28urFVC+iHqU2pMSca/Jl
+	BsBLsgNV35BArrOLfjSycXD+J1SZgdbYV338Ue7AFCsErtzFELPr39oL1zZDl5IzYGBKe0VmS8NBI
+	gfjayX+PLOmsPzZg36FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nggs2-001dnb-Pt; Tue, 19 Apr 2022 05:57:50 +0000
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
+	id 1nghR9-001iB1-LL; Tue, 19 Apr 2022 06:34:07 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nggrz-001dlY-Pn
- for linux-mediatek@lists.infradead.org; Tue, 19 Apr 2022 05:57:49 +0000
-Received: by mail-yb1-xb29.google.com with SMTP id j2so29286550ybu.0
- for <linux-mediatek@lists.infradead.org>; Mon, 18 Apr 2022 22:57:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=s2Mq/KXo85I/OUkWdk3Gw91RvgR7MItesWK3GhJYw2c=;
- b=W8YN/I6gYh88jAVMIihLdgPNL0d595w85B0bL7H/J/0P/ofL9dUZ/FBBHUkwKWony1
- f4A/TTKiLVqKO5pelo16M9HF5hB6OZ6UlX8RcpDhJxB6eR7D1pIiV+n2P8lqTNL52FiS
- 1xuVeivp+Zb50XAJLeqP8h9VeuekXid5cqUwo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=s2Mq/KXo85I/OUkWdk3Gw91RvgR7MItesWK3GhJYw2c=;
- b=1Sk3BWrYx4UzWDzTm95TgReVkNJwNUdVrdSVAjKnzhs4psEQ2L/iUBEgFX8XwecxWv
- Lk2QuS6jjdPg0Tmbl1a8ZyVSrU/LN0xb9vdrN2HTpiCBCp1kMhAwOFZHfO6QGv47/CS6
- n3Qvs3uAf/nimlxPv16J5w79N+BF7KFJDbJU7oKDDFK+yP+g0JQ7PExtVJ+rfWrDUJFE
- JJlAREZSEVDmXLrJudhXM0IkE2jsDEtkebNY7M6/w/r856LvcumMGq4TmMg41aB5zDKd
- LPL1jKFLQvIRvarA8sGPOTdSm7lnCH0uJcAfIL0JwDEE43P8ZtkaOhRHWJgyvGu/p+3n
- ha6w==
-X-Gm-Message-State: AOAM533LzyhLpZzPOJSe+HrEupHO3Hmo2Up3nNQ30vEt+n7TQp7XwLPB
- UuF6cZEaiJDWjT96P079ktdV5SGBMnH3UoC9HYEB8w==
-X-Google-Smtp-Source: ABdhPJwYYcBxOtEG5s9zmIzc+xRZY7jcR0X2MW3EEbzIamXgJPjnppX5NLhhFjn6M6KCHWX9mrjp8DSSyVdk3/Ca/cY=
-X-Received: by 2002:a25:8d90:0:b0:634:7136:4570 with SMTP id
- o16-20020a258d90000000b0063471364570mr13341740ybl.582.1650347866332; Mon, 18
- Apr 2022 22:57:46 -0700 (PDT)
+ id 1nghR5-001i9Q-UP; Tue, 19 Apr 2022 06:34:06 +0000
+X-UUID: d8d3d09d40a04007ae7173cb97afecff-20220418
+X-UUID: d8d3d09d40a04007ae7173cb97afecff-20220418
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1087138264; Mon, 18 Apr 2022 23:33:55 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 18 Apr 2022 23:32:30 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 19 Apr 2022 14:32:29 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 19 Apr 2022 14:32:29 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ "Chen-Yu Tsai" <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, Hui
+ Liu <hui.liu@mediatek.com>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Subject: [PATCH 1/1] arm64: dts: mt8192: Add spmi node
+Date: Tue, 19 Apr 2022 14:32:26 +0800
+Message-ID: <20220419063226.15958-2-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220419063226.15958-1-allen-kh.cheng@mediatek.com>
+References: <20220419063226.15958-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-References: <20220418132154.7401-1-rex-bc.chen@mediatek.com>
- <20220418132154.7401-3-rex-bc.chen@mediatek.com>
-In-Reply-To: <20220418132154.7401-3-rex-bc.chen@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 19 Apr 2022 13:57:35 +0800
-Message-ID: <CAGXv+5F027EsJCG4zQarcoqCR8S4tew1n1DjeqU7_+HOzmZs2Q@mail.gmail.com>
-Subject: Re: [PATCH 2/7] clk: mediatek: reset: Rename reset function
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
- p.zabel@pengutronix.de, angelogioacchino.delregno@collabora.com, 
- chun-jie.chen@mediatek.com, yong.liang@mediatek.com, 
- runyang.chen@mediatek.com, linux-kernel@vger.kernel.org, 
- allen-kh.cheng@mediatek.com, linux-clk@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220418_225747_905791_F89F8F37 
-X-CRM114-Status: GOOD (  14.25  )
+X-CRM114-CacheID: sfid-20220418_233404_013402_D8EF8C07 
+X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,29 +74,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 18, 2022 at 9:22 PM Rex-BC Chen <rex-bc.chen@mediatek.com> wrote:
->
-> There are two version for clock reset register control of MediaTek SoCs.
-> Since MT8183, the version 2 is adopted.
->
-> To make the driver more readable,
-> - Rename them to v2 for MT8183 and v1 for previous SoCs.
-> - Adjust the fuinction order in reset.c.
+Add spmi node for mt8192 SoC.
 
-I'm not sure that the renaming actually helps, since it is not given that
-people outside of MediaTek would know which chip use which version. The
-original name of "_set_clr" at least relays how the hardware works, which
-coupled with the register naming in the datasheets make it quite obvious
-if the hardware is using the "set/clr" variant.
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-On a different note, the v1 hardware, where a hardware bit represents the
-state, is quite common, and there is a common reset driver that handles it.
-Perhaps that could be reused instead of code duplicated?
-See drivers/reset/reset-simple.c.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index a6da7b04b9d4..164fae36a3d8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -537,6 +537,21 @@
+ 			assigned-clock-parents = <&topckgen CLK_TOP_OSC_D10>;
+ 		};
+ 
++		spmi: spmi@10027000 {
++			compatible = "mediatek,mt6873-spmi";
++			reg = <0 0x10027000 0 0x000e00>,
++			      <0 0x10029000 0 0x000100>;
++			reg-names = "pmif", "spmimst";
++			clocks = <&infracfg CLK_INFRA_PMIC_AP>,
++				 <&infracfg CLK_INFRA_PMIC_TMR>,
++				 <&topckgen CLK_TOP_SPMI_MST_SEL>;
++			clock-names = "pmif_sys_ck",
++				      "pmif_tmr_ck",
++				      "spmimst_clk_mux";
++			assigned-clocks = <&topckgen CLK_TOP_PWRAP_ULPOSC_SEL>;
++			assigned-clock-parents = <&topckgen CLK_TOP_OSC_D10>;
++		};
++
+ 		scp_adsp: clock-controller@10720000 {
+ 			compatible = "mediatek,mt8192-scp_adsp";
+ 			reg = <0 0x10720000 0 0x1000>;
+-- 
+2.18.0
 
-
-Thanks
-ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
