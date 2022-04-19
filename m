@@ -4,64 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25895C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 12:38:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 697ABC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 12:59:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Subject:To:
-	MIME-Version:From:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sPCMtFFGDKKNCruLtiTD7uR+mvICLMT3tH2uuFf6g3Q=; b=KvRwUdyLl5TIa/
-	3JLYRhN92W/tWes5D4A+5YvPyKTYOBibwV+7V/Vv5cKYGEs+0eT+35mW9WB57Qizwqy48uJE55/Ni
-	tfY494Nxt0SRZZ6lXmUml+JaVpX8OujudWWPi3SQfhP7kFMGdOI+Snq3kX/s1xefym/nZqHwZtUKy
-	os2m7GCf+bz+S39fXbGIOz2jhwZz5ZocWPuhuQ3xj6ELHZnYtakBmmhSaFLoX9tuWGcNMT+kYuHim
-	L4eT3Nlr82C8cEf3FbU9U31DqCkzju4dtdwEVr0f7cHu3dxwhK07FyZIHj/B4+TvWY07hEvnp41sK
-	AI9xOr/HwWMwl+i19Jxg==;
+	List-Owner; bh=SM24Jjld+pNp4p0Zpyy/kTKdVS4XCktGpb72TySKtkE=; b=g9SepQcuYt3bw9
+	1t8nD+YWLHvOvZq9pabWOuFGHBIfA0bLr0lkKsWk5H0yrLQ9rAPoBhJuH//RohVg/08JkW5+CCeLw
+	ggV3IMyil3IJo9Ai51gk+XpvcgfuqiX4wPLsgjhDLA1/fFrrFHU71gVGuSTeOnbCP8705ugUCy0gW
+	4ko60VZNBXLnc+t/iLR0Hi8NqE1PL0SdsfqOez9xbKFLx+LlioHpf6dp1NhEx8vn4N5u25gDNn1SY
+	gPaUxD/83SpVZ+WlzsmUPhObnYCbIoXfIqtUnT9zkieUOM5rO1QpIChxLd8oV3ueu6hOtKGdQqY9y
+	BtLPgrIVAasB5yUIiAtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngn84-003YIo-Q4; Tue, 19 Apr 2022 12:38:48 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1ngnRs-003fXG-KG; Tue, 19 Apr 2022 12:59:16 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngm8X-003AH3-QV; Tue, 19 Apr 2022 11:35:15 +0000
-Received: from kwepemi500011.china.huawei.com (unknown [172.30.72.54])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4KjM9K12jxzFqS9;
- Tue, 19 Apr 2022 19:32:37 +0800 (CST)
-Received: from [127.0.0.1] (10.67.102.125) by kwepemi500011.china.huawei.com
- (7.221.188.124) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Tue, 19 Apr
- 2022 19:35:06 +0800
-Message-ID: <625E9E69.2060008@hisilicon.com>
-Date: Tue, 19 Apr 2022 19:35:05 +0800
-From: Wei Xu <xuwei5@hisilicon.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64;
- rv:24.0) Gecko/20100101 Thunderbird/24.2.0
+ id 1ngmLa-003FS7-La
+ for linux-mediatek@lists.infradead.org; Tue, 19 Apr 2022 11:48:44 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 62AFEB81808
+ for <linux-mediatek@lists.infradead.org>; Tue, 19 Apr 2022 11:48:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2AAAAC385A5
+ for <linux-mediatek@lists.infradead.org>; Tue, 19 Apr 2022 11:48:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1650368919;
+ bh=JCgMiwyD52Mfee1pO8eoHv8GHzhEnFXjizjVzOtSsxA=;
+ h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
+ b=TqINAChhZ7wi6fBGA+9pDD8w2vbni+85039Pnd3TxFjZSu1q30q+guJ0MT3hIcwZ2
+ pcPguPhrO6WmkL024XmA8T/+SU4yT2aOKVlZtW+/NVucZdezx2waHofWKCNi/Dh1aH
+ ZnPSGGwKNqyVLFGJJq7fE+fQbuD352g8EMafw+IpRsspSWqolLk1RUzQ3rVj7kF2Xd
+ CYHmI0l/+2X8+y8iWQNMAc3+skJdsrPIhcLCfPgJrLsRdGlOPnohGOUZMzyU7sMZgd
+ DofSxA/OpPw/CH4jPd26C8C/S42fPoBFuguy5Knpvz0ltC3dVM7XNMC/FGPoWxPudK
+ uqwFJpKX6wSiQ==
+Received: by mail-io1-f53.google.com with SMTP id p21so17264841ioj.4
+ for <linux-mediatek@lists.infradead.org>; Tue, 19 Apr 2022 04:48:39 -0700 (PDT)
+X-Gm-Message-State: AOAM533Pacc9/DE42dDUwZ7lLBok0cf5XRo7fLNTTYDYX9Lgg4pb+05R
+ u1o9inoM00lhGRo4dPrTS5gh1ruwqCGtdojNFZ0=
+X-Google-Smtp-Source: ABdhPJzuYOxUEZRVrD/jtl+UDqJFtOunqtwPeJ91XckRk2H4XnuZJUi8XlLNq9Ql3EoVGm6A8oyVg3Uz5km3drehUYU=
+X-Received: by 2002:a05:6602:15c6:b0:611:591d:1d9a with SMTP id
+ f6-20020a05660215c600b00611591d1d9amr6332958iow.177.1650368918339; Tue, 19
+ Apr 2022 04:48:38 -0700 (PDT)
 MIME-Version: 1.0
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Stanley Chu
- <stanley.chu@mediatek.com>, Alim Akhtar <alim.akhtar@samsung.com>, Andy Gross
- <agross@kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, Jan Kotas <jank@cadence.com>, Rob
- Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski@canonical.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Li Wei <liwei213@huawei.com>, Avri Altman
- <avri.altman@wdc.com>, <devicetree@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, Vignesh Raghavendra <vigneshr@ti.com>,
- <linux-arm-msm@vger.kernel.org>, <linux-samsung-soc@vger.kernel.org>,
- <linux-scsi@vger.kernel.org>, Bjorn Andersson <bjorn.andersson@linaro.org>
-Subject: Re: (subset) [PATCH v3 09/12] arm64: dts: hisilicon: align
- 'freq-table-hz' with dtschema in UFS
-References: <20220306111125.116455-1-krzysztof.kozlowski@canonical.com>
- <20220306111125.116455-10-krzysztof.kozlowski@canonical.com>
- <165036314214.180327.9388318751451146287.b4-ty@linaro.org>
-In-Reply-To: <165036314214.180327.9388318751451146287.b4-ty@linaro.org>
-X-Originating-IP: [10.67.102.125]
-X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
- kwepemi500011.china.huawei.com (7.221.188.124)
-X-CFilter-Loop: Reflected
+References: <b6e1b4b7b5f894cf77a60768e445218805fbb681.camel@mediatek.com>
+In-Reply-To: <b6e1b4b7b5f894cf77a60768e445218805fbb681.camel@mediatek.com>
+From: Josh Boyer <jwboyer@kernel.org>
+Date: Tue, 19 Apr 2022 07:48:27 -0400
+X-Gmail-Original-Message-ID: <CA+5PVA55rfq0pgGXCHgt0AhyS=yRYU_nLoM3kif7qejVnbJRGw@mail.gmail.com>
+Message-ID: <CA+5PVA55rfq0pgGXCHgt0AhyS=yRYU_nLoM3kif7qejVnbJRGw@mail.gmail.com>
+Subject: Re: pull request: linux-firmware: Create Mediatek MT8195 SCP firmware
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: Linux Firmware <linux-firmware@kernel.org>, 
+ linux-mediatek <linux-mediatek@lists.infradead.org>, rongchang@google.com, 
+ Yunfei Dong <yunfei.dong@mediatek.com>, Shawn Ku <shawnku@google.com>,
+ stevecho@google.com, Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ srv_heupstream@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_043514_133029_B69CCAA5 
-X-CRM114-Status: UNSURE (   5.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220419_044842_906104_6B5CF2BB 
+X-CRM114-Status: GOOD (  18.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,29 +83,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+On Thu, Apr 14, 2022 at 2:48 AM Tinghan Shen <tinghan.shen@mediatek.com> wrote:
+>
+> Hi,
+>
+> Add new SCP firmware for MediaTek MT8195.
+> Thank you!
+>
+>
+> Regards,
+> TingHan
+>
+> ---
+> The following changes since commit 8a2d811764e7fcc9e2862549f91487770b70563b:
+>
+>   rtl_bt: Add firmware and config files for RTL8852C (2022-04-13 07:10:23 -0400)
+>
+> are available in the Git repository at:
+>
+>   https://github.com/tinghan-shen/linux_fw_scp v14454.8.0
 
-On 2022/4/19 18:12, Krzysztof Kozlowski wrote:
-> On Sun, 6 Mar 2022 12:11:22 +0100, Krzysztof Kozlowski wrote:
->> The DT schema expects 'freq-table-hz' property to be an uint32-matrix,
->> which is also easier to read.
->>
->>
-> 
-> Applied, thanks!
-> 
-> [09/12] arm64: dts: hisilicon: align 'freq-table-hz' with dtschema in UFS
->         commit: 65b96377bf9130617ced41f317f3ec387d3e0dc3
-> 
+Pulled and pushed out.
 
-Thanks!
+josh
 
-Best Regards,
-Wei
-
-> Best regards,
-> 
-
+>
+> for you to fetch changes up to 10612bd12e4778069aff50caad9431002f92e374:
+>
+>   mediatek: Add mt8195 SCP firmware (2022-04-14 14:03:33 +0800)
+>
+> ----------------------------------------------------------------
+> Tinghan Shen (1):
+>       mediatek: Add mt8195 SCP firmware
+>
+>  WHENCE                  |   2 ++
+>  mediatek/mt8195/scp.img | Bin 0 -> 429668 bytes
+>  2 files changed, 2 insertions(+)
+>  create mode 100644 mediatek/mt8195/scp.img
+>
 
 _______________________________________________
 Linux-mediatek mailing list
