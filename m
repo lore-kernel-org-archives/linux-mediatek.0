@@ -4,61 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 900D0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 10:48:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25895C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 12:38:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Subject:To:
+	MIME-Version:From:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ya5DP21CfKL49/sepWJMwoiICMWZ7v8Hvap5ALVvmjk=; b=uuH5GADUXc/X1I
-	0dK/Rh+r8rtQxPK4ieLfEVvvkvwgYEbQPOVf8C2m6bs5MMvmEtOOdBmMxMnqLwF1ds+8SI2dxR6Wj
-	FI6gFC8Hn3JPnpNRdzrVF+05L7bdA/3xYG1U6m3GaqzQoEUliLojqN/g7lQA1CvseBD9vG7roJ5YD
-	GV4Dx7kHWqphY8PAvsjzSRtM2f5lz0tXdimjEzX9PFaJllW16pYYIT3SOydnsE5hqAyV4nGH4o5R+
-	ouJqL2NKoH++B4ObrId+l71pEmj/G+xtsbO70HM6Z5n4QD0swEQcR0CSYedZyE6wQat/MY90Y4zWp
-	QiLLHIA3sOy93T8ZjZ9g==;
+	List-Owner; bh=sPCMtFFGDKKNCruLtiTD7uR+mvICLMT3tH2uuFf6g3Q=; b=KvRwUdyLl5TIa/
+	3JLYRhN92W/tWes5D4A+5YvPyKTYOBibwV+7V/Vv5cKYGEs+0eT+35mW9WB57Qizwqy48uJE55/Ni
+	tfY494Nxt0SRZZ6lXmUml+JaVpX8OujudWWPi3SQfhP7kFMGdOI+Snq3kX/s1xefym/nZqHwZtUKy
+	os2m7GCf+bz+S39fXbGIOz2jhwZz5ZocWPuhuQ3xj6ELHZnYtakBmmhSaFLoX9tuWGcNMT+kYuHim
+	L4eT3Nlr82C8cEf3FbU9U31DqCkzju4dtdwEVr0f7cHu3dxwhK07FyZIHj/B4+TvWY07hEvnp41sK
+	AI9xOr/HwWMwl+i19Jxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nglPV-002trz-VH; Tue, 19 Apr 2022 10:48:42 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1ngn84-003YIo-Q4; Tue, 19 Apr 2022 12:38:48 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nglNc-002sh6-Ai; Tue, 19 Apr 2022 10:46:48 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 296241F41FED
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1650365201;
- bh=LnqSUtBwZPUm5/PXU0VqgPrbRkp9kCvPI/w5X2wzHus=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=G9OKdXqiTAz+yHzeqbtbvVkiPFzfq4QA7gORSLdSPj5OJvRicnapKQoQUQxBFs8BZ
- +LUJyL6sa7/TbIt7lmZBHWjjkpiVK9oQPGotYWlsCzXIm1VMdAd2WOM2aBggVDst/t
- mzYUH07wThjFVkdXSs3VK4xYUAnxdzZkwdDrqJ8nJ3wscr3JPdkML0FJNItrB20BOu
- unElsw3pC3F9eEbWI4fW9WcdFwZXBb4m0HD9Vbo3+mHWAxs+bDGSs/kadyXTZhCio5
- dNGVT4X/qcHAqHKNd4EnuWZNub1uoUavQ1kp39XK8ufUZpCkAUMxaRYzx0jqyhrSQ8
- uKGLiY+3VMrDg==
-Message-ID: <dc4277ce-cf80-7176-a71f-cb9f93411086@collabora.com>
-Date: Tue, 19 Apr 2022 12:46:38 +0200
+ id 1ngm8X-003AH3-QV; Tue, 19 Apr 2022 11:35:15 +0000
+Received: from kwepemi500011.china.huawei.com (unknown [172.30.72.54])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4KjM9K12jxzFqS9;
+ Tue, 19 Apr 2022 19:32:37 +0800 (CST)
+Received: from [127.0.0.1] (10.67.102.125) by kwepemi500011.china.huawei.com
+ (7.221.188.124) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Tue, 19 Apr
+ 2022 19:35:06 +0800
+Message-ID: <625E9E69.2060008@hisilicon.com>
+Date: Tue, 19 Apr 2022 19:35:05 +0800
+From: Wei Xu <xuwei5@hisilicon.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64;
+ rv:24.0) Gecko/20100101 Thunderbird/24.2.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH 5/7] clk: mediatek: reset: Revise structure to control
- reset register
-Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, mturquette@baylibre.com,
- sboyd@kernel.org
-Cc: matthias.bgg@gmail.com, p.zabel@pengutronix.de,
- chun-jie.chen@mediatek.com, wenst@chromium.org, yong.liang@mediatek.com,
- runyang.chen@mediatek.com, linux-kernel@vger.kernel.org,
- allen-kh.cheng@mediatek.com, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220418132154.7401-1-rex-bc.chen@mediatek.com>
- <20220418132154.7401-6-rex-bc.chen@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220418132154.7401-6-rex-bc.chen@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Stanley Chu
+ <stanley.chu@mediatek.com>, Alim Akhtar <alim.akhtar@samsung.com>, Andy Gross
+ <agross@kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, Jan Kotas <jank@cadence.com>, Rob
+ Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@canonical.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Li Wei <liwei213@huawei.com>, Avri Altman
+ <avri.altman@wdc.com>, <devicetree@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, Vignesh Raghavendra <vigneshr@ti.com>,
+ <linux-arm-msm@vger.kernel.org>, <linux-samsung-soc@vger.kernel.org>,
+ <linux-scsi@vger.kernel.org>, Bjorn Andersson <bjorn.andersson@linaro.org>
+Subject: Re: (subset) [PATCH v3 09/12] arm64: dts: hisilicon: align
+ 'freq-table-hz' with dtschema in UFS
+References: <20220306111125.116455-1-krzysztof.kozlowski@canonical.com>
+ <20220306111125.116455-10-krzysztof.kozlowski@canonical.com>
+ <165036314214.180327.9388318751451146287.b4-ty@linaro.org>
+In-Reply-To: <165036314214.180327.9388318751451146287.b4-ty@linaro.org>
+X-Originating-IP: [10.67.102.125]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ kwepemi500011.china.huawei.com (7.221.188.124)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_034644_825500_37EB0773 
-X-CRM114-Status: GOOD (  30.77  )
+X-CRM114-CacheID: sfid-20220419_043514_133029_B69CCAA5 
+X-CRM114-Status: UNSURE (   5.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,263 +73,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/04/22 15:21, Rex-BC Chen ha scritto:
-> Replace the structure "struct mtk_reset" to reset.h, and rename it as
-> "mtk_clk_rst_data". We use it to input the resset register data and
-> store reset controller device.
+Hi Krzysztof,
+
+On 2022/4/19 18:12, Krzysztof Kozlowski wrote:
+> On Sun, 6 Mar 2022 12:11:22 +0100, Krzysztof Kozlowski wrote:
+>> The DT schema expects 'freq-table-hz' property to be an uint32-matrix,
+>> which is also easier to read.
+>>
+>>
 > 
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> ---
->   drivers/clk/mediatek/clk-mt2701-eth.c |  9 +++-
->   drivers/clk/mediatek/clk-mt2701-g3d.c |  9 +++-
->   drivers/clk/mediatek/clk-mt2701-hif.c |  9 +++-
->   drivers/clk/mediatek/clk-mt2701.c     | 19 +++++++-
->   drivers/clk/mediatek/clk-mt2712.c     | 19 +++++++-
->   drivers/clk/mediatek/clk-mt7622-eth.c |  9 +++-
->   drivers/clk/mediatek/clk-mt7622-hif.c | 19 +++++++-
->   drivers/clk/mediatek/clk-mt7622.c     | 19 +++++++-
->   drivers/clk/mediatek/clk-mt7629-eth.c |  9 +++-
->   drivers/clk/mediatek/clk-mt7629-hif.c | 19 +++++++-
->   drivers/clk/mediatek/clk-mt8135.c     | 19 +++++++-
->   drivers/clk/mediatek/clk-mt8173.c     | 19 +++++++-
->   drivers/clk/mediatek/clk-mt8183.c     | 10 ++++-
->   drivers/clk/mediatek/reset.c          | 62 +++++++++++++--------------
->   drivers/clk/mediatek/reset.h          | 12 +++++-
->   15 files changed, 209 insertions(+), 53 deletions(-)
+> Applied, thanks!
 > 
-> diff --git a/drivers/clk/mediatek/clk-mt2701-eth.c b/drivers/clk/mediatek/clk-mt2701-eth.c
-> index 71257714e6a6..16fc4a50d513 100644
-> --- a/drivers/clk/mediatek/clk-mt2701-eth.c
-> +++ b/drivers/clk/mediatek/clk-mt2701-eth.c
-> @@ -36,6 +36,13 @@ static const struct mtk_gate eth_clks[] = {
->   	GATE_ETH(CLK_ETHSYS_CRYPTO, "crypto_clk", "ethif_sel", 29),
->   };
->   
-> +static struct mtk_clk_rst_data clk_rst_data = {
+> [09/12] arm64: dts: hisilicon: align 'freq-table-hz' with dtschema in UFS
+>         commit: 65b96377bf9130617ced41f317f3ec387d3e0dc3
+> 
 
-static const struct mtk_clk_rst_data clk_rst_data[] = {
+Thanks!
 
-...because this is initialization data that is never supposed to change, and
-in the init function of reset.c, you should never modify this struct.
+Best Regards,
+Wei
 
-> +	.supported = true,
-
-It would make no sense to call mtk_clk_register_rst_ctrl() if the resets
-are not supported, so this .supported member is useless and should be
-removed.
-
-I will avoid commenting on patch 7/7 and will say it here: I know that on that
-patch you're checking for this one but, especially if this reset data becomes a
-const you can, at that point, simply check if anything has been assigned to it
-so that if it's not NULL, we implicitly know that said clock controller instance
-supports resets, and we register them:
-
-int mtk_clk_simple_probe(...)
-{
-	.. blah blah ..
-
-	if (mcd->rst)
-		r = mtk_clk_register_rst_ctrl(....)
-	return r;
-}
-
-
-> +	.version = MTK_RST_V1,
-> +	.reg_num = 1,
-> +	.reg_ofs = 0x34,
-> +};
-> +
->   static const struct of_device_id of_match_clk_mt2701_eth[] = {
->   	{ .compatible = "mediatek,mt2701-ethsys", },
->   	{}
-
-..snip..
-
-> diff --git a/drivers/clk/mediatek/clk-mt2701.c b/drivers/clk/mediatek/clk-mt2701.c
-> index c1100a20c7ed..a8ac3d11ced6 100644
-> --- a/drivers/clk/mediatek/clk-mt2701.c
-> +++ b/drivers/clk/mediatek/clk-mt2701.c
-> @@ -735,6 +735,21 @@ static const struct mtk_fixed_factor infra_fixed_divs[] = {
->   	FACTOR(CLK_INFRA_CLK_13M, "clk13m", "clk26m", 1, 2),
->   };
->   
-
-For increased readability, perhaps it's a good idea to do something like...
-
-> +static struct mtk_clk_rst_data clk_rst_data[] = {
-> +	{
-	{	/* infrasys */
-
-> +		.supported = true,
-> +		.version = MTK_RST_V1,
-> +		.reg_num = 2,
-> +		.reg_ofs = 0x30,
-> +	},
-
-	{	/* pericfg */
-
-> +	{
-> +		.supported = true,
-> +		.version = MTK_RST_V1,
-> +		.reg_num = 2,
-> +		.reg_ofs = 0x0,
-> +	},
-> +};
-> +
->   static struct clk_onecell_data *infra_clk_data;
->   
->   static void __init mtk_infrasys_init_early(struct device_node *node)
-
-..snip...
-
-> diff --git a/drivers/clk/mediatek/clk-mt7622-hif.c b/drivers/clk/mediatek/clk-mt7622-hif.c
-> index 6be894299ae3..a10ecc5b88a1 100644
-> --- a/drivers/clk/mediatek/clk-mt7622-hif.c
-> +++ b/drivers/clk/mediatek/clk-mt7622-hif.c
-> @@ -76,6 +76,21 @@ static const struct mtk_gate pcie_clks[] = {
->   	GATE_PCIE(CLK_SATA_PM_EN, "sata_pm_en", "univpll2_d4", 30),
->   };
->   
-> +static struct mtk_clk_rst_data clk_rst_data[] = {
-> +	{
-> +		.supported = true,
-> +		.version = MTK_RST_V1,
-> +		.reg_num = 1,
-> +		.reg_ofs = 0x34,
-> +	},
-
-I get that the intention here is to separate the reset data between ssusbsys
-and pciesys, but both entries are declaring the exact same... since (as pointed out
-earlier) this should be a const, you can use the same entry for both.
-
-> +	{
-> +		.supported = true,
-> +		.version = MTK_RST_V1,
-> +		.reg_num = 1,
-> +		.reg_ofs = 0x34,
-> +	},
-> +};
-> +
->   static int clk_mt7622_ssusbsys_init(struct platform_device *pdev)
->   {
->   	struct clk_onecell_data *clk_data;
-
-..snip..
-
-
-> diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
-> index 2a55e8bf6b28..709ae54efc18 100644
-> --- a/drivers/clk/mediatek/reset.c
-> +++ b/drivers/clk/mediatek/reset.c
-
-..snip..
-
-> @@ -117,21 +123,15 @@ int mtk_clk_register_rst_ctrl(struct device_node *np,
->   		return -EINVAL;
->   	}
->   
-> -	data = kzalloc(sizeof(*data), GFP_KERNEL);
-> -	if (!data)
-> -		return -ENOMEM;
-> -
-> -	data->regmap = regmap;
-> -	data->regofs = reg_ofs;
-> -	data->rcdev.owner = THIS_MODULE;
-> -	data->rcdev.nr_resets = reg_num * 32;
-> -	data->rcdev.ops = rst_op[version];
-> -	data->rcdev.of_node = np;
-
-
-Here's a cleaner version of this:
-
-int mtk_clk_register_rst_ctrl(struct device *dev,
-			      const struct mtk_clk_rst_desc *rst_desc)
-{
-	....some code....
-
-	struct mtk_reset_data *mtk_reset;
-
-	mtk_reset = devm_kzalloc(dev, sizeof(*mtk_reset), GFP_KERNEL)
-	if (!mtk_reset)
-		return -ENOMEM;
-
-	mtk_reset->desc = rst_desc;
-	mtk_reset->regmap = regmap;
-	mtk_reset->rcdev.owner = .... blah blah
-
-	ret = devm_reset_controller_register(dev, &mtk_reset->rcdev);
-	if (ret)
-		return ret;
-
-....so if you use the devm_* variant, you don't need patch 6/7, as unregistering
-the reset controller will be taken care of by devm actions.
-
-Besides, this is most probably not the case but remember that if you need to
-perform more operations to unregister this reset controller, you can always
-add a custom devm action with function devm_add_action_or_reset(dev, func, parm).
-
-
-> +	clk_rst->regmap = regmap;
-> +	clk_rst->rcdev.owner = THIS_MODULE;
-> +	clk_rst->rcdev.nr_resets = clk_rst->reg_num * 32;
-> +	clk_rst->rcdev.ops = rst_op[clk_rst->version];
-> +	clk_rst->rcdev.of_node = np;
->   
-> -	ret = reset_controller_register(&data->rcdev);
-> +	ret = reset_controller_register(&clk_rst->rcdev);
->   	if (ret) {
->   		pr_err("could not register reset controller: %d\n", ret);
-> -		kfree(data);
->   		return -EINVAL;
->   	}
->   
-> diff --git a/drivers/clk/mediatek/reset.h b/drivers/clk/mediatek/reset.h
-> index 0af77531b918..851a29c92440 100644
-> --- a/drivers/clk/mediatek/reset.h
-> +++ b/drivers/clk/mediatek/reset.h
-> @@ -6,6 +6,7 @@
->   #ifndef __DRV_CLK_MTK_RESET_H
->   #define __DRV_CLK_MTK_RESET_H
->   
-> +#include <linux/reset-controller.h>
->   #include <linux/types.h>
->   
->   enum mtk_reset_version {
-> @@ -14,7 +15,16 @@ enum mtk_reset_version {
->   	MTK_RST_MAX,
->   };
->   
-> +struct mtk_clk_rst_data {
-> +	struct reset_controller_dev rcdev;
-> +	struct regmap *regmap;
-> +	bool supported;
-> +	u8 version;
-> +	u32 reg_num;
-> +	u16 reg_ofs;
-> +};
-
-...so here you'd have something like:
-
-struct mtk_clk_rst_desc {
-	u8 version;
-	u32 reg_num;
-	u16 reg_ofs;
-};
-
-struct mtk_reset_data {
-	struct regmap *regmap;
-	struct reset_controller_dev rcdev;
-	const struct mtk_clk_rst_desc *desc;
-};
-
-
-Cheers,
-Angelo
+> Best regards,
+> 
 
 
 _______________________________________________
