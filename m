@@ -4,89 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0911EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 13:10:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F18AEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 13:22:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3i7cSS5OqE2RayrygpF6NAfn2I+DEjyhJoSs3l4CIV4=; b=Z6cxrnCWbMAoAB
-	zeCOTbWLfXs2AsIWbTI6gBdhKJI0bafVElDZnEIT/87CQuit3vm4aWBlCYg+gE5jCoxthU5MfUqMH
-	dCKMKCPGA+JBtVTzTMpe2r+/hpCUKwQEipMlxOxTydo5Li6g++IM8nDi4r+Oxas2ZTwvhtrkIOQNq
-	LMSDnzeyhPNNx5iW3VtAX9hA/9IjRhJArBgv/mxeAioUE8ThDfGcNf9YJpewQsr1t0OoJMg7GgFQP
-	78aNWmN5LUhT0jxsxZZQsWcdjMeBJynhxJINCfcgWZ5N/a9IawRYSDJxJWk+I79VucEJk8ge3Wv6k
-	QEdCymOFBcmQ1r2vJhvg==;
+	List-Owner; bh=qfernPG25dipSpVpRa/lG644cglHCJSUMv8M+XwfyQk=; b=k6x1fA3x3SHLIu
+	5N3nA0mnvGXY4bYt5XfYOnPvPPcvfloBwIoeUcLsZyGRKH7dzcr7hB9aWxiuXEwip+ufhos5JBBjW
+	GIbJY9p511UlXu7sJRS7PGaAKl8NcLF5lTajqJHt8hgBAvVChKYmm1bevJLI+2TV/vGQmk71t2xpa
+	RHNNbbjhjwMVcH4HjNkOtMXTW25oLbnPc1giFizZP+kX7HM/Nuxbu6cvKPZccL4bohIqiKXbfARoZ
+	z/ruAXJzhe8MTAFYArANpdDJzg8/th/GeALxtRZXZesPk2s9t6UdxAtPMKUNxT/KWYYGk5JWMnZTf
+	NEKhgYjJUbpsTrLrFNrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngncJ-003jDw-W3; Tue, 19 Apr 2022 13:10:04 +0000
-Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
+	id 1ngnoN-003o4m-HG; Tue, 19 Apr 2022 13:22:31 +0000
+Received: from mail-ot1-f43.google.com ([209.85.210.43])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngmR0-003HB1-1I
- for linux-mediatek@lists.infradead.org; Tue, 19 Apr 2022 11:54:20 +0000
-Received: by mail-oa1-x30.google.com with SMTP id
- 586e51a60fabf-e5e8523fcbso5623804fac.10
- for <linux-mediatek@lists.infradead.org>; Tue, 19 Apr 2022 04:54:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zr+VGX0mhBp9NZinaclK39Iaheyjh+GcxufQM98q2T4=;
- b=TaPVENVs6UeX/0wd28BijzB9+2vH3hkykLfAx6Z+TianLJL/RErxbAX9zvCD+siM/Z
- uLqmKaIs6I21/BZuoX5aH54xHpMduMGKHjQmyllRJaUuuBA2culEnlxqKuir7uxiFapV
- 3KrFAo/2ggciJwo9Etg/qeEu5hsSc4fTqlm8c=
+ id 1ngmjD-003Nq6-Lf; Tue, 19 Apr 2022 12:13:09 +0000
+Received: by mail-ot1-f43.google.com with SMTP id
+ r14-20020a9d750e000000b00605446d683eso5544431otk.10; 
+ Tue, 19 Apr 2022 05:12:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=zr+VGX0mhBp9NZinaclK39Iaheyjh+GcxufQM98q2T4=;
- b=mqqLfdJXBx2SaUmsjn8LqC6RJ7FCe6w1/5x4UsaBbsgd2juCDPTHjHChQuyAvtp9GA
- 9qHmzPa+4KzsvmchdGt/tSR96/hDpMGsYizPZgBo/hcjsL5WBzK4jfX6mqaUC89eEZZj
- WgKPh9MshCNWxh9VtUlxg4iRabDoQtaHUqFTn/E/UC8kjzyeBIlv02zI6tvtAmO35kU2
- n1CPiyCkjSmZJXiatZXFOElV9r2w4rnjmideDVHPWgoWLwP2thlnfcTvSPLM0yOda0ZU
- pjFsbJhSj3zNR0PQIuJT9YeJnHdteluDD/QqObmc1SpQByROPS98FJlRUiml3/bdla6U
- N/Gw==
-X-Gm-Message-State: AOAM5310Cn8Kr3vtGCkKrG6Q1TPO8Xf5EKeWc0pUNvomV1lec+BDLiRc
- QVLja/3Y13GlAUdCdxvEWmS9kdYY3xB26A==
-X-Google-Smtp-Source: ABdhPJwR36N39A3FS7xYdfd2lNdkSlMfrvZQto2NgYWev6XDi9dliqpFywz+lH2hZhiH2FbNgFPkNw==
-X-Received: by 2002:a05:6870:1710:b0:e5:bd83:fa8 with SMTP id
- h16-20020a056870171000b000e5bd830fa8mr5818865oae.124.1650369254502; 
- Tue, 19 Apr 2022 04:54:14 -0700 (PDT)
-Received: from mail-ot1-f44.google.com (mail-ot1-f44.google.com.
- [209.85.210.44]) by smtp.gmail.com with ESMTPSA id
- 17-20020a056870121100b000e296227c9bsm4990440oan.9.2022.04.19.04.54.14
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 Apr 2022 04:54:14 -0700 (PDT)
-Received: by mail-ot1-f44.google.com with SMTP id
- l9-20020a056830268900b006054381dd35so5582821otu.4
- for <linux-mediatek@lists.infradead.org>; Tue, 19 Apr 2022 04:54:14 -0700 (PDT)
-X-Received: by 2002:a4a:8081:0:b0:33a:52ed:3b3b with SMTP id
- z1-20020a4a8081000000b0033a52ed3b3bmr1777631oof.26.1650368786395; Tue, 19 Apr
- 2022 04:46:26 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220418090652.3156-1-Ping-lei.Lin@mediatek.com>
-In-Reply-To: <20220418090652.3156-1-Ping-lei.Lin@mediatek.com>
-From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Tue, 19 Apr 2022 13:46:15 +0200
-X-Gmail-Original-Message-ID: <CANiDSCvLb785H7qyAzSfTSBRpO2eM-oJFF5SgVHXdL1O-GusLA@mail.gmail.com>
-Message-ID: <CANiDSCvLb785H7qyAzSfTSBRpO2eM-oJFF5SgVHXdL1O-GusLA@mail.gmail.com>
-Subject: Re: [PATCH v3] media: usb: uvc: Add UVC_GUID_FORMAT_H265
-To: James_Lin <Ping-lei.Lin@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Arnd Bergmann <arnd@arndb.de>, Sergey Senozhatsky <senozhatsky@chromium.org>, 
- Alexandre Courbot <acourbot@chromium.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>, 
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, sherlock.chang@mediatek.com, 
- lecopzer.chen@mediatek.com, max.yan@mediatek.com, tm.wu@mediatek.com
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=lbM+6TXr7OH0hoMGKTtqkVWI32EFUbBVKJzBhHmX6V4=;
+ b=LnadR1GWbz4ZHVw1QmNNIahGJ1bgKhReHEhiCdzEtMIEEyOvP0nNPL2tfqNSrRu4lT
+ ZrY2wlqfG4i6Q6/R4ZH/PSZblPHqmxC8w3VapIFuCmMVZ3GSMwaq87A9XGiGfwg2Mpui
+ 6E+ISggBK8784AHK5ZsaRvC+L9+wuKCmC6VfoohTmpwOjV4jzDJ8ZvPpVCvLInDVdurV
+ Tph2Hl2HBDuKrxllHhvN7sF1k9CBxsILVfHM5tvtsczwl7J2ZQAGSpaiOOI0anODulDY
+ KFo+AObtlAmwsLUC8UIW9knbzL9cq4oP1EbgNtIcWtyOjRBIj0DgXjRUgLLCchboSTrR
+ a3Gw==
+X-Gm-Message-State: AOAM532cbkRL5UOs5bfiwzcehQ0G+hHUZTfN55GuUbRo1V7aMZsP0VNf
+ 7OMAkntIt34M/worq4oaKg==
+X-Google-Smtp-Source: ABdhPJyjKDFF8xz6BuFfOGVDFYuw4bwRD11RnRt3Q2XGouMWxrrzMKZfe3UV4QNteW5WL5S5+lphdg==
+X-Received: by 2002:a9d:765a:0:b0:605:4910:afb8 with SMTP id
+ o26-20020a9d765a000000b006054910afb8mr4193620otl.1.1650370367445; 
+ Tue, 19 Apr 2022 05:12:47 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ o17-20020a9d5c11000000b005b2611a13edsm5239752otk.61.2022.04.19.05.12.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 19 Apr 2022 05:12:47 -0700 (PDT)
+Received: (nullmailer pid 1977868 invoked by uid 1000);
+ Tue, 19 Apr 2022 12:12:43 -0000
+From: Rob Herring <robh@kernel.org>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: chunkuang.hu@kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com,
+ angelogioacchino.delregno@collabora.com, nancy.lin@mediatek.com,
+ dri-devel@lists.freedesktop.org, robh+dt@kernel.org, airlied@linux.ie,
+ linux-kernel@vger.kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ jason-jh.lin@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, p.zabel@pengutronix.de,
+ devicetree@vger.kernel.org, matthias.bgg@gmail.com
+In-Reply-To: <20220419033237.23405-6-rex-bc.chen@mediatek.com>
+References: <20220419033237.23405-1-rex-bc.chen@mediatek.com>
+ <20220419033237.23405-6-rex-bc.chen@mediatek.com>
+Subject: Re: [PATCH 5/5] dt-bindings: mediatek: add ethdr definition for mt8195
+Date: Tue, 19 Apr 2022 07:12:43 -0500
+Message-Id: <1650370363.563060.1977867.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_045418_178192_8DEDE9D9 
-X-CRM114-Status: GOOD (  23.98  )
+X-CRM114-CacheID: sfid-20220419_051307_753490_BDBBD24E 
+X-CRM114-Status: GOOD (  11.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,79 +80,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi James
-
-Thanks for your patch
-
-On Mon, 18 Apr 2022 at 11:07, James_Lin <Ping-lei.Lin@mediatek.com> wrote:
->
-> This patch aims to add UVC_GUID_FORMAT_H265
-> High Efficiency Video Coding (HEVC), also known as H.265 and MPEG-H Part 2.
-> They describe the same video encoding method.
-> So for handling their behavior is the same.
-> However, when external camera device describes this encoding method,
-> some use hevc, some use h265.
-> There is no uniform specification to describe this encoding method.
-> So if an external camera device use h265 to describe this encoding method,
-> driver will not recognize it.
-> Therefore, this patch is to enable driver to read HEVC/H265
-> and convert it to V4L2_PIX_FMT_HEVC.
->
-> Signed-off-by: James_Lin <Ping-lei.Lin@mediatek.com>
-
-Reviewed-by: Ricardo Ribalda <ribalda@chromium.org>
-
+On Tue, 19 Apr 2022 11:32:37 +0800, Rex-BC Chen wrote:
+> From: "Nancy.Lin" <nancy.lin@mediatek.com>
+> 
+> Add vdosys1 ETHDR definition.
+> 
+> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  drivers/media/usb/uvc/uvc_driver.c | 5 +++++
->  drivers/media/usb/uvc/uvcvideo.h   | 3 +++
->  2 files changed, 8 insertions(+)
->
-> diff --git a/drivers/media/usb/uvc/uvc_driver.c b/drivers/media/usb/uvc/uvc_driver.c
-> index dda0f0aa78b8..e437e9f95890 100644
-> --- a/drivers/media/usb/uvc/uvc_driver.c
-> +++ b/drivers/media/usb/uvc/uvc_driver.c
-> @@ -154,6 +154,11 @@ static struct uvc_format_desc uvc_fmts[] = {
->                 .guid           = UVC_GUID_FORMAT_H264,
->                 .fcc            = V4L2_PIX_FMT_H264,
->         },
+>  .../display/mediatek/mediatek,ethdr.yaml      | 158 ++++++++++++++++++
+>  1 file changed, 158 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
+> 
 
-Maybe I would add a comment here saying that some cameras represent
-hevc as h265.
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-> +       {
-> +               .name           = "H.265",
-> +               .guid           = UVC_GUID_FORMAT_H265,
-> +               .fcc            = V4L2_PIX_FMT_HEVC,
-> +       },
->         {
->                 .name           = "Greyscale 8 L/R (Y8I)",
->                 .guid           = UVC_GUID_FORMAT_Y8I,
-> diff --git a/drivers/media/usb/uvc/uvcvideo.h b/drivers/media/usb/uvc/uvcvideo.h
-> index 143230b3275b..41f4d8c33f2a 100644
-> --- a/drivers/media/usb/uvc/uvcvideo.h
-> +++ b/drivers/media/usb/uvc/uvcvideo.h
-> @@ -139,6 +139,9 @@
->  #define UVC_GUID_FORMAT_H264 \
->         { 'H',  '2',  '6',  '4', 0x00, 0x00, 0x10, 0x00, \
->          0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71}
-> +#define UVC_GUID_FORMAT_H265 \
-> +       { 'H',  '2',  '6',  '5', 0x00, 0x00, 0x10, 0x00, \
-> +        0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71}
->  #define UVC_GUID_FORMAT_Y8I \
->         { 'Y',  '8',  'I',  ' ', 0x00, 0x00, 0x10, 0x00, \
->          0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71}
-> --
-> 2.18.0
->
+yamllint warnings/errors:
 
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.example.dts:26:18: fatal error: dt-bindings/memory/mt8195-memory-port.h: No such file or directory
+   26 |         #include <dt-bindings/memory/mt8195-memory-port.h>
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [scripts/Makefile.lib:364: Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.example.dtb] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:1401: dt_binding_check] Error 2
 
--- 
-Ricardo Ribalda
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 
 _______________________________________________
 Linux-mediatek mailing list
