@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FFB2C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 18:22:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 260E2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 18:25:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K2NXwHziksbPDcNqsXal4pSc6Y9uerqDC0A9nAB/8Gc=; b=xMk/Tt7aW5Zxy0
-	AQG8EEfc2vU1FjdYr7dlW7cmgL/Uxe2PKwlqKpKvDZHWmP24KiX+3xMapMFxhRmkbHWOZd2MEi8Pl
-	pmpQ25+px/C2J3XoAjnfkeT+osWLTUYqZZWEyf+Y345qaBW6b3mhM/DBxB9TBM/xYNOe0es+rybRY
-	DQMpJGlVPx8SluSCgDf6W7SNMxkOh5HK15f2f3nTTA9lPwDNiEICz0r/LfgNsd7KyXSRWV+1Gz3wk
-	QXgAJW2iGPbMS37Xz6q4mRTapiN5FIsOyemPY9CeIt2B1gZuiBk0+aUOz7CnbHVyUnTFLlr8C9vh5
-	bDM8jnFMUbWBg5UVps8A==;
+	List-Owner; bh=IxdTzoMb9JyPztdDjXyD9MtmdLDwOCGd7Idgik65KQc=; b=nAzshcR6Txcowe
+	GuP6/sZAQgUBHftKt6YIfj5qdWy+I5zSBDXSrL3XVZ16Nw5ES2NzLsC0zxpncD9nxVkLLOBGwDJX+
+	mFV9q6ZGKIOGSGHDHMRoW3UsaCUP7onOtpdDNUvuAcLm4A447xce95vslDIZta+Y2Zzv26aT5oqZQ
+	MYZHolIXBeR67/hcTephgGUlm9aTXRdiNcw+NXjw496bp1rJbMlwOCWYrGalCY52Pjs3qoXey82HM
+	cDvtF2tLVGTTb8Q3/RE/KO15r+S2/iqF/kBY5zjqQvoVUTGx9uUjk7sDybzxL6xsgOuy/JL+ge3Qz
+	8BviLeiC14oSPzeb6EQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngsU8-005cYs-Ek; Tue, 19 Apr 2022 18:21:56 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ngsXf-005eRL-Rc; Tue, 19 Apr 2022 18:25:35 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngsMl-005YcE-Tt; Tue, 19 Apr 2022 18:14:21 +0000
+ id 1ngsNV-005Z4W-ER; Tue, 19 Apr 2022 18:15:07 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 72CBC61158;
- Tue, 19 Apr 2022 18:14:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9E525C385A5;
- Tue, 19 Apr 2022 18:14:16 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id F32C86135A;
+ Tue, 19 Apr 2022 18:15:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5380DC385A7;
+ Tue, 19 Apr 2022 18:15:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1650392058;
- bh=+ylIEXyxmEFD6kOdSurz07QKSSrRnFw6/2NQl7GGrqQ=;
+ s=k20201202; t=1650392103;
+ bh=MD2a3mTLCRYlsfqyW71MashvvoF42g9X7TNWmf2UenA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=mmVCKzqVMJ69GcIRU1T2IeLkH+f/kGHBtmTguxwb46AArtbSGA1X47YQX4eQQVsgu
- C5yjkTzjauSAgTPCtzmssv9wiQfCuV2XzEysnJ+rg9rb+YQzMgVs0gq2eHq858/ub6
- xu86QHHraz7vvcYjEQYhODeD9MXE8rSug6C3u+PNVcCV2qkrgMhQE+6jBzfu7U4+ts
- NewBuCE+pJg7quCNzAY1ZPWzwacJgIZsozdbBMYkqgAaRot+f1vluYoQp0wftAad6P
- ugSBL9gKM6XMb26Cap4o/aJNUmfVKgtdVm1QPqAOmrHKPt2CjguX7Osxedo2TZsgsH
- BqrNb2XlI8d+Q==
+ b=cBOc/8LTGlkBxN1bgYND8KHmcH2s7zz5GxUVLU/zuZXsWNsrMWIGQNYxNpwwPmc1R
+ Q+5YYwNL2nHKg9JW4MWmhrnCo1EswoFiKW1MDHngPz4ajQeo4FBAgirSQ/cxZWcvcD
+ QaM8qUxORpy+dh6IV43z0GfvNlBhcy/q0thMvBmT0o1lLIrzv9RAk2QgvJi7bj0gyI
+ BUa4VNEZNlWoHtMmICabi758iZKlQnC8aJla91A81XZ8M1/tVF8/SOC83SDC5X+gat
+ mQjBY3uJMUouB6WTzYaJmdI2hB0Wy6o5XsWqXcpsgTW9gaSh4gmyfVszRb9+WTkv9i
+ gx2YX4nPYO7mw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -53,18 +53,18 @@ Cc: Borislav Petkov <bp@suse.de>, Felix Fietkau <nbd@nbd.name>,
  Sasha Levin <sashal@kernel.org>, lorenzo@kernel.org, pabeni@redhat.com,
  matthias.bgg@gmail.com, christophe.jaillet@wanadoo.fr,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 09/18] mt76: Fix undefined behavior due to shift
+Subject: [PATCH AUTOSEL 5.4 07/14] mt76: Fix undefined behavior due to shift
  overflowing the constant
-Date: Tue, 19 Apr 2022 14:13:43 -0400
-Message-Id: <20220419181353.485719-9-sashal@kernel.org>
+Date: Tue, 19 Apr 2022 14:14:36 -0400
+Message-Id: <20220419181444.485959-7-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220419181353.485719-1-sashal@kernel.org>
-References: <20220419181353.485719-1-sashal@kernel.org>
+In-Reply-To: <20220419181444.485959-1-sashal@kernel.org>
+References: <20220419181444.485959-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_111420_080593_DA97BB3A 
+X-CRM114-CacheID: sfid-20220419_111505_569264_75883125 
 X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -105,10 +105,10 @@ ZGUKU2lnbmVkLW9mZi1ieTogU2FzaGEgTGV2aW4gPHNhc2hhbEBrZXJuZWwub3JnPgotLS0KIGRy
 aXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3NngyL3BjaS5jIHwgMiArLQogMSBm
 aWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEv
 ZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc2eDIvcGNpLmMgYi9kcml2ZXJz
-L25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzZ4Mi9wY2kuYwppbmRleCBlY2FmODViNDgz
-YWMuLmU1N2U0OWE3MjJkYyAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0
+L25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzZ4Mi9wY2kuYwppbmRleCBjZjYxMWQxYjgx
+N2MuLmU2ZDc2NDZhMGQ5YyAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0
 ZWsvbXQ3Ni9tdDc2eDIvcGNpLmMKKysrIGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsv
-bXQ3Ni9tdDc2eDIvcGNpLmMKQEAgLTgwLDcgKzgwLDcgQEAgbXQ3NngyZV9wcm9iZShzdHJ1Y3Qg
+bXQ3Ni9tdDc2eDIvcGNpLmMKQEAgLTc2LDcgKzc2LDcgQEAgbXQ3NnBjaV9wcm9iZShzdHJ1Y3Qg
 cGNpX2RldiAqcGRldiwgY29uc3Qgc3RydWN0IHBjaV9kZXZpY2VfaWQgKmlkKQogCW10NzZfcm13
 X2ZpZWxkKGRldiwgMHgxNWExMCwgMHgxZiA8PCAxNiwgMHg5KTsKIAogCS8qIFJHX1NTVVNCX0cx
 X0NEUl9CSUNfTFRSID0gMHhmICovCi0JbXQ3Nl9ybXdfZmllbGQoZGV2LCAweDE1YTBjLCAweGYg
