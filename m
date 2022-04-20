@@ -4,60 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7D39C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 12:02:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C131C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 12:16:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EtvkiMoANc2qPzkYt+6zbnuIeBgOFCzjJshv7teCRbE=; b=aZLtmdeKwQik58
-	smMMKWFRCEe5knLNgJOh8I3z3Ux0lBWGjATskt1DuC8UbTdeSGHGAjn2xNdHsgM8ghsKGaQkSgAqW
-	Cmg6Fu1FaVp9p8X15llCyv4V3zZS7F78DIGvWZNSSMeUWsJDv47PS3qiuITI32EP6JfOxYsyUr0a1
-	Rkty1YZwxp67DDKLwIyqYKnAf99vcnXH939LV0ms4PYqVoICdCagAj9s+iHlR6TkWilEDHQpXQJoJ
-	2elD5d45FTgsLupLapRQXk9PNpLtu34UG/zP6VgAS7QIULeKdHkL/tVs224YMjEkY9yTPibeqAtQh
-	UnRbPooIPBQKVGP1rogg==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TX0cbS1EKg4ui5XB5GKhXxn7oF2mIwZeG4i1UNkypb8=; b=di83sKifahRadhaswspQZXCfHc
+	zHBIAuo+Tvp9anW5dMYH02J7BN24H2sl5Lxu6INzlOih/0WtGn0vFfPb2IzXKn9+kIJMMSVgB3DDC
+	4kxyvH0x5KbUjrXT4G0NSO7UvWY0GMWa0TCJInsKgSXtXneTTe0KYftHt/DprN11+UppCuphkQOUi
+	JzkfaiSfMOkYALgnFwtzYjKKC5dkb0PBOqE855cHbF6C8EFiddeQyFCapClZYn+4pE/rrwiD1T+EM
+	Wo5vrALNY2LDPU7FlANcBooYmE0RiU3sqmuFsX5ii2ClHtfw4TiKNb6f3e2ZSmDJqborP48bEnAIF
+	AC9t8llg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nh92b-008tvC-3h; Wed, 20 Apr 2022 12:02:37 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nh9FV-008vmF-U5; Wed, 20 Apr 2022 12:15:57 +0000
+Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nh92P-008trs-2Y; Wed, 20 Apr 2022 12:02:27 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 85CC01F439F1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1650456140;
- bh=eypPEIA55pVQnebCMYcNZUnShmDUItvbJq79kOP8Xm4=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=Eesz4c8/weJ3EMUtyNbhLYHLboEvf0/+iP4MdFSQFJLVB9lst9DeGrbGoFvpoqeNS
- 3uALJ1UZTkkVzxVP8TyK21Dh52LhKRc1HUo2pGeBwEJBJmfygQvXKdh41/LAn6+C4i
- vA1u8WEYOf0usJcEuu0i9ntO0wBBUs6/Ulg+rcuLOaES6zgk+e3dYCiJ+87L1s9WaO
- gdRbM9nsohNdOKyV+QWx5/bHAN9c2QdgyaLUCrgLx54QrCxPGofynOi22MCrAoEYup
- evNeI/T/Hd3OowZZi6qNgGdYTv5xKDUJtrnUpeyQL5Sd10FhXYQTOEDaGuA1/cjJ/u
- 2NdUmz7RnitLg==
-Message-ID: <ca8048f4-2e75-a49b-6c54-9f6abba6ead3@collabora.com>
-Date: Wed, 20 Apr 2022 14:02:17 +0200
+ id 1nh9FJ-008vhx-61; Wed, 20 Apr 2022 12:15:46 +0000
+Received: by mail-io1-xd33.google.com with SMTP id p62so1637647iod.0;
+ Wed, 20 Apr 2022 05:15:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :references:from:in-reply-to:content-transfer-encoding;
+ bh=Ctf05BnnO/qOOsj3lddSfaG/ckbIuPH18mve0wqxytc=;
+ b=MOLLrmIbPhbcuVPkAQ//MoR8UOLTM7HHPzV8X75L6wD9+Wdrs1poUTr/Dge/vUt5Sl
+ g3JxL8ioJFyr49Foa1yI8VuHEwf7Urlsu6wkJI+RL36Cy1vQUwkchkt7JdPmtuXORkQ4
+ x8RMivE61Gx/gtWTJnsLGiKnd8M8gPPExucRmI+KrI2/FAxVdNQwNxO7coS3ll0/wUuk
+ l/DukXjH5WTNMfBpn5TM+wOkOqoURzbNEfcmeBhTOui/4WnCxqL+IniflFx4v6rqmTCa
+ 3fzieVNrdABSaiWvxg6hCSReLlqHZpUuo2eGZoui1RivR1kxMK3ZQJIVJsnk1Je1dv5+
+ Z/kg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=Ctf05BnnO/qOOsj3lddSfaG/ckbIuPH18mve0wqxytc=;
+ b=VKUUJBRr8nIz9EGbLQmQFUzhG98H0mjo8VAacx0bJ6fkAQQgSG8GqXuuk9iE6D+WTY
+ WjSKvxauzW/5tCCkBPI0yCws2cvpLiC6dS9CPHf7A+DluhtCae8nRBSo1479A9LVvwrq
+ iOmkmoUxbf5XG5xJCFepuIT+Ve1hHn/LgiSJkaZKkmv9dqH0D1kz8D/1BO1wh07GEX2A
+ r4E+31JxvCYAAqFjOMF2QzcCsYqgbovlC7y+xLz6BkXlzr8oBCKpT2rhUzsWt+OUGP3/
+ mLJG4+mksi/CzGYNn8PrQGXUIxMtvsxZdbl9pQfhkq7mWCe5GqajRTwKna0wdcOpIL38
+ FU+g==
+X-Gm-Message-State: AOAM532AUo62uIYubSg4rXqvrbKwHS94dQn9WnpkUiqDzUkPoEsbOCB+
+ Ljx7iz+S3VvHtI3OGq7AZdY=
+X-Google-Smtp-Source: ABdhPJxWfk/nAf1Dm0w32dF4UstB4QlQHnDUirwxOVjblMaKE8IgXOAi2O3VwePL6xJC0hz1fj2o7Q==
+X-Received: by 2002:a05:6638:481a:b0:326:6a2c:2396 with SMTP id
+ cp26-20020a056638481a00b003266a2c2396mr9535358jab.122.1650456938840; 
+ Wed, 20 Apr 2022 05:15:38 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+ by smtp.gmail.com with ESMTPSA id
+ 131-20020a6b0189000000b0065393383518sm8806980iob.48.2022.04.20.05.15.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 20 Apr 2022 05:15:38 -0700 (PDT)
+Message-ID: <caec273c-b15c-6dca-cd8e-e1b48c5d5490@gmail.com>
+Date: Wed, 20 Apr 2022 14:15:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [RFC PATCH 0/7] clk: mediatek: Move to struct clk_hw provider APIs
+ Thunderbird/91.5.0
+Subject: Re: [RESEND PATCH] soc: mediatek: cmdq: Use mailbox rx_callback
+ instead of cmdq_task_cb
 Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Miles Chen <miles.chen@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220419081246.2546159-1-wenst@chromium.org>
- <3591fcc1-d34a-b40a-4e78-edcf9d2ddf08@collabora.com>
- <CAGXv+5HhcQbdGLQFtgPnvzVbSKaQ5GQGvmjwPVOVxjrYnMh1dg@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5HhcQbdGLQFtgPnvzVbSKaQ5GQGvmjwPVOVxjrYnMh1dg@mail.gmail.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <1650102868-26219-1-git-send-email-chunkuang.hu@kernel.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <1650102868-26219-1-git-send-email-chunkuang.hu@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220420_050225_431998_4C49213E 
-X-CRM114-Status: GOOD (  39.19  )
+X-CRM114-CacheID: sfid-20220420_051545_254821_68663D65 
+X-CRM114-Status: GOOD (  20.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,123 +92,86 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/04/22 18:09, Chen-Yu Tsai ha scritto:
-> On Tue, Apr 19, 2022 at 11:08 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 19/04/22 10:12, Chen-Yu Tsai ha scritto:
->>> Hi everyone,
->>>
->>> This is part 2 of my proposed MediaTek clk driver cleanup work [1].
->>>
->>
->> ..snip..
->>
->>>
->>> The next phase of the cleanup/improvement shall be to introduce some
->>> variant of `struct clk_parent_data` to describe clk relationships
->>> efficiently.
->>>
->>> Please have a look.
->>>
->>
->> Hello Chen-Yu,
->>
->> I am grateful to see this series, as the MediaTek clock drivers are getting
->> a bit old, despite new platforms being implemented practically as we speak.
->>
->> With this, you surely get that I completely agree with the proposed cleanup
->> and modernization of the entire MediaTek clocks infrastructure, but I think
->> that introducing a `struct clk_parent_data` for these drivers is, at this
->> point, a must, that not only fully justifies these patches, but also "makes
->> the point" - as the effect of that would be a performance improvement as we
->> would *at least* avoid lots of clk_cpy_name() in case of parent_hws, or in
->> case or parent_data where no .fw_name is provided (which would be the case
->> for most of the clocks).
+
+
+On 16/04/2022 11:54, Chun-Kuang Hu wrote:
+> rx_callback is a standard mailbox callback mechanism and could cover the
+> function of proprietary cmdq_task_cb, so use the standard one instead of
+> the proprietary one. Client has changed to use the standard callback
+> machanism and sync dma buffer in client driver, so remove the proprietary
+> callback in cmdq helper.
 > 
-> You and me both. :) And yes, one of the intended results is to make the
-> clk driver probe faster.
+> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+
+Applied, thanks
+
+> ---
+>   drivers/soc/mediatek/mtk-cmdq-helper.c | 25 +------------------------
+>   include/linux/soc/mediatek/mtk-cmdq.h  |  5 +----
+>   2 files changed, 2 insertions(+), 28 deletions(-)
 > 
->> That said, my advice would be to add that conversion to declaring clocks
->> with .hw.init.parent_data and/or .hw.init.parent_hws to this series as to
->> really make it complete.
-> 
-> This series itself already touches a lot of code, even if most of it was
-> done by coccinelle. I'd like to send them separately to not overwhelm
-> people.
-> 
-> Also, I haven't actually started on that part yet. It is actually part 3
-> of my overall plan. I have a good idea of what to do, given I did similar
-> work for the sunxi-ng clk drivers (though half finished...).
-
-Having a good plan means that you're already half-done though :) :) :)
-
-Besides, the reason why I said that you should do the conversion in the same
-series was exactly because your changes are done with coccinelle scripts...
-...but I thought that you already had something in the works for that.
-
-Since you still need some time for the final part, having this kind of (even
-if partial) modernization is still golden.
-Let's do it in two steps as you prefer then, that's fine for me.
-
-> 
-> Most of the clk references are internal to each driver, and those would
-> be mapped from some CLK_ID to some `struct clk_hw *` internally, but all
-> blocks have external parents that need to be modeled as well, and we
-> would likely need global clk name fallbacks for the blocks that don't
-> have parents declared in the device tree, which is unfortunately most
-> of them. Especially the central clock controllers like infracfg or pericfg
-> take many clk inputs, to the point that MediaTek folks were somewhat
-> unwilling to bloat the device tree with them.
-> 
-> So it does seem easier to use something like clk_parent_data with
-> `struct clk_hw *` replaced with an index everywhere. This structure
-> would get converted into clk_parent_data by the singular clk registration
-> helpers.
-> 
-
-I may not be understanding what you mean by mapping the CLK_ID internally, but
-from what my brain processed, I think that you want to look at, and basically
-replicate, how it's done in the Qualcomm clock drivers (and perhaps standardize
-that in the clock API?).
-
-Specifically, clk/qcom/common.h, struct parent_map.
-
-Though, I admit I haven't looked at the MTK clocks *very deeply*, so I may be
-misunderstanding something.
-
-> This would have to coexist with the existing helpers we have. So I think
-> this work would be combined with the helper API cleanup / alignment with
-> clk provider API.
-> 
-> Does that make sense to you?
-> 
-
-Yes that does fully make sense to me.
-
->> Of course, if you have concerns about old platforms that you cannot test,
->> or for which this kind of conversion would require a huge amount of effort,
->> then I would go for converting as many as possible as a first step and then
->> leave the others for later.
->>
->> I would envision MT8183, 8186, 8192, 8195 to be a good amount of first
->> candidates for this great effort.
-> 
-> I'm working with MT8183 right now, as it can readily boot mainline to a
-> shell. Depending on the schedule and whose on board with resources, I'd
-> probably handle the other ChromeOS platforms, or delegate it internally.
-> 
-> 
-
-That sounds like a plan. Besides, I wasn't trying to give you any hurry
-whatsoever - I was simply thinking out loud :))
-
-Regards,
-Angelo
-
-> Regards
-> ChenYu
-
+> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> index 3c8e421..c1837a4 100644
+> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> @@ -425,34 +425,11 @@ int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
+>   }
+>   EXPORT_SYMBOL(cmdq_pkt_finalize);
+>   
+> -static void cmdq_pkt_flush_async_cb(struct cmdq_cb_data data)
+> -{
+> -	struct cmdq_pkt *pkt = (struct cmdq_pkt *)data.data;
+> -	struct cmdq_task_cb *cb = &pkt->cb;
+> -	struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
+> -
+> -	dma_sync_single_for_cpu(client->chan->mbox->dev, pkt->pa_base,
+> -				pkt->cmd_buf_size, DMA_TO_DEVICE);
+> -	if (cb->cb) {
+> -		data.data = cb->data;
+> -		cb->cb(data);
+> -	}
+> -}
+> -
+> -int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
+> -			 void *data)
+> +int cmdq_pkt_flush_async(struct cmdq_pkt *pkt)
+>   {
+>   	int err;
+>   	struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
+>   
+> -	pkt->cb.cb = cb;
+> -	pkt->cb.data = data;
+> -	pkt->async_cb.cb = cmdq_pkt_flush_async_cb;
+> -	pkt->async_cb.data = pkt;
+> -
+> -	dma_sync_single_for_device(client->chan->mbox->dev, pkt->pa_base,
+> -				   pkt->cmd_buf_size, DMA_TO_DEVICE);
+> -
+>   	err = mbox_send_message(client->chan, pkt);
+>   	if (err < 0)
+>   		return err;
+> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+> index ac6b5f3..2b498f4 100644
+> --- a/include/linux/soc/mediatek/mtk-cmdq.h
+> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
+> @@ -268,8 +268,6 @@ int cmdq_pkt_finalize(struct cmdq_pkt *pkt);
+>    * cmdq_pkt_flush_async() - trigger CMDQ to asynchronously execute the CMDQ
+>    *                          packet and call back at the end of done packet
+>    * @pkt:	the CMDQ packet
+> - * @cb:		called at the end of done packet
+> - * @data:	this data will pass back to cb
+>    *
+>    * Return: 0 for success; else the error code is returned
+>    *
+> @@ -277,7 +275,6 @@ int cmdq_pkt_finalize(struct cmdq_pkt *pkt);
+>    * at the end of done packet. Note that this is an ASYNC function. When the
+>    * function returned, it may or may not be finished.
+>    */
+> -int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
+> -			 void *data);
+> +int cmdq_pkt_flush_async(struct cmdq_pkt *pkt);
+>   
+>   #endif	/* __MTK_CMDQ_H__ */
 
 _______________________________________________
 Linux-mediatek mailing list
