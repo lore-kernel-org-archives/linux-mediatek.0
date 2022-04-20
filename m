@@ -4,70 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38C5DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 15:59:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 851FDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 16:20:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xbmtgl2X1Uv9SAT3gaekT1v7ETLgIwWqpozLP7KYGLA=; b=EYFpVwJBinQZl9
-	xcl2VAsfT+vycS/i7q/eIixSuGOZ4ZYuhziGaZb1vIz+lLB7E7nH0F9nUkAlHQt9IuSQcvbgz9LaR
-	HouhRc/YrZQ7NiF8Lhz2xMo7q5D6b8DGWlH9FH3TsT/VBKM04CcKVl0E3fBgMW5WBQL7hyjp8dEbw
-	mClStiPz47FKc8VDWo+6wRZB0Uq9W9+Ur8GHxcvjIyWyUf6gfFpmQa7N9L9o2xp7xjfU/E6ZxDCkr
-	rwBhLAJqxP1DhRu4tVeeIFE504zFEXRIqRWm3ouutuoPSe77YjJ4Vfv8TPO/DN7/n23dZEZkZfrEa
-	DeD5LwtqDgKAxCT0LMHQ==;
+	List-Owner; bh=pTg51jBMu1oyvJhkgZpSl3pR5E/lD+i8uuXQoE3SmyU=; b=jasKnI0YZCWP/B
+	ry84G9Bv9zcH7qK7XYPO0gYseetWgLyIi5fhuDoLmC9n496JsvU0idBdXgkLIJ7qmCZZkw2wPidZP
+	Nuk0Mraedo2K5p9xzTGWr3Het2ebJw+txjr9p4HisNycc461mIEkJxpswxcFTirWuKstFoWLWfErz
+	cKxbhoiEcvsYMDTQUZuvksKd+MFXWcDma68uZZVhAStkq8CVy2Yym0DUFdLHDJs0s31YY7RMXetBn
+	o2MFHODW6HuYI0LVw3a1Kdv42HAMMtgEbTZsntdlWDUUADnmbb5kxNeYIFtwnBzYXggBu/fXV5XB0
+	9q9ytJQe6/R429XHTqCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhCjr-009cTu-6M; Wed, 20 Apr 2022 15:59:31 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nhD3v-009fUR-Lv; Wed, 20 Apr 2022 16:20:15 +0000
+Received: from mail-oa1-f50.google.com ([209.85.160.50])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhCjo-009cTE-B8
- for linux-mediatek@lists.infradead.org; Wed, 20 Apr 2022 15:59:30 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 0F5C7B81F97
- for <linux-mediatek@lists.infradead.org>; Wed, 20 Apr 2022 15:59:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A7987C385A1
- for <linux-mediatek@lists.infradead.org>; Wed, 20 Apr 2022 15:59:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1650470364;
- bh=jBfkbPt+WqgrPbEPmDx39QoUW/YAD8qvmYlg9t4Mkzc=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=mBQ78bcB6jv/eAbe97JJ8+XTsUUv+Fv5eapfmKoPLosoW1/bBsGuUTm+jOMTjqO3Q
- w+7eagVbzzcLB019NsyReCqk3xJTYToZAmHOPSRAHZYwl42QpuisUDVqf6sDZHmV7k
- XGU7KbGQycQ64H92sJMIxZvR6eWjeSsOyIFFGmHOe4ob0U1yRF9hU/y0QMDBWa3EuV
- Jmw38jHt7/c4N6rooAP9Lf4Wn7Qos7KWrEiTrRGPlFaL9/a/XSqYT+ZTc403mzWwN/
- rA3YkxV7gMLeeI/dtXGw4wD4HjhBPcmD+DGJaczdqjoEk2laSBvuhI8NeuvjEMYP0r
- qubCCfPI2bvnA==
-Received: by mail-pg1-f175.google.com with SMTP id t4so2007856pgc.1
- for <linux-mediatek@lists.infradead.org>; Wed, 20 Apr 2022 08:59:24 -0700 (PDT)
-X-Gm-Message-State: AOAM532wZ/LA4V+c8cfH6grbZTjMkvnYHnOjg/lc/QXDsaD1JUbKsen/
- IF9r0zCN8kpfj+v/pDf+rKjKZ00MNFGAsU+YdEg=
-X-Google-Smtp-Source: ABdhPJwonKJxRDyNfYcRX41UD6pJGFn6O6+MW6Tc4OsxbMvkwf4L2igEDcKtGR2bmUF/TGdgM5vT2NCjIxr35hYd7mU=
-X-Received: by 2002:a05:6a00:181b:b0:50a:46c6:aa74 with SMTP id
- y27-20020a056a00181b00b0050a46c6aa74mr23988768pfa.15.1650470364221; Wed, 20
- Apr 2022 08:59:24 -0700 (PDT)
+ id 1nhD3k-009fQs-4p; Wed, 20 Apr 2022 16:20:05 +0000
+Received: by mail-oa1-f50.google.com with SMTP id
+ 586e51a60fabf-e656032735so1195491fac.0; 
+ Wed, 20 Apr 2022 09:20:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=4wNQpDsXtJxhnvH20Z3+ZVt5KBTN3mlzQxKe6VzUSMU=;
+ b=mof0L5NveRcrUA5OYE27ZKKEYaO9C8SFG42Sl3WfucrdO9gxo+D+LwxtSbI9LK+1ks
+ HB7JPnQwcnTVvTLIAlWSn4YOy+qFH43lfqHayLal7a2HvN28PbBO+TyvXG791/6l/Z7V
+ 0rtMxt0Ffu+kubZBY7Y7Sxdm9Y7GlDSxJWze0i4kSorNlgwPiFE6bGSiBgF/13AqIpJD
+ PHypibXMK7fV2YYzO68UL1hltJCtNfhFgA5AFUrd/HwayrhXc66jSAWQ7P+wv2w08ceo
+ zcUjiyUkN+o3W6JIUwlV+UOHi/Me4FrdXeYXvolq3vnlzFcA0j+kCovE2Nkw8cnLvBYF
+ dgcQ==
+X-Gm-Message-State: AOAM531Kq2/pqJg0A/L9ADz9FN4ZXZFHlPYPSitRJuecoMeemJfQak6H
+ CIyl0RC4Po6Y9+yL5y3xSA==
+X-Google-Smtp-Source: ABdhPJyFDGzvkuLBDNOHCYtbkcqXp8jhoHSTHMVganFNXtZpFpev677iq4zGD+x/GQzQQd8c69FZDA==
+X-Received: by 2002:a05:6870:b4a7:b0:e5:bff5:b537 with SMTP id
+ y39-20020a056870b4a700b000e5bff5b537mr2080931oap.64.1650471601284; 
+ Wed, 20 Apr 2022 09:20:01 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ f21-20020a056830205500b005cdb59d5d34sm6592605otp.81.2022.04.20.09.19.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 20 Apr 2022 09:20:00 -0700 (PDT)
+Received: (nullmailer pid 1416786 invoked by uid 1000);
+ Wed, 20 Apr 2022 16:19:59 -0000
+Date: Wed, 20 Apr 2022 11:19:59 -0500
+From: Rob Herring <robh@kernel.org>
+To: Moudy Ho <moudy.ho@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>,
+ tfiga@chromium.org, drinkcat@chromium.org, pihsun@chromium.org,
+ hsinyi@google.com, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ daoyuan huang <daoyuan.huang@mediatek.com>,
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, allen-kh.cheng@mediatek.com,
+ xiandong.wang@mediatek.com, randy.wu@mediatek.com, jason-jh.lin@mediatek.com,
+ roy-cw.yeh@mediatek.com, river.cheng@mediatek.com, srv_heupstream@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v13 1/3] dt-binding: mt8183: add Mediatek MDP3 dt-bindings
+Message-ID: <YmAyrzjtWGrk5pNn@robh.at.kernel.org>
+References: <20220418022213.23826-1-moudy.ho@mediatek.com>
+ <20220418022213.23826-2-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-References: <20220420090433.20003-1-bo.jiao@mediatek.com>
-In-Reply-To: <20220420090433.20003-1-bo.jiao@mediatek.com>
-From: Ryder Lee <ryder.lee@kernel.org>
-Date: Wed, 20 Apr 2022 08:59:12 -0700
-X-Gmail-Original-Message-ID: <CA+SzRW5ZU+riTg3939O10+8Xtoms-i_oGRMFTF_8WBtawV0H_g@mail.gmail.com>
-Message-ID: <CA+SzRW5ZU+riTg3939O10+8Xtoms-i_oGRMFTF_8WBtawV0H_g@mail.gmail.com>
-Subject: Re: [PATCH] mt76: mt7915: dump SER stats through debugfs
-To: Bo Jiao <bo.jiao@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>,
- linux-wireless <linux-wireless@vger.kernel.org>, 
- Ryder Lee <ryder.lee@mediatek.com>, Sujuan Chen <sujuan.chen@mediatek.com>, 
- "lian . chen" <lian.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, 
- linux-mediatek <linux-mediatek@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20220418022213.23826-2-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220420_085928_720141_8B458642 
-X-CRM114-Status: GOOD (  19.15  )
+X-CRM114-CacheID: sfid-20220420_092004_229091_C5AF4ECB 
+X-CRM114-Status: GOOD (  19.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,104 +96,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 20, 2022 at 2:05 AM Bo Jiao <bo.jiao@mediatek.com> wrote:
->
-> From: Ryder Lee <ryder.lee@mediatek.com>
->
-> Grab status of system recovery from firmware.
->
-> Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+On Mon, Apr 18, 2022 at 10:22:11AM +0800, Moudy Ho wrote:
+> This patch adds DT binding documents for Media Data Path 3 (MDP3)
+> a unit in multimedia system combined with several components and
+> used for scaling and color format convert.
+> 
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 > ---
->  .../wireless/mediatek/mt76/mt7915/debugfs.c   | 48 +++++++++++++++++--
->  .../net/wireless/mediatek/mt76/mt7915/mcu.c   |  5 +-
->  .../net/wireless/mediatek/mt76/mt7915/mmio.c  |  3 ++
->  .../net/wireless/mediatek/mt76/mt7915/regs.h  | 18 ++++++-
->  4 files changed, 64 insertions(+), 10 deletions(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-> index dece0a6..76a6570 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-> @@ -45,7 +45,7 @@ DEFINE_DEBUGFS_ATTRIBUTE(fops_implicit_txbf, mt7915_implicit_txbf_get,
->                          mt7915_implicit_txbf_set, "%lld\n");
->
->  /* test knob of system layer 1/2 error recovery */
-> -static int mt7915_ser_trigger_set(void *data, u64 val)
-> +static int mt7915_fw_ser_set(void *data, u64 val)
->  {
->         enum {
->                 SER_SET_RECOVER_L1 = 1,
-> @@ -71,8 +71,47 @@ static int mt7915_ser_trigger_set(void *data, u64 val)
->         return ret;
->  }
->
-> -DEFINE_DEBUGFS_ATTRIBUTE(fops_ser_trigger, NULL,
-> -                        mt7915_ser_trigger_set, "%lld\n");
-> +DEFINE_DEBUGFS_ATTRIBUTE(fops_fw_ser, NULL,
-> +                        mt7915_fw_ser_set, "%lld\n");
+>  .../bindings/media/mediatek,mdp3-rdma.yaml    | 166 ++++++++++++++++++
+>  .../bindings/media/mediatek,mdp3-rsz.yaml     |  54 ++++++
+>  .../bindings/media/mediatek,mdp3-wrot.yaml    |  57 ++++++
+>  .../bindings/soc/mediatek/mediatek,ccorr.yaml |  47 +++++
+>  .../bindings/soc/mediatek/mediatek,wdma.yaml  |  58 ++++++
+>  5 files changed, 382 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> new file mode 100644
+> index 000000000000..45b7c075ebf5
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> @@ -0,0 +1,166 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/mediatek,mdp3-rdma.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +static int
-> +mt7915_fw_ser_stats_show(struct seq_file *s, void *data)
-> +{
-> +       struct mt7915_dev *dev = s->private;
-> +       int ret;
+> +title: Mediatek Read Direct Memory Access
 > +
-> +       /* grab firmware SER stats */
-> +       ret = mt7915_mcu_set_ser(dev, 0, 0, 0);
-> +       if (ret)
-> +               return ret;
+> +maintainers:
+> +  - Matthias Brugger <matthias.bgg@gmail.com>
 > +
-> +       msleep(100);
+> +description: |
+> +  Mediatek Read Direct Memory Access(RDMA) component used to do read DMA.
+> +  It contains one line buffer to store the sufficient pixel data, and
+> +  must be siblings to the central MMSYS_CONFIG node.
+> +  For a description of the MMSYS_CONFIG binding, see
+> +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+> +  for details.
+> +  The 1st RDMA is also used to be a controller node in Media Data Path 3(MDP3)
+> +  that containing MMSYS, MUTEX, GCE and SCP settings.
 > +
-> +       seq_printf(s, "::E  R , SER_STATUS        = 0x%08x\n",
-> +                  MT_SWDEF_SER_STATS);
-> +       seq_printf(s, "::E  R , SER_PLE_ERR       = 0x%08x\n",
-> +                  MT_SWDEF_PLE_STATS);
-> +       seq_printf(s, "::E  R , SER_PLE_ERR_1     = 0x%08x\n",
-> +                  MT_SWDEF_PLE1_STATS);
-> +       seq_printf(s, "::E  R , SER_PLE_ERR_AMSDU = 0x%08x\n",
-> +                  MT_SWDEF_PLE_AMSDU_STATS);
-> +       seq_printf(s, "::E  R , SER_PSE_ERR       = 0x%08x\n",
-> +                  MT_SWDEF_PSE_STATS);
-> +       seq_printf(s, "::E  R , SER_PSE_ERR_1     = 0x%08x\n",
-> +                  MT_SWDEF_PSE1_STATS);
-> +       seq_printf(s, "::E  R , SER_LMAC_WISR6_B0 = 0x%08x\n",
-> +                  MT_SWDEF_LAMC_WISR6_BN0_STATS);
-> +       seq_printf(s, "::E  R , SER_LMAC_WISR6_B1 = 0x%08x\n",
-> +                  MT_SWDEF_LAMC_WISR6_BN1_STATS);
-> +       seq_printf(s, "::E  R , SER_LMAC_WISR7_B0 = 0x%08x\n",
-> +                  MT_SWDEF_LAMC_WISR7_BN0_STATS);
-> +       seq_printf(s, "::E  R , SER_LMAC_WISR7_B1 = 0x%08x\n",
-> +                  MT_SWDEF_LAMC_WISR7_BN1_STATS);
-> +
-> +       return 0;
-> +}
-> +
-> +DEFINE_SHOW_ATTRIBUTE(mt7915_fw_ser_stats);
+> +properties:
+> +  compatible:
+> +    items:
+> +      # MDP3 controller node
+> +      - const: mediatek,mt8183-mdp3
+> +      - const: mediatek,mt8183-mdp3-rdma
 
-I'm thinking we can merge this knob fw_ser_stats into fw_ser to make
-it more convenient for use.
+This *still* makes no sense. I'm not looking at this further.
 
->  static int
->  mt7915_radar_trigger(void *data, u64 val)
-> @@ -884,6 +923,8 @@ int mt7915_init_debugfs(struct mt7915_phy *phy)
->         debugfs_create_file("xmit-queues", 0400, dir, phy,
->                             &mt7915_xmit_queues_fops);
->         debugfs_create_file("tx_stats", 0400, dir, phy, &mt7915_tx_stats_fops);
-> +       debugfs_create_file("fw_ser", 0200, dir, dev, &fops_fw_ser);
-> +       debugfs_create_file("fw_ser_stats", 0400, dir, dev, &mt7915_fw_ser_stats_fops);
->         debugfs_create_file("fw_debug_wm", 0600, dir, dev, &fops_fw_debug_wm);
->         debugfs_create_file("fw_debug_wa", 0600, dir, dev, &fops_fw_debug_wa);
->         debugfs_create_file("fw_debug_bin", 0600, dir, dev, &fops_fw_debug_bin);
-> @@ -897,7 +938,6 @@ int mt7915_init_debugfs(struct mt7915_phy *phy)
->                             &mt7915_rate_txpower_fops);
->         debugfs_create_devm_seqfile(dev->mt76.dev, "twt_stats", dir,
->                                     mt7915_twt_stats);
-> -       debugfs_create_file("ser_trigger", 0200, dir, dev, &fops_ser_trigger);
->         if (!dev->dbdc_support || phy->band_idx) {
->                 debugfs_create_u32("dfs_hw_pattern", 0400, dir,
->                                    &dev->hw_pattern);
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
