@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DA4DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 11:26:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 789ABC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 11:50:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FRByK4Z26C99DDBzrtkKE1SBZrSt768y0WsVd8gGOnw=; b=0ZqZjPOanx+nuv
-	4N0TTWbyK7vaai96BHVEg3OFTJYfN7xvfktb/OXLSzeQRfLRQm3B0rQ0xjKmAF8wS7XTJGIC3Kg6J
-	T+dG3ZVuexI5egjYJYmZL2hV6JukqA5D4icNbZoiFHpW+G4hDQYurGPDBYIYF/ZnfRNn1KdkGuKy9
-	51vCTXfPddM3wfPrv3vHgyeZqsxw3jrUIXlWiTwipRQvaX2ZN5P9PBSP9HZ33+Y7k2d5lHzRm1KmC
-	P3D4ohsZ3d5Gxrpftz/OBa35AXEhjlrbWowQ0LIhIoyiGBjbapo+uZG9qYSKWY6kbKwbgAVYKiIrv
-	w3VY53vzDEoCpr9MgoOA==;
+	List-Owner; bh=4xtyJyTC1Fe43M/A8LtO4ArGTq2+XJtForY02VUR42E=; b=PQ4jFFnG9v3fmX
+	/yHGi+xbyXleOb/lzvMCNo/4lcIKyk7pRIZ2WeWtW9pLTUkjMFIqM0eDS+CIVZ1VM3cBBvR4f7IqG
+	apEk1hKU9eQmyuXAaEb4ovXjFTX33c/Sel+VmxVGAaKCRI02Ip+e9nP+CqKibA4s4/8pPRZ9hle3j
+	xu7zUrhl9ybsUZG77w5uRGMSiP2+nJCcsonZ3sipYqu1Vx146g8uATBbHJbTBUY/951W/JfvpyVDB
+	mhCEjkQJMHNLtTBD4x/LSXHehekNpWQGIcmRF1fJGdORozsv9x37ov5W0cxzORJv0lEbZxU9STj07
+	Plw7XhV4rdN8SV+KWmHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nh8T9-008lIr-LM; Wed, 20 Apr 2022 11:25:59 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1nh8r2-008qZK-PL; Wed, 20 Apr 2022 11:50:40 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nh8T6-008lFW-Hs
- for linux-mediatek@lists.infradead.org; Wed, 20 Apr 2022 11:25:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
- References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=5NbAC5y8SSXoeF4ubJ0VGH9BseO7jD22woRHSrslIlk=; b=GwtWDzeZM7IRV6E4A5Fzd8s9Le
- 2Wxpn3TAHslLjrGQbbdRjHRruSzLykD3J9dszbyJndtQfTx3k6XgrNX26t8I3b0ULrLljKSJSdToT
- dwpYYc+YgKEzzGxS5YYqM2yYydrYyyOgw5VTAPC8F1nIiZrZKGwHCSRk0KnsraZQmsoQ=;
-Received: from p200300daa70ef200009e86881025829d.dip0.t-ipconnect.de
- ([2003:da:a70e:f200:9e:8688:1025:829d] helo=nf.local)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1nh8Sz-0006bA-Su; Wed, 20 Apr 2022 13:25:50 +0200
-Message-ID: <46f14357-d02b-cad3-9fa8-7e1962305251@nbd.name>
-Date: Wed, 20 Apr 2022 13:25:49 +0200
+ id 1nh8qr-008qW5-Co; Wed, 20 Apr 2022 11:50:30 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 9EDB461944;
+ Wed, 20 Apr 2022 11:50:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 66082C385A0;
+ Wed, 20 Apr 2022 11:50:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1650455428;
+ bh=wG8tmbya06CPHuXCrYxIi0BacRXo9h6kKzxQ63v1SQ4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=goW7qCzb0qVQ+i8Tl9MVckC5HdTcV77J9bk4vVuQ+jn7j8V1i0usNZd1k0zAgHJ32
+ QZL12QXEGFp5yzjlMHi5wt/S7o/4aAxDXTPniexIgN+boLPFlJd/1Kt7YlR9QgoT7t
+ pMYjM5kpCPeEscMQBFVWOMLOX9S+SFUhKpfqs5NNazbOP/uhdtVLl7zcO7fj/u0drw
+ tS9fii/pMGGyPtSrdW0v6m/zkJdUGLVMCSMtHsbPBuWzrBB08Sx74uQtA2/RAJuEMt
+ llYZAYqp28vxsAZQZvqVRHuxtqa4z9QvIGZR+lX72+caha7s3vQVDQ/Jr1bsVqZ8Ti
+ ObDJSVkmEzNIA==
+Date: Wed, 20 Apr 2022 17:20:24 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Haowen Bai <baihaowen@meizu.com>
+Cc: Sean Wang <sean.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] dmaengine: mediatek: mtk-hsdma: use NULL instead of
+ using plain integer as pointer
+Message-ID: <Yl/zgH28KL9zbcQb@matsya>
+References: <1649750340-30777-1-git-send-email-baihaowen@meizu.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.8.0
-Subject: Re: [PATCH] mt76: mt7915: disable RX_HDR_TRANS_SHORT
-Content-Language: en-US
-To: Bo Jiao <bo.jiao@mediatek.com>
-Cc: linux-wireless <linux-wireless@vger.kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Sujuan Chen <sujuan.chen@mediatek.com>,
- "lian . chen" <lian.chen@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-References: <20220420071144.14573-1-bo.jiao@mediatek.com>
-From: Felix Fietkau <nbd@nbd.name>
-In-Reply-To: <20220420071144.14573-1-bo.jiao@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1649750340-30777-1-git-send-email-baihaowen@meizu.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220420_042556_777633_07817C50 
-X-CRM114-Status: GOOD (  14.09  )
+X-CRM114-CacheID: sfid-20220420_045029_510462_28C59D7B 
+X-CRM114-Status: GOOD (  17.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,51 +69,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 12-04-22, 15:59, Haowen Bai wrote:
+> This fixes the following sparse warnings:
+> drivers/dma/mediatek/mtk-hsdma.c:604:26: warning: Using plain integer
+> as NULL pointer
 
-On 20.04.22 09:11, Bo Jiao wrote:
-> From: Bo Jiao <Bo.Jiao@mediatek.com>
+Applied, thanks
+
 > 
-> This patch disables RX_TRANS_SHORT to make MDP to do header translation
-> when payload less than 8 bytes, hence the (QoS) null data can be encapsulated
-> to 802.3 format. However, WDS requires (QoS) null data in 802.11 format
-> to created vlan AP interfaces.
-> 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> Signed-off-by: lian.chen <lian.chen@mediatek.com>
-> Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-> Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+> Signed-off-by: Haowen Bai <baihaowen@meizu.com>
 > ---
->   drivers/net/wireless/mediatek/mt76/agg-rx.c      | 3 +++
->   drivers/net/wireless/mediatek/mt76/mt7915/init.c | 3 +++
->   drivers/net/wireless/mediatek/mt76/mt7915/mac.c  | 4 ----
->   drivers/net/wireless/mediatek/mt76/mt7915/regs.h | 3 +++
->   4 files changed, 9 insertions(+), 4 deletions(-)
+>  drivers/dma/mediatek/mtk-hsdma.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/net/wireless/mediatek/mt76/agg-rx.c b/drivers/net/wireless/mediatek/mt76/agg-rx.c
-> index 7262222..efd1a85 100644
-> --- a/drivers/net/wireless/mediatek/mt76/agg-rx.c
-> +++ b/drivers/net/wireless/mediatek/mt76/agg-rx.c
-> @@ -167,6 +167,9 @@ void mt76_rx_aggr_reorder(struct sk_buff *skb, struct sk_buff_head *frames)
->   		return;
->   	}
->   
-> +	if (!status->aggr)
-> +		return;
-> +
->   	/* not part of a BA session */
->   	ackp = status->qos_ctl & IEEE80211_QOS_CTL_ACK_POLICY_MASK;
->   	if (ackp != IEEE80211_QOS_CTL_ACK_POLICY_BLOCKACK &&
-This is an unrelated change, for which I've just sent a replacement 
-patch. The rest is applied.
+> diff --git a/drivers/dma/mediatek/mtk-hsdma.c b/drivers/dma/mediatek/mtk-hsdma.c
+> index 6ad8afbb95f2..358894e72fba 100644
+> --- a/drivers/dma/mediatek/mtk-hsdma.c
+> +++ b/drivers/dma/mediatek/mtk-hsdma.c
+> @@ -601,7 +601,7 @@ static void mtk_hsdma_free_rooms_in_ring(struct mtk_hsdma_device *hsdma)
+>  			cb->flag = 0;
+>  		}
+>  
+> -		cb->vd = 0;
+> +		cb->vd = NULL;
+>  
+>  		/*
+>  		 * Recycle the RXD with the helper WRITE_ONCE that can ensure
+> -- 
+> 2.7.4
 
-Thanks,
-
-- Felix
+-- 
+~Vinod
 
 _______________________________________________
 Linux-mediatek mailing list
