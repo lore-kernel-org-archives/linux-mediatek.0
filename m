@@ -4,66 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9936DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 07:12:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A4F7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 07:43:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dluw9mDxQR8m0YcEWpE/L69vU5uBggYri910T1do0pA=; b=gvC1FM8JGoczvN
-	tTd2q4PvvZDyIWVOqpAsDt63vzEQM7/Lu9g/hjLaMLNPWSCgiX/fcuKpo/Z8hpjM5i2+I0S663doA
-	0Hewe3fpI5YeEGt9pP91KtBcU/j8PKZYv9/R+t2TKmsPw2lGS6TLWwOeeSuDYcTOsJv2d8l8Sd1cJ
-	SlV8zUxW96JNO3gI6SaJzT2HXF8Bf37OiogSckLBVcg9e6Q6CqPHaJ9xvz0QKSgKiCB/WBj/gIoV0
-	KCzVnzLl7Sj3a3yPnsqVO/Q93n8ujnpyRTJZ02BbqH+R0ndC+IXIfs0ajTyGwjkwy8KK4NZDCko9A
-	rSBDb7hzhD2f/DfLZmDg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=20HxK34+uIt1wSFhIYcQiYk3kUN9i+68VOsnikuzCO8=; b=SO/Mxk92lKcdz/
+	a0DsSzC6Cue7u3YPcrdJzglORxjZszO6OifhuAO7bJyvsenRXcDLhp0vI4dIm4LSH677xZrI22UX2
+	mSvPyB0dMayZut87e46pnmhre6+7Rjc4COoQ+/sovjwBNl37pvxwLDo3BD5ej50QqMNM6xv2P8ujL
+	mPZ2zk6dHVx1L99yRNUf+20rnAZRmr7FsakSzC7cb/Quoch4pY1qjqWB5Bs6VHPmRrmUuB4tPBPiE
+	oe9JG/ccAPZPV46RDqcLnxQ/LN1yLPgmgAt/akgtAbX+Hik5l3sK2wkJMTgFcKCKfupBydmmWpAmh
+	dVZJ52Bgg0DgOAPOiw5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nh4Vc-007hP4-MU; Wed, 20 Apr 2022 07:12:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nh50A-007qfC-CG; Wed, 20 Apr 2022 07:43:50 +0000
+Received: from mail.fixingbiz.pl ([217.61.22.139])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nh4VY-007hNs-Ag
- for linux-mediatek@lists.infradead.org; Wed, 20 Apr 2022 07:12:15 +0000
-X-UUID: ffa4c9dc8f6140d8b82a207643262dbe-20220420
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:b35e054a-37c3-447d-8b54-72ca2fb7480e, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:a7857cef-06b0-4305-bfbf-554bfc9d151a,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: ffa4c9dc8f6140d8b82a207643262dbe-20220420
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <bo.jiao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 499602047; Wed, 20 Apr 2022 00:12:07 -0700
-Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 Apr 2022 00:11:49 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS34N1.mediatek.inc
- (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 20 Apr 2022 15:11:47 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Wed, 20 Apr 2022 15:11:46 +0800
-From: Bo Jiao <bo.jiao@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
- <ryder.lee@mediatek.com>, Sujuan Chen <sujuan.chen@mediatek.com>, "lian .
- chen" <lian.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>
-Subject: [PATCH] mt76: mt7915: disable RX_HDR_TRANS_SHORT
-Date: Wed, 20 Apr 2022 15:11:44 +0800
-Message-ID: <20220420071144.14573-1-bo.jiao@mediatek.com>
-X-Mailer: git-send-email 2.17.0
+ id 1nh4zX-007qKs-FM
+ for linux-mediatek@lists.infradead.org; Wed, 20 Apr 2022 07:43:14 +0000
+Received: by mail.fixingbiz.pl (Postfix, from userid 1001)
+ id 0159CA2A65; Wed, 20 Apr 2022 08:41:50 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=fixingbiz.pl; s=mail;
+ t=1650440562; bh=FDuFY3XQoq0gMX1b2gxgT7Py2p4Sxl0PJZYZ4NVaPho=;
+ h=Date:From:To:Subject:From;
+ b=P//3PXgoFlo/pIai7toAgDnVASkI+1F2BPp/ZAzeA6dD3OCOyyXotyf1SW+ICgNeg
+ QRZImiQ3bReUp2ZSzOZd0GaKUCCpJD7VDt/W66i8L1b7+06dKxnwZsvo0o9sjohSWB
+ n7bSAXK6RF2IDmGnU4sDCn1/Iw9GK0PD/JZvI9a2sIX9APY0SeyR5rwyaSw+Y8zKia
+ q9iPbsftkaHqzvRYSuZJF3z/hxttmBi/kap7CldeJMtmep4Mzuv3QqmePq9ztH4brz
+ l2FIOebRmH/imZCnvBDrxyqF+qNMPsy97l47wJQxo+7CPjzMb9XXn7zfDIH+YiGvOc
+ vqCC/XUD9EXew==
+Received: by mail.fixingbiz.pl for <linux-mediatek@lists.infradead.org>;
+ Wed, 20 Apr 2022 07:40:53 GMT
+Message-ID: <20220420074501-0.1.1x.6u3i.0.gth9dvjp1h@fixingbiz.pl>
+Date: Wed, 20 Apr 2022 07:40:53 GMT
+From: =?UTF-8?Q?"Przemys=C5=82aw_Wr=C3=B3blewski"?=
+ <przemyslaw.wroblewski@fixingbiz.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: Wycena paneli fotowoltaicznych
+X-Mailer: mail.fixingbiz.pl
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220420_001212_424120_C79C5867 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20220420_004311_736062_D493B336 
+X-CRM114-Status: UNSURE (   1.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,91 +61,17 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bo Jiao <Bo.Jiao@mediatek.com>
-
-This patch disables RX_TRANS_SHORT to make MDP to do header translation
-when payload less than 8 bytes, hence the (QoS) null data can be encapsulated
-to 802.3 format. However, WDS requires (QoS) null data in 802.11 format
-to created vlan AP interfaces.
-
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: lian.chen <lian.chen@mediatek.com>
-Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/agg-rx.c      | 3 +++
- drivers/net/wireless/mediatek/mt76/mt7915/init.c | 3 +++
- drivers/net/wireless/mediatek/mt76/mt7915/mac.c  | 4 ----
- drivers/net/wireless/mediatek/mt76/mt7915/regs.h | 3 +++
- 4 files changed, 9 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/agg-rx.c b/drivers/net/wireless/mediatek/mt76/agg-rx.c
-index 7262222..efd1a85 100644
---- a/drivers/net/wireless/mediatek/mt76/agg-rx.c
-+++ b/drivers/net/wireless/mediatek/mt76/agg-rx.c
-@@ -167,6 +167,9 @@ void mt76_rx_aggr_reorder(struct sk_buff *skb, struct sk_buff_head *frames)
- 		return;
- 	}
- 
-+	if (!status->aggr)
-+		return;
-+
- 	/* not part of a BA session */
- 	ackp = status->qos_ctl & IEEE80211_QOS_CTL_ACK_POLICY_MASK;
- 	if (ackp != IEEE80211_QOS_CTL_ACK_POLICY_BLOCKACK &&
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index facd604..12f8757 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -453,6 +453,9 @@ static void mt7915_mac_init(struct mt7915_dev *dev)
- 
- 	mt76_rmw_field(dev, MT_MDP_DCR1, MT_MDP_DCR1_MAX_RX_LEN, rx_len);
- 
-+	if (!is_mt7915(&dev->mt76))
-+		mt76_clear(dev, MT_MDP_DCR2, MT_MDP_DCR2_RX_TRANS_SHORT);
-+
- 	/* enable hardware de-agg */
- 	mt76_set(dev, MT_MDP_DCR0, MT_MDP_DCR0_DAMSDU_EN);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 5080280..bc2fb00 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -842,10 +842,6 @@ mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_buff *skb)
- 	if (!status->wcid || !ieee80211_is_data_qos(fc))
- 		return 0;
- 
--	/* drop no data frame */
--	if (fc & cpu_to_le16(IEEE80211_STYPE_NULLFUNC))
--		return -EINVAL;
--
- 	status->aggr = unicast &&
- 		       !ieee80211_is_qos_nullfunc(fc);
- 	status->qos_ctl = qos_ctl;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-index e4dbf99..bb0dec8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-@@ -158,6 +158,9 @@ enum offs_rev {
- #define MT_MDP_DCR1			MT_MDP(0x004)
- #define MT_MDP_DCR1_MAX_RX_LEN		GENMASK(15, 3)
- 
-+#define MT_MDP_DCR2			MT_MDP(0x0e8)
-+#define MT_MDP_DCR2_RX_TRANS_SHORT	BIT(2)
-+
- #define MT_MDP_BNRCFR0(_band)		MT_MDP(__OFFS(MDP_BNRCFR0) + \
- 					       ((_band) << 8))
- #define MT_MDP_RCFR0_MCU_RX_MGMT	GENMASK(5, 4)
--- 
-2.18.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+RHppZcWEIGRvYnJ5LAoKZG9zdHJ6ZWdhbSBtb8W8bGl3b8WbxIcgd3Nww7PFgnByYWN5IHogUGHF
+hHN0d2EgZmlybcSFLgoKxZp3aWFkY3p5bXkga29tcGxla3Nvd8SFIG9ic8WCdWfEmSBpbndlc3R5
+Y2ppIHcgZm90b3dvbHRhaWvEmSwga3TDs3JhIG9ibmnFvGEga29zenR5IGVuZXJnaWkgZWxla3Ry
+eWN6bmVqIG5hd2V0IG8gOTAlLgoKQ3p5IHPEhSBQYcWEc3R3byB6YWludGVyZXNvd2FuaSB3ZXJ5
+ZmlrYWNqxIUgd3N0xJlwbnljaCBwcm9wb3p5Y2ppPwoKClBvemRyYXdpYW0sClByemVteXPFgmF3
+IFdyw7NibGV3c2tpCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LW1lZGlhdGVrCg==
