@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 622B2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Apr 2022 22:40:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECB75C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 01:19:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LbMn9UA4twq8TMlf8RrVCotwr3cH66z0P0tRQchc+wQ=; b=VRZyeiZMHCy7Ww
-	On30d1g7RwB06OAYJbi5xVBVmyTMoDEPyai0uygFY2f5vxecCsZ4A/+gobvJXOU6dSFegJOTUY00m
-	0bvJfrMFP+hpcV756qgEepbZioUMooZfMva/i9UPtuUpq87pAW7ZHftDNTaTn57RGgiEN2IhK4DFr
-	TW6Vcrr32BkFhXwoetCgmiafPCyonONYYPVqFY+dnmI2K1n88Dfc34oCzR+YNbB8/Z6BhBaAWdqxg
-	UeUMwfVVt8JbWtCHwkoIlC0W0Nlq8l8A4su3wvh+8Tmq58ToxO3swNFtaJkI1UFx6JMFGS1+ptmPl
-	Q9lUIAdR0fhuYx+yNUqQ==;
+	List-Owner; bh=Ylx/oxWM8QipzlUnZd92jC8/OEpsfGdDKnkhjPhtfrM=; b=4+zr+0wGeS8zxn
+	iCQA3ouXOXb/uY6Nzl1xXJAGhVBAT437erBh57z0I0MP7I3+9/jL4yNbF8BkEmYCyVW6Gbu+c2el/
+	N98/W2vCw0/w+IzYgR/xTKYJLhAfk6fbN5qKkldyHvZ66lK7HyNmbKN6Ify6JkNsW0kVmygP1vJ6M
+	l8gSeSoB56u5uFxxGTAhhX9pqgaaEdRZBZkHNeDz5avLjH4/8LdMKYK1msqtHNxvvc6Ftu/OlKP2H
+	erER2axp7ABmtCMSgmKbSNRv9o219xyCaDSDkTLp3xoe5hOCE27QBWlZ32RkwansShVamwk1gg/Fj
+	MhSHLOSAcJB/DwSq8AkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngwWY-006YL4-Ok; Tue, 19 Apr 2022 22:40:42 +0000
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+	id 1ngz0L-006qc8-CO; Wed, 20 Apr 2022 01:19:37 +0000
+Received: from mail-oa1-f43.google.com ([209.85.160.43])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngwWV-006YJn-VH
- for linux-mediatek@lists.infradead.org; Tue, 19 Apr 2022 22:40:41 +0000
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-2eafabbc80aso149707b3.11
- for <linux-mediatek@lists.infradead.org>; Tue, 19 Apr 2022 15:40:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/b2WbchJKMIG7OLkhvKci/yGaZfbKG5zXqIPhc0xmR0=;
- b=Tt68ItjSM/LAp3E41Jog8JtRpHi8d3dz0w7VxFHGbIGW0coAayZVgW+uNFaU40QSYB
- RsyQDZ5WB1RdpbFj9bnLuB3uBYQuekkcV2YsDqMKmmbniLcX7lL0GM2JWqqjFBWk07e/
- oj26cXfa1ekeVewaAhTStvCnPv2Vfj8pO23xJzyJViUwALqTPc1reSR3b4+Q2YG04JpY
- +/FqmFJ/SC/BlughesaZcUBbJFtsgt7X7+cIMgRHjonDxLKn3+QT3Qhcdzhl3JY+/d83
- dv0ATGFYp5vzYhpRBcS5Bh4SieRgna2e0VfbWFcpS4bYYwsQFpMnqDL6pgzutxom/bys
- 3DVA==
+ id 1ngz09-006qYe-RO; Wed, 20 Apr 2022 01:19:27 +0000
+Received: by mail-oa1-f43.google.com with SMTP id
+ 586e51a60fabf-de3eda6b5dso508164fac.0; 
+ Tue, 19 Apr 2022 18:19:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/b2WbchJKMIG7OLkhvKci/yGaZfbKG5zXqIPhc0xmR0=;
- b=DoliOOLzv67Il+a6gItdDBeBEI6epxNiL3slOtdwXem3i6oV2q1aH8HLMCJt0ejfud
- Tx10JxatJ80SAc765Sfeer7ptzzEr3sEk5RRRVh3VwVH2dP61RetVmz4jLjw2jRqNPnL
- bV1qtzIy1apG+d9inlmZM3gbPu+hB9cnx6Bs/8nsb1SCF7X4DPsUYG2IwvUrT+jMkS3E
- YnH3DiPc8+JbNTFk61A535HrrxfJ5Sc4Z4D0RKkvDGh4a6NcN2lOMBOJpfhj7daB7qxX
- RjS8Hk2IJjHAbVh5ME4UqLNtCrdc40C9agWIyPArshYok1Ff2SHTtoDIL/dh/RDb9aGM
- kFAw==
-X-Gm-Message-State: AOAM532nlJMV7q3jWzqzfrk4qikgDYIk/gTv1zX3sowYsbeeHoJMCVFX
- Dq6rcYCqXlzLCuBbCMaR7D9nPCcJeMEqe1sIRRQKUA==
-X-Google-Smtp-Source: ABdhPJxBvWoEuALS1rZ+F1VO+n+79HViIlGOhO/TPJsJqyRQp0aw9SbnBM6F0FKiFmwkzlvdYO6WDRlljl0Ty2m1AiU=
-X-Received: by 2002:a81:6d14:0:b0:2eb:fbdf:639 with SMTP id
- i20-20020a816d14000000b002ebfbdf0639mr18226715ywc.126.1650408038984; Tue, 19
- Apr 2022 15:40:38 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220327160813.2978637-1-fparent@baylibre.com>
-In-Reply-To: <20220327160813.2978637-1-fparent@baylibre.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Wed, 20 Apr 2022 00:40:27 +0200
-Message-ID: <CACRpkdZUVDOL7LzqhaZbq6JA8MxAAqER++c7eCJGY8c5s7Z-CA@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: mt8195: enable driver on mtk platforms
-To: Fabien Parent <fparent@baylibre.com>
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Zhiyong Tao <zhiyong.tao@mediatek.com>, linux-mediatek@lists.infradead.org, 
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=ymt6zLehDv2YaRJlxv7TiKEzkQbOENuBrCPBeLy0sX8=;
+ b=KV4+iduv/ujF84S0dh6xa4KXS46I+CqyClMHphYMsnD8cIqcFdj+AKFwzCsahDje3w
+ 2VIPJ6KLrcAXyVBA856m7JCEX21d9LlnNtQ5SGvhN06VVQzYviuLwGfznBX/kHn6wETf
+ bl/jrhpO4+0Kt6zXURR3pG28axOUwHZwf2JBA+ujoyZnTvz21L6zgzWg/keXoWHOL9l1
+ Q6Q8lOda9MsiUgyaf1L4IF4dwnU9pFHVRcatWnV8ZWoUQ+QTGcKD39nN1KUoXPPAMJD7
+ 9fxbr/CJbzTWn8S8JqqO74x8mWqrMLBySN3aftKozz2Wc6k668SvJWaV8/lC5UxB/d6t
+ J1rw==
+X-Gm-Message-State: AOAM531olT+QxG+8V2yo4cEwK2jbaPBCeSY3uPpm+cBCs8QYaObBtTzZ
+ S25VvspL0KqkmY657ll5PA==
+X-Google-Smtp-Source: ABdhPJwG/Xsq9q7suyuuPEmJ1/c/c30gxnNuR+j5n45Cv6/bz718vvs/f+CesGdXCOra+fRs+F0SXA==
+X-Received: by 2002:a05:6870:5702:b0:e2:9f03:dae1 with SMTP id
+ k2-20020a056870570200b000e29f03dae1mr579743oap.201.1650417564088; 
+ Tue, 19 Apr 2022 18:19:24 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ u3-20020a4a9703000000b0033336ab4909sm6080383ooi.7.2022.04.19.18.19.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 19 Apr 2022 18:19:23 -0700 (PDT)
+Received: (nullmailer pid 4040590 invoked by uid 1000);
+ Wed, 20 Apr 2022 01:19:21 -0000
+From: Rob Herring <robh@kernel.org>
+To: Yassine Oudjana <yassine.oudjana@gmail.com>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@kernel.org>,
+ Sam Shih <sam.shih@mediatek.com>, Stephen Boyd <sboyd@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh+dt@kernel.org>
+In-Reply-To: <20220419180938.19397-4-y.oudjana@protonmail.com>
+References: <20220419180938.19397-1-y.oudjana@protonmail.com>
+ <20220419180938.19397-4-y.oudjana@protonmail.com>
+Subject: Re: [PATCH 3/3] dt-bindings: arm: mediatek: infracfg: Convert to DT
+ schema
+Date: Tue, 19 Apr 2022 20:19:21 -0500
+Message-Id: <1650417561.533052.4040589.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_154040_065141_BD8F7BCA 
-X-CRM114-Status: UNSURE (   7.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220419_181925_926007_7F13CBC6 
+X-CRM114-Status: GOOD (  13.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,23 +80,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Mar 27, 2022 at 6:08 PM Fabien Parent <fparent@baylibre.com> wrote:
+On Tue, 19 Apr 2022 22:09:39 +0400, Yassine Oudjana wrote:
+> From: Yassine Oudjana <y.oudjana@protonmail.com>
+> 
+> Convert infracfg bindings to DT schema format. Not all drivers
+> currently implement resets, so #reset-cells is made a required
+> property only for those that do. Using power-controller in the
+> example node name makes #power-domain-cells required causing
+> a dt_binding_check error. To solve this, the node is renamed to
+> syscon@10001000.
+> 
+> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> ---
+>  .../arm/mediatek/mediatek,infracfg.txt        | 42 ----------
+>  .../arm/mediatek/mediatek,infracfg.yaml       | 79 +++++++++++++++++++
+>  2 files changed, 79 insertions(+), 42 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
+> 
 
-> Set the pinctrl driver as built-in by default if
-> ARM64 and ARCH_MEDIATEK are enabled.
->
-> Fixes: 6cf5e9ef362a ("pinctrl: add pinctrl driver on mt8195")
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Running 'make dtbs_check' with the schema in this patch gives the
+following warnings. Consider if they are expected or the schema is
+incorrect. These may not be new warnings.
 
-Patch applied!
+Note that it is not yet a requirement to have 0 warnings for dtbs_check.
+This will change in the future.
 
-Yours,
-Linus Walleij
+Full log is available here: https://patchwork.ozlabs.org/patch/
+
+
+infracfg@10001000: '#reset-cells' is a required property
+	arch/arm64/boot/dts/mediatek/mt7986a-rfb.dtb
+	arch/arm64/boot/dts/mediatek/mt7986b-rfb.dtb
+
+syscon@10001000: '#reset-cells' is a required property
+	arch/arm64/boot/dts/mediatek/mt2712-evb.dtb
+
 
 _______________________________________________
 Linux-mediatek mailing list
