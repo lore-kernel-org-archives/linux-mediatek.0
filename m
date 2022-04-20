@@ -4,85 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5326C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 06:54:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9936DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 07:12:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kRVxOG7qADUKLQIGqtNKRPIt1PNs/Vc8D7VzQwbaXQ4=; b=edafSsNVLLZJ7m
-	qvS2SZjs1earo/SbBs7+X3DUfE3MJncym4deZVfWR2ZqmoLxpmcZHZWbTzXw+LY4v+u5nBSz2/qZM
-	dHug1WZByk0Dg/39hn0IVydMRBWlVWaOs6XhccLnn2ETs/AfGnzW2ob7zo0ZE9+GTUiExsxmREZkC
-	4lV1IKfK7zVLyQZAEquTIB23oCEm+UKTws332ekTcRHFbhpBg+ktkuoPl869jpkQux2mzVK8Alvyr
-	008KsNj7undpmZleSYMJ62Ayn7oZjv2v4XslGOFoV6Dk06r60iUdWHywZcgluNLbNkj4BFN5qUoSm
-	9N+F8Kr1tKXzUt8EW6sw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dluw9mDxQR8m0YcEWpE/L69vU5uBggYri910T1do0pA=; b=gvC1FM8JGoczvN
+	tTd2q4PvvZDyIWVOqpAsDt63vzEQM7/Lu9g/hjLaMLNPWSCgiX/fcuKpo/Z8hpjM5i2+I0S663doA
+	0Hewe3fpI5YeEGt9pP91KtBcU/j8PKZYv9/R+t2TKmsPw2lGS6TLWwOeeSuDYcTOsJv2d8l8Sd1cJ
+	SlV8zUxW96JNO3gI6SaJzT2HXF8Bf37OiogSckLBVcg9e6Q6CqPHaJ9xvz0QKSgKiCB/WBj/gIoV0
+	KCzVnzLl7Sj3a3yPnsqVO/Q93n8ujnpyRTJZ02BbqH+R0ndC+IXIfs0ajTyGwjkwy8KK4NZDCko9A
+	rSBDb7hzhD2f/DfLZmDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nh4ET-007e9d-Oz; Wed, 20 Apr 2022 06:54:33 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1nh4Vc-007hP4-MU; Wed, 20 Apr 2022 07:12:16 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nh4EE-007e4F-Qd
- for linux-mediatek@lists.infradead.org; Wed, 20 Apr 2022 06:54:22 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id y10so1491494ejw.8
- for <linux-mediatek@lists.infradead.org>; Tue, 19 Apr 2022 23:54:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=0thAvQfL4y/ANwlWwuJlsB55+79afScMHrrhUTn5STY=;
- b=ZpJo+ji05C0QUslEtIPpytAUeOvFreIXawkB2VQn1SAEQRLgSN3GOebOP4TsjpeQTW
- M+LDQzcFDCoyAR3R3UR4O/p8ndnPtpWVP+19TMOTUqB5CAa7q6J+7xjwBM0KgvdBmmBH
- STNa3IYlrdBdys0w7cE80PHZNlQe7yrO43PKdO2x1E/AI3EOa5sBx3Pn40alRV/MaUTl
- HrR0CM2cEAqWMO4lCH2n/rbA4+YRJbbUeA0h/vXkCFwoCfh5ECO180N+UkqIAgDvsZcw
- oY841/L9Ge9KCb8u5xMeVa7KCvFZoltjePMGLjAx1imogc896+G2qDJ63aWOoTrvqz9x
- Mtnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=0thAvQfL4y/ANwlWwuJlsB55+79afScMHrrhUTn5STY=;
- b=738qEsnVNQVssZL0N+ZCkzy/iM06dfFu75up7CkWf+jlQAD7owwP4sS2LFlJvaLoV4
- q3x+FDS5flvXSiZj4A7ZBoxO2pdW+N6VztWIfZeS9toH8PBs6YjsWpgwj2brHAv9VoQk
- PEuzMWf7a5WlQaWR8H8zlhPlxzlJN5cFHZZA+4qFYRT0Nk6n2jnasb6R+4EIynnBAvLl
- XBMcpARyKuepNJwiL20Xbco67snURse15W4DD1BxLordlRa/ewbLavy3Qqu/4DFZMqc5
- 2+uuWuGrbNimmMew/0UtEOg6CcepGUr4ZiosIbcP9c2Grnyr/qtWrx18To+C56tZ/AG2
- 6xYA==
-X-Gm-Message-State: AOAM5330+n6qAug2GWntQP9wagluebOen9J/T+07bBpohj4Sla+c5zlA
- fiZPFfNRESQ4WA26OeJdyJUUuw==
-X-Google-Smtp-Source: ABdhPJyNAr3uY+e3ZdObdNbNNmPe1GJjQk0U89gMG9EQC9bKLlaLalCYhEXbk2BoYfE9K7czBt8ecA==
-X-Received: by 2002:a17:907:1c0e:b0:6ef:f4b9:9a2c with SMTP id
- nc14-20020a1709071c0e00b006eff4b99a2cmr2925156ejc.309.1650437657219; 
- Tue, 19 Apr 2022 23:54:17 -0700 (PDT)
-Received: from [192.168.0.222] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- q2-20020a056402032200b00423d4516387sm6040085edw.75.2022.04.19.23.54.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 Apr 2022 23:54:16 -0700 (PDT)
-Message-ID: <bac59bb7-b214-1edb-e6b9-7885c8a99c3a@linaro.org>
-Date: Wed, 20 Apr 2022 08:54:15 +0200
+ id 1nh4VY-007hNs-Ag
+ for linux-mediatek@lists.infradead.org; Wed, 20 Apr 2022 07:12:15 +0000
+X-UUID: ffa4c9dc8f6140d8b82a207643262dbe-20220420
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:b35e054a-37c3-447d-8b54-72ca2fb7480e, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-20
+X-CID-META: VersionHash:faefae9, CLOUDID:a7857cef-06b0-4305-bfbf-554bfc9d151a,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: ffa4c9dc8f6140d8b82a207643262dbe-20220420
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <bo.jiao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 499602047; Wed, 20 Apr 2022 00:12:07 -0700
+Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 20 Apr 2022 00:11:49 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS34N1.mediatek.inc
+ (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 20 Apr 2022 15:11:47 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Wed, 20 Apr 2022 15:11:46 +0800
+From: Bo Jiao <bo.jiao@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
+ <ryder.lee@mediatek.com>, Sujuan Chen <sujuan.chen@mediatek.com>, "lian .
+ chen" <lian.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>
+Subject: [PATCH] mt76: mt7915: disable RX_HDR_TRANS_SHORT
+Date: Wed, 20 Apr 2022 15:11:44 +0800
+Message-ID: <20220420071144.14573-1-bo.jiao@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH 3/3] dt-bindings: arm: mediatek: infracfg: Convert to DT
- schema
-Content-Language: en-US
-To: Yassine Oudjana <yassine.oudjana@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Sam Shih <sam.shih@mediatek.com>, Stephen Boyd <sboyd@kernel.org>,
- Ryder Lee <ryder.lee@kernel.org>, Yassine Oudjana
- <y.oudjana@protonmail.com>, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220419180938.19397-1-y.oudjana@protonmail.com>
- <20220419180938.19397-4-y.oudjana@protonmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220419180938.19397-4-y.oudjana@protonmail.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_235419_005730_77818B98 
-X-CRM114-Status: GOOD (  22.41  )
+X-CRM114-CacheID: sfid-20220420_001212_424120_C79C5867 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,162 +80,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19/04/2022 20:09, Yassine Oudjana wrote:
-> From: Yassine Oudjana <y.oudjana@protonmail.com>
-> 
-> Convert infracfg bindings to DT schema format. Not all drivers
-> currently implement resets, so #reset-cells is made a required
-> property only for those that do. Using power-controller in the
-> example node name makes #power-domain-cells required causing
-> a dt_binding_check error. To solve this, the node is renamed to
-> syscon@10001000.
-> 
-> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
-> ---
->  .../arm/mediatek/mediatek,infracfg.txt        | 42 ----------
->  .../arm/mediatek/mediatek,infracfg.yaml       | 79 +++++++++++++++++++
->  2 files changed, 79 insertions(+), 42 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-> deleted file mode 100644
-> index f66bd720571d..000000000000
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-> +++ /dev/null
-> @@ -1,42 +0,0 @@
-> -Mediatek infracfg controller
-> -============================
-> -
-> -The Mediatek infracfg controller provides various clocks and reset
-> -outputs to the system.
-> -
-> -Required Properties:
-> -
-> -- compatible: Should be one of:
-> -	- "mediatek,mt2701-infracfg", "syscon"
-> -	- "mediatek,mt2712-infracfg", "syscon"
-> -	- "mediatek,mt6765-infracfg", "syscon"
-> -	- "mediatek,mt6779-infracfg_ao", "syscon"
-> -	- "mediatek,mt6797-infracfg", "syscon"
-> -	- "mediatek,mt7622-infracfg", "syscon"
-> -	- "mediatek,mt7623-infracfg", "mediatek,mt2701-infracfg", "syscon"
-> -	- "mediatek,mt7629-infracfg", "syscon"
-> -	- "mediatek,mt7986-infracfg", "syscon"
-> -	- "mediatek,mt8135-infracfg", "syscon"
-> -	- "mediatek,mt8167-infracfg", "syscon"
-> -	- "mediatek,mt8173-infracfg", "syscon"
-> -	- "mediatek,mt8183-infracfg", "syscon"
-> -	- "mediatek,mt8516-infracfg", "syscon"
-> -- #clock-cells: Must be 1
-> -- #reset-cells: Must be 1
-> -
-> -The infracfg controller uses the common clk binding from
-> -Documentation/devicetree/bindings/clock/clock-bindings.txt
-> -The available clocks are defined in dt-bindings/clock/mt*-clk.h.
-> -Also it uses the common reset controller binding from
-> -Documentation/devicetree/bindings/reset/reset.txt.
-> -The available reset outputs are defined in
-> -dt-bindings/reset/mt*-resets.h
-> -
-> -Example:
-> -
-> -infracfg: power-controller@10001000 {
-> -	compatible = "mediatek,mt8173-infracfg", "syscon";
-> -	reg = <0 0x10001000 0 0x1000>;
-> -	#clock-cells = <1>;
-> -	#reset-cells = <1>;
-> -};
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-> new file mode 100644
-> index 000000000000..4f43fe9f103e
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-> @@ -0,0 +1,79 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: "http://devicetree.org/schemas/arm/mediatek/mediatek,infracfg.yaml#"
-> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-> +
-> +title: MediaTek Infrastructure System Configuration Controller
-> +
-> +maintainers:
-> +  - Matthias Brugger <matthias.bgg@gmail.com>
-> +
-> +description:
-> +  The Mediatek infracfg controller provides various clocks and reset outputs
-> +  to the system.
+From: Bo Jiao <Bo.Jiao@mediatek.com>
 
-Mention here the headers with clock and reset constants. The same for
-patches 1 and 2.
+This patch disables RX_TRANS_SHORT to make MDP to do header translation
+when payload less than 8 bytes, hence the (QoS) null data can be encapsulated
+to 802.3 format. However, WDS requires (QoS) null data in 802.11 format
+to created vlan AP interfaces.
 
-> +
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt2701-infracfg
-> +              - mediatek,mt2712-infracfg
-> +              - mediatek,mt6765-infracfg
-> +              - mediatek,mt6779-infracfg_ao
-> +              - mediatek,mt6797-infracfg
-> +              - mediatek,mt7622-infracfg
-> +              - mediatek,mt7629-infracfg
-> +              - mediatek,mt7986-infracfg
-> +              - mediatek,mt8135-infracfg
-> +              - mediatek,mt8167-infracfg
-> +              - mediatek,mt8173-infracfg
-> +              - mediatek,mt8183-infracfg
-> +              - mediatek,mt8516-infracfg
-> +          - const: syscon
-> +      - items:
-> +          - const: mediatek,mt7623-infracfg
-> +          - const: mediatek,mt2701-infracfg
-> +          - const: syscon
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  '#clock-cells':
-> +    const: 1
-> +
-> +  '#reset-cells':
-> +    const: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - '#clock-cells'
-> +
-> +if:
-> +  properties:
-> +    compatible:
-> +      contains:
-> +        enum:
-> +          - mediatek,mt2701-infracfg
-> +          - mediatek,mt2712-infracfg
-> +          - mediatek,mt7622-infracfg
-> +          - mediatek,mt7986-infracfg
-> +          - mediatek,mt8135-infracfg
-> +          - mediatek,mt8173-infracfg
-> +          - mediatek,mt8183-infracfg
-> +then:
-> +  required:
-> +    - '#reset-cells'
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    infracfg: syscon@10001000 {
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: lian.chen <lian.chen@mediatek.com>
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/agg-rx.c      | 3 +++
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c | 3 +++
+ drivers/net/wireless/mediatek/mt76/mt7915/mac.c  | 4 ----
+ drivers/net/wireless/mediatek/mt76/mt7915/regs.h | 3 +++
+ 4 files changed, 9 insertions(+), 4 deletions(-)
 
-reset-controller or clock-controller instead, because syscon is for
-blocks having only the syscon function.
+diff --git a/drivers/net/wireless/mediatek/mt76/agg-rx.c b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+index 7262222..efd1a85 100644
+--- a/drivers/net/wireless/mediatek/mt76/agg-rx.c
++++ b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+@@ -167,6 +167,9 @@ void mt76_rx_aggr_reorder(struct sk_buff *skb, struct sk_buff_head *frames)
+ 		return;
+ 	}
+ 
++	if (!status->aggr)
++		return;
++
+ 	/* not part of a BA session */
+ 	ackp = status->qos_ctl & IEEE80211_QOS_CTL_ACK_POLICY_MASK;
+ 	if (ackp != IEEE80211_QOS_CTL_ACK_POLICY_BLOCKACK &&
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index facd604..12f8757 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -453,6 +453,9 @@ static void mt7915_mac_init(struct mt7915_dev *dev)
+ 
+ 	mt76_rmw_field(dev, MT_MDP_DCR1, MT_MDP_DCR1_MAX_RX_LEN, rx_len);
+ 
++	if (!is_mt7915(&dev->mt76))
++		mt76_clear(dev, MT_MDP_DCR2, MT_MDP_DCR2_RX_TRANS_SHORT);
++
+ 	/* enable hardware de-agg */
+ 	mt76_set(dev, MT_MDP_DCR0, MT_MDP_DCR0_DAMSDU_EN);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 5080280..bc2fb00 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -842,10 +842,6 @@ mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_buff *skb)
+ 	if (!status->wcid || !ieee80211_is_data_qos(fc))
+ 		return 0;
+ 
+-	/* drop no data frame */
+-	if (fc & cpu_to_le16(IEEE80211_STYPE_NULLFUNC))
+-		return -EINVAL;
+-
+ 	status->aggr = unicast &&
+ 		       !ieee80211_is_qos_nullfunc(fc);
+ 	status->qos_ctl = qos_ctl;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+index e4dbf99..bb0dec8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+@@ -158,6 +158,9 @@ enum offs_rev {
+ #define MT_MDP_DCR1			MT_MDP(0x004)
+ #define MT_MDP_DCR1_MAX_RX_LEN		GENMASK(15, 3)
+ 
++#define MT_MDP_DCR2			MT_MDP(0x0e8)
++#define MT_MDP_DCR2_RX_TRANS_SHORT	BIT(2)
++
+ #define MT_MDP_BNRCFR0(_band)		MT_MDP(__OFFS(MDP_BNRCFR0) + \
+ 					       ((_band) << 8))
+ #define MT_MDP_RCFR0_MCU_RX_MGMT	GENMASK(5, 4)
+-- 
+2.18.0
 
-Best regards,
-Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
