@@ -4,81 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C0F5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 18:10:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B606C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 21:41:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zvMq/tcvv2KPvG7siWzXrS6nKvru98LofO9gq2sCRcA=; b=Y0Ijtmx+FDqm7c
-	6JxZwL9cHm7oCoBXVqz3l9jCEh/A7vrZLbc+0DLOrIoUZKAwsVr2xyt3kGrNo5aZSkhlVmoRTNk5R
-	q6L993XtE/H4fauCadHlQ1ikXJ2upM/Co8nKfRJQYDrohAUCJvsrxiVW/qDKiQTU+Kl0ikVkcj8ZW
-	4P3nZOmtUZmRo7YiGrpR3LfgyY3mHrg+r7xbTKvF/m4Z42oA3OrfMdi5bvjYOGMZelKDDfzlO9qZf
-	Vh9YOQInSO1vfU+/XMwaG0VuvbFKs0ugFsa878H5RyTtkKwItikWtAsdJRL0fOgEvZ4I1RVeyyurg
-	OonXj4kzvvF7W6FNpnug==;
+	List-Owner; bh=innjWJh0dgP4O5L9lq0NxQmcaxK2kv/PDXTpxMe9f3U=; b=maiyVOv55HZ31M
+	KA6vCF/zFbpz9dquNXbf+NwzLtunHwcmJLZ5Bo3XORx+tLydyeUTdEYH1xX+mu8Hfa+fXm4qsZKZq
+	4rdkC1X/aM8v/VnK8C0P5f/0fmpbO+VNE3cp2dNa+a1wof3FkjadIEGJlIOlxfr4FhAx5ccs9bQT8
+	YYVriBwN0YRiRmGgcyuOmJ4niw8zqdKFIBbgGEcn6Ry8HZByLvquBI4kf0iiKxCEG8Khr2DdFnwX0
+	QjfsMQsR36qgPiLXr+6ACuRg+lOsjVU478N2pttMPtnMD3dGMeHdji2ErRVJSwvNCvRs5qdjUuVnP
+	njE/qebL9QTouZ8HTGnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhEmM-00A1TQ-0H; Wed, 20 Apr 2022 18:10:14 +0000
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+	id 1nhI4h-00ATI5-Hx; Wed, 20 Apr 2022 21:41:23 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhEmC-00A1RJ-Bn
- for linux-mediatek@lists.infradead.org; Wed, 20 Apr 2022 18:10:05 +0000
-Received: by mail-pg1-x535.google.com with SMTP id x191so2338042pgd.4
- for <linux-mediatek@lists.infradead.org>; Wed, 20 Apr 2022 11:10:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:in-reply-to:references:date:message-id
- :mime-version; bh=XaJY3EGAz8IrKktJ7jqA438SOYFnRuWQecgSNO+leBU=;
- b=6whRglUKuXephhd6SgaPhbA1evrYCdAON/20A5S1FZvtkfDJdh3JTWCwkEf1CkkFEn
- 6A4XUPmM+ZvhiQnACXBxVvDutFmvnYnxjpIJk0guG/ywg6hUg+tt0ndE28xvR0SvdeSS
- AiMxmzDLcIWD3mhUVXtbQwXeAwiDLiO8hYC++cz7QJxUR4kE1C7akRCoKBdffeF26CAA
- yzIqO3yN8DaK/3T6M5u342oteB/TXx8slbO1S5tFzlMlVj/+9D9TYKIDJX2Bce0u3St4
- iA+UHj8ON91PN+Nz7cDdxPBuvJGvMz5l12EBljdN6SEAzE3S5z0NLu9PyiPkutueGQBv
- SwMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
- :message-id:mime-version;
- bh=XaJY3EGAz8IrKktJ7jqA438SOYFnRuWQecgSNO+leBU=;
- b=pbRUw8DrOz8ZstoTQJg7Smv6ku57DGlG/qZTnpeWmKKM6Iz7C7oSwHAPxDWiVGU6mF
- RM3WRwLHPZqj7X4j0T4tthI/ALdlo8sjYT1+642Mc2r/vdQEsX0nQ6bc7CL/WNyUKYd9
- PnViXil4k90ZU6yPrbN176hjbad4Ut07sMtcizeFs+jP2XV6xJHyjB9ZurIWBn+Y3Uca
- wgk1Vi/83Mouk+x9+UaT3ubjMv81TvsJ5kNWLgVE6tlNPKZt4NGAWfGgwqx4+v3bhV5q
- uBR3gjU7i3mkactskGASfqk4kYlHyNknjic+Dikpu/QxLxZhQczOnyUab4ZcP0Cz1Bg0
- kelw==
-X-Gm-Message-State: AOAM530RVfYzCR33chcYooEOg3tNfe1SnGhffntADrXPWG2iQeHfo3ZA
- GBvdMvlniKd557MNSBLKFqkB3Q==
-X-Google-Smtp-Source: ABdhPJyXMqgKR4UfzMmgODjJ0nqV/iezghtHQLHP5i9ubbX8iLWYJ9p/TXuwbBQV0KOTr/z5WohRsw==
-X-Received: by 2002:a63:c008:0:b0:3a2:4b:ab0a with SMTP id
- h8-20020a63c008000000b003a2004bab0amr20287450pgg.588.1650478200471; 
- Wed, 20 Apr 2022 11:10:00 -0700 (PDT)
-Received: from localhost (c-71-197-186-152.hsd1.wa.comcast.net.
- [71.197.186.152]) by smtp.gmail.com with ESMTPSA id
- g1-20020a633741000000b0039958c06c53sm20024838pgn.61.2022.04.20.11.09.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Apr 2022 11:10:00 -0700 (PDT)
-From: Kevin Hilman <khilman@baylibre.com>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
- viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org,
- matthias.bgg@gmail.com
-Cc: jia-wei.chang@mediatek.com, roger.lu@mediatek.com, hsinyi@google.com,
- angelogioacchino.delregno@collabora.com, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, Rex-BC Chen
- <rex-bc.chen@mediatek.com>
-Subject: Re: [PATCH V3 11/15] cpufreq: mediatek: Link CCI device to CPU
-In-Reply-To: <20220415055916.28350-12-rex-bc.chen@mediatek.com>
-References: <20220415055916.28350-1-rex-bc.chen@mediatek.com>
- <20220415055916.28350-12-rex-bc.chen@mediatek.com>
-Date: Wed, 20 Apr 2022 11:09:59 -0700
-Message-ID: <7hv8v3eidk.fsf@baylibre.com>
+ id 1nhI4W-00ATDb-2D; Wed, 20 Apr 2022 21:41:13 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 918C561984;
+ Wed, 20 Apr 2022 21:41:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EDCC7C385A0;
+ Wed, 20 Apr 2022 21:41:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1650490869;
+ bh=4o+rRgdBUkHNDZ6Md2nImSgDPD+EYrSKUa+rPtXadeI=;
+ h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+ b=ONozDncWv/9yq2y5PKHzUcm2FYVPLlZnFOsIeN0bbgcRTTSRX2WoBwy42E07hdiE6
+ NlPH2ISCS3bnvFwDYqDGEXFkpgLr/mj78xJ7eJCbQLpaNCcJKoeF+G0mBegJNxuTBT
+ fRdUokWLXUpIWbkoVRYuaWoy557fpTDM4yveQ/p51dleTWq5HjqOiCvCf6s0V0S/zq
+ G4mcJhYw4g33cMfkO3pX3p3nvCeX9mqBB9V1yuKlQhpVArMRtzCB4VGNKo5NStiEax
+ Ot4k1UyZ6tNtdOQn9ujbJrZI6C8bOWgx5NfpICM4NFaYrlwqErYF2iLO6jatceYW7f
+ dM3UXWBDPSALw==
+From: Mark Brown <broonie@kernel.org>
+To: angelogioacchino.delregno@collabora.com
+Cc: linux-mediatek@lists.infradead.org, nfraprado@collabora.com,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+ matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
+ linux-spi@vger.kernel.org
+In-Reply-To: <20220407114428.167091-1-angelogioacchino.delregno@collabora.com>
+References: <20220407114428.167091-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 0/8] MediaTek SPI controller cleanups and documentation
+Message-Id: <165049086768.143449.12761284074720810678.b4-ty@kernel.org>
+Date: Wed, 20 Apr 2022 22:41:07 +0100
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220420_111004_454027_71ACA7CE 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20220420_144112_179388_8DDA7CD1 
+X-CRM114-Status: GOOD (  14.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,35 +72,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rex,
+On Thu, 7 Apr 2022 13:44:20 +0200, AngeloGioacchino Del Regno wrote:
+> This series performs some cleanups to the spi-mt65xx driver, removing
+> all gotos, simplifying the probe function and adding kerneldoc to the
+> driver structures.
+> 
+> Changes in v2:
+> - Rebased over next-20220407 for new spimem commits
+> 
+> [...]
 
-Rex-BC Chen <rex-bc.chen@mediatek.com> writes:
+Applied to
 
-> From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
->
-> In some MediaTek SoCs, like MT8183, CPU and CCI share the same power
-> supplies. Cpufreq needs to check if CCI devfreq exists and wait until
-> CCI devfreq ready before scaling frequency.
->
-> Before CCI devfreq is ready, we record the voltage when booting to
-> kernel and use the max(cpu target voltage, booting voltage) to
-> prevent cpufreq adjust to the lower voltage which will cause the CCI
-> crash because of high frequency and low voltage.
->
-> - Add is_ccifreq_ready() to link CCI device to CPI, and CPU will start
->   DVFS when CCI is ready.
-> - Add platform data for MT8183.
->
-> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-The solution of keeping the max of the CPU voltage from OPP and boot-up
-voltage makes sense until CCI is ready.  Thank you for the rework and
-the detailed technical explanations.
+Thanks!
 
-Reviewed-by: Kevin Hilman <khilman@baylibre.com>
+[1/8] spi: mt65xx: Simplify probe function with devm_spi_alloc_master
+      commit: ace145802350e0f8eec4a40522a1b1d5a4f90114
+[2/8] spi: mt65xx: Switch to device_get_match_data()
+      commit: 7f7cdef7288a7da117a54249b680b04f503f8a67
+[3/8] spi: mt65xx: Add and use pointer to struct device in mtk_spi_probe()
+      commit: 6b4440584b92851af44b235ad825c8554dd143c0
+[4/8] spi: mt65xx: Move clock parent setting to remove clock disable gotos
+      commit: 5dee8bb8d14dc7536cec58cc1d94148dce89dfc5
+[5/8] spi: mt65xx: Move pm_runtime_enable() call to remove all gotos
+      commit: 5088b3136439896c2858173402f32dada4db69f6
+[6/8] spi: mt65xx: Simplify probe function with dev_err_probe()
+      commit: 20cdbb80095711decef6401f839aca8476be1910
+[7/8] spi: mt65xx: Add kerneldoc for driver structures
+      commit: 3c5cd2e23fe4c840b437496e131e1f74afaebbbd
+[8/8] spi: mt65xx: Fix definitions indentation
+      commit: 8e8a9e364a3b3053f689a649df1107e61b9e3bed
 
-Kevin
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 _______________________________________________
 Linux-mediatek mailing list
