@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 851FDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 16:20:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C0F5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 18:10:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pTg51jBMu1oyvJhkgZpSl3pR5E/lD+i8uuXQoE3SmyU=; b=jasKnI0YZCWP/B
-	ry84G9Bv9zcH7qK7XYPO0gYseetWgLyIi5fhuDoLmC9n496JsvU0idBdXgkLIJ7qmCZZkw2wPidZP
-	Nuk0Mraedo2K5p9xzTGWr3Het2ebJw+txjr9p4HisNycc461mIEkJxpswxcFTirWuKstFoWLWfErz
-	cKxbhoiEcvsYMDTQUZuvksKd+MFXWcDma68uZZVhAStkq8CVy2Yym0DUFdLHDJs0s31YY7RMXetBn
-	o2MFHODW6HuYI0LVw3a1Kdv42HAMMtgEbTZsntdlWDUUADnmbb5kxNeYIFtwnBzYXggBu/fXV5XB0
-	9q9ytJQe6/R429XHTqCg==;
+	List-Owner; bh=zvMq/tcvv2KPvG7siWzXrS6nKvru98LofO9gq2sCRcA=; b=Y0Ijtmx+FDqm7c
+	6JxZwL9cHm7oCoBXVqz3l9jCEh/A7vrZLbc+0DLOrIoUZKAwsVr2xyt3kGrNo5aZSkhlVmoRTNk5R
+	q6L993XtE/H4fauCadHlQ1ikXJ2upM/Co8nKfRJQYDrohAUCJvsrxiVW/qDKiQTU+Kl0ikVkcj8ZW
+	4P3nZOmtUZmRo7YiGrpR3LfgyY3mHrg+r7xbTKvF/m4Z42oA3OrfMdi5bvjYOGMZelKDDfzlO9qZf
+	Vh9YOQInSO1vfU+/XMwaG0VuvbFKs0ugFsa878H5RyTtkKwItikWtAsdJRL0fOgEvZ4I1RVeyyurg
+	OonXj4kzvvF7W6FNpnug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhD3v-009fUR-Lv; Wed, 20 Apr 2022 16:20:15 +0000
-Received: from mail-oa1-f50.google.com ([209.85.160.50])
+	id 1nhEmM-00A1TQ-0H; Wed, 20 Apr 2022 18:10:14 +0000
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhD3k-009fQs-4p; Wed, 20 Apr 2022 16:20:05 +0000
-Received: by mail-oa1-f50.google.com with SMTP id
- 586e51a60fabf-e656032735so1195491fac.0; 
- Wed, 20 Apr 2022 09:20:01 -0700 (PDT)
+ id 1nhEmC-00A1RJ-Bn
+ for linux-mediatek@lists.infradead.org; Wed, 20 Apr 2022 18:10:05 +0000
+Received: by mail-pg1-x535.google.com with SMTP id x191so2338042pgd.4
+ for <linux-mediatek@lists.infradead.org>; Wed, 20 Apr 2022 11:10:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:in-reply-to:references:date:message-id
+ :mime-version; bh=XaJY3EGAz8IrKktJ7jqA438SOYFnRuWQecgSNO+leBU=;
+ b=6whRglUKuXephhd6SgaPhbA1evrYCdAON/20A5S1FZvtkfDJdh3JTWCwkEf1CkkFEn
+ 6A4XUPmM+ZvhiQnACXBxVvDutFmvnYnxjpIJk0guG/ywg6hUg+tt0ndE28xvR0SvdeSS
+ AiMxmzDLcIWD3mhUVXtbQwXeAwiDLiO8hYC++cz7QJxUR4kE1C7akRCoKBdffeF26CAA
+ yzIqO3yN8DaK/3T6M5u342oteB/TXx8slbO1S5tFzlMlVj/+9D9TYKIDJX2Bce0u3St4
+ iA+UHj8ON91PN+Nz7cDdxPBuvJGvMz5l12EBljdN6SEAzE3S5z0NLu9PyiPkutueGQBv
+ SwMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=4wNQpDsXtJxhnvH20Z3+ZVt5KBTN3mlzQxKe6VzUSMU=;
- b=mof0L5NveRcrUA5OYE27ZKKEYaO9C8SFG42Sl3WfucrdO9gxo+D+LwxtSbI9LK+1ks
- HB7JPnQwcnTVvTLIAlWSn4YOy+qFH43lfqHayLal7a2HvN28PbBO+TyvXG791/6l/Z7V
- 0rtMxt0Ffu+kubZBY7Y7Sxdm9Y7GlDSxJWze0i4kSorNlgwPiFE6bGSiBgF/13AqIpJD
- PHypibXMK7fV2YYzO68UL1hltJCtNfhFgA5AFUrd/HwayrhXc66jSAWQ7P+wv2w08ceo
- zcUjiyUkN+o3W6JIUwlV+UOHi/Me4FrdXeYXvolq3vnlzFcA0j+kCovE2Nkw8cnLvBYF
- dgcQ==
-X-Gm-Message-State: AOAM531Kq2/pqJg0A/L9ADz9FN4ZXZFHlPYPSitRJuecoMeemJfQak6H
- CIyl0RC4Po6Y9+yL5y3xSA==
-X-Google-Smtp-Source: ABdhPJyFDGzvkuLBDNOHCYtbkcqXp8jhoHSTHMVganFNXtZpFpev677iq4zGD+x/GQzQQd8c69FZDA==
-X-Received: by 2002:a05:6870:b4a7:b0:e5:bff5:b537 with SMTP id
- y39-20020a056870b4a700b000e5bff5b537mr2080931oap.64.1650471601284; 
- Wed, 20 Apr 2022 09:20:01 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- f21-20020a056830205500b005cdb59d5d34sm6592605otp.81.2022.04.20.09.19.59
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
+ :message-id:mime-version;
+ bh=XaJY3EGAz8IrKktJ7jqA438SOYFnRuWQecgSNO+leBU=;
+ b=pbRUw8DrOz8ZstoTQJg7Smv6ku57DGlG/qZTnpeWmKKM6Iz7C7oSwHAPxDWiVGU6mF
+ RM3WRwLHPZqj7X4j0T4tthI/ALdlo8sjYT1+642Mc2r/vdQEsX0nQ6bc7CL/WNyUKYd9
+ PnViXil4k90ZU6yPrbN176hjbad4Ut07sMtcizeFs+jP2XV6xJHyjB9ZurIWBn+Y3Uca
+ wgk1Vi/83Mouk+x9+UaT3ubjMv81TvsJ5kNWLgVE6tlNPKZt4NGAWfGgwqx4+v3bhV5q
+ uBR3gjU7i3mkactskGASfqk4kYlHyNknjic+Dikpu/QxLxZhQczOnyUab4ZcP0Cz1Bg0
+ kelw==
+X-Gm-Message-State: AOAM530RVfYzCR33chcYooEOg3tNfe1SnGhffntADrXPWG2iQeHfo3ZA
+ GBvdMvlniKd557MNSBLKFqkB3Q==
+X-Google-Smtp-Source: ABdhPJyXMqgKR4UfzMmgODjJ0nqV/iezghtHQLHP5i9ubbX8iLWYJ9p/TXuwbBQV0KOTr/z5WohRsw==
+X-Received: by 2002:a63:c008:0:b0:3a2:4b:ab0a with SMTP id
+ h8-20020a63c008000000b003a2004bab0amr20287450pgg.588.1650478200471; 
+ Wed, 20 Apr 2022 11:10:00 -0700 (PDT)
+Received: from localhost (c-71-197-186-152.hsd1.wa.comcast.net.
+ [71.197.186.152]) by smtp.gmail.com with ESMTPSA id
+ g1-20020a633741000000b0039958c06c53sm20024838pgn.61.2022.04.20.11.09.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Apr 2022 09:20:00 -0700 (PDT)
-Received: (nullmailer pid 1416786 invoked by uid 1000);
- Wed, 20 Apr 2022 16:19:59 -0000
-Date: Wed, 20 Apr 2022 11:19:59 -0500
-From: Rob Herring <robh@kernel.org>
-To: Moudy Ho <moudy.ho@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ Wed, 20 Apr 2022 11:10:00 -0700 (PDT)
+From: Kevin Hilman <khilman@baylibre.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
+ viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org,
+ matthias.bgg@gmail.com
+Cc: jia-wei.chang@mediatek.com, roger.lu@mediatek.com, hsinyi@google.com,
+ angelogioacchino.delregno@collabora.com, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>,
- tfiga@chromium.org, drinkcat@chromium.org, pihsun@chromium.org,
- hsinyi@google.com, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- daoyuan huang <daoyuan.huang@mediatek.com>,
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, allen-kh.cheng@mediatek.com,
- xiandong.wang@mediatek.com, randy.wu@mediatek.com, jason-jh.lin@mediatek.com,
- roy-cw.yeh@mediatek.com, river.cheng@mediatek.com, srv_heupstream@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v13 1/3] dt-binding: mt8183: add Mediatek MDP3 dt-bindings
-Message-ID: <YmAyrzjtWGrk5pNn@robh.at.kernel.org>
-References: <20220418022213.23826-1-moudy.ho@mediatek.com>
- <20220418022213.23826-2-moudy.ho@mediatek.com>
+ Project_Global_Chrome_Upstream_Group@mediatek.com, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: Re: [PATCH V3 11/15] cpufreq: mediatek: Link CCI device to CPU
+In-Reply-To: <20220415055916.28350-12-rex-bc.chen@mediatek.com>
+References: <20220415055916.28350-1-rex-bc.chen@mediatek.com>
+ <20220415055916.28350-12-rex-bc.chen@mediatek.com>
+Date: Wed, 20 Apr 2022 11:09:59 -0700
+Message-ID: <7hv8v3eidk.fsf@baylibre.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220418022213.23826-2-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220420_092004_229091_C5AF4ECB 
-X-CRM114-Status: GOOD (  19.60  )
+X-CRM114-CacheID: sfid-20220420_111004_454027_71ACA7CE 
+X-CRM114-Status: GOOD (  10.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,62 +95,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 18, 2022 at 10:22:11AM +0800, Moudy Ho wrote:
-> This patch adds DT binding documents for Media Data Path 3 (MDP3)
-> a unit in multimedia system combined with several components and
-> used for scaling and color format convert.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> ---
->  .../bindings/media/mediatek,mdp3-rdma.yaml    | 166 ++++++++++++++++++
->  .../bindings/media/mediatek,mdp3-rsz.yaml     |  54 ++++++
->  .../bindings/media/mediatek,mdp3-wrot.yaml    |  57 ++++++
->  .../bindings/soc/mediatek/mediatek,ccorr.yaml |  47 +++++
->  .../bindings/soc/mediatek/mediatek,wdma.yaml  |  58 ++++++
->  5 files changed, 382 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
->  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
->  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> new file mode 100644
-> index 000000000000..45b7c075ebf5
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> @@ -0,0 +1,166 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/mediatek,mdp3-rdma.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek Read Direct Memory Access
-> +
-> +maintainers:
-> +  - Matthias Brugger <matthias.bgg@gmail.com>
-> +
-> +description: |
-> +  Mediatek Read Direct Memory Access(RDMA) component used to do read DMA.
-> +  It contains one line buffer to store the sufficient pixel data, and
-> +  must be siblings to the central MMSYS_CONFIG node.
-> +  For a description of the MMSYS_CONFIG binding, see
-> +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> +  for details.
-> +  The 1st RDMA is also used to be a controller node in Media Data Path 3(MDP3)
-> +  that containing MMSYS, MUTEX, GCE and SCP settings.
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      # MDP3 controller node
-> +      - const: mediatek,mt8183-mdp3
-> +      - const: mediatek,mt8183-mdp3-rdma
+Hi Rex,
 
-This *still* makes no sense. I'm not looking at this further.
+Rex-BC Chen <rex-bc.chen@mediatek.com> writes:
 
-Rob
+> From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+>
+> In some MediaTek SoCs, like MT8183, CPU and CCI share the same power
+> supplies. Cpufreq needs to check if CCI devfreq exists and wait until
+> CCI devfreq ready before scaling frequency.
+>
+> Before CCI devfreq is ready, we record the voltage when booting to
+> kernel and use the max(cpu target voltage, booting voltage) to
+> prevent cpufreq adjust to the lower voltage which will cause the CCI
+> crash because of high frequency and low voltage.
+>
+> - Add is_ccifreq_ready() to link CCI device to CPI, and CPU will start
+>   DVFS when CCI is ready.
+> - Add platform data for MT8183.
+>
+> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+
+The solution of keeping the max of the CPU voltage from OPP and boot-up
+voltage makes sense until CCI is ready.  Thank you for the rework and
+the detailed technical explanations.
+
+Reviewed-by: Kevin Hilman <khilman@baylibre.com>
+
+Kevin
 
 _______________________________________________
 Linux-mediatek mailing list
