@@ -4,52 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A4F7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 07:43:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50018C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Apr 2022 07:46:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=20HxK34+uIt1wSFhIYcQiYk3kUN9i+68VOsnikuzCO8=; b=SO/Mxk92lKcdz/
-	a0DsSzC6Cue7u3YPcrdJzglORxjZszO6OifhuAO7bJyvsenRXcDLhp0vI4dIm4LSH677xZrI22UX2
-	mSvPyB0dMayZut87e46pnmhre6+7Rjc4COoQ+/sovjwBNl37pvxwLDo3BD5ej50QqMNM6xv2P8ujL
-	mPZ2zk6dHVx1L99yRNUf+20rnAZRmr7FsakSzC7cb/Quoch4pY1qjqWB5Bs6VHPmRrmUuB4tPBPiE
-	oe9JG/ccAPZPV46RDqcLnxQ/LN1yLPgmgAt/akgtAbX+Hik5l3sK2wkJMTgFcKCKfupBydmmWpAmh
-	dVZJ52Bgg0DgOAPOiw5Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/7hdi8TqvL/1ludmAqTWEokin/l8Q0cnMRxQHsOuNQ4=; b=g11KVVkv39e4pj
+	8ZPJdL6eeELJ2euOLCDSYHn5DVhwMeL4sji68exhARZ17ymtYqSrO7p9zzM0FPeyRt8VmKgGJKC10
+	59NqM2oBfGY8HeQD8nkv8Nlfez0abuuh5jpAGPAC8bPty49vf1yo+m7bx/nOewbq03x11OF1cp/Mz
+	qtHjMt/WiyIi0JrvoSE+hp8iLfoQ8Cx82QXZzYfmuKQHt/rZvB1Y1UvcTaDaYTOvxbC4ljGoyPLsp
+	FdFmcQCrsxxnn7qhOpu9Vj6NnN9MA5o0rW0JEWH/m80wHJl+DaZ56ewrORExffy+vOP8GrYwAz27v
+	Po10fNVhINWJJeePUulA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nh50A-007qfC-CG; Wed, 20 Apr 2022 07:43:50 +0000
-Received: from mail.fixingbiz.pl ([217.61.22.139])
+	id 1nh52Y-007rti-S6; Wed, 20 Apr 2022 07:46:18 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nh4zX-007qKs-FM
- for linux-mediatek@lists.infradead.org; Wed, 20 Apr 2022 07:43:14 +0000
-Received: by mail.fixingbiz.pl (Postfix, from userid 1001)
- id 0159CA2A65; Wed, 20 Apr 2022 08:41:50 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=fixingbiz.pl; s=mail;
- t=1650440562; bh=FDuFY3XQoq0gMX1b2gxgT7Py2p4Sxl0PJZYZ4NVaPho=;
- h=Date:From:To:Subject:From;
- b=P//3PXgoFlo/pIai7toAgDnVASkI+1F2BPp/ZAzeA6dD3OCOyyXotyf1SW+ICgNeg
- QRZImiQ3bReUp2ZSzOZd0GaKUCCpJD7VDt/W66i8L1b7+06dKxnwZsvo0o9sjohSWB
- n7bSAXK6RF2IDmGnU4sDCn1/Iw9GK0PD/JZvI9a2sIX9APY0SeyR5rwyaSw+Y8zKia
- q9iPbsftkaHqzvRYSuZJF3z/hxttmBi/kap7CldeJMtmep4Mzuv3QqmePq9ztH4brz
- l2FIOebRmH/imZCnvBDrxyqF+qNMPsy97l47wJQxo+7CPjzMb9XXn7zfDIH+YiGvOc
- vqCC/XUD9EXew==
-Received: by mail.fixingbiz.pl for <linux-mediatek@lists.infradead.org>;
- Wed, 20 Apr 2022 07:40:53 GMT
-Message-ID: <20220420074501-0.1.1x.6u3i.0.gth9dvjp1h@fixingbiz.pl>
-Date: Wed, 20 Apr 2022 07:40:53 GMT
-From: =?UTF-8?Q?"Przemys=C5=82aw_Wr=C3=B3blewski"?=
- <przemyslaw.wroblewski@fixingbiz.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: Wycena paneli fotowoltaicznych
-X-Mailer: mail.fixingbiz.pl
+ id 1nh51G-007rKI-B7; Wed, 20 Apr 2022 07:45:01 +0000
+X-UUID: deffa198002f4e688ac5af8a6c1e8af2-20220420
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:b286d279-2531-4e65-82a9-eff9712a7ffa, OB:0,
+ LO
+ B:0,IP:0,URL:8,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-12
+X-CID-META: VersionHash:faefae9, CLOUDID:ace37def-06b0-4305-bfbf-554bfc9d151a,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: deffa198002f4e688ac5af8a6c1e8af2-20220420
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <irui.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1699205037; Wed, 20 Apr 2022 00:44:46 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 20 Apr 2022 00:34:44 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 20 Apr 2022 15:34:43 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 20 Apr 2022 15:34:42 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Rob Herring <robh+dt@kernel.org>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Yunfei Dong <yunfei.dong@mediatek.com>
+CC: Maoguang Meng <maoguang.meng@mediatek.com>, Longfei Wang
+ <longfei.wang@mediatek.com>, Irui Wang <irui.wang@mediatek.com>,
+ <allen-kh.cheng@mediatek.com>, <linux-media@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH] dt-bindings: media: mtk-vcodec: Adds encoder power domain
+ property
+Date: Wed, 20 Apr 2022 15:34:39 +0800
+Message-ID: <20220420073440.31649-1-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220420_004311_736062_D493B336 
-X-CRM114-Status: UNSURE (   1.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220420_004458_403093_54D27D42 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,17 +80,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKZG9zdHJ6ZWdhbSBtb8W8bGl3b8WbxIcgd3Nww7PFgnByYWN5IHogUGHF
-hHN0d2EgZmlybcSFLgoKxZp3aWFkY3p5bXkga29tcGxla3Nvd8SFIG9ic8WCdWfEmSBpbndlc3R5
-Y2ppIHcgZm90b3dvbHRhaWvEmSwga3TDs3JhIG9ibmnFvGEga29zenR5IGVuZXJnaWkgZWxla3Ry
-eWN6bmVqIG5hd2V0IG8gOTAlLgoKQ3p5IHPEhSBQYcWEc3R3byB6YWludGVyZXNvd2FuaSB3ZXJ5
-ZmlrYWNqxIUgd3N0xJlwbnljaCBwcm9wb3p5Y2ppPwoKClBvemRyYXdpYW0sClByemVteXPFgmF3
-IFdyw7NibGV3c2tpCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LW1lZGlhdGVrCg==
+Adds encoder power domain property
+
+Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+---
+ .../devicetree/bindings/media/mediatek,vcodec-encoder.yaml | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+index deb5b657a2d5..3c069c965992 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+@@ -41,6 +41,9 @@ properties:
+ 
+   assigned-clock-parents: true
+ 
++  power-domains:
++    maxItems: 1
++
+   iommus:
+     minItems: 1
+     maxItems: 32
+@@ -72,6 +75,7 @@ required:
+   - iommus
+   - assigned-clocks
+   - assigned-clock-parents
++  - power-domains
+ 
+ allOf:
+   - if:
+@@ -132,6 +136,7 @@ examples:
+     #include <dt-bindings/clock/mt8173-clk.h>
+     #include <dt-bindings/memory/mt8173-larb-port.h>
+     #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/power/mt8173-power.h>
+ 
+     vcodec_enc_avc: vcodec@18002000 {
+       compatible = "mediatek,mt8173-vcodec-enc";
+@@ -153,6 +158,7 @@ examples:
+       clock-names = "venc_sel";
+       assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>;
+       assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL>;
++      power-domains = <&scpsys MT8173_POWER_DOMAIN_VENC>;
+     };
+ 
+     vcodec_enc_vp8: vcodec@19002000 {
+@@ -173,4 +179,5 @@ examples:
+       clock-names = "venc_lt_sel";
+       assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
+       assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>;
++      power-domains = <&scpsys MT8173_POWER_DOMAIN_VENC_LT>;
+     };
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
