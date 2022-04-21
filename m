@@ -4,59 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4FD8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 10:34:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59448C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 10:48:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Di9qqZ1RzBz6j6pXG9aDCexw5rkW2pEbyvYej/E+knM=; b=EimpUJJKffjYNT
-	7kwb6/slz/dXypp6nct3vj36h8SgpK1y+Y4G4oQzsjJA8RmlZ4u53/g8/i4pubk9N4u09xqN9eZrT
-	EXWV64XaJEMpXnOWpk/86h6P8DnHUsBx6BlIkcy0xUDOSPPo1KJ/rWkSY/qVGMgSpCDY3Tl8EX4hd
-	WXlQr28trKh7OFBQz3Dv85XFjKvPcQQZ6jFFDy0AP7TvBULCFLSXvELz2eERaPWX63bXta4z6QBU2
-	BnLct8nfquhcBTvtg4gWLqqtqsrH0Wdm2XE19WqvhKbwlivTjvRjdhj7X3Bzo+NurG+fvMZelBKm8
-	ml3FR5EfkOsBkN38WiMw==;
+	List-Owner; bh=9yDjh3roDoq6E0eq1MK08PWiy6Lb0zEe0CiFlEr9PMs=; b=KTlWSF9lySzMFA
+	6BudTYYbnPxrvvVTvqrzC0etBKyNJ8eI4XZ9mMFRK6d8FTSeZopW/ueMx3Ex+IhB/A8geh7p14zKh
+	Q2EhV6ff5yS1Zqiywp/Xx/KNvcSAk9Prj+xEh93usnrQ7PNiL5aqEF9O+U/+MIE92qmikFc8VeHAf
+	Mob/DlybAMCUg6rjk2PTi0jwQzlc8kkvjaKD81icau7syr1y3R2UOLx5UGjXjKh5BegxxeaPUzBu2
+	SH7wfD7OFbsrqeKvpI8a3cL61cbVwLE1K3PcxL2nsLzTOUh66ypr9E30SZaLiTnzyA1l8wXSAUIUf
+	rJnzKSjeDwWQn02Fuzcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhU8Z-00D2TQ-3L; Thu, 21 Apr 2022 10:34:11 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nhUMF-00D56p-3o; Thu, 21 Apr 2022 10:48:19 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhU8N-00D2Qh-PG; Thu, 21 Apr 2022 10:34:01 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id C15801F4555C
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1650537238;
- bh=q3xCURJeXpVp7nXTJCMDC/WN0t4IsJySZXDpsN3C7X0=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=JYHXY+4kyEuJoN0AMOX+NtpU5S6jCDuV+XPuSgm27PF8iK8xudxwnOX7HEwfFy57c
- OMwZdgAup7zDOlpPequQYghojYp+y0oG2/2KhPTBsWho+ZvCXt6vjwRwTDR4a8OQQT
- ek9eV2tuehJONEA2uqcZ1yVSRa1wERiqTwRzfscdg118C7AdEZ8Rn0b625UIEpzqHD
- mXSIE3BTVPIA2tWEWcaYvhN547qRKZAFrQmXdyyz+QUbx1hE8VbHvHCOzzlS1FKKuF
- RX9D9JmXSAJMl7zykR7U+pKPTuWzUk256nQ/HZckGxx01hTamu+UrHy7k0Y7wDbq3x
- Po4CS2CqJlAog==
-Message-ID: <068165d5-6c25-2a65-0191-957b6b1d0680@collabora.com>
-Date: Thu, 21 Apr 2022 12:33:55 +0200
+ id 1nhUM2-00D519-Au; Thu, 21 Apr 2022 10:48:07 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 297F761A88;
+ Thu, 21 Apr 2022 10:48:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D38FC385A5;
+ Thu, 21 Apr 2022 10:48:00 +0000 (UTC)
+Message-ID: <678a06f5-0519-dab3-35ac-5915b47d422e@xs4all.nl>
+Date: Thu, 21 Apr 2022 12:47:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.7.0
-Subject: Re: [PATCH 7/7] arm64: dts: mediatek: mt6359: add node for PMIC keys
- support
+Subject: Re: [PATCH] media: mediatek: vcodec: Fix v4l2 compliance decoder cmd
+ test fail
 Content-Language: en-US
-To: Fabien Parent <fparent@baylibre.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220415153629.1817202-1-fparent@baylibre.com>
- <20220415153629.1817202-8-fparent@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220415153629.1817202-8-fparent@baylibre.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ Alexandre Courbot <acourbot@chromium.org>,
+ Nicolas Dufresne <nicolas@ndufresne.ca>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>
+Cc: George Sun <george.sun@mediatek.com>,
+ Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Irui Wang <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220406012048.5970-1-yunfei.dong@mediatek.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20220406012048.5970-1-yunfei.dong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_033400_011047_474D15B9 
-X-CRM114-Status: UNSURE (   8.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220421_034806_499965_41378BEC 
+X-CRM114-Status: GOOD (  21.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,39 +75,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/04/22 17:36, Fabien Parent ha scritto:
-> Add node for the MT6359 PMIC keyboard in mt6359.dtsi.
+On 06/04/2022 03:20, Yunfei Dong wrote:
+> Will return -EINVAL using standard framework api when test stateless
+> decoder with cmd VIDIOC_(TRY)DECODER_CMD.
 > 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Using another return value to adjust v4l2 compliance test for user
+> driver(GStreamer/Chrome) won't use decoder cmd.
+> 
+> Fixes: 8cdc3794b2e3 ("media: mtk-vcodec: vdec: support stateless API")
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+> changes compared with v2:
+> - add reviewed-by tag
+> changes compared with v1:
+> - add Fixes: tag
+> ---
+>  drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> index 3859e4c651c6..69b0e797d342 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> @@ -51,8 +51,7 @@ static int vidioc_try_decoder_cmd(struct file *file, void *priv,
+>  
+>  	/* Use M2M stateless helper if relevant */
+>  	if (ctx->dev->vdec_pdata->uses_stateless_api)
+> -		return v4l2_m2m_ioctl_stateless_try_decoder_cmd(file, priv,
+> -								cmd);
+> +		return -ENOTTY;
+>  	else
+>  		return v4l2_m2m_ioctl_try_decoder_cmd(file, priv, cmd);
+>  }
 
-Hello Fabien,
-I agree that all MT6359 PMICs do support pmic-keys, but not all devices using
-this PMIC have physical keys connected to that.
+So in other words, if the stateless api is used, then (TRY_)DECODER_CMD
+is not implemented. And that's because this driver doesn't set the
+V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF capability as that's not needed.
+And so there is no need for (TRY_)DECODER_CMD to be implemented.
 
-Besides, even if all of them did, it wouldn't be guaranteed that key-0 would be
-always KEY_POWER, as much as it wouldn't be guaranteed that key-1 would be always
-KEY_HOME.
+If that's the case, then it is much better to just disable these two
+ioctls with v4l2_disable_ioctl() if the stateless API is used.
 
-In my opinion, it *is* correct to add mediatek,mt6359-keys to the PMIC dtsi, but
-you should do that without declaring any key, hence it's enough to do:
-
-		mt6359_keys: mtk-pmic-keys {
-			compatible = "mediatek,mt6359-keys";
-		};
-
-... then, any machine that *actually does* have these keys connected and manageable
-in Linux should declare its own keys in its own dts/dtsi.
-
-Of course, this means that you'll have to remove your input.h inclusion as well.
+And just drop the uses_stateless_api checks in both vidioc_try_decoder_cmd
+and vidioc_decoder_cmd. This patch only changed vidioc_try_decoder_cmd,
+but of course vidioc_decoder_cmd needs to be modified as well.
 
 Regards,
-Angelo
 
+	Hans
 
 _______________________________________________
 Linux-mediatek mailing list
