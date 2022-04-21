@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60A45C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 10:12:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D046AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 10:17:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d9C13sxF4xNah2Ezg4iocGyMpgrOYP77qnMA/33It44=; b=ZVqg0gdvqamwgM
-	V7H9IKDH1Rxy2yK5lPapNOytPsFw2oEfAh0RPBSSztPRsQW7S5AwdQdCRkKHgIedmytlSGlxHeGyi
-	xXmoLbvBIQbWReky31VZ447i/M2aq1mfD+Ih6vZRnmKoBwOFWubHjnRqxpt3bXCl3+IWc16Es2ANm
-	+8vp0y9qaAMhQqI/LvFEYYQjx3uoNd+N6OYnjwF3eyex1dIUm6s7ojMiOJlmON7/pLhwMk/cytsob
-	HGcifkE5eqhj4qpyyR9Dah8vFtVDJbYmItfCKNPFj1+2JQHbVL3nYqiwFp1dpTwiVZQZYWGd0SH0Z
-	hyLCpVBAHF7n3KVUy1lg==;
+	List-Owner; bh=0cNsYRmEZiTw1ZCSblxxtop/G4ACB4vzfBhylRahbAs=; b=fEUlrJIMJ4G5SQ
+	6ypymEMvxzvPBIZP8jhGWGD6CNJLewK1/xhawXTTcSaez1oJHe1KxMZevBBqFu9hWFFpmrIwJaaDQ
+	pgos6fF3MS+Wmd7PStasA5BA/UawZiLAuXql05kbit0vTHsr8pWRGyFNnuWTNGtuQjA19Xk/GYhSw
+	Xql1sly0HjqSiN8+RG+WycgHRJ5F9SUieO52rExaYB7knCEUQ6VklkEw1arF9o39WjDo6JU0bEZ3b
+	b5mESeHDOYezIcIbVAnWslyWETVna0hMBEIJNW9Xfw0cIN22L++JITI6lXmPmLfz9rV7n6fQRTywf
+	dPyNU/RuTXyprT4EreJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhTnV-00CypJ-Mk; Thu, 21 Apr 2022 10:12:25 +0000
+	id 1nhTsC-00CzrN-Ni; Thu, 21 Apr 2022 10:17:16 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhTnG-00CyjY-Pm; Thu, 21 Apr 2022 10:12:12 +0000
+ id 1nhTs1-00Czom-Oi; Thu, 21 Apr 2022 10:17:07 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 8AA9D1F45483
+ (Authenticated sender: kholk11) with ESMTPSA id 88BB01F454B9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1650535927;
- bh=HPOrpLDJ/NYqVSsQ+sZ4XQLCeAYBNHE6ulTq2mIsJDc=;
+ s=mail; t=1650536224;
+ bh=zcUtTncErR4CRvVEtBbI5bdyvkZNw/1895mBvZxu+JQ=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=W98B6+rtp16cuw3lgkpd6JA8YrUWyrDUDS+Mj/UxJ4GP+7oFd1sUbklJ1QDBiTAzm
- m2ci2dmyJYPHDvtIi6kMUq1Yy/BbCjMFaw65IRUHQftiQg/CRO1TOmFumOWsSScKbc
- fRJ9MfHo8bUZVC6NYFcWTgJbL+1frzxj/7wSgPSwob60ulGk1S1a8gzf2lzuh0jbzm
- ve+52G2dyd8CeD0qfv2zlWcbbhoZimNrS9C3a7In65nuGZetHNhf/oOBSl2dzw3Ji/
- 5/omW4tgdBxeR/U6ccdShnlc8/RaYJpJ9WgKpkfYgEac1zD7PAKEB5ANIEKhfYBKSB
- Dwj2BuYcCicqg==
-Message-ID: <2703f3de-1ee9-36ca-4866-89398c501244@collabora.com>
-Date: Thu, 21 Apr 2022 12:12:03 +0200
+ b=CLFJ2OQnTmpOPkI+qfEMxYHQDG2qMiFXKFgHDWUlhxd2XxxK4NJg8TA8vN6gZvAh9
+ vgtYY0masQEDdTj21MnpGPTsjYb8l3PCPFLFWjWR6fG1hG50jyKEVdbH6wXy2qLPX6
+ 1OuMLPVdKV8FbJBp7GtEv47mehCQVEO8SYxQ3l8GiDF0gwasPxg9Sk0U+jydpJnPqH
+ RQA3wS/mk3iGfVQAFLcoV4EhM1Bm9WkeUquB/4KNFhYqNV3D4r8WtQ+BfmeaESh6nC
+ EQAjHj44UaAfK3fn7oGl4Ker3MjhBdUp9C36/knC0+1poRtS2izIoQMdqQbnSe9jrX
+ a8A7NGNv9x5vg==
+Message-ID: <a92d3b46-ace4-2d19-fef9-c59cd1a596ce@collabora.com>
+Date: Thu, 21 Apr 2022 12:17:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.7.0
-Subject: Re: [PATCH v3 2/2] remoteproc: mediatek: allow reading firmware-name
- from DT
+Subject: Re: [PATCH v6, 5/5] dt-bindings: pwm: Add interrupts property for
+ MediaTek MT8192
 Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Ohad Ben-Cohen <ohad@wizery.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-remoteproc@vger.kernel.org
-References: <20220419123331.14377-1-allen-kh.cheng@mediatek.com>
- <20220419123331.14377-3-allen-kh.cheng@mediatek.com>
+To: xinlei.lee@mediatek.com, thierry.reding@gmail.com,
+ u.kleine-koenig@pengutronix.de, lee.jones@linaro.org, robh+dt@kernel.org,
+ matthias.bgg@gmail.com
+Cc: linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, rex-bc.chen@mediatek.com,
+ jitao.shi@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <1650284456-16407-1-git-send-email-xinlei.lee@mediatek.com>
+ <1650284456-16407-6-git-send-email-xinlei.lee@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220419123331.14377-3-allen-kh.cheng@mediatek.com>
+In-Reply-To: <1650284456-16407-6-git-send-email-xinlei.lee@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_031211_104591_E681B7E1 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20220421_031705_981591_83636006 
+X-CRM114-Status: UNSURE (   7.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,20 +75,21 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/04/22 14:33, Allen-KH Cheng ha scritto:
-> The SCP firmware blob differs between platforms and SoCs. We add
-> support in the SCP driver for reading the path of firmware file from
-> DT in order to allow these files to live in a generic file system
-> (or linux-firmware).
+Il 18/04/22 14:20, xinlei.lee@mediatek.com ha scritto:
+> From: Xinlei Lee <xinlei.lee@mediatek.com>
 > 
-> The firmware-name property is optional and the code falls back to the
-> old filename if the property isn't present.
+> Add interrupts property of pwm for MediaTek MT8192 SoC.
 > 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hello Xinlei,
+the pwm-mtk-disp.c driver does not support interrupts.
 
+Please add interrupts support to the driver first, and only then
+add that in the dt-bindings.
+
+Regards,
+Angelo
 
 
 _______________________________________________
