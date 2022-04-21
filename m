@@ -4,84 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F38FCC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 16:21:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED698C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 16:32:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n+3n6jQYrujdv6AASClf4n5sMr6jkpTTq7qk0ZCor9s=; b=VPflG40AN8nJxx
-	9toLwU9b06wV0nOgblc185HayAJHKHNIDobqrHVpqHKE1Ba/tA3IW9c70oPfzgUu5vO4YW8xeKk2t
-	VvUzGh8qnOSLMp5MfCgLKJx6J/cZ7uTVVTCr8KGgosjKkCHt3CrsnUxfYpFoHYSnkKsHf9vu/eDAe
-	0Iew4mu+VC54Hfxfgimgij3cXIrmFkVVdegm45vGcI3B4+0XvAcBL35sx/r6pQMyZO3EIvtbGepK+
-	s3Xp8Au80y1fcONmnrY2rUtrOogD5UhgHr/iyAKp/NWjo4Ud7o3xhvQHQ3xCDSuv9RjrLAak5JRFp
-	hV74unI1kGqnFmxMcH/w==;
+	List-Owner; bh=NHcN2EM5TPGY9TDtUJy8m35G30LfuyuZSiXbCFeqYXc=; b=CmlyuZRGT2ZR48
+	Xfg5QOJ0d0EL/vIM6NqeZzNfYbX2fEvjxh81b7Qs06xIvf8+lMY2NqT5C7qd9NgYc5V/TNBgsgjVA
+	m3q2hyRO9ztNgxAEWtj6nJnNTD2GiCBGKr+9KkTh+ytUN4ssDAEvcs3iLNFE6sngQhiSbNdrDnVlO
+	OJga+ODP0tVXXOB9gSdfSTa3pq4rVx38v8PuU8ZB3vhTZrba5a/HaGjW9YMXqTrlGISZM1K4riH98
+	T4DoDt43lTuNiuUFL9qmspVOZd9oCgKQIlkrNNbakUmZ0gtoghDftYtvswdggLlrVuOCUkcRWg/B8
+	+36ZtIOezlDPJDzWegQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhZYr-00ECoR-6D; Thu, 21 Apr 2022 16:21:41 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1nhZjA-00EFZh-JP; Thu, 21 Apr 2022 16:32:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhZYh-00ECnK-0r
- for linux-mediatek@lists.infradead.org; Thu, 21 Apr 2022 16:21:32 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id
- w5-20020a17090aaf8500b001d74c754128so921873pjq.0
- for <linux-mediatek@lists.infradead.org>; Thu, 21 Apr 2022 09:21:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=zOgF5YHHdnw6KFfM7+TfvuQyjrbr/lX5m0szyjvIkws=;
- b=AZ6UWC536Tr+qN6iz60AuoVTHsNIJZh2fChIEo5NiY0GJ/2lpSLHpxlUwQYpLLnCGF
- 46dnieAD8HD3maBt+IEPmJ3/MxXRfN3Vd/YfUa/cFDSklKEoQHNORUJBPNRaFA8d8gI2
- D+ezgg6ARlOYxeT5LjVHUOM42nantNwr9nDeWoE/KP2nxQTGfe678ToHMMf+7UMlSkU3
- qd+jXYER+2NHQVYvn77FyjkOs5Azdt6NBzzx/BTOBRywlHUwmSqtohoFc4jGPUZiCQoK
- T6R/cptVJXD96SN2vEcwhozxmRL20K7eZputX2D+qFZZhjuuIlWo8etvzEV+EIBDqWXN
- pV4Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=zOgF5YHHdnw6KFfM7+TfvuQyjrbr/lX5m0szyjvIkws=;
- b=Yxvkv1fH83Vyp3n+JvODRApfPpBq1PVn6saD9qpCsYD9uhyaGdO1IdAf8QxL/QmJNz
- 6ixbcLuQtH84l0DDQH44ChU5YAxQK+7XQVajI1BHkHVjFPr617x/M7lsDoC4WzbLBrah
- YEO70Ldv5nSlJWrI7SmtOh8kvBipmKTcDTThxQcyixYMyekNz3SGhcquUQ68GVqYwhbH
- 1J1a5BH+CS5nYvKyx03/+ZcIYtTqz8MgO6qqcwseo5xcweJywWewxDkQOhGOiwtZV5xl
- TDk9WO0QZFA1j5D/+CLg2zfS3ersPuwO0OorH6zurdb3KulbsQ4CRQxWLnp8j7UOT7cS
- BqRw==
-X-Gm-Message-State: AOAM531nL3DFmXUFEHx8894CnXRyC2qFj0SGjlTJdkbwjk1V8v5EGIY4
- kIXzkBzbmobeAGm3HmnF7lR0lg==
-X-Google-Smtp-Source: ABdhPJyKW5sbH8IITrbG/4Ys8s+ipSdmANtpb03yMQnddgED1EkdIIGyeLpEf+JUcB5R0yVEhlgV0g==
-X-Received: by 2002:a17:90a:9416:b0:1ca:c87b:9439 with SMTP id
- r22-20020a17090a941600b001cac87b9439mr455923pjo.71.1650558088025; 
- Thu, 21 Apr 2022 09:21:28 -0700 (PDT)
-Received: from p14s (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
- by smtp.gmail.com with ESMTPSA id
- p10-20020a637f4a000000b00373a2760775sm23361771pgn.2.2022.04.21.09.21.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Apr 2022 09:21:26 -0700 (PDT)
-Date: Thu, 21 Apr 2022 10:21:24 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Ohad Ben-Cohen <ohad@wizery.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-remoteproc@vger.kernel.org
-Subject: Re: [PATCH v3 0/2] remoteproc: mediatek: allow different SCP
- firmware names
-Message-ID: <20220421162124.GA1596562@p14s>
-References: <20220419123331.14377-1-allen-kh.cheng@mediatek.com>
+ id 1nhZiv-00EFPx-Ko; Thu, 21 Apr 2022 16:32:09 +0000
+X-UUID: ec145e95417a4c28aa93f27449f6db26-20220421
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:c03b326d-c31d-484e-a61b-9aca865d8eea, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:5ec181f0-da02-41b4-b6df-58f4ccd36682,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:-5,EDM:-3,File:nil,QS:0,BEC:ni
+ l
+X-UUID: ec145e95417a4c28aa93f27449f6db26-20220421
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <lecopzer.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 463510602; Thu, 21 Apr 2022 09:31:51 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 Apr 2022 09:30:43 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 22 Apr 2022 00:30:35 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 22 Apr 2022 00:30:35 +0800
+From: Lecopzer Chen <lecopzer.chen@mediatek.com>
+To: <pmladek@suse.com>
+CC: <acme@kernel.org>, <akpm@linux-foundation.org>,
+ <alexander.shishkin@linux.intel.com>, <catalin.marinas@arm.com>,
+ <davem@davemloft.net>, <jolsa@redhat.com>, <jthierry@redhat.com>,
+ <keescook@chromium.org>, <kernelfans@gmail.com>,
+ <lecopzer.chen@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-perf-users@vger.kernel.org>, <mark.rutland@arm.com>,
+ <masahiroy@kernel.org>, <matthias.bgg@gmail.com>, <maz@kernel.org>,
+ <mcgrof@kernel.org>, <mingo@redhat.com>, <namhyung@kernel.org>,
+ <nixiaoming@huawei.com>, <peterz@infradead.org>,
+ <sparclinux@vger.kernel.org>, <sumit.garg@linaro.org>, <wangqing@vivo.com>,
+ <will@kernel.org>, <yj.chiang@mediatek.com>
+Subject: Re: [PATCH v3 5/5] arm64: Enable perf events based hard lockup
+ detector
+Date: Fri, 22 Apr 2022 00:30:35 +0800
+Message-ID: <20220421163035.26402-1-lecopzer.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <YlalNStoYOWqAHkP@alley>
+References: <YlalNStoYOWqAHkP@alley>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220419123331.14377-1-allen-kh.cheng@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_092131_094742_534EF8CC 
-X-CRM114-Status: GOOD (  15.09  )
+X-CRM114-CacheID: sfid-20220421_093205_717043_B5A7F765 
+X-CRM114-Status: GOOD (  67.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,39 +90,251 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 19, 2022 at 08:33:29PM +0800, Allen-KH Cheng wrote:
-> The SCP needs firmware which differs between platforms and SoCs. Add a new
-> property "firmware-name" to allow the DT to specify the platform/board specific
-> path to this firmware file.
+> On Fri 2022-04-08 00:59:49, Lecopzer Chen wrote:
+> > 
+> > > On Tue 2022-04-05 20:53:04, Lecopzer Chen wrote:
+> > > >  
+> > > > > On Thu 2022-03-24 22:14:05, Lecopzer Chen wrote:
+> > > > > > With the recent feature added to enable perf events to use pseudo NMIs
+> > > > > > as interrupts on platforms which support GICv3 or later, its now been
+> > > > > > possible to enable hard lockup detector (or NMI watchdog) on arm64
+> > > > > > platforms. So enable corresponding support.
+> > > > > > 
+> > > > > > One thing to note here is that normally lockup detector is initialized
+> > > > > > just after the early initcalls but PMU on arm64 comes up much later as
+> > > > > > device_initcall(). To cope with that, overriding watchdog_nmi_probe() to
+> > > > > > let the watchdog framework know PMU not ready, and inform the framework
+> > > > > > to re-initialize lockup detection once PMU has been initialized.
+> > > > > > 
+> > > > > > [1]: http://lore.kernel.org/linux-arm-kernel/1610712101-14929-1-git-send-email-sumit.garg@linaro.org
+> > > > > > 
+> > > > > > --- /dev/null
+> > > > > > +++ b/arch/arm64/kernel/watchdog_hld.c
+> > > > > > @@ -0,0 +1,37 @@
+> > > > > > +// SPDX-License-Identifier: GPL-2.0
+> > > > > > +#include <linux/nmi.h>
+> > > > > > +#include <linux/cpufreq.h>
+> > > > > > +#include <linux/perf/arm_pmu.h>
+> > > > > > +
+> > > > > > +/*
+> > > > > > + * Safe maximum CPU frequency in case a particular platform doesn't implement
+> > > > > > + * cpufreq driver. Although, architecture doesn't put any restrictions on
+> > > > > > + * maximum frequency but 5 GHz seems to be safe maximum given the available
+> > > > > > + * Arm CPUs in the market which are clocked much less than 5 GHz. On the other
+> > > > > > + * hand, we can't make it much higher as it would lead to a large hard-lockup
+> > > > > > + * detection timeout on parts which are running slower (eg. 1GHz on
+> > > > > > + * Developerbox) and doesn't possess a cpufreq driver.
+> > > > > > + */
+> > > > > > +#define SAFE_MAX_CPU_FREQ	5000000000UL // 5 GHz
+> > > > > > +u64 hw_nmi_get_sample_period(int watchdog_thresh)
+> > > > > > +{
+> > > > > > +	unsigned int cpu = smp_processor_id();
+> > > > > > +	unsigned long max_cpu_freq;
+> > > > > > +
+> > > > > > +	max_cpu_freq = cpufreq_get_hw_max_freq(cpu) * 1000UL;
+> > > > > > +	if (!max_cpu_freq)
+> > > > > > +		max_cpu_freq = SAFE_MAX_CPU_FREQ;
+> > > > > > +
+> > > > > > +	return (u64)max_cpu_freq * watchdog_thresh;
+> > > > > > +}
+> > > > > 
+> > > > > This change is not mentioned in the commit message.
+> > > > > Please, put it into a separate patch.
+> > > > 
+> > > > 
+> > > > Actully, This cames from
+> > > > [1]: http://lore.kernel.org/linux-arm-kernel/1610712101-14929-1-git-send-email-sumit.garg@linaro.org
+> > > > And I didn't touch the commit message from the origin patch.
+> > > > But of course, I could imporve it with proper description if
+> > > > anyone thinks it's not good enough.
+> > > 
+> > > I see.
+> > > 
+> > > > Would you mean put this function hw_nmi_get_sample_period() in patch
+> > > > 6th?
+> > > > In the view of "arm64 uses delayed init with all the functionality it need to set up",
+> > > > IMO, this make sense for me to put into a single patch.
+> > > 
+> > > Or you could split it in two patches and add
+> > > hw_nmi_get_sample_period() in the earlier patch.
+> > > 
+> > > 
+> > > > But if you still think this should put into a separate patch, I'll do it:)
+> > > 
+> > > It is always better to split the changes whenever possible. It makes
+> > > the review easier. And it also helps to find the real culprit of
+> > > a regression using bisection.
+> > 
+> > Okay, I'll split this part into another change, thanks.
+> > 
+> > 
+> > > > > > +int __init watchdog_nmi_probe(void)
+> > > > > > +{
+> > > > > > +	if (!allow_lockup_detector_init_retry)
+> > > > > > +		return -EBUSY;
+> > > > > 
+> > > > > How do you know that you should return -EBUSY
+> > > > > when retry in not enabled?
+> > > > > 
+> > > > > I guess that it is an optimization to make it fast
+> > > > > during the first call. But the logic is far from
+> > > > > obvious.
+> > > > > 
+> > > > 
+> > > > Yes, you can see this as an optimization, because arm64 PMU is not ready
+> > > > during lockup_detector_init(), so the watchdog_nmi_probe() must fail.
+> > > >
+> > > > Thus we only want to do watchdog_nmi_probe() in delayed init,
+> > > > so if not in the state (allow_lockup_detector_init_retry=true), just tell
+> > > > 
+> > > > if it's unclear
+> > > 
+> > > Yes, it is far from obvious.
+> > > 
+> > > > maybe a brief comment can be add like this:
+> > > > 
+> > > > +	/* arm64 is only able to initialize lockup detecor during delayed init */
+> > > > +	if (!allow_lockup_detector_init_retry)
+> > > > +		return -EBUSY;
+> > > 
+> > > No, please, remove this optimization. It just makes problems:
+> > > 
+> > >    + it requires a comment here because the logic is far from obvious.
+> > > 
+> > >    + it is the reason why we need another variable to avoid the race in
+> > >      lockup_detector_check(), see the discussion about the 4th patch.
+> > 
+> > After some days studying, if I remove this if-condition which means the
+> > following hardlockup_detector_perf_init() needs to return -EBUSY.
+> > However, the default return value that if pmu is not ready is -ENOENT.
 > 
-> The firmware-name property is optional and the code falls back to the
-> old filename if the property isn't present.
+> I see.
 > 
-> Base on remoteproc/linux.git, rproc-next (58b7c856519f)
+> > The call path for hardlockup_detector_perf_init() is really complicated,
+> > 
+> > I have some approach about this:
+> >   1. abstract second variable with Kconfig.
+> >     a. Add a ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT
+> >        (the naming is a little bit long, may have better naming)
+> >        in "lib/Kconfig.debug" if ARCH knew they do need delayed init for
+> >        lockup detector.
+> > 
+> >        + select ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT if HAVE_HARDLOCKUP_DETECTOR_PERF
+> > 
+> >     b. and the watchdog_nmi_probe would look like.
+> > 
+> >     +int __init watchdog_nmi_probe(void)
+> >     +{
+> >     +	int ret;
+> >     +
+> >     + /* comment here... */
+> >     +	if (!arm_pmu_irq_is_nmi())
+> >     +		return -ENODEV;
+> >     +
+> >     +	ret = hardlockup_detector_perf_init();
+> >     +	if (ret &&
+> >     +		  IS_ENABLED(ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT))
+> >     +		return -EBUSY;
+> >     +
+> >     + return ret;
+> >     +}
+> > 
+> >     and than we can have only one variable (allow_lockup_detector_init_retry)
+> >     in 4th patch.
+> > 
+> >  
+> >   2. base on ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT, change
+> >      inside hardlockup_detector_perf_init().
+> > 
+> > int __init hardlockup_detector_perf_init(void)
+> > {
+> > 	int ret = hardlockup_detector_event_create();
+> > 
+> > 	if (ret) {
+> > 		pr_info("Perf NMI watchdog permanently disabled\n");
+> > +
+> > +		/* comment here... */
+> > +		if (IS_ENABLED(ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT))
+> > +			ret = -EBUSY;
+> > 	} else {
+> > 		perf_event_release_kernel(this_cpu_read(watchdog_ev));
+> > 		this_cpu_write(watchdog_ev, NULL);
+> > 	}
+> > 	return ret;
+> > }
+> > 
+> >   3. Don't add any other config, try to find a proper location
+> >      to return -EBUSY in hardlockup_detector_event_create().
+> >      IMHO, this may involve the PMU subsys and should be
+> >      the hardest approach.
+> 
+> Honestly, everything looks a bit ugly and complicated to me.
+> 
+> OKAY, is the return value actually important?
+> 
+> What about just introducing the API that will allow to try to
+> initialize the hardlockup detector later:
+> 
+> /*
+>  * Retry hardlockup detector init. It is useful when it requires some
+>  * functionality that has to be initialized later on a particular
+>  * platform.
+>  */
+> void __init retry_lockup_detector_init(void)
+> {
+> 	/* Must be called before late init calls. */
+> 	if (!allow_lockup_detector_init_retry)
+> 		return 0;
+> 
+> 	queue_work_on(__smp_processor_id(), system_wq, &detector_work);
+> }
+> 
+> /*
+>  * Ensure that optional delayed hardlockup init is proceed before
+>  * the init code and memory is freed.
+>  */
+> static int __init lockup_detector_check(void)
+> {
+> 	/* Prevent any later retry. */
+> 	allow_lockup_detector_init_retry = false;
+> 
+> 	/* Make sure no work is pending. */
+> 	flush_work(&detector_work);
+> }
+> late_initcall_sync(lockup_detector_check);
+> 
+> You could leave lockup_detector_init() as it is. It does not really
+> matter what was the exact error value returned by watchdog_nmi_probe().
+> 
+> Then you could call retry_lockup_detector_init() in
+> armv8_pmu_driver_init() and be done with it.
+> 
+> It will be universal API that might be used on any architecture
+> for any reason. If nobody calls retry_lockup_detector_init()
+> then nohing will happen and the code will work as before.
+> 
+> It might make sense to provide the API only on architectures that
+> really need it. We could hide it under
+> 
+>    ARCH_NEED_DELAYED_HARDLOCKUP_DETECTOR_INIT
+> 
+> , similar to ARCH_NEEDS_CPU_IDLE_COUPLE.
+> 
 
-I'm good with this patchset but I'll wait before applying to give Rob the time
-to review it.
+Sorry for late reply.
 
-Thanks,
-Mathieu
+It's really a good idea.
 
-> 
-> changes since v2:$
-> - use rproc_of_parse_firmware instead of of_property_read_string
-> changes since v1:
-> - fix a misspelled word in commit title
-> 
-> Allen-KH Cheng (2):
->   dt-bindings: remoteproc: mediatek: add firmware-name property
->   remoteproc: mediatek: allow reading firmware-name from DT
-> 
->  Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml | 7 +++++++
->  drivers/remoteproc/mtk_scp.c                              | 6 +++++-
->  2 files changed, 12 insertions(+), 1 deletion(-)
-> 
-> -- 
-> 2.18.0
-> 
+Since I have already had lots things to revise in v3, I'm now preparing the V4.
+I'll send it in these few days.
+
+Thanks a lots for your great idea.
+
+
+BRs,
+Lecopzer
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
