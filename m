@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44C0CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 04:01:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68007C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 04:01:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kwGRcydoN3zJshNUIpa2gHpXCAS5qTxU4+1Cj62OSlA=; b=nW/2qqSY/5XDsu
-	KfFJV56n0b7YxN2sHF8l9Zi43Xzx71l/UjlPfBFHEyOK/Oopim5a3ymOtKRZNd4oxLS85Um+AQS+0
-	RsSS1/HzwFssR32r5exUZExozTfklyejkzfHtb5mf8pib0MuwER6k1sLFCDrYMJrMaCT4ThTw+ByO
-	ZBDl7QQSfvSRUsn4AzPh9i7UVxAy7o0AezUelQhcvY9w8JJiWRRDbHaFrmR43+uDCGWKSgAlXlAsE
-	MTQxuHLQtB95QdCZRL/q6nn9eM6et3RSBk2UQqOO6Pz1T2hlAHlwj5mE45umd8Mk56Dix3jBICiCo
-	xVP40Mi6IRFLlf5Zvz/Q==;
+	List-Owner; bh=cmid6jUlMlsh3RGd5lTooqH3d99UIcjuF69mnXDHNl8=; b=H9cS0wI0CLT9zn
+	aIIP5IoZO3+FHMIvjkXlKQ8OOGD9wUxSzGIEUF7iNEZmCwmX5GJa2eHIjZN9d21KHlTfw1cZjdiOY
+	G9DkSrmLA2CbPDXvQRihe3uaIMqSehvPxF6hjarunS8KRJnuhRr66LEreBceu7tN/IW4117VcvI6g
+	RS+P0hPxd/FYt515Xv12XTK89JI5HWy+5EUxEc121zQUFo8Re+jySmk/bDGimN6gTJnXeItp3YWLW
+	t7zyBnbIXZfVKfJK0/Twa3ICBytsCS9lYzBXn0sMgYePm8Fcp3Obh86ClT83xLYUtOPOuQH7EPGRV
+	ohsCloLYN/kcriJuXhIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhO0S-00BNZ2-RB; Thu, 21 Apr 2022 04:01:24 +0000
+	id 1nhO0u-00BNh2-3l; Thu, 21 Apr 2022 04:01:52 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhO0P-00BNXs-RT; Thu, 21 Apr 2022 04:01:23 +0000
-X-UUID: 42dea503d5264b019d00400aa7270b62-20220420
+ id 1nhO0R-00BNXz-4i; Thu, 21 Apr 2022 04:01:24 +0000
+X-UUID: b3ccfa7dbcf24c618e93200e9039d367-20220420
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:b95ecabe-8fc6-4813-a010-bf25c68ccccc, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:6d1c5446-9c5f-4fb3-811c-cea1caa59208, OB:0,
  LO
- B:0,IP:0,URL:8,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-12
-X-CID-META: VersionHash:faefae9, CLOUDID:e22998ef-06b0-4305-bfbf-554bfc9d151a,
+ B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-20
+X-CID-META: VersionHash:faefae9, CLOUDID:51296ef0-da02-41b4-b6df-58f4ccd36682,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 42dea503d5264b019d00400aa7270b62-20220420
+X-UUID: b3ccfa7dbcf24c618e93200e9039d367-20220420
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1796659559; Wed, 20 Apr 2022 21:01:18 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 95859201; Wed, 20 Apr 2022 21:01:18 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 Apr 2022 20:51:24 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 21 Apr 2022 11:51:17 +0800
+ 15.0.1497.2; Wed, 20 Apr 2022 20:51:16 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 21 Apr 2022 11:51:14 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 21 Apr 2022 11:51:17 +0800
+ Frontend Transport; Thu, 21 Apr 2022 11:51:14 +0800
 From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
  Kozlowski" <krzysztof.kozlowski@canonical.com>
 CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Chen-Yu Tsai" <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, Hui
- Liu <hui.liu@mediatek.com>, Irui Wang <irui.wang@mediatek.com>, Allen-KH
- Cheng <allen-kh.cheng@mediatek.com>
-Subject: [PATCH 4/4] dt-bindings: media: mtk-vcodec: Add encoder power domain
- property
-Date: Thu, 21 Apr 2022 11:51:11 +0800
-Message-ID: <20220421035111.7267-5-allen-kh.cheng@mediatek.com>
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, "Hui Liu"
+ <hui.liu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>, Allen-KH Cheng
+ <allen-kh.cheng@mediatek.com>
+Subject: [PATCH 2/4] arm64: dts: mediatek: Get rid of mediatek,
+ larb for MM nodes
+Date: Thu, 21 Apr 2022 11:51:09 +0800
+Message-ID: <20220421035111.7267-3-allen-kh.cheng@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220421035111.7267-1-allen-kh.cheng@mediatek.com>
 References: <20220421035111.7267-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220420_210121_923505_573208BF 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20220420_210123_208053_FDAE1CC4 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,60 +86,205 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Irui Wang <irui.wang@mediatek.com>
+From: Yong Wu <yong.wu@mediatek.com>
 
-Add encoder power domain property
+After adding device_link between the IOMMU consumer and smi,
+the mediatek,larb is unnecessary now.
 
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Reviewed-by: Evan Green <evgreen@chromium.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/media/mediatek,vcodec-encoder.yaml | 7 +++++++
- 1 file changed, 7 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 16 ----------------
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi |  6 ------
+ 2 files changed, 22 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-index e7b65a91c92c..de2df6c6352c 100644
---- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-@@ -41,6 +41,9 @@ properties:
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 848e3f39c8ef..10291b2690ab 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -1010,7 +1010,6 @@
+ 				 <&mmsys CLK_MM_MUTEX_32K>;
+ 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			iommus = <&iommu M4U_PORT_MDP_RDMA0>;
+-			mediatek,larb = <&larb0>;
+ 			mediatek,vpu = <&vpu>;
+ 		};
  
-   assigned-clock-parents: true
+@@ -1021,7 +1020,6 @@
+ 				 <&mmsys CLK_MM_MUTEX_32K>;
+ 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			iommus = <&iommu M4U_PORT_MDP_RDMA1>;
+-			mediatek,larb = <&larb4>;
+ 		};
  
-+  power-domains:
-+    maxItems: 1
-+
-   iommus:
-     minItems: 1
-     maxItems: 32
-@@ -74,6 +77,7 @@ required:
-   - iommus
-   - assigned-clocks
-   - assigned-clock-parents
-+  - power-domains
+ 		mdp_rsz0: rsz@14003000 {
+@@ -1051,7 +1049,6 @@
+ 			clocks = <&mmsys CLK_MM_MDP_WDMA>;
+ 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			iommus = <&iommu M4U_PORT_MDP_WDMA>;
+-			mediatek,larb = <&larb0>;
+ 		};
  
- allOf:
-   - if:
-@@ -135,6 +139,7 @@ examples:
-     #include <dt-bindings/clock/mt8173-clk.h>
-     #include <dt-bindings/memory/mt8173-larb-port.h>
-     #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/power/mt8173-power.h>
+ 		mdp_wrot0: wrot@14007000 {
+@@ -1060,7 +1057,6 @@
+ 			clocks = <&mmsys CLK_MM_MDP_WROT0>;
+ 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			iommus = <&iommu M4U_PORT_MDP_WROT0>;
+-			mediatek,larb = <&larb0>;
+ 		};
  
-     vcodec_enc_avc: vcodec@18002000 {
-       compatible = "mediatek,mt8173-vcodec-enc";
-@@ -156,6 +161,7 @@ examples:
-       clock-names = "venc_sel";
-       assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>;
-       assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL>;
-+      power-domains = <&scpsys MT8173_POWER_DOMAIN_VENC>;
-     };
+ 		mdp_wrot1: wrot@14008000 {
+@@ -1069,7 +1065,6 @@
+ 			clocks = <&mmsys CLK_MM_MDP_WROT1>;
+ 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			iommus = <&iommu M4U_PORT_MDP_WROT1>;
+-			mediatek,larb = <&larb4>;
+ 		};
  
-     vcodec_enc_vp8: vcodec@19002000 {
-@@ -176,4 +182,5 @@ examples:
-       clock-names = "venc_lt_sel";
-       assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
-       assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>;
-+      power-domains = <&scpsys MT8173_POWER_DOMAIN_VENC_LT>;
-     };
+ 		ovl0: ovl@1400c000 {
+@@ -1079,7 +1074,6 @@
+ 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_OVL0>;
+ 			iommus = <&iommu M4U_PORT_DISP_OVL0>;
+-			mediatek,larb = <&larb0>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xc000 0x1000>;
+ 		};
+ 
+@@ -1090,7 +1084,6 @@
+ 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_OVL1>;
+ 			iommus = <&iommu M4U_PORT_DISP_OVL1>;
+-			mediatek,larb = <&larb4>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xd000 0x1000>;
+ 		};
+ 
+@@ -1101,7 +1094,6 @@
+ 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_RDMA0>;
+ 			iommus = <&iommu M4U_PORT_DISP_RDMA0>;
+-			mediatek,larb = <&larb0>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xe000 0x1000>;
+ 		};
+ 
+@@ -1112,7 +1104,6 @@
+ 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_RDMA1>;
+ 			iommus = <&iommu M4U_PORT_DISP_RDMA1>;
+-			mediatek,larb = <&larb4>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xf000 0x1000>;
+ 		};
+ 
+@@ -1123,7 +1114,6 @@
+ 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_RDMA2>;
+ 			iommus = <&iommu M4U_PORT_DISP_RDMA2>;
+-			mediatek,larb = <&larb4>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0 0x1000>;
+ 		};
+ 
+@@ -1134,7 +1124,6 @@
+ 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_WDMA0>;
+ 			iommus = <&iommu M4U_PORT_DISP_WDMA0>;
+-			mediatek,larb = <&larb0>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x1000 0x1000>;
+ 		};
+ 
+@@ -1145,7 +1134,6 @@
+ 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_WDMA1>;
+ 			iommus = <&iommu M4U_PORT_DISP_WDMA1>;
+-			mediatek,larb = <&larb4>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x2000 0x1000>;
+ 		};
+ 
+@@ -1399,7 +1387,6 @@
+ 			      <0 0x16027800 0 0x800>,	/* VDEC_HWB */
+ 			      <0 0x16028400 0 0x400>;	/* VDEC_HWG */
+ 			interrupts = <GIC_SPI 204 IRQ_TYPE_LEVEL_LOW>;
+-			mediatek,larb = <&larb1>;
+ 			iommus = <&iommu M4U_PORT_HW_VDEC_MC_EXT>,
+ 				 <&iommu M4U_PORT_HW_VDEC_PP_EXT>,
+ 				 <&iommu M4U_PORT_HW_VDEC_AVC_MV_EXT>,
+@@ -1467,7 +1454,6 @@
+ 			compatible = "mediatek,mt8173-vcodec-enc";
+ 			reg = <0 0x18002000 0 0x1000>;	/* VENC_SYS */
+ 			interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
+-			mediatek,larb = <&larb3>;
+ 			iommus = <&iommu M4U_PORT_VENC_RCPU>,
+ 				 <&iommu M4U_PORT_VENC_REC>,
+ 				 <&iommu M4U_PORT_VENC_BSDMA>,
+@@ -1495,7 +1481,6 @@
+ 			clock-names = "jpgdec-smi",
+ 				      "jpgdec";
+ 			power-domains = <&spm MT8173_POWER_DOMAIN_VENC>;
+-			mediatek,larb = <&larb3>;
+ 			iommus = <&iommu M4U_PORT_JPGDEC_WDMA>,
+ 				 <&iommu M4U_PORT_JPGDEC_BSDMA>;
+ 		};
+@@ -1529,7 +1514,6 @@
+ 				 <&iommu M4U_PORT_VENC_CUR_CHROMA_SET2>,
+ 				 <&iommu M4U_PORT_VENC_REF_LUMA_SET2>,
+ 				 <&iommu M4U_PORT_VENC_REC_CHROMA_SET2>;
+-			mediatek,larb = <&larb5>;
+ 			mediatek,vpu = <&vpu>;
+ 			clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
+ 			clock-names = "venc_lt_sel";
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index d1448a0b86cb..be9728526ed3 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1396,7 +1396,6 @@
+ 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+ 			clocks = <&mmsys CLK_MM_DISP_OVL0>;
+ 			iommus = <&iommu M4U_PORT_DISP_OVL0>;
+-			mediatek,larb = <&larb0>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x8000 0x1000>;
+ 		};
+ 
+@@ -1407,7 +1406,6 @@
+ 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+ 			clocks = <&mmsys CLK_MM_DISP_OVL0_2L>;
+ 			iommus = <&iommu M4U_PORT_DISP_2L_OVL0_LARB0>;
+-			mediatek,larb = <&larb0>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x9000 0x1000>;
+ 		};
+ 
+@@ -1418,7 +1416,6 @@
+ 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+ 			clocks = <&mmsys CLK_MM_DISP_OVL1_2L>;
+ 			iommus = <&iommu M4U_PORT_DISP_2L_OVL1_LARB0>;
+-			mediatek,larb = <&larb0>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xa000 0x1000>;
+ 		};
+ 
+@@ -1429,7 +1426,6 @@
+ 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+ 			clocks = <&mmsys CLK_MM_DISP_RDMA0>;
+ 			iommus = <&iommu M4U_PORT_DISP_RDMA0>;
+-			mediatek,larb = <&larb0>;
+ 			mediatek,rdma-fifo-size = <5120>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xb000 0x1000>;
+ 		};
+@@ -1441,7 +1437,6 @@
+ 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+ 			clocks = <&mmsys CLK_MM_DISP_RDMA1>;
+ 			iommus = <&iommu M4U_PORT_DISP_RDMA1>;
+-			mediatek,larb = <&larb0>;
+ 			mediatek,rdma-fifo-size = <2048>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xc000 0x1000>;
+ 		};
+@@ -1598,7 +1593,6 @@
+ 			compatible = "mediatek,mt8183-jpgenc", "mediatek,mtk-jpgenc";
+ 			reg = <0 0x17030000 0 0x1000>;
+ 			interrupts = <GIC_SPI 249 IRQ_TYPE_LEVEL_LOW>;
+-			mediatek,larb = <&larb4>;
+ 			iommus = <&iommu M4U_PORT_JPGENC_RDMA>,
+ 				 <&iommu M4U_PORT_JPGENC_BSDMA>;
+ 			power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
 -- 
 2.18.0
 
