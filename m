@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13AA1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 01:55:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82F25C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 01:57:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=paiCC0s8xGD2SaGZyTWUL1h2EEzFfu3W6GdUzwaIdpc=; b=vDjpcsj0BL3Atg
-	sgdwrezhEm+KQnTFcCMEK1tP03K35fER5kMI0JJuPvKJynHpBNaG2FxYx99UYY+91mtwT9ZYalImh
-	WwIrN83ot0OKWKeXMMr6piXAffpjIh4veXC6VJJl+lAL4kJ0WzjeaOq/Jj1qqhf4kG6ao/1f81RbV
-	mTSnW8QG7Tl09bBMzfeG3C2HQSGjv5rYXkgpyfN5fuWTWmr0LQ/+cDWSNxD03lg4ZccSMof6yVX+n
-	1leRFLk/Jtmp97NgeXxjGycOY2Sp5+TOZFbf2UphfrRKZApR2nhRJAV5G6ftpo6POZobFj92BrCla
-	bAyNTUASG3h2cIgOFsXw==;
+	List-Owner; bh=DdIqZb/fWN1wFUxt2zyTVKasVXid9eB6j8wlZEXAADQ=; b=waPq7cKYD83V7P
+	J7Ta9aa3oqcyD4DV+uwobC/YcoNKE8Aj/XF3ucUO9pQnJnMoQZRU4HRvEae2E05UhhabF1pLUdfPS
+	Ar71gtCihKKyb/wi2rqPyhXinL1HAhwLuB6c+lRs1FwrNpT+rlIu1Vsx/HMCi/5FXrxgZQuqMZtGe
+	o13hrTUXmRi8Bni5htY+utKiQ1JSOgQeJHONG9kMqh/JFSFGpPJpFX8hjQxY4d4ZLjBue0YMBhyrY
+	aAAepKFstO/MtThhoRDFUMMvT4F3nE2BQW0sFYF3ELlZIaPgxGMd5vp81NQoABVf4mhHT+FDNq8nH
+	sr91uUjzoXcGIkro7RZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhM2z-00B4I1-23; Thu, 21 Apr 2022 01:55:53 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nhM4Y-00B4oq-5I; Thu, 21 Apr 2022 01:57:30 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhM2o-00B4Go-81; Thu, 21 Apr 2022 01:55:43 +0000
-X-UUID: 36fef0e7ec5c477daa87a07afe85a71d-20220420
+ id 1nhM45-00B4cS-Po; Thu, 21 Apr 2022 01:57:03 +0000
+X-UUID: f66903f1e19d4f8faa83919de89eb1c1-20220420
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:986bf547-998e-45d0-b134-b91635a9d544, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:8ddd0f38-6931-456d-be9f-935d4b3225d1, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:e55c69f0-da02-41b4-b6df-58f4ccd36682,
+X-CID-META: VersionHash:faefae9, CLOUDID:396a69f0-da02-41b4-b6df-58f4ccd36682,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 36fef0e7ec5c477daa87a07afe85a71d-20220420
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+X-UUID: f66903f1e19d4f8faa83919de89eb1c1-20220420
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1383324888; Wed, 20 Apr 2022 18:55:38 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 Apr 2022 18:55:36 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 21 Apr 2022 09:55:29 +0800
+ with ESMTP id 2056680196; Wed, 20 Apr 2022 18:56:57 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 20 Apr 2022 18:56:55 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 Apr 2022 09:56:53 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 21 Apr 2022 09:55:29 +0800
-Message-ID: <7d1306d11fe59f223fd35565f3bc016123573d03.camel@mediatek.com>
-Subject: Re: [PATCH v17 06/21] soc: mediatek: add cmdq support of mtk-mmsys
- config API for mt8195 vdosys1
+ Transport; Thu, 21 Apr 2022 09:56:53 +0800
+Message-ID: <b50942c0589282cc2004c26e10ffbd06cfd002b9.camel@mediatek.com>
+Subject: Re: [PATCH v17 07/21] soc: mediatek: mmsys: modify reset controller
+ for MT8195 vdosys1
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
 To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
@@ -73,16 +73,17 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
  srv_heupstream <srv_heupstream@mediatek.com>,
  Project_Global_Chrome_Upstream_Group
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 21 Apr 2022 09:55:29 +0800
-In-Reply-To: <20220416020749.29010-7-nancy.lin@mediatek.com>
+Date: Thu, 21 Apr 2022 09:56:53 +0800
+In-Reply-To: <20220416020749.29010-8-nancy.lin@mediatek.com>
 References: <20220416020749.29010-1-nancy.lin@mediatek.com>
- <20220416020749.29010-7-nancy.lin@mediatek.com>
+ <20220416020749.29010-8-nancy.lin@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220420_185542_316629_70E10AEF 
-X-CRM114-Status: GOOD (  14.61  )
+X-CRM114-CacheID: sfid-20220420_185701_913833_9B3EC802 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,19 +101,9 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On Sat, 2022-04-16 at 10:07 +0800, Nancy.Lin wrote:
-> Add cmdq support for mtk-mmsys config API.
-> The mmsys config register settings need to take effect with the other
-> HW settings(like OVL_ADAPTOR...) at the same vblanking time.
-> 
-> If we use CPU to write the mmsys reg, we can't guarantee all the
-> settings can be written in the same vblanking time.
-> Cmdq is used for this purpose. We prepare all the related HW settings
-> in one cmdq packet. The first command in the packet is "wait stream
-> done",
-> and then following with all the HW settings. After the cmdq packet is
-> flush to GCE HW. The GCE waits for the "stream done event" to coming
-> and then starts flushing all the HW settings. This can guarantee all
-> the settings flush in the same vblanking.
+> MT8195 vdosys1 has more than 32 reset bits and a different reset base
+> than other chips. Modify mmsys for support 64 bit and different reset
+> base.
 > 
 > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
 > Reviewed-by: AngeloGioacchino Del Regno <
