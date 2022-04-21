@@ -4,64 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 549CDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 13:48:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADE36C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 14:03:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hh7PZJk+lHwWlxsESYvZUA6h+C3NMyIKJdtCw2KF3K4=; b=OmN41VCerueQmAGEBqAmVqbF9T
-	PI50ZOzYJZIrHKJuByjfN3QpyVxvXEDa9WjW5Il3K0vZpaSfD/aYdoUXiwVX0X1ZPsd6mhSPjuH7u
-	OtrNi4ZM9KX1E5f3noxsZTYNaSmmzUijWquUNS1Cg5LAujO7yzhdZoDewhabgVGNS1Dh+RFnQd8Po
-	/4PP0DUFi2xJMQ4h62blOl67+ny/ONo4LAT2xWghe24S8U0doU3lj+u9T8t9Ue6YlRDuCHDQUR7Wr
-	PcauxQGvIayVGCOPsfU+M3EeOwhYi4ugviOblNEFa+cT2mnfkvEu2U4d0rxWF8n2Va6Jqt2fGS2vx
-	QbCsc0Gw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Ai+MHncI/1zT622utE/atIoPBlKJM8a2ASbN1kpPla4=; b=EtuNKKHmmEUABI
+	qozVpNB/oxlpwxm2BcSbekVu27A1bDJPuMf0jMbRcbdUD4wesEah3f3gmUEM4ygml/G4+aTQzORoA
+	haXyANPZGomynQdDQgcJ9tg3me4oVWCLNbq+r2Qm3LVDgg2UhqfwPxVuknwFmKGMssX+Xuab39GPC
+	kZ8xA4UVXTekC2NoXcA91V3J3FrOTfx/PSGmsaxQDUbzG2KTNjkc383FYpPjVQqxo3ifhNc1bL7ox
+	FP6Z7u5UWZ/RDSlRiueEVsqMaBYns6ke++5i73ndc5J/XANb5IZnDgdtcWdSA2OMAPD/fJ4J8yjcF
+	jedGizRgvoerlXVmLq0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhXAj-00Dbx5-Vb; Thu, 21 Apr 2022 13:48:37 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nhXOu-00DfML-EJ; Thu, 21 Apr 2022 14:03:16 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhXAh-00DbtJ-5o
- for linux-mediatek@lists.infradead.org; Thu, 21 Apr 2022 13:48:37 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1nhXAT-0005v7-9y; Thu, 21 Apr 2022 15:48:21 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
- by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1nhXAS-004N86-2u; Thu, 21 Apr 2022 15:48:18 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1nhXAP-004hN3-N3; Thu, 21 Apr 2022 15:48:17 +0200
-Date: Thu, 21 Apr 2022 15:48:08 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: xinlei.lee@mediatek.com, thierry.reding@gmail.com, lee.jones@linaro.org,
- robh+dt@kernel.org, matthias.bgg@gmail.com,
- linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+ id 1nhXOq-00DfL4-To
+ for linux-mediatek@lists.infradead.org; Thu, 21 Apr 2022 14:03:15 +0000
+Received: by mail-wr1-x436.google.com with SMTP id e2so568767wrh.7
+ for <linux-mediatek@lists.infradead.org>; Thu, 21 Apr 2022 07:03:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=wQKtX8WQCvG5ejnoi5Tx3qqomca9PHBF2mLes/stX7M=;
+ b=AgEJXmMrcJiYHb/zC+7om2oCRjpYUw8xNsSKSQV9uECuRMPTThufzJ1NJY+df/hfKK
+ XV9IBzJaoUikKzxvhHEXHe7kK+RqS6k4BEZ6Vyq3uQySxeXxYfJO9sgcVe5o2Xx6G4tt
+ vFjNsdML7fETc24SqP/5MXFeTEpuRO5k+/4dC65zh312CKWKi2DgDWFQxeruHy4fmuOG
+ jmhD9RwDHKfa4qmANxzECjdjQeC2h1IavNVWNTyDvuKztgwbmIfc9OMRPfFYV82O+9Ma
+ wUyY6IxNyvlJtIxV1WW3gW9lseMJcOwoLKSuuBDd2FfImpLXdYUjm1o9Uw+kFrwC2ms4
+ 1m1Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=wQKtX8WQCvG5ejnoi5Tx3qqomca9PHBF2mLes/stX7M=;
+ b=Y1+2xko1+8pt97IfqCXe+4PtUSpJ+rdIBbdlgPnJYLfSnFGLC71MtVo+4rUAXVe7CZ
+ 9ShUnMmZCPa4hJ+/M0dpjr02jngFS8Ztaidgw1c9qwM1acuetPT4sfslV6+2H/uxpcHU
+ lK2ZSs3JnV2T3ytXVU89L1LK2OG+wYDJzOr5tnTv46+Guhb+iboXRj3DWmGUu3L/zffN
+ SLkupd+bqRaMEyqAKAtR3XYVm6wmvl65DzKq7VKgWYNyDcUOh4INXGMH+IMjfQPraQJG
+ RSVxibJy3miGYfGASr5fVpHC/UJzSTPuDAt7aPZDZqfo1zB1/NExUmxpiHSHknPQPTgP
+ dAmA==
+X-Gm-Message-State: AOAM533xmz/AAmqr939lr6kbBbv48VTcswjaginyz7GH+ZcjyY8FC7xN
+ N5J9SvXJacbbiby33W//Jsk8mQ==
+X-Google-Smtp-Source: ABdhPJwNBbP3ZT3FPSvScQRH2EbIoBe4I+WYo8GwVldT54PatPc9ePoTluWLxh6Mkgyejmraj+GshA==
+X-Received: by 2002:a5d:53cb:0:b0:207:ab75:3ce7 with SMTP id
+ a11-20020a5d53cb000000b00207ab753ce7mr20360816wrw.171.1650549788683; 
+ Thu, 21 Apr 2022 07:03:08 -0700 (PDT)
+Received: from groot.home ([2a01:cb19:85e6:1900:e19f:c42c:d783:89c1])
+ by smtp.gmail.com with ESMTPSA id
+ g5-20020adfd1e5000000b0020a97e7ba9fsm2899192wrd.92.2022.04.21.07.03.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 21 Apr 2022 07:03:08 -0700 (PDT)
+From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Fengping Yu <fengping.yu@mediatek.com>
+Cc: Kevin Hilman <khilman@baylibre.com>, linux-input@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, rex-bc.chen@mediatek.com,
- jitao.shi@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v6, 5/5] dt-bindings: pwm: Add interrupts property for
- MediaTek MT8192
-Message-ID: <20220421134808.sqnecvysuzlgdsz5@pengutronix.de>
-References: <1650284456-16407-1-git-send-email-xinlei.lee@mediatek.com>
- <1650284456-16407-6-git-send-email-xinlei.lee@mediatek.com>
- <a92d3b46-ace4-2d19-fef9-c59cd1a596ce@collabora.com>
+ Mattijs Korpershoek <mkorpershoek@baylibre.com>
+Subject: [PATCH] dt-bindings: input: mediatek, mt6779-keypad: update maintainer
+Date: Thu, 21 Apr 2022 16:02:55 +0200
+Message-Id: <20220421140255.2781505-1-mkorpershoek@baylibre.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-In-Reply-To: <a92d3b46-ace4-2d19-fef9-c59cd1a596ce@collabora.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_064835_241304_350CEE09 
-X-CRM114-Status: GOOD (  15.54  )
+X-CRM114-CacheID: sfid-20220421_070312_987479_098C182F 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,77 +89,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8258677146173521948=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Fengping has no longer interest and time to maintain this driver so he
+agreed to transfer maintainership over to me.
 
---===============8258677146173521948==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="g74nijuruvmiaccu"
-Content-Disposition: inline
+Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+---
+ .../devicetree/bindings/input/mediatek,mt6779-keypad.yaml       | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml b/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
+index b1770640f94b..03ebd2665d07 100644
+--- a/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
++++ b/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
+@@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
+ title: Mediatek's Keypad Controller device tree bindings
+ 
+ maintainers:
+-  - Fengping Yu <fengping.yu@mediatek.com>
++  - Mattijs Korpershoek <mkorpershoek@baylibre.com>
+ 
+ allOf:
+   - $ref: "/schemas/input/matrix-keymap.yaml#"
+-- 
+2.32.0
 
---g74nijuruvmiaccu
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hello,
-
-On Thu, Apr 21, 2022 at 12:17:00PM +0200, AngeloGioacchino Del Regno wrote:
-> Il 18/04/22 14:20, xinlei.lee@mediatek.com ha scritto:
-> > From: Xinlei Lee <xinlei.lee@mediatek.com>
-> >=20
-> > Add interrupts property of pwm for MediaTek MT8192 SoC.
-> >=20
-> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
->=20
-> Hello Xinlei,
-> the pwm-mtk-disp.c driver does not support interrupts.
->=20
-> Please add interrupts support to the driver first, and only then
-> add that in the dt-bindings.
-
-in my understanding the linux driver state and the binding documentation
-are somewhat independent. Here I'd say adding the irq information to dt
-without the driver supporting it is fine.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---g74nijuruvmiaccu
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmJhYJUACgkQwfwUeK3K
-7AmXqgf+MrAe0PFC2xF5YzOIK5R/MGmmmV3pJNlax2M2UkDsWxeavnkcBOQcilzv
-ln6uRHHRETr5tUiBEZBTPVgX8/suEhfhw+/EPtUSH/LUK9cMEAxsSjZItwZCjzUi
-+4SKV+24sivp5jfmsbyrZCKsGDNjDynXf3DBVcJbB4MLWl42NDVTIqqxA0hQe7Of
-pfwrYWjTX0MM3ZHBN3vA7reDg/d+qvoDwxn6dHT0oRvXmhyH7xhQ5N2KxkhGPBpP
-MJv4P3O37I6QygsplJHpJaoDv7zAYSJXx4wk9w1vp9vj3fZxVB9TsP9m9ILZx30U
-9PmDnaULNIt8tZukhdV4M8VDymcQJA==
-=vy1d
------END PGP SIGNATURE-----
-
---g74nijuruvmiaccu--
-
-
---===============8258677146173521948==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8258677146173521948==--
-
