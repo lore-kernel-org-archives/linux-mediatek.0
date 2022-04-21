@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0758DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 06:51:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4846EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 06:53:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cmEOHQeOZK/npXE+Evlegf5GI6+Q8+0iOgrZe5ZNElY=; b=iD259wtnNV/wfO
-	EETHm6Hkx16tlprGEjKpOGvrIU8Ptfw/ETm23CcTdcO20KMBnbAxHO94vAa8R1GLeUPZXoksgGDIa
-	iVYQ98gomqbX/3KQoPd//ViRHbbeNzngWEj/+jKGXEElOSInkV0MhPcGrjQ4Nqkax10BLr7hFS7zL
-	FVoTwAPQ0Ry7WCrKAfBP9l7Mp5Yo4HXx1KwnwxyI9LFTa1SavCH8qrX9bMuTtavlRqmKHQtcUTC0o
-	GuBK39dFKtsxW3ytS8yJoVqrJMW5ozfnMYgKsayLpJFCciewd4wXHgusEdMUd2q6P3fD0nPqU0kO/
-	GKTXyJbeO74GtJJVUlHg==;
+	List-Owner; bh=rOz9xWDvI4HukbbiCmNM9bvVNm/I6/SP5dFnVgUETg0=; b=nqmSS2tpZNImAh
+	Y6wO42uaBOgQyXSbIbIYnl+Om/qQANSV2qLC9XNf2sVBsVj3z/0D5OvvXo05R3JO16k9tnfp11wBW
+	UzLLSKSO+Uusb+oVwruLQfxztQpHf9qAzJGp4FNBRPHaK0/uAM52LV8a9PIntqOjrPyl0Qd5P1Rt7
+	ZPg/TkZ2rPM2+mH2eQdI24Z/0UeZx+dxZT9TOBH0b2SDwoU/iWKXLrvtXxI4lPVdWnwfuz6QUWwO2
+	VW6QDTk2CywVcb1fHZauxRRw25KEWzdIB++iLPbJ2NGZTxOJcOSxg8prVnRgt272SJTrKG5WEtg2H
+	yjXkLUcngFxZ2D+YIrrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhQf4-00Bru7-IG; Thu, 21 Apr 2022 06:51:30 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nhQhA-00BsoK-SS; Thu, 21 Apr 2022 06:53:40 +0000
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhQel-00Brmg-Ux; Thu, 21 Apr 2022 06:51:13 +0000
-X-UUID: 28f7527c1a814a7b949c8165ba0121de-20220420
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:eccf9c25-6c60-48be-9d18-aa0aedab9068, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:c25473f0-da02-41b4-b6df-58f4ccd36682,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 28f7527c1a814a7b949c8165ba0121de-20220420
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 390796042; Wed, 20 Apr 2022 23:51:08 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 Apr 2022 23:51:01 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 21 Apr 2022 14:50:53 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 21 Apr 2022 14:50:53 +0800
-Message-ID: <82cc5e6900138e13ed9d75c6d2a42c6d7afc1959.camel@mediatek.com>
-Subject: Re: [PATCH v20 2/8] soc: mediatek: add mtk-mutex support for mt8195
- vdosys0
-From: CK Hu <ck.hu@mediatek.com>
-To: jason-jh.lin <jason-jh.lin@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: Nancy Lin <nancy.lin@mediatek.com>, Singo Chang
- <singo.chang@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 21 Apr 2022 14:50:53 +0800
-In-Reply-To: <20220419094143.9561-3-jason-jh.lin@mediatek.com>
-References: <20220419094143.9561-1-jason-jh.lin@mediatek.com>
- <20220419094143.9561-3-jason-jh.lin@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nhQgx-00Bsi0-6y
+ for linux-mediatek@lists.infradead.org; Thu, 21 Apr 2022 06:53:28 +0000
+Received: by mail-yw1-x1132.google.com with SMTP id
+ 00721157ae682-2f18982c255so42276407b3.1
+ for <linux-mediatek@lists.infradead.org>; Wed, 20 Apr 2022 23:53:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=BxxyCE6218CsP33ncCT/QjJmGyzhJs4lIXEcCs7Cp7E=;
+ b=NtyTmm73BO2ZpdykD4mRz6MZYwBQaD//bYiwl1WzFNjs/yuG3viWAA5tnQ3+Np0V7l
+ 9WJLbq1ASUtwB+n3y06WniFE8c5Q/NVHtWLHM/GRWczXMTFwtr1ZtGUPLoVIShUqOy4R
+ wjEB14EJIEVodi7+Q2nUKIr/n1UDFi2JG+ekw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=BxxyCE6218CsP33ncCT/QjJmGyzhJs4lIXEcCs7Cp7E=;
+ b=Tmycpg94Dw+046ZFXEH858/zqFJrsZNgaYXzFLPaNydilwEearRr7vHWazKgoRtgP1
+ 9zvuONyhCbT0bovvBYq0OY8KC9XoPOtNekU7GhS1LLFMDE2YxIE3m0Zlu6Vs3drqHLf7
+ yjZnsoG2yTxRRThnDt36KkhdaYztAFin2JynQHvckqlj8lJ40u69W3XW+X0AURuN7H/F
+ g7Ww+h7Q6G+geRT/iNooXI8Fi7C0HdOi1OipPXHPIeew0lMFgCFOwqJM0hw91l6dMv13
+ lGJEQgF+3ACPcduOdh9ZQB94hBaA5risD5XLpsKrlItF6YpEv8XyfTKCDkXZetr2+ra6
+ pEEQ==
+X-Gm-Message-State: AOAM5330s1N07StNUWBq9m3rT0D4zo8c46d9ZZU8vJs8T8p+J6s29cm9
+ +CEteip9+/V/3mdwJ6MssLVbrcMYmC92ur0IquPVUg==
+X-Google-Smtp-Source: ABdhPJzVfB7TYnUrWb3CObQ/ODXX6LZUZjYXGH+wB1eh9ocMpbmW/G3DUs7pecxGAlW308Nn1wwuqQuNoV0zmu7lPZc=
+X-Received: by 2002:a0d:eb46:0:b0:2ef:4946:544 with SMTP id
+ u67-20020a0deb46000000b002ef49460544mr24654407ywe.286.1650524004092; Wed, 20
+ Apr 2022 23:53:24 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220420130527.23200-1-rex-bc.chen@mediatek.com>
+ <20220420130527.23200-12-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220420130527.23200-12-rex-bc.chen@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 21 Apr 2022 14:53:13 +0800
+Message-ID: <CAGXv+5HMe7LaXiMJofW4ZT0Ku70mNAt2A=98YzZbx-frF7kQGQ@mail.gmail.com>
+Subject: Re: [PATCH V2 11/12] clk: mediatek: reset: Add infra_ao reset support
+ for MT8192
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
+ p.zabel@pengutronix.de, angelogioacchino.delregno@collabora.com, 
+ chun-jie.chen@mediatek.com, runyang.chen@mediatek.com, 
+ linux-kernel@vger.kernel.org, allen-kh.cheng@mediatek.com, 
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220420_235112_037248_727CC29C 
-X-CRM114-Status: GOOD (  14.44  )
+X-CRM114-CacheID: sfid-20220420_235327_286621_AFAE751B 
+X-CRM114-Status: GOOD (  22.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,49 +87,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Jason:
-
-On Tue, 2022-04-19 at 17:41 +0800, jason-jh.lin wrote:
-> Add mtk-mutex support for mt8195 vdosys0.
-> 
-> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> Acked-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> Tested-by: Fei Shao <fshao@chromium.org>
+On Wed, Apr 20, 2022 at 9:05 PM Rex-BC Chen <rex-bc.chen@mediatek.com> wrote:
+>
+> The infra_ao reset is needed for MT8192. Therefore, we add this patch
+> to support it.
+>
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 > ---
->  drivers/soc/mediatek/mtk-mutex.c | 87
-> ++++++++++++++++++++++++++++++--
->  1 file changed, 84 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-mutex.c
-> b/drivers/soc/mediatek/mtk-mutex.c
-> index aaf8fc1abb43..729ee88035ed 100644
-> --- a/drivers/soc/mediatek/mtk-mutex.c
-> +++ b/drivers/soc/mediatek/mtk-mutex.c
-> @@ -17,6 +17,9 @@
->  #define MT8183_MUTEX0_MOD0			0x30
->  #define MT8183_MUTEX0_SOF0			0x2c
->  
-> +#define MT8195_DISP_MUTEX0_MOD0			0x30
-> +#define MT8195_DISP_MUTEX0_SOF			0x2c
+>  drivers/clk/mediatek/clk-mt8192.c         | 11 +++++++++++
+>  include/dt-bindings/reset/mt8192-resets.h | 11 +++++++++++
+>  2 files changed, 22 insertions(+)
+>
+> diff --git a/drivers/clk/mediatek/clk-mt8192.c b/drivers/clk/mediatek/clk-mt8192.c
+> index ab27cd66b866..7926b83b9035 100644
+> --- a/drivers/clk/mediatek/clk-mt8192.c
+> +++ b/drivers/clk/mediatek/clk-mt8192.c
+> @@ -1114,6 +1114,13 @@ static const struct mtk_gate top_clks[] = {
+>         GATE_TOP(CLK_TOP_SSUSB_PHY_REF, "ssusb_phy_ref", "clk26m", 25),
+>  };
+>
+> +static const struct mtk_clk_rst_desc clk_rst_desc = {
+> +       .version = MTK_RST_SET_CLR,
+> +       .reg_num = 4,
+> +       .reg_ofs = 0x0,
+> +       .reset_n_cells = 2,
 
-This is identical to mt8183, so use mt8183 one instead of creating new
-one.
+If you want to do this, you need to update the bindings first.
 
-Regards,
-CK
-
-> 
->  
-> +static const struct mtk_mutex_data mt8195_mutex_driver_data = {
-> +	.mutex_mod = mt8195_mutex_mod,
-> +	.mutex_sof = mt8195_mutex_sof,
-> +	.mutex_mod_reg = MT8195_DISP_MUTEX0_MOD0,
-> +	.mutex_sof_reg = MT8195_DISP_MUTEX0_SOF,
 > +};
 > +
->  
+>  #define MT8192_PLL_FMAX                (3800UL * MHZ)
+>  #define MT8192_PLL_FMIN                (1500UL * MHZ)
+>  #define MT8192_INTEGER_BITS    8
+> @@ -1239,6 +1246,10 @@ static int clk_mt8192_infra_probe(struct platform_device *pdev)
+>         if (r)
+>                 goto free_clk_data;
+>
+> +       r = mtk_clk_register_rst_ctrl_with_dev(&pdev->dev, &clk_rst_desc);
+> +       if (r)
+> +               goto free_clk_data;
+> +
+>         r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+>         if (r)
+>                 goto free_clk_data;
+> diff --git a/include/dt-bindings/reset/mt8192-resets.h b/include/dt-bindings/reset/mt8192-resets.h
+> index be9a7ca245b9..feac1ac85906 100644
+> --- a/include/dt-bindings/reset/mt8192-resets.h
+> +++ b/include/dt-bindings/reset/mt8192-resets.h
+> @@ -7,6 +7,7 @@
+>  #ifndef _DT_BINDINGS_RESET_CONTROLLER_MT8192
+>  #define _DT_BINDINGS_RESET_CONTROLLER_MT8192
+>
+> +/* TOPRGU */
+>  #define MT8192_TOPRGU_MM_SW_RST                                        1
+>  #define MT8192_TOPRGU_MFG_SW_RST                               2
+>  #define MT8192_TOPRGU_VENC_SW_RST                              3
+> @@ -27,4 +28,14 @@
+>
+>  #define MT8192_TOPRGU_SW_RST_NUM                               23
+>
+> +/* INFRA RST0 */
+> +#define MT8192_INFRA_RST0_LVTS_AP_RST                          0
+> +/* INFRA RST2 */
+> +#define MT8192_INFRA_RST2_PCIE_PHY_RST                         15
+> +/* INFRA RST3 */
+> +#define MT8192_INFRA_RST3_PTP_RST                              5
+> +/* INFRA RST4 */
+> +#define MT8192_INFRA_RST4_LVTS_MCU                             12
+> +#define MT8192_INFRA_RST4_PCIE_TOP                             1
+> +
 
+This change should be part of the binding change.
+
+For these, please also add a patch for the actual device tree changes.
+
+
+ChenYu
+
+>  #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8192 */
+> --
+> 2.18.0
+>
 
 _______________________________________________
 Linux-mediatek mailing list
