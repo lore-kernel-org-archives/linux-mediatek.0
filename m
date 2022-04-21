@@ -4,52 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB479C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 17:39:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7D61C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 19:42:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SWANT87NwtljX4mpWHQe9oFTWeUM/+2Oh/KJEvsYct4=; b=SuyNo2Q4boFxlQ
-	MxXWZ5IhE0btYh01tZXgC0VQ3srR3SKwD/8I+bw6wV9xPzlh0eTP2C03uIuOI71iTdyNzzR7tD0ip
-	PtewC6ff1woqT9T0T7RWVxmyxELpNUtjKC3OoMNUOerqkq7UBJhcerCgGPVzKpuauNheLofJmVNz2
-	xMjpQbe1NghBYfjaFB5aIIYjy+wR68PuNSSUT7tt1wwS1mvAyiznrGjBNS3hJoMr8obWky1IDKJij
-	SmIEAwrLzUndRLRambBTORY4m394YFDpAMvH3cd5r8Od1u4s7I5w2HiznTOYNFVYziCnFaWanoCAM
-	fxFW6CMJW+xbiCBuykUQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yjXf1O6Fv3XpIqEbE4wm6jYxjIPv9/4vcVjqWbX17Lc=; b=Hu9hT63vXSIdKM
+	mdBv29Bs8McCZnTT1c91Sz47QZpr5UsVy0hNM7WCHG7bpPhXJLQ4ALWjjnmfFgHEz/pmChzsUbC9G
+	Zz/6LnADwjvlGzET4C5WYsNrdFAIM81P70fTHNysQnR3xRpwbVPhaY0dUySQ8UJS5SZjfo3Xt9sBM
+	1kobK4vO4uKf33fYGITSjgQuGrzcHMWOSn8hs/WuV/L8rGf2Q/HOJ2ZNuCLO0jBlRqaKtkfZYNNJ+
+	8HXKwfGM6Ho/N6dz8NHehM5hmj4tA5TPcZYZlswc3WhcSpDmjK5BI0fs89g7dlHC1lF4ORoUpVR8z
+	fSxDESzDyE7BH8G20Yvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhamK-00EUwl-Tr; Thu, 21 Apr 2022 17:39:40 +0000
-Received: from p3plsmtpa07-10.prod.phx3.secureserver.net ([173.201.192.239])
+	id 1nhcgk-00EpFu-TU; Thu, 21 Apr 2022 19:42:02 +0000
+Received: from mail-pl1-f179.google.com ([209.85.214.179])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhamI-00EUve-5T
- for linux-mediatek@lists.infradead.org; Thu, 21 Apr 2022 17:39:39 +0000
-Received: from localhost.localdomain ([209.234.248.132])
- by :SMTPAUTH: with ESMTPSA
- id ham9nkETPic8fhamAnljNp; Thu, 21 Apr 2022 10:39:32 -0700
-X-CMAE-Analysis: v=2.4 cv=Q+QXX66a c=1 sm=1 tr=0 ts=626196d4
- a=QYjdx1n8fnJJ/8JFsBbjTg==:117 a=QYjdx1n8fnJJ/8JFsBbjTg==:17 a=NEAV23lmAAAA:8
- a=_twTT5zqAAAA:8 a=6R0Kyn_f9nWU-igJ6UUA:9 a=ILoXdGDbYT3DTB7Z0gVI:22
-X-SECURESERVER-ACCT: dhu@hodcarrier.org
-From: Du Huanpeng <dhu@hodcarrier.org>
-To: linux-mips@vger.kernel.org
-Cc: tsbogend@alpha.franken.de, devicetree@vger.kernel.org,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, Du Huanpeng <dhu@hodcarrier.org>
-Subject: [PATCH] mips: dts: ralink: mt7620a: rename nodes to generic names
-Date: Fri, 22 Apr 2022 01:39:28 +0800
-Message-Id: <20220421173928.61467-1-dhu@hodcarrier.org>
-X-Mailer: git-send-email 2.25.1
+ id 1nhcgg-00EpDr-PQ
+ for linux-mediatek@lists.infradead.org; Thu, 21 Apr 2022 19:42:00 +0000
+Received: by mail-pl1-f179.google.com with SMTP id q3so6026968plg.3
+ for <linux-mediatek@lists.infradead.org>; Thu, 21 Apr 2022 12:41:54 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
+ :message-id:mime-version;
+ bh=ICt5XunHqsELIdqZvSPeKFkS3NdL0ipmf4jJkro4jDI=;
+ b=FBA0brvn4xV/uvtxFp6nqNrEGiXkm0aj93i4uJsOaHB21GYVbkYsfS4xDX/bQQrM7M
+ d8j7pYZsUjAqJqA47FsFvsimqJHyIM3yxcF4pbisQCOA4qE2Yid41daIE4b4xRvqsfrz
+ YKPemggYS4eeP4LbuxXJLxw6fcbfR3P/12jBK2zEjWqJF2i4vMcpi5UHnRPSjQzu+jE3
+ 1BLXKo+EjwnKA14mUdS56NtxZ6PXXaBmP2mrrh962vRJCXv/E/fn9cbSXAoNEOzzJudj
+ pREzFSumLfaGFIlMYyN1o8KS32R3pIamO4r/nD2rRKtGtsp13UzNSr8+sZrfDYDG5yKN
+ HEXw==
+X-Gm-Message-State: AOAM5333gWs78ChKxUn12UmJ6/HJSn0BKaEm631oBfr2lPZORT3lF9FS
+ F/mYnFSaFwoaMpt6xeO0qye39w==
+X-Google-Smtp-Source: ABdhPJxpOKBLlWVUs2NzoRXMdBxSn5hTiUFvJaFcN6Sw89Ynkamt2rs5a60P62l9RvRwU+EuGV/FjQ==
+X-Received: by 2002:a17:902:b596:b0:158:f23a:c789 with SMTP id
+ a22-20020a170902b59600b00158f23ac789mr927819pls.57.1650570113700; 
+ Thu, 21 Apr 2022 12:41:53 -0700 (PDT)
+Received: from localhost (c-71-197-186-152.hsd1.wa.comcast.net.
+ [71.197.186.152]) by smtp.gmail.com with ESMTPSA id
+ v14-20020a17090a6b0e00b001d2bff34228sm3703433pjj.9.2022.04.21.12.41.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 21 Apr 2022 12:41:53 -0700 (PDT)
+From: Kevin Hilman <khilman@kernel.org>
+To: Roger Lu <roger.lu@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Enric Balletbo Serra <eballetbo@gmail.com>, Rob
+ Herring <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>,
+ Stephen Boyd <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Fan Chen <fan.chen@mediatek.com>, HenryC Chen
+ <HenryC.Chen@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
+ Charles Yang <Charles.Yang@mediatek.com>, Angus Lin
+ <Angus.Lin@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Nishanth
+ Menon <nm@ti.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, Guenter Roeck
+ <linux@roeck-us.net>, Jia-wei Chang <jia-wei.chang@mediatek.com>
+Subject: Re: [PATCH v24 0/7] soc: mediatek: SVS: introduce MTK SVS
+In-Reply-To: <3d463c8b099fdb1c9a0df9e615a8ca1d8a034120.camel@mediatek.com>
+References: <20220420102044.10832-1-roger.lu@mediatek.com>
+ <7hczhbe3wn.fsf@baylibre.com>
+ <3d463c8b099fdb1c9a0df9e615a8ca1d8a034120.camel@mediatek.com>
+Date: Thu, 21 Apr 2022 12:41:52 -0700
+Message-ID: <7hsfq6ql4v.fsf@baylibre.com>
 MIME-Version: 1.0
-X-CMAE-Envelope: MS4xfNdzv5jfK0g153WJIHj7b/tW+my450a5GCAClM5BMyMirAAl9evuviFEomChLrbZ9pQ2US6SzFvOAdYtcZgEoKG46y8McajnjV6wPAA6XLFGkdD1YL6+
- MnEhfsrJyuHnw4AEl83jDHTL2vCcpQmgMj41NsKQjMm7vZ2cP0w6DupGwbbmIdXizbdz2U9hjswjU/ABszjKrf6CXsyMTORkQeSroVu3Q8CWNYj6n0ZlLea/
- qDsTHyoon65jUfuAH4Gxke073BgwMGgYjaz5PIdIXjpH50LjRFDlFsCBuyL3aSzELsTrrBt7nz4/OQjLaxeawvb4H8BS9mWg125lO2ecwMz7IKXWEMRaQ/hV
- vlonII2bpS70THRM3Hw7Mty4YUaEdrwSEkovpe59KIMvKsaO0ktVPhjWkeVOGLFqgE1KHRpLQByWCTUYie2JXDo6Cffm4g==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_103938_259217_B27BA605 
-X-CRM114-Status: UNSURE (   7.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220421_124158_849906_6B98367F 
+X-CRM114-Status: GOOD (  19.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,67 +90,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The name of a node should be somewhat generic, reflecting the function
-of the device and not its precise programming model.
+Hi Roger,
 
-- interrupt-controller
-- syscon
-- memory-controller
-- serial
+Roger Lu <roger.lu@mediatek.com> writes:
 
-devicetree-specification-v0.3.pdf
-link: https://github.com/devicetree-org/devicetree-specification/releases/tag/v0.3
+> On Wed, 2022-04-20 at 16:22 -0700, Kevin Hilman wrote:
 
-Signed-off-by: Du Huanpeng <dhu@hodcarrier.org>
----
- arch/mips/boot/dts/ralink/mt7620a.dtsi | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+[...]
 
-diff --git a/arch/mips/boot/dts/ralink/mt7620a.dtsi b/arch/mips/boot/dts/ralink/mt7620a.dtsi
-index 1f6e5320f486..b9cbde603778 100644
---- a/arch/mips/boot/dts/ralink/mt7620a.dtsi
-+++ b/arch/mips/boot/dts/ralink/mt7620a.dtsi
-@@ -10,7 +10,7 @@ cpu@0 {
- 		};
- 	};
- 
--	cpuintc: cpuintc {
-+	cpuintc: interrupt-controller {
- 		#address-cells = <0>;
- 		#interrupt-cells = <1>;
- 		interrupt-controller;
-@@ -25,12 +25,12 @@ palmbus@10000000 {
- 		#address-cells = <1>;
- 		#size-cells = <1>;
- 
--		sysc@0 {
-+		syscon@0 {
- 			compatible = "ralink,mt7620a-sysc";
- 			reg = <0x0 0x100>;
- 		};
- 
--		intc: intc@200 {
-+		intc: interrupt-controller@200 {
- 			compatible = "ralink,mt7620a-intc", "ralink,rt2880-intc";
- 			reg = <0x200 0x100>;
- 
-@@ -41,12 +41,12 @@ intc: intc@200 {
- 			interrupts = <2>;
- 		};
- 
--		memc@300 {
-+		memory-controller@300 {
- 			compatible = "ralink,mt7620a-memc", "ralink,rt3050-memc";
- 			reg = <0x300 0x100>;
- 		};
- 
--		uartlite@c00 {
-+		uartlite: serial@c00 {
- 			compatible = "ralink,mt7620a-uart", "ralink,rt2880-uart", "ns16550a";
- 			reg = <0xc00 0x100>;
- 
--- 
-2.25.1
+>> That being said, it would be really nice to see an integration tree
+>> where this was all tested on mainline (e.g. v5.17, or v5.18-rc)
+>> 
+>> For example, I can apply this to v5.18-rc2 and boot on my mt8183-pumpkin
+>> board, it fails to probe[1] because there is no CCI node in the upstream
+>> mt8183.dtsi.
+>> 
+>> I'm assuming this series is also not very useful without the CPUfreq
+>> series from Rex, so being able to test this, CCI and CPUfreq together on
+>> MT8183 on a mainline kernel would be very helpful.
+>> 
+>> Kevin
+>> 
+>> [1]
+>> [    0.573332] mtk-svs 1100b000.svs: cannot find cci node
+>> [    0.574061] mtk-svs 1100b000.svs: error -ENODEV: svs platform probe fail
+>
+> Just share. I've tested this series on below two platforms and it works as
+> expected.
+> - mt8183-Krane (kernel-v5.10)
+> - mt8192-Hayato (kernel-v5.4)
+
+Unfortunately testing on v5.4 and v5.10 with lots of other additional
+out-of-tree patches does not give much confidence that this series works
+with upstream, especially when I've given a few reasons why it will not
+work uptream.
+
+The examples I gave above for CCI and CPUs/cluster disable are good
+examples, but another one I forgot to mention is the dependency on Mali.
+The SVS driver will never probe because it also depens on a "mali" node,
+which doesn't exist upstream either (but panfrost does, and acutually
+loads/probes fine on v5.17/v5.18) so this should be fixed to work with
+upstream panfrost.
+
+IMO, in order for this to be merged upstream, it should at least have
+some basic validation with upstream, and so far I have not even been
+able to make it successfuly probe.  To do that, you will need to either
+provide a list of the dependencies for testing this with mainline
+(e.g. CCI series, CPUfreq series, any DT changes), or even better, an
+integration tree based on recent mainline (e.g. v5.17 stable, or
+v5.18-rc) which shows all the patches (in addition to this series) used
+to validate this on mainline.
+
+Thanks,
+
+Kevin
+
+
 
 
 _______________________________________________
