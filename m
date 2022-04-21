@@ -4,76 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32A0AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 00:07:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F688C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 01:45:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=scHY1IdedNQfLOQ+ot2Wb8BbAFrESjALZc8nsFzLAx0=; b=Xh6aVck6LxjTM/
-	IZftldrU6adp660TeAoiAAgOM8CHNuSCl14HuM3fVULRawEj6TF97Huoha8xUkUzCjDPoSSv8glpi
-	2hEYyjVInHF+nB8l93XZHqfb2lk2+6tHb4GMHxrSHgsZwz91NfnPmGjIWH9/uGJaw6U9h2r2Fi7NM
-	U/AO3Yn28vuYR/eT2icFaAeObDt39TwZ4C9Y49lEZZzb8JUWitsHadH/O9sY0In8sFNoNAqlROZo8
-	S53jaS502J8rugvj4OLZlgj9vq9Gz+jOWAanJ3jkQ/mvyim76V8rLdEaVcol1NOod1EtN9puzw6kb
-	mHsn7yjwhTiNCbiyR1hQ==;
+	List-Owner; bh=PSZF8+/5ybgud5lldjZ46IqHfCX4w1fRkXk3dDlWif0=; b=nkFvbQcYQK7/3z
+	7MT2kN7d9ZYLEgVfB/uPCzO9v6epoODOxFoUbayapq8B3ULRU7R627MXnQdKOAvu6YCg/S0r180ua
+	q2mArQYZ/Y6T6c09p/dtryytlXxzwL5m53fH8BkCb1WQjh7IFwKAUtDycvSrQmhqw4dQy5Mh73OOf
+	s36mGEmGXoxaW6K6YoL7QT3Lk1/dQtfXcJzse5sAJzLjaXoyGgZD7yeUXcmqbUWLHTR0tYcWZ/gWp
+	yz3U0RM70lAfExOHILw56AP4EaeSbXZNaCbcCxkwCKE7gvXAOlt7aWBc9JK9oPoIPmapyrtuJEkgb
+	wFLoRH+FqTf0i64Kz7Cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhKLQ-00AwIA-Hw; Thu, 21 Apr 2022 00:06:48 +0000
-Received: from mail-pg1-f172.google.com ([209.85.215.172])
+	id 1nhLsY-00B3dz-HE; Thu, 21 Apr 2022 01:45:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhKLE-00AwEv-R0
- for linux-mediatek@lists.infradead.org; Thu, 21 Apr 2022 00:06:38 +0000
-Received: by mail-pg1-f172.google.com with SMTP id t4so3211327pgc.1
- for <linux-mediatek@lists.infradead.org>; Wed, 20 Apr 2022 17:06:35 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
- :message-id:mime-version;
- bh=IfHap1dlOBr5gDAC0VqPSKp2nHM5B6kQ59uiY70TBVI=;
- b=13Wz+EZK+tgqv4O4+VmoOSNOYN9c4dvCCIKuFRWchiWbNtnfOAvBcElyAv61hsYJQf
- usO/QPGSVKVv8gkDghmzqZ5ysTAE5jWURLmbEkKQcLWsOtIJvqaPfCBTaY4RIOHvcroE
- 4jl1CQNzOOfDk5hNQkLwPGwViOy+9WnI4eflOQ4erGVNAC+NuK1nyOItkZyKvWIuBAAu
- ieqXT8/lAK9Pi9Vx1loepb+0S2bw4Jo24dfvjAmgIi+PHeX9uT7re62JsK4ltiniJiOc
- 8lxn03aOusAcTvNQmZvfPKhlv8GIAJbW4ShoVLhFCCR4v82dxYlyGGx0/SxPOgk2ouXW
- usLg==
-X-Gm-Message-State: AOAM53106B5kj3oGhJDrMCGhufbnFEgs60F/4yWtJuRgOU7d4r0muw9C
- AStBgaYvoD3xOSiZfCED8R/fYw==
-X-Google-Smtp-Source: ABdhPJyBccHfNaH1A30eRpDRBC9j4Q7GiILCDsil3xPBkNRkvmISVOA5FX0e7H26MH7xr/3847BX1w==
-X-Received: by 2002:a05:6a00:1ac8:b0:4fa:917f:c1aa with SMTP id
- f8-20020a056a001ac800b004fa917fc1aamr26016985pfv.2.1650499594990; 
- Wed, 20 Apr 2022 17:06:34 -0700 (PDT)
-Received: from localhost (c-71-197-186-152.hsd1.wa.comcast.net.
- [71.197.186.152]) by smtp.gmail.com with ESMTPSA id
- u10-20020a62d44a000000b0050ad4053840sm639105pfl.149.2022.04.20.17.06.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Apr 2022 17:06:33 -0700 (PDT)
-From: Kevin Hilman <khilman@kernel.org>
-To: Roger Lu <roger.lu@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Enric Balletbo Serra <eballetbo@gmail.com>, Rob
- Herring <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>,
- Stephen Boyd <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Fan Chen <fan.chen@mediatek.com>, HenryC Chen
- <HenryC.Chen@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
- Charles Yang <Charles.Yang@mediatek.com>, Angus Lin
- <Angus.Lin@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Nishanth
- Menon <nm@ti.com>, Roger Lu <roger.lu@mediatek.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, Guenter Roeck
- <linux@roeck-us.net>, Jia-wei Chang <jia-wei.chang@mediatek.com>
-Subject: Re: [PATCH v24 3/7] soc: mediatek: SVS: introduce MTK SVS engine
-In-Reply-To: <20220420102044.10832-4-roger.lu@mediatek.com>
-References: <20220420102044.10832-1-roger.lu@mediatek.com>
- <20220420102044.10832-4-roger.lu@mediatek.com>
-Date: Wed, 20 Apr 2022 17:06:33 -0700
-Message-ID: <7h5yn3s3jq.fsf@baylibre.com>
+ id 1nhLsV-00B3cc-61
+ for linux-mediatek@lists.infradead.org; Thu, 21 Apr 2022 01:45:05 +0000
+X-UUID: a5e61fffabc94ea1ae5846ac71be2a61-20220420
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=uXsNepzluNDlrW8X7k2UcWAYlpHoER1mD0h6SOjSvsM=; 
+ b=A9rgjtBPWJMGTkFLfZ6AI6tYyOtgAbVKkD9K37bEVXbgL3Jfta+W0v3mVWO89QY5P5pzirCPFK825iSXMDX3id2Rda0rNKUaDWfnY8h05X4PswQebJnGrfAa04tP2yaPRtzq4qwPBWjk/5KFnelY2A//+fwfOPsRJ+Jg/y5Mh3I=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:2c2d0fb9-bdb1-4557-ba54-a56556879953, OB:0,
+ LO
+ B:0,IP:0,URL:8,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-12
+X-CID-META: VersionHash:faefae9, CLOUDID:b4ed68f0-da02-41b4-b6df-58f4ccd36682,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: a5e61fffabc94ea1ae5846ac71be2a61-20220420
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <bo.jiao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 474402052; Wed, 20 Apr 2022 18:44:56 -0700
+Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 20 Apr 2022 18:44:55 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS34N1.mediatek.inc
+ (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 21 Apr 2022 09:44:53 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Thu, 21 Apr 2022 09:44:52 +0800
+Message-ID: <5b0f28fa67b27151a59ea42d9f60e29919f36f36.camel@mediatek.com>
+Subject: Re: [PATCH] mt76: mt7915: disable RX_HDR_TRANS_SHORT
+From: bo.jiao <bo.jiao@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
+ <ryder.lee@mediatek.com>, Sujuan Chen <sujuan.chen@mediatek.com>, "lian .
+ chen" <lian.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>
+Date: Thu, 21 Apr 2022 09:44:52 +0800
+In-Reply-To: <46f14357-d02b-cad3-9fa8-7e1962305251@nbd.name>
+References: <20220420071144.14573-1-bo.jiao@mediatek.com>
+ <46f14357-d02b-cad3-9fa8-7e1962305251@nbd.name>
+X-Mailer: Evolution 3.28.1-2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220420_170636_916691_B8D3291F 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20220420_184503_278323_060DC4F7 
+X-CRM114-Status: GOOD (  21.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,35 +88,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Roger,
+hi felix:
+
+mt7915_mac_fill_rx:
+	......
+
+	if (!status->wcid || !ieee80211_is_data_qos(fc))
+		return 0;
+
+	status->aggr = unicast &&
+		       !ieee80211_is_qos_nullfunc(fc);
+	status->qos_ctl = qos_ctl;
+	status->seqno = IEEE80211_SEQ_TO_SN(seq_ctrl);
+
+	return 0;
+
+it will be returned by the condition !ieee80211_is_data_qos(fc) when
+receive non-Qos (null) data, and the status->aggr/status-
+>qos_ctl/status->seqno keep the default value 0.
+
+mt76_rx_aggr_reorder:
+	....
+
+	sta = wcid_to_sta(wcid);
+	if (!sta)
+		return;
+
+	if (!status->aggr && !(status->flag & RX_FLAG_8023)) {
+		mt76_rx_aggr_check_ctl(skb, frames);
+		return;
+	}
+
+	....
+
+those packet will be forced to do rx reorder and may incorrectly update
+tid->head.
+https://patchwork.kernel.org/project/linux-wireless/patch/2022042010503
+8.36443-1-nbd@nbd.name/
+Your replacement patch did not include this change.
++	if (!status->aggr)
++		return;
++
+
+Thanks.
 
 
-Roger Lu <roger.lu@mediatek.com> writes:
-
-> The Smart Voltage Scaling(SVS) engine is a piece of hardware
-> which calculates suitable SVS bank voltages to OPP voltage table.
-> Then, DVFS driver could apply those SVS bank voltages to PMIC/Buck
-> when receiving OPP_EVENT_ADJUST_VOLTAGE.
->
-> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Can SVS work with one or the other clusters disabled?  It seems like it
-should still be able to work.  However, if you disable the 2nd cluster
-(e.g. by passing `maxcpus=4` on the kernel command-line, the SVS driver
-will fail to probe.
-
-I dont' think it's a blocker for merging this series, but making the
-probe a bit more robust so it can handle the cluster being disabled
-would be nice additional fix for later.
-
-For example, upstream kernel on mt8183-pumpkin board is very unstable
-with the 2nd cluster enabled (I'm still trying to debug why), but I have
-to boot with `maxcpus=4` on the cmdline, otherwise kernel fails to boot,
-so that's how I noticed this probe failure with SVS.
-
-Kevin
-
+On Wed, 2022-04-20 at 13:25 +0200, Felix Fietkau wrote:
+> On 20.04.22 09:11, Bo Jiao wrote:
+> > From: Bo Jiao <Bo.Jiao@mediatek.com>
+> > 
+> > This patch disables RX_TRANS_SHORT to make MDP to do header
+> > translation
+> > when payload less than 8 bytes, hence the (QoS) null data can be
+> > encapsulated
+> > to 802.3 format. However, WDS requires (QoS) null data in 802.11
+> > format
+> > to created vlan AP interfaces.
+> > 
+> > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> > Signed-off-by: lian.chen <lian.chen@mediatek.com>
+> > Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+> > Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+> > ---
+> >   drivers/net/wireless/mediatek/mt76/agg-rx.c      | 3 +++
+> >   drivers/net/wireless/mediatek/mt76/mt7915/init.c | 3 +++
+> >   drivers/net/wireless/mediatek/mt76/mt7915/mac.c  | 4 ----
+> >   drivers/net/wireless/mediatek/mt76/mt7915/regs.h | 3 +++
+> >   4 files changed, 9 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/drivers/net/wireless/mediatek/mt76/agg-rx.c
+> > b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+> > index 7262222..efd1a85 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/agg-rx.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+> > @@ -167,6 +167,9 @@ void mt76_rx_aggr_reorder(struct sk_buff *skb,
+> > struct sk_buff_head *frames)
+> >   		return;
+> >   	}
+> >   
+> > +	if (!status->aggr)
+> > +		return;
+> > +
+> >   	/* not part of a BA session */
+> >   	ackp = status->qos_ctl &
+> > IEEE80211_QOS_CTL_ACK_POLICY_MASK;
+> >   	if (ackp != IEEE80211_QOS_CTL_ACK_POLICY_BLOCKACK &&
+> 
+> This is an unrelated change, for which I've just sent a replacement 
+> patch. The rest is applied.
+> 
+> Thanks,
+> 
+> - Felix
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
