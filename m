@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B19F5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 09:34:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1345C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 09:41:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AeMV7Ii3RqzFchlGpVLTGN5n/EUSclDRSbmy2NP1bjg=; b=onH8XD9rVl51q9
-	DXF3/SQvuymt96wKMd2YHxAobWfJZYL2aSSS6k7XWSRS33OM76LVQlGsCtYUUSghE8mgHqJ4WuZEJ
-	up+MS3YzPkEQZINp527sk+w/ijnX8rLdO7O0exZckkw2fKPVj3PvDpvsGpA77GAfyfgtJBVJHUlpn
-	KCvB6XykWTLPRkJZ6qS5IdbKjyGd9N1Yj0s3zywecyYhwbSo4Geef9ykKpdCDqEOoEmDpqVZKB/cb
-	T2OWlE3fVJxXvoFzSuHjeoJBUuNEmsrXV95FsF3LsYX91ugW0RmwVz/6EwgvOnTwN0iKgwjzymI1x
-	f2Z0bHdktQUBn+EboM0w==;
+	List-Owner; bh=pvtedaBJBaAgdyF6drzQ2akWVcZNU982d5EVCAt/WMc=; b=Vxwhd6LP5Up+yj
+	om76ykmmurLO5ITIUDy8hbvBeMdP2TDOcJTvoThriZevWOjQwnjRzBjH6spq9NN3GmUxiPrIaaStS
+	8fmGtBPA+HEbAm58Kg42OsWgKsNFLRRYz8OsXFQW1vlE/p9k32SY29+nm+0xiTkZ/RIQv9yuSW8dm
+	yLAaqHTIAQmiOUxO4T5n4T1iyH0wtuUvW3UyWR4vib5jOcRadnSaeRgVPdadn/wviaGP4CA0d06B3
+	7Hz8dzh26TYo2ih1USqw6Zl3omg/dFdmX3ggDKLK67zTy6MLzOvYv3nEDZMBMEC3R06DxMuUkhxJq
+	2sNEY8M0mkUi5u6l85Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhTCG-00CmBy-Gv; Thu, 21 Apr 2022 09:33:56 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nhTJl-00CpCt-8g; Thu, 21 Apr 2022 09:41:41 +0000
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhTC5-00Cm8o-Co; Thu, 21 Apr 2022 09:33:47 +0000
-X-UUID: 298252e5cf43498ea045cf4491ebcb0c-20220421
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:85874407-4591-4e37-8a2f-34f24a84bfff, OB:0,
- LO
- B:0,IP:0,URL:8,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:8
-X-CID-META: VersionHash:faefae9, CLOUDID:acb679f0-da02-41b4-b6df-58f4ccd36682,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 298252e5cf43498ea045cf4491ebcb0c-20220421
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <roger.lu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1692807866; Thu, 21 Apr 2022 02:33:40 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 21 Apr 2022 02:28:37 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 21 Apr 2022 17:28:35 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 21 Apr 2022 17:28:35 +0800
-Message-ID: <3d463c8b099fdb1c9a0df9e615a8ca1d8a034120.camel@mediatek.com>
-Subject: Re: [PATCH v24 0/7] soc: mediatek: SVS: introduce MTK SVS
-From: Roger Lu <roger.lu@mediatek.com>
-To: Kevin Hilman <khilman@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Enric Balletbo Serra <eballetbo@gmail.com>, "Rob
- Herring" <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen
- Boyd <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
-CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
- Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>, Charles Yang
- <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, Mark Rutland
- <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-pm@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guenter Roeck
- <linux@roeck-us.net>, Jia-wei Chang <jia-wei.chang@mediatek.com>
-Date: Thu, 21 Apr 2022 17:28:35 +0800
-In-Reply-To: <7hczhbe3wn.fsf@baylibre.com>
-References: <20220420102044.10832-1-roger.lu@mediatek.com>
- <7hczhbe3wn.fsf@baylibre.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nhTJi-00CpAc-6S
+ for linux-mediatek@lists.infradead.org; Thu, 21 Apr 2022 09:41:39 +0000
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-2ef4a241cc5so46079367b3.2
+ for <linux-mediatek@lists.infradead.org>; Thu, 21 Apr 2022 02:41:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=lNExmSjlaYtm/wBO2/VQ+pMd8GmkEdKrkvYHc/Wjj4Y=;
+ b=ZTayUALaY5kyKRozk55vRKsPIf4+z2700Gqa/7hhKzCqFAWs3UsbO9Aba/9NjKXURW
+ dr3iE3+e9nAyrim9V8f/ldsLFTs67iMkt6NC8BE7tBKetLn4/tuAXUqOta8pd/cYtAxV
+ /91cpH4ZeL1nxvLtiyqPnxx8okn/XAq289jp4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=lNExmSjlaYtm/wBO2/VQ+pMd8GmkEdKrkvYHc/Wjj4Y=;
+ b=0X41z0b1sim/C9UuYypAFITXLo+DMcYqmZ5GJzIUMj36FuyYHxCweejqMSSXcSJVhg
+ j+y8zDq0oK2WF2Z1vYDz0XlS4rkTpe/KMnNahsPni0TCRmi5P/qB0WsgeFAIx2KQt7sb
+ FqtyPXncwXofpjV34Qw3iFWLVjbow1UoBhu9VLEkAA+OYDSwbjMq5XRpoX5ZuXTll70w
+ hTJ5jYgjQmhdvbC30RIr0BG7dbd7lYbSJP72bUAM+gIVwY3HpstIfiOv2hkrfdMCCCsA
+ GBaviwD4IBAtlGA9pFy8VGUEVmn87tRpaTMJl3LmtcJR48ymvH4xOWd2gxh9z5+LD0rJ
+ c4qA==
+X-Gm-Message-State: AOAM530YHpjXlWjsoGMlczTxJXv2WiuSX0NVSFbLD1N7+DJcflNS2RT/
+ cSLrGYeXDWgbz3Y5upg82eZZ3/ydRhKW131LwFkSuA==
+X-Google-Smtp-Source: ABdhPJxEzCRntzAGeWIxrjGr/qnshzvCXz8EgyFfSbtLFpl+eCBT8hZWVlr/oyyY0OyXpG2DMrqCNnDkpGPQu5St42o=
+X-Received: by 2002:a0d:eb46:0:b0:2ef:4946:544 with SMTP id
+ u67-20020a0deb46000000b002ef49460544mr25077698ywe.286.1650534097187; Thu, 21
+ Apr 2022 02:41:37 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220420130527.23200-1-rex-bc.chen@mediatek.com>
+ <20220420130527.23200-6-rex-bc.chen@mediatek.com>
+ <90ad46a5-8b67-e9ca-25df-2a7cc6110bff@collabora.com>
+ <CAGXv+5FL=YdjonwBWV9ZkRf3jstCsxCEonmH02g2+1PAopObYg@mail.gmail.com>
+In-Reply-To: <CAGXv+5FL=YdjonwBWV9ZkRf3jstCsxCEonmH02g2+1PAopObYg@mail.gmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 21 Apr 2022 17:41:26 +0800
+Message-ID: <CAGXv+5E_1iAhBe3Avjrb4DWpanKYOMJHkopTqk9t2V34OYhx9Q@mail.gmail.com>
+Subject: Re: [PATCH V2 05/12] clk: mediatek: reset: Add reset.h
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mturquette@baylibre.com, 
+ sboyd@kernel.org, matthias.bgg@gmail.com, p.zabel@pengutronix.de, 
+ chun-jie.chen@mediatek.com, runyang.chen@mediatek.com, 
+ linux-kernel@vger.kernel.org, allen-kh.cheng@mediatek.com, 
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_023345_474310_9698A709 
-X-CRM114-Status: GOOD (  23.85  )
+X-CRM114-CacheID: sfid-20220421_024138_273123_C3999BD7 
+X-CRM114-Status: GOOD (  19.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,75 +89,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Kevin,
+On Thu, Apr 21, 2022 at 5:14 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
+>
+> On Thu, Apr 21, 2022 at 5:07 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+> >
+> > Il 20/04/22 15:05, Rex-BC Chen ha scritto:
+> > > Add a new file "reset.h" to place some definitions for clock reset.
+> > >
+> > > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> >
+> > Right now, you're adding the enum mtk_reset_version and *then* you're
+> > moving it to the new reset.h header, but does that really make sense?
+> >
+> > I think that this series would be cleaner if you add this header from
+> > the start, so that you place the aforementioned enumeration directly
+> > in here...
+> >
+> > ...so we would have a commit that moves the mtk_clk_register_rst_ctrl()
+> > function from clk-mtk.h to a newly created reset.h, mentioning in the
+> > commit description that it's all about preparing for a coming cleanup,
+> > then the addition of enum mtk_reset_version would be in
+> > `clk: mediatek: reset: Merge and revise reset register function` directly
+> > into reset.h.
+>
+> And probably name it mtk-reset.h ? 'reset.h' is a bit too generic, and
+> I'm sure there are multiple files with the same name throughout the
+> kernel source tree.
 
-On Wed, 2022-04-20 at 16:22 -0700, Kevin Hilman wrote:
-> Hi Roger,
-> 
-> 
-> Roger Lu <roger.lu@mediatek.com> writes:
-> 
-> > The Smart Voltage Scaling(SVS) engine is a piece of hardware
-> > which calculates suitable SVS bank voltages to OPP voltage table.
-> > Then, DVFS driver could apply those SVS bank voltages to PMIC/Buck
-> > when receiving OPP_EVENT_ADJUST_VOLTAGE.
-> > 
-> > 1. SVS driver uses OPP adjust event in [1] to update OPP table voltage part.
-> > 2. SVS driver gets thermal/GPU device by node [2][3] and CPU device by
-> > get_cpu_device().
-> > After retrieving subsys device, SVS driver calls device_link_add() to make
-> > sure probe/suspend callback priority.
-> > 
-> > [1] 
-> > https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp*linux-next&id=25cb20a212a1f989385dfe23230817e69c62bee5__;Lw!!CTRNKA9wMg0ARbw!3gWsdVuiyF0iafrmVINP9FVz7fjGB1UqTPLfMNWEhsl96RDPB-Se6Q-g3F8daK-u$
-> >  
-> > [2] 
-> > https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp*linux-next&id=b325ce39785b1408040d90365a6ab1aa36e94f87__;Lw!!CTRNKA9wMg0ARbw!3gWsdVuiyF0iafrmVINP9FVz7fjGB1UqTPLfMNWEhsl96RDPB-Se6Q-g3Lel3h4j$
-> >  
-> > [3] 
-> > https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.16-next*dts64&id=a8168cebf1bca1b5269e8a7eb2626fb76814d6e2__;Lw!!CTRNKA9wMg0ARbw!3gWsdVuiyF0iafrmVINP9FVz7fjGB1UqTPLfMNWEhsl96RDPB-Se6Q-g3KhMdm00$
-> >  
-> > 
-> > Change since v23:
-> > - Change wording from "Mediatek" to "MediaTek" (uppercase T) in mtk-
-> > svs.yaml.
-> > - Use cpuidle_pause_and_lock() to prevent system from entering cpuidle
-> > instead of applying pm_qos APIs.
-> > - Add kfree() at the end of svs_probe() when encountering probe fail.
-> > - Change MODULE_LICENSE from "GPL v2" to "GPL".
-> > - Add nvmem_cell_put() in error handling when nvmem_cell_read() encounters
-> > fail.
-> 
-> I also gave you a reviewed-by on v23, but here it is again:
-> 
-> Reviewed-by: Kevin Hilman <khilman@baylibre.com>
-> 
-> 
-> That being said, it would be really nice to see an integration tree
-> where this was all tested on mainline (e.g. v5.17, or v5.18-rc)
-> 
-> For example, I can apply this to v5.18-rc2 and boot on my mt8183-pumpkin
-> board, it fails to probe[1] because there is no CCI node in the upstream
-> mt8183.dtsi.
-> 
-> I'm assuming this series is also not very useful without the CPUfreq
-> series from Rex, so being able to test this, CCI and CPUfreq together on
-> MT8183 on a mainline kernel would be very helpful.
-> 
-> Kevin
-> 
-> [1]
-> [    0.573332] mtk-svs 1100b000.svs: cannot find cci node
-> [    0.574061] mtk-svs 1100b000.svs: error -ENODEV: svs platform probe fail
+On second thought, please ignore my comment.
 
-Just share. I've tested this series on below two platforms and it works as
-expected.
-- mt8183-Krane (kernel-v5.10)
-- mt8192-Hayato (kernel-v5.4)
-
-Sincerely,
-Roger Lu.
-
+ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
