@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DE23C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 14:42:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0B5DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 14:44:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=UhXYE3i60wWRnypMYNgL/6n75yvEwqRg5TVHwGOJYo0=; b=yn97VYe5QwR12M
-	VAcLgUueUB9WRDF6aqevlc6UMAm9s9WwBlpr8lPDEvEMlE+etJh2xQs+J5kuokc/aBSL7gnaL93BP
-	gzlOAqZlfoHyhK7KhxJmqTVeNAOB49Oh+CoaDsx9dV8D6rJnN0hhPgs87aRxxrYVSgSlAUK30hYcw
-	K8zITO0OHK+2IfoDNcwrPGGo0Xqv37IaP7eKlMAAnqxfQI2jdob/GMxz3lIMYLFbF6GKheDfV+2sN
-	LEhg6F+lcgc2ysgujUJzE9/wpvMwIxBNVN6vXsFsseF3Io3mZKd4yakgY75VfZE4LMI2uhkQZHf+w
-	tl+it7ZG3a/cpbjlsQSg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=AF8OyvKTXctxWWIqYYNRSaWnHO/9QX1VRe0tn2At+2A=; b=poqLBkMc3Q7tuV
+	twuaiFmI99YKnauzDKyn8cN/Ptmz6I9H0ScgHSXBgEGKuZfo77IM7/WYtZGBIgGJ7C3PJVreTS6I6
+	VaGTxeqzdVFDpMebp1+XYMcc2m29K8N8FCrC3JxA8teK/vPnkUzcSXVchexlq0o78IIBTmjBJsk+k
+	PkIrbUX4rw8h+QcNiFbMnDi+sEp4gVdNVkHSCmzSNZuEXWpz2CfBtUSmRCiCZs7B4f5WKzQf8BNJy
+	yW0xSYYYoPvI5wfXbP81fes8+fYw8vREdx/EdpO7EsaoIc4f14BUXSKpoWUdAh1mvFrp/Gasu1Iqi
+	Vz/RllcWD70Iq3yOV8uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhY0e-00Dpyo-8B; Thu, 21 Apr 2022 14:42:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nhY2h-00DqY4-QQ; Thu, 21 Apr 2022 14:44:23 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhY0Z-00Dpx4-Uc
- for linux-mediatek@lists.infradead.org; Thu, 21 Apr 2022 14:42:14 +0000
-X-UUID: 2dd6a0467f8d45c0976541079aa9b278-20220421
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:36cfef56-7a55-4e2c-9763-dca4b5945f8f, OB:0,
- LO
- B:0,IP:0,URL:8,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:8
-X-CID-META: VersionHash:faefae9, CLOUDID:82f8a9ef-06b0-4305-bfbf-554bfc9d151a,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:1,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 2dd6a0467f8d45c0976541079aa9b278-20220421
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <peter.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 206017466; Thu, 21 Apr 2022 07:42:05 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 21 Apr 2022 07:42:03 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 21 Apr 2022 22:42:02 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 21 Apr 2022 22:42:02 +0800
-From: <peter.wang@mediatek.com>
-To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
- <martin.petersen@oracle.com>, <avri.altman@wdc.com>,
- <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
- <alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
- <chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
- <powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
- <mikebi@micron.com>, <beanhuo@micron.com>
-Subject: [PATCH v1] scsi: ufs: fix rpm racing issue
-Date: Thu, 21 Apr 2022 22:41:52 +0800
-Message-ID: <20220421144152.23888-1-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1nhY2S-00DqOi-DK; Thu, 21 Apr 2022 14:44:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1650552224; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=nbdQctQ3NMB6Azygoollyi98j1+gOoW3m7kP8+kIzEJgV2tGoTDPbmS2Ivz8y7qFshxDSrpxgwFk5dgcGmgaee53NjiA8a9qEve8uyAWFYAp0dVaVaYM4xhHBpoyJCz95OKSxBM9Jj5VrWQ+FmMSMjKFGlG1AodNSubN9UMc2z8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1650552224;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To;
+ bh=ezL7d6UT6p1AeMHEGpnZeZmFAvnmD9WI18X7MSI3d/k=; 
+ b=VH/Mi58H9v1KRSjeNyH5/jJxO+R2Pmhgf0IS1rGU8+ye0a/bG0kPsmQoiIEznVwPloJG1B626jzE9vE4hYg+7NfgF9Q07ENZZCkLD6azij+Onman5MacM6DnulqmGLv187YXghbXCu/WPAIw21QJvHOBwTvjs90U0dhPSQ28whk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=arinc9.com;
+ spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+ dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1650552224; 
+ s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+ h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+ bh=ezL7d6UT6p1AeMHEGpnZeZmFAvnmD9WI18X7MSI3d/k=;
+ b=AUzbWmEBG1bhlGXpDr/3Us4XJfC5rsXEH98tYb0vsCF9C8tTnA9sUo/cF5OGp4fq
+ MB+7YT28SwlppWnpZxqptnOLD8Ug3lDZ2CtaQWCcDrxus/QqBBTEG5DsOhdVCDbf/yc
+ Uo0EkzlovbchG+nUvwQGgYsJCZ2swQEdYIHZJStE=
+Received: from [10.10.10.3] (85.117.236.245 [85.117.236.245]) by
+ mx.zohomail.com with SMTPS id 1650552221122931.4968849395214;
+ Thu, 21 Apr 2022 07:43:41 -0700 (PDT)
+Message-ID: <26418320-64e0-3ed2-c792-7f72878b7592@arinc9.com>
+Date: Thu, 21 Apr 2022 17:43:35 +0300
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [PATCH 0/14] Refactor Ralink Pinctrl and Add Documentation
+Content-Language: en-US
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Luiz Angelo Daros de Luca <luizluca@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, erkin.bozoglu@xeront.com,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org
+References: <20220413060729.27639-1-arinc.unal@arinc9.com>
+ <CACRpkdbbMFYNNjAKwhysKpu1JVh2JSB-N=Y8QMx1JvMhCPBpwg@mail.gmail.com>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <CACRpkdbbMFYNNjAKwhysKpu1JVh2JSB-N=Y8QMx1JvMhCPBpwg@mail.gmail.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_074212_031490_4824D801 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20220421_074408_556185_97FA4AC3 
+X-CRM114-Status: GOOD (  16.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,62 +81,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
-
-Device WLun may enter RPM_SUSPENDED and the consumer is RPM_ACTIVE.
-
-The error state is
-Device Wlun RPM: status:2, usage_count:0
-Consumer: 0:0:0:49476 Link: rpm_active:1, RPM: status:2, usage_count:0
-Consumer: 0:0:0:49456 Link: rpm_active:1, RPM: status:2, usage_count:0
-Consumer: 0:0:0:0 Link: rpm_active:1, RPM: status:2, usage_count:0
-Consumer: 0:0:0:1 Link: rpm_active:1, RPM: status:2, usage_count:0
-Consumer: 0:0:0:2 Link: rpm_active:1, RPM: status:0, usage_count:0
-
-Because rpm enable before rpm delay set, scsi_autopm_put_device
-invoke by scsi_sysfs_add_sdev may cause consumer enter suspend immediately.
-Thas will always set rpm_active to 1.
-If driver_probe_device invoke pm_runtime_get_suppliers just befor
-previous scsi_autopm_put_device, the rpm_active will change to 1
-after pm_runtime_put_suppliers.
-Set this delay to avoid scsi_autopm_put_device enter suspend immediately.
-
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- drivers/scsi/ufs/ufshcd.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 3f9caafa91bf..1250792d16be 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -5024,10 +5024,14 @@ static int ufshcd_slave_configure(struct scsi_device *sdev)
- 	 * Block runtime-pm until all consumers are added.
- 	 * Refer ufshcd_setup_links().
- 	 */
--	if (is_device_wlun(sdev))
-+	if (is_device_wlun(sdev)) {
- 		pm_runtime_get_noresume(&sdev->sdev_gendev);
--	else if (ufshcd_is_rpm_autosuspend_allowed(hba))
-+	} else if (ufshcd_is_rpm_autosuspend_allowed(hba)) {
- 		sdev->rpm_autosuspend = 1;
-+		pm_runtime_set_autosuspend_delay(&sdev->sdev_gendev,
-+			RPM_AUTOSUSPEND_DELAY_MS);
-+	}
-+
- 	/*
- 	 * Do not print messages during runtime PM to avoid never-ending cycles
- 	 * of messages written back to storage by user space causing runtime
--- 
-2.18.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gMjEvMDQvMjAyMiAxNzoyNywgTGludXMgV2FsbGVpaiB3cm90ZToKPiBPbiBXZWQsIEFwciAx
+MywgMjAyMiBhdCA4OjA4IEFNIEFyxLFuw6cgw5xOQUwgPGFyaW5jLnVuYWxAYXJpbmM5LmNvbT4g
+d3JvdGU6Cj4gCj4+IFRoaXMgcGF0Y2ggc2VyaWVzIGJyaW5ncyBjb21wbGV0ZSByZWZhY3Rvcmlu
+ZyB0byB0aGUgUmFsaW5rIHBpbmN0cmwgZHJpdmVyCj4+IGFuZCBpdHMgc3ViZHJpdmVycy4KPiAK
+PiBJIGp1c3QgbWVyZ2VkIGFsbCB0aGUgcGF0Y2hlcywgdGhlIGNvbW1lbnRzIHNlZW0gbWlub3Ig
+YW5kIGFueSBmdXJ0aGVyCj4gZml4ZXMgY2FuIGNlcnRhaW5seSBiZSBkb25lIG9uIHRvcCBvZiB0
+aGlzLiBBbnlvbmUgaW50ZXJlc3RlZCBpbiByYWxpbmsKPiB3b3JraW5nIG5pY2VseSBpcyBsaWtl
+bHkgaW4gdGhlIHRocmVhZCBhbmQgd2UgbW9zdGx5IGNhcmUgYWJvdXQgdGhhdCB0aGlzCj4gd29y
+a3MgZm9yIE9wZW5XcnQsIGFuZCBpZiBpdCB3b3JrcyBmb3IgdGhlbSB3ZSBhcmUgaGFwcHkuCj4g
+Cj4+ICAgIG1pcHM6IGR0czogcmFsaW5rOiBtdDc2MjE6IHVzZSB0aGUgbmV3IGNvbXBhdGlibGUg
+c3RyaW5nIGZvciBNVDc2MjEgcGluY3RybAo+IAo+IFRoaXMgd2FzIGEgYml0IHNjYXJ5IHNpbmNl
+IHdlIHVzdWFsbHkgdGFrZSB0aGVzZSB0aHJvdWdoIHRoZSByZXNwZWN0aXZlCj4gU29DIHRyZWUs
+IGJ1dCBJIGp1c3QgYXBwbGllZCBpdCBhbnl3YXksIGl0IG1ha2VzIGxvZ2ljYWwgc2Vuc2UgaW4g
+dGhlCj4gc2VyaWVzLgo+IAo+IEkgaG9wZSBpdCB3aWxsIG5vdCBsZWFkIHRvIGNvbmZsaWN0cy4K
+PiAKPiBHb29kIHdvcmsgd2l0aCB0aGlzIHNlcmllcyEKClRoYW5rcy4gVGhlcmUgaXMgYSB2MiBv
+ZiB0aGlzIHNlcmllcyB3aGljaCBoYXMgYmVlbiB3YWl0aW5nIGZvciBhIHdlZWssIApJIGhvcGUg
+dGhhdCB3YXMgdGhlIG9uZSB5b3UgYXBwbGllZCBhcyB5b3UgcmVwbGllZCB1bmRlciB2MSAoSSdt
+IG5vdCAKc3VyZSB3aGljaCByZXBvc2l0b3J5IHlvdSBhcHBsaWVkIHRoaXMgc28gSSBjYW4ndCBj
+aGVjayBteXNlbGYpLgoKaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4
+LWFybS1rZXJuZWwvbGlzdC8/c2VyaWVzPTYzMjM3MAoKQXLEsW7DpwoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBs
+aXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
