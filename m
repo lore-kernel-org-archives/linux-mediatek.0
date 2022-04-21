@@ -4,75 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CF86C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 06:05:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09458C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 06:09:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BNH5NAIBVnvnh/Nj6jywmllGXOXZroitrVxYubOyhsE=; b=yMp+Vo9FTy7wQm
-	YUjxdj4G6Kj4rTupneEZoNQA4JnT58Nx5vn9HMky7rADqxOm0VPT5Im31fLFReTAhZNeRm/KbYPfS
-	pTVOvcib8V6mn0tNaql1cjQ1iDV6+XJuAZEOCRK+mwJyCuvnfuRL1vFa4WrfZwvv4/5YDbU46Vypq
-	lVu+1Y9sogfYWXpWDGYbojBZ2h4PPn8jRrkaip2CI4J3A+2g0pe1iB7+EGk6bZhAdSWpIxgEE3txB
-	E6rKp406BBS3SzcYdb+kf3OaQ+LyLnh0y1WM77PV5iiUN+vgVIcrT0h6e7jtZ1G1A3JYqWlFTTf+N
-	GbxZbXIkAwZ41KLeudtg==;
+	List-Owner; bh=UUEYTKNbgGgzSmkgDSbaGiE44/QSdxOqQU7WwDjwTUQ=; b=BN9Hq6eKjo7r+I
+	8MLPfisQfj2ih41QUV1N35q9CeoNHtwHQu04gM/3tV+T9Rs1L0yVzCAJJCTmHzGugiCx8XOl2gZM9
+	nb47IpBF/8c1n1V8KKTju9SVBL72rqvzVom3vWpBaprWAIO8my/YYfqdcCh/P3AVtV6pXsXydVCIJ
+	0qNExwTLbBR6k6EsGMYXqt2IhA87U1V5BzfwLzPNlVjmM3DMZ5qEfQ/omsYBFWSjdM067wtd4oqsA
+	4ux4CLChNFeJfWA7Dmb0P+3NpT4NTfeUeaHPSanwrPIBsQyAgslT5pjskAuBcUt+i4kV8DLZ/ZLio
+	in1JgI2vatCKM6bxcw2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhPwV-00BcyU-3g; Thu, 21 Apr 2022 06:05:27 +0000
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+	id 1nhQ0D-00BdW4-7A; Thu, 21 Apr 2022 06:09:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhPwR-00Bcxk-Np
- for linux-mediatek@lists.infradead.org; Thu, 21 Apr 2022 06:05:25 +0000
-Received: by mail-yw1-x112b.google.com with SMTP id
- 00721157ae682-2ef4a241cc5so41350287b3.2
- for <linux-mediatek@lists.infradead.org>; Wed, 20 Apr 2022 23:05:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gEbbg2zUxEbfOPOeQbHxD+QIKFZ02AhkGwLbMa0NQSM=;
- b=KLsAX0i9jDGFxcJ1StIniQy3cR6kMX25Hk/LgVmLefBQl/yALbKZ+rvMpxwfzZ9B9A
- wqulaM7y65JqbZWNrH23JjM7ZCVW9hCgBbLIm3x4Qo3l3uOrLKR7cBwrXzuzUhxDhpnc
- +AGPPjIGkT/talsWQY5pjnXm7wvtFWO4cssX0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gEbbg2zUxEbfOPOeQbHxD+QIKFZ02AhkGwLbMa0NQSM=;
- b=XTNjTVfRAP1TSY0ack8aaJwNsKl7o0142aROmn88JZ3QWmOjJiOm+Zipz5W0R9RJdC
- IfnVnCKkukD6y7eonU0KR7Fnp1IOgqUqD4Sc1tVxJ4w+32nHwt9Xx9sq5zGOHC7UjKEs
- nn9d71RZ9CiXnmotRk1XqK7v20xQNV01ILjKUV1dxIErViCyDvXY9sgS4J2qWyPocXqU
- 4TwVLUo3rgRwVZJcpfdLpk8XEndjOUZCNnkieJJbFnlGbArJHfnTGgURyLWm0XCgRX/e
- mOSAqpDCKg2sweTGotRq3laD9RvrJrEoGIvgTldGoGoTB2Yi7ksBieGQy3hMEVeuEvXP
- Z7bA==
-X-Gm-Message-State: AOAM531jL1f9O8MQ0OVliDxHtbHX/7nDY5gbVSP8KNTooBZPaG70QBFz
- SJ0kk+qaaH3nthXVJTXYvR0VljRg3q676ppN6ocVNg==
-X-Google-Smtp-Source: ABdhPJzzdgkklWVlYeUDIN7ffgffId2uPhqM9WuJYRxVahXvUomxKUoe1jLZymEecsTdjNSGDTjwSXCB2zRhqiYXq+o=
-X-Received: by 2002:a05:690c:110:b0:2ec:2d79:eee1 with SMTP id
- bd16-20020a05690c011000b002ec2d79eee1mr24722358ywb.21.1650521121784; Wed, 20
- Apr 2022 23:05:21 -0700 (PDT)
+ id 1nhQ02-00BdTI-3y; Thu, 21 Apr 2022 06:09:07 +0000
+X-UUID: 1c2d36851dbc44fabd53c35f614696d1-20220420
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:b3f4ae30-0d50-4719-b3bf-54014c2ea72b, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:74c371f0-da02-41b4-b6df-58f4ccd36682,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 1c2d36851dbc44fabd53c35f614696d1-20220420
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 372457572; Wed, 20 Apr 2022 23:08:59 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 20 Apr 2022 23:08:57 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 21 Apr 2022 14:08:54 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 21 Apr 2022 14:08:54 +0800
+Message-ID: <4944a442a4d85540486c488bc1290448b3eb0de0.camel@mediatek.com>
+Subject: Re: [PATCH v20 5/8] drm/mediatek: add mediatek-drm of vdosys0
+ support for mt8195
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: jason-jh.lin <jason-jh.lin@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>, 
+ Nancy Lin =?UTF-8?Q?=28=E6=9E=97=E6=AC=A3=E8=9E=A2=29?=
+ <Nancy.Lin@mediatek.com>, Singo Chang
+ =?UTF-8?Q?=28=E5=BC=B5=E8=88=88=E5=9C=8B=29?= <Singo.Chang@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 21 Apr 2022 14:08:54 +0800
+In-Reply-To: <20220419094143.9561-6-jason-jh.lin@mediatek.com>
+References: <20220419094143.9561-1-jason-jh.lin@mediatek.com>
+ <20220419094143.9561-6-jason-jh.lin@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20220419081246.2546159-1-wenst@chromium.org>
- <3591fcc1-d34a-b40a-4e78-edcf9d2ddf08@collabora.com>
- <CAGXv+5HhcQbdGLQFtgPnvzVbSKaQ5GQGvmjwPVOVxjrYnMh1dg@mail.gmail.com>
- <ca8048f4-2e75-a49b-6c54-9f6abba6ead3@collabora.com>
-In-Reply-To: <ca8048f4-2e75-a49b-6c54-9f6abba6ead3@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 21 Apr 2022 14:05:10 +0800
-Message-ID: <CAGXv+5G2Uyq5fdMUnhr5wOm6O8M3dHNKGaSP2L_Vv1o28mXmOQ@mail.gmail.com>
-Subject: Re: [RFC PATCH 0/7] clk: mediatek: Move to struct clk_hw provider APIs
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, 
- Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Miles Chen <miles.chen@mediatek.com>, 
- Rex-BC Chen <rex-bc.chen@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220420_230523_840321_4EDEE3AB 
-X-CRM114-Status: GOOD (  54.70  )
+X-CRM114-CacheID: sfid-20220420_230906_187958_133297A4 
+X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,163 +92,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 20, 2022 at 8:02 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 19/04/22 18:09, Chen-Yu Tsai ha scritto:
-> > On Tue, Apr 19, 2022 at 11:08 PM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> >>
-> >> Il 19/04/22 10:12, Chen-Yu Tsai ha scritto:
-> >>> Hi everyone,
-> >>>
-> >>> This is part 2 of my proposed MediaTek clk driver cleanup work [1].
-> >>>
-> >>
-> >> ..snip..
-> >>
-> >>>
-> >>> The next phase of the cleanup/improvement shall be to introduce some
-> >>> variant of `struct clk_parent_data` to describe clk relationships
-> >>> efficiently.
-> >>>
-> >>> Please have a look.
-> >>>
-> >>
-> >> Hello Chen-Yu,
-> >>
-> >> I am grateful to see this series, as the MediaTek clock drivers are getting
-> >> a bit old, despite new platforms being implemented practically as we speak.
-> >>
-> >> With this, you surely get that I completely agree with the proposed cleanup
-> >> and modernization of the entire MediaTek clocks infrastructure, but I think
-> >> that introducing a `struct clk_parent_data` for these drivers is, at this
-> >> point, a must, that not only fully justifies these patches, but also "makes
-> >> the point" - as the effect of that would be a performance improvement as we
-> >> would *at least* avoid lots of clk_cpy_name() in case of parent_hws, or in
-> >> case or parent_data where no .fw_name is provided (which would be the case
-> >> for most of the clocks).
+On Tue, 2022-04-19 at 17:41 +0800, jason-jh.lin wrote:
+> 1. Add driver data of mt8195 vdosys0 to mediatek-drm and the sub
+> driver.
+> 2. Add get driver data function to identify which vdosys by io_start.
+> 
+> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> ---
 
-BTW, clk_cpy_name() handles const values correctly, i.e. it won't actually
-copy them. The performance issue with using names is the clk core has to
-match them against the ever increasing list of clks in the system to find
-the actual clk object.
+Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 
-> > You and me both. :) And yes, one of the intended results is to make the
-> > clk driver probe faster.
-> >
-> >> That said, my advice would be to add that conversion to declaring clocks
-> >> with .hw.init.parent_data and/or .hw.init.parent_hws to this series as to
-> >> really make it complete.
-> >
-> > This series itself already touches a lot of code, even if most of it was
-> > done by coccinelle. I'd like to send them separately to not overwhelm
-> > people.
-> >
-> > Also, I haven't actually started on that part yet. It is actually part 3
-> > of my overall plan. I have a good idea of what to do, given I did similar
-> > work for the sunxi-ng clk drivers (though half finished...).
->
-> Having a good plan means that you're already half-done though :) :) :)
->
-> Besides, the reason why I said that you should do the conversion in the same
-> series was exactly because your changes are done with coccinelle scripts...
-> ...but I thought that you already had something in the works for that.
-
-The final part won't be doable with coccinelle scripts though. It involves
-converting the existing list of clk parent names to IDs. It might be doable
-in Perl or Python, but would likely involve a whole lot of string parsing
-and pattern matching ...
-
-> Since you still need some time for the final part, having this kind of (even
-> if partial) modernization is still golden.
-> Let's do it in two steps as you prefer then, that's fine for me.
->
-> >
-> > Most of the clk references are internal to each driver, and those would
-> > be mapped from some CLK_ID to some `struct clk_hw *` internally, but all
-> > blocks have external parents that need to be modeled as well, and we
-> > would likely need global clk name fallbacks for the blocks that don't
-> > have parents declared in the device tree, which is unfortunately most
-> > of them. Especially the central clock controllers like infracfg or pericfg
-> > take many clk inputs, to the point that MediaTek folks were somewhat
-> > unwilling to bloat the device tree with them.
-> >
-> > So it does seem easier to use something like clk_parent_data with
-> > `struct clk_hw *` replaced with an index everywhere. This structure
-> > would get converted into clk_parent_data by the singular clk registration
-> > helpers.
-> >
->
-> I may not be understanding what you mean by mapping the CLK_ID internally, but
-> from what my brain processed, I think that you want to look at, and basically
-> replicate, how it's done in the Qualcomm clock drivers (and perhaps standardize
-> that in the clock API?).
->
-> Specifically, clk/qcom/common.h, struct parent_map.
->
-> Though, I admit I haven't looked at the MTK clocks *very deeply*, so I may be
-> misunderstanding something.
-
-Not exactly. All the clocks in the MTK drivers are allocated at runtime,
-so we can't use clk_parent_data to point to not-yet-allocated clk_hw-s.
-Instead we'll need to have
-
-    struct mtk_clk_parent_data {
-        unsigned int clk_id; /* Match CLK_XXX_YYY from dt-binding headers */
-        ... /* remaining fields same as mtk_clk_parent_data */
-    };
-
-and create the actual clk_parent_data at runtime by looking up clk_id in
-the set of already registered clks:
-
-    int mtk_clk_register_XXX(..., struct mtk_clk_parent_data *pdata,
-                             struct clk_hw_onecell_data *clk_data) {
-        struct clk_parent_data data = {
-            .hw = clk_data[pdata->clk_id],
-            /* copy other fields verbatim */
-        };
-        ...
-    }
-
-Obviously this forces some ordering of how the clks are registered.
-I believe the order is already correct, and if it isn't, it would be
-easy to detect, and we can reorder things to fix it.
-
-> > This would have to coexist with the existing helpers we have. So I think
-> > this work would be combined with the helper API cleanup / alignment with
-> > clk provider API.
-> >
-> > Does that make sense to you?
-> >
->
-> Yes that does fully make sense to me.
->
-> >> Of course, if you have concerns about old platforms that you cannot test,
-> >> or for which this kind of conversion would require a huge amount of effort,
-> >> then I would go for converting as many as possible as a first step and then
-> >> leave the others for later.
-> >>
-> >> I would envision MT8183, 8186, 8192, 8195 to be a good amount of first
-> >> candidates for this great effort.
-> >
-> > I'm working with MT8183 right now, as it can readily boot mainline to a
-> > shell. Depending on the schedule and whose on board with resources, I'd
-
-* who's onboard *
-
-> > probably handle the other ChromeOS platforms, or delegate it internally.
-> >
-> >
->
-> That sounds like a plan. Besides, I wasn't trying to give you any hurry
-> whatsoever - I was simply thinking out loud :))
-
-Got it. :)
-
-
-Regards
-ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
