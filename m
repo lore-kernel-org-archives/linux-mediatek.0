@@ -4,76 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED698C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 16:32:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB479C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 17:39:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NHcN2EM5TPGY9TDtUJy8m35G30LfuyuZSiXbCFeqYXc=; b=CmlyuZRGT2ZR48
-	Xfg5QOJ0d0EL/vIM6NqeZzNfYbX2fEvjxh81b7Qs06xIvf8+lMY2NqT5C7qd9NgYc5V/TNBgsgjVA
-	m3q2hyRO9ztNgxAEWtj6nJnNTD2GiCBGKr+9KkTh+ytUN4ssDAEvcs3iLNFE6sngQhiSbNdrDnVlO
-	OJga+ODP0tVXXOB9gSdfSTa3pq4rVx38v8PuU8ZB3vhTZrba5a/HaGjW9YMXqTrlGISZM1K4riH98
-	T4DoDt43lTuNiuUFL9qmspVOZd9oCgKQIlkrNNbakUmZ0gtoghDftYtvswdggLlrVuOCUkcRWg/B8
-	+36ZtIOezlDPJDzWegQA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SWANT87NwtljX4mpWHQe9oFTWeUM/+2Oh/KJEvsYct4=; b=SuyNo2Q4boFxlQ
+	MxXWZ5IhE0btYh01tZXgC0VQ3srR3SKwD/8I+bw6wV9xPzlh0eTP2C03uIuOI71iTdyNzzR7tD0ip
+	PtewC6ff1woqT9T0T7RWVxmyxELpNUtjKC3OoMNUOerqkq7UBJhcerCgGPVzKpuauNheLofJmVNz2
+	xMjpQbe1NghBYfjaFB5aIIYjy+wR68PuNSSUT7tt1wwS1mvAyiznrGjBNS3hJoMr8obWky1IDKJij
+	SmIEAwrLzUndRLRambBTORY4m394YFDpAMvH3cd5r8Od1u4s7I5w2HiznTOYNFVYziCnFaWanoCAM
+	fxFW6CMJW+xbiCBuykUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhZjA-00EFZh-JP; Thu, 21 Apr 2022 16:32:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nhamK-00EUwl-Tr; Thu, 21 Apr 2022 17:39:40 +0000
+Received: from p3plsmtpa07-10.prod.phx3.secureserver.net ([173.201.192.239])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhZiv-00EFPx-Ko; Thu, 21 Apr 2022 16:32:09 +0000
-X-UUID: ec145e95417a4c28aa93f27449f6db26-20220421
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:c03b326d-c31d-484e-a61b-9aca865d8eea, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:5ec181f0-da02-41b4-b6df-58f4ccd36682,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:-5,EDM:-3,File:nil,QS:0,BEC:ni
- l
-X-UUID: ec145e95417a4c28aa93f27449f6db26-20220421
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <lecopzer.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 463510602; Thu, 21 Apr 2022 09:31:51 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 21 Apr 2022 09:30:43 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 22 Apr 2022 00:30:35 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 22 Apr 2022 00:30:35 +0800
-From: Lecopzer Chen <lecopzer.chen@mediatek.com>
-To: <pmladek@suse.com>
-CC: <acme@kernel.org>, <akpm@linux-foundation.org>,
- <alexander.shishkin@linux.intel.com>, <catalin.marinas@arm.com>,
- <davem@davemloft.net>, <jolsa@redhat.com>, <jthierry@redhat.com>,
- <keescook@chromium.org>, <kernelfans@gmail.com>,
- <lecopzer.chen@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-perf-users@vger.kernel.org>, <mark.rutland@arm.com>,
- <masahiroy@kernel.org>, <matthias.bgg@gmail.com>, <maz@kernel.org>,
- <mcgrof@kernel.org>, <mingo@redhat.com>, <namhyung@kernel.org>,
- <nixiaoming@huawei.com>, <peterz@infradead.org>,
- <sparclinux@vger.kernel.org>, <sumit.garg@linaro.org>, <wangqing@vivo.com>,
- <will@kernel.org>, <yj.chiang@mediatek.com>
-Subject: Re: [PATCH v3 5/5] arm64: Enable perf events based hard lockup
- detector
-Date: Fri, 22 Apr 2022 00:30:35 +0800
-Message-ID: <20220421163035.26402-1-lecopzer.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <YlalNStoYOWqAHkP@alley>
-References: <YlalNStoYOWqAHkP@alley>
+ id 1nhamI-00EUve-5T
+ for linux-mediatek@lists.infradead.org; Thu, 21 Apr 2022 17:39:39 +0000
+Received: from localhost.localdomain ([209.234.248.132])
+ by :SMTPAUTH: with ESMTPSA
+ id ham9nkETPic8fhamAnljNp; Thu, 21 Apr 2022 10:39:32 -0700
+X-CMAE-Analysis: v=2.4 cv=Q+QXX66a c=1 sm=1 tr=0 ts=626196d4
+ a=QYjdx1n8fnJJ/8JFsBbjTg==:117 a=QYjdx1n8fnJJ/8JFsBbjTg==:17 a=NEAV23lmAAAA:8
+ a=_twTT5zqAAAA:8 a=6R0Kyn_f9nWU-igJ6UUA:9 a=ILoXdGDbYT3DTB7Z0gVI:22
+X-SECURESERVER-ACCT: dhu@hodcarrier.org
+From: Du Huanpeng <dhu@hodcarrier.org>
+To: linux-mips@vger.kernel.org
+Cc: tsbogend@alpha.franken.de, devicetree@vger.kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, Du Huanpeng <dhu@hodcarrier.org>
+Subject: [PATCH] mips: dts: ralink: mt7620a: rename nodes to generic names
+Date: Fri, 22 Apr 2022 01:39:28 +0800
+Message-Id: <20220421173928.61467-1-dhu@hodcarrier.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MTK: N
+X-CMAE-Envelope: MS4xfNdzv5jfK0g153WJIHj7b/tW+my450a5GCAClM5BMyMirAAl9evuviFEomChLrbZ9pQ2US6SzFvOAdYtcZgEoKG46y8McajnjV6wPAA6XLFGkdD1YL6+
+ MnEhfsrJyuHnw4AEl83jDHTL2vCcpQmgMj41NsKQjMm7vZ2cP0w6DupGwbbmIdXizbdz2U9hjswjU/ABszjKrf6CXsyMTORkQeSroVu3Q8CWNYj6n0ZlLea/
+ qDsTHyoon65jUfuAH4Gxke073BgwMGgYjaz5PIdIXjpH50LjRFDlFsCBuyL3aSzELsTrrBt7nz4/OQjLaxeawvb4H8BS9mWg125lO2ecwMz7IKXWEMRaQ/hV
+ vlonII2bpS70THRM3Hw7Mty4YUaEdrwSEkovpe59KIMvKsaO0ktVPhjWkeVOGLFqgE1KHRpLQByWCTUYie2JXDo6Cffm4g==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_093205_717043_B5A7F765 
-X-CRM114-Status: GOOD (  67.65  )
+X-CRM114-CacheID: sfid-20220421_103938_259217_B27BA605 
+X-CRM114-Status: UNSURE (   7.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,250 +66,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> On Fri 2022-04-08 00:59:49, Lecopzer Chen wrote:
-> > 
-> > > On Tue 2022-04-05 20:53:04, Lecopzer Chen wrote:
-> > > >  
-> > > > > On Thu 2022-03-24 22:14:05, Lecopzer Chen wrote:
-> > > > > > With the recent feature added to enable perf events to use pseudo NMIs
-> > > > > > as interrupts on platforms which support GICv3 or later, its now been
-> > > > > > possible to enable hard lockup detector (or NMI watchdog) on arm64
-> > > > > > platforms. So enable corresponding support.
-> > > > > > 
-> > > > > > One thing to note here is that normally lockup detector is initialized
-> > > > > > just after the early initcalls but PMU on arm64 comes up much later as
-> > > > > > device_initcall(). To cope with that, overriding watchdog_nmi_probe() to
-> > > > > > let the watchdog framework know PMU not ready, and inform the framework
-> > > > > > to re-initialize lockup detection once PMU has been initialized.
-> > > > > > 
-> > > > > > [1]: http://lore.kernel.org/linux-arm-kernel/1610712101-14929-1-git-send-email-sumit.garg@linaro.org
-> > > > > > 
-> > > > > > --- /dev/null
-> > > > > > +++ b/arch/arm64/kernel/watchdog_hld.c
-> > > > > > @@ -0,0 +1,37 @@
-> > > > > > +// SPDX-License-Identifier: GPL-2.0
-> > > > > > +#include <linux/nmi.h>
-> > > > > > +#include <linux/cpufreq.h>
-> > > > > > +#include <linux/perf/arm_pmu.h>
-> > > > > > +
-> > > > > > +/*
-> > > > > > + * Safe maximum CPU frequency in case a particular platform doesn't implement
-> > > > > > + * cpufreq driver. Although, architecture doesn't put any restrictions on
-> > > > > > + * maximum frequency but 5 GHz seems to be safe maximum given the available
-> > > > > > + * Arm CPUs in the market which are clocked much less than 5 GHz. On the other
-> > > > > > + * hand, we can't make it much higher as it would lead to a large hard-lockup
-> > > > > > + * detection timeout on parts which are running slower (eg. 1GHz on
-> > > > > > + * Developerbox) and doesn't possess a cpufreq driver.
-> > > > > > + */
-> > > > > > +#define SAFE_MAX_CPU_FREQ	5000000000UL // 5 GHz
-> > > > > > +u64 hw_nmi_get_sample_period(int watchdog_thresh)
-> > > > > > +{
-> > > > > > +	unsigned int cpu = smp_processor_id();
-> > > > > > +	unsigned long max_cpu_freq;
-> > > > > > +
-> > > > > > +	max_cpu_freq = cpufreq_get_hw_max_freq(cpu) * 1000UL;
-> > > > > > +	if (!max_cpu_freq)
-> > > > > > +		max_cpu_freq = SAFE_MAX_CPU_FREQ;
-> > > > > > +
-> > > > > > +	return (u64)max_cpu_freq * watchdog_thresh;
-> > > > > > +}
-> > > > > 
-> > > > > This change is not mentioned in the commit message.
-> > > > > Please, put it into a separate patch.
-> > > > 
-> > > > 
-> > > > Actully, This cames from
-> > > > [1]: http://lore.kernel.org/linux-arm-kernel/1610712101-14929-1-git-send-email-sumit.garg@linaro.org
-> > > > And I didn't touch the commit message from the origin patch.
-> > > > But of course, I could imporve it with proper description if
-> > > > anyone thinks it's not good enough.
-> > > 
-> > > I see.
-> > > 
-> > > > Would you mean put this function hw_nmi_get_sample_period() in patch
-> > > > 6th?
-> > > > In the view of "arm64 uses delayed init with all the functionality it need to set up",
-> > > > IMO, this make sense for me to put into a single patch.
-> > > 
-> > > Or you could split it in two patches and add
-> > > hw_nmi_get_sample_period() in the earlier patch.
-> > > 
-> > > 
-> > > > But if you still think this should put into a separate patch, I'll do it:)
-> > > 
-> > > It is always better to split the changes whenever possible. It makes
-> > > the review easier. And it also helps to find the real culprit of
-> > > a regression using bisection.
-> > 
-> > Okay, I'll split this part into another change, thanks.
-> > 
-> > 
-> > > > > > +int __init watchdog_nmi_probe(void)
-> > > > > > +{
-> > > > > > +	if (!allow_lockup_detector_init_retry)
-> > > > > > +		return -EBUSY;
-> > > > > 
-> > > > > How do you know that you should return -EBUSY
-> > > > > when retry in not enabled?
-> > > > > 
-> > > > > I guess that it is an optimization to make it fast
-> > > > > during the first call. But the logic is far from
-> > > > > obvious.
-> > > > > 
-> > > > 
-> > > > Yes, you can see this as an optimization, because arm64 PMU is not ready
-> > > > during lockup_detector_init(), so the watchdog_nmi_probe() must fail.
-> > > >
-> > > > Thus we only want to do watchdog_nmi_probe() in delayed init,
-> > > > so if not in the state (allow_lockup_detector_init_retry=true), just tell
-> > > > 
-> > > > if it's unclear
-> > > 
-> > > Yes, it is far from obvious.
-> > > 
-> > > > maybe a brief comment can be add like this:
-> > > > 
-> > > > +	/* arm64 is only able to initialize lockup detecor during delayed init */
-> > > > +	if (!allow_lockup_detector_init_retry)
-> > > > +		return -EBUSY;
-> > > 
-> > > No, please, remove this optimization. It just makes problems:
-> > > 
-> > >    + it requires a comment here because the logic is far from obvious.
-> > > 
-> > >    + it is the reason why we need another variable to avoid the race in
-> > >      lockup_detector_check(), see the discussion about the 4th patch.
-> > 
-> > After some days studying, if I remove this if-condition which means the
-> > following hardlockup_detector_perf_init() needs to return -EBUSY.
-> > However, the default return value that if pmu is not ready is -ENOENT.
-> 
-> I see.
-> 
-> > The call path for hardlockup_detector_perf_init() is really complicated,
-> > 
-> > I have some approach about this:
-> >   1. abstract second variable with Kconfig.
-> >     a. Add a ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT
-> >        (the naming is a little bit long, may have better naming)
-> >        in "lib/Kconfig.debug" if ARCH knew they do need delayed init for
-> >        lockup detector.
-> > 
-> >        + select ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT if HAVE_HARDLOCKUP_DETECTOR_PERF
-> > 
-> >     b. and the watchdog_nmi_probe would look like.
-> > 
-> >     +int __init watchdog_nmi_probe(void)
-> >     +{
-> >     +	int ret;
-> >     +
-> >     + /* comment here... */
-> >     +	if (!arm_pmu_irq_is_nmi())
-> >     +		return -ENODEV;
-> >     +
-> >     +	ret = hardlockup_detector_perf_init();
-> >     +	if (ret &&
-> >     +		  IS_ENABLED(ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT))
-> >     +		return -EBUSY;
-> >     +
-> >     + return ret;
-> >     +}
-> > 
-> >     and than we can have only one variable (allow_lockup_detector_init_retry)
-> >     in 4th patch.
-> > 
-> >  
-> >   2. base on ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT, change
-> >      inside hardlockup_detector_perf_init().
-> > 
-> > int __init hardlockup_detector_perf_init(void)
-> > {
-> > 	int ret = hardlockup_detector_event_create();
-> > 
-> > 	if (ret) {
-> > 		pr_info("Perf NMI watchdog permanently disabled\n");
-> > +
-> > +		/* comment here... */
-> > +		if (IS_ENABLED(ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT))
-> > +			ret = -EBUSY;
-> > 	} else {
-> > 		perf_event_release_kernel(this_cpu_read(watchdog_ev));
-> > 		this_cpu_write(watchdog_ev, NULL);
-> > 	}
-> > 	return ret;
-> > }
-> > 
-> >   3. Don't add any other config, try to find a proper location
-> >      to return -EBUSY in hardlockup_detector_event_create().
-> >      IMHO, this may involve the PMU subsys and should be
-> >      the hardest approach.
-> 
-> Honestly, everything looks a bit ugly and complicated to me.
-> 
-> OKAY, is the return value actually important?
-> 
-> What about just introducing the API that will allow to try to
-> initialize the hardlockup detector later:
-> 
-> /*
->  * Retry hardlockup detector init. It is useful when it requires some
->  * functionality that has to be initialized later on a particular
->  * platform.
->  */
-> void __init retry_lockup_detector_init(void)
-> {
-> 	/* Must be called before late init calls. */
-> 	if (!allow_lockup_detector_init_retry)
-> 		return 0;
-> 
-> 	queue_work_on(__smp_processor_id(), system_wq, &detector_work);
-> }
-> 
-> /*
->  * Ensure that optional delayed hardlockup init is proceed before
->  * the init code and memory is freed.
->  */
-> static int __init lockup_detector_check(void)
-> {
-> 	/* Prevent any later retry. */
-> 	allow_lockup_detector_init_retry = false;
-> 
-> 	/* Make sure no work is pending. */
-> 	flush_work(&detector_work);
-> }
-> late_initcall_sync(lockup_detector_check);
-> 
-> You could leave lockup_detector_init() as it is. It does not really
-> matter what was the exact error value returned by watchdog_nmi_probe().
-> 
-> Then you could call retry_lockup_detector_init() in
-> armv8_pmu_driver_init() and be done with it.
-> 
-> It will be universal API that might be used on any architecture
-> for any reason. If nobody calls retry_lockup_detector_init()
-> then nohing will happen and the code will work as before.
-> 
-> It might make sense to provide the API only on architectures that
-> really need it. We could hide it under
-> 
->    ARCH_NEED_DELAYED_HARDLOCKUP_DETECTOR_INIT
-> 
-> , similar to ARCH_NEEDS_CPU_IDLE_COUPLE.
-> 
+The name of a node should be somewhat generic, reflecting the function
+of the device and not its precise programming model.
 
-Sorry for late reply.
+- interrupt-controller
+- syscon
+- memory-controller
+- serial
 
-It's really a good idea.
+devicetree-specification-v0.3.pdf
+link: https://github.com/devicetree-org/devicetree-specification/releases/tag/v0.3
 
-Since I have already had lots things to revise in v3, I'm now preparing the V4.
-I'll send it in these few days.
+Signed-off-by: Du Huanpeng <dhu@hodcarrier.org>
+---
+ arch/mips/boot/dts/ralink/mt7620a.dtsi | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-Thanks a lots for your great idea.
-
-
-BRs,
-Lecopzer
-
+diff --git a/arch/mips/boot/dts/ralink/mt7620a.dtsi b/arch/mips/boot/dts/ralink/mt7620a.dtsi
+index 1f6e5320f486..b9cbde603778 100644
+--- a/arch/mips/boot/dts/ralink/mt7620a.dtsi
++++ b/arch/mips/boot/dts/ralink/mt7620a.dtsi
+@@ -10,7 +10,7 @@ cpu@0 {
+ 		};
+ 	};
+ 
+-	cpuintc: cpuintc {
++	cpuintc: interrupt-controller {
+ 		#address-cells = <0>;
+ 		#interrupt-cells = <1>;
+ 		interrupt-controller;
+@@ -25,12 +25,12 @@ palmbus@10000000 {
+ 		#address-cells = <1>;
+ 		#size-cells = <1>;
+ 
+-		sysc@0 {
++		syscon@0 {
+ 			compatible = "ralink,mt7620a-sysc";
+ 			reg = <0x0 0x100>;
+ 		};
+ 
+-		intc: intc@200 {
++		intc: interrupt-controller@200 {
+ 			compatible = "ralink,mt7620a-intc", "ralink,rt2880-intc";
+ 			reg = <0x200 0x100>;
+ 
+@@ -41,12 +41,12 @@ intc: intc@200 {
+ 			interrupts = <2>;
+ 		};
+ 
+-		memc@300 {
++		memory-controller@300 {
+ 			compatible = "ralink,mt7620a-memc", "ralink,rt3050-memc";
+ 			reg = <0x300 0x100>;
+ 		};
+ 
+-		uartlite@c00 {
++		uartlite: serial@c00 {
+ 			compatible = "ralink,mt7620a-uart", "ralink,rt2880-uart", "ns16550a";
+ 			reg = <0xc00 0x100>;
+ 
+-- 
+2.25.1
 
 
 _______________________________________________
