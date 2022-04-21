@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C49EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 05:12:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEC8DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Apr 2022 05:12:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B7ivRnZAIoZMmrpp6IDozw31c05wlyficWRYvJKDe1Q=; b=o7PQW9hJijk9iI
-	cldB08u7PZRgnH31+XWOLyapoRnBWVQ+EIHc5/vduk/Gn2c1dMN8cKA+HNRqKg/OHfldfGxt83mzM
-	TWXfNVSyMPGZHFEn4W5ZSOcogGn96L66NtGbMC375/WDIGdcZMOwCJY61RGbfTFzAvOqu8n7rxW5K
-	K2OPaVoB7jj8eSpot7C85+Vud+FS8/rEOHk1z+PPaIevqnGHHaZd8egsfARvnKM9apDOdT/t3t6pp
-	yOrfGQ9pZZ9NJGmP23BELT/w21IpUL59Y7KrFaPON49e19lLdm7DW7up5N8usqcjESAOgsGKNKxqQ
-	ru+eg2VXWvHZb0i10SWQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kbjSlk4I1AbIgC6NJZzVSazRT6k4HRSJIvOYitLZP8M=; b=a86k7AUkselYW7
+	XVqi7vyhG6vA3QssL3HIkbwAnEWa0IlyY8RKRCOkQTmk5tO9pBB8PkHSSI5kkF9ed41FATvnBCpl1
+	mYlEW1MZ0hK8OnVNcoCXvt76M277fwDzY7J8h4jqv2CZxykmFnR9VMSD7pMlvLrDCntEzzYaJdtTf
+	XdDVILKhmOSU9PWD8uPogDM1ZDLMRUgpQxnx78M5fB1V6f6uQlch16mY+Jqg+CA8IZNZiqw1qlKdq
+	972wDC6LhcPYIfAbzB2y6cyTdGKnKZTBf/C1sI4SgfVtf4otw1We1oaAxiJyOyvOfhhu+ZDQZ+4cZ
+	N0G/0Ga+NKpZmAZ8wtQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhP7S-00BWgf-Dw; Thu, 21 Apr 2022 05:12:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nhP7c-00BWkt-2O; Thu, 21 Apr 2022 05:12:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhP7N-00BWez-OO; Thu, 21 Apr 2022 05:12:40 +0000
-X-UUID: a35807c2202d4da386b591ec8f2e1702-20220420
+ id 1nhP7Y-00BWhW-Ss; Thu, 21 Apr 2022 05:12:50 +0000
+X-UUID: 52597bcb7f4643ae96f8edd80c17b1c0-20220420
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:f1a546eb-44f7-464d-a4ba-d58f68469df3, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:3a48f88b-3e25-4162-90a9-178ea4e4ae32, OB:0,
  LO
- B:0,IP:0,URL:8,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-12
-X-CID-META: VersionHash:faefae9, CLOUDID:bf1170f0-da02-41b4-b6df-58f4ccd36682,
+ B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+ ION:release,TS:25
+X-CID-META: VersionHash:faefae9, CLOUDID:181370f0-da02-41b4-b6df-58f4ccd36682,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: a35807c2202d4da386b591ec8f2e1702-20220420
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+X-UUID: 52597bcb7f4643ae96f8edd80c17b1c0-20220420
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2043611463; Wed, 20 Apr 2022 22:12:31 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 Apr 2022 22:12:29 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 21 Apr 2022 13:12:27 +0800
+ with ESMTP id 1534870143; Wed, 20 Apr 2022 22:12:42 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 20 Apr 2022 22:12:40 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 21 Apr 2022 13:12:27 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Thu, 21 Apr 2022 13:12:27 +0800
@@ -55,17 +55,16 @@ CC: <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
  <dri-devel@lists.freedesktop.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
  <rex-bc.chen@mediatek.com>
-Subject: [PATCH v11 1/1] drm/mediatek: add display support for MT8186
-Date: Thu, 21 Apr 2022 13:12:18 +0800
-Message-ID: <20220421051218.8652-2-rex-bc.chen@mediatek.com>
+Subject: [PATCH v11 0/1] add display support for MediaTek SoC MT8186
+Date: Thu, 21 Apr 2022 13:12:17 +0800
+Message-ID: <20220421051218.8652-1-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220421051218.8652-1-rex-bc.chen@mediatek.com>
-References: <20220421051218.8652-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220420_221237_843106_A232856B 
-X-CRM114-Status: GOOD (  10.17  )
+X-CRM114-CacheID: sfid-20220420_221248_963893_740940E2 
+X-CRM114-Status: UNSURE (   6.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,79 +81,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+v11:
+1. Drop accepted patches.
+2. Rebase to chunkuang.hu/linux.git mediatek-drm-next.
+3. Drop DSI compatible in mtk_drm_drv.c because of depenency.
+4. Drop DPI compatible in mtk_drm_drv.c because we will use compatible of
+   MT8192 for MT8186.
 
-Add mmsys driver data and compatible for MT8186 in mtk_drm_drv.c.
+v10:
+1. Rebase to 5.18-rc1
+2. Drop "dt-bindings: display: mediatek: add aal binding for MT8183".
+   I will move it to another series.
 
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
+v9:
+1. Revise [1/5] dt-bindings: display: mediatek: add aal binding for MT8183.
+
+v8:
+1. Revise [1/5] dt-bindings: display: mediatek: add aal binding for MT8183.
+
+Yongqiang Niu (1):
+  drm/mediatek: add display support for MT8186
+
  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 29 ++++++++++++++++++++++++++
  1 file changed, 29 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index b0e4e5d68927..6abe6bcacbdc 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -158,6 +158,24 @@ static const enum mtk_ddp_comp_id mt8183_mtk_ddp_ext[] = {
- 	DDP_COMPONENT_DPI0,
- };
- 
-+static const enum mtk_ddp_comp_id mt8186_mtk_ddp_main[] = {
-+	DDP_COMPONENT_OVL0,
-+	DDP_COMPONENT_RDMA0,
-+	DDP_COMPONENT_COLOR0,
-+	DDP_COMPONENT_CCORR,
-+	DDP_COMPONENT_AAL0,
-+	DDP_COMPONENT_GAMMA,
-+	DDP_COMPONENT_POSTMASK0,
-+	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_DSI0,
-+};
-+
-+static const enum mtk_ddp_comp_id mt8186_mtk_ddp_ext[] = {
-+	DDP_COMPONENT_OVL_2L0,
-+	DDP_COMPONENT_RDMA1,
-+	DDP_COMPONENT_DPI0,
-+};
-+
- static const enum mtk_ddp_comp_id mt8192_mtk_ddp_main[] = {
- 	DDP_COMPONENT_OVL0,
- 	DDP_COMPONENT_OVL_2L0,
-@@ -221,6 +239,13 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
- 	.ext_len = ARRAY_SIZE(mt8183_mtk_ddp_ext),
- };
- 
-+static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
-+	.main_path = mt8186_mtk_ddp_main,
-+	.main_len = ARRAY_SIZE(mt8186_mtk_ddp_main),
-+	.ext_path = mt8186_mtk_ddp_ext,
-+	.ext_len = ARRAY_SIZE(mt8186_mtk_ddp_ext),
-+};
-+
- static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
- 	.main_path = mt8192_mtk_ddp_main,
- 	.main_len = ARRAY_SIZE(mt8192_mtk_ddp_main),
-@@ -461,6 +486,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8183-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
-+	{ .compatible = "mediatek,mt8186-disp-mutex",
-+	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8192-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8173-disp-od",
-@@ -533,6 +560,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
- 	  .data = &mt8173_mmsys_driver_data},
- 	{ .compatible = "mediatek,mt8183-mmsys",
- 	  .data = &mt8183_mmsys_driver_data},
-+	{ .compatible = "mediatek,mt8186-mmsys",
-+	  .data = &mt8186_mmsys_driver_data},
- 	{ .compatible = "mediatek,mt8192-mmsys",
- 	  .data = &mt8192_mmsys_driver_data},
- 	{ }
 -- 
 2.18.0
 
