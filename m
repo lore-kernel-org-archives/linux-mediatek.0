@@ -4,62 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B262C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 08:22:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CD8BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 08:32:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7qHsW4X/mT2r/n6jtA8DyX48lLmynvOrt7r0yUBWzyo=; b=xB1g4SN8kpQ8YT
-	yKXApzygGbwXWwYRXXhSulJ88IMzAfnXS50frtR2l5VPKfFnFmdZBR0w5+63KkGvDrJj+pQ3for+a
-	PHTPhAdHWj2a48JYvWRTq4XRYl0F2Ih+Rdl9OBio4gP439nivPHAL40N5KHwuxTQXIN7lZyVlAwos
-	KgSEtehg8aUaRfpDbDN1x6KG4ar0NQEXeG6hjCtNRSkXU9MCXdMVO/miAE7DkD1psAq3yh4WH/r+c
-	YyynajpIk92Dr53/TCqVwQgUnA9M7JbfIzogXKhfbjTisOjhKUR+GW66A+VQLn60nHyb/GayTZviW
-	6cK0aad/bzTEwll9ylsw==;
+	List-Owner; bh=OeCWfrBl9JYu6pJ5XXz4l3rhyM3OyHmUP+kE/VRUEwc=; b=c1+sHyfaP1vq52
+	e71SgXmEXZ7mE5gqDdPc51ymmT+KRUzuwVeneRaDxA8cfqVimEwWxhqzeDH8pPLFHVWKRo3pHHIi7
+	5QDrComXlMghFqRfBvytQYTPDnP+oufGihzNdknTjM7Z0Xve1m3lE0amr1HeDAw1QZWIS0fEfg2B7
+	urAwiJDeodKS9okmO29khyHulEOpkZDFEP9NJ50yRghUrt6nPlzJRpqAoEVBf+BqtTGn5BWBdk7Ne
+	1O8PbUbuArNbRUngcZcFuSSXP7/Nmy5dGyze9kGwLQbfwO4t5MRszVoBf8Dmyw9JPTigQLamQdoy6
+	dpW6ZLBcj781uwAmeo/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhoYg-00HDsS-RH; Fri, 22 Apr 2022 08:22:30 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nhoiM-00HGZH-AA; Fri, 22 Apr 2022 08:32:30 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhoXO-00HD8z-Aq; Fri, 22 Apr 2022 08:21:13 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 1D3581F46407
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1650615667;
- bh=jZ1yUGjJxRjIsaAEZvgaDDyTcXgwZTtd20No3oqT2h4=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=QwzsuzAQHVhSLW72Lj01+cKMVuyQIx3Is/+y9cGdlFITHgA70Ur02OemS6vpJWcZa
- oZR47AvmRC9bunA8smuAQhvMjqrx0FkU4Oj854Esjxo0iqCact9xy8UGXq9DDYXS2n
- BCfgVmNbovYyNRk6MyDiNhN+6xjGfOiO36vyhFIiPUaovRJtV75yyPl7Cu6MZoGfAX
- vrbCeFqdPkurb7rgxTpCt/KoUHM7l+MGMSJ65TJm7S9WdYhxqzzsrJL4WiiUYMqvUp
- m8TK15neG03v0oFuR4fOVIHyGG9/phd/kL/LNWVMHzQgO1txFhq+Z7Six/4tEiNbO4
- 3Xk0cBUTeQ6FA==
-Message-ID: <82731484-8269-786d-a01e-44a2ed960d5c@collabora.com>
-Date: Fri, 22 Apr 2022 10:21:03 +0200
+ id 1nhoiA-00HGVG-Rn; Fri, 22 Apr 2022 08:32:20 +0000
+X-UUID: 7bee3016900043ea9763fc1ebb1bdf97-20220422
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:87843fb4-70ec-41db-9014-bb076797d39e, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:06d9c2ef-06b0-4305-bfbf-554bfc9d151a,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 7bee3016900043ea9763fc1ebb1bdf97-20220422
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1944136984; Fri, 22 Apr 2022 01:32:11 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 22 Apr 2022 01:27:10 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 22 Apr 2022 16:27:08 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 22 Apr 2022 16:27:08 +0800
+Message-ID: <3765ba9fb62cef8fe9279ba5d6ded1c8b5b31a82.camel@mediatek.com>
+Subject: Re: [PATCH v2 1/1] pwrap: mediatek: fix FSM timeout issue
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Zhiyong Tao <zhiyong.tao@mediatek.com>, <lee.jones@linaro.org>,
+ <robh+dt@kernel.org>, <matthias.bgg@gmail.com>, <lgirdwood@gmail.com>,
+ <broonie@kernel.org>, <eddie.huang@mediatek.com>, <a.zummo@towertech.it>,
+ <alexandre.belloni@bootlin.com>, <fshao@chromium.org>
+CC: <srv_heupstream@mediatek.com>, <hui.liu@mediatek.com>,
+ <tinghan.shen@mediatek.com>, <hsin-hsiung.wang@mediatek.com>,
+ <sean.wang@mediatek.com>, <macpaul.lin@mediatek.com>, <wen.su@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-rtc@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Date: Fri, 22 Apr 2022 16:27:08 +0800
+In-Reply-To: <20220422033423.11702-2-zhiyong.tao@mediatek.com>
+References: <20220422033423.11702-1-zhiyong.tao@mediatek.com>
+ <20220422033423.11702-2-zhiyong.tao@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH V4 01/14] dt-bindings: cpufreq: mediatek: Add MediaTek CCI
- property
-Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
- viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org,
- matthias.bgg@gmail.com
-Cc: jia-wei.chang@mediatek.com, roger.lu@mediatek.com, hsinyi@google.com,
- khilman@baylibre.com, linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
- <20220422075239.16437-2-rex-bc.chen@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220422075239.16437-2-rex-bc.chen@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_012110_604049_5B4DC4A7 
-X-CRM114-Status: UNSURE (   7.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220422_013218_953442_0BDB0265 
+X-CRM114-Status: GOOD (  19.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,21 +83,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/04/22 09:52, Rex-BC Chen ha scritto:
-> MediaTek Cache Coherent Interconnect (CCI) uses software devfreq module
-> for scaling clock frequency and adjust voltage.
-> The phandle could be linked between CPU and MediaTek CCI for some
-> MediaTek SoCs, like MT8183 and MT8186.
-> Therefore, we add this property in cpufreq-mediatek.txt.
+On Fri, 2022-04-22 at 11:34 +0800, Zhiyong Tao wrote:
+> From: "Zhiyong.Tao" <zhiyong.tao@mediatek.com>
 > 
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Fix pwrap FSM timeout issue which leads the system crash on GFX VSRAM
+> power on.
+> Add a usleep delay to avoid busy read for the H/W status.
+> For avoiding the system behavior(ex. disable interrupt in
+> suspend/resume
+> flow, schedule block task)cause if (time_after()) be turn first,
+> we change it after sleep delay.
+> 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hello Zhiyong,
+
+if this is a fix patch.
+IMO, you should add Fixes tag:
+
+Fixes: 1f022d84bd19 ("soc: mediatek: Add PMIC wrapper for MT8135 and
+MT8173 SoCs")
+
+> Signed-off-by: Zhiyong.Tao <zhiyong.tao@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mtk-pmic-wrap.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
+>  mode change 100644 => 100755 drivers/soc/mediatek/mtk-pmic-wrap.c
+> 
+
+File mode should be 100644.
+
+BRs,
+Rex
+
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> old mode 100644
+> new mode 100755
+> index 952bc554f443..ac7139a67e87
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -12,6 +12,7 @@
+>  #include <linux/platform_device.h>
+>  #include <linux/regmap.h>
+>  #include <linux/reset.h>
+> +#include <linux/delay.h>
+>  
+>  #define PWRAP_MT8135_BRIDGE_IORD_ARB_EN		0x4
+>  #define PWRAP_MT8135_BRIDGE_WACS3_EN		0x10
+> @@ -1197,10 +1198,13 @@ static int pwrap_wait_for_state(struct
+> pmic_wrapper *wrp,
+>  	timeout = jiffies + usecs_to_jiffies(10000);
+>  
+>  	do {
+> -		if (time_after(jiffies, timeout))
+> -			return fp(wrp) ? 0 : -ETIMEDOUT;
+>  		if (fp(wrp))
+>  			return 0;
+> +
+> +		usleep_range(10, 11);
+> +
+> +		if (time_after(jiffies, timeout))
+> +			return fp(wrp) ? 0 : -ETIMEDOUT;
+>  	} while (1);
+>  }
+>  
 
 
 _______________________________________________
