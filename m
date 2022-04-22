@@ -4,61 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97871C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 08:02:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42052C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 08:03:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Kz3YFtntmYvDsAJ7EeX7LX7Ic0oc8HInvGDysjmiLAg=; b=vgGGP1ScqoN7ZS
-	N3I6KiXgw4Y3nC0zRTU24l6st9J14mje5m0d5PEoIvUoVwOYb2r09h6axiRIaKWQQO4zbKTNFJkzp
-	gEmXV0W7NqhueubWWjfnkh6hb9EJI5RDB2IxI/lVcsL4Qsbtd7+0783s3AP1fUjPFy5iwoQlwJ/KZ
-	D54ls3AzUwhSP4C2lha5wG+XYoMzJ4BIBDqryqzon4+wKNGdagHf7dewHjpj/gfk+N02UHC9HSQ67
-	WEHw3WVacxvRev0pXbHurVdOa6U7xvooLrA51rnhmSdSn9MZVBXS94ewXQa2Kw2EicyVRdTi5UJma
-	LP797puCbDe7hF/zBaiQ==;
+	List-Owner; bh=HMr6lVjzgzFvD0eTg6I6H093PgYFcxH23UPRJPmlgYo=; b=J8i0bQ1ES61V2Q
+	Vzod7q14QMjiPbehVusFv/NZOEDENd8ebuulAIeUlXB1rPOSaqUR8nnp6sxB8zT4Pjb3t4yjb4qlq
+	6lqd7bjiZtIO81ZrtrWvys06VJOgPV2WM0fWFAeM1jn9GQrj6Zfym4tsf890RyJNFIk+9PshPXVav
+	Eo1/G1aPwvOL+DKYMPckLwt/j9uVFxfMRgY5YJkWSzddPprWkMTDxO8A7epoVqR28mBdc3Np39tY4
+	iEETcz5/PSEQ6GUi2jqzVt2TbSfGkLSpML/o38RlGBnL5hGb0dhCFDBy6GGb5+Y/Y2B+rHXyxAFLl
+	GbtWdEmjCDcWtlweaKHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhoF5-00H4tV-59; Fri, 22 Apr 2022 08:02:15 +0000
-Received: from m1541.mail.126.com ([220.181.15.41])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhoBs-00H3BH-BF; Fri, 22 Apr 2022 07:59:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=126.com;
- s=s110527; h=Date:From:Subject:MIME-Version:Message-ID; bh=KOOwj
- Ngxtpj+BOV9RiocwkEJ5gaHVgyNXKB2q9i864s=; b=I2bcLGGMBZdE8yJCQe73E
- ublKXrfowHicATx4CEeGLTb6eCcoRMxL5WoQOTv2+7QZxwlqAzF4e/JPdbJi3Hv0
- A8AVgXuuhLURpEiqwFDsWBb4y1DE5YvfB6w7f1mKr1sC1ZbZ4TWP3y/hEY3dxCYf
- tslRTLpgh+V2PhvjmdSg5c=
-Received: from zhaojunkui2008$126.com ( [58.213.83.157] ) by
- ajax-webmail-wmsvr41 (Coremail) ; Fri, 22 Apr 2022 15:58:26 +0800 (CST)
-X-Originating-IP: [58.213.83.157]
-Date: Fri, 22 Apr 2022 15:58:26 +0800 (CST)
-From: z  <zhaojunkui2008@126.com>
-To: "Kalle Valo" <kvalo@kernel.org>
-Cc: "Jakub Kicinski" <kubakici@wp.pl>, "David S. Miller" <davem@davemloft.net>,
- "Paolo Abeni" <pabeni@redhat.com>, 
- "Matthias Brugger" <matthias.bgg@gmail.com>, 
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- bernard@vivo.com
-Subject: Re:Re: [PATCH] mediatek/mt7601u: add debugfs exit function
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.13 build 20210622(1d4788a8)
- Copyright (c) 2002-2022 www.mailtech.cn 126com
-In-Reply-To: <87k0bhmuh6.fsf@kernel.org>
-References: <20220422070325.465918-1-zhaojunkui2008@126.com>
- <87k0bhmuh6.fsf@kernel.org>
+	id 1nhoG1-00H5Pm-4I; Fri, 22 Apr 2022 08:03:13 +0000
+Received: from mga02.intel.com ([134.134.136.20])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nhoCN-00H3SS-9q; Fri, 22 Apr 2022 07:59:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1650614367; x=1682150367;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=VNrOIsgR/2M+tjpgcaLOR6tT5XMMHe+vpYMTNT8yqJE=;
+ b=bIlvtc2AR3H3fbtRFsErSn4zN1vtfsejQwgjxyqe90bQMzU2hpei9KIv
+ OUWiRIficPyHDNZsM6M3tKqF0TFq/1ithQNIoQ4zONxb10pfLOeynp9Qs
+ v5N4AWfVScz8cxW/xN559/MSHk1PewxPMPe/IxTq4jBT1awojAQcGA6VH
+ FX3UtElfItkSiMB0olncRm5b5WBmIwHJoWNwNtVH7MUou7d9CTuJ8hEEq
+ yKAXGwDKDyjk5hBraXk9+gS0y8a+faJPsde3dgt6ZYK3G61+Jr1617lzX
+ V4jNjBN4/EL8jpAIKdDXmyfCkjqZz8fu0a5vgWgVI1+cRlZHzZpEKsacn A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10324"; a="251936585"
+X-IronPort-AV: E=Sophos;i="5.90,281,1643702400"; d="scan'208";a="251936585"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Apr 2022 00:59:24 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,281,1643702400"; d="scan'208";a="648522037"
+Received: from lkp-server01.sh.intel.com (HELO 3abc53900bec) ([10.239.97.150])
+ by FMSMGA003.fm.intel.com with ESMTP; 22 Apr 2022 00:59:19 -0700
+Received: from kbuild by 3abc53900bec with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1nhoCF-0009uY-1P;
+ Fri, 22 Apr 2022 07:59:19 +0000
+Date: Fri, 22 Apr 2022 15:58:33 +0800
+From: kernel test robot <lkp@intel.com>
+To: Jianjun Wang <jianjun.wang@mediatek.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chen-Yu Tsai <wenst@chromium.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>
+Cc: kbuild-all@lists.01.org, Wei-Shun Chang <weishunc@google.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ rex-bc.chen@mediatek.com, randy.wu@mediatek.com,
+ jieyy.yang@mediatek.com, chuanjia.liu@mediatek.com,
+ qizhong.cheng@mediatek.com, jian.yang@mediatek.com
+Subject: Re: [PATCH v6 2/2] phy: mediatek: Add PCIe PHY driver
+Message-ID: <202204221513.SZZHW8dq-lkp@intel.com>
+References: <20220422041125.12732-3-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
-Message-ID: <6fd91edd.4c2b.1805047850c.Coremail.zhaojunkui2008@126.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: KcqowADn9t4jYGJiD_oRAA--.42888W
-X-CM-SenderInfo: p2kd0y5xqn3xasqqmqqrswhudrp/1tbiuQPqqlpD8lH33AAAsr
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Content-Disposition: inline
+In-Reply-To: <20220422041125.12732-3-jianjun.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_005856_789180_BD1B883B 
-X-CRM114-Status: GOOD (  13.02  )
+X-CRM114-CacheID: sfid-20220422_005927_465297_33E7DDD2 
+X-CRM114-Status: GOOD (  14.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,114 +91,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-HI Kalle Valo:
+Hi Jianjun,
 
-At 2022-04-22 15:45:57, "Kalle Valo" <kvalo@kernel.org> wrote:
->Bernard Zhao <zhaojunkui2008@126.com> writes:
->
->> When mt7601u loaded, there are two cases:
->> First when mt7601u is loaded, in function mt7601u_probe, if
->> function mt7601u_probe run into error lable err_hw,
->> mt7601u_cleanup didn`t cleanup the debugfs node.
->> Second when the module disconnect, in function mt7601u_disconnect,
->> mt7601u_cleanup didn`t cleanup the debugfs node.
->> This patch add debugfs exit function and try to cleanup debugfs
->> node when mt7601u loaded fail or unloaded.
->>
->> Signed-off-by: Bernard Zhao <zhaojunkui2008@126.com>
->> ---
->>  .../net/wireless/mediatek/mt7601u/debugfs.c   | 25 +++++++++++--------
->>  drivers/net/wireless/mediatek/mt7601u/init.c  |  5 ++++
->>  .../net/wireless/mediatek/mt7601u/mt7601u.h   |  4 +++
->>  3 files changed, 24 insertions(+), 10 deletions(-)
->>
->> diff --git a/drivers/net/wireless/mediatek/mt7601u/debugfs.c b/drivers/net/wireless/mediatek/mt7601u/debugfs.c
->> index 20669eacb66e..1ae3d75d3c9b 100644
->> --- a/drivers/net/wireless/mediatek/mt7601u/debugfs.c
->> +++ b/drivers/net/wireless/mediatek/mt7601u/debugfs.c
->> @@ -124,17 +124,22 @@ DEFINE_SHOW_ATTRIBUTE(mt7601u_eeprom_param);
->>  
->>  void mt7601u_init_debugfs(struct mt7601u_dev *dev)
->>  {
->> -	struct dentry *dir;
->> -
->> -	dir = debugfs_create_dir("mt7601u", dev->hw->wiphy->debugfsdir);
->> -	if (!dir)
->> +	dev->root_dir = debugfs_create_dir("mt7601u", dev->hw->wiphy->debugfsdir);
->> +	if (!dev->root_dir)
->>  		return;
->>  
->> -	debugfs_create_u8("temperature", 0400, dir, &dev->raw_temp);
->> -	debugfs_create_u32("temp_mode", 0400, dir, &dev->temp_mode);
->> +	debugfs_create_u8("temperature", 0400, dev->root_dir, &dev->raw_temp);
->> +	debugfs_create_u32("temp_mode", 0400, dev->root_dir, &dev->temp_mode);
->> +
->> +	debugfs_create_u32("regidx", 0600, dev->root_dir, &dev->debugfs_reg);
->> +	debugfs_create_file("regval", 0600, dev->root_dir, dev, &fops_regval);
->> +	debugfs_create_file("ampdu_stat", 0400, dev->root_dir, dev, &mt7601u_ampdu_stat_fops);
->> +	debugfs_create_file("eeprom_param", 0400, dev->root_dir, dev, &mt7601u_eeprom_param_fops);
->> +}
->>  
->> -	debugfs_create_u32("regidx", 0600, dir, &dev->debugfs_reg);
->> -	debugfs_create_file("regval", 0600, dir, dev, &fops_regval);
->> -	debugfs_create_file("ampdu_stat", 0400, dir, dev, &mt7601u_ampdu_stat_fops);
->> -	debugfs_create_file("eeprom_param", 0400, dir, dev, &mt7601u_eeprom_param_fops);
->> +void mt7601u_exit_debugfs(struct mt7601u_dev *dev)
->> +{
->> +	if (!dev->root_dir)
->> +		return;
->> +	debugfs_remove(dev->root_dir);
->
->debugfs_remove() has IS_ERR_OR_NULL() check, so no need to check for
->null here.
-Got it, thanks!
+I love your patch! Yet something to improve:
 
->>  }
->> diff --git a/drivers/net/wireless/mediatek/mt7601u/init.c b/drivers/net/wireless/mediatek/mt7601u/init.c
->> index 5d9e952b2966..1e905ef2ed19 100644
->> --- a/drivers/net/wireless/mediatek/mt7601u/init.c
->> +++ b/drivers/net/wireless/mediatek/mt7601u/init.c
->> @@ -427,6 +427,9 @@ void mt7601u_cleanup(struct mt7601u_dev *dev)
->>  	mt7601u_stop_hardware(dev);
->>  	mt7601u_dma_cleanup(dev);
->>  	mt7601u_mcu_cmd_deinit(dev);
->> +#ifdef CONFIG_DEBUG_FS
->> +	mt7601u_exit_debugfs(dev);
->> +#endif
->>  }
->>  
->>  struct mt7601u_dev *mt7601u_alloc_device(struct device *pdev)
->> @@ -625,7 +628,9 @@ int mt7601u_register_device(struct mt7601u_dev *dev)
->>  	if (ret)
->>  		return ret;
->>  
->> +#ifdef CONFIG_DEBUG_FS
->>  	mt7601u_init_debugfs(dev);
->> +#endif
->
->Are these two ifdefs really needed? debugfs functions are empty
->functions when CONFIG_DEBUG_FS is disabled.
-Ifdef doesn't seem to make much sense, thanks for your advice!
+[auto build test ERROR on robh/for-next]
+[also build test ERROR on linus/master v5.18-rc3 next-20220421]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
 
->> --- a/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
->> +++ b/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
->> @@ -242,6 +242,9 @@ struct mt7601u_dev {
->>  	u32 rf_pa_mode[2];
->>  
->>  	struct mac_stats stats;
->> +#ifdef CONFIG_DEBUG_FS
->> +	struct dentry *root_dir;
->> +#endif
->
->I would remove this ifdef, it's just saving one pointer size. Less
->ifdefs we have the better.
-I would modify the code and resubmit a patch, thank you very much!
+url:    https://github.com/intel-lab-lkp/linux/commits/Jianjun-Wang/phy-mediatek-Add-PCIe-PHY-driver/20220422-121407
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
+config: arc-allyesconfig (https://download.01.org/0day-ci/archive/20220422/202204221513.SZZHW8dq-lkp@intel.com/config)
+compiler: arceb-elf-gcc (GCC) 11.2.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/c2ea770ff29995df64bc82ad12ece5b671415a62
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Jianjun-Wang/phy-mediatek-Add-PCIe-PHY-driver/20220422-121407
+        git checkout c2ea770ff29995df64bc82ad12ece5b671415a62
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross W=1 O=build_dir ARCH=arc SHELL=/bin/bash
 
-BR//Bernard
->-- 
->https://patchwork.kernel.org/project/linux-wireless/list/
->
->https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
+
+All errors (new ones prefixed by >>):
+
+   drivers/phy/mediatek/phy-mtk-pcie.c: In function 'mtk_pcie_efuse_set_lane':
+>> drivers/phy/mediatek/phy-mtk-pcie.c:92:29: error: implicit declaration of function 'FIELD_PREP' [-Werror=implicit-function-declaration]
+      92 |                             FIELD_PREP(EFUSE_LN_TX_PMOS_SEL, data->tx_pmos));
+         |                             ^~~~~~~~~~
+   cc1: some warnings being treated as errors
+
+
+vim +/FIELD_PREP +92 drivers/phy/mediatek/phy-mtk-pcie.c
+
+    78	
+    79	static void mtk_pcie_efuse_set_lane(struct mtk_pcie_phy *pcie_phy,
+    80					    unsigned int lane)
+    81	{
+    82		struct mtk_pcie_lane_efuse *data = &pcie_phy->efuse[lane];
+    83		void __iomem *addr;
+    84	
+    85		if (!data->lane_efuse_supported)
+    86			return;
+    87	
+    88		addr = pcie_phy->sif_base + PEXTP_ANA_LN0_TRX_REG +
+    89		       lane * PEXTP_ANA_LANE_OFFSET;
+    90	
+    91		mtk_phy_update_bits(addr + PEXTP_ANA_TX_REG, EFUSE_LN_TX_PMOS_SEL,
+  > 92				    FIELD_PREP(EFUSE_LN_TX_PMOS_SEL, data->tx_pmos));
+    93	
+    94		mtk_phy_update_bits(addr + PEXTP_ANA_TX_REG, EFUSE_LN_TX_NMOS_SEL,
+    95				    FIELD_PREP(EFUSE_LN_TX_NMOS_SEL, data->tx_nmos));
+    96	
+    97		mtk_phy_update_bits(addr + PEXTP_ANA_RX_REG, EFUSE_LN_RX_SEL,
+    98				    FIELD_PREP(EFUSE_LN_RX_SEL, data->rx_data));
+    99	}
+   100	
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
