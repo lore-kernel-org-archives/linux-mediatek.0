@@ -4,71 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE500C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 01:14:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86CA8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 01:29:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t2esTEFRDb8d10z7Mr/8TcLeoF3AGHPqCl3/QQTGNo8=; b=sM+cJL75QOnPJP
-	zfg5BOFcu4Gv/1pqt+AHQHWfHL2nTUVbYo5AAAivk90D9SMpekQRSadJPZGsAlqoMPe0CH870S84D
-	kYR2TojJQnBfrfkID6N9ORLm++5661yuMMjmmQT34u/RMJ3zZpKM/Ye5zTDlXAd6Q/TrKbJVPiWzB
-	OAXUxIr+93iVzr4zzO4bUJlEz/ScPAyvvDJ2Np5+PZXbThwRs/RD9kvNsOzimQNHzINgiEAhZLa5C
-	pVlDd+qghRP/UZe5HUbgU9zpxls8oWo1Op395bgqFGguCqjXoqA7Gn9e/7lEvya+ycpdWmdbfNs44
-	jGNs8VSCFfjOMNAEPKMA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=VFe0aTgT72drZ0dN0U9JnZIxyic3/O8+WcIDYW9lN88=; b=AZm56ZsZM/fWxj
+	9ifpcTilIT5g41Bx+T8KyuCa8ePfLDoTUmotvj1y6GF94FGZ55yK6oC4khomA0zwBxklry0X2Dq+G
+	XbZ/M/9TcPGe8SU9zWkuKlz4t/2Plp0pD5HcCwmDYu2DSAtRoD0qxegXjRWiJnrwM5QP9xJWZw/dJ
+	dvwXQATjWUKUfPiqGgebQI+DBhd3zu0fd3ywKQ0L8FePkCBzq7MlihIbkC0Ot6fhpywTb47AC0uRt
+	IFdyDfSHz/PqH0b3gSZ8QpzONjT9Bojkduv+GgeIVOL/uzWTrXw41J1NuVGFkOHO5XQkdHrftQB5Z
+	ttr7nmgtbWqQuU3jO1Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhhsC-00FW46-HE; Fri, 22 Apr 2022 01:14:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhhs8-00FW39-1N; Fri, 22 Apr 2022 01:14:11 +0000
-X-UUID: 6e0c65bfb1844cae99307dec85bb54bd-20220421
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:d9671df5-445d-4fcd-beb5-a4911bd250b2, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:36abb2ef-06b0-4305-bfbf-554bfc9d151a,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 6e0c65bfb1844cae99307dec85bb54bd-20220421
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 114744464; Thu, 21 Apr 2022 18:14:03 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 21 Apr 2022 18:04:00 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 Apr 2022 09:03:59 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 22 Apr 2022 09:03:59 +0800
-Message-ID: <675df530698d609c8cf6df666017f36533a9663a.camel@mediatek.com>
-Subject: Re: [PATCH v2] drm/mediatek: dpi: Use mt8183 output formats for mt8192
-From: CK Hu <ck.hu@mediatek.com>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, "=?ISO-8859-1?Q?N=EDcolas?= F. R.
- A. Prado" <nfraprado@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- <kernel@collabora.com>, Daniel Vetter <daniel@ffwll.ch>, David Airlie
- <airlied@linux.ie>, Jitao Shi <jitao.shi@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, <dri-devel@lists.freedesktop.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>
-Date: Fri, 22 Apr 2022 09:03:59 +0800
-In-Reply-To: <91c52b76872e6339cce3bd671f4ae1143251e2c3.camel@mediatek.com>
-References: <20220408013950.674477-1-nfraprado@collabora.com>
- <91c52b76872e6339cce3bd671f4ae1143251e2c3.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1nhi6h-00FZH9-SA; Fri, 22 Apr 2022 01:29:11 +0000
+Received: from m15111.mail.126.com ([220.181.15.111])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nhi6V-00FZEd-Rt; Fri, 22 Apr 2022 01:29:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=126.com;
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=b328s
+ Yp84i/CvToFx9BMqGedw/IAbOAcUjUC3unR+0k=; b=go+2Bo+2qK87t7eB6c+oo
+ Atu+RHLiaYM/OoANhqq6GbeDToLyMNrYUptCdn7qpK9oLrgDIFezVn6kjgtMFVcv
+ CcYuKed7tcGSJoPhT3CHMieau6v5R+W6ICcVWTUlGTtf6ThywAY9KI3FpT5B3k26
+ FzpSgMdJUiKtg2teYzWIIU=
+Received: from ubuntu.localdomain (unknown [58.213.83.157])
+ by smtp1 (Coremail) with SMTP id C8mowABHTzfABGJiO8MNBA--.8225S4;
+ Fri, 22 Apr 2022 09:28:34 +0800 (CST)
+From: Bernard Zhao <zhaojunkui2008@126.com>
+To: Jakub Kicinski <kubakici@wp.pl>, Kalle Valo <kvalo@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: bernard@vivo.com,
+	Bernard Zhao <zhaojunkui2008@126.com>
+Subject: [PATCH] net/wireless: add debugfs exit function
+Date: Thu, 21 Apr 2022 18:28:30 -0700
+Message-Id: <20220422012830.342993-1-zhaojunkui2008@126.com>
+X-Mailer: git-send-email 2.33.1
 MIME-Version: 1.0
-X-MTK: N
+X-CM-TRANSID: C8mowABHTzfABGJiO8MNBA--.8225S4
+X-Coremail-Antispam: 1Uf129KBjvJXoWxWryDur13Jw1kJr4rGr15Jwb_yoW5Gw1xpa
+ yUKa4Ykw18Zr1DJ3y8AF4UAFyrG3Zagry7GF90v34ru348Ar1Fq3W0qFW7Aa40qFWUCa45
+ tF4UtFnrGryIvFJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zizBT7UUUUU=
+X-Originating-IP: [58.213.83.157]
+X-CM-SenderInfo: p2kd0y5xqn3xasqqmqqrswhudrp/1tbiYAPqqlpEG-QfMQAAs8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_181408_136904_337A478A 
-X-CRM114-Status: GOOD (  23.28  )
+X-CRM114-CacheID: sfid-20220421_182900_318120_AAEC1520 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,47 +67,81 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksCgpPbiBXZWQsIDIwMjItMDQtMjAgYXQgMjA6MjMgKzA4MDAsIFJleC1CQyBDaGVuIHdyb3Rl
-Ogo+IE9uIFRodSwgMjAyMi0wNC0wNyBhdCAyMTozOSAtMDQwMCwgTsOtY29sYXMgRi4gUi4gQS4g
-UHJhZG8gd3JvdGU6Cj4gPiBUaGUgY29uZmlndXJhdGlvbiBmb3IgbXQ4MTkyIHdhcyBpbmNvcnJl
-Y3RseSB1c2luZyB0aGUgb3V0cHV0Cj4gPiBmb3JtYXRzCj4gPiBmcm9tIG10ODE3My4gU2luY2Ug
-dGhlIG91dHB1dCBmb3JtYXRzIGZvciBtdDgxOTIgYXJlIGluc3RlYWQgdGhlCj4gPiBzYW1lCj4g
-PiBvbmVzIGFzIGZvciBtdDgxODMsIHdoaWNoIHJlcXVpcmUgdHdvIGJ1cyBzYW1wbGVzIHBlciBw
-aXhlbCwgdGhlCj4gPiBwaXhlbGNsb2NrIGFuZCBERFIgZWRnZSBzZXR0aW5nIHdlcmUgbWlzY29u
-ZmlndXJlZC4gVGhpcyBtYWRlCj4gPiBleHRlcm5hbAo+ID4gZGlzcGxheXMgdW5hYmxlIHRvIHNo
-b3cgdGhlIGltYWdlLgo+ID4gCj4gPiBGaXggdGhlIGlzc3VlIGJ5IGNvcnJlY3RpbmcgdGhlIG91
-dHB1dCBmb3JtYXQgZm9yIG10ODE5MiB0byBiZSB0aGUKPiA+IHNhbWUKPiA+IGFzIGZvciBtdDgx
-ODMsIGZpeGluZyB0aGUgdXNhZ2Ugb2YgZXh0ZXJuYWwgZGlzcGxheXMgZm9yIG10ODE5Mi4KPiA+
-IAo+ID4gRml4ZXM6IGJlNjNmNmU4NjAxZiAoImRybS9tZWRpYXRlazogZHBpOiBBZGQgb3V0cHV0
-IGJ1cyBmb3JtYXRzIHRvCj4gPiBkcml2ZXIgZGF0YSIpCj4gPiBTaWduZWQtb2ZmLWJ5OiBOw61j
-b2xhcyBGLiBSLiBBLiBQcmFkbyA8bmZyYXByYWRvQGNvbGxhYm9yYS5jb20+Cj4gPiBSZXZpZXdl
-ZC1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPAo+ID4gYW5nZWxvZ2lvYWNjaGluby5k
-ZWxyZWdub0Bjb2xsYWJvcmEuY29tPgo+ID4gLS0tCj4gPiAKPiA+IENoYW5nZXMgaW4gdjI6Cj4g
-PiAtIEFkZGVkIEZpeGVzIHRhZwo+ID4gCj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kcGkuYyB8IDQgKystLQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIg
-ZGVsZXRpb25zKC0pCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RwaS5jCj4gPiBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMKPiA+
-IGluZGV4IDQ1NTRlMmRlMTQzMC4uZTYxY2Q2N2I5NzhmIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcGkuYwo+ID4gQEAgLTgxOSw4ICs4MTksOCBAQCBzdGF0aWMgY29uc3Qgc3Ry
-dWN0IG10a19kcGlfY29uZiBtdDgxOTJfY29uZiA9Cj4gPiB7Cj4gPiAgCS5jYWxfZmFjdG9yID0g
-bXQ4MTgzX2NhbGN1bGF0ZV9mYWN0b3IsCj4gPiAgCS5yZWdfaF9mcmVfY29uID0gMHhlMCwKPiA+
-ICAJLm1heF9jbG9ja19raHogPSAxNTAwMDAsCj4gPiAtCS5vdXRwdXRfZm10cyA9IG10ODE3M19v
-dXRwdXRfZm10cywKPiA+IC0JLm51bV9vdXRwdXRfZm10cyA9IEFSUkFZX1NJWkUobXQ4MTczX291
-dHB1dF9mbXRzKSwKPiA+ICsJLm91dHB1dF9mbXRzID0gbXQ4MTgzX291dHB1dF9mbXRzLAo+ID4g
-KwkubnVtX291dHB1dF9mbXRzID0gQVJSQVlfU0laRShtdDgxODNfb3V0cHV0X2ZtdHMpLAo+ID4g
-IH07Cj4gPiAgCj4gPiAgc3RhdGljIGludCBtdGtfZHBpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9k
-ZXZpY2UgKnBkZXYpCj4gCj4gUmV2aWV3ZWQtYnk6IFJleC1CQyBDaGVuIDxyZXgtYmMuY2hlbkBt
-ZWRpYXRlay5jb20+Cj4gCj4gSGVsbG8gQ0ssCj4gCj4gR2VudGxlIHBpbmcgZm9yIHRoaXMgcGF0
-Y2guCj4gVGhpcyBwYXRjaCBpcyBjb25maXJtZWQgYnkgWGlubGVpIGFuZCBKaXRhby4KCkFwcGxp
-ZWQgdG8gbWVkaWF0ZWstZHJtLW5leHQgWzFdLgoKWzFdIApodHRwczovL2dpdC5rZXJuZWwub3Jn
-L3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9jaHVua3VhbmcuaHUvbGludXguZ2l0L2xvZy8/aD1t
-ZWRpYXRlay1kcm0tbmV4dAoKUmVnYXJkcywKQ0sKCj4gCj4gQlJzLAo+IFJleAo+IAoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVr
-IG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+This patch add exit debugfs function to mt7601u.
+Debugfs need to be cleanup when module is unloaded or load fail.
+
+Signed-off-by: Bernard Zhao <zhaojunkui2008@126.com>
+---
+ drivers/net/wireless/mediatek/mt7601u/debugfs.c | 9 +++++++--
+ drivers/net/wireless/mediatek/mt7601u/init.c    | 1 +
+ drivers/net/wireless/mediatek/mt7601u/mt7601u.h | 1 +
+ 3 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt7601u/debugfs.c b/drivers/net/wireless/mediatek/mt7601u/debugfs.c
+index 20669eacb66e..5ae27aae685b 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt7601u/debugfs.c
+@@ -9,6 +9,8 @@
+ #include "mt7601u.h"
+ #include "eeprom.h"
+ 
++static struct dentry *dir;
++
+ static int
+ mt76_reg_set(void *data, u64 val)
+ {
+@@ -124,8 +126,6 @@ DEFINE_SHOW_ATTRIBUTE(mt7601u_eeprom_param);
+ 
+ void mt7601u_init_debugfs(struct mt7601u_dev *dev)
+ {
+-	struct dentry *dir;
+-
+ 	dir = debugfs_create_dir("mt7601u", dev->hw->wiphy->debugfsdir);
+ 	if (!dir)
+ 		return;
+@@ -138,3 +138,8 @@ void mt7601u_init_debugfs(struct mt7601u_dev *dev)
+ 	debugfs_create_file("ampdu_stat", 0400, dir, dev, &mt7601u_ampdu_stat_fops);
+ 	debugfs_create_file("eeprom_param", 0400, dir, dev, &mt7601u_eeprom_param_fops);
+ }
++
++void mt7601u_exit_debugfs(struct mt7601u_dev *dev)
++{
++	debugfs_remove(dir);
++}
+diff --git a/drivers/net/wireless/mediatek/mt7601u/init.c b/drivers/net/wireless/mediatek/mt7601u/init.c
+index 5d9e952b2966..eacdd5785fa6 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/init.c
++++ b/drivers/net/wireless/mediatek/mt7601u/init.c
+@@ -427,6 +427,7 @@ void mt7601u_cleanup(struct mt7601u_dev *dev)
+ 	mt7601u_stop_hardware(dev);
+ 	mt7601u_dma_cleanup(dev);
+ 	mt7601u_mcu_cmd_deinit(dev);
++	mt7601u_exit_debugfs(dev);
+ }
+ 
+ struct mt7601u_dev *mt7601u_alloc_device(struct device *pdev)
+diff --git a/drivers/net/wireless/mediatek/mt7601u/mt7601u.h b/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
+index a122f1dd38f6..a77bfef0d39f 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
++++ b/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
+@@ -279,6 +279,7 @@ struct mt7601u_rxwi;
+ extern const struct ieee80211_ops mt7601u_ops;
+ 
+ void mt7601u_init_debugfs(struct mt7601u_dev *dev);
++void mt7601u_exit_debugfs(struct mt7601u_dev *dev);
+ 
+ u32 mt7601u_rr(struct mt7601u_dev *dev, u32 offset);
+ void mt7601u_wr(struct mt7601u_dev *dev, u32 offset, u32 val);
+-- 
+2.33.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
