@@ -4,58 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86CA8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 01:29:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 620BFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 01:41:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=VFe0aTgT72drZ0dN0U9JnZIxyic3/O8+WcIDYW9lN88=; b=AZm56ZsZM/fWxj
-	9ifpcTilIT5g41Bx+T8KyuCa8ePfLDoTUmotvj1y6GF94FGZ55yK6oC4khomA0zwBxklry0X2Dq+G
-	XbZ/M/9TcPGe8SU9zWkuKlz4t/2Plp0pD5HcCwmDYu2DSAtRoD0qxegXjRWiJnrwM5QP9xJWZw/dJ
-	dvwXQATjWUKUfPiqGgebQI+DBhd3zu0fd3ywKQ0L8FePkCBzq7MlihIbkC0Ot6fhpywTb47AC0uRt
-	IFdyDfSHz/PqH0b3gSZ8QpzONjT9Bojkduv+GgeIVOL/uzWTrXw41J1NuVGFkOHO5XQkdHrftQB5Z
-	ttr7nmgtbWqQuU3jO1Kg==;
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=E7NuLeqMDp2si9uopqSKE+OsSZ3Y3pXP8h76Ukx9Q/M=; b=SZQ6dBCF3Zzr3Z
+	2PPdverYYMoMiAcITjHIxyiWc0ARlNHvvqVtclqd2FfzX1vn0LJ35ejbrjVNT2aAYy1Y7fLQLoGPR
+	LzFgFOyTOF51bmsIZRsWXuLyRlZRkWhvEOGzHlDWwCqmHTwT6/C5hLBG9UPZ68aaScv9g2coNsvK9
+	HfPqV6FJOaWGhKpB1mjoCYYhrlrC3c/oBUrRehIf8hF7HGYyejBcWoBF+LR4gNIMUK1i9WYmtYTKt
+	YeiVuspPcCFZglnAXytqFjfQcM+OI42W8TnMnY3q6ssAEleoyz6IOZ/P/sdTOLAeJMIpp6lxsHBwY
+	u2PaJ9Ao0VOnhySieclQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhi6h-00FZH9-SA; Fri, 22 Apr 2022 01:29:11 +0000
-Received: from m15111.mail.126.com ([220.181.15.111])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhi6V-00FZEd-Rt; Fri, 22 Apr 2022 01:29:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=126.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=b328s
- Yp84i/CvToFx9BMqGedw/IAbOAcUjUC3unR+0k=; b=go+2Bo+2qK87t7eB6c+oo
- Atu+RHLiaYM/OoANhqq6GbeDToLyMNrYUptCdn7qpK9oLrgDIFezVn6kjgtMFVcv
- CcYuKed7tcGSJoPhT3CHMieau6v5R+W6ICcVWTUlGTtf6ThywAY9KI3FpT5B3k26
- FzpSgMdJUiKtg2teYzWIIU=
-Received: from ubuntu.localdomain (unknown [58.213.83.157])
- by smtp1 (Coremail) with SMTP id C8mowABHTzfABGJiO8MNBA--.8225S4;
- Fri, 22 Apr 2022 09:28:34 +0800 (CST)
-From: Bernard Zhao <zhaojunkui2008@126.com>
-To: Jakub Kicinski <kubakici@wp.pl>, Kalle Valo <kvalo@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: bernard@vivo.com,
-	Bernard Zhao <zhaojunkui2008@126.com>
-Subject: [PATCH] net/wireless: add debugfs exit function
-Date: Thu, 21 Apr 2022 18:28:30 -0700
-Message-Id: <20220422012830.342993-1-zhaojunkui2008@126.com>
-X-Mailer: git-send-email 2.33.1
+	id 1nhiI5-00FbBB-7A; Fri, 22 Apr 2022 01:40:57 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nhiHu-00Fb8R-Lw; Fri, 22 Apr 2022 01:40:48 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 57365B829EB;
+ Fri, 22 Apr 2022 01:40:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16530C385A7;
+ Fri, 22 Apr 2022 01:40:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1650591644;
+ bh=84SSLoGtlEVQaRfEjpYyO2p8fJDHeUxLXOIa3sUjotE=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=m0XkKPNl8K7JR+f5fsbqjqiWh8SAu1HAp1/nxMkmWCOPNIetM2rqmlFauWr4gZOYw
+ GGovyd5wEEhKxEcsb4EUxugGFwQleEX17IMpWLlmoZv1ybuNo+T5q+p28+IkFr5YT9
+ 1FfWZ6sGbl1tdOO2oAoyHt4nVObY7Rn/noYEderABHAP3RMKkz6Zp4SgNdb10UI6ug
+ P8ANMklg/ayhENT5ChqyJDZkOi5x0MqS5HVp32/7+0CbaCPMmCgwIFHL4oLhfmqlzC
+ 2SgDFiI49v7XAsRRwf21N5PecBu4ik/lxox+VROAoN0nBttQZEHNdywDB4Qdg1ecOi
+ 6I7IcfWeiuYdA==
 MIME-Version: 1.0
-X-CM-TRANSID: C8mowABHTzfABGJiO8MNBA--.8225S4
-X-Coremail-Antispam: 1Uf129KBjvJXoWxWryDur13Jw1kJr4rGr15Jwb_yoW5Gw1xpa
- yUKa4Ykw18Zr1DJ3y8AF4UAFyrG3Zagry7GF90v34ru348Ar1Fq3W0qFW7Aa40qFWUCa45
- tF4UtFnrGryIvFJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zizBT7UUUUU=
-X-Originating-IP: [58.213.83.157]
-X-CM-SenderInfo: p2kd0y5xqn3xasqqmqqrswhudrp/1tbiYAPqqlpEG-QfMQAAs8
+In-Reply-To: <CAGXv+5G2Uyq5fdMUnhr5wOm6O8M3dHNKGaSP2L_Vv1o28mXmOQ@mail.gmail.com>
+References: <20220419081246.2546159-1-wenst@chromium.org>
+ <3591fcc1-d34a-b40a-4e78-edcf9d2ddf08@collabora.com>
+ <CAGXv+5HhcQbdGLQFtgPnvzVbSKaQ5GQGvmjwPVOVxjrYnMh1dg@mail.gmail.com>
+ <ca8048f4-2e75-a49b-6c54-9f6abba6ead3@collabora.com>
+ <CAGXv+5G2Uyq5fdMUnhr5wOm6O8M3dHNKGaSP2L_Vv1o28mXmOQ@mail.gmail.com>
+Subject: Re: [RFC PATCH 0/7] clk: mediatek: Move to struct clk_hw provider APIs
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Miles Chen <miles.chen@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 21 Apr 2022 18:40:42 -0700
+User-Agent: alot/0.10
+Message-Id: <20220422014044.16530C385A7@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_182900_318120_AAEC1520 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20220421_184046_901243_F3D355E6 
+X-CRM114-Status: GOOD (  15.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,74 +80,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch add exit debugfs function to mt7601u.
-Debugfs need to be cleanup when module is unloaded or load fail.
+Quoting Chen-Yu Tsai (2022-04-20 23:05:10)
+> 
+> Not exactly. All the clocks in the MTK drivers are allocated at runtime,
+> so we can't use clk_parent_data to point to not-yet-allocated clk_hw-s.
+> Instead we'll need to have
+> 
+>     struct mtk_clk_parent_data {
+>         unsigned int clk_id; /* Match CLK_XXX_YYY from dt-binding headers */
+>         ... /* remaining fields same as mtk_clk_parent_data */
+>     };
+> 
+> and create the actual clk_parent_data at runtime by looking up clk_id in
+> the set of already registered clks:
+> 
+>     int mtk_clk_register_XXX(..., struct mtk_clk_parent_data *pdata,
+>                              struct clk_hw_onecell_data *clk_data) {
+>         struct clk_parent_data data = {
+>             .hw = clk_data[pdata->clk_id],
+>             /* copy other fields verbatim */
+>         };
+>         ...
+>     }
+> 
+> Obviously this forces some ordering of how the clks are registered.
+> I believe the order is already correct, and if it isn't, it would be
+> easy to detect, and we can reorder things to fix it.
 
-Signed-off-by: Bernard Zhao <zhaojunkui2008@126.com>
----
- drivers/net/wireless/mediatek/mt7601u/debugfs.c | 9 +++++++--
- drivers/net/wireless/mediatek/mt7601u/init.c    | 1 +
- drivers/net/wireless/mediatek/mt7601u/mt7601u.h | 1 +
- 3 files changed, 9 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt7601u/debugfs.c b/drivers/net/wireless/mediatek/mt7601u/debugfs.c
-index 20669eacb66e..5ae27aae685b 100644
---- a/drivers/net/wireless/mediatek/mt7601u/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt7601u/debugfs.c
-@@ -9,6 +9,8 @@
- #include "mt7601u.h"
- #include "eeprom.h"
- 
-+static struct dentry *dir;
-+
- static int
- mt76_reg_set(void *data, u64 val)
- {
-@@ -124,8 +126,6 @@ DEFINE_SHOW_ATTRIBUTE(mt7601u_eeprom_param);
- 
- void mt7601u_init_debugfs(struct mt7601u_dev *dev)
- {
--	struct dentry *dir;
--
- 	dir = debugfs_create_dir("mt7601u", dev->hw->wiphy->debugfsdir);
- 	if (!dir)
- 		return;
-@@ -138,3 +138,8 @@ void mt7601u_init_debugfs(struct mt7601u_dev *dev)
- 	debugfs_create_file("ampdu_stat", 0400, dir, dev, &mt7601u_ampdu_stat_fops);
- 	debugfs_create_file("eeprom_param", 0400, dir, dev, &mt7601u_eeprom_param_fops);
- }
-+
-+void mt7601u_exit_debugfs(struct mt7601u_dev *dev)
-+{
-+	debugfs_remove(dir);
-+}
-diff --git a/drivers/net/wireless/mediatek/mt7601u/init.c b/drivers/net/wireless/mediatek/mt7601u/init.c
-index 5d9e952b2966..eacdd5785fa6 100644
---- a/drivers/net/wireless/mediatek/mt7601u/init.c
-+++ b/drivers/net/wireless/mediatek/mt7601u/init.c
-@@ -427,6 +427,7 @@ void mt7601u_cleanup(struct mt7601u_dev *dev)
- 	mt7601u_stop_hardware(dev);
- 	mt7601u_dma_cleanup(dev);
- 	mt7601u_mcu_cmd_deinit(dev);
-+	mt7601u_exit_debugfs(dev);
- }
- 
- struct mt7601u_dev *mt7601u_alloc_device(struct device *pdev)
-diff --git a/drivers/net/wireless/mediatek/mt7601u/mt7601u.h b/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
-index a122f1dd38f6..a77bfef0d39f 100644
---- a/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
-+++ b/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
-@@ -279,6 +279,7 @@ struct mt7601u_rxwi;
- extern const struct ieee80211_ops mt7601u_ops;
- 
- void mt7601u_init_debugfs(struct mt7601u_dev *dev);
-+void mt7601u_exit_debugfs(struct mt7601u_dev *dev);
- 
- u32 mt7601u_rr(struct mt7601u_dev *dev, u32 offset);
- void mt7601u_wr(struct mt7601u_dev *dev, u32 offset, u32 val);
--- 
-2.33.1
-
+If this is a common problem, we may need to come up with a generic
+solution that either adds a new clk registration API that fills in the
+clk_parent_data hw pointer or add another member to struct
+clk_parent_data that says "index into this other array of clk_hw
+pointers".
 
 _______________________________________________
 Linux-mediatek mailing list
