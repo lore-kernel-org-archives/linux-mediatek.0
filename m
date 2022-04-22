@@ -4,70 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC5B8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 02:49:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43DA9C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 02:51:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/vTbG+oHN4tmF9uAht4eyjh62qu0OB1L16nVYt17GEo=; b=mIB0rlXlodrioy
-	aEWONNXIcJ3t01ZSuDfqK20FIaBx5zJPnP/O0YQk3ZAYXgurXVzS6f4agXA5C19dzcBlRMGsBqi5p
-	uBvEy3mDFEBT4Sp56Mq6mkNE3LOucBsw2V7cA54qAzH/mZl4rQrTnKsNyHFxpInuKtb1Qe+rNL6Nr
-	XjHizz0+zu9GFTS/0K2fEMqu09oI/XJcO2anwaLf9pC8sophSOJUxIv12xQhisXfPXUnQMNaBT0bJ
-	jNWGVGPrshv9G9UmA8xBctOLdSMLJf8SEINwURIxdKATBJRCkHTtZ1+f8QuuSiXNcjw+AL8UCU9vB
-	a0xUsrgnvIdBYe5ATpyw==;
+	List-Owner; bh=m4axAENjkcJ9rY6NAUnLeRd8fAF9bvUr8ndTD2QwT4M=; b=A51jPadTnOJXDy
+	Jo+c++QqF1K+Y3EJyIRlbtSyocoVY2DlawqXXACGk366n9HNVr62B7l/mLeX4KW5wly/Ku36diFZr
+	dSa5hbCm8Mz+f2W0D4fR9OVRdzWlqR5YhX2s/kZzRhKu8ea8zBoFhsG7tRLWXlifud/UHxYM0OmQu
+	eTLt8qALszIiPNXChuWtAbmvd3m8iFC9kcqDlgTlHrbCSzUIxOTM0wr7KNRSM9CGeF/slYONgp1qP
+	kpoWGpzRCzRIx68D9/pHw6rBLeVnEFUvq5coXvu5fVELklShNwqscFXXQo+j1NSRds3uL5hu1p1rY
+	H7A0eqbe/QIwJGrGKXpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhjMO-00FnIk-3L; Fri, 22 Apr 2022 02:49:28 +0000
+	id 1nhjOI-00FnrG-Gi; Fri, 22 Apr 2022 02:51:26 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhjMC-00FnGq-If; Fri, 22 Apr 2022 02:49:17 +0000
-X-UUID: 266c8e8191054d1fb36f20a4dbd828ff-20220421
+ id 1nhjOB-00FnoG-Um; Fri, 22 Apr 2022 02:51:25 +0000
+X-UUID: 92f7cb725d6a4855b39650b8f4a15bb9-20220421
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=tzXCGAxLRrdm3PJ2khDbtUK7hTfeeA+9bFIdBDIuWbc=; 
+ b=hstW9wJ7acuky3bv2wFKQAGoKUVAg45SV2L21+U+xOLyB1ddSYpK6LvviFmJsa3qKJHOmG28d2B84oD7mYpzXOWPb/ajgLCPGRpMlxXTjMjYbY+GU6FzvBlX8DZlyPGFTGHEq1TaWn/ju47gV4IIPTp3bsaQ4lyM9Z9p1ptLnHY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:314d8de4-b9a5-427e-81ef-e51c09f77b1a, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:e7111b37-2d29-4bf9-8e43-1fe0bf2af457, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:7a158cf0-da02-41b4-b6df-58f4ccd36682,
+ B:0,IP:0,URL:0,TC:0,Content:2,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:2
+X-CID-META: VersionHash:faefae9, CLOUDID:842db6ef-06b0-4305-bfbf-554bfc9d151a,
  C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 266c8e8191054d1fb36f20a4dbd828ff-20220421
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <tinghan.shen@mediatek.com>)
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:4,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 92f7cb725d6a4855b39650b8f4a15bb9-20220421
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <houlong.wei@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1670814697; Thu, 21 Apr 2022 19:49:11 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 21 Apr 2022 19:39:27 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 22 Apr 2022 10:39:25 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 22 Apr 2022 10:39:25 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Tinghan Shen
- <tinghan.shen@mediatek.com>
-Subject: [PATCH v1 1/2] dt-bindings: mailbox: mtk,
- adsp-mbox: add mt8186 compatible name
-Date: Fri, 22 Apr 2022 10:39:08 +0800
-Message-ID: <20220422023909.6584-2-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.15.GIT
-In-Reply-To: <20220422023909.6584-1-tinghan.shen@mediatek.com>
-References: <20220422023909.6584-1-tinghan.shen@mediatek.com>
+ with ESMTP id 569084767; Thu, 21 Apr 2022 19:51:13 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 Apr 2022 19:51:12 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 22 Apr 2022 10:51:02 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 22 Apr 2022 10:51:02 +0800
+Message-ID: <6ffdf93599e0b55bd3640ef3f17a9255635f0b79.camel@mediatek.com>
+Subject: Re: [PATCH] media: platform: mtk-mdp: Fix mdp_ipi_comm structure
+ alignment
+From: houlong.wei <houlong.wei@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ <minghsiu.tsai@mediatek.com>
+CC: <andrew-ct.chen@mediatek.com>, <mchehab@kernel.org>,
+ <matthias.bgg@gmail.com>, <hans.verkuil@cisco.com>,
+ <linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <kernel@collabora.com>, <acourbot@chromium.org>, <irui.wang@mediatek.com>,
+ <houlong.wei@mediatek.com>
+Date: Fri, 22 Apr 2022 10:51:02 +0800
+In-Reply-To: <7658c8e4-596b-abfc-9255-854c16f920a7@collabora.com>
+References: <20220307155653.460910-1-angelogioacchino.delregno@collabora.com>
+ <7658c8e4-596b-abfc-9255-854c16f920a7@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_194916_651955_7E5E51A8 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20220421_195124_259023_7C74F45E 
+X-CRM114-Status: GOOD (  23.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,40 +90,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible name for MediaTek MT8186 SoC ADSP mailbox.
+On Thu, 2022-04-21 at 13:03 +0200, AngeloGioacchino Del Regno wrote:
+> Il 07/03/22 16:56, AngeloGioacchino Del Regno ha scritto:
+> > The mdp_ipi_comm structure defines a command that is either
+> > PROCESS (start processing) or DEINIT (destroy instance); we
+> > are using this one to send PROCESS or DEINIT commands from Linux
+> > to an MDP instance through a VPU write but, while the first wants
+> > us to stay 4-bytes aligned, the VPU instead requires an 8-bytes
+> > data alignment.
+> > 
+> > Keeping in mind that these commands are executed immediately
+> > after sending them (hence not chained with others before the
+> > VPU/MDP "actually" start executing), it is fine to simply add
+> > a padding of 4 bytes to this structure: this keeps the same
+> > performance as before, as we're still stack-allocating it,
+> > while avoiding hackery inside of mtk-vpu to ensure alignment
+> > bringing a definitely bigger performance impact.
+> > 
+> > Fixes: c8eb2d7e8202 ("[media] media: Add Mediatek MDP Driver")
+> > Signed-off-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> 
+> Hello,
+> is there any issue with this patch?
+> 
+> Regards,
+> Angelo
+> 
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
----
- .../devicetree/bindings/mailbox/mtk,adsp-mbox.yaml         | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+The 'padding' is added at the end of the struct, there will be no
+problem in the VPU firmware. Thanks for the patch.
 
-diff --git a/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-index fe454a1fba17..72c1d9e82c89 100644
---- a/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-+++ b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-@@ -11,14 +11,15 @@ maintainers:
- 
- description: |
-   The MTK ADSP mailbox Inter-Processor Communication (IPC) enables the SoC
--  to ommunicate with ADSP by passing messages through two mailbox channels.
-+  to communicate with ADSP by passing messages through two mailbox channels.
-   The MTK ADSP mailbox IPC also provides the ability for one processor to
-   signal the other processor using interrupts.
- 
- properties:
-   compatible:
--    items:
--      - const: mediatek,mt8195-adsp-mbox
-+    enum:
-+      - mediatek,mt8195-adsp-mbox
-+      - mediatek,mt8186-adsp-mbox
- 
-   "#mbox-cells":
-     const: 0
--- 
-2.18.0
+Reviewed-by: Houlong Wei <houlong.wei@mediatek.com>
 
-
+> > ---
+> > 
+> > This patch has been tested on Acer Chromebook R 13 (MT8173 Elm) on
+> > Debian Sid.
+> > 
+> > This is an alternative solution to the mtk-vpu approach, found
+> > here:
+> > 
+https://lore.kernel.org/all/20210920170408.1561-1-dafna.hirschfeld@collabora.com
+> > 
+> >   drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h | 2 ++
+> >   1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h
+> > b/drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h
+> > index 2cb8cecb3077..b810c96695c8 100644
+> > --- a/drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h
+> > +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h
+> > @@ -40,12 +40,14 @@ struct mdp_ipi_init {
+> >    * @ipi_id        : IPI_MDP
+> >    * @ap_inst       : AP mtk_mdp_vpu address
+> >    * @vpu_inst_addr : VPU MDP instance address
+> > + * @padding       : Alignment padding
+> >    */
+> >   struct mdp_ipi_comm {
+> >   	uint32_t msg_id;
+> >   	uint32_t ipi_id;
+> >   	uint64_t ap_inst;
+> >   	uint32_t vpu_inst_addr;
+> > +	uint32_t padding;
+> >   };
+> >   
+> >   /**
+> 
+> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
