@@ -4,68 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57B95C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 19:21:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D949C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 19:47:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=2sPwwCQhWd/pVQCq2elDSDyAJKPWBxoxnZuiSnTM560=; b=ZIdjPPzlz00ZWj
-	wrAmpAc3ofStI8RkqcbK1JNTddVtBLbn7cdnzQ1Xt83EYKVWN0zJm1T5f3Qyk3Cv2WHKEGnX4weDz
-	yIj5CArJDU+QX2H3rB6/LefCUOr1d3qlCRqUBeBgmgr3Y+BZu5bbJYPmlnL0RcRfSO3Jps2iB6Ife
-	8d+58y6OhWxjBtGk3GV8XrTQWi+w5tdU5uwmiFe85Fy/XP6UJ6CihxdC/Px9lU0tdS4BRE3qKLaWm
-	Va4sUtoc1o9gbSLU6UnJFqpYyuOW71UX+U217veMQ2JkrJ69peH7rvQ3Ddp0uPJ0ssQSdBheTLDWc
-	rmzE9Qm8ck60ne67MAoA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aaDEdw4XrYhaGhynkqNY9M1M+YMfTVdk8OXVm2FFzzQ=; b=FuoOYrkGUa6yWM
+	pr5BeQ8wMumKCrOb2QS1hAxy8O4Se4A6J20+wv01x8iTT88HOeM/pQ+EOfxDrEHf/2OKPxHIo1t4t
+	mICD2F9RGyb7p/ZpEWMhRZIJOfZZOoEXKPk7nNtS+epvSOG1/sRt3+pglbjn5m9zhopICDVJdCnqL
+	0q+HTvtFZRwD5l0HGD3ZoAX4scI0RdNI7oOpWJ6llLhu9e/Dw8vf3BelDqL/fdHyh3AeB4jAEYtXl
+	Z78nEcVw++D0ZHGFqA4VxywY4rF+rluY71wiILb4ct51zdJ8e2t9mS2hyaC3/vPvMliGjiYlwXP1N
+	+nDZ8zowKDqyOg9vpAvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhyqI-0027HM-I9; Fri, 22 Apr 2022 19:21:22 +0000
-Received: from mail-oa1-f52.google.com ([209.85.160.52])
+	id 1nhzFS-002AV6-NK; Fri, 22 Apr 2022 19:47:22 +0000
+Received: from mx3.wp.pl ([212.77.101.10])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhyqG-0027Gd-9V; Fri, 22 Apr 2022 19:21:21 +0000
-Received: by mail-oa1-f52.google.com with SMTP id
- 586e51a60fabf-e5e433d66dso9622194fac.5; 
- Fri, 22 Apr 2022 12:21:18 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=0gc9s0Nu7Dy/f5W0uxa+JhgkFQnmycRULJWoNHmae7s=;
- b=WeoMHa/KUgHrJAzaAPNe71pi1kJksmHuo9IttJxZs7rOlQ16Xd5Fht+UUQgm5TYty4
- UF1oW4W0WWTnKcGGxDF4Yi6HV5Yu2pM8MAU2cfEc3JsNqSadea0iTdPi8vhsG9Ba9uLJ
- mdoNlN440Bk/345otCgx1jcAAukMVBhLngbz/+JY11noRdr5Ojw2SGEsh9LJG2qT/n8f
- FCXu63r0rEyGsxtK11UsU2atTxE4XnLZzG3BnRVgwVm53Vvfu+G4MwAVZ08N+7o0aeKn
- eJ+sM5jl+H8GX9wxTgFMoS4kXjvN5rBk5EV6dkU+l4bo/CA4OimU709HPNWkajQO91BK
- zUyQ==
-X-Gm-Message-State: AOAM531Y6X24PLD13r1kRHlNqqO0j1rUcmaBzCAD1Fkd3xfhatPU/F5/
- a2mDoV/rTNcp5L8WZvDRoA==
-X-Google-Smtp-Source: ABdhPJy1+14fIkK9Z0u5jvsEPpFvTFjZbVR5xwcjkuW3Qq+dGls5tB9qudMev6OqfOIz/ed6iA+g2g==
-X-Received: by 2002:a05:6870:6196:b0:e1:e1a2:5c65 with SMTP id
- a22-20020a056870619600b000e1e1a25c65mr2782990oah.190.1650655278243; 
- Fri, 22 Apr 2022 12:21:18 -0700 (PDT)
-Received: from xps15.. (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
- by smtp.googlemail.com with ESMTPSA id
- bd32-20020a056870d7a000b000d43d4d2de1sm937317oab.5.2022.04.22.12.21.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Apr 2022 12:21:17 -0700 (PDT)
-From: Rob Herring <robh@kernel.org>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>
-Cc: iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] dt-bindings: iommu: Drop client node in examples
-Date: Fri, 22 Apr 2022 14:21:03 -0500
-Message-Id: <20220422192104.2591462-1-robh@kernel.org>
-X-Mailer: git-send-email 2.32.0
+ id 1nhzFP-002ASN-Mg
+ for linux-mediatek@lists.infradead.org; Fri, 22 Apr 2022 19:47:21 +0000
+Received: (wp-smtpd smtp.wp.pl 29161 invoked from network);
+ 22 Apr 2022 21:47:12 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=1024a;
+ t=1650656832; bh=xN2TT2giRziTYzxkSRV3HAksGNGWVBKa+uXJBNXkzg8=;
+ h=From:To:Cc:Subject;
+ b=OaGiXdxuDtJlr6gXKJMqvpfHpw99AKST0JhzfU229DzbMl/J+krQWmDL0JaMn3wZ+
+ nLYzvdrGHvHszYhPrBHs6aXhFXMAhayra5vhItjEqeLtXIx/Awutg9aHIuu0eIUDfd
+ DolY4LgU+nV3ARsdp1tJC43865542AEiY+9HqATk=
+Received: from unknown (HELO kicinski-fedora-PC1C0HJN)
+ (kubakici@wp.pl@[163.114.132.6]) (envelope-sender <kubakici@wp.pl>)
+ by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+ for <zhaojunkui2008@126.com>; 22 Apr 2022 21:47:12 +0200
+Date: Fri, 22 Apr 2022 12:47:04 -0700
+From: Jakub Kicinski <kubakici@wp.pl>
+To: Bernard Zhao <zhaojunkui2008@126.com>
+Cc: Kalle Valo <kvalo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, bernard@vivo.com
+Subject: Re: [PATCH v2] mediatek/mt7601u: add debugfs exit function
+Message-ID: <20220422124704.259244e7@kicinski-fedora-PC1C0HJN>
+In-Reply-To: <20220422080854.490379-1-zhaojunkui2008@126.com>
+References: <20220422080854.490379-1-zhaojunkui2008@126.com>
 MIME-Version: 1.0
+X-WP-MailID: 9321f50bc9e4db09d6c2149ef2c2edd3
+X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
+X-WP-SPAM: NO 000000A [UYOE]                               
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_122120_366797_ACF2E2DB 
-X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-CacheID: sfid-20220422_124720_278389_DE9A49F5 
+X-CRM114-Status: UNSURE (   7.36  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,58 +73,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There's no need to show consumer side in provider examples. The ones
-used here are undocumented or undocumented in schemas which results in
-warnings.
+On Fri, 22 Apr 2022 01:08:54 -0700 Bernard Zhao wrote:
+> When mt7601u loaded, there are two cases:
+> First when mt7601u is loaded, in function mt7601u_probe, if
+> function mt7601u_probe run into error lable err_hw,
+> mt7601u_cleanup didn`t cleanup the debugfs node.
+> Second when the module disconnect, in function mt7601u_disconnect,
+> mt7601u_cleanup didn`t cleanup the debugfs node.
+> This patch add debugfs exit function and try to cleanup debugfs
+> node when mt7601u loaded fail or unloaded.
+> 
+> Signed-off-by: Bernard Zhao <zhaojunkui2008@126.com>
 
-Signed-off-by: Rob Herring <robh@kernel.org>
----
- .../devicetree/bindings/iommu/mediatek,iommu.yaml      | 10 ----------
- .../devicetree/bindings/iommu/samsung,sysmmu.yaml      | 10 ----------
- 2 files changed, 20 deletions(-)
+Ah, missed that there was a v2. My point stands, wiphy debugfs dir
+should do the cleanup.
 
-diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-index 97e8c471a5e8..e0389539194f 100644
---- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-@@ -173,13 +173,3 @@ examples:
-                              <&larb3>, <&larb4>, <&larb5>;
-             #iommu-cells = <1>;
-     };
--
--  - |
--    #include <dt-bindings/memory/mt8173-larb-port.h>
--
--    /* Example for a client device */
--    display {
--           compatible = "mediatek,mt8173-disp";
--           iommus = <&iommu M4U_PORT_DISP_OVL0>,
--                    <&iommu M4U_PORT_DISP_RDMA0>;
--     };
-diff --git a/Documentation/devicetree/bindings/iommu/samsung,sysmmu.yaml b/Documentation/devicetree/bindings/iommu/samsung,sysmmu.yaml
-index 783c6b37c9f0..672a0beea600 100644
---- a/Documentation/devicetree/bindings/iommu/samsung,sysmmu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/samsung,sysmmu.yaml
-@@ -86,16 +86,6 @@ examples:
-   - |
-     #include <dt-bindings/clock/exynos5250.h>
- 
--    gsc_0: scaler@13e00000 {
--      compatible = "samsung,exynos5-gsc";
--      reg = <0x13e00000 0x1000>;
--      interrupts = <0 85 0>;
--      power-domains = <&pd_gsc>;
--      clocks = <&clock CLK_GSCL0>;
--      clock-names = "gscl";
--      iommus = <&sysmmu_gsc0>;
--    };
--
-     sysmmu_gsc0: iommu@13e80000 {
-       compatible = "samsung,exynos-sysmmu";
-       reg = <0x13E80000 0x1000>;
--- 
-2.32.0
-
+Do you encounter problems in practice or are you sending this patches
+based on reading / static analysis of the code only.
 
 _______________________________________________
 Linux-mediatek mailing list
