@@ -4,71 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F422C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 08:01:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97871C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 08:02:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ff2bpuebCzslF8kIVnyx7d20dKtcqA58K4k2UhNiuug=; b=ohXehVKeg7+ZXd
-	Etdur0Rj/tyknkZT8kejAjtiaTebIj/peax0za17Z678jNbihV/zulE/R+CwOgXQFRFjTb87ctdyG
-	qVdOMeJHP4fIgKrfhfPyMg+VZHpQXzUfD6MJWA5hGpEeR99ucOGxH+E0IOxDdg3XlSMPUvhwG9tnE
-	2eXdzmNyVH0vhlQEhFu1XF2ERrOJvjR6hBKS8OtcT2oZVOszHiDL9wyt6+OLuLPpPxF/AwUr/85bB
-	NPRzmyuy0zBFhS9FxAq64NLuYuWaJGz35q+KmsnHHsUORFWpop8h0jtDmggbPv/ccdFo2dE8N0I3Y
-	5NW3Yd886pYSMAUeCVdQ==;
+	List-Owner; bh=Kz3YFtntmYvDsAJ7EeX7LX7Ic0oc8HInvGDysjmiLAg=; b=vgGGP1ScqoN7ZS
+	N3I6KiXgw4Y3nC0zRTU24l6st9J14mje5m0d5PEoIvUoVwOYb2r09h6axiRIaKWQQO4zbKTNFJkzp
+	gEmXV0W7NqhueubWWjfnkh6hb9EJI5RDB2IxI/lVcsL4Qsbtd7+0783s3AP1fUjPFy5iwoQlwJ/KZ
+	D54ls3AzUwhSP4C2lha5wG+XYoMzJ4BIBDqryqzon4+wKNGdagHf7dewHjpj/gfk+N02UHC9HSQ67
+	WEHw3WVacxvRev0pXbHurVdOa6U7xvooLrA51rnhmSdSn9MZVBXS94ewXQa2Kw2EicyVRdTi5UJma
+	LP797puCbDe7hF/zBaiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhoEf-00H4fO-3g; Fri, 22 Apr 2022 08:01:49 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhoBm-00H3CX-Is; Fri, 22 Apr 2022 07:58:53 +0000
-X-UUID: 53cb1383c5fd48839bf749724e1e3a29-20220422
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:c56acb96-59ef-4f17-84c7-b97955045ea1, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:8788c1ef-06b0-4305-bfbf-554bfc9d151a,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 53cb1383c5fd48839bf749724e1e3a29-20220422
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 466611776; Fri, 22 Apr 2022 00:58:43 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 Apr 2022 00:52:45 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 22 Apr 2022 15:52:44 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 22 Apr 2022 15:52:43 +0800
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <rafael@kernel.org>, <viresh.kumar@linaro.org>, <robh+dt@kernel.org>,
- <krzk+dt@kernel.org>, <matthias.bgg@gmail.com>
-CC: <jia-wei.chang@mediatek.com>, <roger.lu@mediatek.com>,
- <hsinyi@google.com>, <khilman@baylibre.com>,
- <angelogioacchino.delregno@collabora.com>, <linux-pm@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>
-Subject: [PATCH V4 03/14] cpufreq: mediatek: Replace old_* with pre_*
-Date: Fri, 22 Apr 2022 15:52:28 +0800
-Message-ID: <20220422075239.16437-4-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
-References: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
+	id 1nhoF5-00H4tV-59; Fri, 22 Apr 2022 08:02:15 +0000
+Received: from m1541.mail.126.com ([220.181.15.41])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nhoBs-00H3BH-BF; Fri, 22 Apr 2022 07:59:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=126.com;
+ s=s110527; h=Date:From:Subject:MIME-Version:Message-ID; bh=KOOwj
+ Ngxtpj+BOV9RiocwkEJ5gaHVgyNXKB2q9i864s=; b=I2bcLGGMBZdE8yJCQe73E
+ ublKXrfowHicATx4CEeGLTb6eCcoRMxL5WoQOTv2+7QZxwlqAzF4e/JPdbJi3Hv0
+ A8AVgXuuhLURpEiqwFDsWBb4y1DE5YvfB6w7f1mKr1sC1ZbZ4TWP3y/hEY3dxCYf
+ tslRTLpgh+V2PhvjmdSg5c=
+Received: from zhaojunkui2008$126.com ( [58.213.83.157] ) by
+ ajax-webmail-wmsvr41 (Coremail) ; Fri, 22 Apr 2022 15:58:26 +0800 (CST)
+X-Originating-IP: [58.213.83.157]
+Date: Fri, 22 Apr 2022 15:58:26 +0800 (CST)
+From: z  <zhaojunkui2008@126.com>
+To: "Kalle Valo" <kvalo@kernel.org>
+Cc: "Jakub Kicinski" <kubakici@wp.pl>, "David S. Miller" <davem@davemloft.net>,
+ "Paolo Abeni" <pabeni@redhat.com>, 
+ "Matthias Brugger" <matthias.bgg@gmail.com>, 
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ bernard@vivo.com
+Subject: Re:Re: [PATCH] mediatek/mt7601u: add debugfs exit function
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.13 build 20210622(1d4788a8)
+ Copyright (c) 2002-2022 www.mailtech.cn 126com
+In-Reply-To: <87k0bhmuh6.fsf@kernel.org>
+References: <20220422070325.465918-1-zhaojunkui2008@126.com>
+ <87k0bhmuh6.fsf@kernel.org>
 MIME-Version: 1.0
-X-MTK: N
+Message-ID: <6fd91edd.4c2b.1805047850c.Coremail.zhaojunkui2008@126.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: KcqowADn9t4jYGJiD_oRAA--.42888W
+X-CM-SenderInfo: p2kd0y5xqn3xasqqmqqrswhudrp/1tbiuQPqqlpD8lH33AAAsr
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_005850_752866_FE64EA40 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20220422_005856_789180_BD1B883B 
+X-CRM114-Status: GOOD (  13.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,207 +75,114 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To make driver more readable, replace old_* with pre_*.
+HI Kalle Valo:
 
-Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/cpufreq/mediatek-cpufreq.c | 84 +++++++++++++++---------------
- 1 file changed, 42 insertions(+), 42 deletions(-)
+At 2022-04-22 15:45:57, "Kalle Valo" <kvalo@kernel.org> wrote:
+>Bernard Zhao <zhaojunkui2008@126.com> writes:
+>
+>> When mt7601u loaded, there are two cases:
+>> First when mt7601u is loaded, in function mt7601u_probe, if
+>> function mt7601u_probe run into error lable err_hw,
+>> mt7601u_cleanup didn`t cleanup the debugfs node.
+>> Second when the module disconnect, in function mt7601u_disconnect,
+>> mt7601u_cleanup didn`t cleanup the debugfs node.
+>> This patch add debugfs exit function and try to cleanup debugfs
+>> node when mt7601u loaded fail or unloaded.
+>>
+>> Signed-off-by: Bernard Zhao <zhaojunkui2008@126.com>
+>> ---
+>>  .../net/wireless/mediatek/mt7601u/debugfs.c   | 25 +++++++++++--------
+>>  drivers/net/wireless/mediatek/mt7601u/init.c  |  5 ++++
+>>  .../net/wireless/mediatek/mt7601u/mt7601u.h   |  4 +++
+>>  3 files changed, 24 insertions(+), 10 deletions(-)
+>>
+>> diff --git a/drivers/net/wireless/mediatek/mt7601u/debugfs.c b/drivers/net/wireless/mediatek/mt7601u/debugfs.c
+>> index 20669eacb66e..1ae3d75d3c9b 100644
+>> --- a/drivers/net/wireless/mediatek/mt7601u/debugfs.c
+>> +++ b/drivers/net/wireless/mediatek/mt7601u/debugfs.c
+>> @@ -124,17 +124,22 @@ DEFINE_SHOW_ATTRIBUTE(mt7601u_eeprom_param);
+>>  
+>>  void mt7601u_init_debugfs(struct mt7601u_dev *dev)
+>>  {
+>> -	struct dentry *dir;
+>> -
+>> -	dir = debugfs_create_dir("mt7601u", dev->hw->wiphy->debugfsdir);
+>> -	if (!dir)
+>> +	dev->root_dir = debugfs_create_dir("mt7601u", dev->hw->wiphy->debugfsdir);
+>> +	if (!dev->root_dir)
+>>  		return;
+>>  
+>> -	debugfs_create_u8("temperature", 0400, dir, &dev->raw_temp);
+>> -	debugfs_create_u32("temp_mode", 0400, dir, &dev->temp_mode);
+>> +	debugfs_create_u8("temperature", 0400, dev->root_dir, &dev->raw_temp);
+>> +	debugfs_create_u32("temp_mode", 0400, dev->root_dir, &dev->temp_mode);
+>> +
+>> +	debugfs_create_u32("regidx", 0600, dev->root_dir, &dev->debugfs_reg);
+>> +	debugfs_create_file("regval", 0600, dev->root_dir, dev, &fops_regval);
+>> +	debugfs_create_file("ampdu_stat", 0400, dev->root_dir, dev, &mt7601u_ampdu_stat_fops);
+>> +	debugfs_create_file("eeprom_param", 0400, dev->root_dir, dev, &mt7601u_eeprom_param_fops);
+>> +}
+>>  
+>> -	debugfs_create_u32("regidx", 0600, dir, &dev->debugfs_reg);
+>> -	debugfs_create_file("regval", 0600, dir, dev, &fops_regval);
+>> -	debugfs_create_file("ampdu_stat", 0400, dir, dev, &mt7601u_ampdu_stat_fops);
+>> -	debugfs_create_file("eeprom_param", 0400, dir, dev, &mt7601u_eeprom_param_fops);
+>> +void mt7601u_exit_debugfs(struct mt7601u_dev *dev)
+>> +{
+>> +	if (!dev->root_dir)
+>> +		return;
+>> +	debugfs_remove(dev->root_dir);
+>
+>debugfs_remove() has IS_ERR_OR_NULL() check, so no need to check for
+>null here.
+Got it, thanks!
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index e040f3574af9..ff27f77e8ee6 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -61,18 +61,18 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
- {
- 	struct regulator *proc_reg = info->proc_reg;
- 	struct regulator *sram_reg = info->sram_reg;
--	int old_vproc, old_vsram, new_vsram, vsram, vproc, ret;
-+	int pre_vproc, pre_vsram, new_vsram, vsram, vproc, ret;
- 
--	old_vproc = regulator_get_voltage(proc_reg);
--	if (old_vproc < 0) {
-+	pre_vproc = regulator_get_voltage(proc_reg);
-+	if (pre_vproc < 0) {
- 		dev_err(info->cpu_dev,
--			"invalid Vproc value: %d\n", old_vproc);
--		return old_vproc;
-+			"invalid Vproc value: %d\n", pre_vproc);
-+		return pre_vproc;
- 	}
- 	/* Vsram should not exceed the maximum allowed voltage of SoC. */
- 	new_vsram = min(new_vproc + MIN_VOLT_SHIFT, MAX_VOLT_LIMIT);
- 
--	if (old_vproc < new_vproc) {
-+	if (pre_vproc < new_vproc) {
- 		/*
- 		 * When scaling up voltages, Vsram and Vproc scale up step
- 		 * by step. At each step, set Vsram to (Vproc + 200mV) first,
-@@ -80,20 +80,20 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
- 		 * Keep doing it until Vsram and Vproc hit target voltages.
- 		 */
- 		do {
--			old_vsram = regulator_get_voltage(sram_reg);
--			if (old_vsram < 0) {
-+			pre_vsram = regulator_get_voltage(sram_reg);
-+			if (pre_vsram < 0) {
- 				dev_err(info->cpu_dev,
--					"invalid Vsram value: %d\n", old_vsram);
--				return old_vsram;
-+					"invalid Vsram value: %d\n", pre_vsram);
-+				return pre_vsram;
- 			}
--			old_vproc = regulator_get_voltage(proc_reg);
--			if (old_vproc < 0) {
-+			pre_vproc = regulator_get_voltage(proc_reg);
-+			if (pre_vproc < 0) {
- 				dev_err(info->cpu_dev,
--					"invalid Vproc value: %d\n", old_vproc);
--				return old_vproc;
-+					"invalid Vproc value: %d\n", pre_vproc);
-+				return pre_vproc;
- 			}
- 
--			vsram = min(new_vsram, old_vproc + MAX_VOLT_SHIFT);
-+			vsram = min(new_vsram, pre_vproc + MAX_VOLT_SHIFT);
- 
- 			if (vsram + VOLT_TOL >= MAX_VOLT_LIMIT) {
- 				vsram = MAX_VOLT_LIMIT;
-@@ -122,12 +122,12 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
- 			ret = regulator_set_voltage(proc_reg, vproc,
- 						    vproc + VOLT_TOL);
- 			if (ret) {
--				regulator_set_voltage(sram_reg, old_vsram,
--						      old_vsram);
-+				regulator_set_voltage(sram_reg, pre_vsram,
-+						      pre_vsram);
- 				return ret;
- 			}
- 		} while (vproc < new_vproc || vsram < new_vsram);
--	} else if (old_vproc > new_vproc) {
-+	} else if (pre_vproc > new_vproc) {
- 		/*
- 		 * When scaling down voltages, Vsram and Vproc scale down step
- 		 * by step. At each step, set Vproc to (Vsram - 200mV) first,
-@@ -135,20 +135,20 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
- 		 * Keep doing it until Vsram and Vproc hit target voltages.
- 		 */
- 		do {
--			old_vproc = regulator_get_voltage(proc_reg);
--			if (old_vproc < 0) {
-+			pre_vproc = regulator_get_voltage(proc_reg);
-+			if (pre_vproc < 0) {
- 				dev_err(info->cpu_dev,
--					"invalid Vproc value: %d\n", old_vproc);
--				return old_vproc;
-+					"invalid Vproc value: %d\n", pre_vproc);
-+				return pre_vproc;
- 			}
--			old_vsram = regulator_get_voltage(sram_reg);
--			if (old_vsram < 0) {
-+			pre_vsram = regulator_get_voltage(sram_reg);
-+			if (pre_vsram < 0) {
- 				dev_err(info->cpu_dev,
--					"invalid Vsram value: %d\n", old_vsram);
--				return old_vsram;
-+					"invalid Vsram value: %d\n", pre_vsram);
-+				return pre_vsram;
- 			}
- 
--			vproc = max(new_vproc, old_vsram - MAX_VOLT_SHIFT);
-+			vproc = max(new_vproc, pre_vsram - MAX_VOLT_SHIFT);
- 			ret = regulator_set_voltage(proc_reg, vproc,
- 						    vproc + VOLT_TOL);
- 			if (ret)
-@@ -178,8 +178,8 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
- 			}
- 
- 			if (ret) {
--				regulator_set_voltage(proc_reg, old_vproc,
--						      old_vproc);
-+				regulator_set_voltage(proc_reg, pre_vproc,
-+						      pre_vproc);
- 				return ret;
- 			}
- 		} while (vproc > new_vproc + VOLT_TOL ||
-@@ -207,16 +207,16 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 	struct mtk_cpu_dvfs_info *info = policy->driver_data;
- 	struct device *cpu_dev = info->cpu_dev;
- 	struct dev_pm_opp *opp;
--	long freq_hz, old_freq_hz;
--	int vproc, old_vproc, inter_vproc, target_vproc, ret;
-+	long freq_hz, pre_freq_hz;
-+	int vproc, pre_vproc, inter_vproc, target_vproc, ret;
- 
- 	inter_vproc = info->intermediate_voltage;
- 
--	old_freq_hz = clk_get_rate(cpu_clk);
--	old_vproc = regulator_get_voltage(info->proc_reg);
--	if (old_vproc < 0) {
--		dev_err(cpu_dev, "invalid Vproc value: %d\n", old_vproc);
--		return old_vproc;
-+	pre_freq_hz = clk_get_rate(cpu_clk);
-+	pre_vproc = regulator_get_voltage(info->proc_reg);
-+	if (pre_vproc < 0) {
-+		dev_err(cpu_dev, "invalid Vproc value: %d\n", pre_vproc);
-+		return pre_vproc;
- 	}
- 
- 	freq_hz = freq_table[index].frequency * 1000;
-@@ -235,12 +235,12 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 	 * current voltage, scale up voltage first.
- 	 */
- 	target_vproc = (inter_vproc > vproc) ? inter_vproc : vproc;
--	if (old_vproc < target_vproc) {
-+	if (pre_vproc < target_vproc) {
- 		ret = mtk_cpufreq_set_voltage(info, target_vproc);
- 		if (ret) {
- 			dev_err(cpu_dev,
- 				"cpu%d: failed to scale up voltage!\n", policy->cpu);
--			mtk_cpufreq_set_voltage(info, old_vproc);
-+			mtk_cpufreq_set_voltage(info, pre_vproc);
- 			return ret;
- 		}
- 	}
-@@ -250,7 +250,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 	if (ret) {
- 		dev_err(cpu_dev,
- 			"cpu%d: failed to re-parent cpu clock!\n", policy->cpu);
--		mtk_cpufreq_set_voltage(info, old_vproc);
-+		mtk_cpufreq_set_voltage(info, pre_vproc);
- 		WARN_ON(1);
- 		return ret;
- 	}
-@@ -261,7 +261,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 		dev_err(cpu_dev,
- 			"cpu%d: failed to scale cpu clock rate!\n", policy->cpu);
- 		clk_set_parent(cpu_clk, armpll);
--		mtk_cpufreq_set_voltage(info, old_vproc);
-+		mtk_cpufreq_set_voltage(info, pre_vproc);
- 		return ret;
- 	}
- 
-@@ -279,13 +279,13 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 	 * If the new voltage is lower than the intermediate voltage or the
- 	 * original voltage, scale down to the new voltage.
- 	 */
--	if (vproc < inter_vproc || vproc < old_vproc) {
-+	if (vproc < inter_vproc || vproc < pre_vproc) {
- 		ret = mtk_cpufreq_set_voltage(info, vproc);
- 		if (ret) {
- 			dev_err(cpu_dev,
- 				"cpu%d: failed to scale down voltage!\n", policy->cpu);
- 			clk_set_parent(cpu_clk, info->inter_clk);
--			clk_set_rate(armpll, old_freq_hz);
-+			clk_set_rate(armpll, pre_freq_hz);
- 			clk_set_parent(cpu_clk, armpll);
- 			return ret;
- 		}
--- 
-2.18.0
+>>  }
+>> diff --git a/drivers/net/wireless/mediatek/mt7601u/init.c b/drivers/net/wireless/mediatek/mt7601u/init.c
+>> index 5d9e952b2966..1e905ef2ed19 100644
+>> --- a/drivers/net/wireless/mediatek/mt7601u/init.c
+>> +++ b/drivers/net/wireless/mediatek/mt7601u/init.c
+>> @@ -427,6 +427,9 @@ void mt7601u_cleanup(struct mt7601u_dev *dev)
+>>  	mt7601u_stop_hardware(dev);
+>>  	mt7601u_dma_cleanup(dev);
+>>  	mt7601u_mcu_cmd_deinit(dev);
+>> +#ifdef CONFIG_DEBUG_FS
+>> +	mt7601u_exit_debugfs(dev);
+>> +#endif
+>>  }
+>>  
+>>  struct mt7601u_dev *mt7601u_alloc_device(struct device *pdev)
+>> @@ -625,7 +628,9 @@ int mt7601u_register_device(struct mt7601u_dev *dev)
+>>  	if (ret)
+>>  		return ret;
+>>  
+>> +#ifdef CONFIG_DEBUG_FS
+>>  	mt7601u_init_debugfs(dev);
+>> +#endif
+>
+>Are these two ifdefs really needed? debugfs functions are empty
+>functions when CONFIG_DEBUG_FS is disabled.
+Ifdef doesn't seem to make much sense, thanks for your advice!
 
+>> --- a/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
+>> +++ b/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
+>> @@ -242,6 +242,9 @@ struct mt7601u_dev {
+>>  	u32 rf_pa_mode[2];
+>>  
+>>  	struct mac_stats stats;
+>> +#ifdef CONFIG_DEBUG_FS
+>> +	struct dentry *root_dir;
+>> +#endif
+>
+>I would remove this ifdef, it's just saving one pointer size. Less
+>ifdefs we have the better.
+I would modify the code and resubmit a patch, thank you very much!
 
+BR//Bernard
+>-- 
+>https://patchwork.kernel.org/project/linux-wireless/list/
+>
+>https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
