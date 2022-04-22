@@ -4,87 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CD52C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 17:35:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57B95C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 19:21:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SdL5GiV2DC1988dtiJs28WBMfB4brw237QyRO+0QVt4=; b=tvNsJS/wUoFkhU
-	NdCL1f6m9CsvnbrGca/nz5aEJCSYW3DX8MTwrUtVp/8OPDIN6TNWvvE8zKaQLB59DcAVrWKyG0WQ9
-	hNFkRNpuLZtQt41QGP4HNNZr0xtwfmreDC9TCVyGfvIbtOeHebPmU5hfjGtqKfgLr4oMYy5fQeO5i
-	A5HrAe8vTcszaDGoGlGzC5thrONkQ61uIvMnlHRLGUFvsIuvwSkaiL8xt2wa5W8CwrfPYMFBbllqh
-	WBmInkvSoTvyBO2pcJ1glj8bQGdGXGcJZzvJxM0mwT/YERKRmWbNU7vxqI3gIFL7sheT+vxc5+ID1
-	L6JquY1n8PxFLSm2vdEA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2sPwwCQhWd/pVQCq2elDSDyAJKPWBxoxnZuiSnTM560=; b=ZIdjPPzlz00ZWj
+	wrAmpAc3ofStI8RkqcbK1JNTddVtBLbn7cdnzQ1Xt83EYKVWN0zJm1T5f3Qyk3Cv2WHKEGnX4weDz
+	yIj5CArJDU+QX2H3rB6/LefCUOr1d3qlCRqUBeBgmgr3Y+BZu5bbJYPmlnL0RcRfSO3Jps2iB6Ife
+	8d+58y6OhWxjBtGk3GV8XrTQWi+w5tdU5uwmiFe85Fy/XP6UJ6CihxdC/Px9lU0tdS4BRE3qKLaWm
+	Va4sUtoc1o9gbSLU6UnJFqpYyuOW71UX+U217veMQ2JkrJ69peH7rvQ3Ddp0uPJ0ssQSdBheTLDWc
+	rmzE9Qm8ck60ne67MAoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhxBm-001oaR-NG; Fri, 22 Apr 2022 17:35:26 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1nhyqI-0027HM-I9; Fri, 22 Apr 2022 19:21:22 +0000
+Received: from mail-oa1-f52.google.com ([209.85.160.52])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhxBL-001oRh-Px
- for linux-mediatek@lists.infradead.org; Fri, 22 Apr 2022 17:35:01 +0000
-Received: by mail-ej1-x633.google.com with SMTP id l7so17789929ejn.2
- for <linux-mediatek@lists.infradead.org>; Fri, 22 Apr 2022 10:34:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language
- :from:to:cc:references:in-reply-to:content-transfer-encoding;
- bh=gcGu16UtHNcJMaljpwgCxg9/Y7hdibwAAQTqTsz4orY=;
- b=m59yJ0YM+fTtTMluLJHSPbZqTKw2yrlcB7rn0kAAsirMZ9Feosc0T2CvLTs7UhrlFW
- ah+n7r8omYlF1P502KsWEICfSiA+2+qdIdX0vcv/zfEavG+v/SjIpnhdAwoSp4jVwCCk
- DFa28zWCXST+X9xyeuqKsbcAo88ZFLsGfC+BJ4SUbpXRKdaQeiUcjDMn+ZtjwO9treEc
- mtGTXyDzS6+fkRCTsSj3pvi3aO7Rz3mZV1FJVcNSVJ7LaUUWXmeuFZUGhP/0+tpPV8AG
- VEwsfOPspe+Qd9eWy1YF4dmuKf+JCIiXrBM4817HsVs2bUR/YuO47NOFG55yXMDt0b5z
- he+Q==
+ id 1nhyqG-0027Gd-9V; Fri, 22 Apr 2022 19:21:21 +0000
+Received: by mail-oa1-f52.google.com with SMTP id
+ 586e51a60fabf-e5e433d66dso9622194fac.5; 
+ Fri, 22 Apr 2022 12:21:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:from:to:cc:references:in-reply-to
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=gcGu16UtHNcJMaljpwgCxg9/Y7hdibwAAQTqTsz4orY=;
- b=zLsZ2BksfGYTuSLSrpVtpfoVfqksgSfE7Hx6ENVK56NM79B2hNmi8vKY7HdvDHbTCK
- dFqp+X6D6fZBG3sJRnfJnzotphNAuCcA+JpcTqTsD2hayz6pJ8tkef6kuS10han9yzhH
- OoXOhYnsRzxj7NZGj2pnPWspslKZMviazt7TImNCycORp0Kx+lQ94LbYM2W2BAwx7l9o
- D5hOFRhXvhO3REdtLtPowIhfm3Z1+WISHVRpRC/rQMkN8CYq+A/UZDx/xM7eNUSdQ3DD
- ZTans/9nbsPrSKxjJFvO3T2rLHyxzOxGJQ51mw3ziZM2rrjBEpCDlqc6SS3LKfr4ALrM
- MGTw==
-X-Gm-Message-State: AOAM531L3g0QpZB2Ci6UaT7cnHseplUhMOnV2viNG9sTgLCP6vlMch3w
- ZGbpzrZ81yBepU0bdoAo/ZT3Mg==
-X-Google-Smtp-Source: ABdhPJzFbgLTY01c3uCTHOltXeHcVv4qu5BdqenO4C1F1MyF3ijzLpR3KfjJwJ6gjX4Kgph3GoN0pg==
-X-Received: by 2002:a17:906:c14a:b0:6e8:76d0:e0eb with SMTP id
- dp10-20020a170906c14a00b006e876d0e0ebmr5030477ejc.412.1650648894899; 
- Fri, 22 Apr 2022 10:34:54 -0700 (PDT)
-Received: from [192.168.0.234] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- jr16-20020a170906a99000b006e4c05e8919sm950871ejb.35.2022.04.22.10.34.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 Apr 2022 10:34:54 -0700 (PDT)
-Message-ID: <811bf944-a230-ab9b-583a-840e57af8a1e@linaro.org>
-Date: Fri, 22 Apr 2022 19:34:53 +0200
+ bh=0gc9s0Nu7Dy/f5W0uxa+JhgkFQnmycRULJWoNHmae7s=;
+ b=WeoMHa/KUgHrJAzaAPNe71pi1kJksmHuo9IttJxZs7rOlQ16Xd5Fht+UUQgm5TYty4
+ UF1oW4W0WWTnKcGGxDF4Yi6HV5Yu2pM8MAU2cfEc3JsNqSadea0iTdPi8vhsG9Ba9uLJ
+ mdoNlN440Bk/345otCgx1jcAAukMVBhLngbz/+JY11noRdr5Ojw2SGEsh9LJG2qT/n8f
+ FCXu63r0rEyGsxtK11UsU2atTxE4XnLZzG3BnRVgwVm53Vvfu+G4MwAVZ08N+7o0aeKn
+ eJ+sM5jl+H8GX9wxTgFMoS4kXjvN5rBk5EV6dkU+l4bo/CA4OimU709HPNWkajQO91BK
+ zUyQ==
+X-Gm-Message-State: AOAM531Y6X24PLD13r1kRHlNqqO0j1rUcmaBzCAD1Fkd3xfhatPU/F5/
+ a2mDoV/rTNcp5L8WZvDRoA==
+X-Google-Smtp-Source: ABdhPJy1+14fIkK9Z0u5jvsEPpFvTFjZbVR5xwcjkuW3Qq+dGls5tB9qudMev6OqfOIz/ed6iA+g2g==
+X-Received: by 2002:a05:6870:6196:b0:e1:e1a2:5c65 with SMTP id
+ a22-20020a056870619600b000e1e1a25c65mr2782990oah.190.1650655278243; 
+ Fri, 22 Apr 2022 12:21:18 -0700 (PDT)
+Received: from xps15.. (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+ by smtp.googlemail.com with ESMTPSA id
+ bd32-20020a056870d7a000b000d43d4d2de1sm937317oab.5.2022.04.22.12.21.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 22 Apr 2022 12:21:17 -0700 (PDT)
+From: Rob Herring <robh@kernel.org>
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] dt-bindings: iommu: Drop client node in examples
+Date: Fri, 22 Apr 2022 14:21:03 -0500
+Message-Id: <20220422192104.2591462-1-robh@kernel.org>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH V4 01/14] dt-bindings: cpufreq: mediatek: Add MediaTek CCI
- property
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
- viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org,
- matthias.bgg@gmail.com
-Cc: jia-wei.chang@mediatek.com, roger.lu@mediatek.com, hsinyi@google.com,
- khilman@baylibre.com, angelogioacchino.delregno@collabora.com,
- linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
- <20220422075239.16437-2-rex-bc.chen@mediatek.com>
- <f2e5a34b-ed02-91a1-bc7b-fecaa95e227e@linaro.org>
-In-Reply-To: <f2e5a34b-ed02-91a1-bc7b-fecaa95e227e@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_103459_880671_5435E551 
-X-CRM114-Status: GOOD (  17.46  )
+X-CRM114-CacheID: sfid-20220422_122120_366797_ACF2E2DB 
+X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,50 +83,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 22/04/2022 19:26, Krzysztof Kozlowski wrote:
-> On 22/04/2022 09:52, Rex-BC Chen wrote:
->> MediaTek Cache Coherent Interconnect (CCI) uses software devfreq module
->> for scaling clock frequency and adjust voltage.
->> The phandle could be linked between CPU and MediaTek CCI for some
->> MediaTek SoCs, like MT8183 and MT8186.
->> Therefore, we add this property in cpufreq-mediatek.txt.
->>
->> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
->> ---
->>  .../devicetree/bindings/cpufreq/cpufreq-mediatek.txt         | 5 +++++
->>  1 file changed, 5 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
->> index b8233ec91d3d..3387e1e2a2df 100644
->> --- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
->> +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
->> @@ -20,6 +20,11 @@ Optional properties:
->>  	       Vsram to fit SoC specific needs. When absent, the voltage scaling
->>  	       flow is handled by hardware, hence no software "voltage tracking" is
->>  	       needed.
->> +- mediatek,cci:
->> +	MediaTek Cache Coherent Interconnect (CCI) uses the software devfreq module to
->> +	scale the clock frequency and adjust the voltage.
-> 
-> Devfreq is a SW mechanism, it should not be part of bindings description.
-> 
->> +	For details, please refer to
->> +	Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
-> 
-> Since the file does not exist, I have troubles reviewing it. First of
-> all, you already have "mediatek,cci-control" property in DT, so why
-> using different name?
-> 
-> Second, it looks like you want to put devfreq into bindings instead of
-> using proper interconnect bindings.
+There's no need to show consumer side in provider examples. The ones
+used here are undocumented or undocumented in schemas which results in
+warnings.
 
-Actually judging by the driver this looks like some
-device-boot-time-ordering, so I wonder whether this is a proper way to
-express it.
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+ .../devicetree/bindings/iommu/mediatek,iommu.yaml      | 10 ----------
+ .../devicetree/bindings/iommu/samsung,sysmmu.yaml      | 10 ----------
+ 2 files changed, 20 deletions(-)
 
+diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+index 97e8c471a5e8..e0389539194f 100644
+--- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
++++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+@@ -173,13 +173,3 @@ examples:
+                              <&larb3>, <&larb4>, <&larb5>;
+             #iommu-cells = <1>;
+     };
+-
+-  - |
+-    #include <dt-bindings/memory/mt8173-larb-port.h>
+-
+-    /* Example for a client device */
+-    display {
+-           compatible = "mediatek,mt8173-disp";
+-           iommus = <&iommu M4U_PORT_DISP_OVL0>,
+-                    <&iommu M4U_PORT_DISP_RDMA0>;
+-     };
+diff --git a/Documentation/devicetree/bindings/iommu/samsung,sysmmu.yaml b/Documentation/devicetree/bindings/iommu/samsung,sysmmu.yaml
+index 783c6b37c9f0..672a0beea600 100644
+--- a/Documentation/devicetree/bindings/iommu/samsung,sysmmu.yaml
++++ b/Documentation/devicetree/bindings/iommu/samsung,sysmmu.yaml
+@@ -86,16 +86,6 @@ examples:
+   - |
+     #include <dt-bindings/clock/exynos5250.h>
+ 
+-    gsc_0: scaler@13e00000 {
+-      compatible = "samsung,exynos5-gsc";
+-      reg = <0x13e00000 0x1000>;
+-      interrupts = <0 85 0>;
+-      power-domains = <&pd_gsc>;
+-      clocks = <&clock CLK_GSCL0>;
+-      clock-names = "gscl";
+-      iommus = <&sysmmu_gsc0>;
+-    };
+-
+     sysmmu_gsc0: iommu@13e80000 {
+       compatible = "samsung,exynos-sysmmu";
+       reg = <0x13E80000 0x1000>;
+-- 
+2.32.0
 
-Best regards,
-Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
