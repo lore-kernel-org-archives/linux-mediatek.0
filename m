@@ -4,82 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D87B5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 16:57:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E555DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 17:28:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f+c1FSGWgD9cM4vzO0eUlkz8umfhPA8HpTMHaj7QKeM=; b=f3Ovus6GFw2KIvmAFhCbb4IEST
-	7I/2LJXddRuYQwgp7Krmtxz/MbnrkVDKDGmv9GENI41C/0sxY6/M8O0FjHUNUwStPBVeIlSAnr5Gc
-	OlY619cwaoafxmIlNECsPabDqF9/JUXv0/lh6KGQtoDygiLEmVQ8jNAdQ289IFfGbX0zQAGYFjn85
-	Q0+F6+JBTKigdBT4cXb8J5Le0ZFcLgB5lFgc3xynyc1UOOrBgC9PEfsKHpc/SQwnvcCEqaA17PGC0
-	UABVqfwOs2UOQRKy/ggpzl+TZZOCUDVruucP3jIfp2TGpQi1fEL/lvt3q7lIsUOrsEa0ICAhs3Ra5
-	9nzuenLA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QR2Y6MPpjQJ0KYxmGnnQIG0xpMUfqccXgnvrmOwqbGA=; b=ly2SgescA/p8E/
+	G4rkmXMymlaGOGQLL54uiqhlr151CDrWXwh1RnGfZuxEXghxfkezPHdnQZfc8KmCxCploli3jWVgg
+	z15qK92GQmLaCCC+F+X1+zrE9qTaCGM71waZAkmPm3kf4UlOjj2LLoqub1xqBte2r+qpzuwI4pU84
+	hzY/e3hoRaSuxfA+m4l7ptHbkp1MKuYfu6kGau+k51/rLe3Oodm6KC7xIZ+LW+wsAaNuuSJSI5mdp
+	csArCY3vHOzE2T1rYals0LR+JlkLHnqGXAXGfVpOhOr8nmGwOgSOGlanow1k3T69HBAa8KgIqZ8Xh
+	JYuse4zc4HxaNCN4J+hQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhwap-001aab-UI; Fri, 22 Apr 2022 16:57:15 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1nhx4l-001lmi-UR; Fri, 22 Apr 2022 17:28:11 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhwam-001aYk-Ph; Fri, 22 Apr 2022 16:57:14 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id h27so15049141lfj.13;
- Fri, 22 Apr 2022 09:57:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=bPH7VaBfkFbtZZotNuuTdskPihD6+M4P5/MTINbvQUc=;
- b=Pe+UOZBQErS+Z8nmGZrZH2ly5AmAXR/nub2maR1YBDg2mW5cI8XFN7kRpzR9zJR1g/
- RCcytxziQK15Y/+UhDwpzPO/z8urhmQ15jD9UMpIVuXdvYk4ZA9FMtQi/zELESwjYQ6k
- oawpnRmK4g3hu3fT3s6md4XsDn4X61bzFwlVcJy4oKKXIIa+Wf5SbsrYbGooZQtu9T6w
- mMrQaS3i1Iz83k0/NJ+NcahILWGnEI8wU5g8Ena+3kmorM7mSBcU3mLHYmzUGfSY57bG
- E+QiOx9uS0cC7R96ZHgDOYCEZyLap5NE8EK+uYgY9glo5SCpnjSPQ7hN8GC1SPl/HsYy
- 6IUA==
+ id 1nhx0d-001jsc-RM
+ for linux-mediatek@lists.infradead.org; Fri, 22 Apr 2022 17:23:57 +0000
+Received: by mail-ej1-x629.google.com with SMTP id ks6so17735937ejb.1
+ for <linux-mediatek@lists.infradead.org>; Fri, 22 Apr 2022 10:23:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=xyTu4b7ZMRhX6whN7X8zUFA8mpZ14UJCNVpEn8M9ARg=;
+ b=NIa/76KBpbPcghoDEkTYGEHbQsh/DvJWClpr17LX22LfUCDZlA8v44kBeEFyZHxhX9
+ dGj9bcrXhnLJcjpa+sp0fCzGeiIsd1LcqXrgUryZ4GH9Ti06OoWYQRoFgPVXYpfL3ooe
+ s66wJHVJ52frfDlYQLnrn63t4ijca1CnnUSagHs4Knl1WTBwye44ShV5svAu8Su/v5I+
+ ODg58bbXoXdN12+yLukNzr33J+hvPWkrjqj1G9EpS0U0VRl6WdxsnagiIZzXQkZ2egSm
+ RfJaPMmssnoS3R0VoGZqg3SJ/YWBy6ttx9uicI2bDwGRr7zZWCwWIcMJk3H78ck72pMZ
+ qXaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=bPH7VaBfkFbtZZotNuuTdskPihD6+M4P5/MTINbvQUc=;
- b=3+0ZhdsbU/8HZniLPfmW7lJ1KwmNL5xpgFx+GnAPicBiAAETsKcqNcVyCbpk2EglcR
- 9M0VCbbahyGRXHMKrv6kk0hc+M2gd/og00YlBvSdXJS3qFXj98lX/rAur84+R7GJhxHU
- tohVSX0C9BomD6uACYiiX/A8sbVXLzCkH3969ZOCcW3NkrwYl8kf4Bvht9uqaKAi/aLU
- KfNmi6mE/k6GBMj3Go4fU0YPquDKyr6MDshtbWMkGlki2MlhJIu1V9MqeEw1HXNB/s8j
- PGpC0h/eP3JmdY5MSDUWyJIpTcd0ezVKnDHAzfx2leWFldxfMoMFXqC4xKTt/DL7Ao8M
- syxA==
-X-Gm-Message-State: AOAM533bmoucS0MXWAjecCFicf+x6lFcEnowntmXCrRQzapCVhVp3tN0
- IUe8j4E2Hzmn3XH3GgsmEpw=
-X-Google-Smtp-Source: ABdhPJzdFQvGzdSLbrSe+adt+pVkjulM8+IbVohfTKqNcWpqfyrWUedIVpFG1a8BPbVbvzAdinxkHQ==
-X-Received: by 2002:a05:6512:2213:b0:471:c296:b659 with SMTP id
- h19-20020a056512221300b00471c296b659mr3848330lfu.24.1650646630354; 
- Fri, 22 Apr 2022 09:57:10 -0700 (PDT)
-Received: from orome ([62.96.65.119]) by smtp.gmail.com with ESMTPSA id
- r9-20020a2e8e29000000b0024da2131ed9sm269715ljk.100.2022.04.22.09.57.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Apr 2022 09:57:07 -0700 (PDT)
-Date: Fri, 22 Apr 2022 18:57:04 +0200
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- xinlei.lee@mediatek.com, lee.jones@linaro.org, robh+dt@kernel.org,
- matthias.bgg@gmail.com, linux-pwm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- rex-bc.chen@mediatek.com, jitao.shi@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v6, 5/5] dt-bindings: pwm: Add interrupts property for
- MediaTek MT8192
-Message-ID: <YmLeYOOCNciqhykt@orome>
-References: <1650284456-16407-1-git-send-email-xinlei.lee@mediatek.com>
- <1650284456-16407-6-git-send-email-xinlei.lee@mediatek.com>
- <a92d3b46-ace4-2d19-fef9-c59cd1a596ce@collabora.com>
- <20220421134808.sqnecvysuzlgdsz5@pengutronix.de>
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=xyTu4b7ZMRhX6whN7X8zUFA8mpZ14UJCNVpEn8M9ARg=;
+ b=qenHK7KS1gweLF2aYxSbLPpX7CUx0pfDyfsrWQDcj3TOcLrQ8S2wmSh/7FdB+1n77h
+ tyJXz5FVnzMt6hBg8axEurlUuQZCCVs+c49FEl3XobomVTzsrPN26aZja4VwBcq/c7Yq
+ SoNdy2ndabcBDWO7GM3u4WY2Uf9pVw1z0D0i89LDL/vk74n24yJn9POtBBtppap9CBVz
+ l7HDw3zP+9sGdnrGQRyB01zn6YokpW0BRc6upJ2s/+pLXErgMEwstPa1BYfB5OwJFkrZ
+ rYwAQPveiJiRFUKrExcf3rV07eJ/LQaftV8uEHuVM/TtQLCsjPH7SIG9ksU/lFA1PNVC
+ RJjg==
+X-Gm-Message-State: AOAM533MjtxWC7U7C8b1K+91sF5pSQdu/bZ2OXJ6ay6pBQTB8Y91sA+5
+ eJeNNmmJHOUxJmMxQIb7FfC5kQ==
+X-Google-Smtp-Source: ABdhPJzS3sVONP52JJ41oUXMaywZWInX/T1GsMDEpa4Oo7VNHKVjxy8VUX1OKglrnM+JWmBSNQhpLg==
+X-Received: by 2002:a17:907:62a6:b0:6ef:8118:d3e2 with SMTP id
+ nd38-20020a17090762a600b006ef8118d3e2mr5004725ejc.605.1650648230694; 
+ Fri, 22 Apr 2022 10:23:50 -0700 (PDT)
+Received: from [192.168.0.234] (xdsl-188-155-176-92.adslplus.ch.
+ [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
+ fq6-20020a1709069d8600b006e891c0b7e0sm933630ejc.129.2022.04.22.10.23.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 22 Apr 2022 10:23:50 -0700 (PDT)
+Message-ID: <af95f353-c91d-844e-3bc1-e052f7d16e54@linaro.org>
+Date: Fri, 22 Apr 2022 19:23:48 +0200
 MIME-Version: 1.0
-In-Reply-To: <20220421134808.sqnecvysuzlgdsz5@pengutronix.de>
-User-Agent: Mutt/2.2.1 (c8109e14) (2022-02-19)
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH V4 00/14] cpufreq: mediatek: Cleanup and support MT8183
+ and MT8186
+Content-Language: en-US
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
+ viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org,
+ matthias.bgg@gmail.com
+Cc: jia-wei.chang@mediatek.com, roger.lu@mediatek.com, hsinyi@google.com,
+ khilman@baylibre.com, angelogioacchino.delregno@collabora.com,
+ linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_095712_904882_E9EF4630 
-X-CRM114-Status: GOOD (  18.44  )
+X-CRM114-CacheID: sfid-20220422_102355_954140_1A94B3CC 
+X-CRM114-Status: UNSURE (   6.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,83 +95,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8443046380128088201=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 22/04/2022 09:52, Rex-BC Chen wrote:
+> 
+> Reference series:
+> [1]: V1 of this series is present by Jia-Wei Chang.
+>      message-id:20220307122151.11666-1-jia-wei.chang@mediatek.com
+> 
+> [2]: The MediaTek CCI devfreq driver is introduced in another series.
+>      message-id:20220408052150.22536-1-johnson.wang@mediatek.com
+> 
+> [3]: The MediaTek SVS driver is introduced in another series.
+>      message-id:20220221063939.14969-1-roger.lu@mediatek.com
 
---===============8443046380128088201==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Xn43fwg7L9AIf1Ta"
-Content-Disposition: inline
-
-
---Xn43fwg7L9AIf1Ta
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Apr 21, 2022 at 03:48:08PM +0200, Uwe Kleine-K=C3=B6nig wrote:
-> Hello,
->=20
-> On Thu, Apr 21, 2022 at 12:17:00PM +0200, AngeloGioacchino Del Regno wrot=
-e:
-> > Il 18/04/22 14:20, xinlei.lee@mediatek.com ha scritto:
-> > > From: Xinlei Lee <xinlei.lee@mediatek.com>
-> > >=20
-> > > Add interrupts property of pwm for MediaTek MT8192 SoC.
-> > >=20
-> > > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> >=20
-> > Hello Xinlei,
-> > the pwm-mtk-disp.c driver does not support interrupts.
-> >=20
-> > Please add interrupts support to the driver first, and only then
-> > add that in the dt-bindings.
->=20
-> in my understanding the linux driver state and the binding documentation
-> are somewhat independent. Here I'd say adding the irq information to dt
-> without the driver supporting it is fine.
-
-Agreed. I've applied this along with the rest. It doesn't have Rob's or
-Krzysztof's stamp of approval, but it's a trivial change and looks fine
-to me.
-
-Thierry
-
---Xn43fwg7L9AIf1Ta
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmJi3mAACgkQ3SOs138+
-s6GaAw//VlLPxZ1xhdfymBfdZxhQ5KeACuZ6k/asJF7IV7j+qF8lPEGixgDeaLZF
-g139oHKqts/KjwLRBEerRUOKC1om/nZNbnF5phGdFXBhNCHPbgPEDXwDh64O6gNN
-VYiOS3e+9/UWgo18fkjE0vAtlf5BOytzKE3dxheacU29YENfK5mfajrP5OqsMmgs
-SXvoMWRuq2ni51pPlj1sNIoeK3FBwvM8D4yFHV8Ns/jpDRmIXqBafYUc0qu3l5yQ
-fX0ojlbaDppJ8YFyRPn7PDY36hA8siLvW9WCJ4GB0sAZeG1ZlA2zvMSFxNLz+OIE
-Xg76o+1+zMuWsHCCvay7Q+ylNlyyVCS4Kp33Ho8BMIHS2WLm1L0wUvaUGAHH4f4h
-I6TcMGxu++kh6g1LXFAZ8HCwUG8J+HdJiYgfKEH8DQuqzYfWl54GA1Gi65+zpCfA
-EoMbL4Ja/pb3QjlgtzoGWoGF9qMUigUy5DlICAJJs+JsI84YGj2UNCFS3uXCHOsC
-/Mh5APkBEz0hI8eF7jWhdpjsD1Fsl04aaHjGn0iIIKw8fHE1XoJXN85aU5jdKS77
-bvuAn7dcSlpasoPaUgIBnje0T7SGp3YKzaJs+PiRE5rxHitjMRLa0umLL/tKMhUE
-vJCoUPamD5R+OoQIeG8sXKQYV/+As6q8kGd21nwJI4AIJ8QhaIM=
-=c+hp
------END PGP SIGNATURE-----
-
---Xn43fwg7L9AIf1Ta--
+These are not proper links. Please use lore references.
 
 
---===============8443046380128088201==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8443046380128088201==--
-
