@@ -4,83 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E926C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 13:18:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12A39C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 13:23:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M3xZ+pGm6Eh54OOIAnto8Xj/lUh4U9VaeSI/1fR7wf0=; b=DcZSmY6FR+uYZq
-	7Hmhr8HmCuuGMXcc8Mmflg0uwzIODq0v18mmE/CKwUvbLRyhNdQDP3GbbleTgBC+Dx9P6HexPxhYU
-	pXEQfQDz/6idYW0qxd9jAYbYGXtRfeT6aOZlXBbk3PIgFI9pUVOZbxyGVtGXC7GwiMaQUo9GC+Hs7
-	qfaz6sL80jMdkCM/NgU1snQq/cUmrGTif58eHrM8f0W/lZ2CrapAlUJcJd/uEu6slS5I8rXjtyrlZ
-	SfuNwPeptoZ/vyffwytpLFQcNs5ej/Sti+SrSBiImVxQ4ch02fPotxE7ZWz70Txl1nNPintsR72V6
-	PxpHUYzDfuLv7W4/GvgA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=btXwkf2JrGHdtklkT+xFBkZRLOkZ1MesASflaIOwMR4=; b=4W9+TxcLuctT5l
+	koE568FQxr3h/EQSDoOkSkRgsX0zK8/3Ud2o+vIKerjgBF8rP46QD5xDQXco6G4EpEZfduHXLmiiM
+	N/1/nGwYXJth0WXcAEnJjszvqqy04ROnqSTb8WMvIxTM1NjTpvEgo0nvBhdJSbXvdPbe6gT789Vo/
+	7H3TQX2DPwAb3PIIrnWqoOg8rbvp13yN9BrVGZsBiWNm71uwyzafxFNatn0PtfIO6F7+S9O9gc+Q5
+	YsWQP/rte01Z2+8V6c+DdJsakDw1jsQl64s/ocAK0IGG7cfIk6qgW/dyNRzJP/1e+/3DFcGGnk+wh
+	FR0Rj4lGUYvf46JH6G6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhtAn-000ZIA-30; Fri, 22 Apr 2022 13:18:09 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1nhtGE-000aYV-3s; Fri, 22 Apr 2022 13:23:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhtAZ-000ZDR-Ka; Fri, 22 Apr 2022 13:17:57 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id b19so10996552wrh.11;
- Fri, 22 Apr 2022 06:17:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=k8r+yfkaeQZMDq9HKQ53kc2pMzWynvXz7/9ViLHoyIg=;
- b=MjiXU0m3KVdIl4giHmSj2IO9ORa+VB0l+jEmNLgyFJ5s6WGpUN19kYaEjy+7QUv86V
- ctm/1TSApZueL9zCTWzeq03iuKHpBwmJkNmaGXIP1q1qzOj5aTd+S99uUtWvJzZbpxFJ
- FzkZEcmQsv4DLnuryI1gocHLfnCZZHkXv+MTCFOrjuH/huZCkmRd1tRftlLARuPfGiUa
- m3JObwCfSh+7VNJVtaSG0W3kRltYLpQRK8A4vZBb2baMb6VbwRWs0LLTHpVJXmy2wdy/
- OmeT+wTBcy0frRSKe3irtf4jG559wb7/Yk94EVje9yJOVN1HkR+abw7n8KXiHGvmwZuM
- fuBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=k8r+yfkaeQZMDq9HKQ53kc2pMzWynvXz7/9ViLHoyIg=;
- b=VCyHmYK2owSLSYp4iUjxt0qo46wnHX1G9eUOhO14zRVxS+XjPTkXnixcwTibfO7tzY
- WsGt/Dzfwhpbd86tTRWVG98chtltZ6MkTpijVzBzHBBGLjvtXv/FxbzGpwdv9p+maHHn
- mjv8eq37GHG787cHkti3XoAcrZIXwJSF/FNoww9QsXqHn37IHpAwOYsv3VA+B52mf/Fb
- rfyOIULz0su2CsHWtPcVU/NI5dcMai6qPJNijzifDfEtZKEr1rxw3G8+KC+LM7d8mwag
- 2XRX0NH0M2nBWpMYpysxw43Qx7Zd397Gd3yvoLareGqCw6DuHS1r4pjP6p/aj4K3X7MQ
- 3nfA==
-X-Gm-Message-State: AOAM531vOMRtPL4eztyLdCHAQyGmiTdW2kFzbSmElQAGoFTUrK9xpijw
- cYd6dtql4YFUG4dEi7MEtwA=
-X-Google-Smtp-Source: ABdhPJyq0tB3OynhCktMQm8k9iio8P+tjNQKjHOjKu/G2Orjw95W8o7cYREafb4kJkQ9T55R9gCyvg==
-X-Received: by 2002:a5d:6d08:0:b0:20a:88bf:6d6e with SMTP id
- e8-20020a5d6d08000000b0020a88bf6d6emr3773883wrq.152.1650633474164; 
- Fri, 22 Apr 2022 06:17:54 -0700 (PDT)
-Received: from [192.168.1.145] ([207.188.167.132])
- by smtp.gmail.com with ESMTPSA id
- a2-20020a056000188200b0020aa2581c7fsm1979130wri.104.2022.04.22.06.17.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 Apr 2022 06:17:53 -0700 (PDT)
-Message-ID: <e2fa86e4-5949-81db-5ecc-1aa5dc0a4e79@gmail.com>
-Date: Fri, 22 Apr 2022 15:17:52 +0200
+ id 1nhtG0-000aTx-Si; Fri, 22 Apr 2022 13:23:34 +0000
+X-UUID: b186b81e695a41f296259445b6a2ff20-20220422
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:83f38773-bfcf-4651-a3b7-5a54bf2b2876, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-20
+X-CID-META: VersionHash:faefae9, CLOUDID:bc05a1f0-da02-41b4-b6df-58f4ccd36682,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: b186b81e695a41f296259445b6a2ff20-20220422
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2140858508; Fri, 22 Apr 2022 06:23:22 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 22 Apr 2022 06:13:20 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 22 Apr 2022 21:13:19 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 22 Apr 2022 21:13:18 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner
+ <tglx@linutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, Allen-KH Cheng
+ <allen-kh.cheng@mediatek.com>
+Subject: [PATCH 0/1] dt-bindings: timer: mediatek: Convert binding to YAML
+Date: Fri, 22 Apr 2022 21:13:16 +0800
+Message-ID: <20220422131317.25410-1-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH 1/1] dt-bindings: timer: mediatek: Convert binding to YAML
-Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>
-References: <20220422131317.25410-1-allen-kh.cheng@mediatek.com>
- <20220422131317.25410-2-allen-kh.cheng@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220422131317.25410-2-allen-kh.cheng@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_061755_747104_44A4A22E 
-X-CRM114-Status: GOOD (  18.66  )
+X-CRM114-CacheID: sfid-20220422_062332_977968_4101FF3E 
+X-CRM114-Status: UNSURE (   8.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,163 +78,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Based on tag: next-20220422, linux-next/master + [1],
 
+In [1], mt8186 compatible should be applied, but I don't find this.
+I convert binding to YAML base on [1].
 
-On 22/04/2022 15:13, Allen-KH Cheng wrote:
-> Convert Mediatek timer devicetree binding to YAML.
-> 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> ---
->   .../bindings/timer/mediatek,mtk-timer.txt     | 42 ----------
->   .../bindings/timer/mediatek,mtk-timer.yaml    | 79 +++++++++++++++++++
->   2 files changed, 79 insertions(+), 42 deletions(-)
->   delete mode 100644 Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
->   create mode 100644 Documentation/devicetree/bindings/timer/mediatek,mtk-timer.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-> deleted file mode 100644
-> index 6f1f9dba6e88..000000000000
-> --- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-> +++ /dev/null
-> @@ -1,42 +0,0 @@
-> -MediaTek Timers
-> ----------------
-> -
-> -MediaTek SoCs have two different timers on different platforms,
-> -- GPT (General Purpose Timer)
-> -- SYST (System Timer)
-> -
-> -The proper timer will be selected automatically by driver.
-> -
-> -Required properties:
-> -- compatible should contain:
-> -	For those SoCs that use GPT
-> -	* "mediatek,mt2701-timer" for MT2701 compatible timers (GPT)
-> -	* "mediatek,mt6580-timer" for MT6580 compatible timers (GPT)
-> -	* "mediatek,mt6582-timer" for MT6582 compatible timers (GPT)
-> -	* "mediatek,mt6589-timer" for MT6589 compatible timers (GPT)
-> -	* "mediatek,mt7623-timer" for MT7623 compatible timers (GPT)
-> -	* "mediatek,mt8127-timer" for MT8127 compatible timers (GPT)
-> -	* "mediatek,mt8135-timer" for MT8135 compatible timers (GPT)
-> -	* "mediatek,mt8173-timer" for MT8173 compatible timers (GPT)
-> -	* "mediatek,mt8516-timer" for MT8516 compatible timers (GPT)
-> -	* "mediatek,mt6577-timer" for MT6577 and all above compatible timers (GPT)
-> -
-> -	For those SoCs that use SYST
-> -	* "mediatek,mt8183-timer" for MT8183 compatible timers (SYST)
-> -	* "mediatek,mt8186-timer" for MT8186 compatible timers (SYST)
-> -	* "mediatek,mt8192-timer" for MT8192 compatible timers (SYST)
-> -	* "mediatek,mt8195-timer" for MT8195 compatible timers (SYST)
-> -	* "mediatek,mt7629-timer" for MT7629 compatible timers (SYST)
-> -	* "mediatek,mt6765-timer" for MT6765 and all above compatible timers (SYST)
-> -
-> -- reg: Should contain location and length for timer register.
-> -- clocks: Should contain system clock.
-> -
-> -Examples:
-> -
-> -	timer@10008000 {
-> -		compatible = "mediatek,mt6577-timer";
-> -		reg = <0x10008000 0x80>;
-> -		interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>;
-> -		clocks = <&system_clk>;
-> -	};
-> diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.yaml b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.yaml
-> new file mode 100644
-> index 000000000000..be7eb09275f9
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.yaml
-> @@ -0,0 +1,79 @@
-> +# SPDX-License-Identifier: GPL-2.0-or-later OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/timer/mediatek,mtk-timer.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek SoCs timers bindings
-> +
-> +description:
-> +  MediaTek SoCs have two different timers on different platforms,
-> +  - GPT (General Purpose Timer)
-> +  - SYST (System Timer)
-> +
-> +maintainers:
-> +  - Fengquan Chen <fengquan.chen@mediatek.com>
-> +  - Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> +
-> +properties:
-> +  $nodename:
-> +    pattern: '^timer@[a-f0-9]+$'
-> +
-> +  compatible:
-> +    oneOf:
-> +      - const: mediatek,mt6577-timer
-> +      - const: mediatek,mt6765-timer
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt2701-timer
-> +              - mediatek,mt6580-timer
-> +              - mediatek,mt6582-timer
-> +              - mediatek,mt6589-timer
-> +              - mediatek,mt7623-timer
-> +              - mediatek,mt8127-timer
-> +              - mediatek,mt8135-timer
-> +              - mediatek,mt8173-timer
-> +              - mediatek,mt8516-timer
-> +          - const: mediatek,mt6577-timer
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt7629-timer
-> +              - mediatek,mt8183-timer
-> +              - mediatek,mt8186-timer
-> +              - mediatek,mt8192-timer
-> +              - mediatek,mt8195-timer
-> +          - const: mediatek,mt6765-timer
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    minItems: 1
-> +    maxItems: 2
-> +
-> +  clock-names:
-> +    minItems: 1
-> +    items:
-> +      - const: clk13m
-> +      - const: bus
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
+[1] https://lore.kernel.org/all/98be733a-62b0-4cf6-ab27-992ea49da5b1@linaro.org/$
 
-Are we missing clocks here?
+Allen-KH Cheng (1):
+  dt-bindings: timer: mediatek: Convert binding to YAML
 
-Regards,
-Matthias
+ .../bindings/timer/mediatek,mtk-timer.txt     | 42 ----------
+ .../bindings/timer/mediatek,mtk-timer.yaml    | 79 +++++++++++++++++++
+ 2 files changed, 79 insertions(+), 42 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+ create mode 100644 Documentation/devicetree/bindings/timer/mediatek,mtk-timer.yaml
 
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    timer@10008000 {
-> +        compatible = "mediatek,mt6577-timer";
-> +        reg = <0xd4014000 0x100>;
-> +        interrupts = <13>;
-> +        clocks = <&coreclk 2>;
-> +    };
-> +
-> +...
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
