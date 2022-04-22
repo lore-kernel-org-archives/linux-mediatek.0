@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 028EBC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 07:13:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6320CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 07:16:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DJIEXYbr/Hf54nIeaF2YLXDyEYCiNl8fRmI3BB/EvYc=; b=ORInkbuB68iQuZ
-	F5cPS/xh+GY8Uus2e5IO3BmKxMZDdH5EQUrujz46UryXjnANwGLl64RVnfbYnbV5/dgbvY2PCBNH2
-	QXemdM+xg7XYFbO8HQRs/3K72m0o2xkxHUDLYTW4pWCShVVfx+4GQP6kzus0pcrFL+oiqqJKhgNkI
-	wDomCwkJzin7A+kEu6OFU+zcT9IZFgzUunqPpgu78vzcR2PjR7jyvAmjM76vzpWV5TqfI7iA78kdx
-	mawXgT6MbfjLjuzXd0pOz8vk8jEdSzqNPDC18QA+18GW0d2tjsiY34hiUaan7vTYG1Q0p+AViLmFw
-	mdHTSkebf928c1/Pyx7g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Y3Ma3Jok5PLD51HtqFI0ZHrdoyH7q7z4N+AqDskUhAk=; b=EGmb7Zt6RKiM80
+	1RSieb8skECz8Kij3bg9Ku5SXM4Hl758UmZNP3FtvCMUh/4Wrq8f5hHJg4QniIR2do7kXdwRWyBzH
+	9uEIyj8VBFwYYPN91olgFxpUHIILMDUArhjz9EwjQ88/Ix/iTaIWU6u9U8bbr9v4JF8gdMJXYNYhM
+	c3eHAQR2zLdu7ewavW+MLiNlHFoblxA3Ejviu0TEKIN16cfXxj7J0hYeZ7THuq5lwxWcTnUddAMMy
+	4VJc2NVITeQW8KzZd9JbbIddlx/nABtzpgBVEWTNxM9kovmi3/cbZ97CtYm8+VsmvhxxX/zQf9Cxf
+	ZxLbLMRHGXKXjylwXtXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhnU9-00GkIa-Gn; Fri, 22 Apr 2022 07:13:45 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nhnWC-00GkzN-Ah; Fri, 22 Apr 2022 07:15:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhnTv-00GkEB-4E; Fri, 22 Apr 2022 07:13:32 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id A1F3D61ED5;
- Fri, 22 Apr 2022 07:13:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0732C385A0;
- Fri, 22 Apr 2022 07:13:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1650611610;
- bh=2eP5N2am4/TObX0OiEiogWXKWvfr8XKlaOBXPQ079Jg=;
- h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
- b=ZKi7veBzeQJLN31agqjva9zjBCjEydINToeZWCJvlJZ1ivwGPyMAhDztg8spzo+iO
- kI4s9RHZuEqg4FceSlNiEnfh0sT8jFX8FgLDYsQbLks5Pp+VTBAN/mY5sbxXQaibwy
- diTKXcZxTM5Tc+Y2ohQG3O7LDwEQhMVJ4A5VN03Gspm8zEGHWQe4Fzx1Cd3QZMEz3c
- VwvPq77RwGFkRDgvbrf1+/ZbUdYQG0MKyvNWEIUZBCkxwGGoZTQFHrrUwoaUvmQz+g
- cT2A4a/KAegxLhPkN6QdUiJfuFL0/I0RZgJrZ+JnYMRc/Sigc/637GAF4mkYj7ItNG
- yvtnf+XY4cAog==
-From: Kalle Valo <kvalo@kernel.org>
-To: yunbo yu <yuyunbo519@gmail.com>
-Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
- shayne.chen@mediatek.com, sean.wang@mediatek.com, davem@davemloft.net,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] =?utf-8?B?bXQ3Nu+8mm10NzYwM++8mg==?= move
- spin_lock_bh() to spin_lock()
-References: <20220422060723.424862-1-yuyunbo519@gmail.com>
- <87y1zxmysz.fsf@kernel.org>
- <CAD55h6Z0GfEMu25_1PXavRA9SGJ2zZC4-y=6Bo5+Fz=99J6_mg@mail.gmail.com>
-Date: Fri, 22 Apr 2022 10:13:24 +0300
-In-Reply-To: <CAD55h6Z0GfEMu25_1PXavRA9SGJ2zZC4-y=6Bo5+Fz=99J6_mg@mail.gmail.com>
- (yunbo yu's message of "Fri, 22 Apr 2022 14:27:22 +0800")
-Message-ID: <87o80tmvzf.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+ id 1nhnW8-00GkwY-WF; Fri, 22 Apr 2022 07:15:50 +0000
+X-UUID: e7283599f4464fb4b21dd1b6cbb3126c-20220422
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:7fb39c1b-4c4e-40ce-982f-a5ee574802a8, OB:0,
+ LO
+ B:0,IP:0,URL:25,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,A
+ CTION:release,TS:5
+X-CID-META: VersionHash:faefae9, CLOUDID:14e695f0-da02-41b4-b6df-58f4ccd36682,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: e7283599f4464fb4b21dd1b6cbb3126c-20220422
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <tinghan.shen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1321795498; Fri, 22 Apr 2022 00:15:41 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 22 Apr 2022 00:15:40 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 22 Apr 2022 15:15:38 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 22 Apr 2022 15:15:38 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Tinghan Shen
+ <tinghan.shen@mediatek.com>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v1] dt-bindings: dsp: mediatek: add mt8186 dsp document
+Date: Fri, 22 Apr 2022 15:15:34 +0800
+Message-ID: <20220422071534.15653-1-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.15.GIT
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_001331_246811_2A14181B 
-X-CRM114-Status: UNSURE (   8.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220422_001549_075588_DD567880 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,18 +79,123 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-yunbo yu <yuyunbo519@gmail.com> writes:
+This patch adds mt8186 dsp document. The dsp is used for Sound Open
+Firmware driver node. It includes registers, clocks, memory regions,
+and mailbox for dsp.
 
-> Thanks for the tip! I will make the patch v2
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+---
 
-Another tip for you, please don't use HTML :)
+This patch depends on MT8186 clock bindings.
+https://lore.kernel.org/all/20220409132251.31725-2-chun-jie.chen@mediatek.com/
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches#do_not_send_html_mail
+---
+ .../bindings/dsp/mediatek,mt8186-dsp.yaml     | 93 +++++++++++++++++++
+ 1 file changed, 93 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
 
+diff --git a/Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml b/Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
+new file mode 100644
+index 000000000000..00a79e880895
+--- /dev/null
++++ b/Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
+@@ -0,0 +1,93 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/dsp/mediatek,mt8186-dsp.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek mt8186 DSP core
++
++maintainers:
++  - Tinghan Shen <tinghan.shen@mediatek.com>
++
++description: |
++  MediaTek mt8186 SoC contains a DSP core used for
++  advanced pre- and post- audio processing.
++
++properties:
++  compatible:
++    const: mediatek,mt8186-dsp
++
++  reg:
++    items:
++      - description: Address and size of the DSP config registers
++      - description: Address and size of the DSP SRAM
++      - description: Address and size of the DSP secure registers
++      - description: Address and size of the DSP bus registers
++
++  reg-names:
++    items:
++      - const: cfg
++      - const: sram
++      - const: sec
++      - const: bus
++
++  clocks:
++    items:
++      - description: mux for audio dsp clock
++      - description: mux for audio dsp local bus
++
++  clock-names:
++    items:
++      - const: audiodsp_sel
++      - const: adsp_bus_sel
++
++  power-domains:
++    maxItems: 1
++
++  mboxes:
++    items:
++      - description: ipc reply between host and audio DSP.
++      - description: ipc request between host and audio DSP.
++
++  mbox-names:
++    items:
++      - const: mbox0
++      - const: mbox1
++
++  memory-region:
++    items:
++      - description: dma buffer between host and DSP.
++      - description: DSP system memory.
++
++required:
++  - compatible
++  - reg
++  - reg-names
++  - clocks
++  - clock-names
++  - power-domains
++  - mbox-names
++  - mboxes
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/clock/mt8186-clk.h>
++    dsp@10680000 {
++        compatible = "mediatek,mt8186-dsp";
++        reg = <0x10680000 0x2000>,
++              <0x10800000 0x100000>,
++              <0x1068b000 0x100>,
++              <0x1068f000 0x1000>;
++        reg-names = "cfg", "sram", "sec", "bus";
++        clocks = <&topckgen CLK_TOP_AUDIODSP>,
++                 <&topckgen CLK_TOP_ADSP_BUS>;
++        clock-names = "audiodsp_sel",
++                      "adsp_bus_sel";
++        power-domains = <&spm 6>;
++        mbox-names = "mbox0", "mbox1";
++        mboxes = <&adsp_mailbox0>, <&adsp_mailbox1>;
++    };
 -- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+2.18.0
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
 _______________________________________________
 Linux-mediatek mailing list
