@@ -4,90 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94352C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 11:48:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0D1CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 12:20:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3Obyb5wFWTLv0FPRqVAz9VX/+59Y5LAj15gIAOWVKTI=; b=Bh02rvvExbULdh
-	8DGBnJPazXmExKR37YmxmKSTgoMKl44IigZSeCDiTE8Q2Sk825srKjn84Fm2HST1kKCnUuVgr+by4
-	hrv/DRpSRxXRUNr4Aa46v8FZSb3+IxqEWa//n9rpIoZiXeeS2dVSOQyUesq/HcN0aLoIhqWYNpIrg
-	SlquER4PKq30IMzTipmbj7Jjo5c8deSd/t5F2EotARQRIdGXphMHJ5W/czccHw37sZduT5upewXeU
-	JJK9Euf2DDUYYPShdSYyGsfIsPJILxO+mAtVKnnsPIPCkwnWMMaZ1kQYc7yrTv937vYGmGBxR2ZsI
-	jg8VyWVyGXNBu0Yu6RtA==;
+	List-Owner; bh=rj6bendQRW1sMRck3uhuUePxbkrng2oNiyVeO3WBdxg=; b=H/PKbLUXaWzqKr
+	6Sv8m+1YvaCOC0Zftm63bZFhuexwe/5ufXiiVTeXUVbBOWrxm/W+60f9Tj+bifiCnisdA7jOPsqkw
+	bhM+9eljg5BASDK0Il6t1W0AeBd5RzKBc2Ixe/h7W3T1uOsBR4wkuFkVNEotU75iUUF27xrPvML8D
+	e+bUJnwn3ayULfvuBHEGbMHvJRnTZ7g8XyZDA34VWdJoRwNIF8ytocO9P5xu4//c56Gsx1Pjdo7xL
+	EcuHEn+t9TrDKARFH1UfKy21mUmQFs3vUU10c7LHNX74V9qNap5A5Q1VqPMMc0/t4vKuffsxJkBvp
+	WQ8wvhnyYt6afYPc23ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhrm9-000GYx-M0; Fri, 22 Apr 2022 11:48:37 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1nhsHG-000Mbv-S8; Fri, 22 Apr 2022 12:20:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhrly-000GVD-SJ; Fri, 22 Apr 2022 11:48:28 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id u3so10709394wrg.3;
- Fri, 22 Apr 2022 04:48:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=USB9sQq04sTiAxmM8QQ7srYcUe8WlCh4HajD9OSYJ6o=;
- b=NzIx/QXqWbn00uU3BKoOzzQ56jbjOJFxXvcFNZMrrnkUcYyLYKtefdD4B78DxLpyqy
- qUQ9OjzuQBnOr/NBhm5cq4zASqJLzRaB1X5ETy+ZBJCgwVFkK/zrUXnkdQ9B8d3l77C+
- bao0jbWUFczaF4rNJfcMB7mdp/yMwDyP4KyXyd6As4FJx7vPiMZUMGrAjKQPVv35LQJj
- GqAET5OL4PFyFr7gaAn9/AhWfCWTSGI2nmpvnnI9E/dHu5T50OtUb/zQmZdaohc7UcqI
- /eW15+8FEZei1tw7AoLxovxndZxe2RiSJ7Vha7VoigGvm5EavC4yPYXHvGFfC+G+Atct
- EL2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=USB9sQq04sTiAxmM8QQ7srYcUe8WlCh4HajD9OSYJ6o=;
- b=4ybcKGXHo9+wnu1BbLsV0fvga9UGvx6Y9LDux7Fa06Ve9GG6GqDwTzbtTwR6mbP0Pm
- fLT2uYd7ZlJLFjH3Z2ikk9OWviKDlE8vchzFRvdf3XXx+T8Ke4bxSRs6B3adLgfW1ehf
- fG5yqibM2KnHTd75AYd4O8DNILg5RjO/P21KK19TXBHtWWs36UkC30tEgpymIxfV0xKA
- Me4XuLBBUiss+VOY9RgMHSuDgVS5gRfXvM4V1dAbaj09285V2X3WxPIBX5D91RhQKRhs
- ru+l7oWGrmLNn6xm1jfCUY0aQ6Z3r5Fdytd2Hx6uSmZ/h/etoazWJup9VauwlcKw1SsB
- r8rA==
-X-Gm-Message-State: AOAM531tzAzwK2RZdUPNPqEZfPBDENIb9X5gqu4AVP8MPc6wxzLi85T8
- Agj9eaCufTRpsbny4elfREQ=
-X-Google-Smtp-Source: ABdhPJxnLaVOa0YHXafmOZJInj59XC4WGJzkGDmdMfbuZG+DNqLpxPS7LhSSaxyFsScgD1taCf5JDw==
-X-Received: by 2002:a5d:6486:0:b0:20a:93fe:dd09 with SMTP id
- o6-20020a5d6486000000b0020a93fedd09mr3483295wri.436.1650628103145; 
- Fri, 22 Apr 2022 04:48:23 -0700 (PDT)
-Received: from [192.168.1.145] ([207.188.167.132])
- by smtp.gmail.com with ESMTPSA id
- u16-20020a05600c441000b0038ebcbadcedsm5107504wmn.2.2022.04.22.04.48.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 Apr 2022 04:48:22 -0700 (PDT)
-Message-ID: <2cd07faf-e903-e55b-85c1-ce7a823ddb8b@gmail.com>
-Date: Fri, 22 Apr 2022 13:48:21 +0200
+ id 1nhsH3-000MYq-T7; Fri, 22 Apr 2022 12:20:36 +0000
+X-UUID: 39c3907604b046ac87a9af4e4b3c299e-20220422
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:c93ebb8f-679f-4120-9e15-afcd9f767cfb, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:f86e9ff0-da02-41b4-b6df-58f4ccd36682,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 39c3907604b046ac87a9af4e4b3c299e-20220422
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 403946012; Fri, 22 Apr 2022 05:20:25 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 22 Apr 2022 05:10:23 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 22 Apr 2022 20:10:21 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 22 Apr 2022 20:10:20 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
+ <linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ <nfraprado@collabora.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee
+ <ryder.lee@kernel.org>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Subject: [PATCH 1/2] arm64: dts: mt8516: align watchdog node name with dtschema
+Date: Fri, 22 Apr 2022 20:10:16 +0800
+Message-ID: <20220422121017.23920-2-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220422121017.23920-1-allen-kh.cheng@mediatek.com>
+References: <20220422121017.23920-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v17 11/21] drm/mediatek: add display merge start/stop API
- for cmdq support
-Content-Language: en-US
-To: "Nancy.Lin" <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, wim@linux-watchdog.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux@roeck-us.net
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Nathan Chancellor <nathan@kernel.org>,
- Nick Desaulniers <ndesaulniers@google.com>,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
- llvm@lists.linux.dev, singo.chang@mediatek.com, srv_heupstream@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220416020749.29010-1-nancy.lin@mediatek.com>
- <20220416020749.29010-12-nancy.lin@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220416020749.29010-12-nancy.lin@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_044826_992328_F9D5F2FF 
-X-CRM114-Status: GOOD (  18.28  )
+X-CRM114-CacheID: sfid-20220422_052033_974015_9DB76E10 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,88 +80,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Based on watchdog.yaml, the node names should be "watchdog".
 
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8516.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On 16/04/2022 04:07, Nancy.Lin wrote:
-> Add merge start/stop API for cmdq support. The ovl_adaptor merges
-> are configured with each drm plane update. Need to enable/disable
-> merge with cmdq making sure all the settings taken effect in the
-> same vblank.
-> 
-> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->   drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  2 ++
->   drivers/gpu/drm/mediatek/mtk_disp_merge.c | 20 +++++++++++++++++---
->   2 files changed, 19 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> index 53aa988dde3b..43a412525b75 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> @@ -66,6 +66,8 @@ void mtk_merge_stop(struct device *dev);
->   void mtk_merge_advance_config(struct device *dev, unsigned int l_w, unsigned int r_w,
->   			      unsigned int h, unsigned int vrefresh, unsigned int bpc,
->   			      struct cmdq_pkt *cmdq_pkt);
-> +void mtk_merge_start_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt);
-> +void mtk_merge_stop_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt);
->   
->   void mtk_ovl_bgclr_in_on(struct device *dev);
->   void mtk_ovl_bgclr_in_off(struct device *dev);
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-> index 40da0555416d..c0d9b43b2a66 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-> @@ -67,17 +67,31 @@ struct mtk_disp_merge {
->   };
->   
->   void mtk_merge_start(struct device *dev)
+diff --git a/arch/arm64/boot/dts/mediatek/mt8516.dtsi b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
+index d1b67c82d761..fff59dc1b4d7 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8516.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
+@@ -202,7 +202,7 @@
+ 			#clock-cells = <1>;
+ 		};
+ 
+-		toprgu: toprgu@10007000 {
++		toprgu: watchdog@10007000 {
+ 			compatible = "mediatek,mt8516-wdt",
+ 				     "mediatek,mt6589-wdt";
+ 			reg = <0 0x10007000 0 0x1000>;
+-- 
+2.18.0
 
-Probably not my call, but wouldn't it make sense to enhance mtk_merge_start to 
-pass 'struct cmdq_pkt *cmdq_pkt' directly instead of adding this 'adapter'?
-
-In the end this is up to Chun-Kuang.
-
-Regards,
-Matthias
-
-> +{
-> +	mtk_merge_start_cmdq(dev, NULL);
-> +}
-> +
-> +void mtk_merge_stop(struct device *dev)
->   {
->   	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
->   
-> -	writel(MERGE_EN, priv->regs + DISP_REG_MERGE_CTRL);
-> +	mtk_merge_stop_cmdq(dev, NULL);
->   }
->   
-> -void mtk_merge_stop(struct device *dev)
-> +void mtk_merge_start_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt)
-> +{
-> +	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
-> +
-> +	mtk_ddp_write(cmdq_pkt, 1, &priv->cmdq_reg, priv->regs,
-> +		      DISP_REG_MERGE_CTRL);
-> +}
-> +
-> +void mtk_merge_stop_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt)
->   {
->   	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
->   
-> -	writel(0x0, priv->regs + DISP_REG_MERGE_CTRL);
-> +	mtk_ddp_write(cmdq_pkt, 0, &priv->cmdq_reg, priv->regs,
-> +		      DISP_REG_MERGE_CTRL);
->   }
->   
->   static void mtk_merge_fifo_setting(struct mtk_disp_merge *priv,
 
 _______________________________________________
 Linux-mediatek mailing list
