@@ -4,72 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBED9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 06:05:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12F8DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 06:07:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FjxqVgElTiLTGhTaL62ATrm2vf4OC9Dw3eq3jb/fR3k=; b=uo9ZanP52H8kpN
-	43DlP1TQfHXBPiUqOksF5LjX8gktF0x4AkNRx1/P4FDBEbn0UY1H0O2sZlDbHobvaiBzMHE4xT+uJ
-	64OUovEoUsDfm0/odJ16h5v+S/4OeT7RX1XhHR1h76HPNgrUEH/kVFtI/MI4GIlX02bjRLS4QU/bT
-	6YjDMgd50Bc9jqDc+2D+PVbuj5k9CCE8E9BKD9nHfHcquAo+aG/ursPpAibkcF3jzWanVuPrwE7R8
-	rpidobYKU1DnSED+a5ybS2dGHVCaGJwZBusT736ACrk/g5aV1UrsnHOPxIEmgDHRsL5WsMbMNqz7/
-	TvmzO8Q8IXRJ8cacsdsw==;
+	List-Owner; bh=DXw44lLLrlRzhDf78tWKlBWpVtR35ZCzmU5ylHZ33gM=; b=fcVcJIMNkmp9Zq
+	bfKw049UwWf3pFuVWK+ZYgGjGQlHMzlJHZb2D5a7D62yAq/RS8cUexKbF/GaZtAT8DqMQBaw4yEdV
+	ccDgd51zHRUxXKJFdwywU3l1zfpG5+FaI43MNTDmleJQepYxZF8br8SyawafyErPVL/kN0lBIw+MC
+	7o2B8T3Gp6bna4XsPP8o3KmBgzYB0V2fBmWUrPLu327HvE2Yl8nrVRmstqViCiZKFZIn13FGSm5gt
+	9VMPZBllAP63U0lkYqw7syOJDFCA49VNezkJ8bpeh0mCrBfj980qEpxdu5yxowXqA8JH4OktlWJSy
+	QE1z2A+wSdeqJZjBKRMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhmPr-00GMut-3C; Fri, 22 Apr 2022 06:05:15 +0000
+	id 1nhmS4-00GO0f-Vw; Fri, 22 Apr 2022 06:07:33 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhmMu-00GLDr-5m; Fri, 22 Apr 2022 06:02:14 +0000
-X-UUID: c7371b40c60946caa254ba3475dc13f8-20220421
+ id 1nhmS0-00GNxE-NR; Fri, 22 Apr 2022 06:07:30 +0000
+X-UUID: 4308e16e2c0a44028194fb05b3db3d8f-20220421
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:193a8858-c72b-4e76-a460-cd3b3e4bf8c4, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:27d39d72-ef5d-4dde-916f-1a9f8bc12494, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
  TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:d41793f0-da02-41b4-b6df-58f4ccd36682,
+X-CID-META: VersionHash:faefae9, CLOUDID:0c66bdef-06b0-4305-bfbf-554bfc9d151a,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: c7371b40c60946caa254ba3475dc13f8-20220421
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
+X-UUID: 4308e16e2c0a44028194fb05b3db3d8f-20220421
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <tinghan.shen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2056982873; Thu, 21 Apr 2022 23:02:05 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 21 Apr 2022 23:02:03 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 22 Apr 2022 14:02:01 +0800
+ with ESMTP id 848101233; Thu, 21 Apr 2022 23:07:20 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 Apr 2022 22:57:18 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 22 Apr 2022 13:57:15 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 22 Apr 2022 14:02:01 +0800
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <mturquette@baylibre.com>, <sboyd@kernel.org>, <matthias.bgg@gmail.com>,
- <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>
-CC: <p.zabel@pengutronix.de>, <angelogioacchino.delregno@collabora.com>,
- <chun-jie.chen@mediatek.com>, <wenst@chromium.org>,
- <runyang.chen@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-clk@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>
-Subject: [PATCH V3 15/17] clk: mediatek: reset: Add infra_ao reset support for
- MT8192
-Date: Fri, 22 Apr 2022 14:01:50 +0800
-Message-ID: <20220422060152.13534-16-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220422060152.13534-1-rex-bc.chen@mediatek.com>
-References: <20220422060152.13534-1-rex-bc.chen@mediatek.com>
+ Frontend Transport; Fri, 22 Apr 2022 13:57:15 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, Liam Girdwood
+ <lgirdwood@gmail.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, 
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, Daniel Baluta
+ <daniel.baluta@nxp.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela
+ <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, YC Hung <yc.hung@mediatek.com>, Allen-KH Cheng
+ <allen-kh.cheng@mediatek.com>, Tinghan Shen <tinghan.shen@mediatek.com>,
+ =?UTF-8?q?P=C3=A9ter=20Ujfalusi?= <peter.ujfalusi@linux.intel.com>, "Geert
+ Uytterhoeven" <geert@linux-m68k.org>
+CC: <linux-kernel@vger.kernel.org>, <sound-open-firmware@alsa-project.org>,
+ <alsa-devel@alsa-project.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v1 4/4] ASoC: SOF: mediatek: Add DSP system PM callback for
+ mt8186
+Date: Fri, 22 Apr 2022 13:56:59 +0800
+Message-ID: <20220422055659.8738-5-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.15.GIT
+In-Reply-To: <20220422055659.8738-1-tinghan.shen@mediatek.com>
+References: <20220422055659.8738-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_230212_335970_61BBD678 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20220421_230728_826175_437D4516 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,44 +90,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The infra_ao reset is needed for MT8192. Therefore, we add this patch
-to support it.
+Add DSP system PM callback for suspend and resume
 
-Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Reviewed-by: Ranjani Sridharan <ranjani.sridharan@linux.intel.com>
+Reviewed-by: Yaochun Hung <yc.hung@mediatek.com>
+Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
 ---
- drivers/clk/mediatek/clk-mt8192.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ sound/soc/sof/mediatek/mt8186/mt8186.c | 28 ++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-diff --git a/drivers/clk/mediatek/clk-mt8192.c b/drivers/clk/mediatek/clk-mt8192.c
-index ab27cd66b866..92dc6a4affe3 100644
---- a/drivers/clk/mediatek/clk-mt8192.c
-+++ b/drivers/clk/mediatek/clk-mt8192.c
-@@ -1114,6 +1114,13 @@ static const struct mtk_gate top_clks[] = {
- 	GATE_TOP(CLK_TOP_SSUSB_PHY_REF, "ssusb_phy_ref", "clk26m", 25),
- };
+diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
+index a04cea77bd4d..c8faa63497c6 100644
+--- a/sound/soc/sof/mediatek/mt8186/mt8186.c
++++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
+@@ -304,6 +304,30 @@ static int mt8186_dsp_remove(struct snd_sof_dev *sdev)
+ 	return 0;
+ }
  
-+static const struct mtk_clk_rst_desc clk_rst_desc = {
-+	.version = MTK_RST_SET_CLR,
-+	.rst_set_nr = 4,
-+	.reg_ofs = 0x0,
-+	.reset_n_cells = 2,
-+};
++static int mt8186_dsp_suspend(struct snd_sof_dev *sdev, u32 target_state)
++{
++	sof_hifixdsp_shutdown(sdev);
++	adsp_sram_power_off(sdev);
++	adsp_clock_off(sdev);
 +
- #define MT8192_PLL_FMAX		(3800UL * MHZ)
- #define MT8192_PLL_FMIN		(1500UL * MHZ)
- #define MT8192_INTEGER_BITS	8
-@@ -1239,6 +1246,10 @@ static int clk_mt8192_infra_probe(struct platform_device *pdev)
- 	if (r)
- 		goto free_clk_data;
++	return 0;
++}
++
++static int mt8186_dsp_resume(struct snd_sof_dev *sdev)
++{
++	int ret;
++
++	ret = adsp_clock_on(sdev);
++	if (ret) {
++		dev_err(sdev->dev, "adsp_clock_on fail!\n");
++		return ret;
++	}
++
++	adsp_sram_power_on(sdev);
++
++	return ret;
++}
++
+ /* on mt8186 there is 1 to 1 match between type and BAR idx */
+ static int mt8186_get_bar_index(struct snd_sof_dev *sdev, u32 type)
+ {
+@@ -338,6 +362,10 @@ static struct snd_sof_dsp_ops sof_mt8186_ops = {
+ 	/* Firmware ops */
+ 	.dsp_arch_ops = &sof_xtensa_arch_ops,
  
-+	r = mtk_register_reset_controller_with_dev(&pdev->dev, &clk_rst_desc);
-+	if (r)
-+		goto free_clk_data;
++	/* PM */
++	.suspend	= mt8186_dsp_suspend,
++	.resume		= mt8186_dsp_resume,
 +
- 	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
- 	if (r)
- 		goto free_clk_data;
+ 	/* ALSA HW info flags */
+ 	.hw_info =	SNDRV_PCM_INFO_MMAP |
+ 			SNDRV_PCM_INFO_MMAP_VALID |
 -- 
 2.18.0
 
