@@ -4,78 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F341C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 06:27:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDF72C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 06:31:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4SpaeZzKiaD8whXvojDQj/yIKomm4vH+V5XL3d9m9HA=; b=wBYfOVHovocpu6
-	kSRWPRoLrMzDxuPWKIhLaviNKHSQrgo6stXxYTJbrx0xvgkS0BA91whBZlO/u4Q+6QanajLoFeAxe
-	Mjb71YIt5x3n0yNy8zQDl5w0+fVIrPjuxuPjLLjHRnMKKmiuMS6SNd3UGrysR2m4/8UrL6aHoV0A1
-	bK4ir0WmXs/dbbg6GmbUsLvjdzmXwkEOnxbHI1t20rbM0v1QCJ7q4RBjaNSkXaPeCQgiw9m/Zdw5Z
-	VKiDyZabL5nQtXFJZ2oS6s2vlZni7a/zSnfHrglwP47RAtCdw7EeR4vFaOM2EjEUo/5oxxb+NkzAc
-	aHJaboOAMZYFKGhm5F4w==;
+	List-Owner; bh=sE6LksQZnfCU/q27NjX6LfFi6FkGMPi1tJKKd0n1iLM=; b=FXMfUldc6owuBS
+	+Ga1PKTVvnzSMsWr+axf7A68FnpKAai++HFAsodBRgy3EAZ4QZMEBTzcRrxZMy1zn3uvYhOkWNJ9g
+	j7a50J4kGnkf/sv8gNzJqvop7kU/hU0q2xMa7xAcafY0dSXaETBd3paTkywz2UEeMi7WUnEEb/Cub
+	TWd9byPOFPvhrpigIme8u87V1vxKjaYfPDaER6VlNiZa95ExrChdPbUJZz9HZntAsA25hezhHbmH8
+	lB3fDo5D44VIpJ5BdEaSxVlu1/dvxLVF32a2Yekb/PHOf2HElb2C7rHwWczwtEKx7p0FdbCX/gS20
+	BQpxwta9hIMspQscJBzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhmkv-00GX4A-As; Fri, 22 Apr 2022 06:27:01 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1nhmp2-00GYtf-80; Fri, 22 Apr 2022 06:31:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhmYg-00GR1j-MS; Fri, 22 Apr 2022 06:14:24 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1650608037; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=Upc29wFEZbY9EpRHZYitREhkrRXSEoAPDtx8gDCsqYwhKkJNleVA5Fm4X91oEzQuYjB/8+Peb6ZTQLcub1fM3CiTv2KxB8Svg+igpE3DNeIc7BDu9BbhW2A0sUyRjzw/JZx26VqggDaF46jej7IGF4Y/lDzGmA/zFipRv9C5J3I=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1650608037;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To;
- bh=UFvld06qgXbqQi+xJzwXOyVaCMSC9MrrcLtY4RAgqNI=; 
- b=FfqMs5rwPZedfIDvP5jj+A32qjrU7nt89H46DUvNMa/vwrzj2jMNwbsj/4WeERRRX8cID6b+2fn0+Jny5wZe383wv34fq9+YrkznEULl0mppOhVEiYSL4iwTUA/kcZYig3/stDaP4uzPeUKHw9iAtKBNmW6ZlbwDHTgjvMp0LcY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=arinc9.com;
- spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
- dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1650608037; 
- s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
- h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
- bh=UFvld06qgXbqQi+xJzwXOyVaCMSC9MrrcLtY4RAgqNI=;
- b=WfNpEQFRk5/DPSn8YyQZnbOY1qy0b5Ub/T9xf0jbigszz5Aipcm4k81w6k/txiz2
- xhD+WXL4Z3NLjJ8sy4UzEIjCndqiJ+gIbYrA/S81g9mgbV/M5woDGiFw6GijzyrsTHB
- c8W44JeyWq3sT0KWGLPoMZzDn5P6Gc+B3saEqbOs=
-Received: from [10.10.10.3] (85.117.236.245 [85.117.236.245]) by
- mx.zohomail.com with SMTPS id 1650608035654467.1535935949838;
- Thu, 21 Apr 2022 23:13:55 -0700 (PDT)
-Message-ID: <6cdec3bc-4715-29c8-f4a1-df1408940a75@arinc9.com>
-Date: Fri, 22 Apr 2022 09:13:50 +0300
+ id 1nhmim-00GW2l-Lr; Fri, 22 Apr 2022 06:24:50 +0000
+X-UUID: 0e8ea3cb4c4547f3ab83e14f2dc3c192-20220421
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:234c1611-106f-4fec-919a-86709b4bdd2d, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-20
+X-CID-META: VersionHash:faefae9, CLOUDID:e42f94f0-da02-41b4-b6df-58f4ccd36682,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:1,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 0e8ea3cb4c4547f3ab83e14f2dc3c192-20220421
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <mark-pk.tsai@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1697608761; Thu, 21 Apr 2022 23:24:43 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 Apr 2022 23:24:42 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 22 Apr 2022 14:24:41 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 22 Apr 2022 14:24:41 +0800
+From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+To: <bjorn.andersson@linaro.org>, <mathieu.poirier@linaro.org>,
+ <robin.murphy@arm.com>
+CC: <hch@lst.de>, <m.szyprowski@samsung.com>, <matthias.bgg@gmail.com>,
+ <linux-remoteproc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <iommu@lists.linux-foundation.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <mark-pk.tsai@mediatek.com>,
+ <yj.chiang@mediatek.com>
+Subject: [PATCH 2/2] remoteproc: Fix dma_mem leak after rproc_shutdown
+Date: Fri, 22 Apr 2022 14:24:36 +0800
+Message-ID: <20220422062436.14384-3-mark-pk.tsai@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220422062436.14384-1-mark-pk.tsai@mediatek.com>
+References: <20220422062436.14384-1-mark-pk.tsai@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH 0/14] Refactor Ralink Pinctrl and Add Documentation
-Content-Language: en-US
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
- Luiz Angelo Daros de Luca <luizluca@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, erkin.bozoglu@xeront.com,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, linux-arm-kernel@lists.infradead.org,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- "open list:MIPS" <linux-mips@vger.kernel.org>
-References: <20220413060729.27639-1-arinc.unal@arinc9.com>
- <CACRpkdbbMFYNNjAKwhysKpu1JVh2JSB-N=Y8QMx1JvMhCPBpwg@mail.gmail.com>
- <26418320-64e0-3ed2-c792-7f72878b7592@arinc9.com>
- <CAMhs-H_d8jUa4=4eVjQxo+h-XeRgiMYC1H_xYtPLb8jHDVYL2Q@mail.gmail.com>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <CAMhs-H_d8jUa4=4eVjQxo+h-XeRgiMYC1H_xYtPLb8jHDVYL2Q@mail.gmail.com>
-X-ZohoMailClient: External
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_231422_890478_16C92CED 
-X-CRM114-Status: GOOD (  13.44  )
+X-CRM114-CacheID: sfid-20220421_232448_759617_04450B5A 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,37 +78,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMjIvMDQvMjAyMiAwODoyMSwgU2VyZ2lvIFBhcmFjdWVsbG9zIHdyb3RlOgo+IEhpIEFyaW7D
-pywKPiAKPiBPbiBUaHUsIEFwciAyMSwgMjAyMiBhdCA0OjQ0IFBNIEFyxLFuw6cgw5xOQUwgPGFy
-aW5jLnVuYWxAYXJpbmM5LmNvbT4gd3JvdGU6Cj4+Cj4+IE9uIDIxLzA0LzIwMjIgMTc6MjcsIExp
-bnVzIFdhbGxlaWogd3JvdGU6Cj4+PiBPbiBXZWQsIEFwciAxMywgMjAyMiBhdCA4OjA4IEFNIEFy
-xLFuw6cgw5xOQUwgPGFyaW5jLnVuYWxAYXJpbmM5LmNvbT4gd3JvdGU6Cj4+Pgo+Pj4+IFRoaXMg
-cGF0Y2ggc2VyaWVzIGJyaW5ncyBjb21wbGV0ZSByZWZhY3RvcmluZyB0byB0aGUgUmFsaW5rIHBp
-bmN0cmwgZHJpdmVyCj4+Pj4gYW5kIGl0cyBzdWJkcml2ZXJzLgo+Pj4KPj4+IEkganVzdCBtZXJn
-ZWQgYWxsIHRoZSBwYXRjaGVzLCB0aGUgY29tbWVudHMgc2VlbSBtaW5vciBhbmQgYW55IGZ1cnRo
-ZXIKPj4+IGZpeGVzIGNhbiBjZXJ0YWlubHkgYmUgZG9uZSBvbiB0b3Agb2YgdGhpcy4gQW55b25l
-IGludGVyZXN0ZWQgaW4gcmFsaW5rCj4+PiB3b3JraW5nIG5pY2VseSBpcyBsaWtlbHkgaW4gdGhl
-IHRocmVhZCBhbmQgd2UgbW9zdGx5IGNhcmUgYWJvdXQgdGhhdCB0aGlzCj4+PiB3b3JrcyBmb3Ig
-T3BlbldydCwgYW5kIGlmIGl0IHdvcmtzIGZvciB0aGVtIHdlIGFyZSBoYXBweS4KPj4+Cj4+Pj4g
-ICAgIG1pcHM6IGR0czogcmFsaW5rOiBtdDc2MjE6IHVzZSB0aGUgbmV3IGNvbXBhdGlibGUgc3Ry
-aW5nIGZvciBNVDc2MjEgcGluY3RybAo+Pj4KPj4+IFRoaXMgd2FzIGEgYml0IHNjYXJ5IHNpbmNl
-IHdlIHVzdWFsbHkgdGFrZSB0aGVzZSB0aHJvdWdoIHRoZSByZXNwZWN0aXZlCj4+PiBTb0MgdHJl
-ZSwgYnV0IEkganVzdCBhcHBsaWVkIGl0IGFueXdheSwgaXQgbWFrZXMgbG9naWNhbCBzZW5zZSBp
-biB0aGUKPj4+IHNlcmllcy4KPj4+Cj4+PiBJIGhvcGUgaXQgd2lsbCBub3QgbGVhZCB0byBjb25m
-bGljdHMuCj4+Pgo+Pj4gR29vZCB3b3JrIHdpdGggdGhpcyBzZXJpZXMhCj4+Cj4+IFRoYW5rcy4g
-VGhlcmUgaXMgYSB2MiBvZiB0aGlzIHNlcmllcyB3aGljaCBoYXMgYmVlbiB3YWl0aW5nIGZvciBh
-IHdlZWssCj4+IEkgaG9wZSB0aGF0IHdhcyB0aGUgb25lIHlvdSBhcHBsaWVkIGFzIHlvdSByZXBs
-aWVkIHVuZGVyIHYxIChJJ20gbm90Cj4+IHN1cmUgd2hpY2ggcmVwb3NpdG9yeSB5b3UgYXBwbGll
-ZCB0aGlzIHNvIEkgY2FuJ3QgY2hlY2sgbXlzZWxmKS4KPiAKPiBMaW51cyBhZGRzIHBhdGNoZXMg
-dGhyb3VnaCB0aGUgbGludXgtcGluY3RybCB0cmVlIGFzIHBpbmN0cmwgbWFpbnRhaW5lci4gQ2hl
-Y2s6Cj4gCj4gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQv
-bGludXN3L2xpbnV4LXBpbmN0cmwuZ2l0L2xvZy8/aD1kZXZlbAoKVGhhbmtzIFNlcmdpby4gSSBz
-ZWUgdjEgd2FzIGFwcGxpZWQsIG9vcHMuIFdoYXQgdG8gZG8/CgpBcsSxbsOnCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
-aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Release dma coherent memory before rvdev is free in
+rproc_rvdev_release().
+
+Below is the kmemleak report:
+unreferenced object 0xffffff8051c1a980 (size 128):
+  comm "sh", pid 4895, jiffies 4295026604 (age 15481.896s)
+  hex dump (first 32 bytes):
+    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+  backtrace:
+    [<000000003a0f3ec0>] dma_declare_coherent_memory+0x44/0x11c
+    [<00000000ad243164>] rproc_add_virtio_dev+0xb8/0x20c
+    [<00000000d219c8e9>] rproc_vdev_do_start+0x18/0x24
+    [<00000000e694b468>] rproc_start+0x22c/0x3e0
+    [<000000000b938941>] rproc_boot+0x4a4/0x860
+    [<000000003c4dc532>] state_store.52856+0x10c/0x1b8
+    [<00000000df2297ac>] dev_attr_store+0x34/0x84
+    [<0000000083a53bdb>] sysfs_kf_write+0x60/0xbc
+    [<000000008ed830df>] kernfs_fop_write+0x198/0x458
+    [<0000000072b9ad06>] __vfs_write+0x50/0x210
+    [<00000000377d7469>] vfs_write+0xe4/0x1a8
+    [<00000000c3fc594e>] ksys_write+0x78/0x144
+    [<000000009aef6f4b>] __arm64_sys_write+0x1c/0x28
+    [<0000000003496a98>] el0_svc_common+0xc8/0x22c
+    [<00000000ea3fe7a3>] el0_svc_compat_handler+0x1c/0x28
+    [<00000000d1a85a4e>] el0_svc_compat+0x8/0x24
+
+Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+---
+ drivers/remoteproc/remoteproc_core.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/remoteproc/remoteproc_core.c b/drivers/remoteproc/remoteproc_core.c
+index c510125769b9..8e28290eefa9 100644
+--- a/drivers/remoteproc/remoteproc_core.c
++++ b/drivers/remoteproc/remoteproc_core.c
+@@ -461,6 +461,7 @@ static void rproc_rvdev_release(struct device *dev)
+ 	struct rproc_vdev *rvdev = container_of(dev, struct rproc_vdev, dev);
+ 
+ 	of_reserved_mem_device_release(dev);
++	dma_release_coherent_memory(dev);
+ 
+ 	kfree(rvdev);
+ }
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
