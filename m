@@ -4,70 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18447C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 08:11:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3426C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 08:13:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jVGM8LXmBgZvFwExuJ6uorva8P4sGX/tAqhiAbcUdX4=; b=YTuyXPMCKhUT6o
-	9RLJg40neU1FJXW2f1O2aQDu8gQc0yymMns29Y+Ueet5BQmWWFEiJqlTP+QTxYdMiT5w71aPCGY4r
-	h3xVG4KhSyQdY5WsbBXpG/Gi3RXh8qLNm77VSfIKPAMyQ3T2ealmffEaOEczr58PTaZ77LJD3Yp/m
-	6yKiCeFhgtWeD/+r0hjbSGI5ObeLS1QcHTZ1dfwkMOVH1EFQYdbSiU0uPdWymWkjoc5U8lZ8rmGRd
-	lGGytLQprUXbHQZT4e/olTVUL/9F6BmhrYqZ4eiex6CijqspWvDwFAh6FbIHsh6D5mozCZTgyYxKB
-	aFsI33MmqoYbWRzMVdfQ==;
+	List-Owner; bh=6PrmfmyV/h+qyDkKT6+MGvp8w3gHFUgCBXJdP87Fun8=; b=4c37+kFMROp40c
+	G1C0Fg6fuiOQi8xyRqDFLlLwfeUWj+ZNspvwJPMKnyuse2gzBlzTZYMEzk6O9SSiQXVdNw6118nBe
+	R7k3ypbkVYSisDqTchtbmkWMiqZzY7P/en2VdtBfbvOWih1qyo1OzGp/XLtg6ZNsS4TYgsYYNcABb
+	n83ctyYW3FSThuAx3gHt9iS619hq3ott9jCrDoXnm4gUg6Uph+5DXkThfmeJHKNBspw7Gss2YIkZK
+	23lDTuNRp0JaUox/lfRLtbQKHLQIghMTxCbHP5uIMsW+BqYEATzC98nQiUCeGZiD8KAUyuCWcXWbl
+	pUYETcut3DTGlaj0fj6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhoOC-00H9A4-U2; Fri, 22 Apr 2022 08:11:40 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nhoPi-00H9uj-0g; Fri, 22 Apr 2022 08:13:14 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhoFi-00H5D7-5Y; Fri, 22 Apr 2022 08:02:56 +0000
-X-UUID: 154bf78b337644a5bb0c98fd780eacaa-20220422
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:baed522e-71b7-4c34-9bda-4eab17c50866, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:02bac1ef-06b0-4305-bfbf-554bfc9d151a,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 154bf78b337644a5bb0c98fd780eacaa-20220422
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 950366572; Fri, 22 Apr 2022 01:02:45 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 Apr 2022 00:52:44 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 22 Apr 2022 15:52:42 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 22 Apr 2022 15:52:42 +0800
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <rafael@kernel.org>, <viresh.kumar@linaro.org>, <robh+dt@kernel.org>,
- <krzk+dt@kernel.org>, <matthias.bgg@gmail.com>
-CC: <jia-wei.chang@mediatek.com>, <roger.lu@mediatek.com>,
- <hsinyi@google.com>, <khilman@baylibre.com>,
- <angelogioacchino.delregno@collabora.com>, <linux-pm@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>
-Subject: [PATCH V4 02/14] cpufreq: mediatek: Use device print to show logs
-Date: Fri, 22 Apr 2022 15:52:27 +0800
-Message-ID: <20220422075239.16437-3-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
-References: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
+ id 1nhoIJ-00H6Xa-Ps; Fri, 22 Apr 2022 08:05:37 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id CE16F1F463D7
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1650614731;
+ bh=sHB37B0oMJ/C17KoCmMigrMeNcB1ACVW2i8oQKoWjj4=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=H/GeFT34AQfYdzuEjWZd8uXuy1NfJ+KDwaxSjx8lRTiajFcmyy1FxDu1PBuZoRwwF
+ XKpihwqRG2aYlv31Gbie6PyJu7oXGoPoYP0jRu4ayYRdiv5bmPX1EFLuyykARgVzx7
+ S3Pp19UgbNQtEkKkL7PojrqFruuBCfhxvr8jev0olV/Z1GOb1bRPbVhknsscDQCOwt
+ euPfJIsomTkLng1en9VmO5gVy9VaC5OKhwME3QSj6psNLU+oxUA4xMx0Axb6dn0I3T
+ jvWhh4G+atYgBTRo95BsY/00VN0wXv3Hl5iK8eZ0anzP6e07MMkPLJpIIKoq6tvT+y
+ plp5uidDJEP9A==
+Message-ID: <b77612aa-8dfa-a8fb-722f-79d21ddffe30@collabora.com>
+Date: Fri, 22 Apr 2022 10:05:27 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v6 1/2] dt-bindings: phy: mediatek: Add YAML schema for
+ PCIe PHY
+Content-Language: en-US
+To: Jianjun Wang <jianjun.wang@mediatek.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Wei-Shun Chang <weishunc@google.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, rex-bc.chen@mediatek.com,
+ randy.wu@mediatek.com, jieyy.yang@mediatek.com, chuanjia.liu@mediatek.com,
+ qizhong.cheng@mediatek.com, jian.yang@mediatek.com
+References: <20220422041125.12732-1-jianjun.wang@mediatek.com>
+ <20220422041125.12732-2-jianjun.wang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220422041125.12732-2-jianjun.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_010254_287796_59651F5E 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20220422_010536_095076_932BC2D5 
+X-CRM114-Status: UNSURE (   6.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,170 +74,18 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-- Replace pr_* with dev_* to show logs.
-- Remove usage of __func__.
+Il 22/04/22 06:11, Jianjun Wang ha scritto:
+> Add YAML schema documentation for PCIe PHY on MediaTek chipsets.
+> 
+> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
 
-Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/cpufreq/mediatek-cpufreq.c | 54 ++++++++++++++++--------------
- 1 file changed, 28 insertions(+), 26 deletions(-)
-
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index dc4a87e68940..e040f3574af9 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -65,7 +65,8 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
- 
- 	old_vproc = regulator_get_voltage(proc_reg);
- 	if (old_vproc < 0) {
--		pr_err("%s: invalid Vproc value: %d\n", __func__, old_vproc);
-+		dev_err(info->cpu_dev,
-+			"invalid Vproc value: %d\n", old_vproc);
- 		return old_vproc;
- 	}
- 	/* Vsram should not exceed the maximum allowed voltage of SoC. */
-@@ -81,14 +82,14 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
- 		do {
- 			old_vsram = regulator_get_voltage(sram_reg);
- 			if (old_vsram < 0) {
--				pr_err("%s: invalid Vsram value: %d\n",
--				       __func__, old_vsram);
-+				dev_err(info->cpu_dev,
-+					"invalid Vsram value: %d\n", old_vsram);
- 				return old_vsram;
- 			}
- 			old_vproc = regulator_get_voltage(proc_reg);
- 			if (old_vproc < 0) {
--				pr_err("%s: invalid Vproc value: %d\n",
--				       __func__, old_vproc);
-+				dev_err(info->cpu_dev,
-+					"invalid Vproc value: %d\n", old_vproc);
- 				return old_vproc;
- 			}
- 
-@@ -136,14 +137,14 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
- 		do {
- 			old_vproc = regulator_get_voltage(proc_reg);
- 			if (old_vproc < 0) {
--				pr_err("%s: invalid Vproc value: %d\n",
--				       __func__, old_vproc);
-+				dev_err(info->cpu_dev,
-+					"invalid Vproc value: %d\n", old_vproc);
- 				return old_vproc;
- 			}
- 			old_vsram = regulator_get_voltage(sram_reg);
- 			if (old_vsram < 0) {
--				pr_err("%s: invalid Vsram value: %d\n",
--				       __func__, old_vsram);
-+				dev_err(info->cpu_dev,
-+					"invalid Vsram value: %d\n", old_vsram);
- 				return old_vsram;
- 			}
- 
-@@ -214,7 +215,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 	old_freq_hz = clk_get_rate(cpu_clk);
- 	old_vproc = regulator_get_voltage(info->proc_reg);
- 	if (old_vproc < 0) {
--		pr_err("%s: invalid Vproc value: %d\n", __func__, old_vproc);
-+		dev_err(cpu_dev, "invalid Vproc value: %d\n", old_vproc);
- 		return old_vproc;
- 	}
- 
-@@ -222,8 +223,8 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 
- 	opp = dev_pm_opp_find_freq_ceil(cpu_dev, &freq_hz);
- 	if (IS_ERR(opp)) {
--		pr_err("cpu%d: failed to find OPP for %ld\n",
--		       policy->cpu, freq_hz);
-+		dev_err(cpu_dev, "cpu%d: failed to find OPP for %ld\n",
-+			policy->cpu, freq_hz);
- 		return PTR_ERR(opp);
- 	}
- 	vproc = dev_pm_opp_get_voltage(opp);
-@@ -237,8 +238,8 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 	if (old_vproc < target_vproc) {
- 		ret = mtk_cpufreq_set_voltage(info, target_vproc);
- 		if (ret) {
--			pr_err("cpu%d: failed to scale up voltage!\n",
--			       policy->cpu);
-+			dev_err(cpu_dev,
-+				"cpu%d: failed to scale up voltage!\n", policy->cpu);
- 			mtk_cpufreq_set_voltage(info, old_vproc);
- 			return ret;
- 		}
-@@ -247,8 +248,8 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 	/* Reparent the CPU clock to intermediate clock. */
- 	ret = clk_set_parent(cpu_clk, info->inter_clk);
- 	if (ret) {
--		pr_err("cpu%d: failed to re-parent cpu clock!\n",
--		       policy->cpu);
-+		dev_err(cpu_dev,
-+			"cpu%d: failed to re-parent cpu clock!\n", policy->cpu);
- 		mtk_cpufreq_set_voltage(info, old_vproc);
- 		WARN_ON(1);
- 		return ret;
-@@ -257,8 +258,8 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 	/* Set the original PLL to target rate. */
- 	ret = clk_set_rate(armpll, freq_hz);
- 	if (ret) {
--		pr_err("cpu%d: failed to scale cpu clock rate!\n",
--		       policy->cpu);
-+		dev_err(cpu_dev,
-+			"cpu%d: failed to scale cpu clock rate!\n", policy->cpu);
- 		clk_set_parent(cpu_clk, armpll);
- 		mtk_cpufreq_set_voltage(info, old_vproc);
- 		return ret;
-@@ -267,8 +268,8 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 	/* Set parent of CPU clock back to the original PLL. */
- 	ret = clk_set_parent(cpu_clk, armpll);
- 	if (ret) {
--		pr_err("cpu%d: failed to re-parent cpu clock!\n",
--		       policy->cpu);
-+		dev_err(cpu_dev,
-+			"cpu%d: failed to re-parent cpu clock!\n", policy->cpu);
- 		mtk_cpufreq_set_voltage(info, inter_vproc);
- 		WARN_ON(1);
- 		return ret;
-@@ -281,8 +282,8 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 	if (vproc < inter_vproc || vproc < old_vproc) {
- 		ret = mtk_cpufreq_set_voltage(info, vproc);
- 		if (ret) {
--			pr_err("cpu%d: failed to scale down voltage!\n",
--			       policy->cpu);
-+			dev_err(cpu_dev,
-+				"cpu%d: failed to scale down voltage!\n", policy->cpu);
- 			clk_set_parent(cpu_clk, info->inter_clk);
- 			clk_set_rate(armpll, old_freq_hz);
- 			clk_set_parent(cpu_clk, armpll);
-@@ -448,15 +449,16 @@ static int mtk_cpufreq_init(struct cpufreq_policy *policy)
- 
- 	info = mtk_cpu_dvfs_info_lookup(policy->cpu);
- 	if (!info) {
--		pr_err("dvfs info for cpu%d is not initialized.\n",
--		       policy->cpu);
-+		dev_err(info->cpu_dev,
-+			"dvfs info for cpu%d is not initialized.\n", policy->cpu);
- 		return -EINVAL;
- 	}
- 
- 	ret = dev_pm_opp_init_cpufreq_table(info->cpu_dev, &freq_table);
- 	if (ret) {
--		pr_err("failed to init cpufreq table for cpu%d: %d\n",
--		       policy->cpu, ret);
-+		dev_err(info->cpu_dev,
-+			"failed to init cpufreq table for cpu%d: %d\n",
-+			policy->cpu, ret);
- 		return ret;
- 	}
- 
--- 
-2.18.0
 
 
 _______________________________________________
