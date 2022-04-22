@@ -4,78 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4E46C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 16:56:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D87B5C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 16:57:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x2ipRpigGaWNbBsPqIM07DIQHhTMqx5qe2yMJTZ9Rdo=; b=Y2FKwcqNTlRJlcaBq7FgYJsvlV
-	JUakIGX4pde9QXZkV/QxMaZx9f6+ErK4sSQ/ELTr25oSKi3kFjWEHEiQ5F+IHkiwTfKxJF0/F0w8G
-	ro2bIpkNAv7qd1S3Y0rzr8wj20XGisXlNXUe4sZRyqWZgSWSqhqZfEGmZ520l5j2dG3RpXpi8gfaA
-	0z+Lks9dNKviTfm+XDPDZy51pHiTxxo5ALsEBIh4wxRQtLiC7Kyuqc3qSE92Zy/IZmU+KC8Mh8kxZ
-	ewtPJxJy0bF5dEAKvTBulBnFvF5nTn3NEAvWcTeFYeAkSVsvbnnyX6EZPqVKBrE2AFGPE+OfI9CH2
-	1O9m8mMQ==;
+	bh=f+c1FSGWgD9cM4vzO0eUlkz8umfhPA8HpTMHaj7QKeM=; b=f3Ovus6GFw2KIvmAFhCbb4IEST
+	7I/2LJXddRuYQwgp7Krmtxz/MbnrkVDKDGmv9GENI41C/0sxY6/M8O0FjHUNUwStPBVeIlSAnr5Gc
+	OlY619cwaoafxmIlNECsPabDqF9/JUXv0/lh6KGQtoDygiLEmVQ8jNAdQ289IFfGbX0zQAGYFjn85
+	Q0+F6+JBTKigdBT4cXb8J5Le0ZFcLgB5lFgc3xynyc1UOOrBgC9PEfsKHpc/SQwnvcCEqaA17PGC0
+	UABVqfwOs2UOQRKy/ggpzl+TZZOCUDVruucP3jIfp2TGpQi1fEL/lvt3q7lIsUOrsEa0ICAhs3Ra5
+	9nzuenLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhwZe-001aAU-02; Fri, 22 Apr 2022 16:56:02 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1nhwap-001aab-UI; Fri, 22 Apr 2022 16:57:15 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhwZa-001a8v-T2; Fri, 22 Apr 2022 16:56:00 +0000
-Received: by mail-lf1-x135.google.com with SMTP id g19so15337761lfv.2;
- Fri, 22 Apr 2022 09:55:58 -0700 (PDT)
+ id 1nhwam-001aYk-Ph; Fri, 22 Apr 2022 16:57:14 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id h27so15049141lfj.13;
+ Fri, 22 Apr 2022 09:57:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=2pYMeHUvcayBz/9UI4GynHSCHFwlqj2AHLeRRSA2YCs=;
- b=krXyhcne24yR9Gh9Zw9iW5pAPfymD6ScOTFGCbwgAiEfrdkto4s0WJKBkiyMT9wS8U
- qiZ7Jeg4UtHkQycTkuZGLLXyhFIg28tnP4MQtX6j3dYWYo+1EYN3FDI1O4FjoZpL63r7
- QuM0xTeyJ5IS0MuRNgZGFlo4BSax11D4NhIfsyHR51g700L3yGXcPgJHkP2wbd6Eor5n
- rU3y/q11XVacnnOn7FMunwUUEC1z4BWbibkdKs4mGKjzBnft6qUcb0lgGy0thSIrv+h3
- VDLdceA8c369rBPYYPT2F5w8MsDASgxJ3u15mtaP8SWcxy8OPYBCl/mj19AmQKdFPS2A
- 3TYA==
+ bh=bPH7VaBfkFbtZZotNuuTdskPihD6+M4P5/MTINbvQUc=;
+ b=Pe+UOZBQErS+Z8nmGZrZH2ly5AmAXR/nub2maR1YBDg2mW5cI8XFN7kRpzR9zJR1g/
+ RCcytxziQK15Y/+UhDwpzPO/z8urhmQ15jD9UMpIVuXdvYk4ZA9FMtQi/zELESwjYQ6k
+ oawpnRmK4g3hu3fT3s6md4XsDn4X61bzFwlVcJy4oKKXIIa+Wf5SbsrYbGooZQtu9T6w
+ mMrQaS3i1Iz83k0/NJ+NcahILWGnEI8wU5g8Ena+3kmorM7mSBcU3mLHYmzUGfSY57bG
+ E+QiOx9uS0cC7R96ZHgDOYCEZyLap5NE8EK+uYgY9glo5SCpnjSPQ7hN8GC1SPl/HsYy
+ 6IUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=2pYMeHUvcayBz/9UI4GynHSCHFwlqj2AHLeRRSA2YCs=;
- b=sWPHoVB2TjYgrSkeYg/238mmG5d/xulh26xRgjVVi+c5KU1zAofl5SPqtMbb8RWxRA
- jOzZ3PHo7h6d0sFJ4oTb+GhTGm2oIwbo77p0Jrd2UCLF/TnyLgwy7Ue/O+yv8HZIdXe5
- TYI44a3jEUZ/purKjsogAume/qID63+b+fuLwOLqtyqiDpbjpDX1LlVNfqA87/rR3k3g
- aiVQhHn2foe/UB44n1QUyHq32DONklIW8/8aYLLcETlmxq9j+O3POjbZlFnH2hCRcQUc
- MJQAUR7F4cxnfHrYaUDyPHc9TVKkbjB0SGjvdVtqR531Nc1JMBVpm8ubDysaTlgsvlza
- 152Q==
-X-Gm-Message-State: AOAM530ZMJ5YIs2AZB8nCsOU9JMkCPje+DwSxS3NhbQ5cSNFB8wHqxhy
- qVBlcNV8x8qMIt/0QGD4R+Y=
-X-Google-Smtp-Source: ABdhPJyCViL6TK3OhUnGEKGOgIn1Xu+YgBPckSSxDddGfTZMPnPildVIxagVVGzqWFFbTgRd6cy4kg==
-X-Received: by 2002:a19:5f0e:0:b0:44b:111:1622 with SMTP id
- t14-20020a195f0e000000b0044b01111622mr3758916lfb.161.1650646557381; 
- Fri, 22 Apr 2022 09:55:57 -0700 (PDT)
+ bh=bPH7VaBfkFbtZZotNuuTdskPihD6+M4P5/MTINbvQUc=;
+ b=3+0ZhdsbU/8HZniLPfmW7lJ1KwmNL5xpgFx+GnAPicBiAAETsKcqNcVyCbpk2EglcR
+ 9M0VCbbahyGRXHMKrv6kk0hc+M2gd/og00YlBvSdXJS3qFXj98lX/rAur84+R7GJhxHU
+ tohVSX0C9BomD6uACYiiX/A8sbVXLzCkH3969ZOCcW3NkrwYl8kf4Bvht9uqaKAi/aLU
+ KfNmi6mE/k6GBMj3Go4fU0YPquDKyr6MDshtbWMkGlki2MlhJIu1V9MqeEw1HXNB/s8j
+ PGpC0h/eP3JmdY5MSDUWyJIpTcd0ezVKnDHAzfx2leWFldxfMoMFXqC4xKTt/DL7Ao8M
+ syxA==
+X-Gm-Message-State: AOAM533bmoucS0MXWAjecCFicf+x6lFcEnowntmXCrRQzapCVhVp3tN0
+ IUe8j4E2Hzmn3XH3GgsmEpw=
+X-Google-Smtp-Source: ABdhPJzdFQvGzdSLbrSe+adt+pVkjulM8+IbVohfTKqNcWpqfyrWUedIVpFG1a8BPbVbvzAdinxkHQ==
+X-Received: by 2002:a05:6512:2213:b0:471:c296:b659 with SMTP id
+ h19-20020a056512221300b00471c296b659mr3848330lfu.24.1650646630354; 
+ Fri, 22 Apr 2022 09:57:10 -0700 (PDT)
 Received: from orome ([62.96.65.119]) by smtp.gmail.com with ESMTPSA id
- a2-20020a19e302000000b00471988e79cdsm282219lfh.180.2022.04.22.09.55.55
+ r9-20020a2e8e29000000b0024da2131ed9sm269715ljk.100.2022.04.22.09.57.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Apr 2022 09:55:56 -0700 (PDT)
-Date: Fri, 22 Apr 2022 18:55:53 +0200
+ Fri, 22 Apr 2022 09:57:07 -0700 (PDT)
+Date: Fri, 22 Apr 2022 18:57:04 +0200
 From: Thierry Reding <thierry.reding@gmail.com>
-To: xinlei.lee@mediatek.com
-Cc: u.kleine-koenig@pengutronix.de, lee.jones@linaro.org,
- robh+dt@kernel.org, matthias.bgg@gmail.com,
- linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, rex-bc.chen@mediatek.com,
- jitao.shi@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v6,0/5] Convert pwm-mtk-disp.txt to mediatek,
- pwm-disp.yaml format
-Message-ID: <YmLeGaZ0hX1kj9+v@orome>
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ xinlei.lee@mediatek.com, lee.jones@linaro.org, robh+dt@kernel.org,
+ matthias.bgg@gmail.com, linux-pwm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ rex-bc.chen@mediatek.com, jitao.shi@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v6, 5/5] dt-bindings: pwm: Add interrupts property for
+ MediaTek MT8192
+Message-ID: <YmLeYOOCNciqhykt@orome>
 References: <1650284456-16407-1-git-send-email-xinlei.lee@mediatek.com>
+ <1650284456-16407-6-git-send-email-xinlei.lee@mediatek.com>
+ <a92d3b46-ace4-2d19-fef9-c59cd1a596ce@collabora.com>
+ <20220421134808.sqnecvysuzlgdsz5@pengutronix.de>
 MIME-Version: 1.0
-In-Reply-To: <1650284456-16407-1-git-send-email-xinlei.lee@mediatek.com>
+In-Reply-To: <20220421134808.sqnecvysuzlgdsz5@pengutronix.de>
 User-Agent: Mutt/2.2.1 (c8109e14) (2022-02-19)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_095558_976703_67960C6A 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20220422_095712_904882_E9EF4630 
+X-CRM114-Status: GOOD (  18.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,90 +91,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2820623563141012914=="
+Content-Type: multipart/mixed; boundary="===============8443046380128088201=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============2820623563141012914==
+--===============8443046380128088201==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="LcAPuwLqmWX+Fefx"
+	protocol="application/pgp-signature"; boundary="Xn43fwg7L9AIf1Ta"
 Content-Disposition: inline
 
 
---LcAPuwLqmWX+Fefx
-Content-Type: text/plain; charset=us-ascii
+--Xn43fwg7L9AIf1Ta
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Apr 18, 2022 at 08:20:51PM +0800, xinlei.lee@mediatek.com wrote:
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
+On Thu, Apr 21, 2022 at 03:48:08PM +0200, Uwe Kleine-K=C3=B6nig wrote:
+> Hello,
 >=20
-> Change since v5:
-> 1.Add interrupts property.
+> On Thu, Apr 21, 2022 at 12:17:00PM +0200, AngeloGioacchino Del Regno wrot=
+e:
+> > Il 18/04/22 14:20, xinlei.lee@mediatek.com ha scritto:
+> > > From: Xinlei Lee <xinlei.lee@mediatek.com>
+> > >=20
+> > > Add interrupts property of pwm for MediaTek MT8192 SoC.
+> > >=20
+> > > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> >=20
+> > Hello Xinlei,
+> > the pwm-mtk-disp.c driver does not support interrupts.
+> >=20
+> > Please add interrupts support to the driver first, and only then
+> > add that in the dt-bindings.
 >=20
-> Changes since v4:
-> 1.Base on Linux-next.
-> 2.Cancel removal of mt8167 compatiable patch.
->=20
-> Changes since v3:
-> 1. Combine multiplexed socs into one entry
->=20
-> Changes since v2:
-> 1. Modify the PWM name to DISP_PWM.
-> 2. Include pwm.yaml.
-> 3. Separate conversion files and add/remove operations.
->=20
-> Changes since v1:
-> 1. Fixed formatting issues mentioned in the v1.
-> 2. Delete pwm-mtk-disp.txt.
-> 3. Add mtk_pwm dt_maintainers.
-> 4. Add "#pwm-cells" & power-domains properties.
-> 5. Make dt_checking successful.
->=20
-> Xinlei Lee (5):
->   dt-bindings: pwm: Convert pwm-mtk-disp.txt to mediatek,pwm-disp.yaml
->     format
->   dt-bindings: pwm: Add compatible for MediaTek MT8192
->   dt-bindings: pwm: Add compatible for MediaTek MT8195
->   dt-bindings: pwm: Add compatible for MediaTek MT8186
->   dt-bindings: pwm: Add interrupts property for MediaTek MT8192
->=20
->  .../bindings/pwm/mediatek,pwm-disp.yaml       | 75 +++++++++++++++++++
->  .../devicetree/bindings/pwm/pwm-mtk-disp.txt  | 45 -----------
->  2 files changed, 75 insertions(+), 45 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/pwm/mediatek,pwm-di=
-sp.yaml
->  delete mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+> in my understanding the linux driver state and the binding documentation
+> are somewhat independent. Here I'd say adding the irq information to dt
+> without the driver supporting it is fine.
 
-Applied, thanks.
+Agreed. I've applied this along with the rest. It doesn't have Rob's or
+Krzysztof's stamp of approval, but it's a trivial change and looks fine
+to me.
 
 Thierry
 
---LcAPuwLqmWX+Fefx
+--Xn43fwg7L9AIf1Ta
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmJi3hkACgkQ3SOs138+
-s6Huww/+LcxzjgeWvFFCu2uvAQB4pL5HxJI4grLWEbFg0ZLeOWl664dx3po5VI65
-cMvtk+MVuoHjnUC4OWUXHIzrj0S9dGtyvMzD0XfeANgoS0j/+5HJ4ywhkRyhjd/k
-SOFBE9f46qErRtUub+9XlH5v5CnpjVraYhlhHPYUEYEAhUzX8XC+4AzpJIY1hb8C
-D/rOhvyjAPzk8OzGlNpRwM3N1qH7jZI2PIF336N3TU1yMo270dNroGVPEIm/k1bC
-ToO6cYUWNsduq+i2n1d38CqDPwrhEvqvL05vvLZO05zlBCevqFsR1fTO3cE9nD5c
-cv0MWGU7hSsxJaMdu8V7f65vVtTyeshyo4RYSGlBRfNCTccYTTjl5NU3brICfx7x
-Sbp2KbpF1/+xdHYRLPor+G/gTJUuFuSujl/G3W2ZtCoQOIwrs8I/8jFv5HsHzkZU
-AZTzahQ1YbmILSDJ0wwxAHDT1/+NwQs7f3X5JosyLmM4I0Admbdx89XIUCszVruc
-dVn6CqNbLcJFXvyuKDauTjzYXYBgNwHq65d1qiy724VnkfJ8vnmCa6G+XEyM6oeJ
-5WSIq9As3pv47IjTPf7esxka9YQLAMVis4wxFTXGkjTEx809Rxz5KXr2ZwKBke+5
-Tw64dlGnIGEdXu0nklgQDJLJDG6fUN76A6KxE8oRr4eK9mcbV3Q=
-=KqxN
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmJi3mAACgkQ3SOs138+
+s6GaAw//VlLPxZ1xhdfymBfdZxhQ5KeACuZ6k/asJF7IV7j+qF8lPEGixgDeaLZF
+g139oHKqts/KjwLRBEerRUOKC1om/nZNbnF5phGdFXBhNCHPbgPEDXwDh64O6gNN
+VYiOS3e+9/UWgo18fkjE0vAtlf5BOytzKE3dxheacU29YENfK5mfajrP5OqsMmgs
+SXvoMWRuq2ni51pPlj1sNIoeK3FBwvM8D4yFHV8Ns/jpDRmIXqBafYUc0qu3l5yQ
+fX0ojlbaDppJ8YFyRPn7PDY36hA8siLvW9WCJ4GB0sAZeG1ZlA2zvMSFxNLz+OIE
+Xg76o+1+zMuWsHCCvay7Q+ylNlyyVCS4Kp33Ho8BMIHS2WLm1L0wUvaUGAHH4f4h
+I6TcMGxu++kh6g1LXFAZ8HCwUG8J+HdJiYgfKEH8DQuqzYfWl54GA1Gi65+zpCfA
+EoMbL4Ja/pb3QjlgtzoGWoGF9qMUigUy5DlICAJJs+JsI84YGj2UNCFS3uXCHOsC
+/Mh5APkBEz0hI8eF7jWhdpjsD1Fsl04aaHjGn0iIIKw8fHE1XoJXN85aU5jdKS77
+bvuAn7dcSlpasoPaUgIBnje0T7SGp3YKzaJs+PiRE5rxHitjMRLa0umLL/tKMhUE
+vJCoUPamD5R+OoQIeG8sXKQYV/+As6q8kGd21nwJI4AIJ8QhaIM=
+=c+hp
 -----END PGP SIGNATURE-----
 
---LcAPuwLqmWX+Fefx--
+--Xn43fwg7L9AIf1Ta--
 
 
---===============2820623563141012914==
+--===============8443046380128088201==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -181,5 +169,5 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============2820623563141012914==--
+--===============8443046380128088201==--
 
