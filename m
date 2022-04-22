@@ -4,66 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 620BFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 01:41:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60216C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 02:35:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E7NuLeqMDp2si9uopqSKE+OsSZ3Y3pXP8h76Ukx9Q/M=; b=SZQ6dBCF3Zzr3Z
-	2PPdverYYMoMiAcITjHIxyiWc0ARlNHvvqVtclqd2FfzX1vn0LJ35ejbrjVNT2aAYy1Y7fLQLoGPR
-	LzFgFOyTOF51bmsIZRsWXuLyRlZRkWhvEOGzHlDWwCqmHTwT6/C5hLBG9UPZ68aaScv9g2coNsvK9
-	HfPqV6FJOaWGhKpB1mjoCYYhrlrC3c/oBUrRehIf8hF7HGYyejBcWoBF+LR4gNIMUK1i9WYmtYTKt
-	YeiVuspPcCFZglnAXytqFjfQcM+OI42W8TnMnY3q6ssAEleoyz6IOZ/P/sdTOLAeJMIpp6lxsHBwY
-	u2PaJ9Ao0VOnhySieclQ==;
+	List-Owner; bh=ZP8i4KIEd8/4li9ElUGNMbm/GdA+53ANdeTlKQVrgj0=; b=xqFPPcLIEdeTwB
+	JeNAlh0pApLvbYKhQv9CFgLU6LlTMEf++f0OQYNzI9cirpUuzdHDf+Pk6VAqIl7TSktnlDcNi5GKK
+	qIbDpS8TogS6EwflIjiyMMUVhaxkeWwLF6sd326r5UvkmxcAeSdcLzwi3ikGmLfm6IAUMTKN5hWox
+	muvZfjvrcPSNelve/3+3lYoJrxZq39jySSJqbGuQ0zKKN8XY9JRGJzbWXV9IdccNpnJVaQYFAVhCC
+	m/OYRoyQ/2eVR2ZSN0PxPPs/IlVgObtovt4ozssNKnNrhGi7jApXjqPUieu8SzA3RxQM0x7ggjI54
+	7LBgktM4DXfmxwo6/SCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhiI5-00FbBB-7A; Fri, 22 Apr 2022 01:40:57 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nhj8G-00FjBp-Po; Fri, 22 Apr 2022 02:34:52 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhiHu-00Fb8R-Lw; Fri, 22 Apr 2022 01:40:48 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 57365B829EB;
- Fri, 22 Apr 2022 01:40:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16530C385A7;
- Fri, 22 Apr 2022 01:40:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1650591644;
- bh=84SSLoGtlEVQaRfEjpYyO2p8fJDHeUxLXOIa3sUjotE=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=m0XkKPNl8K7JR+f5fsbqjqiWh8SAu1HAp1/nxMkmWCOPNIetM2rqmlFauWr4gZOYw
- GGovyd5wEEhKxEcsb4EUxugGFwQleEX17IMpWLlmoZv1ybuNo+T5q+p28+IkFr5YT9
- 1FfWZ6sGbl1tdOO2oAoyHt4nVObY7Rn/noYEderABHAP3RMKkz6Zp4SgNdb10UI6ug
- P8ANMklg/ayhENT5ChqyJDZkOi5x0MqS5HVp32/7+0CbaCPMmCgwIFHL4oLhfmqlzC
- 2SgDFiI49v7XAsRRwf21N5PecBu4ik/lxox+VROAoN0nBttQZEHNdywDB4Qdg1ecOi
- 6I7IcfWeiuYdA==
+ id 1nhj8C-00Fj9q-V4; Fri, 22 Apr 2022 02:34:51 +0000
+X-UUID: ea02db0cac194c54809db2d6680ff52e-20220421
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:9a9f7f52-7f81-413d-a701-7a7f3828bd35, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:91978bf0-da02-41b4-b6df-58f4ccd36682,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: ea02db0cac194c54809db2d6680ff52e-20220421
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1749934533; Thu, 21 Apr 2022 19:34:42 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 Apr 2022 19:32:13 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 22 Apr 2022 10:32:11 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 22 Apr 2022 10:32:11 +0800
+Message-ID: <c3de9ccb314316b5296b115dd3e9f8171577489f.camel@mediatek.com>
+Subject: Re: [PATCH v20 2/8] soc: mediatek: add mtk-mutex support for mt8195
+ vdosys0
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>
+CC: Nancy Lin <nancy.lin@mediatek.com>, Singo Chang
+ <singo.chang@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Fri, 22 Apr 2022 10:32:11 +0800
+In-Reply-To: <82cc5e6900138e13ed9d75c6d2a42c6d7afc1959.camel@mediatek.com>
+References: <20220419094143.9561-1-jason-jh.lin@mediatek.com>
+ <20220419094143.9561-3-jason-jh.lin@mediatek.com>
+ <82cc5e6900138e13ed9d75c6d2a42c6d7afc1959.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-In-Reply-To: <CAGXv+5G2Uyq5fdMUnhr5wOm6O8M3dHNKGaSP2L_Vv1o28mXmOQ@mail.gmail.com>
-References: <20220419081246.2546159-1-wenst@chromium.org>
- <3591fcc1-d34a-b40a-4e78-edcf9d2ddf08@collabora.com>
- <CAGXv+5HhcQbdGLQFtgPnvzVbSKaQ5GQGvmjwPVOVxjrYnMh1dg@mail.gmail.com>
- <ca8048f4-2e75-a49b-6c54-9f6abba6ead3@collabora.com>
- <CAGXv+5G2Uyq5fdMUnhr5wOm6O8M3dHNKGaSP2L_Vv1o28mXmOQ@mail.gmail.com>
-Subject: Re: [RFC PATCH 0/7] clk: mediatek: Move to struct clk_hw provider APIs
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Miles Chen <miles.chen@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 21 Apr 2022 18:40:42 -0700
-User-Agent: alot/0.10
-Message-Id: <20220422014044.16530C385A7@smtp.kernel.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_184046_901243_F3D355E6 
-X-CRM114-Status: GOOD (  15.75  )
+X-CRM114-CacheID: sfid-20220421_193449_035285_830B1781 
+X-CRM114-Status: GOOD (  18.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,38 +87,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Chen-Yu Tsai (2022-04-20 23:05:10)
-> 
-> Not exactly. All the clocks in the MTK drivers are allocated at runtime,
-> so we can't use clk_parent_data to point to not-yet-allocated clk_hw-s.
-> Instead we'll need to have
-> 
->     struct mtk_clk_parent_data {
->         unsigned int clk_id; /* Match CLK_XXX_YYY from dt-binding headers */
->         ... /* remaining fields same as mtk_clk_parent_data */
->     };
-> 
-> and create the actual clk_parent_data at runtime by looking up clk_id in
-> the set of already registered clks:
-> 
->     int mtk_clk_register_XXX(..., struct mtk_clk_parent_data *pdata,
->                              struct clk_hw_onecell_data *clk_data) {
->         struct clk_parent_data data = {
->             .hw = clk_data[pdata->clk_id],
->             /* copy other fields verbatim */
->         };
->         ...
->     }
-> 
-> Obviously this forces some ordering of how the clks are registered.
-> I believe the order is already correct, and if it isn't, it would be
-> easy to detect, and we can reorder things to fix it.
+Hi CK,
 
-If this is a common problem, we may need to come up with a generic
-solution that either adds a new clk registration API that fills in the
-clk_parent_data hw pointer or add another member to struct
-clk_parent_data that says "index into this other array of clk_hw
-pointers".
+Thanks for the reviews.
+
+On Thu, 2022-04-21 at 14:50 +0800, CK Hu wrote:
+> Hi, Jason:
+> 
+> On Tue, 2022-04-19 at 17:41 +0800, jason-jh.lin wrote:
+> > Add mtk-mutex support for mt8195 vdosys0.
+> > 
+> > Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+> > Acked-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > Tested-by: Fei Shao <fshao@chromium.org>
+> > ---
+> >  drivers/soc/mediatek/mtk-mutex.c | 87
+> > ++++++++++++++++++++++++++++++--
+> >  1 file changed, 84 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-mutex.c
+> > b/drivers/soc/mediatek/mtk-mutex.c
+> > index aaf8fc1abb43..729ee88035ed 100644
+> > --- a/drivers/soc/mediatek/mtk-mutex.c
+> > +++ b/drivers/soc/mediatek/mtk-mutex.c
+> > @@ -17,6 +17,9 @@
+> >  #define MT8183_MUTEX0_MOD0			0x30
+> >  #define MT8183_MUTEX0_SOF0			0x2c
+> >  
+> > +#define MT8195_DISP_MUTEX0_MOD0			0x30
+> > +#define MT8195_DISP_MUTEX0_SOF			0x2c
+> 
+> This is identical to mt8183, so use mt8183 one instead of creating
+> new
+> one.
+> 
+> Regards,
+> CK
+> 
+I'll fix this in the next version.
+
+Regards,
+Jason-JH.Lin.
+> > 
+> >  
+> > +static const struct mtk_mutex_data mt8195_mutex_driver_data = {
+> > +	.mutex_mod = mt8195_mutex_mod,
+> > +	.mutex_sof = mt8195_mutex_sof,
+> > +	.mutex_mod_reg = MT8195_DISP_MUTEX0_MOD0,
+> > +	.mutex_sof_reg = MT8195_DISP_MUTEX0_SOF,
+> > +};
+> > +
+> >  
+> 
+> 
+-- 
+Jason-JH Lin <jason-jh.lin@mediatek.com>
+
 
 _______________________________________________
 Linux-mediatek mailing list
