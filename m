@@ -4,83 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1A80C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 14:07:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F02FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 14:11:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mLTU3nSeEj+pv/QQ/MFqrbZajVZiW8aw7Q69NCxaqnM=; b=iarIi7iE22kSAG
-	mfZcL3WjTbZasttTWGeEkQCY/BbGQGlFQOsYwQzm1MWnnTSLQE+GVtQbmvlCrbHeLvucfbk+4lZc1
-	WRTmpg6KPl4pcWg/Ho/TSOZjMlq9u2nroEoBrTN9pcfNRt8H3hHcUDSISHzMxmBloov3pPw61r4HS
-	pOXyf3Jkc05vkMga+DhD3QP28Y7sm1hR5CeKE8djwnkM+6LhTPfa+tsbqTHpJGqk3vn3eQlO8TXv7
-	sIVu8ee69fKusA8xyFjwy6C0gQQtyCzND3rGkk2JNlcm9lT1t48DGaGXYE3FBpUuwU3pOjcCkjPQh
-	Jhy4Tiw3ELlpEHz78dPg==;
+	List-Owner; bh=W5ZSl+MowW5JlxRGmymYat8zL3GSHQC00yFa7WT9cJM=; b=c4pPCNvivnIqio
+	XqGCbusFI82yZw+NOwLeTzky/7WATQOVruJaw5Db1PYhABxQ2MfykPRoQxPowRQIr6hpTpWXIIs8h
+	Cs0QzWkRjgqWwh3/nmTtINi4wVxP98J6wnVlFh+IumDj/kS4KumUVDUSZ4mU0+lDrpXwtzx1Q1Z7G
+	k8YrdiJCEAnA1qHwcjkQ97QdrgKi85uEgopVdt7PErPGDzipl/2uJX/Fg75PRlrTyzpfKjDzrupVc
+	qSzTn65VJpsD26nMeX7Y3z02f8NCPdCM47Oz2cIpxNg2Xv3ju7cAEaJFmTfIiy2c1sR9596Ip1uMV
+	4rHCdiPj7vBv2BY3+Nkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhtwJ-000j2s-R0; Fri, 22 Apr 2022 14:07:15 +0000
-Received: from mail-oa1-x2e.google.com ([2001:4860:4864:20::2e])
+	id 1nhtzq-000juo-Uw; Fri, 22 Apr 2022 14:10:54 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhtw8-000j05-6u; Fri, 22 Apr 2022 14:07:05 +0000
-Received: by mail-oa1-x2e.google.com with SMTP id
- 586e51a60fabf-e656032735so7457161fac.0; 
- Fri, 22 Apr 2022 07:07:02 -0700 (PDT)
+ id 1nhtzW-000jkl-16; Fri, 22 Apr 2022 14:10:35 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id x18so11284977wrc.0;
+ Fri, 22 Apr 2022 07:10:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=3V7/FkjgPIImwE7vieGYRnxFo4xm+FPjV5H1CZWqMaI=;
- b=RjQQZasrIq59WD1uHnAp2UmSfFySylFa8OTx7/1Z1+ZImPZ89ndttGKkXFpckhx/Bk
- yS5aG0OklHvD1OxkRhc1KQ0pfHuUsxJVeNn0EIjR/ezEM4UWrcQVi8m0X9mhDhmyk2/V
- obTBkAEM/Gse/y53TipttERUGI3o91AGFcfBLpD7ATqq4v/iRT/avCUTKiVBqNIGcCWJ
- HVDFJQV4SqiKj6PPevjznWTiS2E4TbyWD1ygRPdUQ6oTWSqla0yOurbHZj2PTLuHVbut
- mHde9GCVMDUGU0t7tRhoi9jLG6aYKEAR96dPrY4Ryvzi8CMYwppDUqunWil+XkilijxK
- bbLQ==
+ bh=WHY5obBMCsooLhCw/OdTbOsgtgWent6rNWstqxABc8k=;
+ b=e/2yN5QXX5uUIvThPXaFjSw4QvxarL0jFJu3iP+XV2vkhUWldP4uyN5EwZ9F6DjgEv
+ 4hQtzhWntNtvcgQHNnb8cPLxgGU3MJog3vehgdb9iqLNXHfrd1STE0v1IHHbFu1bfTjP
+ h0Anp5g5MzaRrSaxPV+qKmF8EdlhofRpolYT2dCjq+A0v1Qwi4RkzyD35tOhh50y0Alv
+ LIza9+/yJpBRZq/6dRs9X9zQfEgZopnC+Mp1RgEI5dVfsva/k94wyvXp2YgYgN+GQoZ9
+ 31M5Zy041aYQCi5j6Tia2lEH55rF1qdN0zC+9ZGFmjagbpGtxpMd5s8gcpRAe+QmqR3T
+ 217w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=3V7/FkjgPIImwE7vieGYRnxFo4xm+FPjV5H1CZWqMaI=;
- b=zmBkWqLaFPKaKy6FpjCtMeMOnK9us5Gc0aDYvdks23m//msFTAbCHpN2dwUz0zOp7s
- 8KhE/TYGuy06DB1x5clGEt7g5C/oxnI+vFbbeG501sUCvRpCvHc08gSqOtzAGDejbsPu
- SZNQALWvBW5N8GxSwMoYywYk4r2bNzBWQ6SjDVFSWMeXVtF0XS9eAu9+p/wio1phRW9d
- M3KUxtW1DVw+J74vGrzaa74TG+kYZDUsieNmM4wLg0K7y+z+RLgKU9Hg/Zik2MxT8jww
- 6k47Vi5jZjyKazKuBmNZaelC9jWIhTCeXtABZvTnhLPXanhgH/umSvtQzDvXE0I/28dp
- yXhA==
-X-Gm-Message-State: AOAM532w5fa9mPpvm8B07p1RyUBXd86ocQEmTAx5tl4F3OWTAJiKKlNi
- KPCqnTMsnPhCVInOV60+854=
-X-Google-Smtp-Source: ABdhPJzCQ/gkh1glXSZsTTs2riuKFOrVud0Csh7Rl0iPN7oYbY27y6gk7hPGyxdC7M5eXtYemSt4Uw==
-X-Received: by 2002:a05:6870:c222:b0:e5:b047:5a03 with SMTP id
- z34-20020a056870c22200b000e5b0475a03mr6111660oae.219.1650636421788; 
- Fri, 22 Apr 2022 07:07:01 -0700 (PDT)
+ bh=WHY5obBMCsooLhCw/OdTbOsgtgWent6rNWstqxABc8k=;
+ b=ZfXkMgozM3qpOosUXZ4mWRHJDWQ5r5xntKFL/7EEEF5bocyZu72QfH2gg6ht3RZQKw
+ xX4M6aPswlmiOHN2iz3V1CqWfG3OT3PS6qY08Rx+1F6P1sYamc6oYFwU/un6w15EzoOh
+ /WC3P/jeshIxqlCh02TBuFLI9SdUo+yUZnlMbV3sod8zjqcPCnfdB5+es5JiWzbj/HcH
+ yrVf2ZUrlKtVMySIw5O4aOcgaIrOI+MGVEB+mF54gf8OOFAvdUPSwFNLf8iH5HMBWRN4
+ 0WrrG2HauqfheW1aQUbjk0vVZSIzkg5WQQXgPhB/kBkvHBropMLG4ZsP0NFNbRtAMOzm
+ W6sQ==
+X-Gm-Message-State: AOAM531ld2b6UjpSPymYoDBN+AVRTvXAMA+/onqv1VsxXqQ2JZxDmgHO
+ j54At92C+ZPayclofhcskHM=
+X-Google-Smtp-Source: ABdhPJywHAB77yuMlFtbES0kJl5asaV9vipnnQKpbCcCz58AfmwYxCPCd4qbDAIkHpmtoRB+jxu7yA==
+X-Received: by 2002:a05:6000:168c:b0:20a:84ea:6647 with SMTP id
+ y12-20020a056000168c00b0020a84ea6647mr3979628wrd.191.1650636630327; 
+ Fri, 22 Apr 2022 07:10:30 -0700 (PDT)
 Received: from [192.168.1.145] ([207.188.167.132])
  by smtp.gmail.com with ESMTPSA id
- o16-20020a4a3850000000b0033a3c291f3esm839301oof.40.2022.04.22.07.06.59
+ t4-20020adfe104000000b00205b50f04f0sm1818776wrz.86.2022.04.22.07.10.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 Apr 2022 07:07:01 -0700 (PDT)
-Message-ID: <ced3772a-a965-23b1-83b0-f4f8a634450c@gmail.com>
-Date: Fri, 22 Apr 2022 16:06:57 +0200
+ Fri, 22 Apr 2022 07:10:29 -0700 (PDT)
+Message-ID: <13768c7c-41e4-e24a-b325-2f01eeb1883f@gmail.com>
+Date: Fri, 22 Apr 2022 16:10:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [PATCH] dt-bindings: arm: Add compatible for Mediatek MT8192
+Subject: Re: [PATCH 1/1] arm64: dts: mt8192: Add spmi node
 Content-Language: en-US
 To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+ Rob Herring <robh+dt@kernel.org>
 Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
  Hui Liu <hui.liu@mediatek.com>
-References: <20220419092030.30519-1-allen-kh.cheng@mediatek.com>
+References: <20220419063226.15958-1-allen-kh.cheng@mediatek.com>
+ <20220419063226.15958-2-allen-kh.cheng@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220419092030.30519-1-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220419063226.15958-2-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_070704_317993_39B7EB1A 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20220422_071034_132191_9988FAA5 
+X-CRM114-Status: GOOD (  13.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,33 +98,43 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 19/04/2022 11:20, Allen-KH Cheng wrote:
-> This commit adds dt-binding documentation for the Mediatek MT8192
-> reference board.
+On 19/04/2022 08:32, Allen-KH Cheng wrote:
+> Add spmi node for mt8192 SoC.
 > 
 > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 
-Applied, thanks!
+Applied, thanks
 
 > ---
->   Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
->   1 file changed, 4 insertions(+)
+>   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 15 +++++++++++++++
+>   1 file changed, 15 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> index ab0593c77321..3a9b92ee915b 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -131,6 +131,10 @@ properties:
->             - enum:
->                 - mediatek,mt8183-evb
->             - const: mediatek,mt8183
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt8192-evb
-> +          - const: mediatek,mt8192
->         - items:
->             - enum:
->                 - mediatek,mt8195-evb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> index a6da7b04b9d4..164fae36a3d8 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> @@ -537,6 +537,21 @@
+>   			assigned-clock-parents = <&topckgen CLK_TOP_OSC_D10>;
+>   		};
+>   
+> +		spmi: spmi@10027000 {
+> +			compatible = "mediatek,mt6873-spmi";
+> +			reg = <0 0x10027000 0 0x000e00>,
+> +			      <0 0x10029000 0 0x000100>;
+> +			reg-names = "pmif", "spmimst";
+> +			clocks = <&infracfg CLK_INFRA_PMIC_AP>,
+> +				 <&infracfg CLK_INFRA_PMIC_TMR>,
+> +				 <&topckgen CLK_TOP_SPMI_MST_SEL>;
+> +			clock-names = "pmif_sys_ck",
+> +				      "pmif_tmr_ck",
+> +				      "spmimst_clk_mux";
+> +			assigned-clocks = <&topckgen CLK_TOP_PWRAP_ULPOSC_SEL>;
+> +			assigned-clock-parents = <&topckgen CLK_TOP_OSC_D10>;
+> +		};
+> +
+>   		scp_adsp: clock-controller@10720000 {
+>   			compatible = "mediatek,mt8192-scp_adsp";
+>   			reg = <0 0x10720000 0 0x1000>;
 
 _______________________________________________
 Linux-mediatek mailing list
