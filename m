@@ -4,50 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 736DFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 08:00:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1E43C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 08:01:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FZSdCP5utCbxnO8WeR0O4d4a+HPZ0wynXZj2KE12oXs=; b=Ql3bv8xE2kXZ64
-	iDikzPZ1ZSBfG+8+t/bx/Ba9bXJaneyomYaEZ9NaeEMbNN9Sp9VAsVsUOjZ5W2/J3YY/nP/atG3jU
-	keCynT/EV8qPGeqLzG1kg1AndIft0QVx5Qf7zhWRnZDs1uY0KbCeCiDDsn5hyWrgqS4AlEzHoOUL/
-	eP+RaFI34rSUhq1jkcrrhWbVhQ5xIMxOlr5/QvPGylHnr7QV9tEYhhXI7zN7rmeMu6ToTqrhltFE5
-	2oCLIg2+2O1F25smkPF7o7Zie12o4/1GLDuzq0s+8VlRvrOGmfAnFhlR6by8MH7Ho+DELkzohoNFC
-	/5zPgHvL5yGDTMfQ69lA==;
+	List-Owner; bh=yfxrn12TaURZ+JCfcJkQtBR3cc3lIe5R6LWbTv31LG4=; b=yrI94aogsL5FHa
+	lvsR0ImVNfIP9kO7aXo2JSiJpXo0/usfzGN0cutXXdj9S5jTeS9t4AoRk2JioG9+nrm+cYU6z6xlO
+	lCXEDmoNTeCLULDl0jeD7liNvZruj76PraD4ZYHThSc5v7IueEUgosTJCVOCKGMWrVxuWJ61ePqGF
+	7+tOItr5LLWSeOEBiroA4QjTkIWWiDE1FT+S90UE/geC6cDekWloo7qKdHdmYEGnHkuZMxpue8lYB
+	wSey7gUQhoy5qfvabG8t6RdkJcujOk+gAAlYSEY6yx7mH6C0kUlcBzsWAubTsIIU+kDHkblvlDoaX
+	0He2K/JQYyV3/aSJvTsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhoD0-00H3pX-TN; Fri, 22 Apr 2022 08:00:06 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nhoEG-00H4Um-Mu; Fri, 22 Apr 2022 08:01:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhoAE-00H2PS-DF; Fri, 22 Apr 2022 07:57:17 +0000
-X-UUID: 75dfa5322c3640779e873430e696047a-20220422
+ id 1nhoBm-00H3Bs-Is; Fri, 22 Apr 2022 07:58:52 +0000
+X-UUID: 710964180a974df18dbb1f51b5921202-20220422
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:a7f2d61f-9e33-4bf4-ad58-20061cd30a6a, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:38f4d429-a4ce-4ca5-ba21-ee783a9e2234, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:5c77c1ef-06b0-4305-bfbf-554bfc9d151a,
+X-CID-META: VersionHash:faefae9, CLOUDID:8188c1ef-06b0-4305-bfbf-554bfc9d151a,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 75dfa5322c3640779e873430e696047a-20220422
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+X-UUID: 710964180a974df18dbb1f51b5921202-20220422
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1847070659; Fri, 22 Apr 2022 00:57:04 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 Apr 2022 00:52:49 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 22 Apr 2022 15:52:47 +0800
+ with ESMTP id 1033800978; Fri, 22 Apr 2022 00:58:43 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 22 Apr 2022 00:52:51 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 22 Apr 2022 15:52:48 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 22 Apr 2022 15:52:47 +0800
+ Frontend Transport; Fri, 22 Apr 2022 15:52:48 +0800
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
 To: <rafael@kernel.org>, <viresh.kumar@linaro.org>, <robh+dt@kernel.org>,
  <krzk+dt@kernel.org>, <matthias.bgg@gmail.com>
@@ -57,20 +56,19 @@ CC: <jia-wei.chang@mediatek.com>, <roger.lu@mediatek.com>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>, "Andrew-sh . Cheng"
- <andrew-sh.cheng@mediatek.com>
-Subject: [PATCH V4 12/14] arm64: dts: mediatek: Add opp table and clock
- property for MT8183 cpufreq
-Date: Fri, 22 Apr 2022 15:52:37 +0800
-Message-ID: <20220422075239.16437-13-rex-bc.chen@mediatek.com>
+ <rex-bc.chen@mediatek.com>
+Subject: [PATCH V4 14/14] arm64: dts: mediatek: Add mediatek,
+ cci property for MT8183 cpufreq
+Date: Fri, 22 Apr 2022 15:52:39 +0800
+Message-ID: <20220422075239.16437-15-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
 References: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_005714_512586_1623D6A1 
-X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-CacheID: sfid-20220422_005850_720877_A7E9BC29 
+X-CRM114-Status: UNSURE (   8.61  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,397 +86,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-- Add cpufreq opp table.
-- Add MediaTek cci opp table.
-- Add property of opp table and clock fro cpufreq.
+Add mediatek,cci property to support MediaTek CCI feature.
 
-Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183-evb.dts |  32 +++
- arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 270 ++++++++++++++++++++
- 2 files changed, 302 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-index f3fd3cca23e9..8953dbf84f3e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-@@ -412,6 +412,38 @@
- 
- };
- 
-+&cpu0 {
-+	proc-supply = <&mt6358_vproc12_reg>;
-+};
-+
-+&cpu1 {
-+	proc-supply = <&mt6358_vproc12_reg>;
-+};
-+
-+&cpu2 {
-+	proc-supply = <&mt6358_vproc12_reg>;
-+};
-+
-+&cpu3 {
-+	proc-supply = <&mt6358_vproc12_reg>;
-+};
-+
-+&cpu4 {
-+	proc-supply = <&mt6358_vproc11_reg>;
-+};
-+
-+&cpu5 {
-+	proc-supply = <&mt6358_vproc11_reg>;
-+};
-+
-+&cpu6 {
-+	proc-supply = <&mt6358_vproc11_reg>;
-+};
-+
-+&cpu7 {
-+	proc-supply = <&mt6358_vproc11_reg>;
-+};
-+
- &uart0 {
- 	status = "okay";
- };
 diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 151877fa6bfd..1db3322f9daa 100644
+index c95eec5fb704..c34d4733e4ea 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -42,6 +42,244 @@
- 		rdma1 = &rdma1;
- 	};
+@@ -336,6 +336,7 @@
+ 			operating-points-v2 = <&cluster0_opp>;
+ 			dynamic-power-coefficient = <84>;
+ 			#cooling-cells = <2>;
++			mediatek,cci = <&cci>;
+ 		};
  
-+	cluster0_opp: opp-table-cluster0 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+		opp0-793000000 {
-+			opp-hz = /bits/ 64 <793000000>;
-+			opp-microvolt = <650000>;
-+			required-opps = <&opp2_00>;
-+		};
-+		opp0-910000000 {
-+			opp-hz = /bits/ 64 <910000000>;
-+			opp-microvolt = <687500>;
-+			required-opps = <&opp2_01>;
-+		};
-+		opp0-1014000000 {
-+			opp-hz = /bits/ 64 <1014000000>;
-+			opp-microvolt = <718750>;
-+			required-opps = <&opp2_02>;
-+		};
-+		opp0-1131000000 {
-+			opp-hz = /bits/ 64 <1131000000>;
-+			opp-microvolt = <756250>;
-+			required-opps = <&opp2_03>;
-+		};
-+		opp0-1248000000 {
-+			opp-hz = /bits/ 64 <1248000000>;
-+			opp-microvolt = <800000>;
-+			required-opps = <&opp2_04>;
-+		};
-+		opp0-1326000000 {
-+			opp-hz = /bits/ 64 <1326000000>;
-+			opp-microvolt = <818750>;
-+			required-opps = <&opp2_05>;
-+		};
-+		opp0-1417000000 {
-+			opp-hz = /bits/ 64 <1417000000>;
-+			opp-microvolt = <850000>;
-+			required-opps = <&opp2_06>;
-+		};
-+		opp0-1508000000 {
-+			opp-hz = /bits/ 64 <1508000000>;
-+			opp-microvolt = <868750>;
-+			required-opps = <&opp2_07>;
-+		};
-+		opp0-1586000000 {
-+			opp-hz = /bits/ 64 <1586000000>;
-+			opp-microvolt = <893750>;
-+			required-opps = <&opp2_08>;
-+		};
-+		opp0-1625000000 {
-+			opp-hz = /bits/ 64 <1625000000>;
-+			opp-microvolt = <906250>;
-+			required-opps = <&opp2_09>;
-+		};
-+		opp0-1677000000 {
-+			opp-hz = /bits/ 64 <1677000000>;
-+			opp-microvolt = <931250>;
-+			required-opps = <&opp2_10>;
-+		};
-+		opp0-1716000000 {
-+			opp-hz = /bits/ 64 <1716000000>;
-+			opp-microvolt = <943750>;
-+			required-opps = <&opp2_11>;
-+		};
-+		opp0-1781000000 {
-+			opp-hz = /bits/ 64 <1781000000>;
-+			opp-microvolt = <975000>;
-+			required-opps = <&opp2_12>;
-+		};
-+		opp0-1846000000 {
-+			opp-hz = /bits/ 64 <1846000000>;
-+			opp-microvolt = <1000000>;
-+			required-opps = <&opp2_13>;
-+		};
-+		opp0-1924000000 {
-+			opp-hz = /bits/ 64 <1924000000>;
-+			opp-microvolt = <1025000>;
-+			required-opps = <&opp2_14>;
-+		};
-+		opp0-1989000000 {
-+			opp-hz = /bits/ 64 <1989000000>;
-+			opp-microvolt = <1050000>;
-+			required-opps = <&opp2_15>;
-+		};	};
-+
-+	cluster1_opp: opp-table-cluster1 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+		opp1-793000000 {
-+			opp-hz = /bits/ 64 <793000000>;
-+			opp-microvolt = <700000>;
-+			required-opps = <&opp2_00>;
-+		};
-+		opp1-910000000 {
-+			opp-hz = /bits/ 64 <910000000>;
-+			opp-microvolt = <725000>;
-+			required-opps = <&opp2_01>;
-+		};
-+		opp1-1014000000 {
-+			opp-hz = /bits/ 64 <1014000000>;
-+			opp-microvolt = <750000>;
-+			required-opps = <&opp2_02>;
-+		};
-+		opp1-1131000000 {
-+			opp-hz = /bits/ 64 <1131000000>;
-+			opp-microvolt = <775000>;
-+			required-opps = <&opp2_03>;
-+		};
-+		opp1-1248000000 {
-+			opp-hz = /bits/ 64 <1248000000>;
-+			opp-microvolt = <800000>;
-+			required-opps = <&opp2_04>;
-+		};
-+		opp1-1326000000 {
-+			opp-hz = /bits/ 64 <1326000000>;
-+			opp-microvolt = <825000>;
-+			required-opps = <&opp2_05>;
-+		};
-+		opp1-1417000000 {
-+			opp-hz = /bits/ 64 <1417000000>;
-+			opp-microvolt = <850000>;
-+			required-opps = <&opp2_06>;
-+		};
-+		opp1-1508000000 {
-+			opp-hz = /bits/ 64 <1508000000>;
-+			opp-microvolt = <875000>;
-+			required-opps = <&opp2_07>;
-+		};
-+		opp1-1586000000 {
-+			opp-hz = /bits/ 64 <1586000000>;
-+			opp-microvolt = <900000>;
-+			required-opps = <&opp2_08>;
-+		};
-+		opp1-1625000000 {
-+			opp-hz = /bits/ 64 <1625000000>;
-+			opp-microvolt = <912500>;
-+			required-opps = <&opp2_09>;
-+		};
-+		opp1-1677000000 {
-+			opp-hz = /bits/ 64 <1677000000>;
-+			opp-microvolt = <931250>;
-+			required-opps = <&opp2_10>;
-+		};
-+		opp1-1716000000 {
-+			opp-hz = /bits/ 64 <1716000000>;
-+			opp-microvolt = <950000>;
-+			required-opps = <&opp2_11>;
-+		};
-+		opp1-1781000000 {
-+			opp-hz = /bits/ 64 <1781000000>;
-+			opp-microvolt = <975000>;
-+			required-opps = <&opp2_12>;
-+		};
-+		opp1-1846000000 {
-+			opp-hz = /bits/ 64 <1846000000>;
-+			opp-microvolt = <1000000>;
-+			required-opps = <&opp2_13>;
-+		};
-+		opp1-1924000000 {
-+			opp-hz = /bits/ 64 <1924000000>;
-+			opp-microvolt = <1025000>;
-+			required-opps = <&opp2_14>;
-+		};
-+		opp1-1989000000 {
-+			opp-hz = /bits/ 64 <1989000000>;
-+			opp-microvolt = <1050000>;
-+			required-opps = <&opp2_15>;
-+		};
-+	};
-+
-+	cci_opp: opp-table-cci {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+		opp2_00: opp-273000000 {
-+			opp-hz = /bits/ 64 <273000000>;
-+			opp-microvolt = <650000>;
-+		};
-+		opp2_01: opp-338000000 {
-+			opp-hz = /bits/ 64 <338000000>;
-+			opp-microvolt = <687500>;
-+		};
-+		opp2_02: opp-403000000 {
-+			opp-hz = /bits/ 64 <403000000>;
-+			opp-microvolt = <718750>;
-+		};
-+		opp2_03: opp-463000000 {
-+			opp-hz = /bits/ 64 <463000000>;
-+			opp-microvolt = <756250>;
-+		};
-+		opp2_04: opp-546000000 {
-+			opp-hz = /bits/ 64 <546000000>;
-+			opp-microvolt = <800000>;
-+		};
-+		opp2_05: opp-624000000 {
-+			opp-hz = /bits/ 64 <624000000>;
-+			opp-microvolt = <818750>;
-+		};
-+		opp2_06: opp-689000000 {
-+			opp-hz = /bits/ 64 <689000000>;
-+			opp-microvolt = <850000>;
-+		};
-+		opp2_07: opp-767000000 {
-+			opp-hz = /bits/ 64 <767000000>;
-+			opp-microvolt = <868750>;
-+		};
-+		opp2_08: opp-845000000 {
-+			opp-hz = /bits/ 64 <845000000>;
-+			opp-microvolt = <893750>;
-+		};
-+		opp2_09: opp-871000000 {
-+			opp-hz = /bits/ 64 <871000000>;
-+			opp-microvolt = <906250>;
-+		};
-+		opp2_10: opp-923000000 {
-+			opp-hz = /bits/ 64 <923000000>;
-+			opp-microvolt = <931250>;
-+		};
-+		opp2_11: opp-962000000 {
-+			opp-hz = /bits/ 64 <962000000>;
-+			opp-microvolt = <943750>;
-+		};
-+		opp2_12: opp-1027000000 {
-+			opp-hz = /bits/ 64 <1027000000>;
-+			opp-microvolt = <975000>;
-+		};
-+		opp2_13: opp-1092000000 {
-+			opp-hz = /bits/ 64 <1092000000>;
-+			opp-microvolt = <1000000>;
-+		};
-+		opp2_14: opp-1144000000 {
-+			opp-hz = /bits/ 64 <1144000000>;
-+			opp-microvolt = <1025000>;
-+		};
-+		opp2_15: opp-1196000000 {
-+			opp-hz = /bits/ 64 <1196000000>;
-+			opp-microvolt = <1050000>;
-+		};
-+	};
-+
- 	cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-@@ -85,6 +323,10 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <741>;
- 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP0>;
-+			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
-+				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-+			clock-names = "cpu", "intermediate";
-+			operating-points-v2 = <&cluster0_opp>;
+ 		cpu1: cpu@1 {
+@@ -351,6 +352,7 @@
+ 			operating-points-v2 = <&cluster0_opp>;
  			dynamic-power-coefficient = <84>;
  			#cooling-cells = <2>;
++			mediatek,cci = <&cci>;
  		};
-@@ -96,6 +338,10 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <741>;
- 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP0>;
-+			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
-+				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-+			clock-names = "cpu", "intermediate";
-+			operating-points-v2 = <&cluster0_opp>;
+ 
+ 		cpu2: cpu@2 {
+@@ -366,6 +368,7 @@
+ 			operating-points-v2 = <&cluster0_opp>;
  			dynamic-power-coefficient = <84>;
  			#cooling-cells = <2>;
++			mediatek,cci = <&cci>;
  		};
-@@ -107,6 +353,10 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <741>;
- 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP0>;
-+			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
-+				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-+			clock-names = "cpu", "intermediate";
-+			operating-points-v2 = <&cluster0_opp>;
+ 
+ 		cpu3: cpu@3 {
+@@ -381,6 +384,7 @@
+ 			operating-points-v2 = <&cluster0_opp>;
  			dynamic-power-coefficient = <84>;
  			#cooling-cells = <2>;
++			mediatek,cci = <&cci>;
  		};
-@@ -118,6 +368,10 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <741>;
- 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP0>;
-+			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
-+				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-+			clock-names = "cpu", "intermediate";
-+			operating-points-v2 = <&cluster0_opp>;
- 			dynamic-power-coefficient = <84>;
- 			#cooling-cells = <2>;
- 		};
-@@ -129,6 +383,10 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <1024>;
- 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP1>;
-+			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
-+				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-+			clock-names = "cpu", "intermediate";
-+			operating-points-v2 = <&cluster1_opp>;
+ 
+ 		cpu4: cpu@100 {
+@@ -396,6 +400,7 @@
+ 			operating-points-v2 = <&cluster1_opp>;
  			dynamic-power-coefficient = <211>;
  			#cooling-cells = <2>;
++			mediatek,cci = <&cci>;
  		};
-@@ -140,6 +398,10 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <1024>;
- 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP1>;
-+			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
-+				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-+			clock-names = "cpu", "intermediate";
-+			operating-points-v2 = <&cluster1_opp>;
+ 
+ 		cpu5: cpu@101 {
+@@ -411,6 +416,7 @@
+ 			operating-points-v2 = <&cluster1_opp>;
  			dynamic-power-coefficient = <211>;
  			#cooling-cells = <2>;
++			mediatek,cci = <&cci>;
  		};
-@@ -151,6 +413,10 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <1024>;
- 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP1>;
-+			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
-+				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-+			clock-names = "cpu", "intermediate";
-+			operating-points-v2 = <&cluster1_opp>;
+ 
+ 		cpu6: cpu@102 {
+@@ -426,6 +432,7 @@
+ 			operating-points-v2 = <&cluster1_opp>;
  			dynamic-power-coefficient = <211>;
  			#cooling-cells = <2>;
++			mediatek,cci = <&cci>;
  		};
-@@ -162,6 +428,10 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <1024>;
- 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP1>;
-+			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
-+				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-+			clock-names = "cpu", "intermediate";
-+			operating-points-v2 = <&cluster1_opp>;
+ 
+ 		cpu7: cpu@103 {
+@@ -441,6 +448,7 @@
+ 			operating-points-v2 = <&cluster1_opp>;
  			dynamic-power-coefficient = <211>;
  			#cooling-cells = <2>;
++			mediatek,cci = <&cci>;
  		};
+ 
+ 		idle-states {
 -- 
 2.18.0
 
