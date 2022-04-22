@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2BEBC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 05:58:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88562C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 05:59:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KWGxcbq/xBINMsQxz29iI1bLzsrGXeNXasCfAwwWyJ0=; b=XMy3CNrkTY9lsx
-	RkqeONZ5UUJO2z7Li+zisd55ZlZaEB4AM9Nn6kdKXWwZkBnZHX1Ru4Njk3yucwELGJ1CXaeB7xMiK
-	NvWnFYpXEChkSBsT7NvsID9YQCWGgVemx0ZVw6teClDV+4cT61wdvMQA6va7H8HNM/Rw8ynuolKYN
-	yWEudIfcxYP1+8LVXRBD489UpyXpu5LbC9xdw2qtWq/jI7ylxo2e4RqOs1Y8HePsNcz3iHW831zKW
-	joiwXbGuJHg41Ybp90P57A28OHnXp9dKAv1qrD+UuCCJdD0Ctf2BQuF/lOsivCLfO2V58bjZkM/+q
-	cGcbljb6XaTqjA47+XLQ==;
+	List-Owner; bh=B6+BF+CKhM0F+Em1OuidlqIfWTWQk0/GWFHhNZq4yW8=; b=xIL8/KGX0VFoaJ
+	Yz0XI2LxbbKfKOLeDC0ndjsIah6T6VDPxv1RQQgwL00EseKkBBBTQVb1xl8JLpt3mj0BqSX2DQLC6
+	ZJzqwQta7lpLFzdyITQZD2knTacQ5Yf2bukB3v24gIMiKZwYYCbBQcMJsgjnjKvndQVPOQvrTNuNp
+	7Lz+YfkZn5P5o1YWH5gVuFf9i5igq/2M8rEaRTZGJXo2eJJluzbWD2HHQGngpCRMuT1dV0fUkZVtT
+	E39m39WAtPXym25zXyItkgvdutLmocsgprsSEhMBhALAf7LbdqfiSincca0phbL58YnSm8TWXDI9/
+	QoVgtR8kj9+UEOuoPDdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhmJH-00GJKO-8I; Fri, 22 Apr 2022 05:58:27 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nhmKF-00GJxB-Id; Fri, 22 Apr 2022 05:59:27 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhmIR-00GIrA-17; Fri, 22 Apr 2022 05:57:36 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 6A74B61DDF;
- Fri, 22 Apr 2022 05:57:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A684C385A9;
- Fri, 22 Apr 2022 05:57:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1650607051;
- bh=Rvf90UcwzPbS3F5AqAtneVu3nF9B07X7cwvF7nN8ENI=;
- h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
- b=bBXFaJywcqTcX8KxDYflryjhANwgEc2Bam3efuHS/L8sddABY8ol1JI333xINwl/x
- mkC4XgNcMUNV1ZyKxdgrMcIb67PF5i8sOG1mN5LY/P2TBErRJPCha8euLdDppa/YBT
- hRZLeqNjkb59HQX8W1QqAa5GIOYRRtNjUE6AVdECGvddUCG+SoZw9GBIzhMLhYO1Cn
- wttlxzGWVq4Ishol80XcTWBC87GvIb+BjnbvfgbpQTsL+l0Ev6Lrixyboso7u3R7Kk
- wrG+pUgEDv85U3YCcrGtAOU/UVkdgxuNo8gKLGJbiGLi2h2R51VtJ0JhjRhBdIQL0U
- 5XtEbXYyKMPHA==
-From: Kalle Valo <kvalo@kernel.org>
-To: Bernard Zhao <zhaojunkui2008@126.com>
-Cc: Jakub Kicinski <kubakici@wp.pl>, "David S. Miller" <davem@davemloft.net>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, bernard@vivo.com
-Subject: Re: [PATCH] net/wireless: add debugfs exit function
-In-Reply-To: <20220422012830.342993-1-zhaojunkui2008@126.com> (Bernard Zhao's
- message of "Thu, 21 Apr 2022 18:28:30 -0700")
-References: <20220422012830.342993-1-zhaojunkui2008@126.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
-Date: Fri, 22 Apr 2022 08:57:25 +0300
-Message-ID: <877d7hoe2i.fsf@kernel.org>
-MIME-Version: 1.0
+ id 1nhmJW-00GJTW-IZ; Fri, 22 Apr 2022 05:58:44 +0000
+Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
+ by smtp-out2.suse.de (Postfix) with ESMTP id 71CB31F745;
+ Fri, 22 Apr 2022 05:58:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1650607118; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=mAdj96DBsr5nxeDeyqlp0nmr0SjkdrgI+4axBdvYC5w=;
+ b=xASxMAIubK7nP6qIQlJ0If3b6gpOnAZiMAMO8pyQe92Iws8uuW7OeziZbbfIkOIKk6lhP6
+ OKiXcJWeANEdpXRhmtMrCcV7XZaQryexNsX2kWNMy6Vq1K4kf7ZrYGMFBWBO6jmzW5sqbD
+ NyHW8ylfkozghfoZiyYlC+dJdoJfweU=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1650607118;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=mAdj96DBsr5nxeDeyqlp0nmr0SjkdrgI+4axBdvYC5w=;
+ b=+1FJLxcXtttys3GmCcGIqUu8myexJUnlFaOUFhgiEiUS3rRWhQouq/QfxQzFDjp9V4D1uZ
+ +dUdggt9DoU6M1Bg==
+Received: from alsa1.suse.de (alsa1.suse.de [10.160.4.42])
+ by relay2.suse.de (Postfix) with ESMTP id 640EB2C14B;
+ Fri, 22 Apr 2022 05:58:38 +0000 (UTC)
+Date: Fri, 22 Apr 2022 07:58:38 +0200
+Message-ID: <s5h35i5veup.wl-tiwai@suse.de>
+From: Takashi Iwai <tiwai@suse.de>
+To: Miles Chen <miles.chen@mediatek.com>
+Cc: <alsa-devel@alsa-project.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <matthias.bgg@gmail.com>, <perex@perex.cz>, <rdunlap@infradead.org>,
+ <tiwai@suse.com>
+Subject: Re: [PATCH -next V2] sound/oss/dmasound: fix 'dmasound_setup' defined
+ but not used
+In-Reply-To: <20220422025312.7718-1-miles.chen@mediatek.com>
+References: <s5ha6cm4xy2.wl-tiwai@suse.de>
+ <20220422025312.7718-1-miles.chen@mediatek.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI/1.14.6 (Maruoka)
+ FLIM/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL/10.8 Emacs/25.3
+ (x86_64-suse-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI 1.14.6 - "Maruoka")
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_225735_158454_C0194238 
-X-CRM114-Status: GOOD (  11.74  )
+X-CRM114-CacheID: sfid-20220421_225842_776639_ECAC64C4 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,37 +82,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Bernard Zhao <zhaojunkui2008@126.com> writes:
+On Fri, 22 Apr 2022 04:53:12 +0200,
+Miles Chen wrote:
+> 
+> Hi Taksshi,
+> 
+> >> We observed: 'dmasound_setup' defined but not used error with
+> >> COMPILER=gcc ARCH=m68k DEFCONFIG=allmodconfig build.
+> >> 
+> >> Fix it by adding __maybe_unused to dmasound_setup.
+> >> 
+> >> Error(s):
+> >> sound/oss/dmasound/dmasound_core.c:1431:12: error: 'dmasound_setup' defined but not used [-Werror=unused-function]
+> >> 
+> >> Fixes: 9dd7c46346ca ("sound/oss/dmasound: fix build when drivers are mixed =y/=m")
+> >> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> >> Cc: Takashi Iwai <tiwai@suse.com>
+> >
+> >Thanks, applied.
+> 
+> This patch is needed in 5.18-rc3 [1] too, should I submit another patch or
+> you can pick it to the mainstream?
 
-> This patch add exit debugfs function to mt7601u.
-> Debugfs need to be cleanup when module is unloaded or load fail.
+It's included in the branch for the next PR to 5.18.
 
-"load fail"? Please be more specific, are you saying that the second
-module load fails or what?
 
->  drivers/net/wireless/mediatek/mt7601u/debugfs.c | 9 +++++++--
->  drivers/net/wireless/mediatek/mt7601u/init.c    | 1 +
->  drivers/net/wireless/mediatek/mt7601u/mt7601u.h | 1 +
+thanks,
 
-The title should be:
-
-mt7601u: add debugfs exit function
-
-> --- a/drivers/net/wireless/mediatek/mt7601u/debugfs.c
-> +++ b/drivers/net/wireless/mediatek/mt7601u/debugfs.c
-> @@ -9,6 +9,8 @@
->  #include "mt7601u.h"
->  #include "eeprom.h"
->  
-> +static struct dentry *dir;
-
-How will this work when there are multiple mt7601u devices? Because of
-that, avoid using non-const static variables.
-
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+Takashi
 
 _______________________________________________
 Linux-mediatek mailing list
