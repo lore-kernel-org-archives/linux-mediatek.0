@@ -4,88 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C5FAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 15:49:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 843A7C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 15:51:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A/TCFUwPCvaFqScYPGJRFpzjllld/a0iW7PbfUZ7su0=; b=pANaYlJtWNE0fq
-	PV2YRqdpz3C5k72N8av1DZjgcGjygN29Nvlk/h6Gtii1+nOCxa8U597CGpRvMBs3NWcSlWYOemeVx
-	xT71dAEluNDN3Wga902NSzHtDedayqetP/CjpXujajuwk8CtbmL4CRxQd4nfwL5GhCgueo9s6+Xd9
-	g0SWsy3YVgDZ3jeaxFyDHv7dFiCNy/w+q/cBJNJyz2NwrVlwJX8Ya7ZYuN403Km1j8cbRNTTpksUw
-	zwqo/BEZJFz3DmMk5enms9TwN5736/b4rSKnNy3wOEWk8+23T04K4NVefKIzWgaCicuYZX93Lk8qz
-	Nu28U0C86KfuSM0mNESQ==;
+	List-Owner; bh=viV1I41tIXdV7IHelOvNSgye4A0Vse9BcG1m7o9w/A0=; b=M2M2OFo0aTy8sN
+	55/RU/Ms2pdXFviS/Blf9nCTgnF6tqPWi0SUvigN1JGxnX/E0ozLGwfoxituKJKJpOGZGhPp0eslr
+	MWhey+ZkGzjvwqz8ANRmvHjd5Lnv09vC7Ai0zBwiUilLvhOFexUQFHPWn4AyuHKnUY45VULZU/lj/
+	H1b+dUxBlRkMid8ffi6R15n2xD4jEGRHs5rGfmsq/et65wYuBVEVVMM74aPIxKKPKcJy0cQYN+AO3
+	pDy5Eo9idaG+YRa50yzD6kGnQSeCpmzdeintMILYx6Pg/9D/+BD8pHvIdglfsJ/DmlAIW/Vtl2R+e
+	mVrXEt6HSB0agqB4Xa7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhvWe-001DOa-3O; Fri, 22 Apr 2022 15:48:52 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1nhvYw-001EJ3-NC; Fri, 22 Apr 2022 15:51:14 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhvTc-001CBy-Kq
- for linux-mediatek@lists.infradead.org; Fri, 22 Apr 2022 15:45:46 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id y20so17164538eju.7
- for <linux-mediatek@lists.infradead.org>; Fri, 22 Apr 2022 08:45:42 -0700 (PDT)
+ id 1nhvXT-001Dig-MA
+ for linux-mediatek@lists.infradead.org; Fri, 22 Apr 2022 15:49:45 +0000
+Received: by mail-ej1-x633.google.com with SMTP id g13so17224012ejb.4
+ for <linux-mediatek@lists.infradead.org>; Fri, 22 Apr 2022 08:49:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=ykyOXYnTInWbRVW2tdNR9tYlZEHvOUFoYyQMhJhxCCQ=;
- b=UZT91yu5GBIwEX2J3y2E8rHkqeYKICR4njyNjt1hbS/JpiJ51pt8mq1tsxhKcBGuJJ
- IPtbCAHRrudZXd+XXlaHlRgmLP6KlRMEwtqycRaIzWD31OB+VZivBgADRzcu9V6w+As8
- Fc3IUVBBtrd82t1uYd/yWjJmo9PkjNtqPvr7boVFJ4wgSGexX+g1jxUi5GZSfgWMvqdt
- W1bI10XiQ+duKmP95SGJnsf6H6L4IklxnSep3tbYUV76z00NF3zrHoYMaot5GAhtszNV
- Ai30I+YVCvN6m8nbU51cMHppdiMwAyu8uYgHwCijUYATmubtJ0J4rX5hDzwuw602D2AV
- V3/w==
+ bh=EbBrf90Se9JVfBrPUX5vB31Mi0cnNfK03HhVmontGZM=;
+ b=p9urVnCyqPfWbAeTgSbUtdRfSxObUFNtR0D5eF2v15vU3h8ra7egnDpTofsF4zJKh0
+ X22/Y5qYPAJRpQ98ETFprhKBhKvU0zd+geenSx+OqdONFFOEMFm/DETjBqA5zPJYG3E7
+ 3Lg8/RE2tyAnTpDpXHoPo6ItX60g3EhXtOeJGHEy+8b5wSLVz4ZbOMbCJAf8tWmtENho
+ mOLA7uM8bUw5tZoJ0nkYku9LZz1GGHuHyA7elECdI/gtOAwKZMNV3hdtYnSTZkre6Q91
+ 6JSYJteZeSn4baDRnQZ5J2HyW3VHfsogrGAL8aYAmMtsFSFYn4KCrDxSCBNfcrE5ypDj
+ 7j7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=ykyOXYnTInWbRVW2tdNR9tYlZEHvOUFoYyQMhJhxCCQ=;
- b=eYXKuux4tThXeWjnwbMs7mrb4/JXUPXky20vYta6dNiU+rptkuOf7lu/3D1itT9PDS
- F20meTin8WwXx6LnLArA1L7PGrWY4148YMoR4n5TzLbZUG9MnD+ZuVr0CPfxGD2hcLHY
- WwBlEWscJRHAL1HO2FkFItis6XOxjfbNgk0NKChX6Kw6Azjd3Na00gbCXYm2dAROh4Ss
- q3UeeGEXZ+fEmZ+2WL5vSy+ABc6jK6gacVP9/ctV6H1vcdeb1AVCum2MQmfwdpKZkZG9
- hOo1rrTDFi3lzuyEs4r/Uh6t1fPC755FQCCicRn1C72UtoD1/w5jrlLmA9T5iTDtOTRS
- xNjA==
-X-Gm-Message-State: AOAM532AMnojYD+qjmeznkSJJ5ZgZFnF4XOZE6G8Ez9GFoXjK2ygACpp
- IQLp1Fm53hehDQBby7Sz5h27Iw==
-X-Google-Smtp-Source: ABdhPJwS9MbT9FvnOnbCC52CKU9LT+qeVhCDl7sfPE7OYMzTTUvU37W5sV5B7y2mMHvxZdNrWzKn8A==
-X-Received: by 2002:a17:906:94ce:b0:6ef:8553:aa40 with SMTP id
- d14-20020a17090694ce00b006ef8553aa40mr4600515ejy.60.1650642340986; 
- Fri, 22 Apr 2022 08:45:40 -0700 (PDT)
+ bh=EbBrf90Se9JVfBrPUX5vB31Mi0cnNfK03HhVmontGZM=;
+ b=1xKaI0SpzuVrm4mbzmojcRaIXD1UkRXNKuY7iILZfyj7Oy7z4HJgQgcBNK+PDy0Myf
+ u393sqR/0WFFxEc1puJ+t2tmHYcFG9NJC1umDO6cymXmXtLWOdH+3xhurDY/FcQ2B6+W
+ nshRh6CNP86h63YXnBjpg/hF+n+uTRxpLSl0WY1lB8Dxu/w3GkyojnBo3eiz0hhr2Z8f
+ aHV2GZhDGJJKA/hS2g6dUpWNSQ51qoXJlvRYNv25XgmbfKyGwkXNJ5X26fBUt0IQCdWh
+ IICtDgO/H/PT4gEdEaHXZJHzkAmuTAr4Zf1ATSYr6KjGXWsyAW2dh/VVUwIA7ErNMs92
+ fO1g==
+X-Gm-Message-State: AOAM532ub16o6nIpbQvkK/toEf9yd1OFEz4w+u9xDV4DRNKBCnoY3qHx
+ syjSZPeLfh9JiqMhawhGPSuWWg==
+X-Google-Smtp-Source: ABdhPJwOm7OVQF6vFjjh8qNr+uvEPPGlSIw610XQhQ2Tyyu1bh8vgEPXO+cVxey0E8SMmZLsiUzj1g==
+X-Received: by 2002:a17:906:1ec3:b0:6cf:d118:59e2 with SMTP id
+ m3-20020a1709061ec300b006cfd11859e2mr4726662ejj.767.1650642581658; 
+ Fri, 22 Apr 2022 08:49:41 -0700 (PDT)
 Received: from [192.168.0.232] (xdsl-188-155-176-92.adslplus.ch.
  [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- d3-20020a1709064c4300b006ef606fe5easm846715ejw.121.2022.04.22.08.45.39
+ n10-20020a170906700a00b006efdb748e8dsm864676ejj.88.2022.04.22.08.49.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 Apr 2022 08:45:40 -0700 (PDT)
-Message-ID: <7cd7d785-0401-fa58-8308-74e16fb677e0@linaro.org>
-Date: Fri, 22 Apr 2022 17:45:39 +0200
+ Fri, 22 Apr 2022 08:49:40 -0700 (PDT)
+Message-ID: <c0a188e5-8a8c-d4a3-5a3d-9b9dd85d8f44@linaro.org>
+Date: Fri, 22 Apr 2022 17:49:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.7.0
-Subject: Re: [PATCH 1/2] arm64: dts: mt8516: align watchdog node name with
- dtschema
+Subject: Re: [PATCH v1] dt-bindings: dsp: mediatek: add mt8186 dsp document
 Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- nfraprado@collabora.com
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, Chen-Yu Tsai <wenst@chromium.org>,
- Ryder Lee <ryder.lee@kernel.org>
-References: <20220422121017.23920-1-allen-kh.cheng@mediatek.com>
- <20220422121017.23920-2-allen-kh.cheng@mediatek.com>
+To: Tinghan Shen <tinghan.shen@mediatek.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220422071534.15653-1-tinghan.shen@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220422121017.23920-2-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220422071534.15653-1-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_084544_778635_18644C5A 
-X-CRM114-Status: UNSURE (   7.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220422_084943_805980_E4114082 
+X-CRM114-Status: GOOD (  18.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,14 +95,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 22/04/2022 14:10, Allen-KH Cheng wrote:
-> Based on watchdog.yaml, the node names should be "watchdog".
+On 22/04/2022 09:15, Tinghan Shen wrote:
+> This patch adds mt8186 dsp document. The dsp is used for Sound Open
+> Firmware driver node. It includes registers, clocks, memory regions,
+> and mailbox for dsp.
 > 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 > ---
+> 
+> This patch depends on MT8186 clock bindings.
+> https://lore.kernel.org/all/20220409132251.31725-2-chun-jie.chen@mediatek.com/
+> 
+> ---
+>  .../bindings/dsp/mediatek,mt8186-dsp.yaml     | 93 +++++++++++++++++++
+>  1 file changed, 93 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml b/Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
+> new file mode 100644
+> index 000000000000..00a79e880895
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
+> @@ -0,0 +1,93 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/dsp/mediatek,mt8186-dsp.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek mt8186 DSP core
+> +
+> +maintainers:
+> +  - Tinghan Shen <tinghan.shen@mediatek.com>
+> +
+> +description: |
+> +  MediaTek mt8186 SoC contains a DSP core used for
+> +  advanced pre- and post- audio processing.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt8186-dsp
+> +
+> +  reg:
+> +    items:
+> +      - description: Address and size of the DSP config registers
+> +      - description: Address and size of the DSP SRAM
+> +      - description: Address and size of the DSP secure registers
+> +      - description: Address and size of the DSP bus registers
+> +
+> +  reg-names:
+> +    items:
+> +      - const: cfg
+> +      - const: sram
+> +      - const: sec
+> +      - const: bus
+> +
+> +  clocks:
+> +    items:
+> +      - description: mux for audio dsp clock
+> +      - description: mux for audio dsp local bus
+> +
+> +  clock-names:
+> +    items:
+> +      - const: audiodsp_sel
+> +      - const: adsp_bus_sel
 
+What does the "sel" stands for? Maybe just skip the "_sel" suffixes?
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  mboxes:
+> +    items:
+> +      - description: ipc reply between host and audio DSP.
+> +      - description: ipc request between host and audio DSP.
+> +
+> +  mbox-names:
+> +    items:
+> +      - const: mbox0
+> +      - const: mbox1
+
+These should be rather some meaningful names, e.g. "rx" and "tx".
+
+> +
+> +  memory-region:
+> +    items:
+> +      - description: dma buffer between host and DSP.
+> +      - description: DSP system memory.
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - reg-names
+> +  - clocks
+> +  - clock-names
+> +  - power-domains
+> +  - mbox-names
+> +  - mboxes
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+
+You do not use these headers.
+
+> +    #include <dt-bindings/clock/mt8186-clk.h>
+> +    dsp@10680000 {
+
 
 
 Best regards,
