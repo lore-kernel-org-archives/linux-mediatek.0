@@ -4,83 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 734E9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 14:48:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59BBBC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Apr 2022 15:05:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=siz1veCjWHK0bdf0RKgdf4xn4Z8d64SuKsD/wpqK2/c=; b=xsYVVEhf6zOA0l
-	/bPc1H+ivskUn0EU5uGFd+AjOlcX/CdeWwubp+v4bBVeZe9N0ksf0IZJD2Pk19LyZnFEv540s8IAE
-	Dy0GAHZ3zhrTtmN8Smg0Qr5Iy44pSsbk01PRGSiTusWLqReytJD/iA8PVopdhKe8RcScOtGpA2AId
-	IfFytiK+cqpwyO9typFoyCT1UMPgWBPdC/1nCOOqB9wDmpE/hwWZ4lAqQHniMHRixxQkBgPiuaJNM
-	kc+OtAmfsS2ctw0DKX696aIeH0twikf3TAKhAYrQ3SEOsHZ0DjRyMXsdVD1+NJZiMJfBewvDrBf1u
-	/xlaQRjlxhbceD8Gd44Q==;
+	List-Owner; bh=vKp0o7buyrHWz8Bfmlx/E0NvsBLDuY/0CQXw04yg3Bs=; b=pLQe6W5YJbXnt3
+	tTm8s0YoVcL6J99ewcwtLZLC45Y11B+Q/KQzaJjlrbY4ZCTDrp0XwyHGjpdroqB+zvNGDcXgq7h8z
+	l6vJdQVd+Sd5XCXGsLTm8lSh6l9AYVtfLx1NIO7kg8eFz6VmVA/bQ9lpzDcdaUzTKPpvlUatuSwqp
+	oBONJD048aWtMb+If6Nv9BTRb4LEP2QKDIgkkLvqDhmbK4GoZ71uq12ceZIA8HOpqfKpcqfQgGDLh
+	R2ieizoz8t9nQw4mCHgYlFSegvvdBQadarkTUJlP6qnWiuExi9tm9KbaO2sDZChpl6CkzAmRZ9e25
+	GZKMbQ47WLupzDY3+VUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhua2-000tQ6-2Y; Fri, 22 Apr 2022 14:48:18 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1nhuq5-000z6F-BW; Fri, 22 Apr 2022 15:04:53 +0000
+Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhuZp-000tMr-LU; Fri, 22 Apr 2022 14:48:07 +0000
-Received: by mail-wr1-x432.google.com with SMTP id q7so3766328wrm.5;
- Fri, 22 Apr 2022 07:48:04 -0700 (PDT)
+ id 1nhuhm-000vqi-IT; Fri, 22 Apr 2022 14:56:20 +0000
+Received: by mail-oi1-x22e.google.com with SMTP id a10so9289620oif.9;
+ Fri, 22 Apr 2022 07:56:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=kszdO6wU0Mqq85Z4KS0Qv5qQ/jWZuPbQJLH0mbPBngY=;
- b=ckimHfSHANKWUZV3VNpsoUCavtkIeyvi842IphJyJDXHazb6pz6QO69HxtEqvgVPGi
- zumAINHBO2LlvtZM5M/MSFotIgPRrjYEWorlg7qKlvb2lguNYF8A0ktY8sU3TD0MQkV5
- 6J1q6l1l2ALaOrpIx0xccDzU+Jti7wY6R6NHPX/xyDl6Nj+kJ6mnqe/4Wppxn4Pub5n4
- mGW7zNZEUp7hFZL2MUIeKS4RmOJvmzlmdud5eGqr4RpxswqyIJKWEyrx2pNiyTD+zmrQ
- YbOwF6caCllB37Wq1zfBi3uSBB1fk56owycsj0buZuZru3OVC9zG3ZkMs+SLRP0OAB+I
- ocTg==
+ bh=VhdYWhZ8HdsB2w4qD6v1EaAJmqQAg8pwfTEeXT82kjU=;
+ b=Dxse6QsHTlBp0xyYiyUSvBzXMEmNQ3ESZvO7d3r6Nusvo1zsTvhkK0Qr35kaDATkHk
+ xF7i4OIaDWCmEHyCrefP1H3vdiUTOX16w5D9+waLInX1qKp64OSHurqMcxe17+ddTFlP
+ XBuDqS1XLvzYR+h8aRxTlipCNH5WvsydusUcCql/f5+lde33Uvk1Tv+OwcAMz75d4ibU
+ K0hQqQQAqnkEelku+01nKsE1b3sKxWmcNYSz1PhtloEa8BtyARHLWDyX4ZW3QPrZAvMD
+ tSpNNn42322cEhdpPm3Mt6N4KakFFZsHsNevd/F1jXmh1K4U9kB43yLv/y/LpGEQvN6Y
+ /0EA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=kszdO6wU0Mqq85Z4KS0Qv5qQ/jWZuPbQJLH0mbPBngY=;
- b=lM62mDicAYgWBmsXZojqJkkLYzMm1PskRvfhM3/8FAA3yNSrbiV5IgACHxmsSLF0C9
- o1vRodo1ub11RuZHqCaPbkoy+06gcJdJ00bDGyjgMkPgzystimfBQ1kqK1itUt4QUNrv
- pOx2IqdhCEc2XqYMrlOe/jDzQnoNuVl8r9UIdfWqjUtCZ5AgHpYx03kdakAzcpkOjYEO
- MBOK6dsogP2ZF/Clw/OEgeTCCCj/GhS4EcueGJq2G/7+AH6tSZaTrSCHBc9hzI/iZz3K
- FO1/kaHgLFvbAEPy8VUNoRjyx7i8uPfZy1ZlsZBeSdvAjruhrk/1HSkBNDY0BLP0pG8z
- CMQA==
-X-Gm-Message-State: AOAM533XJi5+zUGemlQ/m8YBLpPFm/cJaXbmmU+VjfHL3+czXXqCWDSu
- Zpt4jesRr34PFwxmgi4zfMY=
-X-Google-Smtp-Source: ABdhPJyCKTiS68ltMDOjoqogI8DPaUY5lhMrd/Ldxc9wQ1klvoy7rTcUWwqKZZR1Opu84lCAH6Zg6A==
-X-Received: by 2002:a05:6000:2cd:b0:20a:9403:1681 with SMTP id
- o13-20020a05600002cd00b0020a94031681mr4019160wry.474.1650638883804; 
- Fri, 22 Apr 2022 07:48:03 -0700 (PDT)
+ bh=VhdYWhZ8HdsB2w4qD6v1EaAJmqQAg8pwfTEeXT82kjU=;
+ b=RYDlHGU8aO5WgjxlKxu4bGWHR/3HBRMMDgbRj8Fyb0M04ZRh+L5PRnBh5NzXTsEhAu
+ DFTXkXSkubGa8fQ4Em+vhX7jjoF17RRLBl18WgYPbjb878lmzTNNksZ6e1ELorBd+IKM
+ USfDDF6SV5O4P0zQoYvIfYp5dVH0uuYihMwPCQNrSuFO0kjTeCclTecWoUBcTweYX8C7
+ gioYbcfz6U5RUh9csofxJP0UZU0AO3m0twthINzxykquF4m7znrvZXYxhJhbqi7Y+wBs
+ FqGVD+0icdX3MEouSBXRlShmFCsJBJX18JFAucjnP5gecNwV8MMIriX7iIGDt33cn8P1
+ RZVg==
+X-Gm-Message-State: AOAM530kuwkQBinojRGIjHEu5mL48xArBdmu75lTiaRAkEwpyhYijCUE
+ Umjo9hRIqvhxRUL1ZlfIXrPwgEEoiqyvMA==
+X-Google-Smtp-Source: ABdhPJyaDHGcSpxsr0d+NaMwHEs7D0vX1T7sz6kj1KavTnNDPwMlBcHo7Moa/LU8sE2ysKoagGsO5w==
+X-Received: by 2002:a05:6808:f91:b0:323:22f2:e8db with SMTP id
+ o17-20020a0568080f9100b0032322f2e8dbmr2886014oiw.176.1650639375465; 
+ Fri, 22 Apr 2022 07:56:15 -0700 (PDT)
 Received: from [192.168.1.145] ([207.188.167.132])
  by smtp.gmail.com with ESMTPSA id
- w4-20020a7bc104000000b0038eba17a797sm4603969wmi.31.2022.04.22.07.48.02
+ 123-20020a4a0181000000b00324a1217e96sm853866oor.35.2022.04.22.07.56.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 Apr 2022 07:48:03 -0700 (PDT)
-Message-ID: <db89b86f-4b53-db99-8ec5-e4e469b02694@gmail.com>
-Date: Fri, 22 Apr 2022 16:48:01 +0200
+ Fri, 22 Apr 2022 07:56:14 -0700 (PDT)
+Message-ID: <4b3da3bb-ec6d-4e47-fb64-f93b774153d0@gmail.com>
+Date: Fri, 22 Apr 2022 16:56:11 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [PATCH v14 0/2] Add basic SoC support for mediatek mt8195
+Subject: Re: [PATCH v3 0/4] Add support for MediaTek MT8195 demo board
 Content-Language: en-US
-To: Tinghan Shen <tinghan.shen@mediatek.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Johnson Wang <johnson.wang@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Henry Chen <henryc.chen@mediatek.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, ryder.lee@kernel.org,
- wenst@chromium.org, chunfeng.yun@mediatek.com
-References: <20220411022724.11005-1-tinghan.shen@mediatek.com>
+To: Fabien Parent <fparent@baylibre.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20220415150003.1793063-1-fparent@baylibre.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220411022724.11005-1-tinghan.shen@mediatek.com>
+In-Reply-To: <20220415150003.1793063-1-fparent@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_074805_793317_83B6F2C7 
-X-CRM114-Status: GOOD (  20.41  )
+X-CRM114-CacheID: sfid-20220422_075618_723136_CEB0D613 
+X-CRM114-Status: GOOD (  14.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,99 +92,36 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 11/04/2022 04:27, Tinghan Shen wrote:
-> This series adds basic SoC support for Mediatek's SoC MT8195.
+On 15/04/2022 16:59, Fabien Parent wrote:
+> This patch serie adds basic support for the MediaTek MT8195
+> demo board. For now the support is pretty basic and allow
+> just to boot, use USB, and the SD card.
+> 
+> When more IO support will be added for MT8195, new changes
+> will be pushed to the device-tree of the MT8195 demo board
+> to support these IOs as well.
 
-Both patches applied to their respective branches.
+Whole series applied.
 
 Thanks!
 
 > 
-> ---
-> Changes in v14:
->    - update pwrap dt-bindings
->      this patch is picked from 20220411014121.15015-2-zhiyong.tao@mediatek.com
->    - enable u3phy2 and u3phy3 in evb dts
-> Changes in v13:
->    - add more description of reg items in mtk-sd.yaml
-> Changes in v12:
->    - update mtk-sd.yaml to extend reg property and fix yamllint error
->    - add xhci nodes and move xhci3 property (usb2-lpm-disable) to evb.dts
-> Changes in v11:
->    - rebase on 5.17-rc4
-> Changes in v10:
->    - clean CC list
-> Changes in v9:
->    - remove duplicated cpus dt-bindings patch in v8
-> Changes in v8:
->    - v7 mediatek,spi-mtk-nor.yaml patch is applied in branch for-5.17 at
->      kernel/git/broonie/spi.git
->    - v7 pinctrl-mt8195.yaml patch is applied in branch for-next at
->      kernel/git/linusw/linux-pinctrl.git
->    - add cortex-a78 compatible to cpus dt-bindings
->    - add mediatek,drive-strength-adv property to pinctrl dt-bindings
->    - fix evb dts
->      - remove i2c nodes with disabled status from dts
->      - fix pin properties not match pinctrl dt-bindings
->      - remove unnecessary u3port*
->    - fix dtsi
->      - fix node format
->      - reorder oscillator* nodes
->      - fix node name of cpu idle nodes
->      - remove clock-frequency property in the timer node
->      - reorder clock and clock names in usb nodes
-> Changes in v7:
->    - refine title of spi-nor dt-bindings patch
->    - refine commit message of pinctrl dt-bindings patch
->    - update pinctrl-mt8195.yaml
->      - change property pattern from 'pins' to '^pins'
->      - update examples with new property in descriptions
->      - add new example
->    - drop '_' from node names of pinctrl subnodes in mt8195-evb.dts
-> Changes in v6:
->    - rebase on 5.16-rc1
->    - add new clock name to spi-nor dt-bindings
->    - add "pins" property in pinctrl dt-bindings
->    - fix fails of dtbs_checks
->      - remove "arm,armv8" not matched in yaml from cpu compatile
->      - fix node name of xhci
->      - remvoe xhci upstreaming wakeup properties
->      - remove xhci unused properties address-cells and size-cells
->      - fix node name of ufs-phy
->      - fix node name of spi-nor
->      - fix node name and sub-nodes of pinctrl
->      - fix mmc compatible
-> Changes in v5:
->    - enable basic nodes in mt8195-evb.dts
->    - remove dedicated clock nodes
->    - add mmc2 node
->    - fix interrupt number of pinctrl node
->    - update clock nodes to apply internal fixes
->    - add dt-bindings for perficfg node
+> This serie depends on the following patches:
+> [0] https://patchwork.kernel.org/project/linux-mediatek/patch/1622011927-359-9-git-send-email-hsin-hsiung.wang@mediatek.com/
+> [1] https://patchwork.kernel.org/project/linux-mediatek/patch/20220411022724.11005-3-tinghan.shen@mediatek.com/
 > 
-> v4 thread:
-> https://lore.kernel.org/all/20210922093303.23720-2-seiya.wang@mediatek.com/
-> v3 thread:
-> https://lore.kernel.org/all/20210601075350.31515-2-seiya.wang@mediatek.com/
-> v2 thread:
-> https://lore.kernel.org/all/20210319023427.16711-10-seiya.wang@mediatek.com/
-> v1 thread:
-> https://lore.kernel.org/all/20210316111443.3332-11-seiya.wang@mediatek.com/
-> ---
+> Fabien Parent (4):
+>    dt-bindings: arm64: dts: mediatek: Add mt8195-demo board
+>    arm64: dts: mediatek: Add device-tree for MT8195 Demo board
+>    arm64: defconfig: enable MT6359 regulator driver
+>    arm64: defconfig: enable some mt6360 PMIC drivers
 > 
-> Tinghan Shen (1):
->    arm64: dts: Add mediatek SoC mt8195 and evaluation board
-> 
-> Zhiyong.Tao (1):
->    dt-bindings: pwrap: mediatek: fix pwrap document for mt8195
-> 
->   .../bindings/soc/mediatek/pwrap.txt           |   10 +-
->   arch/arm64/boot/dts/mediatek/Makefile         |    1 +
->   arch/arm64/boot/dts/mediatek/mt8195-evb.dts   |  181 +++
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 1045 +++++++++++++++++
->   4 files changed, 1232 insertions(+), 5 deletions(-)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-evb.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>   .../devicetree/bindings/arm/mediatek.yaml     |   1 +
+>   arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+>   arch/arm64/boot/dts/mediatek/mt8195-demo.dts  | 445 ++++++++++++++++++
+>   arch/arm64/configs/defconfig                  |   4 +
+>   4 files changed, 451 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-demo.dts
 > 
 
 _______________________________________________
