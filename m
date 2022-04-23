@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43140C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Apr 2022 07:44:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB50EC433FE
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Apr 2022 10:27:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NQoZxA7tf+GLlo4lkNIentr8cuZ/yPmYn54ZxxUPV80=; b=IjzcC55gcdr76S
-	PrHn5y97c1VfjlAASsY+Gm9mwdbl4cH2b7r2UB/ypo92sf9pTfiOalNm1XleI/n8uUFEaPgWAU73P
-	wep/ZgkZyxvO/5kxDXOfs/IGsx/Kr7Bjv66X6YOmWPEBRe7M4x1UeUnwOBj64/2KH6KdFAuap6lsl
-	zLHBPkiJD8DPW51XF49pL70GR3qgRkmxYALH7AU7aXBzjh+cwS+jdK7GWHMnuqbDIGUu92SXHfwnK
-	JRr6zZTV1dwRMQr+G3enaDxEWDppZrkGfTMxmTlBUDcZ8ietSwN5frzSrAwtTkM+ufj/H28aBbDv8
-	ixxv6gi9GBUknLron/sQ==;
+	List-Owner; bh=k9x9Y7Lscjv3IRaOwyapAgh2Goom3SOk7RoeAsBUce4=; b=Pp+vG8iH1osWsC
+	uKjZNiqrstG+qMNhXy0tfN9SMyHMks+zUdCmGRk7x5L18bcxNyuz7NmEvFmn+piC8HyF4l+XRaKkk
+	QGZm+9wPesCJ/ogWWAAms7fGO3wrGzzdnk3sWkxy+GxJPv5fANacf+4fKFxLRf4BWy50T/HvqUVpN
+	v3JEMwdckmcs0niaQsRJfDJCBsoVabWxGNQ1tBOkacFAvbaMqW7v1ZPxevk1x2e/wrZCryTCq0WYO
+	3qG9CIgtJERmaWxMLat93yDTXQ7luC1nVRfG+yvj1VGknCGrGnniVErzqxpz2VWV48urdRoOjd/+H
+	mC5y1i3IcKAYit2t9GVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1niARL-003leA-Fv; Sat, 23 Apr 2022 07:44:23 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1niCzR-0045z1-42; Sat, 23 Apr 2022 10:27:45 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1niAR9-003lc0-SO; Sat, 23 Apr 2022 07:44:13 +0000
-X-UUID: 3b9eb918db9d4d739468f61a4b0ec1c3-20220423
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=tlCxVG/AHT8acc8MAxOAEAPGTUEUAwVGA4gYNgAtx9Y=; 
- b=mHK/BgKhbnACZpUUV9gLAQ5ov5o+58Hwv1u34gKWuvK0LN8/aYuuHxf8PfQZdbY5oKYqmzVpj6uuYeev2TZptcR/0DUwHiZOvi3+VuPKTu9yzpT04wcUTqU33PSgdOb/DpfgF/25QHQXlq3cyNjWq3ta5GMS7Z9PV2ISxmKlXxc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:453497f1-ff1d-4ba6-9f4f-9456288141fc, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:4aadaef0-da02-41b4-b6df-58f4ccd36682,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 3b9eb918db9d4d739468f61a4b0ec1c3-20220423
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 699298029; Sat, 23 Apr 2022 00:44:07 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 23 Apr 2022 00:34:05 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Sat, 23 Apr 2022 15:34:04 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 23 Apr 2022 15:34:02 +0800
-Message-ID: <ad60061db14c9f08e6b1aed3389d3744d8a12be0.camel@mediatek.com>
-Subject: Re: [PATCH] media: mediatek: vcodec: Fix v4l2 compliance decoder
- cmd test fail
-From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Alexandre Courbot
- <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, Tiffany Lin
- <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
- <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Fritz
- Koenig" <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
- <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
- Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Sat, 23 Apr 2022 15:34:02 +0800
-In-Reply-To: <678a06f5-0519-dab3-35ac-5915b47d422e@xs4all.nl>
-References: <20220406012048.5970-1-yunfei.dong@mediatek.com>
- <678a06f5-0519-dab3-35ac-5915b47d422e@xs4all.nl>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1niCzO-0045yH-CG
+ for linux-mediatek@lists.infradead.org; Sat, 23 Apr 2022 10:27:43 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id y20so20764442eju.7
+ for <linux-mediatek@lists.infradead.org>; Sat, 23 Apr 2022 03:27:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=AOUrFgUwEuSpl6hTV/7bP18cU2LpXkIHI0vQtR+kpsQ=;
+ b=JEiQJmqMDGCqggdXD4BezkGTOz5F3qCD4m3GAg3ePRWI/RRoT0QSNSX95ctQ6kzQut
+ g5jOVBWpjAJQGAqOkOL9aAZ9FuROaxU8HqphApfcAHxn09TJYnKuX0T4ZWI7H7HygJrD
+ jPAtxY5q7Vx3zUWF6S3ukoN9CvGB9gwwbBomJMWE0GxpD6px1TiPDWuXietPy/j/Wsaa
+ jcx4ZrTbocsJazpmAiUVUPLSXLl/1esrBNdqF6DKTM5VPpknkrindHs3GSoBsJ9t7l3o
+ xQSfCp8xVQujmjj5k2dhjKJRr4UxR/ODPnRViMKXhvShPxO5HfYoMhdp9BTbE4CQvZst
+ b0Qg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=AOUrFgUwEuSpl6hTV/7bP18cU2LpXkIHI0vQtR+kpsQ=;
+ b=R0W+EnaH2EdsadT6j/rtLHSNxoE7ZH7bOyrq3Yd0ye5wvtyQQkP1F/sn22LZrBdGX6
+ mSU5ABR9qS4UJOzk5uICdPBfRhoQgFy9CO5fzRc/laRPZs3BFh/U13fYlQGQEZJ7CDAv
+ NFwsXDeFHqf6wtIqifWLVIgs2QzBaFNK5KjDqaztqqlU8RH7mqbYcMX6lneBuy/Um2O0
+ OR7RdKKNq3S+lY7vXsbgeq/zrH5FJLGs9d7Vycu29aIskWrWtgu7PntHPeuchCaD9e/O
+ tQk6wULHZ5jT4g1nK1XuC/iSLfVAFMABUjdRR1NsuD82v66rbgEnIHJXefjsd/wDg+b2
+ iEOQ==
+X-Gm-Message-State: AOAM533ydlwQZ5XFBQi6J7W+KMvwif689XHXBHV1fl1a8NEd3t4yzZqV
+ Sb/qMVTRTe7dYP+6j1AGdDWAkQ==
+X-Google-Smtp-Source: ABdhPJyi1WNeP7McWIYi/L5chkoHfrjRyvJMkmxFVMT6CRqoVF5RVabad+9jTEezRQLCDdaaSzi2KA==
+X-Received: by 2002:a17:907:2d08:b0:6f0:2c6b:df52 with SMTP id
+ gs8-20020a1709072d0800b006f02c6bdf52mr7411533ejc.210.1650709660435; 
+ Sat, 23 Apr 2022 03:27:40 -0700 (PDT)
+Received: from [192.168.0.234] (xdsl-188-155-176-92.adslplus.ch.
+ [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
+ n13-20020a170906724d00b006cedd6d7e24sm1545928ejk.119.2022.04.23.03.27.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 23 Apr 2022 03:27:40 -0700 (PDT)
+Message-ID: <288f55f3-b3ed-32b8-9a44-652f3d53617d@linaro.org>
+Date: Sat, 23 Apr 2022 12:27:38 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH V3 11/17] dt-bindings: arm: mediatek: Add #reset-cells
+ property for MT8192-sys-clock
+Content-Language: en-US
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, mturquette@baylibre.com,
+ sboyd@kernel.org, matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org
+Cc: p.zabel@pengutronix.de, angelogioacchino.delregno@collabora.com,
+ chun-jie.chen@mediatek.com, wenst@chromium.org, runyang.chen@mediatek.com,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220422060152.13534-1-rex-bc.chen@mediatek.com>
+ <20220422060152.13534-12-rex-bc.chen@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220422060152.13534-12-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220423_004411_967637_E0781F26 
-X-CRM114-Status: GOOD (  25.89  )
+X-CRM114-CacheID: sfid-20220423_032742_465086_C24AC29E 
+X-CRM114-Status: GOOD (  15.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,74 +100,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Hans,
+On 22/04/2022 08:01, Rex-BC Chen wrote:
+> We will use the infra_ao reset which is defined in mt8192-sys-clock.
+> The maximum value of reset-cells is 2. Therefore, we add this patch to
+> define it.
 
-Thanks for your suggestion, I will resend patch v4 according to your
-suggestion.
+Remove entire last sentence, does not make sense in the commit.
 
-Best Regards,
-Yunfei Dong
-On Thu, 2022-04-21 at 12:47 +0200, Hans Verkuil wrote:
-> On 06/04/2022 03:20, Yunfei Dong wrote:
-> > Will return -EINVAL using standard framework api when test
-> > stateless
-> > decoder with cmd VIDIOC_(TRY)DECODER_CMD.
-> > 
-> > Using another return value to adjust v4l2 compliance test for user
-> > driver(GStreamer/Chrome) won't use decoder cmd.
-> > 
-> > Fixes: 8cdc3794b2e3 ("media: mtk-vcodec: vdec: support stateless
-> > API")
-> > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> > Reviewed-by: AngeloGioacchino Del Regno <
-> > angelogioacchino.delregno@collabora.com>
-> > ---
-> > changes compared with v2:
-> > - add reviewed-by tag
-> > changes compared with v1:
-> > - add Fixes: tag
-> > ---
-> >  drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 3 +--
-> >  1 file changed, 1 insertion(+), 2 deletions(-)
-> > 
-> > diff --git
-> > a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> > b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> > index 3859e4c651c6..69b0e797d342 100644
-> > --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> > +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> > @@ -51,8 +51,7 @@ static int vidioc_try_decoder_cmd(struct file
-> > *file, void *priv,
-> >  
-> >  	/* Use M2M stateless helper if relevant */
-> >  	if (ctx->dev->vdec_pdata->uses_stateless_api)
-> > -		return v4l2_m2m_ioctl_stateless_try_decoder_cmd(file,
-> > priv,
-> > -								cmd);
-> > +		return -ENOTTY;
-> >  	else
-> >  		return v4l2_m2m_ioctl_try_decoder_cmd(file, priv, cmd);
-> >  }
 > 
-> So in other words, if the stateless api is used, then
-> (TRY_)DECODER_CMD
-> is not implemented. And that's because this driver doesn't set the
-> V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF capability as that's not
-> needed.
-> And so there is no need for (TRY_)DECODER_CMD to be implemented.
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> ---
+>  .../bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml       | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
-> If that's the case, then it is much better to just disable these two
-> ioctls with v4l2_disable_ioctl() if the stateless API is used.
-> 
-> And just drop the uses_stateless_api checks in both
-> vidioc_try_decoder_cmd
-> and vidioc_decoder_cmd. This patch only changed
-> vidioc_try_decoder_cmd,
-> but of course vidioc_decoder_cmd needs to be modified as well.
-> 
-> Regards,
-> 
-> 	Hans
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml
+> index 5705bcf1fe47..28ebcecc8258 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml
+> @@ -29,6 +29,9 @@ properties:
+>    '#clock-cells':
+>      const: 1
+>  
+> +  '#reset-cells':
+> +    maximum: 2
+
+Why this is a maximum? Usually this is const, so how do you use it (with
+what values)?
+
+> +
+>  required:
+>    - compatible
+>    - reg
+
+
+Best regards,
+Krzysztof
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
