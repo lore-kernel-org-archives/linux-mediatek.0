@@ -4,82 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C01EBC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Apr 2022 08:51:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87926C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Apr 2022 08:59:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TDh7JupnCtmMiMustRWZj9Ei0CfRyWfg15grEhsJqwc=; b=sFqKHbgtiqfUip
-	ADsrq3kHmt40kMcEaysPzldBziQ/daLDDayR2ZPBXCiZcKAN2w+1V0QnfwdNouvz7KQaNuEHdIOU6
-	sR5+o+N3xpuOWn42JpdKODV4p04rWOIMLK9nBtIw1QlLXeA1SLPxOg8SR+ZJe0pBTAe0mFpAKUbaG
-	zcNVMN72b4ogjRtwwwlddcBG3roVq8vEIOTUzJifh4ePbWaIhzxuIOngmZg8hk/il1OjGgCoeISuH
-	WDQ/iSMADle3uSJn8lPNa9sFNnz/w+e8NW8p5kUACyCEBmpmObvarXeWt4mujE9FCyGCX7hSG+W+h
-	bnJ1Y1+fotcOKknWo8Yg==;
+	List-Owner; bh=UQiqGdb7Lc4Ki7P4ujMRwzw2uiG4mghhroy+di881Xs=; b=AyYbli2XxQ1q2C
+	PYNKiUnmHpjyL30C23uZZLAFzhklLi5B1vfWbWx/wGf56CM75K8A62i/xIwhIPF71C+psPD6ZjjaF
+	nmqkyLGxmng3VDOKgXzHA3KWwmL91a1KWinwgG+Rd+lJ7OFHNSULbVDCpYE7BGcd3wTNMHaA2rapB
+	1LUpdcUIfNpYFZCNXIxihgGZdpp5NGAYAT/loERJlW6A+Zu/rkKPrLkxTl24CzCmbvDqDiX+uzjZ/
+	fMrODQ4IroRV0J/hvfNTZ3EF18N55KlpKzYTKE+f8EKlppEYe/auclMpPf8zCZpVrrB2v+oIbzBBf
+	DLx2//2y8JZaJ8VRxCDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1niXxL-006AGS-Ch; Sun, 24 Apr 2022 08:50:59 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1niY5n-006D4M-27; Sun, 24 Apr 2022 08:59:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1niXx9-006AA2-3z; Sun, 24 Apr 2022 08:50:49 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id gh6so100126ejb.0;
- Sun, 24 Apr 2022 01:50:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=SaSVAGu2XwyZao07Jymtbz3ykD0KKs6DAdj6tUH3Obk=;
- b=RjB5zd+KGvmtQtc+Xo1nuEZ0TX1aASqC0Ic8+GKMksqXdoF05w8NKSukK9SvU0bDHM
- HXBwIv8iOKcJrAiDJET8kX5a1Fqw86SsDwF2cMhj6u3pfVGWbbBOHe6YxtBtVov0nal2
- ZuqTegYZwQPG7fzG1OP9oaM9RKhzR5xu7DY+TMtgkLGClKa1grpucmDBVRDWVw+k1+Qg
- b4aUVB15cZTvGptA1h8GwOJ6jlWWG/+ISKNI6hpUPVPiEzC0RN4G9iNvOJP+FFteSEMQ
- N3de/O6n/9pUrwqNjnI6hDTnsfkBfcDu6Yzh1hrxlPEcVMW8qyCJDFGuop2lfkFGtlz5
- NZVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=SaSVAGu2XwyZao07Jymtbz3ykD0KKs6DAdj6tUH3Obk=;
- b=tND1kXS70PLcWeqr9qxegvt7kwRztZJ76SP3EsQTflwluEqoXBKepucj3hXJGUgYqM
- ygmC0Vw9PtLrsdYLAlh/w0wDCOBX0o5quNnWMpBZMSJk8isxYJAeEhMf9lFxo71VfmZO
- 8C5jeHg+2b00QkP6+5tvqLnem3jI91cKronQ5BRuMQEuk1cbJNInJcqcoEOtLvC+M8XG
- uj0e0RaG2wmkweEhSz4cIT0RPDj0iXnKXMOkHibOQnCAsOpE+eLnoVv+TI3NpWhztFB3
- //FNyqCLbFs9KCshO7hpozmfG96gYkVq5A8QW6J736O8ITDc8CXLqSf/N7W+a4+z3dzU
- lY5Q==
-X-Gm-Message-State: AOAM5309NGNmyYgD/nx/EMxbUfOjwgxmENMfV5+K5VsDUTWBs6bzGsQ8
- Okyz3kojAPJokRGS3XkZxEM=
-X-Google-Smtp-Source: ABdhPJzzvMcUnsjX5m8kOC3MoubcHlQ48XHwvDcY9nmYjBRcmKIN1r5JLTL2A/SCNRd7aPswcvoc8w==
-X-Received: by 2002:a17:906:dc8b:b0:6ef:86e8:777 with SMTP id
- cs11-20020a170906dc8b00b006ef86e80777mr11822490ejc.326.1650790244772; 
- Sun, 24 Apr 2022 01:50:44 -0700 (PDT)
-Received: from localhost.localdomain ([138.199.7.245])
- by smtp.gmail.com with ESMTPSA id
- gy10-20020a170906f24a00b006e894144707sm2435971ejb.53.2022.04.24.01.50.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 Apr 2022 01:50:44 -0700 (PDT)
-From: Yassine Oudjana <yassine.oudjana@gmail.com>
-X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Sam Shih <sam.shih@mediatek.com>, Ryder Lee <ryder.lee@kernel.org>,
- devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Yassine Oudjana <y.oudjana@protonmail.com>,
- Yassine Oudjana <yassine.oudjana@gmail.com>
-Subject: [PATCH v2 3/3] dt-bindings: arm: mediatek: infracfg: Convert to DT
- schema
-Date: Sun, 24 Apr 2022 12:46:47 +0400
-Message-Id: <20220424084647.76577-4-y.oudjana@protonmail.com>
-X-Mailer: git-send-email 2.36.0
-In-Reply-To: <20220424084647.76577-1-y.oudjana@protonmail.com>
-References: <20220424084647.76577-1-y.oudjana@protonmail.com>
+ id 1niY5K-006Cys-UR; Sun, 24 Apr 2022 08:59:16 +0000
+X-UUID: 16088c8215564f16a858fd3f28fb4258-20220424
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:4be7fd54-2cfd-498b-a47d-35828e030054, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:c1d2bcf0-da02-41b4-b6df-58f4ccd36682,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 16088c8215564f16a858fd3f28fb4258-20220424
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1187617020; Sun, 24 Apr 2022 01:59:10 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 24 Apr 2022 01:49:08 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sun, 24 Apr 2022 16:48:54 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sun, 24 Apr 2022 16:48:54 +0800
+Message-ID: <a0b90deb9d30fe331493f5fbe8e67a97b698fe49.camel@mediatek.com>
+Subject: Re: [PATCH v20 2/8] soc: mediatek: add mtk-mutex support for mt8195
+ vdosys0
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>
+CC: Nancy Lin <nancy.lin@mediatek.com>, Singo Chang
+ <singo.chang@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Sun, 24 Apr 2022 16:48:54 +0800
+In-Reply-To: <074d8c26-3fb7-bee1-d559-7ce96f583fee@gmail.com>
+References: <20220419094143.9561-1-jason-jh.lin@mediatek.com>
+ <20220419094143.9561-3-jason-jh.lin@mediatek.com>
+ <82cc5e6900138e13ed9d75c6d2a42c6d7afc1959.camel@mediatek.com>
+ <c3de9ccb314316b5296b115dd3e9f8171577489f.camel@mediatek.com>
+ <074d8c26-3fb7-bee1-d559-7ce96f583fee@gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220424_015047_230977_8E3E4629 
-X-CRM114-Status: GOOD (  16.01  )
+X-CRM114-CacheID: sfid-20220424_015915_141879_505ACBE2 
+X-CRM114-Status: GOOD (  23.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,160 +88,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yassine Oudjana <y.oudjana@protonmail.com>
+Hi Matthias,
 
-Convert infracfg bindings to DT schema format. Not all drivers
-currently implement resets, so #reset-cells is made a required
-property only for those that do. Using power-controller in the
-example node name makes #power-domain-cells required causing
-a dt_binding_check error. To solve this, the node is renamed to
-syscon@10001000.
+Thanks for the reviews.
 
-Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
----
- .../arm/mediatek/mediatek,infracfg.txt        | 42 ----------
- .../arm/mediatek/mediatek,infracfg.yaml       | 81 +++++++++++++++++++
- 2 files changed, 81 insertions(+), 42 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
+On Fri, 2022-04-22 at 14:31 +0200, Matthias Brugger wrote:
+> 
+> On 22/04/2022 04:32, Jason-JH Lin wrote:
+> > Hi CK,
+> > 
+> > Thanks for the reviews.
+> > 
+> > On Thu, 2022-04-21 at 14:50 +0800, CK Hu wrote:
+> > > Hi, Jason:
+> > > 
+> > > On Tue, 2022-04-19 at 17:41 +0800, jason-jh.lin wrote:
+> > > > Add mtk-mutex support for mt8195 vdosys0.
+> > > > 
+> > > > Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+> > > > Acked-by: AngeloGioacchino Del Regno <
+> > > > angelogioacchino.delregno@collabora.com>
+> > > > Tested-by: Fei Shao <fshao@chromium.org>
+> > > > ---
+> > > >   drivers/soc/mediatek/mtk-mutex.c | 87
+> > > > ++++++++++++++++++++++++++++++--
+> > > >   1 file changed, 84 insertions(+), 3 deletions(-)
+> > > > 
+> > > > diff --git a/drivers/soc/mediatek/mtk-mutex.c
+> > > > b/drivers/soc/mediatek/mtk-mutex.c
+> > > > index aaf8fc1abb43..729ee88035ed 100644
+> > > > --- a/drivers/soc/mediatek/mtk-mutex.c
+> > > > +++ b/drivers/soc/mediatek/mtk-mutex.c
+> > > > @@ -17,6 +17,9 @@
+> > > >   #define MT8183_MUTEX0_MOD0			0x30
+> > > >   #define MT8183_MUTEX0_SOF0			0x2c
+> > > >   
+> > > > +#define MT8195_DISP_MUTEX0_MOD0			0x30
+> > > > +#define MT8195_DISP_MUTEX0_SOF			0x2c
+> > > 
+> > > This is identical to mt8183, so use mt8183 one instead of
+> > > creating
+> > > new
+> > > one.
+> > > 
+> > > Regards,
+> > > CK
+> > > 
+> > 
+> > I'll fix this in the next version.
+> 
+> Please send this as a follow-up fix on top of:
+> 
+https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/log/?h=v5.18-next*soc__;Lw!!CTRNKA9wMg0ARbw!0QzNDaejnt54R86SL628fJ9p2BKTOmYBnoz6uPz9X8WsHXeQi3rqPAXmPFRBcw1vEtUu$
+>  
+> 
+> Regards,
+> Matthias
+> 
+OK, I'll send the fix-up patch soon.
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-deleted file mode 100644
-index f66bd720571d..000000000000
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-+++ /dev/null
-@@ -1,42 +0,0 @@
--Mediatek infracfg controller
--============================
--
--The Mediatek infracfg controller provides various clocks and reset
--outputs to the system.
--
--Required Properties:
--
--- compatible: Should be one of:
--	- "mediatek,mt2701-infracfg", "syscon"
--	- "mediatek,mt2712-infracfg", "syscon"
--	- "mediatek,mt6765-infracfg", "syscon"
--	- "mediatek,mt6779-infracfg_ao", "syscon"
--	- "mediatek,mt6797-infracfg", "syscon"
--	- "mediatek,mt7622-infracfg", "syscon"
--	- "mediatek,mt7623-infracfg", "mediatek,mt2701-infracfg", "syscon"
--	- "mediatek,mt7629-infracfg", "syscon"
--	- "mediatek,mt7986-infracfg", "syscon"
--	- "mediatek,mt8135-infracfg", "syscon"
--	- "mediatek,mt8167-infracfg", "syscon"
--	- "mediatek,mt8173-infracfg", "syscon"
--	- "mediatek,mt8183-infracfg", "syscon"
--	- "mediatek,mt8516-infracfg", "syscon"
--- #clock-cells: Must be 1
--- #reset-cells: Must be 1
--
--The infracfg controller uses the common clk binding from
--Documentation/devicetree/bindings/clock/clock-bindings.txt
--The available clocks are defined in dt-bindings/clock/mt*-clk.h.
--Also it uses the common reset controller binding from
--Documentation/devicetree/bindings/reset/reset.txt.
--The available reset outputs are defined in
--dt-bindings/reset/mt*-resets.h
--
--Example:
--
--infracfg: power-controller@10001000 {
--	compatible = "mediatek,mt8173-infracfg", "syscon";
--	reg = <0 0x10001000 0 0x1000>;
--	#clock-cells = <1>;
--	#reset-cells = <1>;
--};
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-new file mode 100644
-index 000000000000..8681b785ed6d
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-@@ -0,0 +1,81 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: "http://devicetree.org/schemas/arm/mediatek/mediatek,infracfg.yaml#"
-+$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-+
-+title: MediaTek Infrastructure System Configuration Controller
-+
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+
-+description:
-+  The Mediatek infracfg controller provides various clocks and reset outputs
-+  to the system. The clock values can be found in <dt-bindings/clock/mt*-clk.h>,
-+  and reset values in <dt-bindings/reset/mt*-reset.h> and
-+  <dt-bindings/reset/mt*-resets.h>.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+          - enum:
-+              - mediatek,mt2701-infracfg
-+              - mediatek,mt2712-infracfg
-+              - mediatek,mt6765-infracfg
-+              - mediatek,mt6779-infracfg_ao
-+              - mediatek,mt6797-infracfg
-+              - mediatek,mt7622-infracfg
-+              - mediatek,mt7629-infracfg
-+              - mediatek,mt7986-infracfg
-+              - mediatek,mt8135-infracfg
-+              - mediatek,mt8167-infracfg
-+              - mediatek,mt8173-infracfg
-+              - mediatek,mt8183-infracfg
-+              - mediatek,mt8516-infracfg
-+          - const: syscon
-+      - items:
-+          - const: mediatek,mt7623-infracfg
-+          - const: mediatek,mt2701-infracfg
-+          - const: syscon
-+
-+  reg:
-+    maxItems: 1
-+
-+  '#clock-cells':
-+    const: 1
-+
-+  '#reset-cells':
-+    const: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - '#clock-cells'
-+
-+if:
-+  properties:
-+    compatible:
-+      contains:
-+        enum:
-+          - mediatek,mt2701-infracfg
-+          - mediatek,mt2712-infracfg
-+          - mediatek,mt7622-infracfg
-+          - mediatek,mt7986-infracfg
-+          - mediatek,mt8135-infracfg
-+          - mediatek,mt8173-infracfg
-+          - mediatek,mt8183-infracfg
-+then:
-+  required:
-+    - '#reset-cells'
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    infracfg: clock-controller@10001000 {
-+        compatible = "mediatek,mt8173-infracfg", "syscon";
-+        reg = <0x10001000 0x1000>;
-+        #clock-cells = <1>;
-+        #reset-cells = <1>;
-+    };
+Regards,
+Jason-JH.Lin
+
+> > 
+> > Regards,
+> > Jason-JH.Lin.
+> > > > 
+> > > >   
+> > > > +static const struct mtk_mutex_data mt8195_mutex_driver_data =
+> > > > {
+> > > > +	.mutex_mod = mt8195_mutex_mod,
+> > > > +	.mutex_sof = mt8195_mutex_sof,
+> > > > +	.mutex_mod_reg = MT8195_DISP_MUTEX0_MOD0,
+> > > > +	.mutex_sof_reg = MT8195_DISP_MUTEX0_SOF,
+> > > > +};
+> > > > +
+> > > >   
+> > > 
+> > > 
 -- 
-2.36.0
+Jason-JH Lin <jason-jh.lin@mediatek.com>
 
 
 _______________________________________________
