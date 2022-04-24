@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2092C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Apr 2022 08:50:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C01EBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Apr 2022 08:51:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xr7cwjYrMW5ep136lzms1pQWDP9TsnyV5p9TyRYV5WE=; b=XP2rzy1m8jgU1y
-	OwlI0quvthOnzY6QL146c2EVP3ppunehTQLIXMni/RJbFY7wDVAFD02OBHsPUq1yESsqJKgCndbLR
-	TVpyx0Mo4YyyVcgRrT5xWlH7EArT5i3ioiD4KVz95AU7syGiW89Fhmdhq2lupO50Y8FEYL5+OiCQo
-	HXVT+cv8Dx3wF9Q7Lfz5aXhmtlAJdxi24bWbMM1APZg5N+FhhgvxFyMLrmIkC0ublYlm/yoHqrs81
-	gtKu7Z6CUOVH/qE23CRpBGW/lGTa3nh4oTIZF5joFjOqTUnYuK48KZkEe7/aUYpnebwcrsIBgi6No
-	rie1F/CLtJlZ9OF93A2w==;
+	List-Owner; bh=TDh7JupnCtmMiMustRWZj9Ei0CfRyWfg15grEhsJqwc=; b=sFqKHbgtiqfUip
+	ADsrq3kHmt40kMcEaysPzldBziQ/daLDDayR2ZPBXCiZcKAN2w+1V0QnfwdNouvz7KQaNuEHdIOU6
+	sR5+o+N3xpuOWn42JpdKODV4p04rWOIMLK9nBtIw1QlLXeA1SLPxOg8SR+ZJe0pBTAe0mFpAKUbaG
+	zcNVMN72b4ogjRtwwwlddcBG3roVq8vEIOTUzJifh4ePbWaIhzxuIOngmZg8hk/il1OjGgCoeISuH
+	WDQ/iSMADle3uSJn8lPNa9sFNnz/w+e8NW8p5kUACyCEBmpmObvarXeWt4mujE9FCyGCX7hSG+W+h
+	bnJ1Y1+fotcOKknWo8Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1niXx7-006AAK-UX; Sun, 24 Apr 2022 08:50:45 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1niXxL-006AGS-Ch; Sun, 24 Apr 2022 08:50:59 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1niXx0-006A6T-NQ; Sun, 24 Apr 2022 08:50:40 +0000
-Received: by mail-ed1-x536.google.com with SMTP id a21so2981244edb.1;
- Sun, 24 Apr 2022 01:50:37 -0700 (PDT)
+ id 1niXx9-006AA2-3z; Sun, 24 Apr 2022 08:50:49 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id gh6so100126ejb.0;
+ Sun, 24 Apr 2022 01:50:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=8W5+Z8xfgLRyM84vERTjWIAUY1i0+LAcAHaXYj8ooeI=;
- b=HJVWKxSRlzwEzSVJHhutKBP5YESaIhaHsOm1yHH1zoXuYdANXyi5CYFsyyjoS0Io7F
- 6KMGQFIiDqaztWWrI5n2/l71KCG3en34KF7Cy7E3DTCMZb2NZXoc8brPMNPwYPTIM9c0
- UtbB2zeFfLRMOKhH85AYwgcAbpiogLbrs+XnRpaftzE2FspRyIREhPAjn/VbxElB/A6i
- ZcavS0FjE0ZylygFWZpSO4/QVz/2FG7sQT0PgohsL5YM/NvmG5sWlIqlSiHea25e7DYE
- dMocobgbtDCT6+mZOHQFqPK1kqceHUVmR7Y8G7pa/jAAJZyV9AqYQExXMpfYS/wJcybs
- QOjA==
+ bh=SaSVAGu2XwyZao07Jymtbz3ykD0KKs6DAdj6tUH3Obk=;
+ b=RjB5zd+KGvmtQtc+Xo1nuEZ0TX1aASqC0Ic8+GKMksqXdoF05w8NKSukK9SvU0bDHM
+ HXBwIv8iOKcJrAiDJET8kX5a1Fqw86SsDwF2cMhj6u3pfVGWbbBOHe6YxtBtVov0nal2
+ ZuqTegYZwQPG7fzG1OP9oaM9RKhzR5xu7DY+TMtgkLGClKa1grpucmDBVRDWVw+k1+Qg
+ b4aUVB15cZTvGptA1h8GwOJ6jlWWG/+ISKNI6hpUPVPiEzC0RN4G9iNvOJP+FFteSEMQ
+ N3de/O6n/9pUrwqNjnI6hDTnsfkBfcDu6Yzh1hrxlPEcVMW8qyCJDFGuop2lfkFGtlz5
+ NZVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=8W5+Z8xfgLRyM84vERTjWIAUY1i0+LAcAHaXYj8ooeI=;
- b=qZM4M16NVColRZTb5nnZx/HJyp1dB97wxIN9FIllQDxfh6Ui8m+7R0AiJLTcr+k9Z7
- cYP0SRrB6B95UCR0boeqGdWUd5VduktmA9rgCHIjzB8KW94og9o6X83EWydWi9vq5Ar6
- ppsqcylI1eVxnv75OrRvRQgudHvAL1pZOUjVl349h+DmlHW5yU1le3U5SdxJd1c2Yz9k
- vvneUCapL/I8caFLI8w2hl2Jm0DI7LNi1yVF0wJ6VPv4IWb811yibC6+y2QFZHcGYqgx
- 3tkamRssSK0hSVXOIyw2e92Iwmq7dEfta4PN6B95moAClrRZ6hgi96YhnisiMbsosbT4
- 20IA==
-X-Gm-Message-State: AOAM530AVxjCN+PVMRGDDLh4t24ImVhEbbMKNLUebFshtxzTMK4KdN3N
- BM+nTbp8mMh906kClznVGMI=
-X-Google-Smtp-Source: ABdhPJxCHoStiGRdxwMSQct0lwtQdbcFNX3mNwhWPi/jWgi/9gF+dy8m5VkfSZr+vzy2KVFkMVuC7g==
-X-Received: by 2002:a50:f69c:0:b0:425:c96a:5c09 with SMTP id
- d28-20020a50f69c000000b00425c96a5c09mr7964237edn.256.1650790236424; 
- Sun, 24 Apr 2022 01:50:36 -0700 (PDT)
+ bh=SaSVAGu2XwyZao07Jymtbz3ykD0KKs6DAdj6tUH3Obk=;
+ b=tND1kXS70PLcWeqr9qxegvt7kwRztZJ76SP3EsQTflwluEqoXBKepucj3hXJGUgYqM
+ ygmC0Vw9PtLrsdYLAlh/w0wDCOBX0o5quNnWMpBZMSJk8isxYJAeEhMf9lFxo71VfmZO
+ 8C5jeHg+2b00QkP6+5tvqLnem3jI91cKronQ5BRuMQEuk1cbJNInJcqcoEOtLvC+M8XG
+ uj0e0RaG2wmkweEhSz4cIT0RPDj0iXnKXMOkHibOQnCAsOpE+eLnoVv+TI3NpWhztFB3
+ //FNyqCLbFs9KCshO7hpozmfG96gYkVq5A8QW6J736O8ITDc8CXLqSf/N7W+a4+z3dzU
+ lY5Q==
+X-Gm-Message-State: AOAM5309NGNmyYgD/nx/EMxbUfOjwgxmENMfV5+K5VsDUTWBs6bzGsQ8
+ Okyz3kojAPJokRGS3XkZxEM=
+X-Google-Smtp-Source: ABdhPJzzvMcUnsjX5m8kOC3MoubcHlQ48XHwvDcY9nmYjBRcmKIN1r5JLTL2A/SCNRd7aPswcvoc8w==
+X-Received: by 2002:a17:906:dc8b:b0:6ef:86e8:777 with SMTP id
+ cs11-20020a170906dc8b00b006ef86e80777mr11822490ejc.326.1650790244772; 
+ Sun, 24 Apr 2022 01:50:44 -0700 (PDT)
 Received: from localhost.localdomain ([138.199.7.245])
  by smtp.gmail.com with ESMTPSA id
- gy10-20020a170906f24a00b006e894144707sm2435971ejb.53.2022.04.24.01.50.29
+ gy10-20020a170906f24a00b006e894144707sm2435971ejb.53.2022.04.24.01.50.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 Apr 2022 01:50:36 -0700 (PDT)
+ Sun, 24 Apr 2022 01:50:44 -0700 (PDT)
 From: Yassine Oudjana <yassine.oudjana@gmail.com>
 X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
 To: Rob Herring <robh+dt@kernel.org>,
@@ -69,17 +69,17 @@ Cc: Sam Shih <sam.shih@mediatek.com>, Ryder Lee <ryder.lee@kernel.org>,
  linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, Yassine Oudjana <y.oudjana@protonmail.com>,
  Yassine Oudjana <yassine.oudjana@gmail.com>
-Subject: [PATCH v2 2/3] dt-bindings: arm: mediatek: apmixedsys: Convert to DT
+Subject: [PATCH v2 3/3] dt-bindings: arm: mediatek: infracfg: Convert to DT
  schema
-Date: Sun, 24 Apr 2022 12:46:46 +0400
-Message-Id: <20220424084647.76577-3-y.oudjana@protonmail.com>
+Date: Sun, 24 Apr 2022 12:46:47 +0400
+Message-Id: <20220424084647.76577-4-y.oudjana@protonmail.com>
 X-Mailer: git-send-email 2.36.0
 In-Reply-To: <20220424084647.76577-1-y.oudjana@protonmail.com>
 References: <20220424084647.76577-1-y.oudjana@protonmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220424_015038_812040_06384EA9 
-X-CRM114-Status: GOOD (  16.46  )
+X-CRM114-CacheID: sfid-20220424_015047_230977_8E3E4629 
+X-CRM114-Status: GOOD (  16.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,108 +98,114 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-Convert apmixedsys bindings to DT schema format. MT2701, MT7623 and
-MT7629 device trees currently have the syscon compatible without
-it being mentioned in the old DT bindings file which introduces
-dtbs_check errors when converting to DT schema as-is, so
-mediatek,mt2701-apmixedsys and mediatek,mt7629-apmixedsys are placed
-in the last items list with the syscon compatible, and syscon is
-added to the mediatek,mt7623-apmixedsys list.
+Convert infracfg bindings to DT schema format. Not all drivers
+currently implement resets, so #reset-cells is made a required
+property only for those that do. Using power-controller in the
+example node name makes #power-domain-cells required causing
+a dt_binding_check error. To solve this, the node is renamed to
+syscon@10001000.
 
 Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
 ---
- .../arm/mediatek/mediatek,apmixedsys.txt      | 35 -----------
- .../bindings/clock/mediatek,apmixedsys.yaml   | 61 +++++++++++++++++++
- 2 files changed, 61 insertions(+), 35 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
- create mode 100644 Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+ .../arm/mediatek/mediatek,infracfg.txt        | 42 ----------
+ .../arm/mediatek/mediatek,infracfg.yaml       | 81 +++++++++++++++++++
+ 2 files changed, 81 insertions(+), 42 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
 deleted file mode 100644
-index 3fa755866528..000000000000
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+index f66bd720571d..000000000000
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
 +++ /dev/null
-@@ -1,35 +0,0 @@
--Mediatek apmixedsys controller
--==============================
+@@ -1,42 +0,0 @@
+-Mediatek infracfg controller
+-============================
 -
--The Mediatek apmixedsys controller provides the PLLs to the system.
+-The Mediatek infracfg controller provides various clocks and reset
+-outputs to the system.
 -
 -Required Properties:
 -
 -- compatible: Should be one of:
--	- "mediatek,mt2701-apmixedsys"
--	- "mediatek,mt2712-apmixedsys", "syscon"
--	- "mediatek,mt6765-apmixedsys", "syscon"
--	- "mediatek,mt6779-apmixedsys", "syscon"
--	- "mediatek,mt6797-apmixedsys"
--	- "mediatek,mt7622-apmixedsys"
--	- "mediatek,mt7623-apmixedsys", "mediatek,mt2701-apmixedsys"
--	- "mediatek,mt7629-apmixedsys"
--	- "mediatek,mt7986-apmixedsys"
--	- "mediatek,mt8135-apmixedsys"
--	- "mediatek,mt8167-apmixedsys", "syscon"
--	- "mediatek,mt8173-apmixedsys"
--	- "mediatek,mt8183-apmixedsys", "syscon"
--	- "mediatek,mt8516-apmixedsys"
+-	- "mediatek,mt2701-infracfg", "syscon"
+-	- "mediatek,mt2712-infracfg", "syscon"
+-	- "mediatek,mt6765-infracfg", "syscon"
+-	- "mediatek,mt6779-infracfg_ao", "syscon"
+-	- "mediatek,mt6797-infracfg", "syscon"
+-	- "mediatek,mt7622-infracfg", "syscon"
+-	- "mediatek,mt7623-infracfg", "mediatek,mt2701-infracfg", "syscon"
+-	- "mediatek,mt7629-infracfg", "syscon"
+-	- "mediatek,mt7986-infracfg", "syscon"
+-	- "mediatek,mt8135-infracfg", "syscon"
+-	- "mediatek,mt8167-infracfg", "syscon"
+-	- "mediatek,mt8173-infracfg", "syscon"
+-	- "mediatek,mt8183-infracfg", "syscon"
+-	- "mediatek,mt8516-infracfg", "syscon"
 -- #clock-cells: Must be 1
+-- #reset-cells: Must be 1
 -
--The apmixedsys controller uses the common clk binding from
+-The infracfg controller uses the common clk binding from
 -Documentation/devicetree/bindings/clock/clock-bindings.txt
 -The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+-Also it uses the common reset controller binding from
+-Documentation/devicetree/bindings/reset/reset.txt.
+-The available reset outputs are defined in
+-dt-bindings/reset/mt*-resets.h
 -
 -Example:
 -
--apmixedsys: clock-controller@10209000 {
--	compatible = "mediatek,mt8173-apmixedsys";
--	reg = <0 0x10209000 0 0x1000>;
+-infracfg: power-controller@10001000 {
+-	compatible = "mediatek,mt8173-infracfg", "syscon";
+-	reg = <0 0x10001000 0 0x1000>;
 -	#clock-cells = <1>;
+-	#reset-cells = <1>;
 -};
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
 new file mode 100644
-index 000000000000..770546195fb5
+index 000000000000..8681b785ed6d
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
-@@ -0,0 +1,61 @@
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
+@@ -0,0 +1,81 @@
 +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: "http://devicetree.org/schemas/clock/mediatek,apmixedsys.yaml#"
++$id: "http://devicetree.org/schemas/arm/mediatek/mediatek,infracfg.yaml#"
 +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
 +
-+title: MediaTek AP Mixedsys Controller
++title: MediaTek Infrastructure System Configuration Controller
 +
 +maintainers:
-+  - Michael Turquette <mturquette@baylibre.com>
-+  - Stephen Boyd <sboyd@kernel.org>
++  - Matthias Brugger <matthias.bgg@gmail.com>
 +
 +description:
-+  The Mediatek apmixedsys controller provides PLLs to the system.
-+  The clock values can be found in <dt-bindings/clock/mt*-clk.h>.
++  The Mediatek infracfg controller provides various clocks and reset outputs
++  to the system. The clock values can be found in <dt-bindings/clock/mt*-clk.h>,
++  and reset values in <dt-bindings/reset/mt*-reset.h> and
++  <dt-bindings/reset/mt*-resets.h>.
 +
 +properties:
 +  compatible:
 +    oneOf:
-+      - enum:
-+          - mediatek,mt6797-apmixedsys
-+          - mediatek,mt7622-apmixedsys
-+          - mediatek,mt7986-apmixedsys
-+          - mediatek,mt8135-apmixedsys
-+          - mediatek,mt8173-apmixedsys
-+          - mediatek,mt8516-apmixedsys
-+      - items:
-+          - const: mediatek,mt7623-apmixedsys
-+          - const: mediatek,mt2701-apmixedsys
-+          - const: syscon
 +      - items:
 +          - enum:
-+              - mediatek,mt2701-apmixedsys
-+              - mediatek,mt2712-apmixedsys
-+              - mediatek,mt6765-apmixedsys
-+              - mediatek,mt6779-apmixedsys
-+              - mediatek,mt7629-apmixedsys
-+              - mediatek,mt8167-apmixedsys
-+              - mediatek,mt8183-apmixedsys
++              - mediatek,mt2701-infracfg
++              - mediatek,mt2712-infracfg
++              - mediatek,mt6765-infracfg
++              - mediatek,mt6779-infracfg_ao
++              - mediatek,mt6797-infracfg
++              - mediatek,mt7622-infracfg
++              - mediatek,mt7629-infracfg
++              - mediatek,mt7986-infracfg
++              - mediatek,mt8135-infracfg
++              - mediatek,mt8167-infracfg
++              - mediatek,mt8173-infracfg
++              - mediatek,mt8183-infracfg
++              - mediatek,mt8516-infracfg
++          - const: syscon
++      - items:
++          - const: mediatek,mt7623-infracfg
++          - const: mediatek,mt2701-infracfg
 +          - const: syscon
 +
 +  reg:
@@ -208,19 +214,39 @@ index 000000000000..770546195fb5
 +  '#clock-cells':
 +    const: 1
 +
++  '#reset-cells':
++    const: 1
++
 +required:
 +  - compatible
 +  - reg
 +  - '#clock-cells'
 +
++if:
++  properties:
++    compatible:
++      contains:
++        enum:
++          - mediatek,mt2701-infracfg
++          - mediatek,mt2712-infracfg
++          - mediatek,mt7622-infracfg
++          - mediatek,mt7986-infracfg
++          - mediatek,mt8135-infracfg
++          - mediatek,mt8173-infracfg
++          - mediatek,mt8183-infracfg
++then:
++  required:
++    - '#reset-cells'
++
 +additionalProperties: false
 +
 +examples:
 +  - |
-+    apmixedsys: clock-controller@10209000 {
-+        compatible = "mediatek,mt8173-apmixedsys";
-+        reg = <0x10209000 0x1000>;
++    infracfg: clock-controller@10001000 {
++        compatible = "mediatek,mt8173-infracfg", "syscon";
++        reg = <0x10001000 0x1000>;
 +        #clock-cells = <1>;
++        #reset-cells = <1>;
 +    };
 -- 
 2.36.0
