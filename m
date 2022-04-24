@@ -4,72 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E7E2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Apr 2022 02:58:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2131FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Apr 2022 03:26:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oE2/6DxgQ2U6o+PVKk/hFZo4KT1/WqcsjyMQqy0+lqg=; b=lI2Y4BIpw0AteN
-	Pb0iPTa3Azo7ceH6tBT9FdLTOmdENLUuOY+3WD7ExLvhSojWYN+8LeLNEmo59rq4KMtb1v4T2FdXq
-	Kg9ZmNYPle1N4c0BFm5WrBHJuZrSE8Z3g5IrZ7+6Xi0u6na9fYjoMsZK84yoKkJ0n1lM+oyJYctSK
-	GC7gdWZbZFUQuSXUDt/P+Ki37acXV/SDdrDobE0TjN+50ndtgPJcJJS1a5Mbqo1x0nlnNp8ZOCahK
-	N2Fg9oYJmRO/AcohX/gHzfovg0aHrGi010Cb9m+yGAN0nJhjN6RS8N7CjGQImvQ8nQLXmAFi9+Ec5
-	D3DBPHfKtG+E2B2i+eQw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7NQtC8d9p72N8n7KrWP7EKB2qopEb4kElYyRD1T5e7w=; b=UnS+dgP2GVDp1z
+	3oudYuQtdXMnQV3lERRlrSlNkoWnbGfc2iwY1+4Jz0akpG5VnGP4TwOYrKzgJLGoQrDeOUgY8jSqo
+	r5xP+goKm2Hb+WTAympo93rrVcUsRSO5/M4YtIaXt3BreJXSgBabbACGCaON91NI5uGMTsdZMFeHp
+	DSTIeclER8hkL4WuxPzB7rv17/n29f5/lrf4rjZbuNeovhq5viBV3nMF7zJD+Qdw+n3s+5nD48eCZ
+	uQqvN7qZHoXiEYp4a7Vlv4gy0r6NgRRaeUwb11GyvLfQYT3a7QFgxGEcAz0inCp0ZP1xWhn7tcknC
+	qrNUdVMXqbDtMZj7FnBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1niSRz-005cAb-HN; Sun, 24 Apr 2022 02:58:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1niSt6-005eFj-EW; Sun, 24 Apr 2022 03:26:17 +0000
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1niSRm-005c75-Qv; Sun, 24 Apr 2022 02:58:04 +0000
-X-UUID: 8b3c4325a1c5415ba90e9306308ad9db-20220423
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:69fcc72c-0a3f-4a50-b011-bdece5a1666b, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:452ab9f0-da02-41b4-b6df-58f4ccd36682,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 8b3c4325a1c5415ba90e9306308ad9db-20220423
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <zhiyong.tao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 328007817; Sat, 23 Apr 2022 19:57:58 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 23 Apr 2022 19:57:56 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sun, 24 Apr 2022 10:57:42 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sun, 24 Apr 2022 10:57:41 +0800
-From: Zhiyong Tao <zhiyong.tao@mediatek.com>
-To: <lee.jones@linaro.org>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>,
- <lgirdwood@gmail.com>, <broonie@kernel.org>, <eddie.huang@mediatek.com>,
- <a.zummo@towertech.it>, <alexandre.belloni@bootlin.com>, <fshao@chromium.org>
-CC: <srv_heupstream@mediatek.com>, <hui.liu@mediatek.com>,
- <tinghan.shen@mediatek.com>, <zhiyong.tao@mediatek.com>,
- <hsin-hsiung.wang@mediatek.com>, <sean.wang@mediatek.com>,
- <macpaul.lin@mediatek.com>, <wen.su@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-rtc@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v3 1/1] pwrap: mediatek: fix FSM timeout issue
-Date: Sun, 24 Apr 2022 10:57:38 +0800
-Message-ID: <20220424025738.32271-2-zhiyong.tao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220424025738.32271-1-zhiyong.tao@mediatek.com>
-References: <20220424025738.32271-1-zhiyong.tao@mediatek.com>
+ id 1niSsu-005eDY-Vy; Sun, 24 Apr 2022 03:26:06 +0000
+Received: by mail-pf1-x431.google.com with SMTP id bo5so11757745pfb.4;
+ Sat, 23 Apr 2022 20:26:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=6UCURloz2C/UUp8MZeMALDjrLA/KFc0+/kp+RUMTv8A=;
+ b=e7dAhUbHWqmf05a424ZswtbRuWjNN+/xYyMq5h+QxYl4Pjy56rkIT0zIBKYtRZn7+Z
+ t3cLpI6DrZd5jkAPSMf0ij261PrMwzcF66oAjRNekuTjK+Csrbb0OpuWFRY+HZH2hubv
+ bgdUzno7JQ0XvqYW678vHTvJ9iQ1AgrZwP/iBTSb08QaYaiNu1324YZw3pLpGK70fVDz
+ pvOIkxnSXap261IGlPKmDiiVxfJgUPh8QVf/F0D+EIHGeUTESeByXY+DdTodmli94wLg
+ 05cELBcqz5aBYTC+mTii7nMvffQpyvpvhX/oV6I2j8gYG0lKViuCPyvJ8pXFnz0xjDPB
+ pbIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=6UCURloz2C/UUp8MZeMALDjrLA/KFc0+/kp+RUMTv8A=;
+ b=wnQRKEZfw6V7AYJkr2Cgpb5LJ8ixA9HRb9eOIukhS9TPTGskYsztvSTm5fFHhxoDK7
+ XxkOJjP+sj62xW/ey6SioE/czKewiExkSaPsiYcQIYNJIVje3ziLZGVQoZWD+B60mbUv
+ iak7j7wEY3FQdMDC6qOyOWZELhtE+/EOhZul4xSB0YjCR8tDdPH1QPRhaj5NxFTyVo9l
+ yy7Ce7DG5EhTeWon0n8E9vtmAtK/F6vQrvmRiQMJjm5mNXteXKJaBkbZEELtW3A7Xgcz
+ wphWsXrFJlaoSohYYO3f5Z9zg3itjUGxf+59CYAHzejevAHKtnwTpdVN1K7YV/D6Ka1T
+ 88Ig==
+X-Gm-Message-State: AOAM530kxw+BBipGG8ftp5j6iE2NEHg8N089V7Zb1KR94lDc6Jbqloyu
+ aoq2h0C68e+d71/y2iakeAk=
+X-Google-Smtp-Source: ABdhPJyjn3Vf81pjC8G66QDGXMDoAagvOs7RtZY0GfZrvLQRHAUWc6aOH2nuqQzVXk3hrGFLMo14LQ==
+X-Received: by 2002:a63:e146:0:b0:39d:1b00:e475 with SMTP id
+ h6-20020a63e146000000b0039d1b00e475mr10071390pgk.537.1650770763795; 
+ Sat, 23 Apr 2022 20:26:03 -0700 (PDT)
+Received: from guoguo-omen.lan ([222.201.153.219])
+ by smtp.gmail.com with ESMTPSA id
+ r76-20020a632b4f000000b003820643e1c2sm5790724pgr.59.2022.04.23.20.25.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 23 Apr 2022 20:26:02 -0700 (PDT)
+From: Chuanhong Guo <gch981213@gmail.com>
+To: linux-spi@vger.kernel.org
+Cc: Chuanhong Guo <gch981213@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Roger Quadros <rogerq@kernel.org>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Cai Huoqing <cai.huoqing@linux.dev>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Colin Ian King <colin.king@intel.com>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ Paul Cercueil <paul@crapouillou.net>, Pratyush Yadav <p.yadav@ti.com>,
+ Yu Kuai <yukuai3@huawei.com>,
+ devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE
+ BINDINGS), 
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+ linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support), 
+ linux-kernel@vger.kernel.org (open list),
+ linux-mtd@lists.infradead.org (open list:NAND FLASH SUBSYSTEM)
+Subject: [PATCH v6 0/5] spi: add support for Mediatek SPI-NAND controller
+Date: Sun, 24 Apr 2022 11:25:22 +0800
+Message-Id: <20220424032527.673605-1-gch981213@gmail.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220423_195802_908971_5CF01CEF 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20220423_202605_097259_398144AD 
+X-CRM114-Status: GOOD (  11.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,52 +103,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Zhiyong.Tao" <zhiyong.tao@mediatek.com>
+Mediatek has an extended version of their NAND Flash Interface which
+has a SPI-NAND mode. In this mode, the controller can perform 1-bit
+spi-mem ops for up-to 0xa0 bytes and typical SPI-NAND single, dual
+and quad IO page cache ops with 2-byte address. Additionally, the
+page cache ops can be performed with ECC and auto data formatting
+using the ECC engine of the controller.
 
-Fix pwrap FSM timeout issue which leads the system crash on GFX VSRAM
-power on.
-Add a usleep delay to avoid busy read for the H/W status.
-For avoiding the system behavior(ex. disable interrupt in suspend/resume
-flow, schedule block task)cause if (time_after()) be turn first,
-we change it after sleep delay.
-Fixes: 1f022d84bd19 ("soc: mediatek: Add PMIC wrapper for MT8135 and
-MT8173 SoCs")
+This patchset implements support of this mode as a separated SPI-MEM
+driver with pipelined ECC engine.
 
-Signed-off-by: Zhiyong.Tao <zhiyong.tao@mediatek.com>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+Changes since v1:
+ add a blank line between properties in dt binding doc
+ rename ecc-engine to nand-ecc-engine for the generic properties
+ fix warnings/errors from the CI
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 952bc554f443..ac7139a67e87 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -12,6 +12,7 @@
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
-+#include <linux/delay.h>
- 
- #define PWRAP_MT8135_BRIDGE_IORD_ARB_EN		0x4
- #define PWRAP_MT8135_BRIDGE_WACS3_EN		0x10
-@@ -1197,10 +1198,13 @@ static int pwrap_wait_for_state(struct pmic_wrapper *wrp,
- 	timeout = jiffies + usecs_to_jiffies(10000);
- 
- 	do {
--		if (time_after(jiffies, timeout))
--			return fp(wrp) ? 0 : -ETIMEDOUT;
- 		if (fp(wrp))
- 			return 0;
-+
-+		usleep_range(10, 11);
-+
-+		if (time_after(jiffies, timeout))
-+			return fp(wrp) ? 0 : -ETIMEDOUT;
- 	} while (1);
- }
- 
+Changes since v2:
+ use streamed DMA api to avoid an extra memory copy during read
+ make ECC engine config a per-nand context
+ take user-requested ECC strength into account
+
+Change since v3:
+ fix a missed ecc-engine rename in doc from v1
+
+Changes since v4:
+ fix typo: piplined -> pipelined
+ fix missing OOB write in snfi driver
+ print page format with dev_dbg instead
+ replace uint*_t copied from vendor driver with u*
+
+Changes since v5:
+ add missing nfi mode register configuration in probe
+ fix an off-by-one bug in mtk_snand_mac_io
+
+Chuanhong Guo (5):
+  mtd: nand: make mtk_ecc.c a separated module
+  spi: add driver for MTK SPI NAND Flash Interface
+  mtd: nand: mtk-ecc: also parse nand-ecc-engine if available
+  spi: dt-bindings: add binding doc for spi-mtk-snfi
+  arm64: dts: mediatek: add mtk-snfi for mt7622
+
+ .../bindings/spi/mediatek,spi-mtk-snfi.yaml   |   88 +
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi      |   12 +
+ drivers/mtd/nand/Kconfig                      |    7 +
+ drivers/mtd/nand/Makefile                     |    1 +
+ drivers/mtd/nand/{raw/mtk_ecc.c => ecc-mtk.c} |    8 +-
+ drivers/mtd/nand/raw/Kconfig                  |    1 +
+ drivers/mtd/nand/raw/Makefile                 |    2 +-
+ drivers/mtd/nand/raw/mtk_nand.c               |    2 +-
+ drivers/spi/Kconfig                           |   10 +
+ drivers/spi/Makefile                          |    1 +
+ drivers/spi/spi-mtk-snfi.c                    | 1470 +++++++++++++++++
+ .../linux/mtd/nand-ecc-mtk.h                  |    0
+ 12 files changed, 1597 insertions(+), 5 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
+ rename drivers/mtd/nand/{raw/mtk_ecc.c => ecc-mtk.c} (98%)
+ create mode 100644 drivers/spi/spi-mtk-snfi.c
+ rename drivers/mtd/nand/raw/mtk_ecc.h => include/linux/mtd/nand-ecc-mtk.h (100%)
+
 -- 
-2.18.0
+2.35.1
 
 
 _______________________________________________
