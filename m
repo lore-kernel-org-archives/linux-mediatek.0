@@ -4,91 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72482C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Apr 2022 03:29:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20285C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Apr 2022 08:47:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H/f4z31n7DKLkF1sk9JEUYHf9kJazl5D6HqN6Lt1Igk=; b=Gw7DAjlbsooyVQ
-	RhNPEw166Ojxdj500LRl6cBZhUSUAvVPm9/lpa/YbiagGo9wULSApIhlr/U8vIsnvr/N0+HaNfA6N
-	AJR76o5++sphtRlkHNrcRuQjBYe7MjVPNs61/8JAs36JstIz2aNWDPB+0h+G5m5QTLiHA5AhBfTdH
-	A8m7vSfRQDlMh1/AFUDmzhvYeAAGofCiPKn6hI0DJJZ4pRBkYPnqgyaMb0/ClDi9Ye9h0u2wKB+AD
-	zL0myBj5vWaguERa0CEkXaCv09LXY7ybK3I3gTMzcEtnwtEbfyCw8jr2V1z9Tm/D1PTlnVySzp00C
-	cGalPvlNXK89WJLmY6yA==;
+	List-Owner; bh=0l+MH9SjObl9P8eUxAAE+RRqQO0PI7d0lHZT8r9P86Y=; b=3D4hbKMVIP0YLa
+	j0sNQiYPnGFP3INWP5zsp3kpVv4s1nO8DSZRFzrd97OcjsciN9ZeiX1Em2M3a/3acmRR6LEgTSLL9
+	Oljt6XtuGCg6RI+bLnLzcWDrZ8GG2J2IOFzu/hlM5MAs/1hOlQF133Vc6/rZgUJNRFNyrjfFiaKWg
+	EA0AFQtcsmunWWWd/MfGLnBaBkCw953QP0UL/mIUUulMFL1oR+tvdLuOP6gYjI81ghP7iour48422
+	ODkmnnWiJtGOuR29Xbx5cJXt0hlPB4xU+QddBtKWDkyb92LnTO2F16cVVBi+xov6Zgqd4+2ifQvnk
+	SUX2z6xnMottmjv5wvDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1niSvu-005fm9-Sr; Sun, 24 Apr 2022 03:29:10 +0000
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+	id 1niXuH-0069f5-2d; Sun, 24 Apr 2022 08:47:49 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1niStR-005eMd-BD; Sun, 24 Apr 2022 03:26:38 +0000
-Received: by mail-pf1-x42e.google.com with SMTP id j17so11748103pfi.9;
- Sat, 23 Apr 2022 20:26:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=dTSKZRhjg25O5C1jlBW1LRl5IUhwoxhhyCVs3jC3lXs=;
- b=NQEwgIsyvQM+8c91zHJp/VLeFL09cmvrN/vlUyahcrDgfjqF0SOWuHfyKAebhXKaGB
- 8CDfEF/W//rKPtjwmgE/i1SsC8KrAP0TsaHOjEGv/YFAhMkXwQkEcxo7FAaj51MDJciG
- C+BZE/k+XF1IPrsGNVcTf0u0VgX9jmXoYj7RMJ8gg7I1HtnT+C3y5pO/5gQbaWYWxr4u
- Mv+yHTv0SJwqegA4QhJW9D6NITCZiLRCumAsqrYAn7mFQnBOOXBd5pA69m4NV7ItlNPt
- AKTeCQ0KuwivsKU7Sj06o2fF5omHx5+c/CwcDOh/bqTgnjst0d1r6HB5Mz6G/roFBqXn
- 0kiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=dTSKZRhjg25O5C1jlBW1LRl5IUhwoxhhyCVs3jC3lXs=;
- b=Vl4cV/yjNez3Tnrqn9PMVcBLUvF48QT4TRVg4CiwYblVmJQ0G8mwRrHYwMcfVbvDdl
- dO7UyHQ528zHy7XW1rl7GfLxwool/FXmawuWp1h22xevbHDutfWV3tgO+U0eQcyR2uES
- gUEhrMKz03A0yId9wvY2YbqdlC67Wsr0lSxgo4R1sZydnb0h6Ri/Wxahm82khu4jxa8v
- ol6CPocpJGc47A+vaxrPGXqhjMiMI9FjKm528xjlQdadpXZntQ4GXauo3KjbLNzJbCCt
- qI4ktvx1/zB63R/4fyYwfL1+2EDlLVKIV+9pkUj1dyN/z0DfBJSfdJlq8/Hysa4Y+2G4
- uVUA==
-X-Gm-Message-State: AOAM53326fVZY2F7i06ZfIpijNsJm2A0blert/zFYWF8JAAoS5GHmLLH
- TwLFccaT6VdUGkSRqwpHdxQ=
-X-Google-Smtp-Source: ABdhPJwnCkDmNFP2ub0LUJ5XFBOw3WVX1bkBhe4XHDPGH7PdIKzQy9kZ9No2Rbpa1oUDlTX3Rbfi3g==
-X-Received: by 2002:a63:358c:0:b0:39c:c97a:ee80 with SMTP id
- c134-20020a63358c000000b0039cc97aee80mr9999124pga.7.1650770795849; 
- Sat, 23 Apr 2022 20:26:35 -0700 (PDT)
-Received: from guoguo-omen.lan ([222.201.153.219])
- by smtp.gmail.com with ESMTPSA id
- r76-20020a632b4f000000b003820643e1c2sm5790724pgr.59.2022.04.23.20.26.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 23 Apr 2022 20:26:35 -0700 (PDT)
-From: Chuanhong Guo <gch981213@gmail.com>
-To: linux-spi@vger.kernel.org
-Cc: Chuanhong Guo <gch981213@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Roger Quadros <rogerq@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Cai Huoqing <cai.huoqing@linux.dev>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Colin Ian King <colin.king@intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Paul Cercueil <paul@crapouillou.net>, Pratyush Yadav <p.yadav@ti.com>,
- Yu Kuai <yukuai3@huawei.com>,
- devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE
- BINDINGS), 
- linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
- linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support), 
- linux-kernel@vger.kernel.org (open list),
- linux-mtd@lists.infradead.org (open list:NAND FLASH SUBSYSTEM)
-Subject: [PATCH v6 5/5] arm64: dts: mediatek: add mtk-snfi for mt7622
-Date: Sun, 24 Apr 2022 11:25:27 +0800
-Message-Id: <20220424032527.673605-6-gch981213@gmail.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220424032527.673605-1-gch981213@gmail.com>
-References: <20220424032527.673605-1-gch981213@gmail.com>
+ id 1niXuA-0069e8-9a; Sun, 24 Apr 2022 08:47:46 +0000
+X-UUID: d649c67747a54e6ba907a53c0d9aca88-20220424
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:5985a545-48ca-47e5-bcba-a2c8aaf2a5d5, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:e7b5bcf0-da02-41b4-b6df-58f4ccd36682,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: d649c67747a54e6ba907a53c0d9aca88-20220424
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1482273230; Sun, 24 Apr 2022 01:47:36 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 24 Apr 2022 01:47:34 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Sun, 24 Apr 2022 16:47:33 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sun, 24 Apr 2022 16:47:33 +0800
+Message-ID: <9342e2416a990a9d475fbb7f85513e09a855d949.camel@mediatek.com>
+Subject: Re: [PATCH v20 1/8] soc: mediatek: add mtk-mmsys support for mt8195
+ vdosys0
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>
+CC: CK Hu <ck.hu@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, "Singo
+ Chang" <singo.chang@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Sun, 24 Apr 2022 16:47:33 +0800
+In-Reply-To: <30fcfaf9-ef68-02ee-ba7f-81eb6e1e0b0b@gmail.com>
+References: <20220419094143.9561-1-jason-jh.lin@mediatek.com>
+ <20220419094143.9561-2-jason-jh.lin@mediatek.com>
+ <30fcfaf9-ef68-02ee-ba7f-81eb6e1e0b0b@gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220423_202637_456195_82C7C57C 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20220424_014742_410913_4F9378D9 
+X-CRM114-Status: GOOD (  41.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,44 +87,956 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds a device-tree node for the MTK SPI-NAND Flash Interface
-for MT7622 device tree.
+Hi Matthias,
 
-Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
----
-Changes since v1:
-  1. use the newly introduced nand-ecc-engine instead
-  2. reword commit message
-Change in v2-v6: none
+Thanks for the reviews.
 
- arch/arm64/boot/dts/mediatek/mt7622.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+On Fri, 2022-04-22 at 14:28 +0200, Matthias Brugger wrote:
+> 
+> On 19/04/2022 11:41, jason-jh.lin wrote:
+> > 1. Add mt8195 mmsys compatible for 2 vdosys.
+> > 2. Add io_start into each driver data of mt8195 vdosys.
+> > 3. Add get match data function to identify mmsys by io_start.
+> > 4. Add mt8195 routing table settings of vdosys0.
+> > 
+> > Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> 
+> I'm not very happy with the approach of testing against the reg
+> property to 
+> decide which version of the two mmsys devices we are probing. I think
+> a better 
+> approach would be, if we would have added some mediatek specific ID
+> to the 
+> device tree binding (or use a two compatibles?).
+> 
+We uses two compatibles in previous version(before v16) of this series.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-index f232f8baf4e8..8c2563a3919a 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-@@ -545,6 +545,18 @@ nandc: nfi@1100d000 {
- 		status = "disabled";
- 	};
- 
-+	snfi: spi@1100d000 {
-+		compatible = "mediatek,mt7622-snand";
-+		reg = <0 0x1100d000 0 0x1000>;
-+		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&pericfg CLK_PERI_NFI_PD>, <&pericfg CLK_PERI_SNFI_PD>;
-+		clock-names = "nfi_clk", "pad_clk";
-+		nand-ecc-engine = <&bch>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		status = "disabled";
-+	};
-+
- 	bch: ecc@1100e000 {
- 		compatible = "mediatek,mt7622-ecc";
- 		reg = <0 0x1100e000 0 0x1000>;
--- 
-2.35.1
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220307032859.3275-5-jason-jh.lin@mediatek.com/
+
+Since we received the comment of VPPSYS from Rob:
+
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220117055254.9777-15-roy-cw.yeh@mediatek.com/#24707362
+
+we're trying to figure out the way to use the same compatible for
+different mmsys.
+
+> But as we are at v20 I think it wouldn't be fair to ask for such an
+> instrusive 
+> change. So I'll take this patch now, but maybe we can discuss if we
+> can't do 
+> better in a follow-up patch. Especially I don't think it's a good
+> approach to 
+> check for the io_start in the DRM driver. Couldn't we pass the
+> information about 
+> which of the two mmsys blocks we are calling from through the
+> mediatek-drm 
+> platform device spefic data?
+> 
+But we can't find a suitable property to identify the different mmsys
+directly.
+
+
+In mt8195, 2 pipelines are binding to different mmsys, such as vdosys0
+and vdosys1. Each mmsys uses different clock drivers and different
+power domain.
+
+Since each mmsys has its own clock, I have tried to differentiate
+vdosys0, vdosys1 by the clock names:
+
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220407030409.9664-4-jason-jh.lin@mediatek.com/
+But it seems not robust enough.
+
+Then we refer to this io_start solution, the idea from Angelo:
+
+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/drivers/gpu/drm/msm/dsi/phy/dsi_phy_28nm.c?h=next-20220408#n789
+
+
+I'm not sure if there is another more suitable idea to fit in this
+problem.
+But I believe, if using different compatibles for each mmsys is
+acceptable, then we can keep the original compatible method for
+mediatek-drm and mmsys, and also make these works easier.
+
+If you have any ideas to simplify it, please help us :-)
+Thanks for your reviews again.
+
+Regards,
+Jason-JH.Lin
+
+> I also had a look into the vdosys1 series to better understand why we
+> need to do 
+> things as we do them. But honestly I wasn't able to really understand
+> the 
+> implication of the patch that adds 'multi mmsys support' [1]. For
+> this looks 
+> like a several patches that got squashed into one. But as I don't
+> have to 
+> maintain that it is not my call to complain, the patch has the needed
+> reviews.
+> 
+> For this patch, now applied to v5.18-next/soc
+> 
+> Thanks for all people implicated.
+> 
+> Regards,
+> Matthias
+> 
+> [1] 
+> 
+https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20220416020749.29010-19-nancy.lin@mediatek.com/__;!!CTRNKA9wMg0ARbw!zwfxXhyNG9gAnlrIB72IpyBFsLEm6pzLdRVgomyZ5tLat_Ddf3e3LenemQDeRVLWEf_p$
+>  
+> 
+> > ---
+> > Based on series [1]
+> > 
+> > [1] MediaTek MT8195 display binding
+> > - 
+> > https://urldefense.com/v3/__https://patchwork.ozlabs.org/project/devicetree-bindings/list/?series=295669__;!!CTRNKA9wMg0ARbw!zwfxXhyNG9gAnlrIB72IpyBFsLEm6pzLdRVgomyZ5tLat_Ddf3e3LenemQDeRXN1cxii$
+> >  
+> > ---
+> >   drivers/soc/mediatek/mt8195-mmsys.h    | 370
+> > +++++++++++++++++++++++++
+> >   drivers/soc/mediatek/mtk-mmsys.c       | 152 +++++++++-
+> >   drivers/soc/mediatek/mtk-mmsys.h       |   6 +
+> >   include/linux/soc/mediatek/mtk-mmsys.h |  11 +
+> >   4 files changed, 528 insertions(+), 11 deletions(-)
+> >   create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+> > 
+> > diff --git a/drivers/soc/mediatek/mt8195-mmsys.h
+> > b/drivers/soc/mediatek/mt8195-mmsys.h
+> > new file mode 100644
+> > index 000000000000..13ab0ab64396
+> > --- /dev/null
+> > +++ b/drivers/soc/mediatek/mt8195-mmsys.h
+> > @@ -0,0 +1,370 @@
+> > +/* SPDX-License-Identifier: GPL-2.0-only */
+> > +
+> > +#ifndef __SOC_MEDIATEK_MT8195_MMSYS_H
+> > +#define __SOC_MEDIATEK_MT8195_MMSYS_H
+> > +
+> > +#define MT8195_VDO0_OVL_MOUT_EN					
+> > 0xf14
+> > +#define MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0			
+> > BIT(0)
+> > +#define MT8195_MOUT_DISP_OVL0_TO_DISP_WDMA0			
+> > BIT(1)
+> > +#define MT8195_MOUT_DISP_OVL0_TO_DISP_OVL1			BIT(2)
+> > +#define MT8195_MOUT_DISP_OVL1_TO_DISP_RDMA1			
+> > BIT(4)
+> > +#define MT8195_MOUT_DISP_OVL1_TO_DISP_WDMA1			
+> > BIT(5)
+> > +#define MT8195_MOUT_DISP_OVL1_TO_DISP_OVL0			BIT(6)
+> > +
+> > +#define MT8195_VDO0_SEL_IN					0xf34
+> > +#define MT8195_SEL_IN_VPP_MERGE_FROM_MASK			GENMASK
+> > (1, 0)
+> > +#define MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT		(0 <<
+> > 0)
+> > +#define MT8195_SEL_IN_VPP_MERGE_FROM_DISP_DITHER1		(1 <<
+> > 0)
+> > +#define MT8195_SEL_IN_VPP_MERGE_FROM_VDO1_VIRTUAL0		(2 <<
+> > 0)
+> > +#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_MASK			
+> > GENMASK(4, 4)
+> > +#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0		
+> > (0 << 4)
+> > +#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE		(1 <<
+> > 4)
+> > +#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_MASK			
+> > GENMASK(5, 5)
+> > +#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_DISP_DITHER1		
+> > (0 << 5)
+> > +#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_VPP_MERGE		(1 <<
+> > 5)
+> > +#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_MASK			
+> > GENMASK(8, 8)
+> > +#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_VPP_MERGE		(0 <<
+> > 8)
+> > +#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_DSC_WRAP1_OUT		
+> > (1 << 8)
+> > +#define MT8195_SEL_IN_SINB_VIRTUAL0_FROM_MASK			
+> > GENMASK(9, 9)
+> > +#define MT8195_SEL_IN_SINB_VIRTUAL0_FROM_DSC_WRAP0_OUT		
+> > (0 << 9)
+> > +#define MT8195_SEL_IN_DP_INTF0_FROM_MASK			GENMASK
+> > (13, 12)
+> > +#define MT8195_SEL_IN_DP_INTF0_FROM_DSC_WRAP1_OUT		(0 <<
+> > 0)
+> > +#define MT8195_SEL_IN_DP_INTF0_FROM_VPP_MERGE			
+> > (1 << 12)
+> > +#define MT8195_SEL_IN_DP_INTF0_FROM_VDO1_VIRTUAL0		(2 <<
+> > 12)
+> > +#define MT8195_SEL_IN_DSI0_FROM_MASK				
+> > GENMASK(16, 16)
+> > +#define MT8195_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT			
+> > (0 << 16)
+> > +#define MT8195_SEL_IN_DSI0_FROM_DISP_DITHER0			
+> > (1 << 16)
+> > +#define MT8195_SEL_IN_DSI1_FROM_MASK				
+> > GENMASK(17, 17)
+> > +#define MT8195_SEL_IN_DSI1_FROM_DSC_WRAP1_OUT			
+> > (0 << 17)
+> > +#define MT8195_SEL_IN_DSI1_FROM_VPP_MERGE			(1 <<
+> > 17)
+> > +#define MT8195_SEL_IN_DISP_WDMA1_FROM_MASK			GENMASK
+> > (20, 20)
+> > +#define MT8195_SEL_IN_DISP_WDMA1_FROM_DISP_OVL1			
+> > (0 << 20)
+> > +#define MT8195_SEL_IN_DISP_WDMA1_FROM_VPP_MERGE			
+> > (1 << 20)
+> > +#define MT8195_SEL_IN_DSC_WRAP1_FROM_MASK			GENMASK
+> > (21, 21)
+> > +#define MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN		
+> > (0 << 21)
+> > +#define MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DISP_DITHER1		
+> > (1 << 21)
+> > +#define MT8195_SEL_IN_DISP_WDMA0_FROM_MASK			GENMASK
+> > (22, 22)
+> > +#define MT8195_SEL_IN_DISP_WDMA0_FROM_DISP_OVL0			
+> > (0 << 22)
+> > +
+> > +#define MT8195_VDO0_SEL_OUT					
+> > 0xf38
+> > +#define MT8195_SOUT_DISP_DITHER0_TO_MASK			BIT(0)
+> > +#define MT8195_SOUT_DISP_DITHER0_TO_DSC_WRAP0_IN		(0 <<
+> > 0)
+> > +#define MT8195_SOUT_DISP_DITHER0_TO_DSI0			(1 <<
+> > 0)
+> > +#define MT8195_SOUT_DISP_DITHER1_TO_MASK			GENMASK
+> > (2, 1)
+> > +#define MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_IN		(0 <<
+> > 1)
+> > +#define MT8195_SOUT_DISP_DITHER1_TO_VPP_MERGE			
+> > (1 << 1)
+> > +#define MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_OUT		(2 <<
+> > 1)
+> > +#define MT8195_SOUT_VDO1_VIRTUAL0_TO_MASK			GENMASK
+> > (4, 4)
+> > +#define MT8195_SOUT_VDO1_VIRTUAL0_TO_VPP_MERGE			
+> > (0 << 4)
+> > +#define MT8195_SOUT_VDO1_VIRTUAL0_TO_DP_INTF0			
+> > (1 << 4)
+> > +#define MT8195_SOUT_VPP_MERGE_TO_MASK				
+> > GENMASK(10, 8)
+> > +#define MT8195_SOUT_VPP_MERGE_TO_DSI1				
+> > (0 << 8)
+> > +#define MT8195_SOUT_VPP_MERGE_TO_DP_INTF0			(1 <<
+> > 8)
+> > +#define MT8195_SOUT_VPP_MERGE_TO_SINA_VIRTUAL0			
+> > (2 << 8)
+> > +#define MT8195_SOUT_VPP_MERGE_TO_DISP_WDMA1			
+> > (3 << 8)
+> > +#define MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP0_IN			
+> > (4 << 8)
+> > +#define MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP1_IN_MASK		GENMASK
+> > (11, 11)
+> > +#define MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP1_IN			
+> > (0 << 11)
+> > +#define MT8195_SOUT_DSC_WRAP0_OUT_TO_MASK			GENMASK
+> > (13, 12)
+> > +#define MT8195_SOUT_DSC_WRAP0_OUT_TO_DSI0			(0 <<
+> > 12)
+> > +#define MT8195_SOUT_DSC_WRAP0_OUT_TO_SINB_VIRTUAL0		(1 <<
+> > 12)
+> > +#define MT8195_SOUT_DSC_WRAP0_OUT_TO_VPP_MERGE			
+> > (2 << 12)
+> > +#define MT8195_SOUT_DSC_WRAP1_OUT_TO_MASK			GENMASK
+> > (17, 16)
+> > +#define MT8195_SOUT_DSC_WRAP1_OUT_TO_DSI1			(0 <<
+> > 16)
+> > +#define MT8195_SOUT_DSC_WRAP1_OUT_TO_DP_INTF0			
+> > (1 << 16)
+> > +#define MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0		(2 <<
+> > 16)
+> > +#define MT8195_SOUT_DSC_WRAP1_OUT_TO_VPP_MERGE			
+> > (3 << 16)
+> > +
+> > +static const struct mtk_mmsys_routes mmsys_mt8195_routing_table[]
+> > = {
+> > +	{
+> > +		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
+> > +		MT8195_VDO0_OVL_MOUT_EN,
+> > MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0,
+> > +		MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0
+> > +	}, {
+> > +		DDP_COMPONENT_OVL0, DDP_COMPONENT_WDMA0,
+> > +		MT8195_VDO0_OVL_MOUT_EN,
+> > MT8195_MOUT_DISP_OVL0_TO_DISP_WDMA0,
+> > +		MT8195_MOUT_DISP_OVL0_TO_DISP_WDMA0
+> > +	}, {
+> > +		DDP_COMPONENT_OVL0, DDP_COMPONENT_OVL1,
+> > +		MT8195_VDO0_OVL_MOUT_EN,
+> > MT8195_MOUT_DISP_OVL0_TO_DISP_OVL1,
+> > +		MT8195_MOUT_DISP_OVL0_TO_DISP_OVL1
+> > +	}, {
+> > +		DDP_COMPONENT_OVL1, DDP_COMPONENT_RDMA1,
+> > +		MT8195_VDO0_OVL_MOUT_EN,
+> > MT8195_MOUT_DISP_OVL1_TO_DISP_RDMA1,
+> > +		MT8195_MOUT_DISP_OVL1_TO_DISP_RDMA1
+> > +	}, {
+> > +		DDP_COMPONENT_OVL1, DDP_COMPONENT_WDMA1,
+> > +		MT8195_VDO0_OVL_MOUT_EN,
+> > MT8195_MOUT_DISP_OVL1_TO_DISP_WDMA1,
+> > +		MT8195_MOUT_DISP_OVL1_TO_DISP_WDMA1
+> > +	}, {
+> > +		DDP_COMPONENT_OVL1, DDP_COMPONENT_OVL0,
+> > +		MT8195_VDO0_OVL_MOUT_EN,
+> > MT8195_MOUT_DISP_OVL1_TO_DISP_OVL0,
+> > +		MT8195_MOUT_DISP_OVL1_TO_DISP_OVL0
+> > +	}, {
+> > +		DDP_COMPONENT_DSC0, DDP_COMPONENT_MERGE0,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_VPP_MERGE_FROM_MASK,
+> > +		MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER1, DDP_COMPONENT_MERGE0,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_VPP_MERGE_FROM_MASK,
+> > +		MT8195_SEL_IN_VPP_MERGE_FROM_DISP_DITHER1
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE5, DDP_COMPONENT_MERGE0,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_VPP_MERGE_FROM_MASK,
+> > +		MT8195_SEL_IN_VPP_MERGE_FROM_VDO1_VIRTUAL0
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSC0,
+> > +		MT8195_VDO0_SEL_IN,
+> > MT8195_SEL_IN_DSC_WRAP0_IN_FROM_MASK,
+> > +		MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DSC0,
+> > +		MT8195_VDO0_SEL_IN,
+> > MT8195_SEL_IN_DSC_WRAP0_IN_FROM_MASK,
+> > +		MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DSC1,
+> > +		MT8195_VDO0_SEL_IN,
+> > MT8195_SEL_IN_DSC_WRAP1_IN_FROM_MASK,
+> > +		MT8195_SEL_IN_DSC_WRAP1_IN_FROM_DISP_DITHER1
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DSC1,
+> > +		MT8195_VDO0_SEL_IN,
+> > MT8195_SEL_IN_DSC_WRAP1_IN_FROM_MASK,
+> > +		MT8195_SEL_IN_DSC_WRAP1_IN_FROM_VPP_MERGE
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DP_INTF1,
+> > +		MT8195_VDO0_SEL_IN,
+> > MT8195_SEL_IN_SINA_VIRTUAL0_FROM_MASK,
+> > +		MT8195_SEL_IN_SINA_VIRTUAL0_FROM_VPP_MERGE
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DPI0,
+> > +		MT8195_VDO0_SEL_IN,
+> > MT8195_SEL_IN_SINA_VIRTUAL0_FROM_MASK,
+> > +		MT8195_SEL_IN_SINA_VIRTUAL0_FROM_VPP_MERGE
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DPI1,
+> > +		MT8195_VDO0_SEL_IN,
+> > MT8195_SEL_IN_SINA_VIRTUAL0_FROM_MASK,
+> > +		MT8195_SEL_IN_SINA_VIRTUAL0_FROM_VPP_MERGE
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_DP_INTF1,
+> > +		MT8195_VDO0_SEL_IN,
+> > MT8195_SEL_IN_SINA_VIRTUAL0_FROM_MASK,
+> > +		MT8195_SEL_IN_SINA_VIRTUAL0_FROM_DSC_WRAP1_OUT
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_DPI0,
+> > +		MT8195_VDO0_SEL_IN,
+> > MT8195_SEL_IN_SINA_VIRTUAL0_FROM_MASK,
+> > +		MT8195_SEL_IN_SINA_VIRTUAL0_FROM_DSC_WRAP1_OUT
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_DPI1,
+> > +		MT8195_VDO0_SEL_IN,
+> > MT8195_SEL_IN_SINA_VIRTUAL0_FROM_MASK,
+> > +		MT8195_SEL_IN_SINA_VIRTUAL0_FROM_DSC_WRAP1_OUT
+> > +	}, {
+> > +		DDP_COMPONENT_DSC0, DDP_COMPONENT_DP_INTF1,
+> > +		MT8195_VDO0_SEL_IN,
+> > MT8195_SEL_IN_SINB_VIRTUAL0_FROM_MASK,
+> > +		MT8195_SEL_IN_SINB_VIRTUAL0_FROM_DSC_WRAP0_OUT
+> > +	}, {
+> > +		DDP_COMPONENT_DSC0, DDP_COMPONENT_DPI0,
+> > +		MT8195_VDO0_SEL_IN,
+> > MT8195_SEL_IN_SINB_VIRTUAL0_FROM_MASK,
+> > +		MT8195_SEL_IN_SINB_VIRTUAL0_FROM_DSC_WRAP0_OUT
+> > +	}, {
+> > +		DDP_COMPONENT_DSC0, DDP_COMPONENT_DPI1,
+> > +		MT8195_VDO0_SEL_IN,
+> > MT8195_SEL_IN_SINB_VIRTUAL0_FROM_MASK,
+> > +		MT8195_SEL_IN_SINB_VIRTUAL0_FROM_DSC_WRAP0_OUT
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_DP_INTF0,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DP_INTF0_FROM_MASK,
+> > +		MT8195_SEL_IN_DP_INTF0_FROM_DSC_WRAP1_OUT
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DP_INTF0,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DP_INTF0_FROM_MASK,
+> > +		MT8195_SEL_IN_DP_INTF0_FROM_VPP_MERGE
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE5, DDP_COMPONENT_DP_INTF0,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DP_INTF0_FROM_MASK,
+> > +		MT8195_SEL_IN_DP_INTF0_FROM_VDO1_VIRTUAL0
+> > +	}, {
+> > +		DDP_COMPONENT_DSC0, DDP_COMPONENT_DSI0,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSI0_FROM_MASK,
+> > +		MT8195_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSI0_FROM_MASK,
+> > +		MT8195_SEL_IN_DSI0_FROM_DISP_DITHER0
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_DSI1,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSI1_FROM_MASK,
+> > +		MT8195_SEL_IN_DSI1_FROM_DSC_WRAP1_OUT
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DSI1,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSI1_FROM_MASK,
+> > +		MT8195_SEL_IN_DSI1_FROM_VPP_MERGE
+> > +	}, {
+> > +		DDP_COMPONENT_OVL1, DDP_COMPONENT_WDMA1,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DISP_WDMA1_FROM_MASK,
+> > +		MT8195_SEL_IN_DISP_WDMA1_FROM_DISP_OVL1
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_WDMA1,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DISP_WDMA1_FROM_MASK,
+> > +		MT8195_SEL_IN_DISP_WDMA1_FROM_VPP_MERGE
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_DSI1,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
+> > +		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_DP_INTF0,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
+> > +		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_DP_INTF1,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
+> > +		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_DPI0,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
+> > +		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_DPI1,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
+> > +		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_MERGE0,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
+> > +		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DSI1,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
+> > +		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DISP_DITHER1
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DP_INTF0,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
+> > +		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DISP_DITHER1
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DPI0,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
+> > +		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DISP_DITHER1
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DPI1,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP1_FROM_MASK,
+> > +		MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DISP_DITHER1
+> > +	}, {
+> > +		DDP_COMPONENT_OVL0, DDP_COMPONENT_WDMA0,
+> > +		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DISP_WDMA0_FROM_MASK,
+> > +		MT8195_SEL_IN_DISP_WDMA0_FROM_DISP_OVL0
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSC0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER0_TO_MASK,
+> > +		MT8195_SOUT_DISP_DITHER0_TO_DSC_WRAP0_IN
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER0_TO_MASK,
+> > +		MT8195_SOUT_DISP_DITHER0_TO_DSI0
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DSC1,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER1_TO_MASK,
+> > +		MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_IN
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER1, DDP_COMPONENT_MERGE0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER1_TO_MASK,
+> > +		MT8195_SOUT_DISP_DITHER1_TO_VPP_MERGE
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DSI1,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER1_TO_MASK,
+> > +		MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_OUT
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DP_INTF0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER1_TO_MASK,
+> > +		MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_OUT
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DP_INTF1,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER1_TO_MASK,
+> > +		MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_OUT
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DPI0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER1_TO_MASK,
+> > +		MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_OUT
+> > +	}, {
+> > +		DDP_COMPONENT_DITHER1, DDP_COMPONENT_DPI1,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER1_TO_MASK,
+> > +		MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_OUT
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE5, DDP_COMPONENT_MERGE0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VDO1_VIRTUAL0_TO_MASK,
+> > +		MT8195_SOUT_VDO1_VIRTUAL0_TO_VPP_MERGE
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE5, DDP_COMPONENT_DP_INTF0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VDO1_VIRTUAL0_TO_MASK,
+> > +		MT8195_SOUT_VDO1_VIRTUAL0_TO_DP_INTF0
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DSI1,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_MASK,
+> > +		MT8195_SOUT_VPP_MERGE_TO_DSI1
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DP_INTF0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_MASK,
+> > +		MT8195_SOUT_VPP_MERGE_TO_DP_INTF0
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DP_INTF1,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_MASK,
+> > +		MT8195_SOUT_VPP_MERGE_TO_SINA_VIRTUAL0
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DPI0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_MASK,
+> > +		MT8195_SOUT_VPP_MERGE_TO_SINA_VIRTUAL0
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DPI1,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_MASK,
+> > +		MT8195_SOUT_VPP_MERGE_TO_SINA_VIRTUAL0
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_WDMA1,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_MASK,
+> > +		MT8195_SOUT_VPP_MERGE_TO_DISP_WDMA1
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DSC0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_VPP_MERGE_TO_MASK,
+> > +		MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP0_IN
+> > +	}, {
+> > +		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DSC1,
+> > +		MT8195_VDO0_SEL_OUT,
+> > MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP1_IN_MASK,
+> > +		MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP1_IN
+> > +	}, {
+> > +		DDP_COMPONENT_DSC0, DDP_COMPONENT_DSI0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP0_OUT_TO_MASK,
+> > +		MT8195_SOUT_DSC_WRAP0_OUT_TO_DSI0
+> > +	}, {
+> > +		DDP_COMPONENT_DSC0, DDP_COMPONENT_DP_INTF1,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP0_OUT_TO_MASK,
+> > +		MT8195_SOUT_DSC_WRAP0_OUT_TO_SINB_VIRTUAL0
+> > +	}, {
+> > +		DDP_COMPONENT_DSC0, DDP_COMPONENT_DPI0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP0_OUT_TO_MASK,
+> > +		MT8195_SOUT_DSC_WRAP0_OUT_TO_SINB_VIRTUAL0
+> > +	}, {
+> > +		DDP_COMPONENT_DSC0, DDP_COMPONENT_DPI1,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP0_OUT_TO_MASK,
+> > +		MT8195_SOUT_DSC_WRAP0_OUT_TO_SINB_VIRTUAL0
+> > +	}, {
+> > +		DDP_COMPONENT_DSC0, DDP_COMPONENT_MERGE0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP0_OUT_TO_MASK,
+> > +		MT8195_SOUT_DSC_WRAP0_OUT_TO_VPP_MERGE
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_DSI1,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP1_OUT_TO_MASK,
+> > +		MT8195_SOUT_DSC_WRAP1_OUT_TO_DSI1
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_DP_INTF0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP1_OUT_TO_MASK,
+> > +		MT8195_SOUT_DSC_WRAP1_OUT_TO_DP_INTF0
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_DP_INTF1,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP1_OUT_TO_MASK,
+> > +		MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_DPI0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP1_OUT_TO_MASK,
+> > +		MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_DPI1,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP1_OUT_TO_MASK,
+> > +		MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0
+> > +	}, {
+> > +		DDP_COMPONENT_DSC1, DDP_COMPONENT_MERGE0,
+> > +		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP1_OUT_TO_MASK,
+> > +		MT8195_SOUT_DSC_WRAP1_OUT_TO_VPP_MERGE
+> > +	}
+> > +};
+> > +
+> > +#endif /* __SOC_MEDIATEK_MT8195_MMSYS_H */
+> > diff --git a/drivers/soc/mediatek/mtk-mmsys.c
+> > b/drivers/soc/mediatek/mtk-mmsys.c
+> > index 4fc4c2c9ea20..548efed8dc1c 100644
+> > --- a/drivers/soc/mediatek/mtk-mmsys.c
+> > +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> > @@ -17,6 +17,7 @@
+> >   #include "mt8183-mmsys.h"
+> >   #include "mt8186-mmsys.h"
+> >   #include "mt8192-mmsys.h"
+> > +#include "mt8195-mmsys.h"
+> >   #include "mt8365-mmsys.h"
+> >   
+> >   static const struct mtk_mmsys_driver_data
+> > mt2701_mmsys_driver_data = {
+> > @@ -25,26 +26,61 @@ static const struct mtk_mmsys_driver_data
+> > mt2701_mmsys_driver_data = {
+> >   	.num_routes = ARRAY_SIZE(mmsys_default_routing_table),
+> >   };
+> >   
+> > +static const struct mtk_mmsys_match_data mt2701_mmsys_match_data =
+> > {
+> > +	.num_drv_data = 1,
+> > +	.drv_data = {
+> > +		&mt2701_mmsys_driver_data,
+> > +	},
+> > +};
+> > +
+> >   static const struct mtk_mmsys_driver_data
+> > mt2712_mmsys_driver_data = {
+> >   	.clk_driver = "clk-mt2712-mm",
+> >   	.routes = mmsys_default_routing_table,
+> >   	.num_routes = ARRAY_SIZE(mmsys_default_routing_table),
+> >   };
+> >   
+> > +static const struct mtk_mmsys_match_data mt2712_mmsys_match_data =
+> > {
+> > +	.num_drv_data = 1,
+> > +	.drv_data = {
+> > +		&mt2712_mmsys_driver_data,
+> > +	},
+> > +};
+> > +
+> >   static const struct mtk_mmsys_driver_data
+> > mt6779_mmsys_driver_data = {
+> >   	.clk_driver = "clk-mt6779-mm",
+> >   };
+> >   
+> > +static const struct mtk_mmsys_match_data mt6779_mmsys_match_data =
+> > {
+> > +	.num_drv_data = 1,
+> > +	.drv_data = {
+> > +		&mt6779_mmsys_driver_data,
+> > +	},
+> > +};
+> > +
+> >   static const struct mtk_mmsys_driver_data
+> > mt6797_mmsys_driver_data = {
+> >   	.clk_driver = "clk-mt6797-mm",
+> >   };
+> >   
+> > +static const struct mtk_mmsys_match_data mt6797_mmsys_match_data =
+> > {
+> > +	.num_drv_data = 1,
+> > +	.drv_data = {
+> > +		&mt6797_mmsys_driver_data,
+> > +	},
+> > +};
+> > +
+> >   static const struct mtk_mmsys_driver_data
+> > mt8167_mmsys_driver_data = {
+> >   	.clk_driver = "clk-mt8167-mm",
+> >   	.routes = mt8167_mmsys_routing_table,
+> >   	.num_routes = ARRAY_SIZE(mt8167_mmsys_routing_table),
+> >   };
+> >   
+> > +static const struct mtk_mmsys_match_data mt8167_mmsys_match_data =
+> > {
+> > +	.num_drv_data = 1,
+> > +	.drv_data = {
+> > +		&mt8167_mmsys_driver_data,
+> > +	},
+> > +};
+> > +
+> >   static const struct mtk_mmsys_driver_data
+> > mt8173_mmsys_driver_data = {
+> >   	.clk_driver = "clk-mt8173-mm",
+> >   	.routes = mmsys_default_routing_table,
+> > @@ -52,6 +88,13 @@ static const struct mtk_mmsys_driver_data
+> > mt8173_mmsys_driver_data = {
+> >   	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
+> >   };
+> >   
+> > +static const struct mtk_mmsys_match_data mt8173_mmsys_match_data =
+> > {
+> > +	.num_drv_data = 1,
+> > +	.drv_data = {
+> > +		&mt8173_mmsys_driver_data,
+> > +	},
+> > +};
+> > +
+> >   static const struct mtk_mmsys_driver_data
+> > mt8183_mmsys_driver_data = {
+> >   	.clk_driver = "clk-mt8183-mm",
+> >   	.routes = mmsys_mt8183_routing_table,
+> > @@ -59,6 +102,13 @@ static const struct mtk_mmsys_driver_data
+> > mt8183_mmsys_driver_data = {
+> >   	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
+> >   };
+> >   
+> > +static const struct mtk_mmsys_match_data mt8183_mmsys_match_data =
+> > {
+> > +	.num_drv_data = 1,
+> > +	.drv_data = {
+> > +		&mt8183_mmsys_driver_data,
+> > +	},
+> > +};
+> > +
+> >   static const struct mtk_mmsys_driver_data
+> > mt8186_mmsys_driver_data = {
+> >   	.clk_driver = "clk-mt8186-mm",
+> >   	.routes = mmsys_mt8186_routing_table,
+> > @@ -66,25 +116,79 @@ static const struct mtk_mmsys_driver_data
+> > mt8186_mmsys_driver_data = {
+> >   	.sw0_rst_offset = MT8186_MMSYS_SW0_RST_B,
+> >   };
+> >   
+> > +static const struct mtk_mmsys_match_data mt8186_mmsys_match_data =
+> > {
+> > +	.num_drv_data = 1,
+> > +	.drv_data = {
+> > +		&mt8186_mmsys_driver_data,
+> > +	},
+> > +};
+> > +
+> >   static const struct mtk_mmsys_driver_data
+> > mt8192_mmsys_driver_data = {
+> >   	.clk_driver = "clk-mt8192-mm",
+> >   	.routes = mmsys_mt8192_routing_table,
+> >   	.num_routes = ARRAY_SIZE(mmsys_mt8192_routing_table),
+> >   };
+> >   
+> > +static const struct mtk_mmsys_match_data mt8192_mmsys_match_data =
+> > {
+> > +	.num_drv_data = 1,
+> > +	.drv_data = {
+> > +		&mt8192_mmsys_driver_data,
+> > +	},
+> > +};
+> > +
+> > +static const struct mtk_mmsys_driver_data
+> > mt8195_vdosys0_driver_data = {
+> > +	.io_start = 0x1c01a000,
+> > +	.clk_driver = "clk-mt8195-vdo0",
+> > +	.routes = mmsys_mt8195_routing_table,
+> > +	.num_routes = ARRAY_SIZE(mmsys_mt8195_routing_table),
+> > +};
+> > +
+> > +static const struct mtk_mmsys_driver_data
+> > mt8195_vdosys1_driver_data = {
+> > +	.io_start = 0x1c100000,
+> > +	.clk_driver = "clk-mt8195-vdo1",
+> > +};
+> > +
+> > +static const struct mtk_mmsys_match_data mt8195_mmsys_match_data =
+> > {
+> > +	.num_drv_data = 2,
+> > +	.drv_data = {
+> > +		&mt8195_vdosys0_driver_data,
+> > +		&mt8195_vdosys1_driver_data,
+> > +	},
+> > +};
+> > +
+> >   static const struct mtk_mmsys_driver_data
+> > mt8365_mmsys_driver_data = {
+> >   	.clk_driver = "clk-mt8365-mm",
+> >   	.routes = mt8365_mmsys_routing_table,
+> >   	.num_routes = ARRAY_SIZE(mt8365_mmsys_routing_table),
+> >   };
+> >   
+> > +static const struct mtk_mmsys_match_data mt8365_mmsys_match_data =
+> > {
+> > +	.num_drv_data = 1,
+> > +	.drv_data = {
+> > +		&mt8365_mmsys_driver_data,
+> > +	},
+> > +};
+> > +
+> >   struct mtk_mmsys {
+> >   	void __iomem *regs;
+> >   	const struct mtk_mmsys_driver_data *data;
+> >   	spinlock_t lock; /* protects mmsys_sw_rst_b reg */
+> >   	struct reset_controller_dev rcdev;
+> > +	phys_addr_t io_start;
+> >   };
+> >   
+> > +static int mtk_mmsys_find_match_drvdata(struct mtk_mmsys *mmsys,
+> > +					const struct
+> > mtk_mmsys_match_data *match)
+> > +{
+> > +	int i;
+> > +
+> > +	for (i = 0; i < match->num_drv_data; i++)
+> > +		if (mmsys->io_start == match->drv_data[i]->io_start)
+> > +			return i;
+> > +
+> > +	return -EINVAL;
+> > +}
+> > +
+> >   void mtk_mmsys_ddp_connect(struct device *dev,
+> >   			   enum mtk_ddp_comp_id cur,
+> >   			   enum mtk_ddp_comp_id next)
+> > @@ -179,7 +283,9 @@ static int mtk_mmsys_probe(struct
+> > platform_device *pdev)
+> >   	struct device *dev = &pdev->dev;
+> >   	struct platform_device *clks;
+> >   	struct platform_device *drm;
+> > +	const struct mtk_mmsys_match_data *match_data;
+> >   	struct mtk_mmsys *mmsys;
+> > +	struct resource *res;
+> >   	int ret;
+> >   
+> >   	mmsys = devm_kzalloc(dev, sizeof(*mmsys), GFP_KERNEL);
+> > @@ -205,7 +311,27 @@ static int mtk_mmsys_probe(struct
+> > platform_device *pdev)
+> >   		return ret;
+> >   	}
+> >   
+> > -	mmsys->data = of_device_get_match_data(&pdev->dev);
+> > +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > +	if (!res) {
+> > +		dev_err(dev, "Couldn't get mmsys resource\n");
+> > +		return -EINVAL;
+> > +	}
+> > +	mmsys->io_start = res->start;
+> > +
+> > +	match_data = of_device_get_match_data(dev);
+> > +	if (match_data->num_drv_data > 1) {
+> > +		/* This SoC has multiple mmsys channels */
+> > +		ret = mtk_mmsys_find_match_drvdata(mmsys, match_data);
+> > +		if (ret < 0) {
+> > +			dev_err(dev, "Couldn't get match driver
+> > data\n");
+> > +			return ret;
+> > +		}
+> > +		mmsys->data = match_data->drv_data[ret];
+> > +	} else {
+> > +		dev_dbg(dev, "Using single mmsys channel\n");
+> > +		mmsys->data = match_data->drv_data[0];
+> > +	}
+> > +
+> >   	platform_set_drvdata(pdev, mmsys);
+> >   
+> >   	clks = platform_device_register_data(&pdev->dev, mmsys->data-
+> > >clk_driver,
+> > @@ -226,43 +352,47 @@ static int mtk_mmsys_probe(struct
+> > platform_device *pdev)
+> >   static const struct of_device_id of_match_mtk_mmsys[] = {
+> >   	{
+> >   		.compatible = "mediatek,mt2701-mmsys",
+> > -		.data = &mt2701_mmsys_driver_data,
+> > +		.data = &mt2701_mmsys_match_data,
+> >   	},
+> >   	{
+> >   		.compatible = "mediatek,mt2712-mmsys",
+> > -		.data = &mt2712_mmsys_driver_data,
+> > +		.data = &mt2712_mmsys_match_data,
+> >   	},
+> >   	{
+> >   		.compatible = "mediatek,mt6779-mmsys",
+> > -		.data = &mt6779_mmsys_driver_data,
+> > +		.data = &mt6779_mmsys_match_data,
+> >   	},
+> >   	{
+> >   		.compatible = "mediatek,mt6797-mmsys",
+> > -		.data = &mt6797_mmsys_driver_data,
+> > +		.data = &mt6797_mmsys_match_data,
+> >   	},
+> >   	{
+> >   		.compatible = "mediatek,mt8167-mmsys",
+> > -		.data = &mt8167_mmsys_driver_data,
+> > +		.data = &mt8167_mmsys_match_data,
+> >   	},
+> >   	{
+> >   		.compatible = "mediatek,mt8173-mmsys",
+> > -		.data = &mt8173_mmsys_driver_data,
+> > +		.data = &mt8173_mmsys_match_data,
+> >   	},
+> >   	{
+> >   		.compatible = "mediatek,mt8183-mmsys",
+> > -		.data = &mt8183_mmsys_driver_data,
+> > +		.data = &mt8183_mmsys_match_data,
+> >   	},
+> >   	{
+> >   		.compatible = "mediatek,mt8186-mmsys",
+> > -		.data = &mt8186_mmsys_driver_data,
+> > +		.data = &mt8186_mmsys_match_data,
+> >   	},
+> >   	{
+> >   		.compatible = "mediatek,mt8192-mmsys",
+> > -		.data = &mt8192_mmsys_driver_data,
+> > +		.data = &mt8192_mmsys_match_data,
+> > +	},
+> > +	{
+> > +		.compatible = "mediatek,mt8195-mmsys",
+> > +		.data = &mt8195_mmsys_match_data,
+> >   	},
+> >   	{
+> >   		.compatible = "mediatek,mt8365-mmsys",
+> > -		.data = &mt8365_mmsys_driver_data,
+> > +		.data = &mt8365_mmsys_match_data,
+> >   	},
+> >   	{ }
+> >   };
+> > diff --git a/drivers/soc/mediatek/mtk-mmsys.h
+> > b/drivers/soc/mediatek/mtk-mmsys.h
+> > index 77f37f8c715b..f01ba206481d 100644
+> > --- a/drivers/soc/mediatek/mtk-mmsys.h
+> > +++ b/drivers/soc/mediatek/mtk-mmsys.h
+> > @@ -87,12 +87,18 @@ struct mtk_mmsys_routes {
+> >   };
+> >   
+> >   struct mtk_mmsys_driver_data {
+> > +	const resource_size_t io_start;
+> >   	const char *clk_driver;
+> >   	const struct mtk_mmsys_routes *routes;
+> >   	const unsigned int num_routes;
+> >   	const u16 sw0_rst_offset;
+> >   };
+> >   
+> > +struct mtk_mmsys_match_data {
+> > +	unsigned short num_drv_data;
+> > +	const struct mtk_mmsys_driver_data *drv_data[];
+> > +};
+> > +
+> >   /*
+> >    * Routes in mt8173, mt2701, mt2712 are different. That means
+> >    * in the same register address, it controls different
+> > input/output
+> > diff --git a/include/linux/soc/mediatek/mtk-mmsys.h
+> > b/include/linux/soc/mediatek/mtk-mmsys.h
+> > index 4bba275e235a..cff5c9adbf46 100644
+> > --- a/include/linux/soc/mediatek/mtk-mmsys.h
+> > +++ b/include/linux/soc/mediatek/mtk-mmsys.h
+> > @@ -17,13 +17,24 @@ enum mtk_ddp_comp_id {
+> >   	DDP_COMPONENT_COLOR0,
+> >   	DDP_COMPONENT_COLOR1,
+> >   	DDP_COMPONENT_DITHER,
+> > +	DDP_COMPONENT_DITHER1,
+> > +	DDP_COMPONENT_DP_INTF0,
+> > +	DDP_COMPONENT_DP_INTF1,
+> >   	DDP_COMPONENT_DPI0,
+> >   	DDP_COMPONENT_DPI1,
+> > +	DDP_COMPONENT_DSC0,
+> > +	DDP_COMPONENT_DSC1,
+> >   	DDP_COMPONENT_DSI0,
+> >   	DDP_COMPONENT_DSI1,
+> >   	DDP_COMPONENT_DSI2,
+> >   	DDP_COMPONENT_DSI3,
+> >   	DDP_COMPONENT_GAMMA,
+> > +	DDP_COMPONENT_MERGE0,
+> > +	DDP_COMPONENT_MERGE1,
+> > +	DDP_COMPONENT_MERGE2,
+> > +	DDP_COMPONENT_MERGE3,
+> > +	DDP_COMPONENT_MERGE4,
+> > +	DDP_COMPONENT_MERGE5,
+> >   	DDP_COMPONENT_OD0,
+> >   	DDP_COMPONENT_OD1,
+> >   	DDP_COMPONENT_OVL0,
+c-- 
+Jason-JH Lin <jason-jh.lin@mediatek.com>
 
 
 _______________________________________________
