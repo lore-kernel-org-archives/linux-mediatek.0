@@ -4,58 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 466F7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Apr 2022 22:04:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C620C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Apr 2022 23:31:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n+tpDRU4QrXvZ3TBbsIfuyIVmvNtoOGt+J8UjPwXRk8=; b=ogMFTTSdg4TFEf
-	Kh2aJ2XVIGkLj60koXr0IzE93luioTe/fsmt4arHYlQ7iuFLHUg9G4ee92r6IXSNyB4X4N6XZGxF6
-	AVLT3TJw28iOEByVuOVcnFPQHk0Z/kRPm0TzYSEsG1xldu0wtsx1q7ewFCtMTKC+b7Lbu9ageMq3K
-	Y6zRQZQwyKkJnWuaiZjihRPdV2iB+QIHx1Bb8ggmbX/7sPqjiGOVQyBRjfGwGl3N8ulTJdMtOQI8n
-	3zAW5lWOAV0a+MBfWLQjLozSDcnH3J2SL8bEgJr/tkObU6kqUdFVwA3TBsE015BEVEsLlFq/BBMtg
-	9ROuU+lQYF0tXyq5eFgQ==;
+	List-Owner; bh=QJpaEqwiXu8n0iRhVUYHISy3kanp6iueHyZ03+C4AyY=; b=u6SwJi4XFHuL01
+	vHVcjvqxfradVxHrHwKGAh2zl/1USYUl14tW1RXWIusEZxnirSWuCyF8hfFAcKvQLDzicwVogk/Vc
+	UrXREtRMFseCGPM5wAEqrne2Gm0XwpHi0a5X0xY+NWIKbjLL9uWDoDWDt8jgxoIJyqff1vnR5kZ1S
+	xfDcRY1CRwwrEdnj+Gyn2rzA/8eH938sOdO8gIER06irTg9XqUajhccgtdDrkYoMb4hsnSq75/n3s
+	IpzJjdTd8xNrSKVcx/8E5i9nKR66SjyHhjBhgEL78YaRuCqS87IDpGizkAsFOKL9FxkTfuhh3dzIL
+	3wTVc4f1+sBV6W2p7xBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nikLN-007S90-8d; Sun, 24 Apr 2022 22:04:37 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1nilhk-007Wys-KA; Sun, 24 Apr 2022 23:31:48 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nikL9-007S3r-QN; Sun, 24 Apr 2022 22:04:25 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
- [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 92131822;
- Mon, 25 Apr 2022 00:04:17 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1650837857;
- bh=r46ShRAcDqpoKdBbLpASO9i+HH59TI1+EaMgiwY8r8A=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=aotRcrCKGhT/CB0CNuD2sRNaiGkTn1q1gCoBfQiJYTEkMxJy/suxTeBrMifBhzKxP
- HW8o7kt74XYaIYdwqJTT1GgxgIGJc9xpEhn8L/fkl7/4iO8fc8MVYX/mJxxL7tbiQU
- Y9dXF/RrzFrcGMq9mZeN9LKXiOY/pFSfwIsh2VxA=
-Date: Mon, 25 Apr 2022 01:04:17 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: James_Lin <Ping-lei.Lin@mediatek.com>
-Cc: nicolas@ndufresne.ca, acourbot@chromium.org, arnd@arndb.de,
- ezequiel@vanguardiasur.com.ar, hverkuil-cisco@xs4all.nl,
- lecopzer.chen@mediatek.com, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- max.yan@mediatek.com, mchehab@kernel.org, ribalda@chromium.org,
- sakari.ailus@linux.intel.com, senozhatsky@chromium.org,
- sherlock.chang@mediatek.com, tm.wu@mediatek.com
-Subject: Re: [PATCH v3] media: usb: uvc: Add UVC_GUID_FORMAT_H265
-Message-ID: <YmXJYUvJMGCXb9kt@pendragon.ideasonboard.com>
-References: <4b6b65e72b3f3cd74af5a3f0069838c86a6725e9.camel@ndufresne.ca>
- <20220421092354.16774-1-Ping-lei.Lin@mediatek.com>
+ id 1nilhB-007WwL-LF; Sun, 24 Apr 2022 23:31:16 +0000
+X-UUID: 987afddb421647619a5ef3ce6148eb84-20220424
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:66e98fcc-1e04-4a35-bd1f-a1cc7895891f, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:fe19efef-06b0-4305-bfbf-554bfc9d151a,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:-5,EDM:-3,File:nil,QS:0,BEC:ni
+ l
+X-UUID: 987afddb421647619a5ef3ce6148eb84-20220424
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 764802031; Sun, 24 Apr 2022 16:31:07 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 24 Apr 2022 16:28:47 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 25 Apr 2022 07:28:45 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 25 Apr 2022 07:28:45 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <lkp@intel.com>
+CC: <angelogioacchino.delregno@collabora.com>, <hverkuil@xs4all.nl>,
+ <iommu@lists.linux-foundation.org>, <joro@8bytes.org>,
+ <kbuild-all@lists.01.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <llvm@lists.linux.dev>,
+ <matthias.bgg@gmail.com>, <mchehab@kernel.org>, <miles.chen@mediatek.com>,
+ <will@kernel.org>, <yong.wu@mediatek.com>
+Subject: Re: [PATCH] iommu/mediatek: fix NULL pointer dereference when
+ printing dev_name
+Date: Mon, 25 Apr 2022 07:28:45 +0800
+Message-ID: <20220424232845.25277-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <202204231446.IYKdZ674-lkp@intel.com>
+References: <202204231446.IYKdZ674-lkp@intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220421092354.16774-1-Ping-lei.Lin@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220424_150424_032237_5B0E8BD0 
-X-CRM114-Status: GOOD (  35.12  )
+X-CRM114-CacheID: sfid-20220424_163113_727717_900881A8 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,86 +81,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgSmFtZXMsCgpPbiBUaHUsIEFwciAyMSwgMjAyMiBhdCAwNToyMzo1NFBNICswODAwLCBKYW1l
-c19MaW4gd3JvdGU6Cj4gSGkgQWxsLAo+IAo+IERvIEkgbmVlZCB0byBhZGQgdGhlIGNvbW1lbnQg
-Cj4gInNvbWUgY2FtZXJhcyByZXByZXNlbnQgaGV2YyBhcyBoMjY1Igo+IGF0IC9kcml2ZXJzL21l
-ZGlhL3VzYi91dmMvdXZjX2RyaXZlci5jID8KPiBBbHNvLCBpcyB0aGVyZSBhbnl0aGluZyBlbHNl
-IHRoYXQgbmVlZHMgdG8gYmUgbW9kaWZpZWQ/Cj4gCj4gT3IgY2FuIGl0IG1vdmUgdG8gcXVldWUg
-b24gbmV4dCBtZXJnZWQgd2luZG93Pwo+IHRoYW5rcyBmb3IgeW91ciByZXBseQoKSSd2ZSBxdWV1
-ZWQgdGhlIHBhdGNoIGluIG15IHRyZWUgYW5kIHdpbGwgc2VuZCBhIHB1bGwgcmVxdWVzdC4gSSBk
-b24ndAp0aGluayB3ZSBuZWVkIGFuIGFkZGl0aW9uYWwgY29tbWVudCwgSC4yNjUgYW5kIEhFVkMg
-YmVpbmcgdXNlZAppbnRlcmNoYW5nZWFibHkgaXNuJ3Qgc3BlY2lmaWMgdG8gVVZDLCBhbmQgaWYg
-c29tZW9uZSBnZXRzIHB1enpsZWQgYnkKdGhpcyBpbiB0aGUgdXZjdmlkZW8gZHJpdmVyLCB0aGVy
-ZSdzIGFsd2F5cyB0aGUgZ2l0IGhpc3RvcnkuCgo+IE9uIFdFRCwgMjAgQXByIDIwMjIgYXQgMDE6
-MzcsIE5pY29sYXMgRHVmcmVzbmUgd3JvdGU6Cj4gPiBMZSBtYXJkaSAxOSBhdnJpbCAyMDIyIMOg
-IDE0OjE4ICswMjAwLCBSaWNhcmRvIFJpYmFsZGEgYSDDqWNyaXQgOgo+ID4gPiBPbiBUdWUsIDE5
-IEFwciAyMDIyIGF0IDE0OjE3LCBMYXVyZW50IFBpbmNoYXJ0IHdyb3RlOgo+ID4gPiA+IE9uIFR1
-ZSwgQXByIDE5LCAyMDIyIGF0IDAxOjQ2OjE1UE0gKzAyMDAsIFJpY2FyZG8gUmliYWxkYSB3cm90
-ZToKPiA+ID4gPiA+IE9uIE1vbiwgMTggQXByIDIwMjIgYXQgMTE6MDcsIEphbWVzX0xpbiA8UGlu
-Zy1sZWkuTGluQG1lZGlhdGVrLmNvbT4gd3JvdGU6Cj4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiBU
-aGlzIHBhdGNoIGFpbXMgdG8gYWRkIFVWQ19HVUlEX0ZPUk1BVF9IMjY1IEhpZ2ggRWZmaWNpZW5j
-eSAKPiA+ID4gPiA+ID4gVmlkZW8gQ29kaW5nIChIRVZDKSwgYWxzbyBrbm93biBhcyBILjI2NSBh
-bmQgTVBFRy1IIFBhcnQgMi4KPiA+ID4gPiA+ID4gVGhleSBkZXNjcmliZSB0aGUgc2FtZSB2aWRl
-byBlbmNvZGluZyBtZXRob2QuCj4gPiA+ID4gPiA+IFNvIGZvciBoYW5kbGluZyB0aGVpciBiZWhh
-dmlvciBpcyB0aGUgc2FtZS4KPiA+ID4gPiA+ID4gSG93ZXZlciwgd2hlbiBleHRlcm5hbCBjYW1l
-cmEgZGV2aWNlIGRlc2NyaWJlcyB0aGlzIGVuY29kaW5nIAo+ID4gPiA+ID4gPiBtZXRob2QsIHNv
-bWUgdXNlIGhldmMsIHNvbWUgdXNlIGgyNjUuCj4gPiA+ID4gPiA+IFRoZXJlIGlzIG5vIHVuaWZv
-cm0gc3BlY2lmaWNhdGlvbiB0byBkZXNjcmliZSB0aGlzIGVuY29kaW5nIG1ldGhvZC4KPiA+ID4g
-PiA+ID4gU28gaWYgYW4gZXh0ZXJuYWwgY2FtZXJhIGRldmljZSB1c2UgaDI2NSB0byBkZXNjcmli
-ZSB0aGlzIAo+ID4gPiA+ID4gPiBlbmNvZGluZyBtZXRob2QsIGRyaXZlciB3aWxsIG5vdCByZWNv
-Z25pemUgaXQuCj4gPiA+ID4gPiA+IFRoZXJlZm9yZSwgdGhpcyBwYXRjaCBpcyB0byBlbmFibGUg
-ZHJpdmVyIHRvIHJlYWQgSEVWQy9IMjY1IGFuZCAKPiA+ID4gPiA+ID4gY29udmVydCBpdCB0byBW
-NEwyX1BJWF9GTVRfSEVWQy4KPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+IFNpZ25lZC1vZmYtYnk6
-IEphbWVzX0xpbiA8UGluZy1sZWkuTGluQG1lZGlhdGVrLmNvbT4KPiA+ID4gPiA+IAo+ID4gPiA+
-ID4gUmV2aWV3ZWQtYnk6IFJpY2FyZG8gUmliYWxkYSA8cmliYWxkYUBjaHJvbWl1bS5vcmc+Cj4g
-PiA+ID4gPiA+IC0tLQo+ID4gPiA+ID4gPiAgZHJpdmVycy9tZWRpYS91c2IvdXZjL3V2Y19kcml2
-ZXIuYyB8IDUgKysrKysKPiA+ID4gPiA+ID4gIGRyaXZlcnMvbWVkaWEvdXNiL3V2Yy91dmN2aWRl
-by5oICAgfCAzICsrKwo+ID4gPiA+ID4gPiAgMiBmaWxlcyBjaGFuZ2VkLCA4IGluc2VydGlvbnMo
-KykKPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3Vz
-Yi91dmMvdXZjX2RyaXZlci5jIAo+ID4gPiA+ID4gPiBiL2RyaXZlcnMvbWVkaWEvdXNiL3V2Yy91
-dmNfZHJpdmVyLmMKPiA+ID4gPiA+ID4gaW5kZXggZGRhMGYwYWE3OGI4Li5lNDM3ZTlmOTU4OTAg
-MTAwNjQ0Cj4gPiA+ID4gPiA+IC0tLSBhL2RyaXZlcnMvbWVkaWEvdXNiL3V2Yy91dmNfZHJpdmVy
-LmMKPiA+ID4gPiA+ID4gKysrIGIvZHJpdmVycy9tZWRpYS91c2IvdXZjL3V2Y19kcml2ZXIuYwo+
-ID4gPiA+ID4gPiBAQCAtMTU0LDYgKzE1NCwxMSBAQCBzdGF0aWMgc3RydWN0IHV2Y19mb3JtYXRf
-ZGVzYyB1dmNfZm10c1tdID0gewo+ID4gPiA+ID4gPiAgICAgICAgICAgICAgICAgLmd1aWQgICAg
-ICAgICAgID0gVVZDX0dVSURfRk9STUFUX0gyNjQsCj4gPiA+ID4gPiA+ICAgICAgICAgICAgICAg
-ICAuZmNjICAgICAgICAgICAgPSBWNEwyX1BJWF9GTVRfSDI2NCwKPiA+ID4gPiA+ID4gICAgICAg
-ICB9LAo+ID4gPiA+ID4gCj4gPiA+ID4gPiBNYXliZSBJIHdvdWxkIGFkZCBhIGNvbW1lbnQgaGVy
-ZSBzYXlpbmcgdGhhdCBzb21lIGNhbWVyYXMgCj4gPiA+ID4gPiByZXByZXNlbnQgaGV2YyBhcyBo
-MjY1Lgo+ID4gPiA+IAo+ID4gPiA+IEkgd2lzaCB0aGVyZSB3b3VsZCBiZSBhIDRDQyBhbmQgR1VJ
-RCBzdGFuZGFyZCB3aXRoIGEgY2VudHJhbGl6ZWQgCj4gPiA+ID4gcmVnaXN0cnkuLi4KPiA+ID4g
-Cj4gPiA+IFRob3VnaHQgdGhhdCB3YXMgdGhlIGtlcm5lbCBjb2RlYmFzZSA6KQo+ID4gCj4gPiBZ
-b3UnbGwgZmluZCBtdWx0aXBsZSBmb3VyY2MgZm9yIHRoZSBzYW1lIHRoaW5nIGluIHRoZSBsaW51
-eCBrZXJuZWwgOy1QCj4gPiAKPiA+ID4gPiBSZXZpZXdlZC1ieTogTGF1cmVudCBQaW5jaGFydCA8
-bGF1cmVudC5waW5jaGFydEBpZGVhc29uYm9hcmQuY29tPgo+ID4gPiA+IAo+ID4gPiA+ID4gPiAr
-ICAgICAgIHsKPiA+ID4gPiA+ID4gKyAgICAgICAgICAgICAgIC5uYW1lICAgICAgICAgICA9ICJI
-LjI2NSIsCj4gPiA+ID4gPiA+ICsgICAgICAgICAgICAgICAuZ3VpZCAgICAgICAgICAgPSBVVkNf
-R1VJRF9GT1JNQVRfSDI2NSwKPiA+ID4gPiA+ID4gKyAgICAgICAgICAgICAgIC5mY2MgICAgICAg
-ICAgICA9IFY0TDJfUElYX0ZNVF9IRVZDLAo+ID4gPiA+ID4gPiArICAgICAgIH0sCj4gPiA+ID4g
-PiA+ICAgICAgICAgewo+ID4gPiA+ID4gPiAgICAgICAgICAgICAgICAgLm5hbWUgICAgICAgICAg
-ID0gIkdyZXlzY2FsZSA4IEwvUiAoWThJKSIsCj4gPiA+ID4gPiA+ICAgICAgICAgICAgICAgICAu
-Z3VpZCAgICAgICAgICAgPSBVVkNfR1VJRF9GT1JNQVRfWThJLAo+ID4gPiA+ID4gPiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9tZWRpYS91c2IvdXZjL3V2Y3ZpZGVvLmggCj4gPiA+ID4gPiA+IGIvZHJp
-dmVycy9tZWRpYS91c2IvdXZjL3V2Y3ZpZGVvLmgKPiA+ID4gPiA+ID4gaW5kZXggMTQzMjMwYjMy
-NzViLi40MWY0ZDhjMzNmMmEgMTAwNjQ0Cj4gPiA+ID4gPiA+IC0tLSBhL2RyaXZlcnMvbWVkaWEv
-dXNiL3V2Yy91dmN2aWRlby5oCj4gPiA+ID4gPiA+ICsrKyBiL2RyaXZlcnMvbWVkaWEvdXNiL3V2
-Yy91dmN2aWRlby5oCj4gPiA+ID4gPiA+IEBAIC0xMzksNiArMTM5LDkgQEAKPiA+ID4gPiA+ID4g
-ICNkZWZpbmUgVVZDX0dVSURfRk9STUFUX0gyNjQgXAo+ID4gPiA+ID4gPiAgICAgICAgIHsgJ0gn
-LCAgJzInLCAgJzYnLCAgJzQnLCAweDAwLCAweDAwLCAweDEwLCAweDAwLCBcCj4gPiA+ID4gPiA+
-ICAgICAgICAgIDB4ODAsIDB4MDAsIDB4MDAsIDB4YWEsIDB4MDAsIDB4MzgsIDB4OWIsIDB4NzF9
-Cj4gPiA+ID4gPiA+ICsjZGVmaW5lIFVWQ19HVUlEX0ZPUk1BVF9IMjY1IFwKPiA+ID4gPiA+ID4g
-KyAgICAgICB7ICdIJywgICcyJywgICc2JywgICc1JywgMHgwMCwgMHgwMCwgMHgxMCwgMHgwMCwg
-XAo+ID4gPiA+ID4gPiArICAgICAgICAweDgwLCAweDAwLCAweDAwLCAweGFhLCAweDAwLCAweDM4
-LCAweDliLCAweDcxfQo+ID4gPiA+ID4gPiAgI2RlZmluZSBVVkNfR1VJRF9GT1JNQVRfWThJIFwK
-PiA+ID4gPiA+ID4gICAgICAgICB7ICdZJywgICc4JywgICdJJywgICcgJywgMHgwMCwgMHgwMCwg
-MHgxMCwgMHgwMCwgXAo+ID4gPiA+ID4gPiAgICAgICAgICAweDgwLCAweDAwLCAweDAwLCAweGFh
-LCAweDAwLCAweDM4LCAweDliLCAweDcxfQoKLS0gClJlZ2FyZHMsCgpMYXVyZW50IFBpbmNoYXJ0
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1t
-ZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVr
-Cg==
+>Hi Miles,
+>
+>Thank you for the patch! Perhaps something to improve:
+>
+>[auto build test WARNING on joro-iommu/next]
+>[also build test WARNING on v5.18-rc3 next-20220422]
+>[If your patch is applied to the wrong git tree, kindly drop us a note.
+>And when submitting patch, we suggest to use '--base' as documented in
+>https://git-scm.com/docs/git-format-patch]
+>
+>url:    https://github.com/intel-lab-lkp/linux/commits/Miles-Chen/iommu-mediatek-fix-NULL-pointer-dereference-when-printing-dev_name/20220423-070605
+>base:   https://git.kernel.org/pub/scm/linux/kernel/git/joro/iommu.git next
+>config: hexagon-randconfig-r041-20220422 (https://download.01.org/0day-ci/archive/20220423/202204231446.IYKdZ674-lkp@intel.com/config)
+>compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project 5bd87350a5ae429baf8f373cb226a57b62f87280)
+>reproduce (this is a W=1 build):
+>        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>        chmod +x ~/bin/make.cross
+>        # https://github.com/intel-lab-lkp/linux/commit/85771767e503ca60069fe4e6ec2ddb80c7f9bafa
+>        git remote add linux-review https://github.com/intel-lab-lkp/linux
+>        git fetch --no-tags linux-review Miles-Chen/iommu-mediatek-fix-NULL-pointer-dereference-when-printing-dev_name/20220423-070605
+>        git checkout 85771767e503ca60069fe4e6ec2ddb80c7f9bafa
+>        # save the config file
+>        mkdir build_dir && cp config build_dir/.config
+>        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=hexagon SHELL=/bin/bash drivers/iommu/
+>
+>If you fix the issue, kindly add following tag as appropriate
+>Reported-by: kernel test robot <lkp@intel.com>
+>
+>All warnings (new ones prefixed by >>):
+>
+>>> drivers/iommu/mtk_iommu.c:605:6: warning: variable 'larbdev' is uninitialized when used here [-Wuninitialized]
+>           if (larbdev) {
+>               ^~~~~~~
+>   drivers/iommu/mtk_iommu.c:597:24: note: initialize the variable 'larbdev' to silence this warning
+>           struct device *larbdev;
+>                                 ^
+>                                  = NULL
+>   1 warning generated.
+
+Thanks for catching this, I will fix this in next version.
+
+thanks,
+Miles
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
