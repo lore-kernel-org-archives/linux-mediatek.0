@@ -4,82 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A261DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 05:12:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8BE5C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 05:12:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kq+coO4k2TTg2MgXWgiSeZQf8SL7Ih2mByq1r/J+5jI=; b=nATg9IYXEa1yGb
-	03k0SCo2XNlseulbVJ43XP+7iT1dc9tvG65ZE765ZZfnrKmDQY/w3B08VUHkIWuEIO2Pw3L0W6z0f
-	bA9DcAAKOI0yr6EuBTD+wwhGATz6rl1wc94sx7mHL538f74+zqAS7/2boP/HZZokiaz0hFbPQK8PZ
-	EYGkB37yFsrDXTIyemOyOxfRIj9n9+yqHke/snwFwvcsVxQw7+SVC1JAsDtXDHz5etwThKNfzK9VW
-	AA3dRM5KsgOG/UQcRRs/1W6AeGBeAZpqDXqgqgy5xssZmkthL5VIxkA8m0dWLc7HIIak2i8jBqETG
-	8k0MrzDAwVFRFP4Amwug==;
+	List-Owner; bh=dpGfyKcRlrAXzV3nn/5xpaVdBsnizIBC79YD4rGl8H8=; b=HxqRAkd0Zz3Pf0
+	9v++fvSHXj+7cqibxUZaWW8zxu0H2L2mEqUV1S7dmJwoVNc7EKwyxOite4TGtMR5OG58EJ9QaYLwT
+	l+kTjcSn1CJDYxlrvV5BJ8v0+ubrsRjzmhm5Lwdo4laM2bLC84pMH5x/InIQXjHrLBEqJApEo/L6U
+	j+rTJErykJ/f3JR6LBhXH5wR9UyW8vEsYf9pYTLYXekWr+HqAg5/VNfqUYeQ6rOjY8Dn5RnxEte6z
+	AK7CXwJfg/IiLtXcaBIE3v2tAYLN8Eh3D/IpNUMBMjVpYW6i1Wtu6lSx+yIS2uRnnbhxmJ9hroRE8
+	/CY9ioIEOFyAeCJWoY5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nir17-008EQd-Tl; Mon, 25 Apr 2022 05:12:09 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nir1X-008Edp-L1; Mon, 25 Apr 2022 05:12:35 +0000
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nir0o-008EHD-VS; Mon, 25 Apr 2022 05:11:53 +0000
-X-UUID: b45a88c6992e46acbd8cf8267003d7eb-20220424
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:42d100a4-f924-4dfe-96ca-be0aa64c3732, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:c570d0f0-da02-41b4-b6df-58f4ccd36682,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: b45a88c6992e46acbd8cf8267003d7eb-20220424
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1051723211; Sun, 24 Apr 2022 22:11:46 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 24 Apr 2022 22:01:43 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 25 Apr 2022 13:01:42 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 25 Apr 2022 13:01:42 +0800
-Message-ID: <5ec37a01b0b84140a7d171b9a5cff7ad8f9fbe87.camel@mediatek.com>
-Subject: Re: [PATCH V3 12/17] dt-binding: mt8192: Add infra_ao reset bit
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- "mturquette@baylibre.com" <mturquette@baylibre.com>, "sboyd@kernel.org"
- <sboyd@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
-CC: "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>, Chun-Jie Chen
- =?UTF-8?Q?=28=E9=99=B3=E6=B5=9A=E6=A1=80=29?= <Chun-Jie.Chen@mediatek.com>,
- "wenst@chromium.org" <wenst@chromium.org>, Runyang Chen
- =?UTF-8?Q?=28=E9=99=88=E6=B6=A6=E6=B4=8B=29?= <Runyang.Chen@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 25 Apr 2022 13:01:42 +0800
-In-Reply-To: <e5b18654-ce83-44ee-e4c8-4cdfc4ceaa1d@linaro.org>
-References: <20220422060152.13534-1-rex-bc.chen@mediatek.com>
- <20220422060152.13534-13-rex-bc.chen@mediatek.com>
- <e5b18654-ce83-44ee-e4c8-4cdfc4ceaa1d@linaro.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nir1U-008Ec1-WF
+ for linux-mediatek@lists.infradead.org; Mon, 25 Apr 2022 05:12:34 +0000
+Received: by mail-pf1-x435.google.com with SMTP id z30so5859643pfw.6
+ for <linux-mediatek@lists.infradead.org>; Sun, 24 Apr 2022 22:12:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=6+nWr4Y0lknbWn2i7wUGZGpJdQiqZVDrE2sy90jRX2k=;
+ b=TXnE9l6fWX6RBgCxLzk7kJDu38m1Gt9aaNpsNNgU9ILQkJTaVwa+/01ZW5jCf/zhO1
+ 5kmzX/Q6sBx0Q85L0rbArtyCUpQRGsqYnBDPpn8xpYXs8th8ZSHpO63MnEjY/ds7MWaf
+ QqnyzXzICuDDntnHLWdiYr58fUo5i7Cqgl6GY/xAqG2Sz568Q4KuEKSBEsbtg8qdaYEp
+ Ry7cHmRM1GaUy97JxFeyxHG0s8Ur+1jj4hxVon48ACVFOixNnCHML76Sjn3z21lNnAV6
+ IT7DRyM693oRuXOgQULXMJi+QFycj9ko6Hk86E8B4mUR2x9V95K++1qEpK81XfD1VD2I
+ GRBw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=6+nWr4Y0lknbWn2i7wUGZGpJdQiqZVDrE2sy90jRX2k=;
+ b=zzHATFxQ3frr0SGl+pYyk5oanYjGEedktX9nkmpxpY6mMdeoKQLHrNb2eQZalPisC/
+ K6sU2/Njy2HZPCWu+7tad0oE6iOWb0YS011kRFRuWupDg4pI3xuuX9t3KWe4sBnNfNGb
+ V1bq1zQuCYVwcbXE+EDepz+tHv4YyYKcR88oiQ14L7Efc2GCVXXhRI37XBdLs+krjWnx
+ Jf6I06GPBbjwqTqw+aPXsEhQQl3j/QT6HeZ5jPVrGU+ExIoeUYso4vgjUSkXAKanGQLU
+ EJnoSrW5SciTYrtNo7grZcNVUgBa0+w4uka4PePR5JPjWxj/gmHK1Cf5+h8hMTnVg6/m
+ 7fHg==
+X-Gm-Message-State: AOAM531oeh/S2wcqf1t+RzZAu8GvaQZsFG2B5KVCDVt9anuch2JjnZEX
+ sJL76IiDELlc8omQPgxG/zGcBA==
+X-Google-Smtp-Source: ABdhPJxoAdqqZYNLUfEPEATeFhzguNqLrENazm9zPZWZ0M/HzCefiyvBIFHsjvJu5u3knhJllQPxAw==
+X-Received: by 2002:a63:5b53:0:b0:39c:c6b8:d53b with SMTP id
+ l19-20020a635b53000000b0039cc6b8d53bmr13467754pgm.166.1650863552491; 
+ Sun, 24 Apr 2022 22:12:32 -0700 (PDT)
+Received: from localhost ([122.171.250.232]) by smtp.gmail.com with ESMTPSA id
+ j2-20020a17090ae60200b001d96bc27a57sm2575040pjy.54.2022.04.24.22.12.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 24 Apr 2022 22:12:32 -0700 (PDT)
+Date: Mon, 25 Apr 2022 10:42:30 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
+ robh+dt@kernel.org, krzk+dt@kernel.org, matthias.bgg@gmail.com,
+ jia-wei.chang@mediatek.com, roger.lu@mediatek.com,
+ hsinyi@google.com, khilman@baylibre.com, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ "Andrew-sh . Cheng" <andrew-sh.cheng@mediatek.com>
+Subject: Re: [PATCH V4 04/14] cpufreq: mediatek: Record previous target vproc
+ value
+Message-ID: <20220425051230.74gqbqgwi5afmyby@vireshk-i7>
+References: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
+ <20220422075239.16437-5-rex-bc.chen@mediatek.com>
+ <f8f9bfa4-8591-0399-73a9-6e4b7261df07@collabora.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <f8f9bfa4-8591-0399-73a9-6e4b7261df07@collabora.com>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220424_221151_049202_155E85C9 
-X-CRM114-Status: GOOD (  18.47  )
+X-CRM114-CacheID: sfid-20220424_221233_094119_DA23415F 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,77 +98,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 2022-04-23 at 18:28 +0800, Krzysztof Kozlowski wrote:
-> On 22/04/2022 08:01, Rex-BC Chen wrote:
-> > To support reset of infra_ao, add the bit definition for
-> > thermal/PCIe/SVS.
+On 22-04-22, 10:21, AngeloGioacchino Del Regno wrote:
+> Il 22/04/22 09:52, Rex-BC Chen ha scritto:
+> > From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 > > 
+> > We found the buck voltage may not be exactly the same with what we set
+> > because CPU may share the same buck with other module.
+> > Therefore, we need to record the previous desired value instead of reading
+> > it from regulators.
+> > 
+> > Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+> > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 > > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> > ---
-> >  include/dt-bindings/reset/mt8192-resets.h | 10 ++++++++++
-> >  1 file changed, 10 insertions(+)
-> > 
-> > diff --git a/include/dt-bindings/reset/mt8192-resets.h
-> > b/include/dt-bindings/reset/mt8192-resets.h
-> > index be9a7ca245b9..d5f3433175c1 100644
-> > --- a/include/dt-bindings/reset/mt8192-resets.h
-> > +++ b/include/dt-bindings/reset/mt8192-resets.h
-> > @@ -27,4 +27,14 @@
-> >  
-> >  #define MT8192_TOPRGU_SW_RST_NUM				23
-> >  
-> > +/* INFRA RST0 */
-> > +#define MT8192_INFRA_RST0_LVTS_AP_RST				
-> > 0
-> > +/* INFRA RST2 */
-> > +#define MT8192_INFRA_RST2_PCIE_PHY_RST				
-> > 15
-> > +/* INFRA RST3 */
-> > +#define MT8192_INFRA_RST3_PTP_RST				5
-> > +/* INFRA RST4 */
-> > +#define MT8192_INFRA_RST4_LVTS_MCU				12
-> > +#define MT8192_INFRA_RST4_PCIE_TOP				1
 > 
-> These should be the IDs of reset, not some register values/offsets.
-> Therefore it is expected to have them incremented by 1.
-> 
-> 
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Hello Krzysztof,
+Applied. Thanks.
 
-This is define bit.
-
-There is serveral reset set for infra_ao while it's not serial.
-For MT8192, it's 0x120/0x130/0x140/0x150/0x730.
-We are implement #reset-cells = <2>, and we can use this reset drive
-more easier.
-
-For example, in dts, we can define
-infra_ao: syscon {
-	compatible = "mediatek,mt8192-infracfg", "syscon";
- 	reg = <0 0x10001000 0 0x1000>;
- 	#clock-cells = <1>;
-	#reset-cells = <2>;
-};
-
-thermal {
-	...
-	resets = <&infra_ao 0x730 MT8192_INFRA_RST4_LVTS_MCU>;
-	...
-};
-
-If it's acceptabel, I can update all bit difinition from 0 to 15 for
-all reset set.
-
-BRs,
-Rex
-> > +
-> >  #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8192 */
-> 
-> 
-> Best regards,
-> Krzysztof
-
+-- 
+viresh
 
 _______________________________________________
 Linux-mediatek mailing list
