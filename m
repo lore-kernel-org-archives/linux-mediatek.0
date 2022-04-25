@@ -4,55 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38ACDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 10:04:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96881C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 10:27:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u2c/k9ud2SjsyVduSYeaPY0E69l2Ihy/cFV69JkEhHk=; b=x48ZMElntninOa
-	HGrc66u4LzT8hnLCIrgCNkUmbvQFym3S3mEhZ6hmALA+0wLlbDsTzm4XbyS2GzYZK8wrOVEf6b5wz
-	zc4aVeMh7StU+IpCTaVja5gSZ/JPQMHO22PcXYahSwx1UIfAJ3WX4vTgkhBgtyKAxM5reteTowB6M
-	dy40JgHEiOUq226F+Eubqm2C7t1GQWB5zkYgU73naU15Eq2hD6WkZ1K57dtodEg+AEY1BdV4oNixP
-	yqVGJRD8gAbWkJMdB9O/1iGLpue65CCf44VU6Sp7btMAVdk9t1Mct5juvp/jZgEPXdX5ApznFlkSJ
-	l81FWxc31TCfqbjW+2eA==;
+	List-Owner; bh=eFxgWtyGbTFFcCbWy/V5c2bVwgkSNrgOJ26/DOamFLo=; b=HOTAXWGCE05IXC
+	BWU2HTtpB81pBDRUdBdEvopz6vIqqwJe7CWGzbZAaArlnKFLT7mk4f1e+rIVxMPKXrn+mCjMQsYTJ
+	ETyaWvoY5MCKptEiLM3FVbrWPqUKMMn2unGyZTIL7X+Yi9Pcfonn8R/gHEJpuG/7TGMfm0BSoBAWy
+	S+ul1bV6uTeEGfEEnGkUqCQb+gTPLSLeZC6QO5wOOBQxzOVaym+bsQAazQM5I0airl8JNUNQJZQHU
+	oqrhwsl22xyDelIJRrSv+FiWIu97QOVvrJmkb0eDBU9+ObUhhw2xyfzILjva7MqeFUlUjxpR7OAip
+	5d3DeP3FPgsHsA9U2ZOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nivZd-0093rl-66; Mon, 25 Apr 2022 10:04:05 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nivZG-0093j6-Gz; Mon, 25 Apr 2022 10:03:44 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BEAF41FB;
- Mon, 25 Apr 2022 03:03:37 -0700 (PDT)
-Received: from [10.57.80.98] (unknown [10.57.80.98])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id BCEDF3F73B;
- Mon, 25 Apr 2022 03:03:35 -0700 (PDT)
-Message-ID: <9debe3ab-603d-0d30-a6aa-8963b48e83d4@arm.com>
-Date: Mon, 25 Apr 2022 11:03:27 +0100
+	id 1nivwa-0097jO-Cp; Mon, 25 Apr 2022 10:27:48 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nivwW-0097i2-3M; Mon, 25 Apr 2022 10:27:46 +0000
+X-UUID: 542628d5b9054adc8f55e3ca2ed7457f-20220425
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:d8b37595-9d52-4d9e-a31e-8fc91410d9f7, OB:0,
+ LO
+ B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+ ION:release,TS:25
+X-CID-META: VersionHash:faefae9, CLOUDID:5c3b06f0-06b0-4305-bfbf-554bfc9d151a,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 542628d5b9054adc8f55e3ca2ed7457f-20220425
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2021294241; Mon, 25 Apr 2022 03:27:40 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 25 Apr 2022 03:21:04 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 25 Apr 2022 18:20:55 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 25 Apr 2022 18:20:55 +0800
+Message-ID: <c1b910098a0a5cbe06ec971c1bf745ac37986274.camel@mediatek.com>
+Subject: Re: [PATCH V4 01/14] dt-bindings: cpufreq: mediatek: Add MediaTek
+ CCI property
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, <rafael@kernel.org>, 
+ <viresh.kumar@linaro.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>,
+ <matthias.bgg@gmail.com>
+CC: <jia-wei.chang@mediatek.com>, <roger.lu@mediatek.com>,
+ <hsinyi@google.com>, <khilman@baylibre.com>,
+ <angelogioacchino.delregno@collabora.com>, <linux-pm@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Mon, 25 Apr 2022 18:20:55 +0800
+In-Reply-To: <7873f0fa-25c3-191f-5096-3ceb9afd50cc@linaro.org>
+References: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
+ <20220422075239.16437-2-rex-bc.chen@mediatek.com>
+ <f2e5a34b-ed02-91a1-bc7b-fecaa95e227e@linaro.org>
+ <811bf944-a230-ab9b-583a-840e57af8a1e@linaro.org>
+ <28f75ac2995b116af9b2accf760786d1d1798c93.camel@mediatek.com>
+ <7873f0fa-25c3-191f-5096-3ceb9afd50cc@linaro.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [PATCH v2] iommu/mediatek: fix NULL pointer dereference when
- printing dev_name
-Content-Language: en-GB
-To: Miles Chen <miles.chen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Joerg Roedel <jroedel@suse.de>, iommu@lists.linux-foundation.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-References: <20220425082449.1821-1-miles.chen@mediatek.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20220425082449.1821-1-miles.chen@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_030342_695065_BBECBCA0 
-X-CRM114-Status: GOOD (  24.00  )
+X-CRM114-CacheID: sfid-20220425_032744_207741_05BEC15D 
+X-CRM114-Status: GOOD (  46.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,175 +85,181 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-04-25 09:24, Miles Chen via iommu wrote:
-> When larbdev is NULL (in the case I hit, the node is incorrectly set
-> iommus = <&iommu NUM>), it will cause device_link_add() fail and
-> kernel crashes when we try to print dev_name(larbdev).
+On Mon, 2022-04-25 at 10:55 +0200, Krzysztof Kozlowski wrote:
+> On 25/04/2022 08:19, Rex-BC Chen wrote:
+> > On Fri, 2022-04-22 at 19:34 +0200, Krzysztof Kozlowski wrote:
+> > > On 22/04/2022 19:26, Krzysztof Kozlowski wrote:
+> > > > On 22/04/2022 09:52, Rex-BC Chen wrote:
+> > > > > MediaTek Cache Coherent Interconnect (CCI) uses software
+> > > > > devfreq
+> > > > > module
+> > > > > for scaling clock frequency and adjust voltage.
+> > > > > The phandle could be linked between CPU and MediaTek CCI for
+> > > > > some
+> > > > > MediaTek SoCs, like MT8183 and MT8186.
+> > > > > Therefore, we add this property in cpufreq-mediatek.txt.
+> > > > > 
+> > > > > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> > > > > ---
+> > > > >  .../devicetree/bindings/cpufreq/cpufreq-
+> > > > > mediatek.txt         | 5
+> > > > > +++++
+> > > > >  1 file changed, 5 insertions(+)
+> > > > > 
+> > > > > diff --git
+> > > > > a/Documentation/devicetree/bindings/cpufreq/cpufreq-
+> > > > > mediatek.txt
+> > > > > b/Documentation/devicetree/bindings/cpufreq/cpufreq-
+> > > > > mediatek.txt
+> > > > > index b8233ec91d3d..3387e1e2a2df 100644
+> > > > > --- a/Documentation/devicetree/bindings/cpufreq/cpufreq-
+> > > > > mediatek.txt
+> > > > > +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-
+> > > > > mediatek.txt
+> > > > > @@ -20,6 +20,11 @@ Optional properties:
+> > > > >  	       Vsram to fit SoC specific needs. When absent,
+> > > > > the
+> > > > > voltage scaling
+> > > > >  	       flow is handled by hardware, hence no software
+> > > > > "voltage
+> > > > > tracking" is
+> > > > >  	       needed.
+> > > > > +- mediatek,cci:
+> > > > > +	MediaTek Cache Coherent Interconnect (CCI) uses the
+> > > > > software
+> > > > > devfreq module to
+> > > > > +	scale the clock frequency and adjust the voltage.
+> > > > 
+> > > > Devfreq is a SW mechanism, it should not be part of bindings
+> > > > description.
+> > 
+> > Hello Krzysztof,
+> > 
+> > The reason we want to get the "mediatek,cci":
+> > We need to check the mediatek cci is ready and probed done.
+> > Because cpufreq and mediatek cci are sharing the same regulator in
+> > little core cpus.
+> > Therefore, to prevent high frequency low voltage issue, we need to
+> > make
+> > sure the mediatek cci is ready.
+> > 
+> > If mediatek cci is ready, cpufreq and mediatek cci will register
+> > the
+> > same regulator and from regulator's implementation, if there are
+> > two
+> > device using the same regulator, the framwork will make sure it's
+> > using
+> > the max voltage.
 > 
-> Fix it by adding a NULL pointer check before
-> device_link_add/device_link_remove.
+> Thanks for explanation. The property should be described with what
+> you
+> said here. The property and description should match hardware, so
+> there
+> is no place for devfreq. Instead mention that power rail is shared or
+> voltage regulators are common.
 > 
-> It should work for normal correct setting and avoid the crash caused
-> by my incorrect setting.
-> 
-> Error log:
-> [   18.189042][  T301] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000050
-> [   18.190247][  T301] Mem abort info:
-> [   18.190255][  T301]   ESR = 0x96000005
-> [   18.190263][  T301]   EC = 0x25: DABT (current EL), IL = 32 bits
-> [   18.192142][  T301]   SET = 0, FnV = 0
-> [   18.192151][  T301]   EA = 0, S1PTW = 0
-> [   18.194710][  T301]   FSC = 0x05: level 1 translation fault
-> [   18.195424][  T301] Data abort info:
-> [   18.195888][  T301]   ISV = 0, ISS = 0x00000005
-> [   18.196500][  T301]   CM = 0, WnR = 0
-> [   18.196977][  T301] user pgtable: 4k pages, 39-bit VAs, pgdp=0000000104f9e000
-> [   18.197889][  T301] [0000000000000050] pgd=0000000000000000, p4d=0000000000000000, pud=0000000000000000
-> [   18.199220][  T301] Internal error: Oops: 96000005 [#1] PREEMPT SMP
-> [   18.343152][  T301] Kernel Offset: 0x1444080000 from 0xffffffc008000000
-> [   18.343988][  T301] PHYS_OFFSET: 0x40000000
-> [   18.344519][  T301] pstate: a0400005 (NzCv daif +PAN -UAO)
-> [   18.345213][  T301] pc : mtk_iommu_probe_device+0xf8/0x118 [mtk_iommu]
-> [   18.346050][  T301] lr : mtk_iommu_probe_device+0xd0/0x118 [mtk_iommu]
-> [   18.346884][  T301] sp : ffffffc00a5635e0
-> [   18.347392][  T301] x29: ffffffc00a5635e0 x28: ffffffd44a46c1d8
-> [   18.348156][  T301] x27: ffffff80c39a8000 x26: ffffffd44a80cc38
-> [   18.348917][  T301] x25: 0000000000000000 x24: ffffffd44a80cc38
-> [   18.349677][  T301] x23: ffffffd44e4da4c6 x22: ffffffd44a80cc38
-> [   18.350438][  T301] x21: ffffff80cecd1880 x20: 0000000000000000
-> [   18.351198][  T301] x19: ffffff80c439f010 x18: ffffffc00a50d0c0
-> [   18.351959][  T301] x17: ffffffffffffffff x16: 0000000000000004
-> [   18.352719][  T301] x15: 0000000000000004 x14: ffffffd44eb5d420
-> [   18.353480][  T301] x13: 0000000000000ad2 x12: 0000000000000003
-> [   18.354241][  T301] x11: 00000000fffffad2 x10: c0000000fffffad2
-> [   18.355003][  T301] x9 : a0d288d8d7142d00 x8 : a0d288d8d7142d00
-> [   18.355763][  T301] x7 : ffffffd44c2bc640 x6 : 0000000000000000
-> [   18.356524][  T301] x5 : 0000000000000080 x4 : 0000000000000001
-> [   18.357284][  T301] x3 : 0000000000000000 x2 : 0000000000000005
-> [   18.358045][  T301] x1 : 0000000000000000 x0 : 0000000000000000
-> [   18.360208][  T301] Hardware name: MT6873 (DT)
-> [   18.360771][  T301] Call trace:
-> [   18.361168][  T301]  dump_backtrace+0xf8/0x1f0
-> [   18.361737][  T301]  dump_stack_lvl+0xa8/0x11c
-> [   18.362305][  T301]  dump_stack+0x1c/0x2c
-> [   18.362816][  T301]  mrdump_common_die+0x184/0x40c [mrdump]
-> [   18.363575][  T301]  ipanic_die+0x24/0x38 [mrdump]
-> [   18.364230][  T301]  atomic_notifier_call_chain+0x128/0x2b8
-> [   18.364937][  T301]  die+0x16c/0x568
-> [   18.365394][  T301]  __do_kernel_fault+0x1e8/0x214
-> [   18.365402][  T301]  do_page_fault+0xb8/0x678
-> [   18.366934][  T301]  do_translation_fault+0x48/0x64
-> [   18.368645][  T301]  do_mem_abort+0x68/0x148
-> [   18.368652][  T301]  el1_abort+0x40/0x64
-> [   18.368660][  T301]  el1h_64_sync_handler+0x54/0x88
-> [   18.368668][  T301]  el1h_64_sync+0x68/0x6c
-> [   18.368673][  T301]  mtk_iommu_probe_device+0xf8/0x118 [mtk_iommu]
-> [   18.369840][  T301]  __iommu_probe_device+0x12c/0x358
-> [   18.370880][  T301]  iommu_probe_device+0x3c/0x31c
-> [   18.372026][  T301]  of_iommu_configure+0x200/0x274
-> [   18.373587][  T301]  of_dma_configure_id+0x1b8/0x230
-> [   18.375200][  T301]  platform_dma_configure+0x24/0x3c
-> [   18.376456][  T301]  really_probe+0x110/0x504
-> [   18.376464][  T301]  __driver_probe_device+0xb4/0x188
-> [   18.376472][  T301]  driver_probe_device+0x5c/0x2b8
-> [   18.376481][  T301]  __driver_attach+0x338/0x42c
-> [   18.377992][  T301]  bus_add_driver+0x218/0x4c8
-> [   18.379389][  T301]  driver_register+0x84/0x17c
-> [   18.380580][  T301]  __platform_driver_register+0x28/0x38
-> ...
-> 
-> Reported-by: kernel test robot <lkp@intel.com>
-> Fixes: 635319a4a744 ("media: iommu/mediatek: Add device_link between the consumer and the larb devices")
-> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> 
-> ---
-> 
-> Change since v1
-> fix a build warning reported by kernel test robot
-> https://lore.kernel.org/lkml/202204231446.IYKdZ674-lkp@intel.com/
-> 
-> ---
->   drivers/iommu/mtk_iommu.c    | 13 ++++++++-----
->   drivers/iommu/mtk_iommu_v1.c | 13 ++++++++-----
->   2 files changed, 16 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 6fd75a60abd6..03e0133f346a 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -581,10 +581,12 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
->   		}
->   	}
->   	larbdev = data->larb_imu[larbid].dev;
-> -	link = device_link_add(dev, larbdev,
-> -			       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
-> -	if (!link)
-> -		dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
-> +	if (larbdev) {
 
-Until the MT8195 infra MMU support lands, is there ever a case where 
-it's actually valid for larbdev to be NULL? If not, I think it would be 
-a lot clearer to explicitly fail the probe here, rather than silently 
-continue and risk fatal errors, hangs, or other weird behaviour if 
-there's no guarantee that the correct LARB is powered up (plus then the 
-release callbacks wouldn't need to worry about it either).
+Hello Krzysztof,
 
-Robin.
+I will modify the description to the reason why we need mediatek,cci.
 
-> +		link = device_link_add(dev, larbdev,
-> +				       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
-> +		if (!link)
-> +			dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
-> +	}
->   	return &data->iommu;
->   }
->   
-> @@ -601,7 +603,8 @@ static void mtk_iommu_release_device(struct device *dev)
->   	data = dev_iommu_priv_get(dev);
->   	larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
->   	larbdev = data->larb_imu[larbid].dev;
-> -	device_link_remove(dev, larbdev);
-> +	if (larbdev)
-> +		device_link_remove(dev, larbdev);
->   
->   	iommu_fwspec_free(dev);
->   }
-> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> index ecff800656e6..18365c73eeb2 100644
-> --- a/drivers/iommu/mtk_iommu_v1.c
-> +++ b/drivers/iommu/mtk_iommu_v1.c
-> @@ -467,10 +467,12 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
->   	}
->   
->   	larbdev = data->larb_imu[larbid].dev;
-> -	link = device_link_add(dev, larbdev,
-> -			       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
-> -	if (!link)
-> -		dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
-> +	if (larbdev) {
-> +		link = device_link_add(dev, larbdev,
-> +				       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
-> +		if (!link)
-> +			dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
-> +	}
->   
->   	return &data->iommu;
->   }
-> @@ -502,7 +504,8 @@ static void mtk_iommu_release_device(struct device *dev)
->   	data = dev_iommu_priv_get(dev);
->   	larbid = mt2701_m4u_to_larb(fwspec->ids[0]);
->   	larbdev = data->larb_imu[larbid].dev;
-> -	device_link_remove(dev, larbdev);
-> +	if (larbdev)
-> +		device_link_remove(dev, larbdev);
->   
->   	iommu_fwspec_free(dev);
->   }
+> However I am not sure if you solved your problem... see below:
+> 
+> > For example:
+> > mediatek cci set 1.2V originally. When cpufreq want to adjust lower
+> > frequency adn set voltage to 1.0V.
+> > The framework will remain using 1.2V to prevent crash of mediatek
+> > cci.
+> 
+> No, regulator_set_voltage() for proc_reg says:
+> "NOTE: If the regulator is shared between several devices then the
+> lowest
+>  request voltage that meets the system constraints will be used."
+> 
+> Not the highest. So when your devfreq and cpufreq boots, calling
+> regulator_set_voltage will still cause high frequency and low
+> voltage.
+> 
+
+From the driver comment, I think it still needs to match "meets the
+system constraints".
+
+From drivers, we can trace the driver and it finally to
+regulator_get_optimal_voltage().
+In [1], the framework will get max voltage while finding each device's
+voltage.
+
+[1]: 
+https://elixir.bootlin.com/linux/latest/source/drivers/regulator/core.c#L3815
+
+> > 
+> > Therefore, we need to confirm the mediatek cci is ready and
+> > register
+> > the regulator.
+> > 
+> > > > 
+> > > > > +	For details, please refer to
+> > > > > +	Documentation/devicetree/bindings/interconnect/mediatek
+> > > > > ,cci.yam
+> > > > > l
+> > > > 
+> > > > Since the file does not exist, I have troubles reviewing it.
+> > > > First
+> > > > of
+> > > > all, you already have "mediatek,cci-control" property in DT, so
+> > > > why
+> > > > using different name?
+> > 
+> > I am not sure where is "mediatek,cci-control". I think this name is
+> > not
+> > used before.
+> > 
+> 
+> Documentation/devicetree/bindings/net/mediatek-net.txt
+> 
+> > > > 
+> > > > Second, it looks like you want to put devfreq into bindings
+> > > > instead
+> > > > of
+> > > > using proper interconnect bindings.
+> > > 
+> > > Actually judging by the driver this looks like some
+> > > device-boot-time-ordering, so I wonder whether this is a proper
+> > > way
+> > > to
+> > > express it.
+> > 
+> > Yes, we need to get the mediatek cci node and let cpufreq and
+> > mediatek
+> > cci link succefully. In that case, we can know the mediatek cci is
+> > ready. And we can set the voltage using the regulator framwork.
+> > 
+> > [1]: 
+> > 
+https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20220422075239.16437-11-rex-bc.chen@mediatek.com/__;!!CTRNKA9wMg0ARbw!xOuKKyjBosmRcUseQXU9SiPu8msBXrrQAASdxwVbR0SU2inuXUtO180Y0Erkpy-JmOwu$
+> >  
+> 
+> Yes, I see the use case. I am not convinced yet whether this is
+> proper
+> approach...
+> 
+
+When mediatek cci is ready (probe done and register regulator done), we
+can confirm that regulator framwork will make sure the voltage setting
+is safe.
+
+BRs,
+Rex
+
+> 
+> Best regards,
+> Krzysztof
+
 
 _______________________________________________
 Linux-mediatek mailing list
