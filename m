@@ -4,74 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 754A6C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 06:27:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ED9CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 06:49:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1mOj6sp//7Cs+bhIcLhvFAlonHtVTAyZrlmOyS4QV+Y=; b=K78FZWhH5Y3eSp
-	+hWGEiR07uj452GIjsckxDs7F/bdxorCuI/i1Xhgf+vJUpq9fyixjgA/Ev4hWtJv4INgniYcx6Daf
-	j2IZ/DSihQcXDunvp4aa6VTJJG6D0Av6L5Aj9Y3qK+zSxp06L/wN0kn7bC9vLtjL/MoM8jCFcDJKd
-	UtKwbVEnY6k+VmfwvHhtCnuI1iTHM9Jj8M3W3NSKm7SRmp0+131/YYR2w9Ytcsf5cazLWtiGkQWB2
-	XOvge2r2L0qGSw5OH2TYcsH99UBfBcpR8WT8uuQmiIuddwCtQX3ZFcUaL+Ogka5zMc5JNtPgGWYN5
-	/1S3Wsvayf05RY8hmWnA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=xcjJfmoNjG3TfBu5gYzdcP69bny5QYna9KRL6oEam58=; b=WBI/s+FH0N5QA+
+	5dlVVnX84QUIIVw2lnPyuqS3h44LHAZsqsJmjOCdKOyvi5nxGXYmPUiEvAMUlEkXdVVcaYJvjfiML
+	dLUrgK11AML36dVtZimq1shPuMfckI16gdICyGN9zCK3yZFnTclRpMI9Q5+Sg9W6h3/s6P3SkyEhk
+	wMj5pt/uadAxVfdxKmVy/PQ/BEPDIs62Z+YlwEbo7RkERTnWy3Qy8PqGce52ZrPdwZgbzDbi1NqsH
+	ac66+CYxoCm6ayEyR/XbDeYwg/kcTgSAO0mi9qLCee3IYTwai6+z4hTdKbz0u2Sa9PzQ4NDaDvAMb
+	wt8hnxIutB2wt2u/eshQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nisBr-008U6x-Gb; Mon, 25 Apr 2022 06:27:19 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nisXC-008XyC-VY; Mon, 25 Apr 2022 06:49:23 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nisBj-008U3Q-Q0; Mon, 25 Apr 2022 06:27:17 +0000
-X-UUID: fe14415cb18d49f2a63e05931a2d9895-20220424
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:878f0c73-0030-447d-9273-8adf9fc1880c, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:e449fdef-06b0-4305-bfbf-554bfc9d151a,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: fe14415cb18d49f2a63e05931a2d9895-20220424
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 392331600; Sun, 24 Apr 2022 23:27:05 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 24 Apr 2022 23:19:54 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 25 Apr 2022 14:19:51 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 25 Apr 2022 14:19:51 +0800
-Message-ID: <28f75ac2995b116af9b2accf760786d1d1798c93.camel@mediatek.com>
-Subject: Re: [PATCH V4 01/14] dt-bindings: cpufreq: mediatek: Add MediaTek
- CCI property
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, <rafael@kernel.org>, 
- <viresh.kumar@linaro.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>,
- <matthias.bgg@gmail.com>
-CC: <jia-wei.chang@mediatek.com>, <roger.lu@mediatek.com>,
- <hsinyi@google.com>, <khilman@baylibre.com>,
- <angelogioacchino.delregno@collabora.com>, <linux-pm@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 25 Apr 2022 14:19:51 +0800
-In-Reply-To: <811bf944-a230-ab9b-583a-840e57af8a1e@linaro.org>
-References: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
- <20220422075239.16437-2-rex-bc.chen@mediatek.com>
- <f2e5a34b-ed02-91a1-bc7b-fecaa95e227e@linaro.org>
- <811bf944-a230-ab9b-583a-840e57af8a1e@linaro.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nisX2-008Xuj-K9; Mon, 25 Apr 2022 06:49:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:In-Reply-To:References;
+ bh=6sZk6f+SSX04oov9b/0Di56u0HzBXaGb0E+tZ/QneV0=; b=pQCPYjwmcdCvhXoGzBGRGjbDbW
+ cw+ERhokKwdTCmbri37bEKuTavklvCikkyjFAIJXRH6ZWQZkD74DXcDj6fJx8mDKp9D98l6Zz4fq6
+ dYggggwpkSo41KjrwVHvu8kYksaL/pgmOxkMMfifMO6Wifbe5Hfi/Dk186FHh/r+A1xJ5RIlcL4PS
+ qh+3iHE5UxLh1rxM+MRj131L4Zc2CEKxbDRwIHD01VfwHz5fKoy5YPu7B1cSuu8sDnUkgxQC8qHxr
+ U1oLIAx8njDl0FM//4E/bPRn+0TXgue3AES1O/ihzMJa7lHM714PSM5U6mLIYiCGTuhFrZrkdBv6R
+ 0p8ob7Pw==;
+Received: from mx1.riseup.net ([198.252.153.129])
+ by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nisWz-008UGv-7S; Mon, 25 Apr 2022 06:49:11 +0000
+Received: from fews1.riseup.net (fews1-pn.riseup.net [10.0.1.83])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256
+ client-signature RSA-PSS (2048 bits) client-digest SHA256)
+ (Client CN "mail.riseup.net", Issuer "R3" (not verified))
+ by mx1.riseup.net (Postfix) with ESMTPS id 4KmwbQ5KRkzDsMn;
+ Sun, 24 Apr 2022 23:49:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=riseup.net; s=squak;
+ t=1650869346; bh=X9r/gViEyERj3QdfbSpzf1vJ7D4I2koJWoEPclEgUyk=;
+ h=From:To:Cc:Subject:Date:From;
+ b=hU6Ht86PcVkEicT6g8dKFu+l8SWsrHNnWP11RbVrMgjVeoPwQpyObmWKp7VR80cx7
+ zvUw5BItgetPee1YlfEBnZrP+hNxkOuiuHMENK2I4f69QQgVJwBR4Xhw9VHU59qN8A
+ aTBAPqZS+yXt3s8VyJM8MLTSuR/W7d8INu9OutKA=
+X-Riseup-User-ID: B99F5AF868D304E13E026E41E8363AE8632B12E80FB7D65A24F398B2BFEA6E64
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ by fews1.riseup.net (Postfix) with ESMTPSA id 4KmwbN3mNBz5vTc;
+ Sun, 24 Apr 2022 23:49:04 -0700 (PDT)
+From: Dang Huynh <danct12@riseup.net>
+To: Dang Huynh <danct12@riseup.net>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: mediatek: pumpkin: Remove input-name property
+Date: Mon, 25 Apr 2022 13:48:51 +0700
+Message-Id: <20220425064850.246228-1-danct12@riseup.net>
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220424_232711_966777_916806BF 
-X-CRM114-Status: GOOD (  32.17  )
+X-CRM114-CacheID: sfid-20220425_074909_513816_DCEA61BC 
+X-CRM114-Status: UNSURE (   9.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,101 +85,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-04-22 at 19:34 +0200, Krzysztof Kozlowski wrote:
-> On 22/04/2022 19:26, Krzysztof Kozlowski wrote:
-> > On 22/04/2022 09:52, Rex-BC Chen wrote:
-> > > MediaTek Cache Coherent Interconnect (CCI) uses software devfreq
-> > > module
-> > > for scaling clock frequency and adjust voltage.
-> > > The phandle could be linked between CPU and MediaTek CCI for some
-> > > MediaTek SoCs, like MT8183 and MT8186.
-> > > Therefore, we add this property in cpufreq-mediatek.txt.
-> > > 
-> > > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> > > ---
-> > >  .../devicetree/bindings/cpufreq/cpufreq-mediatek.txt         | 5
-> > > +++++
-> > >  1 file changed, 5 insertions(+)
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-
-> > > mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-
-> > > mediatek.txt
-> > > index b8233ec91d3d..3387e1e2a2df 100644
-> > > --- a/Documentation/devicetree/bindings/cpufreq/cpufreq-
-> > > mediatek.txt
-> > > +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-
-> > > mediatek.txt
-> > > @@ -20,6 +20,11 @@ Optional properties:
-> > >  	       Vsram to fit SoC specific needs. When absent, the
-> > > voltage scaling
-> > >  	       flow is handled by hardware, hence no software "voltage
-> > > tracking" is
-> > >  	       needed.
-> > > +- mediatek,cci:
-> > > +	MediaTek Cache Coherent Interconnect (CCI) uses the software
-> > > devfreq module to
-> > > +	scale the clock frequency and adjust the voltage.
-> > 
-> > Devfreq is a SW mechanism, it should not be part of bindings
-> > description.
+This property doesn't seem to exist in the documentation nor
+in source code, but for some reason it is defined in a bunch
+of device trees.
 
-Hello Krzysztof,
+Signed-off-by: Dang Huynh <danct12@riseup.net>
+---
+This patch is a split of this treewide patch [1] to ease the 
+maintainers. 
 
-The reason we want to get the "mediatek,cci":
-We need to check the mediatek cci is ready and probed done.
-Because cpufreq and mediatek cci are sharing the same regulator in
-little core cpus.
-Therefore, to prevent high frequency low voltage issue, we need to make
-sure the mediatek cci is ready.
+[1]: https://patchwork.kernel.org/patch/12633497/
 
-If mediatek cci is ready, cpufreq and mediatek cci will register the
-same regulator and from regulator's implementation, if there are two
-device using the same regulator, the framwork will make sure it's using
-the max voltage.
-For example:
-mediatek cci set 1.2V originally. When cpufreq want to adjust lower
-frequency adn set voltage to 1.0V.
-The framework will remain using 1.2V to prevent crash of mediatek cci.
+ arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
 
-Therefore, we need to confirm the mediatek cci is ready and register
-the regulator.
-
-> > 
-> > > +	For details, please refer to
-> > > +	Documentation/devicetree/bindings/interconnect/mediatek,cci.yam
-> > > l
-> > 
-> > Since the file does not exist, I have troubles reviewing it. First
-> > of
-> > all, you already have "mediatek,cci-control" property in DT, so why
-> > using different name?
-
-I am not sure where is "mediatek,cci-control". I think this name is not
-used before.
-
-> > 
-> > Second, it looks like you want to put devfreq into bindings instead
-> > of
-> > using proper interconnect bindings.
-> 
-> Actually judging by the driver this looks like some
-> device-boot-time-ordering, so I wonder whether this is a proper way
-> to
-> express it.
-
-Yes, we need to get the mediatek cci node and let cpufreq and mediatek
-cci link succefully. In that case, we can know the mediatek cci is
-ready. And we can set the voltage using the regulator framwork.
-
-[1]: 
-https://patchwork.kernel.org/project/linux-mediatek/patch/20220422075239.16437-11-rex-bc.chen@mediatek.com/
-
-BRs,
-Rex
-> 
-> 
-> Best regards,
-> Krzysztof
+diff --git a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+index fcddec14738d..7a717f926929 100644
+--- a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+@@ -25,7 +25,6 @@ optee: optee@4fd00000 {
+ 
+ 	gpio-keys {
+ 		compatible = "gpio-keys";
+-		input-name = "gpio-keys";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&gpio_keys_default>;
+ 
+-- 
+2.36.0
 
 
 _______________________________________________
