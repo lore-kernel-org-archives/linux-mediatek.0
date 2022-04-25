@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ED9CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 06:49:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29F44C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 07:29:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=xcjJfmoNjG3TfBu5gYzdcP69bny5QYna9KRL6oEam58=; b=WBI/s+FH0N5QA+
-	5dlVVnX84QUIIVw2lnPyuqS3h44LHAZsqsJmjOCdKOyvi5nxGXYmPUiEvAMUlEkXdVVcaYJvjfiML
-	dLUrgK11AML36dVtZimq1shPuMfckI16gdICyGN9zCK3yZFnTclRpMI9Q5+Sg9W6h3/s6P3SkyEhk
-	wMj5pt/uadAxVfdxKmVy/PQ/BEPDIs62Z+YlwEbo7RkERTnWy3Qy8PqGce52ZrPdwZgbzDbi1NqsH
-	ac66+CYxoCm6ayEyR/XbDeYwg/kcTgSAO0mi9qLCee3IYTwai6+z4hTdKbz0u2Sa9PzQ4NDaDvAMb
-	wt8hnxIutB2wt2u/eshQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6eVhbmb969NL5RH1GWrIgrnTFdA22X4RgoBh/yx4B2Y=; b=vYJztCxRCpmaPC
+	vb+Y7BL0WqoZ+Ouq1/I/YMFcWV2nRWLcuYL63vG4IBMbCfKiKD5nH+ElpBILF0qSuCFL4DNwUpVFi
+	oZtCatB2eeaoetP8jqvMGYLYvNEf7Q1/tAt8HyhjBwAa2g1dlY6RYTGqLjd3ynIjSjyj5ZdS/1N8W
+	aBoEjlEakF6l6Sv3Hhh6qO4p822id9RW6hi/dF3AIyQwctJl3JKGwuKXSYuS9KcLZ0un3F7igVWaU
+	FypEtyNIZh0cT0y1ogcEs7k8ihWRkCoaTNrldhLUmYyRWp0BwVnzSfkDOs2S8HiAznR0gYgLJnOj0
+	szPrazJO3mVLj8kQDqrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nisXC-008XyC-VY; Mon, 25 Apr 2022 06:49:23 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1nit9l-008boY-RE; Mon, 25 Apr 2022 07:29:13 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nisX2-008Xuj-K9; Mon, 25 Apr 2022 06:49:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
- Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:In-Reply-To:References;
- bh=6sZk6f+SSX04oov9b/0Di56u0HzBXaGb0E+tZ/QneV0=; b=pQCPYjwmcdCvhXoGzBGRGjbDbW
- cw+ERhokKwdTCmbri37bEKuTavklvCikkyjFAIJXRH6ZWQZkD74DXcDj6fJx8mDKp9D98l6Zz4fq6
- dYggggwpkSo41KjrwVHvu8kYksaL/pgmOxkMMfifMO6Wifbe5Hfi/Dk186FHh/r+A1xJ5RIlcL4PS
- qh+3iHE5UxLh1rxM+MRj131L4Zc2CEKxbDRwIHD01VfwHz5fKoy5YPu7B1cSuu8sDnUkgxQC8qHxr
- U1oLIAx8njDl0FM//4E/bPRn+0TXgue3AES1O/ihzMJa7lHM714PSM5U6mLIYiCGTuhFrZrkdBv6R
- 0p8ob7Pw==;
-Received: from mx1.riseup.net ([198.252.153.129])
- by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nisWz-008UGv-7S; Mon, 25 Apr 2022 06:49:11 +0000
-Received: from fews1.riseup.net (fews1-pn.riseup.net [10.0.1.83])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256
- client-signature RSA-PSS (2048 bits) client-digest SHA256)
- (Client CN "mail.riseup.net", Issuer "R3" (not verified))
- by mx1.riseup.net (Postfix) with ESMTPS id 4KmwbQ5KRkzDsMn;
- Sun, 24 Apr 2022 23:49:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=riseup.net; s=squak;
- t=1650869346; bh=X9r/gViEyERj3QdfbSpzf1vJ7D4I2koJWoEPclEgUyk=;
- h=From:To:Cc:Subject:Date:From;
- b=hU6Ht86PcVkEicT6g8dKFu+l8SWsrHNnWP11RbVrMgjVeoPwQpyObmWKp7VR80cx7
- zvUw5BItgetPee1YlfEBnZrP+hNxkOuiuHMENK2I4f69QQgVJwBR4Xhw9VHU59qN8A
- aTBAPqZS+yXt3s8VyJM8MLTSuR/W7d8INu9OutKA=
-X-Riseup-User-ID: B99F5AF868D304E13E026E41E8363AE8632B12E80FB7D65A24F398B2BFEA6E64
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- by fews1.riseup.net (Postfix) with ESMTPSA id 4KmwbN3mNBz5vTc;
- Sun, 24 Apr 2022 23:49:04 -0700 (PDT)
-From: Dang Huynh <danct12@riseup.net>
-To: Dang Huynh <danct12@riseup.net>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: mediatek: pumpkin: Remove input-name property
-Date: Mon, 25 Apr 2022 13:48:51 +0700
-Message-Id: <20220425064850.246228-1-danct12@riseup.net>
+ id 1nit9X-008bnN-NU; Mon, 25 Apr 2022 07:29:03 +0000
+X-UUID: e19383fc4182430d980a9b977f10319e-20220425
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:f4b41087-7421-45f4-aa5c-3f84cfbe74e8, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:3,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:3
+X-CID-META: VersionHash:faefae9, CLOUDID:f3f0ffef-06b0-4305-bfbf-554bfc9d151a,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:4,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: e19383fc4182430d980a9b977f10319e-20220425
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1400079795; Mon, 25 Apr 2022 00:28:49 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 25 Apr 2022 00:28:47 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 25 Apr 2022 15:28:44 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 25 Apr 2022 15:28:44 +0800
+Message-ID: <de5df2433da2427e39883cdd17c4770afa42f82d.camel@mediatek.com>
+Subject: Re: [PATCH V4 05/14] cpufreq: mediatek: Add opp notification support
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Viresh Kumar <viresh.kumar@linaro.org>
+CC: <rafael@kernel.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>,
+ <matthias.bgg@gmail.com>, <jia-wei.chang@mediatek.com>,
+ <roger.lu@mediatek.com>, <hsinyi@google.com>, <khilman@baylibre.com>,
+ <angelogioacchino.delregno@collabora.com>, <linux-pm@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Andrew-sh.Cheng
+ <andrew-sh.cheng@mediatek.com>
+Date: Mon, 25 Apr 2022 15:28:44 +0800
+In-Reply-To: <20220425052026.k3xfmmil4ujqeynh@vireshk-i7>
+References: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
+ <20220422075239.16437-6-rex-bc.chen@mediatek.com>
+ <20220425052026.k3xfmmil4ujqeynh@vireshk-i7>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_074909_513816_DCEA61BC 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220425_002859_821145_9EFCD0D4 
+X-CRM114-Status: GOOD (  27.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,34 +86,119 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This property doesn't seem to exist in the documentation nor
-in source code, but for some reason it is defined in a bunch
-of device trees.
+On Mon, 2022-04-25 at 10:50 +0530, Viresh Kumar wrote:
+> On 22-04-22, 15:52, Rex-BC Chen wrote:
+> > From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+> > 
+> > > From this opp notifier, cpufreq should listen to opp notification
+> > > and do
+> 
+> Why the extra ">" here ?
+> 
+> > proper actions when receiving events of disable and voltage
+> > adjustment.
+> > 
+> > One of the user for this opp notifier is MediaTek SVS.
+> > The MediaTek Smart Voltage Scaling (SVS) is a hardware which
+> > calculates
+> > suitable SVS bank voltages to OPP voltage table.
+> > 
+> > Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+> > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >  drivers/cpufreq/mediatek-cpufreq.c | 92
+> > +++++++++++++++++++++++++++---
+> >  1 file changed, 84 insertions(+), 8 deletions(-)
+> > 
+> > diff --git a/drivers/cpufreq/mediatek-cpufreq.c
+> > b/drivers/cpufreq/mediatek-cpufreq.c
+> > +static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
+> > +				    unsigned long event, void *data)
+> > +{
+> > +	struct dev_pm_opp *opp = data;
+> > +	struct dev_pm_opp *new_opp;
+> > +	struct mtk_cpu_dvfs_info *info;
+> > +	unsigned long freq, volt;
+> > +	struct cpufreq_policy *policy;
+> > +	int ret = 0;
+> > +
+> > +	info = container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
+> > +
+> > +	if (event == OPP_EVENT_ADJUST_VOLTAGE) {
+> 
+> I don't see any call to dev_pm_opp_adjust_voltage() for your
+> platform, how is
+> this ever going to get called ?
+> 
 
-Signed-off-by: Dang Huynh <danct12@riseup.net>
----
-This patch is a split of this treewide patch [1] to ease the 
-maintainers. 
+Hello Viresh,
 
-[1]: https://patchwork.kernel.org/patch/12633497/
+Thanks for your review!
+These two event OPP_EVENT_ADJUST_VOLTAGE and OPP_EVENT_DISABLE are
+basically called by mediatek svs drivers.
+It's not merged in mainline kernel and you can reger to [1].
 
- arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+[1]:
+https://lore.kernel.org/all/20220420102044.10832-4-roger.lu@mediatek.com/
 
-diff --git a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-index fcddec14738d..7a717f926929 100644
---- a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-@@ -25,7 +25,6 @@ optee: optee@4fd00000 {
- 
- 	gpio-keys {
- 		compatible = "gpio-keys";
--		input-name = "gpio-keys";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&gpio_keys_default>;
- 
--- 
-2.36.0
+For OPP_EVENT_ADJUST_VOLTAGE:
+mediatek svs will optimize the voltage, so mediatek svs will call
+dev_pm_opp_adjust_voltage() to adjust frequency and voltage.
+
+> > +		freq = dev_pm_opp_get_freq(opp);
+> > +
+> > +		mutex_lock(&info->reg_lock);
+> > +		if (info->opp_freq == freq) {
+> > +			volt = dev_pm_opp_get_voltage(opp);
+> > +			ret = mtk_cpufreq_set_voltage(info, volt);
+> > +			if (ret)
+> > +				dev_err(info->cpu_dev,
+> > +					"failed to scale voltage:
+> > %d\n", ret);
+> > +		}
+> > +		mutex_unlock(&info->reg_lock);
+> > +	} else if (event == OPP_EVENT_DISABLE) {
+> > +		freq = dev_pm_opp_get_freq(opp);
+> > +
+> > +		/* case of current opp item is disabled */
+> > +		if (info->opp_freq == freq) {
+> > +			freq = 1;
+> > +			new_opp = dev_pm_opp_find_freq_ceil(info-
+> > >cpu_dev,
+> > +							    &freq);
+> > +			if (IS_ERR(new_opp)) {
+> > +				dev_err(info->cpu_dev,
+> > +					"all opp items are
+> > disabled\n");
+> > +				ret = PTR_ERR(new_opp);
+> > +				return notifier_from_errno(ret);
+> > +			}
+> > +
+> > +			dev_pm_opp_put(new_opp);
+> > +			policy = cpufreq_cpu_get(info->opp_cpu);
+> > +			if (policy) {
+> > +				cpufreq_driver_target(policy, freq /
+> > 1000,
+> > +						      CPUFREQ_RELATION_
+> > L);
+> > +				cpufreq_cpu_put(policy);
+> 
+> IIUC, then you are trying to change the frequency if a currently used
+> OPP is
+> getting removed ? In that case, this problem is generic enough not to
+> be fixed
+> in a end driver. This should be fixed in core somehow.
+> 
+
+For OPP_EVENT_DISABLE:
+when mediatek svs needs to be disable, the voltage should recover to
+original voltage and frequency.
+
+BRs,
+Rex
 
 
 _______________________________________________
