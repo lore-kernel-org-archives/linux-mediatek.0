@@ -4,91 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39E36C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 10:53:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A469C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 11:51:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LeAbN2rLBgHsGjPHDrpuYipqKG+BQIMuM1XgrEhZ/z4=; b=Zfy6z4H4RXi4I/
-	/HmgvOi5AGtNS5pqbJaYMeqZqWYHOmP7qbCR8sCevACfwPnX2xznjrzLYtElRP//Mg6R4cMRI6TEm
-	Seoz+qUTnf2wSXYrFna0oGyWNvr5/lPP9irDVcgUc7td7/TcJhDkLlDEaUiOFqTAc+nmOaCU7lPCU
-	sLlNKqxtFNWqXWX+CdiN5L+rR9H/UaeUQMmCPvvNAZaMs2qwAQDCPHTAm7vKuSzVykZ/Gsb+AP1sT
-	ATlqX2bpvk+e9aZksDp6np1Aqf1hQf5+ppNDUo2X1TR4IBdWBOrw9N0R84XjSemjsYVsMWSxg3+wa
-	lfPh4W7/ZmHserlvCXrw==;
+	List-Owner; bh=lWBbS/XsP+uRZY6OJWgBsTNETQd5D9w93zcgBT57yXQ=; b=ZvUZJM0rqojSky
+	7/s1U961FzxVsvatE47Hu1thvZ9eYaAB/bEv7Tbw6AyHa7JxztexqtchFvl+oXqAA8GOLnIR94uaz
+	nHdTbnxRv6cJNlY+h8q1O5bAALSltjlzwKCefelruItTMkLc9mznayAZfo2LG1z9GrmrxUne2M809
+	a03Dp7dKBDVqyhLGFVduqZ/gL6QKtVjGrk2i+Gt15l5znKzAMhKWw0IsyMxa6O4ILmkiBeSQGTzTp
+	4lNCvIxN01yUJOu2lNYw2dvVjwZODs+1pgjumcWzZ603XdVo0T2UJ2p6x4JIxoZgTjfCuaUgKYzYV
+	xviM34jFsEDJ2NTKUVtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1niwL3-009BvI-VJ; Mon, 25 Apr 2022 10:53:06 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1nixFI-009MsD-3m; Mon, 25 Apr 2022 11:51:12 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1niwL0-009Bts-MM
- for linux-mediatek@lists.infradead.org; Mon, 25 Apr 2022 10:53:04 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id el3so13069876edb.11
- for <linux-mediatek@lists.infradead.org>; Mon, 25 Apr 2022 03:52:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ id 1nixFF-009MqJ-Gu; Mon, 25 Apr 2022 11:51:10 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id i5so1399715wrc.13;
+ Mon, 25 Apr 2022 04:51:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=c0GtfBkRSHeFZTruOwJRlqy+Sejoq8V+8yuUoZ3jFBc=;
- b=CbbAqeWONmzWIiGLRvqkhXo3NhecQVj6nlqqLU92Lqr1pACc3YhhvLGZg1SouvWfQ+
- 8sH0Gko7TaEwFe7nRdN6dyYPtVZCcL0ae9htgY8wdfKxMPswxpxdM9dhNNCzQGqzw3Z7
- 0k5CRiWMlYKJiH03+Nx/K4ew/zYPywhIPfaJcrmgMkryaUAF6ksXyn4Jc+7VGXBm+3+X
- jy2XsSb0qgG8wK+a7mEBgCBxyLrQSltcTgWZIlR8+9gqM6OCZuDjnB5RlYn476VRadCE
- YwKnLkl31yV+HJI8g4PJM4SC+3OFnZngS2XtfFEO88N0Va6VH3OS/As8cr0nY00axZ9z
- q5ZQ==
+ bh=9EscMvNq76GeUom/FtzlsqDl8sdOCj3rZo00CWoiuwA=;
+ b=F7CeinsqS7wotCIbiDe0PSdED/m/nEhij5VdSZwAPlpQo/wUAA6kvkSFvCh1Sj7DoG
+ I+Y/7wtJdsRBk/txmwJv+E+Jmm+RvsNoCjLEWMfZ6zj7g4L1DW0nQMZlFOK+vH9eE3zq
+ PJP4gOEJ5i2+IuFKrf6eIJZTX0yRiYqn7rfAjkQF58tv3+sA2KEIRxqACfhrn5gXjgc2
+ k3zdEaAuqNa2jxuwV3XYiLwM97lJ50Y6uUEYvTs+v/RjlVbOxHs3ND35GqFby9PFQU9g
+ qNUJJ7URS8t+02Dh+OAf2PxXIXKq/oNOlq+B29sD6fa37eTGVJTR9pDnIw+Cl1yXMVRd
+ lbMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=c0GtfBkRSHeFZTruOwJRlqy+Sejoq8V+8yuUoZ3jFBc=;
- b=jLsSG0KNojeD87WRvTfE+fKE0eDAHjsy/u0RdMP/SOKAKjm2hg9y1L+X7/qiuGmtwt
- nnAYSRLODCQZn0sIDX3hYL2a8wwckIWaV16qsHgxoeKQEldhYpb0TyV8c3LkAl0kn04/
- almYEAe94TeE40fUaAXSbN2rsga3P1yiyqt8i2WPmq9vGs7QuIvHK0eCgwisSpfeEKvN
- IU2LnOVRG09V0tCv+3p6TizplD9ETdFdgYEixUGfrKXchot9YcFeF8LfdcMGaLqS6eYu
- O/p7OI1V8eQQZ0WsM6SbbicnyaGApunrZciiAILClVtrNLhBfyFr86SuLAYTzX/HCFnV
- nUbA==
-X-Gm-Message-State: AOAM532W/LRflSvtWnta/t9BINSBXnkAGMvFj7sppPfJiX3WZhGG2uzu
- KuNJtUpaQzFF9j7At6TVD6ninw==
-X-Google-Smtp-Source: ABdhPJy0dgkTb52njNWz9LvzMjEGTgEAOOjcVV8QzWTIaTLpb3m5wGPLOarhcpcQDrQ3D+MMkn43tw==
-X-Received: by 2002:a05:6402:27d0:b0:41a:68bf:ff26 with SMTP id
- c16-20020a05640227d000b0041a68bfff26mr18293476ede.102.1650883976805; 
- Mon, 25 Apr 2022 03:52:56 -0700 (PDT)
-Received: from [192.168.0.241] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- w24-20020a50d798000000b00425eb9d893asm1016799edi.79.2022.04.25.03.52.55
+ bh=9EscMvNq76GeUom/FtzlsqDl8sdOCj3rZo00CWoiuwA=;
+ b=ZRZzvHsLika0BYsq3kKZOjxwv3Npd9h4JuQXuz7KD/P9PFBnlKQnMG+q2A4NFh54Cd
+ FoC1e1Oip6XlJzgd36lyqodte4oHSHne0fbhmsBhcMrkeCHs/msRKY2MGo9QleCNjX+J
+ GOfi7fBkQUtUmGzKrDvfZ0R6t59Ht9lGiBSnQ2QtJI1tN9ZrwZsRuP3XxLP493AdUJrR
+ 55GbtB78SLCV6dKDxVCDnlyuQSULkUSZPU5GKM2BFzxSL65b1+sryk+phSNGpjpPnpBl
+ eBRZzWHNsjsrwkjKv9uoy3eMtNc8qp0VwmpwquJLJm+pmfN/dpMpPNleOJ13CV/vAQ1a
+ q8MQ==
+X-Gm-Message-State: AOAM533aKMtUNYgP86j/uLhRcrC2ZpUfs9HHFmjcjLOmJIEfPQc0ceVU
+ 48pV75utjqe4BunHWIYT40E=
+X-Google-Smtp-Source: ABdhPJx5UVMEI7qk+X/GYHCw8s1oJwyJxDKu2qUGV9WU7GKqAoeY+izqW35kJFgowSEYipjDWNs+cA==
+X-Received: by 2002:a5d:4a0a:0:b0:20a:c899:cb7b with SMTP id
+ m10-20020a5d4a0a000000b0020ac899cb7bmr13446037wrq.618.1650887465776; 
+ Mon, 25 Apr 2022 04:51:05 -0700 (PDT)
+Received: from [192.168.0.43] (static-35-180-85-188.ipcom.comunitel.net.
+ [188.85.180.35]) by smtp.gmail.com with ESMTPSA id
+ p125-20020a1c2983000000b0038e5ca446bcsm11573603wmp.5.2022.04.25.04.51.04
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 Apr 2022 03:52:56 -0700 (PDT)
-Message-ID: <9ff80bc2-d63b-14aa-5769-20bff6e3a21e@linaro.org>
-Date: Mon, 25 Apr 2022 12:52:55 +0200
+ Mon, 25 Apr 2022 04:51:05 -0700 (PDT)
+Message-ID: <20650a35-5392-43fa-8b70-902eea860d92@gmail.com>
+Date: Mon, 25 Apr 2022 13:51:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH V4 01/14] dt-bindings: cpufreq: mediatek: Add MediaTek CCI
- property
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v10 3/6] ARM: dts: add clock support for Airoha EN7523
 Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
- viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org,
- matthias.bgg@gmail.com
-Cc: jia-wei.chang@mediatek.com, roger.lu@mediatek.com, hsinyi@google.com,
- khilman@baylibre.com, angelogioacchino.delregno@collabora.com,
- linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
- <20220422075239.16437-2-rex-bc.chen@mediatek.com>
- <f2e5a34b-ed02-91a1-bc7b-fecaa95e227e@linaro.org>
- <811bf944-a230-ab9b-583a-840e57af8a1e@linaro.org>
- <28f75ac2995b116af9b2accf760786d1d1798c93.camel@mediatek.com>
- <7873f0fa-25c3-191f-5096-3ceb9afd50cc@linaro.org>
- <c1b910098a0a5cbe06ec971c1bf745ac37986274.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <c1b910098a0a5cbe06ec971c1bf745ac37986274.camel@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, soc@kernel.org,
+ Rob Herring <robh+dt@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20220314084409.84394-1-nbd@nbd.name>
+ <20220314084409.84394-4-nbd@nbd.name>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220314084409.84394-4-nbd@nbd.name>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_035302_786958_E85AF4D6 
-X-CRM114-Status: GOOD (  13.69  )
+X-CRM114-CacheID: sfid-20220425_045109_619226_4FE745A8 
+X-CRM114-Status: GOOD (  14.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,50 +88,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/04/2022 12:20, Rex-BC Chen wrote:
->> However I am not sure if you solved your problem... see below:
->>
->>> For example:
->>> mediatek cci set 1.2V originally. When cpufreq want to adjust lower
->>> frequency adn set voltage to 1.0V.
->>> The framework will remain using 1.2V to prevent crash of mediatek
->>> cci.
->>
->> No, regulator_set_voltage() for proc_reg says:
->> "NOTE: If the regulator is shared between several devices then the
->> lowest
->>  request voltage that meets the system constraints will be used."
->>
->> Not the highest. So when your devfreq and cpufreq boots, calling
->> regulator_set_voltage will still cause high frequency and low
->> voltage.
->>
-> 
-> From the driver comment, I think it still needs to match "meets the
-> system constraints".
-> 
-> From drivers, we can trace the driver and it finally to
-> regulator_get_optimal_voltage().
-> In [1], the framework will get max voltage while finding each device's
-> voltage.
-> 
-> [1]: 
-> https://elixir.bootlin.com/linux/latest/source/drivers/regulator/core.c#L3815
 
-Right, actually in your case it's the regulator_check_consumers() above
-that line, because you
 
-I think it's quite generic problem, so would be worth solving for more
-regulator consumers, but your approach is fine. At least I do not have
-anything smarter, at the moment.
+On 14/03/2022 09:44, Felix Fietkau wrote:
+> This driver only registers fixed rate clocks, since the clocks are fully
+> initialized by the boot loader and should not be changed later, according
+> to Airoha.
+> 
+> Signed-off-by: Felix Fietkau <nbd@nbd.name>
 
-Best regards,
-Krzysztof
+Applied, thanks!
+
+> ---
+>   arch/arm/boot/dts/en7523.dtsi | 8 ++++++++
+>   1 file changed, 8 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/en7523.dtsi b/arch/arm/boot/dts/en7523.dtsi
+> index 36597f587f46..2e705b87b6c1 100644
+> --- a/arch/arm/boot/dts/en7523.dtsi
+> +++ b/arch/arm/boot/dts/en7523.dtsi
+> @@ -3,6 +3,7 @@
+>   #include <dt-bindings/interrupt-controller/irq.h>
+>   #include <dt-bindings/interrupt-controller/arm-gic.h>
+>   #include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/clock/en7523-clk.h>
+>   
+>   / {
+>   	interrupt-parent = <&gic>;
+> @@ -83,6 +84,13 @@ L2_0: l2-cache0 {
+>   		};
+>   	};
+>   
+> +	scu: system-controller@1fa20000 {
+> +		compatible = "airoha,en7523-scu";
+> +		reg = <0x1fa20000 0x400>,
+> +		      <0x1fb00000 0x1000>;
+> +		#clock-cells = <1>;
+> +	};
+> +
+>   	gic: interrupt-controller@9000000 {
+>   		compatible = "arm,gic-v3";
+>   		interrupt-controller;
 
 _______________________________________________
 Linux-mediatek mailing list
