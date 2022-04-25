@@ -4,89 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31261C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 08:55:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78081C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 08:58:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mXzfZPsaWrmfrW8v/UBR3vr9e+olBDX6FpAfml4QuuE=; b=t9HYQ6gIQcVLCo
-	CzuA15xrBESzcs0lMOz5Ny1N7lKIBMxz7N44v7n5EfDT/17WzpUDeSQkjDi7IjSeJzygW0qK7Wa6D
-	jhl5PhlG+pyJ6tjUrDmAM9agLfrD3K24TC4IGOJADXhqZUbtHAOwuB9QsPaGllNTQg9dacF4D7Av6
-	PE1z+/HEtoD8h6ZcWbd3TFlLxgEOmc9eMXxkvNeEPSt8Enhq2JqDI041DEvtHYQmW90iJ+xbprbzW
-	AdHSwS+Gd4RxyaKAtB8ySW8T/nzUT8anw7gFY06WzmMsAAFyOSpYFq/VOMmlOy60NJgJCcr9x7Jba
-	JwwTqKlmX7nEtgy/hUBw==;
+	List-Owner; bh=5ciGRb92CO8YzqhODfuMrwN5FJ1k0QVGcrQT657k314=; b=rKoVrJ/j5Hf7OD
+	K1SCrnu4c56I9ZZq87MITUTM6Q9UJr19RCgTeA5MUlq29RXnK0eyl8mSA4GPmXyR5qBwXrrYYabDO
+	MKWUvX6MS8nh/l//x79PTE11qi3fZOH8eMTIYy1rES1+7pzxuphozX3uOk1BGsfW595XcizrauF/3
+	e9QUABgEyWMxCalZuYhNitok5cVhLqX9fP41iwv70AbOo45nqajc4fCCouynR3MxV6z1UuHkj4yA8
+	4wVGSIOdBHUV0ki3OW9p1LYqOZURBmZL9m54oXx7gZ3vq95Zg1/qYzKN9ZGLinOY+Bl7tWkwV/Ull
+	1xwSQ+EE7QmVu85jXnpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1niuVV-008pKn-E2; Mon, 25 Apr 2022 08:55:45 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1niuXz-008pnW-5Q; Mon, 25 Apr 2022 08:58:19 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1niuVJ-008pJa-VL
- for linux-mediatek@lists.infradead.org; Mon, 25 Apr 2022 08:55:35 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id k23so28287277ejd.3
- for <linux-mediatek@lists.infradead.org>; Mon, 25 Apr 2022 01:55:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=IcmGf7R5oIWNJUW6YdAgXljamJfNzgr+F6RCVbOHK3E=;
- b=lnUMKK+1OUk9P/nASz5GkwqePWMvnfPG+lQJXZnZkCmVP4gQrMoFLGORFc2hEqvtZK
- sAb2sZQC8Fdx16dteLPlaMVwYzc07q+My98+bFhcwvZ2Tc4T7zlDoq0YuBAr5W1MeCIW
- 4HghiKVjdKGLQp+/LutqOTTazYWT1v2za6tbR00yDrK036UXNGvWVe7auEC2ckESqqwh
- Dhz9QIdvpTrJvAJ+AMtG21UdzhQVOK56D5HzpmwzLXsAzKxwunKrBjGFXE2VfsxRbUzv
- cv7XDo2P/2VaJtvuBDJW9PSyA3dqjQ4w/LrPHrbvk3rc+IC4oI6yB0nDHKHRS+j+Ddif
- hAOw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=IcmGf7R5oIWNJUW6YdAgXljamJfNzgr+F6RCVbOHK3E=;
- b=VutecO23PCdHoFT4UeozR/B7o93eMu973KI/dIJGif6fOGT0ZxziCCy8uQDN7+g75T
- pnD6HLdG9HrKK39lMGG8dymRS3X8mJg3cmRMrxezTGtIkJ14CLv/e3W20j4JOFBqevgx
- 3mYegT447LX6Hwio8vR/fUsPlQiZnOjabAdhMaJB/AZkO4jmZb/5E2nP4RTNPS1HmKjF
- b+Q7bNM8c7eaFd5mBgUXCKv4JQ6F1RAjZzERP+oNcPvfhAkR/dZS+D1p7qqSyOqWFWHf
- BVtSYR5kAwZH7u8ersGswuPxJiLH0oI53ae2Sf/oDaTtUC7SDnkc7mHqD29v+N1agB63
- 3bBA==
-X-Gm-Message-State: AOAM532Oo1LDBZ+K/BJbpMX5Km0NxVdn1UN9u+cdp3400L7RXkCIYbrR
- MEM92+PBzH2kQEsbkMcH8mti2g==
-X-Google-Smtp-Source: ABdhPJzVqoCmpWy0gNz3RLiWwx/wLVbIA8e6fPMteVvo0inali36p0hVI/pVtBzsJGwIy/owIIIRYw==
-X-Received: by 2002:a17:906:49d4:b0:6d6:e5ec:9a23 with SMTP id
- w20-20020a17090649d400b006d6e5ec9a23mr15443661ejv.79.1650876930923; 
- Mon, 25 Apr 2022 01:55:30 -0700 (PDT)
-Received: from [192.168.0.240] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- c5-20020a170906d18500b006ce371f09d4sm3368048ejz.57.2022.04.25.01.55.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 Apr 2022 01:55:30 -0700 (PDT)
-Message-ID: <7873f0fa-25c3-191f-5096-3ceb9afd50cc@linaro.org>
-Date: Mon, 25 Apr 2022 10:55:29 +0200
+ id 1niuXw-008pmr-Hl; Mon, 25 Apr 2022 08:58:18 +0000
+X-UUID: 0a4b32c3930d4f3cafe05b89bbee13c8-20220425
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:652e1bed-bd2c-4d83-a792-c7244122a1e1, OB:0,
+ LO
+ B:0,IP:0,URL:25,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,A
+ CTION:release,TS:5
+X-CID-META: VersionHash:faefae9, CLOUDID:8c7203f0-06b0-4305-bfbf-554bfc9d151a,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 0a4b32c3930d4f3cafe05b89bbee13c8-20220425
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1543545888; Mon, 25 Apr 2022 01:58:12 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 25 Apr 2022 01:48:10 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 25 Apr 2022 16:48:03 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 25 Apr 2022 16:48:03 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski@canonical.com>
+CC: Lala Lin <lala.lin@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ "Chen-Yu Tsai" <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Subject: [PATCH v2 1/1] dt-bindings: nvmem: mediatek: Convert mtk-efuse
+ binding to YAML
+Date: Mon, 25 Apr 2022 16:48:00 +0800
+Message-ID: <20220425084800.2021-2-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220425084800.2021-1-allen-kh.cheng@mediatek.com>
+References: <20220425084800.2021-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH V4 01/14] dt-bindings: cpufreq: mediatek: Add MediaTek CCI
- property
-Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, rafael@kernel.org,
- viresh.kumar@linaro.org, robh+dt@kernel.org, krzk+dt@kernel.org,
- matthias.bgg@gmail.com
-Cc: jia-wei.chang@mediatek.com, roger.lu@mediatek.com, hsinyi@google.com,
- khilman@baylibre.com, angelogioacchino.delregno@collabora.com,
- linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
- <20220422075239.16437-2-rex-bc.chen@mediatek.com>
- <f2e5a34b-ed02-91a1-bc7b-fecaa95e227e@linaro.org>
- <811bf944-a230-ab9b-583a-840e57af8a1e@linaro.org>
- <28f75ac2995b116af9b2accf760786d1d1798c93.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <28f75ac2995b116af9b2accf760786d1d1798c93.camel@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_015534_066131_53CDBE6B 
-X-CRM114-Status: GOOD (  29.29  )
+X-CRM114-CacheID: sfid-20220425_015816_635398_A4D1CFE0 
+X-CRM114-Status: GOOD (  14.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,121 +85,144 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/04/2022 08:19, Rex-BC Chen wrote:
-> On Fri, 2022-04-22 at 19:34 +0200, Krzysztof Kozlowski wrote:
->> On 22/04/2022 19:26, Krzysztof Kozlowski wrote:
->>> On 22/04/2022 09:52, Rex-BC Chen wrote:
->>>> MediaTek Cache Coherent Interconnect (CCI) uses software devfreq
->>>> module
->>>> for scaling clock frequency and adjust voltage.
->>>> The phandle could be linked between CPU and MediaTek CCI for some
->>>> MediaTek SoCs, like MT8183 and MT8186.
->>>> Therefore, we add this property in cpufreq-mediatek.txt.
->>>>
->>>> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
->>>> ---
->>>>  .../devicetree/bindings/cpufreq/cpufreq-mediatek.txt         | 5
->>>> +++++
->>>>  1 file changed, 5 insertions(+)
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-
->>>> mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-
->>>> mediatek.txt
->>>> index b8233ec91d3d..3387e1e2a2df 100644
->>>> --- a/Documentation/devicetree/bindings/cpufreq/cpufreq-
->>>> mediatek.txt
->>>> +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-
->>>> mediatek.txt
->>>> @@ -20,6 +20,11 @@ Optional properties:
->>>>  	       Vsram to fit SoC specific needs. When absent, the
->>>> voltage scaling
->>>>  	       flow is handled by hardware, hence no software "voltage
->>>> tracking" is
->>>>  	       needed.
->>>> +- mediatek,cci:
->>>> +	MediaTek Cache Coherent Interconnect (CCI) uses the software
->>>> devfreq module to
->>>> +	scale the clock frequency and adjust the voltage.
->>>
->>> Devfreq is a SW mechanism, it should not be part of bindings
->>> description.
-> 
-> Hello Krzysztof,
-> 
-> The reason we want to get the "mediatek,cci":
-> We need to check the mediatek cci is ready and probed done.
-> Because cpufreq and mediatek cci are sharing the same regulator in
-> little core cpus.
-> Therefore, to prevent high frequency low voltage issue, we need to make
-> sure the mediatek cci is ready.
-> 
-> If mediatek cci is ready, cpufreq and mediatek cci will register the
-> same regulator and from regulator's implementation, if there are two
-> device using the same regulator, the framwork will make sure it's using
-> the max voltage.
+Convert MediaTek eFuse devicetree binding to YAML.
 
-Thanks for explanation. The property should be described with what you
-said here. The property and description should match hardware, so there
-is no place for devfreq. Instead mention that power rail is shared or
-voltage regulators are common.
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+---
+ .../devicetree/bindings/nvmem/mtk,efuse.yaml  | 70 +++++++++++++++++++
+ .../devicetree/bindings/nvmem/mtk-efuse.txt   | 43 ------------
+ 2 files changed, 70 insertions(+), 43 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/nvmem/mtk,efuse.yaml
+ delete mode 100644 Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
 
-However I am not sure if you solved your problem... see below:
+diff --git a/Documentation/devicetree/bindings/nvmem/mtk,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mtk,efuse.yaml
+new file mode 100644
+index 000000000000..d056bc61dd5b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/nvmem/mtk,efuse.yaml
+@@ -0,0 +1,70 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/nvmem/mtk,efuse.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek eFuse device tree bindings
++
++maintainers:
++  - Lala Lin <lala.lin@mediatek.com>
++  - Allen-KH Cheng <allen-kh.cheng@mediatek.com>
++
++allOf:
++  - $ref: "nvmem.yaml#"
++
++properties:
++  compatible:
++    oneOf:
++      - enum:
++          - mediatek,mt8173-efuse
++          - mediatek,efuse
++      - items:
++          - enum:
++              - mediatek,mt7622-efuse
++              - mediatek,mt7623-efuse
++              - mediatek,mt8183-efuse
++              - mediatek,mt8192-efuse
++              - mediatek,mt8195-efuse
++              - mediatek,mt8516-efuse
++          - const: mediatek,efuse
++
++  reg:
++    maxItems: 1
++
++patternProperties:
++  "^.*@[0-9a-f]+$":
++    type: object
++
++    properties:
++      reg:
++        maxItems: 1
++        description:
++          Offset and size in bytes within the storage device.
++
++    required:
++      - reg
++
++    additionalProperties: false
++
++required:
++  - compatible
++  - reg
++
++unevaluatedProperties: false
++
++examples:
++  - |
++
++    efuse: efuse@10206000 {
++            compatible = "mediatek,mt8173-efuse";
++            reg	   = <0x10206000 0x1000>;
++            #address-cells = <1>;
++            #size-cells = <1>;
++
++            /* Data cells */
++            thermal_calibration: calib@528 {
++                reg = <0x528 0xc>;
++            };
++    };
++...
+diff --git a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+deleted file mode 100644
+index 39d529599444..000000000000
+--- a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
++++ /dev/null
+@@ -1,43 +0,0 @@
+-= Mediatek MTK-EFUSE device tree bindings =
+-
+-This binding is intended to represent MTK-EFUSE which is found in most Mediatek SOCs.
+-
+-Required properties:
+-- compatible: should be
+-	      "mediatek,mt7622-efuse", "mediatek,efuse": for MT7622
+-	      "mediatek,mt7623-efuse", "mediatek,efuse": for MT7623
+-	      "mediatek,mt8173-efuse" or "mediatek,efuse": for MT8173
+-	      "mediatek,mt8192-efuse", "mediatek,efuse": for MT8192
+-	      "mediatek,mt8195-efuse", "mediatek,efuse": for MT8195
+-	      "mediatek,mt8516-efuse", "mediatek,efuse": for MT8516
+-- reg: Should contain registers location and length
+-- bits: contain the bits range by offset and size
+-
+-= Data cells =
+-Are child nodes of MTK-EFUSE, bindings of which as described in
+-bindings/nvmem/nvmem.txt
+-
+-Example:
+-
+-	efuse: efuse@10206000 {
+-		compatible = "mediatek,mt8173-efuse";
+-		reg	   = <0 0x10206000 0 0x1000>;
+-		#address-cells = <1>;
+-		#size-cells = <1>;
+-
+-		/* Data cells */
+-		thermal_calibration: calib@528 {
+-			reg = <0x528 0xc>;
+-		};
+-	};
+-
+-= Data consumers =
+-Are device nodes which consume nvmem data cells.
+-
+-For example:
+-
+-	thermal {
+-		...
+-		nvmem-cells = <&thermal_calibration>;
+-		nvmem-cell-names = "calibration";
+-	};
+-- 
+2.18.0
 
-> For example:
-> mediatek cci set 1.2V originally. When cpufreq want to adjust lower
-> frequency adn set voltage to 1.0V.
-> The framework will remain using 1.2V to prevent crash of mediatek cci.
-
-No, regulator_set_voltage() for proc_reg says:
-"NOTE: If the regulator is shared between several devices then the lowest
- request voltage that meets the system constraints will be used."
-
-Not the highest. So when your devfreq and cpufreq boots, calling
-regulator_set_voltage will still cause high frequency and low voltage.
-
-> 
-> Therefore, we need to confirm the mediatek cci is ready and register
-> the regulator.
->
->>>
->>>> +	For details, please refer to
->>>> +	Documentation/devicetree/bindings/interconnect/mediatek,cci.yam
->>>> l
->>>
->>> Since the file does not exist, I have troubles reviewing it. First
->>> of
->>> all, you already have "mediatek,cci-control" property in DT, so why
->>> using different name?
-> 
-> I am not sure where is "mediatek,cci-control". I think this name is not
-> used before.
-> 
-
-Documentation/devicetree/bindings/net/mediatek-net.txt
-
->>>
->>> Second, it looks like you want to put devfreq into bindings instead
->>> of
->>> using proper interconnect bindings.
->>
->> Actually judging by the driver this looks like some
->> device-boot-time-ordering, so I wonder whether this is a proper way
->> to
->> express it.
-> 
-> Yes, we need to get the mediatek cci node and let cpufreq and mediatek
-> cci link succefully. In that case, we can know the mediatek cci is
-> ready. And we can set the voltage using the regulator framwork.
-> 
-> [1]: 
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20220422075239.16437-11-rex-bc.chen@mediatek.com/
-
-Yes, I see the use case. I am not convinced yet whether this is proper
-approach...
-
-
-Best regards,
-Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
