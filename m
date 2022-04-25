@@ -4,62 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80952C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 03:40:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58552C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 03:45:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1ovh3iSp/gvvgvMEFV1NRW4u7nY6sW864lgSOyxCgeQ=; b=D9ATjRObsE38JL
-	bI2hGVMEXCB+CeYoV6F9aOUBY10UJFwaehmHks7LurZ13zuZFYzOmLPWdHs3C4DZxxSIYuPvI5+80
-	ZNrbAeu1pxkXD4MYmIoGUurDaxqzAaRjuecYZgGrwixGlUZHgsOU0zk4wALJWkbCRuTgn/exfZQ79
-	fp2exXybJ4BVSt/l88WkOx/Q6AbdS0OsZZwU8G0TZjQquXdrrvreDP1Gu2SMpkH2jSJ1pYNHBfXuF
-	zAPFO8XSu7e/z+bg6qAhr0nQjh4fnPTz62PBMJxnkE/XpCBnPg012fSsWM2CUYmxZwrnHCyEOJqQM
-	vUeibwaUXPjMVV0mJ5bA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+KICrFm5Rpk4oHnDGsQLqNz2xIUwKVTc6cAgnDErWNs=; b=jX3Og0AisPsSew
+	O1nYTs/6z/kY8wNVfNcCYoUgr0yaHdFWbvfZ/dc3bczjrPPYTNQoPmsI8kN8o1Y0MRQ75DsfPTPS3
+	eGnGxstslq5i2J0N3B2yKN8k/I06OwMkPppm1iQuetRTCVxi+fJki69PiuqYiHxtXNLHKZ22eVUHB
+	ADjS8G4XF+T7TCWUanIu91sVbLM2ZU8HxcESuNXddfo4yBP8Rg/3a1oTJlWayyF2rAzfYiNFekuqR
+	y2/m6LONJB0pqri687ONtXNSe2uEqN3BOIKB7GaHcOntuPdpD5Br4KzvCjHJCBnIUMiFuh1TXwN2+
+	AN9jjCQfoycNAZb7enUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nipaa-0080MD-Ve; Mon, 25 Apr 2022 03:40:41 +0000
-Received: from m1541.mail.126.com ([220.181.15.41])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nipaM-0080C3-0K; Mon, 25 Apr 2022 03:40:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=126.com;
- s=s110527; h=Date:From:Subject:MIME-Version:Message-ID; bh=Xb2jU
- I68L4ingevBNbIwSF+oSRTmjSydhDTtvsIxWcs=; b=pFYM06IGpHTkeYdf0zJK8
- +GSBQZCR2VR6HNUh6tNvRFpRpwCXpr7bY9XUlgBFkn2vjdilIyecsrQSVdy9lRd9
- bpKLnWsW46UYad2Yv2T7a0Tl6uAk846LQizehMhZytT7oOvoYiNQnQXECBDZskko
- /wBb7WgdTAp6yJc+RnfCNA=
-Received: from zhaojunkui2008$126.com ( [112.80.34.205] ) by
- ajax-webmail-wmsvr41 (Coremail) ; Mon, 25 Apr 2022 11:40:02 +0800 (CST)
-X-Originating-IP: [112.80.34.205]
-Date: Mon, 25 Apr 2022 11:40:02 +0800 (CST)
-From: z  <zhaojunkui2008@126.com>
-To: "Jakub Kicinski" <kubakici@wp.pl>
-Cc: "Kalle Valo" <kvalo@kernel.org>, "David S. Miller" <davem@davemloft.net>, 
- "Paolo Abeni" <pabeni@redhat.com>, 
- "Matthias Brugger" <matthias.bgg@gmail.com>, 
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- bernard@vivo.com
-Subject: Re:Re: [PATCH v2] mediatek/mt7601u: add debugfs exit function
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.13 build 20210622(1d4788a8)
- Copyright (c) 2002-2022 www.mailtech.cn 126com
-In-Reply-To: <20220422124704.259244e7@kicinski-fedora-PC1C0HJN>
-References: <20220422080854.490379-1-zhaojunkui2008@126.com>
- <20220422124704.259244e7@kicinski-fedora-PC1C0HJN>
+	id 1nipfW-0081gJ-5M; Mon, 25 Apr 2022 03:45:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nipfT-0081f1-T4; Mon, 25 Apr 2022 03:45:45 +0000
+X-UUID: 47e81b280d25471fb74176fdcb8af837-20220424
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:1cea514e-12f9-4bfd-83d3-a787306a5b3e, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-20
+X-CID-META: VersionHash:faefae9, CLOUDID:69bccdf0-da02-41b4-b6df-58f4ccd36682,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 47e81b280d25471fb74176fdcb8af837-20220424
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1734374537; Sun, 24 Apr 2022 20:45:42 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 24 Apr 2022 20:45:40 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 25 Apr 2022 11:45:38 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 25 Apr 2022 11:45:38 +0800
+From: jason-jh.lin <jason-jh.lin@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>
+CC: <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, CK Hu
+ <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>, "Jason-JH .
+ Lin" <jason-jh.lin@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, "Singo
+ Chang" <singo.chang@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH] soc: mediatek: mutex: remove mt8195 MOD0 and SOF0 definition
+Date: Mon, 25 Apr 2022 11:45:37 +0800
+Message-ID: <20220425034537.28989-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Message-ID: <15b4f.2aad.1805ece06a1.Coremail.zhaojunkui2008@126.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: KcqowABHV98TGGZi9k4TAA--.52204W
-X-CM-SenderInfo: p2kd0y5xqn3xasqqmqqrswhudrp/1tbiqBPtqlpD9keacgAAs8
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220424_204026_428162_EEE8C9B7 
-X-CRM114-Status: UNSURE (   9.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220424_204543_984153_D020C964 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,35 +77,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="gbk"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CkF0IDIwMjItMDQtMjMgMDM6NDc6MDQsICJKYWt1YiBLaWNpbnNraSIgPGt1YmFraWNpQHdwLnBs
-PiB3cm90ZToKPk9uIEZyaSwgMjIgQXByIDIwMjIgMDE6MDg6NTQgLTA3MDAgQmVybmFyZCBaaGFv
-IHdyb3RlOgo+PiBXaGVuIG10NzYwMXUgbG9hZGVkLCB0aGVyZSBhcmUgdHdvIGNhc2VzOgo+PiBG
-aXJzdCB3aGVuIG10NzYwMXUgaXMgbG9hZGVkLCBpbiBmdW5jdGlvbiBtdDc2MDF1X3Byb2JlLCBp
-Zgo+PiBmdW5jdGlvbiBtdDc2MDF1X3Byb2JlIHJ1biBpbnRvIGVycm9yIGxhYmxlIGVycl9odywK
-Pj4gbXQ3NjAxdV9jbGVhbnVwIGRpZG5gdCBjbGVhbnVwIHRoZSBkZWJ1Z2ZzIG5vZGUuCj4+IFNl
-Y29uZCB3aGVuIHRoZSBtb2R1bGUgZGlzY29ubmVjdCwgaW4gZnVuY3Rpb24gbXQ3NjAxdV9kaXNj
-b25uZWN0LAo+PiBtdDc2MDF1X2NsZWFudXAgZGlkbmB0IGNsZWFudXAgdGhlIGRlYnVnZnMgbm9k
-ZS4KPj4gVGhpcyBwYXRjaCBhZGQgZGVidWdmcyBleGl0IGZ1bmN0aW9uIGFuZCB0cnkgdG8gY2xl
-YW51cCBkZWJ1Z2ZzCj4+IG5vZGUgd2hlbiBtdDc2MDF1IGxvYWRlZCBmYWlsIG9yIHVubG9hZGVk
-Lgo+PiAKPj4gU2lnbmVkLW9mZi1ieTogQmVybmFyZCBaaGFvIDx6aGFvanVua3VpMjAwOEAxMjYu
-Y29tPgo+Cj5BaCwgbWlzc2VkIHRoYXQgdGhlcmUgd2FzIGEgdjIuIE15IHBvaW50IHN0YW5kcywg
-d2lwaHkgZGVidWdmcyBkaXIKPnNob3VsZCBkbyB0aGUgY2xlYW51cC4KPgo+RG8geW91IGVuY291
-bnRlciBwcm9ibGVtcyBpbiBwcmFjdGljZSBvciBhcmUgeW91IHNlbmRpbmcgdGhpcyBwYXRjaGVz
-Cj5iYXNlZCBvbiByZWFkaW5nIC8gc3RhdGljIGFuYWx5c2lzIG9mIHRoZSBjb2RlIG9ubHkuCgpI
-aSBKYWt1YiBLaWNpbnNraToKClRoZSBpc3N1ZSBoZXJlIGlzIGZvdW5kIGJ5IHJlYWRpbmcgY29k
-ZS4KSSByZWFkIHRoZSBkcml2ZXJzL25ldC93aXJlbGVzcyBjb2RlIGFuZCBmb3VuZCB0aGF0IG1h
-bnkgbW9kdWxlcyBhcmUgbm90IGNsZWFudXAgdGhlIGRlYnVnZnMuIApJIHNvcnRlZCBvdXQgdGhl
-IG1vZHVsZXMgdGhhdCB3ZXJlIG5vdCBjbGVhbmVkIHVwIHRoZSBkZWJ1Z2ZzOgouL3RpL3dsMTh4
-eAouL3RpL3dsMTJ4eAouL2ludGVsL2l3bHdpZmkKLi9pbnRlbC9pd2x3aWZpCi4vbWVkaWF0ZWsv
-bXQ3NgpJIGFtIG5vdCBzdXJlIHdoZXRoZXIgdGhpcyBwYXJ0IGlzIHdlbGNvbWUgdG8ga2VybmVs
-IHNvIEkgc3VibWl0dGVkIGEgcGF0Y2guCklmIHlvdSBoYXZlIGFueSBzdWdnZXN0aW9ucywgd2Vs
-Y29tZSB0byBwdXQgZm9yd2FyZCBmb3IgZGlzY3Vzc2lvbiwgdGhhbmsgeW91o6EKCkJSLy9CZXJu
-YXJkCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlh
-dGVrCg==
+From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+
+Using mt8183 MDO0 and SOF0 definition instead of creating new one for
+mt8195.
+
+Fixes: 8fdb61f1933a ("soc: mediatek: add mtk-mutex support for mt8195 vdosys0")
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-mutex.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+index 9184684baf1d..981d56967e7a 100644
+--- a/drivers/soc/mediatek/mtk-mutex.c
++++ b/drivers/soc/mediatek/mtk-mutex.c
+@@ -17,9 +17,6 @@
+ #define MT8183_MUTEX0_MOD0			0x30
+ #define MT8183_MUTEX0_SOF0			0x2c
+ 
+-#define MT8195_DISP_MUTEX0_MOD0			0x30
+-#define MT8195_DISP_MUTEX0_SOF			0x2c
+-
+ #define DISP_REG_MUTEX_EN(n)			(0x20 + 0x20 * (n))
+ #define DISP_REG_MUTEX(n)			(0x24 + 0x20 * (n))
+ #define DISP_REG_MUTEX_RST(n)			(0x28 + 0x20 * (n))
+@@ -422,8 +419,8 @@ static const struct mtk_mutex_data mt8192_mutex_driver_data = {
+ static const struct mtk_mutex_data mt8195_mutex_driver_data = {
+ 	.mutex_mod = mt8195_mutex_mod,
+ 	.mutex_sof = mt8195_mutex_sof,
+-	.mutex_mod_reg = MT8195_DISP_MUTEX0_MOD0,
+-	.mutex_sof_reg = MT8195_DISP_MUTEX0_SOF,
++	.mutex_mod_reg = MT8183_MUTEX0_MOD0,
++	.mutex_sof_reg = MT8183_MUTEX0_SOF0,
+ };
+ 
+ struct mtk_mutex *mtk_mutex_get(struct device *dev)
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
