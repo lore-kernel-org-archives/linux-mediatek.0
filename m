@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C620C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Apr 2022 23:31:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD76EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 02:06:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QJpaEqwiXu8n0iRhVUYHISy3kanp6iueHyZ03+C4AyY=; b=u6SwJi4XFHuL01
-	vHVcjvqxfradVxHrHwKGAh2zl/1USYUl14tW1RXWIusEZxnirSWuCyF8hfFAcKvQLDzicwVogk/Vc
-	UrXREtRMFseCGPM5wAEqrne2Gm0XwpHi0a5X0xY+NWIKbjLL9uWDoDWDt8jgxoIJyqff1vnR5kZ1S
-	xfDcRY1CRwwrEdnj+Gyn2rzA/8eH938sOdO8gIER06irTg9XqUajhccgtdDrkYoMb4hsnSq75/n3s
-	IpzJjdTd8xNrSKVcx/8E5i9nKR66SjyHhjBhgEL78YaRuCqS87IDpGizkAsFOKL9FxkTfuhh3dzIL
-	3wTVc4f1+sBV6W2p7xBw==;
+	List-Owner; bh=h4BnMU14doZ6wXLOXuoqkFbxaduHc+YSGQ09bTuTwjg=; b=vNPmyZN5vXKowB
+	o13PNOJcyIvSC/i7CL2kqa12TZarNKdqoy7TQxrE/ihLBid5ZeWjAYNgmxkELo8RtEp5KJn6yn5b4
+	GzUtUP3PKdTnCXNSKsWUmZFMevtbLyjx9riSSBcG+oAhGqTUZWcrvSduv5FX1hLfUUpxsiHAS50r+
+	xR27poE/c7zJp2Hheu35IesiEAlU/Emr3zCoveo06B9kH5nfpEt8PcRxt8bmfLLlEE1fMyz+5is9g
+	tOmeQXj9Kj0rkvvHRNZtxzRqFZTBhYXA2qoBG567AZUjH/Fud3f5GFHtOXre9bEKMUJ6iaffmClAz
+	CSCudqwF0xYZXKXt3oOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nilhk-007Wys-KA; Sun, 24 Apr 2022 23:31:48 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nio6y-007ryI-1k; Mon, 25 Apr 2022 02:06:00 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nilhB-007WwL-LF; Sun, 24 Apr 2022 23:31:16 +0000
-X-UUID: 987afddb421647619a5ef3ce6148eb84-20220424
+ id 1nio6l-007rwp-N2; Mon, 25 Apr 2022 02:05:50 +0000
+X-UUID: 39f0df77c3ee44b0b5e40c57a81abcd9-20220424
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:66e98fcc-1e04-4a35-bd1f-a1cc7895891f, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:67c13c82-02b6-40bd-9a33-5502e146d54f, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:fe19efef-06b0-4305-bfbf-554bfc9d151a,
+X-CID-META: VersionHash:faefae9, CLOUDID:0fa7c9f0-da02-41b4-b6df-58f4ccd36682,
  C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:-5,EDM:-3,File:nil,QS:0,BEC:ni
- l
-X-UUID: 987afddb421647619a5ef3ce6148eb84-20220424
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 39f0df77c3ee44b0b5e40c57a81abcd9-20220424
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 764802031; Sun, 24 Apr 2022 16:31:07 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 24 Apr 2022 16:28:47 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 25 Apr 2022 07:28:45 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 25 Apr 2022 07:28:45 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <lkp@intel.com>
-CC: <angelogioacchino.delregno@collabora.com>, <hverkuil@xs4all.nl>,
- <iommu@lists.linux-foundation.org>, <joro@8bytes.org>,
- <kbuild-all@lists.01.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <llvm@lists.linux.dev>,
- <matthias.bgg@gmail.com>, <mchehab@kernel.org>, <miles.chen@mediatek.com>,
- <will@kernel.org>, <yong.wu@mediatek.com>
-Subject: Re: [PATCH] iommu/mediatek: fix NULL pointer dereference when
- printing dev_name
-Date: Mon, 25 Apr 2022 07:28:45 +0800
-Message-ID: <20220424232845.25277-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <202204231446.IYKdZ674-lkp@intel.com>
-References: <202204231446.IYKdZ674-lkp@intel.com>
+ with ESMTP id 869754317; Sun, 24 Apr 2022 19:05:39 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 24 Apr 2022 19:05:37 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 25 Apr 2022 10:05:27 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 25 Apr 2022 10:05:27 +0800
+Message-ID: <862706781d408669cd80e7e041d96a878178283c.camel@mediatek.com>
+Subject: Re: [PATCH v3 1/1] pwrap: mediatek: fix FSM timeout issue
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Zhiyong Tao <zhiyong.tao@mediatek.com>, <lee.jones@linaro.org>,
+ <robh+dt@kernel.org>, <matthias.bgg@gmail.com>, <lgirdwood@gmail.com>,
+ <broonie@kernel.org>, <eddie.huang@mediatek.com>, <a.zummo@towertech.it>,
+ <alexandre.belloni@bootlin.com>, <fshao@chromium.org>
+CC: <srv_heupstream@mediatek.com>, <hui.liu@mediatek.com>,
+ <tinghan.shen@mediatek.com>, <hsin-hsiung.wang@mediatek.com>,
+ <sean.wang@mediatek.com>, <macpaul.lin@mediatek.com>, <wen.su@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-rtc@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Date: Mon, 25 Apr 2022 10:05:27 +0800
+In-Reply-To: <20220424025738.32271-2-zhiyong.tao@mediatek.com>
+References: <20220424025738.32271-1-zhiyong.tao@mediatek.com>
+ <20220424025738.32271-2-zhiyong.tao@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220424_163113_727717_900881A8 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20220424_190547_804935_51555BF5 
+X-CRM114-Status: GOOD (  19.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,49 +87,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->Hi Miles,
->
->Thank you for the patch! Perhaps something to improve:
->
->[auto build test WARNING on joro-iommu/next]
->[also build test WARNING on v5.18-rc3 next-20220422]
->[If your patch is applied to the wrong git tree, kindly drop us a note.
->And when submitting patch, we suggest to use '--base' as documented in
->https://git-scm.com/docs/git-format-patch]
->
->url:    https://github.com/intel-lab-lkp/linux/commits/Miles-Chen/iommu-mediatek-fix-NULL-pointer-dereference-when-printing-dev_name/20220423-070605
->base:   https://git.kernel.org/pub/scm/linux/kernel/git/joro/iommu.git next
->config: hexagon-randconfig-r041-20220422 (https://download.01.org/0day-ci/archive/20220423/202204231446.IYKdZ674-lkp@intel.com/config)
->compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project 5bd87350a5ae429baf8f373cb226a57b62f87280)
->reproduce (this is a W=1 build):
->        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->        chmod +x ~/bin/make.cross
->        # https://github.com/intel-lab-lkp/linux/commit/85771767e503ca60069fe4e6ec2ddb80c7f9bafa
->        git remote add linux-review https://github.com/intel-lab-lkp/linux
->        git fetch --no-tags linux-review Miles-Chen/iommu-mediatek-fix-NULL-pointer-dereference-when-printing-dev_name/20220423-070605
->        git checkout 85771767e503ca60069fe4e6ec2ddb80c7f9bafa
->        # save the config file
->        mkdir build_dir && cp config build_dir/.config
->        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=hexagon SHELL=/bin/bash drivers/iommu/
->
->If you fix the issue, kindly add following tag as appropriate
->Reported-by: kernel test robot <lkp@intel.com>
->
->All warnings (new ones prefixed by >>):
->
->>> drivers/iommu/mtk_iommu.c:605:6: warning: variable 'larbdev' is uninitialized when used here [-Wuninitialized]
->           if (larbdev) {
->               ^~~~~~~
->   drivers/iommu/mtk_iommu.c:597:24: note: initialize the variable 'larbdev' to silence this warning
->           struct device *larbdev;
->                                 ^
->                                  = NULL
->   1 warning generated.
+On Sun, 2022-04-24 at 10:57 +0800, Zhiyong Tao wrote:
+> From: "Zhiyong.Tao" <zhiyong.tao@mediatek.com>
+> 
+> Fix pwrap FSM timeout issue which leads the system crash on GFX VSRAM
+> power on.
+> Add a usleep delay to avoid busy read for the H/W status.
+> For avoiding the system behavior(ex. disable interrupt in
+> suspend/resume
+> flow, schedule block task)cause if (time_after()) be turn first,
+> we change it after sleep delay.
+> Fixes: 1f022d84bd19 ("soc: mediatek: Add PMIC wrapper for MT8135 and
+> MT8173 SoCs")
+> 
+> Signed-off-by: Zhiyong.Tao <zhiyong.tao@mediatek.com>
+> ---
 
-Thanks for catching this, I will fix this in next version.
+Hello Zhiyong,
 
-thanks,
-Miles
+IMO, commit messages should be
+
+Fix pwrap FSM timeout issue....
+...we change it after sleep delay.
+
+(=> one blank)
+Fixes: 1f022d84bd19 ("soc: mediatek: Add PMIC wrapper for MT8135 and
+MT8173 SoCs")
+(=> oneline)
+
+Signed-off-by: Zhiyong.Tao <zhiyong.tao@mediatek.com>
+
+>  drivers/soc/mediatek/mtk-pmic-wrap.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> index 952bc554f443..ac7139a67e87 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -12,6 +12,7 @@
+>  #include <linux/platform_device.h>
+>  #include <linux/regmap.h>
+>  #include <linux/reset.h>
+> +#include <linux/delay.h>
+
+Sorry, I do not notice this in previous version. It will proper order
+the header in alphabet.
+
+ #include <linux/delay.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ #include <linux/reset.h>
+
+BRs,
+Rex
+>  
+>  #define PWRAP_MT8135_BRIDGE_IORD_ARB_EN		0x4
+>  #define PWRAP_MT8135_BRIDGE_WACS3_EN		0x10
+> @@ -1197,10 +1198,13 @@ static int pwrap_wait_for_state(struct
+> pmic_wrapper *wrp,
+>  	timeout = jiffies + usecs_to_jiffies(10000);
+>  
+>  	do {
+> -		if (time_after(jiffies, timeout))
+> -			return fp(wrp) ? 0 : -ETIMEDOUT;
+>  		if (fp(wrp))
+>  			return 0;
+> +
+> +		usleep_range(10, 11);
+> +
+> +		if (time_after(jiffies, timeout))
+> +			return fp(wrp) ? 0 : -ETIMEDOUT;
+>  	} while (1);
+>  }
+>  
+
 
 _______________________________________________
 Linux-mediatek mailing list
