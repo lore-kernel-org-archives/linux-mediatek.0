@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 452CFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 05:20:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EACBC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 05:36:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I9CHzVglj7rCqG4IlIKJzP7BjFoXAORfL69qCy9AHes=; b=U2iRwzQvHs8rnx
-	muLeiGgLSvYQxx8O0CwkU737M/U/dFEzPWK9MRi2A+s8BkSJ1Bh+ajWQyizdYdBofhC/fCxQbdK9b
-	opIg8l8Dj7yWmdMPH/tqPFEABcSPArPDcqjJFgDcbg4hmVobrQVfxalPHWp5ikYg3l9buMa70gJHz
-	LKS8ksdJ69CilQIkkHLfhb7SQzd5ch/1vpu4LRYPQoU4pqpPNhewxldBFat0ZMwvfO+awygIDnT50
-	Esne5FtAAWpgQxEBsKFqzXVRiW7jYb3BETeINsbghQCURZElaelrYGkm3JxCqbtS1n8pULEt/dgHt
-	S3d020yL7K5iR9/NGyBg==;
+	List-Owner; bh=lO1IN5mUh1vloEadkcNwvF4GBLG7iWbrFJZnQt1M4Vw=; b=trNBRdvySh8lh0
+	M5iwO7Vd6rOyixfpmIHLjTHdnIRwmXRde+2WDOIo28sqWaXsPKEh56TmkfmDKLw44NiC4g+yGyNa+
+	DsHjdJSbPSYwvcF3iOR+TkKwgGp/6p8IcoOyJuxf3VmgaefJPUf8jwogWYksHmNx2m3iTQwzOcweG
+	g42j0+oPTqhJ9GLf/Wob2NDmRiKzYdxf13Db/qo4nCIp4Tx1AJDslTNosblYAa8DSbQzGV4WkXXYQ
+	1CL+eUv4Js1esQCvwwOYVXUL9LR4MsHnx+4Id+yRHa7igycn4lZjiKOAZs6TBbmXnNpCpMTXbYWsf
+	8DE1TabP8GMib7WxFG7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nir9D-008Glu-P5; Mon, 25 Apr 2022 05:20:31 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1nirO5-008LbW-TF; Mon, 25 Apr 2022 05:35:53 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nir9B-008GlI-QT
- for linux-mediatek@lists.infradead.org; Mon, 25 Apr 2022 05:20:31 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id q8so1332238plx.3
- for <linux-mediatek@lists.infradead.org>; Sun, 24 Apr 2022 22:20:29 -0700 (PDT)
+ id 1nirO3-008LaH-Ke
+ for linux-mediatek@lists.infradead.org; Mon, 25 Apr 2022 05:35:53 +0000
+Received: by mail-pl1-x633.google.com with SMTP id s14so24538682plk.8
+ for <linux-mediatek@lists.infradead.org>; Sun, 24 Apr 2022 22:35:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=wF5i8xk4P1LEOT63TuPgxEiYnBH2yC9okqwO1o9drxw=;
- b=iOF65cuSfSWhbypFbJBFBMJTl+UaUdhiF/7UOHTuj27ZNSz5/JxyOam6auVBEv4cwM
- bNZ2b3e3LEQcqJY1P5BraqF5BoLFOCGDxNqadUu3ikfZ6xwt7FIeKmjEm/VDqPTJiMOm
- LckAitENppa3vGr18CjGEslM09RD3rZxokOKrDszaN/Mp51F8cEmmOF0cQD+0/qzTTWY
- lOCySKh4JVBwV56+RKOu2qkZuUOd+hKnmUEatiHkpLU9uUgAiJ8G3NHXyIAYebk1N+5V
- TvJQ5rgItaUCxXT4RgXzBB0mhNbY3iDkO+x+hvS7M6E12XKIZxTFbi7V63odtA3jgOep
- fAMA==
+ bh=T2oxad3crhUuqjbi9y9dJMMYmCSsVXY7Ev+0B50BV+0=;
+ b=qDZG8k5tDIz4MvJx+OydJWKJelMxeRJN8ZN7/tavSk56FfCWp42xJTc/KSu57tV/mZ
+ fQdDDY/W8fp3//v3jBXi+EzaeIh882MAvQjc/0XqLfj2HLHTZtv/toIofCQo0DwZJvn3
+ gUyEmZBF+WiGVi2Wo1cwrDkw9jzGN6wgZoPmaip+7AESEsTdWwnuB/R9UZMFolm1bJxN
+ qpTJpPhIsP6ZscFHpeY/314oVST+nmNBwwDHAwiXJQbBfWK/aHZGgFZJmLd+iYV1Fwng
+ Yrh+1rzRBta+YycnMKuqiaaC2ddt7bzzYWAre8fH0Gf9NAOQkK39kzEGpHxJRZ5yIjJt
+ nUOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=wF5i8xk4P1LEOT63TuPgxEiYnBH2yC9okqwO1o9drxw=;
- b=xxAr1Hy9is3t8ifDU1xGp6JdQ095Mx9HYfqouFF+XxHvVa7jnLHqmmq7JajswcfMKw
- pERV1j6g27xDDmBoNdAE2pN/lX4BWnPnaog0kHii/yKPs3iYEv5DggM3F/T0rxuJ+FR8
- NKDG656ux4aC0QpgGMFORyHYQ1PSRP5EqHtwAzRGDa9U2iwuWiytHBBCNPHjjpx/Y2zx
- arMtlRagaLx1TIHHW/zgK7laDri3O0opCsBv7gt7c8CwnO9JwA7AgH0VO/Zjp8KcbmJo
- G/no77drOm8TF0DX9Mr9BqrnSDN5oDWqueB2Fk4AF4gCtfHbWI6AQ2pjZw/IQCg/NEwp
- K+lA==
-X-Gm-Message-State: AOAM530ishUrx7RRJRkV3zjhRruELrwolXB53Pg1zWAW9FikIkSR28aJ
- 1mmFQyPPKaJTfg9ZaWckvvm8ug==
-X-Google-Smtp-Source: ABdhPJyx3JUtvWx3NQpb52P2n8q+ehDq/Rx6PQG85kdtJ6/357ZDL4xO9WmowD2hC1CP5Xtun1KeEQ==
-X-Received: by 2002:a17:902:690b:b0:159:65c:9044 with SMTP id
- j11-20020a170902690b00b00159065c9044mr16525727plk.47.1650864029110; 
- Sun, 24 Apr 2022 22:20:29 -0700 (PDT)
+ bh=T2oxad3crhUuqjbi9y9dJMMYmCSsVXY7Ev+0B50BV+0=;
+ b=nUv/XbL7XzHkVkJnqYqDDUTPbWo+xswbdqg3MIRYL/rBqAk3KjsutNd8NoIr8uvJZC
+ /+7eX9Ca+Cx0TPQswb4DcbiGJvy7OyLJXTf/MyTlE5Tgh+4qxcAN8LqZ3BAfyFXZw/QT
+ ZXGAZ1rCLstF+IHuWbVQzRudDUYIFSPSm7kwfywqsWeZF16MQfQlzfohKVIVjAwDINcq
+ OL2OEVX+bFZlE+nZFESLxKqp+0GPOIZV833HXEl3z9BE8J+Os8BFNyf4UVnoQMRHh9TF
+ PigACEvMlvnFVkYKztIZYQR5Ld9587rllFWYzH7L3f5h0E4jO4qH6DvO+ac3yQGx8EI3
+ ZoKA==
+X-Gm-Message-State: AOAM531EKE1SoZNC+hYUZZZpxtkZx5bMbCWw1kpIUFPa/lJUpfyVskBO
+ gi2eHnSpLFrKCDu5fzbKLqY5JA==
+X-Google-Smtp-Source: ABdhPJwnOiyciQSstf5JSoNHFmid7vkH7V23CkAvcMQLZ9tHebui2ItXK187LidqDcgz+iDQDT6d2Q==
+X-Received: by 2002:a17:903:410b:b0:15c:fd57:aa34 with SMTP id
+ r11-20020a170903410b00b0015cfd57aa34mr6247282pld.82.1650864950700; 
+ Sun, 24 Apr 2022 22:35:50 -0700 (PDT)
 Received: from localhost ([122.171.250.232]) by smtp.gmail.com with ESMTPSA id
- y16-20020a63b510000000b00398d8b19bbfsm8323113pge.23.2022.04.24.22.20.28
+ d141-20020a621d93000000b00505aa1026f1sm9768440pfd.51.2022.04.24.22.35.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 Apr 2022 22:20:28 -0700 (PDT)
-Date: Mon, 25 Apr 2022 10:50:26 +0530
+ Sun, 24 Apr 2022 22:35:50 -0700 (PDT)
+Date: Mon, 25 Apr 2022 11:05:48 +0530
 From: Viresh Kumar <viresh.kumar@linaro.org>
 To: Rex-BC Chen <rex-bc.chen@mediatek.com>
 Cc: rafael@kernel.org, robh+dt@kernel.org, krzk+dt@kernel.org,
@@ -67,19 +67,18 @@ Cc: rafael@kernel.org, robh+dt@kernel.org, krzk+dt@kernel.org,
  angelogioacchino.delregno@collabora.com, linux-pm@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
-Subject: Re: [PATCH V4 05/14] cpufreq: mediatek: Add opp notification support
-Message-ID: <20220425052026.k3xfmmil4ujqeynh@vireshk-i7>
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH V4 07/14] cpufreq: mediatek: Add .get function
+Message-ID: <20220425053548.72w2jh2g6lpzgz6g@vireshk-i7>
 References: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
- <20220422075239.16437-6-rex-bc.chen@mediatek.com>
+ <20220422075239.16437-8-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220422075239.16437-6-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220422075239.16437-8-rex-bc.chen@mediatek.com>
 User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220424_222029_907350_7B76B58F 
-X-CRM114-Status: GOOD (  21.69  )
+X-CRM114-CacheID: sfid-20220424_223551_719550_7EB626AD 
+X-CRM114-Status: GOOD (  18.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,80 +96,52 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 22-04-22, 15:52, Rex-BC Chen wrote:
-> From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+> From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 > 
-> >From this opp notifier, cpufreq should listen to opp notification and do
-
-Why the extra ">" here ?
-
-> proper actions when receiving events of disable and voltage adjustment.
+> We want to get opp frequency via opp table. Therefore, we add the function
+> "mtk_cpufreq_get()" to do this.
 > 
-> One of the user for this opp notifier is MediaTek SVS.
-> The MediaTek Smart Voltage Scaling (SVS) is a hardware which calculates
-> suitable SVS bank voltages to OPP voltage table.
-> 
-> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  drivers/cpufreq/mediatek-cpufreq.c | 92 +++++++++++++++++++++++++++---
->  1 file changed, 84 insertions(+), 8 deletions(-)
+>  drivers/cpufreq/mediatek-cpufreq.c | 11 ++++++++++-
+>  1 file changed, 10 insertions(+), 1 deletion(-)
 > 
 > diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> +static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
-> +				    unsigned long event, void *data)
+> index e070a2619bcb..0b2ca0c8eddc 100644
+> --- a/drivers/cpufreq/mediatek-cpufreq.c
+> +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> @@ -71,6 +71,15 @@ static struct mtk_cpu_dvfs_info *mtk_cpu_dvfs_info_lookup(int cpu)
+>  	return NULL;
+>  }
+>  
+> +static unsigned int mtk_cpufreq_get(unsigned int cpu)
 > +{
-> +	struct dev_pm_opp *opp = data;
-> +	struct dev_pm_opp *new_opp;
 > +	struct mtk_cpu_dvfs_info *info;
-> +	unsigned long freq, volt;
-> +	struct cpufreq_policy *policy;
-> +	int ret = 0;
 > +
-> +	info = container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
+> +	info = mtk_cpu_dvfs_info_lookup(cpu);
 > +
-> +	if (event == OPP_EVENT_ADJUST_VOLTAGE) {
+> +	return !info ? 0 : (info->opp_freq / 1000);
+> +}
+> +
+>  static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
+>  					int new_vproc)
+>  {
+> @@ -588,7 +597,7 @@ static struct cpufreq_driver mtk_cpufreq_driver = {
+>  		 CPUFREQ_IS_COOLING_DEV,
+>  	.verify = cpufreq_generic_frequency_table_verify,
+>  	.target_index = mtk_cpufreq_set_target,
+> -	.get = cpufreq_generic_get,
+> +	.get = mtk_cpufreq_get,
 
-I don't see any call to dev_pm_opp_adjust_voltage() for your platform, how is
-this ever going to get called ?
+The .get callback should read the real frequency from hardware instead of
+fetching a cached freq value.
 
-> +		freq = dev_pm_opp_get_freq(opp);
-> +
-> +		mutex_lock(&info->reg_lock);
-> +		if (info->opp_freq == freq) {
-> +			volt = dev_pm_opp_get_voltage(opp);
-> +			ret = mtk_cpufreq_set_voltage(info, volt);
-> +			if (ret)
-> +				dev_err(info->cpu_dev,
-> +					"failed to scale voltage: %d\n", ret);
-> +		}
-> +		mutex_unlock(&info->reg_lock);
-> +	} else if (event == OPP_EVENT_DISABLE) {
-> +		freq = dev_pm_opp_get_freq(opp);
-> +
-> +		/* case of current opp item is disabled */
-> +		if (info->opp_freq == freq) {
-> +			freq = 1;
-> +			new_opp = dev_pm_opp_find_freq_ceil(info->cpu_dev,
-> +							    &freq);
-> +			if (IS_ERR(new_opp)) {
-> +				dev_err(info->cpu_dev,
-> +					"all opp items are disabled\n");
-> +				ret = PTR_ERR(new_opp);
-> +				return notifier_from_errno(ret);
-> +			}
-> +
-> +			dev_pm_opp_put(new_opp);
-> +			policy = cpufreq_cpu_get(info->opp_cpu);
-> +			if (policy) {
-> +				cpufreq_driver_target(policy, freq / 1000,
-> +						      CPUFREQ_RELATION_L);
-> +				cpufreq_cpu_put(policy);
-
-IIUC, then you are trying to change the frequency if a currently used OPP is
-getting removed ? In that case, this problem is generic enough not to be fixed
-in a end driver. This should be fixed in core somehow.
+>  	.init = mtk_cpufreq_init,
+>  	.exit = mtk_cpufreq_exit,
+>  	.register_em = cpufreq_register_em_with_opp,
+> -- 
+> 2.18.0
 
 -- 
 viresh
