@@ -4,73 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD76EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 02:06:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72D86C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Apr 2022 02:37:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h4BnMU14doZ6wXLOXuoqkFbxaduHc+YSGQ09bTuTwjg=; b=vNPmyZN5vXKowB
-	o13PNOJcyIvSC/i7CL2kqa12TZarNKdqoy7TQxrE/ihLBid5ZeWjAYNgmxkELo8RtEp5KJn6yn5b4
-	GzUtUP3PKdTnCXNSKsWUmZFMevtbLyjx9riSSBcG+oAhGqTUZWcrvSduv5FX1hLfUUpxsiHAS50r+
-	xR27poE/c7zJp2Hheu35IesiEAlU/Emr3zCoveo06B9kH5nfpEt8PcRxt8bmfLLlEE1fMyz+5is9g
-	tOmeQXj9Kj0rkvvHRNZtxzRqFZTBhYXA2qoBG567AZUjH/Fud3f5GFHtOXre9bEKMUJ6iaffmClAz
-	CSCudqwF0xYZXKXt3oOg==;
+	List-Owner; bh=aExvgcjzXbYxrQLeNTR9O4fvXrrh0gtVodWz22COkLQ=; b=XX6XvEnKTEKppt
+	r7r7lkmornXLG+Wh2QoDDIWnkrXraemtJwipLXaw3BQlA3ZJl6F6rjuvNXwuB9B2FkDh2inQKVD/K
+	5UrMKbAhmj1KvEkNkydJn5zidGtQhZaHYjmR4frdRozkNK0xFwuNCXd1KzLuiVTvcJ1tXo84KtrAe
+	niXmxLzW+ec5rEOHkzWLqvIu3IwlLNiBLJKsx0l8SbhBo0hgWbJ7TJ8PUQZtaUSYaj61ijueCk8Gd
+	0BY81E+MAPdPUHBYQ9ab3fJk968zCNCHe8MldGJrphPuz2pbD/NBZKu2Yig61fgq5NmtB93uI/xGl
+	zIUPekJFy4Q05ug/LcwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nio6y-007ryI-1k; Mon, 25 Apr 2022 02:06:00 +0000
+	id 1niobI-007tvh-Kp; Mon, 25 Apr 2022 02:37:20 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nio6l-007rwp-N2; Mon, 25 Apr 2022 02:05:50 +0000
-X-UUID: 39f0df77c3ee44b0b5e40c57a81abcd9-20220424
+ id 1niobD-007tuq-70; Mon, 25 Apr 2022 02:37:19 +0000
+X-UUID: 7a4f59f53939458b9d6f39f21b8b73b3-20220424
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:67c13c82-02b6-40bd-9a33-5502e146d54f, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:268f1b01-8a20-4ad7-a1e0-5ee34cc23ab8, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:0fa7c9f0-da02-41b4-b6df-58f4ccd36682,
+X-CID-META: VersionHash:faefae9, CLOUDID:8918cbf0-da02-41b4-b6df-58f4ccd36682,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 39f0df77c3ee44b0b5e40c57a81abcd9-20220424
+X-UUID: 7a4f59f53939458b9d6f39f21b8b73b3-20220424
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 869754317; Sun, 24 Apr 2022 19:05:39 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 24 Apr 2022 19:05:37 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 25 Apr 2022 10:05:27 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ with ESMTP id 1773185657; Sun, 24 Apr 2022 19:37:06 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 24 Apr 2022 19:37:04 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 25 Apr 2022 10:37:03 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 25 Apr 2022 10:05:27 +0800
-Message-ID: <862706781d408669cd80e7e041d96a878178283c.camel@mediatek.com>
-Subject: Re: [PATCH v3 1/1] pwrap: mediatek: fix FSM timeout issue
+ Transport; Mon, 25 Apr 2022 10:37:03 +0800
+Message-ID: <fdedea6f20738bfe2ede7e526aa653af1ac35768.camel@mediatek.com>
+Subject: Re: [PATCH V3 11/17] dt-bindings: arm: mediatek: Add #reset-cells
+ property for MT8192-sys-clock
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Zhiyong Tao <zhiyong.tao@mediatek.com>, <lee.jones@linaro.org>,
- <robh+dt@kernel.org>, <matthias.bgg@gmail.com>, <lgirdwood@gmail.com>,
- <broonie@kernel.org>, <eddie.huang@mediatek.com>, <a.zummo@towertech.it>,
- <alexandre.belloni@bootlin.com>, <fshao@chromium.org>
-CC: <srv_heupstream@mediatek.com>, <hui.liu@mediatek.com>,
- <tinghan.shen@mediatek.com>, <hsin-hsiung.wang@mediatek.com>,
- <sean.wang@mediatek.com>, <macpaul.lin@mediatek.com>, <wen.su@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-rtc@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Date: Mon, 25 Apr 2022 10:05:27 +0800
-In-Reply-To: <20220424025738.32271-2-zhiyong.tao@mediatek.com>
-References: <20220424025738.32271-1-zhiyong.tao@mediatek.com>
- <20220424025738.32271-2-zhiyong.tao@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ "mturquette@baylibre.com" <mturquette@baylibre.com>, "sboyd@kernel.org"
+ <sboyd@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
+CC: "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>, Chun-Jie Chen
+ =?UTF-8?Q?=28=E9=99=B3=E6=B5=9A=E6=A1=80=29?= <Chun-Jie.Chen@mediatek.com>,
+ "wenst@chromium.org" <wenst@chromium.org>, Runyang Chen
+ =?UTF-8?Q?=28=E9=99=88=E6=B6=A6=E6=B4=8B=29?= <Runyang.Chen@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Mon, 25 Apr 2022 10:37:02 +0800
+In-Reply-To: <288f55f3-b3ed-32b8-9a44-652f3d53617d@linaro.org>
+References: <20220422060152.13534-1-rex-bc.chen@mediatek.com>
+ <20220422060152.13534-12-rex-bc.chen@mediatek.com>
+ <288f55f3-b3ed-32b8-9a44-652f3d53617d@linaro.org>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220424_190547_804935_51555BF5 
-X-CRM114-Status: GOOD (  19.05  )
+X-CRM114-CacheID: sfid-20220424_193715_469112_B6C1EE99 
+X-CRM114-Status: GOOD (  23.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,80 +96,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 2022-04-24 at 10:57 +0800, Zhiyong Tao wrote:
-> From: "Zhiyong.Tao" <zhiyong.tao@mediatek.com>
+On Sat, 2022-04-23 at 18:27 +0800, Krzysztof Kozlowski wrote:
+> On 22/04/2022 08:01, Rex-BC Chen wrote:
+> > We will use the infra_ao reset which is defined in mt8192-sys-
+> > clock.
+> > The maximum value of reset-cells is 2. Therefore, we add this patch
+> > to
+> > define it.
 > 
-> Fix pwrap FSM timeout issue which leads the system crash on GFX VSRAM
-> power on.
-> Add a usleep delay to avoid busy read for the H/W status.
-> For avoiding the system behavior(ex. disable interrupt in
-> suspend/resume
-> flow, schedule block task)cause if (time_after()) be turn first,
-> we change it after sleep delay.
-> Fixes: 1f022d84bd19 ("soc: mediatek: Add PMIC wrapper for MT8135 and
-> MT8173 SoCs")
+> Remove entire last sentence, does not make sense in the commit.
 > 
-> Signed-off-by: Zhiyong.Tao <zhiyong.tao@mediatek.com>
-> ---
 
-Hello Zhiyong,
+Hello Krzysztof,
 
-IMO, commit messages should be
+Thanks for your review.
+I will drop "Therefore, we add this patch to define it." and add more
+detailed messages in next version.
 
-Fix pwrap FSM timeout issue....
-...we change it after sleep delay.
-
-(=> one blank)
-Fixes: 1f022d84bd19 ("soc: mediatek: Add PMIC wrapper for MT8135 and
-MT8173 SoCs")
-(=> oneline)
-
-Signed-off-by: Zhiyong.Tao <zhiyong.tao@mediatek.com>
-
->  drivers/soc/mediatek/mtk-pmic-wrap.c | 8 ++++++--
->  1 file changed, 6 insertions(+), 2 deletions(-)
+> > 
+> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> > ---
+> >  .../bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml       | 3
+> > +++
+> >  1 file changed, 3 insertions(+)
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-
+> > sys-clock.yaml
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-
+> > sys-clock.yaml
+> > index 5705bcf1fe47..28ebcecc8258 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-
+> > sys-clock.yaml
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-
+> > sys-clock.yaml
+> > @@ -29,6 +29,9 @@ properties:
+> >    '#clock-cells':
+> >      const: 1
+> >  
+> > +  '#reset-cells':
+> > +    maximum: 2
 > 
-> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index 952bc554f443..ac7139a67e87 100644
-> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -12,6 +12,7 @@
->  #include <linux/platform_device.h>
->  #include <linux/regmap.h>
->  #include <linux/reset.h>
-> +#include <linux/delay.h>
+> Why this is a maximum? Usually this is const, so how do you use it
+> (with
+> what values)?
+> 
+We need to let the driver compatible with previous setting in
+drivers/clk/mediatek/reset.c
 
-Sorry, I do not notice this in previous version. It will proper order
-the header in alphabet.
+There are two use cases in our reset driver:
+(Refer to [1])
 
- #include <linux/delay.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
+1. #reset-cells = <1>
+   When we input the argument, the older driver
+use is to calculate  
+   bank and bit by different method. From the implementation of
+   reset_xlate(), we can see if the argument number is 1, it will
+   return directly.
+
+2. #reset-cells = <2>
+   The input arguments is offset and bit. When we input two arguments,
+   we can use reset_xlate() to calculate the corresponding id to assert
+   and deassert.
+
+[1]:
+https://lore.kernel.org/all/20220422060152.13534-10-rex-bc.chen@mediatek.com/
+
+If it's acceptable, I will add this in commit message.
 
 BRs,
 Rex
->  
->  #define PWRAP_MT8135_BRIDGE_IORD_ARB_EN		0x4
->  #define PWRAP_MT8135_BRIDGE_WACS3_EN		0x10
-> @@ -1197,10 +1198,13 @@ static int pwrap_wait_for_state(struct
-> pmic_wrapper *wrp,
->  	timeout = jiffies + usecs_to_jiffies(10000);
->  
->  	do {
-> -		if (time_after(jiffies, timeout))
-> -			return fp(wrp) ? 0 : -ETIMEDOUT;
->  		if (fp(wrp))
->  			return 0;
-> +
-> +		usleep_range(10, 11);
-> +
-> +		if (time_after(jiffies, timeout))
-> +			return fp(wrp) ? 0 : -ETIMEDOUT;
->  	} while (1);
->  }
->  
+> > +
+> >  required:
+> >    - compatible
+> >    - reg
+> 
+> 
+> Best regards,
+> Krzysztof
 
 
 _______________________________________________
