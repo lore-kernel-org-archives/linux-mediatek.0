@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0FFAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 12:34:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5495EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 13:01:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z2V6iHGSk3MPqZm9EuAXc/65M7qyGyoafjMUNzyA5po=; b=xpqRt79g69JUAb
-	C2/67CNpQI4IRLRUb9hDrFLPj/IooIci84n7t5FyDDUIieeJQH72wcTCkYgq9srsCHsc9Ywocb7lb
-	kY+XUFtiPHkSWeS8Y/xK9fN4rPxJ7vRHh/+Rl5CVXXoF0NVplcc9eT0PNKUsWTsrGsmthzVA5Uto9
-	1exQJfv+I1B50xDx20F2qIg2lAPpQnyWFImgl98NoMlkAig3UqFIXceif77m7duFRjnokA4dlx8ty
-	G0Eti0ZDaelSaMCH2FPo47yesQXo6sihWBNdvSKyHPNl7sI0dVhwDLGk2nkli8C7dA+xsVubOlbl2
-	+wBUb0nTZG9PkmP4CMkA==;
+	List-Owner; bh=zB4UNknI0YLpRsnRoW/q96UvkbEv7ETONQK1Ufp9cMY=; b=V7Imvm3XE+Dg22
+	UvJlLcnrcLDWvXgZ7EPIEkCtMWzujt8ngLMkmOtGMY1CPbqtgktbTG97D7/KiBfkXxxVM71RsxUjr
+	+AgPGs7HXEXRj9UK1J2NDCYGAAjLrJqZy5XTmo0HvB+fycXVIJbKatcQck9TkdgfXbSnrwTuKpQOS
+	1KKo2Gek66SYK9KM5cK0K+H0Hy9npKN+wy3E+YR9dsPeNBwtncZl6FsrftzDbCfGxP+sCA67Tfau8
+	ZSGa3YFvBL1khZd7nL5Px6fcZZAnnqornvqEgV/dnCoulWId9SU5dqtFbCg4vkxSBLWnjlPxpbmse
+	iKXZBsi5kErnxt6iCLPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njKOe-00EHUL-1y; Tue, 26 Apr 2022 12:34:24 +0000
+	id 1njKoV-00EQaU-PX; Tue, 26 Apr 2022 13:01:07 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njKOT-00EHSe-68; Tue, 26 Apr 2022 12:34:14 +0000
-X-UUID: 2a53ca2e14d14f60b0b78f484bb2deeb-20220426
+ id 1njKem-00EMTA-GI; Tue, 26 Apr 2022 12:51:07 +0000
+X-UUID: 058b5b567ac94aea8e14a580dbe99284-20220426
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:2eed6b5e-51aa-4dae-a604-99ebce1b2213, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:0038f40d-33ba-4d48-bb01-61afc7ec5e9a, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:8ca8c22e-6199-437e-8ab4-9920b4bc5b76,
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:e6e18ac6-85ee-4ac1-ac05-bd3f1e72e732,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 2a53ca2e14d14f60b0b78f484bb2deeb-20220426
+X-UUID: 058b5b567ac94aea8e14a580dbe99284-20220426
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 15727016; Tue, 26 Apr 2022 05:34:08 -0700
+ with ESMTP id 1535670443; Tue, 26 Apr 2022 05:50:58 -0700
 Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 Apr 2022 05:30:59 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 26 Apr 2022 05:50:57 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
  (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 26 Apr 2022 20:30:50 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 26 Apr 2022 20:30:50 +0800
-Message-ID: <6759af85c79e827f4fbaef26f5bf6cebd2de8c54.camel@mediatek.com>
-Subject: Re: [PATCH v4 1/4] dt-bindings: timer: Add compatible for Mediatek
- MT8186
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring <robh@kernel.org>
-CC: <hsinyi@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, Guenter Roeck
- <linux@roeck-us.net>, <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
- <linux-watchdog@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- Wim Van Sebroeck <wim@linux-watchdog.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>
-Date: Tue, 26 Apr 2022 20:30:50 +0800
-In-Reply-To: <98be733a-62b0-4cf6-ab27-992ea49da5b1@linaro.org>
-References: <20220311130732.22706-1-allen-kh.cheng@mediatek.com>
- <20220311130732.22706-2-allen-kh.cheng@mediatek.com>
- <Yitv3IUpCzp1/eGX@robh.at.kernel.org>
- <98be733a-62b0-4cf6-ab27-992ea49da5b1@linaro.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Tue, 26 Apr 2022 20:50:49 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 26 Apr 2022 20:50:49 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+CC: <hsinyi@chromium.org>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ "Chen-Yu Tsai" <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Subject: [PATCH v5 1/2] dt-bindings: arm: Add compatible for Mediatek MT8186
+Date: Tue, 26 Apr 2022 20:50:45 +0800
+Message-ID: <20220426125046.17311-2-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220426125046.17311-1-allen-kh.cheng@mediatek.com>
+References: <20220426125046.17311-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_053413_279412_0EF87C7B 
-X-CRM114-Status: GOOD (  14.85  )
+X-CRM114-CacheID: sfid-20220426_055104_613464_6CADF52C 
+X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,37 +83,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
+This commit adds dt-binding documentation for the Mediatek MT8186
+reference board.
 
-I just want to check with you.
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+---
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-I cannot find the git repositories you applied.
-
-Would you mind sharing the information to me?
-
-Thanks,
-Allen 
-
-On Wed, 2022-03-30 at 13:49 +0200, Daniel Lezcano wrote:
-> On 11/03/2022 16:50, Rob Herring wrote:
-> > On Fri, 11 Mar 2022 21:07:29 +0800, Allen-KH Cheng wrote:
-> > > From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-> > > 
-> > > This commit adds dt-binding documentation of timer for Mediatek
-> > > MT8186 SoC
-> > > Platform.
-> > > 
-> > > Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-> > > ---
-> > >   Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-> > > | 1 +
-> > >   1 file changed, 1 insertion(+)
-> > > 
-> > 
-> > Acked-by: Rob Herring <robh@kernel.org>
-> 
-> Applied, thanks
-> 
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index 4a2bd9759c47..5a29b7b381ef 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -131,6 +131,10 @@ properties:
+           - enum:
+               - mediatek,mt8183-evb
+           - const: mediatek,mt8183
++      - items:
++          - enum:
++              - mediatek,mt8186-evb
++          - const: mediatek,mt8186
+       - items:
+           - enum:
+               - mediatek,mt8192-evb
+-- 
+2.18.0
 
 
 _______________________________________________
