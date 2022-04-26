@@ -4,57 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAB27C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 13:53:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA10FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 13:55:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9MxXKQSb13/ctZ3LP+6CWO2KxQatbvuRGybA3PSGQ0k=; b=bHv1tgXi3W74hi
-	JuXORF2mdzi6qYYIFR8C/I5sZhxgJ+b/8TqwIUiwaxGy9fsZ1/0/oNqUj9/bcv5Om3jXyiBdaarB4
-	70SL7X6ELhQaHTCSY4Hox750jqQ2RBss8RAxOxmBjNVPaOyGNAlUO/WXZvId+ITRkEiFko8xNWzcS
-	yyRPDkw5Xyx6p6Yi6li14Oqm699fF94+DrHLLHh7cfrnXT4VCySBuVTdfmdg0Uk2Sk0gnHwqjDtVj
-	geyEAgo2Odh94gSG4GBhh7oOzTkoMt943quA53efuPjhSV7CFh9acySFlFjCwoVtLrsrytOM6f8Lp
-	76efUIZB6zbK+DSAMFhQ==;
+	List-Owner; bh=B/rxNTO84lGNbLtEhhcJ+p8E/TLPbCKcIw5I8PPATXI=; b=E8QY8IQ7QuILfv
+	z6EJQKBYGYqoiNJVF5Csesy7NPYlX5xwuKPu/t95m0WKJkQqmmR7DgrXScwKOkFZppK48J+wuErwP
+	8sGGrcaziF0upBrKB51YvzqT06xTeq4AGkkQnYr9IRyx6ND2qU6/RRyV1/+WMLiZEIQEG3rpp46iD
+	pwrdpcAIa2BeOZiu9cCuchmjGlXJTh7MbMWVWzlNzSjOjLJj6QD5dDuCZGnJ63kmgS62pxo9dYpZL
+	TerV+2avSZBmdX5CM1KLBJR8JO2jqZ4pxzPlksKXtHiliQFimEbCcpFC94c9KzlqOaRol2pUlgHfn
+	mU1RzBqtD/+QpXMp5wGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njLcf-00ElTo-MD; Tue, 26 Apr 2022 13:52:57 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1njLfN-00En2Y-8d; Tue, 26 Apr 2022 13:55:45 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njLZR-00Ek5Y-AO; Tue, 26 Apr 2022 13:49:47 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
- by mxout3.routing.net (Postfix) with ESMTP id 7C63A604E7;
- Tue, 26 Apr 2022 13:49:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1650980975;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6jTVoJoSuZ+zKU9/cyXVGH1N5uHRu6ZfzkxNTQ8xK/k=;
- b=oAVOfnoClJRUJsrvWGj/RxqWclN/S8DQTgFfNVQTpop5UhcQsNkH0NFqLaZX/uVpRG9VlF
- rvm1P+4JfHdOsyaIBWo+V6Qzq0IL0bL47cX4AYbDi574G1XndLLjNCzaZ29rGD8rde6lI3
- wICrf4vnfWDyIHlmd8PLLGyipTdvM6I=
-Received: from localhost.localdomain (fttx-pool-80.245.77.37.bambit.de
- [80.245.77.37])
- by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 873B53606E6;
- Tue, 26 Apr 2022 13:49:34 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [RFC v1 2/3] net: dsa: mt753x: make CPU-Port dynamic
-Date: Tue, 26 Apr 2022 15:49:23 +0200
-Message-Id: <20220426134924.30372-3-linux@fw-web.de>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220426134924.30372-1-linux@fw-web.de>
-References: <20220426134924.30372-1-linux@fw-web.de>
+ id 1njLdE-00Elwj-Tu
+ for linux-mediatek@lists.infradead.org; Tue, 26 Apr 2022 13:53:38 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id v12so18771268wrv.10
+ for <linux-mediatek@lists.infradead.org>; Tue, 26 Apr 2022 06:53:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=IG33gJfmQ/EOz8na70kwRaCTRZKTSW8kT9nFppeB52c=;
+ b=7SFdF4zW4cjXauDzX5ndJqFVFTh7/DHREEin69o26mGqlPfl0nG84eROQy35s/D4im
+ jUG6HIxe07HEZE9T/vDxZK4ickju6ZQTM4GyRq+f5Ttwl+hKmyq6o9JY6CbSmHIFdPGi
+ h20VCnQFAVTNxCP8i45bIqn1AdJIIrODlI1sKI7aT9X1tNIUKfKJhdnDspUCWKePIeo5
+ 2APk0x3U3rKX+g9oY14l1tZIrrsUIcFop1N7WymIWfz5V42gMJ4bCX70Qej1DSRhJZji
+ a23LjglTVJB9+wkW0cLPP+8q/J8iFntvk4wEvG236G1mLfb9GTL228BfptWygNayNnVQ
+ /SCw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=IG33gJfmQ/EOz8na70kwRaCTRZKTSW8kT9nFppeB52c=;
+ b=lT/PCc+DTbv/SJZVyA9rfUO+y3kOUaSYujsfAm+qkTC1U7Yph4wsyuGqrFJKgkDWp8
+ 0gLK9BxmF6lY5uNR8soXQpWnKS0uh4uiuUuEicx6uM0zurHM7GcSQLSY9yvYqttPNvrC
+ ZBSARoG9x+ugMLFzJ++sbi+dY5jmuVv7xtvJ/4AbteXLwRNhZANI7Lvpk2z6Am5Fd+Rz
+ 8Bnur9UcCqD28zbjzcAnGyCJuP+9liefcwYJ4rSapxcqnbJRmv/L0CshcwHLdWuyNPo+
+ vkww8fAXO4dGhv5zOkvIxBkEarYV0wvUxSb1+oRQVpl2xcRmvHo9WOllhp9mZX0c7sNG
+ 3kOw==
+X-Gm-Message-State: AOAM530mMq4Y5gt8Tbo7i4TsF6aguEg58xdIVdkEVnJ6S3lRHAgyojzS
+ EKtdRGEXgRamasIKH8H4/wqnig==
+X-Google-Smtp-Source: ABdhPJxoxTSsYvW2Te7nLeCmhF9o4bMlwjSRtCtf0E4uy+KjA6IngSDYs7AGW5znIkg5xhCcXc5Icg==
+X-Received: by 2002:a5d:59a9:0:b0:20a:9047:24ac with SMTP id
+ p9-20020a5d59a9000000b0020a904724acmr19063965wrr.396.1650981211477; 
+ Tue, 26 Apr 2022 06:53:31 -0700 (PDT)
+Received: from localhost.localdomain ([88.160.162.107])
+ by smtp.gmail.com with ESMTPSA id
+ m35-20020a05600c3b2300b00393ebe201a6sm5504775wms.44.2022.04.26.06.53.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 Apr 2022 06:53:31 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Fabien Parent <fparent@baylibre.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v2 3/8] mfd: mt6397-core: add resources for PMIC keys for
+ MT6359
+Date: Tue, 26 Apr 2022 15:53:08 +0200
+Message-Id: <20220426135313.245466-4-fparent@baylibre.com>
+X-Mailer: git-send-email 2.36.0
+In-Reply-To: <20220426135313.245466-1-fparent@baylibre.com>
+References: <20220426135313.245466-1-fparent@baylibre.com>
 MIME-Version: 1.0
-X-Mail-ID: a85721db-24ff-47c7-afcd-beff66f08711
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_064937_727760_00E2A7DB 
-X-CRM114-Status: GOOD (  25.78  )
+X-CRM114-CacheID: sfid-20220426_065333_085080_090D842B 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,218 +86,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Paolo Abeni <pabeni@redhat.com>, netdev@vger.kernel.org,
- Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>, DENG Qingfang <dqfext@gmail.com>,
- devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Vladimir Oltean <olteanv@gmail.com>, Vivien Didelot <vivien.didelot@gmail.com>,
- Peter Geis <pgwipeout@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+Add the MFD resources in order to be able to probe and use the keyboard
+driver for the MT6359 PMIC.
 
-Currently CPU-Port is hardcoded to Port 6.
-
-On BPI-R2-Pro board this port is not connected and only Port 5 is
-connected to gmac of SoC.
-
-Replace this hardcoded CPU-Port with a member in mt7530_priv struct
-which is set in mt753x_cpu_port_enable to the right port.
-
-I defined a default in probe (in case no CPU-Port will be setup) and
-if both cpu-port were setup port 6 will be used like the const prior
-this patch.
-
-In mt7531_setup first access is before we know which port should be used
-(mt753x_cpu_port_enable) so section "BPDU to CPU port" needs to be moved
-down.
-
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- drivers/net/dsa/mt7530.c | 46 ++++++++++++++++++++++------------------
- drivers/net/dsa/mt7530.h |  2 +-
- 2 files changed, 26 insertions(+), 22 deletions(-)
+v2: no changes
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index ccf4cb944167..4789105b8137 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -1004,6 +1004,7 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
- 			return ret;
- 	}
+ drivers/mfd/mt6397-core.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+index bddb40054b9e..1a368ad08f58 100644
+--- a/drivers/mfd/mt6397-core.c
++++ b/drivers/mfd/mt6397-core.c
+@@ -54,6 +54,13 @@ static const struct resource mt6358_keys_resources[] = {
+ 	DEFINE_RES_IRQ_NAMED(MT6358_IRQ_HOMEKEY_R, "homekey_r"),
+ };
  
-+	priv->cpu_port = port;
- 	/* Enable Mediatek header mode on the cpu port */
- 	mt7530_write(priv, MT7530_PVC_P(port),
- 		     PORT_SPEC_TAG);
-@@ -1041,7 +1042,7 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
- 	 * restore the port matrix if the port is the member of a certain
- 	 * bridge.
- 	 */
--	priv->ports[port].pm |= PCR_MATRIX(BIT(MT7530_CPU_PORT));
-+	priv->ports[port].pm |= PCR_MATRIX(BIT(priv->cpu_port));
- 	priv->ports[port].enable = true;
- 	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
- 		   priv->ports[port].pm);
-@@ -1190,8 +1191,8 @@ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
- 			struct netlink_ext_ack *extack)
- {
- 	struct dsa_port *dp = dsa_to_port(ds, port), *other_dp;
--	u32 port_bitmap = BIT(MT7530_CPU_PORT);
- 	struct mt7530_priv *priv = ds->priv;
-+	u32 port_bitmap = BIT(priv->cpu_port);
- 
- 	mutex_lock(&priv->reg_mutex);
- 
-@@ -1267,9 +1268,9 @@ mt7530_port_set_vlan_unaware(struct dsa_switch *ds, int port)
- 	 * the CPU port get out of VLAN filtering mode.
- 	 */
- 	if (all_user_ports_removed) {
--		mt7530_write(priv, MT7530_PCR_P(MT7530_CPU_PORT),
-+		mt7530_write(priv, MT7530_PCR_P(priv->cpu_port),
- 			     PCR_MATRIX(dsa_user_ports(priv->ds)));
--		mt7530_write(priv, MT7530_PVC_P(MT7530_CPU_PORT), PORT_SPEC_TAG
-+		mt7530_write(priv, MT7530_PVC_P(priv->cpu_port), PORT_SPEC_TAG
- 			     | PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
- 	}
- }
-@@ -1335,8 +1336,8 @@ mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
- 	 */
- 	if (priv->ports[port].enable)
- 		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
--			   PCR_MATRIX(BIT(MT7530_CPU_PORT)));
--	priv->ports[port].pm = PCR_MATRIX(BIT(MT7530_CPU_PORT));
-+			   PCR_MATRIX(BIT(priv->cpu_port)));
-+	priv->ports[port].pm = PCR_MATRIX(BIT(priv->cpu_port));
- 
- 	/* When a port is removed from the bridge, the port would be set up
- 	 * back to the default as is at initial boot which is a VLAN-unaware
-@@ -1503,6 +1504,7 @@ static int
- mt7530_port_vlan_filtering(struct dsa_switch *ds, int port, bool vlan_filtering,
- 			   struct netlink_ext_ack *extack)
- {
-+	struct mt7530_priv *priv = ds->priv;
- 	if (vlan_filtering) {
- 		/* The port is being kept as VLAN-unaware port when bridge is
- 		 * set up with vlan_filtering not being set, Otherwise, the
-@@ -1510,7 +1512,7 @@ mt7530_port_vlan_filtering(struct dsa_switch *ds, int port, bool vlan_filtering,
- 		 * for becoming a VLAN-aware port.
- 		 */
- 		mt7530_port_set_vlan_aware(ds, port);
--		mt7530_port_set_vlan_aware(ds, MT7530_CPU_PORT);
-+		mt7530_port_set_vlan_aware(ds, priv->cpu_port);
- 	} else {
- 		mt7530_port_set_vlan_unaware(ds, port);
- 	}
-@@ -1526,7 +1528,7 @@ mt7530_hw_vlan_add(struct mt7530_priv *priv,
- 	u32 val;
- 
- 	new_members = entry->old_members | BIT(entry->port) |
--		      BIT(MT7530_CPU_PORT);
-+		      BIT(priv->cpu_port);
- 
- 	/* Validate the entry with independent learning, create egress tag per
- 	 * VLAN and joining the port as one of the port members.
-@@ -1550,8 +1552,8 @@ mt7530_hw_vlan_add(struct mt7530_priv *priv,
- 	 * DSA tag.
- 	 */
- 	mt7530_rmw(priv, MT7530_VAWD2,
--		   ETAG_CTRL_P_MASK(MT7530_CPU_PORT),
--		   ETAG_CTRL_P(MT7530_CPU_PORT,
-+		   ETAG_CTRL_P_MASK(priv->cpu_port),
-+		   ETAG_CTRL_P(priv->cpu_port,
- 			       MT7530_VLAN_EGRESS_STACK));
- }
- 
-@@ -1575,7 +1577,7 @@ mt7530_hw_vlan_del(struct mt7530_priv *priv,
- 	 * the entry would be kept valid. Otherwise, the entry is got to be
- 	 * disabled.
- 	 */
--	if (new_members && new_members != BIT(MT7530_CPU_PORT)) {
-+	if (new_members && new_members != BIT(priv->cpu_port)) {
- 		val = IVL_MAC | VTAG_EN | PORT_MEM(new_members) |
- 		      VLAN_VALID;
- 		mt7530_write(priv, MT7530_VAWD1, val);
-@@ -2105,7 +2107,7 @@ mt7530_setup(struct dsa_switch *ds)
- 	 * controller also is the container for two GMACs nodes representing
- 	 * as two netdev instances.
- 	 */
--	dn = dsa_to_port(ds, MT7530_CPU_PORT)->master->dev.of_node->parent;
-+	dn = dsa_to_port(ds, priv->cpu_port)->master->dev.of_node->parent;
- 	ds->assisted_learning_on_cpu_port = true;
- 	ds->mtu_enforcement_ingress = true;
- 
-@@ -2337,15 +2339,6 @@ mt7531_setup(struct dsa_switch *ds)
- 	mt7531_ind_c45_phy_write(priv, MT753X_CTRL_PHY_ADDR, MDIO_MMD_VEND2,
- 				 CORE_PLL_GROUP4, val);
- 
--	/* BPDU to CPU port */
--	mt7530_rmw(priv, MT7531_CFC, MT7531_CPU_PMAP_MASK,
--		   BIT(MT7530_CPU_PORT));
--	mt7530_rmw(priv, MT753X_BPC, MT753X_BPDU_PORT_FW_MASK,
--		   MT753X_BPDU_CPU_ONLY);
--
--	/* Enable and reset MIB counters */
--	mt7530_mib_reset(ds);
--
- 	for (i = 0; i < MT7530_NUM_PORTS; i++) {
- 		/* Disable forwarding by default on all ports */
- 		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
-@@ -2373,6 +2366,15 @@ mt7531_setup(struct dsa_switch *ds)
- 			   PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
- 	}
- 
-+	/* BPDU to CPU port */
-+	mt7530_rmw(priv, MT7531_CFC, MT7531_CPU_PMAP_MASK,
-+		   BIT(priv->cpu_port));
-+	mt7530_rmw(priv, MT753X_BPC, MT753X_BPDU_PORT_FW_MASK,
-+		   MT753X_BPDU_CPU_ONLY);
++static const struct resource mt6359_keys_resources[] = {
++	DEFINE_RES_IRQ_NAMED(MT6359_IRQ_PWRKEY, "powerkey"),
++	DEFINE_RES_IRQ_NAMED(MT6359_IRQ_HOMEKEY, "homekey"),
++	DEFINE_RES_IRQ_NAMED(MT6359_IRQ_PWRKEY_R, "powerkey_r"),
++	DEFINE_RES_IRQ_NAMED(MT6359_IRQ_HOMEKEY_R, "homekey_r"),
++};
 +
-+	/* Enable and reset MIB counters */
-+	mt7530_mib_reset(ds);
-+
- 	/* Setup VLAN ID 0 for VLAN-unaware bridges */
- 	ret = mt7530_setup_vlan0(priv);
- 	if (ret)
-@@ -3213,6 +3215,8 @@ mt7530_probe(struct mdio_device *mdiodev)
- 	if (!priv)
- 		return -ENOMEM;
+ static const struct resource mt6323_keys_resources[] = {
+ 	DEFINE_RES_IRQ_NAMED(MT6323_IRQ_STATUS_PWRKEY, "powerkey"),
+ 	DEFINE_RES_IRQ_NAMED(MT6323_IRQ_STATUS_FCHRKEY, "homekey"),
+@@ -122,6 +129,12 @@ static const struct mfd_cell mt6359_devs[] = {
+ 		.of_compatible = "mediatek,mt6358-rtc",
+ 	},
+ 	{ .name = "mt6359-sound", },
++	{
++		.name = "mtk-pmic-keys",
++		.num_resources = ARRAY_SIZE(mt6359_keys_resources),
++		.resources = mt6359_keys_resources,
++		.of_compatible = "mediatek,mt6359-keys"
++	},
+ };
  
-+	priv->cpu_port = 6;
-+
- 	priv->ds = devm_kzalloc(&mdiodev->dev, sizeof(*priv->ds), GFP_KERNEL);
- 	if (!priv->ds)
- 		return -ENOMEM;
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 91508e2feef9..62df8d10f6d4 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -8,7 +8,6 @@
- 
- #define MT7530_NUM_PORTS		7
- #define MT7530_NUM_PHYS			5
--#define MT7530_CPU_PORT			6
- #define MT7530_NUM_FDB_RECORDS		2048
- #define MT7530_ALL_MEMBERS		0xff
- 
-@@ -823,6 +822,7 @@ struct mt7530_priv {
- 	u8			mirror_tx;
- 
- 	struct mt7530_port	ports[MT7530_NUM_PORTS];
-+	int			cpu_port;
- 	/* protect among processes for registers access*/
- 	struct mutex reg_mutex;
- 	int irq;
+ static const struct mfd_cell mt6397_devs[] = {
 -- 
-2.25.1
+2.36.0
 
 
 _______________________________________________
