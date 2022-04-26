@@ -4,64 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41D5AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 00:17:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FFF4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 00:28:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GsTqPWaEmDjxy+71eaPd9gA5giLOXw4J4Cbf2rkxp5A=; b=CTHHmcKVnCw/k4
-	zv07AvR1QFGmfoe5IfZY/xhy+5xOmRsrxksG7F7T5J6zuHQNRAo0c1phFRdz+pjh4PT/DqhcN2P95
-	lwPe84Encd7haxLtGdt/+BMvwCgdxlOWmJORjh4pqKSxx1w3Xj9Ww8rey6Bww5IslF/uWF7pNCRyV
-	IbPuIkeJI5IeB4zFQgDa3mI5QybfnOb43ZkmWDvqdV/yvjMPdx7xyX+IJxUskBKWe23Nmusi03w1f
-	irCRnrx2VQMobAAW3NqAoQFl99AlhutotL3urPFM5Ub0iTqt3rUW+dmXJ3fjXKVbb1kM27M+URit1
-	sFwhhEc6Ws5GMuJFGFOA==;
+	List-Owner; bh=Kse8+6tZzOl+uwG5KG/31aFv+V0J2XgtVSsT0ez1j7A=; b=isCeCLkBXEZHVe
+	ERCcg3O8etEN+joTB5LuODslQw7hqGlOT43xjFnzwwMSvS9V7eEd8/tvDYZy3GJyz0V0XYCwyx5Ca
+	EzgsTytVCUKLQXq1x5awHvMfw8WonCOF2bgPgIOgEKG8FoDe2zfeuyASk2UTgBYh7AF+VkAypQKP4
+	mWBbyCAws3qIJPYq4ibCLekQ6TwgVvst9X7m+z/6FkRDtEHiMzVZ9WdNP+azKbOqwM4qya0RPItCK
+	g0qVKwFWtF+hY72eWq8nMVCejKnZ63hWwD4oJER3lQljGYJWQx1AHOE1VYUVp8KAA1Ir/2eP2P8bf
+	KUEHExQAki2+Yy2/P+Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nj8tg-00BrwD-JB; Tue, 26 Apr 2022 00:17:40 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nj946-00BwKY-IQ; Tue, 26 Apr 2022 00:28:26 +0000
+Received: from mail-oo1-f48.google.com ([209.85.161.48])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nj8qR-00Bq0X-JG; Tue, 26 Apr 2022 00:14:21 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id D2A65B81BA9;
- Tue, 26 Apr 2022 00:14:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FF98C385A4;
- Tue, 26 Apr 2022 00:14:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1650932054;
- bh=QEJdt0UF+tcaaYi/1FBeIDbmE6yAI30SB+nMUM/acVY=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=Xa23/1HeSPEmrAY+7btpsAjJaEMl6FCq0pvD2lCqvOPrCwtvxYLTtKLy82oac81uC
- lr9xQV9AcEuhSEmPK9bpEPM3eVTR2YQZNC0kidP8I5w4VjgMntGYs3A+7NT25jhaBS
- e+8vqnTTTgI2LuyV5tDbG878OJP43HKDfr8jf/7ZJc2+eE4IqkfLUVfOauIRLRpYk5
- +EzHcG3NEpdalYvhOSZvKsMVvoji5U87FQ9MG97gn3LLB+aZfO9B3XKOK3gVPRGhPD
- 5nVezUJx8ORAU9rqRmbI0xx6FwGCRbRYqLQLkSwlM9pbwfbVhn4rxX1/a6MwGqnfzK
- lZBbIVnDITaRA==
-MIME-Version: 1.0
-In-Reply-To: <20220409132251.31725-16-chun-jie.chen@mediatek.com>
-References: <20220409132251.31725-1-chun-jie.chen@mediatek.com>
- <20220409132251.31725-16-chun-jie.chen@mediatek.com>
-Subject: Re: [PATCH v5 15/15] clk: mediatek: Add MT8186 ipesys clock support
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ id 1nj93u-00BwHT-9z; Tue, 26 Apr 2022 00:28:15 +0000
+Received: by mail-oo1-f48.google.com with SMTP id
+ m22-20020a056820051600b0033a41079257so3107039ooj.4; 
+ Mon, 25 Apr 2022 17:28:12 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=SFFQr41CrK0hpZb0QawVnEuLVgHVc+Fj3FqF1lnbmG0=;
+ b=lwfQYerw/aC5/r0F4EHc/teohkFPjG5Y3D2aH+0ox+aOHuRhnziqc8t7XLcAI5kN85
+ /NuoD6JkY6FC3x1OIUXMQ71zRC6JSh3ElzADhGCk2kflhxinsWvNvvcYHalJ81ejWFX+
+ s34bKTHOWd+X2ohcVG7SNJgf9suTCI31KyNr8FGi1GryCaNsdYasCrvuHWFTTLVsWyMb
+ VPjUJ7VeFig+Oa8M1A4hyq9j/zWYNtL/tJHFXJ6ClY+K4taDZ6/ms81aSMEp7Dg+O0eJ
+ /1kOwC4o0XZYNIyWXSfrKKUFWmnFdC53wFsadLhxh26cqx0Vo00lwyfDsc9C5YvenJQH
+ rCgQ==
+X-Gm-Message-State: AOAM532hZzbq+xT3T2z0Zq46P2PM4tlxpKPGth5AIduqrCQU2zehNyoh
+ ZoLSyCdOnCELCILH2G/ksA==
+X-Google-Smtp-Source: ABdhPJw59OK2Y1K9vrvU+qPU7j7PKh3L5AfO5Jhnd7VcgAhlOX360MKdf1AxoRUnz0bNQSUohxdmOw==
+X-Received: by 2002:a4a:e85a:0:b0:333:2aa8:264f with SMTP id
+ j26-20020a4ae85a000000b003332aa8264fmr7277374ooj.65.1650932892015; 
+ Mon, 25 Apr 2022 17:28:12 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ t3-20020a056870048300b000e686d1389fsm264473oam.57.2022.04.25.17.28.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 25 Apr 2022 17:28:11 -0700 (PDT)
+Received: (nullmailer pid 613027 invoked by uid 1000);
+ Tue, 26 Apr 2022 00:28:10 -0000
+Date: Mon, 25 Apr 2022 19:28:10 -0500
+From: Rob Herring <robh@kernel.org>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-remoteproc@vger.kernel.org,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Ohad Ben-Cohen <ohad@wizery.com>,
+ linux-arm-kernel@lists.infradead.org,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>
-To: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>
-Date: Mon, 25 Apr 2022 17:14:12 -0700
-User-Agent: alot/0.10
-Message-Id: <20220426001414.6FF98C385A4@smtp.kernel.org>
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Mathieu Poirier <mathieu.poirier@linaro.org>
+Subject: Re: [PATCH v3 1/2] dt-bindings: remoteproc: mediatek: add
+ firmware-name property
+Message-ID: <Ymc8mjDNx36OWm1/@robh.at.kernel.org>
+References: <20220419123331.14377-1-allen-kh.cheng@mediatek.com>
+ <20220419123331.14377-2-allen-kh.cheng@mediatek.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220419123331.14377-2-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_171419_906089_86A3C2B4 
-X-CRM114-Status: UNSURE (   7.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220425_172814_380578_D82766BE 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,16 +89,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Chun-Jie Chen (2022-04-09 06:22:51)
-> Add MT8186 ipesys clock controller which provides clock gate
-> control for Image Process Engine.
+On Tue, 19 Apr 2022 20:33:30 +0800, Allen-KH Cheng wrote:
+> The SCP needs firmware which differs between other platforms and SoCs.
+> Add a new property "firmware-name" to allow the DT to specify the
+> platform/board specific path to this firmware file.
 > 
-> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 > ---
+>  Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
 
-Applied to clk-next
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
