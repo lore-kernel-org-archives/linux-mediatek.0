@@ -4,76 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08F29C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 02:53:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A8B5C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 03:18:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zFIsmENmJ4R6ZloHbvPlUy+kiAL3aGKzSn4a9ZkIT/8=; b=Ds618f9CCaeqxP
-	ywWkItZh3lMSBQb/zHtFOphL7/sM61nufgT8m8Q816c0g2ZI/HG5LTgCqkoxZEi6XqZxRD56yaa1a
-	XtfIAD2pORPamRWBNUjUAcDPiChrUuId11ok5KgR5U2y7EDNHjBeJu1/NYKTy2YqXcXBD62S1jH6E
-	GCKfZK3oGtB0mdyunzK1tpBkldGrAFP+vv7SmFfkuUujWWC89q5nhQrNz1U++q56hZsi827gOmGkQ
-	IEKeytdZgBYRiRMbp9ycKA6iRtgipqB2QdTbadS8fE3U1JV5MTkRpxv2MUWogoD6RoVV3MaOfG8il
-	ZRqW8jmjG+eypTqeqOSA==;
+	List-Owner; bh=HBIh5af9J3D+wc7kTVqNTxSkuFM6BjZmjoKmDKwhyC8=; b=TfGGnN/jcVD7x/
+	oAW5V4DE17MNrnJCu/WeS2qprV3GNKRCNDWxPxCRQgtObqSONYvv0IGxCfZ3z/G+NuaTzLsPfGFWC
+	7sk0q7ywr//tnffc7PAJZjnR33Un2JZDfogL747kv/4YGzyXkcplJenu4yRj+95/5WLqXwc0mjJ3n
+	jveopYGvgpE4R9ZaELKt9mGJVsv/uapZQsyc4HqZCk1MHyEdnzpHASxENS6WKgP+fCc58aU8cMFgC
+	nKQ1lLzz6JvlZNtdSuWPBeswZ5ogdsmif1FVTgCPpaJ6SUJy9NcZYvBeIera0EUqPr6q9Q5md04iI
+	GMLtR8ojkZM3zSYR5W9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njBKM-00CF9b-4k; Tue, 26 Apr 2022 02:53:22 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1njBik-00CHqI-5H; Tue, 26 Apr 2022 03:18:34 +0000
+Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njBKA-00CF7o-H1; Tue, 26 Apr 2022 02:53:12 +0000
-X-UUID: 2186400f9aef461d9de6417503cc2239-20220425
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:2df0cf36-ead8-4128-8107-ba503ad6241e, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:663feff0-da02-41b4-b6df-58f4ccd36682,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 2186400f9aef461d9de6417503cc2239-20220425
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 788212190; Mon, 25 Apr 2022 19:53:07 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 25 Apr 2022 19:47:24 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 Apr 2022 10:47:23 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 26 Apr 2022 10:47:23 +0800
-Message-ID: <8b643b0faeb0a6ba7730f2d30076c6d62145bc12.camel@mediatek.com>
-Subject: Re: [PATCH v1, 1/1] drm/mediatek: add lut diff flag for new gamma
- hardware support
-From: CK Hu <ck.hu@mediatek.com>
-To: yongqiang.niu <yongqiang.niu@mediatek.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>
-CC: Yongqiang Niu <yongqiang.niu@mediatek.corp-partner.google.com>,
- <devicetree@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, David Airlie
- <airlied@linux.ie>, Jassi Brar <jassisinghbrar@gmail.com>,
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Dennis YC
- Hsieh" <dennis-yc.hsieh@mediatek.com>, Fabien Parent <fparent@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>, <linux-mediatek@lists.infradead.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>
-Date: Tue, 26 Apr 2022 10:47:23 +0800
-In-Reply-To: <48f4a8d3d447342eb952598d479028586caacedc.camel@mediatek.com>
-References: <20220420130617.814-1-yongqiang.niu@mediatek.com>
- <20220420130617.814-2-yongqiang.niu@mediatek.com>
- <a9e026c2018668057b8482c27eeae991667c46d3.camel@mediatek.com>
- <48f4a8d3d447342eb952598d479028586caacedc.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1njBiX-00CHmd-Or
+ for linux-mediatek@lists.infradead.org; Tue, 26 Apr 2022 03:18:23 +0000
+Received: by mail-yb1-xb2d.google.com with SMTP id w187so21203822ybe.2
+ for <linux-mediatek@lists.infradead.org>; Mon, 25 Apr 2022 20:18:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ymvQGhwLD6LrQR70e/w6ZPsiExN1hAhcmAPj4jy8dAs=;
+ b=hl9cabfzvJuk6NdpihUW2V6JgM6pg6VorWRkIKdEdXpq9fhgiWK1MzSd5HZrlZyDu5
+ y9jb2HFJ4/ItQpenFhNgKyZCt9bfvcDzFEb6/J/2Mhi6v4gBi67b/bpNwZpHbDJcmNjE
+ yxZ8PbmBCRO+dNafHrM8EWAipoRe7jmCdoCeg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ymvQGhwLD6LrQR70e/w6ZPsiExN1hAhcmAPj4jy8dAs=;
+ b=RWPTC6cWvPgnI0Gpee/4oSa+wqk4hHpFFG4D/qcJQEo3pBseMoZi67nMdq3PVIzTyg
+ 7nZ58ebnG1rWgSHiXzloud6sozQp92721gG94jv8ZO90cTfdaJLgNoQtBK4BCN6OnJTa
+ O/iYT8FzNXJ8s8tyznxtZCVFJ7coOIA+miLUtrguxqt6STqFpm3ZVMUB5vN7Gj8Gukrm
+ zgiQEyT3HXod8ejJbeYcbfY+ZRvxstCL+7G2xrtPafhmgUrDD4oUIZP9W9MNb5gIcVjB
+ +JQBgsNboi7+aFzvx28VrL1z6KhLAESfgt+PlrKsAeMl88httTz6w5ghCnFCzkUYNJt0
+ 5eIw==
+X-Gm-Message-State: AOAM532Hkbliajg1+lwbjBMMkvKW1oSb8CLkbHFbZ9R4tMss/sM52LF/
+ xnkr51d8oWcMOrSygN6WzqlvbIpKZc1Lgs4lsnPj2w==
+X-Google-Smtp-Source: ABdhPJyhHmusCSOHXNUImfAEEzGb8B8HQK3f3IeirnXiVrdZPW5jq5AEGz0c4s9rGNFdKqdnfg94FcKxSxPYMEgzAMs=
+X-Received: by 2002:a5b:34a:0:b0:645:4966:b5d3 with SMTP id
+ q10-20020a5b034a000000b006454966b5d3mr18130893ybp.461.1650943097894; Mon, 25
+ Apr 2022 20:18:17 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220425125546.4129-1-johnson.wang@mediatek.com>
+ <20220425125546.4129-2-johnson.wang@mediatek.com>
+In-Reply-To: <20220425125546.4129-2-johnson.wang@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 26 Apr 2022 11:18:06 +0800
+Message-ID: <CAGXv+5HgyN+kp86M2GgFtbruXSAMSLxsh9vf8zVE5TxRMyTyaA@mail.gmail.com>
+Subject: Re: [PATCH v3 1/2] dt-bindings: interconnect: Add MediaTek CCI
+ dt-bindings
+To: Johnson Wang <johnson.wang@mediatek.com>, krzk+dt@kernel.org
+Cc: cw00.choi@samsung.com, robh+dt@kernel.org, kyungmin.park@samsung.com, 
+ khilman@kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, jia-wei.chang@mediatek.com, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_195310_601362_016DF2E0 
-X-CRM114-Status: GOOD (  39.13  )
+X-CRM114-CacheID: sfid-20220425_201821_873767_845AD3B3 
+X-CRM114-Status: GOOD (  23.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,259 +84,183 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-04-26 at 10:39 +0800, yongqiang.niu wrote:
-> On Tue, 2022-04-26 at 09:58 +0800, CK Hu wrote:
-> > Hi, Yongqiang:
-> > 
-> > On Wed, 2022-04-20 at 21:06 +0800, Yongqiang Niu wrote:
-> > > From: Yongqiang Niu <
-> > > yongqiang.niu@mediatek.corp-partner.google.com
-> > > > 
-> > > 
-> > > mt8183 gamma module usage is different with before soc,
-> > > gamma odd(index start from 0) lut value set to hardware
-> > > register should be
-> > > the difference of current lut value with last lut value.
-> > > 
-> > > gamma function support both increase and decrease lut.
-> > 
-> > How to set decrease lut?
-> > 
-> > Original lut:
-> > 12 10 8 6 4 2
-> > 
-> > Does diff lut look like this?
-> > 12 [2] 8 [2] 4 [2]
-> > 
-> 
-> yes
-> 
-> > How does hardware know that this is increase lut or decrease lut?
-> 
-> gamma register 0x20 , bit 2, 
-> if this bit set to 1, hardware will know lut is decrease.
-> this bit default is 0, that means lut is increase
-> 
-> > 
-> > > chrome os app set increase lut normally.
-> > > 
-> > > for increase lut example, chrome os user space set lut
-> > > like this(only r chanel for example):
-> > > 2 4 6 8 10 12.
-> > > 1) mt8183 gamma driver should set the gamma lut to hardware
-> > > register like this:
-> > > 2 [2] 6 [8] 10 [2]
-> > 
-> > 2 [2] 6 [2] 10 [2]
-> > 
-> > > the value with [] is the difference value
-> > > 2) gamma hardware will restore the lut when apply gamma
-> > > function to display
-> > 
-> > I don't know why do you mention the 'restore', any modification is
-> > related to this?
-> > 
-> 
-> that means gamma
-> hardware process display data with original lut
-> > > 
-> > > Signed-off-by: Yongqiang Niu <
-> > > yongqiang.niu@mediatek.corp-partner.google.com>
-> > > ---
-> > >  drivers/gpu/drm/mediatek/mtk_disp_aal.c   |  4 ++-
-> > >  drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  2 +-
-> > >  drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 34
-> > > +++++++++++++++++++
-> > > ----
-> > >  3 files changed, 32 insertions(+), 8 deletions(-)
-> > > 
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-> > > b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-> > > index f46d4ab73d6a..e6378b074a17 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-> > > @@ -23,6 +23,7 @@
-> > >  
-> > >  struct mtk_disp_aal_data {
-> > >  	bool has_gamma;
-> > > +	bool lut_diff;
-> > >  };
-> > >  
-> > >  /**
-> > > @@ -66,7 +67,7 @@ void mtk_aal_gamma_set(struct device *dev,
-> > > struct
-> > > drm_crtc_state *state)
-> > >  	struct mtk_disp_aal *aal = dev_get_drvdata(dev);
-> > >  
-> > >  	if (aal->data && aal->data->has_gamma)
-> > > -		mtk_gamma_set_common(aal->regs, state);
-> > > +		mtk_gamma_set_common(aal->regs, state, aal->data-
-> > > > lut_diff);
-> > 
-> > gamma in aal does not support diff lut, so this would make things
-> > simple.
-> > 
-> > mtk_gamma_set_common(aal->regs, state, false);
-> 
-> fix next version
-> > 
-> > Regards,
-> > CK
-> > 
-> > >  }
-> > >  
-> > >  void mtk_aal_start(struct device *dev)
-> > > @@ -148,6 +149,7 @@ static int mtk_disp_aal_remove(struct
-> > > platform_device *pdev)
-> > >  
-> > >  static const struct mtk_disp_aal_data mt8173_aal_driver_data = {
-> > >  	.has_gamma = true,
-> > > +	.lut_diff = false,
-> > >  };
-> > >  
-> > >  static const struct of_device_id mtk_disp_aal_driver_dt_match[]
-> > > =
-> > > {
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> > > b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> > > index 86c3068894b1..3380651c6707 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> > > @@ -51,7 +51,7 @@ void mtk_gamma_config(struct device *dev,
-> > > unsigned
-> > > int w,
-> > >  		      unsigned int h, unsigned int vrefresh,
-> > >  		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
-> > >  void mtk_gamma_set(struct device *dev, struct drm_crtc_state
-> > > *state);
-> > > -void mtk_gamma_set_common(void __iomem *regs, struct
-> > > drm_crtc_state
-> > > *state);
-> > > +void mtk_gamma_set_common(void __iomem *regs, struct
-> > > drm_crtc_state
-> > > *state, bool lut_diff);
-> > >  void mtk_gamma_start(struct device *dev);
-> > >  void mtk_gamma_stop(struct device *dev);
-> > >  
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-> > > b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-> > > index 3a5815ab4079..fec2e9a5b60d 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-> > > @@ -27,6 +27,7 @@
-> > >  
-> > >  struct mtk_disp_gamma_data {
-> > >  	bool has_dither;
-> > > +	bool lut_diff;
-> > >  };
-> > >  
-> > >  /*
-> > > @@ -53,12 +54,13 @@ void mtk_gamma_clk_disable(struct device
-> > > *dev)
-> > >  	clk_disable_unprepare(gamma->clk);
-> > >  }
-> > >  
-> > > -void mtk_gamma_set_common(void __iomem *regs, struct
-> > > drm_crtc_state
-> > > *state)
-> > > +void mtk_gamma_set_common(void __iomem *regs, struct
-> > > drm_crtc_state
-> > > *state, bool lut_diff)
-> > >  {
-> > >  	unsigned int i, reg;
-> > >  	struct drm_color_lut *lut;
-> > >  	void __iomem *lut_base;
-> > >  	u32 word;
-> > > +	u32 diff[3] = {0};
-> > >  
-> > >  	if (state->gamma_lut) {
-> > >  		reg = readl(regs + DISP_GAMMA_CFG);
-> > > @@ -67,9 +69,20 @@ void mtk_gamma_set_common(void __iomem *regs,
-> > > struct drm_crtc_state *state)
-> > >  		lut_base = regs + DISP_GAMMA_LUT;
-> > >  		lut = (struct drm_color_lut *)state->gamma_lut->data;
-> > >  		for (i = 0; i < MTK_LUT_SIZE; i++) {
-> > > -			word = (((lut[i].red >> 6) & LUT_10BIT_MASK) <<
-> > > 20) +
-> > > -				(((lut[i].green >> 6) & LUT_10BIT_MASK)
-> > > << 10) +
-> > > -				((lut[i].blue >> 6) & LUT_10BIT_MASK);
-> > > +
-> > > +			if (!lut_diff || (i % 2 == 0)) {
-> > > +				word = (((lut[i].red >> 6) &
-> > > LUT_10BIT_MASK) << 20) +
-> > > +					(((lut[i].green >> 6) &
-> > > LUT_10BIT_MASK) << 10) +
-> > > +					((lut[i].blue >> 6) &
-> > > LUT_10BIT_MASK);
-> > > +			} else {
-> > > +				diff[0] = abs((lut[i].red >> 6) -
-> > > (lut[i - 1].red >> 6));
+On Mon, Apr 25, 2022 at 8:56 PM Johnson Wang <johnson.wang@mediatek.com> wrote:
+>
+> Add devicetree binding of MediaTek CCI on MT8183 and MT8186.
+>
+> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> ---
+>  .../bindings/interconnect/mediatek,cci.yaml   | 139 ++++++++++++++++++
+>  1 file changed, 139 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+>
+> diff --git a/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> new file mode 100644
+> index 000000000000..e5221e17d11b
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> @@ -0,0 +1,139 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/interconnect/mediatek,cci.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Cache Coherent Interconnect (CCI) frequency and voltage scaling
+> +
+> +maintainers:
+> +  - Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> +
+> +description: |
+> +  MediaTek Cache Coherent Interconnect (CCI) is a hardware engine used by
+> +  MT8183 and MT8186 SoCs to scale the frequency and adjust the voltage in
+> +  hardware. It can also optimize the voltage to reduce the power consumption.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt8183-cci
+> +      - mediatek,mt8186-cci
+> +
+> +  clocks:
+> +    items:
+> +      - description:
+> +          The multiplexer for clock input of CPU cluster.
 
-You does not set register 0x20[2], so this patch only support increase
-lut and abs() is not necessary.
+of the bus, not CPU cluster.
 
-Regards,
-CK
+> +      - description:
+> +          A parent of "cpu" clock which is used as an intermediate clock source
+> +          when the original CPU is under transition and not stable yet.
 
-> > > +				diff[1] = abs((lut[i].green >> 6) -
-> > > (lut[i - 1].green >> 6));
-> > > +				diff[2] = abs((lut[i].blue >> 6) -
-> > > (lut[i - 1].blue >> 6));
-> > > +
-> > > +				word = ((diff[0] & LUT_10BIT_MASK) <<
-> > > 20) +
-> > > +					((diff[1] & LUT_10BIT_MASK) <<
-> > > 10) +
-> > > +					(diff[2] & LUT_10BIT_MASK);
-> > > +			}
-> > >  			writel(word, (lut_base + i * 4));
-> > >  		}
-> > >  	}
-> > > @@ -78,8 +91,12 @@ void mtk_gamma_set_common(void __iomem *regs,
-> > > struct drm_crtc_state *state)
-> > >  void mtk_gamma_set(struct device *dev, struct drm_crtc_state
-> > > *state)
-> > >  {
-> > >  	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
-> > > +	bool lut_diff = false;
-> > > +
-> > > +	if (gamma->data)
-> > > +		lut_diff = gamma->data->lut_diff;
-> > >  
-> > > -	mtk_gamma_set_common(gamma->regs, state);
-> > > +	mtk_gamma_set_common(gamma->regs, state, lut_diff);
-> > >  }
-> > >  
-> > >  void mtk_gamma_config(struct device *dev, unsigned int w,
-> > > @@ -176,10 +193,15 @@ static const struct mtk_disp_gamma_data
-> > > mt8173_gamma_driver_data = {
-> > >  	.has_dither = true,
-> > >  };
-> > >  
-> > > +static const struct mtk_disp_gamma_data mt8183_gamma_driver_data
-> > > =
-> > > {
-> > > +	.lut_diff = true,
-> > > +};
-> > > +
-> > >  static const struct of_device_id
-> > > mtk_disp_gamma_driver_dt_match[]
-> > > =
-> > > {
-> > >  	{ .compatible = "mediatek,mt8173-disp-gamma",
-> > >  	  .data = &mt8173_gamma_driver_data},
-> > > -	{ .compatible = "mediatek,mt8183-disp-gamma"},
-> > > +	{ .compatible = "mediatek,mt8183-disp-gamma",
-> > > +	  .data = &mt8183_gamma_driver_data},
-> > >  	{},
-> > >  };
-> > >  MODULE_DEVICE_TABLE(of, mtk_disp_gamma_driver_dt_match);
-> > 
-> > 
-> 
-> 
+This really should be handled in the clk controller, and not by every device
+that happens to take a clock from a mux with upstream PLLs that can change
+in clock rate. The end device hardware only takes one clock input. That's it.
 
+> +
+> +  clock-names:
+> +    items:
+> +      - const: cci
+> +      - const: intermediate
+> +
+> +  operating-points-v2: true
+> +  opp-table: true
+> +
+> +  proc-supply:
+> +    description:
+> +      Phandle of the regulator for CCI that provides the supply voltage.
+> +
+> +  sram-supply:
+> +    description:
+> +      Phandle of the regulator for sram of CCI that provides the supply
+> +      voltage. When it presents, the cci devfreq driver needs to do
+
+When it is present, the implementation needs to ...
+
+ChenYu
+
+> +      "voltage tracking" to step by step scale up/down Vproc and Vsram to fit
+> +      SoC specific needs. When absent, the voltage scaling flow is handled by
+> +      hardware, hence no software "voltage tracking" is needed.
+> +
+> +required:
+> +  - compatible
+> +  - clocks
+> +  - clock-names
+> +  - operating-points-v2
+> +  - proc-supply
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt8183-clk.h>
+> +    cci: cci {
+> +        compatible = "mediatek,mt8183-cci";
+> +        clocks = <&mcucfg CLK_MCU_BUS_SEL>,
+> +                 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
+> +        clock-names = "cci", "intermediate";
+> +        operating-points-v2 = <&cci_opp>;
+> +        proc-supply = <&mt6358_vproc12_reg>;
+> +    };
+> +
+> +    cci_opp: opp-table-cci {
+> +        compatible = "operating-points-v2";
+> +        opp-shared;
+> +        opp2_00: opp-273000000 {
+> +            opp-hz = /bits/ 64 <273000000>;
+> +            opp-microvolt = <650000>;
+> +        };
+> +        opp2_01: opp-338000000 {
+> +            opp-hz = /bits/ 64 <338000000>;
+> +            opp-microvolt = <687500>;
+> +        };
+> +        opp2_02: opp-403000000 {
+> +            opp-hz = /bits/ 64 <403000000>;
+> +            opp-microvolt = <718750>;
+> +        };
+> +        opp2_03: opp-463000000 {
+> +            opp-hz = /bits/ 64 <463000000>;
+> +            opp-microvolt = <756250>;
+> +        };
+> +        opp2_04: opp-546000000 {
+> +            opp-hz = /bits/ 64 <546000000>;
+> +            opp-microvolt = <800000>;
+> +        };
+> +        opp2_05: opp-624000000 {
+> +            opp-hz = /bits/ 64 <624000000>;
+> +            opp-microvolt = <818750>;
+> +        };
+> +        opp2_06: opp-689000000 {
+> +            opp-hz = /bits/ 64 <689000000>;
+> +            opp-microvolt = <850000>;
+> +        };
+> +        opp2_07: opp-767000000 {
+> +            opp-hz = /bits/ 64 <767000000>;
+> +            opp-microvolt = <868750>;
+> +        };
+> +        opp2_08: opp-845000000 {
+> +            opp-hz = /bits/ 64 <845000000>;
+> +            opp-microvolt = <893750>;
+> +        };
+> +        opp2_09: opp-871000000 {
+> +            opp-hz = /bits/ 64 <871000000>;
+> +            opp-microvolt = <906250>;
+> +        };
+> +        opp2_10: opp-923000000 {
+> +            opp-hz = /bits/ 64 <923000000>;
+> +            opp-microvolt = <931250>;
+> +        };
+> +        opp2_11: opp-962000000 {
+> +            opp-hz = /bits/ 64 <962000000>;
+> +            opp-microvolt = <943750>;
+> +        };
+> +        opp2_12: opp-1027000000 {
+> +            opp-hz = /bits/ 64 <1027000000>;
+> +            opp-microvolt = <975000>;
+> +        };
+> +        opp2_13: opp-1092000000 {
+> +            opp-hz = /bits/ 64 <1092000000>;
+> +            opp-microvolt = <1000000>;
+> +        };
+> +        opp2_14: opp-1144000000 {
+> +            opp-hz = /bits/ 64 <1144000000>;
+> +            opp-microvolt = <1025000>;
+> +        };
+> +        opp2_15: opp-1196000000 {
+> +            opp-hz = /bits/ 64 <1196000000>;
+> +            opp-microvolt = <1050000>;
+> +        };
+> +    };
+> --
+> 2.18.0
+>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
