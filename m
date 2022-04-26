@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69EE5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 10:03:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8334FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 10:03:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xO0eARGz320CS8mfQR/vWDKMgZJ8CGvTlLRmXl7mGbw=; b=bIwHEsgTlUSZpJ
-	XL/F+44fKZtEN7UQDdyrDsi4pDs6b9CAO1VOmZOarA2BrLYKJ+T2AxMc4hYOHehIiHlMFs5UH4Xyd
-	TBZlgSXbCQ379s7kAxIohBMaJWi4xus5AMFRTkNpGwwfKJnZpxZIaItf3UT6arJwTLPblNEwKfpma
-	mTcE3RDTeiJrWS/h2SP2yjZvrAVpqcIB5WXQM7aZIljpPRC2ck/EZQEpRz5aDF9tJux4sRK2H1Sj1
-	sdQJcsbrAQ6K+QaUqgNsGc/KWglroWgOCG/5uVQpaRjjFAN4Lz+SJMexxngQSbV0ly39chniWSR7P
-	2CiDs4ElT+jAsKBMazng==;
+	List-Owner; bh=xO0eARGz320CS8mfQR/vWDKMgZJ8CGvTlLRmXl7mGbw=; b=cIxV7I3ecGJsd5
+	Q9sOwWHvjiIGEUHWlINfEzqIirv+24TTVZ45XEk3ay7wmvIhLmSLWo9yOVLpUTFZrZ3AixUrJYoCI
+	KnNy+5cnTJSssHjUWTPPI+xe/b+Z2AlFZ4D1InhkarViGKAPd4xlXDO8xDIxmCsH4H4kEds+GBM/v
+	2HBJxXZJzZb8OjpkdlFZ1IhbZrwiDe8e62qacS7MeFV6ih5RHMTZupw50b0/HWEBvYCXHhxHX0P6m
+	XAYiGeqy6swYGdz3SA1oenxuf59pzIZJSXM5LzQheVsIXKlgieKHC2l2oTEISg4ZDiiFmK6atDdd6
+	f0YgCMD8XwLUH+5Y5krA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njI2G-00DkJc-G0; Tue, 26 Apr 2022 10:03:08 +0000
+	id 1njI2d-00DkQQ-FB; Tue, 26 Apr 2022 10:03:31 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njI25-00DkIB-NX; Tue, 26 Apr 2022 10:02:59 +0000
-X-UUID: 962d6ced3df6426c9db2d47fdc06ab10-20220426
+ id 1njI2S-00DkLn-8H; Tue, 26 Apr 2022 10:03:21 +0000
+X-UUID: 4fb772a3e67242a385ea351d665ac8a9-20220426
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:86374a39-5dde-4529-8775-cfd5dd29ca1f, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:fa89cd9c-2381-4fac-9ba7-a70c0eb7e44a, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:d74bbf2e-6199-437e-8ab4-9920b4bc5b76,
+X-CID-META: VersionHash:faefae9, CLOUDID:714287c6-85ee-4ac1-ac05-bd3f1e72e732,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 962d6ced3df6426c9db2d47fdc06ab10-20220426
+X-UUID: 4fb772a3e67242a385ea351d665ac8a9-20220426
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 849553343; Tue, 26 Apr 2022 03:02:44 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 Apr 2022 03:02:42 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 26 Apr 2022 18:02:41 +0800
+ with ESMTP id 935647325; Tue, 26 Apr 2022 03:03:14 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 26 Apr 2022 03:03:13 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 26 Apr 2022 18:03:11 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 26 Apr 2022 18:02:41 +0800
-Message-ID: <a8e212a0e0449e015a33e76b320266376d4b9be6.camel@mediatek.com>
+ Transport; Tue, 26 Apr 2022 18:03:11 +0800
+Message-ID: <23e170f94a541eca5a1a601cbb130c619d3fa3a9.camel@mediatek.com>
 Subject: Re: [PATCH v2 1/1] dt-bindings: nvmem: mediatek: Convert mtk-efuse
  binding to YAML
 From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
@@ -58,9 +59,9 @@ To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, "Srinivas
 CC: Lala Lin <lala.lin@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
- Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>
-Date: Tue, 26 Apr 2022 18:02:41 +0800
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ "Chen-Yu Tsai" <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>
+Date: Tue, 26 Apr 2022 18:03:11 +0800
 In-Reply-To: <0169c4ac-fdce-29b7-553a-14dc7df532d1@linaro.org>
 References: <20220425084800.2021-1-allen-kh.cheng@mediatek.com>
  <20220425084800.2021-2-allen-kh.cheng@mediatek.com>
@@ -71,8 +72,8 @@ X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_030257_817914_2732B774 
-X-CRM114-Status: GOOD (  18.13  )
+X-CRM114-CacheID: sfid-20220426_030320_345175_C6C25BC6 
+X-CRM114-Status: GOOD (  17.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
