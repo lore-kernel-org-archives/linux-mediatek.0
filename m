@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0165C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 20:15:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4550BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 20:25:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=62FFvxyPfl7zrI+71a5dQfUP3KwjYVxsWKInQ1AJWVY=; b=zjQxR3ugnWfEJ7
-	GVMezWJMxZVbKzOXHXl00J8W4y3yMbuNCJ0ZbSs/MDEf8hvhtldDsyuGTnAvJSxS/5GklRN0Bgocb
-	xj/0rTLTVDBqmhTk5+j7XV5OcHJTs6NASz6FWU8EyVD1ydyN9+kfVP1Seh7gIS7De3KnJTFOtVttX
-	pWCh0l2aQ5Fq9FMySoXIrio4kUUF8orZ98BdxpTtBxhjlaWErFluKicw0ofr3AsfDl/8eAD0X/rdz
-	LlXit04Ba7Bep9vYJ5lbk0R05tY3ZSRjdu2LgYY1WdbhY+UNVaLrd48WiEtE59QDKKtwnZkwxeskx
-	m7tjtuqQsSoK/sM+3xxA==;
+	List-Owner; bh=XmQM3dnVifRBR/poqkeqyfF3wG9ZExErZ/OuJrsK19M=; b=Mi02OSRouF2Hqf
+	B+5HUmq82x/+SeIDVIeJvh5jRkC5e1GDlEc4srQXdy5H78v+HhpYQ2ymySA09zVe/ur6Xn4cxOnFm
+	301xeV7eWKMJ7JJixolNyIHtPLmn+agTiWTlceKo63JFVUIyqqWLV4TpG1W3kUX8yCNZwANtLkD83
+	ln41o7XksROQ1w1OhVKbcnhyctXPxVJO/38xAgK0ifJkS0wnaVi+yA+xC/6NB6Uxv+EUVaW3Jp9wW
+	K8vR2GUvvbIq/FuDC0ujLWJv62Yuj8h/iKp7yuAjWO0Aeazag6IOse4ja1nIlRm481TN8qLFNK/v+
+	mElWsGcoXVzwPdRboyOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njRav-00G584-0G; Tue, 26 Apr 2022 20:15:33 +0000
-Received: from mail-oi1-f181.google.com ([209.85.167.181])
+	id 1njRkT-00G9BK-Eg; Tue, 26 Apr 2022 20:25:25 +0000
+Received: from mail-ot1-f44.google.com ([209.85.210.44])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njRai-00G51Z-BN; Tue, 26 Apr 2022 20:15:22 +0000
-Received: by mail-oi1-f181.google.com with SMTP id e4so21982500oif.2;
- Tue, 26 Apr 2022 13:15:17 -0700 (PDT)
+ id 1njRkM-00G98D-SS; Tue, 26 Apr 2022 20:25:20 +0000
+Received: by mail-ot1-f44.google.com with SMTP id
+ 88-20020a9d0ee1000000b005d0ae4e126fso13845971otj.5; 
+ Tue, 26 Apr 2022 13:25:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=X4D4FA3jMbNSOVGYIrOuVGyIIySWxqxWkkBOU3AjQRE=;
- b=gKjlOX+MNOA9jUymfAlQyp9hjitECebv9EayUDj0doFwmc/Q266iUDXvmKI4anOhyE
- 7qJzR90q5ljlUPG7J/3z9oRC0hwHkYkoo4GVKw4J3/FB6aDu83g7v908c3MJO+pMgCtR
- XrX1cW+Ru9O1tjFzVgfOwHt5YbuQXr5qKPMN6aZLCjkTT/TDt1VzNH0EOBoGke5P/Veh
- baTWGHoq9EUtNj2/VDtno9s6iPNnNe8gajFT7wWttQwh8Uga3SNQbXXD94WYAr0HxHsu
- tQqXfvE76XijUEys2lPDGGxePSsvUBHdPBgDH1YRdcI9C8zt308vKMFp3lL5bdfx1sDA
- DQlA==
-X-Gm-Message-State: AOAM533B6c2l7NlO0jZA7omrarLc3t4qTUswgrqrDhD0jSmP2eWpLMQY
- U43KVWycnf75z9CYgl843A==
-X-Google-Smtp-Source: ABdhPJxQsiU7TXwKBypyr1tR6ffaX0ownpf1Ny/g7n3+2m1MyWGud+Y/0ExcJTEv9n8w1aDgraAX0w==
-X-Received: by 2002:aca:1117:0:b0:322:4189:8959 with SMTP id
- 23-20020aca1117000000b0032241898959mr15357841oir.254.1651004116888; 
- Tue, 26 Apr 2022 13:15:16 -0700 (PDT)
+ bh=CDitmLcfe9Gh2apmzasOQHFfqUIRmgYygc4lrxKNp1k=;
+ b=XXIqFgHFlA4T5Ok4pAYlmWaIaMA9UDPn0ojk7oVt3Q4SoyLMHzBxUVuK0Q77jeqlU4
+ nFnegetRzYZp39syWiWNaODrCjZ7cC3g0q3Anewd6W6ogHvcdCMAbefVFyRu7lr/fVLI
+ jy3fWOyLWEVzP5KrYcKZ1hISkyUJZIRScJdJNMzEyvDEN16n2/wwbqFs5AY1ylfqxNux
+ CuiP9udLiq/zNzbxUqclFgNymEAoegpFo9rWPgBDRAl61/5q7B7/a7jAZ2eBy2Vto65c
+ yy/qHMyNrbl2Jde5BAdD2qB6vb/CfqfoESSb9heBQRr5Ly5Ianh43x2nP3AfEFn9mQdQ
+ +lgQ==
+X-Gm-Message-State: AOAM5325lHCe4TQ68Zpz6RGic0AIklyQXw3v0QosZkaB6bYq96nQitWQ
+ J+5/aVPJ2PbQFeBNzOGj8w==
+X-Google-Smtp-Source: ABdhPJw9iFc8l60BaJ4s5XVbB0yJaQFye+gSvfzabI2OvFjb68bZLValzm4yQMtKR0Ucjg9se16hfQ==
+X-Received: by 2002:a9d:7548:0:b0:605:54d7:44a2 with SMTP id
+ b8-20020a9d7548000000b0060554d744a2mr8894946otl.23.1651004716564; 
+ Tue, 26 Apr 2022 13:25:16 -0700 (PDT)
 Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
  [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- v22-20020a056870e49600b000d6c86ea98dsm1184568oag.1.2022.04.26.13.15.16
+ u7-20020a4a85c7000000b0035c12c8be73sm6105097ooh.29.2022.04.26.13.25.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Apr 2022 13:15:16 -0700 (PDT)
-Received: (nullmailer pid 2463555 invoked by uid 1000);
- Tue, 26 Apr 2022 20:15:15 -0000
-Date: Tue, 26 Apr 2022 15:15:15 -0500
+ Tue, 26 Apr 2022 13:25:16 -0700 (PDT)
+Received: (nullmailer pid 2477068 invoked by uid 1000);
+ Tue, 26 Apr 2022 20:25:15 -0000
+Date: Tue, 26 Apr 2022 15:25:15 -0500
 From: Rob Herring <robh@kernel.org>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wenst@chromium.org>,
- Ryder Lee <ryder.lee@kernel.org>, Hui Liu <hui.liu@mediatek.com>,
- Jiaxin Yu <jiaxin.yu@mediatek.com>
-Subject: Re: [PATCH 1/2] ASoC: dt-bindings: mediatek: mt8192: complete clocks
- and clock-names
-Message-ID: <YmhS0yh/KqYqKshj@robh.at.kernel.org>
-References: <20220419025557.22262-1-allen-kh.cheng@mediatek.com>
- <20220419025557.22262-2-allen-kh.cheng@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: krzysztof.kozlowski+dt@linaro.org, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, airlied@linux.ie, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com,
+ nancy.lin@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH 3/5] dt-bindings: mediatek: add vdosys1 RDMA definition
+ for mt8195
+Message-ID: <YmhVKw/FQ/iQfLLD@robh.at.kernel.org>
+References: <20220419033237.23405-1-rex-bc.chen@mediatek.com>
+ <20220419033237.23405-4-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220419025557.22262-2-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220419033237.23405-4-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_131520_463660_DB54A986 
-X-CRM114-Status: GOOD (  15.54  )
+X-CRM114-CacheID: sfid-20220426_132519_015679_C97216F7 
+X-CRM114-Status: GOOD (  23.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,217 +88,114 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 19, 2022 at 10:55:56AM +0800, Allen-KH Cheng wrote:
-> From: Jiaxin Yu <jiaxin.yu@mediatek.com>
+On Tue, Apr 19, 2022 at 11:32:35AM +0800, Rex-BC Chen wrote:
+> From: "Nancy.Lin" <nancy.lin@mediatek.com>
 > 
-> Complete all clocks and clock-names be used for mt8192 SoC into dt-bindings.
+> Add vdosys1 RDMA definition.
 
-Not a compatible change breaking the ABI. Please explain why if that's 
-intentional.
+How does this compare to the mediatek,mt8183-mdp3-rdma or 
+mediatek,mt8195-disp-rdma?
 
 > 
-> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../bindings/sound/mt8192-afe-pcm.yaml        | 165 +++++++++++++++++-
->  1 file changed, 157 insertions(+), 8 deletions(-)
+>  .../display/mediatek/mediatek,mdp-rdma.yaml   | 86 +++++++++++++++++++
+>  1 file changed, 86 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml b/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
-> index 7a25bc9b8060..1b6b22a5732e 100644
-> --- a/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
-> +++ b/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
-> @@ -39,20 +39,67 @@ properties:
->      maxItems: 1
->  
->    clocks:
-> -    items:
-> -      - description: AFE clock
-> -      - description: ADDA DAC clock
-> -      - description: ADDA DAC pre-distortion clock
-> -      - description: audio infra sys clock
-> -      - description: audio infra 26M clock
-> +    minItems: 56
-> +    maxItems: 56
->  
->    clock-names:
->      items:
->        - const: aud_afe_clk
->        - const: aud_dac_clk
->        - const: aud_dac_predis_clk
-> +      - const: aud_adc_clk
-> +      - const: aud_adda6_adc_clk
-> +      - const: aud_apll22m_clk
-> +      - const: aud_apll24m_clk
-> +      - const: aud_apll1_tuner_clk
-> +      - const: aud_apll2_tuner_clk
-> +      - const: aud_tdm_clk
-> +      - const: aud_tml_clk
-> +      - const: aud_nle
-> +      - const: aud_dac_hires_clk
-> +      - const: aud_adc_hires_clk
-> +      - const: aud_adc_hires_tml
-> +      - const: aud_adda6_adc_hires_clk
-> +      - const: aud_3rd_dac_clk
-> +      - const: aud_3rd_dac_predis_clk
-> +      - const: aud_3rd_dac_tml
-> +      - const: aud_3rd_dac_hires_clk
->        - const: aud_infra_clk
->        - const: aud_infra_26m_clk
-> +      - const: top_mux_audio
-> +      - const: top_mux_audio_int
-> +      - const: top_mainpll_d4_d4
-> +      - const: top_mux_aud_1
-> +      - const: top_apll1_ck
-> +      - const: top_mux_aud_2
-> +      - const: top_apll2_ck
-> +      - const: top_mux_aud_eng1
-> +      - const: top_apll1_d4
-> +      - const: top_mux_aud_eng2
-> +      - const: top_apll2_d4
-> +      - const: top_i2s0_m_sel
-> +      - const: top_i2s1_m_sel
-> +      - const: top_i2s2_m_sel
-> +      - const: top_i2s3_m_sel
-> +      - const: top_i2s4_m_sel
-> +      - const: top_i2s5_m_sel
-> +      - const: top_i2s6_m_sel
-> +      - const: top_i2s7_m_sel
-> +      - const: top_i2s8_m_sel
-> +      - const: top_i2s9_m_sel
-> +      - const: top_apll12_div0
-> +      - const: top_apll12_div1
-> +      - const: top_apll12_div2
-> +      - const: top_apll12_div3
-> +      - const: top_apll12_div4
-> +      - const: top_apll12_divb
-> +      - const: top_apll12_div5
-> +      - const: top_apll12_div6
-> +      - const: top_apll12_div7
-> +      - const: top_apll12_div8
-> +      - const: top_apll12_div9
-> +      - const: top_mux_audio_h
-> +      - const: top_clk26m_clk
->  
->  required:
->    - compatible
-> @@ -88,13 +135,115 @@ examples:
->          clocks = <&audsys CLK_AUD_AFE>,
->                   <&audsys CLK_AUD_DAC>,
->                   <&audsys CLK_AUD_DAC_PREDIS>,
-> +                 <&audsys CLK_AUD_ADC>,
-> +                 <&audsys CLK_AUD_ADDA6_ADC>,
-> +                 <&audsys CLK_AUD_22M>,
-> +                 <&audsys CLK_AUD_24M>,
-> +                 <&audsys CLK_AUD_APLL_TUNER>,
-> +                 <&audsys CLK_AUD_APLL2_TUNER>,
-> +                 <&audsys CLK_AUD_TDM>,
-> +                 <&audsys CLK_AUD_TML>,
-> +                 <&audsys CLK_AUD_NLE>,
-> +                 <&audsys CLK_AUD_DAC_HIRES>,
-> +                 <&audsys CLK_AUD_ADC_HIRES>,
-> +                 <&audsys CLK_AUD_ADC_HIRES_TML>,
-> +                 <&audsys CLK_AUD_ADDA6_ADC_HIRES>,
-> +                 <&audsys CLK_AUD_3RD_DAC>,
-> +                 <&audsys CLK_AUD_3RD_DAC_PREDIS>,
-> +                 <&audsys CLK_AUD_3RD_DAC_TML>,
-> +                 <&audsys CLK_AUD_3RD_DAC_HIRES>,
->                   <&infracfg CLK_INFRA_AUDIO>,
-> -                 <&infracfg CLK_INFRA_AUDIO_26M_B>;
-> +                 <&infracfg CLK_INFRA_AUDIO_26M_B>,
-> +                 <&topckgen CLK_TOP_AUDIO_SEL>,
-> +                 <&topckgen CLK_TOP_AUD_INTBUS_SEL>,
-> +                 <&topckgen CLK_TOP_MAINPLL_D4_D4>,
-> +                 <&topckgen CLK_TOP_AUD_1_SEL>,
-> +                 <&topckgen CLK_TOP_APLL1>,
-> +                 <&topckgen CLK_TOP_AUD_2_SEL>,
-> +                 <&topckgen CLK_TOP_APLL2>,
-> +                 <&topckgen CLK_TOP_AUD_ENGEN1_SEL>,
-> +                 <&topckgen CLK_TOP_APLL1_D4>,
-> +                 <&topckgen CLK_TOP_AUD_ENGEN2_SEL>,
-> +                 <&topckgen CLK_TOP_APLL2_D4>,
-> +                 <&topckgen CLK_TOP_APLL_I2S0_M_SEL>,
-> +                 <&topckgen CLK_TOP_APLL_I2S1_M_SEL>,
-> +                 <&topckgen CLK_TOP_APLL_I2S2_M_SEL>,
-> +                 <&topckgen CLK_TOP_APLL_I2S3_M_SEL>,
-> +                 <&topckgen CLK_TOP_APLL_I2S4_M_SEL>,
-> +                 <&topckgen CLK_TOP_APLL_I2S5_M_SEL>,
-> +                 <&topckgen CLK_TOP_APLL_I2S6_M_SEL>,
-> +                 <&topckgen CLK_TOP_APLL_I2S7_M_SEL>,
-> +                 <&topckgen CLK_TOP_APLL_I2S8_M_SEL>,
-> +                 <&topckgen CLK_TOP_APLL_I2S9_M_SEL>,
-> +                 <&topckgen CLK_TOP_APLL12_DIV0>,
-> +                 <&topckgen CLK_TOP_APLL12_DIV1>,
-> +                 <&topckgen CLK_TOP_APLL12_DIV2>,
-> +                 <&topckgen CLK_TOP_APLL12_DIV3>,
-> +                 <&topckgen CLK_TOP_APLL12_DIV4>,
-> +                 <&topckgen CLK_TOP_APLL12_DIVB>,
-> +                 <&topckgen CLK_TOP_APLL12_DIV5>,
-> +                 <&topckgen CLK_TOP_APLL12_DIV6>,
-> +                 <&topckgen CLK_TOP_APLL12_DIV7>,
-> +                 <&topckgen CLK_TOP_APLL12_DIV8>,
-> +                 <&topckgen CLK_TOP_APLL12_DIV9>,
-> +                 <&topckgen CLK_TOP_AUDIO_H_SEL>,
-> +                 <&clk26m>;
->          clock-names = "aud_afe_clk",
->                        "aud_dac_clk",
->                        "aud_dac_predis_clk",
-> +                      "aud_adc_clk",
-> +                      "aud_adda6_adc_clk",
-> +                      "aud_apll22m_clk",
-> +                      "aud_apll24m_clk",
-> +                      "aud_apll1_tuner_clk",
-> +                      "aud_apll2_tuner_clk",
-> +                      "aud_tdm_clk",
-> +                      "aud_tml_clk",
-> +                      "aud_nle",
-> +                      "aud_dac_hires_clk",
-> +                      "aud_adc_hires_clk",
-> +                      "aud_adc_hires_tml",
-> +                      "aud_adda6_adc_hires_clk",
-> +                      "aud_3rd_dac_clk",
-> +                      "aud_3rd_dac_predis_clk",
-> +                      "aud_3rd_dac_tml",
-> +                      "aud_3rd_dac_hires_clk",
->                        "aud_infra_clk",
-> -                      "aud_infra_26m_clk";
-> +                      "aud_infra_26m_clk",
-> +                      "top_mux_audio",
-> +                      "top_mux_audio_int",
-> +                      "top_mainpll_d4_d4",
-> +                      "top_mux_aud_1",
-> +                      "top_apll1_ck",
-> +                      "top_mux_aud_2",
-> +                      "top_apll2_ck",
-> +                      "top_mux_aud_eng1",
-> +                      "top_apll1_d4",
-> +                      "top_mux_aud_eng2",
-> +                      "top_apll2_d4",
-> +                      "top_i2s0_m_sel",
-> +                      "top_i2s1_m_sel",
-> +                      "top_i2s2_m_sel",
-> +                      "top_i2s3_m_sel",
-> +                      "top_i2s4_m_sel",
-> +                      "top_i2s5_m_sel",
-> +                      "top_i2s6_m_sel",
-> +                      "top_i2s7_m_sel",
-> +                      "top_i2s8_m_sel",
-> +                      "top_i2s9_m_sel",
-> +                      "top_apll12_div0",
-> +                      "top_apll12_div1",
-> +                      "top_apll12_div2",
-> +                      "top_apll12_div3",
-> +                      "top_apll12_div4",
-> +                      "top_apll12_divb",
-> +                      "top_apll12_div5",
-> +                      "top_apll12_div6",
-> +                      "top_apll12_div7",
-> +                      "top_apll12_div8",
-> +                      "top_apll12_div9",
-> +                      "top_mux_audio_h",
-> +                      "top_clk26m_clk";
->      };
->  
->  ...
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
+> new file mode 100644
+> index 000000000000..6ab773569462
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
+> @@ -0,0 +1,86 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mdp-rdma.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MDP RDMA
+> +
+> +maintainers:
+> +  - Matthias Brugger <matthias.bgg@gmail.com>
+> +
+> +description: |
+> +  The mediatek MDP RDMA stands for Read Direct Memory Access.
+> +  It provides real time data to the back-end panel driver, such as DSI,
+> +  DPI and DP_INTF.
+> +  It contains one line buffer to store the sufficient pixel data.
+> +  RDMA device node must be siblings to the central MMSYS_CONFIG node.
+> +  For a description of the MMSYS_CONFIG binding, see
+> +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml for details.
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - items:
+> +          - const: mediatek,mt8195-vdo1-rdma
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  power-domains:
+> +    description: A phandle and PM domain specifier as defined by bindings of
+> +      the power controller specified by phandle. See
+> +      Documentation/devicetree/bindings/power/power-domain.yaml for details.
+> +
+> +  clocks:
+> +    items:
+> +      - description: RDMA Clock
+> +
+> +  iommus:
+> +    description:
+> +      This property should point to the respective IOMMU block with master port as argument,
+> +      see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
+> +
+> +  mediatek,gce-client-reg:
+> +    description:
+> +      The register of display function block to be set by gce. There are 4 arguments,
+> +      such as gce node, subsys id, offset and register size. The subsys id that is
+> +      mapping to the register of display function blocks is defined in the gce header
+> +      include/include/dt-bindings/gce/<chip>-gce.h of each chips.
+> +    $ref: /schemas/types.yaml#/definitions/phandle-array
+> +    maxItems: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - power-domains
+> +  - clocks
+> +  - iommus
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/clock/mt8195-clk.h>
+> +    #include <dt-bindings/power/mt8195-power.h>
+> +    #include <dt-bindings/gce/mt8195-gce.h>
+> +    #include <dt-bindings/memory/mt8195-memory-port.h>
+> +
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        vdo1_rdma0: mdp-rdma@1c104000 {
+> +            compatible = "mediatek,mt8195-vdo1-rdma";
+> +            reg = <0 0x1c104000 0 0x1000>;
+> +            interrupts = <GIC_SPI 495 IRQ_TYPE_LEVEL_HIGH 0>;
+> +            clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
+> +            power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
+> +            iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA0>;
+> +            mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0x4000 0x1000>;
+> +        };
+> +    };
 > -- 
 > 2.18.0
 > 
